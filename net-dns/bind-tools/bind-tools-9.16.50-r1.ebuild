@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+caps doc gssapi idn libedit readline test xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug #409687
 RESTRICT="!test? ( test )"
@@ -33,7 +33,7 @@ RDEPEND="
 	>=dev-libs/libuv-1.42.0:=
 	dev-libs/openssl:=
 	caps? ( sys-libs/libcap )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 	idn? ( net-dns/libidn2:= )
 	gssapi? ( virtual/krb5 )
 	libedit? ( dev-libs/libedit )
