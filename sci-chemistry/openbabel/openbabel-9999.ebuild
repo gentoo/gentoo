@@ -44,7 +44,7 @@ RDEPEND="
 	inchi? ( sci-libs/inchi )
 	json? ( >=dev-libs/rapidjson-1.1.0 )
 	!minimal? (
-		dev-libs/libxml2:2
+		dev-libs/libxml2:2=
 		png? ( x11-libs/cairo )
 	)
 	perl? ( dev-lang/perl:= )
