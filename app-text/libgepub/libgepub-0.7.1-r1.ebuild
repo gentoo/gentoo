@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="+introspection webkit"
 RDEPEND="
 	net-libs/libsoup:3.0
 	dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	app-arch/libarchive:=
 	webkit? ( >=net-libs/webkit-gtk-2.38.0:4.1[introspection?] )
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
