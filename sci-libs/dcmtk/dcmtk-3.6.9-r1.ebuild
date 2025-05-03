@@ -19,7 +19,7 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tiff? ( media-libs/tiff:= )
-	xml? ( dev-libs/libxml2:2 )
+	xml? ( dev-libs/libxml2:2= )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}"
