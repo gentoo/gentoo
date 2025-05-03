@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/nss-pam-ldapd-0.9.11-tests-py39.patch
 	"${FILESDIR}"/nss-pam-ldapd-0.9.12-netdb-defines.patch
 	"${FILESDIR}"/nss-pam-ldapd-0.9.12-configure-CFLAGS-decontamination.patch
+	"${FILESDIR}"/nss-pam-ldapd-0.9.13-c23.patch
 )
 
 pkg_setup() {
