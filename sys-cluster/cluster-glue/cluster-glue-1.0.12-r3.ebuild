@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libaio
 	dev-libs/libltdl:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	ipmilan? ( sys-libs/openipmi )
 	libnet? ( net-libs/libnet:1.1 )
 	net-misc/curl
