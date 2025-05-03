@@ -26,7 +26,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=dev-qt/qtbase-6.6:6[gui,widgets]
 	x11-libs/libX11
 	x11-wm/openbox:3
