@@ -45,7 +45,7 @@ DEPEND="
 	ecap? ( net-libs/libecap:1 )
 	esi? (
 		dev-libs/expat
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 	)
 	ldap? ( net-nds/openldap:= )
 	gnutls? ( >=net-libs/gnutls-3.1.5:= )
