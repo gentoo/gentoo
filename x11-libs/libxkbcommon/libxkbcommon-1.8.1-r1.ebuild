@@ -33,7 +33,7 @@ BDEPEND="
 RDEPEND="
 	X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP}] )
 	tools? ( wayland? ( >=dev-libs/wayland-1.2.0[${MULTILIB_USEDEP}] ) )
-	dev-libs/libxml2[${MULTILIB_USEDEP}]
+	dev-libs/libxml2:=[${MULTILIB_USEDEP}]
 	x11-misc/compose-tables
 	x11-misc/xkeyboard-config
 "
