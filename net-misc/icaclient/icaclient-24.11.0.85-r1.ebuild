@@ -54,6 +54,10 @@ RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret
 	dev-libs/glib:2
+	|| (
+		dev-libs/libxml2:2/0
+		dev-libs/libxml2-compat
+	)
 	media-fonts/font-adobe-100dpi
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-ethiopic
@@ -98,7 +102,6 @@ RDEPEND="
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
 	usb? ( virtual/libudev )
 	selfservice? (
-		dev-libs/libxml2
 		net-libs/webkit-gtk:4.1
 		dev-libs/xerces-c
 	)
