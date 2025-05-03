@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	app-arch/zip
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 "
 
 src_prepare() {
