@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,13 +11,13 @@ HOMEPAGE="https://github.com/podofo/podofo"
 SRC_URI="https://github.com/podofo/podofo/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	test? (
 		https://github.com/podofo/podofo-resources/archive/4afe5c3fdb543a4347681b2e52252f1b10f12f24.tar.gz
-			-> ${P}-test-resources.tar.gz
+			-> podofo-0.10.1-test-resources.tar.gz
 	)
 "
 
 LICENSE="LGPL-2+ tools? ( GPL-2+ )"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="idn jpeg tiff png fontconfig test tools"
 RESTRICT="!test? ( test )"
 
@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/freetype:2=
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	tiff? ( media-libs/tiff:= )
 	sys-libs/zlib:="
 DEPEND="${RDEPEND}"
@@ -36,13 +36,6 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( fontconfig? ( media-fonts/liberation-fonts ) )
 "
-
-PATCHES=(
-	# Dome optimizations cause testsuite failures due to floating point
-	# contraction. Fixed upstream by adding tolerance to the test itself:
-	# https://github.com/podofo/podofo/issues/103
-	"${FILESDIR}"/0001-FIX-ColorTest-Fixed-test-under-linux-when-compiled-w.patch
-)
 
 src_prepare() {
 	cmake_src_prepare
