@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ DEPEND="
 	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	app-arch/bzip2[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	dev-libs/libxml2[${MULTILIB_USEDEP}]
+	dev-libs/libxml2:=[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
