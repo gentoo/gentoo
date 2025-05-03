@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ DEPEND="
 	gnome-extra/libgda:5=
 	gnome-base/gsettings-desktop-schemas
 	>=gui-libs/gtksourceview-5.4.0:5
-	>=dev-libs/libxml2-2.4.12:2
+	>=dev-libs/libxml2-2.4.12:2=
 	net-libs/libsoup:3.0
 	>=dev-libs/json-glib-1.2.0
 "
