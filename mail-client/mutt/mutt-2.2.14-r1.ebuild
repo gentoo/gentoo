@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit autotools
 
@@ -67,9 +67,9 @@ DEPEND="${CDEPEND}
 		|| ( www-client/lynx www-client/w3m www-client/elinks )
 	)"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-mutt )
+	selinux?       ( sec-policy/selinux-mutt )
 	smime-classic? ( >=dev-libs/openssl-0.9.6:0 )
-	pgp-classic? ( app-crypt/gnupg )
+	pgp-classic?   ( app-crypt/gnupg )
 "
 
 src_prepare() {
@@ -77,7 +77,6 @@ src_prepare() {
 
 	if use !vanilla ; then
 		# apply patches
-		# http://hg.code.sf.net/p/gentoomuttpatches/code/file/mutt-1.10
 		local patches=(
 			patches-mutt
 			bugs-gentoo
