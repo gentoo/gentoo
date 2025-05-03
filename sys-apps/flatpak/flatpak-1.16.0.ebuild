@@ -55,6 +55,7 @@ BDEPEND="
 	virtual/pkgconfig
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	dev-util/gtk-doc
 	app-alternatives/yacc
 	$(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]')
 	introspection? ( >=dev-libs/gobject-introspection-1.40 )
