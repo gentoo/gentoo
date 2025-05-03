@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ DEPEND="
 	>=net-libs/webkit-gtk-2.26:4.1
 	net-libs/libsoup:3.0
 	>=dev-libs/json-glib-0.7.6
-	>=dev-libs/libxml2-2.6.32:2
+	>=dev-libs/libxml2-2.6.32:2=
 	x11-libs/gdk-pixbuf:2
 	>=dev-db/sqlite-3.5.9:3
 	>=media-libs/gstreamer-1.20:1.0
