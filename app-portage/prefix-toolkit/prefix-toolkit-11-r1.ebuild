@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Utilities for users of Gentoo Prefix"
 HOMEPAGE="https://prefix.gentoo.org/"
@@ -13,8 +13,7 @@ SLOT="0"
 [[ ${PV} == 9999 ]] ||
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~riscv-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 
-DEPEND=""
-BDEPEND="${DEPEND}
+BDEPEND="
 	>sys-apps/portage-2.3.62
 "
 # In prefix-stack, these dependencies actually are the @system set,
