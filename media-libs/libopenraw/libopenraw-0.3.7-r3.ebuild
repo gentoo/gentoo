@@ -19,7 +19,7 @@ IUSE="gtk test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/libjpeg-turbo:=
 	gtk? (
 		dev-libs/glib:2
