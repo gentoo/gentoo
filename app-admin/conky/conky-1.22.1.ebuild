@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-4 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake linux-info lua-single python-any-r1 readme.gentoo-r1 xdg
 
@@ -23,9 +23,6 @@ IUSE="apcupsd bundled-toluapp cmus colour-name-map curl doc extras hddtemp ical
 RESTRICT="!test? ( test )"
 
 # Note: toluapp is bundled in conky since 1.11.2
-# Note: maintainer mode "-DMAINTAINER_MODE=yes" sets CMAKE_BUILD_TYPE Debug
-#       which creates debug symbols and enables "-DBUILD_TESTS" which also
-#       results in conky_core debug library getting installed
 
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
@@ -208,7 +205,7 @@ src_configure() {
 		-DBUILD_PORT_MONITORS=$(usex portmon)
 		-DBUILD_PULSEAUDIO=$(usex pulseaudio)
 		-DBUILD_RSS=$(usex rss)
-		-DBUILD_TESTS=$(usex test)
+		-DBUILD_TESTING=$(usex test)
 		-DBUILD_WAYLAND=$(usex wayland)
 		-DBUILD_WLAN=$(usex wifi)
 		-DBUILD_XFT=$(usex truetype)
@@ -218,6 +215,7 @@ src_configure() {
 		-DDOC_PATH=/usr/share/doc/${PF}
 		-DMAINTAINER_MODE=no
 		-DRELEASE=yes
+		-DUSE_CCACHE=OFF
 	)
 
 	if use doc || use extras; then
