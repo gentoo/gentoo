@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/indexdata/yaz.git"
 else
 	SRC_URI="https://ftp.indexdata.com/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ppc ppc64 ~s390 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
 fi
 
 LICENSE="BSD GPL-2"
@@ -22,7 +22,7 @@ IUSE="gnutls tcpd ziffy"
 
 RDEPEND="
 	dev-libs/icu:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 	sys-libs/readline:=
 	sys-libs/ncurses:=
@@ -39,7 +39,6 @@ BDEPEND="
 	>=dev-build/libtool-2
 	virtual/pkgconfig
 "
-DOCS=( NEWS README.md )
 
 src_prepare() {
 	default
@@ -52,21 +51,21 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--enable-shared \
 		$(use_with gnutls) \
 		$(use_enable tcpd tcpd /usr)
 }
 
 src_install() {
-	# make install is a mess, we need to clean it
 	local docdir="/usr/share/doc/${PF}"
-
 	emake DESTDIR="${D}" docdir="${EPREFIX}/${docdir}" install
 
 	find "${D}" -name '*.la' -delete || die
 
-	einstalldocs
 	dodir "${docdir}"/html
-	mv -f "${ED}"/${docdir}/*.{html,png} "${ED}"/${docdir}/html/ || die
-	mv -f "${ED}"/usr/share/doc/${PN}/common "${ED}"/${docdir}/html/ || die
-	rm -r "${ED}"/usr/share/doc/${PN} || die
+	mv -f "${ED}"/${docdir}/*.{html,png} "${ED}"/${docdir}/html/ || die "Failed to move HTML docs"
+	mv -f "${ED}"/usr/share/doc/${PN}/common "${ED}"/${docdir}/html/ || die "Failed to move HTML docs"
+	rm -rf "${ED}"/usr/share/doc/${PN} || die
+
+	dodoc ChangeLog NEWS
 }
