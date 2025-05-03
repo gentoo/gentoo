@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic toolchain-funcs
+inherit flag-o-matic autotools toolchain-funcs
 
 # Upstream maintains 3 release channels: https://xmlrpc-c.sourceforge.net/release.html
 # 1. Only the "Super Stable" series is released as a tarball
@@ -15,18 +15,17 @@ HOMEPAGE="https://xmlrpc-c.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tgz"
 
 LICENSE="BSD"
-SLOT="0/4.59"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
-IUSE="abyss +cgi +curl +cxx +libxml2 static-libs threads test"
+SLOT="0/4.54"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+IUSE="abyss +cgi +curl +cxx +libxml2 threads test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( abyss curl cxx )"
 
 RDEPEND="
-	dev-libs/openssl:=
 	sys-libs/ncurses:=
 	sys-libs/readline:=
 	curl? ( net-misc/curl )
-	libxml2? ( dev-libs/libxml2 )
+	libxml2? ( dev-libs/libxml2:= )
 "
 DEPEND="${RDEPEND}"
 
@@ -39,7 +38,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.51.06-pkg-config-libxml2.patch
 	"${FILESDIR}"/${PN}-1.51.06-pkg-config-openssl.patch
-	"${FILESDIR}"/${PN}-1.59.03-use-system-expat.patch
 )
 
 pkg_setup() {
@@ -47,8 +45,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	rm -R lib/expat/ || die
-
 	default
 
 	sed -i \
@@ -59,10 +55,10 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug #944182
-	append-cflags -std=gnu17
-
 	tc-export PKG_CONFIG
+
+	# xmlrpc-c uses std::auto_ptr which has been removed in C++17
+	append-cxxflags "-std=c++14"
 
 	econf \
 		--disable-libwww-client \
@@ -85,8 +81,6 @@ src_compile() {
 
 src_install() {
 	default
-
-	use static-libs || find "${D}" -type f -name \*.a -delete
 
 	# Tools building is broken in this release
 	#use tools && emake DESTDIR="${D}" -rC "${S}"/tools install
