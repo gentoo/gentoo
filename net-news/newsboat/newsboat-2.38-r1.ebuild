@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	>=dev-libs/json-c-0.11:=
 	>=dev-libs/stfl-0.21
 	>=net-misc/curl-7.32.0[ssl]
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/ncurses:=[unicode(+)]
 "
 # Depend on new enough OpenSSL/GnuTLS libs to avoid providing header files of
