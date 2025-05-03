@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE="gtk-doc +introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.34:2
-	>=dev-libs/libxml2-2.5:2
+	>=dev-libs/libxml2-2.5:2=
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
