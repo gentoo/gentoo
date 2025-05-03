@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/indexdata/yaz.git"
 else
 	SRC_URI="https://ftp.indexdata.com/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ppc ppc64 ~s390 ~sparc x86"
 fi
 
 LICENSE="BSD GPL-2"
@@ -22,7 +22,7 @@ IUSE="gnutls tcpd ziffy"
 
 RDEPEND="
 	dev-libs/icu:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 	sys-libs/readline:=
 	sys-libs/ncurses:=
@@ -39,6 +39,11 @@ BDEPEND="
 	>=dev-build/libtool-2
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/yaz-5.34.0-fix-atoi-header.patch
+	"${FILESDIR}"/yaz-5.34.0-fix-libxml2-2.12.patch
+)
 
 src_prepare() {
 	default
