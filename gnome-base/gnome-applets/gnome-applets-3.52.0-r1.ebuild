@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RDEPEND="
 	>=x11-libs/libnotify-0.7
 	>=sys-power/upower-0.99.8:=
 	>=x11-themes/adwaita-icon-theme-3.14.0
-	>=dev-libs/libxml2-2.5.0:2
+	>=dev-libs/libxml2-2.5.0:2=
 	>=dev-libs/libgweather-4.2.0:4=
 	>=gnome-extra/gucharmap-2.33.0:2.90
 	>=sys-auth/polkit-0.97
