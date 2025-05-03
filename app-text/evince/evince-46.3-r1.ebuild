@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,8 +11,8 @@ HOMEPAGE="https://apps.gnome.org/en/Evince/"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 # subslot = evd3.(suffix of libevdocument3)-evv3.(suffix of libevview3)
 SLOT="0/evd3.4-evv3.3"
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-solaris"
-IUSE="cups djvu dvi gstreamer gnome keyring gtk-doc +introspection postscript spell tiff xps"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+IUSE="cups djvu dvi gstreamer gnome keyring gtk-doc +introspection nautilus postscript spell tiff xps"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 # atk used in libview
@@ -21,7 +21,7 @@ DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.44.0:2
 	>=gui-libs/libhandy-1.5.0:1
-	>=dev-libs/libxml2-2.5:2
+	>=dev-libs/libxml2-2.5:2=
 	sys-libs/zlib:=
 	>=x11-libs/gdk-pixbuf-2.40:2
 	>=x11-libs/gtk+-3.22.0:3[cups?,introspection?]
@@ -41,6 +41,7 @@ DEPEND="
 	gnome? ( gnome-base/gnome-desktop:3= )
 	keyring? ( >=app-crypt/libsecret-0.5 )
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
+	nautilus? ( >=gnome-base/nautilus-3.28.0 <gnome-base/nautilus-42.20 )
 	postscript? ( >=app-text/libspectre-0.2:= )
 	spell? ( >=app-text/gspell-1.6.0:= )
 	tiff? ( >=media-libs/tiff-4.0:= )
@@ -76,7 +77,7 @@ src_configure() {
 		-Dviewer=true
 		-Dpreviewer=true
 		-Dthumbnailer=true
-		-Dnautilus=false
+		$(meson_use nautilus)
 
 		-Dcomics=enabled
 		$(meson_feature djvu)
