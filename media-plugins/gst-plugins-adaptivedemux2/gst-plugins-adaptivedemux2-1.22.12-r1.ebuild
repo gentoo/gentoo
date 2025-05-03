@@ -10,7 +10,7 @@ DESCRIPTION="Adaptive demuxer plugins for Gstreamer"
 KEYWORDS="amd64 arm64"
 
 RDEPEND="
-	>=dev-libs/libxml2-2.8[${MULTILIB_USEDEP}]
+	>=dev-libs/libxml2-2.8:=[${MULTILIB_USEDEP}]
 	dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
