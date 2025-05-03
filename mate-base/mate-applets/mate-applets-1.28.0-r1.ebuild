@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	>=dev-libs/dbus-glib-0.74
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libmateweather-1.28.0
-	>=dev-libs/libxml2-2.5:2
+	>=dev-libs/libxml2-2.5:2=
 	>=gnome-base/libgtop-2.12.0:2=
 	>=gnome-extra/gucharmap-3.0:2.90
 	>=mate-base/mate-panel-1.28.0
