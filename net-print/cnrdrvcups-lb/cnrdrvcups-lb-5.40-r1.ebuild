@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ MY_PV="${PV//\./}"
 
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/"
-SRC_URI="https://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNzY1ODM5&cmp=ABX&lang=EN -> linux-UFRII-drv-v${MY_PV}-m17n-${CANON_REL}.tar.gz"
+SRC_URI="https://gdlp01.c-wss.com/gds/${DL_ID}/linux-UFRII-drv-v${MY_PV}-uken-${CANON_REL}.tar.gz"
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
@@ -20,7 +20,7 @@ IUSE=""
 
 DEPEND="dev-libs/atk
 	dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	gnome-base/libglade:2.0
 	media-libs/jbigkit
 	media-libs/libjpeg-turbo
@@ -35,11 +35,11 @@ RDEPEND="${DEPEND}
 	!net-print/cndrvcups-lb"
 
 HTML_DOCS=(
-	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-m17n/Documents/uk_eng/README-ufr2-${PV//0}xUK.html
-	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-m17n/Documents/uk_eng/UsersGuide-ufr2-UK.html
+	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-uken/Documents/README-ufr2-${PV//0}xUK.html
+	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-uken/Documents/UsersGuide-ufr2-UK.html
 )
 
-S="${WORKDIR}/linux-UFRII-drv-v${MY_PV}-m17n/Sources"
+S="${WORKDIR}/linux-UFRII-drv-v${MY_PV}-uken/Sources"
 
 common_op() {
 	local i
@@ -81,8 +81,8 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	cd "${WORKDIR}/linux-UFRII-drv-v${MY_PV}-m17n/Sources/" || die
-	unpack ./${P}-1.05.tar.xz
+	cd "${WORKDIR}/linux-UFRII-drv-v${MY_PV}-uken/Sources/" || die
+	unpack ./${P}-1.tar.gz
 }
 
 src_prepare() {
@@ -128,7 +128,7 @@ src_install() {
 	driver_op emake DESTDIR="${D}" install COMMON_SUFFIX=2
 
 	insinto /usr/share/cups
-	doins "${S}"/cnrdrvcups-common-${PV}/Rule/canon-laser-printer.usb-quirks
+	doins "${S}"/cnrdrvcups-common-${PV}/Rule/canon-laser-printer_ufr2.usb-quirks
 
 	if use amd64; then
 		cd "${S}"/lib/libs64/intel/ || die "failed to switch into libs64"
