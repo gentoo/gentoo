@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/json-glib
 	>=app-arch/libarchive-3.0.0:=
 	net-libs/libsoup:3.0
-	>=dev-libs/libxml2-2.6.0
+	>=dev-libs/libxml2-2.6.0:=
 "
 # perl dep is for pod2man (manpages)
 DEPEND="${RDEPEND}"
