@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test ) test"
 
 RDEPEND="
 	dev-libs/icu:=
-	>=dev-libs/libxml2-2.6.17
+	>=dev-libs/libxml2-2.6.17:=
 	dev-libs/utfcpp
 	>=sci-misc/lttoolbox-3.7.1:=
 	virtual/libiconv
