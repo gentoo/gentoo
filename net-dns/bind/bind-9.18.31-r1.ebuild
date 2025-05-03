@@ -246,11 +246,11 @@ pkg_config() {
 	mkdir -m 0750 -p "${CHROOT}" || die
 	mkdir -m 0755 -p "${CHROOT}"/{dev,etc,var/log,run} || die
 	mkdir -m 0750 -p "${CHROOT}"/etc/bind || die
-	mkdir -m 0770 -p "${CHROOT}"/var/{bind,log/named} "${CHROOT}"/run/named/ || die
+	mkdir -m 0770 -p "${CHROOT}"/var/{bind,log/named,run/named} "${CHROOT}"/run/named/ || die
 
 	chown root:named \
 		"${CHROOT}" \
-		"${CHROOT}"/var/{bind,log/named} \
+		"${CHROOT}"/var/{bind,log/named,run/named} \
 		"${CHROOT}"/run/named/ \
 		"${CHROOT}"/etc/bind \
 		|| die
