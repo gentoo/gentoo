@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ RDEPEND="
 	>=dev-libs/json-glib-0.16
 	>=app-crypt/libsecret-0.5
 	>=net-libs/libsoup-3.0:3.0
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=net-libs/rest-0.9.0:1.0
 	kerberos? (
 		>=app-crypt/gcr-4.1.0:4=[gtk]
