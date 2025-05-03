@@ -55,7 +55,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:0=
 	>=media-libs/libepoxy-1.5.4[egl(+)]
 	>=net-libs/libsoup-3.0.8:3.0[introspection?]
-	>=dev-libs/libxml2-2.8.0:2
+	>=dev-libs/libxml2-2.8.0:2=
 	>=media-libs/libpng-1.4:0=
 	dev-db/sqlite:3
 	sys-libs/zlib:0
