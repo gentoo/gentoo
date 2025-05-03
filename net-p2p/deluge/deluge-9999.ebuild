@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.deluge-torrent.org/${PN}"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -127,7 +127,7 @@ python_install_all() {
 	if use webinterface; then
 		newinitd "${FILESDIR}/deluge-web.init-2" deluge-web
 		newconfd "${FILESDIR}/deluge-web.conf" deluge-web
-		systemd_newunit "${FILESDIR}/deluge-web.service-3" deluge-web.service
+		systemd_newunit "${FILESDIR}/deluge-web.service-4" deluge-web.service
 		systemd_install_serviced "${FILESDIR}/deluge-web.service.conf"
 	else
 		rm -r "${D}/$(python_get_sitedir)/deluge/ui/web/" || die
@@ -152,7 +152,9 @@ pkg_postinst() {
 	elog
 	elog "To start the daemon either run 'deluged' as user"
 	elog "or modify /etc/conf.d/deluged and run"
-	elog "/etc/init.d/deluged start as root"
+	elog "'/etc/init.d/deluged start' as root if you use OpenRC"
+	elog "or"
+	elog "'systemctl start deluged.service' as root if you use systemd"
 	elog "You can still use deluge the old way"
 	elog
 	elog "Systemd unit files for deluged and deluge-web no longer source"
