@@ -18,7 +18,7 @@ RDEPEND="sys-apps/pcsc-lite
 	gtk? (
 		x11-libs/gdk-pixbuf[jpeg]
 		x11-libs/gtk+:3
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		net-misc/curl[ssl]
 		net-libs/libproxy
 		app-crypt/pinentry[gtk]
