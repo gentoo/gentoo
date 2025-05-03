@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ IUSE="upower"
 DEPEND="
 	>=dev-libs/glib-2.64.0
 	>=dev-libs/json-c-0.13.1:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=net-libs/libsoup-2.42:2.4[ssl]
 	>=x11-libs/gtk+-3.22.0
 	>=xfce-base/libxfce4ui-4.14.0:=
