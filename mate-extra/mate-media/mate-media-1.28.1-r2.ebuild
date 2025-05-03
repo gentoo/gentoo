@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SLOT="0"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.50:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=mate-base/mate-panel-1.28.0
 	>=mate-base/mate-desktop-$(ver_cut 1-2)
 	|| (
