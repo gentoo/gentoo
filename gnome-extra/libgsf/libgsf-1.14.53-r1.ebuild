@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.36:2
-	>=dev-libs/libxml2-2.4.16:2
+	>=dev-libs/libxml2-2.4.16:2=
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	gtk? (
