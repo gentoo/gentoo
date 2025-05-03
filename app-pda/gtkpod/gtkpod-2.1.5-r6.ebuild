@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ REQUIRED_USE="cdr? ( gstreamer )"
 COMMON_DEPEND="
 	>=dev-libs/gdl-3.6:3
 	>=dev-libs/glib-2.31:2
-	>=dev-libs/libxml2-2.7.7:2
+	>=dev-libs/libxml2-2.7.7:2=
 	>=dev-util/anjuta-3.6
 	>=media-libs/libgpod-0.8.2
 	>=media-libs/libid3tag-0.15:=
