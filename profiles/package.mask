@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-05-03)
+# Not actively maintained in ::gentoo.  Last bumped a year ago.
+# Still on EAPI 7, no Python 3.13 support, does not work with new
+# dev-lang/swig.  Lots of bugs open.
+# Removal on 2025-06-02.  Bug #950475, #952653.
+sci-chemistry/modeller
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-03)
 # Dead upstream since 2014, depends on Qt5. Bug #949079
 # Removal  on 2025-05-31
