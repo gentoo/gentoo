@@ -23,7 +23,7 @@ RDEPEND="
 	net-libs/libhubbub
 	xml? (
 		expat? ( dev-libs/expat )
-		!expat? ( dev-libs/libxml2 )
+		!expat? ( dev-libs/libxml2:= )
 	)"
 DEPEND="${RDEPEND}
 	test? (
