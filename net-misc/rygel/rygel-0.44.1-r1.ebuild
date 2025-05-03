@@ -20,7 +20,7 @@ DEPEND="
 	>=dev-libs/libgee-0.8:0.8=
 	>=net-libs/gssdp-1.5.0:1.6=[vala]
 	>=dev-libs/glib-2.62.0:2
-	>=dev-libs/libxml2-2.7:2
+	>=dev-libs/libxml2-2.7:2=
 	>=net-libs/gupnp-av-0.14.1:=[vala]
 	>=media-libs/gupnp-dlna-0.9.4:2.0=
 	>=net-libs/libsoup-3.2.0:3.0
