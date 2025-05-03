@@ -44,7 +44,7 @@ COMMON_DEPEND="
 		net-libs/gnutls:=
 		net-nds/openldap:=
 	)
-	libxml2? ( dev-libs/libxml2 )
+	libxml2? ( dev-libs/libxml2:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
@@ -97,7 +97,7 @@ DEPEND="${COMMON_DEPEND}
 			net-libs/gnutls[static-libs]
 			net-nds/openldap[static-libs]
 		)
-		libxml2? ( dev-libs/libxml2[static-libs] )
+		libxml2? ( dev-libs/libxml2:=[static-libs] )
 		mysql? ( dev-db/mysql-connector-c[static-libs] )
 		odbc? ( dev-db/unixODBC[static-libs] )
 		postgres? ( dev-db/postgresql:*[static-libs] )
