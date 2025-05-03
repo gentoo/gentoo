@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-libs/libical-3.0.5:0=[glib]
 	>=dev-libs/json-glib-1.0.4
 	>=dev-libs/libmspack-0.4
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=gnome-extra/evolution-data-server-${PV}:0=
 	>=mail-client/evolution-${PV}:2.0
 	>=net-libs/libsoup-3.0:3.0
