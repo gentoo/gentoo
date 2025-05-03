@@ -49,7 +49,7 @@ DEPEND="
 
 	>=app-accessibility/at-spi2-core-2.46:2[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	x11-libs/libX11
 
 	>=media-libs/libpulse-2[glib]
