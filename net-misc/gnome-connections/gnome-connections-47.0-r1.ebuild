@@ -21,7 +21,7 @@ DEPEND="
 	>=sys-fs/fuse-3.9.1
 	>=net-libs/gtk-vnc-0.4.4[pulseaudio,vala]
 	>=gui-libs/libhandy-1.6.0:1[vala]
-	>=dev-libs/libxml2-2.7.8
+	>=dev-libs/libxml2-2.7.8:=
 	app-crypt/libsecret[vala]
 
 	>=net-misc/freerdp-2.0.0:=
