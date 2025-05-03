@@ -1,4 +1,4 @@
-# Copyright 2010-2024 Gentoo Authors
+# Copyright 2010-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Todo: google-breakpad?
@@ -35,7 +35,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	${LUA_DEPS}
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/xerces-c[icu]
 	media-libs/fontconfig
 	media-libs/freetype
