@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	~media-libs/avidemux-core-${PV}:${SLOT}[nvenc?,vdpau?]
 	~media-video/avidemux-${PV}:${SLOT}[opengl?,gui?]
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	media-libs/a52dec
 	media-libs/libass:0=
 	media-libs/libmad
