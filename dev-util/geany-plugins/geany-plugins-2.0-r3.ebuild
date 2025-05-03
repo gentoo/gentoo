@@ -35,7 +35,7 @@ COMMON_DEPEND="
 		app-text/discount:=
 		net-libs/webkit-gtk:4.1
 		)
-	pretty-printer? ( dev-libs/libxml2:2 )
+	pretty-printer? ( dev-libs/libxml2:2= )
 	scope? ( x11-libs/vte:2.91 )
 	webhelper? ( net-libs/webkit-gtk:4.1 )
 	workbench? ( dev-libs/libgit2:= )
