@@ -39,7 +39,7 @@ COMMON_DEPEND_DEFAULT="
 	app-arch/xz-utils
 	app-arch/zstd
 	dev-libs/libpcre2:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	net-libs/libtirpc:=
 	sys-libs/libcap-ng
 	sys-libs/ncurses:=
