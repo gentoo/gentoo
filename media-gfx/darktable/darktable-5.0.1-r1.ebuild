@@ -60,7 +60,7 @@ BDEPEND="dev-util/intltool
 DEPEND="dev-db/sqlite:3
 	dev-libs/icu:=
 	dev-libs/json-glib
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=dev-libs/pugixml-1.8:=
 	gnome-base/librsvg:2
 	>=media-gfx/exiv2-0.25-r2:=[xmp]
