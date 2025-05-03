@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,20 +6,21 @@ EAPI=8
 inherit gnome2 meson readme.gentoo-r1
 
 DESCRIPTION="Desktop note-taking application"
-HOMEPAGE="https://wiki.gnome.org/Apps/Gnote"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnote"
 
 LICENSE="GPL-3+ FDL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/glib-2.74:2[dbus]
 	>=dev-cpp/glibmm-2.74:2.68
-	>=dev-cpp/gtkmm-4.0.0:4.0
+	>=dev-cpp/gtkmm-4.10.0:4.0
+	>=gui-libs/libadwaita-1
 	>=app-crypt/libsecret-0.8
-	>=dev-libs/libxml2-2:2
+	>=dev-libs/libxml2-2:2=
 	dev-libs/libxslt
 	>=sys-apps/util-linux-2.16
 	test? ( dev-libs/unittest++ )
@@ -37,7 +38,9 @@ src_prepare() {
 
 	# Build system requires UnitTest++ >=1.5.1, but the .pc file doesn't
 	# specify a version
+	# https://gitlab.gnome.org/GNOME/gnote/-/issues/199
 	sed -i -e "/UnitTest++/ s/version: [^,]*,//" meson.build || die
+
 	if ! use test; then
 		sed -i -e "/unit_test_pp/ s/ = .*/ = disabler()/" meson.build || die
 	fi
