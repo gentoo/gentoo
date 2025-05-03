@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="nls"
 RDEPEND="
 	dev-libs/gdl:3
 	dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=media-libs/clutter-gtk-1.4.0:1.0
 	>=media-libs/libchamplain-0.12.3:0.12[gtk]
 	x11-libs/gtk+:3"
