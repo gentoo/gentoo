@@ -16,7 +16,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/expat
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	curl? ( net-misc/curl[ssl] )
 	doc? (
 		app-text/docbook-xsl-stylesheets
