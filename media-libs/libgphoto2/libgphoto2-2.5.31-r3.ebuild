@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO
@@ -51,7 +51,7 @@ REQUIRED_USE="|| ( ${IUSE_CAMERAS[@]/#/cameras_} )"
 # libgphoto2 actually links to libltdl
 RDEPEND="
 	acct-group/plugdev
-	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
+	>=dev-libs/libxml2-2.9.1-r4:2=[${MULTILIB_USEDEP}]
 	net-misc/curl[${MULTILIB_USEDEP}]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	>=virtual/libusb-1-r1:1[${MULTILIB_USEDEP}]
