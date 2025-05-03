@@ -7,11 +7,11 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit elisp-common gnome.org meson python-single-r1 readme.gentoo-r1
 
 DESCRIPTION="GTK+ Documentation Generator"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gtk-doc"
+HOMEPAGE="https://wiki.gnome.org/DocumentationProject/GtkDoc"
 
-LICENSE="GPL-2+ FDL-1.1"
+LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 
 IUSE="emacs test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -21,7 +21,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.38:2
 	dev-libs/libxslt
-	>=dev-libs/libxml2-2.3.6:2
+	>=dev-libs/libxml2-2.3.6:2=
 	~app-text/docbook-xml-dtd-4.3
 	app-text/docbook-xsl-stylesheets
 	~app-text/docbook-sgml-dtd-3.0
@@ -48,8 +48,7 @@ PATCHES=(
 	# Remove global Emacs keybindings, bug #184588
 	"${FILESDIR}"/${PN}-1.8-emacs-keybindings.patch
 
-	# https://gitlab.gnome.org/GNOME/gtk-doc/-/issues/150
-	"${FILESDIR}"/${PN}-1.34.0-mkhtml-test.patch
+	"${FILESDIR}"/${P}-gtkdocize-don-t-backslash-escape-regular-characters-.patch
 )
 
 pkg_setup() {
