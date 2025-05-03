@@ -17,7 +17,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 	S="${WORKDIR}/${P}"
-	KEYWORDS="amd64 ~ppc ppc64 x86"
+	KEYWORDS="amd64 ppc ppc64 x86"
 fi
 
 LICENSE="GPL-2"
@@ -36,7 +36,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/hyphen
 	dev-libs/icu:0=
 	dev-libs/librevenge
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[-gles2-only,X]
 	dev-qt/qtnetwork:5
@@ -83,7 +83,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${PN}-1.6.1-findhyphen.patch
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
-	"${FILESDIR}"/${P}-poppler-25.06.0.patch # 1.6 branch, in 1.6.5
+	"${FILESDIR}"/${P}-poppler-25.02.0.patch # Version16x branch
 )
 
 src_prepare() {
