@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	>=x11-libs/gtk+-2.12:2
-	>=dev-libs/libxml2-2.5:2
+	>=dev-libs/libxml2-2.5:2=
 	>=dev-libs/glib-2.14:2
 "
 DEPEND="${RDEPEND}"
