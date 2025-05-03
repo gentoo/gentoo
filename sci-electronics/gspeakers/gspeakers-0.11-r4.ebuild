@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 RDEPEND="
 	dev-cpp/gtkmm:2.4
 	>=dev-libs/libsigc++-2.6:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	|| (
 		sci-electronics/gnucap
 		sci-electronics/ngspice
