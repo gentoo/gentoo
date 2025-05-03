@@ -60,7 +60,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/double-conversion:=
 	dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libzip:=
 	media-gfx/opencsg:=
 	media-libs/fontconfig
