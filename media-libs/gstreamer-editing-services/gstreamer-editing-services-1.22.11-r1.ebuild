@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit meson python-r1
 
@@ -23,7 +23,7 @@ RESTRICT="test"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.40.0:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=media-libs/gstreamer-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-bad-${PV}:1.0[introspection?]

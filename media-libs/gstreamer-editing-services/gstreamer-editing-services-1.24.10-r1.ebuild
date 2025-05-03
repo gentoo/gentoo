@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit meson python-r1
 
@@ -13,7 +13,7 @@ S="${WORKDIR}"/${P/gstreamer/gst}
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="+introspection test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -23,7 +23,7 @@ RESTRICT="test"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.40.0:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=media-libs/gstreamer-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-bad-${PV}:1.0[introspection?]
