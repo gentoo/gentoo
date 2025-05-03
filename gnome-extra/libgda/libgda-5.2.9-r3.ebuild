@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ REQUIRED_USE="
 RDEPEND="
 	app-text/iso-codes
 	>=dev-libs/glib-2.32:2
-	>=dev-libs/libxml2-2
+	>=dev-libs/libxml2-2:=
 	dev-libs/libxslt
 	sys-libs/readline:0=
 	sys-libs/ncurses:0=
