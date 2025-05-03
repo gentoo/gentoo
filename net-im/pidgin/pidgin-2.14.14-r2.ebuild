@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 # rdepend on python if dbus enabled. But it is possible to separate this dep.
 RDEPEND="
 	>=dev-libs/glib-2.16
-	>=dev-libs/libxml2-2.6.18
+	>=dev-libs/libxml2-2.6.18:=
 	dbus? (
 		>=dev-libs/dbus-glib-0.71
 		>=sys-apps/dbus-0.90
