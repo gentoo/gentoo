@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-libs/libxml2-2.9.1-r4[abi_x86_32(-)]
+	>=dev-libs/libxml2-2.9.1-r4:=[abi_x86_32(-)]
 	>=gnome-base/libglade-2.4:2.0
 	>=net-print/cups-1.1.17
 	~net-print/cndrvcups-common-lb-${PV}
