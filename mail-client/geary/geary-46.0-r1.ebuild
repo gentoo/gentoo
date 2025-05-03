@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ DEPEND="
 	>=app-crypt/libsecret-0.11
 	net-libs/libsoup:3.0
 	dev-libs/snowball-stemmer:=
-	>=dev-libs/libxml2-2.7.8:2
+	>=dev-libs/libxml2-2.7.8:2=
 	ytnef? ( >=net-mail/ytnef-1.9.3 )
 "
 RDEPEND="${DEPEND}
