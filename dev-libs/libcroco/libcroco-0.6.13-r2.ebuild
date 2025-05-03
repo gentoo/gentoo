@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
-	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
+	>=dev-libs/libxml2-2.9.1-r4:=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
