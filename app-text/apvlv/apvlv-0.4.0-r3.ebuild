@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	app-text/ebook-tools
 	>=app-text/poppler-0.5.0:=[cairo,xpdf-headers(+)]
 	dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	net-libs/webkit-gtk:4.1=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
