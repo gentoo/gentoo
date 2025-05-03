@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit webapp
 
@@ -9,18 +9,19 @@ DESCRIPTION="Lightweight CalDAV+CardDAV server"
 HOMEPAGE="https://sabre.io/baikal/"
 SRC_URI="https://github.com/sabre-io/Baikal/releases/download/${PV}/${P}.zip"
 
+S=${WORKDIR}/${PN}
 LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~ppc64 ~riscv"
 IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
 DEPEND="app-arch/unzip"
-RDEPEND=">=dev-lang/php-8.1[ctype,filter,json(+),pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?]
+RDEPEND="
+	>=dev-lang/php-8.1[ctype,filter,json(+),pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?]
 	mysql? ( virtual/mysql )
 	sqlite? ( dev-db/sqlite )
-	virtual/httpd-php"
-
-S=${WORKDIR}/${PN}
+	virtual/httpd-php
+"
 
 src_install() {
 	webapp_src_preinst
