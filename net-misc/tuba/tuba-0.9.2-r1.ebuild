@@ -28,7 +28,7 @@ DEPEND="
 	dev-libs/icu:=
 	>=dev-libs/json-glib-1.4.4[introspection]
 	>=dev-libs/libgee-0.8.5:0.8[introspection]
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=gui-libs/gtk-4.13.4:4[gstreamer,introspection]
 	>=gui-libs/libadwaita-1.6:1[introspection,vala]
 	>=gui-libs/gtksourceview-5.6.0:5[introspection,vala]
