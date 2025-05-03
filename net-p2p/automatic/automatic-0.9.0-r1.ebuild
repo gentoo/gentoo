@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ PROPERTIES="test_network"
 
 RDEPEND="acct-group/automatic
 	acct-user/automatic
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libpcre:3
 	net-misc/curl"
 DEPEND="${RDEPEND}"
