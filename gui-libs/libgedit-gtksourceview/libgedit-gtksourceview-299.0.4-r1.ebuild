@@ -7,17 +7,18 @@ inherit gnome.org meson virtualx xdg
 
 DESCRIPTION="Gedit Technology - Source code editing widget"
 HOMEPAGE="https://gitlab.gnome.org/World/gedit/libgedit-gtksourceview"
+SRC_URI="https://gedit-technology.net/tarballs/libgedit-gtksourceview/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="300"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
-IUSE="gtk-doc test"
+IUSE="gtk-doc"
 
 RDEPEND="
 	>=dev-libs/glib-2.74:2
 	>=x11-libs/gtk+-3.20:3[introspection]
-	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libxml2-2.6:2=
 
 	dev-libs/gobject-introspection:=
 "
@@ -36,7 +37,6 @@ src_configure() {
 	local emesonargs=(
 		-Dgobject_introspection=true
 		$(meson_use gtk-doc gtk_doc)
-		$(meson_use test tests)
 	)
 	meson_src_configure
 }
