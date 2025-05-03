@@ -33,7 +33,7 @@ RDEPEND="
 	dev-games/physfs
 	dev-libs/libpcre2:=
 	dev-libs/libunibreak:=
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libyaml
 	dev-libs/nativefiledialog-extended
 	media-libs/freetype:2
