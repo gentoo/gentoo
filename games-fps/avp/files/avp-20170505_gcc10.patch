@@ -1,0 +1,25 @@
+From 7ddd0678181a165b07c7803b1f2b08554ea22557 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Wed, 11 Nov 2020 01:18:16 +0300
+Subject: [PATCH] Fix compilation with -fno-common
+
+Fix compilation with recent GCC10.
+---
+ src/stubs.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/stubs.c b/src/stubs.c
+index 8733c41..f1c05d5 100644
+--- a/src/stubs.c
++++ b/src/stubs.c
+@@ -109,7 +109,6 @@ void ReloadImageIntoD3DImmediateSurface(IMAGEHEADER* iheader)
+ int NumberOfLandscapePolygons;
+ int FMVParticleColour;
+ int WireFrameMode;
+-int WaterFallBase;
+ 
+ void InitDrawTest()
+ {
+-- 
+2.26.2
+
