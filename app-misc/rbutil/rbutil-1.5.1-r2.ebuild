@@ -19,7 +19,7 @@ RDEPEND="
 	app-arch/bzip2:=
 	>=dev-libs/quazip-1.3-r2:=[qt6(+)]
 	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[gui,network,widgets]
+	dev-qt/qtbase:6[gui,network,ssl,widgets]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtsvg:6
 	media-libs/speex
