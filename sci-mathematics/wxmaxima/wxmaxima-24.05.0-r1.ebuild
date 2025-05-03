@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ IUSE="test webkit"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	x11-libs/wxGTK:${WX_GTK_VER}[webkit?]"
 RDEPEND="${DEPEND}
 	media-fonts/jsmath
