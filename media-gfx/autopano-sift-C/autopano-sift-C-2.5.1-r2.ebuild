@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 DEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpano13:=
 	media-libs/libpng:=
