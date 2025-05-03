@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2025-05-05)
+# Masked for testing
+>=dev-libs/libxml2-2.14
+dev-libs/libxml2-compat
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-04)
 # Several open bugs, pending bump since 2020, fails to fetch since 2022.
 # If anyone is here to fix these things, then please make upstream port
