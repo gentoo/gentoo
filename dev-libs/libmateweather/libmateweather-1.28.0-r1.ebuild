@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ SLOT="0"
 IUSE="debug"
 
 COMMON_DEPEND=">=dev-libs/glib-2.56:2
-	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libxml2-2.6:2=
 	>=net-libs/libsoup-2.54:2.4
 	>=sys-libs/timezone-data-2010k:0
 	x11-libs/gdk-pixbuf:2
