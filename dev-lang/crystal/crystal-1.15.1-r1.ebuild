@@ -46,7 +46,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libyaml
 "
 
