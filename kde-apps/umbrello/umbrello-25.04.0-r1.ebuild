@@ -26,7 +26,7 @@ KEYWORDS="amd64 arm64 ~x86"
 # 	)
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
