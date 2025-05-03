@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	${LUA_DEPS}
 	app-text/poppler[cairo]
 	>=dev-libs/glib-2.32.0
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.0.1:=
 	>=gnome-base/librsvg-2.40
 	>=media-libs/portaudio-12[cxx]
