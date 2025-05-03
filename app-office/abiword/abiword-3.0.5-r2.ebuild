@@ -45,7 +45,7 @@ RDEPEND="
 	map? ( >=media-libs/libchamplain-0.12:0.12[gtk] )
 	plugins? (
 		collab? (
-			>=dev-libs/libxml2-2.4:2
+			>=dev-libs/libxml2-2.4:2=
 			>=net-libs/loudmouth-1
 			net-libs/libsoup:2.4
 			net-libs/gnutls:=
