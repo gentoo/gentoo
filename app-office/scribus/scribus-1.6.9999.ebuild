@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/hyphen
 	dev-libs/icu:0=
 	dev-libs/librevenge
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[-gles2-only,X]
 	dev-qt/qtnetwork:5
