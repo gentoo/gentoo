@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.52.0:2[dbus]
 	>=dev-libs/gobject-introspection-1.29.15:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=gnome-extra/cinnamon-desktop-6.2:0=
 	>=gnome-extra/cinnamon-menus-6.2
 	>=gnome-extra/cjs-6.2[cairo]

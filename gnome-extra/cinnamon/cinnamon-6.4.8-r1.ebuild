@@ -24,7 +24,7 @@ DEPEND="
 	>=app-crypt/gcr-3.7.5:0/1
 	>=dev-libs/glib-2.52.0:2[dbus]
 	>=dev-libs/gobject-introspection-1.29.15:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=gnome-extra/cinnamon-desktop-6.4:0=
 	>=gnome-extra/cinnamon-menus-6.4
 	>=gnome-extra/cjs-6.4[cairo]
