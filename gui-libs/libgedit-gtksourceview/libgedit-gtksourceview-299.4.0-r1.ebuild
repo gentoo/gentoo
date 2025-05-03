@@ -17,7 +17,7 @@ IUSE="gtk-doc test"
 RDEPEND="
 	>=dev-libs/glib-2.74:2
 	>=x11-libs/gtk+-3.20:3[introspection]
-	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libxml2-2.6:2=
 
 	dev-libs/gobject-introspection:=
 "
