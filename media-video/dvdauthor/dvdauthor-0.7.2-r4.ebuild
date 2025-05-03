@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE="graphicsmagick +imagemagick"
 
 RDEPEND=">=dev-libs/fribidi-0.19.2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=media-libs/freetype-2
 	media-libs/libdvdread
 	media-libs/libpng:0=
