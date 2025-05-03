@@ -4,29 +4,28 @@
 EAPI=8
 
 ECM_QTHELP="false"
-PVCUT=$(ver_cut 1-2)
 inherit ecm frameworks.kde.org
 
 DESCRIPTION="Tools to generate documentation in various formats from DocBook files"
 
 LICENSE="MIT"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ppc64 ~riscv ~x86"
 IUSE="nls"
 
-BDEPEND="
-	dev-lang/perl
-	dev-perl/URI
-	nls? ( >=kde-frameworks/ki18n-${PVCUT}:5 )
-"
 DEPEND="
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	app-text/sgml-common
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
-	=kde-frameworks/karchive-${PVCUT}*:5
+	=kde-frameworks/karchive-${KDE_CATV}*:6
 "
 RDEPEND="${DEPEND}"
+BDEPEND="
+	dev-lang/perl
+	dev-perl/URI
+	nls? ( >=kde-frameworks/ki18n-${KDE_CATV}:6 )
+"
 
 CMAKE_SKIP_TESTS=(
 	# bug 665622
@@ -37,7 +36,7 @@ PATCHES=( "${FILESDIR}/${PN}-5.54.0-gentoo-docbundledir.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package nls KF5I18n)
+		$(cmake_use_find_package nls KF6I18n)
 	)
 
 	ecm_src_configure
