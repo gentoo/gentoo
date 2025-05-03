@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:=
 	net-misc/curl
 	sys-libs/ncurses:=[unicode(+)]
