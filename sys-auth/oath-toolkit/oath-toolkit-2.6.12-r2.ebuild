@@ -16,7 +16,7 @@ IUSE="pam static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/xmlsec:=
 	pam? ( sys-libs/pam )
 "
