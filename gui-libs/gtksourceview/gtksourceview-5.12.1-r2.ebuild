@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.72:2
 	>=gui-libs/gtk-4.6:4[introspection?]
-	>=dev-libs/libxml2-2.6:2
+	>=dev-libs/libxml2-2.6:2=
 	introspection? ( >=dev-libs/gobject-introspection-1.70.0:= )
 	>=dev-libs/fribidi-0.19.7
 	media-libs/fontconfig
