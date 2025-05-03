@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>mark@harmstone.com</email>
+		<name>Mark Harmstone</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/maharmstone/ntfs2btrfs/issues</bugs-to>
+		<remote-id type="github">maharmstone/ntfs2btrfs</remote-id>
+	</upstream>
+</pkgmetadata>
