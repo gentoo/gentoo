@@ -21,7 +21,7 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 	!libffi? ( dev-libs/ffcall
 		gnustep-base/gnustep-make[-native-exceptions] )
 	libffi? ( dev-libs/libffi:= )
-	>=dev-libs/libxml2-2.6
+	>=dev-libs/libxml2-2.6:=
 	>=dev-libs/libxslt-1.1
 	>=dev-libs/gmp-4.1:=
 	>=sys-libs/zlib-1.2
