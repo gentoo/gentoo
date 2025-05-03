@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.51.2:2
 	>=net-libs/libsoup-3.0.0:3.0
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	zeroconf? ( net-dns/avahi[dbus] )
 
 	!net-libs/phodav:2.0
