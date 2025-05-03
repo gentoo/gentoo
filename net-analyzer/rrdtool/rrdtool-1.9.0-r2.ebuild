@@ -40,7 +40,7 @@ PDEPEND="ruby? ( ~dev-ruby/rrdtool-bindings-${PV} )"
 
 RDEPEND="
 	dev-libs/glib:2[static-libs(+)?]
-	dev-libs/libxml2:2[static-libs(+)?]
+	dev-libs/libxml2:2=[static-libs(+)?]
 	dbi? ( dev-db/libdbi[static-libs(+)?] )
 	graph? (
 		media-libs/libpng:0=[static-libs(+)?]
