@@ -8,6 +8,6 @@
 	<upstream>
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=krusader</bugs-to>
 		<remote-id type="cpe">cpe:/a:krusader:krusader</remote-id>
-		<remote-id type="kde-invent">kde/krusader</remote-id>
+		<remote-id type="kde-invent">utilities/krusader</remote-id>
 	</upstream>
 </pkgmetadata>
