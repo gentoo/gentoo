@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
 
-DEPEND="dev-libs/libxml2:2"
+DEPEND="dev-libs/libxml2:2="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
