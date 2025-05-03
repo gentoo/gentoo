@@ -1,0 +1,22 @@
+From 54c65164840777326bbb83517568e38a128122ef Mon Sep 17 00:00:00 2001
+From: Rick van Schijndel <rol3517@gmail.com>
+Date: Sat, 27 Feb 2021 11:47:09 +0100
+Subject: [PATCH] common_make_rules: use  instead of the native ar command
+
+
+diff --git a/config/common_make_rules b/config/common_make_rules
+index 9dfe994..1a45b43 100644
+--- a/config/common_make_rules
++++ b/config/common_make_rules
+@@ -122,7 +122,7 @@ $(LIBDIR)/%.so: $(LIBDIR)/%.shared.a
+ 	@ echo making $@
+ 	@ rm -rf shared_os && mkdir shared_os
+ 	@ rm -f $@ $@.${PROJECT_VERSION} $@.${PROJECT_SHLIB_VERSION} 
+-	@ (cd shared_os && ar x ../$<)
++	@ (cd shared_os && $(AR) x ../$<)
+ 	@ (cd shared_os && $(CC) -shared -Wl,-soname,`basename $@`.${PROJECT_SHLIB_VERSION} -o ../$@.${PROJECT_VERSION} *.os $(LDFLAGS))
+ 	@ (cd $(LIBDIR) && ln -s `basename $@.${PROJECT_VERSION}` `basename $@.${PROJECT_SHLIB_VERSION}` )
+ 	@ (cd $(LIBDIR) && ln -s `basename $@.${PROJECT_SHLIB_VERSION}` `basename $@` )
+-- 
+2.45.2
+
