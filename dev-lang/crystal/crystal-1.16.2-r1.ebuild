@@ -33,6 +33,8 @@ DEPEND="
 	dev-libs/libatomic_ops:=
 	dev-libs/libevent:=
 	dev-libs/libpcre2:=[unicode]
+	dev-libs/libxml2:=
+	dev-libs/libyaml
 	dev-libs/pcl:=
 	$(llvm_gen_dep '
 		llvm-core/llvm:${LLVM_SLOT}=
@@ -44,11 +46,7 @@ DEPEND="
 		sys-libs/libunwind:=
 	)
 "
-RDEPEND="
-	${DEPEND}
-	dev-libs/libxml2:=
-	dev-libs/libyaml
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.27.0-gentoo-tests-long-unix.patch"
