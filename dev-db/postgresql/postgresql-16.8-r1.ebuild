@@ -49,7 +49,7 @@ readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
-xml? ( dev-libs/libxml2 dev-libs/libxslt )
+xml? ( dev-libs/libxml2:= dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
 zstd? ( app-arch/zstd )
 "
@@ -86,18 +86,6 @@ RDEPEND="${CDEPEND}
 selinux? ( sec-policy/selinux-postgresql )
 "
 
-# Openjade, docbook, XML, and XSLT are needed to generate manpages and
-# any documentation that may be elected.
-BDEPEND="
-app-text/openjade
-app-text/docbook-dsssl-stylesheets
-app-text/docbook-sgml-dtd:4.5
-app-text/docbook-xml-dtd:4.5
-app-text/docbook-xsl-stylesheets
-dev-libs/libxml2
-dev-libs/libxslt
-"
-
 pkg_setup() {
 	use llvm && llvm-r1_pkg_setup
 
@@ -116,7 +104,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || eapply "${FILESDIR}/${PN}-17.0-no-server.patch"
+	use server || eapply "${FILESDIR}/${PN}-15_beta3-no-server.patch"
 
 	if use pam ; then
 		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -129,10 +117,6 @@ src_prepare() {
 
 src_configure() {
 	lto-guarantee-fat
-
-	# Fails to build with C23, fallback to the old default in < GCC 15
-	# for now: https://marc.info/?l=pgsql-bugs&m=173185132906874&w=2
-	append-cflags -std=gnu17
 
 	case ${CHOST} in
 		*-darwin*|*-solaris*)
@@ -191,14 +175,13 @@ src_configure() {
 src_compile() {
 	emake
 	emake -C contrib
-	emake -C doc
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
 	emake DESTDIR="${D}" install -C contrib
 
-	dodoc HISTORY
+	dodoc README HISTORY
 
 	# man pages are already built, but if we have the target make them,
 	# they'll be generated from source before being installed so we
