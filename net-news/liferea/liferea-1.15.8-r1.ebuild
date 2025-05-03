@@ -23,7 +23,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/gobject-introspection
 	dev-libs/json-glib
 	dev-libs/libpeas:0[gtk,python,${PYTHON_SINGLE_USEDEP}]
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	gnome-base/gsettings-desktop-schemas
 	net-libs/libsoup:3.0
