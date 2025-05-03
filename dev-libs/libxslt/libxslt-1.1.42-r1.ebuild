@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Note: Please bump this in sync with dev-libs/libxml2.
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit flag-o-matic python-r1 multilib-minimal
+inherit python-r1 multilib-minimal
 
 DESCRIPTION="XSLT libraries and tools"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libxslt"
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	inherit libtool gnome.org
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="MIT"
@@ -25,9 +25,12 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND=">=virtual/pkgconfig-1"
 RDEPEND="
-	<dev-libs/libxml2-2.13:2[${MULTILIB_USEDEP}]
-	crypt? ( >=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}] )
-	python? ( ${PYTHON_DEPS} )
+	>=dev-libs/libxml2-2.13:2=[${MULTILIB_USEDEP}]
+	crypt? ( >=dev-libs/libgcrypt-1.5.3:=[${MULTILIB_USEDEP}] )
+	python? (
+		${PYTHON_DEPS}
+		>=dev-libs/libxml2-2.13:2=[${MULTILIB_USEDEP},python,${PYTHON_USEDEP}]
+	)
 "
 DEPEND="${RDEPEND}"
 
@@ -37,10 +40,6 @@ MULTILIB_CHOST_TOOLS=(
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libxslt/xsltconfig.h
-)
-
-PATCHES=(
-	"${FILESDIR}"/${P}-libxml2-2.11-tests.patch
 )
 
 src_prepare() {
@@ -55,10 +54,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# Remove this after upstream merge request to add AC_SYS_LARGEFILE lands:
-	# https://gitlab.gnome.org/GNOME/libxslt/-/merge_requests/55
-	append-lfs-flags
-
 	libxslt_configure() {
 		ECONF_SOURCE="${S}" econf \
 			--without-python \
