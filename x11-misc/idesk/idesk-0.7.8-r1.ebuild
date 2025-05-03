@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="svg"
 
 RDEPEND="
 	dev-libs/glib
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/freetype
 	media-libs/imlib2[X]
 	media-libs/libart_lgpl
