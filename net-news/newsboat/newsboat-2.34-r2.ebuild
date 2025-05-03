@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -144,7 +144,7 @@ COMMON_DEPEND="
 	>=dev-libs/json-c-0.11:=
 	>=dev-libs/stfl-0.21
 	>=net-misc/curl-7.32.0[ssl]
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	sys-libs/ncurses:=[unicode(+)]
 "
 # Depend on new enough OpenSSL/GnuTLS libs to avoid providing header files of
