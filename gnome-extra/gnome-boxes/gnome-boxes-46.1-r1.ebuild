@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ DEPEND="
 	net-libs/libsoup:3.0
 	virtual/libusb:1
 	>=app-emulation/libvirt-glib-5.0.0
-	>=dev-libs/libxml2-2.7.8:2
+	>=dev-libs/libxml2-2.7.8:2=
 	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	>=net-libs/webkit-gtk-2.38.0:4.1
 
