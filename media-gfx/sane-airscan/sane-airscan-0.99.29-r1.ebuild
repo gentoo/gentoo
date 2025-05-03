@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,14 +11,15 @@ SRC_URI="https://github.com/alexpevzner/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DEPEND="
+	dev-libs/libxml2:=
+	media-libs/libjpeg-turbo:=
+	media-libs/libpng:=
+	media-libs/tiff:=
 	net-dns/avahi
-	net-libs/gnutls
-	dev-libs/libxml2
-	media-libs/libjpeg-turbo
-	media-libs/libpng
+	net-libs/gnutls:=
 "
 RDEPEND="${DEPEND}
 	media-gfx/sane-backends
@@ -26,7 +27,6 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.99.27-makefile-fixes.patch"
-	"${FILESDIR}/${PN}-0.99.27-c99-fixes.patch"
 )
 
 src_compile() {
