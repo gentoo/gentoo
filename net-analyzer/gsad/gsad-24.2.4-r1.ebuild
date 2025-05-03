@@ -17,7 +17,7 @@ IUSE="brotli doc"
 DEPEND="
 	acct-user/gvm
 	>=net-libs/libmicrohttpd-0.9.0:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=dev-libs/glib-2.42:2
 	>=net-analyzer/gvm-libs-22.8
 	>=net-libs/gnutls-3.2.15:=

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,13 +11,13 @@ SRC_URI="https://github.com/greenbone/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="brotli doc"
 
 DEPEND="
 	acct-user/gvm
 	>=net-libs/libmicrohttpd-0.9.0:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=dev-libs/glib-2.42:2
 	>=net-analyzer/gvm-libs-22.8
 	>=net-libs/gnutls-3.2.15:=
@@ -60,6 +60,16 @@ src_prepare() {
 		   done
 		fi
 	fi
+
+	# Avoid the use of brotli when not required by the use flag #942193
+	# Remove brotli automagic dependencies check
+	if ! use brotli; then
+		sed -i \
+			-e 's*^if (BROTLI_FOUND)*#if (BROTLI_FOUND)*' \
+			-e 's*set (CMAKE_C_FLAGS            "${CMAKE_C_FLAGS} -DHAVE_BROTLI=1")*#set (CMAKE_C_FLAGS            "${CMAKE_C_FLAGS} -DHAVE_BROTLI=1")*' \
+			-e 's*^endif (BROTLI_FOUND)*#endif (BROTLI_FOUND)*' \
+			src/CMakeLists.txt || die "couldn't disable brotli automagic dependency's check"
+	fi
 }
 
 src_configure() {
@@ -69,9 +79,11 @@ src_configure() {
 		"-DSBINDIR=${EPREFIX}/usr/bin"
 		"-DGSAD_RUN_DIR=${EPREFIX}/run/gsad"
 		"-DGVMD_RUN_DIR=${EPREFIX}/run/gvmd"
+		"-DGVM_LOG_DIR=${EPREFIX}/var/log/gvm"
 		"-DSYSTEMD_SERVICE_DIR=$(systemd_get_systemunitdir)"
 		"-DLOGROTATE_DIR=${EPREFIX}/etc/logrotate.d"
 	)
+
 	cmake_src_configure
 }
 
