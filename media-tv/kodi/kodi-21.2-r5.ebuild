@@ -232,7 +232,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	xslt? (
 		dev-libs/libxslt
-		>=dev-libs/libxml2-2.9.4
+		>=dev-libs/libxml2-2.9.4:=
 	)
 	zeroconf? (
 		net-dns/avahi[dbus]
