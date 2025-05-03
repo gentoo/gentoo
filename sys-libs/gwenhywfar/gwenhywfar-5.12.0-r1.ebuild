@@ -20,7 +20,7 @@ RESTRICT="test"
 DEPEND="
 	dev-libs/libgcrypt:0=
 	dev-libs/libgpg-error
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/openssl:0=
 	net-libs/gnutls:=
 	virtual/libiconv
