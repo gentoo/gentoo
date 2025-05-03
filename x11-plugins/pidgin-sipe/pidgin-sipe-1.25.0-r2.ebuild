@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="dbus debug kerberos ocs2005-message-hack openssl telepathy voice"
 
 RDEPEND="
 	dev-libs/gmime:2.6
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	openssl? ( dev-libs/openssl:= )
 	!openssl? ( dev-libs/nss )
 	kerberos? ( virtual/krb5 )
