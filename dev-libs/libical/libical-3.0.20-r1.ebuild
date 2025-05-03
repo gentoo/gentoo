@@ -17,17 +17,16 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 
 IUSE="doc examples +glib +introspection static-libs test vala"
 
 REQUIRED_USE="introspection? ( glib ) vala? ( introspection )"
-
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
+DEPEND="
 	dev-libs/icu:=
-	glib? ( dev-libs/glib:2 )
+	glib? (
+		dev-libs/glib:2
+		dev-libs/libxml2:2=
+	)
 "
-DEPEND="${COMMON_DEPEND}
-	glib? ( dev-libs/libxml2:2= )
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	sys-libs/timezone-data
 "
 BDEPEND="
