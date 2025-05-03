@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND=">=sys-libs/ncurses-5.9-r3:0[${MULTILIB_USEDEP}]
 	)
 	plugins? ( dev-libs/libltdl:0[${MULTILIB_USEDEP}] )
 	numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )
-	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )"
+	xml? ( >=dev-libs/libxml2-2.9.1-r4:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
