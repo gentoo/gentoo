@@ -29,5 +29,6 @@
 	</use>
 	<upstream>
 		<remote-id type="gitlab">muttmua/mutt</remote-id>
+		<remote-id type="bitbucket">mutt/mutt</remote-id> 
 	</upstream>
 </pkgmetadata>
