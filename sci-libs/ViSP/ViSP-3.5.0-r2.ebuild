@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	usb? ( virtual/libusb:1 )
 	v4l? ( media-libs/libv4l )
 	X? ( x11-libs/libX11 )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 	zbar? ( media-gfx/zbar )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${COMMON_DEPEND}
