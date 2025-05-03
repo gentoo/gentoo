@@ -77,7 +77,7 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXt
 	)
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 	lzma? ( app-arch/xz-utils )
 	zip? ( dev-libs/libzip:= )
 	zlib? ( sys-libs/zlib:= )
@@ -89,8 +89,6 @@ DEPEND="
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-7.1.1.38-perl-1.patch"
-	"${FILESDIR}/${PN}-7.1.1.38-perl-2.patch"
 	"${FILESDIR}/${PN}-9999-nocputuning.patch"
 )
 
@@ -160,7 +158,6 @@ src_configure() {
 		$(use_with zip)
 		$(use_with zlib)
 		--without-autotrace
-		--with-uhdr
 		$(use_with postscript dps)
 		$(use_with djvu)
 		--with-dejavu-font-dir="${EPREFIX}"/usr/share/fonts/dejavu
@@ -232,7 +229,8 @@ src_install() {
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install
 
-	einstalldocs
+	rm -f "${ED}"/usr/share/doc/${PF}/html/{ChangeLog,LICENSE,NEWS.txt}
+	dodoc {AUTHORS,README}.txt
 
 	if use perl; then
 		find "${ED}" -type f -name perllocal.pod -exec rm -f {} +

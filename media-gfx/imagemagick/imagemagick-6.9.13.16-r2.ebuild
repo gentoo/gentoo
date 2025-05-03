@@ -76,7 +76,7 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXt
 	)
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 	lzma? ( app-arch/xz-utils )
 	zlib? ( sys-libs/zlib:= )
 "
