@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,7 @@ RDEPEND="
 	app-accessibility/at-spi2-core
 	dev-java/swt:4.10[cairo,opengl]
 	dev-libs/glib:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	media-libs/freetype:2
 	media-libs/fontconfig:1.0
