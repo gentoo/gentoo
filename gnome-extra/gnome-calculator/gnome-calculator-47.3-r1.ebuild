@@ -17,7 +17,7 @@ IUSE="+introspection test"
 # altogether, thus we need them installed by gtksourceview[vala]
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=net-libs/libsoup-3.4.0:3.0
 	>=dev-libs/libgee-0.20.0:0.8=
 	dev-libs/mpc:=
