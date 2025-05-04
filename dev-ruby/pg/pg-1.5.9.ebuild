@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_GEMSPEC="pg.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -26,6 +26,8 @@ IUSE="test"
 RDEPEND="dev-db/postgresql:*"
 DEPEND="dev-db/postgresql
 	test? ( >=dev-db/postgresql-9.4[server(+),threads(+)] )"
+
+PATCHES=( "${FILESDIR}/${P}-test-encoding.patch" )
 
 all_ruby_prepare() {
 	# hack the Rakefile to make it sure that it doesn't load
