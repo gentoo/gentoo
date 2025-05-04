@@ -7,7 +7,7 @@ GUILE_REQ_USE="regex"
 GUILE_COMPAT=( 2-2 3-0 )
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake flag-o-matic gnome2-utils guile-single python-single-r1
+inherit cmake flag-o-matic gnome2 guile-single python-single-r1 xdg
 
 # Please bump with app-doc/gnucash-docs
 DESCRIPTION="Personal finance manager"
@@ -229,20 +229,17 @@ src_install() {
 	fi
 }
 
+pkg_preinst() {
+	gnome2_pkg_preinst
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	if use gui ; then
-		xdg_icon_cache_update
-		gnome2_schemas_update
-	fi
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	gnome2_pkg_postinst
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	if use gui ; then
-		xdg_icon_cache_update
-		gnome2_schemas_update
-	fi
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	gnome2_pkg_postrm
+	xdg_pkg_postrm
 }
