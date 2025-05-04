@@ -22,7 +22,10 @@ IUSE="gui"
 
 RDEPEND="
 	!sys-boot/woeusb
-	app-arch/p7zip
+	|| (
+		>=app-arch/7zip-24.09[symlink(+)]
+		app-arch/p7zip
+	)
 	sys-apps/util-linux
 	sys-block/parted
 	sys-boot/grub:2
