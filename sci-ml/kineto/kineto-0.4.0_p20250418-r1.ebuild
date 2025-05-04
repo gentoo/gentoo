@@ -32,7 +32,12 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.0-gcc13.patch
+	"${FILESDIR}"/${P}-AppxClock.patch
 )
+
+src_prepare() {
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
