@@ -1,7 +1,7 @@
 --- a/cmake/SearchForStuff.cmake
 +++ b/cmake/SearchForStuff.cmake
 @@ -22,2 +22,5 @@
--find_package(plutovg 0.0.13 REQUIRED)
+-find_package(plutovg REQUIRED) # v0.0.13 is needed for building plutosvg, but we can support v1.0.0
 -find_package(plutosvg 0.0.6 REQUIRED)
 +find_package(PkgConfig REQUIRED)
 +pkg_check_modules(plutovg REQUIRED IMPORTED_TARGET plutovg)
