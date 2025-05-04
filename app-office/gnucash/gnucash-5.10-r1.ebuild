@@ -137,18 +137,12 @@ src_prepare() {
 
 	# Fix tests writing to /tmp
 	local fixtestfiles=(
+		bindings/python/example_scripts/simple_session.py
+		bindings/python/sqlite3test.c
+		bindings/python/example_scripts/simple_test.py
 		gnucash/report/test/test-report-html.scm
-		gnucash/report/reports/standard/test/test-invoice.scm
-		gnucash/report/reports/standard/test/test-new-owner-report.scm
-		gnucash/report/reports/standard/test/test-owner-report.scm
-		gnucash/report/reports/standard/test/test-transaction.scm
-		gnucash/report/reports/standard/test/test-portfolios.scm
-		gnucash/report/reports/standard/test/test-charts.scm
-		gnucash/report/test/test-report.scm
-		gnucash/report/test/test-commodity-utils.scm
 		gnucash/report/test/test-report-extras.scm
 		libgnucash/backend/dbi/test/test-backend-dbi-basic.cpp
-		libgnucash/backend/xml/test/test-xml-pricedb.cpp
 	)
 	local x
 	for x in "${fixtestfiles[@]}"; do
