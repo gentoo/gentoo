@@ -20,3 +20,14 @@
  
  if(USE_KINETO)
    target_include_directories(torch_cpu PRIVATE
+--- a/cmake/Dependencies.cmake	2025-05-04 15:30:00.268862558 +0200
++++ b/cmake/Dependencies.cmake	2025-05-04 15:30:13.275934233 +0200
+@@ -1711,7 +1711,7 @@
+     endif()
+   endif()
+ 
+-  if(NOT TARGET kineto)
++  if(FALSE)
+     add_subdirectory("${KINETO_SOURCE_DIR}")
+     set_property(TARGET kineto PROPERTY POSITION_INDEPENDENT_CODE ON)
+   endif()
