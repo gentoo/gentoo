@@ -323,10 +323,6 @@ dev-util/ragel doc
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Michał Górny <mgorny@gentoo.org> (2020-11-30)
-# Qt5 is not keyworded here.
-x11-misc/synergy gui
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
 # media-sound/lash not keyworded, bug #736725
 media-sound/fluidsynth lash
