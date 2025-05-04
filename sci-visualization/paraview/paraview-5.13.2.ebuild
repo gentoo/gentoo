@@ -22,15 +22,14 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="BSD MIT PSF-2 VTK"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="boost cg examples ffmpeg mpi nvcontrol openmp offscreen plugins python +qt6 +sqlite test tk +webengine"
+IUSE="boost cg examples ffmpeg mpi nvcontrol openmp plugins python +qt6 +sqlite test tk +webengine"
 
 RESTRICT="mirror test"
 
 REQUIRED_USE="
 	python? ( mpi ${PYTHON_REQUIRED_USE} )
 	webengine? ( qt6 )
-	qt6? ( sqlite )
-	?? ( offscreen qt6 )"
+	qt6? ( sqlite )"
 
 RDEPEND="
 	app-arch/lz4
@@ -55,10 +54,9 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXmu
 	x11-libs/libXt
+	virtual/opengl
 	ffmpeg? ( media-video/ffmpeg )
 	mpi? ( virtual/mpi[cxx,romio] )
-	offscreen? ( >=media-libs/mesa-18.3.6[osmesa] )
-	!offscreen? ( virtual/opengl )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -168,10 +166,6 @@ src_configure() {
 		-DPARAVIEW_USE_MPI="$(usex mpi)"
 		-DXDMF_BUILD_MPI="$(usex mpi)"
 		-DVTK_GROUP_ENABLE_MPI="$(usex mpi YES NO)"
-
-		# offscreen
-		-DVTK_OPENGL_HAS_OSMESA="$(usex offscreen)"
-		-DVTK_OPENGL_HAS_OSMESA="$(usex offscreen)"
 
 		# plugins
 		-DPARAVIEW_PLUGINS_DEFAULT="$(usex plugins)"

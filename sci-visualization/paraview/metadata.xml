@@ -9,7 +9,6 @@
 		<flag name="boost">Enable the usage of <pkg>dev-libs/boost</pkg></flag>
 		<flag name="cg">Add support for nvidia's cg shaders</flag>
 		<flag name="nvcontrol">Add NVCONTROL support for OpenGL options</flag>
-		<flag name="offscreen">Offscreen rendering through OSMesa</flag>
 		<flag name="plugins">Build and install additional plugins</flag>
 		<flag name="webengine">Add support for <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
