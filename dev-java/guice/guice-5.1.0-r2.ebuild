@@ -16,17 +16,18 @@ S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="4"
-KEYWORDS="amd64 arm64 ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 # Most of the test dependencies are missing in Gentoo.
 RESTRICT="test"
 
 CP_DEPEND="
 	dev-java/aopalliance:1
-	dev-java/asm:9
-	dev-java/error-prone-annotations:0
+	dev-java/asm:0
+	>=dev-java/error-prone-annotations-2.41.0:0
 	dev-java/guava:0
 	dev-java/javax-inject:0
+	dev-java/jsr305:0
 "
 
 DEPEND="
