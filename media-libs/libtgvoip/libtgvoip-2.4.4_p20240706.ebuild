@@ -30,6 +30,10 @@ REQUIRED_USE="
 	|| ( alsa pulseaudio )
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-missing-cstdint-for-gcc-15.patch"
+)
+
 src_prepare() {
 	# Will be controlled by us
 	sed -i -e '/^CFLAGS += -DTGVOIP_NO_DSP/d' Makefile.am || die
