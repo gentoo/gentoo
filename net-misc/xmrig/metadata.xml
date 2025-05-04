@@ -10,6 +10,9 @@
     CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner.
   </longdescription>
   <use>
+    <flag name="benchmark">
+      Enable builtin RandomX benchmark and stress test
+    </flag>
     <flag name="donate">
       Set the default donation level to 1% instead of 0
     </flag>
@@ -18,6 +21,9 @@
     </flag>
   </use>
   <upstream>
+    <bugs-to>https://github.com/xmrig/xmrig/issues</bugs-to>
+    <changelog>https://github.com/xmrig/xmrig/blob/master/CHANGELOG.md</changelog>
+    <doc>https://xmrig.com/docs/</doc>
     <remote-id type="github">xmrig/xmrig</remote-id>
   </upstream>
 </pkgmetadata>
