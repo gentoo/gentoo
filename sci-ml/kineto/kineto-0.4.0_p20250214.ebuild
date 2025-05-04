@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 inherit python-any-r1 cmake prefix
 
-CommitId=d82680bbd44f872aa04394fa5bba23a7992f9fa4
+CommitId=a054a4be0db117c579a21747debf19c863631f26
 
 DESCRIPTION="part of the PyTorch Profiler"
 HOMEPAGE="https://github.com/pytorch/kineto"
@@ -31,8 +31,7 @@ BDEPEND="
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.0-gcc13.patch
-	"${FILESDIR}"/${P}-AppxClock.patch
+	"${FILESDIR}"/${PN}-0.4.0_p20250418-AppxClock.patch
 )
 
 src_prepare() {
