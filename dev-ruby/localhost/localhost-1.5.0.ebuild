@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="readme.md releases.md"
 RUBY_FAKEGEM_GEMSPEC="localhost.gemspec"
@@ -21,8 +21,6 @@ KEYWORDS="~amd64"
 
 ruby_add_bdepend "
 	test? (
-		dev-ruby/async-io
-		dev-ruby/async-process
 		dev-ruby/io-endpoint
 		dev-ruby/sus-fixtures-async
 	)
