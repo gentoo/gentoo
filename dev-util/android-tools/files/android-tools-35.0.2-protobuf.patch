@@ -1,0 +1,36 @@
+From 36c605004ae1c75813181ffe4c59907016aaf9e9 Mon Sep 17 00:00:00 2001
+From: Biswapriyo Nath <nathbappai@gmail.com>
+Date: Tue, 22 Apr 2025 15:12:23 +0000
+Subject: [PATCH] extras/libjsonpb: Fix incompatibility with protobuf v30
+
+This commit fixes the following compiler error.
+
+jsonpb.cpp:36:44: error: invalid operands to binary expression (
+'basic_string<char, char_traits<char>, allocator<char>>' and
+'internal::DescriptorStringView' (aka 'basic_string_view<char>'))
+36 |   return std::string(kTypeUrlPrefix) + "/" + message.GetDescriptor()->full_name();
+   |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+More info here https://protobuf.dev/news/2024-10-02/#descriptor-apis
+
+Change-Id: I3c76d51dfdfbe013eaa5031e6194bf5edae1be35
+---
+ libjsonpb/parse/jsonpb.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libjsonpb/parse/jsonpb.cpp b/libjsonpb/parse/jsonpb.cpp
+index b342c2b..ebd71bf 100644
+--- a/vendor/extras/libjsonpb/parse/jsonpb.cpp
++++ b/vendor/extras/libjsonpb/parse/jsonpb.cpp
+@@ -33,7 +33,7 @@ using google::protobuf::util::TypeResolver;
+ static constexpr char kTypeUrlPrefix[] = "type.googleapis.com";
+ 
+ std::string GetTypeUrl(const Message& message) {
+-  return std::string(kTypeUrlPrefix) + "/" + message.GetDescriptor()->full_name();
++  return std::string(kTypeUrlPrefix) + "/" + std::string(message.GetDescriptor()->full_name());
+ }
+ 
+ ErrorOr<std::string> MessageToJsonString(const Message& message) {
+-- 
+2.49.0
+
