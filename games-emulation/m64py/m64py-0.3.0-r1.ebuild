@@ -31,7 +31,10 @@ RDEPEND="
 	media-libs/libsdl2[joystick,video]
 	>=games-emulation/mupen64plus-core-2.5:0/2-sdl2
 	7z? (
-		app-arch/p7zip
+		|| (
+			app-arch/7zip[symlink(+)]
+			app-arch/p7zip
+		)
 	)
 	rar? (
 		|| (
