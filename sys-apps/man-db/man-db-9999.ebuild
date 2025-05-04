@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,23 +23,28 @@ IUSE="+manpager nls +seccomp selinux static-libs zlib"
 
 CDEPEND="
 	>=dev-libs/libpipeline-1.5.0
-	sys-apps/groff
+	>=sys-apps/groff-1.20.0
 	sys-libs/gdbm:=
 	seccomp? ( sys-libs/libseccomp )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+"
 DEPEND="${CDEPEND}"
-BDEPEND="app-arch/xz-utils
+BDEPEND="
+	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? (
 		>=app-text/po4a-0.45
 		sys-devel/gettext
 		virtual/libiconv
 		virtual/libintl
-	)"
-RDEPEND="${CDEPEND}
+	)
+"
+RDEPEND="
+	${CDEPEND}
 	acct-group/man
 	acct-user/man
-	selinux? ( sec-policy/selinux-mandb )"
+	selinux? ( sec-policy/selinux-mandb )
+"
 PDEPEND="manpager? ( app-text/manpager )"
 
 PATCHES=(
