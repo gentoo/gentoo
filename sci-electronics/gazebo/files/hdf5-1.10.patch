@@ -1,0 +1,232 @@
+--- ./deps/opende/src/ioh5.h	2025-02-04 14:28:23.092763528 +0100
++++ ./deps/opende/src/ioh5.h.new	2025-02-04 14:27:09.144770487 +0100
+@@ -107,31 +107,31 @@
+ 
+   const std::string& h5_type_find_name(const H5::DataType& t );
+ 
+-  void dump_string(H5::CommonFG &g, const std::string &name, const std::string &s);
++  void dump_string(H5::Group &g, const std::string &name, const std::string &s);
+ 
+   /// Easily create a data space for either scalars or arrays
+   H5::DataSpace  create_dataspace(const h2s& h);
+ 
+-  herr_t hard_link(const H5::CommonFG& f, const std::string & orig, H5::Group& g, const std::string& target);
++  herr_t hard_link(const H5::Group& f, const std::string & orig, H5::Group& g, const std::string& target);
+ 
+   /// Dump an array with knowledge of the datatype. This is the only
+   /// function containing details of the datalayout and controls the
+   /// possible compression of the data on disk.
+-  H5::DataSet dump_array_raw(  H5::CommonFG & g,  const h5_type &t,
++  H5::DataSet dump_array_raw(  H5::Group & g,  const h5_type &t,
+                                const std::string& name,
+                                const void *a, size_t m=1, size_t n=1);
+ 
+   //// This function takes care of the type identification and is therefore
+   /// templated.   It resolves to the raw write function.
+   template <typename R>
+-  H5::DataSet dump_array( H5::CommonFG & g,  const std::string& name, const R *a, const size_t m=1, const size_t n=1){
++  H5::DataSet dump_array( H5::Group & g,  const std::string& name, const R *a, const size_t m=1, const size_t n=1){
+     try {
+       const h5_type & t = h5_type_find(typeid(a[0]));
+       if  ( typeid(a[0]) == t.info ) {
+         return dump_array_raw(g,   t, name, a, m, n);
+       }
+     }catch ( const H5::DataSetIException& exception ) {
+-      exception.printError();
++      exception.printErrorStack();
+     }
+     return H5::DataSet();
+   }
+@@ -139,12 +139,12 @@
+   /// this assumes that the datatype, such as valarray or vector, has an []
+   //// operator as well as a size() method
+   template <typename R>
+-  H5::DataSet dump_vector(  H5::CommonFG & g,  const std::string& name, const R& v, size_t n=1){
++  H5::DataSet dump_vector(  H5::Group & g,  const std::string& name, const R& v, size_t n=1){
+     return dump_array(g, name,  &(v[0]), v.size()/n, n);
+   }
+ 
+   template <typename R>
+-  void dump_scalar(H5::CommonFG & g, const std::string &name, const R a){
++  void dump_scalar(H5::Group & g, const std::string &name, const R a){
+     dump_array<R>(g,  name, &a);
+   }
+ 
+@@ -159,11 +159,11 @@
+       }
+     }
+     catch ( const H5::AttributeIException& exception ) {
+-      exception.printError();
++      exception.printErrorStack();
+       return;
+     }
+     catch ( const H5::DataTypeIException& exception ) {
+-      exception.printError();
++      exception.printErrorStack();
+       return;
+     }
+   }
+@@ -211,7 +211,7 @@
+ 
+   /** Read a scalar in a data set with the given name from the given group. */
+   template <typename R>
+-  bool get_scalar(H5::CommonFG &g, const std::string& name, R& result)
++  bool get_scalar(H5::Group &g, const std::string& name, R& result)
+   {
+     const h5_type &  t = h5_type_find(typeid(result));
+     try {
+@@ -252,12 +252,12 @@
+   /**
+      \return The index of the child with the given name. Returns parent.getNumObjs() if no such child exists.
+   */
+-  hsize_t getIndexOf( const H5::CommonFG& parent, const H5std_string& childName );
++  hsize_t getIndexOf( const H5::Group& parent, const H5std_string& childName );
+ 
+   /**
+       Find a child with given name.
+   */
+-  bool hasChildNamed( const H5::CommonFG& parent, const H5std_string& childName );
++  bool hasChildNamed( const H5::Group& parent, const H5std_string& childName );
+ 
+ 
+   /**
+@@ -266,16 +266,16 @@
+      This is the same principle as append_or_create.  This library is
+      intended only for writing datasets, not to manipulate them.
+   */
+-  H5::Group getOrCreateGroup( H5::CommonFG& parent, const H5std_string& childName );
++  H5::Group getOrCreateGroup( H5::Group& parent, const H5std_string& childName );
+ 
+ 
+ 
+   /**  A utility that just checks for the existence of an attribute with given name */
+-  bool check_attr(const H5::CommonFG &g, const std::string & name);
++  bool check_attr(const H5::Group &g, const std::string & name);
+ 
+   /** Read the string dataset of given name into the std::string buff.
+       Return 0 if not found, 1 for success.  */
+-  int get_string(const H5::CommonFG& g, const std::string &name, std::string & buff );
++  int get_string(const H5::Group& g, const std::string &name, std::string & buff );
+ 
+ 
+   /**
+@@ -283,7 +283,7 @@
+       resize(size_t n) and operator *  which returns the data buffer.
+   */
+   template<typename R>
+-  H5::DataType get_array(const H5::CommonFG& g, const std::string &name, R& v )
++  H5::DataType get_array(const H5::Group& g, const std::string &name, R& v )
+   {
+     try {
+       H5::Exception::dontPrint();
+@@ -330,7 +330,7 @@
+ // "Raw"  here means that we have just bytes to manipulate.
+ //
+ template<typename R>
+-H5::DataType   get_array_raw(const H5::CommonFG& g, const std::string &name, R& v)
++H5::DataType   get_array_raw(const H5::Group& g, const std::string &name, R& v)
+ {
+   H5::DataType ret;
+   try {
+--- ./deps/opende/src/ioh5.cpp	2025-02-04 14:28:21.603763668 +0100
++++ ./deps/opende/src/ioh5.cpp.new	2025-02-04 14:27:09.143770487 +0100
+@@ -151,7 +151,7 @@
+   }
+ 
+   // Read a string with attribute "name" from the named group or file in the buff argument
+-  int get_string(const H5::CommonFG& g, const std::string &name, std::string & buff  ) {
++  int get_string(const H5::Group& g, const std::string &name, std::string & buff  ) {
+     int ret = 0;
+     try {
+       Exception::dontPrint();
+@@ -172,7 +172,7 @@
+   }
+ 
+   // return an integer named "name" from a group or file
+-  int get_integer(const H5::CommonFG& g, const std::string &name  ) {
++  int get_integer(const H5::Group& g, const std::string &name  ) {
+     int ret = 0;
+     try {
+       Exception::dontPrint();
+@@ -228,12 +228,12 @@
+   /// Curiously, the C++ API does not provide this simple and necessary
+   /// operation, and no explanation is provided as to why.
+   ///
+-  herr_t hard_link(const H5::CommonFG& f, const std::string & orig, H5::Group& g, const std::string& target){
++  herr_t hard_link(const H5::Group& f, const std::string & orig, H5::Group& g, const std::string& target){
+     return H5Lcreate_hard( f.getLocId(), orig.c_str(), g.getLocId(), target.c_str(), 0, 0);
+   }
+ 
+   // The name says it all.  This works for files or groups
+-  void dump_string(H5::CommonFG&g, const std::string &name, const std::string &s){
++  void dump_string(H5::Group&g, const std::string &name, const std::string &s){
+     try {
+       H5::DataSpace dataspace( 0, h2s());
+       StrType datatype(PredType::C_S1, s.length()+1);
+@@ -241,7 +241,7 @@
+       dataset.write( s, datatype);
+       dataset.close();
+     } catch ( const H5::DataSetIException& exception ) {
+-      exception.printError();
++      exception.printErrorStack();
+     }
+   }
+ 
+@@ -288,7 +288,7 @@
+     return root.createGroup(buffer.str());
+   }
+ 
+-  hsize_t getIndexOf( const H5::CommonFG* parent, const H5std_string& childName )
++  hsize_t getIndexOf( const H5::Group* parent, const H5std_string& childName )
+   {
+     /// \todo This cannot be the proper way to find the index of a named child.
+     /// NOTE: the correct way is to use an iterator function
+@@ -317,13 +317,13 @@
+     return exists0;
+   }
+ 
+-  bool hasChildNamed( const H5::CommonFG& parent, const H5std_string& childName )
++  bool hasChildNamed( const H5::Group& parent, const H5std_string& childName )
+   {
+     return getIndexOf( &parent, childName ) != parent.getNumObjs();
+   }
+ 
+ 
+-  H5::Group getOrCreateGroup(H5::CommonFG& parent, const H5std_string& childName )
++  H5::Group getOrCreateGroup(H5::Group& parent, const H5std_string& childName )
+   {
+     hsize_t childIndex = getIndexOf( &parent, childName );
+     if ( childIndex == parent.getNumObjs() )
+@@ -351,11 +351,11 @@
+       attr.write(datatype, val);
+     }
+     catch ( const H5::AttributeIException& exception ) {
+-      exception.printError();
++      exception.printErrorStack();
+       return;
+     }
+     catch ( const H5::DataTypeIException& exception ) {
+-      exception.printError();
++      exception.printErrorStack();
+       return;
+     }
+   }
+@@ -395,7 +395,7 @@
+   /// Dump an array with knowledge of the datatype. This is the only
+   /// function containing details of the datalayout and controls the
+   /// possible compression of the data on disk.
+-  H5::DataSet dump_array_raw(  H5::CommonFG & g,  const h5_type& t,
++  H5::DataSet dump_array_raw(  H5::Group & g,  const h5_type& t,
+                                const std::string& name, const void *a, const size_t m, const size_t n){
+     try {
+       H5::DataSetIException::dontPrint();
+--- ./deps/opende/CMakeLists.txt	2025-02-04 14:28:21.997763631 +0100
++++ ./deps/opende/CMakeLists.txt.new	2025-02-04 14:27:09.254770477 +0100
+@@ -296,6 +296,7 @@
+ 
+ if (HDF5_FOUND AND HDF5_INSTRUMENT)
+   message(STATUS "HDF5 Found and Instrument enabled")
++  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DH5_USE_18_API")
+   include_directories(${HDF5_INCLUDE_DIRS})
+   target_link_libraries(gazebo_ode ${HDF5_LIBRARIES})
+ endif()
