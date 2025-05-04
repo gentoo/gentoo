@@ -51,6 +51,10 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.1.7-fix-missing-cstdint-for-gcc-15.patch"
 )
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_prepare() {
 	# as of opencc 1.1.8 there is no clean way to disable duplicated building of the clib again.
 	# plus, the installation is broken as well.
