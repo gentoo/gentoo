@@ -694,10 +694,6 @@ app-i18n/enca doc
 # This use flag enables code which appears to be broken
 net-wireless/gr-osmosdr xtrx
 
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# app-text/ots is masked for removal.  Bug #648964.
-app-office/abiword ots
-
 # Michał Górny <mgorny@gentoo.org> (2020-12-04)
 # Mask the experimental targets in release ebuilds.
 # Note to self: remember to move still-applicable masks to the newer
