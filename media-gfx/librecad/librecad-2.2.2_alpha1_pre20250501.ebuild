@@ -4,8 +4,7 @@
 EAPI=8
 
 COMMIT=2f5b68f347ba50fd8d6c4fee437cfedff63848b4
-PLOCALES="ar ca cs da de el en en_au es es_ar es_bo es_cl es_co es_cr es_do es_ec es_gt es_hn es_mx es_ni es_pa es_pe es_pr es_py es_sv es_us es_uy es_ve et eu fi fr gl he hi hu id_ID it ja ka ko lv mk nl no pa pl pt_br pt_pt ro_ro ru sk sl sq_al sr sv ta th tr uk zh_cn zh_tw"
-inherit desktop edo plocale qmake-utils
+inherit desktop qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
 HOMEPAGE="https://www.librecad.org/"
@@ -41,33 +40,12 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# Stock script doesn't work correctly on gentoo (see bug #847394)
-	# and also it compiles all translations regardles of selected locales.
-	# To avoid this just comment out locale building and do it manually
-	sed -i -e '/LRELEASE/s!^!# !' scripts/postprocess-unix.sh || die
-
-	plocale_find_changes 'librecad/ts' 'librecad_' '.ts'
+	sed -e "/^LRELEASE/s:lrelease:$(qt6_get_bindir)/lrelease:" \
+		-i scripts/postprocess-unix.sh || die
 }
 
 src_configure() {
 	eqmake6 -r
-}
-
-src_compile() {
-	default
-
-	build_locale() {
-		local lrelease="$(qt6_get_bindir)/lrelease"
-		edo "${lrelease}" "librecad/ts/librecad_${1}.ts" \
-			-qm "unix/resources/qm/librecad_${1}.qm"
-		edo "${lrelease}" "plugins/ts/plugins_${1}.ts" \
-			-qm "unix/resources/qm/plugins_${1}.qm"
-	}
-
-	plocale_for_each_locale build_locale
-	# We want the en locale to be always present. Otherwise it could
-	# be impossible to select the English command set which is quite crucial.
-	has en $(plocale_get_locales) || build_locale en
 }
 
 src_install() {
