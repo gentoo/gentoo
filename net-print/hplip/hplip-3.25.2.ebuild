@@ -147,7 +147,7 @@ src_configure() {
 	filter-lto
 
 	# https://bugs.gentoo.org/954891
-	append-flags -std=gnu17
+	append-cflags -std=gnu17
 
 	local drv_build minimal_build
 
