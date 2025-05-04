@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-04)
+# Several open bugs, pending bump since 2020, fails to fetch since 2022.
+# If anyone is here to fix these things, then please make upstream port
+# the gui to Qt6 or drop it. Removal on 2025-05-31.
+# Bugs #715918, #717528, #734242, #854750, #882655
+app-misc/flirc
+
 # Michał Górny <mgorny@gentoo.org> (2025-05-04)
 # New wave of breakage from random removals.
 # Bugs #955398, #955396, #955411.
