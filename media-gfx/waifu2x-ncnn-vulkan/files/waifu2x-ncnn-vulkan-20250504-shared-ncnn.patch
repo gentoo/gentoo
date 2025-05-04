@@ -1,0 +1,16 @@
+Build system tries to get ncnn's dependencies and link with them
+likely(?) expecting a static ncnn. These checks have caused issues
+before [1] and even if that was fixed, there is no reason to do
+this and DEPEND for nothing.
+
+Cannot do -DUSE_SYSTEM_NCNN=no given there is another condition
+using that that we do need.
+
+[1] https://bugs.gentoo.org/922512
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -53,3 +53,3 @@
+ 
+-if(USE_SYSTEM_NCNN)
++if(0)
+     find_package(Threads)
