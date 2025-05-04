@@ -3,15 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 # python-any-r1 required for a script in backends/pixma/scripts/
 inherit autotools flag-o-matic multilib-minimal optfeature python-any-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="Scanner Access Now Easy - Backends"
 HOMEPAGE="http://www.sane-project.org/"
-SRC_URI="https://gitlab.com/sane-project/backends/-/archive/${PV}/backends-${PV}.tar.bz2"
-S="${WORKDIR}/backends-${PV}"
+SRC_URI="https://gitlab.com/sane-project/backends/uploads/110fc43336d0fb5e514f1fdc7360dd87/${P}.tar.gz"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
@@ -111,7 +110,7 @@ IUSE_SANE_BACKENDS=(
 	xerox_mfp
 )
 
-IUSE="gphoto2 snmp systemd threads +usb v4l xinetd +zeroconf"
+IUSE="gphoto2 snmp systemd threads usb v4l xinetd +zeroconf"
 
 for GBACKEND in ${IUSE_SANE_BACKENDS[@]}; do
 	case ${GBACKEND} in
@@ -135,6 +134,7 @@ REQUIRED_USE="
 RDEPEND="
 	acct-user/saned
 	acct-group/scanner
+	dev-libs/libxml2:=
 	gphoto2? (
 		>=media-libs/libgphoto2-2.5.3.1:=[${MULTILIB_USEDEP}]
 		media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
@@ -166,7 +166,6 @@ RDEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	dev-libs/libxml2
 	v4l? ( sys-kernel/linux-headers )
 "
 BDEPEND="${PYTHON_DEPS}
@@ -179,11 +178,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	"${FILESDIR}"/${PN}-1.0.27-disable-usb-tests.patch
 	"${FILESDIR}"/${PN}-1.0.30-add_hpaio_epkowa_dll.conf.patch
+	"${FILESDIR}"/${PN}-1.1.1-configure-clang16.patch
 )
-
-# ./configure checks to see if these are defined in sys/io.h,
-# so if they're undefined... that's the point.
-QA_CONFIG_IMPL_DECL_SKIP=( inb outb )
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/sane-config
@@ -192,7 +188,6 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	default
 
-	echo "${PV}" > .tarball-version || die
 	eautoreconf
 
 	# Needed for udev rules generation/installation
@@ -202,9 +197,6 @@ src_prepare() {
 src_configure() {
 	# From Fedora
 	append-flags -fno-strict-aliasing
-	# bug #944286
-	append-cflags -std=gnu17
-
 	multilib-minimal_src_configure
 }
 
@@ -250,7 +242,8 @@ multilib_src_configure() {
 		$(use_with zeroconf avahi)
 	)
 
-	BACKENDS="${lbackends}" econf "${myconf[@]}"
+	ECONF_SOURCE="${S}" SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" \
+		BACKENDS="${lbackends}" econf "${myconf[@]}"
 }
 
 multilib_src_compile() {
