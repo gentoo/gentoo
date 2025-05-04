@@ -37,7 +37,7 @@ RDEPEND="
 	>=media-libs/libpng-1.2:0=
 	seccomp? ( >=sys-libs/libseccomp-2.0 )
 	tiff? ( media-libs/tiff:= )
-	xml? ( >=dev-libs/libxml2-2.6 )
+	xml? ( >=dev-libs/libxml2-2.6:= )
 	pdf? ( >=app-text/poppler-0.16.0:=[cairo] )
 	playlist? ( >=dev-libs/totem-pl-parser-3:= )
 	sys-apps/util-linux
