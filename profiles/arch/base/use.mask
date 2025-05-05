@@ -181,6 +181,7 @@ video_cards_freedreno
 video_cards_geode
 video_cards_i915
 video_cards_i965
+video_cards_imagination
 video_cards_intel
 video_cards_lima
 video_cards_nvidia
