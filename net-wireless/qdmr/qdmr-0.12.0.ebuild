@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake udev linux-info
+inherit cmake udev linux-info xdg-utils
 
 DESCRIPTION="GUI application for configuring and programming cheap DMR radios"
 HOMEPAGE="https://dm3mat.darc.de/qdmr/"
@@ -46,7 +46,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i "s#/etc/udev/rules.d/#$(get_udevdir)/rules.d#" lib/CMakeLists.txt
+	sed -i "s#/etc/udev/rules.d/#$(get_udevdir)/rules.d#" lib/CMakeLists.txt || die
+	sed -i "s/VERSION 3.0.0/VERSION 3.10.0/" CMakeLists.txt || die
 	cmake_src_prepare
 }
 
@@ -59,8 +60,10 @@ src_configure() {
 
 pkg_postinst() {
 	udev_reload
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	udev_reload
+	xdg_icon_cache_update
 }
