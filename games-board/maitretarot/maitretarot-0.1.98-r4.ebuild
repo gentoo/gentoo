@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-games/libmaitretarot"
 RDEPEND="${DEPEND}"
 
