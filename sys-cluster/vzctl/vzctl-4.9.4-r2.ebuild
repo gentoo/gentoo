@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ RDEPEND="
 	>=sys-fs/vzquota-3.1
 	virtual/udev
 	ploop? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		sys-block/parted
 		>=sys-cluster/ploop-1.13
 		sys-fs/quota
