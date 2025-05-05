@@ -451,6 +451,7 @@ multilib_src_configure() {
 		--disable-libklvanc
 		--disable-liblcevc-dec
 		--disable-libmysofa
+		--disable-liboapv
 		--disable-libopenvino
 		--disable-libshine
 		--disable-libtls
