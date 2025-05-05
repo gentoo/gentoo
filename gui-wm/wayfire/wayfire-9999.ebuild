@@ -1,9 +1,9 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson
+inherit meson toolchain-funcs
 
 DESCRIPTION="compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="MIT"
-IUSE="+dbus +gles3 test X"
+IUSE="X +dbus +gles3 openmp test"
 RESTRICT="!test? ( test )"
 
 # bundled wlroots has the following dependency string according to included headers.
@@ -31,13 +31,15 @@ CDEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput:=
 	dev-libs/wayland
+	dev-libs/yyjson
 	>=dev-libs/wayland-protocols-1.12
 	gui-libs/wf-config:${SLOT}
-	gui-libs/wlroots:0/17[drm(+),libinput(+),x11-backend,X?]
+	gui-libs/wlroots:0.18[drm(+),libinput(+),x11-backend,X?]
 	media-libs/glm
 	media-libs/libglvnd
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
+	virtual/libudev:=
 	x11-libs/cairo
 	x11-libs/libxkbcommon
 	x11-libs/pango
@@ -57,7 +59,21 @@ DEPEND="
 BDEPEND="
 	dev-util/wayland-scanner
 	virtual/pkgconfig
+	openmp? (
+		|| (
+			sys-devel/gcc[openmp]
+			llvm-core/clang-runtime[openmp]
+		)
+	)
 "
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
 
 src_prepare() {
 	default
@@ -74,6 +90,7 @@ src_configure() {
 		$(meson_feature test tests)
 		$(meson_feature X xwayland)
 		$(meson_use gles3 enable_gles32)
+		$(meson_use openmp enable_openmp)
 		-Duse_system_wfconfig=enabled
 		-Duse_system_wlroots=enabled
 	)
