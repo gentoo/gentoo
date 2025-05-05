@@ -1,0 +1,15 @@
+This patch removes conditional appending of "-race" flag.
+It is needed as we build in PIE mode and race is incompatible with that.
+
+https://bugs.gentoo.org/955442
+--- a/build.go
++++ b/build.go
+@@ -396,7 +396,7 @@
+ 	}
+ 	args = append(args, "-timeout", timeout)
+ 
+-	if runtime.GOARCH == "amd64" {
++	if false {
+ 		switch runtime.GOOS {
+ 		case buildpkg.Darwin, buildpkg.Linux, buildpkg.FreeBSD: // , "windows": # See https://github.com/golang/go/issues/27089
+ 			args = append(args, "-race")
