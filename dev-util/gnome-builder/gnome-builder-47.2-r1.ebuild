@@ -45,7 +45,7 @@ RDEPEND="
 	dev-libs/libportal:=[gtk,introspection]
 	>=dev-libs/template-glib-3.36.1:=[introspection]
 	>=gui-libs/vte-0.75.0:2.91-gtk4[introspection]
-	>=dev-libs/libxml2-2.9.0
+	>=dev-libs/libxml2-2.9.0:=
 	webkit? ( >=net-libs/webkit-gtk-2.38.0:6=[introspection] )
 	>=app-text/cmark-0.29.0:0=
 	app-text/editorconfig-core-c
