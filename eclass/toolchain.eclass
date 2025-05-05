@@ -1140,7 +1140,7 @@ toolchain_setup_ada() {
 
 	export CC="$(tc-getCC) -specs=${T}/ada.spec"
 
-	if ver_test $(gcc-fullversion) -lt 13 && [[ ${CTARGET} == hppa* ]] ; then
+	if ver_test ${PV} -lt 13 && [[ ${CTARGET} == hppa* ]] ; then
 		# For HPPA, the ada-bootstrap binaries seem to default
 		# to -fstack-protector still (maybe because of cross-building)
 		# so we need to override it for <13 (which ignores -fstack-protector)
