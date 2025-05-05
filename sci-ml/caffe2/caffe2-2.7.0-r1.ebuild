@@ -53,9 +53,10 @@ RDEPEND="
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
 	dev-libs/sleef
-	virtual/lapack
 	sci-ml/foxi
+	~sci-ml/kineto-0.4.0_p20250214
 	sci-ml/onnx
+	virtual/lapack
 	cuda? (
 		dev-libs/cudnn
 		>=sci-ml/cudnn-frontend-1.0.3:0/8
@@ -105,7 +106,6 @@ DEPEND="
 	dev-libs/pocketfft
 	dev-libs/psimd
 	sci-ml/FP16
-	~sci-ml/kineto-0.4.0_p20250214
 	$(python_gen_cond_dep '
 		dev-python/pybind11[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -232,7 +232,7 @@ src_configure() {
 		-DUSE_GLOG=ON
 		-DUSE_GLOO=$(usex gloo)
 		-DUSE_ITT=OFF
-		-DUSE_KINETO=ON # TODO
+		-DUSE_KINETO=ON
 		-DUSE_KLEIDIAI=OFF # TODO
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
 		-DUSE_MEM_EFF_ATTENTION=$(usex memefficient)
