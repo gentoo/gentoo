@@ -54,8 +54,8 @@ SLOT="0"
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
 VIDEO_CARDS="${RADEON_CARDS}
-	asahi d3d12 freedreno intel lavapipe lima nouveau nvk panfrost v3d vc4 virgl
-	vivante vmware zink"
+	asahi d3d12 freedreno imagination intel lavapipe lima nouveau nvk panfrost
+	v3d vc4 virgl vivante vmware zink"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -220,6 +220,7 @@ pkg_pretend() {
 		if ! use video_cards_asahi &&
 		   ! use video_cards_d3d12 &&
 		   ! use video_cards_freedreno &&
+		   ! use video_cards_imagination &&
 		   ! use video_cards_intel &&
 		   ! use video_cards_lavapipe &&
 		   ! use video_cards_nouveau &&
@@ -228,7 +229,7 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d &&
 		   ! use video_cards_virgl; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain asahi, d3d12, freedreno, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain asahi, d3d12, freedreno, imagination, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
 		fi
 	fi
 
@@ -404,6 +405,7 @@ multilib_src_configure() {
 		vulkan_enable video_cards_asahi asahi
 		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_freedreno freedreno
+		vulkan_enable video_cards_imagination imagination-experimental
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_lavapipe swrast
 		vulkan_enable video_cards_panfrost panfrost
