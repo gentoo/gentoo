@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,10 +24,13 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libevdev
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	media-libs/glm
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!gui-wm/wayfire:0/0.9
+"
 BDEPEND="
 	dev-libs/wayland-protocols
 	virtual/pkgconfig
