@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,10 +10,9 @@ HOMEPAGE="https://github.com/google/snappy"
 SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-# ${PV%%.*}.FUDGE where FUDGE is incremented if ABI is broken without a new SONAME
-# Please use abidiff on bumps.
-SLOT="0/${PV%%.*}.1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+# ABI may be broken without a new SONAME. Please use abidiff on bumps.
+SLOT="0/1.1"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 test"
 RESTRICT="!test? ( test )"
 
@@ -22,9 +21,9 @@ DEPEND="test? ( dev-cpp/gtest )"
 DOCS=( format_description.txt framing_format.txt NEWS README.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.1.9_external_gtest.patch"
-	"${FILESDIR}/${PN}-1.1.9-clang-werror.patch"
-	"${FILESDIR}/${PN}-1.1.9_remove-no-rtti.patch"
+	"${FILESDIR}/${PN}-1.2.0_external-gtest.patch"
+	"${FILESDIR}/${PN}-1.2.0_no-werror.patch"
+	"${FILESDIR}/${PN}-1.2.2_remove-no-rtti.patch"
 )
 
 multilib_src_configure() {
