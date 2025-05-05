@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,12 +9,14 @@ DESCRIPTION="Compact and open-source SMT-solver written in C++"
 HOMEPAGE="http://verify.inf.usi.ch/opensmt/
 	https://github.com/usi-verification-and-security/opensmt/"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/usi-verification-and-security/${PN}.git"
+
+	EGIT_REPO_URI="https://github.com/usi-verification-and-security/${PN}"
 else
 	SRC_URI="https://github.com/usi-verification-and-security/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
+
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -29,7 +31,9 @@ RDEPEND="
 	readline? ( sys-libs/readline:= )
 	libedit? ( dev-libs/libedit:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
 	app-alternatives/yacc
 	app-alternatives/lex
@@ -37,7 +41,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.5.2-gcc-14.patch"
+	"${FILESDIR}/opensmt-2.5.2-cmake_minimum.patch"
+	"${FILESDIR}/opensmt-2.5.2-gcc-14.patch"
 )
 
 src_prepare() {
