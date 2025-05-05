@@ -15,6 +15,8 @@ S="${WORKDIR}/${P}-source"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+# Mismatch appears somewhat intentional w/ changing versions of deps (bug #928269)
+RESTRICT="test"
 
 BDEPEND="
 	games-util/grfcodec
