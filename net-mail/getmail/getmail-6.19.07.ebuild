@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="ssl"
 inherit distutils-r1
 
