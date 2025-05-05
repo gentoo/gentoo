@@ -16,7 +16,7 @@ KEYWORDS="amd64"
 IUSE="dbus debug"
 
 COMMON="sys-apps/util-linux
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libxslt
 	dbus? ( dev-libs/dbus-glib )"
 RDEPEND="${COMMON}
