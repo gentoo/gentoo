@@ -21,6 +21,7 @@ KEYWORDS="amd64 ~arm64"
 RESTRICT="test" #839681
 
 CP_DEPEND="
+	dev-java/osgi-cmpn:8
 	dev-java/slf4j-api:0
 "
 
@@ -28,7 +29,6 @@ DEPEND="
 	${CP_DEPEND}
 	~dev-java/bnd-annotation-${PV}:0
 	dev-java/eclipse-jdt-annotation:0
-	dev-java/osgi-cmpn:8
 	>=virtual/jdk-17:*
 "
 
@@ -36,6 +36,8 @@ DEPEND="
 # error: switch expressions are not supported in -source 11
 RDEPEND="
 	${CP_DEPEND}
+	dev-java/osgi-annotation:0
+	dev-java/osgi-core:0
 	>=virtual/jre-17:*
 "
 
@@ -43,6 +45,11 @@ JAVA_AUTOMATIC_MODULE_NAME="aQute.libg"
 JAVA_CLASSPATH_EXTRA="
 	bnd-annotation
 	eclipse-jdt-annotation
-	osgi-cmpn-8
 "
 JAVA_SRC_DIR="aQute.libg/src"
+
+src_install() {
+	java-pkg-simple_src_install
+	java-pkg_register-dependency osgi-core
+	java-pkg_register-dependency osgi-annotation
+}
