@@ -2345,6 +2345,15 @@ gcc_do_make() {
 			STAGE1_CFLAGS="-O2"
 			STAGE1_CXXFLAGS="-O2"
 			STAGE1_GDCFLAGS="-O2"
+
+			if ver_test $(gcc-fullversion) -lt 13 && [[ ${CTARGET} == hppa* ]] ; then
+				# For HPPA, the ada-bootstrap binaries seem to default
+				# to -fstack-protector still (maybe because of cross-building)
+				# so we need to override it for <13 (which ignores -fstack-protector)
+				# as SSP doesn't exist there. The GNAT configure test gets confused
+				# by GCC warning about this otherwise.
+				STAGE1_CFLAGS+=" -fno-stack-protector"
+			fi
 		fi
 
 		# We only want to use the system's CFLAGS if not building a
