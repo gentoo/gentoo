@@ -82,7 +82,6 @@ DEPEND="
 	sys-apps/pciutils
 	sys-apps/util-linux
 	sys-libs/zlib:=
-	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libxcb:=
 	x11-libs/libXcomposite
@@ -103,6 +102,7 @@ DEPEND="
 		media-libs/mesa[gbm(+)]
 		net-print/cups
 		x11-libs/cairo
+		x11-libs/libdrm
 		x11-libs/libXcursor
 		x11-libs/libXdamage
 		x11-libs/libXext
@@ -189,6 +189,10 @@ src_prepare() {
 	use wayland && filter-lto
 
 	cmake_src_prepare
+
+	pushd deps/json11 &> /dev/null || die
+		eapply "${FILESDIR}/json11-1.0.0-include-cstdint.patch"
+	popd &> /dev/null || die
 }
 
 src_configure() {
@@ -251,8 +255,8 @@ src_install() {
 	cmake_src_install
 
 	# external plugins may need some things not installed by default, install them here
-	insinto /usr/include/obs/frontend/api
-	doins frontend/api/obs-frontend-api.h
+	insinto /usr/include/obs/UI/obs-frontend-api
+	doins UI/obs-frontend-api/obs-frontend-api.h
 }
 
 pkg_postinst() {
