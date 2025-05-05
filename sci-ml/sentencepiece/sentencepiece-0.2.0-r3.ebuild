@@ -3,7 +3,10 @@
 
 EAPI=8
 
-inherit cmake
+DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_EXT=1
+PYTHON_COMPAT=( python3_{11..13} )
+inherit cmake distutils-r1
 
 DESCRIPTION="Text tokenizer for Neural Network-based text generation"
 HOMEPAGE="https://github.com/google/sentencepiece"
@@ -18,6 +21,7 @@ RDEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-libs/protobuf:=
 	dev-util/google-perftools
+	!sci-ml/pysentencepiece
 "
 DEPEND="${RDEPEND}
 	dev-libs/darts
@@ -32,8 +36,6 @@ DOCS=(
 	doc/special_symbols.md
 )
 
-PATCHES=( "${FILESDIR}"/${P}-gcc15.patch )
-
 src_prepare() {
 	sed -i \
 		-e "s:third_party/darts_clone/darts.h:darts.h:" \
@@ -43,7 +45,9 @@ src_prepare() {
 		src/unigram_model.h \
 		src/builder.cc \
 		|| die
+	eapply "${FILESDIR}"/${P}-gcc15.patch
 	cmake_src_prepare
+	distutils-r1_src_prepare
 }
 
 src_configure() {
@@ -52,4 +56,15 @@ src_configure() {
 		-DSPM_PROTOBUF_PROVIDER=package
 	)
 	cmake_src_configure
+}
+
+src_compile() {
+	cmake_src_compile
+	cd python
+	distutils-r1_src_compile
+}
+
+python_test() {
+	cd python
+	${EPYTHON} test/sentencepiece_test.py || die
 }
