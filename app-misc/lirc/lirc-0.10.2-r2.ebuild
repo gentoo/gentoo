@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit linux-info python-single-r1 xdg-utils
+inherit autotools linux-info python-single-r1 xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
 HOMEPAGE="https://www.lirc.org/"
@@ -28,8 +28,8 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
-IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86"
+IUSE="audio +devinput doc ftdi gtk inputlirc selinux static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
-	ftdi? ( dev-embedded/libftdi:0 )
+	ftdi? ( dev-embedded/libftdi:1 )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:0 )
 	X? (
@@ -75,11 +75,12 @@ RDEPEND="
 		')
 	)
 	inputlirc? ( app-misc/inputlircd )
+	selinux? ( sec-policy/selinux-lircd )
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.10.1-unsafe-load.patch"
 	"${FILESDIR}/${PN}-0.10.1-runtimedirectory.patch"
+	"${FILESDIR}/${PN}-0.10.2-fix-python-pkg.patch"
 )
 
 MAKEOPTS+=" -j1"
@@ -93,12 +94,15 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Keep eautoreconf until a new release to fix Python macros
-	# bug #849788
 	if [[ -d "${WORKDIR}"/debian/patches ]] ; then
 		eapply $(sed -e 's:^:../debian/patches/:' ../debian/patches/series || die)
-		eautoreconf
 	fi
+
+	# https://bugs.gentoo.org/922209
+	sed -i -e "/^libpython / s|\$(libdir)/python\$(PYTHON_VERSION)|$(python_get_stdlib)|" Makefile.am || die
+	sed -i -e "/^libpython / s|\$(libdir)/python\$(PYTHON_VERSION)|$(python_get_stdlib)|" tools/Makefile.am || die
+
+	eautoreconf
 }
 
 src_configure() {
@@ -136,6 +140,9 @@ src_install() {
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
+
+	# https://bugs.gentoo.org/830522
+	python_optimize
 
 	# Avoid QA notice
 	rm -d "${ED}"/var/run/lirc || die
