@@ -81,7 +81,7 @@ RDEPEND="${PYTHON_DEPS}
 	color-management? ( media-libs/opencolorio:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( media-libs/embree:=[raymask] )
-	ffmpeg? ( <media-video/ffmpeg-7:=[encode(+),lame(-),jpeg2k?,opus,theora,vorbis,vpx,x264,xvid] )
+	ffmpeg? ( media-video/ffmpeg:=[encode(+),lame(-),jpeg2k?,opus,theora,vorbis,vpx,x264,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp[cxx] )
 	gnome? ( gui-libs/libdecor )
@@ -183,6 +183,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.9-python3.12.patch"
 	"${FILESDIR}/${PN}-4.2.9-python3.13.patch"
 	"${FILESDIR}/${PN}-4.2.9-python3.12_1.patch"
+	"${FILESDIR}/${PN}-4.3.2-ffmpeg7.patch"
 	"${FILESDIR}/${PN}-4.3.2-optix-8.1.0.patch"
 	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
 	"${FILESDIR}/${PN}-4.4.0-optix-compile-flags.patch"
