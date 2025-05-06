@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal libtool
+inherit dot-a multilib-minimal libtool
 
 MY_P="gc-${PV}"
 
@@ -31,6 +31,11 @@ src_prepare() {
 	elibtoolize
 }
 
+src_configure() {
+	lto-guarantee-fat
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	local config=(
 		--disable-docs
@@ -53,4 +58,6 @@ multilib_src_install_all() {
 	find "${ED}" -name '*.la' -delete || die
 
 	newman doc/gc.man GC_malloc.1
+
+	strip-lto-bytecode
 }
