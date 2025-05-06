@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ DEPEND="dev-lang/tcl:=
 	media-libs/opus
 	net-misc/curl
 	ogg? ( media-libs/libogg )
-	rtlsdr? ( net-wireless/rtl-sdr )
+	rtlsdr? ( net-wireless/rtl-sdr:= )
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
