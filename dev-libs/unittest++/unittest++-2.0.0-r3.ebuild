@@ -51,7 +51,6 @@ src_test() {
 	"${BUILD_DIR}/TestUnitTest++" || die "Tests failed"
 }
 
-
 src_install() {
 	cmake_src_install
 	strip-lto-bytecode
