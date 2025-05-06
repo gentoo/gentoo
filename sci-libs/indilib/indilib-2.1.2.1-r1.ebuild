@@ -33,7 +33,7 @@ RDEPEND="
 		media-libs/libogg
 		media-libs/libtheora
 	)
-	rtlsdr? ( net-wireless/rtl-sdr )
+	rtlsdr? ( net-wireless/rtl-sdr:= )
 	websocket? ( dev-libs/boost:= )
 "
 DEPEND="${RDEPEND}
