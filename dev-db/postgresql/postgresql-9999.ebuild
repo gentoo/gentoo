@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10,11,12,13} )
 LLVM_COMPAT=( {15..20} )
 LLVM_OPTIONAL=1
 
-inherit flag-o-matic linux-info llvm-r1 meson pam python-single-r1 \
+inherit dot-a flag-o-matic linux-info llvm-r1 meson pam python-single-r1 \
 		systemd tmpfiles
 
 DESCRIPTION="PostgreSQL RDBMS"
@@ -146,6 +146,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	# Fails to build with C23, fallback to the old default in < GCC 15
 	# for now: https://marc.info/?l=pgsql-bugs&m=173185132906874&w=2
 	append-cflags -std=gnu17
@@ -297,6 +299,7 @@ src_install() {
 	use static-libs || \
 		find "${ED}" -name '*.a' ! -name libpgport.a ! -name libpgcommon.a \
 			 -delete
+	strip-lto-bytecode "${ED}"
 
 	if use systemd; then
 		newbin "${FILESDIR}/${PN}-check-db-dir" "${PN}-${SLOT}-check-db-dir"
