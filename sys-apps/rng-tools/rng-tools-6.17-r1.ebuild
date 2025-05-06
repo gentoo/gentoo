@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ DEPEND="
 		dev-libs/jansson:=
 		net-misc/curl[ssl]
 	)
-	rtlsdr? ( net-wireless/rtl-sdr )
+	rtlsdr? ( net-wireless/rtl-sdr:= )
 	elibc_musl? ( sys-libs/argp-standalone )
 "
 RDEPEND="
@@ -38,10 +38,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-rngd )
 "
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-6.16-c99.patch
-)
 
 src_prepare() {
 	sed -i "s/sleep 30/sleep 120/g" tests/rngtestjitter.sh || die
