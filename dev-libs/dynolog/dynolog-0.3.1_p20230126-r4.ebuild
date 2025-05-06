@@ -57,7 +57,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-cpp/gflags
 	dev-cpp/gtest
-	dev-cpp/glog
+	dev-cpp/glog:=
 	dev-libs/pfs
 	net-misc/curl"
 RDEPEND="${DEPEND}"
