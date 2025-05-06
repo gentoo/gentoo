@@ -1,0 +1,31 @@
+From f9b99a73ca108e4073b4fe501a3426dd4e21bba6 Mon Sep 17 00:00:00 2001
+From: Huang Rui <vowstar@gmail.com>
+Date: Tue, 6 May 2025 16:38:59 +0800
+Subject: [PATCH] build(python): Update package name and add version in
+ setup.py
+
+- Change package name to use hyphens instead of spaces
+- Add version 1.1.0 to setup configuration
+
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+---
+ bindings/python/setup.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/bindings/python/setup.py b/bindings/python/setup.py
+index 57be7d584d5a..cac13595eec9 100644
+--- a/bindings/python/setup.py
++++ b/bindings/python/setup.py
+@@ -8,7 +8,8 @@ ext_modules.append(Extension('jsonparser',
+ 
+ 
+ setup(
+-    name = 'json-parser python wrapper',
++    name = 'json-parser-python-wrapper',
++    version = '1.1.0',
+     cmdclass = {'build_ext': build_ext},
+     ext_modules = ext_modules
+ )
+-- 
+2.49.0
+
