@@ -241,7 +241,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0.2-FindClang.patch"
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
-	"${FILESDIR}/${PN}-4.3.2-system-gtest.patch"
+	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
 	"${FILESDIR}/${PN}-4.4.0-optix-compile-flags.patch"
 )
 
