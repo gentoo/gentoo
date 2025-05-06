@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 virtualx
@@ -15,7 +15,10 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jopohl/urh.git"
 else
-	SRC_URI="https://github.com/jopohl/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+	COMMIT="544efd35ac4e0105cb63a31f2dc209c3834bc7bd"
+	SRC_URI="https://github.com/jopohl/urh/archive/${COMMIT}.tar.gz -> ${P}.gh.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
+	#SRC_URI="https://github.com/jopohl/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -35,7 +38,7 @@ DEPEND="${PYTHON_DEPS}
 		hackrf? ( net-libs/libhackrf:= )
 		limesdr? ( net-wireless/limesuite )
 		plutosdr? ( net-libs/libiio:= )
-		rtlsdr? ( net-wireless/rtl-sdr )
+		rtlsdr? ( net-wireless/rtl-sdr:= )
 		sdrplay? ( <net-wireless/sdrplay-3.0.0:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}

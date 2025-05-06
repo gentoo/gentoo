@@ -35,7 +35,7 @@ DEPEND="${PYTHON_DEPS}
 		hackrf? ( net-libs/libhackrf:= )
 		limesdr? ( net-wireless/limesuite )
 		plutosdr? ( net-libs/libiio:= )
-		rtlsdr? ( net-wireless/rtl-sdr )
+		rtlsdr? ( net-wireless/rtl-sdr:= )
 		sdrplay? ( <net-wireless/sdrplay-3.0.0:= )
 		uhd?    ( net-wireless/uhd:= )"
 RDEPEND="${DEPEND}
