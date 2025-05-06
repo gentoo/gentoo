@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/guillemjover.asc
-inherit flag-o-matic libtool multilib multilib-minimal verify-sig
+inherit dot-a flag-o-matic libtool multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -29,6 +29,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	lto-guarantee-fat
+
 	# Broken (still) with lld-17 (bug #922342, bug #915068)
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
@@ -43,6 +45,8 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install
+	# always strip due to libbsd-ctor.a
+	strip-lto-bytecode #"${ED}"
 
 	find "${ED}" -type f -name "*.la" -delete || die
 
