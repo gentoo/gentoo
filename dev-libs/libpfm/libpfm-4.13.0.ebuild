@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Hardware-based performance monitoring interface for Linux"
 HOMEPAGE="https://perfmon2.sourceforge.net"
@@ -28,6 +28,7 @@ src_prepare() {
 }
 
 src_compile() {
+	lto-guarantee-fat
 	# 'DBG=' unsets '-Werror' and other optional flags, bug #664294
 	emake AR="$(tc-getAR)" CC="$(tc-getCC)" DBG=
 }
@@ -43,4 +44,6 @@ src_install() {
 	if ! use static-libs ; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
+
+	strip-lto-bytecode
 }
