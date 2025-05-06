@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -294,6 +294,13 @@ JAVA_PKG_COMPILERS_CONF=${JAVA_PKG_COMPILERS_CONF:="/etc/java-config-2/build/com
 #	    "${PN}-connector-factory"
 #	)
 # @CODE
+
+# @ECLASS_VARIABLE: JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK
+# @PRE_INHERIT
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Helper variable to be used in packages which would otherwise have circular
+# dependencies with dev-java/java-dep-check once this is forced to BDEPEND.
 
 # @FUNCTION: java-pkg_doexamples
 # @USAGE: [--subdir <subdir>] <file1/dir1> [<file2> ...]
@@ -2995,6 +3002,16 @@ is-java-strict() {
 	[[ -n ${JAVA_PKG_STRICT} ]]
 	return $?
 }
+
+# Avoid having to emerge them separately every time
+if is-java-strict; then
+	# Needed for java-pkg_verify-classes
+	BDEPEND="${BDEPEND} dev-java/javatoolkit"
+	if [[ -z "${JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK}" ]]; then
+		# Needed for java-utils-2_pkg_preinst
+		BDEPEND="${BDEPEND} dev-java/java-dep-check:0" || die
+	fi
+fi
 
 # @FUNCTION: java-pkg_clean
 # @DESCRIPTION:
