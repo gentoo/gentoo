@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/guillemjover.asc
-inherit flag-o-matic multilib multilib-minimal verify-sig
+inherit flag-o-matic libtool multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -22,6 +22,11 @@ DEPEND="
 	>=sys-kernel/linux-headers-3.17
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	# Broken (still) with lld-17 (bug #922342, bug #915068)
