@@ -32,7 +32,7 @@ BDEPEND="
 		   media-gfx/graphviz )
 	ssl? ( dev-libs/openssl )
 	test? (
-		dev-lang/python
+		${PYTHON_DEPS}
 		app-shells/bash[net]
 	)
 "
