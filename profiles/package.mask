@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-08)
+# No more revdeps. Removal on 2025-05-31.
+kde-frameworks/kinit
+
 # Eray Aslan <eras@gentoo.org> (2025-05-08)
 # Needs testing
 =net-mail/dovecot-2.4*
