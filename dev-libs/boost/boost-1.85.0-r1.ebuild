@@ -147,6 +147,12 @@ ejam() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/943975
+	# https://github.com/boostorg/quickbook/issues/27
+	# https://github.com/boostorg/spirit/issues/800
+	use tools && filter-lto
+
 	lto-guarantee-fat
 
 	# Workaround for too many parallel processes requested, bug #506064
