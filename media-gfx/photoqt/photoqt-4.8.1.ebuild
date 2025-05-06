@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	barcode? ( media-libs/zxing-cpp:= )
 	chromecast? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep 'dev-python/pychromecast')
+		$(python_gen_cond_dep 'dev-python/pychromecast[${PYTHON_USEDEP}]')
 	)
 	devil? ( media-libs/devil )
 	exif? ( media-gfx/exiv2:=[bmff] )
