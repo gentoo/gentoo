@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake shell-completion verify-sig
+inherit cmake dot-a shell-completion verify-sig
 
 DESCRIPTION="Command-line tool for structural, content-preserving transformation of PDF files"
 HOMEPAGE="
@@ -64,6 +64,7 @@ src_unpack() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local crypto_provider=$(usex gnutls GNUTLS OPENSSL)
 	local crypto_provider_lowercase=${crypto_provider,,}
 
@@ -92,6 +93,7 @@ src_install() {
 	fi
 
 	cmake_src_install
+	strip-lto-bytecode
 
 	# Completions
 	dobashcomp completions/bash/qpdf
