@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit edo flag-o-matic multiprocessing python-any-r1 toolchain-funcs xdg
 
@@ -25,12 +25,12 @@ declare -A BUNDLED=(
 	# Heavily patched in an incompatible way.
 	# Issues related to using system ffmpeg historically.
 	# See bug #829595 and #922828
-	[ffmpeg]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/ffmpeg-7.1.tar.bz2;"
+	[ffmpeg]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/ffmpeg-7.1.1.tar.bz2;"
 	# Patched in an incompatible way
-	[x265]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
-	[x265_8bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
-	[x265_10bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
-	[x265_12bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265_4.1.tar.gz;x265"
+	[x265]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265-snapshot-20250224-13212.tar.gz;x265"
+	[x265_8bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265-snapshot-20250224-13212.tar.gz;x265"
+	[x265_10bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265-snapshot-20250224-13212.tar.gz;x265"
+	[x265_12bit]="https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/x265-snapshot-20250224-13212.tar.gz;x265"
 )
 
 bundle_src_uri() {
@@ -111,6 +111,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/handbrake-1.9.0-link-libdovi-properly.patch
 	"${FILESDIR}"/handbrake-1.9.0-include-vpl-properly.patch
+	"${FILESDIR}"/handbrake-1.9.2-set-ffmpeg-toolchain-explicitly.patch
+	"${FILESDIR}"/handbrake-1.9.2-allow-overriding-tools-via-env.patch
 )
 
 src_unpack() {
@@ -122,6 +124,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	mkdir download || die
 	for name in "${!BUNDLED[@]}"; do
 		IFS=$';' read -r uri use <<< ${BUNDLED[${name}]}
@@ -140,26 +144,15 @@ src_prepare() {
 	# noop fetching
 	sed -i -e '/DF..*.exe/ { s/= .*/= true/ }' make/include/tool.defs || die
 
-	# noop strip
-	sed -i \
-			-e "s/\(strip\s*= ToolProbe( 'STRIP.exe',\s*'strip',\s*\)'strip'/\1'true'/" \
-			make/configure.py || die
-
 	# Use whichever python is set by portage
 	sed -i -e "s/for p in .*/for p in ${EPYTHON}/" configure || die
-
-	for tool in ar ranlib libtool; do
-		# Detect system tools - bug 738110
-		sed -i \
-			-e "s/\(${tool}\s*= ToolProbe( '${tool^^}.exe',\s*'${tool}',\s*\)'${tool}'/\1os.environ.get('${tool^^}', '${tool}')/" \
-			make/configure.py || die
-	done
-
-	default
 }
 
 src_configure() {
-	tc-export AR RANLIB
+	tc-export CC CXX AR RANLIB NM
+
+	# noop strip
+	local -x STRIP="true"
 
 	# ODR violations, lto-type-mismatches
 	# bug #878899
