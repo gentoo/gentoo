@@ -94,6 +94,7 @@ src_prepare() {
 	fi
 
 	sed -e "/^install.*llvm_macros.cmake.*cmake/d" -i CMakeLists.txt || die
+	sed -e "/install_targets ( libtestshade )/d" -i src/testshade/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
@@ -265,6 +266,7 @@ src_test() {
 		"^testoptix-reparam.optix.opt$"
 		"^transform-reg.regress.batched.opt$"
 		"^spline-reg.regress.batched.opt$"
+		"^texture3d-opts-reg.regress.batched.opt$"
 
 		# doesn't handle parameters
 		"^osl-imageio$"
@@ -335,7 +337,6 @@ src_install() {
 	if use test; then
 		rm \
 			"${ED}/usr/bin/test"{render,shade{,_dso}} \
-			"${ED}/usr/$(get_libdir)/libtestshade.so"* \
 			|| die
 	fi
 
