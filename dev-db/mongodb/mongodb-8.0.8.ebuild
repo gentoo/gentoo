@@ -18,6 +18,7 @@ MY_P=mongo-${MY_PV}
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
 HOMEPAGE="https://www.mongodb.com"
 SRC_URI="https://github.com/mongodb/mongo/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-8.0.8-patches.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 SSPL-1"
@@ -68,14 +69,14 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/mongodb-4.4.29-no-enterprise.patch"
-	"${FILESDIR}/${PN}-5.0.2-no-compass.patch"
-	"${FILESDIR}/${PN}-7.0.2-sconstruct.patch"
-	"${FILESDIR}/${PN}-8.0.6-skip-reqs-check.patch"
-	"${FILESDIR}/${PN}-8.0.6-fixes-for-boost-1.85.patch"
-	"${FILESDIR}/${PN}-8.0.4-scons.patch"
-	"${FILESDIR}/${PN}-8.0.6-mozjs-remove-unused-constructor.patch"
-	"${FILESDIR}/${PN}-8.0.6-use-tenacity.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/mongodb-4.4.29-no-enterprise.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-5.0.2-no-compass.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-7.0.2-sconstruct.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-skip-reqs-check.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-fixes-for-boost-1.85.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.4-scons.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-mozjs-remove-unused-constructor.patch"
+	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-use-tenacity.patch"
 )
 
 python_check_deps() {
@@ -184,19 +185,19 @@ src_install() {
 	doman debian/mongo*.1
 	dodoc docs/building.md
 
-	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
-	newconfd "${FILESDIR}/${PN}.confd-r3" ${PN}
-	newinitd "${FILESDIR}/mongos.initd-r3" mongos
-	newconfd "${FILESDIR}/mongos.confd-r3" mongos
+	newinitd "${WORKDIR}/mongodb-8.0.8-patches/${PN}.initd-r3" ${PN}
+	newconfd "${WORKDIR}/mongodb-8.0.8-patches/${PN}.confd-r3" ${PN}
+	newinitd "${WORKDIR}/mongodb-8.0.8-patches/mongos.initd-r3" mongos
+	newconfd "${WORKDIR}/mongodb-8.0.8-patches/mongos.confd-r3" mongos
 
 	insinto /etc
-	newins "${FILESDIR}/${PN}.conf-r3" ${PN}.conf
-	newins "${FILESDIR}/mongos.conf-r2" mongos.conf
+	newins "${WORKDIR}/mongodb-8.0.8-patches/${PN}.conf-r3" ${PN}.conf
+	newins "${WORKDIR}/mongodb-8.0.8-patches/mongos.conf-r2" mongos.conf
 
-	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
+	systemd_newunit "${WORKDIR}/mongodb-8.0.8-patches/${PN}.service-r1" "${PN}.service"
 
 	insinto /etc/logrotate.d/
-	newins "${FILESDIR}/${PN}.logrotate" ${PN}
+	newins "${WORKDIR}/mongodb-8.0.8-patches/${PN}.logrotate" ${PN}
 
 	# see bug #526114
 	pax-mark emr "${ED}"/usr/bin/{mongo,mongod,mongos}

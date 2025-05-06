@@ -18,6 +18,7 @@ MY_P=mongo-${MY_PV}
 DESCRIPTION="A high-performance, open source, schema-free document-oriented database"
 HOMEPAGE="https://www.mongodb.com"
 SRC_URI="https://github.com/mongodb/mongo/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-5.0.30-patches.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 SSPL-1"
@@ -63,23 +64,23 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.4.1-boost.patch"
-	"${FILESDIR}/${PN}-5.0.30-gcc-11.patch"
-	"${FILESDIR}/${PN}-5.0.2-fix-scons.patch"
-	"${FILESDIR}/${PN}-5.0.2-no-compass.patch"
-	"${FILESDIR}/${PN}-5.0.2-skip-no-exceptions.patch"
-	"${FILESDIR}/${PN}-5.0.2-skip-reqs-check.patch"
-	"${FILESDIR}/${PN}-5.0.2-boost-1.79.patch"
-	"${FILESDIR}/${PN}-5.0.5-no-force-lld.patch"
-	"${FILESDIR}/${PN}-4.4.10-boost-1.81.patch"
-	"${FILESDIR}/${PN}-5.0.5-boost-1.81-extra.patch"
-	"${FILESDIR}/${PN}-5.0.16-arm64-assert.patch"
-	"${FILESDIR}/${PN}-4.4.29-no-enterprise.patch"
-	"${FILESDIR}/${PN}-5.0.26-boost-1.85.patch"
-	"${FILESDIR}/${PN}-5.0.26-boost-1.85-extra.patch"
-	"${FILESDIR}/${PN}-5.0.30-gcc-15.patch"
-	"${FILESDIR}/${PN}-5.0.26-scons.patch"
-	"${FILESDIR}/${PN}-5.0.26-mozjs-remove-unused-constructor.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-4.4.1-boost.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.30-gcc-11.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.2-fix-scons.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.2-no-compass.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.2-skip-no-exceptions.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.2-skip-reqs-check.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.2-boost-1.79.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.5-no-force-lld.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-4.4.10-boost-1.81.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.5-boost-1.81-extra.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.16-arm64-assert.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-4.4.29-no-enterprise.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.26-boost-1.85.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.26-boost-1.85-extra.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.30-gcc-15.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.26-scons.patch"
+	"${WORKDIR}/mongodb-5.0.30-patches/${PN}-5.0.26-mozjs-remove-unused-constructor.patch"
 )
 
 python_check_deps() {
@@ -185,19 +186,19 @@ src_install() {
 	doman debian/mongo*.1
 	dodoc README docs/building.md
 
-	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
-	newconfd "${FILESDIR}/${PN}.confd-r3" ${PN}
-	newinitd "${FILESDIR}/mongos.initd-r3" mongos
-	newconfd "${FILESDIR}/mongos.confd-r3" mongos
+	newinitd "${WORKDIR}/mongodb-5.0.30-patches/${PN}.initd-r3" ${PN}
+	newconfd "${WORKDIR}/mongodb-5.0.30-patches/${PN}.confd-r3" ${PN}
+	newinitd "${WORKDIR}/mongodb-5.0.30-patches/mongos.initd-r3" mongos
+	newconfd "${WORKDIR}/mongodb-5.0.30-patches/mongos.confd-r3" mongos
 
 	insinto /etc
-	newins "${FILESDIR}/${PN}.conf-r3" ${PN}.conf
-	newins "${FILESDIR}/mongos.conf-r2" mongos.conf
+	newins "${WORKDIR}/mongodb-5.0.30-patches/${PN}.conf-r3" ${PN}.conf
+	newins "${WORKDIR}/mongodb-5.0.30-patches/mongos.conf-r2" mongos.conf
 
-	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
+	systemd_newunit "${WORKDIR}/mongodb-5.0.30-patches/${PN}.service-r1" "${PN}.service"
 
 	insinto /etc/logrotate.d/
-	newins "${FILESDIR}/${PN}.logrotate" ${PN}
+	newins "${WORKDIR}/mongodb-5.0.30-patches/${PN}.logrotate" ${PN}
 
 	# see bug #526114
 	pax-mark emr "${ED}"/usr/bin/{mongo,mongod,mongos}
