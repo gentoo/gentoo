@@ -67,7 +67,7 @@ src_prepare() {
 src_configure() {
 	configuring() {
 		econf \
-			PYTHONVERS="${PYTHON}" \
+			--with-python="${EPYTHON}" \
 			$(use_with gpm gpm-support) \
 			$(use_with tcl) \
 			$(use_enable nls)
@@ -76,10 +76,7 @@ src_configure() {
 }
 
 src_compile() {
-	building() {
-		emake PYTHONVERS="${EPYTHON}"
-	}
-	python_foreach_impl run_in_build_dir building
+	python_foreach_impl run_in_build_dir emake
 }
 
 src_install() {
@@ -87,7 +84,6 @@ src_install() {
 		emake \
 			DESTDIR="${D}" \
 			PYTHON_SITEDIR="$(python_get_sitedir)" \
-			PYTHONVERS="${EPYTHON}" \
 			install
 		python_optimize
 	}
