@@ -53,6 +53,7 @@ IUSE="amf +fdk gui libdovi numa nvenc qsv x265"
 
 REQUIRED_USE="numa? ( x265 )"
 
+# <media-libs/svt-av1-3.0.0: breaking change
 COMMON_DEPEND="
 	app-arch/bzip2
 	>=app-arch/xz-utils-5.2.6
@@ -68,6 +69,7 @@ COMMON_DEPEND="
 	>=media-libs/libvpx-1.12.0:=
 	media-libs/opus
 	>=media-libs/speex-1.2.1
+	<media-libs/svt-av1-3.0.0
 	>=media-libs/svt-av1-1.4.1:=
 	>=media-libs/x264-0.0.20220222:=
 	>=media-libs/zimg-3.0.4
