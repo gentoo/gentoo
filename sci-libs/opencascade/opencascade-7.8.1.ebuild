@@ -90,6 +90,9 @@ DEPEND="
 "
 BDEPEND="
 	doc? ( app-text/doxygen[dot] )
+	examples? (
+		dev-qt/linguist-tools:5
+	)
 	inspector? (
 		dev-qt/linguist-tools:5
 	)
