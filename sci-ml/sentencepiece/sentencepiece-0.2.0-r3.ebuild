@@ -48,6 +48,13 @@ src_prepare() {
 	eapply "${FILESDIR}"/${P}-gcc15.patch
 	cmake_src_prepare
 	distutils-r1_src_prepare
+	sed \
+		-e 's|@libprotobuf_lite@|protobuf-lite|' \
+		-e "s|@includedir_for_pc_file@|${S}/src|" \
+		-e "s|@libdir_for_pc_file@|${BUILD_DIR}/src|" \
+		${PN}.pc.in \
+		> python/${PN}.pc \
+		|| die
 }
 
 src_configure() {
@@ -61,10 +68,19 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	cd python
-	distutils-r1_src_compile
+	PKG_CONFIG_PATH=. distutils-r1_src_compile
+}
+
+src_test() {
+	LD_LIBRARY_PATH=${BUILD_DIR}/src distutils-r1_src_test
 }
 
 python_test() {
 	cd python
 	${EPYTHON} test/sentencepiece_test.py || die
+}
+
+src_install() {
+	cmake_src_install
+	distutils-r1_src_install
 }
