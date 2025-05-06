@@ -1,9 +1,9 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit dot-a flag-o-matic toolchain-funcs
 
 DESCRIPTION="Stand-alone build of libbpf from the Linux kernel"
 HOMEPAGE="https://github.com/libbpf/libbpf"
@@ -43,6 +43,7 @@ PATCHES=(
 src_configure() {
 	append-cflags -fPIC
 	tc-export CC AR PKG_CONFIG
+	lto-guarantee-fat
 	export LIBSUBDIR="$(get_libdir)"
 	export PREFIX="${EPREFIX}/usr"
 	export V=1
@@ -57,6 +58,8 @@ src_install() {
 	if ! use static-libs; then
 		find "${ED}" -name '*.a' -delete || die
 	fi
+
+	strip-lto-bytecode
 
 	dodoc "${DOCS[@]}"
 
