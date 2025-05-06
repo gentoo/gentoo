@@ -14,7 +14,7 @@ S="${WORKDIR}/age-${PV}"
 LICENSE="BSD"
 #RESTRICT+=" test"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 src_compile() {
 	ego build -ldflags "-X main.Version=${PV}" -o . filippo.io/age/cmd/... || die
