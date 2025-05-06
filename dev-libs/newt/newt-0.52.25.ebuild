@@ -83,7 +83,6 @@ src_install() {
 	installit() {
 		emake \
 			DESTDIR="${D}" \
-			PYTHON_SITEDIR="$(python_get_sitedir)" \
 			install
 		python_optimize
 	}
