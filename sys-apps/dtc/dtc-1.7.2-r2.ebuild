@@ -69,14 +69,15 @@ src_configure() {
 		$(meson_feature yaml)
 	)
 
-	# bug #909366
-	use static-libs && emesonargs+=( -Dstatic-build=true )
-
 	meson_src_configure
 }
 
 src_install() {
 	meson_src_install
+	if use !static-libs; then
+		# bug #907940
+		rm "${ED}/usr/$(get_libdir)"/*.a || die
+	fi
 
 	use python && python_optimize "${ED}"
 }
