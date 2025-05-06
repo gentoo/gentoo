@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib toolchain-funcs multilib-minimal
+inherit dot-a flag-o-matic multilib toolchain-funcs multilib-minimal
 
 NSPR_VER="4.35"
 RTM_NAME="NSS_${PV//./_}_RTM"
@@ -87,6 +87,7 @@ src_prepare() {
 		cmd/platlibs.mk || die
 
 	multilib_copy_sources
+	lto-guarantee-fat
 
 	strip-flags
 }
@@ -403,6 +404,7 @@ multilib_src_install() {
 		done
 		popd >/dev/null || die
 	fi
+	strip-lto-bytecode
 }
 
 pkg_postinst() {
