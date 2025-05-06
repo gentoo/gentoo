@@ -316,6 +316,9 @@ PATCHES=(
 	# add qt6 backend as possible fallback for gtk-based desktop environments:
 	# https://bugs.gentoo.org/950170
 	"${FILESDIR}/${PN}-25.2-vcl-backend-fallback.patch"
+
+	# git master:
+	"${FILESDIR}/${P}-poppler-25.05.patch"
 )
 
 _check_reqs() {
