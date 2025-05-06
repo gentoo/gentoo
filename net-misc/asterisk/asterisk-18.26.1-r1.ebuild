@@ -35,7 +35,7 @@ DEPEND="acct-user/asterisk
 	dev-libs/popt
 	>=dev-libs/jansson-2.11:=
 	dev-libs/libedit
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	sys-apps/util-linux
 	sys-libs/zlib
