@@ -23,6 +23,7 @@ RESTRICT="binchecks strip test"
 BDEPEND="sys-devel/gettext"
 
 RDEPEND="
+	>=sys-apps/util-linux-2.41
 	>=app-shells/push-2.0
 	virtual/libintl
 	|| ( sys-apps/openrc sys-apps/systemd )
