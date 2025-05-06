@@ -64,7 +64,7 @@ done
 
 # Bare metal targets which can be built on the host system and have no
 # dependency on compiler runtime, libc and unwinder.
-ALL_RUST_SYSROOTS=( wasm )
+ALL_RUST_SYSROOTS=( bpf wasm )
 ALL_RUST_SYSROOTS=( "${ALL_RUST_SYSROOTS[@]/#/rust_sysroots_}" )
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
@@ -137,6 +137,7 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
+	rust_sysroots_bpf? ( llvm_targets_BPF )
 	rust_sysroots_wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
 "
@@ -199,6 +200,7 @@ pre_build_checks() {
 			M=$(( $(usex ${ltarget} 256 0) + ${M} ))
 		done
 	fi
+	M=$(( $(usex rust_sysroots_bpf 256 0) + ${M} ))
 	M=$(( $(usex rust_sysroots_wasm 256 0) + ${M} ))
 	M=$(( $(usex debug 2 1) * ${M} ))
 	eshopts_push -s extglob
@@ -358,6 +360,9 @@ src_configure() {
 	for v in $(multilib_get_enabled_abi_pairs); do
 		rust_targets+=",\"$(rust_abi $(get_abi_CHOST ${v##*.}))\""
 	done
+	if use rust_sysroots_bpf; then
+		rust_targets+=",\"bpfeb-unknown-none\",\"bpfel-unknown-none\""
+	fi
 	if use rust_sysroots_wasm; then
 		rust_targets+=",\"wasm32-unknown-unknown\""
 		if use system-llvm; then
