@@ -217,12 +217,6 @@ dev-python/ipaddr
 # slot instead. Masked for removal on 2025-05-14.
 dev-ruby/childprocess:2
 
-# Michał Górny <mgorny@gentoo.org> (2025-04-09)
-# Still uses legacy distutils-r1 mode, and lacks Python 3.13 target.
-# No reply from the maintainer for a year now.
-# Removal on 2025-05-09.  Bug #909900.
-app-text/nfoview
-
 # Matt Turner <mattst88@gentoo.org> (2025-04-04)
 # Package is dead (last release in 1999).
 # Not relevant today: purpose is to not overload a very slow system with
