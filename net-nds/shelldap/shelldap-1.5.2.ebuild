@@ -14,7 +14,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="+readline sasl +ssl"
+IUSE="+readline sasl"
 
 RDEPEND="dev-perl/Algorithm-Diff
 	sasl? ( dev-perl/Authen-SASL )
