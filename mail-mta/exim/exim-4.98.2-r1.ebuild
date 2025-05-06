@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit db-use flag-o-matic toolchain-funcs pam systemd
 
@@ -26,7 +26,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
 dsn gdbm gnutls idn ipv6 ldap lmtp maildir mbx
 mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux
-socks5 spf sqlite srs +ssl syslog tdb tcpd +tpda X"
+socks5 spf sqlite srs +ssl syslog tdb tcpd +tpda"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
@@ -81,18 +81,11 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	redis? ( dev-libs/hiredis:= )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	dmarc? ( mail-filter/opendmarc:= )
-	X? (
-		x11-libs/libX11
-		x11-libs/libXmu
-		x11-libs/libXt
-		x11-libs/libXaw
-	)
 	sqlite? ( dev-db/sqlite:= )
 	radius? ( net-dialup/freeradius-client )
 	virtual/libcrypt:=
 	virtual/libiconv
 	"
-	# added X check for #57206
 BDEPEND="virtual/pkgconfig"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
@@ -333,15 +326,6 @@ src_configure() {
 		EOC
 	fi
 
-	# Exim monitor, enabled by default, controlled via X USE-flag,
-	# disable if not requested, bug #46778
-	if use X; then
-		cp ../exim_monitor/EDITME eximon.conf || die
-		cat >> Makefile <<- EOC
-			EXIM_MONITOR=eximon.bin
-		EOC
-	fi
-
 	#
 	# features
 	#
@@ -550,10 +534,6 @@ src_compile() {
 src_install() {
 	cd "${S}"/build-exim-gentoo || die
 	dosbin exim
-	if use X; then
-		dosbin eximon.bin
-		dosbin eximon
-	fi
 	fperms 4755 /usr/sbin/exim
 
 	dosym exim /usr/sbin/sendmail
@@ -635,8 +615,6 @@ pkg_postinst() {
 	fi
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	einfo
-	elog "Note that this release contains a tainted variable check that"
-	elog "is likely to break your configuration used with Exim 4.93 and before."
-	elog "Please check your transports for occurences of \$local_part, and"
-	elog "use a replacement like \$local_part_data where possible."
+	elog "Support for eximon via USE=X was dropped in this ebuild."
+	elog "The eximon code no longer compiles using recent compilers."
 }
