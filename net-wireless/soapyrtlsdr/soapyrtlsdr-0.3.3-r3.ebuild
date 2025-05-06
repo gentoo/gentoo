@@ -21,7 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="net-wireless/soapysdr:=
-		net-wireless/rtl-sdr"
+		net-wireless/rtl-sdr:="
 DEPEND="${RDEPEND}"
 BDEPEND=""
 
