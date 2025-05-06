@@ -3,21 +3,36 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..12} )
 # NOTE must match media-libs/osl
 LLVM_COMPAT=( {17..18} )
 LLVM_OPTIONAL=1
 
-inherit check-reqs cmake cuda flag-o-matic llvm-r1 pax-utils python-single-r1 toolchain-funcs xdg-utils
+inherit check-reqs cmake cuda flag-o-matic llvm-r1 pax-utils python-single-r1 toolchain-funcs xdg-utils virtualx
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
 
+# # NOTE BLENDER_VERSION
+# https://projects.blender.org/blender/blender/src/branch/main/source/blender/blenkernel/BKE_blender_version.h
+# BLENDER_RELEASE=4.4
+BLENDER_BRANCH="$(ver_cut 1-2)"
+
 if [[ ${PV} = *9999* ]] ; then
-	EGIT_LFS="yes"
 	inherit git-r3
+
+	EGIT_LFS="yes"
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
 	EGIT_SUBMODULES=( '*' '-lib/*' )
+	if ver_test "${BLENDER_BRANCH}" -lt "4.2"; then
+		ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
+	fi
+
+	# if ver_test "${BLENDER_BRANCH}" -lt "${BLENDER_RELEASE}"; then
+	if [[ ${PV} != 9999* ]] ; then
+		EGIT_BRANCH="blender-v${BLENDER_BRANCH}-release"
+	fi
+
 	RESTRICT="!test? ( test )"
 else
 	SRC_URI="
@@ -32,14 +47,20 @@ else
 fi
 
 LICENSE="GPL-3+ cycles? ( Apache-2.0 )"
-SLOT="${PV%.*}"
+SLOT="${BLENDER_BRANCH}"
+
+# NOTE +openpgl breaks on very old amd64 hardware
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip jack
 	jemalloc jpeg2k man +nanovdb ndof nls +oidn openal +openexr +openmp +openpgl
-	+opensubdiv +openvdb optix osl +otf +pdf +potrace +pugixml pulseaudio
-	renderdoc sdl +sndfile +tbb test +tiff valgrind vulkan wayland +webp X
+	+opensubdiv +openvdb optix osl +pdf +potrace +pugixml pulseaudio
+	renderdoc sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
 "
+
+if [[ ${PV} = *9999* ]] ; then
+	IUSE+="experimental"
+fi
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	alembic? ( openexr )
@@ -134,7 +155,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-util/glslang
 		media-libs/vulkan-loader
 	)
-	otf? (
+	truetype? (
 		media-libs/harfbuzz
 	)
 	renderdoc? (
@@ -181,9 +202,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
 	"${FILESDIR}/${PN}-4.2.9-python3.12.patch"
-	"${FILESDIR}/${PN}-4.2.9-python3.13.patch"
-	"${FILESDIR}/${PN}-4.2.9-python3.12_1.patch"
 	"${FILESDIR}/${PN}-4.3.2-ffmpeg7.patch"
+	"${FILESDIR}/${PN}-4.3.2-openvdb-12.patch"
 	"${FILESDIR}/${PN}-4.3.2-optix-8.1.0.patch"
 	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
 	"${FILESDIR}/${PN}-4.4.0-optix-compile-flags.patch"
@@ -199,14 +219,10 @@ blender_check_requirements() {
 
 blender_get_version() {
 	# Get blender version from blender itself.
+	# NOTE maps x0y to x.y
+	# TODO this can potentially break for x > 9 and y > 9
 	BV=$(grep "BLENDER_VERSION " source/blender/blenkernel/BKE_blender_version.h | cut -d " " -f 3; assert)
-	if ((${BV:0:1} < 3)) ; then
-		# Add period (290 -> 2.90).
-		BV=${BV:0:1}.${BV:1}
-	else
-		# Add period and skip the middle number (301 -> 3.1)
-		BV=${BV:0:1}.${BV:2}
-	fi
+	BV=${BV:0:1}.${BV:2}
 }
 
 pkg_pretend() {
@@ -228,14 +244,20 @@ src_unpack() {
 			EGIT_SUBMODULES+=( '-tests/*' )
 		fi
 		git-r3_src_unpack
+
+		# NOTE Add-ons bundled with Blender releases up to Blender 4.1. Blender 4.2 LTS and later include only a handful
+		#      of core add-ons, while others are part of the Extensions Platform at https://extensions.blender.org
+		ver_test "${BLENDER_BRANCH}" -ge "4.2" && return
+
+		git-r3_fetch "${ADDONS_EGIT_REPO_URI}"
+		git-r3_checkout "${ADDONS_EGIT_REPO_URI}" "${S}/scripts/addons"
 	else
 		default
 
-		# BUG upstream returns LFS references instead of files
-		# if use test; then
-		# 	mkdir -p "${S}/tests/data/" || die
-		# 	mv blender-test-data/* "${S}/tests/data/" || die
-		# fi
+		if use test; then
+			mkdir -p "${S}/tests/data/" || die
+			mv blender-test-data/* "${S}/tests/data/" || die
+		fi
 	fi
 }
 
@@ -265,22 +287,45 @@ src_prepare() {
 		-e "s|Icon=blender|Icon=blender-${BV}|" \
 		-i release/freedesktop/blender.desktop || die
 
-	sed -e "s|\${CMAKE_INSTALL_PREFIX}/\${BLENDER_BIN}|${T}/usr/\${BLENDER_BIN}|g" -i source/creator/CMakeLists.txt || die
+	sed \
+		-e "/CMAKE_INSTALL_PREFIX_WITH_CONFIG/{s|\${CMAKE_INSTALL_PREFIX}|${T}/usr|g}" \
+		-i CMakeLists.txt \
+		|| die CMAKE_INSTALL_PREFIX_WITH_CONFIG
 
 	mv \
-		release/freedesktop/icons/scalable/apps/blender.svg \
-		"release/freedesktop/icons/scalable/apps/blender-${BV}.svg" || die
+		"release/freedesktop/icons/scalable/apps/blender.svg" \
+		"release/freedesktop/icons/scalable/apps/blender-${BV}.svg" \
+		|| die
 	mv \
-		release/freedesktop/icons/symbolic/apps/blender-symbolic.svg \
-		"release/freedesktop/icons/symbolic/apps/blender-${BV}-symbolic.svg" || die
-	mv release/freedesktop/blender.desktop "release/freedesktop/blender-${BV}.desktop" || die
-	mv release/freedesktop/org.blender.Blender.metainfo.xml "release/freedesktop/blender-${BV}.metainfo.xml"
-	mv release/freedesktop/org.blender.Blender.appdata.xml "release/freedesktop/blender-${BV}.appdata.xml"
+		"release/freedesktop/icons/symbolic/apps/blender-symbolic.svg" \
+		"release/freedesktop/icons/symbolic/apps/blender-${BV}-symbolic.svg" \
+		|| die
+	mv \
+		"release/freedesktop/blender.desktop" \
+		"release/freedesktop/blender-${BV}.desktop" \
+		|| die
+
+	local info_file test_file
+	if ver_test -ge 4; then
+		info_file="metainfo"
+		test_file="build_files/cmake/testing.cmake"
+	else
+		info_file="appdata"
+		test_file="build_files/cmake/Modules/GTestTesting.cmake"
+	fi
+	mv \
+		"release/freedesktop/org.blender.Blender.${info_file}.xml" \
+		"release/freedesktop/blender-${BV}.${info_file}.xml" \
+		|| die
 
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
-		sed -e "s|set(TEST_INSTALL_DIR.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i tests/CMakeLists.txt || die
-		sed -e "s|string(REPLACE.*|set(TEST_INSTALL_DIR ${T}/usr)|g" -i build_files/cmake/testing.cmake || die
+		sed \
+			-e "/string(REPLACE.*TEST_INSTALL_DIR/{s|\${CMAKE_INSTALL_PREFIX}|${T}/usr|g}" \
+			-i "${test_file}" \
+			|| die "REPLACE.*TEST_INSTALL_DIR"
+
+		sed '1i #include <cstdint>' -i extern/gtest/src/gtest-death-test.cc || die
 	fi
 
 	if use vulkan; then
@@ -301,8 +346,15 @@ src_configure() {
 	blender_get_version
 
 	local mycmakeargs=(
-		-DWITH_LIBS_PRECOMPILED=no
-		-DBUILD_SHARED_LIBS=no
+		-DCMAKE_POLICY_DEFAULT_CMP0177="OLD"
+
+		# we build a host-specific binary
+		-DWITH_INSTALL_PORTABLE="no"
+		-DWITH_CPU_CHECK="no"
+
+		-DWITH_LIBS_PRECOMPILED="no"
+		-DBUILD_SHARED_LIBS="no" # this over-ridden by cmake.eclass
+
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DPYTHON_VERSION="${EPYTHON/python/}"
@@ -311,7 +363,6 @@ src_configure() {
 		-DWITH_BULLET=$(usex bullet)
 		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
 		-DWITH_CODEC_SNDFILE=$(usex sndfile)
-		-DWITH_CPU_CHECK=no
 
 		-DWITH_CYCLES=$(usex cycles)
 
@@ -337,15 +388,14 @@ src_configure() {
 		-DWITH_GHOST_X11=$(usex X)
 		-DWITH_GMP=$(usex gmp)
 		-DWITH_GTESTS=$(usex test)
-		-DWITH_HARFBUZZ="$(usex otf)"
+		-DWITH_HARFBUZZ="$(usex truetype)"
 		-DWITH_HARU=$(usex pdf)
-		-DWITH_HEADLESS=$($(use X || use wayland) && echo OFF || echo ON)
+		-DWITH_HEADLESS="$(usex !X "$(usex !wayland)")"
 		-DWITH_HYDRA="no" # TODO: Package Hydra
 		-DWITH_IMAGE_OPENEXR=$(usex openexr)
 		-DWITH_IMAGE_OPENJPEG=$(usex jpeg2k)
 		-DWITH_IMAGE_WEBP=$(usex webp)
 		-DWITH_INPUT_NDOF=$(usex ndof)
-		-DWITH_INSTALL_PORTABLE="no"
 		-DWITH_INTERNATIONAL=$(usex nls)
 		-DWITH_JACK=$(usex jack)
 		-DWITH_MATERIALX="no" # TODO: Package MaterialX
@@ -365,20 +415,21 @@ src_configure() {
 		-DWITH_POTRACE=$(usex potrace)
 		-DWITH_PUGIXML=$(usex pugixml)
 		-DWITH_PULSEAUDIO=$(usex pulseaudio)
-		-DWITH_PYTHON_INSTALL=no
-		-DWITH_PYTHON_INSTALL_NUMPY=no
-		-DWITH_PYTHON_INSTALL_ZSTANDARD=no
+		-DWITH_PYTHON_INSTALL="no"
+		-DWITH_PYTHON_INSTALL_NUMPY="no"
+		-DWITH_PYTHON_INSTALL_ZSTANDARD="no"
 		-DWITH_RENDERDOC="$(usex renderdoc)"
 		-DWITH_SDL=$(usex sdl)
-		-DWITH_STATIC_LIBS=no
-		-DWITH_STRICT_BUILD_OPTIONS=yes
-		-DWITH_SYSTEM_EIGEN3=yes
-		-DWITH_SYSTEM_FREETYPE=yes
-		-DWITH_SYSTEM_LZO=yes
+		-DWITH_STATIC_LIBS="no"
+		-DWITH_STRICT_BUILD_OPTIONS="yes"
+		-DWITH_SYSTEM_EIGEN3="yes"
+		-DWITH_SYSTEM_FREETYPE="yes"
+		-DWITH_SYSTEM_LZO="yes"
 		-DWITH_TBB=$(usex tbb)
 		-DWITH_USD="no" # TODO: Package USD
 		-DWITH_VULKAN_BACKEND="$(usex vulkan)"
-		-DWITH_XR_OPENXR=no
+		-DWITH_XR_OPENXR="no"
+		-DWITH_UNITY_BUILD="no"
 	)
 
 	if has_version ">=dev-python/numpy-2"; then
@@ -390,14 +441,24 @@ src_configure() {
 
 	# requires dev-vcs/git
 	if [[ ${PV} = *9999* ]] ; then
-		mycmakeargs+=( -DWITH_BUILDINFO="yes" )
+		mycmakeargs+=(
+			-DWITH_BUILDINFO="yes"
+			-DWITH_EXPERIMENTAL_FEATURES="$(usex experimental)"
+		)
 	else
 		mycmakeargs+=( -DWITH_BUILDINFO="no" )
 	fi
 
 	if use cuda; then
+		if [[ -z "${CUDAARCHS}" ]]; then
+			CUDAARCHS="all-major"
+		else
+			CUDAARCHS="sm_${CUDAARCHS}"
+		fi
+
 		mycmakeargs+=(
 			-DCUDA_NVCC_FLAGS="--compiler-bindir;$(cuda_gccdir)"
+			-DCYCLES_CUDA_BINARIES_ARCH="${CUDAARCHS}"
 		)
 	fi
 
@@ -426,7 +487,7 @@ src_configure() {
 	use arm64 && append-flags -flax-vector-conversions
 
 	append-cflags "$(usex debug '-DDEBUG' '-DNDEBUG')"
-	append-cppflags "$(usex debug '-DDEBUG' '-DNDEBUG')"
+	append-cxxflags "$(usex debug '-DDEBUG' '-DNDEBUG')"
 
 	if tc-is-gcc ; then
 		# These options only exist when GCC is detected.
@@ -454,7 +515,8 @@ src_configure() {
 			use hip && CYCLES_TEST_DEVICES+=( "HIP" )
 		fi
 		mycmakeargs+=(
-			-DCYCLES_TEST_DEVICES:STRING="$(local IFS=";"; echo "${CYCLES_TEST_DEVICES[*]}")"
+			-DCMAKE_INSTALL_PREFIX_WITH_CONFIG="${T}/usr"
+			-DCYCLES_TEST_DEVICES="$(local IFS=";"; echo "${CYCLES_TEST_DEVICES[*]}")"
 			-DWITH_COMPOSITOR_REALTIME_TESTS=yes
 			-DWITH_GPU_DRAW_TESTS=yes
 			-DWITH_GPU_RENDER_TESTS=yes
@@ -470,16 +532,13 @@ src_test() {
 	DESTDIR="${T}" cmake_build install
 
 	blender_get_version
-	# By default, blender will look for system scripts and data in
-	# /usr/share/, but until this is installed, they are not necessarily
-	# available there.  Use this to have blender search the intermediate
-	# install directory instead.
-	export BLENDER_SYSTEM_RESOURCES="${T}/usr/share/blender/${BV}"
+	# Define custom blender data/script file paths not be able to find them otherwise during testing.
+	# (Because the data is in the image directory and it will default to look in /usr/share)
+	local -x BLENDER_SYSTEM_RESOURCES="${T%/}/usr/share/blender/${BV}"
 
-	# Brake check:  Make sure the above path is valid.
-	# If not, blender will fallback to the default path which is not what
-	# we want.
-	[ -d "$BLENDER_SYSTEM_RESOURCES" ] || die "The custom script path is invalid, fix the ebuild!"
+	# Sanity check that the script and datafile path is valid.
+	# If they are not vaild, blender will fallback to the default path which is not what we want.
+	[[ -d "${BLENDER_SYSTEM_RESOURCES}" ]] || die "The custom resources path is invalid, fix the ebuild!"
 
 	if use cuda; then
 		cuda_add_sandbox -w
@@ -487,13 +546,58 @@ src_test() {
 		addwrite "/dev/char/"
 	fi
 
-	if use X; then
+	addwrite "/dev/char/"
+	addwrite "/dev/nvidiactl"
+	addwrite "/dev/nvidia0"
+	addwrite "/dev/nvidia-modeset"
+	addwrite "/dev/dri/"
+
+	local -x CMAKE_SKIP_TESTS=(
+		draw
+		gpu
+		script_load_modules
+		script_bundled_modules
+		script_pyapi_bpy_driver_secure_eval
+		blendfile_versioning_5_over_8
+		blendfile_versioning_7_over_8
+		cycles_motion_blur_cpu
+		cycles_volume_cpu
+		cycles_motion_blur_cuda
+		cycles_volume_cuda
+		eevee_next_grease_pencil
+		eevee_next_light
+		eevee_next_motion_blur
+		eevee_next_pointcloud
+		eevee_next_render_layer
+		eevee_next_volume
+		workbench_motion_blur
+		workbench_volume
+		compositor_multiple_node_setups_realtime
+		compositor_distort_realtime
+	)
+
+	if use wayland; then
 		xdg_environment_reset
+
+		local compositor exit_code
+		local logfile=${T}/weston.log
+		weston --xwayland --backend=headless --socket=wayland-5 --idle-time=0 2>"${logfile}" &
+		compositor=$!
+		export WAYLAND_DISPLAY=wayland-5
+		sleep 1 # wait for xwayland to be up
+		export DISPLAY=$(grep "xserver listening on display" "${logfile}" | cut -d ' ' -f 5)
+
+		cmake_src_test
+
+		exit_code=$?
+		kill "${compositor}"
+
+	elif use X; then
+		xdg_environment_reset
+		virtx cmake_src_test
+	else
+		cmake_src_test
 	fi
-
-	addwrite /dev/dri
-
-	cmake_src_test
 
 	# Clean up the image directory for src_install
 	rm -fr "${T}/usr" || die
@@ -518,16 +622,9 @@ src_install() {
 	fi
 
 	if use doc; then
-		# By default, blender will look for system scripts and data in
-		# /usr/share/, but until this is installed, they are not necessarily
-		# available there.  Use this to have blender search the intermediate
-		# install directory instead.
-		export BLENDER_SYSTEM_RESOURCES="${ED}/usr/share/blender/${BV}"
-
-		# Brake check:  Make sure the above path is valid.
-		# If not, blender will fallback to the default path which is not what
-		# we want.
-		[ -d "$BLENDER_SYSTEM_RESOURCES" ] || die "The custom script path is invalid, fix the ebuild!"
+		# Define custom blender data/script file paths. Otherwise Blender will not be able to find them during doc building.
+		# (Because the data is in the image directory and it will default to look in /usr/share)
+		local -x BLENDER_SYSTEM_RESOURCES="${ED}/usr/share/blender/${BV}"
 
 		# Workaround for binary drivers.
 		addpredict /dev/ati
@@ -560,8 +657,9 @@ src_install() {
 
 	python_optimize "${ED}/usr/share/blender/${BV}/scripts"
 
-	mv "${ED}/usr/bin/blender-thumbnailer" "${ED}/usr/bin/blender-${BV}-thumbnailer" || die
-	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}" || die
+	mv "${ED}/usr/bin/blender-thumbnailer" "${ED}/usr/bin/blender-${BV}-thumbnailer" \
+		|| die "blender-thumbnailer version rename failed"
+	mv "${ED}/usr/bin/blender" "${ED}/usr/bin/blender-${BV}" || die "blender version rename failed"
 }
 
 pkg_postinst() {
