@@ -1,5 +1,20 @@
-diff --git a/SConstruct b/SConstruct
-index 115de78a..613110b7 100644
+wrt PATH:
+"""
+https://jira.mongodb.org/browse/SERVER-94430 Upstream respond:
+
+> we intentionally do not ingest the environment PATH as this makes build
+> reproducibility and hermiticity much harder. Instead, you should set the
+> absolute paths to the tools you want to use on the command line, instead of
+> relying on the PATH.
+
+Gentoo bug https://bugs.gentoo.org/829340
+
+In Gentoo, we have LLVM slotted and we put clang in /usr/lib/llvm/18/bin (or
+whatever), not in /usr/bin, and if upstream strip PATH and construct it
+themselves, they surely won't contain this location.
+
+So we add PATH backup for scons.
+"""
 --- a/SConstruct
 +++ b/SConstruct
 @@ -2366,7 +2366,6 @@ if env.TargetOSIs('posix'):

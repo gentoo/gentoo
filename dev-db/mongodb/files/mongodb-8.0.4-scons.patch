@@ -3,6 +3,21 @@ From: =?UTF-8?q?Fran=C3=A7ois=20Valenduc?= <francoisvalenduc@gmail.com>
 Date: Mon, 28 Apr 2025 13:46:34 +0200
 Subject: [PATCH] add PATH backup for scons
 
+https://jira.mongodb.org/browse/SERVER-94430 Upstream respond:
+
+> we intentionally do not ingest the environment PATH as this makes build
+> reproducibility and hermiticity much harder. Instead, you should set the
+> absolute paths to the tools you want to use on the command line, instead of
+> relying on the PATH.
+
+Gentoo bug https://bugs.gentoo.org/829340
+
+In Gentoo, we have LLVM slotted and we put clang in /usr/lib/llvm/18/bin (or
+whatever), not in /usr/bin, and if upstream strip PATH and construct it
+themselves, they surely won't contain this location.
+
+So we add PATH backup for scons.
+
 ---
  SConstruct | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
