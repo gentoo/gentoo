@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.88.0-algorithm-reverse_copy.patch
 	"${FILESDIR}"/${PN}-1.88.0-beast-network-sandbox.patch
 	"${FILESDIR}"/${PN}-1.88.0-bind-no-Werror.patch
+	"${FILESDIR}"/${PN}-1.88.0-mysql-cstdint.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
 )
 
@@ -265,8 +266,6 @@ multilib_src_test() {
 		"math"
 		# assignment of read-only member 'gauss::laguerre::detail::laguerre_l_object<T>::order'
 		"multiprecision"
-		# uint8_t is not a member of std
-		"mysql"
 		# PyObject* boost::parameter::python::aux::unspecified_type():
 		#   /usr/include/python3.13/object.h:339:30: error: lvalue required as left operand of assignment
 		"parameter_python"
