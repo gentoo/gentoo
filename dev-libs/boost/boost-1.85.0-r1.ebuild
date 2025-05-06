@@ -13,7 +13,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
+inherit dot-a flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
 MY_PV="$(ver_rs 1- _)"
 
@@ -147,6 +147,8 @@ ejam() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	# Workaround for too many parallel processes requested, bug #506064
 	[[ "$(makeopts_jobs)" -gt 64 ]] && MAKEOPTS="${MAKEOPTS} -j64"
 
@@ -320,6 +322,8 @@ multilib_src_install_all() {
 
 		dosym ../../../../include/boost /usr/share/doc/${PF}/html/boost
 	fi
+
+	strip-lto-bytecode
 }
 
 pkg_preinst() {
