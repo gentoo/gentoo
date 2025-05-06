@@ -1,0 +1,53 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Invisible Internet Protocol daemon"
+description="C++ daemon for accessing the I2P network"
+
+command="/usr/bin/i2pd"
+pidfile="/run/i2pd/i2pd.pid"
+
+command_args_background="--daemon --pidfile=${pidfile}"
+command_progress=1
+command_user="${I2PD_USER:=i2pd}:${I2PD_GROUP:=i2pd}"
+retry="SIGTERM/30/SIGKILL/10"
+required_dirs="/var/lib/i2pd"
+required_files="/etc/i2pd/i2pd.conf"
+
+I2PD_LOGFILE="${I2PD_LOGFILE:=/var/log/i2pd.log}"
+
+command_args="--service --log=file \
+	--conf=/etc/i2pd/i2pd.conf \
+	--tunconf=/etc/i2pd/tunnels.conf \
+	--tunnelsdir=/etc/i2pd/tunnels.conf.d \
+	--loglevel='${I2PD_LOGLEVEL:=warn}'\
+	--logfile=${I2PD_LOGFILE} ${I2PD_ARGS} \
+"
+
+depend() {
+	use dns # for bootstrapping
+	use logger
+}
+
+start_pre() {
+	checkpath -o ${command_user} -d $(dirname ${pidfile})
+	checkpath -o ${command_user} -f ${I2PD_LOGFILE}
+}
+
+extra_started_commands="reload graceful"
+
+description_reload="Reload tunnels.conf configuration"
+reload() {
+	start-stop-daemon -s HUP -x ${command} -p ${pidfile}
+	eend $? "Reloaded tunnels configuration"
+}
+
+description_graceful="Graceful shutdown, takes 10 minutes"
+graceful() {
+	# on SIGINT, i2pd stops accepting tunnels and shuts down in 10 minutes
+	ebegin "Gracefully stopping i2pd, this takes 10 minutes"
+	mark_service_stopping
+	start-stop-daemon -K -x ${command} -p ${pidfile} -R "SIGINT/620/${retry}"
+	eend $? && mark_service_stopped
+}
