@@ -59,34 +59,28 @@ src_prepare() {
 
 	default
 	eautoreconf
-
-	# can't build out-of-source
-	python_copy_sources
 }
 
 src_configure() {
-	configuring() {
-		econf \
-			--with-python="${EPYTHON}" \
-			$(use_with gpm gpm-support) \
-			$(use_with tcl) \
-			$(use_enable nls)
+	local versions=
+	getversions() {
+		versions+="${EPYTHON} "
 	}
-	python_foreach_impl run_in_build_dir configuring
-}
+	python_foreach_impl getversions
 
-src_compile() {
-	python_foreach_impl run_in_build_dir emake
+	econf \
+		--with-python="${versions}" \
+		$(use_with gpm gpm-support) \
+		$(use_with tcl) \
+		$(use_enable nls)
 }
 
 src_install() {
-	installit() {
-		emake \
-			DESTDIR="${D}" \
-			install
-		python_optimize
-	}
-	python_foreach_impl run_in_build_dir installit
+	emake \
+		DESTDIR="${D}" \
+		install
+	python_foreach_impl python_optimize
+
 	dodoc peanuts.py popcorn.py tutorial.sgml
 	doman whiptail.1
 	einstalldocs
