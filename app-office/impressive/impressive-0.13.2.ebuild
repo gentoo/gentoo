@@ -9,8 +9,11 @@ inherit optfeature python-r1
 DESCRIPTION="Stylish way of giving presentations with Python"
 HOMEPAGE="https://impressive.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${PN^}/${PV/_/-}/${PN^}-${PV/_/-}.tar.gz"
+S="${WORKDIR}/${PN^}-${PV/_/-}"
 
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -27,10 +30,6 @@ RDEPEND="${PYTHON_DEPS}
 
 DOCS=( changelog.txt demo.pdf )
 HTML_DOCS=( impressive.html )
-
-S="${WORKDIR}/${PN^}-${PV/_/-}"
-SLOT="0"
-KEYWORDS="amd64 x86"
 
 src_install() {
 	default
