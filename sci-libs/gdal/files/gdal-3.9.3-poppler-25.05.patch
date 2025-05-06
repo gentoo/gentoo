@@ -1,0 +1,61 @@
+From a689e2189ff0a464f3150ed8b2dd5a3cc1194012 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sun, 4 May 2025 21:00:18 +0200
+Subject: [PATCH] PDF: Fix build against Poppler 2025.05.0
+
+---
+ frmts/pdf/pdfio.cpp | 13 +++++++++++++
+ frmts/pdf/pdfio.h   |  8 ++++++++
+ 2 files changed, 21 insertions(+)
+
+diff --git a/frmts/pdf/pdfio.cpp b/frmts/pdf/pdfio.cpp
+index 9bf39f495020..39cb1285ef40 100644
+--- a/frmts/pdf/pdfio.cpp
++++ b/frmts/pdf/pdfio.cpp
+@@ -77,12 +77,25 @@ BaseStream *VSIPDFFileStream::copy()
+ /************************************************************************/
+ /*                             makeSubStream()                          */
+ /************************************************************************/
++
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 5)
++std::unique_ptr<Stream> VSIPDFFileStream::makeSubStream(Goffset startA,
++                                                        bool limitedA,
++                                                        Goffset lengthA,
++                                                        Object &&dictA)
++{
++    return std::make_unique<VSIPDFFileStream>(this, startA, limitedA, lengthA,
++                                              std::move(dictA));
++}
++#else
+ Stream *VSIPDFFileStream::makeSubStream(Goffset startA, bool limitedA,
+                                         Goffset lengthA, Object &&dictA)
+ {
+     return new VSIPDFFileStream(this, startA, limitedA, lengthA,
+                                 std::move(dictA));
+ }
++#endif
+ 
+ /************************************************************************/
+ /*                                 getPos()                             */
+diff --git a/frmts/pdf/pdfio.h b/frmts/pdf/pdfio.h
+index f3adf9707ead..e2223bd87fa5 100644
+--- a/frmts/pdf/pdfio.h
++++ b/frmts/pdf/pdfio.h
+@@ -31,8 +31,16 @@ class VSIPDFFileStream final : public BaseStream
+ 
+     virtual BaseStream *copy() override;
+ 
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 5)
++    virtual std::unique_ptr<Stream> makeSubStream(Goffset startA, bool limitedA,
++                                                  Goffset lengthA,
++                                                  Object &&dictA) override;
++#else
+     virtual Stream *makeSubStream(Goffset startA, bool limitedA,
+                                   Goffset lengthA, Object &&dictA) override;
++
++#endif
+     virtual Goffset getPos() override;
+     virtual Goffset getStart() override;
+ 
