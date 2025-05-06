@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit meson python-single-r1
+inherit dot-a meson python-single-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/dtc/dtc.git"
@@ -56,6 +56,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	use static-libs && lto-guarantee-fat
 	local emesonargs=(
 		-Ddefault_library=$(usex static-libs both shared)
 		-Dtools=true
@@ -70,6 +71,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
+	strip-lto-bytecode
 
 	use python && python_optimize "${ED}"
 }
