@@ -7,7 +7,6 @@ inherit toolchain-funcs
 
 DESCRIPTION="Recursive-descent parser generators for C"
 HOMEPAGE="https://piumarta.com/software/peg/"
-# NOTE: Check HOMEPAGE for latest stable version
 SRC_URI="https://piumarta.com/software/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
