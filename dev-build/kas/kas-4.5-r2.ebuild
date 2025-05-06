@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-python/jsonschema-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/kconfiglib-14.1.0[${PYTHON_USEDEP}]
 	>=dev-python/gitpython-3.1.0[${PYTHON_USEDEP}]
-	dev-libs/newt[${PYTHON_USEDEP}]
+	dev-libs/newt[python(+),${PYTHON_USEDEP}]
 "
 
 BDEPEND="
