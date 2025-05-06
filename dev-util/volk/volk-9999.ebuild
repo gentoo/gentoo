@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib dot-a
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/zeux/volk.git"
@@ -29,8 +29,14 @@ DEPEND="${RDEPEND}
 "
 
 multilib_src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-DVOLK_INSTALL=on
 	)
 	cmake_src_configure
+}
+
+multilib_src_install_all() {
+	strip-lto-bytecode
 }
