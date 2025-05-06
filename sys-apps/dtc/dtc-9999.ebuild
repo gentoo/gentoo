@@ -57,15 +57,13 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
+		-Ddefault_library=$(usex static-libs both shared)
 		-Dtools=true
 		-Dvalgrind=disabled # only used for some tests
 		$(meson_feature python)
 		$(meson_use test tests)
 		$(meson_feature yaml)
 	)
-
-	# bug #909366
-	use static-libs && emesonargs+=( -Dstatic-build=true )
 
 	meson_src_configure
 }
