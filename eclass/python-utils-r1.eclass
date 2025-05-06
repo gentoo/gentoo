@@ -624,13 +624,11 @@ python_optimize() {
 	local jobs=$(makeopts_jobs)
 	local d
 	for d; do
-		# make sure to get a nice path without //
-		local instpath=${d#${D}}
-		instpath=/${instpath##/}
-
 		einfo "Optimize Python modules for ${instpath}"
+		# NB: '-s' makes the path relative, so we need '-p /' to make it
+		# absolute again; https://github.com/python/cpython/issues/133503
 		"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 \
-			--hardlink-dupes -q -f -d "${instpath}" "${d}"
+			--hardlink-dupes -q -f -s "${D}" -p / "${d}"
 	done
 }
 
