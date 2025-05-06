@@ -122,6 +122,7 @@ PATCHES=(
 	# https://bugs.gentoo.org/893676
 	"${FILESDIR}/${PN}-5.0-webkit2gtk-4.1.patch"
 	"${FILESDIR}/${PN}-5.8-guile-load-path.patch"
+	"${FILESDIR}/${PN}-5.11-boost-1.88.patch"
 )
 
 pkg_setup() {
