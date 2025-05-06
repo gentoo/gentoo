@@ -22,7 +22,7 @@ RDEPEND="dev-libs/glib:2
 	gpm? ( sys-libs/gpm )
 	hamlib? ( media-libs/hamlib:= )
 	portaudio? ( media-libs/portaudio )
-	rtlsdr? ( net-wireless/rtl-sdr )"
+	rtlsdr? ( net-wireless/rtl-sdr:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
