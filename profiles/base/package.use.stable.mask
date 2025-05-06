@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-06)
+# USE=experimental is not stable by definition
+media-libs/zxing-cpp experimental
+
 # Michał Górny <mgorny@gentoo.org> (2024-04-12)
 # dev-python/mpi4py has no stable keywords.
 media-gfx/netgen mpi
