@@ -64,7 +64,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 d3d9 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
 	test unwind vaapi valgrind vdpau vulkan
-	wayland +X xa +zstd"
+	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	d3d9? (
@@ -87,7 +87,6 @@ REQUIRED_USE="
 	video_cards_zink? ( vulkan opengl )
 	video_cards_nvk? ( vulkan video_cards_nouveau )
 	vdpau? ( X )
-	xa? ( X )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.121"
@@ -254,15 +253,6 @@ pkg_pretend() {
 		fi
 	fi
 
-	if use xa; then
-		if ! use video_cards_freedreno &&
-		   ! use video_cards_intel &&
-		   ! use video_cards_nouveau &&
-		   ! use video_cards_vmware; then
-			ewarn "Ignoring USE=xa         since VIDEO_CARDS does not contain freedreno, intel, nouveau, or vmware"
-		fi
-	fi
-
 	if ! use llvm; then
 		use opencl     && ewarn "Ignoring USE=opencl     since USE does not contain llvm"
 	fi
@@ -359,15 +349,6 @@ multilib_src_configure() {
 		emesonargs+=(-Dgallium-vdpau=disabled)
 	fi
 
-	if use video_cards_freedreno ||
-	   use video_cards_intel ||
-	   use video_cards_nouveau ||
-	   use video_cards_vmware; then
-		emesonargs+=($(meson_feature xa gallium-xa))
-	else
-		emesonargs+=(-Dgallium-xa=disabled)
-	fi
-
 	gallium_enable !llvm softpipe
 	gallium_enable llvm llvmpipe
 	gallium_enable video_cards_asahi asahi
@@ -459,6 +440,7 @@ multilib_src_configure() {
 		$(meson_use test build-tests)
 		-Dlegacy-x11=dri2
 		-Dexpat=enabled
+		-Dgallium-xa=disabled
 		$(meson_use opengl)
 		$(meson_feature opengl gbm)
 		$(meson_feature opengl gles1)
