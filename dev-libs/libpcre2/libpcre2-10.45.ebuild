@@ -56,7 +56,7 @@ src_prepare() {
 }
 
 src_configure() {
-	lto-guarantee-fat
+	use static-libs && lto-guarantee-fat
 	multilib-minimal_src_configure
 }
 
