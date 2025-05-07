@@ -179,19 +179,19 @@ src_install() {
 	doman debian/mongo*.1
 	dodoc docs/building.md
 
-	newinitd "${WORKDIR}/mongodb-7.0.18-patches/${PN}.initd-r3" ${PN}
-	newconfd "${WORKDIR}/mongodb-7.0.18-patches/${PN}.confd-r3" ${PN}
-	newinitd "${WORKDIR}/mongodb-7.0.18-patches/mongos.initd-r3" mongos
-	newconfd "${WORKDIR}/mongodb-7.0.18-patches/mongos.confd-r3" mongos
+	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd-r3" ${PN}
+	newinitd "${FILESDIR}/mongos.initd-r3" mongos
+	newconfd "${FILESDIR}/mongos.confd-r3" mongos
 
 	insinto /etc
-	newins "${WORKDIR}/mongodb-7.0.18-patches/${PN}.conf-r3" ${PN}.conf
-	newins "${WORKDIR}/mongodb-7.0.18-patches/mongos.conf-r2" mongos.conf
+	newins "${FILESDIR}/${PN}.conf-r3" ${PN}.conf
+	newins "${FILESDIR}/mongos.conf-r2" mongos.conf
 
-	systemd_newunit "${WORKDIR}/mongodb-7.0.18-patches/${PN}.service-r1" "${PN}.service"
+	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
 
 	insinto /etc/logrotate.d/
-	newins "${WORKDIR}/mongodb-7.0.18-patches/${PN}.logrotate" ${PN}
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
 	# see bug #526114
 	pax-mark emr "${ED}"/usr/bin/{mongo,mongod,mongos}
