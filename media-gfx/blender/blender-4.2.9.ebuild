@@ -505,8 +505,6 @@ src_install() {
 
 	# X-KDE-RunOnDiscreteGpu is obsolete, so trim it
 	sed \
-		-e "s/=blender/=${P}/" \
-		-e "s/Name=Blender/Name=Blender Bin ${PV}/" \
 		-e "/X-KDE-RunOnDiscreteGpu.*/d" \
 		-i "${ED}/usr/share/applications/blender-${BV}.desktop" || die
 
