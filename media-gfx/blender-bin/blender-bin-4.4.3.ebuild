@@ -147,7 +147,7 @@ src_prepare() {
 	if ! use oneapi; then
 		rm \
 			lib/libOpenImageDenoise_device_sycl* \
-			lib/libpi_level_zero* \
+			lib/libur_adapter_level_zero* \
 			|| eqawarn "failed cleaning oneapi"
 	fi
 
