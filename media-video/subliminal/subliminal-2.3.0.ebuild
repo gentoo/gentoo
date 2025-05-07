@@ -27,6 +27,7 @@ LICENSE="MIT"
 SLOT="0"
 
 BDEPEND="
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		app-arch/unzip
 		dev-python/sympy[${PYTHON_USEDEP}]
@@ -76,6 +77,8 @@ EPYTEST_DESELECT=(
 PATCHES=(
 	"${FILESDIR}"/${P}-win32-tests.patch
 )
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 distutils_enable_tests pytest
 
