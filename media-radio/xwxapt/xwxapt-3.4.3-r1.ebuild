@@ -38,8 +38,8 @@ src_install() {
 	default
 
 	docompress -x /usr/share/man/man1/xwxapt.1.gz
-	rm "${D}"/usr/share/doc/${P}/${PN}.1.gz || die
-	rm "${D}"/usr/share/doc/${P}/${PN}.html || die
+	rm "${D}"/usr/share/doc/${PF}/${PN}.1.gz || die
+	rm "${D}"/usr/share/doc/${PF}/${PN}.html || die
 	mv "${D}"/usr/share/examples/xwxapt "${D}"/usr/share || die
 	keepdir /usr/share/${PN}/images /usr/share/${PN}/records
 }
