@@ -73,7 +73,6 @@ sci-electronics/osqoop
 
 # Matt Turner <mattst88@gentoo.org> (2024-05-02)
 # Masked for testing
-=dev-util/mesa_clc-25.1*
 =media-libs/mesa-25.1*
 
 # Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
