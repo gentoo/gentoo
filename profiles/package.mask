@@ -217,13 +217,6 @@ dev-python/ipaddr
 # slot instead. Masked for removal on 2025-05-14.
 dev-ruby/childprocess:2
 
-# Matt Turner <mattst88@gentoo.org> (2025-04-04)
-# Package is dead (last release in 1999).
-# Not relevant today: purpose is to not overload a very slow system with
-# multiple X11 clients starting at the same time. SRC_URI is long dead.
-# Removal on 2025-05-04.  Bug #953120.
-x11-misc/xtoolwait
-
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-02)
 # Masked for testing the new .0 version and leave time for packages
 # to catch up on support if needed. May or may keep masked until 6.9.1
