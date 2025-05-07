@@ -7,7 +7,7 @@ P_RELEASE="$(ver_cut 1).0"
 
 DESCRIPTION="Meta package for GNOME-Light, merge this package to install"
 HOMEPAGE="https://www.gnome.org/"
-S="${WORKDIR}"
+S=${WORKDIR}
 
 LICENSE="metapackage"
 SLOT="2.0"
@@ -57,7 +57,7 @@ pkg_pretend() {
 }
 
 pkg_postinst() {
-	# Remember people where to find our project information
+	# Remind people where to find our project information
 	elog "Please remember to look at https://wiki.gentoo.org/wiki/Project:GNOME"
 	elog "for information about the project and documentation."
 }
