@@ -164,9 +164,6 @@ _adjust_sandbox() {
 src_configure() {
 	_adjust_sandbox
 
-	# bug #944284 (https://gitlab.gnome.org/GNOME/gimp/-/issues/12843)
-	append-cflags -std=gnu17
-
 	use vala && vala_setup
 
 	local emesonargs=(
