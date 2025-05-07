@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	lto-guarantee-fat
+	use static-libs && lto-guarantee-fat
 
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/bin
