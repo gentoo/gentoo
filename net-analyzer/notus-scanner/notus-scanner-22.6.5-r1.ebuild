@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 greadme systemd
 
@@ -13,16 +13,15 @@ SRC_URI="https://github.com/greenbone/notus-scanner/archive/refs/tags/v${PV}.tar
 
 LICENSE="AGPL-3 AGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 DEPEND="
 	acct-user/gvm
 	net-libs/paho-mqtt-c
-	>=dev-python/psutil-6.0[${PYTHON_USEDEP}]
-	>=dev-python/python-gnupg-0.5.1[${PYTHON_USEDEP}]
+	>=dev-python/psutil-6.1[${PYTHON_USEDEP}]
+	>=dev-python/python-gnupg-0.5.3[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
-	<dev-python/tomli-3[${PYTHON_USEDEP}]
 "
 
 RDEPEND="
