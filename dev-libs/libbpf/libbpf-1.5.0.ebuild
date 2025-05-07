@@ -43,7 +43,7 @@ PATCHES=(
 src_configure() {
 	append-cflags -fPIC
 	tc-export CC AR PKG_CONFIG
-	lto-guarantee-fat
+	use static-libs && lto-guarantee-fat
 	export LIBSUBDIR="$(get_libdir)"
 	export PREFIX="${EPREFIX}/usr"
 	export V=1
