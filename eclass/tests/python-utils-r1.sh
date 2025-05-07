@@ -64,7 +64,7 @@ tmpfile=$(mktemp)
 
 inherit multilib python-utils-r1
 
-for minor in {11..13} 13t; do
+for minor in {11..14} {13..14}t; do
 	ebegin "Testing python3.${minor}"
 	eindent
 	test_var EPYTHON "python3_${minor}" "python3.${minor}"
@@ -209,6 +209,14 @@ test_is "_python_impl_matches python3_11 3.12" 1
 test_is "_python_impl_matches python3_12 3.10" 1
 test_is "_python_impl_matches python3_12 3.11" 1
 test_is "_python_impl_matches python3_12 3.12" 0
+test_is "_python_impl_matches python3_13 3.13" 0
+test_is "_python_impl_matches python3_13t 3.13" 0
+test_is "_python_impl_matches python3_13 3.14" 1
+test_is "_python_impl_matches python3_13t 3.14" 1
+test_is "_python_impl_matches python3_14 3.13" 1
+test_is "_python_impl_matches python3_14t 3.13" 1
+test_is "_python_impl_matches python3_14 3.14" 0
+test_is "_python_impl_matches python3_14t 3.14" 0
 test_is "_python_impl_matches pypy3_11 3.10" 1
 test_is "_python_impl_matches pypy3_11 3.11" 0
 test_is "_python_impl_matches pypy3_11 3.12" 1
