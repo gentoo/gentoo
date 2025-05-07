@@ -6,6 +6,10 @@
 media-gfx/openvdb python
 
 # Alfredo Tupone <tupone@gentoo.org> (2025-05-03)
+# test add dependency on torchvision, not read for arm64
+sci-ml/datasets test
+
+# Alfredo Tupone <tupone@gentoo.org> (2025-05-03)
 # dependencies not arm64 ready
 sci-ml/caffe2 distributed gloo fbgemm nnpack onednn qnnpack rocm xnnpack
 
