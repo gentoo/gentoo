@@ -29,6 +29,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
+	dev-python/networkx
+	dev-python/parameterized
 	sci-ml/caffe2[gloo]
 )"
 
