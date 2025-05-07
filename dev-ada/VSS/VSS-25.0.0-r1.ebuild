@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_{13..15} )
 inherit ada multiprocessing
 
 DESCRIPTION="A high level string and text processing library"
