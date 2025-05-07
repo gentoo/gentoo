@@ -330,6 +330,8 @@ dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_python3_12
 dev-lang/python-exec python_targets_python3_13
 dev-lang/python-exec python_targets_python3_13t
+dev-lang/python-exec python_targets_python3_14
+dev-lang/python-exec python_targets_python3_14t
 dev-lang/python-exec python_targets_pypy3_11
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)
