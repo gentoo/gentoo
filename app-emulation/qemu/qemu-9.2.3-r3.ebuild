@@ -321,6 +321,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
 	"${FILESDIR}"/${PN}-8.1.0-find-sphinx.patch
 	"${FILESDIR}"/${PN}-7.2.16-optionrom-pass-Wl-no-error-rwx-segments.patch
+	"${FILESDIR}"/${PN}-9.2.3-virtio-net.patch
 )
 
 QA_PREBUILT="
