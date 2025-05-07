@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel.
+# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.2-patches/.
 case ${PV} in
 	9999|*_alpha*|*_beta*|*_rc*)
 		# Set a negative patchlevel to indicate that it's a pre-release.
@@ -26,11 +26,12 @@ case ${PV} in
 		;;
 	*)
 		PLEVEL=0
+		;;
 esac
 
 # The version of readline this bash normally ships with. Note that we only use
 # the bundled copy of readline for pre-releases.
-READLINE_VER="8.3_beta"
+READLINE_VER="8.3_rc1"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -264,8 +265,6 @@ src_compile() {
 		fi
 	fi
 
-	# builtins/evalstring.c needs y.tab.h but can't (easily) specify the dep on it from above
-	emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" y.tab.h
 	emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}"
 	use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" all others
 
@@ -282,7 +281,6 @@ src_compile() {
 
 		# Rebuild Bash using the profiling data we just generated.
 		emake clean
-		emake CFLAGS="${CFLAGS} ${pgo_use_flags[*]}" y.tab.h
 		emake CFLAGS="${CFLAGS} ${pgo_use_flags[*]}"
 		use plugins && emake -C examples/loadables CFLAGS="${CFLAGS} ${pgo_use_flags[*]}" all others
 	fi
