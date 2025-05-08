@@ -52,6 +52,13 @@ BDEPEND="
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# fix the version number
+	sed -i -e "/__version__/s:\".*\":\"${PV}\":" sympy/release.py || die
+}
+
 src_test() {
 	virtx distutils-r1_src_test
 }
