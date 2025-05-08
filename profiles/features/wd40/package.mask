@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-05-08)
+# The sigstore bundle.
+dev-python/betterproto
+dev-python/securesystemslib
+dev-python/sigstore
+dev-python/sigstore-protobuf-specs
+dev-python/sigstore-rekor-types
+dev-python/rfc3161-client
+dev-python/tuf
+
 # Michał Górny <mgorny@gentoo.org> (2024-04-20)
 # The mitmproxy bundle.
 dev-python/mitmproxy-wireguard
