@@ -75,6 +75,9 @@ PATCHES=(
 
 	# backward compatibility with <dev-libs/libfmt-11
 	"${FILESDIR}/${PN}-3.9.0-older-libfmt.patch"
+
+	# compatibility for doctest-2.4.12, bug 955440
+	"${FILESDIR}/${PN}-3.11.1-doctest-compatibility.patch"
 )
 
 src_prepare() {
