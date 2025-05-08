@@ -126,7 +126,7 @@ pkgversion() {
 }
 
 src_configure() {
-	use static-libs && lto-guarantee-fat
+	lto-guarantee-fat
 	multilib-minimal_src_configure
 }
 
