@@ -15,11 +15,11 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
-IUSE="doc man +shared static-libs static-pic test"
+IUSE="doc man static-libs static-pic test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/xmlada[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/xmlada[${ADA_USEDEP},shared,static-libs?,static-pic?]
 "
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[${ADA_USEDEP}]"
@@ -39,7 +39,7 @@ test? (
 	dev-ada/gnatmem
 )"
 
-REQUIRED_USE="|| ( shared static-libs static-pic )
+REQUIRED_USE="
 	${ADA_REQUIRED_USE}
 	doc? ( man )
 	test? ( static-libs )
@@ -69,40 +69,33 @@ src_configure() {
 src_compile() {
 	build() {
 		gprbuild -p -v -XPRJ_BUILD=Release -XPRJ_TARGET=Linux \
-			-XTP_XMLADA=Disabled -XPROCESSORS=$(makeopts_jobs) \
+			-XPROCESSORS=$(makeopts_jobs) \
 			-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=$1 -XXMLADA_BUILD=$1 \
 			--subdirs=${CHOST}/release/$1 \
 			-Ptemplates_parser -largs ${LDFLAGS} -cargs ${ADAFLAGS} \
 			|| die "gprbuild failed"
 	}
-	if use shared; then
-		build relocatable
-	fi
-	if use static-libs; then
-		build static
-	fi
-	if use static-pic; then
-		build static-pic
-	fi
-	local lib
-	if use shared; then
-		lib=relocatable
-	elif use static-libs; then
-		lib=static
-	else
-		lib=static-pic
-	fi
+	build relocatable
+	use static-libs && build static
+	use static-pic  && build static-pic
 	gprbuild -p -v -XPRJ_BUILD=Release -XPRJ_TARGET=Linux \
-		-XTP_XMLADA=Disabled -XPROCESSORS=$(makeopts_jobs) \
-		-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=${lib} -XXMLADA_BUILD=${lib} \
-		--subdirs=${CHOST}/release/${lib} -Ptools/tools -largs ${LDFLAGS} \
-		-cargs ${ADAFLAGS} \
+		-XPROCESSORS=$(makeopts_jobs) \
+		-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=relocatable \
+		-XXMLADA_BUILD=relocatable \
+		--subdirs=${CHOST}/release/relocatable -Ptools/tools \
+		-largs ${LDFLAGS} -cargs ${ADAFLAGS} \
 		|| die "gprbuild failed"
-	if use man; then
-		emake -C docs man GPROPTS=-v
-	fi
-	if use doc; then
-		emake -C docs html epub latexpdf GPROPTS=-v
+	use man && emake -C docs man GPROPTS=-v
+	use doc && emake -C docs html epub latexpdf GPROPTS=-v
+	if use test; then
+		cd regtests
+		gprbuild -p -v -XPRJ_BUILD=Release -XPRJ_TARGET=Linux \
+			-XPROCESSORS=$(makeopts_jobs) \
+			-XVERSION=$(ver_cut 1-2) -XLIBRARY_TYPE=relocatable \
+			--subdirs=${CHOST}/release/relocatable \
+			-Pregtests -largs ${LDFLAGS} -cargs ${ADAFLAGS} \
+			|| die "gprbuild failed"
+		cd ..
 	fi
 }
 
@@ -116,28 +109,15 @@ src_install() {
 			--build-name=$1 -Ptemplates_parser \
 			|| die "gprinstall failed"
 	}
-	if use shared; then
 		build relocatable
-	fi
-	if use static-libs; then
-		build static
-	fi
-	if use static-pic; then
-		build static-pic
-	fi
-	local lib
-	if use shared; then
-		lib=relocatable
-	elif use static-libs; then
-		lib=static
-	else
-		lib=static-pic
-	fi
+	use static-libs && build static
+	use static-pic  && build static-pic
 	gprinstall -XPRJ_BUILD=Release -XPRJ_TARGET=Linux -XTP_XMLADA=Disabled \
 		-XPROCESSORS=$(makeopts_jobs) -XVERSION=$(ver_cut 1-2) \
-		-XLIBRARY_TYPE=${lib} -XXMLADA_BUILD=${lib} -p -f --prefix="${D}"/usr \
+		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable -p -f \
+		--prefix="${D}"/usr \
 		--build-var=LIBRARY_TYPE --build-var=TEMPLATES_PARSER_BUILD \
-		--mode=usage --subdirs=${CHOST}/release/${lib} \
+		--mode=usage --subdirs=${CHOST}/release/relocatable \
 		--install-name=templates_parser -Ptools/tools \
 		|| die "gprinstall failed"
 	DOCS="README.md"
@@ -151,5 +131,12 @@ src_install() {
 }
 
 src_test() {
-	emake -j1 test
+	cd regtests
+	ADA_PROJECT_PATH="${S}" \
+		PRJ_TARGET=Linux \
+		PRJ_BUILD=Release \
+		TP_XMLADA=Disabled \
+		PATH=".:${S}/.build/rbin/${CHOST}/release/relocatable:${PATH}" \
+		./testsuite.py || die
+	cd ..
 }
