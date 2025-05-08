@@ -17,7 +17,7 @@ SRC_URI="https://github.com/sus-rb/sus-fixtures-openssl/archive/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # openssl is a default gem
 ruby_add_rdepend "
