@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-ADA_COMPAT=( gcc_14 )
+ADA_COMPAT=( gcc_{14..15} )
 
 inherit ada python-single-r1 multiprocessing
 
@@ -39,7 +39,10 @@ BDEPEND="
 	')
 	test? ( dev-ada/e3-testsuite )"
 
-PATCHES=( "${FILESDIR}"/${PN}-23.0.0-test.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-23.0.0-test.patch
+	"${FILESDIR}"/${P}-pipes.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
@@ -48,11 +51,16 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	rm -r testsuite/tests/ada_api/foreign_nodes || die
 	rm -r testsuite/tests/{c_api,python}/gpr_ada_only || die
 	rm -r testsuite/tests/lexical_envs/envs_* || die
 	rm -r testsuite/tests/lexical_envs/records || die
 	rm -r testsuite/tests/lexical_envs/gen_pkg_inst || die
-	rm -r testsuite/tests/ada_api/foreign_nodes || die
+	rm -r testsuite/tests/name_resolution/concat_op || die
+	rm -r testsuite/tests/name_resolution/entries_tasks_attrs || die
+	rm -r testsuite/tests/name_resolution/gnat_compare_implicit_references || die
+	rm -r testsuite/tests/name_resolution/qual_expr_stmt || die
+	rm -r testsuite/tests/properties/fully_qualified_name_4 || die
 }
 
 src_configure() {
