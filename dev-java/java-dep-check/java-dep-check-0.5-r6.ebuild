@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Avoid circular dependency
+JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
+
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java Dependency checker"
