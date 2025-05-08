@@ -608,7 +608,7 @@ src_prepare() {
 			)-${file}" || die
 
 		mkdir -p "${WORKDIR}/${PN}_extra-${PV}/testdata/cv/dnn/onnx/models/" || die
-		mv "${DISTDIR}/yunet-202303.onnx" "${WORKDIR}/${PN}_extra-${PV}/testdata/cv/dnn/onnx/models/" || die
+		cp "${DISTDIR}/yunet-202303.onnx" "${WORKDIR}/${PN}_extra-${PV}/testdata/cv/dnn/onnx/models/" || die
 	fi
 
 	if use cuda; then
