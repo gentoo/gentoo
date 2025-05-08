@@ -1,6 +1,9 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eray Aslan <eras@gentoo.org> (2025-05-08)
+# dev-db/tinycdb is not keyworded here
+net-mail/dovecot cdb
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-06)
 # dev-python/nanobind is not keyworded here
