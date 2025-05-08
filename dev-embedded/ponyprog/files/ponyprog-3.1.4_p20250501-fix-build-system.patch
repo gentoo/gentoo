@@ -1,0 +1,71 @@
+Fix gentoo-specific build and fix some CMake warnings
+Some of that merged to upstream, see
+https://github.com/lancos/ponyprog/pull/44
+---
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5e46672..7d8eb67 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,16 +1,16 @@
+-PROJECT(ponyprog)
+-
+ # Configure CMake ...
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
+ # CMAKE_POLICY(SET CMP0003 OLD)
+ # CMAKE_POLICY(SET CMP0015 OLD)
+ 
++PROJECT(ponyprog)
++
+ IF(WIN32)
+     CMAKE_POLICY(SET CMP0020 NEW)
+ ENDIF()
+ 
+ # set the Qt version to 6 or 5
+-OPTION (USE_QT5 "Using of Qt5 version for compiling" ON)
++OPTION (USE_QT5 "Using of Qt5 version for compiling" OFF)
+ 
+ IF(${USE_QT5})
+     SET(USE_QT_VERSION 5)
+@@ -45,15 +45,7 @@ OPTION (USE_DEBUGGER "Include in binary file debug information" OFF)
+ 
+ OPTION (USE_PROFILER "Include in binary file profiling information" OFF)
+ 
+-
+-IF(${USE_DEBUGGER})
+-  SET(CMAKE_BUILD_TYPE Debug)
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+-ELSE()
+-  SET(CMAKE_BUILD_TYPE Release)
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+-ENDIF()
+-
++ADD_COMPILE_OPTIONS("-Wall")
+ MESSAGE(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
+ 
+ INCLUDE(CheckIncludeFile)
+@@ -269,11 +261,12 @@ SET ( MOC_DIR temp )
+ SET ( UI_HEADERS_DIR temp )
+ SET ( UI_SOURCES_DIR temp )
+ 
+-ADD_SUBDIRECTORY(qhexedit2/src)
+ ADD_SUBDIRECTORY(SrcPony)
+ 
+-INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/qhexedit2/src/ ${CMAKE_CURRENT_SOURCE_DIR}/SrcPony/ )
++find_library(QHexEdit_LIBRARY NAMES qhexedit)
++set(QHexEdit_LIBRARIES "${QHexEdit_LIBRARY}")
+ 
++INCLUDE_DIRECTORIES( ${CMAKE_CURRENT_SOURCE_DIR}/SrcPony/ )
+ 
+ IF(${USE_QT_VERSION} MATCHES "5")
+ #     QT5_ADD_TRANSLATION(APP_TRANSLATIONS ${TRANSLATION})
+@@ -346,7 +339,7 @@ IF(${USE_QT_VERSION} MATCHES "6")
+   #MESSAGE(STATUS "QT LIBRARIES: ${QT_LIBRARIES} ${Qt6Widgets_LIBRARIES} ${Qt6Multimedia_LIBRARIES} ${Qt6Xml_LIBRARIES} ${Qt6PrintSupport_LIBRARIES} ${Qt6Core_LIBRARIES}")
+ ENDIF()
+ 
+-TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LIBFTDI_LIBRARY} ${LIBUSB_LIBRARIES})
++TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME} ${LIBFTDI_LIBRARY} ${LIBUSB_LIBRARIES} ${QHexEdit_LIBRARIES})
+ 
+ ADD_CUSTOM_TARGET (tags
+     COMMAND  ctags -R -f tags ${CMAKE_SOURCE_DIR}/SrcPony
