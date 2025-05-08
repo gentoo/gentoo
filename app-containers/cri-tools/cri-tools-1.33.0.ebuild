@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 go-module
+inherit bash-completion-r1 go-env go-module
 
 DESCRIPTION="CLI and validation tools for Kubelet Container Runtime (CRI)"
 HOMEPAGE="https://github.com/kubernetes-sigs/cri-tools"
@@ -17,16 +17,18 @@ RESTRICT="test"
 DOCS=( docs {README,RELEASE,CHANGELOG,CONTRIBUTING}.md )
 
 src_compile() {
+	local GOOS=$(go-env_goos)
+	CRICTL="build/bin/${GOOS}/${GOARCH}/crictl"
 	emake VERSION="${PV}"
-	find build/ -name crictl -exec cp {} build/bin/ \; || die
-	./build/bin/crictl completion bash > "crictl.bash" || die
-	./build/bin/crictl completion zsh > "crictl.zsh" || die
+
+	"${CRICTL}" completion bash > crictl.bash || die
+	"${CRICTL}" completion zsh > crictl.zsh || die
 }
 
 src_install() {
 	einstalldocs
 
-	dobin ./build/bin/crictl
+	dobin "${CRICTL}"
 	newbashcomp crictl.bash crictl
 	insinto /usr/share/zsh/site-functions
 	newins crictl.zsh _crictl
