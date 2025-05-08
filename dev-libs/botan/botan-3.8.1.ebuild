@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/botan.asc
-inherit edo flag-o-matic multiprocessing ninja-utils python-r1 toolchain-funcs verify-sig
+inherit edo dot-a flag-o-matic multiprocessing ninja-utils python-r1 toolchain-funcs verify-sig
 
 MY_P="Botan-${PV}"
 DESCRIPTION="C++ crypto library"
@@ -77,6 +77,7 @@ pkg_pretend() {
 
 src_configure() {
 	tc-export AR CC CXX
+	use static-libs && lto-guarantee-fat
 	python_setup
 
 	local disable_modules=(
@@ -136,8 +137,8 @@ src_configure() {
 		$(usev !cpu_flags_x86_sse4_1 '--disable-sse4.1')
 		$(usev !cpu_flags_x86_sse4_2 '--disable-sse4.2')
 
-		# HPPA's GCC doesn't support SSP
-		$(usev hppa '--without-stack-protector')
+		# We already set this by default in the toolchain
+		--without-stack-protector
 
 		$(use_with boost)
 		$(use_with bzip2)
@@ -210,6 +211,8 @@ src_test() {
 
 src_install() {
 	DESTDIR="${D}" eninja install
+
+	strip-lto-bytecode
 
 	if [[ -d "${ED}"/usr/share/doc/${P} && ${P} != ${PF} ]] ; then
 		# --docdir in configure controls the parent directory unfortunately
