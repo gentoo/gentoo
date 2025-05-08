@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit edo
 
@@ -31,20 +31,19 @@ BDEPEND="
 	doc? ( app-text/doxygen )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.1.8-gcc15-cstdint.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-gcc15-cstdint.patch )
 
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] && eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-static \
-		$(use_with doc docs) \
+	local myeconfargs=(
+		$(use_with doc docs)
 		$(use_enable test)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
