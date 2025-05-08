@@ -78,6 +78,9 @@ PATCHES=(
 
 	# compatibility for doctest-2.4.12, bug 955440
 	"${FILESDIR}/${PN}-3.11.1-doctest-compatibility.patch"
+
+	# upstream issue https://github.com/rspamd/rspamd/issues/5263
+	"${FILESDIR}/${PN}-3.11.1-punycode-icu-76.1.patch"
 )
 
 src_prepare() {
