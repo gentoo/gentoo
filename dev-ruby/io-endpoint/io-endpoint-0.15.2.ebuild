@@ -17,7 +17,7 @@ SRC_URI="https://github.com/socketry/io-endpoint/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="test"
 
 ruby_add_bdepend "test? (
