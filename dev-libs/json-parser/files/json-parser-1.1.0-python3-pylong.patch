@@ -8,6 +8,7 @@ Subject: [PATCH] fix(python): Add Python 3 compatibility macros for PyInt
 - Replace deprecated PyInt functions with PyLong equivalents in Python 3
 
 Signed-off-by: Huang Rui <vowstar@gmail.com>
+Upstream-PR: https://github.com/json-parser/json-parser/pull/182
 ---
  bindings/python/wrap_json.c | 12 ++++++++++++
  1 file changed, 12 insertions(+)
