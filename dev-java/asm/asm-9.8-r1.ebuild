@@ -14,6 +14,9 @@ MAVEN_PROVIDES="
 	org.ow2.asm:asm-util:${PV}
 "
 
+# Avoid circular dependency
+JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
+
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Bytecode manipulation framework for Java"
