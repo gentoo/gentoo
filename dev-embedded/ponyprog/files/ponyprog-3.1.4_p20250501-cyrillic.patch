@@ -1,0 +1,39 @@
+From 88a738338de271a8784c1fac4b213494a64b8cc4 Mon Sep 17 00:00:00 2001
+From: Eduard Kalinowski <eduard_kalinowski@yahoo.de>
+Date: Fri, 9 May 2025 10:25:38 +0200
+Subject: [PATCH] Hotfix for text locations, report #43
+
+See https://github.com/lancos/ponyprog/issues/43
+---
+ CMakeLists.txt         | 1 -
+ SrcPony/Translator.cpp | 5 -----
+ 2 files changed, 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5e46672..52db2ab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -86,7 +86,6 @@ ELSE()
+   MESSAGE(FATAL_ERROR "-- LibUSB version ${LIBUSB_VERSION} TOO OLD! Please Install this library newer as 1.0.16")
+ ENDIF()
+ 
+-
+ # SET(APP_VERSION "3.1.4")
+ #
+ # Set the PonyProg version
+diff --git a/SrcPony/Translator.cpp b/SrcPony/Translator.cpp
+index 8079e59..cb1a963 100644
+--- a/SrcPony/Translator.cpp
++++ b/SrcPony/Translator.cpp
+@@ -595,11 +595,6 @@ bool cTranslator::loadTranslation(const QString fname)
+ 		if (llEng == "LANGUAGE_CHARSET")
+ 		{
+ 			llEng = stream.readLine();
+-#if USE_QT_VERSION == 6
+-			stream.setEncoding(QStringConverter::Latin1);
+-#else
+-			stream.setCodec(llEng.toLatin1());
+-#endif
+ 			continue;
+ 		}
+ 
