@@ -91,7 +91,6 @@
 			Enable Snappy compression support via <pkg>app-arch/snappy</pkg>
 			(required for Vidvox Hap encoder support)
 		</flag>
-		<flag name="sndio">Enable audio output support via <pkg>media-sound/sndio</pkg></flag>
 		<flag name="soc">Apply additional patches for efficient playback on some SoCs (e.g. ARM, RISC-V)</flag>
 		<flag name="srt">Enable Secure Reliable Transport (SRT) support via <pkg>net-libs/srt</pkg></flag>
 		<flag name="ssh">Enable SSH/SFTP support via <pkg>net-libs/libssh</pkg></flag>
