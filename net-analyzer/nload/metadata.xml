@@ -14,6 +14,8 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
+    <bugs-to>https://github.com/rolandriegel/nload/issues</bugs-to>
+    <changelog>https://www.roland-riegel.de/nload/changelog</changelog>
     <remote-id type="github">rolandriegel/nload</remote-id>
   </upstream>
 </pkgmetadata>
