@@ -74,8 +74,10 @@ src_install() {
 	cmake_src_install
 	mv "${D}"/usr/bin/gle "${D}"/usr/bin/gle.bin
 	newbin "${FILESDIR}"/gle.sh gle
-	mv "${D}"/usr/bin/qgle "${D}"/usr/bin/qgle.bin
-	newbin "${FILESDIR}"/qgle.sh qgle
+	if use gui; then
+		mv "${D}"/usr/bin/qgle "${D}"/usr/bin/qgle.bin
+		newbin "${FILESDIR}"/qgle.sh qgle
+	fi
 	GLE_TOP="${D}"/usr/share/${PN} "${D}"/usr/bin/gle.bin -mkinittex
 	if use doc; then
 		pushd "$WORKDIR"/gle-manual-${PV} > /dev/null || die "pushd gle_manual failed"
