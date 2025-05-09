@@ -28,10 +28,6 @@ RDEPEND="
 
 QA_PREBUILT="/opt/cuda*/targets/*-linux/lib/*"
 
-src_prepare(){
-	:
-}
-
 src_configure(){
 	:
 }
