@@ -41,6 +41,9 @@ src_configure() {
 		--with-libevent
 		--without-libev
 
+		# tries to build both zlib and zlib-ng
+		--without-zlibng
+
 		$(use_enable debug)
 		$(use_with munge)
 	)
