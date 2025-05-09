@@ -33,7 +33,7 @@ IUSE="${IUSE} acl apparmor argon2 avif bcmath berkdb bzip2 calendar
 	capstone cdb +ctype curl debug
 	enchant exif ffi +fileinfo +filter
 	+flatfile ftp gd gdbm gmp +iconv inifile
-	intl iodbc ipv6 +jit jpeg ldap ldap-sasl libedit lmdb
+	intl iodbc ipv6 +jit jpeg ldap ldap-sasl libedit litespeed lmdb
 	mhash mssql mysql mysqli nls
 	odbc +opcache +opcache-jit pcntl pdo +phar +posix postgres png
 	qdbm readline selinux +session session-mm sharedmem
@@ -322,6 +322,7 @@ src_configure() {
 		$(use_enable intl)
 		$(use_enable ipv6)
 		$(use_with xml libxml)
+		$(use_enable litespeed)
 		$(use_enable unicode mbstring)
 		$(use_with ssl openssl)
 		$(use_enable pcntl)
