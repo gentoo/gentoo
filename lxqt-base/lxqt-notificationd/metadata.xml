@@ -6,6 +6,6 @@
 		<name>LXQt</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">lxqt/lxqt-notifcationd</remote-id>
+		<remote-id type="github">lxqt/lxqt-notificationd</remote-id>
 	</upstream>
 </pkgmetadata>
