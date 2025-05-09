@@ -14,6 +14,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">tree-sitter-grammars/tree-sitter-vimdoc</remote-id>
+		<remote-id type="github">neovim/tree-sitter-vimdoc</remote-id>
 	</upstream>
 </pkgmetadata>
