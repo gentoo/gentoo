@@ -14,6 +14,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">tree-sitter-grammars/tree-sitter-markdown_inline</remote-id>
+		<remote-id type="github">tree-sitter-grammars/tree-sitter-markdown</remote-id>
 	</upstream>
 </pkgmetadata>
