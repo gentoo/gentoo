@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_{12..15} )
 PYTHON_COMPAT=( python3_{10..13} python3_13t )
 inherit ada python-any-r1 multiprocessing
 
@@ -36,7 +36,6 @@ test? (
 	$(python_gen_any_dep '
 		dev-ada/e3-testsuite[${PYTHON_USEDEP}]
 	')
-	dev-ada/gnatmem
 )"
 
 REQUIRED_USE="
@@ -136,7 +135,7 @@ src_test() {
 		PRJ_TARGET=Linux \
 		PRJ_BUILD=Release \
 		TP_XMLADA=Disabled \
-		PATH=".:${S}/.build/rbin/${CHOST}/release/relocatable:${PATH}" \
+		PATH=".:${S}/.build/rbin/${CHOST}/release/relocatable:${S}/.build/bin/${CHOST}/release/relocatable:${PATH}" \
 		./testsuite.py || die
 	cd ..
 }
