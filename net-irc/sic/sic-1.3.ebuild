@@ -11,8 +11,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
-DOCS=( README )
-
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	einstalldocs
 }
