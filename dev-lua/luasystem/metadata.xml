@@ -10,7 +10,6 @@
 		Supports Lua &gt;= 5.1 and luajit &gt;= 2.0.0.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">LuaDist2/luasystem</remote-id>
 		<remote-id type="github">lunarmodules/luasystem</remote-id>
 	</upstream>
 </pkgmetadata>
