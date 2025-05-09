@@ -101,7 +101,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND=">=app-arch/libdeflate-1.23:="
+DEPEND=">=app-arch/libdeflate-1.23"
 RDEPEND="${DEPEND}"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
