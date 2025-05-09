@@ -30,6 +30,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-pcsc-lite-pkgconfig.patch
 	"${FILESDIR}"/${PN}-2.6.0-remove-hardcoded-compiler-opts.patch
+	"${FILESDIR}"/${PN}-2.6.0-fix-examples-link.patch
 )
 
 src_configure() {
