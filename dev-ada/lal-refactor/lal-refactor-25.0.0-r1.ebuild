@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="${ADADEPS}
 	dev-ada/libadalang:${SLOT}[${ADA_USEDEP},static-libs?,static-pic?]
-	dev-ada/libadalang-tools:${SLOT}[${ADA_USEDEP},shared,static-libs?,static-pic?]"
+	dev-ada/libadalang-tools:${SLOT}[${ADA_USEDEP},static-libs?,static-pic?]"
 BDEPEND="
 	dev-ada/gprbuild[${ADA_USEDEP}]
 	test? (

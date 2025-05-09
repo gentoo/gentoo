@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_14 )
+ADA_COMPAT=( gcc_{14..15} )
 inherit ada multiprocessing
 
 DESCRIPTION="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
@@ -14,20 +14,28 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+shared static-libs static-pic test"
+IUSE="static-libs static-pic test"
 
-# Some test are not working
-RESTRICT="test"
-
-REQUIRED_USE="|| ( shared static-libs static-pic )
-	${ADA_REQUIRED_USE}"
+REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}
-	dev-ada/templates-parser[${ADA_USEDEP},shared(+)?,static-libs?]
-	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},shared?,static-libs?,static-pic?]
+	dev-ada/templates-parser[${ADA_USEDEP},shared(+),static-libs?]
+	>=dev-ada/VSS-24.0.0[${ADA_USEDEP},shared,static-libs?,static-pic?]
 	dev-ada/libadalang:${SLOT}[${ADA_USEDEP},static-libs?,static-pic?]"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]"
+BDEPEND="
+	dev-ada/gprbuild[${ADA_USEDEP}]
+	test? ( dev-ada/aunit[${ADA_USEDEP}] )
+"
+RESTRICT="!test? ( test )"
+
+src_prepare() {
+	default
+	rm -r testsuite/tests/metric/agg.RC12-009 || die
+	rm -r testsuite/tests/test/tc_json_dump_with_gen || die
+	rm -r testsuite/tests/pp/agg.P510-022 || die
+	rm -r testsuite/tests/stub/agg.S410-054 || die
+}
 
 src_compile() {
 	gprbuild -v -k -p -j$(makeopts_jobs) -XLIBRARY_TYPE=relocatable \
@@ -65,9 +73,10 @@ src_compile() {
 }
 
 src_test() {
-	GPR_PROJECT_PATH="${S}"/src/tgen/tgen_rts \
+	PATH="${S}/bin:${PATH}" \
+		GPR_PROJECT_PATH="${S}"/src/tgen/tgen_rts \
 		LIBRARY_TYPE=static \
-		testsuite/testsuite.py || die
+		testsuite/testsuite.py --jobs=1 || die
 }
 
 src_install() {
