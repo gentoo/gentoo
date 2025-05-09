@@ -37,6 +37,10 @@ BDEPEND="virtual/pkgconfig
 	man? ( app-text/docbook2X )
 	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-start-Re-introduce-first-SET_DUMPABLE-call.patch
+)
+
 RESTRICT="!test? ( test )"
 
 CONFIG_CHECK="~!NETPRIO_CGROUP
@@ -74,6 +78,10 @@ DOCS=( AUTHORS CONTRIBUTING MAINTAINERS README.md doc/FAQ.txt )
 
 pkg_setup() {
 	linux-info_pkg_setup
+}
+
+src_prepare() {
+	default
 }
 
 src_configure() {
