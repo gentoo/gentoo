@@ -14,7 +14,7 @@ S=${WORKDIR}/apparmor-${PV}/parser
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 arm64 ~ppc64 ~riscv"
 IUSE="doc"
 
 # Was restricted previously b/c needs apparmor support in kernel
