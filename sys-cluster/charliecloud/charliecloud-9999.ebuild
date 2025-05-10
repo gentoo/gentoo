@@ -21,7 +21,7 @@ HOMEPAGE="https://hpc.github.io/charliecloud/"
 LICENSE="Apache-2.0"
 
 SLOT="0"
-IUSE="ch-image doc"
+IUSE="ch-image doc +fuse"
 
 # Extensive test suite exists, but downloads container images
 # directly and via Docker and installs packages inside using apt/yum.
@@ -41,6 +41,10 @@ COMMON_DEPEND="
 		')
 		dev-vcs/git
 		net-misc/rsync
+	)
+	fuse? (
+		sys-fs/fuse:3=
+		sys-fs/squashfuse
 	)
 "
 RDEPEND="
@@ -72,6 +76,8 @@ src_configure() {
 	local econf_args=(
 		$(use_enable doc html)
 		$(use_enable ch-image)
+		# activates linking against both fuse and squashfuse
+		$(use_with fuse libsquashfuse)
 		# Libdir is used as a libexec-style destination.
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
@@ -100,6 +106,5 @@ pkg_postinst() {
 	optfeature "Building with Podman" app-containers/podman
 	optfeature "Progress bars during long operations" sys-apps/pv
 	optfeature "Pack and unpack squashfs images" sys-fs/squashfs-tools
-	optfeature "Mount and umount squashfs images" sys-fs/squashfuse
 	optfeature "Build versioning with ch-image" dev-vcs/git
 }
