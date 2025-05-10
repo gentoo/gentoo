@@ -38,6 +38,7 @@ RDEPEND="
 	xtables_addons_asn? ( ${XTABLES_SCRIPTS_DEPEND} )
 	xtables_addons_geoip? ( ${XTABLES_SCRIPTS_DEPEND} )
 "
+BDEPEND="virtual/pkgconfig"
 
 pkg_setup() {
 	local CONFIG_CHECK="NF_CONNTRACK NF_CONNTRACK_MARK"
