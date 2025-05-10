@@ -26,7 +26,7 @@ else
 		verify-sig? ( https://ziglang.org/download/${PV}/${P}.tar.xz.minisig )
 		https://codeberg.org/BratishkaErik/distfiles/releases/download/dev-lang%2Fzig-${PV}/${P}-llvm-18.1.8-r6-fix.patch
 	"
-	KEYWORDS="~amd64 ~arm ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64"
 
 	BDEPEND="verify-sig? ( sec-keys/minisig-keys-zig-software-foundation )"
 fi
