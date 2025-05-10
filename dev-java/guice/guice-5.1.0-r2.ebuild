@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,10 +23,11 @@ RESTRICT="test"
 
 CP_DEPEND="
 	dev-java/aopalliance:1
-	dev-java/asm:9
+	dev-java/asm:0
 	dev-java/error-prone-annotations:0
 	dev-java/guava:0
 	dev-java/javax-inject:0
+	dev-java/jsr305:0
 "
 
 DEPEND="

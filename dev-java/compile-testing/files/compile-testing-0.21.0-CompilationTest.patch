@@ -1,0 +1,29 @@
+
+warning: [options] bootstrap class path not set in conjunction with -source 8
+src/test/java/com/google/testing/compile/CompilationTest.java:78: error: reference to assertThat is ambiguous
+    assertThat(compilation.generatedFile(SOURCE_OUTPUT, "test/generated/Blah.java")).isPresent();
+    ^
+  both method assertThat(Optional<?>) in Truth8 and method assertThat(Optional<?>) in Truth match
+src/test/java/com/google/testing/compile/CompilationTest.java:85: error: reference to assertThat is ambiguous
+    assertThat(compilation.generatedFile(SOURCE_OUTPUT, "test.generated", "Blah.java")).isPresent();
+    ^
+  both method assertThat(Optional<?>) in Truth8 and method assertThat(Optional<?>) in Truth match
+src/test/java/com/google/testing/compile/CompilationTest.java:92: error: reference to assertThat is ambiguous
+    assertThat(compilation.generatedSourceFile("test.generated.Blah")).isPresent();
+    ^
+  both method assertThat(Optional<?>) in Truth8 and method assertThat(Optional<?>) in Truth match
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+3 errors
+1 warning
+
+--- a/src/test/java/com/google/testing/compile/CompilationTest.java
++++ b/src/test/java/com/google/testing/compile/CompilationTest.java
+@@ -17,7 +17,6 @@
+ package com.google.testing.compile;
+ 
+ import static com.google.common.truth.Truth.assertThat;
+-import static com.google.common.truth.Truth8.assertThat;
+ import static com.google.testing.compile.CompilationSubject.assertThat;
+ import static com.google.testing.compile.Compiler.javac;
+ import static javax.tools.StandardLocation.SOURCE_OUTPUT;
