@@ -397,9 +397,7 @@ src_configure() {
 		$(use_with valgrind)
 	)
 
-	# https://bugs.gentoo.org/700012
 	if tc-is-lto; then
-		append-cflags $(test-flags-CC -ffat-lto-objects)
 		myeconfargs+=(
 			--with-lto
 		)
