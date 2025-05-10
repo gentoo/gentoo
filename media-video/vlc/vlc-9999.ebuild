@@ -103,7 +103,7 @@ RDEPEND="
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
-	ffmpeg? ( >=media-video/ffmpeg-3.1.3:=[postproc,vaapi?,vdpau?] )
+	ffmpeg? ( >=media-video/ffmpeg-3.1.3:=[postproc(-),vaapi?,vdpau?] )
 	flac? (
 		media-libs/flac:=
 		media-libs/libogg

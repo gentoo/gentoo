@@ -1,0 +1,19 @@
+From: Atri Bhattacharya <badshah400@gmail.com>
+See-also: https://github.com/opencv/opencv/issues/27223#issuecomment-2797750952
+---
+ modules/highgui/CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: opencv-4.11.0/modules/highgui/CMakeLists.txt
+===================================================================
+--- opencv-4.11.0.orig/modules/highgui/CMakeLists.txt
++++ opencv-4.11.0/modules/highgui/CMakeLists.txt
+@@ -125,7 +125,7 @@ elseif(HAVE_QT)
+     endif()
+ 
+     foreach(dt_dep ${qt_deps})
+-      add_definitions(${Qt${QT_VERSION_MAJOR}${dt_dep}_DEFINITIONS})
++      link_libraries(${Qt${QT_VERSION_MAJOR}${dt_dep}})
+       include_directories(${Qt${QT_VERSION_MAJOR}${dt_dep}_INCLUDE_DIRS})
+       list(APPEND HIGHGUI_LIBRARIES ${Qt${QT_VERSION_MAJOR}${dt_dep}_LIBRARIES})
+     endforeach()

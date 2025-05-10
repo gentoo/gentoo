@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,12 +31,13 @@ src_install() {
 	default
 
 	if use udev; then
-	# create udev rules
+		# Create udev rules
 		local rulesdir=$(get_udevdir)/rules.d
 		dodir ${rulesdir}
 		"${D}/usr/$(get_libdir)/iscan-data/make-policy-file" \
 			--force --mode udev \
 			-d "${D}/usr/share/iscan-data/epkowa.desc" \
+			--template "${D}/usr/share/iscan-data/fdi.xsl" \
 			-o "${D}${rulesdir}/99-iscan.rules" || die
 	fi
 }

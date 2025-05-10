@@ -38,6 +38,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">embree/embree</remote-id>
+		<remote-id type="github">RenderKit/embree</remote-id>
 	</upstream>
 </pkgmetadata>

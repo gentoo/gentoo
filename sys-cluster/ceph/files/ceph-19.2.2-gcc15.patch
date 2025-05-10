@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/955362
+https://github.com/ceph/ceph/pull/57430
+
+From 830925f0dd196f920893b1947ae74171a202e825 Mon Sep 17 00:00:00 2001
+From: Kefu Chai <tchaikov@gmail.com>
+Date: Mon, 13 May 2024 08:16:46 +0800
+Subject: [PATCH] rgw/driver/posix: s/is_value()/success()/
+
+we have following build failure when building the tree:
+```
+ /home/kefu/dev/ceph/src/rgw/driver/posix/zpp_bits.h:3457:19: error: no member named 'is_value' in 'value_or_errc<Type>'
+  3457 |         if (other.is_value()) {
+       |             ~~~~~ ^
+ In file included from /home/kefu/dev/ceph/src/rgw/driver/posix/rgw_sal_posix.cc:16:
+ In file included from /home/kefu/dev/ceph/src/rgw/driver/posix/rgw_sal_posix.h:22:
+```
+it turns out the class of `value_or_errc` does not have the member
+function of `is_value()`, so let's use `success()` instead.
+
+Signed-off-by: Kefu Chai <tchaikov@gmail.com>
+---
+ src/rgw/driver/posix/zpp_bits.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rgw/driver/posix/zpp_bits.h b/src/rgw/driver/posix/zpp_bits.h
+index 90e8916b0b055..c9e99ec59c2f4 100644
+--- a/src/rgw/driver/posix/zpp_bits.h
++++ b/src/rgw/driver/posix/zpp_bits.h
+@@ -3454,7 +3454,7 @@ struct [[nodiscard]] value_or_errc
+ 
+     constexpr value_or_errc(value_or_errc && other) noexcept
+     {
+-        if (other.is_value()) {
++        if (other.success()) {
+             if constexpr (!std::is_void_v<Type>) {
+                 if constexpr (!std::is_reference_v<Type>) {
+                     ::new (std::addressof(m_return_value))
+

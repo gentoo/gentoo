@@ -1,0 +1,28 @@
+diff '--color=auto' -r -U3 src.orig/gle/CMakeLists.txt src/gle/CMakeLists.txt
+--- src.orig/gle/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/gle/CMakeLists.txt	2025-05-07 12:09:15.269438466 +0700
+@@ -129,10 +129,10 @@
+ 
+ if(ZSTD_FOUND)
+ 	target_link_libraries ( gle LINK_PUBLIC
+- 		zstd::libzstd_static
++ 		zstd::libzstd_shared
+  	)
+ 	target_link_libraries ( gle-graphics LINK_PUBLIC
+- 		zstd::libzstd_static
++ 		zstd::libzstd_shared
+  	)
+ endif()
+ 
+diff '--color=auto' -r -U3 src.orig/gui/CMakeLists.txt src/gui/CMakeLists.txt
+--- src.orig/gui/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/gui/CMakeLists.txt	2025-05-07 12:09:48.146105759 +0700
+@@ -102,7 +102,7 @@
+ 
+ if(ZSTD_FOUND)
+ 	list(APPEND QGLE_LIBRARIES
+- 		zstd::libzstd_static
++ 		zstd::libzstd_shared
+  	)
+ endif()
+ 

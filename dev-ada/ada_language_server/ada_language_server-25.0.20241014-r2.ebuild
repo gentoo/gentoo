@@ -28,11 +28,11 @@ RDEPEND="${ADA_DEPS}
 	dev-ada/lal-refactor:=[${ADA_USEDEP},shared(+)]
 	dev-ada/langkit:=[${ADA_USEDEP},shared(+)]
 	dev-ada/libadalang:=[${ADA_USEDEP}]
-	>=dev-ada/libadalang-tools-23:=[${ADA_USEDEP},shared]
+	>=dev-ada/libadalang-tools-23:=[${ADA_USEDEP}]
 	dev-ada/libgpr:=[${ADA_USEDEP}]
 	dev-ada/prettier-ada:=[${ADA_USEDEP}]
 	dev-ada/spawn:=[${ADA_USEDEP},shared]
-	dev-ada/templates-parser:=[${ADA_USEDEP},shared]
+	dev-ada/templates-parser:=[${ADA_USEDEP},shared(+)]
 	>=dev-ada/VSS-25.0.0:=[${ADA_USEDEP},shared]
 	dev-ada/xmlada:=[${ADA_USEDEP},shared]
 	dev-libs/gmp

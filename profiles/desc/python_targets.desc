@@ -7,4 +7,6 @@ python3_11 - Build with Python 3.11
 python3_12 - Build with Python 3.12
 python3_13 - Build with Python 3.13
 python3_13t - Build with Python 3.13 freethreading
+python3_14 - Build with Python 3.14
+python3_14t - Build with Python 3.14 freethreading
 pypy3_11 - Build with PyPy3.11

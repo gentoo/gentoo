@@ -111,7 +111,7 @@ src_unpack() {
 			die "sha256sum mismatch"
 		fi
 	else
-		my_A="${DISTDIR}/blender-${PV}-linux-x64.tar.xz"
+		my_A="blender-${PV}-linux-x64.tar.xz"
 	fi
 
 	unpack "${my_A}"
@@ -144,7 +144,7 @@ src_prepare() {
 	if ! use oneapi; then
 		rm \
 			lib/libOpenImageDenoise_device_sycl* \
-			lib/libpi_level_zero* \
+			lib/libur_adapter_level_zero* \
 			|| eqawarn "failed cleaning oneapi"
 	fi
 

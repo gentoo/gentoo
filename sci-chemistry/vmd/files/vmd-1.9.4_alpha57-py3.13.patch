@@ -1,0 +1,25 @@
+--- a/src/PythonTextInterp.C.old	2025-05-06 14:01:49.042312947 +0200
++++ b/src/PythonTextInterp.C	2025-05-06 14:13:55.323651236 +0200
+@@ -102,7 +102,7 @@
+ 
+   for (int i=0; i<PyList_GET_SIZE(cblist); i++) {
+     PyObject *obj = PyList_GET_ITEM(cblist, i);
+-    PyObject *result = PyEval_CallObject(obj, arglist);
++    PyObject *result = PyObject_CallObject(obj, arglist);
+     if (result == NULL) {
+       PyErr_Print();
+       PySequence_DelItem(cblist, i);
+@@ -172,13 +172,6 @@
+   PyImport_AppendInittab("vmd", PyInit_vmd);
+ #endif
+ 
+-  // Do emit DeprecationWarnings
+-#if PY_MAJOR_VERSION >= 3
+-  PySys_AddWarnOption(L"default");
+-#else
+-  PySys_AddWarnOption((char*) "default");
+-#endif
+-
+ #if 0 && PY_MAJOR_VERSION >= 3
+   // Set program name used to find library path etc. Defaults to 'python',
+   // must occur before initialization.

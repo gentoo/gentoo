@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-inherit toolchain-funcs python-single-r1
+inherit toolchain-funcs python-single-r1 optfeature
 
 MV=$(ver_cut 1-2)
 MY_P="${PN}${PV//./}"
@@ -211,4 +211,9 @@ src_install() {
 
 	# cleanup
 	unset PYTHIADIR EPYTHIADIR
+}
+
+pkg_postinstall() {
+	optfeature "python interface awkward array support" dev-python/awkward
+	optfeature "python interface vector support" dev-python/vector
 }

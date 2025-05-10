@@ -16,6 +16,7 @@ media-libs/gexiv2 test
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libvpx casualties (#700902)
+media-libs/opencv test
 media-video/ffmpeg vpx
 media-video/ffmpeg-compat vpx
 www-client/firefox system-libvpx

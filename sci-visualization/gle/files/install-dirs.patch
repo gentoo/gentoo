@@ -1,0 +1,65 @@
+diff '--color=auto' -r -U3 src.orig/CMakeLists.txt src/CMakeLists.txt
+--- src.orig/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/CMakeLists.txt	2025-05-07 13:15:48.636179953 +0700
+@@ -580,18 +580,17 @@
+ 
+ # documentation file installation in doc folder
+ install(FILES
+-	../doc/LICENSE.txt
+ 	../doc/README.txt
+ 	../doc/ChangeLog.txt
+ 	CONFIGURATIONS Release Debug
+-	DESTINATION ./doc
++	DESTINATION ./${GLEDOC}
+ )
+ #
+ # -- install include files from gle-library repo
+ #
+ install(DIRECTORY
+ 	${GLE_EXAMPLES_LIBRARY_PATH}/include/
+-	DESTINATION ./gleinc
++	DESTINATION ./share/gle/gleinc
+ 	CONFIGURATIONS Release Debug
+ 	OPTIONAL
+ 	PATTERN "*.gle"
+@@ -602,7 +601,7 @@
+ #
+ install(FILES
+ 	${GLE_USER_MANUAL_PATH}/gle-manual.pdf
+-	DESTINATION ./doc
++	DESTINATION ./${GLEDOC}
+ 	CONFIGURATIONS Release Debug
+ 	OPTIONAL
+ )
+diff '--color=auto' -r -U3 src.orig/fonts/CMakeLists.txt src/fonts/CMakeLists.txt
+--- src.orig/fonts/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/fonts/CMakeLists.txt	2025-05-07 13:15:15.580233720 +0700
+@@ -310,5 +310,5 @@
+ 	${FMT_FILES} 
+ 	${FVE_FILES}
+ 	CONFIGURATIONS Release Debug
+-	DESTINATION font)
++	DESTINATION ./share/gle/font)
+ 
+diff '--color=auto' -r -U3 src.orig/gle/CMakeLists.txt src/gle/CMakeLists.txt
+--- src.orig/gle/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/gle/CMakeLists.txt	2025-05-07 13:15:15.580978515 +0700
+@@ -201,5 +201,5 @@
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glerc
+ 		CONFIGURATIONS Release Debug
+-		DESTINATION . )
++		DESTINATION ./share/gle )
+ 
+diff '--color=auto' -r -U3 src.orig/TeX/CMakeLists.txt src/TeX/CMakeLists.txt
+--- src.orig/TeX/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/TeX/CMakeLists.txt	2025-05-07 13:15:15.581572441 +0700
+@@ -48,7 +48,7 @@
+ install(FILES
+ 	init.tex
+ 	CONFIGURATIONS Release Debug
+- 	DESTINATION .
++ 	DESTINATION ./share/gle
+ )
+ # make the inittex.ini in the install folder
+ install(CODE

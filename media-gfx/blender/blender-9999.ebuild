@@ -48,19 +48,14 @@ if [[ "${PV}" == *9999* ]]; then
 		EGIT_BRANCH="blender-v${BLENDER_BRANCH}-release"
 	fi
 
-	RESTRICT="!test? ( test )"
 else
 	SRC_URI="
 		https://download.blender.org/source/${P}.tar.xz
+		test? (
+			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0.tar.xz
+		)
 	"
-	# BUG upstream returns LFS references instead of files
-	# SRC_URI+="
-	# 	test? (
-	# 		https://projects.blender.org/blender/blender-test-data/archive/blender-v${BLENDER_BRANCH}-release.tar.gz
-	# 	)
-	# "
 	KEYWORDS="~amd64 ~arm ~arm64"
-	RESTRICT="test" # the test archive contains LFS references
 fi
 
 # assets is CC0-1.0
@@ -72,7 +67,7 @@ SLOT="${BLENDER_BRANCH}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip jack
-	jemalloc jpeg2k man +nanovdb ndof nls +oidn oneapi openal +openexr +opengl +openpgl
+	jemalloc jpeg2k man manifold +nanovdb ndof nls +oidn oneapi openal +openexr +opengl +openpgl
 	+opensubdiv +openvdb optix osl pipewire +pdf +potrace +pugixml pulseaudio
 	renderdoc sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
 "
@@ -80,6 +75,8 @@ IUSE="
 if [[ "${PV}" == *9999* ]]; then
 	IUSE+="experimental"
 fi
+
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( opengl vulkan )
@@ -139,6 +136,7 @@ RDEPEND="${PYTHON_DEPS}
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
+	manifold? ( >sci-mathematics/manifold-3.0.1 )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
@@ -157,7 +155,7 @@ RDEPEND="${PYTHON_DEPS}
 		>=media-gfx/openvdb-11.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
 	)
-	optix? ( dev-libs/optix )
+	optix? ( <dev-libs/optix-9:= )
 	osl? (
 		>=media-libs/osl-1.13:=[${LLVM_USEDEP}]
 		media-libs/mesa[${LLVM_USEDEP}]
@@ -242,7 +240,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0.2-FindClang.patch"
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
-	"${FILESDIR}/${PN}-4.3.2-system-gtest.patch"
+	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
 	"${FILESDIR}/${PN}-4.4.0-optix-compile-flags.patch"
 )
 
@@ -309,11 +307,10 @@ src_unpack() {
 	else
 		default
 
-		# BUG upstream returns LFS references instead of files
-		# if use test; then
-		# 	mkdir -p "${S}/tests/data/" || die
-		# 	mv blender-test-data/* "${S}/tests/data/" || die
-		# fi
+		# TODO
+		if use test && [[ ${PV} != ${SLOT}.0 ]] ; then
+			mv "blender-${BLENDER_BRANCH}.0/tests/"* "${S}/tests" || die
+		fi
 	fi
 }
 
@@ -342,6 +339,9 @@ src_prepare() {
 		-e "/CMAKE_INSTALL_PREFIX_WITH_CONFIG/{s|\${CMAKE_INSTALL_PREFIX}|${T}\${CMAKE_INSTALL_PREFIX}|g}" \
 		-i CMakeLists.txt \
 		|| die CMAKE_INSTALL_PREFIX_WITH_CONFIG
+
+	# WITH_SYSTEM_GLOG=yes
+	cmake_run_in extern cmake_comment_add_subdirectory glog
 
 	mv \
 		"release/freedesktop/icons/scalable/apps/blender.svg" \
@@ -391,6 +391,8 @@ src_prepare() {
 	else
 		cmake_comment_add_subdirectory tests
 	fi
+
+	rm -rf extern/gflags || die
 }
 
 src_configure() {
@@ -428,6 +430,7 @@ src_configure() {
 		-DWITH_HEADLESS="$(usex !X "$(usex !wayland)")"
 		-DWITH_INPUT_NDOF="$(usex ndof)"
 		-DWITH_INTERNATIONAL="$(usex nls)"
+		-DWITH_MANIFOLD="$(usex manifold)"
 		-DWITH_MATERIALX="no" # TODO: Package MaterialX
 		-DWITH_NANOVDB="$(usex nanovdb)"
 		-DWITH_OPENCOLLADA="$(usex collada)"
@@ -464,7 +467,7 @@ src_configure() {
 
 		# GHOST Options:
 		-DWITH_GHOST_WAYLAND="$(usex wayland)"
-		-DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
+		# -DWITH_GHOST_WAYLAND_APP_ID="blender-${BV}"
 		-DWITH_GHOST_WAYLAND_DYNLOAD="no"
 		-DWITH_GHOST_X11="$(usex X)"
 		# -DWITH_GHOST_XDND=ON
@@ -499,15 +502,15 @@ src_configure() {
 		# Python:
 		# -DWITH_PYTHON=ON
 		-DWITH_PYTHON_INSTALL="no"
-		# -DWITH_PYTHON_INSTALL_NUMPY="no"
-		# -DWITH_PYTHON_INSTALL_ZSTANDARD="no"
+		-DWITH_PYTHON_INSTALL_NUMPY="no"
+		-DWITH_PYTHON_INSTALL_ZSTANDARD="no"
 		# -DWITH_PYTHON_MODULE="no"
-		# -DWITH_PYTHON_SAFETY=
+		-DWITH_PYTHON_SAFETY="OFF"
 		-DWITH_PYTHON_SECURITY="yes"
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DPYTHON_VERSION="${EPYTHON/python/}"
-		-DWITH_DRACO="no" # TODO: Package Draco
+		-DWITH_DRACO="yes" # TODO: Package Draco # NOTE use bundled for now
 
 		# Modifiers:
 		-DWITH_MOD_FLUID="$(usex fluid)"
@@ -572,14 +575,11 @@ src_configure() {
 	fi
 
 	if use hip; then
-		# local -x HIP_PATH="$(hipconfig -p)"
 		mycmakeargs+=(
-			# -DROCM_PATH="$(hipconfig -R)"
 			-DHIP_ROOT_DIR="$(hipconfig -p)"
 
 			-DHIP_HIPCC_FLAGS="-fcf-protection=none"
 
-			# -DHIP_LINKER_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
 			-DCMAKE_HIP_LINK_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
 
 			-DCYCLES_HIP_BINARIES_ARCH="$(get_amdgpu_flags)"
@@ -635,6 +635,7 @@ src_configure() {
 
 		# NOTE in lieu of a FEATURE/build_options
 		if [[ "${EXPENSIVE_TESTS:-0}" -gt 0 ]]; then
+			einfo "running expensive tests EXPENSIVE_TESTS=${EXPENSIVE_TESTS}"
 			mycmakeargs+=(
 				-DWITH_CYCLES_TEST_OSL="$(usex osl)"
 
@@ -649,6 +650,7 @@ src_configure() {
 				-DWITH_GPU_RENDER_TESTS_VULKAN="$(usex vulkan)"
 
 				-DWITH_SYSTEM_PYTHON_TESTS="yes"
+				-DTEST_SYSTEM_PYTHON_EXE="${PYTHON}"
 			)
 
 			if [[ "${PV}" == *9999* && "${BVC}" == "alpha" ]] && use experimental; then
@@ -690,19 +692,27 @@ src_test() {
 
 	if use cuda; then
 		cuda_add_sandbox -w
-		addwrite "/dev/char/"
+		addwrite "/proc/self/task"
+		addpredict "/dev/char/"
 	fi
 
 	local -x CMAKE_SKIP_TESTS=(
-		"^script_pyapi_bpy_driver_secure_eval$"
-		"^cycles_image_colorspace_cpu$"
-		"^cycles_image_data_types_cpu$"
-		"^cycles_image_mapping_cpu$"
-		"^cycles_osl_cpu$"
-		"^cycles_image_data_types_optix$"
 		"^compositor_cpu_color$"
 		"^compositor_cpu_filter$"
+		"^cycles_image_colorspace_cpu$"
+		"^script_pyapi_bpy_driver_secure_eval$"
 	)
+
+	if [[ "${RUN_FAILING_TESTS:-0}" -eq 0 ]]; then
+		einfo "not running failing tests RUN_FAILING_TESTS=${RUN_FAILING_TESTS}"
+		CMAKE_SKIP_TESTS+=(
+			"^cycles_bsdf_cuda$"
+			"^cycles_image_data_types_cpu$"
+			"^cycles_image_data_types_optix$"
+			"^cycles_image_mapping_cpu$"
+			"^cycles_osl_cpu$"
+		)
+	fi
 
 	if ! has_version "media-libs/openusd"; then
 		CMAKE_SKIP_TESTS+=(
@@ -718,46 +728,48 @@ src_test() {
 		)
 	fi
 
+	# oiio can't find webp due to missing cmake files # 937031
+	sed -e "s/ WEBP//g" -i "${BUILD_DIR}/tests/python/CTestTestfile.cmake" || die
+
 	# For debugging, print out all information.
 	local -x VERBOSE="$(usex debug "true" "false")"
+	"${VERBOSE}" && einfo "VERBOSE=${VERBOSE}"
 
 	# Show the window in the foreground.
-	local -x USE_WINDOW="false"
-	local -x USE_DEBUG="false"
+	# local -x USE_WINDOW="true" # non-zero
+	[[ -v USE_WINDOW ]] && einfo "USE_WINDOW=${USE_WINDOW}"
 
-	eqawarn "VERBOSE=${VERBOSE}"
-	eqawarn "USE_WINDOW=${USE_WINDOW}"
-	eqawarn "USE_DEBUG=${USE_DEBUG}"
-	eqawarn "BLENDER_SYSTEM_RESOURCES=${BLENDER_SYSTEM_RESOURCES}"
-	eqawarn "EXPENSIVE_TESTS=${EXPENSIVE_TESTS}"
+	# local -x USE_DEBUG="true" # non-zero
+	[[ -v USE_DEBUG ]] && einfo "USE_DEBUG=${USE_DEBUG}"
 
 	if [[ "${EXPENSIVE_TESTS:-0}" -gt 0 ]]; then
-		if [[ "${USE_WINDOW}" = "true" ]] &&
-		 [[ "${PV}" == *9999* && "${BVC}" == "alpha" ]] &&
-			use experimental && use wayland; then
-				# This runs weston
-				xdg_environment_reset
-		fi
+		einfo "running expensive tests EXPENSIVE_TESTS=${EXPENSIVE_TESTS}"
+		# if [[ "${PV}" == *9999* && "${BVC}" == "alpha" ]] &&
+		# 	use experimental && use wayland; then
+		# 		# This runs weston
+		# 		xdg_environment_reset
+		# fi
 
-		if [[ "${USE_WINDOW}" == "true" ]]; then
-			xdg_environment_reset
-			# WITH_GPU_RENDER_TESTS_HEADED
-			if use wayland; then
-				local compositor exit_code
-				local logfile=${T}/weston.log
-				weston --xwayland --backend=headless --socket=wayland-5 --idle-time=0 2>"${logfile}" &
-				compositor=$!
-				local -x WAYLAND_DISPLAY=wayland-5
-				sleep 1 # wait for xwayland to be up
-				local -x DISPLAY="$(grep "xserver listening on display" "${logfile}" | cut -d ' ' -f 5)"
+		xdg_environment_reset
+		# WITH_GPU_RENDER_TESTS_HEADED
+		if use wayland; then
+			local compositor exit_code
+			local logfile=${T}/weston.log
+			weston --xwayland --backend=headless --socket=wayland-5 --idle-time=0 2>"${logfile}" &
+			compositor=$!
+			local -x WAYLAND_DISPLAY=wayland-5
+			sleep 1 # wait for xwayland to be up
+			# TODO use eapi9-pipestatus
+			local -x DISPLAY="$(grep "xserver listening on display" "${logfile}" | cut -d ' ' -f 5)"
 
-				cmake_src_test
+			cmake_src_test
 
-				exit_code=$?
-				kill "${compositor}"
-			elif use X; then
-				virtx cmake_src_test
-			fi
+			exit_code=$?
+			kill "${compositor}"
+		elif use X; then
+			virtx cmake_src_test
+		else
+			cmake_src_test
 		fi
 	else
 		cmake_src_test

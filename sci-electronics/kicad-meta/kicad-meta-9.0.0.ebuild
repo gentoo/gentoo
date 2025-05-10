@@ -9,7 +9,7 @@ HOMEPAGE="https://www.kicad.org"
 LICENSE="metapackage"
 SLOT="0"
 
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~riscv"
 
 IUSE="doc minimal"
 

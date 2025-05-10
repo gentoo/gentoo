@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} python3_1{3t,4t} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -32,7 +32,7 @@ distutils_enable_tests pytest
 python_test() {
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
-		python3.13*)
+		python3.1[34]*)
 			EPYTEST_DESELECT+=(
 				# https://github.com/spulec/freezegun/issues/547
 				tests/test_datetimes.py::TestUnitTestMethodDecorator::test_method_decorator_works_on_unittest_kwarg_frozen_time

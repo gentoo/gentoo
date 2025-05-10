@@ -33,7 +33,10 @@ RDEPEND="
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/opengl
-	link? ( >=media-libs/libsfml-2.0:= )
+	link? (
+		<media-libs/libsfml-3.0
+		>=media-libs/libsfml-2.0:=
+	)
 	lirc? ( app-misc/lirc )
 	nls? ( virtual/libintl )
 	wxwidgets? (

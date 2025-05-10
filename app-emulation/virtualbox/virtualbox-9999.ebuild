@@ -30,12 +30,13 @@ inherit desktop edo flag-o-matic java-pkg-opt-2 linux-mod-r1 multilib optfeature
 MY_PN="VirtualBox"
 BASE_PV=7.1.0
 MY_P=${MY_PN}-${PV}
+PATCHES_TAG=7.2.0_pre20250508
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
 SRC_URI="
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.2.0_pre20250106.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_TAG}.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
 S="${WORKDIR}/trunk"
@@ -205,7 +206,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.2.0_pre20250106/patches
+	"${WORKDIR}"/virtualbox-patches-${PATCHES_TAG}/patches
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs

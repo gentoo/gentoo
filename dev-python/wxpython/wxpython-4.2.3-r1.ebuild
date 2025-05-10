@@ -4,7 +4,7 @@
 EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYPI_NO_NORMALIZE=1
 PYPI_PN="wxPython"
 WX_GTK_VER="3.2-gtk3"
@@ -79,6 +79,10 @@ python_prepare_all() {
 	# sigh
 	sed -i -e '/from buildtools/i\
 sys.path.insert(0, ".")' setup.py || die
+
+	# sigh, used only when fetching things implicitly which we definitely
+	# don't want; https://bugs.gentoo.org/955593
+	sed -i -e '/requests/d' build.py || die
 }
 
 src_configure() {

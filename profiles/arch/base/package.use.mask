@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-05-08)
+# dev-python/sigstore is not keyworded everywhere.
+>=dev-lang/python-3.14 verify-sig
+>=dev-python/python-tests-3.14 verify-sig
+
 # Jimi Huotari <chiitoo@gentoo.org> (2025-04-24)
 # lxqt-base/lxqt-wayland-session is only keyworded for amd64 at this time.
 lxqt-base/lxqt-meta wayland

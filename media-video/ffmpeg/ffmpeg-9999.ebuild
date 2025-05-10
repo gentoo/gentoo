@@ -94,7 +94,6 @@ FFMPEG_IUSE_MAP=(
 	openmpt:libopenmpt
 	openssl:openssl,!gnutls@v3ifgpl # still LGPL2.1+ if USE=-gpl
 	opus:libopus
-	+postproc # exposed as a USE for clarity with the GPL requirement
 	pulseaudio:libpulse
 	qrcode:libqrencode
 	qsv:libvpl
@@ -164,8 +163,8 @@ REQUIRED_USE="
 	npp? ( nvenc )
 	shaderc? ( vulkan )
 	libaribb24? ( gpl ) cdio? ( gpl ) dvd? ( gpl ) frei0r? ( gpl )
-	postproc? ( gpl ) rubberband? ( gpl ) samba? ( gpl )
-	vidstab? ( gpl ) x264? ( gpl ) x265? ( gpl ) xvid? ( gpl )
+	rubberband? ( gpl ) samba? ( gpl ) vidstab? ( gpl ) x264? ( gpl )
+	x265? ( gpl ) xvid? ( gpl )
 	${FFMPEG_UNSLOTTED:+chromium? ( opus )}
 	${FFMPEG_SOC_PATCH:+soc? ( drm )}
 "

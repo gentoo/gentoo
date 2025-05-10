@@ -1,4 +1,4 @@
-Based on: https://github.com/embree/embree/commit/82ca6b5ccb7abe0403a658a0e079926478f04cb1
+Based on: https://github.com/RenderKit/embree/commit/82ca6b5ccb7abe0403a658a0e079926478f04cb1
 Tested in: https://bugs.gentoo.org/851705
 
 Without this patch, it will only build on ARM Mac computers

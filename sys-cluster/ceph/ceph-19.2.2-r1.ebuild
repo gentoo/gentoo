@@ -244,6 +244,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.2-py313-1.patch"
 	"${FILESDIR}/ceph-19.2.2-py313-2.patch"
 	"${FILESDIR}/ceph-19.2.2-py313-3.patch"
+	"${FILESDIR}/ceph-19.2.2-gcc15.patch"
 )
 
 check-reqs_export_vars() {

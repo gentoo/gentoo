@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 pypi virtualx
@@ -29,7 +29,7 @@ SRC_URI+="
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~arm64-macos ~x64-macos"
 IUSE="cairo excel gtk3 latex qt6 tk webagg wxwidgets"
 
 DEPEND="
@@ -293,6 +293,7 @@ python_test() {
 	)
 	distutils_pep517_install "${BUILD_DIR}"/test
 	cp -r "${BUILD_DIR}"/{install,test}"${EPREFIX}/usr/bin" || die
+	cp -r "${BUILD_DIR}"/{install,test}"${EPREFIX}/usr/pyvenv.cfg" || die
 	local -x PATH=${BUILD_DIR}/test${EPREFIX}/usr/bin:${PATH}
 
 	pushd lib >/dev/null || die

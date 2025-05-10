@@ -1,0 +1,45 @@
+From 08e94fb8276b568e33480df60dec0a72ba1bef26 Mon Sep 17 00:00:00 2001
+From: Alexandra Parker <alex.iris.parker@gmail.com>
+Date: Wed, 7 May 2025 13:17:32 -0700
+Subject: [PATCH] [Fix] libmime: declare comparators const for doctest 2.4.12
+ compatibility
+
+Petr Vaněk pointed out a change in doctest 2.4.12 that broke the libmime
+test code:
+https://github.com/doctest/doctest/commit/d7a5eeb820b61cc3af8a61b3117f76a403b7742a
+
+CHECK is now treats LHS as const and the compiler won't find non-const
+operator== as a result. It's reasonable for comparators to be const, so
+make them const.
+
+Signed-Off-By: Alexandra Parker <alex.iris.parker@gmail.com>
+Upstream-PR: https://github.com/rspamd/rspamd/pull/5458
+
+diff --git a/src/libmime/mime_string.hxx b/src/libmime/mime_string.hxx
+index b181576d33..d6c11d018b 100644
+--- a/src/libmime/mime_string.hxx
++++ b/src/libmime/mime_string.hxx
+@@ -497,19 +497,19 @@ public:
+ 	}
+ 
+ 	/* Comparison */
+-	auto operator==(const basic_mime_string &other)
++	auto operator==(const basic_mime_string &other) const
+ 	{
+ 		return other.storage == storage;
+ 	}
+-	auto operator==(const storage_type &other)
++	auto operator==(const storage_type &other) const
+ 	{
+ 		return other == storage;
+ 	}
+-	auto operator==(const view_type &other)
++	auto operator==(const view_type &other) const
+ 	{
+ 		return other == storage;
+ 	}
+-	auto operator==(const CharT *other)
++	auto operator==(const CharT *other) const
+ 	{
+ 		if (other == NULL) {
+ 			return false;

@@ -448,6 +448,7 @@ dev-libs/optix
 media-libs/nvidia-vaapi-driver
 x11-drivers/nvidia-drivers
 x11-misc/primus
+dev-libs/cusparselt
 
 # Ulrich Müller (2020-03-31)
 # Not ported to musl, bug #715642.

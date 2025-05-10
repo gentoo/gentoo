@@ -5,7 +5,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} python3_1{3t,4t} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -28,14 +28,14 @@ BDEPEND="
 	)
 "
 
-EPYTEST_DESELECT=(
-	# fails if any setuptools plugin imported the module first
-	tests/test_bdist_wheel.py::test_deprecated_import
-)
-
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/pypa/wheel/pull/651
+		"${FILESDIR}/${P}-test.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# unbundle packaging
@@ -46,6 +46,17 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=(
+		# fails if any setuptools plugin imported the module first
+		tests/test_bdist_wheel.py::test_deprecated_import
+
+		# broken by setuptools license changes
+		# upstream removed the tests already
+		tests/test_bdist_wheel.py::test_licenses_default
+		tests/test_bdist_wheel.py::test_licenses_deprecated
+		tests/test_bdist_wheel.py::test_licenses_override
+	)
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }

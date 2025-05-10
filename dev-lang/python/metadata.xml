@@ -26,6 +26,11 @@
 			by running Python's test suite and collecting statistics
 			based on its performance. This will take longer to build.
 		</flag>
+		<flag name="tail-call-interp">
+			Enable the tail call interpreter. May lead to better
+			performance but is still new and dependent on latest
+			toolchain versions (Clang 19, GCC 15).
+		</flag>
 		<flag name="valgrind">
 			Disable pymalloc when running under
 			<pkg>dev-debug/valgrind</pkg> is detected (may incur minor

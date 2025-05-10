@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-text/liblangtag
 	dev-libs/librevenge
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-util/mdds:1/${MDDS_VER}
 	sys-libs/zlib
 "

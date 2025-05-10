@@ -10,6 +10,8 @@ declare -A GIT_CRATES=(
 	[rust-faces]='https://github.com/blissd/fotema-rust-faces;43c0d5acd6f3f4d90c6487708f2e511a73bf7c9e;fotema-rust-faces-%commit%'
 )
 
+RUST_MIN_VER="1.85.0"
+
 inherit cargo gnome2-utils meson xdg-utils
 
 CRATE_P=${P/-/-v}
@@ -51,7 +53,7 @@ DEPEND+="
 	media-libs/graphene
 	media-libs/lcms:2
 	media-libs/libshumate:=
-	media-libs/opencv:=[contribdnn]
+	media-libs/opencv:=[contribdnn,features2d]
 	media-video/ffmpeg:=
 	sci-ml/onnx
 	sys-libs/libseccomp

@@ -25,6 +25,7 @@ net-libs/quiche
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-17)
 # media-libs/libvpx casualties (#700902)
+media-gfx/blender
 media-plugins/gst-plugins-vpx
 dev-qt/qtwebengine
 www-client/falkon

@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">NVIDIA/cudnn-frontend</remote-id>
 	</upstream>
+	<use>
+		<flag name="samples">Build samples during testing</flag>
+	</use>
 </pkgmetadata>

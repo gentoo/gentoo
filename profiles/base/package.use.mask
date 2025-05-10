@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# Requires llvm-15
+media-gfx/openvdb ax
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-30)
 # Valve has modified Wine's ffmpeg code with a new pcm_byte_order_reverse_bsf.c
 # that seems riddled with issues (missing identifiers, incompatible pointer
@@ -278,7 +282,6 @@ net-analyzer/nagios-plugin-check_raid hpa
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Requires LLVM 14 that is being removed.
 <dev-lang/ghc-9.4 llvm
-<media-gfx/openvdb-11 ax
 sys-devel/sparse llvm
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
@@ -564,12 +567,6 @@ sys-devel/gcc custom-cflags
 # As such, we cannot properly test it, so mask the flag until this
 # situation is resolved.
 dev-util/rizin test
-
-# Sam James <sam@gentoo.org> (2021-12-27)
-# Doc building is broken and no new releases in a long time.
-# bug #830013
-# fixed in sci-libs/flann-1.9.2-20221027
-<=sci-libs/flann-1.9.2 doc
 
 # Joonas Niilola <juippis@gentoo.org> (2021-12-20)
 # Broken, upstream issue/PR open since 2021-05 without reply.
