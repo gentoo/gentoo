@@ -138,7 +138,6 @@ src_configure() {
 		einfo "Disabled modules: ${PYTHON_DISABLE_MODULES}"
 	fi
 
-	append-flags -fwrapv
 	filter-flags -malign-double
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
