@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-reboot.patch"
 )
 
 src_prepare() {
