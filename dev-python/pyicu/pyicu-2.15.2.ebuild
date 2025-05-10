@@ -38,6 +38,10 @@ BDEPEND="
 
 DOCS=( CHANGES CREDITS README.md )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc15.patch
+)
+
 distutils_enable_tests pytest
 
 python_test() {
