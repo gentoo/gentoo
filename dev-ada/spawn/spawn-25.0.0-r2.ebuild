@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_12 gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_{12..15} )
 inherit ada multiprocessing
 
 DESCRIPTION="Simple API to spawn processes"
@@ -14,9 +14,8 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+shared static-libs static-pic"
-REQUIRED_USE="|| ( shared static-libs static-pic )
-	${ADA_REQUIRED_USE}"
+IUSE="static-libs static-pic"
+REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}"
 DEPEND="${RDEPEND}"
@@ -28,15 +27,9 @@ src_compile() {
 			-XLIBRARY_TYPE=$1 \
 			gnat/spawn.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}
-	if use shared; then
-		build relocatable
-	fi
-	if use static-libs; then
-		build static
-	fi
-	if use static-pic; then
-		build static-pic
-	fi
+	build relocatable
+	use static-libs && build static
+	use static-pic  && build static-pic
 }
 
 src_test() {
@@ -47,13 +40,7 @@ src_test() {
 			-cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} \
 			|| die
 	}
-	if use shared; then
-		build relocatable
-	elif use static-libs; then
-		build static
-	elif use static-pic; then
-		build static-pic
-	fi
+	build relocatable
 	.obj/spawn_test/spawn_test || die
 	.obj/spawn_test/spawn_unexpected || die
 	.obj/spawn_test/wait_all || die
@@ -71,13 +58,7 @@ src_install() {
 			--link-lib-subdir="${D}"/usr/$(get_libdir)/ -p \
 			-P gnat/spawn.gpr || die
 	}
-	if use shared; then
-		build relocatable
-	fi
-	if use static-libs; then
-		build static
-	fi
-	if use static-pic; then
-		build static-pic
-	fi
+	build relocatable
+	use static-libs && build static
+	use static-pic  && build static-pic
 }
