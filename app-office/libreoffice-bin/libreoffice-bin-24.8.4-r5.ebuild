@@ -7,7 +7,7 @@ EAPI=8
 # uses jre:11 which may be unnecessary.
 inherit java-pkg-opt-2 prefix unpacker xdg
 
-BASE_SRC_URI="https://download.documentfoundation.org/libreoffice/stable/${PV}/deb"
+BASE_SRC_URI="https://download.documentfoundation.org/libreoffice/stable/24.8.5/deb"
 
 DESCRIPTION="A full office productivity suite. Binary package"
 HOMEPAGE="https://www.libreoffice.org"
@@ -21,7 +21,7 @@ S="${WORKDIR}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE="java offlinehelp python"
 
 # "en:en-US" for mapping from Gentoo "en" to upstream "en-US" etc.
@@ -42,14 +42,14 @@ handle_lang() {
 	for lang in ${LANGUAGES_HELP[@]}; do
 		SRC_URI+=" l10n_${lang%:*}? (
 			offlinehelp? (
-				${BASE_SRC_URI}/x86_64/LibreOffice_${PV}_Linux_x86-64_deb_helppack_${lang#*:}.tar.gz
+				${BASE_SRC_URI}/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb_helppack_${lang#*:}.tar.gz
 			)
 		)"
 	done
 	for lang in ${LANGUAGES[@]}; do
 		if [[ ${lang%:*} != en ]]; then
 			SRC_URI+=" l10n_${lang%:*}? (
-				${BASE_SRC_URI}/x86_64/LibreOffice_${PV}_Linux_x86-64_deb_langpack_${lang#*:}.tar.gz
+				${BASE_SRC_URI}/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb_langpack_${lang#*:}.tar.gz
 			)"
 		fi
 		IUSE+=" l10n_${lang%:*}"
@@ -68,7 +68,7 @@ RDEPEND="
 	dev-libs/gobject-introspection
 	|| (
 		<dev-libs/libxml2-2.14
-		dev-libs/libxml2-compat:2
+		dev-libs/libxml2-compat
 	)
 	dev-libs/libxslt
 	dev-libs/nspr
@@ -158,6 +158,10 @@ src_install() {
 	cp -aR "${S}"/opt/* "${ED}"/opt/ || die
 	cp -aR "${S}"/usr/* "${ED}"/usr/ || die
 	rmdir "${ED}"/usr/local || die
+
+	# Convenience link
+	# bug #954332
+	dosym libreoffice${PV%*.*} /usr/bin/${PN}
 
 	# prevent revdep-rebuild from attempting to rebuild all the time
 	insinto /etc/revdep-rebuild
