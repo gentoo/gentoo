@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="+keybinder libcanberra libnotify"
 
 # TODO: remove exo when we dep on >=libxfce4ui-4.21.0
