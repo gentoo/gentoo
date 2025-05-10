@@ -358,18 +358,14 @@ go-module_setup_proxy() {
 
 # @FUNCTION: go-module_src_unpack
 # @DESCRIPTION:
-# Sets up GOFLAGS for the system and then unpacks based on the following rules:
+# Sets up GOFLAGS and compile env through go-module_setup_env and then
+# unpacks based on the following rules:
 # 1. If EGO_SUM is set, unpack the base tarball(s) and set up the
 #    local go proxy.  This mode is deprecated.
 # 2. Otherwise, if EGO_VENDOR is set, bail out, as this functionality was removed.
-# 3. Otherwise, call 'ego mod verify' and then do a normal unpack.
-# Set compile env via go-env.
+# 3. Otherwise, do a normal unpack and then call 'ego mod verify'.
 go-module_src_unpack() {
-	if use amd64 || use arm || use arm64 ||
-		( use ppc64 && [[ $(tc-endian) == "little" ]] ) || use s390 || use x86; then
-			GOFLAGS="-buildmode=pie ${GOFLAGS}"
-	fi
-	GOFLAGS="${GOFLAGS} -p=$(makeopts_jobs)"
+	go-module_setup_env
 	if [[ "${#EGO_SUM[@]}" -gt 0 ]]; then
 		eqawarn "QA Notice: This ebuild uses EGO_SUM which is deprecated"
 		eqawarn "Please migrate to a dependency tarball"
@@ -387,6 +383,20 @@ go-module_src_unpack() {
 			${nf} ego mod verify
 		fi
 	fi
+}
+
+# @FUNCTION: go-module_setup_env
+# @DESCRIPTION:
+# Sets up GOFLAGS and compile environment for the system.
+#
+# Useful for ebuilds that do not wish to use go-module_src_unpack, but
+# still need to be properly set up for compiling.
+go-module_setup_env() {
+	if use amd64 || use arm || use arm64 ||
+		( use ppc64 && [[ $(tc-endian) == "little" ]] ) || use s390 || use x86; then
+			GOFLAGS="-buildmode=pie ${GOFLAGS}"
+	fi
+	GOFLAGS="${GOFLAGS} -p=$(makeopts_jobs)"
 
 	go-env_set_compile_environment
 }
