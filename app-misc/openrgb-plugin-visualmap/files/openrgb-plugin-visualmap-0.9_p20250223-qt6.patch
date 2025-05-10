@@ -1,0 +1,22 @@
+https://gitlab.com/OpenRGBDevelopers/OpenRGBVisualMapPlugin/-/merge_requests/54
+
+--- a/OpenRGBPluginsFont.cpp
++++ b/OpenRGBPluginsFont.cpp
+@@ -1,5 +1,6 @@
+ #include "OpenRGBPluginsFont.h"
+ #include <QFontDatabase>
++#include <QStringList>
+ 
+ OpenRGBPluginsFont* OpenRGBPluginsFont::instance;
+ 
+--- a/ui/DeviceWidget.cpp
++++ b/ui/DeviceWidget.cpp
+@@ -26,7 +26,7 @@ DeviceWidget::DeviceWidget(QWidget *parent, ControllerZone* controller_zone, boo
+     if(in_group)
+     {
+         ui->frame->setFrameShape(QFrame::NoFrame);
+-        ui->frame->layout()->setMargin(0);
++        ui->frame->layout()->setContentsMargins(0, 0, 0, 0);
+     }
+ }
+ 
