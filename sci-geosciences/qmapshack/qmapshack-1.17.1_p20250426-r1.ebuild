@@ -5,11 +5,11 @@ EAPI=8
 
 inherit cmake xdg
 
-COMMIT="948ae8a8a1526766ebdf9df2f207462c09c15c3b"
+COMMIT="71861d34a91c33380ba1ea055ff2ae67209e2bd6"
 
 DESCRIPTION="GPS mapping utility"
 HOMEPAGE="https://github.com/Maproom/qmapshack/wiki"
-SRC_URI="https://github.com/Maproom/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Maproom/${PN}/archive/${COMMIT}.tar.gz -> ${PF}.tar.gz"
 S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-3+"
@@ -34,18 +34,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
 src_configure() {
-	local mycmakeargs=( -DUSE_QT6DBus=$(usex dbus) )
+	local mycmakeargs=(
+		-DUSE_QT6DBus=$(usex dbus)
+		-DHTML_INSTALL_DIR=/usr/share/doc/${PF}/html
+	)
 	cmake_src_configure
-}
-
-src_install() {
-	docompress -x /usr/share/doc/${PF}/html
-	cmake_src_install
-	mv "${D}"/usr/share/doc/HTML "${D}"/usr/share/doc/${PF}/html || die "mv Qt help failed"
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-
-	ewarn "Qt6 port: help system is currently broken"
 }
