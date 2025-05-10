@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -58,7 +58,7 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
-	append-flags -fno-tree-dce -fno-optimize-sibling-calls #421375
+	append-flags -fno-tree-dce -fno-optimize-sibling-calls #419971
 
 	tc-export AR CXX
 
