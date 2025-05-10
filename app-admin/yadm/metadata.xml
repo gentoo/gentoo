@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">TheLocehiliosan/yadm</remote-id>
+		<remote-id type="github">yadm-dev/yadm</remote-id>
 	</upstream>
 	<longdescription lang="en">
 	yadm is a dotfile manager that handles the hassle of synchronizing the
