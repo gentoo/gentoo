@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/955169
+
+This change is applied upstream as a part of a larger commit.
+This gets around non-lto builds failing with missing symbols.
+
+https://github.com/Yubico/yubihsm-shell/commit/ec05084df550fd25c3fe0acd7ab62ba7d2130b5c
+
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index 28750ad..50ab0e6 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -52,6 +52,7 @@ set (
+   SOURCE_WRAP
+   wrap.c
+   ../common/util.c
++  ../common/hash.c
+   ../common/openssl-compat.c
+   )
+ 
+
