@@ -51,7 +51,7 @@ DEPEND+="
 	media-libs/graphene
 	media-libs/lcms:2
 	media-libs/libshumate:=
-	media-libs/opencv:=[contribdnn]
+	media-libs/opencv:=[contribdnn,features2d]
 	media-video/ffmpeg:=
 	sci-ml/onnx
 	sys-libs/libseccomp
