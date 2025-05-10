@@ -6,6 +6,8 @@
 	<name>Gentoo Games Project</name>
 </maintainer>
 <use>
+	<flag name="ffmpeg">Enable video recording feature</flag>
+	<flag name="pas2c">Translate Pascal sources to C and build with clang</flag>
 	<flag name="server">Enable local server</flag>
 </use>
 </pkgmetadata>
