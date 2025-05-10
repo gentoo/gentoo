@@ -1,0 +1,45 @@
+[Unit]
+Description=Vaultwarden, unofficial Bitwarden compatible password manager
+Documentation=https://github.com/dani-garcia/vaultwarden
+
+After=network.target
+Wants=network.target
+
+[Service]
+Environment=ENV_FILE=/etc/%N/%N.conf
+ExecStart=/usr/bin/%N
+WorkingDirectory=/var/lib/%N
+
+User=%N
+Group=%N
+UMask=0027
+
+# Sandboxing and hardening systemd.exec(5)
+PrivateUsers=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+RestrictRealtime=yes
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+
+# set entire file system to read only except following paths
+ProtectSystem=strict
+ReadWritePaths=/var/lib/%N -/var/log/%N.log
+CacheDirectory=%N
+
+# Set reasonable connection and process limits
+LimitNOFILE=1048576
+LimitNPROC=64
+
+[Install]
+WantedBy=multi-user.target
