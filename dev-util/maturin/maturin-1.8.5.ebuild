@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_UPSTREAM_PEP517=standalone
 PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 RUST_MIN_VER=1.75.0
 inherit cargo distutils-r1 flag-o-matic shell-completion toolchain-funcs
@@ -52,11 +53,6 @@ src_prepare() {
 
 	# we build the Rust executable (just once) via cargo_src_compile
 	sed -i -e '/setuptools_rust/d' -e '/rust_extensions/d' setup.py || die
-
-	# the 'bootstrap' wrapper confuses the eclass, use directly for now
-	sed -e '/^backend-path/d' \
-		-e '/^build-backend = "bootstrap"/s/".*/"setuptools.build_meta"/' \
-		-i pyproject.toml || die
 
 	if use test; then
 		# used to prevent use of network during tests, and silence pip
