@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_14 )
+ADA_COMPAT=( gcc_{14..15} )
 PYTHON_COMPAT=( python3_{10..13} )
 inherit ada python-any-r1 multiprocessing
 
@@ -45,6 +45,7 @@ pkg_setup() {
 src_compile() {
 	build () {
 		gprbuild -v -k -XLAL_REFACTOR_LIBRARY_TYPE=$1 -XLIBRARY_TYPE=$1 \
+			-XBUILD_MODE=prod \
 			-P gnat/lal_refactor.gpr -p -j$(makeopts_jobs) \
 			-largs ${LDFLAGS} -cargs ${ADAFLAGS} || die
 	}
@@ -66,7 +67,8 @@ src_compile() {
 }
 
 src_test() {
-	${PYTHON} testsuite/testsuite.py || die
+	./testsuite/testsuite.py --job 1 |& tee lal-refactor.testOut
+	grep -qw FAIL lal-refactor.testOut && die
 }
 
 src_install() {
