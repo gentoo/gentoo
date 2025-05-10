@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,13 +12,13 @@ HOMEPAGE="https://www.asterisk.org/"
 SRC_URI="https://downloads.asterisk.org/pub/telephony/asterisk/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/${PV%%.*}"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE_VOICEMAIL_STORAGE=(
 	voicemail_storage_odbc
 	voicemail_storage_imap
 )
-IUSE="${IUSE_VOICEMAIL_STORAGE[*]} alsa blocks bluetooth calendar +caps cluster codec2 curl debug deprecated doc freetds gtalk http iconv ilbc ldap lua mysql newt odbc oss pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd syslog systemd unbound vorbis xmpp"
+IUSE="${IUSE_VOICEMAIL_STORAGE[*]} blocks bluetooth calendar +caps cluster codec2 curl debug doc freetds gtalk http iconv ilbc ldap lua mysql newt odbc pjproject portaudio postgres radius selinux snmp span speex srtp +ssl static statsd systemd unbound vorbis xmpp"
 IUSE_EXPAND="VOICEMAIL_STORAGE"
 REQUIRED_USE="gtalk? ( xmpp )
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -35,12 +35,11 @@ DEPEND="acct-user/asterisk
 	dev-libs/popt
 	>=dev-libs/jansson-2.11:=
 	dev-libs/libedit
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/libcrypt:=
-	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez:= )
 	calendar? (
 		net-libs/neon:=
@@ -92,8 +91,7 @@ RDEPEND="${DEPEND}
 	net-misc/asterisk-core-sounds
 	net-misc/asterisk-extra-sounds
 	net-misc/asterisk-moh-opsound
-	selinux? ( sec-policy/selinux-asterisk )
-	syslog? ( virtual/logger )"
+	selinux? ( sec-policy/selinux-asterisk )"
 PDEPEND="net-misc/asterisk-base"
 
 BDEPEND="dev-libs/libxml2:2
@@ -151,25 +149,26 @@ src_configure() {
 	local vmst
 	local copt cstate
 	local myconf=(
-		LUA_VERSION="${ELUA#lua}"
-		--localstatedir="/var"
-		--with-crypto
-		--with-gsm=internal
-		--with-popt
-		--with-z
-		--with-libedit
-		--without-jansson-bundled
-		--without-pjproject-bundled
-		$(use_with caps cap)
-		$(use_with codec2)
-		$(use_with lua lua)
-		$(use_with http gmime)
-		$(use_with newt)
-		$(use_with pjproject)
-		$(use_with portaudio)
-		$(use_with ssl)
+		LUA_VERSION="${ELUA#lua}" \
+		--localstatedir="/var" \
+		--with-crypto \
+		--with-gsm=internal \
+		--with-popt \
+		--with-z \
+		--with-libedit \
+		--without-jansson-bundled \
+		--without-pjproject-bundled \
+		$(use_with caps cap) \
+		$(use_with codec2) \
+		$(use_with lua lua) \
+		$(use_with http gmime) \
+		$(use_with newt) \
+		$(use_with pjproject) \
+		$(use_with portaudio) \
+		$(use_with ssl) \
 		$(use_with unbound)
 	)
+
 	econf "${myconf[@]}"
 
 	ast_menuselect() {
@@ -206,7 +205,6 @@ src_configure() {
 	ast_menuselect --disable build_native
 
 	# Broken functionality is forcibly disabled (bug #360143)
-	ast_menuselect --disable chan_misdn
 	ast_menuselect --disable chan_ooh323
 
 	# Utility set is forcibly enabled (bug #358001)
@@ -214,11 +212,6 @@ src_configure() {
 	ast_menuselect --enable streamplayer
 	ast_menuselect --enable aelparse
 	ast_menuselect --enable astman
-
-	# this is connected, otherwise it would not find
-	# ast_pktccops_gate_alloc symbol
-	ast_menuselect --enable chan_mgcp
-	ast_menuselect --enable res_pktccops
 
 	# SSL is forcibly enabled, IAX2 & DUNDI are expected to be available
 	ast_menuselect --enable pbx_dundi
@@ -233,13 +226,11 @@ src_configure() {
 	ast_menuselect --disable astdb2bdb
 
 	# The others are based on USE-flag settings
-	_use_select alsa         chan_alsa
 	_use_select bluetooth    chan_mobile
 	_use_select calendar     res_calendar res_calendar_{caldav,ews,exchange,icalendar}
 	_use_select cluster      res_corosync
 	_use_select codec2       codec_codec2
 	_use_select curl         func_curl res_config_curl res_curl
-	_use_select deprecated   app_macro
 	_use_select freetds      {cdr,cel}_tds
 	_use_select gtalk        chan_motif
 	_use_select http         res_http_post
@@ -247,9 +238,8 @@ src_configure() {
 	_use_select ilbc         codec_ilbc format_ilbc
 	_use_select ldap         res_config_ldap
 	_use_select lua          pbx_lua
-	_use_select mysql        app_mysql cdr_mysql res_config_mysql
+	_use_select mysql        res_config_mysql
 	_use_select odbc         cdr_adaptive_odbc res_config_odbc {cdr,cel,res,func}_odbc
-	_use_select oss          chan_oss
 	_use_select postgres     {cdr,cel}_pgsql res_config_pgsql
 	_use_select radius       {cdr,cel}_radius
 	_use_select snmp         res_snmp
@@ -258,7 +248,6 @@ src_configure() {
 	_use_select speex        format_ogg_speex
 	_use_select srtp         res_srtp
 	_use_select statsd       res_statsd res_{endpoint,chan}_stats
-	_use_select syslog       cdr_syslog
 	_use_select vorbis       format_ogg_vorbis
 	_use_select xmpp         res_xmpp
 
@@ -317,7 +306,6 @@ src_install() {
 	# Reset diropts else dodoc uses it for doc installations.
 	diropts -m0755
 
-	# install the upgrade documentation
 	dodoc README* BUGS CREDITS
 
 	# install extra documentation
@@ -350,11 +338,6 @@ pkg_postinst() {
 			elog "https://wiki.asterisk.org/wiki/display/AST/Upgrading+to+Asterisk+$(ver_cut 1)"
 			elog "Assistance also available on Gentoo VoIP IRC Channel: #gentoo-voip @ irc.libera.chat"
 		fi
-	fi
-
-	if use deprecated; then
-		ewarn "You really aught to port whatever code you have that depends on this since these are going to go away."
-		ewarn "Refer: https://wiki.asterisk.org/wiki/display/AST/Module+Deprecation"
 	fi
 
 	if [[ -n "${GENTOO_ASTERISK_CUSTOM_MENUSELECT:+yes}" ]]; then
