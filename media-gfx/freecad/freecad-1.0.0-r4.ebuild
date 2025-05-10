@@ -141,6 +141,10 @@ cuda_get_host_compiler() {
 		return
 	fi
 
+	if ! has_version dev-util/nvidia-cuda-toolkit ; then
+		return
+	fi
+
 	einfo "Trying to find working CUDA host compiler"
 
 	if ! tc-is-gcc && ! tc-is-clang; then
