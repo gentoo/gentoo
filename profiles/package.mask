@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Petr Vaněk <arkamar@gentoo.org> (2025-05-10)
+# Unmaintained upstream, incompatible with py3.12+, no revdeps, see
+# https://github.com/torproject/stem/issues/154 and
+# https://github.com/torproject/nyx/issues/68
+# Removal on 2025-06-09.
+net-libs/stem
+net-misc/nyx
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-08)
 # No more revdeps. Removal on 2025-05-31.
 kde-frameworks/kinit
