@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2-make-4.4.patch
 	"${FILESDIR}"/${PN}-2.2-backport-pr66.patch
 	"${FILESDIR}"/${PN}-2.2-remove-const-cast.patch
+	"${FILESDIR}"/${PN}-2.2-no-native-ar.patch
 )
 
 get_audio() {
