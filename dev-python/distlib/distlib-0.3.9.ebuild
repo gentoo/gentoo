@@ -52,7 +52,7 @@ python_test() {
 	# disable system-site-packages -- distlib has no deps, and is very
 	# fragile to packages actually installed on the system
 	sed -i -e '/system-site-packages/s:true:false:' \
-		"${BUILD_DIR}/install${EPREFIX}/usr/bin/pyvenv.cfg" || die
+		"${BUILD_DIR}/install${EPREFIX}/usr/pyvenv.cfg" || die
 
 	"${EPYTHON}" tests/test_all.py -v -x ||
 		die "Tests failed with ${EPYTHON}"
