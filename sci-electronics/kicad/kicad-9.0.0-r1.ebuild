@@ -94,7 +94,8 @@ RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 "
 BDEPEND=">=dev-lang/swig-4.0
-	doc? ( app-text/doxygen )"
+	doc? ( app-text/doxygen )
+	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )"
 
 if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds
