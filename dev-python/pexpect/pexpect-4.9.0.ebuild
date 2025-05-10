@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{10..14} python3_13t pypy3 pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -32,6 +32,8 @@ distutils_enable_sphinx doc \
 PATCHES=(
 	# https://github.com/pexpect/pexpect/pull/794
 	"${FILESDIR}/${P}-py313.patch"
+	# https://github.com/pexpect/pexpect/pull/808
+	"${FILESDIR}/${P}-py314.patch"
 )
 
 src_test() {
