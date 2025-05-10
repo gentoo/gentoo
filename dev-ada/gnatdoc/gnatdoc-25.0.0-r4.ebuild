@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-ADA_COMPAT=( gcc_14 )
+ADA_COMPAT=( gcc_{14..15} )
 
 inherit ada python-single-r1 multiprocessing
 
