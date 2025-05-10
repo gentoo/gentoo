@@ -289,7 +289,7 @@ COMMON_DEPEND="
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	x264? ( media-libs/x264:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
-	xml? ( dev-libs/libxml2[${MULTILIB_USEDEP}] )
+	xml? ( dev-libs/libxml2:=[${MULTILIB_USEDEP}] )
 	xvid? ( media-libs/xvid[${MULTILIB_USEDEP}] )
 	zeromq? ( net-libs/zeromq:= )
 	zimg? ( media-libs/zimg[${MULTILIB_USEDEP}] )
