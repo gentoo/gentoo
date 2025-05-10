@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal preserve-libs
+inherit dot-a multilib-minimal preserve-libs
 
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
@@ -55,6 +55,11 @@ src_prepare() {
 	fi
 }
 
+src_configure() {
+	use static-libs && lto-guarantee-fat
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	# --includedir= path maintains a few properties:
 	# 1. have stable name across libffi versions: some packages like
@@ -83,6 +88,7 @@ multilib_src_test() {
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -name "*.la" -delete || die
+	strip-lto-bytecode
 }
 
 pkg_preinst() {
