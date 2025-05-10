@@ -737,6 +737,7 @@ src_configure() {
 			-DVTK_ENABLE_OSPRAY=OFF
 
 			-DVTK_MODULE_ENABLE_VTK_IOExportGL2PS="YES"
+			-DVTK_MODULE_ENABLE_VTK_RenderingAnari="NO"  # no package in ::gentoo
 			-DVTK_MODULE_ENABLE_VTK_RenderingAnnotation="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingContext2D="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2="YES"
