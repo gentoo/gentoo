@@ -1,0 +1,39 @@
+https://lore.kernel.org/linux-cifs/CALMA0xaVdk3qwkb-92QqF2+6z+=oxbBWDR1hYEoE2WUc7jVGkw@mail.gmail.com/T/#u
+
+From abd3d9a2d4f8a5dc4d90daddc7cf0c62d954f03a Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Fri, 2 May 2025 23:08:41 +0800
+Subject: [PATCH] getcifsacl, setcifsacl: use <libgen.h> for basename
+
+basename() is defined in <libgen.h> only in musl, while glibc defines it
+in <string.h> too, which is not standard behavior.
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/getcifsacl.c b/getcifsacl.c
+index 97471e9..6c6356f 100644
+--- a/getcifsacl.c
++++ b/getcifsacl.c
+@@ -33,6 +33,7 @@
+ #include <stdlib.h>
+ #include <stddef.h>
+ #include <errno.h>
++#include <libgen.h>
+ #include <limits.h>
+ #include <ctype.h>
+ #include <linux/limits.h>
+diff --git a/setcifsacl.c b/setcifsacl.c
+index b199118..3cb603c 100644
+--- a/setcifsacl.c
++++ b/setcifsacl.c
+@@ -47,6 +47,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>
++#include <libgen.h>
+ #include <limits.h>
+ #include <ctype.h>
+ #include <linux/limits.h>
+-- 
+2.45.2
+
