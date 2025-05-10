@@ -94,12 +94,12 @@ BDEPEND="${PYTHON_DEPS}
 		>=sys-devel/gcc-4.7[cxx]
 		>=llvm-core/clang-3.5
 	)
-	lto? ( system-llvm? (
+	lto? (
 		|| (
 			$(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}')
 			sys-devel/mold
 		)
-	) )
+	)
 	!system-llvm? (
 		>=dev-build/cmake-3.13.4
 		app-alternatives/ninja
