@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 pypi virtualx
@@ -293,6 +293,7 @@ python_test() {
 	)
 	distutils_pep517_install "${BUILD_DIR}"/test
 	cp -r "${BUILD_DIR}"/{install,test}"${EPREFIX}/usr/bin" || die
+	cp -r "${BUILD_DIR}"/{install,test}"${EPREFIX}/usr/pyvenv.cfg" || die
 	local -x PATH=${BUILD_DIR}/test${EPREFIX}/usr/bin:${PATH}
 
 	pushd lib >/dev/null || die
