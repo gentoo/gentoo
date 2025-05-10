@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/880399
+
+--- a/ssl.c
++++ b/ssl.c
+@@ -34,7 +34,7 @@
+ static char* get_ssl_error();
+ static SSL* get_ssl(struct vsf_session* p_sess, int fd);
+ static int ssl_session_init(struct vsf_session* p_sess);
+-static void setup_bio_callbacks();
++static void setup_bio_callbacks(SSL* p_ssl);
+ static long bio_callback(
+   BIO* p_bio, int oper, const char* p_arg, int argi, long argl, long retval);
+ static int ssl_verify_callback(int verify_ok, X509_STORE_CTX* p_ctx);
