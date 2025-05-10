@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_14 )
+ADA_COMPAT=( gcc_{14..15} )
 inherit ada multiprocessing
 
 DESCRIPTION="a Language Server Protocol for Ada/SPARK"
