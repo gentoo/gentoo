@@ -82,6 +82,7 @@ COMMON_DEPEND="
 		sys-devel/gettext
 	)
 	test? (
+		dev-python/pytest
 		media-gfx/cairosvg
 	)
 "
