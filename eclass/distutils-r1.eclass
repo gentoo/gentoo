@@ -1662,7 +1662,7 @@ distutils-r1_python_install() {
 		# let's explicitly verify these assumptions
 
 		# remove files that we've created explicitly
-		rm "${reg_scriptdir}"/{"${EPYTHON}",python3,python,pyvenv.cfg} || die
+		rm "${reg_scriptdir}"/{"${EPYTHON}",python3,python,../pyvenv.cfg} || die
 
 		# Automagically do the QA check to avoid issues when bootstrapping
 		# prefix.
@@ -2030,9 +2030,11 @@ _distutils-r1_post_python_compile() {
 		ln -s "${PYTHON}" "${bindir}/${EPYTHON}" || die
 		ln -s "${EPYTHON}" "${bindir}/python3" || die
 		ln -s "${EPYTHON}" "${bindir}/python" || die
-		# python3.14t seems to require "home" being present
-		# (though it does not seem to care about the actual value)
-		cat > "${bindir}"/pyvenv.cfg <<-EOF || die
+		# python3.14 changed venv logic so that:
+		# 1) pyvenv.cfg location explicitly determines prefix
+		#    (i.e. we no longer can be put in bin/)
+		# 2) "home =" key must be present
+		cat > "${bindir}"/../pyvenv.cfg <<-EOF || die
 			home = ${EPREFIX}/usr/bin
 			include-system-site-packages = true
 		EOF
