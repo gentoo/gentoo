@@ -196,7 +196,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
 	system-ffmpeg? (
-		=media-video/ffmpeg-6*:=[encode(+),soc(-)?,postproc,vaapi?,vdpau?,X?]
+		=media-video/ffmpeg-6*:=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2

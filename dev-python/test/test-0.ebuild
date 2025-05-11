@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} python3_13t )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} python3_{13..14}t )
 
 inherit python-r1
 
@@ -18,12 +18,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_impl_dep 'test-install(+)' 'pypy3*')
-	$(python_gen_cond_dep '
-		|| (
-			dev-python/python-tests:3.10
-			<dev-lang/python-3.10.14_p3-r1:3.10
-		)
-	' python3_10)
 	$(python_gen_cond_dep '
 		|| (
 			dev-python/python-tests:3.11
@@ -45,4 +39,10 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/python-tests:3.13t
 	' python3_13t)
+	$(python_gen_cond_dep '
+		dev-python/python-tests:3.14
+	' python3_14)
+	$(python_gen_cond_dep '
+		dev-python/python-tests:3.14t
+	' python3_14t)
 "

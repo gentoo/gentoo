@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmail toolchain-funcs
+inherit flag-o-matic qmail toolchain-funcs
 
 DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="https://cr.yp.to/ucspi-tcp.html"
@@ -60,6 +60,9 @@ src_configure() {
 	# See also the patch above for generating the "makelib" script.
 	tc-export AR RANLIB
 
+	append-cflags $(test-flags-CC -std=gnu17)
+
+	echo "$(tc-getCC) ${CFLAGS}"  > conf-cc || die
 	echo "${EPREFIX}/usr/" > conf-home || die
 }
 

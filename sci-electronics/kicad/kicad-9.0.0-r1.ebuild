@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -24,7 +24,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64"
+		KEYWORDS="amd64 ~riscv"
 	fi
 fi
 
@@ -94,7 +94,8 @@ RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 "
 BDEPEND=">=dev-lang/swig-4.0
-	doc? ( app-text/doxygen )"
+	doc? ( app-text/doxygen )
+	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )"
 
 if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds

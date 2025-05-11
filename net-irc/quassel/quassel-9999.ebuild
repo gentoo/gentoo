@@ -24,11 +24,10 @@ HOMEPAGE="https://quassel-irc.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="crypt +dbus gui kde ldap monolithic oxygen postgres +server spell syslog +system-icons test"
+IUSE="+dbus gui kde ldap monolithic oxygen postgres +server spell syslog +system-icons test"
 
 REQUIRED_USE="
 	|| ( gui server monolithic )
-	crypt? ( || ( server monolithic ) )
 	kde? ( dbus spell )
 	ldap? ( || ( server monolithic ) )
 	postgres? ( || ( server monolithic ) )
@@ -41,7 +40,6 @@ RESTRICT="!test? ( test )"
 SERVER_DEPEND="
 	acct-group/quassel
 	acct-user/quassel
-	crypt? ( app-crypt/qca:2[ssl] )
 	ldap? ( net-nds/openldap:= )
 	postgres? ( dev-qt/qtsql:5[postgres] )
 	!postgres? (
@@ -129,7 +127,10 @@ src_configure() {
 	fi
 
 	if use server || use monolithic ; then
-		mycmakeargs+=( $(cmake_use_find_package crypt Qca-qt5) )
+		mycmakeargs+=(
+			# only packaged for qt6 now. Prevent it from being autodetected.
+			-DCMAKE_DISABLE_FIND_PACKAGE_Qca-qt5=ON
+		)
 	fi
 
 	cmake_src_configure

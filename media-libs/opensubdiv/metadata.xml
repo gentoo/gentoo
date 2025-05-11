@@ -10,9 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="glew">
-			Enable support for OpenGL Extension Wrangler Library (<pkg>media-libs/glew</pkg>)
-		</flag>
 		<flag name="glfw">
 			Build all example files that uses (<pkg>media-libs/glfw</pkg>)
 		</flag>

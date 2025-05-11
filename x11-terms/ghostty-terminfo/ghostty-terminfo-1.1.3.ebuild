@@ -59,7 +59,7 @@ S="${WORKDIR}/${P/-terminfo/}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="symlink"
 # Tests are run on the main Ghostty package.
 RESTRICT="test"

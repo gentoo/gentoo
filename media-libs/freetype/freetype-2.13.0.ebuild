@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools flag-o-matic libtool multilib-minimal toolchain-funcs
+inherit autotools libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="High-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
@@ -185,7 +185,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	append-flags -fno-strict-aliasing
 	type -P gmake &> /dev/null && export GNUMAKE=gmake
 
 	local myeconfargs=(

@@ -11,7 +11,7 @@ DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
 SRC_URI="
 	https://gitlab.gnome.org/World/AbiWord/-/archive/release-${PV}/AbiWord-release-${PV}.tar.bz2
-	https://dev.gentoo.org/~soap/distfiles/${PN}-3.0.6-patches.tar.xz"
+	https://dev.gentoo.org/~soap/distfiles/${PN}-3.0.6-patches-r1.tar.xz"
 S="${WORKDIR}/AbiWord-release-${PV}"
 
 LICENSE="GPL-2"

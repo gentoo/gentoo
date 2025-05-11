@@ -6,7 +6,7 @@ EAPI=8
 MY_PN="Clipper2"
 MY_P=${MY_PN}_${PV}
 
-inherit cmake
+inherit cmake flag-o-matic
 
 DESCRIPTION="Polygon Clipping and Offsetting"
 HOMEPAGE="https://www.angusj.com/clipper2/Docs/Overview.htm"
@@ -24,7 +24,17 @@ DEPEND="
 	test? ( dev-cpp/gtest )
 "
 
+src_prepare() {
+	cmake_src_prepare
+
+	#943720
+	sed -e 's/ -Werror//g' -i CMakeLists.txt || die
+}
+
 src_configure() {
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DCLIPPER2_UTILS="no"
 		-DCLIPPER2_EXAMPLES="no"

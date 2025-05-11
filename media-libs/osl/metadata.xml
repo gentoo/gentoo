@@ -15,6 +15,7 @@
 		lights, displacement, and pattern generation.
 	</longdescription>
 	<use>
+		<flag name="clang-cuda">Use clang for cuda units compilation</flag>
 		<flag name="gui">Build the osltoy binary</flag>
 		<flag name="libcxx">Build against <pkg>llvm-runtimes/libcxx</pkg> when using clang</flag>
 		<flag name="nofma">Do not use Fuse-Multiply-Add operations</flag>

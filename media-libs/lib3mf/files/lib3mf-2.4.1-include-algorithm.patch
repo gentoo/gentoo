@@ -1,0 +1,36 @@
+From 6b90468066d41ce29f8a8341fd9ae5ea21138569 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 22 Apr 2025 14:05:21 +0200
+Subject: [PATCH] include algorithm
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/Source/Model/Writer/v100/NMR_ResourceDependencySorter.cpp b/Source/Model/Writer/v100/NMR_ResourceDependencySorter.cpp
+index b7e3967..add22a3 100644
+--- a/Source/Model/Writer/v100/NMR_ResourceDependencySorter.cpp
++++ b/Source/Model/Writer/v100/NMR_ResourceDependencySorter.cpp
+@@ -37,6 +37,8 @@ sorting them topologically.
+ #include "Model/Classes/NMR_Model.h"
+ #include "Model/Classes/NMR_ModelResource.h"
+ 
++#include <algorithm>
++
+ namespace NMR
+ {
+ 
+diff --git a/Tests/CPP_Bindings/Source/Volumetric.cpp b/Tests/CPP_Bindings/Source/Volumetric.cpp
+index 9c5291c..846097a 100644
+--- a/Tests/CPP_Bindings/Source/Volumetric.cpp
++++ b/Tests/CPP_Bindings/Source/Volumetric.cpp
+@@ -33,6 +33,8 @@ Vulometric.cpp: Defines Unittests for the Volumetric extension
+ #include "UnitTest_Utilities.h"
+ #include "lib3mf_implicit.hpp"
+ 
++#include <algorithm>
++
+ namespace Lib3MF
+ {
+     namespace helper
+-- 
+2.49.0
+

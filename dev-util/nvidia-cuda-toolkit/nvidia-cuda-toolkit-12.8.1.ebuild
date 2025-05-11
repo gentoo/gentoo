@@ -139,7 +139,7 @@ src_unpack() {
 		"builds/nvidia_fs"
 	)
 
-	edob -m "failed to extract ${A}" \
+	edob -m "Extracting ${A}" \
 		bash "${DISTDIR}/${A}" --tar xf -X <(printf "%s\n" "${exclude[@]}")
 }
 
@@ -279,8 +279,8 @@ src_install() {
 	fi
 
 	# Add include and lib symlinks
-	dosym "targets/${narch}-linux/include" "${CUDA_PATH}/include"
-	dosym "targets/${narch}-linux/lib" "${CUDA_PATH}/lib64"
+	dosym -r "${CUDA_PATH}/targets/${narch}-linux/include" "${CUDA_PATH}/include"
+	dosym -r "${CUDA_PATH}/targets/${narch}-linux/lib" "${CUDA_PATH}/lib64"
 
 	find "${ED}/${CUDA_PATH}" -empty -delete || die
 
@@ -321,7 +321,7 @@ src_install() {
 
 	# skip til cudnn has been changed #950207
 	# if [[ "${SLOT}" != "${PV}" ]]; then
-	# 	dosym "${CUDA_PATH}" "${CUDA_PATH%"-${PV}"}"
+	# 	dosym -r "${CUDA_PATH}" "${CUDA_PATH%"-${PV}"}"
 	# fi
 
 	fowners -R root:root "${CUDA_PATH}"

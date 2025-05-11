@@ -6,7 +6,7 @@ EAPI=8
 LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit flag-o-matic lua-single meson python-any-r1 xdg
 
@@ -288,6 +288,10 @@ src_configure() {
 	if use elibc_musl ; then
 		append-cflags -D_LARGEFILE64_SOURCE
 	fi
+
+	# https://bugs.gentoo.org/944215
+	# https://git.enlightenment.org/enlightenment/efl/issues/93
+	append-cflags -std=gnu17
 
 	meson_src_configure
 }

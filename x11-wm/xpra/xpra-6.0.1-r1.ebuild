@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -73,6 +73,7 @@ DEPEND="
 			x11-libs/gtk+:3[X?,introspection]
 		)
 	jpeg? ( media-libs/libjpeg-turbo )
+	!minimal? ( sys-libs/pam )
 	mdns? ( dev-libs/mdns )
 	openh264? ( media-libs/openh264:= )
 	pulseaudio? (
@@ -143,6 +144,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-pep517.patch"
+	"${FILESDIR}/${PN}-6.0.1-pam.patch"
 )
 
 src_prepare() {

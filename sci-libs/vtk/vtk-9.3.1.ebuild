@@ -53,7 +53,7 @@ REQUIRED_USE="
 	)
 	cuda? ( video_cards_nvidia vtkm )
 	java? ( rendering )
-	minimal? ( !rendering )
+	minimal? ( !gdal !rendering )
 	!minimal? ( cgns netcdf rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt6? ( rendering )
@@ -99,7 +99,7 @@ RDEPEND="
 		>=media-libs/libharu-2.4.0:=
 		media-libs/libtheora
 	)
-	mpi? ( virtual/mpi[cxx,romio] )
+	mpi? ( virtual/mpi[romio] )
 	mysql? ( dev-db/mariadb-connector-c )
 	netcdf? ( sci-libs/netcdf:=[mpi=] )
 	odbc? ( dev-db/unixODBC )

@@ -1,0 +1,18 @@
+--- a/m4/want_lua.m4	2025-05-04 20:10:02.438557238 +0200
++++ b/m4/want_lua.m4	2025-05-04 20:10:51.606553311 +0200
+@@ -6,7 +6,6 @@
+       dnl Use pkgconfig to first find out all luas that are there
+       LUAPCS=$($PKG_CONFIG --list-all | $EGREP "lua-?...? " | sort -r)
+       dnl Then we pick suitable one
+-      for LUAPC in $LUAPCS lua; do
+         PKG_CHECK_MODULES([LUA], [$LUAPC >= 5.1 $LUAPC != 5.2], [
+           have_lua=yes
+           AC_MSG_NOTICE([using library $LUAPC])
+@@ -14,7 +13,6 @@
+         ], [
+           :
+         ])
+-      done
+     ], [have_lua=yes])
+     AS_IF([test "$want_lua" = "yes" && test "$have_lua" = "no"], [
+       AC_MSG_ERROR([cannot build with Lua support: lua not found])

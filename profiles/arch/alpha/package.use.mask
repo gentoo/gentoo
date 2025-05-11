@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eray Aslan <eras@gentoo.org> (2025-05-08)
+# dev-db/tinycdb is not keyworded here
+net-mail/dovecot cdb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-03)
 # dev-qt/qtbase:6 is not keyworded here
 media-libs/openal gui

@@ -1,6 +1,12 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
+# Broken bundled Eigen, fails to compile. See bug #865191.
+sci-geosciences/grass pdal
+sci-libs/vtk pdal
+media-gfx/openvdb pdal
+
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-04-26)
 # dev-python/sphinx-panels is not keyworded
 net-dns/knot doc

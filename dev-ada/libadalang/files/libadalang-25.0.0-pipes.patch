@@ -1,0 +1,32 @@
+From 2ffad60f987b39f23d3cc339103c502e1d24fbd4 Mon Sep 17 00:00:00 2001
+From: Pierre-Marie de Rodat <derodat@adacore.com>
+Date: Wed, 4 Dec 2024 13:12:12 +0000
+Subject: [PATCH] Transition uses of the Python pipes module to shlex
+
+"pipes" was removed from Python 3.13.
+---
+ testsuite/python_support/utils.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/testsuite/python_support/utils.py b/testsuite/python_support/utils.py
+index 6c5dac4de..f88f337a6 100644
+--- a/testsuite/python_support/utils.py
++++ b/testsuite/python_support/utils.py
+@@ -1,7 +1,7 @@
+ import os
+ import os.path
+-import pipes
+ import re
++import shlex
+ import subprocess
+ 
+ 
+@@ -66,7 +66,7 @@ def run_nameres(args):
+ 
+     if p.returncode:
+         print('nameres exitted with status code {}'.format(p.returncode))
+-        print('Command line was:', ' '.join(pipes.quote(a) for a in argv))
++        print('Command line was:', shlex.join(argv))
+         print('Output was:')
+         print('')
+         print(stdout)

@@ -134,13 +134,20 @@
 #
 # - sip - sipbuild backend
 #
-# - standalone - standalone build systems without external deps
-#   (used for bootstrapping).
+# - standalone - standalone/local build systems
 #
 # - uv-build - uv-build backend (using dev-python/uv)
 #
-# The variable needs to be set before the inherit line.  The eclass
-# adds appropriate build-time dependencies and verifies the value.
+# The variable needs to be set before the inherit line.  If another
+# value than "standalone" and "no" is used, The eclass adds appropriate
+# build-time dependencies, verifies the value and calls the appropriate
+# modern entry point for the backend.  With DISTUTILS_UPSTREAM_PEP517,
+# this variable can be used to override the upstream build backend.
+#
+# The value of "standalone" indicates that upstream is using a custom,
+# local build backend.  In this mode, the eclass does not add any
+# dependencies, disables build backend verification and uses the exact
+# entry point listed in pyproject.toml.
 #
 # The special value "no" indicates that the package has no build system.
 # This is not equivalent to unset DISTUTILS_USE_PEP517 (legacy mode).
@@ -161,6 +168,12 @@
 # and defaults to ${DISTUTILS_USE_PEP517}.  However, it can be
 # overriden to workaround the eclass check, when it is desirable
 # to build the wheel using other backend than the one used upstream.
+#
+# When using it, ideally it should list the build backend actually used
+# upstream, so the eclass will throw an error if that backend changes
+# (and therefore overrides may need to change as well).  As a special
+# case, setting it to "standalone" disables the check entirely (while
+# still forcing the backend, unlike DISTUTILS_USE_PEP517=standalone).
 #
 # Please note that even in packages using PEP621 metadata, there can
 # be subtle differences between the behavior of different PEP517 build
@@ -215,7 +228,7 @@
 # This is an optimization that can avoid the overhead of calling into
 # the build system in pure Python packages and packages using the stable
 # Python ABI.
-: ${DISTUTILS_ALLOW_WHEEL_REUSE=1}
+: "${DISTUTILS_ALLOW_WHEEL_REUSE=1}"
 
 # @ECLASS_VARIABLE: BUILD_DIR
 # @OUTPUT_VARIABLE
@@ -1150,8 +1163,20 @@ _distutils-r1_get_backend() {
 		fi
 	fi
 
+	# if DISTUTILS_USE_PEP517 is "standalone", we respect the exact
+	# backend used in pyproject.toml; otherwise we force the backend
+	# based on DISTUTILS_USE_PEP517
 	if [[ ${DISTUTILS_USE_PEP517} == standalone ]]; then
 		echo "${build_backend}"
+		return
+	fi
+
+	# we can output it early, even if we die below
+	echo "$(_distutils-r1_key_to_backend "${DISTUTILS_USE_PEP517}")"
+
+	# skip backend verification if DISTUTILS_UPSTREAM_PEP517
+	# is "standalone"
+	if [[ ${DISTUTILS_UPSTREAM_PEP517} == standalone ]]; then
 		return
 	fi
 
@@ -1189,8 +1214,6 @@ _distutils-r1_get_backend() {
 			> "${T}"/.distutils_deprecated_backend_warned || die
 		fi
 	fi
-
-	echo "$(_distutils-r1_key_to_backend "${DISTUTILS_USE_PEP517}")"
 }
 
 # @FUNCTION: distutils_wheel_install
@@ -1662,7 +1685,8 @@ distutils-r1_python_install() {
 		# let's explicitly verify these assumptions
 
 		# remove files that we've created explicitly
-		rm "${reg_scriptdir}"/{"${EPYTHON}",python3,python,pyvenv.cfg} || die
+		rm "${reg_scriptdir}"/{"${EPYTHON}",python3,python} || die
+		rm "${reg_scriptdir}"/../pyvenv.cfg || die
 
 		# Automagically do the QA check to avoid issues when bootstrapping
 		# prefix.
@@ -2030,7 +2054,12 @@ _distutils-r1_post_python_compile() {
 		ln -s "${PYTHON}" "${bindir}/${EPYTHON}" || die
 		ln -s "${EPYTHON}" "${bindir}/python3" || die
 		ln -s "${EPYTHON}" "${bindir}/python" || die
-		cat > "${bindir}"/pyvenv.cfg <<-EOF || die
+		# python3.14 changed venv logic so that:
+		# 1) pyvenv.cfg location explicitly determines prefix
+		#    (i.e. we no longer can be put in bin/)
+		# 2) "home =" key must be present
+		cat > "${bindir}"/../pyvenv.cfg <<-EOF || die
+			home = ${EPREFIX}/usr/bin
 			include-system-site-packages = true
 		EOF
 

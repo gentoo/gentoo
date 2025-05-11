@@ -15,6 +15,9 @@
 		Chance of Meatballs2' and 'How to Train Your Dragon 2'. 
 	</longdescription>
 	<use>
+		<flag name="abi13-compat">
+			Disables newer features to maintain compatibility with ABI13
+		</flag>
 		<flag name="abi12-compat">
 			Disables newer features to maintain compatibility with ABI12
 		</flag>
@@ -46,6 +49,9 @@
 		</flag>
 		<flag name="numpy">
 			Build pyopenvdb with support for <pkg>dev-python/numpy</pkg>
+		</flag>
+		<flag name="pdal">
+			Enable support for PDAL for point clouds via <pkg>sci-libs/pdal</pkg>
 		</flag>
 		<flag name="utils">
 			Build utility binaries
