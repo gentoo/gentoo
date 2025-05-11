@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
 PYPI_PN="CairoSVG"
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -36,3 +36,11 @@ EPYTEST_IGNORE=(
 	# sense for us and requires both distfiles around
 	test_non_regression
 )
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://github.com/Kozea/CairoSVG/issues/441
+	# https://github.com/Kozea/CairoSVG/commit/8ecb0806c4ed0813eb5dc6f27b36d9005acfa725
+	sed -i -e 's:console-scripts:console_scripts:' setup.cfg || die
+}
