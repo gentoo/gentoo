@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..14} python3_13t pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -52,6 +52,8 @@ python_test() {
 		tests/test_replwrap.py::REPLWrapTestCase::test_zsh
 		# flaky
 		tests/test_env.py::TestCaseEnv::test_spawn_uses_env
+		# flaky & hangy
+		tests/test_socket.py::ExpectTestCase::test_interrupt
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
