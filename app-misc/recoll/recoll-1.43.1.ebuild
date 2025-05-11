@@ -17,7 +17,6 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="camelcase chm +inotify qt6 session +spell systemd webengine"
 REQUIRED_USE="
-	session? ( inotify )
 	webengine? ( qt6 )
 	${PYTHON_REQUIRED_USE}
 "
@@ -37,11 +36,9 @@ DEPEND="
 		webengine? ( dev-qt/qtwebengine:6[widgets] )
 	)
 	session? (
-		inotify? (
-			x11-libs/libSM
-			x11-libs/libICE
-			x11-libs/libX11
-		)
+		x11-libs/libSM
+		x11-libs/libICE
+		x11-libs/libX11
 	)
 	spell? ( app-text/aspell )
 	systemd? ( sys-apps/systemd )
