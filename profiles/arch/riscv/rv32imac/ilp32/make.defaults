@@ -16,6 +16,8 @@ CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
+LDFLAGS="-Wl,-O1 -Wl,--as-needed -Wl,-z,pack-relative-relocs -Wl,--no-keep-memory"
+
 ## Mike Gilbert <floppym@gentoo.org> (2021-12-17)
 ## Prevent automagic use of 64-bit time_t.
 ## https://bugs.gentoo.org/828001
