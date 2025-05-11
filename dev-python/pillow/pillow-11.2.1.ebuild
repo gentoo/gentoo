@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 # setuptools wrapper
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 toolchain-funcs virtualx
@@ -81,6 +81,8 @@ src_prepare() {
 	local PATCHES=(
 		# https://github.com/python-pillow/pillow/pull/7634
 		"${FILESDIR}/${PN}-10.2.0-cross.patch"
+		# https://github.com/python-pillow/Pillow/pull/8948
+		"${FILESDIR}/${PN}-11.2.1-py314.patch"
 	)
 
 	distutils-r1_src_prepare
