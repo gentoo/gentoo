@@ -242,6 +242,18 @@ multilib_src_configure() {
 			return 0
 		fi
 
+		# Do we somehow have a dev-libs/gobject-introspection installed
+		# with an unsatisfied dependency? (bug #951487)
+		if ! $(tc-getPKG_CONFIG) --cflags gobject-introspection-1.0 &> /dev/null ; then
+			return 0
+		fi
+
+		# Make sure has_version didn't lie to us while at it as well,
+		# given bug #951487.
+		if ! $(tc-getPKG_CONFIG) --atleast-version=${INTROSPECTION__PV} gobject-introspection-1.0 &> /dev/null ; then
+			return 0
+		fi
+
 		return 1
 	}
 
