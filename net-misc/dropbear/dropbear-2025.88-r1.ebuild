@@ -187,7 +187,7 @@ src_install() {
 	set_options
 	emake "${makeopts[@]}" PROGRAMS="${progs[*]}" DESTDIR="${D}" install
 	doman manpages/*.8
-	newinitd "${FILESDIR}"/dropbear.init.d dropbear
+	newinitd "${FILESDIR}"/dropbear.init.d-r1 dropbear
 	newconfd "${FILESDIR}"/dropbear.conf.d dropbear
 	dodoc CHANGES README.md SMALL.md MULTI.md
 
