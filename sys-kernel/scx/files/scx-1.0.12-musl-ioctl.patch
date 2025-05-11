@@ -1,0 +1,33 @@
+Upstream-PR: https://github.com/sched-ext/scx/pull/1860
+
+From 47622a1081ff849d224dc925752a4d860c217c4e Mon Sep 17 00:00:00 2001
+From: Violet Purcell <vimproved@inventati.org>
+Date: Sun, 11 May 2025 16:08:49 -0400
+Subject: [PATCH] scx_utils: cast ioctl opcodes to libc::Ioctl
+
+The opcode type that ioctl() accepts can differ between platforms,
+namely between glibc where it accepts an unsigned 32-bit int, and musl
+where it accepts a signed 32-bit int. Either way, the underlying value
+of the opcode is a 32-bit integer. Currently, bindgen is storing the
+enum values defined in perf_bindings.h as u32, which is fine for glibc,
+but not musl (which wants an i32). This commit casts the opcodes to
+libc::Ioctl before passing them to fix this.
+--- a/rust/scx_utils/src/perf.rs
++++ b/rust/scx_utils/src/perf.rs
+@@ -52,11 +52,11 @@ pub mod ioctls {
+ 
+     #[allow(clippy::missing_safety_doc)]
+     pub unsafe fn enable(fd: c_int, arg: c_uint) -> c_int {
+-        unsafe { libc::ioctl(fd, perf::bindings::ENABLE.into(), arg) }
++        unsafe { libc::ioctl(fd, perf::bindings::ENABLE as libc::Ioctl, arg) }
+     }
+ 
+     #[allow(clippy::missing_safety_doc)]
+     pub unsafe fn reset(fd: c_int, arg: c_uint) -> c_int {
+-        unsafe { libc::ioctl(fd, perf::bindings::RESET.into(), arg) }
++        unsafe { libc::ioctl(fd, perf::bindings::RESET as libc::Ioctl, arg) }
+     }
+ }
+-- 
+2.49.0
+
