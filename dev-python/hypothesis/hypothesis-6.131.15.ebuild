@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-CLI_COMPAT=( pypy3 python3_{10..13} )
-PYTHON_COMPAT=( "${CLI_COMPAT[@]}" pypy3_11 python3_13t )
+CLI_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( "${CLI_COMPAT[@]}" pypy3_11 python3_14 python3_{13,14}t )
 PYTHON_REQ_USE="threads(+),sqlite"
 
 inherit distutils-r1 optfeature
@@ -31,9 +31,6 @@ IUSE="cli"
 RDEPEND="
 	>=dev-python/attrs-22.2.0[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-2.1.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/exceptiongroup-1.0.0_rc8[${PYTHON_USEDEP}]
-	' 3.9 3.10)
 	cli? (
 		$(python_gen_cond_dep '
 			dev-python/black[${PYTHON_USEDEP}]
@@ -63,22 +60,35 @@ python_test() {
 	# i.e. start with hypothesis-python/
 	local EPYTEST_DESELECT=()
 	case ${EPYTHON} in
-		pypy3)
-			EPYTEST_DESELECT+=(
-				# failing due to warnings from numpy/cython
-				hypothesis-python/tests/pytest/test_fixtures.py::test_given_plus_overridden_fixture
-			)
-			;;
 		python3.13t)
 			EPYTEST_DESELECT+=(
 				# TODO: missing warning
 				'hypothesis-python/tests/cover/test_random_module.py::test_passing_referenced_instance_within_function_scope_warns'
 			)
 			;&
-		python3.1[23]*)
+		python3.14*)
 			EPYTEST_DESELECT+=(
-				# TODO
-				'hypothesis-python/tests/cover/test_reflection.py::test_clean_source[case-5]'
+				'hypothesis-python/tests/cover/test_compat.py::test_resolve_fwd_refs[Foo-Union]'
+				'hypothesis-python/tests/cover/test_lookup.py::test_builds_suggests_from_type[Union]'
+				hypothesis-python/tests/cover/test_attrs_inference.py::test_attrs_inference_builds
+				hypothesis-python/tests/cover/test_lookup.py::test_bytestring_not_treated_as_generic_sequence
+				hypothesis-python/tests/cover/test_lookup.py::test_issue_4194_regression
+				hypothesis-python/tests/cover/test_lookup.py::test_resolves_forwardrefs_to_builtin_types
+				hypothesis-python/tests/cover/test_lookup.py::test_specialised_collection_types
+				hypothesis-python/tests/cover/test_lookup_py37.py::test_resolving_standard_collection_as_generic
+				hypothesis-python/tests/cover/test_lookup_py37.py::test_resolving_standard_container_as_generic
+				hypothesis-python/tests/cover/test_lookup_py37.py::test_resolving_standard_contextmanager_as_generic
+				hypothesis-python/tests/cover/test_lookup_py37.py::test_resolving_standard_iterable_as_generic
+				hypothesis-python/tests/cover/test_lookup_py37.py::test_resolving_standard_reversible_as_generic
+				hypothesis-python/tests/cover/test_lookup_py37.py::test_resolving_standard_sequence_as_generic
+				hypothesis-python/tests/cover/test_random_module.py::test_evil_prng_registration_nonsense
+				hypothesis-python/tests/cover/test_random_module.py::test_passing_referenced_instance_within_function_scope_warns
+				hypothesis-python/tests/cover/test_random_module.py::test_register_random_within_nested_function_scope
+				hypothesis-python/tests/cover/test_random_module.py::test_registering_a_Random_is_idempotent
+				hypothesis-python/tests/cover/test_type_lookup_forward_ref.py::test_bound_missing_dot_access_forward_ref
+				hypothesis-python/tests/cover/test_type_lookup_forward_ref.py::test_bound_missing_forward_ref
+				hypothesis-python/tests/cover/test_type_lookup_forward_ref.py::test_bound_type_checking_only_forward_ref_wrong_type
+				hypothesis-python/tests/cover/test_type_lookup_forward_ref.py::test_bound_type_cheking_only_forward_ref
 			)
 			;;
 	esac
