@@ -37,6 +37,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# No more revdeps, depends on Qt5. Bug #955654; removal on 2025-06-12.
+dev-games/openscenegraph-qt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
 # Last release from 2021, last commit >1 year ago and depends on Qt5.
 # Upstream shows no signs of activity let alone Qt6 porting work.
 # Unmaintained in Gentoo. Bug #950302; removal on 2025-06-12.
