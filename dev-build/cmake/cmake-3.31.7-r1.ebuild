@@ -125,7 +125,7 @@ pkg_pretend() {
 		local file
 		local errant_files=()
 
-		# See bug #599684 and  bug #753581 (at least)
+		# See bug #599684 and bug #753581 (at least)
 		for file in /etc/arch-release /etc/redhat-release /etc/debian_version ; do
 			if [[ -e ${file} ]]; then
 				errant_files+=( "${file}" )
