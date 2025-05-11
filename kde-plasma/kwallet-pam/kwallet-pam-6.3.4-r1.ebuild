@@ -15,7 +15,7 @@ IUSE=""
 
 DEPEND="
 	dev-libs/libgcrypt:0=
-	>=kde-frameworks/kwallet-${KFMIN}:6
+	>=kde-frameworks/kwallet-${KFMIN}:6=
 	sys-libs/pam
 "
 RDEPEND="${DEPEND}
