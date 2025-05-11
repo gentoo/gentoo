@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# Package destabilisation mask. 1.5.1.2_p20241029 is in ~arch but as snapshot
+# with currently no Gentoo maintainer it will not be stabilised.
+# 5.1.2 release was more than 6 years old already. Bug #953259
+~x11-misc/qlipper-5.1.2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
 # No more revdeps, depends on Qt5. Bug #955654; removal on 2025-06-12.
 dev-games/openscenegraph-qt
 
