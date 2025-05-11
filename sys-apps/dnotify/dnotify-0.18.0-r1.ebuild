@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ppc -sparc x86"
 IUSE="nls"
 
-DEPEND="nls? ( sys-devel/gettext )"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-nls.patch"
@@ -22,7 +22,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-implicit-declarations.patch"
 )
 
-src_configure() {
+src_prepare() {
+	default
 	eautoreconf
+}
+
+src_configure() {
 	econf $(use_enable nls)
 }
