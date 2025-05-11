@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # correct versions for stdlibs are in deps/checksums
@@ -36,7 +36,6 @@ RDEPEND="
 	app-arch/p7zip
 	app-misc/ca-certificates
 	dev-libs/gmp:0=
-	dev-libs/libgit2:0
 	dev-libs/mpfr:0=
 	net-misc/curl[http2,ssh]
 	sci-libs/amd:0=
@@ -163,7 +162,10 @@ src_configure() {
 		USE_SYSTEM_LIBSSH2:=1
 		USE_SYSTEM_NGHTTP2:=1
 		USE_SYSTEM_CURL:=1
-		USE_SYSTEM_LIBGIT2:=1
+		# Julia uses libgit2 via FFI and libgit2 has unstable ABI.
+		# It's common for there to be a substantial mismatch that
+		# leads to bother (bug #955402).
+		USE_SYSTEM_LIBGIT2:=0
 		USE_SYSTEM_PATCHELF:=1
 		USE_SYSTEM_ZLIB:=1
 		USE_SYSTEM_P7ZIP:=1
