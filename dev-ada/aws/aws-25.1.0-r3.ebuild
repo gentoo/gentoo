@@ -3,7 +3,7 @@
 
 EAPI=8
 
-ADA_COMPAT=( gcc_13 gcc_14 )
+ADA_COMPAT=( gcc_{13..15} )
 PYTHON_COMPAT=( python3_{10..13} )
 inherit ada python-any-r1 multiprocessing
 
@@ -18,6 +18,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc +shared ssl wsdl"
+RESTRICT="test"
 
 RDEPEND="${ADA_DEPS}
 	>=dev-ada/gnatcoll-core-25:=[${ADA_USEDEP},shared?,static-libs]
@@ -86,4 +87,14 @@ src_install() {
 	use doc && rm -r "${D}"/usr/share/doc/aws
 
 	rm -r "${D}"/usr/share/gpr/manifests || die
+}
+
+src_test() {
+	cd include
+	gnat check -files=filenames.check -rules -from=../aws.checks || die
+	cd ../ssl
+	gnat check -Pssl -rules -from=../aws.checks || die
+	cd ../src
+	gnat check -rules -from=../aws.checks -Psrc || die
+	cd ..
 }
