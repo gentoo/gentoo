@@ -2790,7 +2790,7 @@ toolchain_src_install() {
 	export QA_EXECSTACK="usr/lib*/go/*/*.gox"
 	export QA_WX_LOAD="usr/lib*/go/*/*.gox"
 	# Workaround bug #793770
-	export QA_PRESTRIPPED="usr/lib*/go/*/*.gox"
+	export QA_PRESTRIPPED="usr/lib*/go/*/*/*.gox"
 
 	# Disable RANDMMAP so PCH works, bug #301299
 	pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1"
