@@ -245,8 +245,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-19.2.2-py313-2.patch"
 	"${FILESDIR}/ceph-19.2.2-py313-3.patch"
 	"${FILESDIR}/ceph-19.2.2-gcc15.patch"
-	"${FILESDIR}/ceph-19.2.2-boost188.patch"
-	"${FILESDIR}/ceph-19.2.2-boost-linking.patch"
 )
 
 check-reqs_export_vars() {
@@ -277,6 +275,10 @@ src_prepare() {
 	cmake_src_prepare
 
 	if use system-boost; then
+		if has_version '>=dev-libs/boost-1.88'; then
+			eapply "${FILESDIR}/ceph-19.2.2-boost188.patch"
+			eapply "${FILESDIR}/ceph-19.2.2-boost-linking.patch"
+		fi
 		find "${S}" -name '*.cmake' -or -name 'CMakeLists.txt' -print0 \
 			| xargs --null sed -r \
 			-e 's|Boost::|boost_|g' \
