@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.75:2
 	>=gui-libs/gtk-4.8:4[introspection?]
-	>=gui-libs/libadwaita-1.2:1
+	>=gui-libs/libadwaita-1.4:1
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 DEPEND="${RDEPEND}"
