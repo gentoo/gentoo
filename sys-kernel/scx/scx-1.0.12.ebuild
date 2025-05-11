@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {16..19} )
+LLVM_COMPAT=( {16..20} )
 
 CRATES="
 "
