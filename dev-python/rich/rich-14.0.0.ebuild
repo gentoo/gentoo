@@ -26,9 +26,6 @@ RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	>=dev-python/markdown-it-py-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.13.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-4.0.0[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	test? (
