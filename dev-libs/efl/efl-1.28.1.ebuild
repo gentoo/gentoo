@@ -289,6 +289,10 @@ src_configure() {
 		append-cflags -D_LARGEFILE64_SOURCE
 	fi
 
+	# https://bugs.gentoo.org/944215
+	# https://git.enlightenment.org/enlightenment/efl/issues/93
+	append-cflags -std=gnu17
+
 	meson_src_configure
 }
 
