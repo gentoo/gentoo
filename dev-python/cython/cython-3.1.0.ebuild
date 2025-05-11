@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_TESTED=( python3_{11..12} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_11 python3_13{,t} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" pypy3_11 python3_13{,t} python3_14{,t} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 multiprocessing pypi toolchain-funcs
