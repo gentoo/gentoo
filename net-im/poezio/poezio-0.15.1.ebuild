@@ -21,7 +21,7 @@ if [[ "${PV}" == "9999" ]]; then
 	BDEPEND="dev-python/sphinx"
 else
 	inherit pypi
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 RDEPEND="
