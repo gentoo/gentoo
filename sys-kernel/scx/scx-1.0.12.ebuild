@@ -10,7 +10,7 @@ CRATES="
 
 RUST_MIN_VER="1.74.1"
 
-inherit llvm-r1 linux-info cargo rust-toolchain toolchain-funcs meson
+inherit llvm-r2 linux-info cargo rust-toolchain toolchain-funcs meson
 
 DESCRIPTION="sched_ext schedulers and tools"
 HOMEPAGE="https://github.com/sched-ext/scx"
@@ -67,7 +67,7 @@ QA_PREBUILT="/usr/bin/scx_loader"
 
 pkg_setup() {
 	linux-info_pkg_setup
-	llvm-r1_pkg_setup
+	llvm-r2_pkg_setup
 	rust_pkg_setup
 }
 
