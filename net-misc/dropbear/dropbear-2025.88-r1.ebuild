@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dropbear.asc
 inherit autotools pam python-any-r1 savedconfig verify-sig
 
