@@ -10,4 +10,5 @@
 		<changelog>https://github.com/jhunt/hatop/releases</changelog>
 		<remote-id type="github">jhunt/hatop</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
