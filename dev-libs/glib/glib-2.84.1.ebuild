@@ -243,7 +243,7 @@ multilib_src_configure() {
 
 		# Make sure has_version didn't lie to us while at it as well,
 		# given bug #951487.
-		if ! $(tc-getPKG_CONFIG) --atleast-version=${INTROSPECTION__PV} gobject-introspection-1.0 &> /dev/null ; then
+		if ! $(tc-getPKG_CONFIG) --atleast-version=${INTROSPECTION_PV} gobject-introspection-1.0 &> /dev/null ; then
 			return 0
 		fi
 
