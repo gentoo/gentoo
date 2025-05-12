@@ -5,7 +5,7 @@ EAPI=7
 
 export CTARGET=hppa64-${CHOST#*-}
 
-inherit libtool flag-o-matic gnuconfig multilib strip-linguas toolchain-funcs
+inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
