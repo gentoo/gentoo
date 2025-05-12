@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: edo.eclass
@@ -36,8 +36,26 @@ _EDO_ECLASS=1
 # Executes a short 'command' with any given arguments and exits on failure
 # unless called under 'nonfatal'.
 edo() {
-	einfo "$@"
-	"$@" || die -n "Failed to run command: $@"
+	# list of special characters taken from sh_contains_shell_metas
+	# in shquote.c (bash-5.2)
+	local a out regex='[] '\''"\|&;()<>!{}*[?^$`]|^[#~]|[=:]~'
+
+	[[ $# -ge 1 ]] || die "edo: at least one argument needed"
+
+	if [[ ${EAPI} = 7 ]]; then
+		# no @Q in bash-4.2
+		out=" $*"
+	else
+		for a; do
+			# quote if (and only if) necessary
+			[[ ${a} =~ ${regex} || ! ${a} =~ ^[[:print:]]+$ ]] && a=${a@Q}
+			out+=" ${a}"
+		done
+	fi
+
+	einfon
+	printf '%s\n' "${out:1}" >&2
+	"$@" || die -n "Failed to run command: ${1}"
 }
 
 # @FUNCTION: edob
