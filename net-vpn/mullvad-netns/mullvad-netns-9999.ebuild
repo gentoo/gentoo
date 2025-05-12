@@ -1,7 +1,7 @@
 # Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-r3
@@ -16,8 +16,6 @@ HOMEPAGE="https://github.com/chutz/mullvad-netns"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="
 	app-misc/jq
