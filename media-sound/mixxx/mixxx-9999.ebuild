@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic toolchain-funcs udev xdg
+inherit cmake dot-a udev xdg
 
 DESCRIPTION="Advanced Digital DJ tool based on Qt"
 HOMEPAGE="https://mixxx.org/"
@@ -109,7 +109,7 @@ CMAKE_SKIP_TESTS=(
 
 src_configure() {
 	# prevent ld error as package builds static libs.
-	tc-is-lto && append-flags $(test-flags -ffat-lto-objects)
+	lto-guarantee-fat
 
 	local mycmakeargs=(
 		-DBATTERY="$(usex upower)"
