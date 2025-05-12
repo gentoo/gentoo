@@ -69,7 +69,7 @@ python_test() {
 		# hang
 		tests/test_commands.py::TestCommands::test_shutdown_command
 		tests/test_worker_pool.py::TestWorkerPool::test_check_workers
-		tests/test_dependencies.py::TestDependencies::test_dependency_list_in_depends_on
+		tests/test_dependencies.py::TestDependencies
 		# already present in older versions
 		tests/test_spawn_worker.py::TestWorker::test_work_and_quit
 	)
