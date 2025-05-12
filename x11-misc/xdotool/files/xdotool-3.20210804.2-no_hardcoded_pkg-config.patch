@@ -7,8 +7,8 @@
 -XDOTOOL_LIBS=$(shell pkg-config --libs x11 2> /dev/null || echo "$(DEFAULT_LIBS)")  $(shell sh platform.sh extralibs)
 -LIBXDO_LIBS=$(shell pkg-config --libs xi x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_LIBS)")
 -INC=$(shell pkg-config --cflags xi x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_INC)")
-+XDOTOOL_LIBS=$(shell $(PKG_CONFIG) --libs x11 2> /dev/null || echo "$(DEFAULT_LIBS)")  $(shell sh platform.sh extralibs)
-+LIBXDO_LIBS=$(shell $(PKG_CONFIG) --libs x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_LIBS)")
++XDOTOOL_LIBS=$(shell $(PKG_CONFIG) --libs xi x11 2> /dev/null || echo "$(DEFAULT_LIBS)")  $(shell sh platform.sh extralibs)
++LIBXDO_LIBS=$(shell $(PKG_CONFIG) --libs xi x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_LIBS)")
 +INC=$(shell $(PKG_CONFIG) --cflags x11 xtst xinerama xkbcommon 2> /dev/null || echo "$(DEFAULT_INC)")
  CFLAGS+=-std=c99 $(INC)
  
