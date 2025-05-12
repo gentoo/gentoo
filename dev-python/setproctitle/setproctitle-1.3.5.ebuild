@@ -9,7 +9,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
-inherit distutils-r1 flag-o-matic pypi
+inherit distutils-r1 pypi
 
 DESCRIPTION="Allow customization of the process title"
 HOMEPAGE="
@@ -28,11 +28,4 @@ src_prepare() {
 
 	# remove the override that makes extension builds non-fatal
 	sed -i -e '/cmdclass/d' setup.py || die
-}
-
-src_configure() {
-	# https://github.com/dvarrazzo/py-setproctitle/issues/145
-	append-cflags -std=gnu17
-
-	distutils-r1_src_configure
 }
