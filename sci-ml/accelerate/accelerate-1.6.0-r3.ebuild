@@ -29,9 +29,12 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
-	dev-python/networkx
-	dev-python/parameterized
+	$(python_gen_cond_dep '
+		dev-python/networkx[${PYTHON_USEDEP}]
+		dev-python/parameterized[${PYTHON_USEDEP}]
+	')
 	sci-ml/caffe2[gloo]
+	sci-ml/torchdata[${PYTHON_SINGLE_USEDEP}]
 )"
 
 distutils_enable_tests pytest
