@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
