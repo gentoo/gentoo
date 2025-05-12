@@ -1,0 +1,18 @@
+--- a/ext/meson.build
++++ b/ext/meson.build
+@@ -23,7 +23,6 @@
+ subdir('gme')
+ subdir('gs')
+ subdir('gsm')
+-subdir('gtk')
+ subdir('hls')
+ subdir('iqa')
+ subdir('isac')
+@@ -72,7 +71,6 @@
+ subdir('ttml')
+ subdir('voaacenc')
+ subdir('voamrwbenc')
+-subdir('vulkan')
+ subdir('webp')
+ subdir('wildmidi')
+ subdir('wpe')
