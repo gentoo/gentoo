@@ -36,6 +36,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Petr Vaněk <arkamar@gentoo.org> (2025-05-12)
+# A serious performance regression has been found in 10.11.12 and 11.4.6
+# releases, distributions are advised to not publish them, see
+# https://lists.mariadb.org/hyperkitty/list/packagers@lists.mariadb.org/thread/TP74ZU2ARZOQBLUNPT63I2A6LNB54XLJ/
+# and related bug reports:
+# https://jira.mariadb.org/browse/MDEV-36759
+# https://jira.mariadb.org/browse/MDEV-36765
+# https://jira.mariadb.org/browse/MDEV-36766
+~dev-db/mariadb-10.11.12
+~dev-db/mariadb-11.4.6
+
 # Petr Vaněk <arkamar@gentoo.org> (2025-05-10)
 # Unmaintained upstream, incompatible with py3.12+, no revdeps, see
 # https://github.com/torproject/stem/issues/154 and
