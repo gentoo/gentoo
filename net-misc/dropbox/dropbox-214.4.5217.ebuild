@@ -32,7 +32,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-dropbox )
 	app-arch/bzip2
 	dev-libs/glib:2
-	dev-libs/libffi-compat:6
+	dev-libs/libffi-compat:7
 	media-libs/fontconfig
 	media-libs/freetype
 	net-misc/wget
@@ -59,7 +59,7 @@ src_unpack() {
 src_prepare() {
 	default
 	# we supply all of these in RDEPEND
-	rm -vf libGL.so.1 libX11* libffi.so.6 || die
+	rm -vf libGL.so.1 libX11* libffi.so.7 || die
 	# some of these do not appear to be used
 	rm -vf libQt5{OpenGL,PrintSupport,Qml,Quick,Sql,WebKit,WebKitWidgets}.so.5 \
 		PyQt5.QtPrintSupport.* PyQt5.QtQml.* PyQt5.QtQuick.*  \
