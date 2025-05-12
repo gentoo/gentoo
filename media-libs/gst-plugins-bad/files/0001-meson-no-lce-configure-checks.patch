@@ -1,0 +1,22 @@
+--- a/ext/meson.build	2025-03-22 14:11:31.236924684 +0300
++++ b/ext/meson.build	2025-03-22 14:11:46.908841612 +0300
+@@ -29,8 +29,6 @@
+ subdir('isac')
+ subdir('ladspa')
+ subdir('lc3')
+-subdir('lcevcdecoder')
+-subdir('lcevcencoder')
+ subdir('ldac')
+ subdir('libde265')
+ subdir('lv2')
+--- a/meson_options.txt	2025-03-22 14:16:46.870127276 +0300
++++ b/meson_options.txt	2025-03-22 14:16:55.195256277 +0300
+@@ -38,8 +38,6 @@
+ option('ivtc', type : 'feature', value : 'auto')
+ option('jp2kdecimator', type : 'feature', value : 'auto')
+ option('jpegformat', type : 'feature', value : 'auto')
+-option('lcevcdecoder', type : 'feature', value : 'auto')
+-option('lcevcencoder', type : 'feature', value : 'auto')
+ option('librfb', type : 'feature', value : 'auto')
+ option('midi', type : 'feature', value : 'auto')
+ option('mpegdemux', type : 'feature', value : 'auto')
