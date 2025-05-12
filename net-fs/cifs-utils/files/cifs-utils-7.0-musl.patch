@@ -37,3 +37,27 @@ index b199118..3cb603c 100644
 -- 
 2.45.2
 
+From ae644b56a4446f520a75217f9288775e127ab2c8 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 13 May 2025 07:31:46 +0800
+Subject: [PATCH] cifscreds: use <libgen.h> for basename
+
+fix another implicit declaration of function 'basename' in musl
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/cifscreds.c b/cifscreds.c
+index f552bc8..295059f 100644
+--- a/cifscreds.c
++++ b/cifscreds.c
+@@ -29,6 +29,7 @@
+ #include <keyutils.h>
+ #include <getopt.h>
+ #include <errno.h>
++#include <libgen.h>
+ #include "cifskey.h"
+ #include "mount.h"
+ #include "resolve_host.h"
+-- 
+2.45.2
+
