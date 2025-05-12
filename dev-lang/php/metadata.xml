@@ -73,6 +73,9 @@
       Add SASL support for the PHP LDAP extension using
       <pkg>dev-libs/cyrus-sasl</pkg>
     </flag>
+    <flag name="litespeed">
+      Enable litespeed API extension
+    </flag>
     <flag name="lmdb">
       Enable support for <pkg>dev-db/lmdb</pkg> db backend
     </flag>
