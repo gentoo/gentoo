@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/947523
+
+Upstream decided to auto-enable srtp, sctp and dtls options, when the
+webrtc option is enabled.  This is going to partially revert upstream
+fd4828bafe613eec33e8f3faef5ab5181a73c8b6 to fix webrtc compilation.
+
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/fd4828bafe613eec33e8f3faef5ab5181a73c8b6
+
+diff '--color=auto' -urw gst-plugins-bad-1.26.1.orig/ext/dtls/meson.build gst-plugins-bad-1.26.1/ext/dtls/meson.build
+--- gst-plugins-bad-1.26.1.orig/ext/dtls/meson.build	2025-04-24 22:20:14.000000000 +0300
++++ gst-plugins-bad-1.26.1/ext/dtls/meson.build	2025-05-07 11:15:13.250179940 +0300
+@@ -34,7 +34,7 @@
+   'dtls': pathsep.join(doc_sources)
+ }
+ 
+-dtls_option = get_option('dtls').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
++dtls_option = get_option('dtls')
+ openssl_dep = dependency('openssl', version: '>= 1.0.1', required: dtls_option)
+ libcrypto_dep = dependency('libcrypto', required: dtls_option)
+ 
+diff '--color=auto' -urw gst-plugins-bad-1.26.1.orig/ext/sctp/meson.build gst-plugins-bad-1.26.1/ext/sctp/meson.build
+--- gst-plugins-bad-1.26.1.orig/ext/sctp/meson.build	2025-04-24 22:20:14.000000000 +0300
++++ gst-plugins-bad-1.26.1/ext/sctp/meson.build	2025-05-07 11:15:45.988417119 +0300
+@@ -20,7 +20,7 @@
+   'sctp': pathsep.join(doc_sources)
+ }
+ 
+-sctp_option = get_option('sctp').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
++sctp_option = get_option('sctp')
+ if sctp_option.disabled()
+   subdir_done()
+ endif
+diff '--color=auto' -urw gst-plugins-bad-1.26.1.orig/ext/srtp/meson.build gst-plugins-bad-1.26.1/ext/srtp/meson.build
+--- gst-plugins-bad-1.26.1.orig/ext/srtp/meson.build	2025-04-24 22:20:14.000000000 +0300
++++ gst-plugins-bad-1.26.1/ext/srtp/meson.build	2025-05-07 11:16:21.303280802 +0300
+@@ -24,7 +24,7 @@
+ }
+ 
+ srtp_cargs = []
+-srtp_option = get_option('srtp').enable_if(get_option('webrtc').enabled(), error_message: 'webrtc option is enabled')
++srtp_option = get_option('srtp')
+ if srtp_option.disabled()
+   srtp_dep = dependency('', required : false)
+   subdir_done()
