@@ -40,9 +40,6 @@ RDEPEND="
 BDEPEND="
 	native-extensions? (
 		dev-python/cython[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/tomli[${PYTHON_USEDEP}]
-		' 3.10)
 	)
 	test? (
 		>=dev-db/postgresql-8.1[server]
