@@ -1,0 +1,22 @@
+From b52b246eadeb92ca0f1301061f8c757e1bdc377c Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Wed, 11 Dec 2024 18:35:50 +0000
+Subject: [PATCH] yamlcpp: Explicitly include <cstdint>
+
+---
+ src/Core/yamlcpp/emitterutils.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Core/yamlcpp/emitterutils.cpp b/src/Core/yamlcpp/emitterutils.cpp
+index c033427e17..4943267206 100644
+--- a/src/Core/yamlcpp/emitterutils.cpp
++++ b/src/Core/yamlcpp/emitterutils.cpp
+@@ -1,4 +1,5 @@
+ #include <algorithm>
++#include <cstdint>
+ #include <iomanip>
+ #include <sstream>
+ 
+-- 
+GitLab
+
