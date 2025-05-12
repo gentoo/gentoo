@@ -26,9 +26,6 @@ RDEPEND="
 	>=dev-python/pyproject-metadata-0.7.1[${PYTHON_USEDEP}]
 	>=dev-build/meson-0.63.0
 	!kernel_Darwin? ( dev-util/patchelf )
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	${RDEPEND}
