@@ -6,7 +6,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=flit
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{11..14} python3_1{3t,4t} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
 
 inherit distutils-r1 pypi
 
