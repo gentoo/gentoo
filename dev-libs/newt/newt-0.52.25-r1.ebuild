@@ -66,10 +66,10 @@ src_configure() {
 	getversions() {
 		versions+="${EPYTHON} "
 	}
-	python_foreach_impl getversions
+	use python && python_foreach_impl getversions
 
 	econf \
-		$(use_with python '' "${EPYTHON}") \
+		"$(use_with python '' "${versions}")" \
 		$(use_with gpm gpm-support) \
 		$(use_with tcl) \
 		$(use_enable nls)

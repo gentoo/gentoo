@@ -12,7 +12,7 @@ PATCH_GCC_VER="14.2.0"
 PATCH_VER="8"
 MUSL_VER="1"
 MUSL_GCC_VER="14.1.0"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 if [[ -n ${TOOLCHAIN_GCC_RC} ]] ; then
 	# Cheesy hack for RCs

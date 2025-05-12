@@ -55,8 +55,8 @@ REQUIRED_USE="
 	)
 	cuda? ( video_cards_nvidia vtkm )
 	java? ( rendering )
-	minimal? ( !rendering )
-	!minimal? ( rendering )
+	minimal? ( !gdal !rendering )
+	!minimal? ( cgns netcdf rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt6? ( rendering )
 	tk? ( python rendering )
@@ -646,6 +646,7 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_CommonSystem="YES"
 			-DVTK_MODULE_ENABLE_VTK_CommonTransforms="YES"
 
+			-DVTK_MODULE_ENABLE_VTK_FiltersCellGrid="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersCore="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersExtraction="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersGeneral="YES"
@@ -653,10 +654,12 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_FiltersGeometry="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersHybrid="NO"
 			-DVTK_MODULE_ENABLE_VTK_FiltersHyperTree="YES"
+			-DVTK_MODULE_ENABLE_VTK_FiltersReduction="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersSources="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersStatistics="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersVerdict="YES"
 
+			-DVTK_MODULE_ENABLE_VTK_IOCellGrid="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOCore="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOGeometry="NO"
 			-DVTK_MODULE_ENABLE_VTK_IOLegacy="YES"
@@ -737,6 +740,7 @@ src_configure() {
 			-DVTK_ENABLE_OSPRAY=OFF
 
 			-DVTK_MODULE_ENABLE_VTK_IOExportGL2PS="YES"
+			-DVTK_MODULE_ENABLE_VTK_RenderingAnari="NO"  # no package in ::gentoo
 			-DVTK_MODULE_ENABLE_VTK_RenderingAnnotation="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingContext2D="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2="YES"

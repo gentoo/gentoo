@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_PN=${PN^}
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 bash-completion-r1 pypi
 
@@ -39,6 +39,18 @@ EPYTEST_DESELECT=(
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+python_test() {
+	if [[ ${EPYTHON} == python3.14* ]] ; then
+		EPYTEST_IGNORE+=(
+			# https://github.com/python/cpython/issues/133653
+			# https://github.com/python/cpython/pull/133813
+			tests/test_cmdline.py
+		)
+	fi
+
+	epytest
+}
 
 src_install() {
 	distutils-r1_src_install

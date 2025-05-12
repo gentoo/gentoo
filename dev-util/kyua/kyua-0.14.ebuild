@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Testing framework for infrastructure software"
 HOMEPAGE="https://github.com/freebsd/kyua"
@@ -33,7 +33,7 @@ src_prepare() {
 
 src_configure() {
 	# bug #948053
-	filter-lto
+	tc-is-lto && filter-flags -fno-semantic-interposition
 
 	# Skip coredump tests; they fail when sudo sets RLIMIT_CORE = 0.
 	cat >"${T}/kyua.conf" <<-EOF || die

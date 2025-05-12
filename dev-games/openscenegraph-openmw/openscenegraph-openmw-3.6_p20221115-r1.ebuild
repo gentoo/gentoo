@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-1 )
 
 WX_GTK_VER="3.2-gtk3"
-inherit cmake flag-o-matic lua-single wxwidgets
+inherit cmake flag-o-matic lua-single toolchain-funcs wxwidgets
 
 MY_COMMIT="69cfecebfb6dc703b42e8de39eed750a84a87489"
 
@@ -103,6 +103,8 @@ src_configure() {
 
 	# Needed by FFmpeg
 	append-cppflags -D__STDC_CONSTANT_MACROS
+	# bug #955848
+	tc-is-lto && filter-flags -fno-semantic-interposition
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(

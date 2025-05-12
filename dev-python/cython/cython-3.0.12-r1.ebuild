@@ -68,8 +68,6 @@ python_test() {
 	unset CYTHON_FORCE_REGEN
 
 	tc-export CC
-	# https://github.com/cython/cython/issues/1911
-	local -x CFLAGS="${CFLAGS} -fno-strict-overflow"
 	"${PYTHON}" runtests.py \
 		-vv \
 		-j "$(makeopts_jobs)" \

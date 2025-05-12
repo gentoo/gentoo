@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,11 +20,10 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="aclk bpf cloud cups +dbengine ipmi mongodb mysql nfacct nodejs postgres prometheus +python systemd tor xen"
+IUSE="aclk bpf cloud cups +dbengine ipmi mongodb mysql nfacct nodejs postgres prometheus +python systemd xen"
 REQUIRED_USE="
 	mysql? ( python )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	tor? ( python )"
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
@@ -73,7 +72,6 @@ RDEPEND="
 		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_USEDEP}]')
 		mysql? ( $(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_USEDEP}]') )
 		postgres? ( $(python_gen_cond_dep 'dev-python/psycopg:2[${PYTHON_USEDEP}]') )
-		tor? ( $(python_gen_cond_dep 'net-libs/stem[${PYTHON_USEDEP}]') )
 	)
 	xen? (
 		app-emulation/xen-tools

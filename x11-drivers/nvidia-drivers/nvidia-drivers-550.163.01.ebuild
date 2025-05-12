@@ -4,8 +4,8 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop eapi9-pipestatus flag-o-matic linux-mod-r1 readme.gentoo-r1
-inherit systemd toolchain-funcs unpacker user-info
+inherit desktop dot-a eapi9-pipestatus flag-o-matic linux-mod-r1
+inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.14
 NV_URI="https://download.nvidia.com/XFree86/"
@@ -172,8 +172,8 @@ src_prepare() {
 src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 
+	# extra flags for the libXNVCtrl.a static library
 	local xnvflags=-fPIC #840389
-	# lto static libraries tend to cause problems without fat objects
 	tc-is-lto && xnvflags+=" $(test-flags-CC -ffat-lto-objects)"
 
 	NV_ARGS=(
@@ -352,6 +352,7 @@ documentation that is installed alongside this README."
 
 	if use static-libs; then
 		dolib.a nvidia-settings/src/out/libXNVCtrl.a
+		strip-lto-bytecode
 
 		insinto /usr/include/NVCtrl
 		doins nvidia-settings/src/libXNVCtrl/NVCtrl{Lib,}.h

@@ -9,7 +9,7 @@ EAPI=8
 # (e.g. https://www.boost.org/users/history/version_1_83_0.html)
 # Note that the latter may sometimes feature patches not on the former too.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit dot-a edo flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.88.0-bind-no-Werror.patch
 	"${FILESDIR}"/${PN}-1.88.0-mysql-cstdint.patch
 	"${FILESDIR}"/${PN}-1.88.0-range-any_iterator.patch
+	"${FILESDIR}"/${PN}-1.88.0-system-crashing-test.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
 )
 

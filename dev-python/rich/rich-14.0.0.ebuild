@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 optfeature
 
@@ -26,15 +26,17 @@ RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	>=dev-python/markdown-it-py-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.13.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-4.0.0[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	test? (
 		>=dev-python/attrs-21.4.0[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# https://github.com/Textualize/rich/pull/3622
+	"${FILESDIR}"/${PN}-14.0.0-py314.patch
+)
 
 distutils_enable_tests pytest
 
@@ -62,6 +64,11 @@ python_test() {
 				tests/test_inspect.py::test_inspect_integer_with_methods_python311
 			)
 			;;
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# Span vs Style
+				tests/test_text.py::test_assemble_meta
+			)
 	esac
 
 	local -x COLUMNS=80

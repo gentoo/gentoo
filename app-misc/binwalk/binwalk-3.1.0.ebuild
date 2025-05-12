@@ -163,7 +163,7 @@ CRATES="
 	zerocopy@0.7.35
 "
 
-inherit cargo
+inherit cargo optfeature
 
 DESCRIPTION="Analyzes data for embedded file types"
 HOMEPAGE="https://github.com/ReFirmLabs/binwalk"
@@ -196,4 +196,8 @@ src_unpack() {
 
 src_install() {
 	newbin "$(cargo_target_dir)/binwalk" binwalk3
+}
+
+pkg_postinst() {
+	optfeature "squashfs extraction" app-arch/sasquatch
 }

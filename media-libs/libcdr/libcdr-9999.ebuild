@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,6 +9,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/libcdr/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	inherit libtool
 fi
 
 DESCRIPTION="Library parsing the Corel cdr documents"
@@ -39,7 +40,11 @@ BDEPEND="
 src_prepare() {
 	default
 	[[ -d m4 ]] || mkdir "m4"
-	[[ ${PV} == *9999* ]] && eautoreconf
+	if [[ ${PV} == *9999* ]]; then
+		eautoreconf
+	else
+		elibtoolize
+	fi
 }
 
 src_configure() {

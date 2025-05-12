@@ -1,0 +1,85 @@
+From 7c1fef0ed1871b8e63d0240afaacaa5a648319e3 Mon Sep 17 00:00:00 2001
+From: "Adam C. Emerson" <aemerson@redhat.com>
+Date: Thu, 8 May 2025 14:39:50 -0400
+Subject: [PATCH] rgw/lua: Use Boost.Process v1 explicitly
+
+Signed-off-by: Adam C. Emerson <aemerson@redhat.com>
+---
+ CMakeLists.txt         |  2 +-
+ src/rgw/CMakeLists.txt |  2 +-
+ src/rgw/rgw_lua.cc     | 15 +++++++++++----
+ 3 files changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8ded471e2ded1..63b64af219ade 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -748,7 +748,7 @@ if(WITH_CRIMSON)
+ endif()
+ 
+ if(WITH_RADOSGW AND WITH_RADOSGW_LUA_PACKAGES)
+-  list(APPEND BOOST_COMPONENTS filesystem)
++  list(APPEND BOOST_COMPONENTS filesystem process)
+ endif()
+ 
+ if(WITH_LIBCEPHFS OR WITH_FUSE)
+diff --git a/src/rgw/CMakeLists.txt b/src/rgw/CMakeLists.txt
+index 35cf3960e3264..539a806b171b3 100644
+--- a/src/rgw/CMakeLists.txt
++++ b/src/rgw/CMakeLists.txt
+@@ -344,7 +344,7 @@ if(WITH_OPENLDAP)
+ endif()
+ if(WITH_RADOSGW_LUA_PACKAGES)
+   target_link_libraries(rgw_common
+-    PRIVATE Boost::filesystem StdFilesystem::filesystem)
++    PRIVATE Boost::filesystem StdFilesystem::filesystem Boost::process)
+ endif()
+ 
+ if(WITH_LTTNG)
+diff --git a/src/rgw/rgw_lua.cc b/src/rgw/rgw_lua.cc
+index b9c74cf730b89..0d57054c96f00 100644
+--- a/src/rgw/rgw_lua.cc
++++ b/src/rgw/rgw_lua.cc
+@@ -8,7 +8,13 @@
+ #include "rgw_lua.h"
+ #ifdef WITH_RADOSGW_LUA_PACKAGES
+ #include <filesystem>
+-#include <boost/process.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/env.hpp>
++#include <boost/process/v1/environment.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/search_path.hpp>
++#include <boost/process/v1/start_dir.hpp>
+ #endif
+ 
+ #define dout_subsys ceph_subsys_rgw
+@@ -96,7 +102,7 @@ int delete_script(const DoutPrefixProvider *dpp, sal::LuaManager* manager, const
+ 
+ #ifdef WITH_RADOSGW_LUA_PACKAGES
+ 
+-namespace bp = boost::process;
++namespace bp = boost::process::v1;
+ 
+ int add_package(const DoutPrefixProvider* dpp, rgw::sal::Driver* driver, optional_yield y, const std::string& package_name, bool allow_compilation)
+ {
+@@ -142,7 +148,7 @@ int remove_package(const DoutPrefixProvider *dpp, rgw::sal::Driver* driver, opti
+   return driver->get_lua_manager("")->remove_package(dpp, y, package_name);
+ }
+ 
+-namespace bp = boost::process;
++namespace bp = boost::process::v1;
+ 
+ int list_packages(const DoutPrefixProvider *dpp, rgw::sal::Driver* driver, optional_yield y, packages_t& packages)
+ {
+@@ -184,7 +190,8 @@ void get_luarocks_config(const bp::filesystem::path& process,
+   output.append(cmd);
+ 
+   try {
+-    bp::child c(cmd, env, bp::std_in.close(), (bp::std_err & bp::std_out) > is, bp::start_dir(luarocks_path));
++    bp::child c(cmd, env, bp::std_in.close(), (bp::std_err & bp::std_out) > is,
++		bp::start_dir(luarocks_path));
+     std::string line;
+     do {
+       if (!line.empty()) {

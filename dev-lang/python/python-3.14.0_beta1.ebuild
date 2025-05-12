@@ -36,7 +36,7 @@ SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
 	bluetooth build debug +ensurepip examples gdbm jit
-	libedit +ncurses pgo +readline +sqlite +ssl test tk valgrind
+	libedit +ncurses pgo +readline +sqlite +ssl tail-call-interp test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -248,7 +248,6 @@ src_configure() {
 		local -x ac_cv_header_bluetooth_bluetooth_h=no
 	fi
 
-	append-flags -fwrapv
 	filter-flags -malign-double
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
@@ -422,12 +421,11 @@ src_configure() {
 		$(use_enable jit experimental-jit)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
+		$(use_with tail-call-interp)
 		$(use_with valgrind)
 	)
 
-	# https://bugs.gentoo.org/700012
 	if tc-is-lto; then
-		append-cflags $(test-flags-CC -ffat-lto-objects)
 		myeconfargs+=(
 			--with-lto
 		)

@@ -1,0 +1,38 @@
+fix error on -Wimplicit-function-declaration in configure & compile
+
+> conftest.c:50:14: error: call to undeclared library function 'exit' with type 'void (int) __attribute__((noreturn))'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+> conftest.c:102:2: error: call to undeclared function 'wait'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+> string.c:45:9: error: call to undeclared library function 'malloc' with type 'void *(unsigned long)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+
+diff '--color=auto' -urN a/configure.ac b/configure.ac
+--- a/configure.ac	2004-10-18 16:09:36.000000000 -0000
++++ b/configure.ac	2025-02-26 18:23:10.470314477 -0000
+@@ -63,6 +63,7 @@
+ AC_TRY_RUN([
+ #include <stdio.h>
+ #include <signal.h>
++#include <stdlib.h>
+ int main() { exit(SIGRTMIN >= 0 ? 0 : 1); }
+ ], [
+ AC_MSG_RESULT([yes])
+@@ -94,6 +95,8 @@
+ #include <fcntl.h>
+ #include <signal.h>
+ #include <unistd.h>
++#include <stdlib.h>
++#include <sys/wait.h>
+ 
+ volatile int count = 0;
+ 
+diff '--color=auto' -urN a/src/string.c b/src/string.c
+--- a/src/string.c	2004-10-06 05:13:30.000000000 -0000
++++ b/src/string.c	2025-02-26 18:23:35.692315718 -0000
+@@ -22,6 +22,7 @@
+ #include <stdint.h>
+ #include <limits.h>
+ #include <errno.h>
++#include <stdlib.h>
+ #include "dnotify.h"
+ #include "gettext.h"
+ #define _(s) gettext(s)
+
