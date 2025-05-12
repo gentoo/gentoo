@@ -23,9 +23,6 @@ RDEPEND="
 	>=dev-python/redis-4.3[${PYTHON_USEDEP}]
 	<dev-python/sortedcontainers-3[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	test? (
