@@ -12,7 +12,7 @@ SRC_URI="https://github.com/gnustep/libs-base/releases/download/base-${PV//./_}/
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+gnutls +iconv +icu +libffi zeroconf"
+IUSE="+gnutls +iconv +icu libdispatch +libffi zeroconf"
 
 # gnustep-make: tests use the option --timeout which was added in 2.9.3
 RDEPEND="${GNUSTEP_CORE_DEPEND}
@@ -20,6 +20,7 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 	gnutls? ( net-libs/gnutls:= )
 	iconv? ( virtual/libiconv )
 	icu? ( >=dev-libs/icu-49.0:= )
+	libdispatch? ( dev-libs/libdispatch )
 	libffi? ( dev-libs/libffi:= )
 	!libffi? (
 		dev-libs/ffcall
@@ -88,6 +89,7 @@ src_configure() {
 		$(use_enable gnutls tls)
 		$(use_enable iconv)
 		$(use_enable icu)
+		$(use_enable libdispatch)
 		$(use_enable zeroconf)
 		--with-xml-prefix="${ESYSROOT}"/usr
 		--with-gmp-include="${ESYSROOT}"/usr/include
