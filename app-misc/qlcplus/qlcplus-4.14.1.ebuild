@@ -26,6 +26,7 @@ RDEPEND="
 	dev-qt/qtdeclarative:6
 	dev-qt/qtmultimedia:6
 	dev-qt/qtserialport:6
+	dev-qt/qtsvg:6
 	dev-qt/qtwebsockets:6
 	media-libs/alsa-lib
 	media-libs/libmad
@@ -49,6 +50,12 @@ src_prepare() {
 
 	sed -e "s|/etc/udev/rules.d|$(get_udevdir)|g" \
 		-i variables.cmake || die
+
+	## Build script neither honors -DQT_DEFAULT_MAJOR_VERSION
+	## nor -DQT_VERSION_MAJOR nor -DQT_MAJOR_VERSION. Let's patch
+	## the CMakeLists file
+	sed -e "s| Qt5 | |g" -e "s|\${QT_VERSION_MAJOR}|6|g" \
+		-i CMakeLists.txt || die
 }
 
 pkg_postinst() {
