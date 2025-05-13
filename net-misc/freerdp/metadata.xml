@@ -10,6 +10,7 @@
 		<flag name="client">Build client binaries</flag>
 		<flag name="fuse">Clipboard with FUSE file copy support</flag>
 		<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
+		<flag name="sdl3">Build SDL3 client</flag>
 		<flag name="server">Build server binaries</flag>
 	</use>
 	<upstream>
