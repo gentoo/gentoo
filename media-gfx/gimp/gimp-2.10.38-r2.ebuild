@@ -74,7 +74,7 @@ RDEPEND="
 
 DEPEND="
 	${COMMON_DEPEND}
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 "
 
