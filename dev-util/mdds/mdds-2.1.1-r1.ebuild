@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,10 @@ BDEPEND="
 	test? ( dev-util/dejagnu )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-1.5.0-buildsystem.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.5.0-buildsystem.patch"
+	"${FILESDIR}/${PN}-2.1.1-include.patch"
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
