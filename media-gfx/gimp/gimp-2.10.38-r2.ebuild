@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.56.2:2
 	>=dev-libs/json-glib-1.2.6
 	>=gnome-base/librsvg-2.40.6:2
-	>=media-gfx/mypaint-brushes-2.0.2:=
+	>=media-gfx/mypaint-brushes-1.3.1:1.0=
 	>=media-libs/babl-0.1.98
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
@@ -100,8 +100,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' configure.ac || die #737794
-
 	sed -i -e 's/== "xquartz"/= "xquartz"/' configure.ac || die #494864
 	sed 's/-DGIMP_DISABLE_DEPRECATED/-DGIMP_protect_DISABLE_DEPRECATED/g' -i configure.ac || die #615144
 
