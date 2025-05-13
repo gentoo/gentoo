@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {18..19} )
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit llvm-r1 meson python-any-r1
 
