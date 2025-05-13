@@ -14,7 +14,7 @@ DESCRIPTION="Stripped down version of APC supporting only user cache"
 
 LICENSE="PHP-3.01"
 SLOT="7"
-KEYWORDS="~amd64 ~arm arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 
 LOCKS="pthreadmutex pthreadrw spinlock semaphore"
 LUSE=""
