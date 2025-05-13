@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2025-05-13)
+# Package is replaced by dev-util/mesa_clc.
+# Removal on 2025-06-12.  Bug #955925.
+dev-util/intel_clc
+
 # Fabian Groffen <grobian@gentoo.org> (2025-05-13)
 # Compilation issues (#955913) and lack of resources/interest to
 # maintain, if you look for a catalog manager check out Jellyfin.
