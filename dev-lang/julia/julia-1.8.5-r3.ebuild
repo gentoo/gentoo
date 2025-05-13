@@ -33,7 +33,6 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/libutf8proc-2.6.1:0=[-cjk]
 	>=dev-util/patchelf-0.13
-	>=net-libs/mbedtls-2.2:0=
 	>=sci-mathematics/dsfmt-2.2.4
 	>=sys-libs/libunwind-1.1:0=
 	>=virtual/blas-3.6
@@ -179,7 +178,9 @@ src_configure() {
 		USE_SYSTEM_LIBSUITESPARSE:=1
 		USE_SYSTEM_LIBUV:=0
 		USE_SYSTEM_UTF8PROC:=1
-		USE_SYSTEM_MBEDTLS:=1
+		# Needs deprecated MD4 which we don't build our net-libs/mbedtls:0
+		# with (bug #955863). Removed in mbedtls:3 too.
+		USE_SYSTEM_MBEDTLS:=0
 		USE_SYSTEM_LIBSSH2:=1
 		USE_SYSTEM_NGHTTP2:=1
 		USE_SYSTEM_CURL:=1
