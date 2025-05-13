@@ -195,11 +195,6 @@ x11-themes/fvwm-themes
 x11-themes/fvwm-themes-extra
 =x11-themes/fvwm-crystal-3.7.5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
-# Package destabilisation mask for potential runtime errors and lack of
-# Qt6-compatible plugins. Bug #955031
-~sci-geosciences/qgis-3.38.3
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
 # Dead upstream, stuck on Qt5, blocking x11-libs/qscintilla[qt5] cleanup
 # Bug #947297; removal on 2025-05-26
