@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal flag-o-matic
+inherit multilib-minimal flag-o-matic toolchain-funcs
 
 WXSUBVERSION="${PV}-gtk3"				# 3.2.6-gtk3
 WXVERSION="$(ver_cut 1-3)"				# 3.2.6
@@ -126,6 +126,9 @@ multilib_src_configure() {
 	# defang automagic dependencies, bug #927952
 	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
 	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+
+	# bug #952961
+	tc-is-lto && filter-flags -fno-semantic-interposition
 
 	# Workaround for bug #915154
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
