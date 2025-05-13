@@ -17,7 +17,7 @@ LICENSE="EPL-2.0"
 SLOT="0"
 KEYWORDS="amd64"
 
-DEPEND=">=virtual/jdk-1.8:*"
+DEPEND=">=virtual/jdk-1.9:*"	# module-info
 RDEPEND=">=virtual/jre-1.8:*"
 
 JAVA_SRC_DIR="api/src/main/java"
