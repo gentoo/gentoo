@@ -1,0 +1,63 @@
+https://sourceware.org/PR32934
+https://sourceware.org/git/?p=dwz.git;a=commit;h=ed021b829933e5f9ee90587196ba941c30ac832a
+
+From ed021b829933e5f9ee90587196ba941c30ac832a Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 12 May 2025 14:01:40 +0200
+Subject: [PATCH] Fix double free in compute_abbrevs
+
+PR32934 reports an abort in obstack_free after a double free.
+
+The relevant code is in compute_abbrevs:
+...
+  t = (struct abbrev_tag *)
+      obstack_alloc (&ob2,
+                     sizeof (*t)
+                     + (max_nattr + 4) * sizeof (struct abbrev_attr)
+                     + (max_nattr + 4) * sizeof (int64_t));
+  ...
+  obstack_free (&ob2, (void *) t);
+  cuarr = (dw_cu_ref *) obstack_alloc (&ob2, ncus * sizeof (dw_cu_ref));
+  ...
+  obstack_free (&ob2, (void *) t);
+...
+
+The following happens:
+- t is allocated
+- t is freed
+- cuarr is allocated
+- t is freed.
+
+Usually, cuarr == t, so effectively cuarr is freed.
+
+But in the case of the PR, cuarr != t, so t is freed twice, triggering the
+abort.
+
+Fix this by freeing cuarr instead.
+
+Tested on x86_64-linux.
+
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32934
+
+2025-05-12  Tom de Vries  <tdevries@suse.de>
+
+	* dwz.c (compute_abbrevs): Free cuarr instead of double-freeing	t.
+---
+ dwz.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dwz.c b/dwz.c
+index da4121f..a27eb4d 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -11813,7 +11813,7 @@ compute_abbrevs (DSO *dso)
+ 	}
+       obstack_free (&ob2, (void *) arr);
+     }
+-  obstack_free (&ob2, (void *) t);
++  obstack_free (&ob2, (void *) cuarr);
+   for (cu = first_cu; cu; cu = cu->cu_next)
+     {
+       struct abbrev_tag **arr;
+-- 
+2.43.5
