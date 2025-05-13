@@ -433,6 +433,7 @@ dev-qt/qtquicktimeline:5
 dev-qt/qtsensors:5
 dev-qt/qtserialbus:5
 dev-qt/qtvirtualkeyboard:5
+dev-qt/qtwebchannel:5
 dev-qt/qtwebview:5
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)
