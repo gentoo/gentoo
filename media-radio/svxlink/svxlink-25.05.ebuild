@@ -97,6 +97,7 @@ src_install() {
 	systemd_dounit "${FILESDIR}"/remotetrx.service
 	systemd_dounit "${FILESDIR}"/svxlink.service
 
+	keepdir /var/lib/${PN}/pki
 	keepdir /var/spool/${PN}/propagation_monitor
 	keepdir /var/spool/${PN}/qso_recorder
 	keepdir /var/spool/${PN}/voice_mail
