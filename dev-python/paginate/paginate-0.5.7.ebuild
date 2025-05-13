@@ -23,22 +23,3 @@ SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86"
 
 distutils_enable_tests pytest
-
-python_test() {
-	local EPYTEST_DESELECT=()
-
-	case ${EPYTHON} in
-		python3.13)
-			;&
-		python3.12)
-			EPYTEST_DESELECT+=(
-				# these tests assume that dict is not sliceable
-				# https://github.com/Pylons/paginate/issues/19
-				tests/test_paginate.py::test_wrong_collection
-				tests/test_paginate.py::TestCollectionTypes::test_unsliceable_sequence3
-			)
-			;;
-	esac
-
-	epytest
-}
