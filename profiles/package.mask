@@ -109,10 +109,6 @@ media-video/ffdiaporama
 # No one else packages this. Bugs #644482, #953769; removal on 2025-05-31
 sci-electronics/osqoop
 
-# Matt Turner <mattst88@gentoo.org> (2024-05-02)
-# Masked for testing
-=media-libs/mesa-25.1*
-
 # Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
 # Ancient version in tree, upstream discontinued to develop
 # a server for taskwarrior a long time ago
