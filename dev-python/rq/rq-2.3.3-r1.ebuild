@@ -35,8 +35,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	distutils-r1_src_prepare
 
-	# unnecessary typechecking deps
-	sed -i -e '/types-/d' pyproject.toml || die
+	# strip pin
+	sed -i -e '/dependencies/s:,!=[0-9.]*::' pyproject.toml || die
 }
 
 src_test() {
