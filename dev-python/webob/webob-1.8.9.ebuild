@@ -26,10 +26,6 @@ RDEPEND="
 	' 3.{13..14})
 "
 
-PATCHES=(
-	"${FILESDIR}"/webob-1.8.9-timeout.patch
-)
-
 distutils_enable_sphinx docs 'dev-python/alabaster'
 distutils_enable_tests pytest
 
