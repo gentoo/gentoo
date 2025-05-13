@@ -4,10 +4,10 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single flag-o-matic meson python-single-r1 toolchain-funcs vala xdg
+inherit git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
