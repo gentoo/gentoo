@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{10..12} )
+EAPI=8
+
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit autotools flag-o-matic python-single-r1
 
@@ -14,30 +15,36 @@ LICENSE="|| ( GPL-2+ OSL-2.1 ) BSD Boost-1.0"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE="doc graphviz nls +python static-libs test"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( ${PYTHON_REQUIRED_USE} )"
-
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
+	test? ( ${PYTHON_REQUIRED_USE} )
+"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/libxml2
+RDEPEND="
+	dev-libs/libxml2
 	sys-libs/zlib
 	nls? ( virtual/libintl )
-	python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}
+	python? ( ${PYTHON_DEPS} )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	graphviz? ( media-gfx/graphviz )
-	nls? ( sys-devel/gettext )"
-BDEPEND="test? (
-	${PYTHON_DEPS}
-	>=dev-util/cppunit-1.9.6
-)"
+	nls? ( sys-devel/gettext )
+	test? (
+		${PYTHON_DEPS}
+		>=dev-util/cppunit-1.9.6
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.28-cppunit-tests.patch"
-	"${FILESDIR}/${PN}-2.4.3-avoid_bashisms.patch" #715202
+	"${FILESDIR}/${PN}-2.4.3-avoid_bashisms.patch" # bug #715202
 	"${FILESDIR}/${PN}-2.4.3-insecure_rpaths.patch"
-	"${FILESDIR}"/${PN}-2.4.3-python-deprecations.patch
+	"${FILESDIR}/${PN}-2.4.3-python-deprecations.patch"
+	"${FILESDIR}/${PN}-2.4.3-python-3.13.patch"
 )
 
 pkg_setup() {
@@ -60,7 +67,7 @@ src_prepare() {
 }
 
 src_configure() {
-	#Remove -O3 for bug #290097
+	# Remove -O3 for bug #290097
 	replace-flags -O3 -O2
 
 	local myeconfargs=(
@@ -70,6 +77,7 @@ src_configure() {
 		$(use_enable python)
 		$(use_enable static-libs static)
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
@@ -86,7 +94,7 @@ src_install() {
 
 	einstalldocs
 
-	if ! use static-libs ; then
+	if ! use static-libs; then
 		find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 	fi
 }
