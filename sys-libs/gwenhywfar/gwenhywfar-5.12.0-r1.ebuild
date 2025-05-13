@@ -47,6 +47,10 @@ BDEPEND="
 "
 # doc? ( app-text/doxygen )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.12.0-c23.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		--with-docpath="${EPREFIX}/usr/share/doc/${PF}/apidoc"
