@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 CRATES="
 	asn1@0.20.0
@@ -115,5 +115,7 @@ python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 
+	# need this for (new) python versions not yet recognized by pyo3
+	local -x PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 	cargo_src_test
 }
