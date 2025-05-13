@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit autotools optfeature python-single-r1
 
@@ -21,22 +21,19 @@ HOMEPAGE="https://hpc.github.io/charliecloud/"
 LICENSE="Apache-2.0"
 
 SLOT="0"
-IUSE="ch-image doc"
+IUSE="ch-image doc +fuse"
 
 # Extensive test suite exists, but downloads container images
 # directly and via Docker and installs packages inside using apt/yum.
 # Additionally, clashes with portage namespacing and sandbox.
 RESTRICT="test"
 
+DOCS=( NOTICE README.rst )
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-RDEPEND="${PYTHON_DEPS}
-	elibc_musl? ( sys-libs/argp-standalone )
-"
-DEPEND="
+DEPEND="elibc_musl? ( sys-libs/argp-standalone )"
+COMMON_DEPEND="
 	ch-image? (
 		$(python_gen_cond_dep '
 			dev-python/lark[${PYTHON_USEDEP}]
@@ -45,13 +42,28 @@ DEPEND="
 		dev-vcs/git
 		net-misc/rsync
 	)
+	fuse? (
+		sys-fs/fuse:3=
+		sys-fs/squashfuse
+	)
+"
+RDEPEND="
+	${DEPEND}
+	${COMMON_DEPEND}
+	${PYTHON_DEPS}
+"
+BDEPEND="
+	${COMMON_DEPEND}
+	${PYTHON_DEPS}
+	virtual/pkgconfig
 	doc? (
 		$(python_gen_cond_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 		')
 		net-misc/rsync
-	)"
+	)
+"
 
 src_prepare() {
 	default
@@ -64,6 +76,8 @@ src_configure() {
 	local econf_args=(
 		$(use_enable doc html)
 		$(use_enable ch-image)
+		# activates linking against both fuse and squashfuse
+		$(use_with fuse libsquashfuse)
 		# Libdir is used as a libexec-style destination.
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
@@ -92,6 +106,5 @@ pkg_postinst() {
 	optfeature "Building with Podman" app-containers/podman
 	optfeature "Progress bars during long operations" sys-apps/pv
 	optfeature "Pack and unpack squashfs images" sys-fs/squashfs-tools
-	optfeature "Mount and umount squashfs images" sys-fs/squashfuse
 	optfeature "Build versioning with ch-image" dev-vcs/git
 }
