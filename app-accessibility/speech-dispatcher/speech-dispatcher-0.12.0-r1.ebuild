@@ -13,7 +13,7 @@ SRC_URI="https://github.com/brailcom/speechd/releases/download/${PV}/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
-IUSE="alsa ao +espeak flite nas pulseaudio pipewire +python"
+IUSE="alsa ao +espeak flite nas pulseaudio pipewire +python systemd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -27,7 +27,9 @@ DEPEND="python? ( ${PYTHON_DEPS} )
 	flite? ( app-accessibility/flite )
 	nas? ( media-libs/nas )
 	pulseaudio? ( media-libs/libpulse )
-	pipewire? ( media-video/pipewire )"
+	pipewire? ( media-video/pipewire )
+	systemd? ( sys-apps/systemd:= )
+"
 RDEPEND="${DEPEND}
 	python? ( dev-python/pyxdg[${PYTHON_USEDEP}] )"
 BDEPEND="
@@ -59,8 +61,13 @@ src_configure() {
 		$(use_with nas)
 		$(use_with pulseaudio pulse)
 		$(use_with pipewire)
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
-		--with-systemduserunitdir="$(systemd_get_userunitdir)"
+		# Technically we should always install these under the "small files" QA
+		# rule. But upstream uses presence of the user unit dir to define
+		# USE_LIBSYSTEMD and link in code which consumes systemd/sd-daemon.h,
+		# and the corresponding *user* files have a hard dependency on that
+		# code. There is no standalone --with-systemd.
+		"$(use_with systemd systemdsystemunitdir "$(systemd_get_systemunitdir)")"
+		"$(use_with systemd systemduserunitdir "$(systemd_get_userunitdir)")"
 	)
 	econf "${myeconfargs[@]}"
 }
