@@ -15,11 +15,11 @@ IUSE="+orc"
 
 # Old media-libs/gst-plugins-ugly blocker for xingmux moving from ugly->good
 RDEPEND="
-	!<media-libs/gst-plugins-ugly-1.22.3
+	!<media-libs/gst-plugins-ugly-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	>=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}]
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
+	>=app-arch/bzip2-1.0.8-r5[${MULTILIB_USEDEP}]
+	>=sys-libs/zlib-1.3.1[${MULTILIB_USEDEP}]
+	orc? ( >=dev-lang/orc-0.4.40[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 
