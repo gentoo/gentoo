@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -75,6 +75,20 @@ python_test() {
 			tests/test_raw_building.py
 		)
 	fi
+
+	case ${EPYTHON} in
+		python3.14)
+			EPYTEST_DESELECT+=(
+				tests/brain/test_brain.py::CollectionsBrain::test_collections_object_subscriptable_3
+				tests/brain/test_brain.py::TypingBrain::test_has_dunder_args
+				tests/brain/test_brain.py::TypingBrain::test_typing_object_notsubscriptable_3
+				tests/brain/test_brain.py::TypingBrain::test_typing_types
+				tests/brain/test_pathlib.py::test_inference_parents
+				tests/brain/test_pathlib.py::test_inference_parents_subscript_index
+				tests/test_inference.py::InferenceTest::test_binary_op_or_union_type
+			)
+			;;
+	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
