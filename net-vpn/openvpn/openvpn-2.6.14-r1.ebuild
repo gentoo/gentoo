@@ -96,7 +96,7 @@ src_configure() {
 
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 		TMPFILES_DIR="/usr/lib/tmpfiles.d" \
-		IPROUTE=$(usex iproute2 '/bin/ip' '') \
+		IPROUTE=$(usev iproute2 /bin/ip) \
 		econf "${myeconfargs[@]}"
 }
 
