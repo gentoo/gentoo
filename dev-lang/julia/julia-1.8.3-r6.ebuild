@@ -50,7 +50,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-1.8.0-llvm-no-bindings.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.0-llvm-no-bindings.patch
+	"${FILESDIR}"/${PN}-1.8.5-no-werror-mbedtls.patch
+)
 
 # Huge thanks to Arch Linux developers for the patches.
 archlinux_uri="https://raw.githubusercontent.com/archlinux/svntogit-community/packages/julia/trunk/"
@@ -108,9 +111,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# julia does not play well with the system versions of libuv
-	# Fails to compile with libpcre2 on split-usr, bug #893336
-	# USE_SYSTEM_LIBM=0 implies using external openlibm
+	tc-export AR CC CXX
+
 	cat <<-EOF > Make.user
 		LOCALBASE:="${EPREFIX}/usr"
 		override prefix:="${EPREFIX}/usr"
@@ -124,8 +126,10 @@ src_configure() {
 		USE_SYSTEM_CSL:=1
 		USE_SYSTEM_LLVM:=0
 		USE_SYSTEM_LIBUNWIND:=1
+		# Fails to compile with libpcre2 on split-usr, bug #893336
 		USE_SYSTEM_PCRE:=0
 		USE_SYSTEM_LIBM:=0
+		# USE_SYSTEM_LIBM=0 implies using external openlibm
 		USE_SYSTEM_OPENLIBM:=1
 		USE_SYSTEM_DSFMT:=1
 		USE_SYSTEM_BLAS:=1
@@ -134,6 +138,7 @@ src_configure() {
 		USE_SYSTEM_GMP:=1
 		USE_SYSTEM_MPFR:=1
 		USE_SYSTEM_LIBSUITESPARSE:=1
+		# julia does not play well with the system versions of libuv
 		USE_SYSTEM_LIBUV:=0
 		USE_SYSTEM_UTF8PROC:=1
 		# Needs deprecated MD4 which we don't build our net-libs/mbedtls:0
