@@ -128,7 +128,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}-2.1.conf" openvpn
 
 	# install examples, controlled by the respective useflag
-	if use examples ; then
+	if use examples; then
 		# (is the below comment relevant anymore?)
 		## dodoc does not supportly support directory traversal, #15193
 		docinto examples
@@ -142,7 +142,7 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process openvpn.conf
 
-	if systemd_is_booted || has_version sys-apps/systemd ; then
+	if systemd_is_booted || has_version sys-apps/systemd; then
 		elog "In order to use OpenVPN with systemd please use the correct systemd service file."
 		elog
 		elog "server:"
@@ -172,7 +172,7 @@ pkg_postinst() {
 		elog "stop one vpn and start another if you need to."
 	fi
 
-	if grep -Eq "^[ \t]*(up|down)[ \t].*" "${ROOT}/etc/openvpn"/*.conf 2>/dev/null ; then
+	if grep -Eq "^[ \t]*(up|down)[ \t].*" "${ROOT}/etc/openvpn"/*.conf 2>/dev/null; then
 		ewarn
 		ewarn "WARNING: If you use the remote keyword then you are deemed to be"
 		ewarn "a client by our init script and as such we force up,down scripts."
@@ -180,7 +180,7 @@ pkg_postinst() {
 		ewarn "can move your scripts to."
 	fi
 
-	if use plugins ; then
+	if use plugins; then
 		einfo
 		einfo "plugins have been installed into /usr/$(get_libdir)/${PN}/plugins"
 	fi
