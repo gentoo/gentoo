@@ -30,4 +30,12 @@
 		<remote-id type="github">NVIDIA/nvidia-xconfig</remote-id>
 		<remote-id type="github">NVIDIA/open-gpu-kernel-modules</remote-id>
 	</upstream>
+	<slots>
+		<subslots>
+			Subslot is primarily used to identify branches, at most
+			rebuilding reverse dependencies on bumps would only be
+			for the static library (not essential to) given other
+			headers are provided by nvidia-cuda-toolkit instead.
+		</subslots>
+	</slots>
 </pkgmetadata>
