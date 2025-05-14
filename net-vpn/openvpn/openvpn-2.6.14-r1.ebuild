@@ -31,7 +31,10 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	sys-libs/libcap-ng:=
-	dco? ( >=net-vpn/ovpn-dco-0.2 >=dev-libs/libnl-3.2.29:= )
+	dco? (
+		>=dev-libs/libnl-3.2.29:=
+		>=net-vpn/ovpn-dco-0.2
+	)
 	kernel_linux? ( iproute2? ( sys-apps/iproute2[-minimal] ) )
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
