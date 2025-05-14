@@ -84,7 +84,6 @@ declare -A -g -r _RUST_LLVM_MAP=(
 	["1.76.0"]=17
 	["1.75.0"]=17
 	["1.74.1"]=17
-	["1.71.1"]=16
 )
 
 # @ECLASS_VARIABLE: _RUST_SLOTS_ORDERED
@@ -111,7 +110,6 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 	"1.76.0"
 	"1.75.0"
 	"1.74.1"
-	"1.71.1"
 )
 
 # == user control knobs ==
