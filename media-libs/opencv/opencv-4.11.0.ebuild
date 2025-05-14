@@ -1238,6 +1238,10 @@ multilib_src_test() {
 
 		local -x OPENCV_TEST_DATA_PATH="${WORKDIR}/${PN}_extra-${PV}/testdata"
 
+		if use debug; then
+			local -x OPENCV_LOG_LEVEL=DEBUG
+		fi
+
 		local test_opts_base=(
 			--skip_unstable=1
 			--test_threads="$(makeopts_jobs)"
