@@ -16,11 +16,11 @@ IUSE="+egl +gles2 opengl wayland +X" # Keep default IUSE mirrored with gst-plugi
 
 # We only need gtk+ matching backend flags when GL is enabled
 GL_DEPS="
-	>=x11-libs/gtk+-3.15:3[X?,wayland?,${MULTILIB_USEDEP}]
+	>=x11-libs/gtk+-3.24.48:3[X?,wayland?,${MULTILIB_USEDEP}]
 "
 RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},egl=,gles2=,opengl=,wayland=,X=]
-	>=x11-libs/gtk+-3.15:3[${MULTILIB_USEDEP}]
+	>=x11-libs/gtk+-3.24.48:3[${MULTILIB_USEDEP}]
 	gles2? ( ${GL_DEPS} )
 	opengl? ( ${GL_DEPS} )
 "
