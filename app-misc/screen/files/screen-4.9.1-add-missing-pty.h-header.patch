@@ -1,0 +1,12 @@
+diff --git a/src/pty.c b/src/pty.c
+index 6791fd5..093273d 100644
+--- a/src/pty.c
++++ b/src/pty.c
+@@ -29,6 +29,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <pty.h>
+ #include <signal.h>
+ 
+ #if defined(__OpenBSD__)
