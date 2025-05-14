@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Joonas Niilola <juippis@gentoo.org> (2025-05-14)
+# Experimental, no official upstream support.
+www-client/firefox jpegxl
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # Requires llvm-15
 media-gfx/openvdb ax
