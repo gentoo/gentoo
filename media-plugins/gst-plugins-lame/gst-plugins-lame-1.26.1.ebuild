@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="MP3 encoder plugin for GStreamer"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-RDEPEND=">=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-sound/lame-3.100-r3[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
