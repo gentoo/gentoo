@@ -1,0 +1,8 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-07)
+# Does not support split-usr filesystem geometry. Please migrate to
+# a merged-usr profile.
+sys-kernel/installkernel systemd
+sys-kernel/installkernel systemd-boot
