@@ -927,22 +927,27 @@ multilib_src_configure() {
 	tc-export CC CXX
 
 	if multilib_native_use cuda; then
-		cuda_add_sandbox -w
-		addwrite "/proc/self/task"
-		addpredict "/dev/char/"
-
-		if ! test -w /dev/nvidiactl; then
+		if ! SANDBOX_WRITE=/dev/nvidiactl test -w /dev/nvidiactl; then
 			# eqawarn "Can't access the GPU at /dev/nvidiactl."
 			# eqawarn "User $(id -nu) is not in the group \"video\"."
 			if [[ -z "${CUDA_GENERATION}" ]] && [[ -z "${CUDA_ARCH_BIN}" ]]; then
 				# build all targets
 				mycmakeargs+=(
 					-DCUDA_GENERATION=""
+					-DCMAKE_CUDA_ARCHITECTURES="${CUDAARCHS:-50}" # breaks with openmp otherwise..
 				)
 			fi
 		else
+			cuda_add_sandbox -w
+			addwrite "/proc/self/task"
+			addpredict "/dev/char/"
+
 			: "${CUDAARCHS:="$(cuda_get_host_native_arch)"}"
 			export CUDAARCHS
+			mycmakeargs+=(
+				-DCUDA_GENERATION="${CUDAARCHS}"
+				-DCMAKE_CUDA_ARCHITECTURES="${CUDAARCHS}"
+			)
 		fi
 
 		local -x CUDAHOSTCXX CUDAHOSTLD
