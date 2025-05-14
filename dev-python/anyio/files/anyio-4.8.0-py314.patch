@@ -1,0 +1,124 @@
+From f051fd45a1d34bae8dd70dba726e711e7a49deee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Tue, 18 Mar 2025 14:38:12 +0200
+Subject: [PATCH] Fixed Path tests on Python 3.14.0a6
+
+---
+ src/anyio/_core/_fileio.py | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/anyio/_core/_fileio.py b/src/anyio/_core/_fileio.py
+index a0d61984..17459b79 100644
+--- a/src/anyio/_core/_fileio.py
++++ b/src/anyio/_core/_fileio.py
+@@ -421,13 +421,11 @@ async def copy(
+             target: str | os.PathLike[str],
+             *,
+             follow_symlinks: bool = True,
+-            dirs_exist_ok: bool = False,
+             preserve_metadata: bool = False,
+         ) -> Path:
+             func = partial(
+                 self._path.copy,
+                 follow_symlinks=follow_symlinks,
+-                dirs_exist_ok=dirs_exist_ok,
+                 preserve_metadata=preserve_metadata,
+             )
+             return Path(await to_thread.run_sync(func, target))
+@@ -437,13 +435,11 @@ async def copy_into(
+             target_dir: str | os.PathLike[str],
+             *,
+             follow_symlinks: bool = True,
+-            dirs_exist_ok: bool = False,
+             preserve_metadata: bool = False,
+         ) -> Path:
+             func = partial(
+                 self._path.copy_into,
+                 follow_symlinks=follow_symlinks,
+-                dirs_exist_ok=dirs_exist_ok,
+                 preserve_metadata=preserve_metadata,
+             )
+             return Path(await to_thread.run_sync(func, target_dir))
+@@ -616,7 +612,9 @@ async def read_text(
+         def relative_to(
+             self, *other: str | PathLike[str], walk_up: bool = False
+         ) -> Path:
+-            return Path(self._path.relative_to(*other, walk_up=walk_up))
++            # relative_to() should work with any PathLike but it doesn't
++            others = [pathlib.Path(other) for other in other]
++            return Path(self._path.relative_to(*others, walk_up=walk_up))
+ 
+     else:
+ 
+From e0e2531de14c54eed895c92b4c8e87b44f47634b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Tue, 15 Apr 2025 00:54:22 +0300
+Subject: [PATCH] Fixed Path.copy() and Path.copy_info failing on Python
+ 3.14.0a7
+
+---
+ docs/versionhistory.rst    | 1 +
+ src/anyio/_core/_fileio.py | 4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/anyio/_core/_fileio.py b/src/anyio/_core/_fileio.py
+index 17459b79..2eae029e 100644
+--- a/src/anyio/_core/_fileio.py
++++ b/src/anyio/_core/_fileio.py
+@@ -428,7 +428,7 @@ async def copy(
+                 follow_symlinks=follow_symlinks,
+                 preserve_metadata=preserve_metadata,
+             )
+-            return Path(await to_thread.run_sync(func, target))
++            return Path(await to_thread.run_sync(func, pathlib.Path(target)))
+ 
+         async def copy_into(
+             self,
+@@ -442,7 +442,7 @@ async def copy_into(
+                 follow_symlinks=follow_symlinks,
+                 preserve_metadata=preserve_metadata,
+             )
+-            return Path(await to_thread.run_sync(func, target_dir))
++            return Path(await to_thread.run_sync(func, pathlib.Path(target_dir)))
+ 
+         async def move(self, target: str | os.PathLike[str]) -> Path:
+             # Upstream does not handle anyio.Path properly as a PathLike
+From 8bad9c05d966f6edfa58f26257015cb657d4e5ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Sat, 15 Feb 2025 16:41:44 +0200
+Subject: [PATCH] Fixed test failures caused by Python 3.14.0a5
+
+---
+ docs/versionhistory.rst    |  1 +
+ src/anyio/_core/_fileio.py | 15 ++++++++++-----
+ tests/test_fileio.py       |  2 ++
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/src/anyio/_core/_fileio.py b/src/anyio/_core/_fileio.py
+index 3728734c..350a873a 100644
+--- a/src/anyio/_core/_fileio.py
++++ b/src/anyio/_core/_fileio.py
+@@ -411,6 +412,10 @@ def match(self, path_pattern: str) -> bool:
+ 
+     if sys.version_info >= (3, 14):
+ 
++        @property
++        def info(self) -> Any:  # TODO: add return type annotation when Typeshed gets it
++            return self._path.info
++
+         async def copy(
+             self,
+             target: str | os.PathLike[str],
+diff --git a/tests/test_fileio.py b/tests/test_fileio.py
+index d7a769bd..28830e6e 100644
+--- a/tests/test_fileio.py
++++ b/tests/test_fileio.py
+@@ -106,6 +106,8 @@ async def test_properties(self) -> None:
+         stdlib_properties.discard("__enter__")
+         stdlib_properties.discard("__exit__")
+         stdlib_properties.discard("__firstlineno__")
++        stdlib_properties.discard("__open_rb__")
++        stdlib_properties.discard("__open_wb__")
+ 
+         async_path = Path(path)
+         anyio_properties = {

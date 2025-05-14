@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/idna-2.8[${PYTHON_USEDEP}]
@@ -52,11 +52,27 @@ distutils_enable_sphinx docs \
 	dev-python/sphinxcontrib-jquery \
 	dev-python/sphinx-autodoc-typehints
 
+PATCHES=(
+	# https://github.com/agronholm/anyio/commit/f051fd45a1d34bae8dd70dba726e711e7a49deee
+	# https://github.com/agronholm/anyio/commit/e0e2531de14c54eed895c92b4c8e87b44f47634b
+	# https://github.com/agronholm/anyio/commit/8bad9c05d966f6edfa58f26257015cb657d4e5ef
+	"${FILESDIR}/${P}-py314.patch"
+)
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# requires link-local IPv6 interface
 		tests/test_sockets.py::TestTCPListener::test_bind_link_local
 	)
+
+	case ${EPYTHON} in
+		pypy3.11)
+			EPYTEST_DESELECT+=(
+				# likely related to https://github.com/pypy/pypy/issues/5264
+				tests/test_debugging.py::test_main_task_name
+			)
+			;;
+	esac
 
 	local filter=()
 	if ! has_version ">=dev-python/trio-0.26.1[${PYTHON_USEDEP}]"; then
