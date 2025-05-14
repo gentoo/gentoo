@@ -199,7 +199,9 @@ S="${WORKDIR}/${GST_ORG_MODULE}-${PV}"
 LICENSE="GPL-2"
 SLOT="1.0"
 
-if ver_test ${GST_ORG_PVP} -ge 1.24 ; then
+if ver_test ${GST_ORG_PVP} -ge 1.26 ; then
+	GLIB_VERSION=2.82.0
+elif ver_test ${GST_ORG_PVP} -ge 1.24 ; then
 	GLIB_VERSION=2.64.0
 else
 	GLIB_VERSION=2.62.0
@@ -247,12 +249,12 @@ else
 	RESTRICT="!test? ( test )"
 	if [[ "${PN}" != "gstreamer" ]]; then
 		BDEPEND="${BDEPEND}
-			nls? ( >=sys-devel/gettext-0.17 )
+			nls? ( >=sys-devel/gettext-0.21 )
 			test? ( media-libs/gstreamer[test] )
 		"
 	else
 		BDEPEND="${BDEPEND}
-			nls? ( >=sys-devel/gettext-0.17 )
+			nls? ( >=sys-devel/gettext-0.21 )
 		"
 	fi
 
