@@ -8,7 +8,7 @@ EAPI=8
 
 MY_LLVM_V=14.0.6
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit check-reqs flag-o-matic optfeature pax-utils python-any-r1 toolchain-funcs
 

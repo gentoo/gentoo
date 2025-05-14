@@ -9,7 +9,7 @@ EAPI=8
 # >=1.8.2 still sits on LLVM 13, bug: https://bugs.gentoo.org/876184
 MY_LLVM_V=13.0.1
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_11 )
 
 inherit check-reqs flag-o-matic optfeature pax-utils python-any-r1 toolchain-funcs
 
