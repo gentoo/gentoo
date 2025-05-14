@@ -9,7 +9,7 @@ inherit gstreamer-meson
 DESCRIPTION="AAC audio decoder plugin"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-RDEPEND=">=media-libs/faad2-2.7-r3[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/faad2-2.11.1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 multilib_src_configure() {
