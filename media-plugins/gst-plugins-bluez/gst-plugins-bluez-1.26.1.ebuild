@@ -9,6 +9,6 @@ inherit gstreamer-meson
 DESCRIPTION="AVDTP source/sink and A2DP sink plugin for GStreamer"
 KEYWORDS="amd64 ~arm64 x86"
 
-RDEPEND=">=net-wireless/bluez-5[${MULTILIB_USEDEP}]"
+RDEPEND=">=net-wireless/bluez-5.82[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/gdbus-codegen"
