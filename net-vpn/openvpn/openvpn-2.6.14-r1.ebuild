@@ -46,9 +46,8 @@ COMMON_DEPEND="
 	sys-libs/libcap-ng:=
 "
 
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
+[[ ${PV} = "9999" ]] && BDEPEND+=" dev-python/docutils"
 
 DEPEND="
 	${COMMON_DEPEND}
@@ -60,10 +59,6 @@ RDEPEND="
 	acct-user/openvpn
 	selinux? ( sec-policy/selinux-openvpn )
 "
-
-if [[ ${PV} = "9999" ]]; then
-	BDEPEND+=" dev-python/docutils"
-fi
 
 pkg_setup() {
 	local CONFIG_CHECK="~TUN"
