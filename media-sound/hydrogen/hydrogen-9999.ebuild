@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,7 +56,7 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
-DOCS=( AUTHORS ChangeLog DEVELOPERS.md README.md )
+DOCS=( AUTHORS CHANGELOG.md DEVELOPERS.md README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.3-gnuinstalldirs.patch"
