@@ -9,6 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="Alliance for Open Media AV1 plugin for GStreamer"
 KEYWORDS="amd64 ~arm64 x86"
 
-# >= 3 brings more features, and >= 3.2 even more so. Depend on >=3.2 accordingly.
-RDEPEND=">=media-libs/libaom-3.2:=[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/libaom-3.10.0:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
