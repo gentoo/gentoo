@@ -9,7 +9,7 @@ MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
 # Patch version
-PATCH_SET=( https://github.com/parona-source/mysql-server/releases/download/mysql-8.0.40-patches-01/mysql-8.0.40-patches-01.tar.xz )
+PATCH_SET=( https://github.com/parona-source/mysql-server/releases/download/mysql-8.0.42-patches-01/mysql-8.0.42-patches-01.tar.xz )
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 HOMEPAGE="https://www.mysql.com/"
