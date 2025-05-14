@@ -70,15 +70,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local -a myeconfargs
-
-	if ! use mbedtls; then
-		myeconfargs+=(
-			$(use_enable pkcs11)
-		)
-	fi
-
-	myeconfargs+=(
+	local myeconfargs+=(
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
 		$(use_enable dco)
 		$(use_enable down-root plugin-down-root)
@@ -86,6 +78,7 @@ src_configure() {
 		$(use_enable iproute2)
 		$(use_enable lz4)
 		$(use_enable lzo)
+		$(use_enable pkcs11)
 		$(use_enable plugins)
 		$(use_enable pam plugin-auth-pam)
 		$(use_enable systemd)
