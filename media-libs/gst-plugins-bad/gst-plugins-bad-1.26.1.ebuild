@@ -21,20 +21,20 @@ RDEPEND="
 
 	>=media-libs/gstreamer-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},introspection?]
-	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0:= )
 
-	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
+	bzip2? ( >=app-arch/bzip2-1.0.8-r5[${MULTILIB_USEDEP}] )
 	vnc? ( X? ( x11-libs/libX11[${MULTILIB_USEDEP}] ) )
 	wayland? (
-		>=dev-libs/wayland-1.4.0[${MULTILIB_USEDEP}]
-		>=x11-libs/libdrm-2.4.98[${MULTILIB_USEDEP}]
-		>=dev-libs/wayland-protocols-1.26
+		>=dev-libs/wayland-protocols-1.41
+		>=dev-libs/wayland-1.23.1[${MULTILIB_USEDEP}]
+		>=x11-libs/libdrm-2.4.124[${MULTILIB_USEDEP}]
 	)
 
-	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
+	orc? ( >=dev-lang/orc-0.4.40[${MULTILIB_USEDEP}] )
 
 	vaapi? (
-		>=media-libs/libva-1.15:=[${MULTILIB_USEDEP}]
+		>=media-libs/libva-1.22.0:=[${MULTILIB_USEDEP}]
 		udev? ( dev-libs/libgudev[${MULTILIB_USEDEP}] )
 	)
 "
