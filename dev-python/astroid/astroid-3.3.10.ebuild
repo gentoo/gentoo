@@ -76,22 +76,6 @@ python_test() {
 		)
 	fi
 
-	case ${EPYTHON} in
-		pypy3)
-			EPYTEST_DESELECT+=(
-				tests/test_transforms.py::TestTransforms::test_transform_aborted_if_recursion_limited
-			)
-			;;
-		python3.13)
-			EPYTEST_DESELECT+=(
-				# changes in py3.13.0b4
-				# https://github.com/pylint-dev/astroid/issues/2478
-				tests/test_nodes.py::AsStringTest::test_f_strings
-				tests/test_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_string
-			)
-			;;
-	esac
-
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
