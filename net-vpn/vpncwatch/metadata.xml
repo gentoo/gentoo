@@ -3,6 +3,6 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">downloads/dcantrell</remote-id>
+    <remote-id type="github">dcantrell/vpncwatch</remote-id>
   </upstream>
 </pkgmetadata>
