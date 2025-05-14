@@ -8,14 +8,14 @@ inherit shell-completion systemd toolchain-funcs
 DESCRIPTION="Free Client for OneDrive on Linux"
 HOMEPAGE="https://abraunegg.github.io/"
 SRC_URI="https://codeload.github.com/abraunegg/onedrive/tar.gz/v${PV} -> ${P}.tar.gz"
-LICENSE="GPL-3"
 
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libnotify"
 # Barely any tests that require manually building.
 # Manual testing seems to be the best approach
-RESTRICT=test
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-db/sqlite-3.7.15:3
@@ -50,7 +50,7 @@ src_configure() {
 	DCFLAGS="${GDCFLAGS}"
 	# libphobos does not provide any backwards compatibility guarantees.
 	# Until the gcc dependency in properly slotted and a USE-expand flag
-	# is added use static linking.
+	# is added, use static linking.
 	DCFLAGS+=" -static-libphobos ${LDFLAGS}"
 	export DCFLAGS
 
@@ -70,7 +70,7 @@ src_configure() {
 }
 
 src_compile() {
-	# Avoid overwritting user flags
+	# Avoid overwriting user flags
 	emake DCFLAGS="${DCFLAGS}"
 }
 
