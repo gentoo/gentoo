@@ -1133,6 +1133,15 @@ multilib_src_test() {
 		addpredict /dev/fuse
 	fi
 
+	if use wayland; then
+		if use gtk3 || use qt6; then
+			local -x OPENCV_SKIP_TESTS_highgui=(
+				'Highgui_GUI.regression'
+				'Highgui_GUI.small_width_image'
+			)
+		fi
+	fi
+
 	if multilib_native_use cuda; then
 		local -x OPENCV_SKIP_TESTS_cudaoptflow=(
 			'CUDA_OptFlow/BroxOpticalFlow.Regression/0'
