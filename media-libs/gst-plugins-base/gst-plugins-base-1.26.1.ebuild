@@ -44,22 +44,22 @@ REQUIRED_USE="
 # dmabuf automagic from libdrm headers (drm_fourcc.h) and EGL, so ensure it with USE=egl (platform independent header used only, thus no MULTILIB_USEDEP); provides dmabuf based upload/download/eglimage options
 GL_DEPS="
 	|| (
-		>=media-libs/mesa-24.1.0_rc1[opengl,wayland?,${MULTILIB_USEDEP}]
-		<media-libs/mesa-24.1.0_rc1[egl(+)?,gbm(+)?,gles2?,wayland?,${MULTILIB_USEDEP}]
+		>=media-libs/mesa-25.0.5[opengl,wayland?,${MULTILIB_USEDEP}]
+		<media-libs/mesa-25.1.0[egl(+)?,gbm(+)?,gles2?,wayland?,${MULTILIB_USEDEP}]
 	)
 	egl? (
 		x11-libs/libdrm
 	)
 	gbm? (
-		>=dev-libs/libgudev-147[${MULTILIB_USEDEP}]
-		>=x11-libs/libdrm-2.4.55[${MULTILIB_USEDEP}]
+		>=dev-libs/libgudev-238[${MULTILIB_USEDEP}]
+		>=x11-libs/libdrm-2.4.124[${MULTILIB_USEDEP}]
 	)
 	wayland? (
-		>=dev-libs/wayland-1.20.0[${MULTILIB_USEDEP}]
-		>=dev-libs/wayland-protocols-1.15
+		>=dev-libs/wayland-1.23.1[${MULTILIB_USEDEP}]
+		>=dev-libs/wayland-protocols-1.41
 	)
 
-	>=media-libs/graphene-1.4.0[${MULTILIB_USEDEP}]
+	>=media-libs/graphene-1.10.8[${MULTILIB_USEDEP}]
 	media-libs/libpng:0[${MULTILIB_USEDEP}]
 	media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}]
 " # graphene for optional gltransformation and glvideoflip elements and more GLSL Uniforms support in glshader; libpng/jpeg for gloverlay element
@@ -67,20 +67,20 @@ GL_DEPS="
 
 RDEPEND="
 	app-text/iso-codes
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
-	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
+	>=sys-libs/zlib-1.3.1[${MULTILIB_USEDEP}]
+	alsa? ( >=media-libs/alsa-lib-1.2.13[${MULTILIB_USEDEP}] )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0:= )
 	ivorbis? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
-	ogg? ( >=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
-	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
+	ogg? ( >=media-libs/libogg-1.3.5[${MULTILIB_USEDEP}] )
+	orc? ( >=dev-lang/orc-0.4.40[${MULTILIB_USEDEP}] )
 	kernel_linux? ( >=x11-libs/libdrm-2.4.55[${MULTILIB_USEDEP}] )
-	pango? ( >=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}] )
+	pango? ( >=x11-libs/pango-1.52.0[${MULTILIB_USEDEP}] )
 	theora? ( >=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}] )
-	vorbis? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
+	vorbis? ( >=media-libs/libvorbis-1.3.7[${MULTILIB_USEDEP}] )
 	X? (
-		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXv-1.0.10[${MULTILIB_USEDEP}]
+		>=x11-libs/libX11-1.8.12[${MULTILIB_USEDEP}]
+		>=x11-libs/libXext-1.3.6[${MULTILIB_USEDEP}]
+		>=x11-libs/libXv-1.0.13[${MULTILIB_USEDEP}]
 	)
 
 	gles2? ( ${GL_DEPS} )
