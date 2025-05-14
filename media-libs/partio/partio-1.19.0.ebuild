@@ -100,5 +100,8 @@ src_install() {
 
 	python_optimize
 
-	rm -r "${ED}/usr/share/partio" || die
+	# only remove test binaries when they are built #955625
+	if use test; then
+		rm -r "${ED}/usr/share/partio" || die
+	fi
 }
