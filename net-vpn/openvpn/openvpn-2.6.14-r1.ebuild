@@ -92,10 +92,8 @@ src_test() {
 	elog "Running top-level tests"
 	emake check
 
-	pushd tests/unit_tests &>/dev/null || die
 	elog "Running unit tests"
-	emake check
-	popd &>/dev/null || die
+	emake -C tests/unit_tests check
 }
 
 src_install() {
