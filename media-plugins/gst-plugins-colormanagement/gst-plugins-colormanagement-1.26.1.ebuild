@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="Color management correction GStreamer plugins"
 KEYWORDS="~amd64 ~arm64"
 
-RDEPEND=">=media-libs/lcms-2.7:2[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/lcms-2.17:2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
