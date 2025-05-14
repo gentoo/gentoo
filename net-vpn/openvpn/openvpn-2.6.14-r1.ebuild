@@ -126,8 +126,6 @@ src_install() {
 
 	# install examples, controlled by the respective useflag
 	if use examples; then
-		# (is the below comment relevant anymore?)
-		## dodoc does not supportly support directory traversal, #15193
 		docinto examples
 		dodoc -r sample contrib
 	fi
