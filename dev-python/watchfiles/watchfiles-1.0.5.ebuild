@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{10..13} pypy3_11 pypy3 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 CRATES="
 	autocfg@1.3.0
@@ -98,6 +98,8 @@ BDEPEND="
 
 # enjoy Rust
 QA_FLAGS_IGNORED=".*/_rust_notify.*"
+
+export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 distutils_enable_tests pytest
 
