@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-14)
+# dev-qt/qtwebchannel:5 is masked, last revdep was dev-python/pyqtwebengine
+dev-python/pyqt5 webchannel
+
 # Joonas Niilola <juippis@gentoo.org> (2025-05-14)
 # Experimental, no official upstream support.
 www-client/firefox jpegxl
