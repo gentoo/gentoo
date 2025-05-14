@@ -381,6 +381,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-cmake4.patch" # PR pending #27192
 	"${FILESDIR}/${PN}-4.11.0-qt-6.9.patch" # https://github.com/opencv/opencv/issues/27223
 
+	"${FILESDIR}"/${PN}-4.11.0-fix-libspng-link.patch #  PR pending #27314
+
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
 
