@@ -357,6 +357,9 @@ src_configure() {
 			# with the testsuite.
 			filter-lto
 
+			# bug #637066
+			filter-flags -Wall -Wreturn-type
+
 			export BUILD_CFLAGS="${CFLAGS}"
 		fi
 	fi
