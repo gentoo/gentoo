@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools systemd linux-info tmpfiles
+inherit systemd linux-info tmpfiles
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
 HOMEPAGE="https://openvpn.net"
@@ -60,12 +60,6 @@ DOCS=( ChangeLog PORTS README )
 pkg_setup() {
 	local CONFIG_CHECK="~TUN"
 	linux-info_pkg_setup
-}
-
-src_prepare() {
-	default
-
-	eautoreconf
 }
 
 src_configure() {
