@@ -25,9 +25,8 @@ IUSE+=" pam pkcs11 +plugins selinux systemd test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	dco? ( !iproute2 )
-	inotify? ( plugins )
 	pkcs11? ( !mbedtls )
-	!plugins? ( !pam !down-root )
+	!plugins? ( !inotify !pam !down-root )
 "
 
 COMMON_DEPEND="
