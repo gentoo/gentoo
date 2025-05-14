@@ -18,11 +18,11 @@ IUSE="+caps +introspection ptp unwind"
 
 # gstreamer-1.22.x requires 2.62, but 2.64 is strongly recommended
 RDEPEND="
-	>=dev-libs/glib-2.64.0:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.82.5:2[${MULTILIB_USEDEP}]
 	caps? ( sys-libs/libcap[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0:= )
 	unwind? (
-		>=sys-libs/libunwind-1.2_rc1[${MULTILIB_USEDEP}]
+		>=sys-libs/libunwind-1.8.1[${MULTILIB_USEDEP}]
 		dev-libs/elfutils[${MULTILIB_USEDEP}]
 	)
 "
