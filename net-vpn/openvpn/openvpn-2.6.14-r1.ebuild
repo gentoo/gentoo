@@ -124,7 +124,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-2.1.init" openvpn
 	newconfd "${FILESDIR}/${PN}-2.1.conf" openvpn
 
-	# install examples, controlled by the respective useflag
+	# Install examples, controlled by the respective useflag
 	if use examples; then
 		docinto examples
 		dodoc -r sample contrib
