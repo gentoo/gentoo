@@ -118,8 +118,7 @@ src_install() {
 	# Install some helper scripts
 	keepdir /etc/openvpn
 	exeinto /etc/openvpn
-	doexe "${FILESDIR}/up.sh"
-	doexe "${FILESDIR}/down.sh"
+	doexe "${FILESDIR}"/{up,down}.sh
 
 	# Install the init script and config file
 	newinitd "${FILESDIR}/${PN}-2.1.init" openvpn
