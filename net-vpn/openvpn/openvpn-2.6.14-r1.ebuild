@@ -129,9 +129,6 @@ src_install() {
 		docinto examples
 		dodoc -r sample contrib
 	fi
-
-	# https://bugs.gentoo.org/755680#c3
-	doman doc/openvpn.8
 }
 
 pkg_postinst() {
