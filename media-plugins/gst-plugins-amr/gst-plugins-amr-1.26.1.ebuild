@@ -12,7 +12,7 @@ HOMEPAGE="https://gstreamer.freedesktop.org/"
 LICENSE="GPL-2"
 KEYWORDS="amd64 ~arm64 x86"
 
-RDEPEND=">=media-libs/opencore-amr-0.1.3-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/opencore-amr-0.1.6[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 GST_PLUGINS_ENABLED="amrnb amrwbdec"
