@@ -59,6 +59,7 @@ RDEPEND="
 	acct-user/openvpn
 	selinux? ( sec-policy/selinux-openvpn )
 "
+DOCS=( ChangeLog PORTS README )
 
 pkg_setup() {
 	local CONFIG_CHECK="~TUN"
@@ -115,9 +116,6 @@ src_install() {
 	default
 
 	find "${ED}/usr" -name '*.la' -delete || die
-
-	# install documentation
-	dodoc AUTHORS ChangeLog PORTS README
 
 	# Install some helper scripts
 	keepdir /etc/openvpn
