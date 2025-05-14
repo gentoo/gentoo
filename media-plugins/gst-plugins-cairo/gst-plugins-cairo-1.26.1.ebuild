@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="Video overlay plugin based on cairo for GStreamer"
 KEYWORDS="amd64 ~arm64"
 
-RDEPEND=">=x11-libs/cairo-1.10[glib,${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/cairo-1.18.4[glib,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
