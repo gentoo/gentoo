@@ -64,15 +64,8 @@ pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
 	# bug #908958
-	if tc-is-gcc && ver_test $(gcc-version) -lt 11 ; then
-		eerror "Botan needs >=gcc-11 or >=clang-14 to compile."
-		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
-		die "GCC version is too old to compile Botan!"
-	elif tc-is-clang && ver_test $(clang-version) -lt 14 ; then
-		eerror "Botan needs >=gcc-11 or >=clang-14 to compile."
-		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
-		die "Clang version is too old to compile Botan!"
-	fi
+	tc-check-min_ver gcc 11
+	tc-check-min_ver clang 14
 }
 
 src_configure() {
