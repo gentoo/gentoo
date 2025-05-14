@@ -5,8 +5,8 @@
 depend() {
 	need dbus
 
-	# Make sure elogind is up before xdm starts any dm
-	before xdm
+	# Make sure elogind is up before display-manager starts any dm
+	before display-manager
 
 	use logger
 }
