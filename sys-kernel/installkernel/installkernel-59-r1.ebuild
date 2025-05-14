@@ -53,8 +53,8 @@ RDEPEND="
 	refind? ( sys-boot/refind )
 	systemd? (
 		|| (
-			sys-apps/systemd[kernel-install(-)]
-			sys-apps/systemd-utils[kernel-install(-)]
+			>=sys-apps/systemd-255[kernel-install(-)]
+			>=sys-apps/systemd-utils-255[kernel-install(-)]
 		)
 	)
 	systemd-boot? (
