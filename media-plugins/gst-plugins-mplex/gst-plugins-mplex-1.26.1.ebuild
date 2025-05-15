@@ -9,7 +9,7 @@ inherit gstreamer-meson
 DESCRIPTION="MPEG/DVD/SVCD/VCD video/audio multiplexing plugin for GStreamer"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 
-RDEPEND=">=media-video/mjpegtools-2.1.0-r1:=[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-video/mjpegtools-2.2.1-r2:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 multilib_src_configure() {
