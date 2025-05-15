@@ -13,7 +13,7 @@ SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 S="${WORKDIR}/${MY_P}"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ppc64 sparc x86"
 IUSE="sasl"
 RDEPEND="dev-lang/php:*
 	dev-php/PEAR-Net_Socket
