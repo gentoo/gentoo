@@ -9,7 +9,7 @@ inherit gstreamer-meson
 DESCRIPTION="Opus audio parser plugin for GStreamer"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-COMMON_DEPEND=">=media-libs/opus-1.1:=[${MULTILIB_USEDEP}]"
+COMMON_DEPEND=">=media-libs/opus-1.5.2:=[${MULTILIB_USEDEP}]"
 
 RDEPEND="${COMMON_DEPEND}
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP},ogg]
