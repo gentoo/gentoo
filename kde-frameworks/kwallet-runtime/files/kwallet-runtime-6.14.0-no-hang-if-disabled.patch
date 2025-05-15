@@ -1,0 +1,101 @@
+From a8490198ca9293cce3667a1ae5c09c5c825f139b Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Thu, 15 May 2025 14:32:25 +0200
+Subject: [PATCH 1/2] Don't make clients hang if kwallet is disabled
+
+check if kwallet is disabled only after creating KWalletD,
+because if we were Dbus activated, the caller will stay
+hanged if we never bring up the service
+
+BUG:504014
+---
+ src/runtime/kwalletd/main.cpp | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/runtime/kwalletd/main.cpp b/src/runtime/kwalletd/main.cpp
+index 03c9ceaf..50b628d8 100644
+--- a/src/runtime/kwalletd/main.cpp
++++ b/src/runtime/kwalletd/main.cpp
+@@ -47,16 +47,19 @@ int main(int argc, char **argv)
+     parser.process(application);
+     aboutData.processCommandLine(&parser);
+ 
++    KDBusService dbusUniqueInstance(KDBusService::Unique);
++
++    KWalletD wallet;
++
+     // check if kwallet is disabled
++    // do this after creating KWalletD, because if we were
++    // Dbus activated, the caller will stay hanged if we never
++    // bring up the service
+     if (!isWalletEnabled()) {
+         qCDebug(KWALLETD_LOG) << "kwallet is disabled!";
+ 
+         return (0);
+     }
+ 
+-    KDBusService dbusUniqueInstance(KDBusService::Unique);
+-
+-    KWalletD wallet;
+-
+     return application.exec();
+ }
+-- 
+GitLab
+
+
+From 80ba18a9d52328acc45b541f423a5db587b1aea8 Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Thu, 15 May 2025 15:29:45 +0200
+Subject: [PATCH 2/2] return -1 when disabled
+
+---
+ src/runtime/ksecretd/main.cpp |  2 +-
+ src/runtime/kwalletd/main.cpp | 13 +++++--------
+ 2 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/src/runtime/ksecretd/main.cpp b/src/runtime/ksecretd/main.cpp
+index df668a1d..97dcf3c3 100644
+--- a/src/runtime/ksecretd/main.cpp
++++ b/src/runtime/ksecretd/main.cpp
+@@ -192,7 +192,7 @@ int main(int argc, char **argv)
+         /* Do not keep dbus-daemon waiting for the org.freedesktop.secrets if kwallet is disabled */
+         KWalletFreedesktopService(nullptr);
+ 
+-        return (0);
++        return (-1);
+     }
+ 
+     KSecretD secretd;
+diff --git a/src/runtime/kwalletd/main.cpp b/src/runtime/kwalletd/main.cpp
+index 50b628d8..0682c7d5 100644
+--- a/src/runtime/kwalletd/main.cpp
++++ b/src/runtime/kwalletd/main.cpp
+@@ -47,19 +47,16 @@ int main(int argc, char **argv)
+     parser.process(application);
+     aboutData.processCommandLine(&parser);
+ 
+-    KDBusService dbusUniqueInstance(KDBusService::Unique);
+-
+-    KWalletD wallet;
+-
+     // check if kwallet is disabled
+-    // do this after creating KWalletD, because if we were
+-    // Dbus activated, the caller will stay hanged if we never
+-    // bring up the service
+     if (!isWalletEnabled()) {
+         qCDebug(KWALLETD_LOG) << "kwallet is disabled!";
+ 
+-        return (0);
++        return (-1);
+     }
+ 
++    KDBusService dbusUniqueInstance(KDBusService::Unique);
++
++    KWalletD wallet;
++
+     return application.exec();
+ }
+-- 
+GitLab
+
