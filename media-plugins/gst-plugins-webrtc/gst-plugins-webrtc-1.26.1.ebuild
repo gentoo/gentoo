@@ -11,8 +11,8 @@ KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	>=media-plugins/gst-plugins-sctp-${PV}:1.0[${MULTILIB_USEDEP}]
-	>=media-libs/webrtc-audio-processing-1.0:1[${MULTILIB_USEDEP}]
-	>=net-libs/libnice-0.1.21[${MULTILIB_USEDEP}]
+	>=media-libs/webrtc-audio-processing-1.3-r2:1[${MULTILIB_USEDEP}]
+	>=net-libs/libnice-0.1.22[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
