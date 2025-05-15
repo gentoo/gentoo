@@ -10,7 +10,7 @@ DESCRIPTION="C++ interface for the ATK library"
 HOMEPAGE="https://gtkmm.gnome.org https://gitlab.gnome.org/GNOME/atkmm"
 
 LICENSE="LGPL-2.1+"
-SLOT="0"
+SLOT="2.36"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="gtk-doc"
 
