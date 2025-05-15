@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="H.264 encoder/decoder plugin for GStreamer"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 
-RDEPEND=">=media-libs/openh264-1.3:=[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/openh264-2.6.0:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
