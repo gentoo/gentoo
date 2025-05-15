@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake optfeature xdg
 
 DESCRIPTION="Qt-based audio player with winamp/xmms skins support"
 HOMEPAGE="https://qmmp.ylsoftware.com"
@@ -25,14 +25,13 @@ SLOT="0"
 IUSE="X aac +alsa archive bs2b cdda cddb curl +dbus doc enca
 ffmpeg flac game gnome jack ladspa libxmp +mad midi mpg123
 mplayer musepack opus pipewire projectm pulseaudio qtmedia
-shout sid sndfile soxr udisks +vorbis wavpack
+shout sid sndfile soxr +vorbis wavpack
 "
 REQUIRED_USE="
 	cddb? ( cdda )
 	gnome? ( dbus )
 	jack? ( soxr )
 	shout? ( soxr vorbis )
-	udisks? ( dbus )
 "
 # qtbase[sql] to help autounmask of sqlite
 RDEPEND="
@@ -61,7 +60,7 @@ RDEPEND="
 	libxmp? ( media-libs/libxmp )
 	mad? ( media-libs/libmad )
 	midi? ( media-sound/wildmidi )
-	mpg123? ( media-sound/mpg123 )
+	mpg123? ( media-sound/mpg123-base )
 	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
@@ -77,7 +76,6 @@ RDEPEND="
 	sid? ( >=media-libs/libsidplayfp-1.1.0:= )
 	sndfile? ( media-libs/libsndfile )
 	soxr? ( media-libs/soxr )
-	udisks? ( sys-fs/udisks:2 )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
@@ -94,6 +92,13 @@ BDEPEND="
 "
 
 DOCS=( AUTHORS ChangeLog README )
+
+src_prepare() {
+	cmake_src_prepare
+	if use doc; then
+		doxygen -u doc/Doxyfile.cmake.in 2>/dev/null || die
+	fi
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -146,7 +151,7 @@ src_configure() {
 		-DUSE_SKINNED="$(usex X)"
 		-DUSE_SNDFILE="$(usex sndfile)"
 		-DUSE_SOXR="$(usex soxr)"
-		-DUSE_UDISKS="$(usex udisks)"
+		-DUSE_UDISKS="$(usex dbus)"
 		-DUSE_VORBIS="$(usex vorbis)"
 		-DUSE_WAVPACK="$(usex wavpack)"
 		-DUSE_XMP="$(usex libxmp)"
@@ -160,4 +165,10 @@ src_compile() {
 		cmake_build docs
 		HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	}
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	use dbus && optfeature "removable device detection" sys-fs/udisks
 }
