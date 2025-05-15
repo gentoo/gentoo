@@ -17,6 +17,14 @@ KEYWORDS="~amd64"
 
 RESTRICT="test"
 
+src_prepare() {
+	cd third_party/thrift/thrift/transport/
+	eapply "${FILESDIR}/thrift-cstdint.patch"
+	cd ${S}
+	eapply_user
+	cmake_src_prepare
+}
+
 src_configure() {
 	mycmakeargs=( "-DINSTALL_LIB_DIR=/usr/$(get_libdir)/"
 		"-DOVERRIDE_GIT_DESCRIBE=v${PV}"
