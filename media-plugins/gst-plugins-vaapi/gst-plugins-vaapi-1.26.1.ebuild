@@ -52,17 +52,17 @@ GL_DEPS="
 RDEPEND="
 	>=media-libs/gst-plugins-base-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-bad-${GST_REQ}:${SLOT}[${MULTILIB_USEDEP}]
-	>=media-libs/libva-1.15.0:=[drm(+)?,wayland?,X?,${MULTILIB_USEDEP}]
+	>=media-libs/libva-2.22.0:=[drm(+)?,wayland?,X?,${MULTILIB_USEDEP}]
 	drm? (
-		>=virtual/libudev-208:=[${MULTILIB_USEDEP}]
-		>=x11-libs/libdrm-2.4.98[${MULTILIB_USEDEP}]
+		>=virtual/libudev-238:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libdrm-2.4.124[${MULTILIB_USEDEP}]
 	)
 	gles2? ( ${GL_DEPS} )
 	opengl? ( ${GL_DEPS} )
-	wayland? ( >=dev-libs/wayland-1.11.0[${MULTILIB_USEDEP}] )
+	wayland? ( >=dev-libs/wayland-1.23.1[${MULTILIB_USEDEP}] )
 	X? (
-		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-		>=x11-libs/libXrandr-1.4.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libX11-1.8.12[${MULTILIB_USEDEP}]
+		>=x11-libs/libXrandr-1.5.4[${MULTILIB_USEDEP}]
 		x11-libs/libXrender[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
