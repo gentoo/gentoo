@@ -1,0 +1,41 @@
+From 32a7cf2a06e16d58cbb8c4a0ab08a0832fa377d4 Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Mon, 5 May 2025 21:14:08 +0300
+Subject: [PATCH] colorsapplicator: Don't allow extended RGB from
+ OKLabToLinearSRGB
+
+When reading the rgb values in OKLabToLinearSRGB, there is a chance,
+when colors are tinted, for QColor::fromRgbF to return Extended RGB
+colors, which can invert.
+Read more at
+https://doc.qt.io/qt-6/qcolor.html#the-extended-rgb-color-model
+
+Instead, just make sure we always return regular RGB values.
+
+BUG: 503394
+FIXED-IN: 6.3
+
+
+(cherry picked from commit 4329b16a96a47c310e2d2a5da6f7543f94b6d3ec)
+
+Co-authored-by: Akseli Lahtinen <akselmo@akselmo.dev>
+---
+ kcms/colors/colorsapplicator.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kcms/colors/colorsapplicator.cpp b/kcms/colors/colorsapplicator.cpp
+index 6f0eeffe66..7d28889de6 100644
+--- a/kcms/colors/colorsapplicator.cpp
++++ b/kcms/colors/colorsapplicator.cpp
+@@ -100,7 +100,7 @@ QColor OKLabToLinearSRGB(LAB lab)
+     const auto g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s;
+     const auto b = -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s;
+ 
+-    return QColor::fromRgbF(r, g, b);
++    return QColor::fromRgbF(r, g, b).toRgb();
+ }
+ 
+ auto toLinearSRGB = QColorSpace(QColorSpace::SRgb).transformationToColorSpace(QColorSpace::SRgbLinear);
+-- 
+GitLab
+
