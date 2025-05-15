@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit meson python-r1
 
@@ -22,7 +22,7 @@ RESTRICT="test"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-libs/glib-2.82.5:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.82.5:2
 	dev-libs/libxml2:2
 	>=media-libs/gstreamer-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection?]
