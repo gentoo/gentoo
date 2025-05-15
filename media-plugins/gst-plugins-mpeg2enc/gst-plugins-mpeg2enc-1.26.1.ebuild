@@ -9,7 +9,7 @@ inherit gstreamer-meson
 DESCRIPTION="MPEG-1/2 video encoding plugin for GStreamer"
 KEYWORDS="amd64 ~arm64 x86"
 
-RDEPEND=">=media-video/mjpegtools-2.1.0-r1:=[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-video/mjpegtools-2.2.1-r2:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 multilib_src_configure() {
