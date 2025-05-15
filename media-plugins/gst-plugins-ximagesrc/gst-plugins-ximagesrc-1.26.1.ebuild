@@ -11,10 +11,10 @@ KEYWORDS="amd64 ~arm64 ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-	>=x11-libs/libXdamage-1.1.4-r1[${MULTILIB_USEDEP}]
-	>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
-	>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
+	>=x11-libs/libX11-1.8.12[${MULTILIB_USEDEP}]
+	>=x11-libs/libXdamage-1.1.6[${MULTILIB_USEDEP}]
+	>=x11-libs/libXext-1.3.6[${MULTILIB_USEDEP}]
+	>=x11-libs/libXfixes-6.0.1[${MULTILIB_USEDEP}]
 	x11-libs/libXtst[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
