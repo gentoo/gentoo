@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="RTMP source/sink plugin for GStreamer"
 KEYWORDS="amd64 ~arm64 x86"
 
-RDEPEND=">=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-video/rtmpdump-2.4_p20210219[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
