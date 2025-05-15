@@ -9,6 +9,6 @@ inherit gstreamer-meson
 DESCRIPTION="Secure reliable transport (SRT) transfer plugin for GStreamer"
 KEYWORDS="~amd64 ~arm64"
 
-RDEPEND=">=net-libs/srt-1.3.0:=[${MULTILIB_USEDEP}]"
+RDEPEND=">=net-libs/srt-1.5.1:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/glib-utils"
