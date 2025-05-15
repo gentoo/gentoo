@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit go-module linux-info optfeature systemd toolchain-funcs verify-sig
+inherit go-env go-module linux-info optfeature systemd toolchain-funcs verify-sig
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
 HOMEPAGE="https://linuxcontainers.org/incus/introduction/ https://github.com/lxc/incus"
@@ -155,7 +155,8 @@ src_test() {
 src_install() {
 	export GOPATH="${S}/_dist"
 
-	if tc-is-cross-compiler ; then
+	export GOHOSTARCH=$(go-env_goarch "${CBUILD}")
+	if [[ "${GOARCH}" != "${GOHOSTARCH}" ]]; then
 		local bindir="_dist/bin/linux_${GOARCH}"
 	else
 		local bindir="_dist/bin"
