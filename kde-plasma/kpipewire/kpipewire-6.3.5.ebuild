@@ -41,3 +41,5 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kirigami-${KFMIN}:6
 "
 BDEPEND="test? ( >=dev-qt/qtwayland-${QTMIN}:6 )"
+
+PATCHES=( "${FILESDIR}/${P}-qt-6.10.patch" )
