@@ -11,7 +11,7 @@ KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	|| (
-		>=media-libs/libfreeaptx-0.1.1[${MULTILIB_USEDEP}]
+		>=media-libs/libfreeaptx-0.1.1*[${MULTILIB_USEDEP}]
 		=media-libs/libopenaptx-0.2.0*[${MULTILIB_USEDEP}]
 	)
 "
