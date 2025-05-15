@@ -33,8 +33,8 @@ src_prepare() {
 		eapply "${FILESDIR}"/${P}-natspec.patch
 		sed -i '/^LOCAL_LIBS/s/$/ -lnatspec/' makefile.* || die
 	else
-    eapply "${FILESDIR}/${P}-localization.patch"
-  fi
+		eapply "${FILESDIR}/${P}-localization.patch"
+	fi
 
 	if ! use pch; then
 		sed "s:PRE_COMPILED_HEADER=StdAfx.h.gch:PRE_COMPILED_HEADER=:g" -i makefile.* || die
