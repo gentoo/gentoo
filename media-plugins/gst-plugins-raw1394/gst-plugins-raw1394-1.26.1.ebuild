@@ -10,9 +10,9 @@ DESCRIPTION="Fiwewire DV/HDV capture plugin for GStreamer"
 KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 
 RDEPEND="
-	>=media-libs/libiec61883-1.2.0-r1[${MULTILIB_USEDEP}]
-	>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
-	>=sys-libs/libavc1394-0.5.4-r1[${MULTILIB_USEDEP}]
+	>=media-libs/libiec61883-1.2.0-r2[${MULTILIB_USEDEP}]
+	>=sys-libs/libraw1394-2.1.2-r1[${MULTILIB_USEDEP}]
+	>=sys-libs/libavc1394-0.5.4-r2[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 
