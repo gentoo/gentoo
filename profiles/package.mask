@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-05-15)
+# Deprecated and no longer maintained upstream. Open security
+# issues. Use media-gfx/fig2dev instead.
+# Removal on 2025-06-15. Bug #917279.
+media-gfx/transfig
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-15)
 # Very dead upstream, very many open bugs for years without anyone fixing.
 # Bugs #314835, #632432, #827131, #874429, #908830, #925513, #934808.
