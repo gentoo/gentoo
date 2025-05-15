@@ -43,7 +43,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/xz-utils
 	dev-libs/elfutils[lzma]
-	dev-libs/libxml2:2=[lzma(-)]
+	dev-libs/libxml2:2=
 	dev-libs/xxhash
 	btf? ( dev-libs/libbpf:= )
 	elibc_musl? ( sys-libs/fts-standalone )
