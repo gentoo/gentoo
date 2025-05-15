@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="Wavpack audio encoder/decoder plugin for GStreamer"
 KEYWORDS="~alpha amd64 ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-RDEPEND=">=media-sound/wavpack-4.60.1-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-sound/wavpack-5.8.1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
