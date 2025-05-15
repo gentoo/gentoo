@@ -1,0 +1,73 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="MythTV backend recording daemon"
+extra_started_commands="resched upnprebuild"
+description_resched="Forces the recording scheduler to update"
+description_upnprebuild="Rebuilds the UPnP media cache"
+
+MYTHBACKEND_OPTS=${MYTHBACKEND_OPTS:-"${MYTHBACKEND_OPTS}"}
+MYTHBACKEND_VERBOSE=${MYTHBACKEND_VERBOSE:-"general"}
+MYTHBACKEND_LOGGING=${MYTHBACKEND_LOGGING:-"files"}
+
+name="MythTV backend"
+command="/usr/bin/mythbackend"
+command_user="${command_user:-"mythtv:mythtv"}"
+pidfile="/run/mythtv/mythbackend.pid"
+start_stop_daemon_args="--pidfile ${pidfile} --user ${command_user}"
+command_args="--daemon --pidfile ${pidfile} --verbose ${MYTHBACKEND_VERBOSE} ${MYTHBACKEND_OPTS}"
+
+depend() {
+	# mythbackend doesn't need to run on the same machine that
+	# mysql runs on. so its use for that reason
+	use logger net.lo mysql LCDd
+}
+
+start_pre() {
+	case "${MYTHBACKEND_LOGGING}" in
+		database) logging="--enable-dblog" ;;
+		syslog\ *) logging="--${MYTHBACKEND_LOGGING}" ;;
+		files) logging="--logpath /var/log/mythtv" ;;
+		console) logging="--nologserver" ;;
+		*)
+			eerror "Invalid MYTHBACKEND_LOGGING value"
+			exit 1
+			;;
+	esac
+
+	#fixes for bug #101308
+	unset DISPLAY
+	unset SESSION_MANAGER
+
+	# Work around any strange permissions that may be on these files.
+	[ "x${MYTHBACKEND_LOGGING}" = "xfiles" ] && \
+		checkpath --directory --owner ${command_user} --mode 0755 /var/log/mythtv
+	checkpath --directory --owner ${command_user} --mode 0775 "{$HOME}"
+	checkpath --directory --owner ${command_user} --mode 0750 /run/mythtv
+}
+
+start() {
+	ebegin "Starting ${name}"
+	start-stop-daemon --start ${start_stop_daemon_args} --exec ${command} \
+		-- ${command_args} ${logging}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${name}"
+	start-stop-daemon --stop --retry 10 --progress --pidfile ${pidfile}
+	eend $?
+}
+
+resched() {
+	ebegin "Updating the recording scheduler"
+	${command} --resched
+	eend $?
+}
+
+upnprebuild() {
+	ebegin "Rebuilding UPnP media cache"
+	${command} --upnprebuild
+	eend $?
+}
