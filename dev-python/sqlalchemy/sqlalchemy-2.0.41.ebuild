@@ -62,20 +62,6 @@ python_test() {
 				test/orm/test_utils.py::ContextualWarningsTest::test_configure_mappers_explicit
 				"test/sql/test_resultset.py::CursorResultTest_sqlite+pysqlite_${sqlite_version//./_}::test_new_row_no_dict_behaviors"
 			)
-			;&
-		pypy3)
-			EPYTEST_DESELECT+=(
-				test/ext/test_associationproxy.py::ProxyHybridTest::test_msg_fails_on_cls_access
-				test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_multi_elem_varg
-				test/ext/test_associationproxy.py::DictOfTupleUpdateTest::test_update_one_elem_varg
-				test/engine/test_processors.py::PyDateProcessorTest::test_date_invalid_string
-				test/engine/test_processors.py::PyDateProcessorTest::test_datetime_invalid_string
-				test/engine/test_processors.py::PyDateProcessorTest::test_time_invalid_string
-				"test/dialect/test_sqlite.py::TestTypes_sqlite+pysqlite_${sqlite_version//./_}::test_cant_parse_datetime_message"
-				"test/dialect/test_suite.py::ReturningGuardsTest_sqlite+pysqlite_${sqlite_version//./_}"::test_{delete,insert,update}_single
-				test/base/test_utils.py::ImmutableDictTest::test_pep584
-				'test/sql/test_compare.py::HasCacheKeySubclass::test_init_args_in_traversal[_MemoizedSelectEntities]'
-			)
 			;;
 	esac
 	if ! has_version "dev-python/greenlet[${PYTHON_USEDEP}]"; then
