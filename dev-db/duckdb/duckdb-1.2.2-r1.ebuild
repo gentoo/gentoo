@@ -20,7 +20,7 @@ RESTRICT="test"
 src_prepare() {
 	cd third_party/thrift/thrift/transport/
 	eapply "${FILESDIR}/thrift-cstdint.patch"
-	cd ${S}
+	cd "${S}"
 	eapply_user
 	cmake_src_prepare
 }
