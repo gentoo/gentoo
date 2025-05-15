@@ -56,7 +56,7 @@ BDEPEND="
 		dev-util/splint
 		app-text/wdiff
 	)
-	verify-sig? ( sec-keys/openpgp-keys-unbound )
+	verify-sig? ( >=sec-keys/openpgp-keys-unbound-20250515 )
 "
 RDEPEND="
 	${DEPEND}
