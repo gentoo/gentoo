@@ -1,0 +1,18 @@
+[Unit]
+Description=Prosody XMPP server
+After=network-online.target
+
+[Service]
+Type=simple
+User=prosody
+Group=prosody
+PIDFile=/run/prosody/prosody.pid
+ExecStart=/usr/bin/prosody -F
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStartPre=!/bin/mkdir -p /var/log/prosody
+ExecStartPre=!/bin/mkdir -p /var/lib/prosody
+ExecStartPre=!/bin/chown -R prosody /var/log/prosody
+ExecStartPre=!/bin/chown -R prosody /var/lib/prosody
+
+[Install]
+WantedBy=multi-user.target
