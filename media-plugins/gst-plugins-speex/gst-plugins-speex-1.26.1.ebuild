@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="Speex encoder/decoder plugin for GStreamer"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
 
-RDEPEND=">=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/speex-1.2.1-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
