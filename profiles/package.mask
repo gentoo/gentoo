@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-15)
+# Very dead upstream, very many open bugs for years without anyone fixing.
+# Bugs #314835, #632432, #827131, #874429, #908830, #925513, #934808.
+# Removal on 2025-06-14.
+www-misc/htdig
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
 # Depends on Qt5 and is unmaintained for a very long time - currently
 # packaged release is from 2021. Alternatives are gui-apps/deskflow or
