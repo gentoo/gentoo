@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="MPEG2 encoder plugin for GStreamer"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~sparc x86"
 
-RDEPEND=">=media-sound/twolame-0.3.13-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-sound/twolame-0.4.0[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
