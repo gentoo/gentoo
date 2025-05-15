@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/955862
+https://github.com/aqbanking/gwenhywfar/commit/3a31e47cf14a4683c13ad81b57af0dd8b56d5353
+
+From 3a31e47cf14a4683c13ad81b57af0dd8b56d5353 Mon Sep 17 00:00:00 2001
+From: Micha Lenk <micha@lenk.info>
+Date: Sun, 23 Feb 2025 21:44:55 +0100
+Subject: [PATCH] Remove double declaration of HtmlObject_Grid_new
+
+This fixes a build failure when compiling with GCC 15 due to conflicting
+declarations of HtmlObject_Grid_new.
+
+The build failure was initially reported by Matthias Klose <doko@debian.org> as
+Debian bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1097194
+---
+ src/html/o_grid_p.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/html/o_grid_p.h b/src/html/o_grid_p.h
+index 33f218be..7c2ebd18 100644
+--- a/src/html/o_grid_p.h
++++ b/src/html/o_grid_p.h
+@@ -15,9 +15,6 @@
+ #include "o_grid_l.h"
+ 
+ 
+-HTML_OBJECT *HtmlObject_Grid_new();
+-
+-
+ typedef struct OBJECT_GRID OBJECT_GRID;
+ struct OBJECT_GRID {
+   int rows;
+

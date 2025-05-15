@@ -333,7 +333,7 @@ Note that without USE=abi_x86_32 on ${PN}, 32bit applications
 
 Be warned that USE=kernel-open may need to be either enabled or
 disabled for certain cards to function:
-- GTX 50xx (blackwell) and higher are known to require it to be enabled
+- GTX 50xx (blackwell) and higher require it to be enabled
 - GTX 1650 and higher (pre-blackwell) should work either way
 - Older cards require it to be disabled
 

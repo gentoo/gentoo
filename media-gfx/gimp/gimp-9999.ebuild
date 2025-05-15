@@ -4,10 +4,10 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single flag-o-matic meson python-single-r1 toolchain-funcs vala xdg
+inherit git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -38,10 +38,10 @@ COMMON_DEPEND="
 	>=dev-libs/appstream-glib-0.7.16
 	>=dev-libs/glib-2.70.0:2
 	>=dev-libs/json-glib-1.4.4
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.57.3:2
-	>=media-gfx/mypaint-brushes-2.0.2:=
+	>=media-gfx/mypaint-brushes-1.3.1:1.0=
 	>=media-libs/babl-9999[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
@@ -131,8 +131,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	sed -i -e 's/mypaint-brushes-1.0/mypaint-brushes-2.0/' meson.build || die #737794
 
 	# Fix Gimp  and GimpUI devel doc installation paths
 	sed -i -e "s/'doc'/'gtk-doc'/" devel-docs/reference/gimp/meson.build || die

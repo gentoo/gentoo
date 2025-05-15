@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{11..13} pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_13t python3_14{,t} )
+PYTHON_TESTED=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_{13,14}t )
 
 inherit distutils-r1 pypi
 
@@ -44,6 +44,11 @@ BDEPEND="
 		' "${PYTHON_TESTED[@]}")
 	)
 "
+
+PATCHES=(
+	# https://github.com/pytest-dev/pytest/pull/13291
+	"${FILESDIR}/${P}-test.patch"
+)
 
 src_test() {
 	# workaround new readline defaults
@@ -104,6 +109,15 @@ python_test() {
 				# regressions on pypy3.9
 				# https://github.com/pytest-dev/pytest/issues/9787
 				testing/test_skipping.py::test_errors_in_xfail_skip_expressions
+			)
+			;;
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# still broken on main, as of 2025-05-14
+				testing/test_unraisableexception.py::test_unraisable
+				testing/test_unraisableexception.py::test_unraisable_in_setup
+				testing/test_unraisableexception.py::test_unraisable_in_teardown
+				testing/test_debugging.py::test_raises_bdbquit_with_eoferror
 			)
 			;;
 	esac

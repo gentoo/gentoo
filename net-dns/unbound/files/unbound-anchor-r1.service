@@ -1,0 +1,15 @@
+[Unit]
+Description=Update of the root trust anchor for DNSSEC validation
+Documentation=man:unbound-anchor(8)
+After=network-online.target
+Before=unbound.service
+
+[Service]
+Type=oneshot
+User=unbound
+Group=unbound
+ExecStart=/usr/bin/unbound-anchor -a /etc/unbound/var/root-anchors.txt -c /etc/dnssec/icannbundle.pem
+SuccessExitStatus=1
+
+[Install]
+WantedBy=multi-user.target

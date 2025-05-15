@@ -25,7 +25,7 @@ LICENSE="GPL-3+"
 SLOT="3"
 IUSE="doc test examples python root"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	python? (
@@ -45,6 +45,10 @@ BDEPEND="
 		dev-texlive/texlive-latexrecommended
 	)
 "
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
 
 src_configure() {
 	filter-lto # 941937 941936

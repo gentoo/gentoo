@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN="WebTest"
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -33,7 +33,7 @@ BDEPEND="
 		dev-python/wsgiproxy2[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/legacy-cgi[${PYTHON_USEDEP}]
-		' 3.13)
+		' 3.{13..14})
 	)
 "
 

@@ -33,9 +33,6 @@ RDEPEND="
 	>=dev-python/notebook-shim-0.2[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-41.1.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.2.2[${PYTHON_USEDEP}]
-	' 3.10)
 	>=dev-python/tornado-6.2.0[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 	net-libs/nodejs[npm]

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -26,6 +26,11 @@ RDEPEND="
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 "
+
+PATCHES=(
+	# https://github.com/flasgger/flasgger/pull/633
+	"${FILESDIR}/${PN}-0.9.7.1-click-8.2.patch"
+)
 
 distutils_enable_tests pytest
 

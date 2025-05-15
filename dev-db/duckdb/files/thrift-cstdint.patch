@@ -1,0 +1,10 @@
+--- a/TTransport.h	2025-04-07 09:28:46.000000000 -0000
++++ b/TTransport.h	2025-05-15 07:01:41.119463408 -0000
+@@ -24,6 +24,7 @@
+ #include "thrift/transport/TTransportException.h"
+ #include <memory>
+ #include <string>
++#include <cstdint>
+ 
+ namespace duckdb_apache {
+ namespace thrift {

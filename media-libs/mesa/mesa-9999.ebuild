@@ -3,10 +3,10 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..19} )
+LLVM_COMPAT=( {18..20} )
 LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain
 

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 optfeature
 
@@ -80,6 +80,10 @@ python_test() {
 		# Internet
 		tests/client/test_proxies.py::test_async_proxy_close
 		tests/client/test_proxies.py::test_sync_proxy_close
+		# click-8.2.0
+		# https://github.com/encode/httpx/discussions/3572
+		tests/test_main.py::test_auth
+		tests/test_main.py::test_verbose
 	)
 
 	use cli || EPYTEST_IGNORE+=(

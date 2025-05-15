@@ -36,6 +36,40 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# Depends on Qt5 and is unmaintained for a very long time - currently
+# packaged release is from 2021. Alternatives are gui-apps/deskflow or
+# gui-apps/input-leap - see also bugs #953262, #907118
+# Removal on 2025-06-12.
+x11-misc/synergy
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# Package destabilisation mask. 1.5.1.2_p20241029 is in ~arch but as snapshot
+# with currently no Gentoo maintainer it will not be stabilised.
+# 5.1.2 release was more than 6 years old already. Bug #953259
+~x11-misc/qlipper-5.1.2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# No more revdeps, depends on Qt5. Bug #955654; removal on 2025-06-12.
+dev-games/openscenegraph-qt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# Last release from 2021, last commit >1 year ago and depends on Qt5.
+# Upstream shows no signs of activity let alone Qt6 porting work.
+# Unmaintained in Gentoo. Bug #950302; removal on 2025-06-12.
+x11-misc/qtfm
+
+# Matt Turner <mattst88@gentoo.org> (2025-05-13)
+# Package is replaced by dev-util/mesa_clc.
+# Removal on 2025-06-12.  Bug #955925.
+dev-util/intel_clc
+
+# Fabian Groffen <grobian@gentoo.org> (2025-05-13)
+# Compilation issues (#955913) and lack of resources/interest to
+# maintain, if you look for a catalog manager check out Jellyfin.
+# Removal on 2025-06-12, unless someone steps up
+media-sound/owntone
+
 # Petr Vaněk <arkamar@gentoo.org> (2025-05-12)
 # A serious performance regression has been found in 10.11.12 and 11.4.6
 # releases, distributions are advised to not publish them, see
@@ -103,10 +137,6 @@ media-video/ffdiaporama
 # No one else packages this. Bugs #644482, #953769; removal on 2025-05-31
 sci-electronics/osqoop
 
-# Matt Turner <mattst88@gentoo.org> (2024-05-02)
-# Masked for testing
-=media-libs/mesa-25.1*
-
 # Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
 # Ancient version in tree, upstream discontinued to develop
 # a server for taskwarrior a long time ago
@@ -164,11 +194,6 @@ x11-wm/fvwm
 x11-themes/fvwm-themes
 x11-themes/fvwm-themes-extra
 =x11-themes/fvwm-crystal-3.7.5
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-28)
-# Package destabilisation mask for potential runtime errors and lack of
-# Qt6-compatible plugins. Bug #955031
-~sci-geosciences/qgis-3.38.3
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
 # Dead upstream, stuck on Qt5, blocking x11-libs/qscintilla[qt5] cleanup
@@ -408,6 +433,7 @@ dev-qt/qtquicktimeline:5
 dev-qt/qtsensors:5
 dev-qt/qtserialbus:5
 dev-qt/qtvirtualkeyboard:5
+dev-qt/qtwebchannel:5
 dev-qt/qtwebview:5
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-05)

@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit edo toolchain-funcs python-single-r1 qmake-utils verify-sig xdg
+inherit edo flag-o-matic toolchain-funcs python-single-r1 qmake-utils verify-sig xdg
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -163,6 +163,10 @@ src_prepare() {
 src_compile() {
 	# TODO: get qmake called by setup.py to respect CC and CXX too
 	tc-export CC CXX
+
+	# Workaround for GCC 15 (bug #949509)
+	# Can be dropped w/ >=7.25.0
+	append-cflags -std=gnu17
 
 	# bug 821871
 	local MY_LIBDIR="${ESYSROOT}/usr/$(get_libdir)"

@@ -1,0 +1,155 @@
+From aec589d8abf26aa010c971666386b7edeb760852 Mon Sep 17 00:00:00 2001
+From: Viicos <65306057+Viicos@users.noreply.github.com>
+Date: Sat, 22 Mar 2025 13:33:54 +0100
+Subject: [PATCH] Fix compatibility with latest Python 3.14 release
+
+Adapt documentation and tests related to the `typing.Union`
+changes
+---
+ docs/usage.md                              |  8 +--
+ src/typing_inspection/introspection.py     | 70 ++++++++++++++++++++++
+ tests/typing_objects/test_member_checks.py |  8 ++-
+ 3 files changed, 81 insertions(+), 5 deletions(-)
+
+diff --git a/docs/usage.md b/docs/usage.md
+index c9ece27..7a538c6 100644
+--- a/docs/usage.md
++++ b/docs/usage.md
+@@ -4,18 +4,18 @@ The library is divided into two submodules:
+ 
+ - [`typing_inspection.typing_objects`][]: provides functions to check if a variable is a [`typing`][] object:
+   ```python
+-  from typing_extensions import Union, get_origin
++  from typing_extensions import Literal, get_origin
+ 
+-  from typing_inspection.typing_objects import is_union
++  from typing_inspection.typing_objects import is_literal
+ 
+-  is_union(get_origin(Union[int, str]))  # True
++  is_literal(get_origin(Literal[1, 2]))  # True
+   ```
+ 
+     !!! note
+         You might be tempted to use a simple identity check:
+ 
+         ```pycon
+-        >>> get_origin(Union[int, str]) is typing.Union
++        >>> get_origin(Literal[1, 2]) is typing.Literal
+         ```
+ 
+         However, [`typing_extensions`][] might provide a different version of the [`typing`][] objects. Instead,
+diff --git a/src/typing_inspection/introspection.py b/src/typing_inspection/introspection.py
+index 43cce1e..4f92527 100644
+--- a/src/typing_inspection/introspection.py
++++ b/src/typing_inspection/introspection.py
+@@ -23,6 +23,40 @@
+     'is_union_origin',
+ )
+ 
++if sys.version_info >= (3, 14):
++
++    def is_union_origin(obj: Any, /) -> bool:
++        """Return whether the provided origin is the union form.
++
++        ```pycon
++        >>> is_union_origin(typing.Union)
++        True
++        >>> is_union_origin(get_origin(int | str))
++        True
++        >>> is_union_origin(types.UnionType)
++        True
++        ```
++
++        !!! note
++            Starting in Python 3.14, the [`typing.Union`][] special form [was changed](https://github.com/python/cpython/pull/105511)
++            to be an alias to [`types.UnionType`][]. As such, it is recommended to not use this function
++            anymore (provided that you only support Python 3.14 or greater), and instead perform
++            the check directly:
++
++            ```python
++            import types
++            from typing import Union, get_origin
++
++            typ = Union[int, str]
++            origin = get_origin(typ)
++            if origin is types.UnionType:
++                ...
++            ```
++        """
++        return obj is types.UnionType
++        return typing_objects.is_union(obj) or obj is types.UnionType
++
++
+ if sys.version_info >= (3, 10):
+ 
+     def is_union_origin(obj: Any, /) -> bool:
+@@ -33,7 +67,25 @@ def is_union_origin(obj: Any, /) -> bool:
+         True
+         >>> is_union_origin(get_origin(int | str))
+         True
++        >>> is_union_origin(types.UnionType)
++        True
+         ```
++
++        !!! note
++            Starting in Python 3.14, the [`typing.Union`][] special form [was changed](https://github.com/python/cpython/pull/105511)
++            to be an alias to [`types.UnionType`][]. As such, it is recommended to not use this function
++            anymore (provided that you only support Python 3.14 or greater), and instead perform
++            the check directly:
++
++            ```python
++            import types
++            from typing import Union, get_origin
++
++            typ = Union[int, str]
++            origin = get_origin(typ)
++            if origin is types.UnionType:
++                ...
++            ```
+         """
+         return typing_objects.is_union(obj) or obj is types.UnionType
+ 
+@@ -47,7 +99,25 @@ def is_union_origin(obj: Any, /) -> bool:
+         True
+         >>> is_union_origin(get_origin(int | str))
+         True
++        >>> is_union_origin(types.UnionType)
++        True
+         ```
++
++        !!! note
++            Starting in Python 3.14, the [`typing.Union`][] special form [was changed](https://github.com/python/cpython/pull/105511)
++            to be an alias to [`types.UnionType`][]. As such, it is recommended to not use this function
++            anymore (provided that you only support Python 3.14 or greater), and instead perform
++            the check directly:
++
++            ```python
++            import types
++            from typing import Union, get_origin
++
++            typ = Union[int, str]
++            origin = get_origin(typ)
++            if origin is types.UnionType:
++                ...
++            ```
+         """
+         return typing_objects.is_union(obj)
+ 
+diff --git a/tests/typing_objects/test_member_checks.py b/tests/typing_objects/test_member_checks.py
+index 86d9761..2cc5df0 100644
+--- a/tests/typing_objects/test_member_checks.py
++++ b/tests/typing_objects/test_member_checks.py
+@@ -189,6 +189,12 @@ def test_is_deprecated(deprecated: deprecated) -> None:
+ # Misc. tests:
+ 
+ 
+-@pytest.mark.skipif(sys.version_info < (3, 10), reason='`types.UnionType` is only available in Python 3.10.')
++@pytest.mark.skipif(
++    sys.version_info < (3, 10) or sys.version_info >= (3, 14),
++    reason=(
++        '`types.UnionType` is only available in Python 3.10. '
++        'In Python 3.14, `typing.Union` is an alias for `types.UnionType`.'
++    ),
++)
+ def test_is_union_does_not_match_uniontype() -> None:
+     assert not typing_objects.is_union(types.UnionType)

@@ -1,6 +1,10 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrey Grozin <grozin@gentoo.org> (2025-05-15)
+# use ecl as the default lisp for maxima
+sci-mathematics/maxima ecl
+
 # James Le Cuirot <chewi@gentoo.org> (2023-12-16)
 # Apply additional FFmpeg patches for efficient playback on some SoCs.
 media-tv/kodi soc

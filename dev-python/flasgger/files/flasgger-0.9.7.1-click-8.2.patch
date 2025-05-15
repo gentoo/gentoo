@@ -1,0 +1,36 @@
+https://github.com/flasgger/flasgger/pull/633
+
+From 08591b60e988c0002fcf1b1e9f98b78e041d2732 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Tue, 4 Mar 2025 10:13:55 +0000
+Subject: [PATCH] Fix tests with Click 8.2
+
+https://github.com/pallets/click/pull/2523 introduced changes to
+`click.testing` that broke a few unit tests in Flasgger:
+`mix_stderr=False` is now effectively the default and can no longer be
+specified explicitly.  Although this Click version hasn't been fully
+released yet, this adjusts Flasgger to work with both old and new
+versions.
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,7 +1,9 @@
++import inspect
+ import json
+ import random
+ 
+ import pytest
++from click.testing import CliRunner
+ from flasgger import Swagger
+ from flasgger.utils import get_examples
+ 
+@@ -99,4 +101,8 @@ def app():
+ 
+ @pytest.fixture(scope="function")
+ def cli_runner(app):
+-    yield app.test_cli_runner(mix_stderr=False)
++    kwargs = {}
++    if "mix_stderr" in inspect.signature(CliRunner).parameters:
++        # click < 8.2
++        kwargs["mix_stderr"] = False
++    yield app.test_cli_runner(**kwargs)
+

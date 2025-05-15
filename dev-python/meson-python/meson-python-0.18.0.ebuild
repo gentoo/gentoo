@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
@@ -26,9 +26,6 @@ RDEPEND="
 	>=dev-python/pyproject-metadata-0.7.1[${PYTHON_USEDEP}]
 	>=dev-build/meson-0.63.0
 	!kernel_Darwin? ( dev-util/patchelf )
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.0.0[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	${RDEPEND}

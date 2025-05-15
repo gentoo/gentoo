@@ -55,6 +55,11 @@ src_prepare() {
 		${PN}.pc.in \
 		> python/${PN}.pc \
 		|| die
+	sed -i \
+		-e '/cmake_minimum_required/s:3.1:3.10:' \
+		CMakeLists.txt \
+		|| die
+
 }
 
 src_configure() {

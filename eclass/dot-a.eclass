@@ -84,6 +84,8 @@ strip-lto-bytecode() {
 			# so we expect to be called on *something*, but nothing was explicitly
 			# passed. Try scanning ${ED} automatically.
 			set -- "${ED}"
+		else
+			return
 		fi
 	fi
 

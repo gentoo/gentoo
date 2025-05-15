@@ -30,6 +30,9 @@ all_ruby_prepare() {
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/covered/Id' config/sus.rb || die
 
+	sed -e "s:/tmp/state:${TMP}/state:" \
+		-i test/localhost/state.rb || die
+
 	# Avoid unpackaged sus-fixtures-async-http which has a huge dependency tree.
 	rm -f test/localhost/protocol.rb || die
 }

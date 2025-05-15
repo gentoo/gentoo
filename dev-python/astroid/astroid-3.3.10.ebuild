@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -77,17 +77,15 @@ python_test() {
 	fi
 
 	case ${EPYTHON} in
-		pypy3)
+		python3.14)
 			EPYTEST_DESELECT+=(
-				tests/test_transforms.py::TestTransforms::test_transform_aborted_if_recursion_limited
-			)
-			;;
-		python3.13)
-			EPYTEST_DESELECT+=(
-				# changes in py3.13.0b4
-				# https://github.com/pylint-dev/astroid/issues/2478
-				tests/test_nodes.py::AsStringTest::test_f_strings
-				tests/test_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_string
+				tests/brain/test_brain.py::CollectionsBrain::test_collections_object_subscriptable_3
+				tests/brain/test_brain.py::TypingBrain::test_has_dunder_args
+				tests/brain/test_brain.py::TypingBrain::test_typing_object_notsubscriptable_3
+				tests/brain/test_brain.py::TypingBrain::test_typing_types
+				tests/brain/test_pathlib.py::test_inference_parents
+				tests/brain/test_pathlib.py::test_inference_parents_subscript_index
+				tests/test_inference.py::InferenceTest::test_binary_op_or_union_type
 			)
 			;;
 	esac

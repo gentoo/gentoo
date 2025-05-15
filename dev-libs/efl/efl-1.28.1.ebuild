@@ -6,7 +6,7 @@ EAPI=8
 LUA_REQ_USE="deprecated(+)"
 LUA_COMPAT=( lua5-{1,2} luajit )
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic lua-single meson python-any-r1 xdg
 

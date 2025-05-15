@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
@@ -27,11 +27,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.10)
-"
 BDEPEND="
 	test? (
 		dev-python/build[${PYTHON_USEDEP}]

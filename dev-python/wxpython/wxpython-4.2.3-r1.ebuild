@@ -35,9 +35,6 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	$(python_gen_cond_dep '
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	app-text/doxygen

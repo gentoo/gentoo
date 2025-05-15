@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 optfeature
 
@@ -71,6 +71,12 @@ python_test() {
 			# TODO
 			EPYTEST_DESELECT+=(
 				tests/middleware/test_logging.py::test_running_log_using_fd
+			)
+			;;
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# TODO
+				tests/test_auto_detection.py::test_loop_auto
 			)
 			;;
 	esac

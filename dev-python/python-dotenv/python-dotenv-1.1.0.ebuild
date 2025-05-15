@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -28,6 +28,20 @@ BDEPEND="
 DOCS=( CHANGELOG.md README.md )
 
 distutils_enable_tests pytest
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# test issue with click-8.2.0
+		# https://github.com/theskumar/python-dotenv/issues/560
+		tests/test_cli.py::test_get_non_existent_file
+		tests/test_cli.py::test_get_not_a_file
+		tests/test_cli.py::test_list_non_existent_file
+		tests/test_cli.py::test_list_not_a_file
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
 
 python_install() {
 	distutils-r1_python_install

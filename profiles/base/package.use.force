@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# Force both "old" KWallet backend (now ksecretd service via IUSE keyring)
+# and the legacy KWalletAPI (via IUSE legacy-kwallet) until a (stable)
+# migration path with instructions was laid out. See also:
+# https://invent.kde.org/plasma/plasma-desktop/-/issues/138
+# https://invent.kde.org/frameworks/kwallet/-/merge_requests/97
+# https://invent.kde.org/frameworks/kwallet/-/blob/master/README.md
+# https://notmart.org/blog/2025/04/towards-a-transition-from-kwallet-to-secret-service/
+kde-frameworks/kwallet-runtime keyring legacy-kwallet
+
 # Sam James <sam@gentoo.org> (2025-04-22)
 # qemu[X] still has automagic on some parts of gtk[X]. Workaround that
 # for now for bug #954152.

@@ -1,11 +1,11 @@
 https://github.com/mixxxdj/mixxx/pull/14574
-From 1f78615d0079c8949cd68dea5a28bdf69aed2bd3 Mon Sep 17 00:00:00 2001
+From 9b64781b833fbb13dbcfadf5a936820c2b880f24 Mon Sep 17 00:00:00 2001
 From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
 Date: Mon, 31 Mar 2025 13:33:13 +0000
 Subject: [PATCH] X11-less - Use FindWrapOpenGL
 
 Use FindWrapOpenGL.cmake. It allows X11-less system.
-Set link_target to OpenGL::OpenGL, GLVND-basede. If not found, use
+Set link_target to OpenGL::OpenGL, GLVND-based. If not found, use
 OpenGL:GL.
 
 Furthermore, adding a NOQX11 definition so that the screensaver that
@@ -18,7 +18,7 @@ Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
  2 files changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b7a48247f97..91b83a5cd35 100644
+index b7a48247f97a..81a870534793 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -3187,8 +3187,8 @@ else()
@@ -37,7 +37,7 @@ index b7a48247f97..91b83a5cd35 100644
    else()
 -    target_link_libraries(mixxx-lib PRIVATE OpenGL::GL)
 +    find_package(WrapOpenGL REQUIRED)
-+    if(OpenGL::OpenGL)
++    if(OPENGL_opengl_LIBRARY)
 +      target_link_libraries(mixxx-lib PRIVATE OpenGL::OpenGL)
 +    else()
 +      target_link_libraries(mixxx-lib PRIVATE OpenGL::GL)
@@ -55,7 +55,7 @@ index b7a48247f97..91b83a5cd35 100644
    find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus REQUIRED)
    target_link_libraries(mixxx-lib PUBLIC Qt${QT_VERSION_MAJOR}::DBus)
 diff --git a/src/util/screensaver.cpp b/src/util/screensaver.cpp
-index 9eae4a1b4cd..68f70518429 100644
+index 9eae4a1b4cd0..68f705184296 100644
 --- a/src/util/screensaver.cpp
 +++ b/src/util/screensaver.cpp
 @@ -36,7 +36,8 @@ With the help of the following source codes:

@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/829993
+--- a/cfg-update
++++ b/cfg-update
+@@ -995,11 +995,11 @@
+         if ($opt_d >= 1) { print "$tab"."  grep \"$file1_without_host \" $host_path$index_file $debug | cut -d\" \" -f2 $debug\n"; }
+         local $ENV{LC_ALL}="C";
+         chomp ($md5sum_index = `grep "$file1_without_host " "$host_path$index_file" $debug | cut -d" " -f2 $debug`);
+         if ($opt_d >= 1) { print "$tab"."  MD5 checksum in the checksum-index  : $md5sum_index\n"; }
+         if ($md5sum_index =~ /.+/) {
+-            if ($md5sum_index !~ $md5sum_file) {
++            if (length($md5sum_file) && $md5sum_index !~ $md5sum_file) {
+                 $state = $state1; $vstate = $vstate1;                               #  1 = MF = Modified File     - checksum differs from index
+                 if (-B "$file1") { $state = $state2; $vstate = $vstate2; }          #  2 = MB = Modified Binary   - you probably replaced the binary file so replace not allowed
+             } else {
+                 $state = $state3; $vstate = $vstate3;                               #  3 = UF = Unmodified File   - checksum matches with index
+                 if (-B "$file1") { $state = $state4; $vstate = $vstate4; }          #  4 = UB = Unmodified Binary - unmodified binary file so replace always allowed

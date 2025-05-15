@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=""
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit bash-completion-r1 cargo desktop optfeature python-any-r1
 

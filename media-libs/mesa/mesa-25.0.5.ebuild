@@ -3,10 +3,10 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {15..19} )
+LLVM_COMPAT=( {15..20} )
 LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain
 
@@ -36,7 +36,7 @@ else
 	SRC_URI="
 		https://archive.mesa3d.org/${MY_P}.tar.xz
 	"
-	KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
 fi
 
 # This should be {CARGO_CRATE_URIS//.crate/.tar.gz} to correspond to the wrap files,
