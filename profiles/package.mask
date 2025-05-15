@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-08-18)
+# Deprecated by upstream, depends on Qt5. Use app-crypt/yubikey-manager
+# instead. Removal on 2025-09-16. Bug #955646
+sys-auth/yubikey-personalization-gui
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
 # Unmaintained in Gentoo for a long time, resulting in a very outdated
 # package. Many bugs, selecting just #803635, #884609, #890762, #958160
