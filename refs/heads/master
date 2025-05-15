@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 0x8883FA56A308A8D7 1747285884 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1747285884-c4989b91adf2c2ada42a7677900dee06f4e97172
+pusher DF84256885283521 1747287816 +0200
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1747287816-b20385ccacd6f53bce31b8ea9019dcc2170bf68e
 
-eaf39548ed13fa70be105fa0f7bf3545c1fbe7f0 7908b6c37a296662381870a1784dcda8a382bcf0 refs/heads/master
+7908b6c37a296662381870a1784dcda8a382bcf0 e17abdf5feebfee14381bbad7b5f1e4deee2b1ee refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEIggVRmJzp0YePtgn2zR/k4ZU+jQFAmgld3wACgkQ2zR/k4ZU
-+jRBJwf+LRGqAKjFeZb9WBGgOfxhK0g8lbXdX9avZtWrUEDZgAxiJfyhYbUh1fqE
-h0ywPBVq20UPDH4w/DRDmEi66CieyBzAQz3khGHq/sk3KCeUKba5TlC9K1j2pH+D
-1Pqvfiytf1T79DW1lvUmhtNwdNOXtYW9C69inLhM0QVW/z9e4ljQuCxsuOoltnHe
-dntfBV6rFXtYI7AUS1QVX9eZX2c+4cS1ul8z56ki05Bgpt1FLaPpos/jTOxL4yyk
-RYSFLcmp16ScyYVVqV/YYNeruuJXTnU+uKPAbTUCqrIheBQjPOn4WtoSU88+tkCj
-vVxJHq0213R8FrlSQNXLnGFKlv4QFg==
-=Ez3J
+iQEzBAABCAAdFiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAmglfwgACgkQY5ra4jKe
+JA5njgf9HUmL9yq+Vkxuw6B/vxFaABxXEEttKn2yglMRakSOR+RJn8+MhT8pnIZy
+/fATmHcBkErzo0InMDG7iyQ4r5/20D5ClhLxnlIDrVbbxpxzSnIAztzgSpd3IXEm
+4q0erqdwUvZ93gdVk4BkVpyrl//2dPCm7/1CdHhIRd1QBlZPJFT1ZldB0EwfIDoJ
+8oU/jaeinnkwC+8fEmepRseMsPe64R4jcM8tPNd2nGSKezTpd4VP59aZ/aaAX/Zx
+v3U+++zynDj9NlrdhFzcFaIDOZOW/8hofHSY/UBpUbBUxI0186HXoM94DhbRFzc2
+9FVNo/mU/3XnLjCGQwFvnv+r2ByEDw==
+=Pu1B
 -----END PGP SIGNATURE-----
