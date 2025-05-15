@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
-HOMEPAGE="http://www.wesnoth.org
+HOMEPAGE="https://www.wesnoth.org
 	https://github.com/wesnoth/wesnoth"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 
@@ -16,13 +16,14 @@ SLOT="0"
 if [[ $(( $(ver_cut 2) % 2 )) == 0 ]] ; then
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
-IUSE="dbus dedicated doc nls server"
+IUSE="dbus dedicated doc nls server test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/wesnoth
 	acct-user/wesnoth
 	dev-libs/boost:=[bzip2,context,icu,nls]
-	>=media-libs/libsdl2-2.0.18:0[joystick,video,X]
+	>=media-libs/libsdl2-2.0.10:0[joystick,video,X]
 	!dedicated? (
 		dev-libs/glib:2
 		dev-libs/openssl:0=
@@ -42,6 +43,11 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.18.3-gcc15.patch
+	"${FILESDIR}"/${PN}-1.18.4-boost-1.88.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
@@ -88,7 +94,8 @@ src_configure() {
 		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_NOTIFICATIONS="$(usex dbus)"
 		-DENABLE_STRICT_COMPILATION="OFF"
-		)
+		-DENABLE_TESTS="$(usex test)"
+	)
 	cmake_src_configure
 }
 

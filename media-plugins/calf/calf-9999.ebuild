@@ -22,10 +22,6 @@ IUSE="cpu_flags_x86_sse experimental gtk jack lash lv2"
 
 REQUIRED_USE="jack? ( gtk )"
 
-PATCHES=(
-	"${FILESDIR}/calf-0.90.6-docdir.patch"
-)
-
 BDEPEND="
 	virtual/pkgconfig
 "
@@ -54,7 +50,6 @@ src_configure() {
 	[[ $(tc-get-c-rtlib) = "compiler-rt" ]] && append-cxxflags "-fno-fast-math"
 
 	local mycmakeargs=(
-		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}/
 		-DWANT_GUI=$(usex gtk)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_LASH=$(usex lash)
