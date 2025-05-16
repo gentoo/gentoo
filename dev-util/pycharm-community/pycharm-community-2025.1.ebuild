@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop readme.gentoo-r1 wrapper xdg-utils
+inherit desktop readme.gentoo-r1 toolchain-funcs wrapper xdg
 
 DESCRIPTION="Intelligent Python IDE with unique code assistance and analysis"
 
@@ -24,20 +24,28 @@ SRC_URI="
 	)
 "
 
-if [[ "${PN}" == *-professional ]]; then
+if [[ ${PN} == *-professional ]]; then
 	S="${WORKDIR}/${PN/%-professional/}-${PV}"
+	LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual )
+	Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CC-BY-3.0 CC-BY-4.0 CPL-1.0 CDDL CDDL-1.1 EPL-1.0 EPL-2.0
+	GPL-2 GPL-2-with-classpath-exception ISC JDOM LGPL-2.1 LGPL-3 MIT MPL-1.1 MPL-2.0 OFL-1.1
+	PYTHON Unicode-DFS-2016 Unlicense UPL-1.0 ZLIB"
+else
+	LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBrains-individual )
+	Apache-2.0 BSD BSD-2 CC0-1.0 CC-BY-2.5 CC-BY-3.0 CPL-1.0 CDDL-1.1 EPL-1.0 GPL-2
+	GPL-2-with-classpath-exception ISC JDOM JSON LGPL-2+ LGPL-2.1 LGPL-3 MIT MPL-1.1 MPL-2.0
+	OFL-1.1 UPL-1.0 ZLIB"
 fi
 
-LICENSE="Apache-2.0 BSD CDDL MIT-with-advertising"
-SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+SLOT="0/2025"
+KEYWORDS="-* ~amd64 ~arm64 ~x86"
 IUSE="+bundled-jdk"
 
-if [[ "${PN}" == *-professional ]]; then
+if [[ ${PN} == *-professional ]]; then
 	IUSE+=" +bundled-xvfb"
 fi
 
-BDEPEND="
+BDEPEND="dev-util/debugedit
 	dev-util/patchelf
 "
 
@@ -47,7 +55,7 @@ BDEPEND="
 #  So the dependencies are actually needed.
 RDEPEND="
 	!bundled-jdk? (
-		>=virtual/jre-1.8
+		>=virtual/jre-17:*
 	)
 	bundled-jdk? (
 		app-accessibility/at-spi2-core:2
@@ -81,10 +89,11 @@ RDEPEND="
 	)
 "
 
-if [[ "${PN}" == *-professional ]]; then
+if [[ ${PN} == *-professional ]]; then
 RDEPEND+="
 	bundled-xvfb? (
 		dev-libs/libpcre2
+		sys-libs/pam
 		sys-process/audit
 	)
 	!bundled-xvfb? (
@@ -93,15 +102,13 @@ RDEPEND+="
 "
 fi
 
-RESTRICT="test"
-
 QA_PREBUILT="opt/${PN}/*"
 
 src_prepare() {
+	tc-export OBJCOPY
 	default
 
-	rm -v  "${S}"/help/ReferenceCardForMac.pdf || die
-
+	rm -v "${S}"/help/ReferenceCardForMac.pdf || die
 	rm -v "${S}"/plugins/python-ce/helpers/pydev/_pydevd_{bundle,frame_eval}/*{darwin,win32}* || die
 
 	if ! use amd64; then
@@ -128,6 +135,38 @@ src_prepare() {
 		-e "\$a#-----------------------------------------------------------------------" \
 		-e "\$aide.no.platform.update=Gentoo" bin/idea.properties
 
+	# excepting files that should be kept for remote plugins
+	# but removing the ones that are not needed for the current architecture
+	if use amd64; then
+		local skip_remote_files=(
+			"plugins/platform-ijent-impl/ijent-aarch64-unknown-linux-musl-release"
+			"plugins/clion-radler/DotFiles/linux-musl-arm64/jb_zip_unarchiver"
+			"plugins/clion-radler/DotFiles/linux-arm/jb_zip_unarchiver"
+			"plugins/clion-radler/DotFiles/linux-musl-arm/jb_zip_unarchiver"
+			"plugins/gateway-plugin/lib/remote-dev-workers/remote-dev-worker-linux-arm64"
+		)
+	elif use arm64; then
+		local skip_remote_files=(
+			"plugins/platform-ijent-impl/ijent-x86_64-unknown-linux-musl-release"
+			"plugins/clion-radler/DotFiles/linux-musl-x64/jb_zip_unarchiver"
+			"plugins/clion-radler/DotFiles/linux-x86/jb_zip_unarchiver"
+			"plugins/clion-radler/DotFiles/linux-musl-x86/jb_zip_unarchiver"
+			"plugins/gateway-plugin/lib/remote-dev-workers/remote-dev-worker-linux-x64"
+		)
+	fi
+	# removing debug symbols and relocating debug files as per #876295
+	# we're escaping all the files that contain $() in their name
+	# as they should not be executed
+	find . -type f ! -name '*$(*)*' -print0 | while IFS= read -r -d '' file; do
+		for skip in "${skip_remote_files[@]}"; do
+			[[ ${file} == "./${skip}" ]] && continue 2
+		done
+		if file "${file}" | grep -qE "ELF (32|64)-bit"; then
+			${OBJCOPY} --remove-section .note.gnu.build-id "${file}" || die
+			debugedit -b "${EPREFIX}/opt/${PN}" -d "/usr/lib/debug" -i "${file}" || die
+		fi
+	done
+
 	if use bundled-jdk; then
 		patchelf --set-rpath '$ORIGIN/../lib' "jbr/bin/"* || die
 		patchelf --set-rpath '$ORIGIN' "jbr/lib/"{libjcef.so,jcef_helper} || die
@@ -136,14 +175,14 @@ src_prepare() {
 		rm -r "jbr" || die
 	fi
 
-	if [[ "${PN}" == *-professional ]]; then
+	if [[ ${PN} == *-professional ]]; then
 		if use bundled-xvfb; then
 			patchelf --set-rpath '$ORIGIN/../lib' "${S}"/plugins/remote-dev-server/selfcontained/bin/{Xvfb,xkbcomp} || die
 			patchelf --set-rpath '$ORIGIN' "${S}"/plugins/remote-dev-server/selfcontained/lib/lib*.so* || die
 		else
 			rm -vr "${S}"/plugins/remote-dev-server/selfcontained || die
 			sed '/export REMOTE_DEV_SERVER_IS_NATIVE_LAUNCHER/a export REMOTE_DEV_SERVER_USE_SELF_CONTAINED_LIBS=1' \
-				-i bin/remote-dev-server.sh || die
+			  -i bin/remote-dev-server.sh || die
 		fi
 	fi
 }
@@ -170,12 +209,15 @@ src_install() {
 		fperms 755 "${DIR}"/"${JRE_DIR}"/lib/{cef_server,chrome-sandbox,jcef_helper,jexec,jspawnhelper}
 	fi
 
-	if [[ "${PN}" == *-professional ]]; then
+	if [[ ${PN} == *-professional ]]; then
 		if use bundled-xvfb; then
 			fperms 755 "${DIR}"/plugins/remote-dev-server/selfcontained/bin/{Xvfb,xkbcomp}
 		fi
 		fperms 755 "${DIR}" "${DIR}"/bin/remote-dev-server{,.sh}
 	fi
+
+	# we have to strip files that are not related to the current architecture
+	dostrip -x "${skip_remote_files[@]/#//opt/${PN}/}"
 
 	make_wrapper "${PN}" "${DIR}/bin/pycharm"
 	newicon "bin/${PN/%-*/}.png" "${PN}.png"
@@ -188,12 +230,4 @@ src_install() {
 	cat > "${ED}/usr/lib/sysctl.d/30-${PN}-inotify-watches.conf" <<-EOF || die
 		fs.inotify.max_user_watches = 524288
 	EOF
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
