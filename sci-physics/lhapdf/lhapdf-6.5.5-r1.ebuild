@@ -52,7 +52,7 @@ pkg_setup() {
 }
 
 src_configure() {
-	local -x CONFIG_SHELL="${EPREFIX}/bin/bash"
+	local -x CONFIG_SHELL="${BROOT}/bin/bash"
 	econf \
 		--disable-static \
 		--with-yaml-cpp="${EPREFIX}/usr" \
