@@ -70,6 +70,7 @@ src_configure() {
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
+		-DGFXRECON_ENABLE_OPENXR=OFF
 	)
 	cmake_src_configure
 }
