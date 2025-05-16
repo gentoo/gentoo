@@ -24,7 +24,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~mips ~ppc ~riscv ~x86"
 IUSE="test-rust"
 
 # see src/pip/_vendor/vendor.txt
