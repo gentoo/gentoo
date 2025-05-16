@@ -20,37 +20,37 @@ elif [[ ${PV} == *beta* ]]; then
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/rust-src-beta.tar.xz -> rust-src-${PV}.tar.xz )
 	"
 else
+	RUST_TOOLCHAIN_BASEURL=https://static.rust-lang.org/dist/rust-
 	# curl -Ls static.rust-lang.org/dist/channel-rust-${PV}.toml | grep "xz_url.*rust-src"
 	SRC_URI="$(rust_all_arch_uris "${PV}")
-		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-01-30/rust-src-${PV}.tar.xz )
+		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/rust-}/2025-05-15/rust-src-${PV}.tar.xz )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
-GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PVR}" # omit trailing slash
-
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
 
-if [[ ${PV} != *9999* && ${PV} != *beta* ]] ; then
+if [[ ${PV} != *9999* && ${PV} != *beta* ]] && false; then
+	GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PV}" # omit trailing slash
+	MY_P=rust-${PV}
 	# Keep this separate to allow easy commenting out if not yet built
-	SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-sparc64-unknown-linux-gnu.tar.xz ) "
+	SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/${MY_P}-sparc64-unknown-linux-gnu.tar.xz ) "
 	SRC_URI+=" mips? (
 		abi_mips_o32? (
-			big-endian?  ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-mips-unknown-linux-gnu.tar.xz )
-			!big-endian? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-mipsel-unknown-linux-gnu.tar.xz )
+			big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-mips-unknown-linux-gnu.tar.xz )
+			!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-mipsel-unknown-linux-gnu.tar.xz )
 		)
 		abi_mips_n64? (
-			big-endian?  ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-mips64-unknown-linux-gnuabi64.tar.xz )
-			!big-endian? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-mips64el-unknown-linux-gnuabi64.tar.xz )
+			big-endian?  ( ${GENTOO_BIN_BASEURI}/${MY_P}-mips64-unknown-linux-gnuabi64.tar.xz )
+			!big-endian? ( ${GENTOO_BIN_BASEURI}/${MY_P}-mips64el-unknown-linux-gnuabi64.tar.xz )
 		)
 	)"
 	SRC_URI+=" riscv? (
-		elibc_musl? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-riscv64gc-unknown-linux-musl.tar.xz )
+		elibc_musl? ( ${GENTOO_BIN_BASEURI}/${MY_P}-riscv64gc-unknown-linux-musl.tar.xz )
 	)"
-	SRC_URI+=" ppc64? ( elibc_musl? (
-		big-endian?  ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-powerpc64-unknown-linux-musl.tar.xz )
-		!big-endian? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-powerpc64le-unknown-linux-musl.tar.xz )
+	SRC_URI+=" ppc64? ( big-endian? (
+		elibc_musl? ( ${GENTOO_BIN_BASEURI}/${MY_P}-powerpc64-unknown-linux-musl.tar.xz )
 	) )"
 fi
 
@@ -165,13 +165,15 @@ patchelf_for_bin() {
 
 rust_native_abi_install() {
 	pushd "${S}" >/dev/null || die
-	local analysis="$(grep 'analysis' ./components || die "analysis not found in components")"
 	local std="$(grep 'std' ./components || die "std not found in components")"
 	local components=( "rustc" "cargo" "${std}" )
 	use doc && components+=( "rust-docs" )
 	use clippy && components+=( "clippy-preview" )
 	use rustfmt && components+=( "rustfmt-preview" )
-	use rust-analyzer && components+=( "rust-analyzer-preview" "${analysis}" )
+	if use rust-analyzer; then
+		local analysis="$(grep 'analysis' ./components || die "analysis not found in components")"
+		components+=( "rust-analyzer-preview" "${analysis}" )
+	fi
 	# Rust component 'rust-src' is extracted from separate archive
 	if use rust-src; then
 		einfo "Combining rust and rust-src installers"
