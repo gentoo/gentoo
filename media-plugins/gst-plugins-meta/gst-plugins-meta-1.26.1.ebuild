@@ -11,7 +11,7 @@ HOMEPAGE="https://gstreamer.freedesktop.org/"
 LICENSE="metapackage"
 SLOT="1.0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="aac a52 alsa cdda dts dv dvb dvd ffmpeg flac http jack lame libass libvisual mp3 modplug mpeg ogg opus oss pulseaudio taglib theora v4l vaapi vcd vorbis vpx wavpack X x264"
+IUSE="aac aom a52 alsa cdda dts dv dvb dvd ffmpeg flac http jack lame libass libde265 libvisual mp3 modplug mpeg ogg openh264 opus oss pulseaudio taglib theora v4l vaapi vcd vorbis vpx wavpack X x264"
 REQUIRED_USE="opus? ( ogg ) theora? ( ogg ) vorbis? ( ogg )"
 
 RDEPEND="
@@ -20,6 +20,7 @@ RDEPEND="
 	>=media-libs/gst-plugins-good-${PV}:1.0[${MULTILIB_USEDEP}]
 	a52? ( >=media-plugins/gst-plugins-a52dec-${PV}:1.0[${MULTILIB_USEDEP}] )
 	aac? ( >=media-plugins/gst-plugins-faad-${PV}:1.0[${MULTILIB_USEDEP}] )
+	aom? ( >=media-plugins/gst-plugins-aom-${PV}:1.0[${MULTILIB_USEDEP}] )
 	cdda? ( || (
 		>=media-plugins/gst-plugins-cdparanoia-${PV}:1.0[${MULTILIB_USEDEP}]
 		>=media-plugins/gst-plugins-cdio-${PV}:1.0[${MULTILIB_USEDEP}] ) )
@@ -40,12 +41,14 @@ RDEPEND="
 	jack? ( >=media-plugins/gst-plugins-jack-${PV}:1.0[${MULTILIB_USEDEP}] )
 	lame? ( >=media-plugins/gst-plugins-lame-${PV}:1.0[${MULTILIB_USEDEP}] )
 	libass? ( >=media-plugins/gst-plugins-assrender-${PV}:1.0[${MULTILIB_USEDEP}] )
+	libde265? ( >=media-plugins/gst-plugins-libde265-${PV}:1.0[${MULTILIB_USEDEP}] )
 	libvisual? ( >=media-plugins/gst-plugins-libvisual-${PV}:1.0[${MULTILIB_USEDEP}] )
 	modplug? ( >=media-plugins/gst-plugins-modplug-${PV}:1.0[${MULTILIB_USEDEP}] )
 	mp3? (
 		>=media-libs/gst-plugins-ugly-${PV}:1.0[${MULTILIB_USEDEP}]
 		>=media-plugins/gst-plugins-mpg123-${PV}:1.0[${MULTILIB_USEDEP}] )
 	mpeg? ( >=media-plugins/gst-plugins-mpeg2dec-${PV}:1.0[${MULTILIB_USEDEP}] )
+	openh264? ( >=media-plugins/gst-plugins-openh264-${PV}:1.0[${MULTILIB_USEDEP}] )
 	opus? ( >=media-plugins/gst-plugins-opus-${PV}:1.0[${MULTILIB_USEDEP}] )
 	oss? ( >=media-plugins/gst-plugins-oss-${PV}:1.0[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-plugins/gst-plugins-pulse-${PV}:1.0[${MULTILIB_USEDEP}] )
