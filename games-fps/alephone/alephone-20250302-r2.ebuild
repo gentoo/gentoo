@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/zziplib:=
 	media-libs/openal
 	media-libs/libpng
-	media-libs/libsdl2
+	media-libs/libsdl2[joystick]
 	media-libs/libsndfile[-minimal]
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-net
