@@ -55,8 +55,6 @@ python_test() {
 	local -x NO_NETWORK=1
 
 	cd "${T}" || die
-	# TODO: remove --fail-if-logs=false after we fix the pypy bug
-	# https://github.com/pypy/pypy/issues/5271
-	"${EPYTHON}" -m tornado.test.runtests --verbose --fail-if-logs=false ||
+	"${EPYTHON}" -m tornado.test.runtests --verbose ||
 		die "tests failed under ${EPYTHON}"
 }
