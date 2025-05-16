@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -40,6 +40,10 @@ python_test() {
 		# removed in numpy 2.0, https://github.com/hamcrest/PyHamcrest/pull/248
 		tests/hamcrest_unit_test/number/iscloseto_test.py::IsNumericTest::test_numpy_numeric_type_complex
 		tests/hamcrest_unit_test/number/iscloseto_test.py::IsNumericTest::test_numpy_numeric_type_float
+	)
+	[[ ${EPYTHON} == python3.14 ]] && EPYTEST_DESELECT+=(
+		# assumes asyncio event loop already exists
+		tests/hamcrest_unit_test/core/future_test.py::FutureExceptionTest
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
