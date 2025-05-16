@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/sol2-3.5.0-luajit-pkgconf.patch
 	"${FILESDIR}"/sol2-3.5.0-catch-depend.patch
 	"${FILESDIR}"/sol2-3.3.0-dont-install-tests.patch
+	"${FILESDIR}"/sol2-3.5.0-iterend.patch
 )
 
 src_configure() {
