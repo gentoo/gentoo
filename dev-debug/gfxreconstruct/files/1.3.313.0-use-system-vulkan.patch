@@ -1,0 +1,38 @@
+From 900940f63432dac21b397150031355c7511032a4 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Thu, 15 May 2025 23:28:26 -0400
+Subject: [PATCH] Use system Vulkan Headers instead of embedded ones.
+
+---
+ cmake/FindVulkanVersion.cmake | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git ./cmake/FindVulkanVersion.cmake ./cmake/FindVulkanVersion.cmake
+index 3821c2c8..f7744813 100644
+--- ./cmake/FindVulkanVersion.cmake
++++ ./cmake/FindVulkanVersion.cmake
+@@ -13,9 +13,7 @@ set(FIND_VULKAN_DIR ${CMAKE_CURRENT_LIST_DIR})
+ find_file (VULKAN_HEADER
+             vulkan_core.h
+             HINTS
+-                external/Vulkan-Headers/include/vulkan
+-		${FIND_VULKAN_DIR}/../external/Vulkan-Headers/include/vulkan
+-		${FIND_VULKAN_DIR}/../../external/Vulkan-Headers/include/vulkan
++	    /usr/include/vulkan/
+ 	    NO_DEFAULT_PATH
+ 	    NO_CMAKE_FIND_ROOT_PATH
+ 	)
+@@ -28,9 +26,7 @@ else()
+     find_file(VULKAN_HEADER
+                 vulkan.h
+                 HINTS
+-                    external/Vulkan-Headers/include/vulkan
+-		    ${FIND_VULKAN_DIR}/../external/Vulkan-Headers/include/vulkan
+-		    ${FIND_VULKAN_DIR}/../../external/Vulkan-Headers/include/vulkan
++	        /usr/include/vulkan/
+ 	        NO_DEFAULT_PATH
+ 	        NO_CMAKE_FIND_ROOT_PATH
+ 	)
+-- 
+2.49.0
+
