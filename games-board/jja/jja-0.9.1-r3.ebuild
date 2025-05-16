@@ -244,7 +244,7 @@ CRATES="
 	zstd@0.13.1
 "
 
-LLVM_COMPAT=( {16..19} )
+LLVM_COMPAT=( {16..20} )
 
 inherit cargo llvm-r1
 
