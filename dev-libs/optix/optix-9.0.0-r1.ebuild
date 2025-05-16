@@ -10,10 +10,12 @@ SRC_URI="
 "
 S="${WORKDIR}/${PN}-dev-${PV}"
 
-LICENSE="NVIDIA-SDK BSD"
+LICENSE="NVIDIA-SDK-v2017.06.13 BSD"
 SLOT="0/$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm64"
-RESTRICT="test"
+# TODO license mentions distribution rights
+# check if it fits in BINARY-REDISTRIBUTABLE
+RESTRICT="bindist mirror test"
 
 src_install() {
 	insinto "/opt/${PN}"
