@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -262,7 +262,6 @@ multilib_src_configure() {
 		--without-winexe
 		$(multilib_native_use_with acl acl-support)
 		$(multilib_native_usex addc '' '--without-ad-dc')
-		$(multilib_native_use_with ads)
 		$(multilib_native_use_enable ceph cephfs)
 		$(multilib_native_use_with cluster cluster-support)
 		$(multilib_native_use_enable cups)
@@ -287,6 +286,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable zeroconf avahi)
 		$(multilib_native_usex test '--enable-selftest' '')
 		$(usev system-mitkrb5 "--with-system-mitkrb5 ${ESYSROOT}/usr $(multilib_native_usex addc --with-experimental-mit-ad-dc '')")
+		$(use_with ads)
 		$(use_with debug lttng)
 		$(use_with ldap)
 		$(use_with profiling-data)
