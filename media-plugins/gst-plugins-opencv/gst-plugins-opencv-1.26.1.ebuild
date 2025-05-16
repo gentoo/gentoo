@@ -8,7 +8,7 @@ inherit gstreamer-meson
 DESCRIPTION="OpenCV elements for GStreamer"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-RDEPEND=">=media-libs/opencv-4.10.0:=[contrib,contribdnn,${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/opencv-4.10.0:=[contrib,contribdnn,features2d,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
