@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,10 @@ DEPEND="
 	test? ( dev-java/junit:4 )
 "
 
-PDEPEND=">=dev-java/javacup-11b_p20160615:0"
+# Restricted to max javacup-11b_p20160615-r1 in order to allow switching
+# the emerge order. The next revision, javacup-11b_p20160615-r2, will not
+# depend on jflex.
+PDEPEND="<=dev-java/javacup-11b_p20160615-r1:0"
 
 JAVA_SRC_DIR="src/main/java"
 

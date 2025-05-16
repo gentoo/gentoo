@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,8 +16,10 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="ant-task"
 
+# Restricted to ~jflex-1.6.1 in order to allow switching the emerge order.
+# javacup-11b_p20160615-r2 will be used by jflex-1.9.1 but not depend on it.
 DEPEND="${CP_DEPEND}
-	>=dev-java/jflex-1.6.1-r3:0
+	~dev-java/jflex-1.6.1:0
 	>=virtual/jdk-1.8:*
 	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )"
 RDEPEND="${CP_DEPEND}

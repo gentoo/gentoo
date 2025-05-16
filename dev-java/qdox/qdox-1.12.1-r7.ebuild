@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,11 +20,15 @@ KEYWORDS="amd64 arm64 ppc64 ~ppc-macos ~x64-macos"
 IUSE="ant-task"
 REQUIRED_USE="test? ( ant-task )"
 
+# The patch 'jflex-1.6.1.patch' which is used by this revision does
+# not allow building with a newer version of jflex.
+# We restict this revision to ~dev-java/jflex-1.6.1 and will add another
+# revision which can build with the newer jflex.
 DEPEND="
 	>=virtual/jdk-1.8:*
 	dev-java/byaccj:0
 	dev-java/jmock:1.0
-	!x86? ( dev-java/jflex:0 )
+	!x86? ( ~dev-java/jflex-1.6.1:0 )
 	ant-task? ( >=dev-java/ant-1.10.14-r3:0 )
 	test? ( dev-java/junit:0 )
 "
