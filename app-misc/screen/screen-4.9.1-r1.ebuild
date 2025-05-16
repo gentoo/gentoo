@@ -34,7 +34,6 @@ PATCHES=(
 	# Don't use utempter even if it is found on the system.
 	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
 	"${FILESDIR}"/${PN}-4.9.1-utmp-exit.patch
-	"${FILESDIR}"/${PN}-4.9.1-add-missing-pty.h-header.patch
 )
 
 src_prepare() {
