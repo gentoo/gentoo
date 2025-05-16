@@ -16,10 +16,10 @@ since gstreamer plugins are all run-time dependencies.
 	<flag name="libvisual">Enable visualization effects via 
 		<pkg>media-libs/libvisual</pkg></flag>
 	<flag name="aom">Enable AV1 decoding/encoding support using
-		<pkg>media-plugins/gst-plugin-aom</pkg></flag>
+		<pkg>media-plugins/gst-plugins-aom</pkg></flag>
 	<flag name="openh264">Enable  H264 support using  
-		<pkg>media-plugins/gst-plugin-openh264</pkg></flag>
+		<pkg>media-plugins/gst-plugins-openh264</pkg></flag>
 	<flag name="libde265">Enable H265 decoding support using  
-		<pkg>media-plugins/gst-plugin-libde265</pkg></flag>
+		<pkg>media-plugins/gst-plugins-libde265</pkg></flag>
 </use>
 </pkgmetadata>
