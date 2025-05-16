@@ -1,0 +1,265 @@
+diff --git a/include/netlink/xfrm/sa.h b/include/netlink/xfrm/sa.h
+index cd5e552d..c39afa26 100644
+--- a/include/netlink/xfrm/sa.h
++++ b/include/netlink/xfrm/sa.h
+@@ -141,6 +141,9 @@ extern int                      xfrmnl_sa_set_coaddr (struct xfrmnl_sa*, struct
+ extern int                      xfrmnl_sa_get_mark (struct xfrmnl_sa*, unsigned int*, unsigned int*);
+ extern int                      xfrmnl_sa_set_mark (struct xfrmnl_sa*, unsigned int, unsigned int);
+ 
++extern int                      xfrmnl_sa_get_if_id (struct xfrmnl_sa*, uint32_t*);
++extern int                      xfrmnl_sa_set_if_id (struct xfrmnl_sa*, uint32_t);
++
+ extern int                      xfrmnl_sa_get_sec_ctx (struct xfrmnl_sa*, unsigned int*, unsigned int*,
+                                                        unsigned int*, unsigned int*, char*);
+ extern int                      xfrmnl_sa_set_sec_ctx (struct xfrmnl_sa*, unsigned int, unsigned int,
+diff --git a/include/netlink/xfrm/sp.h b/include/netlink/xfrm/sp.h
+index 84cbfb26..f53ceace 100644
+--- a/include/netlink/xfrm/sp.h
++++ b/include/netlink/xfrm/sp.h
+@@ -117,6 +117,9 @@ extern struct xfrmnl_user_tmpl* xfrmnl_sp_usertemplate_n(struct xfrmnl_sp*, int)
+ extern int                      xfrmnl_sp_get_mark (struct xfrmnl_sp*, unsigned int*, unsigned int*);
+ extern int                      xfrmnl_sp_set_mark (struct xfrmnl_sp*, unsigned int, unsigned int);
+ 
++extern int                      xfrmnl_sp_get_if_id (struct xfrmnl_sp*, uint32_t*);
++extern int                      xfrmnl_sp_set_if_id (struct xfrmnl_sp*, uint32_t);
++
+ extern char*                    xfrmnl_sp_action2str(int, char *, size_t);
+ extern int                      xfrmnl_sp_str2action(const char *);
+ 
+diff --git a/lib/xfrm/sa.c b/lib/xfrm/sa.c
+index a9256d90..508bdb4d 100644
+--- a/lib/xfrm/sa.c
++++ b/lib/xfrm/sa.c
+@@ -109,6 +109,7 @@ struct xfrmnl_sa {
+ 	uint32_t                        seq;
+ 	uint32_t                        reqid;
+ 	uint16_t                        family;
++	uint32_t                        if_id;
+ 	uint8_t                         mode;        /* XFRM_MODE_xxx */
+ 	uint8_t                         replay_window;
+ 	uint8_t                         flags;
+@@ -157,6 +158,7 @@ struct xfrmnl_sa {
+ #define XFRM_SA_ATTR_REPLAY_STATE   0x2000000
+ #define XFRM_SA_ATTR_EXPIRE         0x4000000
+ #define XFRM_SA_ATTR_OFFLOAD_DEV    0x8000000
++#define XFRM_SA_ATTR_IF_ID          0x10000000
+ 
+ static struct nl_cache_ops  xfrmnl_sa_ops;
+ static struct nl_object_ops xfrm_sa_obj_ops;
+@@ -360,6 +362,7 @@ static uint64_t xfrm_sa_compare(struct nl_object *_a, struct nl_object *_b,
+ 	diff |= _DIFF(XFRM_SA_ATTR_COADDR, nl_addr_cmp(a->coaddr, b->coaddr));
+ 	diff |= _DIFF(XFRM_SA_ATTR_MARK,
+ 		      (a->mark.m != b->mark.m) || (a->mark.v != b->mark.v));
++	diff |= _DIFF(XFRM_SA_ATTR_IF_ID, a->if_id != b->if_id);
+ 	diff |= _DIFF(XFRM_SA_ATTR_SECCTX,
+ 		      ((a->sec_ctx->ctx_doi != b->sec_ctx->ctx_doi) ||
+ 		       (a->sec_ctx->ctx_alg != b->sec_ctx->ctx_alg) ||
+@@ -439,6 +442,7 @@ static const struct trans_tbl sa_attrs[] = {
+ 	__ADD(XFRM_SA_ATTR_REPLAY_STATE, replay_state),
+ 	__ADD(XFRM_SA_ATTR_EXPIRE, expire),
+ 	__ADD(XFRM_SA_ATTR_OFFLOAD_DEV, user_offload),
++	__ADD(XFRM_SA_ATTR_IF_ID, if_id),
+ };
+ 
+ static char* xfrm_sa_attrs2str(int attrs, char *buf, size_t len)
+@@ -622,6 +626,9 @@ static void xfrm_sa_dump_line(struct nl_object *a, struct nl_dump_params *p)
+ 	if (sa->ce_mask & XFRM_SA_ATTR_MARK)
+ 		nl_dump_line(p, "\tMark mask: 0x%x Mark value: 0x%x\n", sa->mark.m, sa->mark.v);
+ 
++	if (sa->ce_mask & XFRM_SA_ATTR_IF_ID)
++		nl_dump_line(p, "\tXFRM interface ID: 0x%x\n", sa->if_id);
++
+ 	if (sa->ce_mask & XFRM_SA_ATTR_SECCTX)
+ 		nl_dump_line(p, "\tDOI: %d Algo: %d Len: %u ctx: %s\n", sa->sec_ctx->ctx_doi,
+ 		             sa->sec_ctx->ctx_alg, sa->sec_ctx->ctx_len, sa->sec_ctx->ctx);
+@@ -763,6 +770,7 @@ static struct nla_policy xfrm_sa_policy[XFRMA_MAX+1] = {
+ 	[XFRMA_MARK]            = { .minlen = sizeof(struct xfrm_mark) },
+ 	[XFRMA_TFCPAD]          = { .type = NLA_U32 },
+ 	[XFRMA_REPLAY_ESN_VAL]  = { .minlen = sizeof(struct xfrm_replay_state_esn) },
++	[XFRMA_IF_ID]           = { .type = NLA_U32 },
+ };
+ 
+ static int xfrm_sa_request_update(struct nl_cache *c, struct nl_sock *h)
+@@ -1006,6 +1014,11 @@ int xfrmnl_sa_parse(struct nlmsghdr *n, struct xfrmnl_sa **result)
+ 		sa->ce_mask |= XFRM_SA_ATTR_OFFLOAD_DEV;
+ 	}
+ 
++	if (tb[XFRMA_IF_ID]) {
++		sa->if_id = nla_get_u32(tb[XFRMA_IF_ID]);
++		sa->ce_mask |= XFRM_SA_ATTR_IF_ID;
++	}
++
+ 	*result = _nl_steal_pointer(&sa);
+ 	return 0;
+ }
+@@ -1365,6 +1378,10 @@ static int build_xfrm_sa_message(struct xfrmnl_sa *tmpl, int cmd, int flags, str
+ 		offload->flags = tmpl->user_offload->flags;
+ 	}
+ 
++	if (tmpl->ce_mask & XFRM_SA_ATTR_IF_ID) {
++		NLA_PUT_U32 (msg, XFRMA_IF_ID, tmpl->if_id);
++	}
++
+ 	*result = msg;
+ 	return 0;
+ 
+@@ -1700,6 +1717,27 @@ int xfrmnl_sa_set_family (struct xfrmnl_sa* sa, unsigned int family)
+ 	return 0;
+ }
+ 
++int xfrmnl_sa_get_if_id (struct xfrmnl_sa* sa, uint32_t* if_id)
++{
++	if (if_id == NULL)
++		return -NLE_INVAL;
++
++	if (!(sa->ce_mask & XFRM_SA_ATTR_IF_ID))
++		return -NLE_NOATTR;
++
++	*if_id = sa->if_id;
++
++	return 0;
++}
++
++int xfrmnl_sa_set_if_id (struct xfrmnl_sa* sa, uint32_t if_id)
++{
++	sa->if_id = if_id;
++	sa->ce_mask |= XFRM_SA_ATTR_IF_ID;
++
++	return 0;
++}
++
+ int xfrmnl_sa_get_mode (struct xfrmnl_sa* sa)
+ {
+ 	if (sa->ce_mask & XFRM_SA_ATTR_MODE)
+diff --git a/lib/xfrm/sp.c b/lib/xfrm/sp.c
+index 814ac484..1cbfafbb 100644
+--- a/lib/xfrm/sp.c
++++ b/lib/xfrm/sp.c
+@@ -80,6 +80,7 @@ struct xfrmnl_sp {
+ 	uint32_t                        nr_user_tmpl;
+ 	struct nl_list_head             usertmpl_list;
+ 	struct xfrmnl_mark              mark;
++	uint32_t                        if_id;
+ };
+ 
+ /** @cond SKIP */
+@@ -96,6 +97,7 @@ struct xfrmnl_sp {
+ #define XFRM_SP_ATTR_SECCTX         0x400
+ #define XFRM_SP_ATTR_TMPL           0x800
+ #define XFRM_SP_ATTR_MARK           0x1000
++#define XFRM_SP_ATTR_IF_ID          0x2000
+ 
+ static struct nl_cache_ops  xfrmnl_sp_ops;
+ static struct nl_object_ops xfrm_sp_obj_ops;
+@@ -206,6 +208,7 @@ static uint64_t xfrm_sp_compare(struct nl_object *_a, struct nl_object *_b,
+ 	diff |= _DIFF(XFRM_SP_ATTR_TMPL, (a->nr_user_tmpl != b->nr_user_tmpl));
+ 	diff |= _DIFF(XFRM_SP_ATTR_MARK,
+ 		      (a->mark.m != b->mark.m) || (a->mark.v != b->mark.v));
++	diff |= _DIFF(XFRM_SP_ATTR_IF_ID, a->if_id != b->if_id);
+ 
+ 	/* Compare the templates */
+ 	nl_list_for_each_entry(tmpl_b, &b->usertmpl_list, utmpl_list)
+@@ -234,6 +237,7 @@ static const struct trans_tbl sp_attrs[] = {
+ 	__ADD(XFRM_SP_ATTR_SECCTX, security_context),
+ 	__ADD(XFRM_SP_ATTR_TMPL, user_template),
+ 	__ADD(XFRM_SP_ATTR_MARK, mark),
++	__ADD(XFRM_SP_ATTR_IF_ID, if_id),
+ };
+ 
+ static char* xfrm_sp_attrs2str(int attrs, char *buf, size_t len)
+@@ -467,6 +471,10 @@ static void xfrm_sp_dump_line(struct nl_object *a, struct nl_dump_params *p)
+ 	if (sp->ce_mask & XFRM_SP_ATTR_MARK)
+ 		nl_dump_line(p, "\tMark mask: 0x%x Mark value: 0x%x\n", sp->mark.m, sp->mark.v);
+ 
++
++	if (sp->ce_mask & XFRM_SP_ATTR_IF_ID)
++		nl_dump_line(p, "\tXFRM interface ID: 0x%x\n", sp->if_id);
++
+ 	nl_dump(p, "\n");
+ }
+ 
+@@ -555,6 +563,7 @@ static struct nla_policy xfrm_sp_policy[XFRMA_MAX+1] = {
+ 	[XFRMA_TMPL]            = { .minlen = sizeof(struct xfrm_user_tmpl) },
+ 	[XFRMA_POLICY_TYPE]     = { .minlen = sizeof(struct xfrm_userpolicy_type)},
+ 	[XFRMA_MARK]            = { .minlen = sizeof(struct xfrm_mark) },
++	[XFRMA_IF_ID]           = { .type = NLA_U32 },
+ };
+ 
+ static int xfrm_sp_request_update(struct nl_cache *c, struct nl_sock *h)
+@@ -695,6 +704,11 @@ int xfrmnl_sp_parse(struct nlmsghdr *n, struct xfrmnl_sp **result)
+ 		sp->ce_mask |= XFRM_SP_ATTR_MARK;
+ 	}
+ 
++	if (tb[XFRMA_IF_ID]) {
++		sp->if_id = nla_get_u32(tb[XFRMA_IF_ID]);
++		sp->ce_mask |= XFRM_SP_ATTR_IF_ID;
++	}
++
+ 	*result = _nl_steal_pointer(&sp);
+ 	return 0;
+ }
+@@ -902,6 +916,10 @@ static int build_xfrm_sp_message(struct xfrmnl_sp *tmpl, int cmd, int flags, str
+ 		NLA_PUT (msg, XFRMA_MARK, sizeof (struct xfrm_mark), &tmpl->mark);
+ 	}
+ 
++	if (tmpl->ce_mask & XFRM_SP_ATTR_IF_ID) {
++		NLA_PUT_U32 (msg, XFRMA_IF_ID, tmpl->if_id);
++	}
++
+ 	*result = msg;
+ 	return 0;
+ 
+@@ -1029,6 +1047,10 @@ static int build_xfrm_sp_delete_message(struct xfrmnl_sp *tmpl, int cmd, int fla
+ 		NLA_PUT (msg, XFRMA_MARK, len, &tmpl->mark);
+ 	}
+ 
++	if (tmpl->ce_mask & XFRM_SP_ATTR_IF_ID) {
++		NLA_PUT_U32 (msg, XFRMA_IF_ID, tmpl->if_id);
++	}
++
+ 	*result = msg;
+ 	return 0;
+ 
+@@ -1408,6 +1430,27 @@ int xfrmnl_sp_set_mark (struct xfrmnl_sp* sp, unsigned int value, unsigned int m
+ 	return 0;
+ }
+ 
++int xfrmnl_sp_get_if_id (struct xfrmnl_sp* sp, uint32_t* if_id)
++{
++	if (if_id == NULL)
++		return -NLE_INVAL;
++
++	if (!(sp->ce_mask & XFRM_SP_ATTR_IF_ID))
++		return -NLE_NOATTR;
++
++	*if_id = sp->if_id;
++
++	return 0;
++}
++
++int xfrmnl_sp_set_if_id (struct xfrmnl_sp* sp, uint32_t if_id)
++{
++	sp->if_id = if_id;
++	sp->ce_mask |= XFRM_SP_ATTR_IF_ID;
++
++	return 0;
++}
++
+ /** @} */
+ 
+ static struct nl_object_ops xfrm_sp_obj_ops = {
+diff --git a/libnl-xfrm-3.sym b/libnl-xfrm-3.sym
+index ed7c7ad3..0667b3e1 100644
+--- a/libnl-xfrm-3.sym
++++ b/libnl-xfrm-3.sym
+@@ -255,3 +255,10 @@ libnl_3_6 {
+ 	xfrmnl_sa_get_user_offload;
+ 	xfrmnl_sa_set_user_offload;
+ } libnl_3;
++
++libnl_3_12 {
++	xfrmnl_sa_get_if_id;
++	xfrmnl_sa_set_if_id;
++	xfrmnl_sp_get_if_id;
++	xfrmnl_sp_set_if_id;
++} libnl_3_6;
