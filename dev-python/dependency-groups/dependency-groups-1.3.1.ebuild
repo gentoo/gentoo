@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~mips ~ppc ~riscv ~x86"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
