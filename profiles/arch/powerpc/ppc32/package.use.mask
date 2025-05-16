@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-05-16)
+# gpio: dev-libs/libgpiod not keyworded here
+# modbus: dev-libs/libmodbus not keyworded here
+# monitor: dev-python/pyqt5 not keyworded here
+sys-power/nut gpio modbus monitor
+
 # Sam James <sam@gentoo.org> (2025-02-21)
 # media-video/rav1e is not yet keyworded here
 media-video/ffmpeg rav1e
