@@ -51,6 +51,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-multilib-syspath.patch
 	"${FILESDIR}"/${PN}-powerpc-darwin.patch
+	"${FILESDIR}"/${PN}-1.11.1-riscv.patch
 )
 
 MULTILIB_CHOST_TOOLS=(
