@@ -292,3 +292,12 @@ src_unpack() {
 	fi
 
 }
+
+src_prepare() {
+	pushd .
+	cd "${WORKDIR}/cargo_home/gentoo/librocksdb-sys-0.11.0+8.1.1/rocksdb"
+	pwd
+	eapply "${FILESDIR}/rocksdb-10.1-fixincludes.patch"
+	popd
+	eapply_user
+}
