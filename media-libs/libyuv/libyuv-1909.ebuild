@@ -15,7 +15,7 @@ else
 	# to diff against upstream (apparently not stable):
 	# https://chromium.googlesource.com/libyuv/libyuv.git/+archive/${commit}.tar.gz
 	SRC_URI="https://github.com/N-R-K/stable-tarball-host/releases/download/0/libyuv-${PV}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~riscv ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~riscv ~x86"
 fi
 
 LICENSE="BSD"
