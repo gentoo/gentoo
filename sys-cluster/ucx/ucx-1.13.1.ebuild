@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_PV=${PV/_/-}
 DESCRIPTION="Unified Communication X"
@@ -45,6 +45,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Can be dropped with ucx-1.19.x (bug #944992)
+	append-cflags -std=gnu17
+
 	BASE_CFLAGS="" econf \
 		--disable-doxygen-doc \
 		--disable-compiler-opt \
