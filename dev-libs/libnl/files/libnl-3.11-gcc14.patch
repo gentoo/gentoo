@@ -1,0 +1,12 @@
+diff --git a/lib/socket.c b/lib/socket.c
+index 4e64cbb3..c6200958 100644
+--- a/lib/socket.c
++++ b/lib/socket.c
+@@ -23,6 +23,7 @@
+ 
+ #include "nl-default.h"
+ 
++#include <time.h>
+ #include <fcntl.h>
+ #include <limits.h>
+ #include <sys/socket.h>

@@ -1,0 +1,13 @@
+diff --git a/libnl-route-3.sym b/libnl-route-3.sym
+index 75883323..17e3fde2 100644
+--- a/libnl-route-3.sym
++++ b/libnl-route-3.sym
+@@ -1364,3 +1364,8 @@ global:
+ 	rtnl_neigh_str2extflag;
+ 	rtnl_neigh_unset_ext_flags;
+ } libnl_3_10;
++
++libnl_3_12 {
++global:
++	rtnl_nh_get_oif;
++} libnl_3_11;
