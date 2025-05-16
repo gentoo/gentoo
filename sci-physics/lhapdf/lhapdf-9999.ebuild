@@ -61,7 +61,7 @@ src_configure() {
 	local -x CONFIG_SHELL="${BROOT}/bin/bash"
 	econf \
 		--disable-static \
-		--with-yaml-cpp="${EPREFIX}/usr" \
+		--with-yaml-cpp="${ESYSROOT}/usr" \
 		$(use_enable python) \
 		$(use_enable doc doxygen)
 }
