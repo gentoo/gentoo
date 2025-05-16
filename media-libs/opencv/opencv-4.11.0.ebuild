@@ -1252,11 +1252,11 @@ multilib_src_test() {
 		local results=()
 
 		local tests
-		readarray -t tests <<< "$(find "${BUILD_DIR}/bin" -name 'opencv_test_*')"
+		readarray -t tests <<< "$(find "${BUILD_DIR}/bin" -name 'opencv_test_*' | sort)"
 
 		for test in "${tests[@]}" ; do
 
-			if [[ ${TEST_CUDA} == "false" && ${test} = *opencv_test_cu* ]] ; then
+			if [[ ${TEST_CUDA} == "false" ]] && [[ ${test} == *opencv_test_cu* || ${test} == *opencv_test_dnn* ]] ; then
 				eqawarn "Skipping test ${test}"
 				continue
 			fi
