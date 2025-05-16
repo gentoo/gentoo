@@ -45,6 +45,7 @@ DOCS=( AUTHORS ChangeLog NEWS README.md RELEASE )
 
 PATCHES=(
 	"${FILESDIR}"/0001-meson-no-lce-configure-checks.patch
+	"${FILESDIR}"/0003-meson-nosoundtouch.patch
 )
 
 src_prepare() {
