@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	<dev-python/ipykernel-7[${PYTHON_USEDEP}]
 	>=dev-python/ipykernel-6.29.3[${PYTHON_USEDEP}]
+	<dev-python/ipython-9[${PYTHON_USEDEP}]
 	>=dev-python/ipython-8.13.0[${PYTHON_USEDEP}]
 	<dev-python/jupyter-client-9[${PYTHON_USEDEP}]
 	>=dev-python/jupyter-client-7.4.9[${PYTHON_USEDEP}]
@@ -51,13 +52,6 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
-
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# unpin ipython, all tests pass
-	sed -i -e '/ipython/s:,<9::' setup.py || die
-}
 
 python_test() {
 	local EPYTEST_DESELECT=(
