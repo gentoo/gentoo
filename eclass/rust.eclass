@@ -248,22 +248,25 @@ _rust_set_globals() {
 	local usedep="${RUST_REQ_USE+[${RUST_REQ_USE}]}"
 
 	# If we're not using LLVM, we can just generate a simple Rust dependency
-	# In time we need to implement trivial dependencies
-	# (>=RUST_MIN_VER) where RUST_MAX_VER isnt't set,
-	# however the previous attempt to do this ran into issues
-	# where `emerge ... --keep-going` ate legacy non-slotted
-	# Rust blockers resutling in the non-slotted version never
-	# being removed and breaking builds. #943206 #943143
 	if [[ -z "${RUST_NEEDS_LLVM}" ]]; then
 		rust_dep=( "|| (" )
-		# depend on each slot between RUST_MIN_VER and RUST_MAX_VER; it's a bit specific but
-		# won't hurt as we only ever add newer Rust slots.
-		for slot in "${_RUST_SLOTS[@]}"; do
+		# We can be more flexible if we generate a simpler, open-ended dependency
+		# when we don't have a max version set.
+		if [[ -z "${RUST_MAX_VER}" ]]; then
 			rust_dep+=(
-				"dev-lang/rust-bin:${slot}${usedep}"
-				"dev-lang/rust:${slot}${usedep}"
+				">=dev-lang/rust-bin-${RUST_MIN_VER}:*${usedep}"
+				">=dev-lang/rust-${RUST_MIN_VER}:*${usedep}"
 			)
-		done
+		else
+			# depend on each slot between RUST_MIN_VER and RUST_MAX_VER; it's a bit specific but
+			# won't hurt as we only ever add newer Rust slots.
+			for slot in "${_RUST_SLOTS[@]}"; do
+				rust_dep+=(
+					"dev-lang/rust-bin:${slot}${usedep}"
+					"dev-lang/rust:${slot}${usedep}"
+				)
+			done
+		fi
 		rust_dep+=( ")" )
 		RUST_DEPEND="${rust_dep[*]}"
 	else
