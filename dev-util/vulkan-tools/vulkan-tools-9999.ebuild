@@ -28,7 +28,6 @@ BDEPEND="${PYTHON_DEPS}
 	cube? ( ~dev-util/glslang-${PV}:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
-	~dev-util/volk-${PV}:=[${MULTILIB_USEDEP}]
 	~media-libs/vulkan-loader-${PV}[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland[${MULTILIB_USEDEP}] )
 	X? (
