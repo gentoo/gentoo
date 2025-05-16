@@ -175,6 +175,7 @@ PATCHES=(
 	"${FILESDIR}"/1.85.0-cross-compile-libz.patch
 	"${FILESDIR}"/1.85.0-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
+	"${FILESDIR}"/1.86.0-znver.patch
 )
 
 clear_vendor_checksums() {
