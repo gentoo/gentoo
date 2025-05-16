@@ -33,6 +33,18 @@ src_prepare() {
 	default
 }
 
+src_configure() {
+	# Remove unused plugins for other platforms
+	local JNA_DIR="${S}/plugins/com.sun.jna_5.16.0.v20241222-1200/com/sun/jna"
+	pushd "${JNA_DIR}" || die
+	for i in *-*; do
+		use amd64 && [[ ${i} == linux-x86-64 ]] && continue
+		use arm64 && [[ ${i} == linux-aarch64 ]] && continue
+		rm -rv "${JNA_DIR}/${i}" || die
+	done
+	popd || die
+}
+
 src_install() {
 	doicon -s 128 "${MY_PN}.png"
 	newicon icon.xpm "${MY_PN}.xpm"
@@ -41,10 +53,7 @@ src_install() {
 	local DOCS=( readme.txt )
 	einstalldocs
 
-	# Remove unused plugins for other platforms
-	rm -rv plugins/com.sun.jna_5.15.0.v20240915-2000/com/sun/jna/{openbsd,dragonflybsd,freebsd,sunos,win32,darwin,aix}-* || die
-
-	rm -f "${MY_PN}-ce.desktop" "${MY_PN}.png" icon.xpm readme.txt || die
+	rm -vf "${MY_PN}-ce.desktop" "${MY_PN}.png" icon.xpm readme.txt || die
 	insinto "/opt/${MY_PN}-ce"
 	doins -r ./*
 	fperms 755 "/opt/${MY_PN}-ce/${MY_PN}"
