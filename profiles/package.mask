@@ -70,12 +70,6 @@ x11-misc/qtfm
 # Removal on 2025-06-12.  Bug #955925.
 dev-util/intel_clc
 
-# Fabian Groffen <grobian@gentoo.org> (2025-05-13)
-# Compilation issues (#955913) and lack of resources/interest to
-# maintain, if you look for a catalog manager check out Jellyfin.
-# Removal on 2025-06-12, unless someone steps up
-media-sound/owntone
-
 # Petr Vaněk <arkamar@gentoo.org> (2025-05-12)
 # A serious performance regression has been found in 10.11.12 and 11.4.6
 # releases, distributions are advised to not publish them, see
