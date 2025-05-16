@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.13.0-cstdint-include.patch
 	"${FILESDIR}"/${PN}-1.13.0-binutils-2.39-ptr-typedef.patch
 	"${FILESDIR}"/${PN}-1.13.0-no-rpm-sandbox.patch
+	"${FILESDIR}"/${PN}-1.13.1-openmp.patch
 )
 
 pkg_pretend() {
