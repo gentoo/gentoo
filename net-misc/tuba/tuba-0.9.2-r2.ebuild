@@ -20,22 +20,28 @@ S=${WORKDIR}/${MY_P}
 LICENSE="GPL-3 CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="gstreamer spell"
 
 # note: some dependencies are optional but if they are found without [vala],
 # they end up breaking the build
 DEPEND="
 	app-crypt/libsecret[introspection,vala]
-	app-text/libspelling[vala]
 	>=dev-libs/glib-2.76.0:2
 	dev-libs/icu:=
 	>=dev-libs/json-glib-1.4.4[introspection]
 	>=dev-libs/libgee-0.8.5:0.8[introspection]
 	dev-libs/libxml2:=
-	>=gui-libs/gtk-4.13.4:4[gstreamer,introspection]
+	>=gui-libs/gtk-4.13.4:4[introspection]
 	>=gui-libs/libadwaita-1.6:1[introspection,vala]
 	>=gui-libs/gtksourceview-5.6.0:5[introspection,vala]
-	media-libs/gstreamer[introspection]
 	net-libs/libsoup:3.0[introspection,vala]
+	gstreamer? (
+		>=gui-libs/gtk-4.13.4:4[gstreamer,introspection]
+		media-libs/gstreamer[introspection]
+	)
+	spell? (
+	app-text/libspelling[vala]
+	)
 "
 RDEPEND="
 	${DEPEND}
@@ -46,12 +52,19 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://github.com/GeopJr/Tuba/pull/1423
+	"${FILESDIR}/${P}-meson-feature.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		# disable calling updaters (see pkg_post*)
 		-Ddistro=true
+		$(meson_feature spell spelling)
 		# not packaged
-		-Dclapper=false
+		-Dclapper=disabled
+		$(meson_feature gstreamer)
 	)
 
 	vala_setup
