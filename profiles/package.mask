@@ -268,11 +268,6 @@ dev-ruby/pathutil
 # Masked for removal on 2025-05-18. Bug #952341
 dev-python/ipaddr
 
-# Hans de Graaff <graaff@gentoo.org> (2025-04-14)
-# Obsolete slot that fails tests, bug 933189. EAPI 7.  Use the newer
-# slot instead. Masked for removal on 2025-05-14.
-dev-ruby/childprocess:2
-
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-02)
 # Masked for testing the new .0 version and leave time for packages
 # to catch up on support if needed. May or may keep masked until 6.9.1
