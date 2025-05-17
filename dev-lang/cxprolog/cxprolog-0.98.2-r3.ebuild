@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEP="
 	readline? ( sys-libs/readline:= )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 "
 
 DEPEND="${COMMON_DEP}
