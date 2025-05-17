@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ RDEPEND="
 		media-libs/libvorbis
 		media-libs/openal
 		media-libs/freealut
-		x11-libs/wxGTK:${WX_GTK_VER}[X]
+		x11-libs/wxGTK:${WX_GTK_VER}=[X]
 		media-libs/freetype:2
 		sci-libs/fftw:3.0=
 	)
