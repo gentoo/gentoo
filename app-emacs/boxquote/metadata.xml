@@ -21,7 +21,7 @@
 </longdescription>
 <stabilize-allarches/>
 <upstream>
-  <bugs-to>https://github.com/davep/boxquote</bugs-to>
-  <remote-id type="github">davep/boxquote</remote-id>
+  <bugs-to>https://github.com/davep/boxquote.el/issues</bugs-to>
+  <remote-id type="github">davep/boxquote.el</remote-id>
 </upstream>
 </pkgmetadata>

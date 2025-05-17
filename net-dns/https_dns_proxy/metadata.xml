@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="github">aarond10/dns-over-https-proxy</remote-id>
+		<remote-id type="github">aarond10/https_dns_proxy</remote-id>
 	</upstream>
 </pkgmetadata>
