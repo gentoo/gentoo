@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ppc ~sparc x86"
 
 RDEPEND="
 	>=dev-python/jinja2-3.1.3[${PYTHON_USEDEP}]
