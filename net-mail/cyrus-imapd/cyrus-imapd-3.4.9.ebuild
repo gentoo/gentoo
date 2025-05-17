@@ -4,7 +4,7 @@
 EAPI=8
 
 # Keep an eye on https://www.cyrusimap.org/imap/developer/compiling.html!
-inherit autotools flag-o-matic pam ssl-cert
+inherit autotools eapi9-ver flag-o-matic pam ssl-cert
 
 DESCRIPTION="The Cyrus IMAP Server"
 HOMEPAGE="https://www.cyrusimap.org/"
@@ -45,10 +45,7 @@ DEPEND="dev-libs/libpcre:3
 		>=net-mail/mailbase-1
 		sys-libs/pam
 	)
-	perl? (
-		dev-lang/perl:=
-		virtual/perl-Term-ReadLine
-	)
+	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
 	ssl? ( >=dev-libs/openssl-1.0.1e:=[-bindist(-)] )
 	sqlite? ( dev-db/sqlite:3 )
@@ -59,12 +56,14 @@ DEPEND="dev-libs/libpcre:3
 	)"
 # all blockers really needed?
 # file collision with app-arch/dump - bug 619584
+# file collision with dev-python/tables - bug 905765
 RDEPEND="${DEPEND}
 	acct-group/mail
 	acct-user/cyrus
 	!mail-mta/courier
 	!net-mail/courier-imap
-	!app-arch/dump"
+	!app-arch/dump
+	!dev-python/tables"
 DEPEND+=" test? ( dev-util/cunit )"
 BDEPEND="app-alternatives/lex
 	virtual/pkgconfig
@@ -119,6 +118,12 @@ src_configure() {
 	# Workaround runtime crash
 	# bug #834573
 	append-flags -fno-toplevel-reorder
+
+	# Uses a lot of function pointers with undeclared function arguments
+	append-cflags -std=gnu17
+
+	# lto-type-mismatch
+	filter-lto
 
 	if use afs ; then
 		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
@@ -247,12 +252,13 @@ pkg_postinst() {
 		fi
 	fi
 
-	einfo "Please see https://www.cyrusimap.org/imap/download/upgrade.html"
-	einfo "for upgrade instructions."
-
-	if use backup ; then
-		einfo "Be aware that the experimental backup service has been deprecated by"
-		einfo "upstream in version 3.10.x and removed in 3.12.x."
-		einfo "You should migrate to other backup solutions"
+	if ver_replacing -lt $(ver_cut 1-2) ; then
+		elog "Please see https://www.cyrusimap.org/$(ver_cut 1-2)/imap/download/upgrade.html"
+		elog "for upgrade instructions."
+		if use backup ; then
+			elog "Be aware that the experimental backup service has been deprecated by"
+			elog "upstream in version 3.10.x and removed in 3.12.x."
+			elog "You should migrate to other backup solutions"
+		fi
 	fi
 }
