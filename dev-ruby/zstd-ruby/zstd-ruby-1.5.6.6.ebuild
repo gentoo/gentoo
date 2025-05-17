@@ -25,7 +25,7 @@ SRC_URI="https://github.com/SpringMT/zstd-ruby/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 all_ruby_prepare() {
 	sed -e 's/git ls-files -z/find * -print0/' \
