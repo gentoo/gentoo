@@ -599,27 +599,8 @@ python_optimize() {
 	[[ ${PYTHON} ]] || _python_export PYTHON
 	[[ -x ${PYTHON} ]] || die "PYTHON (${PYTHON}) is not executable"
 
-	# default to sys.path
-	if [[ ${#} -eq 0 ]]; then
-		local f
-		while IFS= read -r -d '' f; do
-			# 1) accept only absolute paths
-			#    (i.e. skip '', '.' or anything like that)
-			# 2) skip paths which do not exist
-			#    (python2.6 complains about them verbosely)
-
-			if [[ ${f} == /* && -d ${D}${f} ]]; then
-				set -- "${D}${f}" "${@}"
-			fi
-		done < <(
-			"${PYTHON}" - <<-EOF || die
-				import sys
-				print("".join(x + "\0" for x in sys.path))
-			EOF
-		)
-
-		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
-	fi
+	# default to sitedir
+	[[ ${#} -eq 0 ]] && set -- "${D}$(python_get_sitedir)"
 
 	local jobs=$(makeopts_jobs)
 	local d
