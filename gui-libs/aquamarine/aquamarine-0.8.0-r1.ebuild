@@ -17,7 +17,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/$(ver_cut 1-2)"
 
 # Upstream states that the simpleWindow test is broken, see bug 936653
 RESTRICT="test"
