@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ SRC_URI="https://github.com/vslavik/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE=""
 
 # The build system checks for "poppler-glib", which is provided only
 # when app-text/poppler is built with USE=cairo. Moreover the glib ABI
@@ -29,7 +28,7 @@ IUSE=""
 DEPEND="app-text/poppler[cairo]
 	dev-libs/glib
 	x11-libs/cairo
-	x11-libs/wxGTK:${WX_GTK_VER}[X]"
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]"
 RDEPEND="${DEPEND}"
 
 src_configure() {
