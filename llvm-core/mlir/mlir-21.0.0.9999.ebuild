@@ -219,7 +219,6 @@ multilib_src_test() {
 				Dialect/Linalg/vectorize-tensor-extract.mlir
 				Dialect/Math/polynomial-approximation.mlir
 				Dialect/MemRef/expand-strided-metadata.mlir
-				Dialect/MemRef/fold-memref-alias-ops.mlir
 				Dialect/MemRef/mem2reg-statistics.mlir
 				Dialect/Mesh/all-scatter-op-lowering.mlir
 				Dialect/Tensor/fold-tensor-subset-ops.mlir
@@ -229,6 +228,7 @@ multilib_src_test() {
 				Dialect/Vector/vector-deinterleave-lowering-transforms.mlir
 				Dialect/Vector/vector-interleave-lowering-transforms.mlir
 				Dialect/Vector/vector-unroll-options.mlir
+				Dialect/XeGPU/xegpu-unroll-patterns.mlir
 				Pass/pipeline-stats-nested.mlir
 				Pass/pipeline-stats.mlir
 			)
