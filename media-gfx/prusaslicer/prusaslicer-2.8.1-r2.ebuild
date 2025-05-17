@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/prusa3d/prusaslicer.git"
 else
 	SRC_URI="https://github.com/prusa3d/PrusaSlicer/archive/refs/tags/version_${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
 fi
 
@@ -48,21 +48,23 @@ RDEPEND="
 	sci-libs/nlopt
 	sci-libs/opencascade:=
 	sci-mathematics/cgal:=
-	sci-mathematics/z3:=
 	sys-apps/dbus
 	sys-libs/zlib:=
 	virtual/opengl
 	x11-libs/gtk+:3
-	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl,webkit]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,webkit]
 	media-libs/nanosvg:=
 "
 DEPEND="${RDEPEND}
 	media-libs/qhull[static-libs]
-	test? ( =dev-cpp/catch-3.8* )
+	test? ( =dev-cpp/catch-2* )
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
+	"${FILESDIR}/${PN}-2.8.0-missing-includes.patch"
+	"${FILESDIR}/${PN}-2.8.0-wxwidgets-3.2.4.patch"
+	"${FILESDIR}/${PN}-2.8.1-fixed-linking.patch"
 	"${FILESDIR}/${PN}-2.8.1-cgal-6.0.patch"
 	"${FILESDIR}/${PN}-2.8.1-fstream.patch"
 	"${FILESDIR}/${PN}-2.8.1-fix-libsoup-double-linking.patch"
@@ -78,6 +80,9 @@ src_prepare() {
 
 	sed -i -e 's/find_package(OpenCASCADE 7.6.[0-9] REQUIRED)/find_package(OpenCASCADE REQUIRED)/g' \
 		src/occt_wrapper/CMakeLists.txt || die
+
+	# remove broken cmake find file: https://github.com/prusa3d/PrusaSlicer/issues/13608
+	rm cmake/modules/FindEigen3.cmake || die
 
 	cmake_src_prepare
 }
