@@ -42,7 +42,7 @@ RDEPEND="
 	wxwidgets? (
 		ffmpeg? ( media-video/ffmpeg:= )
 		media-libs/openal
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+		x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	)
 "
 DEPEND="
