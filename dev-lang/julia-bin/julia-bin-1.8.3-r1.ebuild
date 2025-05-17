@@ -41,7 +41,7 @@ QA_DT_NEEDED="*"
 src_prepare() {
 	default
 
-	# Workaround for bug #956047. This can be dropped with >1.10.9.
+	# Workaround for bug #956047. This can be dropped with >=1.10.9.
 	edo patchelf --clear-execstack lib/julia/libopenlibm.so*
 }
 
