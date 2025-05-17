@@ -293,7 +293,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 	"${FILESDIR}/${PN}-25.2-cflags.patch"
 
-	# TODO: upstream
+	# git master
 	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
 
 	# add qt6 backend as possible fallback for gtk-based desktop environments:

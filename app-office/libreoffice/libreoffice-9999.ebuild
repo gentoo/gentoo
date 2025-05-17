@@ -284,9 +284,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 	"${FILESDIR}/${PN}-25.2-cflags.patch"
-
-	# TODO: upstream
-	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
 )
 
 _check_reqs() {

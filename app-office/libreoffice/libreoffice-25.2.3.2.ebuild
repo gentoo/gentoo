@@ -310,14 +310,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 	"${FILESDIR}/${PN}-25.2-cflags.patch"
 
-	# TODO: upstream
-	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
-
 	# add qt6 backend as possible fallback for gtk-based desktop environments:
 	# https://bugs.gentoo.org/950170
 	"${FILESDIR}/${PN}-25.2-vcl-backend-fallback.patch"
 
 	# git master:
+	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
 	"${FILESDIR}/${P}-poppler-25.05.patch"
 )
 
