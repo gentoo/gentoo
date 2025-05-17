@@ -1,4 +1,4 @@
-# Copyright 2010-2024 Gentoo Authors
+# Copyright 2010-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Todo: google-breakpad?
@@ -55,9 +55,9 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:0=
 	x11-libs/libX11
 	x11-libs/libXext
-	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
+	editor? ( x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl] )
 	fribidi? ( dev-libs/fribidi )
-	model-viewer? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	model-viewer? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 	videos? ( media-video/vlc )
 "
 DEPEND="${COMMON_DEPEND}"
