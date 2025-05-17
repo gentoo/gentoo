@@ -1,11 +1,11 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 SSL_CERT_MANDATORY=1
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/unrealircd.asc
-inherit autotools ssl-cert systemd verify-sig
+inherit autotools ssl-cert systemd tmpfiles verify-sig
 
 DESCRIPTION="An advanced Internet Relay Chat daemon"
 HOMEPAGE="https://www.unrealircd.org/"
@@ -14,23 +14,33 @@ SRC_URI+=" verify-sig? ( https://www.unrealircd.org/downloads/${P}.tar.gz.asc )"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ppc ~ppc64 x86 ~amd64-linux"
-IUSE="class-nofakelag curl +operoverride operoverride-verify +prefixaq showlistmodes"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux"
+IUSE="class-nofakelag curl geoip +operoverride operoverride-verify"
 
-RDEPEND="acct-group/unrealircd
+RDEPEND="
+	acct-group/unrealircd
 	acct-user/unrealircd
 	>=app-crypt/argon2-20171227-r1:=
 	dev-libs/libpcre2
 	dev-libs/libsodium:=
-	dev-libs/openssl:0=
+	dev-libs/openssl:=
+	dev-libs/jansson:=
 	>=net-dns/c-ares-1.7:=
 	virtual/libcrypt:=
-	curl? ( net-misc/curl[adns] )"
+	curl? ( net-misc/curl[adns] )
+	geoip? ( dev-libs/libmaxminddb )
+"
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	verify-sig? ( sec-keys/openpgp-keys-unrealircd )"
+BDEPEND="
+	virtual/pkgconfig
+	verify-sig? ( sec-keys/openpgp-keys-unrealircd )
+"
 
 DOCS=( doc/{Authors,Donation,RELEASE-NOTES.md,tao.of.irc,technical/,translations.txt} )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.0.4.2-configure-clang16.patch
+)
 
 src_prepare() {
 	# QA check against bundled pkgs
@@ -72,13 +82,15 @@ src_configure() {
 		--with-system-argon2 \
 		--with-system-cares \
 		--with-system-pcre2 \
+		--with-system-sodium \
+		--with-system-jansson \
 		--enable-dynamic-linking \
+		--with-controlfile="${EPREFIX}"/run/${PN}/unrealircd.ctl \
 		--enable-ssl="${EPREFIX}"/usr \
 		$(use_enable curl libcurl "${EPREFIX}"/usr) \
-		$(use_enable prefixaq) \
-		$(use_with showlistmodes) \
 		$(use_with !operoverride no-operoverride) \
-		$(use_with operoverride-verify)
+		$(use_with operoverride-verify) \
+		$(use_enable geoip libmaxminddb)
 }
 
 src_install() {
@@ -86,6 +98,9 @@ src_install() {
 	keepdir /var/lib/${PN}/tmp
 
 	newbin src/ircd ${PN}
+	dobin src/unrealircdctl
+
+	newtmpfiles "${FILESDIR}"/unrealircd.tmpfiles unrealircd.conf
 
 	(
 		cd src/modules || die
@@ -108,8 +123,8 @@ src_install() {
 
 	einstalldocs
 
-	newinitd "${FILESDIR}"/${PN}.initd-r3 ${PN}
-	newconfd "${FILESDIR}"/${PN}.confd-r4 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r4 ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd-r5 ${PN}
 
 	# config should be read-only
 	fperms -R 0640 /etc/${PN}
@@ -129,6 +144,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process unrealircd.conf
+
 	# Move docert call from src_install() to install_cert in pkg_postinst for
 	# bug #201682
 	if [[ ! -f "${EROOT}"/etc/${PN}/tls/server.cert.key ]]; then
@@ -148,10 +165,10 @@ pkg_postinst() {
 
 	local unrealircd_conf="${EROOT}"/etc/${PN}/${PN}.conf
 	# Fix up the default cloak keys.
-	if grep -qe '"and another one";$' "${unrealircd_conf}" && grep -qe '"aoAr1HnR6gl3sJ7hVz4Zb7x4YwpW";$' "${unrealircd_conf}"; then
+	if grep -qe '"and another one";$' "${unrealircd_conf}" && grep -qe '"Oozahho1raezoh0iMee4ohvegaifahv5xaepeitaich9tahdiquaid0geecipahdauVaij3zieph4ahi";$' "${unrealircd_conf}"; then
 		ebegin "Generating cloak-keys"
 		local keys=(
-			$(su ${PN} -s /bin/sh -c "${PN} -k 2>&1 | tail -n 3")
+			$(su ${PN} -s "${EPREFIX}"/bin/sh -c "${PN} -k 2>&1 | tail -n 6 | head -n 3")
 		)
 		[[ -n ${keys[0]} || -n ${keys[1]} || -n ${keys[2]} ]]
 		eend $?
@@ -160,11 +177,11 @@ pkg_postinst() {
 		sed -i \
 			-e '/cloak-keys/ {
 n
-s/"aoAr1HnR6gl3sJ7hVz4Zb7x4YwpW";/"'"${keys[0]}"'";/
+s/"Oozahho1raezoh0iMee4ohvegaifahv5xaepeitaich9tahdiquaid0geecipahdauVaij3zieph4ahi";/'${keys[0]}'/
 n
-s/"and another one";/"'"${keys[1]}"'";/
+s/"and another one";/'${keys[1]}'/
 n
-s/"and another one";/"'"${keys[2]}"'";/
+s/"and another one";/'${keys[2]}'/
 }' \
 			"${unrealircd_conf}"
 		eend $?
