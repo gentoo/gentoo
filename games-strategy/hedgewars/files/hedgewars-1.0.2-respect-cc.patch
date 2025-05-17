@@ -1,0 +1,37 @@
+FPC alignment bug has been fixed:
+https://gitlab.com/freepascal.org/fpc/source/-/commit/fb918994574fec69e44b9868e0147510473b5aae
+
+diff '--color=auto' -urpN hedgewars-src-1.0.2.orig/CMakeLists.txt hedgewars-src-1.0.2/CMakeLists.txt
+--- hedgewars-src-1.0.2.orig/CMakeLists.txt	2022-09-13 01:33:59.000000000 +0300
++++ hedgewars-src-1.0.2/CMakeLists.txt	2025-04-28 23:43:49.771904474 +0300
+@@ -79,10 +79,6 @@ if(BUILD_ENGINE_JS)
+     set(target_library_install_dir "lib" CACHE PATH "install dest for libs")
+ endif()
+ 
+-if("${CMAKE_SIZEOF_VOID_P}" EQUAL "4" AND UNIX AND NOT APPLE)
+-    set(BUILD_ENGINE_C ON CACHE STRING "PAS2C force-enabled due to a freepascal 32 bit alignment bug" FORCE)
+-endif()
+-
+ #system paths for finding required fonts (see share/hedgewars/Data/fonts)
+ #subdirectories will NOT be searched.
+ #all fonts that can't be found will be bundled with hedgewars
+@@ -180,19 +176,6 @@ else()
+ endif()
+ 
+ 
+-#build engine without freepascal
+-if(BUILD_ENGINE_C AND NOT BUILD_ENGINE_JS)
+-    find_package(Clang REQUIRED)
+-
+-    if(${CLANG_VERSION} VERSION_LESS "3.0")
+-        message(FATAL_ERROR "LLVM/Clang compiler required version is 3.0 but version ${CLANG_VERSION} was found!")
+-    endif()
+-
+-    set(CMAKE_C_COMPILER ${CLANG_EXECUTABLE})
+-    set(CMAKE_CXX_COMPILER ${CLANG_EXECUTABLE})
+-endif()
+-
+-
+ #server
+ if(NOT NOSERVER)
+     add_subdirectory(gameServer)
