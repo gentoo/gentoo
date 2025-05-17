@@ -1,0 +1,80 @@
+diff --git a/include/netlink/cache.h b/include/netlink/cache.h
+index 955f9799..85b7b25b 100644
+--- a/include/netlink/cache.h
++++ b/include/netlink/cache.h
+@@ -80,6 +80,10 @@ extern int			nl_cache_resync(struct nl_sock *,
+ 						struct nl_cache *,
+ 						change_func_t,
+ 						void *);
++extern int			nl_cache_resync_v2(struct nl_sock *,
++						   struct nl_cache *,
++						   change_func_v2_t,
++						   void *);
+ extern int			nl_cache_include(struct nl_cache *,
+ 						 struct nl_object *,
+ 						 change_func_t,
+diff --git a/lib/cache.c b/lib/cache.c
+index 9df24ea8..e2cc6dfc 100644
+--- a/lib/cache.c
++++ b/lib/cache.c
+@@ -902,14 +902,16 @@ static int resync_cb(struct nl_object *c, struct nl_parser_param *p)
+ 					ca->ca_change_data);
+ }
+ 
+-int nl_cache_resync(struct nl_sock *sk, struct nl_cache *cache,
+-		    change_func_t change_cb, void *data)
++static int cache_resync(struct nl_sock *sk, struct nl_cache *cache,
++			change_func_t change_cb, change_func_v2_t change_cb_v2,
++			void *data)
+ {
+ 	struct nl_object *obj, *next;
+ 	struct nl_af_group *grp;
+ 	struct nl_cache_assoc ca = {
+ 		.ca_cache = cache,
+ 		.ca_change = change_cb,
++		.ca_change_v2 = change_cb_v2,
+ 		.ca_change_data = data,
+ 	};
+ 	struct nl_parser_param p = {
+@@ -954,6 +956,9 @@ restart:
+ 			nl_cache_remove(obj);
+ 			if (change_cb)
+ 				change_cb(cache, obj, NL_ACT_DEL, data);
++			else if (change_cb_v2)
++				change_cb_v2(cache, obj, NULL, 0, NL_ACT_DEL,
++					     data);
+ 			nl_object_put(obj);
+ 		}
+ 	}
+@@ -965,6 +970,18 @@ errout:
+ 	return err;
+ }
+ 
++int nl_cache_resync(struct nl_sock *sk, struct nl_cache *cache,
++		    change_func_t change_cb, void *data)
++{
++	return cache_resync(sk, cache, change_cb, NULL, data);
++}
++
++int nl_cache_resync_v2(struct nl_sock *sk, struct nl_cache *cache,
++		    change_func_v2_t change_cb_v2, void *data)
++{
++	return cache_resync(sk, cache, NULL, change_cb_v2, data);
++}
++
+ /** @} */
+ 
+ /**
+diff --git a/libnl-3.sym b/libnl-3.sym
+index b5a33bba..8df31c95 100644
+--- a/libnl-3.sym
++++ b/libnl-3.sym
+@@ -385,3 +385,8 @@ global:
+ 	nla_get_uint;
+ 	nla_put_uint;
+ } libnl_3_10;
++
++libnl_3_12 {
++global:
++	nl_cache_resync_v2;
++} libnl_3_11;

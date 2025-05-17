@@ -24,6 +24,23 @@ else
 	SRC_URI="https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
+	PATCHES=(
+		# Fix compilation error in GCC 14
+		"${FILESDIR}"/${PN}-3.11-gcc14.patch
+		# Change vlan module to set QOS mapping flag
+		"${FILESDIR}"/${PN}-3.11-qos-mapping.patch
+		# cache: add nl_cache_resync_v2() 
+		"${FILESDIR}"/${PN}-3.11-nl_cache_resync_v2.patch
+		# route: add missing rtnl_nh_get_oif symbol 
+		"${FILESDIR}"/${PN}-3.11-rtnl_nh_get_oif.patch
+		# test: skip tests when having no private netns
+		"${FILESDIR}"/${PN}-3.11-skip-private-netns.patch
+		# cache: cache_include(): fix double put for cloned objects
+		"${FILESDIR}"/${PN}-3.11-fix-double-put.patch
+		# xfrm: Add support for xfrm interface ID
+		"${FILESDIR}"/${PN}-3.11-add-xfrm-iface-id.patch
+	)
+
 	S="${WORKDIR}/${LIBNL_P}"
 fi
 
