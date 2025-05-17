@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="
 	~media-libs/libmediainfo-${PV}[curl=,mms=]
 	>=media-libs/libzen-0.4.41
 	sys-libs/zlib
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
