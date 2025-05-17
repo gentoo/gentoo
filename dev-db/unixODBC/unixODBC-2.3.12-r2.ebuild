@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Complete ODBC driver manager"
 HOMEPAGE="https://www.unixodbc.org/"
@@ -11,7 +11,7 @@ SRC_URI="https://www.unixodbc.org/unixODBC-${PV}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+minimal odbcmanual static-libs unicode"
 
 RDEPEND="
@@ -19,12 +19,17 @@ RDEPEND="
 	>=sys-libs/readline-6.2_p5-r1:=[${MULTILIB_USEDEP}]
 	>=sys-libs/ncurses-5.9-r3:=[${MULTILIB_USEDEP}]
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
+	!minimal? ( virtual/libcrypt:= )
 "
 DEPEND="
 	${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-bug-936060.patch
+)
 
 MULTILIB_CHOST_TOOLS=( /usr/bin/odbc_config )
 MULTILIB_WRAPPED_HEADERS=( /usr/include/unixODBC/unixodbc_conf.h /usr/include/unixodbc.h )
@@ -40,6 +45,9 @@ multilib_src_configure() {
 	# Needs flex, bison
 	export LEX=flex
 	unset YACC
+
+	# bug #947922
+	append-cflags -std=gnu17
 
 	# --enable-driver-conf is --enable-driverc as per configure.in
 	local myeconfargs=(
