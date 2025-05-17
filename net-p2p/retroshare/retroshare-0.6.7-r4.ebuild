@@ -67,6 +67,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}_fix-old-rapidjson.patch
 )
 
+src_prepare() {
+	default
+	#947403
+	sed -i 's/Application;//g' data/${PN}.desktop || die
+}
+
 src_configure() {
 	# TODO: fix with >=ffmpeg-7 then drop ffmpeg-compat, or drop/mask plugins
 	if use plugins; then
