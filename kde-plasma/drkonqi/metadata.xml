@@ -9,6 +9,7 @@
 		<flag name="systemd">Enable Coredumpd integration</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?classification=Plasma</bugs-to>
+		<remote-id type="kde-invent">plasma/drkonqi</remote-id>
 	</upstream>
 </pkgmetadata>
