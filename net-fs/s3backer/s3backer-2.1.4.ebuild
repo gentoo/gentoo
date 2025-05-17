@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nbd"
 
 RDEPEND="
+	app-arch/zstd:=
 	dev-libs/expat
 	dev-libs/openssl:0=
 	net-misc/curl
@@ -32,9 +33,6 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# s3backer builds support for nbdkit if it finds nbdkit during build, no config is needed.
-	# yet it will still build support for nbd if USE="-nbd" but nbdkit is installed
-
 	sed -e "/docdir=/s:packages/\$(PACKAGE):${PF}:" \
 		-e "/doc_DATA=/d" \
 		-i Makefile.am || die
@@ -42,13 +40,14 @@ src_prepare() {
 	eautoreconf
 }
 
-src_compile() {
-	emake CFLAGS="${CFLAGS}"
+src_configure() {
+	econf $(use_enable nbd)
 }
 
 src_install() {
 	default
 
-	# skip /run/s3backer-nbd if present
-	rm -rf "${ED}/run"
+	if use nbd ; then
+		rm "${ED}/usr/$(get_libdir)/nbdkit/plugins/nbdkit-s3backer-plugin.la" || die
+	fi
 }
