@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/audacity/audacity.git"
 else
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	MY_P="Audacity-${PV}"
 	S="${WORKDIR}/${PN}-sources-${PV}"
 	SRC_URI="https://github.com/audacity/audacity/releases/download/Audacity-${PV}/${PN}-sources-${PV}.tar.gz"
@@ -84,7 +84,7 @@ RDEPEND="dev-db/sqlite:3
 	sys-libs/zlib:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	alsa? ( media-libs/alsa-lib )
 	audiocom? (
 		net-misc/curl

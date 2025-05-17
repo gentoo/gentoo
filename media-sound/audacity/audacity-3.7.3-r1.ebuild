@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake wxwidgets xdg virtualx
+inherit cmake flag-o-matic wxwidgets xdg virtualx
 
 DESCRIPTION="Free crossplatform audio editor"
 HOMEPAGE="https://www.audacityteam.org/"
@@ -20,7 +20,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/audacity/audacity.git"
 else
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 	MY_P="Audacity-${PV}"
 	S="${WORKDIR}/${PN}-sources-${PV}"
 	SRC_URI="https://github.com/audacity/audacity/releases/download/Audacity-${PV}/${PN}-sources-${PV}.tar.gz"
@@ -39,7 +39,9 @@ SLOT="0"
 IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 +ogg
 	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
 REQUIRED_USE="
+	audiocom? ( wavpack )
 	opus? ( ogg )
+	test? ( mpg123 )
 	vorbis? ( ogg )
 "
 RESTRICT="!test? ( test )"
@@ -82,7 +84,7 @@ RDEPEND="dev-db/sqlite:3
 	sys-libs/zlib:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	alsa? ( media-libs/alsa-lib )
 	audiocom? (
 		net-misc/curl
@@ -119,28 +121,26 @@ BDEPEND="|| ( dev-lang/nasm dev-lang/yasm )
 	virtual/pkgconfig"
 
 PATCHES=(
-	# Equivalent to previous versions
-	"${FILESDIR}/audacity-3.2.3-disable-ccache.patch"
-	# From Debian
-	"${FILESDIR}/audacity-3.3.3-fix-rpaths.patch"
+	# fixes include path
+	"${FILESDIR}/audacity-3.7.0-portsmf.patch"
+
+	# disables ccache
+	"${FILESDIR}/audacity-3.7.0-disable-ccache.patch"
 
 	# Disables some header-based detection
-	"${FILESDIR}/audacity-3.2.3-allow-overriding-alsa-jack.patch"
+	"${FILESDIR}/audacity-3.7.0-allow-overriding-alsa-jack.patch"
 
 	# For has_networking
-	"${FILESDIR}/audacity-3.3.3-local-threadpool-libraries.patch"
+	"${FILESDIR}/audacity-3.7.0-local-threadpool-libraries.patch"
 
 	# Allows running tests without conan
 	"${FILESDIR}/audacity-3.3.3-remove-conan-test-dependency.patch"
 
 	# #920363
-	"${FILESDIR}/audacity-3.4.2-audiocom-std-string.patch"
+	"${FILESDIR}/audacity-3.7.0-audiocom-std-string.patch"
 
-	# Fix build with USE="-lv2"
-	"${FILESDIR}/audacity-3.4.2-fix-build-with-use-lv2-off.patch"
-
-	# Fix build with clang, undefined reference to `typeinfo for wxNavigationEnabled<wxWindow>'
-	"${FILESDIR}/audacity-3.4.2-do-not-include-template-for-clang-compiler.patch"
+	# 915041
+	"${FILESDIR}/audacity-3.7.0-do-not-include-template-on-unix-to-fix-clang-compile.patch"
 )
 
 src_prepare() {
@@ -161,6 +161,9 @@ src_prepare() {
 
 src_configure() {
 	setup-wxwidgets
+
+	# bug #944212
+	append-cflags -std=gnu17
 
 	# * always use system libraries if possible
 	# * USE_VST was omitted, it appears to no longer have dependencies
