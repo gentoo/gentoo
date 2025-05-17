@@ -1,0 +1,25 @@
+https://bugs.gentoo.org/870412
+
+From c83bd016bdcd4f6cbfd0d5f66aa9e720f43e0c0c Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Fri, 16 May 2025 22:25:05 +0300
+Subject: [PATCH 1/2] Add arguments and their types to function pointer
+
+This addresses a compiler error with conflicting types with newer C standard.
+C21 will understand no stated arguments explicitly as no arguments (void).
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/imap/zoneinfo_db.c
++++ b/imap/zoneinfo_db.c
+@@ -306,7 +306,7 @@ static int find_cb(void *rock,
+ }
+ 
+ EXPORTED int zoneinfo_find(const char *find, int tzid_only, time_t changedsince,
+-                  int (*proc)(), void *rock)
++                  int (*proc)(const char*, int, struct zoneinfo*, void*), void *rock)
+ {
+     struct findrock frock;
+ 
+-- 
+2.49.0
+

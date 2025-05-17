@@ -1,0 +1,50 @@
+From 60e8f1cad167c645e69638f30a6944f5f44722e6 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Fri, 16 May 2025 22:26:53 +0300
+Subject: [PATCH 2/2] Drop -O3 inlining
+
+This causes issues with perl's ftrapw.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ lib/util.c | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/lib/util.c b/lib/util.c
+index 67da5bde7..328d9960b 100644
+--- a/lib/util.c
++++ b/lib/util.c
+@@ -1045,10 +1045,6 @@ EXPORTED int parsehex(const char *p, const char **ptr, int maxlen, bit64 *res)
+ 
+ /* buffer handling functions */
+ 
+-#ifdef HAVE_DECLARE_OPTIMIZE
+-static inline size_t roundup(size_t size)
+-    __attribute__((pure, always_inline, optimize("-O3")));
+-#endif
+ static inline size_t roundup(size_t size)
+ {
+     if (size < 32)
+@@ -1176,19 +1172,11 @@ EXPORTED int buf_getline(struct buf *buf, FILE *fp)
+     return (!(buf->len == 0 && c == EOF));
+ }
+ 
+-#ifdef HAVE_DECLARE_OPTIMIZE
+-EXPORTED inline size_t buf_len(const struct buf *buf)
+-    __attribute__((always_inline, optimize("-O3")));
+-#endif
+ EXPORTED inline size_t buf_len(const struct buf *buf)
+ {
+     return buf->len;
+ }
+ 
+-#ifdef HAVE_DECLARE_OPTIMIZE
+-EXPORTED inline const char *buf_base(const struct buf *buf)
+-    __attribute__((always_inline, optimize("-O3")));
+-#endif
+ EXPORTED inline const char *buf_base(const struct buf *buf)
+ {
+     return buf->s;
+-- 
+2.49.0
+
