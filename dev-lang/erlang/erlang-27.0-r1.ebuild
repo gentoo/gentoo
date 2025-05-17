@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,17 +9,20 @@ inherit autotools elisp-common flag-o-matic java-pkg-opt-2 systemd toolchain-fun
 UPSTREAM_V="$(ver_cut 1-2)"
 
 DESCRIPTION="Erlang programming language, runtime environment and libraries (OTP)"
-HOMEPAGE="https://www.erlang.org/"
+HOMEPAGE="https://www.erlang.org/ https://github.com/erlang/otp"
 SRC_URI="https://github.com/erlang/otp/archive/OTP-${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/erlang/otp/releases/download/OTP-${UPSTREAM_V}/otp_doc_man_${UPSTREAM_V}.tar.gz -> ${PN}_doc_man_${UPSTREAM_V}.tar.gz
-	doc? ( https://github.com/erlang/otp/releases/download/OTP-${UPSTREAM_V}/otp_doc_html_${UPSTREAM_V}.tar.gz -> ${PN}_doc_html_${UPSTREAM_V}.tar.gz )"
+	https://github.com/${PN}/otp/releases/download/OTP-${UPSTREAM_V}/otp_doc_man_${UPSTREAM_V}.tar.gz
+		-> ${PN}_doc_man_${UPSTREAM_V}.tar.gz
+	doc? ( https://github.com/${PN}/otp/releases/download/OTP-${UPSTREAM_V}/otp_doc_html_${UPSTREAM_V}.tar.gz
+		 -> ${PN}_doc_html_${UPSTREAM_V}.tar.gz )"
+S="${WORKDIR}"/otp-OTP-${PV}
 
 LICENSE="Apache-2.0"
 # We use this subslot because Compiled HiPE Code can be loaded on the exact
 # same build of ERTS that was used when compiling the code.  See
 # http://erlang.org/doc/system_principles/misc.html for more information.
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc emacs java +kpoll odbc sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
@@ -35,22 +38,27 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	wxwidgets? (
 		dev-libs/glib:2
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+		x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
+		virtual/glu
 	)
 "
 DEPEND="${RDEPEND}
 	dev-lang/perl
 "
 
-S="${WORKDIR}/otp-OTP-${PV}"
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-22.0-dont-ignore-LDFLAGS.patch
+	"${FILESDIR}"/${PN}-27.0-dont-ignore-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-24.0.2-serial-configure.patch
 	"${FILESDIR}"/${PN}-25.1.2-c99.patch # Bug #882887
+	"${FILESDIR}"/${PN}-26.2.4-test-errorinfo.patch
 )
 
 SITEFILE=50"${PN}"-gentoo.el
+
+QA_CONFIG_IMPL_DECL_SKIP=(
+	# FreeBSD & OpenBSD
+	pthread_set_name_np
+)
 
 src_prepare() {
 	default
@@ -148,6 +156,9 @@ src_install() {
 
 	## Clean up the no longer needed files
 	rm "${ED}/${erl_libdir}/Install" || die
+
+	# Bug #922743
+	docompress "${my_manpath}"
 
 	insinto "${my_manpath}"
 	doins -r "${WORKDIR}"/man/*

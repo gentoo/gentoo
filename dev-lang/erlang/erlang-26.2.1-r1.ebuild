@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ LICENSE="Apache-2.0"
 # same build of ERTS that was used when compiling the code.  See
 # http://erlang.org/doc/system_principles/misc.html for more information.
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc emacs java +kpoll odbc sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
@@ -35,7 +35,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	wxwidgets? (
 		dev-libs/glib:2
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+		x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	)
 "
 DEPEND="${RDEPEND}
@@ -48,7 +48,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-22.0-dont-ignore-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-24.0.2-serial-configure.patch
 	"${FILESDIR}"/${PN}-25.1.2-c99.patch # Bug #882887
-	"${FILESDIR}"/${PN}-26.2.4-test-errorinfo.patch
 )
 
 SITEFILE=50"${PN}"-gentoo.el
@@ -149,9 +148,6 @@ src_install() {
 
 	## Clean up the no longer needed files
 	rm "${ED}/${erl_libdir}/Install" || die
-
-	# Bug #922743
-	docompress "${my_manpath}"
 
 	insinto "${my_manpath}"
 	doins -r "${WORKDIR}"/man/*

@@ -37,7 +37,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	wxwidgets? (
 		dev-libs/glib:2
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+		x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 		virtual/glu
 	)
 "
@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-27.0-dont-ignore-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-24.0.2-serial-configure.patch
 	"${FILESDIR}"/${PN}-25.1.2-c99.patch # Bug #882887
+	"${FILESDIR}"/${PN}-26.2.4-test-errorinfo.patch
 )
 
 SITEFILE=50"${PN}"-gentoo.el
