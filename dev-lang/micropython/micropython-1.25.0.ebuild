@@ -3,13 +3,15 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+PYTHON_COMPAT=( python3_{9..13} )
+
+inherit toolchain-funcs python-any-r1
 
 DESCRIPTION="Python implementation for microcontrollers"
 HOMEPAGE="https://micropython.org https://github.com/micropython/micropython"
 SRC_URI="https://micropython.org/resources/source/${P}.tar.xz"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0 BSD BSD-1 BSD-4 GPL-2 GPL-2+ ISC LGPL-3 MIT OFL-1.1 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
@@ -18,6 +20,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-libs/libffi:=
 	virtual/pkgconfig
+	${PYTHON_DEPS}
 "
 
 src_prepare() {
@@ -40,7 +43,7 @@ src_compile() {
 	einfo ""
 	einfo "Building the mpy-crosscompiler."
 	einfo ""
-	emake -C mpy-cross CC="$(tc-getCC)"
+	emake V=1 -C mpy-cross CC="$(tc-getCC)"
 
 	# Finally, build the unix port.
 	einfo ""
@@ -48,15 +51,15 @@ src_compile() {
 	einfo ""
 	# Empty `STRIP=` leaves symbols + debug info intact. Let portage handle it.
 	# https://github.com/micropython/micropython/tree/master/ports/unix/README.md
-	emake -C ports/unix CC="$(tc-getCC)" STRIP=
+	emake V=1 -C ports/unix CC="$(tc-getCC)" STRIP=
 }
 
 src_test() {
-	emake -C ports/unix CC="$(tc-getCC)" test
+	emake V=1 -C ports/unix CC="$(tc-getCC)" test
 }
 
 src_install() {
-	emake -C ports/unix CC="$(tc-getCC)" DESTDIR="${D}" install
+	emake V=1 -C ports/unix CC="$(tc-getCC)" DESTDIR="${D}" install
 
 	# remove .git files
 	find tools -type f -name '.git*' -delete || die
