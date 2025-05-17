@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Aquamarine is a very light linux rendering backend library"
 HOMEPAGE="https://github.com/hyprwm/aquamarine"
 
-if [[ "${PV}" = *9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/hyprwm/${PN^}.git"
 else
@@ -22,20 +22,21 @@ SLOT="0"
 # Upstream states that the simpleWindow test is broken, see bug 936653
 RESTRICT="test"
 RDEPEND="
-	dev-libs/wayland
-	media-libs/mesa[opengl]
-	media-libs/libdisplay-info
 	>=dev-libs/libinput-1.26.1
+	dev-libs/wayland
 	>=dev-util/hyprwayland-scanner-0.4.0
-	>=gui-libs/hyprutils-0.2.3:=
+	>=gui-libs/hyprutils-0.5.2:=
+	media-libs/libdisplay-info
+	media-libs/libglvnd
+	media-libs/mesa[opengl]
+	sys-apps/hwdata
+	>=sys-auth/seatd-0.8.0
 	x11-libs/cairo
-	x11-libs/libxkbcommon
 	x11-libs/libdrm
+	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
 	virtual/libudev
-	sys-apps/hwdata
-	>=sys-auth/seatd-0.8.0
 "
 DEPEND="
 	${RDEPEND}
