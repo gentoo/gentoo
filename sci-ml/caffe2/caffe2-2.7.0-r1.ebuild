@@ -111,7 +111,7 @@ DEPEND="
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	')
-	cuda? ( >=dev-libs/cutlass-3.8.0 )
+	cuda? ( ~dev-libs/cutlass-3.8.0 )
 	onednn? ( sci-ml/ideep )
 	qnnpack? ( dev-libs/clog )
 "
