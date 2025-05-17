@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_TESTED=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_TESTED=( pypy3_11 python3_{11..14} )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 PYTHON_REQ_USE="threads(+)"
 
