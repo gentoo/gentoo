@@ -23,20 +23,16 @@ DEPEND="
 src_prepare() {
 	default
 
-	for i in ports/unix mpy-cross; do
-		# 1) don't die on compiler warning
-		# 2) enforce our CFLAGS (Only change the first `CFLAGS +=`)
-		# 3) enforce our LDFLAGS (Only change the first `LDFLAGS +=`)
-		sed -e 's#-Werror##g;' \
-			-e "0,/^CFLAGS +=/{s#^CFLAGS += \(.*\)#CFLAGS += \1 ${CFLAGS}#g}" \
-			-e "0,/^LDFLAGS +=/{s#^LDFLAGS += \(.*\)#LDFLAGS += \1 ${LDFLAGS}#g}" \
-			-i $i/Makefile || die "can't patch Makefile"
-
-		if [ $i == 'ports/unix' ]; then
-			# 4) remove /usr/local prefix references in favour of /usr
-			sed -e "s#/usr/local#${EPREFIX}#g" -i $i/Makefile
-		fi
-	done
+	# Both ports/unix and mpy-cross need their Makefile changed.
+	# 1) don't die on compiler warning
+	# 2) remove /usr/local prefix references in favour of /usr
+	# 3) enforce our CFLAGS (Only change the first `CFLAGS +=`)
+	# 4) enforce our LDFLAGS (Only change the first `LDFLAGS +=`)
+	sed -e 's#-Werror##g;' \
+		-e "s#/usr/local#${EPREFIX}#g" \
+		-e "0,/^CFLAGS +=/{s#^CFLAGS += \(.*\)#CFLAGS += \1 ${CFLAGS}#g}" \
+		-e "0,/^LDFLAGS +=/{s#^LDFLAGS += \(.*\)#LDFLAGS += \1 ${LDFLAGS}#g}" \
+		-i ports/unix/Makefile mpy-cross/Makefile || die "can't patch Makefile"
 }
 
 src_compile() {
