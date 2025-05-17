@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,6 +13,7 @@ SRC_URI="https://sonosaurus.com/${PN}/${P/_p*}.tar.gz
 	mirror://gentoo/${PN}-1.6.5-m4.tar.bz2
 	https://dev.gentoo.org/~pacho/${PN}/${PN}.png
 "
+S="${WORKDIR}/${P/_p*}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,12 +29,10 @@ RDEPEND="
 	media-libs/rubberband
 	sci-libs/fftw:3.0=
 	virtual/jack
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${P/_p*}"
 
 DOCS=( OSC README )
 
