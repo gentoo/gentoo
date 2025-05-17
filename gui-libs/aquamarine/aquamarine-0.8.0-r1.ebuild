@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/wayland
 	>=dev-util/hyprwayland-scanner-0.4.0
 	>=gui-libs/hyprutils-0.5.2:=
-	media-libs/libdisplay-info
+	media-libs/libdisplay-info:=
 	media-libs/libglvnd
 	media-libs/mesa[opengl]
 	sys-apps/hwdata
