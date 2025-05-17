@@ -23,8 +23,8 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="|| ( java moar )"
 
 CDEPEND="java? (
-		dev-java/asm:9
-		dev-java/jna:4
+		>=dev-java/asm-9.8:0
+		>=dev-java/jna-5.17.0:0
 	)
 	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
 RDEPEND="${CDEPEND}
