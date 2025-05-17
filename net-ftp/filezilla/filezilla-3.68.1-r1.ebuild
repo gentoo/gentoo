@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="
 	>=dev-libs/libfilezilla-0.49.0:=
 	>=dev-libs/pugixml-1.7
 	>=net-libs/gnutls-3.5.7
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	x11-misc/xdg-utils
 	dbus? ( sys-apps/dbus )"
 DEPEND="${RDEPEND}

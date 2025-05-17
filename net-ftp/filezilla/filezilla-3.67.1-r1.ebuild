@@ -12,14 +12,12 @@ MY_P="FileZilla_${MY_PV}"
 
 DESCRIPTION="FTP client with lots of useful features and an intuitive interface"
 HOMEPAGE="https://filezilla-project.org/"
-# Broken URL behind CDN
-SRC_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}/${MY_P}_src.tar.xz"
-
+SRC_URI="https://download.filezilla-project.org/client/${MY_P}_src.tar.xz"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 IUSE="cpu_flags_x86_sse2 dbus nls test"
 RESTRICT="!test? ( test )"
 
@@ -28,10 +26,10 @@ RDEPEND="
 	>=dev-libs/nettle-3.1:=
 	>=dev-db/sqlite-3.7
 	>=dev-libs/boost-1.76.0:=
-	>=dev-libs/libfilezilla-0.50.0:=
+	>=dev-libs/libfilezilla-0.48.1:=
 	>=dev-libs/pugixml-1.7
 	>=net-libs/gnutls-3.5.7
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	x11-misc/xdg-utils
 	dbus? ( sys-apps/dbus )"
 DEPEND="${RDEPEND}
