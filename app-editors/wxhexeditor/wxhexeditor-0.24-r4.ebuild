@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ inherit flag-o-matic toolchain-funcs wxwidgets
 DESCRIPTION="A cross-platform hex editor designed specially for large files"
 HOMEPAGE="https://github.com/EUA/wxHexEditor"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_PN}-v${PV}-src.tar.xz"
+S="${WORKDIR}/${MY_PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,10 +19,8 @@ KEYWORDS="~amd64 ~riscv ~x86"
 DEPEND="
 	app-crypt/mhash
 	dev-libs/udis86
-	x11-libs/wxGTK:${WX_GTK_VER}[X]"
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${MY_PN}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-syslibs.patch
