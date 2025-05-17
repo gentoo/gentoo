@@ -22,7 +22,7 @@ DEPEND="
 
 src_prepare() {
 	default
-	cd "${S}/ports/unix" || die
+	cd ports/unix || die
 
 	# 1) don't die on compiler warning
 	# 2) remove /usr/local prefix references in favour of /usr
