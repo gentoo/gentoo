@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 	sys-libs/binutils-libs:0=
 	sys-libs/readline:0=
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}[X?]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X?]
 	daemon? ( acct-user/amule )
 	geoip? ( dev-libs/geoip )
 	nls? ( virtual/libintl )
