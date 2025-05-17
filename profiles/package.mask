@@ -97,10 +97,6 @@ net-misc/nyx
 # No more revdeps. Removal on 2025-05-31.
 kde-frameworks/kinit
 
-# Eray Aslan <eras@gentoo.org> (2025-05-08)
-# Needs testing
-=net-mail/dovecot-2.4*
-
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # Vulnerable, EOL branch of dev-python/django.  Bug #955606.
 # Pleas upgrade to 5.1, 5.2 LTS, or downgrade to 4.2 LTS.
