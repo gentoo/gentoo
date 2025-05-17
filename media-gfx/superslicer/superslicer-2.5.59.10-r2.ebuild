@@ -15,12 +15,12 @@ SRC_URI="
 	https://github.com/supermerill/SuperSlicer/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/slic3r/slic3r-profiles/archive/${SLICER_PROFILES_COMMIT}.tar.gz -> ${P}-profiles.tar.gz
 "
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="AGPL-3 Boost-1.0 GPL-2 LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
-
 RESTRICT="test"
 
 # No dep on sci-libs/libigl, in-tree version cannot build
@@ -48,7 +48,7 @@ RDEPEND="
 	virtual/glu
 	virtual/opengl
 	x11-libs/gtk+:3
-	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 "
 DEPEND="${RDEPEND}
 	media-libs/qhull[static-libs]
@@ -71,8 +71,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.5.59.10-boost-1.85.patch"
 	"${FILESDIR}/${PN}-2.5.59.10-boost-headers.patch"
 )
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_unpack() {
 	default
