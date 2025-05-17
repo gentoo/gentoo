@@ -52,7 +52,7 @@ RDEPEND="
 		fltk? ( x11-libs/fltk:1=[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
 		sdl2? ( media-libs/libsdl2 )
-		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
+		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[opengl,X] )
 	)
 	gdal? ( sci-libs/gdal:= )
 	gif? ( media-libs/giflib:= )
