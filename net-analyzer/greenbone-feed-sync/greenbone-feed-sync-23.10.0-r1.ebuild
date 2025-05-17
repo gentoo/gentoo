@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 systemd
 
@@ -11,8 +11,8 @@ DESCRIPTION="New script for syncing the Greenbone Community Feed"
 HOMEPAGE="https://github.com/greenbone/greenbone-feed-sync"
 SRC_URI="https://github.com/greenbone/greenbone-feed-sync/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-3+"
+SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="cron"
 RESTRICT="test"
@@ -21,7 +21,6 @@ DEPEND="
 	acct-user/gvm
 	net-misc/rsync
 	>=net-analyzer/gvmd-22.5.0
-	dev-python/tomli[${PYTHON_USEDEP}]
 	>=dev-python/rich-13.2.0[${PYTHON_USEDEP}]
 "
 

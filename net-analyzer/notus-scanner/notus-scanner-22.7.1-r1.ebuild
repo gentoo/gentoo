@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 greadme systemd
 
@@ -22,7 +22,6 @@ DEPEND="
 	>=dev-python/python-gnupg-0.5.4[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/paho-mqtt-1.5.1[${PYTHON_USEDEP}]
-	<dev-python/tomli-3[${PYTHON_USEDEP}]
 "
 
 RDEPEND="
