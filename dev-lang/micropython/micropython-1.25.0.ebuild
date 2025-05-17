@@ -34,7 +34,7 @@ src_prepare() {
 
 		if [ $i == 'ports/unix' ]; then
 			# 4) remove /usr/local prefix references in favour of /usr
-			sed -e 's#\/usr\/local#\/usr#g;' -i $i/Makefile
+			sed -e "s#/usr/local#${EPREFIX}#g" -i $i/Makefile
 		fi
 	done
 }
