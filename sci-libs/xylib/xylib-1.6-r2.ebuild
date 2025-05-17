@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="bzip2 gui zlib"
 
 RDEPEND="
 	bzip2? ( app-arch/bzip2 )
-	gui? ( x11-libs/wxGTK:${WX_GTK_VER} )
+	gui? ( x11-libs/wxGTK:${WX_GTK_VER}= )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="${RDEPEND}
