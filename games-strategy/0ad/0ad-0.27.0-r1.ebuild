@@ -84,7 +84,7 @@ DEPEND="
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
-	editor? ( x11-libs/wxGTK:${WX_GTK_VER}[X,opengl] )
+	editor? ( x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl] )
 	lobby? ( net-libs/gloox )
 "
 RDEPEND="
