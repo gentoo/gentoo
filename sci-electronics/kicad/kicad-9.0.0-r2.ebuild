@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..12} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -18,10 +18,13 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2"
+	SRC_URI+="
+		https://gitlab.com/kicad/code/kicad/-/commit/5774338af2e22e1ff541ad9ab368e459e2a2add2.patch -> ${PN}-9.0.0-protobuf-30.patch
+	"
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~amd64 ~riscv"
+		KEYWORDS="amd64 ~riscv"
 	fi
 fi
 
@@ -72,7 +75,7 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
 	sys-libs/zlib
-	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
@@ -100,6 +103,10 @@ if [[ ${PV} == 9999 ]] ; then
 fi
 
 CHECKREQS_DISK_BUILD="1500M"
+
+PATCHES=(
+	"${DISTDIR}/${P}-protobuf-30.patch" # drop in 9.0.1
+)
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

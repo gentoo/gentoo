@@ -72,7 +72,7 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
 	sys-libs/zlib
-	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]

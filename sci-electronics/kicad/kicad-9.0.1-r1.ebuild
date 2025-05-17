@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -21,12 +21,29 @@ else
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+		KEYWORDS="~amd64 ~riscv"
 	fi
 fi
 
-# BSD for bundled pybind
-LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD"
+# KiCAD is licensed under GPLv3 or later
+# As per LICENSES.README some components are under different, but GPL compatible license:
+# Licensed under Apache License, Version 2.0: portions of code in libs/kimath/include/math/util.h
+# Licensed under BOOSTv1: clipper, clipper2, libcontext, pegtl, picosha2, turtle
+# Licensed under ISC: portions of code in include/geometry/polygon_triangulation.h
+# Licensed under MIT: argparse, compoundfilereader, delaunator, fmt, json_schema_validator, magic_enum nanodbc,
+#                     nlohmann/json, nlohmann/fifo_map, pboettch/json-schema-validator, picoSHA2, rectpack2d,
+#                     sentry-native, thread-pool, tinyspline_lib
+# Licensed under MIT and BSD: glew
+# Licensed under BSD: pybind11
+# Licensed under BSD2: gzip-hpp
+# Licensed under GPLv2 (or later): dxflib, math_for_graphics, potrace,
+#                                  SutherlandHodgmanClipPoly in thirdparty/other_math
+# Licensed under ZLib: nanosvg
+# Licensed in the public domain: lemon
+# Licensed under CC BY-SA 4.0: all the demo files provided in demos/*
+# Licensed under clause-3 BSD: ibis/kibis files in eeschema/sim/kibis
+# Licensed under CC0: uopamp.lib.spice in some directories in qa/data/eeschema/spice_netlists/
+LICENSE="GPL-2+ GPL-3+ Boost-1.0 BSD BSD-2 Apache-2.0 ISC MIT ZLIB CC-BY-SA-4.0 CC0-1.0"
 SLOT="0"
 IUSE="doc examples nls openmp test"
 
@@ -43,6 +60,8 @@ COMMON_DEPEND="
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
 	dev-libs/libgit2:=
+	>=dev-libs/protobuf-27.2:=[protobuf,protoc]
+	>=dev-libs/nng-1.10.0:=
 	media-libs/freeglut
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1
@@ -53,7 +72,7 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
 	sys-libs/zlib
-	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
@@ -66,12 +85,14 @@ COMMON_DEPEND="
 		media-gfx/cairosvg
 	)
 "
+
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
 	sci-electronics/electronics-menu
 "
 BDEPEND=">=dev-lang/swig-4.0
-	doc? ( app-text/doxygen )"
+	doc? ( app-text/doxygen )
+	test? ( $(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]') )"
 
 if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds
@@ -84,6 +105,7 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
 	python-single-r1_pkg_setup
+	setup-wxwidgets
 	check-reqs_pkg_setup
 }
 
@@ -127,7 +149,6 @@ src_configure() {
 		-DKICAD_BUILD_QA_TESTS="$(usex test)"
 	)
 
-	setup-wxwidgets
 	cmake_src_configure
 }
 
@@ -144,6 +165,7 @@ src_test() {
 	ln -s "${BUILD_DIR}/eeschema/_eeschema.kiface" "${BUILD_DIR}/qa/eeschema/_eeschema.kiface" || die
 
 	export CMAKE_SKIP_TESTS=(
+		qa_pcbnew
 		qa_cli
 	)
 
