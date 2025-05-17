@@ -22,25 +22,21 @@ DEPEND="
 
 src_prepare() {
 	default
-	cd ports/unix || die
 
-	# 1) don't die on compiler warning
-	# 2) remove /usr/local prefix references in favour of /usr
-	# 3) enforce our CFLAGS (Only change the first `CFLAGS +=`)
-	# 4) enforce our LDFLAGS (Only change the first `LDFLAGS +=`)
-	sed -e 's#-Werror##g;' \
-		-e 's#\/usr\/local#\/usr#g;' \
-		-e "0,/^CFLAGS +=/{s#^CFLAGS += \(.*\)#CFLAGS += \1 ${CFLAGS}#g}" \
-		-e "0,/^LDFLAGS +=/{s#^LDFLAGS += \(.*\)#LDFLAGS += \1 ${LDFLAGS}#g}" \
-		-i Makefile || die "can't patch Makefile"
+	for i in ports/unix mpy-cross; do
+		# 1) don't die on compiler warning
+		# 2) enforce our CFLAGS (Only change the first `CFLAGS +=`)
+		# 3) enforce our LDFLAGS (Only change the first `LDFLAGS +=`)
+		sed -e 's#-Werror##g;' \
+			-e "0,/^CFLAGS +=/{s#^CFLAGS += \(.*\)#CFLAGS += \1 ${CFLAGS}#g}" \
+			-e "0,/^LDFLAGS +=/{s#^LDFLAGS += \(.*\)#LDFLAGS += \1 ${LDFLAGS}#g}" \
+			-i $i/Makefile || die "can't patch Makefile"
 
-	cd "${S}/mpy-cross" || die
-
-	# `mpy-cross` needs the same. There's no `/usr/local` paths however.
-	sed -e 's#-Werror##g;' \
-		-e "0,/^CFLAGS +=/{s#^CFLAGS += \(.*\)#CFLAGS += \1 ${CFLAGS}#g}" \
-		-e "0,/^LDFLAGS +=/{s#^LDFLAGS += \(.*\)#LDFLAGS += \1 ${LDFLAGS}#g}" \
-		-i Makefile || die "can't patch Makefile"
+		if [ $i == 'ports/unix' ]; then
+			# 4) remove /usr/local prefix references in favour of /usr
+			sed -e 's#\/usr\/local#\/usr#g;' -i $i/Makefile
+		fi
+	done
 }
 
 src_compile() {
@@ -48,31 +44,26 @@ src_compile() {
 	einfo ""
 	einfo "Building the mpy-crosscompiler."
 	einfo ""
-	cd "${S}/mpy-cross" || die
-	emake CC="$(tc-getCC)"
+	emake -C mpy-cross CC="$(tc-getCC)"
 
 	# Finally, build the unix port.
 	einfo ""
 	einfo "Building the micropython unix port."
 	einfo ""
-	cd "${S}/ports/unix" || die
 	# Empty `STRIP=` leaves symbols + debug info intact. Let portage handle it.
 	# https://github.com/micropython/micropython/tree/master/ports/unix/README.md
-	emake CC="$(tc-getCC)" STRIP=
+	emake -C ports/unix CC="$(tc-getCC)" STRIP=
 }
 
 src_test() {
-	cd ports/unix || die
-	emake CC="$(tc-getCC)" test
+	emake -C ports/unix CC="$(tc-getCC)" test
 }
 
 src_install() {
-	pushd ports/unix > /dev/null || die
-	emake CC="$(tc-getCC)" DESTDIR="${D}" install
-	popd > /dev/null || die
+	emake -C ports/unix CC="$(tc-getCC)" DESTDIR="${D}" install
 
 	# remove .git files
-	find tools -type f -name '.git*' -exec rm {} \; || die
+	find tools -type f -name '.git*' -delete || die
 
 	dodoc -r tools
 	einstalldocs
