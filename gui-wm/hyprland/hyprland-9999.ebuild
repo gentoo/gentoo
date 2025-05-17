@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,9 +41,9 @@ RDEPEND="
 	dev-libs/re2:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
-	>=gui-libs/aquamarine-0.4.2
+	>=gui-libs/aquamarine-0.8.0:=
 	>=gui-libs/hyprcursor-0.1.9
-	gui-libs/hyprutils:=
+	>=gui-libs/hyprutils-0.5.2:=
 	media-libs/libglvnd
 	media-libs/mesa
 	sys-apps/util-linux
@@ -63,8 +63,9 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	>=dev-libs/hyprland-protocols-0.4
-	>=dev-libs/wayland-protocols-1.36
+	dev-cpp/glaze
+	>=dev-libs/hyprland-protocols-0.6.0
+	>=dev-libs/wayland-protocols-1.41
 "
 BDEPEND="
 	|| ( >=sys-devel/gcc-14:* >=llvm-core/clang-18:* )
@@ -77,11 +78,11 @@ BDEPEND="
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	if tc-is-gcc && ver_test $(gcc-version) -lt 14 ; then
+	if tc-is-gcc && ver_test $(gcc-version) -lt 14; then
 		eerror "Hyprland requires >=sys-devel/gcc-14 to build"
 		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
 		die "GCC version is too old to compile Hyprland!"
-	elif tc-is-clang && ver_test $(clang-version) -lt 18 ; then
+	elif tc-is-clang && ver_test $(clang-version) -lt 18; then
 		eerror "Hyprland requires >=llvm-core/clang-18 to build"
 		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
 		die "Clang version is too old to compile Hyprland!"
@@ -94,6 +95,5 @@ src_configure() {
 		$(meson_feature systemd)
 		$(meson_feature X xwayland)
 	)
-
 	meson_src_configure
 }
