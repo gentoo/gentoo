@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
+# Mask newer versions of cyrus-imapd
+# The package hasn't been bumped in a long time, so 3.10 and 3.12
+# cannot be upgraded straight from 3.4.
+=net-mail/cyrus-imapd-3.10*
+=net-mail/cyrus-imapd-3.12*
+
+# Alfred Wingate <parona@protonmail.com> (2025-05-17)
 # Masked for testing
 dev-db/mysql:8.4
 
