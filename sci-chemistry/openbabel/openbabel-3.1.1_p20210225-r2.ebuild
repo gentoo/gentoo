@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,7 +64,7 @@ COMMON_DEPEND="
 	json? ( >=dev-libs/rapidjson-1.1.0 )
 	png? ( x11-libs/cairo )
 	python? ( ${PYTHON_DEPS} )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 "
 
 DEPEND="
