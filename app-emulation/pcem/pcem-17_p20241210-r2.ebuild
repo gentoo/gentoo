@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/libsdl2
 	media-libs/libglvnd
 	media-libs/openal
-	x11-libs/wxGTK:${WX_GTK_VER}[tiff,X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[tiff,X]
 	alsa? ( media-libs/alsa-lib )
 	experimental? ( media-libs/freetype )
 	networking? ( net-libs/libpcap )
