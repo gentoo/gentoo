@@ -1,0 +1,9 @@
+# Location of config file
+#CONF_FILE=/etc/vaultwarden/vaultwarden.conf
+
+# User & group to start daemon as
+#VW_USER=vaultwarden
+#VW_GROUP=vaultwarden
+
+# Directory to store data in
+#DATA_FOLDER=/var/lib/vaultwarden
