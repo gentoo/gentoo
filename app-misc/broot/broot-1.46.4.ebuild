@@ -8,8 +8,8 @@ inherit cargo shell-completion
 
 DESCRIPTION="A new way to see and navigate directory trees"
 HOMEPAGE="https://dystroy.org/broot/ https://github.com/Canop/broot"
-SRC_URI="https://github.com/Canop/broot/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/gentoo-crate-dist/broot/releases/download/v${PV}/broot-v${PV}-crates.tar.xz"
+SRC_URI="https://github.com/Canop/broot/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/gentoo-crate-dist/broot/releases/download/v${PV}/${P}-crates.tar.xz"
 
 LICENSE="Apache-2.0"
 # Dependent crate licenses
@@ -18,7 +18,7 @@ LICENSE+="
 	LGPL-3+ MIT MPL-2.0 UoI-NCSA Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="X"
 
 DEPEND="
