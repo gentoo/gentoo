@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-inherit desktop flag-o-matic linux-info pax-utils toolchain-funcs wxwidgets
+inherit desktop eapi9-ver flag-o-matic linux-info pax-utils toolchain-funcs wxwidgets
 
 DESCRIPTION="Disk encryption with strong security based on TrueCrypt"
 HOMEPAGE="https://www.veracrypt.fr/en/Home.html"
@@ -17,7 +17,7 @@ S="${WORKDIR}/VeraCrypt-VeraCrypt_${PV}/src"
 # For this reason, we don't have to worry about their licenses
 LICENSE="Apache-2.0 BSD RSA truecrypt-3.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="+asm cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_ssse3 doc X"
 RESTRICT="bindist mirror"
 
@@ -26,7 +26,7 @@ RDEPEND="
 	sys-apps/pcsc-lite
 	sys-fs/fuse:0
 	sys-fs/lvm2
-	x11-libs/wxGTK:${WX_GTK_VER}[X?]"
+	x11-libs/wxGTK:${WX_GTK_VER}=[X?]"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	asm? ( dev-lang/yasm )
@@ -94,18 +94,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	local version
-
 	ewarn "VeraCrypt has a very restrictive license. Please be explicitly aware"
 	ewarn "of the limitations on redistribution of binaries or modified source."
 
 	# Remove this when we remove veracrypt-1.25.9.ebuild from the tree.
-	for version in ${REPLACING_VERSIONS}; do
-		if ver_test "${version}" -lt "1.26.7"; then
-			ewarn "Starting with 1.26.7, TrueCrypt volumes are no longer supported."
-			ewarn "Please explore alternatives such as dm-crypt to mount truecrypt volumes."
-			ewarn "Moreover, support for RIPEMD160 and GOST89 is dropped."
-			ewarn "Volumes using these algoritms will no longer mount."
-		fi
-	done
+	if ver_replacing -lt "1.26.7"; then
+		ewarn "Starting with 1.26.7, TrueCrypt volumes are no longer supported."
+		ewarn "Please explore alternatives such as dm-crypt to mount truecrypt volumes."
+		ewarn "Moreover, support for RIPEMD160 and GOST89 is dropped."
+		ewarn "Volumes using these algoritms will no longer mount."
+	fi
 }
