@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="gstreamer opengl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=x11-libs/wxGTK-3:${WX_GTK_VER}[gstreamer=,opengl=,tiff,X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[gstreamer=,opengl=,tiff,X]
 	>=dev-perl/Module-Pluggable-2.600.0
 "
 BDEPEND="${RDEPEND}
