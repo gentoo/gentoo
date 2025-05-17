@@ -23,7 +23,6 @@ BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-CBuilder-0.24
 	>=virtual/perl-File-Spec-1.500.0
 	>=dev-perl/Module-Build-0.280.0
-	test? ( virtual/perl-Test-Simple )
 "
 DEPEND=${BDEPEND}
 
