@@ -22,8 +22,10 @@ fi
 LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
+# NOTE: moving mms to qmmp-plugin-pack soon:
+# https://sourceforge.net/p/qmmp-dev/code/12062/
 IUSE="X aac +alsa archive bs2b cdda cddb curl +dbus doc enca
-ffmpeg flac game gnome jack ladspa libxmp +mad midi mpg123
+ffmpeg flac game gnome jack ladspa libxmp +mad midi mms mpg123
 mplayer musepack opus pipewire projectm pulseaudio qtmedia
 shout sid sndfile soxr +vorbis wavpack
 "
@@ -60,6 +62,7 @@ RDEPEND="
 	libxmp? ( media-libs/libxmp )
 	mad? ( media-libs/libmad )
 	midi? ( media-sound/wildmidi )
+	mms? ( media-libs/libmms )
 	mpg123? ( media-sound/mpg123-base )
 	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
@@ -137,6 +140,7 @@ src_configure() {
 		-DUSE_LADSPA="$(usex ladspa)"
 		-DUSE_MAD="$(usex mad)"
 		-DUSE_MIDI="$(usex midi)"
+		-DUSE_MMS="$(usex mms)"
 		-DUSE_MPG123="$(usex mpg123)"
 		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MPC="$(usex musepack)"
