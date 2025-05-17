@@ -15,8 +15,8 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/midipix.asc
 	inherit verify-sig
 
-	SRC_URI="https://dl.midipix.org/sltdl/${P}.tar.xz"
-	SRC_URI+=" verify-sig? ( https://dl.midipix.org/sltdl/${P}.tar.xz.sig )"
+	SRC_URI="https://dl.foss21.org/sltdl/${P}.tar.xz"
+	SRC_URI+=" verify-sig? ( https://dl.foss21.org/sltdl/${P}.tar.xz.sig )"
 
 	KEYWORDS="~amd64"
 fi
