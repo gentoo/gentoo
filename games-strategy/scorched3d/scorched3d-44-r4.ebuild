@@ -25,7 +25,7 @@ RDEPEND="
 	media-libs/sdl-net
 	sys-libs/zlib
 	x11-misc/xdg-utils
-	virtual/jpeg:0
+	media-libs/libjpeg-turbo:=
 	!dedicated? (
 		virtual/opengl
 		virtual/glu
