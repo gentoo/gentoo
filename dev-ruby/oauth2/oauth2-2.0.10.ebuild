@@ -22,7 +22,7 @@ RUBY_S="oauth2-v${PV}-*"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend "
