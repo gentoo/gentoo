@@ -1,12 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 
 MY_PN=${PN/-bin/}
 MY_P=${MY_PN}-${PV/_/-}
 MY_PV=$(ver_cut 1-2)
 BASE_SRC_URI="https://julialang-s3.julialang.org/bin"
+
+inherit edo
 
 DESCRIPTION="High-performance programming language for technical computing"
 HOMEPAGE="https://julialang.org/"
@@ -23,18 +25,25 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="${MY_PV}"
 KEYWORDS="-* ~amd64 ~arm64 ~x86"
-
 RESTRICT="strip"
 
 RDEPEND="app-arch/p7zip"
-DEPEND="${RDEPEND}"
+BDEPEND="dev-util/patchelf"
 
 QA_PREBUILT="*"
 QA_SONAME="*"
 
-# the following libs require libblastrampoline.so, which is however generated
-# at runtime...
-QA_DT_NEEDED="*"
+src_prepare() {
+	default
+
+	# Workaround for bug #956047. This can be dropped with >1.10.9.
+	edo patchelf --clear-execstack lib/julia/libopenlibm.so*
+}
+
+src_test() {
+	# Smoke test to catch issues like bug #956047
+	edo bin/julia --version
+}
 
 src_install() {
 	insinto "/usr/$(get_libdir)/${MY_P}/"
@@ -51,6 +60,4 @@ src_install() {
 	newenvd - 99${MY_PN}${revord} <<-EOF
 		PATH="${EPREFIX}/usr/$(get_libdir)/${MY_P}/bin"
 	EOF
-
-	elog "QA warnings about unresolved SONAME dependencies can be safely ignored."
 }
