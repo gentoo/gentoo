@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ IUSE="flac iconv mad png tremor vorbis"
 RDEPEND="
 	dev-libs/boost:=
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}
+	x11-libs/wxGTK:${WX_GTK_VER}=
 	flac? ( media-libs/flac:= )
 	iconv? (
 		virtual/libiconv
