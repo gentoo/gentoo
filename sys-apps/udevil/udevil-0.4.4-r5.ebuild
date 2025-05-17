@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.4-stat.patch
 	"${FILESDIR}"/${PN}-0.4.4-include-sysmacros.patch
 	"${FILESDIR}"/${PN}-0.4.4-no-libtool.patch
+	"${FILESDIR}"/${PN}-0.4.4-no-conf.d.patch
 )
 
 src_prepare() {
