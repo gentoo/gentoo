@@ -29,7 +29,6 @@ CP_DEPEND="
 	dev-java/osgi-annotation:0
 	dev-java/osgi-cmpn:8
 	dev-java/osgi-core:0
-	dev-java/slf4j-simple:0
 	dev-java/snakeyaml:0
 	dev-java/xz-java:0
 "
@@ -38,13 +37,17 @@ DEPEND="${CP_DEPEND}
 	dev-java/commons-lang:3.6
 	dev-java/eclipse-jdt-annotation:0
 	dev-java/felix-gogo-runtime:0
-	dev-java/slf4j-api:0
 	dev-java/jtwig-reflection:0
 	dev-java/osgi-service-log:0
 	dev-java/osgi-service-subsystem:0
+	dev-java/slf4j-simple:0
 	>=virtual/jdk-17:*"
 
 RDEPEND="${CP_DEPEND}
+	~dev-java/bnd-annotation-${PV}:0
+	~dev-java/bnd-util-${PV}:0
+	~dev-java/libg-${PV}:0
+	dev-java/slf4j-api:0
 	>=virtual/jre-17:*"
 
 PATCHES=(
@@ -58,7 +61,7 @@ JAVA_CLASSPATH_EXTRA="
 	jtwig-reflection
 	felix-gogo-runtime
 	osgi-service-subsystem
-	slf4j-api
+	slf4j-simple
 "
 JAVA_MAIN_CLASS="aQute.bnd.main.bnd"
 JAVA_RESOURCE_DIRS="res"
@@ -97,4 +100,12 @@ src_compile() {
 		"*/remote/plugin/*" \
 		"*/remote/test/*" \
 		|| die
+}
+
+src_install() {
+	java-pkg-simple_src_install
+	java-pkg_register-dependency libg
+	java-pkg_register-dependency bnd-annotation
+	java-pkg_register-dependency bnd-util
+	java-pkg_register-dependency slf4j-api
 }
