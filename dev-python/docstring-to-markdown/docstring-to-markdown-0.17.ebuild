@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 x86"
 
 RDEPEND="
 	>=dev-python/importlib-metadata-3.6[${PYTHON_USEDEP}]
