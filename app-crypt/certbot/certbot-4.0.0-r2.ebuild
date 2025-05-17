@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
@@ -220,6 +220,11 @@ python_compile_all() {
 
 python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+
+	tc-has-64bit-time_t || EPYTEST_DESELECT+=(
+		'certbot/_internal/tests/storage_test.py::RenewableCertTests::test_time_interval_judgments'
+	)
+
 	# Change for pytest rootdir is required.
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	epytest
