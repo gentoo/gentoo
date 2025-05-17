@@ -4,7 +4,7 @@
 EAPI=8
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake wxwidgets multilib flag-o-matic xdg
+inherit cmake wxwidgets xdg
 
 DESCRIPTION="Math Graphics Library"
 HOMEPAGE="https://mathgl.sourceforge.net"
@@ -30,7 +30,7 @@ RDEPEND="
 	gsl? ( >=sci-libs/gsl-2:= )
 	hdf? ( sci-libs/hdf )
 	hdf5? ( >=sci-libs/hdf5-1.8:=[mpi=] )
-	jpeg? ( virtual/jpeg:0 )
+	jpeg? ( media-libs/libjpeg-turbo:= )
 	octave? ( >=sci-mathematics/octave-3.4.0 )
 	openmp? ( sys-cluster/openmpi )
 	pdf? ( media-libs/libharu )
