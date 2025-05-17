@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -41,7 +41,7 @@ RDEPEND="
 		dev-qt/qtprintsupport:5
 		dev-qt/qtwidgets:5
 	)
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-text/texi2html virtual/texi2dvi )
