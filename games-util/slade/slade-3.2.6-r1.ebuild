@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,10 +9,12 @@ WX_GTK_VER="3.2-gtk3"
 inherit cmake lua-single wxwidgets xdg
 
 MY_PV="${PV/beta/b}"
+
 DESCRIPTION="Modern editor for Doom-engine based games and source ports"
 HOMEPAGE="https://slade.mancubus.net/"
 SRC_URI="https://github.com/sirjuddington/${PN^^}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN^^}-${MY_PV}"
+
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -31,7 +33,7 @@ DEPEND="
 	media-sound/mpg123
 	net-misc/curl
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}[curl(+),opengl,webkit?,X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[curl(+),opengl,webkit?,X]
 	fluidsynth? ( media-sound/fluidsynth:= )
 "
 
