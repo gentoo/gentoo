@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/938228
+https://github.com/Return-To-The-Roots/s25client/commit/0d2a837baa3b72c1154940a4ff910f701ca02fa0
+
+From 0d2a837baa3b72c1154940a4ff910f701ca02fa0 Mon Sep 17 00:00:00 2001
+From: Alexander Grund <Flamefire@users.noreply.github.com>
+Date: Sun, 4 May 2025 18:09:06 +0200
+Subject: [PATCH] Workaround missing include in kaguya
+
+---
+ libs/libGamedata/lua/LuaInterfaceBase.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libs/libGamedata/lua/LuaInterfaceBase.h b/libs/libGamedata/lua/LuaInterfaceBase.h
+index e5b472c11d..3876f3fefc 100644
+--- a/libs/libGamedata/lua/LuaInterfaceBase.h
++++ b/libs/libGamedata/lua/LuaInterfaceBase.h
+@@ -1,9 +1,11 @@
+-// Copyright (C) 2005 - 2021 Settlers Freaks (sf-team at siedler25.org)
++// Copyright (C) 2005 - 2025 Settlers Freaks (sf-team at siedler25.org)
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #pragma once
+ 
++#include <cstdint> // Required here for missing include in kaguya/native_function.hpp
++
+ #include <kaguya/kaguya.hpp>
+ #include <boost/filesystem/path.hpp>
+ #include <map>
+
