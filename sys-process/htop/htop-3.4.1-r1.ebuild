@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # We avoid xdg.eclass here because it'll pull in glib, desktop utils on
 # htop which is often used on headless machines. bug #787470
-inherit linux-info optfeature xdg-utils
+inherit fcaps linux-info optfeature xdg-utils
 
 DESCRIPTION="Interactive process viewer"
 HOMEPAGE="https://htop.dev/ https://github.com/htop-dev/htop"
@@ -14,12 +14,12 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/htop-dev/htop/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 S="${WORKDIR}/${P/_}"
 
-LICENSE="BSD GPL-2+"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="caps debug delayacct hwloc lm-sensors llvm-libunwind openvz unicode unwind vserver"
 
@@ -39,7 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-DOCS=( ChangeLog README )
+DOCS=( ChangeLog README.md )
 
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
@@ -95,6 +95,8 @@ src_configure() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+
+	fcaps cap_sys_ptrace /usr/bin/${PN}
 
 	optfeature "Viewing processes accessing certain files" sys-process/lsof
 }
