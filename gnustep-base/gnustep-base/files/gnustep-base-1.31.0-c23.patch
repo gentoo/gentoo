@@ -1,0 +1,47 @@
+From 70d5ac40655659e38f0beb14cff083014bb4a747 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Thu, 27 Feb 2025 16:44:23 +0200
+Subject: [PATCH] Use signal_handler prototype that signal() expects
+
+C23 is stricter about function prototypes and as such this causes the
+build to fail on GCC-15 by default.
+
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+---
+ Tools/gdomap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Tools/gdomap.c b/Tools/gdomap.c
+index c04fb522c..9db5f6b47 100644
+--- a/Tools/gdomap.c
++++ b/Tools/gdomap.c
+@@ -192,7 +192,7 @@ static char	*local_hostname = 0;
+  */
+ static void	dump_stats();
+ #ifndef __MINGW__
+-static void	dump_tables();
++static void	dump_tables(int sig);
+ #endif
+ static void	handle_accept();
+ static void	handle_io();
+@@ -1135,7 +1135,7 @@ dump_stats()
+ 
+ #ifndef __MINGW__
+ static void
+-dump_tables()
++dump_tables(int sig)
+ {
+   FILE	*fptr;
+ 
+@@ -3704,7 +3704,7 @@ tryWrite(int desc, int tim, unsigned char* dat, int len)
+ #if	defined(__MINGW__) /* FIXME: Is this correct? */
+ 	  rval = send(desc, (const char*)&dat[pos], len - pos, 0);
+ #else
+-	  void	(*ifun)();
++	  void	(*ifun)(int);
+ 
+ 	  /*
+ 	   *	Should be able to write this short a message immediately, but
+-- 
+2.48.1
+
