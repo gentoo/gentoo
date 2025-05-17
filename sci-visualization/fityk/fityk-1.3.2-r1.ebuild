@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ DEPEND="
 	>=sci-libs/xylib-1
 	nlopt? ( sci-libs/nlopt )
 	readline? ( sys-libs/readline:0= )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER} )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}= )
 "
 RDEPEND="${DEPEND}
 	gnuplot? ( sci-visualization/gnuplot )
