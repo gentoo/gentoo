@@ -6,7 +6,7 @@ EAPI=8
 WX_GTK_VER="3.2-gtk3"
 VIRTUALX_REQUIRED="manual"
 
-inherit flag-o-matic java-pkg-opt-2 java-pkg-simple toolchain-funcs virtualx wxwidgets
+inherit java-pkg-opt-2 java-pkg-simple toolchain-funcs virtualx wxwidgets
 
 DESCRIPTION="A WAM based Prolog system"
 HOMEPAGE="http://ctp.di.fct.unl.pt/~amd/cxprolog/"
