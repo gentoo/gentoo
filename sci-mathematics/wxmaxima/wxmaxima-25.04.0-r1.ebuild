@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libxml2:2
-	x11-libs/wxGTK:${WX_GTK_VER}[webkit?]"
+	x11-libs/wxGTK:${WX_GTK_VER}=[webkit?]"
 RDEPEND="${DEPEND}
 	media-fonts/jsmath
 	sci-visualization/gnuplot[wxwidgets]
