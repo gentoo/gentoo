@@ -624,7 +624,7 @@ python_optimize() {
 	local jobs=$(makeopts_jobs)
 	local d
 	for d; do
-		einfo "Optimize Python modules for ${instpath}"
+		einfo "Optimizing Python modules in ${d#${D}}"
 		# NB: '-s' makes the path relative, so we need '-p /' to make it
 		# absolute again; https://github.com/python/cpython/issues/133503
 		"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 \
