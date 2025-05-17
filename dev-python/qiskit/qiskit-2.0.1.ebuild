@@ -81,11 +81,6 @@ src_prepare() {
 
 	# strip forcing -Werror from tests that also leaks to other packages
 	sed -i -e '/filterwarnings.*error/d' test/utils/base.py || die
-
-	# sigh
-	find test -name '*.py' -exec \
-		sed -i -e 's:assertRaises(DeprecationWarning):assertWarns(DeprecationWarning):' \
-		{} + || die
 }
 
 python_test() {
