@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Alien-wxWidgets-0.690.0-r1
-	x11-libs/wxGTK:${WX_GTK_VER}
+	x11-libs/wxGTK:${WX_GTK_VER}=
 	>=virtual/perl-File-Spec-0.820.0
 "
 DEPEND="${RDEPEND}
