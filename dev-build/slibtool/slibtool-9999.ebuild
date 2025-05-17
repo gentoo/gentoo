@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ fi
 BDEPEND="sys-devel/m4"
 
 if [[ ${PV} != *9999 ]] ; then
-	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-midipix-20240315 )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-midipix-20250517 )"
 fi
 
 LICENSE="MIT"
