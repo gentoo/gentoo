@@ -100,6 +100,8 @@ PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	# Gentoo specific acct-user and acct-group conf adjustments
 	"${FILESDIR}"/${PN}-106-acct-user-group-gentoo.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/1322
+	"${FILESDIR}"/${PN}-107-hostonly-regression-fix-1322.patch
 )
 
 pkg_setup() {
