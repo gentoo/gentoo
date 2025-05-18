@@ -26,7 +26,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	<dev-python/cryptography-45[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-42[${PYTHON_USEDEP}]
 	>=dev-python/id-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-4.2[${PYTHON_USEDEP}]
