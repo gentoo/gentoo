@@ -1,0 +1,39 @@
+Bug: https://bugs.gentoo.org/955553
+Based on: https://gitlab.archlinux.org/archlinux/packaging/packages/prusa-slicer/-/blob/main/boost-1.88.patch
+
+--- a/src/libslic3r/GCode/PostProcessor.cpp
++++ b/src/libslic3r/GCode/PostProcessor.cpp
+@@ -152,7 +152,14 @@ static int run_script(const std::string &script, const std::string &gcode, std::
+ 
+ #include <cstdlib>   // getenv()
+ #include <sstream>
++#if BOOST_VERSION >= 108800 // v2 is now default
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#else
+ #include <boost/process.hpp>
++#endif
+ 
+ namespace process = boost::process;
+ 
+--- a/src/slic3r/GUI/RemovableDriveManager.cpp
++++ b/src/slic3r/GUI/RemovableDriveManager.cpp
+@@ -35,8 +35,16 @@
+ #include <pwd.h>
+ #include <boost/filesystem.hpp>
+ #include <boost/system/error_code.hpp>
++#if BOOST_VERSION >= 108800 // v2 is now default
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/search_path.hpp>
++#else
+ #include <boost/process.hpp>
+ #endif
++#endif
+ 
+ namespace Slic3r {
+ namespace GUI { 

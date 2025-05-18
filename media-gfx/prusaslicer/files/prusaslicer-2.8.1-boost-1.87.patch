@@ -1,9 +1,8 @@
 https://bugs.gentoo.org/946495
 https://github.com/prusa3d/PrusaSlicer/issues/13799
 
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.cpp PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.cpp
---- PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.cpp	2024-12-21 11:52:03.612595066 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.cpp	2024-12-21 12:34:03.859507724 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.cpp
++++ PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.cpp
 @@ -113,7 +113,7 @@ GCodeSender::connect(std::string devname
      this->io.post(boost::bind(&GCodeSender::do_read, this));
      
@@ -13,9 +12,8 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSend
      this->background_thread.swap(t);
      
      // always send a M105 to check for connection because firmware might be silent on connect
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.hpp PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.hpp
---- PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.hpp	2024-12-21 11:52:03.612595066 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.hpp	2024-12-21 12:34:26.163427521 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSender.hpp
++++ PrusaSlicer-version_2.8.1-dwok/src/libslic3r/GCodeSender.hpp
 @@ -40,7 +40,7 @@ class GCodeSender : private boost::nonco
      void reset();
      
@@ -25,9 +23,8 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/libslic3r/GCodeSend
      asio::serial_port serial;
      boost::thread background_thread;
      boost::asio::streambuf read_buffer, write_buffer;
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/GUI/FirmwareDialog.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/GUI/FirmwareDialog.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/GUI/FirmwareDialog.cpp	2024-12-21 11:52:03.632594994 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/GUI/FirmwareDialog.cpp	2024-12-21 12:33:40.507591681 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/slic3r/GUI/FirmwareDialog.cpp
++++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/GUI/FirmwareDialog.cpp
 @@ -429,7 +429,7 @@ void FirmwareDialog::priv::avr109_wait_f
  
  void FirmwareDialog::priv::avr109_reboot(const SerialPortInfo &port)
@@ -37,9 +34,8 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/GUI/Firmware
  	Serial serial(io, port.port, 1200);
  	std::this_thread::sleep_for(std::chrono::milliseconds(50));
  }
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.cpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.cpp	2024-12-21 12:47:16.560667015 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.cpp
++++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.cpp
 @@ -624,11 +624,11 @@ UdpSession::UdpSession(Bonjour::ReplyFn
  	buffer.resize(DnsMessage::MAX_SIZE);
  }
@@ -215,9 +211,8 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  	}
  	catch (std::exception& e) {
  		BOOST_LOG_TRIVIAL(error) << e.what();
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.hpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.hpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.hpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.hpp	2024-12-21 12:23:16.573836269 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjour.hpp
++++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Bonjour.hpp
 @@ -155,11 +155,11 @@ public:
  	UdpSocket(Bonjour::ReplyFn replyfn
  		, const boost::asio::ip::address& multicast_address
@@ -285,9 +280,8 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Bonjou
  		, hostname(hostname)
  
  	{
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.cpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.cpp	2024-12-21 11:59:40.018945840 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.cpp
++++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.cpp
 @@ -282,12 +282,12 @@ std::vector<std::string> scan_serial_por
  namespace asio = boost::asio;
  using boost::system::error_code;
@@ -337,9 +331,8 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial
  
  		if (fail) {
  			return false;
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.hpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.hpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.hpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.hpp	2024-12-21 11:55:33.283837413 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial.hpp
++++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/Serial.hpp
 @@ -43,8 +43,8 @@ extern std::vector<SerialPortInfo> 	scan
  class Serial : public boost::asio::serial_port
  {
@@ -351,9 +344,8 @@ diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/Serial
  	Serial(const Serial &) = delete;
  	Serial &operator=(const Serial &) = delete;
  	~Serial();
-diff '--color=auto' -urNp PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/TCPConsole.cpp PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/TCPConsole.cpp
---- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/TCPConsole.cpp	2024-12-21 11:52:03.644594950 +0100
-+++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/TCPConsole.cpp	2024-12-21 13:00:56.377754763 +0100
+--- PrusaSlicer-version_2.8.1-orig/src/slic3r/Utils/TCPConsole.cpp
++++ PrusaSlicer-version_2.8.1-dwok/src/slic3r/Utils/TCPConsole.cpp
 @@ -9,6 +9,7 @@
  #include <boost/asio/read_until.hpp>
  #include <boost/asio/steady_timer.hpp>
