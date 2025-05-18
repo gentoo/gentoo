@@ -16,7 +16,7 @@ SRC_URI="https://github.com/stevengj/nlopt/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="cxx guile octave python test"
+IUSE="guile octave python test"
 REQUIRED_USE="guile? ( ${GUILE_REQUIRED_USE} ) python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
@@ -53,7 +53,7 @@ src_configure() {
 	# MATLAB detection causes problems (as in bug #826774) if we don't
 	# explicitly disable it.
 	local mycmakeargs=(
-		-DNLOPT_CXX=$(usex cxx)
+		-DNLOPT_CXX=ON
 		-DNLOPT_FORTRAN=$(usex test)
 		-DNLOPT_GUILE=$(usex guile)
 		-DNLOPT_JAVA=OFF
@@ -94,7 +94,7 @@ src_test() {
 		cd "${BUILD_DIR}"/test || die
 
 		local a f
-		for a in {1..$(usex cxx 9 7)}; do
+		for a in {1..9}; do
 			for f in {5..9}; do
 				./testopt -a $a -o $f || die "algorithm $a function $f failed"
 			done
