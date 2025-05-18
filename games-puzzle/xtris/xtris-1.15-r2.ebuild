@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,8 @@ DEPEND="x11-libs/libX11"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.15-implicit-function-decl-time.patch
+	"${FILESDIR}"/${P}-implicit-function-decl-time.patch
+	"${FILESDIR}"/${P}-gcc15.patch
 )
 
 src_compile() {
