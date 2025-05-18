@@ -17,11 +17,11 @@ IUSE="debug examples +introspection sysprof test X"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/glib-2.62.2:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.80:2[${MULTILIB_USEDEP}]
 	>=dev-libs/fribidi-1.0.6[${MULTILIB_USEDEP}]
-	>=media-libs/harfbuzz-2.6.0:=[glib(+),introspection?,truetype(+),${MULTILIB_USEDEP}]
-	>=media-libs/fontconfig-2.13.0:1.0[${MULTILIB_USEDEP}]
-	>=x11-libs/cairo-1.12.10[X?,${MULTILIB_USEDEP}]
+	>=media-libs/harfbuzz-8.4.0:=[glib(+),introspection?,truetype(+),${MULTILIB_USEDEP}]
+	>=media-libs/fontconfig-2.15.0:1.0[${MULTILIB_USEDEP}]
+	>=x11-libs/cairo-1.18.0[X?,${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 	X? (
@@ -35,9 +35,10 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 BDEPEND="
+	>=dev-build/meson-1.2.0
 	dev-util/glib-utils
-	sys-apps/help2man
 	virtual/pkgconfig
+	dev-python/docutils
 	test? ( media-fonts/cantarell )
 "
 
@@ -63,6 +64,7 @@ multilib_src_configure() {
 
 		-Ddocumentation=false # we ship pregenerated docs
 		$(meson_native_use_feature introspection)
+		-Dman-pages=true
 		$(meson_use test build-testsuite)
 		-Dbuild-examples=false
 		-Dfontconfig=enabled
@@ -79,10 +81,6 @@ multilib_src_install_all() {
 	if use examples; then
 		dodoc -r examples
 	fi
-
-	insinto /usr/share/gtk-doc/html
-	# This will install PangoXft API docs regardless of USE=-X, but this is intentional
-	doins -r "${S}"/docs/Pango*
 }
 
 pkg_postinst() {
