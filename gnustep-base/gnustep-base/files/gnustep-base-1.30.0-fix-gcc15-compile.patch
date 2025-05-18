@@ -1,0 +1,12 @@
+--- a/Tools/GNUmakefile
++++ b/Tools/GNUmakefile
+@@ -52,6 +52,9 @@
+ 
+ ADDITIONAL_CPPFLAGS = -DGNUSTEP_BASE_INTERNAL=1
+ 
++# Disable specifically the incompatible pointer type warnings for gdomap.c
++gdomap.c_FILE_FLAGS = -Wno-incompatible-pointer-types
++
+ # DTDs to install
+ dtddir = $(GNUSTEP_LIBRARY)/DTDs
+ DTD_FILES = plist-0_9.dtd \
