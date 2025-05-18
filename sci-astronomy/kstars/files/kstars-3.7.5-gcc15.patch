@@ -1,0 +1,25 @@
+From 112d61819075f3e5a7def72deb2b5055fd6ad91f Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Sat, 10 May 2025 10:05:24 +0300
+Subject: [PATCH] Fix build with GCC-15
+
+* asturm 2025-05-18: Split from unrelated changes.
+
+---
+ kstars/auxiliary/gslhelpers.h              |  1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kstars/auxiliary/gslhelpers.h b/kstars/auxiliary/gslhelpers.h
+index ebd29480fc..8ef9e2bc76 100644
+--- a/kstars/auxiliary/gslhelpers.h
++++ b/kstars/auxiliary/gslhelpers.h
+@@ -7,6 +7,7 @@
+ #pragma once
+ 
+ #include <memory>
++#include <cstdint>
+ #include <gsl/gsl_vector.h>
+ #include <gsl/gsl_sort.h>
+ #include <gsl/gsl_statistics.h>
+-- 
+GitLab
