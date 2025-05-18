@@ -26,10 +26,15 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/gstreamer_compat__ge_pygobject-3.52.3.patch"
+)
+
 src_prepare() {
 	default
 
-	# Avoid building & testing plugin - it must NOT be multi-python as gst-inspect will map in all libpython.so versions and crash or behave mysteriously.
+	# Avoid building & testing plugin - it must NOT be multi-python as gst-inspect will map in all libpython.so versions
+	# and crash or behave mysteriously.
 	# Python plugin support is of limited use (GIL gets in the way). If it's ever requested or needed, it should be a
 	# separate python-single-r1 media-plugins/gst-plugins-python package that only builds the plugin directory.
 	sed -e '/subdir.*plugin/d' -i meson.build || die
