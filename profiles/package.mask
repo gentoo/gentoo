@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-19)
+# Dead upstream (last commit >4 years ago), not ported to Qt6 and broken w/
+# CMake 4. Bugs #955134, #955135. Removal on 2025-06-18.
+sci-libs/libgeodecomp
+
 # Ulrich Müller <ulm@gentoo.org> (2025-05-18)
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.1.9999:30-vcs
