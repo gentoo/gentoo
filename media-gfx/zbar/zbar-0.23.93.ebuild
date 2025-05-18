@@ -111,7 +111,7 @@ src_prepare() {
 
 		python_fix_shebang \
 			examples/*.py \
-			test/{test_python,barcodetest}.py # test_pygtk.py — py2 only
+			test/{test_python,barcodetest}.py # test_pygtk.py - py2 only
 	fi
 
 	if use java; then

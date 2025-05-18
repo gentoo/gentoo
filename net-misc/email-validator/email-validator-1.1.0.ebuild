@@ -14,7 +14,7 @@ LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RESTRICT=test # Ambiguous module name ‘Network.DNS’: dns-4.0.1 resolv-0.1.2.0
+RESTRICT=test # Ambiguous module name 'Network.DNS': dns-4.0.1 resolv-0.1.2.0
 
 RDEPEND=">=dev-haskell/cmdargs-0.10:=
 	>=dev-haskell/dns-2:=

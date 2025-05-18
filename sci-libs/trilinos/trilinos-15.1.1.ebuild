@@ -228,7 +228,7 @@ src_install() {
 
 	# Let us move the bin directory out of the way to avoid potential
 	# clashes due to very generically named binaries such as
-	# »nvcc_wrapper«, etc.
+	# "nvcc_wrapper", etc.
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 
 	# Move the cmake directory to the right location:

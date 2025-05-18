@@ -49,8 +49,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# netlib.c:2292:5: warning: implicit declaration of function ‘sched_setaffinity’
-	# nettest_omni.c:2943:5: warning: implicit declaration of function ‘splice’
+	# netlib.c:2292:5: warning: implicit declaration of function 'sched_setaffinity'
+	# nettest_omni.c:2943:5: warning: implicit declaration of function 'splice'
 	# TODO: drop once https://github.com/HewlettPackard/netperf/pull/73 merged
 	append-cppflags -D_GNU_SOURCE
 

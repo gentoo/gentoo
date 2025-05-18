@@ -44,7 +44,7 @@ src_prepare() {
 }
 
 src_compile() {
-	# "ckcfn3.c:224:16: error: type of ‘sndfilter’ does not match original declaration"
+	# "ckcfn3.c:224:16: error: type of 'sndfilter' does not match original declaration"
 	filter-lto
 
 	# We don't enable any of the telnet/ftp authentication stuff
