@@ -24,3 +24,4 @@ gfx1031 - RDNA2 GPU, codename navi22/navy flounder, including Radeon RX 6750XT/6
 gfx1100 - RDNA3 GPU, codename navi31/plum bonito, including Radeon RX 7900XTX/7900XT, AMD Radeon Pro W7900/W7800
 gfx1101 - RDNA3 GPU, codename navi32, including Radeon RX 7700XT/7800XT
 gfx1102 - RDNA3 GPU, codename navi33, including Radeon RX 7600/7600M/7600M XT/7700S/7600S, AMD Radeon PRO W7600/W7500
+gfx1201 - RDNA4 GPU, codename navi48, including Radeon RX 9070/9070XT/9070GRE
