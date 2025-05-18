@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dehydrated.asc
 
-inherit verify-sig
+inherit verify-sig systemd
 
 DESCRIPTION="A client for signing certificates with an ACME-server"
 HOMEPAGE="https://dehydrated.io/"
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="+cron"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-dehydrated )"
@@ -45,6 +45,8 @@ src_install() {
 	keepdir /etc/${PN}/domains.d
 
 	doman  docs/man/dehydrated.1
+
+	systemd_dounit "${FILESDIR}/${PN}."*
 
 	if use cron ; then
 		insinto /etc/cron.d
