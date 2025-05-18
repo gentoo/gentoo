@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=media-libs/gstreamer-${PV}:1.0[introspection]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection]
 	>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}]
+	<dev-python/pygobject-3.52:3
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -28,8 +29,8 @@ BDEPEND="
 
 src_prepare() {
 	default
-
-	# Avoid building & testing plugin - it must NOT be multi-python as gst-inspect will map in all libpython.so versions and crash or behave mysteriously.
+	# Avoid building & testing plugin - it must NOT be multi-python as gst-inspect will map in all libpython.so versions
+	# and crash or behave mysteriously.
 	# Python plugin support is of limited use (GIL gets in the way). If it's ever requested or needed, it should be a
 	# separate python-single-r1 media-plugins/gst-plugins-python package that only builds the plugin directory.
 	sed -e '/subdir.*plugin/d' -i meson.build || die
