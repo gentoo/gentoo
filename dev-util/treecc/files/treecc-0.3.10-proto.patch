@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/880433
+
+--- a/etc/c_skel.c
++++ b/etc/c_skel.c
+@@ -112,8 +112,7 @@ YYNODESTATE *state__;
+ unsigned int size__;
+ {
+ #else
+-void *yynodealloc(size__)
+-unsigned int size__;
++void *yynodealloc(unsigned int size__)
+ {
+ 	YYNODESTATE *state__ = &fixed_state__;
+ #endif
