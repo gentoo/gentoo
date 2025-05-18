@@ -24,3 +24,4 @@ CHOST_m68k="${CHOST}"
 # and explicitly disable 3.13
 PYTHON_SINGLE_TARGET="python3_12 -python3_13"
 PYTHON_TARGETS="python3_12 -python3_13"
+BOOTSTRAP_USE="${BOOTSTRAP_USE} -python_targets_python3_13 -python_single_target_python3_13 python_targets_python3_12 python_single_target_python3_12"
