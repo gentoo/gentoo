@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -54,7 +54,7 @@ RDEPEND="
 	scalapack? ( sci-libs/scalapack )
 	scotch? ( sci-libs/scotch:= )
 	sparse? ( sci-libs/cxsparse sci-libs/umfpack )
-	superlu? ( sci-libs/superlu:= )
+	superlu? ( <sci-libs/superlu-5.0.0:= )
 	taucs? ( sci-libs/taucs )
 	tbb? ( dev-cpp/tbb:= )
 	tvmet? ( dev-libs/tvmet )
@@ -155,11 +155,10 @@ src_configure() {
 		-DTPL_ENABLE_SuperLU="$(usex superlu)"
 		-DTPL_ENABLE_TAUCS="$(usex taucs)"
 		-DTPL_ENABLE_TBB="$(usex tbb)"
-		-DTPL_ENABLE_Thrust="$(usex cuda)"
 		-DTPL_ENABLE_TVMET="$(usex tvmet)"
 		-DTPL_ENABLE_UMFPACK="$(usex sparse)"
 		-DTPL_ENABLE_X11="$(usex X)"
-		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
+		-DTPL_ENABLE_yamlcpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
 	)
 
