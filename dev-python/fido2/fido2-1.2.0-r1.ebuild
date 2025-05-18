@@ -23,7 +23,7 @@ KEYWORDS="amd64 arm arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="examples"
 
 RDEPEND="
-	<dev-python/cryptography-45[${PYTHON_USEDEP}]
+	dev-python/cryptography[${PYTHON_USEDEP}]
 	<dev-python/pyscard-3[${PYTHON_USEDEP}]
 	examples? (
 		dev-python/flask[${PYTHON_USEDEP}]
@@ -32,6 +32,13 @@ RDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin
+	sed -i -e '/cryptography/s:, <[0-9]*::' pyproject.toml || die
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
