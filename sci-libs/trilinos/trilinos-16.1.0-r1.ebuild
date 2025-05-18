@@ -100,7 +100,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_SKIP_INSTALL_RPATH=ON
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
@@ -222,13 +222,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-
-	# Clean up the mess:
-
-	# Let us move the bin directory out of the way to avoid potential
-	# clashes due to very generically named binaries such as
-	# »nvcc_wrapper«, etc.
-	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 
 	# Move the cmake directory to the right location:
 	mkdir -p "${ED}/usr/$(get_libdir)"/cmake
