@@ -227,5 +227,6 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	use static-libs || find "${ED}"/usr -name '*.la' -delete
-	strip-lto-bytecode
+	# Explicit "${ED}" as we need it to do things even w/ USE=-static-libs
+	strip-lto-bytecode "${ED}"
 }
