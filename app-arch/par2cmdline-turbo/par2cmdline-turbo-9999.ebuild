@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-DESCRIPTION="par2cmdline × ParPar: speed focused par2cmdline fork"
+DESCRIPTION="par2cmdline x ParPar: speed focused par2cmdline fork"
 HOMEPAGE="https://github.com/animetosho/par2cmdline-turbo"
 
 LICENSE="GPL-2+"

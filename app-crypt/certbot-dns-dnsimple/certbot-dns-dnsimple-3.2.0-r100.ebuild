@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="DNSimple Authenticator plugin for Certbot (Let’s Encrypt Client)"
+DESCRIPTION="DNSimple Authenticator plugin for Certbot (Let's Encrypt Client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot-dns-dnsimple/

@@ -8,7 +8,7 @@ EAPI=8
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
-DESCRIPTION="LPeg – Parsing Expression Grammars For Lua"
+DESCRIPTION="LPeg - Parsing Expression Grammars For Lua"
 HOMEPAGE="https://hslua.org/"
 
 LICENSE="MIT"

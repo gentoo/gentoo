@@ -22,7 +22,7 @@ else
 	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 fi
 
-DESCRIPTION="Let’s Encrypt client to automate deployment of X.509 certificates"
+DESCRIPTION="Let's Encrypt client to automate deployment of X.509 certificates"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot/

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Apache plugin for Certbot (Let’s Encrypt client)"
+DESCRIPTION="Apache plugin for Certbot (Let's Encrypt client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot-apache/

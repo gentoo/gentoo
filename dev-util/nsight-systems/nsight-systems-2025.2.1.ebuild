@@ -5,7 +5,7 @@ EAPI=8
 
 inherit edo unpacker
 
-DESCRIPTION="performance analysis tool designed to visualize an application’s algorithms"
+DESCRIPTION="performance analysis tool designed to visualize an application's algorithms"
 HOMEPAGE="https://developer.nvidia.com/nsight-systems"
 
 MY_PV="$(ver_rs 1-2 '_' "$(ver_cut 1-2)")"

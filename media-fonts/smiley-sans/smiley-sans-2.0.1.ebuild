@@ -7,7 +7,7 @@ inherit font
 
 MY_P="${PN}-v${PV}"
 
-DESCRIPTION="得意黑 Smiley Sans: an open-source italic sans-serif Chinese font"
+DESCRIPTION="Deyi Hei Smiley Sans: an open-source italic sans-serif Chinese font"
 HOMEPAGE="https://github.com/atelier-anchor/smiley-sans"
 SRC_URI="https://github.com/atelier-anchor/smiley-sans/releases/download/v${PV}/${MY_P}.zip"
 S="${WORKDIR}"
