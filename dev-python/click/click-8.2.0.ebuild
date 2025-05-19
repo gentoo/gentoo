@@ -26,9 +26,9 @@ IUSE="examples"
 
 distutils_enable_sphinx docs \
 	'>=dev-python/docutils-0.14' \
+	dev-python/myst-parser \
 	dev-python/pallets-sphinx-themes \
 	dev-python/sphinxcontrib-log-cabinet \
-	dev-python/sphinx-issues \
 	dev-python/sphinx-tabs
 distutils_enable_tests pytest
 
