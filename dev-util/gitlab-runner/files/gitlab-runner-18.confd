@@ -1,0 +1,5 @@
+# config file for /etc/init.d/gitlab-runner
+# run /usr/bin/gitlab-runner -h to see available options
+# --config, --user and --working-directory are set by the
+# service script, so do not add them here.
+# RUNNER_OPTS=""
