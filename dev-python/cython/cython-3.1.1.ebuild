@@ -50,6 +50,11 @@ python_compile() {
 	# Python gets confused when it is in sys.path before build.
 	local -x PYTHONPATH=
 
+	if use elibc_musl ; then
+		# Workaround for bug #925318
+		local -x LDFLAGS="${LDFLAGS} -Wl,-z,stack-size=2097152"
+	fi
+
 	distutils-r1_python_compile
 }
 
