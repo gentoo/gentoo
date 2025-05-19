@@ -20,7 +20,6 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples"
-BDEPEND="dev-build/autoconf-archive"
 
 src_configure() {
 	econf --disable-static
