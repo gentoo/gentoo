@@ -3,13 +3,12 @@
 
 EAPI=8
 
-inherit autotools
-
 DESCRIPTION="Hadron Seedless Infrared-Safe Cone jet algorithm"
 HOMEPAGE="
 	https://siscone.hepforge.org/
 	https://gitlab.com/fastjet/siscone
 "
+
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.com/fastjet/siscone"
@@ -22,12 +21,6 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples"
 BDEPEND="dev-build/autoconf-archive"
-
-src_prepare() {
-	default
-	# Rebuild live ebuild
-	eautoreconf
-}
 
 src_configure() {
 	econf --disable-static
