@@ -27,6 +27,14 @@ BDEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	# r10019 upstream
+	"${FILESDIR}/${P}-pygments-2.19.patch"
+	# this changed back at some point, but upstream didn't hit it
+	# because of https://sourceforge.net/p/docutils/bugs/500/
+	"${FILESDIR}/${P}-pillow.patch"
+)
+
 python_compile_all() {
 	# Generate html docs from reStructured text sources.
 
