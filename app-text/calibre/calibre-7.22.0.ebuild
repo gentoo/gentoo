@@ -166,7 +166,7 @@ src_compile() {
 
 	# Workaround for GCC 15 (bug #949509)
 	# Can be dropped w/ >=7.25.0
-	append-cflags -std=gnu17
+	tc-is-gcc && append-cflags -std=gnu17
 
 	# bug 821871
 	local MY_LIBDIR="${ESYSROOT}/usr/$(get_libdir)"
