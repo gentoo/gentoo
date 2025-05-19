@@ -117,6 +117,12 @@ fi
 # for econf and is needed to pass TRY_RUN results when cross-compiling.
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
+# @ECLASS_VARIABLE: CMAKE_QA_COMPAT_SKIP
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, skip detection of CMakeLists.txt unsupported in CMake 4 in case of
+# false positives (e.g. unused outdated bundled libs).
+
 # @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -446,15 +452,17 @@ cmake_src_configure() {
 	xdg_environment_reset
 
 	local file ver cmreq_isold
-	while read -d '' -r file ; do
-		ver=$(sed -ne "/cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
-			"${file}" 2>/dev/null \
-		)
+	if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
+		while read -d '' -r file ; do
+			ver=$(sed -ne "/cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
+				"${file}" 2>/dev/null \
+			)
 
-		if [[ -n $ver ]] && ver_test $ver -lt "3.5"; then
-			cmreq_isold=true
-		fi
-	done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0)
+			if [[ -n $ver ]] && ver_test $ver -lt "3.5"; then
+				cmreq_isold=true
+			fi
+		done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0)
+	fi
 
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
