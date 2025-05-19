@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
 else
 	SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -38,7 +38,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.68.2:2
 	>=dev-libs/json-glib-1.2.6
-	>=media-libs/babl-0.1.112[introspection?,lcms?,vala?]
+	>=media-libs/babl-0.1.114[introspection?,lcms?,vala?]
 	media-libs/libjpeg-turbo
 	media-libs/libnsgif
 	>=media-libs/libpng-1.6.0:0=
@@ -102,6 +102,18 @@ src_prepare() {
 	if [[ ${CHOST} == *-darwin* && ${CHOST#*-darwin} -le 9 ]] ; then
 		sed -i -e 's/#ifdef __APPLE__/#if 0/' gegl/opencl/* || die
 	fi
+
+	# fix 'build'headers from *.cl on gentoo-hardened, bug 739816
+	pushd "${S}/opencl/" || die
+	for file in *.cl; do
+		if [[ -f ${file} ]]; then
+			"${EPYTHON}" cltostring.py "${file}" || die
+		fi
+	done
+	popd || die
+
+	# Fix QA warning, install docs into /usr/share/gtk-doc/gegl-0.4 instead of /usr/share/doc/gegl-0.4
+	sed -i -e   "s/'doc'/'gtk-doc'/" docs/reference/meson.build || die
 }
 
 src_configure() {
