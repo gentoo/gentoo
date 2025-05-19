@@ -644,6 +644,11 @@ cmake_src_configure() {
 		if [[ ${EAPI} == 7 ]]; then
 			eqawarn "QA Notice: EAPI=7 detected; this package is now a prime last-rites target."
 		fi
+		if has_version -b ">=dev-build/cmake-4"; then
+			eqawarn "QA Notice: CMake 4 detected; building with -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+			eqawarn "This is merely a workaround and *not* a permanent fix."
+			cmakeargs+=( -DCMAKE_POLICY_VERSION_MINIMUM=3.5 )
+		fi
 	fi
 
 	pushd "${BUILD_DIR}" > /dev/null || die
