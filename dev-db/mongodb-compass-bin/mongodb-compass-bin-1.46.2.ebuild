@@ -3,7 +3,12 @@
 
 EAPI=8
 
-inherit desktop unpacker wrapper xdg
+CHROMIUM_LANGS="
+	af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fi fil fr gu he
+	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk
+	sl sr sv sw ta te th tr uk ur vi zh-CN zh-TW
+"
+inherit chromium-2 desktop unpacker wrapper xdg
 
 DESCRIPTION="GUI for MongoDB"
 HOMEPAGE="https://mongodb.com/compass https://github.com/mongodb-js/compass"
@@ -41,6 +46,18 @@ RDEPEND="
 QA_PREBUILT="
 	usr/lib/mongodb-compass/.*
 "
+
+src_prepare() {
+	default
+
+	cd usr/lib/mongodb-compass/locales || die
+	chromium_remove_language_paks
+}
+
+src_configure() {
+	default
+	chromium_suid_sandbox_check_kernel_config
+}
 
 src_install() {
 	insinto /usr/lib/mongodb-compass
