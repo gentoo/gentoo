@@ -42,6 +42,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}"/libosinfo-1.12.0-libxml2-2.14.patch
+)
+
 src_prepare() {
 	default
 	use vala && vala_setup
