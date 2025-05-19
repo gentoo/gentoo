@@ -63,11 +63,17 @@ src_prepare() {
 src_configure() {
 	tc-export AR CC
 
+	# dpkg uses LT_INIT([disable-shared]) in configure.ac where GNU libtool
+	# enables static if both --disable-shared and --disable-static are set while
+	# slibtool disables both so explicitly set --enable-static until upstream
+	# supports shared libraries.
+	# https://bugs.gentoo.org/956332
 	local myconf=(
 		--disable-compiler-warnings
 		--disable-devel-docs
 		--disable-dselect
 		--disable-start-stop-daemon
+		--enable-static
 		--enable-unicode
 		--localstatedir="${EPREFIX}"/var
 		$(use_enable nls)
