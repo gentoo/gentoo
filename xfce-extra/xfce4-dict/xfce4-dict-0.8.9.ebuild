@@ -26,7 +26,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+# dev-libs/glib for glib-compile-resources
 BDEPEND="
+	>=dev-libs/glib-2.66.0
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
 "
