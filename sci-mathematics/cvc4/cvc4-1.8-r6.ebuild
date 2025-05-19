@@ -1,10 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR=emake
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake python-any-r1
 
 DESCRIPTION="Automatic theorem prover for satisfiability modulo theories (SMT) problems"
@@ -24,11 +24,8 @@ RDEPEND="dev-libs/antlr-c
 	readline? ( sys-libs/readline:0= )
 	cln? ( sci-libs/cln )
 	!cln? ( dev-libs/gmp:= )"
-DEPEND="${RDEPEND}"
-BDEPEND="$(python_gen_any_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	')
-"
+DEPEND="${PYTHON_DEPS}
+	${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
@@ -36,10 +33,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-bash-5.2-fix.patch
 	"${FILESDIR}"/${P}-size_t.patch
 )
-
-python_check_deps() {
-	python_has_version "dev-python/tomli[${PYTHON_USEDEP}]"
-}
 
 src_prepare() {
 	cmake_src_prepare
