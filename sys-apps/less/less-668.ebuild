@@ -34,7 +34,8 @@ S="${WORKDIR}"/${MY_P/?beta}
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
 IUSE="pcre test"
-RESTRICT="!test? ( test )"
+# chinese1, utf8-2
+RESTRICT="test !test? ( test )"
 
 DEPEND="
 	>=app-misc/editor-wrapper-3
