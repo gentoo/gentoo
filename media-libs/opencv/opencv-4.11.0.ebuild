@@ -383,6 +383,8 @@ PATCHES=(
 
 	"${FILESDIR}"/${PN}-4.11.0-fix-libspng-link.patch #  PR pending #27314
 
+	"${FILESDIR}/${PN}-4.11.0-cuda-12.9.patch" # PR 27288
+
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
 
