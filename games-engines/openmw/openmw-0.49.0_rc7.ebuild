@@ -16,8 +16,8 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
 else
 	SRC_URI="https://github.com/OpenMW/openmw/archive/${PN}-${MY_PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 # This particular commit is hardcoded in
