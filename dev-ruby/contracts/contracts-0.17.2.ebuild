@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/egonSchiele/contracts.ruby"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 ~sparc x86"
 
 each_ruby_test() {
 	# COLUMNS needed for specs that test line wrapping in spec/contracts_spec.rb
