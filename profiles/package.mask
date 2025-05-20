@@ -362,6 +362,7 @@ net-im/yowsup
 >=xfce-base/thunar-4.21
 >=xfce-base/tumbler-4.21
 >=xfce-base/xfce4-appfinder-4.21
+>=xfce-base/xfce4-dev-tools-4.21
 >=xfce-base/xfce4-panel-4.21
 >=xfce-base/xfce4-power-manager-4.21
 >=xfce-base/xfce4-session-4.21
