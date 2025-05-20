@@ -21,9 +21,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-# bug #395153
-RESTRICT="test"
-
 src_prepare() {
 	default
 	sed -i \
