@@ -219,7 +219,7 @@ qeerror() { qout eerror "${@}" ; }
 # done by including the 'configfile', and printing the variable with Make.
 # It WILL break if your makefile has missing dependencies!
 getfilevar() {
-	local ERROR basefname basedname myARCH="${ARCH}"
+	local ERROR basefname basedname
 	ERROR=0
 
 	[[ -z "${1}" ]] && ERROR=1
@@ -232,16 +232,13 @@ getfilevar() {
 	else
 		basefname="$(basename ${2})"
 		basedname="$(dirname ${2})"
-		unset ARCH
 
 		# We use nonfatal because we want the caller to take care of things #373151
 		# Pass need-config= to make to avoid config check in kernel Makefile.
 		# Pass dot-config=0 to avoid the config check in kernels prior to 5.4.
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
 			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" \
-			dot-config=0 need-config= need-compiler= -s -f - 2>/dev/null
-
-		ARCH=${myARCH}
+			ARCH="$(tc-arch-kernel)" dot-config=0 need-config= need-compiler= -s -f - 2>/dev/null
 	fi
 }
 
