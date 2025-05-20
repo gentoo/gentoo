@@ -68,7 +68,7 @@ RDEPEND="
 	bluetooth? ( >=kde-plasma/bluedevil-${PV}:${SLOT} )
 	browser-integration? ( >=kde-plasma/plasma-browser-integration-${PV}:${SLOT} )
 	colord? ( x11-misc/colord )
-	crash-handler? ( >=kde-plasma/drkonqi-${PV}:${SLOT} )
+	crash-handler? ( ~kde-plasma/drkonqi-${PV}:${SLOT} )
 	crypt? ( >=kde-plasma/plasma-vault-${PV}:${SLOT} )
 	cups? (
 		>=kde-plasma/print-manager-${PV}:${SLOT}
