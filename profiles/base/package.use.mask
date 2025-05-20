@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Alfred Wingate <parona@protonmail.com> (2025-06-10)
+# Upstream only supports amd64 and arm64. Other targets will fail to build
+# tests due to missing target specific functions.
+media-libs/svt-av1 test
+
 # Alfred Wingate <parona@protonmail.com> <2025-05-24)
 # Doesn't work well at runtime.
 dev-games/ogre wayland
