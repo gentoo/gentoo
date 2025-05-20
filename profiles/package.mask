@@ -47,13 +47,6 @@ dev-libs/aws-c-event-stream
 dev-libs/aws-c-io
 dev-libs/s2n
 
-# Mike Pagano <mpagano@gentoo.org> (2025-05-20)
-# Persistant issues with this release of the kernel
-# You mileage may vary, use at your own risk and
-# discretion 
-=sys-kernel/gentoo-sources-6.14.7
-=sys-kernel/vanilla-sources-6.14.7
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-19)
 # Dead upstream (last commit >4 years ago), not ported to Qt6 and broken w/
 # CMake 4. Bugs #955134, #955135. Removal on 2025-06-18.
