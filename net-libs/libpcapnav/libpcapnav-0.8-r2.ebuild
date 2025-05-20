@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit autotools
+EAPI=8
+
+inherit autotools edo
 
 DESCRIPTION="Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file"
 HOMEPAGE="http://netdude.sourceforge.net/"
@@ -15,11 +16,11 @@ IUSE="doc static-libs"
 
 DEPEND="net-libs/libpcap"
 RDEPEND="${DEPEND}"
-RESTRICT="test"
-DOCS=( AUTHORS ChangeLog README )
+
 PATCHES=(
 	"${FILESDIR}"/${P}-includes.patch
 	"${FILESDIR}"/${P}-noinst_test.patch
+	"${FILESDIR}"/${P}-test-exit-on-failure.patch
 )
 
 src_prepare() {
@@ -31,14 +32,17 @@ src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-jer_src_compile() {
-	emake SUBDIRS="src docs"
+src_test() {
+	emake check
+
+	cd test || die
+	edo ./run-tests.sh
 }
 
 src_install() {
 	default
 
-	rm -fr "${D}"/usr/share/gtk-doc
+	rm -fr "${ED}"/usr/share/gtk-doc || die
 
 	if use doc; then
 		docinto html
