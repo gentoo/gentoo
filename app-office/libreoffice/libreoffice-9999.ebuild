@@ -432,6 +432,7 @@ src_configure() {
 	sed -i -e "s/-flto=thin/-flto/" solenv/gbuild/platform/com_GCC_defs.mk || die
 
 	# Don't use Clang for building Skia regardless of CC/CXX!
+	tc-export CC CXX
 	export LO_CLANG_CC=${CC}
 	export LO_CLANG_CXX=${CXX}
 
