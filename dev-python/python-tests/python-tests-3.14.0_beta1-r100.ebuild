@@ -37,7 +37,7 @@ RDEPEND="
 	~dev-lang/python-${PV}:${PYVER}
 "
 BDEPEND="
-	${RDEPEND}
+	${PYTHON_DEPS}
 "
 
 # https://www.python.org/downloads/metadata/sigstore/
