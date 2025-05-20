@@ -15,7 +15,7 @@
   <use>
     <flag name="telemetry">
       Enable sending telemetry by default (disabling it sets avoid-stats
-      config option to false).
+      config option to true).
     </flag>
   </use>
 </pkgmetadata>
