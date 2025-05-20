@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-info.eclass
@@ -253,7 +253,7 @@ getfilevar() {
 # This is done with sed matching an expression only. If the variable is defined,
 # you will run into problems. See getfilevar for those cases.
 getfilevar_noexec() {
-	local ERROR basefname basedname mycat myARCH="${ARCH}"
+	local ERROR basefname basedname mycat
 	ERROR=0
 	mycat='cat'
 
