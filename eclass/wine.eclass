@@ -300,6 +300,12 @@ wine_src_configure() {
 		)
 		conf+=( ${archs:+--enable-archs="${archs[*]}"} )
 
+		if use amd64 && use !abi_x86_64; then
+			# same as above for 32bit-only on 64bit (allowed for wine)
+			conf+=( TARGETFLAGS=-m32 )
+			multilib_toolchain_setup x86
+		fi
+
 		econf "${conf[@]}" "${wineconfargs[@]}"
 	fi
 }
