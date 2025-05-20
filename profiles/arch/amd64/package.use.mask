@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2025-05-22)
+# Upstream supports amd64
+media-libs/svt-av1 -test
+
 # Mike Gilbert <floppym@gentoo.org> (2025-05-13)
 # media-libs/libsdl3 is keyworded here.
 net-misc/freerdp -sdl3
