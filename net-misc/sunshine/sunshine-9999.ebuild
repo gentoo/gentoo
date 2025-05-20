@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -140,7 +140,7 @@ CDEPEND="
 		sys-libs/libcap
 		x11-libs/libdrm
 	)
-	svt-av1? ( media-libs/svt-av1:= )
+	svt-av1? ( <media-libs/svt-av1-3:= )
 	trayicon? (
 		dev-libs/libayatana-appindicator
 		x11-libs/libnotify
