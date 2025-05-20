@@ -32,6 +32,7 @@ BDEPEND="test? (
 	$(python_gen_cond_dep '
 		dev-python/networkx[${PYTHON_USEDEP}]
 		dev-python/parameterized[${PYTHON_USEDEP}]
+		sci-ml/clearml[${PYTHON_USEDEP}]
 	')
 	sci-ml/caffe2[gloo]
 	sci-ml/torchdata[${PYTHON_SINGLE_USEDEP}]
