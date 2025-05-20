@@ -16,7 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3
-	dev-libs/libuv:=
+	=dev-libs/libuv-1.50*:=
 	>=dev-libs/raft-0.18.1:="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/raft[lz4,test] )"
