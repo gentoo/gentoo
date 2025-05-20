@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,10 @@ RDEPEND="
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.9.1-QTBUG-135959.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

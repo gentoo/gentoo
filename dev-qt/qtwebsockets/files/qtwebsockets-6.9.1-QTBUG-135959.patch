@@ -1,0 +1,14 @@
+https://bugreports.qt.io/browse/QTBUG-135959
+https://github.com/qt/qtwebsockets/commit/0c0f476150e501f311d054c67426b4d2304d2cbd
+--- a/src/websockets/qwebsocket_p.cpp
++++ b/src/websockets/qwebsocket_p.cpp
+@@ -719,4 +719,8 @@
+ {
+-    if (Q_LIKELY(pTcpSocket))
++    if (Q_LIKELY(pTcpSocket)) {
++        // Explicitly disconnect this signal to avoid warning being printed about a destroyed-signal
++        // being disconnected with the wildcard disconnect below
++        disconnect(pTcpSocket, &QObject::destroyed, this, &QWebSocketPrivate::socketDestroyed);
+         pTcpSocket->disconnect();
++    }
+     m_dataProcessor->disconnect();
