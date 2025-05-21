@@ -54,9 +54,6 @@ src_prepare() {
 
 	# clean up duplicate file
 	rm -f README.md
-
-	# reconfigure
-	eautoreconf
 }
 
 src_configure() {
@@ -66,9 +63,6 @@ src_configure() {
 	# some things can only be enabled/disabled by defines
 	! use dnstap && append-cppflags -DDISABLE_PROTOBUF
 	! use web && append-cppflags -DDISABLE_BUILTIN_HTML
-
-	sed 's/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl$libdir'\''/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl\/$libdir'\''/g' \
-		-i "${S}/configure"
 
 	local myeconfargs=(
 		--sysconfdir=/etc/dnsdist
