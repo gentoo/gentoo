@@ -16,8 +16,18 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 	S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
+
+	# We don't mark "stable" and "alpha" release channels in any special way but
+	# use stable/testing keywords instead.
+	#
+	# "Alpha" versions are only named as such, they are actually more like beta
+	# versions or release candidates.
+	# https://github.com/BOINC/boinc/wiki/AlphaInstructions
+	#
+	# The current versions for each of release channels can be found at:
+	# https://boinc.berkeley.edu/linux_install.php
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 LICENSE="LGPL-3+"
@@ -107,18 +117,22 @@ src_configure() {
 src_install() {
 	default
 
+	# cleanup cruft
+	rm -r "${ED}"/etc || die "rm failed"
+	find "${D}/usr/$(get_libdir)" -name '*.la' -delete || die "Removing .la files failed"
+	find "${D}/usr/$(get_libdir)" -name '*.a' -delete || die "Removing static libs failed"
+
 	newbashcomp client/scripts/boinc.bash boinc
 	bashcomp_alias boinc boinccmd
 
 	keepdir /var/lib/boinc
 	fowners boinc:boinc /var/lib/boinc
+	fperms 750 /var/lib/boinc
 
 	dosym -r /etc/ssl/certs/ca-certificates.crt /var/lib/boinc/ca-bundle.crt
 
-	# cleanup cruft
-	rm -r "${ED}"/etc || die "rm failed"
-	find "${D}/usr/$(get_libdir)" -name '*.la' -delete || die "Removing .la files failed"
-	find "${D}/usr/$(get_libdir)" -name '*.a' -delete || die "Removing static libs failed"
+	exeinto /etc/X11/xinit/xinitrc.d
+	newexe packages/generic/36x11-common_xhost-boinc 95-boinc
 
 	newinitd "${FILESDIR}"/boinc.initd-r1 boinc
 	newconfd "${FILESDIR}"/boinc.confd-r1 boinc
