@@ -386,10 +386,6 @@ x11-misc/colord argyllcms extra-print-profiles
 # to do so.
 dev-ruby/rack-test test
 
-# Anthony G. Basile <blueness@gentoo.org> (2012-08-21)
-# Does not work on ppc/ppc64
-net-vpn/tor tor-hardening
-
 # Pacho Ramos <pacho@gentoo.org> (2012-05-07)
 # libhid is not keyworded
 app-misc/lcdproc lcd_devices_mdm166a
