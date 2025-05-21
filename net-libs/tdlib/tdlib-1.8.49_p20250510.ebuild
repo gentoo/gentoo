@@ -14,7 +14,7 @@ S="${WORKDIR}/td-${MY_PV}"
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV%_p*}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="+tde2e test"
 RESTRICT="!test? ( test )"
 
