@@ -260,12 +260,6 @@ dev-python/pyqtwebengine
 # Removal on 2025-05-24.
 dev-python/python-poppler-qt5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-22)
-# Dead upstream, depends on downstream patching even for Qt5 support.
-# Almost no one else keeps packaging this. Bug #947622
-# Removal on 2025-05-22.
-sci-visualization/zhu3d
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
 # Metapackage used for pypy3 target in the past.
 # Removal on 2025-05-22.
