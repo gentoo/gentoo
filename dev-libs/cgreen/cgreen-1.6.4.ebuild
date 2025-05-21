@@ -14,7 +14,7 @@ SRC_URI="https://github.com/cgreen-devs/cgreen/archive/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="libxml2 test xml" # doc flag could be added
 RESTRICT="!test? ( test )"
 
