@@ -19,11 +19,6 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-default-symver-test.patch"
-	"${FILESDIR}/${P}-test-symbols.patch"
-)
-
 src_prepare() {
 	default
 	eautoreconf
