@@ -26,5 +26,6 @@
   <upstream>
     <remote-id type="pypi">PyGObject</remote-id>
     <remote-id type="gnome-gitlab">GNOME/pygobject</remote-id>
+    <remote-id type="github">python/pythoncapi-compat</remote-id>
   </upstream>
 </pkgmetadata>
