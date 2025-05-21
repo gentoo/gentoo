@@ -7,7 +7,7 @@ USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 inherit ruby-ng-gnome2
 
 DESCRIPTION="Ruby GObjectIntrospection bindings"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 
 DEPEND="dev-libs/glib
 	dev-libs/gobject-introspection"
