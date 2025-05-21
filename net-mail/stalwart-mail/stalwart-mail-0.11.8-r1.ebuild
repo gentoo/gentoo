@@ -785,6 +785,14 @@ src_unpack() {
 	sed -i -e "s%__PATH__/bin/%/usr/bin/%g" "${S}"/resources/systemd/stalwart-mail.service || die
 }
 
+src_prepare() {
+	pushd .
+	cd "${WORKDIR}/cargo_home/gentoo/librocksdb-sys-0.17.1+9.9.3/rocksdb"
+	eapply "${FILESDIR}/rocksdb-10.1-fixincludes.patch"
+	popd
+	eapply_user
+}
+
 src_configure() {
 	local myfeatures=(
 		$(usev sqlite)
