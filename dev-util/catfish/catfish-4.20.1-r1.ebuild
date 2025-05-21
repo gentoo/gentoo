@@ -40,6 +40,11 @@ BDEPEND="
 	sys-devel/gettext
 "
 
+src_prepare() {
+	default
+	python_fix_shebang bin/catfish
+}
+
 src_install() {
 	meson_src_install
 	# stupid meson
