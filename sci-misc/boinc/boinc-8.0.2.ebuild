@@ -21,7 +21,7 @@ else
 fi
 
 LICENSE="LGPL-3+"
-SLOT="0"
+SLOT="0/stable"
 
 # - "X" builds idle tracking via XScrnSaver and the libboinc_graphics2 library
 # - "gui" builds the manager app and the screensaver
