@@ -18,7 +18,7 @@ SRC_URI="
 # So to handle arm64/amd64 we use WORKDIR here
 S="${WORKDIR}"
 
-LICENSE="NVIDIA-SDK"
+LICENSE="NVIDIA-SDK-v2020.10.12 NVIDIA-cuSPARSELt-v2020.10.12"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~amd64-linux ~arm64-linux"
 RESTRICT="bindist mirror test"
