@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit autotools flag-o-matic lua-single
+inherit flag-o-matic lua-single
 
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
 HOMEPAGE="https://www.dnsdist.org/index.html"
