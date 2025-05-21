@@ -44,6 +44,7 @@
     <flag name="webdav">Enable using music from a WebDAV share</flag>
     <flag name="wildmidi">Enable MIDI support via wildmidi</flag>
     <flag name="yajl">Enable JSON parsing via <pkg>dev-libs/yajl</pkg></flag>
+    <flag name="zlib">Enable database compression with <pkg>sys-libs/zlib</pkg></flag>
   </use>
   <upstream>
     <bugs-to>https://github.com/MusicPlayerDaemon/MPD/issues</bugs-to>
