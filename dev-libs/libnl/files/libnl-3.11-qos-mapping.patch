@@ -1,0 +1,22 @@
+diff --git a/lib/route/link/vlan.c b/lib/route/link/vlan.c
+index 75842d8c..4a055ee9 100644
+--- a/lib/route/link/vlan.c
++++ b/lib/route/link/vlan.c
+@@ -328,7 +328,7 @@ static int vlan_put_attrs(struct nl_msg *msg, struct rtnl_link *link)
+ 				map.from = i;
+ 				map.to = vi->vi_ingress_qos[i];
+ 
+-				NLA_PUT(msg, i, sizeof(map), &map);
++				NLA_PUT(msg, IFLA_VLAN_QOS_MAPPING, sizeof(map), &map);
+ 			}
+ 		}
+ 
+@@ -350,7 +350,7 @@ static int vlan_put_attrs(struct nl_msg *msg, struct rtnl_link *link)
+ 			map.from = vi->vi_egress_qos[i].vm_from;
+ 			map.to = vi->vi_egress_qos[i].vm_to;
+ 
+-			NLA_PUT(msg, i, sizeof(map), &map);
++			NLA_PUT(msg, IFLA_VLAN_QOS_MAPPING, sizeof(map), &map);
+ 		}
+ 
+ 		nla_nest_end(msg, qos);
