@@ -1,0 +1,36 @@
+From 96c28bf35f89ba62947763a43ce934d994ffbc32 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Wed, 21 May 2025 20:30:11 +1000
+Subject: [PATCH] configure: suppress command not found for brew
+
+`42331cb48a1f66efaa0920ee8ccba5a74d67de27` made configure
+checks more CMake-like, but now calls `brew` resulting
+in "command not found" in the configure output if the
+package is not installed.
+
+Redirect stderr to suppress this; it's not an issue
+for us if `brew` isn't found.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/configure.ac
++++ b/configure.ac
+@@ -310,7 +310,7 @@ if test -x /usr/bin/caddy; then
+   CADDY=/usr/bin/caddy
+ elif test -x /usr/local/bin/caddy; then
+   CADDY=/usr/local/bin/caddy
+-elif test -x `brew --prefix`/bin/caddy; then
++elif test -x "`brew --prefix 2>/dev/null`/bin/caddy"; then
+   CADDY=`brew --prefix`/bin/caddy
+ fi
+ AC_ARG_WITH(test-caddy,dnl
+@@ -326,7 +326,7 @@ if test -x /usr/sbin/vsftpd; then
+   VSFTPD=/usr/sbin/vsftpd
+ elif test -x /usr/local/sbin/vsftpd; then
+   VSFTPD=/usr/local/sbin/vsftpd
+-elif test -x `brew --prefix`/sbin/vsftpd; then
++elif test -x "`brew --prefix 2>/dev/null`/sbin/vsftpd"; then
+   VSFTPD=`brew --prefix`/sbin/vsftpd
+ fi
+ AC_ARG_WITH(test-vsftpd,dnl
+-- 
+2.49.0
