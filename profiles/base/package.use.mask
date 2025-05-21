@@ -59,10 +59,6 @@ sys-apps/usbutils usbreset
 sys-cluster/drbd-utils pacemaker
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-05)
-# Mask until we have keyworded dev-util/spirv-llvm-translator:20 release.
-llvm-core/libclc llvm_slot_20
-
-# Michał Górny <mgorny@gentoo.org> (2025-03-05)
 # Mask until we have keyworded dev-lang/rust{,-bin} / slot 20 release.
 www-client/chromium llvm_slot_20
 
