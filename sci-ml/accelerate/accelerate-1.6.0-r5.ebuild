@@ -35,25 +35,19 @@ BDEPEND="test? (
 		sci-ml/clearml[${PYTHON_USEDEP}]
 	')
 	sci-ml/caffe2[gloo]
+	sci-ml/evaluate[${PYTHON_SINGLE_USEDEP}]
 	sci-ml/torchdata[${PYTHON_SINGLE_USEDEP}]
 )"
 
 distutils_enable_tests pytest
 
 python_test() {
-	local EPYTEST_IGNORE=(
-		tests/test_examples.py
-		tests/deepspeed
-		tests/test_big_modeling.py
-		tests/fsdp
-		tests/tp
-		tests/test_cli.py
-	)
 	local EPYTEST_DESELECT=(
 		tests/test_modeling_utils.py::ModelingUtilsTester::test_infer_auto_device_map_with_buffer_check
 		tests/test_modeling_utils.py::ModelingUtilsTester::test_infer_auto_device_map_with_buffer_check_and_multi_devices
 		tests/test_modeling_utils.py::ModelingUtilsTester::test_infer_auto_device_map_with_fallback_allocation_and_buffers
 		tests/test_utils.py::UtilsTester::test_patch_environment_key_exists
+		tests/test_examples.py::FeatureExamplesTests
 	)
 	epytest tests
 }
