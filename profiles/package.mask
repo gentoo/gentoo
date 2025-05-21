@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-05-21)
+# Seems to be some bad interaction between this version and gpep517
+# that prevents installing the (successfully) produced wheel, mask
+# while being looked into (bug #956382).
+~dev-python/sip-6.11.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-20)
 # Unaddressed pending version bumps for almost 2 years, stuck on EAPI-7.
 # Bugs #908094, #908095, #908096, #908097, #908427, #908428
