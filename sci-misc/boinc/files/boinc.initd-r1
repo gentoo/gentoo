@@ -25,7 +25,7 @@ healthcheck_timer="60"
 : "${retry:="SIGTERM/60/SIGTERM/30/SIGKILL/30"}"
 
 depend() {
-	use dns net ntp-client ntpd
+	use dns net ntp-client ntpd docker
 }
 
 eboinccmd() {
