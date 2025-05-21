@@ -273,12 +273,11 @@ src_test() {
 		test/parallel/test-strace-openat-openssl.js
 		test/sequential/test-util-debug.js
 	)
+	[[ "$(nice)" -gt 10 ]] && drop_tests+=( "test/parallel/test-os.js" )
 	use inspector ||
 		drop_tests+=(
 			test/parallel/test-inspector-emit-protocol-event.js
 			test/parallel/test-inspector-network-domain.js
-			test/parallel/test-inspector-network-fetch.js
-			test/parallel/test-inspector-network-http.js
 			test/sequential/test-watch-mode.mjs
 		)
 	rm -f "${drop_tests[@]}" || die "disabling tests failed"
