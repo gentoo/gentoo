@@ -11,7 +11,6 @@ SRC_URI="https://www.freedesktop.org/software/systemd/systemd-${PV}.tar.xz"
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~sparc x86"
-IUSE=""
 
 S="${WORKDIR}/systemd-${PV}"
 
