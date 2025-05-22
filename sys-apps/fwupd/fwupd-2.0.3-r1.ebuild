@@ -150,6 +150,7 @@ src_configure() {
 		$(meson_feature policykit polkit)
 		$(meson_feature sqlite)
 		$(meson_feature systemd)
+		$(meson_use seccomp systemd_syscall_filter)
 		$(meson_use test tests)
 
 		${plugins[@]}
