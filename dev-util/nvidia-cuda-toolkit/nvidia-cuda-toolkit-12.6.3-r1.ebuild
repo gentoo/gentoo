@@ -288,7 +288,7 @@ src_install() {
 
 	# Add include and lib symlinks
 	dosym -r "${CUDA_PATH}/targets/${narch}-linux/include" "${CUDA_PATH}/include"
-	dosym -r "${CUDA_PATH}/targets/${narch}-linux/lib" "${CUDA_PATH}/lib64"
+	dosym -r "${CUDA_PATH}/targets/${narch}-linux/lib" "${CUDA_PATH}/$(get_libdir)"
 
 	find "${ED}/${CUDA_PATH}" -empty -delete || die
 
@@ -301,7 +301,7 @@ src_install() {
 	newenvd - "99cuda${revord}" <<-EOF
 		PATH=${EPREFIX}${CUDA_PATH}/bin${pathextradirs}
 		PKG_CONFIG_PATH=${EPREFIX}${CUDA_PATH}/pkgconfig
-		LDPATH=${EPREFIX}${CUDA_PATH}/lib64:${EPREFIX}${CUDA_PATH}/nvvm/lib64${ldpathextradirs}
+		LDPATH=${EPREFIX}${CUDA_PATH}/$(get_libdir):${EPREFIX}${CUDA_PATH}/nvvm/lib64${ldpathextradirs}
 	EOF
 
 	# CUDA prepackages libraries, don't revdep-build on them
