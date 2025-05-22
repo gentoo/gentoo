@@ -42,6 +42,7 @@ RDEPEND="
 	mod? ( media-libs/libxmp[${MULTILIB_USEDEP}] )
 
 	opus? ( media-libs/opusfile[${MULTILIB_USEDEP}] )
+	sndfile? ( media-libs/libsndfile[${MULTILIB_USEDEP}] )
 	vorbis? (
 		tremor? ( media-libs/tremor[${MULTILIB_USEDEP}] )
 		!stb? ( !tremor? ( media-libs/libvorbis[${MULTILIB_USEDEP}] ) )
