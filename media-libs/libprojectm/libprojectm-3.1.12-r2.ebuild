@@ -42,12 +42,17 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	dev-build/autoconf-archive
+	virtual/pkgconfig
+"
 
 PATCHES=( "${FILESDIR}/${P}-missing-gl-header.patch" ) # bug 792204
 
 src_prepare() {
 	default
+	# bug 940300
+	cp "${BROOT}"/usr/share/aclocal/ax_have_qt.m4 m4/autoconf-archive/ax_have_qt.m4 || die
 	eautoreconf
 }
 
