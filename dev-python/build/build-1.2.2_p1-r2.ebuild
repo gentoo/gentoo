@@ -54,6 +54,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	# https://github.com/pypa/build/pull/861
+	# https://github.com/pypa/build/pull/898
 	"${FILESDIR}/${P}-gentoo-pip.patch"
 )
 
