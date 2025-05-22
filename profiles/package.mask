@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
+# Package destabilisation mask. There is simply no need for this without
+# any stable consumers, and it is freeing up resources.
+# 5.2.10.1 is available in ~arch.
+~media-libs/allegro-5.2.7.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-22)
 # Even if Qt5 is optional here, it is dead upstream for close to 10 years
 # and without Gentoo package maintainer almost as long. Bug #926074.
