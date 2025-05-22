@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Alexays/${PN^}.git"
 else
 	SRC_URI="https://github.com/Alexays/${PN^}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 	S="${WORKDIR}/${PN^}-${PV}"
 fi
 
@@ -43,7 +43,7 @@ RDEPEND="
 	>=dev-libs/spdlog-1.10.0:=
 	dev-libs/date:=
 	dev-libs/wayland
-	>=gui-libs/gtk-layer-shell-0.9.0
+	gui-libs/gtk-layer-shell
 	media-video/pipewire:=
 	x11-libs/gtk+:3[wayland]
 	x11-libs/libxkbcommon
@@ -74,6 +74,10 @@ DEPEND="${RDEPEND}
 	dev-libs/wayland-protocols
 	test? ( dev-cpp/catch:0 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/tray-icons-fix.patch
+)
 
 src_configure() {
 	local emesonargs=(
