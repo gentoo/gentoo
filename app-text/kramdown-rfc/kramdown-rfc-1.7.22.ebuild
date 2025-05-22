@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/cabo/kramdown-rfc"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.27-Drop-dependency-on-certified.patch
