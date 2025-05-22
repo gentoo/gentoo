@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,9 @@ PATCHES=(
 
 	# https://github.com/systemd/systemd/issues/8099, bug #650314
 	"${FILESDIR}"/${P}-glibc-2.27.patch
+
+	# https://bugs.gentoo.org/925595
+	"${FILESDIR}"/${P}-socket-header.patch
 )
 
 src_prepare() {
