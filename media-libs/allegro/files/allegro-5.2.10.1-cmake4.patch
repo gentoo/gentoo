@@ -1,0 +1,22 @@
+From 6e93fcaabaafd81701f4cd1b74f4b69dd598bc9b Mon Sep 17 00:00:00 2001
+From: Pavel Sountsov <siege@google.com>
+Date: Thu, 3 Apr 2025 23:04:02 -0700
+Subject: [PATCH] Bump CMake minimum version to 3.5
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 74742c22d..551f92897 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # - some documentation targets still missing
+ # - installing documentation
+ #
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ if(COMMAND cmake_policy)
+     cmake_policy(SET CMP0003 NEW)
+     if(POLICY CMP0026)
