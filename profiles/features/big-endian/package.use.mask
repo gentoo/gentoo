@@ -32,6 +32,7 @@ kde-apps/kalarm pim
 gnome-base/gnome extras
 games-engines/scummvm vpx
 net-libs/pjproject vpx
+dev-util/nvidia-cuda-toolkit nsight
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libaom casualties
