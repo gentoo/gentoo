@@ -7,6 +7,7 @@ inherit gnustep-base
 DESCRIPTION="Cairo back-end component for the GNUstep GUI Library"
 HOMEPAGE="https://gnustep.github.io"
 SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/gnustep-back-${PV}.tar.gz"
+S="${WORKDIR}/gnustep-back-${PV}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -34,7 +35,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto"
 
-S=${WORKDIR}/gnustep-back-${PV}
+PATCHES=( "${FILESDIR}"/${P}-gcc15.patch )
 
 src_prepare() {
 	default
