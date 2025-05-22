@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (2025-05-22)
+# Needs porting to libsoup 3.0, relies on webkit-gtk:4
+# Removal on 2025-06-21.  Bug #893720.
+x11-misc/meteo
+
 # Sam James <sam@gentoo.org> (2025-05-22)
 # Introduces REQUIRED_USE that needs more discussion (bug #956402)
 =media-gfx/gimp-3.0.2-r2
