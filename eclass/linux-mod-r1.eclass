@@ -351,6 +351,8 @@ linux-mod-r1_pkg_setup() {
 
 	_modules_set_makeargs
 
+	_modules_prepare_cross
+
 	_modules_sanity_gccplugins
 }
 
@@ -666,6 +668,36 @@ _modules_check_migration() {
 	# - BUILD_FIXES: seen in some ebuilds but was undocumented and linux-info
 	#   still sets it preventing from blocking it entirely
 	# - ECONF_PARAMS: documented but was a no-op in linux-mod too
+}
+
+# @FUNCTION: _modules_prepare_cross
+# @INTERNAL
+# @DESCRIPTION:
+# Checks whether modpost works locally as it might have been built for a
+# different architecture.  If it doesn't work, it is built in a new
+# environment and KV_OUT_DIR is repointed there.
+_modules_prepare_cross() {
+	# modpost should do nothing successfully when called without args.
+	if ! "${KV_OUT_DIR}"/scripts/mod/modpost &>/dev/null; then
+		# Try to run make modules_prepare in a new separate output directory.
+		# This cannot be done if the source directory is not clean. In that
+		# case, copy the whole source directory.
+		if [[ -e ${KV_DIR}/.config ]]; then
+			cp -rLT --reflink=auto -- "${KV_DIR}" "${WORKDIR}"/extmod-build || die
+			emake -C "${WORKDIR}"/extmod-build "${MODULES_MAKEARGS[@]}" modules_prepare \
+				KBUILD_OUTPUT=
+		else
+			mkdir -- "${WORKDIR}"/extmod-build || die
+			cp -- "${KV_OUT_DIR}"/{.config,Module.symvers} "${WORKDIR}"/extmod-build || die
+			# KV_OUT_DIR may have been prepared with install-extmod-build, which
+			# doesn't include all the files needed to call make modules_prepare,
+			# so use the Makefile from the full kernel sources.
+			emake -C "${WORKDIR}"/extmod-build "${MODULES_MAKEARGS[@]}" modules_prepare \
+				KBUILD_OUTPUT="${WORKDIR}"/extmod-build -f "${KERNEL_MAKEFILE}"
+		fi
+		KV_OUT_DIR=${WORKDIR}/extmod-build
+		KBUILD_OUTPUT=${KBUILD_OUTPUT+${KV_OUT_DIR}}
+	fi
 }
 
 # @FUNCTION: _modules_prepare_kernel
