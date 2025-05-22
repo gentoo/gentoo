@@ -47,7 +47,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}/${P}-missing-gl-header.patch" ) # bug 792204
+PATCHES=(
+	"${FILESDIR}/${P}-missing-gl-header.patch" # bug 792204
+	"${FILESDIR}/${P}-cxx14.patch"
+)
 
 src_prepare() {
 	default
