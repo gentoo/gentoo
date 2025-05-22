@@ -1,0 +1,19 @@
+From e5df7dd77f239889713ab54fa5f23504759e252f Mon Sep 17 00:00:00 2001
+From: Timo Gurr <timo.gurr@gmail.com>
+Date: Tue, 13 May 2025 16:30:22 +0200
+Subject: [PATCH] cmake: fix build with cmake 4.0.0
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0354c36..758b20a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 3.5)
+ project(pystring CXX)
+ 
+ option (BUILD_SHARED_LIBS "Build shared libraries (set to OFF to build static libs)" ON)
