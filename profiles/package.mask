@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
+# Upstream repository+author, web pages and documentation gone after long
+# period of inactivity, based on Qt5. Bugs #949021, #940094
+# Removal on 2025-06-26.
+media-gfx/engauge
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
 # sci-electronics/gazebo depends on x11-libs/qwt:6[qt5] and Qt5, lots of
 # open bugs. Most packages perpetually stuck at EAPI-7 and several major
 # version bumps out of date. Bugs #937608, #947390; removal on 2025-06-26.
