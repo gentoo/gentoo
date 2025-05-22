@@ -6,5 +6,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">gbouvignies/chemex</remote-id>
+		<remote-id type="pypi">chemex</remote-id>
 	</upstream>
 </pkgmetadata>
