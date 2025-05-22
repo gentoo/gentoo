@@ -806,7 +806,7 @@ src_prepare() {
 	)
 
 	if use rar; then
-		keeplibs+=( third_party/rar )
+		keeplibs+=( third_party/unrar )
 	fi
 
 	if use test; then
