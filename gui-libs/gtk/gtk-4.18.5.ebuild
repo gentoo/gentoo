@@ -83,7 +83,6 @@ PDEPEND="
 	>=x11-themes/adwaita-icon-theme-3.14
 "
 BDEPEND="
-	>=dev-build/meson-1.2.0
 	dev-libs/gobject-introspection-common
 	introspection? (
 		${PYTHON_DEPS}
