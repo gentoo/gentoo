@@ -1,30 +1,31 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake toolchain-funcs
+inherit cmake
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="https://www.flightgear.org/"
-SRC_URI="https://downloads.sourceforge.net/flightgear/${P}.tar.bz2"
+SRC_URI="https://gitlab.com/flightgear/fgmeta/-/jobs/9264813015/artifacts/raw/sgbuild/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="cpu_flags_x86_sse2 +dns debug gdal openmp subversion test"
+KEYWORDS="~amd64 ~x86"
+IUSE="cpu_flags_x86_sse2 debug ffmpeg gdal subversion test"
 RESTRICT="!test? ( test )"
 
-# TODO aeonwave
+# TODO AeonWave, CycloneDDS
 COMMON_DEPEND="
 	app-arch/xz-utils
 	dev-libs/expat
 	dev-games/openscenegraph
 	media-libs/openal
+	net-libs/udns
 	net-misc/curl
 	sys-libs/zlib
 	virtual/opengl
-	dns? ( net-libs/udns )
+	ffmpeg? ( media-video/ffmpeg:0 )
 	gdal? ( sci-libs/gdal:= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -35,35 +36,28 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2019.1.1-gdal3.patch"
-	"${FILESDIR}/${PN}-2020.1.2-do-not-assume-libc++-clang.patch"
-	"${FILESDIR}/${PN}-2020.3.17-boost-1.81.patch"
-	"${FILESDIR}/${PN}-2020.3.19-flightgear-CVE-2025-0781.patch"
+	"${FILESDIR}/0001-check-to-be-sure-that-n-is-not-being-set-as-format-t.patch"
+	"${FILESDIR}/0002-fix-support-for-aarch64.patch"
 )
-
-pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
-pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_DNS=$(usex dns)
+		-DENABLE_ASAN=OFF
+		-DENABLE_CYCLONE=OFF
 		-DENABLE_GDAL=$(usex gdal)
-		-DENABLE_OPENMP=$(usex openmp)
 		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
 		-DENABLE_SIMD=$(usex cpu_flags_x86_sse2)
 		-DENABLE_SOUND=ON
 		-DENABLE_TESTS=$(usex test)
+		-DENABLE_TSAN=OFF
+		-DENABLE_VIDEO_RECORD=$(usex ffmpeg)
 		-DSIMGEAR_HEADLESS=OFF
 		-DSIMGEAR_SHARED=ON
 		-DSYSTEM_EXPAT=ON
 		-DSYSTEM_UDNS=ON
 		-DUSE_AEONWAVE=OFF
+		-DUSE_OPENALSOFT=ON
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO perhaps track it
 	)
 	cmake_src_configure

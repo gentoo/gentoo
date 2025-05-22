@@ -1,18 +1,17 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="FlightGear data files"
 HOMEPAGE="https://www.flightgear.org/"
-SRC_URI="https://downloads.sourceforge.net/flightgear/FlightGear-${PV}-data.txz"
+SRC_URI="https://download.flightgear.org/release-2024.1/FlightGear-${PV}-data.txz"
+
+S=${WORKDIR}/fgdata_$(ver_cut 1)_$(ver_cut 2)
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
-
-S=${WORKDIR}/fgdata
 
 src_install() {
 	insinto /usr/share/flightgear

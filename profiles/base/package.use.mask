@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
+# Does not compile as of 2024.1.1, requires buildsystem fixes.
+dev-games/simgear gdal
+games-simulation/flightgear gdal
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-14)
 # dev-qt/qtwebchannel:5 is masked, last revdep was dev-python/pyqtwebengine
 dev-python/pyqt5 webchannel

@@ -1,0 +1,25 @@
+From 00de7fd687bdc7ab7c679678f3a523d2038b7d8f Mon Sep 17 00:00:00 2001
+From: Fabrice Bellet <fabrice@bellet.info>
+Date: Tue, 17 Feb 2015 23:00:29 +0100
+Subject: [PATCH] make fglauncher a static library
+
+---
+ src/GUI/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/GUI/CMakeLists.txt b/src/GUI/CMakeLists.txt
+index f4fc01a6e..0a0bd3398 100644
+--- a/src/GUI/CMakeLists.txt
++++ b/src/GUI/CMakeLists.txt
+@@ -104,7 +104,7 @@ if (HAVE_QT)
+ 
+ 
+ 
+-    add_library(fglauncher QtLauncher.cxx
++    add_library(fglauncher STATIC QtLauncher.cxx
+                             QtLauncher.hxx
+                             SettingsWrapper.hxx
+                             LauncherMainWindow.hxx
+-- 
+2.48.1
+

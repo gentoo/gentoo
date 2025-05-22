@@ -1,27 +1,28 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake flag-o-matic toolchain-funcs
+inherit cmake flag-o-matic
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
-SRC_URI="https://downloads.sourceforge.net/flightgear/${P}.tar.bz2"
+SRC_URI="https://gitlab.com/flightgear/fgmeta/-/jobs/9264813015/artifacts/raw/fgbuild/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="cpu_flags_x86_sse2 dbus debug examples gdal openmp qt5 +udev +utils"
+KEYWORDS="~amd64 ~x86"
+IUSE="cpu_flags_x86_sse2 dbus debug examples gdal qt6 +udev +utils"
 
 # Needs --fg-root with path to flightgear-data passed to test runner passed,
 # not really worth patching
 RESTRICT="test"
 
 # zlib is some strange auto-dep from simgear
+# TODO add osgXR
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	dev-games/openscenegraph[jpeg,png]
+	>=dev-games/openscenegraph-3.6.0[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/plib-1.8.5
@@ -33,12 +34,9 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )
 	gdal? ( >=sci-libs/gdal-2.0.0:= )
-	qt5? (
-		>=dev-qt/qtcore-5.7.1:5
-		>=dev-qt/qtdeclarative-5.7.1:5
-		>=dev-qt/qtgui-5.7.1:5
-		>=dev-qt/qtnetwork-5.7.1:5
-		>=dev-qt/qtwidgets-5.7.1:5
+	qt6? (
+		dev-qt/qtbase:6[gui,network,widgets]
+		dev-qt/qtdeclarative:6
 	)
 	udev? ( virtual/udev )
 	utils? (
@@ -47,7 +45,7 @@ COMMON_DEPEND="
 		media-libs/glew:0
 		media-libs/libpng:0
 		virtual/opengl
-		qt5? ( >=dev-qt/qtwebsockets-5.7.1:5 )
+		qt6? ( dev-qt/qtwebsockets:6 )
 	)
 "
 # libXi and libXmu are build-only-deps according to FindGLUT.cmake
@@ -62,22 +60,18 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
-BDEPEND="qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )"
+BDEPEND="qt6? ( dev-qt/qttools:6 )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2020.3.8-cmake.patch"
-	"${FILESDIR}/${PN}-2020.3.19-CVE-2025-0781.patch"
+	"${FILESDIR}/${PN}-2024.1.1-cmake.patch"
+	"${FILESDIR}/${PN}-2024.1.1-fix-fgpanel.patch"
+	"${FILESDIR}/0001-check-to-be-sure-that-n-is-not-being-set-as-format-t.patch"
+	"${FILESDIR}/0003-make-fglauncher-a-static-library.patch"
+	"${FILESDIR}/0005-make-fgqmlui-a-static-library.patch"
+	"${FILESDIR}/0006-fgviewer-fix-crash-on-exit.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
-
-pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
-
-pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-}
 
 src_configure() {
 	# -Werror=lto-type-mismatch, -Werror=odr
@@ -87,8 +81,9 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
+		-DCHECK_FOR_QT5=OFF
+		-DCHECK_FOR_QT6=ON
 		-DENABLE_AUTOTESTING=OFF
-		-DENABLE_COMPOSITOR=OFF
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
@@ -101,17 +96,18 @@ src_configure() {
 		-DENABLE_JSBSIM=ON
 		-DENABLE_LARCSIM=ON
 		-DENABLE_METAR=$(usex utils)
-		-DENABLE_OPENMP=$(usex openmp)
 		-DENABLE_PLIB_JOYSTICK=ON # NOTE look for defaults changes in CMake
-		-DENABLE_PROFILE=OFF
-		-DENABLE_QT=$(usex qt5)
+		-DENABLE_QT=$(usex qt6)
 		-DENABLE_RTI=OFF
+		-DENABLE_SENTRY=OFF # sentry-native masked
+		-DENABLE_HUD=ON
+		-DENABLE_PUI=ON
 		-DENABLE_SIMD=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_SWIFT=OFF # swift pilot client not packaged yet
-		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TRAFFIC=$(usex utils)
 		-DENABLE_UIUC_MODEL=ON
+		-DENABLE_VR=OFF
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)
 		-DFG_BUILD_TYPE=Release
@@ -125,6 +121,7 @@ src_configure() {
 		-DSYSTEM_SPEEX=ON
 		-DSYSTEM_GSM=ON
 		-DSYSTEM_SQLITE=ON
+		-DSYSTEM_OSGXR=ON
 		-DUSE_AEONWAVE=OFF
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
@@ -134,7 +131,7 @@ src_configure() {
 	else
 		mycmakeargs+=(-DENABLE_DEMCONVERT=OFF)
 	fi
-	if use qt5 && use utils; then
+	if use qt6 && use utils; then
 		mycmakeargs+=(-DENABLE_FGQCANVAS=ON)
 	else
 		mycmakeargs+=(-DENABLE_FGQCANVAS=OFF)
@@ -171,7 +168,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use qt5; then
+	if use qt6; then
 		einfo "To use launcher, run fgfs with '--launcher' parameter"
 	fi
 }
