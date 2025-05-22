@@ -32,6 +32,8 @@ RDEPEND="${GNUSTEP_CORE_DEPEND}
 	!gnustep-base/gnustep-back-cairo"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc15.patch )
+
 src_prepare() {
 	default
 	# do not compress man pages
