@@ -13,8 +13,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_BOOTSTRAP=""
 	inherit git-r3
 else
-	SRC_URI="https://github.com/MaartenBaert/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${MY_PN}-${PV}"
+	COMMIT="c50e83eea53f45eff503af58e6c86d0e928222f3"
+	SRC_URI="https://github.com/MaartenBaert/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
+	S="${WORKDIR}/${MY_PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -42,6 +43,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
+
+PATCHES=( "${FILESDIR}"/${P}-cmake4.patch )
 
 pkg_pretend() {
 	if use amd64 && ! use abi_x86_32 ; then
