@@ -11,7 +11,7 @@ inherit ruby-ng-gnome2
 RUBY_S=ruby-gnome-${PV}/gdk_pixbuf2
 
 DESCRIPTION="Ruby GdkPixbuf2 bindings"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~ppc ~riscv ~x86"
 IUSE="test"
 
 DEPEND="test? ( x11-libs/gdk-pixbuf[jpeg,gif(+)] )"
