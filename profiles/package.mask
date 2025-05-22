@@ -39,7 +39,7 @@
 # Sam James <sam@gentoo.org> (2025-05-22)
 # Introduces REQUIRED_USE that needs more discussion (bug #956402)
 =media-gfx/gimp-3.0.2-r2
-=media-gfx/gimp-3.0.4
+=media-gfx/gimp-3.0.4-r1
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-05-21)
 # Seems to be some bad interaction between this version and gpep517

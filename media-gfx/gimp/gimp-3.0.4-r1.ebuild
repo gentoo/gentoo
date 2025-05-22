@@ -225,7 +225,8 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	python_optimize
+	python_optimize "${ED}/usr/$(get_libdir)/gimp"
+	python_fix_shebang "${ED}/usr/$(get_libdir)/gimp"
 
 	find "${D}" -name '*.la' -type f -delete || die
 
