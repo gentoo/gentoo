@@ -7,12 +7,11 @@ inherit systemd toolchain-funcs udev
 DESCRIPTION="Split of readahead systemd implementation"
 HOMEPAGE="https://dev.gentoo.org/~pacho/systemd-readahead.html"
 SRC_URI="https://www.freedesktop.org/software/systemd/systemd-${PV}.tar.xz"
+S="${WORKDIR}/systemd-${PV}"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~sparc x86"
-
-S="${WORKDIR}/systemd-${PV}"
 
 RDEPEND=">=sys-apps/systemd-217:="
 DEPEND="${RDEPEND}"
