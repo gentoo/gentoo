@@ -53,6 +53,10 @@ games-fps/prboom-plus
 ~media-libs/allegro-5.2.7.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-22)
+# Library without revdeps. Bug #955824. Removal on 2025-06-21.
+media-libs/glpng
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-22)
 # Upstream repository+author, web pages and documentation gone after long
 # period of inactivity, based on Qt5. Bugs #949021, #940094
 # Removal on 2025-06-21.
