@@ -104,6 +104,8 @@ test_fix_tool_path AR ar 1
 test_fix_tool_path AR ar 0
 
 ESYSROOT=
+einfo "Testing with ESYSROOT=${ESYSROOT}"
+eindent
 test_prepend_path 17 /usr/bin /usr/bin:/usr/lib/llvm/17/bin
 test_prepend_path 17 /usr/lib/llvm/17/bin:/usr/bin /usr/lib/llvm/17/bin:/usr/bin
 test_prepend_path 17 /usr/bin:/usr/lib/llvm/17/bin /usr/bin:/usr/lib/llvm/17/bin
@@ -123,5 +125,24 @@ test_prepend_path 18 /usr/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin \
 	/usr/bin:/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin
 test_prepend_path 18 /usr/lib/llvm/17/bin:/usr/bin:/usr/lib/llvm/16/bin \
 	/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/bin:/usr/lib/llvm/16/bin
+eoutdent
+
+ESYSROOT=/foo
+einfo "Testing with ESYSROOT=${ESYSROOT}"
+eindent
+test_prepend_path 17 /usr/bin /usr/bin:/foo/usr/lib/llvm/17/bin
+test_prepend_path 17 /usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/17/bin:/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 17 /usr/bin:/usr/lib/llvm/17/bin: \
+	/usr/bin:/foo/usr/lib/llvm/17/bin:/usr/lib/llvm/17/bin
+test_prepend_path 17 /foo/usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 17 /usr/bin:/foo/usr/lib/llvm/17/bin: \
+	/usr/bin:/foo/usr/lib/llvm/17/bin
+test_prepend_path 18 /usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 18 /foo/usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/18/bin:/foo/usr/lib/llvm/17/bin:/usr/bin
+eoutdent
 
 texit
