@@ -82,11 +82,13 @@ Exporters
     <flag name="bullet" restrict="&gt;dev-games/ogre-13">Use <pkg>sci-physics/bullet</pkg> for physics plugin</flag>
     <flag name="cache">Enable GL state cache support</flag>
     <flag name="cg">NVIDIA toolkit plugin</flag>
+    <flag name="dotscene">DotScene (.scene) file format support through <pkg>dev-libs/pugixml</pkg></flag>
     <flag name="double-precision">More precise calculations at the expense of speed</flag>
     <flag name="deprecated" restrict="&gt;dev-games/ogre-13">
         Build deprecated nodeless positioning of Lights and Cameras.
     </flag>
     <flag name="egl">Use egl instead of glx</flag>
+    <flag name="egl-only">Use EGL instead of GLX</flag>
     <flag name="fine-granularity" restrict="~dev-games/ogre-2.1">
         Enable fine light mask granularity. This impacts on performance and should
         not be enabled unless an application really needs it.
@@ -94,6 +96,7 @@ Exporters
     <flag name="freeimage">Support images via <pkg>media-libs/freeimage</pkg></flag>
     <flag name="gl3plus">Build OpenGL 3+ RenderSystem</flag>
     <flag name="gles3" restrict="&lt;dev-games/ogre-13">Enable OpenGL ES 3.x Features</flag>
+    <flag name="glslang">Build Glslang plugin</flag>
     <flag name="json">Use <pkg>dev-libs/rapidjson</pkg> (needed by Hlms JSON materials)</flag>
     <flag name="legacy-animations">
         Use the skeletal animation from 1.x. It's much slower, but the new system
@@ -106,7 +109,9 @@ Exporters
         sensitive lookup. Some demos might not work with this setting.
         (default: case-insensitive + sensitive lookup in all groups)
     </flag>
+    <flag name="samples">Build and install Ogre demos</flag>
     <flag name="tbb">When USE=threads, use tbb for threading</flag>
+    <flag name="tiny">Build Tiny RenderSystem (software-rendering)</flag>
     <flag name="tools">
         Build and install AssimpConverter (assimp USE flag is enabled), MeshUpgrader, VRMLConverter and XMLConverter
     </flag>
