@@ -9,9 +9,9 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit check-reqs edo toolchain-funcs
 inherit python-r1
 
-DRIVER_PV="560.35.05"
-GCC_MAX_VER="13"
-CLANG_MAX_VER="18"
+DRIVER_PV="570.124.06"
+GCC_MAX_VER="14"
+CLANG_MAX_VER="19"
 
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
@@ -31,7 +31,7 @@ SLOT="0/${PV}" # UNSLOTTED
 # SLOT="${PV}" # SLOTTED
 
 KEYWORDS="-* ~amd64 ~arm64 ~amd64-linux ~arm64-linux"
-IUSE="debugger examples profiler rdma sanitizer"
+IUSE="clang debugger examples profiler rdma sanitizer"
 RESTRICT="bindist mirror strip test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -39,8 +39,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # since CUDA 11, the bundled toolkit driver (== ${DRIVER_PV}) and the
 # actual required minimum driver version are different.
 RDEPEND="
-	|| (
+	!clang? (
 		<sys-devel/gcc-$(( GCC_MAX_VER + 1 ))_pre[cxx]
+	)
+	clang? (
 		<llvm-core/clang-$(( CLANG_MAX_VER + 1 ))_pre
 	)
 	sys-process/numactl
@@ -69,9 +71,9 @@ python_check_deps() {
 
 cuda-toolkit_check_reqs() {
 	if use amd64; then
-		export CHECKREQS_DISK_BUILD="4908M"
+		export CHECKREQS_DISK_BUILD="6608M"
 	elif use arm64; then
-		export CHECKREQS_DISK_BUILD="4852M"
+		export CHECKREQS_DISK_BUILD="6354M"
 	fi
 
 	"check-reqs_pkg_${EBUILD_PHASE}"

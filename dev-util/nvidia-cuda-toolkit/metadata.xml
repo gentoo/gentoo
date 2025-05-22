@@ -6,6 +6,7 @@
 		<name>Gentoo Science Project</name>
 	</maintainer>
 	<use>
+		<flag name="clang">Depend on <pkg>llvm-core/clang</pkg> as host compiler</flag>
 		<flag name="debugger">Install the CUDA debugger</flag>
 		<flag name="nsight">Install profiling and optimizing tools (nsight-compute, nsight-systems)</flag>
 		<flag name="profiler">Install the NVIDIA CUDA profiler (nvprof) and the related libraries</flag>
