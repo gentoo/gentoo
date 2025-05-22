@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.06-test-words.patch
 	"${FILESDIR}"/grub-2.12-fwsetup.patch
 	"${WORKDIR}"/grub-2.12-bash-completion.patch
+	"${FILESDIR}"/grub-2.12-zfs-zstd-compression-support.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37

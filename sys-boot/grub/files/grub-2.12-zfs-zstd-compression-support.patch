@@ -1,0 +1,101 @@
+Patch fixes ZFS root filesystem dataset identification issues.
+
+This patch was mostly extracted from gub upstream commit f96df6fe9f6faa328c82820af88f14af07b2c9b9.
+See Gentoo Bugzilla https://bugs.gentoo.org/956414 for further details.
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 7fa9446bd..705d73fab 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1601,6 +1601,7 @@ module = {
+   common = fs/zfs/zfs_lz4.c;
+   common = fs/zfs/zfs_sha256.c;
+   common = fs/zfs/zfs_fletcher.c;
++  cppflags = '-I$(srcdir)/lib/posix_wrap -I$(srcdir)/lib/zstd';
+ };
+ 
+ module = {
+diff --git a/grub-core/fs/zfs/zfs.c b/grub-core/fs/zfs/zfs.c
+index b5453e006..3fdf9bda8 100644
+--- a/grub-core/fs/zfs/zfs.c
++++ b/grub-core/fs/zfs/zfs.c
+@@ -57,6 +57,8 @@
+ #include <grub/i18n.h>
+ #include <grub/safemath.h>
+ 
++#include <zstd.h>
++
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+ #define	ZPOOL_PROP_BOOTFS		"bootfs"
+@@ -291,6 +293,9 @@ static const char *spa_feature_names[] = {
+   "com.delphix:embedded_data",
+   "com.delphix:extensible_dataset",
+   "org.open-zfs:large_blocks",
++  "com.klarasystems:vdev_zaps_v2",
++  "com.delphix:head_errlog",
++  "org.freebsd:zstd_compress",
+   NULL
+ };
+ 
+@@ -312,6 +317,40 @@ zlib_decompress (void *s, void *d,
+   return grub_errno;
+ }
+ 
++static grub_err_t
++zstd_decompress (void *ibuf, void *obuf, grub_size_t isize,
++		 grub_size_t osize)
++{
++  grub_size_t zstd_ret;
++  grub_uint32_t c_len;
++  grub_uint8_t *byte_buf = (grub_uint8_t *) ibuf;
++
++  if (isize < 8)
++      return grub_error (GRUB_ERR_BAD_COMPRESSED_DATA, "zstd data too short");
++
++  c_len = grub_be_to_cpu32 (grub_get_unaligned32 (byte_buf));
++
++  if (c_len > isize - 8)
++      return grub_error (GRUB_ERR_BAD_COMPRESSED_DATA,
++			 "zstd data announced size overflow");
++
++  /*
++   * ZFS uses non-stadard magic for zstd streams. Rather than adjusting
++   * library functions, replace non-standard magic with standard one.
++   */
++  byte_buf[4] = 0x28;
++  byte_buf[5] = 0xb5;
++  byte_buf[6] = 0x2f;
++  byte_buf[7] = 0xfd;
++  zstd_ret = ZSTD_decompress (obuf, osize, byte_buf + 4, c_len + 4);
++
++  if (ZSTD_isError (zstd_ret))
++    return grub_error (GRUB_ERR_BAD_COMPRESSED_DATA,
++		       "zstd data corrupted (error %d)", (int) zstd_ret);
++
++  return GRUB_ERR_NONE;
++}
++
+ static grub_err_t
+ zle_decompress (void *s, void *d,
+ 		grub_size_t slen, grub_size_t dlen)
+@@ -362,6 +401,7 @@ static decomp_entry_t decomp_table[ZIO_COMPRESS_FUNCTIONS] = {
+   {"gzip-9", zlib_decompress},  /* ZIO_COMPRESS_GZIP9 */
+   {"zle", zle_decompress},      /* ZIO_COMPRESS_ZLE   */
+   {"lz4", lz4_decompress},      /* ZIO_COMPRESS_LZ4   */
++  {"zstd", zstd_decompress},    /* ZIO_COMPRESS_ZSTD   */
+ };
+ 
+ static grub_err_t zio_read_data (blkptr_t * bp, grub_zfs_endian_t endian,
+diff --git a/include/grub/zfs/zio.h b/include/grub/zfs/zio.h
+index 19ce136bb..997b0c4d4 100644
+--- a/include/grub/zfs/zio.h
++++ b/include/grub/zfs/zio.h
+@@ -89,6 +89,7 @@ enum zio_compress {
+ 	ZIO_COMPRESS_GZIP9,
+ 	ZIO_COMPRESS_ZLE,
+ 	ZIO_COMPRESS_LZ4,
++	ZIO_COMPRESS_ZSTD,
+ 	ZIO_COMPRESS_FUNCTIONS
+ };
+ 
