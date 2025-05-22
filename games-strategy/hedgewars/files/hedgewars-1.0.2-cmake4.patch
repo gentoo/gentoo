@@ -1,0 +1,52 @@
+From 02ac3e0681741603f17a0cc24ba1ecc6ce2766ac Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 23 May 2025 00:19:17 +0200
+Subject: [PATCH] Fix build with >=cmake-4
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                   | 4 ++--
+ misc/libphyslayer/CMakeLists.txt | 2 --
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8fc48b9..920dbab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,14 +2,14 @@ project(hedgewars)
+ 
+ 
+ #initialise cmake environment
+-cmake_minimum_required(VERSION 2.6.4)
++cmake_minimum_required(VERSION 3.12.0)
+ foreach(hwpolicy CMP0003 CMP0012 CMP0017 CMP0018)
+     if(POLICY ${hwpolicy})
+         cmake_policy(SET ${hwpolicy} NEW)
+     endif()
+ endforeach()
+ 
+-foreach(hwpolicy CMP0026 CMP0068)
++foreach(hwpolicy CMP0068)
+     if(POLICY ${hwpolicy})
+         cmake_policy(SET ${hwpolicy} OLD)
+     endif()
+diff --git a/misc/libphyslayer/CMakeLists.txt b/misc/libphyslayer/CMakeLists.txt
+index 4736216..98eabc2 100644
+--- a/misc/libphyslayer/CMakeLists.txt
++++ b/misc/libphyslayer/CMakeLists.txt
+@@ -21,12 +21,10 @@ target_link_libraries(physlayer ${SDL2_LIBRARIES} lua physfs)
+ install(TARGETS physlayer RUNTIME DESTINATION ${target_binary_install_dir}
+                           LIBRARY DESTINATION ${target_library_install_dir}
+                           ARCHIVE DESTINATION ${target_library_install_dir})
+-get_target_property(physlayer_fullpath physlayer LOCATION)
+ 
+ 
+ ## added standard variables (FORCE or cmake won't pick 'em)
+ set(PHYSLAYER_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE STRING "Physlayer include dir" FORCE)
+-set(PHYSLAYER_LIBRARY ${physlayer_fullpath} CACHE STRING "Physlayer library" FORCE)
+ 
+ if(BUILD_ENGINE_JS)
+     set_target_properties(physlayer PROPERTIES SUFFIX ".bc")
+-- 
+2.49.0
+

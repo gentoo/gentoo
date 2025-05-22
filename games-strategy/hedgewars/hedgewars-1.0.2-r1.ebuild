@@ -76,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-glext-prototypes.patch"
 	"${FILESDIR}/${P}-clang-15.patch"
 	"${FILESDIR}/${P}-ffmpeg-6.patch"
+	"${FILESDIR}/${P}-cmake4.patch" # bug 956467
 )
 
 src_configure() {
