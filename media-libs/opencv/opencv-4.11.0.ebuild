@@ -389,8 +389,6 @@ PATCHES=(
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
 
 	# "${FILESDIR}/${PN}_contrib-4.8.1-NVIDIAOpticalFlowSDK-2.0.tar.gz.patch"
-
-	# "${FILESDIR}/${PN}_contrib-4.10.0-CUDA-12.6-tuple_size.patch" # 3785
 )
 
 cuda_get_host_compiler() {
