@@ -33,13 +33,15 @@ COMMON_DEPEND="
 		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 	')
 	>=app-accessibility/at-spi2-core-2.46.0
+	app-arch/bzip2
+	app-arch/libarchive:=
+	>=app-arch/xz-utils-5.0.0
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
-	>=dev-libs/appstream-glib-0.7.16
+	>=dev-libs/appstream-glib-0.7.16:=
 	>=dev-libs/glib-2.70.0:2
 	>=dev-libs/json-glib-1.4.4
-	dev-libs/libxml2:2=
-	dev-libs/libxslt
+	dev-libs/gobject-introspection
 	>=gnome-base/librsvg-2.57.3:2
 	>=media-gfx/mypaint-brushes-1.3.1:1.0=
 	>=media-libs/babl-9999[introspection,lcms,vala?]
@@ -83,6 +85,7 @@ COMMON_DEPEND="
 		x11-libs/libX11
 		x11-libs/libXcursor
 		x11-libs/libXext
+		x11-libs/libXfixes
 		>=x11-libs/libXmu-1.1.4
 	)
 	xpm? ( x11-libs/libXpm )
@@ -103,6 +106,7 @@ DEPEND="
 # TODO: there are probably more atoms in DEPEND which should be in BDEPEND now
 BDEPEND="
 	>=dev-lang/perl-5.30.3
+	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.21
 	doc? (
