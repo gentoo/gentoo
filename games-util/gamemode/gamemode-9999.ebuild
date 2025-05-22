@@ -1,9 +1,7 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit meson-multilib systemd
 

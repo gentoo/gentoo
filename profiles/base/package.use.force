@@ -321,10 +321,6 @@ net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
 sys-cluster/glusterfs libtirpc
 
-# Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
-# Workaround until resolved upstream (bug #586840)
->=dev-games/simgear-2016.2.1 dns
-
 # Justin Lecher <jlec@gentoo.org> (2014-08-10)
 # Doesn't work without acl support
 # No patch yet, #516626

@@ -72,7 +72,8 @@ SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/d
 # https://gitweb.gentoo.org/proj/chromium-tools.git/tree/get-chromium-licences.py
 LICENSE="BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 Base64 Boost-1.0 CC-BY-3.0 CC-BY-4.0 Clear-BSD"
 LICENSE+=" FFT2D FTL IJG ISC LGPL-2 LGPL-2.1 libpng libpng2 MIT MPL-1.1 MPL-2.0 Ms-PL openssl PSF-2"
-LICENSE+=" SGI-B-2.0 SSLeay SunSoft Unicode-3.0 Unicode-DFS-2015 Unlicense unRAR UoI-NCSA X11-Lucent"
+LICENSE+=" SGI-B-2.0 SSLeay SunSoft Unicode-3.0 Unicode-DFS-2015 Unlicense UoI-NCSA X11-Lucent"
+LICENSE+=" rar? ( unRAR )"
 
 SLOT="0/dev"
 # Dev exists mostly to give devs some breathing room for beta/stable releases;
@@ -83,7 +84,7 @@ fi
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist bundled-toolchain cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos +official pax-kernel pgo"
-IUSE+=" +proprietary-codecs pulseaudio qt6 +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
+IUSE+=" +proprietary-codecs pulseaudio qt6 +rar +screencast selinux test +vaapi +wayland +widevine cpu_flags_ppc_vsx3"
 RESTRICT="
 	!bindist? ( bindist )
 	!test? ( test )
@@ -767,7 +768,6 @@ src_prepare() {
 		third_party/tflite/src/third_party/xla/xla/tsl/protobuf
 		third_party/tflite/src/third_party/xla/xla/tsl/util
 		third_party/ukey2
-		third_party/unrar
 		third_party/utf
 		third_party/vulkan
 		third_party/wasm_tts_engine
@@ -803,6 +803,10 @@ src_prepare() {
 		third_party/usb_ids
 		third_party/xdg-utils
 	)
+
+	if use rar; then
+		keeplibs+=( third_party/unrar )
+	fi
 
 	if use test; then
 		# tar tvf /var/cache/distfiles/${P}-testdata.tar.xz | grep '^d' | grep 'third_party' | awk '{print $NF}'
@@ -897,82 +901,12 @@ chromium_configure() {
 	# Calling this here supports resumption via FEATURES=keepwork
 	python_setup
 
-	local myconf_gn=""
+	# Bug 491582.
+	export TMPDIR="${WORKDIR}/temp"
+	mkdir -p -m 755 "${TMPDIR}" || die
 
-	if use !bundled-toolchain; then
-		# We already forced the "correct" clang via pkg_setup
-
-		if tc-is-cross-compiler; then
-			CC="${CC} -target ${CHOST} --sysroot ${ESYSROOT}"
-			CXX="${CXX} -target ${CHOST} --sysroot ${ESYSROOT}"
-			BUILD_AR=${AR}
-			BUILD_CC=${CC}
-			BUILD_CXX=${CXX}
-			BUILD_NM=${NM}
-		fi
-
-		strip-unsupported-flags
-
-		myconf_gn+=" is_clang=true clang_use_chrome_plugins=false"
-		# https://bugs.gentoo.org/918897#c32
-		append-ldflags -Wl,--undefined-version
-		myconf_gn+=" use_lld=true"
-
-		# Make sure the build system will use the right tools, bug #340795.
-		tc-export AR CC CXX NM
-
-		myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
-
-		if tc-is-cross-compiler; then
-			tc-export BUILD_{AR,CC,CXX,NM}
-			myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:host\""
-			myconf_gn+=" v8_snapshot_toolchain=\"//build/toolchain/linux/unbundle:host\""
-			myconf_gn+=" pkg_config=\"$(tc-getPKG_CONFIG)\""
-			myconf_gn+=" host_pkg_config=\"$(tc-getBUILD_PKG_CONFIG)\""
-
-			# setup cups-config, build system only uses --libs option
-			if use cups; then
-				mkdir "${T}/cups-config" || die
-				cp "${ESYSROOT}/usr/bin/${CHOST}-cups-config" "${T}/cups-config/cups-config" || die
-				export PATH="${PATH}:${T}/cups-config"
-			fi
-
-			# Don't inherit PKG_CONFIG_PATH from environment
-			local -x PKG_CONFIG_PATH=
-		else
-			myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
-		fi
-
-		# bindgen settings
-		# From 127, to make bindgen work, we need to provide a location for libclang.
-		# We patch this in for gentoo - see chromium-*-bindgen-custom-toolchain.patch
-		# rust_bindgen_root = directory with `bin/bindgen` beneath it.
-		myconf_gn+=" rust_bindgen_root=\"${EPREFIX}/usr/\""
-
-		myconf_gn+=" bindgen_libclang_path=\"$(get_llvm_prefix)/$(get_libdir)\""
-		# We don't need to set 'clang_base_bath' for anything in our build
-		# and it defaults to the google toolchain location. Instead provide a location
-		# to where system clang lives sot that bindgen can find system headers (e.g. stddef.h)
-		myconf_gn+=" clang_base_path=\"${EPREFIX}/usr/lib/clang/${LLVM_SLOT}/\""
-
-		myconf_gn+=" rust_sysroot_absolute=\"$(get_rust_prefix)\""
-		myconf_gn+=" rustc_version=\"${RUST_SLOT}\""
-	fi
-
-	# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
-	myconf_gn+=" is_debug=false"
-
-	# enable DCHECK with USE=debug only, increases chrome binary size by 30%, bug #811138.
-	# DCHECK is fatal by default, make it configurable at runtime, #bug 807881.
-	myconf_gn+=" dcheck_always_on=$(usex debug true false)"
-	myconf_gn+=" dcheck_is_configurable=$(usex debug true false)"
-
-	# Component build isn't generally intended for use by end users. It's mostly useful
-	# for development and debugging.
-	myconf_gn+=" is_component_build=false"
-
-	# Disable nacl, we can't build without pnacl (http://crbug.com/269560).
-	myconf_gn+=" enable_nacl=false"
+	# https://bugs.gentoo.org/654216
+	addpredict /dev/dri/ #nowarn
 
 	# Use system-provided libraries.
 	# TODO: freetype -- remove sources (https://bugs.chromium.org/p/pdfium/issues/detail?id=733).
@@ -1004,7 +938,8 @@ chromium_configure() {
 		gn_system_libraries+=( zstd )
 	fi
 
-	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" || die
+	build/linux/unbundle/replace_gn_files.py --system-libraries "${gn_system_libraries[@]}" ||
+		die "Failed to replace GN files for system libraries"
 
 	# TODO 131: The above call clobbers `enable_freetype = true` in the freetype gni file
 	# drop the last line, then append the freetype line and a new curly brace to end the block
@@ -1013,220 +948,278 @@ chromium_configure() {
 	echo "  enable_freetype = true" >> ${freetype_gni} || die
 	echo "}" >> ${freetype_gni} || die
 
-	# See dependency logic in third_party/BUILD.gn
-	myconf_gn+=" use_system_harfbuzz=$(usex system-harfbuzz true false)"
-
-	# Optional dependencies.
-	myconf_gn+=" enable_hangout_services_extension=$(usex hangouts true false)"
-	myconf_gn+=" enable_widevine=$(usex widevine true false)"
-
-	if use headless; then
-		myconf_gn+=" use_cups=false"
-		myconf_gn+=" use_kerberos=false"
-		myconf_gn+=" use_pulseaudio=false"
-		myconf_gn+=" use_vaapi=false"
-		myconf_gn+=" rtc_use_pipewire=false"
-	else
-		myconf_gn+=" use_cups=$(usex cups true false)"
-		myconf_gn+=" use_kerberos=$(usex kerberos true false)"
-		myconf_gn+=" use_pulseaudio=$(usex pulseaudio true false)"
-		myconf_gn+=" use_vaapi=$(usex vaapi true false)"
-		myconf_gn+=" rtc_use_pipewire=$(usex screencast true false)"
-		myconf_gn+=" gtk_version=$(usex gtk4 4 3)"
-	fi
-
-	# Allows distributions to link pulseaudio directly (DT_NEEDED) instead of
-	# using dlopen. This helps with automated detection of ABI mismatches and
-	# prevents silent errors.
-	if use pulseaudio; then
-		myconf_gn+=" link_pulseaudio=true"
-	fi
-
-	# Non-developer builds of Chromium (for example, non-Chrome browsers, or
-	# Chromium builds provided by Linux distros) should disable the testing config
-	myconf_gn+=" disable_fieldtrial_testing_config=true"
-
-	# The sysroot is the oldest debian image that chromium supports, we don't need it
-	myconf_gn+=" use_sysroot=false"
-
-	# Use in-tree libc++ (buildtools/third_party/libc++ and buildtools/third_party/libc++abi)
-	# instead of the system C++ library for C++ standard library support.
-	# default: true, but let's be explicit (forced since 120 ; USE removed 127).
-	myconf_gn+=" use_custom_libcxx=true"
-
-	# Disable pseudolocales, only used for testing
-	myconf_gn+=" enable_pseudolocales=false"
-
-	# Disable code formating of generated files
-	myconf_gn+=" blink_enable_generated_code_formatting=false"
-
-	if use bindist ; then
-		# proprietary_codecs just forces Chromium to say that it can use h264/aac,
-		# the work is still done by ffmpeg. If this is set to no Chromium
-		# won't be able to load the codec even if the library can handle it
-		myconf_gn+=" proprietary_codecs=true"
-		myconf_gn+=" ffmpeg_branding=\"Chrome\""
-		# build ffmpeg as an external component (libffmpeg.so) that we can remove / substitute
-		myconf_gn+=" is_component_ffmpeg=true"
-	else
-		ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
-		myconf_gn+=" proprietary_codecs=$(usex proprietary-codecs true false)"
-		myconf_gn+=" ffmpeg_branding=\"${ffmpeg_branding}\""
-	fi
-
-	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys .
-	# Note: these are for Gentoo use ONLY. For your own distribution,
-	# please get your own set of keys. Feel free to contact chromium@gentoo.org
-	# for more info. The OAuth2 credentials, however, have been left out.
-	# Those OAuth2 credentials have been broken for quite some time anyway.
-	# Instead we apply a patch to use the --oauth2-client-id= and
-	# --oauth2-client-secret= switches for setting GOOGLE_DEFAULT_CLIENT_ID and
-	# GOOGLE_DEFAULT_CLIENT_SECRET at runtime. This allows signing into
-	# Chromium without baked-in values.
-	local google_api_key="AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc"
-	myconf_gn+=" google_api_key=\"${google_api_key}\""
-	local myarch="$(tc-arch)"
-
-	# Avoid CFLAGS problems, bug #352457, bug #390147.
-	if ! use custom-cflags; then
+	if use !custom-cflags; then
 		replace-flags "-Os" "-O2"
 		strip-flags
-
 		# Debug info section overflows without component build
 		# Prevent linker from running out of address space, bug #471810 .
 		filter-flags "-g*"
-
-		# Prevent libvpx/xnnpack build failures. Bug 530248, 544702, 546984, 853646.
-		if [[ ${myarch} == amd64 ]]; then
-			filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 -mno-avx -mno-avx2 -mno-fma -mno-fma4 -mno-xop -mno-sse4a
-		fi
 	fi
-
-	if [[ $myarch = amd64 ]] ; then
-		myconf_gn+=" target_cpu=\"x64\""
-		ffmpeg_target_arch=x64
-	elif [[ $myarch = arm64 ]] ; then
-		myconf_gn+=" target_cpu=\"arm64\""
-		ffmpeg_target_arch=arm64
-	elif [[ $myarch = ppc64 ]] ; then
-		myconf_gn+=" target_cpu=\"ppc64\""
-		ffmpeg_target_arch=ppc64
-	else
-		die "Failed to determine target arch, got '$myarch'."
-	fi
-
-	myconf_gn+=" treat_warnings_as_errors=false"
-	# Disable fatal linker warnings, bug 506268.
-	myconf_gn+=" fatal_linker_warnings=false"
-
-	# Disable external code space for V8 for ppc64. It is disabled for ppc64
-	# by default, but cross-compiling on amd64 enables it again.
-	if tc-is-cross-compiler; then
-		if ! use amd64 && ! use arm64; then
-			myconf_gn+=" v8_enable_external_code_space=false"
-		fi
-	fi
-
-	# Only enabled for clang, but gcc has endian macros too
-	myconf_gn+=" v8_use_libm_trig_functions=true"
-
-	# Bug 491582.
-	export TMPDIR="${WORKDIR}/temp"
-	mkdir -p -m 755 "${TMPDIR}" || die
-
-	# https://bugs.gentoo.org/654216
-	addpredict /dev/dri/ #nowarn
 
 	# We don't use the same clang version as upstream, and with -Werror
 	# we need to make sure that we don't get superfluous warnings.
 	append-flags -Wno-unknown-warning-option
-	if tc-is-cross-compiler; then
+	if tc-is-cross-compiler; then # can you cross-compile with the bundled toolchain?
 			export BUILD_CXXFLAGS+=" -Wno-unknown-warning-option"
 			export BUILD_CFLAGS+=" -Wno-unknown-warning-option"
 	fi
 
+	# Start building our GN options
+	local myconf_gn=() # Tip: strings must be quoted, bools or numbers are fine
+
+	if use !bundled-toolchain; then
+		# We already forced the "correct" clang via pkg_setup
+
+		if tc-is-cross-compiler; then
+			CC="${CC} -target ${CHOST} --sysroot ${ESYSROOT}"
+			CXX="${CXX} -target ${CHOST} --sysroot ${ESYSROOT}"
+			BUILD_AR=${AR}
+			BUILD_CC=${CC}
+			BUILD_CXX=${CXX}
+			BUILD_NM=${NM}
+		fi
+
+		# Make sure the build system will use the right tools, bug #340795.
+		tc-export AR CC CXX NM
+
+		strip-unsupported-flags
+		append-ldflags -Wl,--undefined-version # https://bugs.gentoo.org/918897#c32
+
+		myconf_gn+=(
+			"is_clang=true"
+			"clang_use_chrome_plugins=false"
+			"use_lld=true"
+			'custom_toolchain="//build/toolchain/linux/unbundle:default"'
+			# From M127 we need to provide a location for libclang.
+			# We patch this in for gentoo - see chromium-*-bindgen-custom-toolchain.patch
+			# rust_bindgen_root = directory with `bin/bindgen` beneath it.
+			# We don't need to set 'clang_base_path' for anything in our build
+			# and it defaults to the google toolchain location. Instead provide a location
+			# to where system clang lives so that bindgen can find system headers (e.g. stddef.h)
+			"bindgen_libclang_path=\"$(get_llvm_prefix)/$(get_libdir)\""
+			"clang_base_path=\"${EPREFIX}/usr/lib/clang/${LLVM_SLOT}/\""
+			"rust_bindgen_root=\"${EPREFIX}/usr/\""
+			"rust_sysroot_absolute=\"$(get_rust_prefix)\""
+			"rustc_version=\"${RUST_SLOT}\""
+		)
+
+		if ! tc-is-cross-compiler; then
+			myconf_gn+=( 'host_toolchain="//build/toolchain/linux/unbundle:default"' )
+		else
+			tc-export BUILD_{AR,CC,CXX,NM}
+			myconf_gn+=(
+				'host_toolchain="//build/toolchain/linux/unbundle:host"'
+				'v8_snapshot_toolchain="//build/toolchain/linux/unbundle:host"'
+				"host_pkg_config=$(tc-getBUILD_PKG_CONFIG)"
+				"pkg_config=$(tc-getPKG_CONFIG)"
+			)
+
+			# setup cups-config, build system only uses --libs option
+			if use cups; then
+				mkdir "${T}/cups-config" || die
+				cp "${ESYSROOT}/usr/bin/${CHOST}-cups-config" "${T}/cups-config/cups-config" || die
+				export PATH="${PATH}:${T}/cups-config"
+			fi
+
+			# Don't inherit PKG_CONFIG_PATH from environment
+			local -x PKG_CONFIG_PATH=
+		fi
+
+	fi # !bundled-toolchain
+
+	local myarch
+	myarch="$(tc-arch)"
+	case ${myarch} in
+		amd64)
+			# Bug 530248, 544702, 546984, 853646.
+			use !custom-cflags && filter-flags -mno-mmx -mno-sse2 -mno-ssse3 -mno-sse4.1 \
+										-mno-avx -mno-avx2 -mno-fma -mno-fma4 -mno-xop -mno-sse4a
+			myconf_gn+=( 'target_cpu="x64"' )
+			;;
+		arm64)
+			myconf_gn+=( 'target_cpu="arm64"' )
+			;;
+		ppc64)
+			myconf_gn+=( 'target_cpu="ppc64"' )
+			;;
+		*)
+			die "Failed to determine target arch, got '${myarch}'."
+			;;
+	esac
+
+	# Common options
+
+	myconf_gn+=(
+		# Disable code formating of generated files
+		"blink_enable_generated_code_formatting=false"
+		# enable DCHECK with USE=debug only, increases chrome binary size by 30%, bug #811138.
+		# DCHECK is fatal by default, make it configurable at runtime, #bug 807881.
+		"dcheck_always_on=$(usex debug true false)"
+		"dcheck_is_configurable=$(usex debug true false)"
+		# Chromium builds provided by Linux distros should disable the testing config
+		"disable_fieldtrial_testing_config=true"
+		# 131 began laying the groundwork for replacing freetype with
+		# "Rust-based Fontations set of libraries plus Skia path rendering"
+		# We now need to opt-in
+		"enable_freetype=true"
+		"enable_hangout_services_extension=$(usex hangouts true false)"
+		# Disable nacl; deprecated, we can't build without pnacl (http://crbug.com/269560).
+		"enable_nacl=false"
+		# Don't need nocompile checks and GN crashes with our config (verify with modern GN)
+		"enable_nocompile_tests=false"
+		# pseudolocales are only used for testing
+		"enable_pseudolocales=false"
+		"enable_widevine=$(usex widevine true false)"
+		# Disable fatal linker warnings, bug 506268.
+		"fatal_linker_warnings=false"
+		# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
+		# Note: these are for Gentoo use ONLY. For your own distribution,
+		# please get your own set of keys. Feel free to contact chromium@gentoo.org for more info.
+		# note: OAuth2 is patched in; check patchset for details.
+		'google_api_key="AIzaSyDEAOvatFo0eTgsV_ZlEzx0ObmepsMzfAc"'
+		# Component build isn't generally intended for use by end users. It's mostly useful
+		# for development and debugging.
+		"is_component_build=false"
+		# GN needs explicit config for Debug/Release as opposed to inferring it from build directory.
+		"is_debug=false"
+		"is_official_build=$(usex official true false)"
+		# Enable ozone wayland and/or headless support
+		"ozone_auto_platforms=false"
+		"ozone_platform_headless=true"
+		# Enables building without non-free unRAR licence
+		"safe_browsing_use_unrar=$(usex rar true false)"
+		"thin_lto_enable_optimizations=${use_lto}"
+		"treat_warnings_as_errors=false"
+		# Use in-tree libc++ (buildtools/third_party/libc++ and buildtools/third_party/libc++abi)
+		# instead of the system C++ library for C++ standard library support.
+		# default: true, but let's be explicit (forced since 120 ; USE removed 127).
+		"use_custom_libcxx=true"
+		# Enable ozone wayland and/or headless support
+		"use_ozone=true"
+		# The sysroot is the oldest debian image that chromium supports, we don't need it
+		"use_sysroot=false"
+		# See dependency logic in third_party/BUILD.gn
+		"use_system_harfbuzz=$(usex system-harfbuzz true false)"
+		"use_thin_lto=${use_lto}"
+		# Only enabled for clang, but gcc has endian macros too
+		"v8_use_libm_trig_functions=true"
+	)
+
+	if use bindist ; then
+		myconf_gn+=(
+			# If this is set to false Chromium won't be able to load any proprietary codecs
+			# even if provided with an ffmpeg capable of h264/aac decoding
+			'proprietary_codecs=true"
+			"ffmpeg_branding="Chrome"'
+			# build ffmpeg as an external component (libffmpeg.so) that we can remove / substitute
+			"is_component_ffmpeg=true"
+		)
+	else
+		myconf_gn+=(
+			"proprietary_codecs=$(usex proprietary-codecs true false)"
+			"ffmpeg_branding=\"$(usex proprietary-codecs Chrome Chromium)\""
+		)
+	fi
+
+	if use headless; then
+		myconf_gn+=(
+			"enable_print_preview=false"
+			"enable_remoting=false"
+			"ozone_platform=headless"
+			"rtc_use_pipewire=false"
+			"use_alsa=false"
+			"use_cups=false"
+			"use_gio=false"
+			"use_glib=false"
+			"use_gtk=false"
+			"use_kerberos=false"
+			"use_libpci=false"
+			"use_pangocairo=false"
+			"use_pulseaudio=false"
+			"use_qt=false"
+			"use_udev=false"
+			"use_vaapi=false"
+			"use_xkbcommon=false"
+		)
+	else
+		myconf_gn+=(
+			"gtk_version=$(usex gtk4 4 3)"
+			# link pulseaudio directly (DT_NEEDED) instead of using dlopen.
+			# helps with automated detection of ABI mismatches and prevents silent errors.
+			"link_pulseaudio=$(usex pulseaudio true false)"
+			"ozone_platform_wayland=$(usex wayland true false)"
+			"ozone_platform_x11=$(usex X true false)"
+			"ozone_platform=\"$(usex wayland wayland x11)\""
+			"rtc_use_pipewire=$(usex screencast true false)"
+			"use_cups=$(usex cups true false)"
+			"use_kerberos=$(usex kerberos true false)"
+			"use_pulseaudio=$(usex pulseaudio true false)"
+			"use_qt5=false"
+			"use_system_libffi=$(usex wayland true false)"
+			"use_system_minigbm=true"
+			"use_vaapi=$(usex vaapi true false)"
+			"use_xkbcommon=true"
+		)
+		if use qt6; then
+			local cbuild_libdir
+			cbuild_libdir="$(get_libdir)"
+			if tc-is-cross-compiler; then
+			# Hack to workaround get_libdir not being able to handle CBUILD, bug #794181
+				cbuild_libdir="$($(tc-getBUILD_PKG_CONFIG) --keep-system-libs --libs-only-L libxslt)"
+				cbuild_libdir="${cbuild_libdir:2}"
+				cbuild_libdir="${cbuild_libdir/% }"
+			fi
+			myconf_gn+=(
+				"use_qt6=true"
+				"moc_qt6_path=\"${EPREFIX}/usr/${cbuild_libdir}/qt6/libexec\""
+			)
+		else
+			myconf_gn+=( "use_qt6=false" )
+		fi
+	fi
+
 	# Explicitly disable ICU data file support for system-icu/headless builds.
 	if use system-icu || use headless; then
-		myconf_gn+=" icu_use_data_file=false"
+		myconf_gn+=( "icu_use_data_file=false" )
 	fi
 
-	# Don't need nocompile checks and GN crashes with our config
-	myconf_gn+=" enable_nocompile_tests=false"
-
-	# 131 began laying the groundwork for replacing freetype with
-	# "Rust-based Fontations set of libraries plus Skia path rendering"
-	# We now need to opt-in
-	myconf_gn+=" enable_freetype=true"
-
-	# Enable ozone wayland and/or headless support
-	myconf_gn+=" use_ozone=true ozone_auto_platforms=false"
-	myconf_gn+=" ozone_platform_headless=true"
-	if use headless; then
-		myconf_gn+=" ozone_platform=\"headless\""
-		myconf_gn+=" use_xkbcommon=false use_gtk=false use_qt=false"
-		myconf_gn+=" use_glib=false use_gio=false"
-		myconf_gn+=" use_pangocairo=false use_alsa=false"
-		myconf_gn+=" use_libpci=false use_udev=false"
-		myconf_gn+=" enable_print_preview=false"
-		myconf_gn+=" enable_remoting=false"
-	else
-		myconf_gn+=" use_system_minigbm=true"
-		myconf_gn+=" use_xkbcommon=true"
-		myconf_gn+=" use_qt5=false"
-		if use qt6; then
-			myconf_gn+=" use_qt6=true"
-			local cbuild_libdir=$(get_libdir)
-			if tc-is-cross-compiler; then
-				# Hack to workaround get_libdir not being able to handle CBUILD, bug #794181
-				local cbuild_libdir=$($(tc-getBUILD_PKG_CONFIG) --keep-system-libs --libs-only-L libxslt)
-				cbuild_libdir=${cbuild_libdir:2}
-				cbuild_libdir=${cbuild_libdir/% }
-			fi
-			myconf_gn+=" moc_qt6_path=\"${EPREFIX}/usr/${cbuild_libdir}/qt6/libexec\""
-		else
-			myconf_gn+=" use_qt6=false"
-		fi
-		myconf_gn+=" ozone_platform_x11=$(usex X true false)"
-		myconf_gn+=" ozone_platform_wayland=$(usex wayland true false)"
-		myconf_gn+=" ozone_platform=$(usex wayland \"wayland\" \"x11\")"
-		use wayland && myconf_gn+=" use_system_libffi=true"
-	fi
-
-	myconf_gn+=" use_thin_lto=${use_lto}"
-	myconf_gn+=" thin_lto_enable_optimizations=${use_lto}"
-
-	# Enable official builds
-	myconf_gn+=" is_official_build=$(usex official true false)"
 	if use official; then
 		# Allow building against system libraries in official builds
 		sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 			tools/generate_shim_headers/generate_shim_headers.py || die
-		if use ppc64; then
-			myconf_gn+=" is_cfi=false" # requires llvm-runtimes/compiler-rt-sanitizers[cfi]
+		if use !ppc64; then
+			myconf_gn+=( "is_cfi=${use_lto}" )
 		else
-			myconf_gn+=" is_cfi=${use_lto}"
+			myconf_gn+=( "is_cfi=false" ) # requires llvm-runtimes/compiler-rt-sanitizers[cfi]
 		fi
 		# Don't add symbols to build
-		myconf_gn+=" symbol_level=0"
+		myconf_gn+=( "symbol_level=0" )
 	fi
 
 	if use pgo; then
-		myconf_gn+=" chrome_pgo_phase=${1}"
+		myconf_gn+=( "chrome_pgo_phase=${1}" )
 		if [[ "$1" == "2" ]]; then
-			myconf_gn+=" pgo_data_path=\"${2}\""
+			myconf_gn+=( "pgo_data_path=${2}" )
 		fi
 	else
-		# Disable PGO
-		myconf_gn+=" chrome_pgo_phase=0"
+		myconf_gn+=( "chrome_pgo_phase=0" )
 	fi
+
+	# Odds and ends
 
 	# skipping typecheck is only supported on amd64, bug #876157
 	if ! use amd64; then
-		myconf_gn+=" devtools_skip_typecheck=false"
+		myconf_gn+=( "devtools_skip_typecheck=false" )
+	fi
+
+	# Disable external code space for V8 for ppc64. It is disabled for ppc64
+	# by default, but cross-compiling on amd64 enables it again.
+	if tc-is-cross-compiler && use ppc64; then
+		myconf_gn+=( "v8_enable_external_code_space=false" )
 	fi
 
 	einfo "Configuring Chromium ..."
-	set -- gn gen --args="${myconf_gn} ${EXTRA_GN}" out/Release
+	set -- gn gen --args="${myconf_gn[*]}${EXTRA_GN:+ ${EXTRA_GN}}" out/Release
 	echo "$@"
 	"$@" || die
 }

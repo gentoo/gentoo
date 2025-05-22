@@ -1,0 +1,17 @@
+diff --git a/src/_pytest/fixtures.py b/src/_pytest/fixtures.py
+index 6b882fa35..985e45ce3 100644
+--- a/src/_pytest/fixtures.py
++++ b/src/_pytest/fixtures.py
+@@ -278,6 +278,12 @@ def reorder_items_atscope(
+                     for other_scope in HIGH_SCOPES:
+                         other_scoped_items_by_argkey = items_by_argkey[other_scope]
+                         for argkey in argkeys_by_item[other_scope].get(i, ()):
++                            if hasattr(sys, "pypy_version_info"):
++                                # Gentoo workaround for https://github.com/pytest-dev/pytest/issues/13312
++                                del other_scoped_items_by_argkey[argkey][i]
++                                new_dict = OrderedDict({i: None})
++                                new_dict.update(other_scoped_items_by_argkey[argkey])
++                                continue
+                             other_scoped_items_by_argkey[argkey][i] = None
+                             other_scoped_items_by_argkey[argkey].move_to_end(
+                                 i, last=False

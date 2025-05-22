@@ -18,6 +18,6 @@
 
   <upstream>
     <remote-id type="sourceforge">pnp4nagios</remote-id>
-    <remote-id type="github">ConSol-Monitoring/pnp4nagios</remote-id>
+    <remote-id type="github">ConSol-Monitoring/pnp</remote-id>
   </upstream>
 </pkgmetadata>

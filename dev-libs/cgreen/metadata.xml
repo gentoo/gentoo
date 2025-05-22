@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="xml">Add a simple XML report generator without external dependencies</flag>
+		<flag name="libxml2">Add an XML report generator which uses <pkg>dev-libs/libxml2</pkg> for output formatting</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">cgreen-devs/cgreen</remote-id>
 	</upstream>

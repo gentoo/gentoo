@@ -12,6 +12,7 @@
 	<upstream>
 		<changelog>http://www.ctwm.org/CHANGES.html</changelog>
 		<doc>http://www.ctwm.org/docs.html</doc>
+		<remote-id type="github">fullermd/ctwm-mirror</remote-id>
 	</upstream>
 	<use>
 		<flag name="jpeg">Enable jpeg image support with <pkg>virtual/jpeg</pkg></flag>

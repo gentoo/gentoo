@@ -6,6 +6,7 @@
                 <name>Rich Freeman</name>
         </maintainer>
         <upstream>
+                <doc>https://www.w1hkj.org/flmsg-help/</doc>
                 <remote-id type="sourceforge">fldigi</remote-id>
         </upstream>
 </pkgmetadata>

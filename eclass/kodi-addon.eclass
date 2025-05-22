@@ -7,6 +7,7 @@
 # @SUPPORTED_EAPIS: 7
 # @PROVIDES: cmake
 # @BLURB: Helper for correct building and (importantly) installing Kodi addon packages.
+# @DEAD
 # @DESCRIPTION:
 # Provides a src_configure function for correct CMake configuration
 

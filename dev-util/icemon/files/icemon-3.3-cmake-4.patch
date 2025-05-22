@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/953042
+https://github.com/icecc/icemon/commit/b07bf3eb0c28ac5cd527d3ab675d2273d1866b48
+
+From b07bf3eb0c28ac5cd527d3ab675d2273d1866b48 Mon Sep 17 00:00:00 2001
+From: Sergio Martins <sergio.martins@kdab.com>
+Date: Mon, 28 Apr 2025 03:39:49 +0100
+Subject: [PATCH] Fix build with CMake 4.0
+
+Newer CMake doesn't support such old minimum version
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1.0)
++cmake_minimum_required(VERSION 3.10.0)
+ project(icemon VERSION 3.3)
+ 
+ find_package(ECM REQUIRED NO_MODULE)
+

@@ -134,7 +134,6 @@ RDEPEND="
 BDEPEND="
 	>=app-arch/tar-1.34-r2
 	>=dev-lang/yasm-0.6.2
-	dev-libs/libIDL
 	dev-util/glslang
 	>=dev-build/kbuild-0.1.9998.3660
 	sys-apps/which

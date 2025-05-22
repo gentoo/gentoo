@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -166,6 +166,7 @@ RDEPEND="
 #    utils/ghc-pkg_HC_OPTS += -DBOOTSTRAPPING
 PREBUILT_BINARY_DEPENDS="
 	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
+	prefix? ( dev-util/patchelf )
 "
 # This set of dependencies is needed to install
 # ghc[binary] in system. terminfo package is linked
@@ -426,6 +427,14 @@ relocate_ghc() {
 
 	if use prefix; then
 		hprefixify "${bin_libpath}"/${PN}*/settings
+		local interpreter=$(patchelf --print-interpreter "${EPREFIX}"/bin/bash)
+		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/opt/${P}/bin"
+		find "${bin_libpath}"/${PN}*/bin -type f -print0 | \
+			while IFS=  read -r -d '' filename; do
+				einfo "${filename}'s interpreter changed to ${interpreter}"
+				patchelf ${filename} --set-interpreter ${interpreter} || die
+			done
+		eend $?
 	fi
 
 	# regenerate the binary package cache
@@ -691,6 +700,10 @@ src_prepare() {
 		pushd "${S}/libraries/Win32"
 			eapply "${FILESDIR}"/${PN}-8.2.1_rc1-win32-cross-2-hack.patch # bad workaround
 		popd
+
+		# https://bugs.gentoo.org/946695
+		# Fix for gnu17 (gcc-15)
+		eapply "${FILESDIR}/${PN}-9.2.8-use-stdlib.patch"
 
 		bump_libs
 

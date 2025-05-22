@@ -1,0 +1,37 @@
+From 3cd89bccda2b2e788f6489dcc84bc7e331caf800 Mon Sep 17 00:00:00 2001
+From: "Haelwenn (lanodan) Monnier" <contact@hacktivis.me>
+Date: Mon, 12 May 2025 22:38:56 +0200
+Subject: [PATCH] meson.build: Use default_library=both instead of
+ both_libraries
+
+Allows distros to set -Ddefault_library=shared when a static
+library isn't warranted.
+---
+ meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 1f79aae..39a6c9a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2,7 +2,7 @@ project(
+ 	'gumbo-parser',
+ 	'c',
+ 	version: '0.13.1',
+-	default_options: ['c_std=c99', 'cpp_std=c++14']
++	default_options: ['c_std=c99', 'cpp_std=c++14', 'default_library=both']
+ )
+ 
+ gumbo_src = files(
+@@ -19,7 +19,7 @@ gumbo_src = files(
+ 	'src/vector.c',
+ )
+ 
+-libgumbo = both_libraries('gumbo', gumbo_src, version: '3.0.0', install: true)
++libgumbo = library('gumbo', gumbo_src, version: '3.0.0', install: true)
+ 
+ install_headers('src/gumbo.h', 'src/tag_enum.h')
+ 
+-- 
+2.45.2
+
