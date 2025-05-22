@@ -225,7 +225,7 @@ src_install() {
 		[[ $# -eq 0 ]] && return
 
 		dodir "${CUDA_PATH}/pkgconfig"
-		cat > "${ED}${CUDA_PATH}/pkgconfig/${1}-${2}.pc" <<-EOF || die "dopcfile"
+		cat > "${ED}${CUDA_PATH}/pkgconfig/${1}.pc" <<-EOF || die "dopcfile"
 			cudaroot=${EPREFIX}${CUDA_PATH}
 			libdir=\${cudaroot}/targets/${narch}-linux/lib${4}
 			includedir=\${cudaroot}/targets/${narch}-linux/include
