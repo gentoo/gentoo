@@ -458,7 +458,7 @@ dev-python/pyside6-tools
 =dev-cpp/cpp-httplib-0.18.6
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# Qt5 packages without any revdeps.
+# Qt5 tools without any revdeps.
 dev-qt/assistant
 dev-qt/linguist
 dev-qt/pixeltool
@@ -467,12 +467,15 @@ dev-qt/qdbusviewer
 dev-qt/qdoc
 dev-qt/qtdiag
 dev-qt/qtpaths
+dev-qt/qtplugininfo
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# Qt5 packages without any revdeps. Removal on 2025-06-01.
 dev-qt/qt3d:5
 dev-qt/qtdatavis3d:5
 dev-qt/qtgamepad:5
 dev-qt/qtlocation:5
 dev-qt/qtnetworkauth:5
-dev-qt/qtplugininfo
 dev-qt/qtquicktimeline:5
 dev-qt/qtsensors:5
 dev-qt/qtserialbus:5
