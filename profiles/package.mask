@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-22)
+# Package destabilisation mask. 0.4.4_p20250125 is in ~arch but as snapshot
+# with currently no Gentoo maintainer it will not be stabilised.
+# 0.4.4 release was more than 3 years old already. Bug #955653
+~media-video/simplescreenrecorder-0.4.4
+
 # Matt Turner <mattst88@gentoo.org> (2025-05-22)
 # Old slot depending on libsoup:2.4. All reverse dependencies migrated to a
 # newer slot supporting libsoup:3.0.
