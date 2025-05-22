@@ -39,7 +39,6 @@ RDEPEND="
 	)
 	hip? (
 		dev-util/hip:=
-		sci-libs/composable-kernel
 	)
 	openimageio? ( media-libs/openimageio:= )
 "
@@ -64,7 +63,10 @@ src_prepare() {
 	# do not fortify source -- bug 895018
 	sed -e "s/-D_FORTIFY_SOURCE=2//g" -i {cmake/oidn_platform,external/mkl-dnn/cmake/SDL}.cmake || die
 
-	rm -r external/{composable_kernel,cutlass,mkl-dnn} || die
+	# Don't de-bundle composable_kernel for two reasons:
+	# 1. sci-libs/composable-kernel takes a very long time to compile and oidn only uses a subset of it.
+	# 2. We've run into compilation issues when trying to debundle it. See #955869
+	rm -r external/{cutlass,mkl-dnn} || die
 
 	cmake_src_prepare
 }
