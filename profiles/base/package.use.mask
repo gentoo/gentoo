@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Alfred Wingate <parona@protonmail.com> <2025-05-24)
+# Doesn't work well at runtime.
+dev-games/ogre wayland
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
 # media-sound/hydrogen[lash] build is broken, and dropped upstream in next
 # version. Bug #946125
