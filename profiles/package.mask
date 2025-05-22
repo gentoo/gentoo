@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-22)
+# Even if Qt5 is optional here, it is dead upstream for close to 10 years
+# and without Gentoo package maintainer almost as long. Bug #926074.
+# Removal on 2025-06-21.
+net-firewall/pglinux
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-22)
 # Package destabilisation mask. 0.4.4_p20250125 is in ~arch but as snapshot
 # with currently no Gentoo maintainer it will not be stabilised.
 # 0.4.4 release was more than 3 years old already. Bug #955653
