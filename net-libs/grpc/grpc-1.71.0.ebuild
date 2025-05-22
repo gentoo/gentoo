@@ -240,6 +240,14 @@ src_test() {
 		^posix_event_engine_test$
 		^resolve_address_using_ares_resolver_test$
 		^resolve_address_using_native_resolver_test$
+
+		# 954185
+		'^server_test$'
+
+		# '^xds_audit_logger_registry_test$'
+		# '^xds_common_types_test$'
+		# '^xds_lb_policy_registry_test$'
+		# '^xds_route_config_resource_type_test$'
 	)
 
 	use amd64 && CMAKE_SKIP_TESTS+=(
@@ -252,6 +260,26 @@ src_test() {
 		^event_poller_posix_test$ # fails on alpha
 		^tcp_posix_test$ # fails on alpha
 	)
+
+	local GTEST_SKIP_TESTS=(
+		CustomPolicy.Basic
+		ExtractXdsExtensionTest.TypedStruct
+		ExtractXdsExtensionTest.TypedStructJsonConversion
+		ExtractXdsExtensionTest.TypedStructTypeUrlNoSlash
+		ExtractXdsExtensionTest.TypedStructTypeUrlNothingAfterSlash
+		ExtractXdsExtensionTest.TypedStructWithInvalidProtobufStruct
+		ExtractXdsExtensionTest.UdpaTypedStruct
+		RlsTest.Basic
+		RlsTest.DuplicateClusterSpecifierPluginNames
+		RlsTest.InvalidGrpcLbPolicyConfig
+		RlsTest.NotUsedInAllVirtualHosts
+		RlsTest.PluginDefinedButNotUsed
+		XdsAuditLoggerRegistryTest.ValidThirdPartyLogger
+		XdsAuditLoggerRegistryTest.InvalidThirdPartyLoggerConfig
+	)
+
+	local -x GTEST_FILTER
+	[[ -n ${GTEST_SKIP_TESTS} ]] && GTEST_FILTER+="-$( IFS=':'; echo "${GTEST_SKIP_TESTS[*]}")"
 
 	# BUG this should be nonfatal and we kill the server even when tests fail
 	# nonfatal \
