@@ -234,10 +234,11 @@ getfilevar() {
 		basedname="$(dirname ${2})"
 
 		# We use nonfatal because we want the caller to take care of things #373151
+		# Pass KBUILD_OUTPUT= because this will probably break if it doesn't exist.
 		# Pass need-config= to make to avoid config check in kernel Makefile.
 		# Pass dot-config=0 to avoid the config check in kernels prior to 5.4.
 		echo -e "e:\\n\\t@echo \$(${1})\\ninclude ${basefname}" | \
-			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" \
+			nonfatal emake -C "${basedname}" --no-print-directory M="${T}" KBUILD_OUTPUT= \
 			ARCH="$(tc-arch-kernel)" dot-config=0 need-config= need-compiler= -s -f - 2>/dev/null
 	fi
 }
