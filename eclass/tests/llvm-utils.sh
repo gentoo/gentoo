@@ -81,6 +81,15 @@ test_prepend_path() {
 	tend ${?}
 }
 
+TMPDIR=$(mktemp -d)
+trap 'rm -r "${TMPDIR}"' EXIT
+
+for x in clang-19 clang-17 clang++-17 x86_64-pc-linux-gnu-clang-17; do
+	> "${TMPDIR}/${x}" || die
+done
+chmod +x "${TMPDIR}"/* || die
+export PATH=${TMPDIR}:${PATH}
+
 test_fix_clang_version CC clang 19.0.0git78b4e7c5 clang-19
 test_fix_clang_version CC clang 17.0.6 clang-17
 test_fix_clang_version CXX clang++ 17.0.6 clang++-17
