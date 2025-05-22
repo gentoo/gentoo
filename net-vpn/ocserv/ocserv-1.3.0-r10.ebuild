@@ -14,7 +14,7 @@ else
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ocserv )"
 	SRC_URI="https://www.infradead.org/ocserv/download/${P}.tar.xz
 		verify-sig? ( https://www.infradead.org/ocserv/download/${P}.tar.xz.sig )"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Openconnect SSL VPN server"
@@ -58,6 +58,10 @@ DEPEND="
 	tcpd? ( sys-apps/tcp-wrappers:0= )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/ocserv-1.3.0-seccomp-readlinkat.patch
+)
 
 src_prepare() {
 	default
