@@ -1,13 +1,14 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+USE_RUBY="ruby31 ruby32"
+inherit cmake ruby-single
 
 DESCRIPTION="Simulation Description Format (SDF) parser"
 HOMEPAGE="http://sdformat.org/"
-SRC_URI="http://osrf-distributions.s3.amazonaws.com/sdformat/releases/${P}.tar.bz2"
+SRC_URI="https://github.com/gazebosim/sdformat/archive/refs/tags/${PN}9_${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 # subslot = libsdformat major
@@ -22,12 +23,17 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-lang/ruby:*
+	${RUBY_DEPS}
 	virtual/pkgconfig
 "
-PATCHES=( "${FILESDIR}/ruby.patch" )
+
+S="${WORKDIR}/${PN}-${PN}9_${PV}"
 
 src_prepare() {
+	# use latest preferred ruby binary
+	local RUBYEXEC=$(echo $RUBY_TARGETS_PREFERENCE | cut -d\  -f1) 
+	sed -i -e "s:find_program(RUBY ruby):find_program(RUBY NAMES $RUBYEXEC ruby):" cmake/SearchForStuff.cmake
+
 	cmake_src_prepare
 
 	# get rid of default flags
