@@ -19,6 +19,8 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/distlib-0.3.7[${PYTHON_USEDEP}]
@@ -34,6 +36,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		$(python_gen_cond_dep '
 			dev-python/coverage[${PYTHON_USEDEP}]
 			dev-python/flaky[${PYTHON_USEDEP}]
@@ -53,8 +56,6 @@ BDEPEND="
 		' 'pypy3*')
 	)
 "
-
-distutils_enable_tests pytest
 
 src_prepare() {
 	local PATCHES=(
