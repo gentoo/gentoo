@@ -1,0 +1,188 @@
+https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/6156
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 28 Jun 2023 07:11:01 -0400
+Subject: [PATCH 2/3] build: Move objcopy checks to one place
+
+We were doing the same thing in three places.
+Move it to the toplevel meson.build, so we
+can change it in one place.
+--- a/demos/gtk-demo/meson.build
++++ b/demos/gtk-demo/meson.build
+@@ -158,17 +158,7 @@ demos_h = custom_target('gtk4 demo header',
+   command: [ find_program('geninclude.py'), '@OUTPUT@', '@INPUT@' ],
+ )
+ 
+-objcopy_supports_add_symbol = false
+-objcopy = find_program('objcopy', required : false)
+-if objcopy.found()
+-  objcopy_supports_add_symbol = run_command(objcopy, '--help', check: false).stdout().contains('--add-symbol')
+-endif
+-
+-ld = find_program('ld', required : false)
+-
+-if not meson.is_cross_build() and build_machine.cpu_family() != 'arm' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+-  glib_compile_resources = find_program('glib-compile-resources')
+-
++if can_use_objcopy_for_resources
+   # Create the resource blob
+   gtkdemo_gresource = custom_target('gtkdemo.gresource',
+       input : 'demo.gresource.xml',
+--- a/demos/widget-factory/meson.build
++++ b/demos/widget-factory/meson.build
+@@ -1,16 +1,6 @@
+ # demos/widget-factory
+ 
+-objcopy_supports_add_symbol = false
+-objcopy = find_program('objcopy', required : false)
+-if objcopy.found()
+-  objcopy_supports_add_symbol = run_command(objcopy, '--help', check: false).stdout().contains('--add-symbol')
+-endif
+-
+-ld = find_program('ld', required : false)
+-
+-if not meson.is_cross_build() and build_machine.cpu_family() != 'arm' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+-  glib_compile_resources = find_program('glib-compile-resources')
+-
++if can_use_objcopy_for_resources
+   # Create the resource blob
+   widgetfactory_gresource = custom_target('widgetfactory.gresource',
+       input : 'widget-factory.gresource.xml',
+--- a/gtk/meson.build
++++ b/gtk/meson.build
+@@ -758,17 +758,7 @@ if not fs.exists('theme/Default/Default-light.css')
+ endif
+ 
+ 
+-objcopy_supports_add_symbol = false
+-objcopy = find_program('objcopy', required : false)
+-if objcopy.found()
+-  objcopy_supports_add_symbol = run_command(objcopy, '--help', check: false).stdout().contains('--add-symbol')
+-endif
+-
+-ld = find_program('ld', required : false)
+-
+-if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+-  glib_compile_resources = find_program('glib-compile-resources')
+-
++if can_use_objcopy_for_resources
+   # Create the resource blob
+   gtk_gresource = custom_target('gtk.gresource',
+       input : gtk_gresources_xml,
+--- a/meson.build
++++ b/meson.build
+@@ -737,6 +737,23 @@ endif
+ build_gir = gir.found() and (get_option('introspection').enabled() or
+                              (get_option('introspection').allowed() and get_option('gtk_doc')))
+ 
++# Resource building
++glib_compile_resources = find_program('glib-compile-resources')
++
++objcopy_supports_add_symbol = false
++objcopy = find_program('objcopy', required : false)
++if objcopy.found()
++  objcopy_supports_add_symbol = run_command(objcopy, '--help', check: false).stdout().contains('--add-symbol')
++endif
++
++ld = find_program('ld', required : false)
++
++if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
++  can_use_objcopy_for_resources = true
++else
++  can_use_objcopy_for_resources = false
++endif
++
+ project_build_root = meson.current_build_dir()
+ 
+ gen_visibility_macros = find_program('build-aux/meson/gen-visibility-macros.py')
+-- 
+GitLab
+
+
+From f341bd563b1273888f65ffdabd582ac027883b30 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 28 Jun 2023 07:12:07 -0400
+Subject: [PATCH 3/3] build: Look for ld.bfd
+
+The objcopy+ld approach to fast resource building
+relies on behavior that is specific to the binutils
+linker, and does not work with the llvm one.
+
+Therefore, check for ld.bfd. We still fall back
+to trying with just ld, since I'm not 100% sure
+if binutils unconditionally installs ld.bfd.
+
+Fixes: #5672
+--- a/meson.build
++++ b/meson.build
+@@ -746,7 +746,7 @@ if objcopy.found()
+   objcopy_supports_add_symbol = run_command(objcopy, '--help', check: false).stdout().contains('--add-symbol')
+ endif
+ 
+-ld = find_program('ld', required : false)
++ld = find_program('ld.bfd', 'ld', required : false)
+ 
+ if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
+   can_use_objcopy_for_resources = true
+-- 
+GitLab
+
+From 1d1f35576a137dc36c63a5958a81d6135ab21f25 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 28 Jun 2023 16:54:34 -0400
+Subject: [PATCH] build: Try harder to work with nongnu ld
+
+Only try to be fast with gnu ld.
+--- a/meson.build
++++ b/meson.build
+@@ -746,9 +746,13 @@ if objcopy.found()
+   objcopy_supports_add_symbol = run_command(objcopy, '--help', check: false).stdout().contains('--add-symbol')
+ endif
+ 
+-ld = find_program('ld.bfd', 'ld', required : false)
++ld_is_bfd = false
++ld = find_program('ld', required : false)
++if ld.found()
++  ld_is_bfd = run_command(ld, '--version', check: false).stdout().contains('GNU ld')
++endif
+ 
+-if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found()
++if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found() and ld_is_bfd
+   can_use_objcopy_for_resources = true
+ else
+   can_use_objcopy_for_resources = false
+-- 
+GitLab
+
+From c61313cbfe92d5a34f3d9ee92170a7bab95d3d76 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Fri, 28 Jul 2023 09:05:03 +0300
+Subject: [PATCH] build: Check for objcopy options
+
+Check that objcopy understands the --set-section-alignment
+option that we are now using.
+--- a/meson.build
++++ b/meson.build
+@@ -742,9 +742,11 @@ build_gir = gir.found() and (get_option('introspection').enabled() or
+ glib_compile_resources = find_program('glib-compile-resources')
+ 
+ objcopy_supports_add_symbol = false
++objcopy_supports_section_alignment = false
+ objcopy = find_program('objcopy', required : false)
+ if objcopy.found()
+   objcopy_supports_add_symbol = run_command(objcopy, '--help', check: false).stdout().contains('--add-symbol')
++  objcopy_supports_section_alignment = run_command(objcopy, '--help', check: false).stdout().contains('--set-section-alignment')
+ endif
+ 
+ ld_is_bfd = false
+@@ -753,7 +755,7 @@ if ld.found()
+   ld_is_bfd = run_command(ld, '--version', check: false).stdout().contains('GNU ld')
+ endif
+ 
+-if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and ld.found() and ld_is_bfd
++if not meson.is_cross_build() and build_machine.cpu_family() == 'x86_64' and build_machine.system() == 'linux' and objcopy.found() and objcopy_supports_add_symbol and objcopy_supports_section_alignment and ld.found() and ld_is_bfd
+   can_use_objcopy_for_resources = true
+ else
+   can_use_objcopy_for_resources = false
+-- 
+GitLab
+
