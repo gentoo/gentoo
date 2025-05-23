@@ -3,8 +3,8 @@
 
 #############################################
 # This is a list of valid profiles for each architecture.  This file is used by
-# repoman when doing a repoman scan or repoman full.
-# DO NOT ADD PROFILES WITH A "die" or "exit" IN THEM OR IT KILLS REPOMAN
+# pkgcheck when running pkgcheck scan.
+# DO NOT ADD PROFILES WITH A "die" or "exit" IN THEM OR IT KILLS PKGCHECK
 #
 #layout:
 #arch		profile_directory						status
