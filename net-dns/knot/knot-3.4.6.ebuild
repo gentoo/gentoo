@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit python-single-r1 flag-o-matic systemd tmpfiles verify-sig
+inherit autotools python-single-r1 flag-o-matic systemd tmpfiles verify-sig
 
 # subslot: libknot major.libdnssec major.libzscanner major
 KNOT_SUBSLOT="15.9.4"
@@ -115,6 +115,11 @@ src_unpack() {
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
 	fi
 	default
+}
+
+src_prepare() {
+	default
+	eautoreconf
 }
 
 src_configure() {
