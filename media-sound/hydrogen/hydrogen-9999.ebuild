@@ -29,10 +29,9 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-qt/qtxmlpatterns:5
 	media-libs/libsndfile
 	alsa? ( media-libs/alsa-lib )
-	archive? ( app-arch/libarchive )
+	archive? ( app-arch/libarchive:= )
 	!archive? ( dev-libs/libtar )
 	doc? ( dev-texlive/texlive-fontutils )
 	jack? ( virtual/jack )
