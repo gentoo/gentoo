@@ -96,6 +96,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.3-pango.patch
+)
+
 src_prepare() {
 	default
 
