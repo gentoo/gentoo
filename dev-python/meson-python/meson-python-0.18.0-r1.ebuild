@@ -39,6 +39,14 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# Strip unnecessary Python-level dependency on meson, it is used
+	# as an external executable anyway.
+	sed -i -e '/meson >=/d' pyproject.toml || die
+}
+
 src_test() {
 	# required by tests/test_sdist.py::test_reproducible
 	git config --global user.email "test@example.com" || die
