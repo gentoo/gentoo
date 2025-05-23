@@ -464,25 +464,6 @@ kernel_is() {
 		"${1:-${KV_MAJOR:-0}}.${2:-${KV_MINOR:-0}}.${3:-${KV_PATCH:-0}}"
 }
 
-# @FUNCTION: get_makefile_extract_function
-# @INTERNAL
-# @DESCRIPTION:
-# Check if the Makefile is valid for direct parsing.
-# Check status results:
-# - PASS, use 'getfilevar' to extract values
-# - FAIL, use 'getfilevar_noexec' to extract values
-# The check may fail if:
-# - make is not present
-# - corruption exists in the kernel makefile
-get_makefile_extract_function() {
-	[[ -n ${SKIP_KERNEL_CHECK} ]] && return
-	local a='' b='' mkfunc='getfilevar'
-	a="$(getfilevar VERSION ${KERNEL_MAKEFILE})"
-	b="$(getfilevar_noexec VERSION ${KERNEL_MAKEFILE})"
-	[[ "${a}" != "${b}" ]] && mkfunc='getfilevar_noexec'
-	echo "${mkfunc}"
-}
-
 # @ECLASS_VARIABLE: get_version_warning_done
 # @INTERNAL
 # @DESCRIPTION:
@@ -566,14 +547,6 @@ get_version() {
 	#
 	# Do we pass KBUILD_OUTPUT on the CLI?
 	local OUTPUT_DIR=${KBUILD_OUTPUT}
-
-	if [[ -z ${OUTPUT_DIR} ]]; then
-		# Decide the function used to extract makefile variables.
-		local mkfunc=$(get_makefile_extract_function "${KERNEL_MAKEFILE}")
-
-		# And if we didn't pass it, we can take a nosey in the Makefile.
-		OUTPUT_DIR=$(${mkfunc} KBUILD_OUTPUT "${KERNEL_MAKEFILE}")
-	fi
 
 	# And contrary to existing functions, I feel we shouldn't trust the
 	# directory name to find version information as this seems insane.
