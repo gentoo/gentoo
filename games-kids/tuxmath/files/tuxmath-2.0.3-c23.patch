@@ -1,0 +1,61 @@
+Remove const qualifier from parameter - better to add it in
+t4k-common library, but that may break other dependencies.
+Also do minimum to transform function that returns 1 on error
+to function that returns nothing. Ideally, we react to error
+somewhere, but see above.
+https://bugs.gentoo.org/925143
+--- a/src/titlescreen.h
++++ b/src/titlescreen.h
+@@ -102,8 +102,8 @@
+ void          TitleScreen(void);
+ int           RenderTitleScreen(void);
+ void          DrawTitleScreen(void);
+-int           HandleTitleScreenEvents(const SDL_Event* evt);
+-int           HandleTitleScreenResSwitch(int new_w, int new_h);
++int           HandleTitleScreenEvents(SDL_Event* evt);
++void          HandleTitleScreenResSwitch(int new_w, int new_h);
+ void          HandleTitleScreenAnimations();
+ void          HandleTitleScreenAnimations_Reset(bool reset);
+ void          ShowMessage(int font_size, const char* str1, const char* str2, const char* str3, const char* str4);
+--- a/src/titlescreen.c
++++ b/src/titlescreen.c
+@@ -140,7 +140,7 @@
+ void update_screen(int* frame);
+ void add_rect(SDL_Rect* src, SDL_Rect* dst);
+ 
+-int handle_easter_egg(const SDL_Event* evt);
++int handle_easter_egg(SDL_Event* evt);
+ 
+ 
+ 
+@@ -406,7 +406,7 @@
+ /* handle titlescreen events (easter egg)
+    this function should be called from event loops
+    return 1 if events require full redraw */
+-int HandleTitleScreenEvents(const SDL_Event* evt)
++int HandleTitleScreenEvents(SDL_Event* evt)
+ {
+     if (evt->type == SDL_KEYDOWN)
+ 	if (evt->key.keysym.sym == SDLK_F10)
+@@ -418,9 +418,10 @@
+ /* handle a resolution switch. Tux et. al. may need to be resized
+    and/or repositioned
+    */
+-int HandleTitleScreenResSwitch(int new_w, int new_h)
++void HandleTitleScreenResSwitch(int new_w, int new_h)
+ {
+-    return RenderTitleScreen();
++    RenderTitleScreen(); //Returns 1 on error. Swallow silently.
++    return;
+ }
+ 
+ /* handle all titlescreen blitting
+@@ -1080,7 +1081,7 @@
+     update->type = 'I';
+ }
+ 
+-int handle_easter_egg(const SDL_Event* evt)
++int handle_easter_egg(SDL_Event* evt)
+ {
+     static int eggtimer = 0;
+     int tuxframe;
