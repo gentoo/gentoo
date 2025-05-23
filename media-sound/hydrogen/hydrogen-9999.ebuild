@@ -14,22 +14,15 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://github.com/${PN}-music/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}"/${PN}-${MY_PV}
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
-IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
+IUSE="alsa +archive doc jack ladspa osc oss portaudio portmidi pulseaudio"
 
-REQUIRED_USE="lash? ( alsa )"
-
-BDEPEND="
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-	doc? ( app-text/doxygen )
-"
-CDEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -44,17 +37,19 @@ CDEPEND="
 	doc? ( dev-texlive/texlive-fontutils )
 	jack? ( virtual/jack )
 	ladspa? ( media-libs/liblrdf )
-	lash? ( media-sound/lash )
 	osc? ( media-libs/liblo )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-libs/libpulse )
 "
-DEPEND="
-	${CDEPEND}
+DEPEND="${RDEPEND}
 	dev-qt/qttest:5
 "
-RDEPEND="${CDEPEND}"
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+	doc? ( app-text/doxygen )
+"
 
 DOCS=( AUTHORS CHANGELOG.md DEVELOPERS.md README.md )
 
@@ -63,10 +58,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.0-cflags.patch"
 )
 
-src_prepare() {
-	cmake_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DWANT_ALSA=$(usex alsa)
@@ -74,7 +65,6 @@ src_configure() {
 		-DWANT_DEBUG=OFF
 		-DWANT_JACK=$(usex jack)
 		-DWANT_LADSPA=$(usex ladspa)
-		-DWANT_LASH=$(usex lash)
 		-DWANT_LIBARCHIVE=$(usex archive)
 		-DWANT_LRDF=$(usex ladspa)
 		-DWANT_OSC=$(usex osc)
