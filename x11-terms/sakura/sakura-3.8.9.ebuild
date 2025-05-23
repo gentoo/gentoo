@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86 ~x86-linux"
 
 RDEPEND="
-	dev-libs/glib:2
+	>=dev-libs/glib-2.40:2
 	x11-libs/gtk+:3[X]
 	x11-libs/pango
 	x11-libs/vte:2.91"
