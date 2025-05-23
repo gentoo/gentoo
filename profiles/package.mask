@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-05-23)
+# Severe memory leak (bug #953874)
+=app-i18n/ibus-anthy-1.5.17
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
 # Package destabilisation mask. There is simply no need for this without
 # any stable consumers, and it is freeing up resources.
