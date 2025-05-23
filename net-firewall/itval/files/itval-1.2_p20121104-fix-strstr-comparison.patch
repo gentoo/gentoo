@@ -1,0 +1,34 @@
+Fix comparison with strstr() result.
+
+FAILED: CMakeFiles/ITVal.dir/src/chains.cc.o
+/usr/bin/x86_64-pc-linux-gnu-g++  -I/var/tmp/portage/net-firewall/itval-1.2_p20121104-r1/work/ITVal-20121104 -I/var/tmp/portage/net-firewall/itval-1.2_p20121104-r1/work/ITVal-20121104/ITVal  -O2 -pipe -march=x86-64 -mtune=generic -MD -MT CMakeFiles/ITVal.dir/src/chains.cc.o -MF CMakeFiles/ITVal.dir/src/chains.cc.o.d -o CMakeFiles/ITVal.dir/src/chains.cc.o -c /var/tmp/portage/net-firewall/itval-1.2_p20121104-r1/work/ITVal-20121104/src/chains.cc
+/var/tmp/portage/net-firewall/itval-1.2_p20121104-r1/work/ITVal-20121104/src/chains.cc: In member function ‘void Firewall::BuildFWRules(char*)’:
+/var/tmp/portage/net-firewall/itval-1.2_p20121104-r1/work/ITVal-20121104/src/chains.cc:129:46: error: ordered comparison of pointer with integer zero (‘char*’ and ‘int’)
+  129 |    if (line == NULL || strstr(line, "Chain") < 0) {
+      |                        ~~~~~~~~~~~~~~~~~~~~~~^~~
+/var/tmp/portage/net-firewall/itval-1.2_p20121104-r1/work/ITVal-20121104/src/chains.cc: In member function ‘void Firewall::BuildVerboseFWRules(char*)’:
+/var/tmp/portage/net-firewall/itval-1.2_p20121104-r1/work/ITVal-20121104/src/chains.cc:348:46: error: ordered comparison of pointer with integer zero (‘char*’ and ‘int’)
+  348 |    if (line == NULL || strstr(line, "Chain") < 0) {
+      |                        ~~~~~~~~~~~~~~~~~~~~~~^~~
+
+diff -Nuar a/src/chains.cc b/src/chains.cc
+--- a/src/chains.cc	2024-03-28 15:30:35.835588726 +0000
++++ b/src/chains.cc	2024-03-28 15:30:28.507588974 +0000
+@@ -126,7 +126,7 @@
+    length = getline(&line, &bufsize, ruleFile);
+    lineNo++;
+    oldLine = line;
+-   if (line == NULL || strstr(line, "Chain") < 0) {
++   if (line == NULL || strstr(line, "Chain") == NULL) {
+       cout << "File <" << fname << ">" << "is not a valid rule file." << endl;
+       exit(-1);
+    }
+@@ -345,7 +345,7 @@
+    length = getline(&line, &bufsize, ruleFile);
+    lineNo++;
+    oldLine = line;
+-   if (line == NULL || strstr(line, "Chain") < 0) {
++   if (line == NULL || strstr(line, "Chain") == NULL) {
+       cout << "File <" << fname << "> is not a valid rule file." << endl;
+       exit(-1);
+    }
