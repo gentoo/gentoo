@@ -20,7 +20,8 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="4"
-IUSE="gles2-only static-libs"
+IUSE="gles2-only static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/glm
@@ -31,6 +32,7 @@ DEPEND="${RDEPEND}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
 		-DENABLE_SDL_UI=OFF
 		-DENABLE_CXX_INTERFACE=OFF
 		-DENABLE_GLES=$(usex gles2-only)
