@@ -61,25 +61,12 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	cpu_flags_x86_sse2 d3d9 debug +llvm
+	cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
 	test unwind vaapi valgrind vdpau vulkan
 	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	d3d9? (
-		|| (
-			video_cards_freedreno
-			video_cards_intel
-			video_cards_nouveau
-			video_cards_panfrost
-			video_cards_r300
-			video_cards_r600
-			video_cards_radeonsi
-			video_cards_vmware
-			video_cards_zink
-		)
-	)
 	llvm? ( ${LLVM_REQUIRED_USE} )
 	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
@@ -309,20 +296,6 @@ multilib_src_configure() {
 	use X && platforms+="x11"
 	use wayland && platforms+=",wayland"
 	emesonargs+=(-Dplatforms=${platforms#,})
-
-	if use video_cards_freedreno ||
-	   use video_cards_intel || # crocus i915 iris
-	   use video_cards_nouveau ||
-	   use video_cards_panfrost ||
-	   use video_cards_r300 ||
-	   use video_cards_r600 ||
-	   use video_cards_radeonsi ||
-	   use video_cards_vmware || # svga
-	   use video_cards_zink; then
-		emesonargs+=($(meson_use d3d9 gallium-nine))
-	else
-		emesonargs+=(-Dgallium-nine=false)
-	fi
 
 	if use video_cards_d3d12 ||
 	   use video_cards_nouveau ||
