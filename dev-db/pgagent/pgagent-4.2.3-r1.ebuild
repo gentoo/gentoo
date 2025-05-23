@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	acct-user/pgagent
 	dev-db/postgresql:*
-	dev-libs/boost
+	dev-libs/boost:=[icu]
 "
 DEPEND="${RDEPEND}"
 
