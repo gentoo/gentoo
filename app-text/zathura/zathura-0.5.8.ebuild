@@ -10,8 +10,7 @@ HOMEPAGE="https://pwmt.org/projects/zathura/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
-	EGIT_BRANCH="develop"
+	EGIT_REPO_URI="https://github.com/pwmt/zathura.git"
 else
 	SRC_URI="
 		https://github.com/pwmt/zathura/archive/${PV}.tar.gz -> ${P}.tar.gz
@@ -58,7 +57,8 @@ src_configure() {
 		-Dmanpages=$(usex man enabled disabled)
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
-		)
+		$(meson_feature test tests)
+	)
 	meson_src_configure
 }
 
