@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/897834
+--- a/header.c
++++ b/header.c
+@@ -123,7 +123,7 @@ char * url_get_proto( const char * url )
+ 		return NULL;
+ 
+ 	if ( (tmp = xstrdup( url )) )
+-		while( !isalpha( ptr++ ) );
++		while( !isalpha( *ptr++ ) );
+ 
+ 	if ( (ret = strstr( ptr, "://" )) )
+ 	{
