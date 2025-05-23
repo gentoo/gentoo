@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit desktop python-single-r1 xdg
+inherit desktop optfeature python-single-r1 xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -15,16 +15,14 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-SLOT="0"
 LICENSE="GPL-3"
+SLOT="0"
 
-IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
-	libcanberra? ( notification )
-	libnotify? ( notification )
 	networkmanager? ( dbus )
 	oauth? ( gnutls )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -65,14 +63,10 @@ COMMONDEPEND="
 	)
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
-	notification? (
-		libcanberra? ( || (
-			media-libs/libcanberra-gtk3
-			media-libs/libcanberra[gtk3(-)]
-		) )
-		libnotify? ( x11-libs/libnotify )
-	)
-	perl? ( dev-lang/perl:= )
+	perl? (
+		dev-lang/perl:=
+		virtual/libcrypt:=
+		)
 	pdf? ( app-text/poppler[cairo] )
 	pgp? ( >=app-crypt/gpgme-1.0.0:= )
 	python? (
@@ -221,5 +215,11 @@ src_install() {
 
 pkg_postinst() {
 	ewarn "When upgrading from version 3.x please re-load any plugin you use"
+	if use notification ; then
+		optfeature_header "Install optional notification backends:"
+		optfeature "AppIndicator backend" dev-libs/libayatana-appindicator
+		optfeature "libcanberra backend" media-libs/libcanberra-gtk3 "media-libs/libcanberra[gtk3]"
+		optfeature "libnotify backend" x11-libs/libnotify
+	fi
 	xdg_pkg_postinst
 }
