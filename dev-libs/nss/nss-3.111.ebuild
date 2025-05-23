@@ -214,13 +214,16 @@ multilib_src_compile() {
 
 	local d
 
+	# Disables calling shlibsign during the build #956431 and #436216
+	tc-is-cross-compiler && makeargs+=( CROSS_COMPILE=1 )
+
 	# Build the host tools first.
 	LDFLAGS="${BUILD_LDFLAGS}" \
 	XCFLAGS="${BUILD_CFLAGS} -D_FILE_OFFSET_BITS=64" \
 	NSPR_LIB_DIR="${T}/fakedir" \
 	emake -C coreconf \
 		CC="$(tc-getBUILD_CC)" \
-			${buildbits-${mybits}}
+		${buildbits-${mybits}}
 	makeargs+=( NSINSTALL="${PWD}/$(find -type f -name nsinstall)" )
 
 	# Then build the target tools.
