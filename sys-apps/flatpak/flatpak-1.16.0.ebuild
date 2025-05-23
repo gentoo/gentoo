@@ -13,8 +13,8 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~ppc64 ~riscv x86"
-IUSE="doc introspection policykit seccomp systemd X"
-RESTRICT="test"
+IUSE="doc introspection policykit seccomp systemd test X"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/flatpak
@@ -63,6 +63,10 @@ BDEPEND="
 		app-text/xmlto
 		dev-libs/libxslt
 	)
+	test? (
+		net-misc/socat
+		sys-auth/polkit
+	)
 "
 
 PDEPEND="sys-apps/xdg-desktop-portal"
@@ -91,6 +95,7 @@ src_configure() {
 		-Dsystem_dbus_proxy=xdg-dbus-proxy
 		-Dtmpfilesdir=/usr/lib/tmpfiles.d
 		$(meson_use policykit tests)
+		$(meson_use test tests)
 		$(meson_feature policykit system_helper)
 		$(meson_feature introspection gir)
 		$(meson_feature X xauth)
