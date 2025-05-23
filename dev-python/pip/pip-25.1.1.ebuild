@@ -7,7 +7,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_TESTED=( pypy3_11 python3_{11..13} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_14 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit distutils-r1 shell-completion
