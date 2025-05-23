@@ -1,0 +1,125 @@
+https://github.com/sphinx-doc/sphinx/commit/8962398b761c3d85a7c74b6f789b3ffb127bde0c
+From: Adam Turner <9087854+AA-Turner@users.noreply.github.com>
+Date: Thu, 6 Mar 2025 16:03:44 +0000
+Subject: [PATCH] autosummary: Update test for Python 3.14.0a5+ (#13418)
+
+`types.UnionType` and `typing.Union` have been merged.
+--- a/tests/test_extensions/test_ext_autosummary.py
++++ b/tests/test_extensions/test_ext_autosummary.py
+@@ -447,8 +447,12 @@ def test_autosummary_generate_content_for_module_imported_members(app):
+     ]
+     assert context['functions'] == ['bar']
+     assert context['all_functions'] == ['_quux', 'bar']
+-    assert context['classes'] == ['Class', 'Foo']
+-    assert context['all_classes'] == ['Class', 'Foo', '_Baz']
++    if sys.version_info >= (3, 14, 0, 'alpha', 5):
++        assert context['classes'] == ['Class', 'Foo', 'Union']
++        assert context['all_classes'] == ['Class', 'Foo', 'Union', '_Baz']
++    else:
++        assert context['classes'] == ['Class', 'Foo']
++        assert context['all_classes'] == ['Class', 'Foo', '_Baz']
+     assert context['exceptions'] == ['Exc']
+     assert context['all_exceptions'] == ['Exc', '_Exc']
+     assert context['attributes'] == ['CONSTANT1', 'qux', 'quuz', 'non_imported_member']
+https://github.com/sphinx-doc/sphinx/commit/e01e42f5fc738815b8499c4ede30c6caf130f0a4
+From: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Date: Wed, 19 Mar 2025 20:11:35 +0000
+Subject: [PATCH] Fix ``INVALID_BUILTIN_CLASSES`` test for Python 3.14.0a6+
+
+--- a/tests/test_util/test_util_typing.py
++++ b/tests/test_util/test_util_typing.py
+@@ -205,7 +205,7 @@ def test_is_invalid_builtin_class() -> None:
+             zipfile.Path,
+             zipfile.CompleteDirs,
+         )
+-    if sys.version_info[:2] >= (3, 13):
++    if sys.version_info[:2] == (3, 13):
+         invalid_types += (
+             # pathlib
+             Path,
+@@ -217,7 +217,7 @@ def test_is_invalid_builtin_class() -> None:
+         )
+ 
+     invalid_names = {(cls.__module__, cls.__qualname__) for cls in invalid_types}
+-    if sys.version_info[:2] < (3, 13):
++    if sys.version_info[:2] != (3, 13):
+         invalid_names |= {
+             ('pathlib._local', 'Path'),
+             ('pathlib._local', 'PosixPath'),
+@@ -231,7 +231,7 @@ def test_is_invalid_builtin_class() -> None:
+             ('zipfile._path', 'Path'),
+             ('zipfile._path', 'CompleteDirs'),
+         }
+-    assert _INVALID_BUILTIN_CLASSES.keys() == invalid_names
++    assert set(_INVALID_BUILTIN_CLASSES) == invalid_names
+ 
+ 
+ def test_restify_type_hints_containers():
+https://github.com/sphinx-doc/sphinx/commit/0227606e71dc765ed60cd0ad2c580a43b5ffca4f
+From: James Addison <55152140+jayaddison@users.noreply.github.com>
+Date: Mon, 12 May 2025 16:52:52 +0000
+Subject: [PATCH] Fix tests for Python 3.14.0a7 (#13527)
+
+Authored-by: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Co-authored-by: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Co-authored-by: James Addison <55152140+jayaddison@users.noreply.github.com>
+--- a/tests/test_extensions/test_ext_autodoc.py
++++ b/tests/test_extensions/test_ext_autodoc.py
+@@ -938,10 +938,14 @@ def test_autodoc_special_members(app):
+     }
+     if sys.version_info >= (3, 13, 0, 'alpha', 5):
+         options['exclude-members'] = '__static_attributes__,__firstlineno__'
++    if sys.version_info >= (3, 14, 0, 'alpha', 7):
++        ann_attr_name = '__annotations_cache__'
++    else:
++        ann_attr_name = '__annotations__'
+     actual = do_autodoc(app, 'class', 'target.Class', options)
+     assert list(filter(lambda l: '::' in l, actual)) == [
+         '.. py:class:: Class(arg)',
+-        '   .. py:attribute:: Class.__annotations__',
++        f'   .. py:attribute:: Class.{ann_attr_name}',
+         '   .. py:attribute:: Class.__dict__',
+         '   .. py:method:: Class.__init__(arg)',
+         '   .. py:attribute:: Class.__module__',
+--- a/tests/test_extensions/test_ext_autodoc_configs.py
++++ b/tests/test_extensions/test_ext_autodoc_configs.py
+@@ -1348,6 +1348,10 @@ def test_autodoc_type_aliases(app: SphinxTestApp) -> None:
+     # default
+     options = {'members': None}
+     actual = do_autodoc(app, 'module', 'target.autodoc_type_aliases', options)
++    if sys.version_info >= (3, 14, 0, 'alpha', 7):
++        attr2_typeinfo = ()
++    else:
++        attr2_typeinfo = ('      :type: int',)
+     assert list(actual) == [
+         '',
+         '.. py:module:: target.autodoc_type_aliases',
+@@ -1368,7 +1372,7 @@ def test_autodoc_type_aliases(app: SphinxTestApp) -> None:
+         '',
+         '   .. py:attribute:: Foo.attr2',
+         '      :module: target.autodoc_type_aliases',
+-        '      :type: int',
++        *attr2_typeinfo,
+         '',
+         '      docstring',
+         '',
+@@ -1421,6 +1425,10 @@ def test_autodoc_type_aliases(app: SphinxTestApp) -> None:
+         'io.StringIO': 'my.module.StringIO',
+     }
+     actual = do_autodoc(app, 'module', 'target.autodoc_type_aliases', options)
++    if sys.version_info >= (3, 14, 0, 'alpha', 7):
++        attr2_typeinfo = ()
++    else:
++        attr2_typeinfo = ('      :type: myint',)
+     assert list(actual) == [
+         '',
+         '.. py:module:: target.autodoc_type_aliases',
+@@ -1441,7 +1449,7 @@ def test_autodoc_type_aliases(app: SphinxTestApp) -> None:
+         '',
+         '   .. py:attribute:: Foo.attr2',
+         '      :module: target.autodoc_type_aliases',
+-        '      :type: myint',
++        *attr2_typeinfo,
+         '',
+         '      docstring',
+         '',
