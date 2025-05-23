@@ -128,15 +128,11 @@ qt6-build_src_prepare() {
 	if use !custom-cflags; then
 		_qt6-build_sanitize_cpu_flags
 
-		# LTO cause test failures in several components (e.g. qtcharts,
-		# multimedia, scxml, wayland, webchannel, ...).
-		#
-		# Exact extent/causes unknown, but for some related-sounding bugs:
-		# https://bugreports.qt.io/browse/QTBUG-112332
-		# https://bugreports.qt.io/browse/QTBUG-115731
-		#
-		# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
-		# still assumed to be generally unsafe either way in current state.
+		# LTO cause test failures in several components (qtcharts,
+		# multimedia, scxml, wayland, webchannel, and likely more --
+		# also 1 qtbase test wrt bug #955531), albeit many need
+		# retesting (not as bad as it used to). Many (all?) of these
+		# issues only happen with GCC.
 		filter-lto
 	fi
 }
