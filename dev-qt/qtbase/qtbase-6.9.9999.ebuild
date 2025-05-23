@@ -3,6 +3,7 @@
 
 EAPI=8
 
+QT6_HAS_STATIC_LIBS=1
 inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Cross-platform application development framework"
