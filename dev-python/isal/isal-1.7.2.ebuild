@@ -25,7 +25,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~alpha ~amd64 ~arm"
 
 DEPEND="
 	dev-libs/isa-l:=
