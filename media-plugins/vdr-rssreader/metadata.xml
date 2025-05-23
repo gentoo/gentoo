@@ -14,6 +14,6 @@
 		<name>Gentoo VDR Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github"> rofafor/vdr-plugin-rssreader</remote-id>
+		<remote-id type="github">rofafor/vdr-plugin-rssreader</remote-id>
 	</upstream>
 </pkgmetadata>
