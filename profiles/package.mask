@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-24)
+# Dead upstream, fails to build with GCC-14, depends on media-libs/dumb.
+# A rescue mission would ideally package dsda-doom. Bugs #939219, #908973
+# Removal on 2025-06-23.
+games-fps/prboom-plus
+
 # Sam James <sam@gentoo.org> (2025-05-23)
 # Severe memory leak (bug #953874)
 =app-i18n/ibus-anthy-1.5.17
