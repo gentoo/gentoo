@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake desktop flag-o-matic python-any-r1
 
 DESCRIPTION="Online multi-player platform 2D shooter"
@@ -17,7 +17,8 @@ S=${WORKDIR}/${P}-src
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="dedicated"
+IUSE="dedicated test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!dedicated? (
@@ -31,7 +32,10 @@ RDEPEND="
 	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	${PYTHON_DEPS}
+	test? ( dev-cpp/gtest )
+"
 
 src_configure() {
 	append-flags -fno-strict-aliasing #858524
@@ -42,6 +46,10 @@ src_configure() {
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	eninja run_tests
 }
 
 src_install() {
