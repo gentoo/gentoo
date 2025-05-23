@@ -8,7 +8,7 @@ inherit cmake xdg
 DESCRIPTION="Advanced drum machine"
 HOMEPAGE="http://hydrogen-music.org/"
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN}-music/${PN}"
 else
@@ -22,13 +22,9 @@ LICENSE="GPL-2 ZLIB"
 SLOT="0"
 IUSE="alsa +archive doc jack ladspa osc oss portaudio portmidi pulseaudio"
 
-RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
+DEPEND="
+	dev-qt/qtbase:6[gui,network,widgets,xml]
 	dev-qt/qtsvg:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtxml:5
 	media-libs/libsndfile
 	alsa? ( media-libs/alsa-lib )
 	archive? ( app-arch/libarchive:= )
@@ -41,27 +37,25 @@ RDEPEND="
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-libs/libpulse )
 "
-DEPEND="${RDEPEND}
-	dev-qt/qttest:5
-"
+RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "
 
 DOCS=( AUTHORS CHANGELOG.md DEVELOPERS.md README.md )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.2.3-gnuinstalldirs.patch"
-	"${FILESDIR}/${PN}-1.3.0-cflags.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-1.3.0-cflags.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DWANT_ALSA=$(usex alsa)
 		-DWANT_CPPUNIT=OFF
 		-DWANT_DEBUG=OFF
+		-DWANT_RUBBERBAND=OFF
+		-DWANT_QT6=ON
+		-DWANT_ALSA=$(usex alsa)
+		-DWANT_LIBARCHIVE=$(usex archive)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_LADSPA=$(usex ladspa)
 		-DWANT_LIBARCHIVE=$(usex archive)
@@ -71,7 +65,6 @@ src_configure() {
 		-DWANT_PORTAUDIO=$(usex portaudio)
 		-DWANT_PORTMIDI=$(usex portmidi)
 		-DWANT_PULSEAUDIO=$(usex pulseaudio)
-		-DWANT_RUBBERBAND=OFF
 	)
 
 	cmake_src_configure
