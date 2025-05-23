@@ -104,17 +104,6 @@ python_test() {
 				tests/unit/discovery/py_info/test_py_info.py::test_fallback_existent_system_executable
 			)
 			;;
-		python3.1[23])
-			EPYTEST_DESELECT+=(
-				tests/unit/create/via_global_ref/test_build_c_ext.py
-			)
-			;&
-		python3.11)
-			EPYTEST_DESELECT+=(
-				# TODO
-				tests/unit/discovery/py_info/test_py_info.py::test_fallback_existent_system_executable
-			)
-			;;
 	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
