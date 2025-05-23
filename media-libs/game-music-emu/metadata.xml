@@ -6,7 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">game-music-emu</remote-id>
-		<remote-id type="bitbucket">mpyne/game-music-emu</remote-id>
+		<remote-id type="github">libgme/game-music-emu</remote-id>
 	</upstream>
 </pkgmetadata>
