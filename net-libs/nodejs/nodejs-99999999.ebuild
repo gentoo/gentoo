@@ -24,7 +24,7 @@ else
 	S="${WORKDIR}/node-v${PV}"
 fi
 
-IUSE="corepack cpu_flags_x86_sse2 debug doc +icu inspector lto npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
+IUSE="corepack cpu_flags_x86_sse2 debug doc +icu +inspector lto npm pax-kernel +snapshot +ssl +system-icu +system-ssl test"
 REQUIRED_USE="inspector? ( icu ssl )
 	npm? ( ssl )
 	system-icu? ( icu )
@@ -232,13 +232,12 @@ src_install() {
 
 		# Clean up
 		rm -f "${LIBDIR}"/node_modules/npm/{.mailmap,.npmignore,Makefile}
-		rm -rf "${LIBDIR}"/node_modules/npm/{doc,html,man}
 
 		local find_exp="-or -name"
 		local find_name=()
 		for match in "AUTHORS*" "CHANGELOG*" "CONTRIBUT*" "README*" \
 			".travis.yml" ".eslint*" ".wercker.yml" ".npmignore" \
-			"*.md" "*.markdown" "*.bat" "*.cmd"; do
+			"*.bat" "*.cmd"; do
 			find_name+=( ${find_exp} "${match}" )
 		done
 
@@ -262,10 +261,13 @@ src_test() {
 		test/parallel/test-dns.js
 		test/parallel/test-dns-resolveany-bad-ancount.js
 		test/parallel/test-dns-setserver-when-querying.js
+		test/parallel/test-dotenv.js
 		test/parallel/test-fs-mkdir.js
 		test/parallel/test-fs-read-stream.js
 		test/parallel/test-fs-utimes-y2K38.js
 		test/parallel/test-fs-watch-recursive-add-file.js
+		test/parallel/test-http2-client-set-priority.js
+		test/parallel/test-http2-priority-event.js
 		test/parallel/test-process-euid-egid.js
 		test/parallel/test-process-get-builtin.mjs
 		test/parallel/test-process-initgroups.js
@@ -274,11 +276,13 @@ src_test() {
 		test/parallel/test-release-npm.js
 		test/parallel/test-socket-write-after-fin-error.js
 		test/parallel/test-strace-openat-openssl.js
+		test/sequential/test-tls-session-timeout.js
 		test/sequential/test-util-debug.js
 	)
 	use inspector ||
 		drop_tests+=(
 			test/parallel/test-inspector-emit-protocol-event.js
+			test/parallel/test-inspector-network-arbitrary-data.js
 			test/parallel/test-inspector-network-domain.js
 			test/parallel/test-inspector-network-fetch.js
 			test/parallel/test-inspector-network-http.js
