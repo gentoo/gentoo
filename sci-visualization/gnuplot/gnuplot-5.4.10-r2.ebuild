@@ -46,7 +46,7 @@ RDEPEND="
 	libcaca? ( media-libs/libcaca )
 	lua? ( ${LUA_DEPS} )
 	readline? ( sys-libs/readline:0= )
-	libcerf? ( sci-libs/libcerf )
+	libcerf? ( sci-libs/libcerf:= )
 	wxwidgets? (
 		x11-libs/wxGTK:${WX_GTK_VER}=[X]
 		x11-libs/cairo
