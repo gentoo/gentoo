@@ -163,7 +163,9 @@ DEPEND="${COMMON_DEPEND}
 
 BDEPEND="dev-lang/perl
 	app-alternatives/yacc
-	sys-devel/gettext"
+	sys-devel/gettext
+	ipxe? ( sys-devel/gcc:* )
+	!system-seabios? ( sys-devel/gcc:* )"
 
 # hvmloader is used to bootstrap a fully virtualized kernel
 # Approved by QA team in bug #144032
@@ -280,7 +282,9 @@ src_prepare() {
 
 		# gcc 11
 		cp "${XEN_GENTOO_PATCHES_DIR}/ipxe/${PN}-4.15.0-ipxe-gcc11.patch" tools/firmware/etherboot/patches/ipxe-gcc11.patch || die
+		cp "${FILESDIR}/ipxe-force-gcc.patch" tools/firmware/etherboot/patches/ || die
 		echo ipxe-gcc11.patch >> tools/firmware/etherboot/patches/series || die
+		echo ipxe-force-gcc.patch >> tools/firmware/etherboot/patches/series || die
 	fi
 
 	# Fix texi2html build error with new texi2html, qemu.doc.html
@@ -403,6 +407,10 @@ src_prepare() {
 		# Use gnu17 because incompatible w/ C23
 		sed -i -e "s:-DZZLEXBUFSIZE=65536:-DZZLEXBUFSIZE=65536 -std=gnu17:" \
 			tools/firmware/ovmf-dir-remote/BaseTools/Source/C/VfrCompile/Pccts/*/makefile || die
+	fi
+
+	if ! use system-seabios ; then
+		sed -i "/^export HOSTCC/i override CC:=gcc" tools/firmware/seabios-dir/Makefile || die
 	fi
 
 	default
