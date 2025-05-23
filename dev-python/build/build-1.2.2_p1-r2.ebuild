@@ -24,7 +24,8 @@ S=${WORKDIR}/${MY_P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="test-rust"
+IUSE="test test-rust"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/packaging-19.1[${PYTHON_USEDEP}]
@@ -35,8 +36,10 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		${RDEPEND}
 		$(python_gen_cond_dep '
 			>=dev-python/filelock-3[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
 			>=dev-python/pytest-mock-2[${PYTHON_USEDEP}]
 			>=dev-python/pytest-rerunfailures-9.1[${PYTHON_USEDEP}]
 			>=dev-python/pytest-xdist-1.34[${PYTHON_USEDEP}]
@@ -49,8 +52,6 @@ BDEPEND="
 		' "${PYTHON_TESTED[@]}")
 	)
 "
-
-distutils_enable_tests pytest
 
 PATCHES=(
 	# https://github.com/pypa/build/pull/861
