@@ -16,6 +16,7 @@ EAPI=7
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
 
+GRUB_AUTOGEN=1
 GRUB_AUTORECONF=1
 PYTHON_COMPAT=( python3_{10..13} )
 WANT_LIBTOOL=none
