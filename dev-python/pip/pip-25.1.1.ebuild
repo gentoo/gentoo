@@ -152,6 +152,26 @@ python_test() {
 				tests/functional/test_install_config.py::test_prompt_for_authentication
 			)
 			;;
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# TODO: segfaults
+				tests/unit/test_collector.py::test_get_index_content_directory_append_index
+				# https://github.com/python/cpython/issues/125974
+				tests/unit/test_collector.py::test_ensure_quoted_url
+				tests/unit/test_finder.py::test_finder_priority_file_over_page
+				tests/unit/test_urls.py::test_path_to_url_unix
+				tests/unit/test_collector.py::test_clean_url_path
+				tests/unit/test_collector.py::test_clean_url_path_with_local_path
+				tests/unit/test_req.py::TestRequirementSet::test_download_info_local_editable_dir
+				tests/unit/test_req.py::test_parse_editable_local
+				tests/unit/test_req.py::test_parse_editable_local_extras
+				tests/unit/test_req.py::test_get_url_from_path__archive_file
+				tests/unit/test_req.py::test_get_url_from_path__installable_dir
+				tests/functional/test_lock.py::test_lock_wheel_from_findlinks
+				tests/functional/test_lock.py::test_lock_sdist_from_findlinks
+				tests/functional/test_lock.py::test_lock_local_editable_with_dep
+			)
+			;;
 	esac
 
 	if ! has_version "dev-python/cryptography[${PYTHON_USEDEP}]"; then
