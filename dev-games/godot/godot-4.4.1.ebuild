@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit desktop python-any-r1 flag-o-matic scons-utils
 inherit shell-completion toolchain-funcs xdg
 
@@ -44,7 +44,7 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libpng:=
 	media-libs/libvorbis
-	net-libs/mbedtls:3=
+	>=net-libs/mbedtls-3.6.2-r101:3=
 	net-libs/wslay
 	sys-libs/zlib:=
 	alsa? ( media-libs/alsa-lib )
@@ -92,8 +92,8 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# mbedtls normally has mbedtls.pc, but Gentoo's slotted one is mbedtls3.pc
-	sed -E "/pkg-config/s/(mbedtls|mbedcrypto|mbedx509)/&3/g" \
+	# mbedtls normally has mbedtls.pc, but Gentoo's slotted one is mbedtls-3.pc
+	sed -E "/pkg-config/s/(mbedtls|mbedcrypto|mbedx509)/&-3/g" \
 		-i platform/linuxbsd/detect.py || die
 
 	sed -i "s|pkg-config |$(tc-getPKG_CONFIG) |" platform/linuxbsd/detect.py || die
