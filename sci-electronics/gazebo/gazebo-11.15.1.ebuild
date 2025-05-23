@@ -13,7 +13,7 @@ LICENSE="Apache-2.0"
 # Subslot = major version = soname of libs
 SLOT="0/11"
 KEYWORDS="~amd64"
-IUSE="cpu_flags_x86_sse2 test"
+IUSE="cpu_flags_x86_sse2 hdf5 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -41,7 +41,7 @@ RDEPEND="
 	virtual/libusb:1
 	dev-libs/libspnav
 	media-libs/freeimage
-	sci-libs/hdf5:=[cxx]
+	hdf5? ( >=sci-libs/hdf5-1.10.0:=[cxx] )
 	sys-apps/util-linux
 	>=media-gfx/graphviz-4
 	net-libs/ignition-msgs:5=
@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/qwt2.patch"
 	"${FILESDIR}/cmake.patch"
 	"${FILESDIR}/boost187.patch"
+	"${FILESDIR}/hdf5-1.10.patch"
 )
 
 src_configure() {
@@ -79,6 +80,7 @@ src_configure() {
 		"-DBUILD_TESTING=$(usex test TRUE FALSE)"
 		"-DENABLE_SCREEN_TESTS=FALSE"
 		"-DUSE_EXTERNAL_TINYXML2=TRUE"
+		"-DHDF5_INSTRUMENT=$(usex hdf5 ON OFF)"
 	)
 	cmake_src_configure
 }
