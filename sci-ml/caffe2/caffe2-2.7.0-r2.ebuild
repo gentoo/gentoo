@@ -27,7 +27,7 @@ S="${WORKDIR}"/${MYP}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="cuda distributed fbgemm flash gloo memefficient mkl mpi nnpack +numpy
+IUSE="cuda cusparselt distributed fbgemm flash gloo memefficient mkl mpi nnpack +numpy
 	onednn openblas opencl openmp qnnpack rocm xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
@@ -61,6 +61,7 @@ RDEPEND="
 		dev-libs/cudnn
 		>=sci-ml/cudnn-frontend-1.0.3:0/8
 		dev-util/nvidia-cuda-toolkit:=[profiler]
+		cusparselt? ( dev-libs/cusparselt )
 	)
 	fbgemm? ( sci-ml/FBGEMM )
 	gloo? ( sci-ml/gloo[cuda?] )
@@ -284,6 +285,7 @@ src_configure() {
 			-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
 			-DUSE_NCCL=OFF # TODO: NVIDIA Collective Communication Library
 			-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
+			-DUSE_CUSPARSELT=$(usex cusparselt)
 		)
 	elif use rocm; then
 		export PYTORCH_ROCM_ARCH="$(get_amdgpu_flags)"
