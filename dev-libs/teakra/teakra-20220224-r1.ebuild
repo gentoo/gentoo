@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,8 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	sed -i "s|-Werror||g" ./CMakeLists.txt || die
@@ -34,6 +36,7 @@ src_prepare() {
 src_configure() {
 	local -a mycmakeargs=(
 		-DCMAKE_SKIP_RPATH="ON"
+		-DTEAKRA_BUILD_UNIT_TESTS="$(usex test)"
 	)
 	cmake_src_configure
 }
