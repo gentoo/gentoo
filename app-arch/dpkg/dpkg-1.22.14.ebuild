@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools toolchain-funcs multiprocessing
 
 DESCRIPTION="Package maintenance system for Debian"
 HOMEPAGE="https://packages.qa.debian.org/dpkg"
@@ -90,6 +90,10 @@ src_configure() {
 
 src_compile() {
 	emake AR="$(tc-getAR)"
+}
+
+src_test() {
+	emake -Onone check TEST_PARALLEL="$(makeopts_jobs)" TEST_VERBOSE=1
 }
 
 src_install() {
