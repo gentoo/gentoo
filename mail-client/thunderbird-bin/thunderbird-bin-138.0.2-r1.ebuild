@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MOZ_ESR=yes
+MOZ_ESR=
 
 MOZ_PV=${PV}
 MOZ_PV_SUFFIX=
@@ -30,8 +30,8 @@ inherit desktop optfeature pax-utils xdg
 
 MOZ_SRC_BASE_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases/${MOZ_PV}"
 
-SRC_URI="amd64? ( ${MOZ_SRC_BASE_URI}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
-	x86? ( ${MOZ_SRC_BASE_URI}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+SRC_URI="amd64? ( ${MOZ_SRC_BASE_URI}/linux-x86_64/en-US/${MOZ_P}.tar.xz -> ${PN}_x86_64-${PV}.tar.xz )
+	x86? ( ${MOZ_SRC_BASE_URI}/linux-i686/en-US/${MOZ_P}.tar.xz -> ${PN}_i686-${PV}.tar.xz )"
 
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="https://www.thunderbird.net/"
@@ -219,7 +219,7 @@ src_install() {
 
 	# Install menu
 	local app_name="Mozilla ${MOZ_PN^} (bin)"
-	local desktop_file="${FILESDIR}/icon/${PN}-r2.desktop"
+	local desktop_file="${FILESDIR}/icon/${PN}-r3.desktop"
 	local desktop_filename="${PN}.desktop"
 	local exec_command="${PN}"
 	local icon="${PN}"
@@ -227,6 +227,12 @@ src_install() {
 
 	if use wayland ; then
 		use_wayland="true"
+	fi
+
+	if [[ -n ${MOZ_ESR} ]] ; then
+		local wmclass="thunderbird-esr"
+	else
+		local wmclass="thunderbird"
 	fi
 
 	cp "${desktop_file}" "${WORKDIR}/${PN}.desktop-template" || die
@@ -247,8 +253,8 @@ src_install() {
 		-e "s:@NAME@:${app_name}:" \
 		-e "s:@EXEC@:${exec_command}:" \
 		-e "s:@ICON@:${icon}:" \
-		"${WORKDIR}/${PN}.desktop-template" \
-		|| die
+		-e "s:@CLASS@:${wmclass}:" \
+			"${WORKDIR}/${PN}.desktop-template" || die
 
 	newmenu "${WORKDIR}/${PN}.desktop-template" "${desktop_filename}"
 
