@@ -29,10 +29,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-multilib_prc_prepare() {
-	cmake_src_prepare
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_SDL_UI=OFF
@@ -43,8 +39,4 @@ multilib_src_configure() {
 	)
 
 	cmake_src_configure
-}
-
-multilib_src_install_all() {
-	default
 }
