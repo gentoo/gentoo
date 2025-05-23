@@ -1,0 +1,31 @@
+--- a/src/Makefile	2023-01-20 21:58:11.000000000 +0100
++++ b/src/Makefile	2023-02-07 17:12:03.852695373 +0100
+@@ -52,14 +52,7 @@
+ PKG_CONFIG?=pkg-config
+ 
+ # Default allocator defaults to Jemalloc if it's not an ARM
+-MALLOC=libc
+-ifneq ($(uname_M),armv6l)
+-ifneq ($(uname_M),armv7l)
+-ifeq ($(uname_S),Linux)
+-	MALLOC=jemalloc
+-endif
+-endif
+-endif
++MALLOC?=jemalloc
+ 
+ USEASM?=true
+ ENABLE_FLASH?=no
+@@ -304,9 +297,8 @@
+ 
+ ifeq ($(MALLOC),jemalloc)
+-	DEPENDENCY_TARGETS+= jemalloc
+-	FINAL_CFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
+-	FINAL_CXXFLAGS+= -DUSE_JEMALLOC -I../deps/jemalloc/include
+-	FINAL_LIBS := ../deps/jemalloc/lib/libjemalloc.a $(FINAL_LIBS)
++	FINAL_CFLAGS+= -DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE -I/usr/include/jemalloc
++	FINAL_CXXFLAGS+= -DUSE_JEMALLOC -DJEMALLOC_NO_DEMANGLE -I/usr/include/jemalloc
++	FINAL_LIBS := -ljemalloc $(FINAL_LIBS)
+ endif
+ 
+ ifeq ($(MALLOC),memkind)
