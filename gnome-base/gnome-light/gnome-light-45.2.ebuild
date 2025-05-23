@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,11 +7,13 @@ P_RELEASE="$(ver_cut 1).0"
 
 DESCRIPTION="Meta package for GNOME-Light, merge this package to install"
 HOMEPAGE="https://www.gnome.org/"
+S="${WORKDIR}"
+
 LICENSE="metapackage"
 SLOT="2.0"
-IUSE="cups +gnome-shell"
 
 KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+IUSE="cups +gnome-shell"
 
 # XXX: Note to developers:
 # This is a wrapper for the 'light' GNOME 3 desktop, and should only consist of
@@ -40,12 +42,10 @@ RDEPEND="
 	|| (
 		>=x11-terms/gnome-terminal-3.50.1
 		>=gui-apps/gnome-console-45.0
+		x11-terms/ptyxis
 	)
 "
-DEPEND=""
 PDEPEND=">=gnome-base/gvfs-1.52.1"
-BDEPEND=""
-S="${WORKDIR}"
 
 pkg_pretend() {
 	if ! use gnome-shell; then
