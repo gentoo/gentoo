@@ -148,6 +148,9 @@ dev-util/intel_clc
 # https://jira.mariadb.org/browse/MDEV-36759
 # https://jira.mariadb.org/browse/MDEV-36765
 # https://jira.mariadb.org/browse/MDEV-36766
+#
+# Affected packages were removed from the tree, but this message shall be kept
+# untill 2025-06-23.
 ~dev-db/mariadb-10.11.12
 ~dev-db/mariadb-11.4.6
 
