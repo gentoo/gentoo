@@ -11,5 +11,6 @@
 	</upstream>
 	<use>
 		<flag name="video">Support exporting scores as videos using the command line</flag>
+		<flag name="pipewire">Bring in pipewire's alsa plugin dependency</flag>
 	</use>
 </pkgmetadata>
