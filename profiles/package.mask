@@ -274,11 +274,6 @@ sci-visualization/scidavis
 x11-libs/qwtplot3d
 x11-libs/qwt:5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
-# Requires Qt5WebEngine; bug #925722
-# Removal on 2025-05-24 - with a good chance to be kept if ported by then.
-www-client/otter
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
 # Metapackage used for pypy3 target in the past.
 # Removal on 2025-05-22.
