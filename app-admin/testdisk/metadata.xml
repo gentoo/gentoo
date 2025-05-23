@@ -16,6 +16,7 @@
 		<flag name="sudo">Enable sudo helper integration</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/cgsecurity/testdisk/issues</bugs-to>
 		<remote-id type="github">cgsecurity/testdisk</remote-id>
 	</upstream>
 </pkgmetadata>
