@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Alfred Wingate <parona@protonmail.com> (2025-05-22)
+# Upstream only supports amd64 and arm64. Other targets will fail to build
+# tests due to missing target specific functions.
+media-libs/svt-av1 test
+
 # Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
 # Does not compile as of 2024.1.1, requires buildsystem fixes.
 dev-games/simgear gdal
