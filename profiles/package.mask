@@ -279,11 +279,6 @@ x11-libs/qwt:5
 # Removal on 2025-05-24 - with a good chance to be kept if ported by then.
 www-client/otter
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-24)
-# Requires Qt5WebEngine; no more revdeps. Bug #926684
-# Removal on 2025-05-24.
-dev-python/pyqtwebengine
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
 # Metapackage used for pypy3 target in the past.
 # Removal on 2025-05-22.
