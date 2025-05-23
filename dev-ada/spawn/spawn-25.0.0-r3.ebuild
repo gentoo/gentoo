@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="static-libs static-pic"
+IUSE="gtk static-libs static-pic"
 REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 RDEPEND="${ADA_DEPS}"
@@ -25,11 +25,16 @@ src_compile() {
 	build () {
 		gprbuild -p -j$(makeopts_jobs) -XBUILD=production -v \
 			-XLIBRARY_TYPE=$1 \
-			gnat/spawn.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
+			gnat/$2.gpr -cargs:C ${CFLAGS} -cargs:Ada ${ADAFLAGS} || die
 	}
-	build relocatable
-	use static-libs && build static
-	use static-pic  && build static-pic
+	build relocatable spawn
+	use static-libs && build static spawn
+	use static-pic  && build static-pic spawn
+	if use gtk; then
+		build relocatable spawn_glib
+		use static-libs && build static spawn_glib
+		use static-pic  && build static-pic spawn_glib
+	fi
 }
 
 src_test() {
@@ -53,12 +58,17 @@ src_install() {
 	build() {
 		gprinstall --prefix=/usr --sources-subdir="${D}"/usr/include/spawn \
 			-XLIBRARY_TYPE=$1 \
-			--lib-subdir="${D}"/usr/$(get_libdir)/spawn \
+			--lib-subdir="${D}"/usr/$(get_libdir)/$2 \
 			--project-subdir="${D}"/usr/share/gpr \
 			--link-lib-subdir="${D}"/usr/$(get_libdir)/ -p \
-			-P gnat/spawn.gpr || die
+			-P gnat/$2.gpr || die
 	}
-	build relocatable
-	use static-libs && build static
-	use static-pic  && build static-pic
+	build relocatable spawn
+	use static-libs && build static spawn
+	use static-pic  && build static-pic spawn
+	if use gtk; then
+		build relocatable spawn_glib
+		use static-libs && build static spawn_glib
+		use static-pic  && build static-pic spawn_glib
+	fi
 }
