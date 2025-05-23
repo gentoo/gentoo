@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit gnome.org meson python-any-r1 vala virtualx
+inherit gnome.org meson python-any-r1 vala virtualx xdg
 
 DESCRIPTION="Building blocks for modern GNOME applications"
 HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libadwaita/ https://gitlab.gnome.org/GNOME/libadwaita"
@@ -36,6 +36,7 @@ BDEPEND="
 src_prepare() {
 	default
 	use vala && vala_setup
+	xdg_environment_reset
 }
 
 src_configure() {
@@ -54,6 +55,7 @@ src_configure() {
 }
 
 src_test() {
+	addwrite /dev/dri
 	virtx meson_src_test --timeout-multiplier 2
 }
 
