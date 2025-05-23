@@ -22,9 +22,19 @@ HOMEPAGE="https://crash-utility.github.io/"
 
 LICENSE="GPL-3"
 SLOT="0"
+IUSE="lzo snappy valgrind zstd"
 # there is no "make test" target, but there is a test.c so the automatic
 # make rules catch it and tests fail
 RESTRICT="test"
+
+DEPEND="
+	lzo? ( dev-libs/lzo )
+	snappy? ( app-arch/snappy )
+	valgrind? ( dev-debug/valgrind )
+	zstd? ( app-arch/zstd )
+"
+
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
@@ -36,12 +46,22 @@ src_configure() {
 	# bug #858344
 	filter-lto
 
+	echo "${CFLAGS}" > CFLAGS.extra || die
+	echo "${LDFLAGS}" > LDFLAGS.extra || die
+
 	default
 }
 
 src_compile() {
+	local opts=(
+		$(usev lzo)
+		$(usev snappy)
+		$(usev valgrind)
+		$(usev zstd)
+	)
+
 	emake \
 		CC="$(tc-getCC)" \
 		AR="$(tc-getAR)" \
-		CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+		MAKECMDGOALS="${opts[@]}"
 }
