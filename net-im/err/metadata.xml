@@ -15,6 +15,6 @@
 	</use>
 	<upstream>
 		<remote-id type="github">errbotio/errbot</remote-id>
-		<remote-id type="pypi">err</remote-id>
+		<remote-id type="pypi">errbot</remote-id>
 	</upstream>
 </pkgmetadata>
