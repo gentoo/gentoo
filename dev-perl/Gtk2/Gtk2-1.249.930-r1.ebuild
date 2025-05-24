@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=XAOC
 DIST_VERSION=1.24993
-inherit virtualx perl-module
+inherit virtualx flag-o-matic perl-module
 
 DESCRIPTION="Perl bindings for GTK2"
 
@@ -35,6 +35,19 @@ BDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.249.930-skip-pixbuf-test.patch
 )
+
+src_configure() {
+	# Verbose build
+	MAKEOPTS+=" NOECHO="
+
+	# Archived upstream (bug #943822
+	append-cflags -std=gnu17
+	DIST_MAKE=(
+		OPTIMIZE="${CFLAGS} -std=gnu17"
+	)
+
+	perl-module_src_configure
+}
 
 src_test() {
 	virtx perl-module_src_test
