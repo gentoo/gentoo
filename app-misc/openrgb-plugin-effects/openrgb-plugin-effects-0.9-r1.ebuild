@@ -22,7 +22,8 @@ SLOT="0"
 KEYWORDS="amd64"
 
 RDEPEND="
-	>=app-misc/openrgb-0.9:=[-qt6(-)]
+	>=app-misc/openrgb-0.9:=
+	<app-misc/openrgb-0.9_p20250802
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[-gles2-only]
 	dev-qt/qtwidgets:5[-gles2-only]
