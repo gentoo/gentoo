@@ -19,6 +19,10 @@ BDEPEND="
 	doc? ( dev-python/sphinx )
 "
 
+PATCHES=(
+	"${FILESDIR}"/jansson-2.14.1-default-symver-test.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
