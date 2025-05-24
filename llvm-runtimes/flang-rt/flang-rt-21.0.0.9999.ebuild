@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic llvm.org
+PYTHON_COMPAT=( python3_{11..13} )
+inherit cmake flag-o-matic llvm.org python-any-r1
 
 DESCRIPTION="LLVM's Fortran runtime"
 HOMEPAGE="https://flang.llvm.org/"
@@ -20,7 +21,7 @@ BDEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
 	llvm-core/flang
 	test? (
-		dev-python/lit
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
 "
 
@@ -28,6 +29,14 @@ LLVM_COMPONENTS=(
 	runtimes flang-rt cmake flang llvm/{cmake,utils/llvm-lit}
 )
 llvm.org_set_globals
+
+python_check_deps() {
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	# the code is not portable
