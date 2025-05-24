@@ -30,14 +30,15 @@ COMMON_DEPEND="
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	gtk? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
+		x11-libs/gdk-pixbuf:2[introspection?]
+		x11-libs/gtk+:3[${MULTILIB_USEDEP},introspection?]
 		introspection? ( dev-libs/gobject-introspection )
 	)
 	imagemagick? (
 		!graphicsmagick? ( media-gfx/imagemagick:=[png,jpeg?] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[png,jpeg?] )
 	)
-	jpeg? ( media-libs/libjpeg-turbo:0[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
 	qt5? (
 		dev-qt/qtcore:5
