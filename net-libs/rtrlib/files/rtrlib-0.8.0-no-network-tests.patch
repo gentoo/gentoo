@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/758392
+https://sources.debian.org/data/main/libr/librtr/0.8.0-1.1/debian/patches/Disable-tests-requiring-Internet-access.patch
+
+From: Lukas Schwaighofer <lukas@schwaighofer.name>
+Date: Sun, 11 Nov 2018 10:09:35 +0100
+Subject: Disable tests requiring Internet access.
+
+Tests requiring Internet access will fail on Debian's autobuilding
+machines.
+
+Forwarded: not-needed
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -112,13 +112,13 @@ ADD_TEST(test_trie tests/test_trie)
+ ADD_TEST(test_ht_spkitable tests/test_ht_spkitable)
+ ADD_TEST(test_ht_spkitable_locks tests/test_ht_spkitable_locks)
+ 
+-ADD_TEST(test_live_validation tests/test_live_validation)
++#ADD_TEST(test_live_validation tests/test_live_validation)
+ 
+ ADD_TEST(test_ipaddr tests/test_ipaddr)
+ 
+ ADD_TEST(test_getbits tests/test_getbits)
+ 
+-ADD_TEST(test_dynamic_groups tests/test_dynamic_groups)
++#ADD_TEST(test_dynamic_groups tests/test_dynamic_groups)
+ 
+ #install lib
+ set (RTRLIB_VERSION_MAJOR 0)
