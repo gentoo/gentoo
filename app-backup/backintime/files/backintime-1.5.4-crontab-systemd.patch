@@ -1,3 +1,4 @@
+In Gentoo, we rename crontab in sys-process/systemd-cron to crontab-systemd.
 --- a/common/schedule.py
 +++ b/common/schedule.py
 @@ -33,7 +33,7 @@ def _determine_crontab_command() -> str:
