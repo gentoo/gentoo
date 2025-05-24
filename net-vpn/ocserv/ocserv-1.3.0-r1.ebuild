@@ -52,7 +52,7 @@ DEPEND="
 	lz4? ( app-arch/lz4:0= )
 	otp? ( sys-auth/oath-toolkit:0= )
 	pam? ( sys-libs/pam:0= )
-	radius? ( <net-dialup/freeradius-client-1.1.8:0= )
+	radius? ( net-dialup/freeradius-client:0= )
 	seccomp? ( sys-libs/libseccomp:0= )
 	systemd? ( sys-apps/systemd:0= )
 	tcpd? ( sys-apps/tcp-wrappers:0= )
@@ -61,6 +61,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/ocserv-1.3.0-seccomp-readlinkat.patch
+	"${FILESDIR}"/ocserv-1.3.0-freeradius-1.1.8.patch
 )
 
 src_prepare() {
