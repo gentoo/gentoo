@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit autotools python-r1
 
 DESCRIPTION="Python wrapper for libcangjie"
@@ -13,14 +13,17 @@ SRC_URI="https://github.com/Cangjians/py${PN}/releases/download/v${PV}/${P#py}.t
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
-	app-i18n/libcangjie"
+RDEPEND="
+	${PYTHON_DEPS}
+	app-i18n/libcangjie
+"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
-	virtual/pkgconfig"
+BDEPEND="
+	dev-python/cython[${PYTHON_USEDEP}]
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
