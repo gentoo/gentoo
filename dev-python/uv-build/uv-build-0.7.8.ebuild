@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=hatchling
 # maturin compiles uv-build executable for every impl, we do not want
 # that, so we hack hatchling into installing the Python module instead.
 DISTUTILS_UPSTREAM_PEP517=maturin
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
 
