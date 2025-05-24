@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 # doc disabled as it only generates a PDF from the manpage for now
 # https://github.com/PDB-REDO/dssp/issues/64
-#IUSE="doc"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	dev-libs/boost:=[zlib]
@@ -42,6 +43,7 @@ src_configure() {
 		-DINSTALL_LIBRARY=YES
 		#-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_DOCUMENTATION=NO
+		-DBUILD_TESTING=$(usex test)
 	)
 	cmake_src_configure
 }
