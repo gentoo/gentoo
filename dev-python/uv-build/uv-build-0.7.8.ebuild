@@ -20,9 +20,17 @@ HOMEPAGE="
 LICENSE="|| ( Apache-2.0 MIT )"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/uv-${PV}
+"
+BDEPEND="
+	test? (
+		app-arch/unzip
+		dev-python/build[${PYTHON_USEDEP}]
+	)
 "
 
 src_prepare() {
@@ -36,11 +44,56 @@ src_prepare() {
 	sed -i -e '/\[build-system\]/,$d' pyproject.toml || die
 	cat >> pyproject.toml <<-EOF || die
 		[build-system]
-		requires = []
+		requires = ["uv_build<9999"]
 		build-backend = "uv_build"
 		backend-path = ["src"]
 	EOF
 
 	# rename to make uv-build find it
 	mv python src || die
+}
+
+python_test() {
+	"${EPYTHON}" -m build -n || die "Self-build failed with ${EPYTHON}"
+
+	local zip_result=$(
+		unzip -t "dist/uv_build-${PV}-py3-none-any.whl" || die
+	)
+	local zip_expected="\
+Archive:  dist/uv_build-${PV}-py3-none-any.whl
+    testing: uv_build/                OK
+    testing: uv_build/__init__.py     OK
+    testing: uv_build/__main__.py     OK
+    testing: uv_build/py.typed        OK
+    testing: uv_build-0.7.8.dist-info/   OK
+    testing: uv_build-0.7.8.dist-info/WHEEL   OK
+    testing: uv_build-0.7.8.dist-info/METADATA   OK
+    testing: uv_build-0.7.8.dist-info/RECORD   OK
+No errors detected in compressed data of dist/uv_build-${PV}-py3-none-any.whl.\
+"
+	if [[ ${zip_result} != ${zip_expected} ]]; then
+		eerror ".zip result:\n${zip_result}"
+		eerror ".zip expected:\n${zip_expected}"
+		die ".whl result mismatch"
+	fi
+
+	local tar_result=$(
+		tar -tf "dist/uv_build-${PV}.tar.gz" || die
+	)
+	local tar_expected="\
+uv_build-0.7.8/PKG-INFO
+uv_build-0.7.8/
+uv_build-0.7.8/README.md
+uv_build-0.7.8/pyproject.toml
+uv_build-0.7.8/src
+uv_build-0.7.8/src/uv_build
+uv_build-0.7.8/src/uv_build/__init__.py
+uv_build-0.7.8/src/uv_build/__main__.py
+uv_build-0.7.8/src/uv_build/py.typed\
+"
+	if [[ ${tar_result} != ${tar_expected} ]]; then
+		eerror ".tar.gz result:\n${tar_result}"
+		eerror ".tar.gz expected:\n${tar_expected}"
+		die ".tar.gz result mismatch"
+	fi
 }
