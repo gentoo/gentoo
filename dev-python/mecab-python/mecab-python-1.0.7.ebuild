@@ -24,5 +24,8 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 
 DEPEND=">=app-text/mecab-0.996"
 RDEPEND="${DEPEND}"
+BDEPEND="dev-python/setuptools-scm[${PYTHON_USEDEP}]"
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 distutils_enable_tests pytest
