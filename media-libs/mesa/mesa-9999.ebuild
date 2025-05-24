@@ -413,7 +413,6 @@ multilib_src_configure() {
 		$(meson_use test build-tests)
 		-Dlegacy-x11=dri2
 		-Dexpat=enabled
-		-Dgallium-xa=disabled
 		$(meson_use opengl)
 		$(meson_feature opengl gbm)
 		$(meson_feature opengl gles1)
