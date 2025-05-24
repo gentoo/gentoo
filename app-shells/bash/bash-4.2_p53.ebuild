@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -107,6 +107,10 @@ src_configure() {
 	# bash 5.3 drops unprototyped functions, earlier versions are
 	# incompatible with C23.
 	append-cflags $(test-flags-CC -std=gnu17)
+
+	if tc-is-cross-compiler; then
+		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
+	fi
 
 	local myconf=(
 		--with-installed-readline=.

@@ -132,6 +132,10 @@ src_configure() {
 	# incompatible with C23.
 	append-cflags $(test-flags-CC -std=gnu89)
 
+	if tc-is-cross-compiler; then
+		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
+	fi
+
 	local myconf=(
 		--disable-profiling
 
