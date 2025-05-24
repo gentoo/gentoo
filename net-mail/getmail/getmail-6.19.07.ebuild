@@ -18,7 +18,7 @@ S="${WORKDIR}/getmail6-${PV}"
 # getmail-gmail-xoauth-tokens is under Apache 2.0
 LICENSE="GPL-2 Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 python_prepare_all() {
 	# Use gentoo version number (including revision) for doc dir and remove COPYING file
