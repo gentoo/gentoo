@@ -380,8 +380,15 @@ acct-user_pkg_preinst() {
 				group=${_ACCT_USER_HOME_OWNER#*:}
 			fi
 			local euid= egid=
-			[[ -z ${user} ]] || euid=$(egetent passwd "${user}" | cut -d: -f3)
-			[[ -z ${group} ]] || egid=$(egetent group "${group}" | cut -d: -f3)
+			if [[ -n ${user} ]]; then
+				euid=$(egetent passwd "${user}" | cut -d: -f3)
+				if [[ -z ${group} ]]; then
+					egid=$(egetent passwd "${user}" | cut -d: -f4)
+				fi
+			fi
+			if [[ -n ${group} ]]; then
+				egid=$(egetent group "${group}" | cut -d: -f3)
+			fi
 			_ACCT_USER_HOME_OWNER=${euid}:${egid}
 		elif [[ -z ${_ACCT_USER_HOME_OWNER} ]]; then
 			_ACCT_USER_HOME_OWNER=${user}:${group}
