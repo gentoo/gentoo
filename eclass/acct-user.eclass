@@ -337,10 +337,11 @@ acct-user_pkg_preinst() {
 		return
 	fi
 
+	local groups=( ${_ACCT_USER_GROUPS} )
+
 	if egetent passwd "${ACCT_USER_NAME}" >/dev/null; then
 		elog "User ${ACCT_USER_NAME} already exists"
 	else
-		local groups=( ${_ACCT_USER_GROUPS} )
 		local aux_groups=${groups[*]:1}
 		local opts=(
 			--system
