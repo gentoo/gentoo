@@ -16,15 +16,15 @@ else
 		https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz
 		verify-sig? ( https://downloads.sourceforge.net/qbittorrent/${P}.tar.xz.asc )
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-qbittorrent )"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/qBittorrent.asc
 fi
 
-LICENSE="GPL-2+ GPL-3+"
+LICENSE="GPL-2+-with-openssl-exception GPL-3+-with-openssl-exception"
 SLOT="0"
-IUSE="+dbus +gui systemd test webui"
+IUSE="+dbus +gui test webui"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( gui webui )
@@ -33,9 +33,9 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/openssl-3.0.2:=
-	>=net-libs/libtorrent-rasterbar-1.2.19:=
-	>=sys-libs/zlib-1.2.11
 	>=dev-qt/qtbase-6.5:6[network,ssl,sql,sqlite,xml]
+	>=net-libs/libtorrent-rasterbar-2.0.10:=
+	>=sys-libs/zlib-1.2.11
 	gui? (
 		>=dev-qt/qtbase-6.5:6[dbus?,gui,widgets]
 		>=dev-qt/qtsvg-6.5:6
@@ -54,30 +54,26 @@ BDEPEND+="
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md )
-
-src_prepare() {
-	MULTIBUILD_VARIANTS=()
-	use gui && MULTIBUILD_VARIANTS+=( gui )
-	use webui && MULTIBUILD_VARIANTS+=( nogui )
-
-	cmake_src_prepare
-}
+DOCS=( AUTHORS Changelog {CONTRIBUTING,README}.md )
 
 src_configure() {
+	MULTIBUILD_VARIANTS=(
+		$(usev gui)
+		$(usev webui nogui)
+	)
+
 	my_src_configure() {
 		local mycmakeargs=(
-			# musl lacks execinfo.h
-			-DSTACKTRACE=$(usex !elibc_musl)
-			# More verbose build logs are preferable for bug reports
-			-DVERBOSE_CONFIGURE=ON
-			-DWEBUI=$(usex webui)
+			-DVERBOSE_CONFIGURE=ON # for bug reports
+			-DSTACKTRACE=$(usex !elibc_musl) # musl lacks execinfo.h
 			-DTESTING=$(usex test)
+			-DWEBUI=$(usex webui)
 		)
 
+		# upstream supports building just gui or nogui
+		# so we build the project twice (see #839531 for details)
+		# Fedora does the same: https://src.fedoraproject.org/rpms/qbittorrent
 		if [[ ${MULTIBUILD_VARIANT} == "gui" ]]; then
-			# We do this in multibuild, see bug #839531 for why.
-			# Fedora has to do the same thing.
 			mycmakeargs+=(
 				-DGUI=ON
 				-DDBUS=$(usex dbus)
@@ -87,11 +83,7 @@ src_configure() {
 			mycmakeargs+=(
 				-DGUI=OFF
 				-DDBUS=OFF
-			)
-
-			use systemd && mycmakeargs+=(
-				# The systemd service calls qbittorrent-nox, which is only
-				# installed when GUI=OFF.
+				# The systemd service calls qbittorrent-nox, built only when GUI=OFF.
 				-DSYSTEMD=ON
 				-DSYSTEMD_SERVICES_INSTALL_DIR="$(systemd_get_systemunitdir)"
 			)
@@ -120,7 +112,6 @@ src_test() {
 
 src_install() {
 	multibuild_foreach_variant cmake_src_install
-	einstalldocs
 
 	if use webui; then
 		newconfd "${FILESDIR}/${PN}.confd" "${PN}"
