@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -48,8 +48,10 @@ src_configure() {
 		--mandir=/usr/share/man
 		--docdir=/usr/share/doc/${PF}
 		--disable-hardening
-		--without-xmmsplugin
+		# This controls running tests during the build, they
+		# are still runnable in src_test with --without-test.
 		--without-test
+		--without-xmmsplugin
 		$(use_enable alsa)
 		$(use_enable nas)
 		$(use_enable nls i18n)
@@ -63,6 +65,10 @@ src_configure() {
 
 src_compile() {
 	emake CC="$(tc-getCC)" SPLINT="true" V=1
+}
+
+src_test() {
+	emake CC="$(tc-getCC)" SPLINT="true" V=1 test
 }
 
 src_install() {
