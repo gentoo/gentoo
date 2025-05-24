@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit cmake llvm.org
+PYTHON_COMPAT=( python3_{11..13} )
+inherit cmake llvm.org python-any-r1
 
 DESCRIPTION="LLVM's Fortran frontend"
 HOMEPAGE="https://flang.llvm.org/"
@@ -26,13 +27,21 @@ PDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/lit
+		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
 "
 
 LLVM_COMPONENTS=( flang cmake )
 LLVM_TEST_COMPONENTS=( clang/test/Driver mlir/test/lib )
 llvm.org_set_globals
+
+python_check_deps() {
+	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local mycmakeargs=(
