@@ -74,8 +74,10 @@ src_prepare() {
 	sed -e 's:\[tool\.setuptools-rust:[tool.ignore-me:' \
 		-i pyproject.toml || die
 
-	cd "${WORKDIR}/${TEST_P}" || die
-	eapply "${FILESDIR}/${P}-pytest-ignore.patch"
+	if use test; then
+		cd "${WORKDIR}/${TEST_P}" || die
+		eapply "${FILESDIR}/${P}-pytest-ignore.patch"
+	fi
 }
 
 python_test() {
