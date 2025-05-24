@@ -3,10 +3,10 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=hatchling
-# maturin compiles uv-build executable for every impl, we do not want
-# that, so we hack hatchling into installing the Python module instead.
-DISTUTILS_UPSTREAM_PEP517=maturin
+# Maturin compiles uv-build executable for every impl, we do not want
+# that, so we use another backend.  And since we use another backend,
+# why not dogfood it in the first place?
+DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
@@ -28,12 +28,19 @@ RDEPEND="
 src_prepare() {
 	distutils-r1_src_prepare
 
-	cat >> pyproject.toml <<-EOF || die
-		[tool.hatch.build.targets.wheel]
-		packages = ["python/uv_build"]
-	EOF
-
 	# use the executable from dev-python/uv instead of building
 	# a largely overlapping uv-build executable (at least for now)
 	sed -i -e '/USE_UV_EXECUTABLE/s:False:True:' python/uv_build/__init__.py || die
+
+	# replace the build-system section
+	sed -i -e '/\[build-system\]/,$d' pyproject.toml || die
+	cat >> pyproject.toml <<-EOF || die
+		[build-system]
+		requires = []
+		build-backend = "uv_build"
+		backend-path = ["src"]
+	EOF
+
+	# rename to make uv-build find it
+	mv python src || die
 }
