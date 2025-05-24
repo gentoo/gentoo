@@ -16,7 +16,8 @@ SRC_URI="https://github.com/hyperrealm/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.ta
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="LGPL-2.1"
-SLOT="0/11"
+# XXX: Drop .1 w/ >1.8.0, as that should change SONAME again
+SLOT="0/11.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x86-linux"
 IUSE="+cxx static-libs test"
 RESTRICT="!test? ( test )"
