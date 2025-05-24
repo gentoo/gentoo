@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit qmake-utils systemd udev xdg-utils
 
-if [[ ${PV} == 9999* ]]; then
+if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mooltipass/moolticute.git"
 	inherit git-r3
 else
@@ -21,30 +21,24 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-libs/libusb-1.0.20
-	dev-qt/qtdbus:5
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qttest:5
-	dev-qt/qtwebsockets:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[dbus,gui,network,widgets]
+	dev-qt/qtwebsockets:6
 	virtual/libudev:=
 "
-BDEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-qt/qttools:6[linguist]"
 
 src_prepare() {
 	default
 
 	# Fill version.h with package version
-	if [[ ${PV} != 9999* ]]; then
+	if [[ ${PV} != *9999* ]]; then
 		sed -i "s/\"git\"/\"v${PV/_/-}\"/" src/version.h || die
 	fi
 }
 
 src_configure() {
-	eqmake5 PREFIX="/usr" Moolticute.pro
+	eqmake6 PREFIX="/usr" Moolticute.pro
 }
 
 src_install() {
