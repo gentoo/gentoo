@@ -12,7 +12,8 @@ SRC_URI="https://github.com/Yubico/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0/1"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="hidapi nfc smartcard static-libs"
+IUSE="hidapi nfc smartcard static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libcbor:=
@@ -45,6 +46,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=OFF
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
+		-DBUILD_TESTS=$(usex test)
 		-DNFC_LINUX=$(usex nfc)
 		-DUSE_PCSC=$(usex smartcard)
 		-DUSE_HIDAPI=$(usex hidapi)
