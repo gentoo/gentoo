@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools python-r1
 
 DESCRIPTION="Python wrapper for libcangjie"
