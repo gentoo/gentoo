@@ -6,6 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">Cangjians/libcangjie</remote-id>
+		<remote-id type="freedesktop-gitlab">cangjie/libcangjie</remote-id>
 	</upstream>
 </pkgmetadata>
