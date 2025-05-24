@@ -12,7 +12,8 @@ SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+upnp"
+IUSE="test +upnp"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/boost:=
@@ -32,6 +33,7 @@ DOCS=( ../README.md ../contrib/i2pd.conf ../contrib/tunnels.conf )
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
 		-DWITH_HARDENING=OFF # worsens or matches the non-hardened profiles
 		-DWITH_STATIC=OFF
 		-DWITH_UPNP=$(usex upnp ON OFF)
