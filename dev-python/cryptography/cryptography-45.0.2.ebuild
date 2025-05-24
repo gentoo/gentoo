@@ -82,6 +82,7 @@ DEPEND="
 
 BDEPEND="
 	${RUST_DEPEND}
+	>=dev-util/maturin-1.8.6[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/certifi[${PYTHON_USEDEP}]
