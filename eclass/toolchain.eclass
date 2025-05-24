@@ -2689,8 +2689,8 @@ toolchain_src_install() {
 	# Hack for C++ modules
 	if ! is_crosscompile && tc_version_is_at_least 15.0.1_pre20250316 ${PV}; then
 		# PR19266 (bug #948394)
-		sed -i -e "s,\.\./lib/gcc/${CHOST}/${GCCMAJOR}/include/,include/," \
-			"${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR}/libstdc++.modules.json || die
+		find "${ED}"/usr/lib/gcc/${CHOST}/${GCCMAJOR} -name libstdc++.modules.json \
+			-exec sed -i -e "s,\"source-path\": \".*gcc/${CHOST}/${GCCMAJOR}/include/,\"source-path\": \"include/," "{}" + || die
 	fi
 
 	# As gcc installs object files built against both ${CHOST} and ${CTARGET}
