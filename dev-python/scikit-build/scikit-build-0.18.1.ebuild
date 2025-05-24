@@ -56,7 +56,10 @@ src_prepare() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=()
+	local EPYTEST_DESELECT=(
+		# Internet (via new setuptools?)
+		tests/test_hello_cpp.py::test_hello_develop
+	)
 
 	case ${EPYTHON} in
 		pypy3)
