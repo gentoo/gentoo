@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/804981
+https://github.com/Aorimn/dislocker/pull/336
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Mon, 6 Jan 2025 04:37:08 +0300
+Subject: [PATCH] Use CMake config files from system MbedTLS
+
+Enforce MbedTLS 3 version, link with MbedTLS::mbedcrypto target.
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -116,10 +116,10 @@ endif()
+ # Libraries
+ set (CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+ 
+-find_package (PolarSSL REQUIRED)
+-if(POLARSSL_FOUND  AND  POLARSSL_INCLUDE_DIRS  AND  POLARSSL_LIBRARIES)
+-	include_directories (${POLARSSL_INCLUDE_DIRS})
+-	set (LIB ${LIB} ${POLARSSL_LIBRARIES})
++find_package (MbedTLS 3 REQUIRED)
++if(MbedTLS_FOUND)
++	set (POLARSSL_INC_FOLDER mbedtls)
++	set (LIB ${LIB} MbedTLS::mbedcrypto)
+ 	configure_file (${PROJECT_SOURCE_DIR}/include/dislocker/ssl_bindings.h.in ${PROJECT_SOURCE_DIR}/include/dislocker/ssl_bindings.h ESCAPE_QUOTES @ONLY)
+ else()
+ 	return ()
+-- 
+2.45.2
+
