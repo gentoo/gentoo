@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_TESTED=( pypy3_11 python3_{11..13} )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_14 )
+PYTHON_TESTED=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 
 inherit distutils-r1 pypi
 
