@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <longdescription lang="en">
+    DSDA-Doom is a successor to the PrBoom+ source port with many new
+    features over it's predecessor, such as: support for Heretic, Hexen,
+    MBF21, etc., various speedrunning and TAS tooling, rewinding, a
+    palette-based OpenGL renderer, and full controller support.
+  </longdescription>
+  <maintainer type="person" proxied="yes">
+    <email>kacper.slominski72@gmail.com</email>
+    <name>Kacper Słomiński</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
+  <use>
+    <flag name="fluidsynth">Enable support for MIDI via <pkg>media-sound/fluidsynth</pkg></flag>
+    <flag name="mad">Enable support for MPEG audio via <pkg>media-libs/libmad</pkg></flag>
+    <flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
+    <flag name="sdl2-image">Enable support for high-resolution textures and other image formats via <pkg>media-libs/sdl2-image</pkg></flag>
+    <flag name="vorbis">Enable support for Ogg Vorbis audio via <pkg>media-libs/libvorbis</pkg></flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/kraflab/dsda-doom/issues</bugs-to>
+    <remote-id type="github">kraflab/dsda-doom</remote-id>
+  </upstream>
+</pkgmetadata>
