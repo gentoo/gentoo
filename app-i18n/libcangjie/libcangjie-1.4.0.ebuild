@@ -13,7 +13,7 @@ S="${WORKDIR}"/${PN}-v${PV}
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}"
