@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-PYTHON_COMPAT=( python3_{10..11} )
+EAPI=8
+
+PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools gnome2-utils python-any-r1 vala vcs-snapshot virtualx xdg
@@ -18,7 +19,8 @@ IUSE="doc +introspection libcanberra static-libs +vala +xtest"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
 
-RDEPEND="app-accessibility/at-spi2-core
+RDEPEND="
+	app-accessibility/at-spi2-core
 	dev-libs/glib:2
 	dev-libs/libcroco
 	virtual/libintl
@@ -29,15 +31,18 @@ RDEPEND="app-accessibility/at-spi2-core
 	introspection? ( dev-libs/gobject-introspection )
 	libcanberra? ( media-libs/libcanberra[gtk3(+)] )
 	vala? ( $(vala_depend) )
-	xtest? ( x11-libs/libXtst )"
+	xtest? ( x11-libs/libXtst )
+"
 DEPEND="${RDEPEND}"
-BDEPEND="${PYTHON_DEPS}
+BDEPEND="
+	${PYTHON_DEPS}
 	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-build/gtk-doc-am
 	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-python-3.patch
@@ -45,7 +50,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	use vala && vala_src_prepare
+	use vala && vala_setup
 	default
 	eautoreconf
 }
@@ -60,13 +65,13 @@ src_configure() {
 		$(use_enable xtest)
 }
 
+src_test() {
+	virtx default
+}
+
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
-}
-
-src_test() {
-	virtx default
 }
 
 pkg_preinst() {
