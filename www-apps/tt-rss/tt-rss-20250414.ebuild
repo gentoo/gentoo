@@ -18,10 +18,11 @@ fi
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
 LICENSE="GPL-3"
-IUSE="+acl daemon gd"
+IUSE="+acl daemon gd +mysqli postgres"
+REQUIRED_USE="|| ( mysqli postgres )"
 
-PHP_SLOTS="8.4 8.3 8.2" # Check with: grep PHP_VERSION classes/Config.php
-PHP_USE="gd?,postgres,ctype,curl,fileinfo,filter,intl,pdo,tokenizer,unicode,xml"
+PHP_SLOTS="8.3 8.2" # Check with: grep PHP_VERSION classes/Config.php
+PHP_USE="gd?,mysqli?,postgres?,curl,fileinfo,intl,json(+),pdo,unicode,xml"
 
 php_rdepend() {
 	local slot
@@ -57,39 +58,9 @@ DEPEND="
 
 need_httpd_cgi # From webapp.eclass
 
-pkg_pretend() {
-	if has_version www-apps/tt-rss[mysqli]; then
-		ewarn
-		ewarn "You are currently using tt-rss with the mysql backend."
-		ewarn
-		ewarn "THIS IS NOT SUPPORTED ANYMORE."
-		ewarn
-		ewarn "Since 2025-04-14, tt-rss has dropped support for MySQL."
-		ewarn
-		ewarn "To upgrade, you need to migrate to PostgreSQL first."
-		ewarn
-		ewarn "Migrating between different tt-rss versions might work but is not recommended."
-		ewarn "It's recommended to switch to =www-apps/tt-rss-20250414 for migration."
-		ewarn
-		ewarn "Export/Import articles could be done with an official plugin:"
-		ewarn "ttrss-data-migration"
-		ewarn "For plugin installation and export/import, see:"
-		ewarn "https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-data-migration"
-		ewarn
-		ewarn "Example of migration steps:"
-		ewarn "0. Setup PostgreSQL (dev-db/postgresql)"
-		ewarn "1. Backup !"
-		ewarn "2. Export settings/feeds (OPML)"
-		ewarn "3. Export articles (JSON) via ttrss-data-migration"
-		ewarn "4. Migrate to PostgreSQL backend changing USE flag mysqli to postgres"
-		ewarn "5. Emerge www-apps/tt-rss with new USE flag"
-		ewarn "6. Setup fresh install of tt-rss with PostgreSQL backend"
-		ewarn "7. Import settings/feeds (OPML)"
-		ewarn "8. Import articles"
-		ewarn
-		die "MySQL backend not supported anymore"
-	fi
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-no-chmod.patch
+)
 
 src_install() {
 	webapp_src_preinst
@@ -133,4 +104,32 @@ pkg_postinst() {
 	fi
 
 	webapp_pkg_postinst
+
+	if use mysqli; then
+		elog
+		elog "You are currently using tt-rss with the mysql backend."
+		elog
+		elog "THIS IS NOT SUPPORTED BEYOND THIS VERSION."
+		elog
+		elog "Since 2025-04-14, tt-rss has dropped support for MySQL."
+		elog
+		elog "To upgrade, you need to migrate to PostgreSQL using this version first."
+		elog
+		elog "Export/Import articles could be done with an official plugin:"
+		elog "ttrss-data-migration"
+		elog "For plugin installation and export/import, see:"
+		elog "https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-data-migration"
+		elog
+		elog "Example of migration steps:"
+		elog "0. Setup PostgreSQL (dev-db/postgresql)"
+		elog "1. Backup !"
+		elog "2. Export settings/feeds (OPML)"
+		elog "3. Export articles (JSON) via ttrss-data-migration"
+		elog "4. Migrate to PostgreSQL backend changing USE flag mysqli to postgres"
+		elog "5. Emerge www-apps/tt-rss with new USE flag"
+		elog "6. Setup fresh install of tt-rss with PostgreSQL backend"
+		elog "7. Import settings/feeds (OPML)"
+		elog "8. Import articles"
+		elog
+	fi
 }
