@@ -3,13 +3,21 @@
 
 EAPI=8
 
-inherit git-r3 webapp
+inherit webapp
+
+if [[ ${PV} == *9999999* ]]; then
+	SLOT="${PV}" # Single live slot.
+	EGIT_REPO_URI="https://git.tt-rss.org/fox/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
+	S="${WORKDIR}/${PN}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+fi
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
-EGIT_REPO_URI="https://git.tt-rss.org/fox/${PN}.git"
 LICENSE="GPL-3"
-SLOT="${PV}" # Single live slot.
 IUSE="+acl daemon gd"
 
 PHP_SLOTS="8.4 8.3 8.2" # Check with: grep PHP_VERSION classes/Config.php
@@ -118,7 +126,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use vhosts && [[ -n ${REPLACING_VERSIONS} ]]; then
+	if ! use vhosts && [[ -n ${REPLACING_VERSIONS} && ${PV} == *9999999* ]]; then
 		elog
 		elog "The live ebuild does not automatically upgrade your installations so"
 		elog "don't forget to do so manually."
