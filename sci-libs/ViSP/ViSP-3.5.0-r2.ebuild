@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	motif? ( media-libs/SoXt )
 	ogre? (
-		dev-games/ogre[ois(+)]
+		<dev-games/ogre-1.12:=[ois(+)]
 		dev-libs/boost:=
 	)
 	opencv? ( media-libs/opencv:=[contribdnn(+)] )
@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	usb? ( virtual/libusb:1 )
 	v4l? ( media-libs/libv4l )
 	X? ( x11-libs/libX11 )
-	xml? ( dev-libs/libxml2 )
+	xml? ( dev-libs/libxml2:= )
 	zbar? ( media-gfx/zbar )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${COMMON_DEPEND}
