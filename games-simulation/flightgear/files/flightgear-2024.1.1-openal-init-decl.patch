@@ -1,0 +1,65 @@
+From 4effb8ca7a0faa2cd7fac58f29b37e32227e487d Mon Sep 17 00:00:00 2001
+From: Florent Rougon <f.rougon@frougon.net>
+Date: Wed, 7 May 2025 14:46:31 +0200
+Subject: [PATCH] 3rdparty/iaxclient: fix declaration of openal_initialize()
+
+In audio_openal.h, openal_initialize() was declared without any
+parameter specified, however the definition takes two. This was valid in
+pre-ANSI C (K&R function declarations) but was removed in C23 and is
+apparently already causing problems:
+
+  https://sourceforge.net/p/flightgear/mailman/message/59181327/
+
+Also move #include "audio_openal.h" from iaxclient_lib.h to where it is
+actually needed (iaxclient_lib.c).
+---
+ 3rdparty/iaxclient/lib/audio_openal.h  | 2 +-
+ 3rdparty/iaxclient/lib/iaxclient_lib.c | 4 ++++
+ 3rdparty/iaxclient/lib/iaxclient_lib.h | 4 ----
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/3rdparty/iaxclient/lib/audio_openal.h b/3rdparty/iaxclient/lib/audio_openal.h
+index a698235adb..de7cbc866c 100644
+--- a/3rdparty/iaxclient/lib/audio_openal.h
++++ b/3rdparty/iaxclient/lib/audio_openal.h
+@@ -1,6 +1,6 @@
+ #ifndef _AUDIO_OPENAL_H
+ #define _AUDIO_OPENAL_H
+ 
+-int openal_initialize();
++int openal_initialize(struct iaxc_audio_driver *d, int sample_rate);
+ 
+ #endif
+diff --git a/3rdparty/iaxclient/lib/iaxclient_lib.c b/3rdparty/iaxclient/lib/iaxclient_lib.c
+index 761dee42b9..ae2c43f3ca 100644
+--- a/3rdparty/iaxclient/lib/iaxclient_lib.c
++++ b/3rdparty/iaxclient/lib/iaxclient_lib.c
+@@ -47,6 +47,10 @@
+ #include "audio_alsa.h"
+ #endif
+ 
++#ifdef AUDIO_OPENAL
++  #include "audio_openal.h"
++#endif
++
+ #define IAXC_ERROR  IAXC_TEXT_TYPE_ERROR
+ #define IAXC_STATUS IAXC_TEXT_TYPE_STATUS
+ #define IAXC_NOTICE IAXC_TEXT_TYPE_NOTICE
+diff --git a/3rdparty/iaxclient/lib/iaxclient_lib.h b/3rdparty/iaxclient/lib/iaxclient_lib.h
+index 91776c3351..d98dc45167 100644
+--- a/3rdparty/iaxclient/lib/iaxclient_lib.h
++++ b/3rdparty/iaxclient/lib/iaxclient_lib.h
+@@ -242,10 +242,6 @@ struct iaxc_call {
+ 
+ #include "audio_file.h"
+ 
+-#ifdef AUDIO_OPENAL
+-  #include "audio_openal.h"
+-#endif
+-
+ extern int iaxci_audio_output_mode;
+ 
+ int iaxci_post_event_callback(iaxc_event e);
+-- 
+GitLab
+

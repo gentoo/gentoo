@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}/0003-make-fglauncher-a-static-library.patch"
 	"${FILESDIR}/0005-make-fgqmlui-a-static-library.patch"
 	"${FILESDIR}/0006-fgviewer-fix-crash-on-exit.patch"
+	"${FILESDIR}/${P}-openal-init-decl.patch"
 )
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)

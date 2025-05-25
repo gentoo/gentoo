@@ -38,6 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/0001-check-to-be-sure-that-n-is-not-being-set-as-format-t.patch"
 	"${FILESDIR}/0002-fix-support-for-aarch64.patch"
+	"${FILESDIR}/${P}-boost.patch"
 )
 
 src_configure() {
