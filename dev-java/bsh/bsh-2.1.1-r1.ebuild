@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
 DEPEND="${CP_DEPEND}
-	virtual/jdk:1.8"
+	>=virtual/jdk-1.8:*"
 
 DOCS=(
 	CHANGES.md
@@ -50,7 +50,7 @@ JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_SRC_DIR="tests"
 
 src_prepare() {
-	default
+	default #780585
 	java-pkg-2_src_prepare
 	java-pkg_clean ! -path "./tests/test-scripts/*"
 
@@ -81,30 +81,31 @@ src_test() {
 	#                                                       ^
 	#   symbol:   class BshScriptEngineFactory
 	#   location: class Issue_55_Test
-#	cp {engine,tests}/src/bsh/engine/BshScriptEngineFactory.java || die
 	rm tests/junitTests/src/bsh/Issue_55_Test.java || die
 
 	# We add 3 test classes which are not covered by the default test selection of java-pkg-simple
 	# We skip "OldScriptsTest" and 4 failing test classes.
 	# Test failures are documeted in bug #903519.
-	pushd tests/junitTests/src > /dev/null || die
-		local JAVA_TEST_RUN_ONLY=$(find * \
-			-type f \
-			! -name 'OldScriptsTest.java' \
-			! -name 'Class3_Test.java' \
-			! -name 'Class13Test.java' \
-			! -name 'Issue_7_Test.java' \
-			! -name 'Issue_8_Test.java' \
-			\( \
-			-name "*Test.java" \
-			-o -name "AnnotationsParsing.java" \
-			-o -name "GoogleReports.java" \
-			-o -name "Namespace_chaining.java" \
-			\) )
-		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
-		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
-	popd > /dev/null || die
+	local JAVA_TEST_RUN_ONLY=$(find tests/junitTests/src \
+		-type f \
+		! -name 'OldScriptsTest.java' \
+		! -name 'Class3_Test.java' \
+		! -name 'Class13Test.java' \
+		! -name 'Issue_7_Test.java' \
+		! -name 'Issue_8_Test.java' \
+		\( \
+		-name "*Test.java" \
+		-o -name "AnnotationsParsing.java" \
+		-o -name "GoogleReports.java" \
+		-o -name "Namespace_chaining.java" \
+		\) -printf '%P\n')
+	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
+	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
 
+	local vm_version="$(java-config -g PROVIDES_VERSION)"
+	if ver_test "${vm_version}" -ge 17; then
+		JAVA_TEST_EXTRA_ARGS+=( --add-exports=java.base/sun.net.www.protocol.https=ALL-UNNAMED)
+	fi
 	java-pkg-simple_src_test
 }
 
