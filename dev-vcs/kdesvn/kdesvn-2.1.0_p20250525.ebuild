@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_HANDBOOK="forceoptional"
-KDE_ORG_COMMIT="7f7b50040972d4f10fae5c32d2a09b684d2d79e7"
+KDE_ORG_COMMIT="b38308f39df291706461b07ab11139d19e76aabc"
 KFMIN=6.9.0
 QTMIN=6.7.2
 inherit ecm kde.org xdg
@@ -43,12 +43,7 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 "
 RDEPEND="${DEPEND}"
-BDEPEND="
-	man? ( >=kde-frameworks/kdoctools-${KFMIN}:6 )
-"
-
-# MR pending: https://invent.kde.org/sdk/kdesvn/-/merge_requests/17
-PATCHES=( "${WORKDIR}/${P}-kf6.patch" )
+BDEPEND="man? ( >=kde-frameworks/kdoctools-${KFMIN}:6 )"
 
 src_prepare(){
 	ecm_src_prepare
