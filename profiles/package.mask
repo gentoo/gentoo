@@ -286,7 +286,6 @@ dev-db/sqliteman
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
 # Dead upstream, last revdep on x11-libs/qwtplot3d and x11-libs/qwt:5
 # Bugs #948047, #942455; removal on 2025-05-26
-sci-visualization/scidavis
 x11-libs/qwtplot3d
 x11-libs/qwt:5
 
