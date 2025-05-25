@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 #: ${CMAKE_MAKEFILE_GENERATOR:=emake}
-inherit cmake
+inherit cmake xdg
 
 MY_PV="${PV/_rc/-rc.}"
 MY_P="SuperTux-v${MY_PV}-Source"
@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.6.3-missing-include.patch
 	"${FILESDIR}"/${PN}-0.6.3-squirrel-CVE-2021-41556.patch
 	"${FILESDIR}"/${PN}-0.6.3-squirrel-CVE-2022-30292.patch
+	"${FILESDIR}"/${PN}-0.6.3-cmake4.patch
 )
 
 src_configure() {
