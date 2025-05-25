@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-05-25)
+# Archived upstream and no longer builds with modern compilers.
+# Bugs #956601, #930253
+# Removal on 2025-06-24
+media-libs/oneVPL-cpu
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-24)
 # Dead upstream, fails to build with GCC-14, depends on media-libs/dumb.
 # A rescue mission would ideally package dsda-doom. Bugs #939219, #908973
