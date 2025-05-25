@@ -7,17 +7,16 @@ inherit cmake
 
 DESCRIPTION="A cross-platform userland SCTP stack"
 HOMEPAGE="https://github.com/sctplab/usrsctp"
-SRC_URI="https://github.com/sctplab/usrsctp/archive/${PV}.tar.gz -> ${P}.tar.gz"
+GIT_REV=881513ab3fc75b4c53ffce7b22b08e7b07fcc67a
+SRC_URI="https://github.com/sctplab/usrsctp/archive/${GIT_REV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${GIT_REV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~x86"
 
 DOCS=( LICENSE.md Manual.md README.md )
-PATCHES=(
-	"${FILESDIR}/${P}-pc-inc-path.patch"
-	"${FILESDIR}/${P}-cmake-4.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-0.9.5.0-cmake-4.patch" )
 
 src_configure() {
 	local mycmakeargs=(
