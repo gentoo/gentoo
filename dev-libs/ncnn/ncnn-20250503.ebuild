@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD ZLIB"
 SLOT="0/${PV}" # unstable ABI
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="openmp tools +vulkan"
 
 # Need the static library to run tests + skip vulkan / GPU:
