@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1
 
 DESCRIPTION="Python interface for a malware identification and classification tool"
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/VirusTotal/yara-python.git"
 else
 	SRC_URI="https://github.com/virustotal/yara-python/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -36,5 +36,5 @@ python_configure_all() {
 }
 
 python_test() {
-	"${EPYTHON}" tests.py || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" tests.py -v || die "Tests fail with ${EPYTHON}"
 }
