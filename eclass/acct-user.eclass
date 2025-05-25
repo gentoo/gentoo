@@ -375,9 +375,12 @@ acct-user_pkg_preinst() {
 		local group=${groups[0]}
 		if [[ -n ${ROOT} ]]; then
 			# resolve user:group to uid:gid
-			if [[ -n ${_ACCT_USER_HOME_OWNER} ]]; then
+			if [[ ${_ACCT_USER_HOME_OWNER} == *:* ]]; then
 				user=${_ACCT_USER_HOME_OWNER%:*}
 				group=${_ACCT_USER_HOME_OWNER#*:}
+			elif [[ -n ${_ACCT_USER_HOME_OWNER} ]]; then
+				user=${_ACCT_USER_HOME_OWNER}
+				group=
 			fi
 			local euid= egid=
 			if [[ -n ${user} ]]; then
