@@ -12,6 +12,7 @@
 	<use>
 		<flag name="conch">include Twisted SSHv2 implementation</flag>
 		<flag name="serial">include serial port support</flag>
+		<flag name="websockets">include websocket support</flag>
 	</use>
 	<longdescription>Twisted is an event-based framework for internet
 		applications, supporting Python 2.7 and Python 3.3+. It includes
