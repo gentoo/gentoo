@@ -102,6 +102,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.1-python-path.patch
+	"${FILESDIR}"/unbreak-setuptools-test_installed.patch
 )
 
 src_unpack() {
