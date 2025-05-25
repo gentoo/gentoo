@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/955533
+https://github.com/mcfletch/pyopengl/issues/147
+https://github.com/mcfletch/pyopengl/pull/146
+
+From 69e8ced15eb63c3f00293f59cef50d5fad02d884 Mon Sep 17 00:00:00 2001
+From: Vsevolod Misiul <vsevolod.misul@innowise.com>
+Date: Mon, 19 May 2025 14:46:00 +0300
+Subject: [PATCH] For linux on arm64 the long type is not defined, so grab it
+ from ctypes.c_long
+
+--- a/src/vbo.pyx
++++ b/src/vbo.pyx
+@@ -1,6 +1,7 @@
+ """Cython-coded VBO implementation"""
+ #cython: language_level=3
+ import ctypes, weakref
++from ctypes import c_long as long
+ from OpenGL_accelerate.formathandler cimport FormatHandler
+ from OpenGL import error
+ from OpenGL._bytes import bytes,unicode
