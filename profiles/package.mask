@@ -283,11 +283,6 @@ x11-themes/fvwm-themes-extra
 # Bug #947297; removal on 2025-05-26
 dev-db/sqliteman
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-04-26)
-# Dead upstream, last revdep on x11-libs/qwtplot3d and x11-libs/qwt:5
-# Bugs #948047, #942455; removal on 2025-05-26
-x11-libs/qwt:5
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
 # Metapackage used for pypy3 target in the past.
 # Removal on 2025-05-22.
