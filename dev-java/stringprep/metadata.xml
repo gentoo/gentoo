@@ -5,7 +5,6 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">ongresinc/stringprep</remote-id>
 		<remote-id type="github">ongres/stringprep</remote-id>
 	</upstream>
 </pkgmetadata>

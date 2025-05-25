@@ -10,7 +10,7 @@ MAVEN_ID="com.ongres.stringprep:stringprep:2.2"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Stringprep (RFC 3454) Java implementation"
-HOMEPAGE="https://gitlab.com/ongresinc/stringprep"
+HOMEPAGE="https://github.com/ongres/stringprep/"
 SRC_URI="https://github.com/ongres/stringprep/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${P}"
 
