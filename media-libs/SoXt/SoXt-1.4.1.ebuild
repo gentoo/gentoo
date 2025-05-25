@@ -37,6 +37,7 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DSOXT_BUILD_DOCUMENTATION=$(usex doc)
 		-DSOXT_BUILD_INTERNAL_DOCUMENTATION=OFF
+		# Interactive test programs
 		-DSOXT_BUILD_TESTS=OFF
 		-DSOXT_VERBOSE=$(usex debug)
 	)
