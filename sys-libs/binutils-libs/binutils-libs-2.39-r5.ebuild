@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -71,7 +71,7 @@ pkgversion() {
 multilib_src_configure() {
 	# https://sourceware.org/PR32372
 	append-cflags -std=gnu17
-
+	# bug #814326
 	filter-lto
 
 	local myconf=(

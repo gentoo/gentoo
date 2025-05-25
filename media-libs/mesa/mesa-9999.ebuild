@@ -3,10 +3,10 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..19} )
+LLVM_COMPAT=( {18..20} )
 LLVM_OPTIONAL=1
 CARGO_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolchain
 
@@ -54,32 +54,19 @@ SLOT="0"
 
 RADEON_CARDS="r300 r600 radeon radeonsi"
 VIDEO_CARDS="${RADEON_CARDS}
-	asahi d3d12 freedreno intel lavapipe lima nouveau nvk panfrost v3d vc4 virgl
-	vivante vmware zink"
+	asahi d3d12 freedreno imagination intel lavapipe lima nouveau nvk panfrost
+	v3d vc4 virgl vivante vmware zink"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	cpu_flags_x86_sse2 d3d9 debug +llvm
+	cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
 	test unwind vaapi valgrind vdpau vulkan
-	wayland +X xa +zstd"
+	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	d3d9? (
-		|| (
-			video_cards_freedreno
-			video_cards_intel
-			video_cards_nouveau
-			video_cards_panfrost
-			video_cards_r300
-			video_cards_r600
-			video_cards_radeonsi
-			video_cards_vmware
-			video_cards_zink
-		)
-	)
 	llvm? ( ${LLVM_REQUIRED_USE} )
 	video_cards_lavapipe? ( llvm vulkan )
 	video_cards_radeon? ( x86? ( llvm ) amd64? ( llvm ) )
@@ -87,7 +74,6 @@ REQUIRED_USE="
 	video_cards_zink? ( vulkan opengl )
 	video_cards_nvk? ( vulkan video_cards_nouveau )
 	vdpau? ( X )
-	xa? ( X )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.121"
@@ -220,6 +206,7 @@ pkg_pretend() {
 		if ! use video_cards_asahi &&
 		   ! use video_cards_d3d12 &&
 		   ! use video_cards_freedreno &&
+		   ! use video_cards_imagination &&
 		   ! use video_cards_intel &&
 		   ! use video_cards_lavapipe &&
 		   ! use video_cards_nouveau &&
@@ -228,7 +215,7 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_v3d &&
 		   ! use video_cards_virgl; then
-			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain asahi, d3d12, freedreno, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
+			ewarn "Ignoring USE=vulkan     since VIDEO_CARDS does not contain asahi, d3d12, freedreno, imagination, intel, lavapipe, nouveau, nvk, panfrost, radeonsi, v3d, or virgl"
 		fi
 	fi
 
@@ -250,15 +237,6 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_virgl; then
 			ewarn "Ignoring USE=vdpau      since VIDEO_CARDS does not contain d3d12, nouveau, r600, radeonsi, or virgl"
-		fi
-	fi
-
-	if use xa; then
-		if ! use video_cards_freedreno &&
-		   ! use video_cards_intel &&
-		   ! use video_cards_nouveau &&
-		   ! use video_cards_vmware; then
-			ewarn "Ignoring USE=xa         since VIDEO_CARDS does not contain freedreno, intel, nouveau, or vmware"
 		fi
 	fi
 
@@ -319,20 +297,6 @@ multilib_src_configure() {
 	use wayland && platforms+=",wayland"
 	emesonargs+=(-Dplatforms=${platforms#,})
 
-	if use video_cards_freedreno ||
-	   use video_cards_intel || # crocus i915 iris
-	   use video_cards_nouveau ||
-	   use video_cards_panfrost ||
-	   use video_cards_r300 ||
-	   use video_cards_r600 ||
-	   use video_cards_radeonsi ||
-	   use video_cards_vmware || # svga
-	   use video_cards_zink; then
-		emesonargs+=($(meson_use d3d9 gallium-nine))
-	else
-		emesonargs+=(-Dgallium-nine=false)
-	fi
-
 	if use video_cards_d3d12 ||
 	   use video_cards_nouveau ||
 	   use video_cards_r600 ||
@@ -356,15 +320,6 @@ multilib_src_configure() {
 		emesonargs+=($(meson_feature vdpau gallium-vdpau))
 	else
 		emesonargs+=(-Dgallium-vdpau=disabled)
-	fi
-
-	if use video_cards_freedreno ||
-	   use video_cards_intel ||
-	   use video_cards_nouveau ||
-	   use video_cards_vmware; then
-		emesonargs+=($(meson_feature xa gallium-xa))
-	else
-		emesonargs+=(-Dgallium-xa=disabled)
 	fi
 
 	gallium_enable !llvm softpipe
@@ -404,6 +359,7 @@ multilib_src_configure() {
 		vulkan_enable video_cards_asahi asahi
 		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_freedreno freedreno
+		vulkan_enable video_cards_imagination imagination-experimental
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_lavapipe swrast
 		vulkan_enable video_cards_panfrost panfrost

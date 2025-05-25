@@ -1,0 +1,41 @@
+Generated with `2to3 -n -w --no-diffs configure .config/*.py`.
+https://bugs.gentoo.org/955505
+--- a/.config/argparse.py
++++ b/.config/argparse.py
+@@ -100 +100 @@
+-    basestring
++    str
+@@ -102 +102 @@
+-    basestring = str
++    str = str
+@@ -1724 +1724 @@
+-                        if isinstance(action.default, basestring):
++                        if isinstance(action.default, str):
+@@ -2202 +2202 @@
+-            if isinstance(value, basestring):
++            if isinstance(value, str):
+--- a/.config/options.py
++++ b/.config/options.py
+@@ -99 +99 @@
+-    print str,
++    print(str, end=' ')
+--- a/.config/repl.py
++++ b/.config/repl.py
+@@ -17 +17 @@
+-print re.sub('@\w+@', repl_func, sys.stdin.read())
++print(re.sub('@\w+@', repl_func, sys.stdin.read()))
+--- a/configure
++++ b/configure
+@@ -117 +117 @@
+-            self.help_names = self.help_groups.keys()
++            self.help_names = list(self.help_groups.keys())
+@@ -278,3 +278,3 @@
+-            print(e.output)
+-            print("This usually means that '" + pname + \
+-                "' development files are not installed")
++            print((e.output))
++            print(("This usually means that '" + pname + \
++                "' development files are not installed"))
+@@ -333 +333 @@
+-        if type(v) == str or type(v) == unicode:
++        if type(v) == str or type(v) == str:

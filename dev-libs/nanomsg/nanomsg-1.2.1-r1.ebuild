@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,8 @@ SRC_URI="https://github.com/nanomsg/nanomsg/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0/6.0.1"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~riscv x86"
-IUSE="doc"
+IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( dev-ruby/asciidoctor )"
 
@@ -34,6 +35,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DNN_STATIC_LIB=OFF
 		-DNN_ENABLE_DOC=$(usex doc)
+		-DNN_TESTS=$(usex test)
 	)
 
 	cmake_src_configure

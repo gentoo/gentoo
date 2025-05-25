@@ -1,0 +1,58 @@
+From 99f86d31ed52bafada4d0b4036cada89b1ccdfaf Mon Sep 17 00:00:00 2001
+From: John Ralls <jralls@ceridwen.us>
+Date: Fri, 2 May 2025 10:11:55 -0700
+Subject: [PATCH] Bug 799594 - GnuCash 5.11 fails to build with boost 1.88
+
+Boost Process 1.88 defaults to the new V2 API introduced in Boost
+1.81. https://repology.org/project/boost/versions shows that distro
+support for boost 1.81 and later is spotty at best so we won't be able
+to migrate to v2 until that improves.
+---
+ libgnucash/app-utils/gnc-quotes.cpp | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/libgnucash/app-utils/gnc-quotes.cpp b/libgnucash/app-utils/gnc-quotes.cpp
+index 1fdf64a385c..fcc67cc782e 100644
+--- a/libgnucash/app-utils/gnc-quotes.cpp
++++ b/libgnucash/app-utils/gnc-quotes.cpp
+@@ -36,10 +36,27 @@
+ #endif
+ #include <boost/algorithm/string.hpp>
+ #include <boost/filesystem.hpp>
++#include <boost/version.hpp>
++#if BOOST_VERSION < 108800
++#include <boost/process.hpp>
+ #ifdef BOOST_WINDOWS_API
+ #include <boost/process/windows.hpp>
+ #endif
+-#include <boost/process.hpp>
++#else
++#include <boost/process/v1/async.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/env.hpp>
++#include <boost/process/v1/environment.hpp>
++#include <boost/process/v1/error.hpp>
++#include <boost/process/v1/group.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/search_path.hpp>
++#include <boost/process/v1/start_dir.hpp>
++#ifdef BOOST_WINDOWS_API
++#include <boost/process/v1/windows.hpp>
++#endif
++#endif
+ #include <boost/regex.hpp>
+ #include <boost/property_tree/ptree.hpp>
+ #include <boost/property_tree/json_parser.hpp>
+@@ -68,7 +85,11 @@ static const char* yh_api_env = "FINANCEAPI_API_KEY";
+ static const char* yh_api_key = "yhfinance-api-key";
+ 
+ namespace bl = boost::locale;
++#if BOOST_VERSION < 108800
+ namespace bp = boost::process;
++#else
++namespace bp = boost::process::v1;
++#endif
+ namespace bfs = boost::filesystem;
+ namespace bpt = boost::property_tree;
+ namespace bio = boost::iostreams;

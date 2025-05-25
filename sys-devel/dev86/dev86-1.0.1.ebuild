@@ -12,13 +12,14 @@ S="${WORKDIR}/dev86"
 
 LICENSE="GPL-2 LGPL-2 public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 RDEPEND="sys-devel/bin86"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-reboot.patch"
 )
 
 src_prepare() {

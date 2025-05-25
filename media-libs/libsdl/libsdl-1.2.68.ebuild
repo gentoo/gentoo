@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib dot-a
 
 DESCRIPTION="Simple Direct Media Layer 1.2 compatibility wrapper around SDL2"
 HOMEPAGE="https://github.com/libsdl-org/sdl12-compat"
@@ -37,9 +37,15 @@ DEPEND="
 "
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DSDL12TESTS=$(usex test)
 	)
 
 	cmake-multilib_src_configure
+}
+
+src_install() {
+	cmake-multilib_src_install
+	strip-lto-bytecode
 }

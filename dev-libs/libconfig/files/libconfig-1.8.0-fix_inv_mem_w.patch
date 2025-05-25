@@ -1,0 +1,103 @@
+https://github.com/hyperrealm/libconfig/pull/261
+From f55523ab4722b216349d909bf770f7a84b4f4c67 Mon Sep 17 00:00:00 2001
+From: Shubham Tiwari <58452132+Shubham7-1@users.noreply.github.com>
+Date: Sun, 4 May 2025 17:39:52 +0530
+Subject: [PATCH] Fix invalid memory write
+
+---
+ fuzz/fuzz_config_read.c | 60 ++++++++++++++++++-----------------------
+ 1 file changed, 26 insertions(+), 34 deletions(-)
+
+diff --git a/fuzz/fuzz_config_read.c b/fuzz/fuzz_config_read.c
+index 38138dd..02adb0b 100644
+--- a/fuzz/fuzz_config_read.c
++++ b/fuzz/fuzz_config_read.c
+@@ -93,49 +93,36 @@ size_t LLVMFuzzerCustomMutator(uint8_t *data, size_t size,
+     srand(seed);
+     config_init(&cfg);
+ 
+-    fuzz_data_t *fuzz_data = (fuzz_data_t *) data;
+-
+-    // Ensure MIN_BUFF_SIZE * 2 <= size <= MAX_BUFF_SIZE
+-    if (remaining_size < MIN_BUFF_SIZE)
+-    {
+-        return 2 * MIN_BUFF_SIZE;
+-    }
+-    if (remaining_size > MAX_BUFF_SIZE)
+-    {
+-        return MAX_BUFF_SIZE;
++    if (size < MIN_BUFF_SIZE || max_size < MIN_BUFF_SIZE || max_size > MAX_BUFF_SIZE) {
++        return MIN_BUFF_SIZE;
+     }
+ 
+-    remaining_size -= MIN_BUFF_SIZE;
++    fuzz_data_t *fuzz_data = (fuzz_data_t *) data;
++    remaining_size -= sizeof(fuzz_data_t);
+ 
+-    fuzz_data->lookup_type = rand() % (CONFIG_TYPE_LIST + 1);
++    // Limit sizes to avoid overflow
++    size_t max_content = min_size(remaining_size, MAX_CONFIG_SIZE - 1);
++    fuzz_data->content_size = rand() % max_content;
+ 
+-    // Ensure the content and path sizes are within bounds
+-    if (fuzz_data->content_size + fuzz_data->path_size > remaining_size)
+-    {
+-        fuzz_data->content_size = rand() % remaining_size;
+-        fuzz_data->path_size = remaining_size - fuzz_data->content_size;
++    size_t max_path = min_size(remaining_size - fuzz_data->content_size, MAX_PATH_SIZE - 1);
++    fuzz_data->path_size = rand() % max_path;
++
++    if (fuzz_data->content_size + fuzz_data->path_size + sizeof(fuzz_data_t) >= max_size) {
++        fuzz_data->content_size = max_content / 2;
++        fuzz_data->path_size = max_path / 2;
+     }
+ 
+-    // Extract and mutate the config
+     fuzz_data_content(fuzz_data, &config_data);
+-    fuzz_data->content_size = LLVMFuzzerMutate(config_data, fuzz_data->content_size, remaining_size);
+-    config_data[fuzz_data->content_size] = '\0'; // Null-terminate the config
++    fuzz_data_path(fuzz_data, &path_data);
+ 
+-    if (fuzz_data->content_size > remaining_size) {
+-        return 0;
+-    }
++    // Mutate content and path safely
++    fuzz_data->content_size = LLVMFuzzerMutate(config_data, fuzz_data->content_size, max_content);
++    config_data[fuzz_data->content_size < max_content ? fuzz_data->content_size : max_content - 1] = '\0';
+ 
+-    remaining_size -= fuzz_data->content_size;
++    fuzz_data->path_size = LLVMFuzzerMutate(path_data, fuzz_data->path_size, max_path);
++    path_data[fuzz_data->path_size < max_path ? fuzz_data->path_size : max_path - 1] = '\0';
+ 
+-    // Extract and mutate the path
+-    fuzz_data->path_size = min_size(fuzz_data->path_size, remaining_size);
+-    fuzz_data_path(fuzz_data, &path_data);
+-    if (remaining_size > 0) {
+-        fuzz_data->path_size = LLVMFuzzerMutate(path_data, fuzz_data->path_size, remaining_size);
+-    }
+-    path_data[fuzz_data->path_size] = '\0'; // Null-terminate the path
+-
+-    return min_size(MIN_BUFF_SIZE + fuzz_data->content_size + fuzz_data->path_size, max_size);
++    return sizeof(fuzz_data_t) + fuzz_data->content_size + fuzz_data->path_size + 2;
+ }
+ 
+ int LLVMFuzzerTestOneInput(const uint8_t *data, const size_t size)
+@@ -169,6 +156,11 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, const size_t size)
+ 
+     config_init(&cfg);
+ 
++    if (fuzz_data->content_size > MAX_CONFIG_SIZE || 
++        fuzz_data->path_size > MAX_PATH_SIZE || 
++        sizeof(fuzz_data_t) + fuzz_data->content_size + fuzz_data->path_size > size) { 
++        goto end; 
++    } 
+     fuzz_data_content(fuzz_data, &config_ptr);
+     fuzz_data_path(fuzz_data, &path_ptr);
+     const char *config_data = (const char *) config_ptr;
+@@ -243,4 +235,4 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, const size_t size)
+     end:
+     config_destroy(&cfg);
+     return rc;
+-}
+\ No newline at end of file
++}

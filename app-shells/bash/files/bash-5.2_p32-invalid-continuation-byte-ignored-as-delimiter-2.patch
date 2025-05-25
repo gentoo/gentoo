@@ -1,4 +1,4 @@
-From fb31e1965baa732f9e4cdbe3a7d6691d7beb4e03 Mon Sep 17 00:00:00 2001
+From c87aca06c259b6283a499584d95c87f163accba0 Mon Sep 17 00:00:00 2001
 From: Kerin Millar <kfm@plushkava.net>
 Date: Mon, 28 Apr 2025 07:59:25 +0100
 Subject: [PATCH 2/3] Backport fix for invalid continuation bytes above 0x7F
@@ -26,11 +26,11 @@ Link: https://mywiki.wooledge.org/BashPitfalls#IFS.3D_read_-r_-d_.27.27_filename
 Link: https://lists.gnu.org/r/bug-bash/2024-08/msg00100.html
 Signed-off-by: Kerin Millar <kfm@plushkava.net>
 ---
- builtins/read.def | 40 +++++++++++++++++++++++-----------------
- 1 file changed, 23 insertions(+), 17 deletions(-)
+ builtins/read.def | 41 +++++++++++++++++++++++------------------
+ 1 file changed, 23 insertions(+), 18 deletions(-)
 
 diff --git builtins/read.def builtins/read.def
-index 53b4bd81..9fd9a74c 100644
+index 53b4bd81..48351c3c 100644
 --- builtins/read.def
 +++ builtins/read.def
 @@ -142,7 +142,7 @@ sh_timer *read_timeout;
@@ -80,16 +80,17 @@ index 53b4bd81..9fd9a74c 100644
  	      mbchar[--i] = '\0';		/* unget the delimiter */
  	    }
  	  break;		/* invalid multibyte character */
-@@ -1220,6 +1219,8 @@ edit_line (p, itext)
+@@ -1219,7 +1218,8 @@ edit_line (p, itext)
+ 
    len = strlen (ret);
    ret = (char *)xrealloc (ret, len + 2);
-   ret[len++] = delim;
+-  ret[len++] = delim;
 +  if (delim > 0)
 +    ret[len++] = delim;
    ret[len] = '\0';
    return ret;
  }
-@@ -1240,7 +1241,7 @@ static rl_command_func_t *old_delim_func;
+@@ -1240,7 +1240,7 @@ static rl_command_func_t *old_delim_func;
  static int old_newline_ctype;
  static rl_command_func_t *old_newline_func;
  
@@ -98,7 +99,7 @@ index 53b4bd81..9fd9a74c 100644
  
  static void
  set_eol_delim (c)
-@@ -1252,19 +1253,21 @@ set_eol_delim (c)
+@@ -1252,19 +1252,21 @@ set_eol_delim (c)
      initialize_readline ();
    cmap = rl_get_keymap ();
  
@@ -128,7 +129,7 @@ index 53b4bd81..9fd9a74c 100644
  
    delim_char = c;
  }
-@@ -1280,7 +1283,10 @@ reset_eol_delim (cp)
+@@ -1280,7 +1282,10 @@ reset_eol_delim (cp)
    cmap[RETURN].type = old_newline_ctype;
    cmap[RETURN].function = old_newline_func;
  

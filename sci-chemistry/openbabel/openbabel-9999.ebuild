@@ -49,7 +49,7 @@ RDEPEND="
 	)
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
-	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )
+	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -16,6 +16,7 @@ fbdev - VIDEO_CARDS setting to build driver for fbdev video cards
 geode - VIDEO_CARDS setting to build driver for AMD Geode GX and LX video cards
 i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
+imagination - VIDEO_CARDS setting to build driver for Imagination video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 lavapipe - VIDEO_CARDS setting to build Vulkan software rasterizer using LLVMpipe
 lima - VIDEO_CARDS setting to build driver for Mali 200/400 video cards

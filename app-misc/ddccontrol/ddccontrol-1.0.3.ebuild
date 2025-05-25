@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,22 +51,6 @@ BDEPEND="
 "
 
 src_prepare() {
-	# ppc/ppc64 do not have inb/outb/ioperm
-	# they also do not have (sys|asm)/io.h
-	if ! use amd64 && ! use x86 ; then
-		local card
-		for card in sis intel810 ; do
-			sed -r -i \
-				-e "/${card}.Po/d" \
-				-e "s~${card}[^[:space:]]*~ ~g" \
-				src/ddcpci/Makefile.{am,ini} || die
-		done
-		sed -i \
-			-e '/sis_/d' \
-			-e '/i810_/d' \
-			src/ddcpci/main.c || die
-	fi
-
 	default
 
 	## Save for a rainy day or future patching

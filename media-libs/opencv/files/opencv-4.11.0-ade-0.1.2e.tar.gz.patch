@@ -1,0 +1,18 @@
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+
+Use tar.gz instead of zip to make CI happy.
+
+diff --git a/modules/gapi/cmake/DownloadADE.cmake b/modules/gapi/cmake/DownloadADE.cmake
+index e22c4f1..fb0c10a 100644
+--- a/modules/gapi/cmake/DownloadADE.cmake
++++ b/modules/gapi/cmake/DownloadADE.cmake
+@@ -1,7 +1,7 @@
+ set(ade_src_dir "${OpenCV_BINARY_DIR}/3rdparty/ade")
+-set(ade_filename "v0.1.2e.zip")
++set(ade_filename "v0.1.2e.tar.gz")
+ set(ade_subdir "ade-0.1.2e")
+-set(ade_md5 "962ce79e0b95591f226431f7b5f152cd")
++set(ade_md5 "e36774fc32e99463462f5b882f5d572d")
+ ocv_download(FILENAME ${ade_filename}
+              HASH ${ade_md5}
+              URL

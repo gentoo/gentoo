@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-libs/wayland-protocols
+	>=dev-libs/wayland-protocols-1.34
 	>=gui-libs/eglexternalplatform-1.1-r1
 	media-libs/libglvnd
 "

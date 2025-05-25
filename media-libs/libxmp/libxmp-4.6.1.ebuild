@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libxmp/libxmp/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="MIT 0BSD public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 
 src_prepare() {
 	default

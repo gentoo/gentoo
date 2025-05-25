@@ -1,9 +1,11 @@
 non262/Date/15.9.5.7.js
 non262/Date/time-zone-etc_localetime.js
+non262/Date/time-zones-imported.js
 non262/Intl/Array/toLocaleString-number.js
 non262/Intl/Collator/big5han-gb2312han.js
 non262/Intl/Collator/implicithan.js
 non262/Intl/DateTimeFormat/day-period-hour-cycle.js
+non262/Intl/DateTimeFormat/day-period-standalone.js
 non262/Intl/DateTimeFormat/era.js
 non262/Intl/DateTimeFormat/extended-time-zone-names.js
 non262/Intl/DateTimeFormat/format-timeZone-offset.js
@@ -153,5 +155,11 @@ test262/built-ins/RegExp/property-escapes/generated/Unified_Ideograph.js
 test262/built-ins/RegExp/property-escapes/generated/Uppercase.js
 test262/built-ins/RegExp/property-escapes/generated/XID_Continue.js
 test262/built-ins/RegExp/property-escapes/generated/XID_Start.js
+test262/intl402/DateTimeFormat/prototype/format/dayPeriod-long-en.js
+test262/intl402/DateTimeFormat/prototype/format/dayPeriod-narrow-en.js
+test262/intl402/DateTimeFormat/prototype/format/dayPeriod-short-en.js
+test262/intl402/DateTimeFormat/prototype/formatToParts/dayPeriod-long-en.js
+test262/intl402/DateTimeFormat/prototype/formatToParts/dayPeriod-narrow-en.js
+test262/intl402/DateTimeFormat/prototype/formatToParts/dayPeriod-short-en.js
 test262/intl402/Intl/supportedValuesOf/timeZones-accepted-by-DateTimeFormat.js
 test262/intl402/NumberFormat/prototype/format/useGrouping-extended-en-IN.js

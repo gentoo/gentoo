@@ -22,7 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples"
 
 python_install_all() {

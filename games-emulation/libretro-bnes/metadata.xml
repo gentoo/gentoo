@@ -6,6 +6,6 @@
         <name>Craig Andrews</name>
     </maintainer>
     <upstream>
-        <remote-id type="github">libretro/libretro-bnes</remote-id>
+        <remote-id type="github">libretro/bnes-libretro</remote-id>
     </upstream>
 </pkgmetadata>

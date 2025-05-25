@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
@@ -23,7 +23,10 @@ fi
 DESCRIPTION="Valve Software's fork of Wine"
 HOMEPAGE="https://github.com/ValveSoftware/wine/"
 
-LICENSE="LGPL-2.1+ BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff"
+LICENSE="
+	LGPL-2.1+ BSD BSD-2 IJG MIT OPENLDAP ZLIB gsm libpng2 libtiff
+	|| ( WTFPL-2 public-domain )
+"
 SLOT="${PV}"
 IUSE="
 	+X +alsa crossdev-mingw +dbus ffmpeg +fontconfig +gecko +gstreamer

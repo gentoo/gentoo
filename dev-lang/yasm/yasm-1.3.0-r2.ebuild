@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit dot-a flag-o-matic toolchain-funcs
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/yasm/yasm.git"
@@ -51,6 +51,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	# bug #943747
 	append-flags -std=gnu17
 
@@ -69,4 +71,9 @@ src_configure() {
 src_test() {
 	# https://bugs.gentoo.org/718870
 	emake -j1 check
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }

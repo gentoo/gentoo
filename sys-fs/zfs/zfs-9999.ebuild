@@ -3,6 +3,11 @@
 
 EAPI=8
 
+# Maintainers should consider lurking in the ZFS IRC channels (there's several)
+# and regularly checking ZFS GitHub issues and PRs. Look out for the 'zfs-*'
+# stable backport PRs when they're opened and subscribe to them for any important
+# cherry-picks that may be needed in advance.
+
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )

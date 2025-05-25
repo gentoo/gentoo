@@ -1,0 +1,25 @@
+https://github.com/stevengj/nlopt/commit/bb608c3466baf5330cf57e659b259d1d87869ff1
+
+From bb608c3466baf5330cf57e659b259d1d87869ff1 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Mon, 24 Feb 2025 16:09:37 +0100
+Subject: [PATCH] CMake: Fix pkgconfig file
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 39b01441..a7f65733 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,7 +106,7 @@ check_type_size ("unsigned long" SIZEOF_UNSIGNED_LONG)
+ 
+ find_library(M_LIBRARY m)
+ if (M_LIBRARY)
+-  set (LIBS_PRIVATE "-l${M_LIBRARY}")
++  set (LIBS_PRIVATE "-lm")
+ endif()
+ 
+ if (NOT DEFINED HAVE_FPCLASSIFY)
+

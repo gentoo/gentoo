@@ -14,6 +14,9 @@ MUTT_G_PATCHES="mutt-gentoo-${PV}-patches-${PATCHREV}.tar.xz"
 SRC_URI="http://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${MUTT_G_PATCHES}"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme gsasl +hcache idn +imap kerberos +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
 # hcache: allow multiple, bug #607360
 REQUIRED_USE="
@@ -26,9 +29,6 @@ REQUIRED_USE="
 	sasl?             ( || ( imap pop smtp ) )
 	kerberos?         ( || ( imap pop smtp ) )
 	autocrypt?        ( gpgme )"
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 # yes, we overdepend on the backend impls here, hopefully one day we can
 # have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="

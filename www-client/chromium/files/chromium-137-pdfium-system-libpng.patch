@@ -1,0 +1,28 @@
+https://pdfium-review.googlesource.com/c/pdfium/+/132130
+From: Matt Jolly <kangie@gentoo.org>
+Date: Fri, 16 May 2025 14:38:04 +1000
+Subject: [PATCH] Fix build with system libpng
+
+`cbc692a42241970e1da492d5b14326e81ecb1061` refactored
+`fxcodec::CFX_DIBAttribute` and changed the name of its members.
+
+Unfortunately this change appears to have been typo'd in the
+'system libpng' build path, which is not checked by CI, resulting
+in downstream build failures in Chromium.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/third_party/pdfium/core/fxcodec/png/png_decoder.cpp
++++ b/third_party/pdfium/core/fxcodec/png/png_decoder.cpp
+@@ -52,8 +52,8 @@ void _png_load_bmp_attribute(png_structp png_ptr,
+                              CFX_DIBAttribute* pAttribute) {
+   if (pAttribute) {
+ #if defined(PNG_pHYs_SUPPORTED)
+-    pAttribute->xdpi_ = png_get_x_pixels_per_meter(png_ptr, info_ptr);
+-    pAttribute->ydpi_ = png_get_y_pixels_per_meter(png_ptr, info_ptr);
++    pAttribute->x_dpi_ = png_get_x_pixels_per_meter(png_ptr, info_ptr);
++    pAttribute->y_dpi_ = png_get_y_pixels_per_meter(png_ptr, info_ptr);
+     png_uint_32 res_x, res_y;
+     int unit_type;
+     png_get_pHYs(png_ptr, info_ptr, &res_x, &res_y, &unit_type);
+-- 
+2.49.0

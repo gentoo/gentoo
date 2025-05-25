@@ -65,6 +65,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DSIMDJSON_ENABLE_THREADS:BOOL=ON
+		-DSIMDJSON_ENABLE_FUZZING:BOOL=OFF
 		-DCPM_SOURCE_CACHE:STRING="${WORKDIR}"
 		-Wno-dev
 	)

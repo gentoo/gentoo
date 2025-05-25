@@ -18,7 +18,7 @@ SRC_URI="https://github.com/janlelis/unicode-display_width/archive/v${PV}.tar.gz
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 ruby_add_rdepend ">=dev-ruby/unicode-emoji-4.0.4:4"
 

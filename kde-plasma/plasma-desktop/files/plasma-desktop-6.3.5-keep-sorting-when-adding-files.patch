@@ -1,0 +1,61 @@
+From f1a9052dff63938fd96890c7f88c6aa508e5f9a6 Mon Sep 17 00:00:00 2001
+From: Akseli Lahtinen <akselmo@akselmo.dev>
+Date: Fri, 9 May 2025 12:03:52 +0300
+Subject: [PATCH] FolderModel: When adding files, keep the current sorting
+
+The sort mode got changed to unsorted if any file was added.
+This was probably due to the infinite while loop that would happen
+later when we're looking for a new blank spot from an index
+that does not exist: This would return an empty QVariant that is
+false by default.
+
+We need to check if the index is valid. If it's not, we know
+it's a new index and can create one, so it is a blank spot.
+
+BUG: 482470
+FIXED-IN: 6.3.6
+
+
+(cherry picked from commit 03ef2343212bbc4be274b1b37788186df03a8cb3)
+
+10260acb FolderModel: When adding files, keep the current sorting
+e64705c8 Fix comment, combine ifs
+
+Co-authored-by: Akseli Lahtinen <akselmo@akselmo.dev>
+---
+ containments/desktop/plugins/folder/foldermodel.cpp | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/containments/desktop/plugins/folder/foldermodel.cpp b/containments/desktop/plugins/folder/foldermodel.cpp
+index 1c79a3de3c..ce170e00bb 100644
+--- a/containments/desktop/plugins/folder/foldermodel.cpp
++++ b/containments/desktop/plugins/folder/foldermodel.cpp
+@@ -199,13 +199,6 @@ FolderModel::FolderModel(QObject *parent)
+     m_dirModel->setDropsAllowed(KDirModel::DropOnDirectory | KDirModel::DropOnLocalExecutable);
+     m_dirModel->dirLister()->setAutoUpdate(true);
+ 
+-    // If we have dropped items queued for moving, go unsorted now.
+-    connect(this, &QAbstractItemModel::rowsAboutToBeInserted, this, [this]() {
+-        if (!m_dropTargetPositions.isEmpty()) {
+-            setSortMode(-1);
+-        }
+-    });
+-
+     /*
+      * Dropped files may not actually show up as new files, e.g. when we overwrite
+      * an existing file. Or files that fail to be listed by the dirLister, or...
+@@ -1405,7 +1398,10 @@ void FolderModel::changeSelection(const QItemSelection &selected, const QItemSel
+ 
+ bool FolderModel::isBlank(int row) const
+ {
+-    if (row < 0) {
++    // Invalid indexes are blank, since they're not created yet
++    // and will be created when needed.
++    const auto idx = index(row, 0);
++    if (row < 0 || !idx.isValid()) {
+         return true;
+     }
+ 
+-- 
+GitLab
+

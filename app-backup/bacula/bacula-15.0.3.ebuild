@@ -16,7 +16,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 logwatch mysql postgres qt5 readline selinux +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_PV=${PV/_/-}
 DESCRIPTION="Unified Communication X"
@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.13.0-cstdint-include.patch
 	"${FILESDIR}"/${PN}-1.13.0-binutils-2.39-ptr-typedef.patch
 	"${FILESDIR}"/${PN}-1.13.0-no-rpm-sandbox.patch
+	"${FILESDIR}"/${PN}-1.13.1-openmp.patch
 )
 
 pkg_pretend() {
@@ -45,6 +46,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Can be dropped with ucx-1.19.x (bug #944992)
+	append-cflags -std=gnu17
+
 	BASE_CFLAGS="" econf \
 		--disable-doxygen-doc \
 		--disable-compiler-opt \

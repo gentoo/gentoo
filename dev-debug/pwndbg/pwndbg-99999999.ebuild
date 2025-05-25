@@ -64,6 +64,7 @@ src_install() {
 		"gdb -x \"${EPREFIX}/usr/share/${PN}/gdbinit.py\"" || die
 
 	dodoc {README,DEVELOPING,FEATURES}.md
+	dodoc -r docs
 }
 
 pkg_postinst() {

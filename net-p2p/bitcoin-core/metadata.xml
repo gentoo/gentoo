@@ -15,13 +15,11 @@
 		<flag name="daemon">Build and install bitcoind daemon</flag>
 		<flag name="external-signer">Include support for external wallet signer programs</flag>
 		<flag name="gui">Build and install Bitcoin-Qt GUI</flag>
-		<flag name="nat-pmp">Enable NAT-PMP port forwarding</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
 		<flag name="sqlite">Support descriptor wallets in SQLite format</flag>
 		<flag name="system-libsecp256k1">Link with <pkg>dev-libs/libsecp256k1</pkg> rather than embedding an internal copy</flag>
 		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
 		<flag name="test-full">Run tests that take a long time</flag>
-		<flag name="upnp">Enable Universal Plug and Play</flag>
 		<flag name="zeromq">Report blocks and transactions via zeromq</flag>
 	</use>
 	<upstream>

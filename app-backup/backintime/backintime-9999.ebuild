@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit python-single-r1 xdg
 
 DESCRIPTION="Backup system inspired by TimeVault and FlyBack"
@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="examples gui test"
 RESTRICT="!test? ( test )"
@@ -40,15 +40,12 @@ RDEPEND="
 "
 BDEPEND="
 	sys-devel/gettext
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/pyfakefs[${PYTHON_USEDEP}]
-		')
-	)
+	test? ( $(python_gen_cond_dep 'dev-python/pyfakefs[${PYTHON_USEDEP}]') )
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.5.1-no-compress-docs-examples.patch"
+	"${FILESDIR}/${PN}-1.5.4-no-compress-docs-examples.patch"
+	"${FILESDIR}/${PN}-1.5.4-crontab-systemd.patch"
 )
 
 src_prepare() {
@@ -78,22 +75,40 @@ src_configure() {
 src_compile() {
 	emake -C common
 
-	if use gui ; then
-		emake -C qt
-	fi
+	use gui && emake -C qt
 }
 
 src_test() {
-	# pytest should work but it can't find the backintime binary, so
-	# use the unittest-based runner instead.
-	# https://github.com/bit-team/backintime/blob/dev/CONTRIBUTING.md#how-to-contribute-to-back-in-time
-	emake -C common test-v
+	# https://github.com/bit-team/backintime/blob/dev/CONTRIBUTING.md#testing
+	EPYTEST_IGNORE=(
+		# We're not interested in linting tests for our purposes
+		test/test_lint.py
+	)
+
+	(
+		EPYTEST_DESELECT+=(
+			# Wants a crontab
+			test/test_backintime.py::BackInTime::test_quiet_mode
+		)
+		EPYTEST_IGNORE+=(
+			# Wants an SSH key
+			test/test_sshtools.py
+		)
+
+		cd common || die
+		epytest
+	)
+
+	use gui && (
+		cd qt || die
+		epytest
+	)
 }
 
 src_install() {
 	emake -C common DESTDIR="${D}" install
 
-	if use gui ; then
+	if use gui; then
 		emake -C qt DESTDIR="${D}" install
 	fi
 

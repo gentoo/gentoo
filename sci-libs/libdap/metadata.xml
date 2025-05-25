@@ -14,4 +14,7 @@
 	compatible clients, servers and software development kits. DAP is a
 	NASA community standard: http://www.esdswg.org/spg/rfc/ese-rfc-004
 </longdescription>
+<upstream>
+	<remote-id type="github">OPENDAP/libdap4</remote-id>
+</upstream>
 </pkgmetadata>

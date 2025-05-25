@@ -13,7 +13,7 @@ SRC_URI="https://download.samba.org/pub/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc ldap +lmdb python test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

@@ -168,5 +168,5 @@ pkg_postinst() {
 		elog "https://bugs.gentoo.org/show_bug.cgi?id=477356"
 	fi
 
-	optfeature "lookup-hostname hook" net-dns/bind-tools
+	optfeature "lookup-hostname hook" net-dns/bind
 }

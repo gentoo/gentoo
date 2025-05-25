@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib-minimal toolchain-funcs
+inherit flag-o-matic libtool multilib-minimal toolchain-funcs
 
 MY_PN=LibRaw
 MY_PV="${PV/_b/-B}"
@@ -41,6 +41,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	elibtoolize
 
 	if tc-is-clang && use openmp ; then
 		append-libs omp

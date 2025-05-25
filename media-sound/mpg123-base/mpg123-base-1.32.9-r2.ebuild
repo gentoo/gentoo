@@ -46,7 +46,7 @@ multilib_src_configure() {
 	local _cpu=generic_fpu
 
 	# Build fails without -D_GNU_SOURCE like this:
-	# error: ‘struct hostent’ has no member named ‘h_addr’
+	# error: 'struct hostent' has no member named 'h_addr'
 	append-cflags -D_GNU_SOURCE
 
 	filter-lto # bug #951124

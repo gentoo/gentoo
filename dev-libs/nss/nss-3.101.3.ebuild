@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic multilib toolchain-funcs multilib-minimal
+inherit dot-a flag-o-matic multilib toolchain-funcs multilib-minimal
 
 NSPR_VER="4.35"
 RTM_NAME="NSS_${PV//./_}_RTM"
@@ -83,6 +83,7 @@ src_prepare() {
 		cmd/platlibs.mk || die
 
 	multilib_copy_sources
+	lto-guarantee-fat
 
 	strip-flags
 }
@@ -151,7 +152,7 @@ multilib_src_compile() {
 	)
 
 	# Take care of nspr settings #436216
-	local myCPPFLAGS="${CPPFLAGS} $($(tc-getPKG_CONFIG) nspr --cflags)"
+	local myCPPFLAGS="${CPPFLAGS} $($(tc-getPKG_CONFIG) nspr --cflags) -D_FILE_OFFSET_BITS=64"
 	unset NSPR_INCLUDE_DIR
 
 	export NSS_ALLOW_SSLKEYLOGFILE=1
@@ -211,7 +212,7 @@ multilib_src_compile() {
 
 	# Build the host tools first.
 	LDFLAGS="${BUILD_LDFLAGS}" \
-	XCFLAGS="${BUILD_CFLAGS}" \
+	XCFLAGS="${BUILD_CFLAGS} -D_FILE_OFFSET_BITS=64" \
 	NSPR_LIB_DIR="${T}/fakedir" \
 	emake -C coreconf \
 		CC="$(tc-getBUILD_CC)" \
@@ -221,7 +222,7 @@ multilib_src_compile() {
 	# Then build the target tools.
 	for d in . lib/dbm ; do
 		CPPFLAGS="${myCPPFLAGS}" \
-		XCFLAGS="${CFLAGS} ${CPPFLAGS}" \
+		XCFLAGS="${CFLAGS} ${CPPFLAGS} -D_FILE_OFFSET_BITS=64" \
 		NSPR_LIB_DIR="${T}/fakedir" \
 		emake "${makeargs[@]}" -C ${d} OS_TEST="$(nssarch)"
 	done
@@ -393,6 +394,7 @@ multilib_src_install() {
 		done
 		popd >/dev/null || die
 	fi
+	strip-lto-bytecode
 }
 
 pkg_postinst() {

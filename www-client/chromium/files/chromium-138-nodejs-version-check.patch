@@ -1,0 +1,49 @@
+https://issues.chromium.org/issues/418397211
+From: Matt Jolly <kangie@gentoo.org>
+Date: Tue, 25 Mar 2025 13:33:48 +1000
+Subject: [PATCH] Remove nodejs version check
+
+Added in https://github.com/chromium/chromium/commit/0ff8528999941d7182be6fc77aeb12a110a3cd86,
+this change is only really useful for gclient checkouts and breaks the
+ability for downstreams to provide their own, compatible, nodejs
+version via the system package manager (or for use on arches other than
+those that Google provides binaries for):
+
+[ERR_ASSERTION]: Failed NodeJS version check: Expected version 'v22.11.0', but found 'v22.13.1'. Did you run 'gclient sync'
+
+This is google development footgun protection, working around
+poor development practices and gclient's inability to ensure
+that the source tree is in a consistent state. We don't need it
+here.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/third_party/node/node.gni
++++ b/third_party/node/node.gni
+@@ -36,15 +36,5 @@ template("node") {
+       }
+     }
+ 
+-    # Automatically add a dependency to ":check_version" to ensure NodeJS is
+-    # always running the expected version, except when the ':check_version'
+-    # target itself is running in which case it shouldn't depend on itself.
+-    if (get_label_info(":" + target_name, "label_no_toolchain") !=
+-        "//third_party/node:check_version") {
+-      if (!defined(deps)) {
+-        deps = []
+-      }
+-      deps += [ "//third_party/node:check_version" ]
+-    }
+   }
+ }
+--- a/third_party/protobuf/proto_library.gni
++++ b/third_party/protobuf/proto_library.gni
+@@ -562,7 +562,6 @@ template("proto_library") {
+                   _protoc_gen_ts_path,
+                   "//tools/protoc_wrapper/protoc-gen-ts_proto.py",
+                 ] + _protoc_gen_ts_runtime_deps
+-      deps += [ "//third_party/node:check_version" ]
+     }
+ 
+     if (_generate_with_plugin) {
+-- 
+2.49.0

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit toolchain-funcs python-any-r1
 
 DESCRIPTION="Command line tool for URL parsing and manipulation"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 inherit python-single-r1 flag-o-matic waf-utils multilib-minimal linux-info systemd pam tmpfiles
 
@@ -27,11 +27,13 @@ IUSE+=" iprint json ldap llvm-libunwind lmdb pam profiling-data python quota"
 IUSE+=" +regedit selinux snapper spotlight syslog system-heimdal +system-mitkrb5"
 IUSE+=" systemd test unwind winbind zeroconf"
 
+# ldap needs ads (bug #941578)
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	addc? ( json python !system-mitkrb5 winbind )
 	ads? ( acl ldap python winbind )
 	cluster? ( ads )
 	gpg? ( addc )
+	ldap? ( ads )
 	spotlight? ( json )
 	test? ( python )
 	!ads? ( !addc )
@@ -87,7 +89,7 @@ COMMON_DEPEND="
 		)
 		ads? (
 			dev-python/dnspython:=[${PYTHON_USEDEP}]
-			net-dns/bind-tools[gssapi]
+			net-dns/bind[gssapi]
 		)
 	')
 	acl? ( virtual/acl )
@@ -266,7 +268,6 @@ multilib_src_configure() {
 		--without-winexe
 		$(multilib_native_use_with acl acl-support)
 		$(multilib_native_usex addc '' '--without-ad-dc')
-		$(multilib_native_use_with ads)
 		$(multilib_native_use_enable ceph cephfs)
 		$(multilib_native_use_with cluster cluster-support)
 		$(multilib_native_use_enable cups)
@@ -291,6 +292,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable zeroconf avahi)
 		$(multilib_native_usex test '--enable-selftest' '')
 		$(usev system-mitkrb5 "--with-system-mitkrb5 ${ESYSROOT}/usr $(multilib_native_usex addc --with-experimental-mit-ad-dc '')")
+		$(use_with ads)
 		$(use_with debug lttng)
 		$(use_with ldap)
 		$(use_with profiling-data)

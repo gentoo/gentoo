@@ -10,7 +10,7 @@ gnupg		https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ https://mirrors
 goproxy https://proxy.golang.org/ https://goproxy.io/
 idsoftware	ftp://ftp.fu-berlin.de/pc/games/idgames/idstuff ftp://ftp.gamers.org/pub/idgames/idstuff
 imagemagick	https://imagemagick.org/archive/releases/ https://mirror.checkdomain.de/imagemagick/releases/ https://ftp.acc.umu.se/mirror/imagemagick.org/ftp/releases/ ftp://ftp.fifi.org/pub/ImageMagick/releases/
-kde		https://download.kde.org https://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde http://kde.mirror.anlx.net
+kde		https://download.kde.org https://mirror.csclub.uwaterloo.ca/kde ftp://mirrors.dotsrc.org/kde https://ftp.gwdg.de/pub/linux/kde https://ftp.mirrorservice.org/sites/ftp.kde.org/pub/kde
 lokigames	http://updates.lokigames.com
 mariadb		https://archive.mariadb.org/ http://ftp.bme.hu/pub/mirrors/mariadb/ https://ftp.nluug.nl/db/mariadb/ https://mirrors.up.pt/pub/mariadb/ https://rsync.osuosl.org/pub/mariadb/ https://mirror.netcologne.de/mariadb/
 mplayer		https://www1.mplayerhq.hu/MPlayer http://www2.mplayerhq.hu/MPlayer http://www7.mplayerhq.hu/MPlayer http://www8.mplayerhq.hu/MPlayer ftp://ftp1.mplayerhq.hu/MPlayer/ ftp://ftp6.mplayerhq.hu/MPlayer/ ftp://ftp7.mplayerhq.hu/MPlayer/ ftp://ftp8.mplayerhq.hu/MPlayer/

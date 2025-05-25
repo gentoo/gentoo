@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="github">adrienverge/openfortivpn</remote-id>
 	</upstream>
+	<use>
+		<flag name="resolvconf">Use resolvconf to handle /etc/resolv.conf updates</flag>
+	</use>
 </pkgmetadata>

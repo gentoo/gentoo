@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="threads(+),xml(+)"
 inherit python-single-r1 flag-o-matic waf-utils multilib-minimal linux-info systemd pam tmpfiles
 
@@ -88,7 +88,7 @@ COMMON_DEPEND="
 		)
 		ads? (
 			dev-python/dnspython:=[${PYTHON_USEDEP}]
-			net-dns/bind-tools[gssapi]
+			net-dns/bind[gssapi]
 		)
 	')
 	acl? ( virtual/acl )

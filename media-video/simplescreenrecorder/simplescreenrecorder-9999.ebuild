@@ -9,13 +9,13 @@ inherit cmake-multilib flag-o-matic xdg
 DESCRIPTION="Simple Screen Recorder"
 HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder/"
 if [[ ${PV} == *9999* ]]; then
-	inherit git-r3
 	EGIT_REPO_URI="https://github.com/MaartenBaert/${MY_PN}.git"
 	EGIT_BOOTSTRAP=""
+	inherit git-r3
 else
 	SRC_URI="https://github.com/MaartenBaert/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_PN}-${PV}"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -27,7 +27,7 @@ REQUIRED_USE="abi_x86_32? ( opengl )"
 RDEPEND="
 	dev-qt/qtbase:6[gui,widgets]
 	media-libs/alsa-lib:0=
-	media-video/ffmpeg:=[vorbis?,vpx?,x264?,theora?]
+	media-video/ffmpeg:=[theora?,vorbis?,vpx?,x264?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
@@ -35,8 +35,8 @@ RDEPEND="
 	x11-libs/libXinerama
 	virtual/glu[${MULTILIB_USEDEP}]
 	jack? ( virtual/jack )
-	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
 	mp3? ( media-video/ffmpeg[lame(-)] )
+	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
 	pulseaudio? ( media-libs/libpulse )
 	v4l? ( media-libs/libv4l )
 "

@@ -1,0 +1,36 @@
+From e6e947a4ee4757628d90fd819c664187e796bd19 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Thu, 8 May 2025 09:17:18 +0200
+Subject: [PATCH] Remove punycode tests failing with icu 76.1
+
+Some punycode tests fail due to a transitional processing deprecation in
+icu 76.1, see [1,2]. Let's remove those tests.
+
+[1] https://github.com/unicode-org/icu/commit/f062f52c123f436eb1142115ba2e4e7b65a4ac8f
+[2] https://unicode-org.atlassian.net/browse/ICU-22294
+
+Upstream-issue: https://github.com/rspamd/rspamd/issues/5263
+---
+ test/lua/unit/rspamd_resolver.lua | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/test/lua/unit/rspamd_resolver.lua b/test/lua/unit/rspamd_resolver.lua
+index e987ff00b..405951758 100644
+--- a/test/lua/unit/rspamd_resolver.lua
++++ b/test/lua/unit/rspamd_resolver.lua
+@@ -7,12 +7,6 @@ context("Check punycoding UTF-8 URL", function()
+   local resolver = rspamd_resolver.init(rspamd_util.create_event_base(), rspamd_config)
+ 
+   local cases = {
+-    -- https://unicode.org/reports/tr46/#Deviations
+-    ['faß.de'] = 'fass.de', -- IDNA2008 result: xn--fa-hia.de
+-    ['βόλος.com'] = 'xn--nxasmq6b.com', -- IDNA2008 result: xn--nxasmm1c.com
+-    ['نامه‌ای.com'] = 'xn--mgba3gch31f.com', -- IDNA2008 result: xn--mgba3gch31f060k.com
+-    ['ශ්‍රී.com'] = 'xn--10cl1a0b.com', -- IDNA2008 result: xn--10cl1a0b660p.com 
+-
+     -- https://unicode.org/reports/tr46/#Table_Example_Processing
+     ['日本語。ＪＰ'] = 'xn--wgv71a119e.jp', -- Fullwidth characters are remapped, including 。
+     --['u¨.com'] = 'xn--tda.com', -- Normalize changes u + umlaut to ü
+-- 
+2.45.3
+

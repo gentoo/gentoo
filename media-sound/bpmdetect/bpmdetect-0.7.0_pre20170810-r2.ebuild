@@ -32,8 +32,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gcc-11.patch
-	"${FILESDIR}"/${P}-fix-build-taglib2.patch
+	"${FILESDIR}"/${P}-gcc-11.patch # git master
+	"${FILESDIR}"/${P}-fix-build-taglib2.patch # git master
+	"${FILESDIR}"/${P}-cmake4.patch # pending PR
 )
 
 src_install() {

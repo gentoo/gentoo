@@ -74,14 +74,6 @@ PATCHES=(
 
 QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
 
-QA_CONFIG_IMPL_DECL_SKIP=(
-	# bug #898570
-	unreachable
-	MIN
-	alignof
-	static_assert
-)
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }

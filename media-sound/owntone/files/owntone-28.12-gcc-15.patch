@@ -1,0 +1,49 @@
+From 945a8932f47a1a67ea46b732847f4b33c7942473 Mon Sep 17 00:00:00 2001
+From: ejurgensen <espenjurgensen@gmail.com>
+Date: Fri, 16 May 2025 23:49:09 +0200
+Subject: [PATCH] [spotify] Fix GCC 15 compile errors about implicit
+ declarations
+
+Resolves issue #1888; backported to owntone 28.12
+
+Backported-by: Sebastian Pipping <sebastian@pippping.org>
+---
+ src/inputs/librespot-c/configure.ac  | 4 ++++
+ src/inputs/librespot-c/src/channel.c | 4 ++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/inputs/librespot-c/configure.ac b/src/inputs/librespot-c/configure.ac
+index 10b76dfa..3c3bccf8 100644
+--- a/src/inputs/librespot-c/configure.ac
++++ b/src/inputs/librespot-c/configure.ac
+@@ -1,6 +1,10 @@
+ AC_INIT([librespot-c], [0.1])
+ AC_CONFIG_AUX_DIR([.])
+ AM_INIT_AUTOMAKE([foreign subdir-objects])
++
++dnl Defines _GNU_SOURCE globally when needed
++AC_USE_SYSTEM_EXTENSIONS
++
+ AC_PROG_CC
+ AM_PROG_AR
+ AC_PROG_RANLIB
+diff --git a/src/inputs/librespot-c/src/channel.c b/src/inputs/librespot-c/src/channel.c
+index fb4255e5..4a90feeb 100644
+--- a/src/inputs/librespot-c/src/channel.c
++++ b/src/inputs/librespot-c/src/channel.c
+@@ -118,10 +118,10 @@ channel_new(struct sp_channel **new_channel, struct sp_session *session, const c
+   if (ret < 0)
+     goto error;
+ 
+-  if (fcntl(channel->audio_fd[0], F_SETFL, O_CLOEXEC | O_NONBLOCK) < 0)
++  if (fcntl(channel->audio_fd[0], F_SETFL, FD_CLOEXEC | O_NONBLOCK) < 0)
+     goto error;
+ 
+-  if (fcntl(channel->audio_fd[1], F_SETFL, O_CLOEXEC | O_NONBLOCK) < 0)
++  if (fcntl(channel->audio_fd[1], F_SETFL, FD_CLOEXEC | O_NONBLOCK) < 0)
+     goto error;
+ 
+   channel->audio_write_ev = event_new(evbase, channel->audio_fd[1], EV_WRITE, write_cb, session);
+-- 
+2.49.0
+

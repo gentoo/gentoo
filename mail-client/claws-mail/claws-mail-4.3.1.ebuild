@@ -124,6 +124,10 @@ PATCHES=(
 
 )
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_configure() {
 	local myeconfargs=(
 		--disable-bsfilter-plugin

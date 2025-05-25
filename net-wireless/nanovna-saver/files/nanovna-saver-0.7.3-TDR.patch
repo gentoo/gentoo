@@ -1,0 +1,18 @@
+diff --git a/src/NanoVNASaver/Charts/TDR.py b/src/NanoVNASaver/Charts/TDR.py
+index 9a91e05..5e75ed4 100644
+--- a/src/NanoVNASaver/Charts/TDR.py
++++ b/src/NanoVNASaver/Charts/TDR.py
+@@ -388,11 +388,11 @@ class TDRChart(Chart):
+         qp.drawText(
+             self.leftMargin - 10,
+             self.topMargin + height + 15,
+-            f"""{
++            f"""{{
+                 round(
+                     self.tdrWindow.distance_axis[min_index] / 2, self.decimals
+                 )!s
+-            }m""",
++            }}m""",
+         )
+ 
+     def _draw_y_ticks(

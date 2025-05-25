@@ -5,7 +5,7 @@ EAPI=8
 
 inherit qmake-utils desktop
 
-DESCRIPTION="Free and easy to use diagnostic and adjustment tool for SUBARU® vehicles"
+DESCRIPTION="Free and easy to use diagnostic and adjustment tool for SUBARU vehicles"
 HOMEPAGE="https://github.com/Comer352L/FreeSSM"
 
 if [[ ${PV} == *9999* ]]; then

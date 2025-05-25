@@ -1,6 +1,10 @@
 # Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andrey Grozin <grozin@gentoo.org> (2025-05-15)
+# binary sbcl for bootstrap is not available
+dev-lisp/sbcl system-bootstrap
+
 # Ionen Wolkens <ionen@gentoo.org> (2023-07-26)
 # MPV currently[1] has no plans to support >=lua5-3 making luajit
 # the only choice for maintained lua. Apply mask/force to override

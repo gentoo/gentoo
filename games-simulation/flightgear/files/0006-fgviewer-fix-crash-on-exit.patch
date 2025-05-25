@@ -1,0 +1,29 @@
+From 95101b6fedaa332c70caca15a8fc762355d499b3 Mon Sep 17 00:00:00 2001
+From: Fabrice Bellet <fabrice@bellet.info>
+Date: Wed, 7 Jun 2017 09:19:06 +0200
+Subject: [PATCH] fgviewer: fix crash on exit
+
+---
+ utils/fgviewer/fgviewer.cxx | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/utils/fgviewer/fgviewer.cxx b/utils/fgviewer/fgviewer.cxx
+index 1af450e96..c5628cef8 100644
+--- a/utils/fgviewer/fgviewer.cxx
++++ b/utils/fgviewer/fgviewer.cxx
+@@ -271,5 +271,11 @@ main(int argc, char** argv)
+     // Note that this does not affect the hla camera manipulator
+     viewer.home();
+ 
+-    return viewer.run();
++    int result = viewer.run();
++
++    // clear cache now, since it contains SimGear objects. Otherwise SG_LOG
++    // calls during shutdown will cause crashes.
++    osgDB::Registry::instance()->clearObjectCache();
++
++    return result;
+ }
+-- 
+2.48.1
+

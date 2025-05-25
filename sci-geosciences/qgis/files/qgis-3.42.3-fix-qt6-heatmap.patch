@@ -1,0 +1,78 @@
+From 7d090fd7b90cd73793a2d9b8bf0074dc6f28bc33 Mon Sep 17 00:00:00 2001
+From: ViperMiniQ <viperminiq@gmail.com>
+Date: Thu, 24 Apr 2025 20:37:35 +0200
+Subject: [PATCH] fix starting interpolation algs and heatmap, qt6 compatibility
+
+Taken from: https://github.com/qgis/QGIS/pull/61616
+
+--- a/python/plugins/processing/algs/qgis/IdwInterpolation.py
++++ b/python/plugins/processing/algs/qgis/IdwInterpolation.py
+@@ -166,7 +166,7 @@ def processAlgorithm(self, parameters, context, feedback):
+             data.transformContext = context.transformContext()
+             layers.append(layer)
+ 
+-            data.valueSource = int(v[1])
++            data.valueSource = QgsInterpolator.ValueSource(int(v[1]))
+             data.interpolationAttribute = int(v[2])
+             if (
+                 data.valueSource == QgsInterpolator.ValueSource.ValueAttribute
+--- a/python/plugins/processing/algs/qgis/TinInterpolation.py
++++ b/python/plugins/processing/algs/qgis/TinInterpolation.py
+@@ -180,7 +180,7 @@ def processAlgorithm(self, parameters, context, feedback):
+             if not crs.isValid():
+                 crs = layer.sourceCrs()
+ 
+-            data.valueSource = int(v[1])
++            data.valueSource = QgsInterpolator.ValueSource(int(v[1]))
+             data.interpolationAttribute = int(v[2])
+             if (
+                 data.valueSource == QgsInterpolator.ValueSource.ValueAttribute
+--- a/python/plugins/processing/algs/qgis/ui/HeatmapWidgets.py
++++ b/python/plugins/processing/algs/qgis/ui/HeatmapWidgets.py
+@@ -190,13 +190,22 @@
+             return
+ 
+         for wrapper in wrappers:
+-            if wrapper.parameterDefinition().name() == self.param.parent_layer:
++            if (
++                wrapper.parameterDefinition().name()
++                == self.parameterDefinition().parent_layer
++            ):
+                 self.setSource(wrapper.parameterValue())
+                 wrapper.widgetValueHasChanged.connect(self.parentLayerChanged)
+-            elif wrapper.parameterDefinition().name() == self.param.radius_param:
++            elif (
++                wrapper.parameterDefinition().name()
++                == self.parameterDefinition().radius_param
++            ):
+                 self.setRadius(wrapper.parameterValue())
+                 wrapper.widgetValueHasChanged.connect(self.radiusChanged)
+-            elif wrapper.parameterDefinition().name() == self.param.radius_field_param:
++            elif (
++                wrapper.parameterDefinition().name()
++                == self.parameterDefinition().radius_field_param
++            ):
+                 self.setSource(wrapper.parameterValue())
+                 wrapper.widgetValueHasChanged.connect(self.radiusFieldChanged)
+ 
+--- a/python/plugins/processing/algs/qgis/ui/InterpolationWidgets.py
++++ b/python/plugins/processing/algs/qgis/ui/InterpolationWidgets.py
+@@ -425,10 +425,16 @@
+             return
+ 
+         for wrapper in wrappers:
+-            if wrapper.parameterDefinition().name() == self.param.layersData:
++            if (
++                wrapper.parameterDefinition().name()
++                == self.parameterDefinition().layersData
++            ):
+                 self.setLayers(wrapper.parameterValue())
+                 wrapper.widgetValueHasChanged.connect(self.layersChanged)
+-            elif wrapper.parameterDefinition().name() == self.param.extent:
++            elif (
++                wrapper.parameterDefinition().name()
++                == self.parameterDefinition().extent
++            ):
+                 self.setExtent(wrapper.parameterValue())
+                 wrapper.widgetValueHasChanged.connect(self.extentChanged)
+ 

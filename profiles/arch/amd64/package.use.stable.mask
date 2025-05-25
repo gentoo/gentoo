@@ -28,6 +28,7 @@ media-sound/liblc3 -test
 # dev-util/nvidia-cuda-toolkit may never be stabilized
 media-video/ffmpeg npp
 media-video/ffmpeg-compat npp
+media-libs/osl clang-cuda
 
 # Sam James <sam@gentoo.org> (2025-02-13)
 # sys-cluster/corosync is marked stable here

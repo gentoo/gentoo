@@ -30,7 +30,7 @@ DEPEND="
 	app-arch/zstd:=
 	>=dev-db/sqlite-3.6.18:3
 	dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:=
 	net-misc/curl
 	sys-apps/file

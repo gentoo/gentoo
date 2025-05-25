@@ -15,6 +15,9 @@
 	range of facilities for producing publication-quality graphs,
 	diagrams, posters and slides.
 	</longdescription>
+	<use>
+		<flag name="manip">Build data manipulation program</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">vlabella/gle</remote-id>
 		<remote-id type="sourceforge">glx</remote-id>

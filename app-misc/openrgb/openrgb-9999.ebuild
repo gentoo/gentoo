@@ -61,7 +61,7 @@ src_configure() {
 	# instead, and compiles the .cpp file again.
 	append-ldflags -Wl,--export-dynamic
 
-	# > warning: ‘-pipe’ ignored because ‘-save-temps’ specified
+	# > warning: '-pipe' ignored because '-save-temps' specified
 	filter-flags -pipe
 
 	# cpp-httplib >=0.16.0 changed the library name from "httplib" to "cpp-httplib".

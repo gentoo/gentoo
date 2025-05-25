@@ -94,7 +94,6 @@ FFMPEG_IUSE_MAP=(
 	openmpt:libopenmpt
 	openssl:openssl,!gnutls@v3ifgpl # still LGPL2.1+ if USE=-gpl
 	opus:libopus
-	+postproc # exposed as a USE for clarity with the GPL requirement
 	pulseaudio:libpulse
 	qrcode:libqrencode
 	qsv:libvpl
@@ -164,8 +163,8 @@ REQUIRED_USE="
 	npp? ( nvenc )
 	shaderc? ( vulkan )
 	libaribb24? ( gpl ) cdio? ( gpl ) dvd? ( gpl ) frei0r? ( gpl )
-	postproc? ( gpl ) rubberband? ( gpl ) samba? ( gpl )
-	vidstab? ( gpl ) x264? ( gpl ) x265? ( gpl ) xvid? ( gpl )
+	rubberband? ( gpl ) samba? ( gpl ) vidstab? ( gpl ) x264? ( gpl )
+	x265? ( gpl ) xvid? ( gpl )
 	${FFMPEG_UNSLOTTED:+chromium? ( opus )}
 	${FFMPEG_SOC_PATCH:+soc? ( drm )}
 "
@@ -290,7 +289,7 @@ COMMON_DEPEND="
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
 	x264? ( media-libs/x264:=[${MULTILIB_USEDEP}] )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
-	xml? ( dev-libs/libxml2[${MULTILIB_USEDEP}] )
+	xml? ( dev-libs/libxml2:=[${MULTILIB_USEDEP}] )
 	xvid? ( media-libs/xvid[${MULTILIB_USEDEP}] )
 	zeromq? ( net-libs/zeromq:= )
 	zimg? ( media-libs/zimg[${MULTILIB_USEDEP}] )
@@ -451,6 +450,7 @@ multilib_src_configure() {
 		--disable-libklvanc
 		--disable-liblcevc-dec
 		--disable-libmysofa
+		--disable-liboapv
 		--disable-libopenvino
 		--disable-libshine
 		--disable-libtls

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit bash-completion-r1 desktop linux-info optfeature
 inherit python-single-r1 systemd tmpfiles toolchain-funcs udev wrapper xdg
 
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86" # waiting for ~arch of dev-libs/libgpiod: ~ppc ~ppc64
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 S="${WORKDIR}/${MY_P}"

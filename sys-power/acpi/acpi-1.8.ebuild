@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/acpiclient/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 src_install() {
 	default

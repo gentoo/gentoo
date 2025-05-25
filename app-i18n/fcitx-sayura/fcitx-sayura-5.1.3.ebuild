@@ -22,3 +22,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	kde-frameworks/extra-cmake-modules:0
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-cmake-4.patch"
+)

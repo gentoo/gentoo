@@ -1,0 +1,10 @@
+--- a/pty.c
++++ b/pty.c
+@@ -29,6 +29,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <pty.h>
+ #include <signal.h>
+ 
+ #if defined(__OpenBSD__)

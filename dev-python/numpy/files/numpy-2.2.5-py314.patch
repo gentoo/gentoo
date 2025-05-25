@@ -1,0 +1,298 @@
+From 57084ae28ed14f3bba89ab51104dd5521b7edb64 Mon Sep 17 00:00:00 2001
+From: Nathan Goldbaum <nathan.goldbaum@gmail.com>
+Date: Tue, 22 Apr 2025 15:31:14 -0600
+Subject: [PATCH] ENH: Support Python 3.14 (#28748)
+
+* MNT: use CPython internal APIs to hotfix temporary elision on 3.14
+
+This is based on a diff from Sam Gross, see
+https://github.com/numpy/numpy/issues/28681#issuecomment-2810661401
+
+* TST: use refcount deltas in tests that hardcode refcounts
+
+* TST: one more refcount test change I don't understand
+
+* TST: fix ResourceWarning
+
+* CI: add 3.14 and 3.14t linux CI
+
+* CI: try with setup-python instead of setup-uv
+
+* CI: fix 3.14t-dev cython install
+
+* Update numpy/_core/src/multiarray/temp_elide.c
+
+Co-authored-by: Ross Barnowski <rossbar@caltech.edu>
+
+* CI: drop linux 3.13t smoke test
+
+* TST: move refcount check inside with block
+
+* MNT: guard against a possible future PyPy 3.14
+
+---------
+
+Co-authored-by: Ross Barnowski <rossbar@caltech.edu>
+
+MNT: add support for 3.14.0b1
+---
+ numpy/_core/src/multiarray/temp_elide.c  | 19 +++++++++--
+ numpy/_core/tests/test_dlpack.py         |  8 ++---
+ numpy/_core/tests/test_dtype.py          |  3 +-
+ numpy/_core/tests/test_indexing.py       |  6 ++--
+ numpy/_core/tests/test_item_selection.py |  8 +++--
+ numpy/_core/tests/test_multiarray.py     |  4 ++-
+ numpy/_core/tests/test_nditer.py         |  7 ++--
+ numpy/_core/tests/test_regression.py     | 43 +++++++++++-------------
+ numpy/_core/tests/test_umath.py          |  4 +--
+ 9 files changed, 62 insertions(+), 40 deletions(-)
+
+diff --git a/numpy/_core/src/multiarray/temp_elide.c b/numpy/_core/src/multiarray/temp_elide.c
+index 662a2fa52b..9236476c42 100644
+--- a/numpy/_core/src/multiarray/temp_elide.c
++++ b/numpy/_core/src/multiarray/temp_elide.c
+@@ -109,6 +109,19 @@ find_addr(void * addresses[], npy_intp naddr, void * addr)
+     return 0;
+ }
+ 
++static int
++check_unique_temporary(PyObject *lhs)
++{
++#if PY_VERSION_HEX == 0x030E00A7 && !defined(PYPY_VERSION)
++#error "NumPy is broken on CPython 3.14.0a7, please update to a newer version"
++#elif PY_VERSION_HEX >= 0x030E00B1 && !defined(PYPY_VERSION)
++    // see https://github.com/python/cpython/issues/133164
++    return PyUnstable_Object_IsUniqueReferencedTemporary(lhs);
++#else
++    return 1;
++#endif
++}
++
+ static int
+ check_callers(int * cannot)
+ {
+@@ -295,7 +308,8 @@ can_elide_temp(PyObject *olhs, PyObject *orhs, int *cannot)
+             !PyArray_CHKFLAGS(alhs, NPY_ARRAY_OWNDATA) ||
+             !PyArray_ISWRITEABLE(alhs) ||
+             PyArray_CHKFLAGS(alhs, NPY_ARRAY_WRITEBACKIFCOPY) ||
+-            PyArray_NBYTES(alhs) < NPY_MIN_ELIDE_BYTES) {
++            PyArray_NBYTES(alhs) < NPY_MIN_ELIDE_BYTES ||
++            !check_unique_temporary(olhs)) {
+         return 0;
+     }
+     if (PyArray_CheckExact(orhs) ||
+@@ -372,7 +386,8 @@ can_elide_temp_unary(PyArrayObject * m1)
+             !PyArray_ISNUMBER(m1) ||
+             !PyArray_CHKFLAGS(m1, NPY_ARRAY_OWNDATA) ||
+             !PyArray_ISWRITEABLE(m1) ||
+-            PyArray_NBYTES(m1) < NPY_MIN_ELIDE_BYTES) {
++            PyArray_NBYTES(m1) < NPY_MIN_ELIDE_BYTES ||
++            !check_unique_temporary((PyObject *)m1)) {
+         return 0;
+     }
+     if (check_callers(&cannot)) {
+diff --git a/numpy/_core/tests/test_dlpack.py b/numpy/_core/tests/test_dlpack.py
+index 41dd724295..d273bd798e 100644
+--- a/numpy/_core/tests/test_dlpack.py
++++ b/numpy/_core/tests/test_dlpack.py
+@@ -22,9 +22,9 @@ class TestDLPack:
+     def test_dunder_dlpack_refcount(self, max_version):
+         x = np.arange(5)
+         y = x.__dlpack__(max_version=max_version)
+-        assert sys.getrefcount(x) == 3
++        startcount = sys.getrefcount(x)
+         del y
+-        assert sys.getrefcount(x) == 2
++        assert startcount - sys.getrefcount(x) == 1
+ 
+     def test_dunder_dlpack_stream(self):
+         x = np.arange(5)
+@@ -58,9 +58,9 @@ def test_strides_not_multiple_of_itemsize(self):
+     def test_from_dlpack_refcount(self, arr):
+         arr = arr.copy()
+         y = np.from_dlpack(arr)
+-        assert sys.getrefcount(arr) == 3
++        startcount = sys.getrefcount(arr)
+         del y
+-        assert sys.getrefcount(arr) == 2
++        assert startcount - sys.getrefcount(arr) == 1
+ 
+     @pytest.mark.parametrize("dtype", [
+         np.bool,
+diff --git a/numpy/_core/tests/test_dtype.py b/numpy/_core/tests/test_dtype.py
+index deeca5171c..759eefeb2a 100644
+--- a/numpy/_core/tests/test_dtype.py
++++ b/numpy/_core/tests/test_dtype.py
+@@ -1901,9 +1901,10 @@ class mytype:
+         if HAS_REFCOUNT:
+             # Create an array and test that memory gets cleaned up (gh-25949)
+             o = object()
++            startcount = sys.getrefcount(o)
+             a = np.array([o], dtype=dt)
+             del a
+-            assert sys.getrefcount(o) == 2
++            assert sys.getrefcount(o) == startcount
+ 
+     def test_custom_structured_dtype_errors(self):
+         class mytype:
+diff --git a/numpy/_core/tests/test_indexing.py b/numpy/_core/tests/test_indexing.py
+index f393c401cd..bb757cdf7e 100644
+--- a/numpy/_core/tests/test_indexing.py
++++ b/numpy/_core/tests/test_indexing.py
+@@ -1174,6 +1174,8 @@ def _compare_index_result(self, arr, index, mimic_get, no_copy):
+         """Compare mimicked result to indexing result.
+         """
+         arr = arr.copy()
++        if HAS_REFCOUNT:
++            startcount = sys.getrefcount(arr)
+         indexed_arr = arr[index]
+         assert_array_equal(indexed_arr, mimic_get)
+         # Check if we got a view, unless its a 0-sized or 0-d array.
+@@ -1184,9 +1186,9 @@ def _compare_index_result(self, arr, index, mimic_get, no_copy):
+             if HAS_REFCOUNT:
+                 if no_copy:
+                     # refcount increases by one:
+-                    assert_equal(sys.getrefcount(arr), 3)
++                    assert_equal(sys.getrefcount(arr), startcount + 1)
+                 else:
+-                    assert_equal(sys.getrefcount(arr), 2)
++                    assert_equal(sys.getrefcount(arr), startcount)
+ 
+         # Test non-broadcast setitem:
+         b = arr.copy()
+diff --git a/numpy/_core/tests/test_item_selection.py b/numpy/_core/tests/test_item_selection.py
+index 5660ef583e..839127ecdb 100644
+--- a/numpy/_core/tests/test_item_selection.py
++++ b/numpy/_core/tests/test_item_selection.py
+@@ -50,19 +50,23 @@ def test_simple(self):
+ 
+     def test_refcounting(self):
+         objects = [object() for i in range(10)]
++        if HAS_REFCOUNT:
++            orig_rcs = [sys.getrefcount(o) for o in objects]
+         for mode in ('raise', 'clip', 'wrap'):
+             a = np.array(objects)
+             b = np.array([2, 2, 4, 5, 3, 5])
+             a.take(b, out=a[:6], mode=mode)
+             del a
+             if HAS_REFCOUNT:
+-                assert_(all(sys.getrefcount(o) == 3 for o in objects))
++                assert_(all(sys.getrefcount(o) == rc + 1
++                            for o, rc in zip(objects, orig_rcs)))
+             # not contiguous, example:
+             a = np.array(objects * 2)[::2]
+             a.take(b, out=a[:6], mode=mode)
+             del a
+             if HAS_REFCOUNT:
+-                assert_(all(sys.getrefcount(o) == 3 for o in objects))
++                assert_(all(sys.getrefcount(o) == rc + 1
++                            for o, rc in zip(objects, orig_rcs)))
+ 
+     def test_unicode_mode(self):
+         d = np.arange(10)
+diff --git a/numpy/_core/tests/test_multiarray.py b/numpy/_core/tests/test_multiarray.py
+index 87508732d8..3f26578c85 100644
+--- a/numpy/_core/tests/test_multiarray.py
++++ b/numpy/_core/tests/test_multiarray.py
+@@ -6779,10 +6779,12 @@ def test_dot_3args(self):
+         v = np.random.random_sample((16, 32))
+ 
+         r = np.empty((1024, 32))
++        if HAS_REFCOUNT:
++            orig_refcount = sys.getrefcount(r)
+         for i in range(12):
+             dot(f, v, r)
+         if HAS_REFCOUNT:
+-            assert_equal(sys.getrefcount(r), 2)
++            assert_equal(sys.getrefcount(r), orig_refcount)
+         r2 = dot(f, v, out=None)
+         assert_array_equal(r2, r)
+         assert_(r is dot(f, v, out=r))
+diff --git a/numpy/_core/tests/test_nditer.py b/numpy/_core/tests/test_nditer.py
+index b0d911f24f..d6a9e42ae3 100644
+--- a/numpy/_core/tests/test_nditer.py
++++ b/numpy/_core/tests/test_nditer.py
+@@ -1126,9 +1126,10 @@ def test_iter_object_arrays_conversions():
+             rc = sys.getrefcount(ob)
+         for x in i:
+             x[...] += 1
+-    if HAS_REFCOUNT:
+-        assert_(sys.getrefcount(ob) == rc-1)
+-    assert_equal(a, np.arange(6)+98172489)
++        if HAS_REFCOUNT:
++            newrc = sys.getrefcount(ob)
++            assert_(newrc == rc - 1)
++    assert_equal(a, np.arange(6) + 98172489)
+ 
+ def test_iter_common_dtype():
+     # Check that the iterator finds a common data type correctly
+diff --git a/numpy/_core/tests/test_regression.py b/numpy/_core/tests/test_regression.py
+index 851ce324d7..eeb640659e 100644
+--- a/numpy/_core/tests/test_regression.py
++++ b/numpy/_core/tests/test_regression.py
+@@ -1586,29 +1586,26 @@ def test_take_refcount(self):
+     def test_fromfile_tofile_seeks(self):
+         # On Python 3, tofile/fromfile used to get (#1610) the Python
+         # file handle out of sync
+-        f0 = tempfile.NamedTemporaryFile()
+-        f = f0.file
+-        f.write(np.arange(255, dtype='u1').tobytes())
+-
+-        f.seek(20)
+-        ret = np.fromfile(f, count=4, dtype='u1')
+-        assert_equal(ret, np.array([20, 21, 22, 23], dtype='u1'))
+-        assert_equal(f.tell(), 24)
+-
+-        f.seek(40)
+-        np.array([1, 2, 3], dtype='u1').tofile(f)
+-        assert_equal(f.tell(), 43)
+-
+-        f.seek(40)
+-        data = f.read(3)
+-        assert_equal(data, b"\x01\x02\x03")
+-
+-        f.seek(80)
+-        f.read(4)
+-        data = np.fromfile(f, dtype='u1', count=4)
+-        assert_equal(data, np.array([84, 85, 86, 87], dtype='u1'))
+-
+-        f.close()
++        with tempfile.NamedTemporaryFile() as f:
++            f.write(np.arange(255, dtype='u1').tobytes())
++
++            f.seek(20)
++            ret = np.fromfile(f, count=4, dtype='u1')
++            assert_equal(ret, np.array([20, 21, 22, 23], dtype='u1'))
++            assert_equal(f.tell(), 24)
++
++            f.seek(40)
++            np.array([1, 2, 3], dtype='u1').tofile(f)
++            assert_equal(f.tell(), 43)
++
++            f.seek(40)
++            data = f.read(3)
++            assert_equal(data, b"\x01\x02\x03")
++
++            f.seek(80)
++            f.read(4)
++            data = np.fromfile(f, dtype='u1', count=4)
++            assert_equal(data, np.array([84, 85, 86, 87], dtype='u1'))
+ 
+     def test_complex_scalar_warning(self):
+         for tp in [np.csingle, np.cdouble, np.clongdouble]:
+diff --git a/numpy/_core/tests/test_umath.py b/numpy/_core/tests/test_umath.py
+index 4d56c785d5..d432e33412 100644
+--- a/numpy/_core/tests/test_umath.py
++++ b/numpy/_core/tests/test_umath.py
+@@ -269,9 +269,9 @@ class ArrSubclass(np.ndarray):
+             pass
+ 
+         arr = np.arange(10).view(ArrSubclass)
+-
++        orig_refcount = sys.getrefcount(arr)
+         arr *= 1
+-        assert sys.getrefcount(arr) == 2
++        assert sys.getrefcount(arr) == orig_refcount
+ 
+ 
+ class TestComparisons:

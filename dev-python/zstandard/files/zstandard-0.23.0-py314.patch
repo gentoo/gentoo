@@ -1,0 +1,17 @@
+https://github.com/indygreg/python-zstandard/issues/238
+https://github.com/indygreg/python-zstandard/pull/262
+https://src.fedoraproject.org/rpms/python-zstandard/blob/rawhide/f/python-zstandard-py314.patch
+--- a/zstandard/__init__.py
++++ b/zstandard/__init__.py
+@@ -18,7 +18,10 @@ import io
+ import os
+ import platform
+ 
+-from typing import ByteString
++try:
++    from typing import ByteString
++except ImportError:
++    from collections.abc import Buffer as ByteString
+ 
+ # Some Python implementations don't support C extensions. That's why we have
+ # a CFFI implementation in the first place. The code here import one of our

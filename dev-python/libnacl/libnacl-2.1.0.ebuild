@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -29,6 +29,5 @@ BDEPEND="
 distutils_enable_tests unittest
 
 python_test() {
-	eunittest -p 'test_*.py' tests/ ||
-		die "Tests failed with ${EPYTHON}"
+	eunittest -p 'test_*.py' tests/
 }

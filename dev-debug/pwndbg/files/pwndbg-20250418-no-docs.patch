@@ -1,0 +1,22 @@
+commit 73685a31c372d44ea90f44cdddeea23d135f1c67
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Sun May 11 16:25:56 2025 +0200
+Upstream: https://github.com/pwndbg/pwndbg/pull/2973
+Bug: https://bugs.gentoo.org/954386
+
+    Don't install `docs/` directory into site packages directory
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -126,9 +126,11 @@ builtins-ignorelist = [
+ 
+ [tool.hatch.build.targets.sdist]
+ include = ["pwndbg"]
++exclude = ["docs"]
+ 
+ [tool.hatch.build.targets.wheel]
+ include = ["pwndbg"]
++exclude = ["docs"]
+ 
+ [build-system]
+ requires = ["hatchling"]

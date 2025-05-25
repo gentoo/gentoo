@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} python3_13t )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} python3_{13..14}t )
 
 inherit distutils-r1 pypi
 
@@ -16,6 +16,6 @@ HOMEPAGE="
 
 LICENSE="|| ( 0BSD CC0-1.0 )"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 distutils_enable_tests pytest

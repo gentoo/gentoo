@@ -36,7 +36,7 @@ RDEPEND="
 	~dev-lang/python-${PV}:${PYVER}
 "
 BDEPEND="
-	${RDEPEND}
+	${PYTHON_DEPS}
 	verify-sig? ( >=sec-keys/openpgp-keys-python-20221025 )
 "
 

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ DESCRIPTION="Module for manipulating ID3 (v1 + v2) tags in Python"
 HOMEPAGE="
 	https://eyed3.nicfit.net/
 	https://github.com/nicfit/eyeD3/
-	https://pypi.org/project/eyed3/
+	https://pypi.org/project/eyeD3/
 "
 SRC_URI="
 	https://github.com/nicfit/eyeD3/archive/v${PV}.tar.gz
@@ -27,7 +27,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3+"
 SLOT="0.7"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
 
 RDEPEND="
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]

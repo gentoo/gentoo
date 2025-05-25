@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
@@ -39,6 +39,11 @@ BDEPEND="
 		!!dev-python/shiboken2[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	# https://github.com/pallets/flask/pull/5702
+	"${FILESDIR}/${PN}-3.1.0-py314.patch"
+)
 
 distutils_enable_sphinx docs \
 	dev-python/pallets-sphinx-themes \

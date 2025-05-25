@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shutter-project/shutter/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/942958
+https://github.com/artyom-poptsov/guile-ssh/pull/43
+
+From 30fc103c67f3bf6cd30b17379ba966b260cfa534 Mon Sep 17 00:00:00 2001
+From: Peter Tillemans <pti@snamellit.com>
+Date: Wed, 18 Sep 2024 15:52:46 +0200
+Subject: [PATCH] fix compile error caused by bool identifier
+
+confusion of variable name with typename is now an error.
+---
+ libguile-ssh/session-func.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libguile-ssh/session-func.c b/libguile-ssh/session-func.c
+index 7006b62..836cd27 100644
+--- a/libguile-ssh/session-func.c
++++ b/libguile-ssh/session-func.c
+@@ -234,12 +234,12 @@ set_int32_opt (ssh_session session, int type, SCM value)
+ static inline int
+ set_bool_opt (ssh_session session, int type, SCM value)
+ {
+-  int32_t bool;
++  int32_t bool_value;
+ 
+   SCM_ASSERT (scm_is_bool (value), value, SCM_ARG3, "session-set!");
+ 
+-  bool = scm_to_bool (value);
+-  return ssh_options_set (session, type, &bool);
++  bool_value = scm_to_bool (value);
++  return ssh_options_set (session, type, &bool_value);
+ }
+ 
+ /* Convert VALUE to a socket file descriptor and pass it to

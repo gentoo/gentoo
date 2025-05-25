@@ -1,4 +1,4 @@
-From 57fbf1c67f2d89365601f39e72781fba001fe2f3 Mon Sep 17 00:00:00 2001
+From 01463f6ae5a58b7309769596714e76b0d265b622 Mon Sep 17 00:00:00 2001
 From: Kerin Millar <kfm@plushkava.net>
 Date: Mon, 28 Apr 2025 08:13:38 +0100
 Subject: [PATCH 3/3] Backport fix for erroneous delimiter pushback condition
@@ -23,7 +23,7 @@ $'\315'
 ''
 ''
 
-With the upcoming 5.3-rc2, which will incoprorate this patch, all three
+With the upcoming 5.3-rc2, which will incorporate this patch, all three
 records are read correctly.
 
 <FOO>
@@ -47,7 +47,7 @@ Signed-off-by: Kerin Millar <kfm@plushkava.net>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git builtins/read.def builtins/read.def
-index 9fd9a74c..8000def3 100644
+index 48351c3c..70a3508b 100644
 --- builtins/read.def
 +++ builtins/read.def
 @@ -1102,14 +1102,14 @@ read_mbchar (fd, string, ind, ch, delim, unbuffered)

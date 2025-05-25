@@ -1,0 +1,24 @@
+diff --git a/include/mdds/trie_map.hpp b/include/mdds/trie_map.hpp
+index c0fe6a0..d5b6dd5 100644
+--- a/include/mdds/trie_map.hpp
++++ b/include/mdds/trie_map.hpp
+@@ -31,6 +31,7 @@
+ 
+ #include "trie_map_itr.hpp"
+ 
++#include <cstdint>
+ #include <vector>
+ #include <string>
+ #include <deque>
+diff --git a/include/mdds/trie_map_itr.hpp b/include/mdds/trie_map_itr.hpp
+index cc993fb..bac5615 100644
+--- a/include/mdds/trie_map_itr.hpp
++++ b/include/mdds/trie_map_itr.hpp
+@@ -28,6 +28,7 @@
+ #ifndef INCLUDED_MDDS_TRIE_MAP_ITR_HPP
+ #define INCLUDED_MDDS_TRIE_MAP_ITR_HPP
+ 
++#include <cstdint>
+ #include <utility>
+ #include <cassert>
+ #include <iostream>

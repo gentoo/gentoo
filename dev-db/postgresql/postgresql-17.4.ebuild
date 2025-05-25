@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10,11,12,13} )
 LLVM_COMPAT=( {15..20} )
 LLVM_OPTIONAL=1
 
-inherit flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
+inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
@@ -128,6 +128,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	# Fails to build with C23, fallback to the old default in < GCC 15
 	# for now: https://marc.info/?l=pgsql-bugs&m=173185132906874&w=2
 	append-cflags -std=gnu17
@@ -250,6 +252,7 @@ src_install() {
 	use static-libs || \
 		find "${ED}" -name '*.a' ! -name libpgport.a ! -name libpgcommon.a \
 			 -delete
+	strip-lto-bytecode "${ED}"
 
 	# Make slot specific links to programs
 	local f bn

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,18 +50,26 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 	drm? (
 		<media-libs/libdisplay-info-0.3.0:=
-		>=media-libs/mesa-17.1[gbm(+)]
+		>=media-libs/mesa-21.1.1
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
 	)
 	editor? ( x11-libs/pango )
-	examples? ( x11-libs/pango )
+	examples? (
+		dev-libs/glib:2
+		x11-libs/pango
+		gles2? (
+			>=media-libs/mesa-21.1.1
+			>=virtual/udev-136
+		)
+	)
 	gles2? ( media-libs/libglvnd )
 	jpeg? ( media-libs/libjpeg-turbo:0= )
 	lcms? ( >=media-libs/lcms-2.9:2 )
 	pipewire? ( >=media-video/pipewire-0.3:= )
 	rdp? ( >=net-misc/freerdp-2.3.0:=[server] )
 	remoting? (
+		dev-libs/glib:2
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
@@ -119,7 +127,7 @@ src_configure() {
 		$(meson_use webp image-webp)
 		-Dtools=debug,info,terminal
 		$(meson_use examples demo-clients)
-		-Dsimple-clients=$(usex examples damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
+		-Dsimple-clients=$(usex examples damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-feedback,dmabuf-egl,egl "") "")
 		$(meson_use resize-optimization resize-pool)
 		$(meson_use test tests)
 		-Dtest-junit-xml=false

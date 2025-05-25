@@ -19,7 +19,7 @@ SRC_URI="https://github.com/ohler55/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 ruby_add_rdepend ">=dev-ruby/bigdecimal-3.0"
 

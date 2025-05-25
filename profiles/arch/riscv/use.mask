@@ -49,6 +49,9 @@ mono
 # No proper support for this arch yet
 java
 
+
+-video_cards_imagination
+
 # not supported / tested cards
 
 video_cards_ast

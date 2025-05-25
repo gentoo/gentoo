@@ -1,0 +1,21 @@
+diff '--color=auto' -r -U3 gle-manual-4.3.6.orig/Makefile.gcc gle-manual-4.3.6/Makefile.gcc
+--- gle-manual-4.3.6.orig/Makefile.gcc	2025-04-05 03:19:08.000000000 +0700
++++ gle-manual-4.3.6/Makefile.gcc	2025-05-14 11:54:38.311675981 +0700
+@@ -52,7 +52,7 @@
+ 
+ ifneq ($(UNAME_S),Darwin)
+ pdf: defs.tex
+-	pdflatex gle-manual.tex
++	latexmk -pdf gle-manual.tex
+ else
+ # define the APPLE command to elimnate the countour plots for macOS in utilities\countour.tex
+ # the coutour figures cause a seg fault in GLE and this workaround eliminates
+@@ -63,7 +63,7 @@
+ 
+ 
+ dvi:
+-	latex gle-manual.tex
++	latexmk -dvi gle-manual.tex
+ 
+ index:
+ 	makeindex gle-manual

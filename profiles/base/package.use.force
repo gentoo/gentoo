@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
+# Force both "old" KWallet backend (now ksecretd service via IUSE keyring)
+# and the legacy KWalletAPI (via IUSE legacy-kwallet) until a (stable)
+# migration path with instructions was laid out. See also:
+# https://invent.kde.org/plasma/plasma-desktop/-/issues/138
+# https://invent.kde.org/frameworks/kwallet/-/merge_requests/97
+# https://invent.kde.org/frameworks/kwallet/-/blob/master/README.md
+# https://notmart.org/blog/2025/04/towards-a-transition-from-kwallet-to-secret-service/
+kde-frameworks/kwallet-runtime keyring legacy-kwallet
+
 # Sam James <sam@gentoo.org> (2025-04-22)
 # qemu[X] still has automagic on some parts of gtk[X]. Workaround that
 # for now for bug #954152.
@@ -45,6 +55,8 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
+dev-lang/rust:1.87.0 llvm_slot_20
+dev-lang/rust-bin:1.87.0 llvm_slot_20
 dev-lang/rust:1.86.0 llvm_slot_19
 dev-lang/rust-bin:1.86.0 llvm_slot_19
 dev-lang/rust:1.85.1 llvm_slot_19
@@ -309,10 +321,6 @@ net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
 sys-cluster/glusterfs libtirpc
 
-# Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
-# Workaround until resolved upstream (bug #586840)
->=dev-games/simgear-2016.2.1 dns
-
 # Justin Lecher <jlec@gentoo.org> (2014-08-10)
 # Doesn't work without acl support
 # No patch yet, #516626
@@ -330,14 +338,15 @@ dev-lang/python-exec python_targets_python3_11
 dev-lang/python-exec python_targets_python3_12
 dev-lang/python-exec python_targets_python3_13
 dev-lang/python-exec python_targets_python3_13t
+dev-lang/python-exec python_targets_python3_14
+dev-lang/python-exec python_targets_python3_14t
 dev-lang/python-exec python_targets_pypy3_11
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)
 # Force ipc USE flag since it should remain enabled unless
 # it is found to be incompatible with a specific profile
 # or environment. When enabled, it fixes bug #278895,
-# bug #315615, and makes subshell die support more robust
-# (so that repoman's ebuild.nesteddie check is irrelevant).
+# bug #315615, and makes subshell die support more robust.
 sys-apps/portage ipc
 
 # Peter Alfredsen <loki_val@gentoo.org> (2009-04-11)

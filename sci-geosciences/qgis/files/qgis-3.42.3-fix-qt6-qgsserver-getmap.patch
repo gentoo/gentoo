@@ -1,0 +1,72 @@
+Taken from https://github.com/qgis/QGIS/pull/61690
+
+From 579241435198146eb27dc33b32566b1dfc4c18cc Mon Sep 17 00:00:00 2001
+From: Julien Cabieces <julien.cabieces@oslandia.com>
+Date: Wed, 30 Apr 2025 18:04:34 +0200
+Subject: [PATCH 1/2] fix(WMSGetMap): fix Qt6 filter read
+
+Since Qt6 Undeclared namespace prefixes are no longer allowed (see
+https://doc.qt.io/qt-6/xml-changes-qt6.html#qdom-and-qdomdocument), we
+need to define fes filter in case it would be empty.
+
+---
+ src/server/services/wms/qgswmsrenderer.cpp | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/server/services/wms/qgswmsrenderer.cpp b/src/server/services/wms/qgswmsrenderer.cpp
+index fe4952496611..22957c9637bb 100644
+--- a/src/server/services/wms/qgswmsrenderer.cpp
++++ b/src/server/services/wms/qgswmsrenderer.cpp
+@@ -78,6 +78,7 @@
+ #include <QTemporaryFile>
+ #include <QDir>
+ #include <QUrl>
++#include <QXmlStreamReader>
+ #include <nlohmann/json.hpp>
+ 
+ //for printing
+@@ -3558,10 +3559,20 @@ namespace QgsWms
+           // OGC filter
+           QDomDocument filterXml;
+           QString errorMsg;
++
++#if QT_VERSION < QT_VERSION_CHECK( 6, 5, 0 )
+           if ( !filterXml.setContent( filter.mFilter, true, &errorMsg ) )
+           {
+             throw QgsBadRequestException( QgsServiceException::QGIS_InvalidParameterValue, QStringLiteral( "Filter string rejected. Error message: %1. The XML string was: %2" ).arg( errorMsg, filter.mFilter ) );
+           }
++#else
++          QXmlStreamReader xmlReader( filter.mFilter );
++          xmlReader.addExtraNamespaceDeclaration( QXmlStreamNamespaceDeclaration( QStringLiteral( "fes" ), QStringLiteral( "http://www.opengis.net/fes/2.0" ) ) );
++          if ( QDomDocument::ParseResult result = filterXml.setContent( &xmlReader, QDomDocument::ParseOption::UseNamespaceProcessing ); !result )
++          {
++            throw QgsBadRequestException( QgsServiceException::QGIS_InvalidParameterValue, QStringLiteral( "Filter string rejected. Error %1:%2 : %3. The XML string was: %4" ).arg( QString::number( result.errorLine ), QString::number( result.errorColumn ), result.errorMessage, filter.mFilter ) );
++          }
++#endif
+           QDomElement filterElem = filterXml.firstChildElement();
+           std::unique_ptr<QgsExpression> filterExp( QgsOgcUtils::expressionFromOgcFilter( filterElem, filter.mVersion, filteredLayer ) );
+ 
+
+From f51e0ad45cae6adb7981727799cb461c5944180d Mon Sep 17 00:00:00 2001
+From: Julien Cabieces <julien.cabieces@oslandia.com>
+Date: Mon, 5 May 2025 15:44:55 +0200
+Subject: [PATCH 2/2] fix(WMSGetMap): fix Qt6 filter read
+
+and define ogc namespace in case it is not set in the filter
+---
+ src/server/services/wms/qgswmsrenderer.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/server/services/wms/qgswmsrenderer.cpp b/src/server/services/wms/qgswmsrenderer.cpp
+index 22957c9637bb..05e8dfb949ae 100644
+--- a/src/server/services/wms/qgswmsrenderer.cpp
++++ b/src/server/services/wms/qgswmsrenderer.cpp
+@@ -3568,6 +3568,7 @@ namespace QgsWms
+ #else
+           QXmlStreamReader xmlReader( filter.mFilter );
+           xmlReader.addExtraNamespaceDeclaration( QXmlStreamNamespaceDeclaration( QStringLiteral( "fes" ), QStringLiteral( "http://www.opengis.net/fes/2.0" ) ) );
++          xmlReader.addExtraNamespaceDeclaration( QXmlStreamNamespaceDeclaration( QStringLiteral( "ogc" ), QStringLiteral( "http://www.opengis.net/ogc" ) ) );
+           if ( QDomDocument::ParseResult result = filterXml.setContent( &xmlReader, QDomDocument::ParseOption::UseNamespaceProcessing ); !result )
+           {
+             throw QgsBadRequestException( QgsServiceException::QGIS_InvalidParameterValue, QStringLiteral( "Filter string rejected. Error %1:%2 : %3. The XML string was: %4" ).arg( QString::number( result.errorLine ), QString::number( result.errorColumn ), result.errorMessage, filter.mFilter ) );
+

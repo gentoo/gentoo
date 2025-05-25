@@ -301,7 +301,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1-nomancompress.patch"
 	"${FILESDIR}/${PN}-24.2-qtdetect.patch"
 
-	# TODO: upstream
+	# git master
 	"${FILESDIR}/${PN}-7.6-unused-qt5network.patch"
 	"${FILESDIR}/${PN}-24.2-unused-qt6network.patch"
 

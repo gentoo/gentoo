@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eray Aslan <eras@gentoo.org> (2025-05-08)
+# dev-db/tinycdb is not keyworded here
+net-mail/dovecot cdb
+
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-04-08)
 # media-libs/libsidplayfp is not keyworded
 media-sound/mpd sid
@@ -381,10 +385,6 @@ x11-misc/colord argyllcms extra-print-profiles
 # I don't want to open this can of worms yet. Feel free
 # to do so.
 dev-ruby/rack-test test
-
-# Anthony G. Basile <blueness@gentoo.org> (2012-08-21)
-# Does not work on ppc/ppc64
-net-vpn/tor tor-hardening
 
 # Pacho Ramos <pacho@gentoo.org> (2012-05-07)
 # libhid is not keyworded

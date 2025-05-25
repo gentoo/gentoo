@@ -57,7 +57,7 @@ RDEPEND="
 	http3? ( net-libs/nghttp3 )
 	ilbc? ( media-libs/libilbc:= )
 	kerberos? ( virtual/krb5 )
-	libxml2? ( dev-libs/libxml2 )
+	libxml2? ( dev-libs/libxml2:= )
 	lua? ( ${LUA_DEPS} )
 	lz4? ( app-arch/lz4:= )
 	maxminddb? ( dev-libs/libmaxminddb:= )

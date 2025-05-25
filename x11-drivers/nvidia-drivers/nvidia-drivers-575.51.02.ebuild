@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
+inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.14
@@ -185,8 +185,8 @@ src_prepare() {
 src_compile() {
 	tc-export AR CC CXX LD OBJCOPY OBJDUMP PKG_CONFIG
 
+	# extra flags for the libXNVCtrl.a static library
 	local xnvflags=-fPIC #840389
-	# lto static libraries tend to cause problems without fat objects
 	tc-is-lto && xnvflags+=" $(test-flags-CC -ffat-lto-objects)"
 
 	NV_ARGS=(
@@ -333,7 +333,7 @@ Note that without USE=abi_x86_32 on ${PN}, 32bit applications
 
 Be warned that USE=kernel-open may need to be either enabled or
 disabled for certain cards to function:
-- GTX 50xx (blackwell) and higher are known to require it to be enabled
+- GTX 50xx (blackwell) and higher require it to be enabled
 - GTX 1650 and higher (pre-blackwell) should work either way
 - Older cards require it to be disabled
 
@@ -376,6 +376,7 @@ documentation that is installed alongside this README."
 
 	if use static-libs; then
 		dolib.a nvidia-settings/src/out/libXNVCtrl.a
+		strip-lto-bytecode
 
 		insinto /usr/include/NVCtrl
 		doins nvidia-settings/src/libXNVCtrl/NVCtrl{Lib,}.h

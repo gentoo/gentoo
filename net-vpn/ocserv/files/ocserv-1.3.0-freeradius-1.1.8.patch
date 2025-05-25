@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/956426
+https://gitlab.com/openconnect/ocserv/-/issues/650
+https://gitlab.com/openconnect/ocserv/-/merge_requests/453
+
+From 555ea8d706a4dcde7c855fe5a8e17775a94299e0 Mon Sep 17 00:00:00 2001
+From: Dimitri Papadopoulos
+ <3350651-DimitriPapadopoulos@users.noreply.gitlab.com>
+Date: Fri, 23 May 2025 11:18:55 +0200
+Subject: [PATCH] Work around API breakage in freeradius-client 1.1.8
+
+FreeRADIUS client 1.1.8 introduced this backwards-incompatible API change:
+https://github.com/FreeRADIUS/freeradius-client/commit/50d78bb53f4f341aa708e196b8955cacbae59669
+
+Signed-off-by: Dimitri Papadopoulos <3350651-DimitriPapadopoulos@users.noreply.gitlab.com>
+---
+ src/auth/radius.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/src/auth/radius.c b/src/auth/radius.c
+index 4dc6e717..08231d15 100644
+--- a/src/auth/radius.c
++++ b/src/auth/radius.c
+@@ -468,7 +468,17 @@ static int radius_auth_pass(void *ctx, const char *pass, unsigned pass_len)
+ 				pctx->tx_per_sec = vp->lvalue;
+ 			} else {
+ 				oc_syslog(LOG_DEBUG, "radius-auth: ignoring server's attribute (%u,%u) of type %u",
+-					(unsigned)ATTRID(vp->attribute), (unsigned)VENDOR(vp->attribute), (unsigned)vp->type);
++#ifndef ATTRID
++					(unsigned)vp->attribute,
++#else
++					(unsigned)ATTRID(vp->attribute),
++#endif
++#ifndef VENDOR
++					(unsigned)vp->vendor,
++#else
++					(unsigned)VENDOR(vp->attribute),
++#endif
++					(unsigned)vp->type);
+ 			}
+ 			vp = vp->next;
+ 		}
+-- 
+2.49.0
+

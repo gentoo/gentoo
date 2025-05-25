@@ -1,0 +1,20 @@
+From 55ace19a0c65bbe4021530d47b0169786ff1bb47 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 22 Apr 2025 13:26:57 +0200
+Subject: [PATCH] cmake_minimum_version 3.10
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72b6a36..b400e4d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.10)
+ 
+ cmake_policy(SET CMP0054 NEW)
+ cmake_policy(SET CMP0048 NEW)
+-- 
+2.49.0
+

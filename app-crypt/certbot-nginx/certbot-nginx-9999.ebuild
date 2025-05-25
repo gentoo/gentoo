@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Nginx plugin for Certbot (Let’s Encrypt client)"
+DESCRIPTION="Nginx plugin for Certbot (Let's Encrypt client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot-nginx/

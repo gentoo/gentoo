@@ -32,7 +32,7 @@ You can now enable /etc/cron.d/${PN} for periodic updates."
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 DOCS=(docs/fangfrisch.pdf)
 HTML_DOCS=(docs/index.html)
 

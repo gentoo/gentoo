@@ -43,7 +43,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# "WordDBPage.h:309:76: error: reference to ‘byte’ is ambiguous"
+	# "WordDBPage.h:309:76: error: reference to 'byte' is ambiguous"
 	# bug #787716
 	append-cxxflags -std=c++14
 

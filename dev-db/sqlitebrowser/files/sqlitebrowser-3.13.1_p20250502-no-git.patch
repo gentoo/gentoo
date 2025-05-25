@@ -1,0 +1,41 @@
+From 922026f58bebe01f58d23f0b3369447fc0e17042 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 2 May 2025 20:23:16 +0200
+Subject: [PATCH] Do not run git if GIT_COMMIT_HASH is already set
+
+Useful for cutting snapshots.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0e7610c3..869b3811 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,13 +37,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
+     MACOSX_BUNDLE ON
+ )
+ 
+-execute_process(
+-    COMMAND git -C ${CMAKE_CURRENT_SOURCE_DIR} rev-parse --short --verify HEAD
+-    OUTPUT_VARIABLE GIT_COMMIT_HASH
+-    OUTPUT_STRIP_TRAILING_WHITESPACE
+-    ERROR_QUIET
+-)
+-
++if (NOT GIT_COMMIT_HASH)
++    execute_process(
++        COMMAND git -C ${CMAKE_CURRENT_SOURCE_DIR} rev-parse --short --verify HEAD
++        OUTPUT_VARIABLE GIT_COMMIT_HASH
++        OUTPUT_STRIP_TRAILING_WHITESPACE
++        ERROR_QUIET
++    )
++endif()
+ if (GIT_COMMIT_HASH STREQUAL "")
+     MESSAGE(WARNING "Could not determine git commit hash")
+     set(GIT_COMMIT_HASH "Unknown")
+-- 
+2.49.0
+

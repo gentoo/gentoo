@@ -104,7 +104,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	)
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
-	libxml2? ( >=dev-libs/libxml2-2.2.0 )
+	libxml2? ( >=dev-libs/libxml2-2.2.0:= )
 	mailutils? ( net-mail/mailutils[clients] )
 	!mailutils? ( acct-group/mail net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>dilfridge@gentoo.org</email>
+		<name>Andreas K. Huettel</name>
+	</maintainer>
 	<longdescription lang="en">
 		Gramps helps you track your family tree. It allows you to store, edit,
 		and research genealogical data. Gramps attempts to provide all of the

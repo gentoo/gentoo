@@ -31,9 +31,6 @@ RDEPEND="
 	clipboard? ( dev-python/pyperclip[${PYTHON_USEDEP}] )
 	jedi? ( dev-python/jedi[${PYTHON_USEDEP}] )
 	watch? ( dev-python/watchdog[${PYTHON_USEDEP}] )
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-4.0.0[${PYTHON_USEDEP}]
-	' 3.10)
 "
 # sphinx is used implicitly to build manpages
 BDEPEND="

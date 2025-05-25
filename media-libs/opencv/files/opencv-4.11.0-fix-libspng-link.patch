@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/955661
+https://github.com/opencv/opencv/pull/27314
+
+From 8fae4a65feb334de530174fd17147637c241e6b8 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 14 May 2025 23:30:10 +0300
+Subject: [PATCH] cmake: set SPNG_LIBRARY for pkgconfig as well
+
+Pkgconfig will set SPNG_LIBRARIES but not SPNG_LIBRARY, this is an issue
+as modules/imgcodecs/CmakeLists.txt uses SPNG_LIBRARY.
+
+Bug: https://bugs.gentoo.org/955661
+Fixes: c92815238e083563f1b03ac8c449ed848b13b0d9
+Signed-off-by: Alfred Wingate <parona@protonmail.com>
+--- a/cmake/OpenCVFindLibsGrfmt.cmake
++++ b/cmake/OpenCVFindLibsGrfmt.cmake
+@@ -304,6 +304,9 @@ if(WITH_SPNG)
+     else()
+       if(PkgConfig_FOUND)
+         pkg_check_modules(SPNG QUIET spng)
++        if(SPNG_FOUND)
++          set(SPNG_LIBRARY ${SPNG_LIBRARIES} CACHE INTERNAL "")
++        endif()
+       endif()
+     endif()
+     if(SPNG_FOUND)
+-- 
+2.49.0
+

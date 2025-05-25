@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -36,5 +36,5 @@ BDEPEND="
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(
-	test/test_readme.py
+	{recurring_ical_events/,}test/test_readme.py
 )

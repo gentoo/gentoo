@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1 optfeature pypi systemd
@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]

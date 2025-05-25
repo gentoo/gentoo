@@ -105,7 +105,7 @@ src_configure() {
 		$(use_enable enchant spellcheck)
 		$(use_enable webhelper)
 		$(use_enable workbench)
-		# GeanyGenDoc requires ctpl which isn’t yet in portage
+		# GeanyGenDoc requires ctpl which isn't yet in portage
 		--disable-geanygendoc
 		# Require libsoup-2.4 which conflicts with webkit2gtk-4.1
 		--disable-geniuspaste

@@ -1,0 +1,34 @@
+From 23e4e2f20ca698f4070f7da79f5e06249d34b622 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sat, 24 May 2025 22:38:44 -0400
+Subject: [PATCH] Unbreak "Fix setuptools 49 test. (fixes #7452)"
+
+This unbreaks commit 59910c437a81b94c72e3cbdfc2c3612fae576d6e.
+
+It kind of maybe appears to fix something but does break it all quite
+terribly too. Totally random subdirectories of site-packages/ should
+certainly not be added to PYTHONPATH regardless of anything else as that
+may include mesonbuild/, leading to `import ast` finding mesonbuild.ast
+instead...
+
+The underlying issue here is that egg .pth is not loaded from PYTHONPATH
+at all, which means depending on versions of e.g. setuptools this test
+may end up solely testing system-installed meson, or fail entirely. So
+we can fix this by manually adding eggs specifically.
+---
+ run_meson_command_tests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/run_meson_command_tests.py b/run_meson_command_tests.py
+index f9faca9af6fe..7265d3e031e2 100755
+--- a/run_meson_command_tests.py
++++ b/run_meson_command_tests.py
+@@ -143,7 +143,7 @@ def test_meson_installed(self):
+         os.environ['PATH'] = str(bindir) + os.pathsep + os.environ['PATH']
+         self._run(python_command + ['setup.py', 'install', '--prefix', str(prefix)])
+         # Fix importlib-metadata by appending all dirs in pylibdir
+-        PYTHONPATHS = [pylibdir] + [x for x in pylibdir.iterdir()]
++        PYTHONPATHS = [pylibdir] + [x for x in pylibdir.iterdir() if x.name.endswith('.egg')]
+         PYTHONPATHS = [os.path.join(str(x), '') for x in PYTHONPATHS]
+         os.environ['PYTHONPATH'] = os.pathsep.join(PYTHONPATHS)
+         # Check that all the files were installed correctly

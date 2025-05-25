@@ -30,7 +30,7 @@ DEPEND="
 	app-arch/zstd:=
 	dev-cpp/abseil-cpp:=
 	dev-libs/libpcre2:=
-	<dev-libs/protobuf-30:=
+	dev-libs/protobuf:=
 	sys-libs/zlib:=
 	>=dev-libs/libusb-1.0.28
 	>=dev-libs/libfmt-11:=
@@ -49,6 +49,7 @@ DOCS=()
 
 src_prepare() {
 	eapply "${DISTDIR}/${PN}-31.0.3-no-gtest.patch"
+	eapply "${FILESDIR}/android-tools-35.0.2-protobuf.patch"
 
 	cd "${S}/vendor/core" || die
 	eapply "${S}/patches/core/0011-Remove-the-useless-dependency-on-gtest.patch"

@@ -1,0 +1,189 @@
+From 8e59e6a833dc8cec95d25fe7a1c00ba52b045060 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 30 Apr 2025 18:12:08 +0200
+Subject: [PATCH 1/2] In src/runtime, try to find system KF6Wallet if target
+ not yet exists
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/runtime/CMakeLists.txt                    | 4 ++++
+ src/runtime/ksecretd/CMakeLists.txt           | 2 +-
+ src/runtime/ksecretd/autotests/CMakeLists.txt | 2 +-
+ src/runtime/kwallet-query/src/CMakeLists.txt  | 2 +-
+ src/runtime/kwalletbackend/CMakeLists.txt     | 3 +--
+ 5 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/runtime/CMakeLists.txt b/src/runtime/CMakeLists.txt
+index b38948d1..4e833b3f 100644
+--- a/src/runtime/CMakeLists.txt
++++ b/src/runtime/CMakeLists.txt
+@@ -1,3 +1,7 @@
++if(NOT TARGET KF6::Wallet)
++    find_package(KF6Wallet ${KF_DEP_VERSION} REQUIRED)
++endif()
++
+ if(BUILD_KSECRETD OR BUILD_KWALLETD)
+     find_package(Gpgmepp 1.7.0) # provided by GpgME
+ 
+diff --git a/src/runtime/ksecretd/CMakeLists.txt b/src/runtime/ksecretd/CMakeLists.txt
+index 016ee52c..439254f1 100644
+--- a/src/runtime/ksecretd/CMakeLists.txt
++++ b/src/runtime/ksecretd/CMakeLists.txt
+@@ -128,7 +128,7 @@ endif ()
+ 
+ target_link_libraries(ksecretd
+     KF6WalletBackend
+-    KF6Wallet
++    KF6::Wallet
+     Qt6::Widgets
+     KF6::I18n
+     KF6::ColorScheme
+diff --git a/src/runtime/ksecretd/autotests/CMakeLists.txt b/src/runtime/ksecretd/autotests/CMakeLists.txt
+index 2499edc6..728a34bf 100644
+--- a/src/runtime/ksecretd/autotests/CMakeLists.txt
++++ b/src/runtime/ksecretd/autotests/CMakeLists.txt
+@@ -66,7 +66,7 @@ ecm_add_test(
+     kwalletfreedesktoppromptadaptor.cpp
+     TEST_NAME fdo_secrets_test
+     LINK_LIBRARIES
+-        KF6Wallet
++        KF6::Wallet
+         KF6WalletBackend
+         Qt6::Widgets
+         Qt6::Test
+diff --git a/src/runtime/kwallet-query/src/CMakeLists.txt b/src/runtime/kwallet-query/src/CMakeLists.txt
+index b809048f..dc785494 100644
+--- a/src/runtime/kwallet-query/src/CMakeLists.txt
++++ b/src/runtime/kwallet-query/src/CMakeLists.txt
+@@ -9,7 +9,7 @@ target_sources(kwallet-query PRIVATE
+ 
+ 
+ TARGET_LINK_LIBRARIES(kwallet-query
+-    KF6Wallet
++    KF6::Wallet
+     KF6::CoreAddons
+     KF6::I18n
+     Qt6::Widgets
+diff --git a/src/runtime/kwalletbackend/CMakeLists.txt b/src/runtime/kwalletbackend/CMakeLists.txt
+index b7849dc7..e883b77a 100644
+--- a/src/runtime/kwalletbackend/CMakeLists.txt
++++ b/src/runtime/kwalletbackend/CMakeLists.txt
+@@ -36,8 +36,6 @@ set_target_properties(KF6WalletBackend PROPERTIES
+     SOVERSION ${KWALLETBACKEND_SOVERSION}
+ )
+ 
+-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../api/KWallet)
+-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../api/KWallet)
+ include_directories(${LIBGCRYPT_INCLUDE_DIRS})
+ 
+ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
+@@ -71,6 +69,7 @@ target_link_libraries(KF6WalletBackend
+     KF6::CoreAddons
+     KF6::Notifications
+     KF6::I18n
++    KF6::Wallet
+     ${LIBGCRYPT_LIBRARIES}
+     ${Qca_LIBRARY}
+ )
+-- 
+2.49.0
+
+
+From ff4bbd29e92570836f0a2dab2ef7e714b5cfa42a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 30 Apr 2025 18:02:08 +0200
+Subject: [PATCH 2/2] Split runtime logging categories into separate file
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/CMakeLists.txt                        | 6 ------
+ src/api/CMakeLists.txt                    | 6 ++++++
+ src/runtime/CMakeLists.txt                | 6 ++++++
+ src/runtime/ksecretd/CMakeLists.txt       | 2 +-
+ src/runtime/kwalletbackend/CMakeLists.txt | 2 +-
+ src/runtime/kwalletd/CMakeLists.txt       | 2 +-
+ 6 files changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4ec4ca79..3c0163d7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,9 +1,3 @@
+ 
+ add_subdirectory(api)
+ add_subdirectory(runtime)
+-
+-ecm_qt_install_logging_categories(
+-    EXPORT KWALLET
+-    FILE kwallet.categories
+-    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+-)
+diff --git a/src/api/CMakeLists.txt b/src/api/CMakeLists.txt
+index ef921ee4..b4810d80 100644
+--- a/src/api/CMakeLists.txt
++++ b/src/api/CMakeLists.txt
+@@ -1,2 +1,8 @@
+ 
+ add_subdirectory(KWallet)
++
++ecm_qt_install_logging_categories(
++    EXPORT KWALLET
++    FILE kwallet.categories
++    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
++)
+diff --git a/src/runtime/CMakeLists.txt b/src/runtime/CMakeLists.txt
+index 4e833b3f..3705c45d 100644
+--- a/src/runtime/CMakeLists.txt
++++ b/src/runtime/CMakeLists.txt
+@@ -25,3 +25,9 @@ endif()
+ if(BUILD_KWALLET_QUERY)
+   add_subdirectory(kwallet-query)
+ endif()
++
++ecm_qt_install_logging_categories(
++    EXPORT KWALLET_RUNTIME
++    FILE kwallet-runtime.categories
++    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
++)
+diff --git a/src/runtime/ksecretd/CMakeLists.txt b/src/runtime/ksecretd/CMakeLists.txt
+index 439254f1..75ccd198 100644
+--- a/src/runtime/ksecretd/CMakeLists.txt
++++ b/src/runtime/ksecretd/CMakeLists.txt
+@@ -66,7 +66,7 @@ ecm_qt_declare_logging_category(ksecretd
+     CATEGORY_NAME kf.wallet.ksecretd
+     OLD_CATEGORY_NAMES kf5.kwallet.ksecretd
+     DESCRIPTION "ksecretd"
+-    EXPORT KWALLET
++    EXPORT KWALLET_RUNTIME
+ )
+ 
+ ki18n_wrap_ui(ksecretd
+diff --git a/src/runtime/kwalletbackend/CMakeLists.txt b/src/runtime/kwalletbackend/CMakeLists.txt
+index e883b77a..95ea54c1 100644
+--- a/src/runtime/kwalletbackend/CMakeLists.txt
++++ b/src/runtime/kwalletbackend/CMakeLists.txt
+@@ -55,7 +55,7 @@ ecm_qt_declare_logging_category(KF6WalletBackend
+     CATEGORY_NAME kf.wallet.backend
+     OLD_CATEGORY_NAMES kf5.kwallet.kwalletbackend
+     DESCRIPTION "kwalletbackend"
+-    EXPORT KWALLET
++    EXPORT KWALLET_RUNTIME
+ )
+ 
+ 
+diff --git a/src/runtime/kwalletd/CMakeLists.txt b/src/runtime/kwalletd/CMakeLists.txt
+index 627fb69c..4a5f6135 100644
+--- a/src/runtime/kwalletd/CMakeLists.txt
++++ b/src/runtime/kwalletd/CMakeLists.txt
+@@ -54,7 +54,7 @@ ecm_qt_declare_logging_category(kwalletd6
+     IDENTIFIER KWALLETD_LOG
+     CATEGORY_NAME kf.wallet.kwalletd
+     DESCRIPTION "kwalletd"
+-    EXPORT KWALLET
++    EXPORT KWALLET_RUNTIME
+ )
+ 
+ target_link_libraries(kwalletd6
+-- 
+2.49.0
+

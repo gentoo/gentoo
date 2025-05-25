@@ -36,7 +36,7 @@ all_ruby_prepare() {
 	# the extension as we'd be unable to run it properly otherwise.
 	sed -i -e 's:\./odbc:odbc:' test/{,utf8/}test.rb || die
 
-	# Since lib should not get installed avoid it entirely…
+	# Since lib should not get installed avoid it entirely...
 	mv lib contrib || die
 }
 

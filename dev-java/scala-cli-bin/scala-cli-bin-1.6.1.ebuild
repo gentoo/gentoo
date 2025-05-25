@@ -29,7 +29,7 @@ S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 # A JRE is not strictly required if native images of scala-cli are used
 # (amd64, arm64). However we may want a system JRE anyway, and having JRE

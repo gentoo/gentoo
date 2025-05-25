@@ -1,0 +1,10 @@
+--- a/libkineto_defs.bzl	2025-05-04 19:21:28.579198776 +0200
++++ b/libkineto_defs.bzl	2025-05-04 19:22:03.007328119 +0200
+@@ -81,6 +81,7 @@
+         "include/libkineto.h",
+         "include/time_since_epoch.h",
+         "include/output_base.h",
++        "src/ApproximateClock.h",
+     ]
+ 
+ # kineto code should be updated to not have to

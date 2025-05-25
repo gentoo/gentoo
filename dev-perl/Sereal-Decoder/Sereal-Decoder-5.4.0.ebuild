@@ -10,7 +10,7 @@ inherit edo perl-module toolchain-funcs
 DESCRIPTION="Fast, compact, powerful binary deserialization"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	virtual/perl-XSLoader

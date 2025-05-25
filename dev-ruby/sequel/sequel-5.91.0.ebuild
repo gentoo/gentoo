@@ -18,7 +18,7 @@ SRC_URI="https://github.com/jeremyevans/sequel/archive/refs/tags/${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 ruby_add_rdepend "dev-ruby/bigdecimal"

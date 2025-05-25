@@ -1,0 +1,13 @@
+https://github.com/NilsBrause/waylandpp/pull/85
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,7 +21,7 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.4...4.0)
+ project(waylandpp VERSION 1.0.0 LANGUAGES CXX)
+ 
+ # packages

@@ -1,0 +1,14 @@
+#see https://dovecot.org/mailman3/archives/list/dovecot@dovecot.org/message/O54EAGLIXXHMOH7BQCCKHHB3Z32HDWVR/
+diff --git a/src/auth/mech-gssapi.c b/src/auth/mech-gssapi.c
+index 57a2b125b2..4ff5716528 100644
+--- a/src/auth/mech-gssapi.c
++++ b/src/auth/mech-gssapi.c
+@@ -672,7 +672,7 @@ mech_gssapi_auth_initial(struct auth_req
+ 
+ 	if (data_size == 0) {
+ 		/* The client should go first */
+-		auth_request_handler_reply_continue(request, NULL, 0);
++		auth_request_handler_reply_continue(request, uchar_empty_ptr, 0);
+ 	} else {
+ 		mech_gssapi_auth_continue(request, data, data_size);
+ 	}

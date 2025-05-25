@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DISTUTILS_USE_PEP517="setuptools"
-PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1
 
 DESCRIPTION="A code search tool"
@@ -33,7 +33,7 @@ RDEPEND="
 distutils_enable_tests unittest
 
 src_test() {
-	# following varaible disables colorization test, which does not work on non-tty output
+	# following variable disables colorization test, which does not work on non-tty output
 	# see https://github.com/gleitz/howdoi/commit/c53b6a179a09159740de2c06fb87b194e810f839
 	local -x GITHUB_ACTION=1
 	distutils-r1_src_test

@@ -16,7 +16,7 @@ else
 	MY_PV=${MY_PV/./-R}
 	SRC_URI="https://github.com/greatscottgadgets/${PN}/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
 	S="${WORKDIR}"/${PN}-${MY_PV}
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 arm x86"
 fi
 
 LICENSE="GPL-2"

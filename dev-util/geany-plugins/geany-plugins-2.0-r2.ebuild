@@ -13,7 +13,7 @@ SRC_URI="https://plugins.geany.org/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 arm ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="ctags debugger enchant git gpg gtkspell lua markdown nls pretty-printer scope test webhelper workbench"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
@@ -114,7 +114,7 @@ src_configure() {
 		$(use_enable enchant spellcheck)
 		$(use_enable webhelper)
 		$(use_enable workbench)
-		# GeanyGenDoc requires ctpl which isn’t yet in portage
+		# GeanyGenDoc requires ctpl which isn't yet in portage
 		--disable-geanygendoc
 		# Require libsoup-2.4 which conflicts with webkit2gtk-4.1
 		--disable-geniuspaste

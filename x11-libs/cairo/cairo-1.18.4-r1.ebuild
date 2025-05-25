@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit meson-multilib
+PYTHON_COMPAT=( python3_{11..13} )
+inherit meson-multilib python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -45,6 +46,7 @@ DEPEND="${RDEPEND}
 	)
 	X? ( x11-base/xorg-proto )"
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )"
 

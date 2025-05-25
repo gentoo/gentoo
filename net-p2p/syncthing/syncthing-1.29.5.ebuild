@@ -31,6 +31,7 @@ DOCS=( AUTHORS {GOALS,README}.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.4-TestIssue5063_timeout.patch
 	"${FILESDIR}"/${PN}-1.18.4-tool_users.patch
+	"${FILESDIR}"/${PN}-1.29.5-remove_race_in_tests.patch #955442
 )
 
 src_prepare() {

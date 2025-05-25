@@ -7,7 +7,7 @@ CRATES=""
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cargo distutils-r1 optfeature
 
@@ -56,6 +56,12 @@ src_prepare() {
 	sed -e 's@man/man1@share/&@' \
 		-e 's@, strip=Strip\.All@@' \
 		-i setup.py || die
+
+	# https://bugs.gentoo.org/954134
+	find -name '*.pyx' -exec \
+		sed -e '/_AsUnsignedLongMask/s:PyInt:PyLong:' \
+			-e 's:cpython\.int:cpython.long:' \
+			-i {} + || die
 
 	distutils-r1_src_prepare
 }

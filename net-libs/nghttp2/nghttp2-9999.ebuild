@@ -35,7 +35,7 @@ RDEPEND="
 		>=sys-libs/zlib-1.2.3[${MULTILIB_USEDEP}]
 	)
 	systemd? ( >=sys-apps/systemd-209 )
-	xml? ( >=dev-libs/libxml2-2.7.7:2[${MULTILIB_USEDEP}] )
+	xml? ( >=dev-libs/libxml2-2.7.7:2=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

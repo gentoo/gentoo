@@ -1,0 +1,137 @@
+From e54526054fe5f3f4b7a960bd34ba617e02bf08fb Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 3 May 2025 20:10:30 +0200
+Subject: [PATCH 1/2] [ECMGenerateQDoc] Handle qdoc tool not being found
+
+---
+ modules/ECMGenerateQDoc.cmake | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/modules/ECMGenerateQDoc.cmake b/modules/ECMGenerateQDoc.cmake
+index 4ffbe836..16078b22 100644
+--- a/modules/ECMGenerateQDoc.cmake
++++ b/modules/ECMGenerateQDoc.cmake
+@@ -71,6 +71,10 @@ function(ecm_generate_qdoc target qdocconf_file)
+     set(qdoc_extra_args "")
+ 
+     if (NOT QDOC_BIN)
++        if (NOT TARGET Qt6::qdoc)
++            message("qdoc executable not found, not generating API documentation")
++            return()
++        endif()
+         get_target_property(QDOC_BIN Qt6::qdoc LOCATION)
+     endif()
+ 
+-- 
+2.49.0
+
+
+From 7d0fb2783b1e9564caa4198302b5512c9fc93365 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 3 May 2025 20:28:57 +0200
+Subject: [PATCH 2/2] [ECMGenerateQDoc] Handle qhelpgenerator tool not being
+ found
+
+---
+ modules/ECMGenerateQDoc.cmake | 84 ++++++++++++++++++-----------------
+ 1 file changed, 44 insertions(+), 40 deletions(-)
+
+diff --git a/modules/ECMGenerateQDoc.cmake b/modules/ECMGenerateQDoc.cmake
+index 16078b22..7062d7cf 100644
+--- a/modules/ECMGenerateQDoc.cmake
++++ b/modules/ECMGenerateQDoc.cmake
+@@ -160,47 +160,51 @@ function(ecm_generate_qdoc target qdocconf_file)
+         ${generate_qdoc_args}
+     )
+ 
+-    # generate .qch
+-    set(qch_file_name ${doc_target}.qch)
+-    set(qch_file_path ${dest_dir}/${doc_target}/${qch_file_name})
+-
+-    get_target_property(QHelpGenerator_EXECUTABLE Qt6::qhelpgenerator LOCATION)
+-
+-    add_custom_target(generate_qch_${target}
+-        COMMAND ${QHelpGenerator_EXECUTABLE}
+-        "${dest_dir}/html/${doc_target}.qhp"
+-        -o "${qch_file_path}"
+-    )
+-
+     add_dependencies(prepare_docs prepare_docs_${target})
+     add_dependencies(generate_docs generate_docs_${target})
+-    add_dependencies(generate_qch generate_qch_${target})
+-    add_dependencies(install_html_docs install_html_docs_${target})
+-    add_dependencies(install_qch_docs install_qch_docs_${target})
+-
+-    install(DIRECTORY "${dest_dir}/html/"
+-            DESTINATION "${KDE_INSTALL_QTQCHDIR}/${doc_target}"
+-            COMPONENT _install_html_docs_${target}
+-            EXCLUDE_FROM_ALL
+-    )
+ 
+-    add_custom_target(install_html_docs_${target}
+-        COMMAND ${CMAKE_COMMAND}
+-        --install "${CMAKE_BINARY_DIR}"
+-        --component _install_html_docs_${target}
+-        COMMENT "Installing html docs for target ${target}"
+-    )
+-
+-    install(FILES "${qch_file_path}"
+-            DESTINATION "${KDE_INSTALL_QTQCHDIR}"
+-            COMPONENT _install_qch_docs_${target}
+-            EXCLUDE_FROM_ALL
+-    )
+-
+-    add_custom_target(install_qch_docs_${target}
+-        COMMAND ${CMAKE_COMMAND}
+-        --install "${CMAKE_BINARY_DIR}"
+-        --component _install_qch_docs_${target}
+-        COMMENT "Installing qch docs for target ${target}"
+-    )
++    # generate .qch
++    if (TARGET Qt6::qhelpgenerator)
++        set(qch_file_name ${doc_target}.qch)
++        set(qch_file_path ${dest_dir}/${doc_target}/${qch_file_name})
++        get_target_property(QHelpGenerator_EXECUTABLE Qt6::qhelpgenerator LOCATION)
++
++        add_custom_target(generate_qch_${target}
++            COMMAND ${QHelpGenerator_EXECUTABLE}
++            "${dest_dir}/html/${doc_target}.qhp"
++            -o "${qch_file_path}"
++        )
++
++        add_dependencies(generate_qch generate_qch_${target})
++        add_dependencies(install_html_docs install_html_docs_${target})
++        add_dependencies(install_qch_docs install_qch_docs_${target})
++
++        install(DIRECTORY "${dest_dir}/html/"
++                DESTINATION "${KDE_INSTALL_QTQCHDIR}/${doc_target}"
++                COMPONENT _install_html_docs_${target}
++                EXCLUDE_FROM_ALL
++        )
++
++        add_custom_target(install_html_docs_${target}
++            COMMAND ${CMAKE_COMMAND}
++            --install "${CMAKE_BINARY_DIR}"
++            --component _install_html_docs_${target}
++            COMMENT "Installing html docs for target ${target}"
++        )
++
++        install(FILES "${qch_file_path}"
++                DESTINATION "${KDE_INSTALL_QTQCHDIR}"
++                COMPONENT _install_qch_docs_${target}
++                EXCLUDE_FROM_ALL
++        )
++
++        add_custom_target(install_qch_docs_${target}
++            COMMAND ${CMAKE_COMMAND}
++            --install "${CMAKE_BINARY_DIR}"
++            --component _install_qch_docs_${target}
++            COMMENT "Installing qch docs for target ${target}"
++        )
++    else()
++        message("qhelpgenerator executable not found, not generating API documentation in QCH format")
++    endif()
+ endfunction()
+-- 
+2.49.0
+

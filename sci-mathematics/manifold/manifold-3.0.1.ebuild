@@ -21,7 +21,7 @@ else
 		SRC_URI="https://github.com/elalish/manifold/releases/download/v${PV}/${P}.tar.gz"
 	fi
 
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 LICENSE="Apache-2.0"
@@ -61,6 +61,10 @@ src_prepare() {
 	sed \
 		-e "/list(APPEND MANIFOLD_FLAGS/s/^/# DONOTSET /" \
 		-i CMakeLists.txt || die
+
+	sed \
+		-e '/<memory>/a#include <cstdint>' \
+		-i include/manifold/manifold.h || die
 }
 
 src_configure() {

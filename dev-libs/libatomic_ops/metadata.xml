@@ -10,6 +10,6 @@
     <name>Gentoo Toolchain Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ivmai/libatomic_ops</remote-id>
+    <remote-id type="github">bdwgc/libatomic_ops</remote-id>
   </upstream>
 </pkgmetadata>

@@ -71,6 +71,7 @@ for plugin in ${UWSGI_PLUGINS_OPT[@]}; do IUSE="${IUSE} uwsgi_plugins_${plugin}"
 IUSE="${IUSE} ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]}"
 
 REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 	|| ( ${LANG_SUPPORT_SIMPLE[@]} ${LANG_SUPPORT_EXTENDED[@]} )
 	uwsgi_plugins_logcrypto? ( ssl )
 	uwsgi_plugins_sslrouter? ( ssl )
@@ -143,7 +144,10 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-uwsgi )
 	uwsgi_plugins_rrdtool? ( net-analyzer/rrdtool )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	${PYTHON_DEPS}
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.21-libphp-version.patch

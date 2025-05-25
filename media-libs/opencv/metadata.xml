@@ -38,13 +38,17 @@
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for blas, lapack and sparse blas routines</flag>
 		<flag name="non-free">Enable non-free components</flag>
 		<flag name="opencvapps">Enable compilation with opencvapps</flag>
+		<flag name="openni">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI</pkg></flag>
+		<flag name="openni2">Adds support for Kinect-like 3D sensors devices with <pkg>dev-libs/OpenNI2</pkg> (should be preferred over openni)</flag>
 		<flag name="quirc">Enable qrcode decoding via <pkg>media-libs/quirc</pkg></flag>
+		<flag name="spng">Use <pkg>media-libs/libspng</pkg> for png support</flag>
 		<flag name="tbb">Enable multithreading with the Intel Threads Building Block (<pkg>dev-cpp/tbb</pkg>)</flag>
 		<flag name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
 		<flag name="truetype">Enable <pkg>media-libs/freetype</pkg> support for gapi module</flag>
 		<flag name="video_cards_intel">Enable Video Acceleration API for hardware decoding for Intel cards</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>
+		<flag name="vulkan">Enable experimental Vulkan backend</flag>
 	</use>
 	<upstream>
 		<changelog>https://github.com/opencv/opencv/wiki/ChangeLog</changelog>

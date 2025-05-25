@@ -26,6 +26,7 @@ case ${PV} in
 		;;
 	*)
 		PLEVEL=0
+		;;
 esac
 
 # The version of readline this bash normally ships with. Note that we only use

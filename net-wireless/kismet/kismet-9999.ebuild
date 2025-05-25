@@ -74,7 +74,7 @@ RDEPEND="${CDEPEND}
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
-		net-wireless/rtl-sdr
+		net-wireless/rtl-sdr:=
 	)
 	selinux? ( sec-policy/selinux-kismet )
 "

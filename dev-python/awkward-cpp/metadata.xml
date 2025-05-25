@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alexander@neuwirth-informatik.de</email>
+		<name>Alexander Puck Neuwirth</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+
+
+	<longdescription lang="en">
+	awkward-cpp provides precompiled routines for the awkward package. It is not useful on its own, only as a dependency for awkward .
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">awkward</remote-id>
+		<remote-id type="github">scikit-hep/awkward</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -23,7 +23,7 @@ else
 		https://github.com/PrismLauncher/PrismLauncher/releases/download/${PV}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz
 	"
 	S="${WORKDIR}/${MY_PN}-${PV}"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 # GPL-3 for PolyMC (PrismLauncher is forked from it) and Prism itself

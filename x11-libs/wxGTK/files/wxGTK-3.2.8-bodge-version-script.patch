@@ -1,0 +1,94 @@
+See https://bugs.gentoo.org/955902 but especially https://bugs.gentoo.org/955902#c15.
+
+This is a temporary hack to have things building again and have internal
+consistency with older wxGTK in Gentoo, but we need to do more work to reconcile
+this with upstream.
+--- a/include/wx/private/elfversion.h
++++ b/include/wx/private/elfversion.h
+@@ -58,7 +58,7 @@
+     // Note that this macro takes strings, not symbols, and that it includes
+     // the trailing semicolon for consistency with the empty version below.
+     #define wxELF_VERSION_COMPAT(sym, ver) \
+-        wxELF_SYMVER_NON_DEFAULT(sym, sym "@" wxMAKE_ELF_VERSION_TAG("3.2")) \
++        wxELF_SYMVER_NON_DEFAULT(sym, sym "@" wxMAKE_ELF_VERSION_TAG("3.0")) \
+         wxELF_SYMVER(sym, sym "@@" wxMAKE_ELF_VERSION_TAG(ver))
+ #else
+     #define wxELF_VERSION_COMPAT(sym, ver)
+--- a/src/common/translation.cpp
++++ b/src/common/translation.cpp
+@@ -1422,13 +1422,13 @@ bool wxTranslations::AddCatalog(const wxString& domain,
+ }
+ #endif // !wxUSE_UNICODE
+ 
+-wxELF_VERSION_COMPAT("_ZN14wxTranslations19AddAvailableCatalogERK8wxString", "3.2.3")
++wxELF_VERSION_COMPAT("_ZN14wxTranslations19AddAvailableCatalogERK8wxString", "3.0.3")
+ bool wxTranslations::AddAvailableCatalog(const wxString& domain)
+ {
+     return AddAvailableCatalog(domain, wxLANGUAGE_ENGLISH_US);
+ }
+ 
+-wxELF_VERSION_COMPAT("_ZN14wxTranslations19AddAvailableCatalogERK8wxString10wxLanguage", "3.2.6")
++wxELF_VERSION_COMPAT("_ZN14wxTranslations19AddAvailableCatalogERK8wxString10wxLanguage", "3.0.6")
+ bool wxTranslations::AddAvailableCatalog(const wxString& domain, wxLanguage msgIdLanguage)
+ {
+     return DoAddCatalog(domain, msgIdLanguage) == Translations_Found;
+@@ -1567,7 +1567,7 @@ wxString wxTranslations::GetBestTranslation(const wxString& domain,
+     return lang;
+ }
+ 
+-wxELF_VERSION_COMPAT("_ZN14wxTranslations27GetBestAvailableTranslationERK8wxString", "3.2.3")
++wxELF_VERSION_COMPAT("_ZN14wxTranslations27GetBestAvailableTranslationERK8wxString", "3.0.3")
+ wxString wxTranslations::GetBestAvailableTranslation(const wxString& domain)
+ {
+     // Determine the best language from the ones with actual translation file:
+--- a/src/common/uilocale.cpp
++++ b/src/common/uilocale.cpp
+@@ -613,7 +613,7 @@ wxString wxUILocale::GetLocalizedName(wxLocaleName name, wxLocaleForm form) cons
+ }
+ 
+ #if wxUSE_DATETIME
+-wxELF_VERSION_COMPAT("_ZNK10wxUILocale12GetMonthNameEN10wxDateTime5MonthENS0_9NameFlagsE", "3.2.3")
++wxELF_VERSION_COMPAT("_ZNK10wxUILocale12GetMonthNameEN10wxDateTime5MonthENS0_9NameFlagsE", "3.0.3")
+ wxString wxUILocale::GetMonthName(wxDateTime::Month month, wxDateTime::NameFlags flags) const
+ {
+     if (!m_impl)
+@@ -622,7 +622,7 @@ wxString wxUILocale::GetMonthName(wxDateTime::Month month, wxDateTime::NameFlags
+     return m_impl->GetMonthName(month, flags);
+ }
+ 
+-wxELF_VERSION_COMPAT("_ZNK10wxUILocale14GetWeekDayNameEN10wxDateTime7WeekDayENS0_9NameFlagsE", "3.2.3")
++wxELF_VERSION_COMPAT("_ZNK10wxUILocale14GetWeekDayNameEN10wxDateTime7WeekDayENS0_9NameFlagsE", "3.0.3")
+ wxString wxUILocale::GetWeekDayName(wxDateTime::WeekDay weekday, wxDateTime::NameFlags flags) const
+ {
+     if (!m_impl)
+@@ -680,7 +680,7 @@ wxUILocale::~wxUILocale()
+ 
+ 
+ /* static */
+-wxELF_VERSION_COMPAT("_ZN10wxUILocale17GetSystemLocaleIdEv", "3.2.2")
++wxELF_VERSION_COMPAT("_ZN10wxUILocale17GetSystemLocaleIdEv", "3.0.2")
+ wxLocaleIdent wxUILocale::GetSystemLocaleId()
+ {
+     wxUILocale defaultLocale(wxUILocaleImpl::CreateUserDefault());
+--- a/src/gtk/filedlg.cpp
++++ b/src/gtk/filedlg.cpp
+@@ -502,7 +502,7 @@ void wxFileDialog::GTKSelectionChanged(const wxString& filename)
+     UpdateExtraControlUI();
+ }
+ 
+-wxELF_VERSION_COMPAT("_ZN12wxFileDialog11AddShortcutERK8wxStringi", "3.2.1")
++wxELF_VERSION_COMPAT("_ZN12wxFileDialog11AddShortcutERK8wxStringi", "3.0.1")
+ bool wxFileDialog::AddShortcut(const wxString& directory, int WXUNUSED(flags))
+ {
+     wxGtkError error;
+--- a/src/unix/glegl.cpp
++++ b/src/unix/glegl.cpp
+@@ -635,7 +635,7 @@ wxGLCanvasEGL::~wxGLCanvasEGL()
+     gs_alreadySetSwapInterval.erase(this);
+ }
+ 
+-wxELF_VERSION_COMPAT("_ZN13wxGLCanvasEGL23CreateWaylandSubsurfaceEv", "3.2.3")
++wxELF_VERSION_COMPAT("_ZN13wxGLCanvasEGL23CreateWaylandSubsurfaceEv", "3.0.3")
+ void wxGLCanvasEGL::CreateWaylandSubsurface()
+ {
+ #ifdef GDK_WINDOWING_WAYLAND

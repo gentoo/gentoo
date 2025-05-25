@@ -1,0 +1,36 @@
+From 5cef5dec69cd3799bad5689632a50c1ba4988932 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 22 Apr 2025 14:55:20 +0200
+Subject: [PATCH] fix python install dir
+
+Allow passing as parameter
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/src/py/CMakeLists.txt b/src/py/CMakeLists.txt
+index f85b9b4..496f1ce 100644
+--- a/src/py/CMakeLists.txt
++++ b/src/py/CMakeLists.txt
+@@ -52,7 +52,7 @@ target_include_directories(
+ )
+ target_link_libraries(partio_mod PRIVATE ${Python_LIBRARIES} partio)
+ 
+-set(PYTHON_DEST "${CMAKE_INSTALL_LIBDIR}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages" )
++set(PYTHON_DEST "${CMAKE_INSTALL_LIBDIR}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages" CACHE FILEPATH "python_get_sitedir" )
+ 
+ install(TARGETS partio_mod DESTINATION ${PYTHON_DEST})
+ install(FILES partio.i DESTINATION ${CMAKE_INSTALL_DATADIR}/swig)
+diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
+index 6ca7e82..fb2c45a 100644
+--- a/src/tools/CMakeLists.txt
++++ b/src/tools/CMakeLists.txt
+@@ -67,5 +67,5 @@ install(PROGRAMS partedit.py DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME partedit
+ install(PROGRAMS partjson.py DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME partjson)
+ install(PROGRAMS partinspect.py DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME partinspect)
+ 
+-set(PYTHON_DEST "${CMAKE_INSTALL_LIBDIR}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages" )
++set(PYTHON_DEST "${CMAKE_INSTALL_LIBDIR}/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages" CACHE FILEPATH "python_get_sitedir" )
+ install(FILES partedit.py partjson.py partinspect.py DESTINATION ${PYTHON_DEST})
+-- 
+2.49.0
+

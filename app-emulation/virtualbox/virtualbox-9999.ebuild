@@ -30,12 +30,13 @@ inherit desktop edo flag-o-matic java-pkg-opt-2 linux-mod-r1 multilib optfeature
 MY_PN="VirtualBox"
 BASE_PV=7.1.0
 MY_P=${MY_PN}-${PV}
+PATCHES_TAG=7.2.0_pre20250508
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
 SRC_URI="
-	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.2.0_pre20250106.tar.bz2
+	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_TAG}.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
 S="${WORKDIR}/trunk"
@@ -51,7 +52,7 @@ COMMON_DEPEND="
 	acct-group/vboxusers
 	app-arch/xz-utils
 	dev-libs/libtpms
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
@@ -133,7 +134,6 @@ RDEPEND="
 BDEPEND="
 	>=app-arch/tar-1.34-r2
 	>=dev-lang/yasm-0.6.2
-	dev-libs/libIDL
 	dev-util/glslang
 	>=dev-build/kbuild-0.1.9998.3660
 	sys-apps/which
@@ -205,7 +205,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	# Downloaded patchset
-	"${WORKDIR}"/virtualbox-patches-7.2.0_pre20250106/patches
+	"${WORKDIR}"/virtualbox-patches-${PATCHES_TAG}/patches
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs

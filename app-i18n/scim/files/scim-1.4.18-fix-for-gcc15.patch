@@ -1,0 +1,63 @@
+https://github.com/scim-im/scim/pull/44
+
+From 071bf29d5125343d1f4fb7d024b22342171a5174 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sat, 3 May 2025 22:54:48 +0800
+Subject: [PATCH] i18nMethod: fix build w/ gcc 15
+
+gcc 15 report:
+> i18nMethod.c:84:28: error: initialization of 'int (*)(void)' from incompatible pointer type 'int (*)(struct _Xi18nCore *, TransportSW *, char *)' [-Wincompatible-pointer-types]
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/modules/FrontEnd/IMdkit/Xi18n.h b/modules/FrontEnd/IMdkit/Xi18n.h
+index 5bb5837..5ec7f7b 100644
+--- a/modules/FrontEnd/IMdkit/Xi18n.h
++++ b/modules/FrontEnd/IMdkit/Xi18n.h
+@@ -69,12 +69,18 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ #define I18N_SET	1
+ #define I18N_GET	2
+ 
+-typedef struct
++typedef struct _Xi18nCore *Xi18n;
++struct _TransportSW;
++typedef struct _TransportSW TransportSW;
++
++typedef Bool (*CheckAddrFunc)(Xi18n i18n_core, TransportSW *transSW, char *address);
++
++struct _TransportSW
+ {
+     char        *transportname;
+     int         namelen;
+-    Bool        (*checkAddr) ();
+-} TransportSW;
++    CheckAddrFunc checkAddr;
++};
+ 
+ typedef struct _XIMPending
+ {
+@@ -168,8 +174,6 @@ typedef struct _Xi18nClient
+     struct _Xi18nClient *next;
+ } Xi18nClient;
+ 
+-typedef struct _Xi18nCore *Xi18n;
+-
+ /*
+  * Callback Struct for XIM Protocol
+  */
+diff --git a/modules/FrontEnd/IMdkit/i18nMethod.c b/modules/FrontEnd/IMdkit/i18nMethod.c
+index 203f831..6c06bec 100644
+--- a/modules/FrontEnd/IMdkit/i18nMethod.c
++++ b/modules/FrontEnd/IMdkit/i18nMethod.c
+@@ -89,7 +89,7 @@ TransportSW _TransR[] =
+ #ifdef DNETCONN
+     {"decnet",          6, _Xi18nCheckTransAddress},
+ #endif
+-    {(char *) NULL,     0, (Bool (*) ()) NULL}
++    {(char *) NULL,     0, (CheckAddrFunc) NULL}
+ };
+ 
+ static Bool GetInputStyles (Xi18n i18n_core, XIMStyles **p_style)
+-- 
+2.45.2
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -97,7 +97,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.2_p15-configure-clang16.patch"
 	"${FILESDIR}/${PN}-5.2_p21-wpointer-to-int.patch"
 	"${FILESDIR}/${PN}-5.2_p32-memory-leaks.patch"
-	"${FILESDIR}/${PN}-5.2_p32-read-delimiter-in-invalid-mbchar.patch"
+	"${FILESDIR}/${PN}-5.2_p32-invalid-continuation-byte-ignored-as-delimiter-1.patch"
 )
 
 pkg_setup() {

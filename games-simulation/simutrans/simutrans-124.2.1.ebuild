@@ -56,11 +56,11 @@ PATCHES=(
 
 src_unpack() {
 	unpack "simutrans-src-${MY_PV}.zip"
-	cd trunk/simutrans || die "could not cd to ‘simutrans’"
+	cd trunk/simutrans || die "could not cd to 'simutrans'"
 	use minimal || unpack "simutrans_${MY_PAK_64}"
 
 	# Bundled text files are incomplete, bug #580948
-	cd text || die "could not cd to ‘simutrans/text’"
+	cd text || die "could not cd to 'simutrans/text'"
 	unpack "simutrans_language_pack-Base+texts-${PV}.zip"
 }
 

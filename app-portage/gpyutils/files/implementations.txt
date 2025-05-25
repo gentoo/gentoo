@@ -24,6 +24,8 @@ python3_11		old	3.11
 python3_12		old	3.12
 python3_13		current	3.13
 python3_13t		experimental	3.13t
+python3_14		supported	3.14
+python3_14t		experimental	3.14t
 
 pypy1_8	2.7-pypy-1.8	dead	p1.8
 pypy1_9	2.7-pypy-1.9	dead	p1.9

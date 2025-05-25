@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -74,6 +74,7 @@ DEPEND="
 		)
 	jpeg? ( media-libs/libjpeg-turbo )
 	mdns? ( dev-libs/mdns )
+	!minimal? ( sys-libs/pam )
 	openh264? ( media-libs/openh264:= )
 	pulseaudio? (
 		media-plugins/gst-plugins-pulse:1.0

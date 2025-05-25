@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>jayf@gentoo.org</email>
+		<name>Jay Faulkner</name>
+	</maintainer>
 	<use>
-		<flag name="extended">Enable SASS/SCSS and WebP encoding support</flag>
+		<flag name="extended">Enable SASS/SCSS support</flag>
+		<flag name="deploy">Enable support for deployment support (hugo deploy)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">gohugoio/hugo</remote-id>

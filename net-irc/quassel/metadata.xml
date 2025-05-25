@@ -9,10 +9,6 @@
 		<flag name="system-icons">
 			Use <pkg>kde-frameworks/breeze-icons</pkg> rather than icons bundled with Quassel.
 		</flag>
-		<flag name="crypt">
-			Support core-&gt;network per-channel and per-query blowfish
-			encryption via <pkg>app-crypt/qca</pkg> SLOT 2.
-		</flag>
 		<flag name="dbus">
 			Support desktop notifications via the StatusNotifier D-Bus service
 			(used by most modern desktop environments).

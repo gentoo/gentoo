@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/thomasdickey.asc
-inherit verify-sig
+inherit dot-a verify-sig
 
 DESCRIPTION="This is a variant of the flex fast lexical scanner"
 HOMEPAGE="https://invisible-island.net/reflex/"
@@ -21,5 +21,11 @@ BDEPEND="
 "
 
 src_configure() {
+	lto-guarantee-fat
 	econf --with-manpage-format=formatted
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }

@@ -11,7 +11,7 @@ HOMEPAGE="http://www.mediawiki.org"
 SRC_URI="http://releases.wikimedia.org/${PN}/${MY_BRANCH}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc x86"
 IUSE="imagemagick mysql postgres +sqlite"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 

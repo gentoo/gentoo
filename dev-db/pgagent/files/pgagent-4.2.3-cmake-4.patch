@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/954002
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@
+ ################################################################################
+ # Initial setup
+ ################################################################################
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ 
+ IF(COMMAND cmake_policy)
+     CMAKE_POLICY(SET CMP0003 NEW)

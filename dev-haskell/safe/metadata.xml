@@ -13,6 +13,6 @@
 		your code.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">ndmitchell/safe#readme</remote-id>
+		<remote-id type="github">ndmitchell/safe</remote-id>
 	</upstream>
 </pkgmetadata>

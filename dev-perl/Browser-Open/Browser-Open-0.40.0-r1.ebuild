@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Open a browser at a given URL"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86"
 
 RDEPEND=""
 BDEPEND="${RDEPEND}

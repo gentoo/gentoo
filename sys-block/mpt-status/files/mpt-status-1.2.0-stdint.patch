@@ -1,0 +1,265 @@
+Use C99/stdint.h types over non-portable (deprecated) glibc types
+Bug: https://bugs.gentoo.org/713400
+
+--- a/linux-sources/drivers/message/fusion/lsi/mpi_type.h
++++ b/linux-sources/drivers/message/fusion/lsi/mpi_type.h
+@@ -26,6 +26,7 @@
+ #ifndef MPI_TYPE_H
+ #define MPI_TYPE_H
+ 
++#include <stdint.h>
+ 
+ /*******************************************************************************
+  * Define MPI_POINTER if it hasn't already been defined. By default MPI_POINTER
+@@ -50,7 +51,7 @@
+ 
+ 
+ typedef int32_t   S32;
+-typedef u_int32_t U32;
++typedef uint32_t U32;
+ 
+ typedef struct _S64
+ {
+--- a/linux-sources/drivers/message/fusion/mptctl.h
++++ b/linux-sources/drivers/message/fusion/mptctl.h
+@@ -267,9 +267,9 @@
+ 
+ #ifndef __KERNEL__
+ typedef struct {
+-	uint	event;
+-	uint	eventContext;
+-	uint	data[2];
++	unsigned	event;
++	unsigned	eventContext;
++	unsigned	data[2];
+ } MPT_IOCTL_EVENTS;
+ #endif
+ 
+@@ -390,7 +390,7 @@
+ 	u16		 subsystem_id;
+ 	u8		 devfn;
+ 	u8		 bus;
+-	ushort		 host_no;		/* SCSI Host number, if scsi driver not loaded*/
++	unsigned short		 host_no;		/* SCSI Host number, if scsi driver not loaded*/
+ 	u8		 fw_version[16];	/* string */
+ 	u8		 serial_number[24];	/* string */
+ 	u32		 ioc_status;
+@@ -413,7 +413,7 @@
+ 	u16		 subsystem_id;
+ 	u8		 devfn;
+ 	u8		 bus;
+-	ushort		 host_no;		/* SCSI Host number, if scsi driver not loaded*/
++	unsigned short		 host_no;		/* SCSI Host number, if scsi driver not loaded*/
+ 	u8		 fw_version[16];	/* string */
+ 	u8		 serial_number[24];	/* string */
+ 	u32		 ioc_status;
+--- a/mpt-status-1.2.0/incl/pci.h
++++ b/mpt-status-1.2.0/incl/pci.h
+@@ -31,31 +31,31 @@
+ #ifdef OS_FREEBSD
+ #include <sys/types.h>
+ 
+-typedef u_int8_t byte;
+-typedef u_int8_t u8;
+-typedef u_int16_t word;
+-typedef u_int16_t u16;
+-typedef u_int32_t u32;
++typedef uint8_t byte;
++typedef uint8_t u8;
++typedef uint16_t word;
++typedef uint16_t u16;
++typedef uint32_t u32;
+ #endif
+ 
+ #ifdef OS_NETBSD
+ #include <sys/types.h>
+ 
+-typedef u_int8_t byte;
+-typedef u_int8_t u8;
+-typedef u_int16_t word;
+-typedef u_int16_t u16;
+-typedef u_int32_t u32;
++typedef uint8_t byte;
++typedef uint8_t u8;
++typedef uint16_t word;
++typedef uint16_t u16;
++typedef uint32_t u32;
+ #endif
+ 
+ #ifdef OS_AIX
+ #include <sys/param.h>
+ 
+-typedef u_int8_t byte;
+-typedef u_int8_t u8;
+-typedef u_int16_t word;
+-typedef u_int16_t u16;
+-typedef u_int32_t u32;
++typedef uint8_t byte;
++typedef uint8_t u8;
++typedef uint16_t word;
++typedef uint16_t u16;
++typedef uint32_t u32;
+ #endif
+ 
+ #ifdef HAVE_LONG_ADDRESS
+--- a/mpt-status-1.2.0/mpt-status.c
++++ b/mpt-status-1.2.0/mpt-status.c
+@@ -117,7 +117,7 @@
+ static int mpt_fprintf(FILE *, const char *, ...);
+ static void print_usage(const char *);
+ static void print_version(void);
+-static int read_page2(uint);
++static int read_page2(unsigned);
+ //static int hasVolume(void);
+ static void GetVolumeInfo(void);
+ static void GetPhysDiskInfo(RaidVol0PhysDisk_t *, int);
+@@ -193,7 +193,7 @@
+ 	return 0;
+ }
+ 
+-mpiIoctlBlk_t *allocIoctlBlk(uint numBytes) {
++mpiIoctlBlk_t *allocIoctlBlk(unsigned numBytes) {
+ 	int blksize = sizeof(mpiIoctlBlk_t) + numBytes;
+ 
+ 	if (blksize >= BIG) {
+@@ -274,7 +274,7 @@
+ 	Config_t 		*ConfigRequest;
+ 	ConfigReply_t 		*pReply = NULL;
+ 	RaidVolumePage0_t 	*pRVP0 = NULL;
+-	uint numBytes;
++	unsigned numBytes;
+ 	int status;
+ 	int id;
+ 	int scsi_id;
+@@ -330,7 +330,7 @@
+ 	return -1;
+ }
+ 
+-static int read_page2(uint flags) {
++static int read_page2(unsigned flags) {
+ 	MPIDefaultReply_t *pReply = NULL;
+ 	int CmdBlkSize;
+ 	int status = -1;
+@@ -361,8 +361,8 @@
+ 	Config_t *ConfigRequest;
+ 	ConfigReply_t *pReply = NULL;
+ 	IOCPage2_t *pIOC2 = NULL;
+-	uint numBytes;
+-	uint numVolumes = 0;
++	unsigned numBytes;
++	unsigned numVolumes = 0;
+ 	int status;
+ 	unsigned bus = id_of_primary_device;
+ 
+@@ -419,7 +419,7 @@
+ 	RaidVolumePage0_t 	*pRVP0 = NULL;
+ 	RaidVol0PhysDisk_t	disk_num[16];
+ 	unsigned char		pdisk_vol[16];
+-	uint numBytes;
++	unsigned numBytes;
+ 	int status;
+ 	int i, id;
+ 	int pdisk_cnt = 0;
+@@ -515,7 +515,7 @@
+ static void GetPhysDiskInfo(RaidVol0PhysDisk_t *pDisk, int count) {
+ 	Config_t *ConfigRequest;
+ 	ConfigReply_t *pReply = NULL;
+-	uint numBytes;
++	unsigned numBytes;
+ 	int  status;
+ 	int  i;
+ 
+@@ -534,7 +534,7 @@
+ 	ConfigRequest->MsgContext   = -1;
+ 	ConfigRequest->Header.PageType = MPI_CONFIG_PAGETYPE_RAID_PHYSDISK;
+ 	ConfigRequest->Header.PageNumber = ioc_unit;
+-	ConfigRequest->PageAddress = cpu_to_le32((uint)pDisk[0].PhysDiskNum);
++	ConfigRequest->PageAddress = cpu_to_le32((unsigned)pDisk[0].PhysDiskNum);
+ 
+ 	status = read_page2(MPT_FLAGS_KEEP_MEM);
+ 	if ((status == 0) && (pReply->Header.PageLength > 0)) {
+@@ -550,7 +550,7 @@
+ 	ConfigRequest->Header.PageVersion = pReply->Header.PageVersion;
+ 	ConfigRequest->Header.PageLength = pReply->Header.PageLength;
+ 	for (i = 0; i < count; i++){
+-		ConfigRequest->PageAddress = cpu_to_le32((uint)pDisk[i].PhysDiskNum);
++		ConfigRequest->PageAddress = cpu_to_le32((unsigned)pDisk[i].PhysDiskNum);
+ 
+ 		status = read_page2(MPT_FLAGS_KEEP_MEM);
+ 		if (status == 0) {
+@@ -573,9 +573,9 @@
+ 	Config_t *ConfigRequest;
+ 	ConfigReply_t *pReply = NULL;
+ 	IOCPage5_t *pPg5 = NULL;
+-	uint numBytes;
++	unsigned numBytes;
+ 	int  status;
+-	uint num_spares = 0;
++	unsigned num_spares = 0;
+ 
+ 	numBytes = (sizeof(Config_t) - sizeof(SGE_IO_UNION)) + sizeof (SGESimple64_t);
+ 	if ((mpiBlkPtr = allocIoctlBlk(numBytes)) == NULL)
+@@ -639,7 +639,7 @@
+ 			ConfigRequest->Function     = MPI_FUNCTION_CONFIG;
+ 			ConfigRequest->MsgContext   = -1;
+ 			ConfigRequest->Header.PageType = MPI_CONFIG_PAGETYPE_RAID_PHYSDISK;
+-			ConfigRequest->PageAddress = cpu_to_le32((uint)disk_num[0].PhysDiskNum);
++			ConfigRequest->PageAddress = cpu_to_le32((unsigned)disk_num[0].PhysDiskNum);
+ 
+ 			status = read_page2(MPT_FLAGS_KEEP_MEM);
+ 			if ((status == 0) && (pReply->Header.PageLength > 0)) {
+@@ -655,7 +655,7 @@
+ 			ConfigRequest->Header.PageVersion = pReply->Header.PageVersion;
+ 			ConfigRequest->Header.PageLength = pReply->Header.PageLength;
+ 			for (i = 0; i < num_spares; i++){
+-				ConfigRequest->PageAddress = cpu_to_le32((uint)disk_num[i].PhysDiskNum);
++				ConfigRequest->PageAddress = cpu_to_le32((unsigned)disk_num[i].PhysDiskNum);
+ 
+ 				status = read_page2(MPT_FLAGS_KEEP_MEM);
+ 				if (status == 0) {
+@@ -671,10 +671,10 @@
+ 
+ static void GetResyncPercentageSilent(RaidVol0PhysDisk_t *pDisk, unsigned char *pVol, int count) {
+ 	MpiRaidActionRequest_t	*pRequest;
+-	uint			blks_done;
+-	uint 			numBytes;
++	unsigned			blks_done;
++	unsigned 			numBytes;
+ 	int			i;
+-	uint			tot_blks, blks_left;
++	unsigned			tot_blks, blks_left;
+ 	int  			status;
+ 
+ 	numBytes = (sizeof(MpiRaidActionRequest_t) - sizeof(SGE_IO_UNION))
+@@ -695,7 +695,7 @@
+ 		status = read_page2(MPT_FLAGS_KEEP_MEM);
+ 		if (status == 0) {
+ 			// pDisk[i].PhysDiskNum == scsi_id
+-			uint *pdata = (uint *) mpiBlkPtr->replyFrameBufPtr;
++			unsigned *pdata = (unsigned *) mpiBlkPtr->replyFrameBufPtr;
+ 			pdata += 6;
+ 			tot_blks = *pdata;
+ 			pdata++;
+@@ -718,10 +718,10 @@
+ 
+ static void GetResyncPercentage(RaidVol0PhysDisk_t *pDisk, unsigned char *pVol, int count) {
+ 	MpiRaidActionRequest_t	*pRequest;
+-	uint			blks_done;
+-	uint 			numBytes;
++	unsigned			blks_done;
++	unsigned 			numBytes;
+ 	int			i;
+-	uint			tot_blks, blks_left;
++	unsigned			tot_blks, blks_left;
+ 	int  			status;
+ 
+ 	numBytes = (sizeof(MpiRaidActionRequest_t) - sizeof(SGE_IO_UNION))
+@@ -746,7 +746,7 @@
+ 		status = read_page2(MPT_FLAGS_KEEP_MEM);
+ 		if (status == 0) {
+ 			// pDisk[i].PhysDiskNum == scsi_id
+-			uint *pdata = (uint *) mpiBlkPtr->replyFrameBufPtr;
++			unsigned *pdata = (unsigned *) mpiBlkPtr->replyFrameBufPtr;
+ 			mpt_debug("DEBUG: *pdata=%d\n", *pdata);
+ 			pdata += 6;
+ 			tot_blks = *pdata;

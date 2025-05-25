@@ -3,6 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<bugs-to>https://github.com/fastfloat/fast_float/issues</bugs-to>
+		<changelog>https://github.com/fastfloat/fast_float/releases</changelog>
 		<remote-id type="github">fastfloat/fast_float</remote-id>
 	</upstream>
 </pkgmetadata>

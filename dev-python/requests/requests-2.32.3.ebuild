@@ -5,7 +5,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -16,6 +16,8 @@ HOMEPAGE="
 	https://github.com/psf/requests/
 	https://pypi.org/project/requests/
 "
+
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.32.3-patches.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -41,6 +43,14 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# https://github.com/psf/requests/pull/6897
+	"${WORKDIR}/${PN}-2.32.3-patches/${PN}-2.32.3-tests.patch"
+	"${WORKDIR}/${PN}-2.32.3-patches/${PN}-2.32.3-tests-regenerate.patch"
+	# https://github.com/psf/requests/pull/6924
+	"${WORKDIR}/${PN}-2.32.3-patches/${PN}-2.32.3-tests-more.patch"
+)
+
 distutils_enable_tests pytest
 
 python_test() {
@@ -53,12 +63,9 @@ python_test() {
 		# require IPv4 interface in 10.* range
 		tests/test_requests.py::TestTimeout::test_connect_timeout
 		tests/test_requests.py::TestTimeout::test_total_timeout_connect
-		# TODO: openssl?
-		tests/test_requests.py::TestRequests::test_pyopenssl_redirect
-		# flask-2
-		tests/test_requests.py::TestRequests::test_cookie_sent_on_redirect
-		tests/test_requests.py::TestRequests::test_cookie_removed_on_expire
-		tests/test_requests.py::TestPreparingURLs::test_redirecting_to_bad_url
+		# As of 2.32.3, with python-3.13.3, despite the patches we've
+		# backported, this still seems to fail. Maybe openssl-3.5?
+		tests/test_requests.py::TestPreparingURLs::test_different_connection_pool_for_tls_settings_verify_bundle_unexpired_cert
 	)
 
 	case ${EPYTHON} in

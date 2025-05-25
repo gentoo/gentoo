@@ -14,7 +14,7 @@ SRC_URI="https://downloads.apache.org/tapestry/apache-tapestry-${PV}-sources.zip
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="app-arch/unzip"
 
@@ -34,6 +34,7 @@ JAVA_SRC_DIR="tapestry-json/src/main/java"
 
 src_compile() {
 	# build classes needed for compilation
+	mkdir -p target/deps || die "mkdir" # openjdk:8 doesn't do it.
 	ejavac -d target/deps \
 		-cp "$(java-pkg_getjars --build-only slf4j-api)" \
 		$(find \

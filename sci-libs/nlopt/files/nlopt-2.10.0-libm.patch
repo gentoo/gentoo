@@ -1,0 +1,48 @@
+https://github.com/stevengj/nlopt/commit/e45da76243191febe447e3173e5d23e05fc84ee4
+
+From e45da76243191febe447e3173e5d23e05fc84ee4 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Mon, 24 Feb 2025 15:02:22 +0100
+Subject: [PATCH] CMake: Detect libm with find_library (#596)
+
+---
+ CMakeLists.txt | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e5d9c67c..c0a84de3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -80,8 +80,6 @@ include (CheckTypeSize)
+ include (CheckCCompilerFlag)
+ include (CheckCXXSymbolExists)
+ include (CheckCSourceCompiles)
+-include (CheckCXXCompilerFlag)
+-include (CheckLibraryExists)
+ 
+ #==============================================================================
+ # COMPILATION CHECKINGS and CONFIGURATION GENERATION
+@@ -108,9 +106,8 @@ set (HAVE_UINT32_T ${SIZEOF_UINT32_T})
+ check_type_size ("unsigned int" SIZEOF_UNSIGNED_INT)
+ check_type_size ("unsigned long" SIZEOF_UNSIGNED_LONG)
+ 
+-check_library_exists ("m" sqrt "" HAVE_LIBM)
+-if (HAVE_LIBM)
+-  set (M_LIBRARY m)
++find_library(M_LIBRARY m)
++if (M_LIBRARY)
+   set (LIBS_PRIVATE "-l${M_LIBRARY}")
+ endif()
+ 
+@@ -258,7 +255,9 @@ if (NLOPT_LUKSAN)
+   target_include_directories(${nlopt_lib} PRIVATE src/algs/luksan)
+   target_compile_definitions (${nlopt_lib} PRIVATE NLOPT_LUKSAN)
+ endif ()
+-target_link_libraries (${nlopt_lib} ${M_LIBRARY})
++if (M_LIBRARY)
++  target_link_libraries (${nlopt_lib} ${M_LIBRARY})
++endif ()
+ set_target_properties (${nlopt_lib} PROPERTIES SOVERSION ${SO_MAJOR})
+ set_target_properties (${nlopt_lib} PROPERTIES VERSION "${SO_MAJOR}.${SO_MINOR}.${SO_PATCH}")
+ 
+

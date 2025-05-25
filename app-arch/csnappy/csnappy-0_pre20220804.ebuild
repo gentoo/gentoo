@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${MY_COMMIT}
 LICENSE="BSD"
 # 0/${PV} b/c of the SONAME situation (see below).
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # https://github.com/zeevt/csnappy/issues/33
 # No SONAME yet.

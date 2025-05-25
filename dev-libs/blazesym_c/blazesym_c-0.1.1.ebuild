@@ -36,7 +36,7 @@ LICENSE+="
 "
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 # Currently suffers from (at least):
 # - problems with crate tarball

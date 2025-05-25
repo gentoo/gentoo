@@ -294,6 +294,8 @@ src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
+
 	# It fails on alpha without this
 	use alpha && append-ldflags "-Wl,--no-relax"
 

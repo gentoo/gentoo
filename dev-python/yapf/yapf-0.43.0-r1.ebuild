@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
@@ -29,6 +29,7 @@ RDEPEND="
 "
 
 python_test() {
+	touch "${S}/.tox" || die
 	"${EPYTHON}" -m unittest discover -v -p '*_test.py' ||
 		die "Tests failed with ${EPYTHON}"
 }

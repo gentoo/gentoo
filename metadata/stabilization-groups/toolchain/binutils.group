@@ -1,0 +1,4 @@
+sys-devel/binutils
+sys-devel/binutils-config
+sys-devel/binutils-hppa64
+sys-libs/binutils-libs

@@ -1,0 +1,12 @@
+diff --git a/IO/OCCT/CMakeLists.txt b/IO/OCCT/CMakeLists.txt
+index 836d545..2cf67a8 100644
+--- a/IO/OCCT/CMakeLists.txt
++++ b/IO/OCCT/CMakeLists.txt
+@@ -2,6 +2,7 @@ vtk_module_find_package(
+   PACKAGE OpenCASCADE
+   FORWARD_VERSION_REQ EXACT
+   VERSION_VAR "@OpenCASCADE_MAJOR_VERSION@.@OpenCASCADE_MINOR_VERSION@.@OpenCASCADE_MAINTENANCE_VERSION@"
++  COMPONENTS FoundationClasses ModelingData ModelingAlgorithms Visualization ApplicationFramework DataExchange Draw
+ )
+
+ set(opencascade_req_targets

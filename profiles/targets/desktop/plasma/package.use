@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Marek Szuba <marecki@gentoo.org> (2023-11-12)
@@ -53,6 +53,7 @@ kde-apps/marble phonon
 
 # Required by kde-plasma/plasma-meta
 kde-plasma/kwin lock
+kde-plasma/kwin-x11 lock
 
 # plasma profile never enabled pulseaudio. We're skipping to pipewire.
 media-video/pipewire sound-server

@@ -1,0 +1,19 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 14b5df0..1db3080 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -69,11 +69,11 @@ requires = [
+   "setuptools>=64",
+   "setuptools-scm>=8"
+ ]
+-# build-backend = 'setuptools.build_meta'
++build-backend = 'setuptools.build_meta'
+ # in-tree build backend, wrapper around setuptools, just to run ui-compile task
+ # See also https://setuptools.pypa.io/en/latest/build_meta.html#dynamic-build-dependencies-and-other-build-meta-tweaks
+-build-backend = "setuptools_wrapper"
+-backend-path = ["src/tools"]
++# build-backend = "setuptools_wrapper"
++# backend-path = ["src/tools"]
+ 
+ [tool.setuptools.exclude-package-data]
+ "*" = ['*.png', '*.ui', '*.qrc' ]

@@ -6,6 +6,28 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
+# media-sound/hydrogen[lash] build is broken, and dropped upstream in next
+# version. Bug #946125
+media-sound/hydrogen lash
+
+# Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
+# Does not compile as of 2024.1.1, requires buildsystem fixes.
+dev-games/simgear gdal
+games-simulation/flightgear gdal
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-14)
+# dev-qt/qtwebchannel:5 is masked, last revdep was dev-python/pyqtwebengine
+dev-python/pyqt5 webchannel
+
+# Joonas Niilola <juippis@gentoo.org> (2025-05-14)
+# Experimental, no official upstream support.
+www-client/firefox jpegxl
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# Requires llvm-15
+media-gfx/openvdb ax
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-30)
 # Valve has modified Wine's ffmpeg code with a new pcm_byte_order_reverse_bsf.c
 # that seems riddled with issues (missing identifiers, incompatible pointer
@@ -45,10 +67,6 @@ sys-apps/usbutils usbreset
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # sys-cluster/pacemaker is being removed.
 sys-cluster/drbd-utils pacemaker
-
-# Michał Górny <mgorny@gentoo.org> (2025-03-05)
-# Mask until we have keyworded dev-util/spirv-llvm-translator:20 release.
-llvm-core/libclc llvm_slot_20
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-05)
 # Mask until we have keyworded dev-lang/rust{,-bin} / slot 20 release.
@@ -278,7 +296,6 @@ net-analyzer/nagios-plugin-check_raid hpa
 # Michał Górny <mgorny@gentoo.org> (2023-12-22)
 # Requires LLVM 14 that is being removed.
 <dev-lang/ghc-9.4 llvm
-<media-gfx/openvdb-11 ax
 sys-devel/sparse llvm
 
 # Takuya Wakazono <pastalian46@gmail.com> (2023-11-21)
@@ -565,12 +582,6 @@ sys-devel/gcc custom-cflags
 # situation is resolved.
 dev-util/rizin test
 
-# Sam James <sam@gentoo.org> (2021-12-27)
-# Doc building is broken and no new releases in a long time.
-# bug #830013
-# fixed in sci-libs/flann-1.9.2-20221027
-<=sci-libs/flann-1.9.2 doc
-
 # Joonas Niilola <juippis@gentoo.org> (2021-12-20)
 # Broken, upstream issue/PR open since 2021-05 without reply.
 # Gentoo bug #821253
@@ -693,10 +704,6 @@ app-i18n/enca doc
 # Rick Farina <zerochaos@gentoo.org> (2020-12-21)
 # This use flag enables code which appears to be broken
 net-wireless/gr-osmosdr xtrx
-
-# Michał Górny <mgorny@gentoo.org> (2020-12-18)
-# app-text/ots is masked for removal.  Bug #648964.
-app-office/abiword ots
 
 # Michał Górny <mgorny@gentoo.org> (2020-12-04)
 # Mask the experimental targets in release ebuilds.

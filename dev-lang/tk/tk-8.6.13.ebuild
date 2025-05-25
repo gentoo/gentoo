@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,8 +31,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!aqua? ( x11-base/xorg-proto )"
 BDEPEND="virtual/pkgconfig"
-# Not bumped to 8.6
-#RESTRICT=test
 
 SPARENT="${WORKDIR}/${PN}$(ver_cut 1-3 ${PV})"
 S="${SPARENT}"/unix

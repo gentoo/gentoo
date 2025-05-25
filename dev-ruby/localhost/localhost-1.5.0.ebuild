@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="readme.md releases.md"
 RUBY_FAKEGEM_GEMSPEC="localhost.gemspec"
@@ -17,12 +17,10 @@ SRC_URI="https://github.com/socketry/localhost/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 ruby_add_bdepend "
 	test? (
-		dev-ruby/async-io
-		dev-ruby/async-process
 		dev-ruby/io-endpoint
 		dev-ruby/sus-fixtures-async
 	)
@@ -31,6 +29,9 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
 	sed -i -e '/covered/Id' config/sus.rb || die
+
+	sed -e "s:/tmp/state:${TMP}/state:" \
+		-i test/localhost/state.rb || die
 
 	# Avoid unpackaged sus-fixtures-async-http which has a huge dependency tree.
 	rm -f test/localhost/protocol.rb || die

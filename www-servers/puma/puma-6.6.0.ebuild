@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_GEMSPEC="puma.gemspec"
 
@@ -27,7 +27,7 @@ ruby_add_bdepend "virtual/ruby-ssl
 	test? (
 		dev-ruby/concurrent-ruby
 		dev-ruby/localhost
-		dev-ruby/rack:3.0
+		|| ( dev-ruby/rack:3.1 dev-ruby/rack:3.0 )
 		dev-ruby/rackup
 		>=dev-ruby/minitest-5.9:5
 		>=dev-ruby/test-unit-3.0:2
@@ -38,7 +38,6 @@ ruby_add_rdepend "dev-ruby/nio4r:2"
 all_ruby_prepare() {
 	sed -e '/\(pride\|prove\|stub_const\)/ s:^:#:' \
 		-e '/require_relative.*verbose/ s:^:#:' \
-		-e '/securerandom/arequire "rack/handler"' \
 		-i test/helper.rb || die
 
 	# Avoid tests failing inconsistently

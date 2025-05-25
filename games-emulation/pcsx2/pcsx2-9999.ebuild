@@ -87,7 +87,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 	"${FILESDIR}"/${PN}-2.2.0-missing-header.patch
-	"${FILESDIR}"/${PN}-2.3.275-missing-header.patch
 	"${FILESDIR}"/${PN}-2.3.309-pluto-pkgconf.patch
 )
 

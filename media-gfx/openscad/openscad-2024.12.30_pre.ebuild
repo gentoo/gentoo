@@ -39,7 +39,7 @@ else
 	else
 		SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -> ${P}.tar.gz"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 # Code is GPL-3+, MCAD library is LGPL-2.1

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -27,6 +27,11 @@ BDEPEND="
 		' 'python*')
 	)
 "
+
+PATCHES=(
+	# https://github.com/lark-parser/lark/pull/1483
+	"${FILESDIR}"/${P}-py314.patch
+)
 
 distutils_enable_tests pytest
 

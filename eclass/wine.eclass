@@ -188,9 +188,8 @@ wine_src_configure() {
 	# may segfault at runtime if used (bug #931329)
 	filter-flags -Wl,--gc-sections
 
-	# avoid gcc-15's c23 default for now (bug #943849)
-	# TODO: verify if still needed and limit to old until cleanup
-	append-cflags -std=gnu17
+	# avoid gcc-15's c23 default with older wine (bug #943849)
+	ver_test -lt 10 && append-cflags -std=gnu17
 
 	# Wine uses many linker tricks that are unlikely to work
 	# with anything but bfd or lld (bug #867097)
@@ -300,6 +299,12 @@ wine_src_configure() {
 			$(usev arm64 aarch64)
 		)
 		conf+=( ${archs:+--enable-archs="${archs[*]}"} )
+
+		if use amd64 && use !abi_x86_64; then
+			# same as above for 32bit-only on 64bit (allowed for wine)
+			conf+=( TARGETFLAGS=-m32 )
+			multilib_toolchain_setup x86
+		fi
 
 		econf "${conf[@]}" "${wineconfargs[@]}"
 	fi

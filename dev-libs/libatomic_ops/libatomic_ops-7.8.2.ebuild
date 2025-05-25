@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit libtool multilib-minimal
 
 DESCRIPTION="Implementation for atomic memory update operations"
-HOMEPAGE="https://github.com/ivmai/libatomic_ops"
-SRC_URI="https://github.com/ivmai/libatomic_ops/releases/download/v${PV}/${P}.tar.gz"
+HOMEPAGE="https://github.com/bdwgc/libatomic_ops/"
+SRC_URI="https://github.com/bdwgc/libatomic_ops/releases/download/v${PV}/${P}.tar.gz"
 
 # See doc/LICENSING.txt
 LICENSE="MIT boehm-gc GPL-2+"

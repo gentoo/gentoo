@@ -7,14 +7,13 @@ MY_PV="${PV//_p/-P}"
 MY_PV="${MY_PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 
+PYTHON_COMPAT=( python3_{11..12} )
+inherit autotools fcaps flag-o-matic python-single-r1 systemd tmpfiles
+
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="https://www.isc.org/kea/"
 
-PYTHON_COMPAT=( python3_{11..12} )
-
-inherit autotools fcaps flag-o-matic python-single-r1 systemd tmpfiles
-
-if [[ ${PV} = 9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
@@ -27,10 +26,13 @@ else
 		fi
 	fi
 fi
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="ISC BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
 IUSE="debug doc mysql +openssl postgres +samples shell test"
+
+REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -55,10 +57,6 @@ RDEPEND="${COMMON_DEPEND}
 	acct-group/dhcp
 	acct-user/dhcp"
 BDEPEND="virtual/pkgconfig"
-
-REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.0-openssl-version.patch

@@ -1,0 +1,422 @@
+From 2354c1a8d21cf8f6d6f6a9d54bb3a69b5908e035 Mon Sep 17 00:00:00 2001
+From: Jelle Zijlstra <jelle.zijlstra@gmail.com>
+Date: Fri, 2 May 2025 19:45:27 -0700
+Subject: [PATCH 1/2] Fix test failures on Python 3.14 (#566)
+
+---
+ src/test_typing_extensions.py | 40 ++++++++++++++++++++++++-----------
+ src/typing_extensions.py      |  9 ++++++--
+ 2 files changed, 35 insertions(+), 14 deletions(-)
+
+diff --git a/src/test_typing_extensions.py b/src/test_typing_extensions.py
+index 584b0fa..7b08f72 100644
+--- a/src/test_typing_extensions.py
++++ b/src/test_typing_extensions.py
+@@ -901,10 +901,12 @@ class Cls:
+ 
+ class DeprecatedCoroTests(BaseTestCase):
+     def test_asyncio_iscoroutinefunction(self):
+-        self.assertFalse(asyncio.coroutines.iscoroutinefunction(func))
+-        self.assertFalse(asyncio.coroutines.iscoroutinefunction(Cls.func))
+-        self.assertTrue(asyncio.coroutines.iscoroutinefunction(coro))
+-        self.assertTrue(asyncio.coroutines.iscoroutinefunction(Cls.coro))
++        with warnings.catch_warnings():
++            warnings.simplefilter("ignore", DeprecationWarning)
++            self.assertFalse(asyncio.coroutines.iscoroutinefunction(func))
++            self.assertFalse(asyncio.coroutines.iscoroutinefunction(Cls.func))
++            self.assertTrue(asyncio.coroutines.iscoroutinefunction(coro))
++            self.assertTrue(asyncio.coroutines.iscoroutinefunction(Cls.coro))
+ 
+     @skipUnless(TYPING_3_12_ONLY or TYPING_3_13_0_RC, "inspect.iscoroutinefunction works differently on Python < 3.12")
+     def test_inspect_iscoroutinefunction(self):
+@@ -7228,7 +7230,7 @@ class TypeVarTests(BaseTestCase):
+ 
+     def test_bound_errors(self):
+         with self.assertRaises(TypeError):
+-            TypeVar('X', bound=Union)
++            TypeVar('X', bound=Optional)
+         with self.assertRaises(TypeError):
+             TypeVar('X', str, float, bound=Employee)
+         with self.assertRaisesRegex(TypeError,
+@@ -8213,19 +8215,26 @@ class TestGetAnnotations(BaseTestCase):
+             get_annotations(f2, format=Format.FORWARDREF),
+             {"a": "undefined"},
+         )
+-        self.assertEqual(get_annotations(f2, format=2), {"a": "undefined"})
++        # Test that the raw int also works
++        self.assertEqual(
++            get_annotations(f2, format=Format.FORWARDREF.value),
++            {"a": "undefined"},
++        )
+ 
+         self.assertEqual(
+             get_annotations(f1, format=Format.STRING),
+             {"a": "int"},
+         )
+-        self.assertEqual(get_annotations(f1, format=3), {"a": "int"})
++        self.assertEqual(
++            get_annotations(f1, format=Format.STRING.value),
++            {"a": "int"},
++        )
+ 
+         with self.assertRaises(ValueError):
+             get_annotations(f1, format=0)
+ 
+         with self.assertRaises(ValueError):
+-            get_annotations(f1, format=4)
++            get_annotations(f1, format=42)
+ 
+     def test_custom_object_with_annotations(self):
+         class C:
+@@ -8264,10 +8273,17 @@ class TestGetAnnotations(BaseTestCase):
+         foo.__annotations__ = {"a": "foo", "b": "str"}
+         for format in Format:
+             with self.subTest(format=format):
+-                self.assertEqual(
+-                    get_annotations(foo, format=format),
+-                    {"a": "foo", "b": "str"},
+-                )
++                if format is Format.VALUE_WITH_FAKE_GLOBALS:
++                    with self.assertRaisesRegex(
++                        ValueError,
++                        "The VALUE_WITH_FAKE_GLOBALS format is for internal use only"
++                    ):
++                        get_annotations(foo, format=format)
++                else:
++                    self.assertEqual(
++                        get_annotations(foo, format=format),
++                        {"a": "foo", "b": "str"},
++                    )
+ 
+         self.assertEqual(
+             get_annotations(foo, eval_str=True, locals=locals()),
+diff --git a/src/typing_extensions.py b/src/typing_extensions.py
+index fa89c83..d089d5e 100644
+--- a/src/typing_extensions.py
++++ b/src/typing_extensions.py
+@@ -4153,8 +4153,9 @@ _PEP_649_OR_749_IMPLEMENTED = (
+ 
+ class Format(enum.IntEnum):
+     VALUE = 1
+-    FORWARDREF = 2
+-    STRING = 3
++    VALUE_WITH_FAKE_GLOBALS = 2
++    FORWARDREF = 3
++    STRING = 4
+ 
+ 
+ if _PEP_649_OR_749_IMPLEMENTED:
+@@ -4198,6 +4199,10 @@ else:
+ 
+         """
+         format = Format(format)
++        if format is Format.VALUE_WITH_FAKE_GLOBALS:
++            raise ValueError(
++                "The VALUE_WITH_FAKE_GLOBALS format is for internal use only"
++            )
+ 
+         if eval_str and format is not Format.VALUE:
+             raise ValueError("eval_str=True is only supported with format=Format.VALUE")
+From 62740a52eca38414efc9ce01b361ab45eae7c38e Mon Sep 17 00:00:00 2001
+From: Jelle Zijlstra <jelle.zijlstra@gmail.com>
+Date: Mon, 5 May 2025 09:50:14 -0700
+Subject: [PATCH 2/2] Fix tests on Python 3.14 (#592)
+
+---
+ src/test_typing_extensions.py | 117 ++++++++++++++++++++++++++++++----
+ src/typing_extensions.py      |  67 +++++++++++++++----
+ 2 files changed, 161 insertions(+), 23 deletions(-)
+
+diff --git a/src/test_typing_extensions.py b/src/test_typing_extensions.py
+index 7b08f72..9742b98 100644
+--- a/src/test_typing_extensions.py
++++ b/src/test_typing_extensions.py
+@@ -440,6 +440,48 @@ class BaseTestCase(TestCase):
+             raise self.failureException(message)
+ 
+ 
++class EqualToForwardRef:
++    """Helper to ease use of annotationlib.ForwardRef in tests.
++
++    This checks only attributes that can be set using the constructor.
++
++    """
++
++    def __init__(
++        self,
++        arg,
++        *,
++        module=None,
++        owner=None,
++        is_class=False,
++    ):
++        self.__forward_arg__ = arg
++        self.__forward_is_class__ = is_class
++        self.__forward_module__ = module
++        self.__owner__ = owner
++
++    def __eq__(self, other):
++        if not isinstance(other, (EqualToForwardRef, typing.ForwardRef)):
++            return NotImplemented
++        if sys.version_info >= (3, 14) and self.__owner__ != other.__owner__:
++            return False
++        return (
++            self.__forward_arg__ == other.__forward_arg__
++            and self.__forward_module__ == other.__forward_module__
++            and self.__forward_is_class__ == other.__forward_is_class__
++        )
++
++    def __repr__(self):
++        extra = []
++        if self.__forward_module__ is not None:
++            extra.append(f", module={self.__forward_module__!r}")
++        if self.__forward_is_class__:
++            extra.append(", is_class=True")
++        if sys.version_info >= (3, 14) and self.__owner__ is not None:
++            extra.append(f", owner={self.__owner__!r}")
++        return f"EqualToForwardRef({self.__forward_arg__!r}{''.join(extra)})"
++
++
+ class Employee:
+     pass
+ 
+@@ -5075,6 +5117,64 @@ class TypedDictTests(BaseTestCase):
+                 x: str
+ 
+ 
++    def test_annotations(self):
++        # _type_check is applied
++        with self.assertRaisesRegex(TypeError, "Plain typing.Optional is not valid as type argument"):
++            class X(TypedDict):
++                a: Optional
++
++        # _type_convert is applied
++        class Y(TypedDict):
++            a: None
++            b: "int"
++        if sys.version_info >= (3, 14):
++            import annotationlib
++
++            fwdref = EqualToForwardRef('int', module=__name__)
++            self.assertEqual(Y.__annotations__, {'a': type(None), 'b': fwdref})
++            self.assertEqual(Y.__annotate__(annotationlib.Format.FORWARDREF), {'a': type(None), 'b': fwdref})
++        else:
++            self.assertEqual(Y.__annotations__, {'a': type(None), 'b': typing.ForwardRef('int', module=__name__)})
++
++    @skipUnless(TYPING_3_14_0, "Only supported on 3.14")
++    def test_delayed_type_check(self):
++        # _type_check is also applied later
++        class Z(TypedDict):
++            a: undefined  # noqa: F821
++
++        with self.assertRaises(NameError):
++            Z.__annotations__
++
++        undefined = Final
++        with self.assertRaisesRegex(TypeError, "Plain typing.Final is not valid as type argument"):
++            Z.__annotations__
++
++        undefined = None  # noqa: F841
++        self.assertEqual(Z.__annotations__, {'a': type(None)})
++
++    @skipUnless(TYPING_3_14_0, "Only supported on 3.14")
++    def test_deferred_evaluation(self):
++        class A(TypedDict):
++            x: NotRequired[undefined]  # noqa: F821
++            y: ReadOnly[undefined]  # noqa: F821
++            z: Required[undefined]  # noqa: F821
++
++        self.assertEqual(A.__required_keys__, frozenset({'y', 'z'}))
++        self.assertEqual(A.__optional_keys__, frozenset({'x'}))
++        self.assertEqual(A.__readonly_keys__, frozenset({'y'}))
++        self.assertEqual(A.__mutable_keys__, frozenset({'x', 'z'}))
++
++        with self.assertRaises(NameError):
++            A.__annotations__
++
++        import annotationlib
++        self.assertEqual(
++            A.__annotate__(annotationlib.Format.STRING),
++            {'x': 'NotRequired[undefined]', 'y': 'ReadOnly[undefined]',
++             'z': 'Required[undefined]'},
++        )
++
++
+ class AnnotatedTests(BaseTestCase):
+ 
+     def test_repr(self):
+@@ -5887,7 +5987,7 @@ class ConcatenateTests(BaseTestCase):
+         U2 = Unpack[Ts]
+         self.assertEqual(C2[U1], (str, int, str))
+         self.assertEqual(C2[U2], (str, Unpack[Ts]))
+-        self.assertEqual(C2["U2"], (str, typing.ForwardRef("U2")))
++        self.assertEqual(C2["U2"], (str, EqualToForwardRef("U2")))
+ 
+         if (3, 12, 0) <= sys.version_info < (3, 12, 4):
+             with self.assertRaises(AssertionError):
+@@ -7196,8 +7296,8 @@ class TypeVarTests(BaseTestCase):
+             self.assertEqual(X | "x", Union[X, "x"])
+             self.assertEqual("x" | X, Union["x", X])
+             # make sure the order is correct
+-            self.assertEqual(get_args(X | "x"), (X, typing.ForwardRef("x")))
+-            self.assertEqual(get_args("x" | X), (typing.ForwardRef("x"), X))
++            self.assertEqual(get_args(X | "x"), (X, EqualToForwardRef("x")))
++            self.assertEqual(get_args("x" | X), (EqualToForwardRef("x"), X))
+ 
+     def test_union_constrained(self):
+         A = TypeVar('A', str, bytes)
+@@ -8770,7 +8870,7 @@ class TestEvaluateForwardRefs(BaseTestCase):
+             type_params=None,
+             format=Format.FORWARDREF,
+         )
+-        self.assertEqual(evaluated_ref, typing.ForwardRef("doesnotexist2"))
++        self.assertEqual(evaluated_ref, EqualToForwardRef("doesnotexist2"))
+ 
+     def test_evaluate_with_type_params(self):
+         # Use a T name that is not in globals
+@@ -8857,13 +8957,6 @@ class TestEvaluateForwardRefs(BaseTestCase):
+         obj = object()
+         self.assertIs(evaluate_forward_ref(typing.ForwardRef("int"), globals={"int": obj}), obj)
+ 
+-    def test_fwdref_value_is_cached(self):
+-        fr = typing.ForwardRef("hello")
+-        with self.assertRaises(NameError):
+-            evaluate_forward_ref(fr)
+-        self.assertIs(evaluate_forward_ref(fr, globals={"hello": str}), str)
+-        self.assertIs(evaluate_forward_ref(fr), str)
+-
+     @skipUnless(TYPING_3_9_0, "Needs PEP 585 support")
+     def test_fwdref_with_owner(self):
+         self.assertEqual(
+@@ -8908,7 +9001,7 @@ class TestEvaluateForwardRefs(BaseTestCase):
+         self.assertEqual(get_args(evaluated_ref1b), (Y[Tx],))
+ 
+         with self.subTest("nested string of TypeVar"):
+-            evaluated_ref2 = evaluate_forward_ref(typing.ForwardRef("""Y["Y['Tx']"]"""), locals={"Y": Y})
++            evaluated_ref2 = evaluate_forward_ref(typing.ForwardRef("""Y["Y['Tx']"]"""), locals={"Y": Y, "Tx": Tx})
+             self.assertEqual(get_origin(evaluated_ref2), Y)
+             if not TYPING_3_9_0:
+                 self.skipTest("Nested string 'Tx' stays ForwardRef in 3.8")
+diff --git a/src/typing_extensions.py b/src/typing_extensions.py
+index d089d5e..baa6c4f 100644
+--- a/src/typing_extensions.py
++++ b/src/typing_extensions.py
+@@ -13,6 +13,9 @@ import types as _types
+ import typing
+ import warnings
+ 
++if sys.version_info >= (3, 14):
++    import annotationlib
++
+ __all__ = [
+     # Super-special typing primitives.
+     'Any',
+@@ -1014,21 +1017,31 @@ else:
+                 tp_dict.__orig_bases__ = bases
+ 
+             annotations = {}
++            own_annotate = None
+             if "__annotations__" in ns:
+                 own_annotations = ns["__annotations__"]
+-            elif "__annotate__" in ns:
+-                # TODO: Use inspect.VALUE here, and make the annotations lazily evaluated
+-                own_annotations = ns["__annotate__"](1)
++            elif sys.version_info >= (3, 14):
++                if hasattr(annotationlib, "get_annotate_from_class_namespace"):
++                    own_annotate = annotationlib.get_annotate_from_class_namespace(ns)
++                else:
++                    # 3.14.0a7 and earlier
++                    own_annotate = ns.get("__annotate__")
++                if own_annotate is not None:
++                    own_annotations = annotationlib.call_annotate_function(
++                        own_annotate, Format.FORWARDREF, owner=tp_dict
++                    )
++                else:
++                    own_annotations = {}
+             else:
+                 own_annotations = {}
+             msg = "TypedDict('Name', {f0: t0, f1: t1, ...}); each t must be a type"
+             if _TAKES_MODULE:
+-                own_annotations = {
++                own_checked_annotations = {
+                     n: typing._type_check(tp, msg, module=tp_dict.__module__)
+                     for n, tp in own_annotations.items()
+                 }
+             else:
+-                own_annotations = {
++                own_checked_annotations = {
+                     n: typing._type_check(tp, msg)
+                     for n, tp in own_annotations.items()
+                 }
+@@ -1041,7 +1054,8 @@ else:
+             for base in bases:
+                 base_dict = base.__dict__
+ 
+-                annotations.update(base_dict.get('__annotations__', {}))
++                if sys.version_info <= (3, 14):
++                    annotations.update(base_dict.get('__annotations__', {}))
+                 required_keys.update(base_dict.get('__required_keys__', ()))
+                 optional_keys.update(base_dict.get('__optional_keys__', ()))
+                 readonly_keys.update(base_dict.get('__readonly_keys__', ()))
+@@ -1051,8 +1065,8 @@ else:
+             # is retained for backwards compatibility, but only for Python
+             # 3.13 and lower.
+             if (closed and sys.version_info < (3, 14)
+-                       and "__extra_items__" in own_annotations):
+-                annotation_type = own_annotations.pop("__extra_items__")
++                       and "__extra_items__" in own_checked_annotations):
++                annotation_type = own_checked_annotations.pop("__extra_items__")
+                 qualifiers = set(_get_typeddict_qualifiers(annotation_type))
+                 if Required in qualifiers:
+                     raise TypeError(
+@@ -1066,8 +1080,8 @@ else:
+                     )
+                 extra_items_type = annotation_type
+ 
+-            annotations.update(own_annotations)
+-            for annotation_key, annotation_type in own_annotations.items():
++            annotations.update(own_checked_annotations)
++            for annotation_key, annotation_type in own_checked_annotations.items():
+                 qualifiers = set(_get_typeddict_qualifiers(annotation_type))
+ 
+                 if Required in qualifiers:
+@@ -1085,7 +1099,38 @@ else:
+                     mutable_keys.add(annotation_key)
+                     readonly_keys.discard(annotation_key)
+ 
+-            tp_dict.__annotations__ = annotations
++            if sys.version_info >= (3, 14):
++                def __annotate__(format):
++                    annos = {}
++                    for base in bases:
++                        if base is Generic:
++                            continue
++                        base_annotate = base.__annotate__
++                        if base_annotate is None:
++                            continue
++                        base_annos = annotationlib.call_annotate_function(
++                            base.__annotate__, format, owner=base)
++                        annos.update(base_annos)
++                    if own_annotate is not None:
++                        own = annotationlib.call_annotate_function(
++                            own_annotate, format, owner=tp_dict)
++                        if format != Format.STRING:
++                            own = {
++                                n: typing._type_check(tp, msg, module=tp_dict.__module__)
++                                for n, tp in own.items()
++                            }
++                    elif format == Format.STRING:
++                        own = annotationlib.annotations_to_string(own_annotations)
++                    elif format in (Format.FORWARDREF, Format.VALUE):
++                        own = own_checked_annotations
++                    else:
++                        raise NotImplementedError(format)
++                    annos.update(own)
++                    return annos
++
++                tp_dict.__annotate__ = __annotate__
++            else:
++                tp_dict.__annotations__ = annotations
+             tp_dict.__required_keys__ = frozenset(required_keys)
+             tp_dict.__optional_keys__ = frozenset(optional_keys)
+             tp_dict.__readonly_keys__ = frozenset(readonly_keys)

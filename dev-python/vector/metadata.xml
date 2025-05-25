@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>alexander@neuwirth-informatik.de</email>
+		<name>Alexander Puck Neuwirth</name>
+	</maintainer>
+	<maintainer type="person" proxied="proxy">
+		<email>nowa@gentoo.org</email>
+		<name>Nowa Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+
+
+	<longdescription lang="en">
+	Vector is a Python 3.8+ library (Python 3.6 and 3.7 supported till v0.9.0 and v1.0.0, respectively) for 2D, 3D, and Lorentz vectors, especially arrays of vectors, to solve common physics problems in a NumPy-like way.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">vector</remote-id>
+		<remote-id type="github">scikit-hep/vector</remote-id>
+	</upstream>
+</pkgmetadata>

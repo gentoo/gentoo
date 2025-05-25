@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -30,7 +30,6 @@ BDEPEND="
 		dev-python/jaraco-context[${PYTHON_USEDEP}]
 		dev-python/jaraco-text[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
-		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		>=dev-python/pytest-mock-1.11.0[${PYTHON_USEDEP}]
 		dev-python/requests-toolbelt[${PYTHON_USEDEP}]
 		dev-python/requests-unixsocket[${PYTHON_USEDEP}]
@@ -41,6 +40,11 @@ BDEPEND="
 		)
 	)
 "
+
+PATCHES=(
+	# https://github.com/cherrypy/cheroot/pull/703
+	"${FILESDIR}/${PN}-10.0.1-no-pytest-forked.patch"
+)
 
 EPYTEST_XDIST=1
 distutils_enable_tests pytest

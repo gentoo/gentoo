@@ -1,0 +1,33 @@
+diff '--color=auto' -r -U3 src.orig/CMakeLists.txt src/CMakeLists.txt
+--- src.orig/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/CMakeLists.txt	2025-05-09 15:38:00.286727733 +0700
+@@ -3,8 +3,9 @@
+ #
+ cmake_minimum_required (VERSION 3.18)
+ cmake_policy(SET CMP0091 NEW) 	# windows static runtimes selection
+-#cmake_policy(SET CMP0167 NEW)	# The FindBoost module is removed. only for cmake 3.30 and later live with the warning for now
++cmake_policy(SET CMP0167 NEW)	# The FindBoost module is removed. only for cmake 3.30 and later live with the warning for now
+ cmake_policy(SET CMP0074 NEW)	# uses <PackageName>_ROOT variables.
++cmake_policy(SET CMP0177 NEW)	# normalize DESTINATION paths
+ include(CheckIncludeFile)
+ include(CheckIncludeFiles)
+ include(CheckIncludeFileCXX)
+diff '--color=auto' -r -U3 src.orig/gle/CMakeLists.txt src/gle/CMakeLists.txt
+--- src.orig/gle/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/gle/CMakeLists.txt	2025-05-09 15:37:46.627110918 +0700
+@@ -1,3 +1,4 @@
++cmake_policy(SET CMP0177 NEW)	# normalize DESTINATION paths
+ 
+ set(GLE_SOURCES
+ 	bitmap/img2ps.cpp
+diff '--color=auto' -r -U3 src.orig/TeX/CMakeLists.txt src/TeX/CMakeLists.txt
+--- src.orig/TeX/CMakeLists.txt	2025-04-04 21:33:02.000000000 +0700
++++ src/TeX/CMakeLists.txt	2025-05-09 15:37:46.627335526 +0700
+@@ -44,6 +44,7 @@
+ # 	CONFIGURATIONS Release Debug
+ # 	DESTINATION .
+ # )
++cmake_policy(SET CMP0177 NEW)	# normalize DESTINATION paths
+ 
+ install(FILES
+ 	init.tex

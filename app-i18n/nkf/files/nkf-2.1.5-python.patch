@@ -1,0 +1,15 @@
+diff --git a/NKF.python/ext/NKF_python.c b/NKF.python/ext/NKF_python.c
+index b17229e..7c98c2e 100644
+--- a/NKF.python/ext/NKF_python.c
++++ b/NKF.python/ext/NKF_python.c
+@@ -80,8 +80,8 @@ pynkf_putchar(int c)
+ }
+ 
+ #define PERL_XS 1
+-#include "nkf/utf8tbl.c"
+-#include "nkf/nkf.c"
++#include "../../utf8tbl.c"
++#include "../../nkf.c"
+ 
+ static PyObject *
+ pynkf_convert(unsigned char* str, Py_ssize_t strlen, char* opts, Py_ssize_t optslen)

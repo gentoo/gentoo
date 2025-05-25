@@ -54,7 +54,10 @@ src_prepare() {
 src_compile() {
 	export LANG=C LC_ALL=C  # grep find nothing for non-ascii locales
 
-	tc-export PKG_CONFIG
+	local current_binutils_path=$(binutils-config -B)
+	export READELF="${current_binutils_path}/readelf"
+
+	tc-export PKG_CONFIG READELF
 
 	export LIBS="-lelf"
 	if use elibc_musl; then
@@ -62,13 +65,13 @@ src_compile() {
 		export LIBS="${LIBS} $(${PKG_CONFIG} --libs obstack-standalone error-standalone)"
 	fi
 
-	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}"
+	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr"
 }
 
 src_test() {
-	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" check
+	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr" check
 }
 
 src_install() {
-	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" install
+	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr" install
 }

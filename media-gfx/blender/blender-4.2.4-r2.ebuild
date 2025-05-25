@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..12} )
 # NOTE must match media-libs/osl
-LLVM_COMPAT=( {18..19} )
+LLVM_COMPAT=( {17..18} )
 LLVM_OPTIONAL=1
 
 inherit check-reqs cmake cuda flag-o-matic llvm-r1 pax-utils python-single-r1 toolchain-funcs xdg-utils
@@ -502,8 +502,6 @@ src_install() {
 
 	# X-KDE-RunOnDiscreteGpu is obsolete, so trim it
 	sed \
-		-e "s/=blender/=${P}/" \
-		-e "s/Name=Blender/Name=Blender Bin ${PV}/" \
 		-e "/X-KDE-RunOnDiscreteGpu.*/d" \
 		-i "${ED}/usr/share/applications/blender-${BV}.desktop" || die
 

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( pypy3 python3_{10..13} python3_13t )
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t )
 
 inherit distutils-r1
 
@@ -31,6 +31,17 @@ BDEPEND="
 distutils_enable_tests pytest
 
 python_test() {
+	local EPYTEST_DESELECT=()
+	case ${EPYTHON} in
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# https://github.com/cloudpipe/cloudpickle/issues/567
+				tests/cloudpickle_test.py::CloudPickleTest::test_locally_defined_class_with_type_hints
+				tests/cloudpickle_test.py::Protocol2CloudPickleTest::test_locally_defined_class_with_type_hints
+			)
+			;;
+	esac
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTHONPATH=${PYTHONPATH}:tests/cloudpickle_testpkg
 	# -s unbreaks some tests

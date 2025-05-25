@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake optfeature python-single-r1 xdg
 
 DESCRIPTION="Simple but powerful Qt-based image viewer"
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	barcode? ( media-libs/zxing-cpp:= )
 	chromecast? (
 		${PYTHON_DEPS}
-		$(python_gen_cond_dep 'dev-python/pychromecast')
+		$(python_gen_cond_dep 'dev-python/pychromecast[${PYTHON_USEDEP}]')
 	)
 	devil? ( media-libs/devil )
 	exif? ( media-gfx/exiv2:=[bmff] )

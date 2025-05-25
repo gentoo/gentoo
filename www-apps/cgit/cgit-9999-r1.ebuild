@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 
 WEBAPP_MANUAL_SLOT="yes"
 
-inherit lua-single python-single-r1 tmpfiles toolchain-funcs webapp git-r3
+inherit flag-o-matic lua-single python-single-r1 tmpfiles toolchain-funcs webapp git-r3
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
@@ -68,6 +68,10 @@ src_configure() {
 		rmdir git || die
 		mv "${WORKDIR}"/git-"${GIT_V}" git || die
 	fi
+
+	# bug #951555
+	append-cflags -std=gnu17
+
 	echo "prefix = ${EPREFIX}/usr" >> cgit.conf || die "echo prefix failed"
 	echo "libdir = ${EPREFIX}/usr/$(get_libdir)" >> cgit.conf || die "echo libdir failed"
 	echo "CGIT_SCRIPT_PATH = ${MY_CGIBINDIR}" >> cgit.conf || die "echo CGIT_SCRIPT_PATH failed"

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<longdescription lang="en">
-This package contains UNIX domain socket client and server programs that
-conform to UCSPI, the UNIX Client-Server Program Interface.
-</longdescription>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription lang="en">
+		This package contains UNIX domain socket client and server programs that
+		conform to UCSPI, the UNIX Client-Server Program Interface.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/bruceg/ucspi-unix/issues</bugs-to>
+		<changelog>https://untroubled.org/ucspi-unix/NEWS</changelog>
+		<remote-id type="github">bruceg/ucspi-unix</remote-id>
+	</upstream>
 </pkgmetadata>

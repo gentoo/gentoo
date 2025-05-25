@@ -58,15 +58,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local -x CONFIG_SHELL="${EPREFIX}/bin/bash"
+	local -x CONFIG_SHELL="${BROOT}/bin/bash"
 	econf \
 		--disable-static \
-		--with-yaml-cpp="${EPREFIX}/usr" \
-		$(use_enable python)
+		--with-yaml-cpp="${ESYSROOT}/usr" \
+		$(use_enable python) \
+		$(use_enable doc doxygen)
 }
 
 src_compile() {
-	emake all $(use doc && echo doxy)
+	emake all
 }
 
 src_test() {
@@ -75,7 +76,6 @@ src_test() {
 
 src_install() {
 	default
-	use doc && dodoc -r doc/doxygen/.
 	use examples && dodoc examples/*.cc
 
 	use python && python_optimize

@@ -105,7 +105,7 @@ src_unpack() {
 			die "sha256sum mismatch"
 		fi
 	else
-		my_A="${DISTDIR}/blender-${PV}-linux-x64.tar.xz"
+		my_A="blender-${PV}-linux-x64.tar.xz"
 	fi
 
 	unpack "${my_A}"

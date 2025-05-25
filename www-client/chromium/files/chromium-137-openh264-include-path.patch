@@ -1,0 +1,28 @@
+https://chromium-review.googlesource.com/c/chromium/src/+/6554344
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sat, 17 May 2025 09:01:22 +1000
+Subject: [PATCH] make openh264:encoder a public dep
+
+since M137 (1cc4ddb51296d65544070e42bfea8462e3f16715), the unbundle
+path has had consistent build failures in
+`third_party/blink/renderer/modules/mediarecorder` due to the
+include path for openh264 not being set.
+
+The include path for openh264 should should come from `media/video`
+if proprietary codecs (and openh264) is enabled. a `public_deps`
+should handle this.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/media/video/BUILD.gn
++++ b/media/video/BUILD.gn
+@@ -78,7 +78,7 @@ source_set("video") {
+       "openh264_video_encoder.cc",
+       "openh264_video_encoder.h",
+     ]
+-    deps += [ "//third_party/openh264:encoder" ]
++    public_deps += [ "//third_party/openh264:encoder" ]
+   }
+ 
+   if (is_apple) {
+-- 
+2.49.0

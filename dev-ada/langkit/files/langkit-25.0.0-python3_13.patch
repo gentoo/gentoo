@@ -1,0 +1,59 @@
+--- a/langkit/compiled_types.py	2025-05-03 22:08:07.091513091 +0200
++++ b/langkit/compiled_types.py	2025-05-03 22:09:23.939639585 +0200
+@@ -6,7 +6,7 @@
+ from dataclasses import dataclass
+ import difflib
+ from itertools import count, takewhile
+-import pipes
++import shlex
+ from typing import (
+     Any, Callable, ClassVar, Dict, Iterator, List, Optional as Opt, Sequence,
+     Set, TYPE_CHECKING, Tuple, Union, ValuesView
+@@ -52,7 +52,7 @@
+     :param list[str] args: Elements of the special comment.
+     :rtype: str
+     """
+-    return ('--# {}'.format(' '.join(pipes.quote(a) for a in args))
++    return ('--# {}'.format(shlex.join(args))
+             if get_context().emitter.generate_gdb_hook else '')
+ 
+ 
+--- a/langkit/libmanage.py	2025-05-03 22:11:28.544223258 +0200
++++ b/langkit/libmanage.py	2025-05-03 22:13:51.903593749 +0200
+@@ -9,7 +9,7 @@
+ import os
+ from os import path
+ import pdb
+-import pipes
++import shlex
+ import shutil
+ import subprocess
+ import sys
+@@ -1582,7 +1582,7 @@
+         """
+         if self.verbosity.debug:
+             printcol('Executing: {}'.format(
+-                ' '.join(pipes.quote(arg) for arg in argv)
++                shlex.join(argv)
+             ), Colors.CYAN)
+ 
+     def log_info(self, msg: str, color: str) -> None:
+--- a/langkit/utils/__init__.py	2025-05-03 22:14:56.041864711 +0200
++++ b/langkit/utils/__init__.py	2025-05-03 22:15:24.471541562 +0200
+@@ -11,7 +11,6 @@
+ from copy import copy
+ from enum import Enum
+ import os
+-import pipes
+ import shlex
+ import shutil
+ from typing import (
+@@ -265,7 +264,7 @@
+     environment variable.
+     """
+     return (
+-        f'{name}={pipes.quote(path)}"{os.pathsep}${name}";'
++        f'{name}={shlex.quote(path)}"{os.pathsep}${name}";'
+         f" export {name}"
+     )
+ 

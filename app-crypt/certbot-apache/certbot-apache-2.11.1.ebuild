@@ -25,7 +25,7 @@ else
 	KEYWORDS="amd64 ~arm64 ~riscv x86"
 fi
 
-DESCRIPTION="Apache plugin for Certbot (Let’s Encrypt client)"
+DESCRIPTION="Apache plugin for Certbot (Let's Encrypt client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot-apache/

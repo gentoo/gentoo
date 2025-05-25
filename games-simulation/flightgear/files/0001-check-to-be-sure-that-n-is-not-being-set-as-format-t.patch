@@ -1,0 +1,33 @@
+From 609b73ec6941321b157afb236f86c943f959a845 Mon Sep 17 00:00:00 2001
+From: Fabrice Bellet <fabrice@bellet.info>
+Date: Sun, 22 Sep 2013 12:19:18 +0200
+Subject: [PATCH] check to be sure that %n is not being set as format type
+ (CVE-2012-2090)
+
+---
+ src/Environment/fgclouds.cxx | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/Environment/fgclouds.cxx b/src/Environment/fgclouds.cxx
+index 043cbb007..a57c529d8 100644
+--- a/src/Environment/fgclouds.cxx
++++ b/src/Environment/fgclouds.cxx
+@@ -218,6 +218,15 @@ void FGClouds::buildLayer(int iLayer, const string& name, double coverage) {
+ 			double count = acloud->getDoubleValue("count", 1.0);
+ 			tCloudVariety[CloudVarietyCount].count = count;
+ 			int variety = 0;
++                        // It is never safe for cloud_name.c_str to be %n.
++                        string unsafe ("%n");
++                        size_t found;
++
++                        found=cloud_name.find(unsafe);
++                        if (found!=string::npos) {
++                                SG_LOG(SG_GENERAL, SG_ALERT, "format type contained %n, but this is unsafe , ignore it");
++                                continue;
++                        }
+ 			char variety_name[50];
+ 			do {
+ 				variety++;
+-- 
+2.48.1
+

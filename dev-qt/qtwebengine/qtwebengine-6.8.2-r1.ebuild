@@ -32,7 +32,7 @@ RDEPEND="
 	app-arch/snappy:=
 	dev-libs/expat
 	dev-libs/libevent:=
-	dev-libs/libxml2[icu]
+	dev-libs/libxml2:=[icu]
 	dev-libs/libxslt
 	dev-libs/nspr
 	dev-libs/nss

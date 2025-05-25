@@ -1,6 +1,10 @@
 # Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
+# media-gfx/alembic is masked (#884295)
+alembic
+
 # matoro <matoro_gentoo@matoro.tk> (2023-06-30)
 # media-libs/libjxl casualties
 # https://github.com/libjxl/libjxl/issues/2433

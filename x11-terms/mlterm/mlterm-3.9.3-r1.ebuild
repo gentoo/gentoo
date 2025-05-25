@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -56,12 +56,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-DOCS=( doc/{en,ja} )
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-font.patch
 	"${FILESDIR}"/${PN}-clang-16.patch
 )
+DOCS=( doc/{en,ja} )
 
 src_prepare() {
 	# default config
@@ -79,7 +78,6 @@ src_configure() {
 		$(use_enable brltty brlapi)
 		$(use_enable debug)
 		$(use_enable fcitx)
-		--disable-wnn
 		$(use_enable harfbuzz otl)
 		$(use_enable ibus)
 		$(use_enable libssh2 ssh2)
@@ -96,6 +94,7 @@ src_configure() {
 		--enable-vt52
 		--disable-canna
 		--disable-static
+		--disable-wnn
 	)
 
 	local scrollbars="sample,extra"

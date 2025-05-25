@@ -1,3 +1,4 @@
+https://bugs.gentoo.org/698322
 --- a/sendEmail
 +++ b/sendEmail
 @@ -1903,7 +1903,7 @@

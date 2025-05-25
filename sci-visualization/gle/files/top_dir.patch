@@ -1,0 +1,13 @@
+diff '--color=auto' -r -U3 src.orig/gle/config.cpp src/gle/config.cpp
+--- src.orig/gle/config.cpp	2025-04-04 21:33:02.000000000 +0700
++++ src/gle/config.cpp	2025-05-16 18:50:23.693366144 +0700
+@@ -666,8 +666,7 @@
+ 					has_config = try_load_config_sub(conf_name, triedLocations);
+ 				}
+ 			#else
+-				GLE_TOP_DIR = exe_name;
+-				StripPathComponents(&GLE_TOP_DIR, 2);
++				GLE_TOP_DIR = "/usr/share/gle";
+ 			#endif
+ 		} else {
+ 			// The user will see as error message: "$GLE_TOP/some_file" not found.

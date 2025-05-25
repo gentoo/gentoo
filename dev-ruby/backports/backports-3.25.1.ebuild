@@ -15,7 +15,7 @@ SRC_URI="https://github.com/marcandre/backports/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~s390 ~sparc x86"
 
 all_ruby_prepare() {
 	# Avoid activesupport test that no longer works in Rails 5. This also avoids

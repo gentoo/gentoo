@@ -12,6 +12,9 @@
 	<use>
 		<flag name="scrypt">Use <pkg>app-crypt/libscrypt</pkg> for the scrypt algorithm</flag>
 		<flag name="server">Enable tor's relay module so it can operate as a relay/bridge/authority</flag>
-		<flag name="tor-hardening">Compile tor with hardening on vanilla compilers/linkers</flag>
 	</use>
+	<upstream>
+		<bugs-to>https://support.torproject.org/misc/bug-or-feedback/</bugs-to>
+		<changelog>https://gitlab.torproject.org/tpo/core/tor/-/raw/main/ChangeLog</changelog>
+	</upstream>
 </pkgmetadata>

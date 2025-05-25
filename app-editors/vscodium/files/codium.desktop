@@ -13,7 +13,7 @@ Actions=new-empty-window;
 Keywords=vscode;vscodium;code;codium;
 
 [Desktop Action new-empty-window]
-Name=New Empty Windo
+Name=New Empty Window
 Name[de]=Neues leeres Fenster
 Name[es]=Nueva ventana vacía
 Name[fr]=Nouvelle fenêtre vide

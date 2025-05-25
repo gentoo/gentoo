@@ -1,4 +1,4 @@
-# Copyright 2007-2023 Gentoo Authors
+# Copyright 2007-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of APACHE2_MODULES USE_EXPAND flags.
@@ -81,6 +81,7 @@ proxy_wstunnel - Provides support for the tunnelling of web socket connections t
 ratelimit - Bandwidth Rate Limiting for Clients
 remoteip - Replaces the original client IP address for the connection with the useragent IP address list presented by a proxies or a load balancer via the request headers
 reqtimeout - Set timeout and minimum data rate for receiving requests
+request - Filters to handle and make available HTTP request bodies
 rewrite - Provides a rule-based rewriting engine to rewrite requested URLs on the fly
 session - Provides support for a server wide per user session interface
 session_crypto - Provides support for the encryption of user sessions before being written to a local database, or written to a remote browser via an HTTP cookie

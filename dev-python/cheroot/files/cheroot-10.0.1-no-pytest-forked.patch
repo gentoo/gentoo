@@ -1,0 +1,72 @@
+https://github.com/cherrypy/cheroot/commit/a01ada64ae804519428d404d2fa0784392bc36ec
+
+From a01ada64ae804519428d404d2fa0784392bc36ec Mon Sep 17 00:00:00 2001
+From: "Jason R. Coombs" <jaraco@jaraco.com>
+Date: Mon, 15 Apr 2024 21:11:29 -0400
+Subject: [PATCH] =?UTF-8?q?=F0=9F=A7=AA=20Stop=20using=20`pytest-forked`?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This plugin is incompatible with Pytest 7+, it's difficult to fix
+upstream and there is no timeline for addressing that.
+
+The patch also bumps the top version boundary of Pytest to 7.2 due
+to the pinned `pytest-cov` raising warnings.
+
+Fixes #502
+Resolves #511
+Closes #680
+Resolves #681
+---
+ cheroot/test/test_server.py | 9 ---------
+ requirements/tests.in       | 9 +++------
+ 2 files changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/cheroot/test/test_server.py b/cheroot/test/test_server.py
+index e2e5f788c7..3c39773119 100644
+--- a/cheroot/test/test_server.py
++++ b/cheroot/test/test_server.py
+@@ -400,15 +400,6 @@ def test_reuse_port(http_server, ip_addr, mocker):
+     assert spy.spy_exception is None
+ 
+ 
+-ISSUE511 = IS_MACOS
+-
+-
+-if not IS_WINDOWS and not ISSUE511:
+-    test_high_number_of_file_descriptors = pytest.mark.forked(
+-        test_high_number_of_file_descriptors,
+-    )
+-
+-
+ @pytest.fixture
+ def _garbage_bin():
+     """Disable garbage collection when this fixture is in use."""
+diff --git a/requirements/tests.in b/requirements/tests.in
+index 7192fdff71..9b3f4070ed 100644
+--- a/requirements/tests.in
++++ b/requirements/tests.in
+@@ -34,18 +34,15 @@ pypytools
+ 
+ pytest-clarity
+ pytest-cov==2.12.0
+-pytest-forked>=1.2.0; sys_platform != "win32"
+ pytest-mock>=1.11.0
+ pytest-rerunfailures
+ pytest-sugar>=0.9.3
+ pytest-watch==4.2.0
+ pytest-xdist>=1.28.0
+ 
+-# pytest-forked is currently incompatible with pytest 7
+-# Refs:
+-# * https://github.com/cherrypy/cheroot/issues/511
+-# * https://github.com/pytest-dev/pytest-forked/issues/67
+-pytest >= 4.6.6, < 7
++# pytest 7.2 introduces deprecations triggered by pytest-cov
++# * https://github.com/cherrypy/cheroot/issues/682
++pytest >= 7, <7.2
+ 
+ # HTTP over UNIX socket
+ requests-unixsocket
+

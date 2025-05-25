@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -64,7 +64,11 @@ src_prepare() {
 		local ver=$(./build-aux/git-version-gen .tarball-version)
 		echo "${ver}" > .tarball-version || die
 
-		autoreconf -f -i || die
+		export WANT_AUTOCONF=2.5
+		export WANT_AUTOMAKE=1.17
+		# Don't try wrapping the autotools - this thing runs as it tends
+		# to be a bit esoteric, and the script does `set -e` itself.
+		./bootstrap || die
 	fi
 
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool

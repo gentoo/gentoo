@@ -1,0 +1,21 @@
+From: Dennis Braun <snd@debian.org>
+Date: Tue, 25 Oct 2022 10:19:09 +0200
+Subject: Add gl header to fix arm builds
+
+Forwarded: https://github.com/projectM-visualizer/projectm/issues/449
+---
+ src/projectM-qt/qprojectmwidget.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/projectM-qt/qprojectmwidget.hpp b/src/projectM-qt/qprojectmwidget.hpp
+index f51e2cf..5493acd 100644
+--- a/src/projectM-qt/qprojectmwidget.hpp
++++ b/src/projectM-qt/qprojectmwidget.hpp
+@@ -31,6 +31,7 @@
+ #include <QTimer>
+ #include <QApplication>
+ #include <QSettings>
++#include <GL/gl.h>
+ 
+ class QProjectMWidget : public QGLWidget
+ {

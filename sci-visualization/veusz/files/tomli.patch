@@ -1,0 +1,17 @@
+diff '--color=auto' -r -U2 veusz-3.6.2.orig/pyqt_setuptools.py veusz-3.6.2/pyqt_setuptools.py
+--- veusz-3.6.2.orig/pyqt_setuptools.py	2023-02-25 16:47:30.000000000 +0700
++++ veusz-3.6.2/pyqt_setuptools.py	2025-05-05 20:37:20.190868091 +0700
+@@ -9,5 +9,5 @@
+ import shutil
+ import subprocess
+-import tomli
++import tomllib
+ 
+ from sysconfig import get_path
+@@ -231,5 +231,5 @@
+         pyqt5_toml = os.path.join(pyqt5_include_dir, 'QtCore', 'QtCore.toml')
+         with open(pyqt5_toml, 'rb') as fin:
+-            pyqt5_cfg = tomli.load(fin)
++            pyqt5_cfg = tomllib.load(fin)
+         abi_version = pyqt5_cfg.get('sip-abi-version')
+ 

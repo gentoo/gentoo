@@ -3,8 +3,8 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..19} )
-PYTHON_COMPAT=( python3_{10..13} )
+LLVM_COMPAT=( {18..20} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit llvm-r1 meson python-any-r1
 
@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	S="${WORKDIR}/mesa-${MY_PV}"
 	SRC_URI="https://archive.mesa3d.org/mesa-${MY_PV}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="MIT"

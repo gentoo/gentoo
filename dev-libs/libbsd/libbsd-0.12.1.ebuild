@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/guillemjover.asc
-inherit flag-o-matic multilib multilib-minimal verify-sig
+inherit dot-a flag-o-matic libtool multilib multilib-minimal verify-sig
 
 DESCRIPTION="Library to provide useful functions commonly found on BSD systems"
 HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
@@ -24,7 +24,14 @@ DEPEND="
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-guillemjover )"
 
+src_prepare() {
+	default
+	elibtoolize
+}
+
 multilib_src_configure() {
+	lto-guarantee-fat
+
 	# bug #911726
 	filter-flags -fno-semantic-interposition
 
@@ -36,6 +43,8 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install
+	# always strip due to libbsd-ctor.a
+	strip-lto-bytecode #"${ED}"
 
 	find "${ED}" -type f -name "*.la" -delete || die
 

@@ -1,0 +1,39 @@
+From c89c2523d9215fbe684b8eb3500fab60c1a4bf50 Mon Sep 17 00:00:00 2001
+From: NRK <nrk@disroot.org>
+Date: Thu, 1 May 2025 06:58:03 +0000
+Subject: [PATCH] fix install dirs
+
+---
+ CMakeLists.txt | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7aa1549..11c9c3c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,7 @@
+ cmake_minimum_required( VERSION 3.16 )
+ project ( YUV C CXX )	# "C" is required even for C++ projects
+ option( UNIT_TEST "Built unit tests" OFF )
++include(GNUInstallDirs)
+ 
+ include(CheckCSourceCompiles)
+ 
+@@ -246,10 +247,10 @@ endif()
+ 
+ 
+ # install the conversion tool, .so, .a, and all the header files
+-install ( TARGETS yuvconvert DESTINATION bin )
+-install ( TARGETS ${ly_lib_static}						DESTINATION lib )
+-install ( TARGETS ${ly_lib_shared} LIBRARY DESTINATION lib RUNTIME DESTINATION bin ARCHIVE DESTINATION lib )
+-install ( DIRECTORY ${PROJECT_SOURCE_DIR}/include/		DESTINATION include )
++install ( TARGETS yuvconvert DESTINATION ${CMAKE_INSTALL_BINDIR} )
++install ( TARGETS ${ly_lib_static}						DESTINATION ${CMAKE_INSTALL_LIBDIR} )
++install ( TARGETS ${ly_lib_shared} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} RUNTIME DESTINATION bin ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} )
++install ( DIRECTORY ${PROJECT_SOURCE_DIR}/include/		DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
+ 
+ # create the .deb and .rpm packages using cpack
+ include ( CM_linux_packages.cmake )
+-- 
+2.48.1
+

@@ -1,3 +1,8 @@
 dev-util/watchman
 dev-cpp/edencommon
+dev-cpp/fb303
+dev-cpp/fbthrift
+dev-cpp/fizz
 dev-cpp/folly
+dev-cpp/mvfst
+dev-cpp/wangle

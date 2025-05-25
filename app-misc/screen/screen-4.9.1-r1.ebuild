@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ PATCHES=(
 	# Don't use utempter even if it is found on the system.
 	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
 	"${FILESDIR}"/${PN}-4.9.1-utmp-exit.patch
+	"${FILESDIR}"/${PN}-4.9.1-add-missing-pty.h-header.patch
 )
 
 src_prepare() {

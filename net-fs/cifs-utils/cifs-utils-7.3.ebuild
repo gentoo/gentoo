@@ -44,6 +44,7 @@ DOCS="doc/linux-cifs-client-guide.odt"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-7.3-no-clobber-fortify-source.patch"
+	"${FILESDIR}/${PN}-7.0-musl.patch"
 )
 
 pkg_setup() {

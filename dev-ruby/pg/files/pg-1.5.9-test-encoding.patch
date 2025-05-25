@@ -1,0 +1,31 @@
+From dd138ecf313274cc6a5481071bf301dc8c5139d8 Mon Sep 17 00:00:00 2001
+From: Lars Kanis <lars.kanis@sincnovation.com>
+Date: Fri, 28 Feb 2025 10:39:07 +0100
+Subject: [PATCH] =?UTF-8?q?Use=20a=20connection=20encoding=20compatible=20?=
+ =?UTF-8?q?to=20"M=C3=B6hre"?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The function PQescapeString was changed in PostgreSQL 17.4, 16.8, 15.12, 14.17, and 13.20.
+It now returns a predefined invalid character as a replacement in the connection encoding, if the input text is not valid according to the current connection encoding.
+Using a compatible connection encoding avoids this, so that we get the original text out of the singleton escape function.
+
+Fixes #628
+---
+ spec/pg/connection_spec.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spec/pg/connection_spec.rb b/spec/pg/connection_spec.rb
+index 63d3585ad..b64604467 100644
+--- a/spec/pg/connection_spec.rb
++++ b/spec/pg/connection_spec.rb
+@@ -2325,7 +2325,7 @@ def wait_check_socket(conn)
+ 
+ 			it "uses the previous string encoding for escaped string" do
+ 				original = "Möhre to 'scape".encode( "iso-8859-1" )
+-				@conn.set_client_encoding( "euc_jp" )
++				@conn.set_client_encoding( "iso-8859-2" )
+ 				escaped  = described_class.escape( original )
+ 				expect( escaped.encoding ).to eq( Encoding::ISO8859_1 )
+ 				expect( escaped ).to eq( "Möhre to ''scape".encode(Encoding::ISO8859_1) )

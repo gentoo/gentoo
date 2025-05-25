@@ -23,6 +23,7 @@ _QT6_BUILD_ECLASS=1
 
 inherit cmake flag-o-matic toolchain-funcs
 [[ ${EAPI} == 8 ]] && inherit eapi9-pipestatus
+[[ ${QT6_HAS_STATIC_LIBS} ]] && inherit dot-a
 
 # @ECLASS_VARIABLE: QT6_BUILD_TYPE
 # @DESCRIPTION:
@@ -37,6 +38,14 @@ inherit cmake flag-o-matic toolchain-funcs
 # The upstream name of the module this package belongs to.
 # Used for SRC_URI and EGIT_REPO_URI.
 : "${QT6_MODULE:=${PN}}"
+
+# @ECLASS_VARIABLE: QT6_HAS_STATIC_LIBS
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Should be set to a non-empty value if static libraries may be
+# installed so that dot-a.eclass will be used.  Using either way
+# is mostly harmless but still a bit wasteful, thus the variable.
 
 # @ECLASS_VARIABLE: QT6_RESTRICT_TESTS
 # @DEFAULT_UNSET
@@ -128,17 +137,15 @@ qt6-build_src_prepare() {
 	if use !custom-cflags; then
 		_qt6-build_sanitize_cpu_flags
 
-		# LTO cause test failures in several components (e.g. qtcharts,
-		# multimedia, scxml, wayland, webchannel, ...).
-		#
-		# Exact extent/causes unknown, but for some related-sounding bugs:
-		# https://bugreports.qt.io/browse/QTBUG-112332
-		# https://bugreports.qt.io/browse/QTBUG-115731
-		#
-		# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
-		# still assumed to be generally unsafe either way in current state.
+		# LTO cause test failures in several components (qtcharts,
+		# multimedia, scxml, wayland, webchannel, and likely more --
+		# also 1 qtbase test wrt bug #955531), albeit many need
+		# retesting (not as bad as it used to). Many (all?) of these
+		# issues only happen with GCC.
 		filter-lto
 	fi
+
+	[[ ${QT6_HAS_STATIC_LIBS} ]] && lto-guarantee-fat
 }
 
 # @FUNCTION: qt6-build_src_configure
@@ -195,6 +202,8 @@ qt6-build_src_test() {
 # Run cmake_src_install and handle anything else generic as needed.
 qt6-build_src_install() {
 	cmake_src_install
+
+	[[ ${QT6_HAS_STATIC_LIBS} ]] && strip-lto-bytecode "${D}${QT6_LIBDIR}"
 
 	_qt6-build_create_user_facing_links
 

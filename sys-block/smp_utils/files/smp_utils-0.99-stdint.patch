@@ -1,0 +1,22 @@
+Use C99/stdint.h types over non-portable (deprecated) glibc types
+Bug: https://bugs.gentoo.org/715840
+
+--- a/lib/mpi_type.h
++++ b/lib/mpi_type.h
+@@ -26,6 +26,7 @@
+ #ifndef MPI_TYPE_H
+ #define MPI_TYPE_H
+ 
++#include <stdint.h>
+ 
+ /*******************************************************************************
+  * Define MPI_POINTER if it hasn't already been defined. By default MPI_POINTER
+@@ -50,7 +51,7 @@
+ 
+ 
+ typedef int32_t   S32;
+-typedef u_int32_t U32;
++typedef uint32_t U32;
+ 
+ typedef struct _S64
+ {

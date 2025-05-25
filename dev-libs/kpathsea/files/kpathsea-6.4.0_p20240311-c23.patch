@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/952902
+https://bugs.gentoo.org/955549
+https://github.com/TeX-Live/texlive-source/commit/cc687b6c0ae8c6a4b566646282a7bc702d822e6d (cherry-picked)
+.. then another fix on top.
+
+From cc687b6c0ae8c6a4b566646282a7bc702d822e6d Mon Sep 17 00:00:00 2001
+From: Karl Berry <karl@freefriends.org>
+Date: Tue, 8 Apr 2025 22:40:48 +0000
+Subject: [PATCH] begin groveling to C23 (fixes mostly from Hilmar)
+
+git-svn-id: svn://tug.org/texlive/trunk/Build/source@74888 c570f23f-e606-0410-a88d-b1316a301751
+---
+ texk/kpathsea/c-memstr.h              |  7 -------
+ 17 files changed, 81 insertions(+), 25 deletions(-)
+
+diff --git a/texk/kpathsea/c-memstr.h b/texk/kpathsea/c-memstr.h
+index e8e107a6f9..fdd4faeb7e 100644
+--- a/c-memstr.h
++++ b/c-memstr.h
+@@ -53,11 +53,4 @@
+ #define memcpy(to, from, len) bcopy ((from), (to), (len))
+ #endif
+ 
+-#if !defined(HAVE_STRING_H)
+-extern char *strtok ();
+-#ifndef strstr
+-extern char *strstr ();
+-#endif
+-#endif
+-
+ #endif /* not KPATHSEA_C_MEMSTR_H */
+diff --git a/c-std.h b/c-std.h
+index 6d65d15..f001f0a 100644
+--- a/c-std.h
++++ b/c-std.h
+@@ -37,16 +37,10 @@
+ /* Be sure we have constants from <unistd.h>.  */
+ #include <kpathsea/c-unistd.h>
+ 
+-#ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+ /* Include <stdlib.h> before <stddef.h>, to help avoid NULL
+    redefinitions on some systems.  (We don't include <stddef.h>
+    ourselves any more, but FYI.)  */
+-#else
+-/* It's impossible to say for sure what the system will deign to put in
+-   <stdlib.h>, but let's hope it's at least this.  */
+-extern char *getenv ();
+-#endif /* not HAVE_STDLIB_H */
+ 
+ #ifdef WIN32
+ #include <malloc.h>

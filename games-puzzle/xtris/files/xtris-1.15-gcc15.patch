@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/943783
+
+--- a/xtris.c
++++ b/xtris.c
+@@ -2731,7 +2731,7 @@ void connect2server(char *h) {
+   }
+ }
+ 
+-void sigchld() {
++void sigchld(int a) {
+ #ifdef NeXT
+   while (wait3(NULL, WNOHANG|WUNTRACED, NULL) > 0);
+ #else

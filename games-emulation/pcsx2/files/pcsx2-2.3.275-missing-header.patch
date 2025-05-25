@@ -1,7 +1,0 @@
-GSHwHack.cpp:799:55: error: no member named 'exp2' in namespace 'std'
---- a/pcsx2/GS/Renderers/HW/GSHwHack.cpp
-+++ b/pcsx2/GS/Renderers/HW/GSHwHack.cpp
-@@ -7,2 +7,3 @@
- #include "GS/GSUtil.h"
-+#include <cmath>
- 

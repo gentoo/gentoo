@@ -1,0 +1,30 @@
+From 92ac29a2a899c597ae4403c760a2e8991952b448 Mon Sep 17 00:00:00 2001
+From: Andrew Bell <andrew.bell.ia@gmail.com>
+Date: Mon, 19 May 2025 10:35:34 -0400
+Subject: [PATCH] Put arbiter forward declaration in the pdal namespace.
+
+---
+ io/EsriReader.hpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/io/EsriReader.hpp b/io/EsriReader.hpp
+index 7d42f68c49..35a12dce22 100644
+--- a/io/EsriReader.hpp
++++ b/io/EsriReader.hpp
+@@ -50,13 +50,14 @@
+ 
+ #include <nlohmann/json.hpp>
+ 
++namespace pdal
++{
++
+ namespace arbiter
+ {
+     class Arbiter;
+ }
+ 
+-namespace pdal
+-{
+ class SrsTransform;
+ class ThreadPool;
+ 

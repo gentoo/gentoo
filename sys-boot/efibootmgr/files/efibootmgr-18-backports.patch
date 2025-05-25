@@ -1,0 +1,76 @@
+From dcd232d0458b962627f727dc8a1cef3c000a5bf4 Mon Sep 17 00:00:00 2001
+From: kmicki <1463619+kmicki@users.noreply.github.com>
+Date: Tue, 15 Nov 2022 14:37:25 +0100
+Subject: [PATCH] Update efibootmgr.c
+
+get_entry: return entry if it was found before reaching the end of the list
+
+Signed-off-by: kmicki <1463619+kmicki@users.noreply.github.com>
+---
+ src/efibootmgr.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/efibootmgr.c b/src/efibootmgr.c
+index b980bcd..4b15d6d 100644
+--- a/src/efibootmgr.c
++++ b/src/efibootmgr.c
+@@ -1192,6 +1192,7 @@ get_entry(list_t *entries, uint16_t num)
+ 			entry = NULL;
+ 			continue;
+ 		}
++		return entry;
+ 	}
+ 
+ 	return entry;
+From c2ef7876f4cc0ad5a52f40577e7636a841100bec Mon Sep 17 00:00:00 2001
+From: kamillo <kamilgolunski@gmail.com>
+Date: Fri, 17 Feb 2023 21:55:17 +0100
+Subject: [PATCH 1/2] Add missing short option handling for --index (-I)
+
+Signed-off-by: kamillo <kamilgolunski@gmail.com>
+---
+ src/efibootmgr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/efibootmgr.c b/src/efibootmgr.c
+index 4b15d6d..255f61f 100644
+--- a/src/efibootmgr.c
++++ b/src/efibootmgr.c
+@@ -1509,7 +1509,7 @@ parse_opts(int argc, char **argv)
+ 		};
+ 
+ 		c = getopt_long(argc, argv,
+-				"aAb:BcCd:De:E:fFgi:kl:L:m:M:n:No:Op:qrt:Tuv::Vwy@:h",
++				"aAb:BcCd:De:E:fFgi:I:kl:L:m:M:n:No:Op:qrt:Tuv::Vwy@:h",
+ 				long_options, &option_index);
+ 		if (c == -1)
+ 			break;
+
+From fe0a2c9569bd22e51000081226998419cb07c6ce Mon Sep 17 00:00:00 2001
+From: kamillo <kamilgolunski@gmail.com>
+Date: Fri, 17 Feb 2023 22:02:22 +0100
+Subject: [PATCH 2/2] Fix segfault when passed --index is greater than current
+ boot order size
+
+Size of the order entry size (uint16_t) hasn't been taken into account for all calculations and caused memory corruption.
+
+Signed-off-by: kamillo <kamilgolunski@gmail.com>
+---
+ src/efibootmgr.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/efibootmgr.c b/src/efibootmgr.c
+index 255f61f..ded21a1 100644
+--- a/src/efibootmgr.c
++++ b/src/efibootmgr.c
+@@ -420,8 +420,8 @@ add_to_order(const char *name, uint16_t num, uint16_t insert_at)
+ 		return -1;
+ 
+ 	if (insert_at != 0) {
+-		if (insert_at > order->data_size)
+-			insert_at = order->data_size;
++		if (insert_at * sizeof(uint16_t) > order->data_size)
++			insert_at = order->data_size / sizeof(uint16_t);
+ 		memcpy(new_data, old_data, insert_at * sizeof(uint16_t));
+ 	}
+ 	new_data[insert_at] = num;

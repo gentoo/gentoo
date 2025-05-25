@@ -1,0 +1,108 @@
+From 2b522bb0cd3872107335459d82b92f73f6a50bf7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Nov 2024 23:43:16 +0100
+Subject: [PATCH 1/2] Revert "Re-Add sleep mode configuration"
+
+This reverts commit 7707a30dfb2496a4c9c5939f0dd8bb39baebfecd.
+---
+ src/shared/sleep-config.c | 8 --------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/shared/sleep-config.c b/src/shared/sleep-config.c
+index 053e908e6..5ddcb006f 100644
+--- a/src/shared/sleep-config.c
++++ b/src/shared/sleep-config.c
+@@ -42,11 +42,7 @@ static char* const* const sleep_default_state_table[_SLEEP_OPERATION_CONFIG_MAX]
+ };
+ 
+ static char* const* const sleep_default_mode_table[_SLEEP_OPERATION_CONFIG_MAX] = {
+-#if 0 /// elogind supports suspend modes (deep s2idle) so we need defaults, too
+         /* Not used by SLEEP_SUSPEND */
+-#else // 0
+-        [SLEEP_SUSPEND]      = STRV_MAKE("deep", "s2idle"),
+-#endif // 0
+         [SLEEP_HIBERNATE]    = STRV_MAKE("platform", "shutdown"),
+         [SLEEP_HYBRID_SLEEP] = STRV_MAKE("suspend"),
+ };
+@@ -172,11 +168,7 @@ int parse_sleep_config(SleepConfig **ret) {
+                 { "Sleep", "AllowHybridSleep",          config_parse_tristate,    0,               &allow_hybrid_sleep          },
+ 
+                 { "Sleep", "SuspendState",              config_parse_strv,        0,               sc->states + SLEEP_SUSPEND   },
+-#if 0 /// elogind does support suspend modes
+                 { "Sleep", "SuspendMode",               config_parse_warn_compat, DISABLED_LEGACY, NULL                         },
+-#else // 0
+-                { "Sleep", "SuspendMode",               config_parse_sleep_mode,  0,               sc->modes + SLEEP_SUSPEND    },
+-#endif // 0
+ 
+                 { "Sleep", "HibernateState",            config_parse_warn_compat, DISABLED_LEGACY, NULL                         },
+                 { "Sleep", "HibernateMode",             config_parse_sleep_mode,  0,               sc->modes + SLEEP_HIBERNATE  },
+-- 
+2.47.0
+
+
+From 10a451df4259113738f0839e09041742dd8ccbc2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 12 Nov 2024 23:47:19 +0100
+Subject: [PATCH 2/2] Revert "Re-add elogind additions to sleep.conf loading
+ and split those into sleep.donf.d/10-elogind.conf"
+
+This reverts commit c5e7ba0c47ae95e2cf6fd48dc9353e8f333200c4.
+---
+ src/shared/sleep-config.c |  9 ---------
+ src/sleep/meson.build     |  4 ----
+ src/sleep/sleep.conf      |  9 +++++++++
+ 3 files changed, 9 insertions(+), 13 deletions(-)
+
+diff --git a/src/shared/sleep-config.c b/src/shared/sleep-config.c
+index 5ddcb006f..097c203ca 100644
+--- a/src/shared/sleep-config.c
++++ b/src/shared/sleep-config.c
+@@ -153,15 +153,6 @@ int parse_sleep_config(SleepConfig **ret) {
+ #endif // 0
+ 
+         const ConfigTableItem items[] = {
+-#if 1 /// Additional options for elogind
+-                { "Sleep", "AllowPowerOffInterrupts",     config_parse_bool, 0, &sc->allow_poweroff_interrupts },
+-                { "Sleep", "BroadcastPowerOffInterrupts", config_parse_bool, 0, &sc->broadcast_poweroff_interrupts },
+-                { "Sleep", "AllowSuspendInterrupts",      config_parse_bool, 0, &sc->allow_suspend_interrupts },
+-                { "Sleep", "BroadcastSuspendInterrupts",  config_parse_bool, 0, &sc->broadcast_suspend_interrupts },
+-                { "Sleep", "HandleNvidiaSleep",           config_parse_bool, 0, &sc->handle_nvidia_sleep },
+-                { "Sleep", "SuspendByUsing",              config_parse_strv, 0, &sc->suspend_by_using },
+-                { "Sleep", "HibernateByUsing",            config_parse_strv, 0, &sc->hibernate_by_using },
+-#endif // 1
+                 { "Sleep", "AllowSuspend",              config_parse_tristate,    0,               &allow_suspend               },
+                 { "Sleep", "AllowHibernation",          config_parse_tristate,    0,               &allow_hibernate             },
+                 { "Sleep", "AllowSuspendThenHibernate", config_parse_tristate,    0,               &allow_s2h                   },
+diff --git a/src/sleep/meson.build b/src/sleep/meson.build
+index c711a1b5c..3b06a6e91 100644
+--- a/src/sleep/meson.build
++++ b/src/sleep/meson.build
+@@ -28,8 +28,4 @@ sleep_files = files(
+ if install_sysconfdir_samples
+         install_data('sleep.conf',
+                      install_dir : pkgconfigfiledir)
+-#if 1 /// elogind comes with a first drop-in representing its defaults
+-        install_data('10-elogind.conf',
+-                     install_dir : pkgconfigfiledir / 'sleep.conf.d' )
+-#endif // 1
+ endif
+diff --git a/src/sleep/sleep.conf b/src/sleep/sleep.conf
+index ea048892b..b71790711 100644
+--- a/src/sleep/sleep.conf
++++ b/src/sleep/sleep.conf
+@@ -23,3 +23,12 @@
+ #HibernateMode=platform shutdown
+ #HibernateDelaySec=
+ #SuspendEstimationSec=60min
++
++# elogind additions
++#AllowPowerOffInterrupts=no
++#BroadcastPowerOffInterrupts=yes
++#AllowSuspendInterrupts=no
++#BroadcastSuspendInterrupts=yes
++#SuspendByUsing=
++#HibernateByUsing=
++#HandleNvidiaSleep=no
+-- 
+2.47.0
+

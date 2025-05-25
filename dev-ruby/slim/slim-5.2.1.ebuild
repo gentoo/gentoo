@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.md"
 
@@ -39,7 +39,6 @@ ruby_add_bdepend "
 		dev-ruby/minitest:5
 		dev-ruby/kramdown:2
 		dev-ruby/redcarpet
-		dev-ruby/sassc
 		>=dev-ruby/test-unit-3.5
 	)
 "

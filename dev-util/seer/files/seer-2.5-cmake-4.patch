@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/955400
+https://github.com/epasveer/seer/commit/c6afe8797b234a0be24d1cbbc177799bb74414ec
+
+From c6afe8797b234a0be24d1cbbc177799bb74414ec Mon Sep 17 00:00:00 2001
+From: Martin Diehl <mail@martin-diehl.net>
+Date: Mon, 28 Apr 2025 14:26:18 +0200
+Subject: [PATCH] make compatible with CMake 4.0
+
+CMake 3.5.0 was released about 9 years ago, so compatibility with older
+versions is probably not an issue
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1.0)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ project(seergdb VERSION 2.6.0 LANGUAGES CXX)
+ 
+

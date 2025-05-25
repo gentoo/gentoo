@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib dot-a python-any-r1
 
 DESCRIPTION="Collection of tools, libraries and tests for shader compilation"
 HOMEPAGE="https://github.com/google/shaderc"
@@ -57,6 +57,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DSHADERC_SKIP_TESTS="true"
 		-DSHADERC_ENABLE_WERROR_COMPILE="false"
@@ -76,4 +77,5 @@ multilib_src_install() {
 		use doc && local HTML_DOCS=( "${BUILD_DIR}/glslc/README.html" )
 	fi
 	cmake_src_install
+	strip-lto-bytecode
 }

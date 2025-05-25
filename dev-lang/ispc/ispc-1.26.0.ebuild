@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( {17..19} )
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake llvm-r1 multiprocessing python-any-r1 toolchain-funcs
+inherit cmake dot-a llvm-r1 multiprocessing python-any-r1 toolchain-funcs
 
 DESCRIPTION="Intel SPMD Program Compiler"
 HOMEPAGE="
@@ -64,6 +64,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DARM_ENABLED=$(usex arm)
 		-DCMAKE_SKIP_RPATH=ON
@@ -87,6 +88,7 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+	strip-lto-bytecode
 
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples

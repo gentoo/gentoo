@@ -5,7 +5,7 @@ EAPI=8
 
 CRATES=" "
 LLVM_COMPAT=( {17..19} )
-RUST_MIN_VER="1.84.0"
+RUST_MIN_VER="1.85.0"
 
 inherit cargo edo multiprocessing llvm-r1 shell-completion
 
@@ -59,11 +59,8 @@ src_compile() {
 
 	if [[ ${PV} == 9999 ]] ; then
 		einfo "Generating shell completions"
-		mkdir shell || die
 		local BIN="${WORKDIR}/${P}/$(cargo_target_dir)/pk"
-		"${BIN}" completion bash > shell/pk.bash || die
-		"${BIN}" completion zsh > shell/_pk || die
-		"${BIN}" completion fish > shell/pk.fish || die
+		"${BIN}" completion --dir shell || die
 	fi
 }
 
@@ -72,10 +69,8 @@ src_test() {
 
 	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
 
-	# pkg::env::current_dir is likely sensitive to ebuild env
 	edo ${CARGO} nextest run $(usev !debug '--release') \
 		--color always \
-		--all-features \
 		--tests
 }
 

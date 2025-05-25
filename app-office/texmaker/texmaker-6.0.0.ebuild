@@ -11,7 +11,7 @@ SRC_URI="https://xm1math.net/texmaker/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="webengine"
 
 # dev-qt/qtbase slot op: Qt6::CorePrivate, includes private/qabstractitemmodel_p.h

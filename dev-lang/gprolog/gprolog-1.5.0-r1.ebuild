@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,8 @@ src_configure() {
 	# https://bugs.gentoo.org/855599
 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=68384
 	filter-lto
+	# bug #943955
+	append-cflags -std=gnu17
 
 	CFLAGS_MACHINE="$(get-flag -march) $(get-flag -mcpu) $(get-flag -mtune)"
 

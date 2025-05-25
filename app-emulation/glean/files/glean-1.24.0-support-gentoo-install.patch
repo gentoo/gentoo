@@ -1,0 +1,44 @@
+diff --git a/glean/install.py b/glean/install.py
+index c6a9db2..e5c33c6 100755
+--- a/glean/install.py
++++ b/glean/install.py
+@@ -69,7 +69,7 @@ def install(source_file, target_file, mode='0755', replacements=dict()):
+         cmd = ('install -D -g root -o root'
+                ' -m {mode} {source_file} {target_file}').format(
+                    source_file=os.path.join(script_dir, source_file),
+-                   target_file=target_file,
++                   target_file=os.environ["D"] + target_file,
+                    mode=mode)
+         log.info(cmd)
+         ret = os.system(cmd)
+@@ -81,7 +81,7 @@ def install(source_file, target_file, mode='0755', replacements=dict()):
+         log.info("Replacing %s -> %s in %s" % (k, v, target_file))
+ 
+         cmd = 'sed -i "s|%%{k}%%|{v}|g" {target_file}'.format(
+-            k=k, v=v, target_file=target_file)
++            k=k, v=v, target_file=os.environ["D"] + target_file)
+         log.info(cmd)
+         ret = os.system(cmd)
+ 
+@@ -131,9 +131,9 @@ def main():
+         # scripts dir.  This means glean shell scripts can call the
+         # sibling python-glean and know that it's using the glean we
+         # installed, even in a virtualenv etc.
+-        install('python-glean.template',
+-                os.path.join(script_dir, 'python-glean'),
+-                mode='0755', replacements=replacements)
++        #install('python-glean.template',
++        #        os.path.join(script_dir, 'python-glean'),
++        #        mode='0755', replacements=replacements)
+ 
+     # needs to go first because gentoo can have systemd along side openrc
+     if os.path.exists('/etc/gentoo-release'):
+@@ -177,7 +177,7 @@ def main():
+                 mode='0644', replacements=replacements)
+         install(
+             'glean-udev.rules',
+-            '/etc/udev/rules.d/99-glean.rules',
++            '/lib/udev/rules.d/99-glean.rules',
+             mode='0644')
+         if args.use_nm:
+             # NetworkManager has a "after" network-pre, and

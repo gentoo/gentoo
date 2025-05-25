@@ -10,6 +10,6 @@
    <name>Proxy Maintainers</name>
  </maintainer>
  <upstream>
-   <remote-id type="github">app-backup/rsnapshot</remote-id>
+   <remote-id type="github">rsnapshot/rsnapshot</remote-id>
  </upstream>
 </pkgmetadata>

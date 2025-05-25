@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">
-clockspeed uses a hardware tick counter to compensate for a persistently fast or
-slow system clock. Given a few time measurements from a reliable source, it
-computes and then eliminates the clock skew. 
-</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>zhixu.liu@gmail.com</email>
+		<name>Z. Liu</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	clockspeed uses a hardware tick counter to compensate for a persistently fast or
+	slow system clock. Given a few time measurements from a reliable source, it
+	computes and then eliminates the clock skew.
+	</longdescription>
 </pkgmetadata>

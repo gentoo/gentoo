@@ -11,4 +11,7 @@
 			(2x memroy required)
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">morgannprice/fasttree</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -6,7 +6,6 @@
 app-emulation/aranym osmesa
 app-emulation/crossover-bin osmesa
 media-gfx/asymptote offscreen
-sci-visualization/paraview offscreen
 
 # Sam James <sam@gentoo.org> (2023-06-06)
 # Needs linux-only dev-libs/libaio.

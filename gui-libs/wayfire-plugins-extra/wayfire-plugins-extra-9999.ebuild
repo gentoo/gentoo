@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ WAYFIRE_REVDEP="
 	dev-libs/glib:2
 	dev-libs/libsigc++:2
 	gui-libs/wf-config:=
-	gui-libs/wlroots:=
+	gui-libs/wlroots:0.18
 	x11-libs/cairo
 "
 
@@ -37,7 +37,7 @@ DEPEND="
 	dev-cpp/nlohmann_json
 	dev-libs/libevdev
 	dev-libs/wayland
-	>=gui-wm/wayfire-0.9.0
+	gui-wm/wayfire:0/0.10
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

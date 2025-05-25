@@ -1,0 +1,22 @@
+From f37c2339dce9213c21c7ccc8f8ad01260ce80603 Mon Sep 17 00:00:00 2001
+From: Tarek Soliman <tarek@bashasoliman.com>
+Date: Fri, 6 Sep 2024 17:05:44 -0500
+Subject: [PATCH] Media history: fix buffer overflow
+
+---
+ src/qt/qt_mediahistorymanager.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qt/qt_mediahistorymanager.cpp b/src/qt/qt_mediahistorymanager.cpp
+index 9886c205bd..cd9be766b3 100644
+--- a/src/qt/qt_mediahistorymanager.cpp
++++ b/src/qt/qt_mediahistorymanager.cpp
+@@ -337,7 +337,7 @@ MediaHistoryManager::removeMissingImages(device_index_list_t &device_history)
+         }
+ 
+         char *p = checked_path.toUtf8().data();
+-        char temp[1024] = { 0 };
++        char temp[MAX_IMAGE_PATH_LEN -1] = { 0 };
+ 
+         if (path_abs(p)) {
+             if (strlen(p) > (MAX_IMAGE_PATH_LEN - 1))

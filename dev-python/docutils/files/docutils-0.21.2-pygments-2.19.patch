@@ -1,0 +1,106 @@
+From 5854d09635b3fa1048d84bba17de4c38805beccd Mon Sep 17 00:00:00 2001
+From: aa-turner <aa-turner@929543f6-e4f2-0310-98a6-ba3bd3dd1d04>
+Date: Fri, 7 Mar 2025 22:49:46 +0000
+Subject: [PATCH] Support Pygments 2.19 in tests
+
+git-svn-id: http://svn.code.sf.net/p/docutils/code/trunk@10019 929543f6-e4f2-0310-98a6-ba3bd3dd1d04
+---
+ .../test_rst/test_directives/test_code.py        | 16 +++++++++++-----
+ .../test_rst/test_directives/test_code_long.py   |  7 +++----
+ test/test_writers/test_html5_polyglot_parts.py   |  4 +---
+ 3 files changed, 15 insertions(+), 12 deletions(-)
+
+diff --git a/test/test_parsers/test_rst/test_directives/test_code.py b/test/test_parsers/test_rst/test_directives/test_code.py
+index a54901dfe..a714f8fc5 100755
+--- a/test/test_parsers/test_rst/test_directives/test_code.py
++++ b/test/test_parsers/test_rst/test_directives/test_code.py
+@@ -25,10 +25,16 @@ from docutils.utils.code_analyzer import with_pygments
+ 
+ if with_pygments:
+     import pygments
+-    _pv = re.match(r'^([0-9]+)\.([0-9]*)', pygments.__version__)
+-    PYGMENTS_2_14_PLUS = (int(_pv[1]), int(_pv[2])) >= (2, 14)
++
++    pygments_version = tuple(map(int, pygments.__version__.split('.')[:2]))
++else:
++    pygments_version = (0, 0)
++
++PYGMENTS_2_14_PLUS = pygments_version >= (2, 14)
++if pygments_version >= (2, 19):
++    def_ws = '<inline classes="whitespace">\n             '
+ else:
+-    PYGMENTS_2_14_PLUS = None
++    def_ws = ' '
+ 
+ 
+ class ParserTestCase(unittest.TestCase):
+@@ -160,14 +166,14 @@ totest['code_parsing'] = [
+       # and now for something completely different
+       print(8/2)
+ """,
+-"""\
++f"""\
+ <document source="test data">
+     <literal_block classes="code python3 testclass" ids="my-function" names="my_function" xml:space="preserve">
+         <inline classes="ln">
+              7 \n\
+         <inline classes="keyword">
+             def
+-         \n\
++        {def_ws}
+         <inline classes="name function">
+             my_function
+         <inline classes="punctuation">
+diff --git a/test/test_parsers/test_rst/test_directives/test_code_long.py b/test/test_parsers/test_rst/test_directives/test_code_long.py
+index 89cb4b172..037768c01 100755
+--- a/test/test_parsers/test_rst/test_directives/test_code_long.py
++++ b/test/test_parsers/test_rst/test_directives/test_code_long.py
+@@ -22,8 +22,7 @@ from docutils.parsers.rst import Parser
+ from docutils.utils import new_document
+ from docutils.utils.code_analyzer import with_pygments
+ from test.test_parsers.test_rst.test_directives.test_code \
+-    import PYGMENTS_2_14_PLUS
+-
++    import PYGMENTS_2_14_PLUS, def_ws
+ 
+ @unittest.skipUnless(with_pygments, 'needs Pygments')
+ class ParserTestCase(unittest.TestCase):
+@@ -55,14 +54,14 @@ totest['code_parsing_long'] = [
+       # and now for something completely different
+       print(8/2)
+ """,
+-"""\
++f"""\
+ <document source="test data">
+     <literal_block classes="code python3" xml:space="preserve">
+         <inline classes="ln">
+              7 \n\
+         <inline classes="keyword">
+             def
+-         \n\
++        {def_ws}
+         <inline classes="name function">
+             my_function
+         <inline classes="punctuation">
+diff --git a/test/test_writers/test_html5_polyglot_parts.py b/test/test_writers/test_html5_polyglot_parts.py
+index 7122f8469..afe504d41 100644
+--- a/test/test_writers/test_html5_polyglot_parts.py
++++ b/test/test_writers/test_html5_polyglot_parts.py
+@@ -14,7 +14,6 @@ standard values, and any entries with empty values.
+ 
+ from pathlib import Path
+ import os
+-import re
+ import sys
+ import unittest
+ 
+@@ -30,8 +29,7 @@ from docutils.utils.code_analyzer import with_pygments
+ 
+ if with_pygments:
+     import pygments
+-    _pv = re.match(r'^([0-9]+)\.([0-9]*)', pygments.__version__)
+-    if (int(_pv[1]), int(_pv[2])) >= (2, 14):
++    if tuple(map(int, pygments.__version__.split('.')[:2])) >= (2, 14):
+         # pygments output changed in version 2.14
+         with_pygments = False
+ 

@@ -1,6 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# media-libs/libspng only keyworded on amd64, arm64
+spng
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
+# only keyworded on amd64, arm
+openni
+openni2
+
 # Thomas Bettler <thomas.bettler@gmail.com> (2024-11-04)
 # media-libs/tiff only keyworded on amd64
 lerc
@@ -170,51 +179,34 @@ nvidia
 oci8-instant-client
 oracle
 
-# not keyworded on non-x86 systems
-video_cards_geode
-
-# not needed on non-x86, non-amd64 systems
+input_devices_synaptics
 input_devices_vmmouse
+input_devices_wacom
+video_cards_asahi
 video_cards_ast
 video_cards_d3d12
-video_cards_i915
-video_cards_i965
-video_cards_intel
-video_cards_nvidia
-video_cards_nvk
-video_cards_vesa
-video_cards_via
-video_cards_vmware
-video_cards_virtualbox
-
-# not needed on non-x86, non-amd64, non-mips systems
-video_cards_siliconmotion
-
-# not needed on non-arm systems
 video_cards_exynos
 video_cards_freedreno
+video_cards_geode
+video_cards_i915
+video_cards_i965
+video_cards_imagination
+video_cards_intel
 video_cards_lima
+video_cards_nvidia
+video_cards_nvk
 video_cards_omap
 video_cards_panfrost
+video_cards_qxl
+video_cards_siliconmotion
 video_cards_tegra
 video_cards_v3d
 video_cards_vc4
-
-# James Le Cuirot <chewi@gentoo.org>
-# Vivante is only available for arm and mips.
+video_cards_vesa
+video_cards_via
+video_cards_virtualbox
 video_cards_vivante
-
-# linux-only drivers
-video_cards_qxl
-
-# drivers with virtgpu DRM native-context support
-# these could be unmasked on all architectures with qemu system target but
-# unmasking only tested and actually used ones is a sane default.
-video_cards_asahi
-
-# not needed on non-x86, non-amd64, non-ppc systems
-input_devices_synaptics
-input_devices_wacom
+video_cards_vmware
 
 # Robert Buchholz <rbu@gentoo.org> (2007-06-03)
 # Only works on x86 or amd64

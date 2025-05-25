@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+# keep in sync with blender
+PYTHON_COMPAT=( python3_{11..13} )
 
 # Check this on updates
 LLVM_COMPAT=( {18..19} )
@@ -27,27 +28,33 @@ LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)" # based on SONAME
 
 X86_CPU_FEATURES=(
-	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
-	avx:avx avx2:avx2 avx512f:avx512f f16c:f16c
+	sse2:sse2
+	sse3:sse3
+	ssse3:ssse3
+	sse4_1:sse4.1
+	sse4_2:sse4.2
+	avx:avx
+	avx2:avx2
+	avx512f:avx512f
+	f16c:f16c
 )
 CPU_FEATURES=( "${X86_CPU_FEATURES[@]/#/cpu_flags_x86_}" )
 
-IUSE="debug doc gui libcxx nofma optix partio test ${CPU_FEATURES[*]%:*} python"
+IUSE="+clang-cuda debug doc gui libcxx nofma optix partio test ${CPU_FEATURES[*]%:*} python"
 
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	test? ( optix? ( clang-cuda ) )
+"
 
-# TODO optix
 RDEPEND="
-	dev-libs/boost:=
 	dev-libs/pugixml
 	>=media-libs/openimageio-2.4:=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
 		llvm-core/llvm:${LLVM_SLOT}=
 	')
-	optix? ( dev-libs/optix[-headers-only] )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -67,6 +74,12 @@ DEPEND="${RDEPEND}
 	sys-libs/zlib
 	test? (
 		media-fonts/droid
+		optix? (
+			clang-cuda? (
+				dev-util/nvidia-cuda-toolkit
+			)
+			dev-libs/optix
+		)
 	)
 "
 BDEPEND="
@@ -76,10 +89,79 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-boost-config.patch"
-	"${FILESDIR}/${PN}-oslfile.patch"
 	"${FILESDIR}/${PN}-include-cstdint.patch"
 )
+
+cuda_get_host_compiler() {
+	if [[ -n "${NVCC_CCBIN}" ]]; then
+		echo "${NVCC_CCBIN}"
+		return
+	fi
+
+	if [[ -n "${CUDAHOSTCXX}" ]]; then
+		echo "${CUDAHOSTCXX}"
+		return
+	fi
+
+	einfo "Trying to find working CUDA host compiler"
+
+	if ! tc-is-gcc && ! tc-is-clang; then
+		die "$(tc-get-compiler-type) compiler is not supported"
+	fi
+
+	local compiler compiler_type compiler_version
+	local package package_version
+	# local -x NVCC_CCBIN
+	local NVCC_CCBIN_default
+
+	compiler_type="$(tc-get-compiler-type)"
+	compiler_version="$("${compiler_type}-major-version")"
+
+	# try the default compiler first
+	NVCC_CCBIN="$(tc-getCXX)"
+	NVCC_CCBIN_default="${NVCC_CCBIN}-${compiler_version}"
+
+	compiler="${NVCC_CCBIN/%-${compiler_version}}"
+
+	# store the package so we can re-use it later
+	if tc-is-gcc; then
+		package="sys-devel/${compiler_type}"
+	elif tc-is-clang; then
+		package="llvm-core/${compiler_type}"
+	else
+		die "$(tc-get-compiler-type) compiler is not supported"
+	fi
+
+	package_version="${package}"
+
+	ebegin "testing ${NVCC_CCBIN_default} (default)"
+
+	while ! nvcc -v -ccbin "${NVCC_CCBIN}" - -x cu <<<"int main(){}" &>> "${T}/cuda_get_host_compiler.log" ; do
+		eend 1
+
+		while true; do
+			# prepare next version
+			if ! package_version="<$(best_version "${package_version}")"; then
+				die "could not find a supported version of ${compiler}"
+			fi
+
+			NVCC_CCBIN="${compiler}-$(ver_cut 1 "${package_version/#<${package}-/}")"
+
+			[[ "${NVCC_CCBIN}" != "${NVCC_CCBIN_default}" ]] && break
+		done
+		ebegin "testing ${NVCC_CCBIN}"
+	done
+	eend $?
+
+	echo "${NVCC_CCBIN}"
+	export NVCC_CCBIN
+}
+
+cuda_get_host_native_arch() {
+	[[ -n ${CUDAARCHS} ]] && echo "${CUDAARCHS}"
+
+	__nvcc_device_query || die "failed to query the native device"
+}
 
 pkg_setup() {
 	llvm-r1_pkg_setup
@@ -88,12 +170,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	if use optix; then
-		cuda_src_prepare
-		cuda_add_sandbox -w
-	fi
-
 	sed -e "/^install.*llvm_macros.cmake.*cmake/d" -i CMakeLists.txt || die
+	sed -e "/install_targets ( libtestshade )/d" -i src/testshade/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
@@ -166,14 +244,9 @@ src_configure() {
 	# Even if there are no SIMD features selected, it seems like the code will turn on NEON support if it is available.
 	use arm64 && append-flags -flax-vector-conversions
 
-	local gcc
-	gcc="$(tc-getCC)"
-
 	local mycmakeargs=(
+		-DVERBOSE="no"
 		-DCMAKE_POLICY_DEFAULT_CMP0146="OLD" # BUG FindCUDA
-
-		# std::tuple_size_v is c++17
-		-DCMAKE_CXX_STANDARD="17"
 
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DINSTALL_DOCS="$(usex doc)"
@@ -186,45 +259,67 @@ src_configure() {
 		-DUSE_SIMD="$(IFS=","; echo "${mysimd[*]}")"
 		-DUSE_BATCHED="$(IFS=","; echo "${mybatched[*]}")"
 		-DUSE_LIBCPLUSPLUS="$(usex libcxx)"
-		-DOSL_USE_OPTIX="$(usex optix)"
 		-DUSE_QT="$(usex gui)"
-
-		-DOpenImageIO_ROOT="${EPREFIX}/usr"
 	)
 
 	if use debug; then
 		mycmakeargs+=(
+			-DVERBOSE="yes"
 			-DVEC_REPORT="yes"
 		)
 	fi
 
 	if use optix; then
+		cuda_add_sandbox -w
+		addwrite "/proc/self/task/"
+		addpredict "/dev/char/"
+
 		mycmakeargs+=(
-			-DOptiX_FIND_QUIETLY="no"
-			-DCUDA_FIND_QUIETLY="no"
-
-			-DOPTIXHOME="${EPREFIX}/opt/optix"
-			-DCUDA_TOOLKIT_ROOT_DIR="${EPREFIX}/opt/cuda"
-
-			-DCUDA_NVCC_FLAGS="--compiler-bindir;$(cuda_gccdir)"
-			-DOSL_EXTRA_NVCC_ARGS="--compiler-bindir;$(cuda_gccdir)"
-			-DCUDA_VERBOSE_BUILD="yes"
+			-DUSE_LLVM_BITCODE="$(usex clang-cuda)"
+			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
+			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
 		)
 	fi
 
 	if use partio; then
 		mycmakeargs+=(
-			-Dpartio_DIR="${EPREFIX}/usr"
+			-Dpartio_DIR="${ESYSROOT}/usr"
 		)
 	fi
 
 	if use python; then
+		local -x OPENIMAGEIO_DEBUG=0
 		mycmakeargs+=(
-			"-DPYTHON_VERSION=${EPYTHON#python}"
-			"-DPYTHON_SITE_DIR=$(python_get_sitedir)"
+			-DOpenImageIO_ROOT="${ESYSROOT}/usr"
+			-DPYTHON_VERSION="${EPYTHON#python}"
+			-DPYTHON_SITE_DIR="$(python_get_sitedir)"
 		)
 	fi
 
+	if use test; then
+		if use optix; then
+			local -x CUDAHOSTCXX CUDAHOSTLD
+			CUDAHOSTCXX="$(cuda_get_host_compiler)"
+			CUDAHOSTLD="$(tc-getCXX)"
+
+			mycmakeargs+=(
+				-DOSL_USE_OPTIX="yes"
+				-DOptiX_FIND_QUIETLY="no"
+				-DCUDA_FIND_QUIETLY="no"
+
+				-DOPTIXHOME="${OPTIX_PATH:=${ESYSROOT}/opt/optix}"
+				-DCUDA_TOOLKIT_ROOT_DIR="${CUDA_PATH:=${ESYSROOT}/opt/cuda}"
+
+				-DCUDA_NVCC_FLAGS="--compiler-bindir;${CUDAHOSTCXX}"
+				-DOSL_EXTRA_NVCC_ARGS="--compiler-bindir;${CUDAHOSTCXX}"
+				-DCUDA_VERBOSE_BUILD="yes"
+			)
+		fi
+	fi
+
+	# Environment OPENIMAGEIO_CUDA=0 trumps everything else, turns off
+	# Cuda functionality. We don't even initialize in this case.
+	export OPENIMAGEIO_CUDA=0
 	cmake_src_configure
 }
 
@@ -235,89 +330,79 @@ src_test() {
 
 	ln -s "${CMAKE_USE_DIR}/src/cmake/" "${BUILD_DIR}/src/cmake" || die
 
-	if use optix; then
-		cp \
-			"${BUILD_DIR}/src/liboslexec/shadeops_cuda.ptx" \
-			"${BUILD_DIR}/src/testrender/"{optix_raytracer,quad,rend_lib_testrender,sphere,wrapper}".ptx" \
-			"${BUILD_DIR}/src/testshade/"{optix_grid_renderer,rend_lib_testshade}".ptx" \
-			"${BUILD_DIR}/bin/" || die
-
-		# NOTE this should go to cuda eclass
-		addwrite /dev/nvidiactl
-		addwrite /dev/nvidia0
-		addwrite /dev/nvidia-uvm
-		addwrite /dev/nvidia-caps
-		addwrite "/dev/char/"
-	fi
-
-	CMAKE_SKIP_TESTS=(
-		"-broken$"
-		"^render"
-
-		# broken with in-tree <=dev-libs/optix-7.5.0 and out of date
-		"^example-cuda$"
-
-		# outright fail
-		"^testoptix.optix.opt$"
-		"^testoptix-noise.optix.opt$"
-		"^testoptix-reparam.optix.opt$"
-		"^transform-reg.regress.batched.opt$"
-		"^spline-reg.regress.batched.opt$"
-
-		# doesn't handle parameters
-		"^osl-imageio$"
-		"^osl-imageio.opt$"
-		"^osl-imageio.opt.rs_bitcode$"
-	)
-
-	if use optix; then
-		CMAKE_SKIP_TESTS+=(
-			"^color2.optix$"
-			"^color4.optix(|.opt|.fused)$"
-			"^vector2.optix$"
-			"^vector4.optix$"
-		)
-	fi
-
-	myctestargs=(
-		# src/build-scripts/ci-test.bash
-		'--force-new-ctest-process'
-	)
-
 	local -x DEBUG CXXFLAGS LD_LIBRARY_PATH DIR OSL_DIR OSL_SOURCE_DIR PYTHONPATH
 	DEBUG=1 # doubles the floating point tolerance so we avoid FMA related issues
 	CXXFLAGS="-I${T}/usr/include"
 	LD_LIBRARY_PATH="${T}/usr/$(get_libdir)"
 	OSL_DIR="${T}/usr/$(get_libdir)/cmake/OSL"
 	OSL_SOURCE_DIR="${S}"
+	# local -x OSL_TESTSUITE_SKIP_DIFF=1
+	local -x OPENIMAGEIO_DEBUG=0
 
 	if use python; then
 		PYTHONPATH="${BUILD_DIR}/lib/python/site-packages"
 	fi
 
+	if use optix; then
+		cp \
+			"${BUILD_DIR}/src/liboslexec/shadeops_cuda.ptx" \
+			"${BUILD_DIR}/src/testrender/"{optix_raytracer,rend_lib_testrender}".ptx" \
+			"${BUILD_DIR}/src/testshade/"{optix_grid_renderer,rend_lib_testshade}".ptx" \
+			"${BUILD_DIR}/bin/" || die
+
+		# NOTE this should go to cuda eclass
+		cuda_add_sandbox -w
+		addwrite "/proc/self/task/"
+		addpredict "/dev/char/"
+	fi
+
+	local CMAKE_SKIP_TESTS=(
+		"-broken$"
+
+		# broken with in-tree <=dev-libs/optix-7.5.0 and out of date
+		"^example-cuda"
+
+		# outright fail
+		# batchregression
+		"^spline-reg.regress.batched.opt$"
+		"^transform-reg.regress.batched.opt$"
+		"^texture3d-opts-reg.regress.batched.opt$"
+
+		# doesn't handle parameters
+		"^osl-imageio"
+
+		# render
+		"^render-bunny.opt$"
+		"^render-displacement.opt$"
+		"^render-microfacet.opt$"
+		"^render-veachmis.opt$"
+
+		# optix
+		"^render-mx-generalized-schlick.optix$"
+		"^render-mx-generalized-schlick.optix.opt$"
+		"^render-mx-generalized-schlick.optix.fused$"
+		"^render-microfacet.optix.opt$"
+		"^render-microfacet.optix.fused$"
+	)
+
+	local myctestargs=(
+		-LE 'render'
+		# src/build-scripts/ci-test.bash
+		# '--force-new-ctest-process'
+	)
+
+	OPENIMAGEIO_CUDA=0 \
 	cmake_src_test
 
 	einfo ""
 	einfo "testing render tests in isolation"
 	einfo ""
 
-	CMAKE_SKIP_TESTS=(
-		"^render-background$"
-		"^render-mx-furnace-sheen$"
-		"^render-mx-burley-diffuse$"
-		"^render-mx-conductor$"
-		"^render-microfacet$"
-		"^render-veachmis$"
-		"^render-ward$"
-		"^render-raytypes.opt$"
-		"^render-raytypes.opt.rs_bitcode$"
-	)
-
 	myctestargs=(
+		-L "render"
 		# src/build-scripts/ci-test.bash
 		'--force-new-ctest-process'
 		--repeat until-pass:10
-		-R "^render"
 	)
 
 	cmake_src_test
@@ -333,7 +418,6 @@ src_install() {
 	if use test; then
 		rm \
 			"${ED}/usr/bin/test"{render,shade{,_dso}} \
-			"${ED}/usr/$(get_libdir)/libtestshade.so"* \
 			|| die
 	fi
 

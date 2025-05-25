@@ -1,0 +1,13 @@
+diff --git a/simgear/nasal/cppbind/NasalHash.hxx b/simgear/nasal/cppbind/NasalHash.hxx
+index 54efc2c5194f9c6fa8c52a528aff56228c576d90..1734adf682e0614671675c5dad2f9dfd5d91838d 100644
+--- a/simgear/nasal/cppbind/NasalHash.hxx
++++ b/simgear/nasal/cppbind/NasalHash.hxx
+@@ -5,6 +5,8 @@
+ #ifndef SG_NASAL_HASH_HXX_
+ #define SG_NASAL_HASH_HXX_
+ 
++#include <boost/mpl/if.hpp>
++
+ #include "from_nasal.hxx"
+ #include "to_nasal.hxx"
+ 

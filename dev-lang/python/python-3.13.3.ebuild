@@ -246,7 +246,6 @@ src_configure() {
 		local -x ac_cv_header_bluetooth_bluetooth_h=no
 	fi
 
-	append-flags -fwrapv
 	filter-flags -malign-double
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
@@ -423,9 +422,7 @@ src_configure() {
 		$(use_with valgrind)
 	)
 
-	# https://bugs.gentoo.org/700012
 	if tc-is-lto; then
-		append-cflags $(test-flags-CC -ffat-lto-objects)
 		myeconfargs+=(
 			--with-lto
 		)

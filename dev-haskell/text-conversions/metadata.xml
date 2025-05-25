@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="hackage">text-conversions</remote-id>
-		<remote-id type="github">cjdev/text-conversions</remote-id>
+		<remote-id type="github">cjdev2/text-conversions</remote-id>
 	</upstream>
 </pkgmetadata>

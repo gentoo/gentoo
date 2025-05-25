@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit meson python-single-r1 vala udev xdg
 
@@ -43,16 +43,21 @@ BDEPEND="$(vala_depend)
 	test? (
 		net-libs/gnutls[tools]
 	)
+	uefi? (
+		$(python_gen_cond_dep '
+			dev-python/pygobject:3[cairo]
+		')
+	)
 "
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-arch/gcab-1.0
 	app-arch/xz-utils
 	>=dev-libs/glib-2.72:2
 	>=dev-libs/json-glib-1.6.0
-	>=dev-libs/libjcat-0.1.4[gpg,pkcs7]
+	>=dev-libs/libjcat-0.2.0[gpg,pkcs7]
 	>=dev-libs/libxmlb-0.3.19:=[introspection?]
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=net-misc/curl-7.62.0
 	archive? ( app-arch/libarchive:= )

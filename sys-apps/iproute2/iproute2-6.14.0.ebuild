@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo toolchain-funcs flag-o-matic
+inherit dot-a edo toolchain-funcs flag-o-matic
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
@@ -86,6 +86,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR CC PKG_CONFIG
+	lto-guarantee-fat
 
 	# This sure is ugly. Should probably move into toolchain-funcs at some point.
 	local setns
@@ -210,4 +211,5 @@ src_install() {
 	elif [[ -d "${ED}"/var/lib/arpd ]]; then
 		rmdir --ignore-fail-on-non-empty -p "${ED}"/var/lib/arpd || die
 	fi
+	strip-lto-bytecode
 }

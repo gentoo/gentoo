@@ -53,6 +53,9 @@
 		<flag name="fluid">
 			Adds fluid simulation support via the built-in Mantaflow library.
 		</flag>
+		<flag name="manifold">
+			Enable Manifold render backend via <pkg>sci-mathematics/manifold</pkg>
+		</flag>
 		<flag name="nanovdb">
 			Enable nanoVDB support in Cycles. Uses less memory than regular openVDB when rendering.
 		</flag>

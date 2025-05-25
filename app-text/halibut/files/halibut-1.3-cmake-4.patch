@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/952807
+https://git.tartarus.org/?p=simon/halibut.git;a=commit;h=570407a40bdde2a9bb50c16aa47711202ade8923
+https://git.tartarus.org/?p=simon/halibut.git;a=commit;h=cb8a083d084b3464d72c4d3d247085389b2e5874
+
+From: Simon Tatham <anakin@pobox.com>
+Date: Wed, 23 Apr 2025 07:44:47 +0000 (+0100)
+Subject: Merge libcharset updates, including CMake version fix.
+X-Git-Url: https://git.tartarus.org/?p=simon%2Fhalibut.git;a=commitdiff_plain;h=570407a40bdde2a9bb50c16aa47711202ade8923;hp=ce14e373b7e6532c0dfa1908fe6030c5667cf79a
+
+Merge libcharset updates, including CMake version fix.
+---
+
+diff --git a/charset/CMakeLists.txt b/charset/CMakeLists.txt
+index 06eae77..4613cb4 100644
+--- a/charset/CMakeLists.txt
++++ b/charset/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # string handling abilities to read the list out of Makefile.am
+ # alongside it.
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.7...3.28)
+ project(libcharset LANGUAGES C)
+ 
+ file(READ ${CMAKE_CURRENT_SOURCE_DIR}/Makefile.am MAKEFILE_AM)
+diff --git a/charset/internal.h b/charset/internal.h
+index 1d1f0ea..bb41e0b 100644
+--- a/charset/internal.h
++++ b/charset/internal.h
+@@ -121,7 +121,7 @@ bool unicode_to_jisx0212(long int unicode, int *r, int *c);
+ #define UNUSEDARG(x) ( (x) = (x) )
+ 
+ #ifdef __GNUC__
+-#define DELIBERATE_FALLTHROUGH __attribute__ ((fallthrough));
++#define DELIBERATE_FALLTHROUGH __attribute__ ((fallthrough))
+ #else
+ #define DELIBERATE_FALLTHROUGH ((void)0)
+ #endif
+
+From cb8a083d084b3464d72c4d3d247085389b2e5874 Mon Sep 17 00:00:00 2001
+From: Simon Tatham <anakin@pobox.com>
+Date: Wed, 23 Apr 2025 08:45:36 +0100
+Subject: [PATCH] Update CMake version spec to 3.7...3.28.
+
+This allows building on distros as far back as Debian stretch (the
+earliest Debian still just-about in support, with CMake 3.7) and as
+far forward as current sid (running 3.31) without provoking any
+warning of the form "Compatibility with CMake < 3.x will be removed
+from a future version of CMake."
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.7...3.28)
+ project(halibut LANGUAGES C)
+ 
+ set(LIBCHARSET_LIBRARY_ONLY ON)
+-- 
+2.20.1

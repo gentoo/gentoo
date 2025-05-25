@@ -1,0 +1,36 @@
+From f4259722553335d79e9d28948ab7bdb00293a5ec Mon Sep 17 00:00:00 2001
+From: Carl George <carlwgeorge@gmail.com>
+Date: Tue, 8 Apr 2025 23:25:52 -0500
+Subject: [PATCH] BUILD(overlay): Fix building with GCC 15
+
+C23 added the bool keyword, which results in an error if you try to
+define an identifier named bool and then build with GCC 15.  We can use
+stdbool.h to define bool instead.
+
+https://gcc.gnu.org/gcc-15/porting_to.html#c23-new-keywords
+---
+ overlay_gl/overlay.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/overlay_gl/overlay.c b/overlay_gl/overlay.c
+index 680241e1bbb..bf3051e540f 100644
+--- a/overlay_gl/overlay.c
++++ b/overlay_gl/overlay.c
+@@ -14,6 +14,7 @@
+ #include <pwd.h>
+ #include <semaphore.h>
+ #include <stdarg.h>
++#include <stdbool.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -37,9 +38,6 @@
+ 
+ #	include <link.h>
+ 
+-typedef unsigned char bool;
+-#	define true 1
+-#	define false 0
+ #elif defined(TARGET_MAC)
+ #	include <AGL/agl.h>
+ #	include <Carbon/Carbon.h>

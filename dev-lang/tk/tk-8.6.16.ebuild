@@ -34,8 +34,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	!aqua? ( x11-base/xorg-proto )"
 BDEPEND="virtual/pkgconfig"
-# Not bumped to 8.6
-#RESTRICT=test
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.6.10-multilib.patch

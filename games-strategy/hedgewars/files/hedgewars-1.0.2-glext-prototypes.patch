@@ -1,0 +1,14 @@
+Description: Add definition to use older prototypes until upstream fixes the pas2c build
+Author: Gianfranco Costamagna <locutusofborg@debian.org>
+Last-Update: 2024-01-02
+
+--- hedgewars-1.0.2.orig/project_files/hwc/rtl/GL.h
++++ hedgewars-1.0.2/project_files/hwc/rtl/GL.h
+@@ -3,6 +3,7 @@
+ #if defined(__APPLE__) && !defined(EMSCRIPTEN)
+ #include <OpenGL/gl.h>
+ #else
++#define GL_GLEXT_PROTOTYPES
+ #include "GL/gl.h"
+ #endif
+ 

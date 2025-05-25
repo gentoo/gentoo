@@ -1,11 +1,33 @@
+# https://bugs.gentoo.org/955791
+# https://bugs.gentoo.org/717422
+# From: Bill Prendergast <dek.devel@baisenvar.info>
+
 --- a/src/purple-libnotify+-common.h
 +++ b/src/purple-libnotify+-common.h
-@@ -27,7 +27,7 @@
+@@ -27,13 +27,14 @@
  
  extern PurplePlugin *notify_plus;
  
 -struct
-+extern struct
++struct notify_plus_data_
  {
  	gboolean modify_notification;
  	gboolean use_svg;
+ 	gboolean overlay_icon;
+ 	gboolean set_transcient;
+ 	gboolean actions;
+-} notify_plus_data;
++};
++extern struct notify_plus_data_ notify_plus_data;
+ 
+ #endif /* __PURPLE_LIBNOTIFY_PLUS_COMMON_H__ */
+--- a/src/purple-libnotify+.c
++++ b/src/purple-libnotify+.c
+@@ -30,6 +30,7 @@
+ #include "purple-libnotify+-frames.h"
+ 
+ PurplePlugin *notify_plus = NULL;
++struct notify_plus_data_ notify_plus_data;
+ 
+ static void
+ _purple_notify_plus_signed_on(PurpleBuddy *buddy, PurplePlugin *plugin)

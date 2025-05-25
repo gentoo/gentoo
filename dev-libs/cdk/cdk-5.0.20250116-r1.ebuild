@@ -57,6 +57,7 @@ src_install() {
 	if use examples ; then
 		local x
 		for x in include c++ demos examples cli cli/utils cli/samples ; do
+			[[ -d ${x} ]] || continue
 			docinto ${x}
 			find ${x} -maxdepth 1 -mindepth 1 -type f -print0 | xargs -0 dodoc || die
 		done

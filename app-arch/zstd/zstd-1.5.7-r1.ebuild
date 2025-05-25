@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson-multilib
+inherit dot-a meson-multilib
 
 DESCRIPTION="zstd fast compression library"
 HOMEPAGE="https://facebook.github.io/zstd/"
@@ -40,6 +40,11 @@ src_prepare() {
 	eapply "${MESON_PATCHES[@]}"
 }
 
+src_configure() {
+	use static-libs && lto-guarantee-fat
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	local native_file="${T}"/meson.${CHOST}.${ABI}.ini.local
 
@@ -69,4 +74,9 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	meson_src_test --timeout-multiplier=2
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	strip-lto-bytecode
 }

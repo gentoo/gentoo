@@ -31,6 +31,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	eapply "${FILESDIR}/rocksdb-10.1-fixincludes.patch" || die
 	sed -i -e 's/liburing.a/uring/' cmake/modules/Finduring.cmake || die
 	sed -i -e '/find_program(CCACHE_FOUND ccache)/d' CMakeLists.txt || die
 	cmake_src_prepare

@@ -12,10 +12,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
 
-# missing test script
-# https://github.com/jbruchon/jdupes/issues/191
-RESTRICT="test"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.1-static-lib.patch
 )

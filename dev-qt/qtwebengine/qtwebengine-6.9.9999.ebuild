@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 inherit check-reqs flag-o-matic multiprocessing optfeature
 inherit prefix python-any-r1 qt6-build toolchain-funcs
@@ -89,6 +89,7 @@ DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXi
 	x11-libs/libxshmfence
+	elibc_musl? ( sys-libs/queue-standalone )
 	screencast? ( media-libs/libepoxy[egl(+)] )
 	vaapi? (
 		vulkan? ( dev-util/vulkan-headers )
@@ -108,8 +109,6 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
-	"${FILESDIR}"/${PN}-6.8.2-glibc2.41.patch
-	"${FILESDIR}"/${PN}-6.8.3-pipewire1.4.patch
 	"${FILESDIR}"/${PN}-6.8.3-gperf3.2.patch
 )
 

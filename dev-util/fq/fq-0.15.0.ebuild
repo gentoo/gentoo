@@ -14,7 +14,7 @@ LICENSE="MIT BSD-2"
 # Dependent licenses
 LICENSE+="  BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

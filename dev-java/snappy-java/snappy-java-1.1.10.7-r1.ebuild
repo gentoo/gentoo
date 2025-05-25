@@ -20,7 +20,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 CP_DEPEND="dev-java/osgi-core:0"
 

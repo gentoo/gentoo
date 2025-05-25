@@ -1,0 +1,29 @@
+From 48c55f48d896daa8ec851d659b441e3f2c8988c4 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 22 Apr 2025 13:28:03 +0200
+Subject: [PATCH 2/2] [Gentoo specific] remove optimization flags and C++
+ standard
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b400e4d..986c1f7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,13 +42,6 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+   # using GCC
+   add_definitions(-DBUILD_DLL)
+   add_compile_options(-Wall)
+-  if (CMAKE_BUILD_TYPE MATCHES DEBUG)
+-    add_compile_options(-g)
+-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Og")
+-  else()
+-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O2")
+-  endif(CMAKE_BUILD_TYPE MATCHES DEBUG)
+-  
+ elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
+   # using GCC
+   add_definitions(-DBUILD_DLL)
+-- 
+2.49.0
+

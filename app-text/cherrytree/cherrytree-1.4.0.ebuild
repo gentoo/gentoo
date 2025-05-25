@@ -13,9 +13,9 @@ HOMEPAGE="https://www.giuspen.com/cherrytree/"
 SRC_URI="https://github.com/giuspen/${PN}/releases/download/v${PV}/${P/-/_}.tar.xz"
 S="${WORKDIR}"/${P/-/_}
 
-# GPL-3 — future/src/ct (CherryTree)
-# LGPL-2.1 — future/src/7za (7zip)
-# MIT — future/src/fmt (libfmt)
+# GPL-3 - future/src/ct (CherryTree)
+# LGPL-2.1 - future/src/7za (7zip)
+# MIT - future/src/fmt (libfmt)
 LICENSE="GPL-3 LGPL-2.1 MIT"
 
 SLOT="0"

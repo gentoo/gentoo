@@ -17,6 +17,8 @@ you can scroll the process list vertically and horizontally, and select a
 process to be killed with the arrow keys instead of by typing its process id.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/htop-dev/htop/issues</bugs-to>
+		<changelog>https://github.com/htop-dev/htop/blob/main/ChangeLog</changelog>
 		<remote-id type="github">htop-dev/htop</remote-id>
 	</upstream>
 </pkgmetadata>

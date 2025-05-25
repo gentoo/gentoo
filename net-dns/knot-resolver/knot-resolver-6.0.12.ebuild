@@ -65,7 +65,6 @@ DEPEND="
 			$(python_gen_cond_dep '
 				dev-python/pyparsing[${PYTHON_USEDEP}]
 				dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-				dev-python/tomli[${PYTHON_USEDEP}]
 			')
 		)
 	)
@@ -86,7 +85,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.5.3-nghttp-openssl.patch
 	"${FILESDIR}"/${PN}-6.0.9-libsystemd.patch
 	"${FILESDIR}"/${PN}-6.0.9-config-example.patch
-	"${FILESDIR}"/${PN}-6.0.9-pytest_tomli.patch
+	"${FILESDIR}"/${PN}-6.0.12-pytest_tomllib.patch
 )
 
 pkg_setup() {

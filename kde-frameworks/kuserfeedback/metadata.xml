@@ -9,4 +9,7 @@
 		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=frameworks-kuserfeedback</bugs-to>
 		<remote-id type="kde-invent">frameworks/kuserfeedback</remote-id>
 	</upstream>
+	<use>
+		<flag name="tools">Build application console and CLI binary</flag>
+	</use>
 </pkgmetadata>

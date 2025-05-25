@@ -1,0 +1,75 @@
+https://invent.kde.org/frameworks/kwallet/-/merge_requests/112
+
+From 0993bb19ae8d8f99f6b646ef99b2a8a40149efcc Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 30 Apr 2025 17:11:55 +0200
+Subject: [PATCH] Depend on what/when we use it
+
+If KWallet library can be built w/o the runtimes, then let's define
+the deps like that as well.
+
+Only runtime has translations.
+
+Only kwallet-query has docs.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 21 +++++++++++++--------
+ 1 file changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 199685e4..8b2f91d0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@ include(KDEGitCommitHooks)
+ include(ECMDeprecationSettings)
+ 
+ set(REQUIRED_QT_VERSION 6.7.0)
+-find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus)
++find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core DBus Gui Widgets)
+ 
+ include(ECMAddQch)
+ include(ECMGenerateExportHeader)
+@@ -47,11 +47,11 @@ endif()
+ # Therefore we must not exclude those by default
+ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
+ 
+-find_package(KF6CoreAddons ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF6Config ${KF_DEP_VERSION} REQUIRED)
+-find_package(KF6WindowSystem ${KF_DEP_VERSION} REQUIRED)
+-find_package(KF6I18n ${KF_DEP_VERSION} REQUIRED)
+-find_package(KF6DocTools ${KF_DEP_VERSION})
++
++if(BUILD_KSECRETD OR BUILD_KWALLETD)
++    find_package(KF6 ${KF_DEP_VERSION} REQUIRED COMPONENTS CoreAddons I18n WindowSystem)
++endif()
+ 
+ ecm_set_disabled_deprecation_versions(
+     QT 6.9.0
+@@ -65,15 +65,20 @@ else()
+ endif()
+ 
+ add_definitions(-DTRANSLATION_DOMAIN=\"ksecretd6\")
+-ki18n_install(po)
++if(BUILD_KSECRETD OR BUILD_KWALLETD OR BUILD_KWALLET_QUERY)
++    ki18n_install(po)
++endif()
+ add_subdirectory(src)
+ if (BUILD_TESTING)
+     add_subdirectory(autotests)
+     add_subdirectory(tests)
+     add_subdirectory(examples)
+ endif()
+-if (KF6DocTools_FOUND)
+-    add_subdirectory(docs)
++if(BUILD_KWALLET_QUERY)
++    find_package(KF6DocTools ${KF_DEP_VERSION})
++    if(KF6DocTools_FOUND)
++        add_subdirectory(docs)
++    endif()
+ endif()
+ 
+ include(ECMFeatureSummary)
+-- 
+2.49.0
+

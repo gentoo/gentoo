@@ -1,0 +1,221 @@
+https://bugs.gentoo.org/955587
+https://gitlab.com/qemu-project/qemu/-/commit/ff765e490eef83480d07673e115060228b01d55e
+https://gitlab.com/qemu-project/qemu/-/commit/af01cf195ba106fe039ab320ce9e8074b4ddd841
+
+From ff765e490eef83480d07673e115060228b01d55e Mon Sep 17 00:00:00 2001
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Date: Wed, 8 Jan 2025 21:13:29 +0900
+Subject: [PATCH] virtio-net: Fix num_buffers for version 1
+
+The specification says the device MUST set num_buffers to 1 if
+VIRTIO_NET_F_MRG_RXBUF has not been negotiated.
+
+Fixes: df91055db5c9 ("virtio-net: enable virtio 1.0")
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20250108-buffers-v1-1-a0c85ff31aeb@daynix.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Tested-by: Lei Yang <leiyang@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+(cherry picked from commit c17ad4b11bd268a35506cd976884562df6ca69d7)
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/net/virtio-net.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index f8c6ccbec45..78b7d88756c 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -1999,6 +1999,8 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+                                     offsetof(typeof(hdr),
+                                              virtio_net.hdr.num_buffers),
+                                     sizeof(hdr.virtio_net.hdr.num_buffers));
++            } else {
++                hdr.virtio_net.hdr.num_buffers = cpu_to_le16(1);
+             }
+ 
+             guest_offset = n->has_vnet_hdr ?
+-- 
+GitLab
+
+From af01cf195ba106fe039ab320ce9e8074b4ddd841 Mon Sep 17 00:00:00 2001
+From: Antoine Damhet <adamhet@scaleway.com>
+Date: Tue, 8 Apr 2025 16:53:33 +0200
+Subject: [PATCH] Revert "virtio-net: Copy received header to buffer"
+
+This reverts commit 7987d2be5a8bc3a502f89ba8cf3ac3e09f64d1ce.
+
+The goal was to remove the need to patch the (const) input buffer
+with a recomputed UDP checksum by copying headers to a RW region and
+inject the checksum there. The patch computed the checksum only from the
+header fields (missing the rest of the payload) producing an invalid one
+and making guests fail to acquire a DHCP lease.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2727
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Antoine Damhet <adamhet@scaleway.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Message-ID: <20250408145345.142947-1-adamhet@scaleway.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+(cherry picked from commit e28fbd1c525db21f0502b85517f49504c9f9dcd8)
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/net/virtio-net.c | 87 +++++++++++++++++++++------------------------
+ 1 file changed, 40 insertions(+), 47 deletions(-)
+
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index 78b7d88756c..09ff80c9953 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -1702,44 +1702,41 @@ static void virtio_net_hdr_swap(VirtIODevice *vdev, struct virtio_net_hdr *hdr)
+  * cache.
+  */
+ static void work_around_broken_dhclient(struct virtio_net_hdr *hdr,
+-                                        size_t *hdr_len, const uint8_t *buf,
+-                                        size_t buf_size, size_t *buf_offset)
++                                        uint8_t *buf, size_t size)
+ {
+     size_t csum_size = ETH_HLEN + sizeof(struct ip_header) +
+                        sizeof(struct udp_header);
+ 
+-    buf += *buf_offset;
+-    buf_size -= *buf_offset;
+-
+     if ((hdr->flags & VIRTIO_NET_HDR_F_NEEDS_CSUM) && /* missing csum */
+-        (buf_size >= csum_size && buf_size < 1500) && /* normal sized MTU */
++        (size >= csum_size && size < 1500) && /* normal sized MTU */
+         (buf[12] == 0x08 && buf[13] == 0x00) && /* ethertype == IPv4 */
+         (buf[23] == 17) && /* ip.protocol == UDP */
+         (buf[34] == 0 && buf[35] == 67)) { /* udp.srcport == bootps */
+-        memcpy((uint8_t *)hdr + *hdr_len, buf, csum_size);
+-        net_checksum_calculate((uint8_t *)hdr + *hdr_len, csum_size, CSUM_UDP);
++        net_checksum_calculate(buf, size, CSUM_UDP);
+         hdr->flags &= ~VIRTIO_NET_HDR_F_NEEDS_CSUM;
+-        *hdr_len += csum_size;
+-        *buf_offset += csum_size;
+     }
+ }
+ 
+-static size_t receive_header(VirtIONet *n, struct virtio_net_hdr *hdr,
+-                             const void *buf, size_t buf_size,
+-                             size_t *buf_offset)
++static void receive_header(VirtIONet *n, const struct iovec *iov, int iov_cnt,
++                           const void *buf, size_t size)
+ {
+-    size_t hdr_len = n->guest_hdr_len;
+-
+-    memcpy(hdr, buf, sizeof(struct virtio_net_hdr));
+-
+-    *buf_offset = n->host_hdr_len;
+-    work_around_broken_dhclient(hdr, &hdr_len, buf, buf_size, buf_offset);
++    if (n->has_vnet_hdr) {
++        /* FIXME this cast is evil */
++        void *wbuf = (void *)buf;
++        work_around_broken_dhclient(wbuf, wbuf + n->host_hdr_len,
++                                    size - n->host_hdr_len);
+ 
+-    if (n->needs_vnet_hdr_swap) {
+-        virtio_net_hdr_swap(VIRTIO_DEVICE(n), hdr);
++        if (n->needs_vnet_hdr_swap) {
++            virtio_net_hdr_swap(VIRTIO_DEVICE(n), wbuf);
++        }
++        iov_from_buf(iov, iov_cnt, 0, buf, sizeof(struct virtio_net_hdr));
++    } else {
++        struct virtio_net_hdr hdr = {
++            .flags = 0,
++            .gso_type = VIRTIO_NET_HDR_GSO_NONE
++        };
++        iov_from_buf(iov, iov_cnt, 0, &hdr, sizeof hdr);
+     }
+-
+-    return hdr_len;
+ }
+ 
+ static int receive_filter(VirtIONet *n, const uint8_t *buf, int size)
+@@ -1907,13 +1904,6 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
+     return (index == new_index) ? -1 : new_index;
+ }
+ 
+-typedef struct Header {
+-    struct virtio_net_hdr_v1_hash virtio_net;
+-    struct eth_header eth;
+-    struct ip_header ip;
+-    struct udp_header udp;
+-} Header;
+-
+ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+                                       size_t size)
+ {
+@@ -1923,15 +1913,15 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+     VirtQueueElement *elems[VIRTQUEUE_MAX_SIZE];
+     size_t lens[VIRTQUEUE_MAX_SIZE];
+     struct iovec mhdr_sg[VIRTQUEUE_MAX_SIZE];
+-    Header hdr;
++    struct virtio_net_hdr_v1_hash extra_hdr;
+     unsigned mhdr_cnt = 0;
+     size_t offset, i, guest_offset, j;
+     ssize_t err;
+ 
+-    memset(&hdr.virtio_net, 0, sizeof(hdr.virtio_net));
++    memset(&extra_hdr, 0, sizeof(extra_hdr));
+ 
+     if (n->rss_data.enabled && n->rss_data.enabled_software_rss) {
+-        int index = virtio_net_process_rss(nc, buf, size, &hdr.virtio_net);
++        int index = virtio_net_process_rss(nc, buf, size, &extra_hdr);
+         if (index >= 0) {
+             nc = qemu_get_subqueue(n->nic, index % n->curr_queue_pairs);
+         }
+@@ -1996,20 +1986,23 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+             if (n->mergeable_rx_bufs) {
+                 mhdr_cnt = iov_copy(mhdr_sg, ARRAY_SIZE(mhdr_sg),
+                                     sg, elem->in_num,
+-                                    offsetof(typeof(hdr),
+-                                             virtio_net.hdr.num_buffers),
+-                                    sizeof(hdr.virtio_net.hdr.num_buffers));
++                                    offsetof(typeof(extra_hdr), hdr.num_buffers),
++                                    sizeof(extra_hdr.hdr.num_buffers));
+             } else {
+-                hdr.virtio_net.hdr.num_buffers = cpu_to_le16(1);
++                extra_hdr.hdr.num_buffers = cpu_to_le16(1);
+             }
+ 
+-            guest_offset = n->has_vnet_hdr ?
+-                           receive_header(n, (struct virtio_net_hdr *)&hdr,
+-                                          buf, size, &offset) :
+-                           n->guest_hdr_len;
+-
+-            iov_from_buf(sg, elem->in_num, 0, &hdr, guest_offset);
+-            total += guest_offset;
++            receive_header(n, sg, elem->in_num, buf, size);
++            if (n->rss_data.populate_hash) {
++                offset = offsetof(typeof(extra_hdr), hash_value);
++                iov_from_buf(sg, elem->in_num, offset,
++                             (char *)&extra_hdr + offset,
++                             sizeof(extra_hdr.hash_value) +
++                             sizeof(extra_hdr.hash_report));
++            }
++            offset = n->host_hdr_len;
++            total += n->guest_hdr_len;
++            guest_offset = n->guest_hdr_len;
+         } else {
+             guest_offset = 0;
+         }
+@@ -2035,11 +2028,11 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+     }
+ 
+     if (mhdr_cnt) {
+-        virtio_stw_p(vdev, &hdr.virtio_net.hdr.num_buffers, i);
++        virtio_stw_p(vdev, &extra_hdr.hdr.num_buffers, i);
+         iov_from_buf(mhdr_sg, mhdr_cnt,
+                      0,
+-                     &hdr.virtio_net.hdr.num_buffers,
+-                     sizeof hdr.virtio_net.hdr.num_buffers);
++                     &extra_hdr.hdr.num_buffers,
++                     sizeof extra_hdr.hdr.num_buffers);
+     }
+ 
+     for (j = 0; j < i; j++) {
+-- 
+GitLab

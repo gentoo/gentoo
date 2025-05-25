@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools dot-a
 
 DESCRIPTION="Unit testing and mocking framework for C/C++"
 HOMEPAGE="https://cpputest.github.io/ https://github.com/cpputest/cpputest"
@@ -27,4 +27,14 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }

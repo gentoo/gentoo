@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 GNOME_ORG_MODULE="sysprof"
 
-inherit gnome.org meson-multilib systemd
+inherit dot-a gnome.org meson-multilib systemd
 
 DESCRIPTION="Static library for sysprof capture data generation"
 HOMEPAGE="http://sysprof.com/"
@@ -20,6 +20,11 @@ BDEPEND="
 	>=sys-kernel/linux-headers-2.6.32
 	virtual/pkgconfig
 "
+
+src_configure() {
+	lto-guarantee-fat
+	meson-multilib_src_configure
+}
 
 multilib_src_configure() {
 	local emesonargs=(
@@ -37,4 +42,9 @@ multilib_src_configure() {
 		-Dagent=false
 	)
 	meson_src_configure
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	strip-lto-bytecode
 }

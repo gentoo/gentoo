@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib dot-a
 
 DESCRIPTION="A unit test framework for C"
 HOMEPAGE="https://libcheck.github.io/check/"
@@ -29,6 +29,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Fix-pkgconfig-file-s-libdir-value.patch
 )
 
+src_configure() {
+	lto-guarantee-fat
+	cmake-multilib_src_configure
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test ON OFF)
@@ -50,4 +55,5 @@ multilib_src_compile() {
 multilib_src_install_all() {
 	use doc && local HTML_DOCS=( "${S}"/doc/html/. )
 	einstalldocs
+	strip-lto-bytecode
 }

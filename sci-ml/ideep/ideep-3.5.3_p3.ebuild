@@ -4,7 +4,7 @@
 EAPI=8
 
 MYP=pytorch-rls-v${PV/_p/-}
-DESCRIPTION="Intel® Optimization for Chainer"
+DESCRIPTION="Intel Optimization for Chainer"
 HOMEPAGE="https://github.com/intel/ideep"
 SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/${MYP}.tar.gz
 	-> ${P}.tar.gz"

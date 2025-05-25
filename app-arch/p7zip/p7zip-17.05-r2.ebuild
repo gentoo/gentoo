@@ -11,7 +11,7 @@ SRC_URI="https://github.com/p7zip-project/p7zip/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="LGPL-2.1 rar? ( unRAR )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="abi_x86_x32 natspec +pch rar test"
 
 REQUIRED_USE="test? ( rar )" # bug 907221
@@ -33,8 +33,8 @@ src_prepare() {
 		eapply "${FILESDIR}"/${P}-natspec.patch
 		sed -i '/^LOCAL_LIBS/s/$/ -lnatspec/' makefile.* || die
 	else
-    eapply "${FILESDIR}/${P}-localization.patch"
-  fi
+		eapply "${FILESDIR}/${P}-localization.patch"
+	fi
 
 	if ! use pch; then
 		sed "s:PRE_COMPILED_HEADER=StdAfx.h.gch:PRE_COMPILED_HEADER=:g" -i makefile.* || die

@@ -12,6 +12,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
 CEF_VERSION="cef_binary_6533_linux"
+CEF_REVISION="_v3"
 OBS_BROWSER_COMMIT="b56fd78936761891475458447c1cc9058bb9c2d4"
 OBS_WEBSOCKET_COMMIT="c542622d7b6d41ce5875f54efdab1d4ac2967ef4"
 
@@ -39,8 +40,8 @@ fi
 
 SRC_URI+="
 	browser? (
-		amd64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_x86_64.tar.xz )
-		arm64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_aarch64.tar.xz )
+		amd64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_x86_64${CEF_REVISION}.tar.xz )
+		arm64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_aarch64${CEF_REVISION}.tar.xz )
 	)
 "
 
@@ -81,6 +82,7 @@ DEPEND="
 	sys-apps/pciutils
 	sys-apps/util-linux
 	sys-libs/zlib:=
+	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libxcb:=
 	x11-libs/libXcomposite
@@ -96,13 +98,11 @@ DEPEND="
 		dev-libs/glib
 		dev-libs/nspr
 		dev-libs/nss
-		dev-libs/wayland
 		media-libs/alsa-lib
 		media-libs/fontconfig
 		media-libs/mesa[gbm(+)]
 		net-print/cups
 		x11-libs/cairo
-		x11-libs/libdrm
 		x11-libs/libXcursor
 		x11-libs/libXdamage
 		x11-libs/libXext

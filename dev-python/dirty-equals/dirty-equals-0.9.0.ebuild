@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} pypy3_11 pypy3 )
+PYTHON_FULLY_TESTED=( python3_{10..13} pypy3_11 pypy3 )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_14 )
 
 inherit distutils-r1
 
@@ -28,7 +29,7 @@ BDEPEND="
 		dev-python/packaging[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			>=dev-python/pydantic-2.4.2[${PYTHON_USEDEP}]
-		' 'python*' pypy3)
+		' "${PYTHON_FULLY_TESTED[@]}")
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		>=dev-python/pytz-2021.3[${PYTHON_USEDEP}]
 	)

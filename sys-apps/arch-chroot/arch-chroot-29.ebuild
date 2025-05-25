@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.archlinux.org/archlinux/arch-install-scripts/-/archive/v
 S="${WORKDIR}/arch-install-scripts-v${PV}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 BDEPEND="app-text/asciidoc"
 

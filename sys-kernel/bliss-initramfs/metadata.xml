@@ -3,6 +3,6 @@
 <pkgmetadata>
     <!--maintainer-needed-->
     <upstream>
-        <remote-id type="github">fearedbliss/bliss-initramfs</remote-id>
+        <remote-id type="codeberg">fearedbliss/bliss-initramfs</remote-id>
     </upstream>
 </pkgmetadata>

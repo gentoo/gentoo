@@ -4,7 +4,7 @@
 EAPI=8
 GNOME_ORG_MODULE="sysprof"
 
-inherit gnome.org meson-multilib systemd
+inherit dot-a gnome.org meson-multilib systemd
 
 DESCRIPTION="Static library for sysprof capture data generation"
 HOMEPAGE="http://sysprof.com/"
@@ -21,6 +21,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+src_configure() {
+	lto-guarantee-fat
+	meson-multilib_src_configure
+}
+
 multilib_src_configure() {
 	local emesonargs=(
 		-Dgtk=false
@@ -35,4 +40,9 @@ multilib_src_configure() {
 		-Dexamples=false
 	)
 	meson_src_configure
+}
+
+multilib_src_install_all() {
+	einstalldocs
+	strip-lto-bytecode
 }

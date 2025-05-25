@@ -17,7 +17,12 @@ else
 fi
 
 LICENSE="GPL-2+ GPL-3+"
-SLOT="0"
+# In 2.0.0 and 2.0.1, the SONAME was accidentally "2". In 2.0.2, it
+# was restored back to "0" (see 7ebcb041f2ce887ef4d1a64607558889a86ff169 upstream).
+# We can't really know what users built against what and when without
+# us having had a subslot at the time, so we use 0.1 in it to be safe to avoid
+# broken binaries by forcing rebuilds.
+SLOT="0/0.1"
 IUSE="+zerocopy"
 
 DEPEND="virtual/libusb:1"

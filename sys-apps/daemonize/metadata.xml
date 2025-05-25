@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
+		<bugs-to>https://github.com/bmc/daemonize/issues</bugs-to>
 		<remote-id type="github">bmc/daemonize</remote-id>
 	</upstream>
 </pkgmetadata>

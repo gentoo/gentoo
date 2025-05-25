@@ -24,7 +24,7 @@ RDEPEND="app-arch/zip
 	>=dev-libs/tinyxml-2.6.2-r3
 	>=dev-util/astyle-3.1-r2:0=
 	x11-libs/gtk+:3
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	contrib? (
 		app-arch/bzip2
 		app-text/hunspell:=

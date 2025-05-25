@@ -10,6 +10,12 @@
 		language as easy as Python itself. It's based on Pyrex, but supports
 		more cutting edge functionality and optimizations.
 	</longdescription>
+	<use>
+		<flag name="test-full">
+			Run test suite in full via additional (large) test
+			dependencies, like dev-python/numpy.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="pypi">Cython</remote-id>
 		<remote-id type="github">cython/cython</remote-id>

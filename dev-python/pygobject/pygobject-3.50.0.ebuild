@@ -5,7 +5,8 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+# py3.14: https://gitlab.gnome.org/GNOME/pygobject/-/issues/694
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 
 inherit gnome.org meson virtualx xdg distutils-r1
 

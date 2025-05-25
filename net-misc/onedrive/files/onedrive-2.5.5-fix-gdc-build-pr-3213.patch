@@ -1,0 +1,331 @@
+# These changes fix gdc support and out-of-source builds.
+# They have been merged upstream at: https://github.com/abraunegg/onedrive/pull/3213
+
+From: Andrei Horodniceanu <a.horodniceanu@proton.me>
+Signed-off-by: Andrei Horodniceanu <a.horodniceanu@proton.me>
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -22,11 +22,7 @@ NOTIFICATIONS = @NOTIFICATIONS@
+ HAVE_SYSTEMD = @HAVE_SYSTEMD@
+ systemduserunitdir = @systemduserunitdir@
+ systemdsystemunitdir = @systemdsystemunitdir@
+-curl_LIBS = @curl_LIBS@
+-sqlite_LIBS = @sqlite_LIBS@
+-notify_LIBS = @notify_LIBS@
+-bsd_inotify_LIBS = @bsd_inotify_LIBS@
+-dynamic_linker_LIBS = @dynamic_linker_LIBS@
++all_libs = @curl_LIBS@ @sqlite_LIBS@ @notify_LIBS@ @bsd_inotify_LIBS@ @dynamic_linker_LIBS@
+ COMPLETIONS = @COMPLETIONS@
+ BASH_COMPLETION_DIR = @BASH_COMPLETION_DIR@
+ ZSH_COMPLETION_DIR = @ZSH_COMPLETION_DIR@
+@@ -34,29 +30,23 @@ FISH_COMPLETION_DIR = @FISH_COMPLETION_DIR@
+ DEBUG = @DEBUG@
+ 
+ DC = @DC@
+-DC_TYPE = @DC_TYPE@
+ DCFLAGS = @DCFLAGS@
+-DCFLAGS += -w -J.
++DEBUG_DCFLAGS = @DEBUG_DCFLAGS@
++RELEASE_DCFLAGS = @RELEASE_DCFLAGS@
++VERSION_DCFLAG = @VERSION_DCFLAG@
++LINKER_DCFLAG = @LINKER_DCFLAG@
++OUTPUT_DCFLAG = @OUTPUT_DCFLAG@
++WERROR_DCFLAG = @WERROR_DCFLAG@
++
++DCFLAGS += $(WERROR_DCFLAG)
+ ifeq ($(DEBUG),yes)
+-ifeq ($(DC_TYPE),dmd)
+-# Add DMD Debugging Flags
+-DCFLAGS += -g -debug -gs
+-else
+-# Add LDC Debugging Flags
+-DCFLAGS += -g -d-debug -gc
+-endif
++DCFLAGS += $(DEBUG_DCFLAGS)
+ else
+-# Only add optimisation flags if debugging is not enabled
+-DCFLAGS += -O
++DCFLAGS += $(RELEASE_DCFLAGS)
+ endif
+ 
+ ifeq ($(NOTIFICATIONS),yes)
+-NOTIF_VERSIONS=-version=NoPragma -version=NoGdk -version=Notifications
+-# support ldc2 which needs -d prefix for version specification
+-ifeq ($(DC_TYPE),ldc)
+-        NOTIF_VERSIONS := $(addprefix -d,$(NOTIF_VERSIONS))
+-endif
+-DCFLAGS += $(NOTIF_VERSIONS)
++NOTIF_VERSIONS = $(addprefix $(VERSION_DCFLAG)=,NoPragma NoGdk Notifications)
+ endif
+ 
+ system_unit_files = contrib/systemd/onedrive@.service
+@@ -110,7 +100,7 @@ onedrive: $(SOURCES)
+ 	else \
+ 		echo $(version) > version ; \
+ 	fi
+-	$(DC) $(DCFLAGS) $(addprefix -L,$(curl_LIBS)) $(addprefix -L,$(sqlite_LIBS)) $(addprefix -L,$(notify_LIBS)) $(addprefix -L,$(bsd_inotify_LIBS)) $(addprefix -L,$(dynamic_linker_LIBS)) $(SOURCES) -of$@
++	$(DC) -J. $(NOTIF_VERSIONS) $(DCFLAGS) $(addprefix $(LINKER_DCFLAG),$(all_libs)) $^ $(OUTPUT_DCFLAG)$@
+ 
+ install: all
+ 	mkdir -p $(DESTDIR)$(bindir)
+--- a/configure
++++ b/configure
+@@ -606,7 +606,12 @@ sqlite_CFLAGS
+ curl_LIBS
+ curl_CFLAGS
+ PACKAGE_DATE
+-DC_TYPE
++WERROR_DCFLAG
++OUTPUT_DCFLAG
++LINKER_DCFLAG
++VERSION_DCFLAG
++RELEASE_DCFLAGS
++DEBUG_DCFLAGS
+ PKG_CONFIG_LIBDIR
+ PKG_CONFIG_PATH
+ PKG_CONFIG
+@@ -2009,7 +2014,7 @@ $as_echo "no" >&6; }
+ 	fi
+ fi
+ 
+-for ac_prog in dmd ldmd2 ldc2
++for ac_prog in dmd ldmd2 ldc2 gdmd gdc
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
+ set dummy $ac_prog; ac_word=$2
+@@ -2054,9 +2059,9 @@ test -n "$DC" || DC="NOT_FOUND"
+ 
+ DC_TYPE=
+ case $(basename $DC) in
+-        dmd) DC_TYPE=dmd ;;
+-        ldmd2) DC_TYPE=dmd ;;
++        dmd|ldmd2|gdmd) DC_TYPE=dmd ;;
+         ldc2) DC_TYPE=ldc ;;
++        gdc) DC_TYPE=gdc ;;
+         NOT_FOUND) as_fn_error 1 "Could not find any compatible D compiler" "$LINENO" 5
+ esac
+ 
+@@ -2145,6 +2150,21 @@ case $(basename $DC) in
+ 		# now version should be something like L.M.N
+ 		MINVERSION=2.088.0
+ 		;;
++	gdmd|gdc)
++		# Both gdmd and gdc print the same version information
++		VERSION=`${DC} --version | head -n1`
++		# Some examples of output:
++		# gdc (Gentoo 14.2.1_p20250301 p8) 14.2.1 20250301
++		# gcc (GCC) 14.2.1 20250207 # Arch
++		# gdc (GCC) 14.2.1 20250110 (Red Hat 14.2.1-7)
++		# gdc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
++		VERSION=${VERSION#gdc }
++		# VERSION=(...) VER DATE ...
++		VERSION=${VERSION#*) }
++		# VERSION=VER DATE ...
++		VERSION=${VERSION%% *}
++		MINVERSION=15
++		;;
+ esac
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $VERSION" >&5
+@@ -2163,8 +2183,40 @@ fi
+ 
+ 
+ 
++case "$DC_TYPE" in
++	dmd)
++		DEBUG_DCFLAGS="-g -debug -gs"
++		RELEASE_DCFLAGS=-O
++		VERSION_DCFLAG=-version
++		LINKER_DCFLAG=-L
++		OUTPUT_DCFLAG=-of
++		WERROR_DCFLAG=-w
++		;;
++	ldc)
++		DEBUG_DCFLAGS="-g -d-debug -gc"
++		RELEASE_DCFLAGS=-O
++		VERSION_DCFLAG=-d-version
++		LINKER_DCFLAG=-L
++		OUTPUT_DCFLAG=-of
++		WERROR_DCFLAG=-w
++		;;
++	gdc)
++		DEBUG_DCFLAGS="-g -fdebug"
++		RELEASE_DCFLAGS=-O
++		VERSION_DCFLAG=-fversion
++		LINKER_DCFLAG=-Wl,
++		OUTPUT_DCFLAG=-o
++		WERROR_DCFLAG=-Werror
++		;;
++esac
++
++
++
++
++
++
+ 
+-PACKAGE_DATE="March 2025"
++PACKAGE_DATE="April 2025"
+ 
+ 
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,12 +24,12 @@ dnl Determine D compiler
+ dnl we check for dmd, dmd2, and ldc2 in this order
+ dnl furthermore, we set DC_TYPE to either dmd or ldc and export this into the
+ dnl Makefile so that we can adjust command line arguments
+-AC_CHECK_PROGS([DC], [dmd ldmd2 ldc2], NOT_FOUND)
++AC_CHECK_PROGS([DC], [dmd ldmd2 ldc2 gdmd gdc], NOT_FOUND)
+ DC_TYPE=
+ case $(basename $DC) in
+-        dmd) DC_TYPE=dmd ;;
+-        ldmd2) DC_TYPE=dmd ;;
++        dmd|ldmd2|gdmd) DC_TYPE=dmd ;;
+         ldc2) DC_TYPE=ldc ;;
++        gdc) DC_TYPE=gdc ;;
+         NOT_FOUND) AC_MSG_ERROR(Could not find any compatible D compiler, 1)
+ esac
+ 
+@@ -114,6 +114,21 @@ case $(basename $DC) in
+ 		# now version should be something like L.M.N
+ 		MINVERSION=2.088.0
+ 		;;
++	gdmd|gdc)
++		# Both gdmd and gdc print the same version information
++		VERSION=`${DC} --version | head -n1`
++		# Some examples of output:
++		# gdc (Gentoo 14.2.1_p20250301 p8) 14.2.1 20250301
++		# gcc (GCC) 14.2.1 20250207 # Arch
++		# gdc (GCC) 14.2.1 20250110 (Red Hat 14.2.1-7)
++		# gdc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
++		VERSION=${VERSION#gdc }
++		# VERSION=(...) VER DATE ...
++		VERSION=${VERSION#*) }
++		# VERSION=VER DATE ...
++		VERSION=${VERSION%% *}
++		MINVERSION=15
++		;;
+ esac
+ 
+ AC_MSG_RESULT([$VERSION])
+@@ -128,11 +143,44 @@ fi
+ 
+ 
+ 
+-AC_SUBST([DC_TYPE])
+ dnl In case the environment variable DCFLAGS is set, we export it to the
+ dnl generated Makefile at configure run:
+ AC_SUBST([DCFLAGS])
+ 
++dnl Default flags for each compiler
++case "$DC_TYPE" in
++	dmd)
++		DEBUG_DCFLAGS="-g -debug -gs"
++		RELEASE_DCFLAGS=-O
++		VERSION_DCFLAG=-version
++		LINKER_DCFLAG=-L
++		OUTPUT_DCFLAG=-of
++		WERROR_DCFLAG=-w
++		;;
++	ldc)
++		DEBUG_DCFLAGS="-g -d-debug -gc"
++		RELEASE_DCFLAGS=-O
++		VERSION_DCFLAG=-d-version
++		LINKER_DCFLAG=-L
++		OUTPUT_DCFLAG=-of
++		WERROR_DCFLAG=-w
++		;;
++	gdc)
++		DEBUG_DCFLAGS="-g -fdebug"
++		RELEASE_DCFLAGS=-O
++		VERSION_DCFLAG=-fversion
++		LINKER_DCFLAG=-Wl,
++		OUTPUT_DCFLAG=-o
++		WERROR_DCFLAG=-Werror
++		;;
++esac
++AC_SUBST([DEBUG_DCFLAGS])
++AC_SUBST([RELEASE_DCFLAGS])
++AC_SUBST([VERSION_DCFLAG])
++AC_SUBST([LINKER_DCFLAG])
++AC_SUBST([OUTPUT_DCFLAG])
++AC_SUBST([WERROR_DCFLAG])
++
+ dnl The package date is only used in the man page onedrive.1.in
+ dnl we generate onedrive.1 from it during configure run, but we want
+ dnl to have the same date, namely the one when the configure script
+--- a/docs/contributing.md
++++ b/docs/contributing.md
+@@ -122,7 +122,7 @@ For reference, below are the available application logging output functions and
+ If the code changes any of the functionality that is documented, it is expected that any PR submission will also include updating the respective section of user documentation and/or man page as part of the code submission.
+ 
+ ## Development Testing
+-Whilst there are more modern DMD and LDC compilers available, ensuring client build compatibility with older platforms is a key requirement.
++Whilst there are more modern D compilers available, ensuring client build compatibility with older platforms is a key requirement.
+ 
+ The issue stems from Debian and Ubuntu LTS versions - such as Ubuntu 20.04. It's [ldc package](https://packages.ubuntu.com/focal/ldc) is only v1.20.1 , thus, this is the minimum version that all compilation needs to be tested against.
+ 
+@@ -172,4 +172,4 @@ deactivate
+ ## References
+ 
+ * D Language Official Style Guide: https://dlang.org/dstyle.html
+-* British English spelling conventions: https://www.collinsdictionary.com/
+\ No newline at end of file
++* British English spelling conventions: https://www.collinsdictionary.com/
+--- a/docs/install.md
++++ b/docs/install.md
+@@ -38,10 +38,10 @@ Only the current release version or greater is supported. Earlier versions are n
+ ## Building from Source - High Level Requirements
+ *   For successful compilation of this application, it's crucial that the build environment is equipped with a minimum of 1GB of memory and an additional 1GB of swap space.
+ *   Install the required distribution package dependencies covering the required development tools and development libraries for curl and sqlite
+-*   Install the [Digital Mars D Compiler (DMD)](https://dlang.org/download.html) or [LDC – the LLVM-based D Compiler](https://github.com/ldc-developers/ldc)
++*   Install the [Digital Mars D Compiler (DMD)](https://dlang.org/download.html), [LDC – the LLVM-based D Compiler](https://github.com/ldc-developers/ldc), or, at least version 15 of the [GNU D Compiler (GDC)](https://www.gdcproject.org/)
+ 
+ > [!IMPORTANT]
+-> To compile this application successfully, it is essential to use either DMD version **2.088.0** or higher, or LDC version **1.18.0** or higher. Ensuring compatibility and optimal performance necessitates the use of these specific versions or their more recent updates.
++> To compile this application successfully, the minimum supported versions of each compiler are: DMD **2.088.0**, LDC **1.18.0**, and, GDC **15**. Ensuring compatibility and optimal performance necessitates the use of these specific versions or their more recent updates.
+ 
+ ### Example for installing DMD Compiler
+ ```text
+@@ -53,6 +53,9 @@ curl -fsS https://dlang.org/install.sh | bash -s dmd
+ curl -fsS https://dlang.org/install.sh | bash -s ldc
+ ```
+ 
++### Installing GDC
++As stated above, you will need at least GDC version 15. If your distribution's repositories include a suitable version, you can install it from there. Common names for the GDC package are listed on the [GDC website](https://www.gdcproject.org/downloads#linux-distribution-packages). If the package is unavailable or its version is too old, you can try building it from source following [these instructions](https://wiki.dlang.org/GDC/Installation).
++
+ ## Distribution Package Dependencies
+ 
+ ### Dependencies: Arch Linux & Manjaro Linux
+@@ -221,6 +224,28 @@ gmake install
+ > [!NOTE]
+ > Install the application as 'root' unless you have installed 'sudo'
+ 
++### Linux: Building the application with GDC
++First, make sure at least version 15 of GDC is available in your path:
++```text
++$ gdc --version
++gdc (Gentoo Hardened 15.0.1_pre20250413 p54) 15.0.1 20250413 (experimental)
++Copyright (C) 2025 Free Software Foundation, Inc.
++This is free software; see the source for copying conditions.  There is NO
++warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
++```
++Then, clone the repository and run the build commands:
++```
++git clone https://github.com/abraunegg/onedrive.git
++cd onedrive
++./configure
++make clean; make;
++sudo make install
++```
++If you have another D compiler installed on your system you may need to explicitly specify that you want to use GDC to the `configure` script. To do this replace the `./configure` step above with:
++```
++./configure DC=gdc
++```
++
+ ### Build options
+ #### GUI Notification Support
+ GUI notification support can be enabled using the `configure` switch `--enable-notifications`.
+

@@ -1,0 +1,25 @@
+From 49e5aa0b0a4481a335936b623b7725a1bc8863d1 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Wed, 30 Apr 2025 23:28:59 +0100
+Subject: [PATCH] Fix CMake USE_SYSTEM_DUMB option
+
+This stopped working since pkg-config stopped being used elsewhere.
+---
+ thirdparty/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/thirdparty/CMakeLists.txt b/thirdparty/CMakeLists.txt
+index 56506035..67c3dab5 100644
+--- a/thirdparty/CMakeLists.txt
++++ b/thirdparty/CMakeLists.txt
+@@ -8,6 +8,7 @@ set(BZIP2_LIBRARIES ${BZIP2_LIBRARIES} PARENT_SCOPE)
+ 
+ option(USE_SYSTEM_DUMB "Use system DUMB library" OFF)
+ if(USE_SYSTEM_DUMB)
++	find_package(PkgConfig REQUIRED)
+ 	pkg_check_modules(DUMB REQUIRED IMPORTED_TARGET dumb>=1.0)
+ else()
+ 	file(GLOB_RECURSE DUMB_SOURCES dumb/*.c)
+-- 
+2.49.0
+

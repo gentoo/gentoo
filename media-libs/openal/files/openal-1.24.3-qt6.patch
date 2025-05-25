@@ -1,0 +1,71 @@
+From ec17d944387e36ecbb6f721792613bf1fafcebc8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 3 May 2025 00:04:01 +0200
+Subject: [PATCH] Port to Qt6
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                     | 6 +++---
+ utils/alsoft-config/CMakeLists.txt | 8 ++++----
+ utils/alsoft-config/mainwindow.cpp | 2 +-
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 64b66b7f..52d59a25 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1321,9 +1321,9 @@ endif()
+ if(ALSOFT_UTILS)
+     find_package(MySOFA)
+     if(NOT ALSOFT_NO_CONFIG_UTIL)
+-        find_package(Qt5Widgets QUIET)
+-        if(NOT Qt5Widgets_FOUND)
+-            message(STATUS "Could NOT find Qt5Widgets")
++        find_package(Qt6Widgets QUIET)
++        if(NOT Qt6Widgets_FOUND)
++            message(STATUS "Could NOT find Qt6Widgets")
+         endif()
+     endif()
+ endif()
+diff --git a/utils/alsoft-config/CMakeLists.txt b/utils/alsoft-config/CMakeLists.txt
+index 6ed1f362..74596f9f 100644
+--- a/utils/alsoft-config/CMakeLists.txt
++++ b/utils/alsoft-config/CMakeLists.txt
+@@ -1,9 +1,9 @@
+ project(alsoft-config)
+ 
+-if(Qt5Widgets_FOUND)
+-    qt5_wrap_ui(UIS  mainwindow.ui)
++if(Qt6Widgets_FOUND)
++    qt6_wrap_ui(UIS  mainwindow.ui)
+ 
+-    qt5_wrap_cpp(MOCS  mainwindow.h)
++    qt6_wrap_cpp(MOCS  mainwindow.h)
+ 
+     add_executable(alsoft-config
+         main.cpp
+@@ -12,7 +12,7 @@ if(Qt5Widgets_FOUND)
+         verstr.cpp
+         verstr.h
+         ${UIS} ${RSCS} ${TRS} ${MOCS})
+-    target_link_libraries(alsoft-config PUBLIC Qt5::Widgets PRIVATE alsoft.common)
++    target_link_libraries(alsoft-config PUBLIC Qt6::Widgets PRIVATE alsoft.common)
+     target_include_directories(alsoft-config PRIVATE "${alsoft-config_BINARY_DIR}"
+         "${OpenAL_BINARY_DIR}")
+     target_compile_definitions(alsoft-config PRIVATE QT_NO_KEYWORDS)
+diff --git a/utils/alsoft-config/mainwindow.cpp b/utils/alsoft-config/mainwindow.cpp
+index 6b4de7f5..d360bc5e 100644
+--- a/utils/alsoft-config/mainwindow.cpp
++++ b/utils/alsoft-config/mainwindow.cpp
+@@ -882,7 +882,7 @@ void MainWindow::loadConfig(const QString &fname)
+             }
+             else if(backend.size() > 1)
+             {
+-                QStringRef backendref{backend.rightRef(backend.size()-1)};
++                auto backendref = QStringView{backend}.right(backend.size()-1);
+                 for(size_t j{0};j < backendList.size();++j)
+                 {
+                     if(backendref == std::data(backendList[j].backend_name))
+-- 
+2.49.0
+

@@ -151,12 +151,15 @@ src_test() {
 	DESTDIR="${T}" cmake_build install
 
 	if use python; then
-		export PYTHONPATH="${T}/$(python_get_sitedir):${T}/usr/$(get_libdir):${BUILD_DIR}/libsrc/core"
+		local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+		local -x NETGENDIR="${T}/usr/bin"
+		export PYTHONPATH="${T}$(python_get_sitedir):${T}/usr/$(get_libdir):${BUILD_DIR}/libsrc/core"
 	fi
 
 	CMAKE_SKIP_TESTS=(
 		'^unit_symboltable$'
 		'^pytest$' # SEGFAULT
+		'^pytest-mpi$' # needs pytest-mpi
 	)
 	cmake_src_test
 }

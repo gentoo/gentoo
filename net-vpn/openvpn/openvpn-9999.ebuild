@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools systemd linux-info tmpfiles
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-HOMEPAGE="https://openvpn.net/"
+HOMEPAGE="https://openvpn.net"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
@@ -149,29 +149,24 @@ src_install() {
 pkg_postinst() {
 	tmpfiles_process openvpn.conf
 
-	if use x64-macos ; then
-		elog "You might want to install tuntaposx for TAP interface support:"
-		elog "http://tuntaposx.sourceforge.net"
-	fi
-
 	if systemd_is_booted || has_version sys-apps/systemd ; then
 		elog "In order to use OpenVPN with systemd please use the correct systemd service file."
-		elog  ""
+		elog
 		elog "server:"
-		elog ""
+		elog
 		elog "- Place your server configuration file in /etc/openvpn/server"
 		elog "- Use the openvpn-server@.service like so"
 		elog "systemctl start openvpn-server@{Server-config}"
-		elog ""
+		elog
 		elog "client:"
-		elog ""
+		elog
 		elog "- Place your client configuration file in /etc/openvpn/client"
 		elog "- Use the openvpn-client@.service like so:"
 		elog "systemctl start openvpn-client@{Client-config}"
 	else
 		elog "The openvpn init script expects to find the configuration file"
 		elog "openvpn.conf in /etc/openvpn along with any extra files it may need."
-		elog ""
+		elog
 		elog "To create more VPNs, simply create a new .conf file for it and"
 		elog "then create a symlink to the openvpn init script from a link called"
 		elog "openvpn.newconfname - like so"
@@ -179,13 +174,13 @@ pkg_postinst() {
 		elog "	 ${EDITOR##*/} foo.conf"
 		elog "	 cd /etc/init.d"
 		elog "	 ln -s openvpn openvpn.foo"
-		elog ""
+		elog
 		elog "You can then treat openvpn.foo as any other service, so you can"
 		elog "stop one vpn and start another if you need to."
 	fi
 
 	if grep -Eq "^[ \t]*(up|down)[ \t].*" "${ROOT}/etc/openvpn"/*.conf 2>/dev/null ; then
-		ewarn ""
+		ewarn
 		ewarn "WARNING: If you use the remote keyword then you are deemed to be"
 		ewarn "a client by our init script and as such we force up,down scripts."
 		ewarn "These scripts call /etc/openvpn/\$SVCNAME-{up,down}.sh where you"
@@ -193,7 +188,7 @@ pkg_postinst() {
 	fi
 
 	if use plugins ; then
-		einfo ""
+		einfo
 		einfo "plugins have been installed into /usr/$(get_libdir)/${PN}/plugins"
 	fi
 }

@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-13.patch
+	"${FILESDIR}/rocksdb-10.1-fixincludes.patch"
 )
 
 src_prepare() {

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib dot-a
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/zeux/volk.git"
@@ -29,8 +29,14 @@ DEPEND="${RDEPEND}
 "
 
 multilib_src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-DVOLK_INSTALL=on
 	)
 	cmake_src_configure
+}
+
+multilib_src_install_all() {
+	strip-lto-bytecode
 }

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://github.com/ValveSoftware/wine/archive/refs/tags/proton-wine-${WINE_PV}.tar.gz"
 	S=${WORKDIR}/${PN}-wine-${WINE_PV}
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* amd64 ~x86"
 fi
 
 DESCRIPTION="Valve Software's fork of Wine"

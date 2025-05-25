@@ -67,7 +67,7 @@ RDEPEND="
 	>=dev-libs/glib-2.66.0
 	dev-libs/libgcrypt
 	dev-libs/libnl:3
-	>=dev-libs/libxml2-2.9.1
+	>=dev-libs/libxml2-2.9.1:=
 	>=net-analyzer/openbsd-netcat-1.105-r1
 	>=net-libs/gnutls-3.2.0:=
 	net-libs/libtirpc:=

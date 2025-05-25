@@ -16,7 +16,7 @@ SRC_URI="https://github.com/pytorch/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 RESTRICT="test"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}

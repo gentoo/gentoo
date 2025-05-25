@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit autotools python-single-r1 systemd
+inherit autotools dot-a python-single-r1 systemd
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="https://www.syslog-ng.com/products/open-source-log-management/"
@@ -114,6 +114,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	# Needs bison/flex.
 	unset YACC LEX
 
@@ -160,6 +162,8 @@ src_configure() {
 
 src_install() {
 	default
+
+	strip-lto-bytecode
 
 	# Install default configuration
 	insinto /etc/default

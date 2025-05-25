@@ -15,7 +15,7 @@ S="${WORKDIR}/JsonPath-${P}/json-path"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 CP_DEPEND="
 	dev-java/tapestry-json:0

@@ -12,4 +12,7 @@
 		and Windows (Multimedia Library) operating systems.
 		RtMidi significantly simplifies the process of interacting with computer MIDI hardware and software.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">thestk/rtmidi</remote-id>
+	</upstream>
 </pkgmetadata>

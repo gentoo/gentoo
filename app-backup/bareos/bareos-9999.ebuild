@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
+PYTHON_COMPAT=( python3_{10..14} )
 CMAKE_WARN_UNUSED_CLI=no
 
 inherit python-any-r1 systemd cmake tmpfiles flag-o-matic

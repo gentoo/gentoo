@@ -9,9 +9,8 @@ Patch for Gentoo distribution of mpt-status.
 
 Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
 
-diff -Nuar mpt-status-1.2.0.orig/Makefile mpt-status-1.2.0/Makefile
---- mpt-status-1.2.0.orig/Makefile	2006-11-01 19:02:30.000000000 +0000
-+++ mpt-status-1.2.0/Makefile	2006-11-10 08:54:18.000000000 +0000
+--- a/Makefile
++++ b/Makefile
 @@ -3,28 +3,26 @@
  KERNEL_PATH	:= /usr/src/linux
  KERNEL_PATH_B	:= /lib/modules/`uname -r`/build

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake dot-a
 
 MY_PN="unittest-cpp"
 MY_P="${MY_PN}-${PV}"
@@ -37,6 +37,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		# Don't build with -Werror: https://bugs.gentoo.org/747583
 		-DUTPP_AMPLIFY_WARNINGS=OFF
@@ -47,4 +49,9 @@ src_configure() {
 
 src_test() {
 	"${BUILD_DIR}/TestUnitTest++" || die "Tests failed"
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }

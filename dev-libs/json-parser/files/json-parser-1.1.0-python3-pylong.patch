@@ -1,0 +1,41 @@
+From 5bd7dc824bcffd867edef7ef80cc896c8c51ce38 Mon Sep 17 00:00:00 2001
+From: Huang Rui <vowstar@gmail.com>
+Date: Tue, 6 May 2025 16:17:53 +0800
+Subject: [PATCH] fix(python): Add Python 3 compatibility macros for PyInt
+ functions
+
+- Add PY_MAJOR_VERSION check to define PyInt_* macros for Python 3
+- Replace deprecated PyInt functions with PyLong equivalents in Python 3
+
+Signed-off-by: Huang Rui <vowstar@gmail.com>
+Upstream-PR: https://github.com/json-parser/json-parser/pull/182
+---
+ bindings/python/wrap_json.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/bindings/python/wrap_json.c b/bindings/python/wrap_json.c
+index bd0360512fd3..1d42a82aad77 100644
+--- a/bindings/python/wrap_json.c
++++ b/bindings/python/wrap_json.c
+@@ -27,6 +27,18 @@
+ 
+ #include "../../json.c"
+ 
++#include <Python.h>
++
++#if PY_MAJOR_VERSION >= 3
++  /* Define PyInt_* only for Python 3, where they no longer exist */
++  #ifndef PyInt_FromLong
++    #define PyInt_FromLong PyLong_FromLong
++  #endif
++  #ifndef PyInt_AsLong
++    #define PyInt_AsLong  PyLong_AsLong
++  #endif
++#endif
++
+ PyObject * json_exception = PyErr_NewException("jsonparser.JSONException",
+     NULL, NULL);
+ 
+-- 
+2.49.0
+

@@ -1,0 +1,76 @@
+From 8d23762cc1a87eaf2b6ef4838ee426ac93d86641 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Wed, 29 Jan 2025 15:29:26 +0100
+Subject: [PATCH] Fix build with Qt 6.10
+
+The private parts have been extracted into a separate CMake config file, which we need to search for now
+
+See https://bugreports.qt.io/browse/QTBUG-87776
+
+Also remove some unneeded private usage
+
+(cherry picked from commit 6f229e2deb990cba775b2337e8c3c10347a772b7)
+---
+ CMakeLists.txt         | 5 +++++
+ src/CMakeLists.txt     | 2 +-
+ src/pipewirerecord.cpp | 1 -
+ tests/CMakeLists.txt   | 2 +-
+ 4 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 312ee91..90747a1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,11 @@ include(ECMQtDeclareLoggingCategory)
+ include(ECMDeprecationSettings)
+ 
+ find_package(Qt6 REQUIRED COMPONENTS DBus Quick)
++
++if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
++    find_package(Qt6GuiPrivate ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++endif()
++
+ find_package(KF6 REQUIRED COMPONENTS I18n CoreAddons)
+ 
+ find_package(EGL REQUIRED)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 10d1a11..05a395b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -144,7 +144,7 @@ add_library(KPipeWireRecord ${kpipewirerecord_SRCS}
+ target_link_libraries(KPipeWireRecord PUBLIC KPipeWire
+     PRIVATE Qt::Core Qt::Gui KF6::CoreAddons KPipeWireDmaBuf
+     PkgConfig::AVCodec PkgConfig::AVUtil PkgConfig::AVFormat PkgConfig::AVFilter PkgConfig::GBM PkgConfig::SWScale
+-    epoxy::epoxy Libdrm::Libdrm Qt::GuiPrivate
++    epoxy::epoxy Libdrm::Libdrm
+ )
+ 
+ ecm_generate_headers(KPipeWireRecord_HEADERS
+diff --git a/src/pipewirerecord.cpp b/src/pipewirerecord.cpp
+index b8cd042..7293b57 100644
+--- a/src/pipewirerecord.cpp
++++ b/src/pipewirerecord.cpp
+@@ -13,7 +13,6 @@
+ #include <QGuiApplication>
+ #include <QImage>
+ #include <QPainter>
+-#include <qpa/qplatformnativeinterface.h>
+ 
+ #include <KShell>
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 8b10222..35ed9b6 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -40,7 +40,7 @@ qt_add_dbus_interface(
+ )
+ 
+ add_executable(xdp-recordme xdp-main.cpp recordme.qrc ${XDP_SRCS} RecordMe.cpp)
+-target_link_libraries(xdp-recordme Qt::DBus Qt::Quick KPipeWire Qt::GuiPrivate Wayland::Client Qt::WaylandClient )
++target_link_libraries(xdp-recordme Qt::DBus Qt::Quick KPipeWire Wayland::Client Qt::WaylandClient )
+ 
+ option(INSTALL_TESTS "The recordme test needs installing, disabled by default for convenience" OFF)
+ if(INSTALL_TESTS)
+-- 
+GitLab
+

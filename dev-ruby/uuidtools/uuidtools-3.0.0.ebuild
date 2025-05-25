@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/sporkmonger/uuidtools"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )"

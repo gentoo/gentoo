@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -54,6 +54,13 @@ python_test() {
 	if ! has_version "dev-python/pillow[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/test_image_regression.py
+		)
+	fi
+
+	if [[ ${EPYTHON} == python3.14* ]] ; then
+		EPYTEST_DESELECT+=(
+			# Sensitive to warnings
+			tests/test_data_regression.py::test_regen_all
 		)
 	fi
 

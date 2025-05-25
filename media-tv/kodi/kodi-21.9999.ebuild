@@ -196,7 +196,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
 	system-ffmpeg? (
-		=media-video/ffmpeg-6*:=[encode(+),soc(-)?,postproc,vaapi?,vdpau?,X?]
+		=media-video/ffmpeg-6*:=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
@@ -220,7 +220,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		)
 	)
 	wayland? (
-		>=x11-libs/libxkbcommon-0.4.1[wayland]
+		>=x11-libs/libxkbcommon-0.4.1
 	)
 	webserver? (
 		>=net-libs/libmicrohttpd-0.9.77:=
@@ -232,7 +232,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	xslt? (
 		dev-libs/libxslt
-		>=dev-libs/libxml2-2.9.4
+		>=dev-libs/libxml2-2.9.4:=
 	)
 	zeroconf? (
 		net-dns/avahi[dbus]

@@ -1,0 +1,49 @@
+https://github.com/curl/trurl/commit/bbb62f7f05af1365c7f12645fcc77b6ac7538439
+https://github.com/curl/trurl/commit/0ce73c17cb865db0df424d410ea6a7b808e89067
+
+From bbb62f7f05af1365c7f12645fcc77b6ac7538439 Mon Sep 17 00:00:00 2001
+From: Caleb Maclennan <caleb@alerque.com>
+Date: Mon, 12 May 2025 12:29:03 +0300
+Subject: [PATCH] Makefile: fix completions check to expect correct generated
+ file
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 8192781f..ca603465 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,7 +39,7 @@ PREFIX ?= /usr/local
+ BINDIR ?= $(PREFIX)/bin
+ MANDIR ?= $(PREFIX)/share/man/man1
+ ZSH_COMPLETIONSDIR ?= $(PREFIX)/share/zsh/site-functions
+-COMPLETION_FILES=scripts/_trurl.zsh
++COMPLETION_FILES=completions/_trurl.zsh
+ 
+ INSTALL ?= install
+ PYTHON3 ?= python3
+
+From 0ce73c17cb865db0df424d410ea6a7b808e89067 Mon Sep 17 00:00:00 2001
+From: Caleb Maclennan <caleb@alerque.com>
+Date: Mon, 12 May 2025 12:35:10 +0300
+Subject: [PATCH] Makefile: fix install completions to correct distdir path
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index ca603465..6fc8d3eb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -64,7 +64,7 @@ install:
+ 	fi)
+ 	(if test -f $(COMPLETION_FILES); then \
+ 	$(INSTALL) -d $(DESTDIR)$(ZSH_COMPLETIONSDIR); \
+-	$(INSTALL) -m 0755 $(COMPLETION_FILES) $(ZSH_COMPLETIONSDIR)/_trurl; \
++	$(INSTALL) -m 0755 $(COMPLETION_FILES) $(DESTDIR)$(ZSH_COMPLETIONSDIR)/_trurl; \
+ 	fi)
+ 
+ .PHONY: clean

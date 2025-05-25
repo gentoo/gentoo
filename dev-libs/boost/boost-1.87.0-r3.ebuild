@@ -9,9 +9,9 @@ EAPI=8
 # (e.g. https://www.boost.org/users/history/version_1_83_0.html)
 # Note that the latter may sometimes feature patches not on the former too.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
+inherit dot-a flag-o-matic multiprocessing python-r1 toolchain-funcs multilib-minimal
 
 MY_PV="$(ver_rs 1- _)"
 
@@ -142,6 +142,14 @@ ejam() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/943975
+	# https://github.com/boostorg/quickbook/issues/27
+	# https://github.com/boostorg/spirit/issues/800
+	use tools && filter-lto
+
+	lto-guarantee-fat
+
 	# Workaround for too many parallel processes requested, bug #506064
 	[[ "$(makeopts_jobs)" -gt 64 ]] && MAKEOPTS="${MAKEOPTS} -j64"
 
@@ -316,6 +324,8 @@ multilib_src_install_all() {
 
 		dosym ../../../../include/boost /usr/share/doc/${PF}/html/boost
 	fi
+
+	strip-lto-bytecode
 }
 
 pkg_preinst() {

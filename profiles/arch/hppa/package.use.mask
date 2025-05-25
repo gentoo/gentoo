@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# NRK <nrk@disroot.org> (2025-05-18)
+# app-arch/plzip is not keyworded
+app-alternatives/lzip plzip
+
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv

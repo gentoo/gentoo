@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/951350
+https://github.com/dyne/frei0r/commit/31efba74b26c161125c6c41d381dcf3f6207a728
+https://github.com/dyne/frei0r/pull/205
+
+From 31efba74b26c161125c6c41d381dcf3f6207a728 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Wed, 2 Apr 2025 14:04:17 -0700
+Subject: [PATCH] Fix configuring with CMake version 4
+
+See https://cmake.org/cmake/help/latest/release/4.0.html#deprecated-and-
+removed-features
+
+> Compatibility with versions of CMake older than 3.5 has been removed.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.1)
++cmake_minimum_required (VERSION 3.5)
+ 
+ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+ 

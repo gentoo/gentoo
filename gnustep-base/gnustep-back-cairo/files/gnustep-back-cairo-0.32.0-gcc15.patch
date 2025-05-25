@@ -1,0 +1,131 @@
+From d27791933ec25403ff5553670061a423c2b1b22a Mon Sep 17 00:00:00 2001
+From: Fred Kiefer <fredkiefer@gmx.de>
+Date: Wed, 21 May 2025 22:21:24 +0200
+Subject: [PATCH] * Source/x11/scale.c, * Source/x11/xutil.c: Update function
+ declaration to modern C.
+
+---
+ ChangeLog          |  5 +++++
+ Source/x11/scale.c | 26 +++++++++-----------------
+ Source/x11/xutil.c |  2 +-
+ 3 files changed, 15 insertions(+), 18 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index d59652ab..35551b1b 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,8 @@
++2025-05-21 Fred Kiefer <FredKiefer@gmx.de>
++
++	* Source/x11/scale.c,
++	* Source/x11/xutil.c: Update function declaration to modern C.
++
+ 2025-02-11 Richard Frith-Macdonald <rfm@gnu.org>
+ 
+ 	* ANNOUNCE:
+diff --git a/Source/x11/scale.c b/Source/x11/scale.c
+index d7a7f774..2e61e3f2 100644
+--- a/Source/x11/scale.c
++++ b/Source/x11/scale.c
+@@ -244,8 +244,7 @@ RScaleImage(RImage *src, unsigned new_width, unsigned new_height)
+ #define	filter_support		(1.0)
+ 
+ static double
+-filter(t)
+-double t;
++filter(double t)
+ {
+     /* f(t) = 2|t|^3 - 3|t|^2 + 1, -1 <= t <= 1 */
+     if(t < 0.0) t = -t;
+@@ -256,8 +255,7 @@ double t;
+ #define	box_support		(0.5)
+ 
+ static double
+-box_filter(t)
+-double t;
++box_filter(double t)
+ {
+     if((t > -0.5) && (t <= 0.5)) return(1.0);
+     return(0.0);
+@@ -266,8 +264,7 @@ double t;
+ #define	triangle_support	(1.0)
+ 
+ static double
+-triangle_filter(t)
+-double t;
++triangle_filter(double t)
+ {
+     if(t < 0.0) t = -t;
+     if(t < 1.0) return(1.0 - t);
+@@ -277,8 +274,7 @@ double t;
+ #define	bell_support		(1.5)
+ 
+ static double
+-bell_filter(t)		/* box (*) box (*) box */
+-double t;
++bell_filter(double t)		/* box (*) box (*) box */
+ {
+     if(t < 0) t = -t;
+     if(t < .5) return(.75 - (t * t));
+@@ -292,8 +288,7 @@ double t;
+ #define	B_spline_support	(2.0)
+ 
+ static double
+-B_spline_filter(t)	/* box (*) box (*) box (*) box */
+-double t;
++B_spline_filter(double t)	/* box (*) box (*) box (*) box */
+ {
+     double tt;
+     
+@@ -309,8 +304,7 @@ double t;
+ }
+ 
+ static double
+-sinc(x)
+-double x;
++sinc(double x)
+ {
+     x *= PI;
+     if(x != 0) return(sin(x) / x);
+@@ -320,8 +314,7 @@ double x;
+ #define	Lanczos3_support	(3.0)
+ 
+ static double
+-Lanczos3_filter(t)
+-double t;
++Lanczos3_filter(double t)
+ {
+     if(t < 0) t = -t;
+     if(t < 3.0) return(sinc(t) * sinc(t/3.0));
+@@ -334,8 +327,7 @@ double t;
+ #define	C	(1.0 / 3.0)
+ 
+ static double
+-Mitchell_filter(t)
+-double t;
++Mitchell_filter(double t)
+ {
+     double tt;
+     
+@@ -356,7 +348,7 @@ double t;
+     return(0.0);
+ }
+ 
+-static double (*filterf)() = Mitchell_filter;
++static double (*filterf)(double) = Mitchell_filter;
+ static double fwidth = Mitchell_support;
+ 
+ void
+diff --git a/Source/x11/xutil.c b/Source/x11/xutil.c
+index 0bee2ca4..990c9d44 100644
+--- a/Source/x11/xutil.c
++++ b/Source/x11/xutil.c
+@@ -42,7 +42,7 @@
+ 
+ static int shmError;
+ 
+-static int (*oldErrorHandler)();
++static int (*oldErrorHandler)(Display*, XErrorEvent*);
+ 
+ static int
+ errorHandler(Display *dpy, XErrorEvent *err)

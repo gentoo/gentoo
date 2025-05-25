@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
-RESTRICT=test # Ambiguous module name ‘Data.Time’: it was found in multiple packages: pulseaudio-0.0.2.1 time-1.8.0.2
+RESTRICT=test # Ambiguous module name 'Data.Time': it was found in multiple packages: pulseaudio-0.0.2.1 time-1.8.0.2
 
 RDEPEND="dev-haskell/attoparsec:=[profile?]
 	>=dev-lang/ghc-7.4.1:= <dev-lang/ghc-9.1

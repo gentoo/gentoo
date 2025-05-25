@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Nginx plugin for Certbot (Let’s Encrypt client)"
+DESCRIPTION="Nginx plugin for Certbot (Let's Encrypt client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot-nginx/
@@ -13,7 +13,7 @@ HOMEPAGE="
 LICENSE="metapackage"
 SLOT="0"
 
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
 
 # Meta package for transition
 # No need to upgrade thanks to ">="

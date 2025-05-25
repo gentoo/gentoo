@@ -1,0 +1,16 @@
+Do not build a supposed-to-crash test which may or may not even compile
+correctly any longer.
+
+Bug: https://bugs.gentoo.org/955831
+
+--- boost_1_88_0/libs/system/test/Jamfile.v2~	2025-04-03 13:37:30.000000000 +0200
++++ boost_1_88_0/libs/system/test/Jamfile.v2	2025-05-11 14:28:16.187753266 +0200
+@@ -68,7 +68,7 @@ system-run before_main_test.cpp ;
+ 
+ run-fail throws_assign_fail.cpp : : :
+     # GCC 12 catches this at compile time with a warning
+-    <toolset>gcc,<variant>release:<build>no ;
++    <toolset>gcc:<build>no ;
+ 
+ system-run constexpr_test.cpp ;
+ system-run win32_hresult_test.cpp ;

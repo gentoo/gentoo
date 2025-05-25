@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <use>
-    <flag name="asm">Enable x86 assembly optimisation.</flag>
-  </use>
   <upstream>
     <remote-id type="github">MaartenBaert/ssr</remote-id>
   </upstream>

@@ -1,0 +1,41 @@
+See https://github.com/lancos/ponyprog/issues/42
+---
+
+diff --git a/SrcPony/usbwatcher.h b/SrcPony/usbwatcher.h
+index eeb0163..d7ab2c5 100644
+--- a/SrcPony/usbwatcher.h
++++ b/SrcPony/usbwatcher.h
+@@ -51,20 +51,22 @@ class USBWatcher : public QObject
+ 
+ 	void hotplug_notify(bool connected, quint16 vid, quint16 pid)
+ 	{
++		VidPid *vObj = new VidPid(vid, pid);
+ 		if (connected)
+ 		{
+-			vUSB.append(VidPid(vid, pid));
++			vUSB.append(vObj);
+ 			emit notify(true, vid, pid);
+ 		}
+ 		else
+ 		{
+-			int idx = vUSB.indexOf(VidPid(vid, pid));
++			int idx = vUSB.indexOf(vObj);
+ 			if (idx != -1)
+ 			{
+ 				vUSB.remove(idx);
+ 			}
+ 			emit notify(false, vid, pid);
+ 		}
++		delete vObj;
+ 	}
+ 
+   signals:
+@@ -76,7 +78,7 @@ class USBWatcher : public QObject
+   private:
+ 	void hotplug_deregister();
+ 
+-	QVector <VidPid> vUSB;
++	QVector <VidPid *> vUSB;
+ 	libusb_hotplug_callback_handle cbHandle;
+ 	libusb_context *usb_ctx;
+ 	QTimer *timer;

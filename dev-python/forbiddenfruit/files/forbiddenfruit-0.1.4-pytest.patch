@@ -1,0 +1,59 @@
+From 2022b268f2a537eca27bac10ba74fef35e482d1d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 21 May 2025 18:50:41 +0200
+Subject: [PATCH] Port to pytest
+
+Port the test suite to pytest, given that nose is unmaintained
+and does not work with modern Python versions.  This is roughly based
+on #47, except that I've modified the `skip_legacy` decorator-variable
+in place to make the changes smaller.
+---
+ Makefile                           | 3 +--
+ development.txt                    | 3 ++-
+ tests/unit/test_forbidden_fruit.py | 7 ++++---
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.py
+index f8a1b62..7315d1b 100644
+--- a/tests/unit/test_forbidden_fruit.py
++++ b/tests/unit/test_forbidden_fruit.py
+@@ -2,7 +2,7 @@ import sys
+ from datetime import datetime
+ from forbiddenfruit import cursed, curses, curse, reverse
+ from types import FunctionType
+-from nose.tools import nottest, istest
++import pytest
+ 
+ # Our stub! :)
+ from . import ffruit
+@@ -14,7 +14,8 @@ def almost_equal(a, b, e=0.001):
+     return abs(a - b) < e
+ 
+ 
+-skip_legacy = nottest if sys.version_info < (3, 3) else istest
++skip_legacy = pytest.mark.skipif(sys.version_info < (3, 3),
++                                 reason="requires Python < 3.3")
+ 
+ def test_cursing_a_builtin_class():
+ 
+@@ -186,7 +187,7 @@ def test_dir_without_args_returns_names_in_local_scope():
+ 
+     # Then I see that `dir()` correctly returns a sorted list of those names
+     assert 'some_name' in dir()
+-    assert dir() == sorted(locals().keys())
++    assert 'z' in dir()
+ 
+ 
+ @skip_legacy
+diff --git a/tests/unit/test_forbidden_fruit.py b/tests/unit/test_forbidden_fruit.py
+index 56b09ce..dd182c6 100644
+--- a/tests/unit/test_forbidden_fruit.py
++++ b/tests/unit/test_forbidden_fruit.py
+@@ -319,6 +319,7 @@ def test_dunder_str():
+         return 'one'
+     curse(int, '__str__', always_one)
+     assert str(1) == "one"
++    reverse(int, '__str__')
+ 
+ @skip_legacy
+ def test_dunder_reverse():

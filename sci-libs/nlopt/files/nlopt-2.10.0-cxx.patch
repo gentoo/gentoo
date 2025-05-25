@@ -1,0 +1,172 @@
+https://github.com/stevengj/nlopt/commit/a5426ead8d8478c46201c21860e789e47f15c5a3
+
+From a5426ead8d8478c46201c21860e789e47f15c5a3 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Mon, 24 Feb 2025 15:59:52 +0100
+Subject: [PATCH] CMake: Assume working c++ compiler (#597)
+
+---
+ CMakeLists.txt          | 19 +++----------------
+ src/swig/CMakeLists.txt |  6 +++---
+ test/CMakeLists.txt     | 38 ++++++++++++++++++--------------------
+ 3 files changed, 24 insertions(+), 39 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c0a84de3..39b01441 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -77,8 +77,6 @@ endif ()
+ include (CheckIncludeFiles)
+ include (CheckFunctionExists)
+ include (CheckTypeSize)
+-include (CheckCCompilerFlag)
+-include (CheckCXXSymbolExists)
+ include (CheckCSourceCompiles)
+ 
+ #==============================================================================
+@@ -140,20 +138,6 @@ if (WITH_THREADLOCAL AND NOT DEFINED THREADLOCAL)
+   endforeach()
+ endif ()
+ 
+-
+-if (NLOPT_CXX OR NLOPT_PYTHON OR NLOPT_GUILE OR NLOPT_OCTAVE OR NLOPT_JAVA)
+-  check_cxx_symbol_exists (__cplusplus ciso646 SYSTEM_HAS_CXX)
+-  if (SYSTEM_HAS_CXX)
+-    set (CMAKE_CXX_STANDARD 11) # set the standard to C++11 but do not require it
+-
+-    if (NLOPT_CXX)
+-      set (CMAKE_CXX_STANDARD_REQUIRED ON) # if we build C++ API, we do need C++11
+-    endif ()
+-  else()
+-    message (FATAL_ERROR "The compiler doesn't support CXX.")
+-  endif ()
+-endif ()
+-
+ #==============================================================================
+ # CREATE nlopt_config.h
+ #==============================================================================
+@@ -260,6 +244,9 @@ if (M_LIBRARY)
+ endif ()
+ set_target_properties (${nlopt_lib} PROPERTIES SOVERSION ${SO_MAJOR})
+ set_target_properties (${nlopt_lib} PROPERTIES VERSION "${SO_MAJOR}.${SO_MINOR}.${SO_PATCH}")
++if (NLOPT_CXX)
++  target_compile_features (${nlopt_lib} PUBLIC cxx_lambdas)
++endif ()
+ 
+ #==============================================================================
+ # INCLUDE DIRECTORIES
+diff --git a/src/swig/CMakeLists.txt b/src/swig/CMakeLists.txt
+index a48b8b3b..e8248e9e 100644
+--- a/src/swig/CMakeLists.txt
++++ b/src/swig/CMakeLists.txt
+@@ -21,7 +21,7 @@ endif ()
+ include_directories (${NLOPT_PRIVATE_INCLUDE_DIRS})
+ set_source_files_properties (nlopt.i PROPERTIES CPLUSPLUS ON)
+ 
+-if (Python_NumPy_FOUND)
++if (Python_NumPy_FOUND AND NLOPT_CXX)
+ 
+   set (SWIG_MODULE_nlopt_python_EXTRA_DEPS nlopt-python.i numpy.i generate-cpp)
+ 
+@@ -46,7 +46,7 @@ if (Python_NumPy_FOUND)
+ endif ()
+ 
+ 
+-if (GUILE_FOUND)
++if (GUILE_FOUND AND NLOPT_CXX)
+ 
+   set (SWIG_MODULE_nlopt_guile_EXTRA_DEPS nlopt-guile.i generate-cpp)
+   set (CMAKE_SWIG_FLAGS -scmstub)
+@@ -74,7 +74,7 @@ if (GUILE_FOUND)
+ endif ()
+ 
+ 
+-if (JNI_FOUND AND Java_FOUND AND SWIG_FOUND)
++if (JNI_FOUND AND Java_FOUND AND SWIG_FOUND AND NLOPT_CXX)
+ 
+   include (UseJava)
+ 
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index f66d2805..0edf5e87 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -1,28 +1,26 @@
+ add_custom_target (tests)
+ 
+ macro(NLOPT_add_cpp_test test_name)
+-  add_executable (${test_name} ${test_name}.cxx)
+-  target_link_libraries (${test_name} ${nlopt_lib})
+-  add_dependencies (tests ${test_name})
+-  target_include_directories (${test_name} PRIVATE ${NLOPT_PRIVATE_INCLUDE_DIRS})
+-  foreach(arg IN ITEMS ${ARGN})
+-    add_test (NAME check_${test_name}_${arg} COMMAND ${test_name} ${arg})
+-    if (CMAKE_HOST_SYSTEM_NAME MATCHES Windows)
+-      set_tests_properties (check_${test_name}_${arg}
+-        PROPERTIES ENVIRONMENT "PATH=${PROJECT_BINARY_DIR}\\${CMAKE_BUILD_TYPE};$ENV{PATH}")  # to load dll
+-    endif ()
+-  endforeach()
++  if (NLOPT_CXX)
++    add_executable (${test_name} ${test_name}.cxx)
++    target_link_libraries (${test_name} ${nlopt_lib})
++    add_dependencies (tests ${test_name})
++    target_include_directories (${test_name} PRIVATE ${NLOPT_PRIVATE_INCLUDE_DIRS})
++    foreach(arg IN ITEMS ${ARGN})
++      add_test (NAME check_${test_name}_${arg} COMMAND ${test_name} ${arg})
++      if (CMAKE_HOST_SYSTEM_NAME MATCHES Windows)
++        set_tests_properties (check_${test_name}_${arg}
++          PROPERTIES ENVIRONMENT "PATH=${PROJECT_BINARY_DIR}\\${CMAKE_BUILD_TYPE};$ENV{PATH}")  # to load dll
++      endif ()
++    endforeach()
++  endif ()
+ endmacro()
+ 
+ NLOPT_add_cpp_test(t_tutorial 24 25 31 40)
+ NLOPT_add_cpp_test(cpp_functor 0)
+ NLOPT_add_cpp_test(t_fbound 0)
+ NLOPT_add_cpp_test(t_except 1 0)
+-
+ NLOPT_add_cpp_test(t_bounded 0 1 2 3 4 5 6 7 8 19 35 42 43)
+-if (NOT NLOPT_CXX)
+-  set_tests_properties (check_t_bounded_8 check_t_bounded_43 PROPERTIES DISABLED TRUE)
+-endif ()
+ 
+ # have to add timer.c and mt19937ar.c as symbols are declared extern
+ set (testopt_sources testfuncs.c testfuncs.h testopt.c ${PROJECT_SOURCE_DIR}/src/util/timer.c ${PROJECT_SOURCE_DIR}/src/util/mt19937ar.c)
+@@ -67,7 +65,7 @@ foreach (algo_index RANGE 28) # 42
+   endforeach ()
+ endforeach ()
+ 
+-if (Python_NumPy_FOUND AND (SWIG_FOUND OR (EXISTS ${PROJECT_SOURCE_DIR}/src/swig/nlopt-python.cpp)))
++if (TARGET nlopt_python)
+   set (PYINSTALLCHECK_ENVIRONMENT "LD_LIBRARY_PATH=${PROJECT_BINARY_DIR}/src/swig"
+                                   "PYTHONPATH=$<SHELL_PATH:${PROJECT_BINARY_DIR}/src/swig/python;${PROJECT_BINARY_DIR}/src/swig>"
+       )
+@@ -85,7 +83,7 @@ endif ()
+ # The binding itself should also compile with more ancient Java versions that
+ # have already reached their end of life, but it is not worth uglifying the test
+ # code for them, because people will then cargo-cult the legacy boilerplate.
+-if (JNI_FOUND AND Java_FOUND AND SWIG_FOUND AND NOT Java_VERSION VERSION_LESS 1.8)
++if (TARGET nlopt_java AND NOT Java_VERSION VERSION_LESS 1.8)
+   include (UseJava)
+   add_jar (t_java SOURCES t_java.java INCLUDE_JARS nlopt_jar ENTRY_POINT t_java)
+   get_property (t_java_jar TARGET t_java PROPERTY JAR_FILE)
+@@ -100,15 +98,15 @@ if (JNI_FOUND AND Java_FOUND AND SWIG_FOUND AND NOT Java_VERSION VERSION_LESS 1.
+   endforeach()
+ endif ()
+ 
+-if (OCTAVE_FOUND)
++if (TARGET nlopt_optimize)
+   add_test (NAME test_octave COMMAND ${OCTAVE_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/t_octave.m ${PROJECT_SOURCE_DIR}/src/octave ${PROJECT_BINARY_DIR}/src/octave)
+ endif ()
+ 
+-if (MATLAB_FOUND)
++if (TARGET nlopt_optimize-mex)
+   add_test (NAME test_matlab COMMAND ${Matlab_MAIN_PROGRAM} -nodesktop -nosplash  -r "addpath('${PROJECT_SOURCE_DIR}/src/octave'); addpath('${PROJECT_BINARY_DIR}/src/octave'); try; run('${CMAKE_CURRENT_SOURCE_DIR}/t_matlab.m'); catch; exit(1); end; quit")
+ endif ()
+ 
+-if (GUILE_FOUND AND (SWIG_FOUND OR (EXISTS ${PROJECT_SOURCE_DIR}/src/swig/nlopt-guile.cpp)))
++if (TARGET nlopt_guile)
+   set (GUILECHECK_ENVIRONMENT "LD_LIBRARY_PATH=${PROJECT_BINARY_DIR}/src/swig"
+                               "GUILE_LOAD_PATH=$<SHELL_PATH:${PROJECT_BINARY_DIR}/src/swig/guile;${PROJECT_BINARY_DIR}/src/swig>"
+                               "GUILE_AUTO_COMPILE=0")
+

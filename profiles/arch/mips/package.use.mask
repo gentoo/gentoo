@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NRK <nrk@disroot.org> (2025-05-18)
+# app-arch/plzip is not keyworded
+app-alternatives/lzip plzip
+
 # NRK <nrk@disroot.org> (2025-04-07)
 # media-libs/libyuv is not keyworded
 media-libs/imlib2 y4m
@@ -328,9 +332,10 @@ dev-libs/libgudev test
 dev-python/diskcache test
 
 # Sam James <sam@gentoo.org> (2021-02-06)
+# dev-qt/qtbase:6 is not keyworded here
 # media-sound/sndio is not yet keyworded here
 # bug #769098, bug #769122
-media-libs/openal sndio
+media-libs/openal gui sndio
 
 # Sam James <sam@gentoo.org> (2021-01-19)
 # Joonas Niilola <juippis@gentoo.org> (2021-01-10)

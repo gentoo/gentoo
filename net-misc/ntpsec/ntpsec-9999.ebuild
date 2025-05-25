@@ -1,14 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517="flit"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit distutils-r1 flag-o-matic multiprocessing waf-utils systemd
+inherit dot-a distutils-r1 multiprocessing waf-utils systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -72,7 +72,7 @@ BDEPEND+="
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
 	"${FILESDIR}/${PN}-1.2.2-logrotate.patch"
-	"${FILESDIR}/${PN}-1.2.3-pep517-no-egg.patch"
+	"${FILESDIR}/${PN}-1.2.4-pep517-no-egg.patch"
 )
 
 WAF_BINARY="${S}/waf"
@@ -101,7 +101,8 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-lto
+	# endianness configure test fails otherwise
+	lto-guarantee-fat
 
 	local string_127=""
 	local rclocks="";

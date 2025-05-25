@@ -55,8 +55,8 @@ src_prepare() {
 
 	# Cabal bootstraps with 'ghc --make' without package cleanup in environment.
 	# That causes module collisions at build:
-	# - pulseaudio: Distribution/Utils/Structured.hs:98:1: error: Ambiguous module name ‘Data.Time’: it was found in multiple packages: pulseaudio-0.0.2.1 time-1.9.3
-	# - kinds: Distribution/Utils/Structured.hs:106:1: error: Ambiguous module name ‘Data.Kind’: it was found in multiple packages: base-4.14.1.0 kinds-0.0.1.5
+	# - pulseaudio: Distribution/Utils/Structured.hs:98:1: error: Ambiguous module name 'Data.Time': it was found in multiple packages: pulseaudio-0.0.2.1 time-1.9.3
+	# - kinds: Distribution/Utils/Structured.hs:106:1: error: Ambiguous module name 'Data.Kind': it was found in multiple packages: base-4.14.1.0 kinds-0.0.1.5
 	HCFLAGS="${HCFLAGS} -ignore-package=pulseaudio"
 	HCFLAGS="${HCFLAGS} -ignore-package=kinds"
 }

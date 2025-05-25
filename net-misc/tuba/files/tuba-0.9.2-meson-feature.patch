@@ -1,0 +1,57 @@
+From 46b78d4cb134643159e5dc56cff5ca3477e87a87 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 17 May 2025 19:24:42 +0200
+Subject: [PATCH] Use meson features to control options
+
+---
+ meson.build       | 11 +++++------
+ meson_options.txt |  4 +++-
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 31c24036..090009f2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -18,7 +18,6 @@ endif
+ 
+ devel = get_option('devel')
+ distro = get_option('distro')
+-clapper_support = get_option('clapper')
+ 
+ # Setup configuration file
+ config = configuration_data()
+@@ -82,10 +81,10 @@ gtk_dep = dependency('gtk4', version: '>=4.13.4', required: true)
+ libadwaita_dep = dependency('libadwaita-1', version: '>=1.5', required: true)
+ gtksourceview_dep = dependency('gtksourceview-5', required: true, version: '>=5.6.0')
+ libwebp_dep = dependency('libwebp', required: false)
+-libspelling = dependency('libspelling-1', required: false)
+-clapper_dep = dependency('clapper-0.0', required: false)
+-clapper_gtk_dep = dependency('clapper-gtk-0.0', required: false)
+-gstreamer_dep = dependency('gstreamer-1.0', required: false)
++libspelling = dependency('libspelling-1', required: get_option('spelling'))
++clapper_dep = dependency('clapper-0.0', required: get_option('clapper'))
++clapper_gtk_dep = dependency('clapper-gtk-0.0', required: get_option('clapper'))
++gstreamer_dep = dependency('gstreamer-1.0', required: get_option('gstreamer'))
+ 
+ if not libwebp_dep.found ()
+   warning('WebP support might be missing, please install webp-pixbuf-loader.')
+@@ -104,7 +103,7 @@ if gstreamer_dep.found ()
+   gstreamer = true
+ endif
+ 
+-if clapper_support and clapper_dep.found () and clapper_dep.version().version_compare('>=0.6.0') and clapper_gtk_dep.found ()
++if clapper_dep.found () and clapper_dep.version().version_compare('>=0.6.0') and clapper_gtk_dep.found ()
+   add_project_arguments(['--define=CLAPPER'], language: 'vala')
+   if (clapper_dep.get_variable('features').split().contains('mpris'))
+     add_project_arguments(['--define=CLAPPER_MPRIS'], language: 'vala')
+diff --git a/meson_options.txt b/meson_options.txt
+index 43f8a39f..3c94914f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,5 @@
+ option('devel', type: 'boolean', value: false)
+ option('distro', type: 'boolean', value: false)
+-option('clapper', type: 'boolean', value: false)
++option('spelling', type: 'feature')
++option('clapper', type: 'feature')
++option('gstreamer', type: 'feature')

@@ -1,0 +1,65 @@
+From 8a2903c190fd41b2ac4255c436fddf1dd58dacde Mon Sep 17 00:00:00 2001
+From: ruisv <27017322+ruisv@users.noreply.github.com>
+Date: Tue, 6 May 2025 23:47:12 +0800
+Subject: [PATCH 1/2] =?UTF-8?q?CUDA=E2=80=AF12.9=20support:=20build?=
+ =?UTF-8?q?=E2=80=AFNppStreamContext=E2=80=AFmanually?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .../core/include/opencv2/core/private.cuda.hpp | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/modules/core/include/opencv2/core/private.cuda.hpp b/modules/core/include/opencv2/core/private.cuda.hpp
+index 39f2ddcdeb3d..a9029131fbfa 100644
+--- a/modules/core/include/opencv2/core/private.cuda.hpp
++++ b/modules/core/include/opencv2/core/private.cuda.hpp
+@@ -147,7 +147,23 @@ namespace cv { namespace cuda
+         inline explicit NppStreamHandler(cudaStream_t newStream)
+         {
+             nppStreamContext = {};
+-            nppSafeCall(nppGetStreamContext(&nppStreamContext));
++            #if CUDA_VERSION < 12090
++                nppSafeCall(nppGetStreamContext(&nppStreamContext));
++            #else
++                int device = 0;
++                cudaSafeCall(cudaGetDevice(&device));
++
++                cudaDeviceProp prop{};
++                cudaSafeCall(cudaGetDeviceProperties(&prop, device));
++                
++                nppStreamContext.nCudaDeviceId = device;
++                nppStreamContext.nMultiProcessorCount = prop.multiProcessorCount;
++                nppStreamContext.nMaxThreadsPerMultiProcessor = prop.maxThreadsPerMultiProcessor;
++                nppStreamContext.nMaxThreadsPerBlock = prop.maxThreadsPerBlock;
++                nppStreamContext.nSharedMemPerBlock = prop.sharedMemPerBlock;
++                nppStreamContext.nCudaDevAttrComputeCapabilityMajor = prop.major;
++                nppStreamContext.nCudaDevAttrComputeCapabilityMinor = prop.minor;
++            #endif
+             nppStreamContext.hStream = newStream;
+             cudaSafeCall(cudaStreamGetFlags(nppStreamContext.hStream, &nppStreamContext.nStreamFlags));
+         }
+
+From 9ab3a249c2509e969ae12190400b22ded775108d Mon Sep 17 00:00:00 2001
+From: ruisv <27017322+ruisv@users.noreply.github.com>
+Date: Wed, 7 May 2025 11:46:43 +0800
+Subject: [PATCH 2/2] remove private.cuda.hpp:158 space
+
+---
+ modules/core/include/opencv2/core/private.cuda.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/core/include/opencv2/core/private.cuda.hpp b/modules/core/include/opencv2/core/private.cuda.hpp
+index a9029131fbfa..4250f6103302 100644
+--- a/modules/core/include/opencv2/core/private.cuda.hpp
++++ b/modules/core/include/opencv2/core/private.cuda.hpp
+@@ -155,7 +155,7 @@ namespace cv { namespace cuda
+ 
+                 cudaDeviceProp prop{};
+                 cudaSafeCall(cudaGetDeviceProperties(&prop, device));
+-                
++
+                 nppStreamContext.nCudaDeviceId = device;
+                 nppStreamContext.nMultiProcessorCount = prop.multiProcessorCount;
+                 nppStreamContext.nMaxThreadsPerMultiProcessor = prop.maxThreadsPerMultiProcessor;

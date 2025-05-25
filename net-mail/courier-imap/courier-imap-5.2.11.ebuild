@@ -11,7 +11,7 @@ SRC_URI="https://sourceforge.net/projects/courier/files/imap/${PV}/${P}.tar.bz2/
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~s390 ~sparc x86"
 
 IUSE="berkdb debug +gdbm gnutls ipv6 selinux trashquota"
 REQUIRED_USE="|| ( berkdb gdbm )"

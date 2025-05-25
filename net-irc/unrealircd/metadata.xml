@@ -7,8 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="class-nofakelag">Enable an unsupported class::options flag called “nofakelag” allowing you to grant fakelag exemption to normal user (instead of just opers).</flag>
-		<flag name="prefixaq">Enable chanadmin and chanowner prefixes</flag>
-		<flag name="showlistmodes">Display channel modes in /LIST (only configured at compiletime)</flag>
 		<flag name="operoverride-verify">Enable requiring opers to invite themselves to +s/+p channels</flag>
 		<flag name="operoverride">Enable OperOverride extension</flag>
 	</use>

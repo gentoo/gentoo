@@ -51,6 +51,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-missing-cstdint-for-gcc-15.patch"
 )
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_prepare() {
 	rm -r deps || die
 

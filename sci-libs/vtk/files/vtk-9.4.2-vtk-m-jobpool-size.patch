@@ -1,0 +1,13 @@
+diff --git a/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmWrappers.cmake b/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmWrappers.cmake
+index 10ba21e..e88299e 100644
+--- a/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmWrappers.cmake
++++ b/ThirdParty/vtkm/vtkvtkm/vtk-m/CMake/VTKmWrappers.cmake
+@@ -175,7 +175,7 @@ function(vtkm_setup_job_pool)
+     # will require 3GB of memory. To allow for other NON VTK-m jobs we leave at
+     # least 3GB of memory as 'slop'.
+     cmake_host_system_information(RESULT vtkm_mem_ QUERY TOTAL_PHYSICAL_MEMORY)
+-    math(EXPR vtkm_pool_size "(${vtkm_mem_}/3072)-1")
++    math(EXPR vtkm_pool_size "(${vtkm_mem_}/10240 - 3072)-1")
+ 
+     if (vtkm_pool_size LESS 1)
+       set(vtkm_pool_size 1)

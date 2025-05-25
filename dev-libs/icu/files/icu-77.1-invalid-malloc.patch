@@ -1,0 +1,30 @@
+https://unicode-org.atlassian.net/browse/ICU-23120
+https://github.com/unicode-org/icu/pull/3496
+
+From a0d280e4b4df6c09dfd82b63499f308d416c9b60 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Fri, 16 May 2025 12:55:47 +0200
+Subject: [PATCH] ICU-23120 Fix malloc request larger than PTRDIFF_MAX bytes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* glibc does not allow allocations that exceed PTRDIFF_MAX bytes:
+  https://sourceware.org/git/gitweb.cgi?p=glibc.git;h=9bf8e29ca136094f73f69f725f15c51facc97206
+* Without this, we get compile failures on 32-bit platforms:
+
+    work/icu/source/test/intltest/ustrtest.cpp: In member function ‘void UnicodeStringTest::TestLargeMemory()’:
+    work/icu/source/test/intltest/ustrtest.cpp:2360:37: error: size ‘4294967286’ of array exceeds maximum object size ‘2147483647’
+     2360 |     char16_t *buf = new char16_t[len];
+          |                                     ^
+--- a/test/intltest/ustrtest.cpp
++++ b/test/intltest/ustrtest.cpp
+@@ -2356,7 +2356,7 @@ void UnicodeStringTest::TestLargeMemory() {
+ #if U_PLATFORM_IS_LINUX_BASED || U_PLATFORM_IS_DARWIN_BASED
+     if(quick) { return; }
+     IcuTestErrorCode status(*this, "TestLargeMemory");
+-    constexpr uint32_t len = 2147483643;
++    constexpr uint32_t len = (PTRDIFF_MAX - 10) / sizeof(char16_t);
+     char16_t *buf = new char16_t[len];
+     if (buf == nullptr) { return; }
+     uprv_memset(buf, 0x4e, len * 2);

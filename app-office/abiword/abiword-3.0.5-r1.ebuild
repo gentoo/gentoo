@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,14 +14,13 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="calendar collab cups debug eds +goffice grammar +introspection latex map math ots +plugins readline redland spell wordperfect wmf thesaurus"
+IUSE="calendar collab cups debug eds +goffice grammar +introspection latex map math +plugins readline redland spell wordperfect wmf thesaurus"
 # You need 'plugins' enabled if want to enable the extra plugins
 REQUIRED_USE="
 	collab? ( plugins )
 	grammar? ( plugins )
 	latex? ( plugins )
 	math? ( plugins )
-	ots? ( plugins )
 	readline? ( plugins )
 	thesaurus? ( plugins )
 	wordperfect? ( plugins )
@@ -53,7 +52,6 @@ RDEPEND="
 		)
 		grammar? ( >=dev-libs/link-grammar-4.2.1 )
 		math? ( >=x11-libs/gtkmathview-0.7.5 )
-		ots? ( >=app-text/ots-0.5-r1 )
 		readline? ( sys-libs/readline:0= )
 		thesaurus? ( >=app-text/aiksaurus-1.2[gtk] )
 		wordperfect? (
@@ -117,7 +115,6 @@ src_configure() {
 		use goffice && plugins+=(goffice)
 		use latex && plugins+=(latex)
 		use math && plugins+=(mathview)
-		use ots && plugins+=(ots)
 		# psion: >=psiconv-0.9.4
 		use readline && plugins+=(command)
 		use thesaurus && plugins+=(aiksaurus)

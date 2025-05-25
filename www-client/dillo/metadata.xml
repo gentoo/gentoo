@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>kangie@gentoo.org</email>
-    <description>Primary maintainer</description>
-  </maintainer>
+<!-- maintainer-needed -->
   <use>
     <flag name="openssl">Build against the <pkg>dev-libs/openssl</pkg> library for TLS support.</flag>
     <flag name="mbedtls">Build against the <pkg>net-libs/mbedtls</pkg> library for TLS support.</flag>

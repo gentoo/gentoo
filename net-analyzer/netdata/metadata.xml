@@ -15,7 +15,6 @@
     <flag name="nfacct">Enable the nfacct plugin</flag>
     <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
     <flag name="prometheus">Enable support for the Prometheus remote write backend</flag>
-    <flag name="tor">Enable monitoring of tor</flag>
     <flag name="xen">Enable monitoring of xen</flag>
   </use>
   <upstream>

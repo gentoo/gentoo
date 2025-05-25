@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,10 @@ SRC_URI="https://downloads.sourceforge.net/sidplay-residfp/${PN}/$(ver_cut 1-2)/
 LICENSE="GPL-2"
 SLOT="0/6"
 KEYWORDS="amd64 ~hppa ~riscv x86"
-IUSE="static-libs"
+IUSE="static-libs test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="test? ( dev-libs/unittest++ )"
 
 src_prepare() {
 	default
@@ -20,7 +23,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static)
+		$(use_enable static-libs static) \
+		$(use_enable test tests)
 }
 
 src_install() {

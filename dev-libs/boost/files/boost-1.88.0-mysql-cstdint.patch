@@ -1,0 +1,22 @@
+Manual backport of: https://github.com/boostorg/mysql/pull/475
+
+--- boost_1_88_0/boost/mysql/metadata.hpp~	2025-04-03 13:37:28.000000000 +0200
++++ boost_1_88_0/boost/mysql/metadata.hpp	2025-05-06 23:03:30.772695192 +0200
+@@ -15,6 +15,7 @@
+ #include <boost/mysql/detail/coldef_view.hpp>
+ #include <boost/mysql/detail/flags.hpp>
+ 
++#include <cstdint>
+ #include <string>
+ 
+ namespace boost {
+--- boost_1_88_0/boost/mysql/impl/internal/protocol/static_buffer.hpp~	2025-04-03 13:37:28.000000000 +0200
++++ boost_1_88_0/boost/mysql/impl/internal/protocol/static_buffer.hpp	2025-05-06 23:04:12.609390270 +0200
+@@ -14,6 +14,7 @@
+ #include <boost/core/span.hpp>
+ 
+ #include <array>
++#include <cstdint>
+ #include <cstring>
+ 
+ namespace boost {

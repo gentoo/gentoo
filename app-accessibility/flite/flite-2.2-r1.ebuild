@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4-audio-interface.patch
 	"${FILESDIR}"/${PN}-2.2-backport-pr30.patch
 	"${FILESDIR}"/${PN}-2.2-make-4.4.patch
+	"${FILESDIR}"/${PN}-2.2-no-native-ar.patch
 )
 
 get_audio() {

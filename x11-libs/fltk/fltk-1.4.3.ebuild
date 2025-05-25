@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fltk/fltk/releases/download/release-${PV}/${P}-sourc
 
 LICENSE="FLTK LGPL-2 MIT ZLIB"
 SLOT="1/$(ver_cut 1-2)" # README.abi-version.txt
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+X +cairo doc examples opengl static-libs test wayland"
 REQUIRED_USE="
 	|| ( X wayland )

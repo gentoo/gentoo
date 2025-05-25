@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,10 +11,10 @@ HOMEPAGE="https://gitlab.freedesktop.org/wlroots/wlroots"
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
 	inherit git-r3
-	SLOT="0.19"
+	SLOT="0.20"
 else
 	SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/releases/${PV}/downloads/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="$(ver_cut 1-2)"
 fi
 
@@ -28,15 +28,12 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	>=dev-libs/wayland-1.23.0
+	>=dev-libs/wayland-1.23.1
 	media-libs/libglvnd
-	|| (
-		>=media-libs/mesa-24.1.0_rc1[opengl]
-		<media-libs/mesa-24.1.0_rc1[egl(+),gles2]
-	)
+	>=media-libs/mesa-24.1.0_rc1[opengl]
 	>=x11-libs/libdrm-2.4.122
-	x11-libs/libxkbcommon
-	>=x11-libs/pixman-0.42.0
+	>=x11-libs/libxkbcommon-1.8.0
+	>=x11-libs/pixman-0.43.0
 	drm? (
 		media-libs/libdisplay-info:=
 		sys-apps/hwdata
@@ -68,12 +65,15 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	>=dev-libs/wayland-protocols-1.35
+	>=dev-libs/wayland-protocols-1.41
 	dev-util/wayland-scanner
 	virtual/pkgconfig
 "
 
 src_configure() {
+	# assert SLOT matches the version
+	grep -q -e "version.*${SLOT}" meson.build || die "SLOT ${SLOT} does not match the version in meson.build"
+
 	local backends=(
 		$(usev drm)
 		$(usev libinput)
@@ -100,6 +100,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "You must be in the input group to allow your compositor"
-	elog "to access input devices via libinput."
+	if use !session; then
+		elog "You must be in the input group to allow your compositor"
+		elog "to access input devices via libinput."
+	fi
 }

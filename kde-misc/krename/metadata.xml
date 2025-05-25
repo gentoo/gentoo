@@ -6,8 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
-		<remote-id type="kde-invent">kde/krename</remote-id>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=krename</bugs-to>
+		<remote-id type="kde-invent">utilities/krename</remote-id>
 	</upstream>
 	<use>
 		<flag name="office">Enable support for file naming based on ODF metadata</flag>

@@ -1,0 +1,26 @@
+From c7c284ebcaa969239a10889a121e2b21f94da444 Mon Sep 17 00:00:00 2001
+From: Laurent Bercot <ska-skaware@skarnet.org>
+Date: Mon, 5 May 2025 14:13:55 +0000
+Subject: [PATCH]  Fix configure
+
+Signed-off-by: Laurent Bercot <ska@appnovation.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 976f62f..eb16358 100755
+--- a/configure
++++ b/configure
+@@ -187,7 +187,7 @@ for arg ; do
+     --libdir=*) libdir=${arg#*=} ;;
+     --includedir=*) includedir=${arg#*=} ;;
+     --sysconfdir=*) sysconfdir=${arg#*=} ;;
+-    --pkgconfigdir=*) pkgconfigdir=${arg#*=} ;;
++    --pkgconfdir=*) pkgconfdir=${arg#*=} ;;
+     --with-sysdeps=*) sysdeps=${arg#*=} manualsysdeps=true ;;
+     --with-include=*) var=${arg#*=} ; stripdir var ; addincpath="$addincpath -I$var" ; depincpath="${depincpath}${depincpath:+ }-I$var" ;;
+     --with-lib=*) var=${arg#*=} ; stripdir var ; addlibspath="$addlibspath -L$var" ; deplibpath="${deplibpath}${deplibpath:+ }-L$var" ; vpaths="$vpaths $var" ;;
+-- 
+2.48.1
+

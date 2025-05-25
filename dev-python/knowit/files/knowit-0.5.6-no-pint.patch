@@ -1,0 +1,209 @@
+https://github.com/ratoaq2/knowit/pull/199
+
+We don't have pint packaged yet, but even as of May 2025, there's upstream
+bugs in pint where it doesn't work w/ Python 3.13 anyway, e.g.
+https://github.com/hgrecco/pint/issues/2168.
+
+From e9f06b859b1dd3f9154ca6b84dbdc3c19e601294 Mon Sep 17 00:00:00 2001
+From: getzze <getzze@gmail.com>
+Date: Fri, 18 Oct 2024 12:11:49 +0100
+Subject: [PATCH 1/4] deal with pint errors at import
+
+---
+ knowit/units.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/knowit/units.py b/knowit/units.py
+index 51e6cae..c8421ca 100644
+--- a/knowit/units.py
++++ b/knowit/units.py
+@@ -1,5 +1,8 @@
++import logging
+ import typing
+ 
++logger = logging.getLogger(__name__)
++
+ 
+ class NullRegistry:
+     """A NullRegistry that masquerades as a pint.UnitRegistry."""
+@@ -30,6 +33,8 @@ def _build_unit_registry():
+         return registry
+     except ModuleNotFoundError:
+         pass
++    except Exception:
++        logger.exception("Cannot import the pint package")
+ 
+     return NullRegistry()
+ 
+
+From 9b57a93d8cde4b7dac30bfdba0ba89bb2db3060c Mon Sep 17 00:00:00 2001
+From: getzze <getzze@gmail.com>
+Date: Fri, 18 Oct 2024 13:11:56 +0100
+Subject: [PATCH 2/4] make pint an extra dependency
+
+---
+ pyproject.toml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d0d0c9d..aaa8cbc 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -43,7 +43,7 @@ knowit = "knowit.__main__:main"
+ python = "^3.9.0"
+ babelfish = "^0.6.1"
+ enzyme = "^0.5.2"
+-pint = ">=0.20.1,<0.25.0"
++pint = { version = ">=0.20.1,<0.25.0", optional = true }
+ pymediainfo = "^6.0.1"
+ pyyaml = "^6.0"
+ trakit = "^0.2.2"
+@@ -62,6 +62,9 @@ types-requests = "^2.28.11.8"
+ types-mock = "^5.0.0.2"
+ typing-extensions = "^4.12.2"
+ 
++[tool.poetry.extras]
++pint = ["pint"]
++
+ [build-system]
+ requires = ["poetry-core"]
+ build-backend = "poetry.core.masonry.api"
+
+From c938f0b7ff4b2583b66e598f59249a9065927ea2 Mon Sep 17 00:00:00 2001
+From: getzze <getzze@gmail.com>
+Date: Fri, 18 Oct 2024 14:07:15 +0100
+Subject: [PATCH 3/4] update poetry.lock
+
+---
+ poetry.lock | 29 ++++++++++++++++++-----------
+ 1 file changed, 18 insertions(+), 11 deletions(-)
+
+diff --git a/poetry.lock b/poetry.lock
+index 4b14c3e..7cf5e25 100644
+--- a/poetry.lock
++++ b/poetry.lock
+@@ -4,7 +4,7 @@
+ name = "appdirs"
+ version = "1.4.4"
+ description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+-optional = false
++optional = true
+ python-versions = "*"
+ files = [
+     {file = "appdirs-1.4.4-py2.py3-none-any.whl", hash = "sha256:a841dacd6b99318a741b166adb07e19ee71a274450e68237b4650ca1055ab128"},
+@@ -293,7 +293,7 @@ setuptools = "*"
+ name = "flexcache"
+ version = "0.3"
+ description = "Saves and loads to the cache a transformed versions of a source object."
+-optional = false
++optional = true
+ python-versions = ">=3.9"
+ files = [
+     {file = "flexcache-0.3-py3-none-any.whl", hash = "sha256:d43c9fea82336af6e0115e308d9d33a185390b8346a017564611f1466dcd2e32"},
+@@ -310,7 +310,7 @@ test = ["pytest", "pytest-cov", "pytest-mpl", "pytest-subtests"]
+ name = "flexparser"
+ version = "0.3.1"
+ description = "Parsing made fun ... using typing."
+-optional = false
++optional = true
+ python-versions = ">=3.9"
+ files = [
+     {file = "flexparser-0.3.1-py3-none-any.whl", hash = "sha256:2e3e2936bec1f9277f777ef77297522087d96adb09624d4fe4240fd56885c013"},
+@@ -462,7 +462,7 @@ flake8 = ">=5.0.0"
+ name = "pint"
+ version = "0.24.3"
+ description = "Physical quantities module"
+-optional = false
++optional = true
+ python-versions = ">=3.9"
+ files = [
+     {file = "Pint-0.24.3-py3-none-any.whl", hash = "sha256:d98667e46fd03a1b94694fbfa104ec30858684d8ab26952e2a348b48059089bb"},
+@@ -693,19 +693,23 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
+ 
+ [[package]]
+ name = "setuptools"
+-version = "71.0.1"
++version = "75.2.0"
+ description = "Easily download, build, install, upgrade, and uninstall Python packages"
+ optional = false
+ python-versions = ">=3.8"
+ files = [
+-    {file = "setuptools-71.0.1-py3-none-any.whl", hash = "sha256:1eb8ef012efae7f6acbc53ec0abde4bc6746c43087fd215ee09e1df48998711f"},
+-    {file = "setuptools-71.0.1.tar.gz", hash = "sha256:c51d7fd29843aa18dad362d4b4ecd917022131425438251f4e3d766c964dd1ad"},
++    {file = "setuptools-75.2.0-py3-none-any.whl", hash = "sha256:a7fcb66f68b4d9e8e66b42f9876150a3371558f98fa32222ffaa5bced76406f8"},
++    {file = "setuptools-75.2.0.tar.gz", hash = "sha256:753bb6ebf1f465a1912e19ed1d41f403a79173a9acf66a42e7e6aec45c3c16ec"},
+ ]
+ 
+ [package.extras]
+-core = ["importlib-metadata (>=6)", "importlib-resources (>=5.10.2)", "jaraco.text (>=3.7)", "more-itertools (>=8.8)", "ordered-set (>=3.1.1)", "packaging (>=24)", "platformdirs (>=2.6.2)", "tomli (>=2.0.1)", "wheel (>=0.43.0)"]
+-doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (<7.4)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
+-test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "importlib-metadata", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "jaraco.test", "mypy (==1.10.0)", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-home (>=0.5)", "pytest-mypy", "pytest-perf", "pytest-ruff (<0.4)", "pytest-ruff (>=0.2.1)", "pytest-ruff (>=0.3.2)", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
++check = ["pytest-checkdocs (>=2.4)", "pytest-ruff (>=0.2.1)", "ruff (>=0.5.2)"]
++core = ["importlib-metadata (>=6)", "importlib-resources (>=5.10.2)", "jaraco.collections", "jaraco.functools", "jaraco.text (>=3.7)", "more-itertools", "more-itertools (>=8.8)", "packaging", "packaging (>=24)", "platformdirs (>=2.6.2)", "tomli (>=2.0.1)", "wheel (>=0.43.0)"]
++cover = ["pytest-cov"]
++doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier", "towncrier (<24.7)"]
++enabler = ["pytest-enabler (>=2.2)"]
++test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "jaraco.test", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-home (>=0.5)", "pytest-perf", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel (>=0.44.0)"]
++type = ["importlib-metadata (>=7.0.2)", "jaraco.develop (>=7.21)", "mypy (==1.11.*)", "pytest-mypy"]
+ 
+ [[package]]
+ name = "snowballstemmer"
+@@ -813,7 +817,10 @@ files = [
+ doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
+ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-itertools", "pytest (>=6,!=8.1.*)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ignore-flaky", "pytest-mypy", "pytest-ruff (>=0.2.1)"]
+ 
++[extras]
++pint = ["pint"]
++
+ [metadata]
+ lock-version = "2.0"
+ python-versions = "^3.9.0"
+-content-hash = "13770256de537cfe1e5dc84bde3dafaab61a9166f85bd2e13ffee64fe6569298"
++content-hash = "a94a83fccf98ce20e10fece575ba4bbf07c211e6a090d56831adaf762b2575fa"
+
+From e3c9a2b02f8c7eede9227cdf9ccde054dc199c68 Mon Sep 17 00:00:00 2001
+From: getzze <getzze@gmail.com>
+Date: Fri, 18 Oct 2024 15:07:41 +0100
+Subject: [PATCH 4/4] overload NullRegistry.__call__
+
+---
+ knowit/units.py   | 11 +++++++++++
+ tests/__init__.py |  2 +-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/knowit/units.py b/knowit/units.py
+index c8421ca..684658b 100644
+--- a/knowit/units.py
++++ b/knowit/units.py
+@@ -14,6 +14,17 @@ def __getattr__(self, item: typing.Any) -> int:
+         """Return a Scalar 1 to simulate a unit."""
+         return 1
+ 
++    def __call__(self, value: str) -> float:
++        """Try converting to int, to float and fallback to a scalar 1.0."""
++        try:
++            return int(value)
++        except ValueError:
++            try:
++                return float(value)
++            except ValueError:
++                pass
++        return 1
++
+     def __bool__(self):
+         """Return False since a NullRegistry is not a pint.UnitRegistry."""
+         return False
+diff --git a/tests/__init__.py b/tests/__init__.py
+index 20e0490..5c91d3b 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -250,7 +250,7 @@ def parse_quantity(value):
+         if isinstance(value, str):
+             for unit in ('pixel', 'bit', 'byte', 'FPS', 'bps', 'Hz'):
+                 if value.endswith(' ' + unit):
+-                    return units(value[:-(len(unit))] + ' * ' + unit)
++                    return units(value[:-len(unit)]) * units(unit)
+ 
+         return value
+ 
+

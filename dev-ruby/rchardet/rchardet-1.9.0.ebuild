@@ -16,7 +16,7 @@ SRC_URI="https://github.com/jmhodges/rchardet/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="LGPL-2.1"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_depend "test? ( dev-ruby/minitest:5 dev-ruby/maxitest )"

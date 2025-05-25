@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-18)
+# Requires systemd, so specifically unmasked only in targets/systemd.
+->=kde-plasma/drkonqi-6.3.90
 
 # Sam James <sam@gentoo.org> (2024-11-10)
 # Breaks suspend on elogind systems (bug #934314, bug #923614) but

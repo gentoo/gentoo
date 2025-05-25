@@ -4,7 +4,7 @@
 EAPI=8
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools flag-o-matic multilib multilib-build prefix
 inherit python-any-r1 readme.gentoo-r1 toolchain-funcs wrapper
 

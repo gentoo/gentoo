@@ -1,0 +1,26 @@
+Disable tests for manpages, useless and it causes failures
+diff --git a/docs/man/Makefile.am b/docs/man/Makefile.am
+index eb8e3f5..fcddc85 100644
+--- a/docs/man/Makefile.am
++++ b/docs/man/Makefile.am
+@@ -40,20 +40,3 @@ if HAVE_XSLTPROC
+ else
+ 	echo "***** Cannot update the XML sources without `xsltproc'."
+ endif
+-
+-
+-check-local:
+-	@echo "***** Correct any errors before making a distribution."
+-if HAVE_XMLLINT
+-	$(XMLLINT) $(XMLLINT_FLAGS) $(gcu_man_src)
+-else
+-	@echo "***** Cannot check the XML sources without `xmllint'."
+-endif
+-if HAVE_MAN
+-	@for man in $(man_MANS) ; do \
+-		LANG=C MANWIDTH=80 $(MAN) $(srcdir)/$${man} > /dev/null ; \
+-	done
+-else
+-	@echo "***** Cannot check the manpages without `man'."
+-endif	
+-

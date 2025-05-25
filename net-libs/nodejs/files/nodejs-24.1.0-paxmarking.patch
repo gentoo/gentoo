@@ -1,0 +1,101 @@
+From d6a829fbeefdc289bcdac566dc234bf55380d4a6 Mon Sep 17 00:00:00 2001
+From: William Hubbs <w.d.hubbs@gmail.com>
+Date: Sat, 24 May 2025 14:21:24 -0500
+Subject: [PATCH] pax marking
+
+---
+ node.gyp                 | 17 ++++++++++++++++-
+ tools/v8_gypfiles/v8.gyp | 24 +++++++++++++++++++++++-
+ 2 files changed, 39 insertions(+), 2 deletions(-)
+
+diff --git a/node.gyp b/node.gyp
+index 59303d9ab7c..7db72a0ebdf 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -422,6 +422,7 @@
+       'src/node_webstorage.h',
+     ],
+     'node_mksnapshot_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot<(EXECUTABLE_SUFFIX)',
++    'node_mksnapshot_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot_u<(EXECUTABLE_SUFFIX)',
+     'node_js2c_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_js2c<(EXECUTABLE_SUFFIX)',
+     'conditions': [
+       ['GENERATOR == "ninja"', {
+@@ -688,11 +689,25 @@
+           'conditions': [
+             ['node_snapshot_main!=""', {
+               'actions': [
++                {
++                  'action_name': 'run_pax_mksnapshot',
++                  'inputs': [
++                    '<(node_mksnapshot_exec)',
++                  ],
++                  'outputs': [
++                    '<(node_mksnapshot_u_exec)',
++                  ],
++                  'action': [
++                    'bash',
++                    '-c',
++                    'mv <(node_mksnapshot_exec) <(node_mksnapshot_u_exec) && paxmark.sh m <(node_mksnapshot_u_exec)',
++                  ],
++                },
+                 {
+                   'action_name': 'node_mksnapshot',
+                   'process_outputs_as_sources': 1,
+                   'inputs': [
+-                    '<(node_mksnapshot_exec)',
++                    '<(node_mksnapshot_u_exec)',
+                     '<(node_snapshot_main)',
+                   ],
+                   'outputs': [
+diff --git a/tools/v8_gypfiles/v8.gyp b/tools/v8_gypfiles/v8.gyp
+index 8e3f015dff1..575bba798ae 100644
+--- a/tools/v8_gypfiles/v8.gyp
++++ b/tools/v8_gypfiles/v8.gyp
+@@ -9,6 +9,7 @@
+     'v8_vector_stores%': 0,
+     'v8_embed_script%': "",
+     'mksnapshot_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mksnapshot<(EXECUTABLE_SUFFIX)',
++    'mksnapshot_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mksnapshot_u<(EXECUTABLE_SUFFIX)',
+     'v8_os_page_size%': 0,
+     'generate_bytecode_output_root': '<(SHARED_INTERMEDIATE_DIR)/generate-bytecode-output-root',
+     'generate_bytecode_builtins_list_output': '<(generate_bytecode_output_root)/builtins-generated/bytecodes-builtins-list.h',
+@@ -1723,7 +1724,7 @@
+       ],
+     },  # bytecode_builtins_list_generator
+     {
+-      'target_name': 'mksnapshot',
++      'target_name': 'mksnapshot_u',
+       'type': 'executable',
+       'dependencies': [
+         'v8_base_without_compiler',
+@@ -1767,6 +1768,27 @@
+           'ldflags': [ '-fno-lto' ],
+         }],
+       ],
++    },  # mksnapshot_u
++    {
++      'target_name': 'mksnapshot',
++      'type': 'none',
++      'dependencies': ['mksnapshot_u'],
++      'actions': [
++        {
++          'action_name': 'paxmark_mksnapshot',
++          'inputs': [
++            '<(mksnapshot_u_exec)',
++          ],
++          'outputs': [
++            '<(mksnapshot_exec)',
++          ],
++          'action': [
++            'bash',
++            '-c',
++            'cp <(mksnapshot_u_exec) <(mksnapshot_exec) && paxmark.sh m <(mksnapshot_exec)'
++          ],
++        },
++      ],
+     },  # mksnapshot
+     {
+       'target_name': 'torque',
+-- 
+2.49.0
+
