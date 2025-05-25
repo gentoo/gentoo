@@ -180,6 +180,10 @@ src_configure() {
 	# may misbehave at runtime.
 	unset -v YACC
 
+	if tc-is-cross-compiler; then
+		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
+	fi
+
 	myconf=(
 		--disable-profiling
 
