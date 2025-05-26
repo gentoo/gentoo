@@ -17,7 +17,8 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2+ GPL-3+ ZLIB MIT CC-BY-SA-2.0 CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="debug"
+IUSE="debug test"
+RESTRICT="!test? ( test )"
 
 # =media-libs/libsdl2-2.0.14-r0 can cause supertux binary to move entire
 # content of ${HOME} to ${HOME}/.local/share/supertux2/
@@ -40,6 +41,7 @@ DEPEND="${RDEPEND}
 	media-libs/glm"
 BDEPEND="
 	virtual/pkgconfig
+	test? ( dev-cpp/gtest )
 "
 
 PATCHES=(
@@ -60,6 +62,13 @@ src_configure() {
 		-DENABLE_SQDBG="$(usex debug)"
 		-DUSE_SYSTEM_PHYSFS=ON
 		-DIS_SUPERTUX_RELEASE=ON
+		-DBUILD_TESTS="$(usex test)"
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	# Assumes in-source build to find test data
+	local -x GTEST_FILTER="-IFileStreamTest.test"
+	cmake_src_test
 }
