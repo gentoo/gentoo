@@ -37,7 +37,7 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2025-05-26)
-# Breaks some reverse dependencies and is abandoned upstream (bug #956628).
+# Breaks some reverse dependencies and is abandoned upstream (bug #956630).
 =dev-cpp/glog-0.7.1
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2025-05-25)
