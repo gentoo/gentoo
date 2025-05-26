@@ -36,15 +36,14 @@ fi
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="audit berkdb elogind examples debug nis nls selinux systemd"
+IUSE="audit berkdb elogind examples debug nis nls selinux systemd +doc"
 REQUIRED_USE="?? ( elogind systemd )"
 
 # meson.build specifically checks for bison and then byacc
 # also requires xsltproc
 BDEPEND+="
 	|| ( sys-devel/bison dev-util/byacc )
-	app-text/docbook-xsl-ns-stylesheets
-	dev-libs/libxslt
+	doc? ( app-text/docbook-xsl-ns-stylesheets dev-libs/libxslt )
 	sys-devel/flex
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
@@ -114,7 +113,7 @@ multilib_src_configure() {
 		-Dhtmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		-Dpdfdir="${EPREFIX}"/usr/share/doc/${PF}/pdf
 
-		$(meson_native_enabled docs)
+		$(meson_native_use_feature doc docs)
 
 		-Dpam_unix=enabled
 
