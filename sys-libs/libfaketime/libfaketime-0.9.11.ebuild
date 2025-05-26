@@ -18,9 +18,6 @@ src_prepare() {
 
 	sed -i -e 's/-Werror //' {src,test}/Makefile || die
 
-	# Bug #617624 (GCC-6 compatibility)
-	sed -i 's/-Wno-nonnull-compare //' src/Makefile || die
-
 	# bug #863911
 	filter-lto
 
