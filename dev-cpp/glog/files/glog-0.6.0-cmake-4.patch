@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/954083
+https://github.com/google/glog/commit/3411d58669fe07e70335b252299432a00d1e7c6c
+
+From 3411d58669fe07e70335b252299432a00d1e7c6c Mon Sep 17 00:00:00 2001
+From: Sergiu Deitsch <sergiu.deitsch@gmail.com>
+Date: Thu, 5 Oct 2023 00:48:10 +0200
+Subject: [PATCH] cmake: eliminate deprecation warning
+
+--- a/cmake/GetCacheVariables.cmake
++++ b/cmake/GetCacheVariables.cmake
+@@ -1,5 +1,5 @@
+ cmake_policy (PUSH)
+-cmake_policy (VERSION 3.3)
++cmake_policy (VERSION 3.16...3.27)
+ 
+ include (CMakeParseArguments)
+ 
+
