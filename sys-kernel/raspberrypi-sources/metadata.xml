@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>expeditioneer@gentoo.org</email>
-		<name>Dennis Lamm</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>ceamac@gentoo.org</email>
 		<name>Viorel Munteanu</name>
 	</maintainer>
