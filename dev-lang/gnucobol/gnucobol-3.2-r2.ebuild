@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic multiprocessing toolchain-funcs
+inherit autotools
 
 DESCRIPTION="A free/libre COBOL compiler"
 HOMEPAGE="https://gnucobol.sourceforge.io/"
