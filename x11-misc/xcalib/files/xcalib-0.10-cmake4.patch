@@ -1,0 +1,10 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6a48c13..0f883dd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
++CMAKE_MINIMUM_REQUIRED (VERSION 3.5)
+ 
+ PROJECT (xcalib C)
+ 
