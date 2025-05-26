@@ -37,11 +37,13 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+# <sip-6.11 dep: bug #956566
 BDEPEND="
 	app-text/doxygen
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.6.2[${PYTHON_USEDEP}]
+	<dev-python/sip-6.11.1[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	test? (
 		${VIRTUALX_DEPEND}
