@@ -41,7 +41,8 @@ DOCS=( HACKING NEWS README )
 
 PATCHES=(
 	"${FILESDIR}/${P}-qt-5.15.patch"
-	"${FILESDIR}"/${PN}-0.4.2-glib-2.68.patch
+	"${FILESDIR}"/${P}-glib-2.68.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug #955760
 )
 
 src_prepare() {
