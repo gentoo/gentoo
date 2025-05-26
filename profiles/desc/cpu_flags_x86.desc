@@ -9,6 +9,7 @@
 3dnowext - Use the Enhanced 3DNow! instruction set
 aes - Enable support for Intel's AES instruction set (AES-NI)
 avx - Adds support for Advanced Vector Extensions instructions
+avx_vnni - Use AVX (VEX-encoded) versions of the Vector Neural Network Instructions
 avx2 - Adds support for Advanced Vector Extensions 2 instructions
 avx512_4fmaps - Use AVX-512 Fused Multiply-Accumulate Packed Single Precision instruction set
 avx512_4vnniw - Use AVX-512 Vector Neural Network Instructions Word Variable Precision
