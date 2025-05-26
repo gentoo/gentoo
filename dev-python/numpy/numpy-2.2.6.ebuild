@@ -63,6 +63,9 @@ python_prepare_all() {
 		# https://github.com/numpy/numpy/pull/28748
 		# https://github.com/numpy/numpy/pull/28928
 		"${FILESDIR}/${PN}-2.2.5-py314.patch"
+		# https://github.com/google/highway/issues/2577
+		# github.com/google/highway/commit/7cde540171a1718a9bdfa8f896d70e47eb0785d5
+		"${FILESDIR}/${PN}-2.2.6-gcc16.patch"
 	)
 
 	# bug #922457
