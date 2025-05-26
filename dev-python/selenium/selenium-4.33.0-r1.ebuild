@@ -35,15 +35,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/certifi-2025.4.26[${PYTHON_USEDEP}]
-	<dev-python/trio-1[${PYTHON_USEDEP}]
 	>=dev-python/trio-0.30[${PYTHON_USEDEP}]
-	<dev-python/trio-websocket-1[${PYTHON_USEDEP}]
 	>=dev-python/trio-websocket-0.12.2[${PYTHON_USEDEP}]
-	<dev-python/typing-extensions-5[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.13.2[${PYTHON_USEDEP}]
-	<dev-python/urllib3-3[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-2.4.0[${PYTHON_USEDEP}]
-	<dev-python/websocket-client-2[${PYTHON_USEDEP}]
 	>=dev-python/websocket-client-1.8.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -73,6 +68,8 @@ src_prepare() {
 	# do not build selenium-manager implicitly
 	sed -e 's:\[tool\.setuptools-rust:[tool.ignore-me:' \
 		-i pyproject.toml || die
+	# unpin deps
+	sed -i -e 's:~=:>=:g' pyproject.toml || die
 
 	if use test; then
 		cd "${WORKDIR}/${TEST_P}" || die
