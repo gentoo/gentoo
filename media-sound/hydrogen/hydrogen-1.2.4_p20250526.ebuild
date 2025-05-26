@@ -10,11 +10,13 @@ HOMEPAGE="http://hydrogen-music.org/"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
+	EGIT_BRANCH="releases/1.2"
 	EGIT_REPO_URI="https://github.com/${PN}-music/${PN}"
 else
-	MY_PV=${PV/_/-}
-	SRC_URI="https://github.com/${PN}-music/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-${MY_PV}
+	COMMIT=493f5afe6206d7d68264b7111414a1e8025b6eca
+	SRC_URI="https://github.com/${PN}-music/${PN}/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz
+		https://github.com/${PN}-music/documentation/archive/${PV/_p*/}.tar.gz -> ${PN}-documentation-${PV/_p*/}.tar.gz"
+	S="${WORKDIR}"/${PN}-${COMMIT}
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -44,14 +46,21 @@ BDEPEND="
 	doc? ( app-text/doxygen )
 "
 
-DOCS=( AUTHORS CHANGELOG.md DEVELOPERS.md README.md )
+DOCS=( AUTHORS CHANGELOG.md DEVELOPERS README.md )
 
-PATCHES=( "${FILESDIR}/${PN}-1.3.0-cflags.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.2.3-cflags.patch" )
+
+src_prepare() {
+	rmdir data/doc || die
+	mv "${WORKDIR}"/documentation-${PV/_p*/} data/doc || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		-DWANT_CPPUNIT=OFF
 		-DWANT_DEBUG=OFF
+		-DWANT_LASH=OFF
 		-DWANT_RUBBERBAND=OFF
 		-DWANT_QT6=ON
 		-DWANT_ALSA=$(usex alsa)
