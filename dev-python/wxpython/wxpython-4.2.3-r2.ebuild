@@ -36,12 +36,18 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
-# <sip-6.11 dep: bug #956566
+# sip-6.11.0-r0 blocked wrt bug #956566, can replace by just >=6.8.5
+# on bump or so as the version was short lived and never stable
 BDEPEND="
 	app-text/doxygen
 	dev-python/cython[${PYTHON_USEDEP}]
-	>=dev-python/sip-6.8.5[${PYTHON_USEDEP}]
-	<dev-python/sip-6.11.1[${PYTHON_USEDEP}]
+	|| (
+		(
+			>=dev-python/sip-6.8.5[${PYTHON_USEDEP}]
+			<dev-python/sip-6.11.1-r0[${PYTHON_USEDEP}]
+		)
+		>=dev-python/sip-6.11.1-r1[${PYTHON_USEDEP}]
+	)
 	test? (
 		${VIRTUALX_DEPEND}
 		dev-python/appdirs[${PYTHON_USEDEP}]
