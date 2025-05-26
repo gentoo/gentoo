@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -27,3 +27,7 @@ RDEPEND="
 distutils_enable_tests pytest
 
 DOCS=( README.rst )
+PATCHES=(
+	# https://github.com/pypa/readme_renderer/pull/325
+	"${FILESDIR}/${P}-test.patch"
+)
