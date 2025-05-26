@@ -56,6 +56,12 @@ BDEPEND="
 	sys-power/iasl
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.1.6-disable-vboxvideo-module.patch
+	"${FILESDIR}"/${PN}-7.1-arm64.patch
+	"${WORKDIR}/virtualbox-patches-7.1.0/patches"
+)
+
 DOCS=()	# Don't install the default README file during einstalldocs
 
 DOC_CONTENTS="\n
@@ -100,8 +106,7 @@ src_prepare() {
 	# Respect LDFLAGS (bug #759100)
 	sed -i -e '/TEMPLATE_VBoxR3Exe_LDFLAGS.linux[    ]*=/ s/$/ $(CCLDFLAGS)/' Config.kmk || die
 
-	eapply "${FILESDIR}"/${PN}-7.1.6-disable-vboxvideo-module.patch
-	eapply "${WORKDIR}/virtualbox-patches-7.1.0/patches"
+	eapply "${PATCHES[@]}"
 	eapply_user
 }
 
