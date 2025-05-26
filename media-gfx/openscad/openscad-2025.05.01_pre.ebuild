@@ -78,7 +78,7 @@ RDEPEND="
 		dev-qt/qtbase:6[concurrent,dbus?,-gles2-only,network,opengl,widgets]
 		dev-qt/qtmultimedia:6
 		dev-qt/qtsvg:6
-		x11-libs/qscintilla:=[qt6]
+		>=x11-libs/qscintilla-2.14.1-r1:=[qt6(+)]
 	)
 	hidapi? ( dev-libs/hidapi )
 	manifold? (
