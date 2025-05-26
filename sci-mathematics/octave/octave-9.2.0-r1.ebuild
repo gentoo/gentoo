@@ -59,7 +59,7 @@ COMMON_DEPS="
 		virtual/glu
 		x11-libs/gl2ps:=
 		x11-libs/libX11:=
-		x11-libs/qscintilla:=[qt6]
+		>=x11-libs/qscintilla-2.14.1-r1:=[qt6(+)]
 	)
 	qhull? ( media-libs/qhull:= )
 	qrupdate? ( sci-libs/qrupdate:= )
