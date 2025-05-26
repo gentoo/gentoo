@@ -44,10 +44,16 @@ inherit edo
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		BDEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
+		RDEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
+		if [[ ${EAPI} != 7 ]]; then
+			IDEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
+		fi
 		IUSE="${SSL_CERT_USE}"
 	else
-		BDEPEND="dev-libs/openssl"
+		RDEPEND="dev-libs/openssl"
+		if [[ ${EAPI} != 7 ]]; then
+			IDEPEND="dev-libs/openssl"
+		fi
 	fi
 fi
 
@@ -204,9 +210,8 @@ install_cert() {
 	fi
 
 	case ${EBUILD_PHASE} in
-	unpack|prepare|configure|compile|test|install)
-		die "install_cert cannot be called in ${EBUILD_PHASE}"
-		;;
+		config|preinst|postinst) ;;
+		*) die "install_cert cannot be called in ${EBUILD_PHASE}" ;;
 	esac
 
 	# Generate a CA environment #164601
