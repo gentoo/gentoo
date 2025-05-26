@@ -35,6 +35,8 @@ BDEPEND="
 	)
 "
 
+export PDM_BUILD_SCM_VERSION=${PV}
+
 distutils_enable_tests pytest
 
 src_unpack() {
