@@ -37,10 +37,6 @@
 #--- END OF EXAMPLES ---
 
 # Sam James <sam@gentoo.org> (2025-05-26)
-# Need to fix suffix
-x11-libs/wxGTK:3.2-gtk3/3.2
-
-# Sam James <sam@gentoo.org> (2025-05-26)
 # Breaks some reverse dependencies and is abandoned upstream (bug #956630).
 =dev-cpp/glog-0.7.1
 
