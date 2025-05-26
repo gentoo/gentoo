@@ -63,9 +63,6 @@ gen_cnf() {
 	SSL_CONF="${T}/${$}ssl.cnf"
 	# Location of the CA serial file
 	SSL_SERIAL="${T}/${$}ca.ser"
-	# Location of some random files OpenSSL can use: don't use
-	# /dev/u?random here -- doesn't work properly on all platforms
-	SSL_RANDOM="${T}/environment:${T}/eclass-debug.log:/etc/resolv.conf"
 
 	# These can be overridden in the ebuild
 	SSL_DAYS="${SSL_DAYS:-730}"
@@ -128,8 +125,7 @@ get_base() {
 gen_key() {
 	local base=$(get_base "$1")
 	nonfatal edob -m "Generating ${SSL_BITS} bit RSA key${1:+ for CA}" \
-		openssl genrsa -rand "${SSL_RANDOM}" \
-			-out "${base}.key" "${SSL_BITS}"
+		openssl genrsa -out "${base}.key" "${SSL_BITS}"
 	return $?
 }
 
