@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -45,7 +45,7 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
-		python3.13)
+		python3.13*|python3.14*)
 			EPYTEST_DESELECT+=(
 				# crypt module has been removed, so the platform backend
 				# does not work anymore
