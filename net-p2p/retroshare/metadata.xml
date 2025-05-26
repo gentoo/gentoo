@@ -32,7 +32,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/RetroShare/RetroShare/issues</bugs-to>
-		<!-- NOTE: for core functionalities check cout RetroShare/libretroshare -->
+		<!-- NOTE: for core functionalities check out RetroShare/libretroshare -->
 		<doc>https://retrosharedocs.readthedocs.io/en/latest/</doc>
 		<remote-id type="github">RetroShare/RetroShare</remote-id>
 	</upstream>
