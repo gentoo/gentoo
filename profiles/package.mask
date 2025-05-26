@@ -301,16 +301,6 @@ dev-python/pypy3
 # Removal on 2025-05-22.  Bug #954213.
 dev-python/unittest-or-fail
 
-# Hans de Graaff <graaff@gentoo.org> (2025-04-21)
-# ruby32-only slot. Use the newer slot instead.
-# Masked for removal on 2025-05-21.
-dev-ruby/highline:2
-
-# Hans de Graaff <graaff@gentoo.org> (2025-04-20)
-# ruby32-only slot. Use the newer slot instead.
-# Masked for removal on 2025-05-20.
-dev-ruby/activeldap:6
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-19)
 # This package will no longer feature stable keywords, due to unresolved
 # test failures blocking the stabilization request for months.
@@ -321,9 +311,6 @@ dev-ruby/activeldap:6
 # receive security updates. This mask also includes any
 # remaining ruby31-only packages.
 dev-lang/ruby:3.1
-dev-ruby/async:1
-dev-ruby/pathutil
-=app-admin/puppet-7*
 
 # Conrad Kostecki <conikost@gentoo.org> (2025-04-18)
 # Package not needed anymore by the only consumer net-dns/hash-slinger.
