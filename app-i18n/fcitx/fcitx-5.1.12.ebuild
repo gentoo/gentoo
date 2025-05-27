@@ -99,11 +99,6 @@ src_compile() {
 	use doc && cmake_src_compile doc
 }
 
-src_install() {
-	cmake_src_install
-	use doc && dodoc -r "${BUILD_DIR}"/doc/*
-}
-
 src_test() {
 	# break by sandbox
 	local CMAKE_SKIP_TESTS=(
@@ -111,6 +106,11 @@ src_test() {
 		testservicewatcher
 	)
 	cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+	use doc && dodoc -r "${BUILD_DIR}"/doc/*
 }
 
 pkg_postinst() {
