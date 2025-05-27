@@ -32,7 +32,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	e300? ( virtual/udev )
 	usb? ( virtual/libusb:1 )
-	dev-libs/boost:=
+	<dev-libs/boost-1.88.0:=
 	sys-libs/ncurses:0=
 	$(python_gen_cond_dep '
 	dev-python/numpy[${PYTHON_USEDEP}]
