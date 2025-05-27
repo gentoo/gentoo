@@ -49,6 +49,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/Skip-test-using-dbus-in-sandbox.patch"
+	"${FILESDIR}/Skip-test-detecting-cycle-among-base-classes-typeerr.patch"
+)
+
 src_unpack() {
 	default
 	unpack "${P}_${COMMIT}_pythoncapi-compat.gh.tar.gz" || die
