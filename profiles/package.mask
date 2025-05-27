@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
+# Dead upstream with no release for over 10 years, Qt5-based even only by
+# means of a snapshot. Bugs #951875, #953016. Removal on 2025-06-26.
+x11-misc/qxkb
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
 # Upstream repository+author, web pages and documentation gone after long
 # period of inactivity, based on Qt5. Bugs #949021, #940094
 # Removal on 2025-06-26.
