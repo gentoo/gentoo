@@ -44,6 +44,10 @@ BDEPEND="
 
 distutils_enable_tests unittest
 
+PATCHES=(
+	"${FILESDIR}"/libnvme-1.14-remove-glibc-include.patch
+)
+
 src_prepare() {
 	default
 	use python && distutils-r1_src_prepare
