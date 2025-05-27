@@ -1,0 +1,265 @@
+From 76db05a0f8edb8b7d4d896d3860bc555934ad383 Mon Sep 17 00:00:00 2001
+Message-ID: <76db05a0f8edb8b7d4d896d3860bc555934ad383.1748327071.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 23 May 2025 16:46:13 +0200
+Subject: [PATCH 2/5] Use "8 bit raw midi" for control ports again
+
+There is no need to encode the potential format in the format.dsp of
+control ports, this is just for legacy compatibility with JACK apps. The
+actual format can be negotiated with the types field.
+
+Fixes midi port visibility with apps compiled against 1.2, such as JACK
+apps in flatpaks.
+---
+ pipewire-jack/src/pipewire-jack.c             | 20 +------------------
+ spa/plugins/alsa/alsa-seq-bridge.c            |  2 +-
+ spa/plugins/audioconvert/audioconvert.c       |  2 +-
+ spa/plugins/bluez5/midi-node.c                |  4 ++--
+ .../videoconvert/videoconvert-ffmpeg.c        |  2 +-
+ src/examples/midi-src.c                       |  2 +-
+ src/modules/module-ffado-driver.c             |  2 +-
+ src/modules/module-jack-tunnel.c              |  2 +-
+ src/modules/module-netjack2-driver.c          |  2 +-
+ src/modules/module-netjack2-manager.c         |  2 +-
+ src/modules/module-rtp/stream.c               |  2 +-
+ src/modules/module-vban/stream.c              |  2 +-
+ src/pipewire/filter.c                         |  4 +++-
+ src/pipewire/stream.c                         |  2 +-
+ src/tools/pw-cat.c                            |  2 +-
+ 15 files changed, 18 insertions(+), 34 deletions(-)
+
+diff --git a/pipewire-jack/src/pipewire-jack.c b/pipewire-jack/src/pipewire-jack.c
+index 14c062a21..b859b64b0 100644
+--- a/pipewire-jack/src/pipewire-jack.c
++++ b/pipewire-jack/src/pipewire-jack.c
+@@ -3466,24 +3466,6 @@ static const char* type_to_string(jack_port_type_id_t type_id)
+ 	}
+ }
+ 
+-static const char* type_to_format_dsp(jack_port_type_id_t type_id)
+-{
+-	switch(type_id) {
+-	case TYPE_ID_AUDIO:
+-		return JACK_DEFAULT_AUDIO_TYPE;
+-	case TYPE_ID_VIDEO:
+-		return JACK_DEFAULT_VIDEO_TYPE;
+-	case TYPE_ID_OSC:
+-		return JACK_DEFAULT_OSC_TYPE;
+-	case TYPE_ID_MIDI:
+-		return JACK_DEFAULT_MIDI_TYPE;
+-	case TYPE_ID_UMP:
+-		return JACK_DEFAULT_UMP_TYPE;
+-	default:
+-		return NULL;
+-	}
+-}
+-
+ static bool type_is_dsp(jack_port_type_id_t type_id)
+ {
+ 	switch(type_id) {
+@@ -5544,7 +5526,7 @@ jack_port_t * jack_port_register (jack_client_t *client,
+ 
+ 	spa_list_init(&p->mix);
+ 
+-	pw_properties_set(p->props, PW_KEY_FORMAT_DSP, type_to_format_dsp(type_id));
++	pw_properties_set(p->props, PW_KEY_FORMAT_DSP, type_to_string(type_id));
+ 	pw_properties_set(p->props, PW_KEY_PORT_NAME, port_name);
+ 	if (flags > 0x1f) {
+ 		pw_properties_setf(p->props, PW_KEY_PORT_EXTRA,
+diff --git a/spa/plugins/alsa/alsa-seq-bridge.c b/spa/plugins/alsa/alsa-seq-bridge.c
+index 7ec39321c..68e6c91a8 100644
+--- a/spa/plugins/alsa/alsa-seq-bridge.c
++++ b/spa/plugins/alsa/alsa-seq-bridge.c
+@@ -275,7 +275,7 @@ static void emit_port_info(struct seq_state *this, struct seq_port *port, bool f
+ 		snprintf(alias, sizeof(alias), "%s:%s", client_name, port_name);
+ 		clean_name(alias);
+ 
+-		items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "32 bit raw UMP");
++		items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "8 bit raw midi");
+ 		items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_OBJECT_PATH, path);
+ 		items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_NAME, name);
+ 		items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_ALIAS, alias);
+diff --git a/spa/plugins/audioconvert/audioconvert.c b/spa/plugins/audioconvert/audioconvert.c
+index c1fa022d1..c36028bcd 100644
+--- a/spa/plugins/audioconvert/audioconvert.c
++++ b/spa/plugins/audioconvert/audioconvert.c
+@@ -362,7 +362,7 @@ static void emit_port_info(struct impl *this, struct port *port, bool full)
+ 				items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_IGNORE_LATENCY, "true");
+ 		} else if (PORT_IS_CONTROL(this, port->direction, port->id)) {
+ 			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_NAME, "control");
+-			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "32 bit raw UMP");
++			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "8 bit raw midi");
+ 		}
+ 		if (this->group_name[0] != '\0')
+ 			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_GROUP, this->group_name);
+diff --git a/spa/plugins/bluez5/midi-node.c b/spa/plugins/bluez5/midi-node.c
+index b5fd179ea..cfba2bfcf 100644
+--- a/spa/plugins/bluez5/midi-node.c
++++ b/spa/plugins/bluez5/midi-node.c
+@@ -2024,13 +2024,13 @@ impl_init(const struct spa_handle_factory *factory,
+ 	for (i = 0; i < N_PORTS; ++i) {
+ 		struct port *port = &this->ports[i];
+ 		static const struct spa_dict_item in_port_items[] = {
+-			SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "32 bit raw UMP"),
++			SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "8 bit raw midi"),
+ 			SPA_DICT_ITEM_INIT(SPA_KEY_PORT_NAME, "in"),
+ 			SPA_DICT_ITEM_INIT(SPA_KEY_PORT_ALIAS, "in"),
+ 			SPA_DICT_ITEM_INIT(SPA_KEY_PORT_GROUP, "group.0"),
+ 		};
+ 		static const struct spa_dict_item out_port_items[] = {
+-			SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "32 bit raw UMP"),
++			SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "8 bit raw midi"),
+ 			SPA_DICT_ITEM_INIT(SPA_KEY_PORT_NAME, "out"),
+ 			SPA_DICT_ITEM_INIT(SPA_KEY_PORT_ALIAS, "out"),
+ 			SPA_DICT_ITEM_INIT(SPA_KEY_PORT_GROUP, "group.0"),
+diff --git a/spa/plugins/videoconvert/videoconvert-ffmpeg.c b/spa/plugins/videoconvert/videoconvert-ffmpeg.c
+index ddb810be5..3da0e5677 100644
+--- a/spa/plugins/videoconvert/videoconvert-ffmpeg.c
++++ b/spa/plugins/videoconvert/videoconvert-ffmpeg.c
+@@ -228,7 +228,7 @@ static void emit_port_info(struct impl *this, struct port *port, bool full)
+ 				items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_IGNORE_LATENCY, "true");
+ 		} else if (PORT_IS_CONTROL(this, port->direction, port->id)) {
+ 			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_NAME, "control");
+-			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "32 bit raw UMP");
++			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_FORMAT_DSP, "8 bit raw midi");
+ 		}
+ 		if (this->group_name[0] != '\0')
+ 			items[n_items++] = SPA_DICT_ITEM_INIT(SPA_KEY_PORT_GROUP, this->group_name);
+diff --git a/src/examples/midi-src.c b/src/examples/midi-src.c
+index edcaa0f08..12f86d6f2 100644
+--- a/src/examples/midi-src.c
++++ b/src/examples/midi-src.c
+@@ -213,7 +213,7 @@ int main(int argc, char *argv[])
+ 			PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+ 			sizeof(struct port),
+ 			pw_properties_new(
+-				PW_KEY_FORMAT_DSP, "32 bit raw UMP",
++				PW_KEY_FORMAT_DSP, "8 bit raw midi",
+ 				PW_KEY_PORT_NAME, "output",
+ 				NULL),
+ 			NULL, 0);
+diff --git a/src/modules/module-ffado-driver.c b/src/modules/module-ffado-driver.c
+index 4345e5a19..1c9c7c590 100644
+--- a/src/modules/module-ffado-driver.c
++++ b/src/modules/module-ffado-driver.c
+@@ -772,7 +772,7 @@ static int make_stream_ports(struct stream *s)
+ 			break;
+ 		case ffado_stream_type_midi:
+ 			props = pw_properties_new(
+-					PW_KEY_FORMAT_DSP, "32 bit raw UMP",
++					PW_KEY_FORMAT_DSP, "8 bit raw midi",
+ 					PW_KEY_PORT_NAME, port->name,
+ 					PW_KEY_PORT_PHYSICAL, "true",
+ 					PW_KEY_PORT_TERMINAL, "true",
+diff --git a/src/modules/module-jack-tunnel.c b/src/modules/module-jack-tunnel.c
+index 7ab4c9faf..76ac73c8d 100644
+--- a/src/modules/module-jack-tunnel.c
++++ b/src/modules/module-jack-tunnel.c
+@@ -515,7 +515,7 @@ static void make_stream_ports(struct stream *s)
+ 		} else {
+ 			snprintf(name, sizeof(name), "%s_%d", prefix, i - s->info.channels);
+ 			props = pw_properties_new(
+-					PW_KEY_FORMAT_DSP, "32 bit raw UMP",
++					PW_KEY_FORMAT_DSP, "8 bit raw midi",
+ 					PW_KEY_PORT_NAME, name,
+ 					PW_KEY_PORT_PHYSICAL, "true",
+ 					NULL);
+diff --git a/src/modules/module-netjack2-driver.c b/src/modules/module-netjack2-driver.c
+index 0aa9a85cd..011052e7b 100644
+--- a/src/modules/module-netjack2-driver.c
++++ b/src/modules/module-netjack2-driver.c
+@@ -452,7 +452,7 @@ static void make_stream_ports(struct stream *s)
+ 		} else {
+ 			snprintf(name, sizeof(name), "midi%d", i - s->info.channels);
+ 			props = pw_properties_new(
+-					PW_KEY_FORMAT_DSP, "32 bit raw UMP",
++					PW_KEY_FORMAT_DSP, "8 bit raw midi",
+ 					PW_KEY_AUDIO_CHANNEL, name,
+ 					PW_KEY_PORT_PHYSICAL, "true",
+ 					NULL);
+diff --git a/src/modules/module-netjack2-manager.c b/src/modules/module-netjack2-manager.c
+index 2cef87218..fe482fd94 100644
+--- a/src/modules/module-netjack2-manager.c
++++ b/src/modules/module-netjack2-manager.c
+@@ -614,7 +614,7 @@ static void make_stream_ports(struct stream *s)
+ 		} else {
+ 			snprintf(name, sizeof(name), "midi%d", i - s->info.channels);
+ 			props = pw_properties_new(
+-					PW_KEY_FORMAT_DSP, "32 bit raw UMP",
++					PW_KEY_FORMAT_DSP, "8 bit raw midi",
+ 					PW_KEY_PORT_PHYSICAL, "true",
+ 					PW_KEY_AUDIO_CHANNEL, name,
+ 					NULL);
+diff --git a/src/modules/module-rtp/stream.c b/src/modules/module-rtp/stream.c
+index f4d3fa3b8..cbd3ee994 100644
+--- a/src/modules/module-rtp/stream.c
++++ b/src/modules/module-rtp/stream.c
+@@ -390,7 +390,7 @@ struct rtp_stream *rtp_stream_new(struct pw_core *core,
+ 			res = -EINVAL;
+ 			goto out;
+ 		}
+-		pw_properties_set(props, PW_KEY_FORMAT_DSP, "32 bit raw UMP");
++		pw_properties_set(props, PW_KEY_FORMAT_DSP, "8 bit raw midi");
+ 		impl->stride = impl->format_info->size;
+ 		impl->rate = pw_properties_get_uint32(props, "midi.rate", 10000);
+ 		if (impl->rate == 0)
+diff --git a/src/modules/module-vban/stream.c b/src/modules/module-vban/stream.c
+index efa5af370..10eb34a82 100644
+--- a/src/modules/module-vban/stream.c
++++ b/src/modules/module-vban/stream.c
+@@ -307,7 +307,7 @@ struct vban_stream *vban_stream_new(struct pw_core *core,
+ 			res = -EINVAL;
+ 			goto out;
+ 		}
+-		pw_properties_set(props, PW_KEY_FORMAT_DSP, "32 bit raw UMP");
++		pw_properties_set(props, PW_KEY_FORMAT_DSP, "8 bit raw midi");
+ 		impl->stride = impl->format_info->size;
+ 		impl->rate = pw_properties_get_uint32(props, "midi.rate", 10000);
+ 		if (impl->rate == 0)
+diff --git a/src/pipewire/filter.c b/src/pipewire/filter.c
+index 519c1e2f7..03706e98a 100644
+--- a/src/pipewire/filter.c
++++ b/src/pipewire/filter.c
+@@ -1855,8 +1855,10 @@ void *pw_filter_add_port(struct pw_filter *filter,
+ 			add_control_dsp_port_params(impl, p, 1u << SPA_CONTROL_Midi);
+ 		else if (spa_streq(str, "8 bit raw control"))
+ 			add_control_dsp_port_params(impl, p, 0);
+-		else if (spa_streq(str, "32 bit raw UMP"))
++		else if (spa_streq(str, "32 bit raw UMP")) {
+ 			add_control_dsp_port_params(impl, p, 1u << SPA_CONTROL_UMP);
++			pw_properties_set(props, PW_KEY_FORMAT_DSP, "8 bit raw midi");
++		}
+ 	}
+ 	/* then override with user provided if any */
+ 	if (update_params(impl, p, SPA_ID_INVALID, params, n_params) < 0)
+diff --git a/src/pipewire/stream.c b/src/pipewire/stream.c
+index 4af3a3afa..f5684d5e7 100644
+--- a/src/pipewire/stream.c
++++ b/src/pipewire/stream.c
+@@ -2053,7 +2053,7 @@ pw_stream_connect(struct pw_stream *stream,
+ 		pw_properties_set(impl->port_props, PW_KEY_FORMAT_DSP, str);
+ 	else if (impl->media_type == SPA_MEDIA_TYPE_application &&
+ 	    impl->media_subtype == SPA_MEDIA_SUBTYPE_control)
+-		pw_properties_set(impl->port_props, PW_KEY_FORMAT_DSP, "32 bit raw UMP");
++		pw_properties_set(impl->port_props, PW_KEY_FORMAT_DSP, "8 bit raw midi");
+ 	if (pw_properties_get(impl->port_props, PW_KEY_PORT_GROUP) == NULL)
+ 		pw_properties_set(impl->port_props, PW_KEY_PORT_GROUP, "stream.0");
+ 
+diff --git a/src/tools/pw-cat.c b/src/tools/pw-cat.c
+index 36a78981e..928afed0e 100644
+--- a/src/tools/pw-cat.c
++++ b/src/tools/pw-cat.c
+@@ -1985,7 +1985,7 @@ int main(int argc, char *argv[])
+ 				SPA_FORMAT_mediaType,		SPA_POD_Id(SPA_MEDIA_TYPE_application),
+ 				SPA_FORMAT_mediaSubtype,	SPA_POD_Id(SPA_MEDIA_SUBTYPE_control));
+ 
+-		pw_properties_set(data.props, PW_KEY_FORMAT_DSP, "32 bit raw UMP");
++		pw_properties_set(data.props, PW_KEY_FORMAT_DSP, "8 bit raw midi");
+ 		break;
+ 	case TYPE_DSD:
+ 	{
+-- 
+2.49.0
+

@@ -1,0 +1,451 @@
+From 06941f7315c3ca814771cc8b6612c3d01a8bf968 Mon Sep 17 00:00:00 2001
+Message-ID: <06941f7315c3ca814771cc8b6612c3d01a8bf968.1748327071.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 23 May 2025 16:53:42 +0200
+Subject: [PATCH 3/5] alsa: remove UMP flag from control format
+
+Don't set the UMP type flag on the format. Use the negotiated types flag
+to decide what format to output. Add support for output to old style
+midi.
+
+Set the UMP type flag only on the new mixer and JACK when UMP is
+enabled.
+
+This ensures that only new (or explicitly requesting) apps get UMP and
+old apps receive old midi.
+
+This makes JACK running on 1.2 in flatpaks work with midi again.
+---
+ pipewire-jack/src/pipewire-jack.c  |  23 ++++-
+ spa/plugins/alsa/alsa-seq-bridge.c |  13 +--
+ spa/plugins/alsa/alsa-seq.c        | 159 ++++++++++++++++++++---------
+ spa/plugins/alsa/alsa-seq.h        |   3 +
+ spa/plugins/control/mixer.c        |   3 +-
+ src/modules/module-jack-tunnel.c   |  33 +++---
+ 6 files changed, 157 insertions(+), 77 deletions(-)
+
+diff --git a/pipewire-jack/src/pipewire-jack.c b/pipewire-jack/src/pipewire-jack.c
+index b859b64b0..695938f90 100644
+--- a/pipewire-jack/src/pipewire-jack.c
++++ b/pipewire-jack/src/pipewire-jack.c
+@@ -2549,11 +2549,28 @@ static int param_enum_format(struct client *c, struct port *p,
+ 	case TYPE_ID_UMP:
+ 	case TYPE_ID_OSC:
+ 	case TYPE_ID_MIDI:
+-		*param = spa_pod_builder_add_object(b,
+-			SPA_TYPE_OBJECT_Format, SPA_PARAM_EnumFormat,
++	{
++		struct spa_pod_frame f;
++		int32_t types = 0;
++
++		spa_pod_builder_push_object(b, &f,
++			SPA_TYPE_OBJECT_Format, SPA_PARAM_EnumFormat);
++		spa_pod_builder_add(b,
+ 			SPA_FORMAT_mediaType,      SPA_POD_Id(SPA_MEDIA_TYPE_application),
+-			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control));
++			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control),
++			0);
++		if (p->object->port.type_id == TYPE_ID_UMP)
++			types |= 1u<<SPA_CONTROL_UMP;
++		if (p->object->port.type_id == TYPE_ID_OSC)
++			types |= 1u<<SPA_CONTROL_OSC;
++		if (types != 0)
++			spa_pod_builder_add(b,
++				SPA_FORMAT_CONTROL_types,  SPA_POD_CHOICE_FLAGS_Int(types),
++				0);
++
++		*param = spa_pod_builder_pop(b, &f);
+ 		break;
++	}
+ 	case TYPE_ID_VIDEO:
+ 		*param = spa_pod_builder_add_object(b,
+ 			SPA_TYPE_OBJECT_Format, SPA_PARAM_EnumFormat,
+diff --git a/spa/plugins/alsa/alsa-seq-bridge.c b/spa/plugins/alsa/alsa-seq-bridge.c
+index 68e6c91a8..445808017 100644
+--- a/spa/plugins/alsa/alsa-seq-bridge.c
++++ b/spa/plugins/alsa/alsa-seq-bridge.c
+@@ -529,8 +529,7 @@ impl_node_port_enum_params(void *object, int seq,
+ 		param = spa_pod_builder_add_object(&b,
+ 			SPA_TYPE_OBJECT_Format, SPA_PARAM_EnumFormat,
+ 			SPA_FORMAT_mediaType,      SPA_POD_Id(SPA_MEDIA_TYPE_application),
+-			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control),
+-			SPA_FORMAT_CONTROL_types,  SPA_POD_CHOICE_FLAGS_Int(1u<<SPA_CONTROL_UMP));
++			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control));
+ 		break;
+ 
+ 	case SPA_PARAM_Format:
+@@ -541,8 +540,7 @@ impl_node_port_enum_params(void *object, int seq,
+ 		param = spa_pod_builder_add_object(&b,
+ 			SPA_TYPE_OBJECT_Format, SPA_PARAM_Format,
+ 			SPA_FORMAT_mediaType,      SPA_POD_Id(SPA_MEDIA_TYPE_application),
+-			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control),
+-			SPA_FORMAT_CONTROL_types,  SPA_POD_Int(1u<<SPA_CONTROL_UMP));
++			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control));
+ 		break;
+ 
+ 	case SPA_PARAM_Buffers:
+@@ -635,7 +633,7 @@ static int port_set_format(void *object, struct seq_port *port,
+ 		port->have_format = false;
+ 	} else {
+ 		struct spa_audio_info info = { 0 };
+-		uint32_t types;
++		uint32_t types = 0;
+ 
+ 		if ((err = spa_format_parse(format, &info.media_type, &info.media_subtype)) < 0)
+ 			return err;
+@@ -646,13 +644,12 @@ static int port_set_format(void *object, struct seq_port *port,
+ 
+ 		if ((err = spa_pod_parse_object(format,
+ 				SPA_TYPE_OBJECT_Format, NULL,
+-				SPA_FORMAT_CONTROL_types,  SPA_POD_Int(&types))) < 0)
++				SPA_FORMAT_CONTROL_types,  SPA_POD_OPT_Int(&types))) < 0)
+ 			return err;
+-		if (types != 1u << SPA_CONTROL_UMP)
+-			return -EINVAL;
+ 
+ 		port->current_format = info;
+ 		port->have_format = true;
++		port->control_types = types;
+ 	}
+ 
+ 	port->info.change_mask |= SPA_PORT_CHANGE_MASK_RATE;
+diff --git a/spa/plugins/alsa/alsa-seq.c b/spa/plugins/alsa/alsa-seq.c
+index 04280f291..75d9c604a 100644
+--- a/spa/plugins/alsa/alsa-seq.c
++++ b/spa/plugins/alsa/alsa-seq.c
+@@ -586,7 +586,8 @@ static int prepare_buffer(struct seq_state *state, struct seq_port *port)
+ 	spa_pod_builder_init(&port->builder,
+ 			port->buffer->buf->datas[0].data,
+ 			port->buffer->buf->datas[0].maxsize);
+-        spa_pod_builder_push_sequence(&port->builder, &port->frame, 0);
++	spa_pod_builder_push_sequence(&port->builder, &port->frame, 0);
++	port->ev_offset = SPA_IDX_INVALID;
+ 
+ 	return 0;
+ }
+@@ -620,10 +621,8 @@ static int process_read(struct seq_state *state)
+ 	struct seq_stream *stream = &state->streams[SPA_DIRECTION_OUTPUT];
+ 	const bool ump = state->ump;
+ 	uint32_t i;
+-	uint32_t *data;
+ 	uint8_t midi1_data[MAX_EVENT_SIZE];
+ 	uint32_t ump_data[MAX_EVENT_SIZE];
+-	long size;
+ 	int res = -1;
+ 
+ 	/* copy all new midi events into their port buffers */
+@@ -631,10 +630,11 @@ static int process_read(struct seq_state *state)
+ 		const snd_seq_addr_t *addr;
+ 		struct seq_port *port;
+ 		uint64_t ev_time, diff;
+-		uint32_t offset;
++		uint32_t offset, ev_type;
+ 		void *event;
+-		uint8_t *midi1_ptr;
+-		size_t midi1_size = 0;
++		uint8_t *data_ptr;
++		size_t data_size = 0;
++		long size;
+ 		uint64_t ump_state = 0;
+ 		snd_seq_event_type_t SPA_UNUSED type;
+ 
+@@ -679,7 +679,7 @@ static int process_read(struct seq_state *state)
+ 			continue;
+ 
+ 		if ((res = prepare_buffer(state, port)) < 0) {
+-			spa_log_debug(state->log, "can't prepare buffer port:%p %d.%d: %s",
++			spa_log_warn(state->log, "can't prepare buffer port:%p %d.%d: %s",
+ 					port, addr->client, addr->port, spa_strerror(res));
+ 			continue;
+ 		}
+@@ -702,8 +702,8 @@ static int process_read(struct seq_state *state)
+ #ifdef HAVE_ALSA_UMP
+ 			snd_seq_ump_event_t *ev = event;
+ 
+-			data = (uint32_t*)&ev->ump[0];
+-			size = spa_ump_message_size(snd_ump_msg_hdr_type(ev->ump[0])) * 4;
++			data_ptr = (uint8_t*)&ev->ump[0];
++			data_size = spa_ump_message_size(snd_ump_msg_hdr_type(ev->ump[0])) * 4;
+ #else
+ 			spa_assert_not_reached();
+ #endif
+@@ -712,40 +712,69 @@ static int process_read(struct seq_state *state)
+ 
+ 			snd_midi_event_reset_decode(stream->codec);
+ 			if ((size = snd_midi_event_decode(stream->codec, midi1_data, sizeof(midi1_data), ev)) < 0) {
+-				spa_log_warn(state->log, "decode failed: %s", snd_strerror(size));
++				spa_log_warn(state->log, "decode failed: %s", snd_strerror(data_size));
+ 				continue;
+ 			}
++			data_ptr = midi1_data;
++			data_size = size;
++		}
++
++		ev_type = (port->control_types & (1u << SPA_CONTROL_UMP)) ?
++			SPA_CONTROL_UMP : SPA_CONTROL_Midi;
+ 
+-			midi1_ptr = midi1_data;
+-			midi1_size = size;
++		spa_log_trace_fp(state->log, "event %d time:%"PRIu64" offset:%d size:%ld port:%d.%d",
++				type, ev_time, offset, data_size, addr->client, addr->port);
++
++		if ((ump && ev_type == SPA_CONTROL_UMP) ||
++		    (!ump && ev_type == SPA_CONTROL_Midi)) {
++			/* no conversion needed */
++			spa_pod_builder_control(&port->builder, offset, ev_type);
++			spa_pod_builder_bytes(&port->builder, data_ptr, data_size);
+ 		}
++		else if (ump) {
++                        bool continued = port->ev_offset != SPA_IDX_INVALID;
++
++			/* UMP -> MIDI */
++			size = spa_ump_to_midi((uint32_t*)data_ptr, data_size,
++					midi1_data, sizeof(midi1_data));
++			if (size < 0)
++				continue;
++
++			if (!continued) {
++				spa_pod_builder_control(&port->builder, offset, ev_type);
++				port->ev_offset = spa_pod_builder_bytes_start(&port->builder);
++				if (midi1_data[0] == 0xf0)
++					continued = true;
++			} else {
++				if (midi1_data[size-1] == 0xf7)
++					continued = false;
++			}
++			spa_pod_builder_bytes_append(&port->builder, port->ev_offset, midi1_data, size);
+ 
+-		do {
+-			if (!ump) {
+-				data = ump_data;
+-				size = spa_ump_from_midi(&midi1_ptr, &midi1_size,
++			if (!continued) {
++				spa_pod_builder_bytes_end(&port->builder, port->ev_offset);
++				port->ev_offset = SPA_IDX_INVALID;
++			}
++		} else {
++			/* MIDI -> UMP */
++			while (data_size > 0) {
++				size = spa_ump_from_midi(&data_ptr, &data_size,
+ 						ump_data, sizeof(ump_data), 0, &ump_state);
+ 				if (size <= 0)
+ 					break;
+-			}
+-
+-			spa_log_trace_fp(state->log, "event %d time:%"PRIu64" offset:%d size:%ld port:%d.%d",
+-					type, ev_time, offset, size, addr->client, addr->port);
+ 
+-			spa_pod_builder_control(&port->builder, offset, SPA_CONTROL_UMP);
+-			spa_pod_builder_bytes(&port->builder, data, size);
+-
+-			/* make sure we can fit at least one control event of max size otherwise
+-			 * we keep the event in the queue and try to copy it in the next cycle */
+-			if (port->builder.state.offset +
+-					sizeof(struct spa_pod_control) +
+-					MAX_EVENT_SIZE > port->buffer->buf->datas[0].maxsize)
+-				goto done;
++				spa_pod_builder_control(&port->builder, offset, ev_type);
++				spa_pod_builder_bytes(&port->builder, ump_data, size);
++			}
++		}
+ 
+-		} while (!ump);
++		/* make sure we can fit at least one control event of max size otherwise
++		 * we keep the event in the queue and try to copy it in the next cycle */
++		if (port->builder.state.offset +
++				sizeof(struct spa_pod_control) +
++				MAX_EVENT_SIZE > port->buffer->buf->datas[0].maxsize)
++			break;
+         }
+-
+-done:
+ 	if (res < 0 && res != -EAGAIN)
+ 		spa_log_warn(state->log, "event read failed: %s", snd_strerror(res));
+ 
+@@ -760,6 +789,8 @@ done:
+ 			continue;
+ 
+ 		if (prepare_buffer(state, port) >= 0) {
++			if (port->ev_offset != SPA_IDX_INVALID)
++				spa_pod_builder_bytes_end(&port->builder, port->ev_offset);
+ 			spa_pod_builder_pop(&port->builder, &port->frame);
+ 
+ 			port->buffer->buf->datas[0].chunk->offset = 0;
+@@ -846,9 +877,7 @@ static int process_write(struct seq_state *state)
+ 		SPA_POD_SEQUENCE_FOREACH(pod, c) {
+ 			size_t body_size;
+ 			uint8_t *body;
+-
+-			if (c->type != SPA_CONTROL_UMP)
+-				continue;
++			int size;
+ 
+ 			body = SPA_POD_BODY(&c->value);
+ 			body_size = SPA_POD_BODY_SIZE(&c->value);
+@@ -862,33 +891,67 @@ static int process_write(struct seq_state *state)
+ 
+ 			if (ump) {
+ #ifdef HAVE_ALSA_UMP
++				uint8_t *ump_data;
++				uint32_t data[MAX_EVENT_SIZE];
+ 				snd_seq_ump_event_t ev;
+ 
+-				snd_seq_ump_ev_clear(&ev);
+-				snd_seq_ev_set_ump_data(&ev, body, SPA_MIN(sizeof(ev.ump), (size_t)body_size));
+-				snd_seq_ev_set_source(&ev, state->event.addr.port);
+-				snd_seq_ev_set_dest(&ev, port->addr.client, port->addr.port);
+-				snd_seq_ev_schedule_real(&ev, state->event.queue_id, 0, &out_rt);
+-
+-				if ((err = snd_seq_ump_event_output(state->event.hndl, &ev)) < 0) {
+-					spa_log_warn(state->log, "failed to output event: %s",
+-							snd_strerror(err));
+-				}
++				do {
++					switch (c->type) {
++					case SPA_CONTROL_UMP:
++						ump_data = body;
++						size = body_size;
++						body_size = 0;
++						break;
++					case SPA_CONTROL_Midi:
++						size = spa_ump_from_midi(&body, &body_size,
++								data, sizeof(data), 0, &port->ump_state);
++						ump_data = (uint8_t*)data;
++						break;
++					default:
++						size = 0;
++						body_size = 0;
++						continue;
++					}
++					if (size <= 0)
++						break;
++
++					snd_seq_ump_ev_clear(&ev);
++					snd_seq_ev_set_ump_data(&ev, ump_data, SPA_MIN(sizeof(ev.ump), (size_t)size));
++					snd_seq_ev_set_source(&ev, state->event.addr.port);
++					snd_seq_ev_set_dest(&ev, port->addr.client, port->addr.port);
++					snd_seq_ev_schedule_real(&ev, state->event.queue_id, 0, &out_rt);
++
++					if ((err = snd_seq_ump_event_output(state->event.hndl, &ev)) < 0) {
++						spa_log_warn(state->log, "failed to output event: %s",
++								snd_strerror(err));
++					}
++				} while (body_size > 0);
+ #else
+ 				spa_assert_not_reached();
+ #endif
+ 			} else {
+ 				snd_seq_event_t ev;
+ 				uint8_t data[MAX_EVENT_SIZE];
+-				int size;
++				uint8_t *midi_data;
+ 
+-				if ((size = spa_ump_to_midi((uint32_t *)body, body_size, data, sizeof(data))) <= 0)
++				switch (c->type) {
++				case SPA_CONTROL_UMP:
++					if ((size = spa_ump_to_midi((uint32_t *)body, body_size, data, sizeof(data))) <= 0)
++						continue;
++					midi_data = data;
++					break;
++				case SPA_CONTROL_Midi:
++					midi_data = body;
++					size = body_size;
++					break;
++				default:
+ 					continue;
++				}
+ 
+ 				if (first)
+ 					snd_seq_ev_clear(&ev);
+ 
+-				if ((size = snd_midi_event_encode(stream->codec, data, size, &ev)) < 0) {
++				if ((size = snd_midi_event_encode(stream->codec, midi_data, size, &ev)) < 0) {
+ 					spa_log_warn(state->log, "failed to encode event: %s", snd_strerror(size));
+ 					snd_midi_event_reset_encode(stream->codec);
+ 					first = true;
+diff --git a/spa/plugins/alsa/alsa-seq.h b/spa/plugins/alsa/alsa-seq.h
+index 274311c70..7e9fc4297 100644
+--- a/spa/plugins/alsa/alsa-seq.h
++++ b/spa/plugins/alsa/alsa-seq.h
+@@ -80,7 +80,10 @@ struct seq_port {
+ 	struct buffer *buffer;
+ 	struct spa_pod_builder builder;
+ 	struct spa_pod_frame frame;
++	uint32_t ev_offset;
++	uint64_t ump_state;
+ 
++	uint32_t control_types;
+ 	struct spa_audio_info current_format;
+ 	unsigned int have_format:1;
+ 	unsigned int valid:1;
+diff --git a/spa/plugins/control/mixer.c b/spa/plugins/control/mixer.c
+index e97072d45..cfe3c394b 100644
+--- a/spa/plugins/control/mixer.c
++++ b/spa/plugins/control/mixer.c
+@@ -298,7 +298,8 @@ static int port_enum_formats(void *object, struct port *port,
+ 		*param = spa_pod_builder_add_object(builder,
+ 			SPA_TYPE_OBJECT_Format, SPA_PARAM_EnumFormat,
+ 			SPA_FORMAT_mediaType,      SPA_POD_Id(SPA_MEDIA_TYPE_application),
+-			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control));
++			SPA_FORMAT_mediaSubtype,   SPA_POD_Id(SPA_MEDIA_SUBTYPE_control),
++			SPA_FORMAT_CONTROL_types,  SPA_POD_CHOICE_FLAGS_Int(SPA_ID_INVALID));
+ 		break;
+ 	default:
+ 		return 0;
+diff --git a/src/modules/module-jack-tunnel.c b/src/modules/module-jack-tunnel.c
+index 76ac73c8d..7cce66b0b 100644
+--- a/src/modules/module-jack-tunnel.c
++++ b/src/modules/module-jack-tunnel.c
+@@ -247,7 +247,6 @@ static void midi_to_jack(struct impl *impl, float *dst, float *src, uint32_t n_s
+ 	struct spa_pod_sequence *seq;
+ 	struct spa_pod_control *c;
+ 	int res;
+-	bool in_sysex = false;
+ 	uint8_t tmp[n_samples * 4];
+ 	size_t tmp_size = 0;
+ 
+@@ -267,23 +266,23 @@ static void midi_to_jack(struct impl *impl, float *dst, float *src, uint32_t n_s
+ 
+ 		if (c->type != SPA_CONTROL_UMP)
+ 			continue;
++		switch (c->type) {
++		case SPA_CONTROL_UMP:
++			size = spa_ump_to_midi(SPA_POD_BODY(&c->value),
++					SPA_POD_BODY_SIZE(&c->value), &tmp[tmp_size], sizeof(tmp) - tmp_size);
++			if (size <= 0)
++				continue;
++			tmp_size += size;
++			break;
++		case SPA_CONTROL_Midi:
++			tmp_size = SPA_POD_BODY_SIZE(&c->value);
++			memcpy(tmp, SPA_POD_BODY(&c->value), SPA_MIN(sizeof(tmp), tmp_size));
++			break;
++		}
+ 
+-		size = spa_ump_to_midi(SPA_POD_BODY(&c->value),
+-				SPA_POD_BODY_SIZE(&c->value), &tmp[tmp_size], sizeof(tmp) - tmp_size);
+-		if (size <= 0)
+-			continue;
+-
+-		if (impl->fix_midi)
+-			fix_midi_event(&tmp[tmp_size], size);
+-
+-		if (!in_sysex && tmp[tmp_size] == 0xf0)
+-			in_sysex = true;
+-
+-		tmp_size += size;
+-		if (in_sysex && tmp[tmp_size-1] == 0xf7)
+-			in_sysex = false;
+-
+-		if (!in_sysex) {
++		if (tmp[0] != 0xf0 || tmp[tmp_size-1] == 0xf7) {
++			if (impl->fix_midi)
++				fix_midi_event(tmp, tmp_size);
+ 			if ((res = jack.midi_event_write(dst, c->offset, tmp, tmp_size)) < 0)
+ 				pw_log_warn("midi %p: can't write event: %s", dst,
+ 						spa_strerror(res));
+-- 
+2.49.0
+

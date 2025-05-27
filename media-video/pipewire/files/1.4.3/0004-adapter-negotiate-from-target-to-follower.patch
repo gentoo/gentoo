@@ -1,0 +1,202 @@
+From c507c4b0ffa094d92c76ad4589ad776b677d94d2 Mon Sep 17 00:00:00 2001
+Message-ID: <c507c4b0ffa094d92c76ad4589ad776b677d94d2.1748327071.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 26 May 2025 15:44:51 +0200
+Subject: [PATCH 4/5] adapter: negotiate from target to follower
+
+Since 3abda54d80cb02cacb25b9a66ce2808dc4615b34 we prefer the format
+of the filter. This reverses the selection of the default value when
+negotiating buffers from the target to the follower.
+
+If the follower does not select a reasonable value for the buffer size,
+for example, this then results in wrongly sized buffers.
+
+Fix this by reversing the order of allocation from target to follower
+where we let the target (converter) select a default value, which is
+more likely to be correct.
+
+See #4713, #4619
+---
+ spa/plugins/audioconvert/audioadapter.c | 39 ++++++++-----------------
+ spa/plugins/videoconvert/videoadapter.c | 39 ++++++++-----------------
+ 2 files changed, 24 insertions(+), 54 deletions(-)
+
+diff --git a/spa/plugins/audioconvert/audioadapter.c b/spa/plugins/audioconvert/audioadapter.c
+index 43a47e25c..f15d5a4ca 100644
+--- a/spa/plugins/audioconvert/audioadapter.c
++++ b/spa/plugins/audioconvert/audioadapter.c
+@@ -442,8 +442,8 @@ static int negotiate_buffers(struct impl *this)
+ 
+ 	state = 0;
+ 	param = NULL;
+-	if ((res = node_port_enum_params_sync(this, this->follower,
+-				this->direction, 0,
++	if ((res = node_port_enum_params_sync(this, this->target,
++				SPA_DIRECTION_REVERSE(this->direction), 0,
+ 				SPA_PARAM_Buffers, &state,
+ 				param, &param, &b)) < 0) {
+ 		if (res == -ENOENT)
+@@ -456,8 +456,8 @@ static int negotiate_buffers(struct impl *this)
+ 	}
+ 
+ 	state = 0;
+-	if ((res = node_port_enum_params_sync(this, this->target,
+-				SPA_DIRECTION_REVERSE(this->direction), 0,
++	if ((res = node_port_enum_params_sync(this, this->follower,
++				this->direction, 0,
+ 				SPA_PARAM_Buffers, &state,
+ 				param, &param, &b)) != 1) {
+ 		debug_params(this, this->target,
+@@ -497,7 +497,7 @@ static int negotiate_buffers(struct impl *this)
+ 	if (this->async)
+ 		buffers = SPA_MAX(2u, buffers);
+ 
+-	spa_log_debug(this->log, "%p: buffers:%d, blocks:%d, size:%d, stride:%d align:%d %d:%d",
++	spa_log_info(this->log, "%p: buffers:%d, blocks:%d, size:%d, stride:%d align:%d %d:%d",
+ 			this, buffers, blocks, size, stride, align, follower_alloc, conv_alloc);
+ 
+ 	align = SPA_MAX(align, this->max_align);
+@@ -941,27 +941,13 @@ static int negotiate_format(struct impl *this)
+ 	spa_node_send_command(this->follower,
+ 			&SPA_NODE_COMMAND_INIT(SPA_NODE_COMMAND_ParamBegin));
+ 
+-	/* first try the ideal converter format, which is likely passthrough */
+-	tstate = 0;
+-	fres = node_port_enum_params_sync(this, this->target,
+-				SPA_DIRECTION_REVERSE(this->direction), 0,
+-				SPA_PARAM_EnumFormat, &tstate,
+-				NULL, &format, &b);
+-	if (fres == 1) {
+-		fstate = 0;
+-		res = node_port_enum_params_sync(this, this->follower,
+-					this->direction, 0,
+-					SPA_PARAM_EnumFormat, &fstate,
+-					format, &format, &b);
+-		if (res == 1)
+-			goto found;
+-	}
+-
+-	/* then try something the follower can accept */
++	/* The target has been negotiated on its other ports and so it can propose
++	 * a passthrough format or an ideal conversion. We use the suggestions of the
++	 * target to find the best follower format */
+ 	for (fstate = 0;;) {
+ 		format = NULL;
+-		res = node_port_enum_params_sync(this, this->follower,
+-					this->direction, 0,
++		res = node_port_enum_params_sync(this, this->target,
++					SPA_DIRECTION_REVERSE(this->direction), 0,
+ 					SPA_PARAM_EnumFormat, &fstate,
+ 					NULL, &format, &b);
+ 
+@@ -971,8 +957,8 @@ static int negotiate_format(struct impl *this)
+ 			break;
+ 
+ 		tstate = 0;
+-		fres = node_port_enum_params_sync(this, this->target,
+-					SPA_DIRECTION_REVERSE(this->direction), 0,
++		fres = node_port_enum_params_sync(this, this->follower,
++					this->direction, 0,
+ 					SPA_PARAM_EnumFormat, &tstate,
+ 					format, &format, &b);
+ 		if (fres == 0 && res == 1)
+@@ -981,7 +967,6 @@ static int negotiate_format(struct impl *this)
+ 		res = fres;
+ 		break;
+ 	}
+-found:
+ 	if (format == NULL) {
+ 		debug_params(this, this->follower, this->direction, 0,
+ 				SPA_PARAM_EnumFormat, format, "follower format", res);
+diff --git a/spa/plugins/videoconvert/videoadapter.c b/spa/plugins/videoconvert/videoadapter.c
+index 078c90553..e10a8adf5 100644
+--- a/spa/plugins/videoconvert/videoadapter.c
++++ b/spa/plugins/videoconvert/videoadapter.c
+@@ -416,8 +416,8 @@ static int negotiate_buffers(struct impl *this)
+ 
+ 	state = 0;
+ 	param = NULL;
+-	if ((res = spa_node_port_enum_params_sync(this->follower,
+-				this->direction, 0,
++	if ((res = spa_node_port_enum_params_sync(this->target,
++				SPA_DIRECTION_REVERSE(this->direction), 0,
+ 				SPA_PARAM_Buffers, &state,
+ 				param, &param, &b)) < 0) {
+ 		if (res == -ENOENT)
+@@ -430,8 +430,8 @@ static int negotiate_buffers(struct impl *this)
+ 	}
+ 
+ 	state = 0;
+-	if ((res = spa_node_port_enum_params_sync(this->target,
+-				SPA_DIRECTION_REVERSE(this->direction), 0,
++	if ((res = spa_node_port_enum_params_sync(this->follower,
++				this->direction, 0,
+ 				SPA_PARAM_Buffers, &state,
+ 				param, &param, &b)) != 1) {
+ 		debug_params(this, this->target,
+@@ -471,7 +471,7 @@ static int negotiate_buffers(struct impl *this)
+ 	if (this->async)
+ 		buffers = SPA_MAX(2u, buffers);
+ 
+-	spa_log_debug(this->log, "%p: buffers:%d, blocks:%d, size:%d, stride:%d align:%d %d:%d",
++	spa_log_info(this->log, "%p: buffers:%d, blocks:%d, size:%d, stride:%d align:%d %d:%d",
+ 			this, buffers, blocks, size, stride, align, follower_alloc, conv_alloc);
+ 
+ 	align = SPA_MAX(align, this->max_align);
+@@ -908,27 +908,13 @@ static int negotiate_format(struct impl *this)
+ 	spa_node_send_command(this->follower,
+ 			&SPA_NODE_COMMAND_INIT(SPA_NODE_COMMAND_ParamBegin));
+ 
+-	/* first try the ideal converter format, which is likely passthrough */
+-	tstate = 0;
+-	fres = spa_node_port_enum_params_sync(this->target,
+-				SPA_DIRECTION_REVERSE(this->direction), 0,
+-				SPA_PARAM_EnumFormat, &tstate,
+-				NULL, &format, &b);
+-	if (fres == 1) {
+-		fstate = 0;
+-		res = spa_node_port_enum_params_sync(this->follower,
+-					this->direction, 0,
+-					SPA_PARAM_EnumFormat, &fstate,
+-					format, &format, &b);
+-		if (res == 1)
+-			goto found;
+-	}
+-
+-	/* then try something the follower can accept */
++	/* The target has been negotiated on its other ports and so it can propose
++	 * a passthrough format or an ideal conversion. We use the suggestions of the
++	 * target to find the best follower format */
+ 	for (fstate = 0;;) {
+ 		format = NULL;
+-		res = spa_node_port_enum_params_sync(this->follower,
+-					this->direction, 0,
++		res = spa_node_port_enum_params_sync(this->target,
++					SPA_DIRECTION_REVERSE(this->direction), 0,
+ 					SPA_PARAM_EnumFormat, &fstate,
+ 					NULL, &format, &b);
+ 
+@@ -938,8 +924,8 @@ static int negotiate_format(struct impl *this)
+ 			break;
+ 
+ 		tstate = 0;
+-		fres = spa_node_port_enum_params_sync(this->target,
+-					SPA_DIRECTION_REVERSE(this->direction), 0,
++		fres = spa_node_port_enum_params_sync(this->follower,
++					this->direction, 0,
+ 					SPA_PARAM_EnumFormat, &tstate,
+ 					format, &format, &b);
+ 		if (fres == 0 && res == 1)
+@@ -948,7 +934,6 @@ static int negotiate_format(struct impl *this)
+ 		res = fres;
+ 		break;
+ 	}
+-found:
+ 	if (format == NULL) {
+ 		debug_params(this, this->follower, this->direction, 0,
+ 				SPA_PARAM_EnumFormat, format, "follower format", res);
+-- 
+2.49.0
+

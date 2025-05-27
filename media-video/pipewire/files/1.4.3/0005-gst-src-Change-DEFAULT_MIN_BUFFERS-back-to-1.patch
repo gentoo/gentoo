@@ -1,0 +1,39 @@
+From eda42ef2fc9eaa41dd7dc1582ae062d2ce727612 Mon Sep 17 00:00:00 2001
+Message-ID: <eda42ef2fc9eaa41dd7dc1582ae062d2ce727612.1748327071.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+From: Robert Mader <robert.mader@collabora.com>
+Date: Sun, 25 May 2025 03:57:38 +0200
+Subject: [PATCH 5/5] gst: src: Change DEFAULT_MIN_BUFFERS back to 1
+
+The change from 1 to 8 was done without justification in the commit
+message and possibly for debug purposes. Unfortunately it breaks
+negotiation with the libcamera virtual pipeline, which defaults to
+4 buffers.
+
+Set the the value to 1 again as successful negotiation - even with an
+unusually low number of buffers - is usually more desirable than an
+error.
+
+Fixes: 98b7dc7c0 ("gst: don't do set_caps from the pipewire callback")
+(cherry picked from commit e81fb773224fb5cd4b9399393ca2d2bfab7f4273)
+---
+ src/gst/gstpipewiresrc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gst/gstpipewiresrc.c b/src/gst/gstpipewiresrc.c
+index 694cbea0e..994534c60 100644
+--- a/src/gst/gstpipewiresrc.c
++++ b/src/gst/gstpipewiresrc.c
+@@ -41,7 +41,7 @@ GST_DEBUG_CATEGORY_STATIC (pipewire_src_debug);
+ #define GST_CAT_DEFAULT pipewire_src_debug
+ 
+ #define DEFAULT_ALWAYS_COPY     false
+-#define DEFAULT_MIN_BUFFERS     8
++#define DEFAULT_MIN_BUFFERS     1
+ #define DEFAULT_MAX_BUFFERS     INT32_MAX
+ #define DEFAULT_RESEND_LAST     false
+ #define DEFAULT_KEEPALIVE_TIME  0
+-- 
+2.49.0
+
