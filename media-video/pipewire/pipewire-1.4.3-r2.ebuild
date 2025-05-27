@@ -40,6 +40,7 @@ else
 		S="${WORKDIR}"/${PN}-${MY_COMMIT}
 	else
 		SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.bz2"
+		SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches.tar.xz"
 	fi
 
 	if [[ ${PIPEWIRE_DOCS_PREBUILT} == 1 ]] ; then
@@ -177,6 +178,7 @@ PDEPEND=">=media-video/wireplumber-0.5.2"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	"${WORKDIR}"/${P}-patches
 )
 
 pkg_setup() {
