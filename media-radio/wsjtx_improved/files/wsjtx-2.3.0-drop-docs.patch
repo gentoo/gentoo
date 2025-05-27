@@ -1,0 +1,33 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f92d3a6..c5fb9b4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1497,10 +1497,6 @@ if (UNIX)
+     add_subdirectory (manpages)
+     add_dependencies (wsjtx manpages)
+   endif (NOT WSJT_SKIP_MANPAGES)
+-  if (NOT APPLE)
+-    add_subdirectory (debian)
+-    add_dependencies (wsjtx debian)
+-  endif (NOT APPLE)
+ endif (UNIX)
+ 
+ #
+@@ -1567,17 +1563,6 @@ install (PROGRAMS
+   RENAME rigctlcom-wsjtx${CMAKE_EXECUTABLE_SUFFIX}
+   )
+ 
+-install (FILES
+-  README
+-  COPYING
+-  AUTHORS
+-  THANKS
+-  NEWS
+-  BUGS
+-  DESTINATION ${CMAKE_INSTALL_DOCDIR}
+-  #COMPONENT runtime
+-  )
+-
+ install (FILES
+   cty.dat
+   cty.dat_copyright.txt
