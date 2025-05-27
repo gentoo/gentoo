@@ -26,9 +26,6 @@ BDEPEND="
 	test? (
 		dev-python/cssselect[${PYTHON_USEDEP}]
 		>=dev-python/jaraco-test-5.1[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/lxml[${PYTHON_USEDEP}]
-		' 3.10)
 	)
 "
 
