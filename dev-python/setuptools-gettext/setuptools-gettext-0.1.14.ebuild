@@ -21,9 +21,6 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-devel/gettext
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.2.1[${PYTHON_USEDEP}]
-	' 3.10)
 "
 
 python_test() {
