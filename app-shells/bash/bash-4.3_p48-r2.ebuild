@@ -43,6 +43,8 @@ if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
@@ -62,8 +64,6 @@ PATCHES=(
 	"${WORKDIR}"/${P}-r2-patches/${PN}-4.3-protos.patch
 	"${WORKDIR}"/${P}-r2-patches/${PN}-4.4-popd-offset-overflow.patch # bug #600174
 )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	# bug #7332

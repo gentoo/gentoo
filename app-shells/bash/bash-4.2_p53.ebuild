@@ -39,6 +39,8 @@ if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
 
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
@@ -52,8 +54,6 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 # We only need bison (yacc) when the .y files get patched (bash42-005)
 BDEPEND="sys-devel/bison"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-4.2-execute-job-control.patch # bug #383237
