@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-05-27)
+# Vulnerable, EOL version of CPython.  The security fix is nontrivial
+# and does not apply cleanly to the 3.8 branch.  Removal on 2025-06-26.
+app-doc/python-docs:3.8
+dev-lang/python:3.8
+
 # Sam James <sam@gentoo.org> (2025-05-26)
 # Breaks some reverse dependencies and is abandoned upstream (bug #956630).
 =dev-cpp/glog-0.7.1
