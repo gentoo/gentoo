@@ -238,7 +238,7 @@ pkg_preinst() {
 	mkdir -p "${EROOT}"/etc/ld.so.conf.d
 
 	[[ -n ${ROOT} ]] && return 0
-	[[ -d ${ED}/$(get_libdir) ]] || return 0
+	[[ -d ${ED}/usr/$(get_libdir) ]] || return 0
 	musl_sanity_check
 }
 
