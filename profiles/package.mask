@@ -744,9 +744,9 @@ media-plugins/kodi-game-libretro-dosbox
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-libs/glibc-2.40-r8
-<sys-libs/binutils-libs-2.43-r3
-<sys-devel/binutils-2.43-r2
-<sys-devel/binutils-hppa64-2.43-r2
+<sys-libs/binutils-libs-2.44
+<sys-devel/binutils-2.44
+<sys-devel/binutils-hppa64-2.44
 
 # Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
 # This package has some dangerous quality and security issues, but
