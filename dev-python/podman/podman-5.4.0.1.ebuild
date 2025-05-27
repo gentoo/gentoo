@@ -28,9 +28,6 @@ RDEPEND="
 	>=dev-python/requests-2.24[${PYTHON_USEDEP}]
 	>=dev-python/rich-12.5.1[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.2.3[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	test? (
