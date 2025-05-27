@@ -24,9 +24,6 @@ RDEPEND="
 	>=dev-python/anyio-4.8.0[${PYTHON_USEDEP}]
 	<dev-python/outcome-2[${PYTHON_USEDEP}]
 	>=dev-python/outcome-1.3.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/exceptiongroup[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	test? (
