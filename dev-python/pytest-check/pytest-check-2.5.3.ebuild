@@ -20,9 +20,6 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc
 
 RDEPEND="
 	>=dev-python/pytest-7.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/typing-extensions-4.12.2[${PYTHON_USEDEP}]
-	' 3.10)
 "
 
 distutils_enable_tests pytest
