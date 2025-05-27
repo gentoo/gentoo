@@ -15,6 +15,7 @@
 		<flag name="webapp">Enable git-annex webapp</flag>
 	</use>
 	<upstream>
+		<doc>https://git-annex.branchable.com</doc>
 		<remote-id type="hackage">git-annex</remote-id>
 	</upstream>
 </pkgmetadata>
