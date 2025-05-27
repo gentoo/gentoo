@@ -28,10 +28,6 @@ RDEPEND="
 	dev-python/platformdirs[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
 	dev-python/pyproject-api[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.10)
 	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
 BDEPEND="
