@@ -40,7 +40,7 @@ KNOT_MODULES_OPT=(
 	"geoip"
 )
 
-IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
+IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic selinux systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	prometheus? ( python )
@@ -75,6 +75,7 @@ RDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 	quic? ( net-libs/ngtcp2[gnutls] )
+	selinux? ( sec-policy/selinux-knot )
 	utils? (
 		${COMMON_DEPEND}
 		doh? ( net-libs/nghttp2:= )

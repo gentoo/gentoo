@@ -35,7 +35,7 @@ KNOT_MODULES=(
 	"+whoami"
 )
 
-IUSE="caps +daemon dbus +doc doh +fastparser +idn pkcs11 prometheus python quic systemd test +utils xdp ${KNOT_MODULES[@]}"
+IUSE="caps +daemon dbus +doc doh +fastparser +idn pkcs11 prometheus python quic systemd selinux test +utils xdp ${KNOT_MODULES[@]}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	prometheus? ( python )
@@ -63,6 +63,7 @@ RDEPEND="
 		geoip? ( dev-libs/libmaxminddb:= )
 		systemd? ( sys-apps/systemd:= )
 		)
+	selinux? ( sec-policy/selinux-knot )
 	utils? (
 		${COMMON_DEPEND}
 		doh? ( net-libs/nghttp2:= )
