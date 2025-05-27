@@ -1,10 +1,10 @@
 From 06941f7315c3ca814771cc8b6612c3d01a8bf968 Mon Sep 17 00:00:00 2001
-Message-ID: <06941f7315c3ca814771cc8b6612c3d01a8bf968.1748327071.git.sam@gentoo.org>
-In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
-References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+Message-ID: <06941f7315c3ca814771cc8b6612c3d01a8bf968.1748356889.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
 From: Wim Taymans <wtaymans@redhat.com>
 Date: Fri, 23 May 2025 16:53:42 +0200
-Subject: [PATCH 3/5] alsa: remove UMP flag from control format
+Subject: [PATCH 3/6] alsa: remove UMP flag from control format
 
 Don't set the UMP type flag on the format. Use the negotiated types flag
 to decide what format to output. Add support for output to old style

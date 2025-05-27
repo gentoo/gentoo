@@ -1,8 +1,8 @@
 From 483b59a9d95aa084dfcd1c17e13ee27bd106d4b0 Mon Sep 17 00:00:00 2001
-Message-ID: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+Message-ID: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
 From: Wim Taymans <wtaymans@redhat.com>
 Date: Fri, 23 May 2025 16:41:00 +0200
-Subject: [PATCH 1/5] pod: add bytes start/append/end functions
+Subject: [PATCH 1/6] pod: add bytes start/append/end functions
 
 Add functions to dynamically start and build a bytes pod.
 ---

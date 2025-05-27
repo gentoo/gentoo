@@ -1,10 +1,10 @@
 From 76db05a0f8edb8b7d4d896d3860bc555934ad383 Mon Sep 17 00:00:00 2001
-Message-ID: <76db05a0f8edb8b7d4d896d3860bc555934ad383.1748327071.git.sam@gentoo.org>
-In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
-References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+Message-ID: <76db05a0f8edb8b7d4d896d3860bc555934ad383.1748356889.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
 From: Wim Taymans <wtaymans@redhat.com>
 Date: Fri, 23 May 2025 16:46:13 +0200
-Subject: [PATCH 2/5] Use "8 bit raw midi" for control ports again
+Subject: [PATCH 2/6] Use "8 bit raw midi" for control ports again
 
 There is no need to encode the potential format in the format.dsp of
 control ports, this is just for legacy compatibility with JACK apps. The

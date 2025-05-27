@@ -1,10 +1,10 @@
 From eda42ef2fc9eaa41dd7dc1582ae062d2ce727612 Mon Sep 17 00:00:00 2001
-Message-ID: <eda42ef2fc9eaa41dd7dc1582ae062d2ce727612.1748327071.git.sam@gentoo.org>
-In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
-References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+Message-ID: <eda42ef2fc9eaa41dd7dc1582ae062d2ce727612.1748356889.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
 From: Robert Mader <robert.mader@collabora.com>
 Date: Sun, 25 May 2025 03:57:38 +0200
-Subject: [PATCH 5/5] gst: src: Change DEFAULT_MIN_BUFFERS back to 1
+Subject: [PATCH 5/6] gst: src: Change DEFAULT_MIN_BUFFERS back to 1
 
 The change from 1 to 8 was done without justification in the commit
 message and possibly for debug purposes. Unfortunately it breaks

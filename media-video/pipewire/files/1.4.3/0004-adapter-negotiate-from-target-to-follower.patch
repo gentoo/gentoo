@@ -1,10 +1,10 @@
 From c507c4b0ffa094d92c76ad4589ad776b677d94d2 Mon Sep 17 00:00:00 2001
-Message-ID: <c507c4b0ffa094d92c76ad4589ad776b677d94d2.1748327071.git.sam@gentoo.org>
-In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
-References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748327071.git.sam@gentoo.org>
+Message-ID: <c507c4b0ffa094d92c76ad4589ad776b677d94d2.1748356889.git.sam@gentoo.org>
+In-Reply-To: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
+References: <483b59a9d95aa084dfcd1c17e13ee27bd106d4b0.1748356889.git.sam@gentoo.org>
 From: Wim Taymans <wtaymans@redhat.com>
 Date: Mon, 26 May 2025 15:44:51 +0200
-Subject: [PATCH 4/5] adapter: negotiate from target to follower
+Subject: [PATCH 4/6] adapter: negotiate from target to follower
 
 Since 3abda54d80cb02cacb25b9a66ce2808dc4615b34 we prefer the format
 of the filter. This reverses the selection of the default value when
