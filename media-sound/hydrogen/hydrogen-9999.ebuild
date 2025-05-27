@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake edo xdg
 
 DESCRIPTION="Advanced drum machine"
 HOMEPAGE="http://hydrogen-music.org/"
@@ -20,7 +20,9 @@ fi
 
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
-IUSE="alsa +archive doc jack ladspa osc oss portaudio portmidi pulseaudio"
+IUSE="alsa +archive doc jack ladspa osc oss portaudio portmidi pulseaudio test"
+# Tests currently fail w/ no audio device, crashing on exit
+RESTRICT="!test? ( test ) test"
 
 DEPEND="
 	dev-qt/qtbase:6[gui,network,widgets,xml]
@@ -42,6 +44,7 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
+	test? ( dev-util/cppunit )
 "
 
 DOCS=( AUTHORS CHANGELOG.md DEVELOPERS.md README.md )
@@ -50,7 +53,7 @@ PATCHES=( "${FILESDIR}/${PN}-1.3.0-cflags.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-DWANT_CPPUNIT=OFF
+		-DWANT_CPPUNIT=$(usex test)
 		-DWANT_DEBUG=OFF
 		-DWANT_RUBBERBAND=OFF
 		-DWANT_QT6=ON
@@ -72,6 +75,11 @@ src_configure() {
 src_compile() {
 	cmake_src_compile
 	use doc && cmake_src_compile doc
+}
+
+src_test() {
+	local -x H2_HOME="${S}"
+	edo "${BUILD_DIR}"/src/tests/tests -V Info
 }
 
 src_install() {
