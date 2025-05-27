@@ -147,9 +147,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug #944284 (https://gitlab.gnome.org/GNOME/gimp/-/issues/12843)
-	append-cflags -std=gnu17
-
 	# defang automagic dependencies. Bug 943164
 	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
 	use X || append-cflags -DGENTOO_GTK_HIDE_X11
