@@ -89,6 +89,13 @@ src_configure() {
 	# -O0 already. Don't risk it with UB.
 	strip-flags
 
+	# Temporary workaround for a build failure (known gcc issue):
+	#
+	#  * https://bugs.gentoo.org/956605
+	#  * https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
+	#
+	use riscv && filter-lto
+
 	# Hardcodes the path to FGREP in libgcrypt-config
 	export ac_cv_path_SED="sed"
 	export ac_cv_path_EGREP="grep -E"
