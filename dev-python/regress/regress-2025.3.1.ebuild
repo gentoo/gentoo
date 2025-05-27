@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 CRATES="
 	allocator-api2@0.2.18
@@ -58,3 +58,5 @@ KEYWORDS="amd64 ~arm64 ~riscv"
 distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED="usr/lib/py.*/site-packages/regress/regress.*.so"
+
+export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
