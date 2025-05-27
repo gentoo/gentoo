@@ -271,6 +271,7 @@ src_unpack() {
 
 src_prepare() {
 	local PATCHES=(
+		"${FILESDIR}"/systemd-257-cred-util-tpm2.patch
 	)
 
 	if ! use vanilla; then
