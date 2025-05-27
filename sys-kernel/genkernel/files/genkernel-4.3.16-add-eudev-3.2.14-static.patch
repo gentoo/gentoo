@@ -1,0 +1,33 @@
+diff --git a/patches/eudev/3.2.14/eudev-3.2.14-static.patch b/patches/eudev/3.2.14/eudev-3.2.14-static.patch
+index 88bc1e1..37c6890 100644
+--- a/patches/eudev/3.2.14/eudev-3.2.14-static.patch
++++ b/patches/eudev/3.2.14/eudev-3.2.14-static.patch
+@@ -42,6 +42,28 @@
+  collect_LDADD = \
+  	$(top_builddir)/src/libudev/libudev-private.la \
+  	$(top_builddir)/src/udev/libudev-core.la
++--- a/src/dmi_memory_id/Makefile.am
+++++ b/src/dmi_memory_id/Makefile.am
++@@ -11,6 +11,8 @@ udevlibexec_PROGRAMS = \
++ dmi_memory_id_SOURCES = \
++ 	dmi_memory_id.c
++ 
+++dmi_memory_id_LDFLAGS = -all-static
+++
++ dmi_memory_id_LDADD = \
++ 	$(top_builddir)/src/libudev/libudev-private.la \
++ 	$(top_builddir)/src/udev/libudev-core.la
++--- a/src/fido_id/Makefile.am
+++++ b/src/fido_id/Makefile.am
++@@ -13,6 +13,8 @@ fido_id_SOURCES =\
++ 	fido_id_desc.c \
++ 	fido_id_desc.h
++ 
+++fido_id_LDFLAGS = -all-static
+++
++ fido_id_LDADD = \
++ 	$(top_builddir)/src/libudev/libudev-private.la \
++ 	$(top_builddir)/src/udev/libudev-core.la
+ --- a/src/mtd_probe/Makefile.am
+ +++ b/src/mtd_probe/Makefile.am
+ @@ -6,6 +6,8 @@ AM_CPPFLAGS = \
