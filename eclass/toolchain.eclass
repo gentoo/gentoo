@@ -338,7 +338,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	# and https://rust-gcc.github.io/2023/04/24/gccrs-and-gcc13-release.html for why
 	# it was disabled in 13.
 	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
-	tc_version_is_at_least 14.2.1_p20241026 ${PV} && IUSE+=" time64"
+	tc_version_is_at_least 13.3.1_p20250522 ${PV} && IUSE+=" time64"
 	tc_version_is_at_least 15.0.0_pre20241124 ${PV} && IUSE+=" libgdiagnostics"
 	tc_version_is_at_least 15.0.1_pre20250316 ${PV} && IUSE+=" cobol"
 fi
@@ -1189,7 +1189,7 @@ toolchain_src_configure() {
 
 	downgrade_arch_flags
 	gcc_do_filter_flags
-	if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] && tc_version_is_at_least 14.2.1_p20241026 ${PV}; then
+	if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] && tc_version_is_at_least 13.3.1_p20250522 ${PV}; then
 		append-cppflags "-D_GENTOO_TIME64_FORCE=$(usex time64 1 0)"
 	fi
 
