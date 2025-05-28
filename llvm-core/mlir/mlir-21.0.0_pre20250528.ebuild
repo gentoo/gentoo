@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake llvm.org multilib-minimal python-any-r1
 
 DESCRIPTION="Multi-Level Intermediate Representation (library only)"
