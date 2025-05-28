@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/refs/tags/${PV}.tar.gz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="test"
+IUSE="gtk test"
 RESTRICT="test" # Tests do not work
 
 RDEPEND="${ADA_DEPS}
@@ -31,7 +31,7 @@ RDEPEND="${ADA_DEPS}
 	>=dev-ada/libadalang-tools-23:=[${ADA_USEDEP}]
 	dev-ada/libgpr:=[${ADA_USEDEP}]
 	dev-ada/prettier-ada:=[${ADA_USEDEP}]
-	dev-ada/spawn:=[${ADA_USEDEP}]
+	dev-ada/spawn:=[${ADA_USEDEP},gtk?]
 	dev-ada/templates-parser:=[${ADA_USEDEP},shared(+)]
 	>=dev-ada/VSS-25.0.0:=[${ADA_USEDEP},shared]
 	dev-ada/xmlada:=[${ADA_USEDEP},shared]
@@ -42,6 +42,8 @@ BDEPEND="dev-ada/gprbuild[${ADA_USEDEP}]
 	test? ( dev-ada/e3-testsuite )"
 
 REQUIRED_USE="${ADA_REQUIRED_USE}"
+
+PATCHES=( "${FILESDIR}"/${P}-accessCheck.patch )
 
 src_compile() {
 	gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_server.gpr -p \
@@ -60,6 +62,12 @@ src_compile() {
 		-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
 		-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
 		|| die
+	if use gtk; then
+		gprbuild -v -m -j$(makeopts_jobs) -P gnat/lsp_client_glib.gpr -p \
+			-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable \
+			-XGPR_BUILD=relocatable -cargs:Ada ${ADAFLAGS} -largs ${LDFLAGS} \
+			|| die
+	fi
 	mkdir -p integration/vscode/ada/x64/linux
 	cp -f .obj/server/ada_language_server integration/vscode/ada/x64/linux || die
 }
@@ -74,6 +82,11 @@ src_install() {
 	gprinstall -v -f -P gnat/lsp_client.gpr -p -r --mode=dev \
 		--prefix="${D}"/usr -XLIBRARY_TYPE=relocatable \
 		-XXMLADA_BUILD=relocatable -XGPR_BUILD=relocatable || die
+	if use gtk; then
+		gprinstall -v -f -P gnat/lsp_client_glib.gpr -p -r --mode=dev \
+			--prefix="${D}"/usr -XLIBRARY_TYPE=relocatable \
+			-XXMLADA_BUILD=relocatable -XGPR_BUILD=relocatable || die
+	fi
 	rm "${D}"/usr/share/gpr/gnatcoll.gpr || die
 	einstalldocs
 }
