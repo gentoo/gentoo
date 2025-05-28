@@ -24,6 +24,8 @@ S="${WORKDIR}/${P}/Lib"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
+# enable by default to help CI handle it (we have no additional deps)
+IUSE="+python_targets_${PYTHON_COMPAT[0]}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
