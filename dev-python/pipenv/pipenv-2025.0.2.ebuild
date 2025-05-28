@@ -14,10 +14,10 @@ HOMEPAGE="https://github.com/pypa/pipenv https://pypi.org/project/pipenv/"
 SRC_URI="https://github.com/pypa/pipenv/archive/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}"/${PN}-${MY_PV}
 
+KEYWORDS="~amd64 ~arm64 ~riscv"
 LICENSE="MIT"
 SLOT="0"
 IUSE="scan"
-KEYWORDS="~amd64 ~arm64 ~riscv"
 
 
 PATCHES=(
