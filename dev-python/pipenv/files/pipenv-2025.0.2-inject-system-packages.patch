@@ -1,0 +1,50 @@
+From 2096193b23ab8d50072bf8430bd8dc5ab6150416 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Sun, 18 May 2025 21:47:46 +0200
+Subject: [PATCH 1/2] gentoo: inject-system-packages
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ pipenv/patched/pip/__main__.py | 6 ++++++
+ pipenv/resolver.py             | 5 +++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/pipenv/patched/pip/__main__.py b/pipenv/patched/pip/__main__.py
+index e76aed6e..ed5edec5 100644
+--- a/pipenv/patched/pip/__main__.py
++++ b/pipenv/patched/pip/__main__.py
+@@ -21,9 +21,15 @@ if __package__ == "":
+ if __name__ == "__main__":
+     import importlib.util
+     import sys
++
++    SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
++    # Inject site directory into system path.
++    sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
+     spec = importlib.util.spec_from_file_location(
+         "pipenv",
+         location=os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "__init__.py"))
++
+     pipenv = importlib.util.module_from_spec(spec)
+     sys.modules["pipenv"] = pipenv
+     spec.loader.exec_module(pipenv)
+diff --git a/pipenv/resolver.py b/pipenv/resolver.py
+index 28c45d1d..f0526569 100644
+--- a/pipenv/resolver.py
++++ b/pipenv/resolver.py
+@@ -7,6 +7,11 @@ from dataclasses import dataclass, field
+ from pathlib import Path
+ from typing import Any, Dict, List, Optional, Set
+ 
++SITE_PACKAGES_ROOT = os.path.dirname(os.path.dirname(__file__))
++
++# Inject site directory into system path.
++sys.path.insert(-1, SITE_PACKAGES_ROOT)
++
+ 
+ def _ensure_modules():
+     spec = importlib.util.spec_from_file_location(
+-- 
+2.49.0
+
