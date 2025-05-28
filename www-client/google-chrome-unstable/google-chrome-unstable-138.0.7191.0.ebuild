@@ -10,7 +10,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 inherit chromium-2 desktop pax-utils unpacker xdg
 
 DESCRIPTION="The web browser from Google"
-HOMEPAGE="https://www.google.com/chrome"
+HOMEPAGE="https://www.google.com/chrome/"
 
 if [[ ${PN} == google-chrome ]]; then
 	MY_PN=${PN}-stable
