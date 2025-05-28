@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b1e96a4..9c6bcf0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ project(xss-lock C)
+ set(PROJECT_VERSION 0.3.0)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c7036ec..e575ba6 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -22,8 +22,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ add_executable(xss-lock
+     xss-lock.c
+     xcb_utils.c
+-    xcb_utils.h
+-    config.h
+ )
+ 
+ target_link_libraries(xss-lock ${GLIB2_LIBRARIES} ${XCB_LIBRARIES})
