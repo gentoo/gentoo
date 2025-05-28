@@ -91,11 +91,6 @@ src_prepare() {
 		find  ./pipenv/vendor -regextype posix-extended -regex ".*${pkgName/_/-}" -prune -exec rm -rv {} + || die
 	done
 
-	find ./ -type f -print0 | 
-		xargs --max-procs="${jobs}" --null \
-		sed --in-place \
-			-e "s/from pipenv\.vendor import plette, toml, tomlkit/from pipenv\.vendor import plette, toml\\nimport tomlkit/g"
-
 	for fname in Makefile README.md vendor.txt; do
 		rm -v pipenv/vendor/"${fname}" || die "Failed removing pipenv/vendor/${fname}"
 	done
