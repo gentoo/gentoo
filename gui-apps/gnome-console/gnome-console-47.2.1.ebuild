@@ -33,11 +33,14 @@ BDEPEND="
 		dev-libs/appstream-glib
 	)
 "
-src_prepare() {
+
+PATCHES=(
 	# https://bugs.gentoo.org/956695
-	eapply "${FILESDIR}"/${P}-musl.patch
-	eapply_user
-}
+	# This is fixed in 48.x releases and upstream insists to use that
+	# instead of backporting the fix in 47
+
+	"${FILESDIR}"/${P}-musl.patch
+)
 
 src_configure() {
 	local emesonargs=(
