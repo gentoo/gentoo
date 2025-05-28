@@ -7,7 +7,7 @@ inherit libtool
 
 DESCRIPTION="Command-line utility and library for L-function computations"
 HOMEPAGE="https://gitlab.com/sagemath/lcalc"
-SRC_URI="https://gitlab.com/-/project/12934202/uploads/679cb360a06a713233876cd6fa0ba2fa/${P}.tar.xz"
+SRC_URI="https://gitlab.com/-/project/12934202/uploads/487082fc3449dea93e9b85904a589742/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 # The subslot is the libLfunction soname major version
