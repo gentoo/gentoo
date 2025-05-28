@@ -1,0 +1,23 @@
+https://bugs.gentoo.org/952159
+https://github.com/themoken/canto-curses/issues/57
+https://github.com/themoken/canto-curses/pull/58
+https://github.com/themoken/canto-curses/commit/74432bc3abc30bb6c606ad422d8763719d5fe817
+
+From ca1cb8f4a96a6b9029e60109df252537c0ac75b6 Mon Sep 17 00:00:00 2001
+From: Narrat <autumn-wind@web.de>
+Date: Wed, 8 Jan 2025 22:55:35 +0100
+Subject: [PATCH] command.py: remove pipes import
+
+the usage of pipes got removed with https://github.com/themoken/canto-curses/commit/c6ae73061776ac7ae0d12bcd2e02ca068a8815b4
+
+Closes #57
+--- a/canto_curses/command.py
++++ b/canto_curses/command.py
+@@ -14,7 +14,6 @@
+ import logging
+ import curses
+ import shlex
+-import pipes
+ 
+ import readline
+ 
