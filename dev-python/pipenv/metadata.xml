@@ -17,4 +17,7 @@
 		<remote-id type="pypi">pipenv</remote-id>
 		<remote-id type="github">pypa/pipenv</remote-id>
 	</upstream>
+	<use>
+		<flag name="scan">Add support for the check and scan subcommands</flag>
+	</use>
 </pkgmetadata>
