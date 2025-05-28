@@ -91,6 +91,24 @@ src_configure() {
 		)
 	fi
 
+	if is_crosspkg; then
+		# Needed to target built libc headers
+		export CFLAGS="${CFLAGS} -isystem /usr/${CTARGET}/usr/include"
+		mycmakeargs+=(
+			# CMake compiler tests compile and run a test artifact. That works well on
+			# host targets, but doesn't work with cross wrappers, since the produced
+			# binary is of a foreign target, so executing it without an user-space
+			# emulator is impossible.
+			# Given that, let's just skip the compiler tests for cross targets.
+			-DCMAKE_C_COMPILER_WORKS=1
+			-DCMAKE_CXX_COMPILER_WORKS=1
+
+			-DCMAKE_ASM_COMPILER_TARGET="${CTARGET}"
+			-DCMAKE_C_COMPILER_TARGET="${CTARGET}"
+			-DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON
+		)
+	fi
+
 	if use test; then
 		mycmakeargs+=(
 			-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
