@@ -6,7 +6,7 @@ EAPI=8
 inherit unpacker
 
 DESCRIPTION="Binary plugins from Google Chrome for use in Chromium"
-HOMEPAGE="https://www.google.com/chrome"
+HOMEPAGE="https://www.google.com/chrome/"
 
 case ${PV} in
 	*_alpha*)
