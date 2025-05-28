@@ -11,7 +11,7 @@ HOMEPAGE="https://pypi.org/project/udiskie/ https://github.com/coldfix/udiskie"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="libnotify"
 
 RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
