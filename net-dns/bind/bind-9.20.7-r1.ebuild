@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux static-libs test xml"
+IUSE="dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux static-libs systemtap test xml"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -54,6 +54,9 @@ BDEPEND="
 	test? (
 		dev-util/cmocka
 	)
+	systemtap? (
+		dev-debug/systemtap
+	)
 "
 
 src_prepare() {
@@ -67,6 +70,11 @@ src_configure() {
 	# configure automagically uses sphinx even if prebuilt man pages
 	# are available. Force fallback to prebuilt ones.
 	use doc || export ac_cv_path_SPHINX_BUILD= SPHINX_BUILD=
+
+	# Workaround for bug #938302
+	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
+		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
+	fi
 
 	local myeconfargs=(
 		--prefix="${EPREFIX}"/usr
@@ -83,6 +91,7 @@ src_configure() {
 		$(use_with doh libnghttp2)
 		$(use_enable static-libs static)
 		$(use_enable geoip)
+		$(use_enable systemtap tracing)
 		$(use_with test cmocka)
 		$(use_with geoip maxminddb)
 		$(use_with gssapi)
