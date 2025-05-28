@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake flag-o-matic llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM linker (link editor)"
