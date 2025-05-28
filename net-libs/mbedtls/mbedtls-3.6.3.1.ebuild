@@ -17,7 +17,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 IUSE="cpu_flags_x86_sse2 doc programs static-libs test threads"
 RESTRICT="!test? ( test )"
 
-RDEPEND="!>net-libs/mbedtls-3:0"
+RDEPEND="
+	!>net-libs/mbedtls-3:0
+	programs? ( !net-libs/mbedtls:0[programs] )
+"
 BDEPEND="
 	${PYTHON_DEPS}
 	doc? (
