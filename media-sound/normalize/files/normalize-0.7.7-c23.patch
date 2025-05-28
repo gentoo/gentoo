@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/944353
+--- a/nid3lib/write.c
++++ b/nid3lib/write.c
+@@ -20,7 +20,7 @@
+  * id3_write(), and many helper functions.
+  */
+ 
+-#define _POSIX_C_SOURCE 2
++#define _GNU_SOURCE
+ 
+ #include "config.h"
+ 
+@@ -59,14 +59,6 @@
+ #if HAVE_INTTYPES_H
+ # include <inttypes.h>
+ #endif
+-#if HAVE_FTRUNCATE
+-/*
+- * ftruncate() shouldn't be declared yet, since we turn on
+- * _POSIX_C_SOURCE, but you never know, so we use an old style
+- * declaration to lessen the chance of conflict.
+- */
+-int ftruncate();
+-#endif
+ 
+ #include "nid3P.h"
+ 
