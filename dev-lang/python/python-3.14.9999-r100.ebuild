@@ -249,8 +249,6 @@ src_configure() {
 		-x test_pretty_print
 		# https://bugs.gentoo.org/933840
 		-x test_perf_profiler
-		# crashes
-		-x test_zstd
 	)
 
 	# Arch-specific skips.  See #931888 for a collection of these.
