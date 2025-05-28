@@ -58,8 +58,6 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
-
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PROGRAMS=$(multilib_native_usex programs)
