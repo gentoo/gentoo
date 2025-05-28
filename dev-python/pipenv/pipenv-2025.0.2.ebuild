@@ -64,13 +64,12 @@ distutils_enable_tests pytest
 # The vendored packages should eventually all be removed
 # see: https://bugs.gentoo.org/717666
 src_prepare() {
-	sed --in-place -e "s/import click, plette, tomlkit/import click\n\import tomlkit\nfrom pipenv.vendor import plette/g" pipenv/project.py || die "Failed patching pipenv/project.py"
 
 	local pkgName
 	local jobs=$(makeopts_jobs)
-	local packages=( colorama click click_didyoumean dotenv markupsafe \
-					 pexpect pep517 pipdeptree plette ptyprocess pydantic pyparsing pythonfinder \
-					 requests urllib3 shellingham tomli tomlkit importlib_metadata )
+	local packages=( click click_didyoumean dotenv
+					 pexpect pep517 pipdeptree plette ptyprocess pyparsing pythonfinder
+					 shellingham tomli tomlkit importlib_metadata )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
 			xargs --max-procs="${jobs}" --null \
@@ -91,9 +90,7 @@ src_prepare() {
 		find  ./pipenv/vendor -regextype posix-extended -regex ".*${pkgName/_/-}" -prune -exec rm -rv {} + || die
 	done
 
-	find  ./pipenv/vendor -regextype posix-extended -regex '.*cached[_-]property.*' -prune -exec rm -rv {} + || die
-
-	find ./ -type f -print0 | \
+	find ./ -type f -print0 | 
 		xargs --max-procs="${jobs}" --null \
 		sed --in-place \
 			-e "s/from pipenv\.vendor import plette, toml, tomlkit/from pipenv\.vendor import plette, toml\\nimport tomlkit/g"
