@@ -39,6 +39,11 @@ BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 DOCS=( AUTHORS CHANGELOG README )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.11.1-openssh-10.patch"
+	"${FILESDIR}/${PN}-0.11.1-mbedtls-3.patch"
+)
+
 src_prepare() {
 	# Remove custom find module to use system one
 	rm -fr cmake/Modules/FindMbedTLS.cmake
@@ -91,7 +96,7 @@ multilib_src_configure() {
 		-DWITH_GCRYPT=OFF
 		-DWITH_GSSAPI=$(usex gssapi)
 		-DWITH_MBEDTLS=$(usex mbedtls)
-		-DMBEDTLS_FOUND=$(usex mbedtls) # Enforce variable from custom find module
+		-DMBEDTLS_FOUND=$(usex mbedtls)	# Enforce variable from custom find module
 		-DWITH_PCAP=$(usex pcap)
 		-DWITH_SERVER=$(usex server)
 		-DWITH_SFTP=$(usex sftp)
