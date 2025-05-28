@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+asm jack mp3 opengl pulseaudio theora v4l vorbis vpx x264"
+IUSE="+asm jack mp3 opengl pulseaudio theora screencast v4l vorbis vpx x264"
 
 REQUIRED_USE="abi_x86_32? ( opengl )"
 
@@ -38,6 +38,7 @@ RDEPEND="
 	mp3? ( media-video/ffmpeg[lame(-)] )
 	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
 	pulseaudio? ( media-libs/libpulse )
+	screencast? ( media-video/pipewire:= )
 	v4l? ( media-libs/libv4l )
 "
 DEPEND="${RDEPEND}"
@@ -67,6 +68,7 @@ multilib_src_configure() {
 		-DENABLE_X86_ASM="$(usex asm)"
 		-DWITH_OPENGL_RECORDING="$(usex opengl)"
 		-DWITH_PULSEAUDIO="$(multilib_native_usex pulseaudio)"
+		-DWITH_PIPEWIRE="$(multilib_native_usex screencast)"
 		-DWITH_JACK="$(multilib_native_usex jack)"
 		-DWITH_GLINJECT="$(usex opengl)"
 		-DWITH_V4L2="$(multilib_native_usex v4l)"
