@@ -53,6 +53,12 @@ distutils_enable_tests pytest
 EPYTEST_DESELECT=(
 	# minor pygments mismatch
 	tests/test_sphinx/test_sphinx_builds.py::test_includes
+	# sphinx-8.2.3
+	# https://github.com/executablebooks/MyST-Parser/issues/1030
+	'tests/test_renderers/test_fixtures_sphinx.py::test_sphinx_directives[320-math (`sphinx.directives.patches.MathDirective`):]'
+	tests/test_sphinx/test_sphinx_builds.py::test_references_singlehtml
+	tests/test_sphinx/test_sphinx_builds.py::test_extended_syntaxes
+	tests/test_sphinx/test_sphinx_builds.py::test_fieldlist_extension
 )
 
 src_prepare() {
