@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">M2Crypto</remote-id>
     <remote-id type="gitlab">m2crypto/m2crypto</remote-id>
+    <remote-id type="sourcehut">~mcepl/m2crypto</remote-id>
   </upstream>
 </pkgmetadata>
