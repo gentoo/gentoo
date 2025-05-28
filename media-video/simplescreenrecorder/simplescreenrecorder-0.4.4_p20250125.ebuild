@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PN="ssr"
-inherit cmake-multilib flag-o-matic xdg
+inherit cmake-multilib xdg
 
 DESCRIPTION="Simple Screen Recorder"
 HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder/"
@@ -62,13 +62,6 @@ pkg_pretend() {
 		ewarn "record videos with x264."
 		ewarn
 	fi
-}
-
-pkg_setup() {
-	# Qt requires -fPIC. Compile fails otherwise.
-	# Recently removed from the default compile options upstream
-	# https://github.com/MaartenBaert/ssr/commit/25fe1743058f0d1f95f6fbb39014b6ac146b5180
-	append-flags -fPIC
 }
 
 multilib_src_configure() {
