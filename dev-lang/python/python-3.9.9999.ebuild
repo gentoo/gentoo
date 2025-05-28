@@ -5,7 +5,7 @@ EAPI="8"
 WANT_LIBTOOL="none"
 
 inherit autotools check-reqs flag-o-matic git-r3 multiprocessing pax-utils
-inherit prefix python-utils-r1 toolchain-funcs
+inherit prefix toolchain-funcs
 
 PYVER=$(ver_cut 1-2)
 PATCHSET="python-gentoo-patches-3.9.22"
