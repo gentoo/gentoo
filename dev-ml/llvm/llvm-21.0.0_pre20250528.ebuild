@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake llvm.org llvm-utils python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
