@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( 21 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake llvm.org llvm-r1 python-any-r1
 
 DESCRIPTION="OpenCL C library"
