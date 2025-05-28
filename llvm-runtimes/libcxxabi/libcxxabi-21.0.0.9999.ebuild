@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
 inherit toolchain-funcs
 
@@ -37,7 +37,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( runtimes libcxx{abi,} llvm/cmake cmake )
-LLVM_TEST_COMPONENTS=( libc llvm/utils/llvm-lit )
+LLVM_TEST_COMPONENTS=( libc llvm/include/llvm/Demangle llvm/utils/llvm-lit )
 llvm.org_set_globals
 
 python_check_deps() {
