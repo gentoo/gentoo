@@ -18,6 +18,7 @@ IUSE="ipsec +openpgp +ssh"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# m2crypto: https://github.com/letoams/hash-slinger/issues/49
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
