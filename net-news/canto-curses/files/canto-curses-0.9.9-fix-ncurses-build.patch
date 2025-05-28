@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/944986
+https://github.com/themoken/canto-curses/issues/59
+https://gitlab.archlinux.org/archlinux/packaging/packages/canto-curses/-/blob/bc6f6a6e2668798643431a2d3daa41feabb4600a/fix-build.patch
+
+--- canto-curses-0.9.9.orig/canto_curses/widecurse.c
++++ canto-curses-0.9.9/canto_curses/widecurse.c
+@@ -6,9 +6,12 @@
+    published by the Free Software Foundation.
+ */
+ 
++#define NCURSES_INTERNALS 1
+ #include <Python.h>
++#include <curses.h>
+ #include <py_curses.h>
+ #include <readline/readline.h>
++#include <wchar.h>
+ 
+ static PyObject *py_wcwidth(PyObject * self, PyObject * args)
+ {
