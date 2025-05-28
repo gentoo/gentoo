@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}/pipenv-${PV}-inject-system-packages.patch"
 	"${FILESDIR}/pipenv-${PV}-append-always-install-to-pip-extra-args.patch"
 	"${FILESDIR}/pipenv-${PV}-fix-graph-subcommand.patch"
+	"${FILESDIR}/pipenv-${PV}-fix-update-subcommand.patch"
 )
 
 RDEPEND="
@@ -64,6 +65,7 @@ distutils_enable_tests pytest
 # The vendored packages should eventually all be removed
 # see: https://bugs.gentoo.org/717666
 src_prepare() {
+	distutils-r1_src_prepare
 
 	local pkgName
 	local jobs=$(makeopts_jobs)
@@ -81,7 +83,6 @@ src_prepare() {
 		        -e "s/from .vendor.${pkgName}/from ${pkgName}/g" || die "Failed to sed for ${pkgName}"
 	done
 
-	distutils-r1_src_prepare
 
 	# remove vendored versions
 	for pkgName in ${packages[@]}; do
