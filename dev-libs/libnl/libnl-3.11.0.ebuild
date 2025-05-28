@@ -25,20 +25,17 @@ else
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
 
 	PATCHES=(
-		# Fix compilation error in GCC 14
-		"${FILESDIR}"/${PN}-3.11-gcc14.patch
-		# Change vlan module to set QOS mapping flag
-		"${FILESDIR}"/${PN}-3.11-qos-mapping.patch
-		# cache: add nl_cache_resync_v2() 
-		"${FILESDIR}"/${PN}-3.11-nl_cache_resync_v2.patch
-		# route: add missing rtnl_nh_get_oif symbol 
-		"${FILESDIR}"/${PN}-3.11-rtnl_nh_get_oif.patch
-		# test: skip tests when having no private netns
-		"${FILESDIR}"/${PN}-3.11-skip-private-netns.patch
-		# cache: cache_include(): fix double put for cloned objects
-		"${FILESDIR}"/${PN}-3.11-fix-double-put.patch
-		# xfrm: Add support for xfrm interface ID
-		"${FILESDIR}"/${PN}-3.11-add-xfrm-iface-id.patch
+		"${FILESDIR}"/0001-Fix-compilation-error-in-GCC-14.patch
+		"${FILESDIR}"/0001-Change-vlan-module-to-set-QOS-mapping-flag.patch
+		"${FILESDIR}"/0001-cache-add-nl_cache_resync_v2.patch
+		"${FILESDIR}"/0001-route-add-missing-rtnl_nh_get_oif-symbol.patch
+		"${FILESDIR}"/0001-test-skip-tests-when-having-no-private-netns.patch
+		"${FILESDIR}"/0001-cache-cache_include-fix-double-put-for-cloned-object.patch
+		"${FILESDIR}"/0001-xfrm-Add-support-for-xfrm-interface-ID.patch
+		"${FILESDIR}"/0001-src-avoid-leak-parsing-command-line-arguemnts-in-nl-.patch
+		"${FILESDIR}"/0001-build-add-default_cppflags-variable-in-Makefile.am-t.patch
+		"${FILESDIR}"/0001-build-use-std-gnu11-as-compiler-flags-and-depend-on-.patch
+		"${FILESDIR}"/0001-maint-fix-inconsistent-formatting-in-netlink.h.patch
 	)
 
 	S="${WORKDIR}/${LIBNL_P}"
@@ -47,8 +44,6 @@ fi
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 IUSE="+debug python test utils"
-# Tests fail w/ sandboxes
-# https://github.com/thom311/libnl/issues/361
 RESTRICT="!test? ( test ) test"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"

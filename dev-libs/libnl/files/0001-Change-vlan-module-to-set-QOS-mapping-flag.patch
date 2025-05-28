@@ -1,0 +1,50 @@
+From dd0889f0077c05e9799c207c900526378046ef03 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Eric=20Sj=C3=B6str=C3=B6m?= <eric.sjostrom@haleytek.com>
+Date: Tue, 18 Feb 2025 11:31:51 +0100
+Subject: [PATCH] Change vlan module to set QOS mapping flag
+
+The newer versions of the Linux kernel now check to ensure that QOS
+mappings also have IFLA_VLAN_QOS_MAPPING set [1]. The kernel will discard
+QOS atributes where this is not set.
+
+The current libnl code for setting vlan attributes uses variable i to
+set this parameter. This means that only the second QOS map will be
+applied since i = 1 = IFLA_VLAN_QOS_MAPPING, the rest will be discarded.
+
+This patch replaces i in the PUT macro to use the already existing enum
+value IFLA_VLAN_QOS_MAPPING which equals 1.
+
+[1] https://github.com/torvalds/linux/commit/6c21660fe221a15c789dee2bc2fd95516bc5aeaf
+
+Co-authored-by: Daniel Falk falk@haleytek.com
+
+https://github.com/thom311/libnl/pull/421
+---
+ lib/route/link/vlan.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/route/link/vlan.c b/lib/route/link/vlan.c
+index 75842d8c..4a055ee9 100644
+--- a/lib/route/link/vlan.c
++++ b/lib/route/link/vlan.c
+@@ -328,7 +328,7 @@ static int vlan_put_attrs(struct nl_msg *msg, struct rtnl_link *link)
+ 				map.from = i;
+ 				map.to = vi->vi_ingress_qos[i];
+ 
+-				NLA_PUT(msg, i, sizeof(map), &map);
++				NLA_PUT(msg, IFLA_VLAN_QOS_MAPPING, sizeof(map), &map);
+ 			}
+ 		}
+ 
+@@ -350,7 +350,7 @@ static int vlan_put_attrs(struct nl_msg *msg, struct rtnl_link *link)
+ 			map.from = vi->vi_egress_qos[i].vm_from;
+ 			map.to = vi->vi_egress_qos[i].vm_to;
+ 
+-			NLA_PUT(msg, i, sizeof(map), &map);
++			NLA_PUT(msg, IFLA_VLAN_QOS_MAPPING, sizeof(map), &map);
+ 		}
+ 
+ 		nla_nest_end(msg, qos);
+-- 
+2.49.0
+

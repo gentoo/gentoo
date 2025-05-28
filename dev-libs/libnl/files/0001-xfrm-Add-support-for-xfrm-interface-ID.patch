@@ -1,3 +1,22 @@
+From 49518ca56d8b632fca4dd17834e62e7d7ee85fa1 Mon Sep 17 00:00:00 2001
+From: Carl Smith <carl.smith@alliedtelesis.co.nz>
+Date: Mon, 25 Nov 2024 11:33:31 +1300
+Subject: [PATCH] xfrm: Add support for xfrm interface ID
+
+Both policy and state support XFRMA_IF_ID which is the
+XFRM Interface identifier.
+
+Signed-off-by: Carl Smith <carl.smith@alliedtelesis.co.nz>
+
+https://github.com/thom311/libnl/pull/413
+---
+ include/netlink/xfrm/sa.h |  3 +++
+ include/netlink/xfrm/sp.h |  3 +++
+ lib/xfrm/sa.c             | 38 ++++++++++++++++++++++++++++++++++
+ lib/xfrm/sp.c             | 43 +++++++++++++++++++++++++++++++++++++++
+ libnl-xfrm-3.sym          |  7 +++++++
+ 5 files changed, 94 insertions(+)
+
 diff --git a/include/netlink/xfrm/sa.h b/include/netlink/xfrm/sa.h
 index cd5e552d..c39afa26 100644
 --- a/include/netlink/xfrm/sa.h
@@ -263,3 +282,6 @@ index ed7c7ad3..0667b3e1 100644
 +	xfrmnl_sp_get_if_id;
 +	xfrmnl_sp_set_if_id;
 +} libnl_3_6;
+-- 
+2.49.0
+

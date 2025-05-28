@@ -1,0 +1,34 @@
+From 470c0a62b8b26d7dcf553f859a7abcd62d6b0890 Mon Sep 17 00:00:00 2001
+From: Jonas Gorski <jonas.gorski@bisdn.de>
+Date: Tue, 4 Feb 2025 14:44:44 +0100
+Subject: [PATCH] route: add missing rtnl_nh_get_oif symbol
+
+When nh support was added in 780d06ae8bee ("route: add nh type"),
+rtnl_nh_get_oif() was missed adding to libnl-route-3.sym.
+
+Add the missing symbol so it can be actually used.
+
+Fixes: 780d06ae8bee ("route: add nh type")
+Signed-off-by: Jonas Gorski <jonas.gorski@bisdn.de>
+
+https://github.com/thom311/libnl/pull/419
+---
+ libnl-route-3.sym | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/libnl-route-3.sym b/libnl-route-3.sym
+index 75883323..17e3fde2 100644
+--- a/libnl-route-3.sym
++++ b/libnl-route-3.sym
+@@ -1364,3 +1364,8 @@ global:
+ 	rtnl_neigh_str2extflag;
+ 	rtnl_neigh_unset_ext_flags;
+ } libnl_3_10;
++
++libnl_3_12 {
++global:
++	rtnl_nh_get_oif;
++} libnl_3_11;
+-- 
+2.49.0
+

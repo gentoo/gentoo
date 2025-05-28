@@ -1,3 +1,18 @@
+From b3822aa3b605b2dc5f01f9aee8ee224fc23e23a0 Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Sun, 12 Jan 2025 10:54:59 +0100
+Subject: [PATCH] test: skip tests when having no private netns
+
+In github CI we seem now unable to create the netns. This worked
+previously, now it no longer does.
+
+Handle that by skipping the tests that require a netns.
+---
+ tests/cksuite-all-netns.c | 13 +++++++++-
+ tests/nl-test-util.c      | 50 +++++++++++++++++++++++++++++++++++++--
+ tests/nl-test-util.h      |  3 +++
+ 3 files changed, 63 insertions(+), 3 deletions(-)
+
 diff --git a/tests/cksuite-all-netns.c b/tests/cksuite-all-netns.c
 index 1948c3e8..04e0f6df 100644
 --- a/tests/cksuite-all-netns.c
@@ -156,3 +171,6 @@ index 981228b4..d840a4ab 100644
  
  struct nltst_netns;
  
+-- 
+2.49.0
+

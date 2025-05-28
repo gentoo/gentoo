@@ -1,3 +1,24 @@
+From b7e1b4aa7f745d2e64518916ddf19c8801b29084 Mon Sep 17 00:00:00 2001
+From: Jonas Gorski <jonas.gorski@bisdn.de>
+Date: Mon, 3 Feb 2025 14:57:49 +0100
+Subject: [PATCH] cache: add nl_cache_resync_v2()
+
+When the include callback v2 support was added in 66d032ad443a
+("cache_mngr: add include callback v2"), resync_cb() was updated to
+handle both old and v2 callbacks, but no actual nl_cache_resync_v2() was
+added to make use of it.
+
+Fix this by adding an appropriate implementation.
+
+Signed-off-by: Jonas Gorski <jonas.gorski@bisdn.de>
+
+https://github.com/thom311/libnl/pull/420
+---
+ include/netlink/cache.h |  4 ++++
+ lib/cache.c             | 21 +++++++++++++++++++--
+ libnl-3.sym             |  5 +++++
+ 3 files changed, 28 insertions(+), 2 deletions(-)
+
 diff --git a/include/netlink/cache.h b/include/netlink/cache.h
 index 955f9799..85b7b25b 100644
 --- a/include/netlink/cache.h
@@ -78,3 +99,6 @@ index b5a33bba..8df31c95 100644
 +global:
 +	nl_cache_resync_v2;
 +} libnl_3_11;
+-- 
+2.49.0
+
