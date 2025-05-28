@@ -87,8 +87,6 @@ src_prepare() {
 	# remove vendored versions
 	for pkgName in ${packages[@]}; do
 		find  ./pipenv/vendor -regextype posix-extended -regex ".*${pkgName}$" -prune -exec rm -rv {} + || die
-		# package names can be foo-bar, their module will be however foo_bar
-		find  ./pipenv/vendor -regextype posix-extended -regex ".*${pkgName/_/-}" -prune -exec rm -rv {} + || die
 	done
 
 	for fname in Makefile README.md vendor.txt; do
@@ -97,7 +95,7 @@ src_prepare() {
 
 	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" tests/unit/test_utils.py || die "Failed patching tests"
 
-	rm -Rv pipenv/vendor || die "Could not vendor"
+	rm -Rv pipenv/vendor || die "Could not remove vendor"
 	rm -Rv examples || die "Could not remove examples"
 	rm -Rv docs || die "Could not remove docs"
 }
