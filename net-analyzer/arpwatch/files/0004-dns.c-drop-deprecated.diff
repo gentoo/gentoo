@@ -1,0 +1,10 @@
+--- a/dns.c	2025-05-29 09:38:28.248066307 +0300
++++ b/dns.c	2025-05-29 09:45:18.254895440 +0300
+@@ -150,7 +150,6 @@
+ 	struct hostent *hp;
+ 
+ 	options = _res.options;
+-	_res.options |= RES_AAONLY;
+ 	_res.options &= ~(RES_DEFNAMES | RES_DNSRCH);
+ 	hp = gethostbyaddr((char *)&a, sizeof(a), AF_INET);
+ 	_res.options = options;
