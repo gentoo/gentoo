@@ -72,3 +72,45 @@ https://bugs.gentoo.org/956675
  $(VBOXMOD_0_TARGET)-y := $(VBOXMOD_OBJS)
  obj-m += $(VBOXMOD_0_TARGET).o
  
+--- a/vboxdrv/linux/SUPDrv-linux.c
++++ b/vboxdrv/linux/SUPDrv-linux.c
+@@ -1744,10 +1744,17 @@ SUPR0DECL(bool) SUPR0FpuBegin(bool fCtxHook)
+      */
+     Assert(fCtxHook || !RTThreadPreemptIsEnabled(NIL_RTTHREAD));
+     kernel_fpu_begin();
+-# if 0 /* Always do it for now for better test coverage. */
++#  if RTLNX_VER_MIN(6,15,0) /* fpregs_unlock may do more than just preempt_enable, so only when necessary now. */
+     if (fCtxHook)
+-# endif
++#  endif
++    {
++#  if RTLNX_VER_MIN(6,15,0)
++        if (!irqs_disabled())
++            fpregs_unlock();
++#  else
+         preempt_enable();
++#  endif
++    }
+     return false; /** @todo Not sure if we have license to use any extended state, or
+                    *        if we're limited to the SSE & x87 FPU. If it's the former,
+                    *        we should return @a true and the caller can skip
+@@ -1765,10 +1772,17 @@ SUPR0DECL(void) SUPR0FpuEnd(bool fCtxHook)
+ #if RTLNX_VER_MIN(4,19,0)
+     /* HACK ALERT! See SUPR0FpuBegin for an explanation of this. */
+     Assert(!RTThreadPreemptIsEnabled(NIL_RTTHREAD));
+-# if 0 /* Always do it for now for better test coverage. */
++#  if RTLNX_VER_MIN(6,15,0) /* fpregs_unlock may do more than just preempt_enable, so only when necessary now. */
+     if (fCtxHook)
+-# endif
++#  endif
++    {
++#  if RTLNX_VER_MIN(6,15,0)
++        if (!irqs_disabled())
++            fpregs_lock();
++#  else
+         preempt_disable();
++#  endif
++    }
+     kernel_fpu_end();
+ #endif
+ }
