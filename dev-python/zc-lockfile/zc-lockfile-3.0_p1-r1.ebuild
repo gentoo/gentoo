@@ -35,8 +35,6 @@ distutils_enable_tests unittest
 python_prepare_all() {
 	# rdep is only needed for namespace
 	sed -i -e '/install_requires.*setuptools/d' setup.py || die
-	# use implicit namespace
-	sed -i -e '/namespace_packages/d' setup.py || die
 	# do not install README into site-packages
 	sed -e '/^    include_package_data/d' -i setup.py || die
 
