@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_COMPAT=( {15..20} )
 LLVM_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake edo flag-o-matic go-env llvm-r2 multiprocessing
 inherit python-any-r1 readme.gentoo-r1 xdg
 
@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	app-arch/libarchive:=
 	dev-cpp/yaml-cpp:=
 	>=dev-qt/qt5compat-${QT_PV}
-	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]
+	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,ssl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
 	sys-libs/zlib:=
 	clang? (
