@@ -1,0 +1,26 @@
+From 4a1e1395804d4630ec556c61ba3f2cb67e140248 Mon Sep 17 00:00:00 2001
+From: Jean-Guillaume Dumas <Jean-Guillaume.Dumas@imag.fr>
+Date: Thu, 5 Dec 2024 15:38:58 +0100
+Subject: [PATCH] solving issue #319
+
+---
+ linbox/vector/blas-subvector.h | 52 +++++++++++++++++-----------------
+ tests/test-subvector.C         |  6 ++++
+ 2 files changed, 32 insertions(+), 26 deletions(-)
+
+diff --git a/linbox/vector/blas-subvector.h b/linbox/vector/blas-subvector.h
+index e1582723c3..8f290dd436 100644
+--- a/linbox/vector/blas-subvector.h
++++ b/linbox/vector/blas-subvector.h
+@@ -118,9 +118,9 @@ namespace LinBox {
+          * \param inc distance between two element
+          */
+         BlasSubvector (Self_t &V, size_t beg, size_t inc, size_t dim) :
+-            _ptr(V.data()+beg), _size(dim), _inc(inc), _field(&V.field()) {}
++            _ptr(V.getPointer()+beg), _size(dim), _inc(inc), _field(&V.field()) {}
++
+ 
+-        
+         /** Constructor from an existing @ref BlasVector
+          * \param V Pointer to @ref BlasVector of which to construct submatrix
+          */
