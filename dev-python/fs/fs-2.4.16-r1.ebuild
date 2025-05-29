@@ -24,9 +24,6 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-lang/python-3.12.0_p1
-	' python3_12)
 "
 # NB: we skip tests requiring pyftpdlib
 BDEPEND="
@@ -46,7 +43,10 @@ EPYTEST_IGNORE=(
 
 src_prepare() {
 	# fix for python 3.12
-	sed -e 's/self.assertRaisesRegexp/self.assertRaisesRegex/g' -i fs/test.py || die
+	sed -i -e 's/self.assertRaisesRegexp/self.assertRaisesRegex/g' fs/test.py || die
+
+	# remove explicit namespace (this is the only package in the namespace)
+	sed -i -e '/pkg_resources/d' fs/__init__.py || die
 
 	distutils-r1_src_prepare
 }
