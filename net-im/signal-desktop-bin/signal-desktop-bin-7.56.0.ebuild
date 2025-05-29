@@ -5,15 +5,15 @@ EAPI=8
 
 MY_PN="${PN/-bin/}"
 
-inherit pax-utils unpacker xdg
+inherit optfeature pax-utils unpacker xdg
 
-DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
-HOMEPAGE="https://signal.org/
-	https://github.com/signalapp/Signal-Desktop"
+DESCRIPTION="Signal Messenger for your desktop"
+HOMEPAGE="https://signal.org"
 SRC_URI="https://updates.signal.org/desktop/apt/pool/s/${MY_PN}/${MY_PN}_${PV}_amd64.deb"
 S="${WORKDIR}"
 
-LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
+# See ACKNOWLEDGMENTS.md for full list
+LICENSE="AGPL-3 Apache-2.0 BSD-2 BSD GPL-3 ISC MIT Unicode-3.0 ZLIB public-domain openssl"
 SLOT="0"
 KEYWORDS="-* amd64"
 RESTRICT="splitdebug"
@@ -77,9 +77,10 @@ src_install() {
 
 	doins -r usr/share/applications
 	doins -r usr/share/icons
-	fperms +x /opt/Signal/signal-desktop /opt/Signal/chrome-sandbox /opt/Signal/chrome_crashpad_handler
+
 	fperms u+s /opt/Signal/chrome-sandbox
-	pax-mark m opt/Signal/signal-desktop opt/Signal/chrome-sandbox opt/Signal/chrome_crashpad_handler
+	fperms +x /opt/Signal/{signal-desktop,chrome-sandbox,chrome_crashpad_handler}
+	pax-mark m opt/Signal/{signal-desktop,chrome-sandbox,chrome_crashpad_handler}
 
 	newbin - signal-desktop <<- _EOF_
 		#!/bin/sh
@@ -89,6 +90,6 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	elog "For using the tray icon on compatible desktop environments, start Signal with"
-	elog " '--start-in-tray' or '--use-tray-icon'."
+
+	optfeature "Screen sharing on Wayland" sys-apps/xdg-desktop-portal
 }
