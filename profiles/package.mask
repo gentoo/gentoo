@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Orlitzky <mjo@gentoo.org> (2025-05-28)
+# I added this for SageMath, but in hindsight do not think anyone is
+# using it. It has code issues and upstream is not terribly interested
+# in fixing it. (They are active and helpful, just not in love with this
+# particular codebase.) Bug 940232. Removal after 30 days.
+dev-gap/cohomolo
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
 # Dead upstream with no release for over 10 years, Qt5-based even only by
 # means of a snapshot. Bugs #951875, #953016. Removal on 2025-06-26.
