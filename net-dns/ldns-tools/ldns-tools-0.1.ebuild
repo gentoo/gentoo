@@ -19,6 +19,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!net-dns/bind-tools
+	!net-dns/bind
 "
 
 src_compile() {
