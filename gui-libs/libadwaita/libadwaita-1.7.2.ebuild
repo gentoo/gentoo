@@ -1,27 +1,27 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit gnome.org meson python-any-r1 vala virtualx
+PYTHON_COMPAT=( python3_{11..12} python3_{13..14}{,t} )
+inherit gnome.org meson python-any-r1 vala virtualx xdg
 
 DESCRIPTION="Building blocks for modern GNOME applications"
 HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libadwaita/ https://gitlab.gnome.org/GNOME/libadwaita"
 
 LICENSE="LGPL-2.1+"
 SLOT="1"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 IUSE="+introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
-	>=dev-libs/glib-2.76:2
-	>=gui-libs/gtk-4.13.4:4[introspection?]
+	>=dev-libs/glib-2.80.0:2
+	>=gui-libs/gtk-4.17.5:4[introspection?]
 	dev-libs/appstream:=
 	dev-libs/fribidi
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.83.2:= )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
@@ -31,11 +31,13 @@ BDEPEND="
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
+	dev-lang/sassc
 "
 
 src_prepare() {
 	default
 	use vala && vala_setup
+	xdg_environment_reset
 }
 
 src_configure() {
@@ -46,7 +48,7 @@ src_configure() {
 		-Dprofiling=false
 		$(meson_feature introspection)
 		$(meson_use vala vapi)
-		-Dgtk_doc=false # we ship pregenerated docs
+		-Ddocumentation=false # we ship pregenerated docs
 		$(meson_use test tests)
 		-Dexamples=false
 	)
@@ -54,6 +56,7 @@ src_configure() {
 }
 
 src_test() {
+	addwrite /dev/dri
 	virtx meson_src_test --timeout-multiplier 2
 }
 
@@ -61,6 +64,4 @@ src_install() {
 	meson_src_install
 
 	insinto /usr/share/gtk-doc/html
-	# This will install libadwaita API docs unconditionally, but this is intentional
-	doins -r "${S}"/doc/libadwaita-1
 }
