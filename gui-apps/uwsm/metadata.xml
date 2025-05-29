@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Kenton Groombridge</name>
+		<email>concord@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Vladimir-csp/uwsm</remote-id>
+		<bugs-to>https://github.com/Vladimir-csp/uwsm/issues</bugs-to>
+	</upstream>
+	<longdescription>
+		Wraps standalone Wayland compositors into a set of Systemd units on the fly.
+		This provides robust session management including environment, XDG autostart
+		support, bi-directional binding with login session, and clean shutdown.
+
+		For compositors this is an opportunity to offload Systemd integration and
+		session/XDG autostart management in Systemd-managed environments.
+	</longdescription>
+</pkgmetadata>
