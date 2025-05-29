@@ -26,13 +26,6 @@ DEPEND="test? ( dev-cpp/doctest )"
 
 HTML_DOCS=( docs/. )
 
-PATCHES=(
-)
-
-src_prepare() {
-	cmake_src_prepare
-}
-
 src_configure() {
 	# TODO: enable CUDA via USE flag
 	local mycmakeargs=(
