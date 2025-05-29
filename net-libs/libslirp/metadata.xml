@@ -6,7 +6,7 @@
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitlab">gitlab.freedesktop.org/slirp/libslirp</remote-id>
+		<remote-id type="freedesktop-gitlab">slirp/libslirp</remote-id>
 		<remote-id type="cpe">cpe:/a:libslirp_project:libslirp</remote-id>
 	</upstream>
 </pkgmetadata>
