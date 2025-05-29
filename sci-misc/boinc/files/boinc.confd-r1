@@ -1,0 +1,22 @@
+# Config file for /etc/init.d/boinc
+
+# Owner of BOINC process (must be existing)
+#USER="boinc"
+# Group of the BOINC process
+#GROUP="boinc"
+
+# Directory with runtime data: Work units, project binaries, user info etc.
+#RUNTIMEDIR="/var/lib/boinc"
+
+# Allow remote gui RPC, uncomment to enable
+#ALLOW_REMOTE_GUI_RPC=1
+
+# Additional args for BOINC client
+#ARGS=""
+
+# nice level
+#SSD_NICELEVEL="19"
+
+# The termination timeout ensures that the service will be terminated within a
+# given time (60 + 30 + 30 seconds per default) when you are stopping the service
+#retry="SIGTERM/60/SIGTERM/30/SIGKILL/30"
