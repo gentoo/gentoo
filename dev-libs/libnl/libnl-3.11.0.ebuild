@@ -17,35 +17,11 @@ LIBNL_DIR=${LIBNL_DIR//./_}
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="https://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
-if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/thom311/libnl"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
-
-	PATCHES=(
-		"${FILESDIR}"/0001-Fix-compilation-error-in-GCC-14.patch
-		"${FILESDIR}"/0001-Change-vlan-module-to-set-QOS-mapping-flag.patch
-		"${FILESDIR}"/0001-cache-add-nl_cache_resync_v2.patch
-		"${FILESDIR}"/0001-route-add-missing-rtnl_nh_get_oif-symbol.patch
-		"${FILESDIR}"/0001-test-skip-tests-when-having-no-private-netns.patch
-		"${FILESDIR}"/0001-cache-cache_include-fix-double-put-for-cloned-object.patch
-		"${FILESDIR}"/0001-xfrm-Add-support-for-xfrm-interface-ID.patch
-		"${FILESDIR}"/0001-src-avoid-leak-parsing-command-line-arguemnts-in-nl-.patch
-		"${FILESDIR}"/0001-build-add-default_cppflags-variable-in-Makefile.am-t.patch
-		"${FILESDIR}"/0001-build-use-std-gnu11-as-compiler-flags-and-depend-on-.patch
-		"${FILESDIR}"/0001-maint-fix-inconsistent-formatting-in-netlink.h.patch
-	)
-
-	S="${WORKDIR}/${LIBNL_P}"
-fi
 
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 IUSE="+debug python test utils"
 RESTRICT="!test? ( test ) test"
-
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -78,6 +54,30 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/tc.h
 	/usr/include/libnl3/netlink/cli/utils.h
 )
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/thom311/libnl"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/thom311/${PN}/releases/download/${PN}${LIBNL_DIR}/${P/_rc/-rc}.tar.gz"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+
+	PATCHES=(
+		"${FILESDIR}"/0001-Fix-compilation-error-in-GCC-14.patch
+		"${FILESDIR}"/0002-Change-vlan-module-to-set-QOS-mapping-flag.patch
+		"${FILESDIR}"/0003-cache-add-nl_cache_resync_v2.patch
+		"${FILESDIR}"/0004-route-add-missing-rtnl_nh_get_oif-symbol.patch
+		"${FILESDIR}"/0005-test-skip-tests-when-having-no-private-netns.patch
+		"${FILESDIR}"/0006-cache-cache_include-fix-double-put-for-cloned-object.patch
+		"${FILESDIR}"/0007-xfrm-Add-support-for-xfrm-interface-ID.patch
+		"${FILESDIR}"/0008-src-avoid-leak-parsing-command-line-arguemnts-in-nl-.patch
+		"${FILESDIR}"/0009-build-add-default_cppflags-variable-in-Makefile.am-t.patch
+		"${FILESDIR}"/0010-build-use-std-gnu11-as-compiler-flags-and-depend-on-.patch
+		"${FILESDIR}"/0011-maint-fix-inconsistent-formatting-in-netlink.h.patch
+	)
+
+	S="${WORKDIR}/${LIBNL_P}"
+fi
 
 src_prepare() {
 	default
