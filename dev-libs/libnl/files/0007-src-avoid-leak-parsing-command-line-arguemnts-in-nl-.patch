@@ -1,3 +1,5 @@
+https://github.com/thom311/libnl/commit/9dbc16eb8c715bd07981e77be23104c957366359
+
 From 9dbc16eb8c715bd07981e77be23104c957366359 Mon Sep 17 00:00:00 2001
 From: Thomas Haller <thaller@redhat.com>
 Date: Wed, 13 Nov 2024 19:15:47 +0100
@@ -29,7 +31,6 @@ Also use _nl_auto_free to release the memory.
   #  110|   		case ARG_UPDATE: flags = NLM_F_CREATE; break;
   #  111|   		case ARG_UPDATE_ONLY: flags = 0; break;
 
-https://github.com/thom311/libnl/commit/9dbc16eb8c715bd07981e77be23104c957366359
 ---
  src/nl-class-add.c | 6 +++---
  src/nl-qdisc-add.c | 6 +++---

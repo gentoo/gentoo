@@ -1,3 +1,5 @@
+https://github.com/thom311/libnl/commit/b3822aa3b605b2dc5f01f9aee8ee224fc23e23a0
+
 From b3822aa3b605b2dc5f01f9aee8ee224fc23e23a0 Mon Sep 17 00:00:00 2001
 From: Thomas Haller <thaller@redhat.com>
 Date: Sun, 12 Jan 2025 10:54:59 +0100
@@ -8,7 +10,6 @@ previously, now it no longer does.
 
 Handle that by skipping the tests that require a netns.
 
-https://github.com/thom311/libnl/commit/b3822aa3b605b2dc5f01f9aee8ee224fc23e23a0
 ---
  tests/cksuite-all-netns.c | 13 +++++++++-
  tests/nl-test-util.c      | 50 +++++++++++++++++++++++++++++++++++++--

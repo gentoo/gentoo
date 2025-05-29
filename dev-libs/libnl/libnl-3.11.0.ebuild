@@ -65,10 +65,12 @@ else
 	PATCHES=(
 		"${FILESDIR}"/0001-Fix-compilation-error-in-GCC-14.patch
 		"${FILESDIR}"/0002-Change-vlan-module-to-set-QOS-mapping-flag.patch
-		"${FILESDIR}"/0003-route-add-missing-rtnl_nh_get_oif-symbol.patch
+		# API change. Hold.
+		# "${FILESDIR}"/0003-route-add-missing-rtnl_nh_get_oif-symbol.patch
 		"${FILESDIR}"/0004-test-skip-tests-when-having-no-private-netns.patch
 		"${FILESDIR}"/0005-cache-cache_include-fix-double-put-for-cloned-object.patch
-		"${FILESDIR}"/0006-xfrm-Add-support-for-xfrm-interface-ID.patch
+		# API change. Hold.
+		# "${FILESDIR}"/0006-xfrm-Add-support-for-xfrm-interface-ID.patch
 		"${FILESDIR}"/0007-src-avoid-leak-parsing-command-line-arguemnts-in-nl-.patch
 		"${FILESDIR}"/0008-build-add-default_cppflags-variable-in-Makefile.am-t.patch
 		"${FILESDIR}"/0009-build-use-std-gnu11-as-compiler-flags-and-depend-on-.patch

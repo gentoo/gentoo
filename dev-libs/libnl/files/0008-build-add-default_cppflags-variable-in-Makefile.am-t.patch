@@ -1,10 +1,10 @@
+https://github.com/thom311/libnl/commit/89618875c211f5a457cb37f649c2d355b555165f
+
 From 89618875c211f5a457cb37f649c2d355b555165f Mon Sep 17 00:00:00 2001
 From: Thomas Haller <thaller@redhat.com>
 Date: Wed, 13 Nov 2024 08:44:49 +0100
 Subject: [PATCH] build: add $(default_cppflags) variable in Makefile.am to
  reduce dupliate code
-
-https://github.com/thom311/libnl/commit/89618875c211f5a457cb37f649c2d355b555165f
 ---
  Makefile.am | 20 ++++++++++----------
  1 file changed, 10 insertions(+), 10 deletions(-)
