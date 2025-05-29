@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux static-libs systemtap test xml"
+IUSE="dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux static-libs systemd systemtap test xml"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -38,6 +38,7 @@ DEPEND="
 	idn? ( net-dns/libidn2 )
 	jemalloc? ( dev-libs/jemalloc:= )
 	lmdb? ( dev-db/lmdb )
+	systemd? ( sys-apps/systemd:= )
 	xml? ( dev-libs/libxml2:= )
 "
 RDEPEND="
@@ -98,6 +99,7 @@ src_configure() {
 		$(use_with idn libidn2)
 		$(use_with jemalloc)
 		$(use_with lmdb)
+		$(use_with systemd libsystemd)
 		$(use_with xml libxml2)
 	)
 
