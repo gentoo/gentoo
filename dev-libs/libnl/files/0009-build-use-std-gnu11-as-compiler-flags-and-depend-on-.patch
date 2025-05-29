@@ -16,6 +16,8 @@ Also, it's 2024. It's basically impossilbe that you use gcc/clang with a
 version that doesn't yet support (gcc's) C11 variant. So explicitly
 require that via the "-std=gnu11" option. I don't think we currently
 require newer C features, so this is sufficient for us and for now.
+
+https://github.com/thom311/libnl/commit/23c4e60d752c775b90b90354dbc4fd063e5d77a2
 ---
  Makefile.am | 5 +++++
  1 file changed, 5 insertions(+)

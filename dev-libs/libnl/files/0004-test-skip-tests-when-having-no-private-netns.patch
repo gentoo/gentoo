@@ -7,6 +7,8 @@ In github CI we seem now unable to create the netns. This worked
 previously, now it no longer does.
 
 Handle that by skipping the tests that require a netns.
+
+https://github.com/thom311/libnl/commit/b3822aa3b605b2dc5f01f9aee8ee224fc23e23a0
 ---
  tests/cksuite-all-netns.c | 13 +++++++++-
  tests/nl-test-util.c      | 50 +++++++++++++++++++++++++++++++++++++--
