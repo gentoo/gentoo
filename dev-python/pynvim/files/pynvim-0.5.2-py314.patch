@@ -1,0 +1,51 @@
+https://github.com/neovim/pynvim/commit/e2a3ead549f91bc5f5a157660be7a29e0bc9f728
+
+From e2a3ead549f91bc5f5a157660be7a29e0bc9f728 Mon Sep 17 00:00:00 2001
+From: Andreas Schneider <asn@cryptomilk.org>
+Date: Mon, 13 Jan 2025 09:43:32 +0100
+Subject: [PATCH] fix: asyncio.get_child_watcher() was removed in Python 3.14
+ #584
+
+Fixes #583
+---
+ pynvim/msgpack_rpc/event_loop/asyncio.py | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/pynvim/msgpack_rpc/event_loop/asyncio.py b/pynvim/msgpack_rpc/event_loop/asyncio.py
+index cb17f321..d4ad1413 100644
+--- a/pynvim/msgpack_rpc/event_loop/asyncio.py
++++ b/pynvim/msgpack_rpc/event_loop/asyncio.py
+@@ -188,10 +188,20 @@ async def connect_stdout():
+ 
+     @override
+     def _connect_child(self, argv: List[str]) -> None:
++        def get_child_watcher():
++            try:
++                return asyncio.get_child_watcher()
++            except AttributeError:  # Python 3.14
++                return None
++
++            return None
++
+         if os.name != 'nt':
+             # see #238, #241
+-            self._child_watcher = asyncio.get_child_watcher()
+-            self._child_watcher.attach_loop(self._loop)
++            watcher = get_child_watcher()
++            if watcher is not None:
++                watcher.attach_loop(self._loop)
++                self._child_watcher = watcher
+ 
+         async def create_subprocess():
+             transport: asyncio.SubprocessTransport  # type: ignore
+@@ -250,7 +260,8 @@ def _close_transport(transport):
+             # Windows: for ProactorBasePipeTransport, close() doesn't take in
+             # effect immediately (closing happens asynchronously inside the
+             # event loop), need to wait a bit for completing graceful shutdown.
+-            if os.name == 'nt' and hasattr(transport, '_sock'):
++            if (sys.version_info < (3, 13) and
++                    os.name == 'nt' and hasattr(transport, '_sock')):
+                 async def wait_until_closed():
+                     # pylint: disable-next=protected-access
+                     while transport._sock is not None:
+
