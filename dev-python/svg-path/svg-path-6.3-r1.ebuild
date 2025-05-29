@@ -33,9 +33,22 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
-EPYTEST_DESELECT=(
-	# broken with new pillow version (also potentially super-fragile)
-	# https://github.com/regebro/svg.path/issues/103
-	tests/test_boundingbox_image.py::BoundingBoxImageTest::test_image
-	tests/test_image.py::ImageTest::test_image
-)
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# strip explicit namespace
+	rm src/svg/__init__.py || die
+	sed -i -e '/packages/s@find:@find_namespace:@' setup.cfg || die
+}
+
+python_test() {
+	local EPYTEST_DESELECT=(
+		# broken with new pillow version (also potentially super-fragile)
+		# https://github.com/regebro/svg.path/issues/103
+		tests/test_boundingbox_image.py::BoundingBoxImageTest::test_image
+		tests/test_image.py::ImageTest::test_image
+	)
+
+	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	epytest
+}
