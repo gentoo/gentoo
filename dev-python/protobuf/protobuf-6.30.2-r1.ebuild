@@ -8,7 +8,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYPI_PN="protobuf"
 
 inherit distutils-r1 pypi
@@ -27,3 +27,10 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-3)"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# strip old-style namespace
+	rm google/__init__.py || die
+}
