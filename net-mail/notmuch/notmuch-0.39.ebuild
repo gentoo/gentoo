@@ -95,6 +95,7 @@ SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.39-no-compress-man-pages.patch
+	"${FILESDIR}"/${PN}-0.39-test-skip-debug-symbols.patch
 )
 
 pkg_setup() {
