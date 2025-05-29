@@ -129,6 +129,7 @@ dev-lang/ispc gpu
 # Requires systemd
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
+sys-kernel/vanilla-kernel generic-uki
 
 # Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
 # execinfo.h required for server.

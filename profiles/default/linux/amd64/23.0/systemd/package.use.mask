@@ -5,3 +5,4 @@
 # Generic images are built with systemd and only available on arm64 and amd64
 sys-kernel/gentoo-kernel -generic-uki
 sys-kernel/gentoo-kernel-bin -generic-uki
+sys-kernel/vanilla-kernel -generic-uki

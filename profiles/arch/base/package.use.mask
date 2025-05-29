@@ -148,6 +148,7 @@ dev-lang/ispc gpu
 # Experimental and only available on a subset of architectures
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
+sys-kernel/vanilla-kernel generic-uki
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-12-02)
 # dev-qt/qtwebengine:6 and dev-qt/qtremoteobjects:6 have few keywords.
