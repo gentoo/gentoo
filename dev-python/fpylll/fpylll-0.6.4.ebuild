@@ -33,8 +33,6 @@ BDEPEND="
 	>=dev-python/cython-3[${PYTHON_USEDEP}]
 "
 
-PATCHES=( "${FILESDIR}/cython-3.1.patch" )
-
 distutils_enable_tests pytest
 
 python_test(){
