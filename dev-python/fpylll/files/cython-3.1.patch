@@ -1,0 +1,116 @@
+From fe2e6cb2f8b0d347c4920c707624d07516be02b6 Mon Sep 17 00:00:00 2001
+From: "Martin R. Albrecht" <martinralbrecht@googlemail.com>
+Date: Sun, 18 May 2025 10:41:41 +0100
+Subject: [PATCH 1/4] declare types fully
+
+---
+ src/fpylll/fplll/fplll.pxd | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/fpylll/fplll/fplll.pxd b/src/fpylll/fplll/fplll.pxd
+index 907a4450..cb578d8f 100644
+--- a/src/fpylll/fplll/fplll.pxd
++++ b/src/fpylll/fplll/fplll.pxd
+@@ -952,17 +952,20 @@ cdef extern from "fplll/pruner/pruner.h" namespace "fplll":
+         FT gaussian_heuristic()
+ 
+     void prune[FT](PruningParams &pruning, const double enumeration_radius,
+-                   const double preproc_cost, const vector[double] &gso_r)
++                   const double preproc_cost, const vector[vector[double]] &gso_r,
++                   const double target, const PrunerMetric metric, const int flags)
+ 
+     void prune[FT](PruningParams &pruning, const double enumeration_radius,
+-                   const double preproc_cost, const vector[double] &gso_r,
++                   const double preproc_cost, const vector[vector[double]] &gso_r,
+                    const double target, const PrunerMetric metric, const int flags)
+ 
+     void prune[FT](PruningParams &pruning, const double enumeration_radius,
+-                   const double preproc_cost, const vector[vector[double]] &gso_r)
++                   const double preproc_cost, const vector[vector[double]] &gso_r,
++                   const double target, const PrunerMetric metric, const int flags)
+ 
+     void prune[FT](PruningParams &pruning, const double enumeration_radius,
+                    const double preproc_cost, const vector[vector[double]] &gso_r,
++                   const double target, const PrunerMetric metric, const int flags,
+                    const double target, const PrunerMetric metric, const int flags)
+ 
+     FT svp_probability[FT](const PruningParams &pruning)
+
+From abe695cc76fa47035cd8749d0b4f20092d51f0fb Mon Sep 17 00:00:00 2001
+From: "Martin R. Albrecht" <martinralbrecht@googlemail.com>
+Date: Sun, 18 May 2025 10:41:49 +0100
+Subject: [PATCH 2/4] this confuses Cython 3.1
+
+---
+ src/fpylll/fplll/fplll.pxd | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fpylll/fplll/fplll.pxd b/src/fpylll/fplll/fplll.pxd
+index cb578d8f..6e5bd61e 100644
+--- a/src/fpylll/fplll/fplll.pxd
++++ b/src/fpylll/fplll/fplll.pxd
+@@ -968,7 +968,7 @@ cdef extern from "fplll/pruner/pruner.h" namespace "fplll":
+                    const double target, const PrunerMetric metric, const int flags,
+                    const double target, const PrunerMetric metric, const int flags)
+ 
+-    FT svp_probability[FT](const PruningParams &pruning)
++    # FT svp_probability[FT](const PruningParams &pruning)
+     FT svp_probability[FT](const vector[double] &pr)
+ 
+ 
+
+From 5bd159a60191b946465839e912de7f7339084e45 Mon Sep 17 00:00:00 2001
+From: "Martin R. Albrecht" <martinralbrecht@googlemail.com>
+Date: Sun, 18 May 2025 10:42:08 +0100
+Subject: [PATCH 3/4] no more PyInt
+
+---
+ src/fpylll/gmp/pylong.pyx | 5 ++---
+ src/fpylll/io.pyx         | 4 ++--
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/fpylll/gmp/pylong.pyx b/src/fpylll/gmp/pylong.pyx
+index 885d4efe..57ced80b 100644
+--- a/src/fpylll/gmp/pylong.pyx
++++ b/src/fpylll/gmp/pylong.pyx
+@@ -26,8 +26,7 @@ AUTHORS:
+ #*****************************************************************************
+ 
+ 
+-from cpython.int cimport PyInt_FromLong
+-from cpython.long cimport PyLong_CheckExact, PyLong_FromLong
++from cpython.long cimport PyLong_CheckExact, PyLong_FromLong, PyLong_FromLong
+ from cpython.longintrepr cimport _PyLong_New, digit, PyLong_SHIFT
+ from .pycore_long cimport (ob_digit, _PyLong_IsZero, _PyLong_IsNegative,
+         _PyLong_IsPositive, _PyLong_DigitCount, _PyLong_SetSignAndDigitCount)
+@@ -64,7 +63,7 @@ cdef mpz_get_pyintlong(mpz_srcptr z):
+     if the value is too large.
+     """
+     if mpz_fits_slong_p(z):
+-        return PyInt_FromLong(mpz_get_si(z))
++        return PyLong_FromLong(mpz_get_si(z))
+     return mpz_get_pylong_large(z)
+ 
+ 
+diff --git a/src/fpylll/io.pyx b/src/fpylll/io.pyx
+index 4c4d561f..b4717805 100644
+--- a/src/fpylll/io.pyx
++++ b/src/fpylll/io.pyx
+@@ -4,7 +4,7 @@ include "fpylll/config.pxi"
+ import sys
+ import os
+ 
+-from cpython.int cimport PyInt_AS_LONG
++from cpython.long cimport PyLong_AsLong
+ from fpylll.gmp.mpz cimport mpz_init, mpz_clear, mpz_set
+ from fpylll.gmp.pylong cimport mpz_get_pyintlong, mpz_set_pylong
+ from .gmp.mpz cimport mpz_t, mpz_set_si, mpz_set
+@@ -46,7 +46,7 @@ cdef int assign_mpz(mpz_t& t, value) except -1:
+     Assign Python integer to Z_NR[mpz_t]
+     """
+     if isinstance(value, int) and PY_MAJOR_VERSION == 2:
+-            mpz_set_si(t, PyInt_AS_LONG(value))
++            mpz_set_si(t, PyLong_AsLong(value))
+             return 0
+     if isinstance(value, int):
+         mpz_set_pylong(t, value)
