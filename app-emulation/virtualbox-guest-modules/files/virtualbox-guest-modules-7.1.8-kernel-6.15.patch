@@ -168,3 +168,84 @@ https://bugs.gentoo.org/956675
  {
  	return MODE_OK;
  }
+--- a/vboxvideo/vbox_drv.c
++++ b/vboxvideo/vbox_drv.c
+@@ -39,6 +39,10 @@
+ # include <drm/drm_probe_helper.h>
+ #endif
+ 
++#if RTLNX_VER_MIN(6,13,0) && defined(CONFIG_APERTURE_HELPERS)
++# include <linux/aperture.h>
++#endif
++
+ #if RTLNX_VER_RANGE(5,14,0, 6,13,0) || RTLNX_RHEL_RANGE(8,6, 8,99)
+ # include <drm/drm_aperture.h>
+ #endif
+@@ -88,7 +92,9 @@ static int vbox_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	}
+ #endif
+ 
+-# if RTLNX_VER_RANGE(5,14,0, 6,13,0) || RTLNX_RHEL_RANGE(8,6, 8,99)
++# if RTLNX_VER_MIN(6,13,0) && defined(CONFIG_APERTURE_HELPERS)
++	ret = aperture_remove_conflicting_pci_devices(pdev, driver.name);
++# elif RTLNX_VER_RANGE(5,14,0, 6,13,0) || RTLNX_RHEL_RANGE(8,6, 8,99)
+ #  if RTLNX_VER_MIN(5,15,0) || RTLNX_RHEL_RANGE(8,7, 8,99) || RTLNX_RHEL_MIN(9,1) || RTLNX_SUSE_MAJ_PREREQ(15,4)
+ 	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &driver);
+ #  else
+@@ -384,6 +390,9 @@ static struct drm_driver driver = {
+ 	.desc = DRIVER_DESC,
+ #if RTLNX_VER_MAX(6,14,0)
+ 	.date = DRIVER_DATE,
++#endif
++#if RTLNX_VER_MIN(6,15,0)
++	.fbdev_probe = vboxfb_create,
+ #endif
+ 	.major = DRIVER_MAJOR,
+ 	.minor = DRIVER_MINOR,
+@@ -404,7 +413,9 @@ static struct drm_driver driver = {
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+ #endif
+ 	.gem_prime_import = drm_gem_prime_import,
++#if RTLNX_VER_MAX(6,15,0)
+ 	.gem_prime_import_sg_table = vbox_gem_prime_import_sg_table,
++#endif
+ #if RTLNX_VER_MAX(6,6,0) && !RTLNX_RHEL_RANGE(9,4, 9,99) && !RTLNX_SUSE_MAJ_PREREQ(15, 6)
+ 	.gem_prime_mmap = vbox_gem_prime_mmap,
+ #endif
+--- a/vboxvideo/vbox_prime.c
++++ b/vboxvideo/vbox_prime.c
+@@ -49,18 +49,20 @@ struct sg_table *vbox_gem_prime_get_sg_table(struct drm_gem_object *obj)
+ 	return ERR_PTR(-ENOSYS);
+ }
+ 
+-#if RTLNX_VER_MAX(3,18,0) && !RTLNX_RHEL_MAJ_PREREQ(7,2)
++#if RTLNX_VER_MAX(6,15,0)
++# if RTLNX_VER_MAX(3,18,0) && !RTLNX_RHEL_MAJ_PREREQ(7,2)
+ struct drm_gem_object *vbox_gem_prime_import_sg_table(
+ 	struct drm_device *dev, size_t size, struct sg_table *table)
+-#else
++# else
+ struct drm_gem_object *vbox_gem_prime_import_sg_table(
+ 	struct drm_device *dev, struct dma_buf_attachment *attach,
+ 	struct sg_table *table)
+-#endif
++# endif
+ {
+ 	WARN_ONCE(1, "not implemented");
+ 	return ERR_PTR(-ENOSYS);
+ }
++#endif
+ 
+ void *vbox_gem_prime_vmap(struct drm_gem_object *obj)
+ {
+--- a/vboxvideo/vbox_drv.h
++++ b/vboxvideo/vbox_drv.h
+@@ -428,6 +428,8 @@ int vbox_framebuffer_init(struct drm_device *dev,
+ #endif
+ 			  struct drm_gem_object *obj);
+ 
++int vboxfb_create(struct drm_fb_helper *helper, struct drm_fb_helper_surface_size *sizes);
++
+ int vbox_fbdev_init(struct drm_device *dev);
+ void vbox_fbdev_fini(struct drm_device *dev);
+ void vbox_fbdev_set_base(struct vbox_private *vbox, unsigned long gpu_addr);
