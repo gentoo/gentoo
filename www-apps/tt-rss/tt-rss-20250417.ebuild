@@ -111,7 +111,7 @@ pkg_postinst() {
 		elog
 		elog "THIS IS NOT SUPPORTED BEYOND THIS VERSION."
 		elog
-		elog "Since 2025-04-14, tt-rss has dropped support for MySQL."
+		elog "Since 2025-04-17, tt-rss has dropped support for MySQL."
 		elog
 		elog "To upgrade, you need to migrate to PostgreSQL using this version first."
 		elog
