@@ -336,6 +336,9 @@ _qt6-build_sanitize_cpu_flags() {
 			x86-64-v2
 			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9
 			x86-64-v3
+			#    if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
+			#      define __EVEX512__ 1 /* removed in gcc-16 (bug #956750) */
+			#    endif
 			#    if (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512F__ + __AVX512VL__ + __EVEX256__ + __EVEX512__) == 7
 			x86-64-v4
 			#    endif
