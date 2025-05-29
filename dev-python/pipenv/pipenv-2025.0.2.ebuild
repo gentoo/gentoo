@@ -90,7 +90,7 @@ src_prepare() {
 	done
 
 	for fname in Makefile README.md vendor.txt; do
-		rm -v pipenv/vendor/"${fname}" || die "Failed removing pipenv/vendor/${fname}"
+		rm -v pipenv/vendor/"${fname}" || die "Failed removing pipenv/vendor/${fname}" || die
 	done
 
 	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" tests/unit/test_utils.py || die "Failed patching tests"
