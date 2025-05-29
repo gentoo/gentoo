@@ -214,7 +214,6 @@ src_compile() {
 
 		local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=${modlistargs} )
 		local modargs=(
-			CC="${KERNEL_CC}" # needed for above gnu17 workaround
 			IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
 			SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
 
