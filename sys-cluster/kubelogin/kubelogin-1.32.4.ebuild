@@ -13,6 +13,15 @@ LICENSE="Apache-2.0 BSD BSD-2 ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
+src_prepare() {
+	default
+
+	# -buildmode=pie not supported when -race is enabled
+	if [[ ${GOFLAGS} == *buildmode=pie* ]]; then
+		sed -e 's/ -race / /' -i Makefile || die
+	fi
+}
+
 src_compile() {
 	ego build -ldflags="-s -w" -o ./bin/${PN} .
 }
