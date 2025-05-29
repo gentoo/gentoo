@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="ncurses(+),threads(+)"
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="The ncurses client for canto-daemon"
 HOMEPAGE="https://codezen.org/canto-ng/"
