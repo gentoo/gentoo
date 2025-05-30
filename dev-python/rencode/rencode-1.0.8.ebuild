@@ -25,6 +25,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
