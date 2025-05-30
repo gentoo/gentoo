@@ -13,8 +13,11 @@ LICENSE="LGPL-2.1+"
 SLOT="1"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="+introspection test +vala"
-REQUIRED_USE="vala? ( introspection )"
+IUSE="gtk-doc +introspection test +vala"
+REQUIRED_USE="
+	gtk-doc? ( introspection )
+	vala? ( introspection )
+"
 
 RDEPEND="
 	>=dev-libs/glib-2.80.0:2
@@ -27,6 +30,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="
 	${PYTHON_DEPS}
+	gtk-doc? ( dev-util/gi-docgen )
 	vala? ( $(vala_depend) )
 	dev-util/glib-utils
 	sys-devel/gettext
@@ -48,7 +52,7 @@ src_configure() {
 		-Dprofiling=false
 		$(meson_feature introspection)
 		$(meson_use vala vapi)
-		-Ddocumentation=false # we ship pregenerated docs
+		$(meson_use gtk-doc documentation)
 		$(meson_use test tests)
 		-Dexamples=false
 	)
@@ -63,5 +67,8 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	insinto /usr/share/gtk-doc/html
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/libadwaita-${SLOT} "${ED}"/usr/share/gtk-doc/html/ || die
+	fi
 }
