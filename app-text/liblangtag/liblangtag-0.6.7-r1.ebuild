@@ -6,7 +6,7 @@ EAPI=8
 inherit xdg-utils
 
 DESCRIPTION="Interface library to access tags for identifying languages"
-HOMEPAGE="https://bitbucket.org/tagoh/liblangtag/wiki/Home"
+HOMEPAGE="https://bitbucket.org/tagoh/liblangtag"
 SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="|| ( LGPL-3 MPL-2.0 )"
