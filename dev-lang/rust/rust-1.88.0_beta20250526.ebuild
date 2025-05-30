@@ -10,11 +10,7 @@ RUST_MAX_VER=${PV%%_*}
 if [[ ${PV} == *9999* ]]; then
 	RUST_MIN_VER="1.86.0" # Update this as new `beta` releases come out.
 elif [[ ${PV} == *beta* ]]; then
-	# Enforce that `beta` is built from `stable`.
-	# While uncommon it is possible for feature changes within `beta` to result
-	# in an older snapshot being unable to build a newer one without modifying the sources.
-	# 'stable' releases should always be able to build a beta snapshot so just use those.
-	RUST_MAX_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).1"
+	RUST_MAX_VER="$(ver_cut 1).$(ver_cut 2).0"
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 else
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
@@ -183,10 +179,11 @@ toml_usex() {
 }
 
 fetch_and_unpack_live_rust_patches() {
-	local git_repo="https://anongit.gentoo.org/git/proj/rust-patches.git"
+	local git_repo="https://gitweb.gentoo.org/proj/rust-patches.git"
 	local branch_name="master"
 
-	# First we need to get the commit hash for our branch
+	# First we need to get the commit hash for our branch; we can use `git ls-remote` to do this since we're
+	# only ever doing so in live ebuild mode.
 	local commit_hash
 	commit_hash=$(git ls-remote "${git_repo}" "refs/heads/${branch_name}" | \
 					grep "refs/heads/${branch_name}" | \
@@ -197,13 +194,13 @@ fetch_and_unpack_live_rust_patches() {
 	einfo "Latest rust-patches commit: ${commit_hash}"
 	# Now we can fetch the archive from the gitweb URL.
 	curl --progress-bar -L \
-		"https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${commit_hash}.tar.bz2" \
+		"https://anongit.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${commit_hash}.tar.bz2" \
 		-o "${T}/rust-patches-${commit_hash}.tar.bz2" ||
 			die "Failed to fetch rust-patches archive from ${git_repo} for commit ${commit_hash}"
 
 	# Now we can unpack the archive into the WORKDIR in its expected location.
 	mkdir -p "${WORKDIR}/rust-patches-${PVR}" || die
-	tar -xjf "${T}/rust-patches-${commit_hash}.tar.bz2" -C "${WORKDIR}/rust-patches-${PVR}" --strip-components=1 ||
+	tar -xjf "${T}/rust-patches-${commit_hash}.tar.bz2" -C "${WORKDIR}/rust-patches-${PVR}" --strip-components=1 || \
 		die "Failed to unpack rust-patches archive into ${WORKDIR}/rust-patches-${PVR}"
 }
 
