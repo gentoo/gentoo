@@ -374,13 +374,6 @@ net-im/yowsup
 =dev-libs/libixion-0.20.0
 =dev-util/mdds-3.0.0
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2025-02-21)
-# Shiboken and Pyside-tools have been merged into dev-python/pyside
-# as of version 6.8.2. Pyside-tools are useable when the "tools" USE
-# flag is enabled.
-dev-python/shiboken6
-dev-python/pyside6-tools
-
 # Maciej Barć <xgqt@gentoo.org> (2025-02-12)
 # Masked for testing. Fails to update from previous version. See bug #949626.
 >=x11-themes/fluent-icon-theme-2025.02.10
