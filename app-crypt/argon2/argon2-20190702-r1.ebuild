@@ -1,20 +1,23 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
+MY_P=phc-winner-${P}
 DESCRIPTION="Password hashing software that won the Password Hashing Competition (PHC)"
-HOMEPAGE="https://github.com/P-H-C/phc-winner-argon2"
-SRC_URI="https://github.com/P-H-C/phc-winner-argon2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/P-H-C/phc-winner-argon2/"
+SRC_URI="
+	https://github.com/P-H-C/phc-winner-argon2/archive/${PV}.tar.gz
+		-> ${MY_P}.tar.gz
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="|| ( Apache-2.0 CC0-1.0 )"
 SLOT="0/1"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="static-libs"
-
-S="${WORKDIR}/phc-winner-${P}"
 
 DOCS=( argon2-specs.pdf CHANGELOG.md README.md )
 
@@ -44,16 +47,26 @@ src_prepare() {
 }
 
 src_compile() {
-	emake OPTTEST="${OPTTEST}" LIBRARY_REL="$(get_libdir)" PREFIX="${EPREFIX}/usr" \
+	emake \
+		OPTTEST="${OPTTEST}" \
+		LIBRARY_REL="$(get_libdir)" \
+		PREFIX="${EPREFIX}/usr" \
 		ARGON2_VERSION="0~${PV}"
 }
 
 src_test() {
-	emake OPTTEST="${OPTTEST}" test
+	emake \
+		OPTTEST="${OPTTEST}" \
+		test
 }
 
 src_install() {
-	emake OPTTEST="${OPTTEST}" DESTDIR="${ED}" LIBRARY_REL="$(get_libdir)" install
+	emake \
+		OPTTEST="${OPTTEST}" \
+		DESTDIR="${ED}" \
+		LIBRARY_REL="$(get_libdir)" \
+		install
+
 	einstalldocs
 	doman man/argon2.1
 }
