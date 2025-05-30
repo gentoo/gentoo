@@ -244,11 +244,6 @@ app-misc/flirc
 # Removal on 2025-06-02.  Bug #950475, #952653.
 sci-chemistry/modeller
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-03)
-# Dead upstream since 2014, depends on Qt5. Bug #949079
-# Removal  on 2025-05-31
-media-video/ffdiaporama
-
 # Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
 # Ancient version in tree, upstream discontinued to develop
 # a server for taskwarrior a long time ago
