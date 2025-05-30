@@ -22,7 +22,7 @@ S="${WORKDIR}"/${P}
 
 LICENSE="GPL-3"
 SLOT="0/9999"
-IUSE="bluetooth +cxx ftdi hidapi java nettle parport python ruby serial test +udev usb"
+IUSE="bluetooth +cxx ftdi gpib hidapi java nettle parport python ruby serial test +udev usb"
 REQUIRED_USE="java? ( cxx )
 	python? ( cxx ${PYTHON_REQUIRED_USE} )
 	ruby? ( cxx || ( $(ruby_get_use_targets) ) )"
@@ -33,9 +33,11 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32.0
 	>=dev-libs/libzip-0.8:=
+	sys-libs/zlib
 	bluetooth? ( >=net-wireless/bluez-4.0:= )
 	cxx? ( dev-cpp/glibmm:2 )
 	ftdi? ( dev-embedded/libftdi:1 )
+	gpib? ( sci-libs/linux-gpib )
 	hidapi? ( >=dev-libs/hidapi-0.8.0 )
 	nettle? ( dev-libs/nettle:= )
 	parport? ( sys-libs/libieee1284 )
@@ -94,6 +96,7 @@ src_prepare() {
 
 sigrok_src_configure() {
 	local myeconfargs=(
+		--enable-all-drivers
 		--disable-python
 		--disable-ruby
 		$(use_with bluetooth libbluez)
