@@ -28,6 +28,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	sed -i "s#lib/udev/rules.d/#$(get_udevdir)/rules.d#" CMakeLists.txt || die "Failed correcting udev rules directory"
+	sed -i "s#@GIT_VERSION@#${PV}#" src/version.h.in || die "Failed setting version"
 	cmake_src_prepare
 }
 
