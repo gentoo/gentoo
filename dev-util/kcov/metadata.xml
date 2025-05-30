@@ -32,12 +32,6 @@
 		la collecte d'information de couverture sans variations d'un
 		compilateur à l'autre.
 	</longdescription>
-	<use>
-		<flag name="binutils">Use <pkg>sys-libs/binutils-libs</pkg> for `--verify` support</flag>
-	</use>
-	<use lang="fr">
-		<flag name="binutils">Utiliser <pkg>sys-libs/binutils-libs</pkg> pour le support de `--verify`</flag>
-	</use>
 	<upstream>
 		<maintainer status="active">
 			<name>Simon Kågström</name>
