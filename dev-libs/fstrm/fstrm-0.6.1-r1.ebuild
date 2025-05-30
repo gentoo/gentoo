@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools multilib-minimal
 
@@ -25,12 +25,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	econf \
-		--disable-static \
-		$(use_enable utils programs)
+	econf $(use_enable utils programs)
 }
 
 multilib_src_install_all() {
 	default
-	find "${ED}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -type f -delete || die
 }
