@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Display bandwidth usage on an interface"
 HOMEPAGE="https://www.ex-parrot.com/pdw/iftop/ https://code.blinkace.com/pdw/iftop"
@@ -37,6 +37,9 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	#bug 944029
+	append-cflags -std=gnu17
 
 	eautoreconf
 }
