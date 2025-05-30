@@ -210,10 +210,6 @@ dev-util/intel_clc
 net-libs/stem
 net-misc/nyx
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-08)
-# No more revdeps. Removal on 2025-05-31.
-kde-frameworks/kinit
-
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # Vulnerable, EOL branch of dev-python/django.  Bug #955606.
 # Pleas upgrade to 5.1, 5.2 LTS, or downgrade to 4.2 LTS.
