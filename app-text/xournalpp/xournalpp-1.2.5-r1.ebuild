@@ -53,7 +53,7 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION="$(lua_get_version)"
-		-DENABLE_GTEST=ON
+		-DENABLE_GTEST=$(usex test)
 	)
 
 	cmake_src_configure
