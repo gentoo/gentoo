@@ -1,0 +1,108 @@
+From 664ca532ed0ce583c84ecafd23e91d38b747791c Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Mon, 26 May 2025 17:51:21 +0000
+Subject: [PATCH] daemon: Fix triggering an assert in KConfigGroup
+
+If there is no current activity, KActivities::Consumer::currentActivity()
+can return an empty string. The problem with that is that the KConfigGroup
+doesn't allow empty strings to be used as group names, it has an assert
+for that.
+
+This change puts relevant code behind a guard to avoid triggering the
+assert in KConfigGroup.
+
+SENTRY: POWERDEVIL-161
+
+
+(cherry picked from commit c8ced4c4097c1db97e1c537f7f1869c225227b09)
+
+Co-authored-by: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+---
+ daemon/powerdevilcore.cpp | 62 ++++++++++++++++++++-------------------
+ 1 file changed, 32 insertions(+), 30 deletions(-)
+
+diff --git a/daemon/powerdevilcore.cpp b/daemon/powerdevilcore.cpp
+index 3f6801046..fc154cab4 100644
+--- a/daemon/powerdevilcore.cpp
++++ b/daemon/powerdevilcore.cpp
+@@ -300,17 +300,6 @@ void Core::loadProfile(bool force)
+ {
+     QString profileId;
+ 
+-    // Check the activity in which we are in
+-    QString activity = m_activityConsumer->currentActivity();
+-    qCDebug(POWERDEVIL) << "Currently using activity " << activity;
+-
+-    PowerDevil::ActivitySettings activitySettings(activity);
+-
+-    qCDebug(POWERDEVIL) << "Settings for loaded activity:";
+-    for (KConfigSkeletonItem *item : activitySettings.items()) {
+-        qCDebug(POWERDEVIL) << item->key() << "=" << item->property();
+-    }
+-
+     // let's load the current state's profile
+     if (m_batteriesPercent.isEmpty()) {
+         qCDebug(POWERDEVIL) << "No batteries found, loading AC";
+@@ -376,27 +365,40 @@ void Core::loadProfile(bool force)
+         Q_EMIT profileChanged(m_currentProfile);
+     }
+ 
+-    // Now... any special behaviors we'd like to consider?
+-    if (activitySettings.inhibitSuspend()) {
+-        qCDebug(POWERDEVIL) << "Activity triggers a suspend inhibition"; // debug hence not sleep
+-        // Trigger a special inhibition - if we don't have one yet
+-        if (!m_sessionActivityInhibit.contains(activity)) {
+-            int cookie = PolicyAgent::instance()->AddInhibition(PolicyAgent::InterruptSession,
+-                                                                i18n("Activity Manager"),
+-                                                                i18n("This activity's policies prevent the system from going to sleep"));
++    // Check the activity in which we are in
++    const QString activity = m_activityConsumer->currentActivity();
++    qCDebug(POWERDEVIL) << "Currently using activity" << activity;
++
++    if (!activity.isEmpty()) {
++        PowerDevil::ActivitySettings activitySettings(activity);
+ 
+-            m_sessionActivityInhibit.insert(activity, cookie);
++        qCDebug(POWERDEVIL) << "Settings for loaded activity:";
++        for (KConfigSkeletonItem *item : activitySettings.items()) {
++            qCDebug(POWERDEVIL) << item->key() << "=" << item->property();
+         }
+-    }
+-    if (activitySettings.inhibitScreenManagement()) {
+-        qCDebug(POWERDEVIL) << "Activity triggers a screen management inhibition";
+-        // Trigger a special inhibition - if we don't have one yet
+-        if (!m_screenActivityInhibit.contains(activity)) {
+-            int cookie = PolicyAgent::instance()->AddInhibition(PolicyAgent::ChangeScreenSettings,
+-                                                                i18n("Activity Manager"),
+-                                                                i18n("This activity's policies prevent screen power management"));
+-
+-            m_screenActivityInhibit.insert(activity, cookie);
++
++        // Now... any special behaviors we'd like to consider?
++        if (activitySettings.inhibitSuspend()) {
++            qCDebug(POWERDEVIL) << "Activity triggers a suspend inhibition"; // debug hence not sleep
++            // Trigger a special inhibition - if we don't have one yet
++            if (!m_sessionActivityInhibit.contains(activity)) {
++                int cookie = PolicyAgent::instance()->AddInhibition(PolicyAgent::InterruptSession,
++                                                                    i18n("Activity Manager"),
++                                                                    i18n("This activity's policies prevent the system from going to sleep"));
++
++                m_sessionActivityInhibit.insert(activity, cookie);
++            }
++        }
++        if (activitySettings.inhibitScreenManagement()) {
++            qCDebug(POWERDEVIL) << "Activity triggers a screen management inhibition";
++            // Trigger a special inhibition - if we don't have one yet
++            if (!m_screenActivityInhibit.contains(activity)) {
++                int cookie = PolicyAgent::instance()->AddInhibition(PolicyAgent::ChangeScreenSettings,
++                                                                    i18n("Activity Manager"),
++                                                                    i18n("This activity's policies prevent screen power management"));
++
++                m_screenActivityInhibit.insert(activity, cookie);
++            }
+         }
+     }
+ 
+-- 
+GitLab
+
