@@ -5,14 +5,6 @@
 		<email>williamh@gentoo.org</email>
 		<name>William Hubbs</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>davidroman96@gmail.com</email>
-		<name>David Roman</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription lang="en">
 		InfluxDB is an open source time series database with no external
 		dependencies. It is useful for recording metrics, events, and
