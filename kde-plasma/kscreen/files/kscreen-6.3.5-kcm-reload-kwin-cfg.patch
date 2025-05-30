@@ -1,0 +1,63 @@
+From 755b84e51b71c33e0099cc42d3df12c05b6beb03 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@gmail.com>
+Date: Fri, 23 May 2025 16:55:04 +0200
+Subject: [PATCH] kcm: reload kwin config when tearing option is changed
+
+Ideally, we'd integrate it into the normal output configuration protocol, but for
+backporting that's not a usable approach
+
+BUG: 504634
+BUG: 496970
+
+
+(cherry picked from commit ca3a700f167232408666e68f648c8eb028cad7d5)
+
+Co-authored-by: Xaver Hugl <xaver.hugl@kde.org>
+---
+ kcm/kcm.cpp | 10 ++++++++++
+ kcm/kcm.h   |  1 +
+ 2 files changed, 11 insertions(+)
+
+diff --git a/kcm/kcm.cpp b/kcm/kcm.cpp
+index cc9d1cf89..a0a0f4b68 100644
+--- a/kcm/kcm.cpp
++++ b/kcm/kcm.cpp
+@@ -226,6 +226,12 @@ void KCMKScreen::doSave()
+         // enough time to change configuration.
+         QTimer::singleShot(1000, this, updateInitialData);
+     }
++
++    if (m_needsKwinConfigReload) {
++        m_needsKwinConfigReload = false;
++        QDBusMessage message = QDBusMessage::createSignal("/KWin", "org.kde.KWin", "reloadConfig");
++        QDBusConnection::sessionBus().send(message);
++    }
+ }
+ 
+ bool KCMKScreen::backendReady() const
+@@ -523,6 +529,10 @@ bool KCMKScreen::xwaylandClientsScaleSupported() const
+ 
+ void KCMKScreen::setAllowTearing(bool allow)
+ {
++    if (KWinCompositingSetting::self()->allowTearing() == allow) {
++        return;
++    }
++    m_needsKwinConfigReload = true;
+     KWinCompositingSetting::self()->setAllowTearing(allow);
+     Q_EMIT changed();
+ }
+diff --git a/kcm/kcm.h b/kcm/kcm.h
+index c0046bb17..a124ca51e 100644
+--- a/kcm/kcm.h
++++ b/kcm/kcm.h
+@@ -135,6 +135,7 @@ private:
+     bool m_settingsReverted = false;
+     bool m_stopUpdatesFromBackend = false;
+     bool m_configNeedsSave = false;
++    bool m_needsKwinConfigReload = false;
+ 
+     QSortFilterProxyModel *m_outputProxyModel;
+ 
+-- 
+GitLab
+
