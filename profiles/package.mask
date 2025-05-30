@@ -122,7 +122,7 @@ x11-misc/meteo
 # Sam James <sam@gentoo.org> (2025-05-22)
 # Introduces REQUIRED_USE that needs more discussion (bug #956402)
 =media-gfx/gimp-3.0.2-r2
-=media-gfx/gimp-3.0.4
+=media-gfx/gimp-3.0.4-r1
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-20)
 # Unaddressed pending version bumps for almost 2 years, stuck on EAPI-7.
