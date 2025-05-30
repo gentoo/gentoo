@@ -161,3 +161,6 @@ xemacs
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Requires 32bit alignment, so we mask it for the moment
 python_targets_python3_13
+python_targets_python3_13t
+python_targets_python3_14
+python_targets_python3_14t
