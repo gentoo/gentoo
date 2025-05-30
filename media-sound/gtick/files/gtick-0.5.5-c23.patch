@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/946659
+--- a/src/optionlexer.h
++++ b/src/optionlexer.h
+@@ -24,7 +24,7 @@
+ #define OPTIONLEXER_H
+ 
+ extern FILE *option_in;
+-int option_parse();
++int option_parse(void *option_list);
+ 
+ void option_lexer_init(char* filename);
+ void option_lexer_deinit();
