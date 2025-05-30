@@ -1,0 +1,22 @@
+diff --git i/squashfs-tools/unsquashfs.c w/squashfs-tools/unsquashfs.c
+index 139e329..3ff75cf 100644
+--- i/squashfs-tools/unsquashfs.c
++++ w/squashfs-tools/unsquashfs.c
+@@ -146,7 +146,7 @@ void progress_bar(long long current, long long max, int columns);
+ 
+ #define MAX_LINE 16384
+ 
+-void sigwinch_handler()
++void sigwinch_handler(int a)
+ {
+ 	struct winsize winsize;
+ 
+@@ -160,7 +160,7 @@ void sigwinch_handler()
+ }
+ 
+ 
+-void sigalrm_handler()
++void sigalrm_handler(int a)
+ {
+ 	rotate = (rotate + 1) % 4;
+ }
