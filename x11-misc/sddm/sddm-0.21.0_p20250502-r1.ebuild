@@ -102,10 +102,16 @@ src_configure() {
 		-DSYSTEMD_TMPFILES_DIR="/usr/lib/tmpfiles.d"
 		-DNO_SYSTEMD=$(usex !systemd)
 		-DUSE_ELOGIND=$(usex elogind)
-		# try to use VT7 first.
-		# Keep the same as CHECKVT from display-manager
-		-DSDDM_INITIAL_VT=7
 	)
+
+	if use elogind; then
+		mycmakeargs+=(
+			# try to use VT7 first.
+			# Keep the same as CHECKVT from display-manager
+			-DSDDM_INITIAL_VT=7
+		)
+	fi
+
 	cmake_src_configure
 }
 
