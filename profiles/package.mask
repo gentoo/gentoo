@@ -280,12 +280,6 @@ games-board/pokerth
 # Bug #949025; removal on 2025-05-31
 x11-misc/qcomicbook
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
-# Package destabilisation mask. 1.0_p20241107 is in ~arch but as snapshot
-# with long-term pending Qt6 patches on top it will not be stabilised.
-# 1.0 release was almost 8 years old already.
-~media-gfx/fotowall-1.0
-
 # Matt Jolly <kangie@gentoo.org> (2025-04-28)
 # Unmaintained in Gentoo, depends on masked x11-wm/fvwm,
 # SRC_URI uses mirror://gentoo and the files don't exist on mirrors.
