@@ -18,7 +18,10 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 # in both cases they should be already present if DE supports them
 RDEPEND="
 	|| (
-		media-sound/pulseaudio-daemon
+		(
+			media-libs/libpulse
+			media-sound/pulseaudio-daemon
+		)
 		media-sound/pulseaudio[daemon(+)]
 	)
 "
