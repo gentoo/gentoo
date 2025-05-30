@@ -1,33 +1,29 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="LibTomCrypt is a comprehensive, modular and portable cryptographic toolkit"
-HOMEPAGE="https://www.libtom.net/LibTomCrypt/ https://github.com/libtom/libtomcrypt"
+HOMEPAGE="
+	https://www.libtom.net/LibTomCrypt/
+	https://github.com/libtom/libtomcrypt/
+"
 SRC_URI="
 	https://github.com/libtom/${PN}/releases/download/v${PV}/crypt-${PV}.tar.xz
-		-> ${P}.tar.xz"
+		-> ${P}.tar.xz
+"
 
 LICENSE="|| ( WTFPL-2 public-domain )"
-# Current SONAME is 1
-# Please bump when the ABI changes upstream
-# Helpful site:
+# SONAME -- Please bump when the ABI changes upstream
 # https://abi-laboratory.pro/index.php?view=timeline&l=libtomcrypt
 SLOT="0/1"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+gmp +libtommath tomsfastmath"
-
-# Enforce at least one math provider
-# bug #772935
+# Enforce at least one math provider, bug #772935
 REQUIRED_USE="|| ( gmp libtommath tomsfastmath )"
 
-BDEPEND="
-	dev-build/libtool
-	virtual/pkgconfig
-"
 RDEPEND="
 	gmp? ( dev-libs/gmp:= )
 	libtommath? ( dev-libs/libtommath:= )
@@ -36,6 +32,10 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-build/libtool
+"
+BDEPEND="
+	dev-build/libtool
+	virtual/pkgconfig
 "
 
 PATCHES=(
