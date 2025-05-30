@@ -249,11 +249,6 @@ sci-chemistry/modeller
 # Removal  on 2025-05-31
 media-video/ffdiaporama
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-03)
-# Dead upstream since 2011, relies on downstream patching even for Qt5.
-# No one else packages this. Bugs #644482, #953769; removal on 2025-05-31
-sci-electronics/osqoop
-
 # Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
 # Ancient version in tree, upstream discontinued to develop
 # a server for taskwarrior a long time ago
