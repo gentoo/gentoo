@@ -5,10 +5,6 @@
     <email>sci-astronomy@gentoo.org</email>
     <name>Gentoo Astronomy Project</name>
   </maintainer>
-  <maintainer type="person" proxied="yes">
-    <email>davidroman96@gmail.com</email>
-    <name>David Roman</name>
-  </maintainer>
   <longdescription lang="en">
   WCSLIB is a C library, supplied with a full set of Fortran wrappers,
   that implements the "World Coordinate System" (WCS) convention in FITS
