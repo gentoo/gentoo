@@ -1,0 +1,26 @@
+From https://github.com/umurmur/umurmur/pull/216
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Fri, 30 May 2025 12:30:48 +0300
+Subject: [PATCH] Use configuration module from MbedTLS 3.6
+
+Starting from 3.6.0, MbedTLS offers cmake configuration for easy integration.
+Old versions of MbedTLS reached EOL, restricting minimal version to 3.6 LTS branch.
+--- a/cmake/Modules/SelectTLSBackend.cmake
++++ b/cmake/Modules/SelectTLSBackend.cmake
+@@ -23,16 +23,11 @@ function(SelectTLSBackend SSL)
+     endif()
+   elseif("${SSL}" STREQUAL "mbedtls")
+-    find_package(mbedTLS REQUIRED)
++    find_package(MbedTLS 3.6 REQUIRED)
+ 
+-    if(MBEDTLS_FOUND)
+-      set(USE_MBEDTLS ON PARENT_SCOPE)
+-
+-      set(LIBRARIES ${MBEDTLS_LIBRARIES})
+-      set(INCLUDE_DIR ${MBEDTLS_INCLUDE_DIR})
+-      set(LIBRARY_DIR ${MBEDTLS_LIB_DIR})
+-    endif()
++    set(USE_MBEDTLS ON PARENT_SCOPE)
++    set(LIBRARIES MbedTLS::mbedtls)
+   elseif("${SSL}" STREQUAL "gnutls")
+     find_package(GnuTLS 3 REQUIRED)
