@@ -275,11 +275,6 @@ x11-apps/radeon-profile-daemon
 # other bugs. Bugs #946991, #949076, #943002; removal on 2025-05-31
 games-board/pokerth
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-01)
-# Dead upstream for many years, depends on Qt5 and app-text/poppler[qt5].
-# Bug #949025; removal on 2025-05-31
-x11-misc/qcomicbook
-
 # Matt Jolly <kangie@gentoo.org> (2025-04-28)
 # Unmaintained in Gentoo, depends on masked x11-wm/fvwm,
 # SRC_URI uses mirror://gentoo and the files don't exist on mirrors.
