@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib
 
 DESCRIPTION="Secure Reliable Transport (SRT) library and tools"
 HOMEPAGE="https://github.com/Haivision/srt"
@@ -39,10 +39,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# ODR violations
-	# https://github.com/Haivision/srt/issues/2145 (bug #861584)
-	filter-lto
-
 	local mycmakeargs=(
 		-DUSE_CXX_STD=c++14 # Required for gtest
 		-DENABLE_STATIC=OFF
