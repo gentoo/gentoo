@@ -42,7 +42,7 @@ BDEPEND="
 	dev-python/versioneer[${PYTHON_USEDEP}]
 	test? (
 		dev-python/magic-wormhole-mailbox-server[${PYTHON_USEDEP}]
-		~dev-python/magic-wormhole-transit-relay-0.3.1[${PYTHON_USEDEP}]
+		dev-python/magic-wormhole-transit-relay[${PYTHON_USEDEP}]
 		dev-python/pytest-twisted[${PYTHON_USEDEP}]
 	)
 "
