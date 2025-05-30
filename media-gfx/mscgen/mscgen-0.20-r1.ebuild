@@ -26,9 +26,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-# Workaround for bug #379279
-#RESTRICT="test"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.20-escape.patch
 	"${FILESDIR}"/${PN}-0.20-uninitialized-ymax.patch
