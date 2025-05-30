@@ -604,11 +604,12 @@ pkg_postinst() {
 		ewarn
 		ewarn "WARNING:"
 		ewarn
-		ewarn "*If* using a hybrid Intel+NVIDIA laptop, be warned that several users"
-		ewarn "have reported issues where the GSP firmware fails to initialize when"
-		ewarn "USE=kernel-open is enabled with ${PN}-575.x. If affected,"
-		ewarn "either try to disable the USE or stick to ${PN}-570.x for now."
-		ewarn "Note that blackwell cards (aka 50xx+) require USE=kernel-open, so"
-		ewarn "downgrading will be the only option there for now."
+		ewarn "*If* using a hybrid Intel+NVIDIA laptop, be warned that users have"
+		ewarn "reported that the GSP firmware could fail to initialize (for some"
+		ewarn "setups) when USE=kernel-open is enabled with ${PN}-575.x."
+		ewarn "*If* X/wayland fails to come up and boot messages have GSP errors,"
+		ewarn "try to either disable USE=kernel-open or stay on ${PN}-570.x"
+		ewarn "for now. Note that blackwell cards (aka 50xx+) require USE=kernel-open,"
+		ewarn "so downgrading will be the only option there for now."
 	fi
 }
