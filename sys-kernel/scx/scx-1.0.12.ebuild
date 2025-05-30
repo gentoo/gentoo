@@ -17,6 +17,8 @@ HOMEPAGE="https://github.com/sched-ext/scx"
 SRC_URI="
 	https://github.com/sched-ext/scx/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
+	https://github.com/sched-ext/scx/commit/d58dffa2d02557b11a3a0c3f780a48234e868065.patch
+		-> ${PN}-1.0.12-remove-unnecessary-rustc-requirement.patch
 "
 if [[ ${PKGBUMPING} != ${PVR} ]]; then
 	SRC_URI+="
@@ -61,6 +63,7 @@ CONFIG_CHECK="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.12-musl-ioctl.patch"
+	"${DISTDIR}/${PN}-1.0.12-remove-unnecessary-rustc-requirement.patch"
 )
 
 QA_PREBUILT="/usr/bin/scx_loader"
