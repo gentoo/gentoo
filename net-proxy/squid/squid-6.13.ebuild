@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,18 +10,21 @@ DESCRIPTION="Full-featured web proxy cache"
 HOMEPAGE="https://www.squid-cache.org/"
 
 MY_PV_MAJOR=$(ver_cut 1)
+MY_PV_MINOR=$(ver_cut 2)
 # Upstream patch ID for the most recent bug-fixed update to the formal release.
 #r=-20181117-r0022167
 r=
 if [[ -z ${r} ]]; then
 	SRC_URI="
-		http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz
+		https://github.com/squid-cache/squid/releases/download/SQUID_${MY_PV_MAJOR}_${MY_PV_MINOR}/${P}.tar.xz
 		https://dev.gentoo.org/~juippis/distfiles/squid-6.9-memleak_fix.patch
-		verify-sig? ( http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}.tar.xz.asc )
+		verify-sig? ( https://github.com/squid-cache/squid/releases/download/SQUID_${MY_PV_MAJOR}_${MY_PV_MINOR}/${P}.tar.xz.asc )
 	"
 else
-	SRC_URI="http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}${r}.tar.bz2
-		https://dev.gentoo.org/~juippis/distfiles/squid-6.9-memleak_fix.patch"
+	SRC_URI="
+		http://static.squid-cache.org/Versions/v${MY_PV_MAJOR}/${P}${r}.tar.bz2
+		https://dev.gentoo.org/~juippis/distfiles/squid-6.9-memleak_fix.patch
+	"
 	S="${S}${r}"
 fi
 
@@ -85,6 +88,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.2-gentoo.patch
 	"${FILESDIR}"/${PN}-4.17-use-system-libltdl.patch
 	"${DISTDIR}"/${PN}-6.9-memleak_fix.patch
+	"${FILESDIR}"/${PN}-6.12-ar.patch
 )
 
 pkg_pretend() {
@@ -140,6 +144,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #921688
+	append-cxxflags -std=gnu++17
+
 	local myeconfargs=(
 		--cache-file="${S}"/config.cache
 
