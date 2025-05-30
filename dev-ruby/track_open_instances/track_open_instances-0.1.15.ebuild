@@ -17,7 +17,7 @@ SRC_URI="https://github.com/main-branch/track_open_instances/archive/refs/tags/v
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 all_ruby_prepare() {
 	sed -e '/simplecov/ s:^:#:' \
