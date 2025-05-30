@@ -12,8 +12,9 @@ SRC_URI="https://github.com/elFarto/nvidia-vaapi-driver/archive/refs/tags/v${PV}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+gstreamer"
 
-RDEPEND="media-libs/gst-plugins-bad
+RDEPEND="gstreamer? ( media-libs/gst-plugins-bad )
 	media-libs/libglvnd
 	>=media-libs/libva-1.8.0
 	>=x11-libs/libdrm-2.4.60"
