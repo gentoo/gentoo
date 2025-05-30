@@ -36,7 +36,6 @@ BDEPEND="
 		dev-libs/libxslt
 	)
 	test? (
-		dev-util/cppcheck
 		dev-util/cppunit
 	)
 "
