@@ -23,11 +23,10 @@ IUSE="examples gtk-doc +introspection"
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libgudev
-	dev-libs/nss
+	>=dev-libs/openssl-3:=
 	dev-python/pygobject
 	dev-libs/libgusb
 	x11-libs/pixman
-	dev-libs/openssl
 	examples? (
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3
