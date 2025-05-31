@@ -6,7 +6,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gettext.asc
-inherit java-pkg-opt-2 libtool multilib-minimal verify-sig toolchain-funcs
+inherit flag-o-matic java-pkg-opt-2 libtool multilib-minimal verify-sig toolchain-funcs
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -102,6 +102,9 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# see https://bugs.gentoo.org/955689
+	append-flags -Wno-error=format-security
+
 	local myconf=(
 		# switches common to runtime and top-level
 		--cache-file="${BUILD_DIR}"/config.cache
