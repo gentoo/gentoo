@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn"
-HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisoburn"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisoburn https://dev.lovelyhq.com/libburnia/libisoburn"
 SRC_URI="https://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
