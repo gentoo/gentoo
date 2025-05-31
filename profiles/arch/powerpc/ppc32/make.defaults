@@ -31,7 +31,3 @@ IUSE_IMPLICIT="abi_ppc_32"
 
 # Enable abi_ppc_32 for packages that don't have it forced.
 ABI_PPC="32"
-
-# Hans de Graaff <graaff@gentoo.org> (2025-05-31)
-# Temporary mask to facilitate stabling ruby33 in bug #956881
-RUBY_TARGETS="ruby32"
