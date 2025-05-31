@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,7 @@ DEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
 	app-text/ghostscript-gpl
+	app-arch/zstd:=
 	dev-libs/libpcre2:=
 	>=dev-libs/tre-0.8.0_p20210321[approx]
 	net-misc/curl
@@ -54,7 +55,10 @@ DEPEND="
 	png? ( media-libs/libpng:= )
 	readline? ( sys-libs/readline:= )
 	tiff? ( media-libs/tiff:= )
-	tk? ( dev-lang/tk:= )
+	tk? (
+		dev-lang/tcl:=
+		dev-lang/tk:=
+	)
 	X? (
 		x11-libs/libX11
 		x11-libs/libXmu
@@ -137,9 +141,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug #944066 (try reomving after 4.4.2)
-	append-cflags -std=gnu17
-
 	filter-ldflags -Wl,-Bdirect -Bdirect
 
 	econf \
