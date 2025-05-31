@@ -199,6 +199,9 @@ multilib_src_configure() {
 			"${S}"/opcodes/Makefile.in || die
 	fi
 
+	# Avoid a QA notice about missing makeinfo.
+	# bug #955546
+	export MAKEINFO=:
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
 	# Prevent makeinfo from running as we don't build docs here.
