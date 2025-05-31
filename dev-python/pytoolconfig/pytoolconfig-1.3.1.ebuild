@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3 pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -21,9 +21,6 @@ KEYWORDS="amd64 arm64 ~ppc64 x86"
 RDEPEND="
 	>=dev-python/packaging-23.2[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-3.11.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-2.0.1[${PYTHON_USEDEP}]
-	' 3.10 )
 "
 BDEPEND="
 	test? (
