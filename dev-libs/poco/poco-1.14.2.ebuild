@@ -12,8 +12,8 @@ S="${WORKDIR}/${PN}-${P}-release"
 
 LICENSE="Boost-1.0"
 # SHARED_LIBRARY_VERSION -> "${S}"/libversion
-SLOT="0/110"
-KEYWORDS="amd64 arm arm64 ppc64 x86"
+SLOT="0/112"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="7z activerecord avahi cppparser +crypt +data examples +file2pagecompiler iodbc mariadb +mongodb mysql +net odbc +pagecompiler pdf pocodoc postgres prometheus sqlite test +util +xml +zip"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -59,15 +59,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-missing-utf8proc.patch"
-)
-
 src_prepare() {
 	cmake_src_prepare
 
 	if [[ ${SLOT} != 0/$(< "${S}"/libversion) ]] ; then
-		die "Please update subslot in ebuild to the version in ${S}/libversion!"
+		die "Please update subslot in ebuild to the version in ${S}/libversion"
 	fi
 
 	if use test ; then
@@ -80,8 +76,6 @@ src_prepare() {
 		sed -i -e '/CppUnit_addTest.*testExpand/d' \
 			Foundation/testsuite/src/PathTest.cpp || die
 	fi
-
-	sed -i 's/ENABLE_DNSSD_AVHAI/ENABLE_DNSSD_AVAHI/' DNSSD/CMakeLists.txt || die
 }
 
 src_configure() {
