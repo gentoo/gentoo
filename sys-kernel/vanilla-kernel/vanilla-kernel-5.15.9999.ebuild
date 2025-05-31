@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KERNEL_IUSE_MODULES_SIGN=1
+
 inherit git-r3 kernel-build toolchain-funcs
 
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
