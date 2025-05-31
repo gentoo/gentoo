@@ -19,7 +19,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3 CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="gstreamer spell"
 
 # note: some dependencies are optional but if they are found without [vala],
