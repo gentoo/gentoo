@@ -1,0 +1,81 @@
+From 21521a68371f0a02910a06b039ce131fe3b1ccec Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Thu, 8 May 2025 22:54:20 +0200
+Subject: [PATCH 1/2] feat: replace nltk with pyspellchecker
+
+Possible fix for #742
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ CHANGELOG.md                 |  5 +++++
+ pyproject.toml               |  2 +-
+ safety/tool/typosquatting.py | 16 +++++++++-------
+ 3 files changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 90a9dd5..c1bfc7e 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
+ The format is partly based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and [PEP 440](https://peps.python.org/pep-0440/)
+ 
++## [Unreleased]
++
++### Fix
++
++ - replace nltk with pyspellcheck to detect typos in package names.
+ 
+ ## 3.5.0 (2025-05-07)
+ 
+diff --git a/pyproject.toml b/pyproject.toml
+index 0574892..ea0bb4d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -51,7 +51,7 @@ dependencies = [
+   "setuptools>=65.5.1",
+   "typer>=0.12.1",
+   "typing-extensions>=4.7.1",
+-  "nltk>=3.9",
++  "pyspellchecker",
+   "tomli; python_version < '3.11'",
+   "tomlkit"
+ ]
+diff --git a/safety/tool/typosquatting.py b/safety/tool/typosquatting.py
+index 491b501..6da90b3 100644
+--- a/safety/tool/typosquatting.py
++++ b/safety/tool/typosquatting.py
+@@ -3,8 +3,8 @@ Typosquatting detection for various tools.
+ """
+ 
+ import logging
+-import nltk
+ from typing import Tuple, List
++from spellchecker import SpellChecker
+ 
+ from safety.console import main_console as console
+ from rich.prompt import Prompt
+@@ -35,12 +35,14 @@ class TyposquattingProtection:
+         if package_name in self.popular_packages:
+             return (True, package_name)
+ 
+-        for pkg in self.popular_packages:
+-            if (
+-                abs(len(pkg) - len(package_name)) <= max_edit_distance
+-                and nltk.edit_distance(pkg, package_name) <= max_edit_distance
+-            ):
+-                return (False, pkg)
++        spell = SpellChecker(language=None, distance=max_edit_distance)
++
++        spell.word_frequency.load_words(self.popular_packages)
++
++        correction = spell.correction(package_name)
++
++        if correction and correction != package_name:
++            return (False, correction)
+ 
+         return (True, package_name)
+ 
+-- 
+2.49.0
+

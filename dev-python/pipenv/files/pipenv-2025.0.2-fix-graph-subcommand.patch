@@ -1,0 +1,44 @@
+From 1a28c346d93967c04c77627ef045d45a4b2b33ec Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Sun, 18 May 2025 22:10:57 +0200
+Subject: [PATCH 1/2] gentoo: fix graph subcommand
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ pipenv/routines/graph.py | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/pipenv/routines/graph.py b/pipenv/routines/graph.py
+index cd85551f..aa9c68f2 100644
+--- a/pipenv/routines/graph.py
++++ b/pipenv/routines/graph.py
+@@ -1,4 +1,5 @@
+ import json as simplejson
++import os
+ import sys
+ from pathlib import Path
+ 
+@@ -50,7 +51,19 @@ def do_graph(project, bare=False, json=False, json_tree=False, reverse=False):
+         )
+         sys.exit(1)
+ 
+-    c = run_command(cmd_args, is_verbose=project.s.is_verbose())
++    env = os.environ.copy()
++    if "PYTHONPATH" in env:
++        env["PYTHONPATH"] = (
++            f"{env['PYTHONPATH']}:/usr/lib/python{sys.version_info.major}"
++            f".{sys.version_info.minor}/site-packages/"
++        )
++    else:
++        env["PYTHONPATH"] = (
++            f"/usr/lib/python{sys.version_info.major}"
++            f".{sys.version_info.minor}/site-packages/"
++        )
++
++    c = run_command(cmd_args, is_verbose=project.s.is_verbose(), env=env)
+ 
+     # Run dep-tree.
+     if not bare:
+-- 
+2.49.0
+
