@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop flag-o-matic toolchain-funcs
 
@@ -37,7 +37,7 @@ BDEPEND="
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.7.16-gentoo.patch
+	"${FILESDIR}"/${PN}-0.8.0-gentoo.patch
 )
 
 src_unpack() {
@@ -68,7 +68,6 @@ src_unpack() {
 
 src_compile() {
 	tc-export CXX
-	append-cxxflags -std=c++14
 	append-cppflags \
 		-DPUBLIC_DATA_DIRECTORY_VALUE="'\"${EPREFIX}/usr/share/${PN}\"'" \
 		-DMANUAL_DIRECTORY_VALUE="'\"${EPREFIX}/usr/share/doc/${PF}/html\"'"
@@ -87,7 +86,7 @@ src_install() {
 	newbin src/FreeDoko freedoko
 
 	insinto /usr/share/${PN}
-	doins -r data/{backgrounds,cardsets,iconsets,rules,sounds,translations,*.png}
+	doins -r data/{backgrounds,cardsets,iconsets,sounds,*.png}
 
 	newicon src/icon.png ${PN}.png
 	make_desktop_entry ${PN} FreeDoko
