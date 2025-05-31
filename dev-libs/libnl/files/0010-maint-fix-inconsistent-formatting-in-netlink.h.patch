@@ -1,0 +1,50 @@
+https://github.com/thom311/libnl/commit/bdfdf738b57a1607df7d5143f04a0691b3d62be5
+
+From bdfdf738b57a1607df7d5143f04a0691b3d62be5 Mon Sep 17 00:00:00 2001
+From: Ronan Dalton <ronan.dalton@alliedtelesis.co.nz>
+Date: Tue, 29 Oct 2024 11:06:42 +1300
+Subject: [PATCH] maint: fix inconsistent formatting in netlink.h
+
+[thaller@redhat.com: Taken from [1].]
+
+[1] https://github.com/thom311/libnl/pull/407
+---
+ include/netlink/netlink.h | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/include/netlink/netlink.h b/include/netlink/netlink.h
+index c5ec3503..5a214e6c 100644
+--- a/include/netlink/netlink.h
++++ b/include/netlink/netlink.h
+@@ -77,16 +77,19 @@ extern int			nl_recvmsgs_default(struct nl_sock *);
+ extern int			nl_wait_for_ack(struct nl_sock *);
+ 
+ extern int			nl_pickup(struct nl_sock *,
+-					  int (*parser)(struct nl_cache_ops *,
+-						struct sockaddr_nl *,
+-						struct nlmsghdr *,
+-						struct nl_parser_param *),
++					  int (*)(struct nl_cache_ops *,
++						  struct sockaddr_nl *,
++						  struct nlmsghdr *,
++						  struct nl_parser_param *),
+ 					  struct nl_object **);
+-extern int                      nl_pickup_keep_syserr(struct nl_sock *sk,
+-                                                      int (*parser)(struct nl_cache_ops *, struct sockaddr_nl *,
+-                                                                    struct nlmsghdr *, struct nl_parser_param *),
+-                                                      struct nl_object **result,
+-                                                      int *syserror);
++extern int			nl_pickup_keep_syserr(struct nl_sock *,
++						      int (*)(struct nl_cache_ops *,
++							      struct sockaddr_nl *,
++							      struct nlmsghdr *,
++							      struct nl_parser_param *),
++						      struct nl_object **,
++						      int *);
++
+ /* Netlink Family Translations */
+ extern char *			nl_nlfamily2str(int, char *, size_t);
+ extern int			nl_str2nlfamily(const char *);
+-- 
+2.49.0
+

@@ -1,0 +1,50 @@
+https://github.com/thom311/libnl/commit/23c4e60d752c775b90b90354dbc4fd063e5d77a2
+
+From 23c4e60d752c775b90b90354dbc4fd063e5d77a2 Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Wed, 13 Nov 2024 08:46:03 +0100
+Subject: [PATCH] build: use "-std=gnu11" as compiler flags and depend on gcc's
+ C11
+
+So far, we didn't specify "-std" option, and it was ill defined which C
+behavior we require.
+
+Note that we already use __attribute__((__cleanup__(fcn))), so
+effectively we require either gcc or clang. A standard C compiler won't
+suffice. That is for good reasons, because features like the cleanup
+attribute are IMO invaluable and we should not write "C" without it.
+
+Also, it's 2024. It's basically impossilbe that you use gcc/clang with a
+version that doesn't yet support (gcc's) C11 variant. So explicitly
+require that via the "-std=gnu11" option. I don't think we currently
+require newer C features, so this is sufficient for us and for now.
+---
+ Makefile.am | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 69fe4b97..b07082a7 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -32,6 +32,10 @@ pkgconfig_DATA = \
+ 	libnl-xfrm-3.0.pc \
+ 	$(NULL)
+ 
++extra_cppflags = \
++	-std=gnu11 \
++	$(NULL)
++
+ warn_cppflags = \
+ 	-Wall \
+ 	-Wextra \
+@@ -394,6 +398,7 @@ default_includes = \
+ 	$(NULL)
+ 
+ default_cppflags = \
++	$(extra_cppflags) \
+ 	$(warn_cppflags) \
+ 	$(defines_cppflags) \
+ 	$(default_includes) \
+-- 
+2.49.0
+

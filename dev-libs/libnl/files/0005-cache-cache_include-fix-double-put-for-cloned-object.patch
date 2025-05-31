@@ -1,0 +1,35 @@
+https://github.com/thom311/libnl/commit/6bd2bd65015302e6d59e02d1dd35ee5126d633e1
+
+From 6bd2bd65015302e6d59e02d1dd35ee5126d633e1 Mon Sep 17 00:00:00 2001
+From: Jonas Gorski <jonas.gorski@bisdn.de>
+Date: Tue, 17 Dec 2024 14:54:38 +0100
+Subject: [PATCH] cache: cache_include(): fix double put for cloned objects
+
+When switching to auto obj, a nl_object_put() was left inplace in
+cache_include(). This leads to a double reference drop of the cloned
+object, leading to use after free later or triggering an assert that
+the reference count went negative.
+
+Fixes: 831e98688a2f ("cache: use the new _nl_auto_nl_object helper")
+Signed-off-by: Jonas Gorski <jonas.gorski@bisdn.de>
+
+https://github.com/thom311/libnl/pull/416
+---
+ lib/cache.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/lib/cache.c b/lib/cache.c
+index f133d6cb..9df24ea8 100644
+--- a/lib/cache.c
++++ b/lib/cache.c
+@@ -807,7 +807,6 @@ static int cache_include(struct nl_cache *cache, struct nl_object *obj,
+ 				if (cb_v2) {
+ 					cb_v2(cache, clone, old, diff,
+ 					      NL_ACT_CHANGE, data);
+-					nl_object_put(clone);
+ 				} else if (cb)
+ 					cb(cache, old, NL_ACT_CHANGE, data);
+ 				return 0;
+-- 
+2.49.0
+

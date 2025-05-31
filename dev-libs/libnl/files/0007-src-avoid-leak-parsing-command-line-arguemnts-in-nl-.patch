@@ -1,0 +1,103 @@
+https://github.com/thom311/libnl/commit/9dbc16eb8c715bd07981e77be23104c957366359
+
+From 9dbc16eb8c715bd07981e77be23104c957366359 Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Wed, 13 Nov 2024 19:15:47 +0100
+Subject: [PATCH] src: avoid leak parsing command line arguemnts in
+ "nl-{class,qdisc}-add"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+"id" could be overwritten, this causes coverity warnings. While not
+severe, fix the coverity warnings by using _nl_clear_free().
+
+Also use _nl_auto_free to release the memory.
+
+  Error: CLANG_WARNING: [#def79]
+  libnl-3.9.0/src/nl-class-add.c:73:7: warning[unix.Malloc]: Potential leak of memory pointed to by 'id'
+  #   71|
+  #   72|   	for (;;) {
+  #   73|-> 		int c, optidx = 0;
+  #   74|   		enum {
+  #   75|   			ARG_UPDATE = 257,
+
+  Error: GCC_ANALYZER_WARNING (CWE-401): [#def80]
+  libnl-3.9.0/src/nl-class-add.c: scope_hint: In function ‘main’
+  libnl-3.9.0/src/nl-class-add.c:109:32: warning[-Wanalyzer-malloc-leak]: leak of ‘id’
+  #  107|   		case 'd': nl_cli_tc_parse_dev(tc, link_cache, optarg); break;
+  #  108|   		case 'p': nl_cli_tc_parse_parent(tc, optarg); break;
+  #  109|-> 		case 'i': id = strdup(optarg); break;
+  #  110|   		case ARG_UPDATE: flags = NLM_F_CREATE; break;
+  #  111|   		case ARG_UPDATE_ONLY: flags = 0; break;
+
+---
+ src/nl-class-add.c | 6 +++---
+ src/nl-qdisc-add.c | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/nl-class-add.c b/src/nl-class-add.c
+index ac37daa4..a6aedef1 100644
+--- a/src/nl-class-add.c
++++ b/src/nl-class-add.c
+@@ -59,7 +59,8 @@ int main(int argc, char *argv[])
+ 	struct nl_cli_tc_module *tm;
+ 	struct rtnl_tc_ops *ops;
+ 	int err, flags = NLM_F_CREATE | NLM_F_EXCL;
+-	char *kind, *id = NULL;
++	const char *kind;
++	_nl_auto_free char *id = NULL;
+ 
+ 	sock = nl_cli_alloc_socket();
+ 	nl_cli_connect(sock, NETLINK_ROUTE);
+@@ -106,7 +107,7 @@ int main(int argc, char *argv[])
+ 		case 'v': nl_cli_print_version(); break;
+ 		case 'd': nl_cli_tc_parse_dev(tc, link_cache, optarg); break;
+ 		case 'p': nl_cli_tc_parse_parent(tc, optarg); break;
+-		case 'i': id = strdup(optarg); break;
++		case 'i': _nl_clear_free(&id); id = strdup(optarg); break;
+ 		case ARG_UPDATE: flags = NLM_F_CREATE; break;
+ 		case ARG_UPDATE_ONLY: flags = 0; break;
+ 		case ARG_MTU: nl_cli_tc_parse_mtu(tc, optarg); break;
+@@ -127,7 +128,6 @@ int main(int argc, char *argv[])
+ 
+ 	if (id) {
+ 		nl_cli_tc_parse_handle(tc, id, 1);
+-		free(id);
+ 	}
+ 
+ 	kind = argv[optind++];
+diff --git a/src/nl-qdisc-add.c b/src/nl-qdisc-add.c
+index 40b95463..17f83fb1 100644
+--- a/src/nl-qdisc-add.c
++++ b/src/nl-qdisc-add.c
+@@ -56,7 +56,8 @@ int main(int argc, char *argv[])
+ 	struct nl_cli_tc_module *tm;
+ 	struct rtnl_tc_ops *ops;
+ 	int err, flags = NLM_F_CREATE | NLM_F_EXCL;
+-	char *kind, *id = NULL;
++	const char *kind;
++	_nl_auto_free char *id = NULL;
+ 
+ 	sock = nl_cli_alloc_socket();
+ 	nl_cli_connect(sock, NETLINK_ROUTE);
+@@ -99,7 +100,7 @@ int main(int argc, char *argv[])
+ 		case 'v': nl_cli_print_version(); break;
+ 		case 'd': nl_cli_tc_parse_dev(tc, link_cache, optarg); break;
+ 		case 'p': nl_cli_tc_parse_parent(tc, optarg); break;
+-		case 'i': id = strdup(optarg); break;
++		case 'i': _nl_clear_free(&id); id = strdup(optarg); break;
+ 		case ARG_UPDATE: flags = NLM_F_CREATE; break;
+ 		case ARG_REPLACE: flags = NLM_F_CREATE | NLM_F_REPLACE; break;
+ 		case ARG_UPDATE_ONLY: flags = 0; break;
+@@ -118,7 +119,6 @@ int main(int argc, char *argv[])
+ 
+ 	if (id) {
+ 		nl_cli_tc_parse_handle(tc, id, 1);
+-		free(id);
+ 	}
+ 
+ 	kind = argv[optind++];
+-- 
+2.49.0
+

@@ -1,0 +1,71 @@
+https://github.com/thom311/libnl/commit/89618875c211f5a457cb37f649c2d355b555165f
+
+From 89618875c211f5a457cb37f649c2d355b555165f Mon Sep 17 00:00:00 2001
+From: Thomas Haller <thaller@redhat.com>
+Date: Wed, 13 Nov 2024 08:44:49 +0100
+Subject: [PATCH] build: add $(default_cppflags) variable in Makefile.am to
+ reduce dupliate code
+---
+ Makefile.am | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 227fa566..69fe4b97 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -393,12 +393,18 @@ default_includes = \
+ 	-I$(builddir)/include \
+ 	$(NULL)
+ 
+-lib_cppflags = \
++default_cppflags = \
+ 	$(warn_cppflags) \
+ 	$(defines_cppflags) \
+ 	$(default_includes) \
+ 	$(NULL)
+ 
++###############################################################################
++
++lib_cppflags = \
++	$(default_cppflags) \
++	$(NULL)
++
+ lib_LTLIBRARIES += lib/libnl-3.la
+ 
+ lib_libnl_3_la_SOURCES = \
+@@ -711,9 +717,7 @@ src_lib_libnl_cli_3_la_SOURCES = \
+ EXTRA_src_lib_libnl_cli_3_la_DEPENDENCIES = \
+ 	libnl-cli-3.sym
+ src_lib_libnl_cli_3_la_CPPFLAGS = \
+-	$(warn_cppflags) \
+-	$(defines_cppflags) \
+-	$(default_includes) \
++	$(default_cppflags) \
+ 	$(NULL)
+ src_lib_libnl_cli_3_la_LDFLAGS = \
+ 	$(src_lib_ldflags) \
+@@ -729,9 +733,7 @@ src_lib_libnl_cli_3_la_LIBADD = \
+ ###############################################################################
+ 
+ src_cppflags = \
+-	$(warn_cppflags) \
+-	$(defines_cppflags) \
+-	$(default_includes) \
++	$(default_cppflags) \
+ 	$(NULL)
+ 
+ src_ldadd = \
+@@ -908,9 +910,7 @@ src_nl_util_addr_LDADD =            $(src_ldadd)
+ ###############################################################################
+ 
+ tests_cppflags = \
+-	$(warn_cppflags) \
+-	$(defines_cppflags) \
+-	$(default_includes) \
++	$(default_cppflags) \
+ 	$(NULL)
+ 
+ tests_ldadd = \
+-- 
+2.49.0
+
