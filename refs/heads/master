@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher Jakov Smolić <jsmolic@gentoo.org> 1748651778 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1748651775-15450a2bea2890aecd5645b6ed63d3fcb1382876
+pusher DF84256885283521 1748668653 +0200
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1748668652-a755f6b292a06208a9fa619b164396a6298b9cd7
 
-1b2bd4449aa4072fed08e4e7ca31ba2e570bfc93 ef98288cd277b73e390df4b0ec6090c4c390e766 refs/heads/master
+ef98288cd277b73e390df4b0ec6090c4c390e766 0be5cfcc846ca9828bcf469c18884fa52d4ea283 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAABCAAxFiEETIe+OYJfI8dg0sA4gileHvrjII8FAmg6TwITHGpzbW9saWNA
-Z2VudG9vLm9yZwAKCRCCKV4e+uMgjzkXB/92r/iGV5P4TNOgLqwsvMAwMmlHIxty
-LzFuqyIwZq7+oCO3xTxl9tfrSl0cTUlBINrvH/f5q76SJpzDcTAWpGK4XvJU1iB/
-kfcfG0v6Q+5slDrQUh8nTDJg6Y0kOWZw2dVab3En9ok4LYa6QHniZgt40jiZo5Nk
-plHlG1zR44H7Q9aA1nSuHzBEaeZDvDSJElrt5o/acIb+1VEOz1tTS3f9NEdv0R3U
-4GPyS2bQIcE32No3k3qthv+EifGKmJced04psZjtvl8HalpViDjxsdPy0Y+WcE9S
-mMx6namEkEpK+FFCUJJhyht/0IuET84XHozfMle/jKkp7/VLXQnv8NwQ
-=sgFr
+iQEzBAABCAAdFiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAmg6kO0ACgkQY5ra4jKe
+JA6MWwgAiRpwF0OKuZaYqE8j+6jGd5fPspFs+2K+qMsF9dtNfQ9hQmQETBWMV7v0
+GU5KOL74V9RcsSgQwmezGM9SjK2tz37N0erUR9UTcWqaIrNghLemglxEVztJLbOG
+0x7FNzuC0mP+H9TH16bMJFTh31ADH8UIrlk9haWXpvzbfz4xEZUQHOKURaVla8rq
++KBAkJHpqZcwsUv85I5PHqxrzuEYiOmo0vUeYr4Gsw9V2+AfVuoXhKt4WGYYvHwl
+IaJhQE72+PMmcyHquh4mNZMiXhhqm8U236QjDHX/6+GRoAAE2kQCO5A1zI6NroCt
+lyOPMcQjlEcoOnvPqmNAh8lzDFp12A==
+=H9u+
 -----END PGP SIGNATURE-----
