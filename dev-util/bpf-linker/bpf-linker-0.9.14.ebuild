@@ -7,11 +7,12 @@ EAPI=8
 # Note: versions are locked in /usr/lib/rust/*/lib/rustlib/src/rust/library/Cargo.lock.
 CRATES="
 	compiler_builtins@0.1.146
+	compiler_builtins@0.1.152
 "
 
 # Implied by crates above.
 RUST_MIN_VER=1.86.0
-RUST_MAX_VER=1.86.0
+RUST_MAX_VER=1.87.0
 
 declare -A GIT_CRATES=(
 	[compiletest_rs]='https://github.com/Manishearth/compiletest-rs;cb121796a041255ae0afcd9c2766bee4ebfd54f0;compiletest-rs-%commit%'
