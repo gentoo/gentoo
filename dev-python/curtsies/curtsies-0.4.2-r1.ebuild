@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/blessed-1.5[${PYTHON_USEDEP}]
@@ -29,3 +29,12 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	local PATCHES=(
+		# https://github.com/bpython/curtsies/pull/186
+		"${FILESDIR}/${P}-py314.patch"
+	)
+	distutils-r1_src_prepare
+	rm setup.py || die
+}

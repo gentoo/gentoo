@@ -1,0 +1,28 @@
+From 8ff589184cdc0a2face9bd3430757f672292462c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 31 May 2025 19:22:56 +0200
+Subject: [PATCH] Use standard setuptools `attr:` feature, fixing Python 3.14
+ compat
+
+Use the standard setuptools `attr:` feature to obtain the version
+via setuptools' built-in AST parser rather than writing a custom AST
+parser in `setup.py`.  This fixes compatibility with Python 3.14,
+since the custom parser is not compatible with the new `ast.Constant`
+type.
+---
+ setup.cfg |  1 +
+ setup.py  | 16 ----------------
+ 2 files changed, 1 insertion(+), 16 deletions(-)
+ delete mode 100644 setup.py
+
+diff --git a/setup.cfg b/setup.cfg
+index 10332bd..ae01e92 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,5 +1,6 @@
+ [metadata]
+ name = curtsies
++version = attr: curtsies.__version__
+ description = Curses-like terminal wrapper, with colored strings!
+ long_description = file: README.md,
+ long_description_content_type = text/markdown
