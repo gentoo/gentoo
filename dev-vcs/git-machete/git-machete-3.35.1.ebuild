@@ -3,10 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_USE_PEP517=setuptools
+EPYTEST_XDIST=1
 
-inherit bash-completion-r1 distutils-r1
+inherit distutils-r1 shell-completion
 
 DESCRIPTION="Probably the sharpest git repo organizer & rebase/merge workflow automation tool"
 HOMEPAGE="https://github.com/VirtusLab/git-machete https://pypi.org/project/git-machete/"
@@ -15,16 +16,17 @@ SRC_URI="https://github.com/VirtusLab/${PN}/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~riscv"
+KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="dev-vcs/git"
-BDEPEND="test? (
-	>=dev-python/pytest-mock-3.10.0[${PYTHON_USEDEP}]
-	>=dev-python/pytest-xdist-3.2.1[${PYTHON_USEDEP}]
-)"
+BDEPEND="
+	test? (
+		>=dev-python/pytest-mock-3.10.0[${PYTHON_USEDEP}]
+	)
+"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.24.2_no-strays-in-site-packages.patch
+	"${FILESDIR}"/${PN}-3.35.1_no-strays-in-site-packages.patch
 )
 
 DOCS=( CONTRIBUTING.md README.md )
@@ -42,10 +44,6 @@ src_install() {
 	doman docs/man/${PN}.1
 
 	newbashcomp completion/${PN}.completion.bash ${PN}
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins completion/${PN}.fish
-
-	insinto /usr/share/zsh/site-functions
-	newins completion/${PN}.completion.zsh _${PN}
+	dofishcomp completion/${PN}.fish
+	newzshcomp completion/${PN}.completion.zsh _${PN}
 }
