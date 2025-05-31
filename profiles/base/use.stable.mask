@@ -16,7 +16,6 @@ llvm_slot_20
 # Hans de Graaff <graaff@gentoo.org> (2024-12-26)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby34
-ruby_targets_ruby33
 
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Python implementations without stable keywords.

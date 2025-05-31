@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="amd64"
@@ -63,3 +63,7 @@ IUSE_IMPLICIT="abi_x86_64"
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
+
+# Hans de Graaff <graaff@gentoo.org> (2025-05-31)
+# Temporary mask to facilitate stabling ruby33 in bug #956881
+RUBY_TARGETS="ruby32"

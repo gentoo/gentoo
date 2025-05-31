@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
+# Hans de Graaff <graaff@gentoo.org> (2025-05-31)
+# Temporary mask to facilitate stabling ruby33 in bug #956881
+ruby_targets_ruby33
+
 # Sam James <sam@gentoo.org> (2024-03-07)
 # dev-lang/php:8.2 is not marked stable here yet (bug #920701)
 php_targets_php8-2
