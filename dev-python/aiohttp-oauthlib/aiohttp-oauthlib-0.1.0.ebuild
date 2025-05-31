@@ -26,3 +26,5 @@ BDEPEND="
 "
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
+
+distutils_enable_tests import-check
