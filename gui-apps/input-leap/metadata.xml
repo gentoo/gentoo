@@ -7,6 +7,5 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">input-leap/input-leap</remote-id>
-		<remote-id type="github">debauchee/barrier</remote-id>
 	</upstream>
 </pkgmetadata>
