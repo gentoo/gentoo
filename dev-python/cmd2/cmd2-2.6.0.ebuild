@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit distutils-r1 virtualx pypi
+inherit distutils-r1 optfeature virtualx pypi
 
 DESCRIPTION="Extra features for standard library's cmd module"
 HOMEPAGE="
@@ -51,4 +51,8 @@ python_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# TODO: tests_isolated?
 	epytest -o addopts= -p pytest_mock -p rerunfailures --reruns=5 tests || die
+}
+
+pkg_postinst() {
+	optfeature "IPython shell integration" dev-python/ipython
 }
