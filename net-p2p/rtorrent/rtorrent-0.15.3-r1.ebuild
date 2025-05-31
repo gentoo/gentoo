@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	net-misc/curl
 	sys-libs/ncurses:0=
 	lua? ( ${LUA_DEPS} )
-	xmlrpc? ( dev-libs/xmlrpc-c:= )
+	xmlrpc? ( dev-libs/xmlrpc-c:=[libxml2] )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/nlohmann_json
