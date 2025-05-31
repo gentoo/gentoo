@@ -15,7 +15,7 @@ SRC_URI="https://github.com/jeremyevans/minitest-hooks/archive/refs/tags/${PV}.t
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~alpha amd64 ~hppa ~loong ~mips ~ppc ~s390"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~loong ~mips ~ppc ~s390"
 IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/minitest-5.3"
