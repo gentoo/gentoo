@@ -1,13 +1,16 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+MY_PN=barrier
+MY_P=${MY_PN}-${PV}
 inherit desktop virtualx xdg cmake
 
 DESCRIPTION="Share a mouse and keyboard between computers (fork of Synergy)"
 HOMEPAGE="https://github.com/debauchee/barrier"
-SRC_URI="https://github.com/debauchee/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/debauchee/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -42,14 +45,14 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-includes.patch
-	"${FILESDIR}"/${P}-gcc-13.patch
+	"${FILESDIR}"/${MY_P}-includes.patch
+	"${FILESDIR}"/${MY_P}-gcc-13.patch
 )
 
 DOCS=(
 	ChangeLog
 	README.md
-	doc/${PN}.conf.example{,-advanced,-basic}
+	doc/${MY_PN}.conf.example{,-advanced,-basic}
 )
 
 src_configure() {
@@ -73,11 +76,11 @@ src_test() {
 src_install() {
 	cmake_src_install
 	einstalldocs
-	doman doc/${PN}{c,s}.1
+	doman doc/${MY_PN}{c,s}.1
 
 	if use gui; then
-		doicon -s scalable res/${PN}.svg
-		doicon -s 256 res/${PN}.png
-		make_desktop_entry ${PN} Barrier ${PN} Utility
+		doicon -s scalable res/${MY_PN}.svg
+		doicon -s 256 res/${MY_PN}.png
+		make_desktop_entry ${MY_PN} Barrier ${MY_PN} Utility
 	fi
 }
