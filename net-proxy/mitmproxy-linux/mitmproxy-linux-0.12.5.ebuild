@@ -7,11 +7,14 @@ EAPI=8
 # Note: versions are locked in /usr/lib/rust/*/lib/rustlib/src/rust/library/Cargo.lock.
 CRATES="
 	compiler_builtins@0.1.146
+	compiler_builtins@0.1.152
 	dlmalloc@0.2.7
 	fortanix-sgx-abi@0.5.0
 	getopts@0.2.21
 	hermit-abi@0.4.0
+	hermit-abi@0.5.0
 	libc@0.2.169
+	libc@0.2.171
 	miniz_oxide@0.8.3
 	r-efi-alloc@1.0.0
 	r-efi@4.5.0
@@ -21,7 +24,7 @@ CRATES="
 
 # Implied by crates above.
 RUST_MIN_VER=1.86.0
-RUST_MAX_VER=1.86.0
+RUST_MAX_VER=1.87.0
 
 declare -A GIT_CRATES=(
 	[boringtun]='https://github.com/cloudflare/boringtun;e3252d9c4f4c8fc628995330f45369effd4660a1;boringtun-%commit%/boringtun'
