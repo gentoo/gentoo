@@ -18,7 +18,7 @@ LICENSE="LGPL-3+ GPL-3+"
 
 SLOT="2.91" # vte_api_version in meson.build
 
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
 IUSE="systemd"
 
