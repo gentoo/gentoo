@@ -5,8 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=poetry
-# Passes tests with python3_13 but dev-python/audioread is problematic
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="sqlite"
 
 # These envvars are used to treat github tarball builds differently
@@ -14,7 +13,7 @@ PYTHON_REQ_USE="sqlite"
 : ${IS_VCS_SOURCE="no"}
 : ${UPDATE_VERSION="no"}
 
-inherit distutils-r1 bash-completion-r1 multiprocessing optfeature
+inherit distutils-r1 multiprocessing optfeature shell-completion
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/beetbox/beets.git"
@@ -25,7 +24,7 @@ else
 	inherit pypi
 	MY_PV=${PV/_beta/-beta.}
 	MY_P=${PN}-${MY_PV}
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -40,11 +39,12 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/jellyfish-0.7.1[${PYTHON_USEDEP}]
-		dev-python/munkres[${PYTHON_USEDEP}]
 		>=media-libs/mutagen-1.33[${PYTHON_USEDEP}]
 		>=dev-python/musicbrainzngs-0.4[${PYTHON_USEDEP}]
 		dev-python/confuse[${PYTHON_USEDEP}]
+		>=dev-python/lap-0.5.12[${PYTHON_USEDEP}]
 		dev-python/mediafile[${PYTHON_USEDEP}]
+		>=dev-python/numpy-1.24.4[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/reflink[${PYTHON_USEDEP}]
 		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
@@ -81,6 +81,7 @@ BDEPEND="
 				media-gfx/imagemagick
 			)
 			dev-python/rarfile[${PYTHON_USEDEP}]
+			dev-python/requests-mock[${PYTHON_USEDEP}]
 			dev-python/responses[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
 			media-libs/chromaprint[tools]
@@ -152,8 +153,7 @@ python_install_all() {
 	# Generate the bash completions; we'll set PYTHONPATH for this invocation so that beets can start.
 	PYTHONPATH="${ED}/usr/lib/${PYTHON}:$PYTHONPATH" ${PYTHON} "${ED}/usr/bin/beet" completion > "${T}/beet.bash" || die
 	newbashcomp "${T}/beet.bash" beet
-	insinto /usr/share/zsh/site-functions
-	newins "${S}/extra/_beet" _beet
+	newzshcomp "${S}/extra/_beet" _beet
 
 	optfeature "badfiles support" "media-libs/flac media-sound/mp3val"
 	optfeature "chromaprint support" "dev-python/pyacoustid media-libs/chromaprint[tools]"
