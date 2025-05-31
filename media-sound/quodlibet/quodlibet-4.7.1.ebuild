@@ -44,7 +44,14 @@ RDEPEND="
 	)
 	udev? ( virtual/udev )
 "
-DEPEND="dev-util/intltool"
+BDEPEND="
+	dev-util/intltool
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+		')
+	)
+"
 
 src_prepare() {
 	default
