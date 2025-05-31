@@ -51,6 +51,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/Disable-gs-self-test-flatpak.patch"
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset
