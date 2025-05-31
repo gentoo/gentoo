@@ -12,7 +12,7 @@ declare -A GIT_CRATES=(
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 RUST_MIN_VER=1.85.0
 
 inherit cargo distutils-r1 pypi
