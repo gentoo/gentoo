@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..12} python3_{13..14}{,t} )
 
 inherit gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
 
