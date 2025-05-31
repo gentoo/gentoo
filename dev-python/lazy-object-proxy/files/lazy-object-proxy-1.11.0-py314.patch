@@ -1,0 +1,39 @@
+From daba375a4c424ee114123122e5c1285e3db4d62e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 31 May 2025 10:52:38 +0200
+Subject: [PATCH 1/5] Loosen exception regexps for Python 3.14
+
+Python 3.14 changes the exception message for passing wrong types
+to `await` to:
+
+    TypeError: 'int' object can't be awaited
+
+Loosen the regular expression to accept both the old and the new
+exception message.
+---
+ tests/test_async_py3.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_async_py3.py b/tests/test_async_py3.py
+index 0d9450b..3fbba18 100644
+--- a/tests/test_async_py3.py
++++ b/tests/test_async_py3.py
+@@ -498,7 +498,7 @@ def test_await_1(lop):
+     async def foo():
+         await 1
+ 
+-    with pytest.raises(TypeError, match='object int can.t.*await'):
++    with pytest.raises(TypeError, match='int.*can.t.*await'):
+         run_async(lop.Proxy(foo))
+ 
+ 
+@@ -506,7 +506,7 @@ def test_await_2(lop):
+     async def foo():
+         await []
+ 
+-    with pytest.raises(TypeError, match='object list can.t.*await'):
++    with pytest.raises(TypeError, match='list.*can.t.*await'):
+         run_async(lop.Proxy(foo))
+ 
+ 
+
