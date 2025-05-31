@@ -1,0 +1,208 @@
+https://bugs.gentoo.org/952317
+https://github.com/beetbox/audioread/issues/144
+https://github.com/beetbox/audioread/pull/148
+
+(Cherrypicked)
+
+From 1ddd63b3ba6bcb11ef993c7da18db0fc83af84b7 Mon Sep 17 00:00:00 2001
+From: Brian McFee <brian.mcfee@nyu.edu>
+Date: Wed, 29 Jan 2025 12:51:27 -0500
+Subject: [PATCH 1/4] implemented flexible legacy codec handling
+
+--- a/audioread/rawread.py
++++ b/audioread/rawread.py
+@@ -13,11 +13,10 @@
+ # included in all copies or substantial portions of the Software.
+ 
+ """Uses standard-library modules to read AIFF, AIFF-C, and WAV files."""
+-import aifc
+ import audioop
+ import struct
+-import sunau
+ import wave
++import warnings
+ 
+ from .exceptions import DecodeError
+ from .base import AudioFile
+@@ -54,20 +53,13 @@ def byteswap(s):
+ class RawAudioFile(AudioFile):
+     """An AIFF, WAV, or Au file that can be read by the Python standard
+     library modules ``wave``, ``aifc``, and ``sunau``.
++
++    On Python 3.13 and later, ``aifc`` and ``sunau`` support require
++    installing the ``standard-aifc`` and ``standard-sunau`` packages, respectively.
+     """
+     def __init__(self, filename):
+         self._fh = open(filename, 'rb')
+ 
+-        try:
+-            self._file = aifc.open(self._fh)
+-        except aifc.Error:
+-            # Return to the beginning of the file to try the next reader.
+-            self._fh.seek(0)
+-        else:
+-            self._needs_byteswap = True
+-            self._check()
+-            return
+-
+         try:
+             self._file = wave.open(self._fh)
+         except wave.Error:
+@@ -78,15 +70,38 @@ class RawAudioFile(AudioFile):
+             self._check()
+             return
+ 
++        # The following are deprecated formats and may not be supported
+         try:
+-            self._file = sunau.open(self._fh)
+-        except sunau.Error:
+-            self._fh.seek(0)
+-            pass
++            import aifc
++        except ImportError:
++            warnings.warn("aifc module not found; AIFF files will not be supported. "
++                          "You may need to install the standard-aifc package.")
+         else:
+-            self._needs_byteswap = True
+-            self._check()
+-            return
++            try:
++                self._file = aifc.open(self._fh)
++            except aifc.Error:
++                # Return to the beginning of the file to try the next reader.
++                self._fh.seek(0)
++            else:
++                self._needs_byteswap = True
++                self._check()
++                return
++
++        try:
++            import sunau
++        except ImportError:
++            warnings.warn("sunau module not found; Au files will not be supported. "
++                          "You may need to install the standard-sunau package.")
++        else:
++            try:
++                self._file = sunau.open(self._fh)
++            except sunau.Error:
++                self._fh.seek(0)
++                pass
++            else:
++                self._needs_byteswap = True
++                self._check()
++                return
+ 
+         # None of the three libraries could open the file.
+         self._fh.close()
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -8,7 +8,7 @@ authors = [
+     {name = "Adrian Sampson", email = "adrian@radbox.org"}
+ ]
+ readme = "README.rst"
+-requires-python = ">=3.6"
++requires-python = ">=3.8"
+ dynamic = ["version", "description"]
+ urls.Home = "https://github.com/beetbox/audioread"
+ classifiers = [
+@@ -19,9 +19,15 @@ classifiers = [
+     'Programming Language :: Python :: 3.9',
+     'Programming Language :: Python :: 3.10',
+     'Programming Language :: Python :: 3.11',
++    'Programming Language :: Python :: 3.12',
++    'Programming Language :: Python :: 3.13',
+ ]
+ 
+ [project.optional-dependencies]
+ test = [
+     "tox"
+ ]
++legacy = [
++    "standard-aifc; python_version >= '3.13'",
++    "standard-sunau; python_version >= '3.13'"
++]
+-- 
+2.49.0
+
+
+From d761d0c9df6ca423aa7e69c27d0946c1d9c7b5d3 Mon Sep 17 00:00:00 2001
+From: Brian McFee <brian.mcfee@nyu.edu>
+Date: Mon, 3 Feb 2025 12:17:55 -0500
+Subject: [PATCH 2/4] added audioop-lts dependency for modern python installs
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -9,6 +9,9 @@ authors = [
+ ]
+ readme = "README.rst"
+ requires-python = ">=3.8"
++requires = [
++    "audioop-lts; python_version >= '3.13'"
++]
+ dynamic = ["version", "description"]
+ urls.Home = "https://github.com/beetbox/audioread"
+ classifiers = [
+-- 
+2.49.0
+
+
+From a7d86b7c2a22489a58d0ff9dc3e0b7608aa25914 Mon Sep 17 00:00:00 2001
+From: Brian McFee <brian.mcfee@nyu.edu>
+Date: Mon, 3 Feb 2025 12:29:58 -0500
+Subject: [PATCH 3/4] updated readme
+
+--- a/README.rst
++++ b/README.rst
+@@ -8,8 +8,8 @@ currently supports:
+ - `Core Audio`_ on Mac OS X via `ctypes`_. (PyObjC not required.)
+ - `MAD`_ via the `pymad`_ bindings.
+ - `FFmpeg`_ or `Libav`_ via its command-line interface.
+-- The standard library `wave`_, `aifc`_, and `sunau`_ modules (for
+-  uncompressed audio formats).
++- The standard library `wave`_ module (for
++  uncompressed audio formats).  Legacy formats `aifc`_ and `sunau`_ are also optionally supported, see the note below.
+ 
+ .. _Gstreamer: http://gstreamer.freedesktop.org/
+ .. _gst-python: http://gstreamer.freedesktop.org/modules/gst-python.html
+@@ -73,6 +73,18 @@ that you have a broken installation of `FFmpeg`_. To check, try typing
+ FFmpeg with your OS's package manager (e.g., apt or yum) or `using Conda
+ <https://anaconda.org/conda-forge/ffmpeg>`_.
+ 
++Legacy formats
++--------------
++The `aifc`_ and `sunau`_ modules were deprecated and removed from the standard
++Python distribution in version 3.13.
++Support for `aifc` and `sunau` formats is still available through `deadlib`_.
++To install audioread with continued support for these formats, you can
++use the following command::
++
++    python -m pip install audioread[legacy]
++
++.. _deadlib: https://github.com/youknowone/python-deadlib
++
+ Version History
+ ---------------
+ 
+-- 
+2.49.0
+
+
+From 7f932069d2e44e97d2da7d243f067d3726a0db8d Mon Sep 17 00:00:00 2001
+From: Brian McFee <brian.mcfee@nyu.edu>
+Date: Mon, 3 Feb 2025 14:14:15 -0500
+Subject: [PATCH 4/4] fixed wrong format spec for dependencies
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -9,7 +9,7 @@ authors = [
+ ]
+ readme = "README.rst"
+ requires-python = ">=3.8"
+-requires = [
++dependencies = [
+     "audioop-lts; python_version >= '3.13'"
+ ]
+ dynamic = ["version", "description"]
+-- 
+2.49.0
+
