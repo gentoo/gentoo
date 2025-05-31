@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/ansible/ansible-lint"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 # Upstream has stated explicitly that all tests require Internet access
 PROPERTIES="test_network"
@@ -21,15 +21,15 @@ RESTRICT="test"
 
 RDEPEND="
 	>=app-admin/ansible-core-2.18.1[${PYTHON_USEDEP}]
-	>=dev-python/ansible-compat-24.10.0[${PYTHON_USEDEP}]
+	>=dev-python/ansible-compat-25.1.5[${PYTHON_USEDEP}]
 	>=dev-python/black-24.8.0[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3.14.0[${PYTHON_USEDEP}]
 	dev-python/importlib-metadata[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.17.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-24.0[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-0.10.3[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-6.0.1-r1[${PYTHON_USEDEP}]
-	>=dev-python/ruamel-yaml-0.18.6[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-6.0.2[${PYTHON_USEDEP}]
+	>=dev-python/ruamel-yaml-0.18.9[${PYTHON_USEDEP}]
 	>=dev-python/wcmatch-8.5.2[${PYTHON_USEDEP}]
 	>=dev-util/yamllint-1.35.1[${PYTHON_USEDEP}]
 	dev-vcs/git"

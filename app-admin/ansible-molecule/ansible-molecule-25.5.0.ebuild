@@ -26,7 +26,7 @@ RESTRICT="test"
 
 RDEPEND="
 	>=app-admin/ansible-core-2.18.1[${PYTHON_USEDEP}]
-	>=dev-python/ansible-compat-24.10.0[${PYTHON_USEDEP}]
+	>=dev-python/ansible-compat-25.5.0[${PYTHON_USEDEP}]
 	>=dev-python/click-8.0[${PYTHON_USEDEP}]
 	<dev-python/click-9[${PYTHON_USEDEP}]
 	>=dev-python/click-help-colors-0.9[${PYTHON_USEDEP}]
@@ -43,7 +43,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/setuptools-scm-7.0.5[${PYTHON_USEDEP}]
 	test? (
-		>=app-admin/ansible-lint-6.12.1[${PYTHON_USEDEP}]
+		>=app-admin/ansible-lint-25.5.0[${PYTHON_USEDEP}]
 		>=app-misc/check-jsonschema-0.28.4-r1[${PYTHON_USEDEP}]
 		>=dev-python/ansi2html-1.8.0[${PYTHON_USEDEP}]
 		>=dev-python/filelock-3.9.0[${PYTHON_USEDEP}]
@@ -51,6 +51,7 @@ BDEPEND="
 		>=dev-python/pytest-mock-3.10.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-plus-0.4.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-xdist-3.1.0[${PYTHON_USEDEP}]
+		dev-util/ruff
 	)
 "
 
