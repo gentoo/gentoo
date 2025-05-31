@@ -79,7 +79,7 @@ src_configure() {
 	)
 	# Prevent CMake from finding systemwide hip, which breaks tests
 	use test && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_hip=ON )
-	cmake_src_configure
+	Clang_DIR="$(get_llvm_prefix)" cmake_src_configure
 }
 
 src_test() {
