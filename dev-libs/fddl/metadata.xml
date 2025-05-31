@@ -3,7 +3,7 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
-    <remote-id type="github">atomopawn/FDDL</remote-id>
+    <remote-id type="gitlab">atomopawn/FDDL</remote-id>
     <remote-id type="sourceforge">itval</remote-id>
   </upstream>
 </pkgmetadata>

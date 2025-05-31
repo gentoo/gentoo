@@ -9,6 +9,6 @@
 		<bugs-to>https://github.com/wez/wezterm/issues</bugs-to>
 		<changelog>https://wezfurlong.org/wezterm/changelog.html</changelog>
 		<remote-id type="github">wez/wezterm</remote-id>
-		<remote-id type="gitlab">wez1/libssh-mirror</remote-id>
+		<remote-id type="gitlab">libssh/libssh-mirror</remote-id>
 	</upstream>
 </pkgmetadata>
