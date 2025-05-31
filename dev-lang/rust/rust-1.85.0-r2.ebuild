@@ -6,31 +6,52 @@ EAPI=8
 LLVM_COMPAT=( 19 )
 PYTHON_COMPAT=( python3_{10..13} )
 
-RUST_MAX_VER=${PV}
-RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
+RUST_MAX_VER=${PV%%_*}
+if [[ ${PV} == *9999* ]]; then
+	RUST_MIN_VER="1.85.0" # Update this as new `beta` releases come out.
+elif [[ ${PV} == *beta* ]]; then
+	# Enforce that `beta` is built from `stable`.
+	# While uncommon it is possible for feature changes within `beta` to result
+	# in an older snapshot being unable to build a newer one without modifying the sources.
+	# 'stable' releases should always be able to build a beta snapshot so just use those.
+	RUST_MAX_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).1"
+	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
+else
+	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
+fi
 
 inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature \
 	multilib multilib-build python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
-if [[ ${PV} = *beta* ]]; then
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/rust-lang/rust.git"
+	EGIT_SUBMODULES=(
+		"*"
+		"-src/gcc"
+	)
+elif [[ ${PV} == *beta* ]]; then
+	# Identify the snapshot date of the beta release:
+	# curl -Ls static.rust-lang.org/dist/channel-rust-beta.toml | grep beta-src.tar.xz
 	betaver=${PV//*beta}
 	BETA_SNAPSHOT="${betaver:0:4}-${betaver:4:2}-${betaver:6:2}"
 	MY_P="rustc-beta"
-	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz"
+	SRC_URI="https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz
+		verify-sig? ( https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz.asc
+			-> rustc-${PV}-src.tar.xz.asc )
+	"
+	S="${WORKDIR}/${MY_P}-src"
 else
 	MY_P="rustc-${PV}"
-	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+	SRC_URI="https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
+		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
+	"
+	S="${WORKDIR}/${MY_P}-src"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-DESCRIPTION="Systems programming language from Mozilla"
+DESCRIPTION="Systems programming language originally developed by Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
-
-SRC_URI="
-	https://static.rust-lang.org/dist/${SRC}
-	verify-sig? ( https://static.rust-lang.org/dist/${SRC}.asc )
-"
-S="${WORKDIR}/${MY_P}-src"
 
 # keep in sync with llvm ebuild of the same version as bundled one.
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARC ARM AVR BPF CSKY DirectX Hexagon Lanai
@@ -39,7 +60,7 @@ ALL_LLVM_TARGETS=( AArch64 AMDGPU ARC ARM AVR BPF CSKY DirectX Hexagon Lanai
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/(-)?}
 
-# https://github.com/rust-lang/llvm-project/blob/rustc-1.83.0/llvm/CMakeLists.txt
+# https://github.com/rust-lang/llvm-project/blob/rustc-1.84.0/llvm/CMakeLists.txt
 _ALL_RUST_EXPERIMENTAL_TARGETS=( ARC CSKY DirectX M68k SPIRV Xtensa )
 declare -A ALL_RUST_EXPERIMENTAL_TARGETS
 for _x in "${_ALL_RUST_EXPERIMENTAL_TARGETS[@]}"; do
@@ -47,9 +68,14 @@ for _x in "${_ALL_RUST_EXPERIMENTAL_TARGETS[@]}"; do
 done
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
-SLOT="${PV}"
+SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
 
-IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto miri nightly parallel-compiler rustfmt rust-analyzer rust-src system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto rustfmt rust-analyzer rust-src system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
+
+if [[ ${PV} = *9999* ]]; then
+	# These USE flags require nightly rust
+	IUSE+=" miri"
+fi
 
 LLVM_DEPEND=()
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
@@ -68,6 +94,12 @@ BDEPEND="${PYTHON_DEPS}
 		>=sys-devel/gcc-4.7[cxx]
 		>=llvm-core/clang-3.5
 	)
+	lto? ( system-llvm? (
+		|| (
+			$(llvm_gen_dep 'llvm-core/lld:${LLVM_SLOT}')
+			sys-devel/mold
+		)
+	) )
 	!system-llvm? (
 		>=dev-build/cmake-3.13.4
 		app-alternatives/ninja
@@ -101,8 +133,6 @@ RDEPEND="${DEPEND}
 "
 
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
-	miri? ( nightly )
-	parallel-compiler? ( nightly )
 	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
 	wasm? ( llvm_targets_WebAssembly )
@@ -113,27 +143,27 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 CMAKE_WARN_UNUSED_CLI=no
 
 QA_FLAGS_IGNORED="
-	usr/lib/${PN}/${PV}/bin/.*
-	usr/lib/${PN}/${PV}/libexec/.*
-	usr/lib/${PN}/${PV}/lib/lib.*.so
-	usr/lib/${PN}/${PV}/lib/rustlib/.*/bin/.*
-	usr/lib/${PN}/${PV}/lib/rustlib/.*/lib/lib.*.so
+	usr/lib/${PN}/${SLOT}/bin/.*
+	usr/lib/${PN}/${SLOT}/libexec/.*
+	usr/lib/${PN}/${SLOT}/lib/lib.*.so
+	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/bin/.*
+	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/lib/lib.*.so
 "
 
 QA_SONAME="
-	usr/lib/${PN}/${PV}/lib/lib.*.so.*
-	usr/lib/${PN}/${PV}/lib/rustlib/.*/lib/lib.*.so
+	usr/lib/${PN}/${SLOT}/lib/lib.*.so.*
+	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/lib/lib.*.so
 "
 
 QA_PRESTRIPPED="
-	usr/lib/${PN}/${PV}/lib/rustlib/.*/bin/rust-llvm-dwp
-	usr/lib/${PN}/${PV}/lib/rustlib/.*/lib/self-contained/crtn.o
+	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/bin/rust-llvm-dwp
+	usr/lib/${PN}/${SLOT}/lib/rustlib/.*/lib/self-contained/crtn.o
 "
 
 # An rmeta file is custom binary format that contains the metadata for the crate.
 # rmeta files do not support linking, since they do not contain compiled object files.
 # so we can safely silence the warning for this QA check.
-QA_EXECSTACK="usr/lib/${PN}/${PV}/lib/rustlib/*/lib*.rlib:lib.rmeta"
+QA_EXECSTACK="usr/lib/${PN}/${SLOT}/lib/rustlib/*/lib*.rlib:lib.rmeta"
 
 # causes double bootstrap
 RESTRICT="test"
@@ -141,10 +171,9 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
-	"${FILESDIR}"/1.78.0-musl-dynamic-linking.patch
-	"${FILESDIR}"/1.83.0-cross-compile-libz.patch
+	"${FILESDIR}"/1.85.0-cross-compile-libz.patch
+	"${FILESDIR}"/1.85.0-musl-dynamic-linking.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
-	"${FILESDIR}"/1.83.0-dwarf-llvm-assertion.patch
 )
 
 clear_vendor_checksums() {
@@ -155,6 +184,48 @@ toml_usex() {
 	usex "${1}" true false
 }
 
+src_unpack() {
+	if [[ ${PV} = *9999* ]]; then
+		git-r3_src_unpack
+		mkdir "${S}/.cargo" || die # The vendor script has a check for .cargo/config{,.toml}
+		touch "${S}/.cargo/config.toml" || die
+		local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
+		local rust_build=""
+		local rust_host=""
+		# Configure vendor to use the portage-provided toolchain. This prevents it from
+		# attempting to fetch a `beta` toolchain from the internet.
+		cat <<- _EOF_ > "${T}/vendor-config.toml"
+			[build]
+			build = "$(rust_abi "${CBUILD}")"
+			host = ["$(rust_abi "${CHOST}")"]
+			target = ["$(rust_abi "${CHOST}")"]
+			cargo = "${rust_stage0_root}/bin/cargo"
+			rustc = "${rust_stage0_root}/bin/rustc"
+			rustfmt = "${rust_stage0_root}/bin/rustfmt"
+		_EOF_
+		# We're using git sources so we need to run the Vendor script
+		# to ensure that all dependencies are present and up-to-date
+		mkdir "${S}/vendor" || die
+		# This also compiles the 'build helper', there's no way to avoid this.
+		${EPYTHON} "${S}"/x.py vendor -vvv --config="${T}"/vendor-config.toml -j$(makeopts_jobs) ||
+			die "Failed to vendor dependencies"
+		# TODO: This has to be generated somehow, this is from a 1.84.x tarball I had lying around.
+		cat <<- _EOF_ > "${S}/.cargo/config.toml"
+			[source.crates-io]
+			replace-with = "vendored-sources"
+
+			[source."git+https://github.com/rust-lang/team"]
+			git = "https://github.com/rust-lang/team"
+			replace-with = "vendored-sources"
+
+			[source.vendored-sources]
+			directory = "vendor"
+		_EOF_
+	else
+		verify-sig_src_unpack
+	fi
+}
+
 pre_build_checks() {
 	local M=9216
 	# multiply requirements by 1.3 if we are doing x86-multilib
@@ -162,7 +233,9 @@ pre_build_checks() {
 		M=$(( $(usex abi_x86_32 13 10) * ${M} / 10 ))
 	fi
 	M=$(( $(usex clippy 128 0) + ${M} ))
-	M=$(( $(usex miri 128 0) + ${M} ))
+	if [[ ${PV} == *9999* ]]; then
+		M=$(( $(usex miri 128 0) + ${M} ))
+	fi
 	M=$(( $(usex rustfmt 256 0) + ${M} ))
 	# add 2G if we compile llvm and 256M per llvm_target
 	if ! use system-llvm; then
@@ -226,12 +299,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Rust baselines to Pentium4 on x86, this patch lowers the baseline to i586 when sse2 is not set.
-	if use x86; then
-		if ! use cpu_flags_x86_sse2; then
-			eapply "${FILESDIR}/1.82.0-i586-baseline.patch"
-			#grep -rl cmd.args.push\(\"-march=i686\" . | xargs sed  -i 's/march=i686/-march=i586/g' || die
-		fi
+	if [[ ${PV} = *9999* ]]; then
+		# We need to update / generate lockfiles for the workspace
+		${CARGO} generate-lockfile --offline
+	fi
+
+	if use lto && tc-is-clang && ! tc-ld-is-lld && ! tc-ld-is-mold; then
+		export RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
 	fi
 
 	default
@@ -266,10 +340,13 @@ src_configure() {
 	# cargo and rustdoc are mandatory and should always be included
 	local tools='"cargo","rustdoc"'
 	use clippy && tools+=',"clippy"'
-	use miri && tools+=',"miri"'
 	use rustfmt && tools+=',"rustfmt"'
 	use rust-analyzer && tools+=',"rust-analyzer","rust-analyzer-proc-macro-srv"'
 	use rust-src && tools+=',"src"'
+
+	if [[ ${PV} == *9999* ]]; then
+		use miri && tools+=',"miri"'
+	fi
 
 	local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
 	# in case of prefix it will be already prefixed, as --print sysroot returns full path
@@ -288,7 +365,22 @@ src_configure() {
 	RUST_EXPERIMENTAL_TARGETS=${RUST_EXPERIMENTAL_TARGETS[@]}
 
 	local cm_btype="$(usex debug DEBUG RELEASE)"
+	local build_channel
+	local build_miri="false"
+	case "${PV}" in
+		*9999*)
+			build_channel="nightly"
+			;;
+		*beta*)
+			build_channel="beta"
+			;;
+		*)
+			build_channel="stable"
+			;;
+	esac
 	cat <<- _EOF_ > "${S}"/config.toml
+		# https://github.com/rust-lang/rust/issues/135358 (bug #947897)
+		profile = "dist"
 		[llvm]
 		download-ci-llvm = false
 		optimize = $(toml_usex !debug)
@@ -351,7 +443,7 @@ src_configure() {
 		profiler = true
 		cargo-native-static = false
 		[install]
-		prefix = "${EPREFIX}/usr/lib/${PN}/${PV}"
+		prefix = "${EPREFIX}/usr/lib/${PN}/${SLOT}"
 		sysconfdir = "etc"
 		docdir = "share/doc/rust"
 		bindir = "bin"
@@ -374,8 +466,7 @@ src_configure() {
 		$(if ! tc-is-cross-compiler; then
 			echo "default-linker = \"${CHOST}-cc\""
 		fi)
-		parallel-compiler = $(toml_usex parallel-compiler)
-		channel = "$(usex nightly nightly stable)"
+		channel = "${build_channel}"
 		description = "gentoo"
 		rpath = true
 		verbose-tests = true
@@ -384,6 +475,9 @@ src_configure() {
 		dist-src = false
 		remap-debuginfo = true
 		lld = $(usex system-llvm false $(toml_usex wasm))
+		$(if use lto && tc-is-clang && ! tc-ld-is-mold; then
+			echo "use-lld = true"
+		fi)
 		# only deny warnings if doc+wasm are NOT requested, documenting stage0 wasm std fails without it
 		# https://github.com/rust-lang/rust/issues/74976
 		# https://github.com/rust-lang/rust/issues/76526
@@ -594,11 +688,11 @@ src_test() {
 src_install() {
 	DESTDIR="${D}" "${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
 
-	docompress /usr/lib/${PN}/${PV}/share/man/
+	docompress /usr/lib/${PN}/${SLOT}/share/man/
 
 	# bug #689562, #689160
-	rm -v "${ED}/usr/lib/${PN}/${PV}/etc/bash_completion.d/cargo" || die
-	rmdir -v "${ED}/usr/lib/${PN}/${PV}"/etc{/bash_completion.d,} || die
+	rm -v "${ED}/usr/lib/${PN}/${SLOT}/etc/bash_completion.d/cargo" || die
+	rmdir -v "${ED}/usr/lib/${PN}/${SLOT}"/etc{/bash_completion.d,} || die
 
 	local symlinks=(
 		cargo
@@ -610,7 +704,9 @@ src_install() {
 	)
 
 	use clippy && symlinks+=( clippy-driver cargo-clippy )
-	use miri && symlinks+=( miri cargo-miri )
+	if [[ ${PV} = *9999* ]]; then
+		use miri && symlinks+=( miri cargo-miri )
+	fi
 	use rustfmt && symlinks+=( rustfmt cargo-fmt )
 	use rust-analyzer && symlinks+=( rust-analyzer )
 
@@ -620,34 +716,34 @@ src_install() {
 		# we need realpath on /usr/bin/* symlink return version-appended binary path.
 		# so /usr/bin/rustc should point to /usr/lib/rust/<ver>/bin/rustc-<ver>
 		# need to fix eselect-rust to remove this hack.
-		local ver_i="${i}-${PV}"
-		if [[ -f "${ED}/usr/lib/${PN}/${PV}/bin/${i}" ]]; then
+		local ver_i="${i}-${PV%%_*}"
+		if [[ -f "${ED}/usr/lib/${PN}/${SLOT}/bin/${i}" ]]; then
 			einfo "Installing ${i} symlink"
-			ln -v "${ED}/usr/lib/${PN}/${PV}/bin/${i}" "${ED}/usr/lib/${PN}/${PV}/bin/${ver_i}" || die
+			ln -v "${ED}/usr/lib/${PN}/${SLOT}/bin/${i}" "${ED}/usr/lib/${PN}/${SLOT}/bin/${ver_i}" || die
 		else
 			ewarn "${i} symlink requested, but source file not found"
 			ewarn "please report this"
 		fi
-		dosym "../lib/${PN}/${PV}/bin/${ver_i}" "/usr/bin/${ver_i}"
+		dosym "../lib/${PN}/${SLOT}/bin/${ver_i}" "/usr/bin/${ver_i}"
 	done
 
 	# symlinks to switch components to active rust in eselect
-	dosym "${PV}/lib" "/usr/lib/${PN}/lib-${PV}"
-	use rust-analyzer && dosym "${PV}/libexec" "/usr/lib/${PN}/libexec-${PV}"
-	dosym "${PV}/share/man" "/usr/lib/${PN}/man-${PV}"
-	dosym "rust/${PV}/lib/rustlib" "/usr/lib/rustlib-${PV}"
-	dosym "../../lib/${PN}/${PV}/share/doc/rust" "/usr/share/doc/${P}"
+	dosym "${SLOT}/lib" "/usr/lib/${PN}/lib-${SLOT}"
+	use rust-analyzer && dosym "${SLOT}/libexec" "/usr/lib/${PN}/libexec-${SLOT}"
+	dosym "${SLOT}/share/man" "/usr/lib/${PN}/man-${SLOT}"
+	dosym "rust/${SLOT}/lib/rustlib" "/usr/lib/rustlib-${SLOT}"
+	dosym "../../lib/${PN}/${SLOT}/share/doc/rust" "/usr/share/doc/${P}"
 
 	newenvd - "50${P}" <<-_EOF_
-		MANPATH="${EPREFIX}/usr/lib/rust/man-${PV}"
+		MANPATH="${EPREFIX}/usr/lib/rust/man-${SLOT}"
 	_EOF_
 
-	rm -rf "${ED}/usr/lib/${PN}/${PV}"/*.old || die
-	rm -rf "${ED}/usr/lib/${PN}/${PV}/bin"/*.old || die
-	rm -rf "${ED}/usr/lib/${PN}/${PV}/doc"/*.old || die
+	rm -rf "${ED}/usr/lib/${PN}/${SLOT}"/*.old || die
+	rm -rf "${ED}/usr/lib/${PN}/${SLOT}/bin"/*.old || die
+	rm -rf "${ED}/usr/lib/${PN}/${SLOT}/doc"/*.old || die
 
 	# note: eselect-rust adds EROOT to all paths below
-	cat <<-_EOF_ > "${T}/provider-${P}"
+	cat <<-_EOF_ > "${T}/provider-${PN}-${SLOT}"
 		/usr/bin/cargo
 		/usr/bin/rustdoc
 		/usr/bin/rust-gdb
@@ -663,7 +759,7 @@ src_install() {
 		echo /usr/bin/clippy-driver >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-clippy >> "${T}/provider-${P}"
 	fi
-	if use miri; then
+	if [[ ${SLOT} == *9999* ]] && use miri; then
 		echo /usr/bin/miri >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-miri >> "${T}/provider-${P}"
 	fi
@@ -677,52 +773,16 @@ src_install() {
 	fi
 
 	insinto /etc/env.d/rust
-	doins "${T}/provider-${P}"
+	doins "${T}/provider-${PN}-${SLOT}"
 
 	if use dist; then
 		"${EPYTHON}" ./x.py dist -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
-		insinto "/usr/lib/${PN}/${PV}/dist"
+		insinto "/usr/lib/${PN}/${SLOT}/dist"
 		doins -r "${S}/build/dist/."
 	fi
 }
 
-pkg_preinst() {
-	# 943308 and friends; basically --keep-going can forget to unmerge old rust
-	# but the soft blocker allows us to install conflicting files.
-	# This results in duplicated .{rlib,so} files which confuses rustc and results in
-	# the need for manual intervention.
-	if has_version -b "dev-lang/rust:stable/$(ver_cut 1-2)"; then
-		# we need to find all .{rlib,so} files in the old rust lib directory
-		# and store them in an array for later use
-		readarray -d '' old_rust_libs < <(
-			find "${EROOT}/usr/lib/rust/${PV}/lib/rustlib" \
-			-type f \( -name '*.rlib' -o -name '*.so' \) -print0)
-		export old_rust_libs
-		if [[ ${#old_rust_libs[@]} -gt 0 ]]; then
-			einfo "Found old .rlib and .so files in the old rust lib directory"
-		else
-			die "Found no old .rlib and .so files but old rust version is installed. Bailing!"
-		fi
-	fi
-}
-
 pkg_postinst() {
-
-	if has_version -b "dev-lang/rust:stable/$(ver_cut 1-2)"; then
-		# Be _extra_ careful here as we're removing files from the live filesystem
-		local f
-		for f in "${old_rust_libs[@]}"; do
-			[[ -f ${f} ]] || die "old_rust_libs array contains non-existent file"
-			local base_name="${f%-*}"
-			local ext="${f##*.}"
-			local matching_files=("${base_name}"-*.${ext})
-			if [[ ${#matching_files[@]} -ne 2 ]]; then
-				die "Expected exactly two files matching ${base_name}-\*.rlib, but found ${#matching_files[@]}"
-			fi
-			einfo "Removing old .rlib file ${f}"
-			rm "${f}" || die
-		done
-	fi
 
 	eselect rust update
 
