@@ -25,3 +25,5 @@ RDEPEND="
 BDEPEND="
 	dev-python/pbr[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests import-check
