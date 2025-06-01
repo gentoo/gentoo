@@ -1,8 +1,6 @@
 https://paste.sr.ht/~kchibisov/682321e0fd4a3ece4a4b7b71591896f5cd3cdb22
 https://github.com/gentoo/gentoo/pull/35246#discussion_r1484525497
 
-diff --git a/compiler/rustc_llvm/build.rs b/compiler/rustc_llvm/build.rs
-index f606fa483ca..8a2e1c40e8b 100644
 --- a/compiler/rustc_llvm/build.rs
 +++ b/compiler/rustc_llvm/build.rs
 @@ -237,10 +237,7 @@ fn main() {
