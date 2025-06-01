@@ -1,0 +1,21 @@
+Process return value and log error. Usually it should not occure but
+everything could happen.
+
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -385,8 +385,13 @@
+ 	 * Revert to non-privileged user after opening sockets
+ 	 * (not needed on most systems).
+ 	 */
+-	setgid(getgid());
+-	setuid(getuid());
++	if (setgid(getgid()) < 0) {
++		lg(LOG_ERR, "setgid(%d): %s", getgid(), strerror(errno));
++	}
++
++	if (setuid(getuid()) < 0) {
++		lg(LOG_ERR, "setuid(%d): %s", getuid(), strerror(errno));
++	}
+ 
+ 	/* Must be ethernet or fddi */
+ 	linktype = pcap_datalink(pd);
