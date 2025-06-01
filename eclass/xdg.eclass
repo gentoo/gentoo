@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: xdg.eclass
@@ -64,17 +64,17 @@ xdg_pkg_preinst() {
 	XDG_ECLASS_DESKTOPFILES=()
 	while IFS= read -r -d '' f; do
 		XDG_ECLASS_DESKTOPFILES+=( ${f} )
-	done < <(cd "${ED}" && find 'usr/share/applications' -type f -print0 2>/dev/null)
+	done < <(cd "${ED}" && find 'usr/share/applications' \( -type f -or -type l \) -print0 2>/dev/null)
 
 	XDG_ECLASS_ICONFILES=()
 	while IFS= read -r -d '' f; do
 		XDG_ECLASS_ICONFILES+=( ${f} )
-	done < <(cd "${ED}" && find 'usr/share/icons' -type f -print0 2>/dev/null)
+	done < <(cd "${ED}" && find 'usr/share/icons' \( -type f -or -type l \) -print0 2>/dev/null)
 
 	XDG_ECLASS_MIMEINFOFILES=()
 	while IFS= read -r -d '' f; do
 		XDG_ECLASS_MIMEINFOFILES+=( ${f} )
-	done < <(cd "${ED}" && find 'usr/share/mime' -type f -print0 2>/dev/null)
+	done < <(cd "${ED}" && find 'usr/share/mime' \( -type f -or -type l \) -print0 2>/dev/null)
 }
 
 # @FUNCTION: xdg_pkg_postinst
