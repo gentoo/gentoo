@@ -1259,6 +1259,7 @@ _modules_set_makeargs() {
 		# unrealistic when building modules that often have slow releases,
 		# but note that the kernel will still pass some -Werror=bad-thing
 		CONFIG_WERROR=
+		CONFIG_OBJTOOL_WERROR=
 
 		# these are only needed if using these arguments for installing, lets
 		# eclass handle strip, sign, compress, and depmod (CONFIG_ should
