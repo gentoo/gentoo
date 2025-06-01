@@ -1,0 +1,12 @@
+Bug: https://bugs.gentoo.org/896418
+--- a/sys/v4l2/gstv4l2object.c
++++ b/sys/v4l2/gstv4l2object.c
+@@ -544,7 +544,7 @@ gst_v4l2_object_new (GstElement * element,
+     v4l2object->fd_open = NULL;
+     v4l2object->close = close;
+     v4l2object->dup = dup;
+-    v4l2object->ioctl = ioctl;
++    v4l2object->ioctl = (void *)ioctl;
+     v4l2object->read = read;
+     v4l2object->mmap = mmap;
+     v4l2object->munmap = munmap;
