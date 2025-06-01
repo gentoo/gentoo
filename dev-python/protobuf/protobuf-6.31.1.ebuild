@@ -148,5 +148,6 @@ python_test() {
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# pytest-forked prevents segfault on py3.13
+	# https://github.com/protocolbuffers/protobuf/issues/22067
 	epytest -p pytest_forked --forked
 }
