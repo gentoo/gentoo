@@ -1,0 +1,37 @@
+inspired by upstream fix in commit ff03702fdebb6c6c55532a6768b404706823c339
+https://gitlab.com/apparmor/apparmor/-/commit/ff03702fdebb6c6c55532a6768b404706823c339
+
+diff --git a/parser/rule.h b/parser/rule.h
+index 05dbed1..e041f31 100644
+--- a/rule.h
++++ b/rule.h
+@@ -208,13 +208,13 @@ public:
+ 	}
+ 
+ 	int cmp(prefixes const &rhs) const {
+-		if ((uint) audit < (uint) rhs.audit)
++		if ((unsigned int) audit < (unsigned int) rhs.audit)
+ 			return -1;
+-		if ((uint) audit > (uint) rhs.audit)
++		if ((unsigned int) audit > (unsigned int) rhs.audit)
+ 			return 1;
+-		if ((uint) rule_mode < (uint) rhs.rule_mode)
++		if ((unsigned int) rule_mode < (unsigned int) rhs.rule_mode)
+ 			return -1;
+-		if ((uint) rule_mode > (uint) rhs.rule_mode)
++		if ((unsigned int) rule_mode > (unsigned int) rhs.rule_mode)
+ 			return 1;
+ 		if (owner < rhs.owner)
+ 			return -1;
+@@ -224,9 +224,9 @@ public:
+ 	}
+ 
+ 	bool operator<(prefixes const &rhs) const {
+-		if ((uint) audit < (uint) rhs.audit)
++		if ((unsigned int) audit < (unsigned int) rhs.audit)
+ 			return true;
+-		if ((uint) rule_mode < (uint) rhs.rule_mode)
++		if ((unsigned int) rule_mode < (unsigned int) rhs.rule_mode)
+ 			return true;
+ 		if (owner < rhs.owner)
+ 			return true;
