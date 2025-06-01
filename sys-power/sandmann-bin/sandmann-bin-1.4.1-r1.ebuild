@@ -48,7 +48,7 @@ src_install() {
 		SOURCELESS_INSTALL=true
 	)
 
-	emake ${my_emake_args[@]} install
+	emake "${my_emake_args[@]}" install
 
 	java-pkg_newjar out/main/assembly.dest/out.jar sandmann.jar
 	java-pkg_dolauncher sandmann
