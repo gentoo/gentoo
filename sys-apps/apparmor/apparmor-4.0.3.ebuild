@@ -33,6 +33,10 @@ BDEPEND="
 "
 CONFIG_CHECK="SECURITY_APPARMOR"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.3-convert-uint-to-unsigned-int.patch"
+)
+
 src_prepare() {
 	default
 
