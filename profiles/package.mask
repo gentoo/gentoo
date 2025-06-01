@@ -36,12 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-30)
-# Last updated >5 years ago, stuck on EAPI 7, imposes static-libs pressure
-# on its dependencies; many bugs. Removal on 2025-06-24.
-# Bugs #937435, #833111, #721504, #875593, #675726, #625122, #590616
-sys-boot/vboot-utils
-
 # Michael Orlitzky <mjo@gentoo.org> (2025-05-28)
 # I added this for SageMath, but in hindsight do not think anyone is
 # using it. It has code issues and upstream is not terribly interested
