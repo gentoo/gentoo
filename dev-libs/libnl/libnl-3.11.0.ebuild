@@ -67,6 +67,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/utils.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/0001-Fix-compilation-error-in-GCC-14.patch
+)
+
 src_prepare() {
 	default
 
