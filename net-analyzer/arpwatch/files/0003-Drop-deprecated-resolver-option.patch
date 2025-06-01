@@ -1,0 +1,17 @@
+This enumeration value is deprecated in /usr/include/resolv.h:
+
+#define RES_AAONLY \
+  __glibc_macro_warning ("RES_AAONLY is deprecated") 0x00000004
+
+Since Gentoo is not using outdated glibc version it is safe to disable it.
+
+--- a/dns.c
++++ b/dns.c
+@@ -150,7 +150,6 @@
+ 	struct hostent *hp;
+ 
+ 	options = _res.options;
+-	_res.options |= RES_AAONLY;
+ 	_res.options &= ~(RES_DEFNAMES | RES_DNSRCH);
+ 	hp = gethostbyaddr((char *)&a, sizeof(a), AF_INET);
+ 	_res.options = options;
