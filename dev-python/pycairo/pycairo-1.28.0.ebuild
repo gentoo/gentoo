@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=no
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..12} python3_{13..14}{,t} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit meson distutils-r1
