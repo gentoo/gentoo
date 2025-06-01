@@ -141,13 +141,14 @@ RESTRICT="test"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 PATCHES=(
-	"${FILESDIR}"/1.75.0-musl-dynamic-linking.patch
-	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
-	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
 	"${FILESDIR}"/1.67.0-doc-wasm.patch
-	# This patch shouldn't be necessary for later versions of Rust because its
-	# code was backported from master.
+	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
+	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
+	"${FILESDIR}/1.81.0-backport-bug937164.patch"
+	"${FILESDIR}/1.81.0-backport-llvm-pr101761.patch"
+	"${FILESDIR}/1.81.0-backport-llvm-pr101766.patch"
 	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch
+	"${FILESDIR}"/1.75.0-musl-dynamic-linking.patch
 )
 
 clear_vendor_checksums() {
