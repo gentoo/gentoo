@@ -67,6 +67,8 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-werror
+		# No Valgrind for the testsuite
+		--disable-memcheck
 
 		$(use_enable nls)
 		$(use_enable pam vlock)
@@ -80,15 +82,6 @@ src_test() {
 	# These tests want a tty and the check passes when it shouldn't
 	# when running via the ebuild.
 	sed -i -e "s:tty 2>/dev/null:false:" tests/testsuite || die
-
-	# Workaround Valgrind being mandatory for tests
-	# https://github.com/legionus/kbd/issues/133 (bug #956964)
-	cat <<-EOF > tests/valgrind.sh || die
-	#!/bin/sh
-	shift
-	exec "\$@" 1>stdout 2>stderr
-	EOF
-	chmod +x tests/valgrind.sh || die
 
 	emake -Onone check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }

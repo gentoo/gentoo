@@ -83,6 +83,9 @@ src_test() {
 
 	# Workaround Valgrind being mandatory for tests
 	# https://github.com/legionus/kbd/issues/133 (bug #956964)
+	#
+	# XXX: Drop this on next release (>2.8.0) and replace with
+	# --disable-memcheck in configure.
 	cat <<-EOF > tests/valgrind.sh || die
 	#!/bin/sh
 	shift
