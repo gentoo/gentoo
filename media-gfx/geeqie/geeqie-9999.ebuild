@@ -4,7 +4,7 @@
 EAPI=8
 LUA_COMPAT=( lua5-{3,4} )
 
-inherit git-r3 lua-single meson optfeature xdg
+inherit flag-o-matic git-r3 lua-single meson optfeature xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="https://www.geeqie.org"
@@ -78,6 +78,8 @@ src_configure() {
 		$(meson_feature zip archive)
 	)
 
+	# Bug: https://bugs.gentoo.org/957023
+	filter-lto
 	meson_src_configure
 }
 
