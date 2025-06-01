@@ -11,11 +11,10 @@ HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
 
-IUSE="+brotli gssapi gtk-doc +introspection samba ssl sysprof test +vala"
-RESTRICT="!test? ( test )"
-REQUIRED_USE="vala? ( introspection )"
-
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="+brotli gssapi gtk-doc +introspection samba ssl sysprof test +vala"
+REQUIRED_USE="vala? ( introspection )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/glib-2.70.0:2[${MULTILIB_USEDEP}]
