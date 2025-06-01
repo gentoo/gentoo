@@ -1,5 +1,12 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Lucio Sauer <watermanpaint@posteo.net> (2025-06-01)
+# app-misc/anki's GUI does not run on 32-bit arches at least since
+# 23.12.1 due to bug 893234. If you nonetheless have a use case
+# for the package on x86, please send me an email. If I don't hear
+# back from anyone, I'll remove the keyword in the near future.
+app-misc/anki
 
 # Joshua Kinard <kumba@gentoo.org> (2024-02-27)
 # app-arch/lrzip-next does not support 32-bit arches (#925548)
