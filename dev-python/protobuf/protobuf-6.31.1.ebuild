@@ -36,9 +36,11 @@ BDEPEND="
 		dev-libs/protobuf
 		dev-python/absl-py[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pytest-forked[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_unpack() {
@@ -70,10 +72,6 @@ python_test() {
 				# syntax error...
 				google/protobuf/internal/json_format_test.py
 			)
-			;;
-		python3.13)
-			# TODO: segfaults on exit
-			return
 			;;
 	esac
 
@@ -141,5 +139,6 @@ python_test() {
 	done
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
+	# pytest-forked prevents segfault on py3.13
+	epytest -p pytest_forked --forked
 }
