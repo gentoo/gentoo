@@ -8,7 +8,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -61,6 +61,7 @@ src_prepare() {
 }
 
 python_test() {
+	local EPYTEST_DESELECT=()
 	local EPYTEST_IGNORE=(
 		# TODO: figure out how to build the pybind11 test extension
 		google/protobuf/internal/recursive_message_pybind11_test.py
@@ -71,6 +72,13 @@ python_test() {
 			EPYTEST_IGNORE+=(
 				# syntax error...
 				google/protobuf/internal/json_format_test.py
+			)
+			;;
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# exception message mismatch
+				google/protobuf/internal/json_format_test.py::JsonFormatTest::testInvalidTimestamp
+				google/protobuf/internal/well_known_types_test.py::TimeUtilTest::testInvalidTimestamp
 			)
 			;;
 	esac
