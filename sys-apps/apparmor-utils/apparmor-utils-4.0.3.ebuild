@@ -33,6 +33,10 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/notify2[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.3-binutils-Fix-missing-include-limits.h.patch"
+)
+
 src_prepare() {
 	default
 

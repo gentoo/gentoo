@@ -1,0 +1,24 @@
+From 02b7e41ef3d89cea2bc24073938e7fdab8c29b17 Mon Sep 17 00:00:00 2001
+From: fossdd <fossdd@pwned.life>
+Date: Sat, 3 May 2025 16:48:24 +0200
+Subject: [PATCH] binutils: Fix missing include limits.h
+
+For NAME_MAX
+
+Fixes 322a98c8 ("Fix incorrect strnlen length in aa_load.c load_policy_dir")
+
+diff --git a/binutils/aa_load.c b/binutils/aa_load.c
+index 6133e899a..b7e6eca28 100644
+--- a/binutils/aa_load.c
++++ b/binutils/aa_load.c
+@@ -17,6 +17,7 @@
+ #include <fcntl.h>
+ #include <string.h>
+ #include <dirent.h>
++#include <limits.h>
+ 
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-- 
+2.45.2
+
