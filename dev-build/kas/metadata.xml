@@ -5,6 +5,10 @@
     <email>mh@emlix.com</email>
     <name>Martin Homuth</name>
   </maintainer>
+  <maintainer type="person" proxied="yes">
+    <email>davidroman96@gmail.com</email>
+    <name>David Roman</name>
+  </maintainer>
   <maintainer type="project" proxied="proxy">
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
