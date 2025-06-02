@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 DEPEND="
-	>=app-misc/tracker-3.4.0-r1:3=
+	>=app-misc/tinysparql-3.4.0-r1:3=
 	>=dev-libs/glib-2.53.4:2
 	net-libs/gnome-online-accounts:=
 	>=x11-libs/gtk+-3.19.3:3

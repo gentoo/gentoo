@@ -37,7 +37,7 @@ DEPEND="
 	>=sys-apps/util-linux-2.20
 	x11-misc/shared-mime-info
 	introspection? ( >=dev-libs/gobject-introspection-1.33.4:= )
-	tracker? ( app-misc/tracker:3=[vala(+)] )
+	tracker? ( app-misc/tinysparql:3=[vala(+)] )
 	transcode? (
 		media-libs/gst-plugins-bad:1.0
 		media-plugins/gst-plugins-twolame:1.0

@@ -34,7 +34,7 @@ DEPEND="
 	>=gui-libs/libhandy-1.1.90:1
 	media-libs/libjpeg-turbo:0=
 	>=media-libs/libpng-1.6:0=
-	app-misc/tracker:3
+	app-misc/tinysparql:3
 	sys-apps/dbus
 "
 # >=dev-libs/libgdata-0.17.13:0=[gnome-online-accounts] # Upstream left this commented in meson.build. Probably comes back with the next version

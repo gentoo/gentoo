@@ -43,7 +43,7 @@ COMMON_DEPEND="
 		sys-libs/libselinux
 	)
 	tracker? (
-		app-misc/tracker:3
+		app-misc/tinysparql:3
 	)
 	xmp? (
 		>=media-libs/exempi-2.2.0:=
