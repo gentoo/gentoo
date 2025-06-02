@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Android File Transfer for Linux"
@@ -25,7 +25,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	sys-apps/file
 	sys-libs/readline:0=
-	fuse? ( sys-fs/fuse:0 )
+	fuse? ( sys-fs/fuse:3= )
 	gui? ( dev-qt/qtbase:6[gui,network,widgets] )
 	python? (
 		${PYTHON_DEPS}
