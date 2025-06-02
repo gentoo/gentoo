@@ -30,10 +30,7 @@ patches() {
 	if [[ ${opt} == -s ]] ; then
 		echo "${@/#/${DISTDIR}/}"
 	else
-		local u
-		for u in ftp://ftp.cwru.edu/pub/bash mirror://gnu/${pn} ; do
-			printf "${u}/${pn}-${pv}-patches/%s " "$@"
-		done
+		printf "mirror://gnu/${pn}/${pn}-${pv}-patches/%s " "$@"
 	fi
 }
 
@@ -44,8 +41,6 @@ DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 if is_release ; then
 	SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
-else
-	SRC_URI="ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
 fi
 
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then

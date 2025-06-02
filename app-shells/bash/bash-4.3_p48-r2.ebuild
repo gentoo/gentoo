@@ -24,10 +24,7 @@ patches() {
 	if [[ ${opt} == -s ]] ; then
 		echo "${@/#/${DISTDIR}/}"
 	else
-		local u
-		for u in ftp://ftp.cwru.edu/pub/bash mirror://gnu/${pn} ; do
-			printf "${u}/${pn}-${pv}-patches/%s " "$@"
-		done
+		printf "mirror://gnu/${pn}/${pn}-${pv}-patches/%s " "$@"
 	fi
 }
 
@@ -37,7 +34,6 @@ READLINE_VER="6.3"
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
-[[ ${PV} == *_rc* ]] && SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
 
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"

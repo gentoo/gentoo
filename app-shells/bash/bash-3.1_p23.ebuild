@@ -24,10 +24,7 @@ patches() {
 	if [[ ${opt} == -s ]] ; then
 		echo "${@/#/${DISTDIR}/}"
 	else
-		local u
-		for u in ftp://ftp.cwru.edu/pub/bash mirror://gnu/${pn} ; do
-			printf "${u}/${pn}-${pv}-patches/%s " "$@"
-		done
+		printf "mirror://gnu/${pn}/${pn}-${pv}-patches/%s " "$@"
 	fi
 }
 
