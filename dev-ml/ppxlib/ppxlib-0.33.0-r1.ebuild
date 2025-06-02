@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,19 +20,22 @@ KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
+# Jane Street Minor
+JSM=0.17
+
 # It also works with ocaml >= 4 but tests are to be fixed
 RDEPEND="
 	>=dev-lang/ocaml-5:=
 	>=dev-ml/ocaml-compiler-libs-0.17:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
-	dev-ml/sexplib0:0/0.17[ocamlopt?]
+	=dev-ml/sexplib0-${JSM}*:=[ocamlopt?]
 	dev-ml/stdlib-shims:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-ml/dune-3.11
 	test? (
-		dev-ml/base:0/0.17
+		=dev-ml/base-${JSM}*:=[ocamlopt?]
 		dev-ml/cinaps
 		>=dev-ml/findlib-1.9.6[ocamlopt?]
 		dev-ml/re
