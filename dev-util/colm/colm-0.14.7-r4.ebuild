@@ -27,6 +27,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.7-drop-julia-check.patch
 	"${FILESDIR}"/${PN}-0.14.7-disable-static-lib.patch
 	"${FILESDIR}"/${PN}-0.14.7-solaris.patch
+	# https://bugs.gentoo.org/927974
+	"${FILESDIR}"/${PN}-0.14.7-slibtool.patch
 )
 
 src_prepare() {

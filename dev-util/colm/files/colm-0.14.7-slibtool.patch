@@ -1,0 +1,59 @@
+https://bugs.gentoo.org/927974
+https://github.com/adrian-thurston/colm/pull/163
+
+From b433d0ff5ef8eb4263925eed2efc328d6434a52b Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 14 Mar 2024 14:48:29 -0700
+Subject: [PATCH] src: link with libcolm.la
+
+When linking internal dependencies created by libtool it is better to
+use the libtool archive (.la) file and this allows colm to build with
+slibtool in addition to GNU libtool.
+---
+ src/Makefile.am            | 2 +-
+ test/rlparse.d/Makefile.am | 2 +-
+ test/trans.d/Makefile.am   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c5fb6efa..3c763398 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -175,7 +175,7 @@ colm_CXXFLAGS = $(common_CFLAGS) -DLOAD_COLM
+ colm_CFLAGS = $(common_CFLAGS)
+ colm_SOURCES = main.cc loadcolm.cc loadfinal.h version.h
+ nodist_colm_SOURCES = gen/if3.h gen/if3.cc gen/parse3.c
+-colm_LDADD = libprog.a -lcolm
++colm_LDADD = libprog.a libcolm.la
+ 
+ # Listing if1.h in BUILT_SOURCES isn't sufficient because it depends on the
+ # building of bootstrap0. Automake wants to put all built sources into a list
+diff --git a/test/rlparse.d/Makefile.am b/test/rlparse.d/Makefile.am
+index 54a14639..9cdebc23 100644
+--- a/test/rlparse.d/Makefile.am
++++ b/test/rlparse.d/Makefile.am
+@@ -21,7 +21,7 @@ rlparse_SOURCES = parse.c if.h if.cc commit.cc \
+ 	svector.h
+ 
+ rlparse_CPPFLAGS = $(COLM_xCPPFLAGS)
+-rlparse_LDADD = -lcolm
++rlparse_LDADD = $(top_builddir)/src/libcolm.la
+ rlparse_LDFLAGS = $(COLM_xLDFLAGS)
+ 
+ EXTRA_DIST = \
+diff --git a/test/trans.d/Makefile.am b/test/trans.d/Makefile.am
+index 4a9d8798..d7a2d4b7 100644
+--- a/test/trans.d/Makefile.am
++++ b/test/trans.d/Makefile.am
+@@ -33,7 +33,7 @@ trans.c: trans.lm $(TRANS_DEPS) $(COLM_BIN)
+ 
+ trans_CPPFLAGS = $(COLM_xCPPFLAGS)
+ trans_SOURCES = actparams.cc trans.c main.c
+-trans_LDADD = -lcolm
++trans_LDADD = $(top_builddir)/src/libcolm.la
+ trans_LDFLAGS = $(COLM_xLDFLAGS)
+ 
+ CASES =  \
+-- 
+2.49.0
+
