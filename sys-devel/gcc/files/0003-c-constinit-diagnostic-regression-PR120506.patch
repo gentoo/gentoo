@@ -1,0 +1,78 @@
+From 3fd9983fede89f1a996d44439d0938ee0d9ff76c Mon Sep 17 00:00:00 2001
+Message-ID: <3fd9983fede89f1a996d44439d0938ee0d9ff76c.1748905952.git.sam@gentoo.org>
+In-Reply-To: <089e4f426502a620deb9efc0d80118931fd951d2.1748905952.git.sam@gentoo.org>
+References: <089e4f426502a620deb9efc0d80118931fd951d2.1748905952.git.sam@gentoo.org>
+From: Jason Merrill <jason@redhat.com>
+Date: Mon, 2 Jun 2025 10:59:02 -0400
+Subject: [PATCH 3/4] c++: constinit diagnostic regression [PR120506]
+
+In r16-57 I thought it was unnecessary to mention incomplete initialization
+after another diagnostic, but actually it's useful elaboration.
+
+	PR c++/120506
+
+gcc/cp/ChangeLog:
+
+	* constexpr.cc (cxx_eval_outermost_constant_expr): Always check
+	CONSTRUCTOR_NO_CLEARING.
+
+gcc/testsuite/ChangeLog:
+
+	* g++.dg/cpp2a/constinit21.C: New test.
+---
+ gcc/cp/constexpr.cc                      |  3 +--
+ gcc/testsuite/g++.dg/cpp2a/constinit21.C | 28 ++++++++++++++++++++++++
+ 2 files changed, 29 insertions(+), 2 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/cpp2a/constinit21.C
+
+diff --git a/gcc/cp/constexpr.cc b/gcc/cp/constexpr.cc
+index 61481c6f7a02..c107b338344c 100644
+--- a/gcc/cp/constexpr.cc
++++ b/gcc/cp/constexpr.cc
+@@ -9278,8 +9278,7 @@ cxx_eval_outermost_constant_expr (tree t, bool allow_non_constant,
+ 
+   /* After verify_constant because reduced_constant_expression_p can unset
+      CONSTRUCTOR_NO_CLEARING.  */
+-  if (!non_constant_p
+-      && TREE_CODE (r) == CONSTRUCTOR && CONSTRUCTOR_NO_CLEARING (r))
++  if (TREE_CODE (r) == CONSTRUCTOR && CONSTRUCTOR_NO_CLEARING (r))
+     {
+       if (!allow_non_constant)
+ 	error ("%qE is not a constant expression because it refers to "
+diff --git a/gcc/testsuite/g++.dg/cpp2a/constinit21.C b/gcc/testsuite/g++.dg/cpp2a/constinit21.C
+new file mode 100644
+index 000000000000..18bca9012024
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/cpp2a/constinit21.C
+@@ -0,0 +1,28 @@
++// PR c++/120506
++// { dg-do compile { target c++20 } }
++// Test that we give more information about why the init is non-constant
++
++struct A
++{
++  constexpr A(int c) : counter(c) { }
++
++  int counter;
++};
++
++
++struct B : A
++{
++  constexpr B(int c) : A(c) { }
++
++  int i; // OOPS, not initialized
++};
++
++struct C
++{
++  B sem;
++
++  constexpr C(int c) : sem(c) { }
++};
++
++constinit C s(0);		// { dg-error "incompletely initialized" }
++// { dg-prune-output "constant" }
+-- 
+2.49.0
+

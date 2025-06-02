@@ -1,0 +1,101 @@
+From 1de6c1abe44b77aa5a253df9da57130a55e8d907 Mon Sep 17 00:00:00 2001
+Message-ID: <1de6c1abe44b77aa5a253df9da57130a55e8d907.1748905952.git.sam@gentoo.org>
+In-Reply-To: <089e4f426502a620deb9efc0d80118931fd951d2.1748905952.git.sam@gentoo.org>
+References: <089e4f426502a620deb9efc0d80118931fd951d2.1748905952.git.sam@gentoo.org>
+From: Jason Merrill <jason@redhat.com>
+Date: Mon, 2 Jun 2025 10:09:07 -0400
+Subject: [PATCH 2/4] c++: __is_destructible fixes [PR107600]
+
+destructible_expr was wrongly assuming that TO is a class type.
+
+When is_xible_helper was added in r8-742 it returned early for abstract
+class types, which is correct for __is_constructible, but not
+__is_assignable or (now) __is_destructible.
+
+	PR c++/107600
+
+gcc/cp/ChangeLog:
+
+	* method.cc (destructible_expr): Handle non-classes.
+	(constructible_expr): Check for abstract class here...
+	(is_xible_helper): ...not here.
+
+gcc/testsuite/ChangeLog:
+
+	* g++.dg/ext/is_destructible2.C: New test.
+---
+ gcc/cp/method.cc                            | 21 ++++++++++++++++-----
+ gcc/testsuite/g++.dg/ext/is_destructible2.C | 15 +++++++++++++++
+ 2 files changed, 31 insertions(+), 5 deletions(-)
+ create mode 100644 gcc/testsuite/g++.dg/ext/is_destructible2.C
+
+diff --git a/gcc/cp/method.cc b/gcc/cp/method.cc
+index 3a675d9f8723..bb6790f13cdb 100644
+--- a/gcc/cp/method.cc
++++ b/gcc/cp/method.cc
+@@ -2251,6 +2251,8 @@ constructible_expr (tree to, tree from)
+   const int len = TREE_VEC_LENGTH (from);
+   if (CLASS_TYPE_P (to))
+     {
++      if (ABSTRACT_CLASS_TYPE_P (to))
++	return error_mark_node;
+       tree ctype = to;
+       vec<tree, va_gc> *args = NULL;
+       if (!TYPE_REF_P (to))
+@@ -2337,10 +2339,19 @@ destructible_expr (tree to)
+ {
+   cp_unevaluated cp_uneval_guard;
+   int flags = LOOKUP_NORMAL|LOOKUP_DESTRUCTOR;
+-  to = build_trait_object (to);
+-  tree r = build_delete (input_location, TREE_TYPE (to), to,
+-			 sfk_complete_destructor, flags, 0, tf_none);
+-  return r;
++  to = strip_array_types (to);
++  if (CLASS_TYPE_P (to))
++    {
++      to = build_trait_object (to);
++      return build_delete (input_location, TREE_TYPE (to), to,
++			     sfk_complete_destructor, flags, 0, tf_none);
++    }
++  /* [expr.prim.id.dtor] If the id-expression names a pseudo-destructor, T
++     shall be a scalar type.... */
++  else if (scalarish_type_p (to))
++    return void_node;
++  else
++    return error_mark_node;
+ }
+ 
+ /* Returns a tree iff TO is assignable (if CODE is MODIFY_EXPR) or
+@@ -2352,7 +2363,7 @@ is_xible_helper (enum tree_code code, tree to, tree from, bool trivial)
+ {
+   to = complete_type (to);
+   deferring_access_check_sentinel acs (dk_no_deferred);
+-  if (VOID_TYPE_P (to) || ABSTRACT_CLASS_TYPE_P (to)
++  if (VOID_TYPE_P (to)
+       || (from && FUNC_OR_METHOD_TYPE_P (from)
+ 	  && (TYPE_READONLY (from) || FUNCTION_REF_QUALIFIED (from))))
+     return error_mark_node;
+diff --git a/gcc/testsuite/g++.dg/ext/is_destructible2.C b/gcc/testsuite/g++.dg/ext/is_destructible2.C
+new file mode 100644
+index 000000000000..7f15fc786848
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/ext/is_destructible2.C
+@@ -0,0 +1,15 @@
++// PR c++/107600
++// { dg-additional-options -Wno-c++17-extensions }
++// { dg-do compile { target c++11 } }
++
++struct A
++{
++  A& operator= (const A&);
++  virtual ~A() = 0;
++};
++
++static_assert( __is_destructible(A) );
++static_assert( __is_assignable(A, A) );
++static_assert( not __is_destructible(int()) );
++static_assert( not __is_nothrow_destructible(int()) );
++static_assert( not __is_trivially_destructible(int()) );
+-- 
+2.49.0
+
