@@ -377,7 +377,7 @@ net-im/yowsup
 =dev-cpp/cpp-httplib-0.18.6
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
-# Qt5 tools without any revdeps.
+# Qt5 tools without any revdeps. Removal on 2025-06-10.
 dev-qt/assistant
 dev-qt/linguist
 dev-qt/pixeltool
