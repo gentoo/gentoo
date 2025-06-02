@@ -255,12 +255,6 @@ x11-themes/fvwm-themes-extra
 # Removal on 2025-05-22.
 dev-python/pypy3
 
-# Michał Górny <mgorny@gentoo.org> (2025-04-22)
-# This package was only really necessary for packages without
-# Python 3.12+ support, and the eclass no longer uses it.
-# Removal on 2025-05-22.  Bug #954213.
-dev-python/unittest-or-fail
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-19)
 # This package will no longer feature stable keywords, due to unresolved
 # test failures blocking the stabilization request for months.
