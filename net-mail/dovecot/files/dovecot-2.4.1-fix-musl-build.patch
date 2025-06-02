@@ -1,0 +1,26 @@
+From 75fa589cb292133c4b5f47566c1b4de4b7bc4e35 Mon Sep 17 00:00:00 2001
+From: Fabian Groffen <grobian@gentoo.org>
+Date: Sat, 31 May 2025 10:49:28 +0200
+Subject: [PATCH] lib: cpu-count - fix compilation using musl
+
+The macros, types and symbols CPU_* and cpuset_t are not exposed in
+musl's sched.h unless _GNU_SOURCE is set.
+
+Signed-off-by: Fabian Groffen <grobian@gentoo.org>
+---
+ src/lib/cpu-count.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/lib/cpu-count.c b/src/lib/cpu-count.c
+index 3eb38fa47d..a3e80e6c15 100644
+--- a/src/lib/cpu-count.c
++++ b/src/lib/cpu-count.c
+@@ -3,6 +3,8 @@
+ 
+ #ifdef HAVE_SCHED_H
+ #  define __USE_GNU
++/* _GNU_SOURCE: for musl's sched.h to expose cpuset/CPU_* */
++#  define _GNU_SOURCE
+ #  include <sched.h>
+ #  ifdef HAVE_SYS_CPUSET_H
+ #    include <sys/cpuset.h>
