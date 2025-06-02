@@ -1,0 +1,273 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Nitzan Mordechai <nmordech@redhat.com>
+Date: Thu, 28 Nov 2024 11:44:00 +0000
+Subject: [PATCH] common/pick_address: Add IPv6 support to is_addr_in_subnet
+
+Updated the is_addr_in_subnet function to work with both
+IPv4 and IPv6 addresses. Previously, it only supported IPv4,
+which caused failures when IPv6 addresses were passed in.
+
+Changes:
+ - Use inet_pton to detect IPv4 (AF_INET) or IPv6 (AF_INET6).
+ - Added sockaddr_in6 for IPv6 handling while keeping sockaddr_in for IPv4.
+ - Adjust the family and ifa_addr dynamically based on the address type.
+
+Fixes: https://tracker.ceph.com/issues/67517
+Signed-off-by: Nitzan Mordechai <nmordech@redhat.com>
+(cherry picked from commit d68857c1e57e93a68d9301b3beff7e652f327a9e)
+Signed-off-by: Thomas Lamprecht <t.lamprecht@proxmox.com>
+---
+ src/common/pick_address.cc |  29 +++++--
+ src/common/pick_address.h  |   2 +-
+ src/osd/OSDMap.cc          |   6 +-
+ src/test/test_ipaddr.cc    | 155 +++++++++++++++++++++++++++++++++++++
+ 4 files changed, 179 insertions(+), 13 deletions(-)
+
+diff --git a/src/common/pick_address.cc b/src/common/pick_address.cc
+index aa6b765bc56..d7c52ea6c71 100644
+--- a/src/common/pick_address.cc
++++ b/src/common/pick_address.cc
+@@ -640,17 +640,24 @@ int get_iface_numa_node(
+ bool is_addr_in_subnet(
+   CephContext *cct,
+   const std::string &networks,
+-  const std::string &addr)
++  const entity_addr_t &addr)
+ {
+   const auto nets = get_str_list(networks);
+   ceph_assert(!nets.empty());
+-
+   unsigned ipv = CEPH_PICK_ADDRESS_IPV4;
+-  struct sockaddr_in public_addr;
+-  public_addr.sin_family = AF_INET;
+-
+-  if(inet_pton(AF_INET, addr.c_str(), &public_addr.sin_addr) != 1) {
+-    lderr(cct) << "unable to convert chosen address to string: " << addr << dendl;
++  struct sockaddr_in6 public_addr6;
++  struct sockaddr_in public_addr4;
++
++  if (addr.is_ipv4() &&
++      inet_pton(AF_INET, addr.ip_only_to_str().c_str(), &public_addr4.sin_addr) == 1) {
++    public_addr4.sin_family = AF_INET;
++  } else if (addr.is_ipv6() &&
++      inet_pton(AF_INET6, addr.ip_only_to_str().c_str(), &public_addr6.sin6_addr) == 1) {
++    public_addr6.sin6_family = AF_INET6;
++    ipv = CEPH_PICK_ADDRESS_IPV6;
++  } else {
++    std::string_view addr_type = addr.is_ipv4() ? "IPv4" : "IPv6";
++    lderr(cct) << "IP address " << addr << " is not parseable as " << addr_type << dendl;
+     return false;
+   }
+ 
+@@ -658,10 +665,16 @@ bool is_addr_in_subnet(
+     struct ifaddrs ifa;
+     memset(&ifa, 0, sizeof(ifa));
+     ifa.ifa_next = nullptr;
+-    ifa.ifa_addr = (struct sockaddr*)&public_addr;
++    if (addr.is_ipv4()) {
++      ifa.ifa_addr = (struct sockaddr*)&public_addr4;
++    } else if (addr.is_ipv6()) {
++      ifa.ifa_addr = (struct sockaddr*)&public_addr6;
++    }
++
+     if(matches_with_net(cct, ifa, net, ipv)) {
+       return true;
+     }
+   }
++  lderr(cct) << "address " << addr << " is not in networks '" << networks << "'" << dendl;
+   return false;
+ }
+diff --git a/src/common/pick_address.h b/src/common/pick_address.h
+index 40575d7d155..c28a6037ded 100644
+--- a/src/common/pick_address.h
++++ b/src/common/pick_address.h
+@@ -98,6 +98,6 @@ int get_iface_numa_node(
+ bool is_addr_in_subnet(
+   CephContext *cct,
+   const std::string &networks,
+-  const std::string &addr);
++  const entity_addr_t &addr);
+ 
+ #endif
+diff --git a/src/osd/OSDMap.cc b/src/osd/OSDMap.cc
+index d58a8cbb863..f59543f9579 100644
+--- a/src/osd/OSDMap.cc
++++ b/src/osd/OSDMap.cc
+@@ -1642,12 +1642,10 @@ void OSDMap::get_out_of_subnet_osd_counts(CephContext *cct,
+   for (int i = 0; i < max_osd; i++) {
+     if (exists(i) && is_up(i)) {
+       if (const auto& addrs = get_addrs(i).v; addrs.size() >= 2) {
+-        auto v1_addr = addrs[0].ip_only_to_str();
+-        if (!is_addr_in_subnet(cct, public_network, v1_addr)) {
++        if (!is_addr_in_subnet(cct, public_network, addrs[0])) {
+           unreachable->emplace(i);
+         }
+-        auto v2_addr = addrs[1].ip_only_to_str();
+-        if (!is_addr_in_subnet(cct, public_network, v2_addr)) {
++        if (!is_addr_in_subnet(cct, public_network, addrs[1])) {
+           unreachable->emplace(i);
+         }
+       }
+diff --git a/src/test/test_ipaddr.cc b/src/test/test_ipaddr.cc
+index bc8dbef70d7..30e7254de76 100644
+--- a/src/test/test_ipaddr.cc
++++ b/src/test/test_ipaddr.cc
+@@ -995,3 +995,158 @@ TEST(pick_address, ipv4_ipv6_enabled2)
+     ASSERT_EQ(-1, r);
+   }
+ }
++
++// Test for IPv4 address
++TEST(is_addr_in_subnet, ipv4)
++{
++  std::string public_network = "10.1.1.0/24";
++  entity_addr_t addr;
++  addr.parse("10.1.1.2", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv4", "true");
++  cct->_conf.set_val("ms_bind_ipv6", "false");
++
++  bool r = is_addr_in_subnet(cct.get(), public_network, addr);
++  ASSERT_EQ(true, r);
++}
++
++// Test for IPv6 address
++TEST(is_addr_in_subnet, ipv6)
++{
++  std::string public_network = "2001:db8::/64";
++  entity_addr_t addr;
++  addr.parse("2001:db8::1", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv6", "true");
++  cct->_conf.set_val("ms_bind_ipv4", "false");
++
++  bool r = is_addr_in_subnet(cct.get(), public_network, addr);
++  ASSERT_EQ(true, r);
++}
++
++// Test for invalid address
++TEST(is_addr_in_subnet, invalid_address)
++{
++  std::string public_network = "10.1.1.0/24";
++  entity_addr_t addr;
++  addr.parse("192.168.1.1", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv4", "true");
++  cct->_conf.set_val("ms_bind_ipv6", "false");
++
++  bool r = is_addr_in_subnet(cct.get(), public_network, addr);
++  ASSERT_EQ(false, r);
++}
++
++// Test for malformed address
++TEST(is_addr_in_subnet, malformed_address)
++{
++  std::string public_network = "10.1.1.0/24";
++  entity_addr_t addr;
++  addr.parse("invalid_address", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv4", "true");
++  cct->_conf.set_val("ms_bind_ipv6", "false");
++
++  // Test with a malformed address
++  bool r = is_addr_in_subnet(cct.get(), public_network, addr);
++  ASSERT_EQ(false, r);
++}
++
++TEST(is_addr_in_subnet, boundary_ipv4)
++{
++  std::string public_network = "10.1.1.0/24";
++  entity_addr_t addr_low;
++  addr_low.parse("10.1.1.0", nullptr);
++  entity_addr_t addr_high;
++  addr_high.parse("10.1.1.255", nullptr);
++  entity_addr_t addr_out;
++  addr_out.parse("10.1.2.0", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv4", "true");
++  cct->_conf.set_val("ms_bind_ipv6", "false");
++
++  ASSERT_TRUE(is_addr_in_subnet(cct.get(), public_network, addr_low));
++  ASSERT_TRUE(is_addr_in_subnet(cct.get(), public_network, addr_high));
++  ASSERT_FALSE(is_addr_in_subnet(cct.get(), public_network, addr_out));
++}
++
++TEST(is_addr_in_subnet, boundary_ipv6)
++{
++  std::string public_network = "2001:db8::/64";
++  entity_addr_t addr_low;
++  addr_low.parse("2001:db8::", nullptr);
++  entity_addr_t addr_high;
++  addr_high.parse("2001:db8:0:0:ffff:ffff:ffff:ffff", nullptr);
++  entity_addr_t addr_out;
++  addr_out.parse("2001:db9::", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv6", "true");
++  cct->_conf.set_val("ms_bind_ipv4", "false");
++
++  ASSERT_TRUE(is_addr_in_subnet(cct.get(), public_network, addr_low));
++  ASSERT_TRUE(is_addr_in_subnet(cct.get(), public_network, addr_high));
++  ASSERT_FALSE(is_addr_in_subnet(cct.get(), public_network, addr_out));
++}
++
++TEST(is_addr_in_subnet, overlapping_subnets)
++{
++  std::string public_network_1 = "10.1.1.0/24";
++  std::string public_network_2 = "10.1.2.0/24";
++  entity_addr_t addr;
++  addr.parse("10.1.1.5", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv4", "true");
++  cct->_conf.set_val("ms_bind_ipv6", "false");
++
++  ASSERT_TRUE(is_addr_in_subnet(cct.get(), public_network_1, addr));
++  ASSERT_FALSE(is_addr_in_subnet(cct.get(), public_network_2, addr));
++}
++
++TEST(is_addr_in_subnet, mismatched_family)
++{
++  std::string public_network_1 = "2001:db8::/64";
++  entity_addr_t addr_1;
++  addr_1.parse("10.1.1.5", nullptr);
++  
++  std::string public_network_2 = "10.1.1.0/24";
++  entity_addr_t addr_2;
++  addr_2.parse("2001:db8::1", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++  cct->_conf.set_val("ms_bind_ipv4", "true");
++  cct->_conf.set_val("ms_bind_ipv6", "true");
++
++  ASSERT_FALSE(is_addr_in_subnet(cct.get(), public_network_1, addr_1));
++  ASSERT_FALSE(is_addr_in_subnet(cct.get(), public_network_2, addr_2));
++}
++
++TEST(is_addr_in_subnet, invalid_subnets)
++{
++  std::string public_network_1 = "10.1.1.0/33";
++  std::string public_network_2 = "25.0.0.99/10";
++  entity_addr_t addr;
++  addr.parse("10.1.1.2", nullptr);
++
++  boost::intrusive_ptr<CephContext> cct(new CephContext(CEPH_ENTITY_TYPE_OSD), false);
++  cct->_conf._clear_safe_to_start_threads();
++
++  ASSERT_FALSE(is_addr_in_subnet(cct.get(), public_network_1, addr)); // Invalid prefix
++  ASSERT_FALSE(is_addr_in_subnet(cct.get(), public_network_2, addr)); // Invalid subnet string
++}
++
