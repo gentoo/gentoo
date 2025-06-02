@@ -266,11 +266,6 @@ dev-python/unittest-or-fail
 # test failures blocking the stabilization request for months.
 <dev-python/mpi4py-4
 
-# Conrad Kostecki <conikost@gentoo.org> (2025-04-18)
-# Package not needed anymore by the only consumer net-dns/hash-slinger.
-# Masked for removal on 2025-05-18. Bug #952341
-dev-python/ipaddr
-
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-02)
 # Masked for testing the new .0 version and leave time for packages
 # to catch up on support if needed. May or may keep masked until 6.9.1
