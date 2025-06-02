@@ -30,7 +30,7 @@ RDEPEND="
 	~dev-python/gdb-pt-dump-0.0.0_p20240401[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-libs/capstone-5.0.3[python,${PYTHON_USEDEP}]
-		>=dev-python/psutil-5.9.8[${PYTHON_USEDEP}]
+		>=dev-python/psutil-6.1.1[${PYTHON_USEDEP}]
 		>=dev-python/pycparser-2.22[${PYTHON_USEDEP}]
 		>=dev-python/pyelftools-0.29[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.18.0[${PYTHON_USEDEP}]
@@ -63,7 +63,7 @@ src_install() {
 	make_wrapper "pwndbg" \
 		"gdb -x \"${EPREFIX}/usr/share/${PN}/gdbinit.py\"" || die
 
-	dodoc {README,DEVELOPING,FEATURES}.md
+	dodoc README.md
 	dodoc -r docs
 }
 
