@@ -232,8 +232,6 @@ dev-libs/libxml2-compat
 # Migrate to x11-wm/fvwm3: https://github.com/fvwmorg/fvwm3/discussions/878
 # Bug #949035; removal on 2025-05-28.
 x11-wm/fvwm
-x11-themes/fvwm-themes
-x11-themes/fvwm-themes-extra
 =x11-themes/fvwm-crystal-3.7.5
 
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
