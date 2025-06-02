@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 # wrt blocker, may or may not cause problems if present with <560
 # drivers, and collides with <565.57.01-r2
