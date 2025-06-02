@@ -33,7 +33,7 @@ RDEPEND="
 	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	tracker? ( app-misc/tracker:3= )
+	tracker? ( app-misc/tinysparql:3= )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
 DEPEND="${RDEPEND}"
@@ -88,7 +88,7 @@ src_configure() {
 		$(use_with shadow)
 		$(use_with ssl ssl-dir)
 		$(use_with tracker dbus-daemon "${EPREFIX}/usr/bin/dbus-daemon")
-		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')).0)
+		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1 $(best_version app-misc/tinysparql | sed 's:app-misc/tracker-::g')).0)
 		--disable-static
 		--enable-overwrite
 		--disable-afs

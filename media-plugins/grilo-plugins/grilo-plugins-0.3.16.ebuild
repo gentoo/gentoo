@@ -36,7 +36,7 @@ RDEPEND="
 	flickr? ( net-libs/liboauth )
 	dev-db/sqlite:3
 	>=dev-libs/totem-pl-parser-3.4.1:=
-	tracker? ( app-misc/tracker:3= )
+	tracker? ( app-misc/tinysparql:3= )
 	upnp-av? ( net-libs/dleyna:1.0= )
 	lua? (
 		${LUA_DEPS}

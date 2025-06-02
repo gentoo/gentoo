@@ -29,7 +29,7 @@ RDEPEND="
 	>=gnome-extra/gucharmap-2.33.0:2.90
 	>=sys-auth/polkit-0.97
 	x11-libs/libX11
-	tracker? ( app-misc/tracker:3 )
+	tracker? ( app-misc/tinysparql:3 )
 	>=x11-libs/pango-1.50.0
 "
 DEPEND="${RDEPEND}

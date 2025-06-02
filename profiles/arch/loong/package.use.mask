@@ -265,7 +265,7 @@ sci-libs/spqr tbb
 dev-cpp/eigen test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# app-misc/tracker fails tests on loong.
+# app-misc/tinysparql fails tests on loong.
 app-cdr/brasero tracker
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
