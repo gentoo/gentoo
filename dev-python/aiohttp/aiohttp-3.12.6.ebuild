@@ -97,7 +97,7 @@ python_configure() {
 python_compile() {
 	local -x AIOHTTP_USE_SYSTEM_DEPS=1
 	# implicitly disabled for pypy3
-	if ! use native-extensions; then
+	if [[ ${EPYTHON} == pypy3* ]] || ! use native-extensions; then
 		local -x AIOHTTP_NO_EXTENSIONS=1
 	fi
 
