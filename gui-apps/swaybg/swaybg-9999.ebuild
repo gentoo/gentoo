@@ -18,13 +18,18 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="gdk-pixbuf +man"
+IUSE="+gdk-pixbuf gif jpeg +man tiff"
+REQUIRED_USE="
+	gif? ( gdk-pixbuf )
+	jpeg? ( gdk-pixbuf )
+	tiff? ( gdk-pixbuf )
+"
 
 DEPEND="
 	dev-libs/wayland
 	>=dev-libs/wayland-protocols-1.26
 	x11-libs/cairo
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf[gif(+)?,jpeg?,tiff?] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
