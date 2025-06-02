@@ -9,14 +9,18 @@ JAVA_PKG_OPT_USE="jdbc"
 inherit systemd flag-o-matic prefix toolchain-funcs \
 	multiprocessing java-pkg-opt-2 cmake
 
+DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 HOMEPAGE="https://mariadb.org/"
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
 	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.13-patches-01.tar.xz
 	https://dev.gentoo.org/~arkamar/distfiles/${PN}-10.6-columnstore-with-boost-1.85.patch.xz"
+# Shorten the path because the socket path length must be shorter than 107 chars
+# and we will run a mysql server during test phase
+S="${WORKDIR}/mysql"
 
-DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
@@ -29,12 +33,6 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )
 	test? ( extraengine )"
-
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-
-# Shorten the path because the socket path length must be shorter than 107 chars
-# and we will run a mysql server during test phase
-S="${WORKDIR}/mysql"
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
