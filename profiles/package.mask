@@ -263,10 +263,6 @@ dev-libs/libxml2-compat
 net-im/transwhat
 net-im/yowsup
 
-# Sam James <sam@gentoo.org> (2025-03-27)
-# Large-scale breakage (bug #951350).
-=dev-build/cmake-4*
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=xfce-base/exo-4.21
