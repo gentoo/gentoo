@@ -4,10 +4,12 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
+GNOME_ORG_MODULE=tracker
+
 inherit bash-completion-r1 flag-o-matic gnome.org gnome2-utils linux-info meson python-any-r1 systemd vala xdg
 
-DESCRIPTION="A tagging metadata database, search tool and indexer"
-HOMEPAGE="https://wiki.gnome.org/Projects/Tracker https://gitlab.gnome.org/GNOME/tracker"
+DESCRIPTION="Low-footprint RDF triple store with SPARQL 1.1 interface"
+HOMEPAGE="https://gnome.pages.gitlab.gnome.org/tinysparql"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3/0" # libtracker-sparql-3.0 soname version
