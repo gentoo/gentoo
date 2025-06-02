@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.1-libdir-readline.patch
 	"${FILESDIR}"/${PN}-4.9.2-socks.patch
 	"${FILESDIR}"/${PN}-4.9.3-gnulib.patch
+	"${FILESDIR}"/${PN}-4.9.3-gnulib-stdlib.h.patch
 )
 
 # Gnulib false positive #900064
