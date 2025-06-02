@@ -226,13 +226,6 @@ dev-libs/libxml2-compat
 =dev-python/ensurepip-setuptools-80.3.0
 =dev-python/setuptools-80.3.0
 
-# Matt Jolly <kangie@gentoo.org> (2025-04-28)
-# Unmaintained in Gentoo, is not supported upstream,
-# and has a modern successor that does not bring in additional dependencies.
-# Migrate to x11-wm/fvwm3: https://github.com/fvwmorg/fvwm3/discussions/878
-# Bug #949035; removal on 2025-05-28.
-x11-wm/fvwm
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-22)
 # Metapackage used for pypy3 target in the past.
 # Removal on 2025-05-22.
