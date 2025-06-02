@@ -230,7 +230,6 @@ dev-libs/libxml2-compat
 # Unmaintained in Gentoo, depends on masked x11-wm/fvwm,
 # SRC_URI uses mirror://gentoo and the files don't exist on mirrors.
 # Bug #949035; Removal on 2025-05-28 (with x11-wm/fvwm)
-x11-themes/fvwm_icons
 x11-themes/fvwm_sounds
 
 # Matt Jolly <kangie@gentoo.org> (2025-04-28)
