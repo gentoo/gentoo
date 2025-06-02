@@ -1,6 +1,10 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-02)
+# sci-libs/libsigrok is not stable
+app-metrics/collectd collectd_plugins_sigrok
+
 # Sam James <sam@gentoo.org> (2025-04-20)
 # Needs dev-python/scipy for tests which often ends up destabled on arches
 # even if it was previously stable there, as its own test results vary a lot.
