@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -57,7 +57,7 @@ RDEPEND="${LUA_DEPS}
 	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
 	!osg-fork? ( >=dev-games/openscenegraph-3.6.5:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
 	gui? (
-		app-arch/unshield
+		app-arch/unshield:=
 		dev-qt/qtbase:6[gui,network,opengl,widgets]
 		dev-qt/qtsvg:6
 	)
