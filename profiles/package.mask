@@ -233,14 +233,6 @@ dev-libs/libxml2-compat
 # Removal on 2025-06-02.  Bug #950475, #952653.
 sci-chemistry/modeller
 
-# Marc Schiffbauer <mschiff@gentoo.org> (2025-05-02)
-# Ancient version in tree, upstream discontinued to develop
-# a server for taskwarrior a long time ago
-# Bugs: #953857, #716762; removal on 2025-06-01
-acct-group/taskd
-acct-user/taskd
-app-misc/taskd
-
 # Matt Jolly <kangie@gentoo.org> (2025-04-28)
 # Unmaintained in Gentoo, depends on masked x11-wm/fvwm,
 # SRC_URI uses mirror://gentoo and the files don't exist on mirrors.
