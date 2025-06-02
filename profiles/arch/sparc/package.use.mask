@@ -465,7 +465,7 @@ dev-python/pyopengl test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # test dependencies for USE=gstreamer not keyworded on sparc
-app-misc/tracker-miners test
+app-misc/localsearch test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # dependencies not yet keyworded

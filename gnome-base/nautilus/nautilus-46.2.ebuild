@@ -34,7 +34,7 @@ DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 RDEPEND="${DEPEND}
-	>=app-misc/tracker-miners-3.0:3=
+	>=app-misc/localsearch-3.0:3=
 " # uses org.freedesktop.Tracker.Miner.Files gsettings schema from tracker-miners
 BDEPEND="
 	>=dev-util/gdbus-codegen-2.51.2

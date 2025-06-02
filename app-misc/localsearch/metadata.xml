@@ -15,6 +15,6 @@
     <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
   </use>
   <upstream>
-    <remote-id type="gnome-gitlab">GNOME/tracker-miners</remote-id>
+    <remote-id type="gnome-gitlab">GNOME/localsearch</remote-id>
   </upstream>
 </pkgmetadata>

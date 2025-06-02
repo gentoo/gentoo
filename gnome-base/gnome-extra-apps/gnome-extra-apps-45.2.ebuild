@@ -63,7 +63,7 @@ RDEPEND="
 	shotwell? ( >=media-gfx/shotwell-0.32.4 )
 	tracker? (
 		>=app-misc/tinysparql-3.6.0
-		>=app-misc/tracker-miners-3.6.2
+		>=app-misc/localsearch-3.6.2
 		>=media-gfx/gnome-photos-44.0
 		>=media-sound/gnome-music-45.0
 	)

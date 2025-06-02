@@ -311,7 +311,7 @@ sys-libs/ncurses-compat tinfo
 # Mart Raudsepp <leio@gentoo.org> (2018-12-14)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
-app-misc/tracker-miners seccomp
+app-misc/localsearch seccomp
 net-libs/webkit-gtk seccomp
 
 # Lukas Schmelting <lschmelting@posteo.com> after consulting
