@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,10 +21,6 @@ SLOT="0"
 IUSE="examples"
 
 DEPEND="elibc_musl? ( sys-libs/queue-standalone )"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-queue.patch
-)
 
 src_prepare() {
 	default
