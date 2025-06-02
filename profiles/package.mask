@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-02)
+# Package destabilisation mask. There is simply no need for this without
+# any stable consumers, and it is freeing up resources.
+# 0.6.0_pre20241020 is available in ~arch.
+~sci-libs/libsigrok-0.5.2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-02)
 # Gui depends on Qt5 and is unmaintained for a very long time - its main
 # developers have moved to the InputLeap project (gui-apps/input-leap).
 # Bugs #942580, #949911, #951987, #953262; removal on 2025-07-02.
