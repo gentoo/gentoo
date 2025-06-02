@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -60,7 +60,6 @@ else
 		my_patch_index=
 
 		upstream_url_base="mirror://gnu/readline"
-		mirror_url_base="ftp://ftp.cwru.edu/pub/readline"
 
 		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
 			printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
@@ -69,14 +68,10 @@ else
 			SRC_URI+=" ${patch_url}"
 			SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
 
-			# Add in the mirror URL too.
-			SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
-			SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}}.sig )"
-
 			MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 		done
 
-		unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
+		unset my_p patch_url my_patch_index upstream_url_base
 	fi
 fi
 
