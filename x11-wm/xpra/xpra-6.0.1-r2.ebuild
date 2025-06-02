@@ -25,7 +25,7 @@ DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based o
 HOMEPAGE="https://xpra.org/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-IUSE="+X avif brotli +client +clipboard crypt csc cuda cups dbus debug doc examples gstreamer +gtk3 html ibus jpeg +lz4 lzo mdns minimal oauth opengl openh264 pinentry pulseaudio qrcode +server sound systemd test +trayicon udev vpx webcam webp x264 xdg xinerama "
+IUSE="+X avif brotli +client +clipboard crypt csc cuda cups dbus debug doc examples gstreamer +gtk3 html ibus jpeg +lz4 mdns minimal oauth opengl openh264 pinentry pulseaudio qrcode +server sound systemd test +trayicon udev vpx webcam webp x264 xdg xinerama "
 IUSE+=" video_cards_nvidia"
 RESTRICT="!test? ( test )"
 
@@ -37,14 +37,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( gtk3 )
 	gtk3? ( client )
 	test? ( client clipboard crypt dbus gstreamer html server sound xdg xinerama )
-	video_cards_nvidia? ( cuda )
 "
 
 TEST_DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/netifaces[${PYTHON_USEDEP}]
 		dev-python/pillow[jpeg?,webp?,${PYTHON_USEDEP}]
-		dev-python/rencode[${PYTHON_USEDEP}]
 		dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 		xdg? ( dev-python/pyxdg[${PYTHON_USEDEP}] )
 	')
@@ -108,7 +106,6 @@ RDEPEND="
 		crypt? ( dev-python/cryptography[${PYTHON_USEDEP}] )
 		cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
 		lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
-		lzo? ( >=dev-python/python-lzo-0.7.0[${PYTHON_USEDEP}] )
 		oauth? ( dev-python/oauthlib[${PYTHON_USEDEP}] )
 		opengl? ( dev-python/pyopengl-accelerate[${PYTHON_USEDEP}] )
 		webcam? (
@@ -139,9 +136,8 @@ BDEPEND="
 		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 	')
-	cuda? ( dev-util/nvidia-cuda-toolkit )
-	doc? ( virtual/pandoc )
 	virtual/pkgconfig
+	doc? ( virtual/pandoc )
 "
 
 PATCHES=(
