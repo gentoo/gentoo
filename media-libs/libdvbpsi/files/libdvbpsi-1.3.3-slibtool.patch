@@ -1,0 +1,95 @@
+https://code.videolan.org/videolan/libdvbpsi/-/merge_requests/14
+
+From d4bee7cf2d03cd30a189c8abf4b34165a17598e5 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Thu, 14 Mar 2024 17:34:59 -0700
+Subject: [PATCH] build: link with the libtool archive
+
+When linking an internal dependency it is better to use the libtool
+archive (.la) file which allows it to always link correctly with both
+GNU libtool and slibtool.
+
+Gentoo-Issue: https://bugs.gentoo.org/956827
+---
+ examples/Makefile.am         | 15 +++++++++------
+ examples/dvbinfo/Makefile.am |  4 ++--
+ misc/Makefile.am             |  6 +++---
+ 3 files changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/examples/Makefile.am b/examples/Makefile.am
+index 97f100a..e65ccd5 100644
+--- a/examples/Makefile.am
++++ b/examples/Makefile.am
+@@ -15,27 +15,30 @@ check_cc_pid_LDFLAGS =
+ 
+ decode_pat_SOURCES = decode_pat.c
+ decode_pat_CPPFLAGS = -DDVBPSI_DIST
+-decode_pat_LDFLAGS = -L../src -ldvbpsi
++decode_pat_LDADD = $(top_builddir)/src/libdvbpsi.la
+ 
+ decode_pmt_SOURCES = decode_pmt.c
+ decode_pmt_CPPFLAGS = -DDVBPSI_DIST
+-decode_pmt_LDFLAGS = -L../src -ldvbpsi -lm
++decode_pmt_LDADD = $(top_builddir)/src/libdvbpsi.la
++decode_pmt_LDFLAGS = -lm
+ 
+ get_pcr_pid_SOURCES = get_pcr_pid.c
+ get_pcr_pid_CPPFLAGS = -DDVBPSI_DIST
+-get_pcr_pid_LDFLAGS = -L../src -ldvbpsi -lm
++get_pcr_pid_LDADD = $(top_builddir)/src/libdvbpsi.la
++get_pcr_pid_LDFLAGS = -lm
+ 
+ decode_sdt_SOURCES = decode_sdt.c
+ decode_sdt_CPPFLAGS = -DDVBPSI_DIST
+-decode_sdt_LDFLAGS = -L../src -ldvbpsi
++decode_sdt_LDADD = $(top_builddir)/src/libdvbpsi.la
+ 
+ decode_mpeg_SOURCES = decode_mpeg.c
+ if HAVE_SYS_SOCKET_H
+ decode_mpeg_SOURCES += connect.c connect.h
+ endif
+ decode_mpeg_CPPFLAGS = -D_FILE_OFFSET_BITS=64 -DDVBPSI_DIST
+-decode_mpeg_LDFLAGS = -L../src -ldvbpsi -lm
++decode_mpeg_LDADD = $(top_builddir)/src/libdvbpsi.la
++decode_mpeg_LDFLAGS = -lm
+ 
+ decode_bat_SOURCES = decode_bat.c
+ decode_bat_CPPFLAGS = -DDVBPSI_DIST
+-decode_bat_LDFLAGS = -L../src -ldvbpsi
++decode_bat_LDADD = $(top_builddir)/src/libdvbpsi.la
+diff --git a/examples/dvbinfo/Makefile.am b/examples/dvbinfo/Makefile.am
+index b878676..7eb5835 100644
+--- a/examples/dvbinfo/Makefile.am
++++ b/examples/dvbinfo/Makefile.am
+@@ -7,5 +7,5 @@ if HAVE_SYS_SOCKET_H
+ dvbinfo_SOURCES += tcp.c tcp.h udp.c udp.h
+ endif
+ dvbinfo_CPPFLAGS = -D_FILE_OFFSET_BITS=64 -DDVBPSI_DIST
+-dvbinfo_LDFLAGS = -L../../src -ldvbpsi -pthread -lm
+-
++dvbinfo_LDADD = $(top_builddir)/src/libdvbpsi.la
++dvbinfo_LDFLAGS = -pthread -lm
+diff --git a/misc/Makefile.am b/misc/Makefile.am
+index cd25f60..59886e2 100644
+--- a/misc/Makefile.am
++++ b/misc/Makefile.am
+@@ -7,16 +7,16 @@ gen_crc_SOURCES = gen_crc.c
+ 
+ gen_pat_SOURCES = gen_pat.c
+ gen_pat_CPPFLAGS = -DDVBPSI_DIST
+-gen_pat_LDFLAGS = -L../src -ldvbpsi
++gen_pat_LDADD = $(top_builddir)/src/libdvbpsi.la
+ 
+ gen_pmt_SOURCES = gen_pmt.c
+ gen_pmt_CPPFLAGS = -DDVBPSI_DIST
+-gen_pmt_LDFLAGS = -L../src -ldvbpsi
++gen_pmt_LDADD = $(top_builddir)/src/libdvbpsi.la
+ 
+ 
+ test_dr_SOURCES = test_dr.c
+ test_dr_CPPFLAGS = -DDVBPSI_DIST
+-test_dr_LDFLAGS = -L../src -ldvbpsi
++test_dr_LDADD = $(top_builddir)/src/libdvbpsi.la
+ 
+ noinst_HEADERS = test_dr.h
+ 
