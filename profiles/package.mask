@@ -232,11 +232,6 @@ dev-libs/libxml2-compat
 =dev-python/ensurepip-setuptools-80.3.0
 =dev-python/setuptools-80.3.0
 
-# Michał Górny <mgorny@gentoo.org> (2025-04-22)
-# Metapackage used for pypy3 target in the past.
-# Removal on 2025-05-22.
-dev-python/pypy3
-
 # Michał Górny <mgorny@gentoo.org> (2025-04-19)
 # This package will no longer feature stable keywords, due to unresolved
 # test failures blocking the stabilization request for months.
