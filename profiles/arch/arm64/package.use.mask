@@ -219,7 +219,6 @@ app-metrics/collectd collectd_plugins_nut
 app-metrics/collectd collectd_plugins_oracle
 app-metrics/collectd collectd_plugins_ping
 app-metrics/collectd collectd_plugins_routeros
-app-metrics/collectd collectd_plugins_sigrok
 app-metrics/collectd collectd_plugins_varnish
 
 # Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
