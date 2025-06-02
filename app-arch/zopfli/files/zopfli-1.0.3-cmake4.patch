@@ -1,0 +1,17 @@
+https://github.com/google/zopfli/pull/207
+commit 15464520156b4bfceb417f86d86e5a00d7e11c15
+Author: Johannes Huber <johu@gmx.de>
+Date:   Mon Jun 2 20:27:25 2025 +0200
+
+    fix build w/ cmake4
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e56fd2f..bee4355 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.11)
++cmake_minimum_required(VERSION 3.10)
+ 
+ project(Zopfli)
+ 
