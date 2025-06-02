@@ -45,7 +45,7 @@ BDEPEND="
 	)
 	${PYTHON_DEPS}
 "
-PDEPEND="miners? ( >=app-misc/tracker-miners-3.6_rc )"
+PDEPEND="miners? ( >=app-misc/localsearch-3.6_rc )"
 
 PATCHES=(
 	"${FILESDIR}"/3.6.0-configure-c99.patch

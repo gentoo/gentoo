@@ -42,7 +42,7 @@ DEPEND="
 # tracker-miners gschema used at runtime.
 RDEPEND="${DEPEND}
 	upnp-av? ( net-libs/dleyna:1.0= )
-	app-misc/tracker-miners:3
+	app-misc/localsearch:3
 "
 BDEPEND="
 	dev-libs/appstream-glib

@@ -35,8 +35,8 @@ DEPEND="${PYTHON_DEPS}
 # https://bugzilla.gnome.org/show_bug.cgi?id=731613
 RDEPEND="${DEPEND}
 	|| (
-		app-misc/tracker-miners:3[gstreamer]
-		app-misc/tracker-miners:3[ffmpeg]
+		app-misc/localsearch:3[gstreamer]
+		app-misc/localsearch:3[ffmpeg]
 	)
 	x11-libs/libnotify[introspection]
 	media-libs/gstreamer:1.0[introspection]

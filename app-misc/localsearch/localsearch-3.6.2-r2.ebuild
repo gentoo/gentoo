@@ -4,10 +4,12 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
+GNOME_ORG_MODULE=tracker-miners
+
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
-DESCRIPTION="Collection of data extractors for Tracker/Nepomuk"
-HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
+DESCRIPTION="Indexer and search engine that powers desktop search for core GNOME components"
+HOMEPAGE="https://gnome.pages.gitlab.gnome.org/localsearch"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3"
@@ -22,7 +24,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 # so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
 	>=dev-libs/glib-2.70:2
-	>=app-misc/tracker-3.6_rc:3
+	>=app-misc/tinysparql-3.6_rc:3
 
 	>=sys-apps/dbus-1.3.1
 	xmp? ( >=media-libs/exempi-2.1.0:= )
@@ -85,7 +87,7 @@ BDEPEND="
 
 PATCHES=(
 	# https://gitlab.gnome.org/GNOME/localsearch/-/merge_requests/511
-	"${FILESDIR}/${P}-epoll_wait.patch"
+	"${FILESDIR}/tracker-miners-3.6.2-epoll_wait.patch"
 )
 
 python_check_deps() {
