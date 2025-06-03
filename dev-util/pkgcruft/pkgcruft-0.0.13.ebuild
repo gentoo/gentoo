@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=" "
-LLVM_COMPAT=( {17..19} )
+LLVM_COMPAT=( {17..20} )
 RUST_MIN_VER="1.84.0"
 
 inherit cargo edo llvm-r2 multiprocessing shell-completion toolchain-funcs
