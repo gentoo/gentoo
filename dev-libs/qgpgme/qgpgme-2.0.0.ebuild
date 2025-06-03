@@ -26,6 +26,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	!<app-crypt/gpgme-2[qt6(-)]
 	>=app-crypt/gpgme-2:=
 	>=dev-cpp/gpgmepp-2:=
 	>=dev-libs/libgpg-error-1.47:=
