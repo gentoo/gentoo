@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-06-03)
+# Fetching from GitHub seems broken with this:
+# > Connecting to github.com|20.26.156.215|:443... connected.
+# > ERROR: cannot verify github.com's certificate, issued by 'CN=Sectigo ECC Domain Validation Secure Server CA,O=Sectigo Limited,L=Salford,ST=Greater Manchester,C=GB':
+# >  Unable to locally verify the issuer's authority.
+=app-misc/ca-certificates-20250419.3.112
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-02)
 # Package destabilisation mask. There is simply no need for this without
 # any stable consumers, and it is freeing up resources.
