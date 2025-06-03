@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib systemd toolchain-funcs
+inherit cmake-multilib systemd toolchain-funcs tmpfiles
 
 DESCRIPTION="Software real-time synthesizer based on the Soundfont 2 specifications"
 HOMEPAGE="https://www.fluidsynth.org"
@@ -40,6 +40,7 @@ DEPEND="
 	readline? ( sys-libs/readline:0=[${MULTILIB_USEDEP}] )
 	sdl? ( media-libs/libsdl3[${MULTILIB_USEDEP}] )
 	sndfile? ( media-libs/libsndfile[${MULTILIB_USEDEP}] )
+	systemd? ( sys-apps/systemd )
 "
 RDEPEND="${DEPEND}"
 
@@ -86,7 +87,7 @@ src_configure() {
 		-Denable-readline=$(usex readline)
 		-Denable-sdl3=$(usex sdl)
 		-Denable-sdl2=OFF
-		-Denable-systemd=$(usex systemd)
+		-Denable-systemd=$(multilib_native_usex systemd)
 		-Denable-threads=$(usex threads)
 		-Denable-trap-on-fpe=$(usex debug)
 		-Denable-ubsan=OFF # compile and link against UBSan (for debugging fluidsynth internals)
@@ -94,6 +95,7 @@ src_configure() {
 		-Denable-winmidi=OFF # Windows
 		$(cmake_use_find_package doc Doxygen)
 		-DFLUID_DAEMON_ENV_FILE="/etc/fluidsynth.conf"
+		-DDEFAULT_SOUNDFONT="/usr/share/sounds/sf2/FluidR3_GM.sf2"
 	)
 
 	cmake-multilib_src_configure
@@ -113,6 +115,8 @@ multilib_src_install() {
 
 	if multilib_is_native_abi ; then
 		systemd_dounit "${BUILD_DIR}/fluidsynth.service"
+
+		newtmpfiles "${BUILD_DIR}/fluidsynth.tmpfiles" fluidsynth.conf
 
 		insinto /etc
 		doins "${BUILD_DIR}/fluidsynth.conf"
@@ -136,6 +140,8 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
+	tmpfiles_process fluidsynth.conf
+
 	elog "When using fluidsynth as a system service, make sure"
 	elog "to configure your fluidsynth settings globally in "
 	elog "/etc/fluidsynth.conf or per-user in ~/.config/fluidsynth"
