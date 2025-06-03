@@ -40,6 +40,7 @@
 # Major changes to packaging as bindings are split out by upstream.
 >=app-crypt/gpgme-2
 dev-cpp/gpgmepp
+dev-libs/qgpgme
 
 # Sam James <sam@gentoo.org> (2025-06-03)
 # Fetching from GitHub seems broken with this:
