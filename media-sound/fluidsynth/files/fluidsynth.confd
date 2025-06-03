@@ -1,0 +1,7 @@
+# Additional options to pass to FluidSynth
+FLUIDSYNTH_OPTS=""
+
+# Path to the SoundFont
+# For playback of general MIDI files, media-sound/fluid-soundfont is a good
+# choice. The SoundFont is located at /usr/share/sounds/sf2/FluidR3_GM.sf2
+SOUND_FONT=""
