@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,7 @@ inherit flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-func
 DESCRIPTION="Rust standard library, standalone (for crossdev)"
 HOMEPAGE="https://www.rust-lang.org"
 SRC_URI="https://static.rust-lang.org/dist/rustc-${PV}-src.tar.xz"
+S="${WORKDIR}/${P/-std/c}-src"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4"
 SLOT="stable/$(ver_cut 1-2)"
@@ -39,8 +40,6 @@ QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
 PATCHES=(
 	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch  # remove for >=1.77.0
 )
-
-S="${WORKDIR}/${P/-std/c}-src"
 
 #
 # The cross magic
