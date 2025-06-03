@@ -9,10 +9,6 @@
 		<email>navi@vlhl.dev</email>
 		<name>Anna Figueiredo Gomes</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>matoro_gentoo@matoro.tk</email>
-		<name>Matoro Mahri</name>
-	</maintainer>
 	<use>
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
