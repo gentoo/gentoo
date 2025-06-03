@@ -94,9 +94,6 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-8.1-rlfe-c99.patch
 	# Not needed with 8.3 which drops < C89 compat
 	"${FILESDIR}"/${PN}-8.2-c23.patch
-
-	# TODO: rebase
-	#"${FILESDIR}"/${PN}-8.0-darwin-shlib-versioning.patch
 )
 
 src_unpack() {
