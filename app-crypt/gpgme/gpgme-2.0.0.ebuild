@@ -106,13 +106,6 @@ my_src_install() {
 	einstalldocs
 
 	cd "${BUILD_DIR}" || die
-
 	emake DESTDIR="${D}" install
-
 	find "${ED}" -type f -name '*.la' -delete || die
-
-	# Backward compatibility for gentoo
-	# (in the past, we had slots)
-	dodir /usr/include/gpgme
-	dosym -r /usr/include/gpgme.h /usr/include/gpgme/gpgme.h
 }
