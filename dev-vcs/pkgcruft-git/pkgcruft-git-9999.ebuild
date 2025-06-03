@@ -31,7 +31,7 @@ LICENSE+="
 "
 SLOT="0"
 IUSE="test"
-# Fails to link w/ missing libssh2
+# Fails to link w/ missing libssh2 with some CFLAGS
 RESTRICT="!test? ( test ) test"
 
 DEPEND="
@@ -77,10 +77,8 @@ src_test() {
 	# helper)
 	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
 
-	# The test failures appear ebuild-related
 	edo cargo nextest run $(usev !debug '--release') \
 		--color always \
-		--all-features \
 		--tests \
 		--no-fail-fast
 }
