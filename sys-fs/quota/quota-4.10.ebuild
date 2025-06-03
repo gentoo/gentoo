@@ -31,6 +31,10 @@ BDEPEND="nls? ( sys-devel/gettext )"
 PDEPEND="rpc? ( net-nds/rpcbind )"
 RDEPEND+=" selinux? ( sec-policy/selinux-quota )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.10-fix-building-on-musl.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		--enable-ext2direct
