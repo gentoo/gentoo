@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/qwt2.patch"
 	"${FILESDIR}/cmake.patch"
 	"${FILESDIR}/boost187.patch"
+	"${FILESDIR}/protobuf30.patch"
 )
 
 src_configure() {
