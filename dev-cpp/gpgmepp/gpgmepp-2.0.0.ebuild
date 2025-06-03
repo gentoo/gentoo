@@ -34,6 +34,8 @@ BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 src_configure() {
 	local mycmakeargs=(
+		# As of 2.0.0, there aren't any non-manual tests. tests/README
+		# says that the real testing is done via dev-libs/qgpgme instead.
 		-DBUILD_TESTING=$(usex test)
 	)
 
