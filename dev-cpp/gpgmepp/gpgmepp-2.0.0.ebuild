@@ -26,6 +26,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	!<app-crypt/gpgme-2[cxx(-)]
 	>=app-crypt/gpgme-2:=
 	>=dev-libs/libgpg-error-1.47:=
 "
