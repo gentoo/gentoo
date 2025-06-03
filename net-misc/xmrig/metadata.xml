@@ -16,6 +16,9 @@
     <flag name="hwloc">
       Use <pkg>sys-apps/hwloc</pkg> for CPU affinity support
     </flag>
+    <flag name="opencl">
+      Enable OpenCL mining backend for AMD GPUs
+    </flag>
   </use>
   <upstream>
     <bugs-to>https://github.com/xmrig/xmrig/issues</bugs-to>
