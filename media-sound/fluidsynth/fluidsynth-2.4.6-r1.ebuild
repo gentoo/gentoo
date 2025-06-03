@@ -12,7 +12,7 @@ SRC_URI="https://github.com/FluidSynth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-2.1+"
 SLOT="0/3"
 KEYWORDS="~amd64"
-IUSE="alsa dbus debug doc ipv6 jack ladspa network openmp oss pipewire portaudio pulseaudio +readline sdl +sndfile systemd threads"
+IUSE="alsa dbus debug doc ipv6 jack ladspa openmp oss pipewire portaudio pulseaudio +readline sdl +sndfile systemd threads"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -73,7 +73,7 @@ src_configure() {
 		-Denable-ladspa=$(usex ladspa)
 		-Denable-libinstpatch=OFF # https://github.com/swami/libinstpatch
 		-Denable-midishare=OFF # http://midishare.sourceforge.net/
-		-Denable-network=$(usex network)
+		-Denable-network=ON
 		-Denable-openmp=$(usex openmp)
 		-Denable-opensles=OFF
 		-Denable-oboe=OFF # requires OpenSLES and/or AAudio
