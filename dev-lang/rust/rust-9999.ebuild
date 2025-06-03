@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( 20 )
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 RUST_PATCH_VER=${PVR}
 
