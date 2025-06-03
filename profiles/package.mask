@@ -36,12 +36,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2025-06-03)
-# Vulnerable EOL version of CPython.  Security backports require
-# too much effort.  Removal on 2025-07-03.
-=app-doc/python-docs-3.8*
-=dev-lang/python-3.8*
-
 # Sam James <sam@gentoo.org> (2025-06-03)
 # Fetching from GitHub seems broken with this:
 # > Connecting to github.com|20.26.156.215|:443... connected.
