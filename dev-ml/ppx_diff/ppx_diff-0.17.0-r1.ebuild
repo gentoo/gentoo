@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,14 +14,17 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 IUSE="+ocamlopt"
 
+# Jane Street Minor
+JSM=$(ver_cut 1-2)*
+
 RDEPEND="
 	>=dev-lang/ocaml-5
-	dev-ml/base:${SLOT}[ocamlopt?]
-	dev-ml/gel:${SLOT}[ocamlopt?]
-	dev-ml/ppx_compare:${SLOT}[ocamlopt?]
-	dev-ml/ppx_enumerate:${SLOT}[ocamlopt?]
-	dev-ml/ppx_jane:${SLOT}[ocamlopt?]
-	dev-ml/ppxlib_jane:${SLOT}[ocamlopt?]
+	=dev-ml/base-${JSM}:=[ocamlopt?]
+	=dev-ml/gel-${JSM}:=[ocamlopt?]
+	=dev-ml/ppx_compare-${JSM}:=[ocamlopt?]
+	=dev-ml/ppx_enumerate-${JSM}:=[ocamlopt?]
+	=dev-ml/ppx_jane-${JSM}:=[ocamlopt?]
+	=dev-ml/ppxlib_jane-${JSM}:=[ocamlopt?]
 	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
