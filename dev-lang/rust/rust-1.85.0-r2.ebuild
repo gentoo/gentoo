@@ -219,8 +219,11 @@ src_unpack() {
 			[source.vendored-sources]
 			directory = "vendor"
 		_EOF_
+	elif use verify-sig ; then
+		# Patch tarballs are not signed (but we trust Gentoo infra)
+		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
 	else
-		verify-sig_src_unpack
+		default
 	fi
 }
 

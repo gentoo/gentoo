@@ -232,6 +232,15 @@ pkg_setup() {
 	fi
 }
 
+src_unpack() {
+	if use verify-sig ; then
+		# Patch tarballs are not signed (but we trust Gentoo infra)
+		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+	else
+		default
+	fi
+}
+
 src_prepare() {
 	PATCHES=(
 		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
