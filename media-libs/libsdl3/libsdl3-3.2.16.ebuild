@@ -12,7 +12,7 @@ S=${WORKDIR}/SDL3-${PV}
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="
 	X alsa aqua dbus doc ibus io-uring jack kms opengl oss pipewire
