@@ -250,47 +250,6 @@ dev-libs/libxml2-compat
 # test failures blocking the stabilization request for months.
 <dev-python/mpi4py-4
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-04-02)
-# Masked for testing the new .0 version and leave time for packages
-# to catch up on support if needed. May or may keep masked until 6.9.1
-# depending on issues. If wanted, feel free to add `dev-qt/*:6/6.9.0`
-# to package.unmask and report issues.
-=dev-python/pyqt6-6.9*
-=dev-python/pyqt6-webengine-6.9*
-=dev-python/pyside-6.9.0*
-=dev-qt/qt-docs-6.9.0*
-=dev-qt/qt3d-6.9.0*
-=dev-qt/qt5compat-6.9.0*
-=dev-qt/qtbase-6.9.0*
-=dev-qt/qtcharts-6.9.0*
-=dev-qt/qtconnectivity-6.9.0*
-=dev-qt/qtdeclarative-6.9.0*
-=dev-qt/qthttpserver-6.9.0*
-=dev-qt/qtimageformats-6.9.0*
-=dev-qt/qtlanguageserver-6.9.0*
-=dev-qt/qtlocation-6.9.0*
-=dev-qt/qtmultimedia-6.9.0*
-=dev-qt/qtnetworkauth-6.9.0*
-=dev-qt/qtpositioning-6.9.0*
-=dev-qt/qtquick3d-6.9.0*
-=dev-qt/qtquicktimeline-6.9.0*
-=dev-qt/qtremoteobjects-6.9.0*
-=dev-qt/qtscxml-6.9.0*
-=dev-qt/qtsensors-6.9.0*
-=dev-qt/qtserialbus-6.9.0*
-=dev-qt/qtserialport-6.9.0*
-=dev-qt/qtshadertools-6.9.0*
-=dev-qt/qtspeech-6.9.0*
-=dev-qt/qtsvg-6.9.0*
-=dev-qt/qttools-6.9.0*
-=dev-qt/qttranslations-6.9.0*
-=dev-qt/qtvirtualkeyboard-6.9.0*
-=dev-qt/qtwayland-6.9.0*
-=dev-qt/qtwebchannel-6.9.0*
-=dev-qt/qtwebengine-6.9.0*
-=dev-qt/qtwebsockets-6.9.0*
-=dev-qt/qtwebview-6.9.0*
-
 # Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
 # Screen v5.0.0 has a lot of regressions
 # https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
