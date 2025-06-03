@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-06-03)
+# -libupb fails to build (bug #957067)
+# https://github.com/protocolbuffers/protobuf/issues/20538
+>=dev-libs/protobuf-31.1 libupb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
 # Force both "old" KWallet backend (now ksecretd service via IUSE keyring)
 # and the legacy KWalletAPI (via IUSE legacy-kwallet) until a (stable)
