@@ -1,5 +1,9 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2025-05-27)
+# systemd does not support split-usr.
+systemd
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2022-12-04)
 # Unmask split-usr.
