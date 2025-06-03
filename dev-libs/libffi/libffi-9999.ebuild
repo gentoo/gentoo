@@ -69,6 +69,7 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--includedir="${EPREFIX}"/usr/$(get_libdir)/${PN}/include \
 		--disable-multi-os-directory \
+		--with-pic \
 		$(use_enable static-libs static) \
 		$(use_enable exec-static-trampoline exec-static-tramp) \
 		$(use_enable pax-kernel pax_emutramp) \
