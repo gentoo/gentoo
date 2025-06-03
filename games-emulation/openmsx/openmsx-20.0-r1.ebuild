@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} python3_13t )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit desktop python-any-r1 readme.gentoo-r1 toolchain-funcs xdg
 
