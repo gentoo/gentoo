@@ -157,6 +157,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-5.22.5-krunner-cwd-at-home.patch" # TODO upstream: KDE-bug 432975, bug 767478
 	"${WORKDIR}"/${PATCHSET}
+	"${FILESDIR}"/${PN}-6.3.5-gcc-16.patch
 )
 
 src_prepare() {
