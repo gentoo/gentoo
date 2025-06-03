@@ -9,11 +9,11 @@ EAPI=8
 # (find the one for the current release then subscribe to it +
 # any subsequent ones linked within so you're covered for a while.)
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
-
-# in-source builds are not supported:
+# out-of-source b/c in-source builds are not supported:
 # * https://dev.gnupg.org/T6313#166339
 # * https://dev.gnupg.org/T6673#174545
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 inherit libtool flag-o-matic out-of-source verify-sig
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
@@ -34,7 +34,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 IUSE="common-lisp static-libs test"
 RESTRICT="!test? ( test )"
 
-# On each bump, update dep bounds on each version from configure.ac!
 RDEPEND="
 	>=app-crypt/gnupg-2
 	>=dev-libs/libassuan-2.5.3:=
@@ -64,8 +63,8 @@ src_prepare() {
 		die "Could not run tests as requested with too-long WORKDIR."
 	fi
 
-	# Make best effort to allow longer PORTAGE_TMPDIR
-	# as usock limitation fails build/tests
+	# Make best effort to allow longer PORTAGE_TMPDIR as usock limitation
+	# fails build/tests.
 	ln -s "${P}" "${WORKDIR}/b" || die
 	S="${WORKDIR}/b"
 }
@@ -73,8 +72,6 @@ src_prepare() {
 my_src_configure() {
 	# bug #847955
 	append-lfs-flags
-
-	cd "${BUILD_DIR}" || die
 
 	local languages=(
 		$(usev common-lisp 'cl')
@@ -90,22 +87,7 @@ my_src_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-my_src_compile() {
-	cd "${BUILD_DIR}" || die
-
-	emake
-}
-
-my_src_test() {
-	cd "${BUILD_DIR}" || die
-
-	emake check
-}
-
 my_src_install() {
-	einstalldocs
-
-	cd "${BUILD_DIR}" || die
 	emake DESTDIR="${D}" install
 	find "${ED}" -type f -name '*.la' -delete || die
 }
