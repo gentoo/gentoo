@@ -14,10 +14,13 @@ SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 IUSE="+ocamlopt"
 
+# Jane Street Minor
+JSM=$(ver_cut 1-2)*
+
 RDEPEND="
 	>=dev-lang/ocaml-5
-	dev-ml/base:${SLOT}[ocamlopt?]
-	dev-ml/typerep:${SLOT}[ocamlopt?]
+	=dev-ml/base-${JSM}:=[ocamlopt?]
+	=dev-ml/typerep-${JSM}:=[ocamlopt?]
 	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
