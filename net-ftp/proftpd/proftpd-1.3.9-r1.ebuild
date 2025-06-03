@@ -81,6 +81,8 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
+	# https://bugs.gentoo.org/953968
+	"${FILESDIR}"/${PN}-1.3.9-slibtool.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
