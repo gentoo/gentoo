@@ -48,9 +48,16 @@ RDEPEND="
 	>=app-crypt/gnupg-2
 	>=dev-libs/libassuan-2.5.3:=
 	>=dev-libs/libgpg-error-1.46-r1:=
-	python? ( ${PYTHON_DEPS} )
+	cxx? ( !dev-cpp/gpgmepp )
+	python? (
+		!dev-python/gpgmepy
+		${PYTHON_DEPS}
+	)
 	qt5? ( dev-qt/qtcore:5 )
-	qt6? ( dev-qt/qtbase:6 )
+	qt6? (
+		!dev-libs/qgpgme
+		dev-qt/qtbase:6
+	)
 "
 DEPEND="
 	${RDEPEND}
