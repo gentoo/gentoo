@@ -15,17 +15,18 @@ EAPI=8
 # and need to get a release out quickly (less likely with `dev` in-tree).
 
 # Since m133 we are using CI-generated tarballs from
-# https://github.com/chromium-linux-tarballs/chromium-tarballs/
+# https://github.com/chromium-linux-tarballs/chromium-tarballs/ (uploaded to S3
+# and made available via https://chromium-tarballs.distfiles.gentoo.org/).
 
-# These are bit-for-bit identical to the official releases, but are built
-# using an external CI system that we have some control over, in case
-# issues pop up again with official tarball generation.
+# We do this because upstream tarballs weigh in at about 3.5x the size of our
+# new "Distro tarballs" and include binaries (etc) that are not useful for
+# downstream consumers (like distributions).
 
-GN_MIN_VER=0.2235
+GN_MIN_VER=0.2217
 # chromium-tools/get-chromium-toolchain-strings.py
-TEST_FONT=a28b222b79851716f8358d2800157d9ffe117b3545031ae51f69b7e1e1b9a969
-BUNDLED_CLANG_VER=llvmorg-21-init-11777-gfd3fecfc-1
-BUNDLED_RUST_VER=4a0969e06dbeaaa43914d2d00b2e843d49aa3886-1
+TEST_FONT=f26f29c9d3bfae588207bbc9762de8d142e58935c62a86f67332819b15203b35
+BUNDLED_CLANG_VER=llvmorg-21-init-9266-g09006611-1
+BUNDLED_RUST_VER=c8f94230282a8e8c1148f3e657f0199aad909228-1
 RUST_SHORT_HASH=${BUNDLED_RUST_VER:0:10}-${BUNDLED_RUST_VER##*-}
 NODE_VER=22.11.0
 
@@ -47,8 +48,8 @@ inherit python-any-r1 readme.gentoo-r1 rust systemd toolchain-funcs virtualx xdg
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="https://www.chromium.org/"
-PPC64_HASH="10ea161c2b3c7c662fe239b8ab12ac42bf5549d8"
-PATCH_V="${PV%%\.*}-1"
+PPC64_HASH="a85b64f07b489b8c6fdb13ecf79c16c56c560fc6"
+PATCH_V="${PV%%\.*}"
 SRC_URI="https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/${PV}/chromium-${PV}-linux.tar.xz
 	!bundled-toolchain? (
 		https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/${PATCH_V}/chromium-patches-${PATCH_V}.tar.bz2
@@ -74,11 +75,11 @@ LICENSE+=" FFT2D FTL IJG ISC LGPL-2 LGPL-2.1 libpng libpng2 MIT MPL-1.1 MPL-2.0 
 LICENSE+=" SGI-B-2.0 SSLeay SunSoft Unicode-3.0 Unicode-DFS-2015 Unlicense UoI-NCSA X11-Lucent"
 LICENSE+=" rar? ( unRAR )"
 
-SLOT="0/dev"
+SLOT="0/stable"
 # Dev exists mostly to give devs some breathing room for beta/stable releases;
 # it shouldn't be keyworded but adventurous users can select it.
 if [[ ${SLOT} != "0/dev" ]]; then
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
@@ -419,8 +420,9 @@ src_prepare() {
 		"${FILESDIR}/chromium-134-bindgen-custom-toolchain.patch"
 		"${FILESDIR}/chromium-135-oauth2-client-switches.patch"
 		"${FILESDIR}/chromium-135-map_droppable-glibc.patch"
+		"${FILESDIR}/chromium-136-drop-nodejs-ver-check.patch"
 		"${FILESDIR}/chromium-137-openh264-include-path.patch"
-		"${FILESDIR}/chromium-138-nodejs-version-check.patch"
+		"${FILESDIR}/chromium-137-pdfium-system-libpng.patch"
 	)
 
 	if use bundled-toolchain; then
@@ -614,8 +616,8 @@ src_prepare() {
 		third_party/devtools-frontend/src/front_end/third_party/wasmparser
 		third_party/devtools-frontend/src/front_end/third_party/web-vitals
 		third_party/devtools-frontend/src/third_party
+		third_party/distributed_point_functions
 		third_party/dom_distiller_js
-		third_party/dragonbox
 		third_party/eigen3
 		third_party/emoji-segmenter
 		third_party/farmhash
@@ -758,6 +760,7 @@ src_prepare() {
 		third_party/tensorflow_models
 		third_party/tensorflow-text
 		third_party/tflite
+		third_party/tflite/src/third_party/eigen3
 		third_party/tflite/src/third_party/fft2d
 		third_party/tflite/src/third_party/xla/third_party/tsl
 		third_party/tflite/src/third_party/xla/xla/tsl/framework
@@ -777,6 +780,7 @@ src_prepare() {
 		third_party/webrtc/modules/third_party/fft
 		third_party/webrtc/modules/third_party/g711
 		third_party/webrtc/modules/third_party/g722
+		third_party/webrtc/rtc_base/third_party/base64
 		third_party/webrtc/rtc_base/third_party/sigslot
 		third_party/widevine
 		third_party/woff2
