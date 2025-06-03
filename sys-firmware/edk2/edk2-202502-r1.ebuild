@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python3_{12..13} python3_13t )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit edo prefix python-any-r1 readme.gentoo-r1 secureboot toolchain-funcs
 
