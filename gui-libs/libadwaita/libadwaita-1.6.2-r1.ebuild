@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} python3_{13..14}{,t} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit gnome.org meson python-any-r1 vala virtualx xdg
 
 DESCRIPTION="Building blocks for modern GNOME applications"
@@ -11,17 +11,17 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libadwaita/ https://gitlab.gnome.
 
 LICENSE="LGPL-2.1+"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 
 IUSE="+introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
-	>=dev-libs/glib-2.80.0:2
-	>=gui-libs/gtk-4.17.5:4[introspection?]
+	>=dev-libs/glib-2.76:2
+	>=gui-libs/gtk-4.15.2:4[introspection?]
 	dev-libs/appstream:=
 	dev-libs/fribidi
-	introspection? ( >=dev-libs/gobject-introspection-1.83.2:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
@@ -31,7 +31,6 @@ BDEPEND="
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
-	dev-lang/sassc
 "
 
 src_prepare() {
@@ -48,7 +47,7 @@ src_configure() {
 		-Dprofiling=false
 		$(meson_feature introspection)
 		$(meson_use vala vapi)
-		-Ddocumentation=false # we ship pregenerated docs
+		-Dgtk_doc=false # we ship pregenerated docs
 		$(meson_use test tests)
 		-Dexamples=false
 	)
@@ -64,4 +63,6 @@ src_install() {
 	meson_src_install
 
 	insinto /usr/share/gtk-doc/html
+	# This will install libadwaita API docs unconditionally, but this is intentional
+	doins -r "${S}"/doc/libadwaita-1
 }
