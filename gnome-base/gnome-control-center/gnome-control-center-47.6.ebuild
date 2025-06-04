@@ -194,6 +194,8 @@ src_configure() {
 }
 
 src_test() {
+	# tests are fragile to long socket paths, bug #921583
+	local -x TMPDIR=/tmp
 	virtx meson_src_test
 }
 
