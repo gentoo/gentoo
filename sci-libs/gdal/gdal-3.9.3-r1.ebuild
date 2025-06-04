@@ -56,7 +56,7 @@ DEPEND="
 	fits? ( sci-libs/cfitsio:= )
 	geos? ( >=sci-libs/geos-3.8.0 )
 	gif? ( media-libs/giflib:= )
-	gml? ( >=dev-libs/xerces-c-3.1 )
+	gml? ( >=dev-libs/xerces-c-3.1:= )
 	heif? ( media-libs/libheif:= )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[cxx,szip] )
 	java? (
