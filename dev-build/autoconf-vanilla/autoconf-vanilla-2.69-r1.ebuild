@@ -93,3 +93,10 @@ src_prepare() {
 		 -execdir sed -i '/^pkgdatadir/s/@PACKAGE@/&-vanilla/g' {} + \
 		 || die
 }
+
+src_install() {
+	toolchain-autoconf_src_install
+
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+}
