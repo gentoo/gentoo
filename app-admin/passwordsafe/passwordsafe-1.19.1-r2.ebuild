@@ -15,19 +15,18 @@ S="${WORKDIR}/pwsafe-${MY_PV}"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="qr test +xml yubikey"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	net-misc/curl
-	sys-apps/file
 	sys-apps/util-linux
-	x11-libs/libX11
+	x11-libs/libXt
 	x11-libs/libXtst
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
-	qr? ( media-gfx/qrencode:= )
-	xml? ( dev-libs/xerces-c )
+	qr? ( media-gfx/qrencode )
+	xml? ( dev-libs/xerces-c:= )
 	yubikey? ( sys-auth/ykpers )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
@@ -38,7 +37,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
 
-PATCHES=( "${FILESDIR}/${P}-CMake.patch" )
+PATCHES=( "${FILESDIR}/CMake.patch" )
 
 src_configure() {
 	setup-wxwidgets

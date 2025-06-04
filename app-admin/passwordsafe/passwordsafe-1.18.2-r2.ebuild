@@ -5,7 +5,7 @@ EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit cmake optfeature wxwidgets xdg
+inherit cmake desktop optfeature wxwidgets xdg
 
 MY_PV="${PV/_beta/BETA}"
 DESCRIPTION="Password manager with wxGTK based frontend"
@@ -15,7 +15,7 @@ S="${WORKDIR}/pwsafe-${MY_PV}"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="qr test +xml yubikey"
 RESTRICT="!test? ( test )"
 
@@ -26,7 +26,7 @@ RDEPEND="
 	x11-libs/libXtst
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	qr? ( media-gfx/qrencode )
-	xml? ( dev-libs/xerces-c )
+	xml? ( dev-libs/xerces-c:= )
 	yubikey? ( sys-auth/ykpers )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
@@ -36,8 +36,6 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
-
-PATCHES=( "${FILESDIR}/CMake.patch" )
 
 src_configure() {
 	setup-wxwidgets
@@ -54,11 +52,30 @@ src_configure() {
 }
 
 src_install() {
-	cmake_src_install
-
 	pushd "${BUILD_DIR}" || die
+
+	dobin pwsafe
+	dobin cli/pwsafe-cli
 	dosym pwsafe /usr/bin/${PN}
 	dosym pwsafe-cli /usr/bin/${PN}-cli
+
+	insinto /usr/share/locale
+	doins -r src/ui/wxWidgets/I18N/mos/*
+
+	insinto /usr/share/${PN}/help
+	doins help/*.zip
+
+	popd || die
+
+	newman docs/pwsafe.1 ${PN}.1
+
+	dodoc README.md README.LINUX.* SECURITY.md docs/{ReleaseNotes.md,ChangeLog.txt}
+
+	insinto /usr/share/${PN}
+	doins -r xml
+
+	doicon -s 48 install/graphics/pwsafe.png
+	newmenu install/desktop/pwsafe.desktop ${PN}.desktop
 }
 
 pkg_postinst() {
