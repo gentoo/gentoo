@@ -7,22 +7,21 @@ inherit java-vm-2
 
 abi_uri() {
 	echo "${2-$1}? (
-			https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jre_${1}_linux_hotspot_${MY_PV/-/}.tar.gz
+			https://github.com/adoptium/temurin${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jre_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
 		)"
 }
 
-MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
-SLOT="$(ver_cut 1)"
+MY_PV=${PV/_p/+}
+SLOT=${MY_PV%%[.+]*}
 
-DESCRIPTION="Prebuilt Java JRE binaries provided by Eclipse Temurin"
-HOMEPAGE="https://adoptium.net/"
 SRC_URI="
 	$(abi_uri x64 amd64)
 "
 
+DESCRIPTION="Prebuilt Java JRE binaries provided by Eclipse Temurin"
+HOMEPAGE="https://adoptium.net/"
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="amd64"
-
 IUSE="alsa cups headless-awt selinux"
 
 RDEPEND="
@@ -46,24 +45,28 @@ RDEPEND="
 RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
 
-S="${WORKDIR}/jdk${MY_PV}-jre"
+S="${WORKDIR}/jdk-${MY_PV}-jre"
 
 src_install() {
-	local dest="/opt/${P}"
+	local dest="/opt/${PN}-${SLOT}"
 	local ddest="${ED}/${dest#/}"
 
-	rm ASSEMBLY_EXCEPTION LICENSE THIRD_PARTY_README || die
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
 
-	# this does not exist on arm64 hence -f
-	rm -fv lib/*/libfreetype.so* || die
+	# Not sure why they bundle this as it's commonly available and they
+	# only do so on x86_64. It's needed by libfontmanager.so. IcedTea
+	# also has an explicit dependency while Oracle seemingly dlopens it.
+	rm -vf lib/libfreetype.so || die
 
+	# Oracle and IcedTea have libjsoundalsa.so depending on
+	# libasound.so.2 but AdoptOpenJDK only has libjsound.so. Weird.
 	if ! use alsa ; then
-		rm -v lib/*/libjsoundalsa.so* || die
+		rm -v lib/libjsound.* || die
 	fi
 
 	if use headless-awt ; then
-		rm -fvr lib/*/lib*{[jx]awt,splashscreen}* \
-			bin/policytool || die
+		rm -v lib/lib*{[jx]awt,splashscreen}* || die
 	fi
 
 	rm -v lib/security/cacerts || die
@@ -72,11 +75,12 @@ src_install() {
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
 
-	# provide stable symlink
-	dosym "${P}" "/opt/${PN}-${SLOT}"
-
-	java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
+	java-vm_install-env "${FILESDIR}"/${PN}.env.sh
 	java-vm_set-pax-markings "${ddest}"
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
+}
+
+pkg_postinst() {
+	java-vm-2_pkg_postinst
 }
