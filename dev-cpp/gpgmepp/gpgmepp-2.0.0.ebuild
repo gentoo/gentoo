@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!<app-crypt/gpgme-2[cxx(-)]
 
-	>=app-crypt/gpgme-2:=
+	>=app-crypt/gpgme-${PV%.*}:=
 	>=dev-libs/libgpg-error-1.47:=
 "
 DEPEND="${RDEPEND}"
