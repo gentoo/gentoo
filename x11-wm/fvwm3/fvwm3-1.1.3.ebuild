@@ -100,6 +100,10 @@ RDEPEND="
 
 DEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.3-reproducible-docs.patch"
+)
+
 src_configure() {
 	local emesonargs=(
 		"-Dpng=enabled"
