@@ -22,8 +22,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!<app-crypt/gpgme-2[qt6(-)]
 
-	>=app-crypt/gpgme-2:=
-	>=dev-cpp/gpgmepp-2:=
+	>=app-crypt/gpgme-${PV%.*}:=
+	>=dev-cpp/gpgmepp-${PV%.*}:=
 	>=dev-libs/libgpg-error-1.47:=
 	>=dev-qt/qtbase-6.5.0:6
 "
