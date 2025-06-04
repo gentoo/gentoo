@@ -65,7 +65,7 @@ all_ruby_prepare() {
 	# RUBYLIB to ensure that we consistently use the new code for
 	# rubygems and the bundled bundler.
 	if use test; then
-		RUBYLIB=lib rake update_manifest || die
+		ruby -I lib -S rake update_manifest || die
 	fi
 }
 
