@@ -175,72 +175,6 @@ toml_usex() {
 	usex "${1}" true false
 }
 
-rust_live_get_sources() {
-	EGIT_REPO_URI="
-		https://anongit.gentoo.org/git/proj/rust-patches.git
-	"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${RUST_PATCH_VER}"
-	git-r3_src_unpack
-
-	EGIT_REPO_URI="
-		https://github.com/rust-lang/rust.git
-	"
-	EGIT_SUBMODULES=(
-		"*"
-		"-src/gcc"
-	)
-	S="${WORKDIR}/rust"
-	EGIT_CHECKOUT_DIR="${S}"
-	git-r3_src_unpack
-}
-
-src_unpack() {
-	if [[ ${PV} == *9999* ]] ; then
-		rust_live_get_sources
-
-		# Vendor dependencies
-		mkdir "${S}/.cargo" || die # The vendor script has a check for .cargo/config{,.toml}
-		touch "${S}/.cargo/bootstrap.toml" || die
-		local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
-		# Configure vendor to use the portage-provided toolchain. This prevents it from
-		# attempting to fetch a `beta` toolchain from the internet.
-		cat <<- _EOF_ > "${T}/vendor-bootstrap.toml"
-			# Suppresses a warning about tracking changes which we don't care about.
-			change-id = "ignore"
-			[build]
-			build = "$(rust_abi "${CBUILD}")"
-			host = ["$(rust_abi "${CHOST}")"]
-			target = ["$(rust_abi "${CHOST}")"]
-			cargo = "${rust_stage0_root}/bin/cargo"
-			rustc = "${rust_stage0_root}/bin/rustc"
-			rustfmt = "${rust_stage0_root}/bin/rustfmt"
-		_EOF_
-		# We're using git sources so we need to run the Vendor script
-		# to ensure that all dependencies are present and up-to-date
-		mkdir "${S}/vendor" || die
-		# This also compiles the 'build helper', there's no way to avoid this.
-		${EPYTHON} "${S}"/x.py vendor -v --config="${T}"/vendor-bootstrap.toml -j$(makeopts_jobs) ||
-			die "Failed to vendor dependencies"
-		# TODO: This has to be generated somehow, this is from a 1.84.x tarball I had lying around.
-		cat <<- _EOF_ > "${S}/.cargo/config.toml"
-			[source.crates-io]
-			replace-with = "vendored-sources"
-
-			[source."git+https://github.com/rust-lang/team"]
-			git = "https://github.com/rust-lang/team"
-			replace-with = "vendored-sources"
-
-			[source.vendored-sources]
-			directory = "vendor"
-		_EOF_
-	elif use verify-sig ; then
-		# Patch tarballs are not signed (but we trust Gentoo infra)
-		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
-	else
-		default
-	fi
-}
-
 pre_build_checks() {
 	local M=9216
 	# multiply requirements by 1.3 if we are doing x86-multilib
@@ -310,6 +244,73 @@ pkg_setup() {
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
 		export LLVM_LINK_SHARED=1
 		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
+	fi
+}
+
+rust_live_get_sources() {
+	EGIT_REPO_URI="
+		https://anongit.gentoo.org/git/proj/rust-patches.git
+	"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${RUST_PATCH_VER}"
+	git-r3_src_unpack
+
+	EGIT_REPO_URI="
+		https://github.com/rust-lang/rust.git
+	"
+	EGIT_SUBMODULES=(
+		"*"
+		"-src/gcc"
+	)
+	S="${WORKDIR}/rust"
+	EGIT_CHECKOUT_DIR="${S}"
+	git-r3_src_unpack
+}
+
+src_unpack() {
+	if [[ ${PV} == *9999* ]] ; then
+		rust_live_get_sources
+
+		# Vendor dependencies
+		mkdir "${S}/.cargo" || die # The vendor script has a check for .cargo/config{,.toml}
+		touch "${S}/.cargo/bootstrap.toml" || die
+		local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
+		# Configure vendor to use the portage-provided toolchain. This prevents it from
+		# attempting to fetch a `beta` toolchain from the internet.
+		cat <<- _EOF_ > "${T}/vendor-bootstrap.toml"
+			# Suppresses a warning about tracking changes which we don't care about.
+			change-id = "ignore"
+			[build]
+			build = "$(rust_abi "${CBUILD}")"
+			host = ["$(rust_abi "${CHOST}")"]
+			target = ["$(rust_abi "${CHOST}")"]
+			cargo = "${rust_stage0_root}/bin/cargo"
+			rustc = "${rust_stage0_root}/bin/rustc"
+			rustfmt = "${rust_stage0_root}/bin/rustfmt"
+		_EOF_
+		# We're using git sources so we need to run the Vendor script
+		# to ensure that all dependencies are present and up-to-date
+		mkdir "${S}/vendor" || die
+		# This also compiles the 'build helper', there's no way to avoid this.
+		${EPYTHON} "${S}"/x.py vendor -v --config="${T}"/vendor-bootstrap.toml -j$(makeopts_jobs) ||
+			die "Failed to vendor dependencies"
+		# TODO: This has to be generated somehow, this is from a 1.84.x tarball I had lying around.
+		cat <<- _EOF_ > "${S}/.cargo/config.toml"
+			[source.crates-io]
+			replace-with = "vendored-sources"
+
+			[source."git+https://github.com/rust-lang/team"]
+			git = "https://github.com/rust-lang/team"
+			replace-with = "vendored-sources"
+
+			[source.vendored-sources]
+			directory = "vendor"
+		_EOF_
+	elif use verify-sig ; then
+		# Patch tarballs are not signed (but we trust Gentoo infra)
+		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+		default
+	else
+		default
 	fi
 }
 

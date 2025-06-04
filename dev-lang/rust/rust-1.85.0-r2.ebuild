@@ -222,6 +222,7 @@ src_unpack() {
 	elif use verify-sig ; then
 		# Patch tarballs are not signed (but we trust Gentoo infra)
 		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+		default
 	else
 		default
 	fi
