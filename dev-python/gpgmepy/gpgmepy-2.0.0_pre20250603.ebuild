@@ -18,7 +18,7 @@ SRC_URI="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgmepy.git;a=snapshot;h=${G
 #"
 S="${WORKDIR}"/${PN}-${GPGMEPY_COMMIT:0:7}
 
-LICENSE="GPL-2 LGPL-2+"
+LICENSE="LGPL-2.1+ test? ( GPL-2+ )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test"
