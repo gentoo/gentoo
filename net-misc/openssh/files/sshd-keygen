@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Create the host keys for the OpenSSH server.
+KEYTYPE=$1
+
+case $KEYTYPE in
+	"dsa") ;;
+	"ed25519") ;;
+	"rsa") ;;
+	"ecdsa") ;;
+	*) # wrong argument
+		exit 12 ;;
+esac
+KEY=/etc/ssh/ssh_host_${KEYTYPE}_key
+
+KEYGEN=/usr/bin/ssh-keygen
+if [[ ! -x "${KEYGEN}" ]]; then
+	exit 13
+fi
+
+# remove old keys
+rm -f "${KEY}{,.pub}"
+
+# create new keys
+if ! $KEYGEN -q -t $KEYTYPE -f $KEY -C '' -N '' >&/dev/null; then
+	exit 1
+fi
+
+# sanitize permissions
+/bin/chmod 600 "${KEY}"
+/bin/chmod 644 "${KEY}.pub"
+
+if [[ -x /sbin/restorecon ]]; then
+	/sbin/restorecon "${KEY}{,.pub}"
+fi
+
+exit 0
