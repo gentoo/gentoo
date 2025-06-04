@@ -109,7 +109,7 @@ if [[ ${PN} != qtwebengine ]]; then
 		*9999 )
 			inherit kde.org # kde/5.15 branch
 			;;
-		5.15.[5-9]* | 5.15.??* )
+		5.15.??* )
 			# official stable release
 			_QT5_P=${QT5_MODULE}-everywhere-opensource-src-${PV}
 			HOMEPAGE="https://www.qt.io/"
@@ -125,14 +125,7 @@ if [[ ${PN} != qtwebengine ]]; then
 fi
 
 if [[ ${QT5_MODULE} == qtbase ]]; then
-	case ${PV} in
-		5.15.13)
-			_QT5_GENTOOPATCHSET_REV=5
-			;;
-		*)
-			_QT5_GENTOOPATCHSET_REV=6
-			;;
-	esac
+	_QT5_GENTOOPATCHSET_REV=6
 	SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-5.15-gentoo-patchset-${_QT5_GENTOOPATCHSET_REV}.tar.xz"
 fi
 
