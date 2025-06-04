@@ -3,12 +3,6 @@
 
 EAPI=8
 
-# Maintainers should:
-# 1. Join the "Gentoo" project at https://dev.gnupg.org/project/view/27/
-# 2. Subscribe to release tasks like https://dev.gnupg.org/T6159
-# (find the one for the current release then subscribe to it +
-# any subsequent ones linked within so you're covered for a while.)
-
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 inherit cmake verify-sig
 
