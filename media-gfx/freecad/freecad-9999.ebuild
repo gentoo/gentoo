@@ -58,7 +58,7 @@ RDEPEND="
 	dev-cpp/yaml-cpp
 	dev-libs/boost:=
 	dev-libs/libfmt:=
-	dev-libs/xerces-c[icu]
+	dev-libs/xerces-c:=[icu]
 	dev-qt/qtbase:6[concurrent,network,xml]
 	media-libs/freetype
 	sci-libs/opencascade:=[json]
