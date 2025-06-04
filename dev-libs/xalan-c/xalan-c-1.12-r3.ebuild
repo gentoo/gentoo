@@ -38,7 +38,7 @@ IUSE="doc"
 
 RDEPEND="
 	dev-libs/icu:=
-	dev-libs/xerces-c[icu]
+	dev-libs/xerces-c:=[icu]
 "
 DEPEND="${RDEPEND}"
 BDEPEND+="
