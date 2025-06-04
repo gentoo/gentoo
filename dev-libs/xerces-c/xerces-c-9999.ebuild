@@ -39,7 +39,6 @@ DOCS=( CREDITS KEYS NOTICE README )
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.4-strict-aliasing.patch
 	"${FILESDIR}"/${PN}-3.2.5-cxx17.patch # bug 931105
-	"${FILESDIR}"/${P}-symbol-name.patch # fixed in 3.3.1, see https://issues.apache.org/jira/browse/XERCESC-2255
 )
 
 pkg_setup() {
