@@ -36,7 +36,7 @@ REQUIRED_USE="${LUA_REQUIRED_USE}"
 COMMON_DEPEND="
 	${LUA_DEPS}
 	dev-libs/libxml2:=
-	dev-libs/xerces-c[icu]
+	dev-libs/xerces-c:=[icu]
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/ftgl
