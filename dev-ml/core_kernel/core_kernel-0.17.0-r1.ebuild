@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,14 +17,17 @@ IUSE="+ocamlopt"
 # Wants quickcheck_deprecated for now
 RESTRICT="test"
 
+# Jane Street Minor
+JSM=$(ver_cut 1-2)*
+
 RDEPEND="
 	>=dev-lang/ocaml-5
-	dev-ml/base:${SLOT}[ocamlopt?]
-	dev-ml/core:${SLOT}[ocamlopt?]
-	dev-ml/int_repr:${SLOT}[ocamlopt?]
-	dev-ml/ppx_jane:${SLOT}[ocamlopt?]
-	dev-ml/ppx_optcomp:${SLOT}[ocamlopt?]
-	dev-ml/uopt:${SLOT}[ocamlopt?]
+	=dev-ml/base-${JSM}:=[ocamlopt?]
+	=dev-ml/core-${JSM}:=[ocamlopt?]
+	=dev-ml/int_repr-${JSM}:=[ocamlopt?]
+	=dev-ml/ppx_jane-${JSM}:=[ocamlopt?]
+	=dev-ml/ppx_optcomp-${JSM}:=[ocamlopt?]
+	=dev-ml/uopt-${JSM}:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-ml/dune-3.11"
