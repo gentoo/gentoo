@@ -46,7 +46,7 @@ RDEPEND="
 	>=sci-physics/clhep-2.4.7.1:2=[threads?]
 	data? ( ~sci-physics/geant-data-4.11.3 )
 	doc? ( app-doc/geant-docs )
-	gdml? ( dev-libs/xerces-c )
+	gdml? ( dev-libs/xerces-c:= )
 	hdf5? ( sci-libs/hdf5:=[threads?] )
 	inventor? ( media-libs/SoXt )
 	motif? ( x11-libs/motif:0 )
