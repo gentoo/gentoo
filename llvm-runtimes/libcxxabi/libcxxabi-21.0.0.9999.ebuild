@@ -37,7 +37,9 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( runtimes libcxx{abi,} llvm/cmake cmake )
-LLVM_TEST_COMPONENTS=( libc llvm/include/llvm/Demangle llvm/utils/llvm-lit )
+LLVM_TEST_COMPONENTS=(
+	libc llvm/include/llvm/{Demangle,Testing} llvm/utils/llvm-lit
+)
 llvm.org_set_globals
 
 python_check_deps() {
