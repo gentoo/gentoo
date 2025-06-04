@@ -3,12 +3,6 @@
 
 EAPI=8
 
-# Maintainers should:
-# 1. Join the "Gentoo" project at https://dev.gnupg.org/project/view/27/
-# 2. Subscribe to release tasks like https://dev.gnupg.org/T6159
-# (find the one for the current release then subscribe to it +
-# any subsequent ones linked within so you're covered for a while.)
-
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
