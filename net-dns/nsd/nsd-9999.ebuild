@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit autotools systemd tmpfiles
+inherit autotools systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="An authoritative only, high performance, open source name server"
 HOMEPAGE="https://www.nlnetlabs.nl/projects/nsd"
@@ -27,7 +27,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bind8-stats debug +default-znow dnstap +ipv6 +largefile libevent +lto memclean minimal-responses mmap munin +nsec3 packed +pie +radix-tree ratelimit recvmmsg +simdzone ssl systemd +tfo year2038"
+IUSE="bind8-stats debug dnstap +ipv6 libevent memclean minimal-responses mmap munin +nsec3 packed +radix-tree ratelimit recvmmsg +simdzone ssl systemd +tfo"
 
 RDEPEND="
 	acct-group/nsd
@@ -68,17 +68,13 @@ src_configure() {
 		$(use_enable bind8-stats)
 		$(use_enable bind8-stats zone-stats)
 		$(use_enable debug checking)
-		$(use_enable default-znow relro-now)
 		$(use_enable dnstap)
 		$(use_enable ipv6)
-		$(use_enable largefile)
-		$(use_enable lto flto)
 		$(use_enable memclean)
 		$(use_enable minimal-responses)
 		$(use_enable mmap)
 		$(use_enable nsec3)
 		$(use_enable packed)
-		$(use_enable pie)
 		$(use_enable radix-tree)
 		$(use_enable ratelimit)
 		$(use_enable recvmmsg)
@@ -110,11 +106,12 @@ src_configure() {
 		)
 	fi
 
-	# This configure switch only appears on glibc-based userlands.
-	# It enables 64-bit time_t to support timestamps greater than
-	# the year 2038 (D_TIME_BITS=64).
-	if use elibc_glibc; then
-		myconf+=( $(use_enable year2038) )
+	# If the compiler indicates that time_t is at least 64-bits wide,
+	# then enable it in the package to support timestamps greater than
+	# the year 2038 (D_TIME_BITS=64).  This configure switch only
+	# appears on glibc-based userlands.
+	if use elibc_glibc && tc-has-64bit-time_t; then
+		myconf+=( --enable-year2038 )
 	fi
 
 	econf "${myconf[@]}"
