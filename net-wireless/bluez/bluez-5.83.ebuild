@@ -220,7 +220,7 @@ multilib_src_install() {
 			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
 
 			for i in $(find "${ED}"/usr/$(get_libdir)/bluez/test -maxdepth 1 -type f ! -name "*.*"); do
-				dosym "${i}" /usr/bin/bluez-"${i##*/}"
+				dosym "${i#${ED}}" /usr/bin/bluez-"${i##*/}"
 			done
 		fi
 	else
