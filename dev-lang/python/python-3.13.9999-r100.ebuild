@@ -11,7 +11,7 @@ inherit autotools check-reqs flag-o-matic git-r3 linux-info llvm-r1
 inherit multiprocessing pax-utils python-utils-r1 toolchain-funcs
 
 PYVER="$(ver_cut 1-2)t"
-PATCHSET="python-gentoo-patches-3.13.3"
+PATCHSET="python-gentoo-patches-3.13.4"
 
 DESCRIPTION="Freethreading (no-GIL) version of Python programming language"
 HOMEPAGE="

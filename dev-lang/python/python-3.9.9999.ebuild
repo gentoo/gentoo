@@ -8,7 +8,7 @@ inherit autotools check-reqs flag-o-matic git-r3 multiprocessing pax-utils
 inherit prefix toolchain-funcs
 
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.9.22"
+PATCHSET="python-gentoo-patches-3.9.23"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
