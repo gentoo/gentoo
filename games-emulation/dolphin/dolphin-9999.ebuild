@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 18 19 )
 LLVM_OPTIONAL=1
 
 inherit cmake llvm-r1 pax-utils xdg-utils
@@ -91,7 +91,7 @@ RDEPEND="
 	bluetooth? ( net-wireless/bluez:= )
 	evdev? (
 		dev-libs/libevdev
-		virtual/udev
+		virtual/libudev
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	gui? (
@@ -211,6 +211,7 @@ src_configure() {
 		-DENABLE_CUBEB=ON
 		-DENABLE_EGL=$(usex egl)
 		-DENABLE_EVDEV=$(usex evdev)
+		-DENABLE_HWDB=$(usex evdev)
 		-DENABLE_LLVM=$(usex llvm)
 		-DENABLE_LTO=OFF # just adds -flto, user can do that via flags
 		-DENABLE_NOGUI=$(usex !gui)
