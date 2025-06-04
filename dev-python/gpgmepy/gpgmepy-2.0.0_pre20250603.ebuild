@@ -26,6 +26,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!<app-crypt/gpgme-2[python(-)]
+
 	>=app-crypt/gpgme-2:=
 	>=dev-libs/libgpg-error-1.47:=
 "
