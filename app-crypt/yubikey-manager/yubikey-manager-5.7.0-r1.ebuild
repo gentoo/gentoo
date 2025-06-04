@@ -41,7 +41,7 @@ RDEPEND="
 	>=dev-python/pyscard-2.0[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? ( dev-python/makefun[${PYTHON_USEDEP}] )
-	verify-sig? ( >=sec-keys/openpgp-keys-yubico-20240628 )"
+	verify-sig? ( >=sec-keys/openpgp-keys-yubico-20250604 )"
 
 distutils_enable_tests pytest
 
