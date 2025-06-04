@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools distutils-r1
 
 GPGMEPY_COMMIT="1c2c1c0b41af5e34e4f6897639fa41ef3932ec7d"
-DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use (C++ bindings)"
+DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use (Python bindings)"
 HOMEPAGE="https://www.gnupg.org/related_software/gpgme"
 SRC_URI="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgmepy.git;a=snapshot;h=${GPGMEPY_COMMIT};sf=tgz -> ${P}.tar.gz"
 #SRC_URI="
