@@ -1,0 +1,15 @@
+
+Properly set the binary name in the promu config instead of doing
+renaming acrobatics in the ebuild.
+
+--- a/.promu.yml
++++ b/.promu.yml
+@@ -5,6 +5,8 @@ go:
+ repository:
+   path: github.com/superq/chrony_exporter
+ build:
++  binaries:
++    - name: chrony_exporter
+   ldflags: |
+     -X github.com/prometheus/common/version.Version={{.Version}}
+     -X github.com/prometheus/common/version.Revision={{.Revision}}
