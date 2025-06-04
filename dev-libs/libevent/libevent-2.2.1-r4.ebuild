@@ -5,14 +5,22 @@ EAPI=8
 
 CMAKE_REMOVE_MODULES_LIST=( FindMbedTLS )
 
-inherit cmake-multilib git-r3
+inherit cmake-multilib verify-sig
 
+MY_P="${P}-alpha-dev"
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="
 	https://libevent.org/
 	https://github.com/libevent/libevent/
 "
-EGIT_REPO_URI="https://github.com/libevent/libevent.git"
+BASE_URI="https://github.com/libevent/libevent/releases/download/release-${PV}-alpha"
+SRC_URI="
+	${BASE_URI}/${MY_P}.tar.gz
+	verify-sig? (
+		${BASE_URI}/${MY_P}.tar.gz.asc
+	)
+"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0/2.2.1-r2"
@@ -31,10 +39,23 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	verify-sig? (
+		sec-keys/openpgp-keys-libevent
+	)
+"
 
-DOCS=( README.md ChangeLog{,-2.0,-2.1} whatsnew-2.{0,1}.txt )
+DOCS=( README.md ChangeLog{,-2.0} whatsnew-2.{0,1}.txt )
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
+)
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libevent.asc
+
+PATCHES=(
+	# signalfd-by-default breaks at least app-misc/tmux
+	# https://github.com/libevent/libevent/pull/1486
+	"${FILESDIR}/${P}-disable-signalfd.patch"
+	"${FILESDIR}/${P}-cmake-install-paths.patch"
 )
 
 multilib_src_configure() {
