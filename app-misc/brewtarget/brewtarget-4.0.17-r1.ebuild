@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/boost:=[stacktrace]
 	dev-libs/openssl:=
 	dev-libs/xalan-c
-	dev-libs/xerces-c
+	dev-libs/xerces-c:=
 	dev-qt/qtbase:6[gui,network,sql,sqlite,widgets,xml]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtsvg:6
