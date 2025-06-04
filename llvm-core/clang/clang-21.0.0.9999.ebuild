@@ -170,6 +170,7 @@ get_distribution_components() {
 		ppc-htm-resource-headers
 		ppc-resource-headers
 		riscv-resource-headers
+		spirv-resource-headers
 		systemz-resource-headers
 		utility-resource-headers
 		ve-resource-headers
