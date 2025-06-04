@@ -1057,7 +1057,7 @@ python_fix_shebang() {
 			fi
 
 			if [[ ! ${quiet} ]]; then
-				einfo "Fixing shebang in ${f#${D}}."
+				einfo "Fixing shebang in ${f#${D}}"
 			fi
 
 			if [[ ! ${error} ]]; then
