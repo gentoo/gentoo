@@ -19,7 +19,7 @@ RDEPEND="
 	app-text/enchant:2
 	>=dev-libs/libxml2-2.12.5
 	dev-libs/libxslt
-	dev-libs/xerces-c[cpu_flags_x86_sse2,icu]
+	dev-libs/xerces-c:=[cpu_flags_x86_sse2,icu]
 	dev-libs/libpcre2
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 "
