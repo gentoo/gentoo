@@ -54,6 +54,10 @@ src_configure() {
 	# Otherwise it uses K&R function declaration where ints are sometimes omited
 	# https://bugs.gentoo.org/894334
 	append-cppflags -DHAVE_ANSIC_C
+
+	case ${ARCH} in
+		x86) append-cflags -D_FILE_OFFSET_BITS=64 ;; # bug #948362
+	esac
 }
 
 src_compile() {
