@@ -98,6 +98,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-8.4.0-cmake.patch"
 	"${FILESDIR}/${PN}-8.3.0-cmake-addressbook.patch"
+	"${FILESDIR}/${P}-qt-6.9.patch" # bug 957105
 )
 
 pkg_pretend() {

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -18,10 +18,9 @@ DESCRIPTION="Allows easy conversion from punycode ACE to unicode UTF-8 strings a
 HOMEPAGE="https://github.com/mmriis/simpleidn"
 SRC_URI="https://github.com/mmriis/simpleidn/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE=""
+KEYWORDS="~amd64 ~arm ~x86"
 
 ruby_add_rdepend ">=dev-ruby/unf-0.1.4 =dev-ruby/unf-0.1*"
 

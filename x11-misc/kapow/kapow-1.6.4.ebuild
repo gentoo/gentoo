@@ -12,9 +12,19 @@ SRC_URI="https://gottcode.org/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-qt/qtbase:6[gui,network,widgets]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( ChangeLog README )
+
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_TESTS=$(usex test)
+	)
+
+	cmake_src_configure
+}

@@ -51,7 +51,7 @@ else
 		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
 	"
 	S="${WORKDIR}/${MY_P}-src"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~amd64 arm ~arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Systems programming language originally developed by Mozilla"
@@ -183,52 +183,6 @@ toml_usex() {
 	usex "${1}" true false
 }
 
-src_unpack() {
-	if [[ ${PV} = *9999* ]]; then
-		git-r3_src_unpack
-		mkdir "${S}/.cargo" || die # The vendor script has a check for .cargo/config{,.toml}
-		touch "${S}/.cargo/config.toml" || die
-		local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
-		local rust_build=""
-		local rust_host=""
-		# Configure vendor to use the portage-provided toolchain. This prevents it from
-		# attempting to fetch a `beta` toolchain from the internet.
-		cat <<- _EOF_ > "${T}/vendor-config.toml"
-			[build]
-			build = "$(rust_abi "${CBUILD}")"
-			host = ["$(rust_abi "${CHOST}")"]
-			target = ["$(rust_abi "${CHOST}")"]
-			cargo = "${rust_stage0_root}/bin/cargo"
-			rustc = "${rust_stage0_root}/bin/rustc"
-			rustfmt = "${rust_stage0_root}/bin/rustfmt"
-		_EOF_
-		# We're using git sources so we need to run the Vendor script
-		# to ensure that all dependencies are present and up-to-date
-		mkdir "${S}/vendor" || die
-		# This also compiles the 'build helper', there's no way to avoid this.
-		${EPYTHON} "${S}"/x.py vendor -v --config="${T}"/vendor-config.toml -j$(makeopts_jobs) ||
-			die "Failed to vendor dependencies"
-		# TODO: This has to be generated somehow, this is from a 1.84.x tarball I had lying around.
-		cat <<- _EOF_ > "${S}/.cargo/config.toml"
-			[source.crates-io]
-			replace-with = "vendored-sources"
-
-			[source."git+https://github.com/rust-lang/team"]
-			git = "https://github.com/rust-lang/team"
-			replace-with = "vendored-sources"
-
-			[source.vendored-sources]
-			directory = "vendor"
-		_EOF_
-	elif use verify-sig ; then
-		# Patch tarballs are not signed (but we trust Gentoo infra)
-		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
-		default
-	else
-		default
-	fi
-}
-
 pre_build_checks() {
 	local M=9216
 	# multiply requirements by 1.3 if we are doing x86-multilib
@@ -298,6 +252,52 @@ pkg_setup() {
 		local llvm_config="$(get_llvm_prefix)/bin/llvm-config"
 		export LLVM_LINK_SHARED=1
 		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
+	fi
+}
+
+src_unpack() {
+	if [[ ${PV} = *9999* ]]; then
+		git-r3_src_unpack
+		mkdir "${S}/.cargo" || die # The vendor script has a check for .cargo/config{,.toml}
+		touch "${S}/.cargo/config.toml" || die
+		local rust_stage0_root="$(${RUSTC} --print sysroot || die "Can't determine rust's sysroot")"
+		local rust_build=""
+		local rust_host=""
+		# Configure vendor to use the portage-provided toolchain. This prevents it from
+		# attempting to fetch a `beta` toolchain from the internet.
+		cat <<- _EOF_ > "${T}/vendor-config.toml"
+			[build]
+			build = "$(rust_abi "${CBUILD}")"
+			host = ["$(rust_abi "${CHOST}")"]
+			target = ["$(rust_abi "${CHOST}")"]
+			cargo = "${rust_stage0_root}/bin/cargo"
+			rustc = "${rust_stage0_root}/bin/rustc"
+			rustfmt = "${rust_stage0_root}/bin/rustfmt"
+		_EOF_
+		# We're using git sources so we need to run the Vendor script
+		# to ensure that all dependencies are present and up-to-date
+		mkdir "${S}/vendor" || die
+		# This also compiles the 'build helper', there's no way to avoid this.
+		${EPYTHON} "${S}"/x.py vendor -v --config="${T}"/vendor-config.toml -j$(makeopts_jobs) ||
+			die "Failed to vendor dependencies"
+		# TODO: This has to be generated somehow, this is from a 1.84.x tarball I had lying around.
+		cat <<- _EOF_ > "${S}/.cargo/config.toml"
+			[source.crates-io]
+			replace-with = "vendored-sources"
+
+			[source."git+https://github.com/rust-lang/team"]
+			git = "https://github.com/rust-lang/team"
+			replace-with = "vendored-sources"
+
+			[source.vendored-sources]
+			directory = "vendor"
+		_EOF_
+	elif use verify-sig ; then
+		# Patch tarballs are not signed (but we trust Gentoo infra)
+		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+		default
+	else
+		default
 	fi
 }
 

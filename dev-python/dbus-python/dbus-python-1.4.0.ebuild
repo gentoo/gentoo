@@ -69,7 +69,7 @@ src_configure() {
 			# https://bugs.gentoo.org/815136
 			PYTHON_EXTRA_LIBS=' '
 		)
-		[[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
+		use doc && [[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
 			myconf+=( --enable-documentation )
 
 		econf "${myconf[@]}"

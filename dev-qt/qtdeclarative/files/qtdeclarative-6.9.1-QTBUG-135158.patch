@@ -1,0 +1,14 @@
+https://bugreports.qt.io/browse/QTBUG-135158
+https://codereview.qt-project.org/c/qt/qtdeclarative/+/647212
+--- a/src/quicktemplates/qquickpopuppositioner.cpp
++++ b/src/quicktemplates/qquickpopuppositioner.cpp
+@@ -321,5 +321,8 @@
+                                                  : p->parentItem->mapToGlobal(windowPos.x(), windowPos.y());
+     QRectF rect = { globalCoords.x(), globalCoords.y(), popupItem->width(), popupItem->height() };
+-    if (!skipFittingStep) {
++
++    // QTBUG-99618: On wayland, we can't use QWindow::mapToGlobal(), and should use a xdg_positioner instead.
++    static bool isWayland = QGuiApplication::platformName().startsWith(QLatin1String("wayland"));
++    if (!skipFittingStep && !isWayland) {
+         const QScreen *screenAtPopupPosition = QGuiApplication::screenAt(globalCoords.toPoint());
+         const QScreen *screen = screenAtPopupPosition ? screenAtPopupPosition : QGuiApplication::primaryScreen();

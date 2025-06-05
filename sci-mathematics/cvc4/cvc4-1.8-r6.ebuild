@@ -50,6 +50,7 @@ src_configure() {
 		-DENABLE_STATISTICS="$(usex statistics ON OFF)"
 		-DENABLE_PROOFS="$(usex proofs ON OFF)"
 	)
+	CMAKE_BUILD_TYPE="Gentoo"
 	cmake_src_configure
 	# Bug #934053 - build with musl
 	antlr3 "${S}"/src/parser/cvc/Cvc.g -fo "${BUILD_DIR}"/src/parser/cvc || die

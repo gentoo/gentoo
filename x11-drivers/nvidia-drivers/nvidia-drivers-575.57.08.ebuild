@@ -28,8 +28,9 @@ LICENSE="
 "
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* ~amd64 ~arm64"
-# note: kernel-open is an upstream default in >=560 if all GPUs on the system
-# support it but, since no automagic here, keeping it off for the wider support
+# TODO: enable kernel-open by default to match nvidia upstream, but should
+# first setup a supported-gpus.json "kernelopen" check to abort and avoid bad
+# surprises (should abort for legacy cards too, and have a bypass variable)
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
 REQUIRED_USE="kernel-open? ( modules )"
 
@@ -520,7 +521,6 @@ pkg_preinst() {
 	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 
 	# try to find driver mismatches using temporary supported-gpus.json
-	# TODO?: automatically check "kernelopen" bit for USE=kernel-open compat
 	for g in $(grep -l 0x10de /sys/bus/pci/devices/*/vendor 2>/dev/null); do
 		g=$(grep -io "\"devid\":\"$(<${g%vendor}device)\"[^}]*branch\":\"[0-9]*" \
 			"${ED}"/usr/share/nvidia/supported-gpus.json 2>/dev/null)
@@ -584,19 +584,9 @@ pkg_postinst() {
 
 	if use wayland && use modules && [[ ! -v NV_HAD_WAYLAND ]]; then
 		elog
-		elog "With USE=wayland, this version of ${PN} sets nvidia-drm.modeset=1"
-		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. This feature is considered"
-		elog "experimental but is required for wayland."
-		elog
-		elog "If you experience issues, either disable wayland or edit nvidia.conf."
-		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
-	fi
-
-	if use !kernel-open && ver_replacing -lt 555; then
-		elog
-		elog "If using a Turing/Ampere+ GPU (aka GTX 1650+), note that >=nvidia-drivers-555"
-		elog "enables the use of the GSP firmware by default. *If* experience regressions,"
-		elog "please see '${EROOT}/etc/modprobe.d/nvidia.conf' to optionally disable."
+		elog "Note that with USE=wayland, nvidia-drm.modeset=1 will be enabled"
+		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. *If* experience issues,"
+		elog "either disable wayland or edit nvidia.conf."
 	fi
 
 	[[ ${PV} == 575.57.08 ]] || die "TODO: recheck intel+nvidia status & cleanup"

@@ -46,7 +46,10 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
-PATCHES=( "${FILESDIR}/${P}-bogus-qt6widgets.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-bogus-qt6widgets.patch"
+	"${FILESDIR}/${P}-qt6.9-compat.patch"
+)
 
 python_check_deps() {
 	python_has_version \

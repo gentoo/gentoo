@@ -30,7 +30,7 @@ LICENSE+="
 	|| ( GPL-2 GPL-3 LGPL-3 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 # Still some issue to do with columns?
 RESTRICT="test"
 

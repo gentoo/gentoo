@@ -145,9 +145,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	local LIT_XFAIL="
-		libcxx/gdb/gdb_pretty_printer_test.sh.cpp
-	"
+	local -x LIT_XFAIL="libcxx/gdb/gdb_pretty_printer_test.sh.cpp"
 
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build install-cxx-test-suite-prefix

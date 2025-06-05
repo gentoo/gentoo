@@ -1,0 +1,41 @@
+From 97a8efecd257ec09f652374399f27b3a65db7d0a Mon Sep 17 00:00:00 2001
+From: Shane Alcock <shane@alcock.co.nz>
+Date: Mon, 7 Nov 2022 13:35:09 +1300
+Subject: [PATCH 5/5] Update README to remove links to dead WAND sites
+
+---
+ README | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/README b/README
+index 1be10e2..baffeb1 100644
+--- a/README
++++ b/README
+@@ -41,11 +41,11 @@ some tools that can be used to perform simple analysis of traffic flows.
+ Required Libraries
+ ==================
+ libtrace 4.0.1 or later
+-	* available from http://research.wand.net.nz/software/libtrace.php
+-
++	* available from https://github.com/LibtraceTeam/libtrace
++	
+ libflowmanager 3.0.0 or later
+ 	* optional, but required to build the tools
+-	* available from http://research.wand.net.nz/software/libflowmanager.php
++	* available from https://github.com/LibtraceTeam/libflowmanager
+ 
+ Installation
+ ============
+@@ -237,7 +237,7 @@ The libprotoident API functions themselves are documented in
+ lib/libprotoident.h if you need further guidance.
+ 
+ Further documentation of the API can also be found at
+-http://wand.net.nz/trac/libprotoident/wiki/DeveloperDocs
++https://github.com/LibtraceTeam/libflowmanager
+ 
+-If all else fails, drop us a line at contact@wand.net.nz.
++If all else fails, drop me a line at shane@alcock.co.nz
+ 
+-- 
+2.49.0
+

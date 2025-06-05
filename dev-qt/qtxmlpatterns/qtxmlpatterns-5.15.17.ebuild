@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 fi
 
 IUSE="qml"
