@@ -1,0 +1,63 @@
+https://github.com/rakshasa/rtorrent/pull/1507
+From 231606afc16eef08ec1a344a7aaef7504343bb71 Mon Sep 17 00:00:00 2001
+From: rakshasa <sundell.software@gmail.com>
+Date: Sun, 1 Jun 2025 18:21:10 +0200
+Subject: [PATCH] Fix ExecFile waitpid error handling.
+
+---
+ src/rpc/exec_file.cc | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/src/rpc/exec_file.cc b/src/rpc/exec_file.cc
+index 3be7bfa97..edf36697e 100644
+--- a/src/rpc/exec_file.cc
++++ b/src/rpc/exec_file.cc
+@@ -1,6 +1,7 @@
+ #include "config.h"
+ 
+ #include <cerrno>
++#include <cstring>
+ #include <fcntl.h>
+ #include <string>
+ #include <unistd.h>
+@@ -18,7 +19,7 @@ namespace rpc {
+ 
+ int
+ ExecFile::execute(const char* file, char* const* argv, int flags) {
+-  // Write the execued command and its parameters to the log fd.
++  // Write the executed command and its parameters to the log fd.
+   [[maybe_unused]] int result;
+ 
+   if (m_log_fd != -1) {
+@@ -117,18 +118,23 @@ ExecFile::execute(const char* file, char* const* argv, int flags) {
+   }
+ 
+   int status;
+-  int wpid;
+ 
+-  do {
+-    wpid = waitpid(childPid, &status, 0);
+-  } while (wpid == -1 && WIFEXITED(status) == 0);
+-
+-  if (wpid != childPid)
+-    throw torrent::internal_error("ExecFile::execute(...) waitpid failed.");
++  while (waitpid(childPid, &status, 0) == -1) {
++    switch (errno) {
++    case EINTR:
++      continue;
++    case ECHILD:
++      throw torrent::internal_error("ExecFile::execute(...) waitpid failed with ECHILD, child process not found.");
++    case EINVAL:
++      throw torrent::internal_error("ExecFile::execute(...) waitpid failed with EINVAL.");
++    default:
++      throw torrent::internal_error("ExecFile::execute(...) waitpid failed with unexpected error: " + std::string(std::strerror(errno)));
++    }
++  };
+ 
+   // Check return value?
+   if (m_log_fd != -1) {
+-    if (status == 0)
++    if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+       result = write(m_log_fd, "\n--- Success ---\n", sizeof("\n--- Success ---\n"));
+     else
+       result = write(m_log_fd, "\n--- Error ---\n", sizeof("\n--- Error ---\n"));
