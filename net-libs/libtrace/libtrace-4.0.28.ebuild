@@ -33,6 +33,10 @@ BDEPEND="
 	app-alternatives/yacc
 "
 
+QA_EXECSTACK="
+	usr/share/libtrace/format_linux_xdp_kern.bpf
+"
+
 src_prepare() {
 	default
 
@@ -59,6 +63,9 @@ src_configure() {
 
 src_install() {
 	default
+
+	# BPF
+	dostrip -x /usr/share/libtrace/format_linux_xdp_kern.bpf
 
 	if use doc ; then
 		docinto html
