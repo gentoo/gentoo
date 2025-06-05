@@ -4,7 +4,7 @@
 
 depend() {
 	before cron portmap
-	after net
+	need net
 	use dns logger
 }
 
