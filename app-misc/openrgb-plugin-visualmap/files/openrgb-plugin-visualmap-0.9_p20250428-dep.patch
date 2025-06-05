@@ -1,0 +1,20 @@
+Fix dependency on app-misc/openrgb
+
+--- a/OpenRGBVisualMapPlugin.pro
++++ b/OpenRGBVisualMapPlugin.pro
+@@ -100,15 +100,6 @@ HEADERS +=
+     OpenRGB/OpenRGBPluginInterface.h                                                            \
+     OpenRGB/ResourceManagerInterface.h                                                          \
+ 
+-SOURCES +=                                                                                      \
+-    OpenRGB/RGBController/RGBController.cpp                                                     \
+-    OpenRGB/RGBController/RGBController_Network.cpp                                             \
+-    OpenRGB/NetworkServer.cpp                                                                   \
+-    OpenRGB/NetworkClient.cpp                                                                   \
+-    OpenRGB/NetworkProtocol.cpp                                                                 \
+-    OpenRGB/LogManager.cpp                                                                      \
+-    OpenRGB/net_port/net_port.cpp                                                               \
+-    OpenRGB/qt/hsv.cpp
+ 
+ #-------------------------------------------------------------------#
+ # Includes                                                          #
