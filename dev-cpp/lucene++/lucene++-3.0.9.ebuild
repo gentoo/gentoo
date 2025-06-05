@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="|| ( LGPL-3 Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~loong ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~loong ppc ppc64 ~sparc ~x86"
 IUSE="debug test"
 RESTRICT="!test? ( test )"
 
