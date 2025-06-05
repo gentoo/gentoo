@@ -8,7 +8,7 @@ inherit xorg-3
 
 DESCRIPTION="X.Org Xft library"
 
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc"
 
 RDEPEND=">=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
