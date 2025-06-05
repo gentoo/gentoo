@@ -7,7 +7,7 @@ EAPI="8"
 #//------------------------------------------------------------------------------
 
 # Version Data
-GENPATCHREV="8"				# Tarball revision for patches
+GENPATCHREV="10"			# Tarball revision for patches
 
 # Directories
 MIPS_PATCHES="${WORKDIR}/mips-patches"
