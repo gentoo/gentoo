@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-06-05)
+# app-misc/ddcutil fails to build w/o USE=X as it always tries to include
+# <X11/Xlib.h>. See bug #950320 and https://github.com/rockowitz/ddcutil/issues/504
+~app-misc/ddcutil-2.2.0 X
+
 # Sam James <sam@gentoo.org> (2025-06-03)
 # -libupb fails to build (bug #957067)
 # https://github.com/protocolbuffers/protobuf/issues/20538
