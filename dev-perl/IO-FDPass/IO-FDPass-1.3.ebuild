@@ -3,19 +3,15 @@
 
 EAPI=8
 
-DIST_AUTHOR="MLEHMANN"
-DIST_VERSION=1.3
-DIST_TEST="do parallel"
+DIST_AUTHOR=MLEHMANN
 inherit perl-module
 
 DESCRIPTION="Pass a file descriptor to another process, using a unix domain socket"
 
-LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
 	dev-perl/Canary-Stability
-	virtual/perl-ExtUtils-MakeMaker
 "
-RDEPEND="$DEPEND"
+RDEPEND="${DEPEND}"
