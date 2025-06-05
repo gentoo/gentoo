@@ -14,11 +14,10 @@ HOMEPAGE="https://github.com/pypa/pipenv https://pypi.org/project/pipenv/"
 SRC_URI="https://github.com/pypa/pipenv/archive/v${MY_PV}.tar.gz -> ${P}.gh.tar.gz"
 S="${WORKDIR}"/${PN}-${MY_PV}
 
-KEYWORDS="~amd64 ~arm64 ~riscv"
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="scan"
-
 
 PATCHES=(
 	"${FILESDIR}/pipenv-${PV}-inject-system-packages.patch"
@@ -83,7 +82,6 @@ src_prepare() {
 		        -e "s/from .vendor.${pkgName}/from ${pkgName}/g" || die "Failed to sed for ${pkgName}"
 	done
 
-
 	# remove vendored versions
 	for pkgName in ${packages[@]}; do
 		find  ./pipenv/vendor -regextype posix-extended -regex ".*${pkgName}$" -prune -exec rm -rv {} + || die
@@ -93,7 +91,8 @@ src_prepare() {
 		rm -v pipenv/vendor/"${fname}" || die "Failed removing pipenv/vendor/${fname}" || die
 	done
 
-	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" tests/unit/test_utils.py || die "Failed patching tests"
+	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" \
+		tests/unit/test_utils.py || die "Failed patching tests"
 
 	rm -Rv pipenv/vendor || die "Could not remove vendor"
 	rm -Rv examples || die "Could not remove examples"
