@@ -38,8 +38,8 @@ src_configure() {
 	cmake_src_configure
 }
 
-# Build test programs before running tests with ninja testprograms
 src_test() {
+	# Build test programs before running tests with ninja test
 	cmake_build testprograms
 	cmake_build test
 }
