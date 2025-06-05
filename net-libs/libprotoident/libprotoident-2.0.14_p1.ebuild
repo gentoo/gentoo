@@ -1,12 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools
 
 DESCRIPTION="A library that performs application layer protocol identification for flows"
-HOMEPAGE="https://research.wand.net.nz/software/libprotoident.php"
+HOMEPAGE="https://github.com/LibtraceTeam/libprotoident"
 SRC_URI="https://github.com/wanduow/${PN}/archive/${PV/_p/-}.tar.gz"
+S=${WORKDIR}/${P/_p/-}
 
 LICENSE="LGPL-3+"
 SLOT="0/2"
@@ -20,7 +21,6 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
-S=${WORKDIR}/${P/_p/-}
 
 src_prepare() {
 	default
