@@ -34,6 +34,12 @@ PATCHES=(
 )
 
 src_prepare() {
+	if ! tc-is-gcc; then
+		ewarn "force gcc because too many nested functions which is unsupported by clang"
+		export CC=${CHOST}-gcc
+		tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
+
 	default
 	mv configure.{in,ac} || die
 	# for some reason some build 32bit x86 objects are bundled
