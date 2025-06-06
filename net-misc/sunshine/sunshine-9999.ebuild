@@ -4,15 +4,26 @@
 EAPI=8
 
 # These don't necessarily have to align with the upstream release.
-BUILD_DEPS_COMMIT="2aafe061cd52a944cb3b5f86d1f25e9ad2a19bec"
-ENET_COMMIT="04e27590670a87a7cd40f5a05cda97467e4e25a3"
-INPUTTINO_COMMIT="8a33706a146787a1ed3666ce52888634dd16cb86"
-MOONLIGHT_COMMIT="cbd0ec1b25edfb8ee8645fffa49ff95b6e04c70e"
-NANORS_COMMIT="e9e242e98e27037830490b2a752895ca68f75f8b"
-TRAY_COMMIT="4d8b798cafdd11285af9409c16b5f792968e0045"
-SWS_COMMIT="27b41f5ee154cca0fce4fe2955dd886d04e3a4ed"
-WLRP_COMMIT="2b8d43325b7012cc3f9b55c08d26e50e42beac7d"
-FFMPEG_VERSION="6.1.1"
+BUILD_DEPS_COMMIT="29a33e7fcf64012fba5412f1e659c09c8ac896ca"
+ENET_COMMIT="44c85e16279553d9c052e572bcbfcd745fb74abf"
+INPUTTINO_COMMIT="17a9b9ce85c6b8e711f777146d3c706c1a2a9fd9"
+MOONLIGHT_COMMIT="95feaf4951b8dc774671a5d6a1c31d76d78e3ac"
+NANORS_COMMIT="19f07b513e924e471cadd141943c1ec4adc8d0e0"
+TRAY_COMMIT="d45306e686c90a18f5792a1541783d7bc8555bc6"
+SWS_COMMIT="187f798d54a9c6cee742f2eb2c54e9ba26f5a385"
+WLRP_COMMIT="2ec67ebd26b73bada12f3fa6afdd51563b656722"
+DOXYCONFIG_COMMIT="4501c7b191170cd2adcc12336821b65449186d85"
+GOOGLETEST_COMMIT="04ee1b4f2aefdffb0135d7cf2a2c519fe50dabe4"
+TPCB_COMMIT="8833b3a73fab6530cc51e2063a85cced01714cfb"
+VIGEMCLIENT_COMMIT="8d71f6740ffff4671cdadbca255ce528e3cd3fef"
+# WLP_COMMIT="810f1adaf33521cc55fc510566efba2a1418174f"
+NVCH_COMMIT="22441b505d9d9afc1e3002290820909846c24bdc"
+NVAPI_COMMIT="cce4e90b629f712ae6eebafac97739bd1196cdef"
+X265_COMMIT="3bd3dd731b4b4c3fbbe5e513c16bc6ae481a0ec5"
+SVT_AV1_COMMIT="08c18ba0768ed3dbbff0903adc326fb3a7549bd9"
+
+
+FFMPEG_VERSION="7.1"
 
 # To make the assets tarball:
 # PV=
@@ -37,11 +48,24 @@ else
 			-> nanors-${NANORS_COMMIT}.tar.gz
 		https://github.com/LizardByte/tray/archive/${TRAY_COMMIT}.tar.gz
 			-> LizardByte-tray-${TRAY_COMMIT}.tar.gz
+		https://github.com/LizardByte/doxyconfig/archive/${DOXYCONFIG_COMMIT}.tar.gz
+			-> doxyconfig-${DOXYCONFIG_COMMIT}.tar.gz
+		https://github.com/michaeltyson/TPCircularBuffer/${TPCB_COMMIT}.tar.gz
+			-> TPCircularBuffer-${TPCB_COMMIT}.tar.gz
+		https://github.com/google/googletest/archive/${GOOGLETEST_COMMIT}.tar.gz
+			-> googletest-${GOOGLETEST_COMMIT}.tar.gz
+		https://github.com/LizardByte/Virtual-Gamepad-Emulation-Client/archive/${VIGEMCLIENT_COMMIT}.tar.gz
+			-> ViGEmClient-${VIGEMCLIENT_COMMIT}.tar.gz
+		https://github.com/FFmpeg/nv-codec-headers/archive/${NVCH_COMMIT}.tar.gz
+			-> nv-codec-headers-${NVCH_COMMIT}.tar.gz
+		https://github.com/LizardByte/nvapi-open-source-sdk/archive/${NVAPI_COMMIT}.tar.gz
+			-> nvapi-opensource-sdk-${NVAPI_COMMIT}.tar.gz
 		https://gitlab.com/eidheim/Simple-Web-Server/-/archive/${SWS_COMMIT}/Simple-Web-Server-${SWS_COMMIT}.tar.bz2
 		https://gitlab.freedesktop.org/wlroots/wlr-protocols/-/archive/${WLRP_COMMIT}/wlr-protocols-${WLRP_COMMIT}.tar.bz2
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 		https://dev.gentoo.org/~chewi/distfiles/${PN}-assets-${PV}.tar.xz
 	"
+		# https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/${WLP_COMMIT}/wayland-protocols-${WLP_COMMIT}.tar.bz2
 	KEYWORDS="~amd64 ~arm64"
 	S="${WORKDIR}/Sunshine-${PV}"
 fi
@@ -52,7 +76,7 @@ DESCRIPTION="Self-hosted game stream host for Moonlight"
 HOMEPAGE="https://github.com/LizardByte/Sunshine"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda debug libdrm svt-av1 systemd trayicon vaapi wayland X x264 x265"
+IUSE="cuda debug libdrm systemd svt-av1 trayicon vaapi wayland X x264 x265 docs"
 
 # Strings for CPU features in the useflag[:configure_option] form
 # if :configure_option isn't set, it will use 'useflag' as configure option
@@ -126,8 +150,11 @@ REQUIRED_USE="
 "
 
 CDEPEND="
+	<dev-libs/boost-1.88:=[nls]
 	>=dev-libs/boost-1.86:=[nls]
 	dev-libs/libevdev
+	docs? ( >=app-text/doxygen-1.10.0 )
+	dev-libs/cpuinfo
 	dev-libs/openssl:=
 	media-libs/opus
 	net-libs/miniupnpc:=
@@ -140,7 +167,7 @@ CDEPEND="
 		sys-libs/libcap
 		x11-libs/libdrm
 	)
-	svt-av1? ( media-libs/svt-av1:= )
+	svt-av1? ( <media-libs/svt-av1-3:= )
 	trayicon? (
 		dev-libs/libayatana-appindicator
 		x11-libs/libnotify
@@ -179,7 +206,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
+	# "${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
+	# "${FILESDIR}"/${PN}-custom-ffmpeg.patch
+	# "${FILESDIR}"/${PN}-find-npm.patch
 )
 
 # Make this mess a bit simpler.
@@ -193,6 +222,7 @@ export npm_config_loglevel=verbose
 export npm_config_optional=false
 export npm_config_progress=false
 export npm_config_save=false
+# export npm_config_cache="${S}"/npm_cache
 
 src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
@@ -204,14 +234,13 @@ src_unpack() {
 		# Use upstream server like our ffmpeg package does, not GitHub.
 		local EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 		local EGIT_SUBMODULES=( '-*' )
-		local EGIT_CHECKOUT_DIR=${EGIT_CHECKOUT_DIR}/ffmpeg_sources/ffmpeg
-		local EGIT_COMMIT=$(git --git-dir=build-deps/.git rev-parse HEAD:ffmpeg_sources/ffmpeg)
+		local EGIT_CHECKOUT_DIR=${EGIT_CHECKOUT_DIR}/third-party/FFmpeg/FFmpeg
 		local EGIT_BRANCH=release/$(ver_cut 1-2 ${FFMPEG_VERSION})
 		git-r3_src_unpack
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
 		local EGIT_SUBMODULES=(
-			third-party/{inputtino,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols}
+			third-party/{inputtino,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols,doxyconfig,TPCircularBuffer,googletest,nv-codec-headers,ViGEmClient,nvapi-open-source-sdk,libdisplaydevice}
 		)
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
@@ -231,21 +260,32 @@ src_unpack() {
 		ln -snf ../../tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
 		ln -snf ../../Simple-Web-Server-${SWS_COMMIT} "${S}"/third-party/Simple-Web-Server || die
 		ln -snf ../../wlr-protocols-${WLRP_COMMIT} "${S}"/third-party/wlr-protocols || die
+		ln -snf ../../wayland-protocols-${WLP_COMMIT} "${S}"/third-party/wayland-protocols || die
+		ln -snf ../../doxyconfig-${DOXYCONFIG_COMMIT} "${S}"/third-party/doxyconfig || die
+		ln -snf ../../TPCircularBuffer-${TPCB_COMMIT} "${S}"/third-party/TPCircularBuffer || die
+		ln -snf ../../googletest-${GOOGLETEST_COMMIT} "${S}"/third-party/googletest || die
+		ln -snf ../../nv-codec-headers-${NVCH_COMMIT} "${S}"/third-party/nv-codec-headers || die
+		ln -snf ../../nvapi-open-source-sdk-${NVAPI_COMMIT} "${S}"/third-party/nvapi-open-source-sdk || die
+		ln -snf ../../ViGEmClient-${VIGEMCLIENT_COMMIT} "${S}"/third-party/ViGEmClient || die
 		ln -snf ../../ffmpeg-${FFMPEG_VERSION} build-deps/ffmpeg_sources/ffmpeg || die
 	fi
 }
 
 src_prepare() {
+	# Apply CBS patch.
+	# cd "${WORKDIR}"/build-deps || die
+	# eapply "${FILESDIR}"/${PN}-cross-cbs.patch
+
 	# Apply general ffmpeg patches.
-	cd "${WORKDIR}"/build-deps/ffmpeg_sources/ffmpeg || die
-	eapply "${WORKDIR}"/build-deps/ffmpeg_patches/ffmpeg/*.patch
+	# cd "${WORKDIR}"/build-deps/third-party/FFmpeg/FFmpeg || die
+	# eapply $(find "${WORKDIR}"/build-deps/patches/FFmpeg -name *.patch)
 
 	# Copy ffmpeg sources because CBS build applies extra patches.
-	cp -a ./ "${WORKDIR}"/ffmpeg-build || die
+	# cp -a ./ "${WORKDIR}"/ffmpeg-build || die
 
-	cd "${S}" || die
+	cd "${WORKDIR}/build-deps" || die
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_prepare
-	default_src_prepare() { :; } # Hack to avoid double patching! :(
+	# default_src_prepare() { :; } # Hack to avoid double patching! :(
 	CMAKE_USE_DIR="${S}" cmake_src_prepare
 }
 
@@ -292,9 +332,10 @@ src_configure() {
 		--enable-encoder=h264_v4l2m2m,hevc_v4l2m2m
 	)
 
+	local extra_conf=()
 	# CPU features
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
-		use ${i%:*} || myconf+=( --disable-${i#*:} )
+		use ${i%:*} || extra_conf+=( --disable-${i#*:} )
 	done
 
 	# Try to get cpu type based on CFLAGS.
@@ -304,38 +345,52 @@ src_configure() {
 	# will just ignore it.
 	for i in $(get-flag mcpu) $(get-flag march) ; do
 		[[ ${i} = native ]] && i="host" # bug #273421
-		myconf+=( --cpu=${i} )
+		extra_conf+=( --cpu=${i} )
 		break
 	done
 
 	# cross compile support
 	if tc-is-cross-compiler ; then
-		myconf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- --host-cc="$(tc-getBUILD_CC)" )
+		extra_conf+=( --enable-cross-compile --arch=$(tc-arch-kernel) --cross-prefix=${CHOST}- --host-cc="$(tc-getBUILD_CC)" )
 		case ${CHOST} in
 			*mingw32*)
-				myconf+=( --target-os=mingw32 )
+				extra_conf+=( --target-os=mingw32 )
 				;;
 			*linux*)
-				myconf+=( --target-os=linux )
+				extra_conf+=( --target-os=linux )
 				;;
 		esac
 	fi
 
-	cd "${WORKDIR}"/ffmpeg-build || die
-	echo ./configure "${myconf[@]}"
-	./configure "${myconf[@]}" || die
+	# cd "${WORKDIR}"/build-deps/third-party/FFmpeg/FFmpeg || die
+	# echo ./configure "${myconf[@]}"
+	# ./configure "${myconf[@]}" || die
 
-	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=no
-		-DCMAKE_INSTALL_PREFIX="${S}"/third-party/ffmpeg
-	)
-	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_configure
+ 	cd "${WORKDIR}"/build-deps || die
+ 	local mycmakeargs=(
+ 		-DBUILD_SHARED_LIBS=no
+		-DBUILD_ALL=no
+		-DBUILD_ALL_SUNSHINE=no
+		-DBUILD_FFMPEG_ALL_PATCHES=yes
+		-DBUILD_FFMPEG_AMF=no
+		-DBUILD_FFMPEG_CBS=yes
+		-DBUILD_FFMPEG_MF=no
+		-DBUILD_FFMPEG_NV_CODEC_HEADERS=no
+		-DBUILD_FFMPEG_SVT_AV1=no
+		-DBUILD_FFMPEG_VAAPI=no
+		-DBUILD_FFMPEG_X264=no
+		-DBUILD_FFMPEG_X265=no
+ 		-DCMAKE_INSTALL_PREFIX="${S}"/third-party/ffmpeg
+		-DFFMPEG_EXTRA_CONFIGURE="$(echo ${extra_conf[@]} | tr ' ' ';' )"
+ 	)
+ 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_configure
 
+	cd "${S}" || die
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
 		-DBOOST_USE_STATIC=no
-		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
+		-DBUILD_WERROR=ON
 		-DCCACHE_FOUND=no
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=yes
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
@@ -352,13 +407,14 @@ src_configure() {
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
 	use systemd && mycmakeargs+=( -DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir) )
+	use docs || mycmakeargs+=( -DBUILD_DOCS=OFF )
 	[[ ${PV} = 9999* ]] || mycmakeargs+=( -DNPM="${BROOT}"/bin/true )
 	CMAKE_USE_DIR="${S}" cmake_src_configure
 }
 
 src_compile() {
-	emake -C "${WORKDIR}"/ffmpeg-build V=1
-	emake -C "${WORKDIR}"/ffmpeg-build V=1 install
+	# emake -C "${WORKDIR}"/build-deps/third-party/FFmpeg/FFmpeg V=1
+	# emake -C "${WORKDIR}"/build-deps/third-party/FFmpeg/FFmpeg V=1 install
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_compile
 	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_build install
 	CMAKE_USE_DIR="${S}" npm_config_offline=1 cmake_src_compile
