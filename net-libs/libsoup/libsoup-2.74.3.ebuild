@@ -7,7 +7,7 @@ VALA_USE_DEPEND="vapigen"
 inherit gnome.org meson-multilib vala xdg
 
 DESCRIPTION="HTTP client/server library for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
+HOMEPAGE="https://libsoup.gnome.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.4"
