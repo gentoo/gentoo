@@ -31,9 +31,9 @@ CRATES="
 	block-buffer@0.10.4
 	brunch@0.7.0
 	btoi@0.4.3
-	bumpalo@3.17.0
+	bumpalo@3.18.1
 	caps@0.5.5
-	cc@1.2.25
+	cc@1.2.26
 	cfg-if@1.0.0
 	cfg_aliases@0.1.1
 	cfg_aliases@0.2.1
