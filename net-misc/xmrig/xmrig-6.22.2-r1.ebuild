@@ -1,12 +1,12 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake systemd
 
-DESCRIPTION="RandomX, CryptoNight, KawPow, AstroBWT, and Argon2 CPU/GPU miner"
-HOMEPAGE="https://xmrig.com https://github.com/xmrig/xmrig"
+DESCRIPTION="RandomX, KawPow, CryptoNight & GhostRider CPU/GPU miner"
+HOMEPAGE="https://xmrig.com"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -16,9 +16,10 @@ else
 	KEYWORDS="~amd64 ~arm64"
 fi
 
-LICENSE="Apache-2.0 GPL-3+ MIT"
+LICENSE="GPL-3+ Apache-2.0 BSD BSD-2 MIT" # main, base32, epee, getopt, adl
 SLOT="0"
-IUSE="cpu_flags_x86_sse4_1 donate hwloc opencl +ssl"
+IUSE="benchmark donate hwloc opencl +ssl"
+IUSE+=" cpu_flags_x86_avx2 cpu_flags_x86_sse4_1"
 
 DEPEND="
 	dev-libs/libuv:=
@@ -30,6 +31,7 @@ RDEPEND="
 	${DEPEND}
 	!arm64? ( sys-apps/msr-tools )
 "
+DOCS=( {CHANGELOG,README}.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.2-nonotls.patch
@@ -45,10 +47,13 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_AVX2=$(usex cpu_flags_x86_avx2)
 		-DWITH_SSE4_1=$(usex cpu_flags_x86_sse4_1)
+		-DWITH_BENCHMARK=$(usex benchmark)
 		-DWITH_HWLOC=$(usex hwloc)
 		-DWITH_TLS=$(usex ssl)
 		-DWITH_OPENCL=$(usex opencl)
+		# https://github.com/xmrig/xmrig-cuda?tab=readme-ov-file#xmrig-cuda
 		-DWITH_CUDA=OFF
 	)
 
