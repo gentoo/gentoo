@@ -22,7 +22,7 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit desktop edo flag-o-matic git-r3 java-pkg-opt-2 linux-mod-r1 multilib \
 	optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
