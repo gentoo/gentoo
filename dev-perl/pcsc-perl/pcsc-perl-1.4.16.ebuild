@@ -13,7 +13,7 @@ S="${WORKDIR}"/${MY_PN}-v${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc ~x86"
 
 RESTRICT="test" # actually accesses the pcsc-lite daemon
 
