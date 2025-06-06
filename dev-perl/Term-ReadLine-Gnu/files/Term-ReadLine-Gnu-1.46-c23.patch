@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/943894
+https://github.com/hirooih/perl-trg/commit/90ebd3f65652484994c838f5dc62944aee67a2a0
+
+From 90ebd3f65652484994c838f5dc62944aee67a2a0 Mon Sep 17 00:00:00 2001
+From: Paul Howarth <paul@city-fan.org>
+Date: Thu, 23 Jan 2025 10:33:01 +0000
+Subject: [PATCH] Fix for compilation in C23 mode
+
+This (-std=c23) is the default for gcc 15.
+
+Function pointer casts added as per many existing entries in the same
+table, and void parameter of XFunction() made explicit.
+---
+ Gnu.xs | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/Gnu.xs b/Gnu.xs
+index 557fb7a..9c70295 100644
+--- a/Gnu.xs
++++ b/Gnu.xs
+@@ -613,7 +613,7 @@ enum { STARTUP_HOOK, EVENT_HOOK, GETC_FN, REDISPLAY_FN,
+        SIG_EVT, INP_AVL, FN_STAT, TIMEOUT_EVENT,
+ };
+ 
+-typedef int XFunction ();
++typedef int XFunction (void);
+ static struct fn_vars {
+   XFunction **rlfuncp;          /* GNU Readline Library variable */
+   XFunction *defaultfn;         /* default function */
+@@ -622,7 +622,12 @@ static struct fn_vars {
+ } fn_tbl[] = {
+   { &rl_startup_hook,   NULL,   startup_hook_wrapper,   NULL }, /* 0 */
+   { &rl_event_hook,     NULL,   event_hook_wrapper,     NULL }, /* 1 */
+-  { &rl_getc_function,  rl_getc, getc_function_wrapper, NULL }, /* 2 */
++  {
++    (XFunction **)&rl_getc_function,                            /* 2 */
++    (XFunction *)rl_getc,
++    (XFunction *)getc_function_wrapper,
++    NULL
++  },
+   {
+     (XFunction **)&rl_redisplay_function,                       /* 3 */
+     (XFunction *)rl_redisplay,
+
