@@ -1,8 +1,0 @@
---- a/CMakeLists.txt	2025-02-24 20:00:00.000000000 +0100
-+++ b/CMakeLists.txt	2025-04-13 20:22:18.772585202 +0200
-@@ -1,4 +1,4 @@
--cmake_minimum_required(VERSION 3.3)
-+cmake_minimum_required(VERSION 3.5)
- list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
- include(ComputeVersion)
- if (NOT VERSION_FOUND)
