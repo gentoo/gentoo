@@ -1,0 +1,48 @@
+From 12b1d00622ffc8b99986da2f4478cc2df4da213a Mon Sep 17 00:00:00 2001
+From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
+Date: Mon, 5 May 2025 10:55:36 -0700
+Subject: [PATCH] Fix xarray failures post xarray unpin
+
+---
+ pandas/tests/generic/test_to_xarray.py | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/pandas/tests/generic/test_to_xarray.py b/pandas/tests/generic/test_to_xarray.py
+index 9fe9bca8abdc9..96b2936aadd83 100644
+--- a/pandas/tests/generic/test_to_xarray.py
++++ b/pandas/tests/generic/test_to_xarray.py
+@@ -6,6 +6,7 @@
+     DataFrame,
+     MultiIndex,
+     Series,
++    StringDtype,
+     date_range,
+ )
+ import pandas._testing as tm
+@@ -51,9 +52,6 @@ def test_to_xarray_index_types(self, index_flat, df, using_infer_string):
+         # datetimes w/tz are preserved
+         # column names are lost
+         expected = df.copy()
+-        expected["f"] = expected["f"].astype(
+-            object if not using_infer_string else "str"
+-        )
+         expected.columns.name = None
+         tm.assert_frame_equal(result.to_dataframe(), expected)
+ 
+@@ -88,8 +86,15 @@ def test_to_xarray_with_multiindex(self, df, using_infer_string):
+ 
+ 
+ class TestSeriesToXArray:
+-    def test_to_xarray_index_types(self, index_flat):
++    def test_to_xarray_index_types(self, index_flat, request):
+         index = index_flat
++        if isinstance(index.dtype, StringDtype) and index.dtype.storage == "pyarrow":
++            request.applymarker(
++                pytest.mark.xfail(
++                    reason="xarray calling reshape of ArrowExtensionArray",
++                    raises=NotImplementedError,
++                )
++            )
+         # MultiIndex is tested in test_to_xarray_with_multiindex
+ 
+         from xarray import DataArray
