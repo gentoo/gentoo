@@ -8,9 +8,10 @@ VERIFY_SIG_METHOD=sigstore
 
 inherit python-r1 verify-sig
 
-MY_PV=${PV/_beta/b}
+REAL_PV=${PV#0.}
+MY_PV=${REAL_PV/_beta/b}
 MY_P="Python-${MY_PV%_p*}"
-PYVER=$(ver_cut 1-2)t
+PYVER=$(ver_cut 2-3)t
 PATCHSET="python-gentoo-patches-${MY_PV}"
 
 DESCRIPTION="Test modules from dev-lang/python"
@@ -19,10 +20,10 @@ HOMEPAGE="
 	https://github.com/python/cpython/
 "
 SRC_URI="
-	https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz
+	https://www.python.org/ftp/python/${REAL_PV%%_*}/${MY_P}.tar.xz
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz
 	verify-sig? (
-		https://www.python.org/ftp/python/${PV%%_*}/${MY_P}.tar.xz.sigstore
+		https://www.python.org/ftp/python/${REAL_PV%%_*}/${MY_P}.tar.xz.sigstore
 	)
 "
 S="${WORKDIR}/${MY_P}/Lib"
