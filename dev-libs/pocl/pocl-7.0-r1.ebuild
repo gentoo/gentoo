@@ -75,6 +75,7 @@ src_configure() {
 		-DENABLE_ICD=ON
 		-DPOCL_ICD_ABSOLUTE_PATH=ON
 		-DPOCL_INSTALL_PUBLIC_LIBDIR="${EPREFIX}/usr/$(get_libdir)/OpenCL/vendors/pocl"
+		-DINSTALL_OPENCL_HEADERS=OFF
 
 		# only appends -flto
 		-DENABLE_IPO=OFF
