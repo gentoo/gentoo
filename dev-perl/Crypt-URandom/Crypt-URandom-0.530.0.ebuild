@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Provide non blocking randomness"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~x86"
 
 RDEPEND="
 	virtual/perl-Carp
