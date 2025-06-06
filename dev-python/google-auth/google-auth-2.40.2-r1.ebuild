@@ -31,7 +31,6 @@ BDEPEND="
 		dev-python/flask[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/moto[${PYTHON_USEDEP}]
 		>=dev-python/pyjwt-2.0[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
