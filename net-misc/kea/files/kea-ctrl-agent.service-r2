@@ -1,0 +1,16 @@
+[Unit]
+Description=ISC Kea Control Agent
+Before=multi-user.target
+After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.service ndsd.service
+
+[Service]
+User=dhcp
+Environment=KEA_PIDFILE_DIR=/run/kea
+RuntimeDirectory=kea
+RuntimeDirectoryMode=0750
+ExecStart=/usr/sbin/kea-ctrl-agent -c /etc/kea/kea-ctrl-agent.conf
+ExecReload=kill -HUP $MAINPID
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
