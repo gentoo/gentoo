@@ -5,6 +5,9 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="allegro">Add support for Allegro</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">xu4-engine/u4</remote-id>
 		<remote-id type="sourceforge">xu4</remote-id>
