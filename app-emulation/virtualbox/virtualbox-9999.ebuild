@@ -33,7 +33,7 @@ MY_P=${MY_PN}-${PV}
 PATCHES_TAG=7.2.0_pre20250508
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
-HOMEPAGE="https://www.virtualbox.org/"
+HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
 EGIT_REPO_URI="https://github.com/VirtualBox/virtualbox.git"
 SRC_URI="
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_TAG}.tar.bz2

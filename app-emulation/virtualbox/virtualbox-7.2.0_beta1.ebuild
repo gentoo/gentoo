@@ -25,7 +25,7 @@ MY_P=${MY_PN}-${PV^^}
 HELP_PV=${PV}
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
-HOMEPAGE="https://www.virtualbox.org/"
+HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
 SRC_URI="
 	https://download.virtualbox.org/virtualbox/${PV^^}/${MY_P}.tar.bz2
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.2.0_pre20250508.tar.bz2
