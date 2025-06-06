@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="ISC"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~m68k ~mips ~ppc ppc64 ~riscv x86"
 
 DEPEND="
 	virtual/libcrypt:=
