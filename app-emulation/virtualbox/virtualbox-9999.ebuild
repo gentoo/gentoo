@@ -4,7 +4,7 @@
 EAPI=8
 
 # Important!
-# This compiles the latest svn version.
+# This compiles the latest git version.
 # It also compiles the kernel modules.  Does not depend on virtualbox-modules.
 # It is not meant to be used, might be very unstable.
 #
@@ -24,8 +24,8 @@ EAPI=8
 #  See bug #785835, bug #856121.
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit desktop edo flag-o-matic java-pkg-opt-2 linux-mod-r1 multilib optfeature pax-utils \
-	python-single-r1 subversion tmpfiles toolchain-funcs udev xdg
+inherit desktop edo flag-o-matic git-r3 java-pkg-opt-2 linux-mod-r1 multilib \
+	optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 BASE_PV=7.1.0
@@ -34,12 +34,11 @@ PATCHES_TAG=7.2.0_pre20250508
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
-ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
+EGIT_REPO_URI="https://github.com/VirtualBox/virtualbox.git"
 SRC_URI="
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_TAG}.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
-S="${WORKDIR}/trunk"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
@@ -243,7 +242,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	subversion_src_unpack
+	git-r3_src_unpack
 	default
 }
 
@@ -261,8 +260,6 @@ src_prepare() {
 		eapply "${FILESDIR}"/050_virtualbox-5.2.8-nopie.patch
 	fi
 
-	# Remove shipped binaries (kBuild, yasm) and tools, see bug #232775
-	rm -r kBuild/bin || die
 	# Remove everything in tools except kBuildUnits
 	find tools -mindepth 1 -maxdepth 1 -name kBuildUnits -prune -o -exec rm -r {} \+ || die
 

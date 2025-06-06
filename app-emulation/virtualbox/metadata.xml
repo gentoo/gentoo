@@ -14,4 +14,7 @@
     <flag name="vde">Support for VDE networking via <pkg>net-misc/vde</pkg>.</flag>
     <flag name="vmmraw">Enable 32-bit support on a 64-bit kernel.</flag>
   </use>
+  <upstream>
+    <remote-id type="github">VirtualBox/virtualbox</remote-id>
+  </upstream>
 </pkgmetadata>
