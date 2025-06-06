@@ -574,7 +574,12 @@ get_version() {
 			# We cannot use the local version to find the output directory
 			# because that is where it is written to.
 			KV_OUT_DIR+="/lib/modules/${KV_FULL}/build"
-			[[ -d ${KV_OUT_DIR} ]] && break
+			# build is often a symlink. This function is usually run in
+			# pkg_setup as root, so fully resolve it now in case the
+			# unprivileged user doesn't have permission to do it later. If we
+			# don't have permission now, then this will fall back to KV_DIR
+			# below, which is probably where the build symlink points to anyway.
+			KV_OUT_DIR=$(realpath -q -e "${KV_OUT_DIR}") && break
 		done
 	fi
 
