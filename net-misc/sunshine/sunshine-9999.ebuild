@@ -16,7 +16,6 @@ DOXYCONFIG_COMMIT="4501c7b191170cd2adcc12336821b65449186d85"
 GOOGLETEST_COMMIT="04ee1b4f2aefdffb0135d7cf2a2c519fe50dabe4"
 TPCB_COMMIT="8833b3a73fab6530cc51e2063a85cced01714cfb"
 VIGEMCLIENT_COMMIT="8d71f6740ffff4671cdadbca255ce528e3cd3fef"
-# WLP_COMMIT="810f1adaf33521cc55fc510566efba2a1418174f"
 NVCH_COMMIT="22441b505d9d9afc1e3002290820909846c24bdc"
 NVAPI_COMMIT="cce4e90b629f712ae6eebafac97739bd1196cdef"
 X265_COMMIT="3bd3dd731b4b4c3fbbe5e513c16bc6ae481a0ec5"
@@ -65,7 +64,6 @@ else
 		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 		https://dev.gentoo.org/~chewi/distfiles/${PN}-assets-${PV}.tar.xz
 	"
-		# https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/${WLP_COMMIT}/wayland-protocols-${WLP_COMMIT}.tar.bz2
 	KEYWORDS="~amd64 ~arm64"
 	S="${WORKDIR}/Sunshine-${PV}"
 fi
@@ -260,7 +258,6 @@ src_unpack() {
 		ln -snf ../../tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
 		ln -snf ../../Simple-Web-Server-${SWS_COMMIT} "${S}"/third-party/Simple-Web-Server || die
 		ln -snf ../../wlr-protocols-${WLRP_COMMIT} "${S}"/third-party/wlr-protocols || die
-		ln -snf ../../wayland-protocols-${WLP_COMMIT} "${S}"/third-party/wayland-protocols || die
 		ln -snf ../../doxyconfig-${DOXYCONFIG_COMMIT} "${S}"/third-party/doxyconfig || die
 		ln -snf ../../TPCircularBuffer-${TPCB_COMMIT} "${S}"/third-party/TPCircularBuffer || die
 		ln -snf ../../googletest-${GOOGLETEST_COMMIT} "${S}"/third-party/googletest || die
