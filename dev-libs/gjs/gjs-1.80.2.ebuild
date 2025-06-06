@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic gnome.org meson virtualx
 
 DESCRIPTION="Javascript bindings for GNOME"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gjs"
+HOMEPAGE="https://gjs.guide"
 
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
