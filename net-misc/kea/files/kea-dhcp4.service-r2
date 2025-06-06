@@ -1,0 +1,17 @@
+[Unit]
+Description=ISC Kea DHCPv4 server
+Before=multi-user.target
+After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.service ndsd.service
+
+[Service]
+User=dhcp
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW
+Environment=KEA_PIDFILE_DIR=/run/kea
+RuntimeDirectory=kea
+RuntimeDirectoryMode=0750
+ExecStart=/usr/sbin/kea-dhcp4 -c /etc/kea/kea-dhcp4.conf
+ExecReload=kill -HUP $MAINPID
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
