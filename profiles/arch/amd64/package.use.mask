@@ -23,6 +23,8 @@ net-misc/freerdp -sdl3
 
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # dev-python/sigstore is keyworded here.
+=dev-lang/python-0* -verify-sig
+=dev-python/python-tests-0* -verify-sig
 >=dev-lang/python-3.14 -verify-sig
 >=dev-python/python-tests-3.14 -verify-sig
 
