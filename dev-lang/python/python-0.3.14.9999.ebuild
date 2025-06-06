@@ -10,7 +10,7 @@ WANT_LIBTOOL="none"
 inherit autotools check-reqs flag-o-matic git-r3 linux-info llvm-r1
 inherit multiprocessing pax-utils python-utils-r1 toolchain-funcs
 
-PYVER="$(ver_cut 1-2)t"
+PYVER="$(ver_cut 2-3)t"
 PATCHSET="python-gentoo-patches-3.14.0b1"
 
 DESCRIPTION="Freethreading (no-GIL) version of Python programming language"
