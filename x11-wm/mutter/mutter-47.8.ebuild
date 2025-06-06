@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{11..12} python3_{13..14}{,t} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
+HOMEPAGE="https://mutter.gnome.org"
 LICENSE="GPL-2+"
 
 if [[ ${PV} == 9999 ]]; then
