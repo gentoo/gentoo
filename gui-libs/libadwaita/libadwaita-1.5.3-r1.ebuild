@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1+"
 SLOT="1"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
 
-IUSE="+introspection test +vala"
+IUSE="examples +introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
@@ -46,10 +46,10 @@ src_configure() {
 
 		-Dprofiling=false
 		$(meson_feature introspection)
+		$(meson_use examples examples)
 		$(meson_use vala vapi)
 		-Dgtk_doc=false # we ship pregenerated docs
 		$(meson_use test tests)
-		-Dexamples=false
 	)
 	meson_src_configure
 }
