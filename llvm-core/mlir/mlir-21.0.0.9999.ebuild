@@ -194,12 +194,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	local known_xfail=(
-		# TODO: Gentoo-specific
-		# https://github.com/llvm/llvm-project/issues/124410
-		Dialect/SPIRV/IR/availability.mlir
-		Dialect/SPIRV/IR/target-env.mlir
-	)
+	local known_xfail=()
 
 	case ${ABI} in
 		arm|ppc|x86)
