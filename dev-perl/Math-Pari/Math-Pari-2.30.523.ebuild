@@ -16,7 +16,7 @@ SRC_URI="${SRC_URI}
 S_PARI="${WORKDIR}"/pari-${PARI_VER}
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~hppa ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 # Math::Pari requires that a copy of the pari source in a parallel
 # directory to where you build it. It does not need to compile it, but
