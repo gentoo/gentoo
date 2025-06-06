@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Class that represents an HTML form element"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~m68k ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	!<dev-perl/libwww-perl-6
