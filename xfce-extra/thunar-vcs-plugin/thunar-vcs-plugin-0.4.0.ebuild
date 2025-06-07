@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv x86"
 IUSE="+git subversion"
 
 # TODO: remove exo when we dep on libxfce4ui >= 4.21
