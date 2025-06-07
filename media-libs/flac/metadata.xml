@@ -6,7 +6,9 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">flac</remote-id>
+		<bugs-to>https://github.com/xiph/flac/issues</bugs-to>
+		<changelog>https://xiph.org/flac/changelog.html</changelog>
+		<doc>https://www.xiph.org/flac/documentation.html</doc>
 		<remote-id type="github">xiph/flac</remote-id>
 	</upstream>
 </pkgmetadata>
