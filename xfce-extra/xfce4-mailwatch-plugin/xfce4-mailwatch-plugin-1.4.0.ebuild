@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm ~hppa ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="ssl"
 
 # TODO: remove exo when we depend on libxfce4ui >= 4.21.0
