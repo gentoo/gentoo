@@ -62,8 +62,8 @@ RDEPEND="
 	share? ( >=gnome-extra/gnome-user-share-43.0 )
 	shotwell? ( >=media-gfx/shotwell-0.32.4 )
 	tracker? (
-		>=app-misc/tracker-3.6.0
-		>=app-misc/tracker-miners-3.6.2
+		>=app-misc/tinysparql-3.6.0
+		>=app-misc/localsearch-3.6.2
 		>=media-gfx/gnome-photos-44.0
 		>=media-sound/gnome-music-45.0
 	)

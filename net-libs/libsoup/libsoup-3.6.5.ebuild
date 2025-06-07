@@ -11,13 +11,13 @@ HOMEPAGE="https://libsoup.gnome.org"
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
 
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+brotli gssapi gtk-doc +introspection samba ssl sysprof test +vala"
 REQUIRED_USE="vala? ( introspection )"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	>=dev-libs/glib-2.69.1:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.70.0:2[${MULTILIB_USEDEP}]
 	net-libs/nghttp2:=[${MULTILIB_USEDEP}]
 	>=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}]
 	brotli? ( >=app-arch/brotli-1.0.6-r1:=[${MULTILIB_USEDEP}] )
@@ -78,7 +78,6 @@ multilib_src_configure() {
 		-Dauto_features=enabled
 
 		$(meson_feature gssapi)
-		-Dkrb5_config="${CHOST}-krb5-config"
 		$(meson_feature samba ntlm)
 		$(meson_feature brotli)
 		-Dntlm_auth="${EPREFIX}/usr/bin/ntlm_auth"

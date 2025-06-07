@@ -22,7 +22,7 @@ DEPEND="${PYTHON_DEPS}
 	>=gui-libs/libadwaita-1.5_beta:1=[introspection]
 	>=media-libs/libmediaart-1.9.1:2.0[introspection]
 	net-libs/libsoup:3.0[introspection]
-	app-misc/tracker:3=[introspection(+)]
+	app-misc/tinysparql:3=[introspection(+)]
 	>=x11-libs/pango-1.44:=
 	$(python_gen_cond_dep '
 		>=dev-python/pygobject-3.47.0:3[cairo,${PYTHON_USEDEP}]
@@ -35,8 +35,8 @@ DEPEND="${PYTHON_DEPS}
 # https://bugzilla.gnome.org/show_bug.cgi?id=731613
 RDEPEND="${DEPEND}
 	|| (
-		app-misc/tracker-miners:3[gstreamer]
-		app-misc/tracker-miners:3[ffmpeg]
+		app-misc/localsearch:3[gstreamer]
+		app-misc/localsearch:3[ffmpeg]
 	)
 	x11-libs/libnotify[introspection]
 	media-libs/gstreamer:1.0[introspection]

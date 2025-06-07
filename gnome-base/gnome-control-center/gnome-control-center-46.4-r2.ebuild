@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-control-center"
+HOMEPAGE="https://apps.gnome.org/Settings"
 SRC_URI+=" https://dev.gentoo.org/~pacho/${PN}/${P}-patchset-r1.tar.xz"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo.svg"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo-dark.svg"

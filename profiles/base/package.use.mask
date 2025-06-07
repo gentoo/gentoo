@@ -484,7 +484,7 @@ gnome-base/gnome-extra-apps tracker
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
 # which has not been ported to libsoup:3.0.
->=app-misc/tracker-miners-3.4.0-r1 rss
+>=app-misc/localsearch-3.4.0-r1 rss
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
 # Cannot test and fix pax-kernel related bugs on a current grsec kernel
