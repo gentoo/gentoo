@@ -62,14 +62,6 @@ python_test() {
 		tests/functional/test_six_threading.py::test_six_thread_safety
 	)
 
-	case ${EPYTHON} in
-		python3.14)
-			EPYTEST_DESELECT+=(
-				tests/unit/test_utils.py::test_lru_cache_weakref
-			)
-			;;
-	esac
-
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest tests/{functional,unit}
 }
