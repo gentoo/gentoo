@@ -126,6 +126,8 @@ PATCHES=(
 	# We don't (yet?) package libjxr and it seems to be dead upstream
 	# (last commit in 2017)
 	"${FILESDIR}/${PN}-7.0.0-jxr-test.patch"
+	# Backport to fix build w/ qt-6.9 (bug #957106)
+	"${FILESDIR}/${P}-qt6.9.patch"
 )
 
 src_prepare() {
