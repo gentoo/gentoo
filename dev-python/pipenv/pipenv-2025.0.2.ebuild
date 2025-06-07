@@ -72,9 +72,9 @@ src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( click click_didyoumean dotenv
-					 pexpect pep517 pipdeptree plette ptyprocess pyparsing pythonfinder
-					 shellingham tomli tomlkit importlib_metadata )
-	for pkgName in ${packages[@]}; do
+		pexpect pep517 pipdeptree plette ptyprocess pyparsing pythonfinder
+		shellingham tomli tomlkit importlib_metadata )
+	for pkgName in "${packages[@]}"; do
 		find ./ -type f -print0 | \
 			xargs --max-procs="${jobs}" --null \
 			sed --in-place \
@@ -82,12 +82,12 @@ src_prepare() {
 				-e "s/from pipenv.vendor.${pkgName}\(.*\) import \(\w*\)/from ${pkgName}\1 import \2/g"\
 				-e "s/import pipenv.vendor.${pkgName} as ${pkgName}/import ${pkgName}/g" \
 				-e "s/from .vendor import ${pkgName}/import ${pkgName}/g" \
-		        -e "s/from .vendor.${pkgName}/from ${pkgName}/g" || die "Failed to sed for ${pkgName}"
+				-e "s/from .vendor.${pkgName}/from ${pkgName}/g" || die "Failed to sed for ${pkgName}"
 	done
 
 	# remove vendored versions
 	for pkgName in ${packages[@]}; do
-		find  ./pipenv/vendor -regextype posix-extended -regex ".*${pkgName}$" -prune -exec rm -rv {} + || die
+		find ./pipenv/vendor -regextype posix-extended -regex ".*${pkgName}$" -prune -exec rm -rv {} + || die
 	done
 
 	for fname in Makefile README.md vendor.txt; do
@@ -97,9 +97,7 @@ src_prepare() {
 	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" \
 		tests/unit/test_utils.py || die "Failed patching tests"
 
-	rm -Rv pipenv/vendor || die "Could not remove vendor"
-	rm -Rv examples || die "Could not remove examples"
-	rm -Rv docs || die "Could not remove docs"
+	rm -Rv pipenv/vendor examples docs || die
 }
 
 python_test() {
