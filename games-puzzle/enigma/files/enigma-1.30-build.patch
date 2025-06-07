@@ -1,0 +1,98 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -51,6 +51,7 @@
+ AC_PROG_CXX
+ AC_PROG_CPP
+ AC_PROG_RANLIB
++AM_PROG_AR
+ PKG_PROG_PKG_CONFIG
+ 
+ dnl do not add the AC_PROG_CXX default CXXFLAGS
+@@ -268,7 +269,7 @@
+ 	CXXFLAGS="$CXXFLAGS -O2 -ffast-math -fomit-frame-pointer"
+ 	AC_MSG_RESULT(yes)
+ else
+-	CXXFLAGS="$CXXFLAGS -g"
++	CXXFLAGS="$CXXFLAGS"
+ 	AC_MSG_RESULT(no)
+ fi
+ 
+@@ -347,13 +348,15 @@
+ dnl ----------------------------------------------------------
+ 
+ AC_MSG_CHECKING(whether to use system enet)
+-AC_ARG_WITH(system-enet,
+-  AS_HELP_STRING(--with-system-enet, Use system enet), system_enet=$withval,
+-  system_enet=no
++AC_ARG_WITH([system-enet],
++  AS_HELP_STRING([--with-system-enet], [Use system enet]),
++  [system_enet=$withval],
++  [system_enet=no]
+ )
+ AM_CONDITIONAL([SYSTEM_ENET], [test "x$system_enet" = xyes])
+ AM_COND_IF([SYSTEM_ENET],
+-		   PKG_CHECK_MODULES(LIBENET, [libenet], ,AC_MSG_ERROR([libenet not found!])))
++  [PKG_CHECK_MODULES(LIBENET, [libenet], , AC_MSG_ERROR([libenet not found!]))]
++)
+ dnl Even if using system enet, still need to config the local version for running make dist
+ AC_CONFIG_SUBDIRS([lib-src/enet])
+ 
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -6,7 +6,6 @@
+ index_DATA = index.html
+ 
+ docdir = @docdir@
+-doc_DATA = gpl.txt lgpl.txt
+ 
+ EXTRA_DIST = gpl.txt lgpl.txt enigma.6 HACKING README.mingw32 REQUIREMENTS README.macosx\
+ 	doxygen.config $(index_DATA)
+--- a/etc/enigma.desktop
++++ b/etc/enigma.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-Version=1.30
++Version=1.0
+ Name=Enigma
+ Name[be]=Enigma
+ Name[cs]=Enigma
+@@ -44,5 +44,5 @@
+ StartupNotify=false
+ Icon=enigma
+ Type=Application
+-Categories=Application;Game;PuzzleGame;
++Categories=Game;LogicGame;
+ 
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -12,8 +12,8 @@
+ desktop_DATA = enigma.desktop
+ 
+ # Install AppData file
+-appdatadir = $(prefix)/share/appdata
+-dist_appdata_DATA = enigma.appdata.xml
++metainfodir = $(prefix)/share/metainfo
++dist_metainfo_DATA = enigma.appdata.xml
+ # endif !MINGW32
+ 
+ EXTRA_DIST = \
+--- a/lib-src/zipios++/configure.ac
++++ b/lib-src/zipios++/configure.ac
+@@ -36,6 +36,7 @@
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+ AC_PROG_RANLIB
++AM_PROG_AR
+ 
+ dnl Checks for libraries.
+ AC_CHECK_LIB(z, inflate, [cv_libz=yes], [cv_libz=no])
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -7,7 +7,6 @@
+ EXTRA_DIST = enigma CHANGES ACKNOWLEDGEMENTS
+ 
+ docdir = @datadir@/doc/enigma
+-doc_DATA = README CHANGES COPYING ACKNOWLEDGEMENTS
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
