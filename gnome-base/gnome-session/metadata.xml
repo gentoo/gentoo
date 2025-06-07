@@ -5,9 +5,6 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
-  <use>
-    <flag name="elogind">Support <pkg>sys-auth/elogind</pkg> for session tracking</flag>
-  </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/gnome-session</remote-id>
   </upstream>
