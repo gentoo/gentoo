@@ -16,7 +16,7 @@ SRC_URI="https://github.com/dimpase/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 # LICENSE clarification in README.md
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 
 DEPEND="sci-mathematics/primecount
 	dev-python/cysignals[${PYTHON_USEDEP}]"
