@@ -19,7 +19,7 @@ HOMEPAGE="
 
 LICENSE="|| ( GPL-3 MIT )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~riscv ~s390 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
