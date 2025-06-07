@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv x86"
 
 DEPEND="
 	>=dev-libs/glib-2.50.0
