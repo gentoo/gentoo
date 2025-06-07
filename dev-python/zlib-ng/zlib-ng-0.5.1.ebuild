@@ -26,7 +26,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~riscv ~s390 ~x86"
 
 DEPEND="
 	sys-libs/zlib-ng:=
