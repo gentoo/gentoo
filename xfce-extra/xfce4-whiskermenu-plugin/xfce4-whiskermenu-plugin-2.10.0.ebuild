@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv x86"
 IUSE="accountsservice wayland"
 
 # TODO: remove exo once we dep on libxfce4ui >= 4.21.0
