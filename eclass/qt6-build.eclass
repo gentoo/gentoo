@@ -178,6 +178,9 @@ qt6-build_src_configure() {
 		local mycmakeargs=("${defaultcmakeargs[@]}")
 	fi
 
+	# Qt has quite a lot of unused (false positive) CMakeLists.txt
+	local CMAKE_QA_COMPAT_SKIP=1
+
 	cmake_src_configure
 }
 
