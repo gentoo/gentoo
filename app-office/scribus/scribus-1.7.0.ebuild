@@ -80,7 +80,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-findhyphen.patch
 	"${FILESDIR}"/${PN}-1.7.0-dont-install-thirdparty-license.patch
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
-	"${FILESDIR}"/${P}-poppler-25.02.0.patch # from trunk
+	"${FILESDIR}"/${P}-poppler-25.0{2,6}.0.patch # from trunk
 )
 
 src_prepare() {
