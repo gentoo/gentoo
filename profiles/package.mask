@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-06-07)
+# Destabilized due to unresolved test failures.  If you need this
+# package, please use the ~arch version.
+=dev-python/lmdb-1.5.1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-04)
 # Breaks at least app-office/scribus and media-gfx/inkscape right now.
 # Bugs #957137, #957138
