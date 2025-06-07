@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (2025-06-07)
+# The only consumer, net-im/qtox, no longer depends on these, and the
+# upstream for them has been dormant since 2021.
+# Bugs: #955911, #957503
+# Removal on 2025-07-07.
+net-libs/toxext
+net-libs/tox_extension_messages
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-07)
 # Broken and dangerous.  Archived in 2022.  The last reverse dependency
 # stopped using it in 2023 (except for outdated ebuilds).
