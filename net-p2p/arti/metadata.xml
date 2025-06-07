@@ -5,4 +5,15 @@
 		<email>ajak@gentoo.org</email>
 		<name>John Helmert III</name>
 	</maintainer>
+	<longdescription>
+		Arti is a complete rewrite of the C <pkg>net-vpn/tor</pkg>
+		codebase, and it is currently under active development.
+		It is written in Rust, and it is designed to be modular,
+		reusable, and easy to audit. It is mainly for testing
+		and experimentation now as it is not production-ready.
+	</longdescription>
+	<upstream>
+		<changelog>https://gitlab.torproject.org/tpo/core/arti/-/blob/main/CHANGELOG.md</changelog>
+		<doc>https://tpo.pages.torproject.net/core/arti/</doc>
+	</upstream>
 </pkgmetadata>
