@@ -33,7 +33,6 @@ BDEPEND="
 		>=dev-python/aiohttp-3.10[${PYTHON_USEDEP}]
 		dev-python/aiohttp-cors[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
-		dev-python/parameterized[${PYTHON_USEDEP}]
 	)
 "
 distutils_enable_tests pytest
