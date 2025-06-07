@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake-multilib multilib optfeature python-single-r1
 
 DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
