@@ -5,7 +5,7 @@ EAPI=8
 
 # Note: Please bump this in sync with dev-libs/libxml2.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-r1 multilib-minimal
 
 DESCRIPTION="XSLT libraries and tools"
