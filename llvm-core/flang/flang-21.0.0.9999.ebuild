@@ -4,14 +4,14 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit cmake llvm.org python-any-r1
+inherit cmake flag-o-matic llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="LLVM's Fortran frontend"
 HOMEPAGE="https://flang.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions"
 SLOT="${LLVM_MAJOR}/${LLVM_SOABI}"
-IUSE="+debug test"
+IUSE="+clang +debug test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -26,6 +26,7 @@ PDEPEND="
 	>=llvm-runtimes/flang-rt-${PV}:${LLVM_MAJOR}
 "
 BDEPEND="
+	clang? ( llvm-core/clang )
 	test? (
 		$(python_gen_any_dep 'dev-python/lit[${PYTHON_USEDEP}]')
 	)
@@ -39,11 +40,30 @@ python_check_deps() {
 	python_has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
+pkg_pretend() {
+	if ! use clang && tc-is-gcc; then
+		ewarn "Building using GCC requires lots of memory (up to 10 GiB per process)."
+		ewarn "Consider enabling USE=clang."
+		ewarn "See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=119705"
+	fi
+}
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
 src_configure() {
+	if use clang; then
+		# Only do this conditionally to allow overriding with
+		# e.g. CC=clang-13 in case of breakage
+		if ! tc-is-clang ; then
+			local -x CC=${CHOST}-clang
+			local -x CXX=${CHOST}-clang++
+		fi
+
+		strip-unsupported-flags
+	fi
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/llvm/${LLVM_MAJOR}"
 

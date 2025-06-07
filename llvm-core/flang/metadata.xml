@@ -7,4 +7,11 @@
 	<upstream>
 		<remote-id type="github">llvm/llvm-project</remote-id>
 	</upstream>
+	<use>
+		<flag name="clang">
+			Force building using installed clang (rather than
+			the default CC/CXX).  This is the default since building
+			with GCC requires lots of memory.
+		</flag>
+	</use>
 </pkgmetadata>
