@@ -42,7 +42,6 @@ BDEPEND="
 	test? (
 		>=dev-python/grpcio-1.49.1[${PYTHON_USEDEP}]
 		>=dev-python/grpcio-status-1.49.1[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/rsa[${PYTHON_USEDEP}]
 	)
