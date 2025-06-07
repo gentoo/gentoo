@@ -1110,8 +1110,8 @@ chromium_configure() {
 		myconf_gn+=(
 			# If this is set to false Chromium won't be able to load any proprietary codecs
 			# even if provided with an ffmpeg capable of h264/aac decoding
-			'proprietary_codecs=true"
-			"ffmpeg_branding="Chrome"'
+			"proprietary_codecs=true"
+			'ffmpeg_branding="Chrome"'
 			# build ffmpeg as an external component (libffmpeg.so) that we can remove / substitute
 			"is_component_ffmpeg=true"
 		)
