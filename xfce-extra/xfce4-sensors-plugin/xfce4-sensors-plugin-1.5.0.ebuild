@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~riscv x86"
 IUSE="+acpi hddtemp libnotify lm-sensors video_cards_nvidia"
 REQUIRED_USE="|| ( hddtemp lm-sensors acpi )"
 
