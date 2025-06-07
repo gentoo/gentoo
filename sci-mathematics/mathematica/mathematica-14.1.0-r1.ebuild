@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,10 +7,16 @@ CHECKREQS_DISK_BUILD=20G
 inherit check-reqs desktop unpacker xdg
 
 DESCRIPTION="Wolfram Mathematica"
+
+# Note: Please do not "remove old". Mathematica is licensed by version, and there
+# are certainly still active installations of old versions around.
+# That said, the compatibility of old versions with new Linux installs is not
+# really great...
+
 HOMEPAGE="https://www.wolfram.com/mathematica/"
 SRC_URI="
-	bundle?  ( Mathematica_${PV}_BNDL_LINUX.sh )
-	!bundle? ( Mathematica_${PV}_LINUX.sh )
+	bundle?  ( Wolfram_${PV}_LIN_Bndl.sh )
+	!bundle? ( Wolfram_${PV}_LIN.sh )
 "
 S="${WORKDIR}"
 
@@ -27,10 +33,11 @@ RESTRICT="strip mirror bindist fetch"
 # FFmpegTools (FFmpegToolsSystem-6.0.so) requires media-video/ffmpeg-6.0
 # FFmpegTools (FFmpegToolsSystem-4.4.so) requires media-video/ffmpeg-4.4
 RDEPEND="
+	dev-libs/openssl-compat:1.1.1
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[eglfs,wayland]
 	dev-qt/qtsvg:6
-	dev-qt/qtwayland:6[compositor]
+	dev-qt/qtwayland:6[compositor(+)]
 	media-libs/freetype
 	virtual/libcrypt
 	cuda? (
@@ -55,7 +62,7 @@ BDEPEND="
 # we need this a few times
 MPN="Mathematica"
 MPV=$(ver_cut 1-2)
-M_BINARIES="MathKernel Mathematica WolframKernel wolframscript math mathematica mcc wolfram"
+M_BINARIES="math MathKernel mcc wolfram WolframKernel wolframnb WolframNB wolframscript"
 M_TARGET="opt/Wolfram/${MPN}/${MPV}"
 
 # we might as well list all files in all QA variables...
@@ -70,16 +77,20 @@ src_install() {
 
 	pushd "${S}/unpack_app" > /dev/null || die
 	# fix ACCESS DENIED issue when installer generate desktop files
-	sed -e "s|xdg-desktop-icon|xdg-dummy-command|g" -i "Unix/Installer/MathInstaller" || die
-	sed -e "s|xdg-desktop-menu|xdg-dummy-command|g" -i "Unix/Installer/MathInstaller" || die
-	sed -e "s|xdg-icon-resource|xdg-dummy-command|g" -i "Unix/Installer/MathInstaller" || die
-	sed -e "s|xdg-mime|xdg-dummy-command|g" -i "Unix/Installer/MathInstaller" || die
+	sed -e "s|xdg-desktop-icon|xdg-dummy-command|g" -i "Unix/Installer/WolframInstaller" || die
+	sed -e "s|xdg-desktop-menu|xdg-dummy-command|g" -i "Unix/Installer/WolframInstaller" || die
+	sed -e "s|xdg-icon-resource|xdg-dummy-command|g" -i "Unix/Installer/WolframInstaller" || die
+	sed -e "s|xdg-mime|xdg-dummy-command|g" -i "Unix/Installer/WolframInstaller" || die
 	# fix ACCESS DENIED issue when installer check the avahi-daemon
-	sed -e "s|avahi-daemon -c|true|g" -i "Unix/Installer/MathInstaller" || die
+	sed -e "s|avahi-daemon -c|true|g" -i "Unix/Installer/WolframInstaller" || die
 	# fix ACCESS DENIED issue when installing documentation
-	sed -e "s|\(exec ./MathInstaller\) -noprompt|\1 -auto -targetdir=${S}/${M_TARGET}/Documentation -noexec|" -i "Unix/Installer/MathInstaller" || die
+	sed -e "s|\(exec ./WolframInstaller\) -noprompt|\1 -auto -targetdir=${S}/${M_TARGET}/Documentation -noexec|" -i "Unix/Installer/WolframInstaller" || die
 
-	/bin/sh "Unix/Installer/MathInstaller" -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
+	# in the depths of the installer it tests whether it can write here
+	# addpredict is by far the simplest solution
+	addpredict /usr/share/thisisatest
+
+	/bin/sh "Unix/Installer/WolframInstaller" -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
 	popd > /dev/null || die
 
 	if ! use doc; then
@@ -95,7 +106,7 @@ src_install() {
 	einfo 'Removing MacOS- and Windows-specific files'
 	find "${S}/${M_TARGET}" -type d -\( -name Windows -o -name Windows-x86-64 \
 		-o -name MacOSX -o -name MacOSX-x86-64 -o -name Macintosh -\) \
-		-exec rm -rv {} + || die
+		-exec rm -r {} + || die
 
 	if ! use cuda; then
 		einfo 'Removing cuda support'
@@ -106,7 +117,7 @@ src_install() {
 	einfo 'Removing unsupported RLink versions'
 	rm -r "${S}/${M_TARGET}/SystemFiles/Links/RLink/SystemFiles/Libraries/Linux-x86-64/3.5.0" || die
 	rm -r "${S}/${M_TARGET}/SystemFiles/Links/RLink/SystemFiles/Libraries/Linux-x86-64/3.6.0" || die
-	rm -r "${S}/${M_TARGET}/SystemFiles/Links/RLink/SystemFiles/Libraries/Linux/AllVersions" || die
+	rm -r "${S}/${M_TARGET}/SystemFiles/Links/RLink/SystemFiles/Libraries/MacOSX-ARM64" || die
 	# RLink can't use if R not used
 	if ! use R; then
 		einfo 'Removing RLink support'
@@ -124,7 +135,8 @@ src_install() {
 		# Skip .o files and static files to avoid surprises
 		[[ $(od -t x1 -N 4 "${i}") == *"7f 45 4c 46"* ]] || continue
 		[[ -f "${i}" && "${i: -2}" != ".o" ]] || continue
-		[[ "$(file "${i}")" == *"dynamically"* ]] || continue
+		file ${i}
+		[[ "$(file ${i})" == *"dynamically"* ]] || continue
 		einfo "Fixing RPATH of ${i}"
 		patchelf --set-rpath \
 '/'"${M_TARGET}"'/SystemFiles/Libraries/Linux-x86-64:'\
@@ -146,22 +158,30 @@ src_install() {
 
 	# install wrappers instead
 	for name in ${M_BINARIES} ; do
-		einfo "Generating wrapper for ${name}"
-		echo '#!/bin/sh' >> "${T}/${name}" || die
-		echo 'QT_QPA_PLATFORM="wayland;xcb"' >> "${T}/${name}" || die
-		echo "LD_PRELOAD=/usr/$(get_libdir)/libfreetype.so.6:/$(get_libdir)/libz.so.1:/$(get_libdir)/libcrypt.so.1 /${M_TARGET}/Executables/${name} \$*" \
-			>> "${T}/${name}" || die
-		dobin "${T}/${name}"
-	done
-	for name in ${M_BINARIES} ; do
-		einfo "Symlinking ${name} to /opt/bin"
-		dosym ../../usr/bin/${name} /opt/bin/${name}
+		if [[ -e "${ED}/${M_TARGET}/Executables/${name}" || -h "${ED}/${M_TARGET}/Executables/${name}" ]] ; then
+			einfo "Generating wrapper for ${name}"
+			echo '#!/bin/sh' >> "${T}/${name}" || die
+			echo 'QT_QPA_PLATFORM="wayland;xcb"' >> "${T}/${name}" || die
+			echo "LD_PRELOAD=/usr/$(get_libdir)/libfreetype.so.6:/$(get_libdir)/libz.so.1:/$(get_libdir)/libcrypt.so.1 /${M_TARGET}/Executables/${name} \$*" \
+				>> "${T}/${name}" || die
+			dobin "${T}/${name}"
+
+			einfo "Symlinking ${name} to /opt/bin"
+			dosym ../../usr/bin/${name} /opt/bin/${name}
+		else
+			ewarn "${name} in M_BINARIES does not exist in ${PV}"
+		fi
 	done
 
+	# for convenience
+	if [[ ! -e "${ED}/usr/bin/Mathematica" ]] ; then
+		dosym WolframNB /usr/bin/Mathematica
+	fi
+
 	# fix some embedded paths and install desktop files
-	for filename in $(find "${ED}/${M_TARGET}/SystemFiles/Installation" -name "wolfram-mathematica*.desktop") ; do
+	for filename in $(find "${ED}/${M_TARGET}/SystemFiles/Installation" -name "*.desktop") ; do
 		einfo "Fixing ${filename}"
-		sed -e "s|${S}||g" -e 's|^\t\t||g' -i "${filename}" || die
+		sed -e "s|${S}||g" -e 's|^\t\t||g' -e 's|\\+|+|g' -e 's:Version=2.0:Version=1.5:g' -i "${filename}" || die
 		echo "Categories=Physics;Science;Engineering;2DGraphics;Graphics;" >> "${filename}" || die
 		domenu "${filename}"
 	done
@@ -170,7 +190,7 @@ src_install() {
 	for iconsize in 16 32 64 128 256; do
 		local iconfile="${ED}/${M_TARGET}/SystemFiles/FrontEnd/SystemResources/X/App-${iconsize}.png"
 		if [ -e "${iconfile}" ]; then
-			newicon -s "${iconsize}" "${iconfile}" wolfram-mathematica.png
+			newicon -s "${iconsize}" "${iconfile}" wolfram-wolfram.png
 		fi
 	done
 
