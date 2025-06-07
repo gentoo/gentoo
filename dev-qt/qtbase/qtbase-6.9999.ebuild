@@ -14,7 +14,7 @@ fi
 
 declare -A QT6_IUSE=(
 	[global]="+ssl +udev zstd"
-	[core]="icu journald syslog"
+	[core]="icu jemalloc journald syslog"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"
 
 	[gui]="
@@ -43,6 +43,7 @@ REQUIRED_USE="
 	libinput? ( udev )
 	sql? ( || ( ${QT6_IUSE[sql]//+/} ) )
 	test? ( icu sql? ( sqlite ) )
+	wayland? ( opengl )
 "
 
 # groups:
@@ -64,6 +65,7 @@ COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/libpcre2:=[pcre16,unicode(+)]
 	icu? ( dev-libs/icu:= )
+	jemalloc? ( dev-libs/jemalloc:= )
 	journald? ( sys-apps/systemd )
 
 	dbus? ( sys-apps/dbus )
@@ -96,6 +98,7 @@ COMMON_DEPEND="
 		)
 		renderdoc? ( media-gfx/renderdoc )
 		tslib? ( x11-libs/tslib )
+		wayland? ( dev-libs/wayland )
 		widgets? (
 			cups? ( net-print/cups )
 			gtk? (
@@ -159,6 +162,7 @@ DEPEND="
 	X? ( x11-base/xorg-proto )
 	gui? (
 		vulkan? ( dev-util/vulkan-headers )
+		wayland? ( dev-util/wayland-scanner )
 	)
 	network? (
 		sctp? ( net-misc/lksctp-tools )
@@ -167,10 +171,12 @@ DEPEND="
 		elibc_musl? ( sys-libs/timezone-data )
 	)
 "
-BDEPEND="zstd? ( app-arch/libarchive[zstd] )" #910392
+# libarchive[zstd] is indirectly used by cmake (bug #910392)
+BDEPEND="
+	zstd? ( app-arch/libarchive[zstd] )
+"
 PDEPEND="
 	nls? ( ~dev-qt/qttranslations-${PV}:6 )
-	wayland? ( ~dev-qt/qtwayland-${PV}:6 )
 "
 
 PATCHES=(
@@ -234,6 +240,7 @@ src_configure() {
 
 		# qtcore
 		$(qt_feature icu)
+		$(qt_feature jemalloc)
 		$(qt_feature journald)
 		$(qt_feature syslog)
 
@@ -320,6 +327,10 @@ src_test() {
 	local -x TZ=UTC
 	local -x LC_TIME=C
 
+	# users' session setting may break tst_clientextension (bug #927030)
+	unset DESKTOP_SESSION XDG_CURRENT_DESKTOP
+	unset GNOME_DESKTOP_SESSION_ID KDE_FULL_SESSION
+
 	local CMAKE_SKIP_TESTS=(
 		# broken with out-of-source + if qtbase is not already installed
 		tst_moc
@@ -328,11 +339,15 @@ src_test() {
 		tst_qapplication
 		tst_qt_cmake_create
 		tst_uic
-		# needs x11/opengl, we *could* run these but tend to be flaky
-		# when opengl rendering is involved (even if software-only)
-		tst_qopengl{,config,widget,window}
+		# needs x11/wayland/opengl rather than just Qt offscreen and would
+		# rather to keep this simple
 		tst_qgraphicsview
+		tst_qopengl{,config,widget,window}
 		tst_qx11info
+		tst_surface
+		tst_xdgdecorationv1
+		# fails for unknown reasons, but seatv4 is not actually used nowadays
+		tst_seatv4
 		# fails with network sandbox
 		tst_qdnslookup
 		# fails with sandbox
