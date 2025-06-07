@@ -22,6 +22,7 @@ IUSE="archive +bogofilter geolocation gtk-doc highlight ldap libnotify selinux s
 # gnome-desktop support is optional with --enable-gnome-desktop
 # automagic libunity dep
 # >=gspell-1.8 to ensure it uses enchant:2 like webkit-gtk
+# <webkit-gtk-2.48 because of segv: https://bugs.gentoo.org/957498
 DEPEND="
 	>=app-crypt/libsecret-0.5
 	>=app-text/enchant-2.2.0:2
@@ -32,6 +33,7 @@ DEPEND="
 	>=gnome-base/gsettings-desktop-schemas-2.91.92
 	>=gnome-extra/evolution-data-server-${PV}:=[gtk,sound?,weather?]
 	>=net-libs/libsoup-3.0:3.0
+	<net-libs/webkit-gtk-2.48:4.1[spell?]
 	>=net-libs/webkit-gtk-2.38.0:4.1[spell?]
 	>=x11-libs/cairo-1.9.15[glib]
 	>=x11-libs/gdk-pixbuf-2.24:2
