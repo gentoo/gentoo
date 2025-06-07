@@ -36,6 +36,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.9.1-QTBUG-135158.patch
 )
 
+CMAKE_QA_COMPAT_SKIP=1 # unused doc/snippets CMakeLists.txt (bug #957475)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qmlls Qt6LanguageServerPrivate)

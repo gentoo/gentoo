@@ -32,6 +32,8 @@ BDEPEND="
 	~dev-qt/qtshadertools-${PV}:6
 "
 
+CMAKE_QA_COMPAT_SKIP=1 # unused doc/snippets CMakeLists.txt (bug #957475)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qmlls Qt6LanguageServerPrivate)
