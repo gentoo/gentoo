@@ -49,12 +49,9 @@ BDEPEND="
 "
 distutils_enable_tests pytest
 
-# disable tests that require network
-python_test() {
-
-	epytest -v \
-		--deselect=tests/test_cli.py::TestSafetyCLI::test_announcements_if_is_not_tty \
-		--deselect=tests/test_safety.py::TestSafety::test_check_live \
-		--deselect=test/test_safety.py::TestSafety::test_check_live_cached \
-		--deselect=tests/test_safety.py::TestSafety::test_get_packages_licenses_without_api_key
-}
+EPYTEST_DESELECT=(
+	tests/test_cli.py::TestSafetyCLI::test_announcements_if_is_not_tty \
+	tests/test_safety.py::TestSafety::test_check_live \
+	tests/test_safety.py::TestSafety::test_check_live_cached \
+	tests/test_safety.py::TestSafety::test_get_packages_licenses_without_api_key
+)
