@@ -1,0 +1,15 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -171,12 +171,6 @@ if(USE_LV2)
+         endif()
+     endif()
+ 
+-    # Remove previous .ttl files
+-    file(GLOB ttl_files "${LV2DIR_PROJ}/*.ttl")
+-    foreach(ttl_file ${ttl_files})
+-        file(REMOVE "${ttl_file}")
+-    endforeach()
+-
+     # Install new .ttl files
+     install(CODE "execute_process(COMMAND \"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}makerdf\" -m ttl -p \"\$ENV{DESTDIR}${LV2DIR_PROJ}\" -d \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/${PROJECT_NAME}/\")")
+ 

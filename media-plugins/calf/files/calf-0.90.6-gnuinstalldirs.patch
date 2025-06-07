@@ -3,13 +3,6 @@ From: Johannes Lorenz <j.git@lorenz-ho.me>
 Date: Fri, 2 May 2025 13:59:50 +0200
 Subject: [PATCH] Use GNUInstallDirs for flexible `bin`, `lib` and `doc`
 
----
- CMakeLists.txt     | 16 ++++++++--------
- src/CMakeLists.txt | 33 +++++++++++++++++----------------
- 2 files changed, 25 insertions(+), 24 deletions(-)
-
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index df2fde638..cfed21b69 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -210,21 +210,21 @@ add_subdirectory(icons)
@@ -42,8 +35,6 @@ index df2fde638..cfed21b69 100644
  install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.desktop
          DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
  install(FILES ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}jackhost.1
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 1e1cd30d9..da22ec1ab 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -3,6 +3,7 @@

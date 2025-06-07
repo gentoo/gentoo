@@ -43,6 +43,9 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
+	# pending upstream PRs:
+	"${FILESDIR}/${PN}-0.90.6-desktop-file.patch" # bug 955628
+	"${FILESDIR}/${PN}-0.90.7-lv2gui.patch" # bug 954142
 	"${FILESDIR}/${PN}-0.90.7-no-remove-ttl.patch"
 )
 
