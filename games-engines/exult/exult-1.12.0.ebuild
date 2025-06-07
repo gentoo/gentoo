@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Ultima 7 game engine that runs on modern operating systems"
 HOMEPAGE="https://exult.sourceforge.io"
-SRC_URI="https://downloads.sourceforge.net/exult/exult-all-versions/${PV}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/exult/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
