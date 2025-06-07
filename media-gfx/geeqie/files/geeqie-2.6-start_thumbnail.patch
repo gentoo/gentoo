@@ -1,0 +1,31 @@
+From 0dd297128f1843e5700ed3f0d8b95d3056a3d5a3 Mon Sep 17 00:00:00 2001
+From: Colin Clark <colin.clark@cclark.uk>
+Date: Tue, 3 Jun 2025 15:09:04 +0100
+Subject: [PATCH] Fix #1765: No thumbnails shown in browser view on geeqie
+ start
+
+https://github.com/BestImageViewer/geeqie/issues/1765
+
+Not a fix, just a workaround.
+---
+ src/main.cc | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/main.cc b/src/main.cc
+index 9600cd42..6345533f 100644
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -892,6 +892,13 @@ void activate_cb(GtkApplication *, gpointer)
+ 	if (lw->window)
+ 		{
+ 		gtk_widget_show(lw->window);
++
++		/** @FIXME This is not a fix - it is a workaround
++		 * https://github.com/BestImageViewer/geeqie/issues/1765
++		 * The reason for the bug is unknown.
++		 * The origin is in commit 0ec522a0 - convert Geeqie to GtkApplication
++		 */
++		layout_refresh(lw);
+ 		}
+ }
+ 

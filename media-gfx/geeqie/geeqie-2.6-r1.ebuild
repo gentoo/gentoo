@@ -49,7 +49,10 @@ BDEPEND="
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.5-test-ancillary.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.5-test-ancillary.patch
+	"${FILESDIR}"/${P}-incorrect_init.patch
+	"${FILESDIR}"/${P}-start_thumbnail.patch
+	)
 
 pkg_setup() {
 	# Do not require setting LUA_SINGLE_TARGET if lua is not used
