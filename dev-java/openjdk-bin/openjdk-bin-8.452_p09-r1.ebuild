@@ -86,6 +86,9 @@ src_install() {
 	local dest="/opt/${P}"
 	local ddest="${ED}/${dest#/}"
 
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
+
 	rm ASSEMBLY_EXCEPTION LICENSE THIRD_PARTY_README || die
 
 	# on macOS if they would exist they would be called .dylib, but most
