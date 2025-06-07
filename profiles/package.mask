@@ -277,13 +277,13 @@ net-im/yowsup
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
+>=dev-build/xfce4-dev-tools-4.21
 >=xfce-base/exo-4.21
 >=xfce-base/garcon-4.21
 >=xfce-base/libxfce4ui-4.21
 >=xfce-base/thunar-4.21
 >=xfce-base/tumbler-4.21
 >=xfce-base/xfce4-appfinder-4.21
->=xfce-base/xfce4-dev-tools-4.21
 >=xfce-base/xfce4-panel-4.21
 >=xfce-base/xfce4-power-manager-4.21
 >=xfce-base/xfce4-session-4.21
