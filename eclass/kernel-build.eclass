@@ -497,7 +497,15 @@ kernel-build_src_install() {
 	fi
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		secureboot_sign_efi_file "${image}"
+		if [[ ${image} == *.gz ]]; then
+			# Backwards compatibility with pre-zboot images
+			gunzip "${image}" || die
+			secureboot_sign_efi_file "${image%.gz}"
+			# Use same gzip options as the kernel Makefile
+			gzip -n -f -9 "${image%.gz}" || die
+		else
+			secureboot_sign_efi_file "${image}"
+		fi
 	fi
 
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
