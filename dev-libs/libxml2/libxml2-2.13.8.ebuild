@@ -5,7 +5,7 @@ EAPI=8
 
 # Note: Please bump in sync with dev-libs/libxslt
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 inherit autotools python-r1 multilib-minimal
 
