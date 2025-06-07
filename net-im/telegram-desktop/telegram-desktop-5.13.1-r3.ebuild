@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
 IUSE="dbus enchant +fonts +jemalloc +libdispatch screencast wayland webkit +X"
 
 CDEPEND="
@@ -37,9 +37,8 @@ CDEPEND="
 	media-libs/openal
 	media-libs/opus
 	media-libs/rnnoise
-	>=media-libs/tg_owt-0_pre20241202:=[screencast=,X=]
-	>=media-video/ffmpeg-4:=[opus,vpx]
-	net-libs/tdlib:=[tde2e]
+	~media-libs/tg_owt-0_pre20241202:=[screencast=,X=]
+	>=media-video/ffmpeg-6:=[opus,vpx]
 	sys-libs/zlib:=[minizip]
 	kde-frameworks/kcoreaddons:6
 	!enchant? ( >=app-text/hunspell-1.7:= )
@@ -48,7 +47,7 @@ CDEPEND="
 	libdispatch? ( dev-libs/libdispatch )
 	webkit? ( wayland? (
 		>=dev-qt/qtdeclarative-6.5:6
-		>=dev-qt/qtwayland-6.5:6[compositor,qml]
+		>=dev-qt/qtwayland-6.5:6[compositor(+),qml]
 	) )
 	X? (
 		x11-libs/libxcb:=
@@ -76,12 +75,12 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/tdesktop-4.2.4-jemalloc-only-telegram-r1.patch
+	"${FILESDIR}"/tdesktop-4.10.0-system-cppgir.patch
 	"${FILESDIR}"/tdesktop-5.2.2-qt6-no-wayland.patch
 	"${FILESDIR}"/tdesktop-5.2.2-libdispatch.patch
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 	"${FILESDIR}"/tdesktop-5.12.3-fix-webview.patch
-	"${FILESDIR}"/tdesktop-5.14.3-system-cppgir.patch
 )
 
 pkg_pretend() {
@@ -105,11 +104,6 @@ src_prepare() {
 		-e '/find_package(/s/)/ REQUIRED)/' || die
 	# Make sure to check the excluded files for new
 	# CMAKE_DISABLE_FIND_PACKAGE entries.
-
-	# Some packages are found through pkg_check_modules, rather than find_package
-	sed -e '/find_package(lz4 /d' -i cmake/external/lz4/CMakeLists.txt || die
-	sed -e '/find_package(Opus /d' -i cmake/external/opus/CMakeLists.txt || die
-	sed -e '/find_package(xxHash /d' -i cmake/external/xxhash/CMakeLists.txt || die
 
 	# Control QtDBus dependency from here, to avoid messing with QtGui.
 	# QtGui will use find_package to find QtDbus as well, which

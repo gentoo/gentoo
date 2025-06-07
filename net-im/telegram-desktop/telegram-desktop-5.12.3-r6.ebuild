@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD GPL-3-with-openssl-exception LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv"
 IUSE="dbus enchant +fonts +jemalloc +libdispatch screencast wayland webkit +X"
 
 CDEPEND="
@@ -47,7 +47,7 @@ CDEPEND="
 	libdispatch? ( dev-libs/libdispatch )
 	webkit? ( wayland? (
 		>=dev-qt/qtdeclarative-6.5:6
-		>=dev-qt/qtwayland-6.5:6[compositor,qml]
+		>=dev-qt/qtwayland-6.5:6[compositor(+),qml]
 	) )
 	X? (
 		x11-libs/libxcb:=
