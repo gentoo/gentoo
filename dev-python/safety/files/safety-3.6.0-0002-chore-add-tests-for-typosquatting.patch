@@ -1,23 +1,24 @@
-From c797166dcccaec26cd68e2b13d8dd0572f63a359 Mon Sep 17 00:00:00 2001
+From 4226922513c24b6c03c301f2696ac86736a0edd7 Mon Sep 17 00:00:00 2001
 From: Oz Tiram <oz.tiram@gmail.com>
 Date: Thu, 8 May 2025 23:16:24 +0200
-Subject: [PATCH] chore: add tests for typosquatting
+Subject: [PATCH 2/2] chore: add tests for typosquatting
+
+See https://github.com/pyupio/safety/pull/743/
 
 Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
 ---
- tests/test_typosquatting.py | 92 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 92 insertions(+)
+ tests/test_typosquatting.py | 91 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 91 insertions(+)
  create mode 100644 tests/test_typosquatting.py
 
 diff --git a/tests/test_typosquatting.py b/tests/test_typosquatting.py
 new file mode 100644
-index 0000000..4b3ac61
+index 0000000..39a5e1c
 --- /dev/null
 +++ b/tests/test_typosquatting.py
-@@ -0,0 +1,92 @@
+@@ -0,0 +1,91 @@
 +import unittest
-+from unittest.mock import patch, MagicMock
-+from typing import List, Tuple
++from unittest.mock import patch
 +
 +from safety.tool.constants import MOST_FREQUENTLY_DOWNLOADED_PYPI_PACKAGES
 +from safety.tool.typosquatting import TyposquattingProtection

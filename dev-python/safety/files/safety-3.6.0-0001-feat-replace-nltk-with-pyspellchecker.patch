@@ -1,18 +1,37 @@
-From 21521a68371f0a02910a06b039ce131fe3b1ccec Mon Sep 17 00:00:00 2001
+From 7f08ba24b006200010d53ec1adf53863c14bc1c8 Mon Sep 17 00:00:00 2001
 From: Oz Tiram <oz.tiram@gmail.com>
 Date: Thu, 8 May 2025 22:54:20 +0200
 Subject: [PATCH 1/2] feat: replace nltk with pyspellchecker
 
 Possible fix for #742
 
+https://github.com/pyupio/safety/pull/743/commits
+
 Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
 ---
+ CHANGELOG.md                 |  5 +++++
  pyproject.toml               |  2 +-
  safety/tool/typosquatting.py | 16 +++++++++-------
- 2 files changed, 10 insertions(+), 8 deletions(-)
+ 3 files changed, 15 insertions(+), 8 deletions(-)
 
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index f2a195f..cd2dfa5 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,11 @@ We generate this changelog automatically, so please don't edit it manually.
+ The format is partly based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and [PEP 440](https://peps.python.org/pep-0440/)
+ 
++## [Unreleased]
++
++### Fix
++
++ - replace nltk with pyspellcheck to detect typos in package names.
+ 
+ ## 3.5.2 (2025-06-04)
+ 
 diff --git a/pyproject.toml b/pyproject.toml
-index 0574892..ea0bb4d 100644
+index 3bb42c7..5d03a70 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -51,7 +51,7 @@ dependencies = [
