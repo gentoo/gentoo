@@ -1,13 +1,18 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command=/usr/bin/tor
-pidfile=/run/tor/tor.pid
-command_args="--hush --runasdaemon 1 --pidfile \"${pidfile}\""
+pidfile=/run/tor/${RC_SVCNAME}.pid
+command_args="--hush"
+command_args_background="--runasdaemon 1 --pidfile \"${pidfile}\""
 retry=${GRACEFUL_TIMEOUT:-60}
 stopsig=INT
 command_progress=yes
+
+depend() {
+	after net
+}
 
 extra_commands="checkconfig"
 extra_started_commands="reload"
@@ -16,7 +21,7 @@ description_checkconfig="Check for valid config file"
 description_reload="Reload the configuration"
 
 checkconfig() {
-	${command} --verify-config --hush > /dev/null 2>&1
+	${command} ${command_args} --verify-config > /dev/null 2>&1
 	if [ $? -ne 0 ] ; then
 		eerror "Tor configuration (/etc/tor/torrc) is not valid."
 		eerror "Example is in /etc/tor/torrc.sample"

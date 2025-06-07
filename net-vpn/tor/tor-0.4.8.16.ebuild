@@ -186,7 +186,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r9 tor
+	newinitd "${FILESDIR}"/tor.initd-r10 tor
 	systemd_dounit "${FILESDIR}"/tor.service
 
 	keepdir /var/lib/tor
