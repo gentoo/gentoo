@@ -9,7 +9,7 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/4.19.6"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~amd64 arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="+introspection wayland X"
 REQUIRED_USE="|| ( wayland X )"
 
