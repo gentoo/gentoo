@@ -11,7 +11,7 @@ SRC_URI="http://chuck.cs.princeton.edu/release/files/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+alsa jack examples"
 REQUIRED_USE="|| ( alsa jack )"
 
