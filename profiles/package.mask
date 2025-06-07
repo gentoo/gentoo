@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-06-07)
+# EAPI=7, maintainer-needed, fails to compile, upstream gone, not
+# packaged anywhere else.
+# Removal on 2025-07-07.  Bug #957444.
+dev-util/bin_replace_string
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-07)
 # Destabilized due to unresolved test failures.  If you need this
 # package, please use the ~arch version.
