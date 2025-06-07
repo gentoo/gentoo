@@ -26,11 +26,6 @@ KEYWORDS="~amd64 ~arm64"
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
 
 distutils_enable_tests pytest
 
