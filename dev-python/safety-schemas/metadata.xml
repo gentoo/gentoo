@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Oz Tiram</name>
+		<email>oz.tiram@gmail.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="no">
+		<name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">safety-schemas</remote-id>
+	</upstream>
+</pkgmetadata>
