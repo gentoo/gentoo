@@ -9,11 +9,15 @@ inherit distutils-r1 systemd
 
 DESCRIPTION="This is an OSP server implementation to allow GVM to remotely control OpenVAS"
 HOMEPAGE="https://www.greenbone.net https://github.com/greenbone/ospd-openvas"
-SRC_URI="https://github.com/greenbone/ospd-openvas/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/greenbone/ospd-openvas/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/greenbone/ospd-openvas/commit/f968bcc540c22dad89a2ee3bdfc6384b97b6fa0f.patch
+		-> ${PN}-22.7.1-add-delay-in-mqtt-test.patch
+"
 
 LICENSE="AGPL-3+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~x86"
 IUSE="doc +notus"
 
 DEPEND="
@@ -22,10 +26,8 @@ DEPEND="
 	>=dev-python/deprecated-1.2.10[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.5.2[${PYTHON_USEDEP}]
 	<dev-python/lxml-6.0.0[${PYTHON_USEDEP}]
-	>=dev-python/packaging-20.4[${PYTHON_USEDEP}]
-	<dev-python/packaging-25.0[${PYTHON_USEDEP}]
+	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.5.1[${PYTHON_USEDEP}]
-	<dev-python/psutil-8.0.0[${PYTHON_USEDEP}]
 	>=dev-python/redis-4.5.0[${PYTHON_USEDEP}]
 	>=dev-python/python-gnupg-0.4.8[${PYTHON_USEDEP}]
 	<dev-python/python-gnupg-0.6.0[${PYTHON_USEDEP}]
@@ -40,6 +42,10 @@ RDEPEND="
 	>=net-analyzer/openvas-scanner-22.4
 	notus? ( >=net-analyzer/notus-scanner-22.4 )
 "
+
+PATCHES=(
+	"${DISTDIR}/${PN}-22.7.1-add-delay-in-mqtt-test.patch" #934153
+)
 
 distutils_enable_tests unittest
 
