@@ -112,6 +112,8 @@ PATCHES+=(
 	"${FILESDIR}"/${PN}-6.8.3-gperf3.2.patch
 )
 
+CMAKE_QA_COMPAT_SKIP=1 # uses BUILD.gn over these CMakeLists.txt (bug #957476)
+
 python_check_deps() {
 	python_has_version "dev-python/html5lib[${PYTHON_USEDEP}]"
 }
