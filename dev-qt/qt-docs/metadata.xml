@@ -9,7 +9,7 @@
 	<use>
 		<flag name="3d">Install documentation for <pkg>dev-qt/qt3d</pkg></flag>
 		<flag name="activeqt">Install documentation for ActiveQt (unpackaged, Windows-only)</flag>
-		<flag name="assistant">Install documentation for <pkg>dev-qt/assistant</pkg></flag>
+		<flag name="assistant">Install documentation for QtAssistant (pkgremoved, now dev-qt/qttools[assistant])</flag>
 		<flag name="bluetooth">Install documentation for <pkg>dev-qt/qtconnectivity</pkg>[bluetooth]</flag>
 		<flag name="charts">Install documentation for <pkg>dev-qt/qtcharts</pkg></flag>
 		<flag name="concurrent">Install documentation for <pkg>dev-qt/qtconcurrent</pkg></flag>
@@ -26,7 +26,7 @@
 		<flag name="html">Install documentation in HTML format</flag>
 		<flag name="httpserver">Install documentation for QtHTTPServer (unpackaged)</flag>
 		<flag name="imageformats">Install documentation for <pkg>dev-qt/qtimageformats</pkg></flag>
-		<flag name="linguist">Install documentation for <pkg>dev-qt/linguist</pkg></flag>
+		<flag name="linguist">Install documentation for QtLinguist (pkgremoved, now dev-qt/qttools[linguist])</flag>
 		<flag name="location">Install documentation for <pkg>dev-qt/qtlocation</pkg></flag>
 		<flag name="lottie">Install documentation for QtLottie (unpackaged)</flag>
 		<flag name="multimedia">Install documentation for <pkg>dev-qt/qtmultimedia</pkg></flag>
@@ -35,7 +35,7 @@
 		<flag name="positioning">Install documentation for <pkg>dev-qt/qtpositioning</pkg></flag>
 		<flag name="printsupport">Install documentation for <pkg>dev-qt/qtprintsupport</pkg></flag>
 		<flag name="qch">Install documentation in QCH format</flag>
-		<flag name="qdoc">Install documentation for <pkg>dev-qt/qdoc</pkg></flag>
+		<flag name="qdoc">Install documentation for QDoc (pkgremoved, now dev-qt/qttools[qdoc])</flag>
 		<flag name="qt5compat">Install documentation for <pkg>dev-qt/qt5compat</pkg></flag>
 		<flag name="quick3d">Install documentation for <pkg>dev-qt/qtquick3d</pkg></flag>
 		<flag name="quick3dphysics">Install documentation for QtQuick3DPhysics (unpackaged)</flag>
