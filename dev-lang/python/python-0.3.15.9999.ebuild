@@ -3,11 +3,9 @@
 
 EAPI="8"
 
-LLVM_COMPAT=( 19 )
-LLVM_OPTIONAL=1
 WANT_LIBTOOL="none"
 
-inherit autotools check-reqs flag-o-matic git-r3 linux-info llvm-r1
+inherit autotools check-reqs flag-o-matic git-r3 linux-info
 inherit multiprocessing pax-utils toolchain-funcs
 
 PYVER="$(ver_cut 2-3)t"
@@ -26,10 +24,9 @@ EGIT_REPO_URI="https://github.com/python/cpython.git"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm jit
+	bluetooth build debug +ensurepip examples gdbm
 	libedit +ncurses pgo +readline +sqlite +ssl tail-call-interp test tk valgrind
 "
-REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -80,12 +77,6 @@ BDEPEND="
 	dev-build/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
-	jit? (
-		$(llvm_gen_dep '
-			llvm-core/clang:${LLVM_SLOT}
-			llvm-core/llvm:${LLVM_SLOT}
-		')
-	)
 "
 RDEPEND+="
 	!build? ( app-misc/mime-types )
@@ -117,7 +108,6 @@ pkg_pretend() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		use jit && llvm-r1_pkg_setup
 		if use test || use pgo; then
 			check-reqs_pkg_setup
 
@@ -396,7 +386,6 @@ src_configure() {
 		--disable-gil
 
 		$(use_with debug assertions)
-		$(use_enable jit experimental-jit)
 		$(use_enable pgo optimizations)
 		$(use_with readline readline "$(usex libedit editline readline)")
 		$(use_with tail-call-interp)
