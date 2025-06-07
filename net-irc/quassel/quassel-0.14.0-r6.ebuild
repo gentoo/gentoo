@@ -52,10 +52,7 @@ GUI_DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5
-	dbus? (
-		>=dev-libs/libdbusmenu-qt-0.9.3_pre20140619
-		dev-qt/qtdbus:5
-	)
+	dbus? ( dev-qt/qtdbus:5 )
 	kde? (
 		kde-frameworks/kconfigwidgets:5
 		kde-frameworks/kcoreaddons:5
@@ -128,7 +125,7 @@ src_configure() {
 	if use gui || use monolithic ; then
 		mycmakeargs+=(
 			-DCMAKE_DISABLE_FIND_PACKAGE_LibsnoreQt5=ON
-			$(cmake_use_find_package dbus dbusmenu-qt5)
+			-DCMAKE_DISABLE_FIND_PACKAGE_dbusmenu-qt5=ON
 			$(cmake_use_find_package dbus Qt5DBus)
 			$(cmake_use_find_package spell KF5Sonnet)
 		)
