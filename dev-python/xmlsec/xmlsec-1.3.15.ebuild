@@ -37,9 +37,6 @@ BDEPEND="
 	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	test? (
-		dev-python/hypothesis[${PYTHON_USEDEP}]
-	)
 "
 
 EPYTEST_DESELECT=(
