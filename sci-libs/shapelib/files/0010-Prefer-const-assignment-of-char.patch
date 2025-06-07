@@ -1,0 +1,38 @@
+From 7ddecfae2c21ef03baaa93b47f5ce603868c9214 Mon Sep 17 00:00:00 2001
+From: Thomas Beutlich <thomas.beutlich@apluss.de>
+Date: Thu, 28 Nov 2024 19:56:20 +0100
+Subject: [PATCH 10/19] Prefer const assignment of char
+
+---
+ dbfopen.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/dbfopen.c b/dbfopen.c
+index 90ed7ea..47f7918 100644
+--- a/dbfopen.c
++++ b/dbfopen.c
+@@ -1781,11 +1781,7 @@ int SHPAPI_CALL DBFMarkRecordDeleted(DBFHandle psDBF, int iShape,
+     /* -------------------------------------------------------------------- */
+     /*      Assign value, marking record as dirty if it changes.            */
+     /* -------------------------------------------------------------------- */
+-    char chNewFlag;
+-    if (bIsDeleted)
+-        chNewFlag = '*';
+-    else
+-        chNewFlag = ' ';
++    const char chNewFlag = bIsDeleted ? '*' : ' ';
+ 
+     if (psDBF->pszCurrentRecord[0] != chNewFlag)
+     {
+@@ -2296,7 +2292,7 @@ int SHPAPI_CALL DBFAlterFieldDefn(DBFHandle psDBF, int iField,
+ 
+         if (!errorAbort && psDBF->bWriteEndOfFileChar)
+         {
+-            char ch = END_OF_FILE_CHARACTER;
++            const char ch = END_OF_FILE_CHARACTER;
+ 
+             SAOffset nRecordOffset =
+                 psDBF->nRecordLength * STATIC_CAST(SAOffset, psDBF->nRecords) +
+-- 
+2.49.0
+
