@@ -104,6 +104,7 @@ BDEPEND="
 		>=net-libs/nodejs-20.12.1
 		sys-apps/yarn
 		$(python_gen_cond_dep '
+			>=dev-python/gpep517-16[${PYTHON_USEDEP}]
 			dev-python/pyqt6[${PYTHON_USEDEP}]
 			dev-python/wheel[${PYTHON_USEDEP}]
 		')
