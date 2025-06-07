@@ -36,6 +36,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Thibaud CANALE <thican@thican.net> (2025-06-07)
+# Certbot modules are handled in main package since version 3.2.0-r100
+# See related news item 2025-03-14-certbot-rework
+# Masking for removal in 90 days: 2025-09-07, bug 952977
+# See also bug 950247, bug 915050, bug 949120
+app-crypt/acme
+<app-crypt/certbot-3.2.0-r100
+app-crypt/certbot-apache
+app-crypt/certbot-dns-dnsimple
+app-crypt/certbot-dns-nsone
+app-crypt/certbot-dns-rfc2136
+app-crypt/certbot-nginx
+
 # Jimi Huotari <chiitoo@gentoo.org> (2025-06-07)
 # The only consumer, net-im/qtox, no longer depends on these, and the
 # upstream for them has been dormant since 2021.
