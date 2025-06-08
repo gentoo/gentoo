@@ -53,8 +53,6 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/flaky[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
@@ -96,6 +94,8 @@ src_prepare() {
 
 	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" \
 		tests/unit/test_utils.py || die "Failed patching tests"
+
+	sed --in-place -e "s/--no-cov//g" pyproject.toml || die
 
 	rm -Rv pipenv/vendor examples docs || die
 }
