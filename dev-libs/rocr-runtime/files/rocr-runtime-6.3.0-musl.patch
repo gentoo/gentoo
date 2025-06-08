@@ -1,3 +1,6 @@
+Fix compilation with musl.
+
+Bug: https://github.com/ROCm/ROCR-Runtime/issues/181
 --- a/runtime/hsa-ext-finalize/CMakeLists.txt
 +++ b/runtime/hsa-ext-finalize/CMakeLists.txt
 @@ -101,6 +101,18 @@ if( NOT DEFINED OPEN_SOURCE_DIR )
