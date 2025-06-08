@@ -63,11 +63,6 @@ pkg_pretend() {
 	fi
 }
 
-#src_prepare() {
-#	default
-#	eautoreconf
-#}
-
 src_configure() {
 	local ssl_provider=( $(get_ssl_impl) )
 
@@ -80,7 +75,6 @@ src_configure() {
 }
 
 src_install() {
-
 	cmake_src_install
 
 	newinitd "${FILESDIR}"/umurmurd.initd umurmurd
