@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,6 @@ IUSE="gtk"
 DEPEND="
 	>=net-misc/networkmanager-1.2:=
 	>=dev-libs/glib-2.34:2
-	>=dev-libs/dbus-glib-0.74
 	dev-libs/libxml2:2
 	dev-libs/glib:2
 	>=net-vpn/openconnect-3.02:=
