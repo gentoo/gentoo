@@ -9,14 +9,29 @@ inherit autotools python-any-r1
 DESCRIPTION="Exuberant Ctags creates tags files for code browsing in editors"
 HOMEPAGE="https://ctags.io/ https://github.com/universal-ctags/ctags"
 
-if [[ ${PV} == *99999999* ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/universal-ctags/ctags"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/universal-ctags/ctags/archive/refs/tags/p6.1.${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}"/${PN}-p6.1.${PV}
+	# 6.0_p20230423_p0
+	#
+	# 6.0
+	MY_PV_BASE=${PV/_p/.}
+	MY_PV_BASE=${MY_PV_BASE%*.*}
+	# 20230423_p0
+	MY_PV_PATCH=${PV#*_p}
+	# 20230423
+	MY_PV_PATCH_DATE=${MY_PV_PATCH%_p*}
+	# 0
+	MY_PV_PATCH_DATE_SUFFIX=${MY_PV_PATCH##*_p}
+	# p6.0.20230423.0
+	MY_PV=p${MY_PV_BASE}.${MY_PV_PATCH_DATE}.${MY_PV_PATCH_DATE_SUFFIX}
+	MY_P=${PN}-${MY_PV}
 
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	SRC_URI="https://github.com/universal-ctags/ctags/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/${MY_P}
+
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 LICENSE="GPL-2+"
