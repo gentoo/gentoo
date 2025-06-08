@@ -5,7 +5,7 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
-	<longdescription lang="en">
+	<longdescription>
 		Logrotate allows for the automatic rotation compression, removal
 		and mailing of log files. Logrotate can be set to handle a log
 		file daily, weekly, monthly or when the log file gets to a certain
@@ -19,11 +19,11 @@
 		su tamaño alcanza cierto valor.
 	</longdescription>
 	<use>
-		<flag name="acl">Installs acl support</flag>
 		<flag name="cron">Installs cron file</flag>
-		<flag name="selinux">Installs Security Enhanced Linux support</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/logrotate/logrotate/issues</bugs-to>
+		<changelog>https://github.com/logrotate/logrotate/releases</changelog>
 		<remote-id type="github">logrotate/logrotate</remote-id>
 		<remote-id type="cpe">cpe:/a:logrotate_project:logrotate</remote-id>
 	</upstream>
