@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517="setuptools"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -29,7 +29,7 @@ SLOT="0"
 RESTRICT="test"
 
 RDEPEND="
-	dev-python/paramiko[${PYTHON_USEDEP}]
+	>=dev-python/paramiko-3.5.1[${PYTHON_USEDEP}]
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
