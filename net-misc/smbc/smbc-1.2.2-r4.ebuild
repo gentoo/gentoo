@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Text mode (ncurses) SMB network commander. Features: resume and UTF-8"
 HOMEPAGE="https://sourceforge.net/projects/smbc/"
