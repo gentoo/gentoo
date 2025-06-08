@@ -20,7 +20,6 @@ IUSE="doc pam selinux systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-libs/dbus-glib
 	dev-libs/glib:2
 	>=sys-auth/libfprint-1.94.0:2
 	sys-auth/polkit
