@@ -10,9 +10,7 @@ DISTUTILS_USE_PEP517="hatchling"
 inherit distutils-r1 pypi
 
 DESCRIPTION="Schemas for Safety tools"
-
 HOMEPAGE="https://pypi.org/project/safety-schemas/"
-
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
