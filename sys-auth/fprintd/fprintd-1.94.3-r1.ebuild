@@ -46,6 +46,7 @@ DEPEND="
 BDEPEND="
 	dev-lang/perl
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	virtual/pkgconfig
 	doc? (
 		dev-libs/libxml2
