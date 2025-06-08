@@ -47,3 +47,7 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+python_test() {
+	epytest tests/core
+}
