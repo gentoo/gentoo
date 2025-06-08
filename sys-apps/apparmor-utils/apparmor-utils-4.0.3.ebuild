@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..12} )
 inherit distutils-r1 toolchain-funcs desktop
 
 MY_PV="$(ver_cut 1-2)"
