@@ -44,7 +44,7 @@ pkg_pretend() {
 	if ! use clang && tc-is-gcc; then
 		ewarn "Building using GCC requires lots of memory (up to 10 GiB per process)."
 		ewarn "Consider enabling USE=clang."
-		ewarn "See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=119705"
+		ewarn "See https://gcc.gnu.org/PR119705"
 	fi
 }
 
