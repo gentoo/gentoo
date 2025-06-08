@@ -79,6 +79,9 @@ src_compile() {
 	# bug #945258
 	append-cflags -std=gnu17
 
+	strip-unsupported-flags
+	CC=clang CXX=clang++ strip-unsupported-flags
+
 	mymake
 }
 
