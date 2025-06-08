@@ -25,7 +25,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/yubico.com.asc"
 
 # app-crypt/ccid required for
@@ -35,13 +35,14 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/yubico.com.asc"
 RDEPEND="
 	app-crypt/ccid
 	>=dev-python/click-8.0[${PYTHON_USEDEP}]
-	<dev-python/cryptography-45[${PYTHON_USEDEP}]
+	<dev-python/cryptography-47[${PYTHON_USEDEP}]
 	dev-python/fido2:0/1.0[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
-	>=dev-python/pyscard-2.0[${PYTHON_USEDEP}]"
+	>=dev-python/pyscard-2.0[${PYTHON_USEDEP}]
+	<dev-python/pyscard-2.2.2[${PYTHON_USEDEP}]"
 BDEPEND="
 	test? ( dev-python/makefun[${PYTHON_USEDEP}] )
-	verify-sig? ( >=sec-keys/openpgp-keys-yubico-20250604 )"
+	verify-sig? ( >=sec-keys/openpgp-keys-yubico-20240628 )"
 
 distutils_enable_tests pytest
 
