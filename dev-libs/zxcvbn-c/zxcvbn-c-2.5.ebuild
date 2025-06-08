@@ -9,7 +9,7 @@ SRC_URI="https://github.com/tsyrogit/zxcvbn-c/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc15.patch
