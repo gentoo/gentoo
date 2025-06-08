@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 DISTUTILS_USE_PEP517="setuptools"
 
-inherit distutils-r1 pypi
+inherit distutils-r1
 
 DESCRIPTION="A Python library in building OAuth and OpenID Connect servers and clients."
 HOMEPAGE="
@@ -15,6 +15,8 @@ HOMEPAGE="
 	https://github.com/authlib/authlib/
 	https://pypi.org/project/Authlib/
 "
+# pypi source distribution excludes the tests
+SRC_URI="https://github.com/authlib/authlib/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
