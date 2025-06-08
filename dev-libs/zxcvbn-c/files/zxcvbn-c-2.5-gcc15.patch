@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/957161
+https://github.com/tsyrogit/zxcvbn-c/commit/b9f30993c88d9057d7d95a1b059989f7853fd1b0
+https://src.fedoraproject.org/rpms/zxcvbn-c/blob/rawhide/f/gcc15-c++23_fix.patch
+
+--- a/dict-generate.cpp
++++ b/dict-generate.cpp
+@@ -22,6 +22,7 @@
+  *
+  **********************************************************************************/
+ 
++#include <cstdint>
+ #include <iostream>
+ #include <string>
+ #include <fstream>
