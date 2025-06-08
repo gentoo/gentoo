@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-misc/networkmanager-1.2.0:=
-	>=dev-libs/dbus-glib-0.74
 	>=dev-libs/glib-2.32:2
 	>=net-vpn/vpnc-0.5.3_p550
 	gtk? (
@@ -42,5 +41,6 @@ src_configure() {
 		--disable-static \
 		--with-dist-version=Gentoo \
 		$(use_with gtk gnome) \
-		$(use_with gtk gtk4)
+		$(use_with gtk gtk4) \
+		--without-libnm-glib
 }
