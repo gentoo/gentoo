@@ -271,7 +271,7 @@ src_compile() {
 
 	if use tk ; then
 		git_emake -C gitk-git
-		git_emake -C git-gui
+		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core"
 	fi
 
 	if use doc ; then
@@ -451,7 +451,7 @@ src_install() {
 
 	if use tk ; then
 		git_emake -C gitk-git DESTDIR="${D}" install
-		git_emake -C git-gui DESTDIR="${D}" install
+		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core" DESTDIR="${D}" install
 	fi
 
 	perl_delete_localpod

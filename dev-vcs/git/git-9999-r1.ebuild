@@ -313,8 +313,7 @@ src_compile() {
 	fi
 
 	if use tk ; then
-		git_emake -C git-gui
-
+		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core"
 		(
 			EMESON_SOURCE="${S}"/gitk-git
 			BUILD_DIR="${WORKDIR}"/gitk-git_build
@@ -466,7 +465,7 @@ src_install() {
 			meson_src_install
 		)
 
-		git_emake -C git-gui DESTDIR="${D}" install
+		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core" DESTDIR="${D}" install
 	fi
 
 	perl_delete_localpod
