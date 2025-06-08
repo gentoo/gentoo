@@ -7,15 +7,13 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 DISTUTILS_USE_PEP517="setuptools"
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Pure python spell checker based on work by Peter Norvig"
 HOMEPAGE="
 	https://github.com/barrust/pyspellchecker
 	https://pypi.org/project/pyspellchecker/
 "
-SRC_URI="https://github.com/barrust/pyspellchecker/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
-
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
