@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,13 +18,13 @@ IUSE="acl +cron selinux"
 
 DEPEND="
 	>=dev-libs/popt-1.5
-	selinux? ( sys-libs/libselinux )
 	acl? ( virtual/acl )
+	selinux? ( sys-libs/libselinux )
 "
 RDEPEND="
 	${DEPEND}
-	selinux? ( sec-policy/selinux-logrotate )
 	cron? ( virtual/cron )
+	selinux? ( sec-policy/selinux-logrotate )
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-cgzones )"
 
