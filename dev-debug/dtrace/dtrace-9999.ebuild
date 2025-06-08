@@ -52,7 +52,6 @@ RDEPEND="
 		sys-fs/xfsprogs
 		sys-process/time
 		virtual/jdk
-		virtual/perl-IO-Socket-IP
 	)
 "
 BDEPEND="
