@@ -35,6 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.3-binutils-Fix-missing-include-limits.h.patch"
+	"${FILESDIR}/${PN}-4.0.3-py3.13.patch"
 )
 
 src_prepare() {
