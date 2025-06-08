@@ -1,3 +1,5 @@
+https://bugs.gentoo.org/957401
+https://github.com/AFLplusplus/AFLplusplus/pull/2465
 --- a/instrumentation/afl-gcc-cmplog-pass.so.cc
 +++ b/instrumentation/afl-gcc-cmplog-pass.so.cc
 @@ -44,8 +44,7 @@ static const struct pass_data afl_cmplog_pass_data = {
