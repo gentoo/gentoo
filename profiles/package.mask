@@ -39,6 +39,7 @@
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).
 =sys-devel/gettext-0.25*
+=dev-libs/libintl-0.25*
 
 # Jimi Huotari <chiitoo@gentoo.org> (2025-06-07)
 # The only consumer, net-im/qtox, no longer depends on these, and the
