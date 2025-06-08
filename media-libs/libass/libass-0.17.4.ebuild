@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# meson support exists but README suggests not using it for packaging yet
+# https://github.com/libass/libass/blob/master/README.md#building
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/libass.asc
 inherit multilib-minimal verify-sig
 
