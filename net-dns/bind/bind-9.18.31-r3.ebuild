@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit eapi9-ver systemd tmpfiles toolchain-funcs
+inherit eapi9-ver systemd tmpfiles
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+caps dnstap doc doh fixed-rrset idn jemalloc geoip gssapi lmdb selinux static-libs test xml"
 RESTRICT="!test? ( test )"
 
@@ -63,11 +63,6 @@ src_prepare() {
 
 	# Test is (notoriously) slow/resource intensive
 	sed -i -e 's:ISC_TEST_MAIN:int main(void) { exit(77); }:' tests/isc/netmgr_test.c || die
-
-	# Relies on -Wl,--wrap (bug #877741)
-	if tc-is-lto ; then
-		sed -i -e 's:ISC_TEST_MAIN:int main(void) { exit(77); }:' tests/ns/query_test.c || die
-	fi
 }
 
 src_configure() {
@@ -117,6 +112,8 @@ src_test() {
 src_install() {
 	default
 
+	dodoc CHANGES README.md
+
 	if use doc; then
 		docinto misc
 		dodoc -r doc/misc/
@@ -132,7 +129,7 @@ src_install() {
 	fi
 
 	insinto /etc/bind
-	newins "${FILESDIR}"/named.conf-r8 named.conf
+	newins "${FILESDIR}"/named.conf-r9 named.conf
 	newins "${FILESDIR}"/named.conf.auth named.conf.auth
 
 	newinitd "${FILESDIR}"/named.init-r15 named

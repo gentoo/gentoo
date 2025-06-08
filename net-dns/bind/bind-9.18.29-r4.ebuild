@@ -125,7 +125,7 @@ src_install() {
 	fi
 
 	insinto /etc/bind
-	newins "${FILESDIR}"/named.conf-r8 named.conf
+	newins "${FILESDIR}"/named.conf-r9 named.conf
 	newins "${FILESDIR}"/named.conf.auth named.conf.auth
 
 	newinitd "${FILESDIR}"/named.init-r15 named
