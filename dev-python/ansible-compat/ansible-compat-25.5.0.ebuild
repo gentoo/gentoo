@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517="setuptools"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="
-	>=app-admin/ansible-core-2.18.1[${PYTHON_USEDEP}]
+	>=app-admin/ansible-core-2.18.6[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-4.23.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
