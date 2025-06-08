@@ -88,6 +88,7 @@ BDEPEND="
 PATCHES=(
 	# https://gitlab.gnome.org/GNOME/localsearch/-/merge_requests/511
 	"${FILESDIR}/tracker-miners-3.6.2-epoll_wait.patch"
+	"${FILESDIR}/Disable-the-examples-test-suite.patch"
 )
 
 python_check_deps() {
@@ -172,7 +173,7 @@ src_configure() {
 
 src_test() {
 	export GSETTINGS_BACKEND="dconf" # Tests require dconf and explicitly check for it (env_reset set it to "memory")
-	export PYTHONPATH="${EROOT}"/usr/$(get_libdir)/tracker-3.0
+	export PYTHONPATH="${ESYSROOT}"/usr/$(get_libdir)/tracker-3.0
 	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
 }
 

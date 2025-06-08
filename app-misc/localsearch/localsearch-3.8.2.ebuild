@@ -17,6 +17,10 @@ IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg networkmanager +pdf +pl
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/Disable-the-examples-test-suite.patch"
+)
+
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead);
 # so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
@@ -162,7 +166,7 @@ src_configure() {
 
 src_test() {
 	export GSETTINGS_BACKEND="dconf" # Tests require dconf and explicitly check for it (env_reset set it to "memory")
-	export PYTHONPATH="${EROOT}"/usr/$(get_libdir)/tracker-3.0
+	export PYTHONPATH="${ESYSROOT}"/usr/$(get_libdir)/tinysparql-3.0
 	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
 }
 

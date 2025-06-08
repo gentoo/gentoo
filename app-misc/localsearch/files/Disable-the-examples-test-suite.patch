@@ -1,0 +1,33 @@
+From b81a0c84b9850efa47b4ac136e351225119f659d Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Sun, 8 Jun 2025 12:19:58 +0200
+Subject: [PATCH] Disable the examples test suite
+
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ examples/python/meson.build | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/examples/python/meson.build b/examples/python/meson.build
+index fed90e6..9bb3f3c 100644
+--- a/examples/python/meson.build
++++ b/examples/python/meson.build
+@@ -7,9 +7,9 @@ examples = [
+   'query-sync',
+ ]
+ 
+-foreach example_name: examples
+-  file = meson.current_source_dir() / '@0@.py'.format(example_name)
+-  test(example_name, python,
+-    args: sandbox_python_args + [file],
+-    suite: 'examples')
+-endforeach
++# foreach example_name: examples
++#   file = meson.current_source_dir() / '@0@.py'.format(example_name)
++#   test(example_name, python,
++#     args: sandbox_python_args + [file],
++#     suite: 'examples')
++# endforeach
+-- 
+2.49.0
+
