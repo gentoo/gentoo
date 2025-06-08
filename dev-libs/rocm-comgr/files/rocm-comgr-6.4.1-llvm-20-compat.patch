@@ -1,0 +1,71 @@
+--- a/src/comgr-cache-bundler-command.cpp
++++ b/src/comgr-cache-bundler-command.cpp
+@@ -155,7 +155,8 @@ void UnbundleCommand::addOptionsIdentifier(HashAlgorithm &H) const {
+ Error UnbundleCommand::addInputIdentifier(HashAlgorithm &H) const {
+   StringRef InputFilename = Config.InputFileNames.front();
+ 
+-  constexpr size_t LargestHeaderSize = CompressedOffloadBundle::V2HeaderSize;
++  constexpr size_t LargestHeaderSize = 4 + sizeof(uint16_t) + sizeof(uint32_t) + sizeof(uint16_t) +
++  sizeof(uint32_t) + sizeof(uint64_t);
+ 
+   ErrorOr<std::unique_ptr<MemoryBuffer>> MaybeInputBuffer =
+       MemoryBuffer::getFileSlice(InputFilename, LargestHeaderSize, 0);
+--- a/src/comgr-cache.cpp
++++ b/src/comgr-cache.cpp
+@@ -130,7 +130,6 @@ void saveCommandOutput(CachedCommandAdaptor &C, AddStreamFn &AddStream,
+ 
+   CachedFileStream *CFS = FileOrErr->get();
+   serializeCacheEntry(*CFS->OS, *Buffer, CapturedLogS);
+-  ErrorHandler(CFS->commit(), "when commiting file stream");
+ }
+ 
+ bool readEntryFromCache(CachedCommandAdaptor &C, MemoryBuffer &CachedBuffer,
+--- a/src/comgr-compiler.cpp
++++ b/src/comgr-compiler.cpp
+@@ -680,7 +680,7 @@ amd_comgr_status_t executeCommand(const Command &Job, raw_ostream &LogS,
+     // Internally this call refers to the invocation created above, so at
+     // this point the DiagnosticsEngine should accurately reflect all user
+     // requested configuration from Argv.
+-    Clang->createDiagnostics(&DiagClient, /* ShouldOwnClient */ false);
++    Clang->createDiagnostics(*llvm::vfs::getRealFileSystem(), &DiagClient, /* ShouldOwnClient */ false);
+     if (!Clang->hasDiagnostics()) {
+       return AMD_COMGR_STATUS_ERROR;
+     }
+@@ -753,7 +753,7 @@ AMDGPUCompiler::executeInProcessDriver(ArrayRef<const char *> Args) {
+   IntrusiveRefCntPtr<DiagnosticIDs> DiagID(new DiagnosticIDs);
+   DiagnosticsEngine Diags(DiagID, &*DiagOpts, DiagClient);
+ 
+-  ProcessWarningOptions(Diags, *DiagOpts, /*ReportDiags=*/false);
++  ProcessWarningOptions(Diags, *DiagOpts, *llvm::vfs::getRealFileSystem(), /*ReportDiags=*/false);
+ 
+   Driver TheDriver((Twine(env::getLLVMPath()) + "/bin/clang").str(),
+                    llvm::sys::getDefaultTargetTriple(), Diags);
+--- a/test/compile_log_test.c
++++ b/test/compile_log_test.c
+@@ -230,7 +230,7 @@ int main(int argc, char *argv[]) {
+ 
+   Status = amd_comgr_do_action(AMD_COMGR_ACTION_LINK_RELOCATABLE_TO_EXECUTABLE,
+                                DataAction, DataSetReloc, DataSetOut);
+-  checkLogs("LINK_RELOCATABLE_TO_EXECUTABLE", DataSetOut, "unexpected EOF");
++  checkLogs("LINK_RELOCATABLE_TO_EXECUTABLE", DataSetOut, "unknown directive");
+ 
+   Status =
+       amd_comgr_action_data_count(DataSetOut, AMD_COMGR_DATA_KIND_LOG, &Count);
+--- a/test/unbundle_hip_test.c
++++ b/test/unbundle_hip_test.c
+@@ -182,10 +182,11 @@ int main(int Argc, char *Argv[]) {
+     Status = amd_comgr_release_data(DataElement);
+     checkError(Status, "amd_comgr_release_data");
+ 
+-    if (!BytesSize) {
+-      printf("Bitcode host empty (expected non-empty)\n");
+-      exit(1);
+-    }
++    // TODO: Re-enable after finalizing LLVM PR #122629
++    // if (BytesSize != 0) {
++    //   printf("Bitcode host element size: %ld (expected 0)\n", BytesSize);
++    //   exit(1);
++    // }
+ 
+     // bitcode hip-gfx900 element (non-empty)
+     Status = amd_comgr_action_data_get_data(
