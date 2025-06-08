@@ -11,7 +11,4 @@
       <name>Thomas Orgis</name>
     </maintainer>
   </upstream>
-  <use>
-    <flag name="int-quality">Use rounding instead of fast truncation for integer output, where possible</flag>
-  </use>
 </pkgmetadata>
