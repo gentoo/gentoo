@@ -268,12 +268,15 @@ src_configure() {
 	meson_src_configure
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			emesonargs=()
-			meson_src_configure
-		)
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				emesonargs=()
+				meson_src_configure
+			)
+		done
 	fi
 }
 
@@ -312,14 +315,14 @@ src_compile() {
 	fi
 
 	if use tk ; then
-		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core"
-
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_compile
-		)
-
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_compile
+			)
+		done
 	fi
 
 	if use doc ; then
@@ -459,13 +462,14 @@ src_install() {
 	fi
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_install
-		)
-
-		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core" DESTDIR="${D}" install
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_install
+			)
+		done
 	fi
 
 	perl_delete_localpod
