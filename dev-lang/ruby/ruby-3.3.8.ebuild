@@ -127,7 +127,7 @@ src_prepare() {
 
 	# Avoid test fragile for git command output not matching on whitespace
 	sed -e '/test_pretty_print/aomit "Fragile for output differences"' \
-		-i test/rubygems/test_gem_source_git.rb || die
+		-i test/rubygems/test_gem_source_{git,specific_file}.rb || die
 
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
