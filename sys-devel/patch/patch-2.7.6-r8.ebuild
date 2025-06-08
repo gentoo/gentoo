@@ -68,8 +68,9 @@ src_configure() {
 		# rename to gpatch for better BSD compatibility
 		--program-prefix=g
 	)
-	# Do not let $ED mess up the search for `ed` 470210.
-	ac_cv_path_ED=$(type -P ed) \
+	# Do not let $ED or $PATH (split-usr) mess up the search for `ed`:
+	# bug 470210 / bug 957593
+	ac_cv_path_ED="${EPREFIX}/bin/ed" \
 		econf "${myeconfargs[@]}"
 }
 
