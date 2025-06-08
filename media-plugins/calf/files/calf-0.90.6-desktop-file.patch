@@ -11,6 +11,17 @@ and not of the application.
 This also updates/fixes the `Categories` section.
 
 Fixes https://955628.bugs.gentoo.org/attachment.cgi?id=928147 .
+---
+ .gitignore                      | 1 -
+ .svnignore                      | 1 -
+ CMakeLists.txt                  | 3 +--
+ calf.desktop.in => calf.desktop | 7 ++++---
+ configure.ac.deprecated         | 1 -
+ 5 files changed, 5 insertions(+), 8 deletions(-)
+ rename calf.desktop.in => calf.desktop (95%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd723ed70..5b976127d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -200,7 +200,6 @@ else()
@@ -30,9 +41,11 @@ Fixes https://955628.bugs.gentoo.org/attachment.cgi?id=928147 .
          DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
  install(FILES ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}jackhost.1
          DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+diff --git a/calf.desktop.in b/calf.desktop
 similarity index 95%
 rename from calf.desktop.in
 rename to calf.desktop
+index 3514ee874..c0a2071ac 100644
 --- a/calf.desktop.in
 +++ b/calf.desktop
 @@ -1,10 +1,11 @@
