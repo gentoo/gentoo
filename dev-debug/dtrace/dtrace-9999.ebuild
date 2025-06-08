@@ -126,6 +126,9 @@ src_configure() {
 	# that can't actually obtain results from probes, even trivial examples
 	# just hang.
 	filter-flags -fno-semantic-interposition
+	# While it builds as of 2025-06-08, it's broken at runtime
+	# in the same way as -fno-semantic-interposition (hangs, no probes fire).
+	filter-lto
 
 	local confargs=(
 		# TODO: Maybe we should set the UNPRIV_UID to something? -3 is a bit... kludgy
