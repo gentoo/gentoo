@@ -6,10 +6,11 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
-    <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
     <flag name="systemd">Use <pkg>sys-apps/systemd</pkg> for session tracking</flag>
   </use>
   <upstream>
+    <bugs-to>https://gitlab.freedesktop.org/accountsservice/accountsservice/-/issues</bugs-to>
+    <changelog>https://gitlab.freedesktop.org/accountsservice/accountsservice/-/releases</changelog>
     <remote-id type="freedesktop-gitlab">accountsservice/accountsservice</remote-id>
   </upstream>
 </pkgmetadata>
