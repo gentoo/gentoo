@@ -118,6 +118,7 @@ python_prepare_all() {
 		# ASAN and sandbox both want control over LD_PRELOAD
 		# https://bugs.gentoo.org/673016
 		-e 's/test_generate_gir_with_address_sanitizer/_&/'
+		-e 's/test_env_cflags_ldflags/_&/'
 
 		# ASAN is unsupported on some targets
 		# https://bugs.gentoo.org/692822
