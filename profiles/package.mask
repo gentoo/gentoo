@@ -315,7 +315,6 @@ dev-util/intel_clc
 # https://github.com/torproject/nyx/issues/68
 # Removal on 2025-06-09.
 net-libs/stem
-net-misc/nyx
 
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # Vulnerable, EOL branch of dev-python/django.  Bug #955606.
