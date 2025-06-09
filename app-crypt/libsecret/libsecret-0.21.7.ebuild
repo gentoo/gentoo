@@ -140,7 +140,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool gtk-doc gtk_doc)
 		$(meson_native_use_bool introspection)
 		-Dbashcompdir="$(get_bashcompdir)"
-		-Dbash_completion=true
+		-Dbash_completion=enabled
 		$(meson_native_use_bool tpm tpm2)
 		$(meson_native_use_bool pam)
 	)
