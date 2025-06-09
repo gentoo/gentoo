@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-04-12)
+# Dead upstream, fails to compile with gcc 15 and cmake 4.
+# Removal on 2025-05-12. Bugs #957271, #944255
+games-arcade/tuxanci
+
+# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-04-12)
 # Dead upstream, fails to compile.
 # Removal on 2025-05-12. Bugs #919185, #882585, #871018, #913572
 media-gfx/transfig
