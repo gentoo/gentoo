@@ -8,7 +8,7 @@ inherit autotools flag-o-matic font optfeature pam strip-linguas systemd xdg-uti
 DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="
-	https://www.jwz.org/xscreensaver/${PN}-${PV}.tar.gz
+	https://www.jwz.org/xscreensaver/${P}.tar.gz
 	logind-idle-hint? (
 		https://github.com/Flowdalic/xscreensaver/commit/59e7974c42dc08411c9af2a3a644a582c2116f46.patch ->
 			${PN}-6.06-logind-idle-hint.patch
@@ -19,7 +19,6 @@ SRC_URI="
 	)
 "
 
-S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 # Font license mapping for folder ./hacks/fonts/ as following:
 #   clacon.ttf       -- MIT
 #   gallant12x22.ttf -- unclear, hence dropped
@@ -29,7 +28,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 LICENSE="BSD fonts? ( MIT Apache-2.0 ) systemd? ( ISC )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="elogind fonts gdm gles glx jpeg +locking logind-idle-hint new-login offensive pam +perl selinux suid systemd xinerama"
+IUSE="elogind ffmpeg fonts gdm gles glx jpeg +locking logind-idle-hint new-login offensive pam +perl selinux suid systemd xinerama"
 REQUIRED_USE="
 	gles? ( !glx )
 	?? ( elogind systemd )
@@ -38,7 +37,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	>=dev-libs/libxml2-2.4.6
+	>=dev-libs/libxml2-2.4.6:=
 	x11-apps/appres
 	x11-apps/xwininfo
 	x11-libs/libX11
@@ -51,6 +50,7 @@ COMMON_DEPEND="
 	x11-libs/gdk-pixbuf-xlib
 	>=x11-libs/gdk-pixbuf-2.42.0:2
 	>=x11-libs/gtk+-3.0.0:3
+	ffmpeg? ( <media-video/ffmpeg-7:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	locking? ( virtual/libcrypt:= )
 	new-login? (
@@ -99,6 +99,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.05-r2-configure-exit-codes.patch
 	"${FILESDIR}"/${PN}-6.07-allow-no-pam.patch
 	"${FILESDIR}"/${PN}-6.07-fix-desktop-files.patch
+	"${FILESDIR}"/${PN}-6.09-ffmpeg.patch
 )
 
 DOCS=( README{,.hacking} )
@@ -192,6 +193,7 @@ src_configure() {
 		$(use_with systemd)
 		$(use_with xinerama xinerama-ext)
 		--with-jpeg=$(usex jpeg yes no)
+		--with-record-animation=$(usex ffmpeg yes no)
 		--with-png=yes
 		--with-xft=yes
 		--with-app-defaults="${EPREFIX}"/usr/share/X11/app-defaults
