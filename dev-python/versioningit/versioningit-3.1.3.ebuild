@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_FULLY_TESTED=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_14 )
 
 inherit distutils-r1 pypi
 
@@ -20,15 +21,14 @@ KEYWORDS="amd64 ~arm arm64 ~riscv ~x86"
 
 RDEPEND="
 	>=dev-python/packaging-17.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		<dev-python/tomli-3[${PYTHON_USEDEP}]
-	' 3.10)
 	dev-vcs/git
 "
 BDEPEND="
 	test? (
-		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pydantic[${PYTHON_USEDEP}]
+		' "${PYTHON_FULLY_TESTED[@]}")
 	)
 "
 
@@ -40,5 +40,13 @@ EPYTEST_IGNORE=(
 distutils_enable_tests pytest
 
 python_test() {
+	if ! has "${EPYTHON/./_}" "${PYTHON_FULLY_TESTED[@]}"; then
+		EPYTEST_IGNORE+=(
+			# Needs pydantic
+			test/test_methods/test_hg.py
+			test/test_methods/test_git.py
+		)
+	fi
+
 	epytest -o addopts=
 }
