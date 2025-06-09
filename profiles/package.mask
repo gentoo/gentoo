@@ -309,13 +309,6 @@ dev-util/intel_clc
 ~dev-db/mariadb-10.11.12
 ~dev-db/mariadb-11.4.6
 
-# Petr Vaněk <arkamar@gentoo.org> (2025-05-10)
-# Unmaintained upstream, incompatible with py3.12+, no revdeps, see
-# https://github.com/torproject/stem/issues/154 and
-# https://github.com/torproject/nyx/issues/68
-# Removal on 2025-06-09.
-net-libs/stem
-
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # Vulnerable, EOL branch of dev-python/django.  Bug #955606.
 # Pleas upgrade to 5.1, 5.2 LTS, or downgrade to 4.2 LTS.
