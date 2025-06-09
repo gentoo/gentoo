@@ -36,6 +36,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-06-09)
+# Obsolete slots that are ruby32 or ruby33-only. No reverse dependencies
+# left. Use the newer slot instead. Masked for removal on 2025-07-09.
+dev-ruby/bson:4
+dev-ruby/excon:0
+dev-ruby/fakefs:0
+dev-ruby/fiber-storage:0
+dev-ruby/hitimes:0
+dev-ruby/mocha:1.0
+dev-ruby/psych:0
+dev-ruby/public_suffix:5
+dev-ruby/recog:2
+dev-ruby/ruby-macho:0
+dev-ruby/terminal-table:0
+dev-ruby/terminal-table:2
+dev-ruby/ttfunk:1.7
+dev-ruby/unicode-display_width:1
+dev-util/cucumber-ci-environment:9
+dev-util/cucumber-core:11
+
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).
 =sys-devel/gettext-0.25*
