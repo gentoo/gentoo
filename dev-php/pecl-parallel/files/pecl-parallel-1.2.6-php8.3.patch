@@ -1,0 +1,88 @@
+Derived from: https://github.com/krakjoe/parallel/pull/339
+Just removed tests.
+From 75d1359e671fbb05c813779a0ad885eabc636633 Mon Sep 17 00:00:00 2001
+From: Florian Engelhardt <flo@dotbox.org>
+Date: Wed, 9 Apr 2025 10:14:12 +0200
+Subject: [PATCH] Crash less and allow more cyclomatic refs (#339)
+
+---
+ src/cache.c                  | 17 +++++++++++-
+ src/scheduler.c              |  9 +++++--
+ 8 files changed, 132 insertions(+), 8 deletions(-)
+ create mode 100644 tests/base/072-bootstrap.php
+
+diff --git a/src/cache.c b/src/cache.c
+index 6c3dee9..afbfb6d 100644
+--- a/src/cache.c
++++ b/src/cache.c
+@@ -370,11 +370,12 @@ zend_function* php_parallel_cache_closure(const zend_function *source, zend_func
+         memcpy(closure, cache, sizeof(zend_op_array));
+     }
+ 
+-    if (closure->op_array.static_variables) {
++    if (source->op_array.static_variables) {
+         HashTable *statics =
+             ZEND_MAP_PTR_GET(
+                 source->op_array.static_variables_ptr);
+ 
++        if (statics) {
+         closure->op_array.static_variables =
+             php_parallel_copy_hash_ctor(statics, 1);
+ 
+@@ -387,8 +388,22 @@ zend_function* php_parallel_cache_closure(const zend_function *source, zend_func
+             closure->op_array.static_variables_ptr,
+             &closure->op_array.static_variables);
+ #endif
++        }
+     }
+ 
++#if PHP_VERSION_ID >= 80100
++    if (source->op_array.num_dynamic_func_defs) {
++        uint32_t it = 0;
++        closure->op_array.dynamic_func_defs = php_parallel_cache_copy_mem(
++            source->op_array.dynamic_func_defs,
++            sizeof(zend_op_array*) * source->op_array.num_dynamic_func_defs);
++        while (it < source->op_array.num_dynamic_func_defs) {
++            closure->op_array.dynamic_func_defs[it] = (zend_op_array*) php_parallel_cache_closure((zend_function*) source->op_array.dynamic_func_defs[it], NULL);
++            it++;
++        }
++    }
++#endif
++
+     return closure;
+ } /* }}} */
+ 
+diff --git a/src/scheduler.c b/src/scheduler.c
+index a66673b..de3ee11 100644
+--- a/src/scheduler.c
++++ b/src/scheduler.c
+@@ -33,6 +33,8 @@ static zend_always_inline int php_parallel_scheduler_list_delete(void *lhs, void
+ static void php_parallel_schedule_free_function(zend_function *function) {
+     if (function->op_array.static_variables) {
+         php_parallel_copy_hash_dtor(function->op_array.static_variables, 1);
++        ZEND_MAP_PTR_SET(function->op_array.static_variables_ptr, NULL);
++        function->op_array.static_variables = NULL;
+     }
+ 
+ #if PHP_VERSION_ID >= 80100
+@@ -245,6 +247,8 @@ static void php_parallel_scheduler_clean(zend_function *function) {
+ 
+         if (!(GC_FLAGS(statics) & IS_ARRAY_IMMUTABLE)) {
+             zend_array_destroy(statics);
++            ZEND_MAP_PTR_SET(function->op_array.static_variables_ptr, NULL);
++            function->op_array.static_variables = NULL;
+         }
+     }
+ 
+@@ -254,8 +258,9 @@ static void php_parallel_scheduler_clean(zend_function *function) {
+ 
+     	while (it < function->op_array.num_dynamic_func_defs) {
+     	    php_parallel_scheduler_clean(
+-               (zend_function*) function->op_array.dynamic_func_defs[it]);
+-            it++;
++              (zend_function*) function->op_array.dynamic_func_defs[it]);
++          pefree(function->op_array.dynamic_func_defs[it],1);
++          it++;
+     	}
+     }
+ #endif
