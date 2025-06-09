@@ -95,6 +95,9 @@ BDEPEND="
 	)
 "
 
+# bundled, but unused CMake files: core/libs/dplugins/webservices/o2
+CMAKE_QA_COMPAT_SKIP=1
+
 PATCHES=(
 	"${FILESDIR}/${PN}-8.4.0-cmake.patch"
 	"${FILESDIR}/${PN}-8.3.0-cmake-addressbook.patch"
@@ -107,6 +110,11 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	ecm_src_prepare
+	rm -r project/bundles || die
 }
 
 # FIXME: Unbundle libraw (libs/rawengine/libraw)
