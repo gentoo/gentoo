@@ -1,0 +1,25 @@
+From bbff88f8091752ee19dca672bec197e49cc2ef5d Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Mon, 9 Jun 2025 10:39:54 +0800
+Subject: [PATCH] src/urcu-bp.c: assert => urcu_posix_assert
+
+otherwise build failed if has -DNDEBUG
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/urcu-bp.c b/src/urcu-bp.c
+index 8e9afd8..e23ca95 100644
+--- a/src/urcu-bp.c
++++ b/src/urcu-bp.c
+@@ -409,7 +409,7 @@ void expand_arena(struct registry_arena *arena)
+ 		new_chunk_size_bytes, 0);
+ 	if (new_chunk != MAP_FAILED) {
+ 		/* Should not have moved. */
+-		assert(new_chunk == last_chunk);
++		urcu_posix_assert(new_chunk == last_chunk);
+ 		memset((char *) last_chunk + old_chunk_size_bytes, 0,
+ 			new_chunk_size_bytes - old_chunk_size_bytes);
+ 		last_chunk->capacity = new_capacity;
+-- 
+2.45.2
+
