@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
-
+PYTHON_FULLY_TESTED=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_14 )
 inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Python library for arbitrary-precision floating-point arithmetic"
@@ -33,7 +33,9 @@ BDEPEND="
 			dev-python/gmpy2[${PYTHON_USEDEP}]
 		' 'python3*')
 		test-full? (
-			dev-python/matplotlib[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/matplotlib[${PYTHON_USEDEP}]
+			' "${PYTHON_FULLY_TESTED[@]}")
 		)
 	)
 "
@@ -48,11 +50,14 @@ PATCHES=(
 )
 
 python_test() {
-	local EPYTEST_DESELECT=()
-
-	# CLI crashes otherwise, sigh (not a regression)
-	# https://github.com/mpmath/mpmath/issues/907
-	> "${HOME}/.python_history" || die
+	local EPYTEST_DESELECT=(
+		# Slow and often needs a re-run to pass
+		mpmath/tests/test_cli.py::test_bare_console_bare_division
+		mpmath/tests/test_cli.py::test_bare_console_no_bare_division
+		mpmath/tests/test_cli.py::test_bare_console_pretty
+		mpmath/tests/test_cli.py::test_bare_console_without_ipython
+		mpmath/tests/test_cli.py::test_bare_console_wrap_floats
+	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p rerunfailures --reruns=5 -p timeout
