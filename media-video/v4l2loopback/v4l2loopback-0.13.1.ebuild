@@ -11,7 +11,7 @@ case ${PV} in
 	EGIT_REPO_URI="https://github.com/umlaeute/v4l2loopback.git"
 	;;
 *)
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://github.com/umlaeute/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	;;
 esac
