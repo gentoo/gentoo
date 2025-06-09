@@ -5,8 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 MULTILIB_ABIS="amd64 x86" # allow usage on /no-multilib/
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-inherit eapi9-ver flag-o-matic meson-multilib python-any-r1
+inherit eapi9-ver flag-o-matic meson multibuild multilib multilib-build python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -29,7 +28,7 @@ else
 			-> vulkan-headers-${HASH_VULKAN}.tar.gz
 		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/libdisplay-info-${HASH_DISPLAYINFO}.tar.bz2
 	"
-	KEYWORDS="-* ~amd64 ~x86"
+	KEYWORDS="-* ~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine"
@@ -40,18 +39,21 @@ SRC_URI+=" https://raw.githubusercontent.com/doitsujin/dxvk/cd21cd7fa3b0df3e0819
 
 LICENSE="ZLIB Apache-2.0 MIT"
 SLOT="0"
-IUSE="+abi_x86_32 crossdev-mingw +d3d8 +d3d9 +d3d10 +d3d11 +dxgi +strip"
+IUSE="+abi_x86_32 crossdev-mingw +d3d8 +d3d9 +d3d10 +d3d11 +dxgi +i686-pe +strip"
 REQUIRED_USE="
+	!arm64? ( || ( abi_x86_32 abi_x86_64 ) )
 	|| ( d3d8 d3d9 d3d10 d3d11 dxgi )
 	d3d8? ( d3d9 )
 	d3d10? ( d3d11 )
 	d3d11? ( dxgi )
 "
 
+DXVK_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-util/glslang
-	!crossdev-mingw? ( dev-util/mingw64-toolchain[${MULTILIB_USEDEP}] )
+	!arm64? ( !crossdev-mingw? ( dev-util/mingw64-toolchain[${DXVK_USEDEP}] ) )
+	arm64? ( dev-util/llvm-mingw64[i686-pe?] )
 "
 
 PATCHES=(
@@ -80,6 +82,43 @@ pkg_pretend() {
 	fi
 }
 
+winedll_toolchain_setup() {
+	local -A abi_to_chost=(
+		[arm64]=aarch64-w64-mingw32
+		[x86]=i686-w64-mingw32
+	)
+	CHOST=${abi_to_chost[$1]}
+	CC=${CHOST}-clang
+	CXX=${CHOST}-clang++
+	RC=${CHOST}-windres
+	AR=${CHOST}-ar
+	STRIP=llvm-strip
+}
+
+winedll_multibuild_wrapper() {
+	local ABI=${MULTIBUILD_VARIANT#*.}
+	local -r MULTILIB_ABI_FLAG=${MULTIBUILD_VARIANT%.*}
+
+	use !arm64 && multilib_toolchain_setup "${ABI}"
+	use arm64 && winedll_toolchain_setup "${ABI}"
+	readonly ABI
+
+	mkdir -p "${BUILD_DIR}" || die
+	pushd "${BUILD_DIR}" >/dev/null || die
+	"${@}"
+	popd >/dev/null || die
+}
+
+winedll_foreach_abi() {
+	local MULTIBUILD_VARIANTS
+	use arm64 && MULTIBUILD_VARIANTS=(
+			$(usex i686-pe i686-pe.x86)
+			arm64.arm64
+		)
+	use !arm64 && MULTIBUILD_VARIANTS=( $(multilib_get_enabled_abi_pairs) )
+	multibuild_foreach_variant winedll_multibuild_wrapper "${@}"
+}
+
 src_prepare() {
 	if [[ ${PV} != 9999 ]]; then
 		rmdir include/{spirv,vulkan} subprojects/libdisplay-info || die
@@ -95,7 +134,8 @@ src_prepare() {
 }
 
 src_configure() {
-	use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
+	use !arm64 && use crossdev-mingw || PATH=${BROOT}/usr/lib/mingw64-toolchain/bin:${PATH}
+	use arm64 && PATH=${BROOT}/usr/lib/llvm-mingw64/bin:${PATH}
 
 	# random segfaults been reported with LTO in some games, filter as
 	# a safety (note that optimizing this further won't really help
@@ -120,12 +160,10 @@ src_configure() {
 
 		CHOST_amd64=x86_64-w64-mingw32
 		CHOST_x86=i686-w64-mingw32
-		CHOST=$(usex x86 ${CHOST_x86} ${CHOST_amd64})
-
-		strip-unsupported-flags
+		CHOST=$(usex arm64 aarch64-w64-mingw32 $(usex x86 ${CHOST_x86} ${CHOST_amd64}))
 	fi
 
-	multilib-minimal_src_configure
+	winedll_foreach_abi multilib_src_configure
 }
 
 multilib_src_configure() {
@@ -133,9 +171,15 @@ multilib_src_configure() {
 	# unset again so meson eclass will set ${CHOST}-gcc + others
 	use crossdev-mingw && [[ ! -v MINGW_BYPASS ]] && unset AR CC CXX RC STRIP
 
+	local -A abi_to_libdir=(
+		[amd64]=x64
+		[arm64]=x64
+		[x86]=x32
+	)
+
 	local emesonargs=(
 		--prefix="${EPREFIX}"/usr/lib/${PN}
-		--{bin,lib}dir=x${MULTILIB_ABI_FLAG: -2}
+		--{bin,lib}dir=${abi_to_libdir[$ABI]}
 		--force-fallback-for=libdisplay-info # system's is ELF (unusable)
 		$(meson_use {,enable_}d3d8)
 		$(meson_use {,enable_}d3d9)
@@ -145,10 +189,19 @@ multilib_src_configure() {
 		$(usev strip --strip) # portage won't strip .dll, so allow it here
 	)
 
-	meson_src_configure
+	(
+		strip-unsupported-flags
+		meson_src_configure
+	)
 }
 
-multilib_src_install_all() {
+src_compile() {
+	winedll_foreach_abi meson_src_compile
+}
+
+src_install() {
+	winedll_foreach_abi meson_install
+
 	dobin setup_dxvk.sh
 	dodoc README.md dxvk.conf
 
