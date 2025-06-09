@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
+# py3.14: https://github.com/pydantic/pydantic/issues/11613
 PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 pypi
