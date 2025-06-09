@@ -212,5 +212,5 @@ multilib_src_install_all() {
 	rm -r "${ED}"/usr/share/licenses/ || die
 	dodoc {BUGS,CREDITS,README-SDL,TODO,WhatsNew}.txt README.md docs/README*.md
 	use doc && dodoc -r docs/output/html/
-	strip-lto-bytecode
+	strip-lto-bytecode "${ED}"
 }
