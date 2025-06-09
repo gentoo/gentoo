@@ -1,0 +1,109 @@
+libgstopencv.so is "normally" installed by gst-plugins-bad, but we want it to
+be part of our gst-plugins-opencv package (installing it as part of gst-plugins-bad
+would at least be confusing, and also not ideal given it'd have to depend on opencv,
+even though we have gst-plugins-opencv).
+
+bad currently doesn't have a way to allow disabling everything but the opencv
+plugin bit, so that's what this patch does as a hack. It only keeps the bare
+minimum to build the opencv helper (i.e. disable everything that gst-plugins-bad
+does to not collide, but keep opencv).
+
+TODO: replace this with something more maintainable, e.g. possible hacks
+with submodules or creating a drop-in meson.build in the ebuild to just build
+the plugin & helper libs.
+
+UPD: No good solution yet, just backport to 1.26.2
+
+--- a/ext/meson.build
++++ b/ext/meson.build
+@@ -53,7 +53,6 @@
+ subdir('openni2')
+ subdir('opus')
+ subdir('qroverlay')
+-subdir('qt6d3d11')
+ subdir('resindvd')
+ subdir('rsvg')
+ subdir('rtmp')
+@@ -72,10 +71,7 @@
+ subdir('ttml')
+ subdir('voaacenc')
+ subdir('voamrwbenc')
+-subdir('vulkan')
+ subdir('wayland')
+-subdir('webrtc')
+-subdir('webrtcdsp')
+ subdir('webp')
+ subdir('wildmidi')
+ subdir('wpe')
+--- a/gst-libs/gst/meson.build
++++ b/gst-libs/gst/meson.build
+@@ -1,29 +1,2 @@
+-subdir('uridownloader')
+-
+-subdir('adaptivedemux')
+-subdir('audio')
+-subdir('basecamerabinsrc')
+-subdir('codecparsers')
+-subdir('codecs')
+-subdir('d3dshader')
+-subdir('d3d11')
+-subdir('d3d12')
+-# cuda can depend on d3d11
+-subdir('cuda')
+-subdir('dxva')
+-subdir('insertbin')
+-subdir('interfaces')
+-subdir('isoff')
+-subdir('mpegts')
+-subdir('mse')
+ subdir('opencv')
+-subdir('play')
+-subdir('player')
+-subdir('sctp')
+-subdir('transcoder')
+-subdir('va')
+-subdir('vulkan')
+ subdir('wayland')
+-subdir('webrtc')
+-subdir('winrt')
+-subdir('analytics')
+--- a/meson.build
++++ b/meson.build
+@@ -567,14 +567,6 @@
+ 
+ pkgconfig_subdirs = ['gstreamer-1.0']
+ 
+-pkgconfig.generate(
+-  libraries : [gst_dep],
+-  variables : pkgconfig_variables,
+-  subdirs : pkgconfig_subdirs,
+-  name : 'gstreamer-plugins-bad-1.0',
+-  description : 'Streaming media framework, bad plugins libraries',
+-)
+-
+ gpl_allowed = get_option('gpl').allowed()
+ 
+ if host_machine.system() == 'windows'
+@@ -584,12 +576,7 @@
+ endif
+ 
+ subdir('gst-libs')
+-subdir('gst')
+-subdir('sys')
+ subdir('ext')
+-subdir('tests')
+-subdir('data')
+-subdir('tools')
+ 
+ if have_orcc
+   update_orc_dist_files = find_program('scripts/update-orc-dist-files.py')
+--- a/sys/meson.build
++++ b/sys/meson.build
+@@ -21,7 +21,6 @@
+ subdir('nvcodec')
+ subdir('opensles')
+ subdir('qsv')
+-subdir('shm')
+ subdir('tinyalsa')
+ subdir('uvch264')
+ subdir('v4l2codecs')
