@@ -38,28 +38,28 @@
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Dead upstream, fails to compile with gcc 15 and cmake 4.
-# Removal on 2025-05-12. Bugs #957271, #944255
+# Removal on 2025-07-12. Bugs #957271, #944255
 games-arcade/tuxanci
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Dead upstream, doesn't build with gcc 15, we're the only ones packaging it.
-# Removal on 2025-05-12. Bugs #944434, #943845, #906249, #680698.
+# Removal on 2025-07-12. Bugs #944434, #943845, #906249, #680698.
 app-shells/esh
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Unmaintained upstream since 2008, doesn't build. x86-only.
-# Removal on 2025-05-12. Bugs #77471, #926465, #941191, #948965.
+# Removal on 2025-07-12. Bugs #77471, #926465, #941191, #948965.
 games-fps/tenebrae
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Dead upstream, fails to compile.
-# Removal on 2025-05-12. Bugs #919185, #882585, #871018, #913572
+# Removal on 2025-07-12. Bugs #919185, #882585, #871018, #913572
 net-analyzer/cryptcat
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Deprecated and no longer maintained upstream. Open security
 # issues. Use media-gfx/fig2dev instead.
-# Removal on 2025-05-12. Bug #917279.
+# Removal on 2025-07-12. Bug #917279.
 media-gfx/transfig
 
 # Hans de Graaff <graaff@gentoo.org> (2025-06-09)
