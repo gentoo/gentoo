@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib dot-a flag-o-matic
 
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
@@ -122,6 +122,7 @@ src_prepare() {
 
 src_configure() {
 	use custom-cflags || strip-flags
+	lto-guarantee-fat
 
 	local mycmakeargs=(
 		-DSDL_STATIC=$(usex static-libs)
@@ -212,4 +213,5 @@ multilib_src_install_all() {
 	rm -r "${ED}"/usr/share/licenses/ || die
 	dodoc {BUGS,CREDITS,README-SDL,TODO,WhatsNew}.txt README.md docs/README*.md
 	use doc && dodoc -r docs/output/html/
+	strip-lto-bytecode "${ED}"
 }

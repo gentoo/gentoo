@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib dot-a
 
 # TODO: switch to new description when non-compat is gone, this is so it is
 # not displayed on packages.gentoo.org which may be confusing for users
@@ -41,6 +41,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-DSDL2COMPAT_TESTS=$(usex test)
 	)
@@ -50,6 +52,8 @@ src_configure() {
 
 src_install() {
 	cmake-multilib_src_install
+
+	strip-lto-bytecode
 
 	rm -r -- "${ED}"/usr/share/licenses || die
 }
