@@ -29,6 +29,7 @@ RDEPEND="
 	xmp? ( >=media-libs/exempi-2.1.0:= )
 	raw? ( media-libs/gexiv2 )
 	>=dev-libs/glib-2.70:2
+	dev-libs/libgudev
 	dev-libs/gobject-introspection
 	cue? ( media-libs/libcue:= )
 	exif? ( >=media-libs/libexif-0.6 )
@@ -43,7 +44,6 @@ RDEPEND="
 	xml? ( >=dev-libs/libxml2-2.6:= )
 	pdf? ( >=app-text/poppler-0.16.0:=[cairo] )
 	playlist? ( >=dev-libs/totem-pl-parser-3:= )
-	sys-apps/util-linux
 
 	gif? ( media-libs/giflib:= )
 
