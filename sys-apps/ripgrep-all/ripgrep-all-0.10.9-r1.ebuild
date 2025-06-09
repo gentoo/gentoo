@@ -267,12 +267,18 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+COMMON_DEPEND="
 	app-arch/xz-utils
 	sys-apps/ripgrep
 "
+RDEPEND="
+	${COMMON_DEPEND}
+	app-arch/zstd:=
+	dev-db/sqlite:3
+	app-arch/bzip2:=
+"
 DEPEND="
-	${RDEPEND}
+	${COMMON_DEPEND}
 	test? (
 		app-text/poppler
 		virtual/pandoc
@@ -285,6 +291,24 @@ QA_FLAGS_IGNORED="
 	usr/bin/rga-fzf-open
 	usr/bin/rga-preproc
 "
+
+src_configure() {
+	export ZSTD_SYS_USE_PKG_CONFIG=1
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+
+	# bzip2-sys requires a pkg-config file
+	# https://github.com/alexcrichton/bzip2-rs/issues/104
+	mkdir "${T}/pkg-config" || die
+	export PKG_CONFIG_PATH=${T}/pkg-config${PKG_CONFIG_PATH+:${PKG_CONFIG_PATH}}
+	cat >> "${T}/pkg-config/bzip2.pc" <<-EOF || die
+		Name: bzip2
+		Version: 9999
+		Description:
+		Libs: -lbz2
+	EOF
+
+	cargo_src_configure
+}
 
 pkg_postinst() {
 	optfeature "pandoc support" virtual/pandoc
