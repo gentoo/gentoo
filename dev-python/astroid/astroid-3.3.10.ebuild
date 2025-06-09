@@ -39,13 +39,6 @@ distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# https://bugs.gentoo.org/951713
-	sed -i -e '/license-files.*Keep in sync/d' pyproject.toml || die
-}
-
 python_test() {
 	local EPYTEST_IGNORE=()
 	local EPYTEST_DESELECT=(
