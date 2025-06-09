@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org python-any-r1 meson
 
 DESCRIPTION="Build infrastructure and utilities for GNOME C++ bindings"
-HOMEPAGE="https://www.gtkmm.org/ https://gitlab.gnome.org/GNOME/mm-common"
+HOMEPAGE="https://gtkmm.gnome.org/ https://gitlab.gnome.org/GNOME/mm-common"
 
 LICENSE="GPL-2"
 SLOT="0"
