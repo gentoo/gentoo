@@ -24,8 +24,8 @@ RDEPEND="
 	>=dev-libs/glib-2.58:2
 	introspection? ( dev-libs/gobject-introspection:= )
 	gtk? (
-		>=x11-libs/gtk+-3.24.41-r1:3[wayland?,X?]
-		>=gui-libs/gtk-4.12.5-r2:4[wayland?,X?]
+		>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
+		>=gui-libs/gtk-4.12.5-r2:4[introspection?,wayland?,X?]
 	)
 	qt6? ( dev-qt/qtbase:6=[gui] )
 "
