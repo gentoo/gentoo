@@ -38,7 +38,6 @@ PATCHES=(
 	# https://bugs.gentoo.org/956695
 	# This is fixed in 48.x releases and upstream insists to use that
 	# instead of backporting the fix in 47
-
 	"${FILESDIR}"/${P}-musl.patch
 )
 
