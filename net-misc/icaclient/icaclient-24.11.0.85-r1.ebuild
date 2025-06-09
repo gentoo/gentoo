@@ -55,7 +55,7 @@ RDEPEND="
 	app-crypt/libsecret
 	dev-libs/glib:2
 	|| (
-		dev-libs/libxml2:2/0
+		dev-libs/libxml2:2/2
 		dev-libs/libxml2-compat
 	)
 	media-fonts/font-adobe-100dpi
