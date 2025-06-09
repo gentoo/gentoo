@@ -70,6 +70,7 @@ COMMON_DEPEND="
 
 	dbus? ( sys-apps/dbus )
 	gui? (
+		dev-libs/md4c
 		media-libs/fontconfig
 		>=media-libs/freetype-2.13.1:2
 		media-libs/harfbuzz:=
@@ -286,7 +287,6 @@ src_configure() {
 		$(qt_feature wayland)
 		$(qt_feature widgets)
 		-DINPUT_opengl=$(usex opengl $(usex gles2-only es2 desktop) no)
-		-DQT_FEATURE_system_textmarkdownreader=OFF # TODO?: package md4c
 	) && use widgets && mycmakeargs+=(
 		# note: qtprintsupport is enabled w/ gui+widgets regardless of USE=cups
 		$(qt_feature cups)
