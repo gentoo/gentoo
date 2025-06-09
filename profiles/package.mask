@@ -112,11 +112,6 @@ dev-util/bin_replace_string
 # package, please use the ~arch version.
 =dev-python/lmdb-1.5.1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-04)
-# Breaks at least app-office/scribus and media-gfx/inkscape right now.
-# Bugs #957137, #957138
-~app-text/poppler-25.06.0
-
 # Sam James <sam@gentoo.org> (2025-06-03)
 # Major changes to packaging as bindings are split out by upstream.
 >=app-crypt/gpgme-2
