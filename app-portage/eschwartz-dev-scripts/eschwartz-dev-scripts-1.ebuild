@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64"
 
 RDEPEND="
 	sys-apps/portage
