@@ -42,7 +42,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.15.1-gui_gentoo.patch
 )
 
-DOCS=( {README,Changelog}.md )
+# $S is there for bug 957684
+DOCS=( "${S}"/{README,Changelog}.md )
 
 src_unpack() {
 	default
