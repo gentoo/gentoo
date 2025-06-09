@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 LUA_COMPAT=( lua5-{3..4} )
 
-inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single \
+inherit check-reqs bash-completion-r1 cmake flag-o-matic lua-single multiprocessing \
 		python-r1 udev readme.gentoo-r1 toolchain-funcs systemd tmpfiles
 
 XSIMD_HASH="aeec9c872c8b475dedd7781336710f2dd2666cb2"
@@ -443,6 +443,7 @@ src_configure() {
 }
 
 src_compile() {
+	export CMAKE_BUILD_PARALLEL_LEVEL=$(makeopts_jobs)
 	cmake_build all
 
 	# we have to do this here to prevent from building everything multiple times
