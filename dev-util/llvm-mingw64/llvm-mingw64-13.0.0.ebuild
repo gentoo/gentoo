@@ -79,6 +79,7 @@ src_compile() {
 
 	filter-flags '-fuse-ld=*'
 	filter-flags '-mfunction-return=thunk*' #878849
+	filter-flags '-mbranch-protection=*' #957683
 
 	use custom-cflags || filter-flags '-fstack-protector*' #931512
 
