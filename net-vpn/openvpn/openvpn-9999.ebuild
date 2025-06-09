@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools systemd linux-info tmpfiles
+inherit autotools linux-info systemd tmpfiles
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
 HOMEPAGE="https://openvpn.net"
@@ -16,39 +16,37 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 BSD GPL-2+ GPL-2+-with-openssl-exception !mbedtls? ( || ( SSLeay openssl ) )"
 SLOT="0"
 
-IUSE="dco down-root examples inotify iproute2 +lz4 +lzo mbedtls +openssl"
+IUSE="dco down-root examples inotify iproute2 +lz4 +lzo mbedtls"
 IUSE+=" pam pkcs11 +plugins selinux systemd test"
 
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
-	^^ ( openssl mbedtls )
-	pkcs11? ( !mbedtls )
-	!plugins? ( !pam !down-root )
-	inotify? ( plugins )
 	dco? ( !iproute2 )
+	pkcs11? ( !mbedtls )
+	!plugins? ( !inotify !pam !down-root )
 "
 
 COMMON_DEPEND="
-	kernel_linux? (
-		iproute2? ( sys-apps/iproute2[-minimal] )
+	sys-libs/libcap-ng:=
+	dco? (
+		>=dev-libs/libnl-3.2.29:=
+		>=net-vpn/ovpn-dco-0.2
 	)
+	kernel_linux? ( iproute2? ( sys-apps/iproute2[-minimal] ) )
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
 	mbedtls? ( net-libs/mbedtls:0= )
-	openssl? ( >=dev-libs/openssl-1.0.2:0= )
+	!mbedtls? ( >=dev-libs/openssl-1.0.2:0= )
 	pam? ( sys-libs/pam )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
 	systemd? ( sys-apps/systemd )
-	dco? ( >=net-vpn/ovpn-dco-0.2 >=dev-libs/libnl-3.2.29:= )
-	sys-libs/libcap-ng:=
 "
 
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
+[[ ${PV} = "9999" ]] && BDEPEND+=" dev-python/docutils"
 
 DEPEND="
 	${COMMON_DEPEND}
@@ -60,47 +58,37 @@ RDEPEND="
 	acct-user/openvpn
 	selinux? ( sec-policy/selinux-openvpn )
 "
-
-if [[ ${PV} = "9999" ]]; then
-	BDEPEND+=" dev-python/docutils"
-fi
+DOCS=( ChangeLog PORTS README )
 
 pkg_setup() {
 	local CONFIG_CHECK="~TUN"
 	linux-info_pkg_setup
 }
-
 src_prepare() {
 	default
 
-	eautoreconf
+	# when ebuild is live OR we patched it
+	[[ ${PV} = "9999" || ${PATCHES} ]] && eautoreconf
 }
 
 src_configure() {
-	local -a myeconfargs
-
-	if ! use mbedtls; then
-		myeconfargs+=(
-			$(use_enable pkcs11)
-		)
-	fi
-
-	myeconfargs+=(
-		$(use_enable inotify async-push)
+	local myeconfargs+=(
 		--with-crypto-library=$(usex mbedtls mbedtls openssl)
+		$(use_enable dco)
+		$(use_enable down-root plugin-down-root)
+		$(use_enable inotify async-push)
+		$(use_enable iproute2)
 		$(use_enable lz4)
 		$(use_enable lzo)
+		$(use_enable pkcs11)
 		$(use_enable plugins)
-		$(use_enable iproute2)
 		$(use_enable pam plugin-auth-pam)
-		$(use_enable down-root plugin-down-root)
 		$(use_enable systemd)
-		$(use_enable dco)
 	)
 
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 		TMPFILES_DIR="/usr/lib/tmpfiles.d" \
-		IPROUTE=$(usex iproute2 '/bin/ip' '') \
+		IPROUTE=$(usev iproute2 /bin/ip) \
 		econf "${myeconfargs[@]}"
 }
 
@@ -110,46 +98,35 @@ src_test() {
 	elog "Running top-level tests"
 	emake check
 
-	pushd tests/unit_tests &>/dev/null || die
 	elog "Running unit tests"
-	emake check
-	popd &>/dev/null || die
+	emake -C tests/unit_tests check
 }
 
 src_install() {
 	default
 
-	find "${ED}/usr" -name '*.la' -delete || die
-
-	# install documentation
-	dodoc AUTHORS ChangeLog PORTS README
+	find "${ED}/usr" -type f -name "*.la" -delete || die
 
 	# Install some helper scripts
 	keepdir /etc/openvpn
 	exeinto /etc/openvpn
-	doexe "${FILESDIR}/up.sh"
-	doexe "${FILESDIR}/down.sh"
+	doexe "${FILESDIR}"/{up,down}.sh
 
 	# Install the init script and config file
 	newinitd "${FILESDIR}/${PN}-2.1.init" openvpn
 	newconfd "${FILESDIR}/${PN}-2.1.conf" openvpn
 
-	# install examples, controlled by the respective useflag
-	if use examples ; then
-		# (is the below comment relevant anymore?)
-		## dodoc does not supportly support directory traversal, #15193
+	# Install examples, controlled by the respective useflag
+	if use examples; then
 		docinto examples
 		dodoc -r sample contrib
 	fi
-
-	# https://bugs.gentoo.org/755680#c3
-	doman doc/openvpn.8
 }
 
 pkg_postinst() {
 	tmpfiles_process openvpn.conf
 
-	if systemd_is_booted || has_version sys-apps/systemd ; then
+	if systemd_is_booted || has_version sys-apps/systemd; then
 		elog "In order to use OpenVPN with systemd please use the correct systemd service file."
 		elog
 		elog "server:"
@@ -179,7 +156,7 @@ pkg_postinst() {
 		elog "stop one vpn and start another if you need to."
 	fi
 
-	if grep -Eq "^[ \t]*(up|down)[ \t].*" "${ROOT}/etc/openvpn"/*.conf 2>/dev/null ; then
+	if grep -Eq "^[ \t]*(up|down)[ \t].*" "${ROOT}/etc/openvpn"/*.conf 2>/dev/null; then
 		ewarn
 		ewarn "WARNING: If you use the remote keyword then you are deemed to be"
 		ewarn "a client by our init script and as such we force up,down scripts."
@@ -187,7 +164,7 @@ pkg_postinst() {
 		ewarn "can move your scripts to."
 	fi
 
-	if use plugins ; then
+	if use plugins; then
 		einfo
 		einfo "plugins have been installed into /usr/$(get_libdir)/${PN}/plugins"
 	fi
