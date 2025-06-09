@@ -91,6 +91,7 @@ src_configure() {
 		-DBUILD_FEXCONFIG=FALSE \
 		-DMINGW_BUILD=1 \
 		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=true \
 		"${S}" || die
 	popd >/dev/null || die
 }
