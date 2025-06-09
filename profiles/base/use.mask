@@ -63,10 +63,6 @@ pch
 # app-office/texmacs is package.mask'd. Bug #436400
 texmacs
 
-# Matt Turner <mattst88@gentoo.org> (2018-11-11)
-# d3d9 only works on amd64/x86.
-d3d9
-
 # masking here and unmasking in default/linux/
 kmod
 
