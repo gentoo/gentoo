@@ -56,7 +56,7 @@ PATCHES=(
 
 src_unpack() {
 	default
-	unpack "${P}_${COMMIT}_pythoncapi-compat.gh.tar.gz" || die
+	unpack "${P}_${COMMIT}_pythoncapi-compat.gh.tar.gz"
 }
 
 src_prepare() {
