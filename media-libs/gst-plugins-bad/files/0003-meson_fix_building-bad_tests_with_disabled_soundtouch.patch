@@ -1,0 +1,31 @@
+From 12607d67b1e05e1770aadbf1199aabd280b7584f Mon Sep 17 00:00:00 2001
+From: Jakub Adam <jakub.adam@collabora.com>
+Date: Fri, 6 Jun 2025 16:24:19 +0200
+Subject: [PATCH] meson: fix building -bad tests with disabled soundtouch
+
+Fixes an error from Meson:
+
+../subprojects/gst-plugins-bad/tests/validate/meson.build:16:93: ERROR:
+Unknown variable "soundtouch_dep"
+
+Update: removing "subprojects/gst-plugins-bad/" path from original patch
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9190>
+---
+ subprojects/gst-plugins-bad/ext/soundtouch/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ext/soundtouch/meson.build b/ext/soundtouch/meson.build
+index 8ea3f265769f..2b6b982c8031 100644
+--- a/ext/soundtouch/meson.build
++++ b/ext/soundtouch/meson.build
+@@ -20,6 +20,7 @@ plugin_sources += {
+ 
+ soundtouch_cargs = ['-DHAVE_SOUNDTOUCH']
+ if get_option('soundtouch').disabled()
++  soundtouch_dep = dependency('', required: false)
+   subdir_done()
+ endif
+ 
+-- 
+GitLab

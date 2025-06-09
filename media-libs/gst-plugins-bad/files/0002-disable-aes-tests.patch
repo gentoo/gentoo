@@ -1,0 +1,17 @@
+The same problem was in gstreamer 1.24 and appears once again:
+
+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1660
+
+Disable AES encoder/decoder tests for now.
+
+--- a/tests/check/meson.build
++++ b/tests/check/meson.build
+@@ -26,8 +26,6 @@
+ 
+ # name, condition when to skip the test and extra dependencies
+ base_tests = [
+-  [['elements/aesenc.c'], not aes_dep.found(), [aes_dep]],
+-  [['elements/aesdec.c'], not aes_dep.found(), [aes_dep]],
+   [['elements/aiffparse.c'], get_option('aiff').disabled()],
+   [['elements/asfmux.c'], get_option('asfmux').disabled()],
+   [['elements/audiovisualizer.c'], get_option('audiovisualizers').disabled()],
