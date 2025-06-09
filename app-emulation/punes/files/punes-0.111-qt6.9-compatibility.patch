@@ -1,0 +1,50 @@
+From https://github.com/punesemu/puNES/commit/ff906e0a79eeac9a2d16783e0accf65748bb275e
+From: Fabio Cavallo <punes.development@gmail.com>
+Date: Fri, 9 May 2025 16:24:54 +0200
+Subject: [PATCH] Updated code for Qt 6.9.0 compatibility (#423).
+
+--- a/src/gui/qt.cpp
++++ b/src/gui/qt.cpp
+@@ -1137,8 +1137,8 @@ BYTE gui_load_lut(void *l, const uTCHAR *path) {
+ 	return (EXIT_OK);
+ }
+ void gui_save_screenshot(int w, int h, int stride, char *buffer, BYTE flip) {
+-	QString basename = QString(uQString(gui_data_folder())) + QString(SCRSHT_FOLDER) + "/"
+-		+ QFileInfo(uQString(info.rom.file)).completeBaseName();
++	QString basename = QString(uQString(gui_data_folder())) + QString(SCRSHT_FOLDER) + "/" +
++		QFileInfo(uQString(info.rom.file)).completeBaseName();
+ 	QImage screenshot = QImage((uchar *)buffer, w, h, stride, QImage::Format_RGB32);
+ 	QFile file;
+ 	uint count = 0;
+@@ -1148,7 +1148,7 @@ void gui_save_screenshot(int w, int h, int stride, char *buffer, BYTE flip) {
+ 	}
+ 
+ 	for (count = 1; count < 999999; count++) {
+-		QString final = basename + QString("_%1.png").arg(count, 6, 'd', 0, '0');
++		QString final = basename + QString("_%1.png").arg(count, 6, 10, QChar(u'0'));
+ 
+ 		if (!QFileInfo::exists(final)) {
+ 			file.setFileName(final);
+@@ -1157,7 +1157,11 @@ void gui_save_screenshot(int w, int h, int stride, char *buffer, BYTE flip) {
+ 	}
+ 
+ 	if (flip) {
++#if QT_VERSION < QT_VERSION_CHECK(6, 9, 0)
+ 		screenshot = screenshot.mirrored(false, true);
++#else
++		screenshot = screenshot.flipped(Qt::Vertical);
++#endif
+ 	}
+ 
+ 	file.open(QIODevice::WriteOnly);
+--- a/src/gui/wdgStatusBar.cpp
++++ b/src/gui/wdgStatusBar.cpp
+@@ -137,7 +137,7 @@ void alignmentStatusBar::update_label(void) {
+ 	if (cfg->ppu_alignment == PPU_ALIGMENT_DEFAULT) {
+ 		hide();
+ 	} else {
+-		label->setText(QString("c%0p%1").arg(ppu_alignment.cpu, 2, 'd', 0, '0').arg(ppu_alignment.ppu));
++		label->setText(QString("c%0p%1").arg(ppu_alignment.cpu, 2, 10, QChar(u'0')).arg(ppu_alignment.ppu));
+ 		show();
+ 	}
+ }
