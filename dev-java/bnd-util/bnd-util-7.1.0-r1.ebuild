@@ -17,11 +17,13 @@ LICENSE="Apache-2.0 EPL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
 
-CP_DEPEND="dev-java/osgi-annotation:0"
+CP_DEPEND="
+	dev-java/osgi-annotation:0
+	~dev-java/libg-${PV}:0
+"
 
 DEPEND="${CP_DEPEND}
 	~dev-java/bnd-annotation-${PV}:0
-	~dev-java/libg-${PV}:0
 	dev-java/osgi-cmpn:8
 	dev-java/osgi-core:0
 	dev-java/slf4j-api:0
@@ -35,7 +37,6 @@ RDEPEND="${CP_DEPEND}
 JAVA_AUTOMATIC_MODULE_NAME="biz.aQute.bnd.util"
 JAVA_CLASSPATH_EXTRA="
 	bnd-annotation
-	libg
 	osgi-cmpn-8
 	osgi-core
 	slf4j-api
