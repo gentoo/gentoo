@@ -23,6 +23,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
+	!<app-shells/bash-completion-2.16.0-r1
 	>=dev-libs/glib-2.44:2[${MULTILIB_USEDEP}]
 	gcrypt? ( >=dev-libs/libgcrypt-1.2.2:0=[${MULTILIB_USEDEP}] )
 	gnutls? ( >=net-libs/gnutls-3.8.2:0=[${MULTILIB_USEDEP}] )
