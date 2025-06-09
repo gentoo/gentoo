@@ -48,10 +48,6 @@ dev-perl/Template-Toolkit gd latex vim-syntax
 # dev-vcs/mercurial is not keyworded on hppa
 app-eselect/eselect-repository mercurial
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
-# media-video/pipewire is not keyworded here.
-dev-qt/qtmultimedia:6 screencast
-
 # Christopher Byrne <salah.coronya@gmail.com> (2024-12-01)
 # requires dev-libs/hidapi to be keyworded
 dev-libs/libfido2 hidapi
