@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
-
+PYTHON_FULLY_TESTED=( python3_{11..13} )
+PYTHON_COMPAT=( "${PYTHON_FULLY_TESTED[@]}" python3_14 )
 inherit distutils-r1 optfeature
 
 DESCRIPTION="Python library for serializing any arbitrary object graph into JSON"
@@ -32,8 +32,10 @@ BDEPEND="
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
 		dev-python/ujson[${PYTHON_USEDEP}]
 		test-full? (
-			dev-python/gmpy2[${PYTHON_USEDEP}]
-			dev-python/pandas[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/gmpy2[${PYTHON_USEDEP}]
+				dev-python/pandas[${PYTHON_USEDEP}]
+			' "${PYTHON_FULLY_TESTED[@]}")
 		)
 	)
 "
