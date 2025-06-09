@@ -227,6 +227,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-10.6.11-gssapi.patch
 	eapply "${FILESDIR}"/${PN}-10.6.12-gcc-13.patch
 	eapply "${WORKDIR}"/${PN}-10.6-columnstore-with-boost-1.85.patch
+	eapply "${FILESDIR}"/${PN}-10.6.21-debug.patch
 
 	eapply_user
 
