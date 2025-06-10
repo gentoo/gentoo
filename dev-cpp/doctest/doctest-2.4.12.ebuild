@@ -25,6 +25,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# skip false positive detection in examples, bug #957418
+	local CMAKE_QA_COMPAT_SKIP=1
+
 	local mycmakeargs=(
 		-DDOCTEST_WITH_TESTS=$(usex test)
 	)
