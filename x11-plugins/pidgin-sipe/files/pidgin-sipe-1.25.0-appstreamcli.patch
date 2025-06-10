@@ -1,0 +1,27 @@
+
+https://repo.or.cz/siplcs.git/commit/cb7e7be214a03acb4348c65b0e2194e86c5d55f4
+Bug: https://bugs.gentoo.org/730118
+
+From: Stefan Becker <chemobejk@gmail.com>
+Date: Mon, 22 Jan 2024 22:53:54 +0200
+Subject: [PATCH] purple: add support for latest appstreamcli
+
+Newest version no longer accepts the --nonet option. Add another variant
+that uses --no-net instead.
+--- a/src/purple/Makefile.am
++++ b/src/purple/Makefile.am
+@@ -160,7 +160,8 @@ check: validate-metainfo
+ 
+ .PHONY: validate-metainfo
+ validate-metainfo: $(pidginmetainfofile_DATA)
+-	appstreamcli validate --pedantic --nonet $< || \
+-	appstreamcli validate --pedantic         $< || \
+-	appstream-validate                       $<
++	appstreamcli validate --pedantic --no-net $< || \
++	appstreamcli validate --pedantic --nonet  $< || \
++	appstreamcli validate --pedantic          $< || \
++	appstream-validate                        $<
+ endif
+-- 
+2.11.4.GIT
+

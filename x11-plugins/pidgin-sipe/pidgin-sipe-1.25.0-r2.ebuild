@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Pidgin Plug-in SIPE (Sip Exchange Protocol)"
-HOMEPAGE="http://sipe.sourceforge.net/"
+HOMEPAGE="https://sipe.sourceforge.io/"
 SRC_URI="https://downloads.sourceforge.net/sipe/${P}.tar.gz"
 
 inherit autotools
@@ -41,12 +41,15 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-libs/appstream
 	dev-util/intltool
 	virtual/pkgconfig
 "
 
 src_prepare() {
 	eapply "${FILESDIR}"/${PN}-1.25.0-bashisms.patch
+	eapply "${FILESDIR}"/${PN}-1.25.0-libxml2.patch
+	eapply "${FILESDIR}"/${PN}-1.25.0-appstreamcli.patch
 
 	eautoreconf
 	default
