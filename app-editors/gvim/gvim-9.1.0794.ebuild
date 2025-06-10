@@ -9,7 +9,7 @@ VIM_VERSION="9.1"
 VIM_PATCHES_VERSION="9.0.2092"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby31 ruby32"
 
@@ -24,10 +24,10 @@ else
 		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
-S="${WORKDIR}"/vim-${PV}
 
 DESCRIPTION="GUI version of the Vim text editor"
 HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
+S="${WORKDIR}"/vim-${PV}
 
 LICENSE="vim"
 SLOT="0"
