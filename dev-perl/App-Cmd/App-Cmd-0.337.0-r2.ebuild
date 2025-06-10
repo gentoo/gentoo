@@ -15,7 +15,6 @@ IUSE="minimal"
 
 RDEPEND="
 	>=dev-perl/Capture-Tiny-0.130.0
-	virtual/perl-Carp
 	>=dev-perl/Class-Load-0.60.0
 	dev-perl/Data-OptList
 	>=virtual/perl-Getopt-Long-2.390.0
@@ -25,17 +24,13 @@ RDEPEND="
 	dev-perl/String-RewritePrefix
 	dev-perl/Sub-Exporter
 	dev-perl/Sub-Install
-	virtual/perl-parent
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		!minimal? (
 			>=virtual/perl-CPAN-Meta-2.120.900
 		)
-		virtual/perl-Data-Dumper
-		virtual/perl-File-Spec
 		dev-perl/Test-Fatal
 		>=virtual/perl-Test-Simple-0.960.0
 	)
