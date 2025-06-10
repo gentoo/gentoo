@@ -12,6 +12,9 @@
 		<flag name="xmalloc">Add support for xmalloc (abort-on-out-of-memory)</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/jemalloc/jemalloc/issues</bugs-to>
+		<changelog>https://github.com/jemalloc/jemalloc/releases</changelog>
+		<doc>https://github.com/jemalloc/jemalloc/wiki</doc>
 		<remote-id type="github">jemalloc/jemalloc</remote-id>
 	</upstream>
 </pkgmetadata>
