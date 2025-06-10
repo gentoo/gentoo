@@ -598,7 +598,7 @@ java-pkg-simple_src_compile() {
 
 			# compile sources in ${reldir}
 			ejavac \
-				-d target/versions/${release} \
+				-d ${classes}/META-INF/versions/${release} \
 				-encoding ${JAVA_ENCODING} \
 				-classpath "${modulepath}:${JAVA_INTERMEDIATE_JAR_NAME}.jar" \
 				--module-path "${modulepath}:${JAVA_INTERMEDIATE_JAR_NAME}.jar" \
@@ -606,7 +606,7 @@ java-pkg-simple_src_compile() {
 				--patch-module "${JAVA_INTERMEDIATE_JAR_NAME}"="${JAVA_INTERMEDIATE_JAR_NAME}.jar" \
 				${JAVAC_ARGS} $(find ${reldir} -type f -name '*.java')
 
-			JAVA_GENTOO_CLASSPATH_EXTRA+=":target/versions/${release}"
+			JAVA_GENTOO_CLASSPATH_EXTRA+=":${classes}/META-INF/versions/${release}"
 		done
 
 		JAVA_PKG_WANT_SOURCE=${tmp_source}
@@ -681,21 +681,7 @@ java-pkg-simple_src_compile() {
 	fi
 
 	# package
-	local jar_args multi_release=""
-	if [[ -n ${JAVA_RELEASE_SRC_DIRS[@]} ]]; then
-		# Preparing the multi_release variable. From multi-release compilation
-		# the release-specific classes are sorted in target/versions/${release}
-		# directories.
-
-		# TODO:
-		# Could this possibly be simplified with printf?
-		pushd target/versions > /dev/null || die
-			for version in $(ls -d * | sort -g); do
-				debug-print "Version is ${version}"
-				multi_release="${multi_release} --release ${version} -C target/versions/${version} . "
-			done
-		popd > /dev/null || die
-	fi
+	local jar_args
 
 	if [[ -e ${classes}/META-INF/MANIFEST.MF ]]; then
 		sed '/Created-By: /Id' -i ${classes}/META-INF/MANIFEST.MF
@@ -703,7 +689,14 @@ java-pkg-simple_src_compile() {
 	else
 		jar_args="cf ${JAVA_JAR_FILENAME}"
 	fi
-	jar ${jar_args} -C ${classes} . ${multi_release} || die "jar failed"
+	jar ${jar_args} -C ${classes} . || die "jar failed"
+
+	if [[ -n ${JAVA_RELEASE_SRC_DIRS[@]} ]]; then
+		# From multi-release compilation the release-specific classes are sorted
+		# in target/classes/META-INF/versions/${release} directories.
+		echo 'Multi-Release: true' >> "${T}/add-to-MANIFEST.MF" || die "add true"
+	fi
+
 	if  [[ -n "${JAVA_AUTOMATIC_MODULE_NAME}" ]]; then
 		echo "Automatic-Module-Name: ${JAVA_AUTOMATIC_MODULE_NAME}" \
 			>> "${T}/add-to-MANIFEST.MF" || die "adding module name failed"
