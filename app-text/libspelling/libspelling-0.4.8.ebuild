@@ -34,6 +34,10 @@ BDEPEND="
 	gtk-doc? ( dev-util/gi-docgen )
 "
 
+PATCHES=(
+	"${FILESDIR}/Disable-testsuite_test-engine.patch"
+)
+
 src_prepare() {
 	use vala && vala_setup
 	default
