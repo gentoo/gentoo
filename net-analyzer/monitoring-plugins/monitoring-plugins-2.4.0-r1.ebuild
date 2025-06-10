@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -40,7 +40,7 @@ REAL_DEPEND="dev-lang/perl
 	radius? ( net-dialup/freeradius-client )"
 
 DEPEND="${REAL_DEPEND}
-	dns? ( net-dns/bind-tools )
+	dns? ( net-dns/bind )
 	game? ( games-util/qstat )
 	fping? ( net-analyzer/fping )
 	samba? ( net-fs/samba )
