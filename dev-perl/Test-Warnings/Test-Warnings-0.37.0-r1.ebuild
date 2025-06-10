@@ -15,10 +15,6 @@ IUSE="suggested"
 
 RDEPEND="
 	!<dev-perl/File-pushd-1.4.0
-	virtual/perl-Carp
-	virtual/perl-Exporter
-	virtual/perl-Test-Simple
-	virtual/perl-parent
 "
 BDEPEND="
 	${RDEPEND}
@@ -28,9 +24,6 @@ BDEPEND="
 			>=dev-perl/CPAN-Meta-Check-0.11.0
 		)
 		>=virtual/perl-CPAN-Meta-2.120.900
-		virtual/perl-File-Spec
 		>=virtual/perl-Test-Simple-0.940.0
-		virtual/perl-if
-		virtual/perl-version
 	)
 "
