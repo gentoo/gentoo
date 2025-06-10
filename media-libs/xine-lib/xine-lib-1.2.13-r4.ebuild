@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	NLS_RDEPEND="virtual/libintl"
 else
 	SRC_URI="https://downloads.sourceforge.net/xine/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 arm64 ~hppa ~ppc ppc64 ~riscv ~x86"
 	S="${WORKDIR}"/${PN}-$(ver_cut 1-2)
 
 	NLS_IUSE="nls"
