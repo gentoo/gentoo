@@ -13,13 +13,8 @@ LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
-RDEPEND="
-	virtual/perl-Exporter
-"
 BDEPEND="
-	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.640.0
-	virtual/perl-File-Spec
 	test? (
 		>=virtual/perl-Test-Simple-1.0.0
 	)
