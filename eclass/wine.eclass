@@ -423,6 +423,14 @@ wine_pkg_postinst() {
 		fi
 	fi
 
+	if use arm64 && use wow64; then
+		ewarn
+		ewarn "You have enabled x86 emulation via FEX-Emu's xtajit implementation."
+		ewarn "This currently *does not* include amd64/x86_64/x64 emulation. Only i386"
+		ewarn "and ARM64 Windows applications are supported at this time. Please do not"
+		ewarn "file bugs about amd64 applications."
+	fi
+
 	eselect wine update --if-unset || die
 }
 
