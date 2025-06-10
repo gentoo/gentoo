@@ -15,7 +15,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 RDEPEND="
-	virtual/perl-Carp
 	dev-perl/DateTime-Format-Mail
 	dev-perl/DateTime-Format-W3CDTF
 	dev-perl/HTML-Parser
@@ -23,11 +22,8 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/Module-Build-0.280.0
 	test? (
-		virtual/perl-File-Spec
-		virtual/perl-IO
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
