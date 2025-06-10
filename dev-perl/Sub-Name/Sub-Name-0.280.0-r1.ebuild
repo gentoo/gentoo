@@ -15,18 +15,13 @@ IUSE="suggested"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0
-	virtual/perl-XSLoader
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		suggested? (
 			dev-perl/Devel-CheckBin
 		)
-		virtual/perl-File-Spec
-		virtual/perl-Module-Metadata
 		>=virtual/perl-Test-Simple-0.880.0
-		virtual/perl-if
 	)
 "
