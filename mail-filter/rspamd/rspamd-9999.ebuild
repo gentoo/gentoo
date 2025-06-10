@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -59,7 +59,6 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-cpp/doctest
-	dev-libs/libfmt:=
 	>=dev-libs/xxhash-0.8.0
 "
 BDEPEND="
@@ -69,15 +68,18 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/rspamd-3.6-cmake-lua-version.patch"
-	"${FILESDIR}/rspamd-3.6-unbundle-lua.patch"
-	"${FILESDIR}/rspamd-3.6-unbundle-snowball.patch"
+	"${FILESDIR}/${PN}-3.12-cmake-lua-version.patch"
+	"${FILESDIR}/${PN}-3.12-unbundle-lua.patch"
+	"${FILESDIR}/${PN}-3.12-unbundle-snowball.patch"
+
+	# upstream issue https://github.com/rspamd/rspamd/issues/5263
+	"${FILESDIR}/${PN}-3.11.1-punycode-icu-76.1.patch"
 )
 
 src_prepare() {
 	cmake_src_prepare
 
-	rm -vrf contrib/{doctest,fmt,lua-{argparse,bit},snowball,xxhash,zstd} || die
+	rm -vrf contrib/{doctest,lua-{argparse,bit},snowball,xxhash,zstd} || die
 
 	> cmake/Toolset.cmake || die #827550
 
@@ -95,7 +97,6 @@ src_configure() {
 		-DLIBDIR="/usr/$(get_libdir)/rspamd"
 
 		-DSYSTEM_DOCTEST=ON
-		-DSYSTEM_FMT=ON
 		-DSYSTEM_XXHASH=ON
 		-DSYSTEM_ZSTD=ON
 
