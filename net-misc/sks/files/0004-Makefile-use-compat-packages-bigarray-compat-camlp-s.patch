@@ -1,0 +1,27 @@
+From da84291b246c5261d4dd56ec6a8e465d6a547203 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 10 Jun 2025 10:21:10 +0100
+Subject: [PATCH 4/4] Makefile: use compat packages (bigarray-compat,
+ camlp-streams)
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 739a0b1..41fac08 100644
+--- a/Makefile
++++ b/Makefile
+@@ -52,7 +52,7 @@ else
+ WARNERR=
+ endif
+ 
+-CAMLINCLUDE= -package cryptokit,unix,str,bigarray,num -I bdb
++CAMLINCLUDE= -package cryptokit,unix,str,bigarray-compat,num,camlp-streams -I bdb
+ COMMONCAMLFLAGS=$(CAMLINCLUDE) $(OCAMLLIB) $(CAMLCFLAGS) $(CAMLLDFLAGS) -ccopt -Lbdb -annot -bin-annot $(WARNERR)
+ OCAMLDEP=ocamldep
+ CAMLLIBS=bdb.cma
+-- 
+2.49.0
+
