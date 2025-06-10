@@ -1,0 +1,16 @@
+fix case handling of shell script
+diff --git a/configure.in b/configure.in
+index 8596d93..fc77bf0 100644
+--- a/configure.in
++++ b/configure.in
+@@ -104,8 +104,8 @@ if $try_usb; then
+ 	fi
+ fi
+ case "$usb_msg" in
+-	yes*) AC_DEFINE(HAVE_USB,1,[Whether you have USB support enabled])
+-	*     ;;
++	yes*) AC_DEFINE(HAVE_USB,1,[Whether you have USB support enabled]) ;;
++	*)    ;;
+ esac
+ dnl AM_CONDITIONAL(ENABLEUSB, test "x$try_usb" = "true")
+ 
