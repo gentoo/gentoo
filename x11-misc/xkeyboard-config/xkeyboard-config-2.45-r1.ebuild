@@ -74,7 +74,7 @@ src_install() {
 
 pkg_preinst() {
 	# Avoid touching EROOT if not needed, and use -f just-in-case anyway
-	if [[ -d ${EROOT}/usr/share/X11/xkb ]]; then
+	if [[ -d ${EROOT}/usr/share/X11/xkb && ! -L ${EROOT}/usr/share/X11/xkb ]]; then
 		rm -rf "${EROOT}"/usr/share/X11/xkb || die
 	fi
 	mv "${ED}"/usr/share/X11/xkb{.workaround,} || die
