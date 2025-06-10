@@ -58,6 +58,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.0-rm-vendor.patch
 	# https://github.com/nullobsi/cantata/pull/51.patch
 	"${FILESDIR}"/${PN}-3.3.0-cdparanoia.patch
+	# Fix ODR violations with cddb or udisks enabled
+	# https://github.com/nullobsi/cantata/pull/71.patch
+	"${FILESDIR}"/${PN}-3.3.0-fix_odr.patch
 )
 
 src_prepare() {
