@@ -19,6 +19,8 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/Disable-the-examples-test-suite.patch"
+	"${FILESDIR}/localsearch-3.8.2-ontologies.patch"
+	"${FILESDIR}/localsearch-3.8.2-ffmpeg-7.patch"
 )
 
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead);

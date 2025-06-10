@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/957768
+https://gitlab.gnome.org/GNOME/localsearch/-/commit/5e246f9a9423b1baf15ad4f4c4194a22f3caf247
+
+From 5e246f9a9423b1baf15ad4f4c4194a22f3caf247 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Sat, 28 Dec 2024 23:54:21 +0100
+Subject: [PATCH] extract: Update libav extractor to ffmpeg 7.x
+
+Adapt to API changes in that version.
+---
+ src/tracker-extract/tracker-extract-libav.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/tracker-extract/tracker-extract-libav.c b/src/tracker-extract/tracker-extract-libav.c
+index f53371574..bac445600 100644
+--- a/src/tracker-extract/tracker-extract-libav.c
++++ b/src/tracker-extract/tracker-extract-libav.c
+@@ -101,8 +101,8 @@ tracker_extract_get_metadata (TrackerExtractInfo  *info,
+ 		if (audio_stream->codecpar->sample_rate > 0) {
+ 			tracker_resource_set_int64 (metadata, "nfo:sampleRate", audio_stream->codecpar->sample_rate);
+ 		}
+-		if (audio_stream->codecpar->channels > 0) {
+-			tracker_resource_set_int64 (metadata, "nfo:channels", audio_stream->codecpar->channels);
++		if (audio_stream->codecpar->ch_layout.nb_channels > 0) {
++			tracker_resource_set_int64 (metadata, "nfo:channels", audio_stream->codecpar->ch_layout.nb_channels);
+ 		}
+ 	}
+ 
+-- 
+GitLab
