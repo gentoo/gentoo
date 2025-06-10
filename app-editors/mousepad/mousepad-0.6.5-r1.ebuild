@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome2-utils meson xdg-utils
+inherit flag-o-matic gnome2-utils meson xdg-utils
 
 DESCRIPTION="GTK+-based editor for the Xfce Desktop Environment"
 HOMEPAGE="
@@ -15,11 +15,11 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
-IUSE="policykit spell +shortcuts"
+IUSE="policykit spell +shortcuts X"
 
 DEPEND="
 	>=dev-libs/glib-2.56.2
-	>=x11-libs/gtk+-3.22.0:3
+	>=x11-libs/gtk+-3.22.0:3[X?]
 	>=x11-libs/gtksourceview-4.0.0:4
 	policykit? ( >=sys-auth/polkit-0.102 )
 	spell? ( >=app-text/gspell-1.6.0 )
@@ -34,6 +34,9 @@ BDEPEND="
 "
 
 src_configure() {
+	# defang automagic dependencies
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Dgtksourceview4=enabled
 		$(meson_feature policykit polkit)
