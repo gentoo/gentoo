@@ -15,13 +15,9 @@ IUSE="minimal"
 
 RDEPEND="
 	!minimal? ( >=dev-perl/Ref-Util-0.112.0 )
-	virtual/perl-Carp
 	dev-perl/Clone
 	dev-perl/Devel-StackTrace
 	dev-perl/Eval-Closure
-	virtual/perl-Encode
-	virtual/perl-Exporter
-	virtual/perl-IO
 	dev-perl/MRO-Compat
 	dev-perl/Module-Runtime
 	>=dev-perl/Role-Tiny-1.3.3
@@ -31,14 +27,11 @@ RDEPEND="
 	>=virtual/perl-Test-Simple-0.960.0
 	dev-perl/Try-Tiny
 	dev-perl/XString
-	virtual/perl-parent
 	>=virtual/perl-version-0.830.0
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		virtual/perl-File-Spec
 		dev-perl/Test-Needs
 	)
 "
