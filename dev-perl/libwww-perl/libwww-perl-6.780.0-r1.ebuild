@@ -14,24 +14,18 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 IUSE="ssl"
 
 RDEPEND="
-	virtual/perl-Digest-MD5
 	>=virtual/perl-Encode-2.120.0
 	dev-perl/Encode-Locale
 	>=dev-perl/File-Listing-6.0.0
-	virtual/perl-File-Temp
-	virtual/perl-Getopt-Long
 	>=dev-perl/HTML-Parser-3.710.0
 	>=dev-perl/HTTP-Cookies-6.0.0
 	>=dev-perl/HTTP-Date-6.0.0
 	>=dev-perl/HTTP-Negotiate-6.0.0
 	>=dev-perl/HTTP-Message-6.180.0
-	virtual/perl-IO
 	>=dev-perl/LWP-MediaTypes-6.0.0
 	>=virtual/perl-MIME-Base64-2.100.0
-	virtual/perl-Module-Load
 	>=virtual/perl-libnet-2.580.0
 	>=dev-perl/Net-HTTP-6.180.0
-	virtual/perl-Scalar-List-Utils
 	dev-perl/Try-Tiny
 	>=dev-perl/URI-1.100.0
 	>=dev-perl/WWW-RobotRules-6.0.0
@@ -39,10 +33,7 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	virtual/perl-Getopt-Long
 	test? (
-		virtual/perl-File-Spec
 		dev-perl/HTTP-CookieJar
 		>=dev-perl/HTTP-Daemon-6.120.0
 		dev-perl/Test-Fatal
