@@ -136,6 +136,11 @@ src_configure() {
 		-Dps=true
 		-Dtext=true
 		-Dunzip_ps_gz_files=true # spawns gunzip
+		# Broken with our library layout for libstdc++ (bug #957705)
+		# Once https://gitlab.gnome.org/GNOME/localsearch/-/issues/368 is fixed,
+		# we should add a USE flag for it but likely give it the same treatment
+		# as seccomp (i.e. package.use.force).
+		-Dlandlock=disabled
 
 		$(meson_feature networkmanager network_manager)
 		$(meson_feature cue)
