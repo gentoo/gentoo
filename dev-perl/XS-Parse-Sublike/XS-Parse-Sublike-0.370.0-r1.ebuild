@@ -18,8 +18,4 @@ RDEPEND="
 BDEPEND="
 	${BDEPEND}
 	>=dev-perl/Module-Build-0.400.400
-	test? (
-		virtual/perl-Scalar-List-Utils
-		virtual/perl-Test2-Suite
-	)
 "
