@@ -156,7 +156,7 @@ test_var_assert() {
 }
 
 # TODO: convert these globals to helpers to ease testing against multiple
-# ${TOOLCHAIN_GCC_PV} vaues.
+# ${TOOLCHAIN_GCC_PV} values.
 test_var_assert GCC_PV          11.3.0
 test_var_assert GCC_PVR         11.3.0
 test_var_assert GCC_RELEASE_VER 11.3.0
