@@ -18,7 +18,6 @@ REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreame
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/Disable-the-examples-test-suite.patch"
 	"${FILESDIR}/localsearch-3.8.2-ontologies.patch"
 	"${FILESDIR}/localsearch-3.8.2-ffmpeg-7.patch"
 )
@@ -174,7 +173,7 @@ src_configure() {
 src_test() {
 	export GSETTINGS_BACKEND="dconf" # Tests require dconf and explicitly check for it (env_reset set it to "memory")
 	export PYTHONPATH="${ESYSROOT}"/usr/$(get_libdir)/tinysparql-3.0
-	dbus-run-session meson test -C "${BUILD_DIR}" || die 'tests failed'
+	dbus-run-session meson test -C "${BUILD_DIR}" --no-suite examples || die 'tests failed'
 }
 
 pkg_postinst() {
