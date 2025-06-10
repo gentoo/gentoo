@@ -316,6 +316,8 @@ src_prepare() {
 	fi
 
 	default
+
+	eapply "${FILESDIR}"/rust-1.86.0-issue-139372-bgo-953956-fix-hardcoded-gnu-linker-flags.patch
 }
 
 src_configure() {
