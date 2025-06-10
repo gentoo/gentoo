@@ -1,0 +1,63 @@
+
+https://repo.or.cz/siplcs.git/commit/8c37bad762decd3aad86cfe758187a610804b196
+Bug: https://bugs.gentoo.org/932640
+
+From: Stefan Becker <chemobejk@gmail.com>
+Date: Mon, 22 Jan 2024 22:47:20 +0200
+Subject: [PATCH] xml: update for libxml2 >= 2.12 API changes
+
+- error callback is now passed a const error
+- provide alternative implementation for the deprecated
+  xmlSAXUserParseMemory() API
+--- a/src/core/sipe-xml.c
++++ b/src/core/sipe-xml.c
+@@ -154,7 +154,13 @@ static void callback_error(void *user_data, const char *msg, ...)
+ 	g_free(errmsg);
+ }
+ 
+-static void callback_serror(void *user_data, xmlErrorPtr error)
++static void callback_serror(void *user_data,
++#if LIBXML_VERSION > 21200
++			    const xmlError *error
++#else
++			    xmlErrorPtr error
++#endif
++)
+ {
+ 	struct _parser_data *pd = user_data;
+ 
+@@ -217,8 +223,31 @@ sipe_xml *sipe_xml_parse(const gchar *string, gsize length)
+ 	if (string && length) {
+ 		struct _parser_data *pd = g_new0(struct _parser_data, 1);
+ 
++#if LIBXML_VERSION > 21200
++		xmlParserCtxtPtr ctxt = xmlNewSAXParserCtxt(&parser, pd);
++
++		if (ctxt) {
++			xmlCtxtReadMemory(ctxt,
++					  string,
++					  length,
++					  NULL,
++					  NULL,
++					  0);
++
++			pd->error = !ctxt->wellFormed;
++
++			if (ctxt->myDoc) {
++				xmlFreeDoc(ctxt->myDoc);
++				ctxt->myDoc = NULL;
++			}
++
++			xmlFreeParserCtxt(ctxt);
++		} else
++			pd->error = TRUE;
++#else
+ 		if (xmlSAXUserParseMemory(&parser, pd, string, length))
+ 			pd->error = TRUE;
++#endif
+ 
+ 		if (pd->error) {
+ 			sipe_xml_free(pd->root);
+-- 
+2.11.4.GIT
+
