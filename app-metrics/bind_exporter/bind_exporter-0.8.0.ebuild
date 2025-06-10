@@ -17,7 +17,7 @@ SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/app-metrics/${PN}/${P}-de
 
 LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	acct-group/bind_exporter
