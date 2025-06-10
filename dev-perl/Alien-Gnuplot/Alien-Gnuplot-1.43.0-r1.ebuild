@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,10 +14,6 @@ KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Alien-Build-0.250.0
-	virtual/perl-File-Spec
-	virtual/perl-File-Temp
-	virtual/perl-HTTP-Tiny
-	virtual/perl-Time-HiRes
 	sci-visualization/gnuplot
 "
 BDEPEND="
