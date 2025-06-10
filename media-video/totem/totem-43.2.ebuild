@@ -75,7 +75,7 @@ BDEPEND="
 # Prevent dev-python/pylint dep, bug #482538
 
 PATCHES=(
-	"${FILESDIR}"/43.1-gst-inspect-sandbox.patch # Allow disabling calls to gst-inspect (sandbox issue)
+	"${FILESDIR}"/gst-inspect-sandbox.patch # Allow disabling calls to gst-inspect (sandbox issue)
 )
 
 pkg_setup() {
