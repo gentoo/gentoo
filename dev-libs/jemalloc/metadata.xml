@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="lazy-lock">Enable lazy locking (only lock when multi-threaded)</flag>
-		<flag name="prof">Enable allocation profiling</flag>
+		<flag name="profile">Enable allocation profiling</flag>
 		<flag name="stats">Enable statistics calculation/reporting</flag>
 		<flag name="xmalloc">Add support for xmalloc (abort-on-out-of-memory)</flag>
 	</use>
