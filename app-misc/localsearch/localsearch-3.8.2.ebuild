@@ -17,11 +17,6 @@ IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg networkmanager +pdf +pl
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}/localsearch-3.8.2-ontologies.patch"
-	"${FILESDIR}/localsearch-3.8.2-ffmpeg-7.patch"
-)
-
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead);
 # so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
@@ -86,6 +81,11 @@ BDEPEND="
 		)
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/localsearch-3.8.2-ontologies.patch"
+	"${FILESDIR}/localsearch-3.8.2-ffmpeg-7.patch"
+)
 
 python_check_deps() {
 	python_has_version -b \
