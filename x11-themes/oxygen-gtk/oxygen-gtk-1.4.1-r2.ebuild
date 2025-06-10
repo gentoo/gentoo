@@ -37,6 +37,7 @@ PATCHES=(
 	"${WORKDIR}/${PATCHSET}/1.4.6/0005-demo-optional.patch"
 	"${WORKDIR}/${PATCHSET}/1.4.6/0006-tabstyle.patch"
 	"${WORKDIR}/${PATCHSET}/1.4.6/0007-cmake4.patch" # bug 955107
+	"${FILESDIR}/${P}-fix-uninitialised.patch" # bug 957749, pending MR
 )
 
 multilib_src_configure() {
