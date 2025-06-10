@@ -21,13 +21,7 @@ RDEPEND="
 	!minimal? (
 		dev-perl/File-ShareDir
 	)
-	virtual/perl-File-Spec
 	>=virtual/perl-version-0.770.0
-"
-DEPEND="${RDEPEND}"
-BDEPEND="
-	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 "
 
 PATCHES=( "${FILESDIR}/${PN}-1.280.0-sanity-2.patch" )
