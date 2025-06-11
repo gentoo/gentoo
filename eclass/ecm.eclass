@@ -126,7 +126,7 @@ fi
 # If set to "true", add "doc" to IUSE, add the appropriate dependency, let
 # -DBUILD_QCH=ON generate and install Qt compressed help files when USE=doc.
 # If set to "false", do nothing.
-if [[ ${CATEGORY} = kde-frameworks ]]; then
+if [[ ${CATEGORY} = kde-frameworks ]] && ver_test -lt 6.15; then
 	: "${ECM_QTHELP:=true}"
 fi
 : "${ECM_QTHELP:=false}"
