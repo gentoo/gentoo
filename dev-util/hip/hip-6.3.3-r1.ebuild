@@ -114,6 +114,8 @@ src_prepare() {
 
 	sed -e "s/ -Werror//g" -i "hipamd/src/CMakeLists.txt" || die
 
+	sed -i -e 's/cmake_minimum_required(VERSION 3.3)/cmake_minimum_required(VERSION 3.5)/' hipamd/src/hiprtc/cmake/hiprtc-config.cmake.in || die
+
 	cmake_src_prepare
 
 	if use test; then
