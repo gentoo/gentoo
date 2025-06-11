@@ -8,11 +8,11 @@ WX_GTK_VER="3.2-gtk3"
 inherit cmake flag-o-matic wxwidgets xdg virtualx
 
 DESCRIPTION="Free crossplatform audio editor"
-HOMEPAGE="https://www.audacityteam.org/"
+HOMEPAGE="https://www.audacityteam.org"
 
-# A header-only thread pool library, without a build system, about 100
-# lines of code.  Probably not worth packaging individually.  Check
-# cmake-proxies/CMakeLists.txt and search for "ThreadPool".
+# A header-only thread pool library, without a build system, ~100 LOC,
+# probably not worth packaging individually.
+# Check cmake-proxies/CMakeLists.txt and search for "ThreadPool".
 MY_THREADPOOL_DATE=20140926
 MY_THREADPOOL="https://raw.githubusercontent.com/progschj/ThreadPool/9a42ec1329f259a5f4881a291db1dcb8f2ad9040/ThreadPool.h -> progschj-ThreadPool-${MY_THREADPOOL_DATE}.h"
 
@@ -28,18 +28,17 @@ fi
 
 SRC_URI+=" audiocom? ( ${MY_THREADPOOL} )"
 
-# GPL-2+, GPL-3 - Audacity itself
-# ZLIB - The ThreadPool single-header library
+# GPL-3, GPL-2+ - Audacity itself
 # CC-BY-3.0 - Documentation
-LICENSE="GPL-2+
-	GPL-3
-	audiocom? ( ZLIB )
-"
+# ZLIB - The ThreadPool single-header library
+LICENSE="GPL-3 GPL-2+ CC-BY-3.0 audiocom? ( ZLIB )"
 SLOT="0"
 IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 +ogg
 	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
 REQUIRED_USE="
+	audiocom? ( wavpack )
 	opus? ( ogg )
+	test? ( mpg123 )
 	vorbis? ( ogg )
 "
 RESTRICT="!test? ( test )"
@@ -66,11 +65,12 @@ RESTRICT="!test? ( test )"
 #   - Lavc - 5[789]
 #   - Lavu - 5[2567]
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="
+	app-accessibility/at-spi2-core:2
+	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/glib:2
-	media-libs/libjpeg-turbo:=
-	media-libs/libpng:=
+	media-libs/harfbuzz:=
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
 	media-libs/portaudio[alsa?]
@@ -80,13 +80,13 @@ RDEPEND="dev-db/sqlite:3
 	media-sound/lame
 	sys-apps/util-linux
 	sys-libs/zlib:=
+	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
+	x11-libs/pango
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	alsa? ( media-libs/alsa-lib )
-	audiocom? (
-		net-misc/curl
-	)
+	audiocom? ( net-misc/curl )
 	ffmpeg? ( media-video/ffmpeg )
 	flac? ( media-libs/flac:=[cxx] )
 	id3tag? ( media-libs/libid3tag:= )
@@ -118,23 +118,27 @@ BDEPEND="|| ( dev-lang/nasm dev-lang/yasm )
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-PATCHES=(
-	# Equivalent to previous versions
-	"${FILESDIR}/audacity-3.2.3-disable-ccache.patch"
-	# From Debian
-	"${FILESDIR}/audacity-3.3.3-fix-rpaths.patch"
+[[ ${PV} != 9999* ]] && PATCHES=(
+	# fixes include path
+	"${FILESDIR}/audacity-3.7.0-portsmf.patch"
+
+	# disables ccache
+	"${FILESDIR}/audacity-3.7.0-disable-ccache.patch"
 
 	# Disables some header-based detection
-	"${FILESDIR}/audacity-3.2.3-allow-overriding-alsa-jack.patch"
+	"${FILESDIR}/audacity-3.7.0-allow-overriding-alsa-jack.patch"
 
 	# For has_networking
-	"${FILESDIR}/audacity-3.3.3-local-threadpool-libraries.patch"
+	"${FILESDIR}/audacity-3.7.0-local-threadpool-libraries.patch"
 
 	# Allows running tests without conan
 	"${FILESDIR}/audacity-3.3.3-remove-conan-test-dependency.patch"
 
 	# #920363
-	"${FILESDIR}/audacity-3.4.2-audiocom-std-string.patch"
+	"${FILESDIR}/audacity-3.7.0-audiocom-std-string.patch"
+
+	# 915041
+	"${FILESDIR}/audacity-3.7.0-do-not-include-template-on-unix-to-fix-clang-compile.patch"
 )
 
 src_prepare() {
@@ -154,14 +158,15 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=strict-aliasing
+	setup-wxwidgets
+
+	# -Werror=strict-aliasing -- bug 915226
 	# Reportedly also -Werror=odr but I could not get that far.
-	# https://bugs.gentoo.org/915226
 	# https://github.com/audacity/audacity/issues/6096
 	append-flags -fno-strict-aliasing
 	filter-lto
 
-	setup-wxwidgets
+	append-cflags -std=gnu17 #944212
 
 	# * always use system libraries if possible
 	# * USE_VST was omitted, it appears to no longer have dependencies
@@ -172,10 +177,10 @@ src_configure() {
 
 		-Daudacity_conan_enabled=off
 
-		-Daudacity_has_networking=$(usex audiocom on off)
 		# Not useful on Gentoo.
 		-Daudacity_has_updates_check=OFF
 		-Daudacity_has_audiocom_upload=$(usex audiocom on off)
+		-Daudacity_has_networking=$(usex audiocom on off)
 
 		# Disable telemetry features.
 		-Daudacity_has_sentry_reporting=off
@@ -191,10 +196,9 @@ src_configure() {
 		-Daudacity_obey_system_dependencies=ON
 		-Daudacity_use_expat=system
 		-Daudacity_use_ffmpeg=$(usex ffmpeg loaded off)
-		-Daudacity_use_libid3tag=$(usex id3tag system off)
 		-Daudacity_use_ladspa=$(usex ladspa)
 		-Daudacity_use_lame=system
-		-Daudacity_use_wxwidgets=system
+		-Daudacity_use_libid3tag=$(usex id3tag system off)
 		-Daudacity_use_libflac=$(usex flac system off)
 		-Daudacity_use_libmp3lame=system
 		-Daudacity_use_libmpg123=$(usex mpg123 system off)
@@ -217,6 +221,7 @@ src_configure() {
 		-Daudacity_use_twolame=$(usex twolame system off)
 		-Daudacity_use_vamp=$(usex vamp system off)
 		-Daudacity_use_wavpack=$(usex wavpack system off)
+		-Daudacity_use_wxwidgets=system
 
 		# See the allow-overriding-alsa-jack.patch patch
 		-DPA_HAS_ALSA=$(usex alsa on off)
