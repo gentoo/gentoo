@@ -1,0 +1,140 @@
+Fix for "undeclared identifier 'CK_BUFFER_RESOURCE_3RD_DWORD'" for AMDGPU_TARGETS="gfx1012".
+Combines of 3 patches from https://github.com/ROCm/composable_kernel/issues/775#issuecomment-2726315348
+
+Bug: https://bugs.gentoo.org/947583
+--- a/include/ck/ck.hpp
++++ b/include/ck/ck.hpp
+@@ -82,7 +82,7 @@ CK_DECLARE_ENV_VAR_BOOL(CK_LOGGING)
+ #define CK_BUFFER_RESOURCE_3RD_DWORD -1
+ #elif defined(__gfx803__) || defined(__gfx900__) || defined(__gfx906__) || defined(__gfx9__)
+ #define CK_BUFFER_RESOURCE_3RD_DWORD 0x00020000
+-#elif defined(__gfx103__)
++#elif defined(__gfx101__) || defined(__gfx103__)
+ #define CK_BUFFER_RESOURCE_3RD_DWORD 0x31014000
+ #elif defined(__gfx11__) || defined(__gfx12__)
+ #define CK_BUFFER_RESOURCE_3RD_DWORD 0x31004000
+@@ -90,12 +90,12 @@ CK_DECLARE_ENV_VAR_BOOL(CK_LOGGING)
+ 
+ // FMA instruction
+ #ifndef __HIP_DEVICE_COMPILE__                   // for host code, define nothing
+-#elif defined(__gfx803__) || defined(__gfx900__) // for GPU code
+-#define CK_USE_AMD_V_MAC_F32
+-#elif defined(__gfx906__) || defined(__gfx9__) || defined(__gfx103__) // for GPU code
++#elif defined(__gfx906__) || defined(__gfx9__) || defined(__gfx103__) || defined(__gfx1011__) || defined(__gfx1012__) // for GPU code
+ #define CK_USE_AMD_V_FMAC_F32
+ #define CK_USE_AMD_V_DOT2_F32_F16
+ #define CK_USE_AMD_V_DOT4_I32_I8
++#elif defined(__gfx803__) || defined(__gfx900__) || defined(__gfx101__) // for GPU code
++#define CK_USE_AMD_V_MAC_F32
+ #elif defined(__gfx11__) || defined(__gfx12__)
+ #define CK_USE_AMD_V_FMAC_F32
+ #define CK_USE_AMD_V_DOT2_F32_F16
+--- a/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_multiple_d_dl.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_multiple_d_dl.hpp
+@@ -71,7 +71,7 @@ __global__ void
+             const Block2CTileMap block_2_ctile_map)
+ {
+ #if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx908__) ||         \
+-    defined(__gfx90a__) || defined(__gfx94__) || defined(__gfx103__) || defined(__gfx11__) || \
++    defined(__gfx90a__) || defined(__gfx94__) || defined(__gfx101__) || defined(__gfx103__) || defined(__gfx11__) || \
+     defined(__gfx12__))
+ 
+     const index_t num_blocks_per_batch =
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_dl.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_dl.hpp
+@@ -51,7 +51,7 @@ __global__ void
+             const Block2CTileMap block_2_ctile_map)
+ {
+ #if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx9__) || \
+-    defined(__gfx103__) || defined(__gfx11__) || defined(__gfx12__))
++    defined(__gfx101__) || defined(__gfx103__) || defined(__gfx11__) || defined(__gfx12__))
+ 
+     constexpr index_t shared_block_size =
+         GridwiseGemm::GetSharedMemoryNumberOfByte() / sizeof(ABDataType);
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_bwd_weight_dl.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_bwd_weight_dl.hpp
+@@ -48,7 +48,7 @@ __global__ void
+             const Block2CTileMap block_2_ctile_map,
+             const ComputePtrOffsetOfBatch compute_ptr_offset_of_batch)
+ {
+-#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx103__) ||         \
++#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx101__) || defined(__gfx103__) ||         \
+     defined(__gfx90a__) || defined(__gfx908__) || defined(__gfx94__) || defined(__gfx11__) || \
+     defined(__gfx12__))
+     const index_t num_blocks_per_batch =
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_multiple_d_nhwc_kyxc_nhwk.hpp
+@@ -90,7 +90,7 @@ __global__ void
+             const Block2CTileMap block_2_ctile_map,
+             const ComputePtrOffsetOfBatch compute_ptr_offset_of_batch)
+ {
+-#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx103__) ||         \
++#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx101__) || defined(__gfx103__) ||         \
+     defined(__gfx90a__) || defined(__gfx908__) || defined(__gfx94__) || defined(__gfx11__) || \
+     defined(__gfx12__))
+     // offset base pointer for each work-group
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_nhwc_kyxc_nhwk.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_dl_nhwc_kyxc_nhwk.hpp
+@@ -106,7 +106,7 @@ __global__ void
+             const Block2CTileMap block_2_ctile_map,
+             const ComputePtrOffsetOfBatch compute_ptr_offset_of_batch)
+ {
+-#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx103__) || \
++#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx101__) || defined(__gfx103__) || \
+     defined(__gfx11__) || defined(__gfx12__))
+     // offset base pointer for each work-group
+     const index_t num_blocks_per_batch =
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_gemm_multiple_d_dl.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_gemm_multiple_d_dl.hpp
+@@ -40,7 +40,7 @@ __global__ void
+                                           const CDEElementwiseOperation cde_element_op)
+ {
+ #if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx908__) ||         \
+-    defined(__gfx90a__) || defined(__gfx103__) || defined(__gfx11__) || defined(__gfx94__) || \
++    defined(__gfx90a__) || defined(__gfx101__) || defined(__gfx103__) || defined(__gfx11__) || defined(__gfx94__) || \
+     defined(__gfx12__))
+     __shared__ char p_shared[GridwiseGemm::GetSharedMemoryNumberOfByte()];
+ 
+--- a/include/ck/tensor_operation/gpu/grid/gridwise_gemm_dpp.hpp
++++ b/include/ck/tensor_operation/gpu/grid/gridwise_gemm_dpp.hpp
+@@ -28,7 +28,7 @@ __global__ void
+ #endif
+         kernel_gemm_dpp(const typename GridwiseGemm::Argument karg)
+ {
+-#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx103__) || defined(__gfx11__))
++#if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx101__) || defined(__gfx103__) || defined(__gfx11__))
+     __shared__ char p_shared[GridwiseGemm::GetSharedMemoryNumberOfByte()];
+ 
+     const auto a_grid_desc_ak0_m_ak1 = amd_wave_read_first_lane(
+--- a/include/ck/tensor_operation/gpu/grid/gridwise_tensor_rearrange.hpp
++++ b/include/ck/tensor_operation/gpu/grid/gridwise_tensor_rearrange.hpp
+@@ -36,7 +36,7 @@ __global__ void
+                                 const ComputePtrOffsetOfStridedBatch compute_ptr_offset_of_batch)
+ {
+ #if(!defined(__HIP_DEVICE_COMPILE__) || defined(__gfx906__) || defined(__gfx908__) ||         \
+-    defined(__gfx90a__) || defined(__gfx94__) || defined(__gfx103__) || defined(__gfx11__) || \
++    defined(__gfx90a__) || defined(__gfx94__) || defined(__gfx101__) || defined(__gfx103__) || defined(__gfx11__) || \
+     defined(__gfx12__))
+     GridwiseTensorRearrangeKernel::Run(in_grid_desc,
+                                        p_in_global,
+--- a/include/ck_tile/core/config.hpp
++++ b/include/ck_tile/core/config.hpp
+@@ -10,6 +10,9 @@
+ #if defined(__gfx940__) || defined(__gfx941__) || defined(__gfx942__) || defined(__gfx950__)
+ #define __gfx94__
+ #endif
++#if defined(__gfx1010__) || defined(__gfx1011__) || defined(__gfx1012__)
++#define __gfx101__
++#endif
+ #if defined(__gfx1030__) || defined(__gfx1031__) || defined(__gfx1032__) || \
+     defined(__gfx1034__) || defined(__gfx1035__) || defined(__gfx1036__) || \
+     defined(__gfx10_3_generic__)
+@@ -199,7 +202,7 @@
+ #elif defined(__gfx803__) || defined(__gfx900__) || defined(__gfx906__) || \
+     defined(__gfx9__) // for GPU code
+ #define CK_TILE_BUFFER_RESOURCE_3RD_DWORD 0x00020000
+-#elif defined(__gfx103__) // for GPU code
++#elif defined(__gfx101__) || defined(__gfx103__) // for GPU code
+ #define CK_TILE_BUFFER_RESOURCE_3RD_DWORD 0x31014000
+ #elif defined(__gfx11__) || defined(__gfx12__) // for GPU code
+ #define CK_TILE_BUFFER_RESOURCE_3RD_DWORD 0x31004000
