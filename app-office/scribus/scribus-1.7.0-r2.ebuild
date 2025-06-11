@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-dont-install-thirdparty-license.patch
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
 	"${FILESDIR}"/${P}-poppler-25.0{2,6}.0.patch # from trunk
+	"${FILESDIR}"/${PN}-1.7.0-fix-compiling-with-qt-6.9.0.patch # bug 957695
 )
 
 src_prepare() {

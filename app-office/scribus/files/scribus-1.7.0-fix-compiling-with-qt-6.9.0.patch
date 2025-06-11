@@ -1,0 +1,27 @@
+From f553dce73905d11b301901dc039e973c18adf0a5 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Wed, 2 Apr 2025 22:26:39 +0000
+Subject: [PATCH] #17486: Compiler error when building with Qt 6.9.0
+
+git-svn-id: svn://scribus.net/trunk/Scribus@26826 11d20701-8431-0410-a711-e3c959e3b870
+--- a/scribus/util_text.cpp
++++ b/scribus/util_text.cpp
+@@ -100,10 +100,12 @@ QString stringToUnicode(const QString &text)
+ 	QString out;
+ 
+ 	for (auto c : text)
+-		out += QString("U+%1,").arg(c.unicode(), 4, 16, QChar('0')).toUpper();
+-
+-	return out.mid(0, out.length() -1);
++	{
++		auto u = static_cast<uint>(c.unicode());
++		out += QString("U+%1,").arg(u, 4, 16, QChar('0')).toUpper();
++	}
+ 
++	return out.mid(0, out.length() - 1);
+ }
+ 
+ QString unicodeToString(const QString &text)
+-- 
+2.49.0
+

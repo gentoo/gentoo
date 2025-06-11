@@ -1,7 +1,5 @@
-Index: Scribus/scribus/plugins/import/pdf/slaoutput.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 26917)
-+++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 26919)
+--- Scribus/scribus/plugins/import/pdf/slaoutput.cpp
++++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp
 @@ -580,7 +580,12 @@
  		FormWidget *fm = m_formWidgets->getWidget(i);
  		if (!fm)
