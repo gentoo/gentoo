@@ -20,7 +20,7 @@ IUSE="X"
 DEPEND="
 	>=dev-libs/glib-2.66.0
 	>=x11-libs/cairo-1.5.0
-	>=x11-libs/gtk+-3.24.0:3
+	>=x11-libs/gtk+-3.24.0:3[X]
 	>=x11-libs/libXmu-1.1.2
 	>=x11-libs/libwnck-3.2:3
 	>=xfce-base/libxfce4ui-4.18.0:=
