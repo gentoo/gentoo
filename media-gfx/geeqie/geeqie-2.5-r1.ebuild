@@ -89,6 +89,11 @@ src_configure() {
 		$(meson_feature zip archive)
 	)
 
+	# Bug: https://bugs.gentoo.org/957023
+	# https://github.com/BestImageViewer/geeqie/issues/1762
+	#
+	# Fixed in git master, remove for 2.7
+	filter-lto
 	meson_src_configure
 }
 
