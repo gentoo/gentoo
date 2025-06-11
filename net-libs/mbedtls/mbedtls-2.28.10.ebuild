@@ -46,7 +46,8 @@ src_prepare() {
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_C
 	use threads && enable_mbedtls_option MBEDTLS_THREADING_PTHREAD
 
-	sed -i -e "s:VERSION 2.8.12:VERSION 3.10:g" CMakeLists.txt || die
+	sed -i -e "s:\(cmake_minimum_required\).*:\1(VERSION 3.10):g" \
+		CMakeLists.txt programs/test/cmake_subproject/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
