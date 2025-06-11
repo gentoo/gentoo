@@ -1,0 +1,32 @@
+Gentoo install cholmod.h into /usr/include directly and uses PkgConfig
+--- a/library/src/CMakeLists.txt
++++ b/library/src/CMakeLists.txt
+@@ -153,14 +153,10 @@ if(NOT USE_CUDA)
+       list(APPEND static_depends PACKAGE rocsparse)
+     endif()
+ 
+-    find_package(CHOLMOD QUIET)
+-    if(NOT TARGET SuiteSparse::CHOLMOD)
+-      # try again with the custom find modules for older versions of suitesparse
+-      list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/suitesparse)
+-      find_package(CHOLMOD REQUIRED)
+-    endif()
++    find_package(PkgConfig REQUIRED)
++    pkg_check_modules(CHOLMOD REQUIRED IMPORTED_TARGET cholmod)
+ 
+-    target_link_libraries( hipsolver PRIVATE roc::rocsparse SuiteSparse::CHOLMOD)
++    target_link_libraries( hipsolver PRIVATE roc::rocsparse PkgConfig::CHOLMOD)
+     set_source_files_properties(${hipsolver_source}
+       PROPERTIES
+         COMPILE_DEFINITIONS HAVE_ROCSPARSE
+--- a/library/src/amd_detail/dlopen/cholmod.hpp
++++ b/library/src/amd_detail/dlopen/cholmod.hpp
+@@ -24,7 +24,7 @@
+ #include "lib_macros.hpp"
+ 
+ #ifdef HAVE_ROCSPARSE
+-#include <suitesparse/cholmod.h>
++#include <cholmod.h>
+ #else
+ 
+ // constants
