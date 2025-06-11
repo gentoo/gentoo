@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_13 )
+PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 
@@ -16,10 +16,11 @@ SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="verify-sig"
 
-RDEPEND="app-containers/lxc"
+DEPEND="app-containers/lxc:="
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-linuxcontainers )"
 
