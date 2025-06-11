@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit xdg-utils
+inherit flag-o-matic xdg-utils
 
 DESCRIPTION="Extensions, widgets and framework library with session support for Xfce"
 HOMEPAGE="
@@ -14,11 +14,12 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris"
+IUSE="wayland X"
 
 DEPEND="
 	>=dev-libs/glib-2.72.0
-	>=x11-libs/gtk+-3.24.0:3
+	>=x11-libs/gtk+-3.24.0:3[wayland?,X?]
 	>=xfce-base/libxfce4ui-4.15.1:=[gtk3(+)]
 	>=xfce-base/libxfce4util-4.17.2:=
 "
@@ -29,6 +30,14 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_configure() {
+	# defang automagic dependencies
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
+	default
+}
 
 src_install() {
 	default
