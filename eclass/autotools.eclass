@@ -384,10 +384,12 @@ eaclocal() {
 				${ESYSROOT}/usr/share/slibtool
 			EOF
 		fi
-
+		# See bug #957583 for adding gettext/m4
 		cat <<- EOF >> "${T}"/aclocal/dirlist || die
 			${BROOT}/usr/share/aclocal
 			${ESYSROOT}/usr/share/aclocal
+			${BROOT}/usr/share/gettext/m4
+			${ESYSROOT}/usr/share/gettext/m4
 		EOF
 	fi
 
