@@ -48,6 +48,7 @@ BDEPEND="X? ( x11-misc/imake )"
 PATCHES=(
 	"${FILESDIR}"/${P}-after_glibc_cfree_bdb.patch
 	"${FILESDIR}"/${P}-gdbm_and_bdb5.3.patch
+	"${FILESDIR}"/${P}-build-Build-genclx-without-gnulib.patch
 )
 
 BUILDDIR="builddir"
