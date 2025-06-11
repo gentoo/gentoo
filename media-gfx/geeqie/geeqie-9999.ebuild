@@ -82,8 +82,6 @@ src_configure() {
 		$(meson_feature zip archive)
 	)
 
-	# Bug: https://bugs.gentoo.org/957023
-	filter-lto
 	meson_src_configure
 }
 
