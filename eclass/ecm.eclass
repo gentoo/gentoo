@@ -641,10 +641,10 @@ ecm_src_configure() {
 	fi
 
 	if [[ ${ECM_PYTHON_BINDINGS} == off ]]; then
-		cmakeargs+=(
-			-DBUILD_PYTHON_BINDINGS=OFF
-			-DCMAKE_DISABLE_FIND_PACKAGE_{Python3,PySide6,Shiboken6}=ON
-		)
+		cmakeargs+=( -DBUILD_PYTHON_BINDINGS=OFF )
+		if ver_test -lt 6.15; then
+			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_{Python3,PySide6,Shiboken6}=ON )
+		fi
 	fi
 
 	if [[ ${ECM_QTHELP} = true ]]; then
