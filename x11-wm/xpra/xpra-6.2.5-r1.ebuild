@@ -19,7 +19,7 @@ DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_EXT=1
 
-inherit cuda xdg distutils-r1 prefix tmpfiles udev
+inherit cuda distutils-r1 prefix tmpfiles toolchain-funcs udev xdg
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="https://xpra.org/"
@@ -157,12 +157,11 @@ src_prepare() {
 		-i "${S}/tests/unittests/run" || die
 }
 
-python_prepare_all() {
-	distutils-r1_python_prepare_all
-
+python_configure_all() {
 	hprefixify xpra/scripts/config.py
 
-	sed -r -e "/\bdoc_dir =/s:/${PN}/\":/${PF}/html\":" \
+	sed -r -e "/\bdoc_dir =/s:(/share/doc/)$PN(/):\1$PF/html\2:" \
+		-e "/'pulseaudio'/s:DEFAULT_PULSEAUDIO:$(usex pulseaudio True False):" \
 		-i setup.py || die
 
 	if use minimal; then
@@ -170,11 +169,6 @@ python_prepare_all() {
 			-e 's/^(xdg_open)_ENABLED = .*/\1_ENABLED = False/' \
 			-i setup.py || die
 	fi
-}
-
-python_configure_all() {
-	sed -e "/'pulseaudio'/s:DEFAULT_PULSEAUDIO:$(usex pulseaudio True False):" \
-		-i setup.py || die
 
 	DISTUTILS_ARGS=(
 		--with-PIC
@@ -225,7 +219,7 @@ python_configure_all() {
 		"$(use_with X Xdummy)"
 
 		"$(use_with test tests)"
-		--with-strict
+		--without-strict
 		# --with-verbose
 		# --with-warn
 		# --with-cythonize_more
@@ -289,7 +283,13 @@ python_configure_all() {
 
 python_compile() {
 	if use cuda; then
-		export NVCC_PREPEND_FLAGS="-ccbin $(cuda_gccdir)/g++"
+		if tc-is-gcc ; then
+			export NVCC_PREPEND_FLAGS="-ccbin $(cuda_gccdir)/g++"
+		elif tc-is-clang ; then
+			export NVCC_PREPEND_FLAGS="-ccbin /usr/lib/llvm/$(clang-major-version)/bin/clang++"
+		else
+			die "unsupported compiler: ${CC}"
+		fi
 	fi
 
 	PYTHONPATH="${S}" distutils-r1_python_compile
