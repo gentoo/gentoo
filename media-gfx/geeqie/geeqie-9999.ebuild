@@ -13,11 +13,11 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
+IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp X xmp zip"
 
 RDEPEND="gnome-extra/zenity
 	virtual/libintl
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X?]
 	djvu? ( app-text/djvu )
 	exif? ( >=media-gfx/exiv2-0.17:=[xmp?] )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
@@ -57,6 +57,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# defang automagic dependencies
+	# Currently only needed for X11-specific workarounds.
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Dgq_helpdir="share/doc/${PF}"
 		-Dgq_htmldir="share/doc/${PF}/html"
