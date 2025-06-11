@@ -14,7 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="egl">Use EGL platform, enables smooth rending in high refresh rate monitors on X11/Xwayland</flag>
+		<flag name="egl">Use EGL platform, enables smooth rendering in high refresh rate monitors on X11/Xwayland</flag>
 		<flag name="wayland">Run in wayland mode under wayland sessions, xwayland otherwise. This flag doesn't affect x11 sessions.</flag>
 	</use>
 	<longdescription>
