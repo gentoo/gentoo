@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson xdg-utils
+inherit flag-o-matic meson xdg-utils
 
 DESCRIPTION="A frontend to easily manage connections to remote filesystems using GIO/GVfs"
 HOMEPAGE="
@@ -15,10 +15,11 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
+IUSE="X"
 
 DEPEND="
 	>=dev-libs/glib-2.66.0
-	>=x11-libs/gtk+-3.24.0:3
+	>=x11-libs/gtk+-3.24.0:3[X?]
 "
 RDEPEND="
 	${DEPEND}
@@ -29,6 +30,9 @@ BDEPEND="
 "
 
 src_configure() {
+	# defang automagic dependencies
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Ddocdir=share/doc/${PF}
 	)
