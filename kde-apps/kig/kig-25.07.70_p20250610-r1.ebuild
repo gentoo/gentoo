@@ -22,6 +22,7 @@ IUSE="scripting"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
+	!kde-apps/kig:5
 	>=dev-qt/qtbase-${QTMIN}:6[gui,widgets,xml]
 	>=dev-qt/qtsvg-${QTMIN}:6
 	>=kde-frameworks/karchive-${KFMIN}:6
