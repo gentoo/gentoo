@@ -119,6 +119,8 @@ CRATES="
 	zerocopy@0.8.25
 "
 
+RUST_MIN_VER="1.85.0"
+
 inherit cargo shell-completion
 
 DESCRIPTION="A smarter cd command for your terminal"
