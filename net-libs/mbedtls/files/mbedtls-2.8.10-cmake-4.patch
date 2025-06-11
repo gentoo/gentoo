@@ -1,0 +1,34 @@
+From https://github.com/Mbed-TLS/mbedtls/commit/be4af04fcffcfebe44fa12d39388817d9949a9f3
+From https://github.com/Mbed-TLS/mbedtls/commit/a722d0a415b47df512c6d4b3c0b58d612b9c9b95
+From: Dave Rodgman <dave.rodgman@arm.com>
+Date: Fri, 4 Jun 2021 17:04:20 +0100
+Subject: [PATCH] Update minimum CMake version in CMakeLists.txt
+
+Signed-off-by: Dave Rodgman <dave.rodgman@arm.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,7 +16,9 @@
+ #   mbedtls, mbedx509, mbedcrypto and apidoc targets.
+ #
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++# We specify a minimum requirement of 3.10.2, but for now use 3.5.1 here
++# until our infrastructure catches up.
++cmake_minimum_required(VERSION 3.10)
+ 
+ # https://cmake.org/cmake/help/latest/policy/CMP0011.html
+ # Setting this policy is required in CMake >= 3.18.0, otherwise a warning is generated. The OLD
+From a722d0a415b47df512c6d4b3c0b58d612b9c9b95 Mon Sep 17 00:00:00 2001
+From: Paul Elliott <paul.elliott@arm.com>
+Date: Tue, 12 Sep 2023 16:27:24 +0100
+Subject: [PATCH] Update CMake minimum version(s) to match main CMakeLists.txt
+
+Signed-off-by: Paul Elliott <paul.elliott@arm.com>
+--- a/programs/test/cmake_subproject/CMakeLists.txt
++++ b/programs/test/cmake_subproject/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.10)
+ 
+ # Test the target renaming support by adding a prefix to the targets built
+ set(MBEDTLS_TARGET_PREFIX subproject_test_)
