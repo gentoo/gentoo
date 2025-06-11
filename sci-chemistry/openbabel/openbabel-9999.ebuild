@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 WX_GTK_VER=3.2-gtk3
 
 inherit cmake desktop flag-o-matic perl-functions python-r1 toolchain-funcs wxwidgets xdg
