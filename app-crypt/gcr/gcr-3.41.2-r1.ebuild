@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
+inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Libraries for cryptographic UIs and accessing PKCS#11 modules"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gcr"
@@ -12,14 +12,14 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gcr"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0/1" # subslot = suffix of libgcr-base-3 and co
 
-IUSE="gtk gtk-doc +introspection systemd test +vala"
+IUSE="gtk gtk-doc +introspection systemd test +vala wayland X"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
 "
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	>=dev-libs/glib-2.44.0:2
@@ -27,7 +27,7 @@ DEPEND="
 	>=app-crypt/p11-kit-0.19.0
 	>=app-crypt/libsecret-0.20
 	systemd? ( sys-apps/systemd:= )
-	gtk? ( >=x11-libs/gtk+-3.22:3[introspection?] )
+	gtk? ( >=x11-libs/gtk+-3.22:3[introspection?,wayland?,X?] )
 	>=sys-apps/dbus-1
 	introspection? ( >=dev-libs/gobject-introspection-1.58:= )
 "
@@ -61,6 +61,12 @@ src_prepare() {
 }
 
 src_configure() {
+	if use gtk; then
+		# defang automagic dependencies
+		use X || append-flags -DGENTOO_GTK_HIDE_X11
+		use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
+	fi
+
 	local emesonargs=(
 		$(meson_use introspection)
 		$(meson_use gtk)
