@@ -20,4 +20,7 @@
   <upstream>
     <remote-id type="github">ROCm/rccl</remote-id>
   </upstream>
+  <use>
+    <flag name="roctracer">Enable roctracer (roctx) marker.</flag>
+  </use>
 </pkgmetadata>
