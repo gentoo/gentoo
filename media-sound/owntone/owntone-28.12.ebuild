@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="DAAP (iTunes) and MPD media server"
-HOMEPAGE="https://owntone.github.io/owntone-server"
+HOMEPAGE="https://owntone.github.io/owntone-server/"
 SRC_URI="https://github.com/owntone/owntone-server/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 S="${WORKDIR}/${PN}-server-${PV}"

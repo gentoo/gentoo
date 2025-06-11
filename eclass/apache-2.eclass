@@ -13,7 +13,7 @@
 # and inter-module dependency checking.
 
 LUA_COMPAT=( lua5-{1..4} )
-inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
+inherit autotools fcaps flag-o-matic lua-single multilib ssl-cert toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -640,6 +640,8 @@ apache-2_src_install() {
 			fperms 4710 /usr/sbin/suexec
 			# provide legacy symlink for suexec, bug 177697
 			dosym /usr/sbin/suexec /usr/sbin/suexec2
+		else
+			FILECAPS=( cap_setgid,cap_setuid=ep usr/sbin/suexec )
 		fi
 	fi
 
@@ -659,6 +661,10 @@ apache-2_src_install() {
 # because the default webroot is a copy of the files that exist elsewhere and we
 # don't want them to be managed/removed by portage when apache is upgraded.
 apache-2_pkg_postinst() {
+	if use suexec && use suexec-syslog && use suexec-caps ; then
+		fcaps_pkg_postinst
+	fi
+
 	if use ssl && [[ ! -e "${EROOT}/etc/ssl/apache2/server.pem" ]]; then
 		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Apache HTTP Server}"
 		install_cert /etc/ssl/apache2/server

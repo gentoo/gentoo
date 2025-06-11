@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_TESTED=( python3_{11..13} pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_14 python3_{13,14}t )
+PYTHON_TESTED=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_{13,14}t )
 
 inherit distutils-r1 pypi
 
@@ -18,7 +18,9 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/distlib-0.3.7[${PYTHON_USEDEP}]
@@ -34,6 +36,7 @@ RDEPEND="
 BDEPEND="
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		$(python_gen_cond_dep '
 			dev-python/coverage[${PYTHON_USEDEP}]
 			dev-python/flaky[${PYTHON_USEDEP}]
@@ -53,8 +56,6 @@ BDEPEND="
 		' 'pypy3*')
 	)
 "
-
-distutils_enable_tests pytest
 
 src_prepare() {
 	local PATCHES=(
@@ -101,17 +102,6 @@ python_test() {
 				# these don't like the executable called pypy3.11?
 				tests/unit/activation/test_bash.py::test_bash
 				tests/unit/activation/test_fish.py::test_fish
-				tests/unit/discovery/py_info/test_py_info.py::test_fallback_existent_system_executable
-			)
-			;;
-		python3.1[23])
-			EPYTEST_DESELECT+=(
-				tests/unit/create/via_global_ref/test_build_c_ext.py
-			)
-			;&
-		python3.11)
-			EPYTEST_DESELECT+=(
-				# TODO
 				tests/unit/discovery/py_info/test_py_info.py::test_fallback_existent_system_executable
 			)
 			;;

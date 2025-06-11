@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+
+USE_RUBY="ruby32 ruby33 ruby34"
 
 inherit apache-module flag-o-matic ruby-ng toolchain-funcs
 
@@ -13,7 +14,7 @@ SRC_URI="https://s3.amazonaws.com/phusion-passenger/releases/${P}.tar.gz"
 # Passenger is licensed MIT, but vendored code licenses should also be taken into account.
 LICENSE="Boost-1.0 MIT BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="apache2 debug"
 
 ruby_add_bdepend "dev-ruby/rake"

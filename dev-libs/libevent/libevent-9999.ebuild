@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit autotools git-r3 multilib-minimal
+CMAKE_REMOVE_MODULES_LIST=( FindMbedTLS )
+
+inherit cmake-multilib git-r3
 
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
 HOMEPAGE="
@@ -13,7 +15,7 @@ HOMEPAGE="
 EGIT_REPO_URI="https://github.com/libevent/libevent.git"
 
 LICENSE="BSD"
-SLOT="0/2.2"
+SLOT="0/2.2.1-r2"
 KEYWORDS=""
 IUSE="
 	+clock-gettime debug malloc-replacement mbedtls +ssl static-libs
@@ -23,43 +25,27 @@ IUSE="
 RESTRICT="test"
 
 DEPEND="
-	mbedtls? ( net-libs/mbedtls:0=[${MULTILIB_USEDEP}] )
+	mbedtls? ( net-libs/mbedtls:3=[${MULTILIB_USEDEP}] )
 	ssl? ( >=dev-libs/openssl-1.0.1h-r2:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="
 	${DEPEND}
 "
 
-DOCS=( README.md ChangeLog{,-1.4,-2.0} whatsnew-2.{0,1}.txt )
+DOCS=( README.md ChangeLog{,-2.0,-2.1} whatsnew-2.{0,1}.txt )
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/event2/event-config.h
 )
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 multilib_src_configure() {
-	# fix out-of-source builds
-	mkdir -p test || die
-
-	local ECONF_SOURCE="${S}"
-	local myconf=(
-		$(use_enable clock-gettime)
-		$(use_enable debug debug-mode)
-		$(use_enable malloc-replacement malloc-replacement)
-		$(use_enable mbedtls)
-		$(use_enable ssl openssl)
-		$(use_enable static-libs static)
-		$(use_enable test libevent-regress)
-		$(use_enable verbose-debug)
-		--disable-samples
+	local mycmakeargs=(
+		-DEVENT__DISABLE_CLOCK_GETTIME=$(usex !clock-gettime)
+		-DEVENT__DISABLE_DEBUG_MODE=$(usex !debug)
+		-DEVENT__DISABLE_MBEDTLS=$(usex !mbedtls)
+		-DEVENT__DISABLE_MM_REPLACEMENT=$(usex !malloc-replacement)
+		-DEVENT__DISABLE_OPENSSL=$(usex !ssl)
+		-DEVENT__LIBRARY_TYPE=$(usex static-libs BOTH SHARED)
+		-DCMAKE_DEBUG_POSTFIX=""
 	)
-	econf "${myconf[@]}"
-}
-
-multilib_src_install_all() {
-	einstalldocs
-	find "${ED}" -name '*.la' -delete || die
+	cmake_src_configure
 }

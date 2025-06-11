@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="ssl(+)"
 DISTUTILS_USE_PEP517=setuptools
 
@@ -41,6 +41,16 @@ EPYTEST_DESELECT=(
 	# https://github.com/httpie/cli/issues/1530
 	tests/test_compress.py::test_compress_form
 	tests/test_binary.py::TestBinaryResponseData
+
+	# https://github.com/httpie/cli/issues/1628
+	tests/test_encoding.py::test_terminal_output_response_charset_detection
+	tests/test_encoding.py::test_terminal_output_request_charset_detection
+
+	# argparse change in >=py3.12 (bug #949484)
+	tests/test_cli_ui.py::test_naked_invocation
+
+	# Fails with py3.14
+	tests/test_cli_utils.py::test_lazy_choices_help
 
 	# Needs network
 	'tests/test_cookie_on_redirects.py::test_explicit_user_set_cookie_in_session[remote_httpbin]'

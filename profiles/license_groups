@@ -48,7 +48,7 @@ FSF-APPROVED-OTHER Arphic CC-BY-2.0 CC-BY-2.5 CC-BY-3.0 CC-BY-4.0 CC-BY-SA-2.0 C
 # Misc licenses for free documents and other works (including fonts)
 # that follow the definition at https://freedomdefined.org/ but are NOT
 # listed in @FSF-APPROVED-OTHER
-MISC-FREE-DOCS BAEKMUK BitstreamVera CC-BY-1.0 CC-BY-SA-1.0 CC-PD CC-SA-1.0 LDP-1 LDP-1a man-pages man-pages-posix-2013 MaxMind2 mplus-fonts myspell-en_CA-KevinAtkinson quake1-textures Texinfo-manual UbuntuFontLicense-1.0 vlgothic wxWinFDL-3
+MISC-FREE-DOCS BAEKMUK BitstreamVera CC-BY-1.0 CC-BY-SA-1.0 CC-PD CC-SA-1.0 CDLA-Permissive-2.0 LDP-1 LDP-1a man-pages man-pages-posix-2013 MaxMind2 mplus-fonts myspell-en_CA-KevinAtkinson quake1-textures Texinfo-manual UbuntuFontLicense-1.0 vlgothic wxWinFDL-3
 
 # Metaset for all free documents
 FREE-DOCUMENTS @FSF-APPROVED-OTHER @MISC-FREE-DOCS
@@ -81,9 +81,9 @@ OSI-APPROVED @OSI-APPROVED-FREE @OSI-APPROVED-NONFREE
 
 # License agreements that try to take away your rights. These are more
 # restrictive than "all-rights-reserved" or require explicit approval.
-EULA 2dboy-EULA AMD-GPU-PRO-EULA android AnyDesk-TOS Aseprite-EULA baudline bestcrypt CAPYBARA-EULA Dell-EULA ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Intel-SDP Introversion JoyPixels LOKI-EULA MakeMKV-EULA Microsemi microsoft-azurevpnclient microsoft-edge Microsoft-vscode MikroTik Mojang MTA-0.5 NVIDIA-CUDA NVIDIA-SDK NVIDIA-SDK-v2017.06.13 Ookla OPERA-2018 PAPERS-PLEASE PassMark-EULA PICO-8 Primate-Plunge PUEL-11 PUEL-12 Q3AEULA-20000111 QUAKE4 RAR sfpg SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
+EULA 2dboy-EULA AMD-GPU-PRO-EULA android AnyDesk-TOS Aseprite-EULA baudline bestcrypt CAPYBARA-EULA Dell-EULA ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Intel-SDP Introversion JoyPixels LOKI-EULA MakeMKV-EULA Microsemi microsoft-azurevpnclient microsoft-edge Microsoft-vscode MikroTik Mojang MTA-0.5 NVIDIA-CUDA NVIDIA-cuSPARSELt-v2020.10.12 NVIDIA-SDK NVIDIA-SDK-v2017.06.13 NVIDIA-SDK-v2020.10.12 Ookla OPERA-2018 PAPERS-PLEASE PassMark-EULA PICO-8 Primate-Plunge PUEL-11 PUEL-12 Q3AEULA-20000111 QUAKE4 RAR sfpg SPS Steam supermicro Synology teamspeak3 teamspeak5 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant WPS-EULA zi-labone
 
-# Deprecated license labels, used by repoman and pkgcheck
+# Deprecated license labels, used by pkgcheck
 #DEPRECATED (currently none)
 
 # Local Variables:

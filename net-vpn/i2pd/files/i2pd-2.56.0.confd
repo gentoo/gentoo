@@ -1,0 +1,16 @@
+# /etc/conf.d/i2pd: config file for /etc/init.d/i2pd
+
+#I2PD_USER=i2pd
+#I2PD_GROUP=i2pd
+
+# Location of the i2pd log file
+#I2PD_LOGFILE=/var/log/i2pd.log
+
+# Minimal level of log messages (debug, info, warn, error, none)
+#I2PD_LOGLEVEL="warn"
+
+# Additional arguments passed to the daemon
+#I2PD_ARGS="--floodfill"
+
+# Max number of open files (for floodfill)
+rc_ulimit="-n 4096"

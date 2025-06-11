@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,12 +29,12 @@ DEPEND="
 	>=dev-libs/libportal-0.5:=[gtk]
 	>=x11-libs/pango-1.28.3
 	selinux? ( >=sys-libs/libselinux-2.0 )
-	>=app-misc/tracker-3.0:3
+	>=app-misc/tinysparql-3.0:3
 	cloudproviders? ( >=net-libs/libcloudproviders-0.3.1 )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 RDEPEND="${DEPEND}
-	>=app-misc/tracker-miners-3.0:3=
+	>=app-misc/localsearch-3.0:3=
 " # uses org.freedesktop.Tracker.Miner.Files gsettings schema from tracker-miners
 BDEPEND="
 	>=dev-util/gdbus-codegen-2.51.2

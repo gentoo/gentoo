@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 # Dependent licenses
 LICENSE+=" BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 src_compile() {
 	ego build -o jira ./cmd/jira

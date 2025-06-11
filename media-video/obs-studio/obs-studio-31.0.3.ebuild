@@ -6,8 +6,8 @@ EAPI=8
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
 # For the time being upstream supports up to Python 3.12 only.
-# Any issues found with 3.13 should be reported as a Gentoo bug.
-PYTHON_COMPAT=( python3_{10..13} )
+# Any issues found with 3.13+ should be reported as a Gentoo bug.
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 

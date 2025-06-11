@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,11 +22,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-RESTRICT="test"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.5-desktop.patch
 	"${FILESDIR}"/${PN}-0.5.5-autotools.patch
+	"${FILESDIR}"/${PN}-0.5.5-no-dmalloc-tests.patch
 )
 
 src_prepare() {
@@ -39,6 +38,8 @@ src_prepare() {
 }
 
 src_configure() {
+	#append-cflags -std=gnu17
+
 	local myeconfargs=(
 		$(use_enable nls)
 		$(use_with sndfile)

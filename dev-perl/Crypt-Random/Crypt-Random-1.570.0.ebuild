@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Cryptographically Secure, True Random Number Generator"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~alpha amd64 ~hppa x86"
 
 RDEPEND="
 	>=dev-perl/Class-Loader-2.0.0

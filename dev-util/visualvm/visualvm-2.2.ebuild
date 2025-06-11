@@ -29,7 +29,7 @@ S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	app-arch/unzip

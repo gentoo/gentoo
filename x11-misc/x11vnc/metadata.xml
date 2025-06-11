@@ -15,6 +15,7 @@
 		to connect to an actual X display.
 	</longdescription>
 	<use>
+		<flag name="drm">Use x11-libs/libdrm to support shm key and drm schema in -rawfb option</flag>
 		<flag name="xdamage">Enable support for the Xdamage library</flag>
 		<flag name="xfixes">Enable support for the Xfixes library</flag>
 		<flag name="xrandr">Enable support for the X xrandr extension</flag>

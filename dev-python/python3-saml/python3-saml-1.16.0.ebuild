@@ -1,10 +1,10 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit distutils-r1
 
@@ -27,6 +27,8 @@ RDEPEND="
 	>=dev-python/lxml-4.9.0[${PYTHON_USEDEP}]
 	>=dev-python/xmlsec-1.3.9[${PYTHON_USEDEP}]
 "
+# next release >1.16.0 should be able to drop freezegun:
+# https://github.com/SAML-Toolkits/python3-saml/commit/6c1fbd84ed498841b252ba7eb3a7d81a9ea77d15
 BDEPEND="
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]

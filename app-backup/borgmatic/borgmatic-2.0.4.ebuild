@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ~riscv"
 IUSE="apprise"
 
 # borg is called as an external tool, hence no pythonic stuff

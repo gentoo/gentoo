@@ -1,0 +1,21 @@
+From 69ce96fdbd24dd388ef20580aa03bda6b8061804 Mon Sep 17 00:00:00 2001
+From: Matthew Bellew <matthew@bellew.net>
+Date: Thu, 23 Apr 2020 19:58:09 -0700
+Subject: [PATCH] Compiles with llvm 10
+
+---
+ configure.ac                                       |  4 ++--
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -158,8 +158,8 @@ AS_IF([echo ${host} | grep -Fq android], [],
+                         CXXFLAGS="$CXXFLAGS -stdlib=libc++"])
+ ])
+ 
+-AX_CHECK_COMPILE_FLAG([-std=c++11], [
+-                        CXXFLAGS="$CXXFLAGS -std=c++11"])
++AX_CHECK_COMPILE_FLAG([-std=c++14], [
++                        CXXFLAGS="$CXXFLAGS -std=c++14"])
+ 
+ # Qt5
+ AC_ARG_ENABLE([qt], AS_HELP_STRING([--enable-qt], [Enable Qt: needed for pulseaudio and jack GUIs]), [], [enable_qt=check])

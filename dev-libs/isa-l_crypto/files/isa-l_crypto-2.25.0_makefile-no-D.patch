@@ -1,0 +1,17 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -121,11 +121,11 @@ CCAS = $(as_filter)
+ EXTRA_DIST += tools/nasm-filter.sh
+ EXTRA_DIST += tools/nasm-cet-filter.sh
+ 
+-AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${D}
++AM_CFLAGS = ${my_CFLAGS} ${INCLUDE} $(src_include) ${DIST_D}
+ if CPU_AARCH64
+-AM_CCASFLAGS = ${asm_args} ${INCLUDE} $(src_include) ${D}
++AM_CCASFLAGS = ${asm_args} ${INCLUDE} $(src_include) ${DIST_D}
+ else
+-AM_CCASFLAGS = ${asm_args} ${INCLUDE} $(src_include) ${DEFS} ${D}
++AM_CCASFLAGS = ${asm_args} ${INCLUDE} $(src_include) ${DEFS} ${DIST_D}
+ endif
+ 
+ .asm.s:

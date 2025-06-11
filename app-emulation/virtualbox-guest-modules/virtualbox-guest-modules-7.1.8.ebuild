@@ -17,7 +17,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.36-log-use-c99.patch

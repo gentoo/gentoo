@@ -64,7 +64,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# error: unknown register name ‘%edx’ in ‘asm’
+	# error: unknown register name '%edx' in 'asm'
 	# https://bugs.gentoo.org/895464
 	# https://github.com/confluentinc/librdkafka/issues/2426
 	filter-lto

@@ -84,7 +84,15 @@ setup-wxwidgets() {
 		wxtoolkit="base"
 	fi
 
-	wxconf="${wxtoolkit}-unicode-${WX_GTK_VER}"
+	# Older versions used e.g. 'gtk3-unicode-3.2-gtk3', while we've
+	# migrated to the upstream layout of 'gtk3-unicode-3.2' for newer
+	# versions when fixing bug #955936.
+	if has_version -d "<x11-libs/wxGTK-3.2.8.1:3.2-gtk3"; then
+		wxconf="${wxtoolkit}-unicode-${WX_GTK_VER}"
+	else
+		wxconf="${wxtoolkit}-unicode-${WX_GTK_VER%%-*}"
+	fi
+
 	for w in "${CHOST:-${CBUILD}}-${wxconf}" "${wxconf}"; do
 		[[ -f ${ESYSROOT}/usr/$(get_libdir)/wx/config/${w} ]] && wxconf=${w} && break
 	done || die "Failed to find configuration ${wxconf}"

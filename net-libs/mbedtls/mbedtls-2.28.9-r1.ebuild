@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,6 +17,7 @@ IUSE="cmac cpu_flags_x86_sse2 doc havege programs static-libs test threads zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	programs? ( !net-libs/mbedtls:0[programs] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"

@@ -18,6 +18,8 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/libsdl2[haptic,opengl]
@@ -37,6 +39,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCDOGS_DATA_DIR="${EPREFIX}"/usr/share/${PN}/ # trailing / is needed
 		-DBUILD_EDITOR=OFF
+		-DBUILD_TESTING=$(usex test)
 		-DUSE_SHARED_ENET=ON
 	)
 

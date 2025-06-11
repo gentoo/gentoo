@@ -6,6 +6,20 @@
 
 # New entries go on top.
 
+# Alfred Wingate <parona@protonmail.com> <2025-05-24)
+# Doesn't work well at runtime.
+dev-games/ogre wayland
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
+# media-sound/hydrogen[lash] build is broken, and dropped upstream in next
+# version. Bug #946125
+media-sound/hydrogen lash
+
+# Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
+# Does not compile as of 2024.1.1, requires buildsystem fixes.
+dev-games/simgear gdal
+games-simulation/flightgear gdal
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-14)
 # dev-qt/qtwebchannel:5 is masked, last revdep was dev-python/pyqtwebengine
 dev-python/pyqt5 webchannel
@@ -57,10 +71,6 @@ sys-apps/usbutils usbreset
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # sys-cluster/pacemaker is being removed.
 sys-cluster/drbd-utils pacemaker
-
-# Michał Górny <mgorny@gentoo.org> (2025-03-05)
-# Mask until we have keyworded dev-util/spirv-llvm-translator:20 release.
-llvm-core/libclc llvm_slot_20
 
 # Michał Górny <mgorny@gentoo.org> (2025-03-05)
 # Mask until we have keyworded dev-lang/rust{,-bin} / slot 20 release.
@@ -474,7 +484,7 @@ gnome-base/gnome-extra-apps tracker
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
 # which has not been ported to libsoup:3.0.
->=app-misc/tracker-miners-3.4.0-r1 rss
+>=app-misc/localsearch-3.4.0-r1 rss
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
 # Cannot test and fix pax-kernel related bugs on a current grsec kernel

@@ -269,7 +269,8 @@ src_configure() {
 	# ensure proper compiler is detected for Clang builds: bug #831202
 	export GCC_FOR_TARGET="${CC_FOR_TARGET:-$(tc-getCC)}"
 
-	econf "${myconf[@]}"
+	# XXX: bash for https://inbox.sourceware.org/gdb-patches/87ecw08tfk.fsf@gentoo.org/
+	CONFIG_SHELL="${BROOT}"/bin/bash econf "${myconf[@]}"
 }
 
 src_test() {

@@ -3,6 +3,8 @@
 
 EAPI="8"
 
+inherit toolchain-funcs
+
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="
@@ -29,6 +31,8 @@ RDEPEND="
 BDEPEND="app-arch/xz-utils"
 
 src_install() {
+	tc-export PKG_CONFIG # Bug 955822
+
 	default
 
 	if [[ ${PV} == "99999999" ]] ; then

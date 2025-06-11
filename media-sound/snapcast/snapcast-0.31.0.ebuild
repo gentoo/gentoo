@@ -44,6 +44,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.31.0-boost-1.88.patch
 	"${FILESDIR}"/${PN}-0.31.0-drop-lint.patch
+	"${FILESDIR}"/${PN}-0.31.0-boost-1.88-fixup.patch
 )
 
 src_configure() {

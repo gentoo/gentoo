@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Atari ST emulator"
@@ -13,11 +13,12 @@ SRC_URI="https://download.tuxfamily.org/hatari/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X capsimage capstone gui png portmidi readline udev zlib"
+IUSE="X capsimage capstone gui png portmidi readline test udev zlib"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	png? ( zlib )
 "
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	media-libs/libsdl2[X?,joystick,sound,video]
@@ -43,7 +44,10 @@ DEPEND="
 	${COMMON_DEPEND}
 	X? ( x11-base/xorg-proto )
 "
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	${PYTHON_DEPS}
+	test? ( virtual/imagemagick-tools[png] )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.1-caps5-include-path.patch

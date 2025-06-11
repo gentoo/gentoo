@@ -133,20 +133,23 @@ pkg_postinst() {
 		migrate_from_211
 	fi
 
+	ewarn "To make sure sv works correctly in your currently open"
+	ewarn "shells, please run the following command:"
+	ewarn
+	ewarn "source /etc/profile"
+	ewarn
+
 	if use scripts; then
-		ewarn "To make sure sv works correctly in your currently open"
-		ewarn "shells, please run the following command:"
-		ewarn
-		ewarn "source /etc/profile"
-		ewarn
 		ewarn "Currently, no task(s) will run in stage 1 & 3, you're on your own"
 		ewarn "to put script(s) into /etc/runit/rc/, please see /etc/runit/rc.sh"
 		ewarn "for name in different stages."
+		ewarn
 	else
 		ewarn "This build with USE=\"-scripts\" doesn\'t include any boot scripts"
 		ewarn "into /etc/runit, you are on your own to put the scripts."
 		ewarn "Also, /sbin/runsvdir-start is a broken symlink to /etc/runit/2, you will"
 		ewarn "need to create script /etc/runit/2 before use it."
+		ewarn
 	fi
 
 	if [[ -L "${EROOT}"/var/service ]]; then

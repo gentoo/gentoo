@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
@@ -35,6 +35,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-c++20-compat.patch"
 	# From https://github.com/zaphoyd/websocketpp/pull/1164
 	"${WORKDIR}/${P}-boost-1.87-compat.patch"
+	# https://github.com/zaphoyd/websocketpp/commit/deb0a334471362608958ce59a6b0bcd3e5b73c24
+	"${FILESDIR}/${P}-cmake4.patch" # bug 953936
 )
 
 src_configure() {

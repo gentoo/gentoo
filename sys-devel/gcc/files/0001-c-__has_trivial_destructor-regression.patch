@@ -1,0 +1,66 @@
+From 089e4f426502a620deb9efc0d80118931fd951d2 Mon Sep 17 00:00:00 2001
+Message-ID: <089e4f426502a620deb9efc0d80118931fd951d2.1748905952.git.sam@gentoo.org>
+From: Jason Merrill <jason@redhat.com>
+Date: Mon, 2 Jun 2025 08:36:22 -0400
+Subject: [PATCH 1/4] c++: __has_trivial_destructor regression
+
+We don't want the new call to get_dtor to cause function instantiation.
+
+	PR c++/107600
+
+gcc/cp/ChangeLog:
+
+	* semantics.cc (trait_expr_value) [CPTK_HAS_TRIVIAL_DESTRUCTOR]:
+	Add cp_unevaluated.
+
+gcc/testsuite/ChangeLog:
+
+	* g++.dg/ext/has_trivial_destructor-3.C: New test.
+---
+ gcc/cp/semantics.cc                           |  1 +
+ .../g++.dg/ext/has_trivial_destructor-3.C     | 21 +++++++++++++++++++
+ 2 files changed, 22 insertions(+)
+ create mode 100644 gcc/testsuite/g++.dg/ext/has_trivial_destructor-3.C
+
+diff --git a/gcc/cp/semantics.cc b/gcc/cp/semantics.cc
+index cafc9d0ee2c3..18a2b4709cf1 100644
+--- a/gcc/cp/semantics.cc
++++ b/gcc/cp/semantics.cc
+@@ -13420,6 +13420,7 @@ trait_expr_value (cp_trait_kind kind, tree type1, tree type2)
+       if (CLASS_TYPE_P (type1) && type_build_dtor_call (type1))
+ 	{
+ 	  deferring_access_check_sentinel dacs (dk_no_check);
++	  cp_unevaluated un;
+ 	  tree fn = get_dtor (type1, tf_none);
+ 	  if (!fn && !seen_error ())
+ 	    warning (0, "checking %qs for type %qT with a destructor that "
+diff --git a/gcc/testsuite/g++.dg/ext/has_trivial_destructor-3.C b/gcc/testsuite/g++.dg/ext/has_trivial_destructor-3.C
+new file mode 100644
+index 000000000000..a179be52e936
+--- /dev/null
++++ b/gcc/testsuite/g++.dg/ext/has_trivial_destructor-3.C
+@@ -0,0 +1,21 @@
++// { dg-do compile { target c++11 } }
++
++struct X;
++
++template<class T>
++struct default_delete
++{
++  void operator()(T*) { static_assert(sizeof(T), "type is not incomplete"); }
++};
++
++template<class T, class D = default_delete<T>>
++struct unique_ptr
++{
++  ~unique_ptr() { del(ptr); }
++
++  T* ptr;
++  D del;
++};
++
++
++constexpr bool b = __has_trivial_destructor(unique_ptr<X>);
+-- 
+2.49.0
+

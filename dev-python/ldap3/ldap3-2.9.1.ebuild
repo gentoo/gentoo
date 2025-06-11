@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
@@ -22,9 +22,15 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 
-# tests require a ldap server and extra configuration
-RESTRICT="test"
-
 RDEPEND="
 	>=dev-python/pyasn1-0.4.8[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests unittest
+
+python_test() {
+	# offline testing only
+	local -x SERVER=NONE
+
+	eunittest
+}

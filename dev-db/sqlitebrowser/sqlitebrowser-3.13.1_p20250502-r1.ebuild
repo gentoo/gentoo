@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/sqlitebrowser/sqlitebrowser/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3+ MPL-2.0"

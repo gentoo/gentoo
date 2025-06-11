@@ -1,7 +1,5 @@
-Index: Scribus/scribus/plugins/import/pdf/importpdf.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/importpdf.cpp	(revision 26663)
-+++ Scribus/scribus/plugins/import/pdf/importpdf.cpp	(revision 26668)
+--- Scribus/scribus/plugins/import/pdf/importpdf.cpp
++++ Scribus/scribus/plugins/import/pdf/importpdf.cpp
 @@ -462,11 +462,11 @@
  
  			if (dev->isOk())
@@ -16,10 +14,8 @@ Index: Scribus/scribus/plugins/import/pdf/importpdf.cpp
  					if (order)
  					{
  						for (int i = 0; i < order->getLength (); ++i)
-Index: Scribus/scribus/plugins/import/pdf/importpdfconfig.h
-===================================================================
---- Scribus/scribus/plugins/import/pdf/importpdfconfig.h	(revision 26663)
-+++ Scribus/scribus/plugins/import/pdf/importpdfconfig.h	(revision 26668)
+--- Scribus/scribus/plugins/import/pdf/importpdfconfig.h
++++ Scribus/scribus/plugins/import/pdf/importpdfconfig.h
 @@ -27,4 +27,10 @@
  #define POPPLER_CONST_083
  #endif
@@ -31,10 +27,8 @@ Index: Scribus/scribus/plugins/import/pdf/importpdfconfig.h
  #endif
 +
 +#endif
-Index: Scribus/scribus/plugins/import/pdf/slaoutput.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 26663)
-+++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 26668)
+--- Scribus/scribus/plugins/import/pdf/slaoutput.cpp
++++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp
 @@ -1685,7 +1685,7 @@
  
  	auto& graphicState = m_graphicStack.top();

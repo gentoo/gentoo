@@ -12,7 +12,7 @@ media-gfx/openvdb pdal
 net-dns/knot doc
 
 # Alfredo Tupone <tupone@gentoo.org> (2025-04-15)
-# drop dev-ml test 
+# drop dev-ml test
 dev-ml/duration test
 dev-ml/luv test
 dev-ml/ocaml-base64 test
@@ -41,13 +41,6 @@ media-libs/assimp collada
 # Mask the optional plotting backend sci-libs/vtk because it's a beast
 # and I don't want to deal with it right now.
 sci-mathematics/maxima vtk
-
-# Michael Orlitzky <mjo@gentoo.org> (2024-08-26)
-# There's an unexplained test failure in sci-libs/qd that I've emailed
-# the authors about. Until we know what's up with that, USE=qd should
-# remain masked for consumers.
-sci-libs/fplll qd
-sci-mathematics/lcalc double-double quad-double
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-06-15)
 # Requires unkeyworded dev-qt/qtwebengine (and revdeps)

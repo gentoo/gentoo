@@ -4,30 +4,30 @@
 EAPI=8
 
 MY_PN="ssr"
-inherit cmake-multilib flag-o-matic xdg
+inherit cmake-multilib xdg
 
 DESCRIPTION="Simple Screen Recorder"
 HOMEPAGE="https://www.maartenbaert.be/simplescreenrecorder/"
 if [[ ${PV} == *9999* ]]; then
-	inherit git-r3
 	EGIT_REPO_URI="https://github.com/MaartenBaert/${MY_PN}.git"
 	EGIT_BOOTSTRAP=""
+	inherit git-r3
 else
 	SRC_URI="https://github.com/MaartenBaert/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_PN}-${PV}"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+asm jack mp3 opengl pulseaudio theora v4l vorbis vpx x264"
+IUSE="+asm jack mp3 opengl pulseaudio theora screencast v4l vorbis vpx x264"
 
 REQUIRED_USE="abi_x86_32? ( opengl )"
 
 RDEPEND="
 	dev-qt/qtbase:6[gui,widgets]
 	media-libs/alsa-lib:0=
-	media-video/ffmpeg:=[vorbis?,vpx?,x264?,theora?]
+	media-video/ffmpeg:=[theora?,vorbis?,vpx?,x264?]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
@@ -35,9 +35,10 @@ RDEPEND="
 	x11-libs/libXinerama
 	virtual/glu[${MULTILIB_USEDEP}]
 	jack? ( virtual/jack )
-	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
 	mp3? ( media-video/ffmpeg[lame(-)] )
+	opengl? ( media-libs/libglvnd[${MULTILIB_USEDEP},X] )
 	pulseaudio? ( media-libs/libpulse )
+	screencast? ( media-video/pipewire:= )
 	v4l? ( media-libs/libv4l )
 "
 DEPEND="${RDEPEND}"
@@ -61,19 +62,13 @@ pkg_pretend() {
 	fi
 }
 
-pkg_setup() {
-	# Qt requires -fPIC. Compile fails otherwise.
-	# Recently removed from the default compile options upstream
-	# https://github.com/MaartenBaert/ssr/commit/25fe1743058f0d1f95f6fbb39014b6ac146b5180
-	append-flags -fPIC
-}
-
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_JACK_METADATA="$(multilib_native_usex jack)"
 		-DENABLE_X86_ASM="$(usex asm)"
 		-DWITH_OPENGL_RECORDING="$(usex opengl)"
 		-DWITH_PULSEAUDIO="$(multilib_native_usex pulseaudio)"
+		-DWITH_PIPEWIRE="$(multilib_native_usex screencast)"
 		-DWITH_JACK="$(multilib_native_usex jack)"
 		-DWITH_GLINJECT="$(usex opengl)"
 		-DWITH_V4L2="$(multilib_native_usex v4l)"

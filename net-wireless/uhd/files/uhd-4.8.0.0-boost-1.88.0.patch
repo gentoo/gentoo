@@ -1,0 +1,33 @@
+From 2725c664ce617ec949670d449fe6172b7661a3bd Mon Sep 17 00:00:00 2001
+From: Michael Cho <michael@michaelcho.dev>
+Date: Mon, 31 Mar 2025 15:09:37 -0400
+Subject: [PATCH] examples: update for upcoming Boost 1.88.0
+
+Boost.Process 1.88.0 will make `boost::process::v2` the default which
+breaks compilation of rx_samples_to_file.cpp. This change uses v1
+headers and inline namespace to fix build.
+---
+ host/examples/rx_samples_to_file.cpp | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/host/examples/rx_samples_to_file.cpp b/host/examples/rx_samples_to_file.cpp
+index c8caeaec43..4b122e1d5e 100644
+--- a/examples/rx_samples_to_file.cpp
++++ b/examples/rx_samples_to_file.cpp
+@@ -15,7 +15,15 @@
+ #include <boost/program_options.hpp>
+ #ifdef __linux__
+ #    include <boost/filesystem.hpp>
+-#    include <boost/process.hpp>
++#    include <boost/version.hpp>
++#    if BOOST_VERSION >= 108800
++#        define BOOST_PROCESS_VERSION 1
++#        include <boost/process/v1/child.hpp>
++#        include <boost/process/v1/io.hpp>
++#        include <boost/process/v1/pipe.hpp>
++#    else
++#        include <boost/process.hpp>
++#    endif
+ #endif
+ #include <chrono>
+ #include <complex>

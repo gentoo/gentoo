@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/956710
+https://github.com/linux-nvme/libnvme/pull/1016
+https://github.com/linux-nvme/libnvme/commit/9b3ab852075f6da64648145b2d2e56e34354bf45
+
+From 9b3ab852075f6da64648145b2d2e56e34354bf45 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20N=C3=A9ri?= <dne+commits@rb67.eu>
+Date: Fri, 23 May 2025 12:36:44 +0200
+Subject: [PATCH] examples: remove unnecessary include of <bits/pthreadtypes.h>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The <bits/*.h> header files are GNU libc specific, and should not be
+used directly from application code. This one in particular is already
+included by <pthread.h> on glibc.
+
+Fixes build on musl.
+
+Signed-off-by: Daniel Néri <dne+commits@rb67.eu>
+--- a/examples/mi-mctp-csi-test.c
++++ b/examples/mi-mctp-csi-test.c
+@@ -21,7 +21,6 @@
+ 
+ #include <ccan/array_size/array_size.h>
+ #include <ccan/endian/endian.h>
+-#include <bits/pthreadtypes.h>
+ 
+ void fhexdump(FILE *fp, const unsigned char *buf, int len)
+ {

@@ -1,0 +1,214 @@
+https://sourceforge.net/p/vice-emu/code/45435/
+
+--- vice/src/Makefile.am
++++ vice/src/Makefile.am
+@@ -594,6 +594,7 @@
+ resid_lib = $(top_builddir)/src/resid/libresid.a
+ resid_dtv_lib = $(top_builddir)/src/resid-dtv/libresiddtv.a
+ rs232drv_lib = $(top_builddir)/src/rs232drv/librs232drv.a
++rs232drvpet_lib = $(top_builddir)/src/rs232drv/librs232drvpet.a
+ raster_lib = $(top_builddir)/src/raster/libraster.a
+ rtc_lib = $(top_builddir)/src/core/rtc/librtc.a
+ samplerdrv_lib = $(top_builddir)/src/samplerdrv/libsamplerdrv.a
+@@ -631,7 +632,7 @@
+ # external libraries required for all emulators
+ emu_extlibs = @UI_LIBS@ @SDL_EXTRA_LIBS@ @SOUND_LIBS@ @JOY_LIBS@ @GFXOUTPUT_LIBS@ @ZLIB_LIBS@ @DYNLIB_LIBS@ @ARCH_LIBS@ $(archdep_lib) $(linenoise_ng_lib)
+ 
+-driver_libs = $(joyport_lib) $(samplerdrv_lib) $(sounddrv_lib) $(mididrv_lib) $(socketdrv_lib) $(hwsiddrv_lib) $(gfxoutputdrv_lib) $(printerdrv_lib) $(rs232drv_lib) $(diskimage_lib) $(fsdevice_lib) $(tape_lib) $(fileio_lib) $(serial_lib) $(core_lib)
++driver_libs = $(joyport_lib) $(samplerdrv_lib) $(sounddrv_lib) $(mididrv_lib) $(socketdrv_lib) $(hwsiddrv_lib) $(gfxoutputdrv_lib) $(printerdrv_lib) $(diskimage_lib) $(fsdevice_lib) $(tape_lib) $(fileio_lib) $(serial_lib) $(core_lib)
+ 
+ if SUPPORT_X64
+ x64_bin = x64
+@@ -716,6 +717,7 @@
+ 	$(sid_lib) \
+ 	$(monitor_lib) \
+ 	$(driver_libs) \
++	$(rs232drv_lib) \
+ 	$(vicii_lib) \
+ 	$(raster_lib) \
+ 	$(userport_lib) \
+@@ -773,6 +775,7 @@
+ 	$(sid_lib) \
+ 	$(monitor_lib) \
+ 	$(driver_libs) \
++	$(rs232drv_lib) \
+ 	$(viciisc_lib) \
+ 	$(raster_lib) \
+ 	$(userport_lib) \
+@@ -895,6 +898,7 @@
+ 	$(sid_lib) \
+ 	$(monitor_lib) \
+ 	$(driver_libs) \
++	$(rs232drv_lib) \
+ 	$(viciisc_lib) \
+ 	$(raster_lib) \
+ 	$(userport_lib) \
+@@ -954,6 +958,7 @@
+ 	$(sid_lib) \
+ 	$(monitor_lib) \
+ 	$(driver_libs) \
++	$(rs232drv_lib) \
+ 	$(vicii_lib) \
+ 	$(vdc_lib) \
+ 	$(raster_lib) \
+@@ -1011,6 +1016,7 @@
+ 	$(monitor_lib) \
+ 	$(sid_lib) \
+ 	$(driver_libs) \
++	$(rs232drv_lib) \
+ 	$(raster_lib) \
+ 	$(userport_lib) \
+ 	$(diag_lib) \
+@@ -1063,6 +1069,7 @@
+ 	$(monitor_lib) \
+ 	$(sid_lib) \
+ 	$(driver_libs) \
++	$(rs232drvpet_lib) \
+ 	$(crtc_lib) \
+ 	$(raster_lib) \
+ 	$(video_lib) \
+@@ -1122,6 +1129,7 @@
+ 	$(monitor_lib) \
+ 	$(sid_lib) \
+ 	$(driver_libs) \
++	$(rs232drv_lib) \
+ 	$(raster_lib) \
+ 	$(rtc_lib) \
+ 	$(video_lib) \
+@@ -1180,6 +1188,7 @@
+ 	$(monitor_lib) \
+ 	$(sid_lib) \
+ 	$(driver_libs) \
++	$(rs232drvpet_lib) \
+ 	$(crtc_lib) \
+ 	$(raster_lib) \
+ 	$(video_lib) \
+@@ -1236,6 +1245,7 @@
+ 	$(xcbm5x0_lib) \
+ 	$(sid_lib) \
+ 	$(driver_libs) \
++	$(rs232drv_lib) \
+ 	$(vicii_lib) \
+ 	$(raster_lib) \
+ 	$(rtc_lib) \
+@@ -1540,8 +1550,11 @@
+ 	@echo "making all in printerdrv"
+ 	@(cd printerdrv && $(MAKE))
+ $(rs232drv_lib):
+-	@echo "making all in rs232drv"
+-	@(cd rs232drv && $(MAKE))
++	@echo "making librs232drv.a in rs232drv"
++	@(cd rs232drv && $(MAKE) librs232drv.a)
++$(rs232drvpet_lib):
++	@echo "making librs232drvpet.a in rs232drv"
++	@(cd rs232drv && $(MAKE) librs232drvpet.a)
+ $(raster_lib):
+ 	@echo "making libraster.a in raster"
+ 	@(cd raster && $(MAKE) libraster.a)
+--- vice/src/c64/Makefile.am
++++ vice/src/c64/Makefile.am
+@@ -216,8 +216,6 @@
+ 	c64fastiec.h \
+ 	c64keyboard.c \
+ 	c64keyboard.h \
+-	c64parallel.c \
+-	c64parallel.h \
+ 	c64rom.c \
+ 	c64rom.h \
+ 	c64romset.c \
+--- vice/src/c64dtv/c64dtv.c
++++ vice/src/c64dtv/c64dtv.c
+@@ -89,7 +89,6 @@
+ #include "protopad.h"
+ #include "ps2mouse.h"
+ #include "resources.h"
+-#include "rs232drv.h"
+ #include "rushware_keypad.h"
+ #include "sampler.h"
+ #include "sampler2bit.h"
+@@ -422,10 +421,12 @@
+         init_resource_fail("sid");
+         return -1;
+     }
++#if 0
+     if (rs232drv_resources_init() < 0) {
+         init_resource_fail("rs232drv");
+         return -1;
+     }
++#endif
+     if (serial_resources_init() < 0) {
+         init_resource_fail("serial");
+         return -1;
+@@ -528,7 +529,9 @@
+     flash_trap_resources_shutdown();
+     c64dtv_resources_shutdown();
+     c64dtvmem_resources_shutdown();
++#if 0
+     rs232drv_resources_shutdown();
++#endif
+     printer_resources_shutdown();
+     drive_resources_shutdown();
+     fsdevice_resources_shutdown();
+@@ -562,10 +565,12 @@
+         init_cmdline_options_fail("sid");
+         return -1;
+     }
++#if 0
+     if (rs232drv_cmdline_options_init() < 0) {
+         init_cmdline_options_fail("rs232drv");
+         return -1;
+     }
++#endif
+     if (serial_cmdline_options_init() < 0) {
+         init_cmdline_options_fail("serial");
+         return -1;
+@@ -712,8 +717,10 @@
+         return -1;
+     }
+ 
++#if 0
+     /* Initialize RS232 handler.  */
+     rs232drv_init();
++#endif
+ 
+     /* Initialize print devices.  */
+     printer_init();
+@@ -798,8 +805,9 @@
+     ciacore_reset(machine_context.cia2);
+     sid_reset();
+ 
++#if 0
+     rs232drv_reset();
+-
++#endif
+     printer_reset();
+ 
+     /* FIXME */
+--- vice/src/rs232drv/Makefile.am
++++ vice/src/rs232drv/Makefile.am
+@@ -14,7 +14,7 @@
+ AM_LDFLAGS = @VICE_LDFLAGS@
+ 
+ 
+-noinst_LIBRARIES = librs232drv.a
++noinst_LIBRARIES = librs232drv.a librs232drvpet.a
+ 
+ librs232drv_a_SOURCES = \
+ 	rs232dev.h \
+@@ -26,3 +26,16 @@
+ 	rs232net.h \
+ 	rsuser.c \
+ 	rsuser.h
++
++# Same as above, but without the userport bits, to avoid registering userport
++# resources and command line options with xpet and xcbm2 (these have stubs for
++# rsuser_resources_init() and rsuser_cmdline_init()
++librs232drvpet_a_SOURCES = \
++	rs232dev.h \
++	rs232.c \
++	rs232.h \
++	rs232drv.c \
++	rs232drv.h \
++	rs232net.c \
++	rs232net.h \
++	rsuser.h

@@ -1,4 +1,4 @@
-# Copyright 2004-2024 Gentoo Authors
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ##
@@ -15,6 +15,7 @@ sys-devel/binutils
 sys-devel/binutils-config
 dev-build/libtool
 dev-build/make
+dev-lang/erlang
 dev-lang/python
 dev-lang/perl
 dev-lang/rust

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/frescobaldi/frescobaldi/releases/download/v${PV}/${P
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	$(python_gen_cond_dep '

@@ -1,0 +1,36 @@
+https://github.com/thom311/libnl/commit/f278e5921498fc635bd9534a3f24979bb1b2849d
+
+From f278e5921498fc635bd9534a3f24979bb1b2849d Mon Sep 17 00:00:00 2001
+From: Aleksander Mazur <19613255+OlekMazur@users.noreply.github.com>
+Date: Sat, 29 Mar 2025 01:34:46 +0100
+Subject: [PATCH] Fix compilation error in GCC 14
+
+lib/socket.c: In function '_badrandom_from_time':
+lib/socket.c:70:13: error: implicit declaration of function 'time' [-Wimplicit-function-declaration]
+   70 |         t = time(NULL);
+      |             ^~~~
+lib/socket.c:39:1: note: 'time' is defined in header '<time.h>'; this is probably fixable by adding '#include <time.h>'
+   38 | #include "nl-aux-core/nl-core.h"
+  +++ |+#include <time.h>
+   39 |
+
+https://github.com/thom311/libnl/pull/424
+---
+ lib/socket.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/socket.c b/lib/socket.c
+index 4e64cbb3..c6200958 100644
+--- a/lib/socket.c
++++ b/lib/socket.c
+@@ -23,6 +23,7 @@
+ 
+ #include "nl-default.h"
+ 
++#include <time.h>
+ #include <fcntl.h>
+ #include <limits.h>
+ #include <sys/socket.h>
+-- 
+2.49.0
+

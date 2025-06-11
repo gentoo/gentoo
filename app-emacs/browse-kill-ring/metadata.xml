@@ -14,6 +14,6 @@
 </longdescription>
 <stabilize-allarches/>
 <upstream>
-  <remote-id type="github">todesschaf/browse-kill-ring</remote-id>
+  <remote-id type="github">browse-kill-ring/browse-kill-ring</remote-id>
 </upstream>
 </pkgmetadata>

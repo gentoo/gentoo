@@ -17,7 +17,7 @@ SRC_URI="https://github.com/main-branch/process_executer/archive/refs/tags/v${PV
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 
 all_ruby_prepare() {
 	sed -e '/simplecov/ s:^:#:' \

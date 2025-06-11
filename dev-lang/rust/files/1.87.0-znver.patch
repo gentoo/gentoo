@@ -1,9 +1,0 @@
-https://bugs.gentoo.org/956018#c3
---- a/library/portable-simd/crates/core_simd/src/masks/bitmask.rs
-+++ b/library/portable-simd/crates/core_simd/src/masks/bitmask.rs
-@@ -1,4 +1,5 @@
- #![allow(unused_imports)]
-+#![allow(unused_attributes)]
- use super::MaskElement;
- use crate::simd::{LaneCount, Simd, SupportedLaneCount};
- use core::marker::PhantomData;

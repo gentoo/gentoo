@@ -36,7 +36,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/hyphen
 	dev-libs/icu:0=
 	dev-libs/librevenge
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[gui,network,opengl,X,xml,widgets]
 	dev-qt/qtsvg:6

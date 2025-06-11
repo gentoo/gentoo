@@ -1,0 +1,11 @@
+--- b/arch/x86/tools/insn_decoder_test.c
++++ a/arch/x86/tools/insn_decoder_test.c
+@@ -106,7 +106,7 @@
+ 	}
+ }
+ 
++#define BUFSIZE 256
+-#define BUFSIZE 4096
+ 
+ int main(int argc, char **argv)
+ {

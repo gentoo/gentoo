@@ -1,0 +1,12 @@
+--- a/test/run-tests.sh
++++ b/test/run-tests.sh
+@@ -12,7 +12,9 @@ else
+         diff test1-result.trace test1-correct.be.trace &> /dev/null
+         if test $? -eq 0; then
+                 echo "passed."
++                exit 0
+         else
+                 echo "FAILED."
++                exit 1
+         fi
+ fi

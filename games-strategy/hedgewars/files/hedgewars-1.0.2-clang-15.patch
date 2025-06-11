@@ -1,0 +1,21 @@
+
+# HG changeset patch
+# User LocutusOfBorg
+# Date 1663951667 14400
+# Node ID 6cb7330113d8960151c1f5db396859c539079e34
+# Parent  1878d95d6e15a655a4fa06848987b5c032c8c692
+Fix clang-15 compile error
+
+diff -r 1878d95d6e15 -r 6cb7330113d8 project_files/hwc/rtl/sysutils.c
+--- a/project_files/hwc/rtl/sysutils.c	Fri Sep 23 02:45:49 2022 +0300
++++ b/project_files/hwc/rtl/sysutils.c	Fri Sep 23 12:47:47 2022 -0400
+@@ -83,7 +83,7 @@
+ // Semi-dummy implementation of FormatDateTime
+ string255 fpcrtl_formatDateTime(string255 FormatStr, TDateTime DateTime)
+ {
+-    string255 buffer = STRINIT(FormatStr.str);
++    string255 buffer = FormatStr;
+     time_t rawtime;
+     struct tm* my_tm;
+ 
+

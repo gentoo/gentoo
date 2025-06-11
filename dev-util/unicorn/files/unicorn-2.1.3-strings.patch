@@ -1,0 +1,40 @@
+https://github.com/unicorn-engine/unicorn/pull/2186
+
+From e57d319971005235cc6946f0ba9e832a339aecb1 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Thu, 15 May 2025 21:50:55 +0800
+Subject: [PATCH] qemu/configure: make strings command can be redefined by
+ ${STRINGS}
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+---
+ qemu/configure | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/qemu/configure b/qemu/configure
+index e8eb427c..af3781c3 100755
+--- a/qemu/configure
++++ b/qemu/configure
+@@ -339,6 +339,7 @@ ld="${LD-${cross_prefix}ld}"
+ ranlib="${RANLIB-${cross_prefix}ranlib}"
+ nm="${NM-${cross_prefix}nm}"
+ strip="${STRIP-${cross_prefix}strip}"
++strings="${STRINGS-${cross_prefix}strings}"
+ pkg_config_exe="${PKG_CONFIG-${cross_prefix}pkg-config}"
+ query_pkg_config() {
+     "${pkg_config_exe}" ${QEMU_PKG_CONFIG_FLAGS} "$@"
+@@ -1233,9 +1234,9 @@ int main(int argc, char *argv[]) {
+ EOF
+ 
+ if compile_object ; then
+-    if strings -a $TMPO | grep -q BiGeNdIaN ; then
++    if ${strings} -a $TMPO | grep -q BiGeNdIaN ; then
+         bigendian="yes"
+-    elif strings -a $TMPO | grep -q LiTtLeEnDiAn ; then
++    elif ${strings} -a $TMPO | grep -q LiTtLeEnDiAn ; then
+         bigendian="no"
+     else
+         echo big/little test failed
+-- 
+2.45.2
+

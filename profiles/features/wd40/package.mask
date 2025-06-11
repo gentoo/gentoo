@@ -1,6 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2025-05-18)
+# >=bpftrace-0.23 needs Rust-based blazesym_c
+>=dev-debug/bpftrace-0.23.2
+>=dev-libs/blazesym_c-0.1.1
+
+# Victor Kustov <ktrace@yandex.ru> (2025-05-08)
+# LibrePCB start ported to Rust
+>=sci-electronics/librepcb-1.3.0
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # The sigstore bundle.
 dev-python/betterproto
@@ -366,6 +375,7 @@ media-gfx/gimp
 media-plugins/gimp-lqr
 media-video/rav1e
 net-analyzer/wtfis
+net-dns/dnsviz
 net-dns/pdns-recursor
 net-im/gajim
 >=net-irc/polari-3.37

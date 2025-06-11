@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/952851
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ #
+ ############################################################################
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.15)
+ project(bcg729 VERSION 1.1.1 LANGUAGES C)
+ 
+ 

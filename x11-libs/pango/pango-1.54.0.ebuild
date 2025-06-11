@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic gnome2-utils meson-multilib xdg
 
 DESCRIPTION="Internationalized text layout and rendering library"
-HOMEPAGE="https://pango.gnome.org/ https://gitlab.gnome.org/GNOME/pango"
+HOMEPAGE="https://www.gtk.org/docs/architecture/pango https://gitlab.gnome.org/GNOME/pango"
 SRC_URI="https://download.gnome.org/sources/pango/$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="LGPL-2+"

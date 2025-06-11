@@ -1,0 +1,65 @@
+From: https://github.com/calf-studio-gear/calf/pull/385
+
+From c88956484bc06cc3192303b71a6f4907d5ea34c5 Mon Sep 17 00:00:00 2001
+From: Johannes Lorenz <j.git@lorenz-ho.me>
+Date: Sat, 17 May 2025 16:26:03 +0200
+Subject: [PATCH] Fix calf.desktop
+
+The `Version` must be the "Version of the Desktop Entry Specification",
+and not of the application.
+
+This also updates/fixes the `Categories` section.
+
+Fixes https://955628.bugs.gentoo.org/attachment.cgi?id=928147 .
+---
+ .gitignore                      | 1 -
+ .svnignore                      | 1 -
+ CMakeLists.txt                  | 3 +--
+ calf.desktop.in => calf.desktop | 7 ++++---
+ configure.ac.deprecated         | 1 -
+ 5 files changed, 5 insertions(+), 8 deletions(-)
+ rename calf.desktop.in => calf.desktop (95%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd723ed70..5b976127d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -200,7 +200,6 @@ else()
+ endif()
+ 
+ configure_file(config.h.cmake.in config.h)
+-configure_file(${PROJECT_NAME}.desktop.in ${PROJECT_NAME}.desktop)
+ include_directories(${CMAKE_BINARY_DIR})
+ 
+ #
+@@ -231,7 +230,7 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/scripts/
+         DESTINATION ${CMAKE_INSTALL_DOCDIR}/scripts FILES_MATCHING PATTERN "*.js")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/sf2/
+         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/sf2 FILES_MATCHING PATTERN "*.sf2")
+-install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.desktop
++install(FILES ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.desktop
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+ install(FILES ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}jackhost.1
+         DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+diff --git a/calf.desktop.in b/calf.desktop
+similarity index 95%
+rename from calf.desktop.in
+rename to calf.desktop
+index 3514ee874..c0a2071ac 100644
+--- a/calf.desktop.in
++++ b/calf.desktop
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+-Categories=Application;AudioVideo;Audio;GNOME
++Type=Application
++Version=1.5
++
++Categories=AudioVideo;Audio;Sequencer;X-Jack;GTK
+ Exec=calfjackhost
+ Icon=calf
+ Terminal=false
+-Type=Application
+-Version=@VERSION@
+ 
+ Name=Calf Plugin Pack for JACK
+ Name[fr]=Ensemble de greffons Calf pour JACK

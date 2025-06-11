@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -20,7 +20,7 @@ SRC_URI="https://github.com/lostisland/faraday-multipart/archive/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend "dev-ruby/multipart-post:0"

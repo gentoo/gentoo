@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 # Please do not apply any patches which affect the generated output from
 # `automake`, as this package is used to submit patches upstream.
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit python-any-r1
 
@@ -25,7 +25,7 @@ fi
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="https://www.gnu.org/software/automake/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ FSFAP"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
 IUSE="test"

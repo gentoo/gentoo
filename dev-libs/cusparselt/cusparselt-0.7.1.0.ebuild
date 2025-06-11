@@ -14,38 +14,44 @@ SRC_URI="
 	)
 "
 
-LICENSE="NVIDIA-SDK"
+# The package contains a directory with the archive name minus the extension.
+# So to handle arm64/amd64 we use WORKDIR here
+S="${WORKDIR}"
+
+LICENSE="NVIDIA-SDK-v2020.10.12 NVIDIA-cuSPARSELt-v2020.10.12"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~amd64-linux ~arm64-linux"
 RESTRICT="bindist mirror test"
 
-RDEPEND="
-	dev-util/nvidia-cuda-toolkit
-"
-
 QA_PREBUILT="/opt/cuda*/targets/*-linux/lib/*"
 
-src_prepare(){
+pkg_setup() {
+	if use amd64; then
+		export narch="x86_64"
+	elif use arm64; then
+		export narch="sbsa"
+	fi
+}
+
+src_prepare() {
+	cd "libcusparse_lt-linux-${narch}-${PV}-archive" || die
+
+	eapply_user
+}
+
+src_configure() {
 	:
 }
 
-src_configure(){
-	:
-}
-
-src_compile(){
+src_compile() {
 	:
 }
 
 src_install() {
-	local narch
-	if use amd64; then
-		narch="x86_64"
-	elif use arm64; then
-		narch="sbsa"
-	fi
+	cd "libcusparse_lt-linux-${narch}-${PV}-archive" || die
 
 	# allow slotted install
+	mkdir -vp "${ED}${CUDNN_PATH:-${EPREFIX}/opt/cuda}/targets/${narch}-linux" || die
 	mv \
 		include lib \
 		"${ED}${CUDNN_PATH:-${EPREFIX}/opt/cuda}/targets/${narch}-linux" \

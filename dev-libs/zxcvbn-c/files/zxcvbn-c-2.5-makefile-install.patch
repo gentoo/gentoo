@@ -1,0 +1,30 @@
+Based on rpm/libzxcvbn-2.4-makefile-install.patch in the upstream repo.
+--- a/makefile
++++ b/makefile
+@@ -13,6 +13,8 @@ CPPFLAGS += -I.
+ TARGET_LIB = libzxcvbn.so.0.0.0
+ SONAME = libzxcvbn.so.0
+ 
++LIBDIR := $(or $(LIBDIR),$(/usr/lib))
++
+ WORDS = words-eng_wiki.txt words-female.txt words-male.txt words-passwd.txt words-surname.txt words-tv_film.txt
+ 
+ all: test-file test-inline test-c++inline test-c++file test-shlib test-statlib test-internals
+@@ -101,6 +103,17 @@ test: test-internals test-file test-inline test-c++inline test-c++file test-shli
+ 	./test-c++inline -t testcases.txt
+ 	@echo Finished
+ 
++package: $(TARGET_LIB) libzxcvbn.a dict-crc.h dict-src.h
++
++install: package
++	mkdir -p $(DESTDIR)/usr/include/zxcvbn $(DESTDIR)/usr/share/zxcvbn $(DESTDIR)/usr/bin $(DESTDIR)$(LIBDIR)
++	install -m 0644 *.h $(DESTDIR)/usr/include/zxcvbn
++	install -m 0644 $(TARGET_LIB) libzxcvbn.a $(DESTDIR)$(LIBDIR)
++	ln -s $(TARGET_LIB) $(DESTDIR)$(LIBDIR)/$(SONAME)
++	ln -s $(SONAME) $(basename $(DESTDIR)$(LIBDIR)/$(SONAME))
++	install -m 0755 dictgen $(DESTDIR)/usr/bin/zxcvbn-dictgen
++	install -m 0644 zxcvbn.dict $(DESTDIR)/usr/share/zxcvbn
++
+ clean:
+ 	rm -f test-file zxcvbn-file.o test-c++file zxcvbn-c++file.o 
+ 	rm -f test-inline test-internals zxcvbn-inline.o zxcvbn-inline-pic.o test-c++inline zxcvbn-c++inline.o

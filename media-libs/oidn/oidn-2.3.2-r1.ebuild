@@ -8,7 +8,7 @@ ROCM_VERSION=6.3
 
 inherit cmake cuda python-any-r1 rocm
 
-DESCRIPTION="Intel® Open Image Denoise library"
+DESCRIPTION="Intel Open Image Denoise library"
 HOMEPAGE="https://www.openimagedenoise.org https://github.com/RenderKit/oidn"
 
 if [[ ${PV} = *9999* ]]; then

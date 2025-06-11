@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/asciidoctor/asciimath"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/nokogiri )"

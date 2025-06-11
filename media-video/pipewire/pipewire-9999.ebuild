@@ -29,9 +29,14 @@ PIPEWIRE_DOCS_USEFLAG="+man"
 PYTHON_COMPAT=( python3_{10..13} )
 inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == 9999 ]] ; then
 	PIPEWIRE_DOCS_PREBUILT=0
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
+	inherit git-r3
+elif [[ ${PV} == *.9999 ]] ; then
+	PIPEWIRE_DOCS_PREBUILT=0
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/${PN}/${PN}.git"
+	EGIT_BRANCH="${PV%.*}"
 	inherit git-r3
 else
 	if [[ ${PV} == *_p* ]] ; then
@@ -189,7 +194,9 @@ src_prepare() {
 	default
 
 	# Used for upstream backports
-	[[ -d "${FILESDIR}"/${PV} ]] && eapply "${FILESDIR}"/${PV}
+	if [[ ${PV} != *9999 && -d "${FILESDIR}"/${PV} ]] ; then
+		eapply "${FILESDIR}"/${PV}
+	fi
 }
 
 multilib_src_configure() {
@@ -331,10 +338,8 @@ multilib_src_install_all() {
 		doins "${FILESDIR}"/99-pipewire-default-hook.conf
 		eprefixify "${ED}"/usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf
 
-		# These will break if someone has /etc that is a symbolic link to a subfolder! See #724222
-		# And the current dosym8 -r implementation is likely affected by the same issue, too.
-		dosym ../../../usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/50-pipewire.conf
-		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf /etc/alsa/conf.d/99-pipewire-default-hook.conf
+		dosym -r /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/50-pipewire.conf
+		dosym -r /usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf /etc/alsa/conf.d/99-pipewire-default-hook.conf
 	fi
 
 	exeinto /etc/user/init.d
@@ -504,7 +509,7 @@ pkg_postinst() {
 			ewarn
 			ewarn "USE=sound-server is disabled! If you want PipeWire to provide"
 			ewarn "your sound, please enable it. See the wiki at"
-			ewarn "https://wiki.gentoo.org/wiki/PipeWire#Replacing_PulseAudio"
+			ewarn "https://wiki.gentoo.org/wiki/PipeWire"
 			ewarn "for more details."
 			ewarn
 		fi

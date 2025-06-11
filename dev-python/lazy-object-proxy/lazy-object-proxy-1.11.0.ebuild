@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} python3_13t pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} python3_{13,14}t pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -30,16 +30,18 @@ distutils_enable_tests pytest
 PATCHES=(
 	# https://github.com/ionelmc/python-lazy-object-proxy/pull/79
 	"${FILESDIR}/${PN}-1.10.0-pure-tests.patch"
+	# https://github.com/ionelmc/python-lazy-object-proxy/pull/88
+	"${FILESDIR}/${P}-py314.patch"
 )
 
 python_prepare_all() {
+	distutils-r1_python_prepare_all
+
 	# No need to benchmark
 	sed \
 		-e '/benchmark/s:test_:_&:g' \
 		-e '/pytest.mark.benchmark/d' \
 		-i tests/test_lazy_object_proxy.py || die
-
-	distutils-r1_python_prepare_all
 
 	if use native-extensions; then
 		unset SETUPPY_FORCE_PURE

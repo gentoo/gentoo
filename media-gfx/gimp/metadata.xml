@@ -10,10 +10,14 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="alsa">Enable ALSA support in midi input controller</flag>
 		<flag name="fits">Enable support for loading/exporting FITS images</flag>
 		<flag name="vector-icons">Enable support for vector icons (experimental)</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://www.gimp.org/bugs/</bugs-to>
+		<changelog>https://www.gimp.org/release-notes/</changelog>
+		<doc>https://www.gimp.org/docs/</doc>
 		<remote-id type="gnome-gitlab">GNOME/gimp</remote-id>
 	</upstream>
 </pkgmetadata>

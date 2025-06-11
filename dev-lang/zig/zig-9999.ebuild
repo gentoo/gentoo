@@ -83,7 +83,7 @@ pkg_setup() {
 	declare -r -g ZIG_VER="${PV}"
 	ZIG_EXE="not-applicable" zig_pkg_setup
 
-	declare -r -g ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
+	declare -r -g ZIG_SYS_INSTALL_DEST="/usr/$(get_libdir)/zig/${PV}"
 
 	if use llvm; then
 		[[ ${MERGE_TYPE} != binary ]] && llvm_cbuild_setup
@@ -123,6 +123,8 @@ src_prepare() {
 	# CHECKREQS_MEMORY and causes unneccessary errors. Upstream set them
 	# according to CI OOM failures, which are not applicable to normal Gentoo build.
 	sed -i -e '/\.max_rss = .*,/d' build.zig || die
+
+	sed -i '/exe\.allow_so_scripts = true;/d' build.zig || die
 }
 
 src_configure() {
@@ -138,7 +140,7 @@ src_configure() {
 	local my_zbs_args=(
 		--zig-lib-dir "${S}/lib/"
 
-		--prefix "${ZIG_SYS_INSTALL_DEST}/"
+		--prefix "${EPREFIX}/${ZIG_SYS_INSTALL_DEST}/"
 		--prefix-lib-dir lib/
 
 		# These are built separately
@@ -300,21 +302,35 @@ src_test() {
 	#      the test will fail. There's no way to disable --libc once passed,
 	#      so we need to strip it from ZBS_ARGS.
 	#      See: https://github.com/ziglang/zig/issues/22383
-	local args_backup=("${ZBS_ARGS[@]}")
 
-	for ((i = 0; i < ${#ZBS_ARGS[@]}; i++)); do
-		if [[ "${ZBS_ARGS[i]}" == "--libc" ]]; then
-			unset ZBS_ARGS[i]
-			unset ZBS_ARGS[i+1]
-			break
-		fi
-	done
+	# XXX: Also strip --release=* flags to run tests with Debug mode,
+	# like upstream runs in CI. Full test suite with other modes is
+	# in a sad state right now...
+	(
+		local -a filtered_args=()
+		local i=0
 
-	# Run tests with Debug mode by default, like upstream does in CI,
-	# full test suite with other modes is in a sad state right now...
-	ZIG_EXE="./stage3/bin/zig" zig_src_test -Dskip-non-native --release=debug
+		local arg
+		while (( i < ${#ZBS_ARGS[@]} )); do
+			arg="${ZBS_ARGS[i]}"
+			case "$arg" in
+				--libc)
+					(( i += 2 ))
+					;;
+				--release=*)
+					(( i += 1 ))
+					;;
+				*)
+					filtered_args+=("$arg")
+					(( i += 1 ))
+					;;
+			esac
+		done
 
-	ZBS_ARGS=("${args_backup[@]}")
+		ZBS_ARGS=("${filtered_args[@]}")
+
+		ZIG_EXE="./stage3/bin/zig" zig_src_test -Dskip-non-native
+	)
 }
 
 src_install() {
@@ -322,7 +338,7 @@ src_install() {
 
 	ZIG_EXE="./zig2" zig_src_install
 
-	cd "${D}/${ZIG_SYS_INSTALL_DEST}" || die
+	cd "${ED}/${ZIG_SYS_INSTALL_DEST}" || die
 	mv lib/zig/ lib2/ || die
 	rm -rf lib/ || die
 	mv lib2/ lib/ || die
@@ -331,13 +347,6 @@ src_install() {
 
 pkg_postinst() {
 	eselect zig update ifunset || die
-
-	elog "Starting from 0.12.0, Zig no longer installs"
-	elog "precompiled standard library documentation."
-	elog "Instead, you can call \`zig std\` to compile it on-the-fly."
-	elog "It reflects all edits in standard library automatically."
-	elog "See \`zig std --help\` for more information."
-	elog "More details here: https://ziglang.org/download/0.12.0/release-notes.html#Redesign-How-Autodoc-Works"
 
 	if ! use llvm; then
 		elog "Currently, Zig built without LLVM support lacks some"

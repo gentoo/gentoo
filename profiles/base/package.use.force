@@ -1,6 +1,16 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-06-05)
+# app-misc/ddcutil fails to build w/o USE=X as it always tries to include
+# <X11/Xlib.h>. See bug #950320 and https://github.com/rockowitz/ddcutil/issues/504
+~app-misc/ddcutil-2.2.0 X
+
+# Sam James <sam@gentoo.org> (2025-06-03)
+# -libupb fails to build (bug #957067)
+# https://github.com/protocolbuffers/protobuf/issues/20538
+>=dev-libs/protobuf-31.1 libupb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
 # Force both "old" KWallet backend (now ksecretd service via IUSE keyring)
 # and the legacy KWalletAPI (via IUSE legacy-kwallet) until a (stable)
@@ -301,7 +311,7 @@ sys-libs/ncurses-compat tinfo
 # Mart Raudsepp <leio@gentoo.org> (2018-12-14)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
-app-misc/tracker-miners seccomp
+app-misc/localsearch seccomp
 net-libs/webkit-gtk seccomp
 
 # Lukas Schmelting <lschmelting@posteo.com> after consulting
@@ -320,10 +330,6 @@ net-analyzer/snort libtirpc
 net-fs/autofs libtirpc
 net-misc/netkit-bootparamd libtirpc
 sys-cluster/glusterfs libtirpc
-
-# Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
-# Workaround until resolved upstream (bug #586840)
->=dev-games/simgear-2016.2.1 dns
 
 # Justin Lecher <jlec@gentoo.org> (2014-08-10)
 # Doesn't work without acl support
@@ -350,8 +356,7 @@ dev-lang/python-exec python_targets_pypy3_11
 # Force ipc USE flag since it should remain enabled unless
 # it is found to be incompatible with a specific profile
 # or environment. When enabled, it fixes bug #278895,
-# bug #315615, and makes subshell die support more robust
-# (so that repoman's ebuild.nesteddie check is irrelevant).
+# bug #315615, and makes subshell die support more robust.
 sys-apps/portage ipc
 
 # Peter Alfredsen <loki_val@gentoo.org> (2009-04-11)

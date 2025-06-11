@@ -1,10 +1,10 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -21,9 +21,6 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-devel/gettext
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.2.1[${PYTHON_USEDEP}]
-	' 3.10)
 "
 
 python_test() {

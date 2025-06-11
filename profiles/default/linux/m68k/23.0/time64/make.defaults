@@ -1,0 +1,10 @@
+# Copyright 2024-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="m68k-aligned-linux-gnut64"
+
+# Let's take care of a decent celestial alignment
+CFLAGS="${CFLAGS} -malign-int"
+CXXFLAGS="${CXXFLAGS} -malign-int"
+FCFLAGS="${FCFLAGS} -malign-int"
+FFLAGS="${FFLAGS} -malign-int"

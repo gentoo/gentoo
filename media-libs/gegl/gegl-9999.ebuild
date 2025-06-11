@@ -93,7 +93,7 @@ src_prepare() {
 	# patch executables suffix
 	sed -i -e "s/'gegl'/'gegl-0.4'/" bin/meson.build || die
 	sed -i -e "s/'gegl-imgcmp'/'gegl-imgcmp-0.4'/" tools/meson.build || die
-	sed -i -e "s/gegl-imgcmp/gegl-imgcmp-0.4/" tests/simple/test-exp-combine.sh || die
+	sed -i -e "s/gegl-imgcmp/gegl-imgcmp-0.4/" tests/simple/test-exp-combine.py || die
 	# skip UNEXPECTED PASSED 'matting-levin' test
 	sed -i -e "s/composition_tests += 'matting-levin'//" \
 		-e "s/composition_tests_fail += 'matting-levin'//" tests/compositions/meson.build || die

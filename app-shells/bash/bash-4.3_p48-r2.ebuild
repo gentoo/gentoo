@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,10 +24,7 @@ patches() {
 	if [[ ${opt} == -s ]] ; then
 		echo "${@/#/${DISTDIR}/}"
 	else
-		local u
-		for u in ftp://ftp.cwru.edu/pub/bash mirror://gnu/${pn} ; do
-			printf "${u}/${pn}-${pv}-patches/%s " "$@"
-		done
+		printf "mirror://gnu/${pn}/${pn}-${pv}-patches/%s " "$@"
 	fi
 }
 
@@ -37,11 +34,12 @@ READLINE_VER="6.3"
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
-[[ ${PV} == *_rc* ]] && SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
 
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
@@ -62,8 +60,6 @@ PATCHES=(
 	"${WORKDIR}"/${P}-r2-patches/${PN}-4.3-protos.patch
 	"${WORKDIR}"/${P}-r2-patches/${PN}-4.4-popd-offset-overflow.patch # bug #600174
 )
-
-S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	# bug #7332
@@ -116,6 +112,10 @@ src_configure() {
 	# bash 5.3 drops unprototyped functions, earlier versions are
 	# incompatible with C23.
 	append-cflags $(test-flags-CC -std=gnu17)
+
+	if tc-is-cross-compiler; then
+		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
+	fi
 
 	local myconf=(
 		--docdir='$(datarootdir)'/doc/${PF}

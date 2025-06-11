@@ -1,0 +1,34 @@
+https://github.com/proftpd/proftpd/pull/1954
+https://github.com/proftpd/proftpd/commit/d71ae3f226547b3409dd296e824a57a87354e58d
+
+From 75d79d68465ece9c67fc2f2a9788d28c2965d583 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Mon, 2 Jun 2025 20:16:17 -0700
+Subject: [PATCH] use $(LIBTOOL) to install proftpd
+
+With slibtool 'make install' will install the slibtool wrapper script
+instead of the actual executable file. This is because with slibtool
+the executable is compiled into the .libs directory while the file in
+the root directory is a wrapper script where with GNU libtool the
+executable will be placed into the root directory. Using $(LIBTOOL) to
+install the executable will ensure that both implementations install the
+correct file.
+
+Gentoo-Issue: https://bugs.gentoo.org/953968
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 32fd5f3c8b..3f574a8262 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -134,7 +134,7 @@ $(DESTDIR)$(localedir) $(DESTDIR)$(includedir) $(DESTDIR)$(includedir)/proftpd $
+ 	fi
+ 
+ install-proftpd: $(DESTDIR)$(includedir) $(DESTDIR)$(localstatedir) $(DESTDIR)$(sysconfdir) $(DESTDIR)$(sbindir)
+-	$(INSTALL_SBIN) $(top_builddir)/proftpd $(DESTDIR)$(sbindir)/proftpd
++	$(LIBTOOL) --mode=install --tag=CC $(INSTALL_SBIN) $(top_builddir)/proftpd $(DESTDIR)$(sbindir)/proftpd
+ 	if [ -f $(DESTDIR)$(sbindir)/in.proftpd ] ; then \
+ 		rm -f $(DESTDIR)$(sbindir)/in.proftpd ; \
+ 	fi

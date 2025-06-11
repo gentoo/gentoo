@@ -5,10 +5,10 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517="flit"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit distutils-r1 flag-o-matic multiprocessing waf-utils systemd
+inherit dot-a distutils-r1 multiprocessing waf-utils systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -101,7 +101,8 @@ src_prepare() {
 }
 
 src_configure() {
-	filter-lto
+	# endianness configure test fails otherwise
+	lto-guarantee-fat
 
 	local string_127=""
 	local rclocks="";

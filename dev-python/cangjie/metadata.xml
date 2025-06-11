@@ -6,7 +6,7 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">Cangjians/pycangjie</remote-id>
+		<remote-id type="freedesktop-gitlab">cangjie/pycangjie</remote-id>
 		<remote-id type="pypi">CangJie</remote-id>
 	</upstream>
 </pkgmetadata>

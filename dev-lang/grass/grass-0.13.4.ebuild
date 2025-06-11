@@ -84,7 +84,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" MIT Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 QA_FLAGS_IGNORED="/usr/bin/grass"
 

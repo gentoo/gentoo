@@ -1,0 +1,93 @@
+From e00bc31abbc489f1787cd5b2d5c441dbb82ed03a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Wed, 19 Jun 2024 21:28:31 -0400
+Subject: [PATCH] gdk: add a "poison" macro to hide GDK_WINDOWING_*
+
+Many packages perform automagic dependencies on gdk's backend
+implementations by checking if the macro is defined and then using the
+code it unlocks, rather than having a buildsystem option such as
+-Dwayland=true.
+
+It's unfeasible to patch every such package's source code to add
+configure options and respect them. Instead add a truly filthy hack and
+permit gtk itself to selectively show or hide the windowing system in
+use.
+
+By default, we assume this macro is never defined. It should only ever
+be defined inside an ebuild, as such:
+
+```
+use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
+use X || append-cflags -DGENTOO_GTK_HIDE_X11
+```
+
+When seen, this will prevent code using "#ifdef GDK_WINDOWING_*" from
+seeing the define, so the automagic dependency won't be picked up. It
+will also cause any attempt to #include the backend-specific headers to
+bug out.
+
+Bug: https://bugs.gentoo.org/624960
+Signed-off-by: Eli Schwartz <eschwartz93@gmail.com>
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ gdk/gdkconfig.h.meson    | 7 +++++++
+ gdk/wayland/gdkwayland.h | 4 ++++
+ gdk/x11/gdkx.h           | 4 ++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/gdk/gdkconfig.h.meson b/gdk/gdkconfig.h.meson
+index 17276e0..03cf61c 100644
+--- a/gdk/gdkconfig.h.meson
++++ b/gdk/gdkconfig.h.meson
+@@ -10,11 +10,18 @@
+ G_BEGIN_DECLS
+ 
+ 
++#ifndef GENTOO_GTK_HIDE_X11
+ #mesondefine GDK_WINDOWING_X11
++#endif
++
+ #mesondefine GDK_WINDOWING_ANDROID
+ #mesondefine GDK_WINDOWING_BROADWAY
+ #mesondefine GDK_WINDOWING_MACOS
++
++#ifndef GENTOO_GTK_HIDE_WAYLAND
+ #mesondefine GDK_WINDOWING_WAYLAND
++#endif
++
+ #mesondefine GDK_WINDOWING_WIN32
+ 
+ #mesondefine GDK_RENDERING_CAIRO
+diff --git a/gdk/wayland/gdkwayland.h b/gdk/wayland/gdkwayland.h
+index 8464459..5d84619 100644
+--- a/gdk/wayland/gdkwayland.h
++++ b/gdk/wayland/gdkwayland.h
+@@ -24,6 +24,10 @@
+ 
+ #pragma once
+ 
++#ifdef GENTOO_GTK_HIDE_WAYLAND
++  #error "A Gentoo ebuild has hidden wayland and it cannot be used in this compilation unit. Please file a bug if you see this error."
++#endif
++
+ #include <gdk/gdk.h>
+ 
+ #define __GDKWAYLAND_H_INSIDE__
+diff --git a/gdk/x11/gdkx.h b/gdk/x11/gdkx.h
+index 6bef6b6..d4f8b94 100644
+--- a/gdk/x11/gdkx.h
++++ b/gdk/x11/gdkx.h
+@@ -24,6 +24,10 @@
+ 
+ #pragma once
+ 
++#ifdef GENTOO_GTK_HIDE_X11
++  #error "A Gentoo ebuild has hidden x11 and it cannot be used in this compilation unit. Please file a bug if you see this error."
++#endif
++
+ #include <gdk/gdk.h>
+ 
+ #include <X11/Xlib.h>
+-- 
+2.49.0
+

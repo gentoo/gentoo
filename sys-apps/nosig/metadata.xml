@@ -2,4 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<upstream>
+		<bugs-to>https://github.com/vapier/nosig/issues</bugs-to>
+		<doc>https://vapier.github.io/nosig/man.html</doc>
+		<remote-id type="github">vapier/nosig</remote-id>
+	</upstream>
 </pkgmetadata>

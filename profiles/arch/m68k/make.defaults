@@ -22,5 +22,6 @@ CHOST_m68k="${CHOST}"
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-05-13)
 # Since Python 3.13 is still masked, we need to re-enable Python 3.12
 # and explicitly disable 3.13
-PYTHON_SINGLE_TARGET="python3_12 -python3_13"
-PYTHON_TARGETS="python3_12 -python3_13"
+PYTHON_SINGLE_TARGET="python3_12 -python3_13 -python3_13t -python3_14 -python3_14t"
+PYTHON_TARGETS="python3_12 -python3_13 -python3_13t -python3_14 -python3_14t"
+BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_12 python_single_target_python3_12"

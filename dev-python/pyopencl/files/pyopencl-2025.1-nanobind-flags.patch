@@ -1,0 +1,21 @@
+nanobind defaults to adding -Os and friends: https://github.com/wjakob/nanobind/blob/b0136fe6ac1967cb2399456adc346a1af06a3b88/docs/api_cmake.rst#L80.
+
+... and LTO should be user defined via cflags.
+
+--- a/CMakeLists.txt
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4557bd8a..0f4a731c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -167,8 +167,9 @@ find_package(OpenCL REQUIRED)
+ nanobind_add_module(
+   _cl
+   NB_STATIC # Build static libnanobind (the extension module itself remains a shared library)
+-  LTO
++  PROTECT_STACK
+   NOMINSIZE
++  NOSTRIP
+   src/wrap_constants.cpp
+   src/wrap_cl.cpp
+   src/wrap_cl_part_1.cpp
+

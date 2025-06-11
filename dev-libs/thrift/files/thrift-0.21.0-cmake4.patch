@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/951678
+https://github.com/apache/thrift/commit/b3fc4b2
+
+From b3fc4b224258e4bf154bf774746f0d2554edb90c Mon Sep 17 00:00:00 2001
+From: Vyas Ramasubramani <vyas.ramasubramani@gmail.com>
+Date: Sun, 20 Apr 2025 13:57:06 -0700
+Subject: [PATCH] Update minimum required CMake version for CMake 4.0
+ compatibility
+
+---
+ CMakeLists.txt                    | 2 +-
+ compiler/cpp/CMakeLists.txt       | 2 +-
+ compiler/cpp/tests/CMakeLists.txt | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b76d7035b22..1f74e75c5f8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ # under the License.
+ #
+ 
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.16)
+ 
+ if(POLICY CMP0048)
+   cmake_policy(SET CMP0048 NEW)  # package version behavior added in cmake 3.0
+diff --git a/compiler/cpp/CMakeLists.txt b/compiler/cpp/CMakeLists.txt
+index b0f123555d8..4c1c2c56a55 100644
+--- a/compiler/cpp/CMakeLists.txt
++++ b/compiler/cpp/CMakeLists.txt
+@@ -17,7 +17,7 @@
+ # under the License.
+ #
+ 
+-cmake_minimum_required(VERSION 3.3)
++cmake_minimum_required(VERSION 3.16)
+ project("thrift-compiler" VERSION ${PACKAGE_VERSION})
+ 
+ # version.h now handled via veralign.sh
+diff --git a/compiler/cpp/tests/CMakeLists.txt b/compiler/cpp/tests/CMakeLists.txt
+index d9c5209134c..6a078ec6304 100644
+--- a/compiler/cpp/tests/CMakeLists.txt
++++ b/compiler/cpp/tests/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ # specific language governing permissions and limitations
+ # under the License.
+ #
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.16)
+ 
+ project(thrift_compiler_tests)
+ 

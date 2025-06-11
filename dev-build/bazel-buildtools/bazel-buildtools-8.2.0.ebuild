@@ -19,7 +19,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${REAL_PN}-${PV}"
 
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 arm64 ~x86"
 fi
 
 SRC_URI+="

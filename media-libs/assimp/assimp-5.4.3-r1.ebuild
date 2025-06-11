@@ -75,6 +75,7 @@ src_configure() {
 		# -DASSIMP_BUILD_NONFREE_C4D_IMPORTER=no # Build the C4D importer, which relies on the non-free Cineware SDK.
 		-DASSIMP_BUILD_SAMPLES=$(usex samples) # If the official samples are built as well (needs Glut).
 		-DASSIMP_BUILD_TESTS=$(usex test) # If the test suite for Assimp is built in addition to the library.
+		-DASSIMP_BUILD_USE_CCACHE=off
 		-DASSIMP_BUILD_ZLIB=no # Build your own zlib
 		-DASSIMP_COVERALLS=$(usex test) # Enable this to measure test coverage.
 		# breaks tests

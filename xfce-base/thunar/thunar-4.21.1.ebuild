@@ -54,8 +54,10 @@ RDEPEND="
 DEPEND+="
 	policykit? ( sys-auth/polkit )
 "
+# glib for glib-compile-resources
 BDEPEND="
 	dev-build/xfce4-dev-tools
+	>=dev-libs/glib-2.72.0
 	dev-libs/libxml2
 	sys-devel/gettext
 	virtual/pkgconfig

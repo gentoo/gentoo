@@ -9,7 +9,7 @@ SRC_URI="http://www.tarsnap.com/scrypt/${P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DOCS=( FORMAT )
 

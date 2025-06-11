@@ -1,0 +1,47 @@
+https://bugs.gentoo.org/957100
+https://bugs.kde.org/show_bug.cgi?id=500577
+https://invent.kde.org/plasma/xdg-desktop-portal-kde/-/commit/011d08c340bab468eec6aa347ae138e40c6332cf
+
+From 011d08c340bab468eec6aa347ae138e40c6332cf Mon Sep 17 00:00:00 2001
+From: David Redondo <kde@david-redondo.de>
+Date: Tue, 3 Jun 2025 12:10:34 +0200
+Subject: [PATCH] screencast: Guard against session closing while creating
+ stream
+
+Starting a stream runs an event loop during which the session can
+be closed. For now use a QPointer to guard against that until
+we make it not use an event loop anymore.
+BUG:500577
+FIXED-IN:6.4
+
+
+(cherry picked from commit 13a19d1db5562d45477c6fa2cb53c3f40d7c60ed)
+
+Co-authored-by: David Redondo <kde@david-redondo.de>
+---
+ src/screencast.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/screencast.cpp b/src/screencast.cpp
+index d0841a96..510f5242 100644
+--- a/src/screencast.cpp
++++ b/src/screencast.cpp
+@@ -282,6 +282,7 @@
+         QVariantList outputs;
+         QList<WindowRestoreInfo> windows;
+         WaylandIntegration::Streams streams;
++        QPointer<ScreenCastSession> guardedSession(session);
+         Screencasting::CursorMode cursorMode = Screencasting::CursorMode(session->cursorMode());
+         for (const auto &output : std::as_const(selectedOutputs)) {
+             WaylandIntegration::Stream stream;
+@@ -332,6 +333,10 @@
+             return 2;
+         }
+ 
++        if (!guardedSession) {
++            return 2;
++        }
++
+         session->setStreams(streams);
+         results.insert(QStringLiteral("streams"), QVariant::fromValue<WaylandIntegration::Streams>(streams));
+         if (allowRestore) {

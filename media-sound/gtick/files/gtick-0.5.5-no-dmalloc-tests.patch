@@ -1,0 +1,12 @@
+We don't want to require last-rited dmalloc for tests.
+--- a/testsuite/Makefile.am
++++ b/testsuite/Makefile.am
+@@ -63,7 +63,7 @@ DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
+ LIBS = @LIBINTL@ @LIBS@
+ 
+ AM_CPPFLAGS = -I../src -I../intl -I$(top_srcdir)/intl @DEPS_CFLAGS@ @SNDFILE_CFLAGS@ @CHECK_CFLAGS@ @DMALLOC_CFLAGS@
+-AM_CFLAGS = -DVERSION='"@VERSION@"' -DPACKAGE='"@PACKAGE@"' -DUSE_DMALLOC
++AM_CFLAGS = -DVERSION='"@VERSION@"' -DPACKAGE='"@PACKAGE@"'
+ 
+ AM_YFLAGS = -d
+ AM_LFLAGS=-olex.yy.c

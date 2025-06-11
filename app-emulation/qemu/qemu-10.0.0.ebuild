@@ -8,7 +8,7 @@ EAPI=8
 # (the construct below is to allow overriding from env for script)
 QEMU_DOCS_PREBUILT=${QEMU_DOCS_PREBUILT:-1}
 QEMU_DOCS_PREBUILT_DEV=sam
-QEMU_DOCS_VERSION=$(ver_cut 1-3)
+QEMU_DOCS_VERSION=$(ver_cut 1-2).0
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 # bug #830088
 QEMU_DOC_USEFLAG="+doc"

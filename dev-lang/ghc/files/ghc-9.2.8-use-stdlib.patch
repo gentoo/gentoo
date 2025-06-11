@@ -1,0 +1,25 @@
+Use stdlib's malloc and realloc instead of extern to avoid conflict
+Reference: https://src.fedoraproject.org/rpms/ghc9.12/blob/12ecf74c5a603b552da365829135e5b62e252db1/f/hp2ps-C-gnu17.patch
+===================================================================
+--- ghc-9.2.8.orig/utils/hp2ps/Utilities.c
++++ ghc-9.2.8/utils/hp2ps/Utilities.c
+@@ -1,10 +1,9 @@
+ #include "Main.h"
+ #include <stdio.h>
+ #include <string.h>
++#include <stdlib.h>
+ #include "Error.h"
+ 
+-extern void* malloc();
+-
+ char*
+ Basename(char *name)
+ {
+@@ -89,7 +88,6 @@ void *
+ xrealloc(void *p, size_t n)
+ {
+     void *r;
+-    extern void *realloc();
+ 
+     r = realloc(p, n);
+     if (!r) {

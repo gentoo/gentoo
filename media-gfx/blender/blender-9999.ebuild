@@ -67,7 +67,7 @@ SLOT="${BLENDER_BRANCH}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip jack
-	jemalloc jpeg2k man manifold +nanovdb ndof nls +oidn oneapi openal +openexr +opengl +openpgl
+	+jemalloc jpeg2k man +manifold +nanovdb ndof nls +oidn oneapi openal +openexr +opengl +openpgl
 	+opensubdiv +openvdb optix osl pipewire +pdf +potrace +pugixml pulseaudio
 	renderdoc sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
 "
@@ -136,7 +136,7 @@ RDEPEND="${PYTHON_DEPS}
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
-	manifold? ( >sci-mathematics/manifold-3.0.1 )
+	manifold? ( >=sci-mathematics/manifold-3.1.0 )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
@@ -577,10 +577,6 @@ src_configure() {
 	if use hip; then
 		mycmakeargs+=(
 			-DHIP_ROOT_DIR="$(hipconfig -p)"
-
-			-DHIP_HIPCC_FLAGS="-fcf-protection=none"
-
-			-DCMAKE_HIP_LINK_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
 
 			-DCYCLES_HIP_BINARIES_ARCH="$(get_amdgpu_flags)"
 		)

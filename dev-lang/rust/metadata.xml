@@ -9,10 +9,6 @@
 		<email>navi@vlhl.dev</email>
 		<name>Anna Figueiredo Gomes</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>matoro_gentoo@matoro.tk</email>
-		<name>Matoro Mahri</name>
-	</maintainer>
 	<use>
 		<flag name="clippy">Install clippy, Rust code linter</flag>
 		<flag name="dist">Install dist tarballs (used for bootstrapping)</flag>
@@ -20,9 +16,9 @@
 		<flag name="mrustc-bootstrap">Use <pkg>dev-lang/mrustc</pkg> to build the bootstrap Rust sysroot from this package's source</flag>
 		<flag name="nightly">Enable nightly (UNSTABLE) features (NOTE: it does not install nightly version, just enables features marked as nightly at time of release)</flag>
 		<flag name="parallel-compiler">Build a multi-threaded rustc (experimental, not tested by upstream)</flag>
-		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="rust-analyzer">Install rust-analyzer, A Rust compiler front-end for IDEs (language server)</flag>
 		<flag name="rust-src">Install rust-src, needed by developer tools and for build-std (cross)</flag>
+		<flag name="rustfmt">Install rustfmt, Rust code formatter</flag>
 		<flag name="system-llvm">Use the system LLVM installation</flag>
 		<flag name="wasm">Build support for the wasm32-unknown-unknown target</flag>
 	</use>

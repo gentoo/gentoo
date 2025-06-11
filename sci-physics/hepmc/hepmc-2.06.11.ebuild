@@ -70,7 +70,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# error: ‘hepevt_’ violates the C++ One Definition Rule [-Werror=odr]
+	# error: 'hepevt_' violates the C++ One Definition Rule [-Werror=odr]
 	# Bug 863284
 	filter-lto
 	# use MeV over GeV and mm over cm

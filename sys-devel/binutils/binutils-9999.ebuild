@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
+inherit dot-a libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
@@ -194,6 +194,7 @@ src_configure() {
 	strip-flags
 	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
+	lto-guarantee-fat
 
 	local x
 	echo
@@ -436,6 +437,8 @@ src_install() {
 	emake DESTDIR="${D}" tooldir="${EPREFIX}${LIBPATH}" install
 	rm -rf "${ED}"/${LIBPATH}/bin || die
 	use static-libs || find "${ED}" -name '*.la' -delete
+	# Explicit "${ED}" as we need it to do things even w/ USE=-static-libs
+	strip-lto-bytecode "${ED}"
 
 	# Newer versions of binutils get fancy with ${LIBPATH}, bug #171905
 	cd "${ED}"/${LIBPATH} || die

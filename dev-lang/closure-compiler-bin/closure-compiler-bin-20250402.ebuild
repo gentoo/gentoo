@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,12 @@ MY_P="${MY_PN}-v${PV}"
 DESCRIPTION="JavaScript optimizing compiler"
 HOMEPAGE="https://developers.google.com/closure/compiler/
 	https://github.com/google/closure-compiler/"
-SRC_URI="https://repo1.maven.org/maven2/com/google/javascript/${MY_PN}/v${PV}/${MY_P}.jar"
+
+MAVEN_REPO="https://repo1.maven.org/maven2"
+SRC_URI="
+	${MAVEN_REPO}/com/google/javascript/${MY_PN}/v${PV}/${MY_P}.jar
+		-> ${P}.maven.jar
+"
 S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
@@ -31,12 +36,14 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_jarinto "/opt/${PN}-${SLOT}/lib"
-	java-pkg_newjar "${DISTDIR}/${MY_P}.jar" "${PN}.jar"
+	local jar_dir="/opt/${PN}-${SLOT}/lib"
+
+	java-pkg_jarinto "${jar_dir}"
+	java-pkg_newjar "${DISTDIR}/${P}.maven.jar" "${PN}.jar"
 
 	local -a dolauncher_opts=(
 		"${MY_PN}"
-		--jar "/opt/${PN}-${SLOT}/lib/${PN}.jar"
+		--jar "${jar_dir}/${PN}.jar"
 		-into /opt
 	)
 	java-pkg_dolauncher "${dolauncher_opts[@]}"

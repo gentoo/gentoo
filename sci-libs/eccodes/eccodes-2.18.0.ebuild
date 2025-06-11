@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -75,6 +75,16 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	if use extra-test; then
+		touch "${WORKDIR}"/data/.downloaded
+		cp -r "${WORKDIR}"/data/* "${BUILD_DIR}"/data/
+		cp "${DISTDIR}"/mercator.grib2 "${BUILD_DIR}"/data/
+	fi
+
+	cmake_src_test
+}
+
 src_install() {
 	cmake_src_install
 
@@ -84,14 +94,4 @@ src_install() {
 		use fortran && doins -r examples/F90
 		use python && doins -r examples/python
 	fi
-}
-
-src_test() {
-	if use extra-test; then
-		touch "${WORKDIR}"/data/.downloaded
-		cp -r "${WORKDIR}"/data/* "${BUILD_DIR}"/data/
-		cp "${DISTDIR}"/mercator.grib2 "${BUILD_DIR}"/data/
-	fi
-
-	cmake_src_test
 }

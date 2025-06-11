@@ -1,0 +1,31 @@
+Don't search for multiple Pythons as it doesn't interact well with our
+distutils-r1 setup. Just search for one Python and allow overriding which
+one from the ebuild.
+--- a/configure.ac
++++ b/configure.ac
+@@ -287,23 +287,8 @@ else
+     # Only look for Python versions explicitly that are not yet end-of-life.
+     # As fallback look for any Python version >= 3.6.
+     m4_foreach([mym4pythonver],
+-               [[3.9],[3.10],[3.11],[3.12],[3.13],[any]],
+-        [unset PYTHON
+-        unset PYTHON_VERSION
+-        unset PYTHON_CPPFLAGS
+-        unset PYTHON_LDFLAGS
+-        unset PYTHON_LIBS
+-        unset PYTHON_SITE_PKG
+-        unset PYTHON_PLATFORM_SITE_PKG
+-        unset PYTHON_EXTRA_LIBS
+-        unset PYTHON_EXTRA_LDFLAGS
+-        unset ac_cv_path_PYTHON
+-        unset am_cv_pathless_PYTHON
+-        unset am_cv_python_version
+-        unset am_cv_python_platform
+-        unset am_cv_python_pythondir
+-        unset am_cv_python_pyexecdir
+-        AM_PATH_PYTHON(m4_if(mym4pythonver,[any],[3.6],mym4pythonver), [
++               [[any]],
++        [AM_PATH_PYTHON(m4_if(mym4pythonver,[any],[3.6],mym4pythonver), [
+             AX_PYTHON_DEVEL([], [true])
+             if test "$PYTHON_VERSION"; then
+                 AC_MSG_CHECKING([for the setuptools Python package])

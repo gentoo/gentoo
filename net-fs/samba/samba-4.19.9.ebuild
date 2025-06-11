@@ -88,7 +88,7 @@ COMMON_DEPEND="
 		)
 		ads? (
 			dev-python/dnspython:=[${PYTHON_USEDEP}]
-			net-dns/bind-tools[gssapi]
+			net-dns/bind[gssapi]
 		)
 	')
 	acl? ( virtual/acl )

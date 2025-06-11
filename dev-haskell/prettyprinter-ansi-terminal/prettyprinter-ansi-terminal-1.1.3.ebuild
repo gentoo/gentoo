@@ -8,7 +8,7 @@ EAPI=8
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
 inherit haskell-cabal
 
-DESCRIPTION="ANSI terminal backend for the »prettyprinter« package"
+DESCRIPTION="ANSI terminal backend for the 'prettyprinter' package"
 HOMEPAGE="https://github.com/quchen/prettyprinter"
 
 LICENSE="BSD-2"

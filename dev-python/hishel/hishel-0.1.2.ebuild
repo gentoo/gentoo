@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -33,7 +33,6 @@ BDEPEND="
 		dev-db/redis
 		dev-python/anyio[${PYTHON_USEDEP}]
 		dev-python/boto3[${PYTHON_USEDEP}]
-		dev-python/moto[${PYTHON_USEDEP}]
 		dev-python/redis[${PYTHON_USEDEP}]
 		dev-python/trio[${PYTHON_USEDEP}]
 	)

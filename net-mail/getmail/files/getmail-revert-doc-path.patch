@@ -1,0 +1,14 @@
+diff --git a/setup.py b/setup.py
+index e2bb639..9929dcf 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,7 +36,7 @@
+         # hack hack hack hack hack hack hack
+         datadir = args[pos + 1]
+ 
+-DOCDIR = os.path.join('share','doc','getmail')
++DOCDIR = os.path.join('share','doc','getmail-%s' % __version__)
+ GETMAILDOCDIR = os.path.join(datadir or prefix, DOCDIR)
+ 
+ MANDIR = os.path.join('share','man','man1')
+

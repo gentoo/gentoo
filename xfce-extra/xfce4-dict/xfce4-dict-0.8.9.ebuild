@@ -14,7 +14,7 @@ SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~hppa ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	>=dev-libs/glib-2.66.0
@@ -26,7 +26,9 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+# dev-libs/glib for glib-compile-resources
 BDEPEND="
+	>=dev-libs/glib-2.66.0
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
 "

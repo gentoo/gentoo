@@ -15,7 +15,7 @@ S=${WORKDIR}/memtest86plus-${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bios32 bios64 +boot uefi32 uefi64 iso32 iso64"
 
 ISODEPS="

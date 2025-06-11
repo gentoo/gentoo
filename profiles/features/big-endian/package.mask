@@ -41,7 +41,6 @@ kde-apps/grantlee-editor
 kde-apps/akregator
 dev-util/kdevelop
 dev-qt/qtwebview
-dev-python/pyqtwebengine
 app-text/kchmviewer
 app-office/merkuro
 app-editors/ghostwriter

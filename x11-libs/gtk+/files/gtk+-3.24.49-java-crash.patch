@@ -1,0 +1,130 @@
+https://bugs.gentoo.org/952006
+https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/8554
+
+From d9f722455b51fe64bc1565ef1eae7230319e73cd Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Sun, 11 May 2025 09:18:22 -0400
+Subject: [PATCH] Revert "immulticontext: Don't have a global_context_id"
+
+This reverts commit 39345212e8190aefa55a5266c123b2a7afc5c75f.
+
+This is causing eclipse crashes.
+
+Fixes: #7438
+Part-of: <https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/8554>
+---
+ gtk/gtkimmulticontext.c | 51 ++++++++++++++++++++++-------------------
+ 1 file changed, 27 insertions(+), 24 deletions(-)
+
+diff --git a/gtk/gtkimmulticontext.c b/gtk/gtkimmulticontext.c
+index 2d70cdeda06..7c91fee45d0 100644
+--- a/gtk/gtkimmulticontext.c
++++ b/gtk/gtkimmulticontext.c
+@@ -102,6 +102,8 @@ static gboolean gtk_im_multicontext_delete_surrounding_cb   (GtkIMContext      *
+ 
+ static void propagate_purpose (GtkIMMulticontext *context);
+ 
++static const gchar *global_context_id = NULL;
++
+ G_DEFINE_TYPE_WITH_PRIVATE (GtkIMMulticontext, gtk_im_multicontext, GTK_TYPE_IM_CONTEXT)
+ 
+ static void
+@@ -254,7 +256,10 @@ get_effective_context_id (GtkIMMulticontext *multicontext)
+   if (priv->context_id_aux)
+     return priv->context_id_aux;
+ 
+-  return _gtk_im_module_get_default_context_id ();
++  if (!global_context_id)
++    global_context_id = _gtk_im_module_get_default_context_id ();
++
++  return global_context_id;
+ }
+ 
+ static GtkIMContext *
+@@ -262,6 +267,9 @@ gtk_im_multicontext_get_slave (GtkIMMulticontext *multicontext)
+ {
+   GtkIMMulticontextPrivate *priv = multicontext->priv;
+ 
++  if (g_strcmp0 (priv->context_id, get_effective_context_id (multicontext)) != 0)
++    gtk_im_multicontext_set_slave (multicontext, NULL, FALSE);
++
+   if (!priv->slave)
+     {
+       GtkIMContext *slave;
+@@ -286,28 +294,20 @@ im_module_setting_changed (GtkSettings       *settings,
+                            GParamSpec        *pspec,
+                            GtkIMMulticontext *self)
+ {
+-  gtk_im_multicontext_set_slave (self, NULL, FALSE);
++  global_context_id = NULL;
+ }
+ 
++
+ static void
+ gtk_im_multicontext_set_client_window (GtkIMContext *context,
+ 				       GdkWindow    *window)
+ {
+-  GtkIMMulticontext *self = GTK_IM_MULTICONTEXT (context);
+-  GtkIMMulticontextPrivate *priv = self->priv;
++  GtkIMMulticontext *multicontext = GTK_IM_MULTICONTEXT (context);
++  GtkIMMulticontextPrivate *priv = multicontext->priv;
+   GtkIMContext *slave;
+   GdkScreen *screen;
+   GtkSettings *settings;
+-
+-  if (priv->client_window != NULL)
+-    {
+-      screen = gdk_window_get_screen (priv->client_window);
+-      settings = gtk_settings_get_for_screen (screen);
+-
+-      g_signal_handlers_disconnect_by_func (settings,
+-                                            im_module_setting_changed,
+-                                            self);
+-    }
++  gboolean connected;
+ 
+   priv->client_window = window;
+ 
+@@ -316,12 +316,20 @@ gtk_im_multicontext_set_client_window (GtkIMContext *context,
+       screen = gdk_window_get_screen (window);
+       settings = gtk_settings_get_for_screen (screen);
+ 
+-      g_signal_connect (settings, "notify::gtk-im-module",
+-                        G_CALLBACK (im_module_setting_changed),
+-                        self);
++      connected = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (settings),
++                                                      "gtk-im-module-connected"));
++      if (!connected)
++        {
++          g_signal_connect (settings, "notify::gtk-im-module",
++                            G_CALLBACK (im_module_setting_changed), NULL);
++          g_object_set_data (G_OBJECT (settings), "gtk-im-module-connected",
++                             GINT_TO_POINTER (TRUE));
++
++          global_context_id = NULL;
++        }
+     }
+ 
+-  slave = gtk_im_multicontext_get_slave (self);
++  slave = gtk_im_multicontext_get_slave (multicontext);
+   if (slave)
+     gtk_im_context_set_client_window (slave, window);
+ }
+@@ -716,14 +724,9 @@ gtk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
+ const char *
+ gtk_im_multicontext_get_context_id (GtkIMMulticontext *context)
+ {
+-  GtkIMMulticontextPrivate *priv = context->priv;
+-
+   g_return_val_if_fail (GTK_IS_IM_MULTICONTEXT (context), NULL);
+ 
+-  if (priv->context_id == NULL)
+-    gtk_im_multicontext_get_slave (context);
+-
+-  return priv->context_id;
++  return context->priv->context_id;
+ }
+ 
+ /**
+-- 
+GitLab

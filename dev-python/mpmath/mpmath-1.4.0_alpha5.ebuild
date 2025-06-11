@@ -17,7 +17,8 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="test-full"
 
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
@@ -31,10 +32,8 @@ BDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/gmpy2[${PYTHON_USEDEP}]
 		' 'python3*')
-		!mips? (
-			!hppa? (
-				dev-python/matplotlib[${PYTHON_USEDEP}]
-			)
+		test-full? (
+			dev-python/matplotlib[${PYTHON_USEDEP}]
 		)
 	)
 "

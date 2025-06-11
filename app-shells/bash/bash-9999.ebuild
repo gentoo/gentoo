@@ -50,14 +50,14 @@ elif (( PLEVEL < 0 )) && [[ ${PV} == *_p* ]] ; then
 	SRC_URI="https://git.savannah.gnu.org/cgit/bash.git/snapshot/bash-${BASH_COMMIT}.tar.gz -> ${P}-${BASH_COMMIT}.tar.gz"
 	S=${WORKDIR}/${PN}-${BASH_COMMIT}
 else
-	my_urls=( {'mirror://gnu/bash','ftp://ftp.cwru.edu/pub/bash'}/"${MY_P}.tar.gz" )
+	my_urls=( "mirror://gnu/bash/${MY_P}.tar.gz" )
 
 	# bash-5.1 -> bash51
 	my_p=${PN}$(ver_cut 1-2) my_p=${my_p/.}
 
 	for (( my_patch_idx = 1; my_patch_idx <= PLEVEL; my_patch_idx++ )); do
 		printf -v my_patch_ver %s-%03d "${my_p}" "${my_patch_idx}"
-		my_urls+=( {'mirror://gnu/bash','ftp://ftp.cwru.edu/pub/bash'}/"${MY_P}-patches/${my_patch_ver}" )
+		my_urls+=( "mirror://gnu/bash/${MY_P}-patches/${my_patch_ver}" )
 		MY_PATCHES+=( "${DISTDIR}/${my_patch_ver}" )
 	done
 
@@ -179,6 +179,10 @@ src_configure() {
 	# configure warns on use of non-Bison but doesn't abort. The result
 	# may misbehave at runtime.
 	unset -v YACC
+
+	if tc-is-cross-compiler; then
+		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
+	fi
 
 	myconf=(
 		--disable-profiling

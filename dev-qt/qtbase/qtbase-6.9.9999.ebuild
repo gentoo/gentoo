@@ -3,6 +3,7 @@
 
 EAPI=8
 
+QT6_HAS_STATIC_LIBS=1
 inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Cross-platform application development framework"
@@ -67,6 +68,7 @@ COMMON_DEPEND="
 
 	dbus? ( sys-apps/dbus )
 	gui? (
+		dev-libs/md4c
 		media-libs/fontconfig
 		>=media-libs/freetype-2.13.1:2
 		media-libs/harfbuzz:=
@@ -117,8 +119,40 @@ COMMON_DEPEND="
 		sqlite? ( dev-db/sqlite:3 )
 	)
 "
+# wrt blockers: users do not always depclean regularly and outdated
+# dev-qt packages sometime cause runtime issues (update this when new
+# Qt libraries/plugins are added, and keep old for 2y+ if removed)
 RDEPEND="
 	${COMMON_DEPEND}
+	!<dev-qt/qt3d-${PV}:6
+	!<dev-qt/qt5compat-${PV}:6
+	!<dev-qt/qtcharts-${PV}:6
+	!<dev-qt/qtconnectivity-${PV}:6
+	!<dev-qt/qtdeclarative-${PV}:6
+	!<dev-qt/qthttpserver-${PV}:6
+	!<dev-qt/qtimageformats-${PV}:6
+	!<dev-qt/qtlanguageserver-${PV}:6
+	!<dev-qt/qtlocation-${PV}:6
+	!<dev-qt/qtmultimedia-${PV}:6
+	!<dev-qt/qtnetworkauth-${PV}:6
+	!<dev-qt/qtpositioning-${PV}:6
+	!<dev-qt/qtquick3d-${PV}:6
+	!<dev-qt/qtquicktimeline-${PV}:6
+	!<dev-qt/qtremoteobjects-${PV}:6
+	!<dev-qt/qtscxml-${PV}:6
+	!<dev-qt/qtsensors-${PV}:6
+	!<dev-qt/qtserialbus-${PV}:6
+	!<dev-qt/qtserialport-${PV}:6
+	!<dev-qt/qtshadertools-${PV}:6
+	!<dev-qt/qtspeech-${PV}:6
+	!<dev-qt/qtsvg-${PV}:6
+	!<dev-qt/qttools-${PV}:6
+	!<dev-qt/qtvirtualkeyboard-${PV}:6
+	!<dev-qt/qtwayland-${PV}:6
+	!<dev-qt/qtwebchannel-${PV}:6
+	!<dev-qt/qtwebengine-${PV}:6
+	!<dev-qt/qtwebsockets-${PV}:6
+	!<dev-qt/qtwebview-${PV}:6
 	syslog? ( virtual/logger )
 "
 DEPEND="
@@ -246,7 +280,6 @@ src_configure() {
 		$(qt_feature wayland)
 		$(qt_feature widgets)
 		-DINPUT_opengl=$(usex opengl $(usex gles2-only es2 desktop) no)
-		-DQT_FEATURE_system_textmarkdownreader=OFF # TODO?: package md4c
 	) && use widgets && mycmakeargs+=(
 		# note: qtprintsupport is enabled w/ gui+widgets regardless of USE=cups
 		$(qt_feature cups)

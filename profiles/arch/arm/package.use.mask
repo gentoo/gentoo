@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michael Orlitzky <mjo@gentoo.org> (2025-06-02)
+# dev-libs/capstone needs keywords, bug 945086
+dev-lang/php capstone
+
+# NRK <nrk@disroot.org> (2025-05-18)
+# app-arch/plzip is not keyworded
+app-alternatives/lzip plzip
+
 # Eray Aslan <eras@gentoo.org> (2025-05-08)
 # dev-db/tinycdb is not keyworded here
 net-mail/dovecot cdb
@@ -393,7 +401,6 @@ app-metrics/collectd collectd_plugins_ipmi
 app-metrics/collectd collectd_plugins_modbus
 app-metrics/collectd collectd_plugins_oracle
 app-metrics/collectd collectd_plugins_routeros
-app-metrics/collectd collectd_plugins_sigrok
 app-metrics/collectd collectd_plugins_varnish
 app-metrics/collectd collectd_plugins_virt
 app-metrics/collectd collectd_plugins_write_mongodb

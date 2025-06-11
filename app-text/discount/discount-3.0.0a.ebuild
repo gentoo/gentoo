@@ -18,9 +18,9 @@ RESTRICT="!test? ( test )"
 src_prepare() {
 	default
 
-	# for QA, we remove the Makefile’s usage of install -s.
+	# for QA, we remove the Makefile's usage of install -s.
 	# Drop ldconfig invocation.
-	# Force “librarian.sh” to respect LDFLAGS ($FLAGS should have CFLAGS
+	# Force "librarian.sh" to respect LDFLAGS ($FLAGS should have CFLAGS
 	# at that point).
 	sed -i \
 		-e '/INSTALL_PROGRAM/s,\$_strip ,,' \

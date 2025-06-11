@@ -19,7 +19,7 @@ fi
 
 S="${WORKDIR}/${P/_}"
 
-LICENSE="BSD GPL-2+"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="caps debug delayacct hwloc lm-sensors llvm-libunwind openvz unicode unwind vserver"
 

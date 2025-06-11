@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,13 +44,13 @@ python_prepare_all() {
 	sed -e '/QtTest/d' -i tests/test_samples.py || die
 }
 
+python_test() {
+	virtx epytest
+}
+
 python_install_all() {
 	insinto /usr/share/${PN}
 	doins -r vitables/icons
 	dodoc -r doc/*
 	distutils-r1_python_install_all
-}
-
-python_test() {
-	virtx epytest
 }

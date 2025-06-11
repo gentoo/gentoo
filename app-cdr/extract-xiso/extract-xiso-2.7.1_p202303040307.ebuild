@@ -1,11 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit cmake
-
-MY_PV=${PV/_beta/b}
 
 DESCRIPTION="Tool for extracting and creating optimised Xbox ISO images"
 HOMEPAGE="https://sourceforge.net/projects/extract-xiso/"

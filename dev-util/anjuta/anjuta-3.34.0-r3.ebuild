@@ -25,6 +25,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-minimal.patch
+	"${FILESDIR}"/${PN}-gcc.patch
 )
 
 src_configure() {

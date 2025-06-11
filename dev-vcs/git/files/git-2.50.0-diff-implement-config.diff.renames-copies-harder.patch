@@ -1,0 +1,163 @@
+https://lore.kernel.org/git/20240311213928.1872437-1-sam@gentoo.org/
+
+From afe0cc87d790d7dbf33b83cf3e1ae23d5646e8e9 Mon Sep 17 00:00:00 2001
+Message-ID: <afe0cc87d790d7dbf33b83cf3e1ae23d5646e8e9.1749343442.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Fri, 16 Feb 2024 22:07:54 +0000
+Subject: [PATCH] diff: implement config.diff.renames=copies-harder
+
+This patch adds a config value for 'diff.renames' called 'copies-harder'
+which make it so '-C -C' is in effect always passed for 'git log -p',
+'git diff', etc.
+
+This allows specifying that 'git log -p', 'git diff', etc should always act
+as if '-C --find-copies-harder' was passed.
+
+It has proven this especially useful for certain types of repository (like
+Gentoo's ebuild repositories) because files are often copies of a previous
+version:
+
+Suppose a directory 'sys-devel/gcc' contains recipes for building
+GCC, with one file for each supported upstream branch:
+  gcc-13.x.build.recipe
+  gcc-12.x.build.recipe
+  gcc-11.x.build.recipe
+  gcc-10.x.build.recipe
+
+gcc-13.x.build.recipe was started as a copy of gcc-12.x.build.recipe
+(which was started as a copy of gcc-11.x.build.recipe, etc.). Previous versions
+are kept around to support parallel installation of multiple versions.
+
+Being able to easily observe the diff relative to other recipes within the
+directory has been a quality of life improvement for such repo layouts.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ Documentation/config/diff.adoc   |  6 +++---
+ Documentation/config/status.adoc |  4 +++-
+ diff.c                           | 11 +++++++++--
+ diff.h                           |  1 +
+ diffcore-rename.c                |  6 ++++--
+ merge-ort.c                      |  2 +-
+ 6 files changed, 21 insertions(+), 9 deletions(-)
+
+diff --git a/Documentation/config/diff.adoc b/Documentation/config/diff.adoc
+index 1135a62a0a..5362d8091e 100644
+--- a/Documentation/config/diff.adoc
++++ b/Documentation/config/diff.adoc
+@@ -158,9 +158,9 @@ endif::git-diff[]
+ 	Whether and how Git detects renames.  If set to `false`,
+ 	rename detection is disabled. If set to `true`, basic rename
+ 	detection is enabled.  If set to `copies` or `copy`, Git will
+-	detect copies, as well.  Defaults to `true`.  Note that this
+-	affects only `git diff` Porcelain like linkgit:git-diff[1] and
+-	linkgit:git-log[1], and not lower level commands such as
++	detect copies, as well.  Defaults to `true`.
++	Note that this affects only 'git diff' Porcelain like linkgit:git-diff[1]
++	and linkgit:git-log[1], and not lower level commands such as
+ 	linkgit:git-diff-files[1].
+ 
+ `diff.suppressBlankEmpty`::
+diff --git a/Documentation/config/status.adoc b/Documentation/config/status.adoc
+index 8caf90f51c..e15add32a3 100644
+--- a/Documentation/config/status.adoc
++++ b/Documentation/config/status.adoc
+@@ -33,7 +33,9 @@ status.renames::
+ 	Whether and how Git detects renames in linkgit:git-status[1] and
+ 	linkgit:git-commit[1] .  If set to "false", rename detection is
+ 	disabled. If set to "true", basic rename detection is enabled.
+-	If set to "copies" or "copy", Git will detect copies, as well.
++	If set to "copies" or "copy", Git will detect copies, as well.  If set
++	to "copies-harder", Git will spend extra cycles to find more copies even
++	in unmodified paths, see '--find-copies-harder' in linkgit:git-diff[1].
+ 	Defaults to the value of diff.renames.
+ 
+ status.showStash::
+diff --git a/diff.c b/diff.c
+index 90e8003dd1..f0ca884280 100644
+--- a/diff.c
++++ b/diff.c
+@@ -212,6 +212,8 @@ int git_config_rename(const char *var, const char *value)
+ {
+ 	if (!value)
+ 		return DIFF_DETECT_RENAME;
++	if (!strcasecmp(value, "copies-harder"))
++		return DIFF_DETECT_COPY_HARDER;
+ 	if (!strcasecmp(value, "copies") || !strcasecmp(value, "copy"))
+ 		return  DIFF_DETECT_COPY;
+ 	return git_config_bool(var,value) ? DIFF_DETECT_RENAME : 0;
+@@ -4902,8 +4904,12 @@ void diff_setup_done(struct diff_options *options)
+ 	else
+ 		options->flags.diff_from_contents = 0;
+ 
+-	if (options->flags.find_copies_harder)
++	/* Just fold this in as it makes the patch-to-git smaller */
++	if (options->flags.find_copies_harder ||
++	    options->detect_rename == DIFF_DETECT_COPY_HARDER) {
++		options->flags.find_copies_harder = 1;
+ 		options->detect_rename = DIFF_DETECT_COPY;
++	}
+ 
+ 	if (!options->flags.relative_name)
+ 		options->prefix = NULL;
+@@ -5342,7 +5348,8 @@ static int diff_opt_find_copies(const struct option *opt,
+ 	if (*arg != 0)
+ 		return error(_("invalid argument to %s"), opt->long_name);
+ 
+-	if (options->detect_rename == DIFF_DETECT_COPY)
++	if (options->detect_rename == DIFF_DETECT_COPY ||
++	    options->detect_rename == DIFF_DETECT_COPY_HARDER)
+ 		options->flags.find_copies_harder = 1;
+ 	else
+ 		options->detect_rename = DIFF_DETECT_COPY;
+diff --git a/diff.h b/diff.h
+index 62e5768a9a..8c8aa6cbb6 100644
+--- a/diff.h
++++ b/diff.h
+@@ -594,6 +594,7 @@ int git_config_rename(const char *var, const char *value);
+ 
+ #define DIFF_DETECT_RENAME	1
+ #define DIFF_DETECT_COPY	2
++#define DIFF_DETECT_COPY_HARDER 3
+ 
+ #define DIFF_PICKAXE_ALL	1
+ #define DIFF_PICKAXE_REGEX	2
+diff --git a/diffcore-rename.c b/diffcore-rename.c
+index 7723bc3334..34a883a55d 100644
+--- a/diffcore-rename.c
++++ b/diffcore-rename.c
+@@ -302,7 +302,8 @@ static int find_identical_files(struct hashmap *srcs,
+ 		}
+ 		/* Give higher scores to sources that haven't been used already */
+ 		score = !source->rename_used;
+-		if (source->rename_used && options->detect_rename != DIFF_DETECT_COPY)
++		if (source->rename_used && options->detect_rename != DIFF_DETECT_COPY &&
++		    options->detect_rename != DIFF_DETECT_COPY_HARDER)
+ 			continue;
+ 		score += basename_same(source, target);
+ 		if (score > best_score) {
+@@ -1407,7 +1408,8 @@ void diffcore_rename_extended(struct diff_options *options,
+ 	trace2_region_enter("diff", "setup", options->repo);
+ 	info.setup = 0;
+ 	ASSERT(!dir_rename_count || strmap_empty(dir_rename_count));
+-	want_copies = (detect_rename == DIFF_DETECT_COPY);
++	want_copies = (detect_rename == DIFF_DETECT_COPY ||
++		       detect_rename == DIFF_DETECT_COPY_HARDER);
+ 	if (dirs_removed && (break_idx || want_copies))
+ 		BUG("dirs_removed incompatible with break/copy detection");
+ 	if (break_idx && relevant_sources)
+diff --git a/merge-ort.c b/merge-ort.c
+index 47b3d1730e..cb090c7af5 100644
+--- a/merge-ort.c
++++ b/merge-ort.c
+@@ -4957,7 +4957,7 @@ static void merge_start(struct merge_options *opt, struct merge_result *result)
+ 	 * sanity check them anyway.
+ 	 */
+ 	assert(opt->detect_renames >= -1 &&
+-	       opt->detect_renames <= DIFF_DETECT_COPY);
++	       opt->detect_renames <= DIFF_DETECT_COPY_HARDER);
+ 	assert(opt->verbosity >= 0 && opt->verbosity <= 5);
+ 	assert(opt->buffer_output <= 2);
+ 	assert(opt->obuf.len == 0);
+-- 
+2.49.0

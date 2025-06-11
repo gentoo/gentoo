@@ -1,0 +1,28 @@
+From 39ffddb77763a32bc3f039514265506c6be73d48 Mon Sep 17 00:00:00 2001
+From: Kurt Hindenburg <kurt.hindenburg@gmail.com>
+Date: Wed, 28 May 2025 18:54:39 -0400
+Subject: [PATCH] Clear the arguments if the command is not found
+
+This mimics what other terminals do.
+---
+ src/session/Session.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/session/Session.cpp b/src/session/Session.cpp
+index 81366074a7..c97ae64099 100644
+--- a/src/session/Session.cpp
++++ b/src/session/Session.cpp
+@@ -512,8 +512,10 @@ void Session::run()
+     // if a program was specified via setProgram(), but it couldn't be found (but a fallback was), print a warning
+     if (exec != checkProgram(_program)) {
+         terminalWarning(i18n("Could not find '%1', starting '%2' instead.  Please check your profile settings.", _program, exec));
++        _arguments.clear(); // ignore args if program is invalid
+     } else if (exec != checkProgram(exec)) {
+         terminalWarning(i18n("Could not find '%1', starting '%2' instead.  Please check your profile settings.", exec, checkProgram(exec)));
++        _arguments.clear(); // ignore args if program is invalid
+     }
+ 
+     // if no arguments are specified, fall back to program name
+-- 
+GitLab
+

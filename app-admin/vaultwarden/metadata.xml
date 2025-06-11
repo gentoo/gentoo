@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>me@rahil.rocks</email>
+    <name>Rahil Bhimjiani</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>grobian@gentoo.org</email>
+    <name>Fabian Groffen</name>
+  </maintainer>
+  <use>
+    <flag name="cli">
+      Install client with the Command-Line Interface
+    </flag>
+    <flag name="web">
+      Install client with Web UI
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">dani-garcia/vaultwarden</remote-id>
+    <bugs-to>https://github.com/dani-garcia/vaultwarden/issues</bugs-to>
+    <doc>https://github.com/dani-garcia/vaultwarden/blob/main/README.md</doc>
+  </upstream>
+</pkgmetadata>

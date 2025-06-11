@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -28,9 +28,6 @@ RDEPEND="
 	>=dev-python/requests-2.24[${PYTHON_USEDEP}]
 	>=dev-python/rich-12.5.1[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.2.3[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	test? (

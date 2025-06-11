@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/TypesettingTools/Aegisub/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 LICENSE="BSD MIT"
 SLOT="0"
@@ -57,7 +57,7 @@ DEPEND="${RDEPEND}"
 # luarocks is only used as a command-line tool so there is no need to enforce
 # LUA_SINGLE_USEDEP on it. On the other hand, this means we must use version
 # bounds in order to make sure we use a version migrated to Lua eclasses.
-BDEPEND="dev-util/intltool
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? (

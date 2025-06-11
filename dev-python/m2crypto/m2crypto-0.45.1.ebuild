@@ -13,6 +13,7 @@ inherit distutils-r1 toolchain-funcs pypi
 
 DESCRIPTION="A Python crypto and SSL toolkit"
 HOMEPAGE="
+	https://sr.ht/~mcepl/m2crypto/
 	https://gitlab.com/m2crypto/m2crypto/
 	https://pypi.org/project/M2Crypto/
 "
@@ -20,7 +21,7 @@ HOMEPAGE="
 # openssl via src/SWIG/_lib11_compat.i
 LICENSE="BSD-2 openssl"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="abi_mips_n32 abi_mips_n64 abi_mips_o32"
 
 DEPEND="

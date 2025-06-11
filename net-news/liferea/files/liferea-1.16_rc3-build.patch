@@ -1,0 +1,22 @@
+From 5764bcc2f9919c2493a0eea917f6821235ec3166 Mon Sep 17 00:00:00 2001
+From: Lars Windolf <lars.windolf@gmx.de>
+Date: Wed, 16 Apr 2025 22:36:58 +0200
+Subject: [PATCH] Fix compile error
+
+---
+ src/ui/liferea_shell.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ui/liferea_shell.c b/src/ui/liferea_shell.c
+index ba6813f11..bf91c50a6 100644
+--- a/src/ui/liferea_shell.c
++++ b/src/ui/liferea_shell.c
+@@ -1027,7 +1027,7 @@ static const GActionEntry liferea_shell_gaction_entries[] = {
+ 	{"zoom-in", on_action_zoomin_activate, NULL, NULL, NULL},
+ 	{"zoom-out", on_action_zoomout_activate, NULL, NULL, NULL},
+ 	{"zoom-reset", on_action_zoomreset_activate, NULL, NULL, NULL},
+-	{"discover-feeds", on_action_discover_feeds, NULL, NULL, NULL, NULL},
++	{"discover-feeds", on_action_discover_feeds, NULL, NULL, NULL},
+ 	{"show-update-monitor", on_menu_show_update_monitor, NULL, NULL, NULL},
+ 	{"show-preferences", on_prefbtn_clicked, NULL, NULL, NULL},
+ 	{"manage-plugins", on_manage_plugins_clicked, NULL, NULL, NULL},

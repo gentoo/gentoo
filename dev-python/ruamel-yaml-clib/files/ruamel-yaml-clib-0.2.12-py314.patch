@@ -1,0 +1,39 @@
+diff -r df8c53ddf0d3 setup.py
+--- a/setup.py	Sun Oct 20 11:56:33 2024 +0200
++++ b/setup.py	Wed May 28 15:14:40 2025 +0200
+@@ -75,9 +75,6 @@
+             print('{:%Y-%d-%mT%H:%M:%S}'.format(datetime.datetime.now()), file=fp, end=' ')
+             print(*args, **kw1)
+ 
+-if sys.version_info >= (3, 8):
+-    from ast import Str, Num, Bytes, NameConstant  # NOQA
+-
+ 
+ def literal_eval(node_or_string):
+     """
+@@ -98,14 +95,8 @@
+         raise TypeError('only string or AST nodes supported')
+ 
+     def _convert(node):
+-        if isinstance(node, Str):
+-            if sys.version_info < (3,) and not isinstance(node.s, unicode):
+-                return node.s.decode('utf-8')
+-            return node.s
+-        elif isinstance(node, Bytes):
+-            return node.s
+-        elif isinstance(node, Num):
+-            return node.n
++        if isinstance(node, Constant):
++            return node.value
+         elif isinstance(node, Tuple):
+             return tuple(map(_convert, node.elts))
+         elif isinstance(node, List):
+@@ -114,8 +105,6 @@
+             return set(map(_convert, node.elts))
+         elif isinstance(node, Dict):
+             return {_convert(k): _convert(v) for k, v in zip(node.keys, node.values)}
+-        elif isinstance(node, NameConstant):
+-            return node.value
+         elif sys.version_info < (3, 4) and isinstance(node, Name):
+             if node.id in _safe_names:
+                 return _safe_names[node.id]

@@ -4,5 +4,6 @@
   <!-- maintainer-needed -->
   <upstream>
     <remote-id type="sourceforge">lxde</remote-id>
+    <remote-id type="github">lxde/lxappearance</remote-id> 
   </upstream>
 </pkgmetadata>

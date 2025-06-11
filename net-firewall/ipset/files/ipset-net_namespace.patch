@@ -1,0 +1,11 @@
+--- a/configure.ac	2025-05-22 22:36:57.332625302 -0000
++++ b/configure.ac	2025-05-22 22:37:17.729090112 -0000
+@@ -401,7 +401,7 @@ fi
+ 
+ AC_MSG_CHECKING([kernel source for id in struct pernet_operations])
+ if test -f $ksourcedir/include/net/net_namespace.h && \
+-   $AWK '/^struct pernet_operations /,/^}/' $ksourcedir/include/net/net_namespace.h | $GREP -q 'int \*id;'; then
++   $AWK '/^struct pernet_operations /,/^}/' $ksourcedir/include/net/net_namespace.h | $GREP -qE 'int \*id;|int \* const id'; then
+ 	AC_MSG_RESULT(yes)
+ 	AC_SUBST(HAVE_NET_OPS_ID, define)
+ else

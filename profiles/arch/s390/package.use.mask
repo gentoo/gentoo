@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hans de Graaff <graaff@gentoo.org> (2025-05-31)
+# Requires large parts of dev-ruby/rails to be keyworded.
+dev-ruby/minitest-hooks test
+
+# NRK <nrk@disroot.org> (2025-05-18)
+# app-arch/plzip is not keyworded
+app-alternatives/lzip plzip
+
 # Eray Aslan <eras@gentoo.org> (2025-05-08)
 # dev-db/tinycdb is not keyworded here
 net-mail/dovecot cdb

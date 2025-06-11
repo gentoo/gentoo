@@ -23,6 +23,7 @@ _QT6_BUILD_ECLASS=1
 
 inherit cmake flag-o-matic toolchain-funcs
 [[ ${EAPI} == 8 ]] && inherit eapi9-pipestatus
+[[ ${QT6_HAS_STATIC_LIBS} ]] && inherit dot-a
 
 # @ECLASS_VARIABLE: QT6_BUILD_TYPE
 # @DESCRIPTION:
@@ -37,6 +38,14 @@ inherit cmake flag-o-matic toolchain-funcs
 # The upstream name of the module this package belongs to.
 # Used for SRC_URI and EGIT_REPO_URI.
 : "${QT6_MODULE:=${PN}}"
+
+# @ECLASS_VARIABLE: QT6_HAS_STATIC_LIBS
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Should be set to a non-empty value if static libraries may be
+# installed so that dot-a.eclass will be used.  Using either way
+# is mostly harmless but still a bit wasteful, thus the variable.
 
 # @ECLASS_VARIABLE: QT6_RESTRICT_TESTS
 # @DEFAULT_UNSET
@@ -128,17 +137,15 @@ qt6-build_src_prepare() {
 	if use !custom-cflags; then
 		_qt6-build_sanitize_cpu_flags
 
-		# LTO cause test failures in several components (e.g. qtcharts,
-		# multimedia, scxml, wayland, webchannel, ...).
-		#
-		# Exact extent/causes unknown, but for some related-sounding bugs:
-		# https://bugreports.qt.io/browse/QTBUG-112332
-		# https://bugreports.qt.io/browse/QTBUG-115731
-		#
-		# Does not manifest itself with clang:16 (did with gcc-13.2.0), but
-		# still assumed to be generally unsafe either way in current state.
+		# LTO cause test failures in several components (qtcharts,
+		# multimedia, scxml, wayland, webchannel, and likely more --
+		# also 1 qtbase test wrt bug #955531), albeit many need
+		# retesting (not as bad as it used to). Many (all?) of these
+		# issues only happen with GCC.
 		filter-lto
 	fi
+
+	[[ ${QT6_HAS_STATIC_LIBS} ]] && lto-guarantee-fat
 }
 
 # @FUNCTION: qt6-build_src_configure
@@ -171,6 +178,9 @@ qt6-build_src_configure() {
 		local mycmakeargs=("${defaultcmakeargs[@]}")
 	fi
 
+	# Qt has quite a lot of unused (false positive) CMakeLists.txt
+	local CMAKE_QA_COMPAT_SKIP=1
+
 	cmake_src_configure
 }
 
@@ -195,6 +205,8 @@ qt6-build_src_test() {
 # Run cmake_src_install and handle anything else generic as needed.
 qt6-build_src_install() {
 	cmake_src_install
+
+	[[ ${QT6_HAS_STATIC_LIBS} ]] && strip-lto-bytecode "${D}${QT6_LIBDIR}"
 
 	_qt6-build_create_user_facing_links
 
@@ -226,24 +238,6 @@ _qt6-build_create_user_facing_links() {
 	# user_facing_tool_links.txt is always created (except for qttranslations)
 	# even if no links (empty), if missing will assume that it is an error
 	[[ ${PN} == qttranslations ]] && return
-
-	# TODO: drop when <6.8.3 is gone, unneeded version with relative paths
-	if ver_test -lt 6.8.3; then
-		local link
-		while IFS= read -r link; do
-			if [[ -z ${link} ]]; then
-				continue
-			elif [[ ${link} =~ ^("${QT6_PREFIX}"/.+)\ ("${QT6_PREFIX}"/bin/.+) ]]
-			then
-				dosym -r "${BASH_REMATCH[1]#"${EPREFIX}"}" \
-					"${BASH_REMATCH[2]#"${EPREFIX}"}"
-			else
-				die "unrecognized user_facing_tool_links.txt line: ${link}"
-			fi
-		done < "${BUILD_DIR}"/user_facing_tool_links.txt || die
-
-		return
-	fi
 
 	local link
 	while IFS= read -r link; do
@@ -327,6 +321,9 @@ _qt6-build_sanitize_cpu_flags() {
 			x86-64-v2
 			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9
 			x86-64-v3
+			#    if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
+			#      define __EVEX512__ 1 /* removed in gcc-16 (bug #956750) */
+			#    endif
 			#    if (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512F__ + __AVX512VL__ + __EVEX256__ + __EVEX512__) == 7
 			x86-64-v4
 			#    endif

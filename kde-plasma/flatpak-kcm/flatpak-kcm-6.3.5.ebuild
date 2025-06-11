@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/plasma/flatpak-kcm"
 
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="

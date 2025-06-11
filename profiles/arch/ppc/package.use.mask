@@ -1,6 +1,14 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NRK <nrk@disroot.org> (2025-05-18)
+# app-arch/plzip is not keyworded
+app-alternatives/lzip plzip
+
+# Alfred Wingate (2025-05-13)
+# Need dev-libs/libdispatch which is not keyworded here
+gnustep-base/gnustep-base libdispatch
+
 # Viorel Munteanu (2025-05-06)
 # Needs dev-lang/go which is not keyworded here
 net-dialup/picocom man

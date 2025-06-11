@@ -599,32 +599,13 @@ python_optimize() {
 	[[ ${PYTHON} ]] || _python_export PYTHON
 	[[ -x ${PYTHON} ]] || die "PYTHON (${PYTHON}) is not executable"
 
-	# default to sys.path
-	if [[ ${#} -eq 0 ]]; then
-		local f
-		while IFS= read -r -d '' f; do
-			# 1) accept only absolute paths
-			#    (i.e. skip '', '.' or anything like that)
-			# 2) skip paths which do not exist
-			#    (python2.6 complains about them verbosely)
-
-			if [[ ${f} == /* && -d ${D}${f} ]]; then
-				set -- "${D}${f}" "${@}"
-			fi
-		done < <(
-			"${PYTHON}" - <<-EOF || die
-				import sys
-				print("".join(x + "\0" for x in sys.path))
-			EOF
-		)
-
-		debug-print "${FUNCNAME}: using sys.path: ${*/%/;}"
-	fi
+	# default to sitedir
+	[[ ${#} -eq 0 ]] && set -- "${D}$(python_get_sitedir)"
 
 	local jobs=$(makeopts_jobs)
 	local d
 	for d; do
-		einfo "Optimize Python modules for ${instpath}"
+		einfo "Optimizing Python modules in ${d#${D}}"
 		# NB: '-s' makes the path relative, so we need '-p /' to make it
 		# absolute again; https://github.com/python/cpython/issues/133503
 		"${PYTHON}" -m compileall -j "${jobs}" -o 0 -o 1 -o 2 \
@@ -1076,7 +1057,7 @@ python_fix_shebang() {
 			fi
 
 			if [[ ! ${quiet} ]]; then
-				einfo "Fixing shebang in ${f#${D}}."
+				einfo "Fixing shebang in ${f#${D}}"
 			fi
 
 			if [[ ! ${error} ]]; then
@@ -1354,9 +1335,6 @@ epytest() {
 		# override filterwarnings=error, we do not really want -Werror
 		# for end users, as it tends to fail on new warnings from deps
 		-Wdefault
-		# however, do error out if the package failed to load
-		# an appropriate async plugin
-		-Werror::pytest.PytestUnhandledCoroutineWarning
 		# override color output
 		"--color=${color}"
 		# count is more precise when we're dealing with a large number

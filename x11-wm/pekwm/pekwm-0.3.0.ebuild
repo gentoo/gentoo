@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,8 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~mips ppc x86"
-IUSE="debug +jpeg pango +png truetype xinerama +xpm"
+IUSE="debug +jpeg pango +png test truetype xinerama +xpm"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	x11-libs/libX11
@@ -41,6 +42,7 @@ src_configure() {
 		-DENABLE_XFT=$(usex truetype)
 		-DENABLE_IMAGE_XPM=$(usex xpm)
 		-DENABLE_PANGO=$(usex pango)
+		-DTESTS=$(usex test)
 	)
 
 	CMAKE_BUILD_TYPE=$(usex debug Debug)

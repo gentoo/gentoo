@@ -14,7 +14,7 @@ else
 	SRC_URI="https://sourceware.org/ftp/dwz/releases/${P}.tar.xz"
 	S="${WORKDIR}/${PN}"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-2+ GPL-3+"
@@ -65,13 +65,13 @@ src_compile() {
 		export LIBS="${LIBS} $(${PKG_CONFIG} --libs obstack-standalone error-standalone)"
 	fi
 
-	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}"
+	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr"
 }
 
 src_test() {
-	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" check
+	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr" check
 }
 
 src_install() {
-	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" install
+	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr" install
 }

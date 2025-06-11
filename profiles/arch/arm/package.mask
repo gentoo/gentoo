@@ -1,9 +1,5 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Sam James <sam@gentoo.org> (2024-02-17)
-# Broken on arm, see bug #924649 (https://github.com/golang/go/issues/65601).
->=net-vpn/tailscale-1.60.0
 
 # Sam James <sam@gentoo.org> (2020-06-24)
 # Valgrind lacks support for < ARMv7

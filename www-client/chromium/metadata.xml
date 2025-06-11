@@ -20,6 +20,7 @@
 		<flag name="pax-kernel">Allow building on a PaX-enabled kernel</flag>
 		<flag name="pgo">Build with Profile Guided Optimizations (2-stage compilation)</flag>
 		<flag name="proprietary-codecs">Enable codecs for patent-encumbered audio and video formats.</flag>
+		<flag name="rar">Enable the Safe Browsing feature to inspect RAR files.</flag>
 		<flag name="system-harfbuzz">Use system <pkg>media-libs/harfbuzz</pkg> instead of the bundled library.</flag>
 		<flag name="system-icu">Use system <pkg>dev-libs/icu</pkg> instead of the bundled one</flag>
 		<flag name="system-png">Use system <pkg>media-libs/libpng</pkg> instead of the bundled library</flag>

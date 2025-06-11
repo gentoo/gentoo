@@ -8,7 +8,7 @@ EAPI=8
 # on new automake (major) releases, as well as the dependency in RDEPEND below too.
 # * Update _WANT_AUTOMAKE and _automake_atom case statement in autotools.eclass.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-any-r1 verify-sig
 
@@ -35,14 +35,14 @@ else
 				mirror://gnu/${PN}/${P}.tar.xz.sig
 			)
 		"
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
 DESCRIPTION="Used to generate Makefile.in from Makefile.am"
 HOMEPAGE="https://www.gnu.org/software/automake/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ FSFAP"
 # Use Gentoo versioning for slotting.
 SLOT="${MANGLED_SLOT}"
 IUSE="test"

@@ -1,0 +1,29 @@
+From 55462e60b520746e4265c9165164cbb467ec3162 Mon Sep 17 00:00:00 2001
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Tue, 25 Mar 2025 21:23:41 +0100
+Subject: [PATCH] ipython: Defaut to black on white on unknown ansi color
+
+This avoids breaking whenever a newer IPython starts using a new
+combination.
+
+Fixes #65
+---
+ plugins/ipython_view.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/plugins/ipython_view.py b/plugins/ipython_view.py
+index 91be14e..3160b2c 100755
+--- a/plugins/ipython_view.py
++++ b/plugins/ipython_view.py
+@@ -481,6 +481,8 @@ class ConsoleView(gtk.TextView):
+       ansi_tags = self.color_pat.findall(text)
+       for tag in ansi_tags:
+         i = segments.index(tag)
++        if tag not in self.ANSI_COLORS:
++          tag = '0;30'
+         self.text_buffer.insert_with_tags_by_name(self.text_buffer.get_end_iter(),
+                                              segments[i+1], tag)
+         segments.pop(i)
+-- 
+GitLab
+

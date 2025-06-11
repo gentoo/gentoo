@@ -1,0 +1,18 @@
+From: https://github.com/calf-studio-gear/calf/pull/384
+
+From 4f6adaa9bea90bfceaca02334a1a9f1642016444 Mon Sep 17 00:00:00 2001
+From: Johannes Lorenz <j.git@lorenz-ho.me>
+Date: Fri, 16 May 2025 20:54:44 +0200
+Subject: [PATCH] Fix #383: Only install lv2gui if Lv2 *and* GUI are set
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -121,7 +121,7 @@ endif()
+ 
+ # Install libs
+ install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME})
+-if(USE_GUI)
++if(USE_LV2 AND USE_GUI)
+     install(TARGETS ${PROJECT_NAME}lv2gui DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME})
+ endif()
+ 

@@ -51,9 +51,9 @@ RDEPEND="
 		dev-qt/qtbase:6[gui,network,widgets]
 		dev-qt/qtsvg:6 )
 	readline? ( sys-libs/readline:0= )
-	libcerf? ( sci-libs/libcerf )
+	libcerf? ( sci-libs/libcerf:= )
 	wxwidgets? (
-		x11-libs/wxGTK:${WX_GTK_VER}[X]
+		x11-libs/wxGTK:${WX_GTK_VER}=[X]
 		x11-libs/cairo
 		x11-libs/pango
 		x11-libs/gtk+:3 )

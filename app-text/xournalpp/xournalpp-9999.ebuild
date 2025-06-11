@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,26 +19,29 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2"
 SLOT="0"
-
+IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	${LUA_DEPS}
 	app-text/poppler[cairo]
 	>=dev-libs/glib-2.32.0
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.0.1:=
 	>=gnome-base/librsvg-2.40
 	>=media-libs/portaudio-12[cxx]
 	>=media-libs/libsndfile-1.0.25
 	sys-libs/zlib:=
 	>=x11-libs/gtk+-3.18.9:3
+	>=x11-libs/gtksourceview-4.0
 "
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
+	test? ( dev-cpp/gtest )
 "
 
 PATCHES=(
@@ -50,7 +53,14 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION="$(lua_get_version)"
+		-DENABLE_GTEST=$(usex test)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	# https://github.com/xournalpp/xournalpp/tree/master/test#problems-running-make-test
+	eninja -C "${BUILD_DIR}" test-units
+	cmake_src_test
 }

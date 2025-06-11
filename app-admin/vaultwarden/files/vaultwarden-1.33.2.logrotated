@@ -1,0 +1,9 @@
+/var/log/vaultwarden.log {
+    su vaultwarden vaultwarden
+    size 5M
+    compress
+    rotate 4
+    copytruncate
+    missingok
+    notifempty
+}

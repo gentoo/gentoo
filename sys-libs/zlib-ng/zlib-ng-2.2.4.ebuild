@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc64 ~riscv ~s390 ~sparc x86"
 
 CPU_USE=(
 	x86_{avx2,avx512f,avx512_vnni,sse2,ssse3,sse4_2,pclmul,vpclmulqdq}

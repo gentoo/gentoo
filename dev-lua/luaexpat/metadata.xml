@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<bugs-to>https://github.com/lunarmodules/luaexpat/issues</bugs-to>
-		<remote-id type="github">luaexpat/issues</remote-id>
+		<remote-id type="github">lunarmodules/luaexpat</remote-id>
 	</upstream>
 </pkgmetadata>

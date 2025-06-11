@@ -972,6 +972,15 @@ src_prepare() {
 		einfo "Done."
 	fi
 
+        case ${CTARGET} in
+                m68*-aligned-*)
+			einfo "Applying utmp format fix for m68k with -maligned-int"
+			eapply "${FILESDIR}/glibc-2.41-m68k-malign.patch"
+			;;
+                *)
+			;;
+        esac
+
 	default
 
 	gnuconfig_update

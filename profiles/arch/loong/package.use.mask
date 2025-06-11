@@ -1,6 +1,11 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-05-29)
+# dist-server pulls in the libmount crate which is unmaintained and depends
+# on outdated nix that does not support loong
+dev-util/sccache dist-server
+
 # NRK <nrk@disroot.org> (2025-04-07)
 # media-libs/libyuv is not keyworded
 media-libs/imlib2 y4m
@@ -260,7 +265,7 @@ sci-libs/spqr tbb
 dev-cpp/eigen test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# app-misc/tracker fails tests on loong.
+# app-misc/tinysparql fails tests on loong.
 app-cdr/brasero tracker
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)

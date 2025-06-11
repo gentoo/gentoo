@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-31)
+# Pulls in sci-libs/linux-gpib which is not yet keyworded here
+sci-libs/libsigrok gpib
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-06)
 # dev-python/nanobind is not keyworded here
 media-gfx/openvdb python
@@ -215,7 +219,6 @@ app-metrics/collectd collectd_plugins_nut
 app-metrics/collectd collectd_plugins_oracle
 app-metrics/collectd collectd_plugins_ping
 app-metrics/collectd collectd_plugins_routeros
-app-metrics/collectd collectd_plugins_sigrok
 app-metrics/collectd collectd_plugins_varnish
 
 # Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)

@@ -1,13 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit bash-completion-r1 gnome2 meson-multilib python-any-r1 vala virtualx
 
 DESCRIPTION="GObject library for accessing the freedesktop.org Secret Service API"
-HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
+HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libsecret"
 
 LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"

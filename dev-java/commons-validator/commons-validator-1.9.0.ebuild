@@ -17,7 +17,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 IUSE="log4j"
 RESTRICT="test" #839681
 

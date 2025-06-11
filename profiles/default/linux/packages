@@ -1,4 +1,4 @@
-# Copyright 2004-2021 Gentoo Authors.
+# Copyright 2004-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file extends the base packages file for the default profile that all
@@ -6,6 +6,7 @@
 # will have.  Some will have an selinux profile (see ${PORTDIR}/profiles/selinux).
 # The idea is to only create a new family of profiles when absolutely necessary.
 
+*net-mail/mailbase
 *sys-apps/iproute2
 *sys-apps/man-pages
 *sys-apps/net-tools

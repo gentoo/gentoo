@@ -1,0 +1,20 @@
+https://github.com/intel/libvpl-tools/pull/7
+diff --git a/tools/legacy/sample_vpp/src/sample_vpp_frc_adv.cpp b/tools/legacy/sample_vpp/src/sample_vpp_frc_adv.cpp
+index 29d4a99..91baf8b 100644
+--- a/tools/legacy/sample_vpp/src/sample_vpp_frc_adv.cpp
++++ b/tools/legacy/sample_vpp/src/sample_vpp_frc_adv.cpp
+@@ -5,6 +5,7 @@
+   ############################################################################*/
+ 
+ #include "sample_vpp_frc_adv.h"
++#include <cstdint>
+ #include <math.h>
+ #include <algorithm>
+ #include "vm/strings_defs.h"
+@@ -179,4 +180,4 @@ mfxU64 FRCAdvancedChecker::GetExpectedPTS(mfxU32 frameNumber, mfxU64 timeOffset,
+ 
+ } // mfxU64  FRCAdvancedChecker::GetExpectedPTS( mfxU32 frameNumber, mfxU64 timeOffset, mfxU64 timeJump )
+ 
+-/* EOF */
+\ No newline at end of file
++/* EOF */

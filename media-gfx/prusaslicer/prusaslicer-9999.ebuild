@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.8.1-fstream.patch"
 	"${FILESDIR}/${PN}-2.8.1-fix-libsoup-double-linking.patch"
 	"${FILESDIR}/${PN}-2.8.1-boost-1.87.patch"
+	"${FILESDIR}/${PN}-2.9.2-boost-1.88.patch"
 )
 
 src_prepare() {

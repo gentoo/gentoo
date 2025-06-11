@@ -18,7 +18,7 @@ LICENSE="LGPL-2.1"
 # follow versioning in config.linux-with-shared-libraries
 # SLOT="0/${libliveMedia_VERSION_CURRENT}.${libBasicUsageEnvironment_VERSION_CURRENT}.${libUsageEnvironment_VERSION_CURRENT}.${libgroupsock_VERSION_CURRENT}"
 SLOT="0/115.3.5.32"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="ssl tools"
 
@@ -60,7 +60,7 @@ src_configure() {
 	# ODR violations bug #940324
 	filter-lto
 
-	# BasicTaskScheduler.cpp:191:40: error: ‘struct std::atomic_flag’ has no member named ‘test’
+	# BasicTaskScheduler.cpp:191:40: error: 'struct std::atomic_flag' has no member named 'test'
 	append-cxxflags -std=c++20
 
 	# And defer to the scripts that upstream provide.

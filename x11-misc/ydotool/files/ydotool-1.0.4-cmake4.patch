@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/951676
+https://github.com/ReimuNotMoe/ydotool/commit/58fde33
+
+From 58fde33d9a8b393fd59348f71e80c56177b62706 Mon Sep 17 00:00:00 2001
+From: Paiusco <>
+Date: Mon, 26 Feb 2024 17:58:13 +0100
+Subject: [PATCH] Upgrade CMake to 3.22 and C to 2011
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7b91f69..aaba5c2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.22)
+ project(ydotool C)
+ 
+-set(CMAKE_C_STANDARD 99)
++set(CMAKE_C_STANDARD 11)
+ 
+ # Include GNU install directory module to detect where to install
+ # files on Linux/Unix systems (e.g., lib vs lib64)
+@@ -25,8 +25,6 @@ if (${RC_GIT_VER} EQUAL 0)
+     add_definitions(-DVERSION=\"${GIT_VERSION}\")
+ endif()
+ 
+-
+-
+ set(SOURCE_FILES_DAEMON Daemon/ydotoold.c)
+ set(SOURCE_FILES_CLIENT Client/ydotool.c Client/tool_click.c Client/tool_mousemove.c Client/tool_type.c Client/tool_key.c)
+ 

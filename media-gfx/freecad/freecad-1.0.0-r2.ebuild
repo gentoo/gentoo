@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -56,7 +56,7 @@ RDEPEND="
 	dev-cpp/yaml-cpp
 	dev-libs/boost:=
 	dev-libs/libfmt:=
-	dev-libs/xerces-c[icu]
+	dev-libs/xerces-c:=[icu]
 	dev-qt/qtbase:6[concurrent,network,xml]
 	media-libs/freetype
 	sci-libs/opencascade:=[json]

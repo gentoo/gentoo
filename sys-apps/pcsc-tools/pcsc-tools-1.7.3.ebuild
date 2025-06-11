@@ -11,7 +11,7 @@ SRC_URI="https://pcsc-tools.apdu.fr/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 x86"
 IUSE="gui network-cron"
 
 DEPEND=">=sys-apps/pcsc-lite-1.4.14"

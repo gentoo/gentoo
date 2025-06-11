@@ -1,8 +1,9 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+QT6_HAS_STATIC_LIBS=1
 inherit qt6-build
 
 DESCRIPTION="Qt module and API for defining 3D content in Qt QuickTools"

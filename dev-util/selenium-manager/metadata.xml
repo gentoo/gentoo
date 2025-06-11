@@ -14,7 +14,8 @@
   </upstream>
   <use>
     <flag name="telemetry">
-      Disable sending telemetry by default (avoid-stats config option).
+      Enable sending telemetry by default (disabling it sets avoid-stats
+      config option to true).
     </flag>
   </use>
 </pkgmetadata>

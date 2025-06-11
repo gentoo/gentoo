@@ -1,0 +1,25 @@
+From 609904da196d833d1657e8eda51f31528373c281 Mon Sep 17 00:00:00 2001
+From: Colin Clark <colin.clark@cclark.uk>
+Date: Tue, 27 May 2025 11:10:36 +0100
+Subject: [PATCH] Fix #1743: Slow since 2.6
+
+https://github.com/BestImageViewer/geeqie/issues/1743
+
+Incorrect init. function used.
+---
+ src/main.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.cc b/src/main.cc
+index 41e37b69..9365a729 100644
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -1053,7 +1053,7 @@ gint main(gint argc, gchar *argv[])
+ 
+ 	if (!gq_disable_clutter || tolower(gq_disable_clutter[0]) != 'y')
+ 		{
+-		if (clutter_init(nullptr, nullptr) != CLUTTER_INIT_SUCCESS)
++		if (gtk_clutter_init(nullptr, nullptr) != CLUTTER_INIT_SUCCESS)
+ 			{
+ 			fprintf(stderr,
+ 				_("Can't initialize clutter-gtk. \n \

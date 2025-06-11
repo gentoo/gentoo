@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -39,7 +39,7 @@ src_configure() {
 
 python_test() {
 	cd "${BUILD_DIR}"/install || die
-	epytest
+	epytest ./$(python_get_sitedir)/pygraphviz/tests
 }
 
 python_install_all() {

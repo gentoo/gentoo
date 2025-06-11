@@ -13,6 +13,7 @@ inherit distutils-r1 toolchain-funcs pypi
 
 DESCRIPTION="A Python crypto and SSL toolkit"
 HOMEPAGE="
+	https://sr.ht/~mcepl/m2crypto/
 	https://gitlab.com/m2crypto/m2crypto/
 	https://pypi.org/project/M2Crypto/
 "

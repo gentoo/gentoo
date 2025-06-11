@@ -1,0 +1,46 @@
+https://github.com/curl/trurl/commit/a4d8ba2aaa237e3db90d350b97209838ee240aa5
+
+From a4d8ba2aaa237e3db90d350b97209838ee240aa5 Mon Sep 17 00:00:00 2001
+From: Dan Fandrich <dan@coneharvesters.com>
+Date: Wed, 14 May 2025 20:24:01 -0700
+Subject: [PATCH] trurl: use curl_free() on a pointer coming from
+ curl_maprintf()
+
+One instance of a pointer coming from curl_maprintf() was freed with a
+normal free() which breaks and causes ASAN/valgrind to complain when
+using a debug-enabled libcurl. Since the function could return a normal
+heap-allocated pointer or a curl-allocated one, copy the string and
+curl_free() the original.
+
+Closes #393
+---
+ trurl.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/trurl.c b/trurl.c
+index b5a716ca..f79b1791 100644
+--- a/trurl.c
++++ b/trurl.c
+@@ -1381,6 +1381,7 @@ static struct string *memdupzero(char *source, size_t len, bool *modified)
+       int rlen;
+       int leftside;
+       int rightside;
++      char *temp;
+ 
+       /* decode both sides */
+       leftside = (int)(sep - source);
+@@ -1420,7 +1421,12 @@ static struct string *memdupzero(char *source, size_t len, bool *modified)
+           goto error;
+       }
+ 
+-      encode = curl_maprintf("%s=%s", el ? el : "", er ? er : "");
++      temp = curl_maprintf("%s=%s", el ? el : "", er ? er : "");
++      if(!temp)
++        goto error;
++      /* pointers from curl_maprintf() must be curl_free()d so make a copy */
++      encode = strdup(temp);
++      curl_free(temp);
+       if(!encode)
+         goto error;
+     }
+

@@ -1,0 +1,65 @@
+https://github.com/intel/isa-l_crypto/commit/6e62643df9ed6c2c62e287d14f192057189dda8d
+
+From 6e62643df9ed6c2c62e287d14f192057189dda8d Mon Sep 17 00:00:00 2001
+From: "Ivan A. Melnikov" <iv@altlinux.org>
+Date: Wed, 31 Jul 2024 17:44:29 +0400
+Subject: [PATCH] sha1_mb: Add missing ISAL_ prefixes to base aliases
+
+Commit 0106da915b7024075fc74900ff63fa931ac15475 somehow
+missed updating the base aliases, which broke build
+on architectures for which SHA1 routines were not
+specifically optimized, e.g. loongarch64.
+
+This commit addresses that.
+
+Fixes: 0106da915b7024075fc74900ff63fa931ac15475
+Signed-off-by: Ivan A. Melnikov <iv@altlinux.org>
+---
+ sha1_mb/sha1_ctx_base_aliases.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/sha1_mb/sha1_ctx_base_aliases.c b/sha1_mb/sha1_ctx_base_aliases.c
+index 517cfc15..b0c7643c 100644
+--- a/sha1_mb/sha1_ctx_base_aliases.c
++++ b/sha1_mb/sha1_ctx_base_aliases.c
+@@ -32,28 +32,28 @@
+ #include "memcpy_inline.h"
+ 
+ extern void
+-_sha1_ctx_mgr_init_base(SHA1_HASH_CTX_MGR *mgr);
+-extern SHA1_HASH_CTX *
+-_sha1_ctx_mgr_submit_base(SHA1_HASH_CTX_MGR *mgr, SHA1_HASH_CTX *ctx, const void *buffer,
++_sha1_ctx_mgr_init_base(ISAL_SHA1_HASH_CTX_MGR *mgr);
++extern ISAL_SHA1_HASH_CTX *
++_sha1_ctx_mgr_submit_base(ISAL_SHA1_HASH_CTX_MGR *mgr, ISAL_SHA1_HASH_CTX *ctx, const void *buffer,
+                           uint32_t len, ISAL_HASH_CTX_FLAG flags);
+-extern SHA1_HASH_CTX *
+-_sha1_ctx_mgr_flush_base(SHA1_HASH_CTX_MGR *mgr);
++extern ISAL_SHA1_HASH_CTX *
++_sha1_ctx_mgr_flush_base(ISAL_SHA1_HASH_CTX_MGR *mgr);
+ 
+ void
+-_sha1_ctx_mgr_init(SHA1_HASH_CTX_MGR *mgr)
++_sha1_ctx_mgr_init(ISAL_SHA1_HASH_CTX_MGR *mgr)
+ {
+         return _sha1_ctx_mgr_init_base(mgr);
+ }
+ 
+-SHA1_HASH_CTX *
+-_sha1_ctx_mgr_submit(SHA1_HASH_CTX_MGR *mgr, SHA1_HASH_CTX *ctx, const void *buffer, uint32_t len,
+-                     ISAL_HASH_CTX_FLAG flags)
++ISAL_SHA1_HASH_CTX *
++_sha1_ctx_mgr_submit(ISAL_SHA1_HASH_CTX_MGR *mgr, ISAL_SHA1_HASH_CTX *ctx, const void *buffer,
++                     uint32_t len, ISAL_HASH_CTX_FLAG flags)
+ {
+         return _sha1_ctx_mgr_submit_base(mgr, ctx, buffer, len, flags);
+ }
+ 
+-SHA1_HASH_CTX *
+-_sha1_ctx_mgr_flush(SHA1_HASH_CTX_MGR *mgr)
++ISAL_SHA1_HASH_CTX *
++_sha1_ctx_mgr_flush(ISAL_SHA1_HASH_CTX_MGR *mgr)
+ {
+         return _sha1_ctx_mgr_flush_base(mgr);
+ }
+

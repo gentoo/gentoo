@@ -44,7 +44,9 @@ RDEPEND="
 		>=virtual/opengl-7.0-r1[abi_x86_32]
 	) )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/opencl-headers
+"
 
 src_prepare() {
 	# Use /var/lib, bug #428122

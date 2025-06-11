@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -28,10 +28,6 @@ RDEPEND="
 	dev-python/platformdirs[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
 	dev-python/pyproject-api[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-		dev-python/typing-extensions[${PYTHON_USEDEP}]
-	' 3.10)
 	dev-python/virtualenv[${PYTHON_USEDEP}]
 "
 BDEPEND="

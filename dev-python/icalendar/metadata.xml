@@ -6,9 +6,6 @@
     <name>Python</name>
   </maintainer>
   <stabilize-allarches/>
-  <use>
-    <flag name="doc">Generate examples and other extra documentation</flag>
-  </use>
   <upstream>
     <remote-id type="pypi">icalendar</remote-id>
     <remote-id type="github">collective/icalendar</remote-id>

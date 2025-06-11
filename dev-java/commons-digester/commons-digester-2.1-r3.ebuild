@@ -17,7 +17,7 @@ S="${WORKDIR}/commons-digester-${PV}-src"
 
 LICENSE="Apache-2.0"
 SLOT="2.1"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 IUSE="log4j"
 
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"

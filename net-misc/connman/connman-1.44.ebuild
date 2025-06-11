@@ -9,7 +9,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/network/connman/connman.git"
 else
 	SRC_URI="https://git.kernel.org/pub/scm/network/connman/connman.git/snapshot/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Provides a daemon for managing internet connections"

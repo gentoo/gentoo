@@ -5,3 +5,4 @@
 # This is still experimental, prebuilt images may not boot on all systems.
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
+sys-kernel/vanilla-kernel generic-uki

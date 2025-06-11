@@ -1,0 +1,30 @@
+https://invent.kde.org/plasma/plasma-workspace/-/commit/73e7404f
+
+From 73e7404f7da95c0e1be94fc49ffa7ea3e3b27312 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sun, 1 Jun 2025 03:45:34 +0100
+Subject: [PATCH] dataengines: add missing <mutex> include
+
+This shows up with recent GCC 16 trunk. It's fixed on master with
+fe0dbb13cd4263a75ff1c226f8a49ce8a09131e6 but that change is a bit big,
+so let's do the minimal thing here for the branch.
+---
+ dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp b/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp
+index 32ec4b02e4f..c6140c572c5 100644
+--- a/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp
++++ b/dataengines/weather/ions/bbcukmet/ion_bbcukmet.cpp
+@@ -11,6 +11,8 @@
+ 
+ #include "ion_bbcukmetdebug.h"
+ 
++#include <mutex>
++
+ #include <KIO/TransferJob>
+ #include <KLocalizedString>
+ #include <KUnitConversion/Converter>
+-- 
+GitLab
+

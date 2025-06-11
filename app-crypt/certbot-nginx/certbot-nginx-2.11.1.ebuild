@@ -25,7 +25,7 @@ else
 	KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
 fi
 
-DESCRIPTION="Nginx plugin for Certbot (Let’s Encrypt client)"
+DESCRIPTION="Nginx plugin for Certbot (Let's Encrypt client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot-nginx/

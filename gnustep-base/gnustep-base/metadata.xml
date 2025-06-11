@@ -5,6 +5,9 @@
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
+	<use>
+		<flag name="libdispatch">Dispatch blocks via <pkg>dev-libs/libdispatch</pkg></flag>
+	</use>
 	<upstream>
 		<remote-id type="github">gnustep/libs-base</remote-id>
 	</upstream>

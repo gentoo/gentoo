@@ -5,7 +5,7 @@ EAPI=8
 
 CRATES=" "
 LLVM_COMPAT=( {17..19} )
-RUST_MIN_VER="1.84.0"
+RUST_MIN_VER="1.85.0"
 
 inherit cargo edo multiprocessing llvm-r1 shell-completion
 
@@ -25,7 +25,10 @@ fi
 
 LICENSE="MIT"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 BSD-2 BSD CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016"
+LICENSE+="
+	Apache-2.0 BSD-2 BSD CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0
+	Unicode-3.0
+"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test ) "
@@ -59,11 +62,8 @@ src_compile() {
 
 	if [[ ${PV} == 9999 ]] ; then
 		einfo "Generating shell completions"
-		mkdir shell || die
 		local BIN="${WORKDIR}/${P}/$(cargo_target_dir)/pk"
-		"${BIN}" completion bash > shell/pk.bash || die
-		"${BIN}" completion zsh > shell/_pk || die
-		"${BIN}" completion fish > shell/pk.fish || die
+		"${BIN}" completion --dir shell || die
 	fi
 }
 
@@ -72,10 +72,8 @@ src_test() {
 
 	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
 
-	# pkg::env::current_dir is likely sensitive to ebuild env
 	edo ${CARGO} nextest run $(usev !debug '--release') \
 		--color always \
-		--all-features \
 		--tests
 }
 

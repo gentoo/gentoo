@@ -20,7 +20,7 @@ LICENSE="GPL-3"
 SLOT="0"
 
 RDEPEND="dev-db/sqlite:=
-	dev-qt/qtbase:6
+	dev-qt/qtbase:6[gui,network,ssl,widgets]
 	dev-qt/qtsvg:6
 	x11-libs/libX11"
 

@@ -14,7 +14,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_CLONE_TYPE="shallow"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~riscv ~x86"
 	SRC_URI="https://github.com/pothosware/SoapySDR/archive/soapy-sdr-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SoapySDR-soapy-sdr-"${PV}"
 fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ HOMEPAGE="
 "
 SRC_URI="https://download.redis.io/releases/${P}.tar.gz"
 
-LICENSE="Boost-1.0 SSPL-1"
+LICENSE="|| ( RSAL-2 SSPL-1 ) Boost-1.0"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+jemalloc selinux ssl systemd tcmalloc test"

@@ -34,7 +34,6 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
 "
-RESTRICT="test"
 
 COMMON_DEPEND="
 	virtual/libcrypt:=
@@ -117,6 +116,9 @@ src_prepare() {
 	mv "${WORKDIR}"/patches/0005-Respect-LDFLAGS-properly.patch{,.disabled} || die
 	eapply "${WORKDIR}"/patches/*.patch
 
+	# Fails because of our eautoconf call
+	rm testing/fulltests/default/T000configure_simple || die
+
 	default
 
 	eautoconf
@@ -173,6 +175,10 @@ src_compile() {
 	done
 
 	use doc && emake docsdox
+}
+
+src_test() {
+	emake -Onone test
 }
 
 src_install() {

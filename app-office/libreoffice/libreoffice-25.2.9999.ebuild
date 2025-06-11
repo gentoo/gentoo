@@ -442,9 +442,14 @@ src_configure() {
 	# Workaround for bug #915067
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
-	# Apparently the Clang flags get used even for GCC builds sometimes.
-	# bug #838115
+	# Clang flags get used even for GCC builds sometimes (bug #838115)
+	# (... because of our LO_CLANG_* hack)
 	sed -i -e "s/-flto=thin/-flto/" solenv/gbuild/platform/com_GCC_defs.mk || die
+
+	# Don't use Clang for building Skia regardless of CC/CXX!
+	tc-export CC CXX
+	export LO_CLANG_CC=${CC}
+	export LO_CLANG_CXX=${CXX}
 
 	# ODR violations (not just in skia/vulkan): bug #916435
 	# Runtime crashes with Clang: bug #907905
@@ -455,11 +460,6 @@ src_configure() {
 		elog "the build succeeds. Good luck!"
 	else
 		strip-flags
-	fi
-
-	if tc-is-clang ; then
-		export LO_CLANG_CC=${CC}
-		export LO_CLANG_CXX=${CXX}
 	fi
 
 	# Show flags set at the end

@@ -60,7 +60,7 @@ src_configure() {
 	# ODR violations bug #940324
 	filter-lto
 
-	# BasicTaskScheduler.cpp:191:40: error: ‘struct std::atomic_flag’ has no member named ‘test’
+	# BasicTaskScheduler.cpp:191:40: error: 'struct std::atomic_flag' has no member named 'test'
 	append-cxxflags -std=c++20
 
 	# And defer to the scripts that upstream provide.

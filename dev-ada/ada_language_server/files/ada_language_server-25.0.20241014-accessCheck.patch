@@ -1,0 +1,81 @@
+--- a/source/server/lsp-servers.adb	2025-05-28 14:26:39.929607310 +0200
++++ b/source/server/lsp-servers.adb	2025-05-28 20:40:01.934644123 +0200
+@@ -840,13 +840,14 @@
+             else
+                declare
+                   Waste : Server_Message_Access;
++                  use type Server_Message_Access;
+ 
+                begin
+                   --  Call Process_Job at least once to complete a fenced
+                   --  job if any.
+                   Server.Scheduler.Process_Job (Server.all, Waste);
+ 
+-                  if Waste.Assigned then
++                  if Waste /= null then
+                      Server.Destroy_Queue.Enqueue (Waste);
+                   end if;
+ 
+@@ -893,6 +894,7 @@
+       end Process_Message;
+ 
+       Request : Server_Message_Access;
++      use type Server_Message_Access;
+    begin
+       --  Perform initialization
+       accept Start
+@@ -919,7 +921,7 @@
+                   Continue := False;
+                end select;
+ 
+-               if Request.Assigned then
++               if Request /= null then
+                   Process_Message (Request);
+                end if;
+             end loop;
+@@ -930,7 +932,7 @@
+ 
+          Execute_Jobs (Server.Look_Ahead);
+ 
+-         if not Server.Look_Ahead.Assigned then
++         if Server.Look_Ahead = null then
+             --  there is no jobs any more, just wait for input messages
+ 
+             select
+--- a/source/server/lsp-job_schedulers.adb	2025-05-28 20:27:48.015040064 +0200
++++ b/source/server/lsp-job_schedulers.adb	2025-05-28 20:38:31.969675280 +0200
+@@ -38,8 +38,9 @@
+      (Self  : in out Job_Scheduler'Class;
+       Next  : LSP.Server_Messages.Server_Message_Access;
+       Waste : out LSP.Server_Messages.Server_Message_Access) is
++      use type LSP.Server_Jobs.Server_Job_Access;
+    begin
+-      if Self.Done.Assigned then
++      if Self.Done /= null then
+          Self.Done.Complete (Next);
+          Waste := Self.Done.Message;
+          Free (Self.Done);
+@@ -92,8 +93,9 @@
+    --------------
+ 
+    function Has_Jobs (Self : Job_Scheduler'Class) return Boolean is
++      use type LSP.Server_Jobs.Server_Job_Access;
+    begin
+-      return Self.Blocker.Assigned or else
++      return Self.Blocker /= null or else
+         (for some List of Self.Jobs => not List.Is_Empty);
+    end Has_Jobs;
+ 
+@@ -169,10 +171,11 @@
+       From   : LSP.Server_Jobs.Job_Priority := LSP.Server_Jobs.Lowest)
+    is
+       Status : LSP.Server_Jobs.Execution_Status;
++      use type LSP.Server_Messages.Server_Message_Access;
+    begin
+       Self.Complete_Last_Fence_Job (null, Waste);
+ 
+-      if not Waste.Assigned then
++      if Waste = null then
+          for List of reverse Self.Jobs (From .. LSP.Server_Jobs.High)
+            when not List.Is_Empty
+          loop

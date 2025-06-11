@@ -1,8 +1,23 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Mike Gilbert <floppym@gentoo.org> (2025-06-03)
+# Requires systemd.
+app-admin/mkosi
+app-admin/systemdgenie
+dev-python/python-systemd
+gnome-extra/gnome-logs
+gnome-extra/office-runner
+net-vpn/microsoft-azurevpnclient
+sys-apps/gentoo-systemd-integration
+sys-apps/intune-portal
+sys-apps/systemd-readahead
+sys-block/wait-for-dri-devices-rules
+sys-power/sandmann-bin
+www-misc/profile-sync-daemon
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-12-07)
 # Does not support split-usr filesystem geometry. Please migrate to
 # a merged-usr profile.
->=sys-apps/systemd-255
->=sys-process/systemd-cron-2.3.4-r1
+sys-apps/systemd
+sys-process/systemd-cron

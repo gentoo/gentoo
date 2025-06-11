@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/938332
+https://github.com/telegramdesktop/libtgvoip/pull/38
+
+From ddfb667ba17c31898949dcbf07c863e268e5c85a Mon Sep 17 00:00:00 2001
+From: Blackteahamburger <blackteahamburger@outlook.com>
+Date: Fri, 30 Aug 2024 20:02:12 +0800
+Subject: [PATCH] Fix missing cstdint for GCC 15
+
+---
+ TgVoip.h   | 1 +
+ json11.cpp | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/TgVoip.h b/TgVoip.h
+index 9ad06155..6ea64b47 100755
+--- a/TgVoip.h
++++ b/TgVoip.h
+@@ -1,6 +1,7 @@
+ #ifndef __TGVOIP_H
+ #define __TGVOIP_H
+ 
++#include <cstdint>
+ #include <functional>
+ #include <vector>
+ #include <string>
+diff --git a/json11.cpp b/json11.cpp
+index 812e6103..1818db3f 100755
+--- a/json11.cpp
++++ b/json11.cpp
+@@ -22,6 +22,7 @@
+ #include "json11.hpp"
+ #include <cassert>
+ #include <cmath>
++#include <cstdint>
+ #include <cstdlib>
+ #include <cstdio>
+ #include <limits>

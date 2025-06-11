@@ -1,0 +1,26 @@
+From 08ff910bac84bea6bc0397d8db795e80e186ffef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kacper=20S=C5=82omi=C5=84ski?=
+ <kacper.slominski72@gmail.com>
+Date: Sat, 24 May 2025 21:46:21 +0200
+Subject: [PATCH] Install into versioned directory in share/doc/
+
+---
+ prboom2/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/prboom2/CMakeLists.txt b/prboom2/CMakeLists.txt
+index 5eaf52b59..b6b0a22d0 100644
+--- a/prboom2/CMakeLists.txt
++++ b/prboom2/CMakeLists.txt
+@@ -215,7 +215,7 @@ endif()
+ if(WIN32)
+     install(FILES COPYING DESTINATION . RENAME COPYING.txt)
+ else()
+-    install(FILES COPYING DESTINATION "share/doc/${PROJECT_NAME}")
++    install(FILES COPYING DESTINATION "share/doc/${PROJECT_NAME}-${PROJECT_VERSION}")
+ endif()
+ 
+ if(WIN32)
+-- 
+2.49.0
+

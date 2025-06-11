@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -24,7 +24,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="doc latex"
 
 RDEPEND="
@@ -72,7 +72,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/sphinx-3.2.1-doc-link.patch"
-	#"${FILESDIR}/sphinx-4.3.2-doc-link.patch"
+	"${FILESDIR}/${P}-fix-python3.14.patch" # patch collection, merged upstream
 )
 
 distutils_enable_tests pytest
@@ -111,10 +111,7 @@ python_test() {
 				tests/test_util/test_util_typing.py::test_restify
 				tests/test_util/test_util_typing.py::test_stringify_annotation
 				tests/test_util/test_util_typing.py::test_stringify_type_union_operator
-			)
-			;&
-		pypy3)
-			EPYTEST_DESELECT+=(
+				# from pypy3 era
 				tests/test_extensions/test_ext_autodoc.py::test_autodoc_exception
 				tests/test_extensions/test_ext_autodoc.py::test_autodoc_ignore_module_all
 				tests/test_extensions/test_ext_autodoc.py::test_autodoc_inherited_members_None

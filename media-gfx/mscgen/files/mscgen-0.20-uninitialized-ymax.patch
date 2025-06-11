@@ -1,0 +1,14 @@
+https://src.fedoraproject.org/rpms/mscgen/blob/rawhide/f/mscgen-0.20-uninitialized-ymax.patch
+
+# Fixes 'ymax' variable initialization
+# http://code.google.com/p/mscgen/issues/detail?id=73
+--- a/src/main.c
++++ b/src/main.c
+@@ -851,6 +851,7 @@
+ 
+     nextYmin = ymin = gOpts.entityHeadGap;
+     yskipmax = 0;
++    ymax = 0;
+ 
+     MscResetArcIterator(m);
+     do

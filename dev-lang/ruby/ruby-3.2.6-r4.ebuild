@@ -168,6 +168,10 @@ src_configure() {
 		# set and socks library is present, so need to unset
 		# SOCKS_SERVER in that case.
 		unset SOCKS_SERVER
+
+		# The socks code has a function prototype without parameters,
+		# bug #945502
+		append-cflags -std=gnu17
 	fi
 
 	# Increase GC_MALLOC_LIMIT if set (default is 8000000)

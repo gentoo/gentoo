@@ -6,6 +6,6 @@
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">downloads/jamiebullock</remote-id>
+		<remote-id type="github">jamiebullock/LibXtract</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -8,7 +8,7 @@ dev-python/pyside webview
 # Michał Górny <mgorny@gentoo.org> (2024-06-05)
 # media-libs/exempi is seriously broken on big endian platforms.
 # https://gitlab.freedesktop.org/libopenraw/exempi/-/merge_requests/8#note_2277243
-app-misc/tracker-miners xmp
+app-misc/localsearch xmp
 games-fps/eduke32 xmp
 gnome-extra/nemo xmp
 media-gfx/eog xmp
@@ -32,6 +32,7 @@ kde-apps/kalarm pim
 gnome-base/gnome extras
 games-engines/scummvm vpx
 net-libs/pjproject vpx
+dev-util/nvidia-cuda-toolkit nsight
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-16)
 # media-libs/libaom casualties

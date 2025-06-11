@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,11 +21,15 @@ RDEPEND="
 	dev-ml/num:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
 	dev-ml/findlib
 	sys-apps/gawk
 "
+
+PATCHES=( "${FILESDIR}/${PN}-1.2.0-which.patch" )
 
 SITEFILE="50${PN}-gentoo.el"
 

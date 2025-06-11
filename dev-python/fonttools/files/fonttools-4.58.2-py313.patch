@@ -1,0 +1,42 @@
+From c9d720cfeb4e5bdabbed68050154f7f9486eac37 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 7 Jun 2025 07:51:13 +0200
+Subject: [PATCH] fix iterable check for Python 3.13.4 and newer
+
+Fix the `feaLib/ast.py` snippet used to check whether a type is iterable
+to work correctly with Python 3.13.4.  The snippet wrongly assumed
+that a generator expression will raise immediately when the RHS of `in`
+is not iterable.  This is no longer the case with Python 3.13.4,
+and such a generator only raises when you actually start iterating.
+Use a plain `for` expression to start iterating and catch the problem
+more reliably.
+
+Fixes #3854
+---
+ Lib/fontTools/feaLib/ast.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Lib/fontTools/feaLib/ast.py b/Lib/fontTools/feaLib/ast.py
+index efcce8c68..18e5a891d 100644
+--- a/Lib/fontTools/feaLib/ast.py
++++ b/Lib/fontTools/feaLib/ast.py
+@@ -719,7 +719,8 @@ class ChainContextPosStatement(Statement):
+         for i, lookup in enumerate(lookups):
+             if lookup:
+                 try:
+-                    (_ for _ in lookup)
++                    for _ in lookup:
++                        break
+                 except TypeError:
+                     self.lookups[i] = [lookup]
+ 
+@@ -777,7 +778,8 @@ class ChainContextSubstStatement(Statement):
+         for i, lookup in enumerate(lookups):
+             if lookup:
+                 try:
+-                    (_ for _ in lookup)
++                    for _ in lookup:
++                        break
+                 except TypeError:
+                     self.lookups[i] = [lookup]
+ 

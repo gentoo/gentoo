@@ -87,12 +87,12 @@ LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux"
 
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="accessibility base bluetooth +branding clang coinmp +cups custom-cflags +dbus debug eds
+IUSE="accessibility base bluetooth +branding coinmp +cups custom-cflags +dbus debug eds
 googledrive gstreamer +gtk3 gtk4 kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
@@ -275,23 +275,6 @@ BDEPEND="
 	sys-apps/which
 	sys-devel/gettext
 	virtual/pkgconfig
-	clang? ( || (
-		(	llvm-core/clang:19
-			llvm-core/llvm:19
-			=llvm-core/lld-19*	)
-		(	llvm-core/clang:18
-			llvm-core/llvm:18
-			=llvm-core/lld-18*	)
-		(	llvm-core/clang:17
-			llvm-core/llvm:17
-			=llvm-core/lld-17*	)
-		(	llvm-core/clang:16
-			llvm-core/llvm:16
-			=llvm-core/lld-16*	)
-		(	llvm-core/clang:15
-			llvm-core/llvm:15
-			=llvm-core/lld-15*	)
-	) )
 	odk? ( >=app-text/doxygen-1.8.4 )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
@@ -460,31 +443,14 @@ src_configure() {
 	# Workaround for bug #915067
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 
-	if use clang ; then
-		# Force clang
-		einfo "Enforcing the use of clang due to USE=clang ..."
-		AR=llvm-ar
-		CC=${CHOST}-clang
-		CXX=${CHOST}-clang++
-		NM=llvm-nm
-		RANLIB=llvm-ranlib
-		LDFLAGS+=" -fuse-ld=lld"
+	# Clang flags get used even for GCC builds sometimes (bug #838115)
+	# (... because of our LO_CLANG_* hack)
+	sed -i -e "s/-flto=thin/-flto/" solenv/gbuild/platform/com_GCC_defs.mk || die
 
-		# Not implemented by Clang, bug #903889
-		filter-flags -Wlto-type-mismatch -Werror=lto-type-mismatch
-	else
-		# Force gcc
-		einfo "Enforcing the use of gcc due to USE=-clang ..."
-		AR=gcc-ar
-		CC=${CHOST}-gcc
-		CXX=${CHOST}-g++
-		NM=gcc-nm
-		RANLIB=gcc-ranlib
-
-		# Apparently the Clang flags get used even for GCC builds sometimes.
-		# bug #838115
-		sed -i -e "s/-flto=thin/-flto/" solenv/gbuild/platform/com_GCC_defs.mk || die
-	fi
+	# Don't use Clang for building Skia regardless of CC/CXX!
+	tc-export CC CXX
+	export LO_CLANG_CC=${CC}
+	export LO_CLANG_CXX=${CXX}
 
 	# ODR violations (not just in skia/vulkan): bug #916435
 	# Runtime crashes with Clang: bug #907905
@@ -496,9 +462,6 @@ src_configure() {
 	else
 		strip-flags
 	fi
-
-	export LO_CLANG_CC=${CC}
-	export LO_CLANG_CXX=${CXX}
 
 	# Show flags set at the end
 	einfo "  Used CFLAGS:    ${CFLAGS}"

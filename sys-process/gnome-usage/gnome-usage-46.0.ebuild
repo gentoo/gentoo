@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	>=gui-libs/gtk-4.11.3:4
 	>=gnome-base/libgtop-2.34.0:2=
 	>=gui-libs/libadwaita-1.5:1
-	>=app-misc/tracker-3.0.3:3[vala(+)]
+	>=app-misc/tinysparql-3.0.3:3[vala(+)]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

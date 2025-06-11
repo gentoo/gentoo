@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/prusa3d/prusaslicer.git"
 else
 	SRC_URI="https://github.com/prusa3d/PrusaSlicer/archive/refs/tags/version_${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${MY_PN}-version_${MY_PV}"
 fi
 
@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.8.1-fstream.patch"
 	"${FILESDIR}/${PN}-2.8.1-fix-libsoup-double-linking.patch"
 	"${FILESDIR}/${PN}-2.8.1-boost-1.87.patch"
+	"${FILESDIR}/${PN}-2.9.2-boost-1.88.patch"
 )
 
 src_prepare() {

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+QT6_HAS_STATIC_LIBS=1
 inherit flag-o-matic qt6-build
 
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt6 framework"

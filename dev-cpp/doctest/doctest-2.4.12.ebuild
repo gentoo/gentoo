@@ -11,7 +11,7 @@ SRC_URI="https://github.com/doctest/doctest/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,6 +25,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# skip false positive detection in examples, bug #957418
+	local CMAKE_QA_COMPAT_SKIP=1
+
 	local mycmakeargs=(
 		-DDOCTEST_WITH_TESTS=$(usex test)
 	)

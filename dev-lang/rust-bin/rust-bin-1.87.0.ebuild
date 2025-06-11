@@ -202,8 +202,9 @@ rust_native_abi_install() {
 
 	if use prefix; then
 		local interpreter=$(patchelf --print-interpreter "${EPREFIX}"/bin/bash)
-		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/opt/${SLOT}/bin"
-		find "${ED}/opt/${SLOT}/bin" -type f -print0 | \
+		local binpth="${ED}/opt/rust-bin-${SLOT}/bin"
+		ebegin "Changing interpreter to ${interpreter} for Gentoo Prefix at ${binpth}"
+		find "${binpth}" -type f -print0 | \
 			while IFS=  read -r -d '' filename; do
 				patchelf_for_bin ${filename} ${interpreter} \; || die
 			done

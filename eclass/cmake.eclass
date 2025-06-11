@@ -117,6 +117,12 @@ fi
 # for econf and is needed to pass TRY_RUN results when cross-compiling.
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
+# @ECLASS_VARIABLE: CMAKE_QA_COMPAT_SKIP
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set, skip detection of CMakeLists.txt unsupported in CMake 4 in case of
+# false positives (e.g. unused outdated bundled libs).
+
 # @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -445,6 +451,19 @@ cmake_src_configure() {
 	# Fix xdg collision with sandbox
 	xdg_environment_reset
 
+	local file ver cmreq_isold
+	if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
+		while read -d '' -r file ; do
+			ver=$(sed -ne "/cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
+				"${file}" 2>/dev/null \
+			)
+
+			if [[ -n $ver ]] && ver_test $ver -lt "3.5"; then
+				cmreq_isold=true
+			fi
+		done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0)
+	fi
+
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
 
@@ -623,6 +642,21 @@ cmake_src_configure() {
 
 	if [[ -n "${CMAKE_EXTRA_CACHE_FILE}" ]] ; then
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
+	fi
+
+	if [[ ${cmreq_isold} ]]; then
+		eqawarn "QA Notice: Compatibility with CMake < 3.5 has been removed from CMake 4,"
+		eqawarn "${CATEGORY}/${PN} will fail to build w/o a fix."
+		eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
+		eqawarn "this package, and take it upstream."
+		if [[ ${EAPI} == 7 ]]; then
+			eqawarn "QA Notice: EAPI=7 detected; this package is now a prime last-rites target."
+		fi
+		if has_version -b ">=dev-build/cmake-4"; then
+			eqawarn "QA Notice: CMake 4 detected; building with -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+			eqawarn "This is merely a workaround and *not* a permanent fix."
+			cmakeargs+=( -DCMAKE_POLICY_VERSION_MINIMUM=3.5 )
+		fi
 	fi
 
 	pushd "${BUILD_DIR}" > /dev/null || die

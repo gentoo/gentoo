@@ -89,7 +89,7 @@ pkg_setup() {
 	declare -r -g ZIG_VER="${PV}"
 	ZIG_EXE="not-applicable" zig_pkg_setup
 
-	declare -r -g ZIG_SYS_INSTALL_DEST="${EPREFIX}/usr/$(get_libdir)/zig/${PV}"
+	declare -r -g ZIG_SYS_INSTALL_DEST="/usr/$(get_libdir)/zig/${PV}"
 
 	if use llvm; then
 		[[ ${MERGE_TYPE} != binary ]] && llvm_cbuild_setup
@@ -144,7 +144,7 @@ src_configure() {
 	local my_zbs_args=(
 		--zig-lib-dir "${S}/lib/"
 
-		--prefix "${ZIG_SYS_INSTALL_DEST}/"
+		--prefix "${EPREFIX}/${ZIG_SYS_INSTALL_DEST}/"
 		--prefix-lib-dir lib/
 
 		# These are built separately
@@ -326,7 +326,7 @@ src_install() {
 
 	ZIG_EXE="./zig2" zig_src_install
 
-	cd "${D}/${ZIG_SYS_INSTALL_DEST}" || die
+	cd "${ED}/${ZIG_SYS_INSTALL_DEST}" || die
 	mv lib/zig/ lib2/ || die
 	rm -rf lib/ || die
 	mv lib2/ lib/ || die

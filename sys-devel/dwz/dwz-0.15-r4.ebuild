@@ -65,13 +65,13 @@ src_compile() {
 		export LIBS="${LIBS} $(${PKG_CONFIG} --libs obstack-standalone error-standalone)"
 	fi
 
-	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}"
+	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr"
 }
 
 src_test() {
-	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" check
+	emake CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr" check
 }
 
 src_install() {
-	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" install
+	emake DESTDIR="${D}" CFLAGS="${CFLAGS}" LIBS="${LIBS}" srcdir="${S}" prefix="${EPREFIX}/usr" install
 }

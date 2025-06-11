@@ -79,7 +79,7 @@ src_test() {
 	initdb "${postgres_dir}" || die
 
 	local port=11123
-	# -h '' → only socket connections allowed.
+	# -h '' --> only socket connections allowed.
 	postgres -D "${postgres_dir}" \
 			 -k "${postgres_dir}" \
 			 -p "${port}" &

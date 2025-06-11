@@ -1,0 +1,14 @@
+
+Found by Adrian Glaubitz (cbmuser)
+
+diff --git a/sysdeps/m68k/utmp-size.h b/sysdeps/m68k/utmp-size.h
+index 5946685819..8f21ebe1b6 100644
+--- a/sysdeps/m68k/utmp-size.h
++++ b/sysdeps/m68k/utmp-size.h
+@@ -1,3 +1,2 @@
+-/* m68k has 2-byte alignment.  */
+-#define UTMP_SIZE 382
++#define UTMP_SIZE 384
+ #define LASTLOG_SIZE 292
+
+

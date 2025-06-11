@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/rrthomas/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ppc sparc x86"
 fi
 
 LICENSE="GPL-3+"

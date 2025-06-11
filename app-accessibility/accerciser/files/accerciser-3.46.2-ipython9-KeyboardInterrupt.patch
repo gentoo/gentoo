@@ -1,0 +1,26 @@
+From eebe0199de8120c3383730a398a544d5d2839f7c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Tue, 25 Mar 2025 23:53:49 +0000
+Subject: [PATCH] ipython: Fix writing to output
+
+This fixes an exception when KeyboardInterrupt happens.
+---
+ plugins/ipython_view.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/ipython_view.py b/plugins/ipython_view.py
+index 3160b2c..acd676e 100755
+--- a/plugins/ipython_view.py
++++ b/plugins/ipython_view.py
+@@ -190,7 +190,7 @@ class IterableIPShell:
+     try:
+       line = self.IP.raw_input(self.prompt)
+     except KeyboardInterrupt:
+-      self.IP.write('\nKeyboardInterrupt\n')
++      self.write('\nKeyboardInterrupt\n')
+       if self.no_input_splitter:
+         self.lines = []
+       else:
+-- 
+GitLab
+

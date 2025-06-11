@@ -193,6 +193,9 @@ src_install() {
 		rm "${ED}"/${i} || die "Failed to prune apache-tools bits"
 	done
 
+	# Clean up empty directories created by the apache install system
+	rmdir "${ED}"/var/{run,www} || die
+
 	dobin support/apxs
 
 	# Note: wait for mod_systemd to be included in some forthcoming release,

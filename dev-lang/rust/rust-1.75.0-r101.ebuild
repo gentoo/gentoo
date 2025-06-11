@@ -4,7 +4,9 @@
 EAPI=8
 
 LLVM_COMPAT=( 17 )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
+
+RUST_PATCH_VER=${PVR}
 
 RUST_MAX_VER=${PV}
 RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
@@ -12,25 +14,37 @@ RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
 inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing multilib multilib-build \
 	optfeature python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
-if [[ ${PV} = *beta* ]]; then
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/rust-lang/rust.git"
+	EGIT_SUBMODULES=(
+		"*"
+		"-src/gcc"
+	)
+elif [[ ${PV} == *beta* ]]; then
+	# Identify the snapshot date of the beta release:
+	# curl -Ls static.rust-lang.org/dist/channel-rust-beta.toml | grep beta-src.tar.xz
 	betaver=${PV//*beta}
 	BETA_SNAPSHOT="${betaver:0:4}-${betaver:4:2}-${betaver:6:2}"
 	MY_P="rustc-beta"
-	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz"
+	SRC_URI="https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+		verify-sig? ( https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz.asc
+			-> rustc-${PV}-src.tar.xz.asc )
+	"
+	S="${WORKDIR}/${MY_P}-src"
 else
 	MY_P="rustc-${PV}"
-	SRC="${MY_P}-src.tar.xz"
+	SRC_URI="https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
+	"
+	S="${WORKDIR}/${MY_P}-src"
 	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
 
 DESCRIPTION="Language empowering everyone to build reliable and efficient software"
 HOMEPAGE="https://www.rust-lang.org/"
-
-SRC_URI="
-	https://static.rust-lang.org/dist/${SRC}
-	verify-sig? ( https://static.rust-lang.org/dist/${SRC}.asc )
-"
-S="${WORKDIR}/${MY_P}-src"
 
 # keep in sync with llvm ebuild of the same version as bundled one.
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARC ARM AVR BPF CSKY DirectX Hexagon Lanai
@@ -140,16 +154,6 @@ RESTRICT="test"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
-PATCHES=(
-	"${FILESDIR}"/1.75.0-musl-dynamic-linking.patch
-	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
-	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
-	"${FILESDIR}"/1.67.0-doc-wasm.patch
-	# This patch shouldn't be necessary for later versions of Rust because its
-	# code was backported from master.
-	"${FILESDIR}"/1.75.0-handle-vendored-sources.patch
-)
-
 clear_vendor_checksums() {
 	sed -i 's/\("files":{\)[^}]*/\1/' "vendor/${1}/.cargo-checksum.json" || die
 }
@@ -226,6 +230,24 @@ pkg_setup() {
 		export LLVM_LINK_SHARED=1
 		export RUSTFLAGS="${RUSTFLAGS} -Lnative=$("${llvm_config}" --libdir)"
 	fi
+}
+
+src_unpack() {
+	if use verify-sig ; then
+		# Patch tarballs are not signed (but we trust Gentoo infra)
+		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+		default
+	else
+		default
+	fi
+}
+
+src_prepare() {
+	PATCHES=(
+		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
+	)
+
+	default
 }
 
 src_configure() {
@@ -524,7 +546,7 @@ src_configure() {
 }
 
 src_compile() {
-	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -vvv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -v --config="${S}"/config.toml -j$(makeopts_jobs) || die
 }
 
 src_test() {
@@ -580,7 +602,7 @@ src_test() {
 }
 
 src_install() {
-	DESTDIR="${D}" "${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+	DESTDIR="${D}" "${EPYTHON}" ./x.py install -v --config="${S}"/config.toml -j$(makeopts_jobs) || die
 
 	# bug #689562, #689160
 	rm -v "${ED}/usr/lib/${PN}/${PV}/etc/bash_completion.d/cargo" || die

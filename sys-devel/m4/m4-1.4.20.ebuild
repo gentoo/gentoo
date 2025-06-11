@@ -4,7 +4,7 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/m4.asc
-inherit verify-sig
+inherit flag-o-matic verify-sig
 
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
@@ -57,6 +57,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# see https://bugs.gentoo.org/955947
+	append-flags -Wno-error=format-security
+
 	local -a myeconfargs=(
 		--enable-changeword
 

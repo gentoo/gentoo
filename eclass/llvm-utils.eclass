@@ -126,10 +126,9 @@ llvm_fix_tool_path() {
 llvm_prepend_path() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local prefix
-	case ${1--d} in
+	local prefix=${ESYSROOT}
+	case ${1} in
 		-d)
-			prefix=${ESYSROOT}
 			shift
 			;;
 		-b)

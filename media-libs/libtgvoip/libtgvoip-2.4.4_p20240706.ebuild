@@ -1,4 +1,4 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,10 @@ BDEPEND="virtual/pkgconfig"
 REQUIRED_USE="
 	|| ( alsa pulseaudio )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-missing-cstdint-for-gcc-15.patch"
+)
 
 src_prepare() {
 	# Will be controlled by us

@@ -47,6 +47,7 @@ net-nds/nsscache
 # Sam James <sam@gentoo.org> (2024-09-30)
 # Needs porting to musl (bug #940130)
 ~sys-auth/elogind-255.5
+~sys-auth/elogind-255.17
 
 # Sam James <sam@gentoo.org> (2024-08-31)
 # sys-devel/binutils[gprofng] is masked on musl

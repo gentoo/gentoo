@@ -6,6 +6,7 @@
 		<name>Tupone Alfredo</name>
 	</maintainer>
 	<use>
+		<flag name="cusparselt">Use the CUDA Sparse Matrix Multiplication</flag>
 		<flag name="distributed">Support distributed applications</flag>
 		<flag name="fbgemm">Use <pkg>sci-ml/FBGEMM</pkg></flag>
 		<flag name="flash">Enable flash attention</flag>

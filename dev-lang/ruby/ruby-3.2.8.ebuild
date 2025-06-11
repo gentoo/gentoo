@@ -19,7 +19,7 @@ SLOT=$(ver_cut 1-2)
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
@@ -176,6 +176,10 @@ src_configure() {
 		# set and socks library is present, so need to unset
 		# SOCKS_SERVER in that case.
 		unset SOCKS_SERVER
+
+		# The socks code has a function prototype without parameters,
+		# bug #945502
+		append-cflags -std=gnu17
 	fi
 
 	# Increase GC_MALLOC_LIMIT if set (default is 8000000)

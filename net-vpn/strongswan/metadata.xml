@@ -82,6 +82,7 @@
 		<flag name="strongswan_plugins_sha1">Enable plugin for SHA1 support</flag>
 		<flag name="strongswan_plugins_sha2">Enable plugin for SHA2 support</flag>
 		<flag name="strongswan_plugins_sha3">Enable plugin for SHA3 support</flag>
+		<flag name="strongswan_plugins_stroke">Deprecated stroke configuration/control backend, to use with ipsec script and starter</flag>
 		<flag name="strongswan_plugins_soup">Enable libsoup based HTTP fetcher</flag>
 		<flag name="strongswan_plugins_sshkey">Enable SSH key decoding routines</flag>
 		<flag name="strongswan_plugins_systime-fix">Enable support for the systime-fix plugin</flag>

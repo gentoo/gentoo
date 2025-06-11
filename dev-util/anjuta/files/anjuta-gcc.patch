@@ -1,0 +1,12 @@
+--- anjuta-3.34.0.bak/libanjuta/anjuta-dock.c
++++ anjuta-3.34.0/libanjuta/anjuta-dock.c
+@@ -39,8 +39,8 @@
+ {
+ 	GHashTable *panes;
+ 	GHashTable *dock_items;
+-	GtkWidget *command_bar;
+ 
++	AnjutaCommandBar* command_bar;
+ 	AnjutaDockPane* command_pane;
+ };
+ 

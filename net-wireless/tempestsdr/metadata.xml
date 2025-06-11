@@ -5,6 +5,6 @@
 		<email>zerochaos@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">deltj/TempestSDR.git</remote-id>
+		<remote-id type="github">deltj/TempestSDR</remote-id>
 	</upstream>
 </pkgmetadata>

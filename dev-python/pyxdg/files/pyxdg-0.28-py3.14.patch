@@ -1,0 +1,89 @@
+https://gitlab.freedesktop.org/xdg/pyxdg/-/merge_requests/17
+
+From 9291d419017263c922869d79ac1fe8d423e5f929 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 31 May 2025 18:52:45 +0100
+Subject: [PATCH 1/2] Menu: handle Python 3.14 ast.Str changes
+
+ast.Str is gone and replaced by ast.Constant.
+---
+ xdg/Menu.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/xdg/Menu.py b/xdg/Menu.py
+index 1dd2af5..71f5e61 100644
+--- a/xdg/Menu.py
++++ b/xdg/Menu.py
+@@ -411,7 +411,7 @@ class Rule:
+     def fromFilename(cls, type, filename):
+         tree = ast.Expression(
+             body=ast.Compare(
+-                left=ast.Str(filename),
++                left=ast.Constant(filename),
+                 ops=[ast.Eq()],
+                 comparators=[ast.Attribute(
+                     value=ast.Name(id='menuentry', ctx=ast.Load()),
+@@ -799,7 +799,7 @@ class XMLMenuBuilder(object):
+         elif tag == 'Category':
+             category = node.text
+             return ast.Compare(
+-                left=ast.Str(category),
++                left=ast.Constant(category),
+                 ops=[ast.In()],
+                 comparators=[ast.Attribute(
+                     value=ast.Name(id='menuentry', ctx=ast.Load()),
+@@ -810,7 +810,7 @@ class XMLMenuBuilder(object):
+         elif tag == 'Filename':
+             filename = node.text
+             return ast.Compare(
+-                left=ast.Str(filename),
++                left=ast.Constant(filename),
+                 ops=[ast.Eq()],
+                 comparators=[ast.Attribute(
+                     value=ast.Name(id='menuentry', ctx=ast.Load()),
+-- 
+GitLab
+
+
+From 63033ac306aa26d32e1439417e59ae8f8a4c9820 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 31 May 2025 18:54:51 +0100
+Subject: [PATCH 2/2] Menu: handle Python 3.15 deprecations
+
+* Unknown keyword args will be fatal, so drop lineno/col_offset that
+  is unused
+* Set body= immediately as a keyword
+---
+ xdg/Menu.py | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/xdg/Menu.py b/xdg/Menu.py
+index 71f5e61..8e1595c 100644
+--- a/xdg/Menu.py
++++ b/xdg/Menu.py
+@@ -419,7 +419,6 @@ class Rule:
+                     ctx=ast.Load()
+                 )]
+             ),
+-            lineno=1, col_offset=0
+         )
+         ast.fix_missing_locations(tree)
+         rule = Rule(type, tree)
+@@ -763,12 +762,10 @@ class XMLMenuBuilder(object):
+ 
+     def parse_rule(self, node):
+         type = Rule.TYPE_INCLUDE if node.tag == 'Include' else Rule.TYPE_EXCLUDE
+-        tree = ast.Expression(lineno=1, col_offset=0)
++        tree = ast.Expression(body=_ast_const('False'))
+         expr = self.parse_bool_op(node, ast.Or())
+         if expr:
+             tree.body = expr
+-        else:
+-            tree.body = _ast_const('False')
+         ast.fix_missing_locations(tree)
+         return Rule(type, tree)
+ 
+-- 
+GitLab
+
+

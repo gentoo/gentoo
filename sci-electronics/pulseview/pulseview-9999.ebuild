@@ -3,21 +3,31 @@
 
 EAPI=8
 
-inherit cmake xdg-utils
+inherit cmake xdg
 
-if [[ ${PV} == *9999* ]]; then
+case ${PV} in
+*9999*)
 	EGIT_REPO_URI="https://github.com/sigrokproject/${PN}.git"
 	inherit git-r3
-else
+	;;
+*_p*)
+	COMMIT="e2fe9dfb91c7de85c410922ee9268c3f526bcc54"
+	SRC_URI="https://github.com/sigrokproject/${PN}/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT:0:7}.tar.gz"
+	S="${WORKDIR}"/${PN}-${COMMIT}
+	;;
+*)
 	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+	;;
+esac
 
 DESCRIPTION="Qt based logic analyzer GUI for sigrok"
 HOMEPAGE="https://sigrok.org/wiki/PulseView"
 
 LICENSE="GPL-3"
 SLOT="0"
+if [[ ${PV} != *9999* ]]; then
+	KEYWORDS="~amd64 ~x86"
+fi
 IUSE="+decode static"
 
 RDEPEND="
@@ -52,14 +62,4 @@ src_configure() {
 		-DSTATIC_PKGDEPS_LIBS=$(usex static)
 	)
 	cmake_src_configure
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
-	xdg_desktop_database_update
 }

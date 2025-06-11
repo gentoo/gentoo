@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-single-r1
 
@@ -18,6 +18,7 @@ IUSE="ipsec +openpgp +ssh"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# m2crypto: https://github.com/letoams/hash-slinger/issues/49
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '

@@ -36,6 +36,10 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/pyopengl-accelerate-3.1.9-cpython3.1.0.patch
+)
+
 src_configure() {
 	if ! use numpy; then
 		cat > "${T}"/numpy.py <<-EOF || die

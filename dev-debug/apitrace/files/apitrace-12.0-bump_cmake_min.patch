@@ -1,0 +1,24 @@
+bump cmake_min_required for cmake-4 compatibility
+https://github.com/apitrace/apitrace/commit/fd643354337000c4d1b4497e1ac2fec381202d40
+From fd643354337000c4d1b4497e1ac2fec381202d40 Mon Sep 17 00:00:00 2001
+From: Jose Fonseca <jose.fonseca@broadcom.com>
+Date: Thu, 6 Mar 2025 16:13:30 +0000
+Subject: [PATCH] Bump cmake_minimum_required.
+
+---
+ thirdparty/libbacktrace.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/thirdparty/libbacktrace.cmake b/thirdparty/libbacktrace.cmake
+index c3d81d975..0e7b4ce51 100644
+--- a/thirdparty/libbacktrace.cmake
++++ b/thirdparty/libbacktrace.cmake
+@@ -29,7 +29,7 @@
+ # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ # POSSIBILITY OF SUCH DAMAGE.  */
+ 
+-cmake_minimum_required (VERSION 3.1)
++cmake_minimum_required (VERSION 3.5)
+ 
+ project (libbacktrace)
+ 

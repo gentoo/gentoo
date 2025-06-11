@@ -19,14 +19,15 @@ HOMEPAGE="https://github.com/xournalpp/xournalpp"
 
 LICENSE="GPL-2"
 SLOT="0"
-
+IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	${LUA_DEPS}
 	app-text/poppler[cairo]
 	>=dev-libs/glib-2.32.0
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	>=dev-libs/libzip-1.0.1:=
 	>=gnome-base/librsvg-2.40
 	>=media-libs/portaudio-12[cxx]
@@ -40,6 +41,7 @@ DEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	sys-apps/lsb-release
+	test? ( dev-cpp/gtest )
 "
 
 PATCHES=(
@@ -51,7 +53,14 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=(
 		-DLUA_VERSION="$(lua_get_version)"
+		-DENABLE_GTEST=$(usex test)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	# https://github.com/xournalpp/xournalpp/tree/master/test#problems-running-make-test
+	eninja -C "${BUILD_DIR}" test-units
+	cmake_src_test
 }

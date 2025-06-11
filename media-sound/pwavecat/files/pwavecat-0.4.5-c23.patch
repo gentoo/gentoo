@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/945244
+--- a/parts.c
++++ b/parts.c
+@@ -38,7 +38,6 @@ return 0; /* not found */
+ struct part *install_part_at_end_of_list(char *name)
+ {
+ struct part *plast, *pnew;
+-struct part *lookup_part();
+ 
+ if(debug_flag) fprintf(stderr, "install_part(): arg name=%s\n", name);
+ 

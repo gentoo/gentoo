@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jceb/dex/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # https://github.com/jceb/dex/issues/37

@@ -81,6 +81,15 @@ test_prepend_path() {
 	tend ${?}
 }
 
+TMPDIR=$(mktemp -d)
+trap 'rm -r "${TMPDIR}"' EXIT
+
+for x in clang-19 clang-17 clang++-17 x86_64-pc-linux-gnu-clang-17; do
+	> "${TMPDIR}/${x}" || die
+done
+chmod +x "${TMPDIR}"/* || die
+export PATH=${TMPDIR}:${PATH}
+
 test_fix_clang_version CC clang 19.0.0git78b4e7c5 clang-19
 test_fix_clang_version CC clang 17.0.6 clang-17
 test_fix_clang_version CXX clang++ 17.0.6 clang++-17
@@ -95,6 +104,8 @@ test_fix_tool_path AR ar 1
 test_fix_tool_path AR ar 0
 
 ESYSROOT=
+einfo "Testing with ESYSROOT=${ESYSROOT}"
+eindent
 test_prepend_path 17 /usr/bin /usr/bin:/usr/lib/llvm/17/bin
 test_prepend_path 17 /usr/lib/llvm/17/bin:/usr/bin /usr/lib/llvm/17/bin:/usr/bin
 test_prepend_path 17 /usr/bin:/usr/lib/llvm/17/bin /usr/bin:/usr/lib/llvm/17/bin
@@ -114,5 +125,24 @@ test_prepend_path 18 /usr/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin \
 	/usr/bin:/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/lib/llvm/16/bin
 test_prepend_path 18 /usr/lib/llvm/17/bin:/usr/bin:/usr/lib/llvm/16/bin \
 	/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/bin:/usr/lib/llvm/16/bin
+eoutdent
+
+ESYSROOT=/foo
+einfo "Testing with ESYSROOT=${ESYSROOT}"
+eindent
+test_prepend_path 17 /usr/bin /usr/bin:/foo/usr/lib/llvm/17/bin
+test_prepend_path 17 /usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/17/bin:/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 17 /usr/bin:/usr/lib/llvm/17/bin: \
+	/usr/bin:/foo/usr/lib/llvm/17/bin:/usr/lib/llvm/17/bin
+test_prepend_path 17 /foo/usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 17 /usr/bin:/foo/usr/lib/llvm/17/bin: \
+	/usr/bin:/foo/usr/lib/llvm/17/bin
+test_prepend_path 18 /usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/18/bin:/usr/lib/llvm/17/bin:/usr/bin
+test_prepend_path 18 /foo/usr/lib/llvm/17/bin:/usr/bin \
+	/foo/usr/lib/llvm/18/bin:/foo/usr/lib/llvm/17/bin:/usr/bin
+eoutdent
 
 texit

@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+
+command="/usr/bin/fluidsynth"
+command_args="-is ${FLUIDSYNTH_OPTS} ${SOUND_FONT}"
+command_background=true
+pidfile="/run/fluidsynth.pid"
+
+depend() {
+	need alsasound
+}
+
+start_pre() {
+	if [ -z "${SOUND_FONT}" ] ; then
+		eerror "Please specify a SoundFont in /etc/conf.d/fluidsynth"
+		return 1
+	fi
+}

@@ -1,0 +1,71 @@
+Only needed with USE=-kernel-open to avoid GPL-only __vma_start_write,
+not really runtime-tested but at least code does nothing for stable users
+with <6.15..
+
+https://github.com/NVIDIA/open-gpu-kernel-modules/issues/840#issuecomment-2906864735
+https://github.com/CachyOS/kernel-patches/commit/914aea4298e3
+--- a/kernel/nvidia/nv-mmap.c
++++ b/kernel/nvidia/nv-mmap.c
+@@ -24,8 +24,15 @@
+ #define  __NO_VERSION__
+ 
++#include <linux/version.h>
++
+ #include "os-interface.h"
+ #include "nv-linux.h"
+ #include "nv_speculation_barrier.h"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++#define nv_vm_flags_set(v, f) vm_flags_reset((v), (v)->vm_flags | (f))
++#define nv_vm_flags_clear(v, f) vm_flags_reset((v), (v)->vm_flags & ~(f))
++#endif
++
+ /*
+  * The 'struct vm_operations' open() callback is called by the Linux
+--- a/kernel/nvidia-drm/nvidia-drm-gem-user-memory.c
++++ b/kernel/nvidia-drm/nvidia-drm-gem-user-memory.c
+@@ -45,4 +45,11 @@
+ #endif
+ 
++#include <linux/version.h>
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++#define nv_vm_flags_set(v, f) vm_flags_reset((v), (v)->vm_flags | (f))
++#define nv_vm_flags_clear(v, f) vm_flags_reset((v), (v)->vm_flags & ~(f))
++#endif
++
+ static inline
+ void __nv_drm_gem_user_memory_free(struct nv_drm_gem_object *nv_gem)
+--- a/kernel/nvidia-drm/nvidia-drm-gem.c
++++ b/kernel/nvidia-drm/nvidia-drm-gem.c
+@@ -52,4 +52,11 @@
+ #include "nv-mm.h"
+ 
++#include <linux/version.h>
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++#define nv_vm_flags_set(v, f) vm_flags_reset((v), (v)->vm_flags | (f))
++#define nv_vm_flags_clear(v, f) vm_flags_reset((v), (v)->vm_flags & ~(f))
++#endif
++
+ void nv_drm_gem_free(struct drm_gem_object *gem)
+ {
+--- a/kernel/nvidia-uvm/uvm.c
++++ b/kernel/nvidia-uvm/uvm.c
+@@ -22,4 +22,6 @@
+ *******************************************************************************/
+ 
++#include <linux/version.h>
++
+ #include "uvm_api.h"
+ #include "uvm_global.h"
+@@ -41,4 +43,9 @@
+ #define NVIDIA_UVM_DEVICE_NAME          "nvidia-uvm"
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
++#define nv_vm_flags_set(v, f) vm_flags_reset((v), (v)->vm_flags | (f))
++#define nv_vm_flags_clear(v, f) vm_flags_reset((v), (v)->vm_flags & ~(f))
++#endif
++
+ static dev_t g_uvm_base_dev;
+ static struct cdev g_uvm_cdev;

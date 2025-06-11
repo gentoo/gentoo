@@ -3,12 +3,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit desktop edo python-single-r1 xdg
+inherit desktop edo python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="Fast and easy graphics application for digital painters"
-HOMEPAGE="http://mypaint.app/"
+HOMEPAGE="https://www.mypaint.app/en/"
 SRC_URI="https://github.com/mypaint/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
@@ -57,6 +57,15 @@ PATCHES=(
 	"${FILESDIR}"/${P}-setuptools.patch
 	"${FILESDIR}"/${PN}-2.0.1-python3.11.patch
 )
+
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+pkg_setup() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+	python-single-r1_pkg_setup
+}
 
 src_compile() {
 	# --disable-openmp can't be passed to setup.py build,

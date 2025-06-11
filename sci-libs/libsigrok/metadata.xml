@@ -12,6 +12,7 @@
 </longdescription>
 <use>
  <flag name="ftdi">Enable drivers that need <pkg>dev-embedded/libftdi</pkg></flag>
+ <flag name="gpib">Enable drivers that need <pkg>sci-libs/linux-gpib</pkg></flag>
  <flag name="hidapi">Enable drivers that need <pkg>dev-libs/hidapi</pkg></flag>
  <flag name="nettle">Enable drivers that need <pkg>dev-libs/nettle</pkg></flag>
  <flag name="parport">Enable drivers that are parallel (IEEE1284) based</flag>

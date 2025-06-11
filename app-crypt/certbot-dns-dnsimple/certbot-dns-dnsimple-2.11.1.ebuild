@@ -25,7 +25,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 fi
 
-DESCRIPTION="DNSimple Authenticator plugin for Certbot (Let’s Encrypt Client)"
+DESCRIPTION="DNSimple Authenticator plugin for Certbot (Let's Encrypt Client)"
 HOMEPAGE="
 	https://github.com/certbot/certbot
 	https://pypi.org/project/certbot-dns-dnsimple/

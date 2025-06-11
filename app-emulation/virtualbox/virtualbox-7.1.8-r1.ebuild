@@ -15,7 +15,7 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
@@ -25,7 +25,7 @@ MY_P=${MY_PN}-${PV}
 HELP_PV=${PV}
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
-HOMEPAGE="https://www.virtualbox.org/"
+HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
 SRC_URI="
 	https://download.virtualbox.org/virtualbox/${PV%*a}/${MY_P}.tar.bz2
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-7.1.4-r1.tar.bz2
@@ -35,7 +35,7 @@ S="${WORKDIR}/${MY_PN}-${PV%*a}"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde +vmmraw vnc"
 RESTRICT="!test? ( test )"
 

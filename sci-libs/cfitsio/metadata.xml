@@ -24,4 +24,7 @@
   features for manipulating and filtering the information in FITS
   files.
   </longdescription>
+  <upstream>
+    <remote-id type="github">HEASARC/cfitsio</remote-id>
+  </upstream>
 </pkgmetadata>

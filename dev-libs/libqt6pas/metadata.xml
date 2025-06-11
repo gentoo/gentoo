@@ -6,7 +6,7 @@
         <name>Amy Liffey</name>
     </maintainer>
     <upstream>
-        <remote-id type="gitlab">freepascal.org/lazarus</remote-id>
+        <remote-id type="gitlab">freepascal.org/lazarus/lazarus</remote-id>
         <remote-id type="sourceforge">lazarus</remote-id>
     </upstream>
 </pkgmetadata>

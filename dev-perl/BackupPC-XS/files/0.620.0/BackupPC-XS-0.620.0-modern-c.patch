@@ -1,0 +1,163 @@
+From f97f6668da9c8c5fd39232ab17ae432f9246197e Mon Sep 17 00:00:00 2001
+From: Dennis Eisele <kernlpanic@dennis-eisele.de>
+Date: Thu, 17 Apr 2025 12:39:02 +0200
+Subject: [PATCH] fix implicit int and implicit declarations
+
+This patch adapts a patch originally written by Florian Weimer
+<fweimer@redhat.com> to fix implicit int and function declarations.
+
+Gentoo-Bug-URL: https://bugs.gentoo.org/906537
+
+Signed-off-by: Dennis Eisele <kernlpanic@dennis-eisele.de>
+---
+ configure.sh | 33 ++++++++++++++++++++++++---------
+ 1 file changed, 24 insertions(+), 9 deletions(-)
+
+diff --git a/configure.sh b/configure.sh
+index a1ae153..8aa74c0 100755
+--- a/configure.sh
++++ b/configure.sh
+@@ -4244,6 +4244,8 @@ else
+ 
+ #define _FILE_OFFSET_BITS 64
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include <fcntl.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+@@ -5382,6 +5384,7 @@ if ${ac_cv_header_sys_types_h_makedev+:} false; then :
+ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ int
+ main ()
+@@ -5438,7 +5441,9 @@ else
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
++#include <stdlib.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #ifdef MAJOR_IN_MKDEV
+ #include <sys/mkdev.h>
+ # if !defined makedev && (defined mkdev || defined _WIN32 || defined __WIN32__)
+@@ -7573,7 +7578,7 @@ else
+ #endif
+ #include <stdlib.h>
+ #include <errno.h>
+-    main() {
++    int main() {
+ 	char const *dangling_symlink = "conftest.dangle";
+ 	unlink(dangling_symlink);
+ 	if (symlink("conftest.no-such", dangling_symlink) < 0) abort();
+@@ -7617,7 +7622,7 @@ else
+ #include <stdlib.h>
+ #include <errno.h>
+ #define FILENAME "conftest.dangle"
+-    main() {
++    int main(void) {
+ 	unlink(FILENAME);
+ 	if (symlink("conftest.no-such", FILENAME) < 0) abort();
+ 	if (link(FILENAME, FILENAME "2") < 0) exit(1);
+@@ -7659,8 +7664,9 @@ else
+ #endif
+ #include <stdlib.h>
+ #include <errno.h>
++#include <sys/stat.h>
+ #define FILENAME "conftest.fifi"
+-    main() {
++    int main() {
+ 	unlink(FILENAME);
+ 	if (mkfifo(FILENAME, 0777) < 0) abort();
+ 	if (link(FILENAME, FILENAME "2") < 0) exit(1);
+@@ -7699,8 +7705,9 @@ else
+ 
+ #include <sys/types.h>
+ #include <sys/socket.h>
++#include <stdlib.h>
+ 
+-main() {
++int main(void) {
+        int fd[2];
+ #ifdef __CYGWIN__
+        exit(1);
+@@ -7850,7 +7857,8 @@ else
+ /* end confdefs.h.  */
+ #include <sys/types.h>
+ #include <dirent.h>
+-main() { struct dirent *di; DIR *d = opendir("."); di = readdir(d);
++#include <stdlib.h>
++int main(void) { struct dirent *di; DIR *d = opendir("."); di = readdir(d);
+ if (di && di->d_name[-2] == '.' && di->d_name[-1] == 0 &&
+ di->d_name[0] == 0) exit(0); exit(1);}
+ _ACEOF
+@@ -7882,6 +7890,7 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <sys/types.h>
+ #include <utime.h>
++#include <stdlib.h>
+ int
+ main ()
+ {
+@@ -7915,6 +7924,7 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <sys/time.h>
+ #include <unistd.h>
++#include <stdlib.h>
+ int
+ main ()
+ {
+@@ -7952,6 +7962,9 @@ else
+ 
+ #include <sys/types.h>
+ #include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ void foo(const char *format, ...) {
+        va_list ap;
+        int len;
+@@ -7966,7 +7979,7 @@ void foo(const char *format, ...) {
+ 
+        exit(0);
+ }
+-main() { foo("hello"); }
++int main(void) { foo("hello"); }
+ 
+ _ACEOF
+ if ac_fn_c_try_run "$LINENO"; then :
+@@ -8003,7 +8016,7 @@ else
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
+-main() {
++int main(void) {
+   struct stat st;
+   char tpl[20]="/tmp/test.XXXXXX";
+   int fd = mkstemp(tpl);
+@@ -8056,7 +8069,8 @@ else
+ #include <stdio.h>
+ #include <sys/stat.h>
+ #include <errno.h>
+-main() { int rc, ec; char *fn = "fifo-test";
++#include <unistd.h>
++int main(void) { int rc, ec; char *fn = "fifo-test";
+ unlink(fn); rc = mknod(fn,S_IFIFO,0600); ec = errno; unlink(fn);
+ if (rc) {printf("(%d %d) ",rc,ec); return ec;}
+ return 0;}
+@@ -8094,7 +8108,8 @@ else
+ #include <stdio.h>
+ #include <sys/stat.h>
+ #include <errno.h>
+-main() { int rc, ec; char *fn = "sock-test";
++#include <unistd.h>
++int main(void) { int rc, ec; char *fn = "sock-test";
+ unlink(fn); rc = mknod(fn,S_IFSOCK,0600); ec = errno; unlink(fn);
+ if (rc) {printf("(%d %d) ",rc,ec); return ec;}
+ return 0;}
+-- 
+2.49.0
+

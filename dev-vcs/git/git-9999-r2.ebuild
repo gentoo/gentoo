@@ -6,7 +6,7 @@ EAPI=8
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd meson
 
@@ -149,12 +149,11 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
-	"${FILESDIR}"/${PN}-2.49.0-meson-use-test_environment-conditionally.patch
 
 	# This patch isn't merged upstream but is kept in the ebuild by
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
-	"${FILESDIR}"/${PN}-2.49.0-diff-implement-config.diff.renames-copies-harder.patch
+	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
 )
 
 pkg_setup() {
@@ -269,12 +268,15 @@ src_configure() {
 	meson_src_configure
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			emesonargs=()
-			meson_src_configure
-		)
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				emesonargs=()
+				meson_src_configure
+			)
+		done
 	fi
 }
 
@@ -313,14 +315,14 @@ src_compile() {
 	fi
 
 	if use tk ; then
-		git_emake -C git-gui
-
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_compile
-		)
-
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_compile
+			)
+		done
 	fi
 
 	if use doc ; then
@@ -460,13 +462,14 @@ src_install() {
 	fi
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_install
-		)
-
-		git_emake -C git-gui DESTDIR="${D}" install
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_install
+			)
+		done
 	fi
 
 	perl_delete_localpod

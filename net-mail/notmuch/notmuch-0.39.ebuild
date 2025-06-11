@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit bash-completion-r1 desktop distutils-r1 elisp-common flag-o-matic pax-utils toolchain-funcs xdg-utils
 
@@ -95,6 +95,7 @@ SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.39-no-compress-man-pages.patch
+	"${FILESDIR}"/${PN}-0.39-test-skip-debug-symbols.patch
 )
 
 pkg_setup() {

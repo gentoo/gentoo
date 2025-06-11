@@ -1,0 +1,18 @@
+Avoid the following test failure within network-sandbox:
+    tests/cksuite-all-netns.c:335:F:Core:route_1:0: command(system("ip -d link set v1 up")) has unexpected positive return code 512
+--- a/tests/nl-test-util.c
++++ b/tests/nl-test-util.c
+@@ -780,12 +780,7 @@ bool _nltst_in_ci(void)
+ 
+ bool _nltst_has_iproute2(void)
+ {
+-	static int has = -1;
+-
+-	if (has == -1)
+-		has = (system("ip link &>/dev/null") == 0);
+-
+-	return has;
++	return false;
+ }
+ 
+ bool _nltst_skip_no_iproute2(const char *msg)

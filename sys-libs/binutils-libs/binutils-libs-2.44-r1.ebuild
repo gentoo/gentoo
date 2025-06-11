@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit dot-a flag-o-matic libtool toolchain-funcs multilib-minimal
+inherit dot-a libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="Core binutils libraries (libbfd, libopcodes, libiberty) for external packages"
 HOMEPAGE="https://sourceware.org/binutils/"
@@ -131,8 +131,6 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	filter-lto
-
 	local myconf=(
 		# portage's econf() does not detect presence of --d-d-t
 		# because it greps only top-level ./configure. But not
@@ -229,5 +227,6 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	use static-libs || find "${ED}"/usr -name '*.la' -delete
-	strip-lto-bytecode
+	# Explicit "${ED}" as we need it to do things even w/ USE=-static-libs
+	strip-lto-bytecode "${ED}"
 }

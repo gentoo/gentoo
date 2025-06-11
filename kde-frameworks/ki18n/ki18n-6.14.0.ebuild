@@ -34,6 +34,8 @@ CMAKE_SKIP_TESTS=(
 	# requires LANG fr_CH. bugs 823816
 	kcountrytest
 	kcountrysubdivisiontest
+	# flaky, bug 948895
+	ki18n-klocalizedstringtest
 )
 
 src_configure() {

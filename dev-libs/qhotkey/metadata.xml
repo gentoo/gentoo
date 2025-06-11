@@ -12,7 +12,4 @@
 	<upstream>
 		<remote-id type="github">Skycoder42/QHotkey</remote-id>
 	</upstream>
-	<use>
-		<flag name="qt6">Use Qt6 dependencies</flag>
-	</use>
 </pkgmetadata>

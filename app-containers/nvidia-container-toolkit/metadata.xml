@@ -14,7 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">NVIDIA/container-toolkit</remote-id>
+		<remote-id type="github">NVIDIA/nvidia-container-toolkit</remote-id>
 	</upstream>
 	<longdescription lang="en">
 		NVIDIA container runtime toolkit, build and run containers leveraging

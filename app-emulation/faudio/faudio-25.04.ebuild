@@ -35,7 +35,7 @@ src_configure() {
 	cmake-multilib_src_configure
 }
 
-src_test() {
+multilib_src_test() {
 	einfo "Running faudio_tests, this may take some time without output..."
 	SDL_AUDIODRIVER=dummy "${BUILD_DIR}"/faudio_tests || die
 }

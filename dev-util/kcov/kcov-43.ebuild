@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit cmake edo python-any-r1
 
@@ -15,7 +15,7 @@ if [[ "${PV}" = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/SimonKagstrom/kcov.git"
 else
 	SRC_URI="https://github.com/SimonKagstrom/kcov/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 LICENSE="GPL-2 MIT"
@@ -56,6 +56,13 @@ pkg_setup() {
 
 src_prepare() {
 	if use test; then
+		find tests \( -name "*.cc" -or -name "*.py" -or -name "*.sh" \) \
+			-exec sed -Ei "s%/tmp([^-])%${T}\1%g" {} + \
+			|| die "Cannot fixing the temporary directory"
+
+		sed -i "s/[a-z].*test_system_mode.*/pass/" tests/tools/libkcov/main.py \
+			|| die "Cannot remove full system instrumentation tests"
+
 		sed -Ei "/skip_python2/ s/= .+/= True/" tests/tools/test_python.py \
 			|| die "Cannot disable Python 2 tests"
 
@@ -74,7 +81,12 @@ src_configure() {
 }
 
 src_test() {
-	PYTHONPATH="${S}/tests/tools" edo "${PYTHON}" -m libkcov \
+	PYTHONPATH="${S}/tests/tools" \
+		KCOV_SYSTEM_PIPE="${T}/kcov-system.pipe" \
+		KCOV_SYSTEM_DESTINATION_DIR="${T}/kcov-data" \
+		TMPDIR="${T}" \
+		edo \
+		"${PYTHON}" -m libkcov \
 		-v \
 		"${BUILD_DIR}/src/kcov" \
 		"${T}" \

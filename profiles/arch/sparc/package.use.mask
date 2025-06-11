@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# NRK <nrk@disroot.org> (2025-05-18)
+# app-arch/plzip is not keyworded
+app-alternatives/lzip plzip
+
+# Alfred Wingate (2025-05-13)
+# Need dev-libs/libdispatch which is not keyworded here
+gnustep-base/gnustep-base libdispatch
+
 # Eray Aslan <eras@gentoo.org> (2025-05-08)
 # dev-db/tinycdb is not keyworded here
 net-mail/dovecot cdb
@@ -457,7 +465,7 @@ dev-python/pyopengl test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # test dependencies for USE=gstreamer not keyworded on sparc
-app-misc/tracker-miners test
+app-misc/localsearch test
 
 # Rolf Eike Beer <eike@sf-mail.de> (2020-04-20)
 # dependencies not yet keyworded

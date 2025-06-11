@@ -1,0 +1,41 @@
+From bd88d363bc9aa985131a9c2bb06ab37497e33173 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 25 May 2025 18:53:56 +0200
+Subject: [PATCH] Fix `rebuild()` to handle changing `sys.modules` gracefully
+
+Copy keys from `sys.modules` before starting to iterate over it
+in the `rebuild()` function, and handle missing modules gracefully,
+in order to fix possible "directionary changed size during iteration"
+errors.  In particular, this can happen when iterating over the `py`
+module.
+
+Fixes #12458
+---
+ src/twisted/newsfragments/12458.bugfix | 1 +
+ src/twisted/python/rebuild.py          | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 src/twisted/newsfragments/12458.bugfix
+
+diff --git a/src/twisted/newsfragments/12458.bugfix b/src/twisted/newsfragments/12458.bugfix
+new file mode 100644
+index 00000000000..df61eb384af
+--- /dev/null
++++ b/src/twisted/newsfragments/12458.bugfix
+@@ -0,0 +1 @@
++twisted.python.rebuild.rebuild() now handles changes to ``sys.modules`` gracefully. Prior to the change, it could possibly raise a "dictionary changed size during iteration" error if the module list changed.
+diff --git a/src/twisted/python/rebuild.py b/src/twisted/python/rebuild.py
+index e82beec1b6a..4ab7e0533d0 100644
+--- a/src/twisted/python/rebuild.py
++++ b/src/twisted/python/rebuild.py
+@@ -210,7 +210,10 @@ def rebuild(module, doLog=1):
+         log.msg("")
+         log.msg(f"  (fixing   {str(module.__name__)}): ")
+     modcount = 0
+-    for mk, mod in sys.modules.items():
++    # note: sys.modules can change throughout iteration
++    # https://github.com/twisted/twisted/issues/12458
++    for mk in list(sys.modules):
++        mod = sys.modules.get(mk)
+         modcount = modcount + 1
+         if mod == module or mod is None:
+             continue

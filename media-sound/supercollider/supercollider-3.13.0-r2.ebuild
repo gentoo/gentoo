@@ -107,17 +107,17 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_test() {
+	export QT_QPA_PLATFORM=offscreen
+	cmake_src_test
+}
+
 src_install() {
 	cmake_src_install
 
 	use emacs && newdoc editors/sc-el/README.md README.emacs
 	use gedit && newdoc editors/sced/README.md README.gedit
 	use vim && newdoc editors/scvim/README.md README.vim
-}
-
-src_test() {
-	export QT_QPA_PLATFORM=offscreen
-	cmake_src_test
 }
 
 pkg_preinst() {

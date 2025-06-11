@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}
 	dev-debug/gdb
 "
 
-# SASM repository contains precompiled binaries ¯\_(ツ)_/¯
+# SASM repository contains precompiled binaries
 QA_PREBUILT="usr/bin/fasm usr/bin/listing"
 
 src_prepare() {

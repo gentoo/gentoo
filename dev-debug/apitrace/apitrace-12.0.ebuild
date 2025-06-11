@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake-multilib multilib optfeature python-single-r1
 
 DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
@@ -39,13 +39,15 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.0-disable-multiarch.patch
-	"${FILESDIR}"/${PN}-9.0-pkgconfig-waffle.patch
 	"${FILESDIR}"/${PN}-12.0-find_snappy.patch
-	"${FILESDIR}"/${PN}-12.0-no_qtnetwork.patch
 	"${FILESDIR}"/${PN}-12.0-tests.patch
 	"${FILESDIR}"/${PN}-12.0-unbundle.patch
+
 	# merged, to be removed for the next version
+	"${FILESDIR}"/${PN}-9.0-pkgconfig-waffle.patch
 	"${FILESDIR}"/${PN}-12.0-include-stdint.patch
+	"${FILESDIR}"/${PN}-12.0-no_qtnetwork.patch
+	"${FILESDIR}"/${PN}-12.0-bump_cmake_min.patch
 )
 
 src_prepare() {

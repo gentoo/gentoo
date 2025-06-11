@@ -76,7 +76,7 @@ multilib_src_configure() {
 	append-cflags $(test-flags-CC -std=gnu17)
 
 	# bug #885323
-	# src/headers/daemon.h:175:25: error: type of ‘cinfo’ does not match original declaration [-Werror=lto-type-mismatch]
+	# src/headers/daemon.h:175:25: error: type of 'cinfo' does not match original declaration [-Werror=lto-type-mismatch]
 	filter-lto
 
 	# emacs support disabled due to bug #99533, bug #335900

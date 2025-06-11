@@ -16,11 +16,6 @@
 			<email>fatbob.snack@gmail.com</email>
 			<name>Martin Johansson</name>
 		</maintainer>
-		<bugs-to>https://code.google.com/p/umurmur/issues/list</bugs-to>
-		<changelog>
-			https://code.google.com/p/umurmur/wiki/Changelog</changelog>
-		<doc lang="en">https://code.google.com/p/umurmur/w/list</doc>
-		<remote-id type="google-code">umurmur</remote-id>
 		<remote-id type="github">umurmur/umurmur</remote-id>
 	</upstream>
 </pkgmetadata>

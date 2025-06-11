@@ -1,0 +1,17 @@
+From e6af0c7e5d63680716ab350467207c938054a0df Mon Sep 17 00:00:00 2001
+From: sergm <sergm@bigmir.net>
+Date: Sat, 30 Sep 2023 14:11:26 +0200
+Subject: [PATCH] Updated CMake scripts for compatibility with CMake 3.27+
+
+---
+ mt32emu/CMakeLists.txt                           | 2 +-
+
+index 0443ee7a..93838a81 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 2.8.12...3.27)
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 

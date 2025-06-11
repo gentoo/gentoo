@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYPI_PN=GitPython
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -39,9 +39,6 @@ BDEPEND="
 	test? (
 		>=dev-python/ddt-1.1.1[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '
-			dev-python/typing-extensions[${PYTHON_USEDEP}]
-		' 3.10)
 	)
 "
 

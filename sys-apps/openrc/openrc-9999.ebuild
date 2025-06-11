@@ -57,7 +57,6 @@ src_configure() {
 		$(meson_feature audit)
 		"-Dbranding=\"Gentoo Linux\""
 		$(meson_use newnet)
-		-Dos=Linux
 		$(meson_use pam)
 		-Dpam_libdir="$(getpam_mod_dir)"
 		$(meson_feature selinux)

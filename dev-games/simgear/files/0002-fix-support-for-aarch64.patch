@@ -1,0 +1,25 @@
+From 560be7700e03b20e5f252fed371ac14a0e7a7c17 Mon Sep 17 00:00:00 2001
+From: Fabrice Bellet <fabrice@bellet.info>
+Date: Fri, 19 Feb 2016 15:57:19 +0100
+Subject: [PATCH 1/1] fix support for aarch64
+
+---
+ simgear/nasal/naref.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/simgear/nasal/naref.h b/simgear/nasal/naref.h
+index 21f766f5..7e269a1f 100644
+--- a/simgear/nasal/naref.h
++++ b/simgear/nasal/naref.h
+@@ -18,7 +18,7 @@
+ # endif
+ #elif defined(_M_IX86) || defined(__i386) || defined(__x86_64) || \
+       defined(__ia64__) || defined(_M_IA64) || defined(__ARMEL__) || \
+-      defined(_M_X64) || defined(_M_ARM) || \
++      defined(_M_X64) || defined(_M_ARM) || defined(__aarch64__) || \
+       defined(__e2k__)
+ # define NASAL_LE
+ #elif defined(__sparc) || defined(__ARMEB__) || \
+-- 
+2.48.1
+

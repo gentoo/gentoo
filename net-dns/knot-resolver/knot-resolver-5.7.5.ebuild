@@ -16,9 +16,9 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD CC0-1.0 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
-IUSE="caps dnstap jemalloc kresc nghttp2 systemd test xdp"
+IUSE="caps dnstap jemalloc kresc nghttp2 selinux systemd test xdp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
@@ -38,6 +38,7 @@ RDEPEND="
 	jemalloc? ( dev-libs/jemalloc:= )
 	kresc? ( dev-libs/libedit )
 	nghttp2? ( net-libs/nghttp2:= )
+	selinux? ( sec-policy/selinux-knot )
 	systemd? ( sys-apps/systemd:= )
 "
 DEPEND="

@@ -3,8 +3,8 @@
 
 #############################################
 # This is a list of valid profiles for each architecture.  This file is used by
-# repoman when doing a repoman scan or repoman full.
-# DO NOT ADD PROFILES WITH A "die" or "exit" IN THEM OR IT KILLS REPOMAN
+# pkgcheck when running pkgcheck scan.
+# DO NOT ADD PROFILES WITH A "die" or "exit" IN THEM OR IT KILLS PKGCHECK
 #
 #layout:
 #arch		profile_directory						status
@@ -67,8 +67,8 @@ amd64		default/linux/amd64/23.0/no-multilib/prefix			exp
 amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.32+	exp
 amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-2.6.16+	exp
 amd64		default/linux/amd64/23.0/no-multilib/prefix/kernel-3.2+		exp
-amd64		default/linux/amd64/23.0/llvm					dev
-amd64		default/linux/amd64/23.0/llvm/systemd				dev
+amd64		default/linux/amd64/23.0/llvm					exp
+amd64		default/linux/amd64/23.0/llvm/systemd				exp
 amd64		default/linux/amd64/23.0/hardened				stable
 amd64		default/linux/amd64/23.0/hardened/systemd			stable
 amd64		default/linux/amd64/23.0/hardened/selinux			stable
@@ -85,7 +85,7 @@ amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix		exp
 amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.32+	exp
 amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-2.6.16+	exp
 amd64		default/linux/amd64/23.0/split-usr/no-multilib/prefix/kernel-3.2+	exp
-amd64		default/linux/amd64/23.0/split-usr/llvm				dev
+amd64		default/linux/amd64/23.0/split-usr/llvm				exp
 amd64		default/linux/amd64/23.0/split-usr/hardened			stable
 amd64		default/linux/amd64/23.0/split-usr/hardened/selinux		stable
 
@@ -236,15 +236,15 @@ arm64		default/linux/arm64/23.0/desktop/plasma				stable
 arm64		default/linux/arm64/23.0/desktop/plasma/systemd			stable
 arm64		default/linux/arm64/23.0/desktop/systemd			stable
 arm64		default/linux/arm64/23.0/systemd				stable
-arm64		default/linux/arm64/23.0/llvm					dev
-arm64		default/linux/arm64/23.0/llvm/systemd				dev
+arm64		default/linux/arm64/23.0/llvm					exp
+arm64		default/linux/arm64/23.0/llvm/systemd				exp
 arm64		default/linux/arm64/23.0/split-usr				stable
 arm64		default/linux/arm64/23.0/split-usr/hardened			dev
 arm64		default/linux/arm64/23.0/split-usr/hardened/selinux		dev
 arm64		default/linux/arm64/23.0/split-usr/desktop			stable
 arm64		default/linux/arm64/23.0/split-usr/desktop/gnome		stable
 arm64		default/linux/arm64/23.0/split-usr/desktop/plasma		stable
-arm64		default/linux/arm64/23.0/split-usr/llvm				dev
+arm64		default/linux/arm64/23.0/split-usr/llvm				exp
 
 
 # ARM64 Profiles (big-endian)
@@ -294,8 +294,8 @@ loong		default/linux/loong/22.0/la64v100/lp64d/developer				exp
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd					exp
 loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr			exp
 loong		default/linux/loong/23.0/la64v100/lp64d						stable
-loong		default/linux/loong/23.0/la64v100/lp64d/llvm					dev
-loong		default/linux/loong/23.0/la64v100/lp64d/llvm/systemd				dev
+loong		default/linux/loong/23.0/la64v100/lp64d/llvm					exp
+loong		default/linux/loong/23.0/la64v100/lp64d/llvm/systemd				exp
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop					stable
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome				dev
 loong		default/linux/loong/23.0/la64v100/lp64d/desktop/gnome/systemd			dev

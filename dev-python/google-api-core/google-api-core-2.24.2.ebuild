@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -42,7 +42,6 @@ BDEPEND="
 	test? (
 		>=dev-python/grpcio-1.49.1[${PYTHON_USEDEP}]
 		>=dev-python/grpcio-status-1.49.1[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/rsa[${PYTHON_USEDEP}]
 	)

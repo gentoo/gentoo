@@ -22,7 +22,7 @@ SRC_URI="https://github.com/miyucy/brotli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 RDEPEND=" >=app-arch/brotli-1.1.0"
 DEPEND=" >=app-arch/brotli-1.1.0"

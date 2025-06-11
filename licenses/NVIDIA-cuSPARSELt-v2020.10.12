@@ -1,0 +1,13 @@
+cuSPARSELt SUPPLEMENT TO SOFTWARE LICENSE AGREEMENT FOR NVIDIA SOFTWARE DEVELOPMENT KITS
+
+The terms in this supplement govern your use of the NVIDIA cuSPARSELt SDK under the terms of your license agreement (“Agreement”) as modified by this supplement. Capitalized terms used but not defined below have the meaning assigned to them in the Agreement.
+
+This supplement is an exhibit to the Agreement and is incorporated as an integral part of the Agreement. In the event of conflict between the terms in this supplement and the terms in the Agreement, the terms in this supplement govern.
+
+License Scope. The SDK is licensed for you to develop applications only for use in systems with NVIDIA GPUs.
+
+Distribution. The following portions of the SDK are distributable under the Agreement: the runtimes files ending with .so and .h as part of your application.
+
+Licensing. If the distribution terms in this Agreement are not suitable for your organization, or for any questions regarding this Agreement, please contact NVIDIA at nvidia-compute-license-questions@nvidia.com
+
+(v. October 12, 2020)

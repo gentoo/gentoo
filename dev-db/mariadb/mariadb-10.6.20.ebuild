@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-SUBSLOT="18"
 
+SUBSLOT="18"
 JAVA_PKG_OPT_USE="jdbc"
 
 inherit systemd flag-o-matic prefix toolchain-funcs \

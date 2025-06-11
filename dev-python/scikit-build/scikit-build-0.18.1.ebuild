@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -22,9 +22,6 @@ RDEPEND="
 	dev-python/distro[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-42.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.10)
 	>=dev-python/wheel-0.32.0[${PYTHON_USEDEP}]
 "
 
@@ -59,7 +56,11 @@ src_prepare() {
 }
 
 python_test() {
-	local EPYTEST_DESELECT=()
+
+	local EPYTEST_DESELECT=(
+		# Internet (via new setuptools?)
+		tests/test_hello_cpp.py::test_hello_develop
+	)
 
 	case ${EPYTHON} in
 		pypy3)
@@ -70,9 +71,12 @@ python_test() {
 			;;
 	esac
 
+	# create a separate test tree since skbuild tests install random stuff
+	cp -r "${BUILD_DIR}"/{install,test} || die
+	local -x PATH=${BUILD_DIR}/test${EPREFIX}/usr/bin:${PATH}
+
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -p pytest_mock \
 		-m "not isolated and not nosetuptoolsscm" \
 		-o tmp_path_retention_count=1
-	rm -r "${BUILD_DIR}/install$(python_get_sitedir)"/{easy-install.pth,*.egg,*.egg-link} || die
 }

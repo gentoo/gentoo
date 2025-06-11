@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-05-17)
+# Tests cannot be built on musl due to libc specific ifdefs (bug #836710)
+net-mail/cyrus-imapd test
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # Been failing to build for a long time for musl with modern compilers,
 # so mask until there is a proper fix. Note that this does not disable
@@ -125,6 +129,7 @@ dev-lang/ispc gpu
 # Requires systemd
 sys-kernel/gentoo-kernel generic-uki
 sys-kernel/gentoo-kernel-bin generic-uki
+sys-kernel/vanilla-kernel generic-uki
 
 # Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
 # execinfo.h required for server.

@@ -1,0 +1,69 @@
+https://bugs.gentoo.org/956681
+https://github.com/systemd/systemd/pull/37017
+
+From fd9c4b4f49990f0656092035464b85256a0ba6e3 Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Fri, 4 Apr 2025 21:40:41 -0700
+Subject: [PATCH] shared/cred-util: Ensure TPM code is used with HAVE_TPM2
+ guards
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Building with no TPM2 we end up with following error
+
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:10: note: in a call to built-in function ‘__builtin___memcpy_chk’
+In function ‘memcpy’,
+    inlined from ‘encrypt_credential_and_warn’ at ../git/src/shared/creds-util.c:1091:17:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:10: error: argument 2 null where non-null expected [-Werror=nonnull]
+   29 |   return __builtin___memcpy_chk (__dest, __src, __len,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   30 |                                  __glibc_objsize0 (__dest));
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:29:10: note: in a call to built-in function ‘__builtin___memcpy_chk’
+cc1: some warnings being treated as errors   29 |   return __builtin___memcpy_chk (__dest, __src, __len,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   30 |                                  __glibc_objsize0 (__dest));
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This is because code referencing tpm2 data structures is still used while the
+initialization of the function has been compiled out since its conditional on HAVE_TPM2
+
+We add needed guards in places where it is missing to fix this problem
+
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+---
+ src/shared/creds-util.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/shared/creds-util.c b/src/shared/creds-util.c
+index ca8e15d4c9d1e..e074c8b24680a 100644
+--- a/src/shared/creds-util.c
++++ b/src/shared/creds-util.c
+@@ -804,7 +804,9 @@ int encrypt_credential_and_warn(
+         _cleanup_(iovec_done_erase) struct iovec tpm2_key = {}, output = {}, host_key = {};
+         _cleanup_(EVP_CIPHER_CTX_freep) EVP_CIPHER_CTX *context = NULL;
+         _cleanup_free_ struct metadata_credential_header *m = NULL;
++#if HAVE_TPM2
+         uint16_t tpm2_pcr_bank = 0, tpm2_primary_alg = 0;
++#endif
+         struct encrypted_credential_header *h;
+         int ksz, bsz, ivsz, tsz, added, r;
+         uint8_t md[SHA256_DIGEST_LENGTH];
+@@ -1078,6 +1080,7 @@ int encrypt_credential_and_warn(
+ 
+         p = ALIGN8(offsetof(struct encrypted_credential_header, iv) + ivsz);
+ 
++#if HAVE_TPM2
+         if (iovec_is_set(&tpm2_key)) {
+                 struct tpm2_credential_header *t;
+ 
+@@ -1092,7 +1095,7 @@ int encrypt_credential_and_warn(
+ 
+                 p += ALIGN8(offsetof(struct tpm2_credential_header, policy_hash_and_blob) + tpm2_blob.iov_len + tpm2_policy_hash.iov_len);
+         }
+-
++#endif
+         if (iovec_is_set(&pubkey)) {
+                 struct tpm2_public_key_credential_header *z;
+ 

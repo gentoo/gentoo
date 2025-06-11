@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
@@ -38,9 +38,10 @@ python_test() {
 	local EPYTEST_DESELECT=()
 
 	case ${EPYTHON} in
-		pypy3*)
+		pypy3*|python3.14*)
 			EPYTEST_DESELECT+=(
 				# minor exception message difference
+				# https://foss.heptapod.net/openpyxl/et_xmlfile/-/issues/8
 				et_xmlfile/tests/test_incremental_tree_with_stdlib_tests.py::ElementTreeTest::test_simpleops
 			)
 			;;

@@ -52,7 +52,6 @@ RDEPEND="
 		sys-fs/xfsprogs
 		sys-process/time
 		virtual/jdk
-		virtual/perl-IO-Socket-IP
 	)
 "
 BDEPEND="
@@ -127,7 +126,8 @@ src_configure() {
 	# that can't actually obtain results from probes, even trivial examples
 	# just hang.
 	filter-flags -fno-semantic-interposition
-	# https://github.com/oracle/dtrace-utils/issues/86
+	# While it builds as of 2025-06-08, it's broken at runtime
+	# in the same way as -fno-semantic-interposition (hangs, no probes fire).
 	filter-lto
 
 	local confargs=(

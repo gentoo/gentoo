@@ -129,6 +129,7 @@ pkgversion() {
 }
 
 multilib_src_configure() {
+	# bug #814326
 	filter-lto
 
 	local myconf=(

@@ -3,16 +3,16 @@
 
 EAPI=8
 
-CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
+CMAKE_REMOVE_MODULES_LIST=( FindMbedTLS )
 LUA_COMPAT=( luajit )
 # For the time being upstream supports up to Python 3.12 only.
-# Any issues found with 3.13 should be reported as a Gentoo bug.
-PYTHON_COMPAT=( python3_{10..13} )
+# Any issues found with 3.13+ should be reported as a Gentoo bug.
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
-CEF_VERSION="cef_binary_6533_linux"
-CEF_REVISION="_v3"
+CEF_AMD64="cef_binary_6533_linux_x86_64_v3"
+CEF_ARM64="cef_binary_6533_linux_aarch64_v4"
 OBS_BROWSER_COMMIT="b56fd78936761891475458447c1cc9058bb9c2d4"
 OBS_WEBSOCKET_COMMIT="c542622d7b6d41ce5875f54efdab1d4ac2967ef4"
 
@@ -40,8 +40,8 @@ fi
 
 SRC_URI+="
 	browser? (
-		amd64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_x86_64${CEF_REVISION}.tar.xz )
-		arm64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_VERSION}_aarch64${CEF_REVISION}.tar.xz )
+		amd64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_AMD64}.tar.xz )
+		arm64? ( https://cdn-fastly.obsproject.com/downloads/${CEF_ARM64}.tar.xz )
 	)
 "
 
@@ -77,7 +77,7 @@ DEPEND="
 	media-libs/x264:=
 	>=media-video/ffmpeg-6.1:=[nvenc?,opus,x264]
 	net-misc/curl
-	net-libs/mbedtls:0=
+	net-libs/mbedtls:3=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-apps/util-linux
@@ -90,10 +90,7 @@ DEPEND="
 	x11-libs/libxkbcommon
 	alsa? ( media-libs/alsa-lib )
 	browser? (
-		|| (
-			>=app-accessibility/at-spi2-core-2.46.0:2
-			( app-accessibility/at-spi2-atk dev-libs/atk )
-		)
+		>=app-accessibility/at-spi2-core-2.46.0:2
 		dev-libs/expat
 		dev-libs/glib
 		dev-libs/nspr
@@ -237,8 +234,8 @@ src_configure() {
 	fi
 
 	if use browser; then
-		use amd64 && mycmakeargs+=( -DCEF_ROOT_DIR=../${CEF_VERSION}_x86_64 )
-		use arm64 && mycmakeargs+=( -DCEF_ROOT_DIR=../${CEF_VERSION}_aarch64 )
+		use amd64 && mycmakeargs+=( -DCEF_ROOT_DIR=../cef_binary_6533_linux_x86_64 )
+		use arm64 && mycmakeargs+=( -DCEF_ROOT_DIR=../cef_binary_6533_linux_aarch64 )
 		mycmakeargs+=( -DENABLE_WHATSNEW=ON )
 	else
 		mycmakeargs+=( -DENABLE_WHATSNEW=OFF )

@@ -63,7 +63,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
 	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
-	"${FILESDIR}/${PN}-4.6.0-qjsonvalue.patch"
 )
 
 src_unpack() {

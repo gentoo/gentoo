@@ -1,7 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit flag-o-matic
 
 DESCRIPTION="A multi-purpose WAVE data processing and reporting utility"
 HOMEPAGE="http://www.etree.org/shnutils/shntool/"
@@ -23,6 +25,7 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	export CONFIG_SHELL=${BASH}  # bug #527310
+	append-cflags -std=gnu17 # bug #943815
 	default
 }
 

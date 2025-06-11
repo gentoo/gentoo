@@ -1,0 +1,36 @@
+https://github.com/fwupd/fwupd/pull/8588
+
+From 5e095c944557cbebc47cbf42c3738358fa4e45d4 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Fri, 14 Mar 2025 19:13:42 +0000
+Subject: [PATCH] trivial: Fix compile when using Pango >= 1.56.2
+
+Fixes https://github.com/fwupd/fwupd/issues/8587
+---
+ plugins/uefi-capsule/make-images.py | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/uefi-capsule/make-images.py b/plugins/uefi-capsule/make-images.py
+index d4c2242de5f0..a8641d61282a 100755
+--- a/plugins/uefi-capsule/make-images.py
++++ b/plugins/uefi-capsule/make-images.py
+@@ -141,8 +141,16 @@ def main(args) -> int:
+                 items = Pango.itemize(pctx, label_translated, 0, length, attrs, None)
+                 if not items:
+                     continue
+-                gs = Pango.GlyphString()
+-                Pango.shape(label_translated, length, items[0].analysis, gs)
++                try:
++                    # urgh, https://gitlab.gnome.org/GNOME/pango/-/merge_requests/829
++                    # -- if we depend on Pango >= 1.56.2 we can drop the fallback
++                    #
++                    # ...or if we depend on python3-gobject >= 3.51.0 we can use the nicer:
++                    #    len(inspect.signature(Pango.shape).parameters)
++                    gs = Pango.shape(label_translated, length, items[0].analysis)
++                except TypeError:
++                    gs = Pango.GlyphString()
++                    Pango.shape(label_translated, length, items[0].analysis, gs)
+                 del img, cctx, pctx, layout
+ 
+                 def find_size(fs, f, data):
+

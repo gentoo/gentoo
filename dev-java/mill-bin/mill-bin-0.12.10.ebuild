@@ -16,7 +16,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND=">=virtual/jre-11:*"
 

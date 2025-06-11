@@ -12,4 +12,4 @@ HOMEPAGE="https://invent.kde.org/plasma/ocean-sound-theme"
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"

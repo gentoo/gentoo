@@ -1,0 +1,33 @@
+https://github.com/rakshasa/rtorrent/issues/1506
+From a0a364e2863356f51d41a27ce7620471666c5c56 Mon Sep 17 00:00:00 2001
+From: rakshasa <sundell.software@gmail.com>
+Date: Sun, 1 Jun 2025 18:20:30 +0200
+Subject: [PATCH] When encountering invalid completed chunks value ignore it.
+
+---
+ src/torrent/utils/resume.cc | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/src/torrent/utils/resume.cc b/src/torrent/utils/resume.cc
+index dc9f95a52..cb5fbb5c3 100644
+--- a/src/torrent/utils/resume.cc
++++ b/src/torrent/utils/resume.cc
+@@ -417,8 +417,16 @@ resume_load_file_priorities(Download download, const Object& object) {
+         filesItr->get_key_value("priority") >= 0 && filesItr->get_key_value("priority") <= PRIORITY_HIGH)
+       (*listItr)->set_priority(static_cast<priority_enum>(filesItr->get_key_value("priority")));
+ 
+-    if (filesItr->has_key_value("completed"))
+-      (*listItr)->set_completed_chunks(filesItr->get_key_value("completed"));
++    if (filesItr->has_key_value("completed")) {
++      auto completed = filesItr->get_key_value("completed");
++
++      if (completed < 0 || completed > (*listItr)->size_chunks()) {
++        LT_LOG_LOAD_INVALID("invalid completed chunks value: %" PRIi64 ", resetting to 0", completed);
++        completed = 0;
++      }
++
++      (*listItr)->set_completed_chunks(completed);
++    }
+   }
+ }
+ 

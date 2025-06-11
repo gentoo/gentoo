@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit gnome.org gnome2-utils meson python-any-r1 udev xdg
 
 DESCRIPTION="GNOME compositing window manager based on Clutter"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
+HOMEPAGE="https://mutter.gnome.org"
 LICENSE="GPL-2+"
 
 if [[ ${PV} == 9999 ]]; then
@@ -25,7 +25,7 @@ REQUIRED_USE="
 	|| ( X wayland )
 	gtk-doc? ( introspection )
 	wayland? ( ^^ ( elogind systemd ) udev )
-	test? ( wayland )"
+	test? ( screencast wayland )"
 RESTRICT="!test? ( test )"
 
 # gnome-settings-daemon is build checked, but used at runtime only for org.gnome.settings-daemon.peripherals.keyboard gschema
@@ -46,7 +46,7 @@ RDEPEND="
 	>=gnome-base/gsettings-desktop-schemas-47_beta[introspection?]
 	>=dev-libs/glib-2.81.1:2
 	gnome-base/gnome-settings-daemon
-	>=dev-libs/json-glib-0.12.0[introspection?]
+	>=x11-libs/libxkbcommon-0.4.3[X?]
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
 	sys-apps/dbus
 	>=x11-misc/colord-1.4.5:=
@@ -59,7 +59,7 @@ RDEPEND="
 
 	>=media-libs/libcanberra-0.26
 
-	media-libs/libglvnd[X]
+	media-libs/libglvnd
 
 	>=dev-libs/wayland-1.23.0
 	wayland? (
@@ -78,20 +78,18 @@ RDEPEND="
 		>=dev-libs/libgudev-238
 	)
 	systemd? ( sys-apps/systemd )
-	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
-	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-1.2.0:= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
-		gnome-extra/zenity
 	)
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4 >=dev-util/sysprof-3.46.0 )
 "
 
-X_OR_XWAYLAND_DEPS="
+X11_CLIENT_DEPS="
 	>=gui-libs/gtk-4.0.0:4[X,introspection?]
+	media-libs/libglvnd[X]
 	>=x11-libs/libX11-1.7.0
 	>=x11-libs/libXcomposite-0.4
 	x11-libs/libXcursor
@@ -99,25 +97,24 @@ X_OR_XWAYLAND_DEPS="
 	x11-libs/libXext
 	>=x11-libs/libXfixes-6
 	>=x11-libs/libXi-1.7.4
-	x11-libs/libxkbfile
 	x11-misc/xkeyboard-config
-	x11-libs/libXrender
+	>=x11-libs/libXrandr-1.5.0
 	x11-libs/libxcb:=
 	x11-libs/libXinerama
 	x11-libs/libXau
+	>=x11-libs/startup-notification-0.7
 "
 
 RDEPEND+="
 	X? (
-	   ${X_OR_XWAYLAND_DEPS}
-	   x11-libs/libICE
-	   >=x11-libs/libXrandr-1.5.0
-	   >=x11-libs/libxkbcommon-0.4.3[X]
-	   x11-libs/libXtst
+		${X11_CLIENT_DEPS}
+		x11-libs/libICE
+		x11-libs/libxkbfile
+		x11-libs/libXtst
+		x11-libs/libSM
 	)
-	wayland? ( xwayland? ( ${X_OR_XWAYLAND_DEPS} ) )
+	wayland? ( xwayland? ( ${X11_CLIENT_DEPS} ) )
 "
-
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	sysprof? ( >=dev-util/sysprof-common-3.38.0 )
@@ -135,7 +132,10 @@ BDEPEND="
 			>=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]
 		')
 		app-text/docbook-xml-dtd:4.5
-		X? ( x11-misc/xvfb-run )
+		X? (
+			gnome-extra/zenity
+			x11-misc/xvfb-run
+		)
 	)
 	wayland? (
 		>=sys-kernel/linux-headers-4.4

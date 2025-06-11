@@ -1,12 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 MY_P=${PN}-3.0-${PV}
 DESCRIPTION="A library for registering global keyboard shortcuts"
-HOMEPAGE="https://github.com/kupferlauncher/keybinder"
-SRC_URI="https://github.com/kupferlauncher/keybinder/releases/download/${PN}-3.0-v${PV}/${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/kupferlauncher/keybinder/"
+SRC_URI="
+	https://github.com/kupferlauncher/keybinder/releases/download/${PN}-3.0-v${PV}/${MY_P}.tar.gz
+"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
@@ -14,13 +16,19 @@ SLOT="3"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="+introspection"
 
-RDEPEND="x11-libs/gtk+:3[X]
+DEPEND="
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11
 	x11-libs/libXext
-	x11-libs/libXrender"
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig
-	introspection? ( dev-libs/gobject-introspection )"
+	x11-libs/libXrender
+"
+RDEPEND="
+	${DEPEND}
+"
+BDEPEND="
+	virtual/pkgconfig
+	introspection? ( dev-libs/gobject-introspection )
+"
 
 src_configure() {
 	local myconf=(

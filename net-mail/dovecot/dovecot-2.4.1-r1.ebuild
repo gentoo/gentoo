@@ -6,7 +6,7 @@ EAPI=8
 LUA_COMPAT=( lua5-1 lua5-{3..4} )
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools flag-o-matic lua-single ssl-cert systemd toolchain-funcs
+inherit autotools eapi9-ver flag-o-matic lua-single ssl-cert systemd toolchain-funcs
 
 MY_P="${P/_/.}-4"
 MY_PV="${PV}-4"
@@ -221,19 +221,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	local replacing_version
-	for replacing_version in ${REPLACING_VERSIONS} ; do
-		if ver_test "${replacing_version}" -lt 2.4 ; then
-			# This is an upgrade which requires user review
-			ewarn ""
-			ewarn "Dovecot-2.4.x has new settings and WILL NOT work"
-			ewarn "unless the configuration files are updated."
-			ewarn "Please read the migration guide at:"
-			ewarn "  https://doc.dovecot.org/2.4.1/installation/upgrade/2.3-to-2.4.html"
-			# Show this elog only once
-			break
-		fi
-	done
+	if ver_replacing -lt 2.4 ; then
+		# This is an upgrade which requires user review
+		ewarn "Dovecot-2.4.x has new settings and WILL NOT work"
+		ewarn "unless the configuration files are updated."
+		ewarn "Please read the migration guide at:"
+		ewarn "  https://doc.dovecot.org/2.4.1/installation/upgrade/2.3-to-2.4.html"
+	fi
 
 	# Let's not make a new certificate if we already have one
 	if ! [[ -e "${ROOT}"/etc/ssl/dovecot/server.pem && \

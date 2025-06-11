@@ -1,16 +1,23 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit webapp
 
+if [[ ${PV} == *9999999* ]]; then
+	SLOT="${PV}" # Single live slot.
+	EGIT_REPO_URI="https://git.tt-rss.org/fox/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
+	S="${WORKDIR}/${PN}"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+fi
+
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
-SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
-S="${WORKDIR}/${PN}"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
@@ -87,4 +94,14 @@ src_install() {
 	fi
 
 	webapp_src_install
+}
+
+pkg_postinst() {
+	if ! use vhosts && [[ -n ${REPLACING_VERSIONS} && ${PV} == *9999999* ]]; then
+		elog
+		elog "The live ebuild does not automatically upgrade your installations so"
+		elog "don't forget to do so manually."
+	fi
+
+	webapp_pkg_postinst
 }

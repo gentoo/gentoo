@@ -29,6 +29,6 @@
     rename a window, move it around and so on).
   </longdescription>
   <upstream>
-    <remote-id type="github">gestner-hub/xwmfs</remote-id>
+    <remote-id type="github">gerstner-hub/xwmfs</remote-id>
   </upstream>
 </pkgmetadata>

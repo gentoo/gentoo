@@ -11,7 +11,7 @@ SRC_URI="
 	https://github.com/aristocratos/btop/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
 "
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv x86"
 

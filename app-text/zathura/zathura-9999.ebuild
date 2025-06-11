@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,6 +49,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
 src_configure() {
 	local emesonargs=(
 		-Dconvert-icon=disabled
@@ -56,7 +57,8 @@ src_configure() {
 		-Dmanpages=$(usex man enabled disabled)
 		-Dseccomp=$(usex seccomp enabled disabled)
 		-Dsynctex=$(usex synctex enabled disabled)
-		)
+		$(meson_feature test tests)
+	)
 	meson_src_configure
 }
 

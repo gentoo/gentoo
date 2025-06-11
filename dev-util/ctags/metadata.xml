@@ -11,7 +11,6 @@
     <flag name="yaml">Enable YAML parsing support</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">gnuada</remote-id>
     <remote-id type="github">universal-ctags/ctags</remote-id>
   </upstream>
 </pkgmetadata>

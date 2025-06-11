@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="eai">Add support for SMTPUTF8</flag>
+		<flag name="fips">Add support for FIPS mode (experimental)</flag>
 		<flag name="tinycdb">Add support for using <pkg>dev-db/tinycdb</pkg>
 			for lookup tables</flag>
 	</use>

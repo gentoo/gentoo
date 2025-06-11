@@ -1,0 +1,71 @@
+From f712fd80cb1c29b1111184c2e9c1784861d0f788 Mon Sep 17 00:00:00 2001
+Message-ID: <f712fd80cb1c29b1111184c2e9c1784861d0f788.1748905952.git.sam@gentoo.org>
+In-Reply-To: <089e4f426502a620deb9efc0d80118931fd951d2.1748905952.git.sam@gentoo.org>
+References: <089e4f426502a620deb9efc0d80118931fd951d2.1748905952.git.sam@gentoo.org>
+From: Jason Merrill <jason@redhat.com>
+Date: Mon, 2 Jun 2025 14:58:42 -0400
+Subject: [PATCH 4/4] c++: more __is_destructible fixes [PR107600]
+
+	PR c++/107600
+
+gcc/cp/ChangeLog:
+
+	* method.cc (destructible_expr): Fix refs and arrays of unknown
+	bound.
+
+gcc/testsuite/ChangeLog:
+
+	* g++.dg/ext/is_destructible2.C: Add more cases.
+---
+ gcc/cp/method.cc                            | 11 ++++++++++-
+ gcc/testsuite/g++.dg/ext/is_destructible2.C |  9 +++++++++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+diff --git a/gcc/cp/method.cc b/gcc/cp/method.cc
+index bb6790f13cdb..67a80a387ba7 100644
+--- a/gcc/cp/method.cc
++++ b/gcc/cp/method.cc
+@@ -2332,13 +2332,22 @@ constructible_expr (tree to, tree from)
+   return expr;
+ }
+ 
+-/* Return declval<T>().~T() treated as an unevaluated operand.  */
++/* Valid if "Either T is a reference type, or T is a complete object type for
++   which the expression declval<U&>().~U() is well-formed when treated as an
++   unevaluated operand ([expr.context]), where U is remove_all_extents_t<T>."
++
++   For a class U, return the destructor call; otherwise return void_node if
++   valid or error_mark_node if not.  */
+ 
+ static tree
+ destructible_expr (tree to)
+ {
+   cp_unevaluated cp_uneval_guard;
+   int flags = LOOKUP_NORMAL|LOOKUP_DESTRUCTOR;
++  if (TYPE_REF_P (to))
++    return void_node;
++  if (!COMPLETE_TYPE_P (complete_type (to)))
++    return error_mark_node;
+   to = strip_array_types (to);
+   if (CLASS_TYPE_P (to))
+     {
+diff --git a/gcc/testsuite/g++.dg/ext/is_destructible2.C b/gcc/testsuite/g++.dg/ext/is_destructible2.C
+index 7f15fc786848..2edf440ef44b 100644
+--- a/gcc/testsuite/g++.dg/ext/is_destructible2.C
++++ b/gcc/testsuite/g++.dg/ext/is_destructible2.C
+@@ -13,3 +13,12 @@ static_assert( __is_assignable(A, A) );
+ static_assert( not __is_destructible(int()) );
+ static_assert( not __is_nothrow_destructible(int()) );
+ static_assert( not __is_trivially_destructible(int()) );
++static_assert( __is_destructible(int&) );
++static_assert( __is_destructible(int&&) );
++static_assert( __is_destructible(int(&)[1]) );
++static_assert( __is_destructible(const int(&)[1]) );
++static_assert( __is_destructible(void(&)()) );
++static_assert( not __is_destructible(int[]) );
++static_assert( not __is_destructible(const int[]) );
++static_assert( not __is_destructible(int[][1]) );
++static_assert( not __is_destructible(const int[][1]) );
+-- 
+2.49.0
+

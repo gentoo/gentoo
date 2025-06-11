@@ -38,6 +38,7 @@ python_site_check() {
 
 	local bad_versions=()
 	local eggs=()
+	local namespace_packages=()
 	local outside_site=()
 	local stray_packages=()
 	local wrong_ext=()
@@ -140,6 +141,16 @@ python_site_check() {
 				-name "*.pypy*${modname}" -o \
 				-name "*.cpython*${modname}" \
 				')' -a '!' -name "*${ext_suffix}" -print0
+		)
+
+		# check for namespace packages
+		while IFS= read -d $'\0' -r f; do
+			if grep -q "pkg_resources.*declare_namespace" "${f}"
+			then
+				namespace_packages+=( "${f}" )
+			fi
+		done < <(
+			find "${sitedir}" -maxdepth 2 -type f -name '__init__.py' -print0
 		)
 
 		einfo "Verifying compiled files for ${impl}"
@@ -266,6 +277,18 @@ python_site_check() {
 		eqawarn "instead of /usr/lib (use \$(python_get_sitedir)):"
 		eqawarn
 		eqatag -v python-site.libdir "${bad_libdirs[@]#${ED}}"
+	fi
+
+	if [[ ${namespace_packages[@]} ]]; then
+		eqawarn
+		eqawarn "QA Notice: Package installs pkg_resources namespace packages that"
+		eqawarn "are deprecated.  Please either remove __init__.py in favor of PEP 420"
+		eqawarn "implicit namespace, if possible, or replace it with pkgutil namespace."
+		eqawarn
+		eqatag -v python-site.libdir "${namespace_packages[@]#${ED}}"
+		eqawarn
+		eqawarn "Please report a bug upstream.  See also:"
+		eqawarn "https://projects.gentoo.org/python/guide/concept.html#namespace-packages"
 	fi
 
 	if [[ ${outside_site[@]} ]]; then

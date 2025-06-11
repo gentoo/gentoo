@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,13 @@ IUSE="static-libs"
 
 DEPEND="dev-cpp/eigen:3"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	cmake_src_prepare
+
+	# Tries to copy eigen headers into /usr/include
+	sed -e '/install(DIRECTORY/d' -i cmake/recipes/external/eigen.cmake || die
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -39,13 +46,6 @@ src_configure() {
 		-DLIBIGL_XML=OFF
 	)
 	cmake_src_configure
-}
-
-src_prepare() {
-	cmake_src_prepare
-
-	# Tries to copy eigen headers into /usr/include
-	sed -e '/install(DIRECTORY/d' -i cmake/recipes/external/eigen.cmake || die
 }
 
 src_install() {

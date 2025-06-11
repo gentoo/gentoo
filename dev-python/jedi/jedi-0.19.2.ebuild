@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -82,6 +82,14 @@ python_test() {
 				test/test_inference/test_compiled.py::test_next_docstr
 				test/test_inference/test_compiled.py::test_time_docstring
 				test/test_inference/test_gradual/test_typeshed.py::test_module_exists_only_as_stub
+			)
+			;;
+		python3.14*)
+			EPYTEST_DESELECT+=(
+				# type annotation printing difference
+				test/test_inference/test_mixed.py::test_compiled_signature_annotation_string
+				# extra attributes in os
+				test/test_utils.py::TestSetupReadline::test_import
 			)
 			;;
 	esac

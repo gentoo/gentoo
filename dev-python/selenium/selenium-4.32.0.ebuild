@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_TESTED=( python3_{11..13} pypy3_11 )
-PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_14 )
+PYTHON_TESTED=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" )
 
 inherit distutils-r1 pypi
 
@@ -30,7 +30,8 @@ SRC_URI+="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="test-rust"
+IUSE="test test-rust"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/certifi-2021.10.8[${PYTHON_USEDEP}]
@@ -47,23 +48,24 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/filetype[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		test-rust? (
-			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-			dev-python/pytest-xdist[${PYTHON_USEDEP}]
-			dev-util/selenium-manager
-			net-misc/geckodriver
-			|| (
-				www-client/firefox
-				www-client/firefox-bin
+		${RDEPEND}
+		$(python_gen_cond_dep '
+			dev-python/filetype[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
+			test-rust? (
+				dev-python/pytest[${PYTHON_USEDEP}]
+				dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
+				dev-python/pytest-xdist[${PYTHON_USEDEP}]
+				dev-util/selenium-manager
+				net-misc/geckodriver
+				|| (
+					www-client/firefox
+					www-client/firefox-bin
+				)
 			)
-		)
+		' "${PYTHON_TESTED[@]}")
 	)
 "
-
-# xdist is causing random pytest crashes with high job numbers
-distutils_enable_tests pytest
 
 src_prepare() {
 	distutils-r1_src_prepare
@@ -74,6 +76,8 @@ src_prepare() {
 }
 
 python_test() {
+	# NB: xdist is causing random pytest crashes with high job numbers
+
 	if ! has "${EPYTHON/./_}" "${PYTHON_TESTED[@]}"; then
 		einfo "Skipping tests on ${EPYTHON}"
 		return
