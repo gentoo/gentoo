@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic xdg-utils
+inherit flag-o-matic libtool xdg-utils
 
 DESCRIPTION="Extensions, widgets and framework library with session support for Xfce"
 HOMEPAGE="
@@ -30,6 +30,11 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	# defang automagic dependencies
