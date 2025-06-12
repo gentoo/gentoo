@@ -54,7 +54,7 @@ src_prepare() {
 
 	use elibc_musl && eapply "${FILESDIR}"/${PN}-0.66.2-musl-W_EXITCODE.patch
 
-	# -Ddebugg option enables various debug support via VTE_DEBUG, but also ggdb3; strip the latter
+	# -Ddebug option enables various debug support via VTE_DEBUG, but also ggdb3; strip the latter
 	sed -e '/ggdb3/d' -i meson.build || die
 	sed -i 's/vte_gettext_domain = vte_api_name/vte_gettext_domain = vte_gtk3_api_name/' meson.build || die
 }
