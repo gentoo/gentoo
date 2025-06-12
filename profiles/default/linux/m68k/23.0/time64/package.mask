@@ -5,3 +5,7 @@
 # Since we are using -maligned-int by default here, we also need the
 # corresponding fixed / patched toolchain versions...
 <sys-libs/glibc-2.41-r2
+
+# Python 3.13 works here. Not sure about 3.14 yet, we'll find out.
+-dev-lang/python:3.13
+-dev-lang/python:3.13t

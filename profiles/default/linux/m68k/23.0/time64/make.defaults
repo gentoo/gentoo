@@ -8,3 +8,12 @@ CFLAGS="${CFLAGS} -malign-int"
 CXXFLAGS="${CXXFLAGS} -malign-int"
 FCFLAGS="${FCFLAGS} -malign-int"
 FFLAGS="${FFLAGS} -malign-int"
+
+# As opposed to old-style m68k, python-3.13 (and later?) works here
+# Unfortunately, since the main m68k profile overwrites these variables,
+# we cannot simply go back to the base settings but need to overwrite
+# them *again*.
+PYTHON_SINGLE_TARGET="python3_13"
+PYTHON_TARGETS="python3_13"
+BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_13 python_single_target_python3_13"
+
