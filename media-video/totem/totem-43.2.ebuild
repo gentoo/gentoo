@@ -62,6 +62,8 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 "
+# perl for pod2man
+# Prevent dev-python/pylint dep, bug #482538
 BDEPEND="
 	dev-lang/perl
 	gtk-doc? ( >=dev-util/gtk-doc-1.14
@@ -71,8 +73,6 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
-# perl for pod2man
-# Prevent dev-python/pylint dep, bug #482538
 
 PATCHES=(
 	"${FILESDIR}"/gst-inspect-sandbox.patch # Allow disabling calls to gst-inspect (sandbox issue)
