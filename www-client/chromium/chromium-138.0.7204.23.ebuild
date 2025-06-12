@@ -1521,9 +1521,39 @@ pkg_postinst() {
 
 	if ! use headless; then
 		if use vaapi; then
-			elog "VA-API is disabled by default at runtime. You have to enable it"
-			elog "by adding --enable-features=VaapiVideoDecoder to CHROMIUM_FLAGS"
-			elog "in /etc/chromium/default."
+			elog "Hardware-accelerated video decoding configuration:"
+			elog
+			elog "Chromium supports multiple backends for hardware acceleration. To enable one,"
+			elog "   Add to CHROMIUM_FLAGS in /etc/chromium/default:"
+			elog
+			elog "1. VA-API with OpenGL (recommended for most users):"
+			elog "   --enable-features=AcceleratedVideoDecodeLinuxGL"
+			elog "   VaapiVideoDecoder may need to be added as well, but try without first."
+			elog
+			if use wayland; then
+				elog "2. Enhanced Wayland/EGL performance:"
+				elog "   --enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL"
+				elog
+			fi
+			if use X; then
+				elog "$(usex wayland "3" "2"). VA-API with Vulkan:"
+				elog "   --enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
+				elog
+				if use wayland; then
+					elog "   NOTE: Vulkan acceleration requires X11 and will not work under Wayland sessions."
+					elog "   Use OpenGL-based acceleration instead when running under Wayland."
+					elog
+				fi
+			fi
+			elog "Additional options:"
+			elog "  To enable hardware-accelerated encoding (if supported)"
+			elog "  add 'AcceleratedVideoEncoder' to your feature list"
+			elog "  VaapiIgnoreDriverChecks bypasses driver compatibility checks"
+			elog "  (may be needed for newer/unsupported hardware)"
+			elog
+		else
+			elog "This Chromium build was compiled without VA-API support, which provides"
+			elog "hardware-accelerated video decoding."
 		fi
 		if use screencast; then
 			elog "Screencast is disabled by default at runtime. Either enable it"
