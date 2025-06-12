@@ -1122,7 +1122,7 @@ chromium_configure() {
 		myconf_gn+=(
 			"enable_print_preview=false"
 			"enable_remoting=false"
-			"ozone_platform=headless"
+			'ozone_platform="headless"'
 			"rtc_use_pipewire=false"
 			"use_alsa=false"
 			"use_cups=false"
@@ -1133,7 +1133,8 @@ chromium_configure() {
 			"use_libpci=false"
 			"use_pangocairo=false"
 			"use_pulseaudio=false"
-			"use_qt=false"
+			"use_qt5=false"
+			"use_qt6=false"
 			"use_udev=false"
 			"use_vaapi=false"
 			"use_xkbcommon=false"
