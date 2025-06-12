@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-06-12)
+# Breaks several applications (bug #957943)
+>=dev-python/pygobject-3.52
+
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Dead upstream, fails to compile with gcc 15 and cmake 4.
 # Removal on 2025-07-12. Bugs #957271, #944255
