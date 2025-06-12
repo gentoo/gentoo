@@ -272,13 +272,6 @@ dev-db/mysql:8.4
 # Removal on 2025-06-14.
 www-misc/htdig
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
-# Depends on Qt5 and is unmaintained for a very long time - currently
-# packaged release is from 2021. Alternatives are gui-apps/deskflow or
-# gui-apps/input-leap - see also bugs #953262, #907118
-# Removal on 2025-06-12.
-x11-misc/synergy
-
 # Matt Turner <mattst88@gentoo.org> (2025-05-13)
 # Package is replaced by dev-util/mesa_clc.
 # Removal on 2025-06-12.  Bug #955925.
