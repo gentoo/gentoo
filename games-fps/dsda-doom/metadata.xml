@@ -29,6 +29,7 @@
   </use>
   <upstream>
     <bugs-to>https://github.com/kraflab/dsda-doom/issues</bugs-to>
+    <changelog>https://github.com/kraflab/dsda-doom/releases</changelog>
     <remote-id type="github">kraflab/dsda-doom</remote-id>
   </upstream>
 </pkgmetadata>
