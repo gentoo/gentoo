@@ -39,8 +39,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.0-disable-multiarch.patch
-	"${FILESDIR}"/${PN}-12.0-find_snappy.patch
-	"${FILESDIR}"/${PN}-12.0-tests.patch
 	"${FILESDIR}"/${PN}-12.0-unbundle.patch
 
 	# merged, to be removed for the next version
@@ -48,6 +46,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.0-include-stdint.patch
 	"${FILESDIR}"/${PN}-12.0-no_qtnetwork.patch
 	"${FILESDIR}"/${PN}-12.0-bump_cmake_min.patch
+	"${FILESDIR}"/${PN}-12.0-find_snappy.patch
+	"${FILESDIR}"/${PN}-12.0-tests.patch
+	"${FILESDIR}"/${PN}-12.0-fix_qt6.9.patch
 )
 
 src_prepare() {
