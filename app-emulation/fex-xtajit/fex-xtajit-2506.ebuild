@@ -35,9 +35,10 @@ BDEPEND="
 	llvm-core/llvm
 "
 
-PATCHES="
-	${FILESDIR}/${P}-constness.patch
-"
+src_prepare() {
+	has_version '<dev-util/llvm-mingw64-13.0.0' && eapply "${FILESDIR}/${P}-constness.patch"
+	default
+}
 
 src_unpack() {
 	default
