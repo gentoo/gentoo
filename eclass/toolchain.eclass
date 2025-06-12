@@ -772,6 +772,19 @@ do_gcc_gentoo_patches() {
 			eapply "${WORKDIR}"/musl/{,nocross/}*.patch
 			${shopt_save}
 		fi
+
+		#
+		# THIS IS A TEMPORARY SOLUTION AND SHOULD BE REPLACED BY A PROPER FIX.
+		# Adding it so we can already build stages for further testing. -dilfridge
+		#
+		if [[ ${CTARGET} == m68*-aligned-* ]]; then
+			einfo "Hard-wiring m68k -malign-int switch into gcc"
+			echo '#define DRIVER_SELF_SPECS "-malign-int"' >> "${S}/gcc/config/m68k/m68k.h" || die
+		fi
+		#
+		# END TEMPORARY SOLUTION
+		#
+
 	fi
 }
 
