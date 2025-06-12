@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Pass a file descriptor to another process, using a unix domain socket"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa"
 
 DEPEND="
 	dev-perl/Canary-Stability
