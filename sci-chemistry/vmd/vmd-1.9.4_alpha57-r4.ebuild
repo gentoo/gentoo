@@ -112,6 +112,14 @@ src_prepare() {
 		-e "s:\$(CXXFLAGS)::g" \
 		-i hesstrans/Makefile || die
 
+	# hack for some very old code with recent compilers
+	# stamp uses old syntax so we need to add -std=gnu89
+	sed \
+		-e "s: -c: -std=gnu89 -c:g" \
+		-i stamp/Makefile \
+		-i rnaview/Makefile \
+		-i clustalw/Makefile || die
+
 	# prepare vmd itself
 	cd "${S}" || die
 
