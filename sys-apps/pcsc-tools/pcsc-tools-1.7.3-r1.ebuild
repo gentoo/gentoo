@@ -25,6 +25,8 @@ RDEPEND="
 src_install() {
 	meson_src_install
 
+	fperms +x /usr/bin/ATR_analysis
+
 	# USE=gui controls gscriptor for bug #323229
 	if ! use gui ; then
 		rm "${ED}"/usr/bin/gscriptor || die
