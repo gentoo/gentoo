@@ -316,7 +316,8 @@ m68k		default/linux/m68k/17.0/systemd/merged-usr			exp
 m68k		default/linux/m68k/23.0						exp
 m68k		default/linux/m68k/23.0/systemd					exp
 m68k		default/linux/m68k/23.0/split-usr				exp
-
+# with -malign-int:
+m68k		default/linux/m68k/23.0/time64					exp
 
 # MIPS Profiles
 # @MAINTAINER: mips@gentoo.org
