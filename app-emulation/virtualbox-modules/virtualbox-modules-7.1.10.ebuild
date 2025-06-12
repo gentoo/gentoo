@@ -19,7 +19,7 @@ LICENSE="GPL-3"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
+CONFIG_CHECK="~!SPINLOCK JUMP_LABEL ~PREEMPT_NOTIFIERS"
 
 src_compile() {
 	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
