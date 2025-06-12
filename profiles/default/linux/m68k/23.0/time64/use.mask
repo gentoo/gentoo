@@ -1,0 +1,8 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-02)
+# Since we are using -maligned-int by default,
+# Python 3.13 works here. Not sure about 3.14 yet, we'll find out.
+-python_targets_python3_13
+-python_targets_python3_13t
