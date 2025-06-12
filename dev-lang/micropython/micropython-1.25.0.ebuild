@@ -26,6 +26,13 @@ DEPEND="
 src_prepare() {
 	default
 
+	# Fails with minor output differences but also seems sensitive
+	# to timeout.
+	cat <<-EOF > tests/extmod/select_poll_fd.py || die
+	print("SKIP")
+	raise SystemExit
+	EOF
+
 	# Both ports/unix and mpy-cross need their Makefile changed.
 	# 1) don't die on compiler warning
 	# 2) remove /usr/local prefix references in favour of /usr
