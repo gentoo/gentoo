@@ -26,10 +26,11 @@ REQUIRED_USE="
 RDEPEND="ogg? ( media-libs/libogg[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	app-arch/xz-utils
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+DOCS=( AUTHORS {CHANGELOG,README}.md )
 
 src_prepare() {
 	default
@@ -62,6 +63,7 @@ multilib_src_configure() {
 	)
 
 	# bash for https://github.com/xiph/flac/pull/803
+	# should be fixed in >1.5.0
 	CONFIG_SHELL="${BROOT}"/bin/bash ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
