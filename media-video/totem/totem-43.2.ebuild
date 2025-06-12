@@ -113,6 +113,10 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	virtx meson_src_test
+}
+
 src_install() {
 	local -x GST_PLUGIN_SYSTEM_PATH_1_0= # bug 812170
 	meson_src_install
@@ -129,8 +133,4 @@ pkg_postinst() {
 pkg_postrm() {
 	xdg_pkg_postrm
 	gnome2_schemas_update
-}
-
-src_test() {
-	virtx meson_src_test
 }
