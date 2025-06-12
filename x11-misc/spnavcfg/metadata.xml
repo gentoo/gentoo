@@ -11,6 +11,7 @@
 		It allows convenient configuration of a space navigator device.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">FreeSpacenav/spnavcfg</remote-id>
 		<remote-id type="sourceforge">spacenav</remote-id>
 	</upstream>
 </pkgmetadata>
