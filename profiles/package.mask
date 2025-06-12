@@ -279,10 +279,6 @@ www-misc/htdig
 # Removal on 2025-06-12.
 x11-misc/synergy
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
-# No more revdeps, depends on Qt5. Bug #955654; removal on 2025-06-12.
-dev-games/openscenegraph-qt
-
 # Matt Turner <mattst88@gentoo.org> (2025-05-13)
 # Package is replaced by dev-util/mesa_clc.
 # Removal on 2025-06-12.  Bug #955925.
