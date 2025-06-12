@@ -1,0 +1,31 @@
+https://github.com/apitrace/apitrace/pull/950.patch
+From 3f7f0ad7781b3200377eea7257c786317b22fb26 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Thu, 12 Jun 2025 04:48:21 +0200
+Subject: [PATCH] fix qt-6.9
+
+> gui/qubjson.cpp: In function QString readChar(QDataStream&):
+> gui/qubjson.cpp:151:19:
+> error: no matching function for call to QChar::QChar(qint8&)
+>  151 |     return QChar(c);
+
+implicit conversions are disabled for QChar::QChar with qt-6.9
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ gui/qubjson.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gui/qubjson.cpp b/gui/qubjson.cpp
+index 63a2424ac..096ed7eac 100644
+--- a/gui/qubjson.cpp
++++ b/gui/qubjson.cpp
+@@ -148,7 +148,7 @@ readChar(QDataStream &stream)
+     qint8 c;
+     stream >> c;
+     Q_ASSERT(c >= 0);
+-    return QChar(c);
++    return QChar(static_cast<char>(c));
+ }
+ 
+ 
