@@ -1,0 +1,34 @@
+https://bugs.gentoo.org/945058#c10
+
+Patch removing the erroneous argument from decode_audio() calls
+
+This patch makes it compile by removing the erroneous argument AUDIO_BLOCK_SIZE from the three invocations.
+--- a/utils/lqtplay.c
++++ b/utils/lqtplay.c
+@@ -1477,7 +1477,7 @@ static int qt_alsa_audio_write()
+     while(!done) {
+         /* Decode new audio samples */
+         if(!qt_audio_samples_in_buffer)
+-          decode_audio(AUDIO_BLOCK_SIZE);
++          decode_audio();
+         ret = snd_pcm_writei(pcm_handle, (void *)(qt_audio_ptr), qt_audio_samples_in_buffer);
+         if (ret == -EAGAIN) { 
+             ret = 0;
+@@ -1515,7 +1515,7 @@ static int qt_sndio_audio_write(void)
+     int rc, n, revents;
+ 
+     if(!qt_audio_samples_in_buffer)
+-      decode_audio(AUDIO_BLOCK_SIZE);
++      decode_audio();
+ 
+     /* this code is absolutely horrible.  do not follow this example. */
+ 
+@@ -1557,7 +1557,7 @@ static int qt_oss_audio_write(void)
+     int rc;
+ 
+     if(!qt_audio_samples_in_buffer)
+-      decode_audio(AUDIO_BLOCK_SIZE);
++      decode_audio();
+     
+     rc = write(oss_fd,qt_audio_ptr,qt_audio_samples_in_buffer * qt_channels * sizeof(*qt_audio));
+     switch (rc) {
