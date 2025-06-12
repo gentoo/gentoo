@@ -554,8 +554,8 @@ apache-2_src_configure() {
 		--enable-layout=Gentoo
 	)
 
+	export PCRE_CONFIG="${T}"/pcre2-config
 	export ac_cv_prog_ac_ct_PCRE_CONFIG="${T}"/pcre2-config
-
 	MY_CONF+=(
 		--without-pcre
 		--with-pcre2="${T}"/pcre2-config
