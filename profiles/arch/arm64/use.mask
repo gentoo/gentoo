@@ -8,10 +8,6 @@
 # media-libs/libspng only keyworded on amd64, arm64
 -spng
 
-# Sam James <sam@gentoo.org> (2025-02-19)
-# x11-drivers/xf86-input-wacom is available here
--input_devices_wacom
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-28)
 # dev-libs/optix works on arm64
 -optix

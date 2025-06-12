@@ -167,7 +167,6 @@ webengine
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
 -input_devices_vmmouse
--input_devices_wacom
 -video_cards_ast
 -video_cards_d3d12
 -video_cards_i915

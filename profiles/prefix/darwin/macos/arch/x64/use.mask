@@ -40,7 +40,6 @@
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
 -input_devices_vmmouse
--input_devices_wacom
 -video_cards_nvidia
 -video_cards_vmware
 
