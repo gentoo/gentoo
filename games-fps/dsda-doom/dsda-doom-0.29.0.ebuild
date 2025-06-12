@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake desktop xdg
 
-DESCRIPTION="A successor to the PrBoom+ Doom source port"
+DESCRIPTION="Successor to the PrBoom+ Doom source port"
 HOMEPAGE="https://github.com/kraflab/dsda-doom/"
 SRC_URI="https://github.com/kraflab/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -19,16 +19,15 @@ IUSE="fluidsynth mad portmidi sdl2-image vorbis"
 DEPEND="
 	media-libs/libsdl2[opengl,joystick,sound,video]
 	media-libs/sdl2-mixer[midi]
-	fluidsynth? ( media-sound/fluidsynth:= )
-	mad? ( media-libs/libmad )
-	portmidi? ( media-libs/portmidi )
-	sdl2-image? ( media-libs/sdl2-image )
-	media-libs/sdl2-mixer[midi]
-	vorbis? ( media-libs/libvorbis )
 	dev-libs/libzip:=
 	sys-libs/zlib:=
 	virtual/glu
 	virtual/opengl
+	fluidsynth? ( media-sound/fluidsynth:= )
+	mad? ( media-libs/libmad )
+	portmidi? ( media-libs/portmidi )
+	sdl2-image? ( media-libs/sdl2-image )
+	vorbis? ( media-libs/libvorbis )
 "
 RDEPEND="${DEPEND}"
 
