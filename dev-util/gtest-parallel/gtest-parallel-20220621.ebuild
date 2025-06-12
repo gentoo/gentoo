@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 inherit python-r1
 
-DESCRIPTION="Run Google Test suites in parallel."
+DESCRIPTION="Run Google Test suites in parallel"
 HOMEPAGE="https://github.com/google/gtest-parallel"
 MY_COMMIT="f4d65b555894b301699c7c3c52906f72ea052e83"
 SRC_URI="
