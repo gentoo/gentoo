@@ -147,6 +147,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/nspr
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
+	dev-libs/zxcvbn-c
 	>=dev-libs/xmlsec-1.2.35:=[nss]
 	>=games-engines/box2d-2.4.1:0
 	media-gfx/fontforge
@@ -545,13 +546,13 @@ src_configure() {
 		--with-help="html"
 		--without-helppack-integration
 		--with-system-gpgmepp
+		--with-system-zxcvbn
 		--without-system-abseil
 		--without-system-dragonbox
 		--without-system-frozen
 		--without-system-jfreereport
 		--without-system-libfixmath
 		--without-system-sane
-		--without-system-zxcvbn
 		--without-system-java-websocket
 		$(use_enable base report-builder)
 		$(use_enable bluetooth sdremote-bluetooth)
