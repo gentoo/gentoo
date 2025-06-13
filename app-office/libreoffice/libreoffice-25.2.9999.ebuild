@@ -296,6 +296,7 @@ PATCHES=(
 
 	# git master
 	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
+	"${FILESDIR}/${PN}-25.2.4.3-gcc16.patch"
 
 	# add qt6 backend as possible fallback for gtk-based desktop environments:
 	# https://bugs.gentoo.org/950170

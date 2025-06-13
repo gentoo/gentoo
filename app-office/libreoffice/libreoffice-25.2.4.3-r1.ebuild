@@ -301,6 +301,7 @@ PATCHES=(
 	# git master:
 	"${FILESDIR}/${PN}-25.2-unused-qt6network.patch"
 	"${FILESDIR}/${PN}-25.2.3.2-poppler-25.05.patch"
+	"${FILESDIR}/${PN}-25.2.4.3-gcc16.patch"
 )
 
 _check_reqs() {

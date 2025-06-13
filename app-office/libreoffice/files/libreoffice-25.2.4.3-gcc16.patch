@@ -1,0 +1,28 @@
+https://github.com/LibreOffice/core/commit/6ebc3c540f2aa13363e3dcb32a44bfa2c7f66a9f
+
+From 6ebc3c540f2aa13363e3dcb32a44bfa2c7f66a9f Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Mon, 9 Jun 2025 21:03:40 +0200
+Subject: [PATCH] Missing include (for USHRT_MAX)
+
+Change-Id: I9d2a59fd198679c2a7a7ce124e2548f2add61d6d
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/186303
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <stephan.bergmann@allotropia.de>
+---
+ include/comphelper/errcode.hxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/comphelper/errcode.hxx b/include/comphelper/errcode.hxx
+index 865ab5538897b..3adc6ecdf790b 100644
+--- a/include/comphelper/errcode.hxx
++++ b/include/comphelper/errcode.hxx
+@@ -21,6 +21,7 @@
+ #include <config_options.h>
+ #include <rtl/ustring.hxx>
+ #include <comphelper/comphelperdllapi.h>
++#include <climits>
+ #include <ostream>
+ #include <o3tl/typed_flags_set.hxx>
+ #include <optional>
+
