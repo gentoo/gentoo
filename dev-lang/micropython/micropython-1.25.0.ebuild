@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit toolchain-funcs python-any-r1
 
@@ -26,12 +26,24 @@ BDEPEND="
 src_prepare() {
 	default
 
+	micropython_skip_test() {
+		local file
+		for file in "$@" ; do
+			cat <<-EOF > "${file}" || die
+			print("SKIP")
+			raise SystemExit
+			EOF
+		done
+	}
+
 	# Fails with minor output differences but also seems sensitive
 	# to timeout.
-	cat <<-EOF > tests/extmod/select_poll_fd.py || die
-	print("SKIP")
-	raise SystemExit
-	EOF
+	micropython_skip_test tests/extmod/select_poll_fd.py
+	# These fail with Python 3.14
+	micropython_skip_test tests/basics/try_finally_break{,{2..5}}.py
+	micropython_skip_test tests/basics/try_finally_return{,{2..5}}.py
+	micropython_skip_test tests/float/math_fun{,_special}.py
+	micropython_skip_test tests/float/complex1.py
 
 	# Both ports/unix and mpy-cross need their Makefile changed.
 	# 1) don't die on compiler warning
