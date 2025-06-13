@@ -52,8 +52,6 @@ ADDONS_SRC=(
 	"${ADDONS_URI}/frozen-1.2.0.tar.gz"
 	# not packaged in Gentoo, https://skia.org/
 	"${ADDONS_URI}/skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz"
-	# not packaged in Gentoo, https://github.com/tsyrogit/zxcvbn-c
-	"${ADDONS_URI}/zxcvbn-c-2.5.tar.gz"
 
 	"base? (
 		${ADDONS_URI}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
