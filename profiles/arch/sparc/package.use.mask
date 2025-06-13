@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Christopher Byrne <salah.coronya@gmail.com> (2025-05-26)
+# dev-ml/findlib is not keyworkded here
+sys-libs/libnbd test
+
 # NRK <nrk@disroot.org> (2025-05-18)
 # app-arch/plzip is not keyworded
 app-alternatives/lzip plzip
