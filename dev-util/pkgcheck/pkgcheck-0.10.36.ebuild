@@ -33,6 +33,7 @@ else
 		>=sys-apps/pkgcore-0.12.30[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
+	app-arch/zstd
 	>=dev-libs/tree-sitter-bash-0.21.0[python,${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
