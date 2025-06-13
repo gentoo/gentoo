@@ -24,7 +24,6 @@ RDEPEND="
 	>=dev-libs/glib-2.64.0:2[${MULTILIB_USEDEP}]
 	>=media-libs/gstreamer-${MY_PV}:1.0[${MULTILIB_USEDEP}]
 	>=media-libs/gst-plugins-base-${MY_PV}:1.0[${MULTILIB_USEDEP}]
-	>=media-video/ffmpeg-4.4:5=[${MULTILIB_USEDEP}]
+	>=media-video/ffmpeg-4.4:0=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-BDEPEND=""
