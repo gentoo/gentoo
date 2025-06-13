@@ -414,6 +414,46 @@ test_search_recursion() {
 	tend ${ret} "Unexpected LTO object found"
 }
 
+test_strip_lto() {
+	tbegin "whether strip ignores LTO static archives"
+	ret=0
+	(
+		rm foo.a foo.a.bak 2>/dev/null
+		_create_test_progs
+
+		$(tc-getCC) a.c -o a.o -c -flto -ggdb3 || return 1
+		$(tc-getAR) q foo.a a.o 2>/dev/null || return 1
+		cp foo.a foo.a.bak || return 1
+		$(tc-getSTRIP) -d foo.a || return 1
+
+		# They should NOT differ after stripping because it
+		# can't be safely stripped without special arguments.
+		cmp -s foo.a foo.a.bak || return 1
+
+		return 0
+	) || ret=1
+	tend ${ret} "strip operated on an LTO archive when it shouldn't"
+
+	tbegin "whether strip ignores fat LTO static archives"
+	ret=0
+	(
+		rm foo.a foo.a.bak 2>/dev/null
+		_create_test_progs
+
+		$(tc-getCC) a.c -o a.o -c -flto -ffat-lto-objects -ggdb3 || return 1
+		$(tc-getAR) q foo.a a.o 2>/dev/null || return 1
+		cp foo.a foo.a.bak || return 1
+		$(tc-getSTRIP) -d foo.a || return 1
+
+		# They should NOT differ after stripping because it
+		# can't be safely stripped without special arguments.
+		cmp -s foo.a foo.a.bak || return 1
+
+		return 0
+	) || ret=1
+	tend ${ret} "strip operated on a fat LTO archive when it shouldn't"
+}
+
 test_strip_nolto() {
 	# Check whether regular (non-LTO'd) static libraries are stripped
 	# and not ignored (bug #957882, https://sourceware.org/PR33078).
@@ -517,5 +557,6 @@ _repeat_mixed_tests_with_linkers
 CC=${CC_orig}
 AR=${AR_orig}
 test_search_recursion
+test_strip_lto
 test_strip_nolto
 texit
