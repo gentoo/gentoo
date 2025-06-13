@@ -18,6 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/libffi:="
+RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
