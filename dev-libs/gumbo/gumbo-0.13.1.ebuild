@@ -21,6 +21,7 @@ BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/gumbo-0.13.1-PR12-default_library.patch"
+	"${FILESDIR}/gumbo-0.13.1-gtest.patch"
 )
 
 src_configure() {
