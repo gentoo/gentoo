@@ -1,4 +1,6 @@
 https://github.com/LibreOffice/core/commit/6ebc3c540f2aa13363e3dcb32a44bfa2c7f66a9f
+https://github.com/LibreOffice/core/commit/0084c2b22ce26084df5a379135ba8ac174585ac0
+https://github.com/LibreOffice/core/commit/19c32b44fead600118377417012b111a4f238766
 
 From 6ebc3c540f2aa13363e3dcb32a44bfa2c7f66a9f Mon Sep 17 00:00:00 2001
 From: Stephan Bergmann <stephan.bergmann@allotropia.de>
@@ -26,3 +28,54 @@ index 865ab5538897b..3adc6ecdf790b 100644
  #include <o3tl/typed_flags_set.hxx>
  #include <optional>
 
+From 0084c2b22ce26084df5a379135ba8ac174585ac0 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Mon, 9 Jun 2025 22:07:46 +0200
+Subject: [PATCH] Missing include (for LONG_MAX)
+
+Change-Id: I8f03310ab1b5da503670f77bf9c5211e956dd48c
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/186305
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <stephan.bergmann@allotropia.de>
+---
+ sc/source/core/data/dptabsrc.cxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sc/source/core/data/dptabsrc.cxx b/sc/source/core/data/dptabsrc.cxx
+index ad8f2490f2bab..61123f89cd8ab 100644
+--- a/sc/source/core/data/dptabsrc.cxx
++++ b/sc/source/core/data/dptabsrc.cxx
+@@ -20,6 +20,7 @@
+ #include <dptabsrc.hxx>
+ 
+ #include <algorithm>
++#include <climits>
+ #include <vector>
+ 
+ #include <comphelper/sequence.hxx>
+
+From 19c32b44fead600118377417012b111a4f238766 Mon Sep 17 00:00:00 2001
+From: Stephan Bergmann <stephan.bergmann@allotropia.de>
+Date: Mon, 9 Jun 2025 21:05:19 +0200
+Subject: [PATCH] Missing include (for SHRT_MIN/MAX)
+
+Change-Id: I1755b440515724315aa2e540fe3de4a473371dc4
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/186304
+Tested-by: Jenkins
+Reviewed-by: Stephan Bergmann <stephan.bergmann@allotropia.de>
+---
+ sax/source/tools/converter.cxx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sax/source/tools/converter.cxx b/sax/source/tools/converter.cxx
+index c026e35d770ae..f27fc325e26de 100644
+--- a/sax/source/tools/converter.cxx
++++ b/sax/source/tools/converter.cxx
+@@ -39,6 +39,7 @@
+ #include <tools/time.hxx>
+ 
+ #include <algorithm>
++#include <climits>
+ #include <map>
+ #include <string_view>
+ 
