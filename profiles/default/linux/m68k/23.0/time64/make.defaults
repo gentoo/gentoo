@@ -13,7 +13,7 @@ FFLAGS="${FFLAGS} -malign-int"
 # Unfortunately, since the main m68k profile overwrites these variables,
 # we cannot simply go back to the base settings but need to overwrite
 # them *again*.
-PYTHON_SINGLE_TARGET="python3_13"
-PYTHON_TARGETS="python3_13"
-BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_13 python_single_target_python3_13 -python_targets_python3_12 -python_single_target_python3_12"
+PYTHON_SINGLE_TARGET="-python3_12 python3_13 -python3_13t -python3_14 -python3_14t"
+PYTHON_TARGETS="-python3_12 python3_13 -python3_13t -python3_14 -python3_14t"
+BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_13 python_single_target_python3_13"
 
