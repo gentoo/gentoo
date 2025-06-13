@@ -77,19 +77,19 @@ RDEPEND="
 		sci-ml/gemmlowp
 	)
 	rocm? (
-		>=dev-libs/rccl-6.1      <dev-libs/rccl-6.4
-		>=dev-util/hip-6.1       <dev-util/hip-6.4
-		>=dev-util/roctracer-6.1 <dev-util/roctracer-6.4
-		>=sci-libs/hipBLAS-6.1   <sci-libs/hipBLAS-6.4
-		>=sci-libs/hipBLASLt-6.1 <sci-libs/hipBLASLt-6.4
-		>=sci-libs/hipCUB-6.1    <sci-libs/hipCUB-6.4
-		>=sci-libs/hipFFT-6.1    <sci-libs/hipFFT-6.4
-		>=sci-libs/hipRAND-6.1   <sci-libs/hipRAND-6.4
-		>=sci-libs/hipSOLVER-6.1 <sci-libs/hipSOLVER-6.4
-		>=sci-libs/hipSPARSE-6.1 <sci-libs/hipSPARSE-6.4
-		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.4
-		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.4
-		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.4
+		>=dev-libs/rccl-6.1      <dev-libs/rccl-6.5
+		>=dev-util/hip-6.1       <dev-util/hip-6.5
+		>=dev-util/roctracer-6.1 <dev-util/roctracer-6.5
+		>=sci-libs/hipBLAS-6.1   <sci-libs/hipBLAS-6.5
+		>=sci-libs/hipBLASLt-6.1 <sci-libs/hipBLASLt-6.5
+		>=sci-libs/hipCUB-6.1    <sci-libs/hipCUB-6.5
+		>=sci-libs/hipFFT-6.1    <sci-libs/hipFFT-6.5
+		>=sci-libs/hipRAND-6.1   <sci-libs/hipRAND-6.5
+		>=sci-libs/hipSOLVER-6.1 <sci-libs/hipSOLVER-6.5
+		>=sci-libs/hipSPARSE-6.1 <sci-libs/hipSPARSE-6.5
+		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.5
+		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.5
+		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.5
 	)
 	distributed? (
 		sci-ml/tensorpipe[cuda?]
