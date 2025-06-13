@@ -139,8 +139,10 @@ src_test() {
 				:
 				;;
 
-			arc | gc | ic | js | msgs | stylecheck \
-				| testament | untestable | objects | valgrind )
+			arc | async | coroutines | errmsgs | exception | gc | \
+			ic | int | js | msgs | objects | overflow | \
+			stdlib | stylecheck | system | testament | untestable | \
+			valgrind )
 				einfo "Skipped nim test category: ${tcat}"
 				;;
 
