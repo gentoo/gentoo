@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 inherit autotools eapi9-ver flag-o-matic python-single-r1 udev systemd
 
@@ -19,7 +19,7 @@ else
 
 	#normally we want an official release
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz
-		https://dev.gentoo.org/~zerochaos/distfiles/${P}-stdint-fix.patch"
+		https://dev.gentoo.org/~zerochaos/distfiles/${PN}-2023.07.1-stdint-fix.patch"
 
 	#but sometimes we want a git commit
 	#COMMIT="9ca7e469cf115469f392db7436816151867e1654"
@@ -27,7 +27,7 @@ else
 	#S="${WORKDIR}/${PN}-${COMMIT}"
 
 	PATCHES=(
-		"${DISTDIR}/${P}-stdint-fix.patch"
+		"${DISTDIR}/${PN}-2023.07.1-stdint-fix.patch"
 		# https://github.com/kismetwireless/kismet/pull/517
 		"${FILESDIR}"/0001-configure.ac-bashism-fix-critical-existence-failure-.patch
 	)
