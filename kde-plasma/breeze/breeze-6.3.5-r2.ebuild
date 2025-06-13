@@ -7,7 +7,7 @@ KF5MIN=5.115.0
 KFMIN=6.10.0
 QT5MIN=5.15.12
 QTMIN=6.8.1
-inherit ecm plasma.kde.org
+inherit ecm plasma.kde.org xdg
 
 DESCRIPTION="Breeze visual style for the Plasma desktop"
 HOMEPAGE="https://invent.kde.org/plasma/breeze"
