@@ -25,7 +25,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	>=app-emacs/compat-30.0.2.0
+	>=app-emacs/compat-30.1.0.0
 "
 BDEPEND="
 	${RDEPEND}
