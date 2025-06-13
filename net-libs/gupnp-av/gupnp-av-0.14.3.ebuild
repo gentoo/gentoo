@@ -29,10 +29,6 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.14.1-libxml2-2.12.patch
-)
-
 src_prepare() {
 	use vala && vala_setup
 	default
