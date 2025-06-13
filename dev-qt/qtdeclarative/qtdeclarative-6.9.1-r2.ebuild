@@ -34,6 +34,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.9.1-QTBUG-135158.patch
+	"${FILESDIR}"/${PN}-6.9.1-qmlcachegen-crash.patch
 )
 
 src_configure() {
