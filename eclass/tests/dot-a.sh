@@ -415,6 +415,10 @@ test_search_recursion() {
 }
 
 test_strip_lto() {
+	# This is more of a test for https://sourceware.org/PR21479 given
+	# one needs -ffat-lto-objects for our purposes in dot-a.eclass,
+	# but still, strip shouldn't break a non-fat object, and we want
+	# to know if that regresses.
 	tbegin "whether strip ignores LTO static archives"
 	ret=0
 	(
