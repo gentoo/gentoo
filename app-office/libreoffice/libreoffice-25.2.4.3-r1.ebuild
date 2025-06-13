@@ -477,6 +477,9 @@ src_configure() {
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
+	# doesn't respect CPPFLAGS
+	append-flags "-I${ESYSROOT}/usr/include/zxcvbn"
+
 	if use qt6; then
 		export QT6DIR="$(qt6_get_bindir)/.."
 	fi
