@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.2.6a-solaris.patch"
 	"${FILESDIR}/${PN}-3.2.9-app-defaults.patch"
 	"${DISTDIR}/${P}-modern-c.patch"
+	"${FILESDIR}/${PN}-3.2.9a-variables.patch"
 )
 
 src_configure() {
