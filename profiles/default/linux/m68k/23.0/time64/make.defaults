@@ -15,5 +15,5 @@ FFLAGS="${FFLAGS} -malign-int"
 # them *again*.
 PYTHON_SINGLE_TARGET="python3_13"
 PYTHON_TARGETS="python3_13"
-BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_13 python_single_target_python3_13"
+BOOTSTRAP_USE="unicode pkg-config split-usr xml python_targets_python3_13 python_single_target_python3_13 -python_targets_python3_12 -python_single_target_python3_12"
 
