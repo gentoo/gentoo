@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-13)
+# dev-libs/libwacom is not keyworded here
+dev-libs/libinput input_devices_wacom
+gnome-base/gnome-settings-daemon input_devices_wacom
+
 # NRK <nrk@disroot.org> (2025-05-18)
 # app-arch/plzip is not keyworded
 app-alternatives/lzip plzip
