@@ -807,6 +807,25 @@ cmake_src_install() {
 		einstalldocs
 		popd > /dev/null || die
 	fi
+
+	local file files=()
+	while read -d '' -r file ; do
+		# Detect unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
+		if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
+			_cmake_minreqver-lt "3.5" "${file}" && files+=( "${file#"${D}"}" )
+		fi
+	done < <(find "${D}" -type f -iname "*.cmake" -print0 || die)
+	if [[ ${#files[*]} -gt 0 ]]; then
+		eqawarn "QA Notice: Package installs CMake module(s) incompatible with CMake 4,"
+		eqawarn "breaking any packages relying on it:"
+		eqawarn
+		for file in "${files[@]}"; do
+			eqawarn "    ${file}"
+		done
+		eqawarn
+		eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
+		eqawarn "this package, and take it upstream."
+	fi
 }
 
 fi
