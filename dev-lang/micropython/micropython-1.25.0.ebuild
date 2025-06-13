@@ -74,6 +74,8 @@ src_compile() {
 }
 
 src_test() {
+	# TODO: Switch this to using run-tests.py so we get better output
+	# on failures and can skip tests using regex?
 	emake V=1 -C ports/unix \
 		PYTHON="${EPYTHON}" \
 		MICROPY_CPYTHON3="${EPYTHON}" \
