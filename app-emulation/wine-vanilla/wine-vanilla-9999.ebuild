@@ -172,7 +172,6 @@ src_configure() {
 		$(use_with nls gettext)
 		$(use_with opencl)
 		$(use_with opengl)
-		--without-osmesa # media-libs/mesa no longer supports this
 		--without-oss # media-sound/oss is not packaged (OSSv4)
 		$(use_with pcap)
 		$(use_with pulseaudio pulse)
