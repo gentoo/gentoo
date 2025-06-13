@@ -35,6 +35,7 @@ BDEPEND="
 DEPEND="
 	>=dev-cpp/msgpack-cxx-6.0.0
 	dev-util/hip:${SLOT}
+	dev-util/roctracer:${SLOT}
 	test? (
 		virtual/blas
 		dev-cpp/gtest
