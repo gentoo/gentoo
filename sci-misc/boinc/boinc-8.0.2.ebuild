@@ -38,7 +38,7 @@ SLOT="0"
 IUSE="X gui"
 
 DEPEND="
-	>=acct-user/boinc-1
+	acct-user/boinc
 	app-misc/ca-certificates
 	dev-libs/openssl:=
 	net-misc/curl[ssl]
@@ -166,9 +166,6 @@ pkg_postinst() {
 	# OpenCL and CUDA libraries are loaded with dlopen(),
 	# no headers used at build time and no linking occurs.
 	optfeature "CUDA applications support" x11-drivers/nvidia-drivers
-	optfeature "Docker applications support" \
-		"app-containers/podman app-containers/podman-compose" \
-		"app-containers/docker app-containers/docker-compose:2"
 	optfeature "OpenCL applications support" virtual/opencl
 	optfeature "VirtualBox applications support" app-emulation/virtualbox
 
