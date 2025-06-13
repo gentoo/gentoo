@@ -6,3 +6,5 @@
 # Python 3.13 works here. Not sure about 3.14 yet, we'll find out.
 -python_targets_python3_13
 -python_targets_python3_13t
+-python_single_target_python3_13
+-python_single_target_python3_13
