@@ -123,6 +123,11 @@ fi
 # If set, skip detection of CMakeLists.txt unsupported in CMake 4 in case of
 # false positives (e.g. unused outdated bundled libs).
 
+# @ECLASS_VARIABLE: _CMAKE_MINREQVER_UNSUPPORTED
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Is set to true if an unsupported cmake_minimum_required value was detected.
+
 # @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -455,7 +460,7 @@ cmake_src_configure() {
 	# Fix xdg collision with sandbox
 	xdg_environment_reset
 
-	local file ver cmreq_isold
+	local file ver
 	if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
 		while read -d '' -r file ; do
 			ver=$(sed -ne "/cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
@@ -463,7 +468,7 @@ cmake_src_configure() {
 			)
 
 			if [[ -n $ver ]] && ver_test $ver -lt "3.5"; then
-				cmreq_isold=true
+				_CMAKE_MINREQVER_UNSUPPORTED=true
 			fi
 		done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0)
 	fi
@@ -648,7 +653,7 @@ cmake_src_configure() {
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
 	fi
 
-	if [[ ${cmreq_isold} ]]; then
+	if [[ ${_CMAKE_MINREQVER_UNSUPPORTED} ]]; then
 		eqawarn "QA Notice: Compatibility with CMake < 3.5 has been removed from CMake 4,"
 		eqawarn "${CATEGORY}/${PN} will fail to build w/o a fix."
 		eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
