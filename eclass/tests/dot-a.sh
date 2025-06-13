@@ -509,9 +509,13 @@ _repeat_mixed_tests_with_linkers() {
 # TODO: maybe test several files
 mkdir -p "${tmpdir}/lto" || die
 pushd "${tmpdir}/lto" >/dev/null || die
+CC_orig=${CC}
+AR_orig=${AR}
 _create_test_progs
 _repeat_tests_with_compilers
 _repeat_mixed_tests_with_linkers
+CC=${CC_orig}
+AR=${AR_orig}
 test_search_recursion
 test_strip_nolto
 texit
