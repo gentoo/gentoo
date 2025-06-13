@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,8 +18,6 @@ RDEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-text/doxygen )"
 
-RESTRICT="test"
-
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/cddb/version.h )
@@ -30,6 +28,17 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# Need ntwork access
+	local file
+	for file in tests/check_{cache,discid,server,charset}.sh ; do
+		cat <<-EOF > "${file}"
+		#!/bin/sh
+		exit 77
+		EOF
+		chmod +x "${file}" || die
+	done
+
 	# Required for CONFIG_SHELL != bash (bug #528012)
 	eautoreconf
 }
