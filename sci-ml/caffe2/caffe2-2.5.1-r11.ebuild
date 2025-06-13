@@ -69,17 +69,17 @@ RDEPEND="
 	)
 	rocm? (
 		=dev-util/hip-6.1*
-		=dev-libs/rccl-6.1*[${ROCM_USEDEP}]
-		=sci-libs/rocThrust-6.1*[${ROCM_USEDEP}]
-		=sci-libs/rocPRIM-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipBLAS-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipFFT-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipSPARSE-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipRAND-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipCUB-6.1*[${ROCM_USEDEP}]
-		=sci-libs/hipSOLVER-6.1*[${ROCM_USEDEP}]
-		=sci-libs/miopen-6.1*[${ROCM_USEDEP}]
-		=dev-util/roctracer-6.1*[${ROCM_USEDEP}]
+		=dev-libs/rccl-6.1*
+		=sci-libs/rocThrust-6.1*
+		=sci-libs/rocPRIM-6.1*
+		=sci-libs/hipBLAS-6.1*
+		=sci-libs/hipFFT-6.1*
+		=sci-libs/hipSPARSE-6.1*
+		=sci-libs/hipRAND-6.1*
+		=sci-libs/hipCUB-6.1*
+		=sci-libs/hipSOLVER-6.1*
+		=sci-libs/miopen-6.1*
+		=dev-util/roctracer-6.1*
 
 		=sci-libs/hipBLASLt-6.1*
 		amdgpu_targets_gfx90a? ( =sci-libs/hipBLASLt-6.1*[amdgpu_targets_gfx90a] )
