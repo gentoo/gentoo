@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..13} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit python-single-r1 waf-utils
+inherit dot-a python-single-r1 waf-utils
 
 WAF_VER=2.0.20
 
@@ -43,6 +43,8 @@ src_unpack() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mywafconfargs=(
 		"--docdir=${EPREFIX}/usr/share/doc/${PF}"
 		"--lv2dir=${EPREFIX}/usr/$(get_libdir)/lv2"
@@ -57,6 +59,8 @@ src_configure() {
 
 src_install() {
 	waf-utils_src_install
+
+	strip-lto-bytecode
 
 	# It does not respect docdir properly, reported upstream
 	if use doc; then
