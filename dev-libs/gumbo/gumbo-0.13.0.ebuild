@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="The HTML5 parsing algorithm implemented as a pure C99 library"
-HOMEPAGE="https://codeberg.org/grisha/gumbo-parser"
+HOMEPAGE="https://codeberg.org/gumbo-parser/gumbo-parser"
 SRC_URI="https://codeberg.org/grisha/gumbo-parser/archive/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/gumbo-parser"
 

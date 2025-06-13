@@ -10,6 +10,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="codeberg">grisha/gumbo-parser</remote-id>
+		<remote-id type="codeberg">gumbo-parser/gumbo-parser</remote-id>
 	</upstream>
 </pkgmetadata>
