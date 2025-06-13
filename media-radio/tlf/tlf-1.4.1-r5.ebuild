@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit autotools flag-o-matic
 
@@ -20,7 +20,7 @@ RDEPEND="sys-libs/ncurses:=
 	dev-libs/glib:2
 	media-libs/hamlib:=
 	media-sound/sox
-	dev-libs/xmlrpc-c[curl]
+	dev-libs/xmlrpc-c:=[curl]
 	elibc_musl? ( sys-libs/argp-standalone )"
 DEPEND="
 	${RDEPEND}
@@ -31,6 +31,7 @@ PATCHES=( "${FILESDIR}/${P}-zone_nr.patch"
 	  "${FILESDIR}/${P}-missing-include.patch"
 	  "${FILESDIR}/${P}-prototypes.patch"
 	  "${FILESDIR}/${P}-pi.patch"
+	  "${FILESDIR}/${P}-filterLog.patch"
 	)
 
 # suppress warning wrt 'implicit function declaration' in config logs
