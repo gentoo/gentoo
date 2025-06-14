@@ -16,7 +16,7 @@ declare -A GIT_CRATES=(
 	[blade-macros]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-macros'
 	[blade-util]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-util'
 	[cpal]='https://github.com/zed-industries/cpal;fd8bc2fd39f1f5fdee5a0690656caff9a26d9d50;cpal-%commit%'
-	[dap-types]='https://github.com/zed-industries/dap-types;68516de327fa1be15214133a0a2e52a12982ce75;dap-types-%commit%/dap-types'
+	[dap-types]='https://github.com/zed-industries/dap-types;cef124a5109d6fd44a3f986882d78ce40b8d4fb5;dap-types-%commit%/dap-types'
 	[font-kit]='https://github.com/zed-industries/font-kit;5474cfad4b719a72ec8ed2cb7327b2b01fd10568;font-kit-%commit%'
 	[jj-lib-proc-macros]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib/proc-macros'
 	[jj-lib]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib'
@@ -83,7 +83,7 @@ DESCRIPTION="The fast, collaborative code editor"
 HOMEPAGE="https://zed.dev https://github.com/zed-industries/zed"
 SRC_URI="
 	https://github.com/zed-industries/zed/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz
-	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/${PV}/${P}-crates.tar.xz
+	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/$(ver_cut 1-2)/${P}-crates.tar.xz
 	amd64? (
 		https://github.com/livekit/rust-sdks/releases/download/webrtc-${WEBRTC_COMMIT}/webrtc-linux-x64-release.zip ->
 			webrtc-${WEBRTC_COMMIT}-linux-x64-release.zip
