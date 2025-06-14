@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<longdescription lang="en">
+	<longdescription>
 		InspIRCd is a modular Internet Relay Chat (IRC) server written in C++
 		for Linux, BSD, Windows and Mac OS X systems which was created from
 		scratch to be stable, modern and lightweight.
@@ -14,22 +14,20 @@
 	<use>
 		<flag name="argon2">Enable Argon2 hashes in modules</flag>
 		<flag name="gnutls">Enable TLS support</flag>
-		<flag name="ldap">Enable LDAP support</flag>
 		<flag name="log-json">Enable logging via JSON</flag>
-		<flag name="maxminddb">Add support for geolocation using libMaxMindDB</flag>
+		<flag name="maxminddb">Enable geolocation support via <pkg>dev-libs/libmaxminddb</pkg></flag>
 		<flag name="mbedtls">Add support for TLS using the mbedTLS library</flag>
-		<flag name="mysql">Enable MySQL database backend</flag>
 		<flag name="pcre2">Add support for Perl Compatible Regular Expressions 2</flag>
-		<flag name="postgres">Enable PostgreSQL database backend</flag>
 		<flag name="re2">Add support for Google RE2 regular expressions library</flag>
 		<flag name="regex-posix">Add support for POSIX Regular Expressions</flag>
 		<flag name="regex-stdlib">Add support for C++ stdlib regular expressions</flag>
-		<flag name="sqlite">Enable Sqlite database backend</flag>
 		<flag name="ssl">Enable SSL support</flag>
 		<flag name="sslrehashsignal">Enable rehashing SSL module by SIGUSR1</flag>
 		<flag name="tre">Enable support for TRE, a lightweight, robust, and efficient POSIX compliant regexp matching library</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/inspircd/inspircd/issues</bugs-to>
+		<changelog>https://docs.inspircd.org</changelog>
 		<remote-id type="github">inspircd/inspircd</remote-id>
 	</upstream>
 	<maintainer type="person" proxied="yes">
