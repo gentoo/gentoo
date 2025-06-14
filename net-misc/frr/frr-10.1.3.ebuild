@@ -14,7 +14,7 @@ S="${WORKDIR}/frr-${P}"
 
 LICENSE="GPL-2+"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
