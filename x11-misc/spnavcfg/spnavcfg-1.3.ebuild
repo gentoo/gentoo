@@ -11,7 +11,7 @@ SRC_URI="https://github.com/FreeSpacenav/spnavcfg/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND=">=dev-libs/libspnav-1.2[X]
 	dev-qt/qtbase:6[gui,widgets]
