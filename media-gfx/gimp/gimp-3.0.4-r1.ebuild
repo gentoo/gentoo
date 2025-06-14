@@ -116,6 +116,10 @@ BDEPEND="
 
 DOCS=( "AUTHORS" "NEWS" "README" "README.i18n" )
 
+PATCHES=(
+	"${FILESDIR}/${P}_fix_gir_and_plugins_build_deps.patch" # Bugs 951863 (fix build with app-alternatives/ninja[samurai])
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
