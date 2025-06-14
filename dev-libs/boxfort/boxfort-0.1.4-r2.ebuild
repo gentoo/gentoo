@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit dot-a meson
 
 DESCRIPTION="Convenient & cross-platform sandboxing C library"
 HOMEPAGE="https://github.com/Snaipe/BoxFort"
@@ -24,10 +24,17 @@ BDEPEND="
 "
 
 src_configure() {
+	lto-guarantee-fat
+
 	local emesonargs=(
 		$(meson_use test samples)
 		$(meson_use test tests)
 	)
 
 	meson_src_configure
+}
+
+src_install() {
+	meson_src_install
+	strip-lto-bytecode
 }
