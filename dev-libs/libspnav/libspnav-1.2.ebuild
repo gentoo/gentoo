@@ -11,7 +11,7 @@ HOMEPAGE="http://spacenav.sourceforge.net/"
 SRC_URI="https://github.com/FreeSpacenav/libspnav/releases/download/v${PV}/libspnav-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~riscv x86"
 IUSE="static-libs X"
 
 CDEPEND="X? ( x11-libs/libX11 )"
