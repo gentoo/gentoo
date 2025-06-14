@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: llvm-r1.eclass
@@ -63,7 +63,7 @@ _LLVM_OLDEST_SLOT=15
 # @DESCRIPTION:
 # The newest stable LLVM version.  Versions newer than that won't
 # be automatically enabled via USE defaults.
-_LLVM_NEWEST_STABLE=19
+_LLVM_NEWEST_STABLE=20
 
 # == control variables ==
 
