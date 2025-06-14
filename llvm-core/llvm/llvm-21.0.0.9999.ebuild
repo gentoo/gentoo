@@ -247,6 +247,7 @@ get_distribution_components() {
 
 			# utilities
 			llvm-tblgen
+			llvm-test-mustache-spec
 			FileCheck
 			llvm-PerfectShuffle
 			count
