@@ -32,7 +32,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-dropbox )
 	app-arch/bzip2
 	dev-libs/glib:2
-	dev-libs/libayatana-indicator
+	dev-libs/libayatana-appindicator
 	dev-libs/libffi-compat:7
 	media-libs/fontconfig
 	media-libs/freetype
