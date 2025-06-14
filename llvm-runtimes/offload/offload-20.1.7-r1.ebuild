@@ -106,6 +106,8 @@ src_configure() {
 
 		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
 		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
+		# force using shared libffi
+		-DFFI_STATIC_LIBRARIES=NO
 	)
 
 	[[ ! ${LLVM_ALLOW_GPU_TESTING} ]] && mycmakeargs+=(
