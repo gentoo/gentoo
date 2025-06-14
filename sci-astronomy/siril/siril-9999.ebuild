@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,30 +19,35 @@ fi
 
 LICENSE="GPL-3+ Boost-1.0"
 SLOT="0"
-IUSE="curl exif ffmpeg heif jpeg libconfig openmp png raw tiff wcs"
+IUSE="curl exif ffmpeg git heif jpeg jpegxl openmp png raw tiff"
 
+# TODO: Siril depends optionally on gtksourceview-4, which is deprecated. Add
+#   gui-libs/gtksourceview if version 5 is supported by upstream.
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/json-glib-1.2.6
+	>=dev-libs/yyjson-0.10.0:=
+	media-libs/lcms:=
 	media-libs/librtprocess
-	>=media-libs/opencv-4.4.0:=
+	>=media-libs/opencv-4.2.0:=
+	>=sci-astronomy/wcslib-7.12:=
 	sci-libs/cfitsio:=
 	sci-libs/fftw:3.0=
 	sci-libs/gsl:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/cairo
 	x11-libs/pango
-	>=x11-libs/gtk+-3.20.0:3
+	>=x11-libs/gtk+-3.22.0:3
 	curl? ( net-misc/curl )
 	exif? ( >=media-gfx/exiv2-0.25:= )
 	ffmpeg? ( media-video/ffmpeg:= )
+	git? ( dev-libs/libgit2:= )
 	heif? ( media-libs/libheif:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	libconfig? ( >=dev-libs/libconfig-1.4:=[cxx] )
+	jpegxl? ( media-libs/libjxl:= )
 	png? ( >=media-libs/libpng-1.6.0:= )
 	raw? ( media-libs/libraw:= )
 	tiff? ( media-libs/tiff:= )
-	wcs? ( >=sci-astronomy/wcslib-7.7:= )
 "
 RDEPEND="
 	${DEPEND}
@@ -51,10 +56,10 @@ BDEPEND="dev-build/cmake
 	x11-base/xorg-proto"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-docfiles.patch"
+	"${FILESDIR}/${P}-docfiles.patch"
 )
 
-DOCS=( README.md NEWS ChangeLog AUTHORS )
+DOCS=( README.md ChangeLog AUTHORS )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -66,19 +71,20 @@ pkg_setup() {
 
 src_configure() {
 	local emesonargs=(
+		-DlibXISF=false
 		-Dffms2=false
 		-Dcriterion=false
+		$(meson_use curl libcurl)
 		$(meson_use exif exiv2)
 		$(meson_use ffmpeg)
+		$(meson_use git libgit2)
 		$(meson_use heif libheif)
 		$(meson_use jpeg libjpeg)
-		$(meson_use libconfig)
+		$(meson_use jpegxl libjxl)
 		$(meson_use openmp)
 		$(meson_use png libpng)
 		$(meson_use raw libraw)
 		$(meson_use tiff libtiff)
-		$(meson_use wcs wcslib)
-		$(usex curl -Denable-libcurl=yes -Denable-libcurl=no)
 	)
 	meson_src_configure
 }
