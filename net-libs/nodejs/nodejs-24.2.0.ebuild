@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-arch/brotli-1.1.0:=
 	dev-db/sqlite:3
-	>=dev-libs/libuv-1.49.2:=
+	>=dev-libs/libuv-1.51.0:=
 	>=dev-libs/simdjson-3.10.1:=
 	>=net-dns/c-ares-1.34.4:=
 	>=net-libs/nghttp2-1.64.0:=
