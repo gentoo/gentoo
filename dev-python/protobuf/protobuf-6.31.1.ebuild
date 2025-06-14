@@ -28,7 +28,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-3)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~riscv ~x86"
 
 # need protobuf compiler
 BDEPEND="
