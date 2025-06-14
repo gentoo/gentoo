@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<name>Oz Tiram</name>
+		<email>oz.tiram@gmail.com</email>
+	</maintainer>
+	<maintainer type="project" proxied="no">
+		<name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="django">Enable Django framework support</flag>
+		<flag name="flask">Enable Flask framework support</flag>
+		<flag name="jose">Enable JSON Object Signing and Encryption (JOSE) support via <pkg>dev-python/pycryptodome</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">lepture/authlib</remote-id>
+		<remote-id type="pypi">Authlib</remote-id>
+		<doc>https://docs.authlib.org/</doc>
+		<bugs-to>https://github.com/authlib/authlib/issues</bugs-to>
+	</upstream>
+</pkgmetadata>

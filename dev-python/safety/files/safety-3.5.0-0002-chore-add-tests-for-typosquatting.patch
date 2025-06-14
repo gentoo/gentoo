@@ -1,0 +1,112 @@
+From c797166dcccaec26cd68e2b13d8dd0572f63a359 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Thu, 8 May 2025 23:16:24 +0200
+Subject: [PATCH] chore: add tests for typosquatting
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ tests/test_typosquatting.py | 92 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
+ create mode 100644 tests/test_typosquatting.py
+
+diff --git a/tests/test_typosquatting.py b/tests/test_typosquatting.py
+new file mode 100644
+index 0000000..4b3ac61
+--- /dev/null
++++ b/tests/test_typosquatting.py
+@@ -0,0 +1,92 @@
++import unittest
++from unittest.mock import patch, MagicMock
++from typing import List, Tuple
++
++from safety.tool.constants import MOST_FREQUENTLY_DOWNLOADED_PYPI_PACKAGES
++from safety.tool.typosquatting import TyposquattingProtection
++
++
++class TestTyposquattingProtection(unittest.TestCase):
++    """Unit tests for the TyposquattingProtection class."""
++
++    def setUp(self):
++        self.typosquatting = TyposquattingProtection(MOST_FREQUENTLY_DOWNLOADED_PYPI_PACKAGES)
++
++    def test_check_package_exact_match(self):
++        """Test that exact matches are identified as valid."""
++        for package in MOST_FREQUENTLY_DOWNLOADED_PYPI_PACKAGES:
++            is_valid, suggested = self.typosquatting.check_package(package)
++            self.assertTrue(is_valid)
++            self.assertEqual(suggested, package)
++
++    def test_check_package_typosquatting_one_char_diff(self):
++        """Test that packages with one character difference are identified as typosquatting."""
++        test_cases = [
++            ("requets", "requests"),  # Missing 's'
++            ("numppy", "numpy"),      # Extra 'p'
++            ("pandaz", "pandas"),     # 'z' instead of 's'
++            ("flazk", "flask"),       # 'z' instead of 's'
++        ]
++
++        for typo, expected in test_cases:
++            is_valid, suggested = self.typosquatting.check_package(typo)
++            assert not is_valid, f"Expected False for '{typo}'"
++            self.assertEqual(suggested, expected)
++
++    def test_check_package_typosquatting_two_char_diff(self):
++        """Test that packages with two character differences are identified as typosquatting."""
++        # Only test packages with length > 5 since max_edit_distance is 2 for those
++        test_cases = [
++            ("reqests", "requests"),   # Missing 'u' and 's'
++            ("nunpy", "numpy"),        # 'n' instead of 'm' and missing 'm'
++            ("pandus", "pandas"),      # 'u' instead of 'a' and missing 's'
++            ("djengo", "django"),      # 'e' instead of 'a' and 'o' instead of 'o'
++            ("boto33", "boto3"),       # Extra '3'
++        ]
++
++        for typo, expected in test_cases:
++            is_valid, suggested = self.typosquatting.check_package(typo)
++            self.assertFalse(is_valid)
++            self.assertEqual(suggested, expected)
++
++    def test_check_package_empty_string(self):
++        """Test behavior with an empty string."""
++        is_valid, suggested = self.typosquatting.check_package("")
++        self.assertTrue(is_valid)
++        self.assertEqual(suggested, "")
++
++    @patch('safety.tool.typosquatting.Prompt.ask')
++    def test_coerce_valid_package(self, mock_ask):
++        """Test coercing a valid package name."""
++        package_name = "requests"
++        result = self.typosquatting.coerce(package_name)
++
++        # Should not prompt the user for valid packages
++        mock_ask.assert_not_called()
++        self.assertEqual(result, package_name)
++
++    @patch('safety.tool.typosquatting.Prompt.ask')
++    def test_coerce_typosquatting_user_accepts(self, mock_ask):
++        """Test coercing a typosquatting package name when user accepts the suggestion."""
++        mock_ask.return_value = "y"
++
++        package_name = "requets"
++        expected = "requests"
++
++        result = self.typosquatting.coerce(package_name)
++
++        # Should prompt the user
++        mock_ask.assert_called_once()
++        self.assertEqual(result, expected)
++
++    @patch('safety.tool.typosquatting.Prompt.ask')
++    def test_coerce_typosquatting_user_rejects(self, mock_ask):
++        """Test coercing a typosquatting package name when user rejects the suggestion."""
++        mock_ask.return_value = "n"
++
++        wrong_package_name = "requets"
++
++        result = self.typosquatting.coerce(wrong_package_name)
++
++        mock_ask.assert_called_once()
++        self.assertEqual(result, wrong_package_name)
+-- 
+2.49.0
+
