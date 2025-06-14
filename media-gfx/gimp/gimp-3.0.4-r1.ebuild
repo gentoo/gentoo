@@ -23,7 +23,6 @@ REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	test? ( X )
 	xpm? ( X )
-	^^ ( X wayland )
 "
 
 RESTRICT="!test? ( test )"
