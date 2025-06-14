@@ -104,6 +104,7 @@ src_configure() {
 		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DOFFLOAD_LIBDIR_SUFFIX="${libdir#lib}"
+		-DOFFLOAD_INCLUDE_TESTS=$(usex test)
 		-DLIBOMPTARGET_PLUGINS_TO_BUILD="${plugins}"
 		-DLIBOMPTARGET_OMPT_SUPPORT="$(usex ompt)"
 		-DLIBOMPTARGET_BUILD_DEVICERTL_BCLIB="${build_devicertl}"
