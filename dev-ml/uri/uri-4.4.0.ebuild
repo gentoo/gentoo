@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mirage/ocaml-uri/releases/download/v${PV}/${P}.tbz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="+ocamlopt"
 RESTRICT="test"
 
