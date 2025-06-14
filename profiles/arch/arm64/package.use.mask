@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sasha Finkelstein <fnkl.kernel@gmail.com> (2025-06-09)
+# makes sense only on arm64
+app-emulation/dxvk -i686-pe
+
 # Alfred Wingate <parona@protonmail.com> (2025-06-10)
 # Upstream supports arm64
 media-libs/svt-av1 -test

@@ -25,7 +25,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~arm64"
-IUSE="custom-cflags +strip"
+IUSE="custom-cflags +i686-pe +strip"
 
 BDEPEND="
 	dev-build/cmake
@@ -38,16 +38,18 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-HOSTS=(
-	aarch64-w64-mingw32
-#	i686-w64-mingw32
-)
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
 	tc-is-cross-compiler &&
 		die "cross-compilation of the toolchain itself is unsupported"
+}
+
+pkg_setup() {
+	HOSTS=(
+		aarch64-w64-mingw32
+		$(usev i686-pe i686-w64-mingw32)
+	)
 }
 
 src_prepare() {

@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (2018-11-11)
+# d3d9 works on x86
+# (moved from use.mask)
+media-libs/mesa -d3d9
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
 # dev-python/nanobind is not keyworded here
 media-gfx/openvdb python
