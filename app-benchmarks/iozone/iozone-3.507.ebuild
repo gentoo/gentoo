@@ -1,28 +1,24 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Filesystem benchmarking program"
 HOMEPAGE="http://www.iozone.org/"
 SRC_URI="http://www.iozone.org/src/current/${PN}${PV/./_}.tar"
+S="${WORKDIR}/${PN}${PV/./_}"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 ~riscv ~sparc x86"
-
-S="${WORKDIR}/${PN}${PV/./_}"
-
-PATCHES=( "${FILESDIR}"/${PN}-3.488-gcc10-fno-common.patch )
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 src_prepare() {
 	default
 
 	# Options FIX
 	sed -e '/CC	=.*/d' \
-		-e '/CFLAGS	=.*/d' \
 		-e 's:-O[23]:$(CFLAGS):g' \
 		-e 's:-Dlinux:$(LDFLAGS) -Dlinux:g' \
 		-i src/current/makefile || die
@@ -45,6 +41,22 @@ src_configure() {
 	# makefile uses $(GCC) in a few places, probably
 	# by mistake.
 	export GCC="$(tc-getCC)"
+
+	# bug #942587
+	append-lfs-flags
+
+	append-cflags -std=gnu17
+
+	# iozone's Makefile lacks some explicit rules, causing the implicit .c.o rule
+	# (which uses both CPPFLAGS and CFLAGS) to be used during parallel builds. Since
+	# CPPFLAGS is not explicitly used anywhere in the makefile, we append the LFS flags
+	# to CFLAGS as a workaround.
+	append-cflags ${CPPFLAGS} # bug #947708
+
+	# Otherwise it uses K&R function declaration where ints are sometimes omited, for
+	# the same reason above, append it to CFLAGS.
+	# https://bugs.gentoo.org/894334
+	append-cflags -DHAVE_ANSIC_C
 }
 
 src_compile() {
