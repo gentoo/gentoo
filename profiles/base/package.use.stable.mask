@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Sam James <sam@gentoo.org> (2025-06-14)
+# Mask until we have stable dev-lang/rust{,-bin} / slot 20 release (1.87).
+www-client/chromium llvm_slot_20
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-06)
 # USE=experimental is not stable by definition
 media-libs/zxing-cpp experimental
