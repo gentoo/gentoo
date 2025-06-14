@@ -266,12 +266,6 @@ dev-libs/icu-le-hb
 # Masked for testing
 dev-db/mysql:8.4
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-15)
-# Very dead upstream, very many open bugs for years without anyone fixing.
-# Bugs #314835, #632432, #827131, #874429, #908830, #925513, #934808.
-# Removal on 2025-06-14.
-www-misc/htdig
-
 # Matt Turner <mattst88@gentoo.org> (2025-05-13)
 # Package is replaced by dev-util/mesa_clc.
 # Removal on 2025-06-12.  Bug #955925.
