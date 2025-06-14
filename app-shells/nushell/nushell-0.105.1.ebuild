@@ -5,17 +5,14 @@ EAPI=8
 
 CRATES=""
 
-RUST_MIN_VER="1.84.1"
+RUST_MIN_VER="1.85.1"
 
 inherit cargo
 
 DESCRIPTION="A new type of shell, written in Rust"
 HOMEPAGE="https://www.nushell.sh"
-SRC_URI="
-	https://github.com/nushell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-"
-DEPS_URI="https://github.com/freijon/${PN}/releases/download/${PV}/${P}-crates.tar.xz"
-SRC_URI+=" ${DEPS_URI}"
+SRC_URI="https://github.com/nushell/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/gentoo-crate-dist/nushell/releases/download/${PV}/${P}-crates.tar.xz"
 
 LICENSE="MIT"
 # Dependent crate licenses
@@ -28,13 +25,6 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="plugins system-clipboard X"
 
 DEPEND="
-	>=dev-libs/libgit2-0.99:=
-	dev-libs/oniguruma:=
-	dev-libs/openssl:0=
-	net-libs/libssh2:=
-	net-libs/nghttp2:=
-	net-misc/curl
-	dev-db/sqlite:3=
 	system-clipboard? (
 		X? (
 			x11-libs/libX11
@@ -58,14 +48,10 @@ src_prepare() {
 
 src_configure() {
 	# high magic to allow system-libs
-	export OPENSSL_NO_VENDOR=true
-	export RUSTONIG_SYSTEM_LIBONIG=1
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
-	export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 
 	local myfeatures=(
-	$(usev system-clipboard)
+		$(usev system-clipboard)
 	)
 
 	cargo_src_configure
