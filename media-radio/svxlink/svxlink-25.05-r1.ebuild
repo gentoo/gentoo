@@ -45,6 +45,8 @@ BDEPEND="
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )"
 
+PATCHES=( "${FILESDIR}"/${PN}-25.05-fix-missing-const.patch )
+
 src_prepare() {
 	# fix build for MUSL (bug #936813, #942749)
 	if use elibc_musl ; then
