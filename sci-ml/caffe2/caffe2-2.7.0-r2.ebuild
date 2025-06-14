@@ -12,7 +12,7 @@ MYP=${MYPN}-${PV}
 
 # caffe2-2.6.0 depends on future version of composable kernel
 # TODO: replace it with RDEPEND in the future
-CK_COMMIT=50ee4267e27b875d149e642f4cebd47be1dc3b57
+CK_COMMIT=8086bbe3a78d931eb96fe12fdc014082e18d18d3
 CK_P=composable_kernel-${CK_COMMIT:0:8}
 
 DESCRIPTION="A deep learning framework"
@@ -159,6 +159,9 @@ src_prepare() {
 		cmake/Dependencies.cmake \
 		|| die
 
+	# Noisy warnings from Logging.h
+	sed -i 's/-Wextra-semi//' cmake/public/utils.cmake || die
+
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
@@ -297,7 +300,7 @@ src_configure() {
 		)
 
 		# ROCm libraries produce too much warnings
-		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result
+		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result -Wno-unused-value
 	fi
 
 	if use onednn; then
