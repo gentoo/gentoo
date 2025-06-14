@@ -4,7 +4,7 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE="+modules"
-inherit flag-o-matic linux-mod-r1
+inherit flag-o-matic linux-mod-r1 toolchain-funcs
 
 XTABLES_MODULES=(
 	account chaos delude dhcpmac dnetmap echo ipmark logmark
@@ -82,6 +82,9 @@ src_configure() {
 		--prefix="${EPREFIX:-/}"
 		--libexecdir="${EPREFIX}"/$(get_libdir)
 		$(usex modules --with-kbuild="${KV_OUT_DIR}" --without-kbuild)
+
+		# Needed for cross-compiling and to avoid a clash with the Gentoo ARCH.
+		ARCH="$(tc-arch-kernel)"
 	)
 
 	econf "${econfargs[@]}"
