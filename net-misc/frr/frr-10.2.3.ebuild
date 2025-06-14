@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit autotools pam python-single-r1 systemd
+inherit out-of-source autotools pam python-single-r1 systemd
 
 DESCRIPTION="The FRRouting Protocol Suite"
 HOMEPAGE="https://frrouting.org/"
@@ -14,7 +14,7 @@ S="${WORKDIR}/frr-${P}"
 
 LICENSE="GPL-2+"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc fpm grpc nhrp ospfapi pam rpki snmp test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -37,7 +37,9 @@ COMMON_DEPEND="
 BDEPEND="
 	sys-devel/flex
 	app-alternatives/yacc
+	dev-libs/elfutils
 	doc? ( dev-python/sphinx )
+	grpc? ( sys-apps/which )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -69,7 +71,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+my_src_configure() {
 	local myconf=(
 		LEX=flex
 		--with-pkg-extra-version="-gentoo"
@@ -98,18 +100,18 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-src_compile() {
+my_src_compile() {
 	default
 
 	use doc && emake -C doc html
 }
 
-src_test() {
+my_src_test() {
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	default
 }
 
-src_install() {
+my_src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 
@@ -123,7 +125,7 @@ src_install() {
 
 	# Install the default configuration files
 	insinto /etc/frr
-	doins tools/etc/frr/{vtysh.conf,frr.conf,daemons}
+	doins "${S}"/tools/etc/frr/{vtysh.conf,frr.conf,daemons}
 
 	# Fix permissions/owners.
 	fowners frr:frr /etc/frr/{vtysh.conf,frr.conf,daemons}
@@ -131,7 +133,7 @@ src_install() {
 
 	# Install logrotate configuration
 	insinto /etc/logrotate.d
-	newins redhat/frr.logrotate frr
+	newins "${S}"/redhat/frr.logrotate frr
 
 	# Install PAM configuration file
 	use pam && newpamd "${FILESDIR}"/frr.pam frr
