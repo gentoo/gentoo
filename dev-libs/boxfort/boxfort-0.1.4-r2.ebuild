@@ -3,9 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-
-inherit meson python-any-r1
+inherit meson
 
 DESCRIPTION="Convenient & cross-platform sandboxing C library"
 HOMEPAGE="https://github.com/Snaipe/BoxFort"
@@ -21,17 +19,9 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	virtual/pkgconfig
 	test? (
-		$(python_gen_any_dep 'dev-util/cram[${PYTHON_USEDEP}]')
+		dev-util/cram
 	)
 "
-
-python_check_deps() {
-	use test && python_has_version "dev-util/cram[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-}
 
 src_configure() {
 	local emesonargs=(
