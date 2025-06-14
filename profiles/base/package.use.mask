@@ -77,10 +77,6 @@ sys-apps/usbutils usbreset
 # sys-cluster/pacemaker is being removed.
 sys-cluster/drbd-utils pacemaker
 
-# Michał Górny <mgorny@gentoo.org> (2025-03-05)
-# Mask until we have keyworded dev-lang/rust{,-bin} / slot 20 release.
-www-client/chromium llvm_slot_20
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-02-24)
 # Only builds with ffmpeg-4.x, upstream has no timeline to fix it.
 # https://tracker.dev.opencascade.org/view.php?id=32871
