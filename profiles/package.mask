@@ -271,11 +271,6 @@ dev-libs/icu-le-hb
 # Masked for testing
 dev-db/mysql:8.4
 
-# Matt Turner <mattst88@gentoo.org> (2025-05-13)
-# Package is replaced by dev-util/mesa_clc.
-# Removal on 2025-06-12.  Bug #955925.
-dev-util/intel_clc
-
 # Petr Vaněk <arkamar@gentoo.org> (2025-05-12)
 # A serious performance regression has been found in 10.11.12 and 11.4.6
 # releases, distributions are advised to not publish them, see
