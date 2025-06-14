@@ -43,6 +43,11 @@ BDEPEND="virtual/pkgconfig"
 pkg_setup() {
 	local CONFIG_CHECK="NF_CONNTRACK NF_CONNTRACK_MARK"
 
+	if use xtables_addons_ipp2p; then
+		CONFIG_CHECK+=" TEXTSEARCH_BM"
+		local ERROR_TEXTSEARCH_BM="CONFIG_TEXTSEARCH_BM: is not set but is needed to use xt_ipp2p"
+	fi
+
 	if use xtables_addons_pknock; then
 		CONFIG_CHECK+=" ~CONNECTOR"
 		local ERROR_CONNECTOR="CONFIG_CONNECTOR: is not set but is needed to receive userspace
