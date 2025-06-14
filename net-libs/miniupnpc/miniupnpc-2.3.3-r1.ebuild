@@ -32,6 +32,7 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/miniupnp.asc
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/miniupnpc-2.2.3-drop-which.patch
+		"${FILESDIR}"/miniupnpc-2.3.3-cstddef.patch
 	)
 	default
 

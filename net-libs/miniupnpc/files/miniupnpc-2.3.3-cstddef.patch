@@ -1,0 +1,15 @@
+From e263ab6f56c382e10fed31347ec68095d691a0e8 Mon Sep 17 00:00:00 2001
+From: Thomas Bernard <miniupnp@free.fr>
+Date: Thu, 29 May 2025 00:35:21 +0200
+Subject: [PATCH] upnpcommands.h: #include <stddef.h> for size_t
+
+--- a/include/upnpcommands.h
++++ b/include/upnpcommands.h
+@@ -21,6 +21,7 @@
+  *
+  */
+ 
++#include <stddef.h>
+ #include "miniupnpc_declspec.h"
+ #include "miniupnpctypes.h"
+ 
