@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Barć <xgqt@gentoo.org> (2025-06-14)
+# Deprecated, repository archived upstream. Compilation problems.
+# Removal on 2025-07-14. bug #957435
+sci-mathematics/boolector
+
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
 >=dev-python/pygobject-3.52
