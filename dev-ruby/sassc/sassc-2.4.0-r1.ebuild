@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -15,9 +15,9 @@ DESCRIPTION="Use libsass with Ruby"
 HOMEPAGE="https://github.com/sass/sassc-ruby"
 LICENSE="MIT"
 
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 SLOT="2"
-IUSE=""
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
+IUSE="test"
 
 RDEPEND+=">=dev-libs/libsass-3.6.1"
 
