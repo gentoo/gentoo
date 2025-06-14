@@ -1,0 +1,67 @@
+From 07cb77c93fc9e43ad4a244c192ee7a86b9d163e0 Mon Sep 17 00:00:00 2001
+From: Tanuki-no Torigava <vmikhailikov@gmail.com>
+Date: Fri, 6 Jun 2025 16:09:44 +0300
+Subject: [PATCH] This patch fixes test running on Gentoo. Perhaps it could fix
+ the same issue in other distros
+
+...
+1/7 Test #6: sbn_test .........................   Passed    0.00 sec
+2/7 Test #7: shp_test .........................   Passed    0.00 sec
+3/7 Test #1: test1 ............................   Passed    0.01 sec
+4/7 Test #3: test3 ............................***Failed    0.01 sec
+5/7 Test #4: contrib ..........................***Failed    0.02 sec
+6/7 Test #2: test2 ............................   Passed    0.03 sec
+7/7 Test #5: dbf_test .........................   Passed    0.04 sec
+...
+
+More about issue is here: https://github.com/OSGeo/shapelib/issues/182
+
+Signed-off-by: Tanuki-no Torigava <vmikhailikov@gmail.com>
+---
+ tests/test3.sh | 26 ++++++++++++++++----------
+ 1 file changed, 16 insertions(+), 10 deletions(-)
+
+diff --git a/tests/test3.sh b/tests/test3.sh
+index 530b016..80e0052 100755
+--- a/tests/test3.sh
++++ b/tests/test3.sh
+@@ -9,22 +9,29 @@
+ 
+ readonly SCRIPTDIR=$(dirname "$0")
+ readonly EXPECT="${1:-$SCRIPTDIR/expect3.out}"
++readonly TESTDIR=`mktemp -d -p "$(pwd)"`
++
++# check if tmp dir was created
++if [[ ! "$TESTDIR" || ! -d "$TESTDIR" ]]; then
++  echo "Could not create temp dir"
++  exit 1
++fi
+ 
+ {
+-"${SHPCREATE:-./shpcreate}" test polygon
+-"${DBFCREATE:-./dbfcreate}" test.dbf -s Description 30 -n TestInt 6 0 -n TestDouble 16 5
++"${SHPCREATE:-./shpcreate}" "${TESTDIR:-.}"/test polygon
++"${DBFCREATE:-./dbfcreate}" "${TESTDIR:-.}"/test.dbf -s Description 30 -n TestInt 6 0 -n TestDouble 16 5
+ 
+-"${SHPADD:-./shpadd}" test 0 0 100 0 100 100 0 100 0 0 + 20 20 20 30 30 30 20 20
+-"${DBFADD:-./dbfadd}" test.dbf "Square with triangle missing" 1.4 2.5
++"${SHPADD:-./shpadd}" "${TESTDIR:-.}"/test 0 0 100 0 100 100 0 100 0 0 + 20 20 20 30 30 30 20 20
++"${DBFADD:-./dbfadd}" "${TESTDIR:-.}"/test.dbf "Square with triangle missing" 1.4 2.5
+ 
+-"${SHPADD:-./shpadd}" test 150 150 160 150 180 170 150 150
+-"${DBFADD:-./dbfadd}" test.dbf "Smaller triangle" 100 1000.25
++"${SHPADD:-./shpadd}" "${TESTDIR:-.}"/test 150 150 160 150 180 170 150 150
++"${DBFADD:-./dbfadd}" "${TESTDIR:-.}"/test.dbf "Smaller triangle" 100 1000.25
+ 
+-"${SHPADD:-./shpadd}" test 150 150 160 150 180 170 150 150
+-"${DBFADD:-./dbfadd}" test.dbf "" "" ""
++"${SHPADD:-./shpadd}" "${TESTDIR:-.}"/test 150 150 160 150 180 170 150 150
++"${DBFADD:-./dbfadd}" "${TESTDIR:-.}"/test.dbf "" "" ""
+ 
+-"${SHPDUMP:-./shpdump}" test.shp
+-"${DBFDUMP:-./dbfdump}" test.dbf
++"${SHPDUMP:-./shpdump}" "${TESTDIR:-.}"/test.shp
++"${DBFDUMP:-./dbfdump}" "${TESTDIR:-.}"/test.dbf
+ } > s3.out
+ 
+ 
