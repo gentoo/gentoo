@@ -21,7 +21,7 @@ SRC_URI="
 DESCRIPTION="Prebuilt Java JRE binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net/"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="-* amd64"
+KEYWORDS="amd64"
 IUSE="alsa cups headless-awt selinux"
 
 RDEPEND="
@@ -50,6 +50,9 @@ S="${WORKDIR}/jdk-${MY_PV}-jre"
 src_install() {
 	local dest="/opt/${PN}-${SLOT}"
 	local ddest="${ED}/${dest#/}"
+
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
 
 	# Not sure why they bundle this as it's commonly available and they
 	# only do so on x86_64. It's needed by libfontmanager.so. IcedTea
