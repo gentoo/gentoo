@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake desktop xdg-utils
+inherit cmake desktop xdg
 
 DESCRIPTION="Help a girl named Violet in the struggle with hordes of monsters"
 HOMEPAGE="https://violetland.github.io/"
@@ -15,11 +15,11 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/boost:=
+	media-libs/libglvnd
 	media-libs/libsdl[opengl,sound,video]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]
 	media-libs/sdl-ttf
-	virtual/opengl
 "
 
 DEPEND="${RDEPEND}"
@@ -30,6 +30,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-boost1.85.patch
+	"${FILESDIR}"/${P}-cmake4.patch
 )
 
 src_prepare() {
@@ -57,8 +58,5 @@ src_install() {
 	rm -r "${ED}"/usr/share/${PN}/README* || die
 
 	newicon -s 64 icon-light.png ${PN}.png
-	make_desktop_entry ${PN} VioletLand
+	make_desktop_entry ${PN} Violetland
 }
-
-pkg_postinst() { xdg_icon_cache_update; }
-pkg_postrm() { xdg_icon_cache_update; }
