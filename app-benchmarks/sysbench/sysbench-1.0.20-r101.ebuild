@@ -4,9 +4,8 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools lua-single python-single-r1
+inherit autotools lua-single
 
 DESCRIPTION="A scriptable multi-threaded benchmark tool based on LuaJIT"
 HOMEPAGE="https://github.com/akopytov/sysbench"
@@ -16,43 +15,36 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+aio attachsql drizzle +largefile mysql postgres test"
-REQUIRED_USE="
-	${LUA_REQUIRED_USE}
-	${PYTHON_REQUIRED_USE}
-"
+REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	aio? ( dev-libs/libaio )
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
-	test? ( ${PYTHON_DEPS} )
 	${LUA_DEPS}
 "
-DEPEND="
+DEPEND="${RDEPEND}
 	dev-libs/concurrencykit
 	dev-libs/libxslt
-	test? (
-		$(python_gen_cond_dep '
-			dev-util/cram[${PYTHON_USEDEP}]
-		')
-	)
-	${RDEPEND}
 "
 BDEPEND="
 	dev-build/libtool
 	virtual/pkgconfig
+	test? ( dev-util/cram )
 "
 
 pkg_setup() {
 	lua-single_pkg_setup
-	use test && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
 
 	rm -r third_party/{concurrency_kit/ck,cram,luajit/luajit} || die
+
+	# Use system cram for running tests.
+	sed -i tests/test_run.sh -e 's@$PYTHON $(command -v cram)@cram@' || die
 
 	eautoreconf
 }
