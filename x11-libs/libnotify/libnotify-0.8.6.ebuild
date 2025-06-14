@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~loong ~mips ~ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="gtk-doc +introspection test"
 # https://gitlab.gnome.org/GNOME/libnotify/-/issues/30
 # https://gitlab.gnome.org/GNOME/libnotify/-/issues/59
