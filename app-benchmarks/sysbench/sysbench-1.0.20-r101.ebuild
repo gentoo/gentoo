@@ -46,6 +46,8 @@ src_prepare() {
 	# Use system cram for running tests.
 	sed -i tests/test_run.sh -e 's@$PYTHON $(command -v cram)@cram@' || die
 
+	sed -i configure.ac -e 's@$(which git)@$(command -v git)@' || die
+
 	eautoreconf
 }
 
