@@ -1,0 +1,12 @@
+Don't force -O2.
+--- a/Makefile
++++ b/Makefile
+@@ -22,7 +22,7 @@ PMPATHD  = /usr/lib/systemd/system-sleep
+ 
+ PKG_CONFIG ?= pkg-config
+ 
+-override CFLAGS  := -O2 -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
++override CFLAGS  := -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
+ 
+ CC_CHECK := $(shell echo | $(CC) -dM -E - | grep -q __clang__ && echo clang || echo gcc)
+ ifeq ($(CC_CHECK),gcc)
