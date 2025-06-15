@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	media-libs/libogg
 	media-libs/libpng:=
 	media-libs/libsdl2[opengl,video,X]
-	media-libs/libtheora
+	media-libs/libtheora:=
 	media-libs/libvorbis
 	media-libs/openal
 	media-libs/opus

@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	media-libs/libogg
 	media-libs/libpng:=
 	media-libs/libsdl2[opengl,video,X]
-	media-libs/libtheora
+	media-libs/libtheora:=
 	media-libs/libvorbis
 	media-libs/openal
 	media-libs/opus
