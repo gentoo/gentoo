@@ -40,7 +40,7 @@ DEPEND="
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
-		theora? ( media-libs/libtheora )
+		theora? ( media-libs/libtheora:= )
 	)
 "
 RDEPEND="
