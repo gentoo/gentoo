@@ -60,7 +60,7 @@ DEPEND="
 	sndio? ( media-sound/sndio:= )
 	speech? ( app-accessibility/speech-dispatcher )
 	truetype? ( media-libs/freetype:2 )
-	theora? ( media-libs/libtheora )
+	theora? ( media-libs/libtheora:= )
 	vorbis? (
 		media-libs/libogg
 		media-libs/libvorbis
