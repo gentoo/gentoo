@@ -20,7 +20,7 @@ RDEPEND="x11-libs/libXext
 	x11-libs/libXdamage
 	media-libs/libvorbis
 	media-libs/libogg
-	media-libs/libtheora[encode]
+	media-libs/libtheora:=[encode]
 	x11-libs/libICE
 	x11-libs/libSM
 	alsa? ( media-libs/alsa-lib )

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="x11-libs/libXext
 	x11-libs/libXdamage
 	media-libs/libvorbis
 	media-libs/libogg
-	media-libs/libtheora[encode]
+	media-libs/libtheora:=[encode]
 	x11-libs/libICE
 	x11-libs/libSM
 	alsa? ( media-libs/alsa-lib )
