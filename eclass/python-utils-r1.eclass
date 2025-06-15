@@ -1347,6 +1347,15 @@ epytest() {
 		-o tmp_path_retention_policy=failed
 	)
 
+	if has_version ">=dev-python/pytest-8.4.0"; then
+		args+=(
+			# do not repeat (potentially multi-line) exception messages
+			# in the "short summary" section to make it more readable;
+			# we have them in the backtraces anyway
+			--force-short-summary
+		)
+	fi
+
 	if [[ ! ${PYTEST_DISABLE_PLUGIN_AUTOLOAD} ]]; then
 		args+=(
 			# disable the undesirable-dependency plugins by default to
