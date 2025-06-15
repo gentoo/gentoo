@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} python3_13t )
 
-inherit cmake linux-info python-r1
+inherit cmake linux-info optfeature python-r1
 
 DESCRIPTION="ROCm System Management Interface Library"
 HOMEPAGE="https://github.com/ROCm/rocm_smi_lib"
@@ -63,8 +63,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! has_version sys-apps/hwdata; then
-		elog "Install sys-apps/hwdata to see vendor and device names"
-		elog "instead of hex device IDs in rocm-smi output"
-	fi
+	optfeature "vendor and device names instead of hex device IDs" sys-apps/hwdata
 }
