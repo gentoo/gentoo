@@ -46,7 +46,7 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:= )
 	theora? (
 		media-libs/libogg
-		media-libs/libtheora
+		media-libs/libtheora:=
 	)
 	truetype? ( media-libs/freetype )
 	vorbis? ( media-libs/libvorbis )
