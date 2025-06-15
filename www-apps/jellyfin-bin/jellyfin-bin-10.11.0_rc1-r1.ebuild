@@ -6,13 +6,14 @@ EAPI=8
 inherit pax-utils systemd tmpfiles
 
 DESCRIPTION="Jellyfin puts you in control of managing and streaming your media"
-HOMEPAGE="https://jellyfin.readthedocs.io/en/latest/
+HOMEPAGE="https://jellyfin.org/
 	https://github.com/jellyfin/jellyfin/"
 MY_PV="${PV//_rc/-rc}"
 if [[ "${PV}" == *"rc"* ]]; then
 	MY_TYPE="preview"
 else
 	MY_TYPE="stable"
+	KEYWORDS="-* ~amd64 ~arm64"
 fi
 SRC_URI="
 	arm64? (
@@ -34,7 +35,6 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm64"
 RESTRICT="mirror test"
 
 DEPEND="acct-user/jellyfin
@@ -79,4 +79,12 @@ src_install() {
 
 pkg_postinst() {
 	tmpfiles_process jellyfin.conf
+
+	ewarn "If you are upgrading from a previous version jellyfin will automatically"
+	ewarn "migrate to the new database backend during first startup. This may take"
+	ewarn "a long time but must not be aborted or the database could be left in an"
+	ewarn "inconsistent state."
+	ewarn "Note that upgrading from versions earlier than 10.10.7 is not supported."
+	ewarn "For more information see:"
+	ewarn "  https://notes.jellyfin.org/v10.11.0_features#Release-Notes"
 }
