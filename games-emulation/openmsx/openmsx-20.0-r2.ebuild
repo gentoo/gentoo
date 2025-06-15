@@ -22,7 +22,7 @@ RDEPEND="dev-lang/tcl:0=
 	media-libs/libogg
 	media-libs/libpng:0=
 	media-libs/libsdl2[joystick=,sound,video]
-	media-libs/libtheora
+	media-libs/libtheora:=
 	media-libs/libvorbis
 	media-libs/sdl2-ttf
 	>=media-libs/glew-1.3.2:0=
