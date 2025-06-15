@@ -64,7 +64,6 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	x86? ( dev-lang/yasm )
 "
-# <media-plugins/live-2024.11.28: https://github.com/gentoo/gentoo/pull/40610#issuecomment-2664870395
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
@@ -149,7 +148,7 @@ RDEPEND="
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
-	live? ( <media-plugins/live-2024.11.28:= )
+	live? ( media-plugins/live:= )
 	loudness? ( >=media-libs/libebur128-1.2.4:= )
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
