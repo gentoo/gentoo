@@ -5,14 +5,15 @@ EAPI=8
 
 inherit autotools flag-o-matic prefix
 
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.code.sf.net/p/zsh/code"
-else
-	SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
-		doc? ( https://www.zsh.org/pub/${P}-doc.tar.xz )"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-fi
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+
+SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
+	https://www.zsh.org/pub/old/${P}.tar.xz
+	https://downloads.sourceforge.net/${PN}/${P}.tar.xz
+	doc? (
+		https://www.zsh.org/pub/${P}-doc.tar.xz
+		https://downloads.sourceforge.net/${PN}/${P}-doc.tar.xz
+	)"
 
 DESCRIPTION="UNIX Shell similar to the Korn shell"
 HOMEPAGE="https://www.zsh.org/"
@@ -21,38 +22,46 @@ LICENSE="ZSH gdbm? ( GPL-2 )"
 SLOT="0"
 IUSE="caps debug doc examples gdbm maildir pcre static valgrind"
 
+# Next release should use pcre2: https://github.com/zsh-users/zsh/commit/b62e911341c8ec7446378b477c47da4256053dc0
 RDEPEND="
 	>=sys-libs/ncurses-5.1:0=
 	static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] )
 	caps? ( sys-libs/libcap )
 	pcre? (
-		dev-libs/libpcre2
-		static? ( dev-libs/libpcre2[static-libs] )
+		>=dev-libs/libpcre-3.9
+		static? ( >=dev-libs/libpcre-3.9[static-libs] )
 	)
 	gdbm? (
 		sys-libs/gdbm:=
 		static? ( sys-libs/gdbm:=[static-libs] )
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="sys-apps/groff
 	valgrind? ( dev-debug/valgrind )
-"
+	${RDEPEND}"
 PDEPEND="
 	examples? ( app-doc/zsh-lovers )
 "
-BDEPEND="
-	sys-apps/groff
-"
 if [[ ${PV} == *9999 ]] ; then
-	BDEPEND+="
-		app-text/yodl
-		doc? ( virtual/texi2dvi )
-	"
+	DEPEND+=" app-text/yodl
+		doc? (
+			sys-apps/texinfo
+			app-text/texi2html
+			virtual/latex-base
+		)"
 fi
 
 PATCHES=(
 	# Add openrc specific options for init.d completion
 	"${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
+	# Please refer gentoo bug #833981
+	"${FILESDIR}"/${PN}-5.9-musl-V09datetime-test-fix.patch
+	# bug #869539
+	"${FILESDIR}"/${PN}-5.9-clang-15-configure.patch
+	"${FILESDIR}"/${PN}-5.9-do-not-use-egrep-in-tests.patch
+	# bug #919001
+	"${FILESDIR}"/${PN}-5.9-c99.patch
+	"${FILESDIR}"/${PN}-5.9-relro.patch
 )
 
 src_prepare() {
@@ -161,10 +170,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	if use doc; then
-		emake -C Doc DESTDIR="${D}" install.html install.html
-	fi
+	emake DESTDIR="${D}" install $(usex doc "install.info" "")
 
 	insinto /etc/zsh
 	export PREFIX_QUOTE_CHAR='"' PREFIX_EXTRA_REGEX="/EUID/s,0,${EUID},"
@@ -197,8 +203,12 @@ src_install() {
 
 	dodoc ChangeLog* META-FAQ NEWS README config.modules
 
-	if use doc; then
-		dodoc Doc/intro.{a4,us}.pdf Doc/zsh_{a4,us}.{dvi,pdf}
+	if use doc ; then
+		pushd "${WORKDIR}/${PN}-${PV%_*}" >/dev/null
+		dodoc Doc/zsh.{dvi,pdf}
+		docinto html
+		dodoc Doc/*.html
+		popd >/dev/null
 	fi
 
 	docinto StartupFiles

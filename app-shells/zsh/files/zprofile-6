@@ -1,0 +1,23 @@
+# /etc/zsh/zprofile
+
+# Load environment settings from profile.env, which is created by
+# env-update from the files in /etc/env.d
+if [[ -e /etc/profile.env ]] ; then
+	. /etc/profile.env
+fi
+
+# You should override these in your ~/.zprofile (or equivalent) for per-user
+# settings.  For system defaults, you can add a new file in /etc/profile.d/.
+export EDITOR=${EDITOR:-/bin/nano}
+export PAGER=${PAGER:-/usr/bin/less}
+
+unset ROOTPATH
+
+shopts=$-
+setopt nullglob
+for sh in /etc/profile.d/*.sh ; do
+	[[ -r "${sh}" ]] && . "${sh}"
+done
+unsetopt nullglob
+set -$shopts
+unset sh shopts
