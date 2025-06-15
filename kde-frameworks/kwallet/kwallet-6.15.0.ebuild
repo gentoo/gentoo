@@ -3,7 +3,6 @@
 
 EAPI=8
 
-ECM_QTHELP="true"
 QTMIN=6.7.2
 inherit ecm frameworks.kde.org
 
