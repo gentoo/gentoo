@@ -1,0 +1,28 @@
+https://github.com/MythTV/mythtv/pull/1089
+
+From 674f2c9474b5a2bede1b3ef4c6e77fc46be408b8 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Tue, 13 May 2025 00:09:20 +0800
+Subject: [PATCH] configure: no ant & java required if use system libbluray
+
+* mythtv/external/libmythbluray/ won't be built
+* java is required at runtime only
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/configure b/configure
+index 2168fae294..5765f74833 100755
+--- a/configure
++++ b/configure
+@@ -5207,7 +5207,7 @@ fi
+ 
+ antbin=""
+ java_code_version=""
+-if enabled bdjava; then
++if enabled bdjava && ! enabled system_libbluray; then
+     enabled x86_64 && java_arch=amd64
+     enabled x86_32 && java_arch=i386
+     enabled arm    && java_arch=arm
+-- 
+2.45.2
+
