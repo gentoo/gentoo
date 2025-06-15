@@ -1324,6 +1324,9 @@ epytest() {
 	local color=yes
 	[[ ${NO_COLOR} ]] && color=no
 
+	mkdir -p "${T}/pytest-xml" || die
+	local junit_xml=$(mktemp "${T}/pytest-xml/${EPYTHON}-XXX.xml" || die)
+
 	local args=(
 		# verbose progress reporting and tracebacks
 		-vv
@@ -1345,6 +1348,10 @@ epytest() {
 		# we don't need to preserve them
 		-o tmp_path_retention_count=0
 		-o tmp_path_retention_policy=failed
+		# write a junit .xml file to aid machine processing of results
+		--junit-xml="${junit_xml}"
+		# use xunit1 format as that includes an explicit path
+		-o junit_family=xunit1
 	)
 
 	if has_version ">=dev-python/pytest-8.4.0"; then
