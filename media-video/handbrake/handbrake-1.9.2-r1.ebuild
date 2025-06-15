@@ -139,6 +139,11 @@ src_prepare() {
 		cp "${DISTDIR}/handbrake-${tarball}" download/${tarball} || die
 	done
 
+	if use x265; then
+		# bug #958194
+		cp "${FILESDIR}"/handbrake-1.9.2-x265-cmake4.patch contrib/x265/A99-cmake4.patch || die
+	fi
+
 	# Get rid of leftover bundled library build definitions
 	sed -i -E \
 		-e "/MODULES \+= contrib\// { /($(IFS=$'|'; echo "${!BUNDLED[*]}"))$/! d }" \
