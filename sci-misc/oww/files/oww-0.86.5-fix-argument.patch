@@ -1,0 +1,27 @@
+fix error on argument mismatch
+diff --git a/src/applctn.c b/src/applctn.c
+index a039639..674e3cf 100644
+--- a/src/applctn.c
++++ b/src/applctn.c
+@@ -415,7 +415,7 @@ static gint anim_alarm_handler(gpointer user_data)
+ void applctn_quit_now(GtkMenuItem     *menuitem, gpointer user_data)
+ {
+   applctn_quit = 1 ;
+-  state_machine_quit(0);
++  state_machine_quit();
+ }
+ 
+ void on_about_activate(GtkMenuItem     *menuitem, gpointer user_data)
+diff --git a/src/filesel.c b/src/filesel.c
+index b06e257..46d9ab5 100644
+--- a/src/filesel.c
++++ b/src/filesel.c
+@@ -8,7 +8,7 @@
+ 
+ typedef struct {
+ 
+-    void (*func)();
++    void (*func)(char *);
+     GtkWidget *filesel;
+ 
+ } typFileSelectionData;
