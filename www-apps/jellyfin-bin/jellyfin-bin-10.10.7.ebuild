@@ -6,7 +6,7 @@ EAPI=8
 inherit pax-utils systemd tmpfiles
 
 DESCRIPTION="Jellyfin puts you in control of managing and streaming your media"
-HOMEPAGE="https://jellyfin.readthedocs.io/en/latest/
+HOMEPAGE="https://jellyfin.org/
 	https://github.com/jellyfin/jellyfin/"
 
 SRC_URI="
