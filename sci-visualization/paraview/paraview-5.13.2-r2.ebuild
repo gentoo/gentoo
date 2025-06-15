@@ -41,7 +41,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/glew:0
 	media-libs/libpng:0
-	media-libs/libtheora
+	media-libs/libtheora:=
 	media-libs/tiff:=
 	sci-libs/cgnslib
 	sci-libs/hdf5:=[mpi=]
