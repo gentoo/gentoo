@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-arch/brotli-1.1.0:=
 	dev-db/sqlite:3
-	>=dev-libs/libuv-1.49.2:=
+	>=dev-libs/libuv-1.51.0:=
 	>=dev-libs/simdjson-3.10.1:=
 	>=net-dns/c-ares-1.34.4:=
 	>=net-libs/nghttp2-1.64.0:=
@@ -110,10 +110,7 @@ src_prepare() {
 	fi
 
 	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-22.12.0-paxmarking.patch )
-
-	# bug 931256
-	use riscv && PATCHES+=( "${FILESDIR}"/${PN}-22.2.0-riscv.patch )
+	use pax-kernel && PATCHES+=( "${FILESDIR}"/${PN}-24.1.0-paxmarking.patch )
 
 	default
 }
