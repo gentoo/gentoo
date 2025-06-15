@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} python3_13t )
 
-inherit cmake python-r1
+inherit cmake linux-info python-r1
 
 DESCRIPTION="ROCm System Management Interface Library"
 HOMEPAGE="https://github.com/ROCm/rocm_smi_lib"
@@ -34,6 +34,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.4.1-log-exceptions.patch
 )
 
+CONFIG_CHECK="~HSA_AMD ~DRM_AMDGPU"
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -58,4 +60,11 @@ src_install() {
 	python_foreach_impl python_domodule python_smi_tools/rsmiBindingsInit.py
 
 	mv "${ED}"/usr/share/doc/rocm_smi "${ED}/usr/share/doc/${PF}" || die
+}
+
+pkg_postinst() {
+	if ! has_version sys-apps/hwdata; then
+		elog "Install sys-apps/hwdata to see vendor and device names"
+		elog "instead of hex device IDs in rocm-smi output"
+	fi
 }
