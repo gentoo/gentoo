@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.5-desktop.patch
 	"${FILESDIR}"/${PN}-0.5.5-autotools.patch
 	"${FILESDIR}"/${PN}-0.5.5-no-dmalloc-tests.patch
+	"${FILESDIR}"/${PN}-0.5.5-c23.patch
 )
 
 src_prepare() {
@@ -38,8 +39,6 @@ src_prepare() {
 }
 
 src_configure() {
-	#append-cflags -std=gnu17
-
 	local myeconfargs=(
 		$(use_enable nls)
 		$(use_with sndfile)
