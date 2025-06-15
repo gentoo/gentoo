@@ -17,7 +17,7 @@ else
 	MY_P="HandBrake-${PV}"
 	SRC_URI="https://github.com/HandBrake/HandBrake/releases/download/${PV}/${MY_P}-source.tar.bz2 -> ${P}.tar.bz2"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 # contrib/<project>/module.defs
@@ -64,7 +64,7 @@ COMMON_DEPEND="
 	>=media-libs/libbluray-1.3.4:=
 	media-libs/libdvdnav
 	>=media-libs/libdvdread-6.1.3:=
-	media-libs/libtheora
+	media-libs/libtheora:=
 	media-libs/libvorbis
 	>=media-libs/libvpx-1.12.0:=
 	media-libs/opus
@@ -113,7 +113,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/handbrake-1.9.0-link-libdovi-properly.patch
 	"${FILESDIR}"/handbrake-1.9.0-include-vpl-properly.patch
-	"${FILESDIR}"/handbrake-1.9.0-arm64-c99.patch
+	"${FILESDIR}"/handbrake-1.9.2-set-ffmpeg-toolchain-explicitly.patch
+	"${FILESDIR}"/handbrake-1.9.2-allow-overriding-tools-via-env.patch
 )
 
 src_unpack() {
@@ -125,6 +126,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	mkdir download || die
 	for name in "${!BUNDLED[@]}"; do
 		IFS=$';' read -r uri use <<< ${BUNDLED[${name}]}
@@ -143,26 +146,15 @@ src_prepare() {
 	# noop fetching
 	sed -i -e '/DF..*.exe/ { s/= .*/= true/ }' make/include/tool.defs || die
 
-	# noop strip
-	sed -i \
-			-e "s/\(strip\s*= ToolProbe( 'STRIP.exe',\s*'strip',\s*\)'strip'/\1'true'/" \
-			make/configure.py || die
-
 	# Use whichever python is set by portage
 	sed -i -e "s/for p in .*/for p in ${EPYTHON}/" configure || die
-
-	for tool in ar ranlib libtool; do
-		# Detect system tools - bug 738110
-		sed -i \
-			-e "s/\(${tool}\s*= ToolProbe( '${tool^^}.exe',\s*'${tool}',\s*\)'${tool}'/\1os.environ.get('${tool^^}', '${tool}')/" \
-			make/configure.py || die
-	done
-
-	default
 }
 
 src_configure() {
-	tc-export AR RANLIB
+	tc-export CC CXX AR RANLIB NM
+
+	# noop strip
+	local -x STRIP="true"
 
 	# ODR violations, lto-type-mismatches
 	# bug #878899

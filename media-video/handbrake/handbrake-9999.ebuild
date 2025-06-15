@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	>=media-libs/libbluray-1.3.4:=
 	media-libs/libdvdnav
 	>=media-libs/libdvdread-6.1.3:=
-	media-libs/libtheora
+	media-libs/libtheora:=
 	media-libs/libvorbis
 	>=media-libs/libvpx-1.12.0:=
 	media-libs/opus
