@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ RDEPEND="sys-libs/zlib
 		curl? ( net-misc/curl )
 		vorbis? ( media-libs/libvorbis )
 		theora? (
-			media-libs/libtheora
+			media-libs/libtheora:=
 			media-libs/libogg
 		)
 	)
