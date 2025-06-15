@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Collection of programs that fit together to form a morse code tutor program"
 HOMEPAGE="https://unixcw.sourceforge.net"
@@ -37,6 +37,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# fails with -flto (see bug #957446)
+	filter-lto
 	econf --libdir="${EPREFIX}/usr/$(get_libdir)" \
 		$(use_enable pulseaudio ) \
 		$(use_enable alsa ) \
