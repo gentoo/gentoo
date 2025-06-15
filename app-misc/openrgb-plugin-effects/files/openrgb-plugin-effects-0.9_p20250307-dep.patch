@@ -1,0 +1,21 @@
+Fix dependency on app-misc/openrgb
+
+--- a/OpenRGBEffectsPlugin.pro
++++ b/OpenRGBEffectsPlugin.pro
+@@ -107,16 +107,6 @@ HEADERS +=
+     OpenRGB/ResourceManagerInterface.h                                                          \
+ 
+ 
+-SOURCES +=                                                                                      \
+-    OpenRGB/RGBController/RGBController.cpp                                                     \
+-    OpenRGB/RGBController/RGBController_Network.cpp                                             \
+-    OpenRGB/NetworkServer.cpp                                                                   \
+-    OpenRGB/NetworkClient.cpp                                                                   \
+-    OpenRGB/NetworkProtocol.cpp                                                                 \
+-    OpenRGB/LogManager.cpp                                                                      \
+-    OpenRGB/net_port/net_port.cpp                                                               \
+-    OpenRGB/qt/hsv.cpp                                                                          \
+-
+ 
+ 
+ #-----------------------------------------------------------------------------------------------#
