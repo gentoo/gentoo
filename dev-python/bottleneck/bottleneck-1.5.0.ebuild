@@ -26,12 +26,17 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	dev-python/versioneer[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
 src_prepare() {
 	# don't overwrites user's optimization level
 	sed -e '/extra_compile_args=\["-O2"\]/d' -i setup.py || die
+
+	rm versioneer.py || die
 
 	distutils-r1_src_prepare
 }
