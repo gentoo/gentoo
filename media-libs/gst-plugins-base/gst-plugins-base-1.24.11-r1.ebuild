@@ -75,7 +75,7 @@ RDEPEND="
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )
 	kernel_linux? ( >=x11-libs/libdrm-2.4.55[${MULTILIB_USEDEP}] )
 	pango? ( >=x11-libs/pango-1.36.3[${MULTILIB_USEDEP}] )
-	theora? ( >=media-libs/libtheora-1.1.1[encode,${MULTILIB_USEDEP}] )
+	theora? ( >=media-libs/libtheora-1.1.1:=[encode,${MULTILIB_USEDEP}] )
 	vorbis? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
