@@ -5,7 +5,6 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
-KDE_ORG_CATEGORY="graphics" # FIXME upstream?
 KFMIN=6.10.0
 QTMIN=6.8.1
 inherit ecm plasma.kde.org xdg
@@ -42,8 +41,8 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/prison-${KFMIN}:6
-	kde-plasma/kpipewire:6
-	kde-plasma/layer-shell-qt:6
+	>=kde-plasma/kpipewire-${KDE_CATV}:6
+	>=kde-plasma/layer-shell-qt-${KDE_CATV}:6
 	media-libs/opencv:=
 	x11-libs/libxcb
 	x11-libs/libXrandr
