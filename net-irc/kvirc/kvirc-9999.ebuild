@@ -1,4 +1,4 @@
-# Copyright 2009-2024 Gentoo Authors
+# Copyright 2009-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -55,7 +55,7 @@ DEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
-		media-libs/libtheora
+		media-libs/libtheora:=
 		media-libs/libvorbis
 	)
 	webengine? ( dev-qt/qtwebengine:6[widgets] )"
