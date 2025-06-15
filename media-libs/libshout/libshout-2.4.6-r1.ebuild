@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 	dev-libs/openssl:0=
 	speex? ( media-libs/speex[${MULTILIB_USEDEP}] )
-	theora? ( media-libs/libtheora[${MULTILIB_USEDEP}] )
+	theora? ( media-libs/libtheora:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
