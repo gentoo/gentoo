@@ -28,7 +28,7 @@ DEPEND="
 	ssl? (
 		dev-libs/openssl:0=
 	)
-	theora? ( media-libs/libtheora )
+	theora? ( media-libs/libtheora:= )
 	yp? ( net-misc/curl )
 "
 RDEPEND="
