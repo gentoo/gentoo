@@ -53,6 +53,7 @@ IUSE="amf +fdk gui libdovi numa nvenc qsv x265"
 
 REQUIRED_USE="numa? ( x265 )"
 
+# >=media-libs/libvpl-1.13.0: bug #957811 (check libhb/qsvcommon.h for new platform codenames)
 COMMON_DEPEND="
 	app-arch/bzip2
 	>=app-arch/xz-utils-5.2.6
@@ -86,7 +87,7 @@ COMMON_DEPEND="
 	nvenc? ( media-libs/nv-codec-headers )
 	qsv? (
 		media-libs/libva:=
-		media-libs/libvpl:=
+		>=media-libs/libvpl-1.13.0:=
 	)
 "
 RDEPEND="
