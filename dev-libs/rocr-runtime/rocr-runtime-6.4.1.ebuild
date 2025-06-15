@@ -62,5 +62,12 @@ src_configure() {
 
 	use debug || append-cxxflags "-DNDEBUG"
 
+	# skip false positive detection in samples, bug #958188
+	local CMAKE_QA_COMPAT_SKIP=1
+
+	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_rocprofiler-register=ON
+	)
+
 	cmake_src_configure
 }
