@@ -12,6 +12,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-libcxx-19.patch
 	"${FILESDIR}"/${P}-gcc15.patch
 	"${FILESDIR}"/${PN}-2.5-makefile-install.patch
 )
