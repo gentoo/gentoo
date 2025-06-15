@@ -195,7 +195,7 @@ RDEPEND="
 		x11-libs/cairo
 	)
 	taglib? ( media-libs/taglib:= )
-	theora? ( media-libs/libtheora )
+	theora? ( media-libs/libtheora:= )
 	tremor? ( media-libs/tremor )
 	truetype? (
 		media-libs/freetype:2
