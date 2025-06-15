@@ -229,7 +229,7 @@ RDEPEND="
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 	)
 	svt-av1? ( >=media-libs/svt-av1-0.8.4:=[${MULTILIB_USEDEP}] )
-	theora? ( media-libs/libtheora[encode,${MULTILIB_USEDEP}] )
+	theora? ( media-libs/libtheora:=[encode,${MULTILIB_USEDEP}] )
 	truetype? ( media-libs/freetype:2[${MULTILIB_USEDEP}] )
 	twolame? ( media-sound/twolame[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
