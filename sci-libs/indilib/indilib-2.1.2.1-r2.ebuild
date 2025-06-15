@@ -31,7 +31,7 @@ RDEPEND="
 	virtual/libusb:1
 	ogg? (
 		media-libs/libogg
-		media-libs/libtheora
+		media-libs/libtheora:=
 	)
 	rtlsdr? ( net-wireless/rtl-sdr:= )
 	websocket? ( dev-libs/boost:= )
