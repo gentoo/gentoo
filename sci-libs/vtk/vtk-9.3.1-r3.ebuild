@@ -8,7 +8,7 @@ EAPI=8
 #	properly before building.
 # - replace usex by usev where applicable
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -21,9 +21,7 @@ DESCRIPTION="The Visualization Toolkit"
 HOMEPAGE="https://www.vtk.org/"
 SRC_URI="
 	https://www.vtk.org/files/release/${MY_PV}/VTK-${PV}.tar.gz
-	doc? (
-		https://www.vtk.org/files/release/${MY_PV}/vtkDocHtml-${PV}.tar.gz
-	)
+	doc? ( https://www.vtk.org/files/release/${MY_PV}/vtkDocHtml-${PV}.tar.gz )
 	examples? (
 		https://www.vtk.org/files/release/${MY_PV}/VTKLargeData-${PV}.tar.gz
 		https://www.vtk.org/files/release/${MY_PV}/VTKLargeDataFiles-${PV}.tar.gz
@@ -39,12 +37,12 @@ S="${WORKDIR}/VTK-${PV}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0/${MY_PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 # TODO: Like to simplify these. Mostly the flags related to Groups.
 IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg gdal gles2-only imaging
 	java las +logging minimal mpi mysql +netcdf odbc opencascade openmp openvdb pdal postgres
-	python qt6 +rendering tbb test +threads tk +truetype video_cards_nvidia +views vtkm web"
+	python qt6 +rendering sdl tbb test +threads tk +truetype video_cards_nvidia +views vtkm web"
 
 RESTRICT="!test? ( test )"
 
@@ -59,11 +57,11 @@ REQUIRED_USE="
 	!minimal? ( cgns netcdf rendering )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt6? ( rendering )
+	sdl? ( rendering )
 	tk? ( python rendering )
 	web? ( python )
 	rendering? ( truetype views )
 "
-# 	cgns? ( !mpi )
 
 # eigen, nlohmann_json, pegtl and utfcpp are referenced in the cmake files
 # and need to be available when VTK consumers configure the dependencies.
@@ -76,7 +74,7 @@ RDEPEND="
 	dev-libs/icu:=
 	dev-libs/jsoncpp:=
 	>=dev-libs/libfmt-8.1.1:=
-	dev-libs/libxml2:2=
+	dev-libs/libxml2:2
 	dev-libs/libzip:=
 	dev-libs/pugixml
 	media-libs/freetype
@@ -85,14 +83,12 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/tiff:=
 	sci-libs/hdf5:=[mpi=]
+	sci-libs/proj:=
 	sys-libs/zlib
 	boost? ( dev-libs/boost:=[mpi?] )
 	cgns? (
 		>=sci-libs/cgnslib-4.1.1:=[hdf5,mpi=]
 		sci-libs/hdf5[cxx]
-		mpi? (
-			sci-libs/hdf5[mpi,unsupported]
-		)
 	)
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	ffmpeg? ( media-video/ffmpeg:= )
@@ -101,8 +97,7 @@ RDEPEND="
 	las? ( sci-geosciences/liblas )
 	!minimal? (
 		>=media-libs/libharu-2.4.0:=
-		media-libs/libtheora
-		sci-libs/proj:=
+		media-libs/libtheora:=
 	)
 	mpi? ( virtual/mpi[romio] )
 	mysql? ( dev-db/mariadb-connector-c )
@@ -123,6 +118,7 @@ RDEPEND="
 		dev-qt/qtshadertools:6
 		x11-libs/libxkbcommon
 	)
+	sdl? ( media-libs/libsdl2 )
 	rendering? (
 		media-libs/glew:=
 		media-libs/libglvnd[X]
@@ -161,25 +157,22 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.2.5-pegtl-3.x.patch"
 	"${FILESDIR}/${PN}-9.3.0-java.patch"
 	"${FILESDIR}/${PN}-9.3.0-opencascade.patch"
+	"${FILESDIR}/${PN}-9.3.0-ThrustPatches.patch"
+	"${FILESDIR}/${PN}-9.3.0-core-octree_node.txx.patch"
+	"${FILESDIR}/${PN}-9.3.0-ThirdParty-gcc15.patch"
 	"${FILESDIR}/${PN}-9.3.0-update-for-cuda-12.6.patch"
-
-	"${FILESDIR}/${PN}-9.4.2-pegtl-3.x.patch"
-	"${FILESDIR}/${PN}-9.4.2-fix-fmt-11.patch"
-	"${FILESDIR}/${PN}-9.4.2-opencascade-components.patch"
-	"${FILESDIR}/${PN}-9.4.2-vtk-m-jobpool-size.patch"
-	"${FILESDIR}/${PN}-9.4.2-ThirdParty-gcc15.patch"
-	"${FILESDIR}/${PN}-9.4.2-find-hdf5-in-global-scope.patch"
+	"${FILESDIR}/${PN}-9.3.1-fix-fmt-11.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )
 
 vtk_check_reqs() {
-	local dsk="$(( 4096
-		+ $(usex cuda 8192 0)
-		+ $(usex doc 3072 0)
-		+ $(usex examples 3072 0)
-	))"
-	local -x CHECKREQS_DISK_BUILD=${dsk}M
+	local dsk=4096
+
+	dsk=$(( $(usex doc 3072 0) + dsk ))
+	dsk=$(( $(usex examples 3072 0) + dsk ))
+	dsk=$(( $(usex cuda 8192 0) + dsk ))
+	export CHECKREQS_DISK_BUILD=${dsk}M
 
 	# In case users are not aware of the extra NINJAOPTS, check
 	# for the more common MAKEOPTS, in case NINJAOPTS is empty
@@ -191,11 +184,9 @@ vtk_check_reqs() {
 	fi
 
 	if use cuda; then
-
-		local mem="$((
-			$(usex cuda 7168 0) * $(( jobs > 4 ? 4 : jobs ))
-		))"
-		local -x CHECKREQS_MEMORY=${mem}M
+		local mem=$(( $(usex cuda 7168 0) ))
+		mem=$(( mem * $(( jobs > 4 ? 4 : jobs )) ))
+		export CHECKREQS_MEMORY=${mem}M
 	fi
 
 	"check-reqs_pkg_${EBUILD_PHASE}"
@@ -274,9 +265,10 @@ vtk_add_sandbox() {
 	[[ -c "/dev/udmabuf" ]] && WRITE+=( "/dev/udmabuf" )
 
 	readarray -t dris <<<"$(
-		find /sys/class/drm/*/device/drm \
-			-mindepth 1 -maxdepth 1 -type d -exec basename {} \; \
-			| sort | uniq | sed 's:^:/dev/dri/:'
+		for dri in /sys/class/drm/*/dev; do
+			realpath "/dev/char/$(cat "${dri}")"
+			eqawarn "dri ${dri} $(cat "${dri}") $(realpath "/dev/char/$(cat "${dri}")")"
+		done
 	)"
 
 	[[ -n "${dris[*]}" ]] && WRITE+=( "${dris[@]}" )
@@ -286,7 +278,6 @@ vtk_add_sandbox() {
 		readarray -t nvidia_devs <<<"$(
 			find /dev -regextype posix-extended  -regex '/dev/nvidia(|-(nvswitch|vgpu))[0-9]*'
 		)"
-
 		[[ -n "${nvidia_devs[*]}" ]] && WRITE+=( "${nvidia_devs[@]}" )
 
 		WRITE+=(
@@ -313,19 +304,12 @@ vtk_add_sandbox() {
 
 	local dev
 	for dev in "${WRITE[@]}"; do
-		if [[ ! -e "${dev}" ]]; then
-			eqawarn "${dev} does not exist"
-			# continue
-		fi
+		[[ ! -e "${dev}" ]] && return
 
-		if [[ -w "${dev}" ]]; then
-			eqawarn "${dev} is already writable"
-			# continue
-		fi
+		[[ -w "${dev}" ]] && return
 
 		eqawarn "addwrite ${dev}"
 		addwrite "${dev}"
-
 		if [[ ! -d "${dev}" ]] && [[ ! -w "${dev}" ]]; then
 			eerror "can not access ${dev} after addwrite"
 		fi
@@ -353,7 +337,7 @@ pkg_setup() {
 		# NOTE We try to load nvidia-uvm and nvidia-modeset here,
 		# so __nvcc_device_query does not fail later.
 
-		nvidia-smi -L || true
+		nvidia-modprobe -m -u -c 0 || true
 	fi
 
 	use java && java-pkg-opt-2_pkg_setup
@@ -375,6 +359,10 @@ src_prepare() {
 		rm -f "${WORKDIR}"/html/*.md5 || die "Failed to remove superfluous hashes"
 		sed -e "s|\${VTK_BINARY_DIR}/Utilities/Doxygen/doc|${WORKDIR}|" \
 			-i Utilities/Doxygen/CMakeLists.txt || die
+	fi
+
+	if use opencascade && has_version ">=sci-libs/opencascade-7.8.0"; then
+		eapply "${FILESDIR}/vtk-9.3.0-opencascade-7.8.0.patch"
 	fi
 
 	cmake_src_prepare
@@ -426,8 +414,6 @@ src_configure() {
 		-DVTK_FORBID_DOWNLOADS="yes"
 
 		-DVTK_GROUP_ENABLE_Imaging="$(usex imaging "YES" "NO")"
-		-DVTK_GROUP_ENABLE_MPI="$(usex mpi "YES" "NO")"
-		-DVTK_GROUP_ENABLE_Qt="$(usex qt6 "YES" "NO")"
 		-DVTK_GROUP_ENABLE_Rendering="$(usex rendering "YES" "NO")"
 		-DVTK_GROUP_ENABLE_StandAlone="$(usex minimal "NO" "YES")"
 		-DVTK_GROUP_ENABLE_Views="$(usex views "YES" "NO")"
@@ -458,7 +444,7 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_jpeg="YES"
 		-DVTK_MODULE_ENABLE_VTK_jsoncpp="YES"
 		-DVTK_MODULE_ENABLE_VTK_libharu="$(usex minimal "NO" "YES")"
-		-DVTK_MODULE_ENABLE_VTK_libproj="$(usex minimal "NO" "YES")"
+		-DVTK_MODULE_ENABLE_VTK_libproj="YES"
 		-DVTK_MODULE_ENABLE_VTK_libxml2="YES"
 		-DVTK_MODULE_ENABLE_VTK_lz4="YES"
 		-DVTK_MODULE_ENABLE_VTK_lzma="YES"
@@ -479,7 +465,6 @@ src_configure() {
 		-DVTK_MODULE_USE_EXTERNAL_VTK_fast_float=OFF
 		-DVTK_MODULE_USE_EXTERNAL_VTK_exprtk=OFF
 		-DVTK_MODULE_USE_EXTERNAL_VTK_ioss=OFF
-		-DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF
 		-DVTK_MODULE_USE_EXTERNAL_VTK_verdict=OFF
 
 		-DVTK_RELOCATABLE_INSTALL=ON
@@ -531,16 +516,9 @@ src_configure() {
 		)
 	fi
 
-	if use cgns; then
-		mycmakeargs+=(
-			-DHDF5_NEED_MPI="$(usex mpi)"
-		)
-	fi
-
 	if use cuda; then
 		cuda_add_sandbox -w
 		addwrite "/proc/self/task"
-		addpredict "/dev/char/"
 
 		if ! test -w /dev/nvidiactl; then
 			# eqawarn "Can't access the GPU at /dev/nvidiactl."
@@ -584,6 +562,9 @@ src_configure() {
 		if use rendering; then
 			mycmakeargs+=( -DVTK_OPENGL_ENABLE_STREAM_ANNOTATIONS=ON )
 		fi
+	else
+		: "${CMAKE_BUILD_TYPE:="Release"}"
+		export CMAKE_BUILD_TYPE
 	fi
 
 	if use examples || use test; then
@@ -646,7 +627,6 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_CommonSystem="YES"
 			-DVTK_MODULE_ENABLE_VTK_CommonTransforms="YES"
 
-			-DVTK_MODULE_ENABLE_VTK_FiltersCellGrid="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersCore="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersExtraction="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersGeneral="YES"
@@ -654,12 +634,10 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_FiltersGeometry="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersHybrid="NO"
 			-DVTK_MODULE_ENABLE_VTK_FiltersHyperTree="YES"
-			-DVTK_MODULE_ENABLE_VTK_FiltersReduction="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersSources="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersStatistics="YES"
 			-DVTK_MODULE_ENABLE_VTK_FiltersVerdict="YES"
 
-			-DVTK_MODULE_ENABLE_VTK_IOCellGrid="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOCore="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOGeometry="NO"
 			-DVTK_MODULE_ENABLE_VTK_IOLegacy="YES"
@@ -671,6 +649,7 @@ src_configure() {
 
 	if use mpi; then
 		mycmakeargs+=(
+			-DVTK_GROUP_ENABLE_MPI="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOH5part="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOMPIParallel="YES"
 			-DVTK_MODULE_ENABLE_VTK_IOParallel="YES"
@@ -689,6 +668,8 @@ src_configure() {
 			)
 		fi
 		use vtkm && mycmakeargs+=( -DVTKm_ENABLE_MPI=ON )
+	else
+		mycmakeargs+=( -DVTK_GROUP_ENABLE_MPI="NO" )
 	fi
 
 	use mysql && mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_IOMySQL="YES" )
@@ -713,10 +694,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DCMAKE_INSTALL_QMLDIR="${EPFREIX}/usr/$(get_libdir)/qt6/qml"
 			-DVTK_QT_VERSION="6"
-			-DVTK_MODULE_ENABLE_VTK_GUISupportQt="YES"
-			-DVTK_MODULE_ENABLE_VTK_GUISupportQtQuick="YES"
 		)
-
 		if has_version "dev-qt/qtbase:6[gles2-only]" || use gles2-only; then
 			mycmakeargs+=(
 				# Force using EGL & GLES
@@ -724,6 +702,16 @@ src_configure() {
 				-DVTK_OPENGL_USE_GLES=ON
 			)
 		fi
+	else
+		mycmakeargs+=( -DVTK_GROUP_ENABLE_Qt="NO" )
+	fi
+
+	if use qt6; then
+		mycmakeargs+=(
+			-DVTK_GROUP_ENABLE_Qt:STRING="YES"
+			-DVTK_MODULE_ENABLE_VTK_GUISupportQt="YES"
+			-DVTK_MODULE_ENABLE_VTK_GUISupportQtQuick="YES"
+		)
 		if use mysql || use postgres; then
 			mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL="YES" )
 		fi
@@ -740,7 +728,6 @@ src_configure() {
 			-DVTK_ENABLE_OSPRAY=OFF
 
 			-DVTK_MODULE_ENABLE_VTK_IOExportGL2PS="YES"
-			-DVTK_MODULE_ENABLE_VTK_RenderingAnari="NO"  # no package in ::gentoo
 			-DVTK_MODULE_ENABLE_VTK_RenderingAnnotation="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingContext2D="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2="YES"
@@ -758,7 +745,12 @@ src_configure() {
 			-DVTK_MODULE_ENABLE_VTK_RenderingVolume="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingVolumeAMR="YES"
 			-DVTK_MODULE_ENABLE_VTK_RenderingVolumeOpenGL2="YES"
+			-DVTK_MODULE_ENABLE_VTK_RenderingZSpace="NO"
 			-DVTK_MODULE_ENABLE_VTK_gl2ps="YES"
+			-DVTK_MODULE_ENABLE_VTK_glew="YES"
+			-DVTK_MODULE_ENABLE_VTK_opengl="YES"
+
+			-DVTK_USE_SDL2="$(usex sdl "YES" "NO")"
 		)
 		use python && mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_RenderingMatplotlib="YES" )
 		use tk && mycmakeargs+=( -DVTK_MODULE_ENABLE_VTK_RenderingTk="YES" )
@@ -819,7 +811,6 @@ src_configure() {
 			-DVTKm_ENABLE_DOCUMENTATION="$(usex doc)" # "Build Doxygen documentation" OFF
 			-DVTKm_ENABLE_EXAMPLES="$(usex examples)" # "Build examples" OFF
 			-DVTKm_ENABLE_HDF5_IO="yes" # "Enable HDF5 support" OFF
-			-DVTKm_HDF5_IS_PARALLEL="$(usex mpi)"
 			-DVTKm_ENABLE_LOGGING="$(usex logging)" # "Enable VTKm Logging" ON
 			-DVTKm_ENABLE_MPI="$(usex mpi)" # "Enable MPI support" OFF
 			-DVTKm_ENABLE_OPENMP="$(usex openmp)" # "Enable OpenMP support" OFF
@@ -828,6 +819,7 @@ src_configure() {
 			-DVTKm_ENABLE_TESTING="$(usex test)" # "Enable VTKm Testing" ON
 			-DVTKm_ENABLE_TUTORIALS="no" # "Build tutorials" OFF
 			-DVTKm_NO_ASSERT_CUDA="yes" # "Disable assertions for CUDA devices." ON
+			-DVTKm_NO_ASSERT_HIP="yes" # "Disable assertions for HIP devices." ON
 			-DVTKm_NO_ASSERT="no" # "Disable assertions in debugging builds." OFF
 			-DVTKm_NO_INSTALL_README_LICENSE="ON" # bug #793221 # "disable the installation of README and LICENSE files" OFF
 			-DVTKm_SKIP_LIBRARY_VERSIONS="no" # "Skip versioning VTK-m libraries" OFF
@@ -864,7 +856,7 @@ src_test() {
 
 	local -x -a CMAKE_SKIP_TESTS
 
-	if [[ "${CMAKE_RUN_OPTIONAL_TESTS:=no}" != "yes" ]]; then
+	if [[ "${CMAKE_RUN_OPTIONAL_TESTS:=yes}" != "yes" ]]; then
 		local -a REALLY_BAD_TESTS BAD_TESTS RANDOM_FAIL_TESTS
 		# don't work at all
 		REALLY_BAD_TESTS=(
@@ -872,7 +864,6 @@ src_test() {
 			"VTK::IOMotionFXCxx-TestMotionFXCFGReaderPositionFile$" # (Subprocess aborted)
 
 			"VTK::InteractionWidgetsCxx-TestBrokenLineWidget$"
-			"VTK::InteractionWidgetsCxx-TestPolyPlane$"
 			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMClipWithImplicitFunction$" # (NUMERICAL)
 			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMHistogram$" # (Failed)
 			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMMarchingCubes$" # (Failed)
@@ -889,7 +880,6 @@ src_test() {
 			"VTK::FiltersFlowPathsCxx-TestEvenlySpacedStreamlines2D$" # (Failed)
 			"VTK::FiltersGeneralCxx-TestContourTriangulatorHoles$" # (Failed)
 			"VTK::FiltersParallelCxx-TestAngularPeriodicFilter$" # (Failed)
-			"VTK::FiltersParallelDIY2Cxx-TestRedistributeDataSetFilter"
 			"VTK::FiltersParallelDIY2Cxx-MPI-TestProbeLineFilter$" # (Failed)
 			"VTK::FiltersSelectionCxx-TestLinearSelector3D$" # (Failed)
 			"VTK::GUISupportQtQuickCxx-TestQQuickVTKRenderItem$" # (Failed)
@@ -965,15 +955,6 @@ src_test() {
 			"VTK::FiltersFlowPathsCxx-TestStreamSurface$"
 			"VTK::AcceleratorsVTKmFiltersCxx-TestVTKMAbort$"
 			"VTK::AcceleratorsVTKmFiltersPython-TestVTKMSlice$"
-			"VTK::IOImageCxx-TestTIFFReaderMultipleMulti$"
-
-			"VTK::FiltersFlowPathsCxx-TestParticleTracers$"
-			"VTK::RenderingOpenGL2Cxx-TestFluidMapper$"
-			"VTK::FiltersCellGridCxx-TestCellGridEvaluator$"
-			"VTK::IOImageCxx-TestTIFFReaderMulti$"
-			"VTK::FiltersGeneralCxx-TestWarpScalarGenerateEnclosure$"
-			"VTK::FiltersGeneralCxx-expCos$"
-			"VTK::FiltersGeneralCxx-TestQuadraturePoints$"
 		)
 
 		CMAKE_SKIP_TESTS+=(
@@ -985,16 +966,11 @@ src_test() {
 
 	CMAKE_SKIP_TESTS+=(
 		# requires VTK_USE_MICROSOFT_MEDIA_FOUNDATION
-		"^VTK::IOMovieCxx-Test" # Skipped
+		"VTK::IOMovieCxx-Test" # Skipped
 	)
 
 	if use openmp; then
 		# TODO Times out under openmp
-		# local -x VTK_SMP_BACKEND_IN_USE="STDThread"
-		# local -x VTK_SMP_BACKEND_IN_USE="Sequential"
-		# local -x VTK_SMP_BACKEND_IN_USE="OpenMP"
-		# local -x VTK_SMP_BACKEND_IN_USE="TBB"
-
 		CMAKE_SKIP_TESTS+=(
 			"^VTK::CommonCoreCxx-TestSMP$"
 		)

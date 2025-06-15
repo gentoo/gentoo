@@ -96,7 +96,7 @@ RDEPEND="
 	las? ( sci-geosciences/liblas )
 	!minimal? (
 		>=media-libs/libharu-2.4.0:=
-		media-libs/libtheora
+		media-libs/libtheora:=
 		sci-libs/proj:=
 	)
 	mpi? ( virtual/mpi[romio] )
