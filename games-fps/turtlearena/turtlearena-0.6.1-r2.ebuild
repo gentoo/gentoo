@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ RDEPEND="
 		virtual/opengl
 		curl? ( net-misc/curl )
 		openal? ( media-libs/openal )
-		theora? ( media-libs/libtheora )
+		theora? ( media-libs/libtheora:= )
 		voice? (
 			media-libs/speex
 			mumble? ( net-voip/mumble )
