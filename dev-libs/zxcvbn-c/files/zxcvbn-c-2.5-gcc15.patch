@@ -1,13 +1,20 @@
 https://bugs.gentoo.org/957161
 https://github.com/tsyrogit/zxcvbn-c/commit/b9f30993c88d9057d7d95a1b059989f7853fd1b0
 https://src.fedoraproject.org/rpms/zxcvbn-c/blob/rawhide/f/gcc15-c++23_fix.patch
+https://github.com/tsyrogit/zxcvbn-c/pull/34
 
+From b9f30993c88d9057d7d95a1b059989f7853fd1b0 Mon Sep 17 00:00:00 2001
+From: Mattia Verga <mattia.verga@tiscali.it>
+Date: Mon, 20 Jan 2025 09:04:12 +0100
+Subject: [PATCH] Fix for GCC15/c++23
+
+GCC 15 default standard is C++23. This include is needed to build zxcvbn with that language level.
 --- a/dict-generate.cpp
 +++ b/dict-generate.cpp
-@@ -22,6 +22,7 @@
-  *
+@@ -23,6 +23,7 @@
   **********************************************************************************/
  
+ #include <algorithm>
 +#include <cstdint>
  #include <iostream>
  #include <string>
