@@ -3,6 +3,7 @@ https://github.com/LibreOffice/core/commit/0084c2b22ce26084df5a379135ba8ac174585
 https://github.com/LibreOffice/core/commit/19c32b44fead600118377417012b111a4f238766
 https://gerrit.libreoffice.org/c/core/+/186476/1
 https://gerrit.libreoffice.org/c/core/+/186477/1
+https://gerrit.libreoffice.org/c/core/+/186504
 
 From 6ebc3c540f2aa13363e3dcb32a44bfa2c7f66a9f Mon Sep 17 00:00:00 2001
 From: Stephan Bergmann <stephan.bergmann@allotropia.de>
@@ -102,6 +103,26 @@ Change-Id: I274aca50232290ec05be9ea2700720526b8f761d
  #include <vector>
  
  namespace vcl::font
+-- 
+2.49.0
+
+From 347f9e349fbe6e1b9a7b381aed7f4a5b67deebd5 Mon Sep 17 00:00:00 2001
+Message-ID: <347f9e349fbe6e1b9a7b381aed7f4a5b67deebd5.1750018991.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 14 Jun 2025 19:35:34 +0100
+Subject: [PATCH] starmath: include <cstdint> for uint_fast8_t
+
+Change-Id: I2a6576d2d853dd6b34c0ea69287690b462f194e1
+--- a/starmath/inc/mathml/def.hxx
++++ b/starmath/inc/mathml/def.hxx
+@@ -10,6 +10,7 @@
+ #pragma once
+ 
+ #include <tools/color.hxx>
++#include <cstdint>
+ 
+ /* All possible data needed to do the job outside mathml limits */
+ // Ml prefix means it is part of mathml standard
 -- 
 2.49.0
 
