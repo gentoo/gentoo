@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -135,7 +135,7 @@ RDEPEND="
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl )
 	speex? ( media-libs/speex )
-	theora? ( media-libs/libtheora[encode?] )
+	theora? ( media-libs/libtheora:=[encode?] )
 	tremor? ( media-libs/tremor )
 	truetype? ( ${FONT_RDEPS} )
 	vdpau? ( x11-libs/libvdpau )

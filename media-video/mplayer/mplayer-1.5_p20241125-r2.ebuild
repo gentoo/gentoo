@@ -135,7 +135,7 @@ RDEPEND="
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl )
 	speex? ( media-libs/speex )
-	theora? ( media-libs/libtheora[encode?] )
+	theora? ( media-libs/libtheora:=[encode?] )
 	tremor? ( media-libs/tremor )
 	truetype? ( ${FONT_RDEPS} )
 	vdpau? ( x11-libs/libvdpau )
