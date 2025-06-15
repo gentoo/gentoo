@@ -65,7 +65,7 @@ RDEPEND="
 	)
 	pulseaudio? ( media-libs/libpulse )
 	speech? ( app-accessibility/speech-dispatcher )
-	theora? ( media-libs/libtheora )
+	theora? ( media-libs/libtheora:= )
 	tools? ( app-misc/ca-certificates )
 	udev? ( virtual/udev )
 	upnp? ( net-libs/miniupnpc:= )
