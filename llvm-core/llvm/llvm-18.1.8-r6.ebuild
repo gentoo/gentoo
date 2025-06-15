@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -347,11 +347,6 @@ get_distribution_components() {
 }
 
 multilib_src_configure() {
-	if use ppc && tc-is-gcc && [[ $(gcc-major-version) -lt 14 ]]; then
-		# Workaround for bug #880677
-		append-flags $(test-flags-CXX -fno-ipa-sra -fno-ipa-modref -fno-ipa-icf)
-	fi
-
 	# ODR violations (bug #917536, bug #926529). Just do it for GCC for now
 	# to avoid people grumbling. GCC is, anecdotally, more likely to miscompile
 	# LLVM with LTO anyway (which is not necessarily its fault).
