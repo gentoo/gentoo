@@ -125,7 +125,7 @@ python_install_all() {
 		mkdir -p "${ED}/usr/share/applications/" || die
 		cp "${WORKDIR}/${P}/deluge/ui/data/share/applications/deluge.desktop" "${ED}/usr/share/applications/" || die
 		mkdir -p "${ED}/usr/share/metainfo" || die
-		cp "${WORKDIR}/${P}/deluge/ui/data/share/appdata/deluge.appdata.xml" "${ED}/usr/share/metainfo/" || die
+		cp "${WORKDIR}/${P}/deluge/ui/data/share/metainfo/deluge.metainfo.xml" "${ED}/usr/share/metainfo/" || die
 	fi
 
 	if use webinterface; then
