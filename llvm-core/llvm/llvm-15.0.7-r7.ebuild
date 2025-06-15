@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake flag-o-matic llvm.org multilib-minimal pax-utils python-any-r1 \
 	toolchain-funcs
 
