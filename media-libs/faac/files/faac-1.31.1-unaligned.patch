@@ -1,0 +1,78 @@
+https://github.com/knik0/faac/commit/cb10c59666a3631547a9037c1576a34d8ca52df1
+
+From cb10c59666a3631547a9037c1576a34d8ca52df1 Mon Sep 17 00:00:00 2001
+From: enWILLYado <enwillyado@hotmail.com>
+Date: Mon, 2 Jun 2025 16:40:03 +0200
+Subject: [PATCH] Fix SIMD calls (#59)
+
+* Fix SIMD calls
+
+Fast SIMD calls and secure align for result.
+
+* Update quantize.c
+
+Potential unaligned memory location.
+
+* Update quantize.c
+
+Only fix unaligned memory access.
+---
+ libfaac/quantize.c | 24 ++++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
+
+diff --git a/libfaac/quantize.c b/libfaac/quantize.c
+index 870737a..02586c9 100644
+--- a/libfaac/quantize.c
++++ b/libfaac/quantize.c
+@@ -40,6 +40,19 @@
+ # define bit_SSE2 (1 << 26)
+ #endif
+ 
++#ifdef __SSE2__
++#ifdef _MSC_VER /* visual c++ */
++#define ALIGN16_BEG __declspec(align(16))
++#define ALIGN16_END
++#else /* gcc or icc */
++#define ALIGN16_BEG
++#define ALIGN16_END __attribute__((aligned(16)))
++#endif
++#else
++#define ALIGN16_BEG
++#define ALIGN16_END
++#endif
++
+ #ifdef __GNUC__
+ #define GCC_VERSION (__GNUC__ * 10000 \
+                      + __GNUC_MINOR__ * 100 \
+@@ -182,7 +195,7 @@ static void qlevel(CoderInfo *coderInfo,
+       int sfac;
+       double rmsx;
+       double etot;
+-      int xitab[8 * MAXSHORTBAND];
++      int ALIGN16_BEG xitab[8 * MAXSHORTBAND] ALIGN16_END;
+       int *xi;
+       int start, end;
+       const double *xr;
+@@ -242,15 +255,18 @@ static void qlevel(CoderInfo *coderInfo,
+ #ifdef __SSE2__
+           if (sse2)
+           {
++              const __m128 zero = _mm_setzero_ps();
++              const __m128 sfac = _mm_set1_ps(sfacfix);
++              const __m128 magic = _mm_set1_ps(MAGIC_NUMBER);
+               for (cnt = 0; cnt < end; cnt += 4)
+               {
+                   __m128 x = {xr[cnt], xr[cnt + 1], xr[cnt + 2], xr[cnt + 3]};
+ 
+-                  x = _mm_max_ps(x, _mm_sub_ps((__m128){0, 0, 0, 0}, x));
+-                  x = _mm_mul_ps(x, (__m128){sfacfix, sfacfix, sfacfix, sfacfix});
++                  x = _mm_max_ps(x, _mm_sub_ps(zero, x));
++                  x = _mm_mul_ps(x, sfac);
+                   x = _mm_mul_ps(x, _mm_sqrt_ps(x));
+                   x = _mm_sqrt_ps(x);
+-                  x = _mm_add_ps(x, (__m128){MAGIC_NUMBER, MAGIC_NUMBER, MAGIC_NUMBER, MAGIC_NUMBER});
++                  x = _mm_add_ps(x, magic);
+ 
+                   *(__m128i*)(xi + cnt) = _mm_cvttps_epi32(x);
+               }
+
