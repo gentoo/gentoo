@@ -14,7 +14,7 @@ fi
 
 declare -A QT6_IUSE=(
 	[global]="+ssl +udev zstd"
-	[core]="icu jemalloc journald syslog"
+	[core]="icu journald syslog"
 	[modules]="+concurrent +dbus +gui +network +sql +xml"
 
 	[gui]="
@@ -65,7 +65,6 @@ COMMON_DEPEND="
 	dev-libs/glib:2
 	dev-libs/libpcre2:=[pcre16,unicode(+)]
 	icu? ( dev-libs/icu:= )
-	jemalloc? ( dev-libs/jemalloc:= )
 	journald? ( sys-apps/systemd )
 
 	dbus? ( sys-apps/dbus )
@@ -241,9 +240,10 @@ src_configure() {
 
 		# qtcore
 		$(qt_feature icu)
-		$(qt_feature jemalloc)
 		$(qt_feature journald)
 		$(qt_feature syslog)
+		# currently jemalloc upstream is dead and tests fail with it
+		-DQT_FEATURE_jemalloc=OFF
 
 		# tools
 		-DQT_FEATURE_androiddeployqt=OFF
