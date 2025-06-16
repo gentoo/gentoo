@@ -6,5 +6,6 @@
   </maintainer>
   <upstream>
     <remote-id type="cpe">cpe:/a:freedesktop:dbus-glib</remote-id>
+    <remote-id type="freedesktop-gitlab">dbus/dbus-glib</remote-id>
   </upstream>
 </pkgmetadata>
