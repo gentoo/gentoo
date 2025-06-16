@@ -16,7 +16,7 @@ RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/libxslt
-	dev-libs/tinyxml2
+	dev-libs/tinyxml2:=
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-libs/check-0.9.6 )
