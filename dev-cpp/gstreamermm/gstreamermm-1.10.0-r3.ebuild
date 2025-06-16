@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ RDEPEND="
 	>=media-libs/gstreamer-${PV}:1.0
 	>=media-libs/gst-plugins-base-${PV}:1.0
 	>=dev-cpp/glibmm-2.47.6:2
-	>=dev-cpp/libxmlpp-2.14:2.6
 	>=dev-libs/libsigc++-2:2"
 DEPEND="${RDEPEND}
 	test? (
