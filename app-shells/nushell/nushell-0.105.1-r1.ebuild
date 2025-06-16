@@ -25,6 +25,8 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="plugins system-clipboard X"
 
 DEPEND="
+	dev-libs/openssl:0=
+	dev-db/sqlite:3=
 	system-clipboard? (
 		X? (
 			x11-libs/libX11
@@ -33,9 +35,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
-BDEPEND="
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 RESTRICT+=" test"
 
@@ -48,13 +48,19 @@ src_prepare() {
 
 src_configure() {
 	# high magic to allow system-libs
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	export OPENSSL_NO_VENDOR=true
 	export PKG_CONFIG_ALLOW_CROSS=1
 
 	local myfeatures=(
+		plugin
+		native-tls
+		sqlite
 		$(usev system-clipboard)
+		trash-support
 	)
 
-	cargo_src_configure
+	cargo_src_configure --no-default-features
 }
 
 src_compile() {
