@@ -315,9 +315,12 @@ src_install() {
 	mv -- "${ED}"/usr/bin/bash "${ED}"/bin/ || die
 	dosym bash /bin/rbash
 
+	insinto /etc/profile.d
+	doins "${FILESDIR}"/00-gentoo-command-prompt-as-array.sh
+
 	insinto /etc/bash
 	doins "${FILESDIR}"/bash_logout
-	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
+	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r2 | newins - bashrc
 
 	insinto /etc/bash/bashrc.d
 	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color-r2.bash | newins - 10-gentoo-color.bash
