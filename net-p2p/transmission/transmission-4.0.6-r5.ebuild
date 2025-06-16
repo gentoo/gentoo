@@ -73,9 +73,14 @@ PATCHES=(
 )
 
 src_prepare() {
+	# Remove files which trigger <cmake-4 compat in cmake.eclass
+	rm -r third-party/{lib{deflate,event,natpmp,psl},miniupnpc} || die
+	rm third-party/utfcpp/CMakeLists.txt || die
+
 	cd third-party/dht || die
 	eapply "${FILESDIR}"/transmission-4.0.6-dht-cmake-4.patch
 	cd "${S}" || die
+
 	cmake_src_prepare
 }
 
