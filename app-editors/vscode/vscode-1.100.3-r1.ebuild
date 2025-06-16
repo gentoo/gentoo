@@ -122,7 +122,7 @@ src_install() {
 
 	local EXEC_EXTRA_FLAGS=()
 	if use wayland; then
-		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" )
+		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" "--wayland-text-input-version=3" )
 	fi
 	if use egl; then
 		EXEC_EXTRA_FLAGS+=( "--use-gl=egl" )
