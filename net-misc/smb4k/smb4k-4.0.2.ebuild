@@ -67,6 +67,7 @@ src_configure() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	elog "Users of Samba 4.7 and above please note that for the time being,"
 	elog "the following setting has to be added to or changed in the [global]"
 	elog "section of the smb.conf file:"
