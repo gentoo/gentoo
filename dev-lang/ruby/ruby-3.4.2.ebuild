@@ -175,6 +175,9 @@ src_configure() {
 	# In many places aliasing rules are broken; play it safe
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
+	# Avoid a compile error with certain USE flag combinations when
+	# using std=gnu23, bug #945643 and bug #945502
+	append-cflags -std=gnu17
 
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
