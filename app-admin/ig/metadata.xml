@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>chewi@gentoo.org</email>
+    <name>James Le Cuirot</name>
+  </maintainer>
+  <longdescription lang="en">
+    Inspektor Gadget is a set of tools and framework for data collection and system inspection on Kubernetes clusters and Linux hosts using eBPF.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">inspektor-gadget/inspektor-gadget</remote-id>
+  </upstream>
+</pkgmetadata>
