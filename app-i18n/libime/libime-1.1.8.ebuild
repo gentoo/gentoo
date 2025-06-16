@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,6 +31,9 @@ BDEPEND="
 "
 
 src_configure() {
+	# 957570 : remove unused kenlm CMakeLists.txt
+	rm src/libime/core/kenlm/CMakeLists.txt || die
+
 	local mycmakeargs=(
 		-DENABLE_DATA=$(usex data)
 		-DENABLE_DOC=$(usex doc)
