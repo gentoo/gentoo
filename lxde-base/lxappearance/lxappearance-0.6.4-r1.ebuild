@@ -38,7 +38,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local econfargs=(
+	local myeconfargs=(
 		--enable-gtk3
 		$(use_enable dbus)
 		# As of 0.6.4, there's no more dist tarballs, but we
