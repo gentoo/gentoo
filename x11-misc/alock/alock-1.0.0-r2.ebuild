@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mgumz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="doc imlib pam"
+IUSE="imlib pam"
 
 DEPEND="virtual/libcrypt:=
 	x11-libs/libX11
@@ -25,7 +25,7 @@ DEPEND="virtual/libcrypt:=
 	imlib? ( media-libs/imlib2[X] )
 	pam? ( sys-libs/pam )"
 RDEPEND="${DEPEND}"
-BDEPEND="doc? ( app-text/asciidoc )"
+BDEPEND="app-text/asciidoc"
 
 PATCHES=(
 	"${FILESDIR}"/implicit_pointer_conversion_fix_amd64.patch
@@ -54,13 +54,10 @@ src_compile() {
 
 src_install() {
 	dobin src/alock
+	dodoc {CHANGELOG,README,TODO}.txt
 
-	if use doc; then
-		# We need to generate the manpage...
-		a2x -d manpage -f manpage ./"${PN}".txt || die "a2x conversion failed."
-		doman alock.1
-		dodoc {CHANGELOG,README,TODO}.txt
-	fi
+	a2x -d manpage -f manpage ./"${PN}".txt || die "a2x conversion failed."
+	doman alock.1
 
 	insinto /usr/share/alock/xcursors
 	doins contrib/xcursor-*
