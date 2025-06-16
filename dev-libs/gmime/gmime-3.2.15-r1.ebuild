@@ -66,6 +66,11 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	# -j1: https://github.com/jstedfast/gmime/issues/177
+	emake -j1 check
+}
+
 src_install() {
 	gnome2_src_install
 
