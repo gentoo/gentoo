@@ -1,0 +1,79 @@
+There is currently no option to disable building static libs. We cannot simply
+delete them because that breaks the CMake export.
+
+--- a/CMake/export.cmake
++++ b/CMake/export.cmake
+@@ -30,6 +30,7 @@
+   else()
+     set(FLTK_FLUID_EXECUTABLE fltk::fluid)
+     set(FLUID_EXPORT fluid)                # export fluid
++    set(FLUID_EXPORT fluid-shared)
+   endif()
+ else()
+   # We don't build fluid /or/ we are cross-compiling (or both):
+--- a/CMake/fl_add_library.cmake
++++ b/CMake/fl_add_library.cmake
+@@ -229,16 +229,17 @@
+     endif(FLTK_OPTION_LARGE_FILE)
+   endif(MSVC)
+ 
++  if(LIBTYPE STREQUAL "SHARED")
+   install(TARGETS ${TARGET_NAME} EXPORT FLTK-Targets
+     RUNTIME DESTINATION ${FLTK_BINDIR}
+     LIBRARY DESTINATION ${FLTK_LIBDIR}
+     ARCHIVE DESTINATION ${FLTK_LIBDIR}
+   )
+ 
+-  if(LIBTYPE STREQUAL "SHARED")
+     list(APPEND FLTK_LIBRARIES_SHARED "${TARGET_NAME}")
+     set(FLTK_LIBRARIES_SHARED "${FLTK_LIBRARIES_SHARED}" PARENT_SCOPE)
+   else()
++    set_property(TARGET ${TARGET_NAME} PROPERTY EXCLUDE_FROM_ALL TRUE)
+     list(APPEND FLTK_LIBRARIES "${TARGET_NAME}")
+     set(FLTK_LIBRARIES "${FLTK_LIBRARIES}" PARENT_SCOPE)
+   endif()
+--- a/CMake/FLTKConfig.cmake.in
++++ b/CMake/FLTKConfig.cmake.in
+@@ -104,11 +104,8 @@
+       endif()
+     endfunction(_fltk_make_alias target)
+ 
+-    if(NOT TARGET fltk::fltk)
+-      message(FATAL "FLTKConfig.cmake: target fltk::fltk does not exist!")
+-    endif()
+ 
+-    _fltk_make_alias(fltk fltk::fltk)
++    _fltk_make_alias(fltk fltk::fltk-shared)
+     _fltk_make_alias(fltk-shared fltk::fltk-shared)
+ 
+     _fltk_make_alias(fluid fltk::fluid)
+@@ -118,7 +115,7 @@
+     _fltk_make_alias(fltk-options-cmd fltk::options-cmd)
+ 
+     foreach(target cairo forms gl images jpeg png z)
+-      _fltk_make_alias(fltk_${target} fltk::${target})
++      _fltk_make_alias(fltk_${target} fltk::${target}-shared)
+       _fltk_make_alias(fltk_${target}-shared fltk::${target}-shared)
+     endforeach()
+ 
+@@ -130,8 +127,8 @@
+ 
+   if(TARGET fltk::fluid-cmd)  # Windows only
+     set(FLTK_FLUID_EXECUTABLE fltk::fluid-cmd)
+-  elseif(TARGET fltk::fluid)
+-    set(FLTK_FLUID_EXECUTABLE fltk::fluid)
++  elseif(TARGET fltk::fluid-shared)
++    set(FLTK_FLUID_EXECUTABLE fltk::fluid-shared)
+   elseif(WIN32)
+     set(FLTK_FLUID_EXECUTABLE fluid-cmd)
+   else()
+--- a/fluid/CMakeLists.txt
++++ b/fluid/CMakeLists.txt
+@@ -179,7 +179,6 @@
+ 
+ # Build targets
+ 
+-make_target(fluid TRUE "${MAIN_FILES}" fluid-lib fluid)
+ 
+ # Build the console app on Windows
+ # This is done for all Windows targets, even if cross-compiling.
