@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/955698
+
+--- a/lib/asn1/typedefs.h
++++ b/lib/asn1/typedefs.h
+@@ -34,6 +34,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
++#include <stdbool.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+@@ -52,7 +53,6 @@
+ 
+ #endif
+ 
+-typedef unsigned char bool;
+ typedef unsigned int u_int;
+ 
+ #define DBG1(s...)
