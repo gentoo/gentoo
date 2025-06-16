@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/${PV}.tar.
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="+colord input_devices_wacom +networkmanager +modemmanager systemd test wayland"
 REQUIRED_USE="modemmanager? ( networkmanager )"
 RESTRICT="test"
