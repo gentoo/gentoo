@@ -1,4 +1,4 @@
-# Copyright 2006-2024 Gentoo Authors
+# Copyright 2006-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,8 @@ else
 	MY_PV="${PV/_beta/-beta.}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/transmission/transmission/releases/download/${MY_PV}/${MY_P}.tar.xz"
+	#SRC_URI="https://github.com/transmission/transmission/releases/download/${MY_PV}/${MY_P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}-gentoo.tar.xz"
 	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 fi
 
