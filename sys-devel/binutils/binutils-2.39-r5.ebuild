@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -298,7 +298,7 @@ src_configure() {
 		fi
 	fi
 
-	ECONF_SOURCE="${S}" econf "${myconf[@]}" || die
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 
 	# Prevent makeinfo from running if doc is unset.
 	if ! use doc ; then
