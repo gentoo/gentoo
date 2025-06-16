@@ -12,7 +12,7 @@ S="${WORKDIR}/nemo-extensions-${PV}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 DEPEND="
 	>=dev-libs/glib-2.14.0:2
