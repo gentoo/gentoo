@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/gobject-introspection-1.39:=
 	javascript? (
 		>=dev-libs/gjs-1.78.5
-		dev-lang/spidermonkey:115
+		dev-lang/spidermonkey:128
 	)
 	glade? ( >=dev-util/glade-3.9.1:3.10 )
 	lua? (
