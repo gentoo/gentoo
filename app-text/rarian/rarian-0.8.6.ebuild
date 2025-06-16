@@ -9,7 +9,7 @@ SRC_URI="https://gitlab.freedesktop.org/rarian/rarian/-/releases/${PV}/downloads
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="test"
 RESTRICT="!test? ( test )"
