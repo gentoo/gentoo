@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib elisp-common multilib
+inherit cmake-multilib dot-a elisp-common multilib
 
 # NOTE from https://github.com/protocolbuffers/protobuf/blob/main/.gitmodules
 ABSEIL_BRANCH="lts_2023_08_02"
@@ -76,6 +76,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# Currently, the only static library is libupb (and there is no
+	# USE=static-libs), so optimize away the fat-lto build time penalty.
+	use libupb && lto-guarantee-fat
+
 	local mycmakeargs=(
 		-Dprotobuf_ABSL_PROVIDER="package"
 		-Dprotobuf_JSONCPP_PROVIDER="package"
@@ -135,6 +139,7 @@ src_test() {
 }
 
 multilib_src_install_all() {
+	use libupb && strip-lto-bytecode
 	find "${ED}" -name "*.la" -delete || die
 
 	if [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf$(get_libname ${SLOT#*/})" ]]; then
