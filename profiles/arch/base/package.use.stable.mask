@@ -1,6 +1,10 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-06-17)
+# TOD support is a soft fork, mask for testing
+sys-auth/libfprint tod
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-02)
 # sci-libs/libsigrok is not stable
 app-metrics/collectd collectd_plugins_sigrok
