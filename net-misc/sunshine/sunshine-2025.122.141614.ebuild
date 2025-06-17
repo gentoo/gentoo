@@ -184,6 +184,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
 	"${FILESDIR}"/${PN}-tray-notification-cb.patch
+	"${FILESDIR}"/${PN}-ffmpeg-7.1.1.patch
+	"${FILESDIR}"/${PN}-2025.122.141614-cmake4.patch
 )
 
 # Make this mess a bit simpler.
