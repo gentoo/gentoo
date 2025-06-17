@@ -26,6 +26,8 @@ BDEPEND="${PYTHON_DEPS}
 	test? ( app-misc/fdupes )
 "
 
+PATCHES=( "${FILESDIR}/${P}-x86-fix.patch" ) # fixed in 6.16
+
 python_check_deps() {
 	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
