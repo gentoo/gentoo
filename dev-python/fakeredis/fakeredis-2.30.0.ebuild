@@ -35,6 +35,13 @@ BDEPEND="
 # pytest-xdist: tests are not parallel-safe
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# https://github.com/cunla/fakeredis-py/issues/395
+	sed -i -e '/LICENSE/d' pyproject.toml || die
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# also lupa
