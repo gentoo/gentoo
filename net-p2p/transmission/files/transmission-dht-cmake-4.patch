@@ -16,8 +16,8 @@ https://cmake.org/cmake/help/latest/release/3.31.html
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 6d4aa99..596dbfb 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- a/third-party/dht/CMakeLists.txt
++++ b/third-party/dht/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 2.8)
 +cmake_minimum_required(VERSION 3.10)

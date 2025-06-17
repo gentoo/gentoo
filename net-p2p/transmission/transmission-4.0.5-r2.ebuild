@@ -68,6 +68,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}/transmission-dht-cmake-4.patch"
 	"${FILESDIR}/transmission-4.0.6-miniupnpc-2.2.8.patch"
 )
 
@@ -76,10 +77,6 @@ src_prepare() {
 	rm -r third-party/{lib{deflate,event,natpmp,psl},miniupnpc} || die
 	rm third-party/utfcpp/CMakeLists.txt || die
 	rm third-party/utfcpp/extern/ftest/tests/CMakeLists.txt || die
-
-	cd third-party/dht || die
-	eapply "${FILESDIR}"/transmission-4.0.6-dht-cmake-4.patch
-	cd "${S}" || die
 
 	cmake_src_prepare
 }
