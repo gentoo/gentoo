@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake edo xdg
+inherit cmake dot-a edo xdg
 
 DESCRIPTION="Fast Light GUI Toolkit"
 HOMEPAGE="https://www.fltk.org/"
@@ -74,6 +74,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-DFLTK_BACKEND_WAYLAND=$(usex wayland)
 		-DFLTK_BACKEND_X11=$(usex X)
@@ -111,4 +113,6 @@ src_install() {
 
 	# currently no option to disable building static libs
 	use static-libs || rm -- "${ED}"/usr/$(get_libdir)/*.a || die
+
+	strip-lto-bytecode
 }
