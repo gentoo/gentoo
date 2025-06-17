@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools dot-a toolchain-funcs
 
 DESCRIPTION="Portable C library for reading and writing BSB format image files"
 HOMEPAGE="https://libbsb.sourceforge.net/"
@@ -25,4 +25,14 @@ src_prepare(){
 	sed -i -e "s|ar crv|$(tc-getAR) crv|" Makefile.am || die
 	default
 	eautoreconf
+}
+
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }
