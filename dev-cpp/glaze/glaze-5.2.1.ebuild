@@ -14,14 +14,14 @@ S="${WORKDIR}/glaze-${PV}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc examples fuzzing test"
+IUSE="examples fuzzing test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? (
-		dev-cpp/ut2-glaze
 		dev-cpp/asio
 		>=dev-cpp/eigen-3.4
+		dev-cpp/ut2-glaze
 	)
 "
 RDEPEND="${DEPEND}"
@@ -35,9 +35,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_INSTALL_RULES=OFF
 		-Dglaze_DEVELOPER_MODE=ON
-		-Dglaze_ENABLE_FUZZING=$(usex fuzzing ON OFF)
-		-Dglaze_BUILD_EXAMPLES=$(usex examples ON OFF)
-		-DBUILD_TESTING=$(usex test ON OFF)
+		-Dglaze_ENABLE_FUZZING=$(usex fuzzing)
+		-Dglaze_BUILD_EXAMPLES=$(usex examples)
+		-DBUILD_TESTING=$(usex test)
 	)
 
 	cmake_src_configure
