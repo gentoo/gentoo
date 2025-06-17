@@ -4,30 +4,30 @@
 EAPI=8
 
 MODULES_OPTIONAL_IUSE=+modules
-inherit desktop dot-a eapi9-pipestatus eapi9-ver flag-o-matic linux-mod-r1
+inherit desktop dot-a eapi9-pipestatus flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.14
-NV_PIN=570.153.02
+MODULES_KERNEL_MAX=6.15
+NV_URI="https://download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="https://developer.nvidia.com/vulkan-driver"
+HOMEPAGE="https://www.nvidia.com/"
 SRC_URI="
-	https://developer.nvidia.com/downloads/vulkan-beta-${PV//.}-linux
-		-> NVIDIA-Linux-x86_64-${PV}.run
-	$(printf "https://download.nvidia.com/XFree86/%s/%s-${NV_PIN}.tar.bz2 " \
+	amd64? ( ${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
+	arm64? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
+	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})
-	https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${PV}.tar.gz
-		-> open-gpu-kernel-modules-${PV}.tar.gz
+	${NV_URI}NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-${PV}.tar.xz
 "
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
 S=${WORKDIR}
 
-LICENSE="NVIDIA-r2 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
-SLOT="0/vulkan"
-KEYWORDS="-* ~amd64"
-# note: kernel-open is an upstream default in >=560 if all GPUs on the system
-# support it but, since no automagic here, keeping it off for the wider support
+LICENSE="NVIDIA-2023 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
+SLOT="0/${PV%%.*}"
+KEYWORDS="-* amd64 ~arm64"
+# TODO: enable kernel-open by default to match nvidia upstream, but should
+# first setup a supported-gpus.json "kernelopen" check to abort and avoid bad
+# surprises (should abort for legacy cards too, and have a bypass variable)
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
 REQUIRED_USE="kernel-open? ( modules )"
 
@@ -96,6 +96,7 @@ QA_PREBUILT="lib/firmware/* usr/bin/* usr/lib*"
 PATCHES=(
 	"${FILESDIR}"/nvidia-modprobe-390.141-uvm-perms.patch
 	"${FILESDIR}"/nvidia-settings-530.30.02-desktop.patch
+	"${FILESDIR}"/nvidia-drivers-570.153.02-kernel-6.15.patch
 )
 
 pkg_setup() {
@@ -150,11 +151,11 @@ pkg_setup() {
 
 src_prepare() {
 	# make patches usable across versions
-	rm nvidia-modprobe && mv nvidia-modprobe{-${NV_PIN},} || die
-	rm nvidia-persistenced && mv nvidia-persistenced{-${NV_PIN},} || die
-	rm nvidia-settings && mv nvidia-settings{-${NV_PIN},} || die
-	rm nvidia-xconfig && mv nvidia-xconfig{-${NV_PIN},} || die
-	mv open-gpu-kernel-modules-${PV} kernel-module-source || die
+	rm nvidia-modprobe && mv nvidia-modprobe{-${PV},} || die
+	rm nvidia-persistenced && mv nvidia-persistenced{-${PV},} || die
+	rm nvidia-settings && mv nvidia-settings{-${PV},} || die
+	rm nvidia-xconfig && mv nvidia-xconfig{-${PV},} || die
+	mv NVIDIA-kernel-module-source-${PV} kernel-module-source || die
 
 	default
 
@@ -199,11 +200,6 @@ src_compile() {
 	if use modules; then
 		local o_cflags=${CFLAGS} o_cxxflags=${CXXFLAGS} o_ldflags=${LDFLAGS}
 
-		# conftest.sh is broken with c23 due to func() changing meaning,
-		# and then fails later due to ealier misdetections
-		# TODO: try without now and then + drop modargs' CC= (bug #944092)
-		KERNEL_CC+=" -std=gnu17"
-
 		local modlistargs=video:kernel
 		if use kernel-open; then
 			modlistargs+=-module-source:kernel-module-source/kernel-open
@@ -219,7 +215,6 @@ src_compile() {
 
 		local modlist=( nvidia{,-drm,-modeset,-peermem,-uvm}=${modlistargs} )
 		local modargs=(
-			CC="${KERNEL_CC}" # needed for above gnu17 workaround
 			IGNORE_CC_MISMATCH=yes NV_VERBOSE=1
 			SYSOUT="${KV_OUT_DIR}" SYSSRC="${KV_DIR}"
 
@@ -522,7 +517,6 @@ pkg_preinst() {
 	sed -i "s/@VIDEOGID@/${g}/" "${ED}"/etc/modprobe.d/nvidia.conf || die
 
 	# try to find driver mismatches using temporary supported-gpus.json
-	# TODO?: automatically check "kernelopen" bit for USE=kernel-open compat
 	for g in $(grep -l 0x10de /sys/bus/pci/devices/*/vendor 2>/dev/null); do
 		g=$(grep -io "\"devid\":\"$(<${g%vendor}device)\"[^}]*branch\":\"[0-9]*" \
 			"${ED}"/usr/share/nvidia/supported-gpus.json 2>/dev/null)
@@ -586,18 +580,8 @@ pkg_postinst() {
 
 	if use wayland && use modules && [[ ! -v NV_HAD_WAYLAND ]]; then
 		elog
-		elog "With USE=wayland, this version of ${PN} sets nvidia-drm.modeset=1"
-		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. This feature is considered"
-		elog "experimental but is required for wayland."
-		elog
-		elog "If you experience issues, either disable wayland or edit nvidia.conf."
-		elog "Of note, may possibly cause issues with SLI and Reverse PRIME."
-	fi
-
-	if use !kernel-open && ver_replacing -lt 555; then
-		elog
-		elog "If using a Turing/Ampere+ GPU (aka GTX 1650+), note that >=nvidia-drivers-555"
-		elog "enables the use of the GSP firmware by default. *If* experience regressions,"
-		elog "please see '${EROOT}/etc/modprobe.d/nvidia.conf' to optionally disable."
+		elog "Note that with USE=wayland, nvidia-drm.modeset=1 will be enabled"
+		elog "in '${EROOT}/etc/modprobe.d/nvidia.conf'. *If* experience issues,"
+		elog "either disable wayland or edit nvidia.conf."
 	fi
 }
