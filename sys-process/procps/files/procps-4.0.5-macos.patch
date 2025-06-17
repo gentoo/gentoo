@@ -1,0 +1,28 @@
+https://gitlab.com/procps-ng/procps/-/commit/2dc340e47669e0b0df7f71ff082e05ac5fa36615
+
+From 2dc340e47669e0b0df7f71ff082e05ac5fa36615 Mon Sep 17 00:00:00 2001
+From: Rui Chen <rui@chenrui.dev>
+Date: Thu, 26 Dec 2024 11:09:18 -0500
+Subject: [PATCH] local/signals.c: guard `SIGPOLL` to fix build on macOS
+
+Signed-off-by: Rui Chen <rui@chenrui.dev>
+---
+ local/signals.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/local/signals.c b/local/signals.c
+index 6d68c07d..12656796 100644
+--- a/local/signals.c
++++ b/local/signals.c
+@@ -125,7 +125,9 @@ static const mapstruct sigtable[] = {
+   {"VTALRM", SIGVTALRM},
+   {"PROF",   SIGPROF},
+   {"WINCH",  SIGWINCH},
++#ifdef SIGPOLL
+   {"POLL",   SIGPOLL},    // in SUSv3, prioritize over IO
++#endif
+ #ifdef SIGIO
+   {"IO",     SIGIO},      // possibly = POLL
+ #endif
+-- 
+GitLab
