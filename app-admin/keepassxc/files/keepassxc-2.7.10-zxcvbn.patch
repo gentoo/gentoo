@@ -1,0 +1,24 @@
+diff '--color=auto' -ur a/src/cli/Estimate.cpp b/src/cli/Estimate.cpp
+--- a/src/cli/Estimate.cpp	2025-03-02 23:31:21.000000000 +0100
++++ b/src/cli/Estimate.cpp	2025-06-17 12:59:03.804029600 +0200
+@@ -21,7 +21,7 @@
+ #include "core/PasswordHealth.h"
+ 
+ #include <QCommandLineParser>
+-#include <zxcvbn.h>
++#include <zxcvbn/zxcvbn.h>
+ 
+ const QCommandLineOption Estimate::AdvancedOption =
+     QCommandLineOption(QStringList() << "a" << "advanced", QObject::tr("Perform advanced analysis on the password."));
+diff '--color=auto' -ur a/src/core/PasswordHealth.cpp b/src/core/PasswordHealth.cpp
+--- a/src/core/PasswordHealth.cpp	2025-03-02 23:31:21.000000000 +0100
++++ b/src/core/PasswordHealth.cpp	2025-06-17 13:08:45.962190595 +0200
+@@ -19,7 +19,7 @@
+ 
+ #include "Group.h"
+ #include "PasswordHealth.h"
+-#include "zxcvbn.h"
++#include "zxcvbn/zxcvbn.h"
+ 
+ namespace
+ {
