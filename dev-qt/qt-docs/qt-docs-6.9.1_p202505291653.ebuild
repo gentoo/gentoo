@@ -64,7 +64,7 @@ qt6_docs_generate_metadata() {
 			qtquick qtquickcontrols qtquickdialogs
 		"
 		%doc^qtdoc
-		-graphs/qtgraphs
+		+graphs/qtgraphs
 		-grpc/qtgrpc="qtgrpc qtprotobuf"
 		+httpserver/qthttpserver
 		+imageformats/qtimageformats:
