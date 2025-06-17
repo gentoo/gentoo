@@ -1,3 +1,5 @@
+https://github.com/noseglasses/elf_diff/pull/123
+
 Make the exit status of test_main.py reflect whether tests passed.
 --- a/tests/test_main.py
 +++ b/tests/test_main.py
