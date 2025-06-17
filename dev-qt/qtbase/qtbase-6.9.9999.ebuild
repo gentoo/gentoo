@@ -129,6 +129,7 @@ RDEPEND="
 	!<dev-qt/qtcharts-${PV}:6
 	!<dev-qt/qtconnectivity-${PV}:6
 	!<dev-qt/qtdeclarative-${PV}:6
+	!<dev-qt/qtgraphs-${PV}:6
 	!<dev-qt/qthttpserver-${PV}:6
 	!<dev-qt/qtimageformats-${PV}:6
 	!<dev-qt/qtlanguageserver-${PV}:6
