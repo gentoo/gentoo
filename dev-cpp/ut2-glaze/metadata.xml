@@ -17,6 +17,8 @@
 		<flag name="doc">Install README files</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/openalgz/ut/issues</bugs-to>
+		<changelog>https://github.com/openalgz/ut/releases</changelog>
 		<remote-id type="github">openalgz/ut</remote-id>
 	</upstream>
 </pkgmetadata>
