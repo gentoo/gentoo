@@ -69,6 +69,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable kill)
 		$(multilib_native_use_enable modern-top)
 		$(multilib_native_enable pidof)
+		$(multilib_native_enable pidwait)
 		$(multilib_native_use_with ncurses)
 		# bug #794997
 		$(multilib_native_use_enable !elibc_musl w)
