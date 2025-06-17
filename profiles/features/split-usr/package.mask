@@ -14,7 +14,7 @@ sys-apps/intune-portal
 sys-apps/systemd-readahead
 sys-block/wait-for-dri-devices-rules
 sys-power/sandmann-bin
-www-misc/profile-sync-daemon
+>=www-misc/profile-sync-daemon-6
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2023-12-07)
 # Does not support split-usr filesystem geometry. Please migrate to
