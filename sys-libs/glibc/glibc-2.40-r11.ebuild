@@ -12,7 +12,7 @@ TMPFILES_OPTIONAL=1
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=6
+PATCH_VER=11
 PATCH_DEV=dilfridge
 
 # gcc mulitilib bootstrap files version
@@ -33,7 +33,7 @@ MIN_PAX_UTILS_VER="1.3.3"
 MIN_SYSTEMD_VER="254.9-r1"
 
 inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfig \
-	multilib systemd multiprocessing tmpfiles eapi9-ver
+	multilib systemd multiprocessing tmpfiles
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
@@ -118,7 +118,6 @@ BDEPEND="
 	test? (
 		dev-lang/perl
 		>=net-dns/libidn2-2.3.0
-		sys-apps/gawk[mpfr]
 	)
 "
 COMMON_DEPEND="
@@ -179,7 +178,6 @@ XFAIL_TEST_LIST=(
 
 	# Fails with certain PORTAGE_NICENESS/PORTAGE_SCHEDULING_POLICY
 	tst-sched1
-	tst-sched_setattr
 
 	# Fails regularly, unreliable
 	tst-valgrind-smoke
@@ -193,7 +191,6 @@ XFAIL_NSPAWN_TEST_LIST=(
 	# upstream, as systemd-nspawn's default seccomp whitelist is too strict.
 	# https://sourceware.org/PR30603
 	test-errno-linux
-	tst-aarch64-pkey
 	tst-bz21269
 	tst-mlock2
 	tst-ntp_gettime
@@ -292,13 +289,9 @@ do_run_test() {
 		# ignore build failures when installing a binary package #324685
 		do_compile_test "" "$@" 2>/dev/null || return 0
 	else
-		ebegin "Performing simple compile test for ABI=${ABI}"
 		if ! do_compile_test "" "$@" ; then
 			ewarn "Simple build failed ... assuming this is desired #324685"
-			eend 1
 			return 0
-		else
-			eend 0
 		fi
 	fi
 
@@ -491,6 +484,10 @@ setup_flags() {
 	#  include/libc-symbols.h:75:3: #error "glibc cannot be compiled without optimization"
 	# https://sourceware.org/glibc/wiki/FAQ#Why_do_I_get:.60.23error_.22glibc_cannot_be_compiled_without_optimization.22.27.2C_when_trying_to_compile_GNU_libc_with_GNU_CC.3F
 	replace-flags -O0 -O1
+
+	# glibc handles this internally already where it's appropriate;
+	# can't always have SSP when we're the ones setting it up, etc
+	filter-flags '-fstack-protector*'
 
 	# Similar issues as with SSP. Can't inject yourself that early.
 	filter-flags '-fsanitize=*'
@@ -895,12 +892,16 @@ upgrade_warning() {
 	is_crosscompile && return
 
 	if [[ ${MERGE_TYPE} != buildonly && -n ${REPLACING_VERSIONS} && -z ${ROOT} ]]; then
-		if ver_replacing -lt $(ver_cut 1-2 ${PV}); then
-			ewarn "After upgrading glibc, please restart all running processes."
-			ewarn "Be sure to include init (telinit u) or systemd (systemctl daemon-reexec)."
-			ewarn "Alternatively, reboot your system."
-			ewarn "(See bug #660556, bug #741116, bug #823756, etc)"
-		fi
+		local oldv newv=$(ver_cut 1-2 ${PV})
+		for oldv in ${REPLACING_VERSIONS}; do
+			if ver_test ${oldv} -lt ${newv}; then
+				ewarn "After upgrading glibc, please restart all running processes."
+				ewarn "Be sure to include init (telinit u) or systemd (systemctl daemon-reexec)."
+				ewarn "Alternatively, reboot your system."
+				ewarn "(See bug #660556, bug #741116, bug #823756, etc)"
+				break
+			fi
+		done
 	fi
 }
 
@@ -932,18 +933,12 @@ src_unpack() {
 	use multilib-bootstrap && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
 
 	if [[ ${PV} == 9999* ]] ; then
-		EGIT_REPO_URI="
-			https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git
-			https://github.com/gentoo/glibc-patches.git
-		"
+		EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git"
 		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
 		git-r3_src_unpack
 		mv patches-git/9999 patches || die
-		EGIT_REPO_URI="
-			https://sourceware.org/git/glibc.git
-			https://git.sr.ht/~sourceware/glibc
-			https://gitlab.com/x86-glibc/glibc.git
-		"
+
+		EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 		EGIT_CHECKOUT_DIR=${S}
 		git-r3_src_unpack
 	else
@@ -971,15 +966,6 @@ src_prepare() {
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
 	fi
-
-        case ${CTARGET} in
-                m68*-aligned-*)
-			einfo "Applying utmp format fix for m68k with -maligned-int"
-			eapply "${FILESDIR}/glibc-2.41-m68k-malign.patch"
-			;;
-                *)
-			;;
-        esac
 
 	default
 
