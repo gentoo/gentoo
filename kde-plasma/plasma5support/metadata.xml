@@ -6,10 +6,11 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?classification=Plasma</bugs-to>
 		<remote-id type="kde-invent">plasma/plasma5support</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
+		<flag name="ksysguard">Enable device notifications dataengine using <pkg>kde-plasma/libksysguard</pkg></flag>
 	</use>
 </pkgmetadata>
