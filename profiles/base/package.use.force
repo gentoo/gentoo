@@ -1,6 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-06-17)
+# Build system currently does not allow static libs to be optional, and
+# deleting (as we do now) leaves both the cmake export and fltk-config
+# script unaware of the change and may cause problems. Will revisit if
+# improved upstream, would rather not invent a downstream solution.
+# https://bugs.gentoo.org/940572
+# https://github.com/gentoo/gentoo/pull/42633
+x11-libs/fltk static-libs
+
 # Sam James <sam@gentoo.org> (2025-06-05)
 # app-misc/ddcutil fails to build w/o USE=X as it always tries to include
 # <X11/Xlib.h>. See bug #950320 and https://github.com/rockowitz/ddcutil/issues/504
