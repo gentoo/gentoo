@@ -23,7 +23,7 @@ media-libs/svt-av1 -test
 
 # Mike Gilbert <floppym@gentoo.org> (2025-05-13)
 # media-libs/libsdl3 is keyworded here.
-net-misc/freerdp -sdl3
+>=net-misc/freerdp-3.16.0 -sdl
 
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # dev-python/sigstore is keyworded here.

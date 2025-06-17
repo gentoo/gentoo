@@ -27,7 +27,7 @@ HOMEPAGE="https://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="3"
-IUSE="aad alsa cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl sdl3 server smartcard systemd test usb valgrind wayland X xinerama xv"
+IUSE="aad alsa cpu_flags_arm_neon +client cups debug +ffmpeg +fuse gstreamer +icu jpeg kerberos openh264 pulseaudio sdl server smartcard systemd test usb valgrind wayland X xinerama xv"
 RESTRICT="!test? ( test )"
 
 BDEPEND+="
@@ -85,10 +85,6 @@ COMMON_DEPEND="
 	systemd? ( sys-apps/systemd:0= )
 	client? (
 		sdl? (
-			media-libs/libsdl2[haptic(+),joystick(+),sound(+),video(+)]
-			media-libs/sdl2-ttf
-		)
-		sdl3? (
 			media-libs/libsdl3
 			media-libs/sdl3-ttf
 		)
@@ -148,10 +144,10 @@ freerdp_configure() {
 		-DWITH_AAD=$(option aad)
 		-DWITH_ALSA=$(option alsa)
 		-DWITH_CCACHE=OFF
-		-DWITH_CLIENT=$(option client)
 
-		-DWITH_CLIENT_SDL2=$(option_client sdl)
-		-DWITH_CLIENT_SDL3=$(option_client sdl3)
+		-DWITH_CLIENT=$(option client)
+		-DWITH_CLIENT_SDL2=OFF
+		-DWITH_CLIENT_SDL3=$(option_client sdl)
 
 		-DWITH_SAMPLE=OFF
 		-DWITH_CUPS=$(option cups)
