@@ -24,7 +24,10 @@ IUSE="apng cpu_flags_x86_sse static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	riscv? ( sys-kernel/linux-headers )
+"
 
 DOCS=( ANNOUNCE CHANGES libpng-manual.txt README TODO )
 
