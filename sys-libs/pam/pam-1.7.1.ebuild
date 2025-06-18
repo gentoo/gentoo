@@ -66,6 +66,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PDEPEND=">=sys-auth/pambase-20200616"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-32-bit-lastlog.patch
+	"${FILESDIR}"/${P}-32-bit-timestamp.patch
+)
+
 src_configure() {
 	# meson.build sets -Wl,--fatal-warnings and with e.g. mold, we get:
 	#  cannot assign version `global` to symbol `pam_sm_open_session`: symbol not found

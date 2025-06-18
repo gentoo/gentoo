@@ -1,0 +1,37 @@
+https://github.com/linux-pam/linux-pam/commit/e3b66a60e4209e019cf6a45f521858cec2dbefa1
+
+From e3b66a60e4209e019cf6a45f521858cec2dbefa1 Mon Sep 17 00:00:00 2001
+From: "Dmitry V. Levin" <ldv@strace.io>
+Date: Tue, 17 Jun 2025 13:00:00 +0000
+Subject: [PATCH] pam_timestamp: fix compilation warning on some of 32-bit
+ architectures
+
+On those of 32-bit architectures where glibc defines
+__WORDSIZE_TIME64_COMPAT32, struct utmp.ut_tv.tv_sec is unsigned,
+while time_t is signed, causing the following compiler diagnostics:
+
+  pam_timestamp.c: In function 'check_login_time':
+  pam_timestamp.c:247:55: warning: comparison of integer expressions of different signedness: 'time_t' {aka 'long int'} and '__uint32_t' {aka 'unsigned int'} [-Wsign-compare]
+  247 |                 if (oldest_login == 0 || oldest_login > ut->ut_tv.tv_sec) {
+
+Given that by its nature these values are treated as unsigned, fix this
+by zero-extending both values to unsigned long long before the comparison.
+---
+ modules/pam_timestamp/pam_timestamp.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/modules/pam_timestamp/pam_timestamp.c b/modules/pam_timestamp/pam_timestamp.c
+index 0172d1ef9..030fa2b8f 100644
+--- a/modules/pam_timestamp/pam_timestamp.c
++++ b/modules/pam_timestamp/pam_timestamp.c
+@@ -244,7 +244,9 @@ check_login_time(
+ 		if (strncmp(ruser, ut->ut_user, sizeof(ut->ut_user)) != 0) {
+ 			continue;
+ 		}
+-		if (oldest_login == 0 || oldest_login > ut->ut_tv.tv_sec) {
++		if (oldest_login == 0 ||
++		    zero_extend_signed_to_ull(oldest_login)
++		    > zero_extend_signed_to_ull(ut->ut_tv.tv_sec)) {
+ 			oldest_login = ut->ut_tv.tv_sec;
+ 		}
+ 	}
