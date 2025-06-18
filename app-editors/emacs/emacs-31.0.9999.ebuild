@@ -396,9 +396,9 @@ src_configure() {
 		popd >/dev/null || die
 		# Don't try to execute the binary for dumping during the build
 		myconf+=( --with-dumping=none )
-	elif use m68k; then
-		# Workaround for https://debbugs.gnu.org/44531
-		myconf+=( --with-dumping=unexec )
+	#elif use m68k; then
+	#	# Workaround for https://debbugs.gnu.org/44531
+	#	myconf+=( --with-dumping=unexec )
 	else
 		myconf+=( --with-dumping=pdumper )
 	fi
