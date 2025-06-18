@@ -91,7 +91,7 @@ strip-lto-bytecode() {
 
 	mapfile -t -d '' files < <(find -H "${@}" -type f \( -name '*.a' -or -name '*.o' \) -print0)
 
-	toolchain_type=
+	local toolchain_type=
 	tc-is-gcc && toolchain_type=gnu
 	tc-is-clang && toolchain_type=llvm
 
