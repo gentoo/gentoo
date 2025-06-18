@@ -88,6 +88,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.3.0-fix-bashism.patch"
 	"${FILESDIR}/${PN}-3.3.0-tests-skip-vdo.patch"
 	"${FILESDIR}/${PN}-3.3.0-tests-nvme.patch"
+	"${FILESDIR}/${PN}-3.3.0-CVE-2025-6019.patch"
 )
 
 pkg_setup() {
