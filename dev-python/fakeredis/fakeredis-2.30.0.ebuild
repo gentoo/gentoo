@@ -36,6 +36,11 @@ BDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/cunla/fakeredis-py/pull/396
+		"${FILESDIR}/${P}-pytest-asyncio-1.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# https://github.com/cunla/fakeredis-py/issues/395
@@ -54,10 +59,6 @@ python_test() {
 		# json ext
 		test/test_json/test_json.py
 		test/test_json/test_json_arr_commands.py
-		# require event_loop fixture removed in >=dev-python/pytest-asyncio-1
-		# (no point in pinning for two tests)
-		test/test_asyncredis.py::test_pubsub
-		test/test_asyncredis.py::test_blocking_unblock
 	)
 	local EPYTEST_IGNORE=(
 		# these tests fail a lot...
