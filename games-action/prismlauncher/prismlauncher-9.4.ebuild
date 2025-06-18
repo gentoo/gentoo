@@ -112,6 +112,6 @@ pkg_postinst() {
 	# Original issue: https://github.com/PolyMC/PolyMC/issues/227
 	optfeature "old Minecraft (<= 1.12.2) support" x11-apps/xrandr
 
-	optfeature "built-in MangoHud support" games-util/mangohud
+	optfeature "built-in MangoHud support (available in GURU overlay)" games-util/mangohud
 	optfeature "built-in Feral Gamemode support" games-util/gamemode
 }
