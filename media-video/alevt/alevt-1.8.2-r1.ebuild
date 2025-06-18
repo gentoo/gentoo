@@ -28,7 +28,6 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-respectflags.patch
-	"${FILESDIR}"/${PN}-1.6.2-libpng15.patch
 	"${FILESDIR}"/${PN}-1.8.2-musl.patch
 )
 
