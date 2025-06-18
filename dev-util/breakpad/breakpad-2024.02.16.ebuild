@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit dot-a autotools
 
 DESCRIPTION="implement a crash-reporting system."
 HOMEPAGE="https://chromium.googlesource.com/breakpad/breakpad/"
@@ -55,8 +55,14 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	econf \
 		--enable-system-test-libs \
 		$(use_enable tools) \
 		|| die
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }
