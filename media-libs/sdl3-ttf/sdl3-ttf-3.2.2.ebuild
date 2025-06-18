@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="+harfbuzz +plutosvg static-libs X"
 
 # On bumps, check external/ for versions of bundled freetype + harfbuzz
