@@ -29,10 +29,10 @@ RESTRICT="!test? ( test )"
 # virtual/libudev: required at top-level
 RDEPEND="
 	>=dev-libs/glib-2.42.2
-	dev-libs/libbytesize
+	>=dev-libs/libbytesize-0.1
 	sys-apps/gptfdisk
 	>=sys-apps/kmod-19
-	>=sys-apps/util-linux-2.27
+	>=sys-apps/util-linux-2.30
 	sys-fs/e2fsprogs:=
 	virtual/libudev:=
 	cryptsetup? (
@@ -45,18 +45,23 @@ RDEPEND="
 	)
 	device-mapper? ( sys-fs/lvm2 )
 	lvm? (
+		dev-libs/libyaml
 		sys-fs/lvm2
 		virtual/udev
 	)
-	nvme? ( sys-libs/libnvme )
+	nvme? ( >=sys-libs/libnvme-1.3:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/pygobject:3[${PYTHON_USEDEP}]
 		')
 	)
+	smart? (
+		>=dev-libs/json-glib-1.0
+		sys-apps/smartmontools
+	)
 	tools? (
-		>=sys-block/parted-3.1
+		>=sys-block/parted-3.2
 	)
 "
 DEPEND="${RDEPEND}"
