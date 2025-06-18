@@ -54,7 +54,6 @@ COMMON_DEPEND="
 	>=dev-qt/qt5compat-${QT_PV}
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,ssl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
-	sys-libs/zlib:=
 	clang? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
@@ -106,7 +105,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
 )
 
-QA_FLAGS_IGNORED="usr/libexec/qtcreator/cmdbridge-.*" # written in Go
+# written in Go, use PREBUILT rather than FLAGS_IGNORED given the
+# the different arch versions confuse portage's checks
+QA_PREBUILT="usr/libexec/qtcreator/cmdbridge-*"
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
