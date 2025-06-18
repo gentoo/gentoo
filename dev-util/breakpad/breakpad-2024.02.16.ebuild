@@ -28,6 +28,7 @@ REQUIRED_USE="elibc_musl? ( !tools )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2023.06.01-gentoo.patch
+	"${FILESDIR}"/${PN}-2023.06.01-reinterpret.patch
 )
 
 src_prepare() {
