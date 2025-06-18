@@ -39,6 +39,10 @@ RDEPEND="${DEPEND}
 # -m 0755 to avoid suid with USE="-filecaps"
 FILECAPS=( -m 0755 cap_sys_nice=ep usr/libexec/ksysguard/ksgrd_network_helper )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13
+}
+
 src_configure() {
 	# support std::jthread and std::stop_token is not enabled per default
 	# in libc++ prior to version 20, need to add "-fexperimental-library"
