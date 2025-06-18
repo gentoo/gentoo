@@ -257,6 +257,9 @@ src_install() {
 	local dest="/usr/$(get_libdir)/${PN}-${SLOT}"
 	local ddest="${ED}/${dest#/}"
 
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
+
 	cd "${S}"/build/*-release/images/j2sdk-image || die
 
 	if ! use alsa; then
