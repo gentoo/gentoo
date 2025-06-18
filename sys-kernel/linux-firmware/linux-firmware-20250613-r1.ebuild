@@ -371,6 +371,11 @@ pkg_preinst() {
 		rm -rf "${EROOT}"/lib/firmware/qcom/LENOVO/21BX
 	fi
 
+	# Fix 'symlink is blocked by a directory' https://bugs.gentoo.org/958268#c3
+	if has_version "<${CATEGORY}/${PN}-20250613" ; then
+		rm -rf "${EROOT}"/lib/firmware/nvidia/{ad103,ad104,ad106,ad107}
+	fi
+
 	# Make sure /boot is available if needed.
 	use initramfs && ! use dist-kernel && mount-boot_pkg_preinst
 }
