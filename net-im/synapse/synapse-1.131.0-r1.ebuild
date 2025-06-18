@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 CRATES="
 	aho-corasick@1.1.3
-	anyhow@1.0.97
+	anyhow@1.0.98
 	arc-swap@1.7.1
 	autocfg@1.3.0
 	base64@0.21.7
@@ -44,13 +44,13 @@ CRATES="
 	portable-atomic@1.6.0
 	ppv-lite86@0.2.17
 	proc-macro2@1.0.89
-	pyo3-build-config@0.23.5
-	pyo3-ffi@0.23.5
-	pyo3-log@0.12.2
-	pyo3-macros-backend@0.23.5
-	pyo3-macros@0.23.5
-	pyo3@0.23.5
-	pythonize@0.23.0
+	pyo3-build-config@0.24.2
+	pyo3-ffi@0.24.2
+	pyo3-log@0.12.4
+	pyo3-macros-backend@0.24.2
+	pyo3-macros@0.24.2
+	pyo3@0.24.2
+	pythonize@0.24.0
 	quote@1.0.36
 	rand@0.9.0
 	rand_chacha@0.9.0
@@ -63,10 +63,10 @@ CRATES="
 	serde_derive@1.0.219
 	serde_json@1.0.140
 	sha1@0.10.6
-	sha2@0.10.8
+	sha2@0.10.9
 	subtle@2.5.0
 	syn@2.0.85
-	target-lexicon@0.12.14
+	target-lexicon@0.13.2
 	typenum@1.17.0
 	ulid@1.2.1
 	unicode-ident@1.0.12
@@ -113,10 +113,11 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="postgres selinux systemd test"
 RESTRICT="!test? ( test )"
 
+# <twisted-25: https://github.com/element-hq/synapse/issues/18565
 RDEPEND="
 	acct-user/synapse
 	acct-group/synapse
@@ -147,7 +148,7 @@ RDEPEND="
 	dev-python/signedjson[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	dev-python/treq[${PYTHON_USEDEP}]
-	dev-python/twisted[${PYTHON_USEDEP}]
+	<dev-python/twisted-25[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/unpaddedbase64[${PYTHON_USEDEP}]
 	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
