@@ -1,0 +1,24 @@
+https://github.com/storaged-project/libblockdev/pull/1111
+
+From bc1fa125aed4ba6e12a19bd00bb75be21b96f44a Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 18 Jun 2025 04:27:30 +0100
+Subject: [PATCH] configure.ac: fix bashism
+
+configure scripts run with a #!/bin/sh shebang which means they should work
+with a POSIX shell, so avoid using '+=' which is a bashism.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -310,7 +310,7 @@ AS_IF([test "x$with_smart" != "xno"],
+ 
+ AS_IF([test "x$with_smart" != "xno"],
+       [SAVED_CFLAGS=$CFLAGS
+-       CFLAGS+=" -I$drivedb_path"
++       CFLAGS="${CFLAGS} -I$drivedb_path"
+        AC_MSG_CHECKING([for drivedb.h presence])
+        AC_COMPILE_IFELSE(
+            [AC_LANG_PROGRAM([

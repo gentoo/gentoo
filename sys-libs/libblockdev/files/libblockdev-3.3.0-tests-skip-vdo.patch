@@ -1,0 +1,44 @@
+https://github.com/storaged-project/libblockdev/commit/08a78e8bb33963f0221af08cb115ecf83ecba74e
+
+From 08a78e8bb33963f0221af08cb115ecf83ecba74e Mon Sep 17 00:00:00 2001
+From: Vojtech Trefny <vtrefny@redhat.com>
+Date: Thu, 27 Feb 2025 07:42:40 +0100
+Subject: [PATCH] tests: Skip LVM VDO tests if 'vdoformat' is not available
+
+LVM VDO still uses the vdoformat binary which might not be
+available everywhere.
+
+Related: https://github.com/storaged-project/udisks/issues/1353
+---
+ tests/lvm_dbus_tests.py | 3 +++
+ tests/lvm_test.py       | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/tests/lvm_dbus_tests.py b/tests/lvm_dbus_tests.py
+index 644d3587..f28e0a79 100644
+--- a/tests/lvm_dbus_tests.py
++++ b/tests/lvm_dbus_tests.py
+@@ -2116,6 +2116,9 @@ def setUpClass(cls):
+         if lvm_version < Version("2.3.07"):
+             raise unittest.SkipTest("LVM version 2.3.07 or newer needed for LVM VDO.")
+ 
++        if not shutil.which("vdoformat"):
++            raise unittest.SkipTest("vdoformat executable not found in $PATH, skipping.")
++
+         super().setUpClass()
+ 
+     def setUp(self):
+diff --git a/tests/lvm_test.py b/tests/lvm_test.py
+index 038e580d..0d7fe56f 100644
+--- a/tests/lvm_test.py
++++ b/tests/lvm_test.py
+@@ -1986,6 +1986,9 @@ def setUpClass(cls):
+         if lvm_version < Version("2.3.07"):
+             raise unittest.SkipTest("LVM version 2.3.07 or newer needed for LVM VDO.")
+ 
++        if not shutil.which("vdoformat"):
++            raise unittest.SkipTest("vdoformat executable not found in $PATH, skipping.")
++
+         super().setUpClass()
+ 
+     def setUp(self):
