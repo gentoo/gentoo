@@ -18,7 +18,7 @@ else
 fi
 
 LICENSE="ZLIB"
-SLOT="0/9999"
+SLOT="0/$(ver_cut 2-3)"
 IUSE="doc test X"
 RESTRICT="!test? ( test )"
 
