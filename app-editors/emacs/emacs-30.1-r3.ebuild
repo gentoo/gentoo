@@ -8,7 +8,7 @@ inherit autotools eapi9-pipestatus elisp-common flag-o-matic readme.gentoo-r1 to
 if [[ ${PV##*.} = 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emacs.git"
-	EGIT_BRANCH="master"
+	EGIT_BRANCH="emacs-30"
 	EGIT_CHECKOUT_DIR="${WORKDIR}/emacs"
 	S="${EGIT_CHECKOUT_DIR}"
 	SLOT="${PV%%.*}-vcs"
@@ -202,6 +202,9 @@ src_prepare() {
 		fi
 	fi
 
+	# Fix filename reference in redirected man page
+	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
+
 	# libseccomp is detected by configure but doesn't appear to have any
 	# effect on the installed image. Suppress it by supplying pkg-config
 	# with a wrong library name.
@@ -238,7 +241,6 @@ src_configure() {
 		--without-compress-install
 		--without-hesiod
 		--without-pop
-		--without-systemduserunitdir
 		--with-file-notification=$(usev inotify || usev gfile || echo no)
 		--with-pdumper
 		$(use_enable acl)
@@ -447,6 +449,11 @@ src_test() {
 		# internet-is-working
 		%src/process-tests.el
 	)
+	use elibc_musl && exclude_tests+=(
+			# Reason: newlocale(3) lenient locale validation #906012
+			# fns-tests-collate-strings
+			%src/fns-tests.el
+		)
 	use threads || exclude_tests+=(
 			%lisp/progmodes/eglot-tests.el
 			%src/emacs-module-tests.el
@@ -497,6 +504,7 @@ src_install() {
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el || die
 	rm -rf "${ED}"/usr/share/{applications,icons} || die
 	rm -rf "${ED}"/usr/share/glib-2.0 || die #911117
+	rm -rf "${ED}/usr/$(get_libdir)/systemd" || die
 	rm -rf "${ED}"/var || die
 
 	# remove unused <version>/site-lisp dir
