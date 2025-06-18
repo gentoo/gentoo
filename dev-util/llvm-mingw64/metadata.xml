@@ -8,4 +8,7 @@
 		<remote-id type="sourceforge">mingw-w64</remote-id>
 		<remote-id type="github">llvm/llvm-project</remote-id>
 	</upstream>
+	<use>
+		<flag name="i686-pe">Enable the i686 compiler target</flag>
+	</use>
 </pkgmetadata>

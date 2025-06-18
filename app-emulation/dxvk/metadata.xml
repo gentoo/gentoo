@@ -16,6 +16,7 @@
 		<flag name="d3d10">Enable support for DirectX 10 (d3d10.dll)</flag>
 		<flag name="d3d11">Enable support for DirectX 11 (d3d11.dll)</flag>
 		<flag name="dxgi">Enable support for the DirectX Graphics Infrastructure (dxgi.dll)</flag>
+		<flag name="i686-pe">Build the i686 version on an arm64 host.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">doitsujin/dxvk</remote-id>
