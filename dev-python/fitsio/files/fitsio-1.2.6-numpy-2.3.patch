@@ -1,0 +1,49 @@
+From b3b1af26b1c23a3e3e1b185b1e80bd7f55771fe7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 18 Jun 2025 10:57:02 +0200
+Subject: [PATCH] Replace deprecated `NPY_*` constants
+
+Replaced the deprecated `NPY_*` constants with `NPY_ARRAY_*`.
+The latter were introduced in NumPy 1.7, and the former were finally
+removed in 2.3.0.
+
+Fixes #429
+---
+ fitsio/fitsio_pywrap.c | 8 ++++----
+ setup.py               | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/fitsio/fitsio_pywrap.c b/fitsio/fitsio_pywrap.c
+index 8bba6be..957643d 100644
+--- a/fitsio/fitsio_pywrap.c
++++ b/fitsio/fitsio_pywrap.c
+@@ -2356,10 +2356,10 @@ int write_var_num_column(
+     int mindepth=1, maxdepth=0;
+     PyObject* context=NULL;
+     int requirements =
+-        NPY_C_CONTIGUOUS
+-        | NPY_ALIGNED
+-        | NPY_NOTSWAPPED
+-        | NPY_ELEMENTSTRIDES;
++        NPY_ARRAY_C_CONTIGUOUS
++        | NPY_ARRAY_ALIGNED
++        | NPY_ARRAY_NOTSWAPPED
++        | NPY_ARRAY_ELEMENTSTRIDES;
+ 
+     int res=0;
+ 
+diff --git a/setup.py b/setup.py
+index 7de67a7..ef549c5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -327,8 +327,8 @@ def check_system_cfitsio_objects(self, obj_name):
+     url="https://github.com/esheldon/fitsio",
+     author="Erin Scott Sheldon",
+     author_email="erin.sheldon@gmail.com",
+-    setup_requires=['numpy'],
+-    install_requires=['numpy'],
++    setup_requires=['numpy>=1.7'],
++    install_requires=['numpy>=1.7'],
+     packages=find_packages(),
+     include_package_data=True,
+     ext_modules=[ext],

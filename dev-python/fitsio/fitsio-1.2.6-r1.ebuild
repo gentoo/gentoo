@@ -33,6 +33,11 @@ RDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/esheldon/fitsio/pull/430
+	"${FILESDIR}/${P}-numpy-2.3.patch"
+)
+
 export FITSIO_USE_SYSTEM_FITSIO=1
 
 python_test() {
