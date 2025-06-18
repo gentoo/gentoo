@@ -8,7 +8,7 @@ inherit libtool multilib-minimal
 APNG_REPO=libpng-apng # sometimes libpng-apng is more up to date
 APNG_VERSION="1.6.47"
 DESCRIPTION="Portable Network Graphics library"
-HOMEPAGE="http://www.libpng.org/"
+HOMEPAGE="https://www.libpng.org/"
 SRC_URI="
 	https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 	apng? (

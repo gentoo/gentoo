@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit libtool multilib-minimal
 APNG_REPO=apng # sometimes libpng-apng is more up to date
 APNG_VERSION="1.6.44"
 DESCRIPTION="Portable Network Graphics library"
-HOMEPAGE="http://www.libpng.org/"
+HOMEPAGE="https://www.libpng.org/"
 SRC_URI="
 	https://downloads.sourceforge.net/${PN}/${P}.tar.xz
 	apng? (
