@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# WANG Xuerui <xen0n@gentoo.org> (2025-02-28)
+# Upstream only supports the 64-bit UEFI configuration for loong.
+sys-apps/memtest86+ bios32 bios64 uefi32 iso32
+
 # WANG Xuerui <xen0n@gentoo.org> (2025-05-29)
 # dist-server pulls in the libmount crate which is unmaintained and depends
 # on outdated nix that does not support loong
