@@ -68,7 +68,7 @@ REQUIRED_USE="
 src_configure() {
 	# spotify is not in portage
 	local mycmakeargs=(
-		$(cmake_use_find_package X X11 )
+		$(cmake_use_find_package X X11)
 		-DBUILD_WERROR=OFF
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
