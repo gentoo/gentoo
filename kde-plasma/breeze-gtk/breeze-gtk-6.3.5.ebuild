@@ -4,7 +4,7 @@
 EAPI=8
 
 KFMIN=6.5.0
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit ecm plasma.kde.org python-any-r1
 
 DESCRIPTION="Official GTK+ port of Plasma's Breeze widget style"
@@ -23,9 +23,4 @@ BDEPEND="${PYTHON_DEPS}
 
 python_check_deps() {
 	python_has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	python-any-r1_pkg_setup
-	ecm_pkg_setup
 }
