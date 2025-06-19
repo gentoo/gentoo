@@ -73,7 +73,6 @@ FILECAPS=( -m 0755 cap_wake_alarm=ep usr/libexec/org_kde_powerdevil )
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_Libcap=ON
 		$(cmake_use_find_package brightness-control DDCUtil)
 	)
 	use test && mycmakeargs+=(
