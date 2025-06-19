@@ -237,12 +237,11 @@ x11-misc/meteo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-20)
 # Unaddressed pending version bumps for almost 2 years, stuck on EAPI-7.
-# Bugs #908094, #908095, #908096, #908097
+# Bugs #908094, #908095, #908096
 # Removal on 2025-06-19.
 dev-libs/aws-checksums
 dev-libs/aws-c-common
 dev-libs/aws-c-event-stream
-dev-libs/s2n
 
 # Ulrich Müller <ulm@gentoo.org> (2025-05-18)
 # Pretest versions, masked for testing.
