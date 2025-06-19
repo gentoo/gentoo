@@ -12,7 +12,7 @@ SRC_URI="https://linuxcontainers.org/downloads/incus/${P}.tar.xz
 
 LICENSE="Apache-2.0 BSD LGPL-3 MIT"
 SLOT="0/lts"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="apparmor fuidshift nls qemu"
 
 DEPEND="acct-group/incus
