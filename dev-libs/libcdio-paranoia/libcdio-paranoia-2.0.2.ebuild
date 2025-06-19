@@ -3,8 +3,8 @@
 
 EAPI=8
 
-# las Xiph's libparanoia was 10.2. Forks that superseeded it note that
-# by declaring their version as 10.2+${PV}
+# Xiph's last (cd/lib)paranoia was 10.2. This fork is versioned accordingly
+# by declaring its version as 10.2+${PV}.
 MY_P=${PN}-10.2+${PV/_p/+}
 
 inherit autotools multilib-minimal
