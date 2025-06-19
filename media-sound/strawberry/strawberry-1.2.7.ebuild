@@ -21,11 +21,6 @@ SLOT="0"
 IUSE="alsa cdda chromaprint +dbus debug kde +loudness ipod moodbar mtp +pulseaudio streaming test +udisks X"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	sys-devel/gettext
-	virtual/pkgconfig
-"
-
 # alsa-lib is always required in linux even if it's not built
 COMMON_DEPEND="
 	dev-db/sqlite:=
@@ -61,6 +56,11 @@ DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/boost
 	test? ( dev-cpp/gtest )
+"
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+	sys-devel/gettext
+	virtual/pkgconfig
 "
 
 DOCS=( Changelog README.md )
