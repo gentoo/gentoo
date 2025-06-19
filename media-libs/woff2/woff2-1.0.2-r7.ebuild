@@ -21,6 +21,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${P}-aliasing.patch
 	"${FILESDIR}"/${PN}-1.0.2-gcc15.patch
+	"${FILESDIR}"/${PN}-cmake-minimum-ver-3.10.patch #951837
 )
 
 src_configure() {
