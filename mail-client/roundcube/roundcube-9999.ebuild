@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN=${PN}mail
 MY_PV=${PV/_/-}
 MY_P=${MY_PN}-${MY_PV}
 
-DESCRIPTION="A browser-based multilingual IMAP client with an application-like user interface"
+DESCRIPTION="Browser-based multilingual IMAP client with an application-like user interface"
 HOMEPAGE="https://roundcube.net"
 
 # roundcube is GPL-licensed, the rest of the licenses here are

@@ -9,7 +9,7 @@ MY_PN=${PN}mail
 MY_PV=${PV/_/-}
 MY_P=${MY_PN}-${MY_PV}
 
-DESCRIPTION="A browser-based multilingual IMAP client with an application-like user interface"
+DESCRIPTION="Browser-based multilingual IMAP client with an application-like user interface"
 HOMEPAGE="https://roundcube.net"
 
 # roundcube is GPL-licensed, the rest of the licenses here are
