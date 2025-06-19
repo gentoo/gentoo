@@ -67,6 +67,7 @@ src_prepare() {
 	if ! use wayland; then  #958395
 		sed -i -e 's/GDK_WINDOWING_WAYLAND/GdK_nO_wAyLaNd/' \
 			src/display_backend.c || die
+		use X || ewarn 'Neither "X" nor "wayland" USE flag set - enabling X11'
 	elif ! use X; then
 		sed -i -e 's/GDK_WINDOWING_X11/GdK_nO_xElEvEn/' \
 			src/display_backend.c || die
