@@ -13,6 +13,6 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">AsahiLinux/PKGBUILDs</remote-id>
+		<remote-id type="github">AsahiLinux/asahi-scripts</remote-id>
 	</upstream>
 </pkgmetadata>
