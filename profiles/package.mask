@@ -235,12 +235,6 @@ x11-misc/meteo
 =media-gfx/gimp-3.0.2-r2
 =media-gfx/gimp-3.0.4
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-20)
-# Unaddressed pending version bumps for almost 2 years, stuck on EAPI-7.
-# Bugs #908094
-# Removal on 2025-06-19.
-dev-libs/aws-c-common
-
 # Ulrich Müller <ulm@gentoo.org> (2025-05-18)
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.1.9999:30-vcs
