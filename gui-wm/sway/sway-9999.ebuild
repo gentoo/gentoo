@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,9 +28,11 @@ DEPEND="
 	>=dev-libs/libinput-1.26.0:0=
 	virtual/libudev
 	sys-auth/seatd:=
+	dev-libs/libevdev
 	dev-libs/libpcre2
 	>=dev-libs/wayland-1.21.0
 	x11-libs/cairo
+	x11-libs/libdrm
 	>=x11-libs/libxkbcommon-1.5.0:0=
 	x11-libs/pango
 	x11-libs/pixman
@@ -49,23 +51,26 @@ DEPEND="
 "
 # x11-libs/xcb-util-wm needed for xcb-iccm
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999:=[X?]"
+	DEPEND+="~gui-libs/wlroots-9999:=[X=]"
 else
 	DEPEND+="
-		>=gui-libs/wlroots-0.19:=[X?]
-		<gui-libs/wlroots-0.20:=[X?]
+		gui-libs/wlroots:0.19[X=]
 	"
 fi
 RDEPEND="
-	x11-misc/xkeyboard-config
 	${DEPEND}
+	x11-misc/xkeyboard-config
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.24
 	>=dev-build/meson-1.3
 	virtual/pkgconfig
-	man? ( >=app-text/scdoc-1.11.3 )
 "
+if [[ ${PV} == 9999 ]]; then
+	BDEPEND+="man? ( ~app-text/scdoc-9999 )"
+else
+	BDEPEND+="man? ( >=app-text/scdoc-1.11.3 )"
+fi
 
 FILECAPS=(
 	cap_sys_nice usr/bin/${PN} # bug 919298
