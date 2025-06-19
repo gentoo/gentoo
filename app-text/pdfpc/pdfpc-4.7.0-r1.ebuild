@@ -38,8 +38,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/libX11
 	x11-libs/pango
-	X? ( x11-libs/gtk+:3[X] )
-	wayland? ( x11-libs/gtk+:3[wayland] )
+	x11-libs/gtk+:3[X?,wayland?]
 	!X? ( !wayland? ( x11-libs/gtk+:3[X] ) )
 	gstreamer? (
 		media-libs/gstreamer:1.0
