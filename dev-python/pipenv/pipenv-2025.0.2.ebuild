@@ -16,7 +16,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="MIT"
 # budeled dependencies via _vendor in private copy of pip
-LICENSE+="Apache-2.0 BSD BSD-2 MPL-2.0 PSF-2"
+LICENSE+=" Apache-2.0 BSD BSD-2 MPL-2.0 PSF-2"
 
 SLOT="0"
 KEYWORDS="~amd64"
