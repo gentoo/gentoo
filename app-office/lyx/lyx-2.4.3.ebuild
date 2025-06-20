@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit desktop font optfeature python-single-r1 cmake xdg
 
@@ -90,6 +90,7 @@ FONT_SUFFIX="ttf"
 
 PATCHES=(
 	"${FILESDIR}"/lyx-2.4.0-fix-hunspell.patch
+	"${FILESDIR}"/lyx-2.4.3-fix-gcc15.patch
 	# Try first with xdg-open before hardcoded commands
 	# Patch from Debian using a similar approach to Fedora
 	"${FILESDIR}"/lyx-2.4.0-prefer-xdg-open.patch
