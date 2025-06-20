@@ -6,6 +6,6 @@
 		<flag name="bundled-openssl">Install precompiled versions of OpenSSL for greater testing coverage</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">drwetter/testssl.sh</remote-id>
+		<remote-id type="github">testssl/testssl.sh</remote-id>
 	</upstream>
 </pkgmetadata>
