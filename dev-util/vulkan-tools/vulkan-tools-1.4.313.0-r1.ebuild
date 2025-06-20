@@ -57,7 +57,8 @@ pkg_setup() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
-		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
+		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG -DGIT_BRANCH_NAME=\\\"gentoo\\\" -DGIT_TAG_INFO=\\\"${PV//./_}\\\""
+		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_VULKANINFO=ON
 		-DBUILD_CUBE=$(usex cube)
