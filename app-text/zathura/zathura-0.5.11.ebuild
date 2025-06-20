@@ -18,17 +18,18 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0/6.7" # plugin versions api.abi (see meson.build)
-IUSE="+man seccomp synctex test"
+IUSE="+man seccomp synctex test X"
 RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( X )"
 
 RDEPEND="
 	dev-libs/json-glib
 	x11-libs/cairo
 	x11-libs/pango
 	dev-db/sqlite:3
-	>=dev-libs/girara-0.4.5:=
+	>=dev-libs/girara-0.4.5:=[X?]
 	>=dev-libs/glib-2.72:2
-	>=x11-libs/gtk+-3.24:3
+	>=x11-libs/gtk+-3.24:3[X?]
 	man? ( dev-python/sphinx )
 	seccomp? ( sys-libs/libseccomp )
 	synctex? ( app-text/texlive-core )
@@ -39,7 +40,6 @@ DEPEND="
 	test? (
 		dev-libs/appstream-glib
 		dev-libs/check
-		>=x11-libs/gtk+-3.24:3[X]
 	)
 "
 BDEPEND="
@@ -49,6 +49,9 @@ BDEPEND="
 "
 
 src_configure() {
+	# Avoid automagic X dependency
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Dconvert-icon=disabled
 		-Dlandlock=enabled
