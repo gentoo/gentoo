@@ -51,6 +51,15 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_install() {
+	cmake_src_install
+
+	if use prometheus; then
+		sed '/^# Create imported target opentelemetry-cpp::prometheus_exporter/i\find_dependency(prometheus-cpp REQUIRED)\n' \
+			-i "${ED}/usr/$(get_libdir)/cmake/opentelemetry-cpp/opentelemetry-cpp-target.cmake"
+	fi
+}
+
 src_test() {
 	# curl tests fragile
 	cmake_src_test -j1
