@@ -11,5 +11,6 @@
 	</upstream>
 	<use>
 		<flag name="debuginfod">Enable debuginfod support</flag>
+		<flag name="lzma">Support XZ-compressed debug information (MiniDebugInfo).</flag>
 	</use>
 </pkgmetadata>
