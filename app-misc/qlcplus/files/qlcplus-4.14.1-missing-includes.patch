@@ -1,0 +1,20 @@
+--- a/plugins/E1.31/e131controller.h	2025-03-15 18:26:57.000000000 +0100
++++ b/plugins/E1.31/e131controller.h	2025-06-17 21:44:32.295525449 +0200
+@@ -20,15 +20,15 @@
+ #ifndef E131CONTROLLER_H
+ #define E131CONTROLLER_H
+ 
+-#if defined(ANDROID)
+ #include <QScopedPointer>
+ #include <QSharedPointer>
+-#endif
+ #include <QNetworkInterface>
+ #include <QHostAddress>
+ #include <QUdpSocket>
+ #include <QMutex>
+ #include <QTimer>
++#include <QMap>
++#include <QByteArray>
+ 
+ #include "e131packetizer.h"
+ 
