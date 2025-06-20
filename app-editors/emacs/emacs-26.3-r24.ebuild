@@ -125,6 +125,8 @@ src_configure() {
 	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
 
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+
 	local myconf=(
 		--program-suffix="-${EMACS_SUFFIX}"
 		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX}
@@ -243,8 +245,6 @@ src_configure() {
 }
 
 src_compile() {
-	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
-
 	# Disable sandbox when dumping. For the unbelievers, see bug #131505
 	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
