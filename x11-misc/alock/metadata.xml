@@ -13,7 +13,4 @@
 		</maintainer>
 		<remote-id type="github">mgumz/alock</remote-id>
 	</upstream>
-	<use>
-		<flag name="doc">Build and install manpage with <pkg>app-text/asciidoc</pkg>.</flag>
-	</use>
 </pkgmetadata>
