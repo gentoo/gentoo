@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -92,4 +92,15 @@ src_install() {
 	exeinto /usr/share/apparmor
 	doexe "${FILESDIR}/apparmor_load.sh"
 	doexe "${FILESDIR}/apparmor_unload.sh"
+}
+
+pkg_postinst() {
+	einfo "You might need to install package sec-policy/apparmor-profiles or to"
+	einfo "implement your own profile configurations under /etc/apparmor.d as some"
+	einfo "other package configuration have explicit dependencies on files provided by"
+	einfo "this package."
+	einfo "This package provides some default configurations but you might interested"
+	einfo "by implementing your own configuration."
+	einfo "Please see more details on Wiki:"
+	einfo "https://wiki.gentoo.org/wiki/Security_Handbook/Linux_Security_Modules/AppArmor"
 }
