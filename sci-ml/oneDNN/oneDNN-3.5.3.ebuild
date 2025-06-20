@@ -127,6 +127,9 @@ src_test() {
 		test_graph_unit_dnnl_layout_propagator
 		test_graph_unit_dnnl_op_executable
 		test_graph_unit_utils
+		# Errored
+		test_graph_unit_dnnl_layer_norm_usm_cpu
+		test_graph_unit_dnnl_sdp_decomp_usm_cpu
 	)
 
 	if use openmp ; then
