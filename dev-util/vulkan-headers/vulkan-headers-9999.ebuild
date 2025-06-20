@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,10 +20,13 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Headers"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	local mycmakeargs=(
 		-DVULKAN_HEADERS_ENABLE_MODULE=OFF
+		-DVULKAN_HEADERS_ENABLE_TESTS=$(usex test)
 	)
 
 	cmake_src_configure
