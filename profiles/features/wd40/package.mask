@@ -4,7 +4,9 @@
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
 # Requires masked packages (bug #958030)
 # (dev-python/keyring, dev-python/pydantic)
+dev-python/deepdiff
 dev-python/poetry
+dev-python/poetry-plugin-export
 
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2025-05-18)
 # >=bpftrace-0.23 needs Rust-based blazesym_c
