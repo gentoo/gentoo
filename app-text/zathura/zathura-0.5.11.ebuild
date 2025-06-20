@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson virtualx xdg
+inherit meson xdg
 
 DESCRIPTION="Highly customizable & functional document viewer"
 HOMEPAGE="https://pwmt.org/projects/zathura/"
@@ -45,6 +45,7 @@ DEPEND="
 BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	test? ( x11-misc/xvfb-run )
 "
 
 src_configure() {
@@ -57,8 +58,4 @@ src_configure() {
 		$(meson_feature test tests)
 	)
 	meson_src_configure
-}
-
-src_test() {
-	virtx meson_src_test
 }
