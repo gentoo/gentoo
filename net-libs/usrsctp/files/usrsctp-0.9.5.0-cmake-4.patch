@@ -1,0 +1,28 @@
+From 58d03a4a12da04bbd168578d13c8d16c7c5eb7ab Mon Sep 17 00:00:00 2001
+From: Paul-Louis Ageneau <paul-louis@ageneau.org>
+Date: Thu, 17 Apr 2025 12:46:26 +0200
+Subject: [PATCH] Fix minimum required version to configure with CMake 4
+
+---
+ CMakeLists.txt | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3fc4ec6ac..a112c37df 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,7 +30,13 @@
+ #
+ 
+ project(usrsctplib C)
+-cmake_minimum_required(VERSION 3.0)
++if(${CMAKE_VERSION} VERSION_LESS 3.27.0)
++    cmake_minimum_required(VERSION 3.0)
++elseif(${CMAKE_VERSION} VERSION_LESS 3.31.0)
++    cmake_minimum_required(VERSION 3.5)
++else()
++    cmake_minimum_required(VERSION 3.10)
++endif()
+ 
+ # Debug build type as default
+ if (NOT CMAKE_BUILD_TYPE)
