@@ -55,6 +55,10 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-qmvk.patch" # merged upstream, bug #958275
+)
+
 src_prepare() {
 	# disable compress man pages
 	sed -i src/gui/CMakeLists.txt -r \
