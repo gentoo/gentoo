@@ -31,6 +31,7 @@ DEPEND="
 		>=dev-python/numpy-2.2.0[${PYTHON_USEDEP}]
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/tomli-w[${PYTHON_USEDEP}]
 	)
 "
