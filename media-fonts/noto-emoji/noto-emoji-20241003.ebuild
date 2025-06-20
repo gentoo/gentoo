@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit font
+inherit font xdg-utils
 
 DESCRIPTION="Google Noto Emoji fonts"
 HOMEPAGE="https://fonts.google.com/noto/specimen/Noto+Color+Emoji https://fonts.google.com/noto/specimen/Noto+Emoji
@@ -55,4 +55,12 @@ src_install() {
 	font_src_install
 
 	dodoc README.md
+}
+
+pkg_postinst() {
+	use icons && xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	use icons && xdg_icon_cache_update
 }
