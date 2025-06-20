@@ -10,19 +10,19 @@ inherit python-single-r1 systemd tmpfiles toolchain-funcs udev wrapper xdg
 MY_P=${P/_/-}
 
 DESCRIPTION="Network-UPS Tools"
-HOMEPAGE="https://networkupstools.org/"
+HOMEPAGE="https://networkupstools.org"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/networkupstools/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 S="${WORKDIR}/${MY_P}"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ || ( GPL-1+ Artistic ) BSD-2 MIT curl"
 SLOT="0"
 IUSE="gpio cgi doc ipmi serial i2c +man snmp +usb modbus selinux ssl tcpd test xml zeroconf python monitor systemd"
 RESTRICT="!test? ( test )"
@@ -239,11 +239,11 @@ pkg_postinst() {
 	elog "have a service per UPS:"
 	elog "ln -s /etc/init.d/upsdrv /etc/init.d/upsdrv.\$UPSNAME"
 	elog
-	elog 'If you want apcupsd to power off your UPS when it'
-	elog 'shuts down your system in a power failure, you must'
-	elog 'add nut.powerfail to your shutdown runlevel:'
+	elog "If you want apcupsd to power off your UPS when it"
+	elog "shuts down your system in a power failure, you must"
+	elog "add nut.powerfail to your shutdown runlevel:"
 	elog
-	elog 'rc-update add nut.powerfail shutdown'
+	elog "rc-update add nut.powerfail shutdown"
 	elog
 
 	optfeature "all notify events generate a global message (wall) to all users, plus they are logged via the syslog" \
