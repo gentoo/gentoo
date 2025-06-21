@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.31.0_no-fortify-source.patch
 	"${FILESDIR}"/${PN}-2.31.0_user-ldflags.patch
 	# https://github.com/intel/isa-l/commit/633add1b569fe927bace3960d7c84ed9c1b38bb9
+	# https://github.com/intel/isa-l/commit/e3c2d243a11ae31a19f090206cbe90c84b12ceb1
 	"${FILESDIR}"/${P}-big-endian.patch
 )
 
