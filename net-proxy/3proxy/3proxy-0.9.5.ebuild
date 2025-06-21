@@ -13,7 +13,7 @@ HOMEPAGE="
 SRC_URI="https://github.com/3proxy/3proxy/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ppc ~sparc x86"
 
 RDEPEND="
 	acct-group/3proxy
