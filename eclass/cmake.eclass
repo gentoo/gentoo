@@ -123,6 +123,12 @@ fi
 # If set, skip detection of CMakeLists.txt unsupported in CMake 4 in case of
 # false positives (e.g. unused outdated bundled libs).
 
+# @ECLASS_VARIABLE: _CMAKE_MINREQVER_UNSUPPORTED
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Internal status set by _cmake_minreqver-lt(); is true if an unsupported
+# cmake_minimum_required value was detected.
+
 # @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -321,6 +327,25 @@ _cmake_check_build_dir() {
 	mkdir -p "${BUILD_DIR}" || die
 }
 
+# @FUNCTION: _cmake_minreqver-lt
+# @USAGE: <lt-version> <path>
+# @INTERNAL
+# @DESCRIPTION:
+# Internal function for detecting occurrence of lower-than-specified
+# <lt-version> in cmake_minimum_required of a given CMake file <path>.
+# Returns 0 if the regex matched (a lower-than-specified version found).
+_cmake_minreqver-lt() {
+	local ver chk=1
+	ver=$(sed -ne "/cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9][0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
+		"${2}" 2>/dev/null \
+	)
+	if [[ -n ${ver} ]] && ver_test "${ver}" -lt "${1}"; then
+		_CMAKE_MINREQVER_UNSUPPORTED=true
+		chk=0
+	fi
+	return ${chk}
+}
+
 # @FUNCTION: _cmake_modify-cmakelists
 # @INTERNAL
 # @DESCRIPTION:
@@ -332,18 +357,26 @@ _cmake_modify-cmakelists() {
 	# Only edit the files once
 	grep -qs "<<< Gentoo configuration >>>" "${CMAKE_USE_DIR}"/CMakeLists.txt && return 0
 
-	# Comment out all set (<some_should_be_user_defined_variable> value)
-	find "${CMAKE_USE_DIR}" -name CMakeLists.txt -exec sed \
-		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_BUILD_TYPE\([[:space:]].*)\|)\)/I{s/^/#_cmake_modify_IGNORE /g}' \
-		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_COLOR_MAKEFILE[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
-		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_INSTALL_PREFIX[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
-		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_VERBOSE_MAKEFILE[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
-		-i {} + || die "${LINENO}: failed to disable hardcoded settings"
-	local x
-	for x in $(find "${CMAKE_USE_DIR}" -name CMakeLists.txt -exec grep -l "^#_cmake_modify_IGNORE" {} +;); do
-		einfo "Hardcoded definition(s) removed in $(echo "${x}" | cut -c $((${#CMAKE_USE_DIR}+2))-):"
-		einfo "$(grep -se '^#_cmake_modify_IGNORE' ${x} | cut -c 22-99)"
-	done
+	local file
+	while read -d '' -r file ; do
+		# Comment out all set (<some_should_be_user_defined_variable> value)
+		sed \
+			-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_BUILD_TYPE\([[:space:]].*)\|)\)/I{s/^/#_cmake_modify_IGNORE /g}' \
+			-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_\(COLOR_MAKEFILE\|INSTALL_PREFIX\|VERBOSE_MAKEFILE\)[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
+			-i "${file}" || die "failed to disable hardcoded settings"
+		readarray -t mod_lines < <(grep -se "^#_cmake_modify_IGNORE" "${file}")
+		if [[ ${#mod_lines[*]} -gt 0 ]]; then
+			einfo "Hardcoded definition(s) removed in ${file/${CMAKE_USE_DIR%\/}\//}:"
+			local mod_line
+			for mod_line in "${mod_lines[@]}"; do
+				einfo "${mod_line:22:99}"
+			done
+		fi
+		# Detect unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
+		if [[ -z ${_CMAKE_MINREQVER_UNSUPPORTED} ]] && ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
+			_cmake_minreqver-lt "3.5" "${file}"
+		fi
+	done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0 || die)
 
 	# NOTE Append some useful summary here
 	cat >> "${CMAKE_USE_DIR}"/CMakeLists.txt <<- _EOF_ || die
@@ -403,6 +436,20 @@ cmake_src_prepare() {
 	# Remove dangerous things.
 	_cmake_modify-cmakelists
 
+	if [[ ${_CMAKE_MINREQVER_UNSUPPORTED} ]]; then
+		eqawarn "QA Notice: Compatibility with CMake < 3.5 has been removed from CMake 4,"
+		eqawarn "${CATEGORY}/${PN} will fail to build w/o a fix."
+		eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
+		eqawarn "this package, and take it upstream."
+		if has_version -b ">=dev-build/cmake-4"; then
+			eqawarn "CMake 4 detected; building with -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+			eqawarn "This is merely a workaround and *not* a permanent fix."
+		fi
+		if [[ ${EAPI} == 7 ]]; then
+			eqawarn "QA Notice: EAPI=7 detected; this package is now a prime last-rites target."
+		fi
+	fi
+
 	if [[ ${EAPI} == 7 ]]; then
 		popd > /dev/null || die
 	fi
@@ -450,19 +497,6 @@ cmake_src_configure() {
 
 	# Fix xdg collision with sandbox
 	xdg_environment_reset
-
-	local file ver cmreq_isold
-	if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
-		while read -d '' -r file ; do
-			ver=$(sed -ne "/cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
-				"${file}" 2>/dev/null \
-			)
-
-			if [[ -n $ver ]] && ver_test $ver -lt "3.5"; then
-				cmreq_isold=true
-			fi
-		done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0)
-	fi
 
 	# Prepare Gentoo override rules (set valid compiler, append CPPFLAGS etc.)
 	local build_rules=${BUILD_DIR}/gentoo_rules.cmake
@@ -644,19 +678,8 @@ cmake_src_configure() {
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
 	fi
 
-	if [[ ${cmreq_isold} ]]; then
-		eqawarn "QA Notice: Compatibility with CMake < 3.5 has been removed from CMake 4,"
-		eqawarn "${CATEGORY}/${PN} will fail to build w/o a fix."
-		eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
-		eqawarn "this package, and take it upstream."
-		if [[ ${EAPI} == 7 ]]; then
-			eqawarn "QA Notice: EAPI=7 detected; this package is now a prime last-rites target."
-		fi
-		if has_version -b ">=dev-build/cmake-4"; then
-			eqawarn "QA Notice: CMake 4 detected; building with -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-			eqawarn "This is merely a workaround and *not* a permanent fix."
-			cmakeargs+=( -DCMAKE_POLICY_VERSION_MINIMUM=3.5 )
-		fi
+	if [[ ${_CMAKE_MINREQVER_UNSUPPORTED} ]] && has_version -b ">=dev-build/cmake-4"; then
+		cmakeargs+=( -DCMAKE_POLICY_VERSION_MINIMUM=3.5 )
 	fi
 
 	pushd "${BUILD_DIR}" > /dev/null || die
@@ -783,6 +806,25 @@ cmake_src_install() {
 		pushd "${CMAKE_USE_DIR}" > /dev/null || die
 		einstalldocs
 		popd > /dev/null || die
+	fi
+
+	local file files=()
+	while read -d '' -r file ; do
+		# Detect unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
+		if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
+			_cmake_minreqver-lt "3.5" "${file}" && files+=( "${file#"${D}"}" )
+		fi
+	done < <(find "${D}" -type f -iname "*.cmake" -print0 || die)
+	if [[ ${#files[*]} -gt 0 ]]; then
+		eqawarn "QA Notice: Package installs CMake module(s) incompatible with CMake 4,"
+		eqawarn "breaking any packages relying on it:"
+		eqawarn
+		for file in "${files[@]}"; do
+			eqawarn "    ${file}"
+		done
+		eqawarn
+		eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
+		eqawarn "this package, and take it upstream."
 	fi
 }
 
