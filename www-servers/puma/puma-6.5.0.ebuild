@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33"
 
 RUBY_FAKEGEM_GEMSPEC="puma.gemspec"
 
@@ -38,7 +38,6 @@ ruby_add_rdepend "dev-ruby/nio4r:2"
 all_ruby_prepare() {
 	sed -e '/\(pride\|prove\|stub_const\)/ s:^:#:' \
 		-e '/require_relative.*verbose/ s:^:#:' \
-		-e '/securerandom/arequire "rack/handler"' \
 		-i test/helper.rb || die
 
 	# Avoid tests failing inconsistently
