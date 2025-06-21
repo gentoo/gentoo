@@ -1,0 +1,25 @@
+From 596b26708ccc099a3a9e5f9d5408d603d2b60e1c Mon Sep 17 00:00:00 2001
+From: 1vybridge <openrc@posteo.de>
+Date: Sat, 21 Jun 2025 16:38:23 +0300
+Subject: [PATCH] Set cmake minimum version to 3.10
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4711de2..329d98d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ # Please see the COPYING file in this distribution for license details.
+ # ----------------------------------------------------------------------
+ 
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.10)
+ set(PROJECT_NAME ipset)
+ set(RELEASE_DATE 2013-12-11)
+ project(${PROJECT_NAME})
+-- 
+2.49.0
+
