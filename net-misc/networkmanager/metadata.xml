@@ -8,6 +8,7 @@
   <use>
     <flag name="concheck">Enable connectivity checking support</flag>
     <flag name="connection-sharing">Support connection sharing (uses <pkg>net-dns/dnsmasq</pkg>)</flag>
+    <flag name="curl">Enable connectivity checking support via <pkg>net-misc/curl</pkg></flag>
     <flag name="dhclient">Use dhclient from <pkg>net-misc/dhcp</pkg> for getting an IP via DHCP</flag>
     <flag name="dhcpcd">Use <pkg>net-misc/dhcpcd</pkg> for getting an IP</flag>
     <flag name="gnutls">Use <pkg>net-libs/gnutls</pkg> instead of <pkg>dev-libs/nss</pkg> for cryptography</flag>

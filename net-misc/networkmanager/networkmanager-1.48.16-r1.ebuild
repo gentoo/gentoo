@@ -19,7 +19,7 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
+IUSE="audit bluetooth connection-sharing +curl debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -76,7 +76,7 @@ COMMON_DEPEND="
 		nftables? ( net-firewall/nftables )
 	)
 	psl? ( net-libs/libpsl )
-	concheck? ( net-misc/curl )
+	curl? ( net-misc/curl )
 	tools? (
 		>=dev-libs/newt-0.52.15
 		libedit? ( dev-libs/libedit )
@@ -204,7 +204,7 @@ multilib_src_configure() {
 		-Dpppd=/usr/sbin/pppd
 		$(meson_native_use_bool modemmanager modem_manager)
 		$(meson_native_use_bool ofono)
-		$(meson_native_use_bool concheck)
+		$(meson_native_use_bool curl concheck)
 		$(meson_native_use_bool teamd teamdctl)
 		$(meson_native_use_bool ovs)
 		$(meson_native_use_bool tools nmcli)
