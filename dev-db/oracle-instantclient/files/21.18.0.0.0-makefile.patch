@@ -1,0 +1,17 @@
+diff '--color=auto' -Naru a/sdk/demo/demo.mk b/sdk/demo/demo.mk
+--- a/sdk/demo/demo.mk	2025-04-24 13:48:29.118761301 +0200
++++ b/sdk/demo/demo.mk	2025-04-24 13:49:25.282006321 +0200
+@@ -43,10 +43,10 @@
+ CC=/opt/SunProd/SUNWspro6.1/bin/CC
+ cc=/opt/SunProd/SUNWspro6.1/bin/cc
+ 
+-ICINCHOME=../
+-ICLIBHOME=../../
++ICINCHOME=$(ORACLE_HOME)/include
++ICLIBHOME=$(ORACLE_HOME)/lib
+ ICLIBPATH=-L$(ICLIBHOME)
+-CCINCLUDES=-I$(ICINCHOME)include
++CCINCLUDES=-I$(ICINCHOME)
+ 
+ THREADLIBS=-lthread
+ CCLIB=$(ICLIBPATH) -locci -lclntsh $(THREADLIBS)
