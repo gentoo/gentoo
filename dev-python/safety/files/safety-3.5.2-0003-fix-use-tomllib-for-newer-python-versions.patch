@@ -1,0 +1,40 @@
+From f3938e4d6b33c65af4ef8c36890c6a144c0b7ae5 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Sat, 21 Jun 2025 22:41:45 +0200
+Subject: [PATCH] fix: use tomllib for newer python versions
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ tests/conftest.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 11747a4..1f8a4c1 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,8 +1,14 @@
++import sys
+ from importlib.metadata import distributions
+-import tomli
+ from packaging.requirements import Requirement
+ from packaging.utils import canonicalize_name
+ 
++if sys.version_info >= (3, 11):
++    import tomllib as tomli
++else:
++    import tomli
++
++
+ def get_project_dependencies():
+     try:
+         with open("pyproject.toml", "rb") as f:
+@@ -48,4 +54,4 @@ def pytest_configure(config):
+         else:
+             line += pkg + ", "
+     if line:
+-        print(line.rstrip(", "))
+\ No newline at end of file
++        print(line.rstrip(", "))
+-- 
+2.49.0
+

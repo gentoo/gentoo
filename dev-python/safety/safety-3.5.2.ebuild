@@ -19,6 +19,7 @@ KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/${PN}-${PV}-0001-feat-replace-nltk-with-pyspellchecker.patch"
 	"${FILESDIR}/${PN}-${PV}-0002-chore-add-tests-for-typosquatting.patch"
+	"${FILESDIR}/${PN}-${PV}-0003-fix-use-tomllib-for-newer-python-versions.patch"
 )
 
 RDEPEND="
