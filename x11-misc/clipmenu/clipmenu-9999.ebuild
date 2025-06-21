@@ -7,8 +7,14 @@ inherit git-r3 systemd
 
 DESCRIPTION="Clipboard management"
 HOMEPAGE="https://github.com/cdown/clipmenu"
-EGIT_REPO_URI="https://github.com/cdown/clipmenu"
-EGIT_BRANCH="develop"
+
+if [[ ${PV} == "9999" ]] ; then
+	EGIT_REPO_URI="https://github.com/cdown/clipmenu"
+	EGIT_BRANCH="develop"
+else
+	SRC_URI="https://github.com/cdown/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64 x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
