@@ -33,6 +33,10 @@ DEPEND="~dev-util/vulkan-headers-${PV}
 	)"
 BDEPEND="${PYTHON_DEPS}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.313.0-magic_enum-0.9.7.patch
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test ON OFF)
