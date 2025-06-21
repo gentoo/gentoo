@@ -48,6 +48,7 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/mocha-0.13
 	dev-ruby/minitest
 	dev-ruby/mustache
+	>=dev-ruby/nokogiri-1.12
 	dev-ruby/pry
 	dev-ruby/rdoc
 	>=dev-ruby/rouge-3.5.1:2
