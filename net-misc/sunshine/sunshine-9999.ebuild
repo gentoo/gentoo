@@ -168,6 +168,7 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
+	dev-cpp/nlohmann_json
 	media-libs/amf-headers
 	<media-libs/nv-codec-headers-14
 	wayland? ( dev-libs/wayland-protocols )
