@@ -1273,6 +1273,65 @@ _python_check_occluded_packages() {
 # parameter, when calling epytest.  The listed files will be entirely
 # skipped from test collection.
 
+# @ECLASS_VARIABLE: EPYTEST_PLUGINS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Specifies pytest plugins to use.  Used by epytest to enable specified
+# plugins, and by distutils_enable_tests to add respective dependencies.
+# It is an array containing plugin package names (without category)
+# and/or special keyword "--autoload".
+#
+# If the special keyword "--autoload" is present on the list, pytest
+# plugin autoloading will be enabled.  Otherwise, epytest will disable
+# plugin autoloading by passing PYTEST_DISABLE_PLUGIN_AUTOLOAD=1.
+#
+# If one or more packages are present on the list and the variable
+# is set prior to calling distutils_enable_tests, the function will
+# automatically add dependencies on specified plugin packages.
+# Furthermore, if plugin autoloading is disabled, epytest will
+# automatically add appropriate "-p" options.  Note that no other
+# options to the plugins will be passed, therefore it may be necessary
+# to override python_test() and pass additional options to epytest.
+#
+# The eclasses explicitly handle a number of pytest plugins, and assume
+# the default of "dev-python/${package}" and "-p ${package}" for others.
+# If this is incorrect for some plugin package, please report a bug
+# to have it added.
+#
+# In EAPI 8 and older, the default is "( --autoload )".  In EAPI 9
+# and later, the default is an empty list.
+#
+# For pytest-timeout and pytest-xdist plugins, it is generally
+# preferable to use EPYTEST_TIMEOUT and EPYTEST_XDIST options
+# that handle passing all needed options.
+
+# @FUNCTION: _set_epytest_plugins
+# @INTERNAL
+# @DESCRIPTION:
+# Check if EPYTEST_PLUGINS is set correctly, and set the default
+# if it is not.
+_set_epytest_plugins() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	# TODO: drop BASH_VERSINFO check when we require EAPI 8
+	if [[ ${BASH_VERSINFO[0]} -ge 5 ]]; then
+		[[ ${EPYTEST_PLUGINS@a} == *a* ]]
+	else
+		[[ $(declare -p EPYTEST_PLUGINS) == "declare -a"* ]]
+	fi
+	if [[ ${?} -ne 0 ]]; then
+		if ! declare -p EPYTEST_PLUGINS &>/dev/null; then
+			if [[ ${EAPI} != [78] ]]; then
+				EPYTEST_PLUGINS=()
+			else
+				EPYTEST_PLUGINS=( --autoload )
+			fi
+		else
+			die 'EPYTEST_PLUGINS must be an array.'
+		fi
+	fi
+}
+
 # @ECLASS_VARIABLE: EPYTEST_TIMEOUT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1324,6 +1383,9 @@ epytest() {
 	local color=yes
 	[[ ${NO_COLOR} ]] && color=no
 
+	mkdir "${T}/pytest-xml" || die
+	local junit_xml=$(mktemp "${T}/pytest-xml/${EPYTHON}-XXX.xml")
+
 	local args=(
 		# verbose progress reporting and tracebacks
 		-vv
@@ -1345,9 +1407,87 @@ epytest() {
 		# we don't need to preserve them
 		-o tmp_path_retention_count=0
 		-o tmp_path_retention_policy=failed
+		# write a junit .xml file to aid machine processing of results
+		--junit-xml="${junit_xml}"
+		# use xunit1 format as that includes an explicit path
+		-o junit_family=xunit1
 	)
 
-	if [[ ! ${PYTEST_DISABLE_PLUGIN_AUTOLOAD} ]]; then
+	if has_version ">=dev-python/pytest-8.4.0"; then
+		args+=(
+			# do not repeat (potentially multi-line) exception messages
+			# in the "short summary" section to make it more readable;
+			# we have them in the backtraces anyway
+			--force-short-summary
+		)
+	fi
+
+	_set_epytest_plugins
+	if ! has "--autoload" "${EPYTEST_PLUGINS[@]}"; then
+		local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	fi
+
+	if [[ ${PYTEST_DISABLE_PLUGIN_AUTOLOAD} ]]; then
+		local plugin
+		for plugin in "${EPYTEST_PLUGINS[@]}"; do
+			case ${plugin} in
+				# special cases
+				hypothesis)
+					plugin=hypothesispytest
+					;;
+				noseofyeti)
+					plugin=nose_of_yeti
+					;;
+				pytest-helpers-namespace)
+					plugin=helpers_namespace
+					;;
+				pytest-lazy-fixtures)
+					plugin=pytest_lazyfixture
+					;;
+				pytest-testinfra)
+					plugin=pytest11.testinfra
+					;;
+				# "generic" cases
+				betamax)
+					plugin=pytest-${plugin}
+					;;
+				pyfakefs)
+					plugin=pytest_${plugin}
+					;;
+				# pytest-x-y-z -> x-y-z
+				pytest-aiohttp|pytest-asyncio|pytest-check)
+					;&
+				pytest-console-scripts|pytest-django|pytest-env)
+					;&
+				pytest-freezer|pytest-home|pytest-httpbin)
+					;&
+				pytest-import-check|pytest-localftpserver)
+					;&
+				pytest-localserver|pytest-plus|pytest-recording)
+					;&
+				pytest-regressions|pytest-repeat|pytest-reraise)
+					;&
+				pytest-rerunfailures|pytest-reserial|pytest-shell-utilities)
+					;&
+				pytest-skip-markers|pytest-subtests|pytest-timeout)
+					;&
+				pytest-tornasync|pytest-trio|pytext-xdist|pytest-xprocess)
+					;&
+				pytest-xprocess|pytest-xvfb)
+					plugin=${plugin#pytest-}
+					;;
+				# foo-bar-baz unchanged
+				pytest-datadir|pytest-qt|pytest-subprocess)
+					;;
+				# foo-bar-baz -> foo_bar_baz
+				*)
+					plugin=${plugin//-/_}
+					;;
+			esac
+
+			args+=( -p "${plugin}" )
+		done
+	else
 		args+=(
 			# disable the undesirable-dependency plugins by default to
 			# trigger missing argument strips.  strip options that require
