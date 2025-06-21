@@ -38,13 +38,13 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	elogind? ( >=sys-auth/elogind-219 )
-	>=virtual/libudev-175:=[${MULTILIB_USEDEP}]
+	elogind? ( sys-auth/elogind )
+	virtual/libudev:=[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	net-libs/libndp
-	systemd? ( >=sys-apps/systemd-209:0= )
-	>=dev-libs/glib-2.42:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
+	systemd? ( sys-apps/systemd:= )
+	dev-libs/glib:2[${MULTILIB_USEDEP}]
+	introspection? ( dev-libs/gobject-introspection:= )
 	selinux? (
 		sec-policy/selinux-networkmanager
 		sys-libs/libselinux
@@ -54,18 +54,18 @@ COMMON_DEPEND="
 		>=dev-libs/jansson-2.7:=
 		>=net-misc/libteam-1.9
 	)
-	policykit? ( >=sys-auth/polkit-0.106 )
+	policykit? ( sys-auth/polkit )
 	nss? (
 		dev-libs/nspr[${MULTILIB_USEDEP}]
 		>=dev-libs/nss-3.11[${MULTILIB_USEDEP}]
 	)
 	gnutls? (
-		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}]
+		net-libs/gnutls:=[${MULTILIB_USEDEP}]
 	)
 	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6(+)] )
 	modemmanager? (
 		net-misc/mobile-broadband-provider-info
-		>=net-misc/modemmanager-0.7.991:0=
+		net-misc/modemmanager:=
 	)
 	bluetooth? ( >=net-wireless/bluez-5:= )
 	ofono? ( net-misc/ofono )
@@ -93,7 +93,7 @@ RDEPEND="${COMMON_DEPEND}
 		net-analyzer/arping
 	)
 	wifi? (
-		!iwd? ( >=net-wireless/wpa_supplicant-0.7.3-r3[dbus] )
+		!iwd? ( net-wireless/wpa_supplicant[dbus] )
 		iwd? ( net-wireless/iwd )
 	)
 "
@@ -109,7 +109,7 @@ BDEPEND="
 		dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.1.2
 	)
-	>=sys-devel/gettext-0.17
+	sys-devel/gettext
 	virtual/pkgconfig
 	introspection? (
 		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
