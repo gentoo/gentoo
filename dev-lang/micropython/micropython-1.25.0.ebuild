@@ -27,6 +27,14 @@ BDEPEND="
 src_prepare() {
 	default
 
+	tc-ld-is-mold && {
+		# mold doesn't support --cref, bug #937354
+		find . -name Makefile -exec sed -r \
+			-e 's:map,--cref\s:map :g' \
+			-e 's:\s(-Wl,)?--cref(\s|$): :g' \
+			-i {} + || die
+	}
+
 	micropython_skip_test() {
 		local file
 		for file in "$@" ; do
