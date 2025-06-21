@@ -60,10 +60,6 @@ src_prepare() {
 
 	cd "${S}" || die
 
-	# why do we depend on libandroidfw? It is never linked to or used.
-	# https://github.com/nmeum/android-tools/issues/148
-	sed -i '/libandroidfw/d' vendor/CMakeLists.txt || die
-
 	rm -r patches || die
 	cmake_src_prepare
 }
