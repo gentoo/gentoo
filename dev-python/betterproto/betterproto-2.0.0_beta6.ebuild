@@ -50,6 +50,7 @@ BDEPEND="
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/tomlkit[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
@@ -75,5 +76,7 @@ python_test() {
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p asyncio -p pytest_mock
+	# --forked to workaround protobuf segfaults
+	# https://github.com/protocolbuffers/protobuf/issues/22067
+	epytest -p asyncio -p pytest_mock -p pytest_forked --forked
 }
