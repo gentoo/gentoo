@@ -81,6 +81,5 @@ src_install() {
 		docompress -x "${EPREFIX}"/usr/share/doc/${PF}/samples
 	fi
 
-	insinto /usr/bin
-	dosym Engauge engauge
+	dosym Engauge /usr/bin/engauge
 }
