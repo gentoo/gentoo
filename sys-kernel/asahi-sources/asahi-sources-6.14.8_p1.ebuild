@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -7,11 +7,11 @@ ETYPE="sources"
 CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="8"
+K_GENPATCHES_VER="9"
 K_NODRYRUN="1"
 
 RUST_MIN_VER="1.80.0"
-RUST_USEDEP='rust-src,rustfmt'
+RUST_REQ_USE='rust-src,rustfmt'
 
 inherit kernel-2 rust
 detect_version
@@ -38,13 +38,13 @@ ASAHI_TAG="asahi-${MY_BASE}-${MY_TAG}"
 DESCRIPTION="Asahi Linux kernel sources"
 HOMEPAGE="https://asahilinux.org"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}
-	https://github.com/AsahiLinux/linux/compare/v${MY_BASE}...${ASAHI_TAG}.patch
-		-> linux-${ASAHI_TAG}.patch
+	https://github.com/AsahiLinux/linux/compare/v${MY_BASE}...${ASAHI_TAG}.diff
+		-> linux-${ASAHI_TAG}.diff
 "
 KV_FULL="${PVR/_p/-asahi-}"
 S="${WORKDIR}/linux-${KV_FULL}"
 
-KEYWORDS="arm64"
+KEYWORDS="~arm64"
 
 DEPEND="
 	${DEPEND}
@@ -54,7 +54,8 @@ DEPEND="
 UNIPATCH_STRICTORDER="yes"
 UNIPATCH_LIST="
 	${FILESDIR}/asahi-6.8-config-gentoo-Drop-RANDSTRUCT-from-GENTOO_KERNEL_SEL.patch
-	${DISTDIR}/linux-${ASAHI_TAG}.patch
+	${FILESDIR}/1740_revert_x86-insn-decoder-test-allow-longer-symbol-names.patch
+	${DISTDIR}/linux-${ASAHI_TAG}.diff
 "
 
 src_prepare() {

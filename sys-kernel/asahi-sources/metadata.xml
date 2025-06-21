@@ -8,6 +8,10 @@
   <maintainer type="project">
     <email>asahi@gentoo.org</email>
   </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <use>
     <flag name="symlink">Automatically symlink the kernel sources to /usr/src/linux</flag>
   </use>
