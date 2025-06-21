@@ -14,7 +14,7 @@ S="${WORKDIR}/${P}/source/${PN^}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv x86"
+KEYWORDS="amd64 ~riscv x86"
 IUSE="debug doc"
 
 RDEPEND="
