@@ -19,7 +19,7 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
+IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -30,7 +30,6 @@ REQUIRED_USE="
 	test? ( tools )
 	vala? ( introspection )
 	wext? ( wifi )
-	^^ ( gnutls nss )
 	?? ( elogind systemd )
 	?? ( dhclient dhcpcd )
 	?? ( syslog systemd )
@@ -55,12 +54,10 @@ COMMON_DEPEND="
 		>=net-misc/libteam-1.9
 	)
 	policykit? ( sys-auth/polkit )
-	nss? (
+	gnutls? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	!gnutls? (
 		dev-libs/nspr[${MULTILIB_USEDEP}]
 		>=dev-libs/nss-3.11[${MULTILIB_USEDEP}]
-	)
-	gnutls? (
-		net-libs/gnutls:=[${MULTILIB_USEDEP}]
 	)
 	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6(+)] )
 	modemmanager? (
@@ -243,6 +240,8 @@ multilib_src_configure() {
 		-Dld_gc=false
 		$(meson_native_use_bool psl libpsl)
 		-Dqt=false
+
+		-Dcrypto=$(usex gnutls gnutls nss)
 	)
 
 	if multilib_is_native_abi && use systemd; then
@@ -273,12 +272,6 @@ multilib_src_configure() {
 		emesonargs+=( -Dconfig_dhcp_default=dhcpcd )
 	else
 		emesonargs+=( -Dconfig_dhcp_default=internal )
-	fi
-
-	if use nss; then
-		emesonargs+=( -Dcrypto=nss )
-	else
-		emesonargs+=( -Dcrypto=gnutls )
 	fi
 
 	if use tools; then
