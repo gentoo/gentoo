@@ -1,0 +1,34 @@
+From 633add1b569fe927bace3960d7c84ed9c1b38bb9 Mon Sep 17 00:00:00 2001
+From: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+Date: Fri, 24 Jan 2025 12:51:48 +0000
+Subject: [PATCH] igzip: fix header construction in Big Endian systems
+
+When a file contains a number of repeated '0x00' or '0xff'
+bytes, the block header is copied from a precomputed header,
+which only worked for Little-Endian systems.
+
+Fixes #311.
+
+Signed-off-by: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+---
+ igzip/repeated_char_result.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/igzip/repeated_char_result.h b/igzip/repeated_char_result.h
+index c06d01d7..c90d529f 100644
+--- a/igzip/repeated_char_result.h
++++ b/igzip/repeated_char_result.h
+@@ -59,8 +59,13 @@
+ /* Headers for constant 0x00 and 0xFF blocks
+  * This also contains the first literal character. */
+ const uint32_t repeated_char_header[2][5] = {
++#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+         { 0x0121c0ec, 0xc30c0000, 0x7d57fab0, 0x49270938 }, /* Deflate header for 0x00 */
+         { 0x0121c0ec, 0xc30c0000, 0x7baaff30, 0x49270938 }  /* Deflate header for 0xFF */
++#else
++        { 0xecc02101, 0x00000cc3, 0xb0fa577d, 0x38092749 }, /* Deflate header for 0x00 */
++        { 0xecc02101, 0x00000cc3, 0x30ffaa7b, 0x38092749 }, /* Deflate header for 0xFF */
++#endif
+ 
+ };
+ 
