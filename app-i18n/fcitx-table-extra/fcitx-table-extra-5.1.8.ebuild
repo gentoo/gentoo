@@ -3,20 +3,21 @@
 
 EAPI=8
 
-MY_PN=fcitx5-table-other
+MY_PN=fcitx5-table-extra
 
 inherit cmake unpacker xdg
 
-DESCRIPTION="Provides some other tables for Fcitx, fork from ibus-table-others, scim-tables"
-HOMEPAGE="https://github.com/fcitx/fcitx5-table-other"
+DESCRIPTION="Provides extra table for Fcitx, including Boshiamy, Zhengma, Cangjie, and Quick"
+HOMEPAGE="https://github.com/fcitx/fcitx5-table-extra"
 SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.zst -> ${P}.tar.zst"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 DEPEND="
+	!app-i18n/fcitx-table-extra:4
 	app-i18n/fcitx:5
 	app-i18n/libime
 "

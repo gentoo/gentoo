@@ -11,12 +11,12 @@ SRC_URI="https://download.fcitx-im.org/fcitx5/libime/libime-${PV}_dict.tar.zst"
 
 LICENSE="LGPL-2+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="+data doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-i18n/fcitx-5.1.5:5
+	>=app-i18n/fcitx-5.1.11:5
 	app-arch/zstd:=
 	dev-libs/boost:=
 "
