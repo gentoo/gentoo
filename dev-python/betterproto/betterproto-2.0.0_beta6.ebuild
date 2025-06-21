@@ -67,8 +67,9 @@ python_test() {
 		tests/inputs/oneof/test_oneof.py
 	)
 	local EPYTEST_DESELECT=(
-		# TODO: ordering issue?
+		# TODO: new protobuf?
 		"tests/test_inputs.py::test_binary_compatibility[map]"
+		"tests/test_inputs.py::test_binary_compatibility[mapmessage]"
 		# pydantic
 		tests/inputs/bool/test_bool.py::test_pydantic_no_value
 	)

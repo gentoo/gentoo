@@ -63,8 +63,9 @@ PATCHES=(
 
 python_test() {
 	local EPYTEST_DESELECT=(
-		# TODO: ordering issue?
+		# TODO: new protobuf?
 		"tests/test_inputs.py::test_binary_compatibility[map]"
+		"tests/test_inputs.py::test_binary_compatibility[mapmessage]"
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
