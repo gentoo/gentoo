@@ -23,9 +23,8 @@ HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-# Tests fail upon finding symbols that do not match a regular expression
-# in the generated library. Easily hit with non-standard compiler flags
-RESTRICT="test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="~dev-util/spirv-headers-${PV}"
 # RDEPEND=""
@@ -35,10 +34,23 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DSPIRV-Headers_SOURCE_DIR="${ESYSROOT}"/usr/
 		-DSPIRV_WERROR=OFF
+		-DSPIRV_SKIP_TESTS=$(usex !test)
 		-DSPIRV_TOOLS_BUILD_STATIC=OFF
 		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	CMAKE_SKIP_TESTS=(
+		# Not relevant for us downstream
+		spirv-tools-copyrights
+		# Tests fail upon finding symbols that do not match a regular expression
+		# in the generated library. Easily hit with non-standard compiler flags
+		spirv-tools-symbol-exports.*
+	)
+
+	multilib-minimal_src_test
 }
