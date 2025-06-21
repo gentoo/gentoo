@@ -7,13 +7,7 @@ inherit bash-completion-r1 go-module
 MY_PV=${PV/_/-}
 
 # update this on every bump
-GIT_COMMIT=b8034c0ed70494a90c133461d145cd072d920d7c
-
-# To create the man pages tarball, run the following in the git source
-# directory:
-#git checkout ${PV}
-# make manpages
-# tar -acf ${P}-man.tar.xz man/man?
+GIT_COMMIT=068a01ea9470df6494cc92d9e64e240805ae47a7
 
 DESCRIPTION="the command line binary for docker"
 HOMEPAGE="https://www.docker.com/"
