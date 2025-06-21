@@ -32,6 +32,7 @@ ruby_add_bdepend "
 		dev-ruby/ansi
 		dev-ruby/elasticsearch
 		dev-ruby/elastic-transport
+		dev-ruby/hashie
 		dev-ruby/jbuilder
 		dev-ruby/mocha:2
 		dev-ruby/patron
