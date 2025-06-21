@@ -1,0 +1,40 @@
+This is a revert of upstream commit b5c2e38840480e3653360127f18459a907c75f5c to allow
+building tests without building dev-util/spirv-tools with static-libs.
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -320,13 +320,11 @@ endif()
+ 
+ find_package(GTest CONFIG)
+ find_package(glslang CONFIG)
+-find_package(SPIRV-Tools CONFIG)
+ 
+ target_link_libraries(vk_layer_validation_tests PRIVATE
+     VkLayer_utils
+     glslang::SPIRV
+     glslang::SPVRemapper
+-    SPIRV-Tools-static
+     SPIRV-Headers::SPIRV-Headers
+     GTest::gtest
+     GTest::gtest_main
+@@ -347,6 +345,21 @@ target_include_directories(vk_layer_validation_tests PRIVATE
+     ${VVL_SOURCE_DIR}/layers/external
+ )
+ 
++find_package(SPIRV-Tools CONFIG QUIET)
++
++# See https://github.com/KhronosGroup/SPIRV-Tools/issues/3909 for background on this.
++# The targets available from SPIRV-Tools change depending on how SPIRV_TOOLS_BUILD_STATIC is set.
++# Try to handle all possible combinations so that we work with externally built packages.
++if (TARGET SPIRV-Tools)
++    target_link_libraries(vk_layer_validation_tests PRIVATE SPIRV-Tools)
++elseif(TARGET SPIRV-Tools-static)
++    target_link_libraries(vk_layer_validation_tests PRIVATE SPIRV-Tools-static)
++elseif(TARGET SPIRV-Tools-shared)
++    target_link_libraries(vk_layer_validation_tests PRIVATE SPIRV-Tools-shared)
++else()
++    message(FATAL_ERROR "Cannot determine SPIRV-Tools target name")
++endif()
++
+ # More details in tests/android/mock/README.md
+ option(VVL_MOCK_ANDROID "Enable building for Android on desktop for testing with MockICD setup")
+ if(VVL_MOCK_ANDROID)
