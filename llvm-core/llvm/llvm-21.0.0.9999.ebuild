@@ -418,9 +418,6 @@ multilib_src_configure() {
 
 		-DLLVM_HOST_TRIPLE="${CHOST}"
 
-		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
-		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
-
 		-DPython3_EXECUTABLE="${PYTHON}"
 
 		# disable OCaml bindings (now in dev-ml/llvm)
