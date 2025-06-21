@@ -33,6 +33,10 @@ BDEPEND="
 	test? ( ${PYTHON_DEPS} )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.12.1-broken-flow.patch
+)
+
 pkg_setup() {
 	fortran-2_pkg_setup
 	use test && python-any-r1_pkg_setup

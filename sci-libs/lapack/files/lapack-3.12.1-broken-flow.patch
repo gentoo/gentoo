@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/958525
+https://github.com/Reference-LAPACK/lapack/pull/1093
+
+From 3aa877584bcc96e1a0ee37742628946c56afc15f Mon Sep 17 00:00:00 2001
+From: Wouter Deconinck <wdconinc@gmail.com>
+Date: Fri, 10 Jan 2025 13:05:28 -0600
+Subject: [PATCH] dlahrd.f: consistent line reflow for DTRMV calls
+
+--- a/SRC/DEPRECATED/dlahrd.f
++++ b/SRC/DEPRECATED/dlahrd.f
+@@ -231,8 +231,8 @@ SUBROUTINE DLAHRD( N, K, NB, A, LDA, TAU, T, LDT, Y, LDY )
+ *
+ *           w := T**T *w
+ *
+-            CALL DTRMV( 'Upper', 'Transpose', 'Non-unit', I-1, T, LDT,
+-     $                  T( 1, NB ), 1 )
++            CALL DTRMV( 'Upper', 'Transpose', 'Non-unit', I-1,
++     $                  T, LDT, T( 1, NB ), 1 )
+ *
+ *           b2 := b2 - V2*w
+ *
+@@ -270,8 +270,8 @@ SUBROUTINE DLAHRD( N, K, NB, A, LDA, TAU, T, LDT, Y, LDY )
+ *        Compute T(1:i,i)
+ *
+          CALL DSCAL( I-1, -TAU( I ), T( 1, I ), 1 )
+-         CALL DTRMV( 'Upper', 'No transpose', 'Non-unit', I-1, T, LDT,
+-     $               T( 1, I ), 1 )
++         CALL DTRMV( 'Upper', 'No transpose', 'Non-unit', I-1,
++     $               T, LDT, T( 1, I ), 1 )
+          T( I, I ) = TAU( I )
+ *
+    10 CONTINUE
