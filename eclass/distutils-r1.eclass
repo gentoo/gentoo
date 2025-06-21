@@ -561,6 +561,20 @@ distutils_enable_tests() {
 				test_pkgs+=' dev-python/pytest-xdist[${PYTHON_USEDEP}]'
 			fi
 
+			local plugin
+			_set_epytest_plugins
+			for plugin in "${EPYTEST_PLUGINS[@]}"; do
+				case ${plugin} in
+					pkgcore)
+						plugin=sys-apps/${plugin}
+						;;
+					*)
+						plugin=dev-python/${plugin}
+						;;
+				esac
+				test_pkgs+=" ${plugin}[\${PYTHON_USEDEP}]"
+			done
+
 			if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
 				test_deps+=" ${test_pkgs//'${PYTHON_USEDEP}'/${PYTHON_USEDEP}}"
 			else
