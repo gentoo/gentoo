@@ -97,7 +97,7 @@ src_install() {
 
 	if use gtk-doc; then
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
-		mv "${ED}"/usr/share/doc/Tracker-3.0 "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/Tsparql-3.0 "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
 
