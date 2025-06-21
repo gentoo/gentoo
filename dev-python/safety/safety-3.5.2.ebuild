@@ -35,6 +35,7 @@ RDEPEND="
 	<dev-python/pydantic-2.10.7[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/httpx[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/tenacity[${PYTHON_USEDEP}]
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	>=dev-python/safety-schemas-0.0.14[${PYTHON_USEDEP}]
