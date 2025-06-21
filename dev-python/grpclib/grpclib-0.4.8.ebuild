@@ -40,3 +40,8 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/vmagamedov/grpclib/pull/205
+	"${FILESDIR}/${P}-pytest-asyncio-1.patch"
+)
