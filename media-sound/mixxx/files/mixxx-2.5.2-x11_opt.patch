@@ -1,0 +1,123 @@
+PR merged in main branch
+https://github.com/mixxxdj/mixxx/pull/14574.patch
+https://github.com/mixxxdj/mixxx/pull/14949.patch
+From 3d974f7c0617ccd41961484f6572ec4618571c71 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Mon, 31 Mar 2025 13:33:13 +0000
+Subject: [PATCH] X11-less - Use FindWrapOpenGL
+
+Use FindWrapOpenGL.cmake. It allows X11-less system.
+Set link_target to OpenGL::OpenGL, GLVND-based. If not found, use
+OpenGL:GL.
+
+Furthermore, adding a __X11__ definition so that the screensaver that
+requires Xlib is now optional.
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ CMakeLists.txt           | 10 ++++++++--
+ src/util/screensaver.cpp |  5 +++--
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b7a48247f97a..dc54ed5fad34 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3187,8 +3187,8 @@ else()
+     set(CMAKE_FIND_FRAMEWORK FIRST)
+   endif()
+   set(OpenGL_GL_PREFERENCE "GLVND")
+-  find_package(OpenGL REQUIRED)
+   if(EMSCRIPTEN)
++    find_package(OpenGL REQUIRED)
+     # Emscripten's FindOpenGL.cmake does not create OpenGL::GL
+     target_link_libraries(mixxx-lib PRIVATE ${OPENGL_gl_LIBRARY})
+     target_compile_definitions(mixxx-lib PUBLIC QT_OPENGL_ES_2)
+@@ -3200,7 +3200,12 @@ else()
+       PUBLIC -sMIN_WEBGL_VERSION=2 -sMAX_WEBGL_VERSION=2 -sFULL_ES2=1
+     )
+   else()
+-    target_link_libraries(mixxx-lib PRIVATE OpenGL::GL)
++    find_package(WrapOpenGL REQUIRED)
++    if(OPENGL_opengl_LIBRARY)
++      target_link_libraries(mixxx-lib PRIVATE OpenGL::OpenGL)
++    else()
++      target_link_libraries(mixxx-lib PRIVATE OpenGL::GL)
++    endif()
+   endif()
+   if(UNIX AND QGLES2)
+     target_compile_definitions(mixxx-lib PUBLIC QT_OPENGL_ES_2)
+@@ -3841,6 +3846,7 @@ elseif(UNIX AND NOT APPLE AND NOT EMSCRIPTEN)
+   if(${X11_FOUND})
+     target_include_directories(mixxx-lib SYSTEM PUBLIC "${X11_INCLUDE_DIR}")
+     target_link_libraries(mixxx-lib PRIVATE "${X11_LIBRARIES}")
++    target_compile_definitions(mixxx-lib PUBLIC __X11__)
+   endif()
+   find_package(Qt${QT_VERSION_MAJOR} COMPONENTS DBus REQUIRED)
+   target_link_libraries(mixxx-lib PUBLIC Qt${QT_VERSION_MAJOR}::DBus)
+diff --git a/src/util/screensaver.cpp b/src/util/screensaver.cpp
+index 9eae4a1b4cd0..88f6e880ea56 100644
+--- a/src/util/screensaver.cpp
++++ b/src/util/screensaver.cpp
+@@ -36,7 +36,8 @@ With the help of the following source codes:
+ #  include <X11/extensions/scrnsaver.h>
+ #endif
+ 
+-#if defined(__LINUX__) || (defined(HAVE_XSCREENSAVER_SUSPEND) && HAVE_XSCREENSAVER_SUSPEND)
++#if (defined(__LINUX__) && defined(__X11__)) || \
++        (defined(HAVE_XSCREENSAVER_SUSPEND) && HAVE_XSCREENSAVER_SUSPEND)
+ #  define None XNone
+ #  define Window XWindow
+ #  include <X11/Xlib.h>
+@@ -146,7 +147,7 @@ void ScreenSaverHelper::uninhibitInternal()
+     s_enabled = false;
+ }
+ 
+-#elif defined(Q_OS_LINUX)
++#elif (defined(Q_OS_LINUX) && defined(__X11__))
+ const char *SCREENSAVERS[][4] = {
+     // org.freedesktop.ScreenSaver is the standard. should work for gnome and kde too, 
+     // but I add their specific names too
+From ebeff352f22f4d1dbc35d7f7e3c2c88f1965dc4e Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Mon, 16 Jun 2025 11:00:46 +0200
+Subject: [PATCH] Don't try localeFromXkbSymbol w/o __X11__ defined
+
+Because X11/XKBlib.h is a part of libX11
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ src/coreservices.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/coreservices.cpp b/src/coreservices.cpp
+index 20fb1c240c6..0837d603907 100644
+--- a/src/coreservices.cpp
++++ b/src/coreservices.cpp
+@@ -63,7 +63,7 @@
+ #include "util/sandbox.h"
+ #endif
+ 
+-#ifdef Q_OS_LINUX
++#if defined(Q_OS_LINUX) && defined(__X11__)
+ #include <X11/XKBlib.h>
+ #endif
+ 
+@@ -118,7 +118,7 @@ Bool __xErrorHandler(Display* display, XErrorEvent* event, xError* error) {
+ 
+ #endif
+ 
+-#if defined(Q_OS_LINUX)
++#if defined(Q_OS_LINUX) && defined(__X11__)
+ QLocale localeFromXkbSymbol(const QString& xkbLayout) {
+     // This maps XKB layouts to locales of keyboard mappings that are shipped with Mixxx
+     static const QMap<QString, QLocale> xkbToLocaleMap = {
+@@ -268,7 +268,7 @@ QString getCurrentXkbLayoutName() {
+ // to "ibus engine". QGuiApplication::inputMethod() does not work with GNOME and XFCE
+ // https://bugreports.qt.io/browse/QTBUG-137302
+ inline QLocale inputLocale() {
+-#if defined(Q_OS_LINUX)
++#if defined(Q_OS_LINUX) && defined(__X11__)
+     QString layoutName = getCurrentXkbLayoutName();
+     if (!layoutName.isEmpty()) {
+         qDebug() << "Keyboard Layout from XKB:" << layoutName;

@@ -1,0 +1,52 @@
+https://github.com/mixxxdj/mixxx/pull/14944.patch
+From d2a59762740c4adbc8bc95685504f2ce8dbe19ad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Sch=C3=BCrmann?= <daschuer@mixxx.org>
+Date: Sun, 15 Jun 2025 12:04:40 +0200
+Subject: [PATCH] Fix colum header text asignment
+
+A regression form #13782
+---
+ src/library/columncache.cpp | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/library/columncache.cpp b/src/library/columncache.cpp
+index eb0dd4da589..1a40363d249 100644
+--- a/src/library/columncache.cpp
++++ b/src/library/columncache.cpp
+@@ -68,8 +68,8 @@ constexpr ColumnProperties kColumnPropertiesByEnum[] = {
+                 QT_TRANSLATE_NOOP("BaseTrackTableModel", "Track #"),
+                 kDefaultColumnWidth},
+         DI(ColumnCache::COLUMN_LIBRARYTABLE_FILETYPE){&LIBRARYTABLE_FILETYPE,
+-                nullptr,
+-                0},
++                QT_TRANSLATE_NOOP("BaseTrackTableModel", "Type"),
++                kDefaultColumnWidth},
+         DI(ColumnCache::COLUMN_LIBRARYTABLE_COMMENT){&LIBRARYTABLE_COMMENT,
+                 QT_TRANSLATE_NOOP("BaseTrackTableModel", "Comment"),
+                 kDefaultColumnWidth * 6},
+@@ -110,11 +110,11 @@ constexpr ColumnProperties kColumnPropertiesByEnum[] = {
+                 nullptr,
+                 0},
+         DI(ColumnCache::COLUMN_LIBRARYTABLE_TIMESPLAYED){&LIBRARYTABLE_TIMESPLAYED,
+-                nullptr,
+-                0},
+-        DI(ColumnCache::COLUMN_LIBRARYTABLE_PLAYED){&LIBRARYTABLE_PLAYED,
+                 QT_TRANSLATE_NOOP("BaseTrackTableModel", "Played"),
+                 kDefaultColumnWidth * 2},
++        DI(ColumnCache::COLUMN_LIBRARYTABLE_PLAYED){&LIBRARYTABLE_PLAYED,
++                nullptr,
++                0},
+         DI(ColumnCache::COLUMN_LIBRARYTABLE_RATING){&LIBRARYTABLE_RATING,
+                 QT_TRANSLATE_NOOP("BaseTrackTableModel", "Rating"),
+                 kDefaultColumnWidth * 2},
+@@ -140,8 +140,8 @@ constexpr ColumnProperties kColumnPropertiesByEnum[] = {
+                 nullptr,
+                 0},
+         DI(ColumnCache::COLUMN_LIBRARYTABLE_COVERART_TYPE){&LIBRARYTABLE_COVERART_TYPE,
+-                QT_TRANSLATE_NOOP("BaseTrackTableModel", "Type"),
+-                kDefaultColumnWidth},
++                nullptr,
++                0},
+         DI(ColumnCache::COLUMN_LIBRARYTABLE_COVERART_LOCATION){&LIBRARYTABLE_COVERART_LOCATION,
+                 nullptr,
+                 0},
