@@ -13,12 +13,14 @@ SRC_URI="https://github.com/SuperQ/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 DEPEND="acct-group/chrony_exporter
 		acct-user/chrony_exporter"
 
 BDEPEND="dev-util/promu"
+
+PATCHES=( "${FILESDIR}/0.12.1-binary-name.patch" )
 
 src_prepare() {
 	default
@@ -27,11 +29,11 @@ src_prepare() {
 }
 
 src_compile() {
-	promu build -v --cgo --prefix bin || die
+	promu build -v --cgo || die
 }
 
 src_install() {
-	newbin bin/${P} ${PN}
+	dobin ${PN}
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
