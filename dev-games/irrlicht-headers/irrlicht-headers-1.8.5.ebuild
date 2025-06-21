@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}/source/${MY_PN^}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv x86"
+KEYWORDS="amd64 ~riscv x86"
 
 BDEPEND="app-arch/unzip"
 
