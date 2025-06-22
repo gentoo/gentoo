@@ -1,0 +1,23 @@
+From ebd5f4e94b6ed54f080519cc4dc86d090d1def4d Mon Sep 17 00:00:00 2001
+From: t0b3 <t0b3@users.noreply.github.com>
+Date: Sun, 22 Jun 2025 20:01:07 +0200
+Subject: [PATCH] fix build issue on gentoo
+
+this fixes the build on gentoo :tada:
+---
+ test/unit/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/test/unit/CMakeLists.txt b/test/unit/CMakeLists.txt
+index 12f1f9ea9a..b7a62d7086 100644
+--- a/test/unit/CMakeLists.txt
++++ b/test/unit/CMakeLists.txt
+@@ -47,6 +47,8 @@ PDAL_ADD_TEST(pdal_io_vsi_test
+     FILES
+         VSITest.cpp
+         ${PDAL_SRC_DIR}/util/VSIIO.cpp
++    INCLUDES
++        ${GDAL_INCLUDE_DIR}
+     LINK_WITH
+         ${GDAL_LIBRARY}
+ )
