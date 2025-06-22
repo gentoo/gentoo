@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Write-once attributes for Moo"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Moo-1.2.0
