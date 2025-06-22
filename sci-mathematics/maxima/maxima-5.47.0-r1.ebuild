@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 # say LLGPL version 2 or later which I have approximated by LLGPL-2.1.
 LICENSE="GPL-2 GPL-2+ LLGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="clisp clozurecl clozurecl64 cmucl ecl emacs gcl gui nls +sbcl vtk X test"
 RESTRICT="test" # bug 838202
