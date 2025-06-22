@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Make your classes pluggable"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~x86"
+KEYWORDS="amd64 ~arm ppc x86"
 
 RDEPEND="
 	virtual/perl-Carp
