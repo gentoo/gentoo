@@ -50,7 +50,7 @@ CDEPEND=">=dev-lisp/asdf-3.3:= \
 BDEPEND="${CDEPEND}
 		dev-debug/strace
 		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )
-		system-bootstrap? ( || ( dev-lisp/clisp dev-lisp/sbcl ) )"
+		system-bootstrap? ( || ( >=dev-lisp/ecl-24.5.10 dev-lisp/clisp dev-lisp/sbcl ) )"
 RDEPEND="${CDEPEND}
 		zstd? ( app-arch/zstd )
 		!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )"
@@ -178,8 +178,12 @@ src_compile() {
 	if use system-bootstrap ; then
 		if has_version "dev-lisp/sbcl" ; then
 			bootstrap_lisp="sbcl --no-sysinit --no-userinit --disable-debugger"
-		else
+		elif has_version "dev-lisp/ecl" ; then
+			bootstrap_lisp="ecl"
+		elif has_version "dev-lisp/clisp" ; then
 			bootstrap_lisp="clisp"
+		else
+			die "could not find a bootstrap_lisp"
 		fi
 	fi
 
