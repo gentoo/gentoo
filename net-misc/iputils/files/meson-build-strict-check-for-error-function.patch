@@ -1,0 +1,24 @@
+https://github.com/iputils/iputils/pull/601
+From: Brahmajit Das <listout@listout.xyz>
+Date: Sun, 22 Jun 2025 07:30:38 +0530
+Subject: [PATCH] meson.build: strict check for error function
+
+Along with checking for presense of error.h we should also check if we
+can use the error function and it's getting properly linked.
+
+Dowstream-bug: https://bugs.gentoo.org/947680
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/meson.build
++++ b/meson.build
+@@ -143,7 +143,7 @@ endif
+ foreach h : [
+ 	'error.h',
+ ]
+-	if cc.has_header(h)
++	if cc.has_header(h) and cc.has_function('error')
+ 		conf.set('HAVE_' + h.to_upper().underscorify(), 1,
+ 			description : 'Define if ' + h + ' can be included.')
+ 	endif
+-- 
+2.50.0
+
