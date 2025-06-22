@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A PDL interface to the GD image library"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 
 RDEPEND="
 	>=dev-perl/PDL-2.94.0
