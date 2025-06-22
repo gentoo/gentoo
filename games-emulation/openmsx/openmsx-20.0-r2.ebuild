@@ -33,6 +33,11 @@ BDEPEND="${PYTHON_DEPS}"
 
 DOC_CONTENTS="If you want to if you want to emulate real MSX systems and not only the free C-BIOS machines, put the system ROMs in one of the following directories: ${EPREFIX}/usr/share/${PN}/systemroms or ~/.openMSX/share/systemroms"
 
+PATCHES=(
+	# Drop this after 20.0
+	"${FILESDIR}"/${P}-template.patch
+)
+
 src_prepare() {
 	default
 	sed -i -e 's/-fsanitize=address//' build/flavour-unittest.mk || die
