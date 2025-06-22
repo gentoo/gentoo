@@ -21,9 +21,8 @@ SLOT="2"
 KEYWORDS="~amd64"
 IUSE="static-libs"
 
-DEPEND="
-	>=virtual/jdk-1.8:*
-"
+DEPEND=">=virtual/jdk-17:*"	#958655
+
 RDEPEND="
 	dev-libs/apr:1=
 	dev-libs/openssl:0/3
