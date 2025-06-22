@@ -214,12 +214,6 @@ games-fps/prboom-plus
 # Severe memory leak (bug #953874)
 =app-i18n/ibus-anthy-1.5.17
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-22)
-# Even if Qt5 is optional here, it is dead upstream for close to 10 years
-# and without Gentoo package maintainer almost as long. Bug #926074.
-# Removal on 2025-06-21.
-net-firewall/pglinux
-
 # Matt Turner <mattst88@gentoo.org> (2025-05-22)
 # Old slot depending on libsoup:2.4. All reverse dependencies migrated to a
 # newer slot supporting libsoup:3.0.
