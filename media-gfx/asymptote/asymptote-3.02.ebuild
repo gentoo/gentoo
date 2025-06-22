@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit autotools elisp-common latex-package python-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/asymptote/${P}.src.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="context curl doc emacs examples fftw gsl gui +imagemagick latex lsp +opengl python sigsegv svg test vim-syntax"
 RESTRICT="!test? ( test )"
 
