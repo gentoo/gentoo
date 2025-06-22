@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,9 @@ CPU_USE=(
 	cpu_flags_arm_{neon,v7,v8,sve}
 	cpu_flags_x86_{ssse3,avx,fma3,fma4,avx2,avx512vl}
 )
-IUSE="doc eselect-ldso openmp pthread serial static-libs 64bit-index ${CPU_USE[@]}"
+IUSE="doc eselect-ldso openmp threads serial static-libs 64bit-index ${CPU_USE[@]}"
 REQUIRED_USE="
-	?? ( openmp pthread serial )
+	?? ( openmp serial threads  )
 	?? ( eselect-ldso 64bit-index )"
 
 DEPEND="
@@ -71,7 +71,7 @@ src_configure() {
 	# determine flags
 	if use openmp; then
 		BLIS_FLAGS+=( -t openmp )
-	elif use pthread; then
+	elif use threads; then
 		BLIS_FLAGS+=( -t pthreads )
 	else
 		BLIS_FLAGS+=( -t no )
