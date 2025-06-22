@@ -64,10 +64,11 @@ src_prepare() {
 }
 
 src_configure() {
-	rocm_use_hipcc
+	llvm_prepend_path "${LLVM_SLOT}"
+	rocm_use_clang
 
 	# too many warnings
-	append-cxxflags -Wno-explicit-specialization-storage-class
+	append-cxxflags -Wno-explicit-specialization-storage-class -Wno-unused-value
 
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
@@ -87,10 +88,7 @@ src_configure() {
 
 	if usex video_cards_amdgpu; then
 		mycmakeargs+=(
-			-DTensile_LOGIC="asm_full"
 			-DTensile_COMPILER="hipcc"
-			-DTensile_LIBRARY_FORMAT="msgpack"
-			-DTensile_CODE_OBJECT_VERSION="default"
 			-DTensile_ROOT="${EPREFIX}/usr/share/Tensile"
 			-DTensile_CPU_THREADS="$(makeopts_jobs)"
 		)
