@@ -336,7 +336,7 @@ _cmake_check_build_dir() {
 # Returns 0 if the regex matched (a lower-than-specified version found).
 _cmake_minreqver-lt() {
 	local ver chk=1
-	ver=$(sed -ne "/cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9][0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
+	ver=$(sed -ne "/^\s*cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9][0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
 		"${2}" 2>/dev/null \
 	)
 	if [[ -n ${ver} ]] && ver_test "${ver}" -lt "${1}"; then
