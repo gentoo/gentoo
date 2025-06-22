@@ -1,0 +1,17 @@
+https://gitlab.com/fbb-git/icmake/-/merge_requests/12
+
+diff --git a/scripts/ib/staticlibrary b/scripts/ib/staticlibrary
+index f051569..e33084f 100644
+--- a/scripts/ib/staticlibrary
++++ b/scripts/ib/staticlibrary
+@@ -4,8 +4,8 @@ void static_library()
+ 
+     if (g_compiled)
+     {
+-        system("ar cr ../lib" LIBRARY + ".a *" OBJ_EXT);
+-        system("ranlib ../lib" LIBRARY + ".a");
++        system("${AR:-ar} cr ../lib" LIBRARY + ".a *" OBJ_EXT);
++        system("${RANLIB:-ar} ../lib" LIBRARY + ".a");
+         system("rm *" OBJ_EXT);
+     }
+ }
