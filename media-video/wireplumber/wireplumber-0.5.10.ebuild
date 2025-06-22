@@ -106,20 +106,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if systemd_is_booted ; then
-		ewarn "pipewire-media-session.service is no longer installed. You must switch"
-		ewarn "to wireplumber.service user unit before your next logout/reboot:"
-		ewarn "systemctl --user disable pipewire-media-session.service"
-		ewarn "systemctl --user --force enable wireplumber.service"
-	else
-		ewarn "Switch to WirePlumber will happen the next time gentoo-pipewire-launcher"
-		ewarn "is started (a replacement for directly calling pipewire binary)."
-		ewarn
-		ewarn "Please ensure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist"
-		ewarn "or, if it does exist, that any reference to"
-		ewarn "${EROOT}/usr/bin/pipewire-media-session is commented out (begins with a #)."
-	fi
-
 	if use system-service; then
 		ewarn
 		ewarn "WARNING: you have enabled the system-service USE flag, which installs"
