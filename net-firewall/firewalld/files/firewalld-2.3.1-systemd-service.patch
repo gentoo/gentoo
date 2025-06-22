@@ -1,0 +1,18 @@
+Drops the/an obsolete 'conflicts' line with old iptables services bug #833506
+Removes EnvironmentFile and FIREWALLD_ARGS variable
+--- a/config/firewalld.service.in
++++ b/config/firewalld.service.in
+@@ -4,12 +4,10 @@ Before=network-pre.target
+ Wants=network-pre.target
+ After=dbus.service
+ After=polkit.service
+-Conflicts=iptables.service ip6tables.service ebtables.service ipset.service
+ Documentation=man:firewalld(1)
+ 
+ [Service]
+-EnvironmentFile=-/etc/sysconfig/firewalld
+-ExecStart=@sbindir@/firewalld --nofork --nopid $FIREWALLD_ARGS
++ExecStart=@sbindir@/firewalld --nofork --nopid
+ ExecStartPost=@bindir@/firewall-cmd --state
+ # don't fail ExecStartPost on RUNNING_BUT_FAILED
+ SuccessExitStatus=251
