@@ -246,6 +246,18 @@ check_amdgpu() {
 
 fi
 
+# @FUNCTION: _rocm_strip_unsupported_flags
+# @INTERNAL
+# @DESCRIPTION:
+# Clean flags that are not compatible with 'amdgcn-amd-amdhsa' target.
+_rocm_strip_unsupported_flags() {
+	strip-unsupported-flags
+
+	# FLAGS like -mtls-dialect=* pass test-flags-CXX check, but are not supported
+	# bug #957893
+	export CXXFLAGS=$(test-flags-HIPCXX ${CXXFLAGS})
+}
+
 # @FUNCTION: rocm_use_hipcc
 # @USAGE: rocm_use_hipcc
 # @DESCRIPTION:
@@ -267,5 +279,20 @@ rocm_use_hipcc() {
 	# Export updated CC and CXX. Note that CC is needed even if no C code used,
 	# as CMake checks that C compiler can compile a simple test program.
 	export CC=hipcc CXX=hipcc
-	strip-unsupported-flags
+	_rocm_strip_unsupported_flags
+}
+
+# @FUNCTION: rocm_use_clang
+# @USAGE: rocm_use_clang
+# @DESCRIPTION:
+# switch active C and C++ compilers to clang/clang++, clean unsupported flags
+rocm_use_clang() {
+	local hipclangpath
+	if ! hipclangpath=$(hipconfig --hipclangpath); then
+        die "Error: \"hipconfig --hipclangpath\" failed"
+    fi
+	
+	export CC="${hipclangpath}/${CHOST}-clang"
+	export CXX="${hipclangpath}/${CHOST}-clang++"
+	_rocm_strip_unsupported_flags
 }
