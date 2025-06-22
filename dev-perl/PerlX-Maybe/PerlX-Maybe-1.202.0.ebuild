@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Return a pair only if they are both defined"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
