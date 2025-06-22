@@ -101,6 +101,9 @@ src_test() {
 src_install() {
 	default
 
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+
 	rm "${ED}"/usr/share/aclocal/README || die
 	rmdir "${ED}"/usr/share/aclocal || die
 	rm \
@@ -121,7 +124,7 @@ src_install() {
 		gunzip "${tarfile}" || die
 	fi
 
-	pushd "${D}/${infopath}" >/dev/null || die
+	pushd "${ED}/${infopath}" >/dev/null || die
 	for f in *.info*; do
 		# Install convenience aliases for versioned Automake pages.
 		ln -s "$f" "${f/./-${PV}.}" || die

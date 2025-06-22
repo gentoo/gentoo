@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -95,4 +95,11 @@ src_prepare() {
 		 -name Makefile.in \
 		 -execdir sed -i '/^pkgdatadir/s/@PACKAGE@/&-vanilla/g' {} + \
 		 || die
+}
+
+src_install() {
+	default
+
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
 }
