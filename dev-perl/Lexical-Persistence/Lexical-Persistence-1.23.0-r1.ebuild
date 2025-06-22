@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Bind lexicals to persistent data"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~x86"
+KEYWORDS="amd64 ~arm ppc x86"
 
 RDEPEND="
 	>=dev-perl/PadWalker-1.960.0
