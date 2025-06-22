@@ -16,15 +16,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~s390 ~
 
 RDEPEND="
 	>=virtual/perl-Encode-3.210.0
-	virtual/perl-IO
-	virtual/perl-XSLoader
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	test? (
-		virtual/perl-Test-Simple
-	)
 "
 
 PERL_RM_FILES=( "t/00_pod.t" "t/01_pod.t" )
