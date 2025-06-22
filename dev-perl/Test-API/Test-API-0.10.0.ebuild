@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Test a list of subroutines provided by a module"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
