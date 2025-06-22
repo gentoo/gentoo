@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple database tests"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-perl/DBI"
 BDEPEND="dev-perl/Module-Install"
