@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Mock database driver for testing"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-perl/DBI-1.300.0"
 BDEPEND="
