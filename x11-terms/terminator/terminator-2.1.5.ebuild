@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1 optfeature verify-sig virtualx xdg
 
 DESCRIPTION="Multiple GNOME terminals in one window"
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~riscv ~x86"
 IUSE="test"
 
 RDEPEND="
