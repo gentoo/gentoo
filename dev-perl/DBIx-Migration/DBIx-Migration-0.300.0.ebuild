@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Seamless DB schema up- and downgrades"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Class-Accessor
