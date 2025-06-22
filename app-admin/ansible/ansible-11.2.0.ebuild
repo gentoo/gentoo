@@ -9,7 +9,10 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
-HOMEPAGE="https://www.ansible.com/"
+HOMEPAGE="
+	https://www.redhat.com/en/ansible-collaborative
+	https://github.com/ansible-community/ansible-build-data
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
