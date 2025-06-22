@@ -18,16 +18,12 @@ IUSE="minimal zip"
 # is somewhat a wrapper for pkgconfig :/
 RDEPEND="
 	zip? ( dev-perl/Archive-Zip )
-	virtual/perl-Archive-Tar
 	>=dev-perl/Capture-Tiny-0.170.0
-	virtual/perl-Digest-SHA
-	virtual/perl-ExtUtils-CBuilder
 	>=virtual/perl-ExtUtils-MakeMaker-6.640.0
 	>=virtual/perl-ExtUtils-ParseXS-3.300.0
 	>=dev-perl/FFI-CheckLib-0.110.0
 	>=dev-perl/File-Which-1.100.0
 	dev-perl/File-chdir
-	virtual/perl-JSON-PP
 	>=virtual/perl-Scalar-List-Utils-1.330.0
 	>=dev-perl/Path-Tiny-0.77.0
 	>=virtual/perl-Test-Simple-1.302.96
