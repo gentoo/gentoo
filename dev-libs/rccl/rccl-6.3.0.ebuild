@@ -62,6 +62,7 @@ src_configure() {
 		-DROCM_SYMLINK_LIBS=OFF
 		-DROCM_PATH="${EPREFIX}/usr"
 		-DRCCL_ROCPROFILER_REGISTER=OFF
+		-DENABLE_MSCCLPP=OFF
 		-Wno-dev
 	)
 
