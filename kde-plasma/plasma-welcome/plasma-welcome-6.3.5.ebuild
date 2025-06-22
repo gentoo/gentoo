@@ -5,7 +5,7 @@ EAPI=8
 
 KFMIN=6.10.0
 QTMIN=6.8.1
-inherit ecm plasma.kde.org xdg
+inherit ecm dot-a plasma.kde.org xdg
 
 DESCRIPTION="Friendly onboarding wizard for Plasma"
 
@@ -34,3 +34,13 @@ DEPEND="
 	>=kde-plasma/libplasma-${KDE_CATV}:6
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	lto-guarantee-fat
+	ecm_src_configure
+}
+
+src_install() {
+	ecm_src_install
+	strip-lto-bytecode
+}
