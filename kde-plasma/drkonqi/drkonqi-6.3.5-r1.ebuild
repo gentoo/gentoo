@@ -13,7 +13,7 @@ DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="systemd"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
