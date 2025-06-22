@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs flag-o-matic
 
@@ -18,6 +18,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.00.00-ar.patch
 	"${FILESDIR}"/${PN}-9.02.02-verbose-build.patch
 	"${FILESDIR}"/${PN}-9.03.01-compressed-docs.patch
+	"${FILESDIR}"/${PN}-9.03.01-ar.patch
 )
 
 src_prepare() {
@@ -43,5 +44,5 @@ src_compile() {
 }
 
 src_install() {
-	./icm_install all "${ED}" || die
+	./icm_install all "${D}" || die
 }
