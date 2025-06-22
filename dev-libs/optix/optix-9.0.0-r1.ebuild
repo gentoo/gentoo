@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-dev-${PV}"
 
 LICENSE="NVIDIA-SDK-v2017.06.13 BSD"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 # TODO license mentions distribution rights
 # check if it fits in BINARY-REDISTRIBUTABLE
 RESTRICT="bindist mirror test"
