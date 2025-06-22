@@ -17,7 +17,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	inherit pypi
 	SRC_URI="$(pypi_sdist_url) -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
