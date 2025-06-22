@@ -8,6 +8,12 @@ inherit autotools multilib-minimal
 DESCRIPTION="The Theora Video Compression Codec"
 HOMEPAGE="https://www.theora.org"
 SRC_URI="https://downloads.xiph.org/releases/theora/${P/_}.tar.xz"
+# Workaround for https://gitlab.xiph.org/xiph/theora/-/issues/2338 (arm
+# files missing from dist tarball):
+SRC_URI+="
+	https://gitlab.xiph.org/xiph/theora/-/raw/v${PV}/lib/arm/armenc.c -> ${P}-armenc.c
+	https://gitlab.xiph.org/xiph/theora/-/raw/v${PV}/lib/arm/armloop.s -> ${P}-armloop.s
+"
 S="${WORKDIR}"/${P/_}
 
 LICENSE="BSD"
@@ -40,6 +46,10 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# Workaround for broken 1.2.0 dist tarball
+	cp "${DISTDIR}"/${P}-{armenc.c,armloop.s} lib/arm || die
+
 	eautoreconf
 }
 
