@@ -27,6 +27,11 @@ DEPEND="
 "
 RDEPEND=${DEPEND}
 
+# https://bugs.gentoo.org/958646
+PATCHES=(
+	"${FILESDIR}/${P}-missing-includes.patch"
+)
+
 use10() {
 	usex "${1}" 1 0
 }
