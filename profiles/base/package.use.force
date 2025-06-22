@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
+# This is currently more footgun than real option. Bug #958638
+<kde-plasma/kwin-6.5.0 X
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-06-17)
 # Build system currently does not allow static libs to be optional, and
 # deleting (as we do now) leaves both the cmake export and fltk-config
