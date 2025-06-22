@@ -166,10 +166,8 @@ dev-gap/cohomolo
 x11-misc/qxkb
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
-# Upstream repository+author, web pages and documentation gone after long
-# period of inactivity, based on Qt5. Bugs #949021, #940094
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-22)
-# Work in progress, preemptively limit mask to <12.3
+# Old versions require Qt5
 <media-gfx/engauge-12.3
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
