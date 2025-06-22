@@ -11,3 +11,5 @@ DESCRIPTION="string utility functions for expanding variables in self-referentia
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+
+BDEPEND="dev-perl/Module-Build"
