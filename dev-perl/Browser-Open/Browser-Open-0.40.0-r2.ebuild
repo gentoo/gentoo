@@ -12,9 +12,7 @@ DESCRIPTION="Open a browser at a given URL"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~loong ~mips ppc ~ppc64 ~riscv ~s390 x86"
 
-RDEPEND=""
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
+BDEPEND="
 	test? (
 		>=virtual/perl-Test-Simple-0.920.0
 	)
