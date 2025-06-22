@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A PDL interface to the Gnu Scientific Library"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 
 RDEPEND="
 	>=dev-perl/PDL-2.96.0
