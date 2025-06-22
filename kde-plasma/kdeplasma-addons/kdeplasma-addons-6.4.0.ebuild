@@ -54,6 +54,8 @@ RDEPEND="${DEPEND}
 	>=kde-frameworks/kitemmodels-${KFMIN}:6
 "
 
+PATCHES=( "${FILESDIR}/${PN}-6.3.5-cmake4.patch" ) # bug 958360, pending MR for 6.4
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package alternate-calendar ICU)

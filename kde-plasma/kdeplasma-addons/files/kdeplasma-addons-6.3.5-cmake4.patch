@@ -1,0 +1,37 @@
+From f100cd519aa0800fe84bf3c44f4d84698ca445c5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 19 Jun 2025 11:41:45 +0200
+Subject: [PATCH] Align with project root minimum versions and don't search for
+ Qt5(!)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ templates/plasmapotdprovider/CMakeLists.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/templates/plasmapotdprovider/CMakeLists.txt b/templates/plasmapotdprovider/CMakeLists.txt
+index 4cbfaba815..e6663fc461 100644
+--- a/templates/plasmapotdprovider/CMakeLists.txt
++++ b/templates/plasmapotdprovider/CMakeLists.txt
+@@ -1,14 +1,14 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.16)
+ 
+ project(%{APPNAMEID})
+ 
+-set(QT_MIN_VERSION "5.9.0")
+-set(KF6_MIN_VERSION "5.42.0")
++set(QT_MIN_VERSION "6.8.0")
++set(KF6_MIN_VERSION "6.14.0")
+ 
+ find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ 
+-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
++find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED
+     COMPONENTS
+         Core
+ )
+-- 
+GitLab
+
