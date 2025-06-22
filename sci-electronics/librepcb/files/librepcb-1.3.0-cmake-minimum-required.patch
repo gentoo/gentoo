@@ -1,0 +1,36 @@
+From 2638b76886b0eb0a371121aa965c895b1994a8b8 Mon Sep 17 00:00:00 2001
+From: "U. Bruhin" <urbibruhin@bluewin.ch>
+Date: Thu, 3 Apr 2025 19:04:47 +0200
+Subject: [PATCH] CMake: Bump minimum required version to 3.22
+
+---
+ CMakeLists.txt                       | 2 +-
+ external/debug_assert/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 421ce0f..5617244 100644
+--- a/libs/type_safe/CMakeLists.txt
++++ b/libs/type_safe/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # This file is subject to the license terms in the LICENSE file
+ # found in the top-level directory of this distribution.
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.22)
+ 
+ project(TYPE_SAFE)
+ 
+diff --git a/external/debug_assert/CMakeLists.txt b/external/debug_assert/CMakeLists.txt
+index 7005afc..541ae4c 100644
+--- a/libs/type_safe/external/debug_assert/CMakeLists.txt
++++ b/libs/type_safe/external/debug_assert/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # This file is subject to the license terms in the LICENSE file
+ # found in the top-level directory of this distribution.
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.22)
+ project(DEBUG_ASSERT)
+ 
+ # Determine if debug_assert is built as a subproject (using add_subdirectory)
