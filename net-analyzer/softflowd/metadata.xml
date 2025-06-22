@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>netmon@gentoo.org</email>
-<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<upstream>
-<remote-id type="google-code">softflowd</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<longdescription>
+	softflowd is a software implementation of a flow-based network traffic
+	monitor.  softflowd reads network traffic and gathers information about
+	active traffic flows.  A "traffic flow" is communication between two IP
+	addresses or (if the overlying protocol is TCP or UDP) address/port tuples.
+	The intended use of softflowd is as a software implementation of Cisco’s
+	NetFlow traffic account system.  softflowd supports data export using
+	versions 1, 5 or 9 of the NetFlow protocol.
+	</longdescription>
+	<use>
+		<flag name="flow-spray">Enable spray as flow tree type(default is RB)</flag>
+		<flag name="expiry-spray">Enable spray as expiry tree type (default is RB)</flag>
+	</use>
+	<upstream>
+		<remote-id type="google-code">softflowd</remote-id>
+		<remote-id type="github">irino/softflowd</remote-id>
+	</upstream>
 </pkgmetadata>
