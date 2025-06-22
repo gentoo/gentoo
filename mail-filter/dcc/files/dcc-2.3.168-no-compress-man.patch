@@ -1,0 +1,11 @@
+--- a/configure
++++ b/configure
+@@ -1933,7 +1933,7 @@ case "$TARGET_SYS" in
+     Linux)
+ 	# default to /usr/local/man/man8 and use roff files
+ 	mancat=man
+-	MANX='$(MANGZ)'
++	MANX='$(MAN0)'
+ 	;;
+     OpenBSD)
+ 	# default to /usr/local/man/cat8 and .0 names

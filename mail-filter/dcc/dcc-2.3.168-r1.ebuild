@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd toolchain-funcs
+inherit edo systemd toolchain-funcs
 
 DESCRIPTION="Distributed Checksum Clearinghouse"
 HOMEPAGE="https://www.rhyolite.com/dcc/"
@@ -23,7 +23,8 @@ RDEPEND="
 		www-client/fetch
 	)
 	milter? ( mail-filter/libmilter:= )
-	rrdtool? ( net-analyzer/rrdtool )"
+	rrdtool? ( net-analyzer/rrdtool )
+"
 DEPEND="${RDEPEND}"
 
 dcc_cgibin=var/www/localhost/cgi-bin/dcc
@@ -35,10 +36,12 @@ dcc_rundir=var/run/dcc
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.158-clang16.patch
 	"${FILESDIR}"/${PN}-1.3.158-c2x.patch
+	"${FILESDIR}"/${PN}-2.3.168-no-compress-man.patch
 )
 
 src_configure() {
 	tc-export CC AR RANLIB
+
 	local myconf=(
 		--bindir="${EPREFIX}"/usr/bin
 		--homedir="${EPREFIX}"/${dcc_homedir}
@@ -64,7 +67,7 @@ src_configure() {
 	einfo "Using config: ${myconf[@]}"
 
 	# This is NOT a normal configure script.
-	./configure "${myconf[@]}" || die "configure failed!"
+	edo ./configure "${myconf[@]}"
 }
 
 moveconf() {
