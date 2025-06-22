@@ -7,6 +7,7 @@
 		<flag name="openssl">Enable <pkg>dev-libs/openssl</pkg> support instead of gnutls (which is the default).</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/mcabber/loudmouth/issues</bugs-to>
 		<remote-id type="github">mcabber/loudmouth</remote-id>
 	</upstream>
 </pkgmetadata>
