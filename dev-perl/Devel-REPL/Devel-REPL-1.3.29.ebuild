@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="A modern perl interactive shell"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~x86"
+KEYWORDS="amd64 ~arm ppc x86"
 
 RDEPEND="
 	virtual/perl-File-Spec
