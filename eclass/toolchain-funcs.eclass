@@ -73,6 +73,10 @@ tc-getCPP() { tc-getPROG CPP "${CC:-gcc} -E" "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler
 tc-getCXX() { tc-getPROG CXX g++ "$@"; }
+# @FUNCTION: tc-getHIPCXX
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the HIP compiler
+tc-getHIPCXX() { tc-getPROG HIPCXX "$(hipconfig --hipclangpath)/clang++" "$@"; }
 # @FUNCTION: tc-getLD
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the linker
