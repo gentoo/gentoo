@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Provides a 'Self' type constraint, referring to the caller class or role"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-perl/Type-Tiny
