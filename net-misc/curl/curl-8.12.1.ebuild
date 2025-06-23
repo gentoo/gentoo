@@ -55,14 +55,12 @@ REQUIRED_USE="
 	)
 	curl_quic_openssl? (
 		curl_ssl_openssl
-		quic
 		!gnutls
 		!mbedtls
 		!rustls
 	)
 	curl_quic_ngtcp2? (
 		curl_ssl_gnutls
-		quic
 		!mbedtls
 		!openssl
 		!rustls
