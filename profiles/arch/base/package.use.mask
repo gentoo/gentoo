@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sv. Lockal <lockalsash@gmail.com> (2025-06-24)
+# only keyworded for amd64 currently
+media-gfx/blender hiprt
+
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # dev-python/sigstore is not keyworded everywhere.
 =dev-lang/python-0* verify-sig
