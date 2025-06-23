@@ -90,11 +90,16 @@ COMMON_DEPEND="
 		>=dev-libs/openssl-1.0.0:0=
 	)
 "
-BDEPEND="app-alternatives/yacc"
+BDEPEND="
+	app-alternatives/yacc
+	test? (
+		acct-group/mysql
+		acct-user/mysql
+	)
+"
 DEPEND="${COMMON_DEPEND}
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )
-		test? ( acct-group/mysql acct-user/mysql )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
 "
@@ -123,7 +128,11 @@ RDEPEND="${COMMON_DEPEND}
 			sst-rsync? ( sys-process/lsof )
 			sst-mariabackup? ( net-misc/socat[ssl] )
 		)
-		!prefix? ( dev-db/mysql-init-scripts acct-group/mysql acct-user/mysql )
+		!prefix? (
+			acct-group/mysql
+			acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
 	)
 "
 # For other stuff to bring us in
