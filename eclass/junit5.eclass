@@ -1,9 +1,9 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: java-pkg-junit-5.eclass
+# @ECLASS: junit5.eclass
 # @MAINTAINER:
-# Yuan Liao <liaoyuan@gmail.com>
+# java@gentoo.org
 # @AUTHOR:
 # Yuan Liao <liaoyuan@gmail.com>
 # @SUPPORTED_EAPIS: 8
@@ -14,7 +14,7 @@
 # eventually be merged into java-utils-2.eclass and/or java-pkg-simple.eclass
 # when it is mature.
 
-if [[ ! ${_JAVA_PKG_JUNIT_5_ECLASS} ]]; then
+if [[ ! ${_JUNIT5_ECLASS} ]]; then
 
 case ${EAPI} in
 	8) ;;
@@ -85,11 +85,11 @@ if has test ${JAVA_PKG_IUSE}; then
 	)"
 fi
 
-java-pkg-junit-5_pkg_setup() {
+junit5_pkg_setup() {
 	java-pkg-2_pkg_setup
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	# Note: Each method must have a "_java-pkg-junit-5_src_test_${method}"
+	# Note: Each method must have a "_junit5_src_test_${method}"
 	# function in this eclass
 	local accepted_methods="
 		traditional
@@ -130,7 +130,7 @@ java-pkg-junit-5_pkg_setup() {
 		show_accepted_methods_and_die
 	fi
 
-	_JAVA_PKG_JUNIT_5_PKG_SETUP=1
+	_JUNIT5_PKG_SETUP=1
 }
 
 # @FUNCTION: ejunit5
@@ -160,16 +160,16 @@ ejunit5() {
 		cp=".:${cp}"
 	fi
 
-	_java-pkg-junit-5_ConsoleLauncher "${cp}"$(printf -- ' -c=%q' "${@}")
+	_junit5_ConsoleLauncher "${cp}"$(printf -- ' -c=%q' "${@}")
 }
 
-# @FUNCTION: _java-pkg-junit-5_ConsoleLauncher
+# @FUNCTION: _junit5_ConsoleLauncher
 # @INTERNAL
 # @USAGE: <classpath> [args]
 # @DESCRIPTION:
 # Invokes the JUnit Platform's ConsoleLauncher on the specified classpath,
 # using the specified arguments.
-_java-pkg-junit-5_ConsoleLauncher() {
+_junit5_ConsoleLauncher() {
 	debug-print-function ${FUNCNAME} $*
 
 	local cp=${1}
@@ -212,16 +212,16 @@ _java-pkg-junit-5_ConsoleLauncher() {
 	[[ ${ret} -eq 0 ]] || die "ConsoleLauncher failed"
 }
 
-java-pkg-junit-5_src_test() {
+junit5_src_test() {
 	if ! has test ${JAVA_PKG_IUSE}; then
 		return
 	elif ! use test; then
 		return
 	fi
 
-	if [[ ! ${_JAVA_PKG_JUNIT_5_PKG_SETUP} ]]; then
-		eqawarn "java-pkg-junit-5.eclass is inherited, but the"
-		eqawarn "java-pkg-junit-5_pkg_setup function has not been called."
+	if [[ ! ${_JUNIT5_PKG_SETUP} ]]; then
+		eqawarn "junit5.eclass is inherited, but the"
+		eqawarn "junit5_pkg_setup function has not been called."
 		eqawarn "Please add the function call to pkg_setup."
 	fi
 
@@ -229,7 +229,7 @@ java-pkg-junit-5_src_test() {
 	JAVA_TEST_GENTOO_CLASSPATH+=" ${junit_5_classpath}"
 	java-pkg-simple_src_test
 	elog "java-pkg-simple.eclass might have printed a \"No suitable function found\""
-	elog "message.  This is OK, as java-pkg-junit-5.eclass will handle JUnit 5..."
+	elog "message.  This is OK, as junit5.eclass will handle JUnit 5..."
 
 	local classes="target/test-classes"
 	local classpath="${classes}:${JAVA_JAR_FILENAME}"
@@ -239,7 +239,7 @@ java-pkg-junit-5_src_test() {
 	local method
 	declare -A num_tests
 	for method in ${JAVA_TEST_SELECTION_METHOD}; do
-		local method_func="_java-pkg-junit-5_src_test_${method}"
+		local method_func="_junit5_src_test_${method}"
 		declare -F ${method_func} > /dev/null ||
 			die "Function for \"${method}\" method not found: ${method_func}"
 		${method_func}
@@ -248,7 +248,7 @@ java-pkg-junit-5_src_test() {
 			grep -c '</testcase>')"
 	done
 
-	_java-pkg-junit-5_post_test_qa_check_use_dep
+	_junit5_post_test_qa_check_use_dep
 
 	if [[ ${#num_tests[@]} -gt 1 ]]; then
 		einfo "Number of tests each test selection method selected:"
@@ -258,7 +258,7 @@ java-pkg-junit-5_src_test() {
 	fi
 }
 
-# @FUNCTION: _java-pkg-junit-5_post_test_qa_check_use_dep
+# @FUNCTION: _junit5_post_test_qa_check_use_dep
 # @INTERNAL
 # @DESCRIPTION:
 # Checks whether the dev-java/junit:5 atom's USE dependency in DEPEND includes
@@ -281,7 +281,7 @@ java-pkg-junit-5_src_test() {
 # environment where dev-java/junit:5's 'suite' USE flag is _not_ enabled, the
 # tests _will_ launch and then fail.  The dev-java/junit:5[suite] dependency is
 # not declared, so the package manager will not enforce it.
-_java-pkg-junit-5_post_test_qa_check_use_dep() {
+_junit5_post_test_qa_check_use_dep() {
 	local flag
 
 	# If a test engine ran any tests, its report will contain a
@@ -306,7 +306,7 @@ _java-pkg-junit-5_post_test_qa_check_use_dep() {
 				flag=vintage
 				;;
 		esac
-		[[ -z ${flag} ]] || _java-pkg-junit-5_dep_has_use "${flag}" ||
+		[[ -z ${flag} ]] || _junit5_dep_has_use "${flag}" ||
 			unexpected_engines+=( "${engine}: dev-java/junit:5[${flag}]" )
 	done
 	if [[ -n ${unexpected_engines[@]} ]]; then
@@ -333,7 +333,7 @@ _java-pkg-junit-5_post_test_qa_check_use_dep() {
 	local unexpected_packages=()
 	for flag in "${!junit_5_flag_to_package[@]}"; do
 		package="${junit_5_flag_to_package[${flag}]}"
-		_java-pkg-junit-5_dep_has_use "${flag}" ||
+		_junit5_dep_has_use "${flag}" ||
 			! grep -q -F "${package}" "${jdeps_output}" ||
 			unexpected_packages+=( "${package}: dev-java/junit:5[${flag}]" )
 	done
@@ -348,14 +348,14 @@ _java-pkg-junit-5_post_test_qa_check_use_dep() {
 	fi
 }
 
-# @FUNCTION: _java-pkg-junit-5_dep_has_use
+# @FUNCTION: _junit5_dep_has_use
 # @INTERNAL
 # @USAGE: <flag>
 # @DESCRIPTION:
 # Checks whether dev-java/junit:5 is declared with USE dependency on the
 # specified USE flag (i.e. dev-java/junit:5[<flag>]) in DEPEND.
 # @RETURN: Shell true if the check passed, shell false otherwise
-_java-pkg-junit-5_dep_has_use() {
+_junit5_dep_has_use() {
 	debug-print-function ${FUNCNAME} $*
 
 	local flag=${1}
@@ -366,7 +366,7 @@ _java-pkg-junit-5_dep_has_use() {
 	[[ ${DEPEND} =~ ${re} && ! ${DEPEND} =~ ${n_re1} ]]
 }
 
-# @FUNCTION: _java-pkg-junit-5_src_test_traditional
+# @FUNCTION: _junit5_src_test_traditional
 # @INTERNAL
 # @DESCRIPTION:
 # Finds tests to run using the traditional method that java-pkg-simple.eclass
@@ -379,7 +379,7 @@ _java-pkg-junit-5_dep_has_use() {
 #    filename matches a preset pattern.
 # 3. Remove any tests in JAVA_TEST_EXCLUDES from the list.  Run tests that are
 #    still in the list after the removal.
-_java-pkg-junit-5_src_test_traditional() {
+_junit5_src_test_traditional() {
 	debug-print-function ${FUNCNAME} $*
 
 	local tests_to_run
@@ -414,7 +414,7 @@ _java-pkg-junit-5_src_test_traditional() {
 	ejunit5 -classpath "${classpath}" ${tests_to_run}
 }
 
-# @FUNCTION: _java-pkg-junit-5_src_test_scan-classpath
+# @FUNCTION: _junit5_src_test_scan-classpath
 # @INTERNAL
 # @DESCRIPTION:
 # If JAVA_TEST_RUN_ONLY is defined, runs only the tests listed in it on the
@@ -422,7 +422,7 @@ _java-pkg-junit-5_src_test_traditional() {
 # Otherwise, runs the JUnit Platform's ConsoleLauncher with the
 # '--scan-classpath' to let the JUnit Platform automatically detect, select,
 # and run tests.  JAVA_TEST_EXCLUDES is still honored in this case.
-_java-pkg-junit-5_src_test_scan-classpath() {
+_junit5_src_test_scan-classpath() {
 	debug-print-function ${FUNCNAME} $*
 
 	if [[ -n ${JAVA_TEST_RUN_ONLY} ]]; then
@@ -452,11 +452,11 @@ _java-pkg-junit-5_src_test_scan-classpath() {
 			args+=( --exclude-classname="^${class//./\\.}\$" )
 		done
 
-		_java-pkg-junit-5_ConsoleLauncher "${classpath}" "${args[@]}"
+		_junit5_ConsoleLauncher "${classpath}" "${args[@]}"
 	fi
 }
 
-# @FUNCTION: _java-pkg-junit-5_src_test_scan-classpath+pattern
+# @FUNCTION: _junit5_src_test_scan-classpath+pattern
 # @INTERNAL
 # @DESCRIPTION:
 # If JAVA_TEST_RUN_ONLY is defined, runs only the tests listed in it on the
@@ -465,7 +465,7 @@ _java-pkg-junit-5_src_test_scan-classpath() {
 # '--scan-classpath' option, and also includes and excludes class names based
 # on the test class name patterns that java-pkg-simple.eclass uses.  Then, runs
 # the found tests on the JUnit Platform.
-_java-pkg-junit-5_src_test_scan-classpath+pattern() {
+_junit5_src_test_scan-classpath+pattern() {
 	debug-print-function ${FUNCNAME} $*
 
 	local includes=(
@@ -481,20 +481,20 @@ _java-pkg-junit-5_src_test_scan-classpath+pattern() {
 		'.*TestUtils.*'
 		'.*\$.*'
 	)
-	_java-pkg-junit-5_src_test_scan-classpath
+	_junit5_src_test_scan-classpath
 }
 
-# @FUNCTION: _java-pkg-junit-5_src_test_console-args
+# @FUNCTION: _junit5_src_test_console-args
 # @INTERNAL
 # @DESCRIPTION:
 # Does not do anything with regards to test selection at all; instead, passes
 # JAVA_JUNIT_CONSOLE_ARGS to JUnit Platform's ConsoleLauncher, and lets the
 # arguments in JAVA_JUNIT_CONSOLE_ARGS control test selection.
-_java-pkg-junit-5_src_test_console-args() {
-	_java-pkg-junit-5_ConsoleLauncher "${classpath}" ${JAVA_JUNIT_CONSOLE_ARGS}
+_junit5_src_test_console-args() {
+	_junit5_ConsoleLauncher "${classpath}" ${JAVA_JUNIT_CONSOLE_ARGS}
 }
 
-_JAVA_PKG_JUNIT_5_ECLASS=1
+_JUNIT5_ECLASS=1
 fi
 
 EXPORT_FUNCTIONS pkg_setup src_test
