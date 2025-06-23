@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-musl.patch
 	"${FILESDIR}"/${P}-libcxx.patch
 	"${FILESDIR}"/${P}-gcc15.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" "KernelCollecterTest.NetworkStatsTest" )
