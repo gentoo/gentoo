@@ -11,7 +11,7 @@ SRC_URI="https://github.com/adrienverge/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-3-with-openssl-exception openssl"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="resolvconf systemd"
 
 DEPEND="
