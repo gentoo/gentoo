@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -138,6 +138,15 @@ src_prepare() {
 
 src_configure() {
 	filter-ldflags -Wl,-Bdirect -Bdirect
+
+	# Avoid automagically finding (incomplete) TL components if
+	# USE=-doc where not all required files may be available.
+	if ! use doc ; then
+		export ac_cv_path_PDFTEX=
+		export ac_cv_path_PDFLATEX=
+		export ac_cv_path_MAKEINDEX=
+		export ac_cv_path_KPSEWHICH=
+	fi
 
 	econf \
 		--enable-byte-compiled-packages \

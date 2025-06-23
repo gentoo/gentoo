@@ -143,6 +143,15 @@ src_prepare() {
 src_configure() {
 	filter-ldflags -Wl,-Bdirect -Bdirect
 
+	# Avoid automagically finding (incomplete) TL components if
+	# USE=-doc where not all required files may be available.
+	if ! use doc ; then
+		export ac_cv_path_PDFTEX=
+		export ac_cv_path_PDFLATEX=
+		export ac_cv_path_MAKEINDEX=
+		export ac_cv_path_KPSEWHICH=
+	fi
+
 	econf \
 		--enable-byte-compiled-packages \
 		--enable-R-shlib \
