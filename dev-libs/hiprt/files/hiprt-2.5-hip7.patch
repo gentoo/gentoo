@@ -1,0 +1,39 @@
+Partial backport from upstream for hip-7 compatibility (no member named 'data' in 'HIP_vector_type...)
+
+Backports https://github.com/GPUOpen-LibrariesAndSDKs/HIPRT/commit/592a92b5afcc6de16c5371b1f41daec4ac59b77b
+--- a/hiprt/impl/hiprt_device_impl.h
++++ b/hiprt/impl/hiprt_device_impl.h
+@@ -362,10 +362,10 @@ TraversalBase<Stack>::testInternalNode( const hiprtRay& ray, const float3& invD,
+ 	auto result = __builtin_amdgcn_image_bvh_intersect_ray_l(
+ 		encodeBaseAddr( nodes, nodeIndex ),
+ 		ray.maxT,
+-		float4{ ray.origin.x, ray.origin.y, ray.origin.z, 0.0f }.data,
+-		float4{ ray.direction.x, ray.direction.y, ray.direction.z, 0.0f }.data,
+-		float4{ invD.x, invD.y, invD.z, 0.0f }.data,
+-		m_descriptor.data );
++		{ ray.origin.x, ray.origin.y, ray.origin.z, 0.0f },
++		{ ray.direction.x, ray.direction.y, ray.direction.z, 0.0f },
++		{ invD.x, invD.y, invD.z, 0.0f },
++		{ m_descriptor.x, m_descriptor.y, m_descriptor.z, m_descriptor.w } );
+ #endif
+ 	if ( m_stack.vacancy() < 3 )
+ 	{
+@@ -397,11 +397,13 @@ HIPRT_DEVICE bool TraversalBase<Stack>::testTriangleNode(
+ 		hit.normal = node.m_triPair.fetchTriangle( leafIndex & 1 ).normal( node.m_flags >> ( ( leafIndex & 1 ) * 8 ) );
+ 	}
+ #else
+-	const float4 origin	   = float4{ ray.origin.x, ray.origin.y, ray.origin.z, 0.0f };
+-	const float4 direction = float4{ ray.direction.x, ray.direction.y, ray.direction.z, 0.0f };
+-	const float4 invDir	   = float4{ invD.x, invD.y, invD.z, 0.0f };
+-	auto		 result	   = __builtin_amdgcn_image_bvh_intersect_ray_l(
+-		   encodeBaseAddr( nodes, leafIndex ), ray.maxT, origin.data, direction.data, invDir.data, m_descriptor.data );
++	auto result = __builtin_amdgcn_image_bvh_intersect_ray_l(
++		encodeBaseAddr( nodes, leafIndex ),
++		ray.maxT,
++		{ ray.origin.x, ray.origin.y, ray.origin.z, 0.0f },
++		{ ray.direction.x, ray.direction.y, ray.direction.z, 0.0f },
++		{ invD.x, invD.y, invD.z, 0.0f },
++		{ m_descriptor.x, m_descriptor.y, m_descriptor.z, m_descriptor.w } );
+ 	float invDenom = __ocml_native_recip_f32( __int_as_float( result[1] ) );
+ 	float t		   = __int_as_float( result[0] ) * invDenom;
+ 	hasHit		   = ray.minT <= t && t <= ray.maxT;
