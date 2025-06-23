@@ -95,6 +95,8 @@ BDEPEND="
 	test? (
 		acct-group/mysql
 		acct-user/mysql
+		dev-perl/Net-SSLeay
+		virtual/perl-Getopt-Long
 	)
 "
 DEPEND="${COMMON_DEPEND}
