@@ -18,7 +18,7 @@ S=${WORKDIR}/dovi_tool-${P}/dolby_vision
 LICENSE="MIT"
 LICENSE+=" Apache-2.0 Unicode-3.0" # crates
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	dev-util/cargo-c
