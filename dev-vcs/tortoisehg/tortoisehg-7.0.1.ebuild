@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit desktop distutils-r1 optfeature xdg-utils
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64 ~arm64 x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	SRC_URI="https://foss.heptapod.net/mercurial/${PN}/thg/-/archive/${PV}/thg-${PV}.tar.gz -> ${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-6.7[${PYTHON_USEDEP}]
 		<dev-vcs/mercurial-7.1[${PYTHON_USEDEP}]"
