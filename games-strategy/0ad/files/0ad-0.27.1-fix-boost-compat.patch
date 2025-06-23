@@ -1,0 +1,41 @@
+From 4c62138ce29c19911347ac15e264f4edced85a9c Mon Sep 17 00:00:00 2001
+From: Ralph Sennhauser <ralph.sennhauser@gmail.com>
+Date: Sat, 18 Oct 2025 19:57:09 +0200
+Subject: [PATCH] Fix building against boost >=1.89
+
+In boost-1.89 boost_system is a header-only library [1].
+
+[1] https://github.com/boostorg/system/commit/7a495bb46d7ccd808e4be2a6589260839b0fd3a3
+
+Fixes: #8471
+Signed-off-by: Ralph Sennhauser <ralph.sennhauser@gmail.com>
+---
+ build/premake/extern_libs5.lua | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/build/premake/extern_libs5.lua b/build/premake/extern_libs5.lua
+index 4f51c2c0ed..dc53bc7772 100644
+--- a/build/premake/extern_libs5.lua
++++ b/build/premake/extern_libs5.lua
+@@ -235,7 +235,17 @@ extern_lib_defs = {
+ 				-- The following are not strictly link dependencies on all systems, but
+ 				-- are included for compatibility with different versions of Boost
+ 				android_names = { "boost_filesystem-gcc-mt", "boost_system-gcc-mt" },
+-				unix_names = { os.findlib("boost_filesystem-mt") and "boost_filesystem-mt" or "boost_filesystem", os.findlib("boost_system-mt") and "boost_system-mt" or "boost_system" },
++				unix_names = {
++					os.findlib("boost_filesystem-mt") and "boost_filesystem-mt" or "boost_filesystem",
++					-- boost_system is header-only in boost >=1.89
++					(function()
++						if os.findlib("boost_system-mt") then
++							return "boost_system-mt"
++						elseif os.findlib("boost_system-mt") then
++							return "boost_system"
++						end
++					end)()
++				},
+ 				osx_names = { "boost_filesystem", "boost_system" },
+ 			})
+ 		end,
+-- 
+2.51.0
+
