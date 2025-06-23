@@ -9,7 +9,7 @@ MY_P="Linux-${PN^^}-${PV}"
 # Can reconsider w/ EAPI 8 and IDEPEND, bug #810979
 TMPFILES_OPTIONAL=1
 
-inherit db-use fcaps flag-o-matic meson-multilib toolchain-funcs
+inherit db-use fcaps flag-o-matic meson-multilib
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
@@ -95,15 +95,9 @@ multilib_src_configure() {
 	w3m='true'
 	EOF
 
-	local emesonargs=()
+	local emesonargs=(
+		--native-file "${machine_file}"
 
-	if tc-is-cross-compiler; then
-		emesonargs+=( --cross-file "${machine_file}" )
-	else
-		emesonargs+=( --native-file "${machine_file}" )
-	fi
-
-	emesonargs+=(
 		$(meson_feature audit)
 		$(meson_native_use_bool examples)
 		$(meson_use debug pam-debug)
