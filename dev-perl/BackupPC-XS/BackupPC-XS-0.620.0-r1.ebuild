@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for BackupPC libraries"
 
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="dev-perl/Module-Build"
 
