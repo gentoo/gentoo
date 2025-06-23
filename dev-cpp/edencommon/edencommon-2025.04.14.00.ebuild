@@ -21,7 +21,7 @@ SRC_URI="https://github.com/facebookexperimental/edencommon/archive/refs/tags/v$
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="llvm-libunwind test"
 RESTRICT="!test? ( test )"
 
