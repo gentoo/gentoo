@@ -82,6 +82,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.3.0-no-isystem-usr-include.patch"
 	"${FILESDIR}/${PN}-6.3.0-clr-fix-libcxx.patch"
 	"${FILESDIR}/${PN}-6.4.1-no-glibcxx-assert.patch"
+	"${FILESDIR}/${PN}-6.4.1-bad-assert.patch"
 )
 
 hip_test_wrapper() {
