@@ -11,6 +11,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~x64-macos"
 PROPERTIES="live"
 
 RDEPEND="
