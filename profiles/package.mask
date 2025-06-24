@@ -39,6 +39,10 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-24)
 # Work in progress
 =dev-lang/perl-5.42*
+~virtual/perl-Archive-Tar-3.40.0
+~virtual/perl-Compress-Raw-Bzip2-2.213.0
+~virtual/perl-CPAN-2.380.0
+~virtual/perl-Data-Dumper-2.192.0
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # Last commit in 2019.  Has an entry point conflict with
