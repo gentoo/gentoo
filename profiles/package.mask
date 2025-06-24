@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-24)
+# Qt5 package without any revdeps. Removal on 2025-07-24. Bug #938823
+dev-libs/libdbusmenu-qt
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-24)
 # Work in progress
 =dev-lang/perl-5.42*
