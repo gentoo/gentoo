@@ -23,6 +23,6 @@
 	<flag name="unknown-license">Install firmware files whose license is unknown</flag>
 </use>
 <upstream>
-	<remote-id type="gitlab">kernel-firmware/linux-firmware</remote-id> 
+	<remote-id type="gitlab">kernel-firmware/linux-firmware</remote-id>
 </upstream>
 </pkgmetadata>
