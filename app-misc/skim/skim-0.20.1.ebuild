@@ -163,6 +163,8 @@ CRATES="
 	zerocopy@0.8.26
 "
 
+MIN_RUST_VER="1.85.0"
+
 inherit cargo optfeature shell-completion
 
 DESCRIPTION="Command-line fuzzy finder"
