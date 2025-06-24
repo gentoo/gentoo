@@ -1,0 +1,29 @@
+From upstream, fix lto-type-mismatch
+https://github.com/parisolab/mathmod/issues/279
+From dac6f48effe334062f91f236906211e922178f50 Mon Sep 17 00:00:00 2001
+From: Abderrahman Taha <taha_ab@yahoo.fr>
+Date: Thu, 19 Jun 2025 12:27:03 -0400
+Subject: [PATCH] =?UTF-8?q?#279=20ui=5Fmodules/comvar.h:21:12:=20warning:?=
+ =?UTF-8?q?=20type=20of=20=E2=80=98CalculFactor=E2=80=99=20does=20not=20ma?=
+ =?UTF-8?q?tch=20original=20declaration=20[-Wlto-type-mismatch]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ ui_modules/parametersoptions.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ui_modules/parametersoptions.cpp b/ui_modules/parametersoptions.cpp
+index a2d4b125..298109eb 100644
+--- a/ui_modules/parametersoptions.cpp
++++ b/ui_modules/parametersoptions.cpp
+@@ -24,7 +24,7 @@
+ #include <sstream>
+ #include <string>
+ int Threads[3]={8,1,64};
+-int CalculFactor[6]={4,4,4,8,8};
++int CalculFactor[5]={4,4,4,8,8};
+ int InitParGrid=50;
+ int InitIsoGrid=40;
+ static bool MACOS = false;
