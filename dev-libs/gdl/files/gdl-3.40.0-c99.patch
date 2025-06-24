@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/919197
+https://gitlab.gnome.org/GNOME/gdl/-/issues/9
+https://salsa.debian.org/rnpalmer-guest/gdl/-/raw/fix1074981/debian/patches/gcc-14-compat-1074981.patch?ref_type=heads
+
+From: Rebecca N. Palmer <rebecca_palmer@zoho.com>
+Date: Fri, 6 Dec 2024 20:04:45 +0000
+Subject: Allow building with gcc-14
+
+object_class and dock_object_class are the same pointer cast
+to different types, so either should work but only dock_object_class
+passes gcc-14 type checking.
+
+Closes: #1074981
+--- a/gdl/gdl-dock-bar.c
++++ b/gdl/gdl-dock-bar.c
+@@ -425,7 +425,7 @@ gdl_dock_bar_set_master (GdlDockBar    *dockbar,
+         if (GDL_IS_DOCK_OBJECT (master)) {
+             master = gdl_dock_object_get_master (GDL_DOCK_OBJECT (master));
+         }
+-        dockbar->priv->master = g_object_ref (master);
++        dockbar->priv->master = GDL_DOCK_MASTER (g_object_ref (master));
+         dockbar->priv->layout_changed_id =
+             g_signal_connect (dockbar->priv->master, "layout-changed",
+                               (GCallback) gdl_dock_bar_layout_changed_cb,
+--- a/gdl/gdl-dock-item.c
++++ b/gdl/gdl-dock-item.c
+@@ -355,7 +355,7 @@ gdl_dock_item_class_init (GdlDockItemClass *klass)
+     container_class->set_focus_child = gdl_dock_item_set_focus_child;
+     gtk_container_class_handle_border_width (container_class);
+ 
+-    gdl_dock_object_class_set_is_compound (object_class, FALSE);
++    gdl_dock_object_class_set_is_compound (dock_object_class, FALSE);
+     dock_object_class->dock_request = gdl_dock_item_dock_request;
+     dock_object_class->dock = gdl_dock_item_dock;
+     dock_object_class->present = gdl_dock_item_present;
+@@ -744,7 +744,7 @@ gdl_dock_item_set_property  (GObject      *g_object,
+         case PROP_RESIZE:
+             item->priv->resize = g_value_get_boolean (value);
+             {
+-                GObject * parent = gtk_widget_get_parent (GTK_WIDGET (item));
++                GtkWidget * parent = gtk_widget_get_parent (GTK_WIDGET (item));
+                 //if we docked update "resize" child_property of our parent
+                 if(parent)
+                 {
+--- a/gdl/gdl-dock-layout.c
++++ b/gdl/gdl-dock-layout.c
+@@ -620,7 +620,7 @@ gdl_dock_layout_set_master (GdlDockLayout *layout,
+         if (GDL_IS_DOCK_OBJECT (master)) {
+             master = gdl_dock_object_get_master (GDL_DOCK_OBJECT (master));
+         }
+-        layout->priv->master = g_object_ref (master);
++        layout->priv->master = GDL_DOCK_MASTER (g_object_ref (master));
+         layout->priv->layout_changed_id =
+             g_signal_connect (layout->priv->master, "layout-changed",
+                               (GCallback) gdl_dock_layout_layout_changed_cb,
+

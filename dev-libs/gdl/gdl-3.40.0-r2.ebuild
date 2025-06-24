@@ -1,7 +1,8 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit gnome2
 
 DESCRIPTION="GNOME docking library"
@@ -25,6 +26,10 @@ BDEPEND="
 	>=dev-util/intltool-0.40.4
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.40.0-c99.patch
+)
 
 src_configure() {
 	gnome2_src_configure \
