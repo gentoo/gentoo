@@ -1,0 +1,20 @@
+Fix this warning:
+
+ifstat.c: In function ‘main’:
+ifstat.c:550:9: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  550 |         usage(EXIT_SUCCESS);
+      |         ^~~~~~~~~~~~~~~~~~~
+ifstat.c:551:7: note: here
+  551 |       default:
+      |       ^~~~~~~
+
+--- a/ifstat.c
++++ b/ifstat.c
+@@ -548,6 +548,7 @@
+ 	break;
+       case 'h':
+ 	usage(EXIT_SUCCESS);
++	break;
+       default:
+ 	fprintf(stderr, "%s: invalid option '-%c'.\n", ifstat_progname, *opt);
+ 	usage(EXIT_FAILURE);
