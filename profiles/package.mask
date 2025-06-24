@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-24)
+# Work in progress
+=dev-lang/perl-5.42*
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # Last commit in 2019.  Has an entry point conflict with
 # dev-python/pytest-tornasync.  No reverse dependencies left.
