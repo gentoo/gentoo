@@ -7,7 +7,7 @@ GNOME_ORG_MODULE="${PN/pp/++}"
 inherit gnome2 meson
 
 DESCRIPTION="C++ wrapper for the libxml2 XML parser library"
-HOMEPAGE="http://libxmlplusplus.sourceforge.net/"
+HOMEPAGE="https://libxmlplusplus.sourceforge.net/"
 
 LICENSE="LGPL-2.1"
 SLOT="5.0"
