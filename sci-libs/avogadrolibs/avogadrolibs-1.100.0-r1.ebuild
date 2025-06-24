@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake dot-a flag-o-matic
 
 MY_PV_AVOGEN=1.98.0
 MY_PV_CRYSTALS=1.98.0
@@ -35,7 +35,7 @@ SRC_URI="
 LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="archive doc hdf5 mmtf qt6 spglib test vtk"
+IUSE="archive doc hdf5 mmtf qt6 spglib static-libs test vtk"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	test? ( qt6 )
@@ -62,6 +62,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
 	mmtf? ( dev-libs/mmtf-cpp )
+	vtk? ( dev-libs/pegtl )
 "
 BDEPEND="
 	doc? ( app-text/doxygen )
@@ -73,6 +74,10 @@ PATCHES=(
 	"${FILESDIR}/"${PN}-1.100-tests.patch
 	# https://github.com/OpenChemistry/avogadrolibs/issues/1633
 	"${FILESDIR}/"${PN}-1.100-fix-openbabel3.patch
+	# fix lto - ODR violations (except with vtk)
+	"${FILESDIR}/"${PN}-1.100-fix_odr.patch
+	# bump cmake_min. From upstream, to be removed with next version
+	"${FILESDIR}/"${PN}-1.100-cmake4.patch
 )
 
 # Static binary (requires ObjCryst++ to build otherwise)
@@ -136,15 +141,27 @@ src_configure() {
 		-DUSE_LIBMSYM=OFF
 	)
 
-	use qt6 && mycmakeargs+=(
-		-DBUILD_GPL_PLUGINS=ON
-		-DQT_VERSION=6
-	)
+	if use qt6; then
+		mycmakeargs+=(
+			-DBUILD_GPL_PLUGINS=ON
+			-DBUILD_STATIC_PLUGINS=$(usex static-libs)
+			-DQT_VERSION=6
+		)
 
-	use vtk && mycmakeargs+=(
-		-DBUNDLED_GENXRDPATTERN="${WORKDIR}/genXrdPattern"
-		-DUSE_SYSTEM_GENXRDPATTERN=OFF
-	)
+		# even w/o static-libs due to libgwavi.a, required for avogadro2
+		lto-guarantee-fat
+	fi
+
+	if use vtk; then
+		mycmakeargs+=(
+			-DBUNDLED_GENXRDPATTERN="${WORKDIR}/genXrdPattern"
+			-DUSE_SYSTEM_GENXRDPATTERN=OFF
+		)
+
+		# -Werror=odr -Werror=lto-type-mismatch
+		# https://github.com/OpenChemistry/avogadrolibs/issues/2060
+		filter-lto
+	fi
 
 	cmake_src_configure
 }
@@ -168,6 +185,9 @@ src_install() {
 	fi
 
 	cmake_src_install
+
+	# always strip due to libgwavi.a
+	use qt6 && strip-lto-bytecode "${ED}"
 
 	# remove CONTRIBUTING, LICENSE and duplicate README
 	rm -r "${ED}/usr/share/doc/${PF}/avogadrolibs" || die
