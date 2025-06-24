@@ -1,0 +1,16 @@
+./javax/xml/namespace/QName.java:55: error: package exists in another module: java.xml
+package javax.xml.namespace;
+^
+1 error
+
+--- a/javax/xml/namespace/QName.java
++++ b/javax/xml/namespace/QName.java
+@@ -52,7 +52,7 @@
+  * information on the Apache Software Foundation, please see
+  * <http://www.apache.org/>.
+  */
+-package javax.xml.namespace;
++package java.xml.namespace;
+ 
+ import java.io.IOException;
+ import java.io.ObjectInputStream;

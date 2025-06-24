@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,22 +14,18 @@ SRC_URI="https://repo1.maven.org/maven2/${PN}/${PN}/${PV}/${P}-sources.jar -> ${
 
 LICENSE="Apache-1.1 IBM JDOM LGPL-2.1+"
 SLOT="0"
-
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
-# Restriction to java 1.8
-# Otherwise jdk 11+ would fail to build javadoc:
-# ./javax/xml/namespace/QName.java:55: error: package exists in another module: java.xml
-# package javax.xml.namespace;
-# ^
-# 1 error
+DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
-DEPEND="virtual/jdk:1.8"
+
+PATCHES=( "${FILESDIR}/xpp3-1.1.4c-namespace.patch" )
 
 JAVA_RESOURCE_DIRS="resources"
 
 src_prepare() {
-	default
+	default #780585
+	java-pkg-2_src_prepare
 	mkdir "resources" || die
 	cp -r "META-INF" "resources" || die
 }
