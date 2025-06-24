@@ -10,4 +10,9 @@
 		usati per l'apprendimento automatico, elaborazione del linguaggio
 		naturale e similari
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-ml enthält Software und Modelle, die für maschinelles
+		Lernen, maschinelle Sprachverarbeitung und Ähnliches verwendet werden
+		können.
+	</longdescription>
 </catmetadata>
