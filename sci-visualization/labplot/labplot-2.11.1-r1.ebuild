@@ -79,6 +79,9 @@ BDEPEND="
 PATCHES=( "${FILESDIR}/${P}-ods-buildfix.patch" )
 
 src_prepare() {
+	# bug 958185
+	rm -r lib/example src/3rdparty/kdmactouchbar || die
+
 	ecm_src_prepare
 
 	sed -e "/^ *find_package.*QT NAMES/s/Qt5 //" \
