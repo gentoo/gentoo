@@ -26,6 +26,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3
+	vtk? ( dev-libs/pegtl )
 "
 BDEPEND="doc? ( app-text/doxygen )"
 
