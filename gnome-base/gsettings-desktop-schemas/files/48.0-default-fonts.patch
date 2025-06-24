@@ -1,0 +1,21 @@
+diff --git a/schemas/org.gnome.desktop.interface.gschema.xml.in b/schemas/org.gnome.desktop.interface.gschema.xml.in
+index f855144..8705094 100644
+--- a/schemas/org.gnome.desktop.interface.gschema.xml.in
++++ b/schemas/org.gnome.desktop.interface.gschema.xml.in
+@@ -156,14 +156,14 @@
+       </description>
+     </key>
+     <key name="document-font-name" type="s">
+-      <default>'Adwaita Sans 11'</default>
++      <default>'Sans 11'</default>
+       <summary>Document font</summary>
+       <description>
+         Name of the default font used for reading documents.
+       </description>
+     </key>
+     <key name="monospace-font-name" type="s">
+-      <default>'Adwaita Mono 11'</default>
++      <default>'Monospace 11'</default>
+       <summary>Monospace font</summary>
+       <description>
+         Name of a monospaced (fixed-width) font for use in locations like
