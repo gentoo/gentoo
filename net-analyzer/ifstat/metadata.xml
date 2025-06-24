@@ -5,4 +5,13 @@
 		<email>netmon@gentoo.org</email>
 		<name>Gentoo network monitoring and analysis project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">matttbe/ifstat</remote-id>
+	</upstream>
+	<longdescription>
+	ifstat(1) is a little tool to report interface activity like vmstat/iostat do.
+	In addition, ifstat can poll remote hosts through SNMP if you have the ucd-snmp
+	library. It will also be used for localhost if no other known method works (You
+	need to have snmpd running for this though).
+	</longdescription>
 </pkgmetadata>
