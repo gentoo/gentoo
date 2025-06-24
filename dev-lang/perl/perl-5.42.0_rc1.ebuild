@@ -86,21 +86,21 @@ PDEPEND="
 # virtual/perl-Test-Harness is here for the bundled ExtUtils::MakeMaker
 
 dual_scripts() {
-	src_remove_dual      perl-core/Archive-Tar        3.20.10_rc    ptar ptardiff ptargrep
-	src_remove_dual      perl-core/CPAN               2.360.0       cpan
+	src_remove_dual      perl-core/Archive-Tar        3.40.0        ptar ptardiff ptargrep
+	src_remove_dual      perl-core/CPAN               2.380.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         6.40.0        shasum
 	src_remove_dual      perl-core/Encode             3.210.0       enc2xs piconv
-	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.700.0       instmodsh
-	src_remove_dual      perl-core/ExtUtils-ParseXS   3.510.0       xsubpp
-	src_remove_dual      perl-core/IO-Compress        2.212.0       zipdetails
+	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.760.0       instmodsh
+	src_remove_dual      perl-core/ExtUtils-ParseXS   3.570.0       xsubpp
+	src_remove_dual      perl-core/IO-Compress        2.213.0       zipdetails
 	src_remove_dual      perl-core/JSON-PP            4.160.0       json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.202.504.134_rc  corelist
+	src_remove_dual      perl-core/Module-CoreList    5.202.506.240 corelist
 	src_remove_dual      perl-core/Pod-Checker        1.770.0       podchecker
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
-	src_remove_dual      perl-core/Pod-Usage          2.30.0        pod2usage
-	src_remove_dual      perl-core/Test-Harness       3.480.0       prove
-	src_remove_dual      perl-core/podlators          5.10.200_rc   pod2man pod2text
-	src_remove_dual_man  perl-core/podlators          5.10.200_rc   /usr/share/man/man1/perlpodstyle.1
+	src_remove_dual      perl-core/Pod-Usage          2.50.0        pod2usage
+	src_remove_dual      perl-core/Test-Harness       3.500.0       prove
+	src_remove_dual      perl-core/podlators          6.0.2         pod2man pod2text
+	src_remove_dual_man  perl-core/podlators          6.0.2         /usr/share/man/man1/perlpodstyle.1
 }
 
 check_rebuild() {
