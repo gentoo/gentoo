@@ -124,6 +124,10 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-wayland-clipboard-cpu.patch
+)
+
 pkg_pretend() {
 	if has_version "${CATEGORY}/${PN}[X,opengl]" && use !egl; then #953107
 		ewarn "${PN}'s 'opengl' USE was removed in favour of the 'egl' USE as it was"
