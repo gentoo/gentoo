@@ -9,8 +9,8 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-screenshot"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="X"
 KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="X"
 
 DEPEND="
 	X? (
