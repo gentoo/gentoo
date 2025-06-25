@@ -54,7 +54,7 @@ dev-python/caldav
 dev-libs/libdbusmenu-qt
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-24)
-# Work in progress
+# Perl 5.42 mask/unmask block, complete as of 5.42.0_rc1
 =dev-lang/perl-5.42*
 ~virtual/perl-Archive-Tar-3.40.0
 ~virtual/perl-Compress-Raw-Bzip2-2.213.0
