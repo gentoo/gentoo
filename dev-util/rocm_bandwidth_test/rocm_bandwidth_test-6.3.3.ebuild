@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/ROCm/rocm_bandwidth_test"
 SRC_URI="https://github.com/ROCm/${PN}/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
 
 S="${WORKDIR}/${PN}-rocm-${PV}"
-LICENSE="NCSA-AMD"
+LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
