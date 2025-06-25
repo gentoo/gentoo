@@ -1,0 +1,18 @@
+Make alsa optional
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ca53957..7305e85 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -165,11 +165,7 @@ if(NOT Boost_FOUND)
+ endif()
+ find_package(ICU COMPONENTS uc i18n REQUIRED)
+ if(UNIX AND NOT APPLE)
+-  if(LINUX)
+-    find_package(ALSA REQUIRED)
+-  else()
+-    find_package(ALSA)
+-  endif()
++  find_package(ALSA)
+   find_package(X11 COMPONENTS X11_xcb)
+ endif()
+ pkg_check_modules(GLIB REQUIRED IMPORTED_TARGET glib-2.0)
