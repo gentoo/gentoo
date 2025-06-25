@@ -116,8 +116,8 @@ pkg_postinst() {
 	einfo "If you do allow dropbox to update/install to your user homedir, you"
 	einfo " will need to create some compat symlinks to keep the tray icon working:"
 	einfo ""
-	einfo "ln -sf /usr/$(get_libdir)/libayatana-appindicator3.so.1 ~/.dropbox-dist/libappindicator3.so.1"
-	einfo "ln -sf libappindicator3.so.1 ~/.dropbox-dist/libappindicator3.so"
+	einfo "ln -sf /usr/$(get_libdir)/libayatana-appindicator3.so.1 ~/.dropbox-dist/dropbox-lnx.*/libappindicator3.so.1"
+	einfo "ln -sf libappindicator3.so.1 ~/.dropbox-dist/dropbox-lnx.*/libappindicator3.so"
 
 	if has_version gnome-base/gnome-shell; then
 		if ! has_version gnome-extra/gnome-shell-extension-appindicator; then
