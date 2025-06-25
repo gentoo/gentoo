@@ -27,6 +27,7 @@ PATCHES=(
 	# bug #351287
 	"${FILESDIR}"/${PN}-1.4.14-fix-build-system.patch
 	"${FILESDIR}"/${PN}-1.4.14-musl.patch
+	"${FILESDIR}"/${PN}-1.4.14-lto.patch
 )
 
 src_prepare() {
