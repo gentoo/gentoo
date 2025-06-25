@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2025-06-25)
+# Skype has been shut down on 2025-05-05, use the Teams progressive web
+# application with your Skype username as alternative.
+# Removal on 2025-07-25.  Bug #942322.
+net-im/skypeforlinux
+sec-policy/selinux-skype
+x11-plugins/pidgin-skypeweb
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-25)
 # New problematic test dependencies.  No reverse dependencies.
 # Removal on 2025-07-25.  Bug #958987.
