@@ -51,13 +51,7 @@ BDEPEND="
 			dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 			dev-python/cheroot[${PYTHON_USEDEP}]
 			dev-python/flask[${PYTHON_USEDEP}]
-			dev-python/hypothesis[${PYTHON_USEDEP}]
 			dev-python/pillow[${PYTHON_USEDEP}]
-			dev-python/pytest-bdd[${PYTHON_USEDEP}]
-			dev-python/pytest-mock[${PYTHON_USEDEP}]
-			dev-python/pytest-qt[${PYTHON_USEDEP}]
-			dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-			dev-python/pytest-xvfb[${PYTHON_USEDEP}]
 			dev-python/tldextract[${PYTHON_USEDEP}]
 		)
 	')
@@ -69,6 +63,7 @@ else
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-qutebrowser )"
 fi
 
+EPYTEST_PLUGINS=( hypothesis pytest-{bdd,mock,qt,rerunfailures,xvfb} )
 distutils_enable_tests pytest
 
 src_prepare() {
