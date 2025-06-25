@@ -1288,9 +1288,9 @@ _python_check_occluded_packages() {
 # Defaults to an empty list.
 #
 # The eclasses explicitly handle a number of pytest plugins, and assume
-# the default of "dev-python/${package}" and "-p ${package}" for others.
-# If this is incorrect for some plugin package, please report a bug
-# to have it added.
+# the default of "dev-python/${package}" and obtain "-p" via entry
+# points.  If this is incorrect for some plugin package, please report
+# a bug.
 #
 # This is not a perfect solution, and may not be sufficient for some
 # packages.  In these cases, either plugin autoloading should be used
@@ -1441,57 +1441,22 @@ epytest() {
 	fi
 
 	if [[ ${PYTEST_DISABLE_PLUGIN_AUTOLOAD} ]]; then
-		local plugin
-		for plugin in "${EPYTEST_PLUGINS[@]}"; do
-			case ${plugin} in
-				# special cases
-				hypothesis)
-					plugin=hypothesispytest
-					;;
-				noseofyeti)
-					plugin=nose_of_yeti
-					;;
-				pytest-helpers-namespace)
-					plugin=helpers_namespace
-					;;
-				pytest-lazy-fixtures)
-					plugin=pytest_lazyfixture
-					;;
-				pytest-testinfra)
-					plugin=pytest11.testinfra
-					;;
-				# "generic" cases
-				betamax)
-					plugin=pytest-${plugin}
-					;;
-				pyfakefs)
-					plugin=pytest_${plugin}
-					;;
-				# pytest-x-y-z -> x-y-z
-				pytest-aiohttp         | pytest-asyncio  | pytest-check     | \
-				pytest-console-scripts | pytest-django   | pytest-env       | \
-				pytest-freezer         | pytest-home     | pytest-httpbin   | \
-				pytest-import-check    | pytest-localftpserver              | \
-				pytest-localserver     | pytest-plus     | pytest-recording | \
-				pytest-regressions     | pytest-repeat   | pytest-reraise   | \
-				pytest-rerunfailures   | pytest-reserial                    | \
-				pytest-shell-utilities | pytest-skip-markers                | \
-				pytest-subtests        | pytest-timeout  | pytest-tornasync | \
-				pytest-trio            | pytext-xdist    | pytest-xprocess  | \
-				pytest-xvfb                                                 )
-					plugin=${plugin#pytest-}
-					;;
-				# foo-bar-baz unchanged
-				pytest-datadir         | pytest-qt       | pytest-subprocess)
-					;;
-				# foo-bar-baz -> foo_bar_baz
-				*)
-					plugin=${plugin//-/_}
-					;;
-			esac
-
-			args+=( -p "${plugin}" )
-		done
+		if [[ ${EPYTEST_PLUGINS[@]} ]]; then
+			local plugin_args=()
+			readarray -t -d '' plugin_args < <(
+				"${EPYTHON}" - "${EPYTEST_PLUGINS[@]}" <<-EOF || die
+					import sys
+					from importlib.metadata import distribution, entry_points
+					packages = {distribution(x).name for x in sys.argv[1:]}
+					eps = {
+						f"-p{x.name}" for x in entry_points(group="pytest11")
+						if x.dist.name in packages
+					}
+					sys.stdout.write("\\0".join(sorted(eps)))
+				EOF
+			)
+			args+=( "${plugin_args[@]}" )
+		fi
 	else
 		args+=(
 			# disable the undesirable-dependency plugins by default to
