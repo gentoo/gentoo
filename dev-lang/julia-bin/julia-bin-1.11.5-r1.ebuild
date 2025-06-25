@@ -85,6 +85,9 @@ src_install() {
 		doexe ./julia-*/bin/julia
 		dosym "../$(get_libdir)/${MY_P}/bin/julia" "/usr/bin/julia${PV}"
 	else
+		einfo "Removing bundled libstdc++"
+		rm -v ./lib/julia/libstdc++*
+
 		doins -r ./etc
 		doins -r ./include
 		doins -r ./lib
