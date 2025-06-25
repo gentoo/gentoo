@@ -63,8 +63,8 @@ COMMON_DEPEND="
 		columnstore? (
 			app-arch/snappy:=
 			dev-libs/boost:=
-			dev-libs/thrift:=
 			dev-libs/libxml2:2=
+			dev-libs/thrift:=
 		)
 		cracklib? ( sys-libs/cracklib:0= )
 		extraengine? (
