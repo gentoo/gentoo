@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 GNOME2_EAUTORECONF="yes"
 
@@ -19,7 +19,7 @@ S="${WORKDIR}/${P/_p*}"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86 ~x86-linux"
 IUSE="+introspection"
 
 RDEPEND="
