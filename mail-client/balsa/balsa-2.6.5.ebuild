@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/balsa/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="gnome +keyring kerberos ldap nls sqlite systray webdav webkit xface"
 
