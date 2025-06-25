@@ -16,7 +16,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="CC-BY-SA-3.0 CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 BDEPEND="app-arch/xz-utils"
 
