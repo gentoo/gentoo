@@ -62,6 +62,11 @@ dev-libs/libdbusmenu-qt
 ~virtual/perl-HTTP-Tiny-0.90.0
 ~virtual/perl-IO-Compress-2.213.0
 ~virtual/perl-IO-Socket-IP-0.430.0
+~virtual/perl-Math-BigInt-2.5.2
+~virtual/perl-Math-BigInt-FastCalc-0.502.0
+~virtual/perl-Math-BigRat-2.5.2
+~virtual/perl-Math-Complex-1.630.0
+~virtual/perl-Module-CoreList-5.202.506.240
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # Last commit in 2019.  Has an entry point conflict with
