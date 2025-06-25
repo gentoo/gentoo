@@ -39,6 +39,7 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
 	dev-libs/libfmt:=
+	dev-libs/lzo:2
 	>=dev-libs/libpcre2-10.34:=
 	>=sys-apps/texinfo-4.7-r1
 	sys-libs/ncurses:0=
