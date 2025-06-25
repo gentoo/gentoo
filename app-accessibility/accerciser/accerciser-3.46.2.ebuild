@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/accerciser"
 
 LICENSE="BSD CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
