@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,10 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-debian-${MY_PX}"
 
-PATCHES=( "${S}"/debian/patches/ )
+PATCHES=(
+	"${S}"/debian/patches/
+	"${FILESDIR}"/cmake-min-ver-3.10.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
