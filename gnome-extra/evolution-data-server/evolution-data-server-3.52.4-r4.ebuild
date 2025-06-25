@@ -42,6 +42,7 @@ RDEPEND="
 	gtk? (
 		>=x11-libs/gtk+-3.20:3
 		>=gui-libs/gtk-4.4:4
+		<gui-libs/gtk-4.18:4
 		sound? (
 			|| (
 				media-libs/libcanberra-gtk3
