@@ -49,7 +49,7 @@ BDEPEND="
 		dev-texlive/texlive-fontsrecommended
 		virtual/latex-base
 	)
-	verify-sig? ( sec-keys/openpgp-keys-netfilter )
+	verify-sig? ( >=sec-keys/openpgp-keys-netfilter-20240415 )
 "
 
 DISABLE_AUTOFORMATTING=1
