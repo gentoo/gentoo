@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="1"
-KEYWORDS="~amd64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gtk-doc sysprof vala"
 
 RDEPEND="
