@@ -36,6 +36,7 @@ media-libs/gd fontconfig
 
 # Required by kde-apps/kdenlive
 media-libs/mlt ffmpeg frei0r rubberband
+media-libs/opencv features2d
 
 # Required by media-gfx/digikam
 media-libs/opencv contrib contribdnn
