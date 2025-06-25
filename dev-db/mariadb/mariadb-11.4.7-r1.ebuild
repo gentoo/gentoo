@@ -333,6 +333,7 @@ src_configure() {
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 		-DWITH_LIBEDIT=0
 		-DWITH_LIBFMT=system
+		-DWITH_THRIFT=system # for columnstore
 		-DWITH_ZLIB=system
 		-DWITHOUT_LIBWRAP=1
 		-DENABLED_LOCAL_INFILE=1
