@@ -1,0 +1,6 @@
+# /etc/conf.d/fluent-bit
+
+# NOTE:  There are multiple configuration methods, whilst the default is .conf, it does look like .yaml works better:
+
+#FLUENT_CONF=/etc/fluent-bit/fluent-bit.conf
+#FLUENT_CONF=/etc/fluent-bit/fluent-bit.yaml

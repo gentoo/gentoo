@@ -1,0 +1,25 @@
+From 05a7004479c4d21ef20949c5e17379d29b1929a1 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Wed, 25 Jun 2025 17:28:09 +0200
+Subject: [PATCH] Avoid executable stack as a result of wasm assembler.
+
+Closes: #10513
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ .../core/iwasm/common/arch/invokeNative_em64.s                 | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/wasm-micro-runtime-WAMR-1.3.3/core/iwasm/common/arch/invokeNative_em64.s b/lib/wasm-micro-runtime-WAMR-1.3.3/core/iwasm/common/arch/invokeNative_em64.s
+index 739e84e4c..fa34c2eee 100644
+--- a/lib/wasm-micro-runtime-WAMR-1.3.3/core/iwasm/common/arch/invokeNative_em64.s
++++ b/lib/wasm-micro-runtime-WAMR-1.3.3/core/iwasm/common/arch/invokeNative_em64.s
+@@ -62,3 +62,6 @@ push_args_end:
+     leave
+     ret
+ 
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
+-- 
+2.49.0
+
