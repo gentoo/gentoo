@@ -10,16 +10,3 @@ inherit perl-module
 DESCRIPTION="Powerful and flexible message logging mechanism"
 SLOT="0"
 KEYWORDS="amd64 x86"
-
-RDEPEND="
-	virtual/perl-File-Spec
-	virtual/perl-Module-Load
-	virtual/perl-Params-Check
-	virtual/perl-if
-"
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	test? (
-		virtual/perl-Test-Simple
-	)
-"
