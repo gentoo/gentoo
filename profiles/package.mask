@@ -47,6 +47,12 @@ dev-libs/libdbusmenu-qt
 ~virtual/perl-Compress-Raw-Bzip2-2.213.0
 ~virtual/perl-CPAN-2.380.0
 ~virtual/perl-Data-Dumper-2.192.0
+~virtual/perl-Devel-PPPort-3.730.0
+~virtual/perl-Digest-MD5-2.590.0
+~virtual/perl-Exporter-5.790.0
+~virtual/perl-ExtUtils-CBuilder-0.280.241
+~virtual/perl-ExtUtils-MakeMaker-7.760.0
+~virtual/perl-ExtUtils-ParseXS-3.570.0
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # Last commit in 2019.  Has an entry point conflict with
