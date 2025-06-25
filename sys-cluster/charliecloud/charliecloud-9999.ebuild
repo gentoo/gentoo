@@ -21,7 +21,7 @@ HOMEPAGE="https://hpc.github.io/charliecloud/"
 LICENSE="Apache-2.0"
 
 SLOT="0"
-IUSE="ch-image doc +fuse"
+IUSE="ch-image doc +fuse +json"
 
 # Extensive test suite exists, but downloads container images
 # directly and via Docker and installs packages inside using apt/yum.
@@ -45,6 +45,9 @@ COMMON_DEPEND="
 	fuse? (
 		sys-fs/fuse:3=
 		sys-fs/squashfuse
+	)
+	json? (
+		dev-libs/cJSON
 	)
 "
 RDEPEND="
@@ -76,8 +79,11 @@ src_configure() {
 	local econf_args=(
 		$(use_enable doc html)
 		$(use_enable ch-image)
+		$(use_with json)
 		# activates linking against both fuse and squashfuse
-		$(use_with fuse libsquashfuse)
+		$(use_with fuse squashfuse)
+		# https://github.com/ivmai/bdwgc not packaged
+		--without-gc
 		# Libdir is used as a libexec-style destination.
 		--libdir="${EPREFIX}"/usr/lib
 		# Attempts to call python-exec directly otherwise.
