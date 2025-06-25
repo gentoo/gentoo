@@ -1447,12 +1447,12 @@ epytest() {
 				"${EPYTHON}" - "${EPYTEST_PLUGINS[@]}" <<-EOF || die
 					import sys
 					from importlib.metadata import distribution, entry_points
-					packages = [distribution(x).name for x in sys.argv[1:]]
-					eps = [
+					packages = {distribution(x).name for x in sys.argv[1:]}
+					eps = {
 						f"-p{x.name}" for x in entry_points(group="pytest11")
 						if x.dist.name in packages
-					]
-					sys.stdout.write("\\0".join(eps))
+					}
+					sys.stdout.write("\\0".join(sorted(eps)))
 				EOF
 			)
 			args+=( "${plugin_args[@]}" )
