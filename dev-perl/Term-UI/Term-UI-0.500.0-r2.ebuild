@@ -13,13 +13,6 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-perl/Log-Message-Simple
-	virtual/perl-Params-Check
-	virtual/perl-Term-ReadLine
-	virtual/perl-if
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	test? (
-		>=virtual/perl-Test-Simple-0.310.0
-	)
 "
