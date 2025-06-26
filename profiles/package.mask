@@ -35,6 +35,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Jay Faulkner <jayf@gentoo.org> (2025-06-26)
+# Discontinued by upstream in Sept 2023, running on a likely vulnerable
+# electron version. Bug #959128.
+net-irc/irccloud-desktop-bin
 
 # Ulrich Müller <ulm@gentoo.org> (2025-06-26)
 # start-stop-daemon: failed to start `/usr/sbin/postsrsd'
