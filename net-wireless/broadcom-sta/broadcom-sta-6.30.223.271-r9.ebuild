@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/017-handle-new-header-name-6.12.patch"
 	"${FILESDIR}/018-broadcom-wl-fix-linux-6.13.patch"
 	"${FILESDIR}/019-broadcom-wl-fix-linux-6.14.patch"
+	"${FILESDIR}/020-broadcom-wl-fix-linux-6.15.patch"
 )
 
 pkg_pretend() {
