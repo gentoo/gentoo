@@ -39,7 +39,7 @@
 # Ulrich Müller <ulm@gentoo.org> (2025-06-26)
 # start-stop-daemon: failed to start `/usr/sbin/postsrsd'
 # Needs a fixed init.d file and further testing. Bug #959104.
->=mail-filter/postsrsd-2
+=mail-filter/postsrsd-2.0.11
 
 # David Seifert <soap@gentoo.org> (2025-06-25)
 # Skype has been shut down on 2025-05-05, use the Teams progressive web
