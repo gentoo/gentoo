@@ -49,12 +49,10 @@ BDEPEND="
 		dev-python/cachelib[${PYTHON_USEDEP}]
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/tomlkit[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-forked[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{asyncio,forked,mock} )
 distutils_enable_tests pytest
 
 PATCHES=(
@@ -69,8 +67,7 @@ python_test() {
 		"tests/test_inputs.py::test_binary_compatibility[mapmessage]"
 	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# --forked to workaround protobuf segfaults
 	# https://github.com/protocolbuffers/protobuf/issues/22067
-	epytest -p asyncio -p pytest_mock -p pytest_forked --forked
+	epytest --forked
 }
