@@ -565,44 +565,43 @@ src_test() {
 
 	cp "${S}"/mysql-test/unstable-tests "${T}/disabled.def" || die
 
-	local -a disabled_tests
-	disabled_tests+=( "compat/oracle.plugin;0;Needs example plugin which Gentoo disables" )
-	disabled_tests+=( "innodb_gis.1;25095;Known rounding error with latest AMD processors" )
-	disabled_tests+=( "innodb_gis.gis;25095;Known rounding error with latest AMD processors" )
-	disabled_tests+=( "main.gis;25095;Known rounding error with latest AMD processors" )
-	disabled_tests+=( "main.explain_non_select;0;Sporadically failing test" )
-	disabled_tests+=( "main.func_time;0;Dependent on time test was written" )
-	disabled_tests+=( "main.mysql_upgrade;27044;Sporadically failing test" )
-	disabled_tests+=( "main.plugin_auth;0;Needs client libraries built" )
-	disabled_tests+=( "main.selectivity_no_engine;26320;Sporadically failing test" )
-	disabled_tests+=( "main.stat_tables;0;Sporadically failing test" )
-	disabled_tests+=( "main.stat_tables_innodb;0;Sporadically failing test" )
-	disabled_tests+=( "main.upgrade_MDEV-19650;25096;Known to be broken" )
-	disabled_tests+=( "mariabackup.*;0;Broken test suite" )
-	disabled_tests+=( "perfschema.nesting;23458;Known to be broken" )
-	disabled_tests+=( "perfschema.prepared_statements;0;Broken test suite" )
-	disabled_tests+=( "perfschema.privilege_table_io;27045;Sporadically failing test" )
-	disabled_tests+=( "plugins.cracklib_password_check;0;False positive due to varying policies" )
-	disabled_tests+=( "plugins.two_password_validations;0;False positive due to varying policies" )
-	disabled_tests+=( "roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test" )
-	disabled_tests+=( "spider.*;0;Fails with network sandbox" )
-	disabled_tests+=( "sys_vars.wsrep_on_without_provider;25625;Known to be broken" )
-	disabled_tests+=( "sysschema.v_privileges_by_table_by_level;0;Fails with network sandbox, see MDEV-36030")
+	local disabled_tests+=(
+		"compat/oracle.plugin;0;Needs example plugin which Gentoo disables"
+		"innodb_gis.1;25095;Known rounding error with latest AMD processors"
+		"innodb_gis.gis;25095;Known rounding error with latest AMD processors"
+		"main.gis;25095;Known rounding error with latest AMD processors"
+		"main.explain_non_select;0;Sporadically failing test"
+		"main.func_time;0;Dependent on time test was written"
+		"main.mysql_upgrade;27044;Sporadically failing test"
+		"main.plugin_auth;0;Needs client libraries built"
+		"main.selectivity_no_engine;26320;Sporadically failing test"
+		"main.stat_tables;0;Sporadically failing test"
+		"main.stat_tables_innodb;0;Sporadically failing test"
+		"main.upgrade_MDEV-19650;25096;Known to be broken"
+		"mariabackup.*;0;Broken test suite"
+		"perfschema.nesting;23458;Known to be broken"
+		"perfschema.prepared_statements;0;Broken test suite"
+		"perfschema.privilege_table_io;27045;Sporadically failing test"
+		"plugins.cracklib_password_check;0;False positive due to varying policies"
+		"plugins.two_password_validations;0;False positive due to varying policies"
+		"roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test"
+		"spider.*;0;Fails with network sandbox"
+		"sys_vars.wsrep_on_without_provider;25625;Known to be broken"
+		"sysschema.v_privileges_by_table_by_level;0;Fails with network sandbox, see MDEV-36030"
 
-	# 11.8.2 specific issues
-	disabled_tests+=(
+		# 11.8.2 specific issues
 		"main.mysqld--help-aria;0;broken test regex, see MDEV-36668"
 		"main.mariadb-import;0;fails in network-sandbox, see MDEV-37087"
 		"main.information_schema_db;0;fails in network-sandbox, see MDEV-37088"
 	)
 
-	if ! use latin1 ; then
-		disabled_tests+=( "funcs_1.is_columns_mysql;0;Requires USE=latin1" )
-		disabled_tests+=( "main.information_schema;0;Requires USE=latin1" )
-		disabled_tests+=( "main.sp2;24177;Requires USE=latin1" )
-		disabled_tests+=( "main.system_mysql_db;0;Requires USE=latin1" )
-		disabled_tests+=( "main.upgrade_MDEV-19650;24178;Requires USE=latin1" )
-	fi
+	use latin1 || disabled_tests+=(
+		"funcs_1.is_columns_mysql;0;Requires USE=latin1"
+		"main.information_schema;0;Requires USE=latin1"
+		"main.sp2;24177;Requires USE=latin1"
+		"main.system_mysql_db;0;Requires USE=latin1"
+		"main.upgrade_MDEV-19650;24178;Requires USE=latin1"
+	)
 
 	local test_infos_str test_infos_arr
 	for test_infos_str in "${disabled_tests[@]}" ; do
