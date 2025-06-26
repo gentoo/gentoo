@@ -25,7 +25,7 @@ DEPEND="
 CHROOT_DIR="${EPREFIX}/var/lib/postsrsd"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.11-docdir.patch
+	"${FILESDIR}"/${PN}-2.0.11-sysconfdir.patch
 )
 DOCS=( README.rst CHANGELOG.rst )
 
@@ -58,9 +58,6 @@ src_install() {
 	newinitd "${FILESDIR}"/postsrsd-2.0.11.initd postsrsd
 	newconfd "${FILESDIR}"/postsrsd-2.0.11.confd postsrsd
 	keepdir "${CHROOT_DIR}"
-
-	# Move the example config file to /etc
-	mv "${ED}/usr/share/doc/${PF}/${PN}.conf" "${ED}/etc/" || die
 
 	local DOC_CONTENTS="When updating from version 1.x:
 		\n\nNote that most configuration options can no longer be set from the
