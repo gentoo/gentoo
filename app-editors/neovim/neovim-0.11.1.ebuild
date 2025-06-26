@@ -94,6 +94,8 @@ src_configure() {
 		-DENABLE_LTO=OFF
 		-DPREFER_LUA=$(usex lua_single_target_luajit no "$(lua_get_version)")
 		-DLUA_PRG="${LUA}"
+		# bug 906019: fix hardcoded usage of ccache
+		-DCACHE_PRG=OFF
 	)
 	cmake_src_configure
 }
