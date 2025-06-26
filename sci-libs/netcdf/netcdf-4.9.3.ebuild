@@ -56,28 +56,28 @@ src_configure() {
 		-DCMAKE_POLICY_DEFAULT_CMP0153="OLD" # exec_program
 
 		-DNETCDF_ENABLE_DAP_REMOTE_TESTS=OFF
-		#-DENABLE_HDF4_FILE_TESTS=OFF
-		-DENABLE_LIBXML2=ON
+		#-DNETCDF_ENABLE_HDF4_FILE_TESTS=OFF
+		-DNETCDF_ENABLE_LIBXML2=ON
 
 		-DBUILD_SHARED_LIBS="yes"
 		-DBUILD_TESTING="$(usex test)"
-		-DBUILD_UTILITIES="yes"
+		-DNETCDF_BUILD_UTILITIES="yes"
 
-		-DENABLE_DAP="$(usex dap)"
-		-DENABLE_DAP2="$(usex dap)"
-		-DENABLE_DAP4="$(usex dap)"
+		-DNETCDF_ENABLE_DAP="$(usex dap)"
+		-DNETCDF_ENABLE_DAP2="$(usex dap)"
+		-DNETCDF_ENABLE_DAP4="$(usex dap)"
 
-		-DENABLE_DOXYGEN="$(usex doc)"
-		-DENABLE_EXAMPLES="$(usex examples)"
-		-DENABLE_HDF4="$(usex hdf)"
-		-DENABLE_NETCDF_4="$(usex hdf5)"
-		-DENABLE_TESTS="$(usex test)"
+		-DNETCDF_ENABLE_DOXYGEN="$(usex doc)"
+		-DNETCDF_ENABLE_EXAMPLES="$(usex examples)"
+		-DNETCDF_ENABLE_HDF4="$(usex hdf)"
+		-DNETCDF_ENABLE_NETCDF_4="$(usex hdf5)"
+		-DNETCDF_ENABLE_TESTS="$(usex test)"
 
-		-DENABLE_NCZARR="yes"
+		-DNETCDF_ENABLE_NCZARR="yes"
 		# NOTE set these via MYCMAKEARGS if need be
-		# -DENABLE_NCZARR_FILTERS="yes"
-		# -DENABLE_NCZARR_FILTER_TESTING="yes"
-		# -DENABLE_NCZARR_ZIP="yes"
+		# -DNETCDF_ENABLE_NCZARR_FILTERS="yes"
+		# -DNETCDF_ENABLE_NCZARR_FILTER_TESTING="yes"
+		# -DNETCDF_ENABLE_NCZARR_ZIP="yes"
 
 		-DCMAKE_DISABLE_FIND_PACKAGE_Blosc="$(usex !blosc)"
 		-DCMAKE_DISABLE_FIND_PACKAGE_Bz2="$(usex !bzip2)"
