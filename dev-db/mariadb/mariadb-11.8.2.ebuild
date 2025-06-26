@@ -569,25 +569,30 @@ src_test() {
 		"innodb_gis.1;MDEV-25095;Known rounding error with latest AMD processors"
 		"innodb_gis.gis;MDEV-25095;Known rounding error with latest AMD processors"
 		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
-		"main.explain_non_select;0;Sporadically failing test"
-		"main.mysql_upgrade;27044;Sporadically failing test"
-		"main.selectivity_no_engine;26320;Sporadically failing test"
-		"main.stat_tables;0;Sporadically failing test"
-		"main.stat_tables_innodb;0;Sporadically failing test"
-		"main.upgrade_MDEV-19650;25096;Known to be broken"
+
+		# Test which fail in network-sandbox because hostname is set to "localhost"
+		"main.explain_non_select;0;Fails in network-sandbox"
+		"main.information_schema_db;MDEV-37088;Fails in network-sandbox"
+		"main.mariadb-import;MDEV-37087;Fails in network-sandbox"
+		"main.mysql_upgrade;MDEV-27044;Fails in network-sandbox"
+		"main.selectivity_no_engine;MDEV-26320;Fails in network-sandbox"
+		"main.stat_tables;0;Fails in network-sandbox"
+		"main.stat_tables_innodb;0;Fails in network-sandbox"
+		"main.upgrade_MDEV-19650;MDEV-25096;Fails in network-sandbox"
+		"perfschema.privilege_table_io;MDEV-27045;Fails in network-sandbox"
+		"roles.acl_statistics;0;Fails in network-sandbox"
+		"sysschema.v_privileges_by_table_by_level;MDEV-36030;Fails in network-sandbox"
+
+		# Some tests are unable to retrieve HW address
+		"spider.*;MDEV-37098;Fails with network sandbox"
+
 		"perfschema.nesting;23458;Known to be broken"
 		"perfschema.prepared_statements;0;Broken test suite"
-		"perfschema.privilege_table_io;27045;Sporadically failing test"
 		"plugins.cracklib_password_check;0;False positive due to varying policies"
 		"plugins.two_password_validations;0;False positive due to varying policies"
-		"roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test"
-		"spider.*;0;Fails with network sandbox"
-		"sysschema.v_privileges_by_table_by_level;0;Fails with network sandbox, see MDEV-36030"
 
 		# 11.8.2 specific issues
 		"main.mysqld--help-aria;0;broken test regex, see MDEV-36668"
-		"main.mariadb-import;0;fails in network-sandbox, see MDEV-37087"
-		"main.information_schema_db;0;fails in network-sandbox, see MDEV-37088"
 	)
 
 	use latin1 || disabled_tests+=(
