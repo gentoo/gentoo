@@ -46,7 +46,7 @@ PATCHES=(
 
 src_prepare() {
 	# Remove custom find module to use system one
-	rm -fr cmake/Modules/FindMbedTLS.cmake
+	rm cmake/Modules/FindMbedTLS.cmake || die
 
 	cmake_src_prepare
 
@@ -96,7 +96,7 @@ multilib_src_configure() {
 		-DWITH_GCRYPT=OFF
 		-DWITH_GSSAPI=$(usex gssapi)
 		-DWITH_MBEDTLS=$(usex mbedtls)
-		-DMBEDTLS_FOUND=$(usex mbedtls)	# Enforce variable from custom find module
+		-DMBEDTLS_FOUND=$(usex mbedtls) # Enforce variable from custom find module
 		-DWITH_PCAP=$(usex pcap)
 		-DWITH_SERVER=$(usex server)
 		-DWITH_SFTP=$(usex sftp)

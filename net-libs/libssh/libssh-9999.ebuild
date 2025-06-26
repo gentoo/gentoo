@@ -41,7 +41,7 @@ DOCS=( AUTHORS CHANGELOG README )
 
 src_prepare() {
 	# Remove custom find module to use system one
-	rm -fr cmake/Modules/FindMbedTLS.cmake
+	rm cmake/Modules/FindMbedTLS.cmake || die
 
 	cmake_src_prepare
 
