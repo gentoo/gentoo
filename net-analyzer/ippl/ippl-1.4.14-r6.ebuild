@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit toolchain-funcs autotools
 
 DESCRIPTION="A daemon which logs TCP/UDP/ICMP packets"
 HOMEPAGE="http://pltplp.net/ippl/"
@@ -27,6 +27,12 @@ PATCHES=(
 	# bug #351287
 	"${FILESDIR}"/${PN}-1.4.14-fix-build-system.patch
 )
+
+src_prepare() {
+	default
+	mv configure.in configure.ac
+	eautoreconf
+}
 
 src_configure() {
 	tc-export CC
