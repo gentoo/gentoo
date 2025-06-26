@@ -12,11 +12,12 @@ Bug: https://bugs.gentoo.org/249140
  # This is a general Unix-like Makefile: Makefiles for other OS's can be found
  #   in the "build" directory.
 -CC = gcc           # which compiler to use: eg cc, acc, gcc. NB Different
-+# CC is set in the environment.
++#CC is set in the environment
  #                    compilers need different CFLAGS, e.g., -O instead of -O2.
- MAKE = make        # which "make" to use
+-MAKE = make        # which "make" to use
 -CFLAGS = -O2    # options, e.g. for optimisation or ANSI compilation.
-+# CFLAGS is set in the environment.
++MAKE = make
++#CFLAGS is set in the environment
  #                 Some OS's need -D_FILE_OFFSET_BITS=64 to support files > 2MB.
  #                 HP/UX cc needs CFLAGS = -Aa (HP/UX 9) or -Ae (HP/UX 10)
  #                 BeOS needs CFLAGS = -O2 -Wl,-L/boot/home/config/lib
@@ -88,13 +89,13 @@ Bug: https://bugs.gentoo.org/249140
  # There doesn't seem to be a good way to write all these rules in a generic
  # form that works for all "make" programs
 -bzip2: ALWAYS
--	cd bzip2 && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+-	$(MAKE) -C bzip2 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
 -
  libgd: ALWAYS
- 	cd libgd && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 	$(MAKE) -C libgd 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
  
 -libpng: ALWAYS
--	cd libpng && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+-	$(MAKE) -C libpng 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
 -
 -pcre2: ALWAYS
 -	chmod 755 pcre2/132html pcre2/ar-lib pcre2/CheckMan pcre2/CleanTxt pcre2/compile pcre2/config.guess pcre2/config.sub pcre2/configure pcre2/depcomp pcre2/Detrail pcre2/install-sh pcre2/missing pcre2/perltest.sh pcre2/PrepareRelease pcre2/RunGrepTest pcre2/RunTest pcre2/test-driver
@@ -103,10 +104,10 @@ Bug: https://bugs.gentoo.org/249140
 -	cd pcre2 && ./configure && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
 -
  unzip: ALWAYS
- 	cd unzip && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 	$(MAKE) -C unzip 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
  
 -zlib: ALWAYS
--	cd zlib && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+-	$(MAKE) -C zlib 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
 -
  alias.o: alias.c $(HEADERS) Makefile
  	$(CC) $(ALLCFLAGS) -c alias.c
