@@ -1,0 +1,11 @@
+--- a/c10/util/Logging.cpp	2025-06-26 11:47:58.901240691 +0200
++++ b/c10/util/Logging.cpp	2025-06-26 11:51:56.959290731 +0200
+@@ -352,7 +352,7 @@
+ 
+ void ShowLogInfoToStderr() {
+   FLAGS_logtostderr = 1;
+-  FLAGS_minloglevel = std::min(FLAGS_minloglevel, google::GLOG_INFO);
++  FLAGS_minloglevel = std::min(FLAGS_minloglevel, int(google::GLOG_INFO));
+ }
+ } // namespace c10
+ 
