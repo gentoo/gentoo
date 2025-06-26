@@ -79,7 +79,8 @@ dev-libs/libdbusmenu-qt
 ~virtual/perl-Math-BigInt-FastCalc-0.502.0
 ~virtual/perl-Math-BigRat-2.5.2
 ~virtual/perl-Math-Complex-1.630.0
-~virtual/perl-Module-CoreList-5.202.506.240
+=virtual/perl-Module-CoreList-5.202.506*
+=virtual/perl-Module-CoreList-5.202.507*
 ~virtual/perl-parent-0.244.0
 ~virtual/perl-podlators-6.0.2
 ~virtual/perl-Scalar-List-Utils-1.680.100_rc
