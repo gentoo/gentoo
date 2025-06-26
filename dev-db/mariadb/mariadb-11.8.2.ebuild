@@ -566,7 +566,6 @@ src_test() {
 	cp "${S}"/mysql-test/unstable-tests "${T}/disabled.def" || die
 
 	local disabled_tests+=(
-		"compat/oracle.plugin;0;Needs example plugin which Gentoo disables"
 		"innodb_gis.1;MDEV-25095;Known rounding error with latest AMD processors"
 		"innodb_gis.gis;MDEV-25095;Known rounding error with latest AMD processors"
 		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
