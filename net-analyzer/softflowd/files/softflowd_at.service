@@ -1,0 +1,17 @@
+[Unit]
+Description=softflowd %I instance
+SourcePath=/etc/softflowd/%I.conf
+Documentation=man:softflowd(8)
+PartOf=softflowd.service
+After=network-online.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/softflowd/%I.conf
+ExecStart=/usr/sbin/softflowd -i $interface -p /run/softflowd/%I.pid -c /run/softflowd/%I.ctl $options
+Restart=always
+RestartSec=10
+PIDFile=/run/softflowd/%I.pid
+
+[Install]
+WantedBy=multi-user.target

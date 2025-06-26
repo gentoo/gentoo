@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,6 +7,7 @@ inherit autotools
 DESCRIPTION="flow-based network traffic analyser capable of Cisco NetFlow data export"
 HOMEPAGE="https://www.mindrot.org/projects/softflowd/"
 SRC_URI="https://github.com/irino/${PN}/archive/${P}.tar.gz"
+S=${WORKDIR}/${PN}-${P}
 
 LICENSE="BSD GPL-2"
 SLOT="0"
@@ -17,7 +18,6 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 #	"${FILESDIR}"/${PN}-0.9.9-_GNU_SOURCE.patch
 )
-S=${WORKDIR}/${PN}-${P}
 
 src_prepare() {
 	default
