@@ -1,0 +1,32 @@
+https://github.com/hyprwm/hyprutils/commit/1eb6759ae7a53cff9a9f80e1e6db88235e0c7648
+From: Brahmajit Das <listout@listout.xyz>
+Date: Fri, 27 Jun 2025 00:46:44 +0530
+Subject: [PATCH] implbase: include cstdint and fix building with GCC 16
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Without cstdint, building with GCC 16 fails with error
+
+In file included from /tmp/hyprutils/tests/memory.cpp:1:
+/tmp/hyprutils/./include/hyprutils/memory/UniquePtr.hpp: In member function ‘bool Hyprutils::Memory::CUniquePointer<T>::operator()(const Hyprutils:
+:Memory::CUniquePointer<T>&, const Hyprutils::Memory::CUniquePointer<T>&) const’:
+
+..snip...
+
+ng ‘#include <cstdint>’
+
+Downstream-bug: https://bugs.gentoo.org/957409
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/include/hyprutils/memory/ImplBase.hpp
++++ b/include/hyprutils/memory/ImplBase.hpp
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ 
+ namespace Hyprutils {
+-- 
+2.50.0
+
