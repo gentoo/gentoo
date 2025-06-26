@@ -38,7 +38,7 @@ LICENSE="
 	W3C
 "
 SLOT="0"
-KEYWORDS="-* amd64 ~arm arm64"
+KEYWORDS="-* amd64 ~arm ~arm64"
 IUSE="egl kerberos wayland"
 RESTRICT="mirror strip bindist"
 
@@ -122,7 +122,7 @@ src_install() {
 
 	local EXEC_EXTRA_FLAGS=()
 	if use wayland; then
-		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" )
+		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" "--wayland-text-input-version=3" )
 	fi
 	if use egl; then
 		EXEC_EXTRA_FLAGS+=( "--use-gl=egl" )
