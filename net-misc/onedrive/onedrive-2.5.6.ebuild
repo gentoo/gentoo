@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit shell-completion optfeature systemd toolchain-funcs
+inherit shell-completion optfeature prefix systemd toolchain-funcs
 
 DESCRIPTION="Free Client for OneDrive on Linux"
 HOMEPAGE="https://abraunegg.github.io/"
@@ -38,6 +38,13 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && _setup_gdc
 }
 
+src_prepare() {
+	hprefixify contrib/init.d/onedrive.init
+	# Add EPREFIX to the system config path (/etc)
+	hprefixify -w '/string systemConfigDirBase/' src/config.d
+	default
+}
+
 src_configure() {
 	# GDCFLAGS are meant to be specified in make.conf. Avoid the DFLAGS
 	# name to support ::dlang which needs separate variables for each
@@ -70,7 +77,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" docdir=/usr/share/doc/${PF} install
+	emake DESTDIR="${D}" docdir="${EPREFIX}"/usr/share/doc/${PF} install
 	# log directory
 	keepdir /var/log/onedrive
 	fperms 775 /var/log/onedrive
