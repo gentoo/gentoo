@@ -31,8 +31,6 @@ ruby_add_bdepend "
 "
 
 ruby_add_rdepend "
-	!!<dev-ruby/sass-3.4.25-r1:3.4
-	!!<dev-ruby/sass-3.5.7-r1:3.5
 	dev-ruby/listen
 "
 
