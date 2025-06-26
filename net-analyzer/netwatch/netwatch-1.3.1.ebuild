@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch
 	"${FILESDIR}"/${P}-clang16_part2.patch
 	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${PN}-1.3.0.1-gcc15.patch
 )
 
 src_prepare() {

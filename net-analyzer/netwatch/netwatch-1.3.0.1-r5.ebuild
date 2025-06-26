@@ -32,6 +32,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-clang16.patch
 	"${FILESDIR}"/${P}-bug897826.patch
 	"${FILESDIR}"/${PN}-1.3.1-format-security.patch
+	"${FILESDIR}"/${P}-sprintf.patch
+	"${FILESDIR}"/${P}-gcc15.patch
 )
 
 src_prepare() {
