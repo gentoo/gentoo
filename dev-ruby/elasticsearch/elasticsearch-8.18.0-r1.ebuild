@@ -3,8 +3,9 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33"
 
+RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -23,7 +24,6 @@ IUSE="test"
 ruby_add_rdepend "
 	~dev-ruby/elasticsearch-api-${PV}
 	>=dev-ruby/elastic-transport-8.3:8
-	!<dev-ruby/elasticsearch-8.18.0-r1:8
 "
 ruby_add_bdepend "
 	doc? ( dev-ruby/yard )
