@@ -221,11 +221,6 @@ dev-gap/cohomolo
 x11-misc/qxkb
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-22)
-# Old versions require Qt5
-<media-gfx/engauge-12.3
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
 # sci-electronics/gazebo depends on x11-libs/qwt:6[qt5] and Qt5, lots of
 # open bugs. Most packages perpetually stuck at EAPI-7 and several major
 # version bumps out of date. Bugs #937608, #947390; removal on 2025-06-26.
