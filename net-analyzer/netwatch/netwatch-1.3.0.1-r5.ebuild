@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-lto-mismatch.patch
 	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${P}-bug897826.patch
+	"${FILESDIR}"/${PN}-1.3.1-format-security.patch
 )
 
 src_prepare() {
