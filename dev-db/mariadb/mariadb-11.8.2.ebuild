@@ -567,9 +567,9 @@ src_test() {
 
 	local disabled_tests+=(
 		"compat/oracle.plugin;0;Needs example plugin which Gentoo disables"
-		"innodb_gis.1;25095;Known rounding error with latest AMD processors"
-		"innodb_gis.gis;25095;Known rounding error with latest AMD processors"
-		"main.gis;25095;Known rounding error with latest AMD processors"
+		"innodb_gis.1;MDEV-25095;Known rounding error with latest AMD processors"
+		"innodb_gis.gis;MDEV-25095;Known rounding error with latest AMD processors"
+		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
 		"main.explain_non_select;0;Sporadically failing test"
 		"main.func_time;0;Dependent on time test was written"
 		"main.mysql_upgrade;27044;Sporadically failing test"
