@@ -571,7 +571,6 @@ src_test() {
 		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
 		"main.explain_non_select;0;Sporadically failing test"
 		"main.mysql_upgrade;27044;Sporadically failing test"
-		"main.plugin_auth;0;Needs client libraries built"
 		"main.selectivity_no_engine;26320;Sporadically failing test"
 		"main.stat_tables;0;Sporadically failing test"
 		"main.stat_tables_innodb;0;Sporadically failing test"
