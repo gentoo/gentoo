@@ -32,7 +32,8 @@ PATCHES=(
 
 src_prepare() {
 	default
-	# bug https://bugs.gentoo.org/875665
+	# bug #875665
+	mv configure.in configure.ac || die
 	eautoreconf
 }
 
