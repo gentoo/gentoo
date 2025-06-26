@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ inherit go-module
 DESCRIPTION="Icinga configuration and state database supporting multiple environments"
 HOMEPAGE="https://icinga.com/docs/icinga-db/"
 SRC_URI="https://github.com/Icinga/icingadb/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/hydrapolic/gentoo-dist/raw/master/icinga/${P}-deps.tar.xz"
+	https://github.com/hydrapolic/gentoo-dist/raw/main/icinga/${P}-deps.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
