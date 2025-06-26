@@ -12,7 +12,7 @@ inherit systemd flag-o-matic prefix toolchain-funcs \
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 HOMEPAGE="https://mariadb.org/"
 SRC_URI="mirror://mariadb/${PN}-${PV}/source/${P}.tar.gz
-	https://github.com/hydrapolic/gentoo-dist/raw/master/mariadb/mariadb-10.6.13-patches-01.tar.xz
+	https://github.com/hydrapolic/gentoo-dist/raw/main/mariadb/mariadb-10.6.13-patches-01.tar.xz
 	https://dev.gentoo.org/~arkamar/distfiles/${PN}-10.6-columnstore-with-boost-1.85.patch.xz"
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
