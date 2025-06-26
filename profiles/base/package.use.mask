@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
+# >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
+# unmasked only in targets/systemd.
+>=kde-plasma/plasma-meta-6.3.90 systemd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-24)
 # Prepare cleanup of dev-libs/libdbusmenu-qt, bug #938823
 kde-frameworks/knotifications:5 dbus
