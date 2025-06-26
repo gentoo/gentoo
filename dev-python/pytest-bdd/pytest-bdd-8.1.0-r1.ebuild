@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.rst CHANGES.rst README.rst )
@@ -38,7 +39,6 @@ PATCHES=(
 
 src_test() {
 	local -x COLUMNS=80
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 # default in EAPI=9
 	local -x PYTEST_PLUGINS=pytest_bdd.plugin
 
 	local EPYTEST_DESELECT=(
