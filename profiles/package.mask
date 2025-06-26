@@ -216,11 +216,6 @@ x11-misc/barrier
 dev-gap/cohomolo
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
-# Dead upstream with no release for over 10 years, Qt5-based even only by
-# means of a snapshot. Bugs #951875, #953016. Removal on 2025-06-26.
-x11-misc/qxkb
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
 # sci-electronics/gazebo depends on x11-libs/qwt:6[qt5] and Qt5, lots of
 # open bugs. Most packages perpetually stuck at EAPI-7 and several major
 # version bumps out of date. Bugs #937608, #947390; removal on 2025-06-26.
