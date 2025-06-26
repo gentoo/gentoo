@@ -1,5 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
+# >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
+# unmasked only in targets/systemd.
+kde-plasma/plasma-meta -systemd
 
 # John M. Harris, Jr. <johnmh@johnmh.me> (2024-12-12)
 # seccomp is only supported with systemd
