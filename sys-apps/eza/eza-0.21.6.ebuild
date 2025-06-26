@@ -304,5 +304,5 @@ src_install() {
 	dozshcomp "completions/zsh/_${PN}"
 	dofishcomp "completions/fish/${PN}.fish"
 
-	doman ${WORKDIR}/target/man-${PV}/*
+	doman "${WORKDIR}"/target/man-${PV}/*
 }
