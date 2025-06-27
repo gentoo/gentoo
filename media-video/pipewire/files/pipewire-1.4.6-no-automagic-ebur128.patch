@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/955373
+https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/2420
+
+From f42786d60cf94ba76ba447c3561148ed7d6c3293 Mon Sep 17 00:00:00 2001
+Message-ID: <f42786d60cf94ba76ba447c3561148ed7d6c3293.1751075793.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 28 Jun 2025 02:54:34 +0100
+Subject: [PATCH] spa: allow disabling deps via -Debur128/-Dudev
+
+With .enabled(), Meson doesn't have some magic that packagers rely on
+to explicitly disable finding a dependency if an option is off. Drop
+the unnecessary .enabled() accordingly.
+---
+ spa/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/spa/meson.build b/spa/meson.build
+index 48a0000a1..637aeb8d4 100644
+--- a/spa/meson.build
++++ b/spa/meson.build
+@@ -114,7 +114,7 @@ if get_option('spa-plugins').allowed()
+   cdata.set('HAVE_ALSA_COMPRESS_OFFLOAD', compress_offload_option.allowed())
+ 
+   # common dependencies
+-  libudev_dep = dependency('libudev', required: get_option('udev').enabled())
++  libudev_dep = dependency('libudev', required: get_option('udev'))
+   cdata.set('HAVE_LIBUDEV', libudev_dep.found())
+   summary({'Udev': libudev_dep.found()}, bool_yn: true, section: 'Backend')
+ 
+@@ -124,7 +124,7 @@ if get_option('spa-plugins').allowed()
+   lilv_lib = dependency('lilv-0', required: get_option('lv2'))
+   summary({'lilv (for lv2 plugins)': lilv_lib.found()}, bool_yn: true, section: 'filter-graph')
+ 
+-  ebur128_lib = dependency('libebur128', required: get_option('ebur128').enabled())
++  ebur128_lib = dependency('libebur128', required: get_option('ebur128'))
+   summary({'EBUR128': ebur128_lib.found()}, bool_yn: true, section: 'filter-graph')
+ 
+   cdata.set('HAVE_SPA_PLUGINS', true)

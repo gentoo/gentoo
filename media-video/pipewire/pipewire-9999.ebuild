@@ -61,7 +61,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth elogind dbus doc echo-cancel extra ffmpeg flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 loudness lv2"
+IUSE="${PIPEWIRE_DOCS_USEFLAG} bluetooth elogind dbus doc echo-cancel extra ffmpeg fftw flatpak gstreamer gsettings ieee1394 jack-client jack-sdk liblc3 loudness lv2"
 IUSE+=" modemmanager pipewire-alsa readline roc selinux sound-server ssl system-service systemd test v4l X zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
@@ -133,6 +133,7 @@ RDEPEND="
 	echo-cancel? ( >=media-libs/webrtc-audio-processing-1.2:1 )
 	extra? ( >=media-libs/libsndfile-1.0.20 )
 	ffmpeg? ( media-video/ffmpeg:= )
+	fftw? ( sci-libs/fftw:3.0= )
 	flatpak? ( dev-libs/glib )
 	gstreamer? (
 		>=dev-libs/glib-2.32.0:2
@@ -182,6 +183,8 @@ PDEPEND=">=media-video/wireplumber-0.5.2"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	"${FILESDIR}"/${PN}-1.4.6-no-automagic-ebur128.patch
+	"${FILESDIR}"/${PN}-1.4.6-no-automagic-fftw.patch
 )
 
 pkg_setup() {
@@ -269,6 +272,7 @@ multilib_src_configure() {
 		-Dbluez5-codec-lc3plus=disabled # unpackaged
 		$(meson_native_use_feature liblc3 bluez5-codec-lc3)
 		$(meson_feature loudness ebur128)
+		$(meson_feature fftw)
 		$(meson_native_use_feature lv2)
 		$(meson_native_use_feature v4l v4l2)
 		-Dlibcamera=disabled # libcamera is not in Portage tree
@@ -338,8 +342,10 @@ multilib_src_install_all() {
 		doins "${FILESDIR}"/99-pipewire-default-hook.conf
 		eprefixify "${ED}"/usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf
 
-		dosym -r /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/50-pipewire.conf
-		dosym -r /usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf /etc/alsa/conf.d/99-pipewire-default-hook.conf
+		# These will break if someone has /etc that is a symbolic link to a subfolder! See #724222
+		# And the current dosym8 -r implementation is likely affected by the same issue, too.
+		dosym ../../../usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d/50-pipewire.conf
+		dosym ../../../usr/share/alsa/alsa.conf.d/99-pipewire-default-hook.conf /etc/alsa/conf.d/99-pipewire-default-hook.conf
 	fi
 
 	exeinto /etc/user/init.d
@@ -509,7 +515,7 @@ pkg_postinst() {
 			ewarn
 			ewarn "USE=sound-server is disabled! If you want PipeWire to provide"
 			ewarn "your sound, please enable it. See the wiki at"
-			ewarn "https://wiki.gentoo.org/wiki/PipeWire"
+			ewarn "https://wiki.gentoo.org/wiki/PipeWire#Replacing_PulseAudio"
 			ewarn "for more details."
 			ewarn
 		fi
