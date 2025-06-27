@@ -5,4 +5,9 @@
 		<email>leio@gentoo.org</email>
 		<name>Mart Raudsepp</name>
 	</maintainer>
+	<use>
+		<flag name="tools">
+			Build and install command line utilities
+		</flag>
+	</use>
 </pkgmetadata>
