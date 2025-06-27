@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-27)
+# Prepare cleanup of kde-apps/cervisia
+kde-apps/kdesdk-meta cvs
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
 # >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
 # unmasked only in targets/systemd.
