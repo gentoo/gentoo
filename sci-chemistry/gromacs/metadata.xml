@@ -24,5 +24,6 @@
 		<flag name="tng">Enable new trajectory format - tng</flag>
 		<flag name="mkl">Use <pkg>sci-libs/mkl</pkg> for fft, blas, lapack routines</flag>
 		<flag name="offensive">Enable gromacs partly offensive quotes</flag>
+		<flag name="video_cards_intel">Modifies the non-bonded GPU cluster size to 4 in order to enable opencl on Intel integrated graphics</flag>
 	</use>
 </pkgmetadata>
