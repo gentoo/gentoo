@@ -588,8 +588,6 @@ src_test() {
 
 		"perfschema.nesting;23458;Known to be broken"
 		"perfschema.prepared_statements;0;Broken test suite"
-		"plugins.cracklib_password_check;0;False positive due to varying policies"
-		"plugins.two_password_validations;0;False positive due to varying policies"
 
 		# 11.8.2 specific issues
 		"main.mysqld--help-aria;0;broken test regex, see MDEV-36668"
