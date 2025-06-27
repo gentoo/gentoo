@@ -42,10 +42,10 @@ if [[ ${PV} == 9999 ]]; then
 	DOCS+=(
 		dev-docs/COMMANDS
 		dev-docs/DEVELOPERS.md
-		dev-docs/INSTALL.md
+		dev-docs/NEW-COMMANDS.md
 		dev-docs/PARSING.md
 		dev-docs/TODO.md
-		dev-docs/NEW-COMMANDS.md
+		INSTALL.md
 	)
 fi
 
