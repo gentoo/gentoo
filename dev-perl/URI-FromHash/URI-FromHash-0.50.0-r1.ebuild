@@ -1,7 +1,7 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=DROLSKY
 DIST_VERSION=0.05
@@ -11,19 +11,13 @@ DESCRIPTION="Build a URI from a set of named parameters"
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/perl-Carp
-	virtual/perl-Exporter
 	dev-perl/Params-Validate
 	>=dev-perl/URI-1.680.0
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		virtual/perl-File-Spec
 		dev-perl/Test-Fatal
 		>=virtual/perl-Test-Simple-0.960.0
 	)
