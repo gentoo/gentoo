@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="fluent-bit daemon"
+description=""
+command=/usr/bin/fluent-bit
+command_args="-c ${fluent_conf:-/etc/fluent-bit/fluent-bit.conf} --daemon"
+command_user="fluentd"
+command_group="fluentd"
+
+depend() {
+	need net localmount
+}
