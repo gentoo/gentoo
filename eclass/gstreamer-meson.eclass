@@ -35,7 +35,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 # multilib-minimal goes last
 inherit meson multilib python-any-r1 toolchain-funcs xdg-utils multilib-minimal
