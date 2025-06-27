@@ -15,7 +15,7 @@ cargo_ver_check() {
 
 	# Maximum value for "edition" across Cargo.toml files
 	local cargo_toml_edition=$(
-		find "${S}" -name Cargo.toml -exec sed -n -e 's/^\s*edition\s*=\s*"\([0-9]*\)"\s*$/\1/p' {} \+ |
+		find "${WORKDIR}" -name Cargo.toml -exec sed -n -e 's/^\s*edition\s*=\s*"\([0-9]*\)"\s*$/\1/p' {} \+ |
 		sort -n |
 		tail -n 1
 	)
