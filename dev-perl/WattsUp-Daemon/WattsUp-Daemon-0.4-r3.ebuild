@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit perl-module
 
@@ -11,11 +11,11 @@ SRC_URI="https://dev.gentoo.org/~robbat2/wattsup-daemon/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
-BDEPEND="dev-perl/Device-SerialPort
-		dev-perl/Time-TAI64
-		virtual/perl-Time-HiRes"
+BDEPEND="
+	dev-perl/Device-SerialPort
+	dev-perl/Time-TAI64
+"
 RDEPEND="${BDEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-openrc.patch" )
