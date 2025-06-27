@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}-c-${PV}
 
 LICENSE="UCAR-Unidata"
 # SONAME of libnetcdf.so
-SLOT="0/19"
+SLOT="0/22"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="blosc bzip2 +dap doc examples hdf +hdf5 mpi szip test zstd"
 RESTRICT="!test? ( test )"
@@ -100,5 +100,6 @@ src_install() {
 	cmake_src_install
 
 	# bug #827188
-	sed -i -re "s:${EPREFIX}/usr/$(get_libdir)/lib(dl|m).(so|a);:\1;:g" "${ED}/usr/$(get_libdir)/cmake/netCDF/netCDFTargets.cmake" || die
+	sed -i -re "s:${EPREFIX}/usr/$(get_libdir)/lib(dl|m).(so|a);:\1;:g" \
+		"${ED}/usr/$(get_libdir)/cmake/netCDF/netCDFTargets.cmake" || die
 }
