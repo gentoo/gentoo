@@ -21,10 +21,10 @@ elif [[ ${PV} == *beta* ]]; then
 	"
 else
 	# curl -Ls static.rust-lang.org/dist/channel-rust-${PV}.toml | grep "xz_url.*rust-src"
-	SRC_URI="$(rust_all_arch_uris "${PV}")
-		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-01-30/rust-src-${PV}.tar.xz )
+	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
+		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-06-26/rust-src-${PV}.tar.xz )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
 fi
 
 GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PVR}" # omit trailing slash
@@ -32,7 +32,7 @@ GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/$
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
 
-if [[ ${PV} != *9999* && ${PV} != *beta* ]] ; then
+if [[ ${PV} != *9999* && ${PV} != *beta* ]] && false ; then
 	# Keep this separate to allow easy commenting out if not yet built
 	SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-sparc64-unknown-linux-gnu.tar.xz ) "
 	SRC_URI+=" mips? (
