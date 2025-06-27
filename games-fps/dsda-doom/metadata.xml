@@ -20,6 +20,7 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <use>
+    <flag name="openmpt">Enable support for tracker music via <pkg>media-libs/libopenmpt</pkg></flag>
     <flag name="fluidsynth">Enable support for MIDI via <pkg>media-sound/fluidsynth</pkg></flag>
     <flag name="mad">Enable support for MPEG audio via <pkg>media-libs/libmad</pkg></flag>
     <flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
