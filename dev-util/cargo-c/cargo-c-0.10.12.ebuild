@@ -42,6 +42,7 @@ RDEPEND="
 	net-libs/libssh2:=
 	net-misc/curl[ssl]
 	sys-libs/zlib
+	dev-db/sqlite:3
 "
 DEPEND="${RDEPEND}"
 
@@ -52,5 +53,6 @@ src_configure() {
 	# Tracker bug #709568
 	export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	export LIBGIT2_NO_VENDOR=1
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 }
