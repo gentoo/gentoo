@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,8 +36,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-# Pending issue upstream: https://github.com/naelstrof/maim/issues/292
-PATCHES=( "${FILESDIR}/${P}-icu-75.patch" ) # bug 937454
+PATCHES=(
+	"${FILESDIR}/${P}-cmake-4.patch" # bug 957925
+	# Upstreamed: https://github.com/naelstrof/maim/commit/b27fe197ea1d6116c2b7e92a0e4523a76db8e900
+	"${FILESDIR}/${P}-icu-75.patch" # bug 937454
+)
 
 src_configure() {
 	local mycmakeargs=(

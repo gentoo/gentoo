@@ -1,0 +1,10 @@
+Upstream commit that fixes https://bugs.gentoo.org/957925
+https://github.com/naelstrof/maim/commit/1011cfe347fc744ef573474f4111e533c5490a65
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required( VERSION 3.1.3 )
++cmake_minimum_required( VERSION 3.5.0 )
+ 
+ project(maim VERSION 5.8.0 LANGUAGES CXX)
+ 
