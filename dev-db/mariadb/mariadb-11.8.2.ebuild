@@ -582,7 +582,6 @@ src_test() {
 		"plugins.two_password_validations;0;False positive due to varying policies"
 		"roles.acl_statistics;0;False positive due to a user count mismatch caused by previous test"
 		"spider.*;0;Fails with network sandbox"
-		"sys_vars.wsrep_on_without_provider;25625;Known to be broken"
 		"sysschema.v_privileges_by_table_by_level;0;Fails with network sandbox, see MDEV-36030"
 
 		# 11.8.2 specific issues
