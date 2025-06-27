@@ -17,7 +17,7 @@ SLOT="2"
 KEYWORDS="amd64 arm64"
 
 BDEPEND=">=dev-lang/go-1.21"
-RDEPEND=">=app-containers/docker-cli-23.0.0"
+RDEPEND="virtual/docker"
 
 RESTRICT="test"
 
