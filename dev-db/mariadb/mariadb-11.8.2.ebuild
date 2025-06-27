@@ -575,7 +575,6 @@ src_test() {
 		"main.stat_tables;0;Sporadically failing test"
 		"main.stat_tables_innodb;0;Sporadically failing test"
 		"main.upgrade_MDEV-19650;25096;Known to be broken"
-		"mariabackup.*;0;Broken test suite"
 		"perfschema.nesting;23458;Known to be broken"
 		"perfschema.prepared_statements;0;Broken test suite"
 		"perfschema.privilege_table_io;27045;Sporadically failing test"
