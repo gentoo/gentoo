@@ -5,6 +5,9 @@
 		<email>gstreamer@gentoo.org</email>
 		<name>GStreamer package maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">gstreamer/gstreamer-vaapi</remote-id>
+	</upstream>
 	<use>
 		<flag name="drm">Enable DRM renderer</flag>
 		<flag name="gles2">Enable GLESv2 and GLESv3 support</flag>
