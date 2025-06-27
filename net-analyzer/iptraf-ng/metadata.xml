@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>netmon@gentoo.org</email>
-	<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<upstream>
-	<remote-id type="github">iptraf-ng/iptraf-ng</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">iptraf-ng/iptraf-ng</remote-id>
+	</upstream>
+	<longdescription>
+	IPTraf-ng is a console-based network monitoring program for
+	Linux that displays information about IP traffic.
+	</longdescription>
 </pkgmetadata>
