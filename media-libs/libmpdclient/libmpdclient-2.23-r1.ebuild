@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit meson flag-o-matic
 
 DESCRIPTION="Library for interfacing Music Player Daemon (media-sound/mpd)"
 HOMEPAGE="https://www.musicpd.org https://github.com/MusicPlayerDaemon/libmpdclient"
@@ -28,6 +28,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #959103
+	filter-flags -fno-semantic-interposition
+
 	local emesonargs=(
 		-Ddocumentation=$(usex doc true false)
 		-Dtest=$(usex test true false)
