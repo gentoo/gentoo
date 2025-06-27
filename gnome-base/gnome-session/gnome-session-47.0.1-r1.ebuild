@@ -62,6 +62,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-46.0-meson-Support-elogind.patch
+	"${FILESDIR}/data-Install-XWayland-targets-even-if-x11-is-off.patch"
 )
 
 src_prepare() {
