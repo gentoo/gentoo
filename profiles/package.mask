@@ -280,20 +280,6 @@ dev-libs/icu-le-hb
 # Masked for testing
 dev-db/mysql:8.4
 
-# Petr Vaněk <arkamar@gentoo.org> (2025-05-12)
-# A serious performance regression has been found in 10.11.12 and 11.4.6
-# releases, distributions are advised to not publish them, see
-# https://lists.mariadb.org/hyperkitty/list/packagers@lists.mariadb.org/thread/TP74ZU2ARZOQBLUNPT63I2A6LNB54XLJ/
-# and related bug reports:
-# https://jira.mariadb.org/browse/MDEV-36759
-# https://jira.mariadb.org/browse/MDEV-36765
-# https://jira.mariadb.org/browse/MDEV-36766
-#
-# Affected packages were removed from the tree, but this message shall be kept
-# untill 2025-06-23.
-~dev-db/mariadb-10.11.12
-~dev-db/mariadb-11.4.6
-
 # Michał Górny <mgorny@gentoo.org> (2025-05-08)
 # Vulnerable, EOL branch of dev-python/django.  Bug #955606.
 # Pleas upgrade to 5.1, 5.2 LTS, or downgrade to 4.2 LTS.
