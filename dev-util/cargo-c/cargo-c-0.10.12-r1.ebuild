@@ -12,7 +12,7 @@ EAPI=8
 CRATES="
 "
 
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.84.0"
 
 inherit cargo
 
@@ -34,7 +34,7 @@ LICENSE+="
 	Apache-2.0 BSD-2 BSD ISC MIT MPL-2.0 MPL-2.0 Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 RDEPEND="
 	=dev-libs/libgit2-1.9*:=
@@ -42,6 +42,7 @@ RDEPEND="
 	net-libs/libssh2:=
 	net-misc/curl[ssl]
 	sys-libs/zlib
+	dev-db/sqlite:3
 "
 DEPEND="${RDEPEND}"
 
@@ -52,5 +53,6 @@ src_configure() {
 	# Tracker bug #709568
 	export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	export LIBGIT2_NO_VENDOR=1
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 }
