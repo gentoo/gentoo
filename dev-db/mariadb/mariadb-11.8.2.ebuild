@@ -586,9 +586,6 @@ src_test() {
 		# Some tests are unable to retrieve HW address
 		"spider.*;MDEV-37098;Fails with network sandbox"
 
-		"perfschema.nesting;23458;Known to be broken"
-		"perfschema.prepared_statements;0;Broken test suite"
-
 		# 11.8.2 specific issues
 		"main.mysqld--help-aria;0;broken test regex, see MDEV-36668"
 	)
