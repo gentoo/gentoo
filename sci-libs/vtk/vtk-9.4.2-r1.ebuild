@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
-inherit check-reqs cmake cuda java-pkg-opt-2 multiprocessing python-single-r1 toolchain-funcs virtualx webapp
+inherit check-reqs cmake cuda flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 toolchain-funcs virtualx webapp
 
 # Short package version
 MY_PV="$(ver_cut 1-2)"
@@ -394,6 +394,10 @@ src_prepare() {
 #	VTK_BUILD_SCALED_SOA_ARRAYS
 #	VTK_DISPATCH_{AOS,SOA,TYPED}_ARRAYS
 src_configure() {
+	# Workaround for sci-libs/netcdf-4.9.3. See bug #959139.
+	# Should be dropped with vtk-9.5.0.
+	append-cppflags -DNETCDF_ENABLE_LEGACY_MACROS
+
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git="yes"
 		-DVTK_GIT_DESCRIBE="v${PV}"
