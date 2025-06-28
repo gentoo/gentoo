@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=RIBASUSHI
 DIST_VERSION=1.91
@@ -11,14 +11,11 @@ DESCRIPTION="Generate SQL from Perl data structures with backwards/forwards comp
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~ppc-macos"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Exporter-5.570.0
 	>=dev-perl/MRO-Compat-0.120.0
 	>=dev-perl/SQL-Abstract-1.790.0
-	virtual/perl-Scalar-List-Utils
 	>=virtual/perl-Text-Balanced-2.0.0
 "
 BDEPEND="${RDEPEND}
