@@ -1,7 +1,7 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=SALVA
 DIST_VERSION=0.22
@@ -11,22 +11,16 @@ inherit perl-module
 DESCRIPTION="Manipulate 128 bits integers in Perl"
 SLOT="0"
 KEYWORDS="~alpha amd64 -arm arm64 ~mips -ppc ppc64 ~riscv sparc -x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+
 RDEPEND="
-	virtual/perl-Exporter
 	>=dev-perl/Math-Int64-0.510.0
-	virtual/perl-XSLoader
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		virtual/perl-File-Spec
-		virtual/perl-IO
-		virtual/perl-Math-BigInt
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
+
 PERL_RM_FILES=(
 	"t/author-eol.t"
 	"t/author-no-tabs.t"
