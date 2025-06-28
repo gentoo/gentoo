@@ -17,7 +17,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
 	S="${WORKDIR}/${P}"
-	KEYWORDS="amd64 ~ppc ppc64 x86"
+	KEYWORDS="amd64 ppc ppc64 x86"
 fi
 
 LICENSE="GPL-2"
