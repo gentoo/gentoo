@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_VERSION=3.004
 DIST_AUTHOR=SWALTERS
@@ -10,33 +10,22 @@ inherit perl-module
 DESCRIPTION="SOAP with WSDL support"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test examples"
-RESTRICT="!test? ( test )"
+IUSE="examples"
 
 RDEPEND="
 	>=dev-perl/Class-Load-0.200.0
 	>=dev-perl/Class-Std-Fast-0.0.5
-	virtual/perl-Data-Dumper
 	dev-perl/TimeDate
-	virtual/perl-File-Path
-	virtual/perl-File-Spec
-	virtual/perl-Getopt-Long
 	dev-perl/libwww-perl
 	dev-perl/Module-Build
-	virtual/perl-Scalar-List-Utils
-	virtual/perl-Storable
 	>=dev-perl/Template-Toolkit-2.180.0
 	dev-perl/TermReadKey
 	dev-perl/URI
 	dev-perl/XML-Parser
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/CGI
-		virtual/perl-Test-Simple
-		virtual/perl-Getopt-Long
-		virtual/perl-Storable
 	)
 "
 
