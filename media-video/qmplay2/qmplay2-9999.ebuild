@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,12 +55,15 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-25.06.27-revert-lld-stuff.patch"
+)
+
 src_prepare() {
 	# disable compress man pages
-	sed -r \
+	sed -i src/gui/CMakeLists.txt -r \
 		-e 's/if\(GZIP\)/if\(TRUE\)/' \
-		-e 's/(install.+QMPlay2\.1)\.gz/\1/' \
-		-i src/gui/CMakeLists.txt || die
+		-e 's/(install.+QMPlay2\.1)\.gz/\1/' || die
 
 	cmake_src_prepare
 }
