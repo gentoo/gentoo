@@ -164,6 +164,7 @@ src_configure() {
 		$(petsc_select complex-scalars scalar-type complex real) \
 		$(petsc_select mpi cc mpicc $(tc-getCC)) \
 		$(petsc_select mpi cxx mpicxx $(tc-getCXX)) \
+		$(petsc_select mpi fc mpif90 $(tc-getFC)) \
 		$(petsc_with afterimage afterimage /usr/include/libAfterImage -lAfterImage) \
 		$(petsc_with hypre hypre /usr/include/hypre -lHYPRE) \
 		$(petsc_with superlu superlu /usr/include/superlu -lsuperlu) \
