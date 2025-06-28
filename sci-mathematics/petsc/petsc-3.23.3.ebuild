@@ -14,8 +14,8 @@ SRC_URI="https://web.cels.anl.gov/projects/petsc/download/release-snapshots/${P}
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="afterimage boost complex-scalars debug +examples fftw
-fortran hdf5 hypre int64 mpi metis mumps scotch superlu threads X"
+IUSE="afterimage boost complex-scalars cuda debug +examples fftw fortran
+	hdf5 hypre int64 mpi metis mumps scotch superlu threads X"
 
 # readd sparse when suitesparse-5.6.0 is in tree
 # sparse? ( >=sci-libs/suitesparse-5.6.0 >=sci-libs/cholmod-1.7.0 )
@@ -26,6 +26,7 @@ RDEPEND="
 
 	afterimage? ( media-libs/libafterimage )
 	boost? ( dev-libs/boost )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-3.2 )
 	fftw? ( sci-libs/fftw:3.0[mpi?] )
 	hdf5? ( sci-libs/hdf5:=[mpi?] )
 	hypre? ( >=sci-libs/hypre-2.18.0[int64?,mpi?] )
@@ -154,6 +155,7 @@ src_configure() {
 		--with-shared-libraries \
 		--with-single-library \
 		--with-windows-graphics=0 \
+		$(petsc_enable cuda cudac) \
 		$(petsc_enable debug debugging) \
 		$(petsc_enable fortran) \
 		$(petsc_enable mpi) \
