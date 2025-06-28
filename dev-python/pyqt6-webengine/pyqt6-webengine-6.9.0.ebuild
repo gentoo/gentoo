@@ -15,7 +15,7 @@ HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="debug quick +widgets"
 
 RDEPEND="
