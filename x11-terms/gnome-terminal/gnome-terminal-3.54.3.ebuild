@@ -12,7 +12,7 @@ LICENSE="GPL-3+ GPL-3 CC-BY-SA-3.0 FDL-1.3"
 
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 IUSE="debug gnome-shell nautilus"
 
