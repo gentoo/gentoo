@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Petr Vaněk <arkamar@gentoo.org> (2025-06-28)
+# dev-db/mariadb is not keyworded
+dev-db/mariadb-connector-c test
+dev-perl/DBD-mysql test
+dev-perl/DBD-MariaDB test
+
 # Sam James <sam@gentoo.org> (2025-06-07)
 # Needs dev-python/matplotlib
 dev-python/mpmath test-full
