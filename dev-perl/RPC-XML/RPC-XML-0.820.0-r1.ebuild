@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=RJRAY
 DIST_VERSION=0.82
@@ -13,11 +13,8 @@ DESCRIPTION="An implementation of XML-RPC"
 SLOT="0"
 LICENSE="|| ( Artistic-2 LGPL-2.1 )"
 KEYWORDS="amd64 arm64 ppc ~ppc64 ~riscv x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/perl-Carp
 	>=dev-perl/HTTP-Daemon-6.120.0
 	>=dev-perl/HTTP-Message-6.260.0
 	>=dev-perl/libwww-perl-6.510.0
@@ -28,7 +25,6 @@ RDEPEND="
 BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-7.560.0
 	test? (
-		virtual/perl-IO-Socket-IP
 		dev-perl/Net-Server
 		>=virtual/perl-Test-Simple-1.302.183
 	)
