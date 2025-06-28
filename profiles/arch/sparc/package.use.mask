@@ -668,7 +668,8 @@ net-misc/networkmanager wext
 
 # Marius Brehler <marfbre@linux.sungazer.de> (2015-08-13)
 # missing keyword
->=sci-misc/boinc-7.4.42-r1 X
+<sci-misc/boinc-8.0.2 X
+>=sci-misc/boinc-8.0.2 gui
 
 # Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
