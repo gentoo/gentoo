@@ -87,8 +87,10 @@ python_test() {
 			# https://github.com/pydata/xarray/issues/9127
 			xarray/tests/test_dataarray.py::TestDataArray::test_repr_multiindex
 			xarray/tests/test_dataarray.py::TestDataArray::test_repr_multiindex_long
+			xarray/tests/test_dataset.py::TestDataset::test_repr
 			xarray/tests/test_dataset.py::TestDataset::test_repr_multiindex
 			xarray/tests/test_datatree.py::TestRepr::test_doc_example
+			xarray/tests/test_datatree.py::TestRepr::test_repr_truncates_nodes
 			xarray/tests/test_formatting.py::test_array_repr_dtypes_unix
 
 			# converting timestamps into ns, causing an overflow
