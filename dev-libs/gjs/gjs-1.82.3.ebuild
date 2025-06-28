@@ -10,7 +10,7 @@ HOMEPAGE="https://gjs.guide"
 
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 IUSE="examples readline sysprof test"
 RESTRICT="!test? ( test )"
 
