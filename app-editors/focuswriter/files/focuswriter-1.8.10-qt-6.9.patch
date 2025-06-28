@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/957828
+https://github.com/gottcode/focuswriter/commit/dd74ed4559a141653a06e7984c1251b992925775
+
+From dd74ed4559a141653a06e7984c1251b992925775 Mon Sep 17 00:00:00 2001
+From: David Lyon <davidlyon1988@gmail.com>
+Date: Mon, 7 Apr 2025 10:39:44 +0200
+Subject: [PATCH] Fix compile error with QString::arg and char32_t on newer
+ Clang
+
+Casting `unicode` to `quint32` avoids a compile-time template resolution error
+that occurs on Clang 17 (Xcode 15+) with Qt 5.15.16. This change ensures compatibility
+without affecting older builds.
+---
+ src/symbols_dialog.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/symbols_dialog.cpp b/src/symbols_dialog.cpp
+index 10aa5d57..6e6b5494 100644
+--- a/src/symbols_dialog.cpp
++++ b/src/symbols_dialog.cpp
+@@ -377,7 +377,7 @@ void SymbolsDialog::symbolClicked(const QModelIndex& symbol)
+ 		m_symbol_preview->setSceneRect(m_symbol_preview_item->boundingRect());
+ 		m_symbol_name->setText(name);
+ 		m_symbol_name->setToolTip(name);
+-		m_symbol_code->setText(QString("<tt>U+%1</tt>").arg(unicode, 4, 16, QLatin1Char('0')).toUpper());
++		m_symbol_code->setText(QString("<tt>U+%1</tt>").arg(static_cast<quint32>(unicode), 4, 16, QLatin1Char('0')).toUpper());
+ 		m_symbol_shortcut->setShortcut(ActionManager::instance()->shortcut(unicode));
+ 
+ 		// Select symbol in recent list, and clear any other selections
