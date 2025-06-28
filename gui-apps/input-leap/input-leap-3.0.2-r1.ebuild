@@ -61,6 +61,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-gui-crash.patch
 	"${DISTDIR}"/${P}-no-x11.patch
+	"${FILESDIR}"/${P}-qt-6.9.patch
 )
 
 DOCS=(
