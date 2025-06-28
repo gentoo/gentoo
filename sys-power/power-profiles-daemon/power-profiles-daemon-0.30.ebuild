@@ -80,6 +80,11 @@ src_configure() {
 	meson_src_configure
 }
 
+src_test() {
+	# Dbus tests are prone to fail when run in parallel
+	MAKEOPTS="-j1" meson_src_test
+}
+
 src_install() {
 	meson_src_install
 	python_fix_shebang "${D}"/usr/bin/powerprofilesctl
