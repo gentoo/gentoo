@@ -183,8 +183,6 @@ PDEPEND=">=media-video/wireplumber-0.5.2"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
-	"${FILESDIR}"/${PN}-1.4.6-no-automagic-ebur128.patch
-	"${FILESDIR}"/${PN}-1.4.6-no-automagic-fftw.patch
 )
 
 pkg_setup() {
