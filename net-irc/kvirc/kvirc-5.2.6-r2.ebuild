@@ -64,6 +64,10 @@ RDEPEND="${DEPEND}
 
 DOCS=()
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.2.6-qt-6.9.patch
+)
+
 pkg_setup() {
 	if use python; then
 		python-single-r1_pkg_setup
