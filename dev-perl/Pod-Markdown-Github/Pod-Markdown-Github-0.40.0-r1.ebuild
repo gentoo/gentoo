@@ -1,7 +1,7 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=MINIMAL
 DIST_VERSION=0.04
@@ -10,20 +10,12 @@ inherit perl-module
 DESCRIPTION="Convert POD to Github's specific markdown"
 SLOT="0"
 KEYWORDS="amd64 x86 ~x64-macos"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/perl-Getopt-Long
 	dev-perl/Pod-Markdown
-	virtual/perl-parent
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
-		virtual/perl-Exporter
-		virtual/perl-File-Spec
-		virtual/perl-File-Temp
 		dev-perl/Test-Differences
 		>=virtual/perl-Test-Simple-0.880.0
 	)
