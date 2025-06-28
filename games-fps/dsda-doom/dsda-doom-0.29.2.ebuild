@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake desktop xdg
 
-DESCRIPTION="A successor to the PrBoom+ Doom source port"
+DESCRIPTION="Successor to the PrBoom+ Doom source port"
 HOMEPAGE="https://github.com/kraflab/dsda-doom/"
 SRC_URI="https://github.com/kraflab/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
