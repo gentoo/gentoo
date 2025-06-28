@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="ZLIB"
 SLOT="4.2"
-KEYWORDS="~amd64 x86" #not big endian safe #82779
+KEYWORDS="amd64 x86" #not big endian safe #82779
 IUSE="cpu_flags_x86_sse2 doc examples opengl +sound static-libs X"
 REQUIRED_USE="opengl? ( X )"
 
