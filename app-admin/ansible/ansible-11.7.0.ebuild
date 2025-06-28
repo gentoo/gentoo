@@ -9,14 +9,20 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
-HOMEPAGE="https://www.ansible.com/"
+HOMEPAGE="
+	https://www.redhat.com/en/ansible-collaborative
+	https://github.com/ansible-community/ansible-build-data
+"
 
 LICENSE="GPL-3+"
 SLOT="0"
-# KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~x64-macos"
 RESTRICT="test"
 
-RDEPEND="~app-admin/ansible-core-2.19.0_beta6"
+RDEPEND="
+	>=app-admin/ansible-core-2.18.6
+	<app-admin/ansible-core-2.19
+"
 
 python_compile() {
 	local -x ANSIBLE_SKIP_CONFLICT_CHECK=1
