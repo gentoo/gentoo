@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
-IUSE="+qt5 qt6 minimal wayland X"
+IUSE="qt5 +qt6 minimal wayland X"
 REQUIRED_USE="|| ( qt5 qt6 )"
 
 RDEPEND="
