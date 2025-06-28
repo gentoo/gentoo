@@ -14,6 +14,7 @@ IUSE=""
 
 RDEPEND=">=dev-qt/qtbase-${QTMIN}:6[network]"
 DEPEND="${RDEPEND}"
+BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 
 CMAKE_SKIP_TESTS=(
 	# requires network access, bug #661230
