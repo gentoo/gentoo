@@ -37,8 +37,15 @@ src_prepare() {
 }
 
 src_configure() {
-	# fails with -flto (see bug #957446)
-	filter-lto
+	# Workaround for bug #957446#c16. Building via autotools requires a
+	# macro like bitcoin or gpgme used in the past to ensure that
+	# -mno-direct-extern-access is used if Qt itself was built with it.
+	# The flag isn't in Qt's .pc files. It's easiest to just workaround
+	# this with -fPIC, but in future, we might either have an eclass helper
+	# for this, or just encourage people to use the m4 macro.
+	append-flags -fPIC
+	append-ldflags -fPIC
+
 	econf --libdir="${EPREFIX}/usr/$(get_libdir)" \
 		$(use_enable pulseaudio ) \
 		$(use_enable alsa ) \
