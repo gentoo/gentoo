@@ -1,0 +1,16 @@
+Avoid linking to non-existing file
+https://gitlab.com/fbb-git/yodl/-/issues/5
+
+diff --git a/icmake/install b/icmake/install
+index c90f774..2c8095d 100644
+--- a/icmake/install
++++ b/icmake/install
+@@ -27,7 +27,7 @@ void _installYodlConverters(string where, int debian)
+         gzipped = ".1 ";
+ 
+     for (idx = listlen(conversions); idx--; )
+-        run("ln -sf yodlconverters" + gzipped + 
++        run("cp " + where + MAN + "/man7/yodlconverters.7 " +
+             where + MAN + "/man1/yodl2" + conversions[idx] + gzipped);
+ }
+ 
