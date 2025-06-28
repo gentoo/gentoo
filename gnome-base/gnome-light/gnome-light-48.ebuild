@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ LICENSE="metapackage"
 SLOT="2.0"
 IUSE="cups +gnome-shell"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 
 # XXX: Note to developers:
 # This is a wrapper for the 'light' GNOME 3 desktop, and should only consist of
@@ -22,15 +22,15 @@ RDEPEND="
 	>=gnome-base/gnome-core-libs-${PV}[cups?]
 
 	>=gnome-base/gnome-session-45.0
-	>=gnome-base/gnome-settings-daemon-45.0[cups?]
-	>=gnome-base/gnome-control-center-45.1[cups?]
+	>=gnome-base/gnome-settings-daemon-48
+	>=gnome-base/gnome-control-center-48
 
 	>=gnome-base/nautilus-45.2
 
 	gnome-shell? (
-		>=x11-wm/mutter-45.2
+		>=x11-wm/mutter-${PV}
 		>=dev-libs/gjs-1.78.1
-		>=gnome-base/gnome-shell-45.2
+		>=gnome-base/gnome-shell-${PV}
 		>=media-fonts/cantarell-0.303.1
 	)
 

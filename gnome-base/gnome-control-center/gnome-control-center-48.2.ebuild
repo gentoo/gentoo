@@ -8,15 +8,14 @@ inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://apps.gnome.org/Settings"
-SRC_URI+=" https://dev.gentoo.org/~pacho/${PN}/${PN}-47.3-patchset.tar.xz"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo.svg"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo-dark.svg"
 # Logo is CC-BY-SA-2.5
 LICENSE="GPL-2+ CC-BY-SA-2.5"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 
-IUSE="+bluetooth +cups debug elogind +gnome-online-accounts +ibus input_devices_wacom kerberos +geolocation networkmanager systemd test wayland"
+IUSE="debug elogind +ibus +geolocation systemd test wayland"
 REQUIRED_USE="
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime,
@@ -24,29 +23,21 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# kerberos unfortunately means mit-krb5; build fails with heimdal
-# display panel requires colord and gnome-settings-daemon[colord]
-# wacom panel requires gsd-enums.h from gsd at build time, probably also runtime support
-# printer panel requires cups and smbclient (the latter is not patched yet to be separately optional)
-# First block is toplevel meson.build deps in order of occurrence (plus deeper deps if in same conditional).
-# Second block is dependency() from subdir meson.builds, sorted by directory name occurrence order
 DEPEND="
-	gnome-online-accounts? (
-		x11-libs/gtk+:3
-		>=net-libs/gnome-online-accounts-3.51.0:=
-	)
+	>=net-libs/gnome-online-accounts-3.51.0:=
 	>=media-libs/libpulse-2.0[glib]
 	>=gui-libs/gtk-4.15.2:4[X,wayland=]
-	>=gui-libs/libadwaita-1.6_beta:1
+	>=gui-libs/libadwaita-1.7_alpha:1
 	>=sys-apps/accountsservice-23.11.69
 	>=x11-misc/colord-0.1.34:0=
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=dev-libs/glib-2.76.6:2
+	dev-libs/json-glib
 	gnome-base/gnome-desktop:4=
-	>=gnome-base/gnome-settings-daemon-41.0[colord,input_devices_wacom?]
-	>=gnome-base/gsettings-desktop-schemas-47.0
+	>=gnome-base/gnome-settings-daemon-48.1[colord]
+	>=gnome-base/gsettings-desktop-schemas-48.0
 	dev-libs/libxml2:2=
-	>=sys-power/upower-0.99.8:=
+	>=sys-power/upower-1.90.6:=
 	>=dev-libs/libgudev-232
 	>=x11-libs/libX11-1.8
 	>=x11-libs/libXi-1.2
@@ -54,19 +45,17 @@ DEPEND="
 	>=app-crypt/gcr-4.1.0
 	>=dev-libs/libpwquality-1.2.2
 	>=sys-auth/polkit-0.114
-	cups? (
-		>=net-print/cups-1.7[dbus]
-		>=net-fs/samba-4.0.0[client]
-	)
+	>=net-print/cups-1.7[dbus]
+	>=net-fs/samba-4.0.0[client]
 	ibus? ( >=app-i18n/ibus-1.5.2 )
-	networkmanager? (
-		>=net-libs/libnma-1.10.2
-		>=net-misc/networkmanager-1.24.0[modemmanager]
-		>=net-misc/modemmanager-0.7.990:=
+	>=net-libs/libnma-1.10.2
+	>=net-misc/networkmanager-1.24.0[modemmanager]
+	>=net-misc/modemmanager-0.7.990:=
+	!s390? (
+		net-wireless/gnome-bluetooth:3=
+		>=dev-libs/libwacom-1.4:=
 	)
-	bluetooth? ( net-wireless/gnome-bluetooth:3= )
-	input_devices_wacom? ( >=dev-libs/libwacom-1.4:= )
-	kerberos? ( app-crypt/mit-krb5 )
+	app-crypt/mit-krb5
 
 	x11-libs/cairo[glib]
 	>=x11-libs/colord-gtk-0.3.0:=
@@ -101,21 +90,21 @@ RDEPEND="${DEPEND}
 	)
 	x11-themes/adwaita-icon-theme
 	>=gnome-extra/gnome-color-manager-3.1.2
-	cups? (
-		app-admin/system-config-printer
-		net-print/cups-pk-helper
-	)
-	gnome-extra/tecla
+	app-admin/system-config-printer
+	net-print/cups-pk-helper
+	>=gnome-extra/tecla-47.0
 	wayland? ( dev-libs/libinput )
 	!wayland? (
 		>=x11-drivers/xf86-input-libinput-0.19.0
-		input_devices_wacom? ( >=x11-drivers/xf86-input-wacom-0.33.0 )
+		!s390? ( >=x11-drivers/xf86-input-wacom-0.33.0 )
 	)
 "
 # PDEPEND to avoid circular dependency; gnome-session-check-accelerated called by info panel
 # gnome-session-2.91.6-r1 also needed so that 10-user-dirs-update is run at login
-PDEPEND=">=gnome-base/gnome-session-2.91.6-r1
-	networkmanager? ( gnome-extra/nm-applet )" # networking panel can call into nm-connection-editor
+PDEPEND="
+	>=gnome-base/gnome-session-2.91.6-r1
+	gnome-extra/nm-applet
+" # networking panel can call into nm-connection-editor
 
 # meson.build depends on python unconditionally
 BDEPEND="${PYTHON_DEPS}
@@ -137,10 +126,8 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 PATCHES=(
-	# Makes some panels and dependencies optional
-	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
-	"${WORKDIR}"/patches/
+	"${FILESDIR}/0005-Fix-absolute-paths-to-be-dependent-on-build-configur.patch"
 )
 
 python_check_deps() {
@@ -170,19 +157,13 @@ src_configure() {
 	filter-lto
 
 	local emesonargs=(
-		$(meson_use bluetooth)
-		-Dcups=$(usex cups enabled disabled)
 		-Ddeprecated-declarations=disabled
 		-Ddocumentation=true # manpage
 		-Dlocation-services=$(usex geolocation enabled disabled)
-		-Dgoa=$(usex gnome-online-accounts enabled disabled)
 		$(meson_use ibus)
-		-Dkerberos=$(usex kerberos enabled disabled)
-		$(meson_use networkmanager network_manager)
 		-Dprivileged_group=wheel
 		-Dsnap=false
 		$(meson_use test tests)
-		$(meson_use input_devices_wacom wacom)
 		#$(meson_use wayland) # doesn't do anything in 3.34 and 3.36 due to unified gudev handling code
 		# bashcompletions installed to $datadir/bash-completion/completions by v3.28.2,
 		# which is the same as $(get_bashcompdir)

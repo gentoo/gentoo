@@ -20,8 +20,8 @@ RDEPEND="
 	>=gnome-base/gnome-core-libs-${PV}[cups?]
 
 	>=gnome-base/gnome-session-45.0
-	>=gnome-base/gnome-settings-daemon-45.0[cups?]
-	>=gnome-base/gnome-control-center-45.1[cups?]
+	>=gnome-base/gnome-settings-daemon-45.0[cups(+)?]
+	>=gnome-base/gnome-control-center-45.1[cups(+)?]
 	>=gnome-extra/gnome-color-manager-3.36.0
 
 	>=app-crypt/gcr-3.41.1:0
