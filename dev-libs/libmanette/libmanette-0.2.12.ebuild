@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libmanette"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 IUSE="doc +introspection +udev +vala test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection ) doc? ( introspection )"
