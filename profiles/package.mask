@@ -35,6 +35,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Michał Górny <mgorny@gentoo.org> (2025-06-28)
+# Rust/eBPF does not support 32-bit x86 host.  As such, mitmproxy can
+# no longer be used on this architecture.
+=net-proxy/mitmproxy-9.0.1
+
 # Jay Faulkner <jayf@gentoo.org> (2025-06-26)
 # Discontinued by upstream in Sept 2023, running on a likely vulnerable
 # electron version. Bug #959128.
