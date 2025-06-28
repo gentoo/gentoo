@@ -3,11 +3,9 @@
 
 EAPI=8
 
-RUST_OPTIONAL=1
-RUST_REQ_USE="rustfmt"
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools bash-completion-r1 python-single-r1 rust
+inherit autotools bash-completion-r1 python-single-r1
 
 MY_PV_1="$(ver_cut 1-2)"
 MY_PV_2="$(ver_cut 2)"
@@ -20,7 +18,7 @@ SRC_URI="https://download.libguestfs.org/libnbd/${MY_PV_1}-${SD}/${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~sparc ~x86"
-IUSE="examples fuse gnutls go ocaml python rust test"
+IUSE="examples fuse gnutls go ocaml python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -43,8 +41,7 @@ DEPEND="
 		ocaml? ( dev-ml/findlib[ocamlopt] )
 )
 "
-BDEPEND="dev-lang/perl
-	rust? ( ${RUST_DEPEND} )"
+BDEPEND="dev-lang/perl"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.22.2-build-Remove-automagic-compiling-of-examples.patch"
@@ -52,9 +49,6 @@ PATCHES=(
 	)
 
 pkg_setup() {
-	if use rust; then
-		rust_pkg_setup
-	fi
 	if use python; then
 		python_setup
 	fi
@@ -79,8 +73,8 @@ src_configure() {
 		$(use_enable go golang)
 		$(use_enable ocaml)
 		$(use_enable python)
-		$(use_enable rust)
 		$(use_with gnutls)
+		--disable-rust
 		--disable-ublk # Not in portage
 		--with-libxml2
 	)
