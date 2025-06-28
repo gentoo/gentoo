@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=EHUELS
 DIST_VERSION=3.12
@@ -11,8 +11,6 @@ DESCRIPTION="LaTeX support for the Template Toolkit"
 
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/LaTeX-Driver-0.70.0
@@ -25,7 +23,4 @@ src_test() {
 	LATEX_TESTING=1	perl-module_src_test
 }
 
-DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	test? ( virtual/perl-Test-Harness )
-"
+DEPEND="${RDEPEND}"
