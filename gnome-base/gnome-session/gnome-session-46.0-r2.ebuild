@@ -9,19 +9,17 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-session"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="doc elogind systemd X"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="doc elogind systemd"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.46.0:2
-	X? (
-		>=x11-libs/gtk+-3.22.0:3
-		x11-libs/libICE
-		x11-libs/libSM
-		x11-libs/libX11
-	)
+	>=x11-libs/gtk+-3.22.0:3[X]
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libX11
 	>=gnome-base/gnome-desktop-3.34.2:3=
 	>=dev-libs/json-glib-0.10
 	media-libs/libglvnd[X]
@@ -61,8 +59,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-46.0-meson-Support-elogind.patch
-	"${FILESDIR}/data-Install-XWayland-targets-even-if-x11-is-off.patch"
+	"${FILESDIR}"/${P}-meson-Support-elogind.patch
 )
 
 src_prepare() {
@@ -80,7 +77,6 @@ src_configure() {
 		$(meson_use doc docbook)
 		-Dman=true
 		-Dsystemduserunitdir="$(systemd_get_userunitdir)"
-		$(meson_use X x11)
 	)
 	meson_src_configure
 }
