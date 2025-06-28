@@ -39,7 +39,10 @@ BDEPEND="dev-qt/qttools:6[linguist]"
 
 DOCS=( images/ {BUILDING,CHANGELOG,README}.md )
 
-PATCHES=( "${FILESDIR}/${P}-no-git.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-no-git.patch"
+	"${FILESDIR}/${P}-qt-6.9.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

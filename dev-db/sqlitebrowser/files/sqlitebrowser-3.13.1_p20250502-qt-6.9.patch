@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/957676
+https://github.com/sqlitebrowser/sqlitebrowser/pull/3948
+
+From 94b2f23517e59fdd8dd222989f704bef2c9460a2 Mon Sep 17 00:00:00 2001
+From: Patrick Ziegler <zipat@proton.me>
+Date: Wed, 4 Jun 2025 15:42:29 +0200
+Subject: [PATCH] Fix enum class value conversion for storing last locations
+
+See issue #3949.
+---
+ src/FileDialog.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/FileDialog.cpp b/src/FileDialog.cpp
+index a3b611747..df4271b68 100644
+--- a/src/FileDialog.cpp
++++ b/src/FileDialog.cpp
+@@ -48,7 +48,7 @@ QString FileDialog::getFileDialogPath(const FileDialogTypes dialogType)
+     case 2: {   // Remember last location for current session only
+         QHash<QString, QVariant> lastLocations = Settings::getValue("db", "lastlocations").toHash();
+ 
+-        return lastLocations[QString(QChar(dialogType))].toString();
++        return lastLocations[QString::number(static_cast<int>(dialogType))].toString();
+     }
+     case 1:     // Always use this locations
+         return Settings::getValue("db", "defaultlocation").toString();
+@@ -62,7 +62,7 @@ void FileDialog::setFileDialogPath(const FileDialogTypes dialogType, const QStri
+     QString dir = QFileInfo(new_path).absolutePath();
+     QHash<QString, QVariant> lastLocations = Settings::getValue("db", "lastlocations").toHash();
+ 
+-    lastLocations[QString(QChar(dialogType))] = dir;
++    lastLocations[QString::number(static_cast<int>(dialogType))] = dir;
+ 
+     switch(Settings::getValue("db", "savedefaultlocation").toInt())
+     {
