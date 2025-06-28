@@ -21,6 +21,9 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 
 RDEPEND="
 	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/packaging[${PYTHON_USEDEP}]
+	')
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
