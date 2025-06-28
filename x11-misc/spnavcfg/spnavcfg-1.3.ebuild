@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs xdg-utils
+inherit flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Qt-based GUI to configure a space navigator device"
 HOMEPAGE="https://spacenav.sourceforge.net/"
@@ -22,6 +22,16 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-misc/spacenavd-1[X]"
 
 src_configure() {
+	# Workaround for bug #957962 (and bug #957446#c16). Building via
+	# autotools requires a macro like bitcoin or gpgme used in the past
+	# to ensure that -mno-direct-extern-access is used if Qt itself was
+	# built with it. The flag isn't in Qt's .pc files. It's easiest
+	# to just workaround this with -fPIC, but in future, we might
+	# either have an eclass helper for this, or just encourage people
+	# to use the m4 macro.
+	append-flags -fPIC
+	append-ldflags -fPIC
+
 	# Note: Makefile uses $(add_cflags) inside $(CXXFLAGS)
 	CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
