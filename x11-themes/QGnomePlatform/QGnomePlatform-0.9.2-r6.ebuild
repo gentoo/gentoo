@@ -44,7 +44,7 @@ src_prepare() {
 
 src_configure() {
 	# avoid automagic dep on src/theme/qgtk3dialoghelpers.cpp
-	use X || append-flags -DGENTOO_GTK_HIDE_X11
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
 
 	if use qt5; then
