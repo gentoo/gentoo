@@ -36,10 +36,12 @@ PATCHES=(
 	"${FILESDIR}"/${P}-python3.patch
 	"${FILESDIR}"/${P}-gcc13.patch
 	"${FILESDIR}"/${P}-ar-detection.patch
+	"${FILESDIR}"/${P}-gcc15.patch
 )
 
 src_compile() {
 	strip-flags
+	append-cxxflags -std=c++17
 	escons \
 		AR="$(tc-getAR)" \
 		CXX="$(tc-getCXX)" \
