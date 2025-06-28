@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=XAOC
 DIST_VERSION=1.227
@@ -15,8 +15,7 @@ DESCRIPTION="Layout and render international text"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="test +minimal"
-RESTRICT="!test? ( test )"
+IUSE="+minimal"
 
 RDEPEND="
 	>=dev-perl/glib-perl-1.220.0
@@ -25,11 +24,9 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/ExtUtils-Depends-0.300.0
 	>=dev-perl/ExtUtils-PkgConfig-1.30.0
 	test? (
-		virtual/perl-Test-Simple
 		!minimal? (
 			>=dev-perl/Gtk2-1.220.0
 			$VIRTUALX_DEPEND
