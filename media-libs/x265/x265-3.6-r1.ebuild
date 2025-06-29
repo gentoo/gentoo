@@ -47,6 +47,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.6-test-ns_2.patch"
 
 	"${FILESDIR}/${PN}-3.6-code-cleanup.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup_2.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup_3.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup_4.patch"
 )
 
 pkg_setup() {
