@@ -139,10 +139,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-rocm-fix-std-cpp17.patch
 	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${P}-glog-0.7.1.patch
+	"${FILESDIR}"/${P}-llvm.patch
 )
 
 src_prepare() {
-	use flash && mv "${WORKDIR}"/${FLASH_P}/* third_party/${FLASH_PN}/ || die
+	if use flash; then
+		mv "${WORKDIR}"/${FLASH_P}/* third_party/${FLASH_PN}/ || die
+	fi
 	filter-lto #bug 862672
 
 	# Unbundle fmt

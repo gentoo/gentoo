@@ -1,0 +1,15 @@
+--- a/c10/util/strong_type.h	2025-06-29 10:28:19.365533325 +0200
++++ b/c10/util/strong_type.h	2025-06-29 10:28:40.944598046 +0200
+@@ -1604,12 +1604,6 @@
+     return hash<T>::operator()(value_of(tt));
+   }
+ };
+-template <typename T, typename Tag, typename ... M>
+-struct is_arithmetic<::strong::type<T, Tag, M...>>
+-  : is_base_of<::strong::arithmetic::modifier<::strong::type<T, Tag, M...>>,
+-               ::strong::type<T, Tag, M...>>
+-{
+-};
+ 
+ #if STRONG_HAS_STD_FORMAT
+ template<typename T, typename Tag, typename... M, typename Char>
