@@ -8,4 +8,10 @@
 	<upstream>
 		<remote-id type="github">resurrecting-open-source-projects/cbm</remote-id>
 	</upstream>
+	<longdescription>
+	The Color Bandwidth Meter (CBM) is a small program to display the traffic
+	currently flowing through the network devices in a simple curses-based GUI.
+	The traffic for all interfaces include values as receive, transfer and total
+	Bytes/s or bits/s (or its multiples as KB/s and Kb/s).
+	</longdescription>
 </pkgmetadata>
