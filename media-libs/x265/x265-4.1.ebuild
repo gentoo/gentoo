@@ -55,6 +55,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.6-code-cleanup_4.patch"
 
 	"${FILESDIR}/${PN}-4.1-vmaf.patch"
+
+	"${FILESDIR}/${PN}-cmake-min-version-3.28.patch"
 )
 
 pkg_setup() {
