@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake desktop flag-o-matic python-any-r1 toolchain-funcs xdg verify-sig virtualx
 
 DESCRIPTION="3D photo-realistic skies in real time"
@@ -21,16 +21,23 @@ SRC_URI="
 		verify-sig? ( https://github.com/Stellarium/stellarium/releases/download/v${PV}/stellarium_user_guide-${PV}-1.pdf.asc )
 	)
 	stars? (
-		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_4_1v0_2.cat
-		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_5_2v0_1.cat
-		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_6_2v0_1.cat
-		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_7_2v0_1.cat
-		https://github.com/Stellarium/stellarium-data/releases/download/stars-2.0/stars_8_2v0_1.cat
+		https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_4_1v0_6.cat
+		https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_5_1v0_6.cat
+		https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_6_1v0_4.cat
+		https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_7_1v0_4.cat
+		https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_8_2v0_3.cat
+		verify-sig? (
+			https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_4_1v0_6.cat.asc
+			https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_5_1v0_6.cat.asc
+			https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_6_1v0_4.cat.asc
+			https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_7_1v0_4.cat.asc
+			https://github.com/Stellarium/stellarium-data/releases/download/stars-3.0/stars_8_2v0_3.cat.asc
+		)
 	)"
 
 LICENSE="GPL-2+ SGI-B-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="debug deep-sky doc gps +lens-distortion libcxx media nls +scripting +show-my-sky stars telescope test webengine +xlsx"
 
 # Python interpreter is used while building RemoteControl plugin
@@ -44,13 +51,14 @@ BDEPEND="
 # TODO: review need for dev-cpp/tbb after several releases of gcc and clang
 RDEPEND="
 	dev-cpp/tbb:=
+	dev-libs/md4c
 	dev-qt/qtbase:6=[concurrent,gui,network,widgets]
 	dev-qt/qtcharts:6
+	dev-qt/qtpositioning:6
 	media-fonts/dejavu
-	>=sci-astronomy/calcmysky-0.3.0:=[qt6(+)]
+	>=sci-astronomy/calcmysky-0.3.5:=
 	sys-libs/zlib
 	gps? (
-		dev-qt/qtpositioning:6
 		dev-qt/qtserialport:6
 		sci-geosciences/gpsd:=[cxx]
 	)
@@ -68,18 +76,13 @@ RDEPEND="
 		sci-libs/indilib:=
 	)
 	webengine? ( dev-qt/qtwebengine:6[widgets] )
-	xlsx? ( dev-libs/qxlsx:=[qt6(+)] )
+	xlsx? ( >=dev-libs/qxlsx-1.5.0:= )
 "
 DEPEND="${RDEPEND}
 	libcxx? ( dev-cpp/fast_float )
 "
 
 RESTRICT="!test? ( test )"
-
-PATCHES=(
-	"${FILESDIR}/stellarium-0.23.4-unbundle-zlib.patch"
-	"${FILESDIR}/stellarium-0.24.4-indilib.patch"
-)
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stellarium.asc
 
@@ -89,27 +92,13 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	# stars-2.0 are not signed
-	if use verify-sig; then
-		pushd "${DISTDIR}" > /dev/null || die
-		verify-sig_verify_detached \
-			${P}.tar.xz{,.asc}
-		use deep-sky && verify-sig_verify_detached \
-			${PN}-dso-catalog-${MY_DSO_VERSION}.dat{,.asc}
-		use doc && verify-sig_verify_detached \
-			stellarium_user_guide-${PV}-1.pdf{,.asc}
-		popd > /dev/null || die
-	fi
-	default_src_unpack
-}
-
 src_prepare() {
 	cmake_src_prepare
 	use debug || append-cppflags -DQT_NO_DEBUG #415769
 
 	rm -r src/external/qtcompress/ || die
 	rm -r src/external/zlib/ || die
+	rm -r src/external/fake-indi/ || die
 
 	# for glues_stel aka libtess I couldn't find an upstream with the same API
 
@@ -167,9 +156,10 @@ src_install() {
 	dosym ../../fonts/dejavu/DejaVuSansMono.ttf /usr/share/stellarium/data/DejaVuSansMono.ttf
 
 	if use stars ; then
-		insinto /usr/share/${PN}/stars/default
-		doins "${DISTDIR}"/stars_4_1v0_2.cat
-		doins "${DISTDIR}"/stars_{5,6,7,8}_2v0_1.cat
+		insinto /usr/share/${PN}/stars/hip_gaia3
+		doins "${DISTDIR}"/stars_{4,5}_1v0_6.cat
+		doins "${DISTDIR}"/stars_{6,7}_1v0_4.cat
+		doins "${DISTDIR}"/stars_8_2v0_3.cat
 	fi
 	if use deep-sky ; then
 		insinto /usr/share/${PN}/nebulae/default
