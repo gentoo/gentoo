@@ -33,6 +33,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-build/rocm-cmake
+	dev-util/hipcc
 	sci-libs/hipBLAS-common:${SLOT}
 	$(python_gen_any_dep '
 		dev-python/msgpack[${PYTHON_USEDEP}]
@@ -99,8 +100,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export CC="$(get_llvm_prefix)/bin/clang" CXX="$(get_llvm_prefix)/bin/clang++"
-	strip-unsupported-flags
+	rocm_use_clang
 
 	# too many warnings
 	append-cxxflags -Wno-explicit-specialization-storage-class

@@ -43,7 +43,15 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0-operator_new.patch"
 	"${FILESDIR}/${PN}-6.4.1-fix-libcxx.patch"
+	"${FILESDIR}/${PN}-6.4.1-no-tests-install.patch"
 )
+
+src_prepare() {
+	sed -e "s:set(ROCM_INSTALL_LIBDIR lib):set(ROCM_INSTALL_LIBDIR $(get_libdir)):" \
+		-i cmake/ROCMExportTargetsHeaderOnly.cmake || die
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	rocm_use_hipcc
