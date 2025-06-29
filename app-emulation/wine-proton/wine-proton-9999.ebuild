@@ -33,8 +33,12 @@ IUSE="
 	llvm-libunwind +mono nls perl pulseaudio +sdl selinux +ssl udev
 	+unwind usb v4l wayland video_cards_amdgpu +xcomposite xinerama
 "
-# headless is not really supported with wine-proton, use normal Wine
-REQUIRED_USE="|| ( X wayland )"
+# headless is not really supported here, and udev needs sdl due to Valve's
+# changes (bug #959263), use normal wine instead if need to avoid these
+REQUIRED_USE="
+	|| ( X wayland )
+	udev? ( sdl )
+"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
