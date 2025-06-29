@@ -35,6 +35,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.12.1-broken-flow.patch
+	"${FILESDIR}"/${PN}-3.12.1-broken-flow-deux.patch
 )
 
 pkg_setup() {

@@ -1,0 +1,196 @@
+https://bugs.gentoo.org/958932
+https://github.com/Reference-LAPACK/lapack/pull/1094
+
+From f5103fc3b42fcff40e70b1fa4b5567df01dae9bc Mon Sep 17 00:00:00 2001
+From: Wouter Deconinck <wdconinc@gmail.com>
+Date: Fri, 10 Jan 2025 14:32:30 -0600
+Subject: [PATCH] ?ge(lq|qr)s.f: WORK( LWORK ) -> WORK( * )
+
+---
+ SRC/DEPRECATED/cgelqs.f | 4 ++--
+ SRC/DEPRECATED/cgeqrs.f | 4 ++--
+ SRC/DEPRECATED/dgelqs.f | 4 ++--
+ SRC/DEPRECATED/dgeqrs.f | 4 ++--
+ SRC/DEPRECATED/sgelqs.f | 4 ++--
+ SRC/DEPRECATED/sgeqrs.f | 4 ++--
+ SRC/DEPRECATED/zgelqs.f | 4 ++--
+ SRC/DEPRECATED/zgeqrs.f | 4 ++--
+ 8 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/SRC/DEPRECATED/cgelqs.f b/SRC/DEPRECATED/cgelqs.f
+index 47e17a5830..aba3632a74 100644
+--- a/SRC/DEPRECATED/cgelqs.f
++++ b/SRC/DEPRECATED/cgelqs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       COMPLEX            A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE CGELQS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       COMPLEX            A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+diff --git a/SRC/DEPRECATED/cgeqrs.f b/SRC/DEPRECATED/cgeqrs.f
+index 13ac7f74fd..9d0527283d 100644
+--- a/SRC/DEPRECATED/cgeqrs.f
++++ b/SRC/DEPRECATED/cgeqrs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       COMPLEX            A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE CGEQRS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       COMPLEX            A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+diff --git a/SRC/DEPRECATED/dgelqs.f b/SRC/DEPRECATED/dgelqs.f
+index dc08f2398b..1bab678901 100644
+--- a/SRC/DEPRECATED/dgelqs.f
++++ b/SRC/DEPRECATED/dgelqs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE DGELQS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+diff --git a/SRC/DEPRECATED/dgeqrs.f b/SRC/DEPRECATED/dgeqrs.f
+index bfb7bd8bb8..e3e6c4048e 100644
+--- a/SRC/DEPRECATED/dgeqrs.f
++++ b/SRC/DEPRECATED/dgeqrs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE DGEQRS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       DOUBLE PRECISION   A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+diff --git a/SRC/DEPRECATED/sgelqs.f b/SRC/DEPRECATED/sgelqs.f
+index 330d4d5850..2b1dd44b71 100644
+--- a/SRC/DEPRECATED/sgelqs.f
++++ b/SRC/DEPRECATED/sgelqs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       REAL               A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE SGELQS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       REAL               A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+diff --git a/SRC/DEPRECATED/sgeqrs.f b/SRC/DEPRECATED/sgeqrs.f
+index ed11489104..bdbad5dcb4 100644
+--- a/SRC/DEPRECATED/sgeqrs.f
++++ b/SRC/DEPRECATED/sgeqrs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       REAL               A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE SGEQRS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       REAL               A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+diff --git a/SRC/DEPRECATED/zgelqs.f b/SRC/DEPRECATED/zgelqs.f
+index 5f629f8c7e..772165dfd9 100644
+--- a/SRC/DEPRECATED/zgelqs.f
++++ b/SRC/DEPRECATED/zgelqs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       COMPLEX*16         A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE ZGELQS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       COMPLEX*16         A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+diff --git a/SRC/DEPRECATED/zgeqrs.f b/SRC/DEPRECATED/zgeqrs.f
+index 6583e38591..cc33a45fc1 100644
+--- a/SRC/DEPRECATED/zgeqrs.f
++++ b/SRC/DEPRECATED/zgeqrs.f
+@@ -16,7 +16,7 @@
+ *       ..
+ *       .. Array Arguments ..
+ *       COMPLEX*16         A( LDA, * ), B( LDB, * ), TAU( * ),
+-*      $                   WORK( LWORK )
++*      $                   WORK( * )
+ *       ..
+ *
+ *
+@@ -128,7 +128,7 @@ SUBROUTINE ZGEQRS( M, N, NRHS, A, LDA, TAU, B, LDB, WORK, LWORK,
+ *     ..
+ *     .. Array Arguments ..
+       COMPLEX*16         A( LDA, * ), B( LDB, * ), TAU( * ),
+-     $                   WORK( LWORK )
++     $                   WORK( * )
+ *     ..
+ *
+ *  =====================================================================
+
