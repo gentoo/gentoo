@@ -18,7 +18,7 @@
 		start up from script.
 	</longdescription>
 	<upstream>
-		<doc>http://www.netpatch.ru/en/dhcdrop.html</doc>
+		<doc>http://www.netpatch.ru/devel/dhcdrop/</doc>
 		<bugs-to>mailto:roma@ultranet.ru</bugs-to>
 	</upstream>
 </pkgmetadata>
