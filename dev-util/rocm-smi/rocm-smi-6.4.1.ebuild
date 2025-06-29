@@ -20,7 +20,7 @@ else
 	S="${WORKDIR}/rocm_smi_lib-rocm-${PV}"
 fi
 
-LICENSE="MIT NCSA-AMD"
+LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
