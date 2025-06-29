@@ -8,4 +8,12 @@
 	<upstream>
 		<remote-id type="github">mattthias/slurm</remote-id>
 	</upstream>
+	<longdescription>
+	Generic network load monitor for *BSD, Linux, HP-UX and Solaris witgh the next features:
+	* "realtime" traffic statistics
+	* three graph modes: combined RX and TX and two split views
+	* can monitor any network device
+	* curses ascii graphics
+	* ascii theme support
+	</longdescription>
 </pkgmetadata>
