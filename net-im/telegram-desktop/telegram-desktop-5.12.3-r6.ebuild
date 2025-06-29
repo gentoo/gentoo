@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit xdg cmake python-any-r1 optfeature flag-o-matic
 
@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 	"${FILESDIR}"/tdesktop-5.12.3-fix-webview.patch
+	"${FILESDIR}"/tdesktop-5.12.3-qt-namechange.patch
 )
 
 pkg_pretend() {
