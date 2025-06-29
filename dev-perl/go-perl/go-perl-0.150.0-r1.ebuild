@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 DIST_VERSION=0.15
 DIST_AUTHOR="CMUNGALL"
 DEB_PATCH_VER="7"
@@ -15,7 +16,6 @@ SRC_URI="${SRC_URI}
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND=">=dev-perl/Data-Stag-0.11"
 BDEPEND="${RDEPEND}"
