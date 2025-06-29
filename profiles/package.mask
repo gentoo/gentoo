@@ -326,13 +326,6 @@ dev-libs/libxml2-compat
 # Unmask it after it is properly tested & fixed
 =app-misc/screen-5*
 
-# Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
-# Upstream is dead and broken. All 'whatsapp' deps
-# will be last-rited on 2025-04-28.
-# Bug #952588 #952589
-net-im/transwhat
-net-im/yowsup
-
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
 >=dev-build/xfce4-dev-tools-4.21
