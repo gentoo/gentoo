@@ -6,8 +6,8 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="OpenSMTPD filter for signing mail with DKIM"
-HOMEPAGE="https://imperialat.at/dev/filter-dkimsign/"
-SRC_URI="https://imperialat.at/releases/filter-dkimsign-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://src.imperialat.at/?action=summary&path=filter-dkimsign.git"
+SRC_URI="https://src.imperialat.at/releases/filter-dkimsign-${PV}.tar.gz -> ${P}-new.tar.gz"
 S=${WORKDIR}/${P#opensmtpd-}
 
 LICENSE="BSD"
@@ -15,13 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	mail-filter/libopensmtpd
+	>=mail-filter/libopensmtpd-1
 	dev-libs/openssl
 	"
 RDEPEND="${DEPEND}"
-PATCHES=(
-	"${FILESDIR}/${PN}-0.6-ed25519.patch"
-)
 
 src_prepare() {
 	default
