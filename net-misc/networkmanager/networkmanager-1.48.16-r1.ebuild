@@ -1,19 +1,25 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-GNOME_ORG_MODULE="NetworkManager"
-PYTHON_COMPAT=( python3_{10..12} )
 
-inherit gnome.org linux-info meson-multilib flag-o-matic python-any-r1 readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
+MY_PN="NetworkManager"
+PYTHON_COMPAT=( python3_{10..13} )
+
+inherit linux-info meson-multilib flag-o-matic python-any-r1 \
+		readme.gentoo-r1 systemd toolchain-funcs udev vala virtualx
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
-HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
+HOMEPAGE="https://networkmanager.dev"
+SRC_URI="https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/${PV}/downloads/${MY_PN}-${PV}.tar.xz"
+S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 
-IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+
+IUSE="audit bluetooth connection-sharing +curl debug dhclient dhcpcd elogind gnutls +gtk-doc +introspection iptables iwd psl libedit nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -24,23 +30,20 @@ REQUIRED_USE="
 	test? ( tools )
 	vala? ( introspection )
 	wext? ( wifi )
-	^^ ( gnutls nss )
 	?? ( elogind systemd )
 	?? ( dhclient dhcpcd )
 	?? ( syslog systemd )
 "
 
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
-
 COMMON_DEPEND="
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	elogind? ( >=sys-auth/elogind-219 )
-	>=virtual/libudev-175:=[${MULTILIB_USEDEP}]
+	elogind? ( sys-auth/elogind )
+	virtual/libudev:=[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	net-libs/libndp
-	systemd? ( >=sys-apps/systemd-209:0= )
-	>=dev-libs/glib-2.42:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
+	systemd? ( sys-apps/systemd:= )
+	dev-libs/glib:2[${MULTILIB_USEDEP}]
+	introspection? ( dev-libs/gobject-introspection:= )
 	selinux? (
 		sec-policy/selinux-networkmanager
 		sys-libs/libselinux
@@ -50,18 +53,16 @@ COMMON_DEPEND="
 		>=dev-libs/jansson-2.7:=
 		>=net-misc/libteam-1.9
 	)
-	policykit? ( >=sys-auth/polkit-0.106 )
-	nss? (
+	policykit? ( sys-auth/polkit )
+	gnutls? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	!gnutls? (
 		dev-libs/nspr[${MULTILIB_USEDEP}]
 		>=dev-libs/nss-3.11[${MULTILIB_USEDEP}]
-	)
-	gnutls? (
-		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}]
 	)
 	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6(+)] )
 	modemmanager? (
 		net-misc/mobile-broadband-provider-info
-		>=net-misc/modemmanager-0.7.991:0=
+		net-misc/modemmanager:=
 	)
 	bluetooth? ( >=net-wireless/bluez-5:= )
 	ofono? ( net-misc/ofono )
@@ -75,7 +76,7 @@ COMMON_DEPEND="
 		nftables? ( net-firewall/nftables )
 	)
 	psl? ( net-libs/libpsl )
-	concheck? ( net-misc/curl )
+	curl? ( net-misc/curl )
 	tools? (
 		>=dev-libs/newt-0.52.15
 		libedit? ( dev-libs/libedit )
@@ -89,7 +90,7 @@ RDEPEND="${COMMON_DEPEND}
 		net-analyzer/arping
 	)
 	wifi? (
-		!iwd? ( >=net-wireless/wpa_supplicant-0.7.3-r3[dbus] )
+		!iwd? ( net-wireless/wpa_supplicant[dbus] )
 		iwd? ( net-wireless/iwd )
 	)
 "
@@ -105,7 +106,7 @@ BDEPEND="
 		dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.1.2
 	)
-	>=sys-devel/gettext-0.17
+	sys-devel/gettext
 	virtual/pkgconfig
 	introspection? (
 		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
@@ -120,6 +121,10 @@ BDEPEND="
 			dev-python/pygobject:3[${PYTHON_USEDEP}]')
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/networkmanager-1.48.4-fix-libsystemdless-build.patch
+)
 
 python_check_deps() {
 	if use introspection; then
@@ -153,10 +158,7 @@ src_prepare() {
 	default
 	use vala && vala_setup
 
-	sed -i \
-		-e 's#/usr/bin/sed#/bin/sed#' \
-		data/84-nm-drivers.rules \
-		|| die
+	sed -i 's#/usr/bin/sed#/bin/sed#' data/84-nm-drivers.rules || die
 }
 
 meson_nm_program() {
@@ -202,7 +204,7 @@ multilib_src_configure() {
 		-Dpppd=/usr/sbin/pppd
 		$(meson_native_use_bool modemmanager modem_manager)
 		$(meson_native_use_bool ofono)
-		$(meson_native_use_bool concheck)
+		$(meson_native_use_bool curl concheck)
 		$(meson_native_use_bool teamd teamdctl)
 		$(meson_native_use_bool ovs)
 		$(meson_native_use_bool tools nmcli)
@@ -238,6 +240,8 @@ multilib_src_configure() {
 		-Dld_gc=false
 		$(meson_native_use_bool psl libpsl)
 		-Dqt=false
+
+		-Dcrypto=$(usex gnutls gnutls nss)
 	)
 
 	if multilib_is_native_abi && use systemd; then
@@ -270,13 +274,7 @@ multilib_src_configure() {
 		emesonargs+=( -Dconfig_dhcp_default=internal )
 	fi
 
-	if use nss; then
-		emesonargs+=( -Dcrypto=nss )
-	else
-		emesonargs+=( -Dcrypto=gnutls )
-	fi
-
-	if use tools ; then
+	if use tools; then
 		emesonargs+=( -Dreadline=$(usex libedit libedit libreadline) )
 	else
 		emesonargs+=( -Dreadline=none )
@@ -308,9 +306,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	! use systemd && readme.gentoo_create_doc
+	use systemd || readme.gentoo_create_doc
 
-	newinitd "${FILESDIR}/init.d.NetworkManager-r2" NetworkManager
+	newinitd "${FILESDIR}/init.d.NetworkManager-r3" NetworkManager
 	newconfd "${FILESDIR}/conf.d.NetworkManager" NetworkManager
 
 	# Need to keep the /etc/NetworkManager/dispatched.d for dispatcher scripts
@@ -354,7 +352,7 @@ pkg_postinst() {
 	udev_reload
 
 	systemd_reenable NetworkManager.service
-	! use systemd && readme.gentoo_print_elog
+	use systemd || readme.gentoo_print_elog
 
 	if [[ -e "${EROOT}/etc/NetworkManager/nm-system-settings.conf" ]]; then
 		ewarn "The ${PN} system configuration file has moved to a new location."
