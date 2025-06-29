@@ -136,6 +136,7 @@ sci-mathematics/boolector
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
 >=dev-python/pygobject-3.52
+>=net-im/gajim-2.3.0
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Dead upstream, fails to compile with gcc 15 and cmake 4.
