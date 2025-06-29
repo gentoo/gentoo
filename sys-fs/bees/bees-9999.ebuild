@@ -34,30 +34,11 @@ ERROR_BTRFS_FS="CONFIG_BTRFS_FS: bees does currently only work with btrfs"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
-		if kernel_is -lt 4 11; then
-			ewarn "With kernel versions below 4.11, bees may severely degrade system performance"
-			ewarn "and responsiveness. Especially, the kernel may deadlock while bees is"
-			ewarn "running, it's recommended to run at least kernel 4.11."
-			ewarn
-		elif kernel_is -lt 4 14 29; then
-			ewarn "With kernel versions below 4.14.29, bees may generate a lot of bogus WARN_ON()"
-			ewarn "messages in the kernel log. These messages can be ignored and this is fixed"
-			ewarn "with more recent kernels:"
-			ewarn "# WARNING: CPU: 3 PID: 18172 at fs/btrfs/backref.c:1391 find_parent_nodes+0xc41/0x14e0"
-			ewarn
-		elif kernel_is -lt 5 7 0; then
+		if kernel_is -lt 5 7; then
 			ewarn "With kernel versions below 5.4.96 and 5.7, the kernel may hold file system"
 			ewarn "locks for a long time while at the same time CPU usage increases when bees is"
 			ewarn "operating. bees tries to avoid this behavior by excluding very common extents"
 			ewarn "from deduplication. This has only a minimal impact on dedupe effectiveness."
-			ewarn
-		fi
-		if kernel_is -lt 5 1 0; then
-			ewarn "IMPORTANT: With kernel versions below 5.1.0, you may experience data corruption"
-			ewarn "due to bees using compression in btrfs. You are adviced to use a chronologically"
-			ewarn "later kernel, that includes older LTS versions released after 5.0.4:"
-			ewarn "Fixed in: 5.1+, 5.0.4+, 4.19.31+, 4.14.108+, 4.9.165+, 4.4.177+, 3.18.137+"
-			ewarn "# commit 8e92821 btrfs: fix corruption reading shared and compressed extents after hole punching"
 			ewarn
 		fi
 		if kernel_is -lt 5 4 19; then
@@ -80,9 +61,10 @@ pkg_pretend() {
 			fi
 		fi
 		if kernel_is -lt 5.7; then
-			ewarn "WARNING: Kernel versions lower than 5.7 are no longer really supported by"
-			ewarn "bees. While there should be no unexpected data loss, you may experience"
-			ewarn "severe slowdowns or even system lockups."
+			ewarn "WARNING: Starting with bees v0.11, kernel versions below 5.7 (except 5.4 LTS)"
+			ewarn "are no longer supported. Using bees with such kernels may introduce kernel"
+			ewarn "crashes, system hangs, or data corruption. Please DO NOT runs bees with such"
+			ewarn "kernels. You will be using bees AT YOUR OWN RISK!"
 			ewarn
 		fi
 	fi
