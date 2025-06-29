@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=CLKAO
 DIST_VERSION=0.11
@@ -11,10 +11,8 @@ DESCRIPTION="IO::Digest - Calculate digests while reading or writing"
 
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
-RDEPEND=">=dev-perl/PerlIO-via-dynamic-0.10
-	virtual/perl-Digest"
+RDEPEND=">=dev-perl/PerlIO-via-dynamic-0.10"
 BDEPEND="${RDEPEND}"
 
 src_prepare() {
