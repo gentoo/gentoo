@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=ECHERNOF
 DIST_VERSION=0.21
@@ -11,8 +11,6 @@ DESCRIPTION="Perl interface to the htmldoc program for producing PDF-Files from 
 
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="app-text/htmldoc
 	>=dev-perl/Devel-CheckBin-0.40.0
