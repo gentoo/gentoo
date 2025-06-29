@@ -1,0 +1,52 @@
+From 4cccc52622cc1a96032ff22ac41d362e4ff7fdce Mon Sep 17 00:00:00 2001
+From: Natanael Copa <ncopa@alpinelinux.org>
+Date: Wed, 21 May 2025 15:12:20 +0200
+Subject: [PATCH] Issue #13657: fix build dependencies
+
+We need the gir and plugins to be able to generate the splash image(s).
+Add those as dependencies to gimp executable to ensure they are there
+when needed.
+
+Fixes: https://gitlab.gnome.org/GNOME/gimp/-/issues/13657
+---
+ meson.build                 | 2 +-
+ plug-ins/common/meson.build | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index d408232e9e..7780a5869f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1980,7 +1980,7 @@ if meson.can_run_host_binaries() and have_gobject_introspection
+   else
+     gimp_real_exe = gimpmain_exe
+   endif
+-  gimp_exe_depends = [gimp_real_exe]
++  gimp_exe_depends = [gimp_real_exe, libgimp_gir, libgimpui_gir] + plugin_custom_targets
+   gimp_run_env.set('GIMP_SELF_IN_BUILD', gimp_real_exe.full_path())
+ 
+   menu_paths=meson.global_build_root() / 'menus:' + meson.global_source_root() / 'menus'
+diff --git a/plug-ins/common/meson.build b/plug-ins/common/meson.build
+index b6aa62d895..e172603779 100644
+--- a/plug-ins/common/meson.build
++++ b/plug-ins/common/meson.build
+@@ -186,6 +186,7 @@ if get_option('webkit-unmaintained')
+   }
+ endif
+ 
++plugin_custom_targets = []
+ foreach plugin : common_plugins_list
+   plugin_name = plugin.get('name')
+   plugin_sources = [ plugin.get('sources', plugin_name + '.c') ]
+@@ -243,7 +244,7 @@ foreach plugin : common_plugins_list
+ 
+   # Ugly trick to copy executables into subfolders so that we can run GIMP from
+   # the build directory without installing it.
+-  custom_target('test-' + plugin_name,
++  plugin_custom_targets += custom_target('test-' + plugin_name,
+                 input: [ plugin_exe ],
+                 output: [ plugin_name + '.dummy' ],
+                 command: [ python, meson.project_source_root() / 'build/meson/cp-plug-in-subfolder.py',
+-- 
+GitLab
+
