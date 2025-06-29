@@ -26,6 +26,7 @@
 	</longdescription>
 	<use>
 		<flag name="l0">Install the oneAPI Level Zero driver alongside the OpenCL one</flag>
+		<flag name="disable-mitigations">This will disable spectre mitigation, which can speed up the performance.</flag>
 		<flag name="vaapi">Support the sharing of surfaces with Video Acceleration API (OpenCL Extension #36)</flag>
 	</use>
 	<upstream>
