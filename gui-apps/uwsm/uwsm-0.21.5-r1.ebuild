@@ -25,6 +25,7 @@ DEPEND="
 	')
 "
 RDEPEND="${DEPEND}"
+BDEPEND="man? ( app-text/scdoc )"
 
 src_configure() {
 	local emesonargs=(
