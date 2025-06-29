@@ -30,6 +30,10 @@ BDEPEND="
 "
 RDEPEND="!dev-util/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-buf_sz.patch
+)
+
 src_prepare() {
 	default
 
