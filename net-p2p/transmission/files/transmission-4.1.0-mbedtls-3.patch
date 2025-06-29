@@ -1,0 +1,59 @@
+From https://github.com/transmission/transmission/pull/7631
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 26 Jun 2025 18:59:19 +0300
+Subject: [PATCH 1/2] Generate imported targets for MbedTLS
+
+This change allows to use MbedTLS 3.6 config module without significant
+code alteration which simplifies integration with future versions of
+MbedTLS.
+
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -298,8 +298,7 @@ if(WITH_CRYPTO STREQUAL "AUTO" OR WITH_CRYPTO STREQUAL "mbedtls")
+     tr_fixup_list_option(WITH_CRYPTO "mbedtls" MBEDTLS_FOUND "AUTO" MBEDTLS_IS_REQUIRED)
+     if(WITH_CRYPTO STREQUAL "mbedtls")
+         set(CRYPTO_PKG "mbedtls")
+-        set(CRYPTO_INCLUDE_DIRS ${MBEDTLS_INCLUDE_DIRS})
+-        set(CRYPTO_LIBRARIES ${MBEDTLS_LIBRARIES})
++        set(CRYPTO_LIBRARIES MbedTLS::mbedtls MbedTLS::mbedcrypto)
+     endif()
+ endif()
+ 
+--- a/cmake/FindMbedTLS.cmake
++++ b/cmake/FindMbedTLS.cmake
+@@ -43,6 +43,22 @@ find_package_handle_standard_args(MbedTLS
+         MBEDTLS_INCLUDE_DIR
+     VERSION_VAR MBEDTLS_VERSION)
+ 
++if(MBEDTLS_LIBRARY AND NOT TARGET MbedTLS::mbedtls)
++    add_library(MbedTLS::mbedtls UNKNOWN IMPORTED)
++    set_target_properties(MbedTLS::mbedtls PROPERTIES
++        IMPORTED_LOCATION ${MBEDTLS_LIBRARY}
++        INTERFACE_INCLUDE_DIRECTORIES ${MBEDTLS_INCLUDE_DIR}
++    )
++endif()
++
++if(MBEDCRYPTO_LIBRARY AND NOT TARGET MbedTLS::mbedcrypto)
++    add_library(MbedTLS::mbedcrypto UNKNOWN IMPORTED)
++    set_target_properties(MbedTLS::mbedcrypto PROPERTIES
++        IMPORTED_LOCATION ${MBEDCRYPTO_LIBRARY}
++        INTERFACE_INCLUDE_DIRECTORIES ${MBEDTLS_INCLUDE_DIR}
++    )
++endif()
++
+ mark_as_advanced(MBEDTLS_INCLUDE_DIR MBEDTLS_LIBRARY MBEDCRYPTO_LIBRARY)
+ 
+ if(MBEDTLS_PREFER_STATIC_LIB)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,7 +49,7 @@ set(GLIBMM_MINIMUM 2.60.0)
+ set(GTKMM3_MINIMUM 3.24.0)
+ set(GTKMM4_MINIMUM 4.11.1)
+ set(OPENSSL_MINIMUM 1.1.0)
+-set(MBEDTLS_MINIMUM 1.3)
++set(MBEDTLS_MINIMUM 3.6)
+ set(NPM_MINIMUM 8.1.307) # Node.js 14
+ set(PSL_MINIMUM 0.21.1)
+ set(QT_MINIMUM 5.6)
