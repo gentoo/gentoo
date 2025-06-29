@@ -1,7 +1,7 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=SHLOMIF
 DIST_VERSION=0.76
@@ -11,8 +11,6 @@ inherit perl-module
 DESCRIPTION="Convert or render graphs (as ASCII, HTML, SVG or via Graphviz)"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Scalar-List-Utils-1.130.0
