@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=REHSACK
 DIST_VERSION=0.06
@@ -12,8 +12,6 @@ DESCRIPTION="Provide the stuff missing in Hash::Util"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND=""
 BDEPEND="${RDEPEND}
