@@ -15,7 +15,7 @@ cargo_ver_check() {
 
 	# Maximum value for "edition" across Cargo.toml files
 	local cargo_toml_edition=$(
-		find "${S}" -name Cargo.toml -exec sed -n -e 's/^\s*edition\s*=\s*"\([0-9]*\)"\s*$/\1/p' {} \+ |
+		find "${WORKDIR}" -name Cargo.toml -exec sed -n -e 's/^\s*edition\s*=\s*"\([0-9]*\)"\s*$/\1/p' {} \+ |
 		sort -n |
 		tail -n 1
 	)
@@ -27,6 +27,19 @@ cargo_ver_check() {
 			eqawarn "which requires RUST_MIN_VER=\"${min_rust_ver}\""
 			eqawarn
 		fi
+	fi
+
+	# Maximum value for "rust-version" across Cargo.toml files
+	local cargo_toml_rust_version=$(
+		find "${WORKDIR}" -name Cargo.toml -exec sed -n -e 's/^\s*rust-version\s*=\s*"\([0-9.]*\)"\s*$/\1/p' {} \+ |
+		sort -V |
+		tail -n 1
+	)
+	if [[ -n ${cargo_toml_rust_version} ]] && ver_test "${RUST_MIN_VER:-0}" -lt "${cargo_toml_rust_version}"; then
+		eqawarn
+		eqawarn "QA Notice: found Cargo.toml file which specifies rust-version=\"${cargo_toml_rust_version}\""
+		eqawarn "which requires RUST_MIN_VER=\"${cargo_toml_rust_version}\""
+		eqawarn
 	fi
 }
 
