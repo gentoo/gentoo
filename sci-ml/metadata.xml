@@ -3,11 +3,16 @@
 <catmetadata>
 	<longdescription lang="en">
 		The sci-ml category contains software and models that can be used
-		for machine learning, natural language processing and similar
+		for machine learning, natural language processing and similar.
 	</longdescription>
 	<longdescription lang="it">
 		La categoria sci-ml contiene programmi e modelli che possono essere
 		usati per l'apprendimento automatico, elaborazione del linguaggio
-		naturale e similari
+		naturale e similari.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie sci-ml enthält Software und Modelle, die für maschinelles
+		Lernen, linguistische Datenverarbeitung und Ähnliches verwendet werden
+		können.
 	</longdescription>
 </catmetadata>
