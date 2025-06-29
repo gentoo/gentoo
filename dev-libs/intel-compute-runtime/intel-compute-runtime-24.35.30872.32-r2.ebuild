@@ -46,6 +46,8 @@ BDEPEND="virtual/pkgconfig"
 
 DOCS=( "README.md" "FAQ.md" )
 
+PATCHES=( "${FILESDIR}/${PN}-24.35.30872.32-gcc15.patch" )
+
 src_prepare() {
 	# Remove '-Werror' from default
 	sed -e '/Werror/d' -i CMakeLists.txt || die
