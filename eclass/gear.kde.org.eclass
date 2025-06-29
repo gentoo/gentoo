@@ -305,7 +305,8 @@ if $(ver_test -gt 25.07.50); then
 	case ${PN} in
 		artikulate | \
 		kig | \
-		kqtquickcharts)
+		kqtquickcharts | \
+		ktouch)
 			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
 		*) ;;
 	esac
