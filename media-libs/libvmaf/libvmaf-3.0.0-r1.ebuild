@@ -16,6 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="
 		https://github.com/Netflix/vmaf/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/Netflix/vmaf/commit/85098c0bd6d4accc56013471f0bc05d1f12e7c79.patch -> ${PN}-3.0.0-PR1397.patch
 	"
 	KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 	S="${WORKDIR}/vmaf-${PV}"
@@ -56,6 +57,8 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.0-cuda-inc-dirs.patch"
 	"${FILESDIR}/${PN}-3.0.0-nvtx3-is-header-only.patch"
+	"${FILESDIR}/${PN}-3.0.0-cuda-fix-crappy-memory-handling.patch"
+	"${DISTDIR}/${PN}-3.0.0-PR1397.patch"
 )
 
 src_prepare() {

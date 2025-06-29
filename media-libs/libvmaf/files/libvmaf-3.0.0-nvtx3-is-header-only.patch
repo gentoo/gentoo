@@ -1,0 +1,23 @@
+From 9e7ae6b3e4a2fcf9a28be259c02c92fb112ebcfd Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 29 Jun 2025 15:45:37 +0200
+Subject: [PATCH 2/3] nvtx3 is header-only
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/libvmaf/src/meson.build b/libvmaf/src/meson.build
+index f78e359..154e608 100644
+--- a/libvmaf/src/meson.build
++++ b/libvmaf/src/meson.build
+@@ -308,7 +308,7 @@ if is_cuda_enabled
+     else
+         if is_nvtx_enabled
+                 cuda_flags += ['-lineinfo']
+-                cuda_dependency += declare_dependency(link_args : ['-lnvToolsExt'])
++                # cuda_dependency += declare_dependency(link_args : ['-lnvToolsExt'])
+         endif
+     endif
+ 
+-- 
+2.50.0
+
