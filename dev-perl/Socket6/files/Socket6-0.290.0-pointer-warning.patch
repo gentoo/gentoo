@@ -1,0 +1,12 @@
+https://rt.cpan.org/Public/Bug/Display.html?id=116784
+--- a/Socket6.xs
++++ b/Socket6.xs
+@@ -109,7 +109,7 @@ const struct in6_addr in6addr_loopback = IN6ADDR_LOOPB
+ #define        PL_sv_undef             sv_undef
+ #endif
+ 
+-static int
++static long
+ not_here(char *s)
+ {
+     croak("Socket6::%s not implemented on this architecture", s);
