@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit autotools flag-o-matic python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="https://github.com/dell/libsmbios"
@@ -67,9 +67,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# Remove -O3 for bug #290097
-	replace-flags -O3 -O2
-
 	local myeconfargs=(
 		$(use_enable doc doxygen)
 		$(use_enable graphviz)
