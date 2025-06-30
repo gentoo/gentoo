@@ -118,6 +118,9 @@ qt6-build_src_unpack() {
 # QT6_PREFIX, QT6_LIBDIR, and others), and handle anything else
 # generic as needed.
 qt6-build_src_prepare() {
+	# Qt has quite a lot of unused (false positive) CMakeLists.txt
+	local CMAKE_QA_COMPAT_SKIP=1
+
 	cmake_src_prepare
 
 	if [[ -e CMakeLists.txt ]]; then
@@ -177,9 +180,6 @@ qt6-build_src_configure() {
 	else
 		local mycmakeargs=("${defaultcmakeargs[@]}")
 	fi
-
-	# Qt has quite a lot of unused (false positive) CMakeLists.txt
-	local CMAKE_QA_COMPAT_SKIP=1
 
 	cmake_src_configure
 }
