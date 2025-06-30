@@ -1,0 +1,43 @@
+https://github.com/apache/mod_perl/commit/ead5012b9f8bca08415f39e15226dbc6112a9538
+
+From ead5012b9f8bca08415f39e15226dbc6112a9538 Mon Sep 17 00:00:00 2001
+From: Joe Orton <jorton@apache.org>
+Date: Tue, 6 Feb 2024 08:33:52 +0000
+Subject: [PATCH] * src/modules/perl/modperl_common_util.c
+ (modperl_table_magic_copy):   Use I32 rather than int for 'namelen' argument,
+ fixing an   incompatible function pointer error/warning in a 32-bit build:
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+modperl_common_util.c:57:53: error: initialization of ‘int (*)(PerlInterpreter *, SV *, MAGIC *, SV *, const char *, I32)’ {aka ‘int (*)(struct interpreter *, struct sv *, struct magic *, struct sv *, const char *, long int)’} from incompatible pointer type ‘int (*)(PerlInterpreter *, SV *, MAGIC *, SV *, const char *, int)’ {aka ‘int (*)(struct interpreter *, struct sv *, struct magic *, struct sv *, const char *, int)’} [-Wincompatible-pointer-types]
+   57 |                                                     modperl_table_magic_copy};
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~
+
+Checked back to Perl 5.14.x which has I32 (a typedef of long int on
+i686) rather than int in the prototype for the svt_copy function
+pointer in MGVTBL, so I32 appears to have been always correct here:
+
+int  (*svt_copy)(SV *sv, MAGIC* mg, SV *nsv, const char *name, I32 namlen);
+
+per https://perldoc.perl.org/5.14.0/perlguts
+
+
+git-svn-id: https://svn.apache.org/repos/asf/perl/modperl/trunk@1915593 13f79535-47bb-0310-9956-ffa450edef68
+---
+ src/modules/perl/modperl_common_util.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/perl/modperl_common_util.c b/src/modules/perl/modperl_common_util.c
+index c5f285f9d..461750f2f 100644
+--- a/src/modules/perl/modperl_common_util.c
++++ b/src/modules/perl/modperl_common_util.c
+@@ -41,7 +41,7 @@
+ 
+ MP_INLINE static
+ int modperl_table_magic_copy(pTHX_ SV *sv, MAGIC *mg, SV *nsv,
+-                             const char *name, int namelen)
++                             const char *name, I32 namelen)
+ {
+     /* prefetch the value whenever we're iterating over the keys */
+     MAGIC *tie_magic = mg_find(nsv, PERL_MAGIC_tiedelem);
