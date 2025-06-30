@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson optfeature toolchain-funcs xdg
+inherit meson toolchain-funcs xdg
 
 DESCRIPTION="A free astronomical image processing software"
 HOMEPAGE="https://siril.org/"
@@ -25,11 +25,10 @@ IUSE="curl exif ffmpeg git heif jpeg jpegxl openmp png raw tiff"
 #   gui-libs/gtksourceview if version 5 is supported by upstream.
 DEPEND="
 	>=dev-libs/glib-2.56.0:2
-	>=dev-libs/json-glib-1.2.6
 	>=dev-libs/yyjson-0.10.0:=
 	media-libs/lcms:=
 	media-libs/librtprocess
-	>=media-libs/opencv-4.2.0:=
+	>=media-libs/opencv-4.2.0:=[features2d]
 	>=sci-astronomy/wcslib-7.12:=
 	sci-libs/cfitsio:=
 	sci-libs/fftw:3.0=
@@ -93,5 +92,4 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	optfeature "gnuplot support" sci-visualization/gnuplot
 }
