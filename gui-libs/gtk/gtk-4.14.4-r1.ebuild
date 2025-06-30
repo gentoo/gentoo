@@ -10,13 +10,12 @@ HOMEPAGE="https://www.gtk.org/ https://gitlab.gnome.org/GNOME/gtk/"
 
 LICENSE="LGPL-2+"
 SLOT="4"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="aqua broadway cloudproviders colord cups examples gstreamer +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	test? ( introspection )
 "
-
-KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 
 # TODO: Optional gst build dep on >=gst-plugins-base-1.23.1, so depend on it once we can
 COMMON_DEPEND="
