@@ -1,4 +1,4 @@
-# Copyright 2018-2023 Gentoo Authors
+# Copyright 2018-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ IUSE="ssl"
 # it doesn't make sense enable these configuration options unless the
 # underlying mariadb-connector-c has ssl enabled, thus if we have USE=ssl,
 # require mariadb-connector-c to have it too.
-DEPEND="dev-db/mariadb-connector-c:=[ssl?]
+DEPEND="dev-db/mariadb-connector-c:=[ssl(+)?]
 	dev-db/unixODBC"
 RDEPEND="${DEPEND}"
 
