@@ -8,8 +8,8 @@ inherit flag-o-matic toolchain-funcs
 MY_P="${PN}_$(ver_rs 1- '')_linux"
 
 DESCRIPTION="UCI-only chess engine"
-HOMEPAGE="https://arctrix.com/nas/fruit/"
-SRC_URI="https://arctrix.com/nas/${PN}/${MY_P}.zip"
+HOMEPAGE="https://arctrix.com/nas/chess/fruit/"
+SRC_URI="https://arctrix.com/nas/chess/${PN}/${MY_P}.zip"
 S="${WORKDIR}/${MY_P}/src"
 
 LICENSE="GPL-2+"
