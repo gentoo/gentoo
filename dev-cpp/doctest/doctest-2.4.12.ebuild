@@ -19,15 +19,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.4.11-backport-pr770.patch"
 )
 
+# skip false positive detection in examples, bug #957418
+CMAKE_QA_COMPAT_SKIP=1
+
 src_prepare() {
 	sed -i '/-Werror/d' scripts/cmake/common.cmake || die
 	cmake_src_prepare
 }
 
 src_configure() {
-	# skip false positive detection in examples, bug #957418
-	local CMAKE_QA_COMPAT_SKIP=1
-
 	local mycmakeargs=(
 		-DDOCTEST_WITH_TESTS=$(usex test)
 	)
