@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${PN}_$(ver_rs 1- '')_linux"
 
@@ -25,6 +25,12 @@ src_prepare() {
 }
 
 src_compile() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/941075
+	#
+	# Went commercial, archived by a third-party source in 2007. Nowhere to report.
+	filter-lto
+
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
