@@ -24,7 +24,8 @@ RDEPEND="
 "
 BDEPEND="test? (
 	dev-perl/Test-Exception
-	dev-perl/Test-Perl-Critic )"
+	dev-perl/Test-Perl-Critic
+	dev-perl/Test-Output )"
 
 PATCHES=(
 	# TODO: add Test::NeedsDisplay Perl package and remove this patch (bug #841707)
