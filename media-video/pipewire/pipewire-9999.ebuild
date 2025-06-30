@@ -133,7 +133,7 @@ RDEPEND="
 	echo-cancel? ( >=media-libs/webrtc-audio-processing-1.2:1 )
 	extra? ( >=media-libs/libsndfile-1.0.20 )
 	ffmpeg? ( media-video/ffmpeg:= )
-	fftw? ( sci-libs/fftw:3.0= )
+	fftw? ( sci-libs/fftw:3.0=[${MULTILIB_USEDEP}] )
 	flatpak? ( dev-libs/glib )
 	gstreamer? (
 		>=dev-libs/glib-2.32.0:2
