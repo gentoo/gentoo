@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools dot-a
 
 MY_PV="${PV/_/-}"
 
@@ -38,6 +38,11 @@ src_prepare() {
 	touch ar-lib || die #775746
 }
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_compile() {
 	emake
 	emake utils
@@ -67,6 +72,8 @@ src_install() {
 
 	# examples
 	dodoc -r examples
+
+	strip-lto-bytecode
 }
 
 pkg_postinst() {
