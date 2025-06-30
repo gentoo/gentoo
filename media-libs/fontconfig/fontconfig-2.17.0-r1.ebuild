@@ -72,6 +72,7 @@ PATCHES=(
 
 	# Patches from upstream (can usually be removed with next version bump)
 	"${FILESDIR}"/${PN}-2.17.0-macro-preprocess.patch
+	"${FILESDIR}"/${PN}-2.17.0-crash.patch
 )
 
 DOC_CONTENTS="Please make fontconfig configuration changes using
