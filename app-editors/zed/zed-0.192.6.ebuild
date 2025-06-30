@@ -12,10 +12,9 @@ declare -A GIT_CRATES=(
 	[alacritty_terminal]='https://github.com/zed-industries/alacritty;828457c9ff1f7ea0a0469337cc8a37ee3a1b0590;alacritty-%commit%/alacritty_terminal'
 	[async-pipe]='https://github.com/zed-industries/async-pipe-rs;82d00a04211cf4e1236029aa03e6b6ce2a74c553;async-pipe-rs-%commit%'
 	[async-stripe]='https://github.com/zed-industries/async-stripe;3672dd4efb7181aa597bf580bf5a2f5d23db6735;async-stripe-%commit%'
-	[blade-graphics]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-graphics'
-	[blade-macros]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-macros'
-	[blade-util]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-util'
-	[cpal]='https://github.com/zed-industries/cpal;fd8bc2fd39f1f5fdee5a0690656caff9a26d9d50;cpal-%commit%'
+	[blade-graphics]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-graphics'
+	[blade-macros]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-macros'
+	[blade-util]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-util'
 	[dap-types]='https://github.com/zed-industries/dap-types;b40956a7f4d1939da67429d941389ee306a3a308;dap-types-%commit%/dap-types'
 	[font-kit]='https://github.com/zed-industries/font-kit;5474cfad4b719a72ec8ed2cb7327b2b01fd10568;font-kit-%commit%'
 	[jj-lib-proc-macros]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib/proc-macros'
@@ -188,18 +187,13 @@ src_prepare() {
 	envsubst < "crates/zed/resources/zed.desktop.in" > ${APP_ID}.desktop || die
 
 	# Cargo offline fetch workaround
-	local CPAL_COMMIT="fd8bc2fd39f1f5fdee5a0690656caff9a26d9d50"
-	local CPAL_GIT="git = \"https://github.com/zed-industries/cpal\", rev = \"${CPAL_COMMIT}\""
-	local CPAL_PATH="path = \"${WORKDIR}/cpal-${CPAL_COMMIT}\""
-
 	local NOTIFY_COMMIT="bbb9ea5ae52b253e095737847e367c30653a2e96"
 	local NOTIFY_GIT="notify = { git = \"https://github.com/zed-industries/notify.git\", rev = \"${NOTIFY_COMMIT}\""
 	local NOTIFY_PATH="notify = \\{ path = \"${WORKDIR}/notify-${NOTIFY_COMMIT}/notify\""
 	local NOTIFY_TYPES_GIT="notify-types = { git = \"https://github.com/zed-industries/notify.git\", rev = \"${NOTIFY_COMMIT}\""
 	local NOTIFY_TYPES_PATH="notify-types = \\{ path = \"${WORKDIR}/notify-${NOTIFY_COMMIT}/notify-types\""
 
-	sed -e "s#${CPAL_GIT}#${CPAL_PATH}#" \
-		-e "s#${NOTIFY_GIT}#${NOTIFY_PATH}#" \
+	sed -e "s#${NOTIFY_GIT}#${NOTIFY_PATH}#" \
 		-e "s#${NOTIFY_TYPES_GIT}#${NOTIFY_TYPES_PATH}#" \
 		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
 }
