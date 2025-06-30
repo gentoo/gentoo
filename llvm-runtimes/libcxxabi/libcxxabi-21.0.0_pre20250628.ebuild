@@ -48,7 +48,7 @@ python_check_deps() {
 }
 
 multilib_src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
+	llvm_prepend_path -b "${LLVM_MAJOR}"
 
 	if use clang; then
 		local -x CC=${CTARGET}-clang
