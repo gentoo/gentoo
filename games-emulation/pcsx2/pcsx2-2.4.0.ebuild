@@ -104,7 +104,7 @@ src_prepare() {
 	# relax some version requirements which often get restricted without
 	# a specific need, please report a bug to Gentoo (not upstream) if a
 	# still-available older version is really causing issues
-	sed -e '/find_package(\(Qt6\|SDL3\|plutos?vg\)/s/ [0-9.]*//' \
+	sed -e '/find_package(\(Qt6\|SDL3\)/s/ [0-9.]*//' \
 		-i cmake/SearchForStuff.cmake || die
 
 	# pluto(s)vg likewise often restrict versions and Gentoo also does not
