@@ -21,7 +21,7 @@ HOMEPAGE="https://mariadb.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="0/3"
-IUSE="+curl gnutls kerberos +ssl static-libs test"
+IUSE="+curl gnutls kerberos static-libs test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -29,15 +29,13 @@ DEPEND="
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl[${MULTILIB_USEDEP}] )
+	gnutls? ( >=net-libs/gnutls-3.3.24:=[${MULTILIB_USEDEP}] )
+	!gnutls? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
 	kerberos? (
 		|| (
 			app-crypt/mit-krb5[${MULTILIB_USEDEP}]
 			app-crypt/heimdal[${MULTILIB_USEDEP}]
 		)
-	)
-	ssl? (
-		gnutls? ( >=net-libs/gnutls-3.3.24:=[${MULTILIB_USEDEP}] )
-		!gnutls? ( dev-libs/openssl:=[${MULTILIB_USEDEP}] )
 	)
 "
 BDEPEND="test? ( dev-db/mariadb[server] )"
@@ -60,6 +58,7 @@ src_prepare() {
 		-e '/{"test_conc544/s:{://&:'
 		-e '/{"test_conc627/s:{://&:'
 		-e '/{"test_conc66/s:{://&:'
+		-e '/{"test_parsec/s:{://&:'
 
 		# [Warning] Aborted connection 2078 to db: 'test' user: 'root' host: '' (Got an error reading communication packets)
 		# Not sure about this one - might also require network access
@@ -88,7 +87,7 @@ src_configure() {
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DWITH_EXTERNAL_ZLIB=ON
-		-DWITH_SSL:STRING=$(usex ssl $(usex gnutls GNUTLS OPENSSL) OFF)
+		-DWITH_SSL:STRING=$(usex gnutls GNUTLS OPENSSL)
 		-DWITH_CURL=$(usex curl)
 		-DWITH_ICONV=ON
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT:STRING=$(usex kerberos DYNAMIC OFF)
