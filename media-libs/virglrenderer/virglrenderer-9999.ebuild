@@ -21,7 +21,7 @@ HOMEPAGE="https://virgil3d.github.io/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="static-libs test"
+IUSE="static-libs test venus vaapi video_cards_amdgpu video_cards_asahi video_cards_freedreno"
 # Most of the testsuite cannot run in our sandboxed environment, just don't
 # deal with it for now.
 RESTRICT="!test? ( test ) test"
@@ -29,6 +29,8 @@ RESTRICT="!test? ( test ) test"
 RDEPEND="
 	>=x11-libs/libdrm-2.4.121
 	media-libs/libepoxy
+	venus? ( media-libs/vulkan-loader )
+	vaapi? ( media-libs/libva:= )
 "
 DEPEND="
 	${RDEPEND}
@@ -36,10 +38,17 @@ DEPEND="
 "
 
 src_configure() {
+	local -a gpus=()
+	use video_cards_amdgpu && gpus+=( amdgpu-experimental )
+	use video_cards_asahi && gpus+=( asahi )
+	use video_cards_freedreno && gpus+=( msm )
+
 	local emesonargs=(
-		# TODO: Wire up drm-renderers= (msm, amdgpu-experimental as of 1.1.1)
 		-Ddefault_library=$(usex static-libs both shared)
+		-Ddrm-renderers=$(IFS=,; echo "${gpus[*]}")
 		$(meson_use test tests)
+		$(meson_use venus)
+		$(meson_use vaapi video)
 	)
 
 	meson_src_configure
