@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kalzium/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="solver"
 
 # TODO: IUSE="editor"
