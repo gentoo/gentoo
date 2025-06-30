@@ -47,8 +47,6 @@ python_check_deps() {
 }
 
 multilib_src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	if use clang; then
 		local -x CC=${CTARGET}-clang
 		local -x CXX=${CTARGET}-clang++
@@ -61,6 +59,8 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx"
