@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 LUA_COMPAT=( lua5-1 )
 
-inherit autotools desktop lua-single
+inherit autotools desktop flag-o-matic lua-single
 
 MY_P=${P/lives}
 
@@ -46,6 +46,12 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/946320
+	#
+	# dead since 2011
+	filter-lto
+
 	econf \
 		$(use_enable cheats) \
 		$(use_enable nls)
