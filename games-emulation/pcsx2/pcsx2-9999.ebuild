@@ -90,6 +90,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.309-pluto-pkgconf.patch
 )
 
+CMAKE_QA_COMPAT_SKIP=1 #957976
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -137,7 +139,6 @@ src_configure() {
 		-DLAZY_LOAD_LIBS=no
 	)
 
-	local CMAKE_QA_COMPAT_SKIP=1 #957976
 	cmake_src_configure
 }
 
