@@ -18,7 +18,7 @@ CRATES="
 	bitflags@1.3.2
 	bitflags@2.9.1
 	bstr@1.12.0
-	bumpalo@3.18.1
+	bumpalo@3.19.0
 	cc@1.2.27
 	cfg-if@1.0.1
 	cfg_aliases@0.2.1
@@ -65,14 +65,14 @@ CRATES="
 	iana-time-zone-haiku@0.1.2
 	iana-time-zone@0.1.63
 	ident_case@1.0.1
-	indexmap@2.9.0
+	indexmap@2.10.0
 	is_terminal_polyfill@1.70.1
 	jiff-static@0.2.15
 	jiff@0.2.15
 	js-sys@0.3.77
 	lazy_static@1.5.0
 	libc@0.2.174
-	libredox@0.1.3
+	libredox@0.1.4
 	linux-raw-sys@0.9.4
 	log@0.4.27
 	memchr@2.7.5
@@ -163,7 +163,7 @@ CRATES="
 	zerocopy@0.8.26
 "
 
-MIN_RUST_VER="1.85.0"
+RUST_MIN_VER="1.85.0"
 
 inherit cargo optfeature shell-completion
 
