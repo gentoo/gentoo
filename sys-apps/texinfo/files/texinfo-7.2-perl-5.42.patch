@@ -1,0 +1,60 @@
+https://lists.gnu.org/archive/html/bug-texinfo/2025-01/msg00114.html
+https://cgit.git.savannah.gnu.org/cgit/texinfo.git/commit/?id=f4ac5b857cf59a58d13e103fe5b7d0d5fe2a52a7
+
+From f4ac5b857cf59a58d13e103fe5b7d0d5fe2a52a7 Mon Sep 17 00:00:00 2001
+From: Patrice Dumas <pertusus@free.fr>
+Date: Thu, 30 Jan 2025 14:26:17 +0100
+Subject: * tp/Texinfo/Convert/Converter.pm (output_tree),
+ tp/Texinfo/Convert/LaTeX.pm (output), tp/Texinfo/Convert/IXIN.pm: fix
+ precedence problem between ! and string eq, which leads to a warning with
+ Perl 5.41.7.  Report from Igor Todorovski, details on:
+ https://github.com/Perl/perl5/issues/22954#issuecomment-2623408763
+
+---
+ ChangeLog                       | 8 ++++++++
+ tp/Texinfo/Convert/Converter.pm | 2 +-
+ tp/Texinfo/Convert/IXIN.pm      | 2 +-
+ tp/Texinfo/Convert/LaTeX.pm     | 2 +-
+ 4 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/tp/Texinfo/Convert/Converter.pm b/tp/Texinfo/Convert/Converter.pm
+index a54e1f509e..c0d1359334 100644
+--- a/tp/Texinfo/Convert/Converter.pm
++++ b/tp/Texinfo/Convert/Converter.pm
+@@ -403,7 +403,7 @@ sub output_tree($$)
+ 
+   my $fh;
+   my $encoded_output_file;
+-  if (! $output_file eq '') {
++  if ($output_file ne '') {
+     my $path_encoding;
+     ($encoded_output_file, $path_encoding)
+       = $self->encoded_output_file_name($output_file);
+diff --git a/tp/Texinfo/Convert/IXIN.pm b/tp/Texinfo/Convert/IXIN.pm
+index e5d82a7851..71fa03fbeb 100644
+--- a/tp/Texinfo/Convert/IXIN.pm
++++ b/tp/Texinfo/Convert/IXIN.pm
+@@ -341,7 +341,7 @@ sub output_ixin($$)
+ 
+   my $fh;
+   my $encoded_output_file;
+-  if (! $output_file eq '') {
++  if ($output_file ne '') {
+     my $path_encoding;
+     ($encoded_output_file, $path_encoding)
+       = $self->encoded_output_file_name($output_file);
+diff --git a/tp/Texinfo/Convert/LaTeX.pm b/tp/Texinfo/Convert/LaTeX.pm
+index d4126d217f..9ddf3e0e59 100644
+--- a/tp/Texinfo/Convert/LaTeX.pm
++++ b/tp/Texinfo/Convert/LaTeX.pm
+@@ -1085,7 +1085,7 @@ sub output($$)
+ 
+   my $fh;
+   my $encoded_output_file;
+-  if (! $output_file eq '') {
++  if ($output_file ne '') {
+     my $path_encoding;
+     ($encoded_output_file, $path_encoding)
+       = $self->encoded_output_file_name($output_file);
+-- 
+cgit v1.2.3
