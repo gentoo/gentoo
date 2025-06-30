@@ -60,6 +60,13 @@ distutils_enable_tests pytest
 
 export USE_SYSTEM_TREE_SITTER_BASH=1
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin dependencies
+	sed -i -e 's:~=:>=:' pyproject.toml || die
+}
+
 src_compile() {
 	distutils-r1_src_compile
 
