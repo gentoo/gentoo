@@ -318,15 +318,6 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DCLANG_INCLUDE_DOCS=${build_docs}
 		)
-	else
-		# A few tests compile a native z3 LD_PRELOAD library that does
-		# not respect multilib flags.  Apply a hack to skip these tests
-		# for the time being.
-		# https://github.com/llvm/llvm-project/pull/145731#issuecomment-3015197983
-		mycmakeargs+=(
-			-DZ3_INCLUDE_DIR=/dev/null
-			-DZ3_LIBRARIES=/dev/null
-		)
 	fi
 	if multilib_native_use extra; then
 		mycmakeargs+=(
