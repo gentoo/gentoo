@@ -6,7 +6,7 @@ EAPI=8
 inherit java-vm-2 toolchain-funcs
 
 abi_uri() {
-	local baseuri="https://github.com/adoptium/temurin$(ver_cut 1)-binaries/releases/download/jdk-${MY_PV1}/"
+	local baseuri="https://github.com/adoptium/temurin$(ver_cut 1)-binaries/releases/download/jdk-${MY_PV}/"
 	local musl=
 	local os=linux
 
@@ -22,29 +22,28 @@ abi_uri() {
 
 	echo "${2-$1}? (
 		${musl:+ elibc_musl? ( }
-			${baseuri}/OpenJDK-jdk_${1}_${os}_hotspot_${MY_PV2//+/_}.tar.gz
+			${baseuri}/OpenJDK$(ver_cut 1)U-jdk_${1}_${os}_hotspot_${MY_PV//+/_}.tar.gz
 		${musl:+ ) } )"
 }
 
 MY_PV=${PV/_p/+}
-MY_PV1=${MY_PV/_beta/-ea-beta}
-MY_PV2=${MY_PV1/-beta/}
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"
 SRC_URI="
 	$(abi_uri aarch64 arm64)
-	$(abi_uri aarch64 arm64 musl)
+	$(abi_uri aarch64 arm64-macos)
+	$(abi_uri arm)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 	$(abi_uri x64 amd64 musl)
-	$(abi_uri riscv64 riscv)
+	$(abi_uri x64 x64-macos)
 "
-S="${WORKDIR}/jdk-${MY_PV%_beta}"
+S="${WORKDIR}/jdk-${MY_PV}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT=$(ver_cut 1)
-#	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm arm64 ppc64 ~x64-macos"
 IUSE="alsa cups headless-awt selinux source"
 
 RDEPEND="
@@ -88,6 +87,9 @@ src_unpack() {
 src_install() {
 	local dest="/opt/${P}"
 	local ddest="${ED}/${dest#/}"
+
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
 
 	# on macOS if they would exist they would be called .dylib, but most
 	# importantly, there are no different providers, so everything

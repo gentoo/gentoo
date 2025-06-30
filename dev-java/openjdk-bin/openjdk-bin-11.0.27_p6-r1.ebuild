@@ -32,12 +32,11 @@ DESCRIPTION="Prebuilt Java JDK binaries provided by Eclipse Temurin"
 HOMEPAGE="https://adoptium.net"
 SRC_URI="
 	$(abi_uri aarch64 arm64)
-	$(abi_uri aarch64 arm64-macos)
 	$(abi_uri arm)
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
-	$(abi_uri x64 amd64 musl)
 	$(abi_uri x64 x64-macos)
+	$(abi_uri x64 amd64 musl)
 "
 S="${WORKDIR}/jdk-${MY_PV}"
 
@@ -87,6 +86,9 @@ src_unpack() {
 src_install() {
 	local dest="/opt/${P}"
 	local ddest="${ED}/${dest#/}"
+
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
 
 	# on macOS if they would exist they would be called .dylib, but most
 	# importantly, there are no different providers, so everything

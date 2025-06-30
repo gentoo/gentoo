@@ -3,10 +3,16 @@
 
 EAPI=8
 
+# Avoid circular dependency
+JAVA_DISABLE_JAVA_DEP_CHECK="true"
+
 inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
-PPC64_XPAK="21.0.0_p35" # big-endian bootstrap tarball
+ARM64_XPAK="17.0.2_p8" # musl bootstrap install
+PPC64_XPAK="17.0.1_p12" # big-endian bootstrap tarball
+RISCV_XPAK="17.0.3_p7"
+X86_XPAK="17.0.1_p12"
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
 # Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
@@ -29,33 +35,31 @@ bootstrap_uri() {
 # you will see, for example, jdk-17.0.4.1-ga and jdk-17.0.4.1+1, both point
 # to exact same commit sha. we should always use the full version.
 # -ga tag is just for humans to easily identify General Availability release tag.
-#	MY_PV="${PV%_p*}-ga" # '-ga' isn't available
-MY_PV="${PV/_p/+}"
+MY_PV="${PV%_p*}-ga"
 
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
 SRC_URI="
-	https://github.com/${PN}/jdk/archive/jdk-${MY_PV}.tar.gz
-
+	https://github.com/${PN}/jdk17u/archive/jdk-${MY_PV}.tar.gz
 		-> ${P}.tar.gz
 	!system-bootstrap? (
+		$(bootstrap_uri arm64 ${ARM64_XPAK} elibc_musl)
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
+		$(bootstrap_uri x86 ${X86_XPAK})
+		$(bootstrap_uri riscv ${RISCV_XPAK})
 	)
 "
-# S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
-S="${WORKDIR}/jdk-jdk-${MY_PV//+/-}"
+S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="${MY_PV%%[.+]*}"
-#	KEYWORDS="" # LTS but not yet released
+KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
-# lto temporarily disabled due to https://bugs.gentoo.org/916735
-IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source +system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap lto selinux source system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
 	!system-bootstrap? ( jbootstrap )
-	!system-bootstrap? ( ppc64 )
 "
 
 COMMON_DEPEND="
@@ -176,6 +180,9 @@ src_configure() {
 		export JDK_HOME
 	fi
 
+	# Work around stack alignment issue, bug #647954. in case we ever have x86
+	use x86 && append-flags -mincoming-stack-boundary=2
+
 	# bug 906987; append-cppflags doesnt work
 	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
@@ -207,7 +214,6 @@ src_configure() {
 		--with-lcms="${XPAK_BOOTSTRAP:-system}"
 		--with-libjpeg="${XPAK_BOOTSTRAP:-system}"
 		--with-libpng="${XPAK_BOOTSTRAP:-system}"
-		--with-stdc++lib=dynamic
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
@@ -223,13 +229,7 @@ src_configure() {
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
 
-	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
-
-	# Werror=odr
-	# https://bugs.gentoo.org/916735
-	#
-	# Disable it for now.
-	#use lto && myconf+=( --with-jvm-features=link-time-opt )
+	use lto && myconf+=( --with-jvm-features=link-time-opt )
 
 	if use javafx; then
 		local zip="${EPREFIX}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
@@ -277,6 +277,9 @@ src_compile() {
 src_install() {
 	local dest="/usr/$(get_libdir)/${PN}-${SLOT}"
 	local ddest="${ED}/${dest#/}"
+
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
 
 	cd "${S}"/build/*-release/images/jdk || die
 
