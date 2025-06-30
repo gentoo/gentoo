@@ -24,7 +24,7 @@ LICENSE="
 	ISC LGPL-2.1+ LGPL-3+ MIT OFL-1.1 ZLIB public-domain
 "
 SLOT="0"
-IUSE="alsa cpu_flags_x86_sse4_1 +clang jack pulseaudio sndio test vulkan wayland"
+IUSE="alsa cpu_flags_x86_sse4_1 +clang jack pulseaudio sndio test wayland"
 REQUIRED_USE="cpu_flags_x86_sse4_1" # dies at runtime if no support
 RESTRICT="!test? ( test )"
 
@@ -43,6 +43,8 @@ COMMON_DEPEND="
 	media-libs/libwebp:=
 	media-libs/plutosvg
 	media-libs/plutovg
+	media-libs/shaderc
+	media-libs/vulkan-loader
 	media-video/ffmpeg:=
 	net-libs/libpcap
 	net-misc/curl
@@ -56,10 +58,6 @@ COMMON_DEPEND="
 	jack? ( virtual/jack )
 	pulseaudio? ( media-libs/libpulse )
 	sndio? ( media-sound/sndio:= )
-	vulkan? (
-		media-libs/shaderc
-		media-libs/vulkan-loader
-	)
 	wayland? ( dev-libs/wayland )
 "
 # patches is a optfeature but always pull given PCSX2 complaints if it
@@ -87,7 +85,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5835-musl-header.patch
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 	"${FILESDIR}"/${PN}-2.2.0-missing-header.patch
-	"${FILESDIR}"/${PN}-2.3.309-pluto-pkgconf.patch
 )
 
 CMAKE_QA_COMPAT_SKIP=1 #957976
@@ -100,10 +97,21 @@ src_prepare() {
 			-i cmake/Pcsx2Utils.cmake || die
 	fi
 
-	# relax Qt6 and SDL2 version requirements which often get restricted
-	# without a specific need, please report a bug to Gentoo (not upstream)
-	# if a still-available older version is really causing issues
-	sed -e '/find_package(\(Qt6\|SDL3\)/s/ [0-9.]*//' \
+	# relax some version requirements which often get restricted without
+	# a specific need, please report a bug to Gentoo (not upstream) if a
+	# still-available older version is really causing issues
+	sed -e '/find_package(\(Qt6\|SDL3\|plutos?vg\)/s/ [0-9.]*//' \
+		-i cmake/SearchForStuff.cmake || die
+
+	# pluto(s)vg likewise often restrict versions and Gentoo also does not
+	# have .pc files for it, use sed to avoid rebasing on version changes
+	sed -e '/^find_package(plutovg/d' \
+		-e '/^find_package(plutosvg/c\
+			find_package(PkgConfig REQUIRED)\
+			pkg_check_modules(plutovg REQUIRED IMPORTED_TARGET plutovg)\
+			alias_library(plutovg::plutovg PkgConfig::plutovg)\
+			pkg_check_modules(plutosvg REQUIRED IMPORTED_TARGET plutosvg)\
+			alias_library(plutosvg::plutosvg PkgConfig::plutosvg)' \
 		-i cmake/SearchForStuff.cmake || die
 }
 
@@ -124,7 +132,7 @@ src_configure() {
 		-DUSE_BACKTRACE=no # not packaged (bug #885471)
 		-DUSE_LINKED_FFMPEG=yes
 		-DUSE_VTUNE=no # not packaged
-		-DUSE_VULKAN=$(usex vulkan)
+		-DUSE_VULKAN=yes # currently fails to build without, may revisit
 		-DWAYLAND_API=$(usex wayland)
 		# not optional given libX11 is hard-required either way and upstream
 		# seemingly has no intention to drop the requirement at the moment
