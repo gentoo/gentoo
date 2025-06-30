@@ -42,6 +42,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.3.0-use-system-hsakmt.patch"
 )
 
+# skip false positive detection in samples, bug #958188
+CMAKE_QA_COMPAT_SKIP=1
+
 src_prepare() {
 	cd "${S}/runtime/hsa-runtime" || die
 	eapply "${FILESDIR}/${PN}-4.3.0_no-aqlprofiler.patch"
@@ -61,9 +64,6 @@ src_configure() {
 	filter-lto
 
 	use debug || append-cxxflags "-DNDEBUG"
-
-	# skip false positive detection in samples, bug #958188
-	local CMAKE_QA_COMPAT_SKIP=1
 
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_rocprofiler-register=ON
