@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="sqlite,xml(+)"
 DISTUTILS_USE_PEP517=setuptools
 
@@ -16,9 +16,7 @@ SRC_URI="https://gajim.org/downloads/$(ver_cut 1-2)/${P/_p/-}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 
-# Rekeyword for ~long, ~x86 and ~riscv, when https://bugs.gentoo.org/937582 is fixed.
-# KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="voice"
 
 # Same order as in upstream pyproject.toml please for the python dependencies
@@ -32,26 +30,27 @@ IUSE="voice"
 # xdg-desktop-portal: apparent runtime requirement
 # https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=a2963fc1a23747bbb60a3785bf06dd566e6d8be9
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
 	>=dev-python/cryptography-3.4.8[${PYTHON_USEDEP}]
 	dev-python/css-parser[${PYTHON_USEDEP}]
 	>=dev-python/emoji-2.6.0[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
 	<dev-python/nbxmpp-7.0.0[${PYTHON_USEDEP}]
-	>=dev-python/nbxmpp-6.1.1[${PYTHON_USEDEP}]
+	>=dev-python/nbxmpp-6.2.0[${PYTHON_USEDEP}]
 	<dev-python/omemo-dr-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/omemo-dr-1.0.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/pillow-9.1.0[${PYTHON_USEDEP}]
 	>=dev-python/precis-i18n-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pycairo-1.16.0[${PYTHON_USEDEP}]
-	>=dev-python/pygobject-3.42.0:3[cairo,${PYTHON_USEDEP}]
+	>=dev-python/pygobject-3.52.0:3[cairo,${PYTHON_USEDEP}]
 	>=dev-python/qrcode-7.3.1[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-2.0.0[${PYTHON_USEDEP}]
 
-	dev-libs/glib[introspection(+)]
-	>=gui-libs/gtk-4.14.0:4[introspection]
+	>=dev-libs/glib-2.80[introspection(+)]
+	>=gui-libs/gtk-4.17.5:4[introspection]
 	gui-libs/gtksourceview:5[introspection]
+	>=gui-libs/libadwaita-1.7.0[introspection]
 	media-libs/graphene[introspection]
 	net-libs/libsoup:3.0[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
