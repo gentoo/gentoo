@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=CJM
 DIST_VERSION=1.12
@@ -11,14 +11,7 @@ DESCRIPTION="Getopt::Mixed is used for parsing mixed options"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-RDEPEND="
-	virtual/perl-Carp
-	virtual/perl-Exporter
-"
-BDEPEND="${RDEPEND}
+BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.300.0
-	test? ( virtual/perl-Test-Simple )
 "
