@@ -3,6 +3,10 @@
 
 EAPI=8
 
+# note: keep old versions for an extended period (at "least" 2 months
+# after stabilization unless it is broken) due to save states being
+# locked to specific versions and users may need time
+
 inherit cmake desktop eapi9-ver fcaps flag-o-matic optfeature toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
