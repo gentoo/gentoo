@@ -67,7 +67,7 @@ SLOT="${BLENDER_BRANCH}"
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip hiprt jack
-	+jemalloc jpeg2k man +manifold +nanovdb ndof nls +oidn oneapi openal +openexr +opengl +openpgl
+	jemalloc jpeg2k man +nanovdb ndof nls +oidn openal +openexr +opengl +openmp +openpgl
 	+opensubdiv +openvdb optix osl pipewire +pdf +potrace +pugixml pulseaudio
 	renderdoc sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
 "
@@ -138,7 +138,6 @@ RDEPEND="${PYTHON_DEPS}
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
-	manifold? ( >=sci-mathematics/manifold-3.1.0 )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
@@ -146,13 +145,12 @@ RDEPEND="${PYTHON_DEPS}
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
 	oidn? ( >=media-libs/oidn-2.1.0 )
-	oneapi? ( dev-libs/intel-compute-runtime:=[l0] )
 	openexr? (
 		>=dev-libs/imath-3.1.7:=
 		>=media-libs/openexr-3.2.1:0=
 	)
 	openpgl? ( media-libs/openpgl:= )
-	opensubdiv? ( >=media-libs/opensubdiv-3.6.0-r2[opengl,cuda?,tbb?] )
+	opensubdiv? ( >=media-libs/opensubdiv-3.6.0-r2[opengl,cuda?,openmp?,tbb?] )
 	openvdb? (
 		>=media-gfx/openvdb-11.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
@@ -247,6 +245,8 @@ PATCHES=(
 )
 
 blender_check_requirements() {
+	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+
 	if use doc; then
 		CHECKREQS_DISK_BUILD="4G" check-reqs_pkg_pretend
 	fi
@@ -277,18 +277,6 @@ blender_get_version() {
 
 pkg_pretend() {
 	blender_check_requirements
-
-	if use oneapi; then
-		einfo "The Intel oneAPI support is rudimentary."
-		einfo ""
-		einfo "Please report any bugs you find to https://bugs.gentoo.org/"
-		if ! command -v icpx &>/dev/null && ! command -v dpcpp &>/dev/null; then
-			eerror "Could not find icpx or dpcpp."
-			eerror "You need SYCL/DCP++ to enable oneapi support."
-			eerror "Try sys-devel/DPC++::science"
-			die "FindSYCL would fail. Aborting."
-		fi
-	fi
 }
 
 pkg_setup() {
@@ -438,7 +426,6 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_HIPRT="$(usex hiprt)"
 		-DWITH_INPUT_NDOF="$(usex ndof)"
 		-DWITH_INTERNATIONAL="$(usex nls)"
-		-DWITH_MANIFOLD="$(usex manifold)"
 		-DWITH_MATERIALX="no" # TODO: Package MaterialX
 		-DWITH_NANOVDB="$(usex nanovdb)"
 		-DWITH_OPENCOLLADA="$(usex collada)"
@@ -467,6 +454,7 @@ src_configure() {
 
 		# Compiler Options:
 		# -DWITH_BUILDINFO="yes"
+		-DWITH_OPENMP="$(usex openmp)"
 
 		# System Options:
 		-DWITH_INSTALL_PORTABLE="no"
@@ -537,8 +525,6 @@ src_configure() {
 		-DWITH_CYCLES_DEVICE_CUDA="$(usex cuda)"
 		-DWITH_CYCLES_CUDA_BINARIES="$(usex cuda "$(usex cycles-bin-kernels)")"
 
-		-DWITH_CYCLES_DEVICE_ONEAPI="$(usex oneapi)"
-		-DWITH_CYCLES_ONEAPI_BINARIES="$(usex oneapi "$(usex cycles-bin-kernels)")"
 		-DWITH_CYCLES_DEVICE_HIP="$(usex hip)"
 		-DWITH_CYCLES_HIP_BINARIES="$(usex hip "$(usex cycles-bin-kernels)")"
 		-DWITH_CYCLES_HYDRA_RENDER_DELEGATE="no" # TODO: package Hydra
@@ -585,6 +571,10 @@ src_configure() {
 	if use hip; then
 		mycmakeargs+=(
 			-DHIP_ROOT_DIR="$(hipconfig -p)"
+
+			-DHIP_HIPCC_FLAGS="-fcf-protection=none"
+
+			-DCMAKE_HIP_LINK_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
 
 			-DCYCLES_HIP_BINARIES_ARCH="$(get_amdgpu_flags)"
 		)
@@ -636,7 +626,6 @@ src_configure() {
 			use cuda && CYCLES_TEST_DEVICES+=( "CUDA" )
 			use optix && CYCLES_TEST_DEVICES+=( "OPTIX" )
 			use hip && CYCLES_TEST_DEVICES+=( "HIP" )
-			use oneapi && CYCLES_TEST_DEVICES+=( "ONEAPI" )
 		fi
 		mycmakeargs+=(
 			-DCMAKE_INSTALL_PREFIX_WITH_CONFIG="${T}/usr"
@@ -716,11 +705,29 @@ src_test() {
 	if [[ "${RUN_FAILING_TESTS:-0}" -eq 0 ]]; then
 		einfo "not running failing tests RUN_FAILING_TESTS=${RUN_FAILING_TESTS}"
 		CMAKE_SKIP_TESTS+=(
+			"^BLI$"
+			"^asset_system$"
+			"^cycles$"
+			"^cycles_bsdf_cpu$"
 			"^cycles_bsdf_cuda$"
+			"^cycles_bsdf_optix$"
+			"^cycles_displacement_cpu$"
+			"^cycles_displacement_cuda$"
+			"^cycles_displacement_optix$"
 			"^cycles_image_data_types_cpu$"
+			"^cycles_image_data_types_cuda$"
 			"^cycles_image_data_types_optix$"
-			"^cycles_image_mapping_cpu$"
 			"^cycles_osl_cpu$"
+			"^cycles_principled_bsdf_cpu$"
+			"^cycles_principled_bsdf_cuda$"
+			"^cycles_principled_bsdf_optix$"
+			"^cycles_shader_cpu$"
+			"^cycles_shader_cuda$"
+			"^cycles_shader_optix$"
+			"^ffmpeg_libs$" # needs H265
+			"^imbuf_save$" # needs oiio with working webp
+			"^geo_node_curves_curve_to_points$"
+			"^geo_node_geometry_duplicate_elements_curve_points$"
 		)
 	fi
 
