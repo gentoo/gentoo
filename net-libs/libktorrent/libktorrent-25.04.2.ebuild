@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/ktorrent/ https://userbase.kde.org/KTorrent"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="xfs"
 
 COMMON_DEPEND="
