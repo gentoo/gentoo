@@ -23,6 +23,7 @@ BDEPEND="
 	test? ( media-video/ffmpeg[webp] )
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile() {
