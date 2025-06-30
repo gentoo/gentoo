@@ -63,8 +63,6 @@ test_compiler() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
 
@@ -100,6 +98,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DCOMPILER_RT_EXCLUDE_ATOMIC_BUILTIN=$(usex !atomic-builtins)
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
