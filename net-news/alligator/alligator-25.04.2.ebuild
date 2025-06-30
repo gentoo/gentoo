@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/alligator/"
 
 LICENSE="|| ( GPL-2 GPL-3 ) CC0-1.0 CC-BY-SA-4.0 GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	dev-libs/kirigami-addons:6
