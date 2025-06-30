@@ -65,6 +65,12 @@ src_configure() {
 	# https://github.com/CGNS/CGNS/issues/758
 	filter-lto
 
+	# Needed for uses an internal header (bug #934122)
+	local tk_ver=$(best_version dev-lang/tk)
+	tk_ver=${tk_ver#dev-lang/tk-}
+	tk_ver=$(ver_cut 1-2 ${tk_ver})
+	append-cppflags -I"${ESYSROOT}/usr/$(get_libdir)/tk${tk_ver}/include/generic"
+
 	local mycmakeargs=(
 		-DCGNS_BUILD_SHARED=ON
 		-DCGNS_USE_SHARED=ON
