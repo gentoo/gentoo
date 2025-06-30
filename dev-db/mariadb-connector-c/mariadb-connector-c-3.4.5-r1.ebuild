@@ -60,6 +60,7 @@ src_prepare() {
 		-e '/{"test_conc544/s:{://&:'
 		-e '/{"test_conc627/s:{://&:'
 		-e '/{"test_conc66/s:{://&:'
+		-e '/{"test_parsec/s:{://&:'
 
 		# [Warning] Aborted connection 2078 to db: 'test' user: 'root' host: '' (Got an error reading communication packets)
 		# Not sure about this one - might also require network access
