@@ -6,6 +6,13 @@
 
 # New entries go on top.
 
+# Ivy <openrc@posteo.de> (2025-07-11)
+# app-editors/gnome-text-editor[spell] has been dropped upstream and
+# replaced with app-text/libspelling, but will likely be added back
+# in future releases.
+~app-editors/gnome-text-editor-47.2 spell
+~app-editors/gnome-text-editor-47.4 spell
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-27)
 # Prepare cleanup of kde-apps/cervisia
 kde-apps/kdesdk-meta cvs
