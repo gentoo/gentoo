@@ -13,7 +13,7 @@ DESCRIPTION="KIO worker for accessing audio CDs"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="flac vorbis"
 
 DEPEND="
