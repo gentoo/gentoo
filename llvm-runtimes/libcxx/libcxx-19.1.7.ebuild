@@ -65,7 +65,7 @@ test_compiler() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
+	llvm_prepend_path -b "${LLVM_MAJOR}"
 
 	local install_prefix=${EPREFIX}
 	is_crosspkg && install_prefix+=/usr/${CTARGET}
