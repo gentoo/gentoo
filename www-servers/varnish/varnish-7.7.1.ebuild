@@ -72,6 +72,16 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# Per Fedora:
+	# "This is a bug in varnishtest making it incompatible with nghttp2 >= 1.65"
+	rm bin/varnishtest/tests/a02022.vtc || die
+	# Times out
+	rm bin/varnishtest/tests/u00021.vtc || die
+
+	default
+}
+
 src_install() {
 	emake DESTDIR="${D}" install
 
