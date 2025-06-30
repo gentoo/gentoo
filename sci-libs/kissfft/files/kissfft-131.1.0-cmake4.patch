@@ -1,0 +1,26 @@
+Taken from: https://github.com/mborgerding/kissfft/pull/101
+
+From d42d353de36e843b7145b7be4aee0758040f92d1 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 2 Apr 2025 11:39:34 +0200
+Subject: [PATCH] Bump minimum CMake version in kissfft-config.cmake
+
+CMake 4 dropped support for CMake versions <= 3.5.
+We'll use 3.6, which is the minimum version required to build kissfft.
+---
+ kissfft-config.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kissfft-config.cmake.in b/kissfft-config.cmake.in
+index cd7139a..fd9553c 100644
+--- a/kissfft-config.cmake.in
++++ b/kissfft-config.cmake.in
+@@ -24,7 +24,7 @@
+ 
+ @PACKAGE_INIT@
+ 
+-cmake_minimum_required(VERSION 3.3)
++cmake_minimum_required(VERSION 3.6)
+ 
+ # Set include glob of config files using SHARED/static component, BUILD_SHARED_LIBS by default
+ set(_kissfft_shared_detected OFF)
