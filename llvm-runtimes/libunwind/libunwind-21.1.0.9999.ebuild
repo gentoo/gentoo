@@ -44,8 +44,6 @@ python_check_deps() {
 }
 
 multilib_src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	local libdir=$(get_libdir)
 
 	# https://github.com/llvm/llvm-project/issues/56825
@@ -73,6 +71,8 @@ multilib_src_configure() {
 	use debug || append-cppflags -DNDEBUG
 
 	local mycmakeargs=(
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DCMAKE_C_COMPILER_TARGET="${CTARGET}"
 		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
 		-DPython3_EXECUTABLE="${PYTHON}"
