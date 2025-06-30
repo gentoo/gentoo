@@ -15,7 +15,7 @@ HOMEPAGE="https://okular.kde.org https://apps.kde.org/okular/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="crypt djvu epub markdown mobi +pdf phonon +postscript qml share speech +tiff"
 
 # slot op: Uses Qt6::CorePrivate
