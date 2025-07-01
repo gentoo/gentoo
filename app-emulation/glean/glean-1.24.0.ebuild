@@ -18,6 +18,7 @@ KEYWORDS="amd64 x86"
 RDEPEND="dev-python/pbr[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	test? (
+		>=dev-python/oslotest-1.1.0[${PYTHON_USEDEP}]
 		>=dev-python/testscenarios-0.5.0[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.3.0[${PYTHON_USEDEP}]
 	)
