@@ -25,7 +25,7 @@ else
 		https://ziglang.org/download/${PV}/${P}.tar.xz
 		verify-sig? ( https://ziglang.org/download/${PV}/${P}.tar.xz.minisig )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64"
 
 	BDEPEND="verify-sig? ( sec-keys/minisig-keys-zig-software-foundation )"
 fi
