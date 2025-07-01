@@ -1,0 +1,21 @@
+From 6060c3dec866ee67baf57f09aa67823bd6b0a8da Mon Sep 17 00:00:00 2001
+From: Yuri D'Elia <wavexx@thregr.org>
+Date: Tue, 16 Mar 2021 17:07:24 +0100
+Subject: [PATCH] Fix mismatching argument type declaration in cdb_put.h
+
+---
+ cdb_put.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cdb_put.h b/cdb_put.h
+index 077871d..261f8e5 100644
+--- a/cdb_put.h
++++ b/cdb_put.h
+@@ -21,6 +21,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ #define	ELC_CDB_PUT_H
+ 
+ int cdb_put(struct cdb_make *c,
+-	    char *key, unsigned klen, void *val, unsigned vlen);
++	    char *key, size_t klen, void *val, size_t vlen);
+ 
+ #endif
