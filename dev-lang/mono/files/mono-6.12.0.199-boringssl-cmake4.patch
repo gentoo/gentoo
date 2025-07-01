@@ -1,0 +1,22 @@
+From 2153da68cbe3a3afe5416b4373edc7a64146da13 Mon Sep 17 00:00:00 2001
+From: Esme Povirk <esme@codeweavers.com>
+Date: Fri, 11 Apr 2025 18:01:12 +0000
+Subject: [PATCH] CMakeLists: Fix build on cmake 4.0.
+
+---
+ external/boringssl/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/external/boringssl/CMakeLists.txt b/external/boringssl/CMakeLists.txt
+index eaa59401d..6d8b06e15 100644
+--- a/external/boringssl/CMakeLists.txt
++++ b/external/boringssl/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.8.10)
++cmake_minimum_required (VERSION 2.8.10...4.0)
+ 
+ # Defer enabling C and CXX languages.
+ project (BoringSSL NONE)
+-- 
+GitLab
+
