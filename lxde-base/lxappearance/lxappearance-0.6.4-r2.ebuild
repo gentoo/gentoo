@@ -12,14 +12,12 @@ SRC_URI="https://github.com/lxde/lxappearance/archive/refs/tags/${PV}.tar.gz -> 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="dbus"
 
 RDEPEND="
 	>=dev-libs/glib-2.26.0:2
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/libX11
-	dbus? ( >=dev-libs/dbus-glib-0.70 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -40,7 +38,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--enable-gtk3
-		$(use_enable dbus)
 		# As of 0.6.4, there's no more dist tarballs, but we
 		# still want man pages.
 		--enable-man
