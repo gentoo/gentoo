@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,6 @@ COMMON_DEPEND=">=dev-util/gdbus-codegen-2.76.4
 	accessibility? ( >=app-accessibility/at-spi2-core-2.36.0 )
 	libnotify? ( >=x11-libs/libnotify-0.7:0 )
 	policykit? (
-		>=dev-libs/dbus-glib-0.71
 		>=sys-apps/dbus-1.10.0
 		>=sys-auth/polkit-0.97
 	)
