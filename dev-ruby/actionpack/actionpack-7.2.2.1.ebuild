@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -71,6 +71,10 @@ all_ruby_prepare() {
 	# Avoid tests that fail with a fixed cgi.rb version
 	sed -e '/test_session_store_with_all_domains/askip "Fails with fixed cgi.rb"' \
 		-i test/dispatch/session/cookie_store_test.rb || die
+
+	# Avoid tests failing with rails-dom-testing 2.3 (fixed upstream)
+	sed -e '/test_preserves_order_when_reading_from_cache_plus_rendering/askip "Fails with rails-dom-testing 2.3"' \
+		-i test/controller/caching_test.rb || die
 
 	# Avoid tests requiring chrome
 	sed -e '/DrivenBySeleniumWith/,/^end/ s:^:#:' \
