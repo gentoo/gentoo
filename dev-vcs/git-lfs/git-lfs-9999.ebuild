@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,6 +24,7 @@ else
 	# 2) Compress the archive using XZ limiting decompression memory for
 	#    pretty constraint systems.
 	# Use something like:
+	# GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
 	# tar cf $P-deps.tar go-mod \
 	#	--mtime="1970-01-01" --sort=name --owner=portage --group=portage
 	# xz -k -9eT0 --memlimit-decompress=256M $P-deps.tar
@@ -32,7 +33,7 @@ fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
-#KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+# KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 BDEPEND="
@@ -93,7 +94,7 @@ src_test() {
 	local mygotestargs=(
 		-ldflags="-X ${EGO_PN}/config.GitCommit=${COMMIT_ID}"
 	)
-	go test "${mygotestargs[@]}" ./... || die
+	ego test "${mygotestargs[@]}" ./...
 }
 
 pkg_postinst () {
