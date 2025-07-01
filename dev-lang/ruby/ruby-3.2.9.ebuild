@@ -86,6 +86,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/011*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/013*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/017*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
