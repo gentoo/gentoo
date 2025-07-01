@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit cmake python-single-r1 virtualx
+inherit cmake dot-a python-single-r1 virtualx
 
 DESCRIPTION="Color management framework for visual effects and animation"
 HOMEPAGE="https://opencolorio.org https://github.com/AcademySoftwareFoundation/OpenColorIO"
@@ -150,6 +150,8 @@ src_configure() {
 	# 	)
 	# fi
 
+	use apps && lto-guarantee-fat
+
 	use python && mycmakeargs+=(
 		"-DOCIO_PYTHON_VERSION=${EPYTHON/python/}"
 		"-DPython_EXECUTABLE=${PYTHON}"
@@ -189,6 +191,10 @@ src_install() {
 		# there are already files in ${ED}/usr/share/doc/${PF}
 		mv "${ED}/usr/share/doc/OpenColorIO/"* "${ED}/usr/share/doc/${PF}" || die
 		rmdir "${ED}/usr/share/doc/OpenColorIO" || die
+	fi
+
+	if use apps; then
+		strip-lto-bytecode
 	fi
 
 	if use python; then
