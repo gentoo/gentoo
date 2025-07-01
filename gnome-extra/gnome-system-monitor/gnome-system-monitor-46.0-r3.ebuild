@@ -21,7 +21,6 @@ RDEPEND="
 	>=gnome-base/libgtop-2.41.2:2=
 	>=gui-libs/libadwaita-1.4.0:1
 	>=gnome-base/librsvg-2.46:2
-	>=dev-libs/libxml2-2.0:2=
 	systemd? ( >=sys-apps/systemd-44:0= )
 "
 # eautoreconf requires gnome-base/gnome-common
@@ -33,6 +32,10 @@ BDEPEND="
 	virtual/pkgconfig
 	>=sys-auth/polkit-0.114
 " # polkit needed at buildtime for ITS rules of policy files, first available in 0.114
+
+PATCHES=(
+	"${FILESDIR}"/0001-remove-outdated-libxml2-build-dep.patch
+)
 
 src_configure() {
 	local emesonargs=(
