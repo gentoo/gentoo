@@ -9,14 +9,12 @@ inherit cmake lua-single readme.gentoo-r1 xdg
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/ https://gitlab.com/OpenMW/openmw"
 
-MY_PV=$(ver_cut 2)-$(ver_cut 4-5)
-
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenMW/openmw.git"
 else
-	SRC_URI="https://github.com/OpenMW/openmw/archive/${PN}-${MY_PV}.tar.gz"
-	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
+	SRC_URI="https://github.com/OpenMW/openmw/archive/${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${P}"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
@@ -46,6 +44,7 @@ RDEPEND="${LUA_DEPS}
 	dev-cpp/yaml-cpp:=
 	dev-db/sqlite:3
 	dev-games/recastnavigation:=
+	dev-libs/collada-dom:=
 	>=dev-games/mygui-3.4.3:=
 	dev-libs/boost:=[zlib]
 	dev-libs/icu:=
@@ -102,9 +101,9 @@ src_configure() {
 		-DBUILD_DOCS=$(usex doc)
 		-DBUILD_ESMTOOL=$(usex devtools)
 		-DBUILD_LAUNCHER=$(usex gui)
-		-DBUILD_NIFTEST=$(usex devtools)
 		-DBUILD_OPENCS=$(usex devtools $(usex gui))
 		-DBUILD_WIZARD=$(usex gui)
+		-DBUILD_NIFTEST=$(usex devtools)
 		-DBUILD_COMPONENTS_TESTS=$(usex test)
 		-DBUILD_OPENMW_TESTS=$(usex test)
 		-DBUILD_OPENCS_TESTS=$(usex test $(usex devtools))
