@@ -12,10 +12,11 @@ LICENSE="LGPL-2+"
 SLOT="4"
 REQUIRED_USE="
 	|| ( aqua wayland X )
+	gtk-doc? ( introspection )
 	test? ( introspection )
 "
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="aqua broadway cloudproviders colord cups examples gstreamer +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
+IUSE="aqua broadway cloudproviders colord cups examples gstreamer gtk-doc +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
 
 # TODO: Optional gst build dep on >=gst-plugins-base-1.23.1, so depend on it once we can
 COMMON_DEPEND="
@@ -96,6 +97,7 @@ BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gi-docgen )
 	vulkan? ( media-libs/shaderc )
 	wayland? (
 		dev-util/wayland-scanner
@@ -175,7 +177,7 @@ src_configure() {
 		$(meson_feature introspection)
 
 		# Documentation
-		-Ddocumentation=false # we ship pregenerated API docs from tarball
+		$(meson_use gtk-doc documentation)
 		-Dscreenshots=false
 		-Dman-pages=true
 
@@ -239,11 +241,10 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	# TODO: Seems that HTML docs are no longer in the tarball after
-	# upstream switched to CI-generated releases? bug #947514
-	#insinto /usr/share/gtk-doc/html
-	# This will install API docs specific to X11 and wayland regardless of USE flags, but this is intentional
-	#doins -r "${S}"/docs/reference/{gtk/gtk4,gsk/gsk4,gdk/gdk4{,-wayland,-x11}}
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/{gtk4,gsk4,gdk4{,-wayland,-x11}} "${ED}"/usr/share/gtk-doc/html/ || die
+	fi
 }
 
 pkg_preinst() {
