@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=GAAS
 DIST_VERSION=1.20
@@ -11,8 +11,6 @@ DESCRIPTION="Parse Adobe Font Metric files"
 
 SLOT="0"
 KEYWORDS="amd64 ppc ~riscv sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (
