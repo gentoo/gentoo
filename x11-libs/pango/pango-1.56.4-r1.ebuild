@@ -13,7 +13,8 @@ LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-IUSE="debug examples +introspection sysprof test X"
+IUSE="debug examples gtk-doc +introspection sysprof test X"
+REQUIRED_USE="gtk-doc? ( introspection )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -38,6 +39,7 @@ BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 	dev-python/docutils
+	gtk-doc? ( dev-util/gi-docgen )
 	test? ( media-fonts/cantarell )
 "
 
@@ -61,7 +63,7 @@ multilib_src_configure() {
 		# Never use gi-docgen subproject
 		--wrap-mode nofallback
 
-		-Ddocumentation=false # we ship pregenerated docs
+		$(meson_use gtk-doc documentation)
 		$(meson_native_use_feature introspection)
 		-Dman-pages=true
 		$(meson_use test build-testsuite)
@@ -79,6 +81,11 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	if use examples; then
 		dodoc -r examples
+	fi
+
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/Pango* "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
 
