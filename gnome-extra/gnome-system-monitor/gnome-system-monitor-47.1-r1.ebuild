@@ -11,18 +11,17 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
-IUSE="systemd X"
+IUSE="systemd"
 
 RDEPEND="
 	>=dev-cpp/glibmm-2.68:2.68
 	>=dev-libs/glib-2.56.0:2
-	>=gui-libs/gtk-4.12.0:4[X(+)?]
+	>=gui-libs/gtk-4.12.0:4
 	>=dev-cpp/gtkmm-4.0.0:4.0
 	>=gnome-base/libgtop-2.41.2:2=
 	>=gui-libs/libadwaita-1.6_alpha:1
 	>=gnome-base/librsvg-2.46:2
 	>=dev-libs/libxml2-2.0:2=
-	X? ( >=x11-libs/libwnck-2.91.0:3 )
 	systemd? ( >=sys-apps/systemd-44:0= )
 "
 # eautoreconf requires gnome-base/gnome-common
@@ -37,7 +36,6 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use X wnck)
 		$(meson_use systemd)
 		-Ddevelopment=false
 	)
