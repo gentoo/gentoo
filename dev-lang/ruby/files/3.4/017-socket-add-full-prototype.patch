@@ -1,0 +1,48 @@
+https://github.com/ruby/ruby/commit/d77e02bd85ab7f841df8d473bac214b9a92a3506
+
+From d77e02bd85ab7f841df8d473bac214b9a92a3506 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Wed, 2 Jul 2025 09:09:52 +0800
+Subject: [PATCH] [Bug #21497] [ruby/socket]: add full prototype
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+otherwise, gcc 15 will complain:
+
+> init.c:573:19: error: too many arguments to function ‘Rconnect’; expected 0, have 3
+>   573 |     return (VALUE)Rconnect(arg->fd, arg->sockaddr, arg->len);
+>       |                   ^~~~~~~~ ~~~~~~~
+> In file included from init.c:11:
+> rubysocket.h:294:5: note: declared here
+>   294 | int Rconnect();
+>       |     ^~~~~~~~
+
+> sockssocket.c:33:9: error: too many arguments to function ‘SOCKSinit’; expected 0, have 1
+>    33 |         SOCKSinit("ruby");
+>       |         ^~~~~~~~~ ~~~~~~
+> In file included from sockssocket.c:11:
+> rubysocket.h:293:6: note: declared here
+>   293 | void SOCKSinit();
+>       |      ^~~~~~~~~
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/ext/socket/rubysocket.h b/ext/socket/rubysocket.h
+index 54a5381da4..dcafbe24e3 100644
+--- a/ext/socket/rubysocket.h
++++ b/ext/socket/rubysocket.h
+@@ -292,8 +292,8 @@ extern VALUE rb_eResolution;
+ #ifdef SOCKS
+ extern VALUE rb_cSOCKSSocket;
+ #  ifndef SOCKS5
+-void SOCKSinit();
+-int Rconnect();
++void SOCKSinit(char *);
++int Rconnect(int, const struct sockaddr *, socklen_t);
+ #  endif
+ #endif
+ 
+-- 
+2.49.1
+
