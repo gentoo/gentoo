@@ -119,18 +119,19 @@ DEPEND="
 "
 RDEPEND="${PYTHON_DEPS}
 	app-alternatives/cpio
-	>=app-misc/pax-utils-1.2.2
-	app-portage/elt-patches
-	app-portage/portage-utils
-	dev-util/gperf
-	sys-apps/sandbox
-	dev-build/autoconf
-	dev-build/autoconf-archive
-	dev-build/automake
 	app-alternatives/bc
 	app-alternatives/yacc
 	app-alternatives/lex
+	>=app-misc/pax-utils-1.2.2
+	app-portage/elt-patches
+	app-portage/portage-utils
+	dev-build/autoconf
+	dev-build/autoconf-archive
+	dev-build/automake
+	dev-build/cmake
 	dev-build/libtool
+	dev-util/gperf
+	sys-apps/sandbox
 	virtual/pkgconfig
 	elibc_glibc? ( sys-libs/glibc[static-libs(+)] )
 	firmware? ( sys-kernel/linux-firmware )
