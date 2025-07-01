@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -51,9 +51,10 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
-	sed -i -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|rack-cache\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|bcrypt\|uglifier\|mime-types\|minitest\|sprockets\|stackprof\)/ s:^:#:" \
+	sed -e "/\(system_timer\|sdoc\|w3c_validators\|pg\|execjs\|jquery-rails\|'mysql'\|journey\|rack-cache\|ruby-prof\|stackprof\|benchmark-ips\|kindlerb\|turbolinks\|coffee-rails\|debugger\|redcarpet\|bcrypt\|uglifier\|mime-types\|minitest\|sprockets\|stackprof\)/ s:^:#:" \
 		-e '/:job/,/end/ s:^:#:' \
-		-e '/group :doc/,/^end/ s:^:#:' ../Gemfile || die
+		-e '/group :doc/,/^end/ s:^:#:' \
+		-i ../Gemfile || die
 	rm ../Gemfile.lock || die
 
 	# Fix loading of activerecord integration tests. This avoids loading
@@ -63,7 +64,7 @@ all_ruby_prepare() {
 		-e '/defined/ s/FixtureSet/ActiveRecord::FixtureSet/' \
 		-i test/active_record_unit.rb || die
 
-	sed -e '3irequire "ostruct"' \
+	sed -e '3irequire "ostruct"; gem "actionpack", "~> 7.2.0"; gem "activerecord", "~> 7.2.0"; gem "railties", "~> 7.2.0"' \
 		-i test/abstract_unit.rb || die
 
 	# Avoid test failing on capitalization difference
