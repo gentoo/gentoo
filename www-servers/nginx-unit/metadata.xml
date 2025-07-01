@@ -13,8 +13,6 @@
 		engineering or operations.
 	</longdescription>
 	<use>
-		<flag name="php8-1">Support for PHP 8.1</flag>
-		<flag name="php8-2">Support for PHP 8.2</flag>
 		<flag name="php8-3">Support for PHP 8.3</flag>
 	</use>
 	<upstream>
