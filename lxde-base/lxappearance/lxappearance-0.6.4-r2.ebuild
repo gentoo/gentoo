@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x
 RDEPEND="
 	>=dev-libs/glib-2.26.0:2
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}"
