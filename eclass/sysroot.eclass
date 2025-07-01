@@ -106,3 +106,16 @@ sysroot_make_run_prefixed() {
 
 	echo "${SCRIPT}"
 }
+
+# @FUNCTION: sysroot_run_prefixed
+# @DESCRIPTION:
+# Create a wrapper script with sysroot_make_run_prefixed if necessary, and use
+# it to execute the given command, otherwise just execute the command directly.
+sysroot_run_prefixed() {
+	local script
+	if script=$(sysroot_make_run_prefixed); then
+		"${script}" "${@}"
+	else
+		"${@}"
+	fi
+}
