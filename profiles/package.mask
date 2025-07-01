@@ -227,12 +227,6 @@ dev-python/gpgmepy
 # >  Unable to locally verify the issuer's authority.
 =app-misc/ca-certificates-20250419.3.112
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-02)
-# Gui depends on Qt5 and is unmaintained for a very long time - its main
-# developers have moved to the InputLeap project (gui-apps/input-leap).
-# Bugs #942580, #949911, #951987, #953262; removal on 2025-07-02.
-x11-misc/barrier
-
 # Michael Orlitzky <mjo@gentoo.org> (2025-05-28)
 # I added this for SageMath, but in hindsight do not think anyone is
 # using it. It has code issues and upstream is not terribly interested
