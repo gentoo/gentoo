@@ -115,18 +115,12 @@ check_rebuild() {
 		[[ ${v%.*} == "${SHORT_PV}" ]] && continue
 		echo ""
 		ewarn "UPDATE THE PERL MODULES:"
-		ewarn "After updating dev-lang/perl the installed Perl modules"
+		ewarn "After updating dev-lang/perl to a new major version the installed Perl modules"
 		ewarn "have to be re-installed. In most cases, this is done automatically"
-		ewarn "by the package manager, but subsequent steps are still recommended"
-		ewarn "to ensure system consistency."
+		ewarn "by the package manager."
 		ewarn
-		ewarn "You should start with a depclean to remove any unused perl dependencies"
-		ewarn "that may confuse portage in future. Regular depcleans are also encouraged"
-		ewarn "as part of your regular update cycle, as that will keep perl upgrades working."
-		ewarn "Recommended: emerge --depclean -va"
-		ewarn
-		ewarn "You should then call perl-cleaner to clean up any old files and trigger any"
-		ewarn "remaining rebuilds portage may have missed."
+		ewarn "ONLY if you encounter problems, call perl-cleaner to clean up any old files"
+		ewarn "and trigger any remaining rebuilds portage may have missed."
 		ewarn "Use: perl-cleaner --all"
 		return 0
 	done
