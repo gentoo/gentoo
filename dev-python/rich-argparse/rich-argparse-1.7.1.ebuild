@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 RDEPEND="
 	>=dev-python/rich-11.0.0[${PYTHON_USEDEP}]
