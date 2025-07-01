@@ -1,0 +1,13 @@
+Use gnome desktop-4 library.
+
+--- a/meson.build
++++ b/meson.build
+@@ -234,7 +234,7 @@
+ endif
+ 
+ # *** GNOME Desktop (Thumbnail cache) ***
+-gnome_desktop_dep = dependency('gnome-desktop-3.0', required: get_option('thumbnail_cache'))
++gnome_desktop_dep = dependency('gnome-desktop-4', required: get_option('thumbnail_cache'))
+ enable_thumbnail_cache = gdk_pixbuf_dep.found() and gnome_desktop_dep.found()
+ config_h.set('HAVE_LIBGNOME_DESKTOP', enable_thumbnail_cache)
+ 
