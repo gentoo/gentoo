@@ -12,7 +12,7 @@ S="${WORKDIR}/sdbus-cpp-${PV}"
 
 LICENSE="LGPL-2.1+ Nokia-Qt-LGPL-Exception-1.1" # Nothing to do with Qt but exception text is exactly the same.
 SLOT="0/2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="doc +elogind systemd test tools"
 REQUIRED_USE="?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
