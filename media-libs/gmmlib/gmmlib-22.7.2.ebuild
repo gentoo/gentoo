@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	fi
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://github.com/intel/gmmlib/archive/intel-${P}.tar.gz"
 	S="${WORKDIR}/${PN}-intel-${P}"
 fi
