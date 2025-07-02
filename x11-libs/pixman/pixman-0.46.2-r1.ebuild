@@ -51,6 +51,8 @@ multilib_src_configure() {
 		-Ddemos=disabled
 		-Dgtk=disabled
 		-Dlibpng=disabled
+		 # explicitly disable RVV due to https://bugs.gentoo.org/95938
+		-Drvv=disabled
 	)
 
 	if [[ ${ABI} == arm64 ]]; then
