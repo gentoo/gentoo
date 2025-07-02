@@ -22,7 +22,7 @@ SRC_URI="
 "
 
 GENTOO_PATCH_DEV=sam
-GENTOO_PATCH_PV=6.5_p20250531
+GENTOO_PATCH_PV=6.5_p20250301
 GENTOO_PATCH_NAME=${PN}-${GENTOO_PATCH_PV}-patches
 
 # Populated below in a loop. Do not add patches manually here.
@@ -85,18 +85,6 @@ if [[ ${PV} == *_p* ]] ; then
 		20250216
 		20250222
 		20250301
-		20250308
-		20250315
-		20250322
-		20250329
-		20250405
-		20250412
-		20250419
-		20250426
-		20250503
-		20250510
-		20250517
-		20250524
 
 		# Latest patch is just _pN = $(ver_cut 4)
 		$(ver_cut 4)
@@ -200,6 +188,9 @@ src_configure() {
 
 	# bug #214642
 	BUILD_CPPFLAGS+=" -D_GNU_SOURCE"
+
+	# NCURSES_BOOL confusion, see https://lists.gnu.org/archive/html/bug-ncurses/2024-11/msg00010.html
+	append-cflags $(test-flags-CC -std=gnu17)
 
 	# Build the various variants of ncurses -- narrow, wide, and threaded. #510440
 	# Order matters here -- we want unicode/thread versions to come last so that the
@@ -438,9 +429,10 @@ multilib_src_install_all() {
 		rxvt{,-unicode}{,-256color}
 		# xterm users are common, as is terminals re-using/spoofing it.
 		xterm xterm-{,256}color
-		# screen is common (and reused by tmux).
+		# screen and tmux are common.
 		screen{,-256color}
 		screen.xterm-256color
+		tmux{,-256color,-direct}
 	)
 	if use split-usr ; then
 		local x
