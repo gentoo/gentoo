@@ -5,7 +5,7 @@ EAPI=8
 
 # Both Daniel and Brad are listed as possible signers on the homepage
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/bradhouse.asc
-inherit edo flag-o-matic multilib-minimal verify-sig
+inherit edo flag-o-matic libtool multilib-minimal verify-sig
 
 DESCRIPTION="C library that resolves names asynchronously"
 HOMEPAGE="https://c-ares.org/"
@@ -50,6 +50,7 @@ A__QA_CONFIG_IMPL_DECL_SKIP=(
 
 src_prepare() {
 	default
+	elibtoolize
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# warnings are default, but enable -std=c90 which doesn't define
