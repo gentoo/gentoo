@@ -6,7 +6,8 @@ inherit go-module
 
 DESCRIPTION="Tools and framework for data collection and system inspection using eBPF"
 HOMEPAGE="https://github.com/inspektor-gadget/inspektor-gadget"
-SRC_URI="https://github.com/inspektor-gadget/inspektor-gadget/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/inspektor-gadget/inspektor-gadget/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~chewi/distfiles/${P}-vendor.tar.xz"
 
 S="${WORKDIR}/inspektor-gadget-${PV}"
 
