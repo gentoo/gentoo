@@ -412,7 +412,7 @@ verify-sig_verify_signed_checksums() {
 	case ${VERIFY_SIG_METHOD} in
 		openpgp)
 			_gpg_verify_signed_checksums \
-				"${checksum_file}" "${algo}" "${files[@]}" "${key}"
+				"${checksum_file}" "${algo}" "${files[*]}" "${key}"
 			;;
 		signify)
 			signify -C -p "${key}" \
