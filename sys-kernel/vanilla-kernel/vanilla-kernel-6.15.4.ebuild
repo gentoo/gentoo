@@ -8,7 +8,7 @@ KERNEL_IUSE_MODULES_SIGN=1
 
 inherit kernel-build toolchain-funcs verify-sig
 
-MY_P=linux-${PV}
+MY_P=linux-${PV%.*}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 # forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
 CONFIG_VER=6.15.3-gentoo
@@ -22,6 +22,7 @@ HOMEPAGE="
 "
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/patch-${PV}.xz
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz
 	verify-sig? (
@@ -67,7 +68,7 @@ src_unpack() {
 		cd "${DISTDIR}" || die
 		verify-sig_verify_signed_checksums \
 			"linux-sha256sums-${SHA256SUM_DATE}.asc" sha256 \
-			"${MY_P}.tar.xz"
+			"${MY_P}.tar.xz patch-${PV}.xz"
 		cd "${WORKDIR}" || die
 	fi
 
@@ -76,6 +77,7 @@ src_unpack() {
 
 src_prepare() {
 	default
+	eapply "${WORKDIR}/patch-${PV}"
 
 	local biendian=false
 
