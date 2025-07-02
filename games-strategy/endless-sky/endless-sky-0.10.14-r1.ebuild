@@ -31,6 +31,7 @@ RDEPEND="
 	media-libs/libsdl2[video]
 	media-libs/openal
 	sys-apps/util-linux
+	sys-libs/zlib:=[minizip]
 	gles2-only? ( media-libs/libsdl2[gles2] )
 	!gles2-only? (
 		media-libs/glew:0=
