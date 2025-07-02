@@ -15,6 +15,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libcxx-19.patch
 	"${FILESDIR}"/${P}-gcc15.patch
 	"${FILESDIR}"/${PN}-2.5-makefile-install.patch
+	"${FILESDIR}"/${PN}-2.5-parallel-build.patch # bug 958271
 )
 
 src_install() {
