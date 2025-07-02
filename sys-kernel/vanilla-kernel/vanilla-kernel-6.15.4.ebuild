@@ -13,6 +13,7 @@ MY_P=linux-${PV}
 # forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
 CONFIG_VER=6.15.3-gentoo
 GENTOO_CONFIG_VER=g16
+SHA256SUM_DATE=20250701
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
@@ -24,7 +25,8 @@ SRC_URI+="
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz
 	verify-sig? (
-		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.sign
+		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/sha256sums.asc
+			-> linux-sha256sums-${SHA256SUM_DATE}.asc
 	)
 	amd64? (
 		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-x86_64-fedora.config
@@ -52,7 +54,7 @@ REQUIRED_USE="arm? ( savedconfig )"
 
 BDEPEND="
 	debug? ( dev-util/pahole )
-	verify-sig? ( sec-keys/openpgp-keys-kernel )
+	verify-sig? ( >=sec-keys/openpgp-keys-kernel-20250702 )
 "
 PDEPEND="
 	>=virtual/dist-kernel-${PV}
@@ -62,12 +64,14 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
 
 src_unpack() {
 	if use verify-sig; then
-		verify-sig_uncompress_verify_unpack \
-			"${DISTDIR}"/linux-${PV}.tar.{xz,sign}
-		unpack "gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz"
-	else
-		default
+		cd "${DISTDIR}" || die
+		verify-sig_verify_signed_checksums \
+			"linux-sha256sums-${SHA256SUM_DATE}.asc" sha256 \
+			"${MY_P}.tar.xz"
+		cd "${WORKDIR}" || die
 	fi
+
+	default
 }
 
 src_prepare() {
