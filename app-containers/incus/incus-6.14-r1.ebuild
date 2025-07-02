@@ -94,6 +94,8 @@ RESTRICT="test"
 
 GOPATH="${S}/_dist"
 
+PATCHES=( "${FILESDIR}"/incus-6.14-fix-qemu-memory-calculation-logic.patch )
+
 src_unpack() {
 	verify-sig_src_unpack
 	go-module_src_unpack
