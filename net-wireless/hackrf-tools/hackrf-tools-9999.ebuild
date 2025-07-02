@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,6 +25,13 @@ SLOT="0"
 DEPEND="~net-libs/libhackrf-${PV}:=
 		sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}"
+
+# Fix build with cmake4 i
+# (see https://github.com/greatscottgadgets/hackrf/pull/1514)
+src_prepare() {
+	sed -i -e "s/2.8.12/3.8/" CMakeLists.txt || die
+	cmake_src_prepare
+}
 
 src_install() {
 	cmake_src_install
