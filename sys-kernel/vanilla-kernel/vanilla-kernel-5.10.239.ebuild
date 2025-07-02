@@ -5,11 +5,12 @@ EAPI=8
 
 inherit kernel-build toolchain-funcs verify-sig
 
-MY_P=linux-${PV}
+MY_P=linux-${PV%.*}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.10.12
 CONFIG_HASH=836165dd2dff34e4f2c47ca8f9c803002c1e6530
 GENTOO_CONFIG_VER=g16
+SHA256SUM_DATE=20250701
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
@@ -18,10 +19,12 @@ HOMEPAGE="
 "
 SRC_URI+="
 	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/patch-${PV}.xz
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz
 	verify-sig? (
-		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.sign
+		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/sha256sums.asc
+			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
 	)
 	amd64? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64-fedora.config
@@ -49,7 +52,7 @@ REQUIRED_USE="arm? ( savedconfig )"
 
 BDEPEND="
 	debug? ( dev-util/pahole )
-	verify-sig? ( sec-keys/openpgp-keys-kernel )
+	verify-sig? ( >=sec-keys/openpgp-keys-kernel-20250702 )
 "
 PDEPEND="
 	>=virtual/dist-kernel-${PV}
@@ -59,16 +62,19 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
 
 src_unpack() {
 	if use verify-sig; then
-		verify-sig_uncompress_verify_unpack \
-			"${DISTDIR}"/linux-${PV}.tar.{xz,sign}
-		unpack "gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz"
-	else
-		default
+		cd "${DISTDIR}" || die
+		verify-sig_verify_signed_checksums \
+			"linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc" \
+			sha256 "${MY_P}.tar.xz patch-${PV}.xz"
+		cd "${WORKDIR}" || die
 	fi
+
+	default
 }
 
 src_prepare() {
 	default
+	eapply "${WORKDIR}/patch-${PV}"
 
 	local biendian=false
 
