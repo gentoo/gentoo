@@ -28,4 +28,5 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i -e "s/2.8.9/3.10/" CMakeLists.txt || die
+	cmake_src_prepare
 }
