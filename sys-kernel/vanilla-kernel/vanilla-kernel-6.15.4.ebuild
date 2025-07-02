@@ -27,7 +27,7 @@ SRC_URI+="
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz
 	verify-sig? (
 		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/sha256sums.asc
-			-> linux-sha256sums-${SHA256SUM_DATE}.asc
+			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
 	)
 	amd64? (
 		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-x86_64-fedora.config
@@ -67,8 +67,8 @@ src_unpack() {
 	if use verify-sig; then
 		cd "${DISTDIR}" || die
 		verify-sig_verify_signed_checksums \
-			"linux-sha256sums-${SHA256SUM_DATE}.asc" sha256 \
-			"${MY_P}.tar.xz patch-${PV}.xz"
+			"linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc" \
+			sha256 "${MY_P}.tar.xz patch-${PV}.xz"
 		cd "${WORKDIR}" || die
 	fi
 
