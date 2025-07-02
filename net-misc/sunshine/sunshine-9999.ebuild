@@ -184,7 +184,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
-	"${FILESDIR}"/${PN}-tray-notification-cb.patch
 )
 
 # Make this mess a bit simpler.
