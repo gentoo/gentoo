@@ -23,3 +23,8 @@ SLOT="0"
 RDEPEND="net-wireless/soapysdr:=
 		>=net-wireless/bladerf-2018.08:="
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	sed -i -e "s/2.8.7/3.5/" CMakeLists.txt || die
+	cmake_src_prepare
+}
