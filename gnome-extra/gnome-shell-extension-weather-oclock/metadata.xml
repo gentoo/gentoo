@@ -5,4 +5,7 @@
 		<email>pacho@gentoo.org</email>
 	</maintainer>
 	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="github">CleoMenezesJr/weather-oclock</remote-id>
+	</upstream>
 </pkgmetadata>
