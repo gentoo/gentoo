@@ -19,6 +19,11 @@ FLASH_PV=2.7.4
 FLASH_PN=flash-attention
 FLASH_P=${FLASH_PN}-${FLASH_PV}
 
+AOTRITON_PV=0.9.2b
+AOTRITON_PN=aotriton
+AOTRITON_P=${AOTRITON_PN}-${AOTRITON_PV}
+AOTRITON_tar=${AOTRITON_P}-manylinux_2_28_x86_64-rocm6.3-shared.tar.gz
+
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
 SRC_URI="
@@ -26,6 +31,11 @@ SRC_URI="
 	rocm? (
 		https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz
 		-> ${CK_P}.tar.gz
+		memefficient? (
+			amd64? (
+				https://github.com/ROCm/${AOTRITON_PN}/releases/download/${AOTRITON_PV}/${AOTRITON_tar}
+			)
+		)
 	)
 	flash? (
 		https://github.com/Dao-AILab/${FLASH_PN}/archive/refs/tags/v${FLASH_PV}.tar.gz
@@ -183,6 +193,13 @@ src_prepare() {
 	pushd torch/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
 	popd
+	if use rocm && use memefficient; then
+		mkdir -p "${BUILD_DIR}"/aotriton_external-prefix/src || die
+		rm -rf "${WORKDIR}"/aotriton
+		if use amd64; then
+			cp "${DISTDIR}"/${AOTRITON_tar} "${BUILD_DIR}"/aotriton_external-prefix/src || die
+		fi
+	fi
 
 	# prefixify the hardcoded paths, after all patches are applied
 	hprefixify \
