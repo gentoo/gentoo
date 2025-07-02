@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!app-i18n/fcitx-chewing:4
-	>=app-i18n/fcitx-5.1.12:5
+	=app-i18n/fcitx-5.1.12*:5
 	>=app-i18n/libchewing-0.5.0
 "
 DEPEND="${RDEPEND}"
