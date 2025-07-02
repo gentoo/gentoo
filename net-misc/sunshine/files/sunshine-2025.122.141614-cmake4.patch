@@ -1,8 +1,0 @@
---- a/tools/CMakeLists.txt
-+++ b/tools/CMakeLists.txt
-@@ -1,4 +1,4 @@
--cmake_minimum_required(VERSION 3.0)
-+cmake_minimum_required(VERSION 3.20)
- 
- project(sunshine_tools)
- 
