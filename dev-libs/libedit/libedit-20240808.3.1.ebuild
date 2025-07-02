@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 MY_P=${P/./-}
 DESCRIPTION="BSD replacement for libreadline"
@@ -24,6 +24,11 @@ RDEPEND="
 "
 
 QA_PKGCONFIG_VERSION=$(ver_cut 2-3)
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	local myconf=(
