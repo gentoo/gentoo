@@ -39,6 +39,7 @@ all_ruby_prepare() {
 	# that we tackle on our own; finally remove git ls-files usage.
 	sed -i -e '/dependency.*\(shoulda\|bundler\|jeweler\|rcov\)/d' \
 		-e '/platform/d' \
+		-e '/gem.extensions/d' \
 		-e '/git ls/d' \
 		${RUBY_FAKEGEM_GEMSPEC} || die
 }
