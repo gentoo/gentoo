@@ -36,7 +36,7 @@ esac
 if [[ -z ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	inherit secureboot
 fi
