@@ -45,6 +45,11 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/seahorse/-/issues/348
+	"${FILESDIR}/${PN}-47.0.1-ldap-test.patch"
+)
+
 src_prepare() {
 	default
 	vala_setup
