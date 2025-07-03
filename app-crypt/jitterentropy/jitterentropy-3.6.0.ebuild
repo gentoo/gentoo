@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-library-${PV}"
 # Do not package these two components!
 LICENSE="BSD"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="static-libs"
 
 src_prepare() {
