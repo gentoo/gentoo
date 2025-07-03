@@ -15,7 +15,7 @@ LICENSE="BSD CC0-1.0 BZIP2 GPL-3+ MIT public-domain"
 # Dependent licenses
 LICENSE+="  0BSD Apache-2.0 BSD BSD-2 CC0-1.0 ISC MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~riscv x86"
+KEYWORDS="amd64 arm ~riscv x86"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-obfs4proxy )"
