@@ -1,0 +1,196 @@
+diff --git a/src/basic/cgroup-util.c b/src/basic/cgroup-util.c
+index 90cfeb5..b88ac7c 100644
+--- a/src/basic/cgroup-util.c
++++ b/src/basic/cgroup-util.c
+@@ -1535,7 +1535,11 @@ int cg_path_get_session(const char *path, char **ret_session) {
+         if (e == n)
+                 return -ENXIO;
+ 
++#if defined(__GLIBC__)
+         start = strndupa(e, n - e);
++#else
++        start = strndup(e, n - e);
++#endif
+         start = cg_unescape(start);
+ 
+         if (!start[0])
+diff --git a/src/basic/errno-util.h b/src/basic/errno-util.h
+index 27804e6..63a83ed 100644
+--- a/src/basic/errno-util.h
++++ b/src/basic/errno-util.h
+@@ -10,12 +10,20 @@
+ /* strerror(3) says that glibc uses a maximum length of 1024 bytes. */
+ #define ERRNO_BUF_LEN 1024
+ 
++// https://github.com/chriskohlhoff/asio/blob/efdc25ab99786101351a5afb39f01dfaf0781401/asio/include/asio/impl/error_code.ipp#L188
++// Helper function to adapt the result from glibc's variant of strerror_r.
++#if defined(__GLIBC__)
++static const char* strerror_result(const char* s, const char*) { return s; }
++#else
++static const char* strerror_result(int, const char* s) { return s; }
++#endif
++
+ /* Note: the lifetime of the compound literal is the immediately surrounding block,
+  * see C11 §6.5.2.5, and
+  * https://stackoverflow.com/questions/34880638/compound-literal-lifetime-and-if-blocks
+  *
+  * Note that we use the GNU variant of strerror_r() here. */
+-#define STRERROR(errnum) strerror_r(abs(errnum), (char[ERRNO_BUF_LEN]){}, ERRNO_BUF_LEN)
++#define STRERROR(errnum) strerror_result(strerror_r(abs(errnum), (char[ERRNO_BUF_LEN]){}, ERRNO_BUF_LEN), (char[ERRNO_BUF_LEN]){})
+ 
+ /* A helper to print an error message or message for functions that return 0 on EOF.
+  * Note that we can't use ({ … }) to define a temporary variable, so errnum is
+diff --git a/src/basic/missing_prctl.h b/src/basic/missing_prctl.h
+index 7d9e395..5320169 100644
+--- a/src/basic/missing_prctl.h
++++ b/src/basic/missing_prctl.h
+@@ -1,7 +1,9 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ #pragma once
+ 
++#if defined(__GLIBC__)
+ #include <linux/prctl.h>
++#endif
+ 
+ /* 58319057b7847667f0c9585b9de0e8932b0fdb08 (4.3) */
+ #ifndef PR_CAP_AMBIENT
+diff --git a/src/basic/rlimit-util.c b/src/basic/rlimit-util.c
+index 091c111..59bdc35 100644
+--- a/src/basic/rlimit-util.c
++++ b/src/basic/rlimit-util.c
+@@ -428,11 +428,7 @@ int rlimit_nofile_safe(void) {
+         rl.rlim_max = MIN(rl.rlim_max, (rlim_t) read_nr_open());
+         rl.rlim_cur = MIN((rlim_t) FD_SETSIZE, rl.rlim_max);
+         if (setrlimit(RLIMIT_NOFILE, &rl) < 0)
+-#ifdef __GLIBC__ /// To be compatible with musl-libc, elogind uses an (uintmax_t) cast.
+                 return log_debug_errno(errno, "Failed to lower RLIMIT_NOFILE's soft limit to " RLIM_FMT ": %m", rl.rlim_cur);
+-#else // __GLIBC__
+-                return log_debug_errno(errno, "Failed to lower RLIMIT_NOFILE's soft limit to " RLIM_FMT ": %m", (uintmax_t)rl.rlim_cur);
+-#endif // __GLIBC__
+ 
+         return 1;
+ }
+diff --git a/src/libelogind/sd-bus/bus-error.c b/src/libelogind/sd-bus/bus-error.c
+index f415797..b65f9d0 100644
+--- a/src/libelogind/sd-bus/bus-error.c
++++ b/src/libelogind/sd-bus/bus-error.c
+@@ -410,7 +410,7 @@ static void bus_error_strerror(sd_bus_error *e, int error) {
+                         return;
+ 
+                 errno = 0;
+-                x = strerror_r(error, m, k);
++                x = strerror_result(strerror_r(error, m, k), m);
+                 if (errno == ERANGE || strlen(x) >= k - 1) {
+                         free(m);
+                         k *= 2;
+@@ -596,7 +596,7 @@ const char* _bus_error_message(const sd_bus_error *e, int error, char buf[static
+         if (e && e->message)
+                 return e->message;
+ 
+-        return strerror_r(abs(error), buf, ERRNO_BUF_LEN);
++        return strerror_result(strerror_r(abs(error), buf, ERRNO_BUF_LEN), buf);
+ }
+ 
+ static bool map_ok(const sd_bus_error_map *map) {
+diff --git a/src/libelogind/sd-event/sd-event.c b/src/libelogind/sd-event/sd-event.c
+index 1660846..67bb6b2 100644
+--- a/src/libelogind/sd-event/sd-event.c
++++ b/src/libelogind/sd-event/sd-event.c
+@@ -1888,7 +1888,9 @@ _public_ int sd_event_trim_memory(void) {
+ 
+         usec_t before_timestamp = now(CLOCK_MONOTONIC);
+         hashmap_trim_pools();
++#if defined(__GLIBC__)
+         r = malloc_trim(0);
++#endif
+         usec_t after_timestamp = now(CLOCK_MONOTONIC);
+ 
+         if (r > 0)
+diff --git a/src/libelogind/sd-journal/journal-file.h b/src/libelogind/sd-journal/journal-file.h
+index c3c5f59..d66948d 100644
+--- a/src/libelogind/sd-journal/journal-file.h
++++ b/src/libelogind/sd-journal/journal-file.h
+@@ -1,6 +1,7 @@
+ /* SPDX-License-Identifier: LGPL-2.1-or-later */
+ #pragma once
+ 
++#include <sys/stat.h>
+ #include <fcntl.h>
+ #include <inttypes.h>
+ //#include <sys/uio.h>
+diff --git a/src/login/logind-inhibit.c b/src/login/logind-inhibit.c
+index 86d1f84..0480652 100644
+--- a/src/login/logind-inhibit.c
++++ b/src/login/logind-inhibit.c
+@@ -27,6 +27,10 @@
+ #include "tmpfile-util.h"
+ #include "user-util.h"
+ 
++#if !defined(__GLIBC__)
++#define basename(src) (strrchr(src, '/') ? strrchr(src, '/') + 1 : src)
++#endif
++
+ static void inhibitor_remove_fifo(Inhibitor *i);
+ 
+ int inhibitor_new(Inhibitor **ret, Manager *m, const char* id) {
+diff --git a/src/login/logind-seat.c b/src/login/logind-seat.c
+index bef542d..5902cd2 100644
+--- a/src/login/logind-seat.c
++++ b/src/login/logind-seat.c
+@@ -25,6 +25,10 @@
+ #include "terminal-util.h"
+ #include "tmpfile-util.h"
+ 
++#if !defined(__GLIBC__)
++#define basename(src) (strrchr(src, '/') ? strrchr(src, '/') + 1 : src)
++#endif
++
+ int seat_new(Seat** ret, Manager *m, const char *id) {
+         _cleanup_(seat_freep) Seat *s = NULL;
+         int r;
+diff --git a/src/login/logind-session.c b/src/login/logind-session.c
+index 188dc24..ff502b0 100644
+--- a/src/login/logind-session.c
++++ b/src/login/logind-session.c
+@@ -43,6 +43,10 @@
+ #include "cgroup-setup.h"
+ #include "extract-word.h"
+ 
++#if !defined(__GLIBC__)
++#define basename(src) (strrchr(src, '/') ? strrchr(src, '/') + 1 : src)
++#endif
++
+ #define RELEASE_USEC (20*USEC_PER_SEC)
+ 
+ static void session_remove_fifo(Session *s);
+diff --git a/src/shared/common-signal.c b/src/shared/common-signal.c
+index 8e70e36..45b533c 100644
+--- a/src/shared/common-signal.c
++++ b/src/shared/common-signal.c
+@@ -66,10 +66,12 @@ int sigrtmin18_handler(sd_event_source *s, const struct signalfd_siginfo *si, vo
+                         break;
+                 }
+ 
++#if defined(__GLIBC__)
+                 if (malloc_info(0, f) < 0) {
+                         log_error_errno(errno, "Failed to invoke malloc_info(): %m");
+                         break;
+                 }
++#endif
+ 
+                 (void) memstream_dump(LOG_INFO, &m);
+                 break;
+diff --git a/src/shared/user-record-nss.h b/src/shared/user-record-nss.h
+index 7a41be7..7e68950 100644
+--- a/src/shared/user-record-nss.h
++++ b/src/shared/user-record-nss.h
+@@ -2,7 +2,9 @@
+ #pragma once
+ 
+ #include <grp.h>
++#if defined(__GLIBC__)
+ #include <gshadow.h>
++#endif
+ #include <pwd.h>
+ #include <shadow.h>
+ 
