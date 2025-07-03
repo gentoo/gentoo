@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	COMMIT="8dff7ad3c10ac663745f2263037f6e42b993519c"
 	SRC_URI="https://github.com/georgmartius/vid.stab/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86"
+	KEYWORDS="~alpha amd64 arm ~arm64 ~loong ppc ppc64 ~riscv x86"
 	S="${WORKDIR}/vid.stab-${COMMIT}"
 fi
 
