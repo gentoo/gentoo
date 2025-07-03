@@ -50,6 +50,12 @@ _DOT_A_ECLASS=1
 
 inherit flag-o-matic toolchain-funcs
 
+# @VARIABLE: _DOT_A_IS_LTO
+# @INTERNAL
+# @DESCRIPTION:
+# Records the state of tc-is-lto across eclass function calls.
+_DOT_A_IS_LTO=0
+
 # TODO: QA check
 
 # @FUNCTION: lto-guarantee-fat
@@ -59,6 +65,7 @@ inherit flag-o-matic toolchain-funcs
 lto-guarantee-fat() {
 	tc-is-lto || return
 
+	_DOT_A_IS_LTO=1
 	# We add this for all languages as LTO obviously can't be done
 	# if different compilers are used for e.g. C vs C++ anyway.
 	append-flags $(test-flags-CC -ffat-lto-objects)
@@ -73,7 +80,9 @@ lto-guarantee-fat() {
 # As an optimisation, if USE=static-libs exists for a package and is disabled,
 # the default-searching behaviour with no arguments is suppressed.
 strip-lto-bytecode() {
-	tc-is-lto || return
+	if [[ ${_DOT_A_IS_LTO} != 1 ]] && ! tc-is-lto; then
+		return
+	fi
 
 	local files=()
 
