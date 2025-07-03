@@ -24,6 +24,7 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2023.11.04-gentoo.patch
 	"${FILESDIR}"/${PN}-2023.01.13-test.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 src_configure() {
