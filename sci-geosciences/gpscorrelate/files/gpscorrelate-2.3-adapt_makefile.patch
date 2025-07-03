@@ -1,0 +1,91 @@
+https://github.com/dfandrich/gpscorrelate/pull/32.patch
+From 39545902a28813c3c877ea8083db6c0e8f4f5023 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Thu, 3 Jul 2025 10:50:23 +0200
+Subject: [PATCH] adapt Makefile for dist-building
+
+some dists needs to declare some variables for building package
+add ?= where it's useful
+
+separate install for earch target
+
+leave only linker flags in LDFLAGS
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ Makefile | 30 ++++++++++++++++++------------
+ 1 file changed, 18 insertions(+), 12 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 93bb9a9..d57a52c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,13 +2,13 @@
+ 
+ PACKAGE_VERSION = 2.3.1git
+ 
+-CC = gcc
+-CXX = g++
++CC ?= gcc
++CXX ?= g++
+ EXEEXT =
+-PKG_CONFIG=pkg-config
+-CFLAGS   = -Wall -O2
+-CXXFLAGS = $(CFLAGS)
+-LDFLAGS  = -Wall -O2 -lm
++PKG_CONFIG ?= pkg-config
++CFLAGS   ?= -Wall -O2
++CXXFLAGS ?= $(CFLAGS)
++LDFLAGS  += -lm
+ GTK      = 3
+ CHECK_OPTIONS=
+ 
+@@ -28,19 +28,19 @@ CFLAGSINC += $(GTKFLAGS)
+ # Put --nonet here to avoid downloading DTDs while building documentation
+ XSLTFLAGS =
+ 
+-prefix   = /usr/local
++prefix   ?= /usr/local
+ bindir   = $(prefix)/bin
+ datadir  = $(prefix)/share
+ mandir   = $(datadir)/man
+-docdir   = $(datadir)/doc/gpscorrelate
++docdir   ?= $(datadir)/doc/gpscorrelate
+ applicationsdir = $(datadir)/applications
+ localedir = $(datadir)/locale
+ 
+ DEFS = -DPACKAGE_VERSION=\"$(PACKAGE_VERSION)\" -DPACKAGE_LOCALE_DIR=\"$(localedir)\" -DPACKAGE_DOC_DIR=\"$(docdir)\"
+ 
+-TARGETS = gpscorrelate-gui$(EXEEXT) gpscorrelate$(EXEEXT) doc/gpscorrelate.1 doc/gpscorrelate.html
++TARGETS ?= gpscorrelate-gui$(EXEEXT) gpscorrelate$(EXEEXT)
+ 
+-all:	$(TARGETS)
++all:   $(TARGETS) docs
+ 
+ gpscorrelate$(EXEEXT): $(COBJS)
+ 	$(CXX) -o $@ $(COBJS) $(LDFLAGS) $(LIBS)
+@@ -66,9 +66,9 @@ clean:
+ distclean: clean clean-po
+ 	rm -f AUTHORS
+ 
+-install: all
++install-gpscorrelate:
+ 	install -d $(DESTDIR)$(bindir)
+-	install -m 0755 gpscorrelate$(EXEEXT) gpscorrelate-gui$(EXEEXT) $(DESTDIR)$(bindir)
++	install -m 0755 gpscorrelate$(EXEEXT) $(DESTDIR)$(bindir)
+ 	install -d $(DESTDIR)$(mandir)/man1
+ 	install -m 0644 doc/gpscorrelate.1 $(DESTDIR)$(mandir)/man1
+ 	install -d $(DESTDIR)$(docdir)
+@@ -82,6 +82,12 @@ install-desktop-file:
+ 	install -d $(DESTDIR)$(datadir)/icons/hicolor/scalable/apps
+ 	install -p -m 0644 gpscorrelate-gui.svg $(DESTDIR)$(datadir)/icons/hicolor/scalable/apps/gpscorrelate-gui.svg
+ 
++install-gpscorrelate-gui: install-desktop-file
++	install -d $(DESTDIR)$(bindir)
++	install -m 0755 gpscorrelate-gui$(EXEEXT) $(DESTDIR)$(bindir)
++
++install: all $(foreach target,$(TARGETS),install-$(target))
++
+ docs: doc/gpscorrelate.1 doc/gpscorrelate.html
+ 
+ # BSD make doesn't work with $< as the prerequisite in the following rules but $? is fine
