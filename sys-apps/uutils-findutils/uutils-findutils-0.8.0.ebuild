@@ -32,7 +32,6 @@ SRC_URI+="
 	https://github.com/gentoo-crate-dist/findutils/releases/download/${PV}/findutils-${PV}-crates.tar.xz
 "
 
-
 LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT Unicode-DFS-2016"
