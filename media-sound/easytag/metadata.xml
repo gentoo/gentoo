@@ -6,4 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<longdescription>Utility for viewing and editing tags for MP3, MP2, FLAC, AAC, MP4 and OGG files. It features a simple and attractive GTK+ interface</longdescription>
+	<upstream>
+		<remote-id type="gnome-gitlab">GNOME/easytag</remote-id>
+	</upstream>
 </pkgmetadata>
