@@ -299,10 +299,6 @@ BDEPEND="
 # Rust extension
 QA_FLAGS_IGNORED="usr/lib/python3.*/site-packages/synapse/synapse_rust.abi3.so"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.123.0-skip-recovery-test.patch"
-)
-
 src_test() {
 	if use postgres; then
 		einfo "Preparing postgres test instance"
