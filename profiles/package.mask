@@ -82,40 +82,6 @@ dev-python/caldav
 # Qt5 package without any revdeps. Removal on 2025-07-24. Bug #938823
 dev-libs/libdbusmenu-qt
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-06-24)
-# Perl 5.42 mask/unmask block, complete as of 5.42.0_rc2
-=dev-lang/perl-5.42*
-~virtual/perl-Archive-Tar-3.40.0
-~virtual/perl-Compress-Raw-Bzip2-2.213.0
-~virtual/perl-CPAN-2.380.0
-~virtual/perl-Data-Dumper-2.192.0
-~virtual/perl-Devel-PPPort-3.730.0
-~virtual/perl-Digest-MD5-2.590.0
-~virtual/perl-Exporter-5.790.0
-~virtual/perl-ExtUtils-CBuilder-0.280.241
-~virtual/perl-ExtUtils-CBuilder-0.280.242
-~virtual/perl-ExtUtils-MakeMaker-7.760.0
-~virtual/perl-ExtUtils-ParseXS-3.570.0
-~virtual/perl-File-Spec-3.940.0
-~virtual/perl-HTTP-Tiny-0.90.0
-~virtual/perl-IO-Compress-2.213.0
-~virtual/perl-IO-Socket-IP-0.430.0
-~virtual/perl-Math-BigInt-2.5.2
-~virtual/perl-Math-BigInt-FastCalc-0.502.0
-~virtual/perl-Math-BigRat-2.5.2
-~virtual/perl-Math-Complex-1.630.0
-=virtual/perl-Module-CoreList-5.202.506*
-=virtual/perl-Module-CoreList-5.202.507*
-~virtual/perl-parent-0.244.0
-~virtual/perl-podlators-6.0.2
-~virtual/perl-Scalar-List-Utils-1.680.100_rc
-~virtual/perl-Storable-3.370.0
-~virtual/perl-Test2-Suite-1.302.210
-~virtual/perl-Test-Simple-1.302.210
-~virtual/perl-threads-2.430.0
-~virtual/perl-Time-HiRes-1.977.800
-~virtual/perl-version-0.993.300
-
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # Last commit in 2019.  Has an entry point conflict with
 # dev-python/pytest-tornasync.  No reverse dependencies left.
