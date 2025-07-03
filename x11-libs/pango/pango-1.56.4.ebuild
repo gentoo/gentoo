@@ -49,6 +49,10 @@ src_prepare() {
 
 	# get rid of a win32 example
 	rm examples/pangowin32tobmp.c || die
+
+	# Skip broken test:
+	# https://gitlab.gnome.org/GNOME/pango/-/issues/677
+	rm tests/layouts/valid-20.layout || die
 }
 
 multilib_src_configure() {
