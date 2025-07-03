@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=IGUTHRIE
 DIST_VERSION=0.82
@@ -11,8 +11,6 @@ DESCRIPTION="Perl extension for statvfs() and fstatvfs()"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-
-BDEPEND="virtual/perl-ExtUtils-MakeMaker"
 
 src_compile() {
 	mymake=(
