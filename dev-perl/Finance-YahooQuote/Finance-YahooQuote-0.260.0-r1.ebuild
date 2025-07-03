@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=EDD
 DIST_VERSION=0.26
@@ -19,9 +19,8 @@ RDEPEND="
 	>=dev-perl/libwww-perl-1.620.0
 	>=virtual/perl-Text-ParseWords-3.100.0
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-"
+BDEPEND="${RDEPEND}"
+
 src_test() {
 	local MODULES=(
 		"Finance::YahooQuote ${DIST_VERSION}"
