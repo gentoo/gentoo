@@ -24,6 +24,11 @@
       https://caddyserver.com/docs/modules/security
       https://github.com/greenpau/caddy-security
     </flag>
+    <flag name="cloudflare">
+      Manage DNS records with Cloudflare accounts.
+      https://caddyserver.com/docs/modules/dns.providers.cloudflare
+      https://github.com/caddy-dns/cloudflare
+    </flag>
   </use>
   <upstream>
     <remote-id type="github">caddyserver/caddy</remote-id>
