@@ -30,6 +30,11 @@ DEPEND="${RDEPEND}
 DOCS=( CHANGELOG.md README.md )
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/944741
+	# https://github.com/rime/librime/issues/954
+	filter-lto
+
 	# for glog
 	if use debug; then
 		append-cxxflags -DDCHECK_ALWAYS_ON
