@@ -83,11 +83,12 @@ src_compile() {
 		MULTICALL=y
 		MANDIR="/share/man/man1"
 
-		SELINUX_ENABLED=$(usex selinux)
+		SELINUX_ENABLED=$(usex selinux 1 0)
 
 		# pinky, uptime, users, and who require utmpx (not available on musl)
 		# bug #832868
-		SKIP_UTILS="$(usev elibc_musl "pinky uptime users who")"
+		# runcon chcon require selinux, but upstream broke the SELINUX_ENABLED logic
+		SKIP_UTILS="$(usev elibc_musl "pinky uptime users who") $(usev !selinux "runcon chcon")"
 	)
 
 	emake "${makeargs[@]}"
