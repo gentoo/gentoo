@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..14} python3_{13,14}t)
 inherit bash-completion-r1 estack flag-o-matic linux-info llvm-r1 toolchain-funcs python-r1
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
-HOMEPAGE="https://perf.wiki.kernel.org/"
+HOMEPAGE="https://perfwiki.github.io/main/"
 
 LINUX_V="${PV:0:1}.x"
 if [[ ${PV} == *_rc* ]] ; then
