@@ -4,7 +4,7 @@
 EAPI="8"
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit cmake lua-single
+inherit cmake flag-o-matic lua-single
 
 if [[ "${PV}" == "99999999999999" ]]; then
 	inherit git-r3
@@ -45,4 +45,14 @@ src_prepare() {
 		-i CMakeLists.txt || die
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/940793
+	# https://github.com/hchunhui/librime-lua/issues/412
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	cmake_src_configure
 }
