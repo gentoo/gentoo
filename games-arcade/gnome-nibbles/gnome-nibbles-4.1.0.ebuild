@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-nibbles"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 RDEPEND="
 	>=dev-libs/glib-2.78.0:2
 	dev-libs/libgee:0.8=
