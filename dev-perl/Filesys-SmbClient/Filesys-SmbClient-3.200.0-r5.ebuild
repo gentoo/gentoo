@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=ALIAN
 DIST_VERSION=3.2
@@ -11,17 +11,11 @@ DESCRIPTION="Provide Perl API for libsmbclient.so"
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND=">=net-fs/samba-4.2[client]"
 DEPEND=">=net-fs/samba-4.2[client]"
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	virtual/pkgconfig
-	test? (
-		virtual/perl-Test-Simple
-	)
 "
 
 PATCHES=(
