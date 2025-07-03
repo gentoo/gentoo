@@ -10,7 +10,7 @@ EAPI=8
 #
 # Also check the ${PV}_STABLE branch upstream for backports.
 
-inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
+inherit autotools dot-a flag-o-matic toolchain-funcs multilib pax-utils
 
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
 HOMEPAGE="https://valgrind.org"
@@ -120,6 +120,7 @@ src_configure() {
 	)
 
 	tc-is-lto && myconf+=( --enable-lto )
+	lto-guarantee-fat
 
 	# Respect ar, bug #468114
 	tc-export AR
@@ -176,6 +177,8 @@ src_install() {
 	dodoc FAQ.txt
 
 	pax-mark m "${ED}"/usr/$(get_libdir)/valgrind/*-*-linux
+
+	strip-lto-bytecode
 
 	# See README_PACKAGERS
 	dostrip -x /usr/libexec/valgrind/vgpreload* /usr/$(get_libdir)/valgrind/*
