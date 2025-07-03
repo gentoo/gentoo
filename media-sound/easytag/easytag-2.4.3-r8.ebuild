@@ -67,8 +67,8 @@ PATCHES=(
 )
 
 src_configure() {
-	# bug #949814
-	filter-lto
+	# bug #940245
+	use mp3 && filter-lto
 
 	gnome2_src_configure \
 		--disable-Werror \
