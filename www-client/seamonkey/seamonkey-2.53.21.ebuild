@@ -41,7 +41,7 @@ inherit autotools check-reqs desktop edos2unix flag-o-matic llvm-r1 mozcoreconf-
 
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 SYSTEM_IUSE=( +system-{av1,harfbuzz,icu,jpeg,libevent,libvpx,png,sqlite} )
 IUSE="+chatzilla cpu_flags_arm_neon dbus +gmp-autoupdate +ipc jack
 pulseaudio selinux startup-notification test webrtc wifi"
@@ -62,6 +62,7 @@ BDEPEND="
 	 ')
 	virtual/pkgconfig
 	amd64? ( >=dev-lang/yasm-1.1 )
+	x86? ( >=dev-lang/yasm-1.1 )
 "
 COMMON_DEPEND="
 	app-arch/bzip2
@@ -128,6 +129,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto
 	amd64? ( virtual/opengl )
+	x86? ( virtual/opengl )
 "
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -197,6 +199,11 @@ src_prepare() {
 
 	if use system-libvpx ; then
 		eapply "${PATCH_S}/USE_flag/1009_seamonkey-2.53.3-system_libvpx-1.8.patch"
+	fi
+
+	# Fix for building on x86 https://bugs.gentoo.org/915336 (x86-only)
+	if use x86 ; then
+		eapply -p1 "${PATCH_S}/USE_flag/2021_seamonkey_2.53.17-floating-point_normalization_on_x86_build_fix.patch"
 	fi
 
 	# Patch for people who use their systems ICU 74
@@ -356,6 +363,9 @@ src_configure() {
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
 
+	# Linking fails without this due to memory exhaustion
+	use x86 && append-ldflags "-Wl,--no-keep-memory"
+
 	# Setup api key for location services
 	printf '%s' "${_google_api_key}" > "${S}"/google-api-key
 	mozconfig_annotate '' --with-google-location-service-api-keyfile="${S}/google-api-key"
@@ -372,7 +382,7 @@ src_configure() {
 	# it also gives more problems than it solves.
 	# https://bugs.gentoo.org/851933
 	# https://bugzilla.mozilla.org/show_bug.cgi?id=1706264
-	if use arm64 || use arm || use amd64 ; then
+	if use x86 || use arm64 || use arm || use amd64 ; then
 		mozconfig_annotate 'elf-hack is broken' --disable-elf-hack
 	fi
 
@@ -393,7 +403,7 @@ src_configure() {
 	# Work around breakage in makeopts with --no-print-directory
 	MAKEOPTS="${MAKEOPTS/--no-print-directory/}"
 
-	if use amd64 ; then
+	if use amd64 || use x86 ; then
 		append-flags -mno-avx
 	fi
 
