@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc64 ~riscv ~s390 x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc64 ~riscv ~s390 x86"
 
 IUSE="libevent lua +ssl test"
 REQUIRED_USE="test? ( ssl libevent )"
