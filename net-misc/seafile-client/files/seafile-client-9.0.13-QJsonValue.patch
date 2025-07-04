@@ -1,0 +1,81 @@
+https://github.com/haiwen/seafile-client/pull/1634
+
+From 2d98f6b91b50f12e7908623cbb0ddc0c76022655 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Thu, 3 Jul 2025 23:29:00 +0800
+Subject: [PATCH] QJsonValue is required since Qt 6.9
+
+otherwise, build will fail with:
+
+src/message-poller.cpp:247:28: error: variable has incomplete type 'QRegularExpression'
+  247 |         QRegularExpression re("Deleted \"(.+)\" and (.+) more files.");
+      |                            ^
+/usr/include/qt6/QtCore/qstringfwd.h:44:7: note: forward declaration of 'QRegularExpression'
+   44 | class QRegularExpression;
+      |       ^
+src/message-poller.cpp:248:34: error: calling 'operator[]' with incomplete return type 'const QJsonValue'
+  248 |         auto match = re.match(doc["delete_files"].toString().trimmed());
+      |                               ~~~^~~~~~~~~~~~~~~~
+/usr/include/qt6/QtCore/qjsondocument.h:89:22: note: 'operator[]' declared here
+   89 |     const QJsonValue operator[](const QString &key) const;
+      |                      ^
+/usr/include/qt6/QtCore/qmetatype.h:1544:1: note: forward declaration of 'QJsonValue'
+ 1544 | QT_FOR_EACH_STATIC_CORE_CLASS(QT_FORWARD_DECLARE_STATIC_TYPES_ITER)
+      | ^
+/usr/include/qt6/QtCore/qmetatype.h:126:23: note: expanded from macro 'QT_FOR_EACH_STATIC_CORE_CLASS'
+  126 |     F(QJsonValue, 45, QJsonValue) \
+      |                       ^
+src/message-poller.cpp:255:35: error: calling 'operator[]' with incomplete return type 'const QJsonValue'
+  255 |                           .arg(doc["repo_name"].toString().trimmed());
+      |                                ~~~^~~~~~~~~~~~~
+/usr/include/qt6/QtCore/qjsondocument.h:89:22: note: 'operator[]' declared here
+   89 |     const QJsonValue operator[](const QString &key) const;
+      |                      ^
+/usr/include/qt6/QtCore/qmetatype.h:1544:1: note: forward declaration of 'QJsonValue'
+ 1544 | QT_FOR_EACH_STATIC_CORE_CLASS(QT_FORWARD_DECLARE_STATIC_TYPES_ITER)
+      | ^
+/usr/include/qt6/QtCore/qmetatype.h:126:23: note: expanded from macro 'QT_FOR_EACH_STATIC_CORE_CLASS'
+  126 |     F(QJsonValue, 45, QJsonValue) \
+      |                       ^
+src/message-poller.cpp:258:48: error: calling 'operator[]' with incomplete return type 'const QJsonValue'
+  258 |             rpc_client_->addDelConfirmation(doc["confirmation_id"].toString(), false);
+      |                                             ~~~^~~~~~~~~~~~~~~~~~~
+/usr/include/qt6/QtCore/qjsondocument.h:89:22: note: 'operator[]' declared here
+   89 |     const QJsonValue operator[](const QString &key) const;
+      |                      ^
+/usr/include/qt6/QtCore/qmetatype.h:1544:1: note: forward declaration of 'QJsonValue'
+ 1544 | QT_FOR_EACH_STATIC_CORE_CLASS(QT_FORWARD_DECLARE_STATIC_TYPES_ITER)
+      | ^
+/usr/include/qt6/QtCore/qmetatype.h:126:23: note: expanded from macro 'QT_FOR_EACH_STATIC_CORE_CLASS'
+  126 |     F(QJsonValue, 45, QJsonValue) \
+      |                       ^
+src/message-poller.cpp:260:48: error: calling 'operator[]' with incomplete return type 'const QJsonValue'
+  260 |             rpc_client_->addDelConfirmation(doc["confirmation_id"].toString(), true);
+      |                                             ~~~^~~~~~~~~~~~~~~~~~~
+/usr/include/qt6/QtCore/qjsondocument.h:89:22: note: 'operator[]' declared here
+   89 |     const QJsonValue operator[](const QString &key) const;
+      |                      ^
+/usr/include/qt6/QtCore/qmetatype.h:1544:1: note: forward declaration of 'QJsonValue'
+ 1544 | QT_FOR_EACH_STATIC_CORE_CLASS(QT_FORWARD_DECLARE_STATIC_TYPES_ITER)
+      | ^
+/usr/include/qt6/QtCore/qmetatype.h:126:23: note: expanded from macro 'QT_FOR_EACH_STATIC_CORE_CLASS'
+  126 |     F(QJsonValue, 45, QJsonValue) \
+      |                       ^
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/src/message-poller.cpp b/src/message-poller.cpp
+index 2ab32c50..2392bfba 100644
+--- a/src/message-poller.cpp
++++ b/src/message-poller.cpp
+@@ -1,6 +1,7 @@
+ #include <QTimer>
+ #include <QDateTime>
+ #include <QJsonDocument>
++#include <QJsonValue>
+ 
+ #include "utils/utils.h"
+ #include "utils/translate-commit-desc.h"
+-- 
+2.45.2
+
