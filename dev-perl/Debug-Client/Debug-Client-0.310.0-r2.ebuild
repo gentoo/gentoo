@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=MANWAR
 DIST_VERSION=0.31
@@ -11,15 +11,12 @@ DESCRIPTION="Client side code for perl debugger"
 
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Carp-1.330.100
 	>=virtual/perl-Exporter-5.700.0
 	>=virtual/perl-IO-Socket-IP-0.290.0
 	>=dev-perl/PadWalker-1.980.0
-	>=virtual/perl-Term-ReadLine-1.140.0
 	>=dev-perl/Term-ReadLine-Gnu-1.200.0
 "
 BDEPEND="${RDEPEND}
