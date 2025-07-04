@@ -1,0 +1,13 @@
+https://github.com/haiwen/seafile-client/issues/1615
+
+upstream won't change the minimum version soon
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3bb58761..58af8e15 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.9)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
+ 
+ PROJECT(seafile-client)
+ SET(SEAFILE_CLIENT_VERSION_MAJOR 9)
