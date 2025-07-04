@@ -1,0 +1,30 @@
+From 3d8d3acf0daad9cec8b092d67f7187265f7704e3 Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Tue, 17 Mar 2020 16:20:35 +0100
+Subject: [PATCH 1/4] cmake: python: Use standard python interpreter
+
+These scripts are needed during build and run time. So, use a python interpreter
+which works for both cases.
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ cmake/templates/hpxcxx.in    |    2 +-
+ cmake/templates/hpxrun.py.in |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/cmake/templates/hpxcxx.in
++++ b/cmake/templates/hpxcxx.in
+@@ -1,4 +1,4 @@
+-#! @Python_EXECUTABLE@
++#! /usr/bin/env python
+ #
+ # Copyright (c) 2020-@HPX_COPYRIGHT_YEAR@ STE||AR Group
+ # Copyright (c) 2014 Steven R. Brandt
+--- a/cmake/templates/hpxrun.py.in
++++ b/cmake/templates/hpxrun.py.in
+@@ -1,4 +1,4 @@
+-#! @Python_EXECUTABLE@
++#! /usr/bin/env python
+ #
+ # Copyright (c) 2020-@HPX_COPYRIGHT_YEAR@ STE||AR Group
+ # Copyright (c) 2014 Thomas Heller
