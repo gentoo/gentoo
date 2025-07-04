@@ -122,7 +122,9 @@ src_compile() {
 		progress=no
 		verbose=yes
 
-		use_sowrap=no
+		target=$(usex tools editor template_$(usex debug{,} release))
+		dev_build=$(usex debug)
+		tests=$(usex tools $(usex test)) # bakes in --test in final binary
 
 		alsa=$(usex alsa)
 		dbus=$(usex dbus)
@@ -134,6 +136,7 @@ src_compile() {
 		pulseaudio=$(usex pulseaudio)
 		speechd=$(usex speech)
 		udev=$(usex udev)
+		use_sowrap=no
 		use_volk=no # unnecessary when linking directly to libvulkan
 		vulkan=$(usex gui $(usex vulkan))
 		wayland=$(usex wayland)
@@ -189,14 +192,6 @@ src_compile() {
 		lto=none
 		optimize=custom
 		use_static_cpp=no
-	)
-
-	esconsargs+=(
-		target=$(usex tools editor template_$(usex debug{,} release))
-		dev_build=$(usex debug)
-
-		# harmless but note this bakes in --test in the final binary
-		tests=$(usex tools $(usex test))
 	)
 
 	escons "${esconsargs[@]}"
