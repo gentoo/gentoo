@@ -12,7 +12,7 @@ S="${WORKDIR}/amavis-v${PV}"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="clamav dkim ldap mysql postgres razor rspamd rspamd-https selinux snmp spamassassin test"
 RESTRICT="!test? ( test )"
