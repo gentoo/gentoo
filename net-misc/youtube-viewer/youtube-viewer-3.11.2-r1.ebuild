@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,15 +21,6 @@ RDEPEND="
 	dev-perl/libwww-perl[ssl]
 	dev-perl/LWP-Protocol-https
 	dev-perl/Term-ReadLine-Gnu
-	virtual/perl-Encode
-	virtual/perl-File-Path
-	virtual/perl-File-Spec
-	virtual/perl-Getopt-Long
-	virtual/perl-Scalar-List-Utils
-	virtual/perl-Term-ANSIColor
-	virtual/perl-Term-ReadLine
-	virtual/perl-Text-ParseWords
-	virtual/perl-Text-Tabs+Wrap
 	gtk? (
 		dev-perl/Gtk3
 		dev-perl/File-ShareDir
