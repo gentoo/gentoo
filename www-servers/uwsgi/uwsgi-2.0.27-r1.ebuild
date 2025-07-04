@@ -15,7 +15,7 @@ USE_RUBY="ruby31 ruby32"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php8-1 php8-2" # deps must be registered separately below
+USE_PHP="php8-2" # deps must be registered separately below
 
 POSTGRES_COMPAT=( 13 14 15 16 17 )
 
@@ -133,7 +133,6 @@ CDEPEND="
 	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
 	php? (
-		php_targets_php8-1? ( dev-lang/php:8.1[embed] )
 		php_targets_php8-2? ( dev-lang/php:8.2[embed] )
 	)
 	python? ( ${PYTHON_DEPS} )

@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-{1,3,4} luajit )
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
 
-USE_PHP="php8-1 php8-2 php8-3"
+USE_PHP="php8-2 php8-3"
 
 PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
