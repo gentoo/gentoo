@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-online-accounts"
 
 LICENSE="LGPL-2+"
 SLOT="0/1"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 IUSE="debug doc gnome +introspection kerberos ms365 +vala"
 REQUIRED_USE="vala? ( introspection )"
