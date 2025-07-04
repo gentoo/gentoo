@@ -32,9 +32,6 @@ builtin copies of the stock icons instead.  It is unknown how the
 reported managed to trigger this crash.  The only known way to reproduce
 this crash is by changing the GParted source code to request a
 non-existent stock icon.  This change was used:
-    --- a/src/Win_GParted.cc
-    +++ b/src/Win_GParted.cc
-    @@ -743,8 +743,9 @@ void Win_GParted::refresh_combo_devices()
          {
              //combo...
              treerow = *( liststore_devices ->append() ) ;

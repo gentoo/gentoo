@@ -37,6 +37,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.0-handle-failing-pixbuf.patch
+)
+
 src_configure() {
 	gnome2_src_configure \
 		--enable-doc \
