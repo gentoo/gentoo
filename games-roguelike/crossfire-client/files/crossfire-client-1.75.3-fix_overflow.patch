@@ -1,0 +1,32 @@
+Fix overflow, from upstream
+https://sourceforge.net/p/crossfire/crossfire-client/ci/4c98710209e39e379fccd6aa9db96978df21fe4b/
+
+> inlined from ‘cs_print_string’ at common/newsocket.c:260:15:
+> /usr/include/bits/stdio2.h:100:10:
+> warning: ‘__builtin___vsnprintf_chk’ specified bound 256 exceeds destination size 254 [-Wstringop-overflow=]
+
+--- a/common/newsocket.c
++++ b/common/newsocket.c
+@@ -20,6 +20,7 @@
+ 
+ #include "client.h"
+ 
++#include <assert.h>
+ #include <errno.h>
+ 
+ #include "script.h"
+@@ -257,12 +258,9 @@
+ 
+     SockList_Init(&sl, buf);
+     va_start(args, str);
+-    sl.len += vsnprintf((char*)sl.buf + sl.len, MAX_BUF-sl.len, str, args);
++    sl.len += vsnprintf((char*)sl.buf + sl.len, MAX_BUF-sl.len-3, str, args); // need 2 bytes for length, 1 for null termination
+     va_end(args);
+-    // Adjust sl.len to account for when we overflow the buffer.
+-    if (sl.len > MAX_BUF - 3) {
+-        sl.len = MAX_BUF - 3;
+-    }
++    assert(sl.len <= MAX_BUF - 3);
+ 
+     script_monitor_str((char*)sl.buf);
+ 
