@@ -60,6 +60,8 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.21.7-optional-tests.patch
+	"${FILESDIR}"/${PN}-0.21.7-optional-vala-tests.patch
 	"${FILESDIR}"/${PN}-0.21.7-fix-installing-pam-module.patch
 )
 
@@ -148,6 +150,7 @@ multilib_src_configure() {
 		-Dbash_completion=enabled
 		$(meson_native_use_bool tpm tpm2)
 		$(meson_native_use_bool pam)
+		$(meson_feature test test_setup)
 	)
 
 	if use crypt ; then
