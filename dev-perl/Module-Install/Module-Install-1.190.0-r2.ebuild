@@ -22,7 +22,6 @@ RDEPEND="
 	>=dev-perl/Module-Build-0.290.0
 	>=virtual/perl-Module-CoreList-2.170.0
 	>=dev-perl/Module-ScanDeps-1.90.0
-	>=virtual/perl-Parse-CPAN-Meta-1.441.300
 	>=dev-perl/YAML-Tiny-1.380.0
 	>=dev-perl/Archive-Zip-1.370.0
 	>=dev-perl/File-HomeDir-1
