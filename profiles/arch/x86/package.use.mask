@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robin H. Johnson <robbat2@gentoo.org> (2025-07-04)
+# Deeper test dependencies with Ruby 3.3 are no longer yet keyworded keyword;
+# manually tested instead; Test dependencies work with stable Ruby 3.2.
+dev-ruby/facter test
+
 # Mike Gilbert <floppym@gentoo.org> (2025-06-18)
 # media-libs/libsdl3 is missing keywords.
 >=net-misc/freerdp-3.16.0 sdl
