@@ -13,6 +13,5 @@ RDEPEND="
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
 	>=virtual/perl-JSON-PP-2.271.30
-	>=virtual/perl-Parse-CPAN-Meta-1.441.400
 "
 # see bug 519974
