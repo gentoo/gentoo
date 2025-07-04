@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,20 +13,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	virtual/perl-Data-Dumper
 	dev-perl/HTTP-Message
 	dev-perl/libwww-perl
-	virtual/perl-Locale-Maketext
-	virtual/perl-Storable
 	dev-perl/Test-MockObject
 	>=dev-perl/Time-Format-1.0.0
-	virtual/perl-Time-Local
 	dev-perl/URI
 	dev-perl/XML-Simple
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-"
+BDEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.0-dotinc.patch"
