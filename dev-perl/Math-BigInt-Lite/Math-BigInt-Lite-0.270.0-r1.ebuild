@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,11 @@ KEYWORDS="~amd64 x86"
 RDEPEND="
 	>=virtual/perl-Carp-1.220.0
 	>=virtual/perl-Math-BigInt-1.999.819
-	virtual/perl-Scalar-List-Utils
 "
 BDEPEND="
 	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-0.140.0
 	test? (
-		>=virtual/perl-Math-BigRat-0.140.0
 		>=virtual/perl-Test-Simple-0.940.0
 	)
 "
