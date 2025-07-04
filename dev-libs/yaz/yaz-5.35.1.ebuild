@@ -68,7 +68,7 @@ src_install() {
 		DESTDIR="${D}"
 		docdir="${EPREFIX}/usr/share/doc/${PF}/html"
 		# move common dir in html
-		PACKAGE_SUFFIX="-${PV}/html"
+		PACKAGE_SUFFIX="-${PVR}/html"
 	)
 	emake "${myemakeargs[@]}" install
 
