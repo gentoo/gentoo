@@ -17,7 +17,6 @@ REQUIRED_USE="^^ ( mysql mariadb )"
 
 RDEPEND="
 	>=dev-perl/DBI-1.608.0
-	virtual/perl-XSLoader
 	mysql? ( dev-db/mysql-connector-c:= )
 	mariadb? ( dev-db/mariadb-connector-c:= )
 "
@@ -28,26 +27,17 @@ DEPEND="
 # New test-harness needed for parallel testing to work
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-Data-Dumper
 	>=dev-perl/Devel-CheckLib-1.120.0
-	virtual/perl-ExtUtils-MakeMaker
-	virtual/perl-File-Spec
-	virtual/perl-Getopt-Long
 	test? (
 		!minimal? (
 			>=dev-perl/Net-SSLeay-1.430.0
 			dev-perl/Proc-ProcessTable
-			virtual/perl-Storable
 		)
 		mariadb? ( dev-db/mariadb:* )
 		mysql? ( dev-db/mysql:* )
-		virtual/perl-Encode
-		virtual/perl-File-Temp
 		dev-perl/Test-Deep
 		>=virtual/perl-Test-Harness-3.310.0
 		>=virtual/perl-Test-Simple-0.900.0
-		virtual/perl-Time-HiRes
-		virtual/perl-bignum
 	)
 "
 
