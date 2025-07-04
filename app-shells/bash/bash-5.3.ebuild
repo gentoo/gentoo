@@ -31,7 +31,7 @@ esac
 
 # The version of readline this bash normally ships with. Note that we only use
 # the bundled copy of readline for pre-releases.
-READLINE_VER="8.3_rc1"
+READLINE_VER="8.3"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -46,7 +46,7 @@ elif (( PLEVEL < 0 )) && [[ ${PV} == *_p* ]] ; then
 	# the alpha, and the next pre-release is usually quite far away.
 	#
 	# i.e. if it's worth packaging the alpha, it's worth packaging a followup.
-	BASH_COMMIT="0f0cea342e32f1f82aa9cc9026038bfc3bb03e92"
+	BASH_COMMIT="b35866a2891a9b069e37ca5684d4309c0391e261"
 	SRC_URI="https://git.savannah.gnu.org/cgit/bash.git/snapshot/bash-${BASH_COMMIT}.tar.gz -> ${P}-${BASH_COMMIT}.tar.gz"
 	S=${WORKDIR}/${PN}-${BASH_COMMIT}
 else
@@ -145,15 +145,6 @@ src_unpack() {
 src_prepare() {
 	# Include official patches.
 	(( PLEVEL > 0 )) && eapply -p0 "${MY_PATCHES[@]}"
-
-	# Clean out local libs so we know we use system ones w/releases. The
-	# touch utility is invoked for the benefit of config.status.
-	if (( PLEVEL >= 0 )); then
-		rm -rf lib/{readline,termcap}/* \
-		&& touch lib/{readline,termcap}/Makefile.in \
-		&& sed -i -E 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in \
-		|| die
-	fi
 
 	# Prefixify hardcoded path names. No-op for non-prefix.
 	hprefixify pathnames.h.in
