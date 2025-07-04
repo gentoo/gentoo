@@ -9,7 +9,7 @@ SRC_URI="https://github.com/tsyrogit/zxcvbn-c/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-libcxx-19.patch
