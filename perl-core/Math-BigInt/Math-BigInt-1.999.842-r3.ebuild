@@ -20,10 +20,6 @@ RDEPEND="
 BDEPEND="
 	test? ( >=virtual/perl-Test-Simple-0.940.0 )
 "
-# TODO: where does this come from?
-PDEPEND="
-	>=virtual/perl-Math-BigRat-0.260.200
-"
 
 src_test() {
 	perl_rm_files t/author-*.t t/03podcov.t t/00sig.t t/02pod.t
