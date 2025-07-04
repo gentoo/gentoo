@@ -47,7 +47,6 @@ DEPEND="dev-libs/libpcre:3
 	)
 	perl? (
 		dev-lang/perl:=
-		virtual/perl-Term-ReadLine
 	)
 	postgres? ( dev-db/postgresql:* )
 	ssl? ( >=dev-libs/openssl-1.0.1e:=[-bindist(-)] )
