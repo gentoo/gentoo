@@ -18,7 +18,6 @@ RDEPEND="
 	>=dev-perl/Log-Report-1.200.0
 	>=virtual/perl-MIME-Base64-3.100.0
 	>=virtual/perl-Math-BigInt-1.770.0
-	>=virtual/perl-Math-BigRat-0.100.0
 	dev-perl/Types-Serialiser
 	>=dev-perl/XML-LibXML-2.10.700
 "
