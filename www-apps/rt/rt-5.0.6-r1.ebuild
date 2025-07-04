@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,24 +20,23 @@ DEPEND="
 	acct-group/rt
 	acct-user/rt
 	>=dev-lang/perl-5.10.1
-	>=dev-perl/Apache-Session-1.53
+	>=dev-perl/Apache-Session-1.530.0
 	>=dev-perl/CGI-4
-	>=dev-perl/CSS-Squish-0.06
+	>=dev-perl/CSS-Squish-0.60.0
 	>=dev-perl/DBIx-SearchBuilder-1.800.0
-	>=dev-perl/Date-Extract-0.07
-	>=dev-perl/DateTime-Format-Natural-0.67
+	>=dev-perl/Date-Extract-0.70.0
+	>=dev-perl/DateTime-Format-Natural-0.670.0
 	>=dev-perl/Email-Address-1.912.0
 	>=dev-perl/Email-Address-List-0.60.0
-	>=dev-perl/Locale-Maketext-Lexicon-0.32
-	>=dev-perl/MIME-tools-5.425
-	>=dev-perl/Module-Versions-Report-1.05
-	>=dev-perl/Role-Basic-0.12
-	>=dev-perl/Symbol-Global-Name-0.05
+	>=dev-perl/Locale-Maketext-Lexicon-0.320.0
+	>=dev-perl/MIME-tools-5.425.0
+	>=dev-perl/Module-Versions-Report-1.50.0
+	>=dev-perl/Role-Basic-0.120.0
+	>=dev-perl/Symbol-Global-Name-0.50.0
 	>=dev-perl/Text-Quoted-2.80.0
-	>=dev-perl/Text-WikiFormat-0.76
-	>=dev-perl/Tree-Simple-1.04
-	>=dev-perl/XML-RSS-1.05
-	>=virtual/perl-Locale-Maketext-1.06
+	>=dev-perl/Text-WikiFormat-0.760.0
+	>=dev-perl/Tree-Simple-1.40.0
+	>=dev-perl/XML-RSS-1.50.0
 	dev-perl/Business-Hours
 	dev-perl/CGI-Emulate-PSGI
 	dev-perl/CGI-PSGI
@@ -108,8 +107,8 @@ DEPEND="
 	nginx? (
 		dev-perl/FCGI
 	)
-	mysql? ( >=dev-perl/DBD-mysql-2.1018 )
-	postgres? ( >=dev-perl/DBD-Pg-1.43 )
+	mysql? ( >=dev-perl/DBD-mysql-2.101.800 )
+	postgres? ( >=dev-perl/DBD-Pg-1.430.0 )
 "
 
 RDEPEND="${DEPEND}
