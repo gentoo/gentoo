@@ -1,0 +1,30 @@
+Pending upstream PR
+https://github.com/indexdata/yaz/pull/163.patch
+From b3214e59d168c1c9b348ca02bf443046a3ab834a Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Fri, 4 Jul 2025 15:26:55 +0200
+Subject: [PATCH] fix musl - expose gethostbyaddr with _GNU_SOURCE
+
+>tcpdchk.c:72:25: error: call to undeclared function 'gethostbyaddr'; ISO C99 and later do not support implicit function declarations
+>      [-Wimplicit-function-declaration]
+>   72 |             if ((host = gethostbyaddr((char*)&addr_in->sin_addr,
+>      |                         ^
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ src/tcpdchk.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/tcpdchk.c b/src/tcpdchk.c
+index f98417033..6e9a65adb 100644
+--- a/src/tcpdchk.c
++++ b/src/tcpdchk.c
+@@ -36,6 +36,8 @@
+ #endif
+ 
+ #if HAVE_NETDB_H
++/* _GNU_SOURCE: for musl's netdb.h to expose gethostbyaddr */
++#define _GNU_SOURCE
+ #include <netdb.h>
+ #endif
+ 
