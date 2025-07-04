@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{11..13} )
-inherit cmake distutils-r1
+inherit cmake distutils-r1 dot-a
 
 DESCRIPTION="Text tokenizer for Neural Network-based text generation"
 HOMEPAGE="https://github.com/google/sentencepiece"
@@ -46,7 +46,8 @@ src_prepare() {
 		src/builder.cc \
 		|| die
 	eapply "${FILESDIR}"/${P}-gcc15.patch \
-		"${FILESDIR}"/${P}-cmake.patch
+		"${FILESDIR}"/${P}-cmake.patch \
+		"${FILESDIR}"/${P}-nostrip.patch
 	cmake_src_prepare
 	distutils-r1_src_prepare
 	sed \
@@ -59,6 +60,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DSPM_ABSL_PROVIDER=package
 		-DSPM_PROTOBUF_PROVIDER=package
@@ -84,4 +86,5 @@ python_test() {
 src_install() {
 	cmake_src_install
 	distutils-r1_src_install
+	strip-lto-bytecode
 }
