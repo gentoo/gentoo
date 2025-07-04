@@ -7,6 +7,7 @@
 		<remote-id type="github">indexdata/yaz</remote-id>
 	</upstream>
 	<use>
+		<flag name="redis">Enable cache via <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="ziffy">Install ziffy, a promiscuous Z39.50 APDU sniffer</flag>
 	</use>
 </pkgmetadata>
