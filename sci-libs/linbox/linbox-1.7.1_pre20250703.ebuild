@@ -43,8 +43,6 @@ RDEPEND="${DEPEND}
 # The --enable-openmp flag has been removed upstream, but we don't want
 # openmp support to disappear after the package has been compiled with
 # it, so we retain the USE flag and the toolchain check.
-# In particular linbox-1.7.0-missing-underscores.patch is an openmp-only patch
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
