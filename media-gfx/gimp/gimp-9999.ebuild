@@ -7,7 +7,7 @@ LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit flag-o-matic git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
-IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons webp wmf xpm"
+IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -57,10 +57,10 @@ COMMON_DEPEND="
 	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
 	sys-libs/zlib
-	>=x11-libs/cairo-1.16.0[X=]
+	>=x11-libs/cairo-1.16.0[X?]
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
-	>=x11-libs/gtk+-3.24.48:3[introspection,X=]
-	>=x11-libs/pango-1.50.0[X=]
+	>=x11-libs/gtk+-3.24.48:3[introspection,wayland?,X?]
+	>=x11-libs/pango-1.50.0[X?]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	fits? ( sci-libs/cfitsio )
@@ -80,7 +80,7 @@ COMMON_DEPEND="
 	udev? ( >=dev-libs/libgudev-167:= )
 	unwind? ( >=sys-libs/libunwind-1.1.0:= )
 	webp? ( >=media-libs/libwebp-0.6.0:= )
-	wmf? ( >=media-libs/libwmf-0.2.8[X=] )
+	wmf? ( >=media-libs/libwmf-0.2.8[X?] )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXcursor
@@ -147,24 +147,15 @@ src_prepare() {
 
 	# Set proper intallation path of documentation logo
 	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
-}
 
-_adjust_sandbox() {
-	# Bugs #569738 and #591214
-	local nv
-	for nv in /dev/nvidia-uvm /dev/nvidiactl /dev/nvidia{0..9} ; do
-		# We do not check for existence as they may show up later
-		# https://bugs.gentoo.org/show_bug.cgi?id=569738#c21
-		addwrite "${nv}"
-	done
-
-	addwrite /dev/dri/  # bugs #574038 and #684886
-	addwrite /dev/ati/  # bug #589198
-	addwrite /proc/mtrr  # bug #589198
+	# Force disable x11_target if USE="-X" is setup. See bug 943164 for additional info
+	use !X && { sed -i -e 's/x11_target = /x11_target = false #/' meson.build || die; }
 }
 
 src_configure() {
-	_adjust_sandbox
+	# defang automagic dependencies. Bug 943164
+	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cflags -DGENTOO_GTK_HIDE_X11
 
 	use vala && vala_setup
 
