@@ -40,6 +40,7 @@
 # Obsolete Perl virtuals that should eventually be removed. The list
 # will grow.
 virtual/perl-Params-Check
+perl-core/Params-Check
 
 # Joonas Niilola <juippis@gentoo.org> (2025-07-01)
 # Python-3.13 enabled version of Spidermonkey. The test phase crashes
