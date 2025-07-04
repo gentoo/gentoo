@@ -51,6 +51,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	strndupa
 )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.1-musl-basename.patch"
+)
+
 src_prepare() {
 	# audisp-remote moved in multilib_src_install_all
 	sed -i \
