@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 AT_NOELIBTOOLIZE="yes"
-inherit autotools systemd tmpfiles
+inherit autotools dot-a systemd tmpfiles
 
 DESCRIPTION="Distributed compiler with a central scheduler to share build load"
 HOMEPAGE="https://github.com/icecc/icecream"
@@ -32,6 +32,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	econf \
 		--enable-clang-rewrite-includes \
 		--enable-clang-wrappers
@@ -39,6 +41,8 @@ src_configure() {
 
 src_install() {
 	default
+
+	strip-lto-bytecode
 
 	find "${ED}" -name '*.la' -delete || die
 

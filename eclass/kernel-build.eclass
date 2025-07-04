@@ -36,7 +36,7 @@ esac
 if [[ -z ${_KERNEL_BUILD_ECLASS} ]]; then
 _KERNEL_BUILD_ECLASS=1
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	inherit secureboot
 fi
@@ -497,7 +497,15 @@ kernel-build_src_install() {
 	fi
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		secureboot_sign_efi_file "${image}"
+		if [[ ${image} == *.gz ]]; then
+			# Backwards compatibility with pre-zboot images
+			gunzip "${image}" || die
+			secureboot_sign_efi_file "${image%.gz}"
+			# Use same gzip options as the kernel Makefile
+			gzip -n -f -9 "${image%.gz}" || die
+		else
+			secureboot_sign_efi_file "${image}"
+		fi
 	fi
 
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
@@ -514,10 +522,10 @@ kernel-build_src_install() {
 				kernel-network-modules kernel-modules-extra lunmask lvm nbd
 				mdraid modsign network network-manager nfs nvdimm nvmf pcsc
 				pkcs11 plymouth qemu qemu-net resume rngd rootfs-block shutdown
-				systemd systemd-ac-power systemd-ask-password systemd-initrd
-				systemd-integritysetup systemd-pcrphase systemd-sysusers
-				systemd-udevd systemd-veritysetup terminfo tpm2-tss udev-rules
-				uefi-lib usrmount virtiofs
+				systemd systemd-ac-power systemd-ask-password systemd-cryptsetup
+				systemd-initrd systemd-integritysetup systemd-pcrphase
+				systemd-sysusers systemd-udevd systemd-veritysetup terminfo
+				tpm2-tss udev-rules uefi-lib usrmount virtiofs
 			)
 
 			local dracut_args=(

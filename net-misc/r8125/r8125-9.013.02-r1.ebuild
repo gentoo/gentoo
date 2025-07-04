@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,17 @@ IUSE="+multi-tx-q ptp +rss use-firmware"
 
 CONFIG_CHECK="~!R8169"
 WARNING_R8169="CONFIG_R8169 is enabled. ${PN} will not be loaded unless kernel driver Realtek 8169 PCI Gigabit Ethernet (CONFIG_R8169) is DISABLED."
+
+src_prepare() {
+	default
+
+	# Replace wrong EXTRA_CFLAGS (stopped working with kernels >= 6.15)
+	# with proper CFLAGS_MODULE (available since 2.6.36).
+	# Bug 957883
+	sed -E -i'' \
+	  -e 's/(^|[^A-Za-z0-9_])EXTRA_CFLAGS([^A-Za-z0-9_]|$)/\1CFLAGS_MODULE\2/g' \
+	  src/Makefile || die
+}
 
 src_compile() {
 	local modlist=( ${PN}=kernel/drivers/net/ethernet/realtek:src )

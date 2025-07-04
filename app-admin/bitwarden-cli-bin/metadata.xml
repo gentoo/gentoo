@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>me@rahil.rocks</email>
+		<name>Rahil Bhimjiani</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">bitwarden/clients</remote-id>
+		<bugs-to>https://github.com/bitwarden/clients/issues</bugs-to>
+		<doc>https://github.com/bitwarden/clients/tree/main/apps/cli</doc>
+	</upstream>
+</pkgmetadata>

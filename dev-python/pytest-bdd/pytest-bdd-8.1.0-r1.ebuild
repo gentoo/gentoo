@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1
 
 DESCRIPTION="BDD library for the pytest runner"
@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.rst CHANGES.rst README.rst )
@@ -37,12 +38,13 @@ PATCHES=(
 )
 
 src_test() {
-	# terminal_reporter test needs exact wrapping
 	local -x COLUMNS=80
-
-	# hooks output parsing may be affected by other pytest-*, e.g. tornasync
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local -x PYTEST_PLUGINS=pytest_bdd.plugin
+
+	local EPYTEST_DESELECT=(
+		# https://github.com/pytest-dev/pytest-bdd/issues/779
+		tests/parser/test_errors.py::test_step_outside_scenario_or_background_error
+	)
 
 	distutils-r1_src_test
 }

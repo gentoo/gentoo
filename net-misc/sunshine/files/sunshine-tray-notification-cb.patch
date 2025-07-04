@@ -1,0 +1,11 @@
+--- a/third-party/tray/src/tray_linux.c
++++ b/third-party/tray/src/tray_linux.c
+@@ -100,7 +100,7 @@ static gboolean tray_update_internal(gpointer user_data) {
+     currentNotification = notify_notification_new(tray->notification_title, tray->notification_text, notification_icon);
+     if (currentNotification != NULL && NOTIFY_IS_NOTIFICATION(currentNotification)) {
+       if (tray->notification_cb != NULL) {
+-        notify_notification_add_action(currentNotification, "default", "Default", tray->notification_cb, NULL, NULL);
++        notify_notification_add_action(currentNotification, "default", "Default", NOTIFY_ACTION_CALLBACK(tray->notification_cb), NULL, NULL);
+       }
+       notify_notification_show(currentNotification, NULL);
+     }

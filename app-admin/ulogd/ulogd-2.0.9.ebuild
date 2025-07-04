@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres selinux sqlite"
 
 DEPEND="
@@ -49,7 +49,7 @@ BDEPEND="
 		dev-texlive/texlive-fontsrecommended
 		virtual/latex-base
 	)
-	verify-sig? ( sec-keys/openpgp-keys-netfilter )
+	verify-sig? ( >=sec-keys/openpgp-keys-netfilter-20240415 )
 "
 
 DISABLE_AUTOFORMATTING=1

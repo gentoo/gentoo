@@ -12,14 +12,25 @@ MYP=${MYPN}-${PV}
 
 # caffe2-2.6.0 depends on future version of composable kernel
 # TODO: replace it with RDEPEND in the future
-CK_COMMIT=50ee4267e27b875d149e642f4cebd47be1dc3b57
+CK_COMMIT=8086bbe3a78d931eb96fe12fdc014082e18d18d3
 CK_P=composable_kernel-${CK_COMMIT:0:8}
+
+FLASH_PV=2.7.4
+FLASH_PN=flash-attention
+FLASH_P=${FLASH_PN}-${FLASH_PV}
 
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
 SRC_URI="
 	https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz -> ${MYP}.tar.gz
-	rocm? ( https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz -> ${CK_P}.tar.gz )
+	rocm? (
+		https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz
+		-> ${CK_P}.tar.gz
+	)
+	flash? (
+		https://github.com/Dao-AILab/${FLASH_PN}/archive/refs/tags/v${FLASH_PV}.tar.gz
+		-> ${FLASH_P}.gh.tar.gz
+	)
 "
 
 S="${WORKDIR}"/${MYP}
@@ -77,19 +88,19 @@ RDEPEND="
 		sci-ml/gemmlowp
 	)
 	rocm? (
-		>=dev-libs/rccl-6.1      <dev-libs/rccl-6.4
-		>=dev-util/hip-6.1       <dev-util/hip-6.4
-		>=dev-util/roctracer-6.1 <dev-util/roctracer-6.4
-		>=sci-libs/hipBLAS-6.1   <sci-libs/hipBLAS-6.4
-		>=sci-libs/hipBLASLt-6.1 <sci-libs/hipBLASLt-6.4
-		>=sci-libs/hipCUB-6.1    <sci-libs/hipCUB-6.4
-		>=sci-libs/hipFFT-6.1    <sci-libs/hipFFT-6.4
-		>=sci-libs/hipRAND-6.1   <sci-libs/hipRAND-6.4
-		>=sci-libs/hipSOLVER-6.1 <sci-libs/hipSOLVER-6.4
-		>=sci-libs/hipSPARSE-6.1 <sci-libs/hipSPARSE-6.4
-		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.4
-		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.4
-		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.4
+		>=dev-libs/rccl-6.1      <dev-libs/rccl-6.5
+		>=dev-util/hip-6.1       <dev-util/hip-6.5
+		>=dev-util/roctracer-6.1 <dev-util/roctracer-6.5
+		>=sci-libs/hipBLAS-6.1   <sci-libs/hipBLAS-6.5
+		>=sci-libs/hipBLASLt-6.1 <sci-libs/hipBLASLt-6.5
+		>=sci-libs/hipCUB-6.1    <sci-libs/hipCUB-6.5
+		>=sci-libs/hipFFT-6.1    <sci-libs/hipFFT-6.5
+		>=sci-libs/hipRAND-6.1   <sci-libs/hipRAND-6.5
+		>=sci-libs/hipSOLVER-6.1 <sci-libs/hipSOLVER-6.5
+		>=sci-libs/hipSPARSE-6.1 <sci-libs/hipSPARSE-6.5
+		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.5
+		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.5
+		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.5
 	)
 	distributed? (
 		sci-ml/tensorpipe[cuda?]
@@ -126,9 +137,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.1-glog-0.6.0.patch
 	"${FILESDIR}"/${PN}-2.5.1-newfix-functorch-install.patch
 	"${FILESDIR}"/${PN}-2.6.0-rocm-fix-std-cpp17.patch
+	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-glog-0.7.1.patch
+	"${FILESDIR}"/${P}-llvm.patch
 )
 
 src_prepare() {
+	if use flash; then
+		mv "${WORKDIR}"/${FLASH_P}/* third_party/${FLASH_PN}/ || die
+	fi
 	filter-lto #bug 862672
 
 	# Unbundle fmt
@@ -158,6 +175,9 @@ src_prepare() {
 		-e '/Using pocketfft in directory:/d' \
 		cmake/Dependencies.cmake \
 		|| die
+
+	# Noisy warnings from Logging.h
+	sed -i 's/-Wextra-semi//' cmake/public/utils.cmake || die
 
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
@@ -253,6 +273,7 @@ src_configure() {
 		-DUSE_SYSTEM_FP16=ON
 		-DUSE_SYSTEM_FXDIV=ON
 		-DUSE_SYSTEM_GLOO=ON
+		-DUSE_SYSTEM_NVTX=ON
 		-DUSE_SYSTEM_ONNX=ON
 		-DUSE_SYSTEM_PSIMD=ON
 		-DUSE_SYSTEM_PTHREADPOOL=ON
@@ -297,7 +318,7 @@ src_configure() {
 		)
 
 		# ROCm libraries produce too much warnings
-		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result
+		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result -Wno-unused-value
 	fi
 
 	if use onednn; then

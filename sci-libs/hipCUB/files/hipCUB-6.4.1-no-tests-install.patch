@@ -1,0 +1,20 @@
+Exclude test-related files from installation
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -43,16 +43,8 @@ function(add_relative_test test_name test_target)
+     endif()
+     file(RELATIVE_PATH rel_path "${CMAKE_CURRENT_BINARY_DIR}" "${EXE_PATH}/${EXE_NAME}")
+     add_test(NAME "${test_name}" COMMAND "./${rel_path}")
+-    rocm_install(TARGETS ${test_target} COMPONENT tests)
+     file(APPEND "${INSTALL_TEST_FILE}" "add_test(${test_name} \"../${EXE_NAME}\")\n")
+ endfunction()
+ 
+ # hipCUB tests
+ add_subdirectory(hipcub)
+-
+-rocm_install(
+-    FILES "${INSTALL_TEST_FILE}"
+-    DESTINATION "${CMAKE_INSTALL_BINDIR}/${PROJECT_NAME}"
+-    COMPONENT tests
+-    RENAME "CTestTestfile.cmake"
+-)

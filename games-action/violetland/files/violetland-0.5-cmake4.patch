@@ -1,0 +1,28 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+-PROJECT(violetland)
++CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0...4.0 FATAL_ERROR) 
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0 FATAL_ERROR) 
++PROJECT(violetland)
+ 
+ find_package(SDL REQUIRED)
+ find_package(SDL_image REQUIRED)
+--- a/lib/fcitx/CMakeLists.txt
++++ b/lib/fcitx/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 2.6...4.0)
+ 
+ project(fcitx)
+ 
+--- a/po/CMakeLists.txt
++++ b/po/CMakeLists.txt
+@@ -1,5 +1,5 @@
++CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0...4.0 FATAL_ERROR) 
+ PROJECT(po)
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0 FATAL_ERROR) 
+ 
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../lib/CMake-Gettext")
+ set(GettextTranslate_ALL true)

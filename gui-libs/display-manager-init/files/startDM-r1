@@ -1,6 +1,6 @@
 #!/bin/sh
 # Copyright 1999-2021 Gentoo Authors
-# Distributed under the terms of the GNU General Public License, v2
+# Distributed under the terms of the GNU General Public License v2
 
 # We need to source /etc/profile.env for stuff like $LANG to work
 # bug #10190.

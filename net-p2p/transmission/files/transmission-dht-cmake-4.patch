@@ -1,0 +1,26 @@
+https://github.com/transmission/dht/pull/4
+https://bugs.gentoo.org/955890
+
+From e0334724c38eebea377bf61fef6fcf2ca68eba74 Mon Sep 17 00:00:00 2001
+From: Yat Ho <lagoho7@gmail.com>
+Date: Wed, 2 Apr 2025 09:59:53 +0800
+Subject: [PATCH] build: bump CMake version to 3.10
+
+CMake < 3.5 compatibility has been removed from CMake 4.0 and CMake < 3.10 compatibility has been deprecated in CMake 3.31.
+
+https://cmake.org/cmake/help/latest/release/4.0.html
+https://cmake.org/cmake/help/latest/release/3.31.html
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6d4aa99..596dbfb 100644
+--- a/third-party/dht/CMakeLists.txt
++++ b/third-party/dht/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ project(dht C)
+ 
+ add_library(${PROJECT_NAME} STATIC

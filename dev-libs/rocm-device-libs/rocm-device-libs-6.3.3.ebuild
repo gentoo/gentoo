@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.1.0-fix-llvm-link.patch"
 	"${FILESDIR}/${PN}-6.1.2-fix-build.patch"
 	"${FILESDIR}/${PN}-6.2.0-test-bitcode-dir.patch"
+	"${FILESDIR}/${PN}-6.4.2-cmake-4-compat.patch"
 )
 
 src_unpack() {

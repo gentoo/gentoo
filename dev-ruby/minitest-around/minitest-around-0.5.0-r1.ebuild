@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -36,6 +36,7 @@ each_ruby_prepare() {
 
 each_ruby_test() {
 	for f in test/*_{test,spec}.rb ; do
+		export RUBYLIB=lib
 		${RUBY} -S rake test:isolated TEST="${f}" || die
 	done
 }

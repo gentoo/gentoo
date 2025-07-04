@@ -1,10 +1,10 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
-LUA_COMPAT=( lua5-{3..4} )
+EAPI="8"
+LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit cmake lua-single
+inherit cmake flag-o-matic lua-single
 
 if [[ "${PV}" == "99999999999999" ]]; then
 	inherit git-r3
@@ -35,7 +35,7 @@ fi
 
 src_prepare() {
 	sed \
-		-e "1icmake_minimum_required(VERSION 3.0)\nproject(${PN})\n" \
+		-e "1icmake_minimum_required(VERSION 3.12)\nproject(${PN})\n" \
 		-e "s/ PARENT_SCOPE//" \
 		-e "\$a\\\n" \
 		-e "\$aadd_library(\${plugin_modules} MODULE \${plugin_objs})" \
@@ -45,4 +45,14 @@ src_prepare() {
 		-i CMakeLists.txt || die
 
 	cmake_src_prepare
+}
+
+src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/940793
+	# https://github.com/hchunhui/librime-lua/issues/412
+	append-flags -fno-strict-aliasing
+	filter-lto
+
+	cmake_src_configure
 }

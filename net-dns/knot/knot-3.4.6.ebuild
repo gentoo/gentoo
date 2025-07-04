@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit python-single-r1 flag-o-matic systemd tmpfiles verify-sig
+PYTHON_COMPAT=( python3_{11..13} )
+inherit autotools python-single-r1 flag-o-matic systemd tmpfiles verify-sig
 
 # subslot: libknot major.libdnssec major.libzscanner major
 KNOT_SUBSLOT="15.9.4"
@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0/${KNOT_SUBSLOT}"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
 # Modules without dep. Built unconditionally.
 KNOT_MODULES=(
@@ -40,7 +40,7 @@ KNOT_MODULES_OPT=(
 	"geoip"
 )
 
-IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
+IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic selinux systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	prometheus? ( python )
@@ -75,6 +75,7 @@ RDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 	quic? ( net-libs/ngtcp2[gnutls] )
+	selinux? ( sec-policy/selinux-knot )
 	utils? (
 		${COMMON_DEPEND}
 		doh? ( net-libs/nghttp2:= )
@@ -115,6 +116,13 @@ src_unpack() {
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
 	fi
 	default
+}
+
+src_prepare() {
+	default
+	# avoid the old ltmain.sh modified by upstream which causes a linking issue
+	# reproduced with test and musl
+	eautoreconf
 }
 
 src_configure() {

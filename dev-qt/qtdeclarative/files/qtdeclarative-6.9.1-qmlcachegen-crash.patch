@@ -1,0 +1,32 @@
+https://bugreports.qt.io/browse/QTBUG-136998
+https://bugreports.qt.io/browse/QTBUG-137196
+https://bugreports.qt.io/browse/QTBUG-137411
+https://github.com/qt/qtdeclarative/commit/672e6777e8e6a8fd86c7877075e7a8aa0ea0a31a
+--- a/src/qmlcompiler/qqmljsimportvisitor.cpp
++++ b/src/qmlcompiler/qqmljsimportvisitor.cpp
+@@ -1042,14 +1042,15 @@
+ 
+             if (!prevRequiredScope.isNull()) {
+-                auto sourceScope = prevRequiredScope->baseType();
+-                suggestion = QQmlJSFixSuggestion{
+-                    "%1:%2:%3: Property marked as required in %4."_L1
+-                            .arg(sourceScope->filePath())
+-                            .arg(sourceScope->sourceLocation().startLine)
+-                            .arg(sourceScope->sourceLocation().startColumn)
+-                            .arg(requiredScopeName),
+-                    sourceScope->sourceLocation()
+-                };
+-                suggestion->setFilename(sourceScope->filePath());
++                if (auto sourceScope = prevRequiredScope->baseType()) {
++                    suggestion = QQmlJSFixSuggestion{
++                        "%1:%2:%3: Property marked as required in %4."_L1
++                                .arg(sourceScope->filePath())
++                                .arg(sourceScope->sourceLocation().startLine)
++                                .arg(sourceScope->sourceLocation().startColumn)
++                                .arg(requiredScopeName),
++                        sourceScope->sourceLocation()
++                    };
++                    suggestion->setFilename(sourceScope->filePath());
++                }
+             } else {
+                 message += " (marked as required by %1)"_L1.arg(requiredScopeName);

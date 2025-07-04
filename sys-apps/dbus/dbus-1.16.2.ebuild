@@ -8,7 +8,7 @@ EAPI=8
 # possibly even ~arch too, given the note about security releases on their website.
 # See https://www.freedesktop.org/wiki/Software/dbus/#download.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 TMPFILES_OPTIONAL=1
 
 inherit linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd tmpfiles virtualx
@@ -17,7 +17,7 @@ DESCRIPTION="A message bus system, a simple way for applications to talk to each
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/dbus/"
 SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.xz"
 
-LICENSE="|| ( AFL-2.1 GPL-2 )"
+LICENSE="|| ( AFL-2.1 GPL-2+ ) Apache-2.0 BSD GPL-2+ LGPL-2.1+ MIT tcltk"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 # TODO: USE=daemon
@@ -26,9 +26,9 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 	${PYTHON_DEPS}
-	acct-user/messagebus
 	app-text/xmlto
 	app-text/docbook-xml-dtd:4.4
+	acct-user/messagebus
 	dev-build/autoconf-archive
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
@@ -48,7 +48,6 @@ COMMON_DEPEND="
 "
 DEPEND="
 	${COMMON_DEPEND}
-	dev-libs/expat
 	test? ( >=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}] )
 	valgrind? ( >=dev-debug/valgrind-3.6 )
 	X? ( x11-base/xorg-proto )
@@ -131,7 +130,7 @@ multilib_src_configure() {
 		-Dsystemd_user_unitdir="$(systemd_get_userunitdir)"
 	)
 
-	if [[ ${CHOST} == *-darwin* ]] ; then
+	if [[ ${CHOST} == *-darwin* ]]; then
 		emesonargs+=(
 			-Dlaunchd=enabled
 			-Dlaunchd_agent_dir="${EPREFIX}"/Library/LaunchAgents

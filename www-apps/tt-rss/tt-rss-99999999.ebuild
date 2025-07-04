@@ -64,12 +64,12 @@ pkg_pretend() {
 		ewarn
 		ewarn "THIS IS NOT SUPPORTED ANYMORE."
 		ewarn
-		ewarn "Since 2025-04-14, tt-rss has dropped support for MySQL."
+		ewarn "Since 2025-04-17, tt-rss has dropped support for MySQL."
 		ewarn
 		ewarn "To upgrade, you need to migrate to PostgreSQL first."
 		ewarn
 		ewarn "Migrating between different tt-rss versions might work but is not recommended."
-		ewarn "It's recommended to switch to =www-apps/tt-rss-20250414 for migration."
+		ewarn "It's recommended to switch to =www-apps/tt-rss-20250417 for migration."
 		ewarn
 		ewarn "Export/Import articles could be done with an official plugin:"
 		ewarn "ttrss-data-migration"

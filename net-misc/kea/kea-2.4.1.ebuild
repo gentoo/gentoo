@@ -145,5 +145,5 @@ src_install() {
 
 pkg_postinst() {
 	tmpfiles_process ${PN}.conf
-	fcaps cap_net_bind_service,cap_net_raw=+ep /usr/sbin/kea-dhcp{4,6}
+	fcaps cap_net_bind_service,cap_net_raw=+ep usr/sbin/kea-dhcp{4,6}
 }

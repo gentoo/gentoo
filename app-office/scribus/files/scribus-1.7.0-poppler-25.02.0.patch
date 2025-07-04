@@ -1,7 +1,5 @@
-Index: Scribus/scribus/plugins/import/pdf/importpdf.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/importpdf.cpp	(revision 26665)
-+++ Scribus/scribus/plugins/import/pdf/importpdf.cpp	(revision 26666)
+--- Scribus/scribus/plugins/import/pdf/importpdf.cpp
++++ Scribus/scribus/plugins/import/pdf/importpdf.cpp
 @@ -416,11 +416,11 @@
  
  			if (dev->isOk())
@@ -16,10 +14,8 @@ Index: Scribus/scribus/plugins/import/pdf/importpdf.cpp
  					if (order)
  					{
  						for (int i = 0; i < order->getLength (); ++i)
-Index: Scribus/scribus/plugins/import/pdf/importpdfconfig.h
-===================================================================
---- Scribus/scribus/plugins/import/pdf/importpdfconfig.h	(revision 26665)
-+++ Scribus/scribus/plugins/import/pdf/importpdfconfig.h	(revision 26666)
+--- Scribus/scribus/plugins/import/pdf/importpdfconfig.h
++++ Scribus/scribus/plugins/import/pdf/importpdfconfig.h
 @@ -15,4 +15,10 @@
  	+ ((micro) *     1))
  #define POPPLER_ENCODED_VERSION POPPLER_VERSION_ENCODE(POPPLER_VERSION_MAJOR, POPPLER_VERSION_MINOR, POPPLER_VERSION_MICRO)
@@ -31,10 +27,8 @@ Index: Scribus/scribus/plugins/import/pdf/importpdfconfig.h
  #endif
 +
 +#endif
-Index: Scribus/scribus/plugins/import/pdf/slaoutput.cpp
-===================================================================
---- Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 26665)
-+++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp	(revision 26666)
+--- Scribus/scribus/plugins/import/pdf/slaoutput.cpp
++++ Scribus/scribus/plugins/import/pdf/slaoutput.cpp
 @@ -2791,7 +2791,7 @@
  	{
  		if (dictRef->isNull())

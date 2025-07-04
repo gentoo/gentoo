@@ -1,0 +1,27 @@
+https://android-review.googlesource.com/c/platform/system/libbase/+/3555906
+https://android-review.googlesource.com/c/platform/system/libziparchive/+/3649395
+
+diff --git a/vendor/libbase/hex.cpp b/vendor/libbase/hex.cpp
+index a4b7715..85ba671 100644
+--- a/vendor/libbase/hex.cpp
++++ b/vendor/libbase/hex.cpp
+@@ -18,6 +18,8 @@
+ 
+ #include "android-base/logging.h"
+ 
++#include <stdint.h>
++
+ namespace android {
+ namespace base {
+ 
+diff --git a/vendor/libziparchive/include/ziparchive/zip_writer.h b/vendor/libziparchive/include/ziparchive/zip_writer.h
+index 268e8b6..aca7f4e 100644
+--- a/vendor/libziparchive/include/ziparchive/zip_writer.h
++++ b/vendor/libziparchive/include/ziparchive/zip_writer.h
+@@ -16,6 +16,7 @@
+
+ #pragma once
+
++#include <cstdint>
+ #include <cstdio>
+ #include <ctime>

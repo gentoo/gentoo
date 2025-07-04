@@ -1,0 +1,76 @@
+https://bugs.gentoo.org/959434
+https://bugs.debian.org/984953
+https://gitlab.gnome.org/GNOME/gparted/-/issues/282
+https://gitlab.gnome.org/GNOME/gparted/-/commit/6cd9690426ba576a22a5a48cae5684c542629591
+
+From 6cd9690426ba576a22a5a48cae5684c542629591 Mon Sep 17 00:00:00 2001
+From: Mike Fleetwood <mike.fleetwood@googlemail.com>
+Date: Sun, 1 Jun 2025 15:08:57 +0100
+Subject: [PATCH] Fix crash from dereferencing a nullptr in Utils::mk_pixbuf()
+ (#282)
+
+Debian bug 984953 [1] reported a crash from a nullptr dereference.  The
+captured backtrace was:
+    (gdb) backtrace
+    #0  Gdk::Pixbuf::gobj (this=0x0) at ../gdkmm/pixbuf.h:389
+    #1  Gdk::Pixbuf::get_width (this=0x0) at pixbuf.cc:517
+    #2  0x0000aaaaaab89ca4 in GParted::Utils::mk_pixbuf (widget=..., stock_id=..., icon_size=..., icon_size@entry=...) at /usr/include/glibmm-2.4/glibmm/refptr.h:259
+    #3  0x0000aaaaaab92020 in GParted::Win_GParted::refresh_combo_devices (this=0xffffffffe960) at /usr/include/gtkmm-3.0/gtkmm/enums.h:2870
+    #4  0x0000aaaaaab95980 in GParted::Win_GParted::menu_gparted_refresh_devices (this=<optimized out>) at Win_GParted.cc:1674
+    #5  0x0000aaaaaab95e2c in GParted::Win_GParted::initial_device_refresh (data=<optimized out>) at Win_GParted.cc:1605
+    #6  0x0000fffff6b8dab4 in g_main_dispatch (context=0xaaaaaaca6f10) at ../../../glib/gmain.c:3325
+    #7  g_main_context_dispatch (context=0xaaaaaaca6f10) at ../../../glib/gmain.c:4043
+    #8  0x0000fffff6b8de5c in g_main_context_iterate (context=0xaaaaaaca6f10, block=block@entry=1, dispatch=dispatch@entry=1, self=<optimized out>) at ../../../glib/gmain.c:4119
+    #9  0x0000fffff6b8e1b0 in g_main_loop_run (loop=loop@entry=0xaaaaabb23860) at ../../../glib/gmain.c:4317
+    #10 0x0000fffff70b98f0 in gtk_main () at ../../../../gtk/gtkmain.c:1328
+    #11 0x0000aaaaaab2138c in main (argc=<optimized out>, argv=<optimized out>) at main.cc:62
+
+GParted is still using Gtk stock icons.  All attempts at re-creating
+this crash by deleting icon files failed because if the desktop theme
+doesn't provide the icons, the Gtk library falls back on using the
+builtin copies of the stock icons instead.  It is unknown how the
+reported managed to trigger this crash.  The only known way to reproduce
+this crash is by changing the GParted source code to request a
+non-existent stock icon.  This change was used:
+         {
+             //combo...
+             treerow = *( liststore_devices ->append() ) ;
+    +        static const Gtk::BuiltinStockID UNKNOWN = { ((GtkStock)"unknown") };
+             treerow[ treeview_devices_columns .icon ] =
+    -            Utils::mk_pixbuf(*this, Gtk::Stock::HARDDISK, Gtk::ICON_SIZE_LARGE_TOOLBAR);
+    +            Utils::mk_pixbuf(*this, UNKNOWN, Gtk::ICON_SIZE_LARGE_TOOLBAR);
+             treerow[ treeview_devices_columns .device ] = devices[ i ] .get_path() ;
+             treerow[ treeview_devices_columns .size ] = "(" + Utils::format_size( devices[ i ] .length, devices[ i ] .sector_size ) + ")" ;
+
+The bug in Utils::mk_pixbuf() is that render_icon_pixbuf() returned a
+nullptr and was then dereferenced a few lines lower by
+theme_icon->get_width().
+
+Testing this fix with the above crash reproducing change applied results
+in the GUI simply not showing an icon with each device name in the
+device combo box selector.
+
+[1] libgtkmm-3.0-1v5: GParted crashes on Gdk::Pixbuf::get_width()
+    const ()
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=984953
+
+Closes #282 - Crash due to not checking for failure to load icon
+---
+ src/Utils.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/Utils.cc b/src/Utils.cc
+index 4c4d781a..a9c2e3e1 100644
+--- a/src/Utils.cc
++++ b/src/Utils.cc
+@@ -177,6 +177,8 @@ Glib::RefPtr<Gdk::Pixbuf> Utils::mk_pixbuf(Gtk::Widget& widget,
+                                            Gtk::IconSize icon_size)
+ {
+ 	Glib::RefPtr<Gdk::Pixbuf> theme_icon = widget.render_icon_pixbuf(stock_id, icon_size);
++	if (! theme_icon)
++		return theme_icon;
+ 
+ 	// Ensure icon size
+ 	int width = 0;
+-- 
+GitLab

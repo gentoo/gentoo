@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kwin</bugs-to>
+		<remote-id type="kde-invent">plasma/kwin-x11</remote-id>
+	</upstream>
+	<use>
+		<flag name="lock">Enable screen locking via <pkg>kde-plasma/kscreenlocker</pkg></flag>
+		<flag name="shortcuts">Enable global shortcuts support via <pkg>kde-plasma/kglobalacceld</pkg></flag>
+	</use>
+</pkgmetadata>

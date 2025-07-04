@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10,11,12} )
+PYTHON_COMPAT=( python3_{11,12} )
 
 inherit desktop flag-o-matic python-any-r1 readme.gentoo-r1 toolchain-funcs xdg
 
@@ -22,7 +22,7 @@ RDEPEND="dev-lang/tcl:0=
 	media-libs/libogg
 	media-libs/libpng:0=
 	media-libs/libsdl2[joystick=,sound,video]
-	media-libs/libtheora
+	media-libs/libtheora:=
 	media-libs/libvorbis
 	media-libs/sdl2-ttf
 	>=media-libs/glew-1.3.2:0=

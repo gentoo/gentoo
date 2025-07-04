@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ VIM_VERSION="9.1"
 VIM_PATCHES_VERSION="9.0.2092"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby31 ruby32"
 
@@ -24,10 +24,10 @@ else
 		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 fi
-S="${WORKDIR}"/vim-${PV}
 
 DESCRIPTION="GUI version of the Vim text editor"
 HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
+S="${WORKDIR}"/vim-${PV}
 
 LICENSE="vim"
 SLOT="0"
@@ -171,16 +171,6 @@ src_prepare() {
 }
 
 src_configure() {
-
-	# Fix bug #37354: Disallow -funroll-all-loops on amd64
-	# Bug #57859 suggests that we want to do this for all archs
-	filter-flags -funroll-all-loops
-
-	# Fix bug 76331: -O3 causes problems, use -O2 instead. We'll do this for
-	# everyone since previous flag filtering bugs have turned out to affect
-	# multiple archs...
-	replace-flags -O3 -O2
-
 	emake -j1 -C src autoconf
 
 	# This should fix a sandbox violation (see bug #24447). The hvc

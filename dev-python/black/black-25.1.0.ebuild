@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -25,10 +25,6 @@ RDEPEND="
 	>=dev-python/packaging-22.0[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
-		>=dev-python/typing-extensions-4.0.1[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
@@ -37,7 +33,6 @@ BDEPEND="
 		>=dev-python/aiohttp-3.10[${PYTHON_USEDEP}]
 		dev-python/aiohttp-cors[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
-		dev-python/parameterized[${PYTHON_USEDEP}]
 	)
 "
 distutils_enable_tests pytest

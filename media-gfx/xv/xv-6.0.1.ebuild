@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake desktop flag-o-matic xdg-utils
+inherit cmake desktop xdg-utils
 
 JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
@@ -33,11 +33,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# -Werror=lto-type-mismatch
-	# https://bugs.gentoo.org/859823
-	# https://github.com/jasper-software/xv/issues/25
-	filter-lto
-
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DXV_ENABLE_JPEG=$(usex jpeg)

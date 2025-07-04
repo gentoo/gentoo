@@ -18,7 +18,7 @@ SRC_URI="
 		-> ${P}.tar.gz
 "
 
-LICENSE="|| ( AGPL-3 SSPL-1 ) Boost-1.0 MIT"
+LICENSE="|| ( AGPL-3 RSAL-2 SSPL-1 ) Boost-1.0 MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+jemalloc selinux ssl systemd tcmalloc test"

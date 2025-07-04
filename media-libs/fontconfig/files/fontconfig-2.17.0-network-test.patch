@@ -1,0 +1,16 @@
+If pytest is found, it tries to use pytest-tap (which is currently unpackaged).
+
+But as of fontconfig-2.16.0, this only runs test_issue431.py which needs
+network access, so we can't run it anyway. Stub it out.
+--- a/test/meson.build
++++ b/test/meson.build
+@@ -91,7 +91,7 @@ if host_machine.system() != 'windows'
+ 
+   test('run_test_sh', find_program('run-test.sh'), timeout: 600, env: ['srcdir=@0@'.format(meson.current_source_dir()), 'builddir=@0@'.format(meson.current_build_dir()), 'EXEEXT=@0@'.format(conf.get('EXEEXT')), 'VERBOSE=1'])
+ 
+-  if pytest.found()
++  if false
+     test('pytest', pytest, args: ['--tap'],
+          workdir: meson.current_source_dir(),
+          env: ['builddir=@0@'.format(meson.project_build_root())],
+

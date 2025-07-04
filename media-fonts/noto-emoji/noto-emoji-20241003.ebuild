@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit font
+inherit font xdg-utils
 
 DESCRIPTION="Google Noto Emoji fonts"
 HOMEPAGE="https://fonts.google.com/noto/specimen/Noto+Color+Emoji https://fonts.google.com/noto/specimen/Noto+Emoji
@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 LICENSE="Apache-2.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="icons"
 
 RESTRICT="binchecks strip"
@@ -55,4 +55,12 @@ src_install() {
 	font_src_install
 
 	dodoc README.md
+}
+
+pkg_postinst() {
+	use icons && xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	use icons && xdg_icon_cache_update
 }

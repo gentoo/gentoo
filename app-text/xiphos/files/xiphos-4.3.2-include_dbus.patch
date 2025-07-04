@@ -1,0 +1,24 @@
+https://github.com/crosswire/xiphos/pull/1103.patch
+dbus is not called for the main target, but it should.
+diff --git a/src/main/CMakeLists.txt b/src/main/CMakeLists.txt
+index 4952757..a65a92b 100644
+--- a/src/main/CMakeLists.txt
++++ b/src/main/CMakeLists.txt
+@@ -77,6 +77,17 @@ target_link_libraries(main
+   PkgConfig::Biblesync
+   )
+ 
++IF (DBUS)
++  target_include_directories (main
++    PRIVATE ${CMAKE_CURRENT_BINARY_DIR}
++    PkgConfig::DBus
++    )
++  target_link_libraries(main
++    PRIVATE
++    PkgConfig::DBus
++    )
++ENDIF (DBUS)
++
+ if(WK_FOUND)
+   target_compile_definitions(main
+     PRIVATE

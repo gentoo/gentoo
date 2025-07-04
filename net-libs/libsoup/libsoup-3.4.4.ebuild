@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,16 +6,15 @@ EAPI=8
 inherit gnome.org meson-multilib vala xdg
 
 DESCRIPTION="HTTP client/server library for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
+HOMEPAGE="https://libsoup.gnome.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
 
 IUSE="+brotli gssapi gtk-doc +introspection samba ssl sysprof test +vala"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="vala? ( introspection )"
-
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/glib-2.69.1:2[${MULTILIB_USEDEP}]

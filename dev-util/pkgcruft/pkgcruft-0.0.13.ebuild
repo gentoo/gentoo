@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=" "
-LLVM_COMPAT=( {17..19} )
+LLVM_COMPAT=( {17..20} )
 RUST_MIN_VER="1.84.0"
 
 inherit cargo edo llvm-r2 multiprocessing shell-completion toolchain-funcs
@@ -20,7 +20,7 @@ if [[ ${PV} == 9999 ]] ; then
 else
 	SRC_URI="https://github.com/pkgcraft/pkgcraft/releases/download/${P}/${P}.tar.xz"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="MIT"

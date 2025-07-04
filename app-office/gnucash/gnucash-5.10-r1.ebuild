@@ -87,7 +87,6 @@ DEPEND="
 	${RDEPEND}
 	>=sys-devel/gettext-0.20
 	dev-lang/perl
-	dev-perl/XML-Parser
 	dev-build/libtool
 	>=dev-cpp/gtest-1.8.0
 "

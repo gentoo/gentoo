@@ -1,0 +1,52 @@
+From 766baa4f47b59b70c9d865786182c16dc93aafe6 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Sat, 9 Nov 2024 12:57:02 +0100
+Subject: [PATCH] build: Build genclx without gnulib.
+
+Reported by Peter Van Eynde in
+<https://gitlab.com/gnu-clisp/clisp/-/issues/53>.
+
+* modules/clx/new-clx/Makefile.in (BUILD_CC, BUILD_CPPFLAGS, BUILD_CFLAGS,
+BUILD_LDFLAGS): New variables.
+(clx.d): Use them to compile genclx.c.
+
+diff --git a/modules/clx/new-clx/Makefile.in b/modules/clx/new-clx/Makefile.in
+index 7b0056ad0..600f2752b 100644
+--- a/modules/clx/new-clx/Makefile.in
++++ b/modules/clx/new-clx/Makefile.in
+@@ -1,11 +1,22 @@
+-# Makefile for CLISP module set clx
++# Makefile for CLISP module set new-clx
+ 
+ srcdir = @srcdir@
++
++# These variables are used to build binaries for the build platform,
++# that are not linked to Gnulib or CLISP code.
++BUILD_CC = @CC@
++BUILD_CPPFLAGS = @CPPFLAGS@
++BUILD_CFLAGS = @CFLAGS@
++BUILD_LDFLAGS = @LDFLAGS@
++
++# These variables are used to build binaries for the target platform.
++# They are set through link.sh (invoked from clisp-link).
+ CC = @CC@
+ CPPFLAGS = @CPPFLAGS@
+ CFLAGS = -O
+ CLISP = @CLISP@ -norc -q
+ CLISP_LINKKIT = @CLISP_LINKKIT@
++
+ LN = @LN@
+ LN_S = @LN_S@
+ SHELL = /bin/sh
+@@ -35,7 +46,7 @@ resource.fas: $(srcdir)/resource.lisp clx.lib
+ 
+ clx.d: $(srcdir)/clx.f
+ 	$(CCMP2C) $(srcdir)/clx.f > genclx.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) $(WANTS) genclx.c -o genclx
++	$(BUILD_CC) $(BUILD_CPPFLAGS) $(WANTS) $(BUILD_CFLAGS) $(BUILD_LDFLAGS) -o genclx genclx.c
+ 	./genclx -l -o clx.d > clx.d
+ 	$(RM) genclx.c
+ 	$(RM) genclx
+-- 
+2.45.2
+

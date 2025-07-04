@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the modified BSD license
+
+description="Sender Rewriting Scheme daemon for Postfix"
+
+supervisor=supervise-daemon
+command=/usr/sbin/postsrsd
+command_args=${POSTSRSD_OPTS}
+
+depend() {
+    need net
+    before postfix
+}

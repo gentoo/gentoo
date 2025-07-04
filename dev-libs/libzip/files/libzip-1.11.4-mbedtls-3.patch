@@ -1,0 +1,80 @@
+From https://github.com/nih-at/libzip/pull/494
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Wed, 28 May 2025 22:01:25 +0300
+Subject: [PATCH] Use MbedTLS 3.6
+
+Older versions of MbedTLS reached EOL and not supported anymore.
+MbedTLS 3.6 provides own configuration module for CMake, but some
+distributions may not iclude it into mbedtls package, so it is
+reasonable to keep own FindMbedTLS for compatibility.
+
+Changed MbedTLS::MbedTLS target to MbedTLS::mbedcrypto to follow
+upstream naming.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -50,7 +50,7 @@ if(ENABLE_GNUTLS)
+   find_package(GnuTLS)
+ endif()
+ if(ENABLE_MBEDTLS)
+-  find_package(MbedTLS 1.0)
++  find_package(MbedTLS 3.6)
+ endif()
+ if(ENABLE_OPENSSL)
+   find_package(OpenSSL)
+@@ -269,7 +269,7 @@ elseif (OPENSSL_FOUND)
+ elseif (GNUTLS_FOUND AND NETTLE_FOUND)
+   set(HAVE_CRYPTO 1)
+   set(HAVE_GNUTLS 1)
+-elseif (MBEDTLS_FOUND)
++elseif (MbedTLS_FOUND)
+   set(HAVE_CRYPTO 1)
+   set(HAVE_MBEDTLS 1)
+ endif()
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -478,7 +478,6 @@ if(LIBZIP_DO_INSTALL)
+   install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindNettle.cmake
+     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Findzstd.cmake
+-    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindMbedTLS.cmake
+     DESTINATION
+     ${CMAKE_INSTALL_LIBDIR}/cmake/libzip/modules
+   )
+--- a/cmake/FindMbedTLS.cmake
++++ b/cmake/FindMbedTLS.cmake
+@@ -41,7 +41,7 @@ Imported Targets
+ 
+ This module provides the following imported targets, if found:
+ 
+-``MbedTLS::MbedTLS``
++``MbedTLS::mbedcrypto``
+   The Mbed TLS library
+ 
+ Result Variables
+@@ -126,9 +126,9 @@ if(MbedTLS_FOUND)
+ #  set(MbedTLS_DEFINITIONS ${PC_MbedTLS_CFLAGS_OTHER})
+ endif()
+ 
+-if(MbedTLS_FOUND AND NOT TARGET MbedTLS::MbedTLS)
+-  add_library(MbedTLS::MbedTLS UNKNOWN IMPORTED)
+-  set_target_properties(MbedTLS::MbedTLS PROPERTIES
++if(MbedTLS_FOUND AND NOT TARGET MbedTLS::mbedcrypto)
++  add_library(MbedTLS::mbedcrypto UNKNOWN IMPORTED)
++  set_target_properties(MbedTLS::mbedcrypto PROPERTIES
+     IMPORTED_LOCATION "${MbedTLS_LIBRARY}"
+ #    INTERFACE_COMPILE_OPTIONS "${PC_MbedTLS_CFLAGS_OTHER}"
+     INTERFACE_INCLUDE_DIRECTORIES "${MbedTLS_INCLUDE_DIR}"
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -167,7 +167,7 @@ elseif(HAVE_OPENSSL)
+   target_link_libraries(zip PRIVATE OpenSSL::Crypto)
+ elseif(HAVE_MBEDTLS)
+   target_sources(zip PRIVATE zip_crypto_mbedtls.c)
+-  target_link_libraries(zip PRIVATE MbedTLS::MbedTLS)
++  target_link_libraries(zip PRIVATE MbedTLS::mbedcrypto)
+ endif()
+ 
+ if(HAVE_CRYPTO)
+-- 
+2.49.0
+

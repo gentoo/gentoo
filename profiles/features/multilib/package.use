@@ -1,5 +1,5 @@
 # Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License, v2
+# Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2022-03-08)
 # Enable libxcrypt & libcrypt as multilib by default

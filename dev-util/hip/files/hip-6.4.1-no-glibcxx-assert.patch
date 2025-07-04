@@ -1,0 +1,26 @@
+stdlibc++ of GCC-15 adds __glibcxx_assert in std::clamp, std::array, etc,
+which breaks HIP code. However, `clang -x hip` autoloads few files,
+one of them is <hip/hip_version.h> (the only one from dev-util/hip), 
+where we can undefine __glibcxx_assert until it is fixed in stdlibc++.
+
+Upstream bug: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=115740
+Bug: https://bugs.gentoo.org/955623
+--- a/hipamd/CMakeLists.txt
++++ b/hipamd/CMakeLists.txt
+@@ -314,6 +314,16 @@ set(_versionInfoHeader
+ #define HIP_VERSION_BUILD_NAME \"${HIP_VERSION_BUILD_NAME}\"
+ #define HIP_VERSION    (HIP_VERSION_MAJOR * 10000000 + HIP_VERSION_MINOR * 100000 + HIP_VERSION_PATCH)\n
+ #define __HIP_HAS_GET_PCH ${_pchStatus}\n
++
++// Workaround for https://gcc.gnu.org/bugzilla/show_bug.cgi?id=115740
++#if defined(__has_include) && defined(__cplusplus) && defined(__HIP__)
++  #if __has_include(\"bits/c++config.h\")
++    #include <bits/c++config.h>
++    #undef __glibcxx_assert
++    #define __glibcxx_assert(cond)
++  #endif
++#endif
++
+ #endif\n
+ ")
+ file(WRITE "${PROJECT_BINARY_DIR}/include/hip/hip_version.h" ${_versionInfoHeader})

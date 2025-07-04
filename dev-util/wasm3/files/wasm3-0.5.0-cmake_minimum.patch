@@ -1,0 +1,52 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.11)
++cmake_minimum_required(VERSION 3.20)
+ 
+ # Detect WasiEnv
+ if(DEFINED ENV{WASI_CC} OR DEFINED WASI_SDK_PREFIX)
+--- a/platforms/android/app/src/main/cpp/CMakeLists.txt
++++ b/platforms/android/app/src/main/cpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4.1)
++cmake_minimum_required(VERSION 3.20)
+ 
+ add_definitions(-DANDROID -Wno-format-security -O3
+                 #-fno-optimize-sibling-calls
+--- a/platforms/cpp/CMakeLists.txt
++++ b/platforms/cpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.9)
++cmake_minimum_required(VERSION 3.20)
+ project(wasm3_cpp_example)
+ 
+ set(target ${CMAKE_PROJECT_NAME})
+--- a/platforms/cpp/wasm3_cpp/CMakeLists.txt
++++ b/platforms/cpp/wasm3_cpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.20)
+ add_library(wasm3_cpp INTERFACE)
+ target_include_directories(wasm3_cpp INTERFACE include)
+ target_compile_features(wasm3_cpp INTERFACE cxx_std_17)
+--- a/platforms/embedded/esp32-idf-wasi/CMakeLists.txt
++++ b/platforms/embedded/esp32-idf-wasi/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # The following lines of boilerplate have to be in your project's
+ # CMakeLists in this exact order for cmake to work correctly
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.20)
+ 
+ include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+ project(wasm3)
+--- a/platforms/embedded/esp32-idf/CMakeLists.txt
++++ b/platforms/embedded/esp32-idf/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # The following lines of boilerplate have to be in your project's
+ # CMakeLists in this exact order for cmake to work correctly
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.20)
+ 
+ include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+ project(wasm3)

@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Proxy program for two connections set up by a UCSPI server and a UCSPI client"
 HOMEPAGE="https://untroubled.org/ucspi-proxy/"
@@ -18,6 +18,9 @@ RDEPEND=">=dev-libs/bglibs-2.04"
 DEPEND="${RDEPEND}"
 
 src_configure() {
+	# bug #946204
+	append-cflags -std=gnu17
+
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 	echo "${EPREFIX}/usr/bin" > conf-bin || die

@@ -269,7 +269,7 @@ COMMON_DEPEND="
 		x11-libs/cairo[${MULTILIB_USEDEP}]
 	)
 	svt-av1? ( >=media-libs/svt-av1-0.9:=[${MULTILIB_USEDEP}] )
-	theora? ( media-libs/libtheora[encode,${MULTILIB_USEDEP}] )
+	theora? ( media-libs/libtheora:=[encode,${MULTILIB_USEDEP}] )
 	truetype? (
 		media-libs/freetype:2[${MULTILIB_USEDEP}]
 		media-libs/harfbuzz:=[${MULTILIB_USEDEP}]

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33"
 
 RUBY_FAKEGEM_GEMSPEC="puma.gemspec"
 
@@ -38,7 +38,6 @@ ruby_add_rdepend "dev-ruby/nio4r:2"
 all_ruby_prepare() {
 	sed -e '/\(pride\|prove\|stub_const\)/ s:^:#:' \
 		-e '/require_relative.*verbose/ s:^:#:' \
-		-e '/securerandom/arequire "rack/handler"' \
 		-i test/helper.rb || die
 
 	# Avoid tests failing inconsistently
@@ -66,6 +65,11 @@ all_ruby_prepare() {
 	# constraints or a race condition.
 	#sed -e '/test_systemd_notify_usr1_phased_restart_cluster/askip "Flaky test"' \
 	#	-i test/test_plugin_systemd.rb || die
+
+	# Avoid a test that fails on systemd systems due to the pluging
+	# getting autoloaded there, bug #954180
+	sed -e '/test_plugins/askip "Fails on a systemd system"' \
+		-i test/test_cli.rb || die
 
 	# Tries to call 'rackup' directly
 	sed -i -e '/def test_bin/,/^    end/ s:^:#:' test/test_rack_handler.rb || die

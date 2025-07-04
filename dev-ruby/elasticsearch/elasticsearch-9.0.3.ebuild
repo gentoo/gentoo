@@ -23,6 +23,7 @@ IUSE="test"
 ruby_add_rdepend "
 	~dev-ruby/elasticsearch-api-${PV}
 	>=dev-ruby/elastic-transport-8.3:8
+	!<dev-ruby/elasticsearch-8.18.0-r1:8
 "
 ruby_add_bdepend "
 	doc? ( dev-ruby/yard )

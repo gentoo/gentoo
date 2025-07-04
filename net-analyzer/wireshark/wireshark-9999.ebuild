@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{3..4} )
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit fcaps lua-single python-any-r1 qmake-utils toolchain-funcs xdg cmake
 
@@ -68,7 +68,6 @@ RDEPEND="
 	gui? (
 		dev-qt/qtbase:6[concurrent,dbus,gui,widgets]
 		dev-qt/qt5compat:6
-		dev-qt/qtdeclarative:6
 		dev-qt/qtmultimedia:6
 		x11-misc/xdg-utils
 	)

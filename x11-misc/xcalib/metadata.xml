@@ -3,6 +3,6 @@
 <pkgmetadata>
     <!-- maintainer-needed -->
     <upstream>
-        <remote-id type="github">OpenICC/xcalib</remote-id>
+        <remote-id type="codeberg">OpenICC/xcalib</remote-id>
     </upstream>
 </pkgmetadata>

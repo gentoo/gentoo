@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,10 +24,7 @@ patches() {
 	if [[ ${opt} == -s ]] ; then
 		echo "${@/#/${DISTDIR}/}"
 	else
-		local u
-		for u in ftp://ftp.cwru.edu/pub/bash mirror://gnu/${pn} ; do
-			printf "${u}/${pn}-${pv}-patches/%s " "$@"
-		done
+		printf "mirror://gnu/${pn}/${pn}-${pv}-patches/%s " "$@"
 	fi
 }
 
@@ -38,6 +35,8 @@ SRC_URI="mirror://gnu/bash/${MY_P}.tar.gz $(patches)"
 if [[ -n ${GENTOO_PATCH_VER} ]] ; then
 	SRC_URI+=" https://dev.gentoo.org/~${GENTOO_PATCH_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${GENTOO_PATCH_VER}-patches.tar.xz"
 fi
+
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
 SLOT="${MY_PV}"
@@ -50,8 +49,6 @@ LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
-
-S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}-patches/${PN}-4.0-configure.patch # bug #304901
@@ -100,6 +97,10 @@ src_configure() {
 	# bash 5.3 drops unprototyped functions, earlier versions are
 	# incompatible with C23.
 	append-cflags $(test-flags-CC -std=gnu17)
+
+	if tc-is-cross-compiler; then
+		export CFLAGS_FOR_BUILD="${BUILD_CFLAGS} -std=gnu17"
+	fi
 
 	local myconf=(
 		--with-installed-readline=.

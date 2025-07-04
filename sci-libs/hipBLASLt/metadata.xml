@@ -13,5 +13,6 @@
   </upstream>
   <use>
     <flag name="benchmark">Build and install rocblas-bench.</flag>
+    <flag name="roctracer">Enable roctracer (roctx) marker.</flag>
   </use>
 </pkgmetadata>

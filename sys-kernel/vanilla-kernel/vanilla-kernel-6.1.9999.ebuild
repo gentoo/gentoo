@@ -9,7 +9,7 @@ inherit git-r3 kernel-build toolchain-funcs
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 # forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
 CONFIG_VER=6.1.102-gentoo
-GENTOO_CONFIG_VER=g15
+GENTOO_CONFIG_VER=g16
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="

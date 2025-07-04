@@ -13,11 +13,12 @@ inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolch
 MY_P="${P/_/-}"
 
 CRATES="
-	syn@2.0.68
-	proc-macro2@1.0.86
-	quote@1.0.33
-	unicode-ident@1.0.12
 	paste@1.0.14
+	proc-macro2@1.0.86
+	quote@1.0.35
+	rustc-hash@2.1.1
+	syn@2.0.87
+	unicode-ident@1.0.12
 "
 
 RUST_MIN_VER="1.78.0"

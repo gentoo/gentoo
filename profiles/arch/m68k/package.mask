@@ -3,4 +3,8 @@
 
 # Andreas K. Hüttel <dilfridge@gentoo.org>
 # Requires 32bit alignment, so we mask it for the moment
+# Possibly more is broken in qemu
 dev-lang/python:3.13
+dev-lang/python:3.14
+dev-lang/python:3.13t
+dev-lang/python:3.14t

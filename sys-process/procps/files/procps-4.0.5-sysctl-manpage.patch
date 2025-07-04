@@ -1,0 +1,33 @@
+https://bugs.gentoo.org/565304
+--- a/man/sysctl.8
++++ b/man/sysctl.8
+@@ -177,21 +177,21 @@ skipped by \fBsysctl\fR using the \fB\-\-all\fR option.
+ This parameter returns no value but flushes per-cpu vm statistics.
+ 
+ .SH EXAMPLES
+-/sbin/sysctl \-a
++/usr/sbin/sysctl \-a
+ .br
+-/sbin/sysctl \-n kernel.hostname
++/usr/sbin/sysctl \-n kernel.hostname
+ .br
+-/sbin/sysctl \-w kernel.domainname="example.com"
++/usr/sbin/sysctl \-w kernel.domainname="example.com"
+ .br
+-/sbin/sysctl \-p/etc/sysctl.conf
++/usr/sbin/sysctl \-p/etc/sysctl.conf
+ .br
+-/sbin/sysctl \-a \-\-pattern forward
++/usr/sbin/sysctl \-a \-\-pattern forward
+ .br
+-/sbin/sysctl \-a \-\-pattern forward$
++/usr/sbin/sysctl \-a \-\-pattern forward$
+ .br
+-/sbin/sysctl \-a \-\-pattern 'net.ipv4.conf.(eth|wlan)0.arp'
++/usr/sbin/sysctl \-a \-\-pattern 'net.ipv4.conf.(eth|wlan)0.arp'
+ .br
+-/sbin/sysctl \-\-pattern '\[char94]net.ipv6' \-\-system
++/usr/sbin/sysctl \-\-pattern '\[char94]net.ipv6' \-\-system
+ .SH SEE ALSO
+ .BR proc (5),
+ .BR sysctl.conf (5),

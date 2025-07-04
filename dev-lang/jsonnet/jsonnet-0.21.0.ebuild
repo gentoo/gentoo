@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} python3_13t )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} python3_{13,14}t )
 
 inherit cmake toolchain-funcs flag-o-matic distutils-r1
 
@@ -16,19 +16,19 @@ SRC_URI="https://github.com/google/jsonnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv ~x86"
 IUSE="custom-optimization doc examples python test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-cpp/nlohmann_json:=
 	python? ( ${PYTHON_DEPS} )
 "
-
 DEPEND="
 	${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
-
 BDEPEND="
 	python? (
 		${PYTHON_DEPS}
@@ -36,9 +36,6 @@ BDEPEND="
 		>=dev-python/setuptools-72.2[${PYTHON_USEDEP}]
 	)
 "
-RESTRICT="!test? ( test )"
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	"${FILESDIR}/jsonnet-0.16.0-libdir.patch"

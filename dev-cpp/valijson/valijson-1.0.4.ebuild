@@ -14,6 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 RESTRICT="test"
 
+# unused inspector/CMakeLists.txt (bug #957461)
+CMAKE_QA_COMPAT_SKIP=1
+
 src_install() {
 	# there is no target for installing headers, so do it manually
 	doheader -r include/*

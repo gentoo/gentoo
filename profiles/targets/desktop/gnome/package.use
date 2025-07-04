@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (2022-01-05)
@@ -42,8 +42,8 @@ app-accessibility/speech-dispatcher python
 # Pulled in by grilo-plugins which is needed for gnome-music
 media-libs/grilo playlist
 
-# Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
-media-libs/libmediaart gtk -qt5
+# Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt6 )"
+media-libs/libmediaart gtk -qt6
 
 # For gnome-boxes
 net-misc/spice-gtk gtk3

@@ -26,7 +26,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	app-text/hunspell:=
 	dev-libs/libpcre2:=[pcre16]
-	dev-qt/qtbase:6[concurrent,cups,network,widgets,xml]
+	dev-qt/qtbase:6[concurrent,gui,network,widgets,xml]
 	dev-qt/qtwebengine:6[widgets]
 	dev-qt/qtsvg:6
 	sys-libs/zlib[minizip]

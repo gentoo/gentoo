@@ -18,6 +18,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# Needed for xkbcommon-keysyms.h
+DEPEND="x11-libs/libxkbcommon"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-cmake.patch"
 	"${FILESDIR}/${PN}-clang16-static_assert-fix.patch"

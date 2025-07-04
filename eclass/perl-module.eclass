@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-module.eclass
@@ -190,9 +190,6 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # (EAPI=8 and later) This Bash array contains parameters to the make call
 # from ExtUtils::MakeMaker. Replaces mymake in EAPI=7 and earlier.
 # Defaults to ( OPTIMIZE="${CFLAGS}" )
-if [[ $(declare -p DIST_MAKE 2>&-) != "declare -a DIST_MAKE="* ]]; then
-	DIST_MAKE=( OPTIMIZE="${CFLAGS}" )
-fi
 
 DIST_NAME=${DIST_NAME:-${PN}}
 DIST_P=${DIST_NAME}-${DIST_VERSION:-${PV}}
@@ -233,6 +230,10 @@ perl-module_src_prepare() {
 # This function is to be called during the ebuild src_configure() phase.
 perl-module_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ $(declare -p DIST_MAKE 2>&-) != "declare -a DIST_MAKE="* ]]; then
+		DIST_MAKE=( OPTIMIZE="${CFLAGS}" )
+	fi
 
 	# Perl runs LD with LDFLAGS
 	export CCLD=$(tc-getCC)

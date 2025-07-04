@@ -109,7 +109,7 @@ src_prepare() {
 	done
 	mesa_cards=$(echo -n /dev/dri/card*)
 	for card in ${mesa_cards[@]} ; do
-                addpredict "${card}"
+		addpredict "${card}"
 	done
 	nvidia_cards=$(echo -n /dev/nvidia*)
 	for card in ${nvidia_cards[@]} ; do

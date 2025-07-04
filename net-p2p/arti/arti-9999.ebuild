@@ -6,8 +6,8 @@ EAPI=8
 CRATES=""
 inherit cargo
 
-DESCRIPTION="An implementation of Tor, in Rust."
-HOMEPAGE="https://gitlab.torproject.org/tpo/core/arti/"
+DESCRIPTION="Implementation of Tor in Rust"
+HOMEPAGE="https://tpo.pages.torproject.net/core/arti/ https://gitlab.torproject.org/tpo/core/arti/"
 
 if [[ "${PV}" == *9999 ]]; then
 	inherit git-r3
@@ -19,10 +19,10 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="MIT Apache-2.0"
+LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
 LICENSE+="
-	Apache-2.0 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016
+	Apache-2.0 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 openssl Unicode-3.0
 	Unlicense ZLIB
 "
 SLOT="0"

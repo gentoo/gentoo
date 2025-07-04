@@ -30,6 +30,7 @@
 	<flag name="system-librnp">Use system-wide <pkg>dev-util/librnp</pkg> instead of bundled one.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
+	<flag name="system-pipewire">Use system <pkg>media-video/pipewire</pkg> for WebRTC and screencast instead of bundled one</flag>
 	<flag name="system-png">Use the system-wide <pkg>media-libs/libpng</pkg>
 		instead of bundled (requires APNG patches)</flag>
 	<flag name="system-webp">Use the system-wide <pkg>media-libs/libwebp</pkg>

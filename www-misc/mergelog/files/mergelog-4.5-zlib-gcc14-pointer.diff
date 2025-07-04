@@ -1,0 +1,48 @@
+diff '--color=auto' -Nur mergelog-4.5~/src/mergelog.c mergelog-4.5/src/mergelog.c
+--- mergelog-4.5~/src/mergelog.c	2025-06-07 18:17:16.000000000 +0200
++++ mergelog-4.5/src/mergelog.c	2025-06-07 18:17:59.000000000 +0200
+@@ -40,7 +40,7 @@
+ 
+ 
+ #ifdef USE_ZLIB
+-#define myFH gzFile
++typedef gzFile myFH;
+ #define myopen gzopen
+ #define mygets(a,b,c,d) fast_gzgets(a,b,c,d)
+ #define myrewind gzrewind
+@@ -48,7 +48,7 @@
+ #define mywrite(f,b,l) gzwrite((f),(b),(l))
+ #define MYSUFFIX ".gz"
+ #else
+-#define myFH FILE
++typedef FILE * myFH;
+ #define myopen fopen
+ #define mygets(a,b,c,d) fgets(a,b,c)
+ #define myrewind rewind
+@@ -71,7 +71,7 @@
+ /*
+   replacement for gzgets which reduces calls to zlib decompression
+  */
+-char *fast_gzgets (char *buf, int size, myFH *fp, int i) {
++char *fast_gzgets (char *buf, int size, myFH fp, int i) {
+   
+   char *out_cp=buf;
+ 
+@@ -101,7 +101,7 @@
+ int main (int argc, char *argv[]) {
+ 
+   int i,j,nb_files,nb_files_orig;
+-  myFH *log_file[argc-1];
++  myFH log_file[argc-1];
+   char *log_buffer[argc-1];
+   char *log_scan[argc-1];
+   char *log_month[argc-1];
+@@ -122,7 +122,7 @@
+   const char* argv0 = *argv;
+   struct tm gotmFlags;
+   const char* goOutPtr;
+-  myFH *outFile = NULL;
++  myFH outFile = NULL;
+   char outFileName[512];
+   struct tm outFileTM;
+   char outFileNewName[512];

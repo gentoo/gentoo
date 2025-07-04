@@ -4,7 +4,6 @@
 	<use>
 		<flag name="cracklib">Enable nickserv/cracklib module for enforcing strong account passwords</flag>
 		<flag name="largenet">Enable support/tweaks for large networks</flag>
-		<flag name="ldap">Enable ldap-backed authentication module</flag>
 		<flag name="perl">Install a perl module which wraps around the services' XML-RPC interface</flag>
 	</use>
 	<maintainer type="person" proxied="yes">
@@ -16,6 +15,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/atheme/atheme/issues</bugs-to>
+		<changelog>https://github.com/atheme/atheme/releases</changelog>
 		<remote-id type="github">atheme/atheme</remote-id>
 	</upstream>
 </pkgmetadata>

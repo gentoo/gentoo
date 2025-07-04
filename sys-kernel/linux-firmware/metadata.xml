@@ -22,4 +22,7 @@
 	<flag name="savedconfig">Allows individual selection of firmware files</flag>
 	<flag name="unknown-license">Install firmware files whose license is unknown</flag>
 </use>
+<upstream>
+	<remote-id type="gitlab">kernel-firmware/linux-firmware</remote-id>
+</upstream>
 </pkgmetadata>

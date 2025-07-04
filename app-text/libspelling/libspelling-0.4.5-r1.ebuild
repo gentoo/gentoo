@@ -14,6 +14,10 @@ SLOT="1"
 KEYWORDS="~amd64 ~loong ~riscv ~x86"
 IUSE="gtk-doc sysprof vala"
 
+PATCHES=(
+	"${FILESDIR}/Disable-testsuite_test-engine.patch"
+)
+
 RDEPEND="
 	dev-libs/glib:2
 	>=gui-libs/gtk-4.8:4

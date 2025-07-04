@@ -52,7 +52,6 @@ DEPEND="
 	test? ( >=dev-util/cmocka-1.0.1
 		app-benchmarks/dbench
 		dev-vcs/git
-		virtual/perl-Test-Harness
 		dev-libs/yajl
 		sys-fs/xfsprogs
 		sys-apps/attr )

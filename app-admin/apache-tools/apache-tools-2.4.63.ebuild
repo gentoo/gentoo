@@ -39,6 +39,7 @@ PATCHES=(
 src_prepare() {
 	default
 
+	tc-export PKG_CONFIG
 	# This package really should upgrade to using pcre's .pc file.
 	cat <<-\EOF > "${T}"/pcre2-config
 	#!/usr/bin/env bash
@@ -62,8 +63,8 @@ src_configure() {
 	# Silly check.
 	tc-is-cross-compiler && export ap_cv_void_ptr_lt_long="no"
 
-	tc-export PKG_CONFIG
 	export ac_cv_path_PKGCONFIG="${PKG_CONFIG}"
+	export PCRE_CONFIG="${T}"/pcre2-config
 	export ac_cv_prog_ac_ct_PCRE_CONFIG="${T}"/pcre2-config
 
 	local myeconfargs=(

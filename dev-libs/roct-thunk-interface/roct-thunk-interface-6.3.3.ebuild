@@ -5,7 +5,7 @@ EAPI=8
 
 LLVM_COMPAT=( 19 )
 ROCM_SKIP_GLOBALS=1
-inherit cmake linux-info llvm-r1 rocm
+inherit cmake flag-o-matic linux-info llvm-r1 rocm
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ROCm/ROCR-Runtime/"
@@ -69,6 +69,9 @@ src_configure() {
 	cmake_src_configure
 
 	if use test; then
+		# ODR violations (bug #956958)
+		filter-lto
+
 		export LIBHSAKMT_PATH="${BUILD_DIR}"
 		local mycmakeargs=(
 			-DLLVM_DIR="$(get_llvm_prefix)"

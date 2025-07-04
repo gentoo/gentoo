@@ -1,0 +1,32 @@
+From 831415edd2a578a2b4851996ca796f47dbc3f2f3 Mon Sep 17 00:00:00 2001
+From: Esme Povirk <esme@codeweavers.com>
+Date: Fri, 11 Apr 2025 18:08:04 +0000
+Subject: [PATCH] btls: Fix build on cmake 4.x.
+
+---
+ mono/btls/CMakeLists.txt | 9 +--------
+ 1 files changed, 1 insertions(+), 8 deletions(-)
+
+diff --git a/mono/btls/CMakeLists.txt b/mono/btls/CMakeLists.txt
+index 992f41e4c7f..dbad836fc27 100644
+--- a/mono/btls/CMakeLists.txt
++++ b/mono/btls/CMakeLists.txt
+@@ -1,14 +1,7 @@
+-cmake_minimum_required (VERSION 2.8.10)
++cmake_minimum_required (VERSION 2.8.10...4.0)
+ 
+ project (mono-btls)
+ 
+-if(POLICY CMP0026)
+-	cmake_policy(SET CMP0026 NEW)
+-endif()
+-if(POLICY CMP0042)
+-	cmake_policy(SET CMP0042 NEW)
+-endif()
+-
+ enable_language(C)
+ enable_language(CXX)
+ 
+-- 
+GitLab
+

@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="MicroGnuEmacs, a port from the BSDs"
 HOMEPAGE="https://github.com/hboetes/mg"
@@ -27,6 +27,10 @@ src_prepare() {
 }
 
 src_compile() {
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/940566
+	filter-lto
+
 	emake CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		PKG_CONFIG="$(tc-getPKG_CONFIG)"

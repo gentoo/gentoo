@@ -19,6 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
+	!media-radio/wsjtx_improved
 	dev-libs/boost:=[nls,python]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5

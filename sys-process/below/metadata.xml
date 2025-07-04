@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>hodges.daniel.scott@gmail.com</email>
-		<name>Daniel Hodges</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>flow@gentoo.org</email>
 		<name>Florian Schmaus</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		below is an interactive tool to view and record historical system data. It has support for:

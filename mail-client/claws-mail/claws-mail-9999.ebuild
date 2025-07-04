@@ -85,7 +85,7 @@ COMMONDEPEND="
 		')
 	)
 	rss? (
-		dev-libs/libxml2
+		dev-libs/libxml2:=
 		net-misc/curl
 	)
 	session? (

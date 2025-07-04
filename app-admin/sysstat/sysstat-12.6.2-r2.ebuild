@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,30 +9,25 @@ DESCRIPTION="System performance tools for Linux"
 HOMEPAGE="https://sysstat.github.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="dcron debug nls lm-sensors selinux systemd"
+REQUIRED_USE="dcron? ( !systemd )"
 
+DEPEND="
+	nls? ( virtual/libintl )
+	lm-sensors? ( sys-apps/lm-sensors:= )
+"
+RDEPEND="
+	${DEPEND}
+	!dcron? ( !sys-process/dcron )
+	selinux? ( sec-policy/selinux-sysstat )
+"
 BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
-
-COMMON_DEPEND="
-	nls? ( virtual/libintl )
-	lm-sensors? ( sys-apps/lm-sensors:= )
-"
-
-DEPEND="${COMMON_DEPEND}"
-
-RDEPEND="
-	${COMMON_DEPEND}
-	!dcron? ( !sys-process/dcron )
-	selinux? ( sec-policy/selinux-sysstat )
-"
-
-REQUIRED_USE="dcron? ( !systemd )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-12.6.2-check_overflow.patch
@@ -56,7 +51,7 @@ src_configure() {
 			$(use_enable !systemd use-crond) \
 			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
-			$(usex debug --enable-debuginfo '') \
+			$(usev debug --enable-debuginfo) \
 			--disable-compress-manpg \
 			--disable-stripping \
 			--disable-pcp \

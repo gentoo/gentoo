@@ -1,4 +1,4 @@
-# Copyright 2021-2023 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,7 +64,7 @@ src_configure() {
 
 src_test() {
 	cd test || die
-	emake || die
+	emake
 	./tntnet-test || die
 }
 

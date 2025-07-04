@@ -12,7 +12,7 @@ https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="+gui test zstd"
 
 RESTRICT="!test? ( test )"

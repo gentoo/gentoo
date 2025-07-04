@@ -1,0 +1,14 @@
+Use correct directory for database files.
+Bug: https://bugs.gentoo.org/783195
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -40,7 +40,7 @@ MANDEST = @mandir@
+ # The root of the directory tree for read-only
+ datarootdir = @datarootdir@
+ # Pathname of directory to install database file
+-ARPDIR ?= @prefix@/arpwatch
++ARPDIR ?= @datarootdir@/arpwatch
+ 
+ # VPATH
+ srcdir = @srcdir@

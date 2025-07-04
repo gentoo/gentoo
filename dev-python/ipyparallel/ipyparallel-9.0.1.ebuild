@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 optfeature pypi
@@ -38,7 +38,6 @@ BDEPEND="
 	dev-python/flit-core[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-tornado[${PYTHON_USEDEP}]
 		dev-python/testpath[${PYTHON_USEDEP}]
 	)
 "
@@ -82,7 +81,7 @@ python_test() {
 	esac
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p asyncio -p tornado
+	epytest -p asyncio
 }
 
 python_install_all() {

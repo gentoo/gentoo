@@ -7,7 +7,7 @@ GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{10..13} )
 WANT_AUTOMAKE=none
 
-inherit autotools python-single-r1 perl-module systemd
+inherit autotools python-single-r1 libtool perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="https://www.net-snmp.org/"
@@ -34,7 +34,6 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
 "
-RESTRICT="test"
 
 COMMON_DEPEND="
 	virtual/libcrypt:=
@@ -73,13 +72,9 @@ RDEPEND="
 	perl? (
 		X? ( dev-perl/Tk )
 		!minimal? (
-			virtual/perl-Carp
-			virtual/perl-Data-Dumper
-			virtual/perl-Getopt-Long
 			dev-perl/JSON
 			dev-perl/Mail-Sender
 			dev-perl/TermReadKey
-			virtual/perl-Term-ReadLine
 		)
 	)
 	selinux? ( sec-policy/selinux-snmp )
@@ -111,9 +106,13 @@ src_prepare() {
 	mv "${WORKDIR}"/patches/0005-Respect-LDFLAGS-properly.patch{,.disabled} || die
 	eapply "${WORKDIR}"/patches/*.patch
 
+	# Fails because of our eautoconf call
+	rm testing/fulltests/default/T000configure_simple || die
+
 	default
 
 	eautoconf
+	elibtoolize
 }
 
 src_configure() {
@@ -167,6 +166,10 @@ src_compile() {
 	done
 
 	use doc && emake docsdox
+}
+
+src_test() {
+	emake -Onone test
 }
 
 src_install() {

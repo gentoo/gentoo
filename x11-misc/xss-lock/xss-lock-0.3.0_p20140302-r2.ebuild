@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,8 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/xcb-util"
 DEPEND="${RDEPEND}"
 BDEPEND="man? ( dev-python/docutils )"
+
+PATCHES=( "${FILESDIR}"/${P}-cmake4.patch )
 
 src_install() {
 	cmake_src_install

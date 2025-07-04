@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="How well-distributed is your data?"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa sparc x86"

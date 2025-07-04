@@ -3,6 +3,10 @@
 
 EAPI=8
 
+# note: keep old versions for an extended period (at "least" 2 months
+# after stabilization unless it is broken) due to save states being
+# locked to specific versions and users may need time
+
 inherit cmake desktop eapi9-ver fcaps flag-o-matic optfeature toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
@@ -84,6 +88,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.5913-musl-cache.patch
 	"${FILESDIR}"/${PN}-2.2.0-missing-header.patch
 )
+
+CMAKE_QA_COMPAT_SKIP=1 #957976
 
 src_prepare() {
 	cmake_src_prepare

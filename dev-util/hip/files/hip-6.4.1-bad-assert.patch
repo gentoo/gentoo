@@ -1,0 +1,15 @@
+Remove invalid assert (caused random unittest failures in hiprt)
+
+Upstream bug: https://github.com/ROCm/clr/issues/148
+Backports commit: https://github.com/ROCm/clr/commit/8fcaa1ca938bf6e57625d3fae3f80b00e86df266
+--- a/rocclr/platform/commandqueue.cpp
++++ b/rocclr/platform/commandqueue.cpp
+@@ -156,8 +156,6 @@ void HostQueue::finish(bool cpu_wait) {
+   if (IS_HIP) {
+     command = getLastQueuedCommand(true);
+     if (command == nullptr) {
+-      assert(GetSubmissionBatch() == nullptr &&
+-        "Can't claim the queue is finished with the active batch!");
+       return;
+     }
+     // Force blocking wait if requested. That allows to avoid a build up of unreleased CPU commands

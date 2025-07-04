@@ -163,6 +163,8 @@ src_configure() {
 	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
 
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
+
 	local myconf=(
 		--program-suffix="-${EMACS_SUFFIX}"
 		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX}
@@ -299,8 +301,6 @@ src_configure() {
 }
 
 src_compile() {
-	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
-
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src

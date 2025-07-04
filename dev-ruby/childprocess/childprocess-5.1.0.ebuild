@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/enkessler/childprocess"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
 
 ruby_add_rdepend ">=dev-ruby/ffi-1.0.11 >=dev-ruby/logger-1.5:0"
 

@@ -14,7 +14,7 @@ S="${WORKDIR}/coreruleset-${MY_PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+apache2"
 
 RDEPEND="apache2? ( >=www-apache/mod_security-2.9.6 )"

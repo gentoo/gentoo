@@ -14,4 +14,7 @@ it possible to explore the connection between the micro-level behavior of
 individuals and the macro-level patterns that emerge from the interaction 
 of many individuals.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">NetLogo/NetLogo</remote-id>
+	</upstream>
 </pkgmetadata>

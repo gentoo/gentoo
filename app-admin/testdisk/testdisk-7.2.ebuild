@@ -1,7 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic qmake-utils xdg-utils
 
@@ -13,7 +13,6 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 IUSE="ewf jpeg ntfs gui reiserfs static +sudo zlib"
-
 REQUIRED_USE="static? ( !gui )"
 
 QA_CONFIG_IMPL_DECL_SKIP=(

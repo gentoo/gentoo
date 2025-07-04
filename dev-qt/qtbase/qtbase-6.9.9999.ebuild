@@ -68,6 +68,7 @@ COMMON_DEPEND="
 
 	dbus? ( sys-apps/dbus )
 	gui? (
+		dev-libs/md4c
 		media-libs/fontconfig
 		>=media-libs/freetype-2.13.1:2
 		media-libs/harfbuzz:=
@@ -128,6 +129,7 @@ RDEPEND="
 	!<dev-qt/qtcharts-${PV}:6
 	!<dev-qt/qtconnectivity-${PV}:6
 	!<dev-qt/qtdeclarative-${PV}:6
+	!<dev-qt/qtgraphs-${PV}:6
 	!<dev-qt/qthttpserver-${PV}:6
 	!<dev-qt/qtimageformats-${PV}:6
 	!<dev-qt/qtlanguageserver-${PV}:6
@@ -279,7 +281,6 @@ src_configure() {
 		$(qt_feature wayland)
 		$(qt_feature widgets)
 		-DINPUT_opengl=$(usex opengl $(usex gles2-only es2 desktop) no)
-		-DQT_FEATURE_system_textmarkdownreader=OFF # TODO?: package md4c
 	) && use widgets && mycmakeargs+=(
 		# note: qtprintsupport is enabled w/ gui+widgets regardless of USE=cups
 		$(qt_feature cups)

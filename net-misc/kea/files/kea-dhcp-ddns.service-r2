@@ -1,0 +1,17 @@
+[Unit]
+Description=ISC Kea DHCP-DDNS server
+Before=multi-user.target
+After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.service ndsd.service
+
+[Service]
+User=dhcp
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+Environment=KEA_PIDFILE_DIR=/run/kea
+RuntimeDirectory=kea
+RuntimeDirectoryMode=0750
+ExecStart=/usr/sbin/kea-dhcp-ddns -c /etc/kea/kea-dhcp-ddns.conf
+ExecReload=kill -HUP $MAINPID
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

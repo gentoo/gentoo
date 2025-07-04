@@ -1,0 +1,380 @@
+From 5e46e59e6e403690d5e7a7ec8acbce831e5db81c Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 10 Jun 2025 10:20:31 +0100
+Subject: [PATCH 2/4] Switch to caml_ prefixed functions
+
+This is needed w/ 5.3.0 at least.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ bdb/bdb_stubs.c | 82 ++++++++++++++++++++++++-------------------------
+ crc.c           |  8 ++---
+ 2 files changed, 45 insertions(+), 45 deletions(-)
+
+diff --git a/bdb/bdb_stubs.c b/bdb/bdb_stubs.c
+index 959ee27..87bcd5d 100644
+--- a/bdb/bdb_stubs.c
++++ b/bdb/bdb_stubs.c
+@@ -59,7 +59,7 @@ static void dbt_from_string(DBT *dbt, value v) {
+   zerob(dbt, sizeof(*dbt));
+ 
+   dbt->data = (void *)String_val(v);
+-  dbt->size = string_length(v);
++  dbt->size = caml_string_length(v);
+ }
+ 
+ #if OCAML_VERSION < 40600
+@@ -75,19 +75,19 @@ static value caml_alloc_initialized_string(size_t len, const char *p)
+ 
+ #define test_cursor_closed(cursor) \
+   if (UW_cursor_closed(cursor)) \
+-   invalid_argument("Attempt to use closed cursor")
++   caml_invalid_argument("Attempt to use closed cursor")
+ 
+ #define test_dbenv_closed(dbenv) \
+   if (UW_dbenv_closed(dbenv)) \
+-   invalid_argument("Attempt to use closed dbenv")
++   caml_invalid_argument("Attempt to use closed dbenv")
+ 
+ #define test_db_closed(db) \
+   if (UW_db_closed(db))  \
+-   invalid_argument("Attempt to use closed db")
++   caml_invalid_argument("Attempt to use closed db")
+ 
+ #define test_txn_closed(txn) \
+   if (UW_txn_closed(txn)) \
+-    invalid_argument("Attempt to use closed txn")
++    caml_invalid_argument("Attempt to use closed txn")
+ 
+ // comments starting with "//+" are extracted automatically to create the .ml
+ // file that forms the caml side of this interface.
+@@ -239,15 +239,15 @@ value caml_db_init(value v){
+ //+ type db
+ 
+ void raise_db(const char *msg) {
+-  raise_with_string(*caml_db_exn, msg);
++  caml_raise_with_string(*caml_db_exn, msg);
+ }
+ 
+ void raise_key_exists() {
+-  raise_constant(*caml_key_exists_exn);
++  caml_raise_constant(*caml_key_exists_exn);
+ }
+ 
+ void raise_run_recovery() {
+-  raise_constant(*caml_db_run_recovery_exn);
++  caml_raise_constant(*caml_db_run_recovery_exn);
+ }
+ 
+ // Used as callback by db infrastructure for setting errors.  As a result,
+@@ -321,7 +321,7 @@ value caml_dbenv_create(value unit){
+ 
+   dbenv->set_errcall(dbenv,raise_db_cb);
+ 
+-  rval = alloc_custom(&dbenv_custom,Camldbenv_wosize,0,1);
++  rval = caml_alloc_custom(&dbenv_custom,Camldbenv_wosize,0,1);
+   UW_dbenv(rval) = dbenv;
+   UW_dbenv_closed(rval) = False;
+   CAMLreturn (rval);
+@@ -335,7 +335,7 @@ value caml_dbenv_open(value dbenv, value vdirectory,
+   CAMLparam4(dbenv,vdirectory,vflags,vmode);
+   int err;
+   const char *directory = String_val(vdirectory);
+-  int flags = convert_flag_list(vflags,dbenv_open_flags);
++  int flags = caml_convert_flag_list(vflags,dbenv_open_flags);
+ 
+   test_dbenv_closed(dbenv);
+ 
+@@ -416,7 +416,7 @@ value caml_dbenv_set_verbose(value dbenv, value vflags,
+   CAMLparam3(dbenv,vflags,v_onoff);
+   int err;
+ 
+-  int which = convert_flag_list(vflags,dbenv_verbose_flags) + 1;
++  int which = caml_convert_flag_list(vflags,dbenv_verbose_flags) + 1;
+   int onoff = Bool_val(v_onoff);
+ 
+   test_dbenv_closed(dbenv);
+@@ -524,8 +524,8 @@ value caml_db_create(value dbenv_opt, value vflags){
+ 
+   /* The flags parameter is currently unused, and must be set to 0. */
+   if (vflags != Val_emptylist)
+-    invalid_argument("DB.create invalid create flag");
+-  flags = convert_flag_list(vflags,db_create_flags);
++    caml_invalid_argument("DB.create invalid create flag");
++  flags = caml_convert_flag_list(vflags,db_create_flags);
+ 
+   if (Is_None(dbenv_opt)) { dbenv = NULL; }
+   else {
+@@ -538,7 +538,7 @@ value caml_db_create(value dbenv_opt, value vflags){
+ 
+   db->set_errcall(db,raise_db_cb);
+ 
+-  rval = alloc_custom(&db_custom,Camldb_wosize,0,1);
++  rval = caml_alloc_custom(&db_custom,Camldb_wosize,0,1);
+   UW_db(rval) = db;
+   UW_db_closed(rval) = False;
+   CAMLreturn (rval);
+@@ -553,7 +553,7 @@ value caml_db_open(value db, value vfname,
+   CAMLparam5(db, vfname, vdbtype, vflags, vmode);
+   int err;
+   const char *fname = String_val(vfname);
+-  int flags = convert_flag_list(vflags,db_open_flags);
++  int flags = caml_convert_flag_list(vflags,db_open_flags);
+   int dbtype = Flag_val(vdbtype,db_types);
+ 
+   test_db_closed(db);
+@@ -630,7 +630,7 @@ value caml_db_put(value db, value txn_opt, value vkey,
+ 
+   dbt_from_string(&key, vkey);
+   dbt_from_string(&data, vdata);
+-  flags = convert_flag_list(vflags, db_put_flags);
++  flags = caml_convert_flag_list(vflags, db_put_flags);
+ 
+   err = UW_db(db)->put(UW_db(db), txn, &key, &data, flags);
+   if (err != 0) {
+@@ -661,12 +661,12 @@ value caml_db_get(value db, value txn_opt, value vkey, value vflags) {
+ 
+   zerob(&data,sizeof(DBT));
+   dbt_from_string(&key, vkey);
+-  flags = convert_flag_list(vflags, db_get_flags);
++  flags = caml_convert_flag_list(vflags, db_get_flags);
+ 
+   err = UW_db(db)->get(UW_db(db), txn, &key, &data, flags);
+   if (err != 0) {
+     ////fprintf(stderr,"Error found: %d\n",err); fflush(stderr);
+-    if (err == DB_NOTFOUND) { raise_not_found(); }
++    if (err == DB_NOTFOUND) { caml_raise_not_found(); }
+     UW_db(db)->err(UW_db(db),err,"caml_db_get");
+   }
+ 
+@@ -683,7 +683,7 @@ value caml_db_set_flags(value db, value vflags) {
+ 
+   test_db_closed(db);
+ 
+-  flags = convert_flag_list(vflags,db_set_flags);
++  flags = caml_convert_flag_list(vflags,db_set_flags);
+ 
+   err = UW_db(db)->set_flags(UW_db(db),flags);
+   if (err != 0) { UW_db(db)->err(UW_db(db),err,"caml_db_set_flags"); }
+@@ -873,7 +873,7 @@ value caml_cursor_create(value vwritecursor, value txn_opt, value db) {
+     UW_db(db)->err(UW_db(db),err, "caml_cursor_create");
+   }
+ 
+-  rval = alloc_custom(&cursor_custom,Camlcursor_wosize,0,1);
++  rval = caml_alloc_custom(&cursor_custom,Camlcursor_wosize,0,1);
+ 
+   UW_cursor(rval) = cursor;
+   UW_cursor_closed(rval) = False;
+@@ -944,7 +944,7 @@ value caml_cursor_init(value cursor, value vkey, value vflags) {
+   CAMLparam3(cursor,vkey,vflags);
+   CAMLlocal1(rval);
+   DBT key,data;
+-  int flags = convert_flag_list(vflags,cursor_get_flags) | DB_SET;
++  int flags = caml_convert_flag_list(vflags,cursor_get_flags) | DB_SET;
+   int err;
+ 
+   test_cursor_closed(cursor);
+@@ -954,7 +954,7 @@ value caml_cursor_init(value cursor, value vkey, value vflags) {
+ 
+   err = UW_cursor(cursor)->c_get(UW_cursor(cursor), &key, &data, flags);
+   if (err != 0) {
+-    if (err == DB_NOTFOUND) { raise_not_found(); }
++    if (err == DB_NOTFOUND) { caml_raise_not_found(); }
+     raise_db(db_strerror(err));
+   }
+ 
+@@ -969,7 +969,7 @@ value caml_cursor_init_range(value cursor, value vkey, value vflags) {
+   CAMLparam3(cursor,vkey,vflags);
+   CAMLlocal3(rkey,rdata,rpair);
+   DBT key,data;
+-  int flags = convert_flag_list(vflags,cursor_get_flags) | DB_SET_RANGE;
++  int flags = caml_convert_flag_list(vflags,cursor_get_flags) | DB_SET_RANGE;
+   int err;
+ 
+   test_cursor_closed(cursor);
+@@ -979,7 +979,7 @@ value caml_cursor_init_range(value cursor, value vkey, value vflags) {
+ 
+   err = UW_cursor(cursor)->c_get(UW_cursor(cursor), &key, &data, flags);
+   if (err != 0) {
+-    if (err == DB_NOTFOUND) { raise_not_found(); }
++    if (err == DB_NOTFOUND) { caml_raise_not_found(); }
+     raise_db(db_strerror(err));
+   }
+ 
+@@ -1005,7 +1005,7 @@ value caml_cursor_init_both(value cursor, value vkey,
+ 
+    int ctr = 0;
+ 
+-   flags = convert_flag_list(vflags,cursor_get_flags) | DB_GET_BOTH;
++   flags = caml_convert_flag_list(vflags,cursor_get_flags) | DB_GET_BOTH;
+    test_cursor_closed(cursor);
+ 
+    dbt_from_string(&key, vkey);
+@@ -1013,7 +1013,7 @@ value caml_cursor_init_both(value cursor, value vkey,
+ 
+    err = UW_cursor(cursor)->c_get(UW_cursor(cursor), &key, &data, flags);
+    if (err != 0) {
+-     if (err == DB_NOTFOUND) { raise_not_found (); }
++     if (err == DB_NOTFOUND) { caml_raise_not_found (); }
+      raise_db(db_strerror(err));
+    }
+ 
+@@ -1028,7 +1028,7 @@ value caml_cursor_get(value cursor, value vtype, value vflags) {
+   CAMLlocal3(rpair,rkey,rdata);
+   DBT key,data;
+   int flags = Flag_val(vtype,cursor_get_type) |
+-    convert_flag_list(vflags,cursor_get_flags);
++    caml_convert_flag_list(vflags,cursor_get_flags);
+   int err;
+   zerob(&key,sizeof(DBT)); zerob(&data,sizeof(DBT));
+ 
+@@ -1036,7 +1036,7 @@ value caml_cursor_get(value cursor, value vtype, value vflags) {
+ 
+   err = UW_cursor(cursor)->c_get(UW_cursor(cursor), &key, &data,flags);
+   if (err != 0) {
+-    if (err == DB_NOTFOUND) { raise_not_found(); }
++    if (err == DB_NOTFOUND) { caml_raise_not_found(); }
+     raise_db(db_strerror(err));
+   }
+ 
+@@ -1056,7 +1056,7 @@ value caml_cursor_get_keyonly(value cursor, value vtype, value vflags) {
+   CAMLlocal1(rkey);
+   DBT key,data;
+   int flags = Flag_val(vtype,cursor_get_type) |
+-    convert_flag_list(vflags,cursor_get_flags);
++    caml_convert_flag_list(vflags,cursor_get_flags);
+   int err;
+   zerob(&key,sizeof(DBT)); zerob(&data,sizeof(DBT));
+ 
+@@ -1064,7 +1064,7 @@ value caml_cursor_get_keyonly(value cursor, value vtype, value vflags) {
+ 
+   err = UW_cursor(cursor)->c_get(UW_cursor(cursor), &key, &data,flags);
+   if (err != 0) {
+-    if (err == DB_NOTFOUND) { raise_not_found(); }
++    if (err == DB_NOTFOUND) { caml_raise_not_found(); }
+     raise_db(db_strerror(err));
+   }
+ 
+@@ -1118,7 +1118,7 @@ value caml_cursor_dup(value vkeep_position, value cursor) {
+   err = UW_cursor(cursor)->c_dup(UW_cursor(cursor), &newcursor, flags);
+   if (err != 0) { raise_db(db_strerror(err)); }
+ 
+-  rval = alloc_custom(&cursor_custom,Camlcursor_wosize,0,1);
++  rval = caml_alloc_custom(&cursor_custom,Camlcursor_wosize,0,1);
+   UW_cursor(rval) = newcursor;
+   UW_cursor_closed(rval) = False;
+ 
+@@ -1136,7 +1136,7 @@ value caml_join_cursors(value vnosort, value db,
+   CAMLlocal1(rval);
+   DBC *jcurs; // pointer to joined cursor
+   int carray_len = Wosize_val(vcursors);
+-  int flags = convert_flag_list(vflags,cursor_get_flags);
++  int flags = caml_convert_flag_list(vflags,cursor_get_flags);
+   DBC *cursors[carray_len + 1];
+   int i;
+ 
+@@ -1146,7 +1146,7 @@ value caml_join_cursors(value vnosort, value db,
+ 
+   for (i=0; i < carray_len; i++) {
+     if (UW_cursor_closed(Field(vcursors,i))) {
+-      invalid_argument("caml_join_cursors: Attempt to use closed cursor");
++      caml_invalid_argument("caml_join_cursors: Attempt to use closed cursor");
+     }
+     cursors[i] = UW_cursor(Field(vcursors,i));
+   }
+@@ -1156,7 +1156,7 @@ value caml_join_cursors(value vnosort, value db,
+   UW_db(db)->join(UW_db(db),cursors,&jcurs,flags);
+ 
+ 
+-  rval = alloc_custom(&cursor_custom,Camlcursor_wosize,0,1);
++  rval = caml_alloc_custom(&cursor_custom,Camlcursor_wosize,0,1);
+   UW_cursor(rval) = jcurs;
+   UW_cursor_closed(rval) = False;
+   CAMLreturn (rval);
+@@ -1209,7 +1209,7 @@ value caml_set_txn_max(value dbenv, value vmax) {
+   if (err != 0) {
+     //fprintf(stderr,"Error found: %d\n",err); fflush(stderr);
+     if (err == EINVAL) {
+-      invalid_argument("set_txn_max called after dbenv opened");
++      caml_invalid_argument("set_txn_max called after dbenv opened");
+     } else {
+       UW_dbenv(dbenv)->err(UW_dbenv(dbenv), err, "caml_set_txn_max");
+     }
+@@ -1247,7 +1247,7 @@ value caml_txn_begin(value dbenv, value parent_opt, value vflags) {
+ 
+   test_dbenv_closed(dbenv);
+ 
+-  flags = convert_flag_list(vflags,txn_begin_flags);
++  flags = caml_convert_flag_list(vflags,txn_begin_flags);
+ 
+   if (Is_None(parent_opt)) { parent = NULL; }
+   else {
+@@ -1259,13 +1259,13 @@ value caml_txn_begin(value dbenv, value parent_opt, value vflags) {
+   err = UW_dbenv(dbenv)->txn_begin(UW_dbenv(dbenv), parent, &newtxn, flags);
+   if (err != 0) {
+     if (err == ENOMEM) {
+-      failwith("Maximum # of concurrent transactions reached");
++      caml_failwith("Maximum # of concurrent transactions reached");
+     } else {
+       UW_dbenv(dbenv)->err(UW_dbenv(dbenv), err,"caml_txn_begin");
+     }
+   }
+ 
+-  rval = alloc_custom(&txn_custom,Camltxn_wosize,0,1);
++  rval = caml_alloc_custom(&txn_custom,Camltxn_wosize,0,1);
+   UW_txn(rval) = newtxn;
+   UW_txn_closed(rval) = False;
+   CAMLreturn(rval);
+@@ -1283,13 +1283,13 @@ value caml_txn_checkpoint(value dbenv, value vkbyte, value vmin,
+ 
+   kbyte = Int_val(vkbyte);
+   min = Int_val(vmin);
+-  flags = convert_flag_list(vflags,txn_checkpoint_flags);
++  flags = caml_convert_flag_list(vflags,txn_checkpoint_flags);
+ 
+   err = UW_dbenv(dbenv)->txn_checkpoint(UW_dbenv(dbenv),kbyte,min,flags);
+   if (err != 0) {
+     //fprintf(stderr,"Error found: %d\n",err); fflush(stderr);
+     if (err == EINVAL) {
+-      invalid_argument("caml_txn_checkpoint: no reason specified");
++      caml_invalid_argument("caml_txn_checkpoint: no reason specified");
+     } else {
+       UW_dbenv(dbenv)->err(UW_dbenv(dbenv), err, "caml_txn_checkpoint");
+     }
+@@ -1304,7 +1304,7 @@ value caml_txn_commit(value txn, value vflags) {
+   int err, flags;
+ 
+   test_txn_closed(txn);
+-  flags = convert_flag_list(vflags,txn_commit_flags);
++  flags = caml_convert_flag_list(vflags,txn_commit_flags);
+ 
+   err = UW_txn(txn)->commit(UW_txn(txn),flags);
+   UW_txn_closed(txn) = True; // transaction can never be used again
+diff --git a/crc.c b/crc.c
+index daafad3..2c570b0 100644
+--- a/crc.c
++++ b/crc.c
+@@ -51,7 +51,7 @@ value caml_crc_octets(value data) {
+   CAMLparam1(data);
+   CAMLlocal1(rval);
+   unsigned const char *octets = String_val(data);
+-  size_t len = string_length(data);
++  size_t len = caml_string_length(data);
+   long crc = crc_octets(octets,len);
+ 
+   rval = Val_int(crc);
+@@ -63,8 +63,8 @@ value caml_get_tzname(value none) {
+   CAMLparam1(none);
+   CAMLlocal1(rval);
+   tzset();
+-  rval = alloc_tuple(2);
+-  Store_field(rval,0,copy_string(tzname[0]));
+-  Store_field(rval,1,copy_string(tzname[1]));
++  rval = caml_alloc_tuple(2);
++  Store_field(rval,0,caml_copy_string(tzname[0]));
++  Store_field(rval,1,caml_copy_string(tzname[1]));
+   CAMLreturn(rval);
+ }
+-- 
+2.49.0
+

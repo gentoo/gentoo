@@ -11,7 +11,7 @@ SRC_URI="https://github.com/RenderKit/embree/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="$(ver_cut 1)"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* amd64 ~arm64"
 X86_CPU_FLAGS=( sse2 sse4_2 avx avx2 avx512dq )
 CPU_FLAGS=( cpu_flags_arm_neon "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )
 IUSE="compact-polys ispc +raymask ssp +tbb test ${CPU_FLAGS[*]}"

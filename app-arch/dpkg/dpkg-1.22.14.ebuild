@@ -36,7 +36,6 @@ DEPEND="
 	test? (
 		dev-perl/IO-String
 		dev-perl/Test-Pod
-		virtual/perl-Test-Harness
 	)
 "
 BDEPEND="

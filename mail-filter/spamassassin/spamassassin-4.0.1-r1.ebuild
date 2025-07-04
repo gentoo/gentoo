@@ -80,7 +80,6 @@ OPTDEPEND="app-crypt/gnupg
 DEPEND="${REQDEPEND}
 	test? (
 		${OPTDEPEND}
-		virtual/perl-Test-Harness
 	)"
 RDEPEND="${REQDEPEND} ${OPTDEPEND}"
 BDEPEND="${RDEPEND}

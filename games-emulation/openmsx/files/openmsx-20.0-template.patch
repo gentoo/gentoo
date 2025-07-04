@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/958161
+https://sources.debian.org/patches/openmsx/20.0%2Bdfsg-1.2/c%2B%2B20-iterator.diff/
+
+This is fixed properly upstream in >20.0 but this is a quick, minimal fix for now.
+--- a/src/utils/view.hh
++++ b/src/utils/view.hh
+@@ -206,6 +206,7 @@ public:
+ 	}
+ 
+ 	[[nodiscard]] constexpr friend difference_type operator-(const TransformIterator& x, const TransformIterator& y)
++	requires std::sized_sentinel_for<Iterator, Iterator>
+ 	{
+ 		return x.it - y.it;
+ 	}
+

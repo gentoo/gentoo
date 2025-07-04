@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,7 +8,7 @@ WANT_AUTOMAKE=none
 inherit autotools
 
 DESCRIPTION="Extremely simple MTA to get mail off the system to a Mailhub"
-HOMEPAGE="ftp://ftp.debian.org/debian/pool/main/s/ssmtp/"
+HOMEPAGE="https://wiki.debian.org/sSMTP"
 SRC_URI="
 	mirror://debian/pool/main/s/ssmtp/${PN}_$(ver_cut 1-2).orig.tar.bz2
 	mirror://debian/pool/main/s/ssmtp/${PN}_${PV/_p/-}.debian.tar.xz

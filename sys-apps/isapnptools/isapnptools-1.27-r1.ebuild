@@ -1,7 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit dot-a
 
 DESCRIPTION="Tools for configuring ISA PnP devices"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -17,8 +19,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-incompatible-pointer-types.patch
 )
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_install() {
 	default
+	strip-lto-bytecode
 
 	dodir /sbin
 	mv "${ED}"/{usr/sbin/isapnp,sbin/} || die

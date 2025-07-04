@@ -1,0 +1,51 @@
+Convert all make calls to POSIX format.
+
+Suggested by @thesamesam
+Link: https://github.com/gentoo/gentoo/pull/42447#discussion_r2127539884
+
+--- a/Makefile
++++ b/Makefile
+@@ -5,9 +5,9 @@
+ PROGRAM = analog
+ 
+ $(PROGRAM): ALWAYS
+-	cd src && make
++	$(MAKE) -C src
+ 
+ clean:
+-	cd src && make clean
++	$(MAKE) -C src clean
+ 
+ ALWAYS:
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -98,13 +98,13 @@
+ # There doesn't seem to be a good way to write all these rules in a generic
+ # form that works for all "make" programs
+ bzip2: ALWAYS
+-	cd bzip2 && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
++	$(MAKE) -C bzip2 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 
+ libgd: ALWAYS
+-	cd libgd && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
++	$(MAKE) -C libgd 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 
+ libpng: ALWAYS
+-	cd libpng && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
++	$(MAKE) -C libpng 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 
+ pcre2: ALWAYS
+ 	chmod 755 pcre2/132html pcre2/ar-lib pcre2/CheckMan pcre2/CleanTxt pcre2/compile pcre2/config.guess pcre2/config.sub pcre2/configure pcre2/depcomp pcre2/Detrail pcre2/install-sh pcre2/missing pcre2/perltest.sh pcre2/PrepareRelease pcre2/RunGrepTest pcre2/RunTest pcre2/test-driver
+@@ -113,10 +113,10 @@
+ 	cd pcre2 && ./configure && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 
+ unzip: ALWAYS
+-	cd unzip && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
++	$(MAKE) -C unzip 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 
+ zlib: ALWAYS
+-	cd zlib && $(MAKE) 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
++	$(MAKE) -C zlib 'CC=$(CC)' 'ALLCFLAGS=$(ALLCFLAGS)'
+ 
+ alias.o: alias.c $(HEADERS) Makefile
+ 	$(CC) $(ALLCFLAGS) -c alias.c

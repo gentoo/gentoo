@@ -5,7 +5,7 @@
 		<email>robbat2@gentoo.org</email>
 	</maintainer>
 	<maintainer type="project">
-		<email>infra@gentoo.org</email>
+		<email>infra-bugs@gentoo.org</email>
 		<name>Gentoo Infrastructure Team</name>
 	</maintainer>
 	<upstream>

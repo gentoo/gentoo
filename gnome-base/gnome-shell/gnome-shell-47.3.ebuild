@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
 
@@ -49,7 +49,7 @@ DEPEND="
 
 	>=app-accessibility/at-spi2-core-2.46:2[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	x11-libs/libX11
 
 	>=media-libs/libpulse-2[glib]

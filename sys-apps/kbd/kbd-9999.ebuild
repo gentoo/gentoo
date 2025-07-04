@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,6 +39,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-loadkeys )
 "
 BDEPEND="
+	sys-devel/flex
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
@@ -61,8 +62,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/legionus/kbd/issues/121
+	unset LEX
+
 	local myeconfargs=(
 		--disable-werror
+		# No Valgrind for the testsuite
+		--disable-memcheck
 
 		$(use_enable nls)
 		$(use_enable pam vlock)
@@ -73,6 +79,10 @@ src_configure() {
 }
 
 src_test() {
+	# These tests want a tty and the check passes when it shouldn't
+	# when running via the ebuild.
+	sed -i -e "s:tty 2>/dev/null:false:" tests/testsuite || die
+
 	emake -Onone check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
 

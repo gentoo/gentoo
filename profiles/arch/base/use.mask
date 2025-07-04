@@ -181,7 +181,6 @@ oracle
 
 input_devices_synaptics
 input_devices_vmmouse
-input_devices_wacom
 video_cards_asahi
 video_cards_ast
 video_cards_d3d12

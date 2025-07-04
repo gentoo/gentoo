@@ -5,10 +5,10 @@ EAPI=8
 
 inherit cmake flag-o-matic toolchain-funcs xdg
 
-DESCRIPTION="A set of open source instruments and effects for digital audio workstations"
+DESCRIPTION="Set of open source instruments and effects for digital audio workstations"
 HOMEPAGE="https://calf-studio-gear.org/"
 
-if [[ "${PV}" = "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/calf-studio-gear/calf.git"
 else
@@ -18,9 +18,9 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="cpu_flags_x86_sse experimental gtk jack lash lv2"
+IUSE="cpu_flags_x86_sse experimental gui jack lash lv2"
 
-REQUIRED_USE="jack? ( gtk )"
+REQUIRED_USE="jack? ( gui )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -30,7 +30,7 @@ DEPEND="
 	dev-libs/expat
 	dev-libs/glib:2
 	media-sound/fluidsynth:=
-	gtk? (
+	gui? (
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:2
@@ -42,6 +42,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.90.7-no-remove-ttl.patch"
+)
+
 src_configure() {
 	# Upstream append -ffast-math by default, however since libtool links C++
 	# shared libs with -nostdlib, this causes symbol resolution error for
@@ -50,7 +54,7 @@ src_configure() {
 	[[ $(tc-get-c-rtlib) = "compiler-rt" ]] && append-cxxflags "-fno-fast-math"
 
 	local mycmakeargs=(
-		-DWANT_GUI=$(usex gtk)
+		-DWANT_GUI=$(usex gui)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_LASH=$(usex lash)
 		-DWANT_LV2=$(usex lv2)

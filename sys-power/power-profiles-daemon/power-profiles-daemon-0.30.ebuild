@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/upower/power-profiles-daemon/"
 SRC_URI="https://gitlab.freedesktop.org/upower/${PN}/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 IUSE="bash-completion gtk-doc man selinux test zsh-completion"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -78,6 +78,11 @@ src_configure() {
 	)
 	use zsh-completion && emesonargs+=( -Dzshcomp="$(get_zshcompdir)" )
 	meson_src_configure
+}
+
+src_test() {
+	# Dbus tests are prone to fail when run in parallel
+	MAKEOPTS="-j1" meson_src_test
 }
 
 src_install() {

@@ -1,0 +1,26 @@
+From 75b9d0d7578a713643954efe4337c2fa4a92a3d5 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Wed, 4 Jun 2025 19:24:18 +1000
+Subject: [PATCH] asciidoc: add reproducible attribute
+
+This attribute suppresses the `Last updated` text in the footer,
+enabling reproducible documentation generation output.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ doc/index.adoc.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/doc/index.adoc.in b/doc/index.adoc.in
+index e0396260e..7e5976c96 100644
+--- a/doc/index.adoc.in
++++ b/doc/index.adoc.in
+@@ -1,4 +1,5 @@
+ = Fvwm3 Manual Pages
++:reproducible:
+ 
+ == Fvwm3
+ 
+-- 
+2.49.0
+

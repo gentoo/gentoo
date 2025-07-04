@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libobjdir.patch
 	"${FILESDIR}"/${P}-fix-build-with-glibc2.26.patch
 	"${FILESDIR}"/${P}-fix-apple-m1-crash-by-explicit-pointer-cast.patch
+	"${FILESDIR}"/${P}-fix-malloc-prototype.patch
 
 	"${WORKDIR}"/${P}-autotools-regenerate.patch
 )

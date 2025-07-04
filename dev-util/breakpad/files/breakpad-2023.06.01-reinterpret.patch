@@ -1,0 +1,28 @@
+--- a/src/processor/minidump_unittest.cc	2025-06-18 21:26:27.349826380 +0200
++++ b/src/processor/minidump_unittest.cc	2025-06-18 21:27:11.487348678 +0200
+@@ -389,10 +389,10 @@
+   ASSERT_EQ(0xa898f11bU, thread_id);
+ 
+   MinidumpContext* md_context = md_thread->GetContext();
+-  ASSERT_NE(reinterpret_cast<MinidumpContext*>(NULL), md_context);
++  ASSERT_NE(nullptr, md_context);
+ 
+   MinidumpMemoryRegion* md_stack = md_thread->GetMemory();
+-  ASSERT_EQ(reinterpret_cast<MinidumpMemoryRegion*>(NULL), md_stack);
++  ASSERT_EQ(nullptr, md_stack);
+ }
+ 
+ TEST(Dump, ThreadMissingContext) {
+@@ -431,10 +431,10 @@
+   ASSERT_TRUE(md_thread->GetThreadID(&thread_id));
+   ASSERT_EQ(0xa898f11bU, thread_id);
+   MinidumpMemoryRegion* md_stack = md_thread->GetMemory();
+-  ASSERT_NE(reinterpret_cast<MinidumpMemoryRegion*>(NULL), md_stack);
++  ASSERT_NE(nullptr, md_stack);
+ 
+   MinidumpContext* md_context = md_thread->GetContext();
+-  ASSERT_EQ(reinterpret_cast<MinidumpContext*>(NULL), md_context);
++  ASSERT_EQ(nullptr, md_context);
+ }
+ 
+ TEST(Dump, OneUnloadedModule) {

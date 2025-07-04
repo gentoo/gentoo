@@ -5,7 +5,7 @@ EAPI=8
 
 inherit flag-o-matic toolchain-funcs
 
-# Columbia University only uses the third component, e.g. cku211.tar.gz for
+# Kermit only uses the third component, e.g. cku211.tar.gz for
 # what we would call 8.0.211. 4-5 are for betas if used.
 MY_P="cku$(ver_cut 3-5)"
 MY_P=${MY_P/_/-}

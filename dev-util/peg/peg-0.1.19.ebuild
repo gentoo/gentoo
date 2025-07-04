@@ -32,6 +32,13 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}"
 }
 
+src_test() {
+	emake check test \
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
+}
+
 src_install() {
 	emake \
 		ROOT="${D}" \
@@ -40,11 +47,4 @@ src_install() {
 	# "reinstall" manpages to a proper location
 	rm -r "${D}/usr/man" || die
 	doman src/${PN}.1
-}
-
-src_test() {
-	emake check test \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}"
 }

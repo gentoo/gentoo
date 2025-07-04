@@ -8,4 +8,7 @@
 		<flag name="lvm">Enable support for chroots using LVM snapshots</flag>
 		<flag name="zfs">Enable support for chroots using ZFS shapshots/clones</flag>
 	</use>
+	<upstream>
+		<remote-id type="codeberg">shelter/reschroot</remote-id>
+	</upstream>
 </pkgmetadata>

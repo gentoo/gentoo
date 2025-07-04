@@ -1,0 +1,63 @@
+diff --git a/etc/Makefile.am b/etc/Makefile.am
+index 9b6e752..a33ce8e 100644
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -1,5 +1,5 @@
+ if ADD_SYSTEMD
+-EXTRA_DIST = udevil.conf devmon devmon@.service
++EXTRA_DIST = udevil.conf devmon@.service
+ else
+ EXTRA_DIST = udevil.conf
+ endif
+@@ -11,11 +11,6 @@ install-data-hook:
+ 				$(srcdir)/udevil.conf \
+ 				$(DESTDIR)/$(sysconfdir)/udevil/udevil.conf
+ if ADD_SYSTEMD
+-	test -d $(DESTDIR)/$(sysconfdir)/conf.d || mkdir -p -- \
+-				$(DESTDIR)/$(sysconfdir)/conf.d
+-	test -f $(DESTDIR)/$(sysconfdir)/conf.d/devmon || $(INSTALL_DATA) \
+-				$(srcdir)/systemd/devmon \
+-				$(DESTDIR)/$(sysconfdir)/conf.d/devmon
+ 	test -d $(DESTDIR)/$(libdir)/systemd/system || \
+ 				mkdir -p -- $(DESTDIR)/$(libdir)/systemd/system
+ 	$(INSTALL_DATA) $(srcdir)/systemd/devmon@.service \
+diff --git a/etc/Makefile.in b/etc/Makefile.in
+index bf2b19b..4489e30 100644
+--- a/etc/Makefile.in
++++ b/etc/Makefile.in
+@@ -262,7 +262,7 @@ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ @ADD_SYSTEMD_FALSE@EXTRA_DIST = udevil.conf
+-@ADD_SYSTEMD_TRUE@EXTRA_DIST = udevil.conf devmon devmon@.service
++@ADD_SYSTEMD_TRUE@EXTRA_DIST = udevil.conf devmon@.service
+ all: all-am
+ 
+ .SUFFIXES:
+@@ -462,11 +462,6 @@ install-data-hook:
+ 	test -f $(DESTDIR)/$(sysconfdir)/udevil/udevil.conf || $(INSTALL_DATA) \
+ 				$(srcdir)/udevil.conf \
+ 				$(DESTDIR)/$(sysconfdir)/udevil/udevil.conf
+-@ADD_SYSTEMD_TRUE@	test -d $(DESTDIR)/$(sysconfdir)/conf.d || mkdir -p -- \
+-@ADD_SYSTEMD_TRUE@				$(DESTDIR)/$(sysconfdir)/conf.d
+-@ADD_SYSTEMD_TRUE@	test -f $(DESTDIR)/$(sysconfdir)/conf.d/devmon || $(INSTALL_DATA) \
+-@ADD_SYSTEMD_TRUE@				$(srcdir)/systemd/devmon \
+-@ADD_SYSTEMD_TRUE@				$(DESTDIR)/$(sysconfdir)/conf.d/devmon
+ @ADD_SYSTEMD_TRUE@	test -d $(DESTDIR)/$(libdir)/systemd/system || \
+ @ADD_SYSTEMD_TRUE@				mkdir -p -- $(DESTDIR)/$(libdir)/systemd/system
+ @ADD_SYSTEMD_TRUE@	$(INSTALL_DATA) $(srcdir)/systemd/devmon@.service \
+diff --git a/etc/systemd/devmon@.service b/etc/systemd/devmon@.service
+index 23ccf87..1d707ce 100644
+--- a/etc/systemd/devmon@.service
++++ b/etc/systemd/devmon@.service
+@@ -6,8 +6,7 @@ Type=simple
+ User=%i
+ # Set DISPLAY for popup dialogs
+ Environment=DISPLAY=:0
+-EnvironmentFile=/etc/conf.d/devmon
+-ExecStart=/usr/bin/devmon $ARGS 
++ExecStart=/usr/bin/devmon
+ 
+ [Install]
+ WantedBy=multi-user.target
+

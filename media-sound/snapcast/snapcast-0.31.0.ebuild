@@ -11,7 +11,7 @@ SRC_URI="https://github.com/badaix/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~riscv x86"
 IUSE="+client +expat +flac jack +opus +server test tremor +vorbis +zeroconf"
 REQUIRED_USE="|| ( server client )"
 RESTRICT="!test? ( test )"
@@ -44,6 +44,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.31.0-boost-1.88.patch
 	"${FILESDIR}"/${PN}-0.31.0-drop-lint.patch
+	"${FILESDIR}"/${PN}-0.31.0-boost-1.88-fixup.patch
 )
 
 src_configure() {

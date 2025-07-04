@@ -9,6 +9,6 @@
 	<flag name="games">Install Gnome Games</flag>
 	<flag name="share">Install the <pkg>gnome-extra/gnome-user-share</pkg> personal file sharing tool</flag>
 	<flag name="shotwell">Install the <pkg>media-gfx/shotwell</pkg> photo manager</flag>
-	<flag name="tracker">Install the <pkg>app-misc/tracker</pkg> indexer and the GNOME packages that require it</flag>
+	<flag name="tracker">Install the <pkg>app-misc/tinysparql</pkg> indexer and the GNOME packages that require it</flag>
 </use>
 </pkgmetadata>

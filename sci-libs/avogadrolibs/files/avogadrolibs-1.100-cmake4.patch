@@ -1,0 +1,38 @@
+PR merged
+https://github.com/OpenChemistry/avogadrolibs/pull/2022.patch
+From 7edee1178f5cd95c3b81964ce39d529b413dbe22 Mon Sep 17 00:00:00 2001
+From: Eisuke Kawashima <e-kwsm@users.noreply.github.com>
+Date: Thu, 5 Jun 2025 09:58:13 +0900
+Subject: [PATCH] build: bump cmake_minimum_required
+
+CMake 4 drops support of 3.4 or earlier
+
+note: FindPython is introduced in 3.12
+https://cmake.org/cmake/help/v3.12/release/3.12.html#modules
+
+Signed-off-by: Eisuke Kawashima <e-kwsm@users.noreply.github.com>
+---
+ python/CMakeLists.txt                  | 2 +-
+ thirdparty/tinycolormap/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
+index 2cb3d0e17b..ab6b073746 100644
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
+ 
+ if (NOT TARGET Avogadro::Core)
+   find_package(AvogadroLibs REQUIRED)
+diff --git a/thirdparty/tinycolormap/CMakeLists.txt b/thirdparty/tinycolormap/CMakeLists.txt
+index ee88bf4878..d4c9096175 100644
+--- a/thirdparty/tinycolormap/CMakeLists.txt
++++ b/thirdparty/tinycolormap/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(tinycolormap CXX)
+ set(CMAKE_CXX_STANDARD 11)

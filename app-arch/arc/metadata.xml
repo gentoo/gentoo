@@ -3,6 +3,7 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <upstream>
+    <remote-id type="github">hyc/arc</remote-id>
     <remote-id type="sourceforge">arc</remote-id>
   </upstream>
 </pkgmetadata>

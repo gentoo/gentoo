@@ -9,10 +9,6 @@
 		<email>navi@vlhl.dev</email>
 		<name>Anna Figueiredo Gomes</name>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>matoro_gentoo@matoro.tk</email>
-		<name>Matoro Mahri</name>
-	</maintainer>
 	<longdescription>
 		The Rust Standard Library is the foundation of portable Rust software,
 		a set of minimal and battle-tested shared abstractions for the broader Rust ecosystem.

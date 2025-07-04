@@ -1,0 +1,10 @@
+# https://bugs.gentoo.org/959269#c4
+# make the test compatible with lua-5.1
+--- a/unit-tests/check-expect.lua
++++ b/unit-tests/check-expect.lua
+@@ -187,4 +187,4 @@ end
+ for _, fname in ipairs(arg) do
+   check_mk(fname)
+ end
+-os.exit(not had_errors)
++os.exit((not had_errors) and 0 or 1)

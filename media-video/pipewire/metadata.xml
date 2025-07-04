@@ -26,7 +26,7 @@
 		<flag name="loudness">Enable loudness normalisation according to the EBU R128 standard using <pkg>media-libs/libebur128</pkg></flag>
 		<flag name="lv2">Allow loading LV2 plugins via <pkg>media-libs/lv2</pkg></flag>
 		<flag name="modemmanager">Combined with USE=bluetooth, allows PipeWire to perform telephony on mobile devices.</flag>
-		<flag name="pipewire-alsa">Replace PulseAudio's ALSA plugin with PipeWire's plugin</flag>
+		<flag name="pipewire-alsa">Install ALSA plugin, similar to <pkg>media-plugins/alsa-plugins</pkg>'s USE=pulseaudio.</flag>
 		<flag name="roc">Enable roc support for real-time audio streaming over the network, using <pkg>media-libs/roc-toolkit</pkg>. See https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Network#roc</flag>
 		<flag name="ssl">Enable raop-sink support (needs <pkg>dev-libs/openssl</pkg>)</flag>
 		<flag name="system-service">Install systemd unit files for running as a system service. Not recommended.</flag>

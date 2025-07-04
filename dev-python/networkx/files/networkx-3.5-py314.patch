@@ -1,0 +1,53 @@
+From 5487e923e39f526fe12a74d7399e5153f06698a4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 3 Jun 2025 09:54:33 +0200
+Subject: [PATCH] Use type checks in `generators/lattice.py` for Py3.14 compat
+
+Replace the `TypeError` catching in `networkx/generators/lattice.py`
+with explicit type checks to make the code more reliable and fix it for
+Python 3.14.  Catching the exception immediately does not work
+in the second instance, because the code is constructing a generator,
+and apparently Python 3.14 does not evaluate the `p in periodic`
+expression until the generator is actually iterated over.  Given that
+the function expects either an iterable or a `bool`, explicitly checking
+for `bool` should both be more readable and more reliable.
+
+The alternative would be to replace the generator with a list
+comprehension that would be evaluated immediately.  However,
+the explicit type check seems to be a cleaner solution to the problem.
+---
+ networkx/generators/lattice.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/networkx/generators/lattice.py b/networkx/generators/lattice.py
+index 95e520d2c..3b0900ea1 100644
+--- a/networkx/generators/lattice.py
++++ b/networkx/generators/lattice.py
+@@ -67,10 +67,10 @@ def grid_2d_graph(m, n, periodic=False, create_using=None):
+     G.add_edges_from(((i, j), (pi, j)) for pi, i in pairwise(rows) for j in cols)
+     G.add_edges_from(((i, j), (i, pj)) for i in rows for pj, j in pairwise(cols))
+ 
+-    try:
+-        periodic_r, periodic_c = periodic
+-    except TypeError:
++    if isinstance(periodic, bool):
+         periodic_r = periodic_c = periodic
++    else:
++        periodic_r, periodic_c = periodic
+ 
+     if periodic_r and len(rows) > 2:
+         first = rows[0]
+@@ -129,10 +129,10 @@ def grid_graph(dim, periodic=False):
+     if not dim:
+         return empty_graph(0)
+ 
+-    try:
+-        func = (cycle_graph if p else path_graph for p in periodic)
+-    except TypeError:
++    if isinstance(periodic, bool):
+         func = repeat(cycle_graph if periodic else path_graph)
++    else:
++        func = (cycle_graph if p else path_graph for p in periodic)
+ 
+     G = next(func)(dim[0])
+     for current_dim in dim[1:]:

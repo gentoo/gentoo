@@ -25,7 +25,7 @@ else
 	SRC_URI="$(rust_all_arch_uris "${PV}")
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/rust-}/2025-05-15/rust-src-${PV}.tar.xz )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 DESCRIPTION="Systems programming language from Mozilla"

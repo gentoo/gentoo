@@ -33,7 +33,7 @@ media-video/pipewire ieee1394
 # Sam James <sam@gentoo.org> (2021-10-25)
 # Various unstable dependencies:
 # gnome-base/nautilus
-# app-misc/tracker
+# app-misc/tinysparql
 # bug #758815
 app-cdr/brasero nautilus tracker
 

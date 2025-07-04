@@ -1,0 +1,34 @@
+https://gitlab.com/procps-ng/procps/-/merge_requests/256
+
+From 2cc229991d2c89c93d58d7ad4bc30fd272d8e2df Mon Sep 17 00:00:00 2001
+Message-ID: <2cc229991d2c89c93d58d7ad4bc30fd272d8e2df.1750118248.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Tue, 17 Jun 2025 00:56:23 +0100
+Subject: [PATCH] testsuite: only test freetop if we built it
+
+It's not built if configured with --without-ncurses. Similar to
+aa85fb458a295135d8283cd5ffacfe8198cdae22.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+--- a/testsuite/Makefile.am
++++ b/testsuite/Makefile.am
+@@ -21,7 +21,7 @@ DEJATOOL += \
+ 
+ if !CYGWIN
+ if WITH_NCURSES
+-DEJATOOL += slabtop
++DEJATOOL += slabtop hugetop
+ endif
+ 
+ DEJATOOL += sysctl
+@@ -37,7 +37,6 @@ endif
+ 
+ DEJATOOL += \
+ 	free \
+-	hugetop \
+ 	lib \
+ 	pgrep \
+ 	pkill \
+-- 
+2.50.0
+

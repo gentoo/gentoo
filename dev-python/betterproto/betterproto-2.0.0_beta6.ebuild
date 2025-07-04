@@ -34,7 +34,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/black-23.1.0[${PYTHON_USEDEP}]
@@ -50,6 +50,7 @@ BDEPEND="
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/tomlkit[${PYTHON_USEDEP}]
 		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+		dev-python/pytest-forked[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
@@ -67,12 +68,15 @@ python_test() {
 		tests/inputs/oneof/test_oneof.py
 	)
 	local EPYTEST_DESELECT=(
-		# TODO: ordering issue?
+		# TODO: new protobuf?
 		"tests/test_inputs.py::test_binary_compatibility[map]"
+		"tests/test_inputs.py::test_binary_compatibility[mapmessage]"
 		# pydantic
 		tests/inputs/bool/test_bool.py::test_pydantic_no_value
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p asyncio -p pytest_mock
+	# --forked to workaround protobuf segfaults
+	# https://github.com/protocolbuffers/protobuf/issues/22067
+	epytest -p asyncio -p pytest_mock -p pytest_forked --forked
 }

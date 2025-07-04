@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_1{0..2} )
+PYTHON_COMPAT=( python3_1{1..2} )
 
 DISTUTILS_USE_PEP517=setuptools
 inherit systemd distutils-r1
@@ -108,7 +108,6 @@ BDEPEND="
 		>=dev-python/pyopenssl-23.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-7.2.0[${PYTHON_USEDEP}]
 		>=dev-python/pytest-salt-factories-1.0.0_rc29[${PYTHON_USEDEP}]
-		dev-python/pytest-tempdir[${PYTHON_USEDEP}]
 		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
 		dev-python/pytest-subtests[${PYTHON_USEDEP}]
 		dev-python/pytest-shell-utilities[${PYTHON_USEDEP}]

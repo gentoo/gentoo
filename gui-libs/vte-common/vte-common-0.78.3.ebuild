@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 GNOME_ORG_MODULE="vte"
 
 inherit flag-o-matic gnome.org meson python-any-r1
@@ -31,9 +31,6 @@ DEPEND="
 	systemd? ( >=sys-apps/systemd-220:= )
 	>=app-arch/lz4-1.9
 	x11-libs/pango
-"
-RDEPEND="
-	!<x11-libs/vte-0.70.0:2.91
 "
 BDEPEND="
 	${PYTHON_DEPS}

@@ -32,11 +32,7 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		virtual/perl-Data-Dumper
-		virtual/perl-File-Temp
-		virtual/perl-IO
 		>=virtual/perl-Test-Simple-0.88
-		virtual/perl-XSLoader
 	)
 "
 

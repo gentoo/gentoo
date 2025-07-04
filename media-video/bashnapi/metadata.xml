@@ -6,6 +6,6 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">bashnapi</remote-id>
+		<remote-id type="gitlab">hesperos/napi</remote-id>
 	</upstream>
 </pkgmetadata>

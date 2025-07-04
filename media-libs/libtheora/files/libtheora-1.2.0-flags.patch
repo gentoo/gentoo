@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -202,8 +202,8 @@ else
+         case $host in 
+         *)
+                 DEBUG="-g -Wall -Werror=uninitialized -Winit-self -Wno-parentheses -DDEBUG -D__NO_MATH_INLINES"
+-                CFLAGS="-Wall -Werror=uninitialized -Winit-self -Wno-parentheses -O3 -fomit-frame-pointer -finline-functions -funroll-loops"
+-                PROFILE="-Wall -Werror=uninitialized -Winit-self -Wno-parentheses -pg -g -O3 -fno-inline-functions -DDEBUG";;
++                CFLAGS="-Wall -Werror=uninitialized -Winit-self -Wno-parentheses"
++                PROFILE="-Wall -Werror=uninitialized -Winit-self -Wno-parentheses -pg -g -fno-inline-functions -DDEBUG";;
+         esac
+ fi
+ CFLAGS="$CFLAGS $cflags_save"

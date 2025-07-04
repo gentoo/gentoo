@@ -1,0 +1,66 @@
+https://gitlab.gnome.org/GNOME/libxml2/-/commit/5700d989cc18889e1601c651ad69a41af8b32073
+https://gitlab.gnome.org/GNOME/libxml2/-/commit/d3e33dc214276498e73b61188be02b2863c9670a
+
+From 5700d989cc18889e1601c651ad69a41af8b32073 Mon Sep 17 00:00:00 2001
+From: Markus Rickert <markus.rickert@uni-bamberg.de>
+Date: Wed, 18 Jun 2025 13:48:55 +0200
+Subject: [PATCH] Fix CMake iconv handling after change to private dependency
+
+---
+ CMakeLists.txt          | 2 +-
+ libxml2-config.cmake.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e136f2167..b952d7bfa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -354,7 +354,7 @@ if(WIN32)
+ endif()
+ 
+ if(LIBXML2_WITH_ICONV)
+-    target_link_libraries(LibXml2 PUBLIC Iconv::Iconv)
++    target_link_libraries(LibXml2 PRIVATE Iconv::Iconv)
+     if(NOT Iconv_IS_BUILT_IN)
+         set(ICONV_LIBS "-liconv")
+     endif()
+diff --git a/libxml2-config.cmake.in b/libxml2-config.cmake.in
+index e040a759b..3ce7ef43f 100644
+--- a/libxml2-config.cmake.in
++++ b/libxml2-config.cmake.in
+@@ -56,7 +56,7 @@ if(NOT LIBXML2_SHARED)
+     if(LIBXML2_WITH_ICONV)
+         find_dependency(Iconv)
+         list(APPEND LIBXML2_LIBRARIES    ${Iconv_LIBRARIES})
+-        list(APPEND LIBXML2_INTERFACE_LINK_LIBRARIES "Iconv::Iconv")
++        list(APPEND LIBXML2_INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:Iconv::Iconv>")
+         if(NOT Iconv_FOUND)
+             set(${CMAKE_FIND_PACKAGE_NAME}_FOUND FALSE)
+             set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE "Iconv dependency was not found")
+-- 
+GitLab
+
+From d3e33dc214276498e73b61188be02b2863c9670a Mon Sep 17 00:00:00 2001
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Fri, 20 Jun 2025 11:20:34 +0200
+Subject: [PATCH] cmake: Add missing endif() in libxml2-config.cmake.in
+
+Regressed with 28ccdaf9.
+---
+ libxml2-config.cmake.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libxml2-config.cmake.in b/libxml2-config.cmake.in
+index 3ce7ef43f..bd971e081 100644
+--- a/libxml2-config.cmake.in
++++ b/libxml2-config.cmake.in
+@@ -119,6 +119,7 @@ if(NOT LIBXML2_SHARED)
+         if(LIBXML2_WITH_HTTP)
+             list(APPEND LIBXML2_LIBRARIES ws2_32)
+             list(APPEND LIBXML2_INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:ws2_32>")
++        endif()
+     endif()
+ endif()
+ 
+-- 
+GitLab

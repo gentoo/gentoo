@@ -1,5 +1,5 @@
 # Copyright 1999-2020 Gentoo Authors
-# Distributed under the terms of the GNU General Public License, v2
+# Distributed under the terms of the GNU General Public License v2
 
 # Anthony G. Basile <blueness@gentoo.org> (2020-09-06)
 # The patch added for 5.39-r1 breaks on musl i686

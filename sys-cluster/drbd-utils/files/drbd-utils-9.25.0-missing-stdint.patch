@@ -33,3 +33,13 @@ Signed-off-by: Sam James <sam@gentoo.org>
  #include <string>
  
  class DisplayId
+--- a/user/drbdmon/terminal/DisplayStyleCollection.h
++++ b/user/drbdmon/terminal/DisplayStyleCollection.h
+@@ -1,6 +1,7 @@
+ #ifndef DISPLAYSTYLECOLLECTION_H
+ #define DISPLAYSTYLECOLLECTION_H
+ 
++#include <stdint.h>
+ #include <new>
+ #include <memory>
+ #include <stdexcept>

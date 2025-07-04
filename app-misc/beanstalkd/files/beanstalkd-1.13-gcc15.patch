@@ -1,0 +1,41 @@
+https://github.com/beanstalkd/beanstalkd/pull/663
+https://bugs.gentoo.org/944304
+
+From f34500b789a970a5e57518fba99a7987f2d38afc Mon Sep 17 00:00:00 2001
+From: Apollon Oikonomopoulos <apoikos@debian.org>
+Date: Mon, 17 Mar 2025 10:37:46 +0200
+Subject: [PATCH] Fix handle_sigterm_pid1() signature
+
+This is a signal handler, so it should accept a signal number as the
+only argument, otherwise GCC 15 fails with the following error:
+
+  main.c: In function 'set_sig_handlers':
+  main.c:75:23: error: assignment to '__sighandler_t' {aka 'void (*)(int)'} from incompatible pointer type 'void (*)(void)' [-Wincompatible-pointer-types]
+     75 |         sa.sa_handler = handle_sigterm_pid1;
+        |                       ^
+  main.c:40:1: note: 'handle_sigterm_pid1' declared here
+     40 | handle_sigterm_pid1()
+        | ^~~~~~~~~~~~~~~~~~~
+  In file included from main.c:3:
+  /usr/include/signal.h:72:16: note: '__sighandler_t' declared here
+     72 | typedef void (*__sighandler_t) (int);
+        |                ^~~~~~~~~~~~~~
+
+See also https://bugs.debian.org/1096364.
+---
+ main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/main.c b/main.c
+index 7e7dc078..20277ff2 100644
+--- a/main.c
++++ b/main.c
+@@ -37,7 +37,7 @@ su(const char *user)
+ }
+ 
+ static void
+-handle_sigterm_pid1()
++handle_sigterm_pid1(int _unused)
+ {
+     exit(143);
+ }

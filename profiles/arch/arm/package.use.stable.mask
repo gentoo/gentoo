@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2025-06-28)
+# It needs gnome-control-center and many more gnome packages to be
+# stabilized before
+gnome-base/gvfs onedrive
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-28)
 # PyQt 6 is not stable here
 >=app-admin/setools-4.5.1 gui test

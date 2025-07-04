@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rocm.eclass
@@ -174,7 +174,7 @@ _rocm_set_globals() {
 				gfx906 gfx908 gfx90a gfx1030
 			)
 			;;
-		6.*|9999)
+		6.[0-3].*)
 			unofficial_amdgpu_targets=(
 				gfx803 gfx900 gfx940 gfx941
 				gfx1010 gfx1011 gfx1012
@@ -182,6 +182,16 @@ _rocm_set_globals() {
 			)
 			official_amdgpu_targets=(
 				gfx906 gfx908 gfx90a gfx942 gfx1030 gfx1100
+			)
+			;;
+		6.*|9999)
+			unofficial_amdgpu_targets=(
+				gfx803 gfx900 gfx906 gfx940 gfx941
+				gfx1010 gfx1011 gfx1012
+				gfx1031 gfx1101 gfx1102 gfx1200 gfx1201
+			)
+			official_amdgpu_targets=(
+				gfx908 gfx90a gfx942 gfx1030 gfx1100
 			)
 			;;
 		*)

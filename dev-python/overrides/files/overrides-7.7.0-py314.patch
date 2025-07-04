@@ -1,0 +1,35 @@
+From 77f006c388ab3a93c88fb8aeb3d2bde20d585682 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 31 May 2025 18:58:45 +0200
+Subject: [PATCH] Fix `ImportError` on Python 3.14 due to missing
+ `typing.ByteString`
+
+Add `typing.ByteString` to `BUILTINS_MAPPING` only when it is present.
+The type has been removed in Python 3.14.
+
+Fixes #127
+---
+ overrides/typing_utils.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/overrides/typing_utils.py b/overrides/typing_utils.py
+index f628d40..15ab796 100644
+--- a/overrides/typing_utils.py
++++ b/overrides/typing_utils.py
+@@ -47,12 +47,15 @@
+     typing.Set: set,
+     typing.Dict: dict,
+     typing.Tuple: tuple,
+-    typing.ByteString: bytes,  # https://docs.python.org/3/library/typing.html#typing.ByteString
+     typing.Callable: collections.abc.Callable,
+     typing.Sequence: collections.abc.Sequence,
+     type(None): None,
+ }
+ 
++if hasattr(typing, "ByteString"):
++    # https://docs.python.org/3/library/typing.html#typing.ByteString
++    BUILTINS_MAPPING[typing.ByteString] = bytes
++
+ STATIC_SUBTYPE_MAPPING: typing.Dict[type, typing.Type] = {
+     io.TextIOWrapper: typing.TextIO,
+     io.TextIOBase: typing.TextIO,

@@ -1,0 +1,29 @@
+https://gitlab.gnome.org/GNOME/balsa/-/issues/96
+https://gitlab.gnome.org/GNOME/balsa/-/commit/d7830018c209de532797d8cc0937c7e8f80a5410
+
+From 60f42713369c3026f74d9211e5bbe7efcb5b8640 Mon Sep 17 00:00:00 2001
+From: Peter Bloomfield <peterbloomfield@bellsouth.net>
+Date: Tue, 4 Mar 2025 10:46:30 +0000
+Subject: [PATCH] balsa-mime-widget-text: Fix "leave" handler
+
+---
+ src/balsa-mime-widget-text.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/src/balsa-mime-widget-text.c b/src/balsa-mime-widget-text.c
+index d65dd2808..159ff9027 100644
+--- a/src/balsa-mime-widget-text.c
++++ b/src/balsa-mime-widget-text.c
+@@ -202,10 +202,6 @@ mwt_controller_motion_cb(GtkEventControllerMotion * motion,
+ 
+ static void
+ mwt_controller_leave_cb(GtkEventControllerMotion * motion,
+-                        gdouble                    x,
+-                        gdouble                    y,
+-                        GdkCrossingMode            mode,
+-                        GdkNotifyType              detail,
+                         gpointer                   user_data)
+ {
+     BalsaMimeWidgetText *mwt = user_data;
+-- 
+GitLab

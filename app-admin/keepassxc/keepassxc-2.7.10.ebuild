@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic xdg
+inherit cmake xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
@@ -81,9 +81,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# https://github.com/keepassxreboot/keepassxc/issues/5801
-	filter-lto
-
 	local -a mycmakeargs=(
 		# Gentoo users enable ccache via e.g. FEATURES=ccache or
 		# other means. We don't want the build system to enable it for us.

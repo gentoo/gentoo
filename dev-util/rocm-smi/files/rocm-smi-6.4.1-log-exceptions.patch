@@ -1,0 +1,16 @@
+Log some more information, not just Exception caught: rsmi_init.
+
+Upstream PR: https://github.com/ROCm/rocm_smi_lib/pull/213#issuecomment-2972588767
+Bug: https://bugs.gentoo.org/957064
+--- a/src/rocm_smi.cc
++++ b/src/rocm_smi.cc
+@@ -485,6 +485,9 @@ rsmi_init(uint64_t flags) {
+   if (smi.ref_count() == 1) {
+     try {
+       smi.Initialize(flags);
++    } catch(const amd::smi::rsmi_exception& e) {
++      smi.Cleanup();
++      throw;
+     } catch(...) {
+       smi.Cleanup();
+       throw amd::smi::rsmi_exception(RSMI_STATUS_INIT_ERROR, __FUNCTION__);

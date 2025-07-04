@@ -1,5 +1,4 @@
-diff --git a/rocprim/include/rocprim/device/config_types.hpp b/rocprim/include/rocprim/device/config_types.hpp
-index 58729b1..7e356da 100644
+This patch allows to HSA_OVERRIDE_GFX_VERSION environment variable (library just crashes otherwise) 
 --- a/rocprim/include/rocprim/device/config_types.hpp
 +++ b/rocprim/include/rocprim/device/config_types.hpp
 @@ -204,16 +204,23 @@ constexpr bool prefix_equals(const char* lhs, const char* rhs, std::size_t n)

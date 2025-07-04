@@ -39,8 +39,7 @@ This variant of the Wine packaging does not include external patchsets
 			but that can be done even with /no-multilib/ profiles.
 
 			This can also be enabled on arm64 to allow running
-			x86 applications, but that requires to manually
-			setup xtajit.dll in the wine prefix for x86 emulation.
+			x86 applications via binary translation.
 		</flag>
 	</use>
 	<upstream>

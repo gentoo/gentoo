@@ -27,7 +27,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-build/meson-1.3.2
-	dev-util/intltool
 	nls? ( sys-devel/gettext )
 "
 

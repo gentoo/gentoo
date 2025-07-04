@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_PN=${PN/lib/}
 MY_P=$(ver_cut 1-4 ${MY_PN}-${PV})
@@ -38,6 +38,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #944370
+	append-cflags -std=gnu17
+
 	econf --enable-mcpplib
 }
 

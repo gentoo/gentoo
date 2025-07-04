@@ -1,5 +1,5 @@
 # Copyright 2004-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
+# Distributed under the terms of the GNU General Public License v2
 
 # These packages must have multilib turned on in order to work sanely.
 sys-devel/gcc multilib

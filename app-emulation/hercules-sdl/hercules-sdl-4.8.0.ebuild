@@ -12,7 +12,7 @@ SRC_URI="https://github.com/SDL-Hercules-390/hyperion/archive/refs/tags/Release_
 S="${WORKDIR}/hyperion-Release_${PV/.0/}"
 LICENSE="QPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 # In theory USE=object-rexx and USE=regina-rexx are not mutually-exclusive.
 # In practice they functionally are as the Gentoo packages conflict, and
 # additionally Hercules only supports calling out to one of them at runtime,

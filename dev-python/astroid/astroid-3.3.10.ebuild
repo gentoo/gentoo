@@ -20,7 +20,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 
 # dev-python/regex isn't available for pypy
 BDEPEND="
@@ -38,13 +38,6 @@ BDEPEND="
 distutils_enable_tests pytest
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
-
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# https://bugs.gentoo.org/951713
-	sed -i -e '/license-files.*Keep in sync/d' pyproject.toml || die
-}
 
 python_test() {
 	local EPYTEST_IGNORE=()

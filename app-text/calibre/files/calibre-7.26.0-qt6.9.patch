@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/957106
+https://github.com/kovidgoyal/calibre/commit/30b66dc452d3c08c7e10cc95498e131348d7bbfb
+
+From 30b66dc452d3c08c7e10cc95498e131348d7bbfb Mon Sep 17 00:00:00 2001
+From: Kovid Goyal <kovid@kovidgoyal.net>
+Date: Sat, 5 Apr 2025 02:59:58 +0530
+Subject: [PATCH] Linux: Fix building with Qt 6.9
+
+---
+ src/calibre/headless/headless_integration.cpp | 6 ++++++
+ src/calibre/headless/headless_integration.h   | 1 -
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/calibre/headless/headless_integration.cpp b/src/calibre/headless/headless_integration.cpp
+index a5dfc869cc66..e96ddeef80fa 100644
+--- a/src/calibre/headless/headless_integration.cpp
++++ b/src/calibre/headless/headless_integration.cpp
+@@ -27,7 +27,13 @@ QT_BEGIN_NAMESPACE
+ 
+ 
+ #ifndef __APPLE__
++#if QT_VERSION < QT_VERSION_CHECK(6, 9, 0)
++#include <QtGui/private/qgenericunixservices_p.h>
+ class GenericUnixServices : public QGenericUnixServices {
++#else
++#include <QtGui/private/qdesktopunixservices_p.h>
++class GenericUnixServices : public QDesktopUnixServices {
++#endif
+     /* We must return desktop environment as UNKNOWN otherwise other parts of
+      * Qt will try to query the nativeInterface() without checking if it exists
+      * leading to a segfault.  For example, defaultHintStyleFromMatch() queries
+diff --git a/src/calibre/headless/headless_integration.h b/src/calibre/headless/headless_integration.h
+index f8705facffe8..604669677da4 100644
+--- a/src/calibre/headless/headless_integration.h
++++ b/src/calibre/headless/headless_integration.h
+@@ -3,7 +3,6 @@
+ #include <qpa/qplatformintegration.h>
+ #include <qpa/qplatformscreen.h>
+ #include <qpa/qplatformservices.h>
+-#include <QtGui/private/qgenericunixservices_p.h>
+ #include <QScopedPointer>
+ 
+ QT_BEGIN_NAMESPACE
+

@@ -20,7 +20,6 @@
     server.
   </longdescription>
   <use>
-    <flag name="blksha1">Use the new optimized SHA1 implementation</flag>
     <flag name="cgi">Install gitweb too</flag>
     <flag name="curl">Support fetching and pushing (requires webdav too) over http:// and https:// protocols</flag>
     <flag name="gpg">Pull in gnupg for signing -- without gnupg, attempts at signing will fail at runtime!</flag>

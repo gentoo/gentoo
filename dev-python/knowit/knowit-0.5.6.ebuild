@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ SRC_URI+=" test? ( https://downloads.sourceforge.net/matroska/test_files/matrosk
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 
 # https://github.com/ratoaq2/knowit/blob/d7135a4797440838bca94e76326fc9d4019d8f9a/README.md?plain=1#L224
 RDEPEND="

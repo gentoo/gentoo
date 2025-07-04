@@ -1,0 +1,28 @@
+https://bugs.gentoo.org/957768
+https://gitlab.gnome.org/GNOME/localsearch/-/commit/4be90dc041e6e83bcffbc8db6f1a17dceaf0c65c
+
+From 4be90dc041e6e83bcffbc8db6f1a17dceaf0c65c Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Sat, 28 Dec 2024 23:52:51 +0100
+Subject: [PATCH] extract: Fix build issue in libav extractor
+
+No individual headers from the SPARQL library should be
+accessed, and it is not necessary either.
+---
+ src/tracker-extract/tracker-extract-libav.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/tracker-extract/tracker-extract-libav.c b/src/tracker-extract/tracker-extract-libav.c
+index b17e4a04e4..f53371574d 100644
+--- a/src/tracker-extract/tracker-extract-libav.c
++++ b/src/tracker-extract/tracker-extract-libav.c
+@@ -21,7 +21,6 @@
+ 
+ #include <glib.h>
+ 
+-#include <libtracker-sparql/tracker-ontologies.h>
+ #include <libtracker-miners-common/tracker-file-utils.h>
+ 
+ #include <libtracker-extract/tracker-extract.h>
+-- 
+GitLab

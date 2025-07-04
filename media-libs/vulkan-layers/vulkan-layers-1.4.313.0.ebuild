@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/vulkan-sdk-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ppc64 ~riscv x86"
 	S="${WORKDIR}"/${MY_PN}-vulkan-sdk-${PV}
 fi
 
@@ -22,7 +22,9 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-ValidationLayers"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="wayland X"
+IUSE="wayland test X"
+# Many segfaults as of 1.4.313.0
+RESTRICT="!test? ( test ) test"
 
 RDEPEND="~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
@@ -40,6 +42,10 @@ DEPEND="${RDEPEND}
 
 QA_SONAME="/usr/lib[^/]*/libVkLayer_khronos_validation.so"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.313.0-tests-no-static.patch
+)
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"
@@ -49,7 +55,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
-		-DBUILD_TESTS=OFF
+		-DBUILD_TESTS=$(usex test)
 	)
 	cmake_src_configure
 }

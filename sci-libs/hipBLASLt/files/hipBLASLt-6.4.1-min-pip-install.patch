@@ -1,0 +1,29 @@
+Dependencies are managed by ebuild.
+--- a/cmake/virtualenv.cmake
++++ b/cmake/virtualenv.cmake
+@@ -27,14 +27,6 @@ endfunction()
+ 
+ function(virtualenv_install)
+     virtualenv_create()
+-    execute_process(
+-      COMMAND ${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install --upgrade pip
+-      COMMAND_ECHO STDOUT
+-    )
+-    execute_process(
+-      COMMAND ${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install --upgrade setuptools
+-      COMMAND_ECHO STDOUT
+-    )
+     execute_process(
+       COMMAND ${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install ${ARGN}
+       COMMAND_ECHO STDOUT
+--- a/tensilelite/setup.py
++++ b/tensilelite/setup.py
+@@ -51,7 +51,7 @@ setup(
+   url="https://github.com/RadeonOpenCompute/Tensile",
+   author="Advanced Micro Devices",
+   license="MIT",
+-  install_requires=readRequirementsFromTxt(),
++  install_requires=[],
+   python_requires='>=3.5',
+   packages=["Tensile"],
+   package_data={ "Tensile": ["Tensile/cmake/*"] },

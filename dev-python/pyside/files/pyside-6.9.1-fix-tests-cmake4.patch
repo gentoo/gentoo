@@ -1,0 +1,53 @@
+https://codereview.qt-project.org/c/pyside/pyside-setup/+/647549
+https://github.com/pyside/pyside-setup/commit/03de4672557d80b34f9c9ef1e654a4117c621e65
+
+From 03de4672557d80b34f9c9ef1e654a4117c621e65 Mon Sep 17 00:00:00 2001
+From: Christian Tismer <tismer@stackless.com>
+Date: Tue, 20 May 2025 15:25:38 +0200
+Subject: [PATCH] testing: fix finding tests on new cmake versions
+
+By chance, cmake was installed by homebrew without any restrictions,
+and so version 4.0.2 happened to be installed which does no longer
+use the option "--force-new-ctest-process". Changed the analysis to
+look for "/bin/ctest" instead. This should work for a long time.
+
+Task-number: PYSIDE-2221
+Change-Id: Idc16063953ba82d4053cc60a7e0ef11b71b7b571
+Pick-to: 6.9
+Reviewed-by: Friedemann Kleint <Friedemann.Kleint@qt.io>
+--- a/testing/runner.py
++++ b/testing/runner.py
+@@ -20,7 +20,7 @@
+ build_scripts_dir = os.path.abspath(os.path.join(this_dir, ".."))
+ 
+ sys.path.append(build_scripts_dir)
+-from build_scripts.utils import detect_clang
++from build_scripts.utils import detect_clang    # noqa: E402
+ 
+ 
+ class TestRunner:
+@@ -78,11 +78,12 @@ def _find_ctest_in_file(self, file_name):
+         Helper for _find_ctest() that finds the ctest binary in a build
+         system file (ninja, Makefile).
+         """
+-        look_for = "--force-new-ctest-process"
++        # Looking for a command ending this way:
++        look_for = "\\ctest.exe" if "win32" in sys.platform else "/ctest"
+         line = None
+         with open(file_name) as makefile:
+             for line in makefile:
+-                if look_for in line:
++                if look_for in line and line.lstrip().startswith("COMMAND"):
+                     break
+             else:
+                 # We have probably forgotten to build the tests.
+@@ -98,7 +99,8 @@ def _find_ctest_in_file(self, file_name):
+                 raise RuntimeError(msg)
+         # the ctest program is on the left to look_for
+         assert line, f"Did not find {look_for}"
+-        ctest = re.search(r'(\S+|"([^"]+)")\s+' + look_for, line).groups()
++        look = re.escape(look_for)
++        ctest = re.search(fr'(\S+{look}|"([^"]+{look})")', line).groups()
+         return ctest[1] or ctest[0]
+ 
+     def _find_ctest(self):

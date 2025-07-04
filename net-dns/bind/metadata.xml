@@ -12,5 +12,6 @@
 		<flag name="fixed-rrset">Enables fixed rrset-order option</flag>
 		<flag name="gssapi">Enable gssapi support</flag>
 		<flag name="lmdb">Enable LMDB support to store configuration for 'addzone' zones</flag>
+		<flag name="systemtap">Build support for profiling and tracing using <pkg>dev-debug/systemtap</pkg></flag>
 	</use>
 </pkgmetadata>

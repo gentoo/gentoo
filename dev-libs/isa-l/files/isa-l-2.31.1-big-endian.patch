@@ -1,0 +1,146 @@
+From 633add1b569fe927bace3960d7c84ed9c1b38bb9 Mon Sep 17 00:00:00 2001
+From: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+Date: Fri, 24 Jan 2025 12:51:48 +0000
+Subject: [PATCH] igzip: fix header construction in Big Endian systems
+
+When a file contains a number of repeated '0x00' or '0xff'
+bytes, the block header is copied from a precomputed header,
+which only worked for Little-Endian systems.
+
+Fixes #311.
+
+Signed-off-by: Pablo de Lara <pablo.de.lara.guarch@intel.com>
+---
+ igzip/repeated_char_result.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/igzip/repeated_char_result.h b/igzip/repeated_char_result.h
+index c06d01d7..c90d529f 100644
+--- a/igzip/repeated_char_result.h
++++ b/igzip/repeated_char_result.h
+@@ -59,8 +59,13 @@
+ /* Headers for constant 0x00 and 0xFF blocks
+  * This also contains the first literal character. */
+ const uint32_t repeated_char_header[2][5] = {
++#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+         { 0x0121c0ec, 0xc30c0000, 0x7d57fab0, 0x49270938 }, /* Deflate header for 0x00 */
+         { 0x0121c0ec, 0xc30c0000, 0x7baaff30, 0x49270938 }  /* Deflate header for 0xFF */
++#else
++        { 0xecc02101, 0x00000cc3, 0xb0fa577d, 0x38092749 }, /* Deflate header for 0x00 */
++        { 0xecc02101, 0x00000cc3, 0x30ffaa7b, 0x38092749 }, /* Deflate header for 0xFF */
++#endif
+ 
+ };
+ 
+From e3c2d243a11ae31a19f090206cbe90c84b12ceb1 Mon Sep 17 00:00:00 2001
+From: Mattias Ellert <mattias.ellert@physics.uu.se>
+Date: Sat, 18 Jan 2025 19:36:44 +0100
+Subject: [PATCH] Address compiler warnings on ppc64le and s390x
+
+igzip/igzip_icf_body.c:7:1: warning: type of 'gen_icf_map_lh1' does not match original declaration [-Wlto-type-mismatch]
+    7 | gen_icf_map_lh1(struct isal_zstream *, struct deflate_icf *, uint32_t);
+      | ^
+igzip/igzip_base_aliases.c:177:1: note: return value type mismatch
+  177 | gen_icf_map_lh1(struct isal_zstream *stream, struct deflate_icf *matches_icf_lookup,
+      | ^
+igzip/igzip_base_aliases.c:177:1: note: type 'void' should match type 'uint64_t'
+igzip/igzip_base_aliases.c:177:1: note: 'gen_icf_map_lh1' was previously declared here
+igzip/igzip_base_aliases.c:177:1: note: code may be misoptimized unless '-fno-strict-aliasing' is used
+igzip/igzip_icf_body.c:9:1: warning: type of 'set_long_icf_fg' does not match original declaration [-Wlto-type-mismatch]
+    9 | set_long_icf_fg(uint8_t *, uint64_t, uint64_t, struct deflate_icf *);
+      | ^
+igzip/igzip_base_aliases.c:170:1: note: type mismatch in parameter 2
+  170 | set_long_icf_fg(uint8_t *next_in, uint8_t *end_in, struct deflate_icf *match_lookup,
+      | ^
+igzip/igzip_base_aliases.c:170:1: note: 'set_long_icf_fg' was previously declared here
+igzip/igzip_base_aliases.c:170:1: note: code may be misoptimized unless '-fno-strict-aliasing' is used
+igzip/igzip_base_aliases.c:62:1: warning: type of 'set_long_icf_fg_base' does not match original declaration [-Wlto-type-mismatch]
+   62 | set_long_icf_fg_base(uint8_t *next_in, uint8_t *end_in, struct deflate_icf *match_lookup,
+      | ^
+igzip/igzip_icf_body.c:34:1: note: type mismatch in parameter 2
+   34 | set_long_icf_fg_base(uint8_t *next_in, uint64_t processed, uint64_t input_size,
+      | ^
+igzip/igzip_icf_body.c:34:1: note: 'set_long_icf_fg_base' was previously declared here
+igzip/igzip_icf_body.c:34:1: note: code may be misoptimized unless '-fno-strict-aliasing' is used
+igzip/igzip_base_aliases.c:54:1: warning: type of 'adler32_base' does not match original declaration [-Wlto-type-mismatch]
+   54 | adler32_base(uint32_t init, const unsigned char *buf, uint64_t len);
+      | ^
+igzip/adler32_base.c:34:1: note: type mismatch in parameter 3
+   34 | adler32_base(uint32_t adler32, uint8_t *start, uint32_t length)
+      | ^
+igzip/adler32_base.c:34:1: note: type 'uint32_t' should match type 'uint64_t'
+igzip/adler32_base.c:34:1: note: 'adler32_base' was previously declared here
+igzip/adler32_base.c:34:1: note: code may be misoptimized unless '-fno-strict-aliasing' is used
+
+Signed-off-by: Mattias Ellert <mattias.ellert@physics.uu.se>
+---
+ igzip/adler32_base.c       |  2 +-
+ igzip/igzip_base_aliases.c | 17 +++++++++--------
+ igzip/igzip_icf_body.c     |  2 +-
+ 3 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/igzip/adler32_base.c b/igzip/adler32_base.c
+index 504b8b12..bc0818ab 100644
+--- a/igzip/adler32_base.c
++++ b/igzip/adler32_base.c
+@@ -31,7 +31,7 @@
+ #include "igzip_checksums.h"
+ 
+ uint32_t
+-adler32_base(uint32_t adler32, uint8_t *start, uint32_t length)
++adler32_base(uint32_t adler32, uint8_t *start, uint64_t length)
+ {
+         uint8_t *end, *next = start;
+         uint64_t A, B;
+diff --git a/igzip/igzip_base_aliases.c b/igzip/igzip_base_aliases.c
+index 93240b3f..7de2e40f 100644
+--- a/igzip/igzip_base_aliases.c
++++ b/igzip/igzip_base_aliases.c
+@@ -59,9 +59,10 @@ extern void
+ isal_deflate_hash_base(uint16_t *, uint32_t, uint32_t, uint8_t *, uint32_t);
+ 
+ void
+-set_long_icf_fg_base(uint8_t *next_in, uint8_t *end_in, struct deflate_icf *match_lookup,
+-                     struct level_buf *level_buf);
+-void
++set_long_icf_fg_base(uint8_t *next_in, uint64_t processed, uint64_t input_size,
++                     struct deflate_icf *match_lookup);
++
++uint64_t
+ gen_icf_map_h1_base(struct isal_zstream *stream, struct deflate_icf *matches_icf_lookup,
+                     uint64_t input_size);
+ 
+@@ -167,15 +168,15 @@ isal_deflate_hash_lvl3(uint16_t *hash_table, uint32_t hash_mask, uint32_t curren
+ }
+ 
+ void
+-set_long_icf_fg(uint8_t *next_in, uint8_t *end_in, struct deflate_icf *match_lookup,
+-                struct level_buf *level_buf)
++set_long_icf_fg(uint8_t *next_in, uint64_t processed, uint64_t input_size,
++                struct deflate_icf *match_lookup)
+ {
+-        set_long_icf_fg_base(next_in, end_in, match_lookup, level_buf);
++        set_long_icf_fg_base(next_in, processed, input_size, match_lookup);
+ }
+ 
+-void
++uint64_t
+ gen_icf_map_lh1(struct isal_zstream *stream, struct deflate_icf *matches_icf_lookup,
+                 uint64_t input_size)
+ {
+-        gen_icf_map_h1_base(stream, matches_icf_lookup, input_size);
++        return gen_icf_map_h1_base(stream, matches_icf_lookup, input_size);
+ }
+diff --git a/igzip/igzip_icf_body.c b/igzip/igzip_icf_body.c
+index faa4156f..e3f8bbed 100644
+--- a/igzip/igzip_icf_body.c
++++ b/igzip/igzip_icf_body.c
+@@ -4,7 +4,7 @@
+ #include "igzip_level_buf_structs.h"
+ 
+ extern uint64_t
+-gen_icf_map_lh1(struct isal_zstream *, struct deflate_icf *, uint32_t);
++gen_icf_map_lh1(struct isal_zstream *, struct deflate_icf *, uint64_t);
+ extern void
+ set_long_icf_fg(uint8_t *, uint64_t, uint64_t, struct deflate_icf *);
+ extern void

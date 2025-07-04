@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,6 +52,10 @@ BDEPEND="
 		kde-frameworks/extra-cmake-modules
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc16.patch
+)
 
 src_configure() {
 	if use X && [[ $(tc-get-cxx-stdlib) == libc++ ]]; then

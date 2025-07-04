@@ -1,0 +1,139 @@
+From 063812ffd37edb99e14f7a3d224fbf999a506252 Mon Sep 17 00:00:00 2001
+From: Johannes Lorenz <j.git@lorenz-ho.me>
+Date: Fri, 2 May 2025 13:59:50 +0200
+Subject: [PATCH] Use GNUInstallDirs for flexible `bin`, `lib` and `doc`
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,21 +210,21 @@ add_subdirectory(icons)
+ 
+ include(GNUInstallDirs)
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/
+-        DESTINATION share/doc/${PROJECT_NAME} FILES_MATCHING PATTERN "*.html")
++        DESTINATION ${CMAKE_INSTALL_DOCDIR} FILES_MATCHING PATTERN "*.html")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/
+-        DESTINATION share/doc/${PROJECT_NAME}/images FILES_MATCHING PATTERN "*.png")
++        DESTINATION ${CMAKE_INSTALL_DOCDIR}/images FILES_MATCHING PATTERN "*.png")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/
+-        DESTINATION share/doc/${PROJECT_NAME}/images FILES_MATCHING PATTERN "*.jpg")
++        DESTINATION ${CMAKE_INSTALL_DOCDIR}/images FILES_MATCHING PATTERN "*.jpg")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/prettyPhoto/dark_rounded/
+-        DESTINATION share/doc/${PROJECT_NAME}/images/prettyPhoto/dark_rounded)
++        DESTINATION ${CMAKE_INSTALL_DOCDIR}/images/prettyPhoto/dark_rounded)
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/images/icons/
+-        DESTINATION share/doc/${PROJECT_NAME}/images/icons)
++        DESTINATION ${CMAKE_INSTALL_DOCDIR}/images/icons)
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/scripts
+-        DESTINATION share/doc/${PROJECT_NAME} FILES_MATCHING PATTERN "*.css")
++        DESTINATION ${CMAKE_INSTALL_DOCDIR} FILES_MATCHING PATTERN "*.css")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/doc/manuals/scripts/
+-        DESTINATION share/doc/${PROJECT_NAME}/scripts FILES_MATCHING PATTERN "*.js")
++        DESTINATION ${CMAKE_INSTALL_DOCDIR}/scripts FILES_MATCHING PATTERN "*.js")
+ install(DIRECTORY ${CMAKE_SOURCE_DIR}/sf2/
+-        DESTINATION share/${PROJECT_NAME}/sf2 FILES_MATCHING PATTERN "*.sf2")
++        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/sf2 FILES_MATCHING PATTERN "*.sf2")
+ install(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.desktop
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+ install(FILES ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}jackhost.1
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,6 +3,7 @@
+ #
+ 
+ include(CheckLinkerFlag)
++include(GNUInstallDirs)
+ 
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+@@ -57,7 +58,7 @@ endif()
+ 
+ 
+ if(USE_LV2 AND USE_GUI)
+-    set(LV2DIR "${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2")
++    set(LV2DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2")
+     add_library(${PROJECT_NAME}lv2gui SHARED gui.cpp gui_config.cpp gui_controls.cpp ctl_curve.cpp ctl_keyboard.cpp ctl_knob.cpp ctl_led.cpp ctl_tube.cpp ctl_vumeter.cpp ctl_frame.cpp ctl_fader.cpp ctl_buttons.cpp ctl_notebook.cpp ctl_meterscale.cpp ctl_combobox.cpp ctl_tuner.cpp ctl_phasegraph.cpp ctl_pattern.cpp metadata.cpp giface.cpp plugin_gui_window.cpp preset.cpp preset_gui.cpp lv2gui.cpp osctl.cpp utils.cpp ctl_linegraph.cpp drawingutils.cpp)
+     target_include_directories(${PROJECT_NAME}lv2gui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+     check_linker_flag(CXX -Wl,-z,nodelete LINKER_SUPPORTS_NODELETE)
+@@ -81,7 +82,7 @@ if(USE_GUI AND USE_JACK)
+     target_link_libraries(${PROJECT_NAME}jackhost PRIVATE Threads::Threads ${PROJECT_NAME}gui ${PROJECT_NAME} ${JACK_LIBRARIES} ${GTK_LIBRARIES} fluidsynth)
+     
+     set_target_properties(${PROJECT_NAME}jackhost PROPERTIES
+-        INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib/${PROJECT_NAME}"
++        INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}"
+         BUILD_WITH_INSTALL_RPATH TRUE
+     )
+ endif()
+@@ -109,59 +110,59 @@ if(USE_GUI)
+     install(FILES ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}-gui.xml
+             DESTINATION share/${PROJECT_NAME}/)
+     if(USE_JACK)
+-        install(TARGETS ${PROJECT_NAME}jackhost DESTINATION bin)
++        install(TARGETS ${PROJECT_NAME}jackhost DESTINATION ${CMAKE_INSTALL_BINDIR})
+     endif()
+ endif()
+ 
+ # Install libs
+-install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib/${PROJECT_NAME})
++install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME})
+ if(USE_GUI)
+-    install(TARGETS ${PROJECT_NAME}lv2gui DESTINATION lib/${PROJECT_NAME})
++    install(TARGETS ${PROJECT_NAME}lv2gui DESTINATION ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME})
+ endif()
+ 
+ if(USE_LV2)
+     # Create Lv2 install dir
+-    install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" -E make_directory \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2\")"
++    install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" -E make_directory \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2\")"
+             RESULT_VARIABLE calfResult)
+     if(NOT ${calfResult} EQUAL 0)
+-        message(FATAL_ERROR "Could not create ${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2/")
++        message(FATAL_ERROR "Could not create ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2/")
+     endif()
+     # Create symlinks from Lv2 install dir to libs
+     install(CODE "execute_process( \
+         COMMAND \"${CMAKE_COMMAND}\" -E create_symlink \
+-	\"${CMAKE_INSTALL_PREFIX}/lib/${PROJECT_NAME}/lib${PROJECT_NAME}.so\" \
+-	\"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}.so\" \
++	\"${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/lib${PROJECT_NAME}.so\" \
++	\"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}.so\" \
+         )"
+         RESULT_VARIABLE calfResult
+     )
+     if(NOT ${calfResult} EQUAL 0)
+-        message(FATAL_ERROR "Could not create ${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}.so")
++        message(FATAL_ERROR "Could not create ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}.so")
+     endif()
+     if(USE_GUI)
+         install(CODE "execute_process( \
+             COMMAND \"${CMAKE_COMMAND}\" -E create_symlink \
+-            \"${CMAKE_INSTALL_PREFIX}/lib/${PROJECT_NAME}/lib${PROJECT_NAME}lv2gui.so\" \
+-            \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}lv2gui.so\" \
++            \"${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}/lib${PROJECT_NAME}lv2gui.so\" \
++            \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}lv2gui.so\" \
+             )"
+             RESULT_VARIABLE calfResult
+         )
+         if(NOT ${calfResult} EQUAL 0)
+-            message(FATAL_ERROR "Could not create ${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}lv2gui.so")
++            message(FATAL_ERROR "Could not create ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2/${PROJECT_NAME}lv2gui.so")
+         endif()
+     endif()
+ 
+     # Remove previous .ttl files
+-    file(GLOB ttl_files "${CMAKE_INSTALL_PREFIX}/lib/lv2/*.ttl")
++    file(GLOB ttl_files "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/*.ttl")
+     foreach(ttl_file ${ttl_files})
+         file(REMOVE "${ttl_file}")
+     endforeach()
+ 
+     # Install new .ttl files
+-    install(CODE "execute_process(COMMAND \"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}makerdf\" -m ttl -p \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2\" -d \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/${PROJECT_NAME}/\")")
++    install(CODE "execute_process(COMMAND \"${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}makerdf\" -m ttl -p \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2\" -d \"\$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/share/${PROJECT_NAME}/\")")
+ 
+     # Check files with "sordi"
+     if(USE_SORDI)
+-        file(GLOB ttl_files "${CMAKE_INSTALL_PREFIX}/lib/lv2/${PROJECT_NAME}.lv2/*.ttl")
++        file(GLOB ttl_files "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/lv2/${PROJECT_NAME}.lv2/*.ttl")
+         foreach(ttl_file ${ttl_files})
+             install(
+                 CODE "execute_process(COMMAND \"${SORDI}\" -o turtle \"${ttl_file}\")"

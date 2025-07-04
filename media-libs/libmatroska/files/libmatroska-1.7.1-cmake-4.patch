@@ -1,0 +1,30 @@
+https://github.com/Matroska-Org/libmatroska/commit/8b094abf48ebf1dde78c18262f1bd86d64f2ecea
+
+From 8b094abf48ebf1dde78c18262f1bd86d64f2ecea Mon Sep 17 00:00:00 2001
+From: Steve Lhomme <slhomme@matroska.org>
+Date: Fri, 9 May 2025 08:11:19 +0200
+Subject: [PATCH] CMake: bump minimum CMake version
+
+It fails to build in the CI because older versions support has been dropped in newer CMake.
+
+```
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+Compatibility with CMake < 3.5 has been removed from CMake.
+
+Update the VERSION argument <min> value. Or, use the <min>...<max> syntax
+to tell CMake that the project requires at least <min> but has been updated
+to work with policies introduced by <max> or earlier.
+
+Or, add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to try configuring anyway.
+```
+
+(cherry picked from commit dc80e194e93e6f0e25c8ad3e015d83aca2a99e10)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1.2)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(matroska VERSION 1.7.1)
+ 
+

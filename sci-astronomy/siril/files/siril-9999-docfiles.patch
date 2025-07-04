@@ -1,0 +1,17 @@
+diff --git a/meson.build b/meson.build
+index 0bc3f0d8e..e08989aa9 100644
+--- a/meson.build
++++ b/meson.build
+@@ -710,12 +710,6 @@ man_files = [
+ ]
+ 
+ install_man(man_files)
+-install_data(['AUTHORS', 'LICENSE.md'],
+-             rename : [
+-	       'doc/siril/AUTHORS',
+-	       'doc/siril/LICENSE.md',
+-	     ],
+-             install_dir : siril_share)
+ 
+ 
+ ################################################################################

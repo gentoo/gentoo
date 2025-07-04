@@ -124,6 +124,11 @@ src_compile() {
 }
 
 src_test() {
+	CMAKE_SKIP_TESTS=(
+		# bug #950450
+		iex_musicxml_tests
+	)
+
 	virtx cmake_src_test
 }
 

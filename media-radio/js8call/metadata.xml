@@ -11,5 +11,6 @@
 </maintainer>
 <upstream>
 	<remote-id type="bitbucket">widefido/js8call</remote-id>
+	<remote-id type="github">js8call/js8call</remote-id>
 </upstream>
 </pkgmetadata>

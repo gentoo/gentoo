@@ -218,6 +218,7 @@ musl_sanity_check() {
 		striptest=$(LC_ALL="C" file -L ${x} 2>/dev/null) || continue
 		case ${striptest} in
 		*"statically linked"*) continue;;
+		*"static-pie linked"*) continue;;
 		*"ASCII text"*) continue;;
 		esac
 		# We need to clear the locale settings as the upgrade might want
@@ -238,7 +239,7 @@ pkg_preinst() {
 	mkdir -p "${EROOT}"/etc/ld.so.conf.d
 
 	[[ -n ${ROOT} ]] && return 0
-	[[ -d ${ED}/$(get_libdir) ]] || return 0
+	[[ -d ${ED}/usr/$(get_libdir) ]] || return 0
 	musl_sanity_check
 }
 

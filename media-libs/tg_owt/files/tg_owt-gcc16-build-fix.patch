@@ -1,0 +1,26 @@
+https://github.com/desktop-app/tg_owt/pull/161
+From: Brahmajit Das <listout@listout.xyz>
+Date: Fri, 27 Jun 2025 04:01:15 +0530
+Subject: [PATCH 1/1] Fix building with GCC 16
+
+Building with GCC 16 results in the follwing build error:
+
+/var/tmp/portage/media-libs/tg_owt-0_pre20250515/work/tg_owt-232ec410502e773024e8d83cfae83a52203306c0/src/video/stats_counter.h:116:28: error: uint32_t has not been declared
+  116 |   void Set(int64_t sample, uint32_t stream_id);
+      |                            ^~~~~~~~
+
+Downstream-bug: https://bugs.gentoo.org/958600
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/src/video/stats_counter.h
++++ b/src/video/stats_counter.h
+@@ -13,6 +13,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <cstdint>
+ 
+ namespace webrtc {
+ 
+-- 
+2.50.0
+

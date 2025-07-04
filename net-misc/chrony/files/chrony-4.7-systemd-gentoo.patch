@@ -1,0 +1,11 @@
+--- a/examples/chronyd.service
++++ b/examples/chronyd.service
+@@ -10,7 +10,7 @@ Type=notify
+ PIDFile=/run/chrony/chronyd.pid
+ Environment="OPTIONS="
+ EnvironmentFile=-/etc/sysconfig/chronyd
+-ExecStart=/usr/sbin/chronyd -n $OPTIONS
++ExecStart=/usr/sbin/chronyd -n $OPTIONS -u ntp -F 2
+ 
+ CapabilityBoundingSet=~CAP_AUDIT_CONTROL CAP_AUDIT_READ CAP_AUDIT_WRITE
+ CapabilityBoundingSet=~CAP_BLOCK_SUSPEND CAP_KILL CAP_LEASE CAP_LINUX_IMMUTABLE

@@ -1,0 +1,21 @@
+--- a/pgp/meson.build.old	2025-07-02 22:21:15.443850684 +0200
++++ b/pgp/meson.build	2025-07-02 22:21:36.759743446 +0200
+@@ -99,9 +99,7 @@
+ 
+ 
+ # Tests
+-test_names = [
+-  'gpgme-backend',
+-]
++test_names = []
+ 
+ if get_option('hkp-support')
+   test_names += 'hkp-source'
+@@ -109,6 +107,7 @@
+ 
+ if get_option('ldap-support')
+   test_names += 'ldap-source'
++  test_names += 'gpgme-backend'
+ endif
+ 
+ foreach _test : test_names

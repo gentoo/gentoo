@@ -15,7 +15,4 @@ start() {
 	eend $?
 }
 
-stop() {
-	# Nothing to stop
-	return 0;
-}
+stop(){ :; }

@@ -11,10 +11,7 @@ PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 inherit gnome.org meson virtualx xdg distutils-r1
 
 DESCRIPTION="Python bindings for GObject Introspection"
-HOMEPAGE="
-	https://pygobject.gnome.org/
-	https://gitlab.gnome.org/GNOME/pygobject/
-"
+HOMEPAGE="https://pygobject.gnome.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="3"

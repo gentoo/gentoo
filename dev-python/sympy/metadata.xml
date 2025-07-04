@@ -5,10 +5,6 @@
     <email>grozin@gentoo.org</email>
     <name>Andrey Grozin</name>
   </maintainer>
-  <maintainer type="person">
-    <email>sam@gentoo.org</email>
-    <name>Sam James</name>
-  </maintainer>
   <maintainer type="project">
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>

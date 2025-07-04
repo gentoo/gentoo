@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
 
 DEPEND="
 	test? (

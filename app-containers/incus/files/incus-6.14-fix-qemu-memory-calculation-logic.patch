@@ -1,0 +1,35 @@
+From 60c8f084a7cb9e38b5003fc056538f6631609cb8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>
+Date: Tue, 1 Jul 2025 21:24:04 -0400
+Subject: [PATCH] incusd/instance/qemu: Fix memory calculation logic
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes another issue with the logic where a system with no detected
+physical bits would cause a 0 value which would then be decreased,
+leading to the maximum value possible of 1TB.
+
+Signed-off-by: Stéphane Graber <stgraber@stgraber.org>
+---
+ internal/server/instance/drivers/driver_qemu.go | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/internal/server/instance/drivers/driver_qemu.go b/internal/server/instance/drivers/driver_qemu.go
+index 995d1d31ed5..2897226d930 100644
+--- a/internal/server/instance/drivers/driver_qemu.go
++++ b/internal/server/instance/drivers/driver_qemu.go
+@@ -4183,11 +4183,8 @@ func (d *qemu) addCPUMemoryConfig(conf *[]cfg.Section, cpuType string, cpuInfo *
+ 			}
+ 		}
+ 
+-		if cpuType == "host" && lowestPhysBits > 0 {
+-			// Line up cpuPhysBits with the lowest physical CPU value.
+-			cpuPhysBits = lowestPhysBits
+-		} else if lowestPhysBits < cpuPhysBits {
+-			// Reduce curPhysBits below the default of 39 if a physical CPU uses a lower value.
++		// If a physical address size was detected, either align it with the VM (CPU passthrough) or use it as an upper bound.
++		if lowestPhysBits > 0 && (cpuType == "host" || lowestPhysBits < cpuPhysBits) {
+ 			cpuPhysBits = lowestPhysBits
+ 		}
+ 

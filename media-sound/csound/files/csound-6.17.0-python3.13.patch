@@ -1,0 +1,27 @@
+https://github.com/csound/csound/pull/1876
+
+From 6458f562a106ac582179fb9dbff393c20b6fb4bb Mon Sep 17 00:00:00 2001
+From: Jelle van der Waa <jelle@archlinux.org>
+Date: Mon, 29 Apr 2024 19:57:54 +0200
+Subject: [PATCH] replace logging.warn with logging.warning
+
+logging.warn is an alias to logging.warning since Python 3.3 and will be
+removed in Python 3.13.
+---
+ Emscripten/examples/httpd.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Emscripten/examples/httpd.py b/Emscripten/examples/httpd.py
+index 88d8f98e6cb..bf42b3f0bac 100755
+--- a/Emscripten/examples/httpd.py
++++ b/Emscripten/examples/httpd.py
+@@ -82,7 +82,7 @@ def _FindDelegateAtPath(self, dirname):
+       delegate_class = getattr(module, 'HTTPRequestHandlerDelegate', None)
+       delegate = delegate_class()
+       if not delegate:
+-        logging.warn(
++        logging.warning(
+             'Unable to find symbol HTTPRequestHandlerDelegate in module %s.' %
+             handler_script)
+ 
+

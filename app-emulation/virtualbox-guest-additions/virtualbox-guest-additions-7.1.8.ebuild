@@ -17,7 +17,7 @@ S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 LICENSE="GPL-3 LGPL-2.1+ MIT || ( GPL-3 CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+dbus gui"
 
 RDEPEND="

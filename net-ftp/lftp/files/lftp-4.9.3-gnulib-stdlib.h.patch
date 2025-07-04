@@ -1,0 +1,13 @@
+diff --git a/lib/stdlib.in.h b/lib/stdlib.in.h
+index ed00a43..f37ff84 100644
+--- a/lib/stdlib.in.h
++++ b/lib/stdlib.in.h
+@@ -119,7 +119,7 @@ struct random_data
+ # include <unistd.h>
+ #endif
+ 
+-#if ((@GNULIB_STRTOL@ && @REPLACE_STRTOL@) || (@GNULIB_STRTOLL@ && @REPLACE_STRTOLL@) || (@GNULIB_STRTOUL@ && @REPLACE_STRTOUL@) || (@GNULIB_STRTOULL@ && @REPLACE_STRTOULL@)) && defined __cplusplus && !defined GNULIB_NAMESPACE && defined __GNUG__ && !defined __clang__
++#if ((@GNULIB_STRTOL@ && @REPLACE_STRTOL@) || (@GNULIB_STRTOLL@ && @REPLACE_STRTOLL@) || (@GNULIB_STRTOUL@ && @REPLACE_STRTOUL@) || (@GNULIB_STRTOULL@ && @REPLACE_STRTOULL@)) && defined __cplusplus && !defined GNULIB_NAMESPACE && defined __GNUG__
+ /* When strtol, strtoll, strtoul, or strtoull is going to be defined as a macro
+    below, this may cause compilation errors later in the libstdc++ header files
+    (that are part of GCC), such as:

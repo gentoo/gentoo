@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 ruby_add_rdepend "
-	|| ( dev-ruby/highline:3 >=dev-ruby/highline-2.1:2 )
+	dev-ruby/highline:3
 	>=dev-ruby/optimist-3.1:3
 	!<dev-ruby/hiera-eyaml-3.4.0-r1
 "

@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/ports1/aee/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~riscv x86 ~amd64-linux"
 IUSE="X"
 
 RDEPEND="X? ( x11-libs/libX11 )"

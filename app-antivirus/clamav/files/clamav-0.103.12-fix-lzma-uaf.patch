@@ -1,0 +1,34 @@
+From fd9cf81463725023d25838a08c8de459f619a58c Mon Sep 17 00:00:00 2001
+From: Val Snyder <micasnyd@cisco.com>
+Date: Wed, 12 Mar 2025 16:08:25 -0400
+Subject: [PATCH] Fix lzma-sdk xz bug
+
+A use-after-free read is possible in the Xz decoder cleanup.
+
+The fix is to set a pointer to NULL so it doesn't try to
+dereference it and free a second time.
+
+Fixes https://issues.oss-fuzz.com/issues/384549094
+
+This fix is also present in lzma-sdk version 18.01.
+Ref: https://github.com/welovegit/LZMA-SDK/blame/main/C/XzDec.c#L508
+---
+ libclamav/7z/XzDec.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libclamav/7z/XzDec.c b/libclamav/7z/XzDec.c
+index 00a28702f5..7e40d202fb 100644
+--- a/libclamav/7z/XzDec.c
++++ b/libclamav/7z/XzDec.c
+@@ -343,8 +343,10 @@ void MixCoder_Free(CMixCoder *p)
+   for (i = 0; i < p->numCoders; i++)
+   {
+     IStateCoder *sc = &p->coders[i];
+-    if (p->alloc && sc->p)
++    if (p->alloc && sc->p) {
+       sc->Free(sc->p, p->alloc);
++      sc->p = NULL;
++    }
+   }
+   p->numCoders = 0;
+   if (p->buf)

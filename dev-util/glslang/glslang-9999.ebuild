@@ -22,9 +22,6 @@ HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/ https:/
 LICENSE="BSD"
 SLOT="0/15.1"
 
-# Bug 698850
-RESTRICT="test"
-
 BDEPEND="${PYTHON_DEPS}
 	~dev-util/spirv-tools-${PV}[${MULTILIB_USEDEP}]
 "

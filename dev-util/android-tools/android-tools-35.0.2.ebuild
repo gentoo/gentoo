@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic python-r1
 
@@ -19,7 +19,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="python udev"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -50,6 +50,7 @@ DOCS=()
 src_prepare() {
 	eapply "${DISTDIR}/${PN}-31.0.3-no-gtest.patch"
 	eapply "${FILESDIR}/android-tools-35.0.2-protobuf.patch"
+	eapply "${FILESDIR}/android-tools-35.0.2-gcc-16.patch"
 
 	cd "${S}/vendor/core" || die
 	eapply "${S}/patches/core/0011-Remove-the-useless-dependency-on-gtest.patch"
@@ -58,10 +59,6 @@ src_prepare() {
 	eapply "${S}/patches/libziparchive/0004-Remove-the-useless-dependency-on-gtest.patch"
 
 	cd "${S}" || die
-
-	# why do we depend on libandroidfw? It is never linked to or used.
-	# https://github.com/nmeum/android-tools/issues/148
-	sed -i '/libandroidfw/d' vendor/CMakeLists.txt || die
 
 	rm -r patches || die
 	cmake_src_prepare

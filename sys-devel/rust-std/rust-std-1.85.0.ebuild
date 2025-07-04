@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs
+inherit edo flag-o-matic multiprocessing python-any-r1 rust-toolchain toolchain-funcs
 
 DESCRIPTION="Rust standard library, standalone (for crossdev)"
 HOMEPAGE="https://www.rust-lang.org"
@@ -134,9 +134,9 @@ src_configure() {
 }
 
 src_compile() {
-	env RUST_BACKTRACE=1 \
+	edo env RUST_BACKTRACE=1 \
 		"${EPYTHON}" ./x.py build -vv --config="${S}"/config.toml -j$(makeopts_jobs) \
-		library/std --stage 0 || die
+		library/std --stage 0
 }
 
 src_test() {

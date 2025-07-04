@@ -1,0 +1,62 @@
+From 9ef0eb38cf3c9fe57ec3edcb8aaee5e49453b2f6 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 23 May 2025 09:47:34 +0200
+Subject: [PATCH 1/2] Drop codepath for kstart5
+
+By now kstart should be available everywhere
+
+Make it consistent with startManagerForKwalletd
+---
+ src/runtime/kwalletd/kwalletd.cpp | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/runtime/kwalletd/kwalletd.cpp b/src/runtime/kwalletd/kwalletd.cpp
+index 72384176..4914128b 100644
+--- a/src/runtime/kwalletd/kwalletd.cpp
++++ b/src/runtime/kwalletd/kwalletd.cpp
+@@ -58,8 +58,6 @@ static void startManagerForKSecretD()
+ {
+     if (!QStandardPaths::findExecutable(QStringLiteral("kstart")).isEmpty()) {
+         QProcess::startDetached(QStringLiteral("kstart"), {QStringLiteral("kwalletmanager5"), QStringLiteral("--"), QStringLiteral("--kwalletd")});
+-    } else if (!QStandardPaths::findExecutable(QStringLiteral("kstart5")).isEmpty()) {
+-        QProcess::startDetached(QStringLiteral("kstart"), {QStringLiteral("kwalletmanager5"), QStringLiteral("--"), QStringLiteral("--kwalletd")});
+     } else {
+         QProcess::startDetached(QStringLiteral("kwalletmanager5"), QStringList{QStringLiteral("--kwalletd")});
+     }
+-- 
+GitLab
+
+
+From ec907efee65039f148f3cabb33e6df64ddd6e09b Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 22 May 2025 11:00:40 +0200
+Subject: [PATCH 2/2] Use desktop file to launch kwalletmanager
+
+kstart puts the started process in a cgroup, which is good
+and what we want. However when started like this the cgroup
+naming doesn't follow the standard pattern to encode the desktop
+file name so tools like plasma-systemmonitor can't resolve
+the desktop file from it.
+
+Instead of giving the raw command ask kstart to start the
+corresponding desktop file, which makes this work
+---
+ src/runtime/kwalletd/kwalletd.cpp | 2 +-
+ 1 file changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/runtime/kwalletd/kwalletd.cpp b/src/runtime/kwalletd/kwalletd.cpp
+index 537c4b75..34e896d1 100644
+--- a/src/runtime/kwalletd/kwalletd.cpp
++++ b/src/runtime/kwalletd/kwalletd.cpp
+@@ -25,7 +25,7 @@ unsigned int KWalletD::s_lastTransaction = 0;
+ static void startManagerForKwalletd()
+ {
+     if (!QStandardPaths::findExecutable(QStringLiteral("kstart")).isEmpty()) {
+-        QProcess::startDetached(QStringLiteral("kstart"), {QStringLiteral("kwalletmanager5"), QStringLiteral("--"), QStringLiteral("--kwalletd")});
++        QProcess::startDetached(QStringLiteral("kstart"), {QStringLiteral("--application"), QStringLiteral("kwalletmanager5-kwalletd")});
+     } else {
+         QProcess::startDetached(QStringLiteral("kwalletmanager5"), QStringList{QStringLiteral("--kwalletd")});
+     }
+-- 
+GitLab
+

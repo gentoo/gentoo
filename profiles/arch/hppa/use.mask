@@ -7,6 +7,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-12)
+# x11-drivers/xf86-input-wacom is not keyworded here
+input_devices_wacom
+
 # Sam James <sam@gentoo.org> (2023-09-11)
 # wayland hasn't been tested on hppa
 wayland

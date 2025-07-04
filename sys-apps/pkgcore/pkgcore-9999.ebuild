@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -25,12 +25,12 @@ SLOT="0"
 if [[ ${PV} == *9999 ]]; then
 	COMMON_DEPEND="~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	COMMON_DEPEND=">=dev-python/snakeoil-0.10.7[${PYTHON_USEDEP}]"
+	COMMON_DEPEND=">=dev-python/snakeoil-0.10.11[${PYTHON_USEDEP}]"
 fi
 
 RDEPEND="
 	${COMMON_DEPEND}
-	>=app-shells/bash-5.1[readline]
+	>=app-shells/bash-5.2[readline]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 BDEPEND="

@@ -1,0 +1,13 @@
+https://github.com/mesonbuild/meson/issues/14201
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -49,7 +49,7 @@ fc_sources = files([
+ 
+ 
+ 
+-fcobjshash_h = cc.preprocess('fcobjshash.gperf.h', include_directories: incbase)
++fcobjshash_h = cc.preprocess('fcobjshash.gperf.h', include_directories: incbase, compile_args: '-g0')
+ fcobjshash_gperf = custom_target(
+   input: fcobjshash_h,
+   output: 'fcobjshash.gperf',
+

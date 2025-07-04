@@ -1,0 +1,6 @@
+app-emulation/hercules
+app-emulation/hercules-sdl
+app-emulation/hercules-sdl-crypto
+app-emulation/hercules-sdl-decnumber
+app-emulation/hercules-sdl-softfloat
+app-emulation/hercules-sdl-telnet

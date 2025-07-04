@@ -34,7 +34,6 @@ DEPEND="
 	${RDEPEND}
 	acct-user/memcached
 	test? (
-		virtual/perl-Test-Harness
 		>=dev-perl/Cache-Memcached-1.24
 		ssl? ( dev-perl/IO-Socket-SSL )
 	)

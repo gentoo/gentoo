@@ -15,7 +15,7 @@ CMAKE_USE_DIR="${S}/ImageLounge"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm64 ~riscv x86 ~amd64-linux"
 IUSE="+opencv plugins raw +tiff test zip"
 REQUIRED_USE="
 	raw? ( opencv )
@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[concurrent,cups,gui,network,widgets]
+	dev-qt/qtbase:6[concurrent,gui,network,widgets]
 	dev-qt/qtsvg:6
 	media-gfx/exiv2:=
 	opencv? ( >=media-libs/opencv-3.4:= )

@@ -15,7 +15,6 @@ EBUILD_WAYLAND=false
 	--enable-features=UseOzonePlatform
 	--ozone-platform=wayland
 	--enable-wayland-ime
-	--disable-gpu-memory-buffer-video-frames
 )
 
 @@DESTDIR@@/Discord "${discord_parameters[@]}" "$@"

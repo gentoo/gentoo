@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>expeditioneer@gentoo.org</email>
+		<name>Dennis Lamm</name>
+	</maintainer>
 	<longdescription>
-		ProtonMail bridge has been Open Source since April 2020.
-		It is a daemon that essentialy is an interface to Proton's servers.
-		It can be built with or without it's QT GUI.
+		Proton Mail Bridge has been open-source since April 2020.
+		It functions as a daemon that serves as an interface between Proton
+		Mail's encrypted email services and standard IMAP/SMTP email clients.
+		This allows users to integrate Proton Mail with applications like
+		Thunderbird, Outlook, and Apple Mail.
+		The Bridge can be compiled with or without its Qt-based graphical
+		user interface (GUI), offering flexibility for both desktop and
+		headless environments.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/ProtonMail/proton-bridge/issues</bugs-to>

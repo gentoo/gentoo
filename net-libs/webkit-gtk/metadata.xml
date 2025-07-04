@@ -11,6 +11,9 @@
     <flag name="jumbo-build">Combine source files to speed up build process</flag>
   </use>
   <upstream>
+    <bugs-to>https://bugs.webkit.org</bugs-to>
+    <changelog>https://www.webkitgtk.org/news.html</changelog>
+    <doc>https://webkitgtk.org/reference/webkitgtk/stable/</doc>
     <remote-id type="github">WebKit/WebKit</remote-id>
   </upstream>
 </pkgmetadata>

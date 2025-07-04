@@ -22,7 +22,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # gles2-only: at least not before 2.6 for keyworded ebuild
 IUSE="aac benchmark experimental ffmpeg gles2-only keyfinder lv2 midi modplug mp3 mp4 opus"
-IUSE+=" qtkeychain rubberband shout test upower wavpack"
+IUSE+=" qtkeychain rubberband shout test upower wavpack +X"
 REQUIRED_USE="
 	benchmark? ( test )
 	qtkeychain? ( shout )
@@ -36,14 +36,14 @@ RDEPEND="
 	dev-libs/hidapi
 	dev-libs/protobuf:=
 	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[concurrent,dbus,gles2-only=,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X]
+	dev-qt/qtbase:6[concurrent,dbus,gles2-only=,gui,icu,network,opengl,sql,sqlite,ssl,widgets,xml,X?]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtshadertools:6
 	dev-qt/qtsvg:6
 	media-libs/chromaprint:=
 	media-libs/flac:=
 	media-libs/libebur128:=
-	media-libs/libglvnd[X]
+	media-libs/libglvnd[X?]
 	media-libs/libogg
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
@@ -53,7 +53,6 @@ RDEPEND="
 	media-sound/lame
 	virtual/libusb:1
 	virtual/udev
-	x11-libs/libX11
 	aac? (
 		media-libs/faad2
 		media-libs/libmp4v2
@@ -86,6 +85,7 @@ RDEPEND="
 		sys-power/upower:=
 	)
 	wavpack? ( media-sound/wavpack )
+	X? ( x11-libs/libX11 )
 "
 DEPEND="${RDEPEND}
 	dev-cpp/gtest
@@ -119,6 +119,7 @@ src_configure() {
 		-DBUILD_BENCH="$(usex benchmark)"
 		# prevent duplicate call
 		-DCCACHE_SUPPORT=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_X11=$(usex !X)
 		-DENGINEPRIME=OFF
 		-DFAAD="$(usex aac)"
 		-DFFMPEG="$(usex ffmpeg)"

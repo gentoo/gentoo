@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Kenton Groombridge</name>
+		<email>concord@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Sapd/HeadsetControl</remote-id>
+		<bugs-to>https://github.com/Sapd/HeadsetControl/issues</bugs-to>
+	</upstream>
+	<longdescription>
+		A tool to control certain aspects of USB-connected headsets on Linux.
+		Currently, support is provided for adjusting sidetone, getting battery
+		state, controlling LEDs, and setting the inactive time.
+	</longdescription>
+</pkgmetadata>

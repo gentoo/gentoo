@@ -27,9 +27,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	test? (
-		dev-python/pytz[${PYTHON_USEDEP}]
-	)
 "
 
 distutils_enable_tests pytest

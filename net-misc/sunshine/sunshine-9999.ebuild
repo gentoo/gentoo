@@ -1,18 +1,19 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 # These don't necessarily have to align with the upstream release.
-BUILD_DEPS_COMMIT="2aafe061cd52a944cb3b5f86d1f25e9ad2a19bec"
-ENET_COMMIT="04e27590670a87a7cd40f5a05cda97467e4e25a3"
-INPUTTINO_COMMIT="8a33706a146787a1ed3666ce52888634dd16cb86"
-MOONLIGHT_COMMIT="cbd0ec1b25edfb8ee8645fffa49ff95b6e04c70e"
-NANORS_COMMIT="e9e242e98e27037830490b2a752895ca68f75f8b"
-TRAY_COMMIT="4d8b798cafdd11285af9409c16b5f792968e0045"
-SWS_COMMIT="27b41f5ee154cca0fce4fe2955dd886d04e3a4ed"
-WLRP_COMMIT="2b8d43325b7012cc3f9b55c08d26e50e42beac7d"
-FFMPEG_VERSION="6.1.1"
+BUILD_DEPS_COMMIT="6ad5cf841f592f95be47fb401cde02ae621acd0f"
+DISPLAYDEV_COMMIT="v2025.612.225826"
+ENET_COMMIT="44c85e16279553d9c052e572bcbfcd745fb74abf"
+INPUTTINO_COMMIT="3a7a658782217d77ee1d1055c3930874cfd299aa"
+MOONLIGHT_COMMIT="58902e342f6d53d6783c99fe79a03168d46cd56f"
+NANORS_COMMIT="19f07b513e924e471cadd141943c1ec4adc8d0e0"
+TRAY_COMMIT="d45306e686c90a18f5792a1541783d7bc8555bc6"
+SWS_COMMIT="187f798d54a9c6cee742f2eb2c54e9ba26f5a385"
+WLRP_COMMIT="ffb89ac790096f6e6272822c8d5df7d0cc6fcdfa"
+FFMPEG_VERSION="7.1.1"
 
 # To make the assets tarball:
 # PV=
@@ -27,6 +28,8 @@ else
 			-> ${P}.tar.gz
 		https://github.com/LizardByte/build-deps/archive/${BUILD_DEPS_COMMIT}.tar.gz
 			-> LizardByte-build-deps-${BUILD_DEPS_COMMIT}.tar.gz
+		https://github.com/LizardByte/libdisplaydevice/archive/${DISPLAYDEV_COMMIT}.tar.gz
+			-> libdisplaydevice-${DISPLAYDEV_COMMIT#v}.tar.gz
 		https://github.com/cgutman/enet/archive/${ENET_COMMIT}.tar.gz
 			-> moonlight-enet-${ENET_COMMIT}.tar.gz
 		https://github.com/games-on-whales/inputtino/archive/${INPUTTINO_COMMIT}.tar.gz
@@ -126,7 +129,7 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	>=dev-libs/boost-1.86:=[nls]
+	=dev-libs/boost-1.87*:=[nls]
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
@@ -165,21 +168,22 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
+	dev-cpp/nlohmann_json
 	media-libs/amf-headers
-	=media-libs/nv-codec-headers-12*
+	<media-libs/nv-codec-headers-14
 	wayland? ( dev-libs/wayland-protocols )
 "
 
 BDEPEND="
 	net-libs/nodejs[npm]
 	virtual/pkgconfig
-	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
+	cpu_flags_x86_mmx? ( >=dev-lang/nasm-2.13 )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	wayland? ( dev-util/wayland-scanner )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.22.0-nvcodec.patch
+	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
 )
 
 # Make this mess a bit simpler.
@@ -198,21 +202,19 @@ src_unpack() {
 	if [[ ${PV} = 9999* ]]; then
 		local EGIT_REPO_URI="https://github.com/LizardByte/build-deps.git"
 		local EGIT_SUBMODULES=( '-*' )
-		local EGIT_CHECKOUT_DIR=${WORKDIR}/build-deps
+		local EGIT_CHECKOUT_DIR=${S}/third-party/build-deps
 		git-r3_src_unpack
 
 		# Use upstream server like our ffmpeg package does, not GitHub.
 		local EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 		local EGIT_SUBMODULES=( '-*' )
-		local EGIT_CHECKOUT_DIR=${EGIT_CHECKOUT_DIR}/ffmpeg_sources/ffmpeg
-		local EGIT_COMMIT=$(git --git-dir=build-deps/.git rev-parse HEAD:ffmpeg_sources/ffmpeg)
+		local EGIT_CHECKOUT_DIR=${S}/third-party/build-deps/third-party/FFmpeg/FFmpeg
+		local EGIT_COMMIT=$(git --git-dir=build-deps/.git rev-parse HEAD:third-party/FFmpeg/FFmpeg)
 		local EGIT_BRANCH=release/$(ver_cut 1-2 ${FFMPEG_VERSION})
 		git-r3_src_unpack
 
 		local EGIT_REPO_URI="https://github.com/LizardByte/Sunshine.git"
-		local EGIT_SUBMODULES=(
-			third-party/{inputtino,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols}
-		)
+		local EGIT_SUBMODULES=( third-party/{inputtino,libdisplaydevice,moonlight-common-c{,/enet},nanors,tray,Simple-Web-Server,wlr-protocols} )
 		unset EGIT_CHECKOUT_DIR EGIT_COMMIT EGIT_BRANCH
 		git-r3_src_unpack
 
@@ -221,37 +223,51 @@ src_unpack() {
 		npm install || die
 	else
 		default
-		ln -snf build-deps-${BUILD_DEPS_COMMIT} build-deps || die
-		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party build-deps/ffmpeg_sources \
-			-mindepth 1 -type d -empty -delete || die
-		ln -snf ../enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
-		ln -snf ../../inputtino-${INPUTTINO_COMMIT} "${S}"/third-party/inputtino || die
-		ln -snf ../../moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party/moonlight-common-c || die
-		ln -snf ../../nanors-${NANORS_COMMIT} "${S}"/third-party/nanors || die
-		ln -snf ../../tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
-		ln -snf ../../Simple-Web-Server-${SWS_COMMIT} "${S}"/third-party/Simple-Web-Server || die
-		ln -snf ../../wlr-protocols-${WLRP_COMMIT} "${S}"/third-party/wlr-protocols || die
-		ln -snf ../../ffmpeg-${FFMPEG_VERSION} build-deps/ffmpeg_sources/ffmpeg || die
+		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party \
+			build-deps-${BUILD_DEPS_COMMIT}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
+		mv enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
+		mv libdisplaydevice-${DISPLAYDEV_COMMIT#v} "${S}"/third-party/libdisplaydevice || die
+		mv inputtino-${INPUTTINO_COMMIT} "${S}"/third-party/inputtino || die
+		mv moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party/moonlight-common-c || die
+		mv nanors-${NANORS_COMMIT} "${S}"/third-party/nanors || die
+		mv tray-${TRAY_COMMIT} "${S}"/third-party/tray || die
+		mv Simple-Web-Server-${SWS_COMMIT} "${S}"/third-party/Simple-Web-Server || die
+		mv wlr-protocols-${WLRP_COMMIT} "${S}"/third-party/wlr-protocols || die
+		mv build-deps-${BUILD_DEPS_COMMIT} "${S}"/third-party/build-deps || die
+		mv ffmpeg-${FFMPEG_VERSION} "${S}"/third-party/build-deps/third-party/FFmpeg/FFmpeg || die
 	fi
 }
 
 src_prepare() {
-	# Apply general ffmpeg patches.
-	cd "${WORKDIR}"/build-deps/ffmpeg_sources/ffmpeg || die
-	eapply "${WORKDIR}"/build-deps/ffmpeg_patches/ffmpeg/*.patch
+	# Avoid CMake compatibility warning.
+	rm third-party/moonlight-common-c/CMakeLists.txt || die
 
-	# Copy ffmpeg sources because CBS build applies extra patches.
-	cp -a ./ "${WORKDIR}"/ffmpeg-build || die
-
-	cd "${S}" || die
-	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_prepare
+	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_prepare
 	default_src_prepare() { :; } # Hack to avoid double patching! :(
 	CMAKE_USE_DIR="${S}" cmake_src_prepare
 }
 
 src_configure() {
+	local mycmakeargs=(
+		-DBASH_EXECUTABLE="${BROOT}"/bin/true
+		-DBUILD_ALL_SUNSHINE=no
+		-DBUILD_ALL=no
+		-DBUILD_FFMPEG_ALL_PATCHES=yes
+		-DBUILD_FFMPEG_AMF=no
+		-DBUILD_FFMPEG_CBS=yes
+		-DBUILD_FFMPEG_MF=no
+		-DBUILD_FFMPEG_NV_CODEC_HEADERS=no
+		-DBUILD_FFMPEG_SVT_AV1=no
+		-DBUILD_FFMPEG_VAAPI=no
+		-DBUILD_FFMPEG_X264=no
+		-DBUILD_FFMPEG_X265=no
+		-DBUILD_SHARED_LIBS=no
+		-DCMAKE_INSTALL_PREFIX="${S}"/third-party/build-deps/dist
+	)
+	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_configure
+
 	local myconf=(
-		--prefix="${S}"/third-party/ffmpeg
+		--prefix="${S}"/third-party/build-deps/FFmpeg
 		--cc="$(tc-getCC)"
 		--cxx="$(tc-getCXX)"
 		--ar="$(tc-getAR)"
@@ -321,15 +337,9 @@ src_configure() {
 		esac
 	fi
 
-	cd "${WORKDIR}"/ffmpeg-build || die
+	cd "${S}"/third-party/build-deps/generated-src/FFmpeg || die
 	echo ./configure "${myconf[@]}"
 	./configure "${myconf[@]}" || die
-
-	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=no
-		-DCMAKE_INSTALL_PREFIX="${S}"/third-party/ffmpeg
-	)
-	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_configure
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
@@ -337,9 +347,8 @@ src_configure() {
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
-		-DCMAKE_DISABLE_FIND_PACKAGE_Git=yes
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
-		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/ffmpeg
+		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
 		-DSUNSHINE_ENABLE_CUDA=$(usex cuda)
 		-DSUNSHINE_ENABLE_DRM=$(usex libdrm)
@@ -347,20 +356,27 @@ src_configure() {
 		-DSUNSHINE_ENABLE_WAYLAND=$(usex wayland)
 		-DSUNSHINE_ENABLE_X11=$(usex X)
 		-DSUNSHINE_ENABLE_TRAY=$(usex trayicon)
-		-DSUNSHINE_REQUIRE_TRAY=$(usex trayicon)
 		-DSUNSHINE_SYSTEM_WAYLAND_PROTOCOLS=yes
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
-	use systemd && mycmakeargs+=( -DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir) )
-	[[ ${PV} = 9999* ]] || mycmakeargs+=( -DNPM="${BROOT}"/bin/true )
+
+	if use systemd; then
+		mycmakeargs+=( -DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir) )
+	fi
+
+	if [[ ${PV} != 9999* ]]; then
+		mycmakeargs+=( -DNPM="${BROOT}"/bin/true )
+		local -x BUILD_VERSION=v${PV} BRANCH=master COMMIT=
+	fi
+
 	CMAKE_USE_DIR="${S}" cmake_src_configure
 }
 
 src_compile() {
-	emake -C "${WORKDIR}"/ffmpeg-build V=1
-	emake -C "${WORKDIR}"/ffmpeg-build V=1 install
-	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_src_compile
-	CMAKE_USE_DIR="${WORKDIR}/build-deps" cmake_build install
+	emake -C "${S}"/third-party/build-deps/generated-src/FFmpeg V=1
+	emake -C "${S}"/third-party/build-deps/generated-src/FFmpeg V=1 install
+	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_compile cbs
+	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_build install cbs
 	CMAKE_USE_DIR="${S}" npm_config_offline=1 cmake_src_compile
 }
 

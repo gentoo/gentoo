@@ -29,7 +29,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.10:3
 	flac? ( >=media-libs/flac-1.3:= )
 	mp3? (
-		>=media-libs/id3lib-3.8.3-r8
+		>=media-libs/id3lib-3.8.3-r11
 		>=media-libs/libid3tag-0.15.1b-r4:=
 	)
 	mp4? ( media-libs/taglib:=[mp4(+)] )
@@ -67,8 +67,8 @@ PATCHES=(
 )
 
 src_configure() {
-	# bug #949814
-	filter-lto
+	# bug #940245
+	use mp3 && filter-lto
 
 	gnome2_src_configure \
 		--disable-Werror \

@@ -16,5 +16,5 @@ SRC_URI="https://github.com/SDL-Hercules-390/SoftFloat/archive/${COMMIT}.tar.gz 
 S="${WORKDIR}/SoftFloat-${COMMIT}"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ppc64"
 PATCHES=( "${FILESDIR}/cmakefix.patch" )

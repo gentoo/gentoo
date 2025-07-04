@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>eschwartz@gentoo.org</email>
+		<name>Eli Schwartz</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="codeberg">eli-schwartz/eschwartz-dev-scripts</remote-id>
+	</upstream>
+</pkgmetadata>

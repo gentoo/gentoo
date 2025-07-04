@@ -19,7 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/RenderKit/${PN}/releases/download/v${PV}/${P}.src.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 -arm ~arm64 -ppc ~ppc64 -x86" # 64-bit-only
+	KEYWORDS="amd64 -arm ~arm64 -ppc ~ppc64 -x86" # 64-bit-only
 fi
 
 LICENSE="Apache-2.0"

@@ -1,0 +1,14 @@
+https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/320
+--- a/test/run-test.sh
++++ b/test/run-test.sh
+@@ -44,9 +44,7 @@ EXPECTED=${EXPECTED-"out.expected"}
+ FCLIST="$LOG_COMPILER $BUILDTESTDIR/../fc-list/fc-list$EXEEXT"
+ FCCACHE="$LOG_COMPILER $BUILDTESTDIR/../fc-cache/fc-cache$EXEEXT"
+ 
+-if [ -x "$(command -v bwrap)" ]; then
+-    BWRAP="$(command -v bwrap)"
+-fi
++BWRAP=""
+ 
+ if [ -x "$(command -v md5sum)" ]; then
+     MD5SUM="$(command -v md5sum)"

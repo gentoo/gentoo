@@ -1,0 +1,131 @@
+https://github.com/Mbed-TLS/mbedtls/pull/9876
+From 3e51f0c1c04a9b62c4c27228c273693386f81c66 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sun, 26 Jan 2025 22:21:33 +0300
+Subject: [PATCH] Add ENABLE_SLOTTED_VERSION to cmake project
+
+Make version suffix appending optional. Change suffix to include dash symbol to comply pkg-config naming conventions.
+
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -76,6 +76,12 @@ else()
+ endif()
+ 
+ option(DISABLE_PACKAGE_CONFIG_AND_INSTALL "Disable package configuration, target export and installation" ${MBEDTLS_AS_SUBPROJECT})
++option(ENABLE_SLOTTED_VERSION "Enable slotted installation in order to install multiple versions of Mbed TLS" OFF)
++
++set(VERSION_SUFFIX "")
++if(ENABLE_SLOTTED_VERSION)
++    set(VERSION_SUFFIX "-${PROJECT_VERSION_MAJOR}")
++endif()
+ 
+ if (CMAKE_C_SIMULATE_ID)
+     set(COMPILER_ID ${CMAKE_C_SIMULATE_ID})
+
+--- a/library/CMakeLists.txt
++++ b/library/CMakeLists.txt
+@@ -277,7 +277,7 @@ set(everest_target "${MBEDTLS_TARGET_PREFIX}everest")
+ 
+ if(USE_STATIC_MBEDTLS_LIBRARY)
+     add_library(${mbedcrypto_static_target} STATIC ${src_crypto})
+-    set_target_properties(${mbedcrypto_static_target} PROPERTIES OUTPUT_NAME mbedcrypto${PROJECT_VERSION_MAJOR})
++    set_target_properties(${mbedcrypto_static_target} PROPERTIES OUTPUT_NAME mbedcrypto${VERSION_SUFFIX})
+     target_link_libraries(${mbedcrypto_static_target} PUBLIC ${libs})
+ 
+     if(TARGET ${everest_target})
+@@ -289,11 +289,11 @@ if(USE_STATIC_MBEDTLS_LIBRARY)
+     endif()
+ 
+     add_library(${mbedx509_static_target} STATIC ${src_x509})
+-    set_target_properties(${mbedx509_static_target} PROPERTIES OUTPUT_NAME mbedx509${PROJECT_VERSION_MAJOR})
++    set_target_properties(${mbedx509_static_target} PROPERTIES OUTPUT_NAME mbedx509${VERSION_SUFFIX})
+     target_link_libraries(${mbedx509_static_target} PUBLIC ${libs} ${mbedcrypto_static_target})
+ 
+     add_library(${mbedtls_static_target} STATIC ${src_tls})
+-    set_target_properties(${mbedtls_static_target} PROPERTIES OUTPUT_NAME mbedtls${PROJECT_VERSION_MAJOR})
++    set_target_properties(${mbedtls_static_target} PROPERTIES OUTPUT_NAME mbedtls${VERSION_SUFFIX})
+     target_link_libraries(${mbedtls_static_target} PUBLIC ${libs} ${mbedx509_static_target})
+ endif(USE_STATIC_MBEDTLS_LIBRARY)
+ 
+@@ -301,7 +301,7 @@ if(USE_SHARED_MBEDTLS_LIBRARY)
+     set(CMAKE_LIBRARY_PATH ${CMAKE_CURRENT_BINARY_DIR})
+     add_library(${mbedcrypto_target} SHARED ${src_crypto})
+     set_target_properties(${mbedcrypto_target} PROPERTIES VERSION 3.6.3 SOVERSION 16)
+-    set_target_properties(${mbedcrypto_target} PROPERTIES OUTPUT_NAME mbedcrypto${PROJECT_VERSION_MAJOR})
++    set_target_properties(${mbedcrypto_target} PROPERTIES OUTPUT_NAME mbedcrypto${VERSION_SUFFIX})
+     target_link_libraries(${mbedcrypto_target} PUBLIC ${libs})
+ 
+     if(TARGET ${everest_target})
+@@ -314,12 +314,12 @@ if(USE_SHARED_MBEDTLS_LIBRARY)
+ 
+     add_library(${mbedx509_target} SHARED ${src_x509})
+     set_target_properties(${mbedx509_target} PROPERTIES VERSION 3.6.3 SOVERSION 7)
+-    set_target_properties(${mbedx509_target} PROPERTIES OUTPUT_NAME mbedx509${PROJECT_VERSION_MAJOR})
++    set_target_properties(${mbedx509_target} PROPERTIES OUTPUT_NAME mbedx509${VERSION_SUFFIX})
+     target_link_libraries(${mbedx509_target} PUBLIC ${libs} ${mbedcrypto_target})
+ 
+     add_library(${mbedtls_target} SHARED ${src_tls})
+     set_target_properties(${mbedtls_target} PROPERTIES VERSION 3.6.3 SOVERSION 21)
+-    set_target_properties(${mbedtls_target} PROPERTIES OUTPUT_NAME mbedtls${PROJECT_VERSION_MAJOR})
++    set_target_properties(${mbedtls_target} PROPERTIES OUTPUT_NAME mbedtls${VERSION_SUFFIX})
+     target_link_libraries(${mbedtls_target} PUBLIC ${libs} ${mbedx509_target})
+ endif(USE_SHARED_MBEDTLS_LIBRARY)
+ 
+--- a/pkgconfig/CMakeLists.txt
++++ b/pkgconfig/CMakeLists.txt
+@@ -8,18 +8,18 @@ if(NOT DISABLE_PACKAGE_CONFIG_AND_INSTALL)
+   set(PKGCONFIG_PROJECT_DESCRIPTION "Mbed TLS is a C library that implements cryptographic primitives, X.509 certificate manipulation and the SSL/TLS and DTLS protocols. Its small code footprint makes it suitable for embedded systems.")
+   set(PKGCONFIG_PROJECT_HOMEPAGE_URL "https://www.trustedfirmware.org/projects/mbed-tls/")
+ 
+-  configure_file(mbedcrypto.pc.in mbedcrypto${PROJECT_VERSION_MAJOR}.pc @ONLY)
++  configure_file(mbedcrypto.pc.in mbedcrypto${VERSION_SUFFIX}.pc @ONLY)
+     install(FILES
+-    ${CMAKE_CURRENT_BINARY_DIR}/mbedcrypto${PROJECT_VERSION_MAJOR}.pc
++    ${CMAKE_CURRENT_BINARY_DIR}/mbedcrypto${VERSION_SUFFIX}.pc
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+-  configure_file(mbedtls.pc.in mbedtls${PROJECT_VERSION_MAJOR}.pc @ONLY)
++  configure_file(mbedtls.pc.in mbedtls${VERSION_SUFFIX}.pc @ONLY)
+     install(FILES
+-    ${CMAKE_CURRENT_BINARY_DIR}/mbedtls${PROJECT_VERSION_MAJOR}.pc
++    ${CMAKE_CURRENT_BINARY_DIR}/mbedtls${VERSION_SUFFIX}.pc
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ 
+-  configure_file(mbedx509.pc.in mbedx509${PROJECT_VERSION_MAJOR}.pc @ONLY)
++  configure_file(mbedx509.pc.in mbedx509${VERSION_SUFFIX}.pc @ONLY)
+     install(FILES
+-    ${CMAKE_CURRENT_BINARY_DIR}/mbedx509${PROJECT_VERSION_MAJOR}.pc
++    ${CMAKE_CURRENT_BINARY_DIR}/mbedx509${VERSION_SUFFIX}.pc
+     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ endif()
+--- a/pkgconfig/mbedcrypto.pc.in
++++ b/pkgconfig/mbedcrypto.pc.in
+@@ -7,4 +7,4 @@ Description: @PKGCONFIG_PROJECT_DESCRIPTION@
+ URL: @PKGCONFIG_PROJECT_HOMEPAGE_URL@
+ Version: @PROJECT_VERSION@
+ Cflags: -I"${includedir}"
+-Libs: -L"${libdir}" -lmbedcrypto@PROJECT_VERSION_MAJOR@
++Libs: -L"${libdir}" -lmbedcrypto@VERSION_SUFFIX@
+--- a/pkgconfig/mbedtls.pc.in
++++ b/pkgconfig/mbedtls.pc.in
+@@ -6,6 +6,6 @@ Name: @PROJECT_NAME@
+ Description: @PKGCONFIG_PROJECT_DESCRIPTION@
+ URL: @PKGCONFIG_PROJECT_HOMEPAGE_URL@
+ Version: @PROJECT_VERSION@
+-Requires.private: mbedcrypto@PROJECT_VERSION_MAJOR@ mbedx509@PROJECT_VERSION_MAJOR@
++Requires.private: mbedcrypto@VERSION_SUFFIX@ mbedx509@VERSION_SUFFIX@
+ Cflags: -I"${includedir}"
+-Libs: -L"${libdir}" -lmbedtls@PROJECT_VERSION_MAJOR@
++Libs: -L"${libdir}" -lmbedtls@VERSION_SUFFIX@
+--- a/pkgconfig/mbedx509.pc.in
++++ b/pkgconfig/mbedx509.pc.in
+@@ -6,6 +6,6 @@ Name: @PROJECT_NAME@
+ Description: @PKGCONFIG_PROJECT_DESCRIPTION@
+ URL: @PKGCONFIG_PROJECT_HOMEPAGE_URL@
+ Version: @PROJECT_VERSION@
+-Requires.private: mbedcrypto@PROJECT_VERSION_MAJOR@
++Requires.private: mbedcrypto@VERSION_SUFFIX@
+ Cflags: -I"${includedir}"
+-Libs: -L"${libdir}" -lmbedx509@PROJECT_VERSION_MAJOR@
++Libs: -L"${libdir}" -lmbedx509@VERSION_SUFFIX@

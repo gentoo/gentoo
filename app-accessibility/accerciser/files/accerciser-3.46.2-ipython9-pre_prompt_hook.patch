@@ -1,0 +1,29 @@
+From ea5b2dfedcbf79ba1492f7cd0bd3c0a53ebec733 Mon Sep 17 00:00:00 2001
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Tue, 25 Mar 2025 17:04:16 +0100
+Subject: [PATCH] Fix compatibility with ipython 9
+
+They dropped the pre_prompt_hook
+
+Fixes #65
+---
+ plugins/ipython_view.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/ipython_view.py b/plugins/ipython_view.py
+index 016c6b7..91be14e 100755
+--- a/plugins/ipython_view.py
++++ b/plugins/ipython_view.py
+@@ -177,7 +177,8 @@ class IterableIPShell:
+ 
+     self.prompt = self.generatePrompt(self.iter_more)
+ 
+-    self.IP.hooks.pre_prompt_hook()
++    if IPython.version_info < (9,):
++        self.IP.hooks.pre_prompt_hook()
+     if self.iter_more:
+         try:
+             self.prompt = self.generatePrompt(True)
+-- 
+GitLab
+

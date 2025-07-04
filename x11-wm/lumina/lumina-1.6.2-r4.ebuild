@@ -92,6 +92,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	optfeature_header "Additional runtime features:"
 	optfeature "screensaver support" x11-misc/xscreensaver
 }

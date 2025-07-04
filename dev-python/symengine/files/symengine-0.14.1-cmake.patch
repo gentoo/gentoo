@@ -1,0 +1,23 @@
+From 6da52ebc8687f6477d54963524c8c841ce37f582 Mon Sep 17 00:00:00 2001
+From: Adrian Ostrowski <adrian.ostrowski@intel.com>
+Date: Tue, 1 Apr 2025 16:34:43 +0200
+Subject: [PATCH] Fix CMake 4.0.0 build break
+
+---
+ setup.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index fcd97ec9..5adb759f 100644
+--- a/setup.py
++++ b/setup.py
+@@ -42,7 +42,8 @@
+     from distutils.command.build import build as _build
+ 
+ cmake_opts = [("PYTHON_BIN", sys.executable),
+-              ("CMAKE_INSTALL_RPATH_USE_LINK_PATH", "yes")]
++              ("CMAKE_INSTALL_RPATH_USE_LINK_PATH", "yes"),
++              ("CMAKE_POLICY_VERSION_MINIMUM", "3.5")]
+ cmake_generator = [None]
+ cmake_build_type = ["Release"]
+ 

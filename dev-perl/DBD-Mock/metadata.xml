@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DBD-Mock</remote-id>
+    <remote-id type="cpan-module">DBD::Mock</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::Pool</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::Pool::db</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::Session</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::StatementTrack</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::StatementTrack::iterator</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::db</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::dr</remote-id>
+    <remote-id type="cpan-module">DBD::Mock::st</remote-id>
+  </upstream>
+</pkgmetadata>

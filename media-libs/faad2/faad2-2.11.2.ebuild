@@ -16,3 +16,11 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc
 PATCHES=(
 	"${FILESDIR}/faad2-2.11.0-check-if-lrintf-is-defined.patch"
 )
+
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DFAAD_BUILD_CLI=$(multilib_is_native_abi && echo "ON" || echo "OFF")
+	)
+
+	cmake_src_configure
+}

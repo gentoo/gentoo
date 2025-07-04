@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-docfiles.patch"
 	"${FILESDIR}/${PN}-1.2-fseek64-musl.patch"
 	"${FILESDIR}/${PN}-1.2.1-options.patch"
+	"${FILESDIR}/${PN}-1.2.6-linkage.patch"
 )
 
 DOCS=( README.md NEWS ChangeLog AUTHORS )

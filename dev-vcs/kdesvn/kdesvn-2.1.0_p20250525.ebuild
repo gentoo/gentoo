@@ -18,6 +18,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="+man"
 
 DEPEND="
+	!dev-vcs/kdesvn:5
 	dev-libs/apr:1
 	dev-libs/apr-util:1
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,sql,sqlite,widgets,xml]

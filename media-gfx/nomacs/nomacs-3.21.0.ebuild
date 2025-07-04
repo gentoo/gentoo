@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[concurrent,cups,gui,network,widgets]
+	dev-qt/qtbase:6[concurrent,gui,network,widgets]
 	dev-qt/qtsvg:6
 	media-gfx/exiv2:=
 	opencv? ( >=media-libs/opencv-3.4:= )

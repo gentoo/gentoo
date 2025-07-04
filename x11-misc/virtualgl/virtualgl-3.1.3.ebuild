@@ -13,7 +13,7 @@ else
 	MY_P="${MY_PN}-${PV}"
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://github.com/VirtualGL/${PN}/releases/download/${PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Run OpenGL applications remotely with full 3D hardware acceleration"
@@ -44,7 +44,9 @@ RDEPEND="
 		>=virtual/opengl-7.0-r1[abi_x86_32]
 	) )
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-util/opencl-headers
+"
 
 src_prepare() {
 	# Use /var/lib, bug #428122

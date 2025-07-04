@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Manipulate archives of files in compressed form"
 HOMEPAGE="https://github.com/jduerstock/zoo"
@@ -27,6 +27,9 @@ src_configure() {
 }
 
 src_compile() {
+	# bug #943903
+	append-cflags -std=gnu17
+
 	emake linux
 }
 

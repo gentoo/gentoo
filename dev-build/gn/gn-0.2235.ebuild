@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit edo ninja-utils python-any-r1 toolchain-funcs
 
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	# The version number is derived from `git describe HEAD --abbrev=12`
 	SRC_URI="https://deps.gentoo.zip/dev-build/gn/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="BSD"

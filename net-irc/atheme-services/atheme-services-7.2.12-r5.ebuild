@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit perl-functions systemd
 
 DESCRIPTION="A portable and secure set of open-source and modular IRC services"
-HOMEPAGE="https://github.com/atheme/atheme"
+HOMEPAGE="https://atheme.github.io/atheme.html"
 SRC_URI="https://github.com/atheme/atheme/releases/download/v${PV}/${PN}-v${PV}.tar.xz -> ${P}.tar.xz"
 
 S="${WORKDIR}/${PN}-v${PV}"

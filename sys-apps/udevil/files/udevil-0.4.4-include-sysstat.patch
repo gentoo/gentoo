@@ -1,0 +1,15 @@
+# Fixes #945124
+diff --git a/src/device-info.h b/src/device-info.h
+index 6cb3683..f3e6c8a 100644
+--- a/src/device-info.h
++++ b/src/device-info.h
+@@ -10,6 +10,9 @@
+ // glib
+ #include <glib.h>
+ 
++// POSIX
++#include <sys/stat.h>
++
+ // udev
+ #include <libudev.h>
+ #include <fcntl.h>

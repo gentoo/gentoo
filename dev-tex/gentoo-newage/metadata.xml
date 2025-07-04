@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>ulm@gentoo.org</email>
+</maintainer>
+<longdescription>
+  This font is used for the lettering in the Förderverein Gentoo e.V. logo.
+  It consists only of the five lowercase letters "e", "g", "n", "o" and "t"
+  needed to write the word "gentoo".
+</longdescription>
+</pkgmetadata>

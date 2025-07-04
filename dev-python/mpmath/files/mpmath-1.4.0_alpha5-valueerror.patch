@@ -1,0 +1,50 @@
+From 9ad6a13925922711ca004686194daf8f110feaea Mon Sep 17 00:00:00 2001
+From: Sergey B Kirpichev <skirpichev@gmail.com>
+Date: Mon, 9 Jun 2025 05:07:00 +0300
+Subject: [PATCH] Fix from_man_exp to correctly reject non-integral mantissa
+
+This partially reverts 25506567
+---
+ mpmath/ctx_mp_python.py        | 2 +-
+ mpmath/libmp/libmpf.py         | 7 +++++--
+ mpmath/tests/test_basic_ops.py | 5 +++++
+ 3 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/mpmath/ctx_mp_python.py b/mpmath/ctx_mp_python.py
+index d9e9f64f..72b81278 100644
+--- a/mpmath/ctx_mp_python.py
++++ b/mpmath/ctx_mp_python.py
+@@ -64,7 +64,7 @@ def __new__(cls, val=fzero, **kwargs):
+             if len(val) == 4:
+                 val = val[0], MPZ(val[1]), *val[2:]
+             elif len(val) == 2:
+-                v._mpf_ = from_man_exp(MPZ(val[0]), val[1], prec, rounding)
++                v._mpf_ = from_man_exp(val[0], val[1], prec, rounding)
+                 return v
+             else:
+                 raise ValueError
+diff --git a/mpmath/libmp/libmpf.py b/mpmath/libmp/libmpf.py
+index af61879e..266ee394 100644
+--- a/mpmath/libmp/libmpf.py
++++ b/mpmath/libmp/libmpf.py
+@@ -8,7 +8,7 @@
+ import sys
+ import warnings
+ 
+-from .backend import BACKEND, MPZ, MPZ_FIVE, MPZ_ONE, MPZ_ZERO, gmpy
++from .backend import BACKEND, MPZ, MPZ_FIVE, MPZ_ONE, MPZ_ZERO, gmpy, int_types
+ from .libintmath import (bctable, bin_to_radix, isqrt, numeral, sqrtrem,
+                          stddigits, trailtable)
+ 
+@@ -204,7 +204,10 @@ def normalize(sign, man, exp, bc, prec, rnd):
+ def from_man_exp(man, exp, prec=0, rnd=round_fast):
+     """Create raw mpf from (man, exp) pair. The mantissa may be signed.
+     If no precision is specified, the mantissa is stored exactly."""
+-    man = MPZ(man)
++    if isinstance(man, int_types):
++        man = MPZ(man)
++    else:
++        raise TypeError("man expected to be an integer")
+     sign = 0
+     if man < 0:
+         sign = 1

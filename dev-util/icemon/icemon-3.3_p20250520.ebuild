@@ -9,6 +9,7 @@ inherit cmake xdg
 DESCRIPTION="Monitor program for use with Icecream compile clusters"
 HOMEPAGE="https://en.opensuse.org/Icecream https://github.com/icecc/icemon"
 SRC_URI="https://github.com/icecc/icemon/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
+S="${WORKDIR}"/${PN}-${COMMIT}
 
 LICENSE="GPL-2"
 SLOT="0"

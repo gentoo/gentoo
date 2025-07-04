@@ -6,7 +6,7 @@ EAPI=8
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd meson
 
@@ -58,7 +58,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv mediawiki +nls +pcre perforce +perl +safe-directory selinux subversion test tk +webdav xinetd"
+IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -93,11 +93,6 @@ RDEPEND="
 			>=dev-vcs/cvsps-2.1:0
 			dev-perl/DBI
 			dev-perl/DBD-SQLite
-		)
-		mediawiki? (
-			dev-perl/DateTime-Format-ISO8601
-			dev-perl/HTML-Tree
-			dev-perl/MediaWiki-API
 		)
 		subversion? (
 			dev-vcs/subversion[-dso(-),perl]
@@ -139,7 +134,6 @@ SITEFILE="50${PN}-gentoo.el"
 REQUIRED_USE="
 	cgi? ( perl )
 	cvs? ( perl )
-	mediawiki? ( perl )
 	perforce? ( ${PYTHON_REQUIRED_USE} )
 	subversion? ( perl )
 	webdav? ( curl )
@@ -149,12 +143,11 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
-	"${FILESDIR}"/${PN}-2.49.0-meson-use-test_environment-conditionally.patch
 
 	# This patch isn't merged upstream but is kept in the ebuild by
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
-	"${FILESDIR}"/${PN}-2.49.0-diff-implement-config.diff.renames-copies-harder.patch
+	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
 )
 
 pkg_setup() {
@@ -269,12 +262,15 @@ src_configure() {
 	meson_src_configure
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			emesonargs=()
-			meson_src_configure
-		)
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				emesonargs=()
+				meson_src_configure
+			)
+		done
 	fi
 }
 
@@ -308,19 +304,15 @@ git_emake() {
 src_compile() {
 	meson_src_compile
 
-	if use mediawiki ; then
-		git_emake -C contrib/mw-to-git
-	fi
-
 	if use tk ; then
-		git_emake -C git-gui
-
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_compile
-		)
-
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_compile
+			)
+		done
 	fi
 
 	if use doc ; then
@@ -370,8 +362,6 @@ src_install() {
 	#dobin contrib/fast-import/git-p4 # Moved upstream
 	#dodoc contrib/fast-import/git-p4.txt # Moved upstream
 	newbin contrib/fast-import/import-tars.perl import-tars
-	exeinto /usr/libexec/git-core/
-	newexe contrib/git-resurrect.sh git-resurrect
 
 	# diff-highlight
 	dobin contrib/diff-highlight/diff-highlight
@@ -386,22 +376,16 @@ src_install() {
 	# The following are excluded:
 	# completion - installed above
 	# diff-highlight - done above
-	# emacs - removed upstream
-	# examples - these are stuff that is not used in Git anymore actually
 	# git-jump - done above
 	# gitview - installed above
 	# p4import - excluded because fast-import has a better one
 	# patches - stuff the Git guys made to go upstream to other places
-	# persistent-https - TODO
-	# mw-to-git - TODO
 	# subtree - built seperately
 	# svnimport - use git-svn
 	# thunderbird-patch-inline - fixes thunderbird
 	local contrib_objects=(
 		buildsystems
 		fast-import
-		hooks
-		remotes2config.sh
 		rerere-train.sh
 		stats
 		workdir
@@ -438,10 +422,6 @@ src_install() {
 		mv "${ED}"/usr/share/perl5/Git "${ED}/$(perl_get_vendorlib)" || die
 	fi
 
-	if use mediawiki ; then
-		git_emake -C contrib/mw-to-git DESTDIR="${D}" install
-	fi
-
 	if ! use subversion ; then
 		rm -f "${ED}"/usr/libexec/git-core/git-svn \
 			"${ED}"/usr/share/man/man1/git-svn.1*
@@ -460,13 +440,14 @@ src_install() {
 	fi
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_install
-		)
-
-		git_emake -C git-gui DESTDIR="${D}" install
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_install
+			)
+		done
 	fi
 
 	perl_delete_localpod

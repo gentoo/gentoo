@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop xdg
+inherit cmake desktop dot-a xdg
 
 DESCRIPTION="Barcode encoding library supporting over 50 symbologies"
 HOMEPAGE="https://www.zint.org.uk/"
@@ -32,6 +32,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-DZINT_FRONTEND=ON
 		-DZINT_QT6=$(usex gui)
@@ -55,4 +57,6 @@ src_install() {
 		domenu zint-qt.desktop
 		doicon zint-qt.png
 	fi
+
+	strip-lto-bytecode
 }

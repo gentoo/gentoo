@@ -17,10 +17,6 @@
 		<flag name="jit">
 			Enable experimental Just-In-Time compilation support.
 		</flag>
-		<flag name="libedit">
-			Link readline extension against <pkg>dev-libs/libedit</pkg>
-			instead of <pkg>sys-libs/readline</pkg>
-		</flag>
 		<flag name="pgo">
 			Optimize the build using Profile Guided Optimization (PGO)
 			by running Python's test suite and collecting statistics
@@ -42,6 +38,9 @@
 		</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/python/cpython/issues</bugs-to>
+		<changelog>https://docs.python.org/3/whatsnew/</changelog>
+		<doc>https://docs.python.org</doc>
 		<remote-id type="cpe">cpe:/a:python:python</remote-id>
 		<remote-id type="github">python/cpython</remote-id>
 	</upstream>

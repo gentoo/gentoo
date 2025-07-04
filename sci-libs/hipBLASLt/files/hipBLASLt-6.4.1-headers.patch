@@ -1,0 +1,12 @@
+std::map got transitively included via <regex> in libstdc++, not libc++
+Upstream fix: https://github.com/ROCm/hipBLASLt/commit/57d3aaf02554f8407d5eba6ef255836725f65aac
+--- a/clients/include/datatype_interface.hpp
++++ b/clients/include/datatype_interface.hpp
+@@ -27,6 +27,7 @@
+ #pragma once
+ 
+ #include <hipblaslt/hipblaslt.h>
++#include <map>
+ 
+ union computeTypeInterface
+ {

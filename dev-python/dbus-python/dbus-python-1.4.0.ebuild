@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit autotools python-r1
@@ -69,7 +69,7 @@ src_configure() {
 			# https://bugs.gentoo.org/815136
 			PYTHON_EXTRA_LIBS=' '
 		)
-		[[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
+		use doc && [[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
 			myconf+=( --enable-documentation )
 
 		econf "${myconf[@]}"

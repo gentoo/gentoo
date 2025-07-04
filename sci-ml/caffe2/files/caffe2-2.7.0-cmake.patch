@@ -1,0 +1,40 @@
+--- a/.ci/pytorch/test_example_code/CMakeLists.txt	2025-06-24 11:57:17.268200696 +0200
++++ b/.ci/pytorch/test_example_code/CMakeLists.txt	2025-06-24 11:57:27.656239353 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ project(simple-torch-test)
+ 
+ find_package(Torch REQUIRED)
+--- a/aten/src/ATen/test/test_install/CMakeLists.txt	2025-06-24 11:54:39.366613030 +0200
++++ b/aten/src/ATen/test/test_install/CMakeLists.txt	2025-06-24 11:54:49.938652376 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ find_package(ATen REQUIRED)
+ include_directories(${ATEN_INCLUDE_DIR})
+ 
+--- a/android/test_app/app/CMakeLists.txt	2025-06-24 11:49:00.371351384 +0200
++++ b/android/test_app/app/CMakeLists.txt	2025-06-24 11:49:12.083394978 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4.1)
++cmake_minimum_required(VERSION 3.5)
+ set(PROJECT_NAME pytorch_testapp_jni)
+ project(${PROJECT_NAME} CXX)
+ set(CMAKE_CXX_STANDARD 17 CACHE STRING "The C++ standard whose features are requested to build this target.")
+--- a/android/pytorch_android/CMakeLists.txt	2025-06-24 11:58:48.551540427 +0200
++++ b/android/pytorch_android/CMakeLists.txt	2025-06-24 11:58:59.802582301 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4.1)
++cmake_minimum_required(VERSION 3.5)
+ option(BUILD_LITE_INTERPRETER "Master flag to build pytorch_jni_lite" ON)
+ message(
+   STATUS
+--- a/android/pytorch_android_torchvision/CMakeLists.txt	2025-06-24 12:04:49.205884981 +0200
++++ b/android/pytorch_android_torchvision/CMakeLists.txt	2025-06-24 12:04:58.357919901 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4.1)
++cmake_minimum_required(VERSION 3.5)
+ project(pytorch_vision_jni CXX)
+ set(CMAKE_CXX_STANDARD 17 CACHE STRING "The C++ standard whose features are requested to build this target.")
+ set(CMAKE_VERBOSE_MAKEFILE ON)

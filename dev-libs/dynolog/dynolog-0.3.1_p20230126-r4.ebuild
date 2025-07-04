@@ -42,7 +42,7 @@ CRATES="
 	winapi-x86_64-pc-windows-gnu@0.4.0
 "
 
-inherit cargo cmake
+inherit cargo cmake dot-a
 
 DESCRIPTION="Performance monitoring daemon for heterogeneous CPU-GPU systems"
 HOMEPAGE="https://github.com/facebookincubator/dynolog"
@@ -73,6 +73,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-musl.patch
 	"${FILESDIR}"/${P}-libcxx.patch
 	"${FILESDIR}"/${P}-gcc15.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" "KernelCollecterTest.NetworkStatsTest" )
@@ -91,6 +92,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
 		-DCPR_FORCE_USE_SYSTEM_CURL=ON
@@ -116,6 +118,7 @@ src_install() {
 	cd ../cli
 	cd cli
 	cargo_src_install
+	strip-lto-bytecode
 
 	dobin "${BUILD_DIR}"/${PN}/src/${PN}
 }

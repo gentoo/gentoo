@@ -3,10 +3,11 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic xdg
+inherit cmake flag-o-matic virtualx xdg
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawberrymusicplayer.org/"
+
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/strawberrymusicplayer/strawberry"
 	inherit git-r3
@@ -17,14 +18,10 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="alsa cdda chromaprint +dbus debug kde +loudness ipod moodbar mtp +pulseaudio streaming +udisks X"
+IUSE="alsa cdda chromaprint +dbus debug kde +loudness ipod moodbar mtp +pulseaudio streaming test +udisks X"
+RESTRICT="!test? ( test )"
 
-BDEPEND="
-	sys-devel/gettext
-	virtual/pkgconfig
-"
-
-#INFO: alsa-lib is always required in linux even if its not built
+# alsa-lib is always required in linux even if it's not built
 COMMON_DEPEND="
 	dev-db/sqlite:=
 	dev-libs/glib:2
@@ -46,16 +43,24 @@ COMMON_DEPEND="
 	loudness? ( media-libs/libebur128 )
 	pulseaudio? ( media-libs/libpulse )
 "
-# Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
-RDEPEND="${COMMON_DEPEND}
+# Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required.
+# Check if this can be overcome someway.
+RDEPEND="
+	${COMMON_DEPEND}
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-taglib
 	udisks? ( sys-fs/udisks:2 )
 	kde? ( kde-frameworks/kglobalaccel )
 "
-DEPEND="${COMMON_DEPEND}
-	dev-cpp/gtest
+DEPEND="
+	${COMMON_DEPEND}
 	dev-libs/boost
+	test? ( dev-cpp/gtest )
+"
+BDEPEND="
+	dev-qt/qttools:6[linguist]
+	sys-devel/gettext
+	virtual/pkgconfig
 "
 
 DOCS=( Changelog README.md )
@@ -68,7 +73,8 @@ REQUIRED_USE="
 src_configure() {
 	# spotify is not in portage
 	local mycmakeargs=(
-		$(cmake_use_find_package X X11 )
+		$(cmake_use_find_package test GTest)
+		$(cmake_use_find_package X X11)
 		-DBUILD_WERROR=OFF
 		# avoid automagically enabling of ccache (bug #611010)
 		-DCCACHE_EXECUTABLE=OFF
@@ -97,6 +103,10 @@ src_configure() {
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
 
 	cmake_src_configure
+}
+
+src_test() {
+	virtx cmake_build run_strawberry_tests
 }
 
 pkg_postinst() {

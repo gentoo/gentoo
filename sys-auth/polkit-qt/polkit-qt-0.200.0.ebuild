@@ -17,7 +17,7 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="+qt5 qt6"
+IUSE="qt5 +qt6"
 REQUIRED_USE="|| ( qt5 qt6 )"
 
 RDEPEND="

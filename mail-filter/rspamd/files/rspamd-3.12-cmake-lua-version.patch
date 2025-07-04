@@ -1,0 +1,64 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1d48a2096..98e8c2ec0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -167,55 +167,8 @@ if (ENABLE_LUAJIT)
+ else ()
+     # Try to find Lua (5.3, 5.4, 5.2, or 5.1 in that order)
+     ProcessPackage(LIBLUA LIBRARY "lua"
+-            "lua-5.3"
+-            LIB_SUFFIXES "lua5.3"
+-            INCLUDE lua.h INCLUDE_SUFFIXES
+-            "include/lua-5.3"
+-            "include/lua5.3"
+-            "include/lua53"
+-            "include/lua"
+             ROOT ${LUA_ROOT}
+-            MODULES lua53
+-            OPTIONAL)
+-
+-    if (NOT WITH_LIBLUA)
+-        ProcessPackage(LIBLUA LIBRARY "lua"
+-                "lua-5.4"
+-                LIB_SUFFIXES "lua5.4"
+-                INCLUDE lua.h INCLUDE_SUFFIXES
+-                "include/lua-5.4"
+-                "include/lua5.4"
+-                "include/lua54"
+-                "include/lua"
+-                ROOT ${LUA_ROOT}
+-                MODULES lua54
+-                OPTIONAL)
+-        if (NOT WITH_LIBLUA)
+-            ProcessPackage(LIBLUA LIBRARY "lua"
+-                    "lua-5.2"
+-                    LIB_SUFFIXES "lua5.2"
+-                    INCLUDE lua.h INCLUDE_SUFFIXES
+-                    "include/lua-5.2"
+-                    "include/lua5.2"
+-                    "include/lua52"
+-                    "include/lua"
+-                    ROOT ${LUA_ROOT}
+-                    MODULES lua52
+-                    OPTIONAL)
+-
+-            if (NOT WITH_LIBLUA)
+-                ProcessPackage(LIBLUA LIBRARY "lua"
+-                        "lua-5.1"
+-                        INCLUDE lua.h INCLUDE_SUFFIXES
+-                        "include/lua-5.1"
+-                        "include/lua5.1"
+-                        "include/lua51"
+-                        "include/lua"
+-                        ROOT ${LUA_ROOT}
+-                        MODULES lua51)
+-            endif ()
+-        endif ()
+-    endif ()
++            MODULES lua)
+ endif ()
+ 
+ # Memory allocator
+-- 
+2.49.0
+

@@ -1,0 +1,79 @@
+https://bugs.gentoo.org/945281
+--- a/vbi.c
++++ b/vbi.c
+@@ -876,7 +876,7 @@ vbi_reset(struct vbi *vbi)
+ /*#include "dvb/sec.h"*/
+ #include "dvb/video.h"
+ 
+-static int dvb_get_table(int fd, u_int16_t pid, u_int8_t tblid, u_int8_t *buf, size_t bufsz)
++static int dvb_get_table(int fd, uint16_t pid, uint8_t tblid, uint8_t *buf, size_t bufsz)
+ {
+         struct dmx_sct_filter_params sctFilterParams;
+ 	struct pollfd pfd;
+@@ -1038,7 +1038,7 @@ static size_t dvb_get_string(char *inbuf, size_t inbuf_size, char *outbuf, size_
+ 	return r;
+ }
+ 
+-static const u_int8_t byterev8[256] = {
++static const uint8_t byterev8[256] = {
+         0x00, 0x80, 0x40, 0xc0, 0x20, 0xa0, 0x60, 0xe0, 
+         0x10, 0x90, 0x50, 0xd0, 0x30, 0xb0, 0x70, 0xf0, 
+         0x08, 0x88, 0x48, 0xc8, 0x28, 0xa8, 0x68, 0xe8, 
+@@ -1073,10 +1073,10 @@ static const u_int8_t byterev8[256] = {
+         0x1f, 0x9f, 0x5f, 0xdf, 0x3f, 0xbf, 0x7f, 0xff
+ };
+ 
+-static void dvb_handle_pes_payload(struct vbi *vbi, const u_int8_t *buf, unsigned int len)
++static void dvb_handle_pes_payload(struct vbi *vbi, const uint8_t *buf, unsigned int len)
+ {
+ 	unsigned int p, i;
+-	u_int8_t data[42];
++	uint8_t data[42];
+ 
+ 	if (buf[0] < 0x10 || buf[0] > 0x1f)
+ 		return;  /* no EBU teletext data */
+@@ -1114,12 +1114,12 @@ static unsigned int rawptr;
+ static void dvb_handler(struct vbi *vbi, int fd)
+ {
+ 	/* PES packet start code prefix and stream_id == private_stream_1 */
+-	static const u_int8_t peshdr[4] = { 0x00, 0x00, 0x01, 0xbd };
+-	u_int8_t *bp;
++	static const uint8_t peshdr[4] = { 0x00, 0x00, 0x01, 0xbd };
++	uint8_t *bp;
+ 	int n;
+ 	unsigned int p, i, len;
+-        u_int16_t rpid;
+-        u_int32_t crc, crccomp;
++        uint16_t rpid;
++        uint32_t crc, crccomp;
+ 
+ 	if (rawptr >= (unsigned int)rawbuf_size)
+ 		rawptr = 0;
+@@ -1164,18 +1164,18 @@ static void dvb_handler(struct vbi *vbi, int fd)
+ static int vbi_dvb_open(struct vbi *vbi, const char *vbi_name, const char *progname, int txtpid, int info)
+ {
+ 	struct {
+-		u_int16_t pmtpid;
+-		u_int16_t txtpid;
+-		u_int16_t service_id;
+-		u_int8_t service_type;
++		uint16_t pmtpid;
++		uint16_t txtpid;
++		uint16_t service_id;
++		uint8_t service_type;
+ 		char service_provider_name[64];
+ 		char service_name[64];
+-		u_int8_t txtlang[3];
+-		u_int8_t txttype;
+-		u_int8_t txtmagazine;
+-		u_int8_t txtpage;
++		uint8_t txtlang[3];
++		uint8_t txttype;
++		uint8_t txtmagazine;
++		uint8_t txtpage;
+ 	} progtbl[128], *progp;
+-	u_int8_t tbl[4096];
++	uint8_t tbl[4096];
+ 	int r;
+ 	unsigned int i, j, k, l, progcnt = 0;
+ 	struct dmx_pes_filter_params filterpar;

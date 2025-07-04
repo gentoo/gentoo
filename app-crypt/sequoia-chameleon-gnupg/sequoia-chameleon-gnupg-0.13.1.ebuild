@@ -8,7 +8,7 @@ EAPI=8
 CRATES="
 "
 
-LLVM_COMPAT=( {17..19} )
+LLVM_COMPAT=( {17..20} )
 RUST_NEEDS_LLVM=1
 
 inherit cargo llvm-r1 xdg-utils
@@ -30,7 +30,7 @@ LICENSE+="
 	|| ( GPL-2 GPL-3 LGPL-3 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 # Still some issue to do with columns?
 RESTRICT="test"
 

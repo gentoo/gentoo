@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit elisp-common distutils-r1 optfeature
 
 if [[ ${PV} == *9999 ]] ; then
@@ -29,8 +29,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.10.10[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.12.25[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.10.11[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.12.30[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	>=dev-libs/tree-sitter-bash-0.21.0[python,${PYTHON_USEDEP}]
@@ -59,6 +59,13 @@ SITEFILE="50${PN}-gentoo.el"
 distutils_enable_tests pytest
 
 export USE_SYSTEM_TREE_SITTER_BASH=1
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin dependencies
+	sed -i -e 's:~=:>=:' pyproject.toml || die
+}
 
 src_compile() {
 	distutils-r1_src_compile

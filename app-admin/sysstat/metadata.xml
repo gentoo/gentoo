@@ -2,10 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">sysstat/sysstat</remote-id>
-	</upstream>
 	<use>
 		<flag name="dcron">Adjust cronjobs to work properly under <pkg>sys-process/dcron</pkg></flag>
 	</use>
+	<upstream>
+		<bugs-to>https://github.com/sysstat/sysstat/issues</bugs-to>
+		<changelog>https://github.com/sysstat/sysstat/blob/master/CHANGES</changelog>
+		<doc>https://github.com/sysstat/sysstat/wiki</doc>
+		<remote-id type="github">sysstat/sysstat</remote-id>
+		<remote-id type="cpe">cpe:/a:sysstat_project:sysstat</remote-id>
+	</upstream>
 </pkgmetadata>

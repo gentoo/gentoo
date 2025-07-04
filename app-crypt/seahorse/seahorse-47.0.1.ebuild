@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/seahorse"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="ldap zeroconf"
 
 RDEPEND="
@@ -44,6 +44,11 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/seahorse/-/issues/348
+	"${FILESDIR}/${PN}-47.0.1-ldap-test.patch"
+)
 
 src_prepare() {
 	default

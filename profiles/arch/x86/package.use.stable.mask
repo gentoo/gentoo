@@ -69,7 +69,7 @@ sys-kernel/installkernel efistub
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
 # Destabilizing x86 keywords on sci-*/* packages
-app-metrics/collectd collectd_plugins_gps collectd_plugins_sigrok
+app-metrics/collectd collectd_plugins_gps
 dev-games/openscenegraph las
 dev-libs/efl physics
 media-libs/a52dec djbfft

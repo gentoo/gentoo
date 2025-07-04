@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
 IUSE="+cron"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-dehydrated )"

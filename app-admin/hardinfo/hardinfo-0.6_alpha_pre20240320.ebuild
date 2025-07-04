@@ -11,6 +11,8 @@ DESCRIPTION="System information and benchmark tool for Linux systems"
 HOMEPAGE="https://github.com/lpereira/hardinfo"
 SRC_URI="https://github.com/lpereira/hardinfo/archive/${GIT_COMMIT}.tar.gz -> ${P}-${GIT_COMMIT}.tar.gz"
 
+S="${WORKDIR}/${PN}-${GIT_COMMIT}"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 ~riscv x86"
@@ -23,8 +25,6 @@ RDEPEND="dev-libs/glib:2
 	>=x11-libs/gtk+-3.0:3"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 
 PATCHES=( "${FILESDIR}"/hardinfo-0.6-fix-function-declarations.patch )
 

@@ -8,6 +8,7 @@
   <use>
     <flag name="rubrica">Adds support for rubrica addressbook</flag>
     <flag name="systray">Enable System Tray Icon support</flag>
+    <flag name="webdav">Add WebDAV support for CardDAV address book</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/balsa</remote-id>

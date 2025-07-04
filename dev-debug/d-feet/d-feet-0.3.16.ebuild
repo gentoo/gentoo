@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit gnome2 meson python-single-r1 virtualx
 
@@ -33,11 +33,11 @@ RDEPEND="
 "
 BDEPEND="
 	dev-util/itstool
-	test? ( dev-python/pycodestyle )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.16-fix-meson-0.61.patch
+	"${FILESDIR}"/0001-Do-not-lint-coding-style-in-distro-testing.patch
 )
 
 src_configure() {

@@ -29,7 +29,7 @@
 		– No Ads.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">dev47apps/droidcam</remote-id>
-		<bugs-to>https://github.com/dev47apps/droidcam/issues</bugs-to>
+		<remote-id type="github">dev47apps/droidcam-linux-client</remote-id>
+		<bugs-to>https://github.com/dev47apps/droidcam-linux-client/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

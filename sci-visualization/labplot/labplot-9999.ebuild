@@ -76,6 +76,9 @@ BDEPEND="
 "
 
 src_prepare() {
+	# bug 958185
+	rm -r src/3rdparty/kdmactouchbar || die
+
 	ecm_src_prepare
 
 	sed -e "/^ *find_package.*QT NAMES/s/Qt5 //" \

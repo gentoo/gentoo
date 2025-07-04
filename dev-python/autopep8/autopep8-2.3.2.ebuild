@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi
@@ -21,9 +21,6 @@ KEYWORDS="~alpha amd64 arm64 ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-python/pycodestyle-2.12.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.10)
 "
 
 distutils_enable_tests pytest

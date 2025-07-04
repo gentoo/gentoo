@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/949720
+https://jira.mariadb.org/browse/MDEV-36036
+https://jira.mariadb.org/browse/MDEV-36113
+--- a/storage/innobase/include/trx0trx.h
++++ b/storage/innobase/include/trx0trx.h
+@@ -671,14 +671,18 @@
+   {
+     ut_ad(!mutex_is_owner());
+     mutex.wr_lock();
++#ifdef UNIV_DEBUG
+     assert(!mutex_owner.exchange(pthread_self(),
+                                  std::memory_order_relaxed));
++#endif /* UNIV_DEBUG */
+   }
+   /** Release the mutex */
+   void mutex_unlock()
+   {
++#ifdef UNIV_DEBUG
+     assert(mutex_owner.exchange(0, std::memory_order_relaxed) ==
+            pthread_self());
++#endif /* UNIV_DEBUG */
+     mutex.wr_unlock();
+   }
+ #ifndef SUX_LOCK_GENERIC

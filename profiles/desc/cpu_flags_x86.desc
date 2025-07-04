@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Whenever the flag name does not correspond to /proc/cpuinfo flags,
@@ -8,7 +8,11 @@
 3dnow - Use the 3DNow! instruction set
 3dnowext - Use the Enhanced 3DNow! instruction set
 aes - Enable support for Intel's AES instruction set (AES-NI)
+amx_bf16 - Use Advanced Matrix Extensions tile computational operations on bfloat16 numbers
+amx_tile - Use Advanced Matrix Extensions tile architecture support
+amx_int8 - Use Advanced Matrix Extensions tile computational operations on 8-bit integers
 avx - Adds support for Advanced Vector Extensions instructions
+avx_vnni - Use AVX (VEX-encoded) versions of the Vector Neural Network Instructions
 avx2 - Adds support for Advanced Vector Extensions 2 instructions
 avx512_4fmaps - Use AVX-512 Fused Multiply-Accumulate Packed Single Precision instruction set
 avx512_4vnniw - Use AVX-512 Vector Neural Network Instructions Word Variable Precision
@@ -28,6 +32,8 @@ avx512ifma - Use AVX-512 Integer Fused Multiply-Add instruction set
 avx512pf - Use AVX-512 prefetch instructions
 avx512vbmi - Use AVX-512 vector byte manipulation instructions
 avx512vl - Use AVX-512 vector-length instructions
+bmi1 - Enable the first group of advanced bit manipulation extensions (ANDN, BEXTR, BLSI, BLSMSK, BLSR, TZCNT)
+bmi2 - Enable the second group of advanced bit manipulation extensions (BZHI, MULX, PDEP, PEXT, RORX, SARX, SHLX, SHRX)
 f16c - Adds support for F16C instruction set for converting between half-precision and single-precision floats
 fma3 - Use the Fused Multiply Add 3 instruction set ([fma] in cpuinfo)
 fma4 - Use the Fused Multiply Add 4 instruction set

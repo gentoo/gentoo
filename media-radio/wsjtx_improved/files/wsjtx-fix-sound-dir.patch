@@ -1,0 +1,66 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a4d37ad..aaf771e 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1733,7 +1733,7 @@ install (DIRECTORY
+ 
+ install (DIRECTORY
+   ${PROJECT_SOURCE_DIR}/sounds
+-  DESTINATION ${CMAKE_INSTALL_BINDIR}
++  DESTINATION ${CMAKE_INSTALL_DATADIR}/${CMAKE_PROJECT_NAME}
+   #COMPONENT runtime
+   )
+ 
+diff --git a/widgets/displaytext.cpp b/widgets/displaytext.cpp
+index 371e7b6..66d6b23 100755
+--- a/widgets/displaytext.cpp
++++ b/widgets/displaytext.cpp
+@@ -917,7 +917,7 @@ void DisplayText::AudioAlerts()
+ {
+     if(m_config->alert_Enabled()) {
+         QAudioDevice info(QMediaDevices::defaultAudioOutput());
+-        QString binPath = QCoreApplication::applicationDirPath();
++        QString binPath = "/usr/share/wsjtx";
+         QAudioFormat format;
+         format.setSampleRate(48000);
+         format.setChannelCount(1);
+diff --git a/widgets/mainwindow.cpp b/widgets/mainwindow.cpp
+index 04aadde..8ba7b4c 100755
+--- a/widgets/mainwindow.cpp
++++ b/widgets/mainwindow.cpp
+@@ -2963,7 +2963,7 @@ void MainWindow::fastSink(qint64 frames)
+     QTimer::singleShot (100, [=] {                       // UR delete for versions without alerts
+       if ((m_config.alert_Enabled()) && (m_config.alert_DXcall()) && (play_DXcall) && (m_hisCall!="")) {
+         QAudioDevice info(QMediaDevices::defaultAudioOutput());
+-        QString binPath = QCoreApplication::applicationDirPath();
++        QString binPath = "/usr/share/wsjtx";
+         QAudioFormat format;
+         format.setSampleRate(48000);
+         format.setChannelCount(1);
+@@ -6475,7 +6475,7 @@ void MainWindow::readFromStdout()                             //readFromStdout
+         QTimer::singleShot (100, [=] {                       // UR delete for versions without alerts
+           if (m_config.alert_Enabled() && m_config.alert_DXcall() && play_DXcall && m_hisCall!="") {
+             QAudioDevice info(QMediaDevices::defaultAudioOutput());
+-            QString binPath = QCoreApplication::applicationDirPath();
++            QString binPath = "/usr/share/wsjtx";
+             QAudioFormat format;
+             format.setSampleRate(48000);
+             format.setChannelCount(1);
+@@ -9549,7 +9549,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)    // mouse press events
+ // Testing the default audio device
+   if (ui->pbBandHopping->hasFocus() && event->button() & Qt::RightButton) {
+     QAudioDevice info(QMediaDevices::defaultAudioOutput());
+-    QString binPath = QCoreApplication::applicationDirPath();
++    QString binPath = "/usr/share/wsjtx";
+     QAudioFormat format;
+     format.setSampleRate(48000);
+     format.setChannelCount(1);
+@@ -15768,7 +15768,7 @@ void MainWindow::remove_old_files(const QString &directoryPath, int daysOld)
+ void MainWindow::alertQSYmessage ()
+ {
+   QAudioDevice info(QMediaDevices::defaultAudioOutput());
+-  QString binPath = QCoreApplication::applicationDirPath();
++  QString binPath = "/usr/share/wsjtx";
+   QAudioFormat format;
+   format.setSampleRate(48000);
+   format.setChannelCount(1);

@@ -1,0 +1,139 @@
+https://github.com/nullobsi/cantata/pull/71.patch
+> online/podcastsearchdialog.cpp:67:6: 
+> error: type ‘Roles’ violates the C++ One Definition Rule
+> devices/albumdetailsdialog.cpp:311:6: 
+> note: an enum with different value name is defined in another translation unit
+> gui/initialsettingswizard.cpp:44:6: 
+> error: type ‘Pages’ violates the C++ One Definition Rule
+> devices/actiondialog.cpp:68:6: 
+> note: an enum with different value name is defined in another translation unit
+From a19efdf9649c50320f8592f07d82734c352ace9c Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Tue, 10 Jun 2025 17:48:09 +0200
+Subject: [PATCH] fix ODR violations, move enums into class scope in headers
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ devices/actiondialog.cpp       | 9 ---------
+ devices/actiondialog.h         | 9 +++++++++
+ gui/initialsettingswizard.cpp  | 7 -------
+ gui/initialsettingswizard.h    | 7 +++++++
+ online/podcastsearchdialog.cpp | 8 --------
+ online/podcastsearchdialog.h   | 9 +++++++++
+ 6 files changed, 25 insertions(+), 24 deletions(-)
+
+diff --git a/devices/actiondialog.cpp b/devices/actiondialog.cpp
+index a19a75bbe..f340dd902 100644
+--- a/devices/actiondialog.cpp
++++ b/devices/actiondialog.cpp
+@@ -65,15 +65,6 @@ int ActionDialog::instanceCount()
+ 	return iCount;
+ }
+ 
+-enum Pages {
+-	PAGE_SIZE_CALC,
+-	PAGE_INSUFFICIENT_SIZE,
+-	PAGE_START,
+-	PAGE_ERROR,
+-	PAGE_SKIP,
+-	PAGE_PROGRESS
+-};
+-
+ ActionDialog::ActionDialog(QWidget* parent)
+ 	: Dialog(parent), spaceRequired(0), mpdConfigured(false), currentDev(nullptr), songDialog(nullptr)
+ {
+diff --git a/devices/actiondialog.h b/devices/actiondialog.h
+index 82cab7575..8c144f548 100644
+--- a/devices/actiondialog.h
++++ b/devices/actiondialog.h
+@@ -47,6 +47,15 @@ class ActionDialog : public Dialog, Ui::ActionDialog {
+ 		Sync
+ 	};
+ 
++	enum Pages {
++		PAGE_SIZE_CALC,
++		PAGE_INSUFFICIENT_SIZE,
++		PAGE_START,
++		PAGE_ERROR,
++		PAGE_SKIP,
++		PAGE_PROGRESS
++	};
++
+ 	typedef QPair<QString, QString> StringPair;
+ 	typedef QList<StringPair> StringPairList;
+ 
+diff --git a/gui/initialsettingswizard.cpp b/gui/initialsettingswizard.cpp
+index acafa3747..b74877027 100644
+--- a/gui/initialsettingswizard.cpp
++++ b/gui/initialsettingswizard.cpp
+@@ -41,13 +41,6 @@
+ #include <QTimer>
+ #include <filesystem>
+ 
+-enum Pages {
+-	PAGE_INTRO,
+-	PAGE_CONNECTION,
+-	PAGE_COVERS,
+-	PAGE_END
+-};
+-
+ InitialSettingsWizard::InitialSettingsWizard(QWidget* p)
+ 	: QWizard(p)
+ {
+diff --git a/gui/initialsettingswizard.h b/gui/initialsettingswizard.h
+index 90e80984f..9ffda750b 100644
+--- a/gui/initialsettingswizard.h
++++ b/gui/initialsettingswizard.h
+@@ -32,6 +32,13 @@
+ class InitialSettingsWizard : public QWizard, public Ui::InitialSettingsWizard {
+ 	Q_OBJECT
+ 
++	enum Pages {
++		PAGE_INTRO,
++		PAGE_CONNECTION,
++		PAGE_COVERS,
++		PAGE_END
++	};
++
+ public:
+ 	InitialSettingsWizard(QWidget* p = nullptr);
+ 	~InitialSettingsWizard() override;
+diff --git a/online/podcastsearchdialog.cpp b/online/podcastsearchdialog.cpp
+index 3516a345d..639058bd4 100644
+--- a/online/podcastsearchdialog.cpp
++++ b/online/podcastsearchdialog.cpp
+@@ -64,14 +64,6 @@ static QCache<QUrl, QImage> imageCache(200 * 1024);
+ static int maxImageSize = -1;
+ static const char* constOrigUrlProperty = "orig-url";
+ 
+-enum Roles {
+-	IsPodcastRole = Qt::UserRole,
+-	UrlRole,
+-	ImageUrlRole,
+-	DescriptionRole,
+-	WebPageUrlRole
+-};
+-
+ QString PodcastSearchDialog::constCacheDir = QLatin1String("podcast-directories");
+ QString PodcastSearchDialog::constExt = QLatin1String(".opml");
+ 
+diff --git a/online/podcastsearchdialog.h b/online/podcastsearchdialog.h
+index 2d494200a..d33e5c3c9 100644
+--- a/online/podcastsearchdialog.h
++++ b/online/podcastsearchdialog.h
+@@ -47,6 +47,15 @@ struct Podcast;
+ 
+ class PodcastPage : public QWidget {
+ 	Q_OBJECT
++
++	enum Roles {
++		IsPodcastRole = Qt::UserRole,
++		UrlRole,
++		ImageUrlRole,
++		DescriptionRole,
++		WebPageUrlRole
++	};
++
+ public:
+ 	PodcastPage(QWidget* p, const QString& n);
+ 	~PodcastPage() override

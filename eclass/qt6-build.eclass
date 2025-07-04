@@ -118,6 +118,9 @@ qt6-build_src_unpack() {
 # QT6_PREFIX, QT6_LIBDIR, and others), and handle anything else
 # generic as needed.
 qt6-build_src_prepare() {
+	# Qt has quite a lot of unused (false positive) CMakeLists.txt
+	local CMAKE_QA_COMPAT_SKIP=1
+
 	cmake_src_prepare
 
 	if [[ -e CMakeLists.txt ]]; then
@@ -236,24 +239,6 @@ _qt6-build_create_user_facing_links() {
 	# even if no links (empty), if missing will assume that it is an error
 	[[ ${PN} == qttranslations ]] && return
 
-	# TODO: drop when <6.8.3 is gone, unneeded version with relative paths
-	if ver_test -lt 6.8.3; then
-		local link
-		while IFS= read -r link; do
-			if [[ -z ${link} ]]; then
-				continue
-			elif [[ ${link} =~ ^("${QT6_PREFIX}"/.+)\ ("${QT6_PREFIX}"/bin/.+) ]]
-			then
-				dosym -r "${BASH_REMATCH[1]#"${EPREFIX}"}" \
-					"${BASH_REMATCH[2]#"${EPREFIX}"}"
-			else
-				die "unrecognized user_facing_tool_links.txt line: ${link}"
-			fi
-		done < "${BUILD_DIR}"/user_facing_tool_links.txt || die
-
-		return
-	fi
-
 	local link
 	while IFS= read -r link; do
 		if [[ -z ${link} ]]; then
@@ -336,6 +321,9 @@ _qt6-build_sanitize_cpu_flags() {
 			x86-64-v2
 			#  if (__AVX__ + __AVX2__ + __BMI__ + __BMI2__ + __F16C__ + __FMA__ + __LZCNT__ + __MOVBE__ + __XSAVE__) == 9
 			x86-64-v3
+			#    if !defined(__EVEX512__) && !defined(__clang__) && __GNUC__ >= 16
+			#      define __EVEX512__ 1 /* removed in gcc-16 (bug #956750) */
+			#    endif
 			#    if (__AVX512BW__ + __AVX512CD__ + __AVX512DQ__ + __AVX512F__ + __AVX512VL__ + __EVEX256__ + __EVEX512__) == 7
 			x86-64-v4
 			#    endif

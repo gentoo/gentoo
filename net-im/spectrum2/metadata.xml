@@ -16,7 +16,6 @@
 		<flag name="irc">Enables the IRC backend, based on <pkg>net-im/libcommuni</pkg>.</flag>
 		<flag name="purple">Enables the libpurple backend, based on <pkg>net-im/pidgin</pkg>.</flag>
 		<flag name="sms">Enables the SMS backend, based on <pkg>app-mobilephone/smstools</pkg>.</flag>
-		<flag name="whatsapp">Enables the WhatsApp backend, based on <pkg>net-im/transwhat</pkg>.</flag>
 		<flag name="twitter">Enables the Twitter backend.</flag>
 	</use>
 	<upstream>

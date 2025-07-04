@@ -1,0 +1,39 @@
+# backported from https://github.com/sm0svx/svxlink/commit/24588ca4d6235aceb4afd2f17a15981f88025717
+From 24588ca4d6235aceb4afd2f17a15981f88025717 Mon Sep 17 00:00:00 2001
+From: Tobias Blomberg <sm0svx@users.noreply.github.com>
+Date: Mon, 19 May 2025 22:15:51 +0200
+Subject: [PATCH] Fix build errors for newer versions of gcc on some distros
+
+Close #707
+---
+ src/async/core/AsyncDnsLookupWorker.h | 2 +-
+ src/svxlink/svxlink/EventHandler.cpp  | 2 +-
+ src/versions                          | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/async/core/AsyncDnsLookupWorker.h b/src/async/core/AsyncDnsLookupWorker.h
+index af128f23a..f7d7cbd98 100644
+--- a/src/async/core/AsyncDnsLookupWorker.h
++++ b/src/async/core/AsyncDnsLookupWorker.h
+@@ -428,7 +428,7 @@ class DnsLookupWorker
+     struct CompSRV
+     {
+       bool operator()(const DnsResourceRecordSRV* lhs,
+-                      const DnsResourceRecordSRV* rhs)
++                      const DnsResourceRecordSRV* rhs) const
+       {
+         return lhs->prio() < rhs->prio();
+       }
+diff --git a/src/svxlink/svxlink/EventHandler.cpp b/src/svxlink/svxlink/EventHandler.cpp
+index cacbee067..c5151867c 100644
+--- a/src/svxlink/svxlink/EventHandler.cpp
++++ b/src/svxlink/svxlink/EventHandler.cpp
+@@ -482,7 +482,7 @@ int EventHandler::genericCommandHandler(ClientData cdata, Tcl_Interp *irp,
+   if (!msg.empty())
+   {
+     auto msg_alloc_len = msg.size()+1;
+-    char* msg_copy = Tcl_Alloc(msg_alloc_len);
++    char* msg_copy = static_cast<char*>(Tcl_Alloc(msg_alloc_len));
+     memcpy(msg_copy, msg.c_str(), msg_alloc_len);
+     Tcl_SetResult(irp, msg_copy, TCL_DYNAMIC);
+     return TCL_ERROR;

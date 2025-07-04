@@ -96,7 +96,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 
-	fcaps cap_sys_ptrace /usr/bin/${PN}
+	fcaps cap_sys_ptrace usr/bin/${PN}
 
 	optfeature "Viewing processes accessing certain files" sys-process/lsof
 }

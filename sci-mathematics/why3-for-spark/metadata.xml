@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>ada@gentoo.org</email>
-		<name>Tupone Alfredo</name>
 	</maintainer>
 	<longdescription lang="en">
 		Why3 is a platform for deductive program verification. It provides a

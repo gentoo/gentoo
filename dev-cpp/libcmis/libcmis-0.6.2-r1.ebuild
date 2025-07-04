@@ -10,7 +10,7 @@ else
 	SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 fi
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="C++ client library for the CMIS interface"
 HOMEPAGE="https://github.com/tdf/libcmis"
@@ -18,15 +18,15 @@ HOMEPAGE="https://github.com/tdf/libcmis"
 LICENSE="|| ( GPL-2 LGPL-2 MPL-1.1 )"
 SLOT="0/0.6"
 IUSE="man test tools"
-
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/boost:=
 	dev-libs/libxml2:=
 	net-misc/curl
 "
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	!dev-cpp/libcmis:0.5
 "
 BDEPEND="
@@ -36,7 +36,6 @@ BDEPEND="
 		dev-libs/libxslt
 	)
 	test? (
-		dev-util/cppcheck
 		dev-util/cppunit
 	)
 "
@@ -54,6 +53,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# ODR issues in tests w/ curl
+	filter-lto
+
 	local myeconfargs=(
 		--disable-werror
 		$(use_with man)

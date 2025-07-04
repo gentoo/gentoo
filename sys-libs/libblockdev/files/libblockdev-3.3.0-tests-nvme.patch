@@ -1,0 +1,29 @@
+https://github.com/storaged-project/libblockdev/commit/96e69ff1d60d343e64731e37c36fa5630f19295c
+
+From 96e69ff1d60d343e64731e37c36fa5630f19295c Mon Sep 17 00:00:00 2001
+From: Tomas Bzatek <tbzatek@redhat.com>
+Date: Mon, 7 Apr 2025 18:26:42 +0200
+Subject: [PATCH] tests: Fix NVMe sanitize log return codes
+
+When calling nvme_get_log_sanitize() on a namespace device through
+io_uring codepath, return codes may differ slightly. This is perfectly
+fine, subject to the kernel implementation. In this case the errno 22
+comes directly from io_uring_wait_cqe().
+---
+ tests/nvme_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/nvme_test.py b/tests/nvme_test.py
+index 2ce844c0..72dfcf4e 100644
+--- a/tests/nvme_test.py
++++ b/tests/nvme_test.py
+@@ -283,7 +283,7 @@ def test_sanitize_log(self):
+         with self.assertRaisesRegex(GLib.GError, r".*Failed to open device .*': No such file or directory"):
+             BlockDev.nvme_get_sanitize_log("/dev/nonexistent")
+ 
+-        message = r"NVMe Get Log Page - Sanitize Status Log command error: Invalid Field in Command: A reserved coded value or an unsupported value in a defined field|NVMe Get Log Page - Sanitize Status Log command error: unrecognized"
++        message = r"NVMe Get Log Page - Sanitize Status Log command error: (Invalid Field in Command: A reserved coded value or an unsupported value in a defined field|unrecognized|No such file or directory)"
+         with self.assertRaisesRegex(GLib.GError, message):
+             # Cannot retrieve sanitize log on a nvme target loop devices
+             BlockDev.nvme_get_sanitize_log(self.nvme_dev)
+

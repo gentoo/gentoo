@@ -1,0 +1,42 @@
+From 2008de510c76c40dca9c175febfe14200f1f5fb5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 21 Jun 2025 07:14:42 +0200
+Subject: [PATCH] Fix tests with pytest-asyncio >= 1.0.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Update tests not to use the deprecated `event_loop` fixture that's
+been removed in pytest-asyncio >= 1.0.0.  Instead, use
+`asyncio.get_running_loop()` as the recommended replacement.  Make
+the fixture `async` as well to make things work correctly.
+
+This change is compatible both with `pytest-asyncio >= 1.0.0`
+and `== 0.23.6`.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ tests/conftest.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 6aef1a1..21159de 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,12 +1,14 @@
++import asyncio
++
+ import pytest
+ 
+ from grpclib.config import Configuration
+ 
+ 
+ @pytest.fixture(name='loop')
+-def loop_fixture(event_loop):
++async def loop_fixture():
+     """ Shortcut """
+-    return event_loop
++    return asyncio.get_running_loop()
+ 
+ 
+ @pytest.fixture(name='config')

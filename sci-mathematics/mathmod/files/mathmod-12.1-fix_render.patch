@@ -1,0 +1,166 @@
+From upstream. Fix render with >qt-6.6
+https://github.com/parisolab/mathmod/issues/280
+From f5d35f45acc6aa042c486ca60eaa5461c1e56b13 Mon Sep 17 00:00:00 2001
+From: Abderrahman Taha <taha_ab@yahoo.fr>
+Date: Mon, 23 Jun 2025 23:35:29 -0400
+Subject: [PATCH] #280 QT6: render
+
+---
+ ui_modules/mathmod.cpp | 78 +++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 65 insertions(+), 13 deletions(-)
+
+diff --git a/ui_modules/mathmod.cpp b/ui_modules/mathmod.cpp
+index 9dac14f..f40cb56 100644
+--- a/ui_modules/mathmod.cpp
++++ b/ui_modules/mathmod.cpp
+@@ -20,6 +20,44 @@
+ #include "mathmod.h"
+ 
+ 
++#ifndef GLERROR_H
++#define GLERROR_H
++
++void _check_gl_error(const char *file, int line);
++
++///
++/// Usage
++/// [... some opengl calls]
++/// glCheckError();
++///
++#define check_gl_error() _check_gl_error(__FILE__,__LINE__)
++
++#endif // GLERROR_H
++
++using namespace std;
++
++void _check_gl_error(const char *file, int line) {
++    GLenum err (glGetError());
++
++    while(err!=GL_NO_ERROR) {
++        string error;
++
++        switch(err) {
++        case GL_INVALID_OPERATION:      error="INVALID_OPERATION";      break;
++        case GL_INVALID_ENUM:           error="INVALID_ENUM";           break;
++        case GL_INVALID_VALUE:          error="INVALID_VALUE";          break;
++        case GL_OUT_OF_MEMORY:          error="OUT_OF_MEMORY";          break;
++        case GL_INVALID_FRAMEBUFFER_OPERATION:  error="INVALID_FRAMEBUFFER_OPERATION";  break;
++        default: error="UNKNOWN_ERROR";  break;
++        }
++
++        cerr << "GL_" << error.c_str() <<" - "<<file<<":"<<line<<endl;
++        err=glGetError();
++    }
++}
++
++
++
+ void MathMod::CalculateTexturePoints(int type)
+ {
+     double tmp, val[6]={0,0,0,0,0,0};
+@@ -1239,7 +1277,6 @@ void MathMod::CreateShaderProgram()
+        msgBox.adjustSize();
+        msgBox.exec();
+     }
+-
+     glAttachShader(shaderprogramId, vertexshader);
+     glAttachShader(shaderprogramId, fragmentshader);
+     glBindAttribLocation(shaderprogramId, 0, "in_Position");
+@@ -1452,6 +1489,16 @@ void MathMod::Winitialize_GL()
+         PutObjectInsideCube();
+         PutObjectInsideCubeOk=true;
+     }
++    // check OpenGL error
++    GLenum myGLEnum;
++    while ((myGLEnum = glGetError()) != GL_NO_ERROR) {
++        qDebug("Error_10 : ");
++        /*QMessageBox msgBox;
++        qDebug("Error_10: ");
++        msgBox.setText("Error_10 : " + QString::number(myGLEnum));
++        msgBox.adjustSize();
++        msgBox.exec();*/
++    }
+ }
+ 
+ void MathMod::UpdateGL()
+@@ -1604,11 +1651,11 @@ void MathMod::CopyData(ObjectProperties *scene)
+         glGenBuffers(2, vbo);
+         /* Bind our first VBO as being the active buffer and storing vertex attributes (coordinates) */
+         glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+-        glBufferData(GL_ARRAY_BUFFER, sizeof(float)*10*(scene->VertxNumber+(12+60+36)),scene->ArrayNorVer_localPt, GL_STATIC_DRAW);
+-        glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
++        glBufferData(GL_ARRAY_BUFFER, sizeof(GL_FLOAT)*10*(scene->VertxNumber+(12+60+36)),scene->ArrayNorVer_localPt, GL_STATIC_DRAW);
++        //glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+         /* Bind our first VBO as being the active buffer and storing vertex attributes (coordinates) */
+         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[1]);
+-        glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(uint)*(scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize), scene->PolyIndices_localPt, GL_STATIC_DRAW);
++        glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLuint)*(scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize), scene->PolyIndices_localPt, GL_STATIC_DRAW);
+         size_t cOffset = 0;
+         size_t nOffset = cOffset + 4*sizeof( GL_FLOAT);
+         size_t vOffset = nOffset + 3*sizeof (GL_FLOAT);
+@@ -1618,31 +1665,35 @@ void MathMod::CopyData(ObjectProperties *scene)
+         glEnableVertexAttribArray(attribVertexPosition);
+         // set attrib arrays using glVertexAttribPointer()
+         glVertexAttribPointer(attribVertexPosition, 3, GL_FLOAT, false, 10*sizeof( GL_FLOAT), (void*)vOffset);
+-        glVertexAttribPointer(attribVertexNormal, 3, GL_FLOAT, false, 10*sizeof( GL_FLOAT), (void*)nOffset);
+         glVertexAttribPointer(attribVertexColor,4, GL_FLOAT, false, 10*sizeof( GL_FLOAT), (void*)cOffset);
++        glVertexAttribPointer(attribVertexNormal, 3, GL_FLOAT, false, 10*sizeof( GL_FLOAT), (void*)nOffset);
+         previousVertxNumber = scene->VertxNumber;
+         previousPolyNumberNbPolygnNbVertexPtMin = (scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize);
+         firstaction++;
+     }
+-    else{
+-        if(scene->VertxNumber>previousVertxNumber)
++    else
++    {
++        glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
++        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo[1]);
++        if(scene->VertxNumber>previousVertxNumber>0)
+         {
+-            glBufferData(GL_ARRAY_BUFFER, sizeof(float)*10*(scene->VertxNumber+(12+60+36)), scene->ArrayNorVer_localPt, GL_STATIC_DRAW);
++            glBufferData(GL_ARRAY_BUFFER, sizeof(GL_FLOAT)*10*(scene->VertxNumber+(12+60+36)), scene->ArrayNorVer_localPt, GL_STATIC_DRAW);
+             previousVertxNumber = scene->VertxNumber;
+         }
+         else
+         {
+-            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*10*(scene->VertxNumber+(12+60+36)), scene->ArrayNorVer_localPt);
++            glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(GL_FLOAT)*10*(scene->VertxNumber+(12+60+36)), (void *)scene->ArrayNorVer_localPt);
+             previousVertxNumber = scene->VertxNumber;
+         }
++
+         if((scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize)>previousPolyNumberNbPolygnNbVertexPtMin)
+         {
+-           glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(uint)*(scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize), scene->PolyIndices_localPt, GL_STATIC_DRAW);
+-           previousPolyNumberNbPolygnNbVertexPtMin =  (scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize);
++            glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLuint)*(scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize), scene->PolyIndices_localPt, GL_STATIC_DRAW);
++            previousPolyNumberNbPolygnNbVertexPtMin =  (scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize);
+         }
+         else
+         {
+-            glBufferSubData(GL_ELEMENT_ARRAY_BUFFER,0, sizeof(uint)*(scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize), scene->PolyIndices_localPt);
++            glBufferSubData(GL_ELEMENT_ARRAY_BUFFER,0, sizeof(GLuint)*(scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize), scene->PolyIndices_localPt);
+             previousPolyNumberNbPolygnNbVertexPtMin =  (scene->PolyNumber + scene->NbPolygnNbVertexPtMinSize);
+         }
+     }
+@@ -1652,11 +1703,13 @@ void MathMod::draw(ObjectProperties *scene)
+ {
+     if(!PutObjectInsideCubeOk)
+         return;
++
+     if (scene->componentsinfos.Interleave)
+     {
+         CopyData(scene);
+         scene->componentsinfos.Interleave = false;
+     }
++    glUseProgram(shaderprogramId);
+     // clear buffer
+     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+     // set modelview matrix
+@@ -1737,7 +1790,6 @@ void MathMod::draw(ObjectProperties *scene)
+         for (uint i = 0; i < scene->componentsinfos.NbComponentsType.size(); i++)
+             if (scene->componentsinfos.ThereisCND[i])
+                 DrawParisoCND(scene, i);
+-
+     // Draw Normales:
+     if (scene->norm == 1 && scene->componentsinfos.updateviewer)
+         DrawNormals(scene);

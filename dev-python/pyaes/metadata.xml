@@ -6,6 +6,7 @@
   </maintainer>
   <stabilize-allarches/>
   <upstream>
+    <remote-id type="github">ricmoo/pyaes</remote-id>
     <remote-id type="pypi">pyaes</remote-id>
   </upstream>
 </pkgmetadata>

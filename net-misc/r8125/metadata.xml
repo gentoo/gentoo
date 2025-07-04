@@ -11,9 +11,18 @@
 	</maintainer>
 	<longdescription>Official Realtek r8125 vendor linux driver. This driver supports NICs based on RTL8125 family.</longdescription>
 	<use>
+		<flag name="down-speed-100">Reduce speed to 100 Mbps in WOL-only modes</flag>
+		<flag name="eee">Enable Energy-Efficient Ethernet by default</flag>
+		<flag name="fiber">Enable Fiber PHY support</flag>
+		<flag name="giga-lite">Enable support of &#34;Giga Lite&#34; (500 Mbps over just two CAT5 pairs) by default</flag>
+		<flag name="hw-acceleration">Enable use of hardware acceleration by default. HW acceleration may cause problems on Realtek NICs!</flag>
+		<flag name="hw-optim-tx">Enable hardware optimised TX (&#34;TX No Close&#34; driver option) by default</flag>
 		<flag name="multi-tx-q">Enable Multiple Tx Queue (&#34;RSS&#34; for sending)</flag>
 		<flag name="ptp">Enable Precision Time Protocol support</flag>
 		<flag name="rss">Enable Receive Side Scaling (RSS)</flag>
-		<flag name="use-firmware">Support automatic firmware loading</flag>
+		<flag name="s5-keep-mac">Keep set MAC address in S5 (switched off) by default</flag>
+		<flag name="use-firmware">Enable support for automatic firmware loading</flag>
+		<flag name="wol">Enable Wake-On-LAN by default</flag>
+		<flag name="wol-s5">Enable start from S5 (switched off) by Wake-On-LAN by default</flag>
 	</use>
 </pkgmetadata>

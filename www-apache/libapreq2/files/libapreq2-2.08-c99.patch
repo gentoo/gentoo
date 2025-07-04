@@ -1,0 +1,46 @@
+https://salsa.debian.org/debian/libapreq2/-/blob/debian/2.17-7/debian/patches/32-bit-build.patch
+
+Description: fix type mismatch of MGVTBL.svt_copy namelen argument
+ Since Perl 5.12, the type of the namelen argument of the svt_copy member of
+ MGVTBL struct has changed its type from `int` to `I32`.
+ .
+ Perl commit:
+ https://github.com/Perl/perl5/commit/3468c7eaa8d7687e8ae89928492b408a4d6c752f
+ .
+ On 64-bit platforms `int` and `I32` are both 32-bit integers, but on 32-bit
+ platforms I32 is `long int` and a simple `int` is 16-bit.
+Author: Damyan Ivanov <dmn@debian.org>
+Forwarded: https://bz.apache.org/bugzilla/show_bug.cgi?id=69346
+
+--- a/glue/perl/xsbuilder/apreq_xs_tables.h
++++ b/glue/perl/xsbuilder/apreq_xs_tables.h
+@@ -24,6 +24,11 @@
+ 
+ /**************************************************/
+ 
++#if (PERL_VERSION >= 12)
++#define MG_COPY_NAMELEN I32
++#else
++#define MG_COPY_NAMELEN int
++#endif
+ 
+ #if (PERL_VERSION >= 8) /* MAGIC ITERATOR REQUIRES 5.8 */
+ 
+@@ -42,7 +47,7 @@
+  */
+ 
+ static int apreq_xs_cookie_table_magic_copy(pTHX_ SV *sv, MAGIC *mg, SV *nsv,
+-                                            const char *name, int namelen)
++                                            const char *name, MG_COPY_NAMELEN namelen)
+ {
+     /* Prefetch the value whenever the table iterator is > 0 */
+     MAGIC *tie_magic = mg_find(nsv, PERL_MAGIC_tiedelem);
+@@ -151,7 +156,7 @@ static int apreq_xs_cookie_table_values(
+  */
+ 
+ static int apreq_xs_param_table_magic_copy(pTHX_ SV *sv, MAGIC *mg, SV *nsv,
+-                                  const char *name, int namelen)
++                                  const char *name, MG_COPY_NAMELEN namelen)
+ {
+     /* Prefetch the value whenever the table iterator is > 0 */
+     MAGIC *tie_magic = mg_find(nsv, PERL_MAGIC_tiedelem);

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="UCSPI implementation for Unix domain sockets"
 HOMEPAGE="https://untroubled.org/ucspi-unix/"
@@ -17,6 +17,9 @@ KEYWORDS="~amd64 ~loong ~riscv ~sparc ~x86"
 DEPEND=">=dev-libs/bglibs-2.04"
 
 src_configure() {
+	# bug #950208
+	append-cflags -std=gnu17
+
 	echo "$(tc-getCC) ${CFLAGS} -D_GNU_SOURCE" > conf-cc || die
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 }

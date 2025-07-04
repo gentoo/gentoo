@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/957614
+https://github.com/jstkdng/ueberzugpp/pull/258
+--- a/src/canvas/chafa.hpp
++++ b/src/canvas/chafa.hpp
+@@ -23,2 +23,3 @@
+ #include <memory>
++#include <mutex>
+ 

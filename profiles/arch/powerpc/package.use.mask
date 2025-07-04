@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfredo Tupone <tupone@gentoo.org> (2025-07-02)
+# sci-ml/pytorch is not keyworded here
+sci-ml/huggingface_hub test
+
 # Eray Aslan <eras@gentoo.org> (2025-05-08)
 # dev-db/tinycdb is not keyworded here
 net-mail/dovecot cdb

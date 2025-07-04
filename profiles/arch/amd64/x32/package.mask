@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jay Faulkner <jayf@gentoo.org> (2025-06-01)
+# Requires >=net-libs/nodejs-18[npm]
+dev-util/claude-code
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-04)
 # Requires dev-qt/qtwebengine
 dev-util/nsight-compute

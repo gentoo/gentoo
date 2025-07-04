@@ -118,6 +118,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-poppler-24.11.0.patch # bug 943499
 	"${FILESDIR}"/${P}-poppler-24.12.0.patch # bug 946597
 	"${FILESDIR}"/${P}-poppler-25.02.0.patch # bug 949531
+	"${FILESDIR}"/${P}-poppler-25.06.0.patch # bug 957137, pending for 1.4.3
 	"${FILESDIR}"/${P}-cmake4.patch
 )
 

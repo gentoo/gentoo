@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Extensible NMEA-0183 (GPS) data parser in standard C"
 HOMEPAGE="http://nmeap.sourceforge.net/"
@@ -16,7 +16,9 @@ IUSE="doc"
 
 BDEPEND="doc? ( app-text/doxygen )"
 
-PATCHES=( "${FILESDIR}/${P}-fix-unitialized-variable.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-fix-unitialized-variable.patch"
+)
 
 src_prepare() {
 	default
@@ -34,6 +36,11 @@ src_prepare() {
 	fi
 }
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_compile() {
 	local myemakeopts=(
 		AR="$(tc-getAR)"
@@ -49,6 +56,7 @@ src_compile() {
 
 src_install() {
 	dolib.a lib/libnmeap.a
+	strip-lto-bytecode
 
 	doheader inc/nmeap.h inc/nmeap_def.h
 

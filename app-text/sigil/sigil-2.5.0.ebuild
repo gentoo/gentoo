@@ -18,7 +18,7 @@ S=${WORKDIR}/${P^}
 
 LICENSE="GPL-3+ Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc +plugins +system-mathjax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -26,7 +26,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	app-text/hunspell:=
 	dev-libs/libpcre2:=[pcre16]
-	dev-qt/qtbase:6[concurrent,cups,network,widgets,xml]
+	dev-qt/qtbase:6[concurrent,gui,network,widgets,xml]
 	dev-qt/qtwebengine:6[widgets]
 	dev-qt/qtsvg:6
 	sys-libs/zlib[minizip]

@@ -6,6 +6,28 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-27)
+# Prepare cleanup of kde-apps/cervisia
+kde-apps/kdesdk-meta cvs
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
+# >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
+# unmasked only in targets/systemd.
+>=kde-plasma/plasma-meta-6.3.90 systemd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-24)
+# Prepare cleanup of dev-libs/libdbusmenu-qt, bug #938823
+kde-frameworks/knotifications:5 dbus
+
+# Alfred Wingate <parona@protonmail.com> (2025-06-10)
+# Upstream only supports amd64 and arm64. Other targets will fail to build
+# tests due to missing target specific functions.
+media-libs/svt-av1 test
+
+# Alfred Wingate <parona@protonmail.com> <2025-05-24)
+# Doesn't work well at runtime.
+dev-games/ogre wayland
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
 # media-sound/hydrogen[lash] build is broken, and dropped upstream in next
 # version. Bug #946125
@@ -67,10 +89,6 @@ sys-apps/usbutils usbreset
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # sys-cluster/pacemaker is being removed.
 sys-cluster/drbd-utils pacemaker
-
-# Michał Górny <mgorny@gentoo.org> (2025-03-05)
-# Mask until we have keyworded dev-lang/rust{,-bin} / slot 20 release.
-www-client/chromium llvm_slot_20
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-02-24)
 # Only builds with ffmpeg-4.x, upstream has no timeline to fix it.
@@ -480,7 +498,7 @@ gnome-base/gnome-extra-apps tracker
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
 # which has not been ported to libsoup:3.0.
->=app-misc/tracker-miners-3.4.0-r1 rss
+>=app-misc/localsearch-3.4.0-r1 rss
 
 # Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
 # Cannot test and fix pax-kernel related bugs on a current grsec kernel

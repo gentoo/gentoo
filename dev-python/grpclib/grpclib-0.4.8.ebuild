@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 # setup.txt + requirements/runtime.in
 RDEPEND="
@@ -40,3 +40,8 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/vmagamedov/grpclib/pull/205
+	"${FILESDIR}/${P}-pytest-asyncio-1.patch"
+)

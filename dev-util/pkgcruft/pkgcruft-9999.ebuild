@@ -4,8 +4,8 @@
 EAPI=8
 
 CRATES=" "
-LLVM_COMPAT=( {17..19} )
-RUST_MIN_VER="1.84.0"
+LLVM_COMPAT=( {17..20} )
+RUST_MIN_VER="1.85.0"
 
 inherit cargo edo llvm-r2 multiprocessing shell-completion toolchain-funcs
 
@@ -26,7 +26,7 @@ fi
 LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+="
-	Apache-2.0 BSD-2 BSD CC0-1.0 GPL-3+ ISC MIT MPL-2.0 Unicode-DFS-2016
+	Apache-2.0 BSD-2 BSD CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0
 "
 SLOT="0"
 IUSE="test"
