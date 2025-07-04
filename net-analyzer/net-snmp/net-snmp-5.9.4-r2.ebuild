@@ -72,13 +72,9 @@ RDEPEND="
 	perl? (
 		X? ( dev-perl/Tk )
 		!minimal? (
-			virtual/perl-Carp
-			virtual/perl-Data-Dumper
-			virtual/perl-Getopt-Long
 			dev-perl/JSON
 			dev-perl/Mail-Sender
 			dev-perl/TermReadKey
-			virtual/perl-Term-ReadLine
 		)
 	)
 	selinux? ( sec-policy/selinux-snmp )
