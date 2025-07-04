@@ -76,31 +76,22 @@ RDEPEND="
 		dev-perl/Term-ReadLine-Gnu
 	)
 	>=dev-perl/App-Cmd-0.330.0
-	virtual/perl-Archive-Tar
 	>=virtual/perl-CPAN-Meta-2.142.60
 	>=virtual/perl-CPAN-Meta-Requirements-2.121.630
 	>=dev-perl/CPAN-Uploader-0.103.4
-	virtual/perl-Carp
 	dev-perl/Config-INI
 	>=dev-perl/Config-MVP-2.200.11
 	>=dev-perl/Config-MVP-Reader-INI-2.101.461
-	virtual/perl-Data-Dumper
 	>=dev-perl/Data-Section-0.200.2
 	>=dev-perl/DateTime-0.440.0
-	virtual/perl-Digest-MD5
-	virtual/perl-Encode
 	>=dev-perl/File-Copy-Recursive-0.410.0
 	dev-perl/File-Find-Rule
-	virtual/perl-File-Path
 	dev-perl/File-ShareDir
 	>=dev-perl/File-ShareDir-Install-0.30.0
-	virtual/perl-File-Spec
-	virtual/perl-File-Temp
 	dev-perl/File-pushd
 	dev-perl/JSON-MaybeXS
 	>=dev-perl/Log-Dispatchouli-1.102.220
 	>=dev-perl/Mixin-Linewise-0.100.0
-	virtual/perl-Module-CoreList
 	dev-perl/Module-Runtime
 	>=dev-perl/Moose-0.920.0
 	dev-perl/MooseX-LazyRequire
@@ -112,10 +103,8 @@ RDEPEND="
 	dev-perl/Params-Util
 	>=dev-perl/Path-Tiny-0.52.0
 	>=dev-perl/Perl-PrereqScanner-1.16.0
-	virtual/perl-Pod-Simple
 	>=virtual/perl-Scalar-List-Utils-1.450.0
 	>=dev-perl/Software-License-0.104.1
-	virtual/perl-Storable
 	>=dev-perl/String-Formatter-0.100.680
 	>=dev-perl/String-RewritePrefix-0.6.0
 	dev-perl/Sub-Exporter
@@ -123,17 +112,13 @@ RDEPEND="
 	>=virtual/perl-Term-ANSIColor-5.0.0
 	dev-perl/Term-Encoding
 	dev-perl/TermReadKey
-	virtual/perl-Term-ReadLine
 	dev-perl/Term-UI
 	dev-perl/Test-Deep
 	>=dev-perl/Text-Glob-0.80.0
 	dev-perl/Text-Template
 	dev-perl/Try-Tiny
 	dev-perl/YAML-Tiny
-	virtual/perl-autodie
 	dev-perl/namespace-autoclean
-	virtual/perl-parent
-	virtual/perl-version
 "
 
 BDEPEND="${RDEPEND}
