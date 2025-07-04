@@ -38,7 +38,7 @@ RDEPEND="
 	sys-process/procps:=
 	virtual/libudev:=
 	>=x11-libs/cairo-1.12.0[X?]
-	>=x11-libs/libdrm-2.4.82[video_cards_amdgpu?,video_cards_intel?,video_cards_nouveau?]
+	>=x11-libs/libdrm-2.4.125[video_cards_amdgpu?,video_cards_intel?,video_cards_nouveau?]
 	>=x11-libs/libpciaccess-0.10
 	x11-libs/pixman
 	chamelium? (
