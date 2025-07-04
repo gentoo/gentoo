@@ -1,0 +1,11 @@
+Bump for cmake4 compat, patch from upstream
+https://sourceforge.net/p/crossfire/crossfire-client/ci/672ad8a6f5f499b7ac36b1fb8938267c5ff57e3d/
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ project(crossfire-client C)
+ set(VERSION 1.75.3)
+ 
