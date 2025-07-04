@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gom"
 
 LICENSE="LGPL-2+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc +introspection python test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
