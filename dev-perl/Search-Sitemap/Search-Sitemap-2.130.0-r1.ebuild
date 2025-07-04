@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,8 +12,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	virtual/perl-Carp
-	virtual/perl-IO-Zlib
 	dev-perl/Module-Find
 	dev-perl/Class-Trigger
 	dev-perl/MooseX-ClassAttribute
@@ -23,7 +21,6 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	dev-perl/Module-Install
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/Test-Most
 		dev-perl/Test-Mock-LWP
