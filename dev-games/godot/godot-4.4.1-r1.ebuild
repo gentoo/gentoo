@@ -25,8 +25,9 @@ KEYWORDS="~amd64"
 # Enable roughly same as upstream by default so it works as expected,
 # except raycast (tools-only heavy dependency), and deprecated.
 IUSE="
-	alsa +dbus debug deprecated +fontconfig +gui pulseaudio raycast
-	speech test +theora +tools +udev +upnp +vulkan wayland +webp
+	alsa +dbus debug deprecated double-precision +fontconfig +gui
+	pulseaudio raycast speech test +theora +tools +udev +upnp +vulkan
+	wayland +webp
 "
 REQUIRED_USE="wayland? ( gui )"
 # TODO: tests still need more figuring out
@@ -126,6 +127,7 @@ src_compile() {
 		alsa=$(usex alsa)
 		dbus=$(usex dbus)
 		deprecated=$(usex deprecated)
+		precision=$(usex double-precision double single)
 		execinfo=no # not packaged, disables crash handler if non-glibc
 		fontconfig=$(usex fontconfig)
 		opengl3=$(usex gui)

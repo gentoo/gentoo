@@ -21,6 +21,7 @@
 	</longdescription>
 	<use>
 		<flag name="deprecated">Enable support for deprecated features</flag>
+		<flag name="double-precision">Use double-precision floats (default: single-precision)</flag>
 		<flag name="raycast">Enable the raycast Editor module using <pkg>media-libs/embree</pkg></flag>
 		<flag name="tools">Enable the Godot Editor for game development</flag>
 	</use>
