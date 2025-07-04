@@ -14,15 +14,11 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 
 RDEPEND="
 	>=virtual/perl-CPAN-Meta-2.142.60
-	virtual/perl-Data-Dumper
 	>=virtual/perl-ExtUtils-CBuilder-0.270.0
-	virtual/perl-ExtUtils-MakeMaker
 	>=virtual/perl-ExtUtils-ParseXS-2.210.0
 	>=virtual/perl-File-Spec-0.820.0
-	virtual/perl-Getopt-Long
 	>=virtual/perl-Module-Metadata-1.0.2
 	>=virtual/perl-Test-Harness-3.290.0
-	virtual/perl-Text-ParseWords
 	>=virtual/perl-podlators-2.1.0
 	>=virtual/perl-version-0.870.0
 "
@@ -30,7 +26,6 @@ BDEPEND="
 	${RDEPEND}
 	test? (
 		>=virtual/perl-File-Temp-0.150.0
-		>=virtual/perl-Parse-CPAN-Meta-1.440.100
 		>=virtual/perl-Test-Simple-0.490.0
 	)
 "
