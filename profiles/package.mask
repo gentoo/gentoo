@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-04)
+# Obsolete Perl virtuals that should eventually be removed. The list
+# will grow.
+virtual/perl-Params-Check
+
 # Joonas Niilola <juippis@gentoo.org> (2025-07-01)
 # Python-3.13 enabled version of Spidermonkey. The test phase crashes
 # with 3.13 so I'm not fully convinced there won't be runtime issues
