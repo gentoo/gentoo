@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~riscv"
+KEYWORDS="amd64 arm64 ~ppc ppc64 ~riscv"
 IUSE="+man"
 
 BDEPEND="man? ( dev-go/go-md2man )"
