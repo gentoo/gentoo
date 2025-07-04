@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,18 +25,11 @@ PERL_RM_FILES=(
 )
 
 RDEPEND="
-	virtual/perl-Carp
 	>=virtual/perl-Math-BigInt-1.991.0
 	!minimal? (
 		dev-perl/Math-BigInt-GMP
-		virtual/perl-Math-BigRat
 	)
 "
 BDEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.640.0
-	test? (
-		virtual/perl-Scalar-List-Utils
-		virtual/perl-Test
-		virtual/perl-Test-Simple
-	)
 "
