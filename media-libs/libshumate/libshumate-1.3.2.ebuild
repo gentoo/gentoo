@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libshumate"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.0/1"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 ~sparc x86"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 IUSE="gtk-doc +introspection sysprof vala"
