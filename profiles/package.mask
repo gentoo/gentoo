@@ -48,6 +48,7 @@ app-misc/pip
 virtual/perl-bignum
 virtual/perl-IO-Zlib
 virtual/perl-Math-BigInt-FastCalc
+virtual/perl-Math-BigRat
 virtual/perl-Parse-CPAN-Meta
 virtual/perl-Params-Check
 perl-core/Params-Check
