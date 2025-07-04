@@ -2,50 +2,59 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription lang="en">
-		Minetest is an infinite-world block sandbox game and a game
-		engine, inspired by InfiniMiner, Minecraft and the like. It has
-		been in development and use since October 2010.
+		Luanti (formerly Minetest) is a free software game engine to create various games
+		based on voxel gameplay, inspired by InfiniMiner, Minecraft, and the like.
+		Luanti was originally created by Perttu Ahola (alias “celeron55”).
 
-		It is Free and Open Source Software, released under the LGPL 2.1
-		or later, available for Windows, Mac OS X and Linux.
+		The basic idea of each game is always the same: The player is thrown into a huge world
+		made out of cubes/blocks. Most of the time, these cubes make the landscape and these
+		blocks can be removed and placed almost entirely freely. Using the collected items,
+		new tools and other items can be crafted. Games in Luanti can, however, be much more
+		complex than this.
 
-		Minetest is developed by a random bunch of lunatics.
+		A core concept of Luanti is a built-in modding capability, based on the Lua programming language.
+		Mods allow one or more certain aspects of an existing game to be modified. Luanti mods can be
+		as simple as adding a few decoration blocks or very complex by (for example) introducing
+		complex new gameplay concepts or generating a completely different kind of world, and many
+		other things. For the player, using a new mod requires to copy or extract some files into
+		a certain location and pressing some buttons in Luanti’s interface.
 
-		Minetest is designed to be simple, stable and portable. It is
-		lightweight enough to run on fairly old hardware. It currently
-		runs playably on a laptop with Intel 945GM graphics. Though, as
-		for the CPU, dualcore is recommended.
+		Luanti can be played alone or online together with multiple players.
+
+		Games for Luanti can be found on ContentDB.
 
 		Features
-		* Walk around, dig and build in an infinite voxel world,
-		and craft stuff from raw materials to help you along the way.
-		* Simplistic Modding API that supports many kinds of additions
-		and modifications to the game.
-		* Multiplayer support for tens of players, via servers hosted by
-		users.
-		* Voxel based lighting with gameplay consequences
-		(light caves and buildings with torches)
-		* Almost infinite world and a beautiful map generator.
-		* Runs natively on Windows, Linux, OS X and FreeBSD.
-		* Supports multiple languages, translated by the community.
+		* A big cube-based world to discover (61840 nodes (cubes) in every dimension)
+		* Procedurally generated world
+		* Several world generators with many adjustable parameters
+		* Extremely high configurability with an advanced settings editor and built-in descriptions,
+			or by using a configuration file
+		* Customize the graphics and sounds through texture packs
+		* Download games, mods and texture packs from the built-in ContentDB
+		* Singleplayer mode and online multiplayer mode
+		* Server list
+		* Sophisticated modding system using Lua
+		* Mods are entirely server-sided. You can join any Luanti server with any mods and start playing,
+			no additional software required
+		* Relatively low system requirements
 	</longdescription>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="client">Build Minetest client</flag>
+		<flag name="client">Build Luanti client</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
 		<flag name="prometheus">Enable prometheus client support</flag>
 		<flag name="redis">Enable redis backend via <pkg>dev-libs/hiredis</pkg></flag>
-		<flag name="server">Build Minetest server</flag>
+		<flag name="server">Build Luanti server</flag>
 		<flag name="spatial">Enable SpatialIndex AreaStore backend
 		</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://github.com/minetest/minetest/issues</bugs-to>
-		<changelog>https://dev.minetest.net/Changelog</changelog>
+		<bugs-to>https://github.com/luanti-org/luanti/issues</bugs-to>
+		<changelog>https://docs.luanti.org/about/changelog/</changelog>
 		<doc>https://wiki.luanti.org/Main_Page</doc>
-		<remote-id type="github">minetest/minetest</remote-id>
+		<remote-id type="github">luanti-org/luanti</remote-id>
 	</upstream>
 </pkgmetadata>
