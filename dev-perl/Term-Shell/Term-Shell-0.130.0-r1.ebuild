@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,20 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 
 RDEPEND="
-	virtual/perl-Data-Dumper
-	virtual/perl-File-Temp
 	>=virtual/perl-Getopt-Long-2.360.0
-	virtual/perl-IO
 	dev-perl/TermReadKey
-	virtual/perl-Term-ReadLine
 	dev-perl/Text-Autoformat
 "
 BDEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.280.0
-	test? (
-		virtual/perl-File-Spec
-		virtual/perl-Test-Simple
-	)
 "
 
 src_test() {
