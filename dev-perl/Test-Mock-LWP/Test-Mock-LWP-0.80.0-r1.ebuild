@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,12 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	virtual/perl-Carp
 	dev-perl/Test-MockObject
-	virtual/perl-Test
 "
-BDEPEND="${RDEPEND}
+BDEPEND="
+	${RDEPEND}
+	dev-perl/Module-Install
 	>=virtual/perl-CPAN-Meta-Requirements-2.120.620
-	virtual/perl-ExtUtils-MakeMaker
-	virtual/perl-Module-Metadata
 "
