@@ -236,8 +236,6 @@ src_install() {
 	python_optimize "${ED}/usr/$(get_libdir)/gimp"
 	python_fix_shebang "${ED}/usr/$(get_libdir)/gimp"
 
-	find "${D}" -name '*.la' -type f -delete || die
-
 	# Create symlinks for Gimp exec in /usr/bin
 	dosym "${ESYSROOT}"/usr/bin/gimp-3.0 /usr/bin/gimp
 	dosym "${ESYSROOT}"/usr/bin/gimp-console-3.0 /usr/bin/gimp-console
