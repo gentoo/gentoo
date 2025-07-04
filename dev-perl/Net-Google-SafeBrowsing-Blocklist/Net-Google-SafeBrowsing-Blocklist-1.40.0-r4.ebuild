@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,14 +15,7 @@ KEYWORDS="amd64 ppc x86"
 
 RDEPEND="dev-perl/URI
 	>=virtual/perl-Math-BigInt-1.87
-	virtual/perl-DB_File
-	|| (
-		virtual/perl-Math-BigInt-FastCalc
-		dev-perl/Math-BigInt-GMP
-	)
 "
-BDEPEND="${RDEPEND}
-	test? ( virtual/perl-Test-Simple )
-"
+BDEPEND="${RDEPEND}"
 
 PERL_RM_FILES=( "t/pod.t" )
