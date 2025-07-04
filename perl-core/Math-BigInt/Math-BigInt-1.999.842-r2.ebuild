@@ -22,7 +22,6 @@ BDEPEND="
 "
 # TODO: where does this come from?
 PDEPEND="
-	>=virtual/perl-bignum-0.220.0
 	>=virtual/perl-Math-BigRat-0.260.200
 "
 
