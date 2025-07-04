@@ -47,6 +47,7 @@ app-misc/pip
 # required anymore.
 virtual/perl-bignum
 virtual/perl-IO-Zlib
+virtual/perl-Locale-Maketext
 virtual/perl-Math-BigInt-FastCalc
 virtual/perl-Math-BigRat
 virtual/perl-Parse-CPAN-Meta
