@@ -3,7 +3,7 @@
 
 EAPI=8
 
-MY_PN="modsecurity-nginx"
+MY_PN="ModSecurity-nginx"
 NGINX_MOD_S="${WORKDIR}/${MY_PN}-v${PV}"
 
 inherit nginx-module
