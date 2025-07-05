@@ -1,0 +1,29 @@
+From a4092eb4f2927ce5d600444d0b10c308148ca34d Mon Sep 17 00:00:00 2001
+From: aaku <aaku@users.sourceforge.net>
+Date: Wed, 25 Jun 2025 11:35:13 +0200
+Subject: [PATCH] Move multiprocessing initialization out of functions
+
+Fixes "context has already been set" error
+---
+ mcomix/__main__.py | 4 ++--
+
+diff --git a/mcomix/__main__.py b/mcomix/__main__.py
+index bc307bd..b32dc36 100644
+--- a/mcomix/__main__.py
++++ b/mcomix/__main__.py
+@@ -21,10 +21,10 @@ from .run import run
+ 
+ 
+ def main() -> None:
+-    mp.freeze_support()
+-    mp.set_start_method('spawn')
+     run()
+ 
+ 
+ if __name__ == '__main__':
++    mp.freeze_support()
++    mp.set_start_method('spawn')
+     main()
+-- 
+2.50.0
+
