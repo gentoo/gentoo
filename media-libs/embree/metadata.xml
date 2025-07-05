@@ -33,9 +33,6 @@
 		<flag restrict="&gt;=media-libs/embree-3.12.2" name="tbb">
 			Use TBB instead of the built-in Embree tasking system.
 		</flag>
-		<flag restrict="&gt;=media-libs/embree-3.12.2" name="tutorial">
-			Enable to build Embree tutorials programs.
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">RenderKit/embree</remote-id>
