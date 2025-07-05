@@ -33,7 +33,7 @@ BDEPEND="
 "
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-cpp/asio-1.12.0
+	<=dev-cpp/asio-1.33
 	dev-libs/boost:=
 	sys-apps/hwloc:=
 	jemalloc? ( dev-libs/jemalloc:= )
