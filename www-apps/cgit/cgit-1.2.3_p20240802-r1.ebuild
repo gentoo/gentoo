@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -13,18 +13,22 @@ inherit flag-o-matic lua-single python-single-r1 tmpfiles toolchain-funcs webapp
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
-GIT_V="2.25.1"
+GIT_V="2.46.0"
+MY_COMMIT="09d24d7cd0b7e85633f2f43808b12871bb209d69"
 
-DESCRIPTION="a fast web-interface for git repositories"
-HOMEPAGE="https://git.zx2c4.com/cgit/about"
+DESCRIPTION="A fast web-interface for Git repositories"
+HOMEPAGE="https://git.zx2c4.com/cgit/about/"
 SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
-	https://git.zx2c4.com/cgit/snapshot/${P}.tar.xz"
+	https://git.zx2c4.com/cgit/snapshot/cgit-${MY_COMMIT}.tar.xz"
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~riscv x86"
+KEYWORDS="~amd64 ~arm ~riscv ~x86"
+
 IUSE="doc +highlight +lua test"
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) ${PYTHON_REQUIRED_USE}"
+
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -34,7 +38,12 @@ RDEPEND="
 	dev-libs/openssl:0=
 	dev-vcs/git
 	highlight? (
-		$(python_gen_cond_dep 'dev-python/pygments[${PYTHON_USEDEP}]' )
+		$(python_gen_cond_dep '
+			dev-python/docutils[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
+			dev-python/pygments[${PYTHON_USEDEP}]
+		')
+		sys-apps/groff
 	)
 	lua? ( ${LUA_DEPS} )
 	sys-libs/zlib
