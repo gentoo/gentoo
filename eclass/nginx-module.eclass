@@ -522,7 +522,6 @@ _ngx_mod_set_test_env() {
 	RESTRICT="!test? ( test )"
 	BDEPEND+=" test? (
 		dev-perl/Test-Nginx
-		virtual/perl-Test-Harness
 	)
 	"
 
