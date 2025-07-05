@@ -9,7 +9,7 @@ inherit cmake flag-o-matic multilib-minimal python-any-r1
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://www.trustedfirmware.org/projects/mbed-tls/"
-SRC_URI="https://github.com/Mbed-TLS/mbedtls/releases/download/v${PV}/${P}.tar.bz2"
+SRC_URI="https://github.com/Mbed-TLS/mbedtls/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="|| ( Apache-2.0 GPL-2+ )"
 SLOT="3/16.21.7" # ffmpeg subslot naming: SONAME tuple of {libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
@@ -32,10 +32,10 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/mbedtls-3.6.2-allow-install-headers-to-different-location.patch"
-	"${FILESDIR}/mbedtls-3.6.3.1-add-version-suffix-for-all-installable-targets.patch"
+	"${FILESDIR}/mbedtls-3.6.4-add-version-suffix-for-all-installable-targets.patch"
 	"${FILESDIR}/mbedtls-3.6.2-add-version-suffix-for-pkg-config-files.patch"
 	"${FILESDIR}/mbedtls-3.6.2-exclude-static-3dparty.patch"
-	"${FILESDIR}/mbedtls-3.6.3.1-slotted-version.patch"
+	"${FILESDIR}/mbedtls-3.6.4-slotted-version.patch"
 )
 
 enable_mbedtls_option() {
