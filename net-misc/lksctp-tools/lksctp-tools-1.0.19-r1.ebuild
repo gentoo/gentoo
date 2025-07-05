@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,6 @@ IUSE="static-libs"
 
 # This is only supposed to work with Linux to begin with.
 DEPEND=">=sys-kernel/linux-headers-2.6"
-RDEPEND=""
 
 REQUIRED_USE="kernel_linux"
 

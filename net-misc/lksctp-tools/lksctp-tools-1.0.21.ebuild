@@ -16,7 +16,6 @@ IUSE="static-libs"
 
 # This is only supposed to work with Linux to begin with.
 DEPEND=">=sys-kernel/linux-headers-2.6"
-RDEPEND=""
 
 REQUIRED_USE="kernel_linux"
 
