@@ -12,6 +12,7 @@
 	<use>
 		<flag name="extra">Install full upstream font set including condensed, semi-bold, extra-light variants</flag>
 	</use>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">notofonts/notofonts.github.io</remote-id>
 	</upstream>
