@@ -308,9 +308,6 @@ unset -f _ngx_populate_iuse
 BDEPEND="
 	test? (
 		dev-lang/perl
-		virtual/perl-IO-Compress
-		virtual/perl-Test-Simple
-		virtual/perl-Test-Harness
 	)
 "
 
