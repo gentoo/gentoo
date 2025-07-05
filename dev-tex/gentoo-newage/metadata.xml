@@ -9,4 +9,7 @@
   It consists only of the five lowercase letters "e", "g", "n", "o" and "t"
   needed to write the word "gentoo".
 </longdescription>
+<upstream>
+  <remote-id type="codeberg">gentoo-ev/gentoo-newage</remote-id>
+</upstream>
 </pkgmetadata>
