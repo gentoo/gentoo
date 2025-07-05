@@ -106,7 +106,13 @@ python_compile_all() {
 	# 'pip completion' command embeds full $0 into completion script, which confuses
 	# 'complete' and causes QA warning when running as "${PYTHON} -m pip".
 	# This trick sets correct $0 while still calling just installed pip.
-	local pipcmd='import sys; sys.argv[0] = "pip"; __file__ = ""; from pip._internal.cli.main import main; sys.exit(main())'
+	local pipcmd='if True:
+		import sys
+		sys.argv[0] = "pip"
+		__file__ = ""
+		from pip._internal.cli.main import main
+		sys.exit(main())
+	'
 	"${EPYTHON}" -c "${pipcmd}" completion --bash > completion.bash || die
 	"${EPYTHON}" -c "${pipcmd}" completion --zsh > completion.zsh || die
 }
@@ -184,12 +190,12 @@ python_test() {
 	fi
 
 	local -x PIP_DISABLE_PIP_VERSION_CHECK=1
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
+	local EPYTEST_PLUGINS=( pytest-rerunfailures )
 	local EPYTEST_XDIST=1
 	# rerunfailures because test suite breaks if packages are installed
 	# in parallel
 	epytest -m "not network" -o tmp_path_retention_policy=all \
-		-p rerunfailures --reruns=5 --use-venv
+		--reruns=5 --use-venv
 }
 
 python_install_all() {
