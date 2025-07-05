@@ -61,6 +61,7 @@ virtual/perl-Parse-CPAN-Meta
 virtual/perl-Params-Check
 perl-core/Params-Check
 virtual/perl-Term-ReadLine
+virtual/perl-Unicode-Normalize
 
 # Joonas Niilola <juippis@gentoo.org> (2025-07-01)
 # Python-3.13 enabled version of Spidermonkey. The test phase crashes
