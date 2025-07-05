@@ -1,0 +1,30 @@
+https://github.com/desktop-app/tg_owt/pull/162
+From c6ffc8aefb8520a51234c380cc415dd21469cf6b Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Mon, 12 May 2025 09:05:30 +0000
+Subject: [PATCH] Remove ABSL_ATTRIBUTE_LIFETIME_BOUND from void functions
+
+LLVM 20 errors on void functions whose parameters are applied
+[[lifetimebound]].
+
+Link: https://github.com/llvm/llvm-project/pull/113460
+---
+ src/api/candidate.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/api/candidate.h b/src/api/candidate.h
+index 0aa75aa..715761a 100644
+--- a/src/api/candidate.h
++++ b/src/api/candidate.h
+@@ -105,7 +105,7 @@ class RTC_EXPORT Candidate {
+   // cricket::LOCAL_PORT_TYPE). The type should really be an enum rather than a
+   // string, but until we make that change the lifetime attribute helps us lock
+   // things down. See also the `Port` class.
+-  void set_type(absl::string_view type ABSL_ATTRIBUTE_LIFETIME_BOUND) {
++  void set_type(absl::string_view type) {
+     Assign(type_, type);
+   }
+ 
+-- 
+2.49.0
+
