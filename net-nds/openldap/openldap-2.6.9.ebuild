@@ -38,6 +38,7 @@ IUSE_CONTRIB="${IUSE_CONTRIB} cxx"
 IUSE="systemd ${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
 REQUIRED_USE="
 	cxx? ( sasl )
+	iodbc? ( odbc )
 	pbkdf2? ( ssl )
 	test? ( cleartext sasl debug )
 	autoca? ( !gnutls )
