@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~arm64"
 
 # Relies on upstream NGINX test framework (https://github.com/nginx/nginx-tests),
 # not packaged by Gentoo.
