@@ -109,12 +109,15 @@ econf_ngx() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	[[ ! -x ./configure ]] &&
 		die "./configure is not present in the current working directory or is not executable"
-	nonfatal edo ./configure "$@"
-	# For some reason, NGINX's ./configure returns 1 if it is used with the
-	# '--help' argument.
-	if [[ $? -ne 0 && "$1" != --help ]]; then
-		die -n "./configure ${*@Q} failed"
+	if [[ $1 == --help ]]; then
+		# For some reason, NGINX ./configure returns 1 if it is used with the
+		# '--help' argument.
+		#
+		# Executing this without edo gets rid of the "Failed to run" message.
+		./configure "$@"
+		return
 	fi
+	edo ./configure "$@"
 }
 
 # @FUNCTION: ngx_mod_pkg_to_sonames
