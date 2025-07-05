@@ -20,11 +20,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-${PV}-0001-feat-replace-nltk-with-pyspellchecker.patch"
 	"${FILESDIR}/${PN}-${PV}-0002-chore-add-tests-for-typosquatting.patch"
 	"${FILESDIR}/${PN}-${PV}-0003-fix-use-tomllib-for-newer-python-versions.patch"
+	"${FILESDIR}/${PN}-${PV}-0004-fixes-for-click-8.2.0.patch
 )
 
 RDEPEND="
 	>=dev-python/authlib-1.2.0[${PYTHON_USEDEP}]
-	>=dev-python/click-8.0.2[${PYTHON_USEDEP}]
+	>=dev-python/click-8.2.0[${PYTHON_USEDEP}]
 	>=dev-python/dparse-0.6.4[${PYTHON_USEDEP}]
 	>=dev-python/filelock-3.16.1[${PYTHON_USEDEP}]
 	>=dev-python/jinja2-3.1.0[${PYTHON_USEDEP}]
@@ -40,7 +41,7 @@ RDEPEND="
 	dev-python/ruamel-yaml[${PYTHON_USEDEP}]
 	>=dev-python/safety-schemas-0.0.14[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-65.5.1[${PYTHON_USEDEP}]
-	>=dev-python/typer-0.12.1[${PYTHON_USEDEP}]
+	>=dev-python/typer-0.16.0[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.7.1[${PYTHON_USEDEP}]
 	>=dev-python/pyspellchecker-0.8.2[${PYTHON_USEDEP}]
 	dev-python/tomlkit[${PYTHON_USEDEP}]"
