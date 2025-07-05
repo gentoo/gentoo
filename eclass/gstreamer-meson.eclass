@@ -13,7 +13,7 @@
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
 # Steven Newbury
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: meson multilib-minimal
 # @BLURB: Helps building core & split gstreamer plugins
 # @DESCRIPTION:
@@ -26,20 +26,50 @@
 # out by grepping the source tree for 'factory_make'. If it uses playbin
 # plugin, consider adding media-plugins/gst-plugins-meta dependency, but
 # also list any packages that provide explicitly requested plugins.
+#
+# Limitation to PROVIDES: multilib-minimal is provided by default, unless
+# GST_PLUGINS_MULTILIB is set to false - then, shadow phase functions are
+# calling the same gstreamer_multilib_* functions instead.
 
 case "${EAPI:-0}" in
-	7|8)
+	8)
 		;;
 	*)
 		die "EAPI=\"${EAPI}\" is not supported"
 		;;
 esac
 
-PYTHON_COMPAT=( python3_{10..13} )
-[[ ${EAPI} == 8 ]] && inherit python-any-r1
+PYTHON_COMPAT=( python3_{11..13} )
 
-# multilib-minimal goes last
-inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
+inherit meson multilib python-any-r1 toolchain-funcs xdg-utils
+
+# @ECLASS_VARIABLE: GST_PLUGINS_MULTILIB
+# @PRE_INHERIT
+# @DESCRIPTION:
+# Default value is true, which means eclass provides multilib-minimal and
+# is setting up dependencies with MULTILIB_USEDEP accordingly.
+# If set to false, does not add MULTILIB_USEDEP nor exports multilib phases.
+: "${GST_PLUGINS_MULTILIB:=true}"
+
+# @ECLASS_VARIABLE: _GST_PLUGINS_MULTILIB_USEDEP
+# @DESCRIPTION:
+# Contains [${MULTILIB_USEDEP}] if GST_PLUGINS_MULTILIB is true, otherwise
+# empty.
+_GST_PLUGINS_MULTILIB_USEDEP=""
+
+case ${GST_PLUGINS_MULTILIB} in
+	true)
+		# multilib-minimal goes last
+		inherit multilib-minimal
+		_GST_PLUGINS_MULTILIB_USEDEP="[${MULTILIB_USEDEP}]"
+		;;
+	false)
+		;;
+	*)
+		eerror "Unknown value for \${GST_PLUGINS_MULTILIB}"
+		die "Value ${GST_PLUGINS_MULTILIB} is not supported"
+		;;
+esac
 
 # @ECLASS_VARIABLE: GST_PLUGINS_ENABLED
 # @DESCRIPTION:
@@ -51,6 +81,18 @@ inherit meson multilib toolchain-funcs xdg-utils multilib-minimal
 # @DESCRIPTION:
 # Space-separated list defined by the ebuild for plugin options which shouldn't
 # be automatically defined by gstreamer_multilib_src_configure.
+
+# @FUNCTION: _gstreamer_native_usex
+# @INTERNAL
+# @DESCRIPTION:
+# Calls multilib_native_usex if GST_PLUGINS_MULTILIB is true, otherwise usex.
+_gstreamer_native_usex() {
+	if [[ ${GST_PLUGINS_MULTILIB} == true ]]; then
+		multilib_native_usex "$@"
+	else
+		usex "$@"
+	fi
+}
 
 # @FUNCTION: gstreamer_get_default_enabled_plugins
 # @INTERNAL
@@ -199,20 +241,14 @@ S="${WORKDIR}/${GST_ORG_MODULE}-${PV}"
 LICENSE="GPL-2"
 SLOT="1.0"
 
-if ver_test ${GST_ORG_PVP} -ge 1.24 ; then
-	GLIB_VERSION=2.64.0
-else
-	GLIB_VERSION=2.62.0
-fi
-
 RDEPEND="
-	>=dev-libs/glib-${GLIB_VERSION}:2[${MULTILIB_USEDEP}]
+	>=dev-libs/glib-2.64.0:2${_GST_PLUGINS_MULTILIB_USEDEP}
 "
 BDEPEND="
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	virtual/perl-JSON-PP
 "
-[[ ${EAPI} == 8 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
 # gst-plugins-{base,good} splits all require glib-utils due to gnome.mkenums_simple meson calls in gst-libs
 # The alternative would be to patch out the subdir calls, but some packages need it themselves too anyways, thus
 # something in a full upgrade path will require it anyways at build time, so not worth the risk.
@@ -223,23 +259,15 @@ fi
 if [[ "${PN}" != "gstreamer" ]]; then
 	RDEPEND="
 		${RDEPEND}
-		>=media-libs/gstreamer-$(ver_cut 1-2):${SLOT}[${MULTILIB_USEDEP}]
+		>=media-libs/gstreamer-$(ver_cut 1-2):${SLOT}${_GST_PLUGINS_MULTILIB_USEDEP}
 	"
 fi
-
-# Export common multilib phases.
-multilib_src_configure() { gstreamer_multilib_src_configure; }
-multilib_src_compile() { gstreamer_multilib_src_compile; }
-multilib_src_install() { gstreamer_multilib_src_install; }
 
 if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
 	# Do not run test phase for individual plugin ebuilds.
 	RESTRICT="test"
 	RDEPEND="${RDEPEND}
-		>=media-libs/${GST_ORG_MODULE}-${PV}:${SLOT}[${MULTILIB_USEDEP}]"
-
-	# Export multilib phases used for split builds.
-	multilib_src_install_all() { gstreamer_multilib_src_install_all; }
+		>=media-libs/${GST_ORG_MODULE}-${PV}:${SLOT}${_GST_PLUGINS_MULTILIB_USEDEP}"
 else
 	inherit virtualx
 
@@ -255,8 +283,6 @@ else
 			nls? ( >=sys-devel/gettext-0.17 )
 		"
 	fi
-
-	multilib_src_test() { gstreamer_multilib_src_test; }
 fi
 
 DEPEND="${DEPEND} ${RDEPEND}"
@@ -330,7 +356,7 @@ gstreamer_multilib_src_configure() {
 
 	if grep -q "option('introspection'" "${EMESON_SOURCE}"/meson_options.txt ; then
 		if in_iuse introspection ; then
-			gst_conf+=( -Dintrospection=$(multilib_native_usex introspection enabled disabled) )
+			gst_conf+=( -Dintrospection=$(_gstreamer_native_usex introspection enabled disabled) )
 		else
 			gst_conf+=( -Dintrospection=disabled )
 			if [[ "${PN}" == "${GST_ORG_MODULE}" ]]; then
@@ -458,7 +484,6 @@ gstreamer_multilib_src_compile() {
 # @FUNCTION: gstreamer-meson_pkg_setup
 # @DESCRIPTION:
 # Proxies python-any-r1_pkg_setup for forward-proofing any future pkg_setup needs.
-# Only exported for EAPI-8.
 gstreamer-meson_pkg_setup() {
 	python-any-r1_pkg_setup
 }
@@ -467,7 +492,9 @@ gstreamer-meson_pkg_setup() {
 # @DESCRIPTION:
 # Tests the gstreamer plugin (non-split)
 gstreamer_multilib_src_test() {
-	GST_GL_WINDOW=x11 virtx meson test --timeout-multiplier 5
+	if [[ "${PN}" == "${GST_ORG_MODULE}" ]]; then
+		GST_GL_WINDOW=x11 virtx meson test --timeout-multiplier 5
+	fi
 }
 
 # @FUNCTION: gstreamer_multilib_src_install
@@ -499,16 +526,45 @@ gstreamer_multilib_src_install_all() {
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 		local dir=$(gstreamer_get_plugin_dir ${plugin_dir})
 		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
-		if [[ ${EAPI} == 8 ]]; then
-			local presets=( "${dir}"/*.prs )
-			if [[ -e ${presets[0]} ]]; then
-				insinto /usr/share/gstreamer-${SLOT}/presets
-				doins "${presets[@]}"
-			fi
+		local presets=( "${dir}"/*.prs )
+		if [[ -e ${presets[0]} ]]; then
+			insinto /usr/share/gstreamer-${SLOT}/presets
+			doins "${presets[@]}"
 		fi
 	done
 }
 
-if [[ ${EAPI} == 8 ]]; then
-	EXPORT_FUNCTIONS pkg_setup
+if [[ ${GST_PLUGINS_MULTILIB} == true ]]; then
+	# Export common multilib phases.
+	multilib_src_configure() { gstreamer_multilib_src_configure; }
+	multilib_src_compile() { gstreamer_multilib_src_compile; }
+	multilib_src_test() { gstreamer_multilib_src_test; }
+	multilib_src_install() { gstreamer_multilib_src_install; }
+	if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
+		# Export multilib phases used for split builds.
+		multilib_src_install_all() { gstreamer_multilib_src_install_all; }
+	fi
+else
+	gstreamer-meson_src_configure() { gstreamer_multilib_src_configure; }
+	gstreamer-meson_src_compile() {
+		pushd "${BUILD_DIR}" >/dev/null || die
+			gstreamer_multilib_src_compile
+		popd >/dev/null || die
+	}
+	gstreamer-meson_src_test() {
+		pushd "${BUILD_DIR}" >/dev/null || die
+			gstreamer_multilib_src_test
+		popd >/dev/null || die
+	}
+	gstreamer-meson_src_install() {
+		pushd "${BUILD_DIR}" >/dev/null || die
+			gstreamer_multilib_src_install
+		popd >/dev/null || die
+		if [[ "${PN}" != "${GST_ORG_MODULE}" ]]; then
+			gstreamer_multilib_src_install_all
+		fi
+	}
+	EXPORT_FUNCTIONS src_configure src_compile src_test src_install
 fi
+
+EXPORT_FUNCTIONS pkg_setup
