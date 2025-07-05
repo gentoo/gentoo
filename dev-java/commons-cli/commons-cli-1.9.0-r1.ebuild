@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,6 +6,9 @@ EAPI=8
 # No tests, #839681
 JAVA_PKG_IUSE="doc source"
 MAVEN_ID="commons-cli:commons-cli:1.9.0"
+
+# Avoid circular dependency
+JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
 
 inherit java-pkg-2 java-pkg-simple verify-sig
 
