@@ -10,7 +10,6 @@
 	</upstream>
 	<use>
 		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
-		<flag name="screencast">Pull in <pkg>kde-plasma/spectacle</pkg> for screenshot/screenrecording support</flag>
 		<flag name="webengine">Enable page scanning support via <pkg>media-gfx/skanpage</pkg></flag>
 	</use>
 </pkgmetadata>
