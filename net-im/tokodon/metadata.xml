@@ -10,7 +10,6 @@
 		<remote-id type="kde-invent">network/tokodon</remote-id>
 	</upstream>
 	<use>
-		<flag name="mpv">Use <pkg>media-libs/mpvqt</pkg> instead of <pkg>dev-qt/qtmultimedia</pkg> for video playback (default)</flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for built-in authentication page (default is external browser)</flag>
 	</use>
 </pkgmetadata>
