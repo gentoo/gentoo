@@ -1,0 +1,97 @@
+# Fix from upstream commited after 21.5.36 release.
+
+# HG changeset patch
+# User Aidan Kehoe <kehoea@parhasard.net>
+# Date 1750364738 -3600
+#      Thu Jun 19 21:25:38 2025 +0100
+# Node ID 9224532f1f77618a16eb82e3ec8e19399f641b6e
+# Parent  d30e18f728e0d50df2f5998c2950fdf2b0157d66
+Mark failing coding cookie test with Implementation-Incomplete-Expect-Errors, avoid fontconfig error with test and non-xft builds.
+
+tests/ChangeLog addition:
+
+2025-06-19  Aidan Kehoe  <kehoea@parhasard.net>
+
+	* automated/mule-tests.el:
+	Mark the tests of coding cookies on the last page with
+	Implementation-Incomplete-Expect-Errors, since the code that does
+	that implementation is currently surrounded by #if 0. Thank you
+	Mats Lidell.
+
+lisp/ChangeLog addition:
+
+2025-06-19  Aidan Kehoe  <kehoea@parhasard.net>
+
+	* fontconfig.el:
+	Inappropriate to just (require 'font-mgr) here, since that
+	routinely loads font-mgr.el which just errors when any of the
+	relevant functions are called at run time.
+	Wrap this call with (eval-when (:compile-toplevel) ...), document
+	that doing this fixes needless test failure in face-tests.el.
+
+## diff -r d30e18f728e0 -r 9224532f1f77 lisp/ChangeLog
+## --- a/lisp/ChangeLog	Wed Jun 18 21:35:01 2025 +0100
+## +++ b/lisp/ChangeLog	Thu Jun 19 21:25:38 2025 +0100
+## @@ -1,3 +1,12 @@
+## +2025-06-19  Aidan Kehoe  <kehoea@parhasard.net>
+## +
+## +	* fontconfig.el:
+## +	Inappropriate to just (require 'font-mgr) here, since that
+## +	routinely loads font-mgr.el which just errors when any of the
+## +	relevant functions are called at run time.
+## +	Wrap this call with (eval-when (:compile-toplevel) ...), document
+## +	that doing this fixes needless test failure in face-tests.el.
+## +
+##  2025-06-16  Aidan Kehoe  <kehoea@parhasard.net>
+## 
+##  	* rect.el (kill-rectangle):
+--- a/lisp/fontconfig.el
++++ b/lisp/fontconfig.el
+@@ -108,7 +108,14 @@
+ ;; `fc-pattern-del-PROPERTY' for each of the standard properties used by
+ ;; Xft, which overlap substantially with the properties defined by X11.
+ 
+-(require 'font-mgr)
++;; If this XEmacs has font-mgr.c, well and good. If it does not, load
++;; font-mgr.el when compiling; do not load it at runtime, better to just error
++;; directly on attempts to call its functions than call its stubs that all
++;; just error on being called. This fixes a needless test failure in
++;; ../tests/automated/face-tests.el .  There's an argument that a better
++;; approach would be to remove font-mgr.el entirely, so that (require
++;; 'font-mgr) cleanly errors.
++(eval-when (:compile-toplevel) (require 'font-mgr))
+ 
+ (defalias 'make-fc-pattern 'fc-pattern-create)
+ 
+--- a/tests/ChangeLog
++++ b/tests/ChangeLog
+@@ -1,3 +1,11 @@
++2025-06-19  Aidan Kehoe  <kehoea@parhasard.net>
++
++	* automated/mule-tests.el:
++	Mark the tests of coding cookies on the last page with
++	Implementation-Incomplete-Expect-Errors, since the code that does
++	that implementation is currently surrounded by #if 0. Thank you
++	Mats Lidell.
++
+ 2025-06-14  Aidan Kehoe  <kehoea@parhasard.net>
+ 
+ 	* XEmacs 21.5.36 "leeks" is released.
+--- a/tests/automated/mule-tests.el
++++ b/tests/automated/mule-tests.el
+@@ -1251,10 +1251,12 @@
+ Der Vogelfänger bin ich ja end: stets lustig\n")
+            (Silence-Message (save-buffer 0))
+            (kill-buffer (current-buffer))
+-           (Assert (equal (find-coding-system-magic-cookie-in-file
+-                           test-file-name) "iso-8859-2"))
++	   (Implementation-Incomplete-Expect-Failure
++	    (Assert (equal (find-coding-system-magic-cookie-in-file
++			    test-file-name) "iso-8859-2")))
+            (find-file test-file-name)
+-           (Assert (eq buffer-file-coding-system 'iso-8859-2-unix))
++	   (Implementation-Incomplete-Expect-Failure
++	    (Assert (eq buffer-file-coding-system 'iso-8859-2-unix)))
+            (erase-buffer)
+            (setq buffer-file-coding-system 'utf-8-unix)
+ 
