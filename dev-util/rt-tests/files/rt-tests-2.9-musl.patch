@@ -30,7 +30,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
 
 --- a/Makefile
 +++ b/Makefile
-@@ -8,7 +8,6 @@ OBJDIR = bld
+@@ -10,7 +10,6 @@ OBJDIR = bld
  sources = cyclictest.c \
  	  hackbench.c \
  	  pip_stress.c \
@@ -38,7 +38,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	  pmqtest.c \
  	  ptsematest.c \
  	  rt-migrate-test.c \
-@@ -43,7 +42,6 @@ ifeq (${PYLIB},)
+@@ -58,7 +57,6 @@ ifeq (${PYLIB},)
  endif
  
  MANPAGES = src/cyclictest/cyclictest.8 \
@@ -46,7 +46,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	   src/ptsematest/ptsematest.8 \
  	   src/rt-migrate-test/rt-migrate-test.8 \
  	   src/sigwaittest/sigwaittest.8 \
-@@ -131,9 +129,6 @@ deadline_test: $(OBJDIR)/deadline_test.o
+@@ -146,9 +144,6 @@ deadline_test: $(OBJDIR)/deadline_test.o
  signaltest: $(OBJDIR)/signaltest.o $(OBJDIR)/librttest.a $(OBJDIR)/librttestnuma.a
  	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $< $(LIBS) $(RTTESTLIB) $(RTTESTNUMA)
  
@@ -68,7 +68,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  
 --- a/src/cyclictest/cyclictest.c
 +++ b/src/cyclictest/cyclictest.c
-@@ -30,6 +30,7 @@
+@@ -33,6 +33,7 @@
  #include <sys/utsname.h>
  #include <sys/mman.h>
  #include <sys/syscall.h>
@@ -76,7 +76,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  #include "rt_numa.h"
  
  #include "rt-utils.h"
-@@ -469,12 +470,8 @@ static void *timerthread(void *param)
+@@ -633,12 +634,8 @@ static void *timerthread(void *param)
  {
  	struct thread_param *par = param;
  	struct sched_param schedp;
@@ -89,7 +89,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	struct thread_stat *stat = par->stats;
  	int stopped = 0;
  	cpu_set_t mask;
-@@ -503,14 +500,6 @@ static void *timerthread(void *param)
+@@ -667,14 +664,6 @@ static void *timerthread(void *param)
  	sigaddset(&sigset, par->signal);
  	sigprocmask(SIG_BLOCK, &sigset, NULL);
  
@@ -104,7 +104,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	memset(&schedp, 0, sizeof(schedp));
  	schedp.sched_priority = par->prio;
  	if (setscheduler(0, par->policy, &schedp))
-@@ -564,20 +553,6 @@ static void *timerthread(void *param)
+@@ -728,20 +717,6 @@ static void *timerthread(void *param)
  		stop = now;
  		stop.tv_sec += duration;
  	}
@@ -125,7 +125,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  
  	stat->threadstarted++;
  
-@@ -585,16 +560,10 @@ static void *timerthread(void *param)
+@@ -749,16 +724,10 @@ static void *timerthread(void *param)
  
  		uint64_t diff;
  		unsigned long diff_smi = 0;
@@ -143,7 +143,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  		case MODE_CLOCK_NANOSLEEP:
  			if (par->timermode == TIMER_ABSTIME) {
  				ret = clock_nanosleep(par->clock, TIMER_ABSTIME,
-@@ -708,11 +677,6 @@ static void *timerthread(void *param)
+@@ -872,11 +841,6 @@ static void *timerthread(void *param)
  
  		next.tv_sec += interval.tv_sec;
  		next.tv_nsec += interval.tv_nsec;
@@ -155,7 +155,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  		tsnorm(&next);
  
  		while (tsgreater(&now, &next)) {
-@@ -737,17 +701,6 @@ out:
+@@ -901,17 +865,6 @@ out:
  		pthread_mutex_unlock(&refresh_on_max_lock);
  	}
  
@@ -173,7 +173,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	/* close msr file */
  	if (smi)
  		close(par->msr_fd);
-@@ -1143,7 +1096,8 @@ static void process_options(int argc, ch
+@@ -1314,7 +1267,8 @@ static void process_options(int argc, ch
  		case OPT_VERBOSE: verbose = 1; break;
  		case 'x':
  		case OPT_POSIX_TIMERS:
@@ -183,7 +183,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  		case '?':
  		case OPT_HELP:
  			display_help(0); break;
-@@ -1176,13 +1130,6 @@ static void process_options(int argc, ch
+@@ -1350,13 +1304,6 @@ static void process_options(int argc, ch
  		}
  	}
  
@@ -197,7 +197,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	/* if smp wasn't requested, test for numa automatically */
  	if (!smp) {
  		numa = numa_initialize();
-@@ -1876,7 +1823,6 @@ int main(int argc, char **argv)
+@@ -2070,7 +2017,6 @@ int main(int argc, char **argv)
  
  	}
  
@@ -205,7 +205,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  	mode = use_nanosleep + use_system;
  
  	sigemptyset(&sigset);
-@@ -1931,6 +1877,7 @@ int main(int argc, char **argv)
+@@ -2125,6 +2071,7 @@ int main(int argc, char **argv)
  			void *currstk;
  			size_t stksize;
  			int node_cpu = cpu;
@@ -213,7 +213,7 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
  
  			if (node_cpu == -1)
  				node_cpu = cpu_for_thread_ua(i, max_cpus);
-@@ -1939,11 +1886,12 @@ int main(int argc, char **argv)
+@@ -2133,11 +2080,12 @@ int main(int argc, char **argv)
  			node = rt_numa_numa_node_of_cpu(node_cpu);
  
  			/* get the stack size set for this thread */
