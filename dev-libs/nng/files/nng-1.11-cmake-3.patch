@@ -1,0 +1,121 @@
+From https://github.com/nanomsg/nng/commit/60ff324b1e6e5124dbbfefec732940512ed40f87
+From: Garrett D'Amore <garrett@damore.org>
+Date: Sun, 29 Dec 2024 00:29:51 -0800
+Subject: [PATCH] demos: bump cmake version required to 3.15
+
+This fixes problems finding the threads library.  There may
+still be problems building these with TLS libraries added,
+as those dependencies may not be satisfied if the library lacks
+a cmake configuration file.
+--- a/demo/async/CMakeLists.txt
++++ b/demo/async/CMakeLists.txt
+@@ -1,13 +1,13 @@
+ #
++# Copyright 2024 Staysail Systems, Inc. <info@staysail.tech>
+ # Copyright 2018 Capitar IT Group BV <info@capitar.com>
+-# Copyright 2018 Staysail Systems, Inc. <info@staysail.tech>
+ #
+ # This software is supplied under the terms of the MIT License, a
+ # copy of which should be located in the distribution where this
+ # file was obtained (LICENSE.txt).  A copy of the license may also be
+ # found online at https://opensource.org/licenses/MIT.
+ 
+-cmake_minimum_required (VERSION 2.8.12)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project(nng-asyncdemo)
+ 
+--- a/demo/http_client/CMakeLists.txt
++++ b/demo/http_client/CMakeLists.txt
+@@ -1,13 +1,13 @@
+ #
+ # Copyright 2018 Capitar IT Group BV <info@capitar.com>
+-# Copyright 2018 Staysail Systems, Inc. <info@staysail.tech>
++# Copyright 2024 Staysail Systems, Inc. <info@staysail.tech>
+ #
+ # This software is supplied under the terms of the MIT License, a
+ # copy of which should be located in the distribution where this
+ # file was obtained (LICENSE.txt).  A copy of the license may also be
+ # found online at https://opensource.org/licenses/MIT.
+ 
+-cmake_minimum_required (VERSION 2.8.12)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project(http_client)
+ 
+--- a/demo/pubsub_forwarder/CMakeLists.txt
++++ b/demo/pubsub_forwarder/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ # file was obtained (LICENSE.txt).  A copy of the license may also be
+ # found online at https://opensource.org/licenses/MIT.
+ 
+-cmake_minimum_required(VERSION 3.10)
++cmake_minimum_required(VERSION 3.15)
+ project(pubsub_forwarder C)
+ 
+ # Find the nng library
+--- a/demo/raw/CMakeLists.txt
++++ b/demo/raw/CMakeLists.txt
+@@ -1,13 +1,13 @@
+ #
++# Copyright 2024 Staysail Systems, Inc. <info@staysail.tech>
+ # Copyright 2018 Capitar IT Group BV <info@capitar.com>
+-# Copyright 2018 Staysail Systems, Inc. <info@staysail.tech>
+ #
+ # This software is supplied under the terms of the MIT License, a
+ # copy of which should be located in the distribution where this
+ # file was obtained (LICENSE.txt).  A copy of the license may also be
+ # found online at https://opensource.org/licenses/MIT.
+ 
+-cmake_minimum_required (VERSION 2.8.12)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project(raw)
+ 
+--- a/demo/reqrep/CMakeLists.txt
++++ b/demo/reqrep/CMakeLists.txt
+@@ -1,13 +1,13 @@
+ #
++# Copyright 2024 Staysail Systems, Inc. <info@staysail.tech>
+ # Copyright 2018 Capitar IT Group BV <info@capitar.com>
+-# Copyright 2018 Staysail Systems, Inc. <info@staysail.tech>
+ #
+ # This software is supplied under the terms of the MIT License, a
+ # copy of which should be located in the distribution where this
+ # file was obtained (LICENSE.txt).  A copy of the license may also be
+ # found online at https://opensource.org/licenses/MIT.
+ 
+-cmake_minimum_required (VERSION 2.8.12)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project(reqrep)
+ 
+--- a/demo/rest/CMakeLists.txt
++++ b/demo/rest/CMakeLists.txt
+@@ -1,13 +1,13 @@
+ #
++# Copyright 2024 Staysail Systems, Inc. <info@staysail.tech>
+ # Copyright 2018 Capitar IT Group BV <info@capitar.com>
+-# Copyright 2018 Staysail Systems, Inc. <info@staysail.tech>
+ #
+ # This software is supplied under the terms of the MIT License, a
+ # copy of which should be located in the distribution where this
+ # file was obtained (LICENSE.txt).  A copy of the license may also be
+ # found online at https://opensource.org/licenses/MIT.
+ 
+-cmake_minimum_required (VERSION 2.8.12)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project(rest)
+ 
+--- a/demo/stream/CMakeLists.txt
++++ b/demo/stream/CMakeLists.txt
+@@ -6,7 +6,7 @@
+ # file was obtained (LICENSE.txt).  A copy of the license may also be
+ # found online at https://opensource.org/licenses/MIT.
+ 
+-cmake_minimum_required (VERSION 2.8.7)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project(stream)
+ 
