@@ -118,6 +118,19 @@ qt6-build_src_unpack() {
 # QT6_PREFIX, QT6_LIBDIR, and others), and handle anything else
 # generic as needed.
 qt6-build_src_prepare() {
+	# There is a suspicion that there "may" still be portage ordering issues
+	# when Qt's complex depgraph is involved, e.g. build a package with USE=qml
+	# before (matching) qtdeclarative version is updated despite all these
+	# packages DEPEND on ~qtdeclarative-${PV}. Tentatively assert to see if
+	# if the issue really exists (bug #959567).
+	if in_iuse qml && use qml && ! has_version -d "~dev-qt/qtdeclarative-${PV}"
+	then
+		eerror "${CATEGORY}/${PN}[qml] depends on ~dev-qt/qtdeclarative-${PV}"
+		eerror "but it has not been upgraded/installed yet, implies that there"
+		eerror "is a bug in the package manager assuming normal usage."
+		die "aborting to avoid installing a broken package"
+	fi
+
 	# Qt has quite a lot of unused (false positive) CMakeLists.txt
 	local CMAKE_QA_COMPAT_SKIP=1
 
