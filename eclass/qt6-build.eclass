@@ -123,7 +123,8 @@ qt6-build_src_prepare() {
 	# before (matching) qtdeclarative version is updated despite all these
 	# packages DEPEND on ~qtdeclarative-${PV}. Tentatively assert to see if
 	# if the issue really exists (bug #959567).
-	if in_iuse qml && use qml && ! has_version -d "~dev-qt/qtdeclarative-${PV}"
+	if in_iuse qml && use qml && [[ ${PN} != qtwayland ]] &&
+		! has_version -d "~dev-qt/qtdeclarative-${PV}"
 	then
 		eerror "${CATEGORY}/${PN}[qml] depends on ~dev-qt/qtdeclarative-${PV}"
 		eerror "but it has not been upgraded/installed yet, implies that there"
