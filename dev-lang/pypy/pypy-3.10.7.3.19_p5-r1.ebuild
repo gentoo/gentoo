@@ -27,32 +27,31 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 # also check pypy/interpreter/pycode.py -> pypy_incremental_magic
-SLOT="${PYVER}/pypy311-pp73-416"
-KEYWORDS="amd64 ~arm64 ~ppc64 x86"
-IUSE="+ensurepip gdbm +jit ncurses sqlite symlink +test-install tk"
+SLOT="${PYVER}/pypy310-pp73-384"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
+IUSE="+ensurepip gdbm +jit ncurses sqlite +test-install tk"
 # many tests are failing upstream
 # see https://buildbot.pypy.org/summary?branch=py${PYVER}
 RESTRICT="test"
 
 RDEPEND="
 	|| (
-		dev-lang/pypy3-exe:${PV%_p*}[bzip2(+),ncurses?]
-		dev-lang/pypy3-exe-bin:${PV%_p*}
+		>=dev-python/pypy3_10-exe-${PYPY_PV}:${PYPY_PV}[bzip2(+),ncurses?]
+		>=dev-python/pypy3_10-exe-bin-${PYPY_PV}:${PYPY_PV}
 	)
-	dev-lang/python-exec[python_targets_pypy${PYVER/./_}(-)]
 	dev-libs/openssl:0=
 	dev-python/gentoo-common
-	ensurepip? ( dev-python/ensurepip-wheels )
+	ensurepip? (
+		dev-python/ensurepip-pip
+		dev-python/ensurepip-setuptools
+	)
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
 		dev-lang/tk:0=
 		dev-tcltk/tix:0=
 	)
-	symlink? (
-		!dev-lang/pypy:3.10[symlink(-)]
-		!<dev-python/pypy3-7.3.17-r100
-	)
+	!dev-python/pypy3_10
 "
 DEPEND="
 	${RDEPEND}
@@ -96,7 +95,7 @@ src_compile() {
 	[[ ${soabi} == ${SLOT#*/} ]] || die "update subslot to ${soabi}"
 
 	# Add epython.py to the distribution
-	echo "EPYTHON=\"pypy${PYVER}\"" > lib-python/3/epython.py || die
+	echo 'EPYTHON="pypy3"' > lib-python/3/epython.py || die
 
 	einfo "Generating caches and CFFI modules ..."
 
@@ -193,14 +192,14 @@ src_install() {
 		rm -r "${ED}${dest}"/_gdbm* || die
 	fi
 	if ! use test-install; then
-		rm -r "${ED}${dest}"/{ctypes,tkinter,unittest}/test \
+		rm -r "${ED}${dest}"/{ctypes,sqlite3,tkinter,unittest}/test \
 			"${ED}${dest}"/{distutils,lib2to3}/tests \
 			"${ED}${dest}"/idlelib/idle_test || die
 	fi
 	if ! use sqlite; then
 		rm -r "${ED}${dest}"/sqlite3 \
 			"${ED}${dest}"/_sqlite3* \
-			"${ED}${dest}"/test/test_sqlite3 || die
+			"${ED}${dest}"/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
 		rm -r "${ED}${dest}"/{idlelib,tkinter} \
@@ -225,15 +224,4 @@ src_install() {
 
 	# remove to avoid collisions
 	rm "${PYTHON}" || die
-
-	if use symlink; then
-		dosym pypy${PYVER} /usr/bin/pypy3
-
-		# install symlinks for python-exec
-		local EPYTHON=pypy${PYVER}
-		local scriptdir=${D}$(python_get_scriptdir)
-		mkdir -p "${scriptdir}" || die
-		ln -s "../../../bin/pypy3" "${scriptdir}/python3" || die
-		ln -s python3 "${scriptdir}/python" || die
-	fi
 }
