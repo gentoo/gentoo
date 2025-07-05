@@ -16,9 +16,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc 
 
 RDEPEND="
 	!dev-libs/btparse
-	virtual/perl-Encode
-	virtual/perl-Scalar-List-Utils
-	virtual/perl-Unicode-Normalize
 "
 BDEPEND="
 	${RDEPEND}
