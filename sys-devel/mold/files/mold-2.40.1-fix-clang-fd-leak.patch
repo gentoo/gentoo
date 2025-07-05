@@ -1,0 +1,32 @@
+From 1956ae6ac863116a1b7396606427e45fbdee59e0 Mon Sep 17 00:00:00 2001
+From: Rui Ueyama <ruiu@cs.stanford.edu>
+Date: Wed, 11 Jun 2025 10:16:07 +0900
+Subject: [PATCH] Close fd when doing LTO
+
+Fixes https://github.com/rui314/mold/issues/1362
+---
+ src/lto-unix.cc | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/src/lto-unix.cc b/src/lto-unix.cc
+index ba7e984e31..8fc0acfc48 100644
+--- a/src/lto-unix.cc
++++ b/src/lto-unix.cc
+@@ -638,13 +638,10 @@ ObjectFile<E> *read_lto_object(Context<E> &ctx, MappedFile *mf) {
+                << " please make sure you are using the same compiler of the"
+                << " same version for all object files";
+ 
+-  // It looks like GCC doesn't need fd after claim_file_hook() while
+-  // LLVM needs it and takes the ownership of fd. To prevent "too many
+-  // open files" issue, we close fd only for GCC. This is ugly, though.
+-  if (!is_llvm(ctx)) {
+-    MappedFile *mf2 = mf->parent ? mf->parent : mf;
+-    mf2->close_fd();
+-  }
++  if (mf->parent)
++    mf->parent->close_fd();
++  else
++    mf->close_fd();
+ 
+   // Create a symbol strtab
+   i64 strtab_size = 1;
