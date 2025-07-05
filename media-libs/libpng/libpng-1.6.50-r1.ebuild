@@ -65,7 +65,6 @@ multilib_src_configure() {
 		$(use_enable test tests)
 		$(use_enable cpu_flags_x86_sse intel-sse)
 		$(use_enable static-libs static)
-		--disable-riscv-rvv
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
