@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,13 +12,20 @@ SRC_URI="http://dinamelt.bioinfo.rpi.edu/download/${P}.tar.bz2"
 LICENSE="unafold"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/freeglut
 	media-libs/gd
-	virtual/opengl"
+	virtual/opengl
+"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-build/autoconf-archive"
+BDEPEND="
+	dev-build/autoconf-archive
+	dev-lang/perl
+	test? ( dev-perl/XML-Parser )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-doc-version.patch
