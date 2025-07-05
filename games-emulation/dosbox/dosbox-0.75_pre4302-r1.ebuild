@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,24 +29,26 @@ SRC_URI+=" glide? ( https://raw.githubusercontent.com/voyageur/openglide/${GLIDE
 
 DESCRIPTION="DOS emulator"
 HOMEPAGE="https://www.dosbox.com/"
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="alsa +core-inline debug glide hardened opengl X"
 
-RDEPEND="alsa? ( media-libs/alsa-lib )
-	glide? ( media-libs/openglide )
-	opengl? ( virtual/glu virtual/opengl )
-	debug? ( sys-libs/ncurses:0= )
-	X? ( x11-libs/libX11 )
+DEPEND="
 	media-libs/libpng:0=
 	media-libs/libsdl[joystick,opengl?,video,X?]
 	media-libs/sdl-net
 	media-libs/sdl-sound
-	sys-libs/zlib"
-DEPEND="${RDEPEND}"
+	sys-libs/zlib
+	alsa? ( media-libs/alsa-lib )
+	debug? ( sys-libs/ncurses:0= )
+	glide? ( media-libs/openglide )
+	opengl? ( virtual/glu virtual/opengl )
+	X? ( x11-libs/libX11 )
+"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.74-ncurses.patch
@@ -63,14 +65,16 @@ src_prepare() {
 src_configure() {
 	use glide && append-cppflags -I"${EPREFIX}"/usr/include/openglide
 
-	ac_cv_lib_X11_main=$(usex X yes no) \
-	econf \
-		$(use_enable alsa alsa-midi) \
-		$(use_enable core-inline) \
-		$(use_enable !hardened dynamic-core) \
-		$(use_enable !hardened dynamic-x86) \
-		$(use_enable debug) \
+	local -x ac_cv_lib_X11_main=$(usex X yes no)
+	local myeconfargs=(
+		$(use_enable alsa alsa-midi)
+		$(use_enable core-inline)
+		$(use_enable !hardened dynamic-core)
+		$(use_enable !hardened dynamic-x86)
+		$(use_enable debug)
 		$(use_enable opengl)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
