@@ -1,0 +1,51 @@
+Modified patch from upstream commit 
+https://github.com/WebKit/WebKit/commit/654f0c3
+to apply on 2.46.5
+
+Original author fujii (Fujii Hironori)
+
+--- a/Source/WTF/wtf/EnumTraits.h	2025-07-04 00:55:33.552603416 +0200
++++ b/Source/WTF/wtf/EnumTraits.h	2025-07-04 01:08:04.845970071 +0200
+@@ -161,6 +161,16 @@
+ #pragma clang diagnostic ignored "-Wenum-constexpr-conversion"
+ #endif
+ 
++#if COMPILER(CLANG) && __clang_major__ >= 16
++template <typename E, auto V, typename = void>
++inline constexpr bool isEnumConstexprStaticCastValid = false;
++template <typename E, auto V>
++inline constexpr bool isEnumConstexprStaticCastValid<E, V, std::void_t<std::integral_constant<E, static_cast<E>(V)>>> = true;
++#else
++template <typename, auto>
++inline constexpr bool isEnumConstexprStaticCastValid = true;
++#endif
++
+ template<typename E>
+ constexpr std::span<const char> enumTypeNameImpl()
+ {
+@@ -224,6 +234,16 @@
+     return result;
+ }
+ 
++template<typename E, auto V>
++constexpr std::span<const char> enumName()
++{
++    if constexpr (isEnumConstexprStaticCastValid<E, V>)
++        return enumName<static_cast<E>(V)>();
++    else
++        return { };
++}
++
++
+ namespace detail {
+ 
+ template<size_t i, size_t end>
+@@ -243,7 +263,7 @@
+     std::array<std::span<const char>, limit> names;
+ 
+     detail::forConstexpr<0, limit>([&] (auto i) {
+-        names[i] = enumName<static_cast<E>(static_cast<unsigned>(i))>();
++        names[i] = enumName<E, static_cast<unsigned>(i)>();
+     });
+     return names;
+ }

@@ -160,6 +160,9 @@ src_prepare() {
 	# https://bugs.gentoo.org/943213
 	eapply "${FILESDIR}"/2.44.4-fix-icu76.1.patch
 
+	# bug #959511 upstream https://bugs.webkit.org/show_bug.cgi?id=295472
+	eapply "${FILESDIR}"/2.46.5-EnumTraits.h-error-no-matching-function-for-call-to-.patch
+
 	# We don't want -Werror for gobject-introspection (bug #947761)
 	sed -i -e "s:--warn-error::" Source/cmake/FindGI.cmake || die
 }
