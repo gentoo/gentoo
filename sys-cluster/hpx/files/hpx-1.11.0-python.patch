@@ -18,13 +18,13 @@ Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
 -#! @Python_EXECUTABLE@
 +#! /usr/bin/env python
  #
+ # Copyright (c) 2020-@HPX_COPYRIGHT_YEAR@ STE||AR Group
  # Copyright (c) 2014 Steven R. Brandt
- #
 --- a/cmake/templates/hpxrun.py.in
 +++ b/cmake/templates/hpxrun.py.in
 @@ -1,4 +1,4 @@
 -#! @Python_EXECUTABLE@
 +#! /usr/bin/env python
  #
+ # Copyright (c) 2020-@HPX_COPYRIGHT_YEAR@ STE||AR Group
  # Copyright (c) 2014 Thomas Heller
- #

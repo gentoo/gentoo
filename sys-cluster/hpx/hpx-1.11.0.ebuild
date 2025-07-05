@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -33,7 +33,7 @@ BDEPEND="
 "
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-cpp/asio-1.12.0
+	<=dev-cpp/asio-1.33
 	dev-libs/boost:=
 	sys-apps/hwloc:=
 	jemalloc? ( dev-libs/jemalloc:= )
