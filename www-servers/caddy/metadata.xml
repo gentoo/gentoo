@@ -14,15 +14,74 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <use>
+    <flag name="dynamicdns">
+      Adds module which allows querying an endpoint to get dynamic public IP and updating records with DNS providers
+      https://caddyserver.com/docs/modules/dynamic_dns
+    </flag>
+    <flag name="dns-azure">
+      Adds module which allows to manage Azure hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.azure
+    </flag>
+    <flag name="dns-cloudflare">
+      Adds module which allows to manage Cloudflare hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.cloudflare
+    </flag>
+    <flag name="dns-cloudns">
+      Adds module which allows to manage ClouDNS hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.cloudns
+    </flag>
+    <flag name="dns-digitalocean">
+      Adds module which allows to manage DigitalOcean hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.digitalocean
+    </flag>
+    <flag name="dns-duckdns">
+      Adds module which allows to manage Duck DNS hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.duckdns
+    </flag>
+    <flag name="dns-googleclouddns">
+      Adds module which allows to manage Google Cloud hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.googleclouddns
+    </flag>
+    <flag name="dns-hetzner">
+      Adds module which allows to manage Hetzner hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.hetzner
+    </flag>
+    <flag name="dns-mailinabox">
+      Adds module which allows to manage Mail-in-a-Box hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.mailinabox
+    </flag>
+    <flag name="dns-netcup">
+      Adds module which allows to manage netcup hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.netcup
+    </flag>
+    <flag name="dns-ovh">
+      Adds module which allows to manage OVHcloud hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.ovh
+    </flag>
+    <flag name="dns-porkbun">
+      Adds module which allows to manage porkbun hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.porkbun
+    </flag>
+    <flag name="dns-rfc2136">
+      Adds module which allows to manage DNS zones using RFC2136 Dynamic Updates within Caddy
+      https://caddyserver.com/docs/modules/dns.providers.rfc2136
+    </flag>
+    <flag name="dns-vultr">
+      Adds module which allows to manage Vultr hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.vultr
+    </flag>
     <flag name="events-handlers-exec">
-      Builds a module which lets user exec command on Caddy events
+      Adds module which lets user exec command on Caddy events
       https://caddyserver.com/docs/modules/events.handlers.exec
       https://caddyserver.com/docs/caddyfile/options#event-options
     </flag>
     <flag name="security">
       Authentication, Authorization, and Accounting. LDAP, OAuth, SAML, MFA, 2FA, JWT etc..
       https://caddyserver.com/docs/modules/security
-      https://github.com/greenpau/caddy-security
+    </flag>
+    <flag name="webdav">
+      Adds module which implements an HTTP handler for responding to WebDAV clients
+      https://caddyserver.com/docs/modules/http.handlers.webdav
     </flag>
   </use>
   <upstream>
