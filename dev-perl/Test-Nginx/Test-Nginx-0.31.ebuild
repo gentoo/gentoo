@@ -28,5 +28,6 @@ RDEPEND="
 	dev-perl/Test-Base
 	dev-perl/Test-LongString
 	dev-perl/Text-Diff
+	dev-perl/URI
 	dev-perl/libwww-perl
 "
