@@ -1445,12 +1445,15 @@ epytest() {
 			local plugin_args=()
 			readarray -t -d '' plugin_args < <(
 				"${EPYTHON}" - "${EPYTEST_PLUGINS[@]}" <<-EOF || die
+					import os
 					import sys
 					from importlib.metadata import distribution, entry_points
+
+					env_plugins = os.environ.get("PYTEST_PLUGINS", "").split(",")
 					packages = {distribution(x).name for x in sys.argv[1:]}
 					eps = {
 						f"-p{x.name}" for x in entry_points(group="pytest11")
-						if x.dist.name in packages
+						if x.dist.name in packages and x.value not in env_plugins
 					}
 					sys.stdout.write("\\0".join(sorted(eps)))
 				EOF
