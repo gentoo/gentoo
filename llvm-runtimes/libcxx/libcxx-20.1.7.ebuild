@@ -13,7 +13,10 @@ HOMEPAGE="https://libcxx.llvm.org/"
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~loong ~riscv sparc x86 ~arm64-macos ~x64-macos"
-IUSE="+clang +libcxxabi +static-libs test"
+IUSE="
+	+clang +libcxxabi +static-libs test
+	default-compiler-rt default-libcxx default-lld
+"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
@@ -89,6 +92,25 @@ multilib_src_configure() {
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
 		strip-unsupported-flags
+
+		# Figure out the correct LDFLAGS even if the clang config is not present.
+		# When the full LLVM toolchain is upgraded (e.g. from 19 to 20), the order of
+		# ebuild upgrades is:
+		#
+		# - llvm-core/clang
+		# - [...]
+		# - llvm-runtime/libcxxabi
+		# - llvm-runtime/libcxx
+		# - llvm-core/clang-runtime
+		#
+		# This ebuild ends up using a new clang, but since clang-runtime is not yet
+		# upgraded, that new clang doesn't have correct configuration. See bug
+		# #951445.
+		local rtlib=$(usex default-compiler-rt compiler-rt libgcc)
+		local unwindlib=$(usex default-compiler-rt libunwind libgcc)
+		local stdlib=$(usex default-libcxx libc++ libstdc++)
+		local fuseld=$(usex default-lld lld bfd)
+		local -x LDFLAGS="--rtlib=${rtlib} --unwindlib=${unwindlib} --stdlib=${stdlib} -fuse-ld=${fuseld}"
 	fi
 
 	# link to compiler-rt
