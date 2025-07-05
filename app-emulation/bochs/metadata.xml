@@ -12,6 +12,6 @@
 		<flag name="x86-64">Enable support for emulation of 64-bit CPUs</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">bochs</remote-id>
+		<remote-id type="github">bochs-emu/Bochs</remote-id>
 	</upstream>
 </pkgmetadata>
