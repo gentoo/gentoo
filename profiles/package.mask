@@ -52,6 +52,7 @@ app-misc/pip
 # If you have any of these installed, just remove them; they should not be
 # required anymore.
 virtual/perl-bignum
+virtual/perl-HTTP-Tiny
 virtual/perl-IO-Zlib
 virtual/perl-Locale-Maketext
 virtual/perl-Math-BigInt-FastCalc
