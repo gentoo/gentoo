@@ -1,0 +1,125 @@
+From 328f51cf6c185dc1d39f52044c8ffff5ed746535 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jakub=20Klinkovsk=C3=BD?=
+ <1289205+lahwaacz@users.noreply.github.com>
+Date: Fri, 27 Jun 2025 22:57:09 +0200
+Subject: [PATCH] Replace vtkUnstructuredGrid::GetCellLinks with
+ vtkUnstructuredGrid::GetLinks
+
+The former has been deprecated in VTK 9.3 and silently removed in 9.5:
+https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.3.md
+---
+ .../salomesmesh/inc/SMDS_UnstructuredGrid.hxx        |  2 +-
+ src/3rdParty/salomesmesh/src/SMDS/SMDS_Mesh.cpp      |  2 +-
+ src/3rdParty/salomesmesh/src/SMDS/SMDS_MeshNode.cpp  | 12 ++++++------
+ .../salomesmesh/src/SMESH/SMESH_MeshEditor.cpp       |  4 ++--
+ 4 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/src/3rdParty/salomesmesh/inc/SMDS_UnstructuredGrid.hxx b/src/3rdParty/salomesmesh/inc/SMDS_UnstructuredGrid.hxx
+index 7746581454..cd4efc86e2 100644
+--- a/src/3rdParty/salomesmesh/inc/SMDS_UnstructuredGrid.hxx
++++ b/src/3rdParty/salomesmesh/inc/SMDS_UnstructuredGrid.hxx
+@@ -96,7 +96,7 @@ public:
+   vtkCellLinks* GetLinks()
+   {
+ #ifdef VTK_CELL_ARRAY_V2
+-    return static_cast<vtkCellLinks*>(GetCellLinks());
++    return static_cast<vtkCellLinks*>(vtkUnstructuredGrid::GetLinks());
+ #else
+     return Links;
+ #endif
+diff --git a/src/3rdParty/salomesmesh/src/SMDS/SMDS_Mesh.cpp b/src/3rdParty/salomesmesh/src/SMDS/SMDS_Mesh.cpp
+index a987e05058..ae8268b16f 100644
+--- a/src/3rdParty/salomesmesh/src/SMDS/SMDS_Mesh.cpp
++++ b/src/3rdParty/salomesmesh/src/SMDS/SMDS_Mesh.cpp
+@@ -4713,7 +4713,7 @@ void SMDS_Mesh::dumpGrid(string ficdump)
+   }
+   ficcon << "-------------------------------- connectivity " <<  nbPoints << endl;
+ #ifdef VTK_CELL_ARRAY_V2
+-  vtkCellLinks *links = static_cast<vtkCellLinks*>(myGrid->GetCellLinks());
++  vtkCellLinks *links = static_cast<vtkCellLinks*>(myGrid->GetLinks());
+ #else
+   vtkCellLinks *links = myGrid->GetCellLinks();
+ #endif
+diff --git a/src/3rdParty/salomesmesh/src/SMDS/SMDS_MeshNode.cpp b/src/3rdParty/salomesmesh/src/SMDS/SMDS_MeshNode.cpp
+index 7b8e7ae763..8e7e39afca 100644
+--- a/src/3rdParty/salomesmesh/src/SMDS/SMDS_MeshNode.cpp
++++ b/src/3rdParty/salomesmesh/src/SMDS/SMDS_MeshNode.cpp
+@@ -69,7 +69,7 @@ void SMDS_MeshNode::init(int id, int meshId, int shapeId, double x, double y, do
+   SMDS_UnstructuredGrid * grid = mesh->getGrid();
+   vtkPoints *points = grid->GetPoints();
+   points->InsertPoint(myVtkID, x, y, z);
+-  SMDS_CellLinks *cellLinks = dynamic_cast<SMDS_CellLinks*>(grid->GetCellLinks());
++  SMDS_CellLinks *cellLinks = dynamic_cast<SMDS_CellLinks*>(grid->GetLinks());
+   assert(cellLinks);
+   cellLinks->ResizeForPoint( myVtkID );
+ }
+@@ -191,7 +191,7 @@ public:
+ SMDS_ElemIteratorPtr SMDS_MeshNode::
+ GetInverseElementIterator(SMDSAbs_ElementType type) const
+ {
+-  vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetCellLinks())->GetLink(myVtkID);
++  vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetLinks())->GetLink(myVtkID);
+   //MESSAGE("myID " << myID << " ncells " << l.ncells);
+   return SMDS_ElemIteratorPtr(new SMDS_MeshNode_MyInvIterator(SMDS_Mesh::_meshList[myMeshId], l.cells, l.ncells, type));
+ }
+@@ -251,7 +251,7 @@ elementsIterator(SMDSAbs_ElementType type) const
+     return SMDS_MeshElement::elementsIterator(SMDSAbs_Node);
+   else
+   {
+-    vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetCellLinks())->GetLink(myVtkID);
++    vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetLinks())->GetLink(myVtkID);
+     return SMDS_ElemIteratorPtr(new SMDS_MeshNode_MyIterator(SMDS_Mesh::_meshList[myMeshId], l.cells, l.ncells, type));
+   }
+ }
+@@ -350,7 +350,7 @@ void SMDS_MeshNode::AddInverseElement(const SMDS_MeshElement* ME)
+   const SMDS_MeshCell *cell = dynamic_cast<const SMDS_MeshCell*> (ME);
+   assert(cell);
+   SMDS_UnstructuredGrid* grid = SMDS_Mesh::_meshList[myMeshId]->getGrid();
+-  vtkCellLinks *Links = static_cast<vtkCellLinks*>(grid->GetCellLinks());
++  vtkCellLinks *Links = static_cast<vtkCellLinks*>(grid->GetLinks());
+   Links->ResizeCellList(myVtkID, 1);
+   Links->AddCellReference(cell->getVtkId(), myVtkID);
+ }
+@@ -366,7 +366,7 @@ void SMDS_MeshNode::ClearInverseElements()
+ 
+ bool SMDS_MeshNode::emptyInverseElements()
+ {
+-  vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetCellLinks())->GetLink(myVtkID);
++  vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetLinks())->GetLink(myVtkID);
+   return (l.ncells == 0);
+ }
+ 
+@@ -378,7 +378,7 @@ bool SMDS_MeshNode::emptyInverseElements()
+ 
+ int SMDS_MeshNode::NbInverseElements(SMDSAbs_ElementType type) const
+ {
+-  vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetCellLinks())->GetLink(myVtkID);
++  vtkCellLinks::Link l = static_cast<vtkCellLinks*>(SMDS_Mesh::_meshList[myMeshId]->getGrid()->GetLinks())->GetLink(myVtkID);
+ 
+   if ( type == SMDSAbs_All )
+     return l.ncells;
+diff --git a/src/3rdParty/salomesmesh/src/SMESH/SMESH_MeshEditor.cpp b/src/3rdParty/salomesmesh/src/SMESH/SMESH_MeshEditor.cpp
+index a037b33af8..4b7f0c2185 100644
+--- a/src/3rdParty/salomesmesh/src/SMESH/SMESH_MeshEditor.cpp
++++ b/src/3rdParty/salomesmesh/src/SMESH/SMESH_MeshEditor.cpp
+@@ -11348,7 +11348,7 @@ bool SMESH_MeshEditor::DoubleNodesOnGroupBoundaries( const std::vector<TIDSorted
+             {
+               int oldId = *itn;
+               //MESSAGE("     node " << oldId);
+-              vtkCellLinks::Link l = static_cast<vtkCellLinks*>(grid->GetCellLinks())->GetLink(oldId);
++              vtkCellLinks::Link l = static_cast<vtkCellLinks*>(grid->GetLinks())->GetLink(oldId);
+               for (int i=0; i<l.ncells; i++)
+                 {
+                   int vtkId = l.cells[i];
+@@ -11708,7 +11708,7 @@ bool SMESH_MeshEditor::DoubleNodesOnGroupBoundaries( const std::vector<TIDSorted
+         {
+           int oldId = itnod->first;
+           //MESSAGE("     node " << oldId);
+-          vtkCellLinks::Link l = static_cast<vtkCellLinks*>(grid->GetCellLinks())->GetLink(oldId);
++          vtkCellLinks::Link l = static_cast<vtkCellLinks*>(grid->GetLinks())->GetLink(oldId);
+           for (int i = 0; i < l.ncells; i++)
+             {
+               int vtkId = l.cells[i];
+-- 
+2.50.0
+
