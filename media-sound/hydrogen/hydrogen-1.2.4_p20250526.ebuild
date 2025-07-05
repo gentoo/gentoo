@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/${PN}-music/${PN}/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz
 		https://github.com/${PN}-music/documentation/archive/${PV/_p*/}.tar.gz -> ${PN}-documentation-${PV/_p*/}.tar.gz"
 	S="${WORKDIR}"/${PN}-${COMMIT}
-	KEYWORDS="amd64 ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 ppc ~ppc64 x86"
 fi
 
 LICENSE="GPL-2 ZLIB"
