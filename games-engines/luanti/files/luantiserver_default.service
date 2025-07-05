@@ -1,0 +1,15 @@
+[Unit]
+Description=Luanti multiplayer server (server config minetest.conf)
+Documentation=man:luantiserver(6)
+After=network.target
+
+[Service]
+Restart=on-failure
+User=minetest
+Group=minetest
+ExecStart=/usr/bin/luantiserver --config /etc/minetest/minetest.conf --logfile /var/log/luanti/luanti-server.log
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+

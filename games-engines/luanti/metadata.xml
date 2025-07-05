@@ -43,8 +43,10 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="benchmark">Build with benchmarking support</flag>
 		<flag name="client">Build Luanti client</flag>
 		<flag name="leveldb">Enable LevelDB backend</flag>
+		<flag name="openssl">Speed up SHA1 and SHA2 hashing with <pkg>dev-libs/openssl</pkg></flag>
 		<flag name="prometheus">Enable prometheus client support</flag>
 		<flag name="redis">Enable redis backend via <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="server">Build Luanti server</flag>
