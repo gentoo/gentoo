@@ -7,7 +7,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_NAME="parallel"
 PHP_EXT_NEEDED_USE="threads"
 PHP_EXT_ZENDEXT="no"
-USE_PHP="php8-1 php8-2 php8-3"
+USE_PHP="php8-2 php8-3"
 
 inherit php-ext-pecl-r3
 
