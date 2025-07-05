@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx doc dev-python/sphinx-rtd-theme
@@ -65,6 +66,6 @@ python_test() {
 		)
 	fi
 
-	local -x PYTEST_PLUGINS=pytest_datadir.plugin,pytest_regressions.plugin
+	local EPYTEST_PLUGINS=( pytest-{datadir,regressions} )
 	epytest
 }
