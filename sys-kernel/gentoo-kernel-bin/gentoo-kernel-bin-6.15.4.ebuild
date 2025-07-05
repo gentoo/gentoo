@@ -84,6 +84,7 @@ src_configure() {
 	tc-export_build_env
 	local makeargs=(
 		V=1
+		WERROR=0
 
 		HOSTCC="$(tc-getBUILD_CC)"
 		HOSTCXX="$(tc-getBUILD_CXX)"
