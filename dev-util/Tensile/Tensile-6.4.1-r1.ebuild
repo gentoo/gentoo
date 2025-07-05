@@ -81,10 +81,13 @@ src_prepare() {
 
 	sed -e "s|os\.path\.dirname.*$|\"${EPREFIX}/usr/share/Tensile/Source\", end='')|" -i __init__.py || die
 
+	# bug 949817: fix v_dot4_i32_i8 syntax for clang-20
+	sed  's/ op_sel:\[0,0\] op_sel_hi:\[1,1\]//' -i Components/MAC_I8X4.py || die
+
 	popd || die
 
 	sed -e "/package_data/d" -e "/data_files/d" -i setup.py || die
-	use client && PATCHES= cmake_src_prepare  # do not apply patches again in cmake_src_prepare
+	use client && PATCHES='' cmake_src_prepare  # do not apply patches again in cmake_src_prepare
 }
 
 src_configure() {
