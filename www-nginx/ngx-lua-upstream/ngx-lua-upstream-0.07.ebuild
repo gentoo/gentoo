@@ -26,7 +26,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-
+KEYWORDS=""
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 BDEPEND="virtual/pkgconfig"

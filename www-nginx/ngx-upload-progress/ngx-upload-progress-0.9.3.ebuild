@@ -15,6 +15,7 @@ NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS=""
 
 # Uses custom shell-based tests.
 RESTRICT="test"

@@ -23,7 +23,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-
+KEYWORDS=""
 IUSE="+hmac"
 
 BDEPEND="virtual/pkgconfig"

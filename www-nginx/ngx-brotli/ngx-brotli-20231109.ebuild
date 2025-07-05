@@ -20,6 +20,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS=""
 
 src_unpack() {
 	nginx-module_src_unpack

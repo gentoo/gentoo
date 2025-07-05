@@ -6,17 +6,15 @@ EAPI=8
 DIST_AUTHOR=AGENT
 inherit perl-module
 
+MY_PN="test-nginx"
 DESCRIPTION="Data-driven test scaffold for NGINX and OpenResty"
 HOMEPAGE+=" https://github.com/openresty/test-nginx"
-
 SRC_URI="https://github.com/openresty/test-nginx/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-
-MY_PN="test-nginx"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD"
-
 SLOT="0"
+KEYWORDS=""
 
 # The following packages in the dev-perl category provide the required Perl
 # modules that Test-Nginx depends on:

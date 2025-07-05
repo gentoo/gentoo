@@ -16,6 +16,7 @@ SRC_URI="
 
 LICENSE="AGPL-3+"
 SLOT="0"
+KEYWORDS=""
 
 # Uses custom Python-based testing framework.
 RESTRICT="test"

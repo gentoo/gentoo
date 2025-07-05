@@ -15,6 +15,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS=""
 # Tests require replicating much of nginx-module_src_test() in each
 # dev-lua/lua-resty-* ebuild.
 RESTRICT="test"

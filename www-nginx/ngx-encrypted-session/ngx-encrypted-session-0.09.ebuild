@@ -24,6 +24,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
+KEYWORDS=""
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/openssl:="
