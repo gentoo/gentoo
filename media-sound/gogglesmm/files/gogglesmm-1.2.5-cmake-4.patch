@@ -1,0 +1,104 @@
+Pending upstream PR
+https://github.com/gogglesmm/gogglesmm/pull/121.patch
+From 70849e3cee937234561716b9d6860213014a721d Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Tue, 1 Jul 2025 08:16:54 +0200
+Subject: [PATCH] set cmake_min version upper to prepare cmake-4 that requires
+ >=3.5
+
+Set all with 3.5 could be sufficient but <3.10 will be removed then too.
+Here, 3.10 does not seem to conflict with any cmake_policy and is
+compatible with ubuntu 18.04 and debian 10.
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ CMakeLists.txt              | 3 +--
+ cfox/CMakeLists.txt         | 2 +-
+ gap/CMakeLists.txt          | 2 +-
+ gap/lib/alac/CMakeLists.txt | 2 +-
+ gap/lib/md5/CMakeLists.txt  | 2 +-
+ gap/test/CMakeLists.txt     | 2 +-
+ src/CMakeLists.txt          | 4 ++--
+ 7 files changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f0ced903..69d2f3c9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,4 @@
+-# Using cmake 3.2
+-cmake_minimum_required(VERSION 3.3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ project(gogglesmm_dist)
+ 
+diff --git a/cfox/CMakeLists.txt b/cfox/CMakeLists.txt
+index f9de2cb8..8d976ae5 100644
+--- a/cfox/CMakeLists.txt
++++ b/cfox/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3.1)
++cmake_minimum_required(VERSION 3.10)
+ 
+ set(CMAKE_VERBOSE_MAKEFILE TRUE)
+ 
+diff --git a/gap/CMakeLists.txt b/gap/CMakeLists.txt
+index 0950838a..1597131b 100644
+--- a/gap/CMakeLists.txt
++++ b/gap/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ # set(CMAKE_VERBOSE_MAKEFILE TRUE)
+ 
+diff --git a/gap/lib/alac/CMakeLists.txt b/gap/lib/alac/CMakeLists.txt
+index af47f059..8730a8be 100644
+--- a/gap/lib/alac/CMakeLists.txt
++++ b/gap/lib/alac/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ include(TestBigEndian)
+ include(CheckIncludeFiles)
+diff --git a/gap/lib/md5/CMakeLists.txt b/gap/lib/md5/CMakeLists.txt
+index c84ef21e..d9bac32c 100644
+--- a/gap/lib/md5/CMakeLists.txt
++++ b/gap/lib/md5/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ include(TestBigEndian)
+ include(CheckIncludeFiles)
+diff --git a/gap/test/CMakeLists.txt b/gap/test/CMakeLists.txt
+index ea671471..6d1f7475 100644
+--- a/gap/test/CMakeLists.txt
++++ b/gap/test/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ project(gap_tests)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0c2c8af3..7429027d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.3.1 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ include(TestBigEndian)
+ include(CheckIncludeFiles)
+@@ -364,4 +364,4 @@ target_link_libraries(gogglesmm PRIVATE gap ${CFOX}
+                       ${ICE_LIBRARIES}
+                       ${Intl_LIBRARIES})
+ 
+-install(TARGETS gogglesmm RUNTIME DESTINATION bin)
+\ No newline at end of file
++install(TARGETS gogglesmm RUNTIME DESTINATION bin)
+-- 
+2.49.0
+

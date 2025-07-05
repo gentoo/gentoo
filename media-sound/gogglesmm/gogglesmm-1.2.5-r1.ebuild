@@ -65,6 +65,8 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	# https://github.com/gogglesmm/gogglesmm/pull/120
 	"${FILESDIR}"/${PN}-1.2.5-libsamplerate.patch
+	# https://github.com/gogglesmm/gogglesmm/pull/121
+	"${FILESDIR}"/${PN}-1.2.5-cmake-4.patch
 )
 
 src_configure() {
