@@ -8,7 +8,7 @@ MY_PV="${PV/_p/-}"
 
 DESCRIPTION="Tool to check TLS/SSL cipher support"
 HOMEPAGE="https://testssl.sh/"
-SRC_URI="https://github.com/drwetter/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 S=${WORKDIR}/${MY_PN}-${MY_PV}
 
 LICENSE="GPL-2 bundled-openssl? ( openssl )"
@@ -17,9 +17,12 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="bundled-openssl kerberos"
 
 RDEPEND="
-	app-shells/bash[net]
-	sys-apps/util-linux
-	sys-libs/ncurses:0
+	app-alternatives/awk
+	>=app-shells/bash-3.2[net]
+	sys-apps/coreutils
+	sys-apps/grep
+	sys-apps/sed
+	sys-libs/ncurses
 	sys-process/procps
 	|| (
 		net-dns/bind
