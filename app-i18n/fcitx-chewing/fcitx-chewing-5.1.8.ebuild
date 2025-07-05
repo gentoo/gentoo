@@ -15,13 +15,22 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!app-i18n/fcitx-chewing:4
-	>=app-i18n/fcitx-5.1.9:5
-	<app-i18n/fcitx-5.1.13:5
+	>=app-i18n/fcitx-5.1.13:5
 	>=app-i18n/libchewing-0.5.0
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+src_configure() {
+	local mycmakeargs=(
+		-DENABLE_TEST=$(usex test)
+	)
+
+	cmake_src_configure
+}
