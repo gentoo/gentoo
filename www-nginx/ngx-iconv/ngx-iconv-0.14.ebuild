@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~arm64"
 
 DEPEND="virtual/libiconv"
 RDEPEND="${DEPEND}"
