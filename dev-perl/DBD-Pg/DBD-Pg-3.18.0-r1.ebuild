@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DIST_AUTHOR=TURNSTEP
-inherit perl-module
+inherit flag-o-matic perl-module
 
 DESCRIPTION="PostgreSQL database driver for the DBI module"
 
@@ -12,7 +12,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
-	virtual/perl-version
 	>=dev-perl/DBI-1.614.0
 	dev-db/postgresql:*
 "
@@ -23,9 +22,7 @@ BDEPEND="
 	${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.580.0
 	test? (
-		virtual/perl-File-Temp
 		>=virtual/perl-Test-Simple-0.880.0
-		virtual/perl-Time-HiRes
 	)
 "
 
@@ -49,6 +46,13 @@ src_prepare() {
 	export POSTGRES_INCLUDE="${postgres_include}"
 	export POSTGRES_LIB="${postgres_lib}"
 	perl-module_src_prepare
+}
+
+src_configure() {
+	# https://github.com/bucardo/dbdpg/issues/135 (bug #944038)
+	append-cflags -std=gnu17
+
+	perl-module_src_configure
 }
 
 src_test() {
