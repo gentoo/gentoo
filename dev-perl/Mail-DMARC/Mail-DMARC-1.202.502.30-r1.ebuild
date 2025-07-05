@@ -19,20 +19,13 @@ RDEPEND="
 		dev-perl/Net-IMAP-Simple
 		dev-perl/Net-SMTPS
 	)
-	virtual/perl-Carp
 	dev-perl/Config-Tiny
 	>=dev-perl/DBD-SQLite-1.310.0
 	>=dev-perl/DBIx-Simple-1.350.0
-	virtual/perl-Data-Dumper
 	dev-perl/Email-MIME
 	>=dev-perl/Email-Sender-1.300.32
 	dev-perl/Email-Simple
-	virtual/perl-Encode
 	dev-perl/File-ShareDir
-	virtual/perl-Getopt-Long
-	virtual/perl-HTTP-Tiny
-	virtual/perl-IO
-	virtual/perl-IO-Compress
 	dev-perl/IO-Socket-SSL
 	dev-perl/libwww-perl
 	dev-perl/Mail-DKIM
@@ -43,25 +36,20 @@ RDEPEND="
 	dev-perl/Net-SMTPS
 	dev-perl/Net-SSLeay
 	>=dev-perl/Net-Server-2
-	virtual/perl-Socket
 	>=dev-perl/Socket6-0.230.0
-	virtual/perl-Sys-Syslog
 	dev-perl/Test-File-ShareDir
 	dev-perl/URI
 	dev-perl/XML-LibXML
-	virtual/perl-parent
 	>=dev-perl/Regexp-Common-2013031301
 "
 BDEPEND="
 	${RDEPEND}
 	>=dev-perl/Module-Build-0.360.100
-	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/File-ShareDir-Install-0.60.0
 	test? (
 		dev-perl/Net-DNS-Resolver-Mock
 		dev-perl/Test-Exception
 		dev-perl/Test-Output
-		virtual/perl-Test-Simple
 	)
 "
 
