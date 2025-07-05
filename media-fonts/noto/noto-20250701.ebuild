@@ -18,8 +18,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 # issue as described in https://fonts.google.com/noto
 IUSE="+extra"
 
-RDEPEND=""
-
 RESTRICT="binchecks strip"
 
 FONT_SUFFIX="ttf"
