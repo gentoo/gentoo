@@ -6,9 +6,8 @@ EAPI=7
 DESCRIPTION="LGPL-ed pc emulator"
 HOMEPAGE="http://bochs.sourceforge.io/"
 MY_P="REL_$(ver_cut 1)_$(ver_cut 2)_FINAL"
-S="${WORKDIR}/Bochs-${MY_P}/bochs"
 SRC_URI="https://github.com/bochs-emu/Bochs/archive/refs/tags/${MY_P}.tar.gz -> ${P}.tar.gz"
-
+S="${WORKDIR}/Bochs-${MY_P}/bochs"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
