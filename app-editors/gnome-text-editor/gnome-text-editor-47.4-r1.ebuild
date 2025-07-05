@@ -6,15 +6,15 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="A simple text editor for the GNOME desktop"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-text-editor"
+HOMEPAGE="https://apps.gnome.org/TextEditor/ https://gitlab.gnome.org/GNOME/gnome-text-editor"
 S="${WORKDIR}/gnome-text-editor-${PV/_/.}"
 
 LICENSE="GPL-3+ CC-BY-SA-3.0"
 SLOT="0"
 
-KEYWORDS="~amd64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~loong ~ppc64 ~riscv x86"
 
-IUSE="+editorconfig spell"
+IUSE="+editorconfig"
 
 DEPEND="
 	>=dev-libs/glib-2.80.0:2
@@ -24,10 +24,6 @@ DEPEND="
 	app-text/editorconfig-core-c
 	x11-libs/cairo
 	>=app-text/libspelling-0.3.0
-	spell? (
-		>=app-text/enchant-2.2.0:2
-		dev-libs/icu:=
-	)
 "
 RDEPEND="${DEPEND}
 	gnome-base/gsettings-desktop-schemas
@@ -41,7 +37,6 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		$(meson_feature spell enchant)
 		$(meson_feature editorconfig)
 		-Dbugreport_url="https://bugs.gentoo.org"
 	)
