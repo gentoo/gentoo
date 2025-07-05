@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -13,15 +13,14 @@ inherit flag-o-matic lua-single python-single-r1 tmpfiles toolchain-funcs webapp
 
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
-GIT_V="2.45.0"
+GIT_V="2.50.0"
 
-DESCRIPTION="a fast web-interface for git repositories"
+DESCRIPTION="A fast web-interface for Git repositories"
 HOMEPAGE="https://git.zx2c4.com/cgit/about"
 if [[ ${PV} =~ 9999* ]]; then
-	SRC_URI=""
 	EGIT_REPO_URI="https://git.zx2c4.com/cgit"
-	# v2.45.0 updates in this branch series
-	EGIT_COMMIT=dbadd856ba0537110338cfe58256b152d01388c0
+	# v2.50.0 updates in this branch series
+	EGIT_COMMIT=23bc4e4563a98652e90c14b4456ec81622c5ec79
 	EGIT_BRANCH=ch/for-jason
 else
 	SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
@@ -42,7 +41,12 @@ RDEPEND="
 	dev-libs/openssl:0=
 	dev-vcs/git
 	highlight? (
-		$(python_gen_cond_dep 'dev-python/pygments[${PYTHON_USEDEP}]' )
+		$(python_gen_cond_dep '
+			dev-python/docutils[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
+			dev-python/pygments[${PYTHON_USEDEP}]
+		')
+		sys-apps/groff
 	)
 	lua? ( ${LUA_DEPS} )
 	sys-libs/zlib
