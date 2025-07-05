@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -43,7 +43,7 @@ BDEPEND="
 		dev-python/decorator[${PYTHON_USEDEP}]
 		dev-python/dict2xml[${PYTHON_USEDEP}]
 		dev-python/weasyprint[${PYTHON_USEDEP}]
-		media-fonts/noto[cjk]
+		media-fonts/noto-cjk
 	)
 "
 

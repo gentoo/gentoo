@@ -43,7 +43,7 @@ BDEPEND="
 		dev-python/decorator[${PYTHON_USEDEP}]
 		dev-python/dict2xml[${PYTHON_USEDEP}]
 		dev-python/weasyprint[${PYTHON_USEDEP}]
-		media-fonts/noto[cjk]
+		media-fonts/noto-cjk
 	)
 "
 
