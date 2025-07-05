@@ -31,9 +31,15 @@ REQUIRED_USE="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+#
+# hpx v1.11.0 does not build with >=dev-cpp/asio-1.34.
+# See bug report: https://github.com/STEllAR-GROUP/hpx/issues/6730
+# It will be fixed in hpx v1.11.1.
+#
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-cpp/asio-1.12.0
+	<dev-cpp/asio-1.34
 	dev-libs/boost:=
 	sys-apps/hwloc:=
 	jemalloc? ( dev-libs/jemalloc:= )
