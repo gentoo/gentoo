@@ -113,8 +113,7 @@ fi
 # @ECLASS_VARIABLE: ECM_PYTHON_BINDINGS
 # @DESCRIPTION:
 # Default value is "false", which means do nothing.
-# If set to "off", pass -DBUILD_PYTHON_BINDINGS=OFF to mycmakeargs, and also
-# disable cmake finding Python3, PySide6 and Shiboken6 to make it quiet.
+# If set to "off", pass -DBUILD_PYTHON_BINDINGS=OFF to mycmakeargs.
 # No other value is implemented as python bindings are not supported in Gentoo.
 : "${ECM_PYTHON_BINDINGS:=false}"
 
@@ -125,7 +124,9 @@ fi
 # If set to "true", add "doc" to IUSE, add the appropriate dependency, let
 # -DBUILD_QCH=ON generate and install Qt compressed help files when USE=doc.
 # If set to "false", do nothing.
-if [[ ${CATEGORY} = kde-frameworks ]] && ver_test -lt 6.15; then
+if [[ ${CATEGORY} = kde-frameworks && ${_KFSLOT} == 5 ]]; then
+# TODO: Implement KF 6.15 changes how API documentation is built. See also:
+#   https://mail.kde.org/pipermail/distributions/2025-June/001595.html
 	: "${ECM_QTHELP:=true}"
 fi
 : "${ECM_QTHELP:=false}"
@@ -562,11 +563,14 @@ ecm_src_prepare() {
 
 	# limit playing field of locale stripping to kde-*/ categories
 	if [[ ${CATEGORY} = kde-* ]] ; then
-		# always install unconditionally for kconfigwidgets - if you use
+		# TODO: cleanup after KF5 removal:
+		# always install unconditionally for <kconfigwidgets-6.16 - if you use
 		# language X as system language, and there is a combobox with language
 		# names, the translated language name for language Y is taken from
 		# /usr/share/locale/Y/kf${_KFSLOT}_entry.desktop
-		[[ ${PN} != kconfigwidgets ]] && _ecm_strip_handbook_translations
+		if ! [[ ${PN} == kconfigwidgets && ${_KFSLOT} == 5 ]]; then
+			_ecm_strip_handbook_translations
+		fi
 	fi
 
 	# only build unit tests when required
@@ -641,9 +645,6 @@ ecm_src_configure() {
 
 	if [[ ${ECM_PYTHON_BINDINGS} == off ]]; then
 		cmakeargs+=( -DBUILD_PYTHON_BINDINGS=OFF )
-		if ver_test -lt 6.15; then
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_{Python3,PySide6,Shiboken6}=ON )
-		fi
 	fi
 
 	if [[ ${ECM_QTHELP} = true ]]; then
