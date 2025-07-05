@@ -28,6 +28,9 @@ BDEPEND="
 	)
 "
 
+# xdist is slightly flaky here
+EPYTEST_PLUGINS=( pytest-rerunfailures )
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -57,6 +60,5 @@ python_test() {
 		tests/test_bdist_wheel.py::test_licenses_override
 	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
+	epytest --reruns=5
 }
