@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# Avoid circular dependency
+JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
+
 inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # don't change versioning scheme
@@ -253,6 +256,9 @@ src_compile() {
 src_install() {
 	local dest="/usr/$(get_libdir)/${PN}-${SLOT}"
 	local ddest="${ED}/${dest#/}"
+
+	# https://bugs.gentoo.org/922741
+	docompress "${dest}/man"
 
 	cd "${S}"/build/*-release/images/j2sdk-image || die
 
