@@ -78,6 +78,11 @@ BDEPEND="
 	rust-plugin? ( ${RUST_DEPEND} )
 "
 
+PATCHES=(
+	# https://bugs.gentoo.org/959468
+	"${FILESDIR}"/${P}-discord-rapidjson-cmake4.patch
+)
+
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/RMG/Plugin/Input/libmupen64plus_input_gca.so"
 	use rust-plugin && rust_pkg_setup
@@ -100,10 +105,11 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake_src_prepare
-
-	# Don't install unused 3rdParty code
+	# Remove unused 3rdParty code - https://bugs.gentoo.org/959468
+	rm -r "${S}"/Source/3rdParty/discord-rpc/thirdparty/rapidjson/example || die
 	rm -r "${S}"/Source/3rdParty/fmt || die
+	rm -r "${S}"/Source/3rdParty/imgui/examples || die
+	rm -r "${S}"/Source/3rdParty/mupen64plus-rsp-parallel/win32 || die
 
 	# Don't install XMAME licensed code
 	if ! use angrylion-plugin; then
@@ -115,6 +121,8 @@ src_prepare() {
 
 	# Enable verbose make(1) output
 	sed -e 's/CC=/V=1 CC=/' -i "${S}"/Source/3rdParty/CMakeLists.txt || die
+
+	cmake_src_prepare
 }
 
 src_configure() {
