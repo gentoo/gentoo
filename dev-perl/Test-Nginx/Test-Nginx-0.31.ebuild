@@ -29,7 +29,4 @@ RDEPEND="
 	dev-perl/Test-LongString
 	dev-perl/Text-Diff
 	dev-perl/libwww-perl
-	virtual/perl-ExtUtils-MakeMaker
-	virtual/perl-File-Temp
-	virtual/perl-Time-HiRes
 "
