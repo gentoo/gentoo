@@ -180,6 +180,9 @@ meson_nm_native_program() {
 }
 
 multilib_src_configure() {
+	# Workaround for LLD on musl systems (bug #959603)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	# LTO is restricted in older clang for unclear reasons.
 	# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/593
 	# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2053
