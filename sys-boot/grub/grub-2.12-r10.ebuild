@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}"/grub-2.12-fwsetup.patch
 	"${WORKDIR}"/grub-2.12-bash-completion.patch
 	"${FILESDIR}"/grub-2.12-zfs-zstd-compression-support.patch
+	"${FILESDIR}"/grub-2.12-fix-for-bash-completion-_split_longopt.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
