@@ -21,6 +21,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-${PV}-0002-chore-add-tests-for-typosquatting.patch"
 	"${FILESDIR}/${PN}-${PV}-0003-fix-use-tomllib-for-newer-python-versions.patch"
 	"${FILESDIR}/${PN}-${PV}-0004-fixes-for-click-8.2.0.patch"
+	"${FILESDIR}/${PN}-${PV}-0005-opt-in-telemetry.patch"
 )
 
 RDEPEND="
