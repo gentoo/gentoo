@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation.
+# Copyright 1999-2023 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of NGINX_MODULES_HTTP USE_EXPAND flags.
@@ -45,6 +45,7 @@ mirror - This module implements mirroring of an original request by creating bac
 mogilefs - Enable support for MogileFS.
 mp4 - This module adds pseudo-streaming
 naxsi - An open source, high performance, low rules maintenance, Web Application Firewall module for Nginx.
+passenger - This module adds integration with Phusion Passenger library.
 perl - This module makes it possible to execute Perl directly within Nginx and call Perl via SSI.
 proxy - This module makes it possible to transfer requests to another server.
 push_stream - Push Stream module, supporting EventSource, WebSocket, Long Polling, and Forever Iframe.
