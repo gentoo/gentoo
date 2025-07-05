@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,6 @@ RDEPEND="
 	>=dev-perl/HTTP-Entity-Parser-0.250.0
 	>=dev-perl/HTTP-Headers-Fast-0.180.0
 	>=dev-perl/HTTP-Message-5.814.0
-	>=virtual/perl-HTTP-Tiny-0.34.0
 	>=dev-perl/Hash-MultiValue-0.50.0
 	>=dev-perl/Pod-Parser-1.360.0
 	>=dev-perl/Stream-Buffered-0.20.0
@@ -42,11 +41,9 @@ RDEPEND="
 	dev-perl/Try-Tiny
 	>=dev-perl/URI-1.590.0
 	>=dev-perl/WWW-Form-UrlEncoded-0.230.0
-	virtual/perl-parent
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	>=dev-perl/File-ShareDir-Install-0.60.0
 	test? (
 		!minimal? (
