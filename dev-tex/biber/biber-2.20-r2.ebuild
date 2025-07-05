@@ -12,8 +12,6 @@ SRC_URI="https://github.com/plk/biber/archive/v${PV}.tar.gz  -> ${P}.tar.gz"
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.32
@@ -51,7 +49,6 @@ RDEPEND="
 	dev-perl/Text-Roman
 	dev-perl/URI
 	>=dev-perl/Unicode-LineBreak-2019.1.0
-	>=virtual/perl-Unicode-Normalize-1.260.0
 	>=dev-perl/XML-LibXML-1.70
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
