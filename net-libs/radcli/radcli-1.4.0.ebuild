@@ -9,7 +9,7 @@ SRC_URI="https://github.com/radcli/radcli/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 
 DEPEND="
 	dev-libs/nettle:=
