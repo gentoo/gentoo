@@ -1518,6 +1518,17 @@ epytest() {
 		fi
 	fi
 
+	# If we are using hypothesis (require use via EPYTEST_PLUGINS, since
+	# ebuilds may disable autoloading manually) *and* hypothesis-gentoo
+	# is available, use it to disable all health checks, to prevent the tests
+	# from failing randomly under load.
+	if has hypothesis "${EPYTEST_PLUGINS[@]}" &&
+		"${EPYTHON}" -c 'import hypothesis_gentoo' 2>/dev/null &&
+		[[ ! ${HYPOTHESIS_NO_PLUGINS} ]]
+	then
+		args+=( --hypothesis-profile=gentoo )
+	fi
+
 	local x
 	for x in "${EPYTEST_DESELECT[@]}"; do
 		args+=( --deselect "${x}" )
