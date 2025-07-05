@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/mattthias/slurm"
 SRC_URI="https://github.com/mattthias/slurm/archive/upstream/${PN}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${PN}-upstream"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 
