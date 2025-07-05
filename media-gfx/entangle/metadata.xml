@@ -5,9 +5,6 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>lu_zero@gentoo.org</email>
-	</maintainer>
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 		<name>Gentoo Video project</name>
