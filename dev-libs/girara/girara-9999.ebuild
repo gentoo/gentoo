@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit flag-o-matic meson
 
 DESCRIPTION="UI library that focuses on simplicity and minimalism"
 HOMEPAGE="https://pwmt.org/projects/girara/"
@@ -19,7 +19,7 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0/9999"
-IUSE="doc test"
+IUSE="doc test X"
 RESTRICT="!test? ( test )"
 
 # REVIEW: are all those really needed?
@@ -30,7 +30,7 @@ RDEPEND="
 	media-libs/harfbuzz:=
 	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-3.24:3
+	>=x11-libs/gtk+-3.24:3[X?]
 	x11-libs/pango
 "
 DEPEND="
@@ -50,7 +50,11 @@ BDEPEND="
 DOCS=( AUTHORS README.md )
 
 src_configure() {
-	local -a emesonargs=(
+	# defang automagic dependencies
+	# Currently only needed for X11-specific workarounds
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+
+	local emesonargs=(
 		-Djson=enabled
 		$(meson_feature doc docs)
 		$(meson_feature test tests)
@@ -60,5 +64,5 @@ src_configure() {
 
 src_compile() {
 	meson_src_compile
-	use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/* ) # BUILD_DIR is set by meson_src_compile
+	use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. ) # BUILD_DIR is set by meson_src_compile
 }
