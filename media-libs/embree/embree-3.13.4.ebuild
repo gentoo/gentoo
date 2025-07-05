@@ -31,6 +31,7 @@ RDEPEND="
 		media-libs/libjpeg-turbo
 		>=media-libs/libpng-1.6.34:0=
 		>=media-libs/openimageio-1.8.7:0=
+		<media-libs/openimageio-3:0=
 	)
 "
 DEPEND="${RDEPEND}"
