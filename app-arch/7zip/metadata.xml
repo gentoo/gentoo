@@ -23,6 +23,7 @@
 			<name>Igor Pavlov</name>
 		</maintainer>
 		<remote-id type="sourceforge">sevenzip</remote-id>
+		<remote-id type="cpe">cpe:/a:7-zip:7-zip</remote-id>
 		<changelog>https://www.7-zip.org/history.txt</changelog>
 		<bugs-to>https://sourceforge.net/p/sevenzip/bugs/</bugs-to>
 	</upstream>
