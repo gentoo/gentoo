@@ -20,7 +20,10 @@ BDEPEND="
 	test? ( >=dev-libs/mpfr-4.2 )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-3.6.1-musl.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.6.1-musl.patch
+	"${FILESDIR}"/${P}-cmake.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
