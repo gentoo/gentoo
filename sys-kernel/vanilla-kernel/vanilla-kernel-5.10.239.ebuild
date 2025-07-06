@@ -58,6 +58,11 @@ PDEPEND="
 	>=virtual/dist-kernel-${PV}
 "
 
+QA_FLAGS_IGNORED="
+	usr/src/linux-.*/scripts/gcc-plugins/.*.so
+	usr/src/linux-.*/vmlinux
+"
+
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
 
 src_unpack() {

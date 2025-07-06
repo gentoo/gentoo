@@ -53,6 +53,11 @@ PDEPEND="
 	>=virtual/dist-kernel-$(ver_cut 1-2)
 "
 
+QA_FLAGS_IGNORED="
+	usr/src/linux-.*/scripts/gcc-plugins/.*.so
+	usr/src/linux-.*/vmlinux
+"
+
 src_unpack() {
 	git-r3_src_unpack
 	default
