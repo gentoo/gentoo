@@ -1,0 +1,91 @@
+From cc4a29c386fe9116b56897a02a6457b630cad426 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 6 Jul 2025 23:37:21 +0200
+Subject: [PATCH 1/2] Manhandle Qt4/Qt5-based "KDE" options
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 66e2dbfe..7e990c4a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,18 +51,8 @@ option(BUILD_TESTING "Enable testing." On)
+ option(QTC_ENABLE_X11 "Enable X11" On)
+ option(QTC_INSTALL_PO "Install translation files." On)
+ 
+-if(ENABLE_QT4)
+-  qtc_option(QTC_QT4_ENABLE_KDE "Building Qt4 style with KDE4 support." On)
+-else()
+-  qtc_option(QTC_QT4_ENABLE_KDE "Building Qt4 style with KDE4 support." Off)
+-endif()
+-if(ENABLE_QT5)
+-  qtc_option(QTC_QT5_ENABLE_KDE
+-    "Building Qt5 style with KDE Frameworks 5 support." On)
+-else()
+-  qtc_option(QTC_QT5_ENABLE_KDE
+-    "Building Qt5 style with KDE Frameworks 5 support." Off)
+-endif()
++set(QTC_QT4_ENABLE_KDE OFF)
++set(QTC_QT5_ENABLE_KDE OFF)
+ 
+ option(QTC_QT4_STYLE_SUPPORT
+   "Qt4 support for creating a style for each QtCurve theme." Off)
+-- 
+2.50.0
+
+
+From 18756f73ff414adc09a05fdf60378a92eaf738cb Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 6 Jul 2025 23:48:07 +0200
+Subject: [PATCH 2/2] Use ECM QtVersionOption to determine QT_MAJOR_VERSION for
+ QTC_INSTALL_PO
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt     | 11 +++--------
+ qt6/CMakeLists.txt |  2 +-
+ 2 files changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e990c4a..fba58fe4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -240,16 +240,11 @@ if(BUILD_TESTING)
+ endif()
+ 
+ if(QTC_INSTALL_PO)
+-  find_package(ECM 1.2.0 REQUIRED NO_MODULE)
++  find_package(ECM 5.82.0 REQUIRED NO_MODULE)
+   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
++  include(QtVersionOption)
+ 
+-  if (ENABLE_QT6)
+-    set(KF_MAJOR_VERSION 6)
+-  endif()
+-  if (ENABLE_QT5)
+-    set(KF_MAJOR_VERSION 5)
+-  endif()
+-  find_package(KF${KF_MAJOR_VERSION} REQUIRED COMPONENTS
++  find_package(KF${QT_MAJOR_VERSION} REQUIRED COMPONENTS
+     I18n)
+   ki18n_install(po)
+ endif()
+diff --git a/qt6/CMakeLists.txt b/qt6/CMakeLists.txt
+index 27b6bf7e..8b203e11 100644
+--- a/qt6/CMakeLists.txt
++++ b/qt6/CMakeLists.txt
+@@ -43,7 +43,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"qtcurve\")
+ configure_file(config-qt6.h.in config-qt6.h @ONLY)
+ 
+ if(QTC_QT6_ENABLE_KDE)
+-  find_package(ECM 1.2.0 REQUIRED NO_MODULE)
++  find_package(ECM 5.82.0 REQUIRED NO_MODULE)
+   set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
+ 
+   find_package(KF6 REQUIRED COMPONENTS
+-- 
+2.50.0
+

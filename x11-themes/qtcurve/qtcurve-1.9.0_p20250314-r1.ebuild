@@ -72,6 +72,8 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
+PATCHES=( "${FILESDIR}/${P}-manhandle-cmake.patch" ) # bug 959633
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_QT4=OFF
@@ -85,7 +87,7 @@ src_configure() {
 		-DBUILD_TESTING=$(usex test)
 		-DQTC_ENABLE_X11=$(usex X)
 	)
-	use qt5 && mycmakeargs+=( -DQTC_QT5_ENABLE_KDE=OFF )
+	use plasma && mycmakeargs+=( -DQT_MAJOR_VERSION=6 )
 
 	cmake_src_configure
 }
