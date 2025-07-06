@@ -82,7 +82,7 @@ src_prepare() {
 		exist=true # skip target="downloadfile-2"
 		version=${PV}-gentoo
 		version.number=${PV}
-		ant.jar=$(java-pkg_getjar --build-only ant ant.jar)
+		ant.jar=$(java-pkg_getjar ant ant.jar)
 		bnd-annotation.jar=$(java-pkg_getjars bnd-annotation)
 		bnd-ant.jar=$(java-pkg_getjars --build-only bnd-ant)
 		bnd-util.jar=$(java-pkg_getjars --build-only bnd-util)
@@ -179,6 +179,9 @@ src_install() {
 	exeinto "${dest}"/gentoo
 	newexe "${T}"/tomcat${INIT_REV}.init tomcat.init
 	newexe "${T}"/tomcat-instance-manager${IM_REV}.bash tomcat-instance-manager.bash
+
+	# workaround for bug #958249, removes ant.jar@ from the DEPEND line
+	sed -i -e '/^DEPEND/s/ant.jar@//' "${D}/usr/share/tomcat-11/package.env" || die "package.env"
 }
 
 pkg_postinst() {
