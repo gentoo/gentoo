@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">png-mng</remote-id>
+		<remote-id type="github">pnggroup/pngcheck</remote-id>
 	</upstream>
 </pkgmetadata>
