@@ -45,13 +45,15 @@
 	<use>
 		<flag name="benchmark">Build with benchmarking support</flag>
 		<flag name="client">Build Luanti client</flag>
-		<flag name="leveldb">Enable LevelDB backend</flag>
+		<flag name="curl">Enable use of online mod repo, public serverlist and remote media with <pkg>net-misc/curl</pkg></flag>
+		<flag name="leveldb">Enable LevelDB map backend with <pkg>dev-libs/leveldb</pkg></flag>
+		<flag name="ncurses">Enable server side ncurses terminal</flag>
 		<flag name="openssl">Speed up SHA1 and SHA2 hashing with <pkg>dev-libs/openssl</pkg></flag>
-		<flag name="prometheus">Enable prometheus client support</flag>
-		<flag name="redis">Enable redis backend via <pkg>dev-libs/hiredis</pkg></flag>
+		<flag name="postgres">Enable PostgreSQL map backend with <pkg>dev-db/postgresql</pkg></flag>
+		<flag name="prometheus">Enable Prometheus client support</flag>
+		<flag name="redis">Enable Redis map backend with <pkg>dev-libs/hiredis</pkg></flag>
 		<flag name="server">Build Luanti server</flag>
-		<flag name="spatial">Enable SpatialIndex AreaStore backend
-		</flag>
+		<flag name="spatial">Speed up AreaStores with <pkg>sci-libs/libspatialindex</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/luanti-org/luanti/issues</bugs-to>
