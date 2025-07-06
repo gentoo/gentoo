@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=MUIR
 DIST_VERSION=2014.01
@@ -12,15 +12,12 @@ DESCRIPTION="flock() wrapper.  Auto-create locks"
 
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/AnyEvent
 	dev-perl/Data-Structure-Util
 	>=dev-perl/IO-Event-0.812.0
 	dev-perl/Event
-	virtual/perl-Time-HiRes
 "
 BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
