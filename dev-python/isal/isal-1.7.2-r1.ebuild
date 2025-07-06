@@ -34,7 +34,9 @@ RDEPEND="
 	${DEPEND}
 "
 BDEPEND="
-	dev-python/test[${PYTHON_USEDEP}]
+	test? (
+		dev-python/test[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
