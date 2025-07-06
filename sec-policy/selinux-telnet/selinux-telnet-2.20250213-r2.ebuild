@@ -13,8 +13,10 @@ if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 DEPEND="${DEPEND}
+	sec-policy/selinux-inetd
 	sec-policy/selinux-remotelogin
 "
 RDEPEND="${RDEPEND}
+	sec-policy/selinux-inetd
 	sec-policy/selinux-remotelogin
 "
