@@ -1,0 +1,227 @@
+https://gitlab.com/sane-project/backends/-/merge_requests/880
+
+From bfb4cc7f38a69f5cf1a2a09614ff81d88772659e Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 9 Jul 2025 20:08:24 +0300
+Subject: [PATCH 1/4] Handle libtiff the same way as libpng and libjpeg
+
+libtiff is the odd one out where support was detected in two places
+and it was handled a different way than the other two.
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -313,6 +313,9 @@ AC_DEFUN([SANE_CHECK_TIFF],
+     AC_CHECK_HEADER(tiffio.h,
+     [sane_cv_use_libtiff="yes"; TIFF_LIBS="-ltiff"],)
+   ],)
++  if test "$sane_cv_use_libtiff" = "yes" ; then
++     AC_DEFINE(HAVE_LIBTIFF,1,[Define to 1 if you have the libtiff library.])
++  fi
+   AC_SUBST(TIFF_LIBS)
+ ])
+ 
+--- a/backend/escl/escl_capabilities.c
++++ b/backend/escl/escl_capabilities.c
+@@ -232,7 +232,7 @@ find_valor_of_array_variables(xmlNode *node, capabilities_t *scanner, int type)
+ 	       scanner->caps[type].have_png = i;
+             }
+ #endif
+-#if(defined HAVE_TIFFIO_H)
++#if(defined HAVE_LIBTIFF)
+             else if(!strcmp(scanner->caps[type].DocumentFormats[i], "image/tiff"))
+             {
+                have_tiff = SANE_TRUE;
+--- a/backend/escl/escl_tiff.c
++++ b/backend/escl/escl_tiff.c
+@@ -35,14 +35,14 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
+-#if(defined HAVE_TIFFIO_H)
++#if(defined HAVE_LIBTIFF)
+ #include <tiffio.h>
+ #endif
+ 
+ #include <setjmp.h>
+ 
+ 
+-#if(defined HAVE_TIFFIO_H)
++#if(defined HAVE_LIBTIFF)
+ 
+ /**
+  * \fn SANE_Status escl_sane_decompressor(escl_sane_t *handler)
+--- a/backend/genesys/image.cpp
++++ b/backend/genesys/image.cpp
+@@ -22,7 +22,7 @@
+ 
+ #include "image.h"
+ 
+-#if defined(HAVE_TIFFIO_H)
++#if defined(HAVE_LIBTIFF)
+ #include <tiffio.h>
+ #endif
+ 
+@@ -187,7 +187,7 @@ void write_tiff_file(const std::string& filename, const void* data, int depth, i
+ {
+     DBG_HELPER_ARGS(dbg, "depth=%d, channels=%d, ppl=%d, lines=%d", depth, channels,
+                     pixels_per_line, lines);
+-#if defined(HAVE_TIFFIO_H)
++#if defined(HAVE_LIBTIFF)
+     auto image = TIFFOpen(filename.c_str(), "w");
+     if (!image) {
+         dbg.log(DBG_error, "Could not save debug image");
+--- a/backend/hp3900_debug.c
++++ b/backend/hp3900_debug.c
+@@ -47,7 +47,7 @@
+ #define DBG_BLK             0x04	/* USB Bulk data                 */
+ 
+ #include <stdarg.h>
+-#ifdef HAVE_TIFFIO_H
++#ifdef HAVE_LIBTIFF
+ #include <tiffio.h>		/* dbg_tiff_save */
+ #endif
+ 
+@@ -545,7 +545,7 @@ dbg_tiff_save (char *sFile, SANE_Int width, SANE_Int height, SANE_Int depth,
+ 	       SANE_Int colortype, SANE_Int res_x, SANE_Int res_y,
+ 	       SANE_Byte * buffer, SANE_Int size)
+ {
+-#ifdef HAVE_TIFFIO_H
++#ifdef HAVE_LIBTIFF
+   if (buffer != NULL)
+     {
+       char *path = getenv ("HOME");
+--- a/configure.ac
++++ b/configure.ac
+@@ -201,7 +201,7 @@ AC_CHECK_HEADERS(fcntl.h unistd.h libc.h sys/dsreq.h sys/select.h \
+     sys/socket.h sys/io.h sys/hw.h sys/types.h linux/ppdev.h \
+     dev/ppbus/ppi.h machine/cpufunc.h sys/sem.h poll.h \
+     windows.h be/kernel/OS.h limits.h sys/ioctl.h asm/types.h\
+-    netinet/in.h tiffio.h ifaddrs.h pwd.h getopt.h)
++    netinet/in.h ifaddrs.h pwd.h getopt.h)
+ AC_CHECK_HEADERS([asm/io.h],,,[#include <sys/types.h>])
+ 
+ SANE_CHECK_MISSING_HEADERS
+-- 
+2.50.1
+
+From 7dfb8971f08d810e33e21e60a51a15f491f6c5d9 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 9 Jul 2025 20:32:30 +0300
+Subject: [PATCH 2/4] Allow disabling jpeg support
+
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -284,23 +284,29 @@ AC_DEFUN([SANE_CHECK_PTHREAD],
+ # GPHOTO2 and dell1600n_net backends.
+ AC_DEFUN([SANE_CHECK_JPEG],
+ [
+-  AC_CHECK_LIB(jpeg,jpeg_start_decompress,
+-  [
+-    AC_CHECK_HEADER(jconfig.h,
++  AC_ARG_WITH(libjpeg,
++    AS_HELP_STRING([--without-libjpeg], [build without libjpeg]))
++  if test "$with_libjpeg" != "no" ; then
++    AC_CHECK_LIB(jpeg,jpeg_start_decompress,
+     [
+-      AC_MSG_CHECKING([for jpeglib - version >= 61 (6a)])
+-      AC_EGREP_CPP(sane_correct_jpeg_lib_version_found,
++      AC_CHECK_HEADER(jconfig.h,
+       [
+-        #include <jpeglib.h>
+-        #if JPEG_LIB_VERSION >= 61
+-          sane_correct_jpeg_lib_version_found
+-        #endif
+-      ], [sane_cv_use_libjpeg="yes"; JPEG_LIBS="-ljpeg";
+-      AC_MSG_RESULT(yes)],[AC_MSG_RESULT(no)])
++        AC_MSG_CHECKING([for jpeglib - version >= 61 (6a)])
++        AC_EGREP_CPP(sane_correct_jpeg_lib_version_found,
++        [
++          #include <jpeglib.h>
++          #if JPEG_LIB_VERSION >= 61
++            sane_correct_jpeg_lib_version_found
++          #endif
++        ], [sane_cv_use_libjpeg="yes"; JPEG_LIBS="-ljpeg";
++        AC_MSG_RESULT(yes)],[AC_MSG_RESULT(no)])
++      ],)
+     ],)
+-  ],)
++  fi
+   if test "$sane_cv_use_libjpeg" = "yes" ; then
+     AC_DEFINE(HAVE_LIBJPEG,1,[Define to 1 if you have the libjpeg library.])
++  elif test "$with_libjpeg" = "yes" ; then
++    AC_MSG_ERROR([libjpeg requested but not found])
+   fi
+   AC_SUBST(JPEG_LIBS)
+ ])
+-- 
+2.50.1
+
+From d4389895a78299cd02318b88ffbdbbbfa62bac0d Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 9 Jul 2025 20:48:00 +0300
+Subject: [PATCH 3/4] Allow disabling tiff support
+
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -314,13 +314,19 @@ AC_DEFUN([SANE_CHECK_JPEG],
+ # Checks for tiff library dell1600n_net backend.
+ AC_DEFUN([SANE_CHECK_TIFF],
+ [
+-  AC_CHECK_LIB(tiff,TIFFFdOpen,
+-  [
+-    AC_CHECK_HEADER(tiffio.h,
+-    [sane_cv_use_libtiff="yes"; TIFF_LIBS="-ltiff"],)
+-  ],)
++  AC_ARG_WITH(libtiff,
++    AS_HELP_STRING([--without-libtiff], [build without libtiff]))
++  if test "$with_libtiff" != "no" ; then
++    AC_CHECK_LIB(tiff,TIFFFdOpen,
++    [
++      AC_CHECK_HEADER(tiffio.h,
++      [sane_cv_use_libtiff="yes"; TIFF_LIBS="-ltiff"],)
++    ],)
++  fi
+   if test "$sane_cv_use_libtiff" = "yes" ; then
+      AC_DEFINE(HAVE_LIBTIFF,1,[Define to 1 if you have the libtiff library.])
++  elif test "$with_libtiff" = "yes" ; then
++    AC_MSG_ERROR([libtiff requested but not found])
+   fi
+   AC_SUBST(TIFF_LIBS)
+ ])
+-- 
+2.50.1
+
+From 9941f15176b13984ad7d4570ed0c1db22b1c5481 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Wed, 9 Jul 2025 20:49:43 +0300
+Subject: [PATCH 4/4] Allow disabling png support
+
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -376,13 +376,19 @@ AC_DEFUN([SANE_CHECK_SSL], [
+ 
+ AC_DEFUN([SANE_CHECK_PNG],
+ [
+-  AC_CHECK_LIB(png,png_init_io,
+-  [
+-    AC_CHECK_HEADER(png.h,
+-    [sane_cv_use_libpng="yes"; PNG_LIBS="-lpng"],)
+-  ],)
++  AC_ARG_WITH(libpng,
++    AS_HELP_STRING([--without-libpng], [build without libpng]))
++  if test "$with_libpng" != "no" ; then
++    AC_CHECK_LIB(png,png_init_io,
++    [
++      AC_CHECK_HEADER(png.h,
++      [sane_cv_use_libpng="yes"; PNG_LIBS="-lpng"],)
++    ],)
++  fi
+   if test "$sane_cv_use_libpng" = "yes" ; then
+     AC_DEFINE(HAVE_LIBPNG,1,[Define to 1 if you have the libpng library.])
++  elif test "$with_libpng" = "yes" ; then
++    AC_MSG_ERROR([libpng requested but not found])
+   fi
+   AC_SUBST(PNG_LIBS)
+ ])
+-- 
+2.50.1
+
