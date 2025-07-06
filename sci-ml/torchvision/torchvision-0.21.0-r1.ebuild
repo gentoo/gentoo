@@ -19,16 +19,20 @@ S="${WORKDIR}"/vision-${PV}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cuda"
+IUSE="cuda +ffmpeg +jpeg +png rocm +webp"
+
+REQUIRED_USE="
+	?? ( cuda rocm )
+"
 
 RDEPEND="
 	dev-python/numpy
 	dev-python/pillow
-	media-libs/libjpeg-turbo:=
-	media-libs/libpng:=
-	media-libs/libwebp
-	media-video/ffmpeg
-	sci-ml/caffe2[cuda?]
+	jpeg? ( media-libs/libjpeg-turbo:= )
+	png? ( media-libs/libpng:= )
+	webp? ( media-libs/libwebp )
+	ffmpeg? ( media-video/ffmpeg )
+	sci-ml/caffe2[cuda?,rocm?]
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 "
 
@@ -44,6 +48,10 @@ BDEPEND="
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
+	# multilib fixes
+	sed "s/ffmpeg_root, \"lib\"/ffmpeg_root, \"$(get_libdir)\"/" \
+		-i setup.py || die
+
 	use cuda && cuda_src_prepare
 	distutils-r1_src_prepare
 }
@@ -53,8 +61,20 @@ distutils_enable_tests pytest
 python_compile() {
 	addpredict /dev/kfd
 
-	FORCE_CUDA=$(usex cuda 1 0) \
-		NVCC_FLAGS="${NVCCFLAGS}" \
+	export FORCE_CUDA=0
+	if use cuda || use rocm ; then
+	  export FORCE_CUDA=1
+	fi
+
+	export TORCHVISION_USE_PNG=$(usex png 1 0)
+	export TORCHVISION_USE_JPEG=$(usex jpeg 1 0)
+	export TORCHVISION_USE_WEBP=$(usex webp 1 0)
+	export TORCHVISION_USE_FFMPEG=$(usex ffmpeg 1 0)
+
+	export TORCHVISION_USE_NVJPEG=$(usex cuda 1 0)
+	export TORCHVISION_USE_VIDEO_CODEC=$(usex cuda 1 0)
+
+	NVCC_FLAGS="${NVCCFLAGS}" \
 		MAX_JOBS="$(makeopts_jobs)" \
 		distutils-r1_python_compile -j1
 }
