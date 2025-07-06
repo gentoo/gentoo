@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=BBB
 DIST_VERSION=1.29
@@ -12,5 +12,3 @@ DESCRIPTION="perl module to do NFS (or not) locking"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
-
-BDEPEND="virtual/perl-ExtUtils-MakeMaker"
