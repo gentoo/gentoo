@@ -11,5 +11,6 @@
 	</maintainer> 
 	<upstream>
 		<remote-id type="sourceforge">sevenzip</remote-id>
+		<remote-id type="github">ip7z/7zip</remote-id>
 	</upstream>
 </pkgmetadata>
