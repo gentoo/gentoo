@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby32 ruby33"
+
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -61,4 +62,9 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	sed -i -e 's:ruby:'${RUBY}':' test/dummy/bin/* || die
+}
+
+each_ruby_test() {
+	export SEED="2"
+	each_fakegem_test
 }
