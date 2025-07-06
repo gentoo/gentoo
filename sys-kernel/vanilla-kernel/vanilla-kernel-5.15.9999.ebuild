@@ -42,15 +42,24 @@ EGIT_REPO_URI=(
 )
 EGIT_BRANCH="linux-${PV/.9999/.y}"
 
-LICENSE="GPL-2"
 IUSE="debug hardened"
-REQUIRED_USE="arm? ( savedconfig )"
+REQUIRED_USE="
+	arm? ( savedconfig )
+	hppa? ( savedconfig )
+	sparc? ( savedconfig )
+"
 
 BDEPEND="
 	debug? ( dev-util/pahole )
 "
 PDEPEND="
 	>=virtual/dist-kernel-$(ver_cut 1-2)
+"
+
+QA_FLAGS_IGNORED="
+	usr/src/linux-.*/scripts/gcc-plugins/.*.so
+	usr/src/linux-.*/vmlinux
+	usr/src/linux-.*/arch/powerpc/kernel/vdso.*/vdso.*.so.dbg
 "
 
 src_unpack() {
@@ -65,7 +74,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		arm | hppa)
+		arm | hppa | sparc)
 			> .config || die
 		;;
 		amd64)

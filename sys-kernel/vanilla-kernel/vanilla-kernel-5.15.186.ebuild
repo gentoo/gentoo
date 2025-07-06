@@ -45,10 +45,13 @@ SRC_URI+="
 "
 S=${WORKDIR}/${MY_P}
 
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug hardened"
-REQUIRED_USE="arm? ( savedconfig )"
+REQUIRED_USE="
+	arm? ( savedconfig )
+	hppa? ( savedconfig )
+	sparc? ( savedconfig )
+"
 
 BDEPEND="
 	debug? ( dev-util/pahole )
@@ -56,6 +59,12 @@ BDEPEND="
 "
 PDEPEND="
 	>=virtual/dist-kernel-${PV}
+"
+
+QA_FLAGS_IGNORED="
+	usr/src/linux-.*/scripts/gcc-plugins/.*.so
+	usr/src/linux-.*/vmlinux
+	usr/src/linux-.*/arch/powerpc/kernel/vdso.*/vdso.*.so.dbg
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
@@ -80,7 +89,7 @@ src_prepare() {
 
 	# prepare the default config
 	case ${ARCH} in
-		arm | hppa)
+		arm | hppa | sparc)
 			> .config || die
 		;;
 		amd64)
