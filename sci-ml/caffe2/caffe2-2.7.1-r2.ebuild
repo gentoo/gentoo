@@ -31,11 +31,6 @@ SRC_URI="
 	rocm? (
 		https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz
 		-> ${CK_P}.tar.gz
-		memefficient? (
-			amd64? (
-				https://github.com/ROCm/${AOTRITON_PN}/releases/download/${AOTRITON_PV}/${AOTRITON_tar}
-			)
-		)
 	)
 	flash? (
 		https://github.com/Dao-AILab/${FLASH_PN}/archive/refs/tags/v${FLASH_PV}.tar.gz
@@ -111,6 +106,7 @@ RDEPEND="
 		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.5
 		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.5
 		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.5
+		memefficient? ( sci-libs/aotriton-bin:0/0.9 )
 	)
 	distributed? (
 		sci-ml/tensorpipe[cuda?]
@@ -150,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.0-cmake.patch
 	"${FILESDIR}"/${PN}-2.7.0-glog-0.7.1.patch
 	"${FILESDIR}"/${PN}-2.7.0-llvm.patch
+	"${FILESDIR}"/${PN}-2.7.1-ck-config.patch
 )
 
 src_prepare() {
@@ -186,6 +183,12 @@ src_prepare() {
 		cmake/Dependencies.cmake \
 		|| die
 
+	# Change libaotriton path
+	sed -i \
+		-e "s|}/lib|}/$(get_libdir)|g" \
+		cmake/External/aotriton.cmake \
+		|| die
+
 	# Noisy warnings from Logging.h
 	sed -i 's/-Wextra-semi//' cmake/public/utils.cmake || die
 
@@ -193,13 +196,6 @@ src_prepare() {
 	pushd torch/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
 	popd
-	if use rocm && use memefficient; then
-		mkdir -p "${BUILD_DIR}"/aotriton_external-prefix/src || die
-		rm -rf "${WORKDIR}"/aotriton
-		if use amd64; then
-			cp "${DISTDIR}"/${AOTRITON_tar} "${BUILD_DIR}"/aotriton_external-prefix/src || die
-		fi
-	fi
 
 	# prefixify the hardcoded paths, after all patches are applied
 	hprefixify \
@@ -327,6 +323,10 @@ src_configure() {
 		)
 	elif use rocm; then
 		export PYTORCH_ROCM_ARCH="$(get_amdgpu_flags)"
+
+		if use memefficient; then
+			export AOTRITON_INSTALLED_PREFIX="${ESYSROOT}/usr"
+		fi
 
 		mycmakeargs+=(
 			-DUSE_NCCL=ON
