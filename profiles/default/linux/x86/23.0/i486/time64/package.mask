@@ -1,0 +1,22 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-06)
+# gcc[ada] is not available here yet
+dev-ada/VSS
+dev-ada/aunit
+dev-ada/aws
+dev-ada/gnatcoll-bindings
+dev-ada/gnatmem
+dev-ada/gnatsymbolize
+dev-ada/gpr
+dev-ada/gprbuild
+dev-ada/gtkada
+dev-ada/langkit
+dev-ada/langkit-contrib
+dev-ada/libadalang
+dev-ada/markdown
+dev-ada/prettier-ada
+dev-ada/spawn
+dev-ada/templates-parser
+dev-ada/xmlada
