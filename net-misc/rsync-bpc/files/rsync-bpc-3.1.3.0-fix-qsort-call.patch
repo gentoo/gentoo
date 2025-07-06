@@ -1,0 +1,24 @@
+From 6466b0b0c537d135cf10fecb598bfd6d40194e37 Mon Sep 17 00:00:00 2001
+From: Dennis Eisele <kernlpanic@dennis-eisele.de>
+Date: Sun, 6 Jul 2025 17:57:24 +0200
+Subject: [PATCH] hlink.c: fix function pointer cast in qsort()
+
+Proposed-by: Charalampos Mitrodimas <charmitro@posteo.net>
+---
+ hlink.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hlink.c b/hlink.c
+index 5a1e342..43ce6ec 100644
+--- a/hlink.c
++++ b/hlink.c
+@@ -121,7 +121,7 @@ static void match_gnums(int32 *ndx_list, int ndx_count)
+ 	int32 gnum, gnum_next;
+ 
+ 	qsort(ndx_list, ndx_count, sizeof ndx_list[0],
+-	     (int (*)()) hlink_compare_gnum);
++	     (int (*)(const void*, const void*)) hlink_compare_gnum);
+ 
+         if ( inc_recurse && prior_hlinks && hlink_nlinks ) {
+             for (from = 0; from < ndx_count; from++) {
+
