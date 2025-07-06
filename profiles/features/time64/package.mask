@@ -1,5 +1,35 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-06)
+# gcc[ada] is not available here yet
+dev-ada/ada_language_server
+dev-ada/ada_libfswatch
+dev-ada/AdaSAT
+dev-ada/aunit
+dev-ada/aws
+dev-ada/gnatcoll-bindings
+dev-ada/gnatcoll-core
+dev-ada/gnatcoll-db
+dev-ada/gnatdoc
+dev-ada/gnatformat
+dev-ada/gnatmem
+dev-ada/gnatsymbolize
+dev-ada/gpr
+dev-ada/gprbuild
+dev-ada/gtkada
+dev-ada/lal-refactor
+dev-ada/langkit
+dev-ada/langkit-contrib
+dev-ada/libadalang
+dev-ada/libadalang-tools
+dev-ada/libgpr
+dev-ada/markdown
+dev-ada/prettier-ada
+dev-ada/spawn
+dev-ada/templates-parser
+dev-ada/VSS
+dev-ada/xmlada
 
 # Michał Górny <mgorny@gentoo.org> (2024-11-06)
 # Old versions of GCC do not support USE=time64, and as such do not
