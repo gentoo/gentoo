@@ -1,0 +1,53 @@
+
+In order to allow building tomcat-11.0.9 with java 21 we have to use an older version of eclipse-ecj.
+We cannot keyword eclipse-ecj:4.35 as long we don't have Java 23 or higher keyworded.
+Otherwise compilation would run into this error:
+
+    [javac] /var/tmp/portage/www-servers/tomcat-11.0.6/work/apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java:327: error: cannot find symbol
+    [javac]                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_23);
+    [javac]                                                                            ^
+    [javac]   symbol:   variable VERSION_23
+    [javac]   location: class CompilerOptions
+    [javac] /var/tmp/portage/www-servers/tomcat-11.0.6/work/apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java:415: error: cannot find symbol
+    [javac]                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_23);
+    [javac]                                                                                    ^
+    [javac]   symbol:   variable VERSION_23
+    [javac]   location: class CompilerOptions
+    [javac] /var/tmp/portage/www-servers/tomcat-11.0.6/work/apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java:416: error: cannot find symbol
+    [javac]                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_23);
+    [javac]                                                                                ^
+    [javac]   symbol:   variable VERSION_23
+    [javac]   location: class CompilerOptions
+
+diff --git a/java/org/apache/jasper/compiler/JDTCompiler.java b/java/org/apache/jasper/compiler/JDTCompiler.java
+index 1a267be..79b56bd 100644
+--- a/java/org/apache/jasper/compiler/JDTCompiler.java
++++ b/java/org/apache/jasper/compiler/JDTCompiler.java
+@@ -332,9 +332,9 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
+             } else if (opt.equals("22")) {
+                 settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_22);
+             } else if (opt.equals("23")) {
+-                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_23);
++                settings.put(CompilerOptions.OPTION_Source, "23");
+             } else if (opt.equals("24")) {
+-                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_24);
++                settings.put(CompilerOptions.OPTION_Source, "24");
+             } else if (opt.equals("25")) {
+                 // Constant not available in latest ECJ version shipped with
+                 // Tomcat. May be supported in a snapshot build.
+@@ -417,11 +417,11 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
+                 settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_22);
+                 settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_22);
+             } else if (opt.equals("23")) {
+-                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_23);
+-                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_23);
++                settings.put(CompilerOptions.OPTION_TargetPlatform, "23");
++                settings.put(CompilerOptions.OPTION_Compliance, "23");
+             } else if (opt.equals("24")) {
+-                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_24);
+-                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_24);
++                settings.put(CompilerOptions.OPTION_TargetPlatform, "24");
++                settings.put(CompilerOptions.OPTION_Compliance, "24");
+             } else if (opt.equals("25")) {
+                 // Constant not available in latest ECJ version shipped with
+                 // Tomcat. May be supported in a snapshot build.
