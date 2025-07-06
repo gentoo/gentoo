@@ -6,6 +6,6 @@
 	delaycompress
 	sharedscripts
 	postrotate
-		test -r /run/nginx.pid && kill -s USR1 "$(cat /run/nginx.pid)"
+		test -r /run/nginx/nginx.pid && kill -s USR1 "$(cat /run/nginx/nginx.pid)"
 	endscript
 }
