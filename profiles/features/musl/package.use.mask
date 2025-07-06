@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sv. Lockal <lockalsash@gmail.com.com> (2025-07-07)
+# sci-libs/aotriton-bin is masked on musl
+sci-ml/caffe2 memefficient
+
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
 # Tests cannot be built on musl due to libc specific ifdefs (bug #836710)
 net-mail/cyrus-imapd test
