@@ -375,6 +375,7 @@ net-print/hplip-plugin
 net-vpn/microsoft-azurevpnclient
 sci-chemistry/cara-bin
 sci-electronics/labone
+sci-libs/aotriton-bin
 sci-libs/mkl
 sci-mathematics/gimps
 sci-misc/jupyterlab-desktop-bin
