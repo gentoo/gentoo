@@ -13,7 +13,7 @@ NGINX_MAXWAITTIME=${NGINX_MAXWAITTIME:-3}
 
 command="/usr/sbin/nginx"
 start_stop_daemon_args=${NGINX_SSDARGS:-"--wait 1000"}
-pidfile=/run/${RV_SVCNAME}.pid
+pidfile="/run/${RC_SVCNAME}/${RC_SVCNAME}.pid"
 user=${NGINX_USER:-nginx}
 group=${NGINX_GROUP:-nginx}
 retry=${NGINX_TERMTIMEOUT:-"TERM/60/KILL/5"}
@@ -23,6 +23,10 @@ extra_started_commands="upgrade reload"
 
 depend() {
 	use net dns logger netmount
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o 0:0 "/run/${RC_SVCNAME}"
 }
 
 stop_pre() {
