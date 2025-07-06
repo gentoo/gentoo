@@ -591,7 +591,7 @@ nginx_src_configure() {
 		--conf-path="${EPREFIX}/etc/nginx/nginx.conf"
 		--error-log-path="${EPREFIX}/var/log/nginx/error.log"
 		--http-log-path="${EPREFIX}/var/log/nginx/access.log"
-		--pid-path="${EPREFIX}/run/nginx.pid"
+		--pid-path="${EPREFIX}/run/nginx/nginx.pid"
 		--lock-path="${EPREFIX}/run/lock/nginx.lock"
 		--user=nginx
 		--group=nginx
