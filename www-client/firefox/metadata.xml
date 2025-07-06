@@ -41,5 +41,6 @@
 	<flag name="wasm-sandbox">Sandbox certain third-party libraries through WebAssembly using RLBox</flag>
 	<flag name="wifi">Enable necko-wifi for NetworkManager integration, and access point MAC
 		address scanning for better precision with opt-in geolocation services</flag>
+	<flag name="jpegxl">Add JPEG XL image support (EXPERIMENTAL, no official upstream support)</flag>
 </use>
 </pkgmetadata>
