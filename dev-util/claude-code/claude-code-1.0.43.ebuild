@@ -15,7 +15,7 @@ S="${WORKDIR}"
 #             full details.
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 QA_PREBUILT="usr/lib64/node_modules/@anthropic-ai/claude-code/vendor/*"
 RESTRICT="strip"
