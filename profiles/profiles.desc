@@ -600,6 +600,13 @@ x86		default/linux/x86/23.0/i486/hardened/selinux			dev
 x86		default/linux/x86/23.0/i486/split-usr				dev
 x86		default/linux/x86/23.0/i486/split-usr/hardened			dev
 x86		default/linux/x86/23.0/i486/split-usr/hardened/selinux		dev
+x86		default/linux/x86/23.0/i486/time64				stable
+x86		default/linux/x86/23.0/i486/time64/systemd			stable
+x86		default/linux/x86/23.0/i486/time64/hardened			dev
+x86		default/linux/x86/23.0/i486/time64/hardened/selinux		dev
+x86		default/linux/x86/23.0/i486/time64/split-usr			dev
+x86		default/linux/x86/23.0/i486/time64/split-usr/hardened		dev
+x86		default/linux/x86/23.0/i486/time64/split-usr/hardened/selinux	dev
 
 
 # musl profiles
