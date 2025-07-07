@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-06)
+# Unmaintained, abandoned upstream since 2012, stuck on Python 3.11,
+# no revdeps since a year ago.
+# Removal on 2025-08-05.  Bug #928479, #929362.
+dev-libs/libindicate
+app-text/gnome-doc-utils
+
 # Michał Górny <mgorny@gentoo.org> (2025-07-05)
 # Metapackage used as a dependency in dev-lang/python and dev-lang/pypy.
 # Replaced with inlined specific dev-python/ensurepip-* packages.
