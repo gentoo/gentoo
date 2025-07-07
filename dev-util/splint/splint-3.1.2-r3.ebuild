@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Check C programs for vulnerabilities and programming mistakes"
 HOMEPAGE="https://splint.org/"
@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86 ~ppc-macos ~x64-macos"
 
-DEPEND="sys-devel/flex"
+BDEPEND="sys-devel/flex"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.2-musl.patch
@@ -33,6 +33,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/splintchecker/splint/issues/41 (bug #944117)
+	append-cflags -std=gnu17
+
 	# We do not need bison/yacc at all here
 	# We definitely need libfl
 	BISON=no LEXLIB=-lfl econf
