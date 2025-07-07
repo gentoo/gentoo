@@ -78,7 +78,7 @@ SLOT="0/stable"
 # Dev exists mostly to give devs some breathing room for beta/stable releases;
 # it shouldn't be keyworded but adventurous users can select it.
 if [[ ${SLOT} != "0/dev" ]]; then
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
@@ -1400,6 +1400,16 @@ src_test() {
 		CancelableEventTest.BothCancelFailureAndSucceedOccurUnderContention #new m133: TODO investigate
 		DriveInfoTest.GetFileDriveInfo # new m137: TODO investigate
 	)
+
+	if use arm64; then
+		skip_tests+=(
+			# Apple Silicon on 138.0.7204.92
+			SystemMetrics2Test.GetSystemMemoryInfo
+			SysInfoTest.GetHardwareInfo
+			PartitionAllocPageAllocatorTest.AllocAndFreePagesWithPageReadExecuteConfirmCFI
+		)
+	fi
+
 	local test_filter="-$(IFS=:; printf '%s' "${skip_tests[*]}")"
 	# test-launcher-bot-mode enables parallelism and plain output
 	./out/Release/base_unittests --test-launcher-bot-mode \
