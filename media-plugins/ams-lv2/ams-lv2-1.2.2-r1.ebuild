@@ -20,7 +20,6 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
 RDEPEND="
 	dev-cpp/gtkmm:2.4
