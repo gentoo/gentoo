@@ -47,7 +47,7 @@ QA_PRESTRIPPED="usr/bin/${PN}"
 ECARGO_VENDOR="${WORKDIR}/vendor"
 
 PATCHES=(
-	"${FILESDIR}"/vaultwarden-envfile-1.33.2.patch
+	"${FILESDIR}"/vaultwarden-envfile-1.34.1.patch
 )
 
 CHECKREQS_MEMORY=3G
