@@ -1,15 +1,21 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-# version 1.2.2 does not compile with python 3.11
-PYTHON_COMPAT=( python3_{9..11} )
+
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 inherit waf-utils python-any-r1
 
+# bundles ancient broken waf
+WAF_VER=2.0.20
+
 DESCRIPTION="A port of the AMS internal modules to LV2 plugins to create modular synthesizers"
 HOMEPAGE="https://github.com/blablack/ams-lv2"
-SRC_URI="https://github.com/blablack/ams-lv2/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="
+	https://github.com/blablack/ams-lv2/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://waf.io/waf-${WAF_VER}
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -29,4 +35,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( LICENSE README.md THANKS )
 
-PATCHES="${FILESDIR}/${P}-wscript.patch"
+src_unpack() {
+	unpack ${P}.tar.gz || die
+
+	# we need newer version of waf to work with py3.11
+	cp "${DISTDIR}/waf-${WAF_VER}" "${S}/waf" || die
+	rm -r "${S}"/waflib || die
+}
