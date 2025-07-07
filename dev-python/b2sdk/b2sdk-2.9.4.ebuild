@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="B2 Python SDK"
+DESCRIPTION="Library to access Backblaze B2 cloud storage"
 HOMEPAGE="
 	https://github.com/Backblaze/b2-sdk-python
 	https://pypi.org/project/b2sdk/
