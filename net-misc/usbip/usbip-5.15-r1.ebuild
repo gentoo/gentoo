@@ -24,10 +24,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-src_unpack() {
-	tar xJf "${DISTDIR}"/${A} linux-${PV}/tools/usb/${PN} || die
-}
-
 src_prepare() {
 	default
 	# remove -Werror from build, bug #545398
