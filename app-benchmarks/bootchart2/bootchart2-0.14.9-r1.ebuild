@@ -47,6 +47,7 @@ src_prepare() {
 
 	# Redirects systemd unit directory,
 	# as well as disable the built-in python setup.
+	export NO_PYTHON_COMPILE=1
 	sed -i \
 		-e "/^SYSTEMD_UNIT_DIR/s:=.*:= $(systemd_get_systemunitdir):g" \
 		-e "/^install/s:py-install-compile::g" \
