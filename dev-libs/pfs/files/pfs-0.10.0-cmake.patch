@@ -1,0 +1,8 @@
+--- a/test/cmake/find_package_installed/CMakeLists.txt	2025-07-07 14:16:42.892702809 +0200
++++ b/test/cmake/find_package_installed/CMakeLists.txt	2025-07-07 14:16:53.794586917 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.5)
+ 
+ project (find_package)
+ 

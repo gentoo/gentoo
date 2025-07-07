@@ -16,7 +16,10 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${P}-Werror.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-Werror.patch
+	"${FILESDIR}"/${P}-cmake.patch
+)
 
 src_prepare() {
 	rm test/test_proc_stat.cpp | dir
