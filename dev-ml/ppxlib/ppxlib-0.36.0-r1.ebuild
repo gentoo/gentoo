@@ -30,6 +30,7 @@ RDEPEND="
 	dev-ml/ppx_derivers:=[ocamlopt?]
 	dev-ml/sexplib0:=[ocamlopt?]
 	dev-ml/stdlib-shims:=[ocamlopt?]
+	dev-ml/cmdliner:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
