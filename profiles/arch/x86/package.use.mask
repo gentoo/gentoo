@@ -164,7 +164,6 @@ media-tv/mythtv nvdec
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-02-06)
 # Successful build of dev-qt/qtwebengine depends on 64-bit host
 # Bug #893234
-app-misc/anki gui
 app-office/kraft pim
 dev-lang/idris2 test-full
 dev-python/cloudscraper test
