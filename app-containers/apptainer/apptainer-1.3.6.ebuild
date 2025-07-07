@@ -35,11 +35,13 @@ CONFIG_CHECK="~SQUASHFS"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.2-trim_upstream_cflags.patch
+	"${FILESDIR}"/${P}-fix_c23.patch
 )
 
 DOCS=( README.md CONTRIBUTORS.md CONTRIBUTING.md )
 
 src_configure() {
+	tc-export PKG_CONFIG
 	local myconfargs=(
 		-c "$(tc-getBUILD_CC)" \
 		-x "$(tc-getBUILD_CXX)" \
