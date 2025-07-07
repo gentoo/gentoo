@@ -65,7 +65,9 @@ all_ruby_prepare() {
 	# Remove test depending on currently unpackaged prism
 	#rm -f test/rdoc/rdoc_parser_prism_ruby_test.rb || die
 
-	sed -i -e 's:_relative ": "./:' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -e 's:_relative ": "./:' \
+		-e 's/__dir__/"."/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 all_ruby_compile() {
