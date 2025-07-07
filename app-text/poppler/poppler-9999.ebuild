@@ -38,7 +38,7 @@ COMMON_DEPEND="
 		introspection? ( >=dev-libs/gobject-introspection-1.72:= )
 	)
 	curl? ( net-misc/curl )
-	gpgme? ( >=app-crypt/gpgme-1.19.0:=[cxx] )
+	gpgme? ( dev-cpp/gpgmepp:= )
 	jpeg? ( >=media-libs/libjpeg-turbo-1.1.0:= )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= )
 	lcms? ( media-libs/lcms:2 )
