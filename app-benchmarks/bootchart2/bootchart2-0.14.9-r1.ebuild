@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} pypy3 )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit linux-info python-single-r1 systemd toolchain-funcs
 
