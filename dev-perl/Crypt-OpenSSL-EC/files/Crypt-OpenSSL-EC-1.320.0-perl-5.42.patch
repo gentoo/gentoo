@@ -1,0 +1,80 @@
+https://bugs.gentoo.org/959696
+https://rt.cpan.org/Public/Bug/Display.html?id=164982
+https://rt.cpan.org/Transaction/Display.html?id=3010771
+
+From 9455d2a6542da3c55351d8fb4b08aabb20245c1c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Wed, 7 May 2025 16:30:18 +0200
+Subject: [PATCH] Remove never compiled EC_POINTs_make_affine() and
+ EC_POINTs_mul() prototypes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+After upgrading ExtUtils::ParseXS from 3.51 to 3.57 Crypt-OpenSSL-EC-1.32 fails to build:
+
+    $ make
+    cp lib/Crypt/OpenSSL/EC.pm blib/lib/Crypt/OpenSSL/EC.pm
+    AutoSplitting blib/lib/Crypt/OpenSSL/EC.pm (blib/lib/auto/Crypt/OpenSSL/EC)
+    Running Mkbootstrap for EC ()
+    chmod 644 "EC.bs"
+    "/usr/bin/perl" -MExtUtils::Command::MM -e 'cp_nonempty' -- EC.bs blib/arch/auto/Crypt/OpenSSL/EC/EC.bs 644
+    "/usr/bin/perl" "/usr/share/perl5/vendor_perl/ExtUtils/xsubpp"  -typemap '/usr/share/perl5/ExtUtils/typemap' -typemap '/home/test/fedora/perl-Crypt-OpenSSL-EC/Crypt-OpenSSL-EC-1.32/typemap'  EC.xs > EC.xsc
+    Unparseable XSUB parameter: 'EC_POINT *p[]' in EC.xs, line 354
+    Unparseable XSUB parameter: 'const EC_POINT *p[]' in EC.xs, line 357
+    Unparseable XSUB parameter: 'const BIGNUM *m[]' in EC.xs, line 357
+    make: *** [Makefile:362: EC.c] Error 1
+
+The problematic argument with a pointer to an array type trigger the
+failure. Old ExtUtils::ParseXS parsed them, but the generated code was
+an invalid C code. E.g. This XS:
+
+	int
+	EC_POINTs_make_affine(const EC_GROUP *group, size_t num, EC_POINT *p[], BN_CTX *ctx)
+
+was incorrectly parsed as:
+
+    XS_EUPXS(XS_Crypt__OpenSSL__EC__EC_POINT_EC_POINTs_mul)
+    {
+	[...]
+	RETVAL = EC_POINTs_mul(group, r, n, num, const EC_POINT *p[], const BIGNUM *m[], ctx);
+
+That means that ExtUtils::ParseXS never supported arrays of pointers. Now it
+correctly reports na error.
+
+On the other hand, ExtUtils::ParseXS does not understand
+C preprocessor directives and does not ignore code enclosed in "#if 0"
+macro condition.
+
+This patch simply removes the two protypes.
+
+CPAN RT#164982
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ EC.xs | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/EC.xs b/EC.xs
+index d5d01d1..c06b9c3 100644
+--- a/EC.xs
++++ b/EC.xs
+@@ -348,16 +348,6 @@ EC_POINT_cmp(const EC_GROUP *group, const EC_POINT *a, const EC_POINT *b, BN_CTX
+ int 
+ EC_POINT_make_affine(const EC_GROUP *group, EC_POINT *point, BN_CTX *ctx)
+ 
+-#if 0
+-
+-int 
+-EC_POINTs_make_affine(const EC_GROUP *group, size_t num, EC_POINT *p[], BN_CTX *ctx)
+-
+-int 
+-EC_POINTs_mul(const EC_GROUP *group, EC_POINT *r, const BIGNUM *n, size_t num, const EC_POINT *p[], const BIGNUM *m[], BN_CTX *ctx)
+-
+-#endif
+-
+ int 
+ EC_POINT_mul(const EC_GROUP *group, EC_POINT *r, const BIGNUM *n, const EC_POINT *q, const BIGNUM *m, BN_CTX *ctx)
+ 
+-- 
+2.49.0
