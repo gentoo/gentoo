@@ -15,7 +15,6 @@
 	</maintainer>
 	<use>
 		<flag name="btrfs">Enables dependencies for the "btrfs" graph driver.</flag>
-		<flag name="device-mapper">Compiles with libdevmapper</flag>
 		<flag name="rootless">Compiles with libsubid</flag>
 	</use>
 	<upstream>
