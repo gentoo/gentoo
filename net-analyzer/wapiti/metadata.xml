@@ -11,6 +11,7 @@ It performs black-box scans, i.e. it does not study the source code of the appli
 
 Once it gets this list, Wapiti acts like a fuzzer, injecting payloads to see if a script is vulnerable.</longdescription>
 	<upstream>
+		<remote-id type="github">wapiti-scanner/wapiti</remote-id>
 		<remote-id type="sourceforge">wapiti</remote-id>
 	</upstream>
 	<use>
