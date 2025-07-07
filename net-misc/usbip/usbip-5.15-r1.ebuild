@@ -7,8 +7,8 @@ inherit autotools
 
 DESCRIPTION="Userspace utilities for a general USB device sharing system over IP networks"
 HOMEPAGE="https://www.kernel.org/"
-SRC_URI="https://www.kernel.org/pub/linux/kernel/v5.x/linux-${PV}.tar.xz"
-S="${WORKDIR}/linux-${PV}/tools/usb/${PN}"
+SRC_URI="https://www.kernel.org/pub/linux/kernel/v${PV%%.*}.x/linux-${PV}.tar.xz"
+S="${WORKDIR}/linux-${PV}/tools/usb/usbip"
 
 LICENSE="GPL-2"
 SLOT="0"
