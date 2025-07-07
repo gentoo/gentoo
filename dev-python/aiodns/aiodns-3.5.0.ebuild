@@ -24,7 +24,9 @@ RESTRICT="test"
 RDEPEND=">=dev-python/pycares-4.9.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+	test? (
+		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
+	)
 "
 
 distutils_enable_tests pytest
