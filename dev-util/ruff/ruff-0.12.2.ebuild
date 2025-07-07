@@ -9,9 +9,9 @@ CRATES=""
 
 declare -A GIT_CRATES=(
 	[lsp-types]='https://github.com/astral-sh/lsp-types;3512a9f33eadc5402cfab1b8f7340824c8ca1439;lsp-types-%commit%'
-	[salsa-macro-rules]='https://github.com/salsa-rs/salsa;09627e450566f894956710a3fd923dc80462ae6d;salsa-%commit%/components/salsa-macro-rules'
-	[salsa-macros]='https://github.com/salsa-rs/salsa;09627e450566f894956710a3fd923dc80462ae6d;salsa-%commit%/components/salsa-macros'
-	[salsa]='https://github.com/salsa-rs/salsa;09627e450566f894956710a3fd923dc80462ae6d;salsa-%commit%'
+	[salsa-macro-rules]='https://github.com/salsa-rs/salsa;fc00eba89e5dcaa5edba51c41aa5f309b5cb126b;salsa-%commit%/components/salsa-macro-rules'
+	[salsa-macros]='https://github.com/salsa-rs/salsa;fc00eba89e5dcaa5edba51c41aa5f309b5cb126b;salsa-%commit%/components/salsa-macros'
+	[salsa]='https://github.com/salsa-rs/salsa;fc00eba89e5dcaa5edba51c41aa5f309b5cb126b;salsa-%commit%'
 )
 
 RUST_MIN_VER="1.85.0"
