@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+
+USE_RUBY="ruby32 ruby33"
 
 RUBY_FAKEGEM_BINWRAP=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -44,4 +45,8 @@ all_ruby_prepare() {
 
 	# Avoid spec for unpackaged optional super_diff
 	rm -f spec/extensions/super_diff_spec.rb || die
+
+	# Require a consistent cgi.rb version (needed for ruby32)
+	sed -e '/require.*dry-struct/arequire "cgi"' \
+		-i spec/spec_helper.rb || die
 }
