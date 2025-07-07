@@ -6,7 +6,7 @@ EAPI=8
 inherit go-module shell-completion
 
 DESCRIPTION="A backup program that is fast, efficient and secure"
-HOMEPAGE="https://restic.github.io/"
+HOMEPAGE="https://restic.net/"
 SRC_URI="https://github.com/restic/restic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://gentoo.kropotkin.rocks/go-pkgs/${P}-deps.tar.xz"
 
