@@ -17,7 +17,7 @@ IUSE="libnotify"
 RDEPEND="dev-python/docopt[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	sys-fs/udisks:2
+	sys-fs/udisks:2[daemon]
 	libnotify? ( x11-libs/libnotify[introspection] )"
 DEPEND="app-text/asciidoc
 	test? ( dev-python/keyutils[${PYTHON_USEDEP}]
