@@ -9,5 +9,6 @@ library is a fork of Buce Perens Electric Fence library and adds
 some new features to it.</longdescription>
   <upstream>
     <remote-id type="sourceforge">duma</remote-id>
+    <remote-id type="github">johnsonjh/duma</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,174 @@
+From e56f58a98ed74552d90d34ff68cb188debb26a9f Mon Sep 17 00:00:00 2001
+From: Dennis Eisele <kernlpanic@dennis-eisele.de>
+Date: Tue, 8 Jul 2025 01:46:26 +0200
+Subject: [PATCH] Adapt build flags to avoid build failures of deprecated
+ functions on modern compilers. Also change the docs directory to version
+ specific directory
+
+---
+ GNUmakefile | 60 ++++++++++++++++++++++++++---------------------------
+ 1 file changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 2033339..d200317 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -317,7 +317,7 @@ ifndef prefix
+ endif
+ 
+ MAN_INSTALL_DIR=$(prefix)/share/man/man3
+-DOC_INSTALL_DIR=$(prefix)/share/doc/duma
++DOC_INSTALL_DIR=$(prefix)/share/doc/duma-2.5.21
+ 
+ ifndef srcdir
+   srcdir=.
+@@ -555,43 +555,43 @@ createconf$(EXEPOSTFIX): createconf.o
+ 
+ tstheap$(EXEPOSTFIX): libduma.a tstheap.o
+ 	- $(RMFORCE) tstheap$(EXEPOSTFIX)
+-	$(CC) $(CFLAGS) tstheap.o libduma.a -o tstheap$(EXEPOSTFIX) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) tstheap.o libduma.a -o tstheap$(EXEPOSTFIX) $(LIBS)
+ 
+ dumatest$(EXEPOSTFIX): libduma.a dumatest.o
+ 	- $(RMFORCE) dumatest$(EXEPOSTFIX)
+-	$(CC) $(CFLAGS) dumatest.o libduma.a -o dumatest$(EXEPOSTFIX) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) dumatest.o libduma.a -o dumatest$(EXEPOSTFIX) $(LIBS)
+ 
+ dumatestpp$(EXEPOSTFIX): libduma.a dumatestpp.o duma_sem.h dumapp.h
+ 	- $(RMFORCE) dumatestpp$(EXEPOSTFIX)
+-	$(CXX) $(CPPFLAGS) dumatestpp.o libduma.a -o dumatestpp$(EXEPOSTFIX) $(LIBS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) dumatestpp.o libduma.a -o dumatestpp$(EXEPOSTFIX) $(LIBS)
+ 
+ thread-test$(EXEPOSTFIX): libduma.a thread-test.o
+ 	- $(RMFORCE) thread-test$(EXEPOSTFIX)
+-	$(CC) $(CFLAGS) thread-test.o libduma.a -o thread-test$(EXEPOSTFIX) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) thread-test.o libduma.a -o thread-test$(EXEPOSTFIX) $(LIBS)
+ 
+ testmt$(EXEPOSTFIX): libduma.a testmt.o
+ 	- $(RMFORCE) testmt$(EXEPOSTFIX)
+-	$(CC) $(CFLAGS) testmt.o libduma.a -o testmt$(EXEPOSTFIX) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) testmt.o libduma.a -o testmt$(EXEPOSTFIX) $(LIBS)
+ 
+ testoperators$(EXEPOSTFIX): libduma.a testoperators.o duma_sem.h dumapp.h
+ 	- $(RMFORCE) testoperators$(EXEPOSTFIX)
+-	$(CXX) $(CPPFLAGS) testoperators.o libduma.a -o testoperators$(EXEPOSTFIX) $(LIBS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) testoperators.o libduma.a -o testoperators$(EXEPOSTFIX) $(LIBS)
+ 
+ testmemlimit$(EXEPOSTFIX): libduma.a testmemlimit.o
+ 	- $(RMFORCE) testmemlimit$(EXEPOSTFIX)
+-	$(CC) $(CFLAGS) testmemlimit.o libduma.a -o testmemlimit$(EXEPOSTFIX) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) testmemlimit.o libduma.a -o testmemlimit$(EXEPOSTFIX) $(LIBS)
+ 
+ tstheap_so$(EXEPOSTFIX): tstheap_so.o
+ 	- $(RMFORCE) tstheap_so$(EXEPOSTFIX)
+-	$(CC) $(CFLAGS) tstheap_so.o -o tstheap_so$(EXEPOSTFIX) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) tstheap_so.o -o tstheap_so$(EXEPOSTFIX) $(LIBS)
+ 
+ dumatestpp_so$(EXEPOSTFIX): dumatestpp_so.o
+ 	- $(RMFORCE) dumatestpp_so$(EXEPOSTFIX)
+-	$(CXX) $(CPPFLAGS) dumatestpp_so.o -o dumatestpp_so$(EXEPOSTFIX) $(LIBS)
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) dumatestpp_so.o -o dumatestpp_so$(EXEPOSTFIX) $(LIBS)
+ 
+ testmemlimit_so$(EXEPOSTFIX): testmemlimit_so.o
+ 	- $(RMFORCE) testmemlimit_so$(EXEPOSTFIX)
+-	$(CC) $(CFLAGS) testmemlimit_so.o -o testmemlimit_so$(EXEPOSTFIX) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) testmemlimit_so.o -o testmemlimit_so$(EXEPOSTFIX) $(LIBS)
+ 
+ $(OBJECTS) tstheap.o dumatest.o thread-test.o testmt.o dumatestpp.o: duma.h
+ 
+@@ -625,73 +625,73 @@ createconf.o:
+ #
+ 
+ dumapp_so.o:	dumapp.cpp duma.h duma_sem.h dumapp.h
+-	$(CXX) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c dumapp.cpp -o $@
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c dumapp.cpp -o $@
+ 
+ duma_so.o:	duma.c duma.h duma_config.h verinfo.h
+-	$(CC) $(CFLAGS) $(DUMA_SO_OPTIONS) -c duma.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c duma.c -o $@
+ 
+ sem_inc_so.o:	sem_inc.c duma_sem.h
+-	$(CC) $(CFLAGS) $(DUMA_SO_OPTIONS) -c sem_inc.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c sem_inc.c -o $@
+ 
+ print_so.o:	print.c print.h
+-	$(CC) $(CFLAGS) $(DUMA_SO_OPTIONS) -c print.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c print.c -o $@
+ 
+ # DUMA_SO_OPTIONS needed cause duma.h is included explicitly
+ tstheap_so.o:
+-	$(CC) $(CFLAGS) $(DUMA_SO_OPTIONS) -c tests/tstheap.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c tests/tstheap.c -o $@
+ 
+ dumatestpp_so.o:
+-	$(CXX) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c tests/dumatestpp.cpp -o $@
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c tests/dumatestpp.cpp -o $@
+ 
+ testmemlimit_so.o:
+-	$(CC) $(CFLAGS) $(DUMA_SO_OPTIONS) -c tests/testmemlimit.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) $(DUMA_SO_OPTIONS) -c tests/testmemlimit.c -o $@
+ 
+ #
+ # define rules how to build objects for static library
+ #
+ 
+ dumapp.o:	dumapp.cpp duma.h duma_sem.h dumapp.h
+-	$(CXX) $(CPPFLAGS) -c dumapp.cpp -o $@
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) -c dumapp.cpp -o $@
+ 
+ duma.o:	duma.c duma.h duma_config.h verinfo.h
+-	$(CC) $(CFLAGS) -c duma.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c duma.c -o $@
+ 
+ sem_inc.o:	sem_inc.c duma_sem.h
+-	$(CC) $(CFLAGS) -c sem_inc.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c sem_inc.c -o $@
+ 
+ print.o:	print.c print.h
+-	$(CC) $(CFLAGS) -c print.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c print.c -o $@
+ 
+ #
+ # define rules how to build the test objects
+ #
+ 
+ dumatest.o:	tests/dumatest.c duma.h duma_config.h verinfo.h
+-	$(CC) $(CFLAGS) -c tests/dumatest.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c tests/dumatest.c -o $@
+ 
+ dumatestpp.o:	tests/dumatestpp.cpp duma.h duma_sem.h dumapp.h duma_config.h verinfo.h
+-	$(CXX) $(CPPFLAGS) -c tests/dumatestpp.cpp -o $@
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) -c tests/dumatestpp.cpp -o $@
+ 
+ tstheap.o:	tests/tstheap.c duma.h duma_config.h verinfo.h
+-	$(CC) $(CFLAGS) -c tests/tstheap.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c tests/tstheap.c -o $@
+ 
+ testoperators.o:	tests/testoperators.cpp duma.h duma_sem.h dumapp.h duma_config.h verinfo.h
+-	$(CXX) $(CPPFLAGS) -c tests/testoperators.cpp -o $@
++	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) -c tests/testoperators.cpp -o $@
+ 
+ thread-test.o:	tests/thread-test.c duma.h duma_config.h verinfo.h
+-	$(CC) $(CFLAGS) -c tests/thread-test.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c tests/thread-test.c -o $@
+ 
+ testmt.o:	tests/testmt.c duma.h duma_config.h verinfo.h
+-	$(CC) $(CFLAGS) -c tests/testmt.c -o $@
++	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c tests/testmt.c -o $@
+ 
+ #
+ # default rules
+ #
+ #.c.o:
+-#	$(CC) $(CFLAGS) -c $< -o $@
++#	$(CC) $(LDFLAGS) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+ #
+ #.cpp.o:
+-#	$(CXX) $(CPPFLAGS) -c $< -o $@
++#	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
+ #
+ 
+ .PHONY: check test installcheck install uninstall clean distclean realclean clobber dos2unix printvars printuk printmod FORCE
+-- 
+2.49.0
+
