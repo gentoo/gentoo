@@ -69,7 +69,7 @@ src_prepare() {
 
 	# assure necessary files are present
 	local file
-	for file in apparmor_tag btrfs_installed_tag systemd_tag; do
+	for file in apparmor_tag btrfs_installed_tag btrfs_tag systemd_tag; do
 		[[ -f hack/"${file}".sh ]] || die
 	done
 
@@ -81,6 +81,10 @@ src_prepare() {
 		EOF
 	done
 
+	cat <<-EOF > hack/btrfs_tag.sh || die
+	#!/usr/bin/env bash
+	$(usex btrfs echo 'echo btrfs_noversion')
+	EOF
 	cat <<-EOF > hack/btrfs_installed_tag.sh || die
 	#!/usr/bin/env bash
 	$(usex btrfs echo 'echo exclude_graphdriver_btrfs')
