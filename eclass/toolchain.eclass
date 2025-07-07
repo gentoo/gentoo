@@ -2174,8 +2174,11 @@ gcc_do_filter_flags() {
 	fi
 
 	if ver_test -lt 15.1 ; then
-		filter-flags -fdiagnostics-explain-harder -fdiagnostics-details
 		filter-flags -fdiagnostics-set-output=text:experimental-nesting=yes
+	fi
+
+	if ver_test -lt 16.1 ; then
+		filter-flags -fdiagnostics-details
 	fi
 
 	# Ada: PR116226
