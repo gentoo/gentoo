@@ -2575,6 +2575,7 @@ toolchain_src_test() {
 		# the failures are tolerable or not, so we bail out.
 		eerror "No reference test data at ${manifest}!"
 		eerror "GCC's tests require a baseline to compare with for any reasonable interpretation of results."
+		eerror "See https://wiki.gentoo.org/wiki/Project:Toolchain/sys-devel/gcc#Test_suite for details."
 
 		if [[ -n ${GCC_TESTS_IGNORE_NO_BASELINE} ]] ; then
 			eerror "GCC_TESTS_IGNORE_NO_BASELINE is set, ignoring test result and creating a new baseline..."
