@@ -37,7 +37,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use cairo && python-single_r1_pkg_setup
+	use cairo && python-single-r1_pkg_setup
 }
 
 src_prepare() {
