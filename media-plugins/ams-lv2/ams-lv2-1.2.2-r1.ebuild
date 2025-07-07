@@ -22,13 +22,14 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="dev-cpp/gtkmm:2.4
+RDEPEND="
+	dev-cpp/gtkmm:2.4
+	dev-cpp/cairomm:0
 	media-libs/lv2
 	media-libs/lvtk[gtk2]
 	sci-libs/fftw:3.0
-	x11-libs/cairo
-	x11-libs/gtk+:2
-	virtual/jack"
+	virtual/jack
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
