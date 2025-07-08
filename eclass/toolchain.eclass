@@ -2450,6 +2450,11 @@ toolchain_src_test() {
 	# From opensuse's spec file: "asan needs a whole shadow address space"
 	ulimit -v unlimited
 
+	# Use the magic value of 1 which avoids invoking coredump handlers
+	# like systemd-coredumpd which can be really slow when we have many
+	# intentional or expected crashes.
+	prlimit -c=1 -p $$
+
 	# 'asan' wants to be preloaded first, so does 'sandbox'.
 	# To make asan tests work, we disable sandbox for all of test suite.
 	# The 'backtrace' tests also do not like the presence of 'libsandbox.so'.
