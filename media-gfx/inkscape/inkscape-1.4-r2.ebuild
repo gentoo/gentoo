@@ -140,6 +140,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	rm -r src/3rdparty/2geom/tests || die # bug 958419
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }
