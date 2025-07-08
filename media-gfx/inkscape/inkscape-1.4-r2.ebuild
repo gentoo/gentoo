@@ -115,10 +115,9 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4-gcc15.patch
 	"${FILESDIR}"/${PN}-1.4-poppler-24.10-fix-backport.patch
-	"${FILESDIR}"/${P}-poppler-24.11.0.patch # bug 943499
-	"${FILESDIR}"/${P}-poppler-24.12.0.patch # bug 946597
-	"${FILESDIR}"/${P}-poppler-25.02.0.patch # bug 949531
-	"${FILESDIR}"/${P}-poppler-25.06.0.patch # bug 957137, pending for 1.4.3
+	"${FILESDIR}"/${P}-poppler-24.{11,12}.0.patch # bugs 943499, 946597
+	"${FILESDIR}"/${P}-poppler-25.{02,06}.0.patch # bugs 949531, 957137
+	"${FILESDIR}"/${P}-poppler-25.07.0.patch # pending for git master
 	"${FILESDIR}"/${P}-cmake4.patch
 )
 
