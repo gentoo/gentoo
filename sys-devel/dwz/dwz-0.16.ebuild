@@ -40,6 +40,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/dwz-0.15-readelf.patch
+)
+
 src_prepare() {
 	default
 	tc-export CC
