@@ -1,0 +1,154 @@
+https://savannah.gnu.org/support/?111272
+https://file.savannah.gnu.org/file/0001-autoreconf-Invoke-autopoint-in-more-situations.patch?file_id=57356
+
+From 797eceb60214565db1f13339708c288c522e34a2 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Wed, 2 Jul 2025 02:43:41 +0200
+Subject: [PATCH] autoreconf: Invoke autopoint in more situations.
+
+Reported in <https://savannah.gnu.org/support/?111272>.
+
+* bin/autoreconf.in (autoreconf_current_directory): Invoke autopoint also when
+the package uses AM_ICONV, AC_LIB_LINKFLAGS, AC_LIB_HAVE_LINKFLAGS, or
+GUILE_FLAGS.
+---
+ bin/autoreconf.in | 75 +++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 72 insertions(+), 3 deletions(-)
+
+diff --git a/bin/autoreconf.in b/bin/autoreconf.in
+index a5ffc6fa..3f6a74fe 100644
+--- a/bin/autoreconf.in
++++ b/bin/autoreconf.in
+@@ -440,6 +440,8 @@ sub autoreconf_current_directory ($)
+   # ---------------------- #
+ 
+   my $uses_autoconf;
++  my $uses_liblink;
++  my $uses_iconv;
+   my $uses_gettext;
+   if (-f $configure_ac)
+     {
+@@ -449,6 +451,8 @@ sub autoreconf_current_directory ($)
+ 	  s/#.*//;
+ 	  s/dnl.*//;
+ 	  $uses_autoconf = 1 if /AC_INIT/;
++	  $uses_liblink = 1 if /AC_LIB_(?:HAVE_)LINKFLAGS/;
++	  $uses_iconv = 1 if /AM_ICONV/;
+ 	  # See below for why we look for gettext here.
+ 	  $uses_gettext = 1  if /^AM_GNU_GETTEXT_(?:REQUIRE_)?VERSION/;
+ 	}
+@@ -485,7 +489,7 @@ sub autoreconf_current_directory ($)
+   # Actually, it is even more restrictive, as it greps for
+   # '^AM_GNU_GETTEXT_(REQUIRE_)?VERSION('.  We did this above, while
+   # scanning configure.ac.
+-  if (!$uses_gettext)
++  if (!$uses_liblink && !$uses_iconv && !$uses_gettext)
+     {
+       verb "$configure_ac: not using Gettext";
+     }
+@@ -495,8 +499,21 @@ sub autoreconf_current_directory ($)
+     }
+   else
+     {
+-      xsystem_hint ("autopoint is needed because this package uses Gettext",
+-                    $autopoint);
++      if ($uses_gettext)
++        {
++          xsystem_hint ("autopoint is needed because this package uses Gettext",
++                        $autopoint);
++        }
++      elsif ($uses_iconv)
++        {
++          xsystem_hint ("autopoint is needed because this package uses AM_ICONV",
++                        $autopoint);
++        }
++      elsif ($uses_liblink)
++        {
++          xsystem_hint ("autopoint is needed because this package uses AC_LIB_LINKFLAGS",
++                        $autopoint);
++        }
+     }
+ 
+ 
+@@ -576,6 +593,8 @@ sub autoreconf_current_directory ($)
+   # from the final autoconf invocation.
+   my $aux_dir;
+   my @aux_files;
++  my $uses_liblink_via_traces;
++  my $uses_iconv_via_traces;
+   my $uses_gettext_via_traces;
+   my $uses_libtool;
+   my $uses_intltool;
+@@ -603,6 +622,11 @@ sub autoreconf_current_directory ($)
+                'AM_PROG_LIBTOOL',
+                'LT_INIT',
+                'LT_CONFIG_LTDL_DIR',
++               'AC_LIB_LINKFLAGS',
++               'AC_LIB_HAVE_LINKFLAGS',
++               'AC_LIB_LINKFLAGS_FROM_LIBS',
++               'GUILE_FLAGS',
++               'AM_ICONV',
+                'AM_GNU_GETTEXT',
+                'AM_INIT_AUTOMAKE',
+                'GTK_DOC_CHECK',
+@@ -617,6 +641,15 @@ sub autoreconf_current_directory ($)
+       $aux_dir = $args[0]           if $macro eq "AC_CONFIG_AUX_DIR";
+       push @aux_files, $args[0]     if $macro eq "AC_REQUIRE_AUX_FILE";
+       $uses_autoconf = 1            if $macro eq "AC_INIT";
++      # Here we need to explicitly test for GUILE_FLAGS, because in the
++      # typical situation where configure.ac invokes GUILE_FLAGS,
++      # guile.m4 defines GUILE_FLAGS and uses AC_LIB_LINKFLAGS_FROM_LIBS,
++      # the traces still for AC_LIB_LINKFLAGS_FROM_LIBS are empty.
++      $uses_liblink_via_traces = 1  if $macro eq "AC_LIB_LINKFLAGS"
++                                       || $macro eq "AC_LIB_HAVE_LINKFLAGS"
++                                       || $macro eq "AC_LIB_LINKFLAGS_FROM_LIBS"
++                                       || $macro eq "GUILE_FLAGS";
++      $uses_iconv_via_traces = 1    if $macro eq "AM_ICONV";
+       $uses_gettext_via_traces = 1  if $macro eq "AM_GNU_GETTEXT";
+       $uses_libtool = 1             if $macro eq "AC_PROG_LIBTOOL"
+                                        || $macro eq "AM_PROG_LIBTOOL"
+@@ -741,6 +774,42 @@ sub autoreconf_current_directory ($)
+     }
+ 
+ 
++  # --------------------------------------------- #
++  # Running autopoint, if not already run above.  #
++  # --------------------------------------------- #
++
++  if (!$uses_liblink_via_traces && !$uses_iconv_via_traces && !$uses_gettext_via_traces)
++    {
++      verb "$configure_ac: not needing autopoint";
++    }
++  elsif (!$install)
++    {
++      verb "$configure_ac: not running autopoint: --install not given";
++    }
++  elsif ($uses_liblink || $uses_iconv || $uses_gettext)
++    {
++      verb "$configure_ac: not running autopoint a second time";
++    }
++  else
++    {
++      if ($uses_gettext_via_traces)
++        {
++          xsystem_hint ("autopoint is needed because this package uses Gettext",
++                        $autopoint);
++        }
++      elsif ($uses_iconv_via_traces)
++        {
++          xsystem_hint ("autopoint is needed because this package uses AM_ICONV",
++                        $autopoint);
++        }
++      elsif ($uses_liblink_via_traces)
++        {
++          xsystem_hint ("autopoint is needed because this package uses AC_LIB_LINKFLAGS",
++                        $autopoint);
++        }
++    }
++
++
+   # ------------------- #
+   # Rerunning aclocal.  #
+   # ------------------- #
+-- 
+2.43.0
