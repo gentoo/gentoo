@@ -4,20 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-# Deps missing for 3.12
 PYTHON_COMPAT=( python3_{10..11} )
 PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1
 
-MY_P=${PN}3-${PV}
 DESCRIPTION="Web-application vulnerability scanner"
 HOMEPAGE="https://wapiti-scanner.github.io/"
 SRC_URI="
-	https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz
-	https://github.com/wapiti-scanner/wapiti/releases/download/${PV}/${MY_P}.tar.gz
+	https://github.com/wapiti-scanner/wapiti/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
 "
-S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -52,20 +48,26 @@ RDEPEND="
 	>=net-proxy/mitmproxy-9.0.0[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
-# Tests also require unpackaged respx
 BDEPEND+=" test? (
+				dev-lang/php
+				dev-python/greenlet[${PYTHON_USEDEP}]
+				dev-python/humanize[${PYTHON_USEDEP}]
 				dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-				dev-python/pytest-cov[${PYTHON_USEDEP}]
 				dev-python/responses[${PYTHON_USEDEP}]
+				dev-python/respx[${PYTHON_USEDEP}]
 				)"
-# Many tests require execution of local test php server
-RESTRICT="test"
 
 PATCHES=( "${FILESDIR}"/${PN}-3.1.6-setup_scripts.patch )
 
 python_prepare_all() {
+	sed -i 's/--cov --cov-report=xml//' setup.cfg || die
 	sed -e 's/"pytest-runner"//' \
 		-e "/DOC_DIR =/s/wapiti/${PF}/" \
 		-i setup.py || die
 	distutils-r1_python_prepare_all
 }
+
+EPYTEST_IGNORE=(
+	# requires humanize, unpackaged sslyze
+	tests/attack/test_mod_ssl.py
+)
