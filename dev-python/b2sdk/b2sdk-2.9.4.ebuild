@@ -43,4 +43,6 @@ EPYTEST_IGNORE=(
 	test/integration/test_raw_api.py
 )
 
+export PDM_BUILD_SCM_VERSION=${PV}
+
 distutils_enable_tests pytest
