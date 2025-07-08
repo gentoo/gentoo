@@ -31,7 +31,7 @@ src_prepare() {
 	default
 	# bug 895356
 	sed -i -e "s/-D_FORTIFY_SOURCE=2//g" src/Makefile.am || die
-	eautoreconf
+	AT_M4DIR="m4" eautoreconf
 }
 
 src_install() {
