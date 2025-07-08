@@ -1,0 +1,23 @@
+From f71316724d8e3aeb3ea46b0cfe84c4c5aefff3dc Mon Sep 17 00:00:00 2001
+From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
+Date: Mon, 5 May 2025 10:55:36 -0700
+Subject: [PATCH] Fix xarray failures post xarray unpin
+
+---
+ pandas/tests/generic/test_to_xarray.py | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/pandas/tests/generic/test_to_xarray.py b/pandas/tests/generic/test_to_xarray.py
+index 9b589c9348..c43645e173 100644
+--- a/pandas/tests/generic/test_to_xarray.py
++++ b/pandas/tests/generic/test_to_xarray.py
+@@ -53,9 +53,6 @@ class TestDataFrameToXArray:
+         # datetimes w/tz are preserved
+         # column names are lost
+         expected = df.copy()
+-        expected["f"] = expected["f"].astype(
+-            object if not using_infer_string else "str"
+-        )
+         expected.columns.name = None
+         tm.assert_frame_equal(result.to_dataframe(), expected)
+ 
