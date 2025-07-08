@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-08)
+# Unmaintained, out of date, QA issues, outstanding bugs for compilation
+# failure / test failure. Still uses python 3.11. No revdeps.
+# Removal on 2025-08-07.  Bug #725252, #873304, #731876, #929772
+sci-libs/eccodes
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-06)
 # Unmaintained, abandoned upstream since 2012, stuck on Python 3.11,
 # no revdeps since a year ago.
