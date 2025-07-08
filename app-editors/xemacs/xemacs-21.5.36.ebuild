@@ -64,6 +64,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-21.5.35-unknown-command-test.patch"
 	eapply "${FILESDIR}/${P}-failing-tests.patch"
 	eapply "${FILESDIR}/${P}-failing-tests-2.patch"
+	eapply "${FILESDIR}/${P}-configure-postgresql.patch"
 	eapply_user
 
 	eautoconf
