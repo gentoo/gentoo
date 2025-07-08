@@ -48,7 +48,7 @@ DEPEND="
 	sys-libs/talloc:0=
 	virtual/libcrypt:=
 	geoip? ( dev-libs/geoip:0= )
-	kerberos? ( virtual/krb5 )
+	kerberos? ( app-crypt/mit-krb5 )
 	lz4? ( app-arch/lz4:0= )
 	otp? ( sys-auth/oath-toolkit:0= )
 	pam? ( sys-libs/pam:0= )
