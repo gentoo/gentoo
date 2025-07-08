@@ -26,10 +26,10 @@ CDEPEND="
 	dev-cpp/ada:=
 	dev-cpp/cld3:=
 	>=dev-cpp/glibmm-2.77:2.68
-	dev-cpp/qrcodegen:=
 	dev-libs/glib:2
 	dev-libs/openssl:=
 	>=dev-libs/protobuf-21.12
+	dev-libs/qr-code-generator:=
 	dev-libs/xxhash
 	>=dev-qt/qtbase-6.5:6=[dbus?,gui,network,opengl,ssl,wayland?,widgets,X?]
 	>=dev-qt/qtimageformats-6.5:6
