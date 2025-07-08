@@ -34,6 +34,7 @@
 		<flag name="assimp">Add support for assimp (<pkg>media-libs/assimp</pkg>)</flag>
 		<flag name="ginkgo">Add support for ginkgo (<pkg>sci-libs/ginkgo</pkg>)</flag>
 		<flag name="sundials">Add support for sundials (<pkg>sci-libs/sundials</pkg>)</flag>
+		<flag name="vtk">Add support for VTK (<pkg>sci-libs/vtk</pkg>)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">dealii/dealii</remote-id>

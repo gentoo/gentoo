@@ -31,7 +31,7 @@ IUSE="
 	adolc arborx assimp arpack cgal cpu_flags_x86_avx cpu_flags_x86_avx512f
 	cpu_flags_x86_sse2 +debug doc +examples ginkgo gmsh +gsl hdf5
 	+lapack metis mpi muparser opencascade p4est petsc scalapack slepc
-	+sparse sundials symengine trilinos
+	+sparse sundials symengine trilinos vtk
 "
 
 # TODO: add slepc use flag once slepc is packaged for gentoo-science
@@ -44,7 +44,8 @@ REQUIRED_USE="
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
 	sys-libs/zlib
-	dev-cpp/tbb:=
+	dev-cpp/magic_enum:=
+	dev-cpp/taskflow:=
 	arborx? ( sci-libs/arborx[mpi=] )
 	adolc? ( sci-libs/adolc )
 	arpack? ( sci-libs/arpack[mpi=] )
@@ -70,6 +71,7 @@ RDEPEND="dev-libs/boost:=
 	sundials? ( sci-libs/sundials:= )
 	symengine? ( >=sci-libs/symengine-0.4:= )
 	trilinos? ( sci-libs/trilinos )
+	vtk? ( sci-libs/vtk )
 	|| (
 		dev-cpp/kokkos
 		sci-libs/trilinos
@@ -100,19 +102,20 @@ src_configure() {
 		-DDEAL_II_EXAMPLES_RELDIR="share/doc/${PF}/examples"
 		-DDEAL_II_LIBRARY_RELDIR="$(get_libdir)"
 		-DDEAL_II_SHARE_RELDIR="share/${PN}"
-		-DDEAL_II_WITH_ZLIB=ON
-		-DDEAL_II_WITH_ADOLC="$(usex adolc)"
-		-DDEAL_II_WITH_ARBORX="$(usex arborx)"
-		-DDEAL_II_WITH_ASSIMP="$(usex assimp)"
-		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
-		-DDEAL_II_WITH_CGAL="$(usex cgal)"
-		-DDEAL_II_WITH_GINKGO="$(usex ginkgo)"
 		-DDEAL_II_COMPONENT_DOCUMENTATION="$(usex doc)"
 		-DDEAL_II_COMPONENT_EXAMPLES="$(usex examples)"
+		-DDEAL_II_WITH_ADOLC="$(usex adolc)"
+		-DDEAL_II_WITH_ARBORX="$(usex arborx)"
+		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
+		-DDEAL_II_WITH_ASSIMP="$(usex assimp)"
+		-DDEAL_II_WITH_CGAL="$(usex cgal)"
+		-DDEAL_II_WITH_COMPLEX_VALUES=ON
+		-DDEAL_II_WITH_GINKGO="$(usex ginkgo)"
 		-DDEAL_II_WITH_GMSH="$(usex gmsh)"
 		-DDEAL_II_WITH_GSL="$(usex gsl)"
 		-DDEAL_II_WITH_HDF5="$(usex hdf5)"
 		-DDEAL_II_WITH_LAPACK="$(usex lapack)"
+		-DDEAL_II_WITH_MAGIC_ENUM=ON
 		-DDEAL_II_WITH_METIS="$(usex metis)"
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
 		-DDEAL_II_WITH_MUPARSER="$(usex muparser)"
@@ -123,10 +126,12 @@ src_configure() {
 		-DDEAL_II_WITH_SLEPC="$(usex slepc)"
 		-DDEAL_II_WITH_SUNDIALS="$(usex sundials)"
 		-DDEAL_II_WITH_SYMENGINE="$(usex symengine)"
-		-DDEAL_II_WITH_UMFPACK="$(usex sparse)"
-		-DDEAL_II_WITH_TBB=ON
-		-DDEAL_II_WITH_TASKFLOW=OFF
+		-DDEAL_II_WITH_TASKFLOW=ON
+		-DDEAL_II_WITH_TBB=OFF
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
+		-DDEAL_II_WITH_UMFPACK="$(usex sparse)"
+		-DDEAL_II_WITH_VTK="$(usex vtk)"
+		-DDEAL_II_WITH_ZLIB=ON
 	)
 
 	use opencascade && mycmakeargs+=(
