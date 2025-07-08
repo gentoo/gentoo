@@ -31,6 +31,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-11.1.0-c++17.patch
 	"${FILESDIR}"/${PN}-12.1.1-no-march.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 python_check_deps() {

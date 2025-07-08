@@ -1,0 +1,22 @@
+--- a/benchmark/CMakeLists.txt	2025-07-08 08:23:10.926630364 +0200
++++ b/benchmark/CMakeLists.txt	2025-07-08 08:23:21.764513856 +0200
+@@ -9,7 +9,7 @@
+ # The full license is in the file LICENSE, distributed with this software. #
+ ############################################################################
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.8)
+ 
+ if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+     project(xsimd-benchmark)
+--- a/examples/CMakeLists.txt	2025-07-08 08:23:32.134402377 +0200
++++ b/examples/CMakeLists.txt	2025-07-08 08:23:42.504290895 +0200
+@@ -9,7 +9,7 @@
+ # The full license is in the file LICENSE, distributed with this software. #
+ ############################################################################
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.8)
+ if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+     project(xsimd-examples)
+ 
