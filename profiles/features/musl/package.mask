@@ -1,11 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ian Jordan <immoloism@gmail.com> (2025-07-13)
+# Binary is compiled against glibc
+net-misc/anydesk
+
 # Sam James <sam@gentoo.org> (2025-07-12)
 # Not ported to musl (bug #939569, https://github.com/oracle/dtrace-utils/issues/87)
 dev-debug/dtrace
 
-# PPN-SD <nicolas.parlant@parhuet.fr> (2025-08-07)
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-07)
 # it requires termio.h (glibc)
 app-emulation/ski
 
