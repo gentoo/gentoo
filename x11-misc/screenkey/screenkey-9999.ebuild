@@ -29,22 +29,26 @@ IUSE="appindicator"
 RESTRICT="test"
 
 RDEPEND="
+	>=dev-libs/glib-2.84.3[introspection]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject[${PYTHON_USEDEP}]
 	media-fonts/fontawesome
+	x11-libs/gdk-pixbuf[introspection]
 	x11-libs/gtk+:3[X,introspection]
+	x11-libs/libX11
+	x11-libs/libXtst
+	x11-libs/pango[introspection]
 	x11-misc/slop
 	appindicator? ( dev-libs/libayatana-appindicator )
 "
 BDEPEND="
 	dev-python/babel[${PYTHON_USEDEP}]
-	dev-python/wheel[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
 	# Change the doc install path
 	sed -i "s|share/doc/screenkey|share/doc/${PF}|g" setup.py || die
 
-	default
+	distutils-r1_src_prepare
 }
