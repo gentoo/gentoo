@@ -22,6 +22,7 @@ RDEPEND="
 	=dev-ml/base-${JSM}:=[ocamlopt?]
 	=dev-ml/ppx_here-${JSM}:=[ocamlopt?]
 	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
+	<dev-ml/ppxlib-0.36.0
 "
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-ml/dune-3.11"
