@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,11 +20,9 @@ LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug doc +lzma pkcs7 +tools +zlib +zstd"
 
-# Upstream does not support running the test suite with custom configure flags.
-# I was also told that the test suite is intended for kmod developers.
-# So we have to restrict it.
-# See bug #408915.
-#RESTRICT="test"
+# Needs work to deal with building dummy kernel modules.
+# Also need to diagnose failures.
+RESTRICT="test"
 
 # - >=zlib-1.2.6 required because of bug #427130
 # - Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
