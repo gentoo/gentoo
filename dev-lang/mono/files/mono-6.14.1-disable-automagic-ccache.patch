@@ -1,0 +1,17 @@
+diff --git a/mono/btls/CMakeLists.txt b/mono/btls/CMakeLists.txt
+index dbad836fc27..e36ee5e0a8a 100644
+--- a/mono/btls/CMakeLists.txt
++++ b/mono/btls/CMakeLists.txt
+@@ -5,11 +5,6 @@ project (mono-btls)
+ enable_language(C)
+ enable_language(CXX)
+ 
+-find_program(CCACHE_PROGRAM ccache)
+-if(CCACHE_PROGRAM)
+-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CCACHE_PROGRAM}")
+-endif()
+-
+ if (MSVC OR CYGWIN)
+        set(BTLS_HOST_WIN32 1)
+ endif ()
+
