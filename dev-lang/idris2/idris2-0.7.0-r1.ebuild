@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+chez doc racket test-full"
+IUSE="+chez doc minimal racket test-full"
 REQUIRED_USE="^^ ( chez racket )"
 
 RDEPEND="
@@ -48,11 +48,12 @@ BDEPEND="
 	)
 "
 
-CHECKREQS_DISK_BUILD="800M"
+CHECKREQS_DISK_BUILD="1200M"
 
 PATCHES=( "${FILESDIR}/${PN}-0.7.0-disable-allbackends-tests.patch"  )
 
 # Generated via "SCHEME", not CC
+RESTRICT="strip"
 QA_FLAGS_IGNORED="
 	usr/lib/idris2/bin/idris2_app/idris2
 	usr/lib/idris2/bin/idris2_app/idris2-boot
@@ -98,38 +99,61 @@ src_prepare() {
 
 src_configure() {
 	export IDRIS2_VERSION="${PV}"
+	export IDRIS2_CG="$(usex chez chez racket)"
 	export SCHEME="$(usex chez chezscheme racket)"
-
-	if use chez ; then
-		export IDRIS2_CG=chez
-		export BOOTSTRAP_TARGET=bootstrap
-	elif use racket ; then
-		export IDRIS2_CG=racket
-		export BOOTSTRAP_TARGET=bootstrap-racket
-	else
-		die 'Neither "chez" nor "racket" was chosen'
-	fi
 }
 
 src_compile() {
 	# > jobserver unavailable
+	# We have to use -j1.
 	# This is caused by Makefile using a script which in turn calls make
 	# https://github.com/idris-lang/Idris2/issues/2152
-	emake SCHEME="${SCHEME}" "${BOOTSTRAP_TARGET}" -j1
 
-	use doc && emake -C ./docs html
+	local bootstrap_target="$(usex chez bootstrap bootstrap-racket)"
+
+	einfo "Bootstrapping stage 1 (from Scheme)"
+	emake -j1 PREFIX="${S}/stage1" SCHEME="${SCHEME}" "${bootstrap_target}"
+	emake -j1 PREFIX="${S}/stage1" SCHEME="${SCHEME}" install
+
+	einfo "Bootstrapping stage 2 (self-hosted)"
+	local -x PATH="${S}/stage1/bin:${PATH}"
+	if use racket ; then
+		emake -j1 IDRIS2_BOOT="idris2 --codegen racket" all
+	else
+		emake -j1 all
+	fi
+
+	if use doc ; then
+		emake -C ./docs html
+	fi
 }
 
 src_test() {
-	emake SCHEME="${SCHEME}" bootstrap-test
+	emake SCHEME="${SCHEME}" test
 }
 
 src_install() {
-	# "DESTDIR" variable is not respected, use "PREFIX" instead
-	emake IDRIS2_PREFIX="${ED}/usr/lib/idris2" PREFIX="${ED}/usr/lib/idris2" install
+	emake -j1 DESTDIR="${ED}" install
 	dosym "../lib/${PN}/bin/${PN}" "/usr/bin/${PN}"
 
-	# Install documentation
-	use doc && dodoc -r ./docs/build/html
+	local -x PATH="${S}/build/exec:${PATH}"
+
+	if ! use minimal ; then
+		emake -j1 DESTDIR="${ED}" install-with-src-api
+		emake -j1 DESTDIR="${ED}" install-with-src-libs
+	fi
+
+	cat <<EOF > "${ED}/usr/lib/${PN}/gentoo-build-info.txt"
+Package: ${P}
+Installed: $(date +'%Y-%m-%d %H:%M %Z')
+Bootstrapped from: $(usex chez Chez Racket)
+Self-hosted: yes
+Idris2 API installed: $(usex minimal no yes)
+EOF
+
+	if use doc ; then
+		dodoc -r ./docs/build/html
+	fi
+
 	einstalldocs
 }
