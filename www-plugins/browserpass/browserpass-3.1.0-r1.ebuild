@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,12 @@ src_install() {
 	newins browser-files/firefox-host.json com.github.browserpass.native.json
 
 	insinto /usr/lib64/mozilla/native-messaging-hosts
+	newins browser-files/firefox-host.json com.github.browserpass.native.json
+
+	insinto /usr/lib64/librewolf/native-messaging-hosts
+	newins browser-files/firefox-host.json com.github.browserpass.native.json
+
+	insinto /usr/lib64/librewolf-bin/native-messaging-hosts
 	newins browser-files/firefox-host.json com.github.browserpass.native.json
 
 	insinto /etc/chromium/native-messaging-hosts
