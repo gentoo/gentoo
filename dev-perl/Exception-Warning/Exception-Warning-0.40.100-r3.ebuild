@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=DEXTER
 DIST_VERSION=0.0401
@@ -12,8 +12,6 @@ DESCRIPTION="Convert simple warn into real exception object"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Exception-Base-0.210.0
@@ -24,6 +22,5 @@ BDEPEND="${RDEPEND}
 	test? (
 		>=dev-perl/Test-Assert-0.50.0
 		>=dev-perl/Test-Unit-Lite-0.120.0
-		virtual/perl-parent
 	)
 "
