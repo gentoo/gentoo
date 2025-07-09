@@ -1,5 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2025-06-09)
+# Requires sys-devel/mold and net-analyzer/netdata-go-plugin.
+net-analyzer/netdata mold postgres
 
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
 # Requires llvm-runtimes/libcxx.
