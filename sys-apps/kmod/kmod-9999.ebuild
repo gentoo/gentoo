@@ -63,14 +63,6 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-
-	if use tools; then
-		local cmd
-		for cmd in lsmod modinfo; do
-			dosym kmod /bin/${cmd}
-		done
-	fi
-
 	newinitd "${FILESDIR}"/kmod-static-nodes-r1 kmod-static-nodes
 }
 
