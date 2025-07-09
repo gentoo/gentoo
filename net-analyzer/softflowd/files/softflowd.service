@@ -1,0 +1,12 @@
+[Unit]
+Description=Flow-based network traffic analyser
+Documentation=man:softflowd(8)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+ExecReload=/bin/true
+RemainAfterExit=on
+
+[Install]
+WantedBy=multi-user.target
