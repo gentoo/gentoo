@@ -148,7 +148,7 @@ src_prepare() {
 		-e "/^SHLIB_LIBS=/s:=.*:='${ncurses_libs}':" \
 		support/shobj-conf || die
 	sed -i \
-		-e "/^[[:space:]]*LIBS=.-lncurses/s:-lncurses:${ncurses_libs}:" \
+		-e "/[[:space:]]*LIBS=.-lncurses/s:-lncurses:${ncurses_libs}:" \
 		examples/rlfe/configure || die
 
 	# Fix building under Gentoo/FreeBSD; upstream FreeBSD deprecated
