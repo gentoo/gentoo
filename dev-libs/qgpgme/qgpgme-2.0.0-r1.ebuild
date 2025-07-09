@@ -19,15 +19,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	!<app-crypt/gpgme-2[qt6(-)]
-
+DEPEND="
 	>=app-crypt/gpgme-${PV%.*}:=
 	>=dev-cpp/gpgmepp-${PV%.*}:=
 	>=dev-libs/libgpg-error-1.47:=
 	>=dev-qt/qtbase-6.5.0:6
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	!<app-crypt/gpgme-2[qt6(-)]
+	!dev-libs/qgpgme:1
+"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 src_configure() {
