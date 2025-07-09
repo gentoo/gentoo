@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,15 +35,17 @@ BDEPEND="
 
 DOCS=( AUTHORS.txt CONTRIBUTING.md README.rst )
 
+PATCHES=(
+	# https://github.com/davidhalter/jedi-vim/pull/1131
+	# Seemingly fallout from jedi/parso update
+	"${FILESDIR}"/${P}-remove-unreasonable-test.patch
+)
+
 src_prepare() {
 	vim-plugin_src_prepare
 
 	rm doc/logotype-a.svg || die
 	rmdir pythonx/{jedi,parso} || die
-
-	# Disable failing tests
-	sed -i test/vspec/signatures.vim \
-		-e "/it 'highlights correct argument'/a SKIP 'fail'" || die
 }
 
 # Makefile tries hard to call tests so let's silence this phase.

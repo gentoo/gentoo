@@ -1,0 +1,33 @@
+From 382d8a48d0e0b4d5ff8687dfa5b7d689f906999a Mon Sep 17 00:00:00 2001
+From: Dave Halter <davidhalter88@gmail.com>
+Date: Fri, 27 Dec 2024 23:10:27 +0100
+Subject: [PATCH] Remove a test that failed for no apparent reason
+
+---
+ test/vspec/completions.vim | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/test/vspec/completions.vim b/test/vspec/completions.vim
+index 068e5392..5a9a3050 100644
+--- a/test/vspec/completions.vim
++++ b/test/vspec/completions.vim
+@@ -52,19 +52,6 @@ describe 'completions'
+         Expect getline('.') == 'IndentationError().filename'
+     end
+ 
+-    it 'multi complete'
+-        " NOTE: nvim results in "importErr()" here with completeopt+=longest,
+-        " but Vim is fine.
+-        " This is due to `pumvisible()` in jedi#complete_opened being true
+-        " with nvim still, but it is 0 with Vim, i.e. Vim appears to close
+-        " the pum already (with the tests).
+-        "
+-        " This might be a misunderstanding though, since the test might not
+-        " expect the "import" keyword to be offered for completion?!
+-        normal oImpXErrX()
+-        Expect getline('.') == 'ImportError()'
+-    end
+-
+     it 'cycling through entries popup_select_first=0'
+         set completeopt+=longest
+         let g:jedi#popup_select_first = 0
