@@ -1,0 +1,36 @@
+From 3984ff1756b4dd41d3f6bb8949830772a9c5d9c1 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Tue, 8 Jul 2025 23:14:24 +0200
+Subject: [PATCH] Make unit tests work with Ruby 3.4
+
+In Ruby versions up to 3.3, a label included just the method name.
+Since Ruby version 3.4, if a method has an owner, e.g. a class, the
+label is of the form `Owner#method`.
+
+To add Ruby 3.4 compatibility, soften up the predicate so it accepts
+either form.
+
+Fixes #41.
+
+Link: https://bugs.ruby-lang.org/issues/19117
+---
+ test/basic_test.rb | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/test/basic_test.rb b/test/basic_test.rb
+index 73e6eba..52214ad 100644
+--- a/test/basic_test.rb
++++ b/test/basic_test.rb
+@@ -3,7 +3,11 @@
+ class BasicTest < Minitest::Test
+   def setup
+     @offset = DebugInspector.open do |dc|
+-      dc.backtrace_locations.index { |loc| loc.path == __FILE__ and loc.label == "setup" }
++      dc.backtrace_locations.index do |loc|
++        # Since Ruby 3.4, a label includes the method owner if there is one.
++        # See also: https://bugs.ruby-lang.org/issues/19117
++        loc.path == __FILE__ and %w[setup BasicTest#setup].include?(loc.label)
++      end
+     end
+   end
+ 
