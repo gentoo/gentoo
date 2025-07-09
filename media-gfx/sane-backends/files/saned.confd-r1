@@ -1,0 +1,11 @@
+# The user saned should drop its privileges to after startup
+# SANED_USER="saned"
+
+# Bind to address (default all interfaces)
+# SANED_ADDRESS="127.0.0.1"
+
+# Bind to port (default is 6566)
+# SANED_PORT="6566"
+
+# Arguments for saned. See saned --help for possible options
+# SANED_ARGS="--listen"

@@ -183,7 +183,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
 	"${FILESDIR}"/${PN}-1.0.30-add_hpaio_epkowa_dll.conf.patch
 	"${FILESDIR}"/${PN}-1.4.0-remove-automagic.patch
 )
@@ -347,8 +346,8 @@ multilib_src_install_all() {
 		doins "${FILESDIR}"/saned
 	fi
 
-	newinitd "${FILESDIR}"/saned.initd saned
-	newconfd "${FILESDIR}"/saned.confd saned
+	newinitd "${FILESDIR}"/saned.initd-r1 saned
+	newconfd "${FILESDIR}"/saned.confd-r1 saned
 }
 
 pkg_postrm() {
