@@ -1,0 +1,36 @@
+From cab439485502745448abb86fc4377e8a65db80c1 Mon Sep 17 00:00:00 2001
+From: Alec Leamas <leamas.alec@gmail.com>
+Date: Sun, 13 Apr 2025 22:11:02 +0200
+Subject: [PATCH 16/19] cmake: Add guard for multiple inclusions
+
+---
+ CMakeLists.txt | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f7da2cb..8d440af 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,6 +7,11 @@
+ #
+ # See README.CMake
+ 
++set(PACKAGE shp)
++if (TARGET ${PACKAGE})
++  return ()
++endif ()
++
+ # Version 3.11 or above of cmake is currently required for all platforms.
+ cmake_minimum_required(VERSION 3.11)
+ project(shapelib C CXX)
+@@ -49,7 +54,6 @@ if(BUILD_SHARED_LIBS AND (WIN32 OR CYGWIN))
+   set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/dll)
+ endif()
+ 
+-set(PACKAGE shp)
+ 
+ # Set up install locations.
+ set(
+-- 
+2.49.0
+
