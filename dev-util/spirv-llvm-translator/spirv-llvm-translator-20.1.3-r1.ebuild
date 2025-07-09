@@ -35,6 +35,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${PN}-20.1.3-option-registered.patch )
+
 src_prepare() {
 	append-flags -fPIC
 	cmake_src_prepare
