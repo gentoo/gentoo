@@ -1,7 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# PPN-SD <nicolas.parlant@parhuet.fr> (2025-08-07)
+# Ian Jordan <immoloism@gmail.com> (2025-07-09)
+# Binary is compiled against glibc
+net-misc/anydesk
+
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-07)
 # it requires termio.h (glibc)
 app-emulation/ski
 
