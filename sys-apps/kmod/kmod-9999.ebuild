@@ -28,10 +28,6 @@ RESTRICT="test"
 # - Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
 # - >=zstd-1.5.2-r1 required for bug #771078
 RDEPEND="
-	!sys-apps/module-init-tools
-	!sys-apps/modutils
-	!<sys-apps/openrc-0.13.8
-	!<sys-apps/systemd-216-r3
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
 	pkcs7? ( >=dev-libs/openssl-1.1.0:= )
 	zlib? ( >=sys-libs/zlib-1.2.6 )
