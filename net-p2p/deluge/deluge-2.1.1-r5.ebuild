@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,13 +29,7 @@ REQUIRED_USE="
 
 BDEPEND="
 	dev-util/intltool
-	test? (
-		$(python_gen_cond_dep '
-			>=dev-python/pytest-twisted-1.13.4-r1[${PYTHON_USEDEP}]
-		')
-	)
 "
-
 RDEPEND="
 	acct-group/deluge
 	acct-user/deluge
@@ -68,6 +62,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-consoleui-deferred.patch"
 )
 
+EPYTEST_PLUGINS=( pytest-twisted )
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -109,8 +104,7 @@ python_test() {
 		'deluge/tests/test_core.py::TestCore::test_pause_torrent'
 	)
 
-	# dev-python/pytest-twisted has disabled autoloading
-	epytest -m "not (todo or gtkui)" -p pytest_twisted -v
+	epytest -m "not (todo or gtkui)" -v
 }
 
 python_install_all() {
@@ -118,7 +112,7 @@ python_install_all() {
 	if ! use console ; then
 		rm -r "${D}/$(python_get_sitedir)/deluge/ui/console/" || die
 		rm "${ED}/usr/bin/deluge-console" || die
-		rm "${ED}/usr/share/man/man1/deluge-console.1" ||die
+		rm "${ED}/usr/share/man/man1/deluge-console.1" || die
 	fi
 	if ! use gui ; then
 		rm -r "${D}/$(python_get_sitedir)/deluge/ui/gtk3/" || die
