@@ -40,7 +40,10 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-cmake.patch
+)
 
 src_prepare() {
 	sed -i \
