@@ -7,7 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit bash-completion-r1 distutils-r1 pypi
+inherit distutils-r1 pypi shell-completion
 
 DESCRIPTION="Deduplicating backup program with compression and authenticated encryption"
 HOMEPAGE="https://borgbackup.readthedocs.io/"
@@ -66,10 +66,6 @@ src_install() {
 	doman docs/man/*
 
 	dobashcomp scripts/shell_completions/bash/borg
-
-	insinto /usr/share/zsh/site-functions
-	doins scripts/shell_completions/zsh/_borg
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins scripts/shell_completions/fish/borg.fish
+	dozshcomp scripts/shell_completions/zsh/_borg
+	dofishcomp scripts/shell_completions/fish/borg.fish
 }
