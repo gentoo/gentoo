@@ -1,0 +1,13 @@
+/var/log/i2pd.log {
+        rotate 4
+        weekly
+        missingok
+        notifempty
+        create 640 i2pd i2pd
+        postrotate
+                if [ -f /run/i2pd/i2pd.pid ]; then
+                    /bin/kill -SIGUSR1 $(/bin/cat /run/i2pd/i2pd.pid)
+                fi
+        endscript
+}
+
