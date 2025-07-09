@@ -15,7 +15,7 @@ JAVA_PKG_IUSE="source test"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Simple framework to write repeatable tests"
-HOMEPAGE="https://junit.org/junit5/"
+HOMEPAGE="https://junit.org"
 DEB="5.10.1-1"
 SRC_URI="https://github.com/junit-team/junit5/archive/r${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/junit5-r${PV}"
