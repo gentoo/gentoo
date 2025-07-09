@@ -29,7 +29,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="
 	adolc arborx assimp arpack cgal cpu_flags_x86_avx cpu_flags_x86_avx512f
-	cpu_flags_x86_sse2 +debug doc +examples ginkgo gmsh +gsl hdf5
+	cpu_flags_x86_sse2 +debug doc +examples ginkgo gmsh +gsl hdf5 int64
 	+lapack metis mpi muparser opencascade p4est petsc scalapack slepc
 	+sparse sundials symengine trilinos vtk
 "
@@ -64,7 +64,7 @@ RDEPEND="dev-libs/boost:=
 	muparser? ( dev-cpp/muParser )
 	opencascade? ( sci-libs/opencascade:= )
 	p4est? ( sci-libs/p4est[mpi] )
-	petsc? ( sci-mathematics/petsc[mpi=] )
+	petsc? ( sci-mathematics/petsc[mpi=,int64?] )
 	scalapack? ( sci-libs/scalapack )
 	slepc? ( sci-mathematics/slepc[mpi=] )
 	sparse? ( sci-libs/umfpack )
@@ -91,6 +91,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DDEAL_II_PACKAGE_VERSION="${PV}"
+		-DCMAKE_CXX_STANDARD="20"
 		-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=OFF
 		-DDEAL_II_ALLOW_AUTODETECTION=OFF
 		-DDEAL_II_ALLOW_BUNDLED=OFF
@@ -104,6 +105,7 @@ src_configure() {
 		-DDEAL_II_SHARE_RELDIR="share/${PN}"
 		-DDEAL_II_COMPONENT_DOCUMENTATION="$(usex doc)"
 		-DDEAL_II_COMPONENT_EXAMPLES="$(usex examples)"
+		-DDEAL_II_WITH_64BIT_INDICES="$(usex int64)"
 		-DDEAL_II_WITH_ADOLC="$(usex adolc)"
 		-DDEAL_II_WITH_ARBORX="$(usex arborx)"
 		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
