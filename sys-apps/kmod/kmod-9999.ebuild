@@ -25,7 +25,6 @@ IUSE="debug doc +lzma pkcs7 +tools +zlib +zstd"
 RESTRICT="test"
 
 # - >=zlib-1.2.6 required because of bug #427130
-# - Block systemd below 217 for -static-nodes-indicate-that-creation-of-static-nodes-.patch
 # - >=zstd-1.5.2-r1 required for bug #771078
 RDEPEND="
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
