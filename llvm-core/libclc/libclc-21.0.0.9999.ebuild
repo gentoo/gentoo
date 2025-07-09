@@ -54,7 +54,6 @@ src_configure() {
 		"amdgcn-mesa-mesa3d"
 		"amdgcn--amdhsa"
 	)
-	[[ ${#libclc_targets[@]} ]] || die "libclc target missing!"
 
 	libclc_targets=${libclc_targets[*]}
 	local mycmakeargs=(

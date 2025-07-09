@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {17..18} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake llvm.org llvm-r1 python-any-r1
 
 DESCRIPTION="OpenCL C library"
@@ -52,7 +52,6 @@ src_configure() {
 		"amdgcn-mesa-mesa3d"
 		"amdgcn--amdhsa"
 	)
-	[[ ${#libclc_targets[@]} ]] || die "libclc target missing!"
 
 	libclc_targets=${libclc_targets[*]}
 	local mycmakeargs=(

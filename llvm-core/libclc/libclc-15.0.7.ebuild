@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_11 )
 inherit cmake llvm llvm.org python-any-r1
 
 DESCRIPTION="OpenCL C library"
@@ -70,7 +70,6 @@ src_configure() {
 		"amdgcn-mesa-mesa3d"
 		"amdgcn--amdhsa"
 	)
-	[[ ${#libclc_targets[@]} ]] || die "libclc target missing!"
 
 	libclc_targets=${libclc_targets[*]}
 	local mycmakeargs=(
