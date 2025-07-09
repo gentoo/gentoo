@@ -1,0 +1,40 @@
+https://bugs.gentoo.org/955453
+https://github.com/mchehab/rasdaemon/issues/214
+https://github.com/mchehab/rasdaemon/pull/212
+
+From 46bed1b6845bcb560d760b4cacea7df67cd6d1fd Mon Sep 17 00:00:00 2001
+From: Thomas Renninger <trenn@suse.de>
+Date: Wed, 23 Apr 2025 16:40:43 +0200
+Subject: [PATCH] Fix buffer overflow in add_event_handler read
+
+If the first read in ras-events.c:862 is successful, it will be tried
+to read more out of the fd, without re-allocating more memory.
+
+Signed-off-by: Thomas Renninger <trenn@suse.de>
+---
+ ras-events.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/ras-events.c b/ras-events.c
+index 6692a31..c7ee801 100644
+--- a/ras-events.c
++++ b/ras-events.c
+@@ -859,6 +859,17 @@ static int add_event_handler(struct ras_events *ras, struct tep_handle *pevent,
+ 	}
+ 
+ 	do {
++		if (size > 0) {
++			page = realloc(page, page_size + size);
++                        if (!page) {
++				rc = -errno;
++				log(TERM, LOG_ERR,
++				    "Can't reallocate page to read %s:%s"
++				    " format\n", group, event);
++				close(fd);
++				return rc;
++                        }
++                }
+ 		rc = read(fd, page + size, page_size);
+ 		if (rc < 0) {
+ 			log(TERM, LOG_ERR, "Can't get arch page size\n");
+
