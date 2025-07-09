@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=ETJ
 DIST_VERSION=1.26
@@ -14,10 +14,6 @@ KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-li
 
 RDEPEND="
 	dev-perl/File-Which
-	virtual/perl-Scalar-List-Utils
-	virtual/perl-Text-ParseWords
 	virtual/fortran
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-"
+BDEPEND="${RDEPEND}"
