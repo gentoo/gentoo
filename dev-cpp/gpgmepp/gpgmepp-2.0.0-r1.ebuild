@@ -19,13 +19,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	!<app-crypt/gpgme-2[cxx(-)]
-
+DEPEND="
 	>=app-crypt/gpgme-${PV%.*}:=
 	>=dev-libs/libgpg-error-1.47:=
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	!<app-crypt/gpgme-2[cxx(-)]
+	!dev-cpp/gpgmepp:1
+"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gnupg )"
 
 src_configure() {
