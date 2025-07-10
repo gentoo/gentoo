@@ -31,15 +31,13 @@ CDEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput:=
 	dev-libs/wayland
-	dev-libs/yyjson
 	>=dev-libs/wayland-protocols-1.12
 	gui-libs/wf-config:${SLOT}
-	gui-libs/wlroots:0.18[drm(+),libinput(+),x11-backend,X?]
+	gui-libs/wlroots:0/17[drm(+),libinput(+),x11-backend,X?]
 	media-libs/glm
 	media-libs/libglvnd
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	virtual/libudev:=
 	x11-libs/cairo
 	x11-libs/libxkbcommon
 	x11-libs/pango
