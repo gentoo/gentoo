@@ -1,0 +1,45 @@
+From: https://github.com/mate-desktop/mate-sensors-applet/commit/9b74dc16d852a40d37f7ce6c236406959fd013e5
+From: lukefromdc <lukefromdc@hushmail.com>
+Date: Mon, 13 Jan 2025 22:39:13 -0500
+Subject: [PATCH] Fix an invalid pointer crash with glib 2.83.2
+
+The typecast to non-const gchar produced invalid pointer errors on free() with glib 2.83.2
+--- a/plugins/udisks2/udisks2-plugin.c
++++ b/plugins/udisks2/udisks2-plugin.c
+@@ -304,16 +304,15 @@ syslog(LOG_ERR, "propdict2 type: %s", g_variant_print(propdict2, TRUE));
+ #endif
+ 
+             /* get data */
+-            gchar *id = NULL;
+-            gchar *model = NULL;
++            const gchar *id = NULL;
++            const gchar *model = NULL;
+ 
+             gboolean smartenabled;
+             gdouble temp;
+ 
+-            /* NULL, bc we don't care about the length of the string
+-             * typecast bc g_variant_get_string() returns const char* */
+-            id = (gchar *) g_variant_get_string (g_variant_lookup_value (propdict, "Id", G_VARIANT_TYPE_STRING), NULL);
+-            model = (gchar *) g_variant_get_string (g_variant_lookup_value (propdict, "Model", G_VARIANT_TYPE_STRING), NULL);
++            /* NULL, bc we don't care about the length of the string*/
++            id = g_variant_get_string (g_variant_lookup_value (propdict, "Id", G_VARIANT_TYPE_STRING), NULL);
++            model = g_variant_get_string (g_variant_lookup_value (propdict, "Model", G_VARIANT_TYPE_STRING), NULL);
+ 
+             smartenabled = g_variant_get_boolean (g_variant_lookup_value (propdict2, "SmartEnabled", G_VARIANT_TYPE_BOOLEAN));
+             temp = g_variant_get_double (g_variant_lookup_value (propdict2, "SmartTemperature", G_VARIANT_TYPE_DOUBLE));
+@@ -366,14 +365,6 @@ syslog(LOG_ERR, "No temp data for device: %s\n", key);
+ 
+                 g_debug ("No temp data for device: %s\n", key);
+             }
+-
+-#ifdef UD2PD
+-syslog(LOG_ERR, "b4 free1");
+-#endif
+-
+-            g_free (id);
+-            g_free (model);
+-
+         }
+ 
+ #ifdef UD2PD
