@@ -1,0 +1,39 @@
+From f6f1668c1671703c7a47b10c948ed92ab102d198 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Thu, 10 Jul 2025 23:11:18 +0200
+Subject: [PATCH] Adapt exit_process() declaration to match the expected in
+ ngx_module_t
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ ngx_http_vod_module.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/ngx_http_vod_module.c b/ngx_http_vod_module.c
+index e40b7ea..cb688a5 100644
+--- a/ngx_http_vod_module.c
++++ b/ngx_http_vod_module.c
+@@ -216,7 +216,7 @@ typedef struct {
+ static ngx_int_t ngx_http_vod_run_state_machine(ngx_http_vod_ctx_t *ctx);
+ static ngx_int_t ngx_http_vod_send_notification(ngx_http_vod_ctx_t *ctx);
+ static ngx_int_t ngx_http_vod_init_process(ngx_cycle_t *cycle);
+-static void ngx_http_vod_exit_process();
++static void ngx_http_vod_exit_process(ngx_cycle_t *cycle);
+ 
+ static ngx_int_t ngx_http_vod_init_file_reader_with_fallback(ngx_http_request_t *r, ngx_str_t* path, uint32_t flags, void** context);
+ static ngx_int_t ngx_http_vod_init_file_reader(ngx_http_request_t *r, ngx_str_t* path, uint32_t flags, void** context);
+@@ -3397,8 +3397,10 @@ ngx_http_vod_init_process(ngx_cycle_t *cycle)
+ }
+ 
+ static void 
+-ngx_http_vod_exit_process()
++ngx_http_vod_exit_process(ngx_cycle_t *cycle)
+ {
++    // Not used.
++    (void)cycle;
+ #if (VOD_HAVE_ICONV)
+ 	webvtt_exit_process();
+ #endif // VOD_HAVE_ICONV
+-- 
+2.49.0
+
