@@ -19,6 +19,7 @@ RDEPEND="
 	dev-ml/findlib:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
 	>=dev-ml/ppxlib-0.32.0:=[ocamlopt?]
+	<dev-ml/ppxlib-0.36
 "
 DEPEND="${RDEPEND}
 	dev-ml/cppo[ocamlopt?]
