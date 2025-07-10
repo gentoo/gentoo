@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# idealseal <realidealseal@protonmail.com> (2025-07-08)
+# Only supported on x86-64.
+dev-util/sccache dist-server
+
 # Matt Turner <mattst88@gentoo.org> (2025-04-23)
 # Requires osmesa, which was removed in mesa-25.1
 app-emulation/aranym osmesa
