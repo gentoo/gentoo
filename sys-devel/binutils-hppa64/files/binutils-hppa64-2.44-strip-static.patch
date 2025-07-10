@@ -1,0 +1,155 @@
+https://bugs.gentoo.org/957882
+https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=eee822a66066a17529d7af544b1be767517a6c72
+
+From eee822a66066a17529d7af544b1be767517a6c72 Mon Sep 17 00:00:00 2001
+From: "H.J. Lu" <hjl.tools@gmail.com>
+Date: Fri, 13 Jun 2025 08:20:49 +0800
+Subject: [PATCH] objcopy: Correctly check archive element for LTO IR
+
+commit 717a38e9a02109fcbcb18bb2ec3aa251e2ad0a0d
+Author: H.J. Lu <hjl.tools@gmail.com>
+Date:   Sun May 4 05:12:46 2025 +0800
+
+    strip: Add GCC LTO IR support
+
+added:
+
+@@ -3744,6 +3768,12 @@ copy_archive (bfd *ibfd, bfd *obfd, const char
+*output_target,
+     goto cleanup_and_exit;
+   }
+
++#if BFD_SUPPORTS_PLUGINS
++      /* Copy LTO IR file as unknown object.  */
++      if (bfd_plugin_target_p (ibfd->xvec))
+                                ^^^^ A typo, should be this_element.
++  ok_object = false;
++      else
++#endif
+       if (ok_object)
+   {
+     ok = copy_object (this_element, output_element, input_arch);
+
+to check if the archive element is a LTO IR file.  "ibfd" is the archive
+BFD.  "this_element" should be used to check for LTO IR in the archive
+element.  Fix it by replacing "ibfd" with "this_element".
+
+	PR binutils/33078
+	* objcopy.c (copy_archive): Correctly check archive element for
+	LTO IR.
+	* testsuite/binutils-all/objcopy.exp (strip_test_archive): New.
+	Run strip_test_archive.
+
+Signed-off-by: H.J. Lu <hjl.tools@gmail.com>
+---
+ binutils/objcopy.c                          |  2 +-
+ binutils/testsuite/binutils-all/objcopy.exp | 81 +++++++++++++++++++++
+ 2 files changed, 82 insertions(+), 1 deletion(-)
+
+diff --git a/binutils/objcopy.c b/binutils/objcopy.c
+index a973789b1d5..366e1079d82 100644
+--- a/binutils/objcopy.c
++++ b/binutils/objcopy.c
+@@ -3770,7 +3770,7 @@ copy_archive (bfd *ibfd, bfd *obfd, const char *output_target,
+ 
+ #if BFD_SUPPORTS_PLUGINS
+       /* Copy LTO IR file as unknown object.  */
+-      if (bfd_plugin_target_p (ibfd->xvec))
++      if (bfd_plugin_target_p (this_element->xvec))
+ 	ok_object = false;
+       else
+ #endif
+diff --git a/binutils/testsuite/binutils-all/objcopy.exp b/binutils/testsuite/binutils-all/objcopy.exp
+index cf94570642c..6aa6d2d9fe7 100644
+--- a/binutils/testsuite/binutils-all/objcopy.exp
++++ b/binutils/testsuite/binutils-all/objcopy.exp
+@@ -661,6 +661,87 @@ proc strip_test_with_saving_a_symbol { } {
+ 
+ strip_test_with_saving_a_symbol
+ 
++# Test stripping an archive.
++
++proc strip_test_archive { } {
++    global AR
++    global CC
++    global STRIP
++    global srcdir
++    global subdir
++
++    set test "strip -g on archive"
++
++    if { [target_compile $srcdir/$subdir/testprog.c tmpdir/testprog.o object debug] != "" } {
++	untested $test
++	return
++    }
++
++    set stripobjfile tmpdir/striptestprog.o
++    set stripobjarchive testprog.o
++    if [is_remote host] {
++	set archive libstrip.a
++	set objfile [remote_download host tmpdir/testprog.o]
++	remote_file host delete $archive
++	remote_file host delete $stripobjfile
++	remote_file host delete $stripobjarchive
++    } else {
++	set archive tmpdir/libstrip.a
++	set objfile tmpdir/testprog.o
++	remote_file build delete $stripobjfile
++	remote_file build delete $stripobjarchive
++    }
++
++    remote_file build delete tmpdir/libstrip.a
++
++    set exec_output [binutils_run $STRIP "-g -o $stripobjfile $objfile"]
++    set exec_output [prune_warnings $exec_output]
++    if ![string equal "" $exec_output] {
++	fail $test
++	return
++    }
++
++    set exec_output [binutils_run $AR "rc $archive ${objfile}"]
++    set exec_output [prune_warnings $exec_output]
++    if ![string equal "" $exec_output] {
++	fail $test
++	return
++    }
++
++    set exec_output [binutils_run $STRIP "-g $archive"]
++    set exec_output [prune_warnings $exec_output]
++    if ![string equal "" $exec_output] {
++	fail $test
++	return
++    }
++
++    set exec_output [binutils_run $AR "x $archive"]
++    set exec_output [prune_warnings $exec_output]
++    if ![string equal "" $exec_output] {
++	fail $test
++	return
++    }
++
++    if [is_remote host] {
++	set stripobjfile [remote_download host $stripobjfile]
++	set stripobjarchive [remote_download host $stripobjarchive]
++    }
++
++    send_log "cmp $stripobjarchive $stripobjfile\n"
++    verbose "cmp $stripobjarchive $stripobjfile"
++    set status [remote_exec build cmp "$stripobjarchive $stripobjfile"]
++    set exec_output [lindex $status 1]
++    set exec_output [prune_warnings $exec_output]
++
++    if [string equal "" $exec_output] then {
++	pass $test
++    } else {
++	fail $test
++    }
++}
++
++strip_test_archive
++
+ # Build a final executable.
+ 
+ set exe [exeext]
+-- 
+2.43.5
