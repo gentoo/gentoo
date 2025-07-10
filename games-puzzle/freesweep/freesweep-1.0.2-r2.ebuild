@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,6 +16,10 @@ KEYWORDS="~amd64 ~x86 ~ppc-macos"
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}"-gcc15.patch
+)
 
 src_prepare() {
 	default
