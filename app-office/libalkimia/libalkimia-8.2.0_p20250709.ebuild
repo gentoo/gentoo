@@ -17,7 +17,7 @@ https://community.kde.org/Alkimia"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc"
 
 DEPEND="
