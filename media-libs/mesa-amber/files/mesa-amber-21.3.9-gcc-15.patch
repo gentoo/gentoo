@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/941612
+
+--- a/src/gtest/src/gtest-death-test.cc
++++ b/src/gtest/src/gtest-death-test.cc
+@@ -46,6 +46,7 @@
+ # include <errno.h>
+ # include <fcntl.h>
+ # include <limits.h>
++# include <cstdint>
+ 
+ # if GTEST_OS_LINUX
+ #  include <signal.h>

@@ -95,6 +95,7 @@ x86? (
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-i915c.patch
+	"${FILESDIR}"/${P}-gcc-15.patch
 )
 
 python_check_deps() {
