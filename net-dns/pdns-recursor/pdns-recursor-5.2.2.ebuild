@@ -59,7 +59,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2 ${CARGO_CRATE_
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
-IUSE="debug dnstap snmp sodium systemd test valgrind"
+IUSE="debug dns-over-tls dnstap snmp sodium systemd test valgrind"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -101,6 +101,7 @@ src_configure() {
 		--with-lua="${ELUA}" \
 		$(use_enable debug verbose-logging) \
 		$(use_enable systemd) \
+		$(use_enable dns-over-tls) \
 		$(use_enable dnstap dnstap) \
 		$(use_enable test unit-tests) \
 		$(use_enable valgrind) \
