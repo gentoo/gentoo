@@ -18,4 +18,7 @@
 		<flag name="parport">Enable drivers that are parallel (IEEE1284) based</flag>
 		<flag name="serial">Enable drivers that are serial (RS232) based</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">sigrokproject/libsigrok</remote-id>
+	</upstream>
 </pkgmetadata>
