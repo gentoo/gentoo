@@ -173,7 +173,7 @@ src_install() {
 			"${ED}/usr/${CTARGET}/include/newlib-nano/newlib.h" || die
 	fi
 
-	strip-lto-bytecode
+	CHOST=${CTARGET} strip-lto-bytecode
 
 	# minor hack to keep things clean
 	rm -rf "${D}"/usr/share/info || die
