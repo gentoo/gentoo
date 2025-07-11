@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.0-glog-0.7.1.patch
 	"${FILESDIR}"/${PN}-2.7.0-llvm.patch
 	"${FILESDIR}"/${PN}-2.7.1-ck-config.patch
+	"${FILESDIR}"/${PN}-2.7.1-aotriton-fixes.patch
 )
 
 src_prepare() {
@@ -220,6 +221,11 @@ src_prepare() {
 		# TODO: delete, when caffe2 depends on systemwide composable_kernel
 		sed -e "s:third_party/composable_kernel:../composable_kernel-${CK_COMMIT}:g" \
 			-i aten/src/ATen/CMakeLists.txt || die
+
+		# Bug 959808: fix for gfx101x targets
+		pushd "${WORKDIR}/composable_kernel-${CK_COMMIT}" > /dev/null || die
+		eapply "${FILESDIR}"/composable-kernel-6.4.1-expand-isa.patch
+		popd > /dev/null || die
 
 		if tc-is-clang; then
 			# Systemwide gcc (for absl and at::TensorBase) + hipcc (llvm>=18) need abi-compat=17.
