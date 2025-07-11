@@ -1,0 +1,89 @@
+From abbf43c55beca86b963d169eb746b59f11dda1ae Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Sat, 5 Jul 2025 13:43:13 +0200
+Subject: [PATCH] fixes for click 8.2
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ safety/scan/command.py     |  2 +-
+ tests/auth/test_cli.py     |  5 ++++-
+ tests/scan/test_command.py |  5 ++++-
+ tests/test_cli.py          | 10 ++++++++--
+ 4 files changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/safety/scan/command.py b/safety/scan/command.py
+index 042cb54..8dc9f8b 100644
+--- a/safety/scan/command.py
++++ b/safety/scan/command.py
+@@ -843,7 +843,7 @@ def scan(
+         typer.Option(
+             help=SCAN_OUTPUT_HELP, show_default=False, callback=output_callback
+         ),
+-    ] = ScanOutput.SCREEN,
++    ] = ScanOutput.SCREEN.value,
+     detailed_output: Annotated[
+         bool,
+         typer.Option(
+diff --git a/tests/auth/test_cli.py b/tests/auth/test_cli.py
+index 0e801fb..8a9844a 100644
+--- a/tests/auth/test_cli.py
++++ b/tests/auth/test_cli.py
+@@ -8,7 +8,10 @@ class TestSafetyAuthCLI(unittest.TestCase):
+ 
+     def setUp(self):
+         self.maxDiff = None
+-        self.runner = CliRunner(mix_stderr=False)
++        try:
++            self.runner = CliRunner(mix_stderr=False)
++        except TypeError:
++            self.runner = CliRunner()
+ 
+         cli.commands = cli.all_commands
+         self.cli = cli
+diff --git a/tests/scan/test_command.py b/tests/scan/test_command.py
+index 714a8ae..3729493 100644
+--- a/tests/scan/test_command.py
++++ b/tests/scan/test_command.py
+@@ -10,7 +10,10 @@ from unittest.mock import patch
+ class TestScanCommand(unittest.TestCase):
+ 
+     def setUp(self):
+-        self.runner = CliRunner(mix_stderr=False)
++        try:
++            self.runner = CliRunner(mix_stderr=False)
++        except TypeError:
++            self.runner = CliRunner()
+         self.target = tempfile.mkdtemp()
+         # Make sure the console is not quiet
+         # TODO: This is a workaround, we should improve the way the console
+diff --git a/tests/test_cli.py b/tests/test_cli.py
+index b767d0b..d764c03 100644
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -86,7 +86,11 @@ def get_vulnerability(vuln_kwargs=None, cve_kwargs=None, pkg_kwargs=None):
+ class TestSafetyCLI(unittest.TestCase):
+     def setUp(self):
+         self.maxDiff = None
+-        self.runner = CliRunner(mix_stderr=False)
++        try:
++            self.runner = CliRunner(mix_stderr=False)
++        except TypeError:
++            self.runner = CliRunner()
++
+         self.output_options = ["screen", "text", "json", "bare"]
+         self.dirname = os.path.dirname(__file__)
+         # Make sure the console is not quiet
+@@ -110,7 +114,9 @@ class TestSafetyCLI(unittest.TestCase):
+ 
+         for option in [[], ["--help"]]:
+             result = runner.invoke(self.cli, option)
+-            self.assertEqual(result.exit_code, 0)
++            # click version 8.2> returns exit code 0
++            # click version 8.2 returns exit code 2
++            self.assertIn(result.exit_code, [0, 2])
+             self.assertIn(expected, click.unstyle(result.output))
+ 
+     @patch("safety.safety.check")
+-- 
+2.49.0
+

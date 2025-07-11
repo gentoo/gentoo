@@ -1,0 +1,65 @@
+From 96820d5c85e53fad4952c6a1d4a6de261384f3bb Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Sat, 5 Jul 2025 14:03:59 +0200
+Subject: [PATCH] make telemetry opt-in
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ safety/cli.py            | 7 ++++---
+ safety/scan/constants.py | 4 ++--
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/safety/cli.py b/safety/cli.py
+index 4d1f0c5..8c2af2a 100644
+--- a/safety/cli.py
++++ b/safety/cli.py
+@@ -217,6 +217,7 @@ def configure_logger(ctx, param, debug):
+             )
+ 
+         # Collect and log network telemetry data
++        # These metrics are not sent, only logged locally
+         network_telemetry = get_network_telemetry()
+         LOG.debug("Network telemetry: %s", network_telemetry)
+ 
+@@ -227,7 +228,7 @@ def configure_logger(ctx, param, debug):
+ @auth_options()
+ @proxy_options
+ @click.option(
+-    "--disable-optional-telemetry",
++    "--enable-optional-telemetry",
+     default=False,
+     is_flag=True,
+     show_default=True,
+@@ -237,12 +238,12 @@ def configure_logger(ctx, param, debug):
+ @click.version_option(version=get_version())
+ @click.pass_context
+ @preprocess_args
+-def cli(ctx, debug, disable_optional_telemetry):
++def cli(ctx, debug, enable_optional_telemetry):
+     """
+     Scan and secure Python projects against package vulnerabilities. To get started navigate to a Python project and run `safety scan`.
+     """
+     SafetyContext().safety_source = "cli"
+-    telemetry = not disable_optional_telemetry
++    telemetry = enable_optional_telemetry
+     ctx.obj.config = ConfigModel(telemetry_enabled=telemetry)
+     level = logging.CRITICAL
+     if debug:
+diff --git a/safety/scan/constants.py b/safety/scan/constants.py
+index 6f0b5e2..f3c1641 100644
+--- a/safety/scan/constants.py
++++ b/safety/scan/constants.py
+@@ -79,8 +79,8 @@ CLI_STAGE_HELP = "Assign a development lifecycle stage to your scan (default: de
+ CLI_DEBUG_HELP = "Enable debug mode for detailed output.\n\n" \
+ "[bold]Example: safety --debug scan[/bold]"
+ 
+-CLI_DISABLE_OPTIONAL_TELEMETRY_DATA_HELP = "Opt-out of sending optional telemetry data. Anonymized telemetry data will remain.\n\n" \
+-"[bold]Example: safety --disable-optional-telemetry scan[/bold]"
++CLI_DISABLE_OPTIONAL_TELEMETRY_DATA_HELP = "Opt-in to sending optional telemetry data. Anonymized telemetry data will remain.\n\n" \
++"[bold]Example: safety --enable-optional-telemetry scan[/bold]"
+ 
+ # Scan Help options
+ SCAN_POLICY_FILE_HELP = "Use a local policy file to configure the scan.\n\n" \
+-- 
+2.49.0
+

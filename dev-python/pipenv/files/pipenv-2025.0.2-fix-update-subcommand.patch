@@ -1,0 +1,35 @@
+From 4048fb607da6dd4b15d14793b2726cc1975b9092 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Tue, 20 May 2025 16:52:04 +0200
+Subject: [PATCH] fix: patch for update command
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ pipenv/routines/update.py | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/pipenv/routines/update.py b/pipenv/routines/update.py
+index 5ca62978..91b9faea 100644
+--- a/pipenv/routines/update.py
++++ b/pipenv/routines/update.py
+@@ -111,7 +111,16 @@ def get_reverse_dependencies(project) -> Dict[str, Set[Tuple[str, str]]]:
+     python_path = project.python()
+     cmd_args = [python_path, str(pipdeptree_path), "-l", "--reverse", "--json-tree"]
+ 
+-    c = run_command(cmd_args, is_verbose=project.s.is_verbose())
++    env = os.environ.copy()
++    if "PYTHONPATH" in env:
++        env["PYTHONPATH"] = (
++            f"{env['PYTHONPATH']}:/usr/lib/python{sys.version_info.major}"
++            f".{sys.version_info.minor}/site-packages/"
++        )
++    else:
++        env["PYTHONPATH"] = "/usr/lib/python3.12/site-packages/"
++
++    c = run_command(cmd_args, is_verbose=project.s.is_verbose(), env=env)
+     if c.returncode != 0:
+         raise PipenvCmdError(c.err, c.out, c.returncode)
+     try:
+-- 
+2.49.0
+
