@@ -16,13 +16,13 @@ IUSE="+ocamlopt"
 
 DEPEND="
 	dev-libs/libev
-	dev-ml/luv:=
-	dev-ml/mmap:=
-	dev-ml/ocplib-endian:=
-	dev-ml/ppx_let:=
-	dev-ml/ppxlib:=
+	dev-ml/luv:=[ocamlopt?]
+	dev-ml/mmap:=[ocamlopt?]
+	dev-ml/ocplib-endian:=[ocamlopt?]
+	dev-ml/ppx_let:=[ocamlopt?]
+	dev-ml/ppxlib:=[ocamlopt?]
 	dev-ml/react:=
-	dev-ml/result:=
+	dev-ml/result:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -40,7 +40,9 @@ OCAML_SUBPACKAGES=(
 
 src_prepare() {
 	sed -i "s| seq||" "${S}"/src/core/dune || die
-
+	if has_version ">=dev-ml/ppxlib-0.36.0"; then
+		eapply "${FILESDIR}"/${P}-ppxlib.patch
+	fi
 	default
 }
 
