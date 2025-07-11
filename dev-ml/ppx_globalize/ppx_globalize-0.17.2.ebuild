@@ -21,8 +21,7 @@ JSM=$(ver_cut 1-2)*
 RDEPEND="
 	>=dev-lang/ocaml-5
 	=dev-ml/base-${JSM}:=[ocamlopt?]
-	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
-	<dev-ml/ppxlib-0.36.0
+	>=dev-ml/ppxlib-0.36.0:=[ocamlopt?]
 	=dev-ml/ppxlib_jane-${JSM}:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
