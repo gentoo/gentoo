@@ -56,7 +56,7 @@ src_prepare() {
 	# disable the systemd dep, we install the unit file manually
 	sed -i "s/systemd', required: false)$/', required: false)/" meson.build || die
 
-	# adjujst install dir
+	# adjust install dir
 	sed -i "s/'doc', 'foot'/'doc', '${PF}'/" meson.build || die
 
 	# do not install LICENSE file
