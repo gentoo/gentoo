@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Fast, safe DBI connection and transaction management"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND=">=dev-perl/DBI-1.614.0"
