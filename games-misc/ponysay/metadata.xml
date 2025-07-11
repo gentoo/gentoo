@@ -6,7 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="fish-completion">Enable fish completion support</flag>
 		<flag name="non-free">Install non-free ponies (i.e. from the MLP franchise)</flag>
 	</use>
 	<upstream>
