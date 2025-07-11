@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="admin admin-script deploy replicated"
 
-pRDEPEND_MOOSE_BASIC="
+RDEPEND_MOOSE_BASIC="
 	>=dev-perl/Moose-0.980.0
 	>=dev-perl/MooseX-Types-0.210.0
 "
