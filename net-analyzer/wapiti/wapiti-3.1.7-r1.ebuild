@@ -21,6 +21,8 @@ KEYWORDS="~amd64"
 # Requires httpx-ntlm (to package)
 #IUSE="ntlm"
 IUSE="test"
+PROPERTIES="test_network"
+RESTRICT="test"
 
 # httpx requires brotli and socks, so depending on
 # dev-python/socksio and dev-python/brotlicffi
@@ -46,19 +48,20 @@ RDEPEND="
 	>=dev-python/tld-0.12.5[${PYTHON_USEDEP}]
 	>=dev-python/typing-extensions-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/yaswfp-0.9.3[${PYTHON_USEDEP}]
-	>=net-proxy/mitmproxy-9.0.0[${PYTHON_USEDEP}]"
+	>=net-proxy/mitmproxy-9.0.0[${PYTHON_USEDEP}]
+"
+BDEPEND="
+	test? (
+		dev-lang/php
+		dev-python/greenlet[${PYTHON_USEDEP}]
+		dev-python/humanize[${PYTHON_USEDEP}]
+		dev-python/responses[${PYTHON_USEDEP}]
+		dev-python/respx[${PYTHON_USEDEP}]
+	)
+"
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
-BDEPEND+=" test? (
-				dev-lang/php
-				dev-python/greenlet[${PYTHON_USEDEP}]
-				dev-python/humanize[${PYTHON_USEDEP}]
-				dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-				dev-python/responses[${PYTHON_USEDEP}]
-				dev-python/respx[${PYTHON_USEDEP}]
-				)"
-PROPERTIES="test_network"
-RESTRICT="test"
 
 PATCHES=( "${FILESDIR}"/${PN}-3.1.6-setup_scripts.patch )
 
