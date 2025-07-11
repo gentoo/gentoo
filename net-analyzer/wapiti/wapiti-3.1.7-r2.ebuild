@@ -37,7 +37,6 @@ RDEPEND="
 	>=dev-python/dnspython-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/h11-0.14[${PYTHON_USEDEP}]
 	>=dev-python/httpx-0.23.3[${PYTHON_USEDEP}]
-	<=dev-python/httpx-0.28[${PYTHON_USEDEP}]
 	>=dev-python/loguru-0.5.3[${PYTHON_USEDEP}]
 	>=dev-python/mako-1.1.4[${PYTHON_USEDEP}]
 	>=dev-python/markupsafe-2.1.1[${PYTHON_USEDEP}]
@@ -63,7 +62,11 @@ BDEPEND="
 EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
-PATCHES=( "${FILESDIR}"/${PN}-3.1.6-setup_scripts.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.6-setup_scripts.patch
+	# part of https://github.com/wapiti-scanner/wapiti/commit/77fe140f8ad4d2fb266f1b49285479f6af25d6b7
+	"${FILESDIR}"/${P}-httpx.patch
+)
 
 python_prepare_all() {
 	sed -i 's/--cov --cov-report=xml//' setup.cfg || die
