@@ -88,13 +88,11 @@ microsoft.dotnet.platformabstractions@2.0.3
 microsoft.extensions.configuration.abstractions@9.0.2
 microsoft.extensions.dependencyinjection.abstractions@6.0.0
 microsoft.extensions.dependencyinjection.abstractions@6.0.0-rc.1.21451.13
-microsoft.extensions.dependencyinjection.abstractions@8.0.0
 microsoft.extensions.dependencyinjection.abstractions@9.0.2
 microsoft.extensions.dependencyinjection@6.0.0-rc.1.21451.13
 microsoft.extensions.dependencyinjection@9.0.2
 microsoft.extensions.dependencymodel@2.0.3
 microsoft.extensions.features@9.0.2
-microsoft.extensions.logging.abstractions@8.0.0
 microsoft.extensions.logging.abstractions@9.0.2
 microsoft.extensions.logging@9.0.2
 microsoft.extensions.objectpool@5.0.11
@@ -119,7 +117,7 @@ netstandard.library@1.6.1
 netstandard.library@2.0.0
 newtonsoft.json@13.0.1
 newtonsoft.json@13.0.3
-nuget.versioning@6.12.1
+nuget.versioning@6.14.0
 nunit@3.14.0
 opentabletdriver.configurations@0.6.5.1
 opentabletdriver.native@0.6.5.1
@@ -133,14 +131,14 @@ ppy.managedbass.wasapi@2022.1216.0
 ppy.managedbass@2022.1216.0
 ppy.osu.framework.nativelibs@2024.809.1-nativelibs
 ppy.osu.framework.sourcegeneration@2024.1128.0
-ppy.osu.framework@2025.419.0
-ppy.osu.game.resources@2025.321.0
+ppy.osu.framework@2025.710.0
+ppy.osu.game.resources@2025.708.0
 ppy.osutk.ns20@1.0.211
 ppy.sdl2-cs@1.0.741-alpha
 ppy.sdl3-cs@2025.220.0
 ppy.veldrid.metalbindings@4.9.62-gca0239da6b
 ppy.veldrid.openglbindings@4.9.62-gca0239da6b
-ppy.veldrid.spirv@1.0.15-gfbb03d21c2
+ppy.veldrid.spirv@1.0.15-gb66ebf81d2
 ppy.veldrid@4.9.62-gca0239da6b
 ppy.vk@1.0.26
 realm@20.1.0
@@ -324,7 +322,7 @@ system.threading@4.3.0
 system.xml.readerwriter@4.3.0
 system.xml.xdocument@4.3.0
 taglibsharp@2.3.0
-velopack@0.0.1053
+velopack@0.0.1298
 vortice.d3dcompiler@2.4.2
 vortice.direct3d11@2.4.2
 vortice.directx@2.4.2
@@ -344,9 +342,9 @@ if [[ "${PV}" == *9999* ]] ; then
 
 	EGIT_REPO_URI="https://github.com/ppy/osu"
 else
-	SRC_URI="https://github.com/ppy/osu/archive/${PV}.tar.gz
+	SRC_URI="https://github.com/ppy/osu/archive/${PV}-lazer.tar.gz
 		-> ${P}.gh.tar.gz"
-	S="${WORKDIR}/osu-${PV}"
+	S="${WORKDIR}/osu-${PV}-lazer"
 
 	KEYWORDS="~amd64"
 fi
