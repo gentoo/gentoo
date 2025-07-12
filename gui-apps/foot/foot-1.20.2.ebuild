@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 arm64 ppc64 ~riscv"
-IUSE="+grapheme-clustering test"
+IUSE="doc +grapheme-clustering ime test +themes"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -41,7 +41,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
-	app-text/scdoc
+	doc? ( app-text/scdoc )
 	dev-util/wayland-scanner
 "
 
@@ -53,10 +53,11 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature doc docs)
+		$(meson_use themes)
+		$(meson_use ime)
 		$(meson_feature grapheme-clustering)
 		$(meson_use test tests)
-		-Dthemes=true
-		-Dime=true
 		-Dterminfo=disabled
 	)
 	meson_src_configure
@@ -65,12 +66,7 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( CHANGELOG.md README.md LICENSE )
 	meson_src_install
-
-	# foot unconditionally installs CHANGELOG.md, README.md and LICENSE.
-	# we handle this via DOCS and dodoc instead.
-	rm -r "${ED}/usr/share/doc/${PN}" || die
 	systemd_douserunit foot-server.service "${S}"/foot-server.socket
 }
 
