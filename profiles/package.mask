@@ -500,10 +500,10 @@ app-emulation/virtualbox-kvm
 ~sys-boot/plymouth-24.004.60
 
 # Sam James <sam@gentoo.org> (2024-09-30)
-# GCC 11 and older no longer receive upstream support or fixes for
+# GCC 12 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
 #
-# The earliest supported version of GCC is GCC 12, but 11 remains unmasked
+# The earliest supported version of GCC is GCC 13, but 11/12 remain unmasked
 # for now to ease sys-devel/gcc[d] bootstrapping.
 <sys-devel/gcc-11
 <sys-devel/kgcc64-11
