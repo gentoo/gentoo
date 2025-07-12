@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,12 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk nls usb"
+IUSE="gtk nls"
 
 RDEPEND="
 	net-misc/curl
-	gtk? ( x11-libs/gtk+:2 )"
+	gtk? ( x11-libs/gtk+:2 )
+	virtual/libusb:0"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
@@ -27,6 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-musl.patch
 	"${FILESDIR}"/${P}-c99.patch
+	"${FILESDIR}"/${P}-configure.in.patch
+	"${FILESDIR}"/${P}-fix-argument.patch
 )
 
 src_prepare() {
@@ -40,5 +43,5 @@ src_configure() {
 		--enable-interactive \
 		$(use_enable nls) \
 		$(use_enable gtk gui) \
-		$(use_with usb)
+		--with-usb
 }
