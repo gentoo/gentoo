@@ -96,6 +96,11 @@ src_configure() {
 	#
 	use riscv && filter-lto
 
+	# Temporary workaround for mfpmath=sse on x86 cauing issues when -msse is
+	# stripped as it's not clear cut on how to handle in flag-o-matic we can at
+	# least solve it the ebuild see https://bugs.gentoo.org/959349
+	use x86 && filter-flags -mfpmath=sse
+
 	# Hardcodes the path to FGREP in libgcrypt-config
 	export ac_cv_path_SED="sed"
 	export ac_cv_path_EGREP="grep -E"
