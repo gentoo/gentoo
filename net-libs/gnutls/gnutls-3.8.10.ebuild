@@ -83,6 +83,15 @@ src_prepare() {
 	# fails to compile in certain configurations
 	sed -i -e 's/__APPLE__/__NO_APPLE__/' lib/system/certs.c || die
 
+	# Fails with some combinations of USE="brotli zlib zstd"
+	# https://gitlab.com/gnutls/gnutls/-/issues/1721
+	# https://gitlab.com/gnutls/gnutls/-/merge_requests/1980
+	cat <<-EOF > tests/system-override-compress-cert.sh || die
+	#!/bin/sh
+	exit 77
+	EOF
+	chmod +x tests/system-override-compress-cert.sh || die
+
 	elibtoolize
 }
 
