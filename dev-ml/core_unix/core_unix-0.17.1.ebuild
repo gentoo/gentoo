@@ -34,6 +34,7 @@ BDEPEND=">=dev-ml/dune-3.11"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.0-musl.patch
+	"${FILESDIR}"/${P}-riscv.patch
 )
 
 src_prepare() {

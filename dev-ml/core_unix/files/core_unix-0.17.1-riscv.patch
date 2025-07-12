@@ -1,0 +1,16 @@
+--- a/time_stamp_counter/src/time_stamp_counter_stubs.c	2025-07-12 22:31:10.112736714 +0200
++++ b/time_stamp_counter/src/time_stamp_counter_stubs.c	2025-07-12 22:34:08.599793338 +0200
+@@ -44,6 +44,13 @@
+   asm volatile("mrs %0, cntvct_el0" : "=r" (tsc));
+   return tsc;
+ }
++#elif defined(__riscv)
++static uint64_t rdtsc()
++{
++  uint64_t tsc;
++  tsc = 0;
++  return tsc;
++}
+ #endif
+ 
+ CAMLprim CAMLweakdef uint64_t caml_rdtsc_unboxed(value unit) {
