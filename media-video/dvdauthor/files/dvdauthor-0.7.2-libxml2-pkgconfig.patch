@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/955781
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -135,10 +133,9 @@ dnl AM_LANGINFO_CODESET
+ 
+ AM_ICONV
+ 
+-ifdef([AM_PATH_XML2],
+-    [AM_PATH_XML2(2.6.0, , AC_MSG_ERROR([You must have libxml2 >= 2.6.0 installed]))],
+-    [errprint([You must have libxml2 (>= 2.6.0) installed
+-])m4_exit(1)AC_MSG_ERROR([You must have libxml2 (>= 2.6.0) installed])])
++PKG_CHECK_MODULES(XML, [libxml-2.0])
++AC_SUBST(XML_CFLAGS)
++AC_SUBST(XML_LIBS)
+ 
+ AC_CHECK_DECLS(O_BINARY, , , [ #include <fcntl.h> ] )
+ 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,7 +8,7 @@ endif
+ nodist_bin_SCRIPTS = dvddirdel
+ 
+ AM_CPPFLAGS = -DSYSCONFDIR="\"$(sysconfdir)\"" \
+-    @XML_CPPFLAGS@ @MAGICK_CPPFLAGS@ @FREETYPE_CPPFLAGS@ @FRIBIDI_CFLAGS@ @FONTCONFIG_CFLAGS@
++    @XML_CFLAGS@ @MAGICK_CPPFLAGS@ @FREETYPE_CPPFLAGS@ @FRIBIDI_CFLAGS@ @FONTCONFIG_CFLAGS@
+ AM_CFLAGS = -Wall
+ 
+ dvdauthor_SOURCES = dvdauthor.c common.h dvdauthor.h da-internal.h \

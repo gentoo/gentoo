@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-freetype-pkgconfig.patch
+	"${FILESDIR}"/${P}-libxml2-pkgconfig.patch
 )
 
 src_prepare() {
