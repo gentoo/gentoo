@@ -6,7 +6,7 @@ EAPI=8
 inherit edo systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
-HOMEPAGE="https://chrony-project.org/"
+HOMEPAGE="https://chrony-project.org"
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/chrony/chrony.git"
@@ -27,7 +27,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon debug html libtomcrypt +nettle nss +nts +phc pps +readline +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon debug html libtomcrypt +nettle nss +nts +phc pps +libedit +refclock +rtc samba +seccomp +sechash selinux"
 # nettle > nss > libtomcrypt in configure
 REQUIRED_USE="
 	sechash? ( || ( nettle nss libtomcrypt ) )
@@ -39,15 +39,13 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	caps? (
-		sys-libs/libcap
-	)
+	caps? ( sys-libs/libcap )
+	libedit? ( dev-libs/libedit )
 	libtomcrypt? ( dev-libs/libtomcrypt:= )
 	nettle? ( dev-libs/nettle:= )
 	nss? ( dev-libs/nss:= )
 	nts? ( net-libs/gnutls:= )
 	pps? ( net-misc/pps-tools )
-	readline? ( dev-libs/libedit )
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="
@@ -129,11 +127,7 @@ src_configure() {
 		$(usev !cmdmon '--disable-cmdmon')
 		$(usev debug '--enable-debug')
 
-		# USE=readline here means "readline-like functionality"
-		# chrony only supports libedit in terms of the library providing
-		# it.
-		$(usev !readline '--without-editline --disable-readline')
-
+		$(usev !libedit '--without-editline --disable-readline')
 		$(usev !libtomcrypt '--without-tomcrypt')
 		$(usev !nettle '--without-nettle')
 		$(usev !nss '--without-nss')
