@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake flag-o-matic
 
@@ -24,6 +24,8 @@ IUSE="usb3380"
 
 RDEPEND="usb3380? ( net-wireless/libusb3380 )"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-cmake4.patch )
 
 src_configure() {
 	# -Werror=strict-aliasing
