@@ -34,6 +34,7 @@ PDEPEND="
 "
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
+LLVM_TEST_COMPONENTS=( llvm/utils/dtlto )
 llvm.org_set_globals
 
 python_check_deps() {
