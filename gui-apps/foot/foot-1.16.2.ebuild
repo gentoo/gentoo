@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
-IUSE="doc +grapheme-clustering ime test +themes"
+IUSE="doc +grapheme-clustering ime test +themes utempter"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -38,6 +38,7 @@ RDEPEND="
 		>=sys-libs/ncurses-6.3[-minimal]
 		~gui-apps/foot-terminfo-${PV}
 	)
+	utempter? ( sys-libs/libutempter )
 "
 BDEPEND="
 	doc? ( app-text/scdoc )
@@ -58,6 +59,8 @@ src_configure() {
 		$(meson_feature grapheme-clustering)
 		$(meson_use test tests)
 		-Dterminfo=disabled
+		-Dutmp-backend=$(usex utempter libutempter none)
+		-Dutmp-default-helper-path="/usr/$(get_libdir)/misc/utempter/utempter"
 	)
 	meson_src_configure
 
