@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64"
-IUSE="+grapheme-clustering test"
+IUSE="doc +grapheme-clustering test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -41,7 +41,7 @@ RDEPEND="
 	)
 "
 BDEPEND="
-	app-text/scdoc
+	doc? ( app-text/scdoc )
 	dev-util/wayland-scanner
 "
 
@@ -53,6 +53,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
+		$(meson_feature doc docs)
 		$(meson_feature grapheme-clustering)
 		$(meson_use test tests)
 		-Dthemes=true
