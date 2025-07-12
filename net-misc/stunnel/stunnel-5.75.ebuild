@@ -43,6 +43,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.71-dont-clobber-fortify-source.patch
 	"${FILESDIR}"/${PN}-5.71-respect-EPYTHON-for-tests.patch
+	"${FILESDIR}"/${PN}-5.74-hardened-mimalloc.patch
 )
 
 python_check_deps() {
