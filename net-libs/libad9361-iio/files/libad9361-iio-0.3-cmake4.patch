@@ -11,3 +11,13 @@ index 04d5c45..8316999 100644
  project(ad9361 C)
  
  set(LIBAD9361_VERSION_MAJOR 0)
+diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
+index 74d6a12..4049c23 100644
+--- a/bindings/python/CMakeLists.txt
++++ b/bindings/python/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.87)
++cmake_minimum_required(VERSION 3.10)
+ project(libad9361-py NONE)
+ 
+ if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
