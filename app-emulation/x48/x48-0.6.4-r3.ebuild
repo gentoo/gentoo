@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,16 +19,18 @@ IUSE="readline"
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
-	readline? ( sys-libs/readline:0= )"
+	readline? ( sys-libs/readline:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-libs/libXt"
+
+DOCS=( AUTHORS ChangeLog README )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-static.patch
 	"${FILESDIR}"/${P}-void_return.patch
 	"${FILESDIR}"/${P}-configure.patch
-	)
+)
 
 src_prepare() {
 	default
@@ -57,13 +59,13 @@ pkg_postinst() {
 	elog "use only."
 	elog
 	elog "Due to confusion over the legal status of these ROMs you must"
-	elog "manually download one from http://www.hpcalc.org/hp48/pc/emulators/"
+	elog "manually download one from https://www.hpcalc.org/hp48/pc/emulators/"
 	elog
 	elog "If you do not know which one to use, try 'HP 48GX Revision R ROM.'"
 	elog
 	elog "Once you have a ROM, you will need to install it by running:"
 	elog
-	elog "x48 -rom gxrom-r"
+	elog "    $ x48 -rom gxrom-r"
 	elog
 	elog "You will only have to do this the first time you run X48. The"
 	elog "ROM will be stored in ~/.hp48/rom for future runs."
