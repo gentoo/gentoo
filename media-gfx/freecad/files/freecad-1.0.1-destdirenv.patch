@@ -1,0 +1,25 @@
+https://github.com/FreeCAD/FreeCAD/pull/20710
+From 8cbceb04aac27e41569410242601f638a9e87329 Mon Sep 17 00:00:00 2001
+From: Chris Mayo <aklhfex@gmail.com>
+Date: Tue, 8 Apr 2025 19:29:02 +0100
+Subject: [PATCH] CMake: Fix duplicating DESTDIR in Designer plugin
+ installation path
+
+CMake already handles DESTDIR.
+---
+ src/Tools/plugins/widget/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Tools/plugins/widget/CMakeLists.txt b/src/Tools/plugins/widget/CMakeLists.txt
+index 933caeea2962..3f5adeb1364f 100644
+--- a/src/Tools/plugins/widget/CMakeLists.txt
++++ b/src/Tools/plugins/widget/CMakeLists.txt
+@@ -69,6 +69,6 @@ endif()
+ 
+ 
+ INSTALL(TARGETS FreeCAD_widgets
+-    RUNTIME DESTINATION "$ENV{DESTDIR}${DESIGNER_PLUGIN_LOCATION}"
+-    LIBRARY DESTINATION "$ENV{DESTDIR}${DESIGNER_PLUGIN_LOCATION}"
++    RUNTIME DESTINATION ${DESIGNER_PLUGIN_LOCATION}
++    LIBRARY DESTINATION ${DESIGNER_PLUGIN_LOCATION}
+ )
