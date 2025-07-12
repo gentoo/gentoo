@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="USB hub per-port power control"
 HOMEPAGE="https://github.com/mvp/uhubctl"
@@ -26,6 +26,10 @@ src_prepare() {
 		|| die
 
 	tc-export PKG_CONFIG
+}
+
+src_configure() {
+	append-lfs-flags
 }
 
 src_compile() {
