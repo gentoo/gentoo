@@ -10,7 +10,7 @@ DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 pypi
 
 DESCRIPTION="Local/remote mirroring+incremental backup"
-HOMEPAGE="https://github.com/rdiff-backup/rdiff-backup"
+HOMEPAGE="https://rdiff-backup.net/ https://github.com/rdiff-backup/rdiff-backup"
 
 LICENSE="GPL-2+"
 SLOT="0"
