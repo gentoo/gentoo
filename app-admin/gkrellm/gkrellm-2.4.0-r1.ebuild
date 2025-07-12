@@ -17,23 +17,14 @@ fi
 LICENSE="GPL-3+"
 SLOT="2"
 IUSE="gnutls lm-sensors nls ntlm ssl X"
-REQUIRED_USE="
-	gnutls? ( ssl )
-	ntlm? ( X )
-	ssl? ( X )
-"
+REQUIRED_USE="gnutls? ( ssl )"
 
 RDEPEND="
 	acct-group/gkrellmd
 	acct-user/gkrellmd
 	dev-libs/glib:2
-	ssl? (
-		gnutls? ( net-libs/gnutls:= )
-		!gnutls? ( dev-libs/openssl:0= )
-	)
 	lm-sensors? ( sys-apps/lm-sensors:= )
 	nls? ( virtual/libintl )
-	ntlm? ( net-libs/libntlm )
 	X? (
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:2
@@ -41,6 +32,11 @@ RDEPEND="
 		x11-libs/libSM
 		x11-libs/libX11
 		x11-libs/pango
+		ntlm? ( net-libs/libntlm )
+		ssl? (
+			gnutls? ( net-libs/gnutls:= )
+			!gnutls? ( dev-libs/openssl:0= )
+		)
 	)
 "
 
@@ -87,13 +83,14 @@ src_compile() {
 	# export in src_compile for gkrellm.pc and then used during installation
 	export PREFIX="${EPREFIX}/usr"
 
+	# used for gtk/glib
+	tc-export PKG_CONFIG
+
 	export TARGET=$(usex X . server)
 	local emakeargs=(
 		CC=$(tc-getCC)
 		AR=$(tc-getAR)
 
-		# used for gtk/glib
-		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 		# fix X11 path
 		X11_LIBS="$($(tc-getPKG_CONFIG) --libs x11 sm ice)"
 
