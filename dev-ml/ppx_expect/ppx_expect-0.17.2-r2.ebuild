@@ -26,6 +26,7 @@ RDEPEND="
 	=dev-ml/ppx_here-${JSM}:=[ocamlopt?]
 	=dev-ml/ppx_inline_test-${JSM}:=[ocamlopt?]
 	>=dev-ml/ppxlib-0.32.1:=[ocamlopt?]
+	<dev-ml/ppxlib-0.36.0
 	=dev-ml/stdio-${JSM}:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
