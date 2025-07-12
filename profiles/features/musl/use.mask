@@ -1,17 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Select the correct ELIBC
 -elibc_musl
 elibc_glibc
 
+# Sam James <sam@gentoo.org> (2025-07-12)
+# dev-debug/dtrace and dev-debug/systemtap don't work on musl
+dtrace
+systemtap
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-04-16)
 # sci-libs/mkl is masked on musl
 mkl
-
-# Sam James <sam@gentoo.org> (2024-08-21)
-# dev-debug/systemtap doesn't work on musl
-systemtap
 
 # Sam James <sam@gentoo.org> (2022-10-04)
 # Mask USE flags which pull in a binary package linked against glibc (rolling
