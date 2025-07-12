@@ -61,12 +61,5 @@ src_prepare() {
 python_test() {
 	# work around https://github.com/pikepdf/pikepdf/issues/660
 	local -x TMPDIR=/tmp
-	local EPYTEST_DESELECT=(
-		# fragile to system load
-		tests/test_image_access.py::test_random_image
-		tests/test_image_access.py::test_image_save_compare
-		tests/test_image_access.py::test_palette_nonrgb
-	)
-
 	epytest
 }
