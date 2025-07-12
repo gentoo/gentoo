@@ -1,0 +1,31 @@
+diff --git a/deps/libini/CMakeLists.txt b/deps/libini/CMakeLists.txt
+index c48ba9d..070f558 100644
+--- a/deps/libini/CMakeLists.txt
++++ b/deps/libini/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1.0)
++cmake_minimum_required(VERSION 3.10)
+ project(libini LANGUAGES C VERSION 0.1)
+ 
+ include(GNUInstallDirs)
+diff --git a/deps/mdns/CMakeLists.txt b/deps/mdns/CMakeLists.txt
+index 1f644b5..a40a838 100644
+--- a/deps/mdns/CMakeLists.txt
++++ b/deps/mdns/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.10)
+ project(mdns VERSION 1.2.0)
+ 
+ option(MDNS_BUILD_EXAMPLE "build example" ON)
+diff --git a/deps/wingetopt/CMakeLists.txt b/deps/wingetopt/CMakeLists.txt
+index 663f0c0..4db70b9 100644
+--- a/deps/wingetopt/CMakeLists.txt
++++ b/deps/wingetopt/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ PROJECT(wingetopt)
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ 
+ option(BUILD_SHARED_LIBS "Build the shared library" OFF)
+ 
