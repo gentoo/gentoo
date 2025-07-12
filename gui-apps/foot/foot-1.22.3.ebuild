@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="doc +grapheme-clustering test +themes utempter verify-sig"
+IUSE="doc +grapheme-clustering ime test +themes utempter verify-sig"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -67,7 +67,7 @@ src_configure() {
 	local emesonargs=(
 		$(meson_feature doc docs)
 		$(meson_use themes)
-		-Dime=true
+		$(meson_use ime)
 		-Dterminfo=disabled
 		$(meson_feature grapheme-clustering)
 		$(meson_use test tests)
