@@ -13,3 +13,16 @@ index c23f7fa..53104f6 100644
  SET(SWORD_VERSION 1.9.0)
  
  # Make sure it's an out-of-stream build
+diff --git a/bindings/Android/SWORD/app/src/main/cpp/CMakeLists.txt b/bindings/Android/SWORD/app/src/main/cpp/CMakeLists.txt
+index 41439c5..26d04a8 100644
+--- a/bindings/Android/SWORD/app/src/main/cpp/CMakeLists.txt
++++ b/bindings/Android/SWORD/app/src/main/cpp/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ 
+ # Sets the minimum version of CMake required to build the native library.
+ 
+-cmake_minimum_required(VERSION 3.4.1)
++cmake_minimum_required(VERSION 3.10.0)
+ 
+ SET(CMAKE_C_FLAGS "-DBIBLESYNC ${CMAKE_C_FLAGS}")
+ 
