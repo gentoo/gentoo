@@ -23,6 +23,7 @@ KEYWORDS="amd64"
 
 RDEPEND="
 	>=app-misc/openrgb-0.9:=[-qt6(-)]
+	<app-misc/openrgb-1.0
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[-gles2-only]
 	dev-qt/qtwidgets:5[-gles2-only]
