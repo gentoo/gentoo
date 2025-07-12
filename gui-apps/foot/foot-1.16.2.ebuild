@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ppc64"
-IUSE="doc +grapheme-clustering test"
+IUSE="doc +grapheme-clustering test +themes"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -53,9 +53,9 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature doc docs)
+		$(meson_use themes)
 		$(meson_feature grapheme-clustering)
 		$(meson_use test tests)
-		-Dthemes=true
 		-Dime=true
 		-Dterminfo=disabled
 	)
