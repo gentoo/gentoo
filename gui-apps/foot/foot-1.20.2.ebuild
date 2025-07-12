@@ -66,12 +66,7 @@ src_configure() {
 }
 
 src_install() {
-	local DOCS=( CHANGELOG.md README.md LICENSE )
 	meson_src_install
-
-	# foot unconditionally installs CHANGELOG.md, README.md and LICENSE.
-	# we handle this via DOCS and dodoc instead.
-	rm -r "${ED}/usr/share/doc/${PN}" || die
 	systemd_douserunit foot-server.service "${S}"/foot-server.socket
 }
 
