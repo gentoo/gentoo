@@ -7,15 +7,17 @@ inherit cmake optfeature toolchain-funcs xdg
 
 DESCRIPTION="A monitor of resources"
 HOMEPAGE="https://github.com/aristocratos/btop"
-SRC_URI="https://github.com/aristocratos/btop/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz"
+SRC_URI="
+	https://github.com/aristocratos/btop/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86"
 
 BDEPEND="
-app-text/lowdown
-app-crypt/libmd
+	app-text/lowdown
+	app-crypt/libmd
 "
 
 DOCS=( "README.md" "CHANGELOG.md" )
