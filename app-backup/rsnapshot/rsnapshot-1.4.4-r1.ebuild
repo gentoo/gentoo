@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A filesystem backup utility based on rsync"
 HOMEPAGE="https://rsnapshot.org/"
-SRC_URI="https://www.rsnapshot.org/downloads/${P}.tar.gz"
+SRC_URI="https://rsnapshot.org/downloads/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
