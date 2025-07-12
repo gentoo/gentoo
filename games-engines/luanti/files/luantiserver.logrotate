@@ -1,0 +1,6 @@
+/var/log/luanti/*.log {
+	rotate 5
+	weekly
+	missingok
+	copytruncate
+}

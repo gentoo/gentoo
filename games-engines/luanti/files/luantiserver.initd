@@ -1,0 +1,35 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Luanti dedicated server"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "starting server"
+	start-stop-daemon \
+		--start \
+		--quiet \
+		--make-pidfile \
+		--pidfile "${PIDFILE}" \
+		--background \
+		--user ${USER} \
+		--group ${GROUP} \
+		--exec "${LUANTIBIN}" -- ${ARGS}
+
+	eend $?
+}
+
+stop() {
+	ebegin "stopping server"
+	start-stop-daemon \
+		--stop \
+		--signal 15 \
+		--quiet \
+		--pidfile "${PIDFILE}"
+
+	eend $?
+}

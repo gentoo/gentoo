@@ -1,0 +1,16 @@
+# /etc/conf.d/luanti-server: config file for /etc/init.d/luanti-server
+
+# user
+USER="minetest"
+
+# group
+GROUP="minetest"
+
+# pidfile
+PIDFILE="/run/luanti.pid"
+
+# executable
+LUANTIBIN="/usr/bin/luantiserver"
+
+# additional arguments for the server
+ARGS="--logfile /var/log/luanti/luanti-server.log"
