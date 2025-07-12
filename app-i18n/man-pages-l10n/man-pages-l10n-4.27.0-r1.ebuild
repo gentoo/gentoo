@@ -10,11 +10,12 @@ S="${WORKDIR}/${P/-}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 # fa omitted because of build failures (patches are welcome!)
 MY_L10N=(cs da de el es fi fr hu id it ko mk nb nl pl pt-BR ro ru sr sv uk vi)
-IUSE="${MY_L10N[@]/#/+l10n_}"
-# require at least one language lest we install an empty package
+IUSE="${MY_L10N[@]/#/l10n_}"
+# Require at least one language, otherwise the package would be empty.
+# Unfortunately, this triggers a RequiredUseDefaults pkgcheck warning.
 REQUIRED_USE="|| ( ${MY_L10N[@]/#/l10n_} )"
 
 RDEPEND="virtual/man
