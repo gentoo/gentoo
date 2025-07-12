@@ -1,0 +1,15 @@
+.so of mimalloc will be libmimalloc-secure.so if build with
+"-DMI_SECURE=ON" (USE="hardended" in Gentoo).
+diff --git a/configure.ac b/configure.ac
+index c647b5c..e2b1f55 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -225,7 +225,7 @@ AC_SEARCH_LIBS([openpty], [util])
+ AC_SEARCH_LIBS([dlopen], [dl])
+ AC_SEARCH_LIBS([shl_load], [dld])
+ # Checks for optional libraries
+-AC_SEARCH_LIBS([mi_malloc], [mimalloc])
++AC_SEARCH_LIBS([mi_malloc], [mimalloc mimalloc-secure])
+ 
+ # Add BeOS libraries
+ if test "x${host_os}" = "xbeos"; then
