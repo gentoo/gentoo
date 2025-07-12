@@ -16,6 +16,7 @@
 	<use>
 		<flag name="experimental">Enable experimental features, such as Bluetooth battery reporting</flag>
 		<flag name="evdev">Enable libevdev support for evdev related features</flag>
+		<flag name="fontawesome">Install media-fonts/fontawesome, recommended as a dependency for correct icons drawing</flag>
 		<flag name="libinput">Enable libinput support for libinput related features</flag>
 		<flag name="logind">Enable support for logind (bluetooth and idle inhibit)</flag>
 		<flag name="mpd">Enable support for the Music Player Daemon</flag>
