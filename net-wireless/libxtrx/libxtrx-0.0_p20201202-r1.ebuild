@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -20,8 +20,6 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-IUSE=""
-
 RDEPEND="
 		net-wireless/libxtrxll:=
 		net-wireless/libxtrxdsp:=
@@ -29,6 +27,8 @@ RDEPEND="
 "
 #		soapy? ( net-wireless/soapysdr )
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-cmake4.patch )
 
 src_configure() {
 	#fails to build, not sure why
