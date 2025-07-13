@@ -60,6 +60,7 @@ REQUIRED_USE="
 BDEPEND="
 	lua? ( dev-lang/swig )
 	python? ( dev-lang/swig )
+	kde-frameworks/extra-cmake-modules:0
 "
 # media-video/ffmpeg[opus] required due to bug 909566
 # The websocket plug-in fails to build with 'dev-cpp/asio-1.34.0':
