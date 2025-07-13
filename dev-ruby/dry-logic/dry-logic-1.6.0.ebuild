@@ -21,7 +21,7 @@ SRC_URI="https://github.com/dry-rb/dry-logic/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="MIT"
 
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 sparc ~x86"
 IUSE="test"
 
 ruby_add_rdepend "
