@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 CRATES=""
 
@@ -26,7 +26,7 @@ LICENSE+="
 
 SLOT="0"
 # Note: cranelift dependency only supports amd64, arm64, s390, and riscv64 as of 2025
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="python"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
