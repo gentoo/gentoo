@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
 "
+
+PATCHES=(
+	"${FILESDIR}"/libqmi-1.32.4-gtkdoc-without-tests-meson-1.7.0.patch
+)
 
 src_configure() {
 	local emesonargs=(
