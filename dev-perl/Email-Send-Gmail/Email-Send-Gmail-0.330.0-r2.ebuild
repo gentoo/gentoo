@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=LBROCARD
 DIST_VERSION=0.33
@@ -11,8 +11,6 @@ DESCRIPTION="Send Messages using Gmail"
 
 SLOT="0"
 KEYWORDS="amd64 ~mips x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-perl/Authen-SASL
