@@ -7,7 +7,7 @@ inherit xorg-meson
 
 DESCRIPTION="font dumper for X font server"
 
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND="x11-libs/libFS"
 DEPEND="${RDEPEND}
