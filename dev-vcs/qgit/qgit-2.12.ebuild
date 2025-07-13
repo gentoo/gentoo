@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 x86"
 
 DEPEND="
 	dev-qt/qt5compat:6[gui]
