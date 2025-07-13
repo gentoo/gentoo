@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/pidgin-encrypt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 ~riscv ~sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 ~riscv sparc x86"
 IUSE="nls"
 
 BDEPEND="virtual/pkgconfig"
