@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/ojnk/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 FDL-1.1 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc sparc x86"
 
 DEPEND="net-libs/libpcap"
 RDEPEND="${DEPEND}"
