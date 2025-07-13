@@ -5,12 +5,14 @@ EAPI=8
 
 KERNEL_IUSE_MODULES_SIGN=1
 
-inherit git-r3 kernel-build toolchain-funcs
+inherit kernel-build toolchain-funcs verify-sig
 
+MY_P=linux-${PV%.*}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
-# forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
-CONFIG_VER=6.1.102-gentoo
+CONFIG_VER=5.10.12
+CONFIG_HASH=836165dd2dff34e4f2c47ca8f9c803002c1e6530
 GENTOO_CONFIG_VER=g16
+SHA256SUM_DATE=20250701
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
@@ -18,67 +20,74 @@ HOMEPAGE="
 	https://www.kernel.org/
 "
 SRC_URI+="
+	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/patch-${PV}.xz
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz
+	verify-sig? (
+		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/sha256sums.asc
+			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
+	)
 	amd64? (
-		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-x86_64-fedora.config
+		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
 	)
 	arm64? (
-		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-aarch64-fedora.config
+		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-aarch64-fedora.config
 			-> kernel-aarch64-fedora.config.${CONFIG_VER}
 	)
 	ppc64? (
-		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-ppc64le-fedora.config
+		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-ppc64le-fedora.config
 			-> kernel-ppc64le-fedora.config.${CONFIG_VER}
 	)
 	x86? (
-		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-i686-fedora.config
+		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-i686-fedora.config
 			-> kernel-i686-fedora.config.${CONFIG_VER}
 	)
 "
-
-EGIT_REPO_URI=(
-	https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/
-	https://github.com/gregkh/linux/
-)
-EGIT_BRANCH="linux-${PV/.9999/.y}"
+S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="debug hardened"
-REQUIRED_USE="
-	arm? ( savedconfig )
-	hppa? ( savedconfig )
-	riscv? ( savedconfig )
-	sparc? ( savedconfig )
-"
+REQUIRED_USE="arm? ( savedconfig )"
 
 BDEPEND="
 	debug? ( dev-util/pahole )
+	verify-sig? ( >=sec-keys/openpgp-keys-kernel-20250702 )
 "
 PDEPEND="
-	>=virtual/dist-kernel-$(ver_cut 1-2)
+	>=virtual/dist-kernel-${PV}
 "
 
 QA_FLAGS_IGNORED="
 	usr/src/linux-.*/scripts/gcc-plugins/.*.so
 	usr/src/linux-.*/vmlinux
-	usr/src/linux-.*/arch/powerpc/kernel/vdso.*/vdso.*.so.dbg
 "
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
+
 src_unpack() {
-	git-r3_src_unpack
+	if use verify-sig; then
+		cd "${DISTDIR}" || die
+		verify-sig_verify_signed_checksums \
+			"linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc" \
+			sha256 "${MY_P}.tar.xz patch-${PV}.xz"
+		cd "${WORKDIR}" || die
+	fi
+
 	default
 }
 
 src_prepare() {
 	default
+	eapply "${WORKDIR}/patch-${PV}"
 
 	local biendian=false
 
 	# prepare the default config
 	case ${ARCH} in
-		arm | hppa | loong | riscv | sparc)
+		arm | hppa)
 			> .config || die
 		;;
 		amd64)
@@ -134,7 +143,7 @@ src_prepare() {
 
 	use secureboot && merge_configs+=( "${dist_conf_path}/secureboot.config" )
 
-	# 6.1 series: ZBOOT causes hangs in qemu tests, disable for now
+	# 5.10 series: No ZBOOT, disable explicitly to not confuse the eclass
 	echo "# CONFIG_EFI_ZBOOT is not set" > "${dist_conf_path}/secureboot.config" || die
 
 	kernel-build_merge_configs "${merge_configs[@]}"
