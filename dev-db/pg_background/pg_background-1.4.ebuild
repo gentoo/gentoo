@@ -14,7 +14,7 @@ SRC_URI="https://github.com/vibhorkum/pg_background/archive/refs/tags/v${PV}.tar
 LICENSE="GPL-3"
 
 SLOT=0
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 RESTRICT="test"
 
