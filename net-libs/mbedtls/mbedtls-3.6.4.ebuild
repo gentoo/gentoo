@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Mbed-TLS/mbedtls/releases/download/${P}/${P}.tar.bz2
 
 LICENSE="|| ( Apache-2.0 GPL-2+ )"
 SLOT="3/16.21.7" # ffmpeg subslot naming: SONAME tuple of {libmbedcrypto.so,libmbedtls.so,libmbedx509.so}
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="cpu_flags_x86_sse2 doc programs static-libs test threads"
 RESTRICT="!test? ( test )"
 
