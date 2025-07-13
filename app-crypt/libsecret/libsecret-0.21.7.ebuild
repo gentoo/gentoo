@@ -12,7 +12,7 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libsecret"
 LICENSE="LGPL-2.1+ test? ( || ( GPL-2+ Apache-2.0 ) )"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv sparc ~x86"
 IUSE="+crypt +gcrypt gnutls gtk-doc +introspection pam test test-rust tpm +vala"
 
 RESTRICT="!test? ( test )"
