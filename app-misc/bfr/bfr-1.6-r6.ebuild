@@ -11,7 +11,7 @@ SRC_URI="http://www.glines.org/bin/pk/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~ppc ppc64 sparc x86"
 
 BDEPEND="dev-lang/perl"
 
