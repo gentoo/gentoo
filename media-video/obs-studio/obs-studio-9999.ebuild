@@ -58,6 +58,7 @@ REQUIRED_USE="
 "
 
 BDEPEND="
+	kde-frameworks/extra-cmake-modules:0
 	lua? ( dev-lang/swig )
 	python? ( dev-lang/swig )
 "
