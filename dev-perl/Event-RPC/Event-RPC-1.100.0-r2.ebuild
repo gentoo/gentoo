@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=JRED
 DIST_VERSION=1.10
@@ -12,8 +12,6 @@ DESCRIPTION="Event based transparent Client/Server RPC framework"
 
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 # Note: Storable not listed in final alternation like it is
 # upstream as storable alone is inherently insecure, so we force
@@ -32,14 +30,8 @@ RDEPEND="
 		>=dev-perl/JSON-XS-3.0.0
 	)
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	test? (
-		virtual/perl-Test-Simple
-		virtual/perl-Storable
-		virtual/perl-IO
-	)
-"
+BDEPEND="${RDEPEND}"
+
 # Before disabling test here again, please file a bug and help kentnl
 # track it down, so we can at least run some tests where its sensible.
 #DIST_TEST=skip
