@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 IUSE="+ocamlopt"
+RESTRICT="test"
 
 # Jane Street Minor
 JSM=$(ver_cut 1-2)*
