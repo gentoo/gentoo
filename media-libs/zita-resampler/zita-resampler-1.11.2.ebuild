@@ -6,8 +6,8 @@ EAPI=8
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="C++ library for real-time resampling of audio signals"
-HOMEPAGE="http://kokkinizita.linuxaudio.org/linuxaudio/"
-SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.xz"
+HOMEPAGE="https://kokkinizita.linuxaudio.org/linuxaudio/"
+SRC_URI="https://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0/1"
