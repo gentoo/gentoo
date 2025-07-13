@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Matt Jolly</name>
+		<email>kangie@gentoo.org</email>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="pypi">sphinxcontrib-mermaid</remote-id>
+		<remote-id type="github">mgaitan/sphinxcontrib-spelling</remote-id>
+		<doc>https://sphinxcontrib-mermaid-demo.readthedocs.io/</doc>
+	</upstream>
+</pkgmetadata>
