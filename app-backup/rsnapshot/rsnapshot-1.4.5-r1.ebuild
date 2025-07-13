@@ -9,7 +9,7 @@ SRC_URI="https://rsnapshot.org/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 sparc x86"
 
 RDEPEND=">=dev-lang/perl-5.8.2
 	dev-perl/Lchown
