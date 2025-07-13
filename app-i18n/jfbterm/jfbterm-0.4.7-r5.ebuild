@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/13501/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE="debug"
 
 # ncurses is runtime-onlu dependency, because program provides it's own terminfo
