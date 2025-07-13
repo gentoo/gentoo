@@ -1,0 +1,136 @@
+https://bugs.gentoo.org/944740
+https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/commit/078a92cd5cb0a58da32e8c6c879917ee51ce95ac
+
+From 078a92cd5cb0a58da32e8c6c879917ee51ce95ac Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Fri, 11 Apr 2025 03:20:09 +0200
+Subject: [PATCH] docs: Fix gtk-doc build
+
+Fix a duplicate `id` and the inclusions of gdbus docs.
+
+Signed-off-by: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+--- a/docs/reference/api/ModemManager-dbus-reference.xml
++++ b/docs/reference/api/ModemManager-dbus-reference.xml
+@@ -92,7 +92,7 @@
+       This object also controls any process-wide operation, such as the log
+       level being used by the daemon.
+     </para>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.xml"/>
+   </chapter>
+ 
+   <chapter id="ref-dbus-object-modem">
+@@ -129,22 +129,22 @@
+       or the
+       <link linkend="gdbus-org.freedesktop.ModemManager1.Modem.ModemCdma">CDMA interface</link>.
+     </para>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Simple.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Modem3gpp.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.ModemCdma.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Messaging.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Location.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Time.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Voice.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.CellBroadcast.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Firmware.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Sar.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Signal.xml"/>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Oma.xml"/>
+-    <!--xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Contacts.xml"/-->
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Simple.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Modem3gpp.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.ModemCdma.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Messaging.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Location.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Time.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Voice.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.CellBroadcast.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Firmware.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Sar.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Signal.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Oma.xml"/>
++    <!--xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Contacts.xml"/-->
+   </chapter>
+ 
+   <chapter id="ref-dbus-object-bearer">
+@@ -155,7 +155,7 @@
+       may expose one or more Bearer objects, which can then be used to get the
+       modem into connected state.
+     </para>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Bearer.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Bearer.xml"/>
+   </chapter>
+ 
+   <chapter id="ref-dbus-object-sim">
+@@ -166,7 +166,7 @@
+       expose up to one SIM object, which allows SIM-specific actions such as PIN
+       unlocking.
+     </para>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Sim.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Sim.xml"/>
+   </chapter>
+ 
+   <chapter id="ref-dbus-object-sms">
+@@ -176,7 +176,7 @@
+       <link linkend="gdbus-org.freedesktop.ModemManager1.Modem.Messaging">Messaging interface</link>
+       will export one SMS object for each SMS stored in the device.
+     </para>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Sms.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Sms.xml"/>
+   </chapter>
+ 
+   <chapter id="ref-dbus-object-call">
+@@ -186,17 +186,17 @@
+       <link linkend="gdbus-org.freedesktop.ModemManager1.Modem.Voice">Voice interface</link>
+       will export one Call object for each Call managed in the device.
+     </para>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Call.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Call.xml"/>
+   </chapter>
+ 
+-  <chapter id="ref-dbus-object-call">
++  <chapter id="ref-dbus-object-cbm">
+     <title>The <literal>/org/freedesktop/ModemManager/CBM</literal> objects</title>
+     <para>
+       Modems implementing the
+       <link linkend="gdbus-org.freedesktop.ModemManager1.Modem.CellBroadcast">Cell Broadcast interface</link>
+       will export one CBM object for each Cell Broadcast message received by the device.
+     </para>
+-    <xi:include href="../../../../libmm-glib/generated/mm-gdbus-doc-org.freedesktop.ModemManager1.Call.xml"/>
++    <xi:include href="mm-gdbus-doc-org.freedesktop.ModemManager1.Cbm.xml"/>
+   </chapter>
+ 
+ </part>
+--- a/docs/reference/api/meson.build
++++ b/docs/reference/api/meson.build
+@@ -22,6 +22,9 @@ expand_content_files = [
+   'ModemManager-overview.xml',
+   # FIXME: workaround because only strings can be included and not custom targets (gen_docs)
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Bearer.xml',
++  generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Call.xml',
++  generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Cbm.xml',
++  generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.CellBroadcast.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Firmware.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Location.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Messaging.xml',
+@@ -30,9 +33,11 @@ expand_content_files = [
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Modem3gpp.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.ModemCdma.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Oma.xml',
++  generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Sar.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Signal.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Simple.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Time.xml',
++  generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.Voice.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Modem.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Sim.xml',
+   generated_build_dir / 'mm-gdbus-doc-org.freedesktop.ModemManager1.Sms.xml',
+-- 
+GitLab
+
