@@ -14,7 +14,7 @@ else
 	SRC_URI="https://github.com/ngtcp2/nghttp3/releases/download/v${PV}/${P}.tar.xz"
 	inherit libtool
 
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv sparc x86 ~arm64-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="HTTP/3 library written in C"
