@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=MIYAGAWA
 DIST_VERSION=0.10
@@ -11,16 +11,10 @@ DESCRIPTION="Find RFC 822 email addresses in plain text"
 
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Email-Valid-0.179.0
 	dev-perl/MailTools
 "
 
-BDEPEND="${RDEPEND}
-	test? (
-		virtual/perl-Test-Simple
-	)
-"
+BDEPEND="${RDEPEND}"
