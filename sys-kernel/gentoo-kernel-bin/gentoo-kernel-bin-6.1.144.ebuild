@@ -133,6 +133,14 @@ src_configure() {
 		O="${WORKDIR}"/modprep
 	)
 
+	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
+
+	# If this is set it will have an effect on the name of the output
+	# image. Set this variable to track this setting.
+	if grep -q "CONFIG_EFI_ZBOOT=y" "${kernel_dir}/.config"; then
+		KERNEL_EFI_ZBOOT=1
+	fi
+
 	mkdir modprep || die
 	cp "${BINPKG}/image/usr/src/linux-${KPV}/.config" modprep/ || die
 	emake -C "${MY_P}" "${makeargs[@]}" modules_prepare
