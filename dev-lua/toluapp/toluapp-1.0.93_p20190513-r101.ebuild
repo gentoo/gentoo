@@ -18,7 +18,7 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 RDEPEND="${LUA_DEPS}"
