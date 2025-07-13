@@ -20,6 +20,6 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND="
-	>=media-video/obs-studio-30.2.0
+	>=media-video/obs-studio-31.1
 "
 RDEPEND="${DEPEND}"
