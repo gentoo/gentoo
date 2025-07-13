@@ -22,10 +22,6 @@ kde-apps/kdesdk-meta cvs
 # unmasked only in targets/systemd.
 >=kde-plasma/plasma-meta-6.3.90 systemd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-24)
-# Prepare cleanup of dev-libs/libdbusmenu-qt, bug #938823
-kde-frameworks/knotifications:5 dbus
-
 # Alfred Wingate <parona@protonmail.com> (2025-06-10)
 # Upstream only supports amd64 and arm64. Other targets will fail to build
 # tests due to missing target specific functions.
