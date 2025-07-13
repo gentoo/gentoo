@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/plymouth/plymouth"
 else
 	SRC_URI+=" https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
 fi
 
 LICENSE="GPL-2"
