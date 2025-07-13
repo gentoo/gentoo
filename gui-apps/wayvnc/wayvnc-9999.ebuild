@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ RDEPEND="
 	=dev-libs/aml-0.3*
 	dev-libs/jansson:=
 	dev-libs/wayland
-	=gui-libs/neatvnc-0.8*
+	=gui-libs/neatvnc-0.9*[gbm?]
 	media-libs/mesa[egl(+),gles2(+),gbm(+)?]
 	x11-libs/libdrm
 	x11-libs/libxkbcommon
