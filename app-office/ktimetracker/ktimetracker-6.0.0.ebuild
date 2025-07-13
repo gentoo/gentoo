@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/ktimetracker/ https://userbase.kde.org/KTimeTrack
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
