@@ -9,3 +9,4 @@ postgres14 - Build against PostgreSQL 14
 postgres15 - Build against PostgreSQL 15
 postgres16 - Build against PostgreSQL 16
 postgres17 - Build against PostgreSQL 17
+postgres18 - Build against PostgreSQL 18
