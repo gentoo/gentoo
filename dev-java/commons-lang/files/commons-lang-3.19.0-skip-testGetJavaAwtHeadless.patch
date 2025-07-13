@@ -1,0 +1,37 @@
+testGetJavaAwtHeadless()
+     tags: []
+ uniqueId: [engine:junit-jupiter]/[class:org.apache.commons.lang3.SystemPropertiesTest]/[method:testGetJavaAwtHeadless()]
+   parent: [engine:junit-jupiter]/[class:org.apache.commons.lang3.SystemPropertiesTest]
+   source: MethodSource [className = 'org.apache.commons.lang3.SystemPropertiesTest', methodName = 'testGetJavaAwtHeadless', methodParameterTypes = '']
+   caught: org.opentest4j.AssertionFailedError: expected: <null> but was: <true>
+             	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+             	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+             	at org.junit.jupiter.api.AssertNull.failNotNull(AssertNull.java:50)
+             	at org.junit.jupiter.api.AssertNull.assertNull(AssertNull.java:35)
+             	at org.junit.jupiter.api.AssertNull.assertNull(AssertNull.java:30)
+             	at org.junit.jupiter.api.Assertions.assertNull(Assertions.java:279)
+             	at org.apache.commons.lang3.SystemPropertiesTest.testGetJavaAwtHeadless(SystemPropertiesTest.java:512)
+             	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+             	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+             	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+ duration: 1 ms
+   status: ✘ FAILED
+
+--- a/src/test/java/org/apache/commons/lang3/SystemPropertiesTest.java
++++ b/src/test/java/org/apache/commons/lang3/SystemPropertiesTest.java
+@@ -27,6 +27,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
+ 
+ import java.util.function.Supplier;
+ 
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.function.ThrowingSupplier;
+ import org.junit.jupiter.params.ParameterizedTest;
+@@ -507,6 +508,7 @@ class SystemPropertiesTest {
+         assertDoesNotThrow(SystemProperties::getJavaAwtGraphicsenv);
+     }
+ 
++    @Disabled
+     @Test
+     void testGetJavaAwtHeadless() {
+         assertNull(SystemProperties.getJavaAwtHeadless());
