@@ -18,7 +18,7 @@ LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
 IUSE="+ocamlopt test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 # Jane Street Minor
 JSM=0.17
