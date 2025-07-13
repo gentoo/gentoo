@@ -12,7 +12,7 @@ SRC_URI="https://github.com/brailcom/speechd/releases/download/${PV}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
 IUSE="alsa ao +espeak flite nas pulseaudio pipewire +python systemd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
