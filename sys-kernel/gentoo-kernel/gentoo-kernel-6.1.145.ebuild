@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KERNEL_IUSE_MODULES_SIGN=1
+
 inherit kernel-build toolchain-funcs verify-sig
 
 MY_P=linux-${PV%.*}
@@ -160,6 +162,11 @@ src_prepare() {
 	if [[ ${biendian} == true && $(tc-endian) == big ]]; then
 		merge_configs+=( "${dist_conf_path}/big-endian.config" )
 	fi
+
+	use secureboot && merge_configs+=( "${dist_conf_path}/secureboot.config" )
+
+	# 6.1 series: ZBOOT causes hangs in qemu tests, disable for now
+	echo "# CONFIG_EFI_ZBOOT is not set" > "${dist_conf_path}/secureboot.config" || die
 
 	kernel-build_merge_configs "${merge_configs[@]}"
 }
