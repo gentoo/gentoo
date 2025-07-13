@@ -11,7 +11,7 @@ SRC_URI="https://www.monkey.org/~provos/${P}.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="static-libs"
 
 DEPEND="dev-libs/libevent"
