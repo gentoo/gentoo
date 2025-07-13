@@ -768,11 +768,6 @@ g_int_to_KV() {
 	echo ${major}.${minor}.${micro}
 }
 
-eend_KV() {
-	[[ $(g_KV_to_int $1) -ge $(g_KV_to_int $2) ]]
-	eend $?
-}
-
 get_kheader_version() {
 	printf '#include <linux/version.h>\nLINUX_VERSION_CODE\n' | \
 	$(tc-getCPP ${CTARGET}) -I "${ESYSROOT}$(alt_headers)" - | \
@@ -866,11 +861,13 @@ sanity_prechecks() {
 			if ! is_crosscompile && ! tc-is-cross-compiler ; then
 				# Building fails on an non-supporting kernel
 				ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
-				if ! eend_KV ${run_kv} ${want_kv} ; then
+				if ! [[ $(g_KV_to_int ${run_kv}) -ge $(g_KV_to_int ${want_kv}) ]] ; then
+					eend 1
 					echo
 					eerror "You need a kernel of at least ${want_kv}!"
 					die "Kernel version too low!"
 				fi
+				eend 0
 			fi
 
 			# Do not run this check for pkg_pretend, just pkg_setup and friends (if we ever get used there).
@@ -881,11 +878,13 @@ sanity_prechecks() {
 			# but let's leave it as-is for now.
 			if [[ ${EBUILD_PHASE_FUNC} != pkg_pretend ]] ; then
 				ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-				if ! eend_KV ${build_kv} ${want_kv} ; then
+				if ! [[ $(g_KV_to_int ${build_kv}) -ge $(g_KV_to_int ${want_kv}) ]] ; then
+					eend 1
 					echo
 					eerror "You need linux-headers of at least ${want_kv}!"
 					die "linux-headers version too low!"
 				fi
+				eend 0
 			fi
 		fi
 	fi
