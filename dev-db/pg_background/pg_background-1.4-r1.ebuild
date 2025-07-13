@@ -14,12 +14,19 @@ SRC_URI="https://github.com/vibhorkum/pg_background/archive/refs/tags/v${PV}.tar
 LICENSE="GPL-3"
 
 SLOT=0
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 RESTRICT="test"
 
 DEPEND="${POSTGRES_DEP}"
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-fix-install.patch" )
+
+src_prepare() {
+	default
+	postgres-multi_src_prepare
+}
 
 src_compile() {
 	postgres-multi_foreach emake || die "emake failed"
