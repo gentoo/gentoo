@@ -9,8 +9,8 @@ CRATES="
 "
 
 RUST_MIN_VER="1.85.0"
-
-inherit cargo flag-o-matic multiprocessing
+LLVM_COMPAT=( {17..20} )
+inherit cargo flag-o-matic llvm-r1 multiprocessing
 
 DESCRIPTION="GNU coreutils rewritten in Rust"
 HOMEPAGE="https://uutils.github.io/coreutils/ https://github.com/uutils/coreutils"
@@ -49,8 +49,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	test? ( dev-util/cargo-nextest )
+	selinux? (
+		$(llvm_gen_dep '
+			llvm-core/clang:${LLVM_SLOT}
+		')
+	)
 "
-
 QA_FLAGS_IGNORED=".*"
 
 src_unpack() {
