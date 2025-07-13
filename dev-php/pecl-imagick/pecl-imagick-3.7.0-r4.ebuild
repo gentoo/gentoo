@@ -27,8 +27,10 @@ DEPEND="
 	test? ( media-gfx/imagemagick:=[hdri,jpeg,png,svg,truetype,xml] )
 "
 
-PATCHES="${FILESDIR}/${PN}-3.7.0-php8.3.patch
-		 ${FILESDIR}/${PN}-3.7.0-php8.4.patch"
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.7.0-php8.3.patch
+	"${FILESDIR}"/${PN}-3.7.0-php8.4.patch
+)
 
 PHP_EXT_ECONF_ARGS="--with-imagick=${EPREFIX}/usr"
 
