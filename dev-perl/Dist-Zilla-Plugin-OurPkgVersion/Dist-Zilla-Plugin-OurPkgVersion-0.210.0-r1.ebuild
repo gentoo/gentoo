@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=PLICEASE
 DIST_VERSION=0.21
@@ -11,8 +11,6 @@ DESCRIPTION="No line insertion and does Package version with our"
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Dist-Zilla-6.0.0
@@ -22,15 +20,14 @@ RDEPEND="
 	dev-perl/namespace-autoclean
 "
 DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		>=virtual/perl-CPAN-Meta-2.120.900
 		dev-perl/Path-Tiny
 		dev-perl/Test-Exception
-		virtual/perl-Test-Simple
 		>=dev-perl/Test-Version-0.40.0
 	)
 "
+
 PERL_RM_FILES=(
 	t/author-critic.t
 	t/author-eol.t
