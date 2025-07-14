@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,11 +34,8 @@ BDEPEND="
 "
 
 src_compile() {
-	# -Werror=strict-aliasing
 	# https://bugs.gentoo.org/931907
-	#
-	# Not trivial to fix and its a problem in melonds upstream.
-	# Its also uncertain if this port will be updated in the future.
+	# https://github.com/melonDS-emu/melonDS/issues/2349
 	append-flags -fno-strict-aliasing
 	filter-lto
 
