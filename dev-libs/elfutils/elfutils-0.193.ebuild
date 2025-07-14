@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) utils? ( GPL-3+ )"
 SLOT="0"
-IUSE="bzip2 debuginfod lzma nls static-libs stacktrace test +utils valgrind zstd"
+IUSE="bzip2 debuginfod +lzma nls static-libs stacktrace test +utils valgrind zstd"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
