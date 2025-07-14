@@ -755,7 +755,7 @@ pkg_postinst() {
 			einfo
 			elog "This install includes the PAM authentication plugin."
 			elog "To activate and configure the PAM plugin, please read:"
-			elog "https://mariadb.com/kb/en/mariadb/pam-authentication-plugin/"
+			elog "https://mariadb.com/docs/server/reference/plugins/authentication-plugins/authentication-with-pluggable-authentication-modules-pam/authentication-plugin-pam"
 			einfo
 			chown mysql:mysql "${EROOT}/usr/$(get_libdir)/mariadb/plugin/auth_pam_tool_dir" || die
 		fi
