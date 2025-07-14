@@ -13,8 +13,10 @@
 		<flag name="ctags">Enable ctags plugin</flag>
 		<flag name="debugger">Enable the debugger plugin which interfaces with <pkg>dev-debug/gdb</pkg></flag>
 		<flag name="enchant">Enable spell checking using enchant</flag>
+		<flag name="geniuspaste">Enable the GeniusPaste plugin</flag>
 		<flag name="gpg">Enable geanypg plugin which integrates GPG using <pkg>app-crypt/gpgme</pkg></flag>
 		<flag name="gtkspell">Use gtkspell for dictionary support in GeanyVC</flag>
+		<flag name="lsp">Enable the Language Server Protocol plugin</flag>
 		<flag name="markdown">Enable the markdown plugin</flag>
 		<flag name="pretty-printer">Enable pretty-printer plugin</flag>
 		<flag name="scope">Enable the scope plugin which is a graphical GDB front-end</flag>
