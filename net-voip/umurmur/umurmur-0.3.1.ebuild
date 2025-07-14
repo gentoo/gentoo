@@ -11,7 +11,7 @@ SRC_URI="https://github.com/umurmur/umurmur/archive/refs/tags/v${PV}.tar.gz -> $
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm x86"
 IUSE="gnutls mbedtls shm"
 
 # ssl-provider precendence: gnutls, mbedtls and openssl if none specified
