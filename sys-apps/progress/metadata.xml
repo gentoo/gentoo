@@ -6,6 +6,6 @@
     <name>Jason A. Donenfeld</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">Xfennec/cv</remote-id>
+    <remote-id type="github">Xfennec/progress</remote-id>
   </upstream>
 </pkgmetadata>
