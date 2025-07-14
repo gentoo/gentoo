@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=SKYSYMBOL
 DIST_VERSION=0.016
@@ -11,13 +11,9 @@ DESCRIPTION="Build an RPM from your Dist::Zilla release"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/perl-Carp
 	dev-perl/Dist-Zilla
-	virtual/perl-File-Temp
 	dev-perl/IPC-Run
 	dev-perl/Moose
 	dev-perl/Moose-Autobox
@@ -28,7 +24,6 @@ RDEPEND="
 	app-arch/rpm
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/File-Which
 		dev-perl/Test-Differences
