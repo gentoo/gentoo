@@ -11,7 +11,7 @@ SRC_URI="https://github.com/janestreet/ppx_sexp_conv/archive/v${PV}.tar.gz -> ${
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv"
 IUSE="+ocamlopt"
 
 # Jane Street Minor
