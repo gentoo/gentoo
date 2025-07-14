@@ -519,7 +519,7 @@ app-emulation/virtualbox-kvm
 
 # Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.
-=dev-libs/libassuan-3.0.1
+=dev-libs/libassuan-3.0.1-r1
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.
