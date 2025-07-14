@@ -16,7 +16,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2.1+ tools? ( GPL-2+ )"
 SLOT="0"
 IUSE="debug doc +lzma pkcs7 +tools +zlib +zstd"
 
