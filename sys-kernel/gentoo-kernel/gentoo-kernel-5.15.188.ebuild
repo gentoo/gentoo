@@ -5,21 +5,31 @@ EAPI=8
 
 KERNEL_IUSE_MODULES_SIGN=1
 
-inherit git-r3 kernel-build toolchain-funcs
+inherit kernel-build toolchain-funcs verify-sig
 
+MY_P=linux-${PV%.*}
+PATCHSET=linux-gentoo-patches-5.15.187
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 # forked to https://github.com/projg2/fedora-kernel-config-for-gentoo
 CONFIG_VER=6.1.102-gentoo
 GENTOO_CONFIG_VER=g16
+SHA256SUM_DATE=20250706
 
-DESCRIPTION="Linux kernel built from vanilla upstream sources"
+DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="
 	https://wiki.gentoo.org/wiki/Project:Distribution_Kernel
 	https://www.kernel.org/
 "
 SRC_URI+="
+	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/patch-${PV}.xz
+	https://dev.gentoo.org/~mgorny/dist/linux/${PATCHSET}.tar.xz
 	https://github.com/projg2/gentoo-kernel-config/archive/${GENTOO_CONFIG_VER}.tar.gz
 		-> gentoo-kernel-config-${GENTOO_CONFIG_VER}.tar.gz
+	verify-sig? (
+		https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/sha256sums.asc
+			-> linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc
+	)
 	amd64? (
 		https://raw.githubusercontent.com/projg2/fedora-kernel-config-for-gentoo/${CONFIG_VER}/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
@@ -37,27 +47,25 @@ SRC_URI+="
 			-> kernel-i686-fedora.config.${CONFIG_VER}
 	)
 "
+S=${WORKDIR}/${MY_P}
 
-EGIT_REPO_URI=(
-	https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/
-	https://github.com/gregkh/linux/
-)
-EGIT_BRANCH="linux-${PV/.9999/.y}"
-
-LICENSE="GPL-2"
-IUSE="debug hardened"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+IUSE="debug experimental hardened"
 REQUIRED_USE="
 	arm? ( savedconfig )
 	hppa? ( savedconfig )
-	riscv? ( savedconfig )
 	sparc? ( savedconfig )
 "
 
+RDEPEND="
+	!sys-kernel/gentoo-kernel-bin:${SLOT}
+"
 BDEPEND="
 	debug? ( dev-util/pahole )
+	verify-sig? ( >=sec-keys/openpgp-keys-kernel-20250702 )
 "
 PDEPEND="
-	>=virtual/dist-kernel-$(ver_cut 1-2)
+	>=virtual/dist-kernel-${PV}
 "
 
 QA_FLAGS_IGNORED="
@@ -66,19 +74,41 @@ QA_FLAGS_IGNORED="
 	usr/src/linux-.*/arch/powerpc/kernel/vdso.*/vdso.*.so.dbg
 "
 
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kernel.org.asc
+
 src_unpack() {
-	git-r3_src_unpack
+	if use verify-sig; then
+		cd "${DISTDIR}" || die
+		verify-sig_verify_signed_checksums \
+			"linux-$(ver_cut 1).x-sha256sums-${SHA256SUM_DATE}.asc" \
+			sha256 "${MY_P}.tar.xz patch-${PV}.xz"
+		cd "${WORKDIR}" || die
+	fi
+
 	default
 }
 
 src_prepare() {
 	default
+	eapply "${WORKDIR}/patch-${PV}"
+
+	local patch
+	for patch in "${WORKDIR}/${PATCHSET}"/*.patch; do
+		eapply "${patch}"
+		# non-experimental patches always finish with Gentoo Kconfig
+		# when ! use experimental, stop applying after it
+		if [[ ${patch} == *Add-Gentoo-Linux-support-config-settings* ]] &&
+			! use experimental
+		then
+			break
+		fi
+	done
 
 	local biendian=false
 
 	# prepare the default config
 	case ${ARCH} in
-		arm | hppa | loong | riscv | sparc)
+		arm | hppa | sparc)
 			> .config || die
 		;;
 		amd64)
@@ -105,7 +135,7 @@ src_prepare() {
 			;;
 	esac
 
-	local myversion="-dist"
+	local myversion="-gentoo-dist"
 	use hardened && myversion+="-hardened"
 	echo "CONFIG_LOCALVERSION=\"${myversion}\"" > "${T}"/version.config || die
 	local dist_conf_path="${WORKDIR}/gentoo-kernel-config-${GENTOO_CONFIG_VER}"
@@ -134,7 +164,7 @@ src_prepare() {
 
 	use secureboot && merge_configs+=( "${dist_conf_path}/secureboot.config" )
 
-	# 6.1 series: ZBOOT causes hangs in qemu tests, disable for now
+	# 5.15 series: No ZBOOT, disable explicitly to not confuse the eclass
 	echo "# CONFIG_EFI_ZBOOT is not set" > "${dist_conf_path}/secureboot.config" || die
 
 	kernel-build_merge_configs "${merge_configs[@]}"
