@@ -44,10 +44,6 @@ RDEPEND="
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
-	ensurepip? (
-		dev-python/ensurepip-pip
-		dev-python/ensurepip-setuptools
-	)
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -83,6 +79,12 @@ BDEPEND="
 "
 RDEPEND+="
 	!build? ( app-misc/mime-types )
+"
+PDEPEND="
+	ensurepip? (
+		dev-python/ensurepip-pip
+		dev-python/ensurepip-setuptools
+	)
 "
 
 # large file tests involve a 2.5G file being copied (duplicated)

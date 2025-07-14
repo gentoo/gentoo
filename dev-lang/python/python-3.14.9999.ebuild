@@ -48,7 +48,6 @@ RDEPEND="
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libintl
-	ensurepip? ( dev-python/ensurepip-pip )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -95,6 +94,9 @@ if [[ ${PV} != *_alpha* ]]; then
 		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
 	"
 fi
+PDEPEND="
+	ensurepip? ( dev-python/ensurepip-pip )
+"
 
 # large file tests involve a 2.5G file being copied (duplicated)
 CHECKREQS_DISK_BUILD=5500M

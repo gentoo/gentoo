@@ -56,7 +56,6 @@ RDEPEND="
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libintl
-	ensurepip? ( dev-python/ensurepip-pip )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -103,6 +102,9 @@ if [[ ${PV} != *_alpha* ]]; then
 		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
 	"
 fi
+PDEPEND="
+	ensurepip? ( dev-python/ensurepip-pip )
+"
 
 # https://www.python.org/downloads/metadata/sigstore/
 VERIFY_SIG_CERT_IDENTITY=hugo@python.org
