@@ -7,7 +7,7 @@ SUBSLOT="18"
 JAVA_PKG_OPT_USE="jdbc"
 
 inherit systemd flag-o-matic prefix toolchain-funcs \
-	multiprocessing java-pkg-opt-2 cmake eapi9-ver
+	multiprocessing java-pkg-opt-2 cmake
 
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 HOMEPAGE="https://mariadb.org/"
@@ -784,11 +784,6 @@ pkg_postinst() {
 			elog "--wsrep-new-cluster to the options in /etc/conf.d/mysql for one node."
 			elog "This option should then be removed for subsequent starts."
 			einfo
-			if ver_replacing -lt "10.4.0" ; then
-				ewarn "Upgrading galera from a previous version requires admin restart of the entire cluster."
-				ewarn "Please refer to https://mariadb.com/kb/en/library/changes-improvements-in-mariadb-104/#galera-4"
-				ewarn "for more information"
-			fi
 		fi
 	fi
 
