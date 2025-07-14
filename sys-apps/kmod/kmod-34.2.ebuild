@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson shell-completion
+inherit linux-info meson shell-completion toolchain-funcs
 
 DESCRIPTION="Library and tools for managing linux kernel modules"
 HOMEPAGE="https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git"
@@ -20,10 +20,6 @@ LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug doc +lzma pkcs7 +tools +zlib +zstd"
 
-# Needs work to deal with building dummy kernel modules.
-# Also need to diagnose failures.
-RESTRICT="test"
-
 # - >=zlib-1.2.6 required because of bug #427130
 # - >=zstd-1.5.2-r1 required for bug #771078
 RDEPEND="
@@ -33,18 +29,28 @@ RDEPEND="
 	zstd? ( >=app-arch/zstd-1.5.2-r1:= )
 "
 DEPEND="${RDEPEND}"
+
+# >=dev-build/meson-1.7.0 to avoid building tests in compile phase
+# https://github.com/mesonbuild/meson/issues/2518
 BDEPEND="
 	app-text/scdoc
+	>=dev-build/meson-1.7.0
 	doc? ( dev-util/gtk-doc )
 	lzma? ( virtual/pkgconfig )
 	zlib? ( virtual/pkgconfig )
 "
+
+pkg_setup() {
+	:
+}
+
 src_configure() {
 	# TODO: >=33 enables decompressing without libraries being built in
 	# as kmod defers to the kernel. How should the ebuild be adapted?
 	local emesonargs=(
 		--bindir "${EPREFIX}/bin"
 		--sbindir "${EPREFIX}/sbin"
+		-Dbuild-tests=true
 		-Dbashcompletiondir="$(get_bashcompdir)"
 		-Dfishcompletiondir="$(get_fishcompdir)"
 		-Dzshcompletiondir="$(get_zshcompdir)"
@@ -58,6 +64,21 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+src_test() {
+	if [[ ${LD_PRELOAD} == *libsandbox* ]]; then
+		ewarn "Skipping tests: libsandbox in LD_PRELOAD"
+		return
+	fi
+	if ! get_version; then
+		ewarn "Skipping tests: could not find kernel directory"
+		return
+	fi
+	local -x ARCH=$(tc-arch-kernel)
+	local -x CROSS_COMPILE=${CHOST}-
+	local -x KDIR=${KV_OUT_DIR}
+	meson_src_test
 }
 
 src_install() {
