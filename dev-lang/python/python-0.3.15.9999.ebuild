@@ -24,8 +24,8 @@ EGIT_REPO_URI="https://github.com/python/cpython.git"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm
-	libedit +ncurses pgo +readline +sqlite +ssl tail-call-interp test tk valgrind
+	bluetooth debug +ensurepip examples gdbm libedit +ncurses pgo
+	+readline +sqlite +ssl tail-call-interp test tk valgrind
 "
 RESTRICT="!test? ( test )"
 
@@ -38,6 +38,7 @@ RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-arch/zstd:=
+	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
@@ -76,9 +77,6 @@ BDEPEND="
 	dev-build/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
-"
-RDEPEND+="
-	!build? ( app-misc/mime-types )
 "
 PDEPEND="
 	ensurepip? ( dev-python/ensurepip-pip )

@@ -29,8 +29,8 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
-	berkdb bluetooth build examples gdbm +ncurses +readline
-	+sqlite +ssl valgrind wininst +xml
+	berkdb bluetooth examples gdbm +ncurses +readline +sqlite +ssl
+	valgrind wininst +xml
 "
 RESTRICT="test"
 
@@ -41,6 +41,7 @@ RESTRICT="test"
 
 RDEPEND="
 	app-arch/bzip2:=
+	app-misc/mime-types
 	dev-libs/libffi:=
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
@@ -66,9 +67,6 @@ BDEPEND="
 	app-alternatives/awk
 	virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-python )
-"
-RDEPEND+="
-	!build? ( app-misc/mime-types )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc

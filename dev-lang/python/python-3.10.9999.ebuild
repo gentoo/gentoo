@@ -24,8 +24,8 @@ EGIT_BRANCH=${PYVER}
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm libedit
-	+ncurses pgo +readline +sqlite +ssl test tk valgrind
+	bluetooth debug +ensurepip examples gdbm libedit +ncurses pgo
+	+readline +sqlite +ssl test tk valgrind
 "
 RESTRICT="!test? ( test )"
 
@@ -37,6 +37,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
+	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
@@ -76,9 +77,6 @@ BDEPEND="
 	dev-build/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
-"
-RDEPEND+="
-	!build? ( app-misc/mime-types )
 "
 PDEPEND="
 	ensurepip? (

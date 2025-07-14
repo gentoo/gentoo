@@ -34,8 +34,8 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm
-	libedit +ncurses pgo +readline +sqlite +ssl tail-call-interp test tk valgrind
+	bluetooth debug +ensurepip examples gdbm libedit +ncurses pgo
+	+readline +sqlite +ssl tail-call-interp test tk valgrind
 "
 RESTRICT="!test? ( test )"
 
@@ -48,6 +48,7 @@ RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-arch/zstd:=
+	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
@@ -85,9 +86,6 @@ BDEPEND="
 	dev-build/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
-"
-RDEPEND+="
-	!build? ( app-misc/mime-types )
 "
 if [[ ${PV} != *_alpha* ]]; then
 	RDEPEND+="
