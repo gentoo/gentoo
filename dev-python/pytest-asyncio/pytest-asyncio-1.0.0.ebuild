@@ -25,24 +25,19 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
-EPYTEST_PLUGINS=( hypothesis )
+EPYTEST_PLUGINS=( hypothesis "${PN}" )
 EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		# fail due to mismatched warning count
-		tests/test_event_loop_fixture.py::test_event_loop_already_closed
-		tests/test_event_loop_fixture.py::test_event_loop_fixture_asyncgen_error
-		tests/test_event_loop_fixture.py::test_event_loop_fixture_handles_unclosed_async_gen
-		tests/modes/test_strict_mode.py::test_strict_mode_marked_test_unmarked_fixture_warning
-		tests/modes/test_strict_mode.py::test_strict_mode_marked_test_unmarked_autouse_fixture_warning
-		# TODO
-		tests/modes/test_strict_mode.py::test_strict_mode_ignores_unmarked_coroutine
-		tests/modes/test_strict_mode.py::test_strict_mode_ignores_unmarked_fixture
-	)
-
-	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" pytest-asyncio )
-	epytest
-}
+EPYTEST_DESELECT=(
+	# fail due to mismatched warning count
+	tests/test_event_loop_fixture.py::test_event_loop_already_closed
+	tests/test_event_loop_fixture.py::test_event_loop_fixture_asyncgen_error
+	tests/test_event_loop_fixture.py::test_event_loop_fixture_handles_unclosed_async_gen
+	tests/modes/test_strict_mode.py::test_strict_mode_marked_test_unmarked_fixture_warning
+	tests/modes/test_strict_mode.py::test_strict_mode_marked_test_unmarked_autouse_fixture_warning
+	# TODO
+	tests/modes/test_strict_mode.py::test_strict_mode_ignores_unmarked_coroutine
+	tests/modes/test_strict_mode.py::test_strict_mode_ignores_unmarked_fixture
+)
