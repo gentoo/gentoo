@@ -51,11 +51,6 @@ BDEPEND="
 	')
 "
 
-PATCHES=(
-	# backport
-	"${FILESDIR}/${P}-builtin-preserve-enum-value.patch"
-)
-
 CONFIG_CHECK="
 	~BPF
 	~BPF_EVENTS
