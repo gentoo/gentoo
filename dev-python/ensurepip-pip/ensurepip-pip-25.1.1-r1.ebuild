@@ -22,7 +22,7 @@ SRC_URI="
 "
 S=${WORKDIR}/${MY_P}
 
-LICENSE="Apache-2.0 BSD BSD-2 ISC LGPL-2.1+ MIT MPL-2.0 PSF-2"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="test test-rust"
@@ -50,6 +50,30 @@ EPYTEST_PLUGINS=( pytest-rerunfailures )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+declare -A VENDOR_LICENSES=(
+	[cachecontrol]=Apache-2.0
+	[certifi]=MPL-2.0
+	[dependency_groups]=MIT
+	[distlib]=PSF-2
+	[distro]=Apache-2.0
+	[idna]=BSD
+	[msgpack]=Apache-2.0
+	[packaging]="|| ( Apache-2.0 MIT )"
+	[pkg_resources]=MIT
+	[platformdirs]=MIT
+	[pygments]=BSD-2
+	[pyproject_hooks]=MIT
+	[requests]=Apache-2.0
+	[resolvelib]=ISC
+	[rich]=MIT
+	[tomli]=MIT
+	[tomli_w]=MIT
+	[truststore]=MIT
+	[urllib3]=MIT
+	[typing_extensions.py]=PSF-2
+)
+LICENSE+=" ${VENDOR_LICENSES[*]}"
+
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/pip-23.1-no-coverage.patch"
@@ -63,6 +87,33 @@ python_prepare_all() {
 		)
 		mkdir tests/data/common_wheels/ || die
 		cp "${wheels[@]}" tests/data/common_wheels/ || die
+	fi
+
+	# Verify that we've covered licenses for all vendored packages
+	cd src/pip/_vendor || die
+	local packages=( */ [A-Za-z]*.py )
+	local pkg missing=()
+	for pkg in "${packages[@]%/}"; do
+		if [[ ! -v "VENDOR_LICENSES[${pkg}]" ]]; then
+			missing+=( "${pkg}" )
+		else
+			unset "VENDOR_LICENSES[${pkg}]"
+		fi
+	done
+
+	if [[ ${missing[@]} || ${VENDOR_LICENSES[@]} ]]; then
+		[[ ${missing[@]} ]] &&
+			eerror "License missing for packages: ${missing[*]}"
+		[[ ${VENDOR_LICENSES[@]} ]] &&
+			eerror "Vendored packages removed: ${!VENDOR_LICENSES[*]}"
+		die "VENDOR_LICENSES outdated"
+	fi
+
+	local upstream_count=$(wc -l < vendor.txt || die)
+	if [[ ${#packages[@]} -ne ${upstream_count} ]]; then
+		eerror "VENDOR_LICENSES: ${#packages[@]}"
+		eerror "vendor.txt:      ${upstream_count}"
+		die "Not all vendored packages matched"
 	fi
 }
 
