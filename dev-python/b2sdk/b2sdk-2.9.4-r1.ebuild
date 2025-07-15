@@ -23,13 +23,14 @@ KEYWORDS="~amd64"
 
 # pydantic can be used but it has a fallback
 RDEPEND="
-	dev-python/logfury[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
+	>=dev-python/annotated-types-0.5.0[${PYTHON_USEDEP}]
+	>=dev-python/logfury-1.0.1[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.9.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
 		dev-python/pytest-lazy-fixtures[${PYTHON_USEDEP}]
-		dev-python/tqdm[${PYTHON_USEDEP}]
+		>=dev-python/tqdm-4.5.0[${PYTHON_USEDEP}]
 	)
 "
 
