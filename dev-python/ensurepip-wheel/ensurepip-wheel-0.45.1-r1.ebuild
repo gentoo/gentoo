@@ -36,6 +36,42 @@ PATCHES=(
 	"${FILESDIR}/wheel-0.45.1-test.patch"
 )
 
+declare -A VENDOR_LICENSES=(
+	[packaging]="|| ( Apache-2.0 MIT )"
+)
+LICENSE+=" ${VENDOR_LICENSES[*]}"
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# Verify that we've covered licenses for all vendored packages
+	cd src/wheel/vendored || die
+	local packages=( */ )
+	local pkg missing=()
+	for pkg in "${packages[@]%/}"; do
+		if [[ ! -v "VENDOR_LICENSES[${pkg}]" ]]; then
+			missing+=( "${pkg}" )
+		else
+			unset "VENDOR_LICENSES[${pkg}]"
+		fi
+	done
+
+	if [[ ${missing[@]} || ${VENDOR_LICENSES[@]} ]]; then
+		[[ ${missing[@]} ]] &&
+			eerror "License missing for packages: ${missing[*]}"
+		[[ ${VENDOR_LICENSES[@]} ]] &&
+			eerror "Vendored packages removed: ${!VENDOR_LICENSES[*]}"
+		die "VENDOR_LICENSES outdated"
+	fi
+
+	local upstream_count=$(wc -l < vendor.txt || die)
+	if [[ ${#packages[@]} -ne ${upstream_count} ]]; then
+		eerror "VENDOR_LICENSES: ${#packages[@]}"
+		eerror "vendor.txt:      ${upstream_count}"
+		die "Not all vendored packages matched"
+	fi
+}
+
 python_compile() {
 	# If we're testing, install for all implementations.
 	# If we're not, just get one wheel built.
