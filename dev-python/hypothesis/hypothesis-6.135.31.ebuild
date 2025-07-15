@@ -44,6 +44,9 @@ BDEPEND="
 		>=dev-python/pytest-8[${PYTHON_USEDEP}]
 	)
 "
+PDEPEND="
+	dev-python/hypothesis-gentoo[${PYTHON_USEDEP}]
+"
 
 EPYTEST_PLUGINS=( pytest-rerunfailures )
 EPYTEST_XDIST=1
