@@ -42,28 +42,23 @@ BDEPEND="
 	)
 "
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( "${PN}" )
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# requires grpc
+	tests/unit/test_extensions.py::TestGrpcCodes
+	# broken with paho-mqtt-2
+	tests/unit/test_mqtt.py::TestClient::test_context_connection_success
+)
+EPYTEST_IGNORE=(
+	# require grpc*
+	tavern/_plugins/grpc
+	tests/unit/tavern_grpc
+)
 
 src_prepare() {
 	# strip unnecessary pins, upstream doesn't update them a lot
 	sed -i -E -e 's:,?<=?[0-9.]+::' pyproject.toml || die
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	local EPYTEST_DESELECT=(
-		# requires grpc
-		tests/unit/test_extensions.py::TestGrpcCodes
-		# broken with paho-mqtt-2
-		tests/unit/test_mqtt.py::TestClient::test_context_connection_success
-	)
-	local EPYTEST_IGNORE=(
-		# require grpc*
-		tavern/_plugins/grpc
-		tests/unit/tavern_grpc
-	)
-
-	local EPYTEST_PLUGINS=( tavern )
-	epytest
 }
