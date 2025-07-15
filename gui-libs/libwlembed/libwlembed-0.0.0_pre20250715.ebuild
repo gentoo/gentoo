@@ -21,7 +21,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="gtk gtk-doc +introspection"
 
 DEPEND="
