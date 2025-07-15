@@ -119,14 +119,24 @@ src_compile() {
 src_test() {
 	pax-mark -mr run/john
 
+	# Replace system (/etc/john) includes with cwd-relative for tests
+	# bug #960245.
+	mkdir test || die
+	cp -r run/*.conf run/rules test || die
+	cd test || die
+	for file in *.conf; do
+		sed -E 's/^.include <(.+)>$/.include "\1"/g' -i "$file" || die
+	done
+
 	if use opencl; then
 		# GPU tests fail in portage, so run cpu only tests
-		./run/john --config=run/john.conf --device=cpu --test=0 --verbosity=2 || die
+		# Reasons: kernels not in /etc/john/opencl (yet) and sandbox
+		../run/john --config=john.conf --device=cpu --test=0 --verbosity=2 || die
 	else
 		# Weak tests
-		./run/john --config=run/john.conf --test=0 --verbosity=2 || die
+		../run/john --config=john.conf --test=0 --verbosity=2 || die
 		# Strong tests
-		#./run/john --test=1 --verbosity=2 || die
+		#../run/john --config=john.conf --test=1 --verbosity=2 || die
 	fi
 }
 
