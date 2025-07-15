@@ -21,10 +21,6 @@ RDEPEND="
 	x11-base/xorg-server[xvfb]
 "
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( ${PN} )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTEST_PLUGINS=pytest_xvfb
-	epytest
-}
