@@ -41,7 +41,8 @@ CPU_FEATURES_MAP=(
 
 IUSE="custom-cflags kerberos mpi opencl openmp pcap test ${CPU_FEATURES_MAP[*]%:*}"
 
-DEPEND=">=dev-libs/openssl-1.0.1:=
+DEPEND="
+	>=dev-libs/openssl-1.0.1:=
 	virtual/libcrypt:=
 	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
@@ -49,18 +50,20 @@ DEPEND=">=dev-libs/openssl-1.0.1:=
 	pcap? ( net-libs/libpcap )
 	dev-libs/gmp:=
 	sys-libs/zlib
-	app-arch/bzip2"
+	app-arch/bzip2
+"
 # Missing (unpackaged):
 # - Digest::Haval256
 # - Digest::x
 # See bug #777369.
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	dev-perl/Compress-Raw-Lzma
 	dev-perl/Digest-MD2
-	virtual/perl-Digest-MD5
 	dev-perl/Digest-SHA3
 	dev-perl/Digest-GOST
-	!app-crypt/johntheripper"
+	!app-crypt/johntheripper
+"
 RESTRICT="!test? ( test )"
 
 pkg_pretend() {
