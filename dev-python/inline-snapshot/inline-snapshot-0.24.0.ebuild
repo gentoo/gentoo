@@ -41,6 +41,8 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
+EPYTEST_PLUGINS=( "${PN}" pytest-{freezer,mock,subtests,xdist} )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -54,8 +56,6 @@ python_test() {
 	)
 
 	local -x COLUMNS=80
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=inline_snapshot.pytest_plugin,pytest_freezer,pytest_subtests.plugin,xdist.plugin
 	local -x PYTHONPATH=${S}/src
 	epytest -p pytest_mock
 }
