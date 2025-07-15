@@ -116,7 +116,7 @@ src_prepare() {
 		-e "s:OVMF_VARS.ms.fd:OVMF_VARS.fd:g" \
 		internal/server/instance/drivers/edk2/driver_edk2.go || die "Failed to fix hardcoded ovmf paths."
 
-	cp "${FILESDIR}"/incus-6.14.service "${T}"/incus.service || die
+	cp "${FILESDIR}"/incus-6.14-r1.service "${T}"/incus.service || die
 	if use apparmor; then
 		sed -i \
 			'/^EnvironmentFile=.*/a ExecStartPre=\/usr\/libexec\/lxc\/lxc-apparmor-load' \

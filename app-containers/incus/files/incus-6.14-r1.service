@@ -9,7 +9,7 @@ ExecStartPost=/usr/sbin/incusd waitready --timeout=600
 ExecStartPre=/bin/mkdir -p /var/log/incus
 ExecStartPre=/bin/chown -R root:incus-admin /var/log/incus
 KillMode=process
-PassEnvironment=INCUS_AGENT_PATH INCUS_EDK2_PATH
+EnvironmentFile=/etc/env.d/90incus
 PermissionsStartOnly=true
 TimeoutStartSec=600s
 TimeoutStopSec=30s
