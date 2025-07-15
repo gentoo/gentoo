@@ -1,12 +1,16 @@
-Taken from https://github.com/sched-ext/scx/commit/7d9b2cc26473526883297df78e8eee3f2e7b6194.
+This patch is made obsolete by https://github.com/sched-ext/scx/commit/7d9b2cc26473526883297df78e8eee3f2e7b6194.
 
 --- a/lib/scxtest/overrides.h
 +++ b/lib/scxtest/overrides.h
-@@ -13,7 +13,7 @@
+@@ -13,7 +13,11 @@
   * that we want to get rid of that belongs here.
   */
  #define __builtin_preserve_field_info(x,y) 1
--#define __builtin_preserve_enum_value(x,y,z) 1
++#ifdef __clang__
 +#define __builtin_preserve_enum_value(x,y) 1
++#else
+ #define __builtin_preserve_enum_value(x,y,z) 1
++#endif
  
  #define bpf_addr_space_cast(var, dst_as, src_as)
+ 
