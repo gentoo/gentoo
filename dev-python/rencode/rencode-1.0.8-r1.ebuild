@@ -30,6 +30,13 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+src_prepare() {
+	# remove forced -O3
+	sed -e '/extra_compile_args=/d' -i build.py || die
+
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	rm -rf rencode || die
 	epytest
