@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ BDEPEND="${RDEPEND}"
 # https://rt.cpan.org/Public/Bug/Display.html?id=145992
 SRC_URI+="
 	https://rt.cpan.org/Public/Ticket/Attachment/2423633/1093328/WWW-Curl-4.17-Work-around-a-macro-bug-in-curl-7.87.0.patch
-	"
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.150.0-curl-7.50.2.patch
@@ -65,6 +65,7 @@ src_prepare() {
 # If you change this variable, you should probably be bumping the ebuild rev!
 export _CURL_BUILD_SYM_EXCLUDE='
 __000FORPATCH_WITH_LEADING_SPACE
+|^CURL_HAS_DECLSPEC_ATTRIBUTE\z
 |^CURL_DEPRECATED\z
 |^CURL_DID_MEMORY_FUNC_TYPEDEFS\z
 |^CURL_EXTERN
