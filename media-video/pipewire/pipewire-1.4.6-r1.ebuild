@@ -183,6 +183,8 @@ PDEPEND=">=media-video/wireplumber-0.5.2"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.25-enable-failed-mlock-warning.patch
+	"${FILESDIR}"/${PN}-1.4.6-no-automagic-ebur128.patch
+	"${FILESDIR}"/${PN}-1.4.6-no-automagic-fftw.patch
 )
 
 pkg_setup() {
@@ -368,7 +370,7 @@ multilib_src_install_all() {
 		newins "${FILESDIR}"/pipewire.desktop-r2 pipewire.desktop
 
 		exeinto /usr/bin
-		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r4 gentoo-pipewire-launcher
+		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r3 gentoo-pipewire-launcher
 
 		doman "${FILESDIR}"/gentoo-pipewire-launcher.1
 

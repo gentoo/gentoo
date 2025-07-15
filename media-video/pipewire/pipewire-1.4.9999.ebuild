@@ -370,7 +370,7 @@ multilib_src_install_all() {
 		newins "${FILESDIR}"/pipewire.desktop-r2 pipewire.desktop
 
 		exeinto /usr/bin
-		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r3 gentoo-pipewire-launcher
+		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r4 gentoo-pipewire-launcher
 
 		doman "${FILESDIR}"/gentoo-pipewire-launcher.1
 
