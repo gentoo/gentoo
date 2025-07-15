@@ -11,7 +11,9 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">otsaloma/gaupol</remote-id>
 		<bugs-to>https://github.com/otsaloma/gaupol/issues</bugs-to>
+		<changelog>https://github.com/otsaloma/gaupol/releases</changelog>
+		<doc>https://github.com/otsaloma/gaupol/tree/master/doc</doc>
+		<remote-id type="github">otsaloma/gaupol</remote-id>
 	</upstream>
 </pkgmetadata>
