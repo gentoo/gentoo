@@ -23,10 +23,5 @@ RDEPEND="
 "
 
 EPYTEST_PLUGIN_LOAD_VIA_ENV=1
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( "${PN}" )
 distutils_enable_tests pytest
-
-python_test() {
-	local EPYTEST_PLUGINS=( pytest-lazy-fixtures )
-	epytest
-}
