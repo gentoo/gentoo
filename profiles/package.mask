@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-07-15)
+# Unused java library, Pinned to virtual/jdk:1.8.
+# Removal on 2025-08-15.
+dev-java/jide-oss
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-08)
 # Unmaintained, out of date, QA issues, outstanding bugs for compilation
 # failure / test failure. Still uses python 3.11. No revdeps.
