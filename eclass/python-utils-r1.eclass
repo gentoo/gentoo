@@ -1458,11 +1458,13 @@ epytest() {
 						from importlib.metadata import distribution, entry_points
 
 						packages = {distribution(x).name for x in sys.argv[1:]}
-						plugins = {
+						# In packages defining multiple entry points, we must
+						# list them in the same order!
+						plugins = (
 							x.value for x in entry_points(group="pytest11")
 							if x.dist.name in packages
-						}
-						sys.stdout.write(",".join(sorted(plugins)))
+						)
+						sys.stdout.write(",".join(plugins))
 					EOF
 				)
 			else
