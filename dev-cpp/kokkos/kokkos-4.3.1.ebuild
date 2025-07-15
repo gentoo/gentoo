@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,6 +10,8 @@ HOMEPAGE="https://github.com/kokkos"
 MY_PV="$(ver_cut 1-2).0$(ver_cut 3)"
 SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${PN}-${MY_PV}"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 -x86"
@@ -18,8 +20,6 @@ RESTRICT="!test? ( test )"
 
 DEPEND="sys-apps/hwloc:="
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

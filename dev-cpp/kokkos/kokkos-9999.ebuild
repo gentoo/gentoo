@@ -11,7 +11,6 @@ HOMEPAGE="https://github.com/kokkos"
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/kokkos/kokkos.git"
-	SRC_URI=""
 else
 	MY_PV="$(ver_cut 1-2).0$(ver_cut 3)"
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -26,8 +25,6 @@ RESTRICT="!test? ( test )"
 
 DEPEND="sys-apps/hwloc:="
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
