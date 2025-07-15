@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-08-07)
+# Unused java library, pinned to virtual/jdk:1.8.
+# Removal on 2025-09-07.
+dev-java/jide-oss
+
 # Michał Górny <mgorny@gentoo.org> (2025-08-05)
 # Accidental breaking change.  Yanked upstream.  Bug #961089.
 =dev-python/setuptools-scm-9.0.0
