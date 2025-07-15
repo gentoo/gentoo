@@ -7,14 +7,19 @@ inherit cmake toolchain-funcs
 
 DESCRIPTION="C++ Performance Portability Programming EcoSystem"
 HOMEPAGE="https://github.com/kokkos"
-MY_PV="$(ver_cut 1-2).0$(ver_cut 3)"
-SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-S="${WORKDIR}/${PN}-${MY_PV}"
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/kokkos/kokkos.git"
+else
+	MY_PV="$(ver_cut 1-2).0$(ver_cut 3)"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
+	KEYWORDS="~amd64 -x86"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 -x86"
 IUSE="+openmp test"
 RESTRICT="!test? ( test )"
 
