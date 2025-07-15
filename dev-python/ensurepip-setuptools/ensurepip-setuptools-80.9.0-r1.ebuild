@@ -43,6 +43,50 @@ EPYTEST_PLUGINS=( pytest-{home,subprocess,timeout} )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+declare -A VENDOR_LICENSES=(
+	[autocommand]=LGPL-3
+	[backports.tarfile]=MIT
+	[importlib_metadata]=Apache-2.0
+	[inflect]=MIT
+	[jaraco.collections]=MIT
+	[jaraco.context]=MIT
+	[jaraco.functools]=MIT
+	[jaraco.text]=MIT
+	[more_itertools]=MIT
+	[packaging]="|| ( Apache-2.0 MIT )"
+	[platformdirs]=MIT
+	[tomli]=MIT
+	[typeguard]=MIT
+	[typing_extensions]=PSF-2
+	[wheel]=MIT  # technically it also vendors packaging but we have that
+	[zipp]=MIT
+)
+LICENSE+=" ${VENDOR_LICENSES[*]}"
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# Verify that we've covered licenses for all vendored packages
+	cd setuptools/_vendor || die
+	local packages=( *.dist-info )
+	local pkg missing=()
+	for pkg in "${packages[@]%%-*}"; do
+		if [[ ! -v "VENDOR_LICENSES[${pkg}]" ]]; then
+			missing+=( "${pkg}" )
+		else
+			unset "VENDOR_LICENSES[${pkg}]"
+		fi
+	done
+
+	if [[ ${missing[@]} || ${VENDOR_LICENSES[@]} ]]; then
+		[[ ${missing[@]} ]] &&
+			eerror "License missing for packages: ${missing[*]}"
+		[[ ${VENDOR_LICENSES[@]} ]] &&
+			eerror "Vendored packages removed: ${!VENDOR_LICENSES[*]}"
+		die "VENDOR_LICENSES outdated"
+	fi
+}
+
 python_compile() {
 	# If we're testing, install for all implementations.
 	# If we're not, just get one wheel built.
