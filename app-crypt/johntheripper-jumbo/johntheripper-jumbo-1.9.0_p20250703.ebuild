@@ -81,6 +81,7 @@ src_prepare() {
 }
 
 get_enable_simd() {
+	local i
 	for i in "${CPU_FEATURES_MAP[@]}" ; do
 		if use "${i%:*}"; then
 			echo "--enable-simd=${i#*:}"
