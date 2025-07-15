@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools shell-completion toolchain-funcs pax-utils
+inherit autotools flag-o-matic toolchain-funcs pax-utils
 
 DESCRIPTION="Fast password cracker, community enhanced version"
 HOMEPAGE="http://www.openwall.com/john/"
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="bleeding-jumbo"
 	inherit git-r3
 else
-	HASH_COMMIT="b27f951a8e191210685c8421c90ca610cdd39dce"
+	HASH_COMMIT="8a72b12fe6e1626ef6014e5a190b9d1f69a9edde"
 	SRC_URI="https://github.com/openwall/john/archive/${HASH_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/john-${HASH_COMMIT}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
@@ -21,25 +21,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-
-# First matching flag will be used
-CPU_FEATURES_MAP=(
-	cpu_flags_x86_avx512bw:avx512bw
-	cpu_flags_x86_avx512f:avx512f
-	cpu_flags_x86_avx2:avx2
-	cpu_flags_x86_xop:xop
-	cpu_flags_x86_avx:avx
-	cpu_flags_x86_sse4_2:sse4.2
-	cpu_flags_x86_sse4_1:sse4.1
-	cpu_flags_x86_ssse3:ssse3
-	cpu_flags_x86_sse2:sse2
-
-	cpu_flags_ppc_altivec:altivec
-
-	cpu_flags_arm_neon:neon
-)
-
-IUSE="custom-cflags kerberos mpi opencl openmp pcap test ${CPU_FEATURES_MAP[*]%:*}"
+IUSE="custom-cflags kerberos mpi opencl openmp pcap"
 
 DEPEND=">=dev-libs/openssl-1.0.1:=
 	virtual/libcrypt:=
@@ -61,7 +43,7 @@ RDEPEND="${DEPEND}
 	dev-perl/Digest-SHA3
 	dev-perl/Digest-GOST
 	!app-crypt/johntheripper"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -80,17 +62,16 @@ src_prepare() {
 	sed -i 's#$prefix/share/john#/etc/john#' configure || die
 }
 
-get_enable_simd() {
-	for i in "${CPU_FEATURES_MAP[@]}" ; do
-		if use "${i%:*}"; then
-			echo "--enable-simd=${i#*:}"
-			break
-		fi
-	done
-}
-
 src_configure() {
 	cd src || die
+
+	if ! use custom-cflags ; then
+		strip-flags
+
+		# Nasty (and incomplete) workaround for bug #729422
+		filter-flags '-march=native'
+		append-flags $(test-flags-CC '-mno-avx')
+	fi
 
 	econf \
 		--enable-pkg-config \
@@ -102,8 +83,7 @@ src_configure() {
 		$(use_enable mpi) \
 		$(use_enable opencl) \
 		$(use_enable openmp) \
-		$(use_enable pcap) \
-		$(get_enable_simd)
+		$(use_enable pcap)
 }
 
 src_compile() {
@@ -115,68 +95,65 @@ src_compile() {
 src_test() {
 	pax-mark -mr run/john
 
+	# this probably causes the following failure:
+	# Testing: as400-des, AS/400 DES [DES 32/64]... PASS
+	# Error, Invalid signature line trying to link to dynamic format.
+	# Original format=as400-ssha1
+	sed '/.include /d' run/john.conf > run/john-test.conf
 	if use opencl; then
 		# GPU tests fail in portage, so run cpu only tests
-		./run/john --config=run/john.conf --device=cpu --test=0 --verbosity=2 || die
+		./run/john --config=run/john-test.conf --device=cpu --test=0 --verbosity=2 || die
 	else
 		# Weak tests
-		./run/john --config=run/john.conf --test=0 --verbosity=2 || die
+		./run/john --config=run/john-test.conf --test=0 --verbosity=2 || die
 		# Strong tests
 		#./run/john --test=1 --verbosity=2 || die
 	fi
+
+	rm john-test.conf || die
 }
 
 src_install() {
-	cd run || die
-
 	# Executables
-	dosbin john
-	newsbin mailer john-mailer
+	dosbin run/john
+	newsbin run/mailer john-mailer
 
 	pax-mark -mr "${ED}/usr/sbin/john"
 
+	# grep '$(LN)' Makefile.in | head -n-3 | tail -n+2 | cut -d' ' -f3 | cut -d/ -f3
 	local s
-	# find . -maxdepth 1 -type l -lname 'john'
-	for s in base64conv gpg2john rar2john unafs undrop unique unshadow zip2john
+	for s in \
+		unshadow unafs undrop unique ssh2john putty2john pfx2john keepass2john keyring2john \
+		zip2john gpg2john rar2john racf2john keychain2john kwallet2john pwsafe2john dmg2john \
+		hccap2john base64conv truecrypt_volume2john keystore2john
 	do
 		dosym john /usr/sbin/${s}
 	done
 
-	# find . -maxdepth 1 -type f -executable -name '*2john'
-	for s in racf2john hccap2john uaf2john putty2john dmg2john wpapcap2john bitlocker2john keepass2john
-	do
-		dosbin ${s}
-	done
-
 	# Scripts
 	exeinto /usr/share/john
-	doexe ./*.pl ./*.py
+	doexe run/*.pl
+	doexe run/*.py
 	insinto /usr/share/john
-	doins -r lib
-	doins ./*.lua
+	doins -r run/lib
+	cd run || die
 
 	local s
 	for s in *.pl *.py; do
-		dosym "../share/john/${s}" "/usr/bin/${s}"
+		dosym ../share/john/${s} /usr/bin/${s}
 	done
+	cd .. || die
 
 	if use opencl; then
 		insinto /etc/john
-		doins -r opencl
+		doins -r run/opencl
 	fi
 
 	# Config files
 	insinto /etc/john
-	doins ./*.chr password.lst
-	doins ./*.conf
-	doins -r rules ztex
-
-	# Completions
-	newbashcomp john.bash_completion john
-	bashcomp_alias john unique
-	newzshcomp john.zsh_completion _john
-
-	cd .. || die
+	doins run/*.chr run/password.lst
+	doins run/*.conf
+	doins -r run/rules run/ztex
 
 	# Documentation
 	rm -f doc/README doc/LICENSE || die
