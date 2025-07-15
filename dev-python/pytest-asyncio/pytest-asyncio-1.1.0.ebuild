@@ -25,19 +25,14 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 "
 
-EPYTEST_PLUGINS=( hypothesis )
+EPYTEST_PLUGINS=( hypothesis "${PN}" )
 EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		# fail due to mismatched warning count
-		tests/test_event_loop_fixture.py::test_closing_event_loop_in_sync_fixture_teardown_raises_warning
-		tests/test_event_loop_fixture.py::test_event_loop_fixture_asyncgen_error
-		tests/test_event_loop_fixture.py::test_event_loop_fixture_handles_unclosed_async_gen
-	)
-
-	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" pytest-asyncio )
-	epytest
-}
+EPYTEST_DESELECT=(
+	# fail due to mismatched warning count
+	tests/test_event_loop_fixture.py::test_closing_event_loop_in_sync_fixture_teardown_raises_warning
+	tests/test_event_loop_fixture.py::test_event_loop_fixture_asyncgen_error
+	tests/test_event_loop_fixture.py::test_event_loop_fixture_handles_unclosed_async_gen
+)
