@@ -18,12 +18,8 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/fatcat-1.1.1-musl-1.2.4-fixes.patch"
+	"${FILESDIR}/fatcat-1.1.1-cmake4-compat.patch"
 )
-
-src_prepare() {
-	sed -i -e 's#VERSION 2.8#VERSION 4.0#' CMakeLists.txt || die
-	cmake_src_prepare
-}
 
 src_install() {
 	cmake_src_install
