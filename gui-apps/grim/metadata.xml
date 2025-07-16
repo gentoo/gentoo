@@ -10,6 +10,7 @@
 	</use>
 	<upstream>
 		<remote-id type="sourcehut">~emersion/grim</remote-id>
+		<remote-id type="freedesktop-gitlab">emersion/grim</remote-id>
 		<bugs-to>https://todo.sr.ht/~emersion/grim</bugs-to>
 		<changelog>https://git.sr.ht/~emersion/grim/refs</changelog>
 	</upstream>
