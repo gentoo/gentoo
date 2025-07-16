@@ -25,6 +25,10 @@ SLOT="0/$(ver_cut 1-2)"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}"
+DEPEND="${RDEPEND}
+	sys-kernel/linux-headers
+	x11-libs/libdrm
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.1-no-strip.patch
