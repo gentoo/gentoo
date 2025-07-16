@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools optfeature
 
 DESCRIPTION="Generate a file list suitable for full or incremental backups"
-HOMEPAGE="https://github.com/miekg/rdup/releases"
+HOMEPAGE="https://github.com/miekg/rdup"
 SRC_URI="https://github.com/miekg/rdup/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
