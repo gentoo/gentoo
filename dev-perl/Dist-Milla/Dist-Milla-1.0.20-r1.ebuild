@@ -1,7 +1,7 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=MIYAGAWA
 DIST_VERSION=v1.0.20
@@ -10,8 +10,7 @@ inherit perl-module
 DESCRIPTION="Distribution builder, Opinionated but Unobtrusive"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
+
 RDEPEND="
 	>=dev-perl/Dist-Zilla-6.0.0
 	dev-perl/Dist-Zilla-Plugin-CheckChangesHasContent
@@ -43,6 +42,7 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
+
 PERL_RM_FILES=(
 	"t/author-pod-syntax.t"
 )
