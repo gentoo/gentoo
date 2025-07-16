@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/Trilinos/archive/${PN}-release-${MY_PV}.tar.gz
 S="${WORKDIR}/Trilinos-${PN}-release-${MY_PV}"
 
 LICENSE="BSD LGPL-2.1"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="
@@ -54,7 +54,7 @@ RDEPEND="
 	scalapack? ( sci-libs/scalapack )
 	scotch? ( sci-libs/scotch:= )
 	sparse? ( sci-libs/cxsparse sci-libs/umfpack )
-	superlu? ( <sci-libs/superlu-5.0.0:= )
+	superlu? ( sci-libs/superlu:= )
 	taucs? ( sci-libs/taucs )
 	tbb? ( dev-cpp/tbb:= )
 	tvmet? ( dev-libs/tvmet )
@@ -92,6 +92,12 @@ trilinos_conf() {
 	[[ -n ${dirs} ]] && mycmakeargs+=( "-D${2}_INCLUDE_DIRS=${dirs:1}" )
 }
 
+#
+# The following packages are currently disabled:
+#  - SEACAS is incompatible with netcdf, see
+#    https://github.com/trilinos/Trilinos/tree/master/packages/seacas#netcdf
+#
+
 src_configure() {
 	# Trilinos is a massive C++ project. Fixing all of the lto warnings and
 	# making safe for lto compilation/linking will be a massive
@@ -100,13 +106,16 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
 		-DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_SKIP_INSTALL_RPATH=ON
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES="$(usex all-packages)"
+		-DTrilinos_ENABLE_Adelus=OFF
+		-DTrilinos_ENABLE_Moertel=OFF
 		-DTrilinos_ENABLE_PyTrilinos=OFF
+		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_Amesos=ON
 		-DTrilinos_ENABLE_AztecOO=ON
 		-DTrilinos_ENABLE_EpetraExt=ON
@@ -155,10 +164,11 @@ src_configure() {
 		-DTPL_ENABLE_SuperLU="$(usex superlu)"
 		-DTPL_ENABLE_TAUCS="$(usex taucs)"
 		-DTPL_ENABLE_TBB="$(usex tbb)"
+		-DTPL_ENABLE_Thrust="$(usex cuda)"
 		-DTPL_ENABLE_TVMET="$(usex tvmet)"
 		-DTPL_ENABLE_UMFPACK="$(usex sparse)"
 		-DTPL_ENABLE_X11="$(usex X)"
-		-DTPL_ENABLE_yamlcpp="$(usex yaml)"
+		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
 	)
 
@@ -222,6 +232,13 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
+
+	# Clean up the mess:
+
+	# Let us move the bin directory out of the way to avoid potential
+	# clashes due to very generically named binaries such as
+	# "nvcc_wrapper", etc.
+	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 
 	# Move the cmake directory to the right location:
 	mkdir -p "${ED}/usr/$(get_libdir)"/cmake

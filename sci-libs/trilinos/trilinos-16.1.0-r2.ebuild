@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/Trilinos/archive/${PN}-release-${MY_PV}.tar.gz
 S="${WORKDIR}/Trilinos-${PN}-release-${MY_PV}"
 
 LICENSE="BSD LGPL-2.1"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="
@@ -54,7 +54,7 @@ RDEPEND="
 	scalapack? ( sci-libs/scalapack )
 	scotch? ( sci-libs/scotch:= )
 	sparse? ( sci-libs/cxsparse sci-libs/umfpack )
-	superlu? ( sci-libs/superlu:= )
+	superlu? ( <sci-libs/superlu-5.0.0:= )
 	taucs? ( sci-libs/taucs )
 	tbb? ( dev-cpp/tbb:= )
 	tvmet? ( dev-libs/tvmet )
@@ -100,7 +100,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_SKIP_INSTALL_RPATH=ON
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
@@ -155,11 +155,10 @@ src_configure() {
 		-DTPL_ENABLE_SuperLU="$(usex superlu)"
 		-DTPL_ENABLE_TAUCS="$(usex taucs)"
 		-DTPL_ENABLE_TBB="$(usex tbb)"
-		-DTPL_ENABLE_Thrust="$(usex cuda)"
 		-DTPL_ENABLE_TVMET="$(usex tvmet)"
 		-DTPL_ENABLE_UMFPACK="$(usex sparse)"
 		-DTPL_ENABLE_X11="$(usex X)"
-		-DTPL_ENABLE_yaml-cpp="$(usex yaml)"
+		-DTPL_ENABLE_yamlcpp="$(usex yaml)"
 		-DTPL_ENABLE_Zlib="$(usex zlib)"
 	)
 
@@ -223,13 +222,6 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-
-	# Clean up the mess:
-
-	# Let us move the bin directory out of the way to avoid potential
-	# clashes due to very generically named binaries such as
-	# "nvcc_wrapper", etc.
-	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 
 	# Move the cmake directory to the right location:
 	mkdir -p "${ED}/usr/$(get_libdir)"/cmake

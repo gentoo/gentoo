@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/Trilinos/archive/${PN}-release-${MY_PV}.tar.gz
 S="${WORKDIR}/Trilinos-${PN}-release-${MY_PV}"
 
 LICENSE="BSD LGPL-2.1"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="
@@ -92,12 +92,6 @@ trilinos_conf() {
 	[[ -n ${dirs} ]] && mycmakeargs+=( "-D${2}_INCLUDE_DIRS=${dirs:1}" )
 }
 
-#
-# The following packages are currently disabled:
-#  - SEACAS is incompatible with netcdf, see
-#    https://github.com/trilinos/Trilinos/tree/master/packages/seacas#netcdf
-#
-
 src_configure() {
 	# Trilinos is a massive C++ project. Fixing all of the lto warnings and
 	# making safe for lto compilation/linking will be a massive
@@ -112,10 +106,7 @@ src_configure() {
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES="$(usex all-packages)"
-		-DTrilinos_ENABLE_Adelus=OFF
-		-DTrilinos_ENABLE_Moertel=OFF
 		-DTrilinos_ENABLE_PyTrilinos=OFF
-		-DTrilinos_ENABLE_SEACAS=OFF
 		-DTrilinos_ENABLE_Amesos=ON
 		-DTrilinos_ENABLE_AztecOO=ON
 		-DTrilinos_ENABLE_EpetraExt=ON
