@@ -10,8 +10,7 @@ MY_P=${PN}-${COMMIT}
 
 DESCRIPTION="Rsync-bpc is a customized version of rsync that is used as part of BackupPC"
 HOMEPAGE="https://github.com/backuppc/rsync-bpc"
-SRC_URI="https://github.com/backuppc/rsync-bpc/archive/ed6c77370ebd6e2bbd986606757146941ada6857.tar.gz -> ${PN}_p20250706.tar.gz"
-
+SRC_URI="https://github.com/backuppc/rsync-bpc/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-3"
