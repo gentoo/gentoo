@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2025-07-16)
+# Masked for testing
+=dev-util/mesa_clc-25.2*
+=media-libs/mesa-25.2*
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-08)
 # Unmaintained, out of date, QA issues, outstanding bugs for compilation
 # failure / test failure. Still uses python 3.11. No revdeps.
