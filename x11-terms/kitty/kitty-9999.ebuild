@@ -160,11 +160,20 @@ src_compile() {
 		mv linux-package/share/doc/{${PN},${PF}} || die
 	fi
 
-	# generate default config as reference, command taken from docs/conf.rst
 	if ! tc-is-cross-compiler; then
+		# generate default config reference, command taken from docs/conf.rst
 		linux-package/bin/kitty +runpy \
 			'from kitty.config import *; print(commented_out_default_config())' \
 			> linux-package/share/doc/${PF}/kitty.conf || die
+
+		# generate shell completions, shell-integration/ has some "old" pre-gen
+		# ones that currently miss things (no bash, no kitten for zsh, etc...)
+		mkdir -p linux-package/share/bash-completion/completions || die
+		linux-package/bin/kitten __complete__ setup bash > ${_}/kitty || die
+		mkdir -p linux-package/share/fish/vendor_completions.d || die
+		linux-package/bin/kitten __complete__ setup fish > ${_}/kitty.fish || die
+		mkdir -p linux-package/share/zsh/site-functions || die
+		linux-package/bin/kitten __complete__ setup zsh > ${_}/_kitty || die
 	fi
 }
 
