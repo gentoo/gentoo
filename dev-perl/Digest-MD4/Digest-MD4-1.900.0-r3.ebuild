@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=MIKEM
 DIST_VERSION=1.9
@@ -13,12 +13,6 @@ LICENSE="|| ( Artistic GPL-1+ ) RSA"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 
-RDEPEND="
-	virtual/perl-File-Spec
-"
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-"
 src_compile() {
 	mymake=(
 		"OPTIMIZE=${CFLAGS}"
