@@ -40,7 +40,7 @@ HOMEPAGE="https://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng video_cards_intel ${ACCE_IUSE}"
+IUSE="blas clang clang-cuda cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng video_cards_intel ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )
