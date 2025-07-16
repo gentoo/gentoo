@@ -124,6 +124,7 @@ src_test() {
 	mkdir test || die
 	cp -r run/*.conf run/rules test || die
 	cd test || die
+	local file
 	for file in *.conf; do
 		sed -E 's/^.include <(.+)>$/.include "\1"/g' -i "$file" || die
 	done
