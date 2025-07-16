@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,6 @@ HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 
 LICENSE="GPL-3+"
 SLOT="${PV}"
-IUSE="emacs"
 
 BDEPEND+="
 	>=sys-devel/m4-1.4.16
@@ -49,8 +48,6 @@ RDEPEND="
 "
 
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
-
-PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
 PATCHES=(
 	"${FILESDIR}"/${MY_PN}-2.69-perl-5.26.patch
