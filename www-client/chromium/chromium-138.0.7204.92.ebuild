@@ -1240,7 +1240,7 @@ chromium_compile() {
 	# Build mksnapshot and pax-mark it.
 	if use pax-kernel; then
 		local x
-		for x in mksnapshot v8_context_snapshot_generator; do
+		for x in mksnapshot v8_context_snapshot_generator code_cache_generator; do
 			if tc-is-cross-compiler; then
 				eninja -C out/Release "host/${x}"
 				pax-mark m "out/Release/host/${x}"
