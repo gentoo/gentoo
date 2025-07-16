@@ -10,7 +10,7 @@ HOMEPAGE="https://log4cplus.sourceforge.io/ https://github.com/log4cplus/log4cpl
 SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-stable/${PV}/${P}.tar.xz"
 
 LICENSE="|| ( Apache-2.0 BSD-2 )"
-SLOT="0/3"
+SLOT="0/9"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="explicit-initialization iconv qt5 server test threads"
 RESTRICT="!test? ( test )"
