@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="elogind +locking pam systemd wayland X"
 REQUIRED_USE="
 	|| ( wayland X )
