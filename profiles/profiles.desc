@@ -378,6 +378,30 @@ mips		default/linux/mips/23.0/split-usr/n32				dev
 mips		default/linux/mips/23.0/split-usr/n64				stable
 mips		default/linux/mips/23.0/split-usr/multilib/n32			dev
 mips		default/linux/mips/23.0/split-usr/multilib/n64			dev
+mips		default/linux/mips/23.0/time64/mipsel/o32_sf			exp
+mips		default/linux/mips/23.0/time64/mipsel/o32_sf/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/o32			exp
+mips		default/linux/mips/23.0/time64/mipsel/o32/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n32		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n32/systemd	exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n64		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n64/systemd	exp
+mips		default/linux/mips/23.0/time64/o32_sf				exp
+mips		default/linux/mips/23.0/time64/o32_sf/systemd			exp
+mips		default/linux/mips/23.0/time64/o32				exp
+mips		default/linux/mips/23.0/time64/o32/systemd			exp
+mips		default/linux/mips/23.0/time64/multilib/n32			exp
+mips		default/linux/mips/23.0/time64/multilib/n32/systemd		exp
+mips		default/linux/mips/23.0/time64/multilib/n64			exp
+mips		default/linux/mips/23.0/time64/multilib/n64/systemd		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/o32_sf		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/o32		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/multilib/n32	exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/multilib/n64	exp
+mips		default/linux/mips/23.0/time64/split-usr/o32_sf			exp
+mips		default/linux/mips/23.0/time64/split-usr/o32			exp
+mips		default/linux/mips/23.0/time64/split-usr/multilib/n32		exp
+mips		default/linux/mips/23.0/time64/split-usr/multilib/n64		exp
 
 
 # PPC profiles
