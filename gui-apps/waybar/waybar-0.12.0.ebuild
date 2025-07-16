@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson
+inherit meson optfeature
 
 DESCRIPTION="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 HOMEPAGE="https://github.com/Alexays/Waybar"
@@ -98,4 +98,8 @@ src_configure() {
 		$(meson_use experimental)
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	optfeature "default icons support" "media-fonts/fontawesome"
 }
