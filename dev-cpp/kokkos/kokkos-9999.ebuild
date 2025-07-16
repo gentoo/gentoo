@@ -19,7 +19,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="+openmp test"
 RESTRICT="!test? ( test )"
 
