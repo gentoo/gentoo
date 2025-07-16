@@ -1,13 +1,19 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
+else
+	SRC_URI="https://github.com/kovidgoyal/kitty/releases/download/v${PV}/kitty-${PV}.tar.xz"
+	S=${WORKDIR}/kitty-${PV}
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
 
 DESCRIPTION="Terminfo for kitty, a GPU-based terminal emulator"
 HOMEPAGE="https://sw.kovidgoyal.net/kitty/"
-EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
 
 LICENSE="GPL-3"
 SLOT="0"
