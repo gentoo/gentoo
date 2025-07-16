@@ -64,7 +64,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
-	test unwind vaapi valgrind vdpau vulkan
+	sysprof test unwind vaapi valgrind vdpau vulkan
 	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -136,6 +136,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
+	sysprof? ( >=dev-util/sysprof-capture-3.38.0 )
 	video_cards_d3d12? ( >=dev-util/directx-headers-1.614.1[${MULTILIB_USEDEP}] )
 	valgrind? ( dev-debug/valgrind )
 	wayland? ( >=dev-libs/wayland-protocols-1.41 )
@@ -424,6 +425,7 @@ multilib_src_configure() {
 		$(meson_feature lm-sensors lmsensors)
 		$(meson_feature unwind libunwind)
 		$(meson_feature zstd)
+		$(meson_use sysprof)
 		$(meson_use cpu_flags_x86_sse2 sse2)
 		-Dvalgrind=$(usex valgrind auto disabled)
 		-Dvideo-codecs=$(usex proprietary-codecs "all" "all_free")
