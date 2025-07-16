@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=DMUEY
 DIST_VERSION=0.08
@@ -13,9 +13,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
 RDEPEND="
-	virtual/perl-Digest-MD5
 	dev-perl/libwww-perl
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-"
+BDEPEND="${RDEPEND}"
