@@ -144,7 +144,7 @@ src_compile() {
 		--disable-link-time-optimization
 		--ignore-compiler-warnings
 		--libdir-name=$(get_libdir)
-		--shell-integration="enabled no-rc no-sudo"
+		--shell-integration="enabled no-sudo"
 		--update-check-interval=0
 		--verbose
 	)
