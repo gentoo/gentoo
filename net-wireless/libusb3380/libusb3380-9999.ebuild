@@ -1,7 +1,7 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit cmake
 
 DESCRIPTION="USB3380 abstraction layer for libusb"
@@ -18,8 +18,12 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE=""
 
 DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+
+src_prepare() {
+	# fix build with cmake 4
+	sed -i -e "s/VERSION 2.8/VERSION 3.10/" CMakeLists.txt || die
+	cmake_src_prepare
+}
