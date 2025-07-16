@@ -12,4 +12,5 @@
 		<remote-id type="github">FreeCol/freecol</remote-id>
 		<remote-id type="sourceforge">freecol</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
