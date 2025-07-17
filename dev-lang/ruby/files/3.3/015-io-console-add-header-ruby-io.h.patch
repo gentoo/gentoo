@@ -1,0 +1,58 @@
+had been fixed by upstream in commit
+
+https://github.com/ruby/io-console/commit/dd013030dd276a7372df34cf43ada1c14d0cbc21
+
+This patch is a cherry picked version.
+
+From 3226f1e3cc4787d4a00e639ff763a8b4cfcd5cdd Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Sun, 29 Jun 2025 21:41:42 +0800
+Subject: [PATCH 1/2] [ruby/io-console]: add header "ruby/io.h" for rb_io_*
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+otherwise, when compiling using gcc 15 with "-flto
+-Werror=lto-type-mismatch", ext/io/console/extconf.h will have:
+
+> #define HAVE_RB_IO_PATH 1
+> #define HAVE_RB_IO_DESCRIPTOR 1
+> #define HAVE_RB_IO_GET_WRITE_IO 1
+> #define HAVE_RB_IO_CLOSED_P 1
+> #define HAVE_RB_IO_OPEN_DESCRIPTOR 1
+
+the build is failed with:
+
+> console.c:1417:1: error: static declaration of ‘rb_io_closed_p’ follows non-static declaration
+>  1417 | rb_io_closed_p(VALUE io)
+>       | ^~~~~~~~~~~~~~
+> ../../.././include/ruby/io.h:385:7: note: previous declaration of ‘rb_io_closed_p’ with type ‘VALUE(VALUE)’ {aka ‘long unsigned int(long unsigned int)’}
+>   385 | VALUE rb_io_closed_p(VALUE io);
+>       |       ^~~~~~~~~~~~~~
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/ext/io/console/extconf.rb b/ext/io/console/extconf.rb
+index 4ad7ed6996..dd3d221ae5 100644
+--- a/ext/io/console/extconf.rb
++++ b/ext/io/console/extconf.rb
+@@ -6,11 +6,11 @@
+ rescue
+ end
+ 
+-have_func("rb_io_path")
+-have_func("rb_io_descriptor")
+-have_func("rb_io_get_write_io")
+-have_func("rb_io_closed_p")
+-have_func("rb_io_open_descriptor")
++have_func("rb_io_path", "ruby/io.h")
++have_func("rb_io_descriptor", "ruby/io.h")
++have_func("rb_io_get_write_io", "ruby/io.h")
++have_func("rb_io_closed_p", "ruby/io.h")
++have_func("rb_io_open_descriptor", "ruby/io.h")
+ 
+ ok = true if RUBY_ENGINE == "ruby" || RUBY_ENGINE == "truffleruby"
+ hdr = nil
+-- 
+2.45.2
+
