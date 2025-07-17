@@ -21,7 +21,7 @@ else
 		SRC_URI="https://github.com/elalish/manifold/releases/download/v${PV}/${P}.tar.gz"
 	fi
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="Apache-2.0"

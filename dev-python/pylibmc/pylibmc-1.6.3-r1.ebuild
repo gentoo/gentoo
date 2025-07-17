@@ -39,7 +39,6 @@ PATCHES=(
 	"${FILESDIR}/pylibmc-1.6.1-fix-test-failures-r1.patch"
 )
 
-distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
 # needed for docs

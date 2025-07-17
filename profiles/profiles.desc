@@ -11,12 +11,6 @@
 
 # Alpha Profiles
 # @MAINTAINER: alpha@gentoo.org
-alpha		default/linux/alpha/17.0					exp
-alpha		default/linux/alpha/17.0/systemd/merged-usr			exp
-alpha		default/linux/alpha/17.0/desktop				exp
-alpha		default/linux/alpha/17.0/desktop/gnome				exp
-alpha		default/linux/alpha/17.0/desktop/gnome/systemd/merged-usr	exp
-alpha		default/linux/alpha/17.0/developer				exp
 alpha		default/linux/alpha/23.0					stable
 alpha		default/linux/alpha/23.0/systemd				stable
 alpha		default/linux/alpha/23.0/desktop				stable
@@ -29,26 +23,6 @@ alpha		default/linux/alpha/23.0/split-usr/desktop/gnome		stable
 
 # AMD64 Profiles
 # @MAINTAINER: amd64@gentoo.org
-amd64		default/linux/amd64/17.1					stable
-amd64		default/linux/amd64/17.1/selinux				exp
-amd64		default/linux/amd64/17.1/hardened				exp
-amd64		default/linux/amd64/17.1/hardened/selinux			exp
-amd64		default/linux/amd64/17.1/desktop				exp
-amd64		default/linux/amd64/17.1/desktop/gnome				exp
-amd64		default/linux/amd64/17.1/desktop/gnome/systemd/merged-usr	exp
-amd64		default/linux/amd64/17.1/desktop/plasma				exp
-amd64		default/linux/amd64/17.1/desktop/plasma/systemd/merged-usr	exp
-amd64		default/linux/amd64/17.1/desktop/systemd/merged-usr		exp
-amd64		default/linux/amd64/17.1/developer				exp
-amd64		default/linux/amd64/17.1/no-multilib				exp
-amd64		default/linux/amd64/17.1/no-multilib/hardened			exp
-amd64		default/linux/amd64/17.1/no-multilib/hardened/selinux		exp
-amd64		default/linux/amd64/17.1/no-multilib/systemd/merged-usr		exp
-amd64		default/linux/amd64/17.1/no-multilib/systemd/selinux/merged-usr	exp
-amd64		default/linux/amd64/17.1/systemd/merged-usr			stable
-amd64		default/linux/amd64/17.1/systemd/selinux/merged-usr		exp
-amd64		default/linux/amd64/17.1/clang					exp
-amd64		default/linux/amd64/17.1/systemd/clang/merged-usr		exp
 amd64		default/linux/amd64/23.0					stable
 amd64		default/linux/amd64/23.0/systemd				stable
 amd64		default/linux/amd64/23.0/desktop				stable
@@ -92,8 +66,6 @@ amd64		default/linux/amd64/23.0/split-usr/hardened/selinux		stable
 
 # AMD64 Profiles
 # @MAINTAINER: amd64@gentoo.org
-amd64		default/linux/amd64/17.0/x32					exp
-amd64		default/linux/amd64/17.0/x32/systemd/merged-usr			exp
 amd64		default/linux/amd64/23.0/x32					dev
 amd64		default/linux/amd64/23.0/x32/systemd				exp
 amd64		default/linux/amd64/23.0/split-usr/x32				exp
@@ -101,49 +73,6 @@ amd64		default/linux/amd64/23.0/split-usr/x32				exp
 
 # ARM Profiles
 # @MAINTAINER: arm@gentoo.org
-arm		default/linux/arm/17.0						exp
-arm		default/linux/arm/17.0/desktop					exp
-arm		default/linux/arm/17.0/desktop/gnome				exp
-arm		default/linux/arm/17.0/desktop/gnome/systemd/merged-usr		exp
-arm		default/linux/arm/17.0/desktop/plasma				exp
-arm		default/linux/arm/17.0/desktop/plasma/systemd/merged-usr	exp
-arm		default/linux/arm/17.0/developer				exp
-arm		default/linux/arm/17.0/armv4					exp
-arm		default/linux/arm/17.0/armv4/desktop				exp
-arm		default/linux/arm/17.0/armv4/desktop/gnome			exp
-arm		default/linux/arm/17.0/armv4/desktop/plasma			exp
-arm		default/linux/arm/17.0/armv4/developer				exp
-arm		default/linux/arm/17.0/armv4t					exp
-arm		default/linux/arm/17.0/armv4t/desktop				exp
-arm		default/linux/arm/17.0/armv4t/desktop/gnome			exp
-arm		default/linux/arm/17.0/armv4t/desktop/plasma			exp
-arm		default/linux/arm/17.0/armv4t/developer				exp
-arm		default/linux/arm/17.0/armv4t/systemd/merged-usr		exp
-arm		default/linux/arm/17.0/armv5te					exp
-arm		default/linux/arm/17.0/armv5te/desktop				exp
-arm		default/linux/arm/17.0/armv5te/desktop/gnome			exp
-arm		default/linux/arm/17.0/armv5te/desktop/plasma			exp
-arm		default/linux/arm/17.0/armv5te/developer			exp
-arm		default/linux/arm/17.0/armv5te/systemd/merged-usr		exp
-arm		default/linux/arm/17.0/armv6j					exp
-arm		default/linux/arm/17.0/armv6j/hardened				exp
-arm		default/linux/arm/17.0/armv6j/hardened/selinux			exp
-arm		default/linux/arm/17.0/armv6j/desktop				exp
-arm		default/linux/arm/17.0/armv6j/desktop/gnome			exp
-arm		default/linux/arm/17.0/armv6j/desktop/plasma			exp
-arm		default/linux/arm/17.0/armv6j/developer				exp
-arm		default/linux/arm/17.0/armv6j/selinux				exp
-arm		default/linux/arm/17.0/armv6j/systemd/merged-usr		exp
-arm		default/linux/arm/17.0/armv7a					exp
-arm		default/linux/arm/17.0/armv7a/hardened				exp
-arm		default/linux/arm/17.0/armv7a/hardened/selinux			exp
-arm		default/linux/arm/17.0/armv7a/desktop				exp
-arm		default/linux/arm/17.0/armv7a/desktop/gnome			exp
-arm		default/linux/arm/17.0/armv7a/desktop/gnome/systemd/merged-usr	exp
-arm		default/linux/arm/17.0/armv7a/desktop/plasma			exp
-arm		default/linux/arm/17.0/armv7a/desktop/plasma/systemd/merged-usr	exp
-arm		default/linux/arm/17.0/armv7a/developer				exp
-arm		default/linux/arm/17.0/armv7a/systemd/merged-usr		exp
 arm		default/linux/arm/23.0						stable
 arm		default/linux/arm/23.0/desktop					dev
 arm		default/linux/arm/23.0/desktop/gnome				dev
@@ -210,20 +139,6 @@ arm		default/linux/arm/23.0/split-usr/armv7a_hf/desktop/plasma	dev
 
 # ARM64 Profiles
 # @MAINTAINER: arm64@gentoo.org
-arm64		default/linux/arm64/17.0					exp
-arm64		default/linux/arm64/17.0/hardened				exp
-arm64		default/linux/arm64/17.0/hardened/selinux			exp
-arm64		default/linux/arm64/17.0/desktop				exp
-arm64		default/linux/arm64/17.0/desktop/gnome				exp
-arm64		default/linux/arm64/17.0/desktop/gnome/systemd/merged-usr	exp
-arm64		default/linux/arm64/17.0/desktop/plasma				exp
-arm64		default/linux/arm64/17.0/desktop/plasma/systemd/merged-usr	exp
-arm64		default/linux/arm64/17.0/desktop/systemd/merged-usr		exp
-arm64		default/linux/arm64/17.0/developer				exp
-arm64		default/linux/arm64/17.0/systemd/merged-usr			exp
-arm64		default/linux/arm64/17.0/systemd/selinux/merged-usr		exp
-arm64		default/linux/arm64/17.0/llvm					exp
-arm64		default/linux/arm64/17.0/systemd/llvm/merged-usr		exp
 arm64		default/linux/arm64/23.0					stable
 arm64		default/linux/arm64/23.0/hardened				dev
 arm64		default/linux/arm64/23.0/hardened/systemd			dev
@@ -251,8 +166,6 @@ arm64		default/linux/arm64/23.0/split-usr/llvm				exp
 # @MAINTAINER: steev@gentoo.org, slyfox@gentoo.org
 # big-endian profile intentionally does not contain all flavours
 # until it's lightly tested.
-arm64		default/linux/arm64/17.0/big-endian				exp
-arm64		default/linux/arm64/17.0/big-endian/systemd/merged-usr		exp
 arm64		default/linux/arm64/23.0/big-endian				exp
 arm64		default/linux/arm64/23.0/big-endian/systemd			exp
 arm64		default/linux/arm64/23.0/split-usr/big-endian			exp
@@ -260,10 +173,6 @@ arm64		default/linux/arm64/23.0/split-usr/big-endian			exp
 
 # HPPA Profiles
 # @MAINTAINER: hppa@gentoo.org
-hppa		default/linux/hppa/17.0						exp
-hppa		default/linux/hppa/17.0/systemd/merged-usr			exp
-hppa		default/linux/hppa/17.0/desktop					exp
-hppa		default/linux/hppa/17.0/developer				exp
 hppa		default/linux/hppa/23.0/hppa1.1					stable
 hppa		default/linux/hppa/23.0/hppa1.1/systemd				stable
 hppa		default/linux/hppa/23.0/hppa1.1/desktop				exp
@@ -280,19 +189,6 @@ hppa		default/linux/hppa/23.0/hppa2.0/split-usr/desktop		exp
 
 # LoongArch Profiles
 # @MAINTAINER: loong@gentoo.org
-loong		default/linux/loong/22.0/la64v100/lp64d						exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop					exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/gnome				exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/gnome/systemd			exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/gnome/systemd/merged-usr	exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma				exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma/systemd			exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/plasma/systemd/merged-usr	exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd				exp
-loong		default/linux/loong/22.0/la64v100/lp64d/desktop/systemd/merged-usr		exp
-loong		default/linux/loong/22.0/la64v100/lp64d/developer				exp
-loong		default/linux/loong/22.0/la64v100/lp64d/systemd					exp
-loong		default/linux/loong/22.0/la64v100/lp64d/systemd/merged-usr			exp
 loong		default/linux/loong/23.0/la64v100/lp64d						stable
 loong		default/linux/loong/23.0/la64v100/lp64d/llvm					exp
 loong		default/linux/loong/23.0/la64v100/lp64d/llvm/systemd				exp
@@ -311,8 +207,6 @@ loong		default/linux/loong/23.0/la64v100/split-usr/lp64d/desktop/plasma		stable
 
 # M68K Profiles
 # @MAINTAINER: m68k@gentoo.org
-m68k		default/linux/m68k/17.0						exp
-m68k		default/linux/m68k/17.0/systemd/merged-usr			exp
 m68k		default/linux/m68k/23.0						exp
 m68k		default/linux/m68k/23.0/systemd					exp
 m68k		default/linux/m68k/23.0/split-usr				exp
@@ -321,27 +215,6 @@ m68k		default/linux/m68k/23.0/time64					exp
 
 # MIPS Profiles
 # @MAINTAINER: mips@gentoo.org
-mips		default/linux/mips/17.0/o32					exp
-mips		default/linux/mips/17.0/o32/systemd/merged-usr			exp
-mips		default/linux/mips/17.0/n32					exp
-mips		default/linux/mips/17.0/n32/systemd/merged-usr			exp
-mips		default/linux/mips/17.0/n64					exp
-mips		default/linux/mips/17.0/n64/systemd/merged-usr			exp
-mips		default/linux/mips/17.0/multilib/o32				exp
-mips		default/linux/mips/17.0/multilib/n32				exp
-mips		default/linux/mips/17.0/multilib/n32/systemd/merged-usr		exp
-mips		default/linux/mips/17.0/multilib/n64				exp
-mips		default/linux/mips/17.0/mipsel/o32				exp
-mips		default/linux/mips/17.0/mipsel/o32/systemd/merged-usr		exp
-mips		default/linux/mips/17.0/mipsel/n32				exp
-mips		default/linux/mips/17.0/mipsel/n32/systemd/merged-usr		exp
-mips		default/linux/mips/17.0/mipsel/n64				exp
-mips		default/linux/mips/17.0/mipsel/n64/systemd/merged-usr		exp
-mips		default/linux/mips/17.0/mipsel/multilib/o32			exp
-mips		default/linux/mips/17.0/mipsel/multilib/n32			exp
-mips		default/linux/mips/17.0/mipsel/multilib/n32/systemd/merged-usr	exp
-mips		default/linux/mips/17.0/mipsel/multilib/n64			exp
-mips		default/linux/mips/17.0/mipsel/multilib/n64/systemd/merged-usr	exp
 mips		default/linux/mips/23.0/mipsel/o32_sf				stable
 mips		default/linux/mips/23.0/mipsel/o32_sf/systemd			stable
 mips		default/linux/mips/23.0/mipsel/o32				stable
@@ -378,16 +251,40 @@ mips		default/linux/mips/23.0/split-usr/n32				dev
 mips		default/linux/mips/23.0/split-usr/n64				stable
 mips		default/linux/mips/23.0/split-usr/multilib/n32			dev
 mips		default/linux/mips/23.0/split-usr/multilib/n64			dev
+mips		default/linux/mips/23.0/time64/mipsel/o32_sf			exp
+mips		default/linux/mips/23.0/time64/mipsel/o32_sf/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/o32			exp
+mips		default/linux/mips/23.0/time64/mipsel/o32/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/n32			exp
+mips		default/linux/mips/23.0/time64/mipsel/n32/systemd		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n32		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n32/systemd	exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n64		exp
+mips		default/linux/mips/23.0/time64/mipsel/multilib/n64/systemd	exp
+mips		default/linux/mips/23.0/time64/o32_sf				exp
+mips		default/linux/mips/23.0/time64/o32_sf/systemd			exp
+mips		default/linux/mips/23.0/time64/o32				exp
+mips		default/linux/mips/23.0/time64/o32/systemd			exp
+mips		default/linux/mips/23.0/time64/n32				exp
+mips		default/linux/mips/23.0/time64/n32/systemd			exp
+mips		default/linux/mips/23.0/time64/multilib/n32			exp
+mips		default/linux/mips/23.0/time64/multilib/n32/systemd		exp
+mips		default/linux/mips/23.0/time64/multilib/n64			exp
+mips		default/linux/mips/23.0/time64/multilib/n64/systemd		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/o32_sf		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/o32		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/n32		exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/multilib/n32	exp
+mips		default/linux/mips/23.0/time64/split-usr/mipsel/multilib/n64	exp
+mips		default/linux/mips/23.0/time64/split-usr/o32_sf			exp
+mips		default/linux/mips/23.0/time64/split-usr/o32			exp
+mips		default/linux/mips/23.0/time64/split-usr/n32			exp
+mips		default/linux/mips/23.0/time64/split-usr/multilib/n32		exp
+mips		default/linux/mips/23.0/time64/split-usr/multilib/n64		exp
 
 
 # PPC profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc@gentoo.org, musl@gentoo.org
-ppc		default/linux/ppc/17.0						exp
-ppc		default/linux/ppc/17.0/desktop					exp
-ppc		default/linux/ppc/17.0/desktop/gnome				exp
-ppc		default/linux/ppc/17.0/desktop/gnome/systemd/merged-usr		exp
-ppc		default/linux/ppc/17.0/systemd/merged-usr			exp
-ppc		default/linux/ppc/17.0/developer				exp
 ppc		default/linux/ppc/23.0						stable
 ppc		default/linux/ppc/23.0/desktop					stable
 ppc		default/linux/ppc/23.0/desktop/gnome				stable
@@ -400,12 +297,6 @@ ppc		default/linux/ppc/23.0/split-usr/desktop/gnome			stable
 
 # PPC64 profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
-ppc64		default/linux/ppc64/17.0					exp
-ppc64		default/linux/ppc64/17.0/desktop				exp
-ppc64		default/linux/ppc64/17.0/desktop/gnome				exp
-ppc64		default/linux/ppc64/17.0/desktop/gnome/systemd/merged-usr	exp
-ppc64		default/linux/ppc64/17.0/systemd/merged-usr			exp
-ppc64		default/linux/ppc64/17.0/developer				exp
 ppc64		default/linux/ppc64/23.0					stable
 ppc64		default/linux/ppc64/23.0/desktop				stable
 ppc64		default/linux/ppc64/23.0/desktop/gnome				stable
@@ -418,16 +309,6 @@ ppc64		default/linux/ppc64/23.0/split-usr/desktop/gnome		stable
 
 # PPC64LE profiles
 # @MAINTAINER: gyakovlev@gentoo.org, ppc64@gentoo.org, musl@gentoo.org
-ppc64		default/linux/ppc64le/17.0					exp
-ppc64		default/linux/ppc64le/17.0/desktop				exp
-ppc64		default/linux/ppc64le/17.0/desktop/gnome			exp
-ppc64		default/linux/ppc64le/17.0/desktop/gnome/systemd/merged-usr	exp
-ppc64		default/linux/ppc64le/17.0/desktop/plasma			exp
-ppc64		default/linux/ppc64le/17.0/desktop/plasma/systemd/merged-usr	exp
-ppc64		default/linux/ppc64le/17.0/desktop/systemd/merged-usr		exp
-ppc64		default/linux/ppc64le/17.0/systemd/merged-usr			exp
-ppc64		default/linux/ppc64le/17.0/developer				exp
-ppc64		default/linux/ppc64le/17.0/ieee-long-double			exp
 ppc64		default/linux/ppc64le/23.0					stable
 ppc64		default/linux/ppc64le/23.0/desktop				stable
 ppc64		default/linux/ppc64le/23.0/desktop/gnome			stable
@@ -444,33 +325,6 @@ ppc64		default/linux/ppc64le/23.0/split-usr/desktop/plasma		stable
 
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
-riscv		default/linux/riscv/20.0/rv64gc/lp64d					exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop				exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome/systemd		exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/gnome/systemd/merged-usr	exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma/systemd		exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/plasma/systemd/merged-usr	exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/systemd			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/desktop/systemd/merged-usr	exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/systemd				exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/systemd/merged-usr		exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64					exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop				exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome/systemd		exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/gnome/systemd/merged-usr	exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma/systemd		exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/plasma/systemd/merged-usr	exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/systemd			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/desktop/systemd/merged-usr		exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/systemd				exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/systemd/merged-usr			exp
-riscv		default/linux/riscv/20.0/rv64gc/multilib				exp
-riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd			exp
-riscv		default/linux/riscv/20.0/rv64gc/multilib/systemd/merged-usr		exp
 riscv		default/linux/riscv/23.0/rv64/lp64d					stable
 riscv		default/linux/riscv/23.0/rv64/lp64d/desktop				dev
 riscv		default/linux/riscv/23.0/rv64/lp64d/desktop/gnome			dev
@@ -508,10 +362,6 @@ riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32				exp
 
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
-s390		default/linux/s390/17.0						exp
-s390		default/linux/s390/17.0/s390x					exp
-s390		default/linux/s390/17.0/systemd/merged-usr			exp
-s390		default/linux/s390/17.0/s390x/systemd/merged-usr		exp
 s390		default/linux/s390/23.0						stable
 s390		default/linux/s390/23.0/systemd					dev
 s390		default/linux/s390/23.0/split-usr				dev
@@ -522,14 +372,6 @@ s390		default/linux/s390/23.0/s390x/systemd				stable
 
 # SPARC Profiles
 # @MAINTAINER: sparc@gentoo.org
-sparc		default/linux/sparc/17.0					exp
-sparc		default/linux/sparc/17.0/desktop				exp
-sparc		default/linux/sparc/17.0/developer				exp
-sparc		default/linux/sparc/17.0/systemd/merged-usr			exp
-sparc		default/linux/sparc/17.0/64ul					exp
-sparc		default/linux/sparc/17.0/64ul/desktop				exp
-sparc		default/linux/sparc/17.0/64ul/developer				exp
-sparc		default/linux/sparc/17.0/64ul/systemd/merged-usr		exp
 sparc		default/linux/sparc/23.0					stable
 sparc		default/linux/sparc/23.0/desktop				dev
 sparc		default/linux/sparc/23.0/systemd				dev
@@ -544,17 +386,6 @@ sparc		default/linux/sparc/23.0/split-usr/64ul/desktop			stable
 
 # x86 Profiles
 # @MAINTAINER: x86@gentoo.org
-x86		default/linux/x86/17.0						stable
-x86		default/linux/x86/17.0/selinux					exp
-x86		default/linux/x86/17.0/hardened					exp
-x86		default/linux/x86/17.0/hardened/selinux				exp
-x86		default/linux/x86/17.0/desktop					exp
-x86		default/linux/x86/17.0/desktop/gnome				exp
-x86		default/linux/x86/17.0/desktop/gnome/systemd/merged-usr		exp
-x86		default/linux/x86/17.0/desktop/plasma				exp
-x86		default/linux/x86/17.0/desktop/plasma/systemd/merged-usr	exp
-x86		default/linux/x86/17.0/developer				exp
-x86		default/linux/x86/17.0/systemd/merged-usr			exp
 x86		default/linux/x86/23.0/i686					stable
 x86		default/linux/x86/23.0/i686/systemd				stable
 x86		default/linux/x86/23.0/i686/hardened				stable
@@ -611,10 +442,6 @@ x86		default/linux/x86/23.0/i486/time64/split-usr/hardened/selinux	dev
 
 # musl profiles
 # @MAINTAINER: musl@gentoo.org
-amd64		default/linux/amd64/17.0/musl					exp
-amd64		default/linux/amd64/17.0/musl/clang				exp
-amd64		default/linux/amd64/17.0/musl/hardened				exp
-amd64		default/linux/amd64/17.0/musl/hardened/selinux			exp
 amd64		default/linux/amd64/23.0/musl					dev
 amd64		default/linux/amd64/23.0/musl/llvm				exp
 amd64		default/linux/amd64/23.0/musl/hardened				exp
@@ -623,12 +450,6 @@ amd64		default/linux/amd64/23.0/split-usr/musl				dev
 amd64		default/linux/amd64/23.0/split-usr/musl/llvm			exp
 amd64		default/linux/amd64/23.0/split-usr/musl/hardened		exp
 amd64		default/linux/amd64/23.0/split-usr/musl/hardened/selinux	exp
-arm		default/linux/arm/17.0/musl/armv6j				exp
-arm		default/linux/arm/17.0/musl/armv6j/hardened			exp
-arm		default/linux/arm/17.0/musl/armv6j/hardened/selinux		exp
-arm		default/linux/arm/17.0/musl/armv7a				exp
-arm		default/linux/arm/17.0/musl/armv7a/hardened			exp
-arm		default/linux/arm/17.0/musl/armv7a/hardened/selinux		exp
 arm		default/linux/arm/23.0/armv6j_hf/musl				dev
 arm		default/linux/arm/23.0/armv6j_hf/musl/hardened			exp
 arm		default/linux/arm/23.0/armv6j_hf/musl/hardened/selinux		exp
@@ -641,10 +462,6 @@ arm		default/linux/arm/23.0/split-usr/armv6j_hf/musl/hardened/selinux	exp
 arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl			dev
 arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl/hardened		exp
 arm		default/linux/arm/23.0/split-usr/armv7a_hf/musl/hardened/selinux	exp
-arm64		default/linux/arm64/17.0/musl					exp
-arm64		default/linux/arm64/17.0/musl/llvm				exp
-arm64		default/linux/arm64/17.0/musl/hardened				exp
-arm64		default/linux/arm64/17.0/musl/hardened/selinux			exp
 arm64		default/linux/arm64/23.0/musl					dev
 arm64		default/linux/arm64/23.0/musl/llvm				exp
 arm64		default/linux/arm64/23.0/musl/hardened				exp
@@ -653,13 +470,8 @@ arm64		default/linux/arm64/23.0/split-usr/musl				dev
 arm64		default/linux/arm64/23.0/split-usr/musl/llvm			exp
 arm64		default/linux/arm64/23.0/split-usr/musl/hardened		exp
 arm64		default/linux/arm64/23.0/split-usr/musl/hardened/selinux	exp
-m68k		default/linux/m68k/17.0/musl					exp
 m68k		default/linux/m68k/23.0/musl					exp
 m68k		default/linux/m68k/23.0/split-usr/musl				exp
-mips		default/linux/mips/17.0/o32/musl				exp
-mips		default/linux/mips/17.0/n64/musl				exp
-mips		default/linux/mips/17.0/mipsel/o32/musl				exp
-mips		default/linux/mips/17.0/mipsel/n64/musl				exp
 mips		default/linux/mips/23.0/mipsel/o32/musl				dev
 mips		default/linux/mips/23.0/mipsel/n64/musl				exp
 mips		default/linux/mips/23.0/o32/musl				dev
@@ -668,26 +480,18 @@ mips		default/linux/mips/23.0/split-usr/mipsel/o32/musl		exp
 mips		default/linux/mips/23.0/split-usr/mipsel/n64/musl		exp
 mips		default/linux/mips/23.0/split-usr/o32/musl			exp
 mips		default/linux/mips/23.0/split-usr/n64/musl			exp
-ppc		default/linux/ppc/17.0/musl					exp
-ppc		default/linux/ppc/17.0/musl/hardened				exp
 ppc		default/linux/ppc/23.0/musl					dev
 ppc		default/linux/ppc/23.0/musl/hardened				exp
 ppc		default/linux/ppc/23.0/split-usr/musl				dev
 ppc		default/linux/ppc/23.0/split-usr/musl/hardened			exp
-ppc64		default/linux/ppc64/17.0/musl					exp
-ppc64		default/linux/ppc64/17.0/musl/hardened				exp
 ppc64		default/linux/ppc64/23.0/musl					dev
 ppc64		default/linux/ppc64/23.0/musl/hardened				exp
 ppc64		default/linux/ppc64/23.0/split-usr/musl				dev
 ppc64		default/linux/ppc64/23.0/split-usr/musl/hardened		exp
-ppc64		default/linux/ppc64le/17.0/musl					exp
-ppc64		default/linux/ppc64le/17.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/23.0/musl					dev
 ppc64		default/linux/ppc64le/23.0/musl/hardened			exp
 ppc64		default/linux/ppc64le/23.0/split-usr/musl			dev
 ppc64		default/linux/ppc64le/23.0/split-usr/musl/hardened		exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64d/musl			exp
-riscv		default/linux/riscv/20.0/rv64gc/lp64/musl			exp
 riscv		default/linux/riscv/23.0/rv64/lp64d/musl			dev
 riscv		default/linux/riscv/23.0/rv64/lp64/musl				dev
 riscv		default/linux/riscv/23.0/rv64/split-usr/lp64d/musl		dev
@@ -696,8 +500,6 @@ riscv		default/linux/riscv/23.0/rv32/ilp32d/musl			exp
 riscv		default/linux/riscv/23.0/rv32/ilp32/musl			exp
 riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32d/musl		exp
 riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32/musl		exp
-x86		default/linux/x86/17.0/musl					exp
-x86		default/linux/x86/17.0/musl/selinux				exp
 x86		default/linux/x86/23.0/i686/musl				dev
 x86		default/linux/x86/23.0/i686/musl/selinux			exp
 x86		default/linux/x86/23.0/i686/split-usr/musl			dev
@@ -720,18 +522,7 @@ riscv-linux	prefix/linux/riscv						exp
 x86-linux	prefix/linux/x86						exp
 
 # Linux Standalone Profiles
-amd64-linux	default/linux/amd64/17.0/no-multilib/prefix/kernel-3.2+		exp
-amd64-linux	default/linux/amd64/17.0/no-multilib/prefix/kernel-2.6.32+	exp
-amd64-linux	default/linux/amd64/17.0/no-multilib/prefix/kernel-2.6.16+	exp
-amd64-linux	default/linux/amd64/17.1/no-multilib/prefix/kernel-3.2+		exp
-amd64-linux	default/linux/amd64/17.1/no-multilib/prefix/kernel-2.6.32+	exp
-amd64-linux	default/linux/amd64/17.1/no-multilib/prefix/kernel-2.6.16+	exp
-riscv-linux	default/linux/riscv/20.0/rv64gc/lp64d/prefix/kernel-3.2+	exp
-x86-linux	default/linux/x86/17.0/prefix/kernel-3.2+			exp
-x86-linux	default/linux/x86/17.0/prefix/kernel-2.6.32+			exp
-x86-linux	default/linux/x86/17.0/prefix/kernel-2.6.16+			exp
-arm-linux	default/linux/arm/17.0/armv7a/prefix/kernel-3.2+		exp
-arm64-linux	default/linux/arm64/17.0/prefix/kernel-3.2+			exp
+# ??
 
 # macOS Profiles
 ppc-macos	prefix/darwin/macos/10.5/ppc/gcc				exp

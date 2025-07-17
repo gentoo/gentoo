@@ -4,12 +4,12 @@
 EAPI=8
 
 DESCRIPTION="A filesystem backup utility based on rsync"
-HOMEPAGE="https://www.rsnapshot.org"
-SRC_URI="https://www.rsnapshot.org/downloads/${P}.tar.gz"
+HOMEPAGE="https://rsnapshot.org/"
+SRC_URI="https://rsnapshot.org/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ppc ppc64 sparc x86"
 
 RDEPEND=">=dev-lang/perl-5.8.2
 	dev-perl/Lchown

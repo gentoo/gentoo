@@ -1,0 +1,37 @@
+Comment out if-defs that cause build falure.
+
+Suggested-by: Armas Spann <zappel@simple-co.de>
+
+--- a/src/runtime/src/native/external/llvm-libunwind/src/Registers.hpp
++++ b/src/runtime/src/native/external/llvm-libunwind/src/Registers.hpp
+@@ -318,11 +318,13 @@
+ class _LIBUNWIND_HIDDEN Registers_x86_64;
+ extern "C" void __libunwind_Registers_x86_64_jumpto(Registers_x86_64 *);
+ 
++/* not applicable if libunwind is used
+ #if defined(_LIBUNWIND_USE_CET)
+ extern "C" void *__libunwind_cet_get_jump_target() {
+   return reinterpret_cast<void *>(&__libunwind_Registers_x86_64_jumpto);
+ }
+ #endif
++*/
+ 
+ class _LIBUNWIND_HIDDEN Registers_x86_64 {
+ public:
+--- a/src/runtime/src/native/external/llvm-libunwind/src/UnwindCursor.hpp
++++ b/src/runtime/src/native/external/llvm-libunwind/src/UnwindCursor.hpp
+@@ -3022,12 +3022,14 @@
+ }
+ #endif
+ 
++/* not applicable if libunwind is used
+ #if defined(_LIBUNWIND_USE_CET)
+ extern "C" void *__libunwind_cet_get_registers(unw_cursor_t *cursor) {
+   AbstractUnwindCursor *co = (AbstractUnwindCursor *)cursor;
+   return co->get_registers();
+ }
+ #endif
++*/
+ } // namespace libunwind
+ 
+ #endif // __UNWINDCURSOR_HPP__

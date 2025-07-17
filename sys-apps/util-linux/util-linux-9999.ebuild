@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 TMPFILES_OPTIONAL=1
 
 inherit pam python-r1 meson-multilib tmpfiles toolchain-funcs

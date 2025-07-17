@@ -26,8 +26,8 @@ EGIT_REPO_URI="https://github.com/python/cpython.git"
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm jit
-	libedit +ncurses pgo +readline +sqlite +ssl tail-call-interp test tk valgrind
+	bluetooth debug +ensurepip examples gdbm jit libedit +ncurses pgo
+	+readline +sqlite +ssl tail-call-interp test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -41,13 +41,13 @@ RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-arch/zstd:=
+	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libintl
-	ensurepip? ( dev-python/ensurepip-pip )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -87,8 +87,8 @@ BDEPEND="
 		')
 	)
 "
-RDEPEND+="
-	!build? ( app-misc/mime-types )
+PDEPEND="
+	ensurepip? ( dev-python/ensurepip-pip )
 "
 
 # large file tests involve a 2.5G file being copied (duplicated)

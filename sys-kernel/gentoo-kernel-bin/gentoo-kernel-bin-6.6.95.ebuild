@@ -3,9 +3,8 @@
 
 EAPI=8
 
-KERNEL_EFI_ZBOOT=1
 KERNEL_IUSE_GENERIC_UKI=1
-KERNEL_IUSE_SECUREBOOT=1
+KERNEL_IUSE_MODULES_SIGN=1
 
 inherit kernel-install toolchain-funcs unpacker
 
@@ -111,6 +110,15 @@ src_configure() {
 	)
 
 	local kernel_dir="${BINPKG}/image/usr/src/linux-${KPV}"
+
+	# If this is set it will have an effect on the name of the output
+	# image. Set this variable to track this setting.
+	if grep -q "CONFIG_EFI_ZBOOT=y" "${kernel_dir}/.config"; then
+		KERNEL_EFI_ZBOOT=1
+	elif use arm64 && use generic-uki; then
+		die "USE=generic-uki requires a CONFIG_EFI_ZBOOT enabled build"
+	fi
+
 	local image="${kernel_dir}/$(dist-kernel_get_image_path)"
 	local uki="${image%/*}/uki.efi"
 	if [[ -s ${uki} ]]; then

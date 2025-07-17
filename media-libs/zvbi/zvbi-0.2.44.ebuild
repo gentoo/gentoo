@@ -11,7 +11,7 @@ SRC_URI="https://github.com/zapping-vbi/zvbi/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
 IUSE="doc dvb nls proxy test v4l X"
 RESTRICT="!test? ( test )"
 

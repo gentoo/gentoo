@@ -75,6 +75,7 @@ src_configure() {
 		--without-wx \
 		$(use_enable 3dnow) \
 		$(use_enable avx) \
+		$(use_enable avx evex) \
 		$(use_enable debugger) \
 		$(use_enable doc docbook) \
 		$(use_enable gdb gdb-stub) \

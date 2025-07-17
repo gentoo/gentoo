@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson
+inherit meson optfeature
 
 DESCRIPTION="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 HOMEPAGE="https://github.com/Alexays/Waybar"
@@ -98,4 +98,8 @@ src_configure() {
 		$(meson_use experimental)
 	)
 	meson_src_configure
+}
+
+pkg_postinst() {
+	optfeature "default icons support" "media-fonts/fontawesome"
 }

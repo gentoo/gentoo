@@ -48,10 +48,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.9.0-incompatible-pointer-types.patch
-)
-
 src_prepare() {
 	default
 
@@ -61,7 +57,6 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Dwf_shell=enabled
-		-Denable_wdisplays=true
 	)
 
 	meson_src_configure

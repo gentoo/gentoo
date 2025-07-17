@@ -26,7 +26,7 @@ PIPEWIRE_DOCS_PREBUILT_DEV=sam
 PIPEWIRE_DOCS_VERSION="$(ver_cut 1-2).0"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]] ; then
@@ -368,7 +368,7 @@ multilib_src_install_all() {
 		newins "${FILESDIR}"/pipewire.desktop-r2 pipewire.desktop
 
 		exeinto /usr/bin
-		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r3 gentoo-pipewire-launcher
+		newexe "${FILESDIR}"/gentoo-pipewire-launcher.in-r4 gentoo-pipewire-launcher
 
 		doman "${FILESDIR}"/gentoo-pipewire-launcher.1
 

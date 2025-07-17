@@ -44,9 +44,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/libbluray-1.3.4-min-java.patch"
+	"${FILESDIR}"/${PN}-1.3.4-min-java.patch
 	"${FILESDIR}"/${PN}-jars.patch
 	"${FILESDIR}"/${PN}-1.3.4-fix-libudfread-option.patch
+	"${FILESDIR}"/${PN}-1.3.4-musl-dlopen.patch
 )
 
 DOCS=( ChangeLog README.md )

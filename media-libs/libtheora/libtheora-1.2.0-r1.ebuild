@@ -48,8 +48,8 @@ src_prepare() {
 	default
 
 	# Workaround for broken 1.2.0 dist tarball
-	cp "${DISTDIR}"/${P}-armenc.c lib/arm || die
-	cp "${DISTDIR}"/${P}-armloop.s lib/arm || die
+	cp "${DISTDIR}"/${P}-armenc.c lib/arm/armenc.c || die
+	cp "${DISTDIR}"/${P}-armloop.s lib/arm/armloop.s || die
 
 	eautoreconf
 }

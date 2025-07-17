@@ -10,7 +10,7 @@
 		<remote-id type="kde-invent">education/kig</remote-id>
 	</upstream>
 	<use>
-		<flag name="geogebra">Support files created by <pkg>sci-mathematics/geogebra-bin</pkg></flag>
+<!--		<flag name="geogebra">Support files created by <pkg>sci-mathematics/geogebra-bin</pkg></flag> -->
 		<flag name="scripting">Support Python scripting</flag>
 	</use>
 </pkgmetadata>

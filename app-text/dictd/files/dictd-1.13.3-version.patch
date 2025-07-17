@@ -1,0 +1,45 @@
+https://github.com/cheusov/dictd/pull/27.patch
+https://bugs.gentoo.org/852884
+From 8b5259d0e9c9c7572586dcb95973837bea960127 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Thu, 10 Jul 2025 15:35:44 +0200
+Subject: [PATCH] Avoid conflict with libtool VERSION
+
+define(VERSION) in configure.ac conflicts with VERSION from libtool.
+
+Use anything else, here PKG_VERSION.
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index f727770..3aaa882 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -24,13 +24,13 @@ dnl             for optimization and stripping.
+ dnl     LIBOBJS is an automatically-generated list of extra objects we need
+ 
+ 
+-define(VERSION, 1.13.3)
++define(PKG_VERSION, 1.13.3)
+ 
+ 
+ AC_PREREQ([2.72])
+ AC_REVISION($Revision: 1.144 $)
+ 
+-AC_INIT([dict],[VERSION],[dict-beta@dict.org])
++AC_INIT([dict],[PKG_VERSION],[dict-beta@dict.org])
+ 
+ AC_CONFIG_SRCDIR([dictd.c])
+ AC_CONFIG_HEADERS([config.h])
+@@ -38,7 +38,7 @@ AC_CONFIG_HEADERS([config.h])
+ echo Configuring for dict
+ echo .
+ 
+-DICT_VERSION=VERSION
++DICT_VERSION=PKG_VERSION
+ 
+ AC_CANONICAL_HOST
+ 

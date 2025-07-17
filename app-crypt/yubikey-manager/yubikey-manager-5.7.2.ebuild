@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=poetry
 
 inherit distutils-r1 verify-sig
@@ -25,7 +25,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/yubico.com.asc"
 
 # app-crypt/ccid required for

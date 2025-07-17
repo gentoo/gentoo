@@ -11,7 +11,7 @@ SRC_URI="http://nekohako.xware.cx/id3tool/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~ppc ppc64 sparc x86"
 
 src_prepare() {
 	default

@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
 LICENSE="BSD"

@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0/4.2"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 IUSE="doc perl python tcl"
 
 RESTRICT="test"

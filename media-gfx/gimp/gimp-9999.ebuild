@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	dev-libs/gobject-introspection
 	>=dev-libs/json-glib-1.4.4
 	>=gnome-base/librsvg-2.57.3:2
-	>=media-gfx/mypaint-brushes-1.3.1:1.0=
+	>=media-gfx/mypaint-brushes-1.3.0:2.0=
 	>=media-libs/babl-9999[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2

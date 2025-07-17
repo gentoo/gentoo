@@ -26,7 +26,7 @@ PIPEWIRE_DOCS_PREBUILT_DEV=sam
 PIPEWIRE_DOCS_VERSION="$(ver_cut 1-2).0"
 # Default to generating docs (inc. man pages) if no prebuilt; overridden later
 PIPEWIRE_DOCS_USEFLAG="+man"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit meson-multilib optfeature prefix python-any-r1 systemd tmpfiles udev
 
 if [[ ${PV} == 9999 ]] ; then
@@ -52,7 +52,7 @@ else
 		PIPEWIRE_DOCS_USEFLAG="man"
 	fi
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Multimedia processing graphs"

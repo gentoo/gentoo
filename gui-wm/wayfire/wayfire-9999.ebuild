@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson toolchain-funcs
+inherit dot-a meson toolchain-funcs
 
 DESCRIPTION="compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -86,6 +86,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local emesonargs=(
 		$(meson_feature test tests)
 		$(meson_feature X xwayland)
@@ -94,7 +96,6 @@ src_configure() {
 		-Duse_system_wfconfig=enabled
 		-Duse_system_wlroots=enabled
 	)
-
 	meson_src_configure
 }
 
@@ -112,4 +113,6 @@ src_install() {
 
 	insinto "/etc"
 	doins "${FILESDIR}"/wayfire.env
+
+	strip-lto-bytecode
 }

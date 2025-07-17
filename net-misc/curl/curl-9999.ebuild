@@ -225,10 +225,9 @@ _get_curl_tls_configure_opts() {
 		die "Please file a bug, hit impossible condition w/ USE=ssl handling."
 	fi
 
-	# Explicitly Disable unimplemented b
+	# Explicitly Disable unimplemented backends
 	tls_opts+=(
 		--without-amissl
-		--without-bearssl
 		--without-wolfssl
 	)
 
@@ -253,7 +252,7 @@ multilib_src_configure() {
 			)
 		else
 			# Without a REQUIRED_USE to ensure that QUIC was requested when at least one default backend is
-			# we need ensure that we don't try to build QUIC support
+			# enabled we need ensure that we don't try to build QUIC support
 			myconf+=( --without-ngtcp2 --without-openssl-quic )
 		fi
 	else
@@ -340,7 +339,6 @@ multilib_src_configure() {
 		--without-msh3
 		--without-quiche
 		--without-schannel
-		--without-secure-transport
 		--without-winidn
 		--with-zlib
 		--with-zsh-functions-dir="${EPREFIX}"/usr/share/zsh/site-functions

@@ -16,7 +16,7 @@ HOMEPAGE="https://apps.kde.org/kig/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~riscv ~x86"
 IUSE="scripting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

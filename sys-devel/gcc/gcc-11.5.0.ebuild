@@ -10,9 +10,9 @@ TOOLCHAIN_PATCH_DEV="sam"
 TOOLCHAIN_HAS_TESTS=1
 PATCH_GCC_VER="11.5.0"
 PATCH_VER="1"
-MUSL_VER="2"
-MUSL_GCC_VER="11.4.0"
-PYTHON_COMPAT=( python3_{10..14} )
+MUSL_VER="3"
+MUSL_GCC_VER="11.5.0"
+PYTHON_COMPAT=( python3_{11..14} )
 
 if [[ ${PV} == *.9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)

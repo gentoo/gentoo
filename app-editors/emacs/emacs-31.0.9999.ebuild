@@ -67,7 +67,7 @@ X_DEPEND="x11-libs/libICE
 			>=dev-libs/m17n-lib-1.5.1
 		)
 	)
-	gtk? ( x11-libs/gtk+:3 )
+	gtk? ( x11-libs/gtk+:3[X] )
 	!gtk? (
 		motif? (
 			>=x11-libs/motif-2.3:0

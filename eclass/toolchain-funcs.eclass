@@ -292,7 +292,7 @@ tc-tuple-is-softfloat() {
 			echo "yes" ;;
 		*-softfp-*)
 			echo "softfp" ;;
-		arm*-hardfloat-*|arm*eabihf)
+		arm*-hardfloat-*|arm*eabihf*)
 			echo "no" ;;
 		# bare-metal targets have their defaults. bug #666896
 		*-newlib|*-elf|*-eabi)

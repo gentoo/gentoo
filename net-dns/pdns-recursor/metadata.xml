@@ -15,6 +15,7 @@ It also has built-in hooks for making graphs with rrdtool, providing insight int
 nameserver performance.
 </longdescription>
 <use>
+	<flag name="dns-over-tls">Enable support for DNS over TLS</flag>
 	<flag name="dnstap">Enable support for dnstap</flag>
 	<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for cryptography</flag>
 </use>

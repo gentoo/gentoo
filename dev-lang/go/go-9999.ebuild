@@ -48,10 +48,6 @@ QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 # https://bugs.gentoo.org/794046
 QA_PREBUILT='.*'
 
-# Do not strip this package. Stripping is unsupported upstream and may
-# fail.
-RESTRICT=" strip"
-
 DOCS=(
 	CONTRIBUTING.md
 	PATENTS

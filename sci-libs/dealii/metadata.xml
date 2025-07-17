@@ -21,6 +21,7 @@
 		<flag name="arpack">Adds support for ARPACK (<pkg>sci-libs/arpack</pkg>)</flag>
 		<flag name="cgal">Adds support for CGAL (<pkg>sci-mathematics/cgal</pkg>)</flag>
 		<flag name="gmsh">Add support for gmsh (<pkg>sci-libs/gmsh</pkg>)</flag>
+		<flag name="int64">Use 64 bit indexes</flag>
 		<flag name="metis">Add support for metis (<pkg>sci-libs/metis</pkg>)</flag>
 		<flag name="muparser">Add support for muparser (<pkg>dev-cpp/muParser</pkg>)</flag>
 		<flag name="opencascade">Add support for opencascade (<pkg>sci-libs/opencascade</pkg>)</flag>

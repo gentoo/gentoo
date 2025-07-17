@@ -34,8 +34,8 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm jit
-	libedit +ncurses pgo +readline +sqlite +ssl test tk valgrind
+	bluetooth debug +ensurepip examples gdbm jit libedit +ncurses pgo
+	+readline +sqlite +ssl test tk valgrind
 "
 REQUIRED_USE="jit? ( ${LLVM_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -49,13 +49,13 @@ RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-crypt/libb2
+	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
 	dev-python/gentoo-common
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libintl
-	ensurepip? ( dev-python/ensurepip-pip )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -95,14 +95,14 @@ BDEPEND="
 	)
 	verify-sig? ( >=sec-keys/openpgp-keys-python-20221025 )
 "
-RDEPEND+="
-	!build? ( app-misc/mime-types )
-"
 if [[ ${PV} != *_alpha* ]]; then
 	RDEPEND+="
 		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
 	"
 fi
+PDEPEND="
+	ensurepip? ( dev-python/ensurepip-pip )
+"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc
 

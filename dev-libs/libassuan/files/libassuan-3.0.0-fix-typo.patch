@@ -1,0 +1,31 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libassuan.git;a=commitdiff;h=b8148b4f5735e1215eb72f208e1ae2891213247e
+
+From b8148b4f5735e1215eb72f208e1ae2891213247e Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 11 Jul 2024 09:57:31 +0900
+Subject: [PATCH] Fix typo in assuan.h.
+
+* src/assuan.h.in (ASSUAN_NO_NPTH_SYSTEM_HOOKS_ANY_MORE): Fix.
+
+--
+
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ src/assuan.h.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/assuan.h.in b/src/assuan.h.in
+index 809a59d..69e3c3b 100644
+--- a/src/assuan.h.in
++++ b/src/assuan.h.in
+@@ -566,7 +566,7 @@ assuan_pid_t __assuan_waitpid (assuan_context_t ctx, assuan_pid_t pid,
+                                int nowait, int *status, int options);
+ 
+ #if defined(LIBASSUAN_API_REQUESTED) && LIBASSUAN_API_REQUESTED >= 3
+-#defined ASSUAN_NO_NPTH_SYSTEM_HOOKS_ANY_MORE 1
++#define ASSUAN_NO_NPTH_SYSTEM_HOOKS_ANY_MORE 1
+ #endif
+ 
+ #if defined(ASSUAN_REALLY_REQUIRE_V2_NPTH_SYSTEM_HOOKS) \
+-- 
+2.30.2

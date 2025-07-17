@@ -32,4 +32,5 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.33-fix-clock-gettime-config-check.patch"
+	"${FILESDIR}/${PN}-1.33-use-prototyped-declaration.patch"
 )

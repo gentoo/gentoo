@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="GPL-3+"
 SLOT="0/${KNOT_SUBSLOT}"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~riscv x86"
 
 # Modules without dep. Built unconditionally.
 KNOT_MODULES=(

@@ -16,9 +16,9 @@ SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv"
 IUSE="+ocamlopt test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 # Jane Street Minor
 JSM=0.17

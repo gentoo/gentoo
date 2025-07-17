@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/951878
+https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/issues/124
+https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/merge_requests/408
+https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/commit/48481f3eeb3fc7e4edfdafce53330018982aaeaf
+
+From 48481f3eeb3fc7e4edfdafce53330018982aaeaf Mon Sep 17 00:00:00 2001
+From: Dan Williams <dan@ioncontrol.co>
+Date: Mon, 7 Apr 2025 17:44:23 -0500
+Subject: [PATCH] build: build doc target by default for meson >= 1.7.0
+
+Meson 1.7.0 no longer builds test targets by default, and gtkdoc doesn't
+expose enough dependency info (yet) for meson to know what sub-targets
+to build when docs are enabled for install. Work around that for now.
+
+Fixes: https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/issues/124
+
+Found by, and fix proposed by, Marcin Serwin
+--- a/docs/reference/libqmi-glib/meson.build
++++ b/docs/reference/libqmi-glib/meson.build
+@@ -57,6 +57,7 @@ sections_txt = custom_target(
+   capture: true,
+   command: [find_program('cat'), '@INPUT@'] + gen_sections,
+   depends: gen_sections_deps,
++  build_by_default: true,
+ )
+ 
+ version_xml = configure_file(
+-- 
+GitLab
+

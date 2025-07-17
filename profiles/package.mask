@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2025-07-16)
+# Masked for testing
+=dev-util/mesa_clc-25.2*
+=media-libs/mesa-25.2*
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-08)
 # Unmaintained, out of date, QA issues, outstanding bugs for compilation
 # failure / test failure. Still uses python 3.11. No revdeps.
@@ -134,11 +139,6 @@ dev-python/pytest-tornado
 # Removal on 2025-07-21.  Bug #958592.
 dev-python/backoff
 
-# Maciej Barć <xgqt@gentoo.org> (2025-06-14)
-# Deprecated, repository archived upstream. Compilation problems.
-# Removal on 2025-07-14. bug #957435
-sci-mathematics/boolector
-
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
 >=dev-python/pygobject-3.52
@@ -169,26 +169,6 @@ net-analyzer/cryptcat
 # issues. Use media-gfx/fig2dev instead.
 # Removal on 2025-07-12. Bug #917279.
 media-gfx/transfig
-
-# Hans de Graaff <graaff@gentoo.org> (2025-06-09)
-# Obsolete slots that are ruby32 or ruby33-only. No reverse dependencies
-# left. Use the newer slot instead. Masked for removal on 2025-07-09.
-dev-ruby/bson:4
-dev-ruby/excon:0
-dev-ruby/fakefs:0
-dev-ruby/fiber-storage:0
-dev-ruby/hitimes:0
-dev-ruby/mocha:1.0
-dev-ruby/psych:0
-dev-ruby/public_suffix:5
-dev-ruby/recog:2
-dev-ruby/ruby-macho:0
-dev-ruby/terminal-table:0
-dev-ruby/terminal-table:2
-dev-ruby/ttfunk:1.7
-dev-ruby/unicode-display_width:1
-dev-util/cucumber-ci-environment:9
-dev-util/cucumber-core:11
 
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).
@@ -262,17 +242,6 @@ media-libs/oneVPL-cpu
 # Sam James <sam@gentoo.org> (2025-05-23)
 # Severe memory leak (bug #953874)
 =app-i18n/ibus-anthy-1.5.17
-
-# Matt Turner <mattst88@gentoo.org> (2025-05-22)
-# Old slot depending on libsoup:2.4. All reverse dependencies migrated to a
-# newer slot supporting libsoup:3.0.
-# Removal on 2025-06-21.  Bug #893668.
-net-libs/webkit-gtk:4
-
-# Pacho Ramos <pacho@gentoo.org> (2025-05-22)
-# Needs porting to libsoup 3.0, relies on webkit-gtk:4
-# Removal on 2025-06-21.  Bug #893720.
-x11-misc/meteo
 
 # Sam James <sam@gentoo.org> (2025-05-22)
 # Introduces REQUIRED_USE that needs more discussion (bug #956402)
@@ -500,10 +469,10 @@ app-emulation/virtualbox-kvm
 ~sys-boot/plymouth-24.004.60
 
 # Sam James <sam@gentoo.org> (2024-09-30)
-# GCC 11 and older no longer receive upstream support or fixes for
+# GCC 12 and older no longer receive upstream support or fixes for
 # bugs. Please switch to a newer GCC version using gcc-config.
 #
-# The earliest supported version of GCC is GCC 12, but 11 remains unmasked
+# The earliest supported version of GCC is GCC 13, but 11/12 remain unmasked
 # for now to ease sys-devel/gcc[d] bootstrapping.
 <sys-devel/gcc-11
 <sys-devel/kgcc64-11
@@ -519,7 +488,7 @@ app-emulation/virtualbox-kvm
 
 # Sam James <sam@gentoo.org> (2024-06-25)
 # The symbol versioning "fix" breaks anything built with 3.0.0.
-=dev-libs/libassuan-3.0.1
+>=dev-libs/libassuan-3.0.1
 
 # Sam James <sam@gentoo.org> (2024-03-28)
 # Newer 5.4.x releases were signed by a potentially compromised upstream maintainer.

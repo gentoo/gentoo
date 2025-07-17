@@ -11,9 +11,9 @@ TOOLCHAIN_HAS_TESTS=1
 TOOLCHAIN_GCC_RC=1
 PATCH_GCC_VER="12.4.0"
 PATCH_VER="3"
-MUSL_VER="1"
+MUSL_VER="3"
 MUSL_GCC_VER="12.4.0"
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 if [[ ${PV} == *.9999 ]] ; then
 	MY_PV_2=$(ver_cut 2)

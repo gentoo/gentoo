@@ -12,7 +12,7 @@ SRC_URI="https://pyropus.ca/software/queue-repair/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test" # no tests
 

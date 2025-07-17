@@ -24,6 +24,9 @@ src_prepare() {
 	mv configure.{in,ac} || die
 	sed -i -e "s:configure.in:configure.ac:g" \
 		Makefile.in || die
+	sed -i \
+		-e "s:which ocamlfind:type -P ocamlfind:" \
+		configure.ac || die
 	eautoreconf
 }
 

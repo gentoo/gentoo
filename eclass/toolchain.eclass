@@ -1596,7 +1596,7 @@ toolchain_src_configure() {
 			# If they've explicitly opt-ed in, do hardfloat,
 			# otherwise let the gcc default kick in.
 			case ${CTARGET//_/-} in
-				*-hardfloat-*|*eabihf)
+				*-hardfloat-*|*eabihf*)
 					confgcc+=( --with-float=hard )
 				;;
 			esac

@@ -1,0 +1,27 @@
+Fix installation with aotriton
+
+Upstream bug: https://github.com/pytorch/pytorch/issues/158109
+--- a/cmake/External/aotriton.cmake
++++ b/cmake/External/aotriton.cmake
+@@ -43,10 +43,6 @@ if(NOT __AOTRITON_INCLUDED)
+ 
+   # Note it is INSTALL"ED"
+   if(DEFINED ENV{AOTRITON_INSTALLED_PREFIX})
+-    install(DIRECTORY
+-            $ENV{AOTRITON_INSTALLED_PREFIX}/lib64
+-            $ENV{AOTRITON_INSTALLED_PREFIX}/include
+-            DESTINATION ${__AOTRITON_INSTALL_DIR})
+     set(__AOTRITON_INSTALL_DIR "$ENV{AOTRITON_INSTALLED_PREFIX}")
+     message(STATUS "Using Preinstalled AOTriton at ${__AOTRITON_INSTALL_DIR}")
+   elseif(DEFINED ENV{AOTRITON_INSTALL_FROM_SOURCE})
+--- a/caffe2/CMakeLists.txt
++++ b/caffe2/CMakeLists.txt
+@@ -921,7 +921,7 @@ if(USE_ROCM)
+   set(CUDA_LINK_LIBRARIES_KEYWORD PRIVATE)
+   list(APPEND Caffe2_HIP_SRCS ${GENERATED_CXX_TORCH_CUDA})
+   hip_add_library(torch_hip ${Caffe2_HIP_SRCS})
+-  if(USE_FLASH_ATTENTION)
++  if(USE_FLASH_ATTENTION OR USE_MEM_EFF_ATTENTION)
+     target_link_libraries(torch_hip PRIVATE __caffe2_aotriton)
+   endif()
+   set(CUDA_LINK_LIBRARIES_KEYWORD)

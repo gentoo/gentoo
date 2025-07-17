@@ -8,9 +8,9 @@ EAPI=8
 
 TOOLCHAIN_PATCH_DEV="sam"
 TOOLCHAIN_HAS_TESTS=1
-PATCH_GCC_VER="14.2.0"
-MUSL_GCC_VER="14.2.0"
-PYTHON_COMPAT=( python3_{10..14} )
+PATCH_GCC_VER="14.3.0"
+MUSL_GCC_VER="14.3.0"
+PYTHON_COMPAT=( python3_{11..14} )
 
 if [[ -n ${TOOLCHAIN_GCC_RC} ]] ; then
 	# Cheesy hack for RCs
@@ -27,8 +27,8 @@ if tc_is_live ; then
 	# Needs to be after inherit (for now?), bug #830908
 	EGIT_BRANCH=releases/gcc-$(ver_cut 1)
 elif [[ -z ${TOOLCHAIN_USE_GIT_PATCHES} ]] ; then
-	# Don't keyword live ebuilds
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	# m68k doesnt build (ICE, bug 932733)
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	:;
 fi
 

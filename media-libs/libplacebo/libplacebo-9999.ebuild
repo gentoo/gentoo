@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+# py3.14: https://bugs.gentoo.org/960115
+PYTHON_COMPAT=( python3_{11..13} )
 inherit meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then

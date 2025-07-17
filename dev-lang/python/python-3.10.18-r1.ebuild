@@ -30,8 +30,8 @@ LICENSE="PSF-2"
 SLOT="${PYVER}"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm libedit
-	+ncurses pgo +readline +sqlite +ssl test tk valgrind
+	bluetooth debug +ensurepip examples gdbm libedit +ncurses pgo
+	+readline +sqlite +ssl test tk valgrind
 "
 RESTRICT="!test? ( test )"
 
@@ -43,6 +43,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
+	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
@@ -50,10 +51,6 @@ RDEPEND="
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
-	ensurepip? (
-		dev-python/ensurepip-pip
-		dev-python/ensurepip-setuptools
-	)
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -88,8 +85,11 @@ BDEPEND="
 	virtual/pkgconfig
 	verify-sig? ( sec-keys/openpgp-keys-python )
 "
-RDEPEND+="
-	!build? ( app-misc/mime-types )
+PDEPEND="
+	ensurepip? (
+		dev-python/ensurepip-pip
+		dev-python/ensurepip-setuptools
+	)
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/python.org.asc

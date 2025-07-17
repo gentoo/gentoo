@@ -11,7 +11,7 @@ HOMEPAGE="https://www.fefe.de/libowfat/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~sparc x86"
+KEYWORDS="amd64 hppa sparc x86"
 IUSE="diet"
 
 RDEPEND="diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )"

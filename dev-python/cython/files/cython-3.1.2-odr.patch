@@ -1,0 +1,35 @@
+From 269dea7ac6f10566c3b1ea3850f6a45538e998ee Mon Sep 17 00:00:00 2001
+From: Ray Speth <yarmond@gmail.com>
+Date: Tue, 10 Jun 2025 03:09:03 -0400
+Subject: [PATCH] Mark utility function static to avoid ODR violations (#6957)
+
+PR #6882 introduces a new method `__pyx_CommonTypesMetaclass_get_module`
+in `CommonStructures.c`. Unlike other functions in this file, it is not
+marked `static`, which causes one-definition-rule violations when trying
+to compile multiple `.pyx` files into a single extension module.
+
+For context, this module structure is used in
+[Cantera](https://github.com/Cantera/cantera). We build the combined
+module
+[here](https://github.com/Cantera/cantera/blob/b308592776130d82eaac4949283fc87c031cdc97/interfaces/cython/SConscript#L46-L81),
+and then use a custom "finder" to load the submodules as defined
+[here](https://github.com/Cantera/cantera/blob/main/interfaces/cython/cantera/_cantera.pyx).
+
+Marking this function `static` restores the previous capability.
+---
+ Cython/Utility/CommonStructures.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cython/Utility/CommonStructures.c b/Cython/Utility/CommonStructures.c
+index 94f7cc89066..3f1ce6d8408 100644
+--- a/Cython/Utility/CommonStructures.c
++++ b/Cython/Utility/CommonStructures.c
+@@ -161,7 +161,7 @@ static int __pyx_CommonTypesMetaclass_init(PyObject *module); /* proto */
+ //@requires: FetchCommonType
+ //@substitute: naming
+ 
+-PyObject* __pyx_CommonTypesMetaclass_get_module(CYTHON_UNUSED PyObject *self, CYTHON_UNUSED void* context) {
++static PyObject* __pyx_CommonTypesMetaclass_get_module(CYTHON_UNUSED PyObject *self, CYTHON_UNUSED void* context) {
+     return PyUnicode_FromString(__PYX_ABI_MODULE_NAME);
+ }
+ 

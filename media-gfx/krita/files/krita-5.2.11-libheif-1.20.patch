@@ -1,0 +1,144 @@
+From 169339accb9e4e0e0e9921176c5cd60d340b7b04 Mon Sep 17 00:00:00 2001
+From: Halla Rempt <halla@valdyas.org>
+Date: Thu, 10 Jul 2025 10:08:24 +0200
+Subject: [PATCH] Fix build with libheif 1.20
+
+https://github.com/strukturag/libheif/issues/1419 introduced a
+source incompatible api change, this patch by Brad Smith make
+Krita build with 1.20. I've also checked with 1.15.2, which we
+use and it still builds.
+
+BUG:506778
+(cherry picked from commit 6ad4fa68a9e1ce06fc884e34f3cedcdd4b9a2076)
+---
+ plugins/impex/heif/HeifExport.cpp | 24 +++++++++++++++---------
+ plugins/impex/heif/HeifImport.cpp | 22 ++++++++++++++--------
+ 2 files changed, 29 insertions(+), 17 deletions(-)
+
+diff --git a/plugins/impex/heif/HeifExport.cpp b/plugins/impex/heif/HeifExport.cpp
+index 3e70cf925ea..ccbc8034b51 100644
+--- a/plugins/impex/heif/HeifExport.cpp
++++ b/plugins/impex/heif/HeifExport.cpp
+@@ -137,6 +137,12 @@ KisImportExportErrorCode HeifExport::convert(KisDocument *document, QIODevice *i
+     HeifLock lock;
+ #endif
+ 
++#if LIBHEIF_HAVE_VERSION(1, 20, 0)
++    using HeifStrideType = size_t;
++#else
++    using HeifStrideType = int;
++#endif
++
+     KisImageSP image = document->savingImage();
+     const KoColorSpace *cs = image->colorSpace();
+ 
+@@ -250,10 +256,10 @@ KisImportExportErrorCode HeifExport::convert(KisDocument *document, QIODevice *i
+                 img.add_plane(heif_channel_G, width,height, 8);
+                 img.add_plane(heif_channel_B, width,height, 8);
+ 
+-                int strideR = 0;
+-                int strideG = 0;
+-                int strideB = 0;
+-                int strideA = 0;
++                HeifStrideType strideR = 0;
++                HeifStrideType strideG = 0;
++                HeifStrideType strideB = 0;
++                HeifStrideType strideA = 0;
+ 
+                 uint8_t *ptrR = img.get_plane(heif_channel_R, &strideR);
+                 uint8_t *ptrG = img.get_plane(heif_channel_G, &strideG);
+@@ -289,7 +295,7 @@ KisImportExportErrorCode HeifExport::convert(KisDocument *document, QIODevice *i
+                 img.create(width, height, heif_colorspace_RGB, chroma);
+                 img.add_plane(heif_channel_interleaved, width, height, 12);
+ 
+-                int stride = 0;
++                HeifStrideType stride = 0;
+ 
+                 uint8_t *ptr = img.get_plane(heif_channel_interleaved, &stride);
+ 
+@@ -330,8 +336,8 @@ KisImportExportErrorCode HeifExport::convert(KisDocument *document, QIODevice *i
+ 
+                 img.add_plane(heif_channel_Y, width, height, 8);
+ 
+-                int strideG = 0;
+-                int strideA = 0;
++                HeifStrideType strideG = 0;
++                HeifStrideType strideA = 0;
+ 
+                 uint8_t *ptrG = img.get_plane(heif_channel_Y, &strideG);
+                 uint8_t *ptrA = [&]() -> uint8_t * {
+@@ -363,8 +369,8 @@ KisImportExportErrorCode HeifExport::convert(KisDocument *document, QIODevice *i
+ 
+                 img.add_plane(heif_channel_Y, width, height, 12);
+ 
+-                int strideG = 0;
+-                int strideA = 0;
++                HeifStrideType strideG = 0;
++                HeifStrideType strideA = 0;
+ 
+                 uint8_t *ptrG = img.get_plane(heif_channel_Y, &strideG);
+                 uint8_t *ptrA = [&]() -> uint8_t * {
+diff --git a/plugins/impex/heif/HeifImport.cpp b/plugins/impex/heif/HeifImport.cpp
+index 3c1a52cc282..6bceea85ebe 100644
+--- a/plugins/impex/heif/HeifImport.cpp
++++ b/plugins/impex/heif/HeifImport.cpp
+@@ -214,6 +214,12 @@ KisImportExportErrorCode HeifImport::convert(KisDocument *document, QIODevice *i
+     HeifLock lock;
+ #endif
+ 
++#if LIBHEIF_HAVE_VERSION(1, 20, 0)
++    using HeifStrideType = size_t;
++#else
++    using HeifStrideType = int;
++#endif
++
+     // Wrap input stream into heif Reader object
+     Reader_QIODevice reader(io);
+ 
+@@ -387,8 +393,8 @@ KisImportExportErrorCode HeifImport::convert(KisDocument *document, QIODevice *i
+ 
+         if (heifChroma == heif_chroma_monochrome) {
+             dbgFile << "monochrome heif file, bits:" << luma;
+-            int strideG = 0;
+-            int strideA = 0;
++            HeifStrideType strideG = 0;
++            HeifStrideType strideA = 0;
+             const uint8_t *imgG = heifimage.get_plane(heif_channel_Y, &strideG);
+             const uint8_t *imgA =
+                 heifimage.get_plane(heif_channel_Alpha, &strideA);
+@@ -409,10 +415,10 @@ KisImportExportErrorCode HeifImport::convert(KisDocument *document, QIODevice *i
+         } else if (heifChroma == heif_chroma_444) {
+             dbgFile << "planar heif file, bits:" << luma;
+ 
+-            int strideR = 0;
+-            int strideG = 0;
+-            int strideB = 0;
+-            int strideA = 0;
++            HeifStrideType strideR = 0;
++            HeifStrideType strideG = 0;
++            HeifStrideType strideB = 0;
++            HeifStrideType strideA = 0;
+             const uint8_t* imgR = heifimage.get_plane(heif_channel_R, &strideR);
+             const uint8_t* imgG = heifimage.get_plane(heif_channel_G, &strideG);
+             const uint8_t* imgB = heifimage.get_plane(heif_channel_B, &strideB);
+@@ -439,7 +445,7 @@ KisImportExportErrorCode HeifImport::convert(KisDocument *document, QIODevice *i
+                                     displayNits,
+                                     colorSpace);
+         } else if (heifChroma == heif_chroma_interleaved_RGB || heifChroma == heif_chroma_interleaved_RGBA) {
+-            int stride = 0;
++            HeifStrideType stride = 0;
+             dbgFile << "interleaved SDR heif file, bits:" << luma;
+ 
+             const uint8_t *img = heifimage.get_plane(heif_channel_interleaved, &stride);
+@@ -461,7 +467,7 @@ KisImportExportErrorCode HeifImport::convert(KisDocument *document, QIODevice *i
+                                       colorSpace);
+ 
+         } else if (heifChroma == heif_chroma_interleaved_RRGGBB_LE || heifChroma == heif_chroma_interleaved_RRGGBBAA_LE || heifChroma == heif_chroma_interleaved_RRGGBB_BE || heifChroma == heif_chroma_interleaved_RRGGBB_BE) {
+-            int stride = 0;
++            HeifStrideType stride = 0;
+             dbgFile << "interleaved HDR heif file, bits:" << luma;
+ 
+             const uint8_t *img =
+-- 
+GitLab
+

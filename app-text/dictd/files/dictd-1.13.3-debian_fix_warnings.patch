@@ -1,0 +1,306 @@
+Debian patches :
+13-Fix-compiler-warnings (adapted because lex-fix is merged)
+17-fix-some-gcc-8-warnings
+
+From: Robert Luberda <robert@debian.org>
+Date: Sat, 23 Jun 2018 22:39:26 +0200
+Subject: Fix some of gcc-8 warnings
+
+---
+ dict.c    |  8 ++++----
+ dictd.c   | 28 ++++++++++++++++------------
+ dictfmt.c |  6 ++++--
+ lev.h     |  4 ++--
+ 4 files changed, 26 insertions(+), 20 deletions(-)
+
+diff --git a/dict.c b/dict.c
+index 5321c9c..9ef5192 100644
+--- a/dict.c
++++ b/dict.c
+@@ -1239,7 +1239,7 @@ static const char *client_get_banner( void )
+    uname( &uts );
+    buffer = xmalloc(256);
+    snprintf( buffer, 256,
+-	     "%s %s/rf on %s %s", err_program_name (), id_string (),
++	     "%s %.50s/rf on %s %s", err_program_name (), id_string (),
+ 	     uts.sysname, uts.release );
+    return buffer;
+ }
+@@ -1330,7 +1330,7 @@ int main( int argc, char **argv )
+    const char         *word       = NULL;
+    int                doauth      = 1;
+    int                docorrect   = 1;
+-   int                offset      = 0;
++   /*int                offset      = 0;*/
+    int                i;
+    enum { DEFINE = 0x0001,
+ 	  MATCH  = 0x0002,
+@@ -1526,11 +1526,11 @@ int main( int argc, char **argv )
+ 	    case 5: *p = '\0'; word = cpy(s);            ++state; s=p+1; break;
+ 	    case 6: *p = '\0'; database = cpy(s);        ++state; s=p+1; break;
+ 	    case 7: *p = '\0';
+-	       if (function == DEFINE) offset = atoi(s);
++	       if (function == DEFINE) /*offset = atoi(s)*/;
+ 	       else                    strategy = cpy(s);
+ 	                                                 ++state; s=p+1; break;
+ 	    case 8: *p = '\0';
+-	       if (function == MATCH) offset = atoi(s); ++state; s=p+1; break;
++	       if (function == MATCH) { /*offset = atoi(s)*/; ++state; s=p+1; break; }
+ 				/* FALLTHROUGH */
+ 	    default:
+ 	       PRINTF(DBG_URL,("State = %d, s = %s\n",state,s));
+diff --git a/dictd.c b/dictd.c
+index 3073ace..954a6cc 100644
+--- a/dictd.c
++++ b/dictd.c
+@@ -333,6 +333,7 @@ static void xsigprocmask (int how, const sigset_t *set, sigset_t *oset)
+    }
+ }
+ 
++#if 0
+ static void block_signals (void)
+ {
+    sigset_t set;
+@@ -343,6 +344,7 @@ static void block_signals (void)
+ 
+    xsigprocmask (SIG_BLOCK, &set, NULL);
+ }
++#endif
+ 
+ static void unblock_signals (void)
+ {
+@@ -1154,12 +1156,12 @@ const char *dict_get_banner( int shortFlag )
+    shortBuffer = xmalloc(256);
+    snprintf(
+       shortBuffer, 256,
+-      "%s %s", err_program_name(), id_string () );
++      "%s %.50s", err_program_name(), id_string () );
+ 
+    longBuffer = xmalloc(256);
+    snprintf(
+       longBuffer, 256,
+-      "%s %s/rf on %s %s", err_program_name(), id_string (),
++      "%s %.50s/rf on %s %s", err_program_name(), id_string (),
+       uts.sysname,
+       uts.release );
+ 
+@@ -1258,6 +1260,8 @@ void set_minimal( void )
+    flg_set("-min");
+ }
+ 
++#define CHECK_SYSCALL(x) do { if ((x) < 0) { perror(#x); exit(1); }} while (0)
++
+ static void release_root_privileges( void )
+ /* At the spring 1999 Linux Expo in Raleigh, Rik Faith told me that he
+  * did not want dictd to be allowed to run as root for any reason.
+@@ -1272,17 +1276,17 @@ static void release_root_privileges( void )
+       struct passwd *pwd;
+ 
+       if ((pwd = getpwnam("dictd"))) {
+-         setgid(pwd->pw_gid);
++         CHECK_SYSCALL(setgid(pwd->pw_gid));
+          initgroups("dictd",pwd->pw_gid);
+-         setuid(pwd->pw_uid);
++         CHECK_SYSCALL(setuid(pwd->pw_uid));
+       } else if ((pwd = getpwnam("nobody"))) {
+-         setgid(pwd->pw_gid);
++         CHECK_SYSCALL(setgid(pwd->pw_gid));
+          initgroups("nobody",pwd->pw_gid);
+-         setuid(pwd->pw_uid);
++         CHECK_SYSCALL(setuid(pwd->pw_uid));
+       } else {
+-         setgid(GID_NOGROUP);
++         CHECK_SYSCALL(setgid(GID_NOGROUP));
+          initgroups("nobody", GID_NOGROUP);
+-         setuid(UID_NOBODY);
++         CHECK_SYSCALL(setuid(UID_NOBODY));
+       }
+    }
+ }
+@@ -1473,9 +1477,9 @@ static void reopen_012 (void)
+    close (1);
+    close (2);
+ 
+-   dup (fd);
+-   dup (fd);
+-   dup (fd);
++   CHECK_SYSCALL(dup (fd));
++   CHECK_SYSCALL(dup (fd));
++   CHECK_SYSCALL(dup (fd));
+ }
+ 
+ int main (int argc, char **argv, char **envp)
+@@ -1713,7 +1717,7 @@ int main (int argc, char **argv, char **envp)
+ 
+    if (detach){
+       /* become a daemon */
+-      daemon (0, 1);
++      CHECK_SYSCALL(daemon (0, 1));
+       reopen_012 ();
+ 
+       /* after fork from daemon(3) */
+diff --git a/dictfmt.c b/dictfmt.c
+index b8b7aa9..1cff05e 100644
+--- a/dictfmt.c
++++ b/dictfmt.c
+@@ -1136,6 +1136,8 @@ static int xatoi (const char *nptr)
+    return (int) ret;
+ }
+ 
++#define CHECK_LIBCALL(x) do { if ((x) == NULL) { fprintf(stderr, #x " failed\n"); exit(1); }} while (0)
++
+ int main( int argc, char **argv )
+ {
+    int        c;
+@@ -1500,8 +1502,8 @@ int main( int argc, char **argv )
+ 	    buf++;
+ 	 } else if (strncmp(buffer, "_____",5) == 0) {
+ 	    buf = (unsigned char *) buffer;
+-	    fgets (buffer,BSIZE-1,stdin); /* empty line */
+-	    fgets (buffer,BSIZE-1,stdin);
++	    CHECK_LIBCALL(fgets (buffer,BSIZE-1,stdin)); /* empty line */
++	    CHECK_LIBCALL(fgets (buffer,BSIZE-1,stdin));
+ 	    if (strlen(buffer))
+ 	       buffer[strlen(buffer)-1] = '\0'; /* remove newline */
+ 
+diff --git a/lev.h b/lev.h
+index 249272d..d2a86d4 100644
+--- a/lev.h
++++ b/lev.h
+@@ -118,7 +118,7 @@ static int dict_search_lev_utf8 (
+    mbstate_t ps;
+    int       count = 0;
+    const char *pt;
+-   dictWord   *datum;
++   /*dictWord   *datum;*/
+ 
+    const char *p;
+    char *d;
+@@ -127,7 +127,7 @@ static int dict_search_lev_utf8 (
+    size_t i;
+    set_Set    s    = set_create (NULL,NULL);
+ 
+-   LEV_VARS
++   /*LEV_VARS*/
+ 
+    assert (alphabet);
+ 
+From: Robert Luberda <robert@debian.org>
+Date: Sun, 21 Aug 2016 13:16:39 +0200
+Subject: Fix some of compiler warnings
+
+---
+ daemon.c      | 18 +++++++++---------
+ dictd.c       |  2 ++
+ dictzip.c     |  2 --
+ md5.c         |  2 +-
+ parse.c       |  4 ++--
+ servparse.y   |  3 +++
+
+diff --git a/daemon.c b/daemon.c
+index d63e753..445c8c6 100644
+--- a/daemon.c
++++ b/daemon.c
+@@ -131,23 +131,23 @@ static void daemon_log( int type, const char *format, ... )
+ 
+    switch (type) {
+    case DICT_LOG_TERM:
+-      if (!flg_test(LOG_STATS))    return; marker = 'I'; break;
++      if (!flg_test(LOG_STATS))    { return; } marker = 'I'; break;
+    case DICT_LOG_TRACE:
+-      if (!flg_test(LOG_SERVER))   return; marker = 'I'; break;
++      if (!flg_test(LOG_SERVER))   { return; } marker = 'I'; break;
+    case DICT_LOG_CLIENT:
+-      if (!flg_test(LOG_CLIENT))   return; marker = 'C'; break;
++      if (!flg_test(LOG_CLIENT))   { return; } marker = 'C'; break;
+    case DICT_LOG_CONNECT:
+-      if (!flg_test(LOG_CONNECT))  return; marker = 'K'; break;
++      if (!flg_test(LOG_CONNECT))  { return; } marker = 'K'; break;
+    case DICT_LOG_DEFINE:
+-      if (!flg_test(LOG_FOUND))    return; marker = 'D'; break;
++      if (!flg_test(LOG_FOUND))    { return; } marker = 'D'; break;
+    case DICT_LOG_MATCH:
+-      if (!flg_test(LOG_FOUND))    return; marker = 'M'; break;
++      if (!flg_test(LOG_FOUND))    { return; } marker = 'M'; break;
+    case DICT_LOG_NOMATCH:
+-      if (!flg_test(LOG_NOTFOUND)) return; marker = 'N'; break;
++      if (!flg_test(LOG_NOTFOUND)) { return; } marker = 'N'; break;
+    case DICT_LOG_COMMAND:
+-      if (!flg_test(LOG_COMMAND))  return; marker = 'T'; break;
++      if (!flg_test(LOG_COMMAND))  { return; } marker = 'T'; break;
+    case DICT_LOG_AUTH:
+-      if (!flg_test(LOG_AUTH))     return; marker = 'A'; break;
++      if (!flg_test(LOG_AUTH))     { return; } marker = 'A'; break;
+    }
+ 
+    if (dbg_test(DBG_PORT))
+diff --git a/dictd.c b/dictd.c
+index fe27e42..3073ace 100644
+--- a/dictd.c
++++ b/dictd.c
+@@ -318,6 +318,7 @@ static void reload_config (void)
+    dict_init_databases (DictConfig);
+ }
+ 
++/*
+ static void xsigaddset (sigset_t *set, int signo)
+ {
+    if (sigaddset (set, signo)){
+@@ -353,6 +354,7 @@ static void unblock_signals (void)
+ 
+    xsigprocmask (SIG_UNBLOCK, &set, NULL);
+ }
++*/
+ 
+ static void handler( int sig )
+ {
+diff --git a/dictzip.c b/dictzip.c
+index f917407..970eff8 100644
+--- a/dictzip.c
++++ b/dictzip.c
+@@ -336,10 +336,8 @@ int dict_data_zip( const char *inFilename, const char *outFilename,
+ static const char *id_string (void)
+ {
+    static char buffer[BUFFERSIZE];
+-   char        *pt;
+ 
+    snprintf( buffer, BUFFERSIZE, "%s", DICT_VERSION );
+-   pt = buffer + strlen( buffer );
+ 
+    return buffer;
+ }
+diff --git a/md5.c b/md5.c
+index 8d1accf..7f2a7ff 100644
+--- a/md5.c
++++ b/md5.c
+@@ -145,7 +145,7 @@ void MD5Final(unsigned char digest[16], struct MD5Context *ctx)
+     MD5Transform(ctx->buf, (uint32 *) ctx->in);
+     byteReverse((unsigned char *) ctx->buf, 4);
+     memcpy(digest, ctx->buf, 16);
+-    memset(ctx, 0, sizeof(ctx));	/* In case it's sensitive */
++    memset(ctx, 0, sizeof(*ctx));	/* In case it's sensitive */
+ }
+ 
+ #ifndef ASM_MD5
+diff --git a/parse.c b/parse.c
+index 1cdaf91..b6d1099 100644
+--- a/parse.c
++++ b/parse.c
+@@ -95,7 +95,7 @@ void prs_file( const char *filename )
+                                  "/usr/ccs/lib/cpp",	/* Solaris */
+                                  "/usr/lang/cpp",
+                                  0 };
+-   static const char *extra_options = "";
++   /*static const char *extra_options = "";*/
+    FILE              *tmp;
+    
+    if (!filename)
+@@ -116,7 +116,7 @@ void prs_file( const char *filename )
+             if ((t = strchr( buf, '\n' ))) *t = '\0';
+             PRINTF(MAA_PARSE,("%s: Using GNU cpp from %s\n", __func__, buf));
+             cpp = str_find( buf );
+-            extra_options = "-nostdinc -nostdinc++";
++            /*extra_options = "-nostdinc -nostdinc++";*/
+          }
+          pclose( tmp );
+       }

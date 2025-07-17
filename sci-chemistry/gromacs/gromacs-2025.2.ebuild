@@ -40,7 +40,7 @@ HOMEPAGE="https://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="blas clang clang-cuda cuda  +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="blas clang clang-cuda cuda +custom-cflags +doc build-manual double-precision +fftw +gmxapi +gmxapi-legacy +hwloc lapack mkl mpi nnpot +offensive opencl openmp +python +single-precision test +threads +tng video_cards_intel ${ACCE_IUSE}"
 
 CDEPEND="
 	blas? ( virtual/blas )
@@ -265,9 +265,11 @@ src_configure() {
 		local p
 		[[ ${x} = "double" ]] && p="-DGMX_DOUBLE=ON" || p="-DGMX_DOUBLE=OFF"
 		local gpu=( "-DGMX_GPU=OFF" )
+		local gpu_clusters=( "-DGMX_GPU_NB_CLUSTER_SIZE=8" )
 		[[ ${x} = "float" ]] && use cuda && gpu=( "-DGMX_GPU=CUDA" )
 		[[ ${x} = "float" ]] && use clang-cuda && gpu=( "-DGMX_GPU=CUDA" "-DGMX_CLANG_CUDA=ON" )
 		use opencl && gpu=( "-DGMX_GPU=OPENCL" )
+		use video_cards_intel && gpu_clusters=( "-DGMX_GPU_NB_CLUSTER_SIZE=4" )
 		local mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_MPI=$(usex mpi)
@@ -275,6 +277,7 @@ src_configure() {
 			-DGMXAPI=$(usex gmxapi)
 			-DGMX_INSTALL_LEGACY_API=$(usex gmxapi-legacy)
 			"${gpu[@]}"
+			"${gpu_clusters[@]}"
 			"$(use test && echo -DREGRESSIONTEST_PATH="${WORKDIR}/${P}_${x}/tests")"
 			-DGMX_BINARY_SUFFIX="${suffix}"
 			-DGMX_LIBS_SUFFIX="${suffix}"

@@ -1,0 +1,246 @@
+https://git.pld-linux.org/?p=packages/psiconv.git;a=blob;f=psiconv-magick.patch
+Allow new API for imagemagick
+Avoid Magick-config hardcoded
+--- psiconv-0.9.9/configure.in	2014-10-22 20:38:11.000000000 +0200
++++ psiconv-0.9.9/configure.in	2019-07-01 18:49:10.146154303 +0200
+@@ -67,22 +67,33 @@
+               [IMAGEMAGICK=$withval],
+               [IMAGEMAGICK='yes'])
+ if test x"$IMAGEMAGICK" != xno ; then
+-  AC_CHECK_PROG(IMAGEMAGICK,Magick-config,yes,no)
+-  if test x"$IMAGEMAGICK" != xno ; then
++  AC_CHECK_PROG(MAGICKCONFIG,Magick-config,yes,no)
++  if test x"$MAGICKCONFIG" != xno ; then
+     CFLAGS_OLD="$CFLAGS"
+     CPPFLAGS_OLD="$CPPFLAGS"
+     LDFLAGS_OLD="$LDFLAGS"
+     LIBS_OLD="$LIBS"
+-    CFLAGS="$CFLAGS `Magick-config --cflags`"
+-    CPPFLAGS="$CPPFLAGS `Magick-config --cppflags`"
+-    LDFLAGS="$LDFLAGS `Magick-config --ldflags`"
+-    LIBS="$LIBS `Magick-config --libs`"
++    CFLAGS="$CFLAGS `$MAGICKCONFIG --cflags`"
++    CPPFLAGS="$CPPFLAGS `$MAGICKCONFIG --cppflags`"
++    LDFLAGS="$LDFLAGS `$MAGICKCONFIG --ldflags`"
++    LIBS="$LIBS `$MAGICKCONFIG --libs`"
+ 
+ 
+     AC_MSG_CHECKING(whether GetMagickInfo works and which API to use)
+     AC_TRY_RUN([ #include <stdio.h>
+                  #include <stdlib.h>
+                  #include <time.h>
++                 #include <MagickCore/MagickCore.h>
++                 int main(void) {
++                 unsigned long number_formats;
++                 ExceptionInfo *exception = AcquireExceptionInfo();
++                 GetMagickInfoList("*",&number_formats,exception);
++                 return number_formats == 0; }],
++        IMAGEMAGICK=5,IMAGEMAGICK=no,IMAGEMAGICK=no)
++    if test x"$IMAGEMAGICK" = xno ; then
++    AC_TRY_RUN([ #include <stdio.h>
++                 #include <stdlib.h>
++                 #include <time.h>
+ 		 #include <magick/api.h>
+ 		 int main(void) {
+ 		 unsigned long number_formats;
+@@ -92,6 +103,7 @@
+ 	         GetMagickInfoList("*",&number_formats,&exception);
+ 	         return number_formats == 0; }],
+         IMAGEMAGICK=4,IMAGEMAGICK=no,IMAGEMAGICK=no)
++    fi
+     if test x"$IMAGEMAGICK" = xno ; then
+       AC_TRY_RUN([ #include <stdio.h>
+                    #include <stdlib.h>
+@@ -148,7 +148,7 @@
+   fi
+ fi
+ if test x"$IMAGEMAGICK" != xno ; then
+-  LIB_MAGICK="`Magick-config --libs` `Magick-config --ldflags`"
++  LIB_MAGICK="`$MAGICKCONFIG --libs` `$MAGICKCONFIG --ldflags`"
+   AC_DEFINE(IMAGEMAGICK, 1 ,[ImageMagick availability])
+   AC_DEFINE_UNQUOTED(IMAGEMAGICK_API, $IMAGEMAGICK, [ImageMagick API version])
+ else
+--- psiconv-0.9.9/program/psiconv/magick-aux.h	2014-10-22 21:46:01.000000000 +0200
++++ psiconv-0.9.9/program/psiconv/magick-aux.h	2019-07-02 17:01:45.109667769 +0200
+@@ -21,7 +21,11 @@
+ 
+ #if IMAGEMAGICK
+ 
+-#if IMAGEMAGICK_API == 1
++#if IMAGEMAGICK_API >= 5
++
++#include <MagickCore/MagickCore.h>
++
++#elif IMAGEMAGICK_API == 1
+ 
+ #include <magick/magick.h>
+ 
+@@ -34,7 +38,7 @@
+ 
+ #endif /* IMAGEMAGICK_API == 1 */
+ 
+-#if IMAGEMAGICK_API == 100
++#if IMAGEMAGICK_API >= 5 /* IM 7 or GM */
+ 
+ #define DestroyImages DestroyImageList
+ 
+--- psiconv-0.9.9/program/psiconv/gen_image.c	2014-10-22 21:45:59.000000000 +0200
++++ psiconv-0.9.9/program/psiconv/gen_image.c	2019-07-02 17:20:52.370119193 +0200
+@@ -56,9 +56,13 @@
+   Image *image;
+   float *pixel, *p, *red, *green, *blue;
+   int x,y;
+-  ExceptionInfo exc;
++#if IMAGEMAGICK_API >= 5
++  ExceptionInfo *pexc = AcquireExceptionInfo();
++#else
++  ExceptionInfo exc, *pexc = &exc;
+ 
+   GetExceptionInfo(&exc);
++#endif
+   red = sec->red;
+   green = sec->green;
+   blue = sec->blue;
+@@ -71,14 +75,14 @@
+     }
+   }
+ 
+-  image = ConstituteImage(sec->xsize,sec->ysize,"RGB",FloatPixel,pixel,&exc);
+-  if (! image || (exc.severity != UndefinedException)) {
+-    MagickError(exc.severity,exc.reason,exc.description);
++  image = ConstituteImage(sec->xsize,sec->ysize,"RGB",FloatPixel,pixel,pexc);
++  if (! image || (pexc->severity != UndefinedException)) {
++    MagickError(pexc->severity,pexc->reason,pexc->description);
+     exit(1);
+   }
+   free(pixel);
+ 
+-  DestroyExceptionInfo(&exc);
++  DestroyExceptionInfo(pexc);
+ 
+   return image;
+ }
+@@ -87,17 +91,23 @@
+ void image_to_list(psiconv_list list,Image *image,const char *dest)
+ {
+   ImageInfo *image_info;
+-  ExceptionInfo exc;
++#if IMAGEMAGICK_API >= 5
++  ExceptionInfo *pexc = AcquireExceptionInfo();
++#else
++  ExceptionInfo exc, *pexc = &exc;
++#endif
+   size_t length;
+   unsigned char *data;
+   int i;
+ 
+   strcpy(image->magick,dest);
+   image_info = CloneImageInfo(NULL);
++#if IMAGEMAGICK_API < 5
+   GetExceptionInfo(&exc);
+-  data = ImageToBlob(image_info,image,&length,&exc);
+-  if (!data || (exc.severity != UndefinedException)) {
+-    MagickError(exc.severity,exc.reason,exc.description);
++#endif
++  data = ImageToBlob(image_info,image,&length,pexc);
++  if (!data || (pexc->severity != UndefinedException)) {
++    MagickError(pexc->severity,pexc->reason,pexc->description);
+     exit(1);
+   }
+   for (i = 0; i < length; i++) {
+@@ -106,7 +116,7 @@
+       exit(1);
+     }
+   }
+-  DestroyExceptionInfo(&exc);
++  DestroyExceptionInfo(pexc);
+   DestroyImageInfo(image_info);
+ }
+ 
+@@ -119,18 +129,22 @@
+   Image *image = NULL;
+   Image *last_image = NULL;
+   Image *this_image, *images;
+-  ExceptionInfo exc;
+   int i;
++#if IMAGEMAGICK_API >= 5
++  ExceptionInfo *pexc = AcquireExceptionInfo();
++#else
++  ExceptionInfo exc, *pexc = &exc;
+ 
+   GetExceptionInfo(&exc);
+-  mi = GetMagickInfo(dest,&exc);
+-  if (!mi || (exc.severity != UndefinedException)) {
+-    MagickError(exc.severity,exc.reason,exc.description);
++#endif
++  mi = GetMagickInfo(dest,pexc);
++  if (!mi || (pexc->severity != UndefinedException)) {
++    MagickError(pexc->severity,pexc->reason,pexc->description);
+     exit(1);
+   }
+ 
+   if ((psiconv_list_length(sections) < 1) || 
+-      ((psiconv_list_length(sections)) > 1 && ! (mi->adjoin))) {
++      ((psiconv_list_length(sections)) > 1 && ! GetMagickAdjoin(mi))) {
+     fprintf(stderr,"This image type supports only one image\n");
+     exit(1);
+   }
+@@ -152,9 +166,9 @@
+ 
+   image_info = CloneImageInfo(NULL);
+   if (image->next) {
+-    images = CoalesceImages(image,&exc);
+-    if (!images || (exc.severity != UndefinedException)) {
+-      MagickError(exc.severity,exc.reason,exc.description);
++    images = CoalesceImages(image,pexc);
++    if (!images || (pexc->severity != UndefinedException)) {
++      MagickError(pexc->severity,pexc->reason,pexc->description);
+       exit(1);
+     }
+   } else
+@@ -162,7 +176,7 @@
+ 
+   image_to_list(list,image,dest);
+ 
+-  DestroyExceptionInfo(&exc);
++  DestroyExceptionInfo(pexc);
+   DestroyImageInfo(image_info);
+   if (image != images)
+     DestroyImages(image);
+@@ -249,7 +263,7 @@
+       ff.description = strdup(mi[i]->description);
+       ff.supported_format = FORMAT_CLIPART_SINGLE | FORMAT_MBM_SINGLE | 
+ 	                    FORMAT_SKETCH;
+-      if (mi[i]->adjoin) 
++      if (GetMagickAdjoin(mi[i])) 
+ 	ff.supported_format |= FORMAT_MBM_MULTIPLE | FORMAT_CLIPART_MULTIPLE;
+       psiconv_list_add(fileformat_list,&ff);
+     }
+--- psiconv-0.9.9/program/psiconv/magick-aux.c	2014-10-22 21:46:07.000000000 +0200
++++ psiconv-0.9.9/program/psiconv/magick-aux.c	2019-07-02 17:22:32.846241534 +0200
+@@ -93,6 +93,25 @@
+   return copy;
+ }
+ 
++#elif IMAGEMAGICK_API == 5
++
++const MagickInfo ** GetMagickFileList(void)
++{
++  const MagickInfo **mi;
++  const MagickInfo **copy;
++  size_t len;
++  int i;
++  ExceptionInfo *pexc = AcquireExceptionInfo();
++  mi = GetMagickInfoList("*",&len,pexc);
++  copy = malloc((len+1) * sizeof(*copy));
++  for (i = 0; i < len; i++) {
++    copy[i] = mi[i];
++  }
++  copy[len] = NULL;
++  DestroyExceptionInfo(pexc);
++  return copy;
++}
++
+ #elif IMAGEMAGICK_API == 100
+ /* GraphicsMagick library */
+ const MagickInfo ** GetMagickFileList(void)

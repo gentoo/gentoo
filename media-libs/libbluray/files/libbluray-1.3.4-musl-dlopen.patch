@@ -1,0 +1,37 @@
+https://code.videolan.org/videolan/libbluray/-/merge_requests/52
+
+(Dropped the Meson parts as it's not in the last release.)
+
+From 4cc7e7ec4730f56e76902a7abe5b3d7f19a1109d Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Thu, 10 Jul 2025 05:08:11 +0100
+Subject: [PATCH] build: fix dlfcn, sys/dl.h checks
+
+We had a bug report downstream in Gentoo of a build failure on musl
+systems (https://bugs.gentoo.org/958375). It turns out that nothing
+defines HAVE_DLFCN_H or HAVE_DLFCN_H in configure.ac, and the logic
+in meson.build isn't ideal either.
+
+Fix that by:
+* Looking for dlfcn.h, sys/dl.h in the autotools build
+* Check for dlfcn.h rather than assuming in the Meson build
+* Look for sys/dl.h in the Meson build as well
+---
+ configure.ac | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index bbb08bb0..fb54f0ef 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -147,7 +147,7 @@ LT_INIT
+ dnl required headers
+ AC_CHECK_HEADERS([stdarg.h sys/types.h dirent.h errno.h libgen.h malloc.h])
+ AC_CHECK_HEADERS([stdlib.h mntent.h inttypes.h strings.h])
+-AC_CHECK_HEADERS([sys/time.h time.h mntent.h])
++AC_CHECK_HEADERS([dlfcn.h sys/dl.h sys/time.h time.h mntent.h])
+ 
+ dnl required structures
+ AC_STRUCT_DIRENT_D_TYPE
+-- 
+GitLab

@@ -1,0 +1,15 @@
+Fixed version of https://github.com/traviscross/mtr/pull/368
+Bug: https://bugs.gentoo.org/960013
+--- a/configure.ac
++++ b/configure.ac
+@@ -136,7 +136,10 @@ AS_IF([test "x$with_ncurses" = "xyes"],
+   # (On Solaris 11.3, ncurses builds and links for us, but curses does not.)
+   [AC_SEARCH_LIBS(
+     [initscr], [ncursesw ncurses curses],
++  [AC_SEARCH_LIBS(
++    [raw], [ncurses curses cursesX tinfow],
+     [AC_DEFINE([HAVE_CURSES], [1], [Define if a curses library available])],
++    [with_ncurses=no])],
+     [with_ncurses=no])
+ ])
+ AM_CONDITIONAL([WITH_CURSES], [test "x$with_ncurses" = xyes])

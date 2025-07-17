@@ -1,0 +1,19 @@
+https://github.com/neilb/Mail-Sendmail/pull/9
+
+From 7234f94d4742f43a5fa690ac06d6b7134353f5b6 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 15 Jul 2025 11:57:27 +0100
+Subject: [PATCH] Fix version
+
+--- a/lib/Mail/Sendmail.pm
++++ b/lib/Mail/Sendmail.pm
+@@ -12,7 +12,7 @@ Mail::Sendmail - Simple platform independent mailer
+ 
+ require 5.006;
+ 
+-our $VERSION = "0.80";
++our $VERSION = "0.82";
+ 
+ use strict;
+ use warnings;
+

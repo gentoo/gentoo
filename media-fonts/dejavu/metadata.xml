@@ -17,6 +17,6 @@
 	Serif Condensed
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">dejavu</remote-id>
+		<remote-id type="github">dejavu-fonts/dejavu-fonts</remote-id>
 	</upstream>
 </pkgmetadata>

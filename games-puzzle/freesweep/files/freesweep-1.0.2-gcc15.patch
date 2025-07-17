@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/944183
+Since 1.0.2 the upstream code looks very different now
+
+--- a/game.c
++++ b/game.c
+@@ -414,7 +414,7 @@ int ParseArgs(GameStats* Game, int Argc, char** Argv)
+ 	{
+ 		StartCurses();
+ 		InitCharSet(Game,Game->LineDraw);
+-		PrintGPL(NULL);
++		PrintGPL();
+ 		clear();
+ 		noutrefresh();
+ 		doupdate();

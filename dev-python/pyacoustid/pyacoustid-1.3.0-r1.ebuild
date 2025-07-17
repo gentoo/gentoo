@@ -22,7 +22,7 @@ SRC_URI+="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~x86"
 IUSE="examples test"
 # Tests fail with network-sandbox, since they need to connect to acoustid.org
 PROPERTIES="test_network"

@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/878395
+https://bugs.gentoo.org/959264
+
+From cdd8b55975e447840ce76f3a241be88fec7585b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@gmail.com>
+Date: Sun, 3 Nov 2024 17:07:29 +0100
+Subject: [PATCH] support SWIG 4.2 and later
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+otherwise building sigrok fails with
+bindings/swig/enums.i:1: Error: Unknown directive '%attribute'.
+
+Also indicate that bindings/swig/enums.i is a generated file.
+
+Signed-off-by: Klaus Kämpf <kkaempf@gmail.com>
+---
+ bindings/cxx/enums.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/bindings/cxx/enums.py b/bindings/cxx/enums.py
+index 3711334e7..388faf225 100644
+--- a/bindings/cxx/enums.py
++++ b/bindings/cxx/enums.py
+@@ -73,9 +73,11 @@
+ code = open(os.path.join(outdirname, 'cxx/enums.cpp'), 'w')
+ swig = open(os.path.join(outdirname, 'swig/enums.i'), 'w')
+ 
+-for file in (header, code):
++for file in (header, code, swig):
+     print("/* Generated file - edit enums.py instead! */", file=file)
+ 
++print('%include "attribute.i"', file=swig)
++
+ print("namespace sigrok {", file=header)
+ 
+ # Template for beginning of class declaration and public members.

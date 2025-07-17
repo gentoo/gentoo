@@ -70,7 +70,7 @@ BDEPEND="
 	>=dev-python/cython-3.0.8[${PYTHON_USEDEP}]
 	>=dev-python/meson-python-0.15.0[${PYTHON_USEDEP}]
 	>=dev-python/pybind11-2.13.2[${PYTHON_USEDEP}]
-	>=dev-build/meson-1.1.0
+	>=dev-build/meson-1.5.0
 	!kernel_Darwin? ( dev-util/patchelf )
 	virtual/pkgconfig
 	doc? ( app-arch/unzip )

@@ -91,6 +91,7 @@ SRC_URI="
 			webrtc-${WEBRTC_COMMIT}-linux-arm64-release.zip
 	)
 	${CARGO_CRATE_URIS}"
+SRC_URI+=" https://github.com/gentoo-crate-dist/zed/releases/download/v${PV}/${P}-crates.tar.xz"
 
 S="${WORKDIR}/${PN}-${PV/_/-}"
 LICENSE="GPL-3+"
@@ -100,7 +101,7 @@ LICENSE+="
 	LGPL-3 MIT MIT-0 MPL-2.0 UoI-NCSA openssl Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="gles"
 CHECKREQS_DISK_BUILD="11G"
 CHECKREQS_MEMORY="8G"

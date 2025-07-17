@@ -7,7 +7,7 @@ inherit xorg-meson
 
 DESCRIPTION="graphical class browser for Xt"
 
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~s390 sparc x86"
 
 RDEPEND="
 	x11-libs/libX11

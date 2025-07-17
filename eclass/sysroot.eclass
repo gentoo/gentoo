@@ -7,7 +7,11 @@
 # @AUTHOR:
 # James Le Cuirot <chewi@gentoo.org>
 # @SUPPORTED_EAPIS: 7 8
-# @BLURB: Common functions for using a different sysroot (e.g. cross-compiling)
+# @BLURB: Common functions for using a different (sys)root
+# @DESCRIPTION:
+# This eclass provides common functions to run executables within a different
+# root or sysroot, with or without emulation by QEMU. Despite the name, these
+# functions can be used in src_* or pkg_* phase functions.
 
 case ${EAPI} in
 	7|8) ;;
@@ -39,7 +43,7 @@ qemu_arch() {
 
 # @FUNCTION: sysroot_make_run_prefixed
 # @DESCRIPTION:
-# Create a wrapper script for directly running executables within a sysroot
+# Create a wrapper script for directly running executables within a (sys)root
 # without changing the root directory. The path to that script is returned. If
 # no sysroot has been set, then this function returns unsuccessfully.
 #
@@ -48,19 +52,38 @@ qemu_arch() {
 # environment if binfmt_misc has been used with the F flag. It is not feasible
 # to add a conditional dependency on QEMU.
 sysroot_make_run_prefixed() {
-	[[ -z ${SYSROOT} ]] && return 1
+	local QEMU_ARCH=$(qemu_arch) SCRIPT MYROOT MYEROOT LIBGCC
 
-	local SCRIPT="${T}"/sysroot-run-prefixed
-	local QEMU_ARCH=$(qemu_arch)
+	if [[ ${EBUILD_PHASE_FUNC} == src_* ]]; then
+		[[ -z ${SYSROOT} ]] && return 1
+		SCRIPT="${T}"/sysroot-run-prefixed
+		MYROOT=${SYSROOT}
+		MYEROOT=${ESYSROOT}
 
-	# Both methods below might need help to find GCC's libraries. GCC might not
-	# even be installed in the SYSROOT. Note that Clang supports this flag too.
-	local LIBGCC=$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -print-libgcc-file-name)
+		# Both methods below might need help to find GCC's libs. GCC might not
+		# be installed in the SYSROOT. Note that Clang supports this flag too.
+		LIBGCC=$($(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -print-libgcc-file-name)
+		LIBGCC=${LIBGCC%/*}
+	else
+		[[ -z ${ROOT} ]] && return 1
+		SCRIPT="${T}"/root-run-prefixed
+		MYROOT=${ROOT}
+		MYEROOT=${EROOT}
+
+		# Both methods below might need help to find GCC's libs. libc++ systems
+		# won't have this file, but it's not needed in that case.
+		if [[ -f ${EROOT}/etc/ld.so.conf.d/05gcc-${CHOST}.conf ]]; then
+			local LIBGCC_A
+			mapfile -t LIBGCC_A < "${EROOT}/etc/ld.so.conf.d/05gcc-${CHOST}.conf"
+			LIBGCC=$(printf "%s:" "${LIBGCC_A[@]/#/${ROOT}}")
+			LIBGCC=${LIBGCC%:}
+		fi
+	fi
 
 	if [[ ${QEMU_ARCH} == $(qemu_arch "${CBUILD}") ]]; then
 		# glibc: ld.so is a symlink, ldd is a binary.
 		# musl: ld.so doesn't exist, ldd is a symlink.
-		local DLINKER=$(find "${ESYSROOT}"/usr/bin/{ld.so,ldd} -type l -print -quit 2>/dev/null || die "failed to find dynamic linker")
+		local DLINKER=$(find "${MYEROOT}"/usr/bin/{ld.so,ldd} -type l -print -quit 2>/dev/null || die "failed to find dynamic linker")
 
 		# musl symlinks ldd to ld-musl.so to libc.so. We want the ld-musl.so
 		# path, not the libc.so path, so don't resolve the symlinks entirely.
@@ -70,16 +93,29 @@ sysroot_make_run_prefixed() {
 		# adjust RUNPATHs, but it is probably good enough.
 		install -m0755 /dev/stdin "${SCRIPT}" <<-EOF || die
 			#!/bin/sh
-			LD_LIBRARY_PATH="\${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH+:}${LIBGCC%/*}:${ESYSROOT}/$(get_libdir):${ESYSROOT}/usr/$(get_libdir)" exec "${DLINKER}" "\${@}"
+			LD_LIBRARY_PATH="\${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH+:}${LIBGCC}:${MYEROOT}/$(get_libdir):${MYEROOT}/usr/$(get_libdir)" exec "${DLINKER}" "\${@}"
 		EOF
 	else
 		# Use QEMU's environment variables rather than its command line
 		# arguments to cover both explicit and implicit QEMU usage.
 		install -m0755 /dev/stdin "${SCRIPT}" <<-EOF || die
 			#!/bin/sh
-			QEMU_SET_ENV="\${QEMU_SET_ENV}\${QEMU_SET_ENV+,}LD_LIBRARY_PATH=\${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH+:}${LIBGCC%/*}" QEMU_LD_PREFIX="${SYSROOT}" exec $(type -P "qemu-${QEMU_ARCH}") "\${@}"
+			QEMU_SET_ENV="\${QEMU_SET_ENV}\${QEMU_SET_ENV+,}LD_LIBRARY_PATH=\${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH+:}${LIBGCC}" QEMU_LD_PREFIX="${MYROOT}" exec $(type -P "qemu-${QEMU_ARCH}") "\${@}"
 		EOF
 	fi
 
 	echo "${SCRIPT}"
+}
+
+# @FUNCTION: sysroot_run_prefixed
+# @DESCRIPTION:
+# Create a wrapper script with sysroot_make_run_prefixed if necessary, and use
+# it to execute the given command, otherwise just execute the command directly.
+sysroot_run_prefixed() {
+	local script
+	if script=$(sysroot_make_run_prefixed); then
+		"${script}" "${@}"
+	else
+		"${@}"
+	fi
 }
