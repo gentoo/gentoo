@@ -16,4 +16,15 @@
 	<upstream>
 		<remote-id type="github">oneapi-src/oneMKL</remote-id>
 	</upstream>
+	<use>
+		<flag name="gnu-openmp">
+			Install versions with GNU OpenMP (libgomp) support.
+		</flag>
+		<flag name="llvm-openmp">
+			Install versions with LLVM OpenMP (libomp) support.
+		</flag>
+		<flag name="tbb">
+			Install versions with TBB threading support.
+		</flag>
+	</use>
 </pkgmetadata>

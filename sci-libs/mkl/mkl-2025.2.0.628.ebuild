@@ -20,7 +20,7 @@ S="${WORKDIR}"
 LICENSE="ISSL"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples static-libs"
+IUSE="examples gnu-openmp llvm-openmp static-libs tbb"
 RESTRICT="strip"
 
 # MKL uses Intel/LLVM OpenMP by default.
@@ -29,8 +29,9 @@ RESTRICT="strip"
 RDEPEND="
 	app-eselect/eselect-blas
 	app-eselect/eselect-lapack
-	dev-cpp/tbb
-	llvm-runtimes/openmp
+	gnu-openmp? ( sys-devel/gcc:*[openmp] )
+	llvm-openmp? ( llvm-runtimes/openmp )
+	tbb? ( dev-cpp/tbb )
 "
 # bug #801460
 BDEPEND="
@@ -53,11 +54,20 @@ src_install() {
 	if ! use examples; then
 		rm -rv "opt/intel/oneapi/mkl/${PN_VER}"/share/{mkl/benchmarks,doc/mkl/examples} || die
 	fi
-
-	# Replace Intel OpenMP with LLVM OpenMP
-	sed -e '/Requires: openmp/d' \
-		-e '/Libs:/s:$: -lomp:' \
-		-i "${libroot}"/pkgconfig/*iomp.pc || die
+	if ! use gnu-openmp; then
+		rm -v "${libroot}"/{*_gnu_thread.*,pkgconfig/*-gomp.pc} || die
+	fi
+	if use llvm-openmp; then
+		# Replace Intel OpenMP with LLVM OpenMP
+		sed -e '/Requires: openmp/d' \
+			-e '/Libs:/s:$: -lomp:' \
+			-i "${libroot}"/pkgconfig/*iomp.pc || die
+	else
+		rm -v "${libroot}"/{*_intel_thread.*,pkgconfig/*-iomp.pc} || die
+	fi
+	if ! use tbb; then
+		rm -v "${libroot}"/{*_tbb_thread.*,pkgconfig/*-tbb.pc} || die
+	fi
 
 	# Symlink pkgconfig and cmake files
 	pushd "${libroot}/pkgconfig" >/dev/null || die
@@ -96,8 +106,8 @@ src_install() {
 		# we need to duplicate it in ROOTPATH for Portage to respect...
 		ROOTPATH="${EPREFIX}/opt/intel/oneapi/mkl/${PN_VER}/bin"
 		LDPATH="${EPREFIX}/opt/intel/oneapi/mkl/${PN_VER}/lib"
-		# Default to GNU threading -- we do not package Intel OpenMP
-		MKL_THREADING_LAYER=gnu
+		# Override default threading -- we do not package Intel OpenMP
+		MKL_THREADING_LAYER=$(usex gnu-openmp gnu $(usex tbb tbb seq))
 	_EOF_
 }
 
