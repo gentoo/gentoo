@@ -779,9 +779,9 @@ cmake_src_test() {
 			eerror "--START TEST LOG--------------------------------------------------------------"
 			cat "${BUILD_DIR}/Testing/Temporary/LastTest.log"
 			eerror "--END TEST LOG----------------------------------------------------------------"
-			die "Tests failed."
+			die -n "Tests failed."
 		else
-			die "Tests failed. When you file a bug, please attach the following file: \n\t${BUILD_DIR}/Testing/Temporary/LastTest.log"
+			die -n "Tests failed. When you file a bug, please attach the following file: \n\t${BUILD_DIR}/Testing/Temporary/LastTest.log"
 		fi
 
 		# die might not die due to nonfatal
