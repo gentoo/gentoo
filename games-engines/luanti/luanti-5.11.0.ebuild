@@ -70,7 +70,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.9.1-no_upstream_optflags.patch
+	"${FILESDIR}"/minetest-5.9.1-no_upstream_optflags.patch
 )
 
 src_prepare() {
@@ -127,20 +127,20 @@ src_install() {
 	cmake_src_install
 
 	if use server; then
-		keepdir /etc/${PN}
-		fowners root:${PN} /etc/${PN}
-		fperms 2750 /etc/${PN}
+		keepdir /etc/minetest
+		fowners root:minetest /etc/minetest
+		fperms 2750 /etc/minetest
 
-		keepdir /var/log/${PN}
-		fowners ${PN}:${PN} /var/log/${PN}
+		keepdir /var/log/minetest
+		fowners minetest:minetest /var/log/minetest
 
-		newconfd "${FILESDIR}"/${PN}server.confd ${PN}-server
-		newinitd "${FILESDIR}"/${PN}server.initd ${PN}-server
+		newconfd "${FILESDIR}"/minetestserver.confd minetest-server
+		newinitd "${FILESDIR}"/minetestserver.initd minetest-server
 
-		systemd_newunit "${FILESDIR}"/${PN}server_default.service ${PN}-server.service
-		systemd_newunit "${FILESDIR}"/${PN}server_template.service ${PN}-server@.service
+		systemd_newunit "${FILESDIR}"/minetestserver_default.service minetest-server.service
+		systemd_newunit "${FILESDIR}"/minetestserver_template.service minetest-server@.service
 
 		insinto /etc/logrotate.d
-		newins "${FILESDIR}"/${PN}server.logrotate ${PN}-server
+		newins "${FILESDIR}"/minetestserver.logrotate minetest-server
 	fi
 }
