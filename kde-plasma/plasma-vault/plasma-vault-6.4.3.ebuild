@@ -51,3 +51,28 @@ src_configure() {
 
 	ecm_src_configure
 }
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	local has_deprecated_backend
+	dropping_backend() {
+		if has_version ${2}; then
+			elog "${CATEGORY}/${PN} will drop support for ${1} in the future."
+			elog "Migrate away from any ${2} vaults before that happens."
+			elog
+			has_deprecated_backend=1
+		fi
+	}
+
+	dropping_backend CryFS sys-fs/cryfs
+	dropping_backend EncFS sys-fs/encfs
+
+	if [[ has_deprecated_backend ]]; then
+		elog "The only supported backend going forward will be app-crypt/gocryptfs."
+		elog
+		elog "See also:"
+		elog "https://invent.kde.org/plasma/plasma-vault/-/merge_requests/57"
+		elog "https://invent.kde.org/plasma/plasma-vault/-/merge_requests/62"
+	fi
+}
