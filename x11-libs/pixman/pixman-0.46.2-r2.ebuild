@@ -23,6 +23,10 @@ SLOT="0"
 IUSE="cpu_flags_ppc_altivec cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3 static-libs test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-rvv.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use test && tc-check-openmp
 }
@@ -51,8 +55,6 @@ multilib_src_configure() {
 		-Ddemos=disabled
 		-Dgtk=disabled
 		-Dlibpng=disabled
-		 # explicitly disable RVV due to https://bugs.gentoo.org/95938
-		-Drvv=disabled
 	)
 
 	if [[ ${ABI} == arm64 ]]; then
