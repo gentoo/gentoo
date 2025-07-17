@@ -16,9 +16,6 @@ SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="X"
 
-# bug #580440, last checked 5.6.3
-RESTRICT="test"
-
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6[widgets]
@@ -46,6 +43,12 @@ RDEPEND="${DEPEND}
 	>=kde-plasma/kglobalacceld-${KDE_CATV}:6
 "
 BDEPEND=">=kde-frameworks/kcmutils-${KFMIN}:6"
+
+CMAKE_SKIP_TESTS=(
+	# last checked 2025-07-17, also fails upstream
+	# FAIL!  : TestConfig::testDisabledScreenConfig() Compared values are not the same
+	kscreen-kded-configtest
+)
 
 src_configure() {
 	local mycmakeargs=(
