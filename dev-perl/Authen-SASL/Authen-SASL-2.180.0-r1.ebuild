@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl SASL interface"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~riscv ~sparc ~x86"
 IUSE="kerberos"
 
 RDEPEND="
