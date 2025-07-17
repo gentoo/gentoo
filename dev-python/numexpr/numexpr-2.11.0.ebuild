@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -31,9 +31,9 @@ RDEPEND="
 
 python_test() {
 	pushd "${BUILD_DIR}/install/$(python_get_sitedir)" >/dev/null || die
-	"${EPYTHON}" - <<-EOF || die "Tests failed with ${EPYTHON}"
+	"${EPYTHON}" -c '
 		import sys,numexpr
 		sys.exit(0 if numexpr.test(verbosity=2).wasSuccessful() else 1)
-	EOF
+	' || die "Tests failed with ${EPYTHON}"
 	pushd >/dev/null || die
 }
