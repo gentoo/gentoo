@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=scikit-build-core
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit cmake distutils-r1
 
