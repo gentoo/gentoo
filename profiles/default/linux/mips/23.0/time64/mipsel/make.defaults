@@ -2,5 +2,5 @@
 # Distributed under the terms of the GNU General Public License v2
 
 CHOST_o32="mipsel-unknown-linux-gnut64"
-CHOST_n32="mips64el-unknown-linux-gnuabin32"
+CHOST_n32="mips64el-unknown-linux-gnuabin32t64"
 CHOST_n64="mips64el-unknown-linux-gnuabi64"
