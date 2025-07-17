@@ -51,6 +51,7 @@ mail-client/thunderbird system-av1
 # https://gitlab.freedesktop.org/wayland/weston/-/issues/739
 gui-libs/gtk wayland
 app-i18n/ibus wayland
+app-office/libreoffice gtk4
 gnome-base/gnome-control-center wayland
 sys-apps/xdg-desktop-portal-gnome wayland
 net-libs/webkit-gtk:6 wayland
