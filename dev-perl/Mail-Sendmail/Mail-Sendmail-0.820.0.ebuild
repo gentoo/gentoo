@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple platform independent mailer"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="dev-perl/Sys-Hostname-Long"
 
