@@ -30,8 +30,6 @@ RDEPEND="
 	app-eselect/eselect-blas
 	app-eselect/eselect-lapack
 	dev-cpp/tbb
-	dev-libs/opencl-icd-loader
-	sys-cluster/mpich[fortran]
 	llvm-runtimes/openmp
 "
 # bug #801460
