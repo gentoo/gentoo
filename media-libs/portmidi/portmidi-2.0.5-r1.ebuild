@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/alsa-lib
 "
 DEPEND="
-	${DEPEND}
+	${RDEPEND}
 "
 BDEPEND="
 	app-arch/unzip
