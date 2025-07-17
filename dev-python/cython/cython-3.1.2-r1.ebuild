@@ -39,6 +39,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.29.22-spawn-multiprocessing.patch"
 	"${FILESDIR}/${PN}-0.29.23-pythran-parallel-install.patch"
+	# https://github.com/cython/cython/pull/6957
+	"${FILESDIR}/${P}-odr.patch"
 )
 
 distutils_enable_sphinx docs \
