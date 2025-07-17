@@ -15,7 +15,7 @@ SRC_URI="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-IUSE="+grapheme-clustering test utempter verify-sig"
+IUSE="+doc +grapheme-clustering test utempter verify-sig"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
@@ -43,7 +43,7 @@ RDEPEND="
 	utempter? ( sys-libs/libutempter )
 "
 BDEPEND="
-	app-text/scdoc
+	doc? ( app-text/scdoc )
 	dev-util/wayland-scanner
 	verify-sig? ( sec-keys/openpgp-keys-dnkl )
 "
@@ -65,7 +65,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Ddocs=enabled
+		$(meson_feature doc docs)
 		-Dthemes=true
 		-Dime=true
 		-Dterminfo=disabled

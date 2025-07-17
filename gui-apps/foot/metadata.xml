@@ -6,6 +6,7 @@
 		<name>Arsen Arsenović</name>
 	</maintainer>
 	<use>
+		<flag name="doc">Build and install documentation (man pages, example foot.ini, readme, changelog, license etc).</flag>
 		<flag name="grapheme-clustering">Enable grapheme clustering support</flag>
 		<flag name="utempter">Enable utmp support via <pkg>sys-libs/libutempter</pkg></flag>
 	</use>
