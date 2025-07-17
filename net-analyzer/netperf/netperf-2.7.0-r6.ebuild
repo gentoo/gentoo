@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="Network performance benchmark"
 HOMEPAGE="http://www.netperf.org/"
