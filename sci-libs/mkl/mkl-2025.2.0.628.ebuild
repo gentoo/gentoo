@@ -98,6 +98,8 @@ src_install() {
 		# we need to duplicate it in ROOTPATH for Portage to respect...
 		ROOTPATH="${EPREFIX}/opt/intel/oneapi/mkl/${PN_VER}/bin"
 		LDPATH="${EPREFIX}/opt/intel/oneapi/mkl/${PN_VER}/lib"
+		# Default to GNU threading -- we do not package Intel OpenMP
+		MKL_THREADING_LAYER=gnu
 	_EOF_
 }
 
