@@ -198,7 +198,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		gui-libs/gtk[X]
+		gui-libs/gtk[wayland,X]
 		x11-libs/pango
 	)
 	kde? (
