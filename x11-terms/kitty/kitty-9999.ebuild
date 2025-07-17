@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit edo go-env optfeature multiprocessing
-inherit python-single-r1 toolchain-funcs xdg
+PYTHON_COMPAT=( python3_{11..13} )
+inherit edo go-env optfeature multiprocessing python-single-r1
+inherit shell-completion toolchain-funcs xdg
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -168,12 +168,9 @@ src_compile() {
 
 		# generate shell completions, shell-integration/ has some "old" pre-gen
 		# ones that currently miss things (no bash, no kitten for zsh, etc...)
-		mkdir -p linux-package/share/bash-completion/completions || die
-		linux-package/bin/kitten __complete__ setup bash > ${_}/kitty || die
-		mkdir -p linux-package/share/fish/vendor_completions.d || die
-		linux-package/bin/kitten __complete__ setup fish > ${_}/kitty.fish || die
-		mkdir -p linux-package/share/zsh/site-functions || die
-		linux-package/bin/kitten __complete__ setup zsh > ${_}/_kitty || die
+		linux-package/bin/kitten __complete__ setup bash > "${T}"/kitty || die
+		linux-package/bin/kitten __complete__ setup fish > "${T}"/kitty.fish || die
+		linux-package/bin/kitten __complete__ setup zsh > "${T}"/_kitty || die
 	fi
 }
 
@@ -188,6 +185,13 @@ src_install() {
 	# time, then uses that rather than the system's at runtime
 	dosym -r /usr/share/fonts/symbols-nerd-font/SymbolsNerdFontMono-Regular.ttf \
 		/usr/"$(get_libdir)"/kitty/fonts/SymbolsNerdFontMono-Regular.ttf
+
+	if ! tc-is-cross-compiler; then
+		dobashcomp "${T}"/kitty
+		bashcomp_alias kitty edit-in-kitty clone-in-kitty kitten
+		dofishcomp "${T}"/kitty.fish
+		dozshcomp "${T}"/_kitty
+	fi
 }
 
 pkg_postinst() {
