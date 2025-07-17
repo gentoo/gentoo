@@ -159,9 +159,9 @@ src_prepare() {
 	# store chromium versions, only used in postinst for a warning
 	local chromium
 	mapfile -t chromium < CHROMIUM_VERSION || die
-	[[ ${chromium[1]} =~ ^Based.*:[^0-9]+([0-9.]+$) ]] &&
+	[[ ${chromium[0]} =~ ^Based.*:[^0-9]+([0-9.]+$) ]] &&
 		QT6_CHROMIUM_VER=${BASH_REMATCH[1]} || die
-	[[ ${chromium[2]} =~ ^Patched.+:[^0-9]+([0-9.]+$) ]] &&
+	[[ ${chromium[1]} =~ ^Patched.+:[^0-9]+([0-9.]+$) ]] &&
 		QT6_CHROMIUM_PATCHES_VER=${BASH_REMATCH[1]} || die
 }
 
