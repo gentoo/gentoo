@@ -3,15 +3,15 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic font optfeature pam strip-linguas systemd xdg-utils
+inherit autotools flag-o-matic font greadme optfeature pam strip-linguas systemd xdg-utils
 
 DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="
 	https://www.jwz.org/xscreensaver/${PN}-${PV}.tar.gz
 	logind-idle-hint? (
-		https://github.com/Flowdalic/xscreensaver/commit/59e7974c42dc08411c9af2a3a644a582c2116f46.patch ->
-			${PN}-6.06-logind-idle-hint.patch
+		https://github.com/Flowdalic/xscreensaver/commit/e79e2f41be3367c196899ef2f38ab97436fa1a65.patch ->
+			${PN}-6.12-logind-idle-hint.patch
 	)
 	systemd? (
 		https://github.com/Flowdalic/xscreensaver/commit/376b07ec76cfe1070f498773aaec8fd7030593af.patch ->
@@ -158,7 +158,11 @@ src_prepare() {
 	fi
 
 	if use logind-idle-hint; then
-		eapply "${DISTDIR}/${PN}-6.06-logind-idle-hint.patch"
+		eapply "${DISTDIR}/${PN}-6.12-logind-idle-hint.patch"
+	fi
+
+	if use glx; then
+		sed -i -e 's;OpenGL/gl.h;GL/gl.h;' driver/subprocs.c || die
 	fi
 
 	config_rpath_update "${S}"/config.rpath
@@ -261,26 +265,36 @@ src_install() {
 
 	# bug #885989
 	fperms 4755 /usr/$(get_libdir)/misc/xscreensaver/xscreensaver-auth
+
+	greadme_stdin <<-EOF
+	You can configure xscreensaver via 'xscreensaver-settings'.
+	EOF
+
+	# bug #811885
+	if ! use glx; then
+		greadme_stdin --append <<-EOF
+		Enable USE='glx' if OpenGL screensavers are crashing.
+		EOF
+	fi
+
+	if use wayland; then
+		greadme_stdin --append <<-EOF
+		WARNING: Wayland support is preliminary. It does not lock and you need
+		a supported compositor, like:
+
+		 *  kde-plasma/kwin
+		 *  gui-wm/sway
+		 *  gui-wm/hyprland
+		 *  gui-wm/wayfire
+		 *  gui-wm/labwc
+		EOF
+	fi
 }
 
 pkg_postinst() {
 	use fonts && font_pkg_postinst
 
-	# bug #811885
-	if ! use glx; then
-		elog "Enable USE='glx' if OpenGL screensavers are crashing."
-	fi
-
-	if use wayland; then
-		elog "Wayland support is preliminar. It doesn't lock and you need"
-		elog "a supported compositor, like:"
-		elog ""
-		elog " *  kde-plasma/kwin"
-		elog " *  gui-wm/sway"
-		elog " *  gui-wm/hyprland"
-		elog " *  gui-wm/wayfire"
-		elog " *  gui-wm/labwc"
-	fi
+	greadme_pkg_postinst
 
 	optfeature 'Bitmap fonts 75dpi' media-fonts/font-adobe-75dpi
 	optfeature 'Bitmap fonts 100dpi' media-fonts/font-adobe-100dpi
