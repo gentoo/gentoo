@@ -43,6 +43,7 @@ DEPEND+="
 "
 BDEPEND="
 	${PYTHON_DEPS}
+	dev-build/xfce4-dev-tools
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gtk-doc )
 "
