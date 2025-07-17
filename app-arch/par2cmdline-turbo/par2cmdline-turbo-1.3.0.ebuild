@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/animetosho/par2cmdline-turbo"
 else
 	SRC_URI="https://github.com/animetosho/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 DESCRIPTION="par2cmdline × ParPar: speed focused par2cmdline fork"
