@@ -20,6 +20,7 @@ S="${WORKDIR}"
 LICENSE="ISSL"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="static-libs"
 RESTRICT="strip"
 
 # MKL uses Intel/LLVM OpenMP by default.
@@ -47,6 +48,11 @@ QA_SONAME="*"
 src_install() {
 	local libdir=$(get_libdir)
 	local libroot=opt/intel/oneapi/mkl/${PN_VER}/lib
+
+	if ! use static-libs; then
+		rm -v "${libroot}"/{*.a,pkgconfig/*-static-*.pc} || die
+	fi
+
 	# Symlink pkgconfig and cmake files
 	pushd "${libroot}/pkgconfig" >/dev/null || die
 	for file in *.pc; do
