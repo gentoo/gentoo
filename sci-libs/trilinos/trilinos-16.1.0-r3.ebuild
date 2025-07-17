@@ -65,6 +65,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/${P}-fix_compilation_gcc15.patch"
 )
 
 pkg_pretend() {
