@@ -56,6 +56,11 @@ src_install() {
 		rm -rv "opt/intel/oneapi/mkl/${PN_VER}"/share/{mkl/benchmarks,doc/mkl/examples} || die
 	fi
 
+	# Replace Intel OpenMP with LLVM OpenMP
+	sed -e '/Requires: openmp/d' \
+		-e '/Libs:/s:$: -lomp:' \
+		-i "${libroot}"/pkgconfig/*iomp.pc || die
+
 	# Symlink pkgconfig and cmake files
 	pushd "${libroot}/pkgconfig" >/dev/null || die
 	for file in *.pc; do
