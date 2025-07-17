@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Provide non blocking randomness"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~riscv ~sparc x86"
 
 PERL_RM_FILES=( t/pod.t )
