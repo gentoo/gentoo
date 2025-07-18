@@ -1,0 +1,15 @@
+diff --git a/buildSrc/linux.gradle b/buildSrc/linux.gradle
+index 2295566..ce54c3f 100644
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -214,8 +214,8 @@ setupTools("linux_freetype_tools",
+     }
+ )
+ 
+-def compiler = IS_COMPILE_PARFAIT ? "parfait-gcc" : "${toolchainDir}gcc";
+-def linker = IS_STATIC_BUILD ? "ar" : IS_COMPILE_PARFAIT ? "parfait-g++" : "${toolchainDir}g++";
++def compiler = IS_COMPILE_PARFAIT ? "parfait-gcc" : System.getenv("CC");
++def linker = IS_STATIC_BUILD ? "ar" : IS_COMPILE_PARFAIT ? "parfait-g++" : System.getenv("CXX");
+ 
+ LINUX.glass = [:]
+ LINUX.glass.variants = ["glass", "glassgtk2", "glassgtk3"]

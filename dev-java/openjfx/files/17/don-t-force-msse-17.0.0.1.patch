@@ -1,0 +1,88 @@
+From cf60da4cb9429f01b5793b0116651e6766068e7b Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Sat, 19 Sep 2020 18:30:58 -0700
+Subject: [PATCH] don't force -msse
+
+---
+ .../src/main/native/gstreamer/projects/linux/avplugin/Makefile | 1 -
+ .../main/native/gstreamer/projects/linux/fxplugins/Makefile    | 1 -
+ .../src/main/native/gstreamer/projects/mac/fxplugins/Makefile  | 3 +--
+ .../main/native/gstreamer/projects/mac/gstreamer-lite/Makefile | 3 +--
+ .../src/main/native/jfxmedia/projects/linux/Makefile           | 1 -
+ .../src/main/native/jfxmedia/projects/mac/Makefile             | 3 +--
+ 6 files changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile
+index 9f80434..659ab1c 100644
+--- a/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile
++++ b/modules/javafx.media/src/main/native/gstreamer/projects/mac/fxplugins/Makefile
+@@ -32,15 +32,6 @@
+          -DG_DISABLE_DEPRECATED    \
+          -DOSX
+ 
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -O0 -g -Wall
+-endif
+-
+-ifneq ($(ARCH), arm64)
+-    CFLAGS += -msse2
+-endif
+ 
+ INCLUDES = $(addprefix -I$(SRCBASE_DIR)/,$(DIRLIST))   \
+ 	       -I$(SRCBASE_DIR)                            \
+diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile
+index 2020404..34bdf42 100644
+--- a/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile
++++ b/modules/javafx.media/src/main/native/gstreamer/projects/mac/gstreamer-lite/Makefile
+@@ -51,15 +51,6 @@
+          -DGST_REMOVE_DISABLED \
+          -DOSX
+ 
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -O0 -g -Wall
+-endif
+-
+-ifneq ($(ARCH), arm64)
+-    CFLAGS += -msse2
+-endif
+ 
+ INCLUDES = $(addprefix -I$(SRCBASE_DIR)/,$(DIRLIST)) \
+            -I$(BASE_DIR)/plugins/ \
+diff --git a/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile b/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
+index aaef98e..f5b06c6 100644
+--- a/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
++++ b/modules/javafx.media/src/main/native/jfxmedia/projects/linux/Makefile
+@@ -42,9 +42,6 @@ 
+                   -fstack-protector \
+                   -Werror=trampolines \
+ 	          -DGSTREAMER_LITE
+-        ifneq ($(ARCH), aarch64)
+-            CFLAGS += -msse2
+-        endif
+ 
+ 
+ 	PACKAGES_INCLUDES := $(shell pkg-config --cflags glib-2.0)
+diff --git a/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile b/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile
+index 5ffd9ea..a7b3ddb 100644
+--- a/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile
++++ b/modules/javafx.media/src/main/native/jfxmedia/projects/mac/Makefile
+@@ -30,15 +30,6 @@ CFLAGS += -pipe \
+          -DTARGET_OS_MAC=1         \
+          -D_GNU_SOURCE
+ 
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -O0 -g -Wall
+-endif
+-
+-ifneq ($(ARCH), arm64)
+-    CFLAGS += -msse2
+-endif
+ 
+ INCLUDES = -I$(JAVA_HOME)/include \
+            -I$(JAVA_HOME)/include/darwin \
