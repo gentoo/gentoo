@@ -48,7 +48,6 @@ COMMON_DEPEND="
 	x11-libs/libXt
 	x11-libs/libXxf86vm
 	elogind? ( sys-auth/elogind )
-	x11-libs/gdk-pixbuf-xlib
 	>=x11-libs/gdk-pixbuf-2.42.0:2
 	>=x11-libs/gtk+-3.0.0:3
 	ffmpeg? ( media-video/ffmpeg:= )
