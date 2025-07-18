@@ -71,7 +71,6 @@ RDEPEND="
 	perl? (
 		dev-lang/perl
 		dev-perl/libwww-perl
-		virtual/perl-Digest-MD5
 	)
 	selinux? ( sec-policy/selinux-xscreensaver )
 "
