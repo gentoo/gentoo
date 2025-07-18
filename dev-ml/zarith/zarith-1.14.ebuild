@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit findlib toolchain-funcs
+inherit findlib toolchain-funcs dot-a
 
 DESCRIPTION="Arithmetic and logic operations over arbitrary-precision integers"
 HOMEPAGE="https://github.com/ocaml/Zarith"
@@ -26,6 +26,7 @@ DEPEND="${RDEPEND} dev-lang/perl"
 DOCS=( README.md Changes )
 
 src_configure() {
+	lto-guarantee-fat
 	tc-export CC AR
 	./configure \
 		-ocamllibdir /usr/$(get_libdir)/ocaml -gmp || die
@@ -56,4 +57,5 @@ src_install() {
 
 	use doc && HTML_DOCS=( html/* )
 	einstalldocs
+	strip-lto-bytecode
 }
