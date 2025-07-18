@@ -97,6 +97,11 @@ src_prepare() {
 	# 	v${PV}-0-gd1a9f7ee
 	# EOF
 
+	# 855214 needs git
+	sed \
+		-e '/-DBDIR=${CMAKE_CURRENT_BINARY_DIR}/a -DNETGEN_VERSION_GIT=${NETGEN_VERSION_GIT}' \
+		-i CMakeLists.txt || die
+
 	if use python; then
 		sed \
 			-e "s/Python3_EXECUTABLE/PYTHON_EXECUTABLE/" \
