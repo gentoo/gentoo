@@ -980,6 +980,11 @@ src_configure() {
 	if use pgo ; then
 		mozconfig_add_options_ac '+pgo' MOZ_PGO=1
 
+		# Avoid compressing just-built instrumented Firefox with
+		# high levels of compression. Just use tar as a container
+		# to save >=10 minutes.
+		export MOZ_PKG_FORMAT=tar
+
 		if use clang ; then
 			# Used in build/pgo/profileserver.py
 			export LLVM_PROFDATA="llvm-profdata"
