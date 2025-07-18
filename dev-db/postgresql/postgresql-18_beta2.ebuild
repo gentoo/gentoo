@@ -16,15 +16,15 @@ SLOT=$(ver_cut 1)
 MY_PV=${PV/_/}
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
+SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.gz"
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
 IUSE="debug doc +icu kerberos ldap llvm +lz4 +numa nls oauth pam perl python
-	  +readline selinux +server systemd ssl static-libs tcl uuid +uring
-          xml zlib +zstd"
+	+readline selinux +server systemd ssl static-libs tcl uuid +uring
+	xml zlib +zstd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
