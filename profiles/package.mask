@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
+# End of life software. Relies on a commercial internet service which removed
+# suppor for the old APIs this package needs. Impossible to use anymore.
+# Removal on 2025-08-17.  Bug #927026.
+net-vpn/protonvpn-cli
+
 # Matt Turner <mattst88@gentoo.org> (2025-07-16)
 # Masked for testing
 =dev-util/mesa_clc-25.2*
