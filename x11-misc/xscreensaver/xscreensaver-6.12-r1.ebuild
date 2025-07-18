@@ -153,6 +153,12 @@ src_prepare() {
 			's| Stay.*fucking mask\.$||' \
 			hacks/glx/covid19.man \
 			hacks/config/covid19.xml || die
+		sed -i \
+			-e 's|Ass |Dumb |g' \
+			-e 's|Buttcorn|Blue Corn|g' \
+			-e 's| dick||gi' \
+			-e 's| shit||g' \
+			hacks/bsod.c || die
 		eapply "${FILESDIR}/xscreensaver-6.05-teach-handsy-some-manners.patch"
 	fi
 
