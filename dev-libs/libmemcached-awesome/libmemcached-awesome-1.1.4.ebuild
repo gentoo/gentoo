@@ -12,7 +12,7 @@ S="${WORKDIR}/libmemcached-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc ~s390 x86"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 ~s390 x86"
 IUSE="+libevent sasl test"
 RESTRICT="!test? ( test )"
 
