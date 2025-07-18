@@ -59,5 +59,5 @@ src_configure() {
 
 src_test() {
 	# Tests fail in parallel, https://github.com/Blosc/c-blosc2/issues/432
-	MAKEOPTS=-j1 cmake_src_test
+	cmake_src_test -j1
 }
