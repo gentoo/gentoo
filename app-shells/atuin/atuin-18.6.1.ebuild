@@ -110,6 +110,7 @@ src_test() {
 }
 
 src_install() {
+	readme.gentoo_create_doc
 	dobin "${ATUIN_BIN}"
 
 	if use server; then
@@ -132,8 +133,6 @@ src_install() {
 
 	insinto "/usr/share/${PN}"
 	doins -r shell-init
-
-	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
