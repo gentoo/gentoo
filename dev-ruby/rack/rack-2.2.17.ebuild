@@ -26,7 +26,7 @@ ruby_add_rdepend "virtual/ruby-ssl"
 ruby_add_bdepend "test? (
 	dev-ruby/minitest:5
 	dev-ruby/minitest-global_expectations
-	|| ( dev-ruby/psych:5 dev-ruby/psych:0 )
+	dev-ruby/psych:5
 	dev-ruby/webrick
 )"
 
