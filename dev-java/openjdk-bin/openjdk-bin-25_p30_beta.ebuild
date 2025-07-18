@@ -22,7 +22,7 @@ abi_uri() {
 
 	echo "${2-$1}? (
 		${musl:+ elibc_musl? ( }
-			${baseuri}/OpenJDK-jdk_${1}_${os}_hotspot_${MY_PV2//+/_}.tar.gz
+			${baseuri}/OpenJDK$(ver_cut 1)U-jdk_${1}_${os}_hotspot_${MY_PV2//+/_}.tar.gz
 		${musl:+ ) } )"
 }
 
