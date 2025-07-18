@@ -27,7 +27,12 @@ RDEPEND="
 	net-libs/gnutls:=
 	sys-libs/readline:=
 	virtual/libintl
-	memcached? ( dev-libs/libmemcached )
+	memcached? (
+		|| (
+			dev-libs/libmemcached-awesome
+			dev-libs/libmemcached
+		)
+	)
 	redis? ( dev-libs/hiredis:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
