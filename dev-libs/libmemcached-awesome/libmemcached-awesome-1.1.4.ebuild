@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="a C/C++ memcached client library"
-HOMEPAGE="https://github.com/awesomized/libmemcached"
+HOMEPAGE="https://awesomized.github.io/libmemcached/ https://github.com/awesomized/libmemcached"
 SRC_URI="https://github.com/awesomized/libmemcached/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/libmemcached-${PV}"
 
