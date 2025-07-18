@@ -14,13 +14,23 @@
 		<subslots>Reflects ABI compatibility of libgdal.so</subslots>
 	</slots>
 	<use>
+		<flag name="archive">Enable support for various archive and compression formats with <pkg>app-arch/libarchive</pkg></flag>
 		<flag name="armadillo">Use <pkg>sci-libs/armadillo</pkg> for faster TPS transform computation</flag>
+		<flag name="blosc">Enable support for blosc compression with <pkg>dev-libs/c-blosc</pkg></flag>
+		<flag name="cryptopp">Enable support RSA SHA256 signing functionality with <pkg>dev-libs/crypto++</pkg></flag>
+		<flag name="exprtk">Enable support for additional advanced C++ VRT expressions with <pkg>dev-cpp/exprtk</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
 		<flag name="geos">Add support for geometry engine (<pkg>sci-libs/geos</pkg>)</flag>
 		<flag name="gml">Enable support for <pkg>dev-libs/xerces-c</pkg> C++ API</flag>
+		<flag name="libaec">Enable support Adaptive Entropy Coding with <pkg>sci-libs/libaec</pkg></flag>
+		<flag name="libdeflate">Use <pkg>app-arch/libdeflate</pkg> for faster compression and decompression</flag>
+		<flag name="mongodb">Enable support for MongoDBV3 driver with <pkg>dev-db/mongodb</pkg></flag>
+		<flag name="muparser">Enable support for C++ VRT expressions with <pkg>dev-cpp/muParser</pkg></flag>
 		<flag name="ogdi">Enable support for the open geographic datastore interface (<pkg>sci-libs/ogdi</pkg>)</flag>
 		<flag name="parquet">Enables read/write parquet data format (<pkg>dev-libs/apache-arrow</pkg>)</flag>
+		<flag name="qhull">Enable support for linear interpolation of gdal_grid with <pkg>media-libs/qhull</pkg></flag>
 		<flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>
+		<flag name="tools">Build command line utilities</flag>
 		<flag name="xls">Add the <pkg>dev-libs/freexl</pkg> library for xls import support</flag>
 	</use>
 	<upstream>
