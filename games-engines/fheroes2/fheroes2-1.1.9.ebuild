@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ihhub/fheroes2/archive/refs/tags/${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
