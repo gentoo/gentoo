@@ -1,0 +1,27 @@
+From 084b8fb6e7273295cad3330e5c42b850c39c3175 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 18 Jul 2025 01:23:34 +0200
+Subject: [PATCH] Fix build issues when compiling GAP with GCC 15 (#6010)
+
+---
+ src/common.h | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/src/common.h b/src/common.h
+index 3932c3020b..02818f567c 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -161,12 +161,7 @@ typedef Bag Obj;
+ **
+ **  'ObjFunc' is the type of a function returning an object.
+ */
+-#pragma GCC diagnostic push
+-#ifndef __cplusplus
+-#pragma GCC diagnostic ignored "-Wstrict-prototypes"
+-#endif
+-typedef Obj (* ObjFunc) (/*arguments*/);
+-#pragma GCC diagnostic pop
++typedef void * ObjFunc;
+ 
+ typedef Obj (* ObjFunc_0ARGS) (Obj self);
+ typedef Obj (* ObjFunc_1ARGS) (Obj self, Obj a1);
