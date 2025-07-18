@@ -97,6 +97,11 @@ src_prepare() {
 	# 	v${PV}-0-08eec44
 	# EOF
 
+	# 855214 needs git
+	sed \
+		-e '/-DBDIR=${CMAKE_CURRENT_BINARY_DIR}/a -DNETGEN_VERSION_GIT=${NETGEN_VERSION_GIT}' \
+		-i CMakeLists.txt || die
+
 	rm external_dependencies -r || die
 
 	cmake_src_prepare
