@@ -1,0 +1,26 @@
+https://github.com/systemd/systemd/commit/e65455feade65c798fd1742220768eba7f81755b
+
+From e65455feade65c798fd1742220768eba7f81755b Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Wed, 16 Jul 2025 11:05:11 +0100
+Subject: [PATCH] elf2efi: ignore .sframe
+
+SFrames are a new format for stack unwinding information. Ignore it if
+preset as is done for .eh_frame.
+---
+ tools/elf2efi.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/elf2efi.py b/tools/elf2efi.py
+index d3ef5907b208f..b81423d06e7f0 100755
+--- a/tools/elf2efi.py
++++ b/tools/elf2efi.py
+@@ -214,6 +214,7 @@ def __init__(self):
+     ".eh_frame_hdr",
+     ".ARM.exidx",
+     ".relro_padding",
++    ".sframe",
+ ]
+ 
+ IGNORE_SECTION_TYPES = [
+
