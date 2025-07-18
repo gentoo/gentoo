@@ -5,6 +5,10 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<longdescription lang="en">
 		The Intel(R) Math Kernel Library is a mathematical library mostly
 		optimized for Intel processors (also works on AMDs). It contains BLAS
