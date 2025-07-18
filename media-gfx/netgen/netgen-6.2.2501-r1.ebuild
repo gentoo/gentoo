@@ -73,6 +73,7 @@ PATCHES=(
 	# "${FILESDIR}/${PN}-6.2.2406-find-libjpeg-turbo-library.patch"
 	"${FILESDIR}/${PN}-6.2.2301-fix-nullptr-deref-in-archive.patch"
 	"${FILESDIR}/${PN}-6.2.2406-encoding_h.patch"
+	"${FILESDIR}/${PN}-PR202-std_map.patch"
 )
 
 pkg_setup() {

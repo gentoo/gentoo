@@ -1,0 +1,137 @@
+From 78782dcd5365ec4aee54262373f12986e674f4b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 19 Dec 2024 01:28:35 +0100
+Subject: [PATCH] Fix static initialization order for UserFormatRegister map
+
+A std::map is in an invalid state when just zero-initialized, and needs
+to be initialized by its constructor. As this initilization may be done
+after the first call to Register, a crash will typically happen.
+
+To fix this wrap all accesses to the map with a Meyers Singleton. Also
+remove the extra Array - most accesses are using the key, and the few
+format list iterations all sort the result afterwards anyway.
+
+Fixes #201.
+---
+ libsrc/interface/writeuser.cpp | 31 +++++++++++++++++++++++++------
+ libsrc/interface/writeuser.hpp | 25 ++++++++-----------------
+ libsrc/meshing/python_mesh.cpp |  4 +++-
+ 3 files changed, 36 insertions(+), 24 deletions(-)
+https://github.com/NGSolve/netgen/pull/202
+
+ diff --git a/libsrc/interface/writeuser.cpp b/libsrc/interface/writeuser.cpp
+index bfab7fbbf..637af7d36 100644
+--- a/libsrc/interface/writeuser.cpp
++++ b/libsrc/interface/writeuser.cpp
+@@ -16,19 +16,38 @@
+ 
+ namespace netgen
+ {
+-  extern MeshingParameters mparam;
++  std::map<std::string, UserFormatRegister::UserFormatEntry>& UserFormatRegister::getFormats()
++  {
++      static std::map<std::string, UserFormatRegister::UserFormatEntry> formats = {};
++      return formats;
++  }
+ 
+-  Array<UserFormatRegister::UserFormatEntry> UserFormatRegister::entries;
+-  std::map<string, int> UserFormatRegister::format_to_entry_index;
++  void UserFormatRegister::Register(UserFormatRegister::UserFormatEntry && entry)
++  {
++      getFormats()[entry.format] = std::move(entry);
++  }
++
++  const bool UserFormatRegister::HaveFormat(string format)
++  {
++      const auto formats = getFormats();
++      return formats.find(format) != formats.end();
++  }
++
++  const UserFormatRegister::UserFormatEntry & UserFormatRegister::Get(string format)
++  {
++      return getFormats()[format];
++  }
++
++  extern MeshingParameters mparam;
+ 
+   void RegisterUserFormats (NgArray<const char*> & names,
+ 			    NgArray<const char*> & extensions)
+ 			    
+ {
+-  for (const auto & entry : UserFormatRegister::entries)
++  for (const auto & entry : UserFormatRegister::getFormats())
+     {
+-      names.Append (entry.format.c_str());
+-      extensions.Append (entry.extensions[0].c_str());
++      names.Append (entry.second.format.c_str());
++      extensions.Append (entry.second.extensions[0].c_str());
+     }
+ }
+   
+diff --git a/libsrc/interface/writeuser.hpp b/libsrc/interface/writeuser.hpp
+index 99dc21e03..3d9a4e3af 100644
+--- a/libsrc/interface/writeuser.hpp
++++ b/libsrc/interface/writeuser.hpp
+@@ -28,32 +28,23 @@ struct UserFormatRegister {
+     optional<FRead> read;
+     optional<FWrite> write;
+   };
+-  DLL_HEADER static Array<UserFormatEntry> entries;
+-  DLL_HEADER static std::map<string, int> format_to_entry_index;
++  static void Register(UserFormatEntry && entry);
+ 
+-  static void Register(UserFormatEntry && entry) {
+-    format_to_entry_index[entry.format] = entries.Size();
+-    entries.Append( std::move(entry) );
+-  }
+-
+-  static const bool HaveFormat(string format) {
+-    return format_to_entry_index.count(format) > 0;
+-  }
+-  static const UserFormatEntry & Get(string format) {
+-    return entries[format_to_entry_index[format]];
+-  }
++  static const bool HaveFormat(string format);
++  DLL_HEADER static const UserFormatEntry & Get(string format);
+ 
+   template<typename TFunc>
+   static void IterateFormats(TFunc func, bool need_read=false, bool need_write=false) {
+     Array<string> import_formats;
+-    for(const auto & e: entries)
+-    if((!need_read || e.read) && (!need_write || e.write))
+-      import_formats.Append(e.format);
++    for(const auto & e: getFormats())
++    if((!need_read || e.second.read) && (!need_write || e.second.write))
++      import_formats.Append(e.second.format);
+     QuickSort(import_formats);
+     for(auto format : import_formats)
+-      func(entries[format_to_entry_index[format]]);
++      func(Get(format));
+   }
+ 
++  DLL_HEADER static std::map<std::string, UserFormatEntry>& getFormats();
+ };
+ 
+ struct RegisterUserFormat {
+diff --git a/libsrc/meshing/python_mesh.cpp b/libsrc/meshing/python_mesh.cpp
+index a771ba187..bbd9488a4 100644
+--- a/libsrc/meshing/python_mesh.cpp
++++ b/libsrc/meshing/python_mesh.cpp
+@@ -700,7 +700,8 @@ DLL_HEADER void ExportNetgenMeshing(py::module &m)
+ 
+   string export_docu = "Export mesh to other file format. Supported formats are:\n";
+   Array<string> export_formats;
+-  for(auto & e : UserFormatRegister::entries)
++  for(auto & kv : UserFormatRegister::getFormats()) {
++    const auto e = kv.second;
+     if(e.write) {
+       string s = '\t'+e.format+"\t("+e.extensions[0];
+       for(auto & ext : e.extensions.Range(1, e.extensions.Size()))
+@@ -708,6 +709,7 @@ DLL_HEADER void ExportNetgenMeshing(py::module &m)
+       s += ")\n";
+       export_formats.Append(s);
+     }
++  }
+   QuickSort(export_formats);
+   for(const auto & s : export_formats)
+     export_docu += s;
