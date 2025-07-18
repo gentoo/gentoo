@@ -78,6 +78,7 @@ sys-kernel/installkernel efistub
 dev-python/botocore test
 dev-python/ipython nbconvert test
 dev-python/sphinx-autodoc-typehints test
+>=sci-libs/gdal-3.11.3 python
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)
 # Need dev-python/trio.

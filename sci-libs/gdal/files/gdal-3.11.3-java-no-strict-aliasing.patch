@@ -1,0 +1,38 @@
+https://bugs.gentoo.org/948810
+https://github.com/OSGeo/gdal/pull/12773
+https://github.com/OSGeo/gdal/commit/66f9bf01cfcb58499f69df2670a3ec9d7b77ad5a
+
+From 66f9bf01cfcb58499f69df2670a3ec9d7b77ad5a Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 22 Jul 2025 17:04:59 +0300
+Subject: [PATCH] CMake Java: restore -fno-strict-aliasing
+
+This was dropped with the move to cmake.
+
+But swig still struggles with this in java.
+
+> If you are going to use optimisations turned on with gcc (for example -O2),
+> ensure you also compile with -fno-strict-aliasing. The GCC optimisations have
+> become more aggressive from gcc-4.0 onwards and will result in code that fails
+> with strict aliasing optimisations turned on.
+
+Bug: https://bugs.gentoo.org/948810
+See-Also: cd39be5322d5731ae6327b1cec1e54015ab6bc1e
+See-Also: 211263036085ddb44663137d359e3d99fee77bd7
+--- a/swig/java/CMakeLists.txt
++++ b/swig/java/CMakeLists.txt
+@@ -5,6 +5,14 @@ if (CMAKE_CXX_FLAGS)
+   string(REPLACE "/WX " " " CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ")
+ endif ()
+ 
++# Do not remove -fno-strict-aliasing while SWIG generates weird code in upcast methods
++# http://trac.osgeo.org/gdal/changeset/16006
++#
++# https://swig.org//Doc4.3/Java.html#Java_compiling_dynamic
++if (NOT MSVC)
++  add_compile_options("-fno-strict-aliasing")
++endif()
++
+ list(APPEND GDAL_SWIG_COMMON_INTERFACE_FILES
+    ${PROJECT_SOURCE_DIR}/swig/include/java/callback.i
+    ${PROJECT_SOURCE_DIR}/swig/include/java/gdalconst_java.i
