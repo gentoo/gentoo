@@ -35,7 +35,6 @@ RDEPEND="
 	${COMMON_DEP}
 	acct-group/tomcat
 	acct-user/tomcat
-	dev-java/jakarta-mail:0
 	>=virtual/jre-11:*"
 DEPEND="
 	${COMMON_DEP}
@@ -123,8 +122,6 @@ src_install() {
 
 	java-pkg_jarinto "${dest}"/lib
 	java-pkg_dojar output/build/lib/*.jar
-
-	java-pkg_register-dependency jakarta-mail
 
 	dodoc RELEASE-NOTES RUNNING.txt
 	use doc && java-pkg_dojavadoc output/dist/webapps/docs/api
