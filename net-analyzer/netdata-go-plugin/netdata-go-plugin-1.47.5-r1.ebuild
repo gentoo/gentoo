@@ -30,7 +30,7 @@ FILECAPS=(
 )
 
 src_compile() {
-	LDFLAGS="-w -s -X main.version=${PV}-gentoo"
+	LDFLAGS="-X main.version=${PV}-gentoo"
 	ego build -ldflags "${LDFLAGS}" "github.com/netdata/netdata/go/plugins/cmd/godplugin"
 }
 
