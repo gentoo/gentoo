@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Automatic 3d tetrahedral mesh generator"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/NGSolve/netgen/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="ffmpeg gui jpeg mpi +opencascade python test"
 RESTRICT="!test? ( test )"
@@ -70,10 +70,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.2.2204-find-Tk-include-directories.patch"
 	"${FILESDIR}/${PN}-6.2.2406-link-against-ffmpeg.patch"
 	"${FILESDIR}/${PN}-6.2.2204-use-system-catch.patch"
-	"${FILESDIR}/${PN}-6.2.2406-find-libjpeg-turbo-library.patch"
+	# "${FILESDIR}/${PN}-6.2.2406-find-libjpeg-turbo-library.patch"
 	"${FILESDIR}/${PN}-6.2.2301-fix-nullptr-deref-in-archive.patch"
 	"${FILESDIR}/${PN}-6.2.2406-encoding_h.patch"
-	"${FILESDIR}/${PN}-6.2.2406-link-against-jpeg.patch"
 )
 
 pkg_setup() {
@@ -90,20 +89,25 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# # NOTE: need to manually check and update this string on version bumps!
-	# # git describe --tags --match "v[0-9]*" --long --dirty
+	# NOTE: need to manually check and update this string on version bumps!
+	# git ls-remote --tags https://github.com/NGSolve/netgen.git refs/tags/v${PV} | cut -c-8
+	# git describe --tags --match "v[0-9]*" --long --dirty
 	# cat <<- EOF > "${S}/version.txt" || die
-	# 	v${PV}-0-08eec44
+	# 	v${PV}-0-gd1a9f7ee
 	# EOF
 
-	rm external_dependencies -r || die
+	if use python; then
+		sed \
+			-e "s/Python3_EXECUTABLE/PYTHON_EXECUTABLE/" \
+			-i cmake/NetgenConfig.cmake.in || die
+	fi
+
+	rm -r external_dependencies || die
 
 	cmake_src_prepare
 }
 
 src_configure() {
-	filter-lto
-
 	local mycmakeargs=(
 		# currently not working in a sandbox, expects netgen to be installed
 		# see https://github.com/NGSolve/netgen/issues/132
@@ -115,7 +119,7 @@ src_configure() {
 		-DNG_INSTALL_DIR_LIB="$(get_libdir)"
 		-DUSE_CCACHE=OFF
 		# doesn't build with this version
-		-DUSE_CGNS=OFF
+		-DUSE_CGNS=no
 		-DUSE_GUI=$(usex gui)
 		-DUSE_INTERNAL_TCL=OFF
 		-DUSE_JPEG=$(usex jpeg)
@@ -126,24 +130,33 @@ src_configure() {
 		-DUSE_OCC=$(usex opencascade)
 		-DUSE_PYTHON="$(usex python)"
 		-DUSE_SUPERBUILD=OFF
-		-DNETGEN_VERSION_GIT="v${PV}"
+
+		-DNETGEN_VERSION_GIT="v${PV}-0-gd1a9f7ee"
 	)
+
 	# no need to set this, if we only build the library
 	if use gui; then
-		mycmakeargs+=( -DTK_INCLUDE_PATH="/usr/$(get_libdir)/tk8.6/include" )
-	fi
-	if use python; then
 		mycmakeargs+=(
-			-DPREFER_SYSTEM_PYBIND11=ON
-			# # needed, so the value gets passed to NetgenConfig.cmake instead of ${T}/pythonX.Y
-			# -DPYTHON_EXECUTABLE="${PYTHON}"
+			-DTK_INCLUDE_PATH="${ESYSROOT}/usr/$(get_libdir)/tk8.6/include"
 		)
 	fi
+
+	if use python; then
+		append-cppflags -DPYBIND11_NO_ASSERT_GIL_HELD_INCREF_DECREF
+
+		mycmakeargs+=(
+			-DPREFER_SYSTEM_PYBIND11=ON
+			# needed, so the value gets passed to NetgenConfig.cmake instead of ${T}/pythonX.Y
+			-DPYTHON_EXECUTABLE="${PYTHON}"
+		)
+	fi
+
 	if use mpi && use python; then
 		mycmakeargs+=( -DUSE_MPI4PY=ON )
 	else
 		mycmakeargs+=( -DUSE_MPI4PY=OFF )
 	fi
+
 	cmake_src_configure
 }
 
@@ -153,19 +166,22 @@ src_test() {
 	if use python; then
 		local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 		local -x NETGENDIR="${T}/usr/bin"
-		export PYTHONPATH="${T}$(python_get_sitedir):${T}/usr/$(get_libdir):${BUILD_DIR}/libsrc/core"
+		local -x PYTHONPATH="${T}$(python_get_sitedir):${T}/usr/$(get_libdir):${BUILD_DIR}/libsrc/core"
 	fi
 
 	CMAKE_SKIP_TESTS=(
 		'^unit_symboltable$'
-		'^pytest$' # SEGFAULT
+		'^pytest$' # floating point errors
 		'^pytest-mpi$' # needs pytest-mpi
 	)
 	cmake_src_test
+
+	rm -r "${T}/usr" || die
 }
 
 src_install() {
 	cmake_src_install
+
 	use python && python_optimize
 
 	local NETGENDIR="/usr/share/${PN}"
@@ -176,13 +192,13 @@ src_install() {
 		mv "${ED}"/usr/bin/{*.tcl,*.ocf} "${ED}${NETGENDIR}" || die
 
 		convert -deconstruct "${S}/windows/${PN}.ico" netgen.png || die
-		newicon -s 32 "${S}"/${PN}-2.png ${PN}.png
-		newicon -s 16 "${S}"/${PN}-3.png ${PN}.png
-		make_desktop_entry ${PN} "Netgen" netgen Graphics
+		newicon -s 32 "${S}/${PN}-2.png" "${PN}.png"
+		newicon -s 16 "${S}/${PN}-3.png" "${PN}.png"
+		make_desktop_entry "${PN}" "Netgen" netgen Graphics
 	fi
 
-	mv "${ED}"/usr/share/${PN}/doc/ng4.pdf "${ED}"/usr/share/doc/${PF} || die
-	dosym -r /usr/share/doc/${PF}/ng4.pdf /usr/share/${PN}/doc/ng4.pdf
+	mv "${ED}/usr/share/${PN}/doc/ng4.pdf" "${ED}/usr/share/doc/${PF}" || die
+	dosym -r "/usr/share/doc/${PF}/ng4.pdf" "/usr/share/${PN}/doc/ng4.pdf"
 
-	use python || rm -r "${ED}${NETGENDIR}"/py_tutorials || die
+	use python || rm -r "${ED}${NETGENDIR}/py_tutorials" || die
 }
