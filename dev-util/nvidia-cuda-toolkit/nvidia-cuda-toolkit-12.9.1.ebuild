@@ -336,8 +336,12 @@ src_install() {
 }
 
 pkg_postinst_check() {
+	# Due to requiring specific compiler versions here, we check more then we have to, for the sake of clarity.
+	# tc-getCC defaults to gcc, so clang-major-version is checked using gcc and fails on gcc-profiles. # 959420
+	# We therefore force gcc and clang for the check.
+
 	if tc-is-gcc || ! use clang; then
-		if ver_test "$(gcc-major-version)" -gt "${GCC_MAX_VER}"; then
+		if ver_test "$(CC=gcc gcc-major-version)" -gt "${GCC_MAX_VER}"; then
 			ewarn
 			ewarn "gcc > ${GCC_MAX_VER} will not work with CUDA"
 			ewarn
@@ -350,7 +354,7 @@ pkg_postinst_check() {
 	fi
 
 	if tc-is-clang || use clang; then
-		if ver_test "$(clang-major-version)" -gt "${CLANG_MAX_VER}"; then
+		if ver_test "$(CC=clang clang-major-version)" -gt "${CLANG_MAX_VER}"; then
 			ewarn
 			ewarn "clang > ${CLANG_MAX_VER} will not work with CUDA"
 			ewarn
