@@ -149,7 +149,10 @@ CDEPEND="
 		x11-libs/libnotify
 	)
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
-	wayland? ( dev-libs/wayland )
+	wayland? (
+		dev-libs/wayland
+		x11-libs/libdrm
+	)
 	X? ( x11-libs/libX11 )
 	x264? ( media-libs/x264:= )
 	x265? ( media-libs/x265:= )
