@@ -26,7 +26,10 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86"
 IUSE="sasl"
 
 DEPEND="
-	>=dev-libs/libmemcached-0.32[sasl=]
+	|| (
+		dev-libs/libmemcached-awesome[sasl=]
+		>=dev-libs/libmemcached-0.32[sasl=]
+	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
