@@ -12,9 +12,9 @@ declare -A GIT_CRATES=(
 	[alacritty_terminal]='https://github.com/zed-industries/alacritty;828457c9ff1f7ea0a0469337cc8a37ee3a1b0590;alacritty-%commit%/alacritty_terminal'
 	[async-pipe]='https://github.com/zed-industries/async-pipe-rs;82d00a04211cf4e1236029aa03e6b6ce2a74c553;async-pipe-rs-%commit%'
 	[async-stripe]='https://github.com/zed-industries/async-stripe;3672dd4efb7181aa597bf580bf5a2f5d23db6735;async-stripe-%commit%'
-	[blade-graphics]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-graphics'
-	[blade-macros]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-macros'
-	[blade-util]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-util'
+	[blade-graphics]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-graphics'
+	[blade-macros]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-macros'
+	[blade-util]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-util'
 	[dap-types]='https://github.com/zed-industries/dap-types;7f39295b441614ca9dbf44293e53c32f666897f9;dap-types-%commit%/dap-types'
 	[font-kit]='https://github.com/zed-industries/font-kit;5474cfad4b719a72ec8ed2cb7327b2b01fd10568;font-kit-%commit%'
 	[jj-lib-proc-macros]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib/proc-macros'
@@ -83,7 +83,7 @@ DESCRIPTION="The fast, collaborative code editor"
 HOMEPAGE="https://zed.dev https://github.com/zed-industries/zed"
 SRC_URI="
 	https://github.com/zed-industries/zed/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz
-	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/$(ver_cut 1-2)/${P}-crates.tar.xz
+	https://github.com/gentoo-crate-dist/zed/releases/download/v${PV}/${P}-crates.tar.xz
 	amd64? (
 		https://github.com/livekit/rust-sdks/releases/download/webrtc-${WEBRTC_COMMIT}/webrtc-linux-x64-release.zip ->
 			webrtc-${WEBRTC_COMMIT}-linux-x64-release.zip
@@ -93,7 +93,6 @@ SRC_URI="
 			webrtc-${WEBRTC_COMMIT}-linux-arm64-release.zip
 	)
 	${CARGO_CRATE_URIS}"
-SRC_URI+=" https://github.com/gentoo-crate-dist/zed/releases/download/v${PV}/${P}-crates.tar.xz"
 
 S="${WORKDIR}/${PN}-${PV/_/-}"
 LICENSE="GPL-3+"
