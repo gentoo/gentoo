@@ -36,6 +36,9 @@
 		<flag name="hip">
 			Build cycles renderer with AMD HIP support.
 		</flag>
+		<flag name="hiprt">
+			Enable AMD HIP GPU ray tracing acceleration via <pkg>dev-libs/hiprt</pkg>.
+		</flag>
 		<flag name="cycles">
 			Enable the Cycles raytracing render engine.
 		</flag>
