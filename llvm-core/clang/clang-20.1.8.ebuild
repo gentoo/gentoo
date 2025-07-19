@@ -49,7 +49,7 @@ LLVM_MANPAGES=1
 LLVM_TEST_COMPONENTS=(
 	llvm/utils
 )
-LLVM_USE_TARGETS=llvm
+LLVM_USE_TARGETS=llvm+eq
 llvm.org_set_globals
 
 [[ -n ${LLVM_MANPAGE_DIST} ]] && BDEPEND+=" doc? ( "
