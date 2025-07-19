@@ -11,6 +11,7 @@ ruby_targets_ruby31
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # LLVM slots with no keyworded releases yet.
+llvm_slot_22
 llvm_slot_21
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-12-11)
