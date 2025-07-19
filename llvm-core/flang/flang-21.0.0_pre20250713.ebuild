@@ -34,6 +34,7 @@ BDEPEND="
 
 LLVM_COMPONENTS=( flang cmake )
 LLVM_TEST_COMPONENTS=( clang/test/Driver mlir/test/lib )
+LLVM_USE_TARGETS=llvm+eq
 llvm.org_set_globals
 
 python_check_deps() {
@@ -80,6 +81,8 @@ src_configure() {
 
 		# TODO: always enable to obtain reproducible tools
 		-DFLANG_INCLUDE_TESTS=$(usex test)
+
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"

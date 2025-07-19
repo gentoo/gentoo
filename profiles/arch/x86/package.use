@@ -16,6 +16,7 @@ dev-ml/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 llvm-core/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 llvm-core/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 llvm-core/lld llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/flang llvm_targets_AMDGPU llvm_targets_NVPTX
 
 # Doug Goldstein <cardoe@gentoo.org> (2012-10-29)
 # Enable the native arch as the default qemu target

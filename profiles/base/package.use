@@ -60,6 +60,7 @@ dev-ml/llvm llvm_targets_BPF
 llvm-core/clang llvm_targets_BPF
 llvm-core/llvm llvm_targets_BPF
 llvm-core/lld llvm_targets_BPF
+llvm-core/flang llvm_targets_BPF
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2012-07-27)
 # Modular X: Build the Xorg X server by default
