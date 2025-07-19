@@ -35,6 +35,7 @@ PDEPEND="
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
 LLVM_TEST_COMPONENTS=( llvm/utils/dtlto )
+LLVM_USE_TARGETS=llvm+eq
 llvm.org_set_globals
 
 python_check_deps() {
@@ -69,6 +70,7 @@ src_configure() {
 		-DLLVM_INCLUDE_TESTS=$(usex test)
 		-DLLVM_ENABLE_ZLIB=FORCE_ON
 		-DLLVM_ENABLE_ZSTD=$(usex zstd FORCE_ON OFF)
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 	)
 
 	use test && mycmakeargs+=(

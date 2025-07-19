@@ -17,3 +17,4 @@ media-video/mpv soc
 dev-ml/llvm llvm_targets_AMDGPU
 llvm-core/clang llvm_targets_AMDGPU
 llvm-core/llvm llvm_targets_AMDGPU
+llvm-core/lld llvm_targets_AMDGPU

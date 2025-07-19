@@ -222,6 +222,28 @@ dev-java/openjdk:21 system-bootstrap
 >=llvm-core/llvm-14 llvm_targets_VE
 >=llvm-core/llvm-16 llvm_targets_LoongArch
 >=llvm-core/llvm-20 llvm_targets_SPIRV
+>=llvm-core/lld-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/lld-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/lld-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/lld-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/lld-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/lld-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/lld-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/lld-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/lld-14 llvm_targets_VE
+>=llvm-core/lld-16 llvm_targets_LoongArch
+>=llvm-core/lld-20 llvm_targets_SPIRV
+>=llvm-core/lld-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/lld-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/lld-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/lld-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/lld-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/lld-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/lld-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/lld-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/lld-14 llvm_targets_VE
+>=llvm-core/lld-16 llvm_targets_LoongArch
+>=llvm-core/lld-20 llvm_targets_SPIRV
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Upstream plans to drop libcrypt.so.1/crypt.h from glibc

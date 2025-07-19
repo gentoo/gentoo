@@ -733,18 +733,23 @@ net-wireless/gr-osmosdr xtrx
 <dev-ml/llvm-16 llvm_targets_LoongArch
 <llvm-core/clang-16 llvm_targets_LoongArch
 <llvm-core/llvm-16 llvm_targets_LoongArch
+<llvm-core/lld-16 llvm_targets_LoongArch
 <dev-ml/llvm-17 llvm_targets_ARC llvm_targets_CSKY
 <llvm-core/clang-17 llvm_targets_ARC llvm_targets_CSKY
 <llvm-core/llvm-17 llvm_targets_ARC llvm_targets_CSKY
+<llvm-core/lld-17 llvm_targets_ARC llvm_targets_CSKY
 <dev-ml/llvm-17 llvm_targets_DirectX
 <llvm-core/clang-17 llvm_targets_DirectX
 <llvm-core/llvm-17 llvm_targets_DirectX
+<llvm-core/lld-17 llvm_targets_DirectX
 <dev-ml/llvm-17 llvm_targets_M68k llvm_targets_SPIRV
 <llvm-core/clang-17 llvm_targets_M68k llvm_targets_SPIRV
 <llvm-core/llvm-17 llvm_targets_M68k llvm_targets_SPIRV
+<llvm-core/lld-17 llvm_targets_M68k llvm_targets_SPIRV
 <dev-ml/llvm-17 llvm_targets_Xtensa
 <llvm-core/clang-17 llvm_targets_Xtensa
 <llvm-core/llvm-17 llvm_targets_Xtensa
+<llvm-core/lld-17 llvm_targets_Xtensa
 
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
 # Highly experimental, may cause breakages when updating. Use with

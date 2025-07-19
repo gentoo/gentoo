@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2022-06-18)
@@ -11,3 +11,4 @@ dev-ml/llvm llvm_targets_SystemZ
 dev-lang/rust llvm_targets_SystemZ
 llvm-core/clang llvm_targets_SystemZ
 llvm-core/llvm llvm_targets_SystemZ
+llvm-core/lld llvm_targets_SystemZ

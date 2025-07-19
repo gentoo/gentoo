@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (2024-03-08)
@@ -10,3 +10,4 @@ sys-devel/gcc -pie
 dev-ml/llvm llvm_targets_PowerPC
 llvm-core/clang llvm_targets_PowerPC
 llvm-core/llvm llvm_targets_PowerPC
+llvm-core/lld llvm_targets_PowerPC

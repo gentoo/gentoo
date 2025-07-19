@@ -22,6 +22,7 @@ dev-lang/rust llvm_targets_LoongArch
 dev-ml/llvm llvm_targets_LoongArch
 llvm-core/clang llvm_targets_LoongArch
 llvm-core/llvm llvm_targets_LoongArch
+llvm-core/lld llvm_targets_LoongArch
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Force-enable experimental-loong on packages; we're loong.

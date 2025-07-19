@@ -28,3 +28,4 @@ app-editors/neovim lua_single_target_lua5-1
 llvm-core/llvm llvm_targets_RISCV
 llvm-core/clang llvm_targets_RISCV
 dev-lang/rust llvm_targets_RISCV
+llvm-core/lld llvm_targets_RISCV

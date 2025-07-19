@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Ben Kohler <bkohler@gentoo.org> (2024-06-12)
@@ -15,6 +15,7 @@ sys-apps/memtest86+ bios32
 dev-ml/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 llvm-core/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 llvm-core/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/lld llvm_targets_AMDGPU llvm_targets_NVPTX
 
 # Doug Goldstein <cardoe@gentoo.org> (2012-10-29)
 # Enable the native arch as the default qemu target

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # matoro <matoro_gentoo@matoro.tk> (2022-08-31)
@@ -19,3 +19,4 @@ dev-lang/rust llvm_targets_ARM
 dev-ml/llvm llvm_targets_ARM
 llvm-core/clang llvm_targets_ARM
 llvm-core/llvm llvm_targets_ARM
+llvm-core/lld llvm_targets_ARM

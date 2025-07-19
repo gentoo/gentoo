@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Fabian Groffen <grobian@gentoo.org> (2016-12-20)
@@ -6,3 +6,4 @@
 dev-ml/llvm llvm_targets_X86
 llvm-core/clang llvm_targets_X86
 llvm-core/llvm llvm_targets_X86
+llvm-core/lld llvm_targets_X86

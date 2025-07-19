@@ -10,6 +10,7 @@ x11-themes/qtcurve gtk X
 dev-ml/llvm llvm_targets_AMDGPU
 llvm-core/clang llvm_targets_AMDGPU
 llvm-core/llvm llvm_targets_AMDGPU
+llvm-core/lld llvm_targets_AMDGPU
 
 # Ben Kohler <bkohler@gentoo.org> (2019-09-03)
 # Enable SPARC OpenBoot support
