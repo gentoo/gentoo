@@ -54,9 +54,16 @@ BDEPEND="
 	test? ( dev-cpp/gtest )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-6.4.1-fix-filesystem.patch"
+)
+
 src_prepare() {
-	# include <filesystem> issue - https://github.com/ROCm/hipSPARSE/issues/555
-	sed -e "s/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 17/" -i CMakeLists.txt clients/CMakeLists.txt || die
+	# too many warnings from -Wall (applied after user CXXFLAGS)
+	sed -e "s/-Wall/-Wall -Wno-unused-value/g" \
+		-i clients/benchmarks/CMakeLists.txt \
+		-i library/CMakeLists.txt \
+		-i clients/tests/CMakeLists.txt || die
 
 	cmake_src_prepare
 
