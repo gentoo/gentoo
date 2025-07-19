@@ -5,10 +5,17 @@
 		<email>vaapi@gentoo.org</email>
 		<name>VA-API Project</name>
 	</maintainer>
+	<longdescription>
+		The Intel(R) Graphics Memory Management Library provides device
+		specific and buffer management for
+		<pkg>dev-libs/intel-compute-runtime</pkg> (for OpenCL) and
+		<pkg>media-libs/libva-intel-media-driver</pkg>.
+	</longdescription>
 	<use>
 		<flag name="custom-cflags">Do not override user CFLAGS like -march, -msse and similar with lib defaults. Not tested by upstream.</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/intel/gmmlib/issues</bugs-to>
 		<remote-id type="github">intel/gmmlib</remote-id>
 	</upstream>
 </pkgmetadata>
