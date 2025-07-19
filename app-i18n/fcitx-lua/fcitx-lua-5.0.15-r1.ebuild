@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	${LUA_DEPS}
-	>=app-i18n/fcitx-5.1.12:5
+	>=app-i18n/fcitx-5.1.13:5
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
