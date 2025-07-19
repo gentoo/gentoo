@@ -83,6 +83,13 @@ multilib_src_configure() {
 		-DWITH_OpenJPEG_ENCODER=$(usex jpeg2k)
 	)
 
+	# TODO WITH_EXAMPLE_HEIF_VIEW in -9999
+	if ! use tools; then
+		mycmakeargs+=(
+			-DCMAKE_DISABLE_FIND_PACKAGE_SDL2=ON
+		)
+	fi
+
 	cmake_src_configure
 }
 
