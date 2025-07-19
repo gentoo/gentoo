@@ -16,7 +16,6 @@
 		<flag name="cec">Allows control of CEC enabled TVs via HDMI</flag>
 		<flag name="ceton">Ceton InfiniTV 4 a CableCARD-enabled tuner support</flag>
 		<flag name="debug">Instructs Qt to use the 'debug' target</flag>
-		<flag name="fftw">Support visualizations via <pkg>sci-libs/fftw</pkg></flag>
 		<flag name="hdhomerun">Silicondust USA Inc.network-attached tuner support</flag>
 		<flag name="ieee1394">Firewire enabled Cable boxe support</flag>
 		<flag name="jack">Allows MythTV to use JACK as your sound output device</flag>
