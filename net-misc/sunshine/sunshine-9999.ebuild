@@ -340,7 +340,7 @@ src_configure() {
 		esac
 	fi
 
-	cd "${S}"/third-party/build-deps/generated-src/FFmpeg || die
+	cd "${S}"/third-party/build-deps/FFmpeg/FFmpeg || die
 	echo ./configure "${myconf[@]}"
 	./configure "${myconf[@]}" || die
 
@@ -376,8 +376,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake -C "${S}"/third-party/build-deps/generated-src/FFmpeg V=1
-	emake -C "${S}"/third-party/build-deps/generated-src/FFmpeg V=1 install
+	emake -C "${S}"/third-party/build-deps/FFmpeg/FFmpeg V=1
+	emake -C "${S}"/third-party/build-deps/FFmpeg/FFmpeg V=1 install
 	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_src_compile cbs
 	CMAKE_USE_DIR="${S}"/third-party/build-deps cmake_build install cbs
 	CMAKE_USE_DIR="${S}" npm_config_offline=1 cmake_src_compile
