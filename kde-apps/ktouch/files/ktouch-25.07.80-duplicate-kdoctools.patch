@@ -1,0 +1,29 @@
+From fb41dbeac268d7be4563457afbe1194aa7ea898c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 19 Jul 2025 12:27:48 +0200
+Subject: [PATCH] Drop duplicate required KF6DocTools dependency
+
+It is already being searched for prior to the main KF6 dependencies,
+and the docs subdir is being added conditionally, so that will have
+been the intention.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 96f6919f..31f440a3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,7 +46,6 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+     Config
+     ConfigWidgets
+     CoreAddons
+-    DocTools
+     I18n
+     ItemViews
+     KCMUtils
+-- 
+2.50.1
+

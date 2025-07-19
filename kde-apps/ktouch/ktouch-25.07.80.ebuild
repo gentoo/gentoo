@@ -49,6 +49,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=kde-apps/kqtquickcharts-${PVCUT}:6
 "
 
+PATCHES=( "${FILESDIR}/${P}-duplicate-kdoctools.patch" ) # bug 960368
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITHOUT_X11=$(usex !X)
