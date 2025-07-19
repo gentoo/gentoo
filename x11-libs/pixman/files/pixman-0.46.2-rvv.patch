@@ -1,0 +1,79 @@
+From 2c7d11438c37b89b25cb70419f58331f0b1b32e3 Mon Sep 17 00:00:00 2001
+From: Filip Wasil <f.wasil@samsung.com>
+Date: Thu, 3 Jul 2025 22:24:25 +0200
+Subject: [PATCH] RISC-V: Checking against minimum RVV version
+
+---
+ meson.build           | 16 +++++++++++++---
+ pixman/pixman-riscv.c | 18 ++++++++++++++++--
+ 2 files changed, 29 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 9f5a2b0b..2c717be3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -372,11 +372,21 @@ if not use_rvv.disabled()
+   if host_machine.cpu_family() == 'riscv64'
+     if cc.compiles('''
+         #include <riscv_vector.h>
+-        #include <asm/hwcap.h>
+-        #ifndef COMPAT_HWCAP_ISA_V /* added in linux-6.5 */
+-        #error "COMPAT_HWCAP_ISA_V is not available"
++        #include <asm/hwprobe.h>
++        #include <linux/version.h>
++        #include <sys/auxv.h>
++        #include <sys/syscall.h>
++        #include <unistd.h>
++
++        #if defined(__riscv_v) && __riscv_v < 1000000
++        #error "Minimum supported RVV is 1.0"
++        #endif
++        #if LINUX_VERSION_CODE < KERNEL_VERSION(6, 5, 0)
++        #error "Minimum supported kernel is 6.5.0"
+         #endif
+         int main() {
++            struct riscv_hwprobe pair = {RISCV_HWPROBE_KEY_IMA_EXT_0, 0};
++            long result = sys_riscv_hwprobe (&pair, 1, 0, 0, 0);
+             vfloat32m1_t tmp1; /* added in gcc-13 */
+             vfloat32m1x4_t tmp2; /* added in gcc-14 */
+             return 0;
+diff --git a/pixman/pixman-riscv.c b/pixman/pixman-riscv.c
+index 1f0440f0..d8e9e320 100644
+--- a/pixman/pixman-riscv.c
++++ b/pixman/pixman-riscv.c
+@@ -30,8 +30,22 @@
+ #ifdef USE_RVV
+ 
+ #if defined(__linux__)
+-#include <asm/hwcap.h>
++#include <asm/hwprobe.h>
+ #include <sys/auxv.h>
++#include <sys/syscall.h>
++#include <unistd.h>
++
++static int
++is_rvv_1_0_available ()
++{
++    struct riscv_hwprobe pair = {RISCV_HWPROBE_KEY_IMA_EXT_0, 0};
++    if (sys_riscv_hwprobe (&pair, 1, 0, 0, 0) < 0)
++    {
++	return 0;
++    }
++    return (pair.value & RISCV_HWPROBE_IMA_V);
++}
++
+ #endif
+ 
+ typedef enum
+@@ -45,7 +59,7 @@ detect_cpu_features (void)
+     riscv_cpu_features_t features = 0;
+ 
+ #if defined(__linux__)
+-    if (getauxval (AT_HWCAP) & COMPAT_HWCAP_ISA_V)
++    if (is_rvv_1_0_available ())
+     {
+ 	features |= RVV;
+     }
+-- 
+GitLab
+
