@@ -49,6 +49,9 @@ else
 	S="${WORKDIR}/Sunshine-${PV}"
 fi
 
+BOOST_VERSION="1.87.0"
+SRC_URI+="https://github.com/boostorg/boost/releases/download/boost-${BOOST_VERSION}/boost-${BOOST_VERSION}-cmake.tar.xz"
+
 inherit cmake fcaps flag-o-matic systemd toolchain-funcs udev xdg
 
 DESCRIPTION="Self-hosted game stream host for Moonlight"
@@ -129,7 +132,6 @@ REQUIRED_USE="
 "
 
 CDEPEND="
-	=dev-libs/boost-1.87*:=[nls]
 	dev-libs/libevdev
 	dev-libs/openssl:=
 	media-libs/opus
@@ -228,7 +230,7 @@ src_unpack() {
 		cd "${S}" || die
 		npm install || die
 	else
-		default
+		unpack ${A//boost-${BOOST_VERSION}-cmake.tar.xz}
 		find moonlight-common-c-${MOONLIGHT_COMMIT} "${S}"/third-party \
 			build-deps-${BUILD_DEPS_COMMIT}/third-party/FFmpeg -mindepth 1 -type d -empty -delete || die
 		mv enet-${ENET_COMMIT} moonlight-common-c-${MOONLIGHT_COMMIT}/enet || die
@@ -347,9 +349,13 @@ src_configure() {
 	echo ./configure "${myconf[@]}"
 	./configure "${myconf[@]}" || die
 
+	# Symlink Boost tarball for CMake to find instead of fetching live.
+	mkdir -p "${S}"/_deps/boost-subbuild/boost-populate-prefix/src || die
+	ln -s "${DISTDIR}/boost-${BOOST_VERSION}-cmake.tar.xz" "${S}"/_deps/boost-subbuild/boost-populate-prefix/src/ || die
+
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=no
-		-DBOOST_USE_STATIC=no
+		-DBOOST_USE_STATIC=yes
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
