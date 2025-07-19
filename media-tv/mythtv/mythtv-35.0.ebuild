@@ -28,7 +28,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE_VIDEO_CAPTURE_DEVICES="v4l ieee1394 hdhomerun vbox ceton"
-IUSE="alsa asi autostart cdda cdr cec cpu_flags_ppc_altivec debug dvd dvb exif fftw jack java"
+IUSE="alsa asi autostart cdda cdr cec cpu_flags_ppc_altivec debug dvd dvb exif jack java"
 IUSE+=" +lame lcd libass lirc nvdec +opengl oss perl pulseaudio python raw systemd vaapi vdpau vpx"
 IUSE+=" +wrapper x264 x265 +xml xmltv +xvid +X zeroconf"
 IUSE+=" ${IUSE_INPUT_DEVICES} ${IUSE_VIDEO_CAPTURE_DEVICES}"
@@ -65,7 +65,6 @@ RDEPEND="
 		media-libs/libdvdcss
 		sys-fs/udisks:2
 	)
-	fftw? ( sci-libs/fftw:3.0=[threads] )
 	hdhomerun? ( media-libs/libhdhomerun )
 	ieee1394? (
 		media-libs/libiec61883
