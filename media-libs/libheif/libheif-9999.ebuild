@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3 MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+aom dav1d doc examples ffmpeg gdk-pixbuf openh264 rav1e svt-av1 test +threads +webp x265"
+IUSE="+aom dav1d +de265 doc examples ffmpeg gdk-pixbuf +jpeg +jpeg2k +kvazaar openh264 rav1e svt-av1 test +threads +webp x265"
 # IUSE+=" vvdec vvenc"
 RESTRICT="!test? ( test )"
 
@@ -26,15 +26,16 @@ BDEPEND="
 	doc? ( app-text/doxygen )
 "
 DEPEND="
-	media-libs/libde265[${MULTILIB_USEDEP}]
-	media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	media-libs/tiff:=[${MULTILIB_USEDEP}]
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
+	de265? ( media-libs/libde265[${MULTILIB_USEDEP}] )
 	ffmpeg? ( media-video/ffmpeg:=[${MULTILIB_USEDEP}] )
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
+	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
+	jpeg2k? ( media-libs/openjpeg:=[${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e:= )
 	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
@@ -54,7 +55,7 @@ multilib_src_configure() {
 		$(cmake_use_find_package doc Doxygen)
 		-DBUILD_TESTING=$(usex test)
 		-DENABLE_PLUGIN_LOADING=true
-		-DWITH_LIBDE265=true
+		-DWITH_LIBDE265=$(usex de265)
 		-DWITH_AOM_DECODER=$(usex aom)
 		-DWITH_AOM_ENCODER=$(usex aom)
 		-DWITH_DAV1D=$(usex dav1d)
@@ -69,11 +70,11 @@ multilib_src_configure() {
 		# -DWITH_VVDEC=$(usex vvdec) # vvdec not yet packaged, in ::guru
 		# -DWITH_VVENC=$(usex vvenc) # vvenc not yet packaged, in ::guru
 		-DWITH_X265=$(usex x265)
-		-DWITH_KVAZAAR=true
-		-DWITH_JPEG_DECODER=true
-		-DWITH_JPEG_ENCODER=true
-		-DWITH_OpenJPEG_DECODER=true
-		-DWITH_OpenJPEG_ENCODER=true
+		-DWITH_KVAZAAR=$(usex kvazaar)
+		-DWITH_JPEG_DECODER=$(usex jpeg)
+		-DWITH_JPEG_ENCODER=$(usex jpeg)
+		-DWITH_OpenJPEG_DECODER=$(usex jpeg2k)
+		-DWITH_OpenJPEG_ENCODER=$(usex jpeg2k)
 	)
 
 	cmake_src_configure
