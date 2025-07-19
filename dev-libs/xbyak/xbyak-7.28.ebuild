@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake multilib toolchain-funcs
 
 DESCRIPTION="JIT assembler for x86(IA-32)/x64(AMD64, x86-64)"
 HOMEPAGE="https://github.com/herumi/xbyak"
@@ -17,9 +17,22 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
-	test? ( dev-lang/yasm )
+	test? (
+		dev-lang/yasm
+		dev-lang/nasm
+	)
 "
 
+src_prepare() {
+	sed 's/ONLY_64BIT=0/ONLY_64BIT:=0/' -i test/Makefile || die
+	cmake_src_prepare
+}
+
 src_test() {
-	emake -C test test
+	local only_64bit=0
+	if use amd64 && { ! has_multilib_profile || [[ $(tc-get-cxx-stdlib) == libc++ ]]; }; then
+		only_64bit=1
+	fi
+
+	emake -C test test ONLY_64BIT=${only_64bit}
 }
