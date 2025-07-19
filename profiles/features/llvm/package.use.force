@@ -1,6 +1,100 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Gradually unforce targets for LLVM profiles as clang temporarily
+# breaking isn't okay there (as it can't then build itself). This means
+# the fix for bug #767700 is delayed on these profiles until old LLVMs
+# age out.
+<llvm-core/clang-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/clang-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/clang-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/clang-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/clang-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/clang-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/clang-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/clang-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/clang-21 llvm_targets_VE
+<llvm-core/clang-21 llvm_targets_LoongArch
+<llvm-core/clang-21 llvm_targets_SPIRV
+<llvm-core/llvm-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/llvm-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/llvm-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/llvm-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/llvm-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/llvm-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/llvm-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/llvm-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/llvm-21 llvm_targets_VE
+<llvm-core/llvm-21 llvm_targets_LoongArch
+<llvm-core/llvm-21 llvm_targets_SPIRV
+<llvm-core/lld-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/lld-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/lld-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/lld-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/lld-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/lld-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/lld-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/lld-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/lld-21 llvm_targets_VE
+<llvm-core/lld-21 llvm_targets_LoongArch
+<llvm-core/lld-21 llvm_targets_SPIRV
+<llvm-core/lld-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/lld-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/lld-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/lld-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/lld-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/lld-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/lld-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/lld-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/lld-21 llvm_targets_VE
+<llvm-core/lld-21 llvm_targets_LoongArch
+<llvm-core/lld-21 llvm_targets_SPIRV
+<llvm-core/flang-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/flang-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/flang-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/flang-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/flang-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/flang-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/flang-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/flang-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/flang-21 llvm_targets_VE
+<llvm-core/flang-21 llvm_targets_LoongArch
+<llvm-core/flang-21 llvm_targets_SPIRV
+<llvm-core/lldb-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/lldb-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/lldb-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/lldb-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/lldb-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/lldb-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/lldb-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/lldb-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/lldb-21 llvm_targets_VE
+<llvm-core/lldb-21 llvm_targets_LoongArch
+<llvm-core/lldb-21 llvm_targets_SPIRV
+<llvm-core/lldb-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/lldb-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/lldb-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/lldb-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/lldb-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/lldb-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/lldb-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/lldb-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/lldb-21 llvm_targets_VE
+<llvm-core/lldb-21 llvm_targets_LoongArch
+<llvm-core/lldb-21 llvm_targets_SPIRV
+<llvm-core/lldb-21 llvm_targets_AArch64 llvm_targets_AMDGPU
+<llvm-core/lldb-21 llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+<llvm-core/lldb-21 llvm_targets_Hexagon llvm_targets_Lanai
+<llvm-core/lldb-21 llvm_targets_MSP430 llvm_targets_Mips
+<llvm-core/lldb-21 llvm_targets_NVPTX llvm_targets_PowerPC
+<llvm-core/lldb-21 llvm_targets_RISCV llvm_targets_Sparc
+<llvm-core/lldb-21 llvm_targets_SystemZ llvm_targets_WebAssembly
+<llvm-core/lldb-21 llvm_targets_X86 llvm_targets_XCore
+<llvm-core/lldb-21 llvm_targets_VE
+<llvm-core/lldb-21 llvm_targets_LoongArch
+<llvm-core/lldb-21 llvm_targets_SPIRV
+
 # Sam James <sam@gentoo.org> (2023-03-03)
 # Force the toolchain environment we expect on the LLVM profiles.
 # default-libcxx in particular changes ABI so can't be toggled at-will, and other
