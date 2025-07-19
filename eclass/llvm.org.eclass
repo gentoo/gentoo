@@ -140,6 +140,10 @@ fi
 #   on matching llvm-core/llvm versions with requested flags will
 #   be added.
 #
+# - llvm+eq - this package automagically uses targets from LLVM by using
+#   a function like InitializeAllTargets.  Same behavior as =llvm, but
+#   with matching use= deps for targets.
+#
 # Note that you still need to pass enabled targets to the build system,
 # usually grabbing them from ${LLVM_TARGETS} (via USE_EXPAND).
 
@@ -334,7 +338,7 @@ llvm.org_set_globals() {
 	case ${LLVM_USE_TARGETS:-__unset__} in
 		__unset__)
 			;;
-		provide|llvm)
+		provide|llvm|llvm+eq)
 			IUSE+=" ${ALL_LLVM_TARGET_FLAGS[*]}"
 			REQUIRED_USE+=" || ( ${ALL_LLVM_TARGET_FLAGS[*]} )"
 			;;&
@@ -343,6 +347,15 @@ llvm.org_set_globals() {
 			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
 				dep+="
 					${x}? ( ~llvm-core/llvm-${PV}[${x}] )"
+			done
+			RDEPEND+=" ${dep}"
+			DEPEND+=" ${dep}"
+			;;
+		llvm+eq)
+			local dep=
+			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
+				dep+="
+					${x}? ( ~llvm-core/llvm-${PV}[${x}=] )"
 			done
 			RDEPEND+=" ${dep}"
 			DEPEND+=" ${dep}"
