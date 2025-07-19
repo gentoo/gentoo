@@ -16,7 +16,7 @@ IUSE="+data doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-i18n/fcitx-5.1.11:5
+	>=app-i18n/fcitx-5.1.13:5
 	app-arch/zstd:=
 	dev-libs/boost:=
 "
