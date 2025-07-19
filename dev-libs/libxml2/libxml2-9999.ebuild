@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 inherit python-r1 meson-multilib
 
-XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
+XSTS_HOME="https://www.w3.org/XML/2004/xml-schema-test-suite"
 XSTS_NAME_1="xmlschema2002-01-16"
 XSTS_NAME_2="xmlschema2004-01-14"
 XSTS_TARBALL_1="xsts-2002-01-16.tar.gz"
