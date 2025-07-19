@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
 	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
+	"${FILESDIR}/${PN}-4.6.0-missing-includes.patch"
 )
 
 src_unpack() {
@@ -89,6 +90,7 @@ src_configure() {
 	export PATH="$(qt5_get_bindir):${PATH}"
 
 	local mycmakeargs=(
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON # https://github.com/musescore/MuseScore/issues/28797
 		-DCMAKE_BUILD_TYPE="release"
 		-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}"
 		-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}"

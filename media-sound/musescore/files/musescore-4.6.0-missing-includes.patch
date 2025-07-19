@@ -1,0 +1,22 @@
+--- a/src/framework/ui/view/internal/widgetdialogadapter.h
++++ b/src/framework/ui/view/internal/widgetdialogadapter.h
+@@ -22,6 +22,8 @@
+ #pragma once
+ 
+ #include <QObject>
++#include <QDialog>
++#include <QWindow>
+ 
+ namespace muse::ui {
+ class WidgetDialogAdapter : public QObject
+--- a/src/notation/internal/notationactioncontroller.cpp
++++ b/src/notation/internal/notationactioncontroller.cpp
+@@ -34,6 +34,8 @@
+ #include "translation.h"
+ #include "log.h"
+ 
++#include <QGuiApplication>
++
+ using namespace mu;
+ using namespace muse;
+ using namespace muse::io;
