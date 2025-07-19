@@ -1,0 +1,21 @@
+From 3a3cf6c6a3d40f9b1641ccdb5ad6b7ed837c9037 Mon Sep 17 00:00:00 2001
+From: mipseb <germtoo@outlook.com>
+Date: Wed, 8 Nov 2023 01:05:42 -0500
+Subject: [PATCH] starpu-1.4.1 musl fixes point sed to point to new file
+ location
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -448,6 +448,9 @@ fi
+ 
+ AM_CONDITIONAL([STARPU_CROSS_COMPILING], [test "x$cross_compiling" = "xyes"])
+ 
++# musl libc requires libucontext to link
++LIBS="${LIBS} $(pkg-config --cflags --libs libucontext)"
++
+ ###############################################################################
+ #                                                                             #
+ #                           MPI compilers                                     #
+-- 
+2.42.0
+
