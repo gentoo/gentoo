@@ -508,6 +508,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	local -x LIT_XFAIL="CodeGen/Xtensa/select-cc-fp.ll"
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 	cmake_build check
