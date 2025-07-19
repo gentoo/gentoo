@@ -8,7 +8,7 @@ inherit autotools flag-o-matic font optfeature pam strip-linguas systemd xdg-uti
 DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="
-	https://www.jwz.org/xscreensaver/${PN}-${PV}.tar.gz
+	https://www.jwz.org/xscreensaver/${P}.tar.gz
 	logind-idle-hint? (
 		https://github.com/Flowdalic/xscreensaver/commit/59e7974c42dc08411c9af2a3a644a582c2116f46.patch ->
 			${PN}-6.06-logind-idle-hint.patch
@@ -19,7 +19,6 @@ SRC_URI="
 	)
 "
 
-S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 # Font license mapping for folder ./hacks/fonts/ as following:
 #   clacon.ttf       -- MIT
 #   gallant12x22.ttf -- unclear, hence dropped
@@ -48,10 +47,9 @@ COMMON_DEPEND="
 	x11-libs/libXt
 	x11-libs/libXxf86vm
 	elogind? ( sys-auth/elogind )
-	x11-libs/gdk-pixbuf-xlib
 	>=x11-libs/gdk-pixbuf-2.42.0:2
 	>=x11-libs/gtk+-3.0.0:3
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( <media-video/ffmpeg-7:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	locking? ( virtual/libcrypt:= )
 	new-login? (
@@ -73,7 +71,6 @@ RDEPEND="
 	perl? (
 		dev-lang/perl
 		dev-perl/libwww-perl
-		virtual/perl-Digest-MD5
 	)
 	selinux? ( sec-policy/selinux-xscreensaver )
 "
@@ -153,6 +150,12 @@ src_prepare() {
 			's| Stay.*fucking mask\.$||' \
 			hacks/glx/covid19.man \
 			hacks/config/covid19.xml || die
+		sed -i \
+			-e 's|Ass |Dumb |g' \
+			-e 's|Buttcorn|Blue Corn|g' \
+			-e 's| dick||gi' \
+			-e 's| shit||g' \
+			hacks/bsod.c || die
 		eapply "${FILESDIR}/xscreensaver-6.05-teach-handsy-some-manners.patch"
 	fi
 
