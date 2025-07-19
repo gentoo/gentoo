@@ -64,7 +64,6 @@ src_configure() {
 		-DENABLE_CONFIG_QT=$(usex config-qt)
 		-DENABLE_X11=$(usex X)
 		-DENABLE_TEST=$(usex test)
-		-DUSE_QT6=ON
 	)
 
 	cmake_src_configure
