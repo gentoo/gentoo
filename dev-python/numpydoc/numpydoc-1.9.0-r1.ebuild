@@ -34,6 +34,11 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	# https://github.com/numpy/numpydoc/issues/638
+	"${FILESDIR}/${P}-638.patch"
+)
+
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
