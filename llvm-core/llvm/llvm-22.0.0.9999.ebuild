@@ -293,6 +293,7 @@ get_distribution_components() {
 			llvm-gsymutil
 			llvm-ifs
 			llvm-install-name-tool
+			llvm-ir2vec
 			llvm-jitlink
 			llvm-jitlink-executor
 			llvm-lib
