@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/960211
+https://github.com/fltk/fltk/commit/7c93e280da4ac5aae83efeb58fb93c4cfbdee7e3
+--- a/src/drivers/Wayland/Fl_Wayland_Window_Driver.cxx
++++ b/src/drivers/Wayland/Fl_Wayland_Window_Driver.cxx
+@@ -1818,5 +1818,5 @@
+   int is_a_move = (X != x() || Y != y());
+   bool true_rescale = Fl_Window::is_a_rescale();
+-  float f = Fl::screen_scale(pWindow->screen_num());
++  float f = fl_win ? Fl::screen_scale(pWindow->screen_num()) : 1;
+   if (fl_win && fl_win->buffer) {
+     int scale = wld_scale();

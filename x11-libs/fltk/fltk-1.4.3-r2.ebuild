@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-fltk-config.patch
 	"${FILESDIR}"/${PN}-1.4.1-tests-odr.patch
 	"${FILESDIR}"/${PN}-1.4.3-no-games.patch
+	"${FILESDIR}"/${P}-crash-without-X.patch
 )
 
 src_prepare() {
