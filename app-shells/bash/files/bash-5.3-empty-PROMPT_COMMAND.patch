@@ -1,0 +1,160 @@
+https://lists.gnu.org/archive/html/bug-bash/2025-07/msg00014.html
+--- parse.y	Thu Jun 12 12:36:06 2025
+--- parse.y	Sun Jul  6 16:46:00 2025
+***************
+*** 3009,3023 ****
+  
+  void
+! execute_variable_command (const char *command, const char *vname)
+  {
+    char *last_lastarg;
+    sh_parser_state_t ps;
+  
+!   save_parser_state (&ps);
+    last_lastarg = save_lastarg ();
+  
+    parse_and_execute (savestring (command), vname, SEVAL_NONINT|SEVAL_NOHIST|SEVAL_NOOPTIMIZE|SEVAL_NOTIFY);
+  
+!   restore_parser_state (&ps);
+    bind_lastarg (last_lastarg);
+    FREE (last_lastarg);
+--- 3009,3025 ----
+  
+  void
+! execute_variable_command (const char *command, const char *vname, int flags)
+  {
+    char *last_lastarg;
+    sh_parser_state_t ps;
+  
+!   if (flags)
+!     save_parser_state (&ps);
+    last_lastarg = save_lastarg ();
+  
+    parse_and_execute (savestring (command), vname, SEVAL_NONINT|SEVAL_NOHIST|SEVAL_NOOPTIMIZE|SEVAL_NOTIFY);
+  
+!   if (flags)
+!     restore_parser_state (&ps);
+    bind_lastarg (last_lastarg);
+    FREE (last_lastarg);
+--- eval.c	Fri Mar  7 18:50:03 2025
+--- eval.c	Sun Jul  6 16:49:18 2025
+***************
+*** 284,288 ****
+  /* Caller ensures that A has a non-zero number of elements */
+  int
+! execute_array_command (ARRAY *a, void *v)
+  {
+    char *tag;
+--- 284,288 ----
+  /* Caller ensures that A has a non-zero number of elements */
+  int
+! execute_array_command (ARRAY *a, void *v, int flags)
+  {
+    char *tag;
+***************
+*** 296,300 ****
+      {
+        if (argv[i] && argv[i][0])
+! 	execute_variable_command (argv[i], tag);
+      }
+    strvec_dispose (argv);
+--- 296,300 ----
+      {
+        if (argv[i] && argv[i][0])
+! 	execute_variable_command (argv[i], tag, flags);
+      }
+    strvec_dispose (argv);
+***************
+*** 319,323 ****
+      {
+        if ((pcmds = array_cell (pcv)) && array_num_elements (pcmds) > 0)
+! 	execute_array_command (pcmds, "PROMPT_COMMAND");
+        return;
+      }
+--- 319,323 ----
+      {
+        if ((pcmds = array_cell (pcv)) && array_num_elements (pcmds) > 0)
+! 	execute_array_command (pcmds, "PROMPT_COMMAND", 0);
+        return;
+      }
+***************
+*** 328,332 ****
+    command_to_execute = value_cell (pcv);
+    if (command_to_execute && *command_to_execute)
+!     execute_variable_command (command_to_execute, "PROMPT_COMMAND");
+  }
+  
+--- 328,332 ----
+    command_to_execute = value_cell (pcv);
+    if (command_to_execute && *command_to_execute)
+!     execute_variable_command (command_to_execute, "PROMPT_COMMAND", 0);
+  }
+  
+--- input.h	Fri Mar 10 16:22:48 2023
+--- input.h	Sun Jul  6 16:45:42 2025
+***************
+*** 100,104 ****
+  extern int find_reserved_word (const char *);
+  extern void gather_here_documents (void);
+! extern void execute_variable_command (const char *, const char *);
+  
+  extern int *save_token_state (void);
+--- 100,104 ----
+  extern int find_reserved_word (const char *);
+  extern void gather_here_documents (void);
+! extern void execute_variable_command (const char *, const char *, int);
+  
+  extern int *save_token_state (void);
+--- array.h	Wed Dec 28 14:00:47 2022
+--- array.h	Sun Jul  6 16:47:27 2025
+***************
+*** 178,182 ****
+  
+  /* In eval.c, but uses ARRAY * */
+! extern int execute_array_command (ARRAY *, void *);
+  
+  #endif /* _ARRAY_H_ */
+--- 178,182 ----
+  
+  /* In eval.c, but uses ARRAY * */
+! extern int execute_array_command (ARRAY *, void *, int);
+  
+  #endif /* _ARRAY_H_ */
+--- y.tab.c	Mon Jun 30 09:56:25 2025
+--- y.tab.c	Sun Jul  6 17:38:06 2025
+***************
+*** 5368,5382 ****
+  
+  void
+! execute_variable_command (const char *command, const char *vname)
+  {
+    char *last_lastarg;
+    sh_parser_state_t ps;
+  
+!   save_parser_state (&ps);
+    last_lastarg = save_lastarg ();
+  
+    parse_and_execute (savestring (command), vname, SEVAL_NONINT|SEVAL_NOHIST|SEVAL_NOOPTIMIZE|SEVAL_NOTIFY);
+  
+!   restore_parser_state (&ps);
+    bind_lastarg (last_lastarg);
+    FREE (last_lastarg);
+--- 5368,5384 ----
+  
+  void
+! execute_variable_command (const char *command, const char *vname, int flags)
+  {
+    char *last_lastarg;
+    sh_parser_state_t ps;
+  
+!   if (flags)
+!     save_parser_state (&ps);
+    last_lastarg = save_lastarg ();
+  
+    parse_and_execute (savestring (command), vname, SEVAL_NONINT|SEVAL_NOHIST|SEVAL_NOOPTIMIZE|SEVAL_NOTIFY);
+  
+!   if (flags)
+!     restore_parser_state (&ps);
+    bind_lastarg (last_lastarg);
+    FREE (last_lastarg);
+
