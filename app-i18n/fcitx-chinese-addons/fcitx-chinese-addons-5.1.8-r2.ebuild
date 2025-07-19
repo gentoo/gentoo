@@ -19,8 +19,8 @@ REQUIRED_USE="webengine? ( gui )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-i18n/fcitx-5.1.12:5
-	>=app-i18n/libime-1.1.7:5[data?]
+	=app-i18n/fcitx-5.1.12*:5
+	=app-i18n/libime-1.1.10*:5[data?]
 	>=dev-libs/boost-1.61:=
 	cloudpinyin? ( net-misc/curl )
 	gui? (
