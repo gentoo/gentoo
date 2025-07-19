@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Gradually unmask for newer Rust to avoid making users recompile for
+# the change. See bug #735154.
+<dev-lang/rust-1.86 system-llvm
+
 # Sam James <sam@gentoo.org> (2025-04-26)
 # dev-python/scipy is not marked stable here
 dev-cpp/benchmark tools

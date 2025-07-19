@@ -13,11 +13,6 @@ media-libs/zxing-cpp experimental
 media-gfx/netgen mpi
 sci-libs/vtk mpi
 
-# Sam James <sam@gentoo.org> (2025-03-07)
-# Gradually unmask for newer Rust to avoid making users recompile for
-# the change. See bug #735154.
-<dev-lang/rust-1.86 system-llvm
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-02-03)
 # Requires dev-util/shelltestrunner
 app-arch/mt-st test
