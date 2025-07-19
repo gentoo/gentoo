@@ -343,6 +343,8 @@ llvm.org_set_globals() {
 			REQUIRED_USE+=" || ( ${ALL_LLVM_TARGET_FLAGS[*]} )"
 			;;&
 		llvm)
+			# We do x? ( ... ) instead of [x?,y?,...] to workaround
+			# a pkgcheck bug: https://github.com/pkgcore/pkgcheck/pull/423
 			local dep=
 			for x in "${ALL_LLVM_TARGET_FLAGS[@]}"; do
 				dep+="
