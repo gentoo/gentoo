@@ -43,10 +43,8 @@ src_configure() {
 		-DENABLE_CLOUDPINYIN=$(usex cloudpinyin)
 		-DENABLE_DATA=$(usex data)
 		-DENABLE_GUI=$(usex gui)
-		-DUSE_QT6=$(usex gui)
 		-DENABLE_OPENCC=$(usex opencc)
 		-DENABLE_TEST=$(usex test)
-		-DUSE_WEBKIT=no
 	)
 	cmake_src_configure
 }
