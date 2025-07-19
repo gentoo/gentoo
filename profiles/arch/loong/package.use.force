@@ -13,17 +13,6 @@ dev-perl/DBD-MariaDB mariadb
 # [1] https://github.com/mpv-player/mpv/wiki/FAQ#why-does-mpv-not-support-lua-53-or-newer
 media-video/mpv lua_single_target_lua5-1 -lua_single_target_luajit
 
-# WANG Xuerui <xen0n@gentoo.org> (2022-08-13)
-# Force the host target
-#
-# Some packages are not fully ported yet, but preemptively added so we won't
-# have to revisit later.
-dev-lang/rust llvm_targets_LoongArch
-dev-ml/llvm llvm_targets_LoongArch
-llvm-core/clang llvm_targets_LoongArch
-llvm-core/llvm llvm_targets_LoongArch
-llvm-core/lld llvm_targets_LoongArch
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-24)
 # Force-enable experimental-loong on packages; we're loong.
 <sys-libs/glibc-2.36 experimental-loong

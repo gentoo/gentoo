@@ -25,10 +25,6 @@ sys-kernel/vanilla-kernel -savedconfig
 # iasl is stable on amd64
 sys-firmware/seabios -binary
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2018-05-14)
-# Force the host target to avoid dependency hell
-dev-lang/rust llvm_targets_X86
-
 # Adam Feldman <NP-Hardass@gentoo.org> (2017-05-23)
 # Packages with optional 64-bit variant
 app-emulation/wine-vanilla -abi_x86_64
@@ -41,13 +37,6 @@ virtual/wine -abi_x86_64
 # Require sandbox to be multilib-capable to avoid failures when building
 # multilib packages, #611292.
 sys-apps/sandbox abi_x86_32
-
-# Michał Górny <mgorny@gentoo.org> (2016-09-24)
-# Force the host target to avoid dependency hell
-dev-ml/llvm llvm_targets_X86
-llvm-core/clang llvm_targets_X86
-llvm-core/llvm llvm_targets_X86
-llvm-core/lld llvm_targets_X86
 
 # Diego Elio Pettenò <flameeyes@gmail.com> (2011-04-21)
 # The plugin is 32-bit only (and I'm not even sure if it works with

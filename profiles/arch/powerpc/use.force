@@ -1,2 +1,6 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_PowerPC

@@ -1,6 +1,10 @@
 # Force the flag which corresponds to ARCH.
 sparc
 
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_Sparc
+
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2021-04-01)
 # sys-libs/libunwind not supported on SPARC.
 llvm-libunwind

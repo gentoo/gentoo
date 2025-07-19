@@ -23,9 +23,3 @@ app-editors/neovim lua_single_target_lua5-1
 # It gains LLVM codegen in 9.2, but we maintain a backport of this,
 # so force LLVM codegen in all versions.
 <dev-lang/ghc-9.12.1 llvm
-
-# we, kinda, need this on riscv ...
-llvm-core/llvm llvm_targets_RISCV
-llvm-core/clang llvm_targets_RISCV
-dev-lang/rust llvm_targets_RISCV
-llvm-core/lld llvm_targets_RISCV

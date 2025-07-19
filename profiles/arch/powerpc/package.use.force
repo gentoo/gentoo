@@ -13,14 +13,3 @@ media-video/mpv lua_single_target_lua5-1 -lua_single_target_luajit
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on ppc
 sys-firmware/seabios -binary
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2018-12-25)
-# Enable powerpc target by default.
-dev-lang/rust llvm_targets_PowerPC
-
-# Michał Górny <mgorny@gentoo.org> (2016-09-24)
-# Force the host target to avoid dependency hell
-dev-ml/llvm llvm_targets_PowerPC
-llvm-core/clang llvm_targets_PowerPC
-llvm-core/llvm llvm_targets_PowerPC
-llvm-core/lld llvm_targets_PowerPC

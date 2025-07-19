@@ -4,11 +4,3 @@
 # Sam James <sam@gentoo.org> (2022-02-19)
 # New enough SpiderMonkey not (yet?) keyworded here, bug #753221
 sys-auth/polkit duktape
-
-# Michał Górny <mgorny@gentoo.org> (2016-09-24)
-# Force the host target to avoid dependency hell
-dev-ml/llvm llvm_targets_Sparc
-llvm-core/clang llvm_targets_Sparc
-llvm-core/llvm llvm_targets_Sparc
-llvm-core/lld llvm_targets_Sparc
-dev-lang/rust llvm_targets_Sparc

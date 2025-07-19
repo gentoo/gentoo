@@ -1,5 +1,9 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Force the flag which corresponds to ARCH.
 loong
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_LoongArch

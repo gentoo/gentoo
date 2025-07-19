@@ -1,5 +1,9 @@
-# Copyright 2008-2021 Gentoo Authors
+# Copyright 2008-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Force the flag which corresponds to ARCH.
 mips
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_Mips

@@ -1,6 +1,10 @@
 # Force the flag which corresponds to ARCH.
 amd64
 
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_X86
+
 # Michał Górny <mgorny@gentoo.org> (2013-01-26)
 # Force the flag corresponding to the default ABI.
 abi_x86_64

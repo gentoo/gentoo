@@ -4,10 +4,3 @@
 # Fabian Groffen <grobian@gentoo.org> (2024-03-08)
 # un-force pie, won't work on this arch
 sys-devel/gcc -pie
-
-# Fabian Groffen <grobian@gentoo.org> (2016-12-20)
-# Force the host target to avoid dependency hell
-dev-ml/llvm llvm_targets_PowerPC
-llvm-core/clang llvm_targets_PowerPC
-llvm-core/llvm llvm_targets_PowerPC
-llvm-core/lld llvm_targets_PowerPC

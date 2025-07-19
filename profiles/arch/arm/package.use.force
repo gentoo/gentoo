@@ -9,14 +9,3 @@ dev-lang/ghc:0/9.0.2 llvm
 # Thomas Deutschmann <whissi@gentoo.org> (2021-05-11)
 # Satisfy REQUIRED_USE on arm
 app-emulation/xen debug
-
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-16)
-# Force the host target
-dev-lang/rust llvm_targets_ARM
-
-# Michał Górny <mgorny@gentoo.org> (2016-09-24)
-# Force the host target to avoid dependency hell
-dev-ml/llvm llvm_targets_ARM
-llvm-core/clang llvm_targets_ARM
-llvm-core/llvm llvm_targets_ARM
-llvm-core/lld llvm_targets_ARM
