@@ -4,6 +4,7 @@
 	<!-- maintainer-needed -->
 	<use>
 	<flag name="aom">Use <pkg>media-libs/libaom</pkg> for AVIF encoding/decoding</flag>
+	<flag name="dav1d">Enable support for the dav1d codec decoding using <pkg>media-libs/dav1d</pkg></flag>
 	<flag name="gdk-pixbuf">Enable <pkg>x11-libs/gdk-pixbuf</pkg> plugin</flag>
 	<flag name="go">Enable building <pkg>dev-lang/go</pkg> code/examples</flag>
 	<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
