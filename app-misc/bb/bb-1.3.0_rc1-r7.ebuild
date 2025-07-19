@@ -10,6 +10,7 @@ MY_PV="$(ver_cut 1-2)$(ver_cut 4-5)"
 DESCRIPTION="Lightweight ASCII art demo using media-libs/aalib"
 HOMEPAGE="https://aa-project.sourceforge.net/"
 SRC_URI="https://downloads.sourceforge.net/project/aa-project/bb/${MY_PV}/bb-${MY_PV}.tar.gz"
+S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -23,8 +24,6 @@ DEPEND="media-libs/aalib:=
 # media-libs/libmikmod[openal] is due to bug #516964
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-S="${WORKDIR}/${PN}-$(ver_cut 1-3)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-noattr.patch
