@@ -19,6 +19,7 @@ fi
 LICENSE="GPL-3 MIT"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="+aom dav1d doc examples ffmpeg gdk-pixbuf openh264 rav1e svt-av1 test +threads +webp x265"
+# IUSE+=" vvdec vvenc"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -40,6 +41,8 @@ DEPEND="
 	webp? ( media-libs/libwebp:= )
 	x265? ( media-libs/x265:=[${MULTILIB_USEDEP}] )
 "
+# 	vvdec? ( >=media-libs/vvdec-2.3.0:=::guru[${MULTILIB_USEDEP}] )
+# 	vvenc? ( media-libs/vvenc:=::guru[${MULTILIB_USEDEP}] )
 RDEPEND="${DEPEND}"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -63,6 +66,8 @@ multilib_src_configure() {
 		-DWITH_RAV1E=$(multilib_native_usex rav1e)
 		-DWITH_SvtEnc=$(usex svt-av1)
 		-DWITH_LIBSHARPYUV=$(usex webp)
+		# -DWITH_VVDEC=$(usex vvdec) # vvdec not yet packaged, in ::guru
+		# -DWITH_VVENC=$(usex vvenc) # vvenc not yet packaged, in ::guru
 		-DWITH_X265=$(usex x265)
 		-DWITH_KVAZAAR=true
 		-DWITH_JPEG_DECODER=true
