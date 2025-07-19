@@ -49,6 +49,7 @@ BDEPEND="
 
 LLVM_COMPONENTS=( lldb cmake llvm/utils )
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support third-party )
+LLVM_USE_TARGETS=llvm+eq
 llvm.org_set_globals
 
 src_configure() {
@@ -71,6 +72,8 @@ src_configure() {
 		-DLLVM_ENABLE_TERMINFO=$(usex ncurses)
 
 		-DLLDB_INCLUDE_TESTS=$(usex test)
+
+		-DLLVM_TARGETS_TO_BUILD="${LLVM_TARGETS// /;}"
 
 		-DCLANG_LINK_CLANG_DYLIB=ON
 		# TODO: fix upstream to detect this properly

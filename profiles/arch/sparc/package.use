@@ -12,6 +12,7 @@ llvm-core/clang llvm_targets_AMDGPU
 llvm-core/llvm llvm_targets_AMDGPU
 llvm-core/lld llvm_targets_AMDGPU
 llvm-core/flang llvm_targets_AMDGPU
+llvm-core/lldb llvm_targets_AMDGPU
 
 # Ben Kohler <bkohler@gentoo.org> (2019-09-03)
 # Enable SPARC OpenBoot support
