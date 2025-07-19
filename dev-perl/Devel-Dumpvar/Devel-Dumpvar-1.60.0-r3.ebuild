@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=ADAMK
 DIST_VERSION=1.06
@@ -11,8 +11,6 @@ DESCRIPTION="Pure-OO reimplementation of dumpvar.pl"
 
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Scalar-List-Utils-1.180.0
@@ -28,6 +26,7 @@ BDEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.06-no-dot-inc.patch"
 )
+
 PERL_RM_FILES=(
 	t/97_meta.t
 	t/98_pod.t
