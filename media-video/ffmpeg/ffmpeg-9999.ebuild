@@ -460,6 +460,7 @@ multilib_src_configure() {
 		--disable-libxavs2
 		--disable-libxevd
 		--disable-libxeve
+		--disable-ohcodec
 		--disable-pocketsphinx
 		--disable-rkmpp
 		--disable-vapoursynth
