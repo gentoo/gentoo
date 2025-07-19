@@ -17,5 +17,8 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-ml/dune-configurator:=[ocamlopt?]"
+RDEPEND="
+	dev-libs/libpcre2:=
+	dev-ml/dune-configurator:=[ocamlopt?]
+"
 BDEPEND="test? ( dev-ml/ounit2 )"
