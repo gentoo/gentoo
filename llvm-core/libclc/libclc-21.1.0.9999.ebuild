@@ -18,8 +18,8 @@ BDEPEND="
 	${PYTHON_DEPS}
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
-		spirv? ( dev-util/spirv-llvm-translator:${LLVM_SLOT} )
 	')
+	spirv? ( dev-util/spirv-llvm-translator:* )
 "
 
 LLVM_COMPONENTS=( libclc )
