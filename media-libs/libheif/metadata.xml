@@ -12,6 +12,7 @@
 	<flag name="openh264">Enable H.264 support using <pkg>media-libs/openh264</pkg></flag>
 	<flag name="rav1e">Use <pkg>media-video/rav1e</pkg> for AVIF encoding</flag>
 	<flag name="svt-av1">Use <pkg>media-libs/svt-av1</pkg> for SVT-AV1 encoding</flag>
+	<flag name="test-full">Allow tests that rely on options not normally enabled</flag>
 	<flag name="tools">Build heif-view tool</flag>
 	<flag name="webp">Enable high-quality YCbCr/RGB color space conversion algorithms</flag>
 	<flag name="x265">Use <pkg> media-libs/x265</pkg> for HEIF encoding</flag>
