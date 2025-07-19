@@ -37,6 +37,8 @@ src_compile() {
 }
 
 src_test() {
+	local -x COLUMNS=100 #960393
+
 	local skip=(
 		# fails with usersandbox
 		--skip test_ignore_canonical
