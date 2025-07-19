@@ -5,11 +5,11 @@ EAPI=8
 
 inherit autotools
 
-MY_P="${PN}-$(ver_cut 1-2)$(ver_cut 4-5)"
+MY_PV="$(ver_cut 1-2)$(ver_cut 4-5)"
 
 DESCRIPTION="Lightweight ASCII art demo using media-libs/aalib"
 HOMEPAGE="https://aa-project.sourceforge.net/"
-SRC_URI="https://downloads.sourceforge.net/aa-project/${MY_P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/project/aa-project/bb/${MY_PV}/bb-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
