@@ -118,9 +118,6 @@ BDEPEND="
 	virtual/pkgconfig
 
 	>=dev-lang/perl-5.10
-	virtual/perl-Data-Dumper
-	virtual/perl-Carp
-	virtual/perl-JSON-PP
 
 	wayland? ( dev-util/wayland-scanner )
 "

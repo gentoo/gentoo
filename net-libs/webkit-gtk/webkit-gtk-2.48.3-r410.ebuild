@@ -108,9 +108,6 @@ BDEPEND="
 	dev-util/unifdef
 	sys-devel/bison
 	sys-devel/gettext
-	virtual/perl-Data-Dumper
-	virtual/perl-Carp
-	virtual/perl-JSON-PP
 	virtual/pkgconfig
 	wayland? ( dev-util/wayland-scanner )
 "
