@@ -1,0 +1,108 @@
+From de7305e5e2fee97d80c25164a8f8c9f7ecfc9953 Mon Sep 17 00:00:00 2001
+From: Liam Keegan <liam@keegan.ch>
+Date: Thu, 26 Jun 2025 14:51:50 +0200
+Subject: [PATCH] Fix issues when compiled against LLVM 20 built with
+ assertions enabled
+
+- `Assertion `Level != OptimizationLevel::O0 && "Must request optimizations!"'`
+  - skip simplification pipeline for O0
+  - copied from https://github.com/symengine/symengine/issues/2076#issue-2764070679
+- `Assertion `GV->hasName() && "Global must have name."'`
+  - give the function a name
+- `getDeclaration` is deprecated in llvm 20 and will be removed in next version
+  - use replacement `getOrInsertDeclaration` for llvm >= 20
+- resolves #2076
+---
+ symengine/llvm_double.cpp | 34 +++++++++++++++++++++-------------
+ 1 file changed, 21 insertions(+), 13 deletions(-)
+
+diff --git a/symengine/llvm_double.cpp b/symengine/llvm_double.cpp
+index fe06ebcc7..8ae3b4adf 100644
+--- a/symengine/llvm_double.cpp
++++ b/symengine/llvm_double.cpp
+@@ -52,6 +52,12 @@ using CodeGenOptLevel = llvm::CodeGenOpt::Level;
+ using CodeGenOptLevel = llvm::CodeGenOptLevel;
+ #endif
+ 
++#if (LLVM_VERSION_MAJOR < 20)
++const auto &GetDeclaration = llvm::Intrinsic::getDeclaration;
++#else
++const auto &GetDeclaration = llvm::Intrinsic::getOrInsertDeclaration;
++#endif
++
+ #if (LLVM_VERSION_MAJOR >= 21)
+ #define AddNoCapture(A) A.addCapturesAttr(llvm::CaptureInfo::none())
+ #else
+@@ -85,8 +91,8 @@ llvm::Function *LLVMVisitor::get_function_type(llvm::LLVMContext *context)
+     }
+     llvm::FunctionType *function_type = llvm::FunctionType::get(
+         llvm::Type::getVoidTy(*context), inp, /*isVarArgs=*/false);
+-    auto F = llvm::Function::Create(function_type,
+-                                    llvm::Function::InternalLinkage, "", mod);
++    auto F = llvm::Function::Create(
++        function_type, llvm::Function::InternalLinkage, "symengine_func", mod);
+     F->setCallingConv(llvm::CallingConv::C);
+ #if (LLVM_VERSION_MAJOR < 5)
+     {
+@@ -265,16 +271,19 @@ void LLVMVisitor::init(const vec_basic &inputs, const vec_basic &outputs,
+     } else if (opt_level == 2) {
+         pb_opt_level = OptimizationLevel::O2;
+     }
++
++    if (opt_level != 0) {
+ #if (LLVM_VERSION_MAJOR < 6)
+-    FPM = PB.buildFunctionSimplificationPipeline(pb_opt_level);
++        FPM = PB.buildFunctionSimplificationPipeline(pb_opt_level);
+ #elif (LLVM_VERSION_MAJOR < 12)
+-    FPM = PB.buildFunctionSimplificationPipeline(
+-        pb_opt_level, llvm::PassBuilder::ThinLTOPhase::None);
++        FPM = PB.buildFunctionSimplificationPipeline(
++            pb_opt_level, llvm::PassBuilder::ThinLTOPhase::None);
+ #else
+-    FPM = PB.buildFunctionSimplificationPipeline(
+-        pb_opt_level, llvm::ThinOrFullLTOPhase::None);
++        FPM = PB.buildFunctionSimplificationPipeline(
++            pb_opt_level, llvm::ThinOrFullLTOPhase::None);
+ #endif
+-    FPM.run(*F, FAM);
++        FPM.run(*F, FAM);
++    }
+ 
+     // std::cout << "Optimized LLVM IR" << std::endl;
+     // module->print(llvm::errs(), nullptr);
+@@ -293,7 +302,7 @@ void LLVMVisitor::init(const vec_basic &inputs, const vec_basic &outputs,
+     {
+     public:
+         std::string &ss_;
+-        MemoryBufferRefCallback(std::string &ss) : ss_(ss) {}
++        explicit MemoryBufferRefCallback(std::string &ss) : ss_(ss) {}
+ 
+         void notifyObjectCompiled(const llvm::Module *M,
+                                   llvm::MemoryBufferRef obj) override
+@@ -306,7 +315,7 @@ void LLVMVisitor::init(const vec_basic &inputs, const vec_basic &outputs,
+         std::unique_ptr<llvm::MemoryBuffer>
+         getObject(const llvm::Module *M) override
+         {
+-            return NULL;
++            return nullptr;
+         }
+     };
+ 
+@@ -492,15 +501,14 @@ llvm::Function *LLVMVisitor::get_powi()
+ #if (LLVM_VERSION_MAJOR > 12)
+     arg_type.push_back(llvm::Type::getInt32Ty(mod->getContext()));
+ #endif
+-    return llvm::Intrinsic::getDeclaration(mod, llvm::Intrinsic::powi,
+-                                           arg_type);
++    return GetDeclaration(mod, llvm::Intrinsic::powi, arg_type);
+ }
+ 
+ llvm::Function *get_float_intrinsic(llvm::Type *type, llvm::Intrinsic::ID id,
+                                     unsigned n, llvm::Module *mod)
+ {
+     std::vector<llvm::Type *> arg_type(n, type);
+-    return llvm::Intrinsic::getDeclaration(mod, id, arg_type);
++    return GetDeclaration(mod, id, arg_type);
+ }
+ 
+ void LLVMVisitor::bvisit(const Pow &x)
