@@ -12,7 +12,7 @@ if [[ "${PV}" == 99999 ]] ; then
 	EGIT_REPO_URI="https://bitbucket.org/${PN}/${PN}"
 else
 	SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~riscv x86"
 fi
 
 LICENSE="BSD"
