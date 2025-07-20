@@ -362,8 +362,6 @@ src_configure() {
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
-		-DCMAKE_CUDA_COMPILER=clang++
-		-DCUDA_INHERIT_COMPILE_OPTIONS=no
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
 		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
@@ -376,6 +374,13 @@ src_configure() {
 		-DSUNSHINE_SYSTEM_WAYLAND_PROTOCOLS=yes
 		-DUDEV_RULES_INSTALL_DIR=$(get_udevdir)/rules.d
 	)
+
+	if use cuda; then
+		mycmakeargs+=(
+			-DCMAKE_CUDA_COMPILER=clang++
+			-DCUDA_INHERIT_COMPILE_OPTIONS=no
+		)
+	fi
 
 	if use systemd; then
 		mycmakeargs+=( -DSYSTEMD_USER_UNIT_INSTALL_DIR=$(systemd_get_userunitdir) )
