@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -52,37 +52,24 @@ RDEPEND="
 		dev-perl/XML-LibXML
 		net-misc/rsync
 	)
-	virtual/perl-Carp
-	virtual/perl-Data-Dumper
 	dev-perl/Data-Validate-IP
 	dev-perl/Devel-Caller
 	dev-perl/Digest-HMAC
-	virtual/perl-Digest-MD5
-	virtual/perl-Exporter
-	virtual/perl-File-Spec
 	dev-perl/HTTP-Message
 	dev-perl/Hash-Merge
-	virtual/perl-IO
 	dev-perl/IO-Tty
 	dev-perl/JSON-MaybeXS
-	virtual/perl-MIME-Base64
 	dev-perl/Net-OpenSSH
 	dev-perl/Net-SFTP-Foreign
 	>=virtual/perl-Scalar-List-Utils-1.450.0
 	dev-perl/Sort-Naturally
 	dev-perl/String-Escape
-	virtual/perl-Storable
 	dev-perl/TermReadKey
-	virtual/perl-Test-Simple
 	dev-perl/Text-Glob
-	virtual/perl-Text-Tabs+Wrap
-	virtual/perl-Time-HiRes
 	dev-perl/URI
 	dev-perl/XML-Simple
 	dev-perl/libwww-perl
 	dev-perl/YAML
-	virtual/perl-version
-	virtual/perl-Term-ANSIColor
 "
 # NB: would add test? !minimal? Test-mysqld, but I can't get that to work
 BDEPEND="
@@ -90,22 +77,18 @@ BDEPEND="
 	>=virtual/perl-CPAN-Meta-Requirements-2.120.620
 	>=virtual/perl-ExtUtils-MakeMaker-7.110.100
 	>=dev-perl/File-ShareDir-Install-0.60.0
-	virtual/perl-Module-Metadata
 	test? (
 		!minimal? (
 			app-admin/augeas
 			|| ( dev-perl/File-LibMagic sys-apps/file )
 			dev-vcs/git
 		)
-		virtual/perl-File-Temp
 		dev-perl/Sub-Override
 		dev-perl/Test-Deep
 		dev-perl/Test-Exception
 		dev-perl/Test-Output
 		dev-perl/Test-UseAllModules
 		dev-perl/Test-Warnings
-		virtual/perl-autodie
-		virtual/perl-Module-Load-Conditional
 	)
 "
 
