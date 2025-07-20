@@ -15,10 +15,11 @@ fi
 
 IUSE="gles2-only qml vulkan"
 
+# <assimp-6: https://bugreports.qt.io/browse/QTBUG-137996
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[concurrent,gles2-only=,gui,network,opengl,vulkan=]
 	~dev-qt/qtshadertools-${PV}:6
-	media-libs/assimp:=
+	<media-libs/assimp-6:=
 	qml? ( ~dev-qt/qtdeclarative-${PV}:6 )
 "
 DEPEND="
