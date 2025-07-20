@@ -98,7 +98,6 @@ RDEPEND="
 	app-alternatives/bc
 	ipv4? (
 		>=dev-lang/perl-5.16
-		virtual/perl-Digest-SHA
 	)
 	ipv6? (
 		>=dev-perl/Socket6-0.230.0
