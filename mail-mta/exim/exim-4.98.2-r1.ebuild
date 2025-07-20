@@ -21,7 +21,7 @@ S=${WORKDIR}/${P//_rc/-RC}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
 dsn gdbm gnutls idn ipv6 ldap lmtp maildir mbx
