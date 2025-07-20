@@ -25,23 +25,13 @@ SLOT="0"
 DZIL_PLUGINS=( Git PodWeaver AuthorsFromGit RPM Test-ReportPrereqs )
 
 RDEPEND="
-	virtual/perl-Carp
 	dev-perl/Class-ISA
 	>=dev-perl/Class-Method-Modifiers-2.110.0
 	>=dev-perl/Clone-0.310.0
-	virtual/perl-Data-Dumper
-	virtual/perl-Encode
 	>=dev-perl/Exception-Class-1.0.0
-	virtual/perl-Exporter
-	virtual/perl-File-Path
-	virtual/perl-File-Spec
-	virtual/perl-Getopt-Long
 	dev-perl/Hook-LexWrap
-	virtual/perl-IO
 	>=dev-perl/IO-Socket-Timeout-0.320.0
 	dev-perl/List-MoreUtils
-	virtual/perl-Scalar-List-Utils
-	virtual/perl-Math-Complex
 	dev-perl/Math-Round
 	>=virtual/perl-Module-Load-0.260.0
 	>=dev-perl/Moose-2.121.300
@@ -52,30 +42,22 @@ RDEPEND="
 	dev-perl/PDL-Graphics-Gnuplot
 	dev-perl/PDL-IO-CSV
 	>=dev-perl/Role-Tiny-1.3.4
-	virtual/perl-Socket
 	dev-perl/Statistics-Descriptive
-	virtual/perl-Storable
 	>=dev-perl/TermReadKey-2.300.0
 	dev-perl/Text-Diff
-	virtual/perl-Time-HiRes
 	dev-perl/Time-Monotonic
 	>=dev-perl/Try-Tiny-0.220.0
 	>=dev-perl/YAML-LibYAML-0.410.0
-	virtual/perl-autodie
 	>=dev-perl/namespace-autoclean-0.200.0
-	virtual/perl-parent
 	sci-visualization/gnuplot
 	dev-perl/Lab-VXI11
 	dev-perl/USB-TMC
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		dev-perl/File-Slurper
-		virtual/perl-File-Temp
 		dev-perl/Test-Fatal
 		dev-perl/Test-File
-		virtual/perl-Test-Simple
 		dev-perl/Text-Diff
 		dev-perl/aliased
 	)
