@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,8 +44,6 @@ RDEPEND="
 	musicbrainz? (
 		dev-perl/MusicBrainz-DiscID
 		>=dev-perl/WebService-MusicBrainz-1.0.4
-		virtual/perl-Digest-SHA
-		virtual/perl-Getopt-Long
 	)
 	normalize? ( >=media-sound/normalize-0.7.4 )
 	opus? ( media-sound/opus-tools )
