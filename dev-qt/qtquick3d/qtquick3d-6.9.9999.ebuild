@@ -16,12 +16,13 @@ fi
 
 IUSE="opengl vulkan"
 
+# <assimp-6: https://bugreports.qt.io/browse/QTBUG-137996 (same as qt3d)
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[concurrent,gui,opengl=,vulkan=,widgets]
 	~dev-qt/qtdeclarative-${PV}:6
 	~dev-qt/qtquicktimeline-${PV}:6
 	~dev-qt/qtshadertools-${PV}:6
-	media-libs/assimp:=
+	<media-libs/assimp-6:=
 	sys-libs/zlib:=
 "
 DEPEND="
