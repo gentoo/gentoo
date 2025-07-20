@@ -11,7 +11,7 @@ SRC_URI="https://mirrors.edge.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc ~x86"
 IUSE="+atmodem bluetooth +datafiles doc dundee examples +isimodem +phonesim +qmimodem tools +udev upower"
 
 REQUIRED_USE="dundee? ( bluetooth )"
