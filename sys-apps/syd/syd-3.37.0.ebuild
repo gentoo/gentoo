@@ -5,7 +5,6 @@ EAPI=8
 
 RESTRICT="test" # fails with sandbox
 
-
 CRATES="
 	addr2line@0.24.2
 	adler2@2.0.1
