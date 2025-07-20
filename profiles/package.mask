@@ -92,6 +92,7 @@ virtual/perl-Parse-CPAN-Meta
 virtual/perl-Params-Check
 perl-core/Params-Check
 virtual/perl-Term-ReadLine
+virtual/perl-Unicode-Collate
 virtual/perl-Unicode-Normalize
 
 # Joonas Niilola <juippis@gentoo.org> (2025-07-01)
