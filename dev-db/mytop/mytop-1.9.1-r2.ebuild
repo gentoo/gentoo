@@ -6,7 +6,7 @@ EAPI=8
 DIST_TEST="do"
 inherit perl-module
 
-DESCRIPTION="mytop - a top clone for mysql"
+DESCRIPTION="Clone of top for MySQL"
 HOMEPAGE="http://www.mysqlfanboy.com/mytop-3/"
 SRC_URI="http://www.mysqlfanboy.com/mytop-3/${P}.tar.gz"
 
