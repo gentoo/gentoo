@@ -38,7 +38,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (2025-07-20)
 # Discontinued in favor of net-proxy/mitmproxy-rs which is now
-# an unconditional dependency of net-proxy/wireguard.
+# an unconditional dependency of net-proxy/mitmproxy.
 # Removal on 2025-08-19.  Bug #960470.
 dev-python/mitmproxy-wireguard
 
