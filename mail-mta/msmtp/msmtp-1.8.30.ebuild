@@ -11,7 +11,7 @@ SRC_URI="https://marlam.de/msmtp/releases/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="daemon doc keyring +gnutls idn +mta nls sasl ssl"
 
 # fcaps.eclass unconditionally defines "filecaps" USE flag which we need for
