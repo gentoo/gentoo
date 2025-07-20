@@ -33,7 +33,6 @@ BDEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/fonttools[${PYTHON_USEDEP}]')
 		media-libs/fontconfig
-		perl? ( virtual/perl-Test-Simple )
 	)
 "
 
