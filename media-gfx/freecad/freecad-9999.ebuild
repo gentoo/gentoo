@@ -128,18 +128,19 @@ DOCS=( CODE_OF_CONDUCT.md README.md )
 CHECKREQS_DISK_BUILD="2G"
 
 cuda_get_host_compiler() {
-	if [[ -n "${NVCC_CCBIN}" ]]; then
+	if [[ -v NVCC_CCBIN ]]; then
 		echo "${NVCC_CCBIN}"
 		return
 	fi
 
-	if [[ -n "${CUDAHOSTCXX}" ]]; then
+	if [[ -v CUDAHOSTCXX ]]; then
 		echo "${CUDAHOSTCXX}"
 		return
 	fi
 
-	if ! has_version dev-util/nvidia-cuda-toolkit ; then
-		return
+	if ! command -v nvcc >/dev/null; then
+		eerror "Could not find nvcc. Is the CUDA SDK installed?"
+		die "nvcc not found"
 	fi
 
 	einfo "Trying to find working CUDA host compiler"
@@ -148,8 +149,27 @@ cuda_get_host_compiler() {
 		die "$(tc-get-compiler-type) compiler is not supported"
 	fi
 
-	local compiler compiler_type compiler_version
-	local package package_version
+	# compiler with CHOST prefix
+	# x86_64-pc-linux-gnu-g++
+	local compiler
+
+	# gcc or clang
+	local compiler_type
+
+	# major version of the current compiler. 15
+	local compiler_version
+
+	# cat/pkg of the compiler
+	# sys-devel/gcc, llvm-core/clang
+	local package
+
+	# QPN of the package we are checking
+	# sys-devel/gcc, <sys-devel/gcc-15
+	local package_version
+
+	# system compiler e.g. tc-getCXX plus version
+	# used to skip rechecking, as we check NVCC_CCBIN first
+	# x86_64-pc-linux-gnu-g++-15
 	local NVCC_CCBIN_default
 
 	compiler_type="$(tc-get-compiler-type)"
@@ -174,17 +194,33 @@ cuda_get_host_compiler() {
 
 	ebegin "testing ${NVCC_CCBIN_default} (default)"
 
-	while ! nvcc -v -ccbin "${NVCC_CCBIN}" - -x cu <<<"int main(){}" &>> "${T}/cuda_get_host_compiler.log" ; do
+	while ! \
+		nvcc "${NVCCFLAGS:-}" \
+			-ccbin "${NVCC_CCBIN}" \
+			- \
+			-x cu \
+			<<<"int main(){}" \
+			&>> "${T:?}/cuda_get_host_compiler.log" ;
+		do
 		eend 1
 
 		while true; do
 			# prepare next version
-			if ! package_version="<$(best_version "${package_version}")"; then
-				die "could not find a supported version of ${compiler}"
+			local package_version_next
+			package_version_next="$(best_version "${package_version}")"
+
+			if [[ -z "${package_version_next}" ]]; then
+				eerror "Compiler lookup failed. Nothing installed matches: ${package_version}."
+				eerror "You can use NVCC_CCBIN to specify the exact compiler to use."
+				eerror "Check ${T}/cuda_get_host_compiler.log for details."
+				die "Could not find a supported version of ${compiler}. Did not find \"${package_version}\". NVCC_CCBIN is unset."
 			fi
+
+			package_version="<${package_version_next}"
 
 			NVCC_CCBIN="${compiler}-$(ver_cut 1 "${package_version/#<${package}-/}")"
 
+			# skip the next version equals the already checked system default
 			[[ "${NVCC_CCBIN}" != "${NVCC_CCBIN_default}" ]] && break
 		done
 		ebegin "testing ${NVCC_CCBIN}"
@@ -332,9 +368,14 @@ src_configure() {
 		)
 	fi
 
+	# fem and smesh depend on sci-lib/vtk, which looks up a cuda compiler when build with USE=cuda.
+	# We therefore need to set the correct CUDAHOSTCXX and setup the sandbox.
 	if use fem || use smesh; then
-		export CUDAHOSTCXX="$(cuda_get_host_compiler)"
-		cuda_add_sandbox
+		if has_version "sci-libs/vtk[cuda]" ; then
+			cuda_add_sandbox
+			addpredict "/dev/char/"
+			export CUDAHOSTCXX="$(cuda_get_host_compiler)"
+		fi
 	fi
 
 	if use gui; then
