@@ -13,12 +13,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
 RDEPEND="
-	virtual/perl-File-Path
 	>=virtual/perl-File-Spec-0.820.0
-	>=virtual/perl-Module-Load-Conditional-0.660.0
-	virtual/perl-if
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	test? ( virtual/perl-Test-Simple )
-"
+BDEPEND="${RDEPEND}"
