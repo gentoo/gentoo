@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,6 @@ BDEPEND="app-arch/unzip"
 RDEPEND="
 	dev-java/commons-logging:0
 	${COMMON_DEPEND}
-	virtual/perl-Getopt-Long
 	dev-perl/File-Which
 	>=virtual/jre-1.8:*
 	!<dev-texlive/texlive-latexextra-2023_p69752-r4
