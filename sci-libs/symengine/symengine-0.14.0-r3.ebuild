@@ -50,6 +50,7 @@ PATCHES=(
 	# bug 957803, in git master
 	"${FILESDIR}/${P}-cmake4.patch"
 	# https://github.com/symengine/symengine/pull/2103
+	# https://github.com/symengine/symengine/pull/2119
 	"${FILESDIR}/${P}-llvm.patch"
 )
 

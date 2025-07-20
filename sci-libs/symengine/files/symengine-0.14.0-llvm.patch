@@ -106,3 +106,44 @@ index fe06ebcc7..8ae3b4adf 100644
  }
  
  void LLVMVisitor::bvisit(const Pow &x)
+From 899a130e071768e76da8f749341b5303ca1ab6e9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 20 Jul 2025 19:02:16 +0200
+Subject: [PATCH] Fix LLVM dylib use in installed CMake config
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is a followup to #2075 that fixes linking against LLVM dylib
+in reverse dependencies of SymEngine (e.g. the Python package).
+Unfortunately, my original patch missed this second occurrence.
+
+Given that we permit overriding the dylib use via a cache variable
+and it is unlikely for a dylib install to suddenly become non-dylib
+let's store the value in the config file.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ cmake/SymEngineConfig.cmake.in | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/SymEngineConfig.cmake.in b/cmake/SymEngineConfig.cmake.in
+index 8465298a7..45e46ed75 100644
+--- a/cmake/SymEngineConfig.cmake.in
++++ b/cmake/SymEngineConfig.cmake.in
+@@ -84,8 +84,13 @@ set(SYMENGINE_LLVM_COMPONENTS @SYMENGINE_LLVM_COMPONENTS@)
+ 
+ if (NOT "${SYMENGINE_LLVM_COMPONENTS}" STREQUAL "")
+     find_package(LLVM REQUIRED ${SYMENGINE_LLVM_COMPONENTS} HINTS @LLVM_DIR@)
+-    llvm_map_components_to_libnames(llvm_libs_direct ${SYMENGINE_LLVM_COMPONENTS})
+-    llvm_expand_dependencies(llvm_libs ${llvm_libs_direct})
++    set(SYMENGINE_LINKED_LLVM_DYLIB @WITH_LLVM_DYLIB@)
++    if (SYMENGINE_LINKED_LLVM_DYLIB)
++        set(llvm_libs LLVM)
++    else()
++        llvm_map_components_to_libnames(llvm_libs_direct ${SYMENGINE_LLVM_COMPONENTS})
++        llvm_expand_dependencies(llvm_libs ${llvm_libs_direct})
++    endif()
+     set(SYMENGINE_LIBRARIES ${SYMENGINE_LIBRARIES} ${llvm_libs})
+ else()
+     set(SYMENGINE_LLVM_INCLUDE_DIRS)
