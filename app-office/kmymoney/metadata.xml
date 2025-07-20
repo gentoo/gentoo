@@ -10,6 +10,7 @@
 		<remote-id type="kde-invent">office/kmymoney</remote-id>
 	</upstream>
 	<use>
+		<flag name="activities">Enable <pkg>kde-plasma/plasma-activities</pkg> integration</flag>
 		<flag name="hbci">Enable HBCI support using <pkg>net-libs/aqbanking</pkg></flag>
 		<flag name="holidays">Enable <pkg>kde-frameworks/kholidays</pkg> integration</flag>
 		<flag name="sql">Enable storage of financial data in SQL Db via <pkg>dev-qt/qtsql</pkg></flag>
