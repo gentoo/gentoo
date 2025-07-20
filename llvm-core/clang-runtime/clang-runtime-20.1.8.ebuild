@@ -11,7 +11,7 @@ S=${WORKDIR}
 
 LICENSE="metapackage"
 SLOT="${PV%%.*}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc x86 ~amd64-linux ~arm64-macos ~ppc-macos ~x64-macos"
 IUSE="
 	+compiler-rt libcxx offload openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
