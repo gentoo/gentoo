@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.6-use-standard-doc-dir.patch
 	"${FILESDIR}"/${PN}-1.7-cmake4.patch
+	"${FILESDIR}"/${PN}-1.7-desktop.patch
 )
 
 src_configure() {

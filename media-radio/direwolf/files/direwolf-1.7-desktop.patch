@@ -1,0 +1,18 @@
+# Bug https://bugs.gentoo.org/954855
+diff --git a/cmake/cpack/direwolf.desktop.in b/cmake/cpack/direwolf.desktop.in
+index 79c63aa..cb2459c 100644
+--- a/cmake/cpack/direwolf.desktop.in
++++ b/cmake/cpack/direwolf.desktop.in
+@@ -2,9 +2,9 @@
+ Name=@APPLICATION_NAME@
+ Comment=APRS Soundcard TNC
+ Exec=@APPLICATION_DESKTOP_EXEC@
+-Icon=@CMAKE_PROJECT_NAME@_icon.png
++Icon=@CMAKE_PROJECT_NAME@_icon
+ StartupNotify=true
+ Terminal=false
+ Type=Application
+ Categories=HamRadio
+-Keywords=Ham Radio;APRS;Soundcard TNC;KISS;AGWPE;AX.25
+\ No newline at end of file
++Keywords=Ham Radio;APRS;Soundcard TNC;KISS;AGWPE;AX.25
