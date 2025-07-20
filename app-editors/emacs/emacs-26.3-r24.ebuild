@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools eapi9-pipestatus elisp-common flag-o-matic readme.gentoo-r1
 
-DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
+DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 	https://dev.gentoo.org/~ulm/emacs/${P}-patches-12.tar.xz"

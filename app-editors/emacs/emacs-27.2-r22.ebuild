@@ -39,7 +39,7 @@ else
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
-DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
+DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
