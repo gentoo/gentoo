@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="${LLVM_VERSION}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv x86 ~amd64-linux ~ppc-macos ~x64-macos"
 IUSE="+abi_x86_32 abi_x86_64 +atomic-builtins +clang debug test"
 REQUIRED_USE="atomic-builtins? ( clang )"
 RESTRICT="!test? ( test ) !clang? ( test )"
