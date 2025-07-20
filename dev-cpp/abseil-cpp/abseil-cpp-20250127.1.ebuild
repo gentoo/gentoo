@@ -21,6 +21,9 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spar
 IUSE="test test-helpers"
 
 RDEPEND="
+	test? (
+		dev-cpp/gtest:=[${MULTILIB_USEDEP}]
+	)
 	test-helpers? (
 		dev-cpp/gtest:=[${MULTILIB_USEDEP}]
 	)
