@@ -362,6 +362,7 @@ src_configure() {
 		-DBUILD_DOCS=no
 		-DBUILD_TESTS=no
 		-DCCACHE_FOUND=no
+		-DCMAKE_DISABLE_FIND_PACKAGE_Boost=yes
 		-DFFMPEG_PLATFORM_LIBRARIES="$(usex svt-av1 SvtAv1Enc '');$(usex vaapi 'va;va-drm' '');$(usev x264);$(usev x265)"
 		-DFFMPEG_PREPARED_BINARIES="${S}"/third-party/build-deps/dist
 		-DSUNSHINE_ASSETS_DIR=share/${PN}
