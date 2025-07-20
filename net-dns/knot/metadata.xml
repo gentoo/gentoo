@@ -10,20 +10,11 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="authsignal">
-			Enable Automatic Authenticated DNSSEC Bootstrapping records
-		</flag>
-		<flag name="cookies">
-			Enable the DNS cookie module (RFC 7873)
-		</flag>
 		<flag name="daemon">
 			Enable Knot DNS main daemon
 		</flag>
 		<flag name="doh">
 			Enable DNS over HTTP (DoH) using libnghttp2
-		</flag>
-		<flag name="dnsproxy">
-			Enable the tiny DNS proxy module
 		</flag>
 		<flag name="dnstap">
 			Include support for the dnstap binary log format
@@ -33,40 +24,17 @@
 			Use a zone file parser that is faster, but requires
 			more memory and CPU time to compile
 		</flag>
-		<flag name="noudp">
-			Enable the module which can send empty truncated
-			responses to UDP queries
-		</flag>
-		<flag name="onlinesign">
-			Enable the module that sign zones on the fly instead of
-			pre-signing zone
-		</flag>
 		<flag name="pkcs11">
 			Add support for PKCS#11
 		</flag>
 		<flag name="prometheus">
 			A Prometheus exporter for server and query statistics.
 		</flag>
-		<flag name="queryacl">
-			Enable the module for query access control
-		</flag>
 		<flag name="quic">
 			Enable the DNS over QUIC (DoQ) module using libngtcp2
 		</flag>
-		<flag name="rrl">
-			Enable the response rate limiting module
-		</flag>
-		<flag name="stats">
-			Enable the server statistics module
-		</flag>
-		<flag name="synthrecord">
-			Enable the automatic forward/reverse records module
-		</flag>
 		<flag name="utils">
 			Install Knot utilities, such as kdig, kzonecheck, ...
-		</flag>
-		<flag name="whoami">
-			Enable the whoami response module
 		</flag>
 		<flag name="xdp">
 			Enable eXpress Data Path
