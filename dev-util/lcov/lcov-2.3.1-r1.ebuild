@@ -31,14 +31,11 @@ RDEPEND="
 	|| (
 		dev-perl/JSON-XS
 		dev-perl/Cpanel-JSON-XS
-		virtual/perl-JSON-PP
 		dev-perl/JSON
 	)
 	dev-perl/Memory-Process
 	dev-perl/TimeDate
 	dev-perl/PerlIO-gzip
-	virtual/perl-Module-Load-Conditional
-	virtual/perl-Scalar-List-Utils
 "
 BDEPEND="
 	test? (
