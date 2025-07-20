@@ -10,6 +10,6 @@
 		<remote-id type="kde-invent">office/alkimia</remote-id>
 	</upstream>
 	<use>
-<!-- 		<flag name="webengine">Enable online quotes using <pkg>dev-qt/qtwebengine</pkg></flag> -->
+		<flag name="webengine">Enable online quotes using <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>
 </pkgmetadata>
