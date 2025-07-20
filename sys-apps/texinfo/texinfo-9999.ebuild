@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: if your package uses the texi2dvi utility, it must depend on the
@@ -37,9 +37,6 @@ IUSE="nls +standalone static"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.2-r2:=
-	virtual/perl-Data-Dumper
-	virtual/perl-Encode
-	virtual/perl-Unicode-Collate
 	standalone? ( >=dev-lang/perl-5.8.1 )
 	!standalone?  (
 		>=dev-lang/perl-5.8.1:=
