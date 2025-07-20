@@ -86,14 +86,13 @@ src_configure() {
 	local myeconfargs=(
 		$(use_with address-standardizer)
 		$(use_with gtk gui)
-		$(use_with topology)
+		"--with-topology"
 	)
 	postgres-multi_foreach econf "${myeconfargs[@]}"
 }
 
 src_compile() {
 	postgres-multi_foreach emake
-	postgres-multi_foreach emake -C topology
 
 	if use doc ; then
 		postgres-multi_foreach emake comments
