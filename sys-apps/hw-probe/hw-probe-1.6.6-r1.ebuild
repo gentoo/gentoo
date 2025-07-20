@@ -23,7 +23,6 @@ RDEPEND="
 	sys-apps/pciutils
 	sys-apps/smartmontools
 	sys-apps/usbutils
-	virtual/perl-Data-Dumper
 "
 
 src_compile() {
@@ -48,7 +47,6 @@ pkg_postinst() {
 	optfeature "showing GPU information provided by MESA." media-libs/mesa
 	optfeature "showing zeroconf statistics." net-dns/avahi
 	optfeature "showing HP printer statistics." net-print/hplip
-	optfeature "showing status about rfkill switches on communication devices." net-wireless/rfkill
 	optfeature "showing additional CPU capabilities." sys-apps/cpuid
 	optfeature "showing hard disk (HDD, SSD, ..) capabilities." sys-apps/hdparm
 	optfeature "showing available I2C sensors." sys-apps/i2c-tools
