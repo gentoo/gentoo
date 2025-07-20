@@ -4,19 +4,18 @@
 EAPI=8
 
 DIST_AUTHOR=ETJ
-DIST_VERSION=2.100
-DIST_EXAMPLES=( "examples/*" )
+DIST_VERSION=2.093
+DIST_EXAMPLES=( "Example/*" )
 
-inherit perl-module
+inherit perl-module toolchain-funcs fortran-2
 
 DESCRIPTION="Perl Data Language for scientific computing"
 
 LICENSE="|| ( Artistic GPL-1+ ) public-domain PerlDL"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~x86"
-IUSE="gd gsl hdf netpbm pgplot test"
+KEYWORDS="amd64 ~ppc x86"
+IUSE="+badval doc gd gsl hdf netpbm pdl2 pgplot test"
 
-# these need another round of review
 RDEPEND="
 	sys-libs/ncurses:=
 	app-arch/sharutils
@@ -29,7 +28,6 @@ RDEPEND="
 	>=dev-perl/Inline-0.830.0
 	>=dev-perl/Inline-C-0.620.0
 	>=virtual/perl-Scalar-List-Utils-1.330.0
-	virtual/perl-Math-Complex
 	dev-perl/Module-Compile
 	>=dev-perl/OpenGL-0.700.0
 	dev-perl/OpenGL-GLUT
@@ -37,19 +35,24 @@ RDEPEND="
 	|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
 	>=virtual/perl-Data-Dumper-2.121.0
 	dev-perl/Pod-Parser
-	virtual/perl-File-Spec
-	virtual/perl-File-Temp
-	virtual/perl-Storable
 	>=virtual/perl-Text-Balanced-2.50.0
-	>=dev-perl/Devel-REPL-1.3.11
-	|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
+	>=dev-perl/ExtUtils-F77-1.260.0
+	gd? ( media-libs/gd )
+	gsl? ( sci-libs/gsl )
+	hdf? (
+		sci-libs/hdf
+		dev-perl/Alien-HDF4
+	)
 	netpbm? (
 		media-libs/netpbm
 		media-video/ffmpeg
 	)
+	pdl2? (
+		>=dev-perl/Devel-REPL-1.3.11
+		|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
+	)
 	pgplot? ( dev-perl/PGPLOT )
 "
-
 DEPEND="
 	${RDEPEND}
 "
@@ -61,7 +64,7 @@ BDEPEND="
 	>=dev-perl/ExtUtils-Depends-0.402.0
 	>=virtual/perl-ExtUtils-MakeMaker-7.120.0
 	>=virtual/perl-ExtUtils-ParseXS-3.10.0
-	virtual/perl-File-Path
+	>=dev-perl/ExtUtils-F77-1.130.0
 	test? (
 		dev-perl/Test-Exception
 		dev-perl/Test-Warn
@@ -69,19 +72,42 @@ BDEPEND="
 	)
 "
 
-# this is a temporary workaround until old PDL versions are gone
-PDEPEND="
-	gd?   ( dev-perl/PDL-IO-GD )
-	gsl?  ( dev-perl/PDL-GSL )
-	hdf?  ( dev-perl/PDL-IO-HDF )
-"
-
 mydoc="BUGS DEPENDENCIES DEVELOPMENT Known_problems MANIFEST* Release_Notes"
+
+PATCHES=(
+	# Respect user choice for fortran compiler+flags, add pic
+	"${FILESDIR}"/${PN}-2.87.0-fortran.patch
+)
+
+pkg_setup() {
+	perl_set_version
+	fortran-2_pkg_setup
+}
 
 src_prepare() {
 	perl-module_src_prepare
 	find . -name Makefile.PL -exec \
 		sed -i -e "s|/usr|${EPREFIX}/usr|g" {} \; || die
+}
+
+src_configure() {
+	sed -i \
+		-e '/USE_POGL/s/=>.*/=> 1,/' \
+		-e "/WITH_3D/s/=>.*/=> 1,/" \
+		-e "/HTML_DOCS/s/=>.*/=> $(use doc && echo 1 || echo 0),/" \
+		-e "/WITH_BADVAL/s/=>.*/=> $(use badval && echo 1|| echo 0),/" \
+		-e "/WITH_DEVEL_REPL/s/=>.*/=> $(use pdl2 && echo 1 || echo 0),/" \
+		-e "/WITH_GSL/s/=>.*/=> $(use gsl && echo 1 || echo 0),/" \
+		-e "/WITH_GD/s/=>.*/=> $(use gd && echo 1 || echo 0),/" \
+		-e "/WITH_HDF/s/=>.*/=> $(use hdf && echo 1 || echo 0),/" \
+		-e "/WITH_PGPLOT/s/=>.*/=> $(use pgplot && echo 1 || echo 0),/" \
+		-e "/WITH_POSIX_THREADS/s/=>.*/=> 1,/" \
+		-e "/WITH_PROJ/s/=>.*/=> $(echo 0),/" \
+		perldl.conf || die
+
+	export FC=$(tc-getF77)
+
+	perl-module_src_configure
 }
 
 src_test() {
@@ -90,7 +116,7 @@ src_test() {
 
 src_install() {
 	perl-module_src_install
-	cp utils/scantree.pl "${D}"/${VENDOR_ARCH}/PDL/Doc || die
+	cp Doc/scantree.pl "${D}"/${VENDOR_ARCH}/PDL/Doc || die
 }
 
 pkg_postinst() {

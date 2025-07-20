@@ -30,16 +30,12 @@ RDEPEND="
 	>=dev-perl/Inline-0.830.0
 	>=dev-perl/Inline-C-0.620.0
 	>=virtual/perl-Scalar-List-Utils-1.330.0
-	virtual/perl-Math-Complex
 	dev-perl/Module-Compile
 	>=dev-perl/OpenGL-0.700.0
 	>=dev-perl/TermReadKey-2.340.0
 	|| ( dev-perl/Term-ReadLine-Perl dev-perl/Term-ReadLine-Gnu )
 	>=virtual/perl-Data-Dumper-2.121.0
 	dev-perl/Pod-Parser
-	virtual/perl-File-Spec
-	virtual/perl-File-Temp
-	virtual/perl-Storable
 	>=virtual/perl-Text-Balanced-1.890.0
 	fortran? ( >=dev-perl/ExtUtils-F77-1.260.0 )
 	gd? ( media-libs/gd )
@@ -68,7 +64,6 @@ BDEPEND="${RDEPEND}
 	>=dev-perl/ExtUtils-Depends-0.402.0
 	>=virtual/perl-ExtUtils-MakeMaker-7.120.0
 	>=virtual/perl-ExtUtils-ParseXS-3.10.0
-	virtual/perl-File-Path
 	fortran? ( >=dev-perl/ExtUtils-F77-1.130.0 )
 	test? (
 		dev-perl/Test-Exception
