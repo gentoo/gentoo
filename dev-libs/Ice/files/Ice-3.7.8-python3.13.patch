@@ -1,0 +1,96 @@
+Description: Python 3.13 build fixes
+Author: Jose <jose@zeroc.com>
+Origin: backport
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1092441
+Applied-Upstream: https://github.com/zeroc-ice/ice/commit/019976e2db4899a5ac30f497aa45b51335b024ec
+Reviewed-by: Simon Quigley <tsimonq2@debian.org>
+Last-Update: 2025-02-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/python/modules/IcePy/Types.cpp
++++ b/python/modules/IcePy/Types.cpp
+@@ -455,14 +455,7 @@ IcePy::StreamUtil::setSlicedDataMember(P
+         assert(_sliceInfoType);
+     }
+ 
+-    IcePy::PyObjectHandle args = PyTuple_New(0);
+-    if(!args.get())
+-    {
+-        assert(PyErr_Occurred());
+-        throw AbortMarshaling();
+-    }
+-
+-    PyObjectHandle sd = PyEval_CallObject(_slicedDataType, args.get());
++    PyObjectHandle sd{PyObject_CallObject(_slicedDataType, nullptr)};
+     if(!sd.get())
+     {
+         assert(PyErr_Occurred());
+@@ -488,7 +481,7 @@ IcePy::StreamUtil::setSlicedDataMember(P
+     int i = 0;
+     for(vector<Ice::SliceInfoPtr>::const_iterator p = slicedData->slices.begin(); p != slicedData->slices.end(); ++p)
+     {
+-        PyObjectHandle slice = PyEval_CallObject(_sliceInfoType, args.get());
++        PyObjectHandle slice{PyObject_CallObject(_sliceInfoType, nullptr)};
+         if(!slice.get())
+         {
+             assert(PyErr_Occurred());
+@@ -1669,18 +1662,17 @@ IcePy::SequenceInfo::marshal(PyObject* p
+             Py_ssize_t sz = 0;
+             if(p != Py_None)
+             {
+-                const void* buf = 0;
+-                if(PyObject_AsReadBuffer(p, &buf, &sz) == 0)
++                Py_buffer pybuf;
++                if (pi && PyObject_GetBuffer(p, &pybuf, PyBUF_SIMPLE | PyBUF_FORMAT) == 0)
+                 {
+-                    if(pi->kind == PrimitiveInfo::KindString)
+-                    {
+-                        PyErr_Format(PyExc_ValueError, STRCAST("expected sequence value"));
+-                        throw AbortMarshaling();
+-                    }
++                    // Strings are handled as variable length types above.
++                    assert(pi->kind != PrimitiveInfo::KindString);
++                    sz = pybuf.len;
++                    PyBuffer_Release(&pybuf);
+                 }
+                 else
+                 {
+-                    PyErr_Clear(); // PyObject_AsReadBuffer sets an exception on failure.
++                    PyErr_Clear(); // PyObject_GetBuffer sets an exception on failure.
+ 
+                     PyObjectHandle fs;
+                     if(pi)
+@@ -1906,7 +1898,7 @@ IcePy::SequenceInfo::marshalPrimitiveSeq
+     if(pi->kind != PrimitiveInfo::KindString)
+     {
+         //
+-        // With Python 3 and greater we marshal sequences of pritive types using the new
++        // With Python 3 and greater we marshal sequences of primitive types using the new
+         // buffer protocol when possible, for older versions we use the old buffer protocol.
+         //
+ #if PY_VERSION_HEX >= 0x03000000
+@@ -2030,7 +2022,7 @@ IcePy::SequenceInfo::marshalPrimitiveSeq
+         }
+         else
+         {
+-            PyErr_Clear(); // PyObject_GetBuffer/PyObject_AsReadBuffer sets an exception on failure.
++            PyErr_Clear(); // PyObject_GetBuffer sets an exception on failure.
+         }
+     }
+ 
+--- a/python/modules/IcePy/Util.cpp
++++ b/python/modules/IcePy/Util.cpp
+@@ -729,12 +729,7 @@ PyObject*
+ IcePy::createExceptionInstance(PyObject* type)
+ {
+     assert(PyExceptionClass_Check(type));
+-    IcePy::PyObjectHandle args = PyTuple_New(0);
+-    if(!args.get())
+-    {
+-        return 0;
+-    }
+-    return PyEval_CallObject(type, args.get());
++    return PyObject_CallObject(type, nullptr);
+ }
+ 
+ static void
