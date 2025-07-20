@@ -25,7 +25,7 @@ REQUIRED_USE="sqlcipher? ( sql )"
 
 RDEPEND="
 	>=app-crypt/gpgme-1.23.1-r1:=[cxx(-),qt5(-)]
-	=app-office/libalkimia-8.2*:=
+	<app-office/libalkimia-8.2.0_p20250713:=
 	dev-libs/gmp:0=[cxx(+)]
 	dev-libs/kdiagram:5
 	dev-libs/libgpg-error
