@@ -19,7 +19,6 @@ RDEPEND="
 	>=dev-perl/Path-Tiny-0.48.0
 	>=virtual/perl-Scalar-List-Utils-1.330.0
 	dev-perl/Try-Tiny
-	>=virtual/perl-Unicode-Collate-0.530.0
 	dev-perl/namespace-autoclean
 "
 DEPEND="
