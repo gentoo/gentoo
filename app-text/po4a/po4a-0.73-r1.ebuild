@@ -39,7 +39,7 @@ BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	)"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-man.patch
+	"${FILESDIR}"/${P}-man.patch
 	"${FILESDIR}"/${PN}-perl5.40.patch # bug #938967
 )
 
