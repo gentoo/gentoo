@@ -85,8 +85,6 @@ src_prepare() {
 
 	default
 
-	# Remove bogus Makefile statement. This needs to go upstream
-	sed -i /"@YELP_HELP_RULES@"/d help/Makefile.am || die
 	if has_version dev-libs/gobject-introspection; then
 		eautoreconf
 	else
