@@ -15,7 +15,6 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 
 
 RDEPEND="
 	>=virtual/perl-Carp-1.220.0
-	>=virtual/perl-Math-Complex-1.390.0
 "
 BDEPEND="
 	test? ( >=virtual/perl-Test-Simple-0.940.0 )
