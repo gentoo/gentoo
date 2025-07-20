@@ -337,6 +337,7 @@ games-fps/ut2004-demo
 games-puzzle/world-of-goo-demo
 games-puzzle/world-of-goo-gog
 games-puzzle/world-of-goo-hb
+games-roguelike/dwarf-fortress
 games-rpg/crosscode
 games-rpg/crosscode-a-new-home
 games-server/bedrock-server
