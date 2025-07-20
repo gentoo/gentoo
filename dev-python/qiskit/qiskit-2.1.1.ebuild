@@ -7,9 +7,6 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..13} )
 
-CRATES="
-"
-
 inherit cargo distutils-r1
 
 MY_P=${P/_}
@@ -49,7 +46,6 @@ RDEPEND="
 		>=dev-python/pillow-4.2.1[${PYTHON_USEDEP}]
 		>=dev-python/pylatexenc-1.4[${PYTHON_USEDEP}]
 		>=dev-python/seaborn-0.9.0[${PYTHON_USEDEP}]
-		<dev-python/symengine-0.14[${PYTHON_USEDEP}]
 		>=dev-python/symengine-0.11.0[${PYTHON_USEDEP}]
 		>=dev-python/sympy-1.3[${PYTHON_USEDEP}]
 	)
