@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/47" # libfilezilla.so version
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
