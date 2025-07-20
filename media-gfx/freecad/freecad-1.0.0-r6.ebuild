@@ -67,7 +67,7 @@ RDEPEND="
 	sys-libs/zlib
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pybind11[${PYTHON_USEDEP}]
+		<dev-python/pybind11-3[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	assembly? ( sci-libs/ondselsolver )
