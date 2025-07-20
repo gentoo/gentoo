@@ -93,7 +93,6 @@ src_configure() {
 
 src_compile() {
 	postgres-multi_foreach emake
-	postgres-multi_foreach emake -C topology
 
 	if use doc ; then
 		postgres-multi_foreach emake comments
@@ -104,7 +103,6 @@ src_compile() {
 
 src_install() {
 	postgres-multi_foreach emake DESTDIR="${D}" install
-	postgres-multi_foreach emake -C topology DESTDIR="${D}" install
 	postgres-multi_forbest dobin ./utils/postgis_restore.pl
 
 	dodoc CREDITS TODO loader/README.* doc/*txt
