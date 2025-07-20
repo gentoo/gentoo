@@ -5,6 +5,8 @@ Subject: [PATCH 1/2] feat: replace nltk with pyspellchecker
 
 Possible fix for #742
 
+https://github.com/pyupio/safety/pull/743/commits
+
 Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
 ---
  CHANGELOG.md                 |  5 +++++

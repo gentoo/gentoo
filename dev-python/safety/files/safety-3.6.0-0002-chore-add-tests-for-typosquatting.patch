@@ -3,6 +3,8 @@ From: Oz Tiram <oz.tiram@gmail.com>
 Date: Thu, 8 May 2025 23:16:24 +0200
 Subject: [PATCH 2/2] chore: add tests for typosquatting
 
+See https://github.com/pyupio/safety/pull/743/
+
 Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
 ---
  tests/test_typosquatting.py | 91 +++++++++++++++++++++++++++++++++++++
