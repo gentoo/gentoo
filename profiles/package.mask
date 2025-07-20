@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-07-20)
+# Discontinued in favor of net-proxy/mitmproxy-rs which is now
+# an unconditional dependency of net-proxy/wireguard.
+# Removal on 2025-08-19.  Bug #960470.
+dev-python/mitmproxy-wireguard
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
 # suppor for the old APIs this package needs. Impossible to use anymore.
