@@ -1,8 +1,0 @@
-Fixes compilation due to missing <cmath> header required in this file.
-
---- a/g_src/ttf_manager.cpp
-+++ b/g_src/ttf_manager.cpp
-@@ -2,2 +2,3 @@
- #include "init.h"
-+#include <cmath>
- #include <iostream>
