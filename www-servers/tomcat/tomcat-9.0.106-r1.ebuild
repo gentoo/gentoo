@@ -24,22 +24,18 @@ RESTRICT="test" # can we run them on a production system?
 
 ECJ_SLOT="4.20"
 
-COMMON_DEP="
-	>=dev-java/ant-1.10.15:0
-	dev-java/bnd-annotation:0
+COMMON_DEP="dev-java/bnd-annotation:0
 	dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/jax-rpc-api:0
 	dev-java/wsdl4j:0"
-RDEPEND="
-${COMMON_DEP}
+RDEPEND="${COMMON_DEP}
 	acct-group/tomcat
 	acct-user/tomcat
-	dev-java/javax-mail:0
 	dev-java/javax-persistence-api:0
 	>=virtual/jre-1.8:*"
-DEPEND="
-	${COMMON_DEP}
+DEPEND="${COMMON_DEP}
 	app-admin/pwgen
+	>=dev-java/ant-1.10.15:0
 	dev-java/bnd:0
 	dev-java/bnd-ant:0
 	dev-java/bnd-util:0
@@ -121,8 +117,6 @@ src_install() {
 
 	java-pkg_jarinto "${dest}"/lib
 	java-pkg_dojar output/build/lib/*.jar
-
-	java-pkg_register-dependency javax-mail,javax-persistence-api
 
 	dodoc RELEASE-NOTES RUNNING.txt
 	use doc && java-pkg_dojavadoc output/dist/webapps/docs/api
