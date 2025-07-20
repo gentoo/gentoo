@@ -371,11 +371,6 @@ dev-libs/libxml2-compat
 =dev-lang/rust-bin-1.84.0
 =dev-lang/rust-bin-1.84.1
 
-# Michał Górny <mgorny@gentoo.org> (2025-02-08)
-# Suspicious subslot bump, causing humongous rebuilds.
-# https://bugs.gentoo.org/949414
-=dev-cpp/cpp-httplib-0.18.6
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
 # Qt5 tools without any revdeps. Removal on 2025-06-10.
 dev-qt/assistant
