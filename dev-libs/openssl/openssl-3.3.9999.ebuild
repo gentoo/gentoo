@@ -273,7 +273,8 @@ pkg_preinst() {
 	if use fips; then
 		# Regen fipsmodule.cnf, bug 900625
 		ebegin "Running openssl fipsinstall"
-		"${ED}/usr/bin/openssl" fipsinstall -quiet \
+		LD_LIBRARY_PATH="${ED}/usr/$(get_libdir)" \
+			"${ED}/usr/bin/openssl" fipsinstall -quiet \
 			-out "${ED}${SSL_CNF_DIR}/fipsmodule.cnf" \
 			-module "${ED}/usr/$(get_libdir)/ossl-modules/fips.so"
 		eend $?

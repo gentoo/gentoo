@@ -273,7 +273,8 @@ pkg_preinst() {
 	if use fips; then
 		# Regen fipsmodule.cnf, bug 900625
 		einfo "Running openssl fipsinstall"
-		sysroot_run_prefixed "${ED}/usr/bin/openssl" fipsinstall \
+		LD_LIBRARY_PATH="${ED}/usr/$(get_libdir)" \
+			sysroot_run_prefixed "${ED}/usr/bin/openssl" fipsinstall \
 			-out "${ED}${SSL_CNF_DIR}/fipsmodule.cnf" \
 			-module "${ED}/usr/$(get_libdir)/ossl-modules/fips.so" \
 			|| die "fipsinstall failed"
