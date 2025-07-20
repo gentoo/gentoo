@@ -36,6 +36,7 @@ BDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 
+# opengl requires GLX, libglvnd[X]
 RDEPEND="
 	examples? (
 		opengl? (
@@ -44,6 +45,7 @@ RDEPEND="
 			)
 		)
 	)
+	opengl? ( media-libs/libglvnd[X] )
 	opencl? ( virtual/opencl )
 	openmp? ( || (
 		sys-devel/gcc:*[openmp]
