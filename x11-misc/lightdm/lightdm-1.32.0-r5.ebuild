@@ -23,7 +23,6 @@ RESTRICT="test"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2
 	dev-libs/libgcrypt:=
-	dev-libs/libxml2:=
 	sys-libs/pam
 	x11-libs/libX11
 	x11-libs/libxcb:=
@@ -48,6 +47,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	app-text/yelp-tools
 	dev-build/gtk-doc-am
+	dev-libs/libxml2
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
