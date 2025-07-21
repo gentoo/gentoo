@@ -22,6 +22,7 @@
     <flag name="musig">Enable MuSig2 module</flag>
     <flag name="recovery">Enable ECDSA pubkey recovery module</flag>
     <flag name="schnorr">Enable Schnorr signature module</flag>
+    <flag name="test-full">Enable exhaustive tests</flag>
   </use>
   <upstream>
     <remote-id type="github">bitcoin-core/secp256k1</remote-id>
