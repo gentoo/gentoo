@@ -26,8 +26,7 @@ RDEPEND="app-text/opensp
 	dev-perl/Text-WrapI18N
 	dev-perl/Unicode-LineBreak
 	dev-perl/YAML-Tiny
-	sys-devel/gettext
-	virtual/perl-Pod-Simple"
+	sys-devel/gettext"
 DEPEND="${RDEPEND}"
 BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
