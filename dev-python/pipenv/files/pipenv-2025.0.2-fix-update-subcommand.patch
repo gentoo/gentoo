@@ -24,7 +24,7 @@ index 5ca62978..91b9faea 100644
 +            f".{sys.version_info.minor}/site-packages/"
 +        )
 +    else:
-+        env["PYTHONPATH"] = "/usr/lib/python3.12/site-packages/"
++        env["PYTHONPATH"] = "/usr/lib/python{sys.version_info.major}.{sys.version_info.minor}/site-packages/"
 +
 +    c = run_command(cmd_args, is_verbose=project.s.is_verbose(), env=env)
      if c.returncode != 0:
