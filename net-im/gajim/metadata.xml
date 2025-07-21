@@ -6,13 +6,6 @@
     <doc>https://dev.gajim.org/gajim/gajim/-/wikis/home</doc>
   </upstream>
   <use>
-    <flag name="crypt">End to end encryption and GPG encryption</flag>
-    <flag name="geolocation">Sharing your location</flag>
-    <flag name="jingle">Audio and video calls</flag>
-    <flag name="remote">Controling Gajim instance from command line with gajim-remote</flag>
-    <flag name="rst">Generating XHTML output from RST code</flag>
-    <flag name="spell">Spellchecking of composed messages</flag>
     <flag name="voice">Support for video calls, audio calls and voice messages</flag>
-    <flag name="webp">Support WebP avatars</flag>
   </use>
 </pkgmetadata>
