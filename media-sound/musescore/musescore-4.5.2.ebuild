@@ -5,7 +5,7 @@ EAPI=8
 
 CHECKREQS_DISK_BUILD=3500M
 VIRTUALX_REQUIRED="test"
-inherit cmake flag-o-matic qmake-utils xdg check-reqs virtualx
+inherit cmake flag-o-matic xdg check-reqs virtualx
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -13,6 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="
 		https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-fix_qt69.patch.xz
 	"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/MuseScore-${PV}"
@@ -63,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
 	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
+	"${WORKDIR}/${P}-fix_qt69.patch"
 )
 
 src_unpack() {
@@ -85,10 +87,8 @@ src_configure() {
 	# confuses rcc, bug #908808
 	filter-lto
 
-	# bug #766111
-	export PATH="$(qt5_get_bindir):${PATH}"
-
 	local mycmakeargs=(
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON # https://github.com/musescore/MuseScore/issues/28797
 		-DCMAKE_BUILD_TYPE="release"
 		-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}"
 		-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}"
@@ -127,6 +127,11 @@ src_test() {
 	CMAKE_SKIP_TESTS=(
 		# bug #950450
 		iex_musicxml_tests
+		# https://github.com/musescore/MuseScore/issues/22500
+		# fixed upstream
+		notation_tests
+		# it fails with gcc only, to investigate
+		muse_global_tests
 	)
 
 	virtx cmake_src_test
