@@ -1,0 +1,153 @@
+[1] http://example.com dynamically registered
+[1] http://example.com
+     tags: []
+ uniqueId: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]/[test-template-invocation:#1]
+   parent: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]
+   source: MethodSource [className = 'org.apache.commons.io.build.URIOriginTest', methodName = 'testGetInputStream', methodParameterTypes = 'java.lang.String']
+   caught: java.net.UnknownHostException: example.com
+             	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:567)
+             	at java.base/java.net.Socket.connect(Socket.java:751)
+             	at java.base/java.net.Socket.connect(Socket.java:686)
+             	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183)
+             	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531)
+             	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636)
+             	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:282)
+             	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:386)
+             	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:408)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1320)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1253)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1139)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1068)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1691)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1615)
+             	at java.base/java.net.URL.openStream(URL.java:1325)
+             	at org.apache.commons.io.build.AbstractOrigin$URIOrigin.getInputStream(AbstractOrigin.java:547)
+             	at org.apache.commons.io.build.URIOriginTest.testGetInputStream(URIOriginTest.java:56)
+             	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+             	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+             	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+             	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+             	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+             	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+             	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+             	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+             	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+             	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+             	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+             	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+             	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+             	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+             	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+             	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+             	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+             	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+ duration: 80 ms
+   status: ✘ FAILED
+[2] https://example.com dynamically registered
+[2] https://example.com
+     tags: []
+ uniqueId: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]/[test-template-invocation:#2]
+   parent: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]
+   source: MethodSource [className = 'org.apache.commons.io.build.URIOriginTest', methodName = 'testGetInputStream', methodParameterTypes = 'java.lang.String']
+   caught: java.net.UnknownHostException: example.com
+             	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:567)
+             	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+             	at java.base/java.net.Socket.connect(Socket.java:751)
+             	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304)
+             	at java.base/sun.security.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:181)
+             	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183)
+             	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531)
+             	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636)
+             	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+             	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:377)
+             	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1253)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1139)
+             	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1691)
+             	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1615)
+             	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:223)
+             	at java.base/java.net.URL.openStream(URL.java:1325)
+             	at org.apache.commons.io.build.AbstractOrigin$URIOrigin.getInputStream(AbstractOrigin.java:547)
+             	at org.apache.commons.io.build.URIOriginTest.testGetInputStream(URIOriginTest.java:56)
+             	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+             	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+             	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+             	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+             	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+             	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+             	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+             	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+             	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+             	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+             	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+             	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+             	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+             	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+             	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+             	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+             	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+             	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+             	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+             	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+ duration: 114 ms
+   status: ✘ FAILED
+
+--- a/src/test/java/org/apache/commons/io/build/URIOriginTest.java
++++ b/src/test/java/org/apache/commons/io/build/URIOriginTest.java
+@@ -23,6 +23,7 @@ import java.net.URI;
+ import java.nio.file.Paths;
+ 
+ import org.apache.commons.io.build.AbstractOrigin.URIOrigin;
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.ValueSource;
+@@ -46,6 +47,7 @@ class URIOriginTest extends AbstractOriginTest<URI, URIOrigin> {
+         return new URIOrigin(Paths.get(FILE_NAME_RW).toUri());
+     }
+ 
++    @Disabled
+     @ParameterizedTest
+     @ValueSource(strings = {
+             "http://example.com",
