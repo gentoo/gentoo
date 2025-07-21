@@ -5,7 +5,7 @@ EAPI=8
 
 DIST_AUTHOR=UMEMOTO
 DIST_VERSION=0.29
-inherit perl-module toolchain-funcs
+inherit autotools perl-module toolchain-funcs
 
 DESCRIPTION="IPv6 related part of the C socket.h defines and structure manipulators"
 
@@ -15,9 +15,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.290.0-pointer-warning.patch
+	"${FILESDIR}"/${PN}-0.290.0-which.patch
 )
 
 src_unpack() {
 	default
 	tc-export CC
+}
+
+src_prepare () {
+	default
+	eautoreconf
 }
