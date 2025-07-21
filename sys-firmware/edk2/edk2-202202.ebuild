@@ -24,7 +24,7 @@ SRC_URI="https://github.com/tianocore/edk2/archive/edk2-stable${PV}.tar.gz -> ed
 	https://github.com/google/brotli/archive/${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz -> brotli-${BUNDLED_BROTLI_SUBMODULE_SHA}.tar.gz
 	https://dev.gentoo.org/~ajak/distfiles/edk2-ovmf-${PV}-qemu-firmware.tar.xz"
 
-LICENSE="BSD-2 MIT"
+LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
 KEYWORDS="-* amd64"
 
