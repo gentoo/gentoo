@@ -136,7 +136,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
-	sysprof? ( >=dev-util/sysprof-capture-3.38.0 )
+	sysprof? ( >=dev-util/sysprof-capture-3.38.0[${MULTILIB_USEDEP}] )
 	video_cards_d3d12? ( >=dev-util/directx-headers-1.614.1[${MULTILIB_USEDEP}] )
 	valgrind? ( dev-debug/valgrind )
 	wayland? ( >=dev-libs/wayland-protocols-1.41 )
