@@ -50,7 +50,7 @@ src_prepare() {
 		-i CMakeLists.txt || die "fix doc path failed"
 
 	# bug #862900, already reported upstream. CHECK on updates!
-	filter-lto
+	use fortran && filter-lto
 
 	cmake_src_prepare
 }
