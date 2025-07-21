@@ -1,0 +1,74 @@
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 6269787..9566e6b 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -36,7 +36,6 @@
+ #]]
+ 
+ find_package(Doxygen REQUIRED)
+-find_program(GENHTML_BIN genhtml REQUIRED)
+ find_program(SPHINX_BIN sphinx-build REQUIRED)
+ 
+ file(GLOB_RECURSE bf_srcs
+@@ -114,10 +113,6 @@ add_custom_command(
+ 	# Update the modification time of the documentation's index, so the
+ 	# benchmark report will be generated (as external/benchmarks/index.html is
+ 	# now out-of-date).
+-	COMMAND
+-		${CMAKE_COMMAND}
+-			-E touch
+-			${CMAKE_CURRENT_BINARY_DIR}/html/external/benchmarks/index.html
+ 	DEPENDS
+ 		${CMAKE_CURRENT_BINARY_DIR}/conf.py
+ 		${CMAKE_CURRENT_BINARY_DIR}/xml/index.xml
+@@ -127,36 +122,7 @@ add_custom_command(
+ 	COMMENT "Generating the documentation"
+ )
+ 
+-add_custom_command(
+-	COMMAND
+-		${CMAKE_CURRENT_SOURCE_DIR}/benchreport
+-			--sources ${CMAKE_SOURCE_DIR}
+-			--results ${CMAKE_BINARY_DIR}/output/benchmarks
+-			--template ${CMAKE_CURRENT_SOURCE_DIR}/benchmarks.html.template
+-			--output ${CMAKE_CURRENT_BINARY_DIR}/html/external/benchmarks/index.html
+-	DEPENDS
+-		${CMAKE_CURRENT_SOURCE_DIR}/benchreport
+-		${CMAKE_CURRENT_BINARY_DIR}/html/index.html
+-		${CMAKE_CURRENT_SOURCE_DIR}/benchmarks.html.template
+-	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/html/external/benchmarks/index.html
+-	COMMENT "Generate the benchmarks summary"
+-)
+-
+-add_custom_command(
+-	COMMAND
+-		${CMAKE_CURRENT_SOURCE_DIR}/covreport
+-			--genhtml ${GENHTML_BIN}
+-			--tracefile ${CMAKE_BINARY_DIR}/output/tests/lcov.out
+-			--output ${CMAKE_CURRENT_BINARY_DIR}/html/external/coverage
+-	DEPENDS
+-		${CMAKE_CURRENT_SOURCE_DIR}/covreport
+-		${CMAKE_CURRENT_BINARY_DIR}/html/index.html
+-	OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/html/external/coverage/index.html
+-	COMMENT "Generate the coverage report"
+-)
+-
+ add_custom_target(doc
+ 	DEPENDS
+-		${CMAKE_CURRENT_BINARY_DIR}/html/external/benchmarks/index.html
+-		${CMAKE_CURRENT_BINARY_DIR}/html/external/coverage/index.html
++		${CMAKE_CURRENT_BINARY_DIR}/html/index.html
+ )
+diff --git a/tests/unit/CMakeLists.txt b/tests/unit/CMakeLists.txt
+index 2f1a927..4caf7ba 100644
+--- a/tests/unit/CMakeLists.txt
++++ b/tests/unit/CMakeLists.txt
+@@ -207,7 +207,7 @@ add_custom_target(test
+     COMMENT "Running tests"
+ )
+ 
+-if (NOT ${NO_DOCS})
++if (FALSE)
+     include(ProcessorCount)
+     find_program(LCOV_BIN lcov REQUIRED)
+ 
