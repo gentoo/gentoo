@@ -43,7 +43,7 @@ BDEPEND="
 	)
 "
 
-EPYTEST_PLUGINS=( flaky pytest-{mock,xdist} )
+EPYTEST_PLUGINS=( pytest-{mock,rerunfailures,xdist} )
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -85,5 +85,5 @@ python_test() {
 			;;
 	esac
 
-	epytest
+	epytest -o addopts=
 }
