@@ -86,8 +86,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
 	eapply "${WORKDIR}/patch-${PV}"
+	default
 
 	local biendian=false
 
