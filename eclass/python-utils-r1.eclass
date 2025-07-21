@@ -1354,6 +1354,16 @@ _set_epytest_plugins() {
 	fi
 }
 
+# @ECLASS_VARIABLE: EPYTEST_RERUNS
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# If set to a non-empty value, enables pytest-rerunfailures plugin
+# and sets rerun count to the specified value.  This variable can be
+# either set in ebuilds with flaky tests, or by user to try if it helps.
+# If this variable is set prior to calling distutils_enable_tests
+# in distutils-r1, a test dependency on dev-python/pytest-rerunfailures
+# is added automatically.
+
 # @ECLASS_VARIABLE: EPYTEST_TIMEOUT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -1514,6 +1524,18 @@ epytest() {
 			-p no:tavern
 			# does something to logging
 			-p no:salt-factories
+		)
+	fi
+
+	if [[ -n ${EPYTEST_RERUNS} ]]; then
+		if [[ ${PYTEST_PLUGINS} != *pytest_rerunfailures* ]]; then
+			args+=(
+				-p rerunfailures
+			)
+		fi
+
+		args+=(
+			"--reruns=${EPYTEST_RERUNS}"
 		)
 	fi
 
