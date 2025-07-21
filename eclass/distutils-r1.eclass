@@ -554,6 +554,9 @@ distutils_enable_tests() {
 			;&
 		pytest)
 			test_pkgs+=' >=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
+			if [[ -n ${EPYTEST_RERUNS} ]]; then
+				test_pkgs+=' dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]'
+			fi
 			if [[ -n ${EPYTEST_TIMEOUT} ]]; then
 				test_pkgs+=' dev-python/pytest-timeout[${PYTHON_USEDEP}]'
 			fi
