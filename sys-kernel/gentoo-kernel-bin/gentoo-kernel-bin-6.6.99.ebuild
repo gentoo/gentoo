@@ -85,11 +85,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	cd "${MY_P}" || die
-	default
-	eapply "${WORKDIR}/patch-${PV}"
-
 	local patch
+	cd "${MY_P}" || die
+	eapply "${WORKDIR}/patch-${PV}"
 	for patch in "${WORKDIR}/${PATCHSET}"/*.patch; do
 		eapply "${patch}"
 		# non-experimental patches always finish with Gentoo Kconfig
@@ -99,6 +97,8 @@ src_prepare() {
 			break
 		fi
 	done
+
+	default
 }
 
 src_configure() {
