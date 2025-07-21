@@ -1,0 +1,23 @@
+Bug: https://bugs.gentoo.org/954831
+--- a/configure.in
++++ b/configure.in
+@@ -35,7 +35,7 @@
+ AC_PROG_CC
+ 
+ changequote(<<, >>)
+-default_perl_path=`which perl | sed -e 's/\/\/*[^\/]*$//'`
++default_perl_path=`command -v perl | sed -e 's/\/\/*[^\/]*$//'`
+ changequote([,])
+ 
+ AC_ARG_WITH(perl,[  --with-perl=path-to-perl],
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -34,7 +34,7 @@
+     configure_mswin32();
+ } else {
+     local $ENV{TMPDIR} = $ENV{TMPDIR};
+-    my $path_perl = ($^X =~ m!^/!o) ? $^X : `which $^X`;
++    my $path_perl = ($^X =~ m!^/!o) ? $^X : `command -v $^X`;
+     my $cmd = "CC='$Config{cc}' CFLAGS='$Config{ccflags}'";
+     if ($^O eq 'android') {
+         # Work around a bug in Android's sh:
