@@ -28,20 +28,13 @@ RESTRICT="test"
 BDEPEND="
 	test? (
 		dev-python/aiohttp[${PYTHON_USEDEP}]
-		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/httpx[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-httpserver[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 		dev-python/urllib3[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{asyncio,httpserver,rerunfailures} )
 distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p asyncio -p pytest_httpserver
-}
