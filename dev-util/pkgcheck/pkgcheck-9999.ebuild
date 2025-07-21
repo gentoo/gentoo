@@ -56,6 +56,7 @@ BDEPEND="${RDEPEND}
 
 SITEFILE="50${PN}-gentoo.el"
 
+EPYTEST_PLUGINS=( pkgcore )
 distutils_enable_tests pytest
 
 export USE_SYSTEM_TREE_SITTER_BASH=1

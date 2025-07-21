@@ -1,0 +1,66 @@
+Subject: [PATCH] bash: update support to tree-sitter~=0.25
+
+Also add backward compatible code for tree-sitter < 0.25.
+
+Signed-off-by: Arthur Zamarin <arthurzam@gentoo.org>
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -6,7 +6,7 @@ requires = [
+ 	"lazy-object-proxy",
+ 	"lxml",
+ 	"pathspec",
+-	"tree-sitter~=0.24.0",
++	"tree-sitter~=0.25.0",
+ 	"tree-sitter-bash~=0.23.1",
+ 	"snakeoil~=0.10.11",
+ 	"pkgcore~=0.12.30",
+@@ -45,7 +45,7 @@ dependencies = [
+ 	"lazy-object-proxy",
+ 	"lxml",
+ 	"pathspec",
+-	"tree-sitter~=0.24.0",
++	"tree-sitter~=0.25.0",
+ 	"tree-sitter-bash~=0.23.1",
+ 	"snakeoil~=0.10.11",
+ 	"pkgcore~=0.12.30",
+--- a/src/pkgcheck/bash/__init__.py
++++ b/src/pkgcheck/bash/__init__.py
+@@ -6,7 +6,17 @@ import tree_sitter_bash
+ from tree_sitter import Language, Parser, Query
+
+ lang = Language(tree_sitter_bash.language())
+-query = lang.query
++
++try:
++    from tree_sitter import QueryCursor
++
++    def query(query_str: str) -> "QueryCursor":
++        return QueryCursor(Query(lang, query_str))
++except ImportError:  # tree-sitter < 0.25
++    QueryCursor = Query
++    query = lang.query
++
++
+ parser = Parser(language=lang)
+
+ # various parse tree queries
+@@ -29,14 +39,14 @@ class ParseTree:
+         """Return the ebuild string associated with a given parse tree node."""
+         return self.data[node.start_byte : node.end_byte].decode("utf8")
+
+-    def global_query(self, query: Query):
++    def global_query(self, query: QueryCursor):
+         """Run a given parse tree query returning only those nodes in global scope."""
+         for x in self.tree.root_node.children:
+             # skip nodes in function scope
+             if x.type != "function_definition":
+                 yield from chain.from_iterable(query.captures(x).values())
+
+-    def func_query(self, query: Query):
++    def func_query(self, query: QueryCursor):
+         """Run a given parse tree query returning only those nodes in function scope."""
+         for x in self.tree.root_node.children:
+             # only return nodes in function scope
+--
+2.50.1
+
