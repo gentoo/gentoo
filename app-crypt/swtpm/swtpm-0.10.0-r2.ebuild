@@ -22,12 +22,12 @@ RESTRICT="!test? ( test )"
 # pkcs11 in gnutls: https://github.com/stefanberger/swtpm/issues/477.
 
 RDEPEND="fuse? (
-		dev-libs/glib:2
 		sys-fs/fuse:0
 	)
 	seccomp? ( sys-libs/libseccomp )
 	acct-group/tss
 	acct-user/tss
+	dev-libs/glib:2
 	dev-libs/gmp:=
 	dev-libs/openssl:=
 	dev-libs/json-glib
