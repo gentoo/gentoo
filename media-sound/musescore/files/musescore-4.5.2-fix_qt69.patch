@@ -1,0 +1,685 @@
+Fix compile with QT6.9 :
+https://github.com/musescore/MuseScore/pull/27516.patch
+Commits from https://github.com/musescore/MuseScore/pull/25016.patch :
+https://github.com/musescore/MuseScore/commit/336acff4d7e7ebe2ef5496b468939748940df340.patch
+https://github.com/musescore/MuseScore/commit/3c20911a50384d0a785eb7eb4ca95a4bb1af4e84.patch
+https://github.com/musescore/MuseScore/commit/5400e8af196fa8f19f5355cb60b7fa9d5a5aa121.patch
+https://github.com/musescore/MuseScore/commit/90175fffcd833b93aeed862a821a1b73a5a09a29.patch
+https://github.com/musescore/MuseScore/commit/a80a12189be1f94e2df8564663bcd6dcf60e3759.patch
+https://github.com/musescore/MuseScore/commit/c537785a6ff098ffd8a87597a0d073e40794afe7.patch
+https://github.com/musescore/MuseScore/commit/e4b2b52b2b6fe8414623380108e2cf1557447219.patch
+
+Fix main issues with QT6.9 :
+https://github.com/musescore/MuseScore/pull/28190.patch
+https://github.com/musescore/MuseScore/pull/28461.patch
+https://github.com/musescore/MuseScore/pull/28571.patch
+
+
+From 336acff4d7e7ebe2ef5496b468939748940df340 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Mon, 28 Apr 2025 03:35:06 +0200
+Subject: [PATCH] Patch KDDockWidgets and dockwindow module for Qt 6.5+
+
+Resolves: https://github.com/musescore/MuseScore/issues/24866
+---
+ src/framework/dockwindow/internal/dockbase.cpp                  | 2 +-
+ src/framework/dockwindow/qml/Muse/Dock/DockToolBar.qml          | 2 ++
+ .../KDDockWidgets/src/private/quick/QWidgetAdapter_quick.cpp    | 2 ++
+ src/framework/dockwindow/view/dockpageview.cpp                  | 1 +
+ src/framework/dockwindow/view/dockwindow.cpp                    | 1 +
+ 5 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/framework/dockwindow/internal/dockbase.cpp b/src/framework/dockwindow/internal/dockbase.cpp
+index b85589523e7c2..b3af29cd6bf58 100644
+--- a/src/framework/dockwindow/internal/dockbase.cpp
++++ b/src/framework/dockwindow/internal/dockbase.cpp
+@@ -449,8 +449,8 @@ void DockBase::open()
+         return;
+     }
+ 
+-    m_dockWidget->show();
+     setVisible(true);
++    m_dockWidget->show();
+ 
+     applySizeConstraints();
+ }
+diff --git a/src/framework/dockwindow/qml/Muse/Dock/DockToolBar.qml b/src/framework/dockwindow/qml/Muse/Dock/DockToolBar.qml
+index 8c73ca360549f..da7e07809fcef 100644
+--- a/src/framework/dockwindow/qml/Muse/Dock/DockToolBar.qml
++++ b/src/framework/dockwindow/qml/Muse/Dock/DockToolBar.qml
+@@ -97,6 +97,8 @@ DockToolBarView {
+ 
+         Loader {
+             id: contentLoader
++
++            active: root.visible
+         }
+     }
+ 
+diff --git a/src/framework/dockwindow/thirdparty/KDDockWidgets/src/private/quick/QWidgetAdapter_quick.cpp b/src/framework/dockwindow/thirdparty/KDDockWidgets/src/private/quick/QWidgetAdapter_quick.cpp
+index 08b0dfedc38f0..20a55d85168a2 100644
+--- a/src/framework/dockwindow/thirdparty/KDDockWidgets/src/private/quick/QWidgetAdapter_quick.cpp
++++ b/src/framework/dockwindow/thirdparty/KDDockWidgets/src/private/quick/QWidgetAdapter_quick.cpp
+@@ -357,6 +357,8 @@ QPoint QWidgetAdapter::pos() const
+ void QWidgetAdapter::show()
+ {
+     setVisible(true);
++    QShowEvent ev;
++    event(&ev);
+ }
+ 
+ void QWidgetAdapter::setFixedHeight(int height)
+diff --git a/src/framework/dockwindow/view/dockpageview.cpp b/src/framework/dockwindow/view/dockpageview.cpp
+index e0bbd6227e96c..89aa65a7d6e18 100644
+--- a/src/framework/dockwindow/view/dockpageview.cpp
++++ b/src/framework/dockwindow/view/dockpageview.cpp
+@@ -54,6 +54,7 @@ void DockPageView::init()
+     TRACEFUNC;
+ 
+     for (DockBase* dock : allDocks()) {
++        dock->setParentItem(this);
+         dock->init();
+ 
+         connect(dock, &DockBase::floatingChanged, [this](){
+diff --git a/src/framework/dockwindow/view/dockwindow.cpp b/src/framework/dockwindow/view/dockwindow.cpp
+index 8446ecc5cb830..91a2068120ea7 100644
+--- a/src/framework/dockwindow/view/dockwindow.cpp
++++ b/src/framework/dockwindow/view/dockwindow.cpp
+@@ -731,6 +731,7 @@ void DockWindow::initDocks(DockPageView* page)
+     adjustContentForAvailableSpace(page);
+ 
+     for (DockToolBarView* toolbar : m_toolBars.list()) {
++        toolbar->setParentItem(this);
+         toolbar->init();
+     }
+ 
+From 3c20911a50384d0a785eb7eb4ca95a4bb1af4e84 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Fri, 4 Oct 2024 21:32:32 +0200
+Subject: [PATCH] Start using QStringLiterals
+
+---
+ src/framework/global/tests/string_tests.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/framework/global/tests/string_tests.cpp b/src/framework/global/tests/string_tests.cpp
+index f9af9b9624742..cd35e5c636395 100644
+--- a/src/framework/global/tests/string_tests.cpp
++++ b/src/framework/global/tests/string_tests.cpp
+@@ -34,6 +34,8 @@
+ 
+ using namespace muse;
+ 
++using namespace Qt::Literals::StringLiterals;
++
+ class Global_Types_StringTests : public ::testing::Test
+ {
+ public:
+@@ -88,7 +90,7 @@ TEST_F(Global_Types_StringTests, String_Construct)
+ 
+     {
+         //! GIVEN Some QString
+-        QString qstr = "123abcПыф";
++        QString qstr = u"123abcПыф"_s;
+         //! DO
+         String str = qstr;
+         //! CHECK
+@@ -106,7 +108,7 @@ TEST_F(Global_Types_StringTests, String_Convert)
+ {
+     {
+         //! GIVEN Some QString
+-        QString qstr_origin = "123abcПыф";
++        QString qstr_origin = u"123abcПыф"_s;
+         //! DO
+         String str = String::fromQString(qstr_origin);
+         //! CHECK
+From 5400e8af196fa8f19f5355cb60b7fa9d5a5aa121 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Sat, 14 May 2022 15:53:06 +0200
+Subject: [PATCH] Don't use deprecated constructor of QMouseEvent
+
+It was deprecated in Qt 6.4. Basically, just need to specify `globalPos`
+---
+ src/framework/uicomponents/view/widgetview.cpp           | 1 +
+ src/notation/tests/notationviewinputcontroller_tests.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/framework/uicomponents/view/widgetview.cpp b/src/framework/uicomponents/view/widgetview.cpp
+index cab9e151dad76..5f4497e7fb258 100644
+--- a/src/framework/uicomponents/view/widgetview.cpp
++++ b/src/framework/uicomponents/view/widgetview.cpp
+@@ -90,6 +90,7 @@ bool WidgetView::handleHoverEvent(QHoverEvent* event)
+ 
+     if (convertedType == QEvent::MouseMove) {
+         QMouseEvent mouseEvent(convertedType, event->position(),
++                               event->scenePosition(), event->globalPosition(),
+                                Qt::NoButton, Qt::NoButton, event->modifiers());
+         mouseEvent.setAccepted(event->isAccepted());
+         mouseEvent.setTimestamp(event->timestamp());
+diff --git a/src/notation/tests/notationviewinputcontroller_tests.cpp b/src/notation/tests/notationviewinputcontroller_tests.cpp
+index 30acded5a0681..c0c19c640c69d 100644
+--- a/src/notation/tests/notationviewinputcontroller_tests.cpp
++++ b/src/notation/tests/notationviewinputcontroller_tests.cpp
+@@ -120,7 +120,7 @@ class NotationViewInputControllerTests : public ::testing::Test
+         Qt::KeyboardModifiers modifiers = Qt::NoModifier,
+         QPointF pos = QPointF(100, 100)) const
+     {
+-        QMouseEvent* ev = new QMouseEvent(QMouseEvent::Type::MouseButtonPress, pos, button, {}, modifiers);
++        QMouseEvent* ev = new QMouseEvent(QMouseEvent::Type::MouseButtonPress, pos, pos, button, {}, modifiers);
+ 
+         m_events << ev;
+ 
+From 90175fffcd833b93aeed862a821a1b73a5a09a29 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Sun, 27 Apr 2025 23:37:10 +0200
+Subject: [PATCH] Fix context menu with Qt 6.9 (?)
+
+Besides a mouse press event with the right mouse button, we now also receive a QContextMenuEvent.
+---
+ .../notationviewinputcontroller_tests.cpp      | 18 ++++++------------
+ .../view/abstractnotationpaintview.cpp         |  9 ++++++---
+ .../view/notationviewinputcontroller.cpp       |  3 ++-
+ 3 files changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/src/notation/tests/notationviewinputcontroller_tests.cpp b/src/notation/tests/notationviewinputcontroller_tests.cpp
+index c0c19c640c69d..029261581283f 100644
+--- a/src/notation/tests/notationviewinputcontroller_tests.cpp
++++ b/src/notation/tests/notationviewinputcontroller_tests.cpp
+@@ -815,8 +815,7 @@ TEST_F(NotationViewInputControllerTests, Mouse_Press_On_Range_Context_Menu)
+     .WillOnce(ReturnRef(selectMeasureContext))
+     //! right button click
+     .WillOnce(ReturnRef(selectMeasureContext))
+-    .WillOnce(ReturnRef(contextMenuOnMeasureContext))
+-    .WillOnce(ReturnRef(contextMenuOnMeasureContext)); // for context menu
++    .WillOnce(ReturnRef(contextMenuOnMeasureContext));
+ 
+     //! [GIVEN] No note enter mode, no playing
+     EXPECT_CALL(m_view, isNoteEnterMode())
+@@ -851,15 +850,13 @@ TEST_F(NotationViewInputControllerTests, Mouse_Press_On_Range_Context_Menu)
+     EXPECT_CALL(*m_selection, elements())
+     .WillRepeatedly(ReturnRef(selectElements));
+ 
+-    //! [THEN] Show context menu for measure
+-    EXPECT_CALL(m_view, showContextMenu(contextMenuOnMeasureContext.element->type(), _))
+-    .Times(1);
+-
+     //! [WHEN] User pressed left mouse button with ShiftModifier on the new measure
+     m_controller->mousePressEvent(make_mousePressEvent(Qt::LeftButton, Qt::ShiftModifier, QPoint(100, 100)));
+ 
+     //! [WHEN] User pressed right mouse button with NoModifier on the selected measure
+     m_controller->mousePressEvent(make_mousePressEvent(Qt::RightButton, Qt::NoModifier, QPoint(100, 100)));
++
++    //! Note: the context menu itself is shown by AbstractNotationPaintView::event
+ }
+ 
+ /**
+@@ -900,8 +897,7 @@ TEST_F(NotationViewInputControllerTests, Mouse_Press_On_Range_Context_Menu_New_S
+     .WillOnce(ReturnRef(selectMeasureContext))
+     //! right button click
+     .WillOnce(ReturnRef(selectMeasureContext))
+-    .WillOnce(ReturnRef(contextMenuOnMeasureContext))
+-    .WillOnce(ReturnRef(contextMenuOnMeasureContext));     // for context menu
++    .WillOnce(ReturnRef(contextMenuOnMeasureContext));
+ 
+     //! [GIVEN] No note enter mode, no playing
+     EXPECT_CALL(m_view, isNoteEnterMode())
+@@ -940,13 +936,11 @@ TEST_F(NotationViewInputControllerTests, Mouse_Press_On_Range_Context_Menu_New_S
+     EXPECT_CALL(*m_playbackController, seekElement(contextMenuOnMeasureContext.element))
+     .WillOnce(Return());
+ 
+-    //! [THEN] Show context menu for new measure
+-    EXPECT_CALL(m_view, showContextMenu(contextMenuOnMeasureContext.element->type(), _))
+-    .Times(1);
+-
+     //! [WHEN] User pressed left mouse button with ShiftModifier on the new measure
+     m_controller->mousePressEvent(make_mousePressEvent(Qt::LeftButton, Qt::ShiftModifier, QPoint(100, 100)));
+ 
+     //! [WHEN] User pressed right mouse button with NoModifier on the selected measure
+     m_controller->mousePressEvent(make_mousePressEvent(Qt::RightButton, Qt::NoModifier, QPoint(100, 100)));
++
++    //! Note: the context menu itself is shown by AbstractNotationPaintView::event
+ }
+diff --git a/src/notation/view/abstractnotationpaintview.cpp b/src/notation/view/abstractnotationpaintview.cpp
+index fa50167142ae0..c7e9ad8d53c26 100644
+--- a/src/notation/view/abstractnotationpaintview.cpp
++++ b/src/notation/view/abstractnotationpaintview.cpp
+@@ -549,7 +549,7 @@ void AbstractNotationPaintView::showContextMenu(const ElementType& elementType,
+         _pos = QPointF(width() / 2, height() / 2);
+     }
+ 
+-    emit showContextMenuRequested(static_cast<int>(elementType), pos);
++    emit showContextMenuRequested(static_cast<int>(elementType), _pos);
+ }
+ 
+ void AbstractNotationPaintView::hideContextMenu()
+@@ -1231,8 +1231,11 @@ bool AbstractNotationPaintView::event(QEvent* event)
+                                || eventType == QEvent::Type::ContextMenu) && hasFocus();
+ 
+     if (isContextMenuEvent) {
+-        showContextMenu(m_inputController->selectionType(),
+-                        fromLogical(m_inputController->selectionElementPos()).toQPointF());
++        QContextMenuEvent* contextMenuEvent = dynamic_cast<QContextMenuEvent*>(event);
++        QPointF pos = contextMenuEvent && !contextMenuEvent->pos().isNull()
++                      ? mapFromGlobal(contextMenuEvent->globalPos())
++                      : fromLogical(m_inputController->selectionElementPos()).toQPointF();
++        showContextMenu(m_inputController->selectionType(), pos);
+     } else if (eventType == QEvent::Type::ShortcutOverride) {
+         bool shouldOverrideShortcut = shortcutOverride(keyEvent);
+ 
+From a80a12189be1f94e2df8564663bcd6dcf60e3759 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Fri, 4 Oct 2024 00:00:33 +0200
+Subject: [PATCH] Fix size of tooltips and tours
+
+---
+ .../tours/qml/Muse/Tours/ToursProvider.qml         |  7 -------
+ .../qml/Muse/Tours/internal/TourStepPopup.qml      | 14 ++++++--------
+ src/framework/ui/qml/Muse/Ui/ToolTipProvider.qml   |  7 -------
+ .../qml/Muse/UiComponents/StyledToolTip.qml        | 14 ++++++--------
+ 4 files changed, 12 insertions(+), 30 deletions(-)
+
+diff --git a/src/framework/tours/qml/Muse/Tours/ToursProvider.qml b/src/framework/tours/qml/Muse/Tours/ToursProvider.qml
+index f6832777df380..8522b5e86a779 100644
+--- a/src/framework/tours/qml/Muse/Tours/ToursProvider.qml
++++ b/src/framework/tours/qml/Muse/Tours/ToursProvider.qml
+@@ -62,11 +62,6 @@ Item {
+             }
+         }
+ 
+-        onLoaded: {
+-            var tourStepPopup = tourStepLoader.item
+-            tourStepPopup.calculateSize()
+-        }
+-
+         function loadTourStepPopup() {
+             tourStepLoader.active = true
+         }
+@@ -107,8 +102,6 @@ Item {
+             tourStepPopup.videoExplanationUrl = videoExplanationUrl
+             tourStepPopup.index = index
+             tourStepPopup.total = total
+-
+-            tourStepPopup.calculateSize()
+         }
+     }
+ 
+diff --git a/src/framework/tours/qml/Muse/Tours/internal/TourStepPopup.qml b/src/framework/tours/qml/Muse/Tours/internal/TourStepPopup.qml
+index 4f97817333b89..cb10bf292ec5b 100644
+--- a/src/framework/tours/qml/Muse/Tours/internal/TourStepPopup.qml
++++ b/src/framework/tours/qml/Muse/Tours/internal/TourStepPopup.qml
+@@ -35,6 +35,12 @@ StyledPopupView {
+     property int index: 0
+     property int total: 0
+ 
++    contentWidth: Math.min(content.implicitWidth, 300 - margins * 2)
++    contentHeight: content.implicitHeight
++
++    x: root.parent.width / 2 - (contentWidth + padding * 2 + margins * 2) / 2
++    y: root.parent.height
++
+     padding: 8
+     margins: 12
+ 
+@@ -44,14 +50,6 @@ StyledPopupView {
+     signal hideRequested()
+     signal nextRequested()
+ 
+-    function calculateSize() {
+-        contentWidth = Math.min(content.implicitWidth, 300 - margins * 2)
+-        contentHeight = content.implicitHeight
+-
+-        x = root.parent.width / 2 - (contentWidth + padding * 2 + margins * 2) / 2
+-        y = root.parent.height
+-    }
+-
+     ColumnLayout {
+         id: content
+ 
+diff --git a/src/framework/ui/qml/Muse/Ui/ToolTipProvider.qml b/src/framework/ui/qml/Muse/Ui/ToolTipProvider.qml
+index dd87092972d26..5c9357d714637 100644
+--- a/src/framework/ui/qml/Muse/Ui/ToolTipProvider.qml
++++ b/src/framework/ui/qml/Muse/Ui/ToolTipProvider.qml
+@@ -44,11 +44,6 @@ Item {
+             }
+         }
+ 
+-        onLoaded: {
+-            var toolTip = toolTipLoader.item
+-            toolTip.calculateSize()
+-        }
+-
+         function loadToolTip() {
+             toolTipLoader.active = true
+         }
+@@ -85,8 +80,6 @@ Item {
+             toolTip.title = title
+             toolTip.description = description
+             toolTip.shortcut = shortcut
+-
+-            toolTip.calculateSize()
+         }
+     }
+ 
+diff --git a/src/framework/uicomponents/qml/Muse/UiComponents/StyledToolTip.qml b/src/framework/uicomponents/qml/Muse/UiComponents/StyledToolTip.qml
+index 98e1f1854d5f5..9aec84de8791a 100644
+--- a/src/framework/uicomponents/qml/Muse/UiComponents/StyledToolTip.qml
++++ b/src/framework/uicomponents/qml/Muse/UiComponents/StyledToolTip.qml
+@@ -32,6 +32,12 @@ StyledPopupView {
+     property alias description: descriptionLabel.text
+     property string shortcut: ""
+ 
++    contentWidth: Math.min(content.implicitWidth, 300 - margins * 2)
++    contentHeight: content.implicitHeight
++
++    x: root.parent.width / 2 - (contentWidth + padding * 2 + margins * 2) / 2
++    y: root.parent.height
++
+     padding: 8
+     margins: 8
+ 
+@@ -40,14 +46,6 @@ StyledPopupView {
+     //! NOTE: No navigation needed for tooltip
+     navigationSection: null
+ 
+-    function calculateSize() {
+-        contentWidth = Math.min(content.implicitWidth, 300 - margins * 2)
+-        contentHeight = content.implicitHeight
+-
+-        x = root.parent.width / 2 - (contentWidth + padding * 2 + margins * 2) / 2
+-        y = root.parent.height
+-    }
+-
+     ColumnLayout {
+         id: content
+ 
+From c537785a6ff098ffd8a87597a0d073e40794afe7 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Wed, 2 Apr 2025 23:02:47 +0200
+Subject: [PATCH] Build fixes for Qt 6.9
+
+---
+ src/palette/view/widgets/specialcharactersdialog.cpp | 2 +-
+
+diff --git a/src/palette/view/widgets/specialcharactersdialog.cpp b/src/palette/view/widgets/specialcharactersdialog.cpp
+index 2fe07bdb8f84e..96c0f6960fd4b 100644
+--- a/src/palette/view/widgets/specialcharactersdialog.cpp
++++ b/src/palette/view/widgets/specialcharactersdialog.cpp
+@@ -712,7 +712,7 @@ void SpecialCharactersDialog::populateUnicode()
+         std::shared_ptr<FSymbol> fs = std::make_shared<FSymbol>(gpaletteScore->dummy());
+         fs->setCode(code);
+         fs->setFont(m_font);
+-        m_pUnicode->appendElement(fs, QString("0x%1").arg(code, 5, 16, QLatin1Char('0')));
++        m_pUnicode->appendElement(fs, QString("0x%1").arg(static_cast<int>(code), 5, 16, u'0'));
+     }
+ }
+ 
+From e4b2b52b2b6fe8414623380108e2cf1557447219 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Sun, 16 Jun 2024 22:00:00 +0200
+Subject: [PATCH] Don't use deprecated QCheckBox::stateChanged
+
+It was deprecated during the Qt 6.8 beta phase, but it looks like this deprecation has been postponed to Qt 6.9.
+
+Anyway, there is now a better alternative called `checkStateChanged`, that uses `Qt::CheckState` instead of `int`.
+---
+ src/notation/view/widgets/editstyle.cpp   | 2 +-
+ src/palette/view/widgets/symboldialog.cpp | 4 ++--
+ src/palette/view/widgets/symboldialog.h   | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/notation/view/widgets/editstyle.cpp b/src/notation/view/widgets/editstyle.cpp
+index e021589cf5cb0..6e97c0ba301a8 100644
+--- a/src/notation/view/widgets/editstyle.cpp
++++ b/src/notation/view/widgets/editstyle.cpp
+@@ -1074,7 +1074,7 @@ EditStyle::EditStyle(QWidget* parent)
+         } else if (auto radioButton = qobject_cast<QRadioButton*>(sw.widget)) {
+             connect(radioButton, &QRadioButton::toggled, setSignalMapper, mapFunction);
+         } else if (auto checkBox = qobject_cast<QCheckBox*>(sw.widget)) {
+-            connect(checkBox, &QCheckBox::stateChanged, setSignalMapper, mapFunction);
++            connect(checkBox, &QCheckBox::checkStateChanged, setSignalMapper, mapFunction);
+         } else if (auto button = qobject_cast<QAbstractButton*>(sw.widget)) {
+             connect(button, &QAbstractButton::toggled, setSignalMapper, mapFunction);
+         } else if (auto groupBox = qobject_cast<QGroupBox*>(sw.widget)) {
+diff --git a/src/palette/view/widgets/symboldialog.cpp b/src/palette/view/widgets/symboldialog.cpp
+index aea1940ea27d4..1b27da75745e1 100644
+--- a/src/palette/view/widgets/symboldialog.cpp
++++ b/src/palette/view/widgets/symboldialog.cpp
+@@ -107,7 +107,7 @@ SymbolDialog::SymbolDialog(const QString& s, QWidget* parent)
+     m_symbolsWidget->setDrawGrid(true);
+     m_symbolsWidget->setSelectable(true);
+ 
+-    connect(systemFlag, &QCheckBox::stateChanged, this, &SymbolDialog::systemFlagChanged);
++    connect(systemFlag, &QCheckBox::checkStateChanged, this, &SymbolDialog::systemFlagChanged);
+     connect(fontList, &QComboBox::currentIndexChanged, this, &SymbolDialog::systemFontChanged);
+ 
+     symbolsArea->setWidget(m_symbolsWidget);
+@@ -120,7 +120,7 @@ SymbolDialog::SymbolDialog(const QString& s, QWidget* parent)
+ //   systemFlagChanged
+ //---------------------------------------------------------
+ 
+-void SymbolDialog::systemFlagChanged(int state)
++void SymbolDialog::systemFlagChanged(Qt::CheckState state)
+ {
+     bool sysFlag = state == Qt::Checked;
+     for (int i = 0; i < m_symbolsWidget->actualCellCount(); ++i) {
+diff --git a/src/palette/view/widgets/symboldialog.h b/src/palette/view/widgets/symboldialog.h
+index 9728b3616f6ce..3ea415e605e5a 100644
+--- a/src/palette/view/widgets/symboldialog.h
++++ b/src/palette/view/widgets/symboldialog.h
+@@ -46,7 +46,7 @@ class SymbolDialog : public QWidget, Ui::SymbolDialogBase
+     SymbolDialog(const QString&, QWidget* parent = 0);
+ 
+ private slots:
+-    void systemFlagChanged(int);
++    void systemFlagChanged(Qt::CheckState);
+     void systemFontChanged(int);
+     void on_search_textChanged(const QString& searchPhrase);
+     void on_clearSearch_clicked();
+From 05056ed19520060c3912a09a3adfa0927057f956 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Wed, 2 Apr 2025 22:34:40 +0200
+Subject: [PATCH 1/2] Fix probable bug in BWW lexer
+
+Was trying to intialise the `QString value` member with `NONE`, which is an enum case / integer. Initialising a QString with an integer has become more and more difficult over the Qt versions, and when updating to Qt 6.2, we fixed it by casting to QChar first. But with Qt 6.9, even that causes compile errors, so I took another look at it. That revealed that it is much more likely that the intention was to initialise not `QString value`, but `Symbol type`.
+---
+ src/importexport/bww/internal/bww/lexer.cpp |  4 +---
+ src/importexport/bww/internal/bww/lexer.h   | 12 ++++--------
+ src/importexport/bww/internal/bww/symbols.h | 12 ++++--------
+ 3 files changed, 9 insertions(+), 19 deletions(-)
+
+diff --git a/src/importexport/bww/internal/bww/lexer.cpp b/src/importexport/bww/internal/bww/lexer.cpp
+index 84bc924b7e3d9..26fe66472625b 100644
+--- a/src/importexport/bww/internal/bww/lexer.cpp
++++ b/src/importexport/bww/internal/bww/lexer.cpp
+@@ -40,9 +40,7 @@ namespace Bww {
+    */
+ 
+ Lexer::Lexer(QIODevice* inDevice)
+-    : in(inDevice),
+-    lineNumber(-1),
+-    value(QChar(NONE))
++    : in(inDevice)
+ {
+     LOGD() << "Lexer::Lexer() begin";
+ 
+diff --git a/src/importexport/bww/internal/bww/lexer.h b/src/importexport/bww/internal/bww/lexer.h
+index 8e1a54c4efe13..598c0841c57ec 100644
+--- a/src/importexport/bww/internal/bww/lexer.h
++++ b/src/importexport/bww/internal/bww/lexer.h
+@@ -19,9 +19,7 @@
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  */
+-
+-#ifndef LEXER_H
+-#define LEXER_H
++#pragma once
+ 
+ /**
+  \file
+@@ -54,12 +52,10 @@ class Lexer
+     void categorizeWord(QString word);
+     QTextStream in;                     ///< Input stream
+     QString line;                       ///< The current line
+-    int lineNumber;                     ///< The current line number (zero-based)
++    int lineNumber = -1;                ///< The current line number (zero-based)
+     QStringList list;                   ///< Unprocessed words
+-    Symbol type;                        ///< Last symbol type
++    Symbol type = NONE;                 ///< Last symbol type
+     QString value;                      ///< Last symbol value
+     QMap<QString, QString> graceMap;    ///< Map bww embellishments to separate grace notes
+ };
+-} // namespace Bww
+-
+-#endif // LEXER_H
++}
+diff --git a/src/importexport/bww/internal/bww/symbols.h b/src/importexport/bww/internal/bww/symbols.h
+index 90ea6937370fc..8b13b7c4a15cf 100644
+--- a/src/importexport/bww/internal/bww/symbols.h
++++ b/src/importexport/bww/internal/bww/symbols.h
+@@ -19,9 +19,7 @@
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  */
+-
+-#ifndef SYMBOLS_H
+-#define SYMBOLS_H
++#pragma once
+ 
+ /**
+  \file
+@@ -29,7 +27,7 @@
+  */
+ 
+ namespace Bww {
+-enum Symbol
++enum Symbol : unsigned char
+ {
+     COMMENT,
+     HEADER,
+@@ -49,7 +47,7 @@ enum Symbol
+     NONE
+ };
+ 
+-enum class StartStop
++enum class StartStop : unsigned char
+ {
+     ST_NONE,
+     ST_START,
+@@ -58,6 +56,4 @@ enum class StartStop
+ };
+ 
+ extern QString symbolToString(Symbol s);
+-} // namespace Bww
+-
+-#endif // SYMBOLS_H
++}
+
+From 036d7317b7d95d68701374b03246f967505f4d19 Mon Sep 17 00:00:00 2001
+From: Casper Jeukendrup <48658420+cbjeukendrup@users.noreply.github.com>
+Date: Thu, 3 Apr 2025 22:46:34 +0200
+Subject: [PATCH 2/2] Fix compiler warning
+
+---
+ src/importexport/bww/internal/bww/symbols.cpp | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/src/importexport/bww/internal/bww/symbols.cpp b/src/importexport/bww/internal/bww/symbols.cpp
+index 366b94d66dcf8..54eb58a4d3b57 100644
+--- a/src/importexport/bww/internal/bww/symbols.cpp
++++ b/src/importexport/bww/internal/bww/symbols.cpp
+@@ -29,7 +29,7 @@
+ #include "symbols.h"
+ 
+ namespace Bww {
+-static const char* symTable[] =
++static constexpr const char* symTable[] =
+ {
+     "COMMENT",
+     "HEADER",
+@@ -51,13 +51,10 @@ static const char* symTable[] =
+ 
+ QString symbolToString(Symbol s)
+ {
+-    if (s < 0) {
++    if (static_cast<size_t>(s) >= sizeof symTable) {
+         return "INVALID";
+     }
+-    if (static_cast<unsigned>(s) > sizeof symTable) {
+-        return "INVALID";
+-    } else {
+-        return symTable[s];
+-    }
++
++    return symTable[s];
+ }
+ } // namespace Bww
+From 12c8b54e1904df300494009724660692d3ad8117 Mon Sep 17 00:00:00 2001
+From: krasko <154632626+krasko78@users.noreply.github.com>
+Date: Thu, 29 May 2025 21:44:40 +0200
+Subject: [PATCH] 28131: Fix Mixer not loading properly on startup
+
+---
+ .../qml/MuseScore/Playback/internal/MixerPanelSection.qml       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/playback/qml/MuseScore/Playback/internal/MixerPanelSection.qml b/src/playback/qml/MuseScore/Playback/internal/MixerPanelSection.qml
+index 2f6c4dfe8f218..722444bee1305 100644
+--- a/src/playback/qml/MuseScore/Playback/internal/MixerPanelSection.qml
++++ b/src/playback/qml/MuseScore/Playback/internal/MixerPanelSection.qml
+@@ -78,7 +78,7 @@ Loader {
+             anchors.top: parent.top
+             anchors.topMargin: root.spacingAbove
+             width: contentItem.childrenRect.width
+-            height: contentHeight
++            height: Math.max(1, contentHeight) // HACK: if the height is 0, the listview won't create any delegates
+             contentHeight: contentItem.childrenRect.height
+ 
+             interactive: false
+From 733b5f63d677eaaa94c7ced3e142e75a06c51e00 Mon Sep 17 00:00:00 2001
+From: Igor <igor.korsukov@gmail.com>
+Date: Tue, 17 Jun 2025 11:24:16 +0200
+Subject: [PATCH] fixed open vst crash (force X11
+
+---
+ src/app/main.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/app/main.cpp b/src/app/main.cpp
+index d21d997e00863..28692ba165725 100644
+--- a/src/app/main.cpp
++++ b/src/app/main.cpp
+@@ -98,6 +98,11 @@ int main(int argc, char** argv)
+     if (qEnvironmentVariable("QT_QPA_PLATFORM") != "offscreen") {
+         qputenv("QT_QPA_PLATFORMTHEME", "gtk3");
+     }
++
++    //! NOTE Forced X11, with Wayland there are a number of problems now
++    if (qEnvironmentVariable("QT_QPA_PLATFORM") == "") {
++        qputenv("QT_QPA_PLATFORM", "xcb");
++    }
+ #endif
+ 
+ #ifdef Q_OS_WIN
+From 5df0bc04e7c1fff594357e759fb249dfb3ae0a49 Mon Sep 17 00:00:00 2001
+From: Michele Spagnolo <m.spagnolo@mu.se>
+Date: Tue, 24 Jun 2025 16:27:00 +0200
+Subject: [PATCH] Fix SVG export
+
+---
+ src/importexport/imagesexport/internal/svggenerator.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/importexport/imagesexport/internal/svggenerator.cpp b/src/importexport/imagesexport/internal/svggenerator.cpp
+index 52224db9f7c76..8b583d0eda824 100644
+--- a/src/importexport/imagesexport/internal/svggenerator.cpp
++++ b/src/importexport/imagesexport/internal/svggenerator.cpp
+@@ -1201,7 +1201,7 @@ void SvgPaintEngine::updateState(const QPaintEngineState& s)
+     // Translations, SVG transform="translate()", are handled separately from
+     // other transformations such as rotation. Qt translates everything, but
+     // other transformations do occur, and must be handled here.
+-    QTransform t = s.transform();
++    QTransform t = s.painter()->transform();
+ 
+     // Tablature Note Text:
+     // m11 and m22 have floating point flotsam, for example: 1.000000629
