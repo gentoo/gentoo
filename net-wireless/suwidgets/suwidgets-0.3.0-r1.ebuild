@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,21 +8,19 @@ DESCRIPTION="graphical library containing all SigDigger's custom widgets"
 HOMEPAGE="https://github.com/BatchDrake/SuWidgets"
 SRC_URI="https://github.com/BatchDrake/SuWidgets/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/SuWidgets-${PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
 	media-libs/libglvnd
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
-
-S="${WORKDIR}/SuWidgets-${PV}"
 
 src_prepare() {
 	sed -i '/^#include <QPainter>/i #include <QPainterPath>' Waveform.cpp Waterfall.cpp	\
