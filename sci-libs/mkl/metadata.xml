@@ -17,9 +17,6 @@
 		capacities. The package is installed as binary and has a restrictive
 		license. Please see license terms and home page for proper use.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">oneapi-src/oneMKL</remote-id>
-	</upstream>
 	<use>
 		<flag name="gnu-openmp">
 			Install versions with GNU OpenMP (libgomp) support.
