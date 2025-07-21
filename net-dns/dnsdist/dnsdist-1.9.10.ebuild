@@ -49,6 +49,10 @@ RDEPEND="acct-group/dnsdist
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+pkg_setup() {
+	lua-single_pkg_setup
+}
+
 src_prepare() {
 	default
 
@@ -66,10 +70,10 @@ src_configure() {
 
 	local myeconfargs=(
 		--sysconfdir=/etc/dnsdist
-		--with-lua="${ELUA}"
-		--without-h2o
 		--enable-tls-providers
+		--with-lua="${ELUA}"
 		--without-gnutls
+		--without-h2o
 		$(use_with bpf ebpf)
 		$(use_with cdb cdb)
 		$(use_enable doh dns-over-https)
@@ -77,12 +81,12 @@ src_configure() {
 		$(use_enable dnscrypt)
 		$(use_enable dnstap)
 		$(use_enable ipcipher)
-		$(use_with lmdb )
+		$(use_with lmdb)
 		$(use_enable quic dns-over-quic)
 		$(use_with regex re2)
 		$(use_with snmp net-snmp)
 		$(use_enable ssl dns-over-tls)
-		$(use_enable systemd) \
+		$(use_enable systemd)
 		$(use_enable test unit-tests)
 		$(use_with xdp xsk)
 	)
