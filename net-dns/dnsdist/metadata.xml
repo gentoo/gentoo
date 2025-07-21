@@ -25,6 +25,7 @@
 		<flag name="ssl">Enable support for and encrypted client-server communication via <pkg>dev-libs/libsodium</pkg></flag>
 		<flag name="web">Enable support for the web UI</flag>
 		<flag name="xdp">Enable support for AF_XDP high performance packet processing</flag>
+		<flag name="yaml">Enable support for YAML configuration</flag>
 	</use>	
 	<upstream>
 		<remote-id type="github">PowerDNS/pdns</remote-id>
