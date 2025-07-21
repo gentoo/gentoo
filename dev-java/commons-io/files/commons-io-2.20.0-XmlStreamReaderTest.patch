@@ -1,0 +1,27 @@
+
+--- a/src/test/java/org/apache/commons/io/input/XmlStreamReaderTest.java
++++ b/src/test/java/org/apache/commons/io/input/XmlStreamReaderTest.java
+@@ -44,6 +44,7 @@ import java.util.Map;
+ import org.apache.commons.io.CharsetsTest;
+ import org.apache.commons.io.IOUtils;
+ import org.apache.commons.io.function.IOFunction;
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
+@@ -280,6 +281,7 @@ class XmlStreamReaderTest {
+         assertThrows(NullPointerException.class, () -> new XmlStreamReader((Path) null));
+     }
+ 
++    @Disabled
+     @Test
+     protected void testConstructorURLConnectionInput() throws IOException {
+         try (XmlStreamReader reader = new XmlStreamReader(new URL("https://www.apache.org/").openConnection(), UTF_8)) {
+@@ -292,6 +294,7 @@ class XmlStreamReaderTest {
+         assertThrows(NullPointerException.class, () -> new XmlStreamReader((URLConnection) null, US_ASCII));
+     }
+ 
++    @Disabled
+     @Test
+     protected void testConstructorURLInput() throws IOException {
+         try (XmlStreamReader reader = new XmlStreamReader(new URL("https://www.apache.org/"))) {
