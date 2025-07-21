@@ -15,7 +15,7 @@ else
 		https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-fix_qt69.patch.xz
 	"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/MuseScore-${PV}"
 fi
 
