@@ -20,7 +20,7 @@ IUSE="static-libs"
 src_compile() {
 	append-flags -fPIC
 
-	emake liberror.so $(usex static-libs liberror.a '')
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" liberror.so $(usex static-libs liberror.a '')
 }
 
 src_install() {
