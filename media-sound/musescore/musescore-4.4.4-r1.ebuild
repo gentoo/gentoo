@@ -14,7 +14,7 @@ else
 	SRC_URI="
 		https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 ~x86"
 	S="${WORKDIR}/MuseScore-${PV}"
 fi
 
@@ -60,11 +60,9 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-uncompressed-man-pages.patch"
-	"${FILESDIR}/${PN}-4.5.0-unbundle-deps.patch"
+	"${FILESDIR}/${PN}-4.4.0-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.2.0-dynamic_cast-crash.patch"
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
-	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
-	"${FILESDIR}/${PN}-4.6.0-missing-includes.patch"
 )
 
 src_unpack() {
@@ -91,13 +89,13 @@ src_configure() {
 	export PATH="$(qt5_get_bindir):${PATH}"
 
 	local mycmakeargs=(
-		-DCMAKE_POSITION_INDEPENDENT_CODE=ON # https://github.com/musescore/MuseScore/issues/28797
 		-DCMAKE_BUILD_TYPE="release"
 		-DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}"
 		-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}"
 		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_SKIP_RPATH=TRUE
 		-DMUE_BUILD_VIDEOEXPORT_MODULE="$(usex video)"
+		-DMUE_COMPILE_USE_CCACHE=OFF
 		-DMUE_COMPILE_USE_SYSTEM_FLAC=ON
 		-DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON
 		-DMUE_COMPILE_USE_SYSTEM_OPUS=ON
@@ -106,7 +104,6 @@ src_configure() {
 		-DMUE_COMPILE_USE_SYSTEM_HARFBUZZ=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
 		-DMUSE_APP_BUILD_MODE="release"
-		-DMUSE_COMPILE_USE_CCACHE=OFF
 		-DMUSE_MODULE_AUDIO_JACK="$(usex jack)"
 		-DMUSE_MODULE_DIAGNOSTICS_CRASHPAD_CLIENT=OFF
 		# tests
@@ -127,11 +124,6 @@ src_compile() {
 }
 
 src_test() {
-	CMAKE_SKIP_TESTS=(
-		# bug #950450
-		iex_musicxml_tests
-	)
-
 	virtx cmake_src_test
 }
 
