@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-LLVM_COMPAT=( {16..19} )
+LLVM_COMPAT=( {16..20} )
 inherit cmake llvm-r1 python-single-r1
 
 DESCRIPTION="Super-parallel Python port of the C-Reduce"
@@ -47,6 +47,10 @@ BDEPEND="
 		')
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-llvm20.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
