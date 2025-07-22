@@ -86,11 +86,12 @@ src_install() {
 	doins -r *
 	fperms a+x "${targetdir}"/{dropbox,dropboxd}
 	dosym "${targetdir}/dropboxd" "/opt/bin/dropbox"
-	# symlinks for bug 955139
-	dosym ../../usr/$(get_libdir)/libayatana-appindicator3.so.1 ${targetdir}/libappindicator3.so.1
-	dosym libappindicator3.so.1 ${targetdir}/libappindicator3.so
 
 	if use X; then
+		# symlinks for bug 955139
+		dosym ../../usr/$(get_libdir)/libayatana-appindicator3.so.1 ${targetdir}/libappindicator3.so.1
+		dosym libappindicator3.so.1 ${targetdir}/libappindicator3.so
+
 		doicon -s 16 -c status "${T}"/status
 		newicon -s scalable "${DISTDIR}/dropbox-icon.svg" dropbox.svg
 	fi
