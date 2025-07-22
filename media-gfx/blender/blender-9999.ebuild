@@ -136,7 +136,7 @@ RDEPEND="${PYTHON_DEPS}
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
-	manifold? ( >=sci-mathematics/manifold-3.1.0 )
+	manifold? ( >=sci-mathematics/manifold-3.1.0:= )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
