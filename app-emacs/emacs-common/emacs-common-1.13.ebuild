@@ -34,7 +34,7 @@ SITEFILE="10${PN}-gentoo.el"
 src_prepare() {
 	default
 	if [[ -n ${EPREFIX} ]]; then
-		sed -i -E -e "s,/(bin|sbin|usr)/,${EPREFIX},g" \
+		sed -i -E -e "s,/(bin|sbin|usr)/,${EPREFIX}&,g" \
 			subdirs.el.in emacs.initd emacs.service \
 			emacs.desktop emacsclient.desktop || die
 	fi
