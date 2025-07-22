@@ -5,7 +5,8 @@ EAPI=8
 
 inherit edo go-module
 
-COMMIT=17f38511d61846e2fb8ec01a1532f3ef5525e71d
+GOPROJECT=github.com/opencontainers/umoci
+COMMIT=1c44d6f2f9e4b50f5d2a99463f540acf9915dd47
 
 DESCRIPTION="Manipulation tool for OCI images"
 HOMEPAGE="https://github.com/opencontainers/umoci"
@@ -20,7 +21,7 @@ BDEPEND="dev-go/go-md2man"
 
 src_compile() {
 	ego build -buildmode=pie -mod=vendor \
-		-ldflags "-w -X main.gitCommit=${COMMIT} -X main.version=${PV}" \
+		-ldflags "-w -X ${GOPROJECT}.gitCommit=${COMMIT}" \
 		-o "bin/${PN}" ./cmd/${PN}
 
 	cd doc/man || die
