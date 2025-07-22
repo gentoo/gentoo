@@ -25,7 +25,6 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/qemu-project/qemu.git/"
 	EGIT_SUBMODULES=()
 	inherit git-r3
-	SRC_URI=""
 	declare -A SUBPROJECTS=(
 		[keycodemapdb]="f5772a62ec52591ff6870b7e8ef32482371f22c6"
 		[berkeley-softfloat-3]="b64af41c3276f97f0e181920400ee056b9c88037"
