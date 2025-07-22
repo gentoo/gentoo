@@ -58,7 +58,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2 ${CARGO_CRATE_
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug dns-over-tls dnstap snmp sodium systemd test valgrind"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
