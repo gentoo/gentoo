@@ -70,6 +70,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.70-info.patch"
 
 	"${FILESDIR}/${PN}-3.00-gc-check.patch"
+
+	# Bug # 960289
+	"${FILESDIR}/${PN}-3.05-boost-1.88.patch"
 )
 
 src_prepare() {
