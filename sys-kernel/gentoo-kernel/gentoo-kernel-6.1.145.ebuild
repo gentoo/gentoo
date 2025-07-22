@@ -88,10 +88,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
-	eapply "${WORKDIR}/patch-${PV}"
-
 	local patch
+	eapply "${WORKDIR}/patch-${PV}"
 	for patch in "${WORKDIR}/${PATCHSET}"/*.patch; do
 		eapply "${patch}"
 		# non-experimental patches always finish with Gentoo Kconfig
@@ -102,6 +100,8 @@ src_prepare() {
 			break
 		fi
 	done
+
+	default
 
 	local biendian=false
 
