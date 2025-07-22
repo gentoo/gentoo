@@ -14,7 +14,7 @@ S="${WORKDIR}/${GST_ORG_MODULE}-${PV}"
 
 LICENSE="GPL-2"
 SLOT="1.0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 arm64 ~ppc64 ~riscv"
 IUSE="X"
 
 RESTRICT="test"
