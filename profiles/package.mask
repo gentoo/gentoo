@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-07-22)
+# Provider for PyPy3.10 executable.  This branch is no longer maintained
+# upstream, and it is vulnerable.  Removal on 2025-08-05.
+dev-lang/pypy:3.10
+dev-python/pypy3_10-exe
+dev-python/pypy3_10-exe-bin
+
 # Matt Turner <mattst88@gentoo.org> (2025-07-20)
 # No reverse dependencies remaining.
 # Removal on 2025-08-19.
