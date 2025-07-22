@@ -11,7 +11,7 @@ SRC_URI="https://github.com/PDAL/PDAL/releases/download/${PV}/PDAL-${PV}-src.tar
 S="${WORKDIR}/PDAL-${PV}-src"
 
 LICENSE="BSD"
-SLOT="0/18"
+SLOT="0/19"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="debug postgres test"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/libxml2
 	dev-libs/openssl:=
 	sci-libs/gdal:=
-	sci-libs/libgeotiff:=
+	>=sci-libs/libgeotiff-1.7.0:=
 	sys-libs/zlib
 	debug? ( sys-libs/libunwind:= )
 	postgres? ( dev-db/postgresql:*[xml] )
