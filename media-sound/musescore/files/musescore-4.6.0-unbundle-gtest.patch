@@ -1,0 +1,63 @@
+unbundle gtest
+diff --git a/buildscripts/cmake/DeclareModuleSetup.cmake b/buildscripts/cmake/DeclareModuleSetup.cmake
+index a40159ea51..2e697d6791 100644
+--- a/buildscripts/cmake/DeclareModuleSetup.cmake
++++ b/buildscripts/cmake/DeclareModuleSetup.cmake
+@@ -182,13 +182,11 @@ macro(setup_module)
+         ${MUSE_FRAMEWORK_PATH}
+         ${MUSE_FRAMEWORK_PATH}/framework
+         ${MUSE_FRAMEWORK_PATH}/framework/global
+-        ${MUSE_FRAMEWORK_PATH}/framework/testing/thirdparty/googletest/googletest/include
+ 
+         # compat
+         ${MUSE_FRAMEWORK_PATH}/src
+         ${MUSE_FRAMEWORK_PATH}/src/framework
+         ${MUSE_FRAMEWORK_PATH}/src/framework/global
+-        ${MUSE_FRAMEWORK_PATH}/src/framework/testing/thirdparty/googletest/googletest/include
+         # end compat
+ 
+         ${MODULE_INCLUDE_PRIVATE}
+diff --git a/src/framework/CMakeLists.txt b/src/framework/CMakeLists.txt
+index 7db7bbd36d..cf17f4aafb 100644
+--- a/src/framework/CMakeLists.txt
++++ b/src/framework/CMakeLists.txt
+@@ -123,8 +123,6 @@ if (MUSE_ENABLE_UNIT_TESTS)
+         FULL_DOCS "List XML files outputted by google test."
+     )
+ 
+-    set(INSTALL_GTEST OFF)
+-    add_subdirectory(testing/thirdparty/googletest)
+ endif()
+ 
+ # Stubs
+diff --git a/src/framework/testing/gtest.cmake b/src/framework/testing/gtest.cmake
+index eb6b059674..30fdff0049 100644
+--- a/src/framework/testing/gtest.cmake
++++ b/src/framework/testing/gtest.cmake
+@@ -50,13 +50,11 @@ target_include_directories(${MODULE_TEST} PRIVATE
+     ${MUSE_FRAMEWORK_PATH}
+     ${MUSE_FRAMEWORK_PATH}/framework
+     ${MUSE_FRAMEWORK_PATH}/framework/global
+-    ${MUSE_FRAMEWORK_PATH}/framework/testing/thirdparty/googletest/googletest/include
+ 
+     # compat
+     ${MUSE_FRAMEWORK_PATH}/src
+     ${MUSE_FRAMEWORK_PATH}/src/framework
+     ${MUSE_FRAMEWORK_PATH}/src/framework/global
+-    ${MUSE_FRAMEWORK_PATH}/src/framework/testing/thirdparty/googletest/googletest/include
+     # end compat
+ 
+     ${MODULE_TEST_INCLUDE}
+@@ -74,10 +72,12 @@ endif()
+ 
+ find_package(Qt6Core REQUIRED)
+ find_package(Qt6Gui REQUIRED)
++find_package(GTest REQUIRED)
+ 
+ target_link_libraries(${MODULE_TEST}
+     Qt6::Core
+     Qt6::Gui
++    gtest
+     gmock
+     muse_global
+     ${MODULE_TEST_LINK}
