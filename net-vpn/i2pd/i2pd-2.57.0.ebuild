@@ -33,7 +33,7 @@ DOCS=( ../README.md ../contrib/i2pd.conf ../contrib/tunnels.conf )
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex test)
+		-DBUILD_TESTING=$(usex test ON OFF)
 		-DWITH_HARDENING=OFF # worsens or matches the non-hardened profiles
 		-DWITH_STATIC=OFF
 		-DWITH_UPNP=$(usex upnp ON OFF)
