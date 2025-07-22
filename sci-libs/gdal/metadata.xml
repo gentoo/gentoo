@@ -34,6 +34,7 @@
 		<flag name="xls">Add the <pkg>dev-libs/freexl</pkg> library for xls import support</flag>
 	</use>
 	<upstream>
+		<doc lang="en">https://gdal.org/en/stable/</doc>
 		<remote-id type="github">OSGeo/gdal</remote-id>
 	</upstream>
 </pkgmetadata>
