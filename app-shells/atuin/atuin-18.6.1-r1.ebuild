@@ -4,10 +4,9 @@
 EAPI=8
 
 CRATES=" "
-
 RUST_MIN_VER="1.86"
 
-inherit cargo readme.gentoo-r1 shell-completion systemd
+inherit cargo greadme shell-completion systemd
 
 DESCRIPTION="Shell history manager supporting encrypted synchronisation"
 HOMEPAGE="https://atuin.sh https://github.com/atuinsh/atuin"
@@ -19,7 +18,7 @@ LICENSE="MIT"
 # - openssl for ring crate
 LICENSE+=" Apache-2.0 BSD Boost-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 openssl"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 IUSE="+client +daemon server test +sync"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -35,7 +34,7 @@ BDEPEND="test? ( dev-db/postgresql )"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
 
-DISABLE_AUTOFORMATTING=1
+GREADME_DISABLE_AUTOFORMAT=1
 
 DOCS=( CONTRIBUTING.md CONTRIBUTORS README.md )
 
@@ -111,7 +110,6 @@ src_test() {
 }
 
 src_install() {
-	readme.gentoo_create_doc
 	dobin "${ATUIN_BIN}"
 
 	if use server; then
@@ -134,8 +132,13 @@ src_install() {
 
 	insinto "/usr/share/${PN}"
 	doins -r shell-init
-}
 
-pkg_postinst() {
-	readme.gentoo_print_elog
+	# The following readme text is only relevant if USE=client.
+	greadme_stdin <<-EOF
+	Gentoo installs atuin's shell-init code under
+	    /usr/share/atuin/shell-init/
+	Therefore, instead of using, e.g., 'eval \"\$(atuin init zsh)\"' in
+	your .zshrc you can simply put \"source /usr/share/atuin/shell-init/zsh\"
+	there, which avoids the cost of forking a process.
+EOF
 }
