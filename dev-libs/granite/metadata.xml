@@ -2,13 +2,20 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>
-    Granite is a companion library for GTK+ and GLib.
-    Among other things, it provides complex widgets and convenience
-    functions designed for use in apps built for elementary OS.
-  </longdescription>
-  <upstream>
-    <remote-id type="github">elementary/granite</remote-id>
-  </upstream>
+	<maintainer type="person" proxied="yes">
+		<email>freijon@pm.me</email>
+		<name>Jonas Frei</name>
+	</maintainer>
+		<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Granite is a companion library for GTK+ and GLib.
+		Among other things, it provides complex widgets and convenience
+		functions designed for use in apps built for elementary OS.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">elementary/granite</remote-id>
+	</upstream>
 </pkgmetadata>
