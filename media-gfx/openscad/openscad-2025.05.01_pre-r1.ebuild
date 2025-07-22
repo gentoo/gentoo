@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake flag-o-matic optfeature python-any-r1 virtualx xdg
 
 DESCRIPTION="The Programmers Solid 3D CAD Modeller"
@@ -20,7 +20,7 @@ if [[ ${PV} = *9999* ]] ; then
 	)
 else
 	if [[ ${PV} = *pre* ]] ; then
-		COMMIT="756e080c7e49072d9926cf9ce766def180a0dcae"
+		COMMIT="f3cac59bf973502ad4b278fd3f20298f9bc2fc84"
 		SANITIZERS_CMAKE_COMMIT="0573e2ea8651b9bb3083f193c41eb086497cc80a"
 		MCAD_COMMIT="bd0a7ba3f042bfbced5ca1894b236cea08904e26"
 
@@ -39,7 +39,7 @@ else
 	else
 		SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.src.tar.gz -> ${P}.tar.gz"
 	fi
-	KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 # Code is GPL-3+, MCAD library is LGPL-2.1
@@ -60,15 +60,19 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/double-conversion:=
 	dev-libs/glib:2
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	dev-libs/libzip:=
-	media-gfx/opencsg:=
+	>=media-gfx/opencsg-1.7.0:=
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/harfbuzz:=
 	media-libs/lib3mf:=
+	media-libs/libglvnd
+	>=sci-mathematics/clipper2-1.5.2
 	sci-mathematics/cgal:=
-	media-libs/libglvnd[X]
+	glx? (
+		media-libs/libglvnd[X]
+	)
 	gui? (
 		dev-qt/qt5compat:6
 		dev-qt/qtbase:6[concurrent,dbus?,-gles2-only,network,opengl,widgets]
@@ -78,8 +82,8 @@ RDEPEND="
 	)
 	hidapi? ( dev-libs/hidapi )
 	manifold? (
-		dev-cpp/tbb
-		>=sci-mathematics/manifold-3.0.1
+		dev-cpp/tbb:=
+		>=sci-mathematics/manifold-3.0.2_pre20250330:=
 	)
 	mimalloc? ( dev-libs/mimalloc:= )
 	pdf? ( x11-libs/cairo )
@@ -107,7 +111,6 @@ BDEPEND="
 DOCS=(
 	README.md
 	RELEASE_NOTES.md
-	doc/TODO.txt
 	doc/contributor_copyright.txt
 	doc/hacking.md
 	doc/testing.txt
@@ -162,7 +165,6 @@ src_configure() {
 		-DUSE_CCACHE="no"
 		-DUSE_GLAD="yes"
 		-DUSE_GLEW="no"
-		-DUSE_LEGACY_RENDERERS="no"
 		-DUSE_MIMALLOC="$(usex mimalloc)"
 		-DUSE_QT6="$(usex gui)"
 		-DOFFLINE_DOCS="no" # TODO
@@ -201,7 +203,8 @@ src_configure() {
 src_test() {
 	local i WRITE=()
 
-	if [[ -d "/dev/udmabuf" ]]; then
+	# mesa will make use of udmabuf if it exists
+	if [[ -c "/dev/udmabuf" ]]; then
 		WRITE+=(
 			"/dev/udmabuf"
 		)
@@ -245,6 +248,8 @@ src_test() {
 		fi
 	done
 
+	addpredict "/dev/char/"
+
 	sed \
 		-e "s/OPENSCAD_BINARY/OPENSCADPATH/g" \
 		-i tests/test_cmdline_tool.py || die
@@ -256,7 +261,17 @@ src_test() {
 	ln -s "${CMAKE_USE_DIR}/locale" . || die
 	ln -s "${CMAKE_USE_DIR}/shaders" . || die
 
-	virtx cmake_src_test -j1
+	local -x CMAKE_SKIP_TESTS=()
+
+	if ! has_version app-text/ghostscript-gpl ; then
+		CMAKE_SKIP_TESTS+=(
+			# needs GS
+			"^export-pdf_centered$"
+			"^export-pdf_simple-pdf$"
+		)
+	fi
+
+	virtx cmake_src_test
 }
 
 src_install() {

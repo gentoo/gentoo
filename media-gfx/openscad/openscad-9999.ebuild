@@ -86,7 +86,7 @@ RDEPEND="
 	hidapi? ( dev-libs/hidapi )
 	manifold? (
 		dev-cpp/tbb:=
-		>=sci-mathematics/manifold-3.0.2_pre20250330
+		>=sci-mathematics/manifold-3.0.2_pre20250330:=
 	)
 	mimalloc? ( dev-libs/mimalloc:= )
 	pdf? ( x11-libs/cairo )
