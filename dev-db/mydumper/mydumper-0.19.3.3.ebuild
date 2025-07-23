@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit cmake
+PYTHON_COMPAT=( python3_{12..13} )
+
+inherit cmake python-any-r1
 
 MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
@@ -30,8 +32,13 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
-		dev-python/furo
-		dev-python/sphinx-inline-tabs
+		$(python_gen_any_dep '
+			dev-python/accessible-pygments[${PYTHON_USEDEP}]
+			dev-python/furo[${PYTHON_USEDEP}]
+			dev-python/sphinx-copybutton[${PYTHON_USEDEP}]
+			dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+		')
 	)
 "
 
@@ -41,13 +48,23 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.16-cmake-docs.patch"
 )
 
+python_check_deps() {
+	python_has_version \
+		"dev-python/accessible-pygments[${PYTHON_USEDEP}]" \
+		"dev-python/furo[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx-copybutton[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx-inline-tabs[${PYTHON_USEDEP}]" \
+		"dev-python/sphinx[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use doc && python-any-r1_pkg_setup
+}
+
 src_prepare() {
 	# copy in docs
 	rm -rv "${WORKDIR}"/"${MY_P}"/docs || die
 	mv -v "${WORKDIR}/${PN}_docs-${DOCS_COMMIT}" "${WORKDIR}/${MY_P}/docs" || die
-
-	# https://pypi.org/project/sphinx-copybutton/ not yet in Gentoo
-	sed -i "s/'sphinx_copybutton',//g" "${WORKDIR}/${MY_P}/docs/_build/conf.py.in" || die
 
 	# fix doc install path
 	sed -i -e "s|share/doc/mydumper|share/doc/${PF}|" docs/CMakeLists.txt || die
