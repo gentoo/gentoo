@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson python-any-r1
 
 DESCRIPTION="Transparent network proxy for Wayland compositors"
