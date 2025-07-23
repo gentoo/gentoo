@@ -18,6 +18,7 @@
 		<flag name="daemon">Enable the autin background daemon on the client</flag>
 		<flag name="server">Enable the autin server</flag>
 		<flag name="sync">Enable the server-sync feature in the autin client</flag>
+		<flag name="system-sqlite">Use the system SQLite instead of the bundled one. WARNING: enabling this has a negative performance impact (https://bugs.gentoo.org/959120)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">atuinsh/atuin</remote-id>

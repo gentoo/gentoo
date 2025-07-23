@@ -3,8 +3,6 @@
 
 EAPI=8
 
-CRATES=" "
-
 RUST_MIN_VER="1.86"
 
 inherit cargo greadme shell-completion systemd
@@ -19,15 +17,15 @@ LICENSE="MIT"
 # - openssl for ring crate
 LICENSE+=" Apache-2.0 BSD Boost-1.0 ISC MIT MPL-2.0 Unicode-DFS-2016 openssl"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
-IUSE="+client +daemon server test +sync"
+KEYWORDS="amd64 ~arm64 ~riscv"
+IUSE="+client +daemon server system-sqlite test +sync"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( client server )
 	sync? ( client )
 	test? ( client server sync )
 "
-DEPEND="dev-db/sqlite:3"
+DEPEND="system-sqlite? ( dev-db/sqlite:3 )"
 RDEPEND="${DEPEND}
 	server? ( acct-user/atuin )
 "
@@ -40,7 +38,9 @@ GREADME_DISABLE_AUTOFORMAT=1
 DOCS=( CONTRIBUTING.md CONTRIBUTORS README.md )
 
 src_configure() {
-	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	# Using system-sqlite has a negative performance impact
+	# see https://bugs.gentoo.org/959120
+	use system-sqlite && export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	local myfeatures=(
 		$(usev client)
 		$(usev daemon)
