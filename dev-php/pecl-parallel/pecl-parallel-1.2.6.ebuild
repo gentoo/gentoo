@@ -14,7 +14,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="A succint parallel concurrency API for PHP"
 SRC_URI="${SRC_URI} -> ${P}.tgz"
 
-PATCHES="${FILESDIR}/pecl-parallel-1.2.6-php8.3.patch"
+PATCHES=( "${FILESDIR}/pecl-parallel-1.2.6-php8.3.patch" )
 
 LICENSE="PHP-3.01"
 SLOT="8"
