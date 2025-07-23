@@ -33,7 +33,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/0.230.0-parallel-make.patch"
-	"${FILESDIR}/${PN}-0.270.0-no-flto.patch"
 )
 
 PERL_RM_FILES=(
