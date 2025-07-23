@@ -15,6 +15,6 @@
 		internal screen off when docked.
 	</longdescription>
 	<upstream>
-		<remote-id type="sourcehut">~emersion/kanshi</remote-id>
+		<remote-id type="freedesktop-gitlab">emersion/kanshi</remote-id>
 	</upstream>
 </pkgmetadata>
