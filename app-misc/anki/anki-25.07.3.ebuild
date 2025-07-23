@@ -16,7 +16,7 @@ declare -A GIT_CRATES=(
 RUST_MIN_VER="1.85.0"
 
 inherit cargo desktop distutils-r1 edo greadme multiprocessing ninja-utils \
-	optfeature toolchain-funcs xdg
+	optfeature toolchain-funcs xdg-utils
 
 DESCRIPTION="Smart spaced repetition flashcard program"
 HOMEPAGE="https://apps.ankiweb.net/"
@@ -96,7 +96,12 @@ RDEPEND="
 	app-misc/ca-certificates
 	gui? ( ${GUI_RDEPEND} )
 "
-
+IDEPEND="
+	gui? (
+		dev-util/desktop-file-utils
+		x11-misc/shared-mime-info
+	)
+"
 BDEPEND="
 	>=app-arch/zstd-1.5.5:=
 	dev-libs/protobuf[protoc(+)]
@@ -291,15 +296,11 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	greadme_pkg_preinst
-	use gui && xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	greadme_pkg_postinst
 	if use gui; then
-		xdg_pkg_postinst
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 		optfeature "LaTeX in cards" "app-text/texlive[extra] app-text/dvipng"
 		optfeature "sound support" media-video/mpv media-video/mplayer
 		optfeature "recording support" "media-sound/lame[frontend] dev-python/pyqt6[multimedia]"
@@ -309,5 +310,12 @@ pkg_postinst() {
 
 		einfo "You can customize the LaTeX header for your cards to fit your needs:"
 		einfo "Notes > Manage Note Types > [select a note type] > Options"
+	fi
+}
+
+pkg_postrm() {
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 	fi
 }
