@@ -294,8 +294,12 @@ src_configure() {
 		"${myconf[@]}"
 }
 
+src_compile() {
+	emake V=1
+}
+
 src_install() {
-	emake STRIP="true" INSTALL_ROOT="${D}" install
+	emake V=1 STRIP="true" INSTALL_ROOT="${D}" install
 	use python && python_optimize  # does all packages by default
 	dodoc AUTHORS README
 	readme.gentoo_create_doc
