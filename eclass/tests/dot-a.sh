@@ -511,12 +511,14 @@ test_strip_nolto() {
 _repeat_tests_with_compilers() {
 	# Call test_lto_guarantee_fat and test_strip_lto_bytecode with
 	# various compilers and linkers.
+	local toolchain
 	for toolchain in gcc:ar clang:llvm-ar ; do
 		CC=${toolchain%:*}
 		AR=${toolchain#*:}
 		type -P ${CC} &>/dev/null || continue
 		type -P ${AR} &>/dev/null || continue
 
+		local linker
 		for linker in gold bfd lld mold gold ; do
 			# lld doesn't support GCC LTO: https://github.com/llvm/llvm-project/issues/41791
 			[[ ${CC} == gcc && ${linker} == lld ]] && continue
@@ -535,6 +537,7 @@ _repeat_mixed_tests_with_linkers() {
 	#
 	# Needs both GCC and Clang to test mixing their outputs.
 	if type -P gcc &>/dev/null && type -P clang &>/dev/null ; then
+		local linker
 		for linker in bfd lld mold gold ; do
 			# lld doesn't support GCC LTO: https://github.com/llvm/llvm-project/issues/41791
 			[[ ${CC} == gcc && ${linker} == lld ]] && continue
