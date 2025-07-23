@@ -18,4 +18,4 @@ PATCHES="${FILESDIR}/pecl-parallel-1.2.6-php8.3.patch"
 
 LICENSE="PHP-3.01"
 SLOT="8"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
