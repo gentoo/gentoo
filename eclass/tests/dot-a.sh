@@ -458,6 +458,61 @@ test_strip_lto() {
 	tend ${ret} "strip operated on a fat LTO archive when it shouldn't"
 }
 
+test_strip_lto_mixed() {
+	# This is more of a test for https://sourceware.org/PR33198.
+	# It'll only happen in a Gentoo packaging context if a package
+	# uses Clang for some parts of the build or similar.
+	if ! type -P gcc &>/dev/null || ! type -P clang &>/dev/null ; then
+		return
+	fi
+
+	# If we have a static archive with Clang LTO members, does strip
+	# error out wrongly, or does it work? Note that this can only
+	# happen in a mixed build because strip-lto-bytecode checks for
+	# the toolchain type before deciding which strip to use.
+	tbegin "whether strip accepts a Clang IR archive"
+	ret=0
+	(
+		export CFLAGS="-O2 -flto"
+
+		rm test.a 2>/dev/null
+
+		clang ${CFLAGS} a.c -o a.o -c 2>/dev/null || return 1
+		$(tc-getAR) q test.a a.o 2>/dev/null || return 1
+
+		# Pretend that gcc built a.o/test.a so that we use
+		# GNU Binutils strip to trigger the bug.
+		CC=gcc strip-lto-bytecode test.a || return 1
+
+		return 0
+	) || ret=1
+	tend ${ret} "strip did not accept a Clang IR archive"
+
+	# If we have a static archive with Clang fat LTO members, can we link
+	# against the stripped archive?
+	# Note that this can only happen in a mixed build because strip-lto-bytecode
+	# checks for the toolchain type before deciding which strip to use.
+	tbegin "whether strip corrupts a Clang fat IR archive"
+	ret=0
+	(
+		export CFLAGS="-O2 -flto"
+
+		lto-guarantee-fat
+
+		rm test.a 2>/dev/null
+
+		clang ${CFLAGS} a.c -o a.o -c 2>/dev/null || return 1
+		$(tc-getAR) q test.a a.o 2>/dev/null || return 1
+
+		# Pretend that gcc built a.o/test.a so that we use
+		# GNU Binutils strip to trigger the bug.
+		CC=gcc strip-lto-bytecode test.a || return 1
+
+		clang ${CFLAGS} ${LDFLAGS} -fno-lto main.c test.a -o main || return 1
+	) || ret=1
+	tend ${ret} "strip corrupted a Clang IR archive, couldn't link against the result"
+}
+
 test_strip_nolto() {
 	# Check whether regular (non-LTO'd) static libraries are stripped
 	# and not ignored (bug #957882, https://sourceware.org/PR33078).
@@ -565,5 +620,6 @@ CC=${CC_orig}
 AR=${AR_orig}
 test_search_recursion
 test_strip_lto
+test_strip_lto_mixed
 test_strip_nolto
 texit
