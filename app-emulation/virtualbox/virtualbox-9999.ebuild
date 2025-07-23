@@ -30,7 +30,7 @@ inherit desktop edo flag-o-matic git-r3 java-pkg-opt-2 linux-mod-r1 multilib \
 MY_PN="VirtualBox"
 BASE_PV=7.1.0
 MY_P=${MY_PN}-${PV}
-PATCHES_TAG=7.2.0_pre20250508
+PATCHES_TAG=7.2.0_pre20250723
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
