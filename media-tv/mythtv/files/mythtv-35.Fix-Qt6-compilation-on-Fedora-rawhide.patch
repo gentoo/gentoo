@@ -1,0 +1,108 @@
+From 80ebec6e2760f5d2a5faccdf3904cb35514cb318 Mon Sep 17 00:00:00 2001
+From: David Hampton <mythtv@love2code.net>
+Date: Tue, 1 Apr 2025 09:08:30 -0400
+Subject: [PATCH] Fix Qt6 compilation on Fedora rawhide.
+
+The latest version of Qt6 has removed some overrides for QString::arg
+and Qchar::Qchar causing compilation to break.  Change the existing
+casts on these function calls to use a different override that still
+exists.
+
+diff --git a/libs/libmythtv/channelutil.cpp b/libs/libmythtv/channelutil.cpp
+index ad3184c7e7..a07c942fa9 100644
+--- a/libs/libmythtv/channelutil.cpp
++++ b/libs/libmythtv/channelutil.cpp
+@@ -62,7 +62,7 @@ static uint get_dtv_multiplex(uint     db_source_id,  const QString& sistandard,
+     {
+         query.bindValue(":TRANSPORTID", transport_id);
+         query.bindValue(":NETWORKID",   network_id);
+-        query.bindValue(":POLARITY",    QChar(polarity));
++        query.bindValue(":POLARITY",    static_cast<uint>(polarity));
+     }
+ 
+     if (!query.exec() || !query.isActive())
+@@ -102,7 +102,7 @@ static uint insert_dtv_multiplex(
+         QString("dbid:%1 std:'%2' ").arg(db_source_id).arg(sistandard) +
+         QString("freq:%1 mod:%2 ").arg(frequency).arg(modulation) +
+         QString("tid:%1 nid:%2 ").arg(transport_id).arg(network_id) +
+-        QString("pol:%1 msys:%2 ...)").arg(QChar(polarity)).arg(mod_sys) +
++        QString("pol:%1 msys:%2 ...)").arg(static_cast<uint>(polarity)).arg(mod_sys) +
+         QString("mplexid:%1").arg(mplex));
+ 
+     bool isDVB = (sistandard.toLower() == "dvb");
+@@ -208,7 +208,7 @@ static uint insert_dtv_multiplex(
+         {
+             query.bindValue(":TRANSPORTID",   transport_id);
+             query.bindValue(":NETWORKID",     network_id);
+-            query.bindValue(":WHEREPOLARITY", QChar(polarity));
++            query.bindValue(":WHEREPOLARITY", static_cast<uint>(polarity));
+         }
+         else
+         {
+diff --git a/libs/libmythtv/mheg/dsmcccache.cpp b/libs/libmythtv/mheg/dsmcccache.cpp
+index 9bda76811d..2113d758ef 100644
+--- a/libs/libmythtv/mheg/dsmcccache.cpp
++++ b/libs/libmythtv/mheg/dsmcccache.cpp
+@@ -54,7 +54,7 @@ QString DSMCCCacheKey::toString() const
+ {
+     QString result;
+     for (int i = 0; i < 4 && i < size(); i++)
+-        result += QString("%1").arg(at(i), 2, 16, QChar('0'));
++        result += QString("%1").arg(static_cast<uint>(at(i)), 2, 16, QChar('0'));
+     return result;
+ }
+ 
+diff --git a/libs/libmythtv/mheg/mhi.cpp b/libs/libmythtv/mheg/mhi.cpp
+index a6771bd0e5..0ba13d1889 100644
+--- a/libs/libmythtv/mheg/mhi.cpp
++++ b/libs/libmythtv/mheg/mhi.cpp
+@@ -1299,7 +1299,7 @@ QRect MHIText::GetBounds(const QString &str, int &strLen, int maxSize)
+         if (glyphIndex == 0)
+         {
+             LOG(VB_MHEG, LOG_INFO, QString("[mhi] Unknown glyph 0x%1")
+-                .arg(ch.unicode(),0,16));
++                .arg(static_cast<short>(ch.unicode()),0,16));
+             previous = 0;
+             continue;
+         }
+diff --git a/libs/libmythtv/mpeg/mpegdescriptors.cpp b/libs/libmythtv/mpeg/mpegdescriptors.cpp
+index 752c0bcaf2..5585787698 100644
+--- a/libs/libmythtv/mpeg/mpegdescriptors.cpp
++++ b/libs/libmythtv/mpeg/mpegdescriptors.cpp
+@@ -839,7 +839,7 @@ void RegistrationDescriptor::InitializeDescriptionMap(void)
+ 
+     for (uint i = 0; i <= 99; i++)
+     {
+-        description_map[QString("US%1").arg(i, 2, QLatin1Char('0'))] =
++        description_map[QString("US%1").arg(i, 2, 16, QLatin1Char('0'))] =
+             "NIMA, Unspecified military application";
+     }
+ 
+diff --git a/libs/libmythtv/recorders/hlsstreamhandler.cpp b/libs/libmythtv/recorders/hlsstreamhandler.cpp
+index 2d85b6b19b..0f25f80457 100644
+--- a/libs/libmythtv/recorders/hlsstreamhandler.cpp
++++ b/libs/libmythtv/recorders/hlsstreamhandler.cpp
+@@ -181,7 +181,7 @@ void HLSStreamHandler::run(void)
+         {
+             LOG(VB_RECORD, LOG_INFO, LOC +
+                 QString("Packet not starting with SYNC Byte (got 0x%1)")
+-                .arg((char)m_readbuffer[0], 2, 16, QLatin1Char('0')));
++                .arg(static_cast<uint>(m_readbuffer[0]), 2, 16, QLatin1Char('0')));
+             continue;
+         }
+ 
+diff --git a/programs/mythbackend/recordingextender.h b/programs/mythbackend/recordingextender.h
+index 77fd649fbf..aa18e8281d 100644
+--- a/programs/mythbackend/recordingextender.h
++++ b/programs/mythbackend/recordingextender.h
+@@ -28,6 +28,7 @@
+ 
+ #include <QMutex>
+ #include <QJsonDocument>
++#include <QUrl>
+ 
+ #include "libmythbase/mthread.h"
+ #include "libmythtv/recordingrule.h"
+-- 
+2.45.2
+
