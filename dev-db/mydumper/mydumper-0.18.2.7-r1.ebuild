@@ -24,11 +24,16 @@ RDEPEND="
 	app-arch/zstd
 	dev-db/mysql-connector-c:=
 	dev-libs/glib:2
-	dev-libs/libpcre
+	dev-libs/libpcre2:=
 	dev-libs/openssl:=
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}"
+
+# this version uses libpcre2 but upstream forgot to remove old libpcre
+# includes, therefore we need to have it available in build time.
+DEPEND="${RDEPEND}
+	dev-libs/libpcre
+"
 BDEPEND="
 	virtual/pkgconfig
 	doc? (
