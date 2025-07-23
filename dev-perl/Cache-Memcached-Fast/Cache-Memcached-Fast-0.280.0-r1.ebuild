@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,6 +33,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/0.230.0-parallel-make.patch"
+	# https://github.com/JRaspass/Cache-Memcached-Fast/pull/11
 	"${FILESDIR}/${PN}-0.270.0-no-flto.patch"
 )
 

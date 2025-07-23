@@ -1,6 +1,20 @@
-diff -ruN Cache-Memcached-Fast-0.27.orig/Makefile.PL Cache-Memcached-Fast-0.27/Makefile.PL
---- Cache-Memcached-Fast-0.27.orig/Makefile.PL	2021-05-22 20:25:50.000000000 +0200
-+++ Cache-Memcached-Fast-0.27/Makefile.PL	2021-05-25 21:41:10.991310429 +0200
+https://github.com/JRaspass/Cache-Memcached-Fast/pull/11
+
+From 4bba22fac564a0798022197476f63fb6b481129f Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 3 Oct 2017 20:20:14 +1300
+Subject: [PATCH] Strip -flto from CFLAGS
+
+-flto breaks compilation of static archives and needs significant  magic
+to not break, including sentience about which CC you're using.
+---
+ Makefile.PL | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Makefile.PL b/Makefile.PL
+index 0054164..ad249b9 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
 @@ -24,6 +24,13 @@
      },
  );
