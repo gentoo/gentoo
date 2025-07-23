@@ -7,7 +7,7 @@ inherit cmake edo flag-o-matic
 
 DESCRIPTION="A portable fork of the high-performance regular expression matching library"
 HOMEPAGE="
-	https://www.vectorcamp.gr/vectorscan/
+	https://vectorcamp.gr/vectorscan/
 	https://github.com/VectorCamp/vectorscan
 "
 SRC_URI="
