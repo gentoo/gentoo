@@ -172,7 +172,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
-	bpf? ( dev-libs/libbpf:= )
+	bpf? ( >=dev-libs/libbpf-1.1.0:= )
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
 	capstone? ( dev-libs/capstone:=[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
