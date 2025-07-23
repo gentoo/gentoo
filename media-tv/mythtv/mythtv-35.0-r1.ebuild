@@ -137,6 +137,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-33.1-libva.patch
 	"${FILESDIR}"/${PN}-35.no-ant-java-required-if-use-system-libblur.patch
+	"${FILESDIR}"/${PN}-35.Fix-Qt6-compilation-on-Fedora-rawhide.patch
+	"${FILESDIR}"/${PN}-35.freemheg-update-visibility-of-MHCreateEngine-MHSetLo.patch
 )
 
 python_check_deps() {
