@@ -15,16 +15,20 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test +upnp"
 RESTRICT="!test? ( test )"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/boost:=
 	dev-libs/openssl:0=[-bindist(-)]
 	sys-libs/zlib
 	upnp? ( net-libs/miniupnpc:= )
 "
+DEPEND="
+	${COMMON_DEPEND}
+	test? ( dev-libs/check )
+"
 RDEPEND="
+	${COMMON_DEPEND}
 	acct-user/i2pd
 	acct-group/i2pd
-	${DEPEND}
 "
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/build"
