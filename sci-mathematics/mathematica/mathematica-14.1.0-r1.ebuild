@@ -88,7 +88,7 @@ src_install() {
 
 	# in the depths of the installer it tests whether it can write here
 	# addpredict is by far the simplest solution
-	addpredict /usr/share/thisisatest
+	addpredict /usr/share/Wolfram/thisisatest
 
 	/bin/sh "Unix/Installer/WolframInstaller" -auto "-targetdir=${S}/${M_TARGET}" "-execdir=${S}/opt/bin" || die
 	popd > /dev/null || die
