@@ -1,0 +1,58 @@
+https://bugs.gentoo.org/957101
+https://github.com/krakjoe/parallel/issues/345
+https://github.com/krakjoe/parallel/pull/347
+
+This PR fixes a memory leak that caused the cache to exhaust when
+running closures with nested functions (dynamic function definitions).
+
+When scheduling closures containing nested functions,
+php_parallel_cache_closure() was allocating memory from the cache pool
+for the dynamic_func_defs array. This memory was never properly freed,
+causing the cache to fill up and eventually trigger a realloc() that
+could lead to segfaults in case the OS decided to move the entire
+allocation to a different address.
+
+From d4fa9a8a490dbdd3caac5f9a0ef384838c078a6f Mon Sep 17 00:00:00 2001
+From: Florian Engelhardt <flo@dotbox.org>
+Date: Wed, 23 Jul 2025 16:19:48 +0200
+Subject: [PATCH] fix cache overflow
+
+---
+ src/cache.c     | 5 ++++-
+ src/scheduler.c | 5 ++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/cache.c b/src/cache.c
+index afbfb6d..ed90cc0 100644
+--- a/src/cache.c
++++ b/src/cache.c
+@@ -394,7 +394,10 @@ zend_function* php_parallel_cache_closure(const zend_function *source, zend_func
+ #if PHP_VERSION_ID >= 80100
+     if (source->op_array.num_dynamic_func_defs) {
+         uint32_t it = 0;
+-        closure->op_array.dynamic_func_defs = php_parallel_cache_copy_mem(
++        /* Use regular persistent memory for dynamic_func_defs array, not cache pool */
++        closure->op_array.dynamic_func_defs = pemalloc(
++            sizeof(zend_op_array*) * source->op_array.num_dynamic_func_defs, 1);
++        memcpy(closure->op_array.dynamic_func_defs,
+             source->op_array.dynamic_func_defs,
+             sizeof(zend_op_array*) * source->op_array.num_dynamic_func_defs);
+         while (it < source->op_array.num_dynamic_func_defs) {
+diff --git a/src/scheduler.c b/src/scheduler.c
+index 1f92bfa..8820e96 100644
+--- a/src/scheduler.c
++++ b/src/scheduler.c
+@@ -258,9 +258,12 @@ static void php_parallel_scheduler_clean(zend_function *function) {
+     	while (it < function->op_array.num_dynamic_func_defs) {
+     	    php_parallel_scheduler_clean(
+               (zend_function*) function->op_array.dynamic_func_defs[it]);
+-          pefree(function->op_array.dynamic_func_defs[it],1);
++          pefree(function->op_array.dynamic_func_defs[it], 1);
+           it++;
+     	}
++        /* Free the dynamic_func_defs array itself */
++        pefree(function->op_array.dynamic_func_defs, 1);
++        function->op_array.dynamic_func_defs = NULL;
+     }
+ #endif
+ }
