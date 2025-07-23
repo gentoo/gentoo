@@ -386,7 +386,7 @@ src_prepare() {
 	# handle *FLAGS here to avoid repeating for each ABI below (bug #923491)
 	FFMPEG_ENABLE_LTO=
 	if tc-is-lto; then
-		: "$(get-flag flto)" # get -flto=<val> (e.g. =thin)
+		: "$(get-flag -flto)" # get -flto=<val> (e.g. =thin)
 		FFMPEG_ENABLE_LTO=--enable-lto${_#-flto}
 	fi
 	filter-lto
