@@ -1,17 +1,23 @@
 certificate version 0.1
-pusher 0x8883FA56A308A8D7 1753269660 +0200
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1753269660-7a387c640d32a101199ce3617619dce1bc020fac
+pusher Petr Vaněk <arkamar@gentoo.org> 1753271833 +0200
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1753271833-fca62fa00975fa0d1279063da4c7bb85f1a66d2c
 
-6a4b350091ab9beafcf3b496d110f0c2913335fc bbaed9cb4d11ffec74acf2734741edef20ed7337 refs/heads/master
+bbaed9cb4d11ffec74acf2734741edef20ed7337 b0b28c7eeeef595b459ef0014c7e9b749b3c4e0f refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEIggVRmJzp0YePtgn2zR/k4ZU+jQFAmiAxZwACgkQ2zR/k4ZU
-+jRufAf/frn5ePjGHJuzG2oNBiu3chPSmnsdsQkJR/bbmljTJPg8eGanIYs/mav8
-0eGwPlQAjueo1gp0UhuAGb6CQ5BKZcEpWMKviaoortC9STMLoRVJDy88kk5PWxx9
-i4Bwqvgnf2hLqTQLlSNqDYNONqTb+ffuEX8/BcLgFXgcKmXGHPmD395kh6Gnhb63
-5lrGRGThY0qvfXnUusEjv+ABnJhELlePpJ4klJftog3ANaV0xuczRKTOeGoTBCxS
-agHd1zk/sWpdBgiFbnwk77kYxGfrunRuztFVZXmsl0K2217QnWc/Uzwo40KPBUqP
-o5cFwDvhXqPY6/qpr/P+LmgFkIX7eQ==
-=aho5
+iQJHBAABCAAxFiEEoDIFP/dmMcxNFBW7NR2RttffnlAFAmiAzhkTHGFya2FtYXJA
+Z2VudG9vLm9yZwAKCRA1HZG219+eUH/sD/kBmuhY+bYBWDQtaRyheTJ9jJaU/qMy
+pS8hJvixrmjQduLiQxFHx5y3Mmmh8U/YjHsDV1cf/8x4pJS9on9A4GRa+cTVb5Ls
+NvUhCv+IF0jyyyJjtPQ5KSidZEb9sFwB9tuhX5xdY/z4FoQfmmpNEF9DTZrJB5pp
+lIfnmWjiYARfWjDDlrtgw8sGcmZmySrd61dBQcoAbEkKZKPGnfm0jD7mfi430xUX
+lcetNs3Z6ZvrjE1JqLcsQPn1d7mSCx1olnJQfkEdkFC6Z3D6vAGr+a4YG9gQLDVx
+ywmpTIgJhE+Hp17CZ1tONm1VJpS5F9zzUHq62j1rBL+3fq9Qb91PRFDo29uYPeXa
+aJa4UYEOnLR36vulGjz4CdMwb3kQN4XqJWbGpYz52jP+UgkiRc1dT72qhlr/Jb/H
+jt2ZrJ+tVVGHgweFB++OtSUsVDbT5EGEyCcjdonEmmmIOZiwOirgZ5dmgjtajyee
+cqsThp3jjiGqL2Bj+tBAxHFsl/5k6Ls9BxDJlhqEleW+fnYVg6xSoTXZPnMYrb1t
+2lt2LW2QHyKOO2laZsNXVZd8qM8a0lynveQmSo7ES/iwAM3BbYlTF/fVXVY++AJa
+Rea770jdvnEHx30+/WB354nkZzxuPq77oK4KEZ6gub4iLSPIgDtAQhcI1RKkW4dF
+h3E278HkXfnwxQ==
+=xCnw
 -----END PGP SIGNATURE-----
