@@ -1,0 +1,39 @@
+# Enable debug build (TODO: Is this needed?),
+# fix library names, and don't install thirdparty
+# libraries.
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@
+ -include user.make
+ 
+ ifndef build
+-  build := release
++  build := debug
+ endif
+ 
+ default: apps libs
+@@ -311,10 +311,12 @@ ifeq ($(shared),yes)
+     endif
+   endif
+ else
+-  MUPDF_LIB = $(OUT)/libmupdf.a
+-  THIRD_LIB = $(OUT)/libmupdf-third.a
+-  $(MUPDF_LIB) : $(MUPDF_OBJ)
+-  $(THIRD_LIB) : $(THIRD_OBJ)
++  MUPDF_LIB = libmupdf.so.$(GENTOO_PV)
++  THIRD_LIB =
++  MUPDF_STATIC = $(OUT)/libmupdf.a
++  $(MUPDF_LIB) : $(MUPDF_OBJ) $(THIRD_OBJ)
++	$(QUIET_LINK) $(CC) $(LDFLAGS) --shared -Wl,-soname -Wl,$(MUPDF_LIB) -o $@ $^ $(THIRD_LIBS) $(LIBS)
++  $(MUPDF_STATIC): $(MUPDF_OBJ) $(THIRD_OBJ)
+ endif
+ 
+ ifneq ($(USE_SYSTEM_GLUT),yes)
+@@ -466,7 +468,6 @@ ifeq ($(shared),yes)
+   endif
+ else
+ 	install -m 644 $(MUPDF_LIB) $(DESTDIR)$(libdir)
+-	install -m 644 $(THIRD_LIB) $(DESTDIR)$(libdir)
+ endif
+ 
+ install-tools: tools
