@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit libtool
+
 MY_P="${P/-/_}"
 DESCRIPTION="Lists open files for running Unix processes"
 HOMEPAGE="https://github.com/lsof-org/lsof"
@@ -25,6 +27,11 @@ BDEPEND="
 
 # Needs fixing first for sandbox
 RESTRICT="test"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	local myeconfargs=(
