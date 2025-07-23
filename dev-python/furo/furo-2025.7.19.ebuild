@@ -8,7 +8,7 @@ EAPI=8
 # everything from the Internet
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
