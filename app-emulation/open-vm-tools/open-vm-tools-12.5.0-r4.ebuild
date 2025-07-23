@@ -33,7 +33,7 @@ RDEPEND="
 		dev-libs/xmlsec:=
 	)
 	X? (
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[X]
 		x11-libs/libSM
 		x11-libs/libXcomposite
 		x11-libs/libXext
