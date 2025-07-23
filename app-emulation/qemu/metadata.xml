@@ -45,7 +45,6 @@
 		<flag name="spice">Enable Spice protocol support via <pkg>app-emulation/spice</pkg></flag>
 		<flag name="ssh">Enable SSH based block device support via <pkg>net-libs/libssh2</pkg></flag>
 		<flag name="static-user">Build the User targets as static binaries</flag>
-		<flag name="static">Build the User and Software MMU (system) targets as well as tools as static binaries</flag>
 		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
 		<flag name="jpeg">Enable jpeg image support for the VNC console server</flag>
 		<flag name="png">Enable png image support for the VNC console server</flag>
