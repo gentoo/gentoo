@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="true"
 KFMIN=6.13.0
 QTMIN=6.7.2
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit ecm gear.kde.org python-single-r1 xdg
 
 DESCRIPTION="Cross-platform web browser using QtWebEngine"
@@ -14,7 +14,7 @@ HOMEPAGE="https://www.falkon.org/ https://apps.kde.org/falkon/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="dbus kde python +X"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
