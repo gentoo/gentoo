@@ -8,7 +8,7 @@ HOMEPAGE="https://apps.kde.org/categories/development/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="+git mercurial perl php python qt5 subversion webengine"
 
 RDEPEND="
