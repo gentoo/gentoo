@@ -13,7 +13,7 @@ DESCRIPTION="KDE library for CDDB"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="musicbrainz"
 
 # tests require network access and compare static data with online data
