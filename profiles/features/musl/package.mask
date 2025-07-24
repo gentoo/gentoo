@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Z. Liu <zhixu.liu@gmail.com> (2025-10-18)
+# nvidia-drivers only works against glibc.
+dev-python/nvidia-ml-py
+
 # Robert Siebeck <gentoo.2019@r123.de> (2025-10-17)
 # Binary compiled against glibc
 # Bug #964371
