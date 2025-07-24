@@ -36,6 +36,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	ocaml? ( dev-ml/findlib )
 	test? (	sys-block/nbdkit[gnutls?]
 		net-libs/gnutls:=[tools]
 		ocaml? ( dev-ml/findlib[ocamlopt] )

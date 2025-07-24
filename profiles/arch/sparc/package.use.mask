@@ -7,7 +7,7 @@ x11-misc/xscreensaver wayland
 
 # Christopher Byrne <salah.coronya@gmail.com> (2025-06-13)
 # dev-ml/findlib is not keyworkded here
-sys-libs/libnbd test
+sys-libs/libnbd ocaml
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-13)
 # dev-libs/libwacom is not keyworded here
