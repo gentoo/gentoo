@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2025-07-24)
+# dnsdist-2.0.0[yaml] needs Rust
+net-dns/dnsdist yaml
+
 # Sam James <sam@gentoo.org> (2025-02-21)
 # Needs Rust
 media-video/ffmpeg rav1e svg
