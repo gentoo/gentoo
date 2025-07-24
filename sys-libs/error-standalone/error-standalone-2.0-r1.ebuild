@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="standalone <error.h> implementation intended for musl"
 HOMEPAGE="https://hacktivis.me/git/error-standalone/"
