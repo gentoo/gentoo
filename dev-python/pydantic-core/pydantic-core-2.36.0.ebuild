@@ -115,7 +115,7 @@ inherit cargo distutils-r1 pypi
 DESCRIPTION="Core validation logic for pydantic written in Rust"
 HOMEPAGE="
 	https://github.com/pydantic/pydantic-core/
-	https://pypi.org/project/pydantic-core/
+	https://pypi.org/project/pydantic_core/
 "
 SRC_URI+="
 	${CARGO_CRATE_URIS}
