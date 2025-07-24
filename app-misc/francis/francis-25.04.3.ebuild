@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/francis/"
 
 LICENSE="BSD BSD-2 CC0-1.0 GPL-3+ LGPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	>=dev-libs/kirigami-addons-1.0:6
