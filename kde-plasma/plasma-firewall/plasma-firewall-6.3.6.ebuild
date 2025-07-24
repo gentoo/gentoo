@@ -4,7 +4,7 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 KFMIN=6.10.0
 QTMIN=6.8.1
 inherit ecm plasma.kde.org python-single-r1 xdg
@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/network/plasma-firewall"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="firewalld +ufw"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} || ( firewalld ufw )"
