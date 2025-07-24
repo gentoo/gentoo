@@ -10,9 +10,9 @@ Apply this patch conditionally to disable rebuilding iPxeBiosBin.rom when using 
  iPxeBiosBin_CLEAN    = \
  	$(iPxeBiosBin_0_OUTDIR)/iPxeBiosBin.c \
  
--if1of ($(KBUILD_TARGET), darwin os2 solaris win)
+-if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.amd64 darwin.arm64 linux.arm64 os2.x86 solaris.amd64 win.amd64 win.arm64)
 +# Disable building on Linux if using clang
-+if1of ($(KBUILD_TARGET), darwin os2 solaris win linux)
++if1of ($(KBUILD_TARGET).$(KBUILD_TARGET_ARCH), darwin.amd64 darwin.arm64 linux.arm64 linux.amd64 os2.x86 solaris.amd64 win.amd64 win.arm64)
   $$(iPxeBiosBin_0_OUTDIR)/iPxeBiosBin.c: $(PATH_SUB_CURRENT)/iPxeBiosBin.rom $(VBOX_BIN2C) | $$(dir $$@)
  	$(call MSG_TOOL,bin2c,iPxeBiosBin,$<,$@)
  	$(QUIET)$(VBOX_BIN2C) -min 32 -max 56 -mask 0x1ff -export NetBiosBinary $< $@
