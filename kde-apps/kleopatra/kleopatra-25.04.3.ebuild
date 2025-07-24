@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/kleopatra/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="pim"
 
 # tests completely broken, bug #641720
