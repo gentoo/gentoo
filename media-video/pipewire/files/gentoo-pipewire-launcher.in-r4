@@ -17,9 +17,9 @@ then
     . "${CONF}"
 fi
 
-: "${GENTOO_PIPEWIRE_LOG:='/dev/null'}"
-: "${GENTOO_PIPEWIRE_PULSE_LOG:='/dev/null'}"
-: "${GENTOO_WIREPLUMBER_LOG:='/dev/null'}"
+: "${GENTOO_PIPEWIRE_LOG:=/dev/null}"
+: "${GENTOO_PIPEWIRE_PULSE_LOG:=/dev/null}"
+: "${GENTOO_WIREPLUMBER_LOG:=/dev/null}"
 
 for L in \
     "${GENTOO_PIPEWIRE_LOG}" \
