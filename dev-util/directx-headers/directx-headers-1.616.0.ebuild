@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PN=DirectX-Headers
-inherit meson-multilib
+inherit dot-a meson-multilib
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/microsoft/${MY_PN}.git"
@@ -22,9 +22,17 @@ LICENSE="MIT"
 SLOT="0"
 
 multilib_src_configure() {
+	lto-guarantee-fat
+
 	local emesonargs=(
 		-Dbuild-test=false
 	)
 
 	meson_src_configure
+}
+
+multilib_src_install_all() {
+	strip-lto-bytecode
+	einstalldocs
+
 }
