@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 cmake pam tmpfiles
+inherit bash-completion-r1 cmake dot-a pam tmpfiles
 
 MY_P=${PN}_${PV/_p/-}
 
@@ -71,6 +71,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local mycmakeargs=(
 		-Dbtrfs-snapshot=$(usex btrfs)
 		-Ddchroot=$(usex dchroot)
@@ -112,6 +114,8 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+
+	strip-lto-bytecode
 
 	# debian-stype PS1 for chroot
 	# checks for /etc/debian_chroot file, which is created by schroot
