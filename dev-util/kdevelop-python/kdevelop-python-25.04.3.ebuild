@@ -6,7 +6,7 @@ EAPI=8
 ECM_TEST="forceoptional"
 KDE_ORG_CATEGORY="kdevelop"
 KDE_ORG_NAME="kdev-python"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 KFMIN=6.13.0
 QTMIN=6.7.2
 inherit ecm gear.kde.org python-single-r1
@@ -16,7 +16,7 @@ HOMEPAGE="https://kdevelop.org/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
