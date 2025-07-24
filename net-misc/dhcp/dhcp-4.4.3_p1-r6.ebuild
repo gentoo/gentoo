@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd toolchain-funcs flag-o-matic tmpfiles
+inherit dot-a systemd toolchain-funcs flag-o-matic tmpfiles
 
 MY_PV="${PV//_alpha/a}"
 MY_PV="${MY_PV//_beta/b}"
@@ -150,6 +150,8 @@ src_configure() {
 	# bug #944907
 	append-cflags -std=gnu17
 
+	lto-guarantee-fat
+
 	# bind defaults to stupid `/usr/bin/ar`
 	tc-export AR BUILD_CC
 	export ac_cv_path_AR=${AR}
@@ -219,6 +221,8 @@ src_install() {
 	default
 
 	emake -C keama DESTDIR="${D}" install
+
+	strip-lto-bytecode
 
 	dodoc README RELNOTES doc/{api+protocol,IANA-arp-parameters}
 	docinto html
