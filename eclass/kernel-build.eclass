@@ -47,6 +47,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-alternatives/cpio
 	app-alternatives/bc
+	app-arch/tar
 	dev-lang/perl
 	sys-devel/bison
 	sys-devel/flex
@@ -226,6 +227,7 @@ kernel-build_src_configure() {
 		OBJCOPY="$(tc-getOBJCOPY)"
 		OBJDUMP="$(tc-getOBJDUMP)"
 		READELF="$(tc-getREADELF)"
+		TAR=gtar
 
 		# we need to pass it to override colliding Gentoo envvar
 		ARCH=$(tc-arch-kernel)
