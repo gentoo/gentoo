@@ -1,0 +1,27 @@
+https://github.com/pbiering/ipv6calc/pull/49
+diff --git a/databases/lib/Makefile.in b/databases/lib/Makefile.in
+index ed3c55d..a57a080 100644
+--- a/databases/lib/Makefile.in
++++ b/databases/lib/Makefile.in
+@@ -91,7 +91,7 @@ ifeq ($(SHARED_LIBRARY), yes)
+ 		echo "Install shared library"
+ 		mkdir -p $(DESTDIR)$(libdir)
+ 		install -m 755 libipv6calc_db_wrapper.so.@PACKAGE_VERSION@ $(DESTDIR)$(libdir)
+-		/sbin/ldconfig -n $(DESTDIR)$(libdir)
++		/sbin/ldconfig $(DESTDIR)$(libdir)
+ else
+ 		echo "Nothing to do (shared library mode is not enabled)"
+ endif
+diff --git a/lib/Makefile.in b/lib/Makefile.in
+index 827e3ae..61527b7 100644
+--- a/lib/Makefile.in
++++ b/lib/Makefile.in
+@@ -121,7 +121,7 @@ ifeq ($(SHARED_LIBRARY), yes)
+ 		echo "Install shared library"
+ 		mkdir -p $(DESTDIR)$(libdir)
+ 		install -m 755 libipv6calc.so.@PACKAGE_VERSION@ $(DESTDIR)$(libdir)
+-		/sbin/ldconfig -n $(DESTDIR)$(libdir)
++		/sbin/ldconfig $(DESTDIR)$(libdir)
+ else
+ 		echo "Nothing to do (shared library mode is not enabled)"
+ endif

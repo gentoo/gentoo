@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<use>
+		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>app-crypt/libmd</pkg> for MD5 digest</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">pbiering/ipv6calc</remote-id>
 	</upstream>
