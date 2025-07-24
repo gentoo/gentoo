@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes"> 
+    <email>zhixu.liu@gmail.com</email>
+    <name>Z. Liu</name>
+  </maintainer>
+  <maintainer type="project" proxied="proxy">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription lang="en">
+    Provides a Python interface to GPU management and monitoring functions.
+    This is a wrapper around the NVML library. For information about the NVML
+    library, see the NVML developer page
+    http://developer.nvidia.com/nvidia-management-library-nvml
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">nvidia-ml-py</remote-id>
+  </upstream>
+</pkgmetadata>
