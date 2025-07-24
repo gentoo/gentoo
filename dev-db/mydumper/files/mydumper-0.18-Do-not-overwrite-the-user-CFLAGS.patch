@@ -1,5 +1,14 @@
+From 846fa909ce6f36df5939927d56d3d0e366770cd6 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Sun, 10 Mar 2024 21:17:16 -0400
+Subject: [PATCH] Do not overwrite the user CFLAGS
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 3fa5fde..c115b6e 100644
+index 3fa5fde3..f5b9e96d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -44,7 +44,7 @@ if (MARIADB_FOUND AND NOT MARIADB_SSL AND WITH_SSL)
@@ -7,7 +16,10 @@ index 3fa5fde..c115b6e 100644
  endif()
  
 -set(CMAKE_C_FLAGS "-std=gnu99 -Wall -Wno-deprecated-declarations -Wunused -Wwrite-strings -Wno-strict-aliasing -Wextra -Wshadow -g -Werror ${MYSQL_CFLAGS}")
-+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -Wno-deprecated-declarations -Wunused -Wwrite-strings -Wno-strict-aliasing -Wextra -Wshadow -g -Werror ${MYSQL_CFLAGS}")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -Wno-deprecated-declarations -Wunused -Wwrite-strings -Wno-strict-aliasing -Wextra -Wshadow ${MYSQL_CFLAGS}")
  include_directories(${MYDUMPER_SOURCE_DIR} ${MYSQL_INCLUDE_DIR} ${GLIB2_INCLUDE_DIR} ${PCRE2_INCLUDE_DIR} ${ZLIB_INCLUDE_DIRS} )
  
  OPTION(WITH_ASAN "Build with ASAN" OFF)
+-- 
+2.50.1
+
