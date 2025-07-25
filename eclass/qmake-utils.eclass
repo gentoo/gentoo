@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmake-utils.eclass
@@ -159,6 +159,20 @@ qt6_get_plugindir() {
 # @DESCRIPTION:
 # Echoes a multi-line string containing arguments to pass to qmake.
 qt6_get_qmake_args() {
+	local QMAKE_SPEC=
+	local QMAKE_SPEC_DEF=$("$(qt6_get_bindir)"/qmake -query QMAKE_SPEC || die)
+	if use kernel_linux ; then
+		if tc-is-gcc ; then
+			QMAKE_SPEC="linux-g++"
+		elif tc-is-clang ; then
+			QMAKE_SPEC="linux-clang"
+		fi
+	fi
+
+	[[ "${QMAKE_SPEC}" == "${QMAKE_SPEC_DEF}" ]] && {
+		QMAKE_SPEC=
+	}
+
 	cat <<-EOF
 		QMAKE_AR="$(tc-getAR) cqs"
 		QMAKE_CC="$(tc-getCC)"
@@ -182,6 +196,8 @@ qt6_get_qmake_args() {
 		QMAKE_LFLAGS_RELEASE=
 		QMAKE_LFLAGS_DEBUG=
 		QMAKE_LFLAGS_RELEASE_WITH_DEBUGINFO=
+		${QMAKE_SPEC:+-spec}
+		${QMAKE_SPEC:+${QMAKE_SPEC}}
 	EOF
 }
 
