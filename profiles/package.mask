@@ -224,7 +224,7 @@ dev-util/bin_replace_string
 >=app-crypt/gpgme-2
 >=dev-cpp/gpgmepp-2
 >=dev-libs/qgpgme-2
-dev-python/gpgmepy
+>dev-python/gpgmepy-1.9999
 
 # Sam James <sam@gentoo.org> (2025-06-03)
 # Fetching from GitHub seems broken with this:
