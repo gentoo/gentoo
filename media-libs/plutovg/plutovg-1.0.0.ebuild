@@ -11,4 +11,4 @@ SRC_URI="https://github.com/sammycage/plutovg/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv"
