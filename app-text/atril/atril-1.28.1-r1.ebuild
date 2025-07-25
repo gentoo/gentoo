@@ -4,17 +4,14 @@
 EAPI=8
 
 MATE_LA_PUNT="yes"
-
-PYTHON_COMPAT=( python3_{10..13} )
-
+PYTHON_COMPAT=( python3_{11..13} )
 inherit mate python-any-r1 virtualx
 
 DESCRIPTION="Atril document viewer for MATE"
+
 LICENSE="FDL-1.1+ GPL-2+ GPL-3+ LGPL-2+ LGPL-2.1+"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
-
 SLOT="0"
-
+KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
 IUSE="caja dbus debug djvu dvi epub +introspection keyring nls +postscript synctex t1lib test tiff xps"
 
 REQUIRED_USE="t1lib? ( dvi )"
