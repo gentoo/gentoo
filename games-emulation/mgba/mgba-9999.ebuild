@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -61,6 +61,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.10.0-optional-updater.patch
 )
+
+CMAKE_QA_COMPAT_SKIP=1 #958356
 
 pkg_setup() {
 	use lua && lua-single_pkg_setup
