@@ -94,11 +94,13 @@ src_configure() {
 		$(cmake_use_find_package gdbui KSysGuard)
 		-DBUILD_executeplasmoid=$(usex plasma)
 		$(cmake_use_find_package plasma Plasma)
-		$(cmake_use_find_package qmake KDevelop-PG-Qt)
+		$(cmake_use_find_package qmake KDevelopPGQt)
 		$(cmake_use_find_package share KF6Purpose)
 		$(cmake_use_find_package subversion SubversionLibrary)
 	)
-#		$(cmake_use_find_package hex OktetaKastenControllers)
+	if has_version "<dev-util/kdevelop-pg-qt-2.4"; then
+		mycmakeargs+=( $(cmake_use_find_package qmake KDevelop-PG-Qt) )
+	fi
 
 	ecm_src_configure
 }
