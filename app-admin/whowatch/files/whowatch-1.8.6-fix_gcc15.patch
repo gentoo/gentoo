@@ -1,0 +1,53 @@
+PR merged
+https://github.com/mtsuszycki/whowatch/pull/13.patch
+From dae08e498ee8ced3083cc7061586c7bdd8cdc041 Mon Sep 17 00:00:00 2001
+From: Richard Fearn <richardfearn@gmail.com>
+Date: Sat, 25 Jan 2025 19:14:21 +0000
+Subject: [PATCH] Allow compilation with GCC 15
+
+* Remove/replace incorrect declarations of update_tree
+* Fix signature of winch_handler signal handler, which must take an int
+---
+ src/proctree.h | 1 -
+ src/whowatch.c | 2 +-
+ src/whowatch.h | 2 +-
+ 3 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/proctree.h b/src/proctree.h
+index 13e5328..ee175b7 100644
+--- a/src/proctree.h
++++ b/src/proctree.h
+@@ -41,7 +41,6 @@ struct proc_t {
+ };
+ 
+ int update_tree(void del(void*));
+-int update_tree();
+ struct proc_t* find_by_pid(int pid);
+ struct proc_t* tree_start(int root, int start);
+ struct proc_t* tree_next();
+diff --git a/src/whowatch.c b/src/whowatch.c
+index 77828a7..37a7e8a 100644
+--- a/src/whowatch.c
++++ b/src/whowatch.c
+@@ -243,7 +243,7 @@ werase(w->wd);
+ 	size_changed = 0;
+ }
+ 
+-static void winch_handler()
++static void winch_handler(int i)
+ {
+ 	size_changed++;
+ }
+diff --git a/src/whowatch.h b/src/whowatch.h
+index 42cebbe..52b67e6 100644
+--- a/src/whowatch.h
++++ b/src/whowatch.h
+@@ -185,7 +185,7 @@ void curses_init();
+ void curses_end();
+ 
+ /* proctree.c */
+-int update_tree();
++int update_tree(void del(void*));
+ 
+ /* plist.c */
+ void delete_tree_line(void *line);
