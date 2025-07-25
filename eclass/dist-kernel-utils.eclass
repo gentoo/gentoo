@@ -180,7 +180,14 @@ dist-kernel_reinstall_initramfs() {
 	local kernel_dir=${1:-${KV_DIR}}
 	local ver=${2:-${KV_FULL}}
 
+	# If this is set it will have an effect on the name of the output
+	# image. Set this variable to track this setting.
+	if grep -q "CONFIG_EFI_ZBOOT=y" "${kernel_dir}/.config"; then
+		KERNEL_EFI_ZBOOT=1
+	fi
+
 	local image_path=${kernel_dir}/$(dist-kernel_get_image_path)
+
 	if [[ ! -f ${image_path} ]]; then
 		eerror "Kernel install missing, image not found:"
 		eerror "  ${image_path}"
