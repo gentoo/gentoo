@@ -278,11 +278,6 @@ media-libs/oneVPL-cpu
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.1.9999:30-vcs
 
-# Hans de Graaff <graaff@gentoo.org> (2025-05-18)
-# Obsolete slot depending on an old cucumber version. Use the newer slot
-# instead. Masked for removal on 2025-06-18.
-dev-util/cucumber-rails:2
-
 # David Seifert <soap@gentoo.org> (2025-05-17)
 # Historically split from dev-libs/icu, disabled by default upstream and not
 # recommended anymore. If need be, we can make it optional in icu itself.
