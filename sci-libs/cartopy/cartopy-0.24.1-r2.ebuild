@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 multiprocessing virtualx
@@ -27,7 +27,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	sci-libs/gdal[python,${PYTHON_SINGLE_USEDEP}]
+	|| (
+		$(python_gen_cond_dep '
+			sci-libs/gdal[python,${PYTHON_USEDEP}]
+		')
+		sci-libs/gdal[python,${PYTHON_SINGLE_USEDEP}]
+	)
 	$(python_gen_cond_dep '
 		>=dev-python/numpy-1.19[${PYTHON_USEDEP}]
 		dev-python/shapely[${PYTHON_USEDEP}]
