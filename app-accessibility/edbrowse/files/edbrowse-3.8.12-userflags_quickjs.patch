@@ -1,0 +1,31 @@
+Remove -O2 and -g cflags
+Remove CC and AR hardcoded
+HOST_CC is not used for the object we want
+--- a/quickjs/Makefile	2025-07-09 12:39:19.000000000 -0000
++++ a/quickjs/Makefile	2025-07-25 13:53:30.173279954 -0000
+@@ -126,13 +126,13 @@
+   AR=cosmoar
+ else
+   HOST_CC=gcc
+-  CC=$(CROSS_PREFIX)gcc
+-  CFLAGS+=-g -Wall -MMD -MF $(OBJDIR)/$(@F).d
++  CC ?= $(CROSS_PREFIX)gcc
++  CFLAGS+=-Wall -MMD -MF $(OBJDIR)/$(@F).d
+   CFLAGS += -Wno-array-bounds -Wno-format-truncation -Wno-infinite-recursion
+   ifdef CONFIG_LTO
+     AR=$(CROSS_PREFIX)gcc-ar
+   else
+-    AR=$(CROSS_PREFIX)ar
++    AR ?= $(CROSS_PREFIX)ar
+   endif
+ endif
+ STRIP?=$(CROSS_PREFIX)strip
+@@ -160,7 +160,7 @@
+ CFLAGS+=$(DEFINES)
+ CFLAGS_DEBUG=$(CFLAGS) -O0
+ CFLAGS_SMALL=$(CFLAGS) -Os
+-CFLAGS_OPT=$(CFLAGS) -O2
++CFLAGS_OPT=$(CFLAGS)
+ CFLAGS_NOLTO:=$(CFLAGS_OPT)
+ ifdef CONFIG_COSMO
+ LDFLAGS+=-s # better to strip by default
