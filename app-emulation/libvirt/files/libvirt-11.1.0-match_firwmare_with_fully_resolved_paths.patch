@@ -1,0 +1,70 @@
+Upstream: https://gitlab.com/libvirt/libvirt/-/merge_requests/498
+Gentoo-Bug: https://bugs.gentoo.org/960591
+
+diff --git a/src/qemu/qemu_firmware.c b/src/qemu/qemu_firmware.c
+index 2d0ec0b4fa228a0bdf996a4301b203f593a28ee0..b13b4f9abb1a0334c6f04a42d5373b8518eeb59c 100644
+--- a/src/qemu/qemu_firmware.c
++++ b/src/qemu/qemu_firmware.c
+@@ -33,6 +33,7 @@
+ #include "viralloc.h"
+ #include "virenum.h"
+ #include "virstring.h"
++#include "virfile.h"
+ 
+ #define VIR_FROM_THIS VIR_FROM_QEMU
+ 
+@@ -937,23 +938,23 @@ qemuFirmwareMatchesPaths(const qemuFirmware *fw,
+     switch (fw->mapping.device) {
+     case QEMU_FIRMWARE_DEVICE_FLASH:
+         if (loader && loader->path &&
+-            STRNEQ(loader->path, flash->executable.filename))
++            !virFileComparePaths(loader->path, flash->executable.filename))
+             return false;
+         if (loader && loader->nvramTemplate) {
+             if (flash->mode != QEMU_FIRMWARE_FLASH_MODE_SPLIT)
+                 return false;
+-            if (STRNEQ(loader->nvramTemplate, flash->nvram_template.filename))
++            if (!virFileComparePaths(loader->nvramTemplate, flash->nvram_template.filename))
+                 return false;
+         }
+         break;
+     case QEMU_FIRMWARE_DEVICE_MEMORY:
+         if (loader && loader->path &&
+-            STRNEQ(loader->path, memory->filename))
++            !virFileComparePaths(loader->path, memory->filename))
+             return false;
+         break;
+     case QEMU_FIRMWARE_DEVICE_KERNEL:
+         if (kernelPath &&
+-            STRNEQ(kernelPath, kernel->filename))
++            !virFileComparePaths(kernelPath, kernel->filename))
+             return false;
+         break;
+     case QEMU_FIRMWARE_DEVICE_NONE:
+@@ -1657,7 +1658,7 @@ qemuFirmwareFillDomainLegacy(virQEMUDriver *driver,
+     for (i = 0; i < cfg->nfirmwares; i++) {
+         virFirmware *fw = cfg->firmwares[i];
+ 
+-        if (STRNEQ(fw->name, loader->path)) {
++        if (!virFileComparePaths(fw->name, loader->path)) {
+             VIR_DEBUG("Not matching loader path '%s' for user provided path '%s'",
+                       fw->name, loader->path);
+             continue;
+diff --git a/src/util/virfile.c b/src/util/virfile.c
+index 3b7a795d459addfe2401f833ff0f409d3013f8bd..a5c9fbe0d92408996f23413327a9dbd323a97474 100644
+--- a/src/util/virfile.c
++++ b/src/util/virfile.c
+@@ -4108,11 +4108,11 @@ virFileComparePaths(const char *p1, const char *p2)
+      * 'sysfs', since they're no real paths so fallback to plain string
+      * comparison.
+      */
+-    ignore_value(virFileResolveLink(p1, &res1));
++    ignore_value(virFileResolveAllLinks(p1, &res1));
+     if (!res1)
+         res1 = g_strdup(p1);
+ 
+-    ignore_value(virFileResolveLink(p2, &res2));
++    ignore_value(virFileResolveAllLinks(p2, &res2));
+     if (!res2)
+         res2 = g_strdup(p2);
+ 
