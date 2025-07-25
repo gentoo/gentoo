@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sammycage/plutosvg/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv"
 
 IUSE="+freetype"
 
