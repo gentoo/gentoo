@@ -1301,7 +1301,7 @@ glibc_src_test() {
 	# we give the tests a bit more time to avoid spurious
 	# bug reports on slow arches
 
-	SANDBOX_ON=0 LD_PRELOAD= TIMEOUTFACTOR=16 emake ${myxfailparams} check
+	SANDBOX_ON=0 LD_PRELOAD= TIMEOUTFACTOR=16 nonfatal emake ${myxfailparams} check
 }
 
 src_test() {
@@ -1309,6 +1309,8 @@ src_test() {
 		return
 	fi
 
+	# glibc_src_test uses nonfatal so that we can run tests for all ABIs
+	# and fail at the end instead.
 	foreach_abi glibc_src_test || die "tests failed"
 }
 
