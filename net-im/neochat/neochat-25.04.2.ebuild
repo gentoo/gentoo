@@ -67,7 +67,7 @@ CMAKE_SKIP_TESTS=(
 src_configure() {
 	local mycmakeargs=(
 		# TODO: kunifiedpush not yet packaged
-		-DWITH_UNIFIEDPUSH=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_KUnifiedPush=ON
 	)
 
 	ecm_src_configure
