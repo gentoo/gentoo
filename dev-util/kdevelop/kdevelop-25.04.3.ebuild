@@ -22,6 +22,8 @@ IUSE="gdbui plasma +qmake +share subversion"
 # see bug 366471
 RESTRICT="test"
 
+CMAKE_QA_COMPAT_SKIP=1 # bug 960669, fixed in >=25.08
+
 # UPSTREAM: not ported yet, check plugins/CMakeLists.txt
 # IUSE="hex"
 # 	hex? ( app-editors/okteta:6 )
