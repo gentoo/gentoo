@@ -6,10 +6,6 @@
 dev-ruby/globalid test
 dev-ruby/minitest-hooks test
 
-# Mike Gilbert <floppym@gentoo.org> (2025-06-18)
-# media-libs/libsdl3 is missing keywords.
->=net-misc/freerdp-3.16.0 sdl
-
 # Sam James <sam@gentoo.org> (2025-05-16)
 # gpio: dev-libs/libgpiod not keyworded here
 # modbus: dev-libs/libmodbus not keyworded here

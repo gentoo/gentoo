@@ -1,10 +1,6 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Gilbert <floppym@gentoo.org> (2025-06-18)
-# media-libs/libsdl3 is missing keywords.
->=net-misc/freerdp-3.16.0 sdl
-
 # Sam James <sam@gentoo.org> (2025-06-05)
 # dev-util/spirv-llvm-translator not keyworded here
 dev-libs/pocl spirv

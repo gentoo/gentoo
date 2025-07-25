@@ -6,10 +6,6 @@
 # manually tested instead; Test dependencies work with stable Ruby 3.2.
 dev-ruby/facter test
 
-# Mike Gilbert <floppym@gentoo.org> (2025-06-18)
-# media-libs/libsdl3 is missing keywords.
->=net-misc/freerdp-3.16.0 sdl
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
 # dev-python/nanobind is not keyworded here
 media-gfx/openvdb python
