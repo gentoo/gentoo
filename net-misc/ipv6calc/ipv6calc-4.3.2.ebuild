@@ -84,12 +84,12 @@ src_configure() {
 src_test() {
 	if [[ ${EUID} -eq 0 ]]; then
 		# Disable tests that fail as root
-		echo true > ipv6logstats/test_ipv6logstats.sh
+		echo true > ipv6logstats/test_ipv6logstats.sh || die
 	fi
 	# it requires an apache instance
-	echo true > mod_ipv6calc/test_mod_ipv6calc.sh
+	echo true > mod_ipv6calc/test_mod_ipv6calc.sh || die
 	# it requires network
-	echo true > ipv6calcweb/test_ipv6calcweb.sh
-	echo true > ipv6calcweb/test_ipv6calcweb_form.sh
+	echo true > ipv6calcweb/test_ipv6calcweb.sh || die
+	echo true > ipv6calcweb/test_ipv6calcweb_form.sh || die
 	default
 }
