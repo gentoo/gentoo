@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit gnome.org meson-multilib python-any-r1
 
 DESCRIPTION="C++ interface for glib2"
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gtkmm.org https://gitlab.gnome.org/GNOME/glibmm"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="gtk-doc debug test"
 RESTRICT="!test? ( test )"
 
