@@ -1,0 +1,57 @@
+From a08d5cd792555621d8e778e4d71db5e88b7292c0 Mon Sep 17 00:00:00 2001
+From: Geremia Taglialatela <tagliala.dev@gmail.com>
+Date: Sat, 28 Dec 2024 10:27:55 +0100
+Subject: [PATCH] Test against 3.4 and fix tests for `Hash#inspect`
+
+Ref: ruby/ruby@a8a0591
+
+Close #1173
+---
+ .github/workflows/test.yml             | 1 +
+ test/haml/engine/old_attribute_test.rb | 2 +-
+ test/haml/engine/text_test.rb          | 2 +-
+ test/test_helper.rb                    | 5 +++++
+ 4 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/test/haml/engine/old_attribute_test.rb b/test/haml/engine/old_attribute_test.rb
+index c03740341..7570aefce 100644
+--- a/test/haml/engine/old_attribute_test.rb
++++ b/test/haml/engine/old_attribute_test.rb
+@@ -182,7 +182,7 @@
+ 
+       it 'does not join others' do
+         assert_render(<<-HTML.unindent, <<-HAML.unindent)
+-          <a data-value='[{:count=&gt;1}]'></a>
++          <a data-value='[#{render_hash({ count: 1 })}]'></a>
+         HTML
+           %a{ data: { value: [count: 1] } }
+         HAML
+diff --git a/test/haml/engine/text_test.rb b/test/haml/engine/text_test.rb
+index f72e76cd0..cec239ee8 100644
+--- a/test/haml/engine/text_test.rb
++++ b/test/haml/engine/text_test.rb
+@@ -6,7 +6,7 @@
+       skip 'escape is not working well in truffleruby' if RUBY_ENGINE == 'truffleruby'
+       assert_render(<<-HTML.unindent, <<-'HAML'.unindent)
+         a3aa" [&quot;1&quot;, 2] b " !
+-        a{:a=&gt;3}
++        a#{render_hash({ a: 3 })}
+         <ht2ml>
+       HTML
+         #{ "a#{3}a" }a" #{["1", 2]} b " !
+diff --git a/test/test_helper.rb b/test/test_helper.rb
+index 8a94f3578..40d89bbd4 100644
+--- a/test/test_helper.rb
++++ b/test/test_helper.rb
+@@ -46,6 +46,11 @@ def assert_haml(haml, options = {})
+     actual = render_haml(haml, options)
+     assert_equal expected, actual
+   end
++
++  # See haml/haml#1173 and ruby/ruby@a8a0591
++  def render_hash(hash)
++    Haml::Util.escape_html(hash)
++  end
+ end
+ 
+ class Haml::TestCase < BASE_TEST_CLASS

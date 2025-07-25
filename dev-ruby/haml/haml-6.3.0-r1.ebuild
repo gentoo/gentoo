@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_BINWRAP=""
 
@@ -22,6 +22,8 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 IUSE="doc test"
+
+PATCHES=( "${FILESDIR}/${P}-ruby34-backtrace.patch" "${FILESDIR}/${P}-ruby34.patch" )
 
 ruby_add_rdepend ">=dev-ruby/temple-0.8.2 dev-ruby/thor dev-ruby/tilt:*"
 
