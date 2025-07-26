@@ -11,7 +11,7 @@ EAPI=8
 GO_OPTIONAL="yes"
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
-inherit autotools webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
+inherit webapp java-pkg-opt-2 systemd tmpfiles toolchain-funcs go-module user-info
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
 HOMEPAGE="https://www.zabbix.com/"
@@ -23,17 +23,17 @@ SRC_URI="https://cdn.zabbix.com/${PN}/sources/stable/$(ver_cut 1-2)/${P}.tar.gz
 
 S=${WORKDIR}/${MY_P}
 
-LICENSE="AGPL-3"
+LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="amd64 arm64 ~x86"
-IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl +postgres proxy selinux server snmp sqlite ssh static"
+KEYWORDS="amd64 ~x86"
+IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl oracle +postgres proxy selinux server snmp sqlite ssh static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	?? ( gnutls openssl )
 	agent2? ( !gnutls )
-	proxy? ( ^^ ( mysql postgres sqlite ) )
-	server? ( ^^ ( mysql postgres ) !sqlite )
-	static? ( !snmp )"
+	proxy? ( ^^ ( mysql oracle postgres sqlite ) )
+	server? ( ^^ ( mysql oracle postgres ) !sqlite )
+	static? ( !oracle !snmp )"
 
 COMMON_DEPEND="
 	curl? ( net-misc/curl )
@@ -49,6 +49,7 @@ COMMON_DEPEND="
 	odbc? ( dev-db/unixODBC )
 	openipmi? ( sys-libs/openipmi )
 	openssl? ( dev-libs/openssl:=[-bindist(-)] )
+	oracle? ( dev-db/oracle-instantclient[odbc,sdk] )
 	postgres? ( dev-db/postgresql:* )
 	proxy?  (
 		dev-libs/libevent:=
@@ -80,7 +81,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	frontend? (
 		app-admin/webapp-config
-		dev-lang/php:*[bcmath,ctype,sockets,gd,truetype,xml,session,xmlreader,xmlwriter,nls,sysvipc,unicode]
+		dev-lang/php:*[bcmath,ctype,gd,jpeg(+),nls,png(+),session,sockets,sysvipc,truetype,unicode,xml,xmlreader,xmlwriter]
 		media-libs/gd[png]
 		virtual/httpd-php:*
 		mysql? ( dev-lang/php[mysqli] )
@@ -119,12 +120,23 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.18-modulepathfix.patch"
 	"${FILESDIR}/${PN}-3.0.30-security-disable-PidFile.patch"
-	"${FILESDIR}/${PN}-6.4.0-configure-sscanf.patch"
+	"${FILESDIR}/${PN}-6.0.3-system.sw.packages.patch"
 )
 
 ZABBIXJAVA_BASE="opt/zabbix_java"
 
 pkg_setup() {
+	if use oracle; then
+		if [ -z "${ORACLE_HOME}" ]; then
+			eerror
+			eerror "The environment variable ORACLE_HOME must be set"
+			eerror "and point to the correct location."
+			eerror "It looks like you don't have Oracle installed."
+			eerror
+			die "Environment variable ORACLE_HOME is not set"
+		fi
+	fi
+
 	if use frontend; then
 		webapp_pkg_setup
 	fi
@@ -134,9 +146,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# Since we patch configure.ac with e.g., ${PN}-6.4.0-configure-sscanf.patch".
-	eautoreconf
 }
 
 src_configure() {
@@ -157,6 +166,7 @@ src_configure() {
 		"$(use_with odbc unixodbc)"
 		"$(use_with openipmi openipmi)"
 		"$(use_with openssl)"
+		"$(use_with oracle)"
 		"$(use_with postgres postgresql)"
 		"$(use_with snmp net-snmp)"
 		"$(use_with sqlite sqlite3)"
@@ -341,6 +351,14 @@ pkg_postinst() {
 		elog "This will convert database data for use with Node ID"
 		elog "and also adds a local node."
 		elog
+	fi
+
+	if use oracle; then
+		ewarn
+		ewarn "Support for Oracle database has been dropped from PHP"
+		ewarn "so to make the web frontend work, you need to install"
+		ewarn "PECL extension for Oracle database."
+		ewarn "For details see https://bugs.gentoo.org/928386"
 	fi
 
 	if use proxy; then

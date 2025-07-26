@@ -80,7 +80,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	frontend? (
 		app-admin/webapp-config
-		dev-lang/php:*[bcmath,ctype,sockets,gd,truetype,xml,session,xmlreader,xmlwriter,nls,sysvipc,unicode]
+		dev-lang/php:*[bcmath,ctype,gd,jpeg(+),nls,png(+),session,sockets,sysvipc,truetype,unicode,xml,xmlreader,xmlwriter]
 		media-libs/gd[png]
 		virtual/httpd-php:*
 		mysql? ( dev-lang/php[mysqli] )
