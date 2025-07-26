@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="IPv6 address calculator"
 HOMEPAGE="https://www.deepspace6.net/projects/ipv6calc.html"
@@ -30,19 +30,24 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	# https://github.com/pbiering/ipv6calc/pull/49
-	"${FILESDIR}"/${P}-fix_directcall_ar.patch
 	"${FILESDIR}"/${P}-ldconfig_musl.patch
+	# both are merged. to be removed.
+	"${FILESDIR}"/${P}-fix_directcall_ar.patch
+	"${FILESDIR}"/${P}-fix_libs.patch
 )
 
 DOCS=( ChangeLog CREDITS README README.MaxMindDB README.GeoIP2 TODO USAGE )
 HTML_DOCS=( doc/ipv6calc.html )
 
-src_configure() {
-	# something is broken with clang. to investigate.
-	# see https://github.com/pbiering/ipv6calc/issues/45
-	tc-is-clang && append-ldflags $(no-as-needed) && filter-lto
+src_prepare() {
+	default
+	# configure.ac is patched
+	eautoconf
+}
 
+src_configure() {
+	# see https://github.com/pbiering/ipv6calc/issues/45
+	use cgi && tc-is-clang && filter-lto
 	# These options are broken.  You can't disable them.  That's
 	# okay because we want then force enabled.
 	# > libipv6calc_db_wrapper_BuiltIn.c:244:91:
