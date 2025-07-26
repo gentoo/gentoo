@@ -22,7 +22,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.22.0:3[X?]
 	>=x11-libs/gtksourceview-4.0.0:4
 	policykit? ( >=sys-auth/polkit-0.102 )
-	spell? ( >=app-text/gspell-1.6.0 )
+	spell? ( >=app-text/gspell-1.6.0:= )
 	shortcuts? ( >=xfce-base/libxfce4ui-4.17.5:= )
 "
 RDEPEND="
