@@ -31,7 +31,7 @@ RDEPEND="gnome-extra/zenity
 		media-libs/libchamplain:0.12[gtk] )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
 	raw? ( >=media-libs/libraw-0.20:= )
-	spell? ( app-text/gspell )
+	spell? ( app-text/gspell:= )
 	tiff? ( media-libs/tiff:= )
 	webp? ( gui-libs/gdk-pixbuf-loader-webp:= )
 	zip? ( >=app-arch/libarchive-3.4.0 )"

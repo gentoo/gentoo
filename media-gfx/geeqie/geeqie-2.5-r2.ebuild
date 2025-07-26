@@ -17,7 +17,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp X xmp zip"
 
 RDEPEND="gnome-extra/zenity
@@ -36,7 +36,7 @@ RDEPEND="gnome-extra/zenity
 		media-libs/libchamplain:0.12[gtk] )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
 	raw? ( >=media-libs/libraw-0.20:= )
-	spell? ( app-text/gspell )
+	spell? ( app-text/gspell:= )
 	tiff? ( media-libs/tiff:= )
 	webp? ( gui-libs/gdk-pixbuf-loader-webp:= )
 	zip? ( >=app-arch/libarchive-3.4.0 )"
@@ -49,10 +49,7 @@ BDEPEND="
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.5-test-ancillary.patch
-	"${FILESDIR}"/${P}-incorrect_init.patch
-	"${FILESDIR}"/${P}-start_thumbnail.patch
-	)
+PATCHES=( "${FILESDIR}"/${PN}-2.5-test-ancillary.patch )
 
 pkg_setup() {
 	# Do not require setting LUA_SINGLE_TARGET if lua is not used
