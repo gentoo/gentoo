@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=JUERD
 DIST_VERSION=1.37
@@ -17,18 +17,17 @@ LICENSE="|| ( AFL-3.0 AGPL-3 APL-1.0 Apache-2.0 BSD-2 Boost-1.0 CDDL CPAL-1.0
 )"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="test minimal"
-RESTRICT="!test? ( test )"
+IUSE="minimal"
 
 RDEPEND="
 	>=dev-perl/DBI-1.210.0
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	test? ( !minimal? (
 		>=dev-perl/DBD-SQLite-1.0.0
 	) )
 "
+
 PERL_RM_FILES=(
 	"t/pod.t"
 )
