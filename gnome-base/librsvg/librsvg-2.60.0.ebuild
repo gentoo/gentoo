@@ -339,7 +339,7 @@ LICENSE+="
 "
 
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 IUSE="gtk-doc +introspection test +vala"
 RESTRICT="!test? ( test )"
@@ -361,6 +361,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-util/cargo-c
 	x11-libs/gdk-pixbuf
 	${PYTHON_DEPS}
 	$(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]')
