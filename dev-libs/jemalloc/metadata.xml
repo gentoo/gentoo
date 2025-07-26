@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-			<email>kumba@gentoo.org</email>
-			<name>Joshua Kinard</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="lazy-lock">Enable lazy locking (only lock when multi-threaded)</flag>
 		<flag name="prof">Enable allocation profiling</flag>

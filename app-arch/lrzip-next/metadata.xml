@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-			<email>kumba@gentoo.org</email>
-			<name>Joshua Kinard</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 	A fork of Con Kolivas' 'lrzip' program that is actively maintained.  Lrzip
 	is a compression program optimised for large files. The larger the file and

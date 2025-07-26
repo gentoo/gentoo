@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-			<email>kumba@gentoo.org</email>
-			<name>Joshua Kinard</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 	This is a compression program optimised for large files. The larger the
 	file and the more memory you have, the better the compression advantage

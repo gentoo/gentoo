@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>kumba@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 
 	<use>
 		<flag name="device-mapper">Enable support for device-mapper from <pkg>sys-fs/lvm2</pkg></flag>
