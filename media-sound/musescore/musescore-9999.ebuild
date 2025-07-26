@@ -59,6 +59,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-4.5.0-unbundle-deps.patch"
 	"${FILESDIR}/${PN}-4.6.0-unbundle-gtest.patch"
+	"${FILESDIR}/${PN}-4.6.0-missing-includes.patch"
 )
 
 src_unpack() {

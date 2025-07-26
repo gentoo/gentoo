@@ -1,6 +1,4 @@
 unbundle gtest
-diff --git a/buildscripts/cmake/DeclareModuleSetup.cmake b/buildscripts/cmake/DeclareModuleSetup.cmake
-index a40159ea51..2e697d6791 100644
 --- a/buildscripts/cmake/DeclareModuleSetup.cmake
 +++ b/buildscripts/cmake/DeclareModuleSetup.cmake
 @@ -182,13 +182,11 @@ macro(setup_module)
@@ -17,8 +15,6 @@ index a40159ea51..2e697d6791 100644
          # end compat
  
          ${MODULE_INCLUDE_PRIVATE}
-diff --git a/src/framework/CMakeLists.txt b/src/framework/CMakeLists.txt
-index 7db7bbd36d..cf17f4aafb 100644
 --- a/src/framework/CMakeLists.txt
 +++ b/src/framework/CMakeLists.txt
 @@ -123,8 +123,6 @@ if (MUSE_ENABLE_UNIT_TESTS)
@@ -30,8 +26,6 @@ index 7db7bbd36d..cf17f4aafb 100644
  endif()
  
  # Stubs
-diff --git a/src/framework/testing/gtest.cmake b/src/framework/testing/gtest.cmake
-index eb6b059674..30fdff0049 100644
 --- a/src/framework/testing/gtest.cmake
 +++ b/src/framework/testing/gtest.cmake
 @@ -50,13 +50,11 @@ target_include_directories(${MODULE_TEST} PRIVATE
