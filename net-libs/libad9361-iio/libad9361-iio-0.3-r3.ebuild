@@ -41,6 +41,6 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	if use doc; then
-		mv "${ED}/usr/share/doc/ad93610-doc" "${ED}/usr/share/doc/${P}" || die
+		mv "${ED}/usr/share/doc/ad93610-doc" "${ED}/usr/share/doc/${PF}" || die
 	fi
 }
