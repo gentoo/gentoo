@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~x86"
 
 BDEPEND="
+	app-crypt/libmd
 	app-text/lowdown
 "
 
