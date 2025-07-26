@@ -86,7 +86,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	readline? ( sys-libs/readline:= )
 	sourceview? ( x11-libs/gtksourceview:4 )
-	spell? ( app-text/gspell )
+	spell? ( app-text/gspell:= )
 	visio? (
 		app-text/libwpg:0.3
 		dev-libs/librevenge
