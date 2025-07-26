@@ -164,20 +164,6 @@ python_test() {
 		tests/serializers/test_functions.py::test_recursive_call
 	)
 
-	case ${EPYTHON} in
-		pypy3.11)
-			EPYTEST_DESELECT+=(
-				# different repr() in exception
-				# https://github.com/pypy/pypy/issues/5220
-				tests/validators/test_arguments.py::test_error_display
-				tests/validators/test_definitions_recursive.py::test_error_inside_definition_wrapper
-				tests/validators/test_string.py::test_invalid_regex
-				tests/validators/test_string.py::test_backtracking_regex_rust_unsupported
-				tests/validators/test_union.py::test_empty_choices
-			)
-			;;
-	esac
-
 	rm -rf pydantic_core || die
 	# tests link to libpython, so they fail to link on pypy3
 	[[ ${EPYTHON} != pypy3* ]] && cargo_src_test
