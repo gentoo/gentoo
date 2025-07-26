@@ -22,6 +22,11 @@ SLOT="0/${PV}"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	# backport of https://github.com/fmtlib/fmt/commit/f4345467fce7edbc6b36c3fa1cf197a67be617e2
+	"${FILESDIR}/${P}-libcxx-21-cstdlib.patch"
+)
+
 multilib_src_configure() {
 	append-lfs-flags
 	local mycmakeargs=(
