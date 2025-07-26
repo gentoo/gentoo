@@ -1,0 +1,15 @@
+Patch taken from
+https://build.opensuse.org/projects/openSUSE:Factory/packages/html-xml-utils/files/fix-dtd-declaration.patch?rev=ea956870c438d781dcc28522afb4abf9
+
+--- html-xml-utils-8.7/dtd.c	2025-06-28 10:44:08.062000908 +0200
++++ html-xml-utils-8.7/dtd.c	2025-06-28 10:44:31.310766962 +0200
+@@ -74,8 +74,7 @@
+ } ElementType;
+ 
+ /* lookup_element -- look up the string in the hash table */
+-EXPORT const ElementType * lookup_element(/* register const char *str,
+-					  register unsigned int len */);
++EXPORT const ElementType * lookup_element(register const char *str, register size_t len);
+ 
+ /* Different kinds of parent elements: */
+ #define PHRASE "abbr", "acronym", "b", "bdi", "bdo", "big", "cite", "code", "dfn", "em", "i", "kbd", "q", "s", "samp", "small", "span", "strong", "sub", "sup", "time", "tt", "u", "var"
