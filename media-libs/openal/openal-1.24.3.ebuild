@@ -46,7 +46,12 @@ DEPEND="${RDEPEND}
 
 DOCS=( alsoftrc.sample docs/env-vars.txt docs/hrtf.txt ChangeLog README.md )
 
-PATCHES=( "${FILESDIR}/${P}-qt6.patch" ) # bug 955274; git master
+PATCHES=(
+	# bug 955274; git master
+	"${FILESDIR}/${P}-qt6.patch"
+	# backport of https://github.com/fmtlib/fmt/commit/f4345467fce7edbc6b36c3fa1cf197a67be617e2 for bundled libfmt
+	"${FILESDIR}/${PN}-1.24.3-libfmt-libcxx-21.patch"
+)
 
 multilib_src_configure() {
 	local mycmakeargs=(
