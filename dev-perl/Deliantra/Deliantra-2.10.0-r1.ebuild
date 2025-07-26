@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=MLEHMANN
 DIST_VERSION=2.01
@@ -11,7 +11,6 @@ inherit perl-module
 DESCRIPTION="Deliantra suppport module to read/write archetypes, maps etc"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	>=dev-perl/AnyEvent-4.0.0
@@ -20,9 +19,8 @@ RDEPEND="
 	>=dev-perl/JSON-XS-2.10.0
 	dev-perl/common-sense
 "
-DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-"
+DEPEND="${RDEPEND}"
+
 src_test() {
 	local MODULES=(
 		"Deliantra ${DIST_VERSION}"
