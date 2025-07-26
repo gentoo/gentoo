@@ -92,6 +92,7 @@ LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding coinmp +cups custom-cflags +dbus debug eds
 googledrive gstreamer +gtk3 gtk4 kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
+wayland X
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -198,7 +199,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		x11-libs/gtk+:3[wayland,X]
+		x11-libs/gtk+:3[wayland?,X?]
 		x11-libs/pango
 	)
 	gtk4? (
@@ -206,7 +207,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		gui-libs/gtk:4[wayland,X]
+		gui-libs/gtk:4[wayland?,X?]
 		x11-libs/pango
 	)
 	kde? (
