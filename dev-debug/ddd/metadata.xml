@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>reavertm@gentoo.org</email>
-    <name>Maciej Mrozowski</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
   GNU DDD is a graphical front-end for command-line debuggers such as
   GDB, DBX, WDB, Ladebug, JDB, XDB, the Perl debugger, the bash debugger,
