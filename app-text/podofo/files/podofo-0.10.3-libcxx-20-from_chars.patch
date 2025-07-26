@@ -1,0 +1,23 @@
+From https://github.com/podofo/podofo/commit/aa9267229b40b49e5927f286841be4cbe81d05d5.patch Mon Sep 17 00:00:00 2001
+From: Yao Zi <ziyao@disroot.org>
+Date: Sun, 22 Jun 2025 07:02:49 +0000
+Subject: [PATCH] private: charconv: Don't define from_chars for libc++ 20 or
+ later
+
+LLVM libc++ starts to provide a float-point-capable std::from_chars()
+since LLVM 20 release[1]. Unconditionally defining from_chars() when
+using Clang will cause ambiguous references and fails the build.
+
+Link: https://github.com/llvm/llvm-project/pull/91651 # [1]
+Signed-off-by: Yao Zi <ziyao@disroot.org>
+--- a/src/podofo/private/charconv_compat.h
++++ b/src/podofo/private/charconv_compat.h
+@@ -7,7 +7,7 @@
+ #if defined(__GNUC__) && !defined(__clang__) && __GNUC__ < 10
+ #define WANT_CHARS_FORMAT
+ #endif
+-#if (defined(__GNUC__) && __GNUC__ < 11) || defined(__clang__)
++#if (defined(__GNUC__) && !defined(__clang__) && __GNUC__ < 11) || (defined(__clang__) && defined(_LIBCPP_VERSION) && (_LIBCPP_VERSION < 200000))
+ #define WANT_FROM_CHARS
+ #endif
+ #if (defined(__GNUC__) && !defined(__clang__) && !defined(__MINGW32__) &&  __GNUC__ < 11) || (defined(__MINGW32__) &&  __GNUC__ < 12) || (defined(__clang__) && ((defined(__apple_build_version__) && __apple_build_version__ < 15000000) || __clang_major__ < 14))
