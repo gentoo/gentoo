@@ -11,7 +11,7 @@ SRC_URI="https://www.corpit.ru/mjt/udns/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~hppa ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="ipv6 +tools"
 
 src_configure() {
