@@ -9,7 +9,7 @@ DESCRIPTION="Spell check library for GTK+ applications"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gspell"
 
 LICENSE="LGPL-2.1+"
-SLOT="0/2" # subslot = libgspell-1 soname version
+SLOT="0/3" # subslot = libgspell-1 soname version
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 IUSE="gtk-doc +introspection test +vala"
