@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <use>
-    <flag name="debugger">Compiles debug info into the library</flag>
-  </use>
   <upstream>
     <remote-id type="github">antlr/antlr3</remote-id>
   </upstream>
