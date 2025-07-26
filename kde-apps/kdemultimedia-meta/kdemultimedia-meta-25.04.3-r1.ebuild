@@ -8,7 +8,7 @@ HOMEPAGE="https://apps.kde.org/categories/multimedia/"
 
 LICENSE="metapackage"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 IUSE="+cdrom +ffmpeg gstreamer"
 
 RDEPEND="
