@@ -16,7 +16,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 RDEPEND="
 	>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
