@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 arm64 ~x86"
 
 RDEPEND="
 	>=dev-python/protobuf-6.31.1[${PYTHON_USEDEP}]
