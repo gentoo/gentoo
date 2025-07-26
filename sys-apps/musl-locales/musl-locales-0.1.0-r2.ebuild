@@ -23,6 +23,7 @@ src_configure() {
 }
 
 src_install() {
+	cmake_src_install
 	echo "MUSL_LOCPATH=\"/usr/share/i18n/locales/musl\"" | newenvd - 00locale
 }
 
