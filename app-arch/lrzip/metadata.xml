@@ -5,6 +5,14 @@
 			<email>kumba@gentoo.org</email>
 			<name>Joshua Kinard</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>brahmajit.xyz@gmail.com</email>
+		<name>Brahmajit Das</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
 	This is a compression program optimised for large files. The larger the
 	file and the more memory you have, the better the compression advantage
