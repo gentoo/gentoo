@@ -23,7 +23,7 @@
 #  - NGINX_MISC_FILES
 
 case ${EAPI} in
-	8) ;;
+	8) inherit eapi9-pipestatus ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
@@ -800,8 +800,12 @@ nginx_src_install() {
 	rm -- *.default mime.types fastcgi.conf nginx.conf || die "rm failed"
 	popd >/dev/null || die "Returning to the previous directory failed"
 
-	dodir /usr/share
-	mv "${ED}/etc/nginx" "${ED}/usr/share/nginx" || die "mv failed"
+	dodir /usr/share/nginx
+	# Move all miscellaneous bundled files apart from *_params from /etc/nginx
+	# to /usr/share/nginx.
+	find "${ED}/etc/nginx" -type f -not -iname '*_params' -print0 |
+		xargs -0 -I{} mv {} "${ED}/usr/share/nginx"
+	pipestatus || die "find failed"
 
 	insinto /usr/share/nginx
 	if [[ ${NGINX_UPDATE_STREAM} != live ]]; then
