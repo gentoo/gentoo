@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rakshasa/rtorrent/releases/download/v${PV}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~ppc ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="debug lua selinux test tinyxml2 xmlrpc"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
