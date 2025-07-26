@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-07-26)
+# Another pytest plugin causing random breakage.  Discontinued upstream,
+# last revdep stopped using it.
+# Removal on 2025-08-25.  Bug #960760.
+dev-python/noseofyeti
+
 # Michał Górny <mgorny@gentoo.org> (2025-07-22)
 # Provider for PyPy3.10 executable.  This branch is no longer maintained
 # upstream, and it is vulnerable.  Removal on 2025-08-05.
