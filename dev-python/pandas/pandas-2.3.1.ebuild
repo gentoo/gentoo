@@ -21,7 +21,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~riscv ~x86"
 IUSE="big-endian full-support minimal test X"
 RESTRICT="!test? ( test )"
 
