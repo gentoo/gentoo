@@ -207,6 +207,7 @@ src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
+		--extra-cflags="-DCHROMIUM_NO_LOGGING" \
 		--disable-all \
 		--disable-autodetect \
 		--disable-error-resilience \
