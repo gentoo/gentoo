@@ -6,11 +6,13 @@
 		<name>Fabian Groffen</name>
 	</maintainer>
 	<use>
+		<flag name="asm106x">Enable programmer for ASMedia SATA controllers</flag>
 		<flag name="atahpt">Highpoint (HPT) ATA/RAID controller support</flag>
 		<flag name="atapromise">Support for Promise PDC2026x (FastTrak/Ultra)</flag>
 		<flag name="atavia">Support for VIA VT6421A SATA controllers</flag>
 		<flag name="buspirate-spi">Enable Bus Pirate SPI programmer</flag>
 		<flag name="ch341a-spi">Enable WCH CH341A SPI programmer</flag>
+		<flag name="ch347-spi">Enable WCH CH347 SPI programmer</flag>
 		<flag name="dediprog">Dediprog SF100 support</flag>
 		<flag name="developerbox-spi">Enable Devloperbox SPI recovery support</flag>
 		<flag name="digilent-spi">Enable support for Digilent iCEblink40 development board</flag>
@@ -23,6 +25,7 @@
 		<flag name="internal-dmi">Enable internal DMI decoding rather than use <pkg>sys-apps/dmidecode</pkg></flag>
 		<flag name="it8212">Support for ITE IT8212F ATA/RAID controllers</flag>
 		<flag name="jlink-spi">Support for SEGGER J-Link and compatible devices</flag>
+		<flag name="ni845x-spi">Enable SPI programmer using National Instruments USB-8451 or USB-8452</flag>
 		<flag name="linux-mtd">Enable support for Linux mtd SPI flash devices</flag>
 		<flag name="linux-spi">Enable support for Linux userspace spidev interface</flag>
 		<flag name="mediatek-i2c-spi">Support for Mediatek LCD controllers</flag>
@@ -44,6 +47,7 @@
 		<flag name="satasii">Enable programmer for SiI SATA controllers</flag>
 		<flag name="stlinkv3-spi">Enable SPI programmer using STLINK-V3</flag>
 		<flag name="serprog">Enable Serial Flasher programmer</flag>
+		<flag name="spidriver">Enable programmer for Excamera Labs SPIDriver</flag>
 		<flag name="tools">Install ich_descriptor_tool, a tool for reading descriptor-mode SPI-flash images for Intel chipsets</flag>
 		<flag name="usbblaster-spi">Enable support for Altera USB-Blaster dongles</flag>
 	</use>
