@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/linux-speakup/espeakup/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~x86"
 fi
 
 inherit linux-info meson
@@ -27,6 +27,8 @@ RDEPEND="${COMMON_DEPEND}"
 BDEPEND="man? ( app-text/ronn-ng )"
 
 CONFIG_CHECK="~SPEAKUP ~SPEAKUP_SYNTH_SOFT"
+ERROR_SPEAKUP="CONFIG_SPEAKUP is not enabled in this kernel!"
+ERROR_SPEAKUP_SYNTH_SOFT="CONFIG_SPEAKUP_SYNTH_SOFT is not enabled in this kernel!"
 
 src_configure() {
 	local emesonargs
@@ -44,6 +46,7 @@ src_install() {
 	newinitd "${FILESDIR}"/espeakup.initd espeakup
 	insinto /etc/modprobe.d
 	newins "${FILESDIR}/modules.espeakup" espeakup.conf
+
 }
 
 pkg_postinst() {
