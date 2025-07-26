@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/863974
+https://github.com/unittest-cpp/unittest-cpp/pull/188
+https://github.com/msys2/MINGW-packages/issues/17297
+
+From 91790b98e03654c72b0783cf8fbc66c5f56892f5 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Mon, 18 Dec 2023 19:05:55 +0000
+Subject: [PATCH] CMakeLists.txt: fix PACKAGE_VERSION substitution in .pc file
+
+Before the change project built using `cmake` had Version field empty:
+
+    Version:
+
+After the change version is set as expected:
+
+    Version: 2.1.0
+
+Noticed as as a build failure of `echant-2.6.4` which failed to find the
+package using `pkg-config --exists --print-errors "UnitTest++ >= 1.6"`
+expression.
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b4c75c9..10ecf60 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -135,6 +135,7 @@ set(prefix      ${CMAKE_INSTALL_PREFIX})
+ set(exec_prefix ${CMAKE_INSTALL_PREFIX}/bin)
+ set(libdir      ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
+ set(includedir  ${CMAKE_INSTALL_PREFIX}/include/UnitTest++)
++set(PACKAGE_VERSION ${CMAKE_PROJECT_VERSION})
+ configure_file("UnitTest++.pc.in" "UnitTest++.pc" @ONLY)
+ if(${CMAKE_SYSTEM_NAME} STREQUAL "FreeBSD")
+     set(pkgconfdir  ${CMAKE_INSTALL_PREFIX}/libdata/pkgconfig)
+
