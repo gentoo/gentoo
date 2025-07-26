@@ -1,0 +1,42 @@
+From e5442fc2848680eada862841b0e92dc9265e1a29 Mon Sep 17 00:00:00 2001
+From: Dan Allen <dan.j.allen@gmail.com>
+Date: Thu, 31 Oct 2024 04:20:33 -0600
+Subject: [PATCH] resolves #4634 normalize output from inspect when comparing
+ to fixture
+
+---
+ test/extensions_test.rb | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/test/extensions_test.rb b/test/extensions_test.rb
+index 93c475a070..20df46cb34 100644
+--- a/test/extensions_test.rb
++++ b/test/extensions_test.rb
+@@ -1468,17 +1468,17 @@ def process parent, reader, attributes
+         ++++
+         EOS
+         expected = <<~'EOS'.chop
+-        target="", attributes={}
+-        target="value,key=val", attributes={1=>"value", "key"=>"val", "name"=>"value"}
+-        target="", attributes={"text"=>""}
+-        target="[text]", attributes={"text"=>"[text]"}
+-        target="target", attributes={}
+-        target="target", attributes={1=>"value", "key"=>"val", "name"=>"value"}
+-        target="target", attributes={"text"=>""}
+-        target="target", attributes={"text"=>"[text]"}
+-        target="target", attributes={}
++        target="",attributes={}
++        target="value,key=val",attributes={1=>"value","key"=>"val","name"=>"value"}
++        target="",attributes={"text"=>""}
++        target="[text]",attributes={"text"=>"[text]"}
++        target="target",attributes={}
++        target="target",attributes={1=>"value","key"=>"val","name"=>"value"}
++        target="target",attributes={"text"=>""}
++        target="target",attributes={"text"=>"[text]"}
++        target="target",attributes={}
+         EOS
+-        output = convert_string_to_embedded input
++        output = ((convert_string_to_embedded input).gsub ' => ', '=>').gsub ', ', ','
+         assert_equal expected, output
+       ensure
+         Asciidoctor::Extensions.unregister_all

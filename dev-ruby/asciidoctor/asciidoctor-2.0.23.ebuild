@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_TEST="CUCUMBER_PUBLISH_QUIET=true test features"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.adoc README.adoc"
@@ -22,6 +22,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86"
 IUSE="test"
+
+PATCHES=( "${FILESDIR}/${P}-ruby34.patch" )
 
 ruby_add_bdepend "test? (
 	dev-util/cucumber
