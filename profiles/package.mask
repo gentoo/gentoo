@@ -144,11 +144,6 @@ kde-apps/cervisia
 >=net-im/gajim-2.3.0
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Dead upstream, fails to compile with gcc 15 and cmake 4.
-# Removal on 2025-07-12. Bugs #957271, #944255
-games-arcade/tuxanci
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Dead upstream, doesn't build with gcc 15, we're the only ones packaging it.
 # Removal on 2025-07-12. Bugs #944434, #943845, #906249, #680698.
 app-shells/esh
