@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit desktop check-reqs toolchain-funcs xdg
+inherit desktop check-reqs toolchain-funcs xdg flag-o-matic
 
 DESCRIPTION="Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine"
 HOMEPAGE="https://xonotic.org/"
@@ -48,6 +48,11 @@ BDEPEND="app-arch/unzip"
 
 CHECKREQS_DISK_BUILD="1500M"
 CHECKREQS_DISK_USR="1200M"
+
+pkg_setup() {
+	# darkplaces use gnu17
+	append-cflags "-std=gnu17"
+}
 
 src_prepare() {
 	default
