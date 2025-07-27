@@ -10,6 +10,6 @@
     <name>Openstack</name>
   </maintainer>
   <upstream>
-    <remote-id type="bitbucket">tsg-/liberasurecode</remote-id>
+    <remote-id type="github">openstack/liberasurecode</remote-id>
   </upstream>
 </pkgmetadata>
