@@ -30,7 +30,7 @@ RDEPEND="
 	app-text/asciidoc
 	doc? ( dev-ruby/asciidoctor )"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-qt/linguist-tools"
+BDEPEND="dev-qt/qttools[linguist]"
 
 PATCHES=(
 	"${FILESDIR}/wsjtx-2.2.0-werror.patch"
