@@ -151,11 +151,6 @@ net-im/skypeforlinux
 sec-policy/selinux-skype
 x11-plugins/pidgin-skypeweb
 
-# Michał Górny <mgorny@gentoo.org> (2025-06-25)
-# New problematic test dependencies.  No reverse dependencies.
-# Removal on 2025-07-25.  Bug #958987.
-dev-python/caldav
-
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # Last commit in 2019.  Has an entry point conflict with
 # dev-python/pytest-tornasync.  No reverse dependencies left.
