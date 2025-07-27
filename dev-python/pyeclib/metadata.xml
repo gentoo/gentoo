@@ -13,6 +13,7 @@
     This library provides a simple Python interface for implementing erasure codes. To obtain the best possible performance, the underlying erasure code algorithms are written in C.
   </longdescription>
   <upstream>
+    <remote-id type="github">openstack/pyeclib</remote-id>
     <remote-id type="pypi">pyeclib</remote-id>
   </upstream>
 </pkgmetadata>
