@@ -144,11 +144,6 @@ kde-apps/cervisia
 >=net-im/gajim-2.3.0
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Dead upstream, fails to compile.
-# Removal on 2025-07-12. Bugs #919185, #882585, #871018, #913572
-net-analyzer/cryptcat
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Deprecated and no longer maintained upstream. Open security
 # issues. Use media-gfx/fig2dev instead.
 # Removal on 2025-07-12. Bug #917279.
