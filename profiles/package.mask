@@ -138,11 +138,6 @@ kde-apps/cervisia
 # no longer be used on this architecture.
 =net-proxy/mitmproxy-9.0.1
 
-# Jay Faulkner <jayf@gentoo.org> (2025-06-26)
-# Discontinued by upstream in Sept 2023, running on a likely vulnerable
-# electron version. Bug #959128.
-net-irc/irccloud-desktop-bin
-
 # David Seifert <soap@gentoo.org> (2025-06-25)
 # Skype has been shut down on 2025-05-05, use the Teams progressive web
 # application with your Skype username as alternative.
