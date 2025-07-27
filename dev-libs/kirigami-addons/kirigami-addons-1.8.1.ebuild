@@ -43,6 +43,7 @@ DEPEND="${COMMON_DEPEND}
 		x11-themes/sound-theme-freedesktop
 	)
 "
+BDEPEND=">=kde-frameworks/extra-cmake-modules-6.11.0"
 
 src_prepare() {
 	ecm_src_prepare
