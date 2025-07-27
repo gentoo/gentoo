@@ -152,12 +152,6 @@ sec-policy/selinux-skype
 x11-plugins/pidgin-skypeweb
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
-# Last commit in 2019.  Has an entry point conflict with
-# dev-python/pytest-tornasync.  No reverse dependencies left.
-# Removal on 2025-07-21.  Bug #958601.
-dev-python/pytest-tornado
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # No commits for two years.  Broken with Python 3.14
 # and with >=dev-python/pytest-asyncio-1.0.0.  No reverse dependencies.
 # Removal on 2025-07-21.  Bug #958592.
