@@ -210,7 +210,6 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	virtual/perl-JSON-PP
 "
 [[ ${EAPI} == 8 ]] && BDEPEND="${BDEPEND} ${PYTHON_DEPS}"
 # gst-plugins-{base,good} splits all require glib-utils due to gnome.mkenums_simple meson calls in gst-libs
