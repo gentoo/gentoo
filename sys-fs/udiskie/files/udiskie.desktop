@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=udiskie
+Comment=An automatic disk mounting service using udisks
+Exec=/usr/bin/udiskie
+Terminal=false
+Type=Application
+X-GNOME-HiddenUnderSystemd=true
+X-KDE-HiddenUnderSystemd=true
+X-systemd-skip=true
