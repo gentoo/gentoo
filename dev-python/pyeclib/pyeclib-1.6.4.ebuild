@@ -27,6 +27,8 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
+		dev-libs/isa-l
+		dev-libs/jerasure
 		dev-python/six[${PYTHON_USEDEP}]
 	)
 "
@@ -40,5 +42,6 @@ src_prepare() {
 }
 
 pkg_postinst() {
+	optfeature "isa-l backend" dev-libs/isa-l
 	optfeature "jerasure backend" dev-libs/jerasure
 }
