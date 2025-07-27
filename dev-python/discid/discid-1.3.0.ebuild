@@ -12,11 +12,11 @@ MY_P=python-discid-${PV}
 DESCRIPTION="Python bindings for libdiscid"
 HOMEPAGE="
 	https://python-discid.readthedocs.io/en/latest/
-	https://github.com/JonnyJD/python-discid/
+	https://github.com/metabrainz/python-discid/
 	https://pypi.org/project/discid/
 "
 SRC_URI="
-	https://github.com/JonnyJD/python-discid/archive/v${PV}.tar.gz
+	https://github.com/metabrainz/python-discid/archive/v${PV}.tar.gz
 		-> ${MY_P}.gh.tar.gz
 "
 S=${WORKDIR}/${MY_P}

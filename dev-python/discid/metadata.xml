@@ -6,7 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">JonnyJD/python-discid</remote-id>
+		<remote-id type="github">metabrainz/python-discid</remote-id>
 		<remote-id type="pypi">discid</remote-id>
 	</upstream>
 </pkgmetadata>
