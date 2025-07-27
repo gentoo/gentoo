@@ -235,13 +235,6 @@ dev-util/bin_replace_string
 # >  Unable to locally verify the issuer's authority.
 =app-misc/ca-certificates-20250419.3.112
 
-# Michael Orlitzky <mjo@gentoo.org> (2025-05-28)
-# I added this for SageMath, but in hindsight do not think anyone is
-# using it. It has code issues and upstream is not terribly interested
-# in fixing it. (They are active and helpful, just not in love with this
-# particular codebase.) Bug 940232. Removal after 30 days.
-dev-gap/cohomolo
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
 # sci-electronics/gazebo depends on x11-libs/qwt:6[qt5] and Qt5, lots of
 # open bugs. Most packages perpetually stuck at EAPI-7 and several major
