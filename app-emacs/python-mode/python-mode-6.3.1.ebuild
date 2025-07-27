@@ -15,7 +15,7 @@ if [[ "${PV}" == *9999* ]] ; then
 else
 	SRC_URI="https://gitlab.com/python-mode-devs/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+	KEYWORDS="amd64 arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 fi
 
 LICENSE="GPL-3+"
