@@ -1,0 +1,13 @@
+From https://github.com/boostorg/thread/commit/49ccf9c30a0ca556873dbf64b12b0d741d1b3e66
+index bbf0ffc..989baba 100644
+--- a/src/third_party/boost/boost/thread/future.hpp	
++++ b/src/third_party/boost/boost/thread/future.hpp
+@@ -4669,7 +4669,7 @@ namespace detail
+       }
+       run_it& operator=(BOOST_THREAD_RV_REF(run_it) x) BOOST_NOEXCEPT {
+         if (this != &x) {
+-          that_=x.that;
++          that_=x.that_;
+           x.that_.reset();
+         }
+         return *this;
