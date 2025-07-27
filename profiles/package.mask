@@ -36,6 +36,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Bernard Cafarelli <voyageur@gentoo.org> (2025-07-27)
+# Current version in tree only supports python <=3.11
+# Needs major version bump, relevant dependencies, and tests fixes
+# Removal on 2025-08-26. Bug #952156.
+dev-python/aiocache
+dev-python/arsenic
+dev-python/browser-cookie3
+dev-python/tld
+dev-python/yaswfp
+net-analyzer/wapiti
+
 # Michał Górny <mgorny@gentoo.org> (2025-07-26)
 # Another pytest plugin causing random breakage.  Discontinued upstream,
 # last revdep stopped using it.
