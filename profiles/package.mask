@@ -151,12 +151,6 @@ net-im/skypeforlinux
 sec-policy/selinux-skype
 x11-plugins/pidgin-skypeweb
 
-# Michał Górny <mgorny@gentoo.org> (2025-06-21)
-# No commits for two years.  Broken with Python 3.14
-# and with >=dev-python/pytest-asyncio-1.0.0.  No reverse dependencies.
-# Removal on 2025-07-21.  Bug #958592.
-dev-python/backoff
-
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
 >=dev-python/pygobject-3.52
