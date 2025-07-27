@@ -156,10 +156,6 @@ x11-plugins/pidgin-skypeweb
 # Removal on 2025-07-25.  Bug #958987.
 dev-python/caldav
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-24)
-# Qt5 package without any revdeps. Removal on 2025-07-24. Bug #938823
-dev-libs/libdbusmenu-qt
-
 # Michał Górny <mgorny@gentoo.org> (2025-06-21)
 # Last commit in 2019.  Has an entry point conflict with
 # dev-python/pytest-tornasync.  No reverse dependencies left.
