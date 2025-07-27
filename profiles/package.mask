@@ -143,12 +143,6 @@ kde-apps/cervisia
 >=dev-python/pygobject-3.52
 >=net-im/gajim-2.3.0
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Deprecated and no longer maintained upstream. Open security
-# issues. Use media-gfx/fig2dev instead.
-# Removal on 2025-07-12. Bug #917279.
-media-gfx/transfig
-
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).
 =sys-devel/gettext-0.25*
