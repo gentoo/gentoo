@@ -144,11 +144,6 @@ kde-apps/cervisia
 >=net-im/gajim-2.3.0
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Dead upstream, doesn't build with gcc 15, we're the only ones packaging it.
-# Removal on 2025-07-12. Bugs #944434, #943845, #906249, #680698.
-app-shells/esh
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Unmaintained upstream since 2008, doesn't build. x86-only.
 # Removal on 2025-07-12. Bugs #77471, #926465, #941191, #948965.
 games-fps/tenebrae
