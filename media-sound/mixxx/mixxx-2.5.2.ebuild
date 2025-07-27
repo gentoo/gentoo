@@ -101,6 +101,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.2-x11_opt.patch
 	# Fix colum header text asignment. From upstream.
 	"${FILESDIR}"/${P}-fix_col_headers.patch
+	# Fix build with libcxx-21
+	# https://github.com/mixxxdj/mixxx/pull/15132.patch
+	"${FILESDIR}"/${P}-libcxx21_include.patch
 )
 
 CMAKE_SKIP_TESTS=(

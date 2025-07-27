@@ -1,0 +1,35 @@
+https://github.com/mixxxdj/mixxx/pull/15132.patch
+From 9f9a7496f90fe7d1f153d2d62af4613b6d2f1d74 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Sun, 27 Jul 2025 16:06:26 +0200
+Subject: [PATCH] missing include cstdlib
+
+Error with libcxx-21
+
+>In file included from ./mixxx-2.5.2/lib/reverb/Reverb.cc:46:
+>In file included from ./mixxx-2.5.2/lib/reverb/Reverb.h:54:
+>./mixxx-2.5.2/lib/reverb/dsp/Delay.h:51:14: error: use of undeclared identifier 'free'
+>   51 |                 ~Delay() { free (data); }
+>      |                            ^~~~
+>./mixxx-2.5.2/work/mixxx-2.5.2/lib/reverb/dsp/Delay.h:57:25: error: use of undeclared identifier 'calloc'
+>   57 |                                 data = (sample_t *) calloc (sizeof (sample_t), size);
+>      |                                                     ^~~~~~
+>2 errors generated.
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ lib/reverb/dsp/Delay.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/lib/reverb/dsp/Delay.h b/lib/reverb/dsp/Delay.h
+index d530fee58a1c..a560b7552446 100644
+--- a/lib/reverb/dsp/Delay.h
++++ b/lib/reverb/dsp/Delay.h
+@@ -32,6 +32,7 @@
+ #ifndef _DSP_DELAY_H_
+ #define _DSP_DELAY_H_
+ 
++#include <cstdlib> // for free and calloc
+ #include <cstring> // for memset
+ 
+ #include "util.h"
