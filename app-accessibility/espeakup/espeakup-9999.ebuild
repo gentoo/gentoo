@@ -42,7 +42,7 @@ src_install() {
 	einstalldocs
 	newconfd "${FILESDIR}"/espeakup.confd espeakup
 	newinitd "${FILESDIR}"/espeakup.initd espeakup
-	insinto /etc/modprobe.d
+	insinto /etc/modules-load.d/
 	newins "${FILESDIR}/modules.espeakup" espeakup.conf
 }
 
