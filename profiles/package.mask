@@ -138,12 +138,6 @@ kde-apps/cervisia
 # no longer be used on this architecture.
 =net-proxy/mitmproxy-9.0.1
 
-# David Seifert <soap@gentoo.org> (2025-06-25)
-# Skype has been shut down on 2025-05-05, use the Teams progressive web
-# application with your Skype username as alternative.
-# Removal on 2025-07-25.  Bug #942322.
-sec-policy/selinux-skype
-
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
 >=dev-python/pygobject-3.52
