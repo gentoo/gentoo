@@ -284,7 +284,6 @@ media-libs/oneVPL-cpu
 # Historically split from dev-libs/icu, disabled by default upstream and not
 # recommended anymore. If need be, we can make it optional in icu itself.
 # Removal on 2025-06-16. Bug #956106.
-dev-libs/icu-layoutex
 dev-libs/icu-le-hb
 
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
