@@ -1,4 +1,4 @@
-# Copyright 2011-2022 Gentoo Authors
+# Copyright 2011-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask armv7 specific USE flags
@@ -9,6 +9,7 @@
 
 -cpu_flags_arm_edsp
 -cpu_flags_arm_neon
+-cpu_flags_arm_neon-fp16
 -cpu_flags_arm_thumb
 -cpu_flags_arm_thumb2
 -cpu_flags_arm_vfp
