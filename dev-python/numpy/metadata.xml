@@ -21,4 +21,12 @@
     <remote-id type="github">numpy/numpy</remote-id>
     <remote-id type="pypi">numpy</remote-id>
   </upstream>
+  <use>
+    <flag name="cpudetection">
+      Enable dynamic dispatch to additional CPU extensions not covered
+      by enabled CPU_FLAGS_*.  This permits NumPy to benefit from improved
+      performance when CPUs support more instruction sets, while preserving
+      compatibility with the baseline set by CPU_FLAGS_*.
+    </flag>
+  </use>
 </pkgmetadata>

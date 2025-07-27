@@ -1,0 +1,72 @@
+From 5591f1109b45a482bdaea3d3e44a80212a188edd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@quansight.com>
+Date: Mon, 28 Jul 2025 21:33:18 +0200
+Subject: [PATCH 1/2] BLD: provide explicit control over cpu-baseline detection
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add a new `cpu-baseline-detect` feature flag that can be used to more
+precisely control the use of CPU baseline detection.  This can be used
+by packages to more precisely control used SIMD code independently
+of compiler flags specified.  The option follows typical feature
+semantics -- with `auto` preserving the current behavior of enabling
+when relevant compiler flags are found, `enabled` forcing it on
+based on the implicit compiler defaults, and `disabled` forcing it off.
+
+Signed-off-by: Michał Górny <mgorny@quansight.com>
+---
+ meson.options         |  2 ++
+ meson_cpu/meson.build | 22 ++++++++++++----------
+ 2 files changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/meson.options b/meson.options
+index b09992fe9b91..f17f9901664a 100644
+--- a/meson.options
++++ b/meson.options
+@@ -28,6 +28,8 @@ option('disable-optimization', type: 'boolean', value: false,
+         description: 'Disable CPU optimized code (dispatch,simd,unroll...)')
+ option('cpu-baseline', type: 'string', value: 'min',
+         description: 'Minimal set of required CPU features')
++option('cpu-baseline-detect', type: 'feature', value: 'auto',
++        description: 'Detect CPU baseline from the compiler flags')
+ option('cpu-dispatch', type: 'string', value: 'max -xop -fma4',
+         description: 'Dispatched set of additional CPU features')
+ option('test-simd', type: 'array',
+diff --git a/meson_cpu/meson.build b/meson_cpu/meson.build
+index e5b6d0fbe7be..1c4c6eecb308 100644
+--- a/meson_cpu/meson.build
++++ b/meson_cpu/meson.build
+@@ -46,20 +46,22 @@ if get_option('disable-optimization')
+   CPU_CONF_BASELINE = 'none'
+   CPU_CONF_DISPATCH = 'none'
+ else
+-  baseline_detect = false
++  baseline_detect = get_option('cpu-baseline-detect').enabled()
+   c_args = get_option('c_args')
+-  foreach arg : c_args
+-    foreach carch : ['-march', '-mcpu', '-xhost', '/QxHost']
+-      if arg.contains(carch)
+-        message('Appending option "detect" to "cpu-baseline" due to detecting global architecture c_arg "' + arg + '"')
+-        baseline_detect = true
++  if get_option('cpu-baseline-detect').auto()
++    foreach arg : c_args
++      foreach carch : ['-march', '-mcpu', '-xhost', '/QxHost']
++        if arg.contains(carch)
++          message('Appending option "detect" to "cpu-baseline" due to detecting global architecture c_arg "' + arg + '"')
++          baseline_detect = true
++          break
++        endif
++      endforeach
++      if baseline_detect
+         break
+       endif
+     endforeach
+-    if baseline_detect
+-      break
+-    endif
+-  endforeach
++  endif
+   # The required minimal set of required CPU features.
+   CPU_CONF_BASELINE = get_option('cpu-baseline')
+   if baseline_detect
