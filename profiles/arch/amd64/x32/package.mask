@@ -183,7 +183,6 @@ app-metrics/ceph_exporter
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Broken multilib dependencies.
 net-im/mattermost-desktop-bin
-net-im/skypeforlinux
 net-im/slack
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)

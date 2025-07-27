@@ -370,7 +370,6 @@ net-im/element-desktop-bin
 net-im/gitter-bin
 net-im/mattermost-desktop-bin
 net-im/rocketchat-desktop-bin
-net-im/skypeforlinux
 net-im/slack
 net-im/telegram-desktop-bin
 net-im/whatsapp-desktop-bin
