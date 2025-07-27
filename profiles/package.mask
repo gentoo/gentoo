@@ -148,12 +148,6 @@ kde-apps/cervisia
 =sys-devel/gettext-0.25*
 =dev-libs/libintl-0.25*
 
-# Michał Górny <mgorny@gentoo.org> (2025-06-07)
-# Broken and dangerous.  Archived in 2022.  The last reverse dependency
-# stopped using it in 2023 (except for outdated ebuilds).
-# Removal on 2025-07-07.  Bug #957272, #806474.
-dev-python/pytest-tempdir
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-06-07)
 # EAPI=7, maintainer-needed, fails to compile, upstream gone, not
 # packaged anywhere else.
