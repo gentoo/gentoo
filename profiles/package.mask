@@ -262,12 +262,6 @@ dev-libs/urdfdom_headers
 # Breaks some reverse dependencies and is abandoned upstream (bug #956630).
 =dev-cpp/glog-0.7.1
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2025-05-25)
-# Archived upstream and no longer builds with modern compilers.
-# Bugs #956601, #930253
-# Removal on 2025-06-24
-media-libs/oneVPL-cpu
-
 # Sam James <sam@gentoo.org> (2025-05-23)
 # Severe memory leak (bug #953874)
 =app-i18n/ibus-anthy-1.5.17
