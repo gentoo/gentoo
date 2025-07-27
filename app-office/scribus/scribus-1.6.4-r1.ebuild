@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.6.1-findhyphen.patch
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
 	"${FILESDIR}"/${P}-poppler-25.06.0.patch # 1.6 branch, in 1.6.5
+	"${FILESDIR}"/${PN}-1.7.0-poppler-25.07.0.patch # from trunk
 )
 
 src_prepare() {
