@@ -4,7 +4,6 @@
 	<!-- maintainer-needed -->
 	<use>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>dev-libs/botan</pkg></flag>
-		<flag name="samples">Install sample configuration files</flag>
 		<flag name="shell">Install kea-shell text management client for Control Agent</flag>
 	</use>
 	<upstream>
