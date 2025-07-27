@@ -144,11 +144,6 @@ kde-apps/cervisia
 >=net-im/gajim-2.3.0
 
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Unmaintained upstream since 2008, doesn't build. x86-only.
-# Removal on 2025-07-12. Bugs #77471, #926465, #941191, #948965.
-games-fps/tenebrae
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
 # Dead upstream, fails to compile.
 # Removal on 2025-07-12. Bugs #919185, #882585, #871018, #913572
 net-analyzer/cryptcat
