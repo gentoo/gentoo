@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://apps.gnome.org/Settings"
-SRC_URI+=" https://dev.gentoo.org/~pacho/${PN}/${P}-patchset.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~pacho/${PN}/${PN}-47.3-patchset.tar.xz"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo.svg"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo-dark.svg"
 # Logo is CC-BY-SA-2.5
@@ -32,13 +32,13 @@ RESTRICT="!test? ( test )"
 # Second block is dependency() from subdir meson.builds, sorted by directory name occurrence order
 DEPEND="
 	gnome-online-accounts? (
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[X,wayland=]
 		>=net-libs/gnome-online-accounts-3.51.0:=
 	)
 	>=media-libs/libpulse-2.0[glib]
 	>=gui-libs/gtk-4.15.2:4[X,wayland=]
 	>=gui-libs/libadwaita-1.6_beta:1
-	>=sys-apps/accountsservice-0.6.39
+	>=sys-apps/accountsservice-23.11.69
 	>=x11-misc/colord-0.1.34:0=
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=dev-libs/glib-2.76.6:2
@@ -194,6 +194,8 @@ src_configure() {
 }
 
 src_test() {
+	# tests are fragile to long socket paths, bug #921583
+	local -x TMPDIR=/tmp
 	virtx meson_src_test
 }
 
