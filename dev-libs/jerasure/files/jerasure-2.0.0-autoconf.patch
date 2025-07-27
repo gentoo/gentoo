@@ -1,0 +1,10 @@
+--- a/m4/ax_ext.m4
++++ b/m4/ax_ext.m4
+@@ -164,6 +164,7 @@ AC_DEFUN([AX_EXT],
+         fi
+       fi
+ 
++      AC_CHECK_SIZEOF([long])
+       if test "$ac_cv_sizeof_long" -eq 8; then
+           SIMD_FLAGS="$SIMD_FLAGS -DARCH_64"
+       fi
