@@ -1,7 +1,8 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 altivec - Use the AltiVec/VMX instruction set
 vsx - Use the Vector Scalar Extension instruction set (POWER7 and later)
 vsx2 - Use the Vector Scalar Extension v.2 instruction set (POWER8 and later)
 vsx3 - Use the Vector Scalar Extension v.3 instruction set (POWER9 and later)
+vsx4 - Use the Vector Scalar Extension v.4 instruction set (POWER10 and later)
