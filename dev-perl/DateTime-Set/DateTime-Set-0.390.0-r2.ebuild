@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=FGLOCK
 DIST_VERSION=0.3900
@@ -11,8 +11,6 @@ DESCRIPTION="Datetime sets and set math"
 
 SLOT="0"
 KEYWORDS="amd64 ~riscv x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/DateTime-0.120.0
@@ -23,7 +21,6 @@ BDEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
 		dev-perl/DateTime-Event-Recurrence
-		virtual/perl-Test-Simple
 	)
 "
 # meta.json is incorrect, it needs P-V and M-B
