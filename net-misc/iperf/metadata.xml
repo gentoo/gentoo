@@ -12,6 +12,6 @@
 	<upstream>
 		<remote-id type="cpe">cpe:/a:iperf_project:iperf</remote-id>
 		<remote-id type="github">esnet/iperf</remote-id>
-		<remote-id type="sourceforge">iperf</remote-id>
+		<remote-id type="sourceforge">iperf2</remote-id>
 	</upstream>
 </pkgmetadata>
