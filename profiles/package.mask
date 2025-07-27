@@ -144,7 +144,6 @@ kde-apps/cervisia
 # Removal on 2025-07-25.  Bug #942322.
 net-im/skypeforlinux
 sec-policy/selinux-skype
-x11-plugins/pidgin-skypeweb
 
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
