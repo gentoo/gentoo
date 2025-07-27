@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=DVEEDEN
 DIST_VERSION=4.050
@@ -12,8 +12,7 @@ DESCRIPTION="MySQL driver for the Perl5 Database Interface (DBI)"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 
-IUSE="mariadb +mysql test +ssl"
-RESTRICT="!test? ( test )"
+IUSE="mariadb +mysql +ssl"
 REQUIRED_USE="^^ ( mysql mariadb )"
 
 DB_DEPENDS="
@@ -29,12 +28,9 @@ DEPEND="
 	${DB_DEPENDS}
 "
 BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-	virtual/perl-Data-Dumper
 	test? (
 		dev-perl/Test-Deep
 		>=virtual/perl-Test-Simple-0.900.0
-		virtual/perl-Time-HiRes
 	)
 "
 
@@ -48,6 +44,7 @@ PERL_RM_FILES=(
 	t/pod.t
 	t/manifest.t
 )
+
 src_configure() {
 	local impl
 	impl=$(usex mariadb mariadb mysql)
