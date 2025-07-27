@@ -5,6 +5,9 @@ EAPI=8
 
 inherit cmake eapi9-ver
 
+# https://bugs.gentoo.org/960527#c9
+CMAKE_QA_COMPAT_SKIP=1
+
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
