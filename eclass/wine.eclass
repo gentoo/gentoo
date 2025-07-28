@@ -192,6 +192,9 @@ wine_src_configure() {
 	# avoid gcc-15's c23 default with older wine (bug #943849)
 	ver_test -lt 10 && append-cflags -std=gnu17
 
+	# filter O3 usage, otherwise crashes in shell32 happens.
+	replace-flags -O3 -O2
+
 	# Wine uses many linker tricks that are unlikely to work
 	# with anything but bfd or lld (bug #867097)
 	if ! tc-ld-is-bfd && ! tc-ld-is-lld; then
