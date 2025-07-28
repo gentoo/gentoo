@@ -26,15 +26,20 @@ RESTRICT="test"
 
 CP_DEPEND="
 	dev-java/bsf:2.3
-	dev-java/jakarta-servlet-api:4"
-
-RDEPEND="${CP_DEPEND}
-	>=virtual/jre-1.8:*"
+	dev-java/jakarta-servlet-api:4
+"
 
 # restrict to max Java 25
 # https://bugs.openjdk.org/browse/JDK-8359053
-DEPEND="${CP_DEPEND}
-	<=virtual/jdk-25:*"
+DEPEND="
+	${CP_DEPEND}
+	<=virtual/jdk-25:*
+"
+
+RDEPEND="
+	${CP_DEPEND}
+	>=virtual/jre-1.8:*
+"
 
 DOCS=(
 	CHANGES.md
@@ -113,6 +118,6 @@ src_test() {
 
 src_install() {
 	java-pkg-simple_src_install
-	# The eclass installs only then main launcher.
+	# The eclass installs only the main launcher.
 	java-pkg_dolauncher "${PN}-interpreter" --main bsh.Interpreter
 }
