@@ -1,0 +1,12 @@
+Adapted from https://mirrors.slackware.com/slackware/slackware-current/source/a/lilo/lilo.gcc15.diff
+--- a/make.vars
++++ b/make.vars
+@@ -80,7 +80,7 @@
+ MAN_DIR=/usr/share/man
+ 
+ # set the compiler optimization level
+-OPT=-Os
++OPT=-Os -std=gnu17
+ 
+ ### End of configuration variables for makefiles ###
+ 
