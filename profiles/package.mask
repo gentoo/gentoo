@@ -187,22 +187,6 @@ kde-apps/cervisia
 # >  Unable to locally verify the issuer's authority.
 =app-misc/ca-certificates-20250419.3.112
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
-# sci-electronics/gazebo depends on x11-libs/qwt:6[qt5] and Qt5, lots of
-# open bugs. Most packages perpetually stuck at EAPI-7 and several major
-# version bumps out of date. Bugs #937608, #947390; removal on 2025-06-26.
-sci-electronics/gazebo
-dev-libs/sdformat
-net-libs/ignition-msgs
-net-libs/ignition-transport
-sci-libs/ignition-common
-sci-libs/ignition-fuel-tools
-sci-libs/ignition-math
-dev-build/ignition-cmake
-dev-libs/console_bridge
-dev-libs/urdfdom
-dev-libs/urdfdom_headers
-
 # Sam James <sam@gentoo.org> (2025-05-26)
 # Breaks some reverse dependencies and is abandoned upstream (bug #956630).
 =dev-cpp/glog-0.7.1
