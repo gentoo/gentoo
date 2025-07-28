@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-28)
+# Bundled pcap-thread, not ported to musl
+# bug #713498, https://github.com/DNS-OARC/pcap-thread/issues/128
+net-dns/dnscap
+
 # Ian Jordan <immoloism@gmail.com> (2025-07-13)
 # Binary is compiled against glibc
 net-misc/anydesk
