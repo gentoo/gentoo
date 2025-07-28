@@ -36,6 +36,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-28)
+# Unmaintained, out of date, last upstream release in 2018, last
+# packaged release 2015. Broken with modern system interfaces for
+# some time. Entire OpenVZ ecosystem is vaporware these days,
+# openvz-sources was last-rited in 2017 already.
+# Removal on 2025-08-27.  Bug #580516, #868252.
+sys-cluster/vzctl
+app-backup/vzdump
+app-misc/vzstats
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
 # Current package is 4 years old and outdated compared to upstream, needs
 # a real maintainer: still EAPI-7, Qt5-based with unclear upstream status.
