@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
+# Dead for many years, Qt5-based, EAPI-7. Anyone interested in its features
+# should look into qmp3gain instead (bug #949077) but it also needs porting
+# to Qt6. Removal on 2025-08-27.
+media-sound/qtgain
+
 # Hans de Graaff <graaff@gentoo.org> (2025-07-28)
 # Obsolete slots of cucumber components. These slots are no longer used
 # by dev-util/cucumber. Removal on 2025-08-28.
