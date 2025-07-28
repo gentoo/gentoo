@@ -172,6 +172,8 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf=()
+
 	if ! use system-bootstrap; then
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
@@ -189,9 +191,9 @@ src_configure() {
 	# Strip some flags users may set, but should not. #818502
 	filter-flags -fexceptions
 
-	# Strip lto related flags, no support in this version.
-	# https://bugs.gentoo.org/833097
-	# https://bugs.gentoo.org/833098
+	# Strip lto related flags, we rely on --with-jvm-features=link-time-opt
+	# See bug #833097 and bug #833098.
+	tc-is-lto && myconf+=( --with-jvm-features=link-time-opt )
 	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
@@ -200,7 +202,7 @@ src_configure() {
 
 	tc-export_build_env CC CXX PKG_CONFIG STRIP
 
-	local myconf=(
+	myconf+=(
 			--disable-ccache
 			--disable-freetype-bundling
 			--disable-precompiled-headers

@@ -55,7 +55,7 @@ LICENSE="GPL-2-with-classpath-exception"
 SLOT="${MY_PV%%[.+]*}"
 KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv x86"
 
-IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap lto selinux source system-bootstrap systemtap"
+IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source system-bootstrap systemtap"
 
 REQUIRED_USE="
 	javafx? ( alsa !headless-awt )
@@ -161,6 +161,8 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf=()
+
 	if ! use system-bootstrap; then
 		local xpakvar="${ARCH^^}_XPAK"
 		export JDK_HOME="${WORKDIR}/openjdk-bootstrap-${!xpakvar}"
@@ -175,9 +177,9 @@ src_configure() {
 	# Strip some flags users may set, but should not. #818502
 	filter-flags -fexceptions
 
-	# Strip lto related flags, we rely on USE=lto and --with-jvm-features=link-time-opt
-	# https://bugs.gentoo.org/833097
-	# https://bugs.gentoo.org/833098
+	# Strip lto related flags, we rely on --with-jvm-features=link-time-opt
+	# See bug #833097 and bug #833098.
+	tc-is-lto && myconf+=( --with-jvm-features=link-time-opt )
 	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
@@ -188,7 +190,7 @@ src_configure() {
 	# explicitly disabled, the flag will get auto-enabled if pandoc and
 	# graphviz are detected. pandoc has loads of dependencies anyway.
 
-	local myconf=(
+	myconf+=(
 		--disable-ccache
 		--disable-precompiled-headers
 		--enable-full-docs=no
@@ -217,8 +219,6 @@ src_configure() {
 		$(tc-is-clang && echo "--with-toolchain-type=clang")
 	)
 	! use riscv && myconf+=( --with-jvm-features=shenandoahgc )
-
-	use lto && myconf+=( --with-jvm-features=link-time-opt )
 
 	if use javafx; then
 		# this is not useful for users, just for upstream developers

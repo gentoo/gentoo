@@ -52,7 +52,6 @@ LICENSE="GPL-2-with-classpath-exception"
 SLOT="${MY_PV%%[.+]*}"
 #	KEYWORDS="" # Not an LTS candidate
 
-# lto temporarily disabled due to https://bugs.gentoo.org/916735
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source +system-bootstrap systemtap"
 
 REQUIRED_USE="
@@ -167,6 +166,8 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf=()
+
 	if has_version dev-java/openjdk:25; then
 		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-25
 	elif has_version dev-java/openjdk:${SLOT}; then
@@ -188,9 +189,12 @@ src_configure() {
 	# Strip some flags users may set, but should not. #818502
 	filter-flags -fexceptions
 
-	# Strip lto related flags, we rely on USE=lto and --with-jvm-features=link-time-opt
-	# https://bugs.gentoo.org/833097
-	# https://bugs.gentoo.org/833098
+	# Strip lto related flags, we rely on --with-jvm-features=link-time-opt
+	# See bug #833097 and bug #833098.
+	#
+	# .. but because of -Werror=odr (bug #916735), we disable it
+	# entirely for now.
+	#tc-is-lto && myconf+=( --with-jvm-features=link-time-opt )
 	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
@@ -198,7 +202,7 @@ src_configure() {
 	# explicitly disabled, the flag will get auto-enabled if pandoc and
 	# graphviz are detected. pandoc has loads of dependencies anyway.
 
-	local myconf=(
+	myconf+=(
 		--disable-ccache
 		--disable-precompiled-headers
 		--disable-warnings-as-errors
@@ -230,12 +234,6 @@ src_configure() {
 	)
 
 	use riscv && myconf+=( --with-boot-jdk-jvmargs="-Djdk.lang.Process.launchMechanism=vfork" )
-
-	# Werror=odr
-	# https://bugs.gentoo.org/916735
-	#
-	# Disable it for now.
-	#use lto && myconf+=( --with-jvm-features=link-time-opt )
 
 	if use javafx; then
 		local zip="${EPREFIX}/usr/$(get_libdir)/openjfx-${SLOT}/javafx-exports.zip"
