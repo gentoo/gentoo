@@ -4,14 +4,14 @@
 EAPI=8
 
 ECM_TEST="forceoptional"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 KFMIN=5.115.0
 QTMIN=5.15.12
 inherit ecm kde.org python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
