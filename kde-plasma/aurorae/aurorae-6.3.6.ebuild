@@ -15,7 +15,7 @@ CMAKE_USE_DIR="${S}/src/plugins/kdecorations/aurorae/"
 
 LICENSE="GPL-2+ MIT"
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,opengl,widgets]
