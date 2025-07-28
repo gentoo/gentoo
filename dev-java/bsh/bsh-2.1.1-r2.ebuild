@@ -31,8 +31,10 @@ CP_DEPEND="
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
 
+# restrict to max Java 25
+# https://bugs.openjdk.org/browse/JDK-8359053
 DEPEND="${CP_DEPEND}
-	>=virtual/jdk-1.8:*"
+	<=virtual/jdk-25:*"
 
 DOCS=(
 	CHANGES.md
