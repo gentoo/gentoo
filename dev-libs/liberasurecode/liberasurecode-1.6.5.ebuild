@@ -23,6 +23,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.6.5-no-werror.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
