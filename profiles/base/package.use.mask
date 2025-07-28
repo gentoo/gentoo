@@ -503,12 +503,6 @@ gnome-base/gnome-extra-apps tracker
 # which has not been ported to libsoup:3.0.
 >=app-misc/localsearch-3.4.0-r1 rss
 
-# Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
-# Cannot test and fix pax-kernel related bugs on a current grsec kernel
-# Mask the flag for now
-# Bugs: #643466, #674872, #832161, #855722
-app-emulation/virtualbox pax-kernel
-
 # Sam James <sam@gentoo.org> (2022-10-02)
 # USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
 # but packages want to use the actual zlib-ng library, so we need to
