@@ -141,12 +141,6 @@ virtual/perl-Unicode-Normalize
 # bug #952299.
 =dev-lang/spidermonkey-128.12.0-r1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-29)
-# KF5-based package, unmaintained upstream, see also:
-# https://mail.kde.org/pipermail/release-team/2025-June/013683.html
-# Removal on 2025-07-29.
-kde-apps/cervisia
-
 # Michał Górny <mgorny@gentoo.org> (2025-06-29)
 # File collision against gnome-base/gnome-keyring[pam], which is
 # required via pambase.  Masked until the maintainer determines a good
