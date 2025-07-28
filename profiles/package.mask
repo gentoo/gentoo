@@ -37,7 +37,6 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (2025-07-28)
-
 # Obsolete slots of cucumber components. These slots are no longer used
 # by dev-util/cucumber. Removal on 2025-08-28.
 dev-util/cucumber-gherkin:23
