@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
+# Last release in 2015, last commit more than 2 years ago, still Qt5-based,
+# EAPI-7, no signs of work towards Qt6 upstream. Bug #960817
+# Removal on 2025-08-27.
+media-video/baka-mplayer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
 # Dead for many years, Qt5-based, EAPI-7. Anyone interested in its features
 # should look into qmp3gain instead (bug #949077) but it also needs porting
 # to Qt6. Removal on 2025-08-27.
