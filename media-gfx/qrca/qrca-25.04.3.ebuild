@@ -14,7 +14,7 @@ HOMEPAGE="https://apps.kde.org/qrca/"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="networkmanager"
 
 DOCS=( README.md )
