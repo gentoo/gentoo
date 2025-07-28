@@ -52,7 +52,7 @@ RDEPEND="
 		>=gnome-base/librsvg-2.36.2
 	)
 	!input_devices_wacom? (
-		>=x11-libs/gtk+-3.14.0:3
+		>=x11-libs/gtk+-3.14.0:3[X]
 	)
 	smartcard? (
 		dev-libs/nspr
