@@ -24,7 +24,7 @@ LICENSE="|| ( MIT Apache-2.0 ) chez? ( Apache-2.0 ) !chez? ( LGPL-3 )"
 # where we use _p, _pre, etc it will have to be set manually.
 SLOT="0/${PV}"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="+chez +doc +futures iconv +jit minimal ncurses +places +threads"
 # * "chez" - see bug #809785 re chez/threads
 # * "iconv" - required for "doc"
