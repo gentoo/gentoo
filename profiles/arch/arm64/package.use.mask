@@ -529,10 +529,6 @@ net-voip/mumble g15
 # media-libs/libemf fails with #error unknown CPU.
 media-gfx/pstoedit emf
 
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# openvz-sources are likely too old for any proper arm64 usage
-app-emulation/libvirt openvz
-
 # Alexis Ballier <aballier@gentoo.org> (2017-06-21)
 # net-fs/openafs-kernel does not recognize arm64 properly
 # Need to check if this has a chance to work with in-kernel drivers

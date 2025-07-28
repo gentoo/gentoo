@@ -904,10 +904,6 @@ sys-libs/glibc vanilla
 # This is a security risk if not used carefully, bug #628596.
 net-analyzer/nrpe command-args
 
-# Michał Górny <mgorny@gentoo.org> (2017-08-04)
-# sys-kernel/openvz-sources is being treecleaned wrt bug #580516.
-app-emulation/libvirt openvz
-
 # Mike Gilbert <floppym@gentoo.org> (2017-07-09)
 # Matthias Dahl <matthias.dahl@binary-island.eu> (2017-07-05)
 # Both are not your typical garden-variety Linux programs and are

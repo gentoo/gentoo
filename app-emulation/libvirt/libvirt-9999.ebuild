@@ -31,16 +31,15 @@ SLOT="0/${PV}"
 IUSE="
 	apparmor audit bash-completion +caps dtrace firewalld fuse glusterfs
 	iscsi iscsi-direct +libvirtd lvm libssh libssh2 lxc nbd nfs nls numa
-	openvz parted pcap policykit +qemu rbd sasl selinux test +udev
+	parted pcap policykit +qemu rbd sasl selinux test +udev
 	virtiofsd virtualbox +virt-network wireshark-plugins xen zfs
 "
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
-	libvirtd? ( || ( lxc openvz qemu virtualbox xen ) )
+	libvirtd? ( || ( lxc qemu virtualbox xen ) )
 	lxc? ( caps libvirtd )
-	openvz? ( libvirtd )
 	qemu? ( libvirtd )
 	virt-network? ( libvirtd )
 	virtualbox? ( libvirtd )
@@ -281,7 +280,6 @@ src_configure() {
 		$(meson_feature nls)
 		$(meson_feature numa numactl)
 		$(meson_feature numa numad)
-		$(meson_feature openvz driver_openvz)
 		$(meson_feature parted storage_disk)
 		$(meson_feature pcap libpcap)
 		$(meson_feature policykit polkit)
@@ -298,6 +296,7 @@ src_configure() {
 		$(meson_feature xen driver_libxl)
 		$(meson_feature zfs storage_zfs)
 
+		-Ddriver_openvz=disabled
 		-Dnetcf=disabled
 		-Dsanlock=disabled
 		-Dopenwsman=disabled
