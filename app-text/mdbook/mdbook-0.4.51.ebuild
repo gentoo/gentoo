@@ -19,7 +19,7 @@ S=${WORKDIR}/${P/b/B}
 LICENSE="MPL-2.0 CC-BY-4.0 OFL-1.1"
 LICENSE+=" Apache-2.0 CC0-1.0 ISC MIT Unicode-3.0" # crates
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 sparc ~x86"
+KEYWORDS="~amd64 arm arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 sparc ~x86"
 IUSE="doc"
 
 QA_FLAGS_IGNORED="usr/bin/${PN}"
