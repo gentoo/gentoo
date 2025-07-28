@@ -1,0 +1,17 @@
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -24,14 +24,6 @@
+ 
+ [workspace]
+ members = [
+-  "crates/nu_plugin_custom_values",
+-  "crates/nu_plugin_example",
+-  "crates/nu_plugin_formats",
+-  "crates/nu_plugin_gstat",
+-  "crates/nu_plugin_inc",
+-  "crates/nu_plugin_polars",
+-  "crates/nu_plugin_query",
+-  "crates/nu_plugin_stress_internals",
+   "crates/nu-cli",
+   "crates/nu-cmd-base",
+   "crates/nu-cmd-extra",
