@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gvfs"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="afp archive bluray cdda cdr elogind fuse google keyring gnome-online-accounts gphoto2 +http ios mtp nfs onedrive policykit samba systemd test +udev udisks zeroconf"
 RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
