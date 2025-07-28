@@ -16,7 +16,6 @@ HOMEPAGE="https://www.dealii.org/"
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dealii/dealii.git"
-	SRC_URI=""
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
 		doc? (
@@ -30,7 +29,7 @@ SLOT="0"
 IUSE="
 	adolc arborx assimp arpack cgal cpu_flags_x86_avx cpu_flags_x86_avx512f
 	cpu_flags_x86_sse2 +debug doc +examples ginkgo gmsh +gsl hdf5 int64
-	+lapack metis mpi muparser opencascade p4est petsc scalapack slepc
+	+lapack metis mpi mumps muparser opencascade p4est petsc scalapack slepc
 	+sparse sundials symengine trilinos vtk
 "
 
@@ -61,6 +60,7 @@ RDEPEND="dev-libs/boost:=
 		mpi? ( >=sci-libs/parmetis-4 )
 	)
 	mpi? ( virtual/mpi[cxx] )
+	mumps? ( sci-libs/mumps[mpi] )
 	muparser? ( dev-cpp/muParser )
 	opencascade? ( sci-libs/opencascade:= )
 	p4est? ( sci-libs/p4est[mpi] )
@@ -120,6 +120,7 @@ src_configure() {
 		-DDEAL_II_WITH_MAGIC_ENUM=ON
 		-DDEAL_II_WITH_METIS="$(usex metis)"
 		-DDEAL_II_WITH_MPI="$(usex mpi)"
+		-DDEAL_II_WITH_MUMPS="$(usex mumps)"
 		-DDEAL_II_WITH_MUPARSER="$(usex muparser)"
 		-DDEAL_II_WITH_OPENCASCADE="$(usex opencascade)"
 		-DDEAL_II_WITH_P4EST="$(usex p4est)"
