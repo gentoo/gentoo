@@ -1,0 +1,69 @@
+--- a/CMakeLists.txt	2022-05-21 13:13:50.806813151 +0200
++++ b/CMakeLists.txt	2022-05-21 13:16:46.448969453 +0200
+@@ -256,7 +256,7 @@
+ message(STATUS "CMAKE_CXX_FLAGS_RELEASE is ${CMAKE_CXX_FLAGS_RELEASE}")
+ message(STATUS "==========")
+ 
+-if(NOT TARGET asmjit)
++if(FALSE)
+   # Download asmjit from github if ASMJIT_SRC_DIR is not specified.
+   if(NOT DEFINED ASMJIT_SRC_DIR)
+     set(ASMJIT_SRC_DIR "${FBGEMM_SOURCE_DIR}/external/asmjit"
+@@ -254,7 +254,7 @@
+   endif()
+ endif()
+ 
+-if(NOT TARGET cpuinfo)
++if(FALSE)
+   #Download cpuinfo from github if CPUINFO_SOURCE_DIR is not specified.
+   if(NOT DEFINED CPUINFO_SOURCE_DIR)
+     set(CPUINFO_SOURCE_DIR "${FBGEMM_SOURCE_DIR}/external/cpuinfo"
+@@ -376,9 +376,6 @@
+ target_link_libraries(fbgemm
+   $<BUILD_INTERFACE:asmjit>
+   $<BUILD_INTERFACE:cpuinfo>)
+-add_dependencies(fbgemm
+-  asmjit
+-  cpuinfo)
+ 
+ if(OpenMP_FOUND)
+   target_link_libraries(fbgemm OpenMP::OpenMP_CXX)
+@@ -395,6 +392,9 @@
+   FILES ${FBGEMM_PUBLIC_HEADERS}
+   DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/fbgemm")
+ 
++install(FILES src/RefImplementations.h
++  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/fbgemm/src")
++
+ install(
+   EXPORT fbgemmLibraryConfig
+   DESTINATION share/cmake/fbgemm
+--- a/test/CMakeLists.txt	2022-05-21 13:15:34.140135199 +0200
++++ b/test/CMakeLists.txt	2022-05-21 13:17:59.170813431 +0200
+@@ -14,7 +14,7 @@
+ set(CMAKE_C_EXTENSIONS OFF)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
+ 
+-if(FBGEMM_BUILD_TESTS AND NOT TARGET gtest)
++if(FALSE)
+   #Download Googletest framework from github if
+   #GOOGLETEST_SOURCE_DIR is not specified.
+   if(NOT DEFINED GOOGLETEST_SOURCE_DIR)
+@@ -78,7 +78,6 @@
+     target_link_libraries(${TESTNAME} ${OpenMP_CXX_LIBRARIES})
+   endif()
+ 
+-  add_dependencies(${TESTNAME} gtest fbgemm)
+   add_test(${TESTNAME} ${TESTNAME})
+   set_target_properties(${TESTNAME} PROPERTIES FOLDER test)
+ endmacro()
+--- a/src/PackMatrix.cc	2022-05-24 08:19:00.639462626 +0200
++++ b/src/PackMatrix.cc	2022-05-24 08:27:59.127720548 +0200
+@@ -32,6 +32,7 @@
+ }
+ 
+ template <typename PT, typename inpType, typename accType>
++FBGEMM_API
+ int PackMatrix<PT, inpType, accType>::packedBufferSize(
+     int rows,
+     int cols,
