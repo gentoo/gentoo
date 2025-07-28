@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 LICENSE="lha"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~m68k ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~m68k ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 PATCHES=(
 	"${FILESDIR}"/${P/_p*}-file-list-from-stdin.patch
