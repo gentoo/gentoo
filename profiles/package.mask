@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
+# Current package is 4 years old and outdated compared to upstream, needs
+# a real maintainer: still EAPI-7, Qt5-based with unclear upstream status.
+# Many bugs: #955642, #957424, #957402, #903803, #841740
+# Removal on 2025-08-27.
+dev-debug/edb-debugger
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
 # Current package is 4 years old and outdated compared to upstream.
 # Still Qt5-based with unclear upstream status. Needs real care.
 # Many bugs: #953380, #701988, #683464, #590002, #565034, #579396
