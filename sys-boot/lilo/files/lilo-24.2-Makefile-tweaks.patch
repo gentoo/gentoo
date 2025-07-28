@@ -1,0 +1,40 @@
+Do not strip, have parallel make, and do not rebuild images
+--- a/Makefile
++++ b/Makefile
+@@ -12,7 +12,6 @@
+ #
+ all: test
+ 	make -C src all
+-	make -C images all
+ 
+ #
+ #  make help
+@@ -45,7 +44,6 @@
+ #
+ alles: test
+ 	$(MAKE) -C src alles
+-	$(MAKE) -C images all
+ 
+ #
+ # documentation files
+@@ -104,7 +102,6 @@
+ #
+ install:  all
+ 	$(MAKE) -C src install
+-	$(MAKE) -C images install
+ 	$(MAKE) -C hooks install
+ 	$(MAKE) -C sample install
+ 	$(MAKE) -C scripts install
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -242,10 +242,8 @@
+ 	if [ -f diag1.img ]; then cp -f diag1.img $$DESTDIR$(BOOT_DIR); fi
+ 	if [ -f diag2.img ]; then cp -f diag2.img $$DESTDIR$(BOOT_DIR); fi
+ 
+-	strip lilo
+ 	cp lilo $$DESTDIR$(SBIN_DIR)/lilo
+ 	if [ -f lilo.static ]; then \
+-	  strip lilo.static; \
+ 	  cp lilo.static $$DESTDIR$(SBIN_DIR)/lilo.static; \
+ 	fi
+ 	cp ../mkrescue $$DESTDIR$(USRSBIN_DIR)/mkrescue

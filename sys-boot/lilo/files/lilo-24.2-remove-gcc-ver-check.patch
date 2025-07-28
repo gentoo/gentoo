@@ -1,0 +1,25 @@
+Drop explicit GCC invocation for version check (of 3.3.5...).
+Adapted from https://753605.bugs.gentoo.org/attachment.cgi?id=773618
+--- a/checkit
++++ b/checkit
+@@ -47,20 +47,6 @@
+ }
+ 
+ #echo
+-echo GCC version $gccmin or later is required
+-gcc -v 1>foo1 2>foo2
+-V=`cat foo1 foo2 | cut -d' ' -f1-3 | grep -i version | tr '-' ' ' | cut -d' ' -f 3`
+-rm -f foo1 foo2
+-if [ -z "$V" ]; then
+-	echo gcc is not present
+-	ret=1
+-else
+-	vers_min $V $gccmin
+-	echo gcc version $V
+-	if [ $rc = 0 ]; then echo OKAY; else echo ERROR; ret=1; fi
+-fi
+-
+-echo
+ echo AS86 version $bccmin or later is required
+ as86 -v 1>foo1 2>foo2
+ A=`cat foo1 foo2 | grep version | cut -d " " -f 3`
