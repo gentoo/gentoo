@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,10 +31,12 @@ CP_DEPEND="
 	dev-java/xerces:2
 "
 
+# restrict to max Java 25
+# https://bugs.openjdk.org/browse/JDK-8359053
 DEPEND="
 	${COMMON_DEPEND}
 	${CP_DEPEND}
-	>=virtual/jdk-1.8:*
+	<=virtual/jdk-25:*
 "
 
 RDEPEND="
