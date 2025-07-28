@@ -12,6 +12,8 @@ DESCRIPTION="highly customizable open source text editor and application develop
 HOMEPAGE="https://www.xemacs.org/"
 
 SRC_URI="http://ftp.xemacs.org/pub/xemacs/xemacs-$(ver_cut 1-2)/${P}.tar.gz
+	https://dev.gentoo.org/~matsl/${P}-ootags-boolint.patch.xz
+	https://dev.gentoo.org/~matsl/${P}-info-handle-compress.patch.xz
 	neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
 LICENSE="GPL-3+"
@@ -61,10 +63,20 @@ src_unpack() {
 src_prepare() {
 	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
-	eapply "${FILESDIR}/${PN}-21.5.35-unknown-command-test.patch"
-	eapply "${FILESDIR}/${P}-failing-tests.patch"
-	eapply "${FILESDIR}/${P}-failing-tests-2.patch"
-	eapply "${FILESDIR}/${P}-configure-postgresql.patch"
+	eapply "${FILESDIR}/${P}-configure.patch"
+	eapply "${FILESDIR}/${P}-mule-tests.patch"
+	eapply "${FILESDIR}/${P}-configure-libc-version.patch"
+	eapply "${FILESDIR}/${P}-which.patch"
+	eapply "${FILESDIR}/${P}-misalignment.patch"
+	eapply "${FILESDIR}/${P}-va_args.patch"
+	eapply "${FILESDIR}/${P}-linker-flags.patch"
+	eapply "${WORKDIR}/${P}-ootags-boolint.patch"
+	eapply "${FILESDIR}/${P}-unknown-command-test.patch"
+	eapply "${WORKDIR}/${P}-info-handle-compress.patch"
+	eapply "${FILESDIR}/${P}-batch-segfault.patch"
+	eapply "${FILESDIR}/${P}-delay-fcinit-until-needed.patch"
+	eapply "${FILESDIR}/${P}-desktop.patch"
+
 	eapply_user
 
 	eautoconf
@@ -129,10 +141,10 @@ src_configure() {
 		if use motif ; then
 			myconf="${myconf} --with-xim=motif"
 		else
-			myconf="${myconf} --with-xim=xlib"
+		myconf="${myconf} --with-xim=xlib"
 		fi
 	else
-		myconf="${myconf} --with-xim=no"
+	  myconf="${myconf} --with-xim=no"
 	fi
 
 	myconf="${myconf} --without-wnn"
@@ -173,6 +185,7 @@ src_configure() {
 		$(use_with ldap ) \
 		$(use_with pop ) \
 		--prefix=/usr \
+		--with-mule \
 		--with-unicode-internal \
 		--without-canna \
 		--with-ncurses \
@@ -200,7 +213,7 @@ src_install() {
 	# which application installed them and so that conflicting
 	# packages (emacs) can't clobber the actual applications.
 	# Addresses bug #62991.
-	for i in ctags etags gnuclient gnudoit gnuattach; do
+	for i in b2m ctags etags gnuclient gnudoit gnuattach; do
 		mv "${ED}"/usr/bin/${i} "${ED}"/usr/bin/${i}-xemacs || die "mv ${i} failed"
 	done
 
@@ -223,6 +236,7 @@ src_install() {
 	cd "${S}"
 	dodoc CHANGES-* ChangeLog INSTALL Installation PROBLEMS README*
 
+	domenu "${S}"/etc/${PN}.desktop
 	newicon "${S}"/etc/${PN}-icon.xpm ${PN}.xpm
 }
 

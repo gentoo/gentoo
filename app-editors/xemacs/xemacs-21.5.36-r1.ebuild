@@ -10,13 +10,13 @@ inherit flag-o-matic xdg-utils desktop autotools
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="https://www.xemacs.org/"
-SRC_URI="neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
-inherit mercurial
-EHG_REPO_URI="https://foss.heptapod.net/xemacs/xemacs"
+SRC_URI="http://ftp.xemacs.org/pub/xemacs/xemacs-$(ver_cut 1-2)/${P}.tar.gz
+	neXt? ( http://www.malfunction.de/afterstep/files/NeXT_XEmacs.tar.gz )"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="alsa debug gif gpm pop postgres ldap xface nas X jpeg tiff png motif xft xim athena neXt Xaw3d gdbm berkdb +bignum"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
@@ -55,16 +55,16 @@ PDEPEND="app-xemacs/xemacs-base
 	app-xemacs/mule-base"
 
 src_unpack() {
-	mercurial_src_unpack
-
-	use neXt && unpack NeXT_XEmacs.tar.gz
+	default_src_unpack
 }
 
 src_prepare() {
 	use neXt && cp "${WORKDIR}"/NeXT.XEmacs/xemacs-icons/* "${S}"/etc/toolbar/
 	find "${S}"/lisp -name '*.elc' -exec rm {} \; || die
 	eapply "${FILESDIR}/${PN}-21.5.35-unknown-command-test.patch"
-
+	eapply "${FILESDIR}/${P}-failing-tests.patch"
+	eapply "${FILESDIR}/${P}-failing-tests-2.patch"
+	eapply "${FILESDIR}/${P}-configure-postgresql.patch"
 	eapply_user
 
 	eautoconf
