@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cuda cmake python-any-r1 flag-o-matic toolchain-funcs
 
@@ -130,6 +130,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DCUTLASS_TEST_LEVEL="2"
 		)
+		append-cxxflags -DNDEBUG
 	fi
 
 	cmake_src_configure
