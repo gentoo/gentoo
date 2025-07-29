@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -51,6 +51,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
+		--wrap-mode forcefallback
 		$(meson_use apparmor)
 		$(meson_use audit)
 		$(meson_use doc docs)

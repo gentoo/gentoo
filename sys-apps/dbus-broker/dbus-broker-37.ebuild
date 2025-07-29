@@ -51,6 +51,7 @@ fi
 
 src_configure() {
 	local emesonargs=(
+		--wrap-mode forcefallback
 		$(meson_use apparmor)
 		$(meson_use audit)
 		$(meson_use doc docs)
