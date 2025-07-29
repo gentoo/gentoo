@@ -347,10 +347,6 @@ dev-util/ragel doc
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
-# media-sound/lash not keyworded, bug #736725
-media-sound/fluidsynth lash
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
 media-libs/libsdl2 fcitx
