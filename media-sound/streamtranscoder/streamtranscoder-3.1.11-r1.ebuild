@@ -1,7 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+inherit dot-a
 
 MY_P="${PN}v3-${PV}"
 
@@ -21,3 +23,13 @@ RDEPEND="
 	media-libs/libmad
 	net-misc/curl"
 DEPEND="${RDEPEND}"
+
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
+}
