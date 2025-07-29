@@ -293,6 +293,14 @@ ppc		default/linux/ppc/23.0/systemd					stable
 ppc		default/linux/ppc/23.0/split-usr				stable
 ppc		default/linux/ppc/23.0/split-usr/desktop			stable
 ppc		default/linux/ppc/23.0/split-usr/desktop/gnome			stable
+ppc		default/linux/ppc/23.0/time64					exp
+ppc		default/linux/ppc/23.0/time64/desktop				exp
+ppc		default/linux/ppc/23.0/time64/desktop/gnome			exp
+ppc		default/linux/ppc/23.0/time64/desktop/gnome/systemd		exp
+ppc		default/linux/ppc/23.0/time64/systemd				exp
+ppc		default/linux/ppc/23.0/time64/split-usr				exp
+ppc		default/linux/ppc/23.0/time64/split-usr/desktop			exp
+ppc		default/linux/ppc/23.0/time64/split-usr/desktop/gnome		exp
 
 
 # PPC64 profiles
