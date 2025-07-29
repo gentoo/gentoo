@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 DOCS_BUILDER="doxygen"
 DOCS_DEPEND="<dev-libs/mathjax-3"
 DOCS_CONFIG_NAME="clBLAS.doxy"
