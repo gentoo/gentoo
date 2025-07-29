@@ -9,7 +9,7 @@ inherit cmake frameworks.kde.org python-any-r1 xdg
 DESCRIPTION="Breeze SVG icon theme"
 
 LICENSE="LGPL-3"
-KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ppc64 ~riscv ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
