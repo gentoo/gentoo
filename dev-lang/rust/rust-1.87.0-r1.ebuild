@@ -446,6 +446,7 @@ src_configure() {
 		cargo = "${rust_stage0_root}/bin/cargo"
 		rustc = "${rust_stage0_root}/bin/rustc"
 		rustfmt = "${rust_stage0_root}/bin/rustfmt"
+		description = "gentoo"
 		docs = $(toml_usex doc)
 		compiler-docs = false
 		submodules = false
@@ -483,7 +484,6 @@ src_configure() {
 			echo "default-linker = \"${CHOST}-cc\""
 		fi)
 		channel = "${build_channel}"
-		description = "gentoo"
 		rpath = true
 		verbose-tests = true
 		optimize-tests = $(toml_usex !debug)
