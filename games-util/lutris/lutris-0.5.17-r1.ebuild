@@ -49,10 +49,7 @@ RDEPEND="
 		dev-python/moddb[${PYTHON_USEDEP}]
 	')
 	media-sound/fluid-soundfont
-	|| (
-		net-libs/webkit-gtk:4[introspection]
-		net-libs/webkit-gtk:4.1[introspection]
-	)
+	net-libs/webkit-gtk:4.1[introspection]
 	sys-apps/pciutils
 	sys-apps/xdg-desktop-portal
 	x11-apps/mesa-progs
