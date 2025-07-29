@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 RDEPEND="dev-qt/qtbase:6[gui,network,widgets]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtserialport:6
+	dev-libs/boost:=
 	virtual/libusb:1
 	sci-libs/fftw:3.0=[threads,fortran]
 	>=media-libs/hamlib-4:= "
