@@ -18,7 +18,7 @@ DEPEND="
 		x11-libs/libXext
 	)
 	>=dev-libs/glib-2.35.1:2[dbus]
-	>=x11-libs/gtk+-3.12.0:3
+	>=x11-libs/gtk+-3.12.0:3[X?]
 	>=gui-libs/libhandy-1:1=
 "
 RDEPEND="${DEPEND}
