@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit dot-a
+AT_M4DIR=m4/
+
+inherit autotools dot-a
 
 MY_P="${PN}v3-${PV}"
 
@@ -23,6 +25,14 @@ RDEPEND="
 	media-libs/libmad
 	net-misc/curl"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+
+	# should not be commented...
+	sed -i 's/#AC_PROG_CXX/AC_PROG_CXX/' configure.in || die
+	eautoreconf
+}
 
 src_configure() {
 	lto-guarantee-fat
