@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/libvorbis
 	media-sound/lame
 	media-libs/libmad
-	net-misc/curl"
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
