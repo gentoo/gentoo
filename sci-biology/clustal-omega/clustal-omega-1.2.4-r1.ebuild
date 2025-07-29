@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools dot-a
 
 DESCRIPTION="Scalable multiple alignment of protein sequences"
 HOMEPAGE="http://www.clustal.org/omega/"
@@ -24,7 +24,13 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
+	strip-lto-bytecode
 }
