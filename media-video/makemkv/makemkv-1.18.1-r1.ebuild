@@ -25,14 +25,8 @@ DEPEND="
 	dev-libs/expat
 	dev-libs/openssl:0=[-bindist(-)]
 	>=media-video/ffmpeg-1.0.0:0=
-	sys-libs/glibc
 	sys-libs/zlib
-	gui? (
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)
+	gui? ( dev-qt/qtbase:6[dbus,gui,widgets] )
 "
 RDEPEND="
 	${DEPEND}
@@ -40,12 +34,13 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	gui? ( dev-qt/qtcore:5 )
+	gui? ( dev-qt/qtbase:6 )
 "
 
 CONFIG_CHECK="~CHR_DEV_SG"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-qt6.patch
 	"${FILESDIR}"/${PN}-path.patch
 )
 
@@ -65,7 +60,7 @@ src_configure() {
 		--enable-debug \
 		--disable-noec \
 		$(use_enable gui) \
-		$(use_enable gui qt5)
+		$(use_enable gui qt6)
 }
 
 src_install() {
