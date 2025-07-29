@@ -38,7 +38,6 @@ DOC_CONTENTS="
 	https://github.com/umurmur/umurmur/wiki/Configuration "
 
 PATCHES=(
-#	"${FILESDIR}/${PN}-0.2.20-openssl3.patch" #806154
 	"${FILESDIR}/umurmur-0.3.1-mbedtls-3.patch"
 )
 
