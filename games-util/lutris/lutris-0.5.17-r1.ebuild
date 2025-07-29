@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-arch/cabextract
-	app-arch/p7zip
+	|| (
+		>=app-arch/7zip-24.09[symlink(+)]
+		app-arch/p7zip
+	)
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/certifi[${PYTHON_USEDEP}]
