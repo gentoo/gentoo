@@ -12,9 +12,9 @@ HOMEPAGE="https://www.emacswiki.org/emacs/Htmlize
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/hniksic/${REAL_PN}"
+	EGIT_REPO_URI="https://github.com/hniksic/emacs-${PN}"
 else
-	SRC_URI="https://github.com/hniksic/${REAL_PN}/archive/release/${PV}.tar.gz
+	SRC_URI="https://github.com/hniksic/emacs-${PN}/archive/release/${PV}.tar.gz
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-release-${PV}"
 
