@@ -11,7 +11,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework to collect user feedback for applications via telemetry and surveys"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="doc tools"
 
 # FIXME: Qt_6_PRIVATE_API matches UserFeedbackConsole, but where is it coming from?
