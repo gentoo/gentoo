@@ -38,7 +38,7 @@ inherit python-any-r1 prefix preserve-libs toolchain-funcs flag-o-matic gnuconfi
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
 
-if [[ ${PV} == 9999* ]]; then
+if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
@@ -930,7 +930,7 @@ src_unpack() {
 
 	use multilib-bootstrap && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
 
-	if [[ ${PV} == 9999* ]] ; then
+	if [[ ${PV} == *9999 ]] ; then
 		EGIT_REPO_URI="
 			https://anongit.gentoo.org/git/proj/toolchain/glibc-patches.git
 			https://github.com/gentoo/glibc-patches.git
@@ -944,12 +944,13 @@ src_unpack() {
 			https://gitlab.com/x86-glibc/glibc.git
 		"
 		EGIT_CHECKOUT_DIR=${S}
+		[[ ${PV} == *.*.9999 ]] && EGIT_BRANCH=release/${PV%.*}/master
 		git-r3_src_unpack
 	else
 		unpack ${P}.tar.xz
 
 		cd "${WORKDIR}" || die
-		unpack glibc-${PV}-patches-${PATCH_VER}.tar.xz
+		unpack ${P}-patches-${PATCH_VER}.tar.xz
 	fi
 
 	cd "${WORKDIR}" || die
