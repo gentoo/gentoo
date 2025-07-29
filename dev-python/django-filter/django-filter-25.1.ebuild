@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -32,7 +32,6 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/djangorestframework[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
-		!!dev-python/coreapi
 	)
 "
 
