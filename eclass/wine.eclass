@@ -459,17 +459,33 @@ _wine_flags() {
 
 	case ${1} in
 		c)
-			# many hardening options are unlikely to work right
-			filter-flags '-fstack-protector*' #870136
-			filter-flags '-mfunction-return=thunk*' #878849
+			if use mingw && use !custom-cflags; then
+				# Changing CROSSCFLAGS is not very tested and often cause
+				# problems even with simple things like -march=native/-O3 when
+				# using mingw-gcc (thus -mno-avx below, also bug #960825), only
+				# inherit basic flags from CFLAGS unless USE=custom-cflags.
+				#
+				# Note that users setting CROSSCFLAGS directly (unfiltered)
+				# are on their own just like with USE=custom-cflags.
+				local flag flags=${CFLAGS} CFLAGS=-O2
+				# not get-flag() given it returns only the first occurence
+				for flag in ${flags}; do
+					[[ ${flag} == @(-g*|-O[0-1g]) ]] && CFLAGS+=" ${flag}"
+				done
+			else
+				# many hardening options are unlikely to work right
+				filter-flags '-fstack-protector*' #870136
+				filter-flags '-mfunction-return=thunk*' #878849
 
-			# bashrc-mv users often do CFLAGS="${LDFLAGS}" and then
-			# compile-only tests miss stripping unsupported linker flags
-			filter-flags '-Wl,*'
+				# bashrc-mv users often do CFLAGS="${LDFLAGS}" and then
+				# compile-only tests miss stripping unsupported linker flags
+				filter-flags '-Wl,*'
 
-			# -mavx with mingw-gcc has a history of problems and still see
-			# users have issues despite Wine's -mpreferred-stack-boundary=2
-			use mingw && append-cflags -mno-avx
+				# -mavx with mingw-gcc has a history of problems and still see
+				# users have issues despite Wine's -mpreferred-stack-boundary=2
+				# (kept even with USE=custom-cflags wrt bug #912268)
+				use mingw && append-cflags -mno-avx
+			fi
 
 			# same as strip-unsupported-flags but echos only for CC
 			CC="${wcc} ${wccflags}" test-flags-CC ${CFLAGS}
