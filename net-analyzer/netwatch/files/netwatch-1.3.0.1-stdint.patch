@@ -1,0 +1,527 @@
+https://bugs.gentoo.org/897826
+--- a/dispdata.c
++++ b/dispdata.c
+@@ -163,12 +163,12 @@ extern int magnacnt;
+ extern int magnaoffs;
+ extern char magnamatch[RESOLVE_MAX];
+ extern HOSTINFO *magnaspot;
+-extern u_int32_t magnakey;
++extern uint32_t magnakey;
+ extern int magnaphys;
+ extern int magnafirst;
+ extern int magnafull;
+ extern HOSTINFO *magnacomhost;
+-extern u_int32_t magnacomkey;
++extern uint32_t magnacomkey;
+ 
+ extern int simchange;
+ extern int simfwdir;
+@@ -203,7 +203,7 @@ extern int using_fifo;
+ extern int fifoval;
+ extern int movemagnakeyloc;
+ extern int movemagnakeyrem;
+-extern u_int32_t searchaddr;
++extern uint32_t searchaddr;
+ 
+ unsigned char *ttp;
+ 
+@@ -1258,7 +1258,7 @@ void dispdata (int errnum)
+ 	y = lcnt;
+ 	if (movemagnakeyloc)
+ 	{
+-	  if (*(u_int32_t *) current->addr == htonl (searchaddr))
++	  if (*(uint32_t *) current->addr == htonl (searchaddr))
+ 	  {
+ 	    lydisp = y;
+ 	    movemagnakeyloc = FALSE;
+@@ -1295,7 +1295,7 @@ void dispdata (int errnum)
+ 	    strncpy (thost, current->name, curshosttrim);
+ 	    UNLOCK(resolvechange);
+ 	    if (selecthost && magnakey
+-		&& magnakey == *((u_int32_t *) current->addr))
++		&& magnakey == *((uint32_t *) current->addr))
+ 	    {
+ 	      if (plogselect)
+ 	      {
+@@ -1313,14 +1313,14 @@ void dispdata (int errnum)
+ 
+ 	    if (selectchange && selecthost && numselect + 4 == yact)
+ 	    {
+-	      magnakey = *((u_int32_t *) current->addr);
++	      magnakey = *((uint32_t *) current->addr);
+ 	    LOCK(resolvechange);
+ 	      strncpy (magnamatch, current->name, RESOLVE_MAX);
+ 	    UNLOCK(resolvechange);
+ 
+ 	      magnaspot = current;
+ 	      magnacomhost = NULL;
+-	      magnacomkey = *((u_int32_t *) current->othaddr);
++	      magnacomkey = *((uint32_t *) current->othaddr);
+ 	      magnafirst = TRUE;
+ 	      selectchange = FALSE;
+ 	    }
+@@ -1522,7 +1522,7 @@ void dispdata (int errnum)
+ 	  tmpservice = emptystr;
+ 	if (movemagnakeyrem)
+ 	{
+-	  if (*(u_int32_t *) current->addr == htonl (searchaddr))
++	  if (*(uint32_t *) current->addr == htonl (searchaddr))
+ 	  {
+ 	    rydisp = y;
+ 	    movemagnakeyrem = FALSE;
+@@ -1560,7 +1560,7 @@ void dispdata (int errnum)
+ 	    strncpy (thost, current->name, curshosttrim);
+ 	    UNLOCK(resolvechange);
+ 	    if (selecthost && magnakey
+-		&& magnakey == *((u_int32_t *) current->addr))
++		&& magnakey == *((uint32_t *) current->addr))
+ 	    {
+ 	      if (plogselect)
+ 	      {
+@@ -1576,13 +1576,13 @@ void dispdata (int errnum)
+ 
+ 	    if (selectchange && selecthost && numselect + 4 == yact)
+ 	    {
+-	      magnakey = *((u_int32_t *) current->addr);
++	      magnakey = *((uint32_t *) current->addr);
+ 	    LOCK(resolvechange);
+ 	      strncpy (magnamatch, current->name, RESOLVE_MAX);
+ 	    UNLOCK(resolvechange);
+ 	      magnaspot = current;
+ 	      magnacomhost = NULL;
+-	      magnacomkey = *((u_int32_t *) current->othaddr);
++	      magnacomkey = *((uint32_t *) current->othaddr);
+ 	      magnafirst = TRUE;
+ 	      selectchange = FALSE;
+ 	    }
+--- a/netresolv.c
++++ b/netresolv.c
+@@ -78,7 +78,7 @@ struct nqueue dum;  /* Dummy record header */
+ #define MAXENTRIES 400
+ struct resolvaddr entries[MAXENTRIES];
+ 
+-char *dbgaddr(u_int32_t val)
++char *dbgaddr(uint32_t val)
+ {
+ 	unsigned char *p;
+ 	static char buf[40];  /* Worst case scenario for %u conversions */
+@@ -237,7 +237,7 @@ int main()
+ 	struct gotname finalentry;
+ 	struct hostent *res;
+ 	unsigned char *p;
+-	u_int32_t *pu;
++	uint32_t *pu;
+ 	int i;
+ 
+ #ifdef DDEBUG
+@@ -279,7 +279,7 @@ int main()
+ 			   {
+ 				alarm(60);	
+ 				p = (unsigned char *)&(cptop.resentry.inetaddr);
+-				pu = (u_int32_t *)p;
++				pu = (uint32_t *)p;
+ #ifdef DEBUG
+ 			fprintf(dfp,"Actual Get host by address call\n");
+ 			fflush(dfp);
+--- a/netresolv.h
++++ b/netresolv.h
+@@ -5,7 +5,7 @@
+ struct resolvaddr 
+ {
+ 	pid_t pid;
+-	u_int32_t inetaddr;
++	uint32_t inetaddr;
+ 	char *where;
+ };
+ 
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -283,9 +283,9 @@ HOSTINFO *lfirst, *rfirst, *previous, *current, *next, *work;
+ int ssh_run=0;
+ char *ssh_env;
+ char ssh_orig_addr_asc[40];
+-u_int32_t  ssh_orig_addr;
+-u_int16_t  ssh_orig_port;
+-u_int16_t ssh_dest_port;
++uint32_t  ssh_orig_addr;
++uint16_t  ssh_orig_port;
++uint16_t ssh_dest_port;
+ int ssh_mask=0;
+ 
+ Semaphore masterdo;
+@@ -373,12 +373,12 @@ int magnacnt = 0;
+ int magnaoffs = MAGNAOFFS;
+ char magnamatch[RESOLVE_MAX];
+ HOSTINFO *magnaspot;
+-u_int32_t magnakey;
++uint32_t magnakey;
+ int magnaphys = 0;
+ int magnafirst = TRUE;
+ int magnafull = FALSE;
+ HOSTINFO *magnacomhost = NULL;
+-u_int32_t magnacomkey;
++uint32_t magnacomkey;
+ 
+ double maxburst = 0.0;
+ double absmaxburst = 0.0;
+@@ -466,10 +466,10 @@ char repeatbuf[255];
+ int isbridge = FALSE;
+ int dupcount = 0;
+ int forcelocal = FALSE;
+-u_int32_t flocal;
++uint32_t flocal;
+ int nonameresolve = FALSE;
+ int forcemask = FALSE;
+-u_int32_t fmask;
++uint32_t fmask;
+ int nokeys = FALSE;
+ 
+ unsigned char workingmac[ETH_ALEN];
+@@ -495,11 +495,11 @@ struct sockaddr_in *pin;
+ struct at_frame_type
+ {
+   unsigned char filler[20];
+-  u_int16_t appletalk_type1;	/*
++  uint16_t appletalk_type1;	/*
+ 				 * what is formal name? 
+ 				 */
+   unsigned char filler2[12];
+-  u_int8_t appletalk_type2;	/*
++  uint8_t appletalk_type2;	/*
+ 				 * what is formal name? 
+ 				 */
+ };				/*
+@@ -528,7 +528,7 @@ const int MAXTHEMm1 = 19;
+  *   #define MAXTHEMm1 MAXTHEM
+ */
+ int themnum = 0;
+-u_int32_t logthem[20];		/* Up to 20 log names allowed */
++uint32_t logthem[20];		/* Up to 20 log names allowed */
+ time_t actstart;
+ double mactstart;
+ clock_t lasttime;		/* last NOW... */
+@@ -602,10 +602,10 @@ extern long int timezone;
+ 
+ int movemagnakeyloc = FALSE;
+ int movemagnakeyrem = FALSE;
+-u_int32_t searchaddr = 0;
++uint32_t searchaddr = 0;
+ 
+ 
+-void findaddr (u_int32_t searchaddr);
++void findaddr (uint32_t searchaddr);
+ int doeth ();
+ int gh (int opt);
+ 
+@@ -634,7 +634,7 @@ void do_fifo ()
+   short int length;
+   unsigned char *p;
+   int i;
+-  u_int32_t lookaddr;
++  uint32_t lookaddr;
+ 
+   /* Read from FIFO until marker is found... */
+   do
+@@ -686,7 +686,7 @@ void do_fifo ()
+ 	dispopt = fifoval;
+ 	break;
+       case 6:
+-	lookaddr = *(u_int32_t *) keycomm;
++	lookaddr = *(uint32_t *) keycomm;
+ 	p = (unsigned char *) keycomm;
+ 	//!!mvprintw (1, 3, "%u.%u.%u.%u", p[0], p[1], p[2], p[3]);
+ 	findaddr (lookaddr);
+@@ -1067,7 +1067,7 @@ void clearnetresolv ()
+ void mygethostbyaddr (char *where, unsigned char *p, int len, int proto)
+ {
+   struct resolvaddr one;
+-  u_int32_t *pi = (u_int32_t *) p;
++  uint32_t *pi = (uint32_t *) p;
+ 
+   if (noresolv)
+     return;
+@@ -1076,7 +1076,7 @@ void mygethostbyaddr (char *where, unsigned char *p, int len, int proto)
+   if (*pi == 0L)
+     return;
+   one.pid = mypid;
+-  one.inetaddr = *(u_int32_t *) p;
++  one.inetaddr = *(uint32_t *) p;
+   one.where = where;
+   write (msocket[1], &one, sizeof (one));
+   sendresolv++;
+@@ -1942,7 +1942,7 @@ void setupstatus ()
+ 	   " WARNING %s VIA E-MAIL on NetBus or B.O. Attacks ", userwarn);
+ }
+ 
+-u_int32_t localifaddr;
++uint32_t localifaddr;
+ 
+ int main (int argc, char *argv[])
+ {
+@@ -1956,7 +1956,7 @@ int main (int argc, char *argv[])
+ 				 */
+     int op;
+     long int mask;
+-    u_int32_t *p;
++    uint32_t *p;
+ 
+ #if defined(SYS_IF_PACKET_H) || defined(LINUX_IF_PACKET_H) || defined(NET_IF_PACKET_H)
+     int devindex;
+@@ -2313,12 +2313,12 @@ int main (int argc, char *argv[])
+     }
+     if (forcelocal)
+     {
+-      p = (u_int32_t *) & localaddr[0];
++      p = (uint32_t *) & localaddr[0];
+       *p = flocal;
+     }
+     if (forcemask)
+     {
+-      p = (u_int32_t *) & netmask[0];
++      p = (uint32_t *) & netmask[0];
+       *p = fmask;
+     }
+ 
+@@ -2553,27 +2553,27 @@ void makeaddr (unsigned char naddr[], char ascii[])
+   return;
+ }
+ 
+-int tlocal (u_int32_t * addr)
++int tlocal (uint32_t * addr)
+ {
+   static unsigned char lhost[] = { 127, 0, 0, 1 };
+-  u_int32_t *k = (u_int32_t *) netmask;
+-  u_int32_t reslocal, restest;
++  uint32_t *k = (uint32_t *) netmask;
++  uint32_t reslocal, restest;
+ 
+-  if (*addr == *(u_int32_t *) lhost)
++  if (*addr == *(uint32_t *) lhost)
+     return (TRUE);
+   restest = *addr & *k;
+-  reslocal = *(u_int32_t *) localaddr & *k;
++  reslocal = *(uint32_t *) localaddr & *k;
+   return (restest == reslocal);
+ }
+ 
+-HOSTINFO *searchforinsertion (u_int32_t key, HOSTINFO * first, int *pval)
++HOSTINFO *searchforinsertion (uint32_t key, HOSTINFO * first, int *pval)
+ {
+   HOSTINFO *current;
+   int y=0;
+ 
+   current = first->flink;
+   while (current != first
+-	 && key < (u_int32_t) ntohl (*(u_int32_t *) current->addr))
++	 && key < (uint32_t) ntohl (*(uint32_t *) current->addr))
+   {
+     current = current->flink;
+     y++;
+@@ -2584,7 +2584,7 @@ HOSTINFO *searchforinsertion (u_int32_t key, HOSTINFO * first, int *pval)
+ }
+ 
+ 
+-void findaddr (u_int32_t lookaddr)
++void findaddr (uint32_t lookaddr)
+ {
+   HOSTINFO *current;
+   int ii;
+@@ -2595,7 +2595,7 @@ void findaddr (u_int32_t lookaddr)
+   {
+     LOCK(inllist);
+     current = searchforinsertion (lookaddr, lfirst,NULL);
+-    if ((u_int32_t) ntohl (*(u_int32_t *) current->addr) != lookaddr)
++    if ((uint32_t) ntohl (*(uint32_t *) current->addr) != lookaddr)
+     {
+       //!!mvprintw (2, 20, "DID NOT FIND LOCAL");
+     UNLOCK(inllist);
+@@ -2609,7 +2609,7 @@ void findaddr (u_int32_t lookaddr)
+   {
+     LOCK(inrlist);
+     current = searchforinsertion (lookaddr, rfirst,NULL);
+-    if ((u_int32_t) ntohl (*(u_int32_t *) current->addr) != lookaddr)
++    if ((uint32_t) ntohl (*(uint32_t *) current->addr) != lookaddr)
+     {
+       //!!mvprintw (2, 20, "DID NOT FIND REMOTE");
+     UNLOCK(inrlist);
+@@ -2747,7 +2747,7 @@ updatecurrent (HOSTINFO * work, struct ip *buf, int length, int opt,
+   char *bb;
+   clock_t clk;
+   struct in_addr mw;
+-  u_int32_t *mpaddr;
++  uint32_t *mpaddr;
+ 
+ /*
+       * static unsigned char finpk[] = { 206, 248, 7, 5 };  
+@@ -2757,9 +2757,9 @@ updatecurrent (HOSTINFO * work, struct ip *buf, int length, int opt,
+     if (work->plog == 0)
+     {
+       strncpy (nam, nw_indivmain, 239);
+-      mpaddr = (u_int32_t *)work->addr;
++      mpaddr = (uint32_t *)work->addr;
+       mw.s_addr = *mpaddr;
+-      //strncat (nam, inet_ntoa (*(u_int32_t *) work->addr), 17);
++      //strncat (nam, inet_ntoa (*(uint32_t *) work->addr), 17);
+       strncat (nam, inet_ntoa (mw), 17);
+       work->plog = open (nam, O_APPEND | O_WRONLY);
+       if (work->plog < 0)
+@@ -3003,7 +3003,7 @@ static char space[256];
+ static char ftpversion[256];
+ 
+ void
+-addtolocallist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
++addtolocallist (uint32_t * key, uint32_t * okey, struct ip *buf,
+ 		int length, int opt, int direct)
+ {
+   unsigned char *pk = (unsigned char *) key;
+@@ -3078,8 +3078,8 @@ addtolocallist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
+ /*
+       * } if (fishlen == 30000) fclose(fish);   
+ */
+-  current = searchforinsertion ((u_int32_t) ntohl (*key), lfirst,&y);
+-  if (*(u_int32_t *) current->addr != *key)
++  current = searchforinsertion ((uint32_t) ntohl (*key), lfirst,&y);
++  if (*(uint32_t *) current->addr != *key)
+   {
+     work = malloc (sizeof (*work));
+     previous = current->blink;
+@@ -3087,7 +3087,7 @@ addtolocallist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
+          * Init values to ZERO for 1st entry....
+ */
+     clearentry (work);
+-    *(u_int32_t *) work->addr = *key;
++    *(uint32_t *) work->addr = *key;
+ /*
+          * work->disprow = previous->disprow + 1;
+ */
+@@ -3220,7 +3220,7 @@ addtolocallist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
+   {
+     magnacomhost = work;
+   }
+-  *(u_int32_t *) work->othaddr = *okey;
++  *(uint32_t *) work->othaddr = *okey;
+ 
+   if (tlocal (okey))
+     updatecurrent (work, buf, length, opt, LOCUPDATE, LOCUPDATE, direct);
+@@ -3230,7 +3230,7 @@ addtolocallist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
+ }
+ 
+ void
+-addtoremotelist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
++addtoremotelist (uint32_t * key, uint32_t * okey, struct ip *buf,
+ 		 int length, int opt, int direct)
+ {
+   unsigned char *pk = (unsigned char *) key;
+@@ -3243,8 +3243,8 @@ addtoremotelist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
+ 
+   wlen = ntohs (buf->tot_len);
+   LOCK(inrlist);
+-  current = searchforinsertion ((u_int32_t) ntohl (*key), rfirst,&y);
+-  if (*(u_int32_t *) current->addr != *key)
++  current = searchforinsertion ((uint32_t) ntohl (*key), rfirst,&y);
++  if (*(uint32_t *) current->addr != *key)
+   {
+     work = malloc (sizeof (*work));
+     previous = current->blink;
+@@ -3268,7 +3268,7 @@ addtoremotelist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
+ 	break;
+       }
+     }
+-    *(u_int32_t *) work->addr = *key;
++    *(uint32_t *) work->addr = *key;
+     memcpy (work->badmac, fillmac, sizeof (fillmac));
+     if (!opt)
+     {				/*
+@@ -3412,7 +3412,7 @@ addtoremotelist (u_int32_t * key, u_int32_t * okey, struct ip *buf,
+   {
+     magnacomhost = work;
+   }
+-  *(u_int32_t *) work->othaddr = *okey;
++  *(uint32_t *) work->othaddr = *okey;
+   if (tlocal (okey))
+     updatecurrent (work, buf, length, opt, LOCUPDATE, REMUPDATE, direct);
+   else
+@@ -3527,11 +3527,11 @@ void log_local (char *buf, int length)
+ void handle_ip (struct ip *buf, int length, int direct)
+ {
+   int wlen;
+-  u_int16_t sport;
+-  u_int16_t dport;
+-  u_int32_t me;
++  uint16_t sport;
++  uint16_t dport;
++  uint32_t me;
+ 
+-  me = *((u_int32_t *) localaddr);
++  me = *((uint32_t *) localaddr);
+   LOCK(indisp);
+   new = time (0);
+   wlen = ntohs (buf->tot_len);
+@@ -3548,16 +3548,16 @@ void handle_ip (struct ip *buf, int length, int direct)
+       dport =
+ 	ntohs (((struct tcphdr *) ((void *) buf +
+ 				   sizeof (struct iphdr)))->th_dport);
+-	if (((u_int32_t)buf->saddr==me)  && ((u_int16_t)sport==ssh_dest_port) &&
+-	((u_int32_t)buf->daddr==ssh_orig_addr)) 
++	if (((uint32_t)buf->saddr==me)  && ((uint16_t)sport==ssh_dest_port) &&
++	((uint32_t)buf->daddr==ssh_orig_addr)) 
+ 	{
+ 		ethcnt--;
+   UNLOCK(indisp);
+   semaphore_up(&masterdo);
+ 		return;
+ 	}
+-	if (((u_int32_t)buf->daddr==me)  && ((u_int16_t)dport==ssh_dest_port) &&
+-	((u_int32_t)buf->saddr==ssh_orig_addr)) 
++	if (((uint32_t)buf->daddr==me)  && ((uint16_t)dport==ssh_dest_port) &&
++	((uint32_t)buf->saddr==ssh_orig_addr)) 
+ 	{
+ 		ethcnt--;
+   UNLOCK(indisp);
+@@ -3565,18 +3565,18 @@ void handle_ip (struct ip *buf, int length, int direct)
+ 		return;
+ 	}
+   }			 
+-  if (tlocal ((u_int32_t *) & buf->saddr))
++  if (tlocal ((uint32_t *) & buf->saddr))
+   {
+-    if (tlocal ((u_int32_t *) & buf->daddr))
++    if (tlocal ((uint32_t *) & buf->daddr))
+       log_local ((char *) buf, length);
+-    addtolocallist ((u_int32_t *) & buf->saddr,
+-		    (u_int32_t *) & buf->daddr, buf, length, 0, direct);
++    addtolocallist ((uint32_t *) & buf->saddr,
++		    (uint32_t *) & buf->daddr, buf, length, 0, direct);
+   }
+   else
+   {
+     log_remote ((char *) buf, length);
+-    addtoremotelist ((u_int32_t *) & buf->saddr,
+-		     (u_int32_t *) & buf->daddr, buf, length, 0, direct);
++    addtoremotelist ((uint32_t *) & buf->saddr,
++		     (uint32_t *) & buf->daddr, buf, length, 0, direct);
+     if (direct > 0)
+     {
+       routeruse += wlen;
+@@ -3588,16 +3588,16 @@ void handle_ip (struct ip *buf, int length, int direct)
+       routerfrom -= wlen;
+     }
+   }
+-  if (tlocal ((u_int32_t *) & buf->daddr))
++  if (tlocal ((uint32_t *) & buf->daddr))
+   {
+-    addtolocallist ((u_int32_t *) & buf->daddr,
+-		    (u_int32_t *) & buf->saddr, buf, length, 1, direct);
++    addtolocallist ((uint32_t *) & buf->daddr,
++		    (uint32_t *) & buf->saddr, buf, length, 1, direct);
+   }
+   else
+   {
+     log_remote ((char *) buf, length);
+-    addtoremotelist ((u_int32_t *) & buf->daddr,
+-		     (u_int32_t *) & buf->saddr, buf, length, 1, direct);
++    addtoremotelist ((uint32_t *) & buf->daddr,
++		     (uint32_t *) & buf->saddr, buf, length, 1, direct);
+     if (direct > 0)
+     {
+       routeruse += wlen;
