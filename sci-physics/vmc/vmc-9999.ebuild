@@ -1,9 +1,14 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+DOCS_BUILDER="doxygen"
+DOCS_DEPEND="app-text/doxygen[dot]"
+# Not setting DOCS_PATH as upstream expects doxygen to run in ${S}
+DOCS_CONFIG_NAME="doc/doxygen/Doxyfile"
+
+inherit cmake docs
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -16,7 +21,10 @@ else
 fi
 
 DESCRIPTION="The Virtual Monte Carlo core library"
-HOMEPAGE="https://vmc-project.github.io/ https://github.com/vmc-project/vmc"
+HOMEPAGE="
+	https://vmc-project.github.io/
+	https://github.com/vmc-project/vmc
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,19 +32,15 @@ IUSE="doc"
 
 RDEPEND="sci-physics/root:="
 DEPEND="${RDEPEND}"
-BDEPEND="doc? ( app-text/doxygen[dot] )"
 
-DOCS=(README.md History)
+DOCS=( README.md History )
 
 src_compile() {
 	cmake_src_compile
-	if use doc; then
-		doxygen doc/doxygen/Doxyfile || die
-	fi
+	docs_compile
 }
 
 src_install() {
 	cmake_src_install
-	use doc && local HTML_DOCS=( doc/html/. )
 	einstalldocs
 }
