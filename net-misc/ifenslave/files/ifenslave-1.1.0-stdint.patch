@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/713714
+--- a/ifenslave.c
++++ b/ifenslave.c
+@@ -148,6 +148,7 @@ static const char *help_msg =
+ "\n";
+ 
+ #include <unistd.h>
++#include <stdint.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <ctype.h>
+@@ -164,10 +165,10 @@ static const char *help_msg =
+ #include <linux/if_bonding.h>
+ #include <linux/sockios.h>
+ 
+-typedef unsigned long long u64;	/* hack, so we may include kernel's ethtool.h */
+-typedef __uint32_t u32;		/* ditto */
+-typedef __uint16_t u16;		/* ditto */
+-typedef __uint8_t u8;		/* ditto */
++typedef uint64_t u64;	/* hack, so we may include kernel's ethtool.h */
++typedef uint32_t u32;		/* ditto */
++typedef uint16_t u16;		/* ditto */
++typedef uint8_t u8;		/* ditto */
+ #include <linux/ethtool.h>
+ 
+ struct option longopts[] = {
