@@ -391,10 +391,6 @@ dev-db/mariadb -jdbc
 # does not build on arm at all (upstream bug)
 dev-scheme/racket futures jit
 
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi
-
 # Thomas Deutschmann <whissi@gentoo.org> (2016-03-19)
 # Unkeyworded deps, bug #564274
 app-metrics/collectd collectd_plugins_ipmi
