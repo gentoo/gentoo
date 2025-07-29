@@ -114,8 +114,6 @@ dev-lang/rust:1.75.0 llvm_slot_17
 dev-lang/rust-bin:1.75.0 llvm_slot_17
 dev-lang/rust:1.74.1 llvm_slot_17
 dev-lang/rust-bin:1.74.1 llvm_slot_17
-dev-lang/rust:1.71.1 llvm_slot_16
-dev-lang/rust-bin:1.71.1 llvm_slot_16
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215).
