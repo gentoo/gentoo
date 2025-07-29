@@ -9,7 +9,7 @@ inherit ecm frameworks.kde.org
 DESCRIPTION="Framework for managing bookmarks stored in XBEL format"
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RDEPEND="
