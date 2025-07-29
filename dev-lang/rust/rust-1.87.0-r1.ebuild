@@ -6,7 +6,7 @@ EAPI=8
 LLVM_COMPAT=( 20 )
 PYTHON_COMPAT=( python3_{11..14} )
 
-RUST_PATCH_VER=${PVR}
+RUST_PATCH_VER="${PVR}-1"
 
 RUST_MAX_VER=${PV%%_*}
 if [[ ${PV} == *9999* ]]; then
@@ -308,6 +308,8 @@ src_prepare() {
 		${CARGO} generate-lockfile --offline || die "Failed to generate lockfiles"
 	fi
 
+	# Commit patches to the appropriate branch in proj/rust-patches.git
+	# then cut a new tag / tarball. Don't add patches to ${FILESDIR}
 	PATCHES=(
 		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
 	)
@@ -317,8 +319,6 @@ src_prepare() {
 	fi
 
 	default
-
-	eapply "${FILESDIR}"/rust-1.87.0-issue-139372-bgo-953956-fix-hardcoded-gnu-linker-flags.patch
 }
 
 src_configure() {
