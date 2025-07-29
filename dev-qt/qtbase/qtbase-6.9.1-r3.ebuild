@@ -182,6 +182,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.9.0-no-direct-extern-access.patch
 	"${FILESDIR}"/${PN}-6.9.1-QTBUG-137755.patch
 	"${FILESDIR}"/${PN}-6.9.1-CVE-2025-5992.patch
+	"${FILESDIR}"/${PN}-6.9.1-kwin-x11-cpu-usage.patch
 )
 
 src_prepare() {
