@@ -339,10 +339,6 @@ dev-ruby/capybara test
 # pre-built, no ARM support
 net-wireless/gr-osmosdr sdrplay
 
-# Markus Meier <maekke@gentoo.org> (2018-05-30)
-# unkeyworded deps for bug #621434
-net-analyzer/zmap mongo
-
 # Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Unkeyworded dep masks moved from default/linux.
 net-libs/gnutls test-full
