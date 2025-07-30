@@ -1,0 +1,31 @@
+PR pending
+https://github.com/zapping-vbi/zvbi/pull/59.patch
+Fix a typo that causes an failure
+>zvbi-0.2.44/src/ure.c:1355:19: 
+>error: ISO C23 does not allow arguments for function '_ure_make_expr' declared without parameters [-Werror=deprecated-non-prototype]
+> 1355 |           state = _ure_make_expr(p, _ure_pop(b), state, b);
+>
+>zvbi-0.2.44/src/ure.c:1398:13: 
+>error: ISO C23 does not allow arguments for function '_ure_make_symbol' declared without parameters [-Werror=deprecated-non-prototype]
+> 1398 |       sym = _ure_make_symbol(sp, ep - sp, &used, b);
+
+--- a/src/ure.c
++++ b/src/ure.c
+@@ -1189,7 +1189,7 @@ _ure_sym_neq(_ure_symtab_t *a, _ure_symtab_t *b)
+  * Construct a symbol, but only keep unique symbols.
+  */
+ static ucs2_t
+-#ifdef __stdc__
++#ifdef __STDC__
+ _ure_make_symbol(ucs2_t *sym, unsigned long limit, unsigned long *consumed,
+                  _ure_buffer_t *b)
+ #else
+@@ -1255,7 +1255,7 @@ _ure_make_symbol(ucs2_t *sym, unsigned long limit, unsigned long *consumed,
+  *************************************************************************/
+ 
+ static ucs2_t
+-#ifdef __stdc__
++#ifdef __STDC__
+ _ure_make_expr(ucs2_t type, ucs2_t lhs, ucs2_t rhs, _ure_buffer_t *b)
+ #else
+      _ure_make_expr(type, lhs, rhs, b)
