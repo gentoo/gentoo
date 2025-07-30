@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-07-30)
+# Obsolete slot that is ruby33-only. Use the newer slot instead. Removal
+# on 2025-08-30.
+dev-ruby/tzinfo:1
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-28)
 # Unmaintained, out of date, last upstream release in 2018, last
 # packaged release 2015. Broken with modern system interfaces for
