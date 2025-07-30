@@ -17,9 +17,12 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="bundled-openssl kerberos"
 
 RDEPEND="
-	app-shells/bash[net]
+	app-alternatives/awk
+	>=app-shells/bash-3.2[net]
+	sys-apps/coreutils
+	sys-apps/grep
 	sys-apps/util-linux
-	sys-libs/ncurses:0
+	sys-libs/ncurses
 	sys-process/procps
 	|| (
 		net-dns/bind
