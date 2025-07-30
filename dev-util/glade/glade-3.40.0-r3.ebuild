@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit gnome2 python-single-r1 meson optfeature virtualx
+inherit flag-o-matic gnome2 python-single-r1 meson optfeature virtualx
 
 DESCRIPTION="A user interface designer for GTK+ and GNOME"
 HOMEPAGE="https://glade.gnome.org https://gitlab.gnome.org/GNOME/glade"
@@ -13,17 +13,17 @@ LICENSE="GPL-2+ FDL-1.1+"
 SLOT="3.10/13" # subslot = suffix of libgladeui-2.so
 KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
 
-IUSE="gjs gtk-doc +introspection python webkit"
+IUSE="X gjs gtk-doc +introspection python wayland webkit"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	dev-libs/atk[introspection?]
 	>=dev-libs/glib-2.53.2:2
 	>=dev-libs/libxml2-2.4.0:2=
-	x11-libs/cairo:=
+	x11-libs/cairo:=[X?]
 	x11-libs/gdk-pixbuf:2[introspection?]
-	>=x11-libs/gtk+-3.22.0:3[introspection?]
-	x11-libs/pango[introspection?]
+	>=x11-libs/gtk+-3.22.0:3[X?,introspection?,wayland?]
+	x11-libs/pango[X?,introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	gjs? ( >=dev-libs/gjs-1.64.0 )
 	python? (
@@ -33,7 +33,7 @@ DEPEND="
 			>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}]
 		')
 	)
-	webkit? ( >=net-libs/webkit-gtk-2.12.0:4.1 )
+	webkit? ( >=net-libs/webkit-gtk-2.12.0:4.1[X?,wayland?] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -63,6 +63,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	local emesonargs=(
 		-Dgladeui=true
 		$(meson_feature gjs)
