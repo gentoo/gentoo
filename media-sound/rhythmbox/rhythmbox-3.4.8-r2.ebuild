@@ -2,20 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit gnome.org gnome2-utils python-single-r1 meson virtualx xdg
+inherit flag-o-matic gnome.org gnome2-utils python-single-r1 meson virtualx xdg
 
 DESCRIPTION="Music management and playback software for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Rhythmbox"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/rhythmbox"
 
 LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="cdr daap dbus keyring gtk-doc ipod libnotify lirc mtp +python test +udev upnp-av"
+IUSE="X cdr daap doc dbus keyring ipod libnotify lirc mtp +python test +udev upnp-av"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	ipod? ( udev )
@@ -25,18 +25,18 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	x11-libs/cairo
+	x11-libs/cairo[X?]
 	>=x11-libs/gdk-pixbuf-2.18:2
 	>=dev-libs/glib-2.66.0:2
 	>=dev-libs/gobject-introspection-0.10:=
 	>=media-libs/gstreamer-1.4.0:1.0[introspection]
 	>=media-libs/gst-plugins-base-1.4.0:1.0[introspection]
-	>=x11-libs/gtk+-3.20.0:3[introspection]
+	>=x11-libs/gtk+-3.20.0:3[X?,introspection]
 	dev-libs/json-glib
 	>=dev-libs/libpeas-0.7.3:0[gtk]
 	>=net-libs/libsoup-3.0.7:3.0
 	>=dev-libs/libxml2-2.7.8:2=
-	x11-libs/pango
+	x11-libs/pango[X?]
 	>=sys-libs/tdb-1.2.6
 	>=dev-libs/totem-pl-parser-3.2:=
 
@@ -47,7 +47,7 @@ DEPEND="
 	)
 	keyring? ( >=app-crypt/libsecret-0.18 )
 	libnotify? ( >=x11-libs/libnotify-0.7.0 )
-	lirc? ( app-misc/lirc )
+	lirc? ( app-misc/lirc[X?] )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -85,18 +85,14 @@ RDEPEND="${DEPEND}
 	)
 "
 BDEPEND="
-	gtk-doc? ( dev-util/gtk-doc )
+	doc? ( dev-util/gi-docgen )
 	dev-util/itstool
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-implicit-declaration.patch
-	"${FILESDIR}"/${P}-libxml2-2.12.patch
-	"${FILESDIR}"/${P}-libxml-entities.patch
-	"${FILESDIR}"/${P}-python3.12.patch
-	"${FILESDIR}"/${P}-skip-broken-test.patch
+	"${FILESDIR}"/${PN}-3.4.7-skip-broken-test.patch
 )
 
 pkg_setup() {
@@ -104,6 +100,8 @@ pkg_setup() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		$(meson_feature cdr brasero)
 		$(meson_feature daap)
@@ -120,7 +118,7 @@ src_configure() {
 		-Dsample-plugins=false
 
 		-Dhelp=true
-		$(meson_use gtk-doc gtk_doc)
+		$(meson_use doc apidoc)
 		$(meson_feature test tests)
 	)
 	meson_src_configure
