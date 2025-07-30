@@ -31,7 +31,7 @@ DEPEND="
 	>=dev-libs/gobject-introspection-0.10:=
 	>=media-libs/gstreamer-1.4.0:1.0[introspection]
 	>=media-libs/gst-plugins-base-1.4.0:1.0[introspection]
-	>=x11-libs/gtk+-3.20.0:3[introspection]
+	>=x11-libs/gtk+-3.20.0:3[X,introspection]
 	dev-libs/json-glib
 	>=dev-libs/libpeas-0.7.3:0[gtk]
 	>=net-libs/libsoup-3.0.7:3.0
