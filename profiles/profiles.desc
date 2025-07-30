@@ -371,11 +371,14 @@ riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32				exp
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
 s390		default/linux/s390/23.0						stable
-s390		default/linux/s390/23.0/systemd					dev
+s390		default/linux/s390/23.0/systemd					stable
 s390		default/linux/s390/23.0/split-usr				dev
 s390		default/linux/s390/23.0/split-usr/s390x				stable
 s390		default/linux/s390/23.0/s390x					stable
 s390		default/linux/s390/23.0/s390x/systemd				stable
+s390		default/linux/s390/23.0/time64					stable
+s390		default/linux/s390/23.0/time64/systemd				stable
+s390		default/linux/s390/23.0/time64/split-usr			dev
 
 
 # SPARC Profiles
