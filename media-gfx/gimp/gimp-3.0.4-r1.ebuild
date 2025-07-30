@@ -15,7 +15,7 @@ SRC_URI="mirror://gimp/v$(ver_cut 1-2)/${P}.tar.xz"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
