@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-30)
+# Current package is 7 years old and upstream repository only gets the
+# occasional commit. Package is stuck with EAPI-7, Qt5, no Python 3.13
+# support. Bug #952654. Removal on 2025-08-29.
+sci-chemistry/molequeue
+
 # Hans de Graaff <graaff@gentoo.org> (2025-07-30)
 # Obsolete slot that is ruby33-only. Use the newer slot instead. Removal
 # on 2025-08-30.
