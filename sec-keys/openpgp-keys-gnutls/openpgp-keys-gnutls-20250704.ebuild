@@ -19,4 +19,4 @@ SRC_URI+="
 	https://gnutls.org/gnutls-release-keyring.gpg -> ${P}-release-keyring.gpg
 "
 
-KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
