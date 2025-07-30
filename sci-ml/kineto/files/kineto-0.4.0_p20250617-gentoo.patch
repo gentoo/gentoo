@@ -1,0 +1,74 @@
+--- a/CMakeLists.txt	2022-05-24 11:16:18.537610972 +0200
++++ b/CMakeLists.txt	2022-05-24 11:19:15.011073535 +0200
+@@ -169,7 +169,8 @@
+       CXX_STANDARD_REQUIRED YES
+       CXX_EXTENSIONS NO)
+ 
+-set(KINETO_COMPILE_OPTIONS "-DKINETO_NAMESPACE=libkineto")
++set(KINETO_COMPILE_OPTIONS "-DKINETO_NAMESPACE=libkineto"
++	${CMAKE_SHARED_LIBRARY_C_FLAGS})
+ list(APPEND KINETO_COMPILE_OPTIONS "-DFMT_HEADER_ONLY")
+ list(APPEND KINETO_COMPILE_OPTIONS "-DENABLE_IPC_FABRIC")
+ list(APPEND KINETO_COMPILE_OPTIONS)
+@@ -198,7 +200,7 @@
+ target_compile_options(kineto_base PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ target_compile_options(kineto_api PRIVATE "${KINETO_COMPILE_OPTIONS}")
+ 
+-if(NOT TARGET fmt)
++if(FALSE)
+   if(NOT FMT_SOURCE_DIR)
+     set(FMT_SOURCE_DIR "${LIBKINETO_THIRDPARTY_DIR}/fmt"
+       CACHE STRING "fmt source directory from submodules")
+@@ -216,9 +218,7 @@
+   set(BUILD_SHARED_LIBS ${TEMP_BUILD_SHARED_LIBS} CACHE BOOL "Build shared libs" FORCE)
+ endif()
+ 
+-set(FMT_INCLUDE_DIR "${FMT_SOURCE_DIR}/include")
+ message(STATUS "Kineto: FMT_SOURCE_DIR = ${FMT_SOURCE_DIR}")
+-message(STATUS "Kineto: FMT_INCLUDE_DIR = ${FMT_INCLUDE_DIR}")
+ if (NOT CUPTI_INCLUDE_DIR)
+     set(CUPTI_INCLUDE_DIR "${CUDA_SOURCE_DIR}/extras/CUPTI/include")
+ endif()
+@@ -232,15 +232,14 @@
+     set(ROCM_INCLUDE_DIRS "${ROCM_SOURCE_DIR}/include")
+ endif()
+ 
+-set(DYNOLOG_INCLUDE_DIR "${LIBKINETO_THIRDPARTY_DIR}/dynolog/")
+-set(IPCFABRIC_INCLUDE_DIR "${DYNOLOG_INCLUDE_DIR}/dynolog/src/ipcfabric/")
++set(DYNOLOG_INCLUDE_DIR "@GENTOO_PORTAGE_EPREFIX@/usr/include/dynolog/")
++set(IPCFABRIC_INCLUDE_DIR "@GENTOO_PORTAGE_EPREFIX@/usr/include/dynolog/src/ipcfabric/")
+ 
+ message(STATUS " CUPTI_INCLUDE_DIR = ${CUPTI_INCLUDE_DIR}")
+ message(STATUS " ROCTRACER_INCLUDE_DIR = ${ROCTRACER_INCLUDE_DIR}")
+ message(STATUS " DYNOLOG_INCLUDE_DIR = ${DYNOLOG_INCLUDE_DIR}")
+ message(STATUS " IPCFABRIC_INCLUDE_DIR = ${IPCFABRIC_INCLUDE_DIR}")
+ 
+-add_subdirectory("${IPCFABRIC_INCLUDE_DIR}")
+ target_link_libraries(kineto_base PRIVATE dynolog_ipcfabric_lib)
+ 
+ target_include_directories(kineto_base PUBLIC
+@@ -247,7 +246,6 @@
+       $<BUILD_INTERFACE:${LIBKINETO_INCLUDE_DIR}>
+       $<BUILD_INTERFACE:${LIBKINETO_SOURCE_DIR}>
+       $<BUILD_INTERFACE:${DYNOLOG_INCLUDE_DIR}>
+-      $<BUILD_INTERFACE:${FMT_INCLUDE_DIR}>
+       $<BUILD_INTERFACE:${IPCFABRIC_INCLUDE_DIR}>
+       $<BUILD_INTERFACE:${CUPTI_INCLUDE_DIR}>
+       $<BUILD_INTERFACE:${CUDA_INCLUDE_DIRS}>
+@@ -259,7 +259,6 @@
+ endif()
+ 
+ target_include_directories(kineto_api PUBLIC
+-      $<BUILD_INTERFACE:${FMT_INCLUDE_DIR}>
+       $<BUILD_INTERFACE:${LIBKINETO_INCLUDE_DIR}>)
+ 
+ if(KINETO_LIBRARY_TYPE STREQUAL "static")
+@@ -300,8 +297,6 @@
+ if(DEFINED LIBKINETO_NOXPUPTI AND NOT LIBKINETO_NOXPUPTI)
+   target_link_libraries(kineto "${XPU_xpupti_LIBRARY}")
+ endif()
+-target_link_libraries(kineto $<BUILD_INTERFACE:fmt::fmt-header-only>)
+-add_dependencies(kineto fmt::fmt-header-only)
+ 
+ install(TARGETS kineto EXPORT kinetoLibraryConfig
+   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
