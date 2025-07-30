@@ -55,7 +55,7 @@ RDEPEND="
 		dev-util/nvidia-cuda-toolkit:=[profiler]
 	)
 	fbgemm? ( sci-ml/FBGEMM )
-	gloo? ( sci-ml/gloo[cuda?] )
+	gloo? ( <=sci-ml/gloo-2023.12.03[cuda?] )
 	mpi? ( virtual/mpi )
 	nnpack? ( sci-ml/NNPACK )
 	numpy? ( $(python_gen_cond_dep '

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 ROCM_VERSION=6.1
 inherit python-single-r1 cmake cuda flag-o-matic prefix rocm toolchain-funcs
 
@@ -12,22 +12,38 @@ MYP=${MYPN}-${PV}
 
 # caffe2-2.6.0 depends on future version of composable kernel
 # TODO: replace it with RDEPEND in the future
-CK_COMMIT=50ee4267e27b875d149e642f4cebd47be1dc3b57
+CK_COMMIT=8086bbe3a78d931eb96fe12fdc014082e18d18d3
 CK_P=composable_kernel-${CK_COMMIT:0:8}
+
+FLASH_PV=2.7.4
+FLASH_PN=flash-attention
+FLASH_P=${FLASH_PN}-${FLASH_PV}
+
+AOTRITON_PV=0.9.2b
+AOTRITON_PN=aotriton
+AOTRITON_P=${AOTRITON_PN}-${AOTRITON_PV}
+AOTRITON_tar=${AOTRITON_P}-manylinux_2_28_x86_64-rocm6.3-shared.tar.gz
 
 DESCRIPTION="A deep learning framework"
 HOMEPAGE="https://pytorch.org/"
 SRC_URI="
 	https://github.com/pytorch/${MYPN}/archive/refs/tags/v${PV}.tar.gz -> ${MYP}.tar.gz
-	rocm? ( https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz -> ${CK_P}.tar.gz )
+	rocm? (
+		https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz
+		-> ${CK_P}.tar.gz
+	)
+	flash? (
+		https://github.com/Dao-AILab/${FLASH_PN}/archive/refs/tags/v${FLASH_PV}.tar.gz
+		-> ${FLASH_P}.gh.tar.gz
+	)
 "
 
 S="${WORKDIR}"/${MYP}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="cuda distributed fbgemm flash gloo memefficient mkl mpi nnpack +numpy
+KEYWORDS="~amd64 ~arm64"
+IUSE="cuda cusparselt distributed fbgemm flash gloo memefficient mkl mpi nnpack +numpy
 	onednn openblas opencl openmp qnnpack rocm xnnpack"
 RESTRICT="test"
 REQUIRED_USE="
@@ -53,16 +69,18 @@ RDEPEND="
 	dev-libs/protobuf:=
 	dev-libs/pthreadpool
 	dev-libs/sleef
-	virtual/lapack
 	sci-ml/foxi
+	~sci-ml/kineto-0.4.0_p20250214
 	sci-ml/onnx
+	virtual/lapack
 	cuda? (
 		dev-libs/cudnn
 		>=sci-ml/cudnn-frontend-1.0.3:0/8
-		dev-util/nvidia-cuda-toolkit:=[profiler]
+		>=dev-util/nvidia-cuda-toolkit-12.9:=[profiler]
+		cusparselt? ( dev-libs/cusparselt )
 	)
 	fbgemm? ( sci-ml/FBGEMM )
-	gloo? ( sci-ml/gloo[cuda?] )
+	gloo? ( <=sci-ml/gloo-2023.12.03[cuda?] )
 	mpi? ( virtual/mpi )
 	nnpack? ( sci-ml/NNPACK )
 	numpy? ( $(python_gen_cond_dep '
@@ -75,25 +93,26 @@ RDEPEND="
 		sci-ml/gemmlowp
 	)
 	rocm? (
-		>=dev-libs/rccl-6.1      <dev-libs/rccl-6.4
-		>=dev-util/hip-6.1       <dev-util/hip-6.4
-		>=dev-util/roctracer-6.1 <dev-util/roctracer-6.4
-		>=sci-libs/hipBLAS-6.1   <sci-libs/hipBLAS-6.4
-		>=sci-libs/hipBLASLt-6.1 <sci-libs/hipBLASLt-6.4
-		>=sci-libs/hipCUB-6.1    <sci-libs/hipCUB-6.4
-		>=sci-libs/hipFFT-6.1    <sci-libs/hipFFT-6.4
-		>=sci-libs/hipRAND-6.1   <sci-libs/hipRAND-6.4
-		>=sci-libs/hipSOLVER-6.1 <sci-libs/hipSOLVER-6.4
-		>=sci-libs/hipSPARSE-6.1 <sci-libs/hipSPARSE-6.4
-		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.4
-		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.4
-		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.4
+		>=dev-libs/rccl-6.1      <dev-libs/rccl-6.5
+		>=dev-util/hip-6.1       <dev-util/hip-6.5
+		>=dev-util/roctracer-6.1 <dev-util/roctracer-6.5
+		>=sci-libs/hipBLAS-6.1   <sci-libs/hipBLAS-6.5
+		>=sci-libs/hipBLASLt-6.1 <sci-libs/hipBLASLt-6.5
+		>=sci-libs/hipCUB-6.1    <sci-libs/hipCUB-6.5
+		>=sci-libs/hipFFT-6.1    <sci-libs/hipFFT-6.5
+		>=sci-libs/hipRAND-6.1   <sci-libs/hipRAND-6.5
+		>=sci-libs/hipSOLVER-6.1 <sci-libs/hipSOLVER-6.5
+		>=sci-libs/hipSPARSE-6.1 <sci-libs/hipSPARSE-6.5
+		>=sci-libs/miopen-6.1    <sci-libs/miopen-6.5
+		>=sci-libs/rocPRIM-6.1   <sci-libs/rocPRIM-6.5
+		>=sci-libs/rocThrust-6.1 <sci-libs/rocThrust-6.5
+		memefficient? ( sci-libs/aotriton-bin:0/0.9 )
 	)
 	distributed? (
 		sci-ml/tensorpipe[cuda?]
 		dev-cpp/cpp-httplib
 	)
-	xnnpack? ( sci-ml/XNNPACK )
+	xnnpack? ( >=sci-ml/XNNPACK-2024.11 )
 	mkl? ( sci-libs/mkl )
 	openblas? ( sci-libs/openblas )
 "
@@ -105,13 +124,12 @@ DEPEND="
 	dev-libs/pocketfft
 	dev-libs/psimd
 	sci-ml/FP16
-	sci-ml/kineto
 	$(python_gen_cond_dep '
 		dev-python/pybind11[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	')
-	cuda? ( <=dev-libs/cutlass-3.4.1 )
+	cuda? ( ~dev-libs/cutlass-3.8.0 )
 	onednn? ( sci-ml/ideep )
 	qnnpack? ( dev-libs/clog )
 "
@@ -120,14 +138,22 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.1-unbundle_fmt.patch
 	"${FILESDIR}"/${PN}-2.5.1-unbundle_kineto.patch
 	"${FILESDIR}"/${PN}-2.5.1-cudnn_include_fix.patch
-	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-2.7.0-gentoo.patch
 	"${FILESDIR}"/${PN}-2.4.0-cpp-httplib.patch
 	"${FILESDIR}"/${PN}-2.5.1-glog-0.6.0.patch
 	"${FILESDIR}"/${PN}-2.5.1-newfix-functorch-install.patch
 	"${FILESDIR}"/${PN}-2.6.0-rocm-fix-std-cpp17.patch
+	"${FILESDIR}"/${PN}-2.7.0-cmake.patch
+	"${FILESDIR}"/${PN}-2.7.0-glog-0.7.1.patch
+	"${FILESDIR}"/${PN}-2.7.0-llvm.patch
+	"${FILESDIR}"/${PN}-2.7.1-ck-config.patch
+	"${FILESDIR}"/${PN}-2.7.1-aotriton-fixes.patch
 )
 
 src_prepare() {
+	if use flash; then
+		mv "${WORKDIR}"/${FLASH_P}/* third_party/${FLASH_PN}/ || die
+	fi
 	filter-lto #bug 862672
 
 	# Unbundle fmt
@@ -158,6 +184,15 @@ src_prepare() {
 		cmake/Dependencies.cmake \
 		|| die
 
+	# Change libaotriton path
+	sed -i \
+		-e "s|}/lib|}/$(get_libdir)|g" \
+		cmake/External/aotriton.cmake \
+		|| die
+
+	# Noisy warnings from Logging.h
+	sed -i 's/-Wextra-semi//' cmake/public/utils.cmake || die
+
 	cmake_src_prepare
 	pushd torch/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
@@ -186,6 +221,11 @@ src_prepare() {
 		# TODO: delete, when caffe2 depends on systemwide composable_kernel
 		sed -e "s:third_party/composable_kernel:../composable_kernel-${CK_COMMIT}:g" \
 			-i aten/src/ATen/CMakeLists.txt || die
+
+		# Bug 959808: fix for gfx101x targets
+		pushd "${WORKDIR}/composable_kernel-${CK_COMMIT}" > /dev/null || die
+		eapply "${FILESDIR}"/composable-kernel-6.4.1-expand-isa.patch
+		popd > /dev/null || die
 
 		if tc-is-clang; then
 			# Systemwide gcc (for absl and at::TensorBase) + hipcc (llvm>=18) need abi-compat=17.
@@ -232,7 +272,8 @@ src_configure() {
 		-DUSE_GLOG=ON
 		-DUSE_GLOO=$(usex gloo)
 		-DUSE_ITT=OFF
-		-DUSE_KINETO=OFF # TODO
+		-DUSE_KINETO=ON
+		-DUSE_KLEIDIAI=OFF # TODO
 		-DUSE_MAGMA=OFF # TODO: In GURU as sci-libs/magma
 		-DUSE_MEM_EFF_ATTENTION=$(usex memefficient)
 		-DUSE_MKLDNN=$(usex onednn)
@@ -251,8 +292,8 @@ src_configure() {
 		-DUSE_SYSTEM_FP16=ON
 		-DUSE_SYSTEM_FXDIV=ON
 		-DUSE_SYSTEM_GLOO=ON
+		-DUSE_SYSTEM_NVTX=ON
 		-DUSE_SYSTEM_ONNX=ON
-		-DUSE_SYSTEM_PSIMD=ON
 		-DUSE_SYSTEM_PSIMD=ON
 		-DUSE_SYSTEM_PTHREADPOOL=ON
 		-DUSE_SYSTEM_PYBIND11=ON
@@ -284,9 +325,14 @@ src_configure() {
 			-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
 			-DUSE_NCCL=OFF # TODO: NVIDIA Collective Communication Library
 			-DCMAKE_CUDA_FLAGS="$(cuda_gccdir -f | tr -d \")"
+			-DUSE_CUSPARSELT=$(usex cusparselt)
 		)
 	elif use rocm; then
 		export PYTORCH_ROCM_ARCH="$(get_amdgpu_flags)"
+
+		if use memefficient; then
+			export AOTRITON_INSTALLED_PREFIX="${ESYSROOT}/usr"
+		fi
 
 		mycmakeargs+=(
 			-DUSE_NCCL=ON
@@ -295,7 +341,7 @@ src_configure() {
 		)
 
 		# ROCm libraries produce too much warnings
-		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result
+		append-cxxflags -Wno-deprecated-declarations -Wno-unused-result -Wno-unused-value
 	fi
 
 	if use onednn; then
