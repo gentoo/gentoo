@@ -16,7 +16,7 @@ HOMEPAGE="https://gitlab.com/gabmus/razerCommander/"
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://gitlab.com/gabmus/${MY_PN}.git"
+	EGIT_REPO_URI="https://gitlab.com/gabmus/${MY_PN}"
 else
 	SRC_URI="https://gitlab.com/gabmus/${MY_PN}/-/archive/${PV}/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
@@ -31,6 +31,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=x11-libs/gtk+-3.20:3[introspection]
+	x11-libs/gdk-pixbuf[gif(+),introspection]
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		sys-apps/openrazer[client,daemon,${PYTHON_USEDEP}]
