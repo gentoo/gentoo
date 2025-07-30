@@ -1,0 +1,83 @@
+--- a/CMakeLists.txt	2022-06-09 08:29:13.172119535 +0200
++++ b/CMakeLists.txt	2022-06-09 08:29:27.474929097 +0200
+@@ -2,6 +2,9 @@
+ 
+ project(gloo CXX C)
+ 
++include(GNUInstallDirs)
++include(CTest)
++
+ set(GLOO_VERSION_MAJOR 0)
+ set(GLOO_VERSION_MINOR 5)
+ set(GLOO_VERSION_PATCH 0)
+--- a/gloo/CMakeLists.txt	2022-06-09 08:41:09.883773600 +0200
++++ b/gloo/CMakeLists.txt	2022-06-09 08:42:39.045637103 +0200
+@@ -191,7 +191,7 @@
+ # want to statically link with Gloo and not install any artifacts.
+ if(GLOO_INSTALL)
+   install(TARGETS gloo EXPORT GlooTargets
+-      DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++          DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   if(USE_CUDA)
+     install(TARGETS gloo_cuda EXPORT GlooTargets
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+--- a/gloo/test/CMakeLists.txt	2022-06-10 22:17:03.682856314 +0200
++++ b/gloo/test/CMakeLists.txt	2022-06-10 22:17:49.671242697 +0200
+@@ -80,3 +80,4 @@
+   gloo_hip_add_executable(gloo_test_hip ${GLOO_TEST_HIP_SRCS})
+   target_link_libraries(gloo_test_hip gloo_hip gtest OpenSSL::SSL OpenSSL::Crypto)
+ endif()
++add_test(NAME gloo_test COMMAND gloo_test)
+--- a/cmake/Dependencies.cmake	2022-06-11 23:38:57.367089917 +0200
++++ b/cmake/Dependencies.cmake	2022-06-11 23:48:57.690866797 +0200
+@@ -81,7 +81,7 @@
+       pkg_search_module(libuv REQUIRED libuv>=1.26)
+       find_file(
+         libuv_LIBRARY
+-        NAMES libuv.a libuv_a.a
++        NAMES libuv.so
+         PATHS ${libuv_LIBDIR}
+         NO_DEFAULT_PATH)
+       if(NOT EXISTS ${libuv_LIBRARY})
+@@ -90,10 +90,7 @@
+     endif()
+ 
+     add_library(uv_a INTERFACE IMPORTED)
+-    set_target_properties(uv_a PROPERTIES
+-      INTERFACE_INCLUDE_DIRECTORIES ${libuv_INCLUDE_DIRS}
+-      INTERFACE_LINK_LIBRARIES ${libuv_LIBRARY}
+-      )
++    list(APPEND gloo_DEPENDENCY_LIBS -luv)
+   endif()
+ endif()
+ 
+--- a/gloo/transport/tcp/tls/pair.cc	2022-10-04 21:14:04.099150060 +0200
++++ b/gloo/transport/tcp/tls/pair.cc	2022-10-04 21:14:22.330886610 +0200
+@@ -17,6 +17,7 @@
+ 
+ #include <poll.h>
+ #include <cstring>
++#include <array>
+ 
+ namespace gloo {
+ namespace transport {
+--- a/gloo/common/linux.cc	2022-10-04 21:20:21.401691929 +0200
++++ b/gloo/common/linux.cc	2022-10-04 21:23:13.924192100 +0200
+@@ -198,7 +198,7 @@
+   } ecmd;
+   int rv;
+ 
+-  ifr->ifr_data = (__caddr_t)&ecmd;
++  ifr->ifr_data = (char *)&ecmd;
+   memset(&ecmd, 0, sizeof(ecmd));
+   ecmd.req.cmd = ETHTOOL_GLINKSETTINGS;
+ 
+@@ -226,7 +226,7 @@
+   struct ethtool_cmd edata;
+   int rv;
+ 
+-  ifr->ifr_data = (__caddr_t)&edata;
++  ifr->ifr_data = (char *)&edata;
+   memset(&edata, 0, sizeof(edata));
+   edata.cmd = ETHTOOL_GSET;
+ 
