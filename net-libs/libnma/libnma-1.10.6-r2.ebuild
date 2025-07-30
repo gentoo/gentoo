@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson xdg vala
+inherit flag-o-matic gnome.org gnome2-utils meson xdg vala
 
 DESCRIPTION="NetworkManager GUI library"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -11,16 +11,16 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 LICENSE="GPL-2+"
 SLOT="0"
 # pkcs11 default enabled as it's a small dep often already present by libnma users, and it was default enabled as IUSE=+gcr in nm-applet before
-IUSE="gtk-doc +introspection +pkcs11 vala"
+IUSE="X gtk-doc +introspection +pkcs11 vala"
 REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 
 DEPEND="
-	>=gui-libs/gtk-4.0:4
+	>=gui-libs/gtk-4.0:4[X?]
 	app-text/iso-codes
 	net-misc/mobile-broadband-provider-info
 	>=dev-libs/glib-2.38:2
-	>=x11-libs/gtk+-3.12:3[introspection?]
+	>=x11-libs/gtk+-3.12:3[X?,introspection?]
 	>=net-misc/networkmanager-1.7[introspection?]
 	pkcs11? ( >=app-crypt/gcr-4.0.0:4= )
 	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
@@ -45,6 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Dlibnma_gtk4=true
 		$(meson_use pkcs11 gcr)
