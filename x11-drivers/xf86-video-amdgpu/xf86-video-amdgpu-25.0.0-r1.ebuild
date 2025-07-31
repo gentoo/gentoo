@@ -18,9 +18,9 @@ RDEPEND=">=x11-libs/libdrm-2.4.89[video_cards_amdgpu]
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	local emesonargs=(
+	local XORG_CONFIGURE_OPTIONS=(
 		-Dglamor=enabled
 		$(meson_feature udev)
 	)
-	meson_src_configure
+	xorg-meson_src_configure
 }
