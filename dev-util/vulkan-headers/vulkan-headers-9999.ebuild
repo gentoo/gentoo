@@ -31,3 +31,10 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_install() {
+	# VULKAN_HEADERS_ENABLE_MODULE doesn't seem to be working so just
+	# delete the modules manually
+	cmake_src_install
+	find "${ED}" -name "*.cppm" -type f -delete || die
+}
