@@ -485,10 +485,6 @@ app-misc/pax-utils seccomp
 # app-text/pandoc is not keyworded on most architectures
 net-libs/gssdp man
 
-# Sam James <sam@gentoo.org> (2022-11-19)
-# Needs long-EOL dev-lang/spidermonkey:60 (which also needs python:2.7).
-media-libs/coin javascript
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # gnome-music and gnome-photos have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
