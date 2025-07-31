@@ -180,13 +180,6 @@ virtual/perl-Term-ReadLine
 virtual/perl-Unicode-Collate
 virtual/perl-Unicode-Normalize
 
-# Joonas Niilola <juippis@gentoo.org> (2025-07-01)
-# Python-3.13 enabled version of Spidermonkey. The test phase crashes
-# with 3.13 so I'm not fully convinced there won't be runtime issues
-# with rdeps (gjs, libpeas) but try it out and report back in
-# bug #952299.
-=dev-lang/spidermonkey-128.12.0-r1
-
 # Michał Górny <mgorny@gentoo.org> (2025-06-29)
 # File collision against gnome-base/gnome-keyring[pam], which is
 # required via pambase.  Masked until the maintainer determines a good
