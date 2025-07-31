@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-10-02)
+# Michael Palimaka <kensington@gentoo.org> (2018-10-12)
+# Unmask arch-specific USE flag available on x86
+<net-analyzer/testssl-3.1 -bundled-openssl
+
 # Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2025-09-20)
 # Require dev-libs/libtsm, keyworded here
 >=media-gfx/fbida-2.14_p20241216 -fbcon
@@ -376,10 +381,6 @@ app-admin/conserver -freeipmi
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-php/pecl-mongodb test
-
-# Michael Palimaka <kensington@gentoo.org> (2018-10-12)
-# Unmask arch-specific USE flag available on x86
-net-analyzer/testssl -bundled-openssl
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
 # Expose SVGA backend for x86 users
