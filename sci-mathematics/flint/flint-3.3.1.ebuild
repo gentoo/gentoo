@@ -9,7 +9,7 @@ inherit flag-o-matic python-any-r1
 DESCRIPTION="Fast Library for Number Theory"
 HOMEPAGE="https://www.flintlib.org/"
 
-SRC_URI="https://github.com/flintlib/flint/releases/download/v${PV}/flint-${PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://github.com/flintlib/flint/releases/download/v${PV}/flint-${PV}.tar.xz"
 LICENSE="LGPL-2.1+"
 
 # Based off the soname, e.g. /usr/lib64/libflint.so -> libflint.so.15
