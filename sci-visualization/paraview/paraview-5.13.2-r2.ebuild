@@ -56,7 +56,7 @@ RDEPEND="
 	x11-libs/libXt
 	virtual/opengl
 	ffmpeg? ( media-video/ffmpeg )
-	mpi? ( virtual/mpi[cxx,romio] )
+	mpi? ( virtual/mpi[romio] )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -87,7 +87,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
 		$(python_gen_cond_dep '
-			dev-libs/boost[mpi?,python,${PYTHON_USEDEP}]
+			dev-libs/boost[python,${PYTHON_USEDEP}]
 		')
 	)
 "
