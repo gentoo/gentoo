@@ -1,0 +1,27 @@
+https://gitlab.gnome.org/GNOME/gssdp/-/issues/12
+https://gitlab.gnome.org/GNOME/gssdp/-/commit/232a096c072110b7be8d3d74702d8aadd15eefdf
+
+From: Jens Georg <mail@jensge.org>
+Date: Fri, 22 Sep 2023 11:39:28 +0200
+Subject: [PATCH] client: Do not crash if socket receive fails
+
+message and num_messages could then contain random junk and we free
+stuff we have no business with
+
+Fixes #12
+--- a/libgssdp/gssdp-client.c
++++ b/libgssdp/gssdp-client.c
+@@ -1553,8 +1553,8 @@ socket_source_cb (GSSDPSocketSource *socket_source, GSSDPClient *client)
+         guint16 port;
+         GError *error = NULL;
+         GInputVector vector;
+-        GSocketControlMessage **messages;
+-        gint num_messages;
++        GSocketControlMessage **messages = NULL;
++        gint num_messages = 0;
+         GSSDPClientPrivate *priv = gssdp_client_get_instance_private (client);
+         gboolean ret = TRUE;
+ 
+-- 
+GitLab
+
