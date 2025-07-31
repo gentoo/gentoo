@@ -360,6 +360,8 @@ python_compile() {
 src_compile() {
 	cmake_src_compile
 
+	local -x PATH="${BUILD_DIR}/apps:${PATH}"
+	local -x LD_LIBRARY_PATH="${BUILD_DIR}:${LD_LIBRARY_PATH}"
 	use python && distutils-r1_src_compile
 }
 
