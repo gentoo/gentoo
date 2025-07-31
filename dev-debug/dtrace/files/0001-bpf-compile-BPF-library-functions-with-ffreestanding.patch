@@ -1,0 +1,34 @@
+https://lore.kernel.org/dtrace/SJ0PR10MB567217E9DF1F38898F33711BC227A@SJ0PR10MB5672.namprd10.prod.outlook.com/
+https://gcc.gnu.org/PR121259
+https://bugs.gentoo.org/959876
+
+From 2e027482c1bb19597a5f6ed51fac76f621b0163c Mon Sep 17 00:00:00 2001
+Message-ID: <2e027482c1bb19597a5f6ed51fac76f621b0163c.1753935317.git.sam@gentoo.org>
+From: Kris Van Hees <kris.van.hees@oracle.com>
+Date: Wed, 30 Jul 2025 23:09:03 -0400
+Subject: [PATCH] bpf: compile BPF library functions with -ffreestanding
+
+Per Jose, we should be compiling our BPF code with -ffreestanding to
+ensure that BPF-specific standard header files are used instead of
+host-specific ones.
+
+Signed-off-by: Kris Van Hees <kris.van.hees@oracle.com>
+Tested-by: Sam James <sam@gentoo.org>
+Reviewed-by: Sam James <sam@gentoo.org>
+Reviewed-by: Eugene Loh <eugene.loh@oracle.com>
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -127,7 +127,7 @@ PREPROCESS = $(CC) -E
+ export BPFC ?= bpf-unknown-none-gcc
+ 
+ BPFCPPFLAGS += -D$(subst sparc64,__sparc,$(subst aarch64,__aarch64__,$(subst x86_64,__amd64,$(ARCH))))
+-BPFCFLAGS ?= -O2 -Wall -Wno-unknown-pragmas $(if $(HAVE_BPFV3),-mcpu=v3) $(if $(HAVE_BPFMASM),-masm=normal)
++BPFCFLAGS ?= -O2 -Wall -Wno-unknown-pragmas $(if $(HAVE_BPFV3),-mcpu=v3) $(if $(HAVE_BPFMASM),-masm=normal) -ffreestanding
+ export BPFLD ?= bpf-unknown-none-ld
+ 
+ all::
+
+base-commit: 6642cf0c84de770b93a235581183a644664513a5
+-- 
+2.50.1
+
