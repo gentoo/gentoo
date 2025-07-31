@@ -61,4 +61,11 @@ multilib_src_install_all() {
 		mv "${ED}"/usr/share/doc/${PF}/{reference,html} || die
 		rmdir "${ED}"/usr/share/doc/gssdp-1.2
 	fi
+
+	# has file collision with slot 1.6 (/usr/bin/gssdp-device-sniffer),
+	# so we rename it in this build
+	if use gtk; then
+		mv "${ED}"/usr/bin/gssdp-device-sniffer \
+		   "${ED}"/usr/bin/gssdp-device-sniffer-1.4 || die
+	fi
 }

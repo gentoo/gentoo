@@ -17,15 +17,12 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-# has file collision with Slot 0 (/usr/bin/gssdp-device-sniffer), so we remove that from this build
-# and depend on the other slot that has the file as well
 RDEPEND="
 	>=dev-libs/glib-2.70:2[${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.99.0:3.0[${MULTILIB_USEDEP},introspection?]
 	gtk? ( gui-libs/gtk:4 )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 	man? ( virtual/pandoc )
-	>=net-libs/gssdp-1.4:0
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -64,9 +61,5 @@ multilib_src_install_all() {
 	if use gtk-doc ; then
 		mkdir "${ED}"/usr/share/gtk-doc || die
 		mv "${ED}"/usr/share/{doc,gtk-doc}/gssdp-1.6 || die
-	fi
-
-	if use gtk; then
-		rm "${ED}"/usr/bin/gssdp-device-sniffer || die # because of file collision with slot 0
 	fi
 }
