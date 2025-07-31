@@ -18,7 +18,7 @@ LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
-IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl tlsrpt"
+IUSE="+berkdb cdb dovecot-sasl +eai ldap ldap-bind lmdb mbox memcached mongodb mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND="
 	acct-group/postfix
@@ -32,7 +32,10 @@ DEPEND="
 	ldap? ( net-nds/openldap:= )
 	ldap-bind? ( net-nds/openldap:=[sasl] )
 	lmdb? ( >=dev-db/lmdb-0.9.11:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.23.0 >=dev-libs/libbson-1.23.0 )
+	mongodb? (
+		>=dev-libs/mongo-c-driver-1.23.0:0
+		>=dev-libs/libbson-1.23.0
+	)
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nis? ( net-libs/libnsl:= )
 	pam? ( sys-libs/pam )
@@ -40,7 +43,6 @@ DEPEND="
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( >=dev-libs/openssl-1.1.1:0= )
-	tlsrpt? ( net-libs/libtlsrpt )
 	"
 
 RDEPEND="${DEPEND}
@@ -62,8 +64,11 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="
 	|| ( berkdb cdb lmdb )
 	ldap-bind? ( ldap sasl )
-	tlsrpt? ( ssl )
 	"
+
+PATCHES=(
+	"${FILESDIR}/openssl-compatibility-warning.patch"
+)
 
 src_prepare() {
 	default
@@ -80,7 +85,7 @@ src_configure() {
 	# https://marc.info/?l=postfix-users&m=173542420611213&w=2 (bug #945733)
 	append-cflags -std=gnu17
 
-	for name in CDB LDAP LMDB MONGODB MYSQL PCRE PGSQL SDBM SQLITE TLSRPT
+	for name in CDB LDAP LMDB MONGODB MYSQL PCRE PGSQL SDBM SQLITE
 	do
 		local AUXLIBS_${name}=""
 	done
@@ -131,11 +136,6 @@ src_configure() {
 	if use sqlite; then
 		mycc="${mycc} -DHAS_SQLITE"
 		AUXLIBS_SQLITE="-lsqlite3 -lpthread"
-	fi
-
-	if use tlsrpt; then
-		mycc="${mycc} -DUSE_TLSRPT"
-		AUXLIBS_TLSRPT="-ltlsrpt"
 	fi
 
 	if use sasl; then
@@ -191,7 +191,7 @@ src_configure() {
 		CC="$(tc-getCC)" \
 		OPT="${CFLAGS}" \
 		CCARGS="${mycc}" \
-		AUXLIBS="${mylibs} ${AUXLIBS_TLSRPT}" \
+		AUXLIBS="${mylibs}" \
 		AUXLIBS_CDB="${AUXLIBS_CDB}" \
 		AUXLIBS_LDAP="${AUXLIBS_LDAP}" \
 		AUXLIBS_LMDB="${AUXLIBS_LMDB}" \
