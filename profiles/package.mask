@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
+# KF5 -> KF6 transitional package with no more revdeps since 25.04.
+# Removal on 2025-08-15.
+kde-apps/ffmpegthumbs-common
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-30)
 # Current package is 7 years old and upstream repository only gets the
 # occasional commit. Package is stuck with EAPI-7, Qt5, no Python 3.13
