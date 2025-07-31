@@ -101,10 +101,6 @@ sci-libs/opencascade ffmpeg
 # Requires dev-python/recommonmark with Python 3.10
 <llvm-core/clang-18 doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-13)
-# Prepare cleanup of dev-qt/qtgamepad:5
-dev-qt/qt3d gamepad
-
 # Michał Górny <mgorny@gentoo.org> (2025-02-08)
 # Requires dev-cpp/cpp-httplib that has extremely unstable ABI.
 # Not worth the constant churn of having to rebuild LLVM again and again.
