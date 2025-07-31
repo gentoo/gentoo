@@ -1317,38 +1317,36 @@ src_test() {
 # src_install
 
 run_locale_gen() {
-	# if the host locales.gen contains no entries, we'll install everything
-	local root="$1"
-	local inplace=""
+	local prefix=$1 user_config config
+	local -a hasversion_opts localegen_args
 
-	if [[ "${root}" == "--inplace-glibc" ]] ; then
-		inplace="--inplace-glibc"
-		root="$2"
+	if [[ ${EBUILD_PHASE_FUNC} == src_install ]]; then
+		hasversion_opts=( -b )
 	fi
 
-	local locale_list="${root%/}/etc/locale.gen"
-
-	pushd "${ED}"/$(get_libdir) >/dev/null
-
-	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
-		[[ -z ${inplace} ]] && ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
-		locale_list="${root%/}/usr/share/i18n/SUPPORTED"
+	if has_version "${hasversion_opts[@]}" '>=sys-apps/locale-gen-3'; then
+		localegen_args=( --prefix "${prefix}" )
+	else
+		config="${prefix}/usr/share/i18n/SUPPORTED"
+		user_config="${prefix}/etc/locale.gen"
+		if [[ ${EBUILD_PHASE_FUNC} == src_install ]]; then
+			# For USE=compile-locales, all locales should be built.
+			mkdir -p -- "${prefix}/usr/lib/locale" || die
+		elif locale-gen --list --config "${user_config}" | read -r; then
+			config=${user_config}
+		fi
+		localegen_args=( --config "${config}" --destdir "${prefix}" )
 	fi
 
-	# bug 736794: we need to be careful with the parallelization... the number of
-	# processors saved in the environment of a binary package may differ strongly
-	# from the number of processes available during postinst
-	local mygenjobs="$(makeopts_jobs)"
-	if [[ "${EMERGE_FROM}" == "binary" ]] ; then
-		mygenjobs="$(nproc)"
+	# bug 736794: we need to be careful with the parallelization... the
+	# number of processors saved in the environment of a binary package may
+	# differ strongly from the number of processes available during postinst
+	if [[ ${EMERGE_FROM} != binary ]]; then
+		localegen_args+=( --jobs "$(makeopts_jobs)" )
 	fi
 
-	set -- locale-gen ${inplace} --jobs "${mygenjobs}" --config "${locale_list}" \
-		--destdir "${root}"
-	echo "$@"
-	"$@"
-
-	popd >/dev/null
+	printf 'Executing: locale-gen %s\n' "${localegen_args[*]@Q}" >&2
+	locale-gen "${localegen_args[@]}"
 }
 
 glibc_do_src_install() {
@@ -1563,8 +1561,8 @@ glibc_do_src_install() {
 	rm -f "${ED}"/etc/localtime
 
 	# Generate all locales if this is a native build as locale generation
-	if use compile-locales && ! is_crosscompile ; then
-		run_locale_gen --inplace-glibc "${ED}/"
+	if use compile-locales && ! is_crosscompile && ! run_locale_gen "${ED}"; then
+		die "locale-gen(1) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
 	fi
 }
 
@@ -1714,7 +1712,9 @@ pkg_postinst() {
 		# window for the affected programs.
 		use loong && glibc_refresh_ldconfig
 
-		use compile-locales || run_locale_gen "${EROOT}/"
+		if ! use compile-locales && ! run_locale_gen "${EROOT}"; then
+			ewarn "locale-gen(1) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
+		fi
 
 		# If fixincludes was/is active for a particular GCC slot, we
 		# must refresh it. See bug #933282 and GCC's documentation:
