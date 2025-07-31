@@ -62,7 +62,7 @@ RDEPEND="dev-libs/boost:=
 		>=sci-libs/metis-5
 		mpi? ( >=sci-libs/parmetis-4 )
 	)
-	mpi? ( virtual/mpi[cxx] )
+	mpi? ( virtual/mpi )
 	muparser? ( dev-cpp/muParser )
 	opencascade? ( sci-libs/opencascade:= )
 	p4est? ( sci-libs/p4est[mpi] )
