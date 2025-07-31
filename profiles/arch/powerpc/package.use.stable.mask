@@ -59,12 +59,6 @@ x11-wm/mutter screencast
 # Non-stable dependency.  Used to be masked completely.
 media-sound/abcde replaygain
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-20)
-# dev-python/pyqt5 is not stable.
-dev-python/matplotlib qt5 qt6 test
-net-print/hplip qt5
-dev-python/pyudev qt5
-
 # David Seifert <soap@gentoo.org> (2017-09-23)
 # MPI does not have stable keywords on ppc/ppc64
 sci-libs/fftw mpi
