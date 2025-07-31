@@ -27,11 +27,6 @@ media-libs/svt-av1 test
 # Doesn't work well at runtime.
 dev-games/ogre wayland
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
-# media-sound/hydrogen[lash] build is broken, and dropped upstream in next
-# version. Bug #946125
-media-sound/hydrogen lash
-
 # Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
 # Does not compile as of 2024.1.1, requires buildsystem fixes.
 dev-games/simgear gdal
