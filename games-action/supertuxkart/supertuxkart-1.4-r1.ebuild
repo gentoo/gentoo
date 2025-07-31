@@ -57,6 +57,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3-irrlicht-system-libs.patch
 	"${FILESDIR}"/${P}-gcc-13.patch
 	"${FILESDIR}"/${P}-gcc-15.patch
+	"${FILESDIR}"/${P}-0001-Require-Cmake-3.6-or-higher.patch
+	"${FILESDIR}"/${P}-0002-Fixed-cmake-4.0-warnings.patch
 )
 
 src_configure() {
