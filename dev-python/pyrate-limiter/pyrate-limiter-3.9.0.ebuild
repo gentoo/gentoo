@@ -36,6 +36,7 @@ EPYTEST_DESELECT=(
 )
 EPYTEST_PLUGINS=( pytest-{asyncio,rerunfailures} )
 EPYTEST_RERUNS=5
+: "${EPYTEST_TIMEOUT:=60}"
 EPYTEST_XDIST=1
 
 distutils_enable_sphinx docs \
