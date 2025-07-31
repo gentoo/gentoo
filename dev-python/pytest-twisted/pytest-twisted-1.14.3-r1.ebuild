@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# mgorny: py3.14 fails on hypothesis tests for me (inside crash)
+# I suppose we can skip them but let's test a revdep first
 PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=setuptools
 
