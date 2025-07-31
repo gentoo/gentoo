@@ -138,7 +138,7 @@ llvm-core/clang extra
 # Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/pyqt5 bluetooth location speech
+dev-python/pyqt5 speech
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
