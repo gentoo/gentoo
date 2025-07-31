@@ -28,4 +28,5 @@ RDEPEND="
 	>=dev-debug/gdb-9.6
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
