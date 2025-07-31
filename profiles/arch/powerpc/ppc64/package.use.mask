@@ -213,9 +213,8 @@ net-analyzer/snort open-appid
 net-vpn/tor seccomp
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
-# kde-frameworks/*:5 not keyworded.
+# KDE Frameworks not keyworded.
 net-irc/kvirc kde
-app-arch/p7zip kde
 dev-vcs/subversion kwallet
 
 # Jeroen Roovers <jer@gentoo.org> (2015-12-26)

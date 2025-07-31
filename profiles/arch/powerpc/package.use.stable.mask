@@ -84,7 +84,6 @@ media-plugins/frei0r-plugins facedetect
 
 # Michael Palimaka <kensington@gentoo.org> (2016-05-25)
 # Dependencies not stable
-app-arch/p7zip kde
 dev-vcs/subversion kwallet
 x11-misc/xscreensaver new-login
 
