@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-07-31)
+# mongodb not keyworded here
+sci-libs/gdal mongodb
+
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
 # Needs gui-apps/grim, which is not keyworded here
 x11-misc/xscreensaver wayland
