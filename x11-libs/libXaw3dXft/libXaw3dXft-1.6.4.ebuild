@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/DaveFlater/libXaw3dXft"
 SRC_URI="https://github.com/DaveFlater/libXaw3dXft/releases/download/v${PV}/${MY_PN}-${PV}.tar.xz"
 S="${WORKDIR}"/${MY_PN}-${PV}
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="xpm"
 
 RDEPEND="
