@@ -57,10 +57,7 @@ RDEPEND="${DEPEND}
 	!mail-mta/ssmtp[mta]
 	selinux? ( sec-policy/selinux-postfix )"
 
-# require at least one db implementation for newalias (and postmap)
-# command to function properly
 REQUIRED_USE="
-	|| ( berkdb cdb lmdb )
 	ldap-bind? ( ldap sasl )
 	tlsrpt? ( ssl )
 	"
@@ -289,20 +286,27 @@ src_install() {
 }
 
 pkg_postinst() {
-	# warn if no aliases database
-	# do not assume berkdb
-	if [[ ! -e /etc/mail/aliases.db \
-	   && ! -e /etc/mail/aliases.cdb \
-	   && ! -e /etc/mail/aliases.lmdb ]] ; then
+	if ! use berkdb && ! use cdb && ! use lmdb; then
 		ewarn
-		ewarn "You must edit /etc/mail/aliases to suit your needs"
-		ewarn "and then run /usr/bin/newaliases. Postfix will not"
-		ewarn "work correctly without it."
+		ewarn "No backend for local database files is configured."
+		ewarn "newaliases and postmap commands will not work. This"
+		ewarn "is not a supported configuration and you are strongly"
+		ewarn "recommended to turn one of berkdb, cdb or lmdb USE flags"
+		ewarn "on."
 		ewarn
+	else
+		# warn if no aliases database
+		# do not assume berkdb
+		if [[ ! -e /etc/mail/aliases.db \
+		   && ! -e /etc/mail/aliases.cdb \
+		   && ! -e /etc/mail/aliases.lmdb ]] ; then
+			ewarn "You must edit /etc/mail/aliases to suit your needs"
+			ewarn "and then run /usr/bin/newaliases."
+		fi
+		# run newaliases anyway. otherwise, we might break when switching
+		# default database implementation
+		"${EROOT}"/usr/bin/newaliases
 	fi
-	# run newaliases anyway. otherwise, we might break when switching
-	# default database implementation - from berkdb to cdb for example
-	"${EROOT}"/usr/bin/newaliases
 
 	# check and fix file permissions
 	"${EROOT}"/usr/sbin/postfix set-permissions
