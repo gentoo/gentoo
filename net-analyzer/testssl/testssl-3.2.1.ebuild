@@ -28,7 +28,7 @@ RDEPEND="
 		net-dns/bind
 		net-libs/ldns
 	)
-	!bundled-openssl? ( dev-libs/openssl:0 )
+	!bundled-openssl? ( >=dev-libs/openssl-1.1.1 )
 "
 
 QA_PREBUILT="opt/${PN}/*"
