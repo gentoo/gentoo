@@ -14,7 +14,7 @@ S=${WORKDIR}/${MY_PN}-${MY_PV}
 LICENSE="GPL-2 bundled-openssl? ( openssl )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
-IUSE="bundled-openssl kerberos"
+IUSE="bundled-openssl"
 
 RDEPEND="
 	app-alternatives/awk
@@ -28,27 +28,13 @@ RDEPEND="
 		net-dns/bind
 		net-libs/ldns
 	)
-	bundled-openssl? (
-		kerberos? (
-			sys-libs/zlib
-			virtual/krb5
-		)
-	)
 	!bundled-openssl? ( dev-libs/openssl:0 )
 "
 
 QA_PREBUILT="opt/${PN}/*"
 
 pkg_setup() {
-	if use amd64; then
-		if use kerberos; then
-			BUNDLED_OPENSSL="openssl.Linux.x86_64.krb"
-		else
-			BUNDLED_OPENSSL="openssl.Linux.x86_64"
-		fi
-	elif use x86; then
-		BUNDLED_OPENSSL="openssl.Linux.i686"
-	fi
+	BUNDLED_OPENSSL="openssl.Linux.x86_64"
 }
 
 src_prepare() {
@@ -74,6 +60,6 @@ src_install() {
 
 	if use bundled-openssl; then
 		exeinto /opt/${PN}
-		use amd64 && doexe bin/${BUNDLED_OPENSSL}
+		doexe bin/${BUNDLED_OPENSSL}
 	fi
 }
