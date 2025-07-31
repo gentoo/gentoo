@@ -14,3 +14,16 @@ SRC_URI="https://github.com/tree-sitter-grammars/tree-sitter-lua/archive/v${PV}.
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+
+IUSE="test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	test? (
+		dev-util/tree-sitter-cli
+	)
+"
+
+src_test() {
+	emake test
+}
