@@ -139,8 +139,8 @@ src_configure() {
 		CPPFLAGS="${CPPFLAGS}" \
 		CXXFLAGS="${CXXFLAGS} -fPIC" \
 		CXXOPTFLAGS="${CXXFLAGS} -fPIC" \
-		FCFLAGS="${FCFLAGS} -fPIC" \
-		FFLAGS="${FFLAGS} -fPIC" \
+		FCFLAGS="${FCFLAGS} -I/usr/include -fPIC" \
+		FFLAGS="${FFLAGS} -I/usr/include -fPIC" \
 		LDFLAGS="${LDFLAGS}" \
 		MAKEFLAGS="${MAKEFLAGS}" \
 		RANLIB="${RANLIB}" \
@@ -164,14 +164,14 @@ src_configure() {
 		$(petsc_select complex-scalars scalar-type complex real) \
 		$(petsc_select mpi cc mpicc $(tc-getCC)) \
 		$(petsc_select mpi cxx mpicxx $(tc-getCXX)) \
-		$(petsc_select mpi fc mpif90 $(tc-getFC)) \
+		$(petsc_select mpi fc mpif90 $(tc-getF90)) \
 		$(petsc_with afterimage afterimage /usr/include/libAfterImage -lAfterImage) \
 		$(petsc_with hypre hypre /usr/include/hypre -lHYPRE) \
 		$(petsc_with superlu superlu /usr/include/superlu -lsuperlu) \
 		$(petsc_with scotch ptscotch /usr/include/scotch [-lptesmumps,-lptscotch,-lptscotcherr,-lscotch,-lscotcherr]) \
 		$(petsc_with mumps scalapack /usr/include/scalapack -lscalapack) \
 		$(petsc_with mumps mumps /usr/include [-lcmumps,-ldmumps,-lsmumps,-lzmumps,-lmumps_common,-lpord]) \
-		$(use fortran && echo "$(petsc_select mpi fc mpif77 $(tc-getF77))") \
+		$(use fortran && echo "$(petsc_select mpi fc mpif90 $(tc-getF90))") \
 		$(use int64 && echo "--with-index-size=64") \
 		$(use_with boost) \
 		$(use_with fftw) \
