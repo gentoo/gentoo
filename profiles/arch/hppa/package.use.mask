@@ -287,7 +287,7 @@ sys-libs/libcap tools
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # PyQt5 and wxpython are not keyworded.
 dev-python/ipython qt5 qt6
-dev-python/matplotlib qt5 qt6 wxwidgets
+dev-python/matplotlib qt6 wxwidgets
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-23)
 # gui-libs/gtk is not keyworded
