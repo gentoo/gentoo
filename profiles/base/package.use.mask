@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Alfred Wingate (2025-07-31)
+# Missing dependency
+sci-libs/gdal mongodb
+
 # Ivy <openrc@posteo.de> (2025-07-11)
 # app-editors/gnome-text-editor[spell] has been dropped upstream and
 # replaced with app-text/libspelling, but will likely be added back
