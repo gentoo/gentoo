@@ -128,11 +128,6 @@ dev-build/meson test-full
 # Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
 kde-frameworks/kfilemetadata:5 mobi
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
-# Prepare cleanup of kde-apps/kaccounts-integration:6[qt5] and
-# kde-frameworks/bluez-qt:5
-kde-frameworks/purpose:5 bluetooth kaccounts
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
 # of dev-libs/boost in Gentoo.
