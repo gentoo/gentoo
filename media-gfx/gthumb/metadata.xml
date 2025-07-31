@@ -6,6 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
+    <flag name="geolocation">Use <pkg>media-libs/libchamplain</pkg> to show the position the image refers to</flag>
     <flag name="slideshow">Enable slideshow plugin</flag>
   </use>
   <upstream>

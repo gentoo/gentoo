@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gthumb/"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="cdr colord exif keyring gstreamer heif jpegxl lcms raw slideshow svg tiff webkit webp"
+IUSE="cdr colord exif keyring geolocation gstreamer heif jpegxl lcms raw slideshow svg tiff webkit webp"
 
 RDEPEND="
 	>=dev-libs/glib-2.54.0:2
@@ -37,6 +37,7 @@ RDEPEND="
 	)
 	keyring? ( >=app-crypt/libsecret-0.11 )
 	cdr? ( >=app-cdr/brasero-3.2.0 )
+	geolocation? ( media-libs/libchamplain:0.12[gtk] )
 	svg? ( >=gnome-base/librsvg-2.34:2 )
 	webp? ( >=media-libs/libwebp-0.2.0:= )
 	jpegxl? ( >=media-libs/libjxl-0.3.0:= )
@@ -71,7 +72,7 @@ src_configure() {
 		$(meson_use exif exiv2)
 		$(meson_use slideshow clutter)
 		$(meson_use gstreamer)
-		-Dlibchamplain=false # Upstream still doesn't seem to consider this ready
+		$(meson_use geolocation libchamplain)
 		$(meson_use colord)
 		$(meson_use tiff libtiff)
 		$(meson_use webp libwebp)
