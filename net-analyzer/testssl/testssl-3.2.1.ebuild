@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit optfeature
+
 MY_PN="${PN}.sh"
 MY_PV="${PV/_p/-}"
 
@@ -62,4 +64,9 @@ src_install() {
 		exeinto /opt/${PN}
 		doexe bin/${BUNDLED_OPENSSL}
 	fi
+}
+
+pkg_postinst() {
+	optfeature "Check for STARTTLS injection issues" net-misc/socat
+	optfeature "Faster conversions from hexdump to binary" app-editors/vim-core
 }
