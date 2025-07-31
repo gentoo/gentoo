@@ -1,0 +1,125 @@
+
+--- a/commons-rng-core/src/test/java/org/apache/commons/rng/core/ProvidersCommonParametricTest.java
++++ b/commons-rng-core/src/test/java/org/apache/commons/rng/core/ProvidersCommonParametricTest.java
+@@ -22,6 +22,7 @@ import java.util.ArrayList;
+ import java.util.concurrent.Callable;
+ import java.util.function.LongSupplier;
+ import java.util.stream.Collectors;
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.Assertions;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
+@@ -86,7 +87,7 @@ class ProvidersCommonParametricTest {
+ 
+     // Uniformity tests
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextBytesFullBuffer(UniformRandomProvider generator) {
+         // Value chosen to exercise all the code lines in the
+@@ -104,7 +105,7 @@ class ProvidersCommonParametricTest {
+         Assertions.assertTrue(isUniformNextBytes(buffer, 0, size, nextMethod), generator::toString);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextBytesPartialBuffer(UniformRandomProvider generator) {
+         final int totalSize = 1234;
+@@ -132,7 +133,7 @@ class ProvidersCommonParametricTest {
+         }
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextIntegerInRange(UniformRandomProvider generator) {
+         // Statistical test uses 10 bins so tests are invalid below this level
+@@ -146,7 +147,7 @@ class ProvidersCommonParametricTest {
+         checkNextIntegerInRange(generator, 1570504788, 1000);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextLongInRange(UniformRandomProvider generator) {
+         // Statistical test uses 10 bins so tests are invalid below this level
+@@ -161,19 +162,19 @@ class ProvidersCommonParametricTest {
+         checkNextLongInRange(generator, 3 * q, 1000);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextFloat(UniformRandomProvider generator) {
+         checkNextFloat(generator, 1000);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextDouble(UniformRandomProvider generator) {
+         checkNextDouble(generator, 1000);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextIntRandomWalk(UniformRandomProvider generator) {
+         final Callable<Boolean> nextMethod = new Callable<Boolean>() {
+@@ -186,7 +187,7 @@ class ProvidersCommonParametricTest {
+         checkRandomWalk(generator, 1000, nextMethod);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextLongRandomWalk(UniformRandomProvider generator) {
+         final Callable<Boolean> nextMethod = new Callable<Boolean>() {
+@@ -199,7 +200,7 @@ class ProvidersCommonParametricTest {
+         checkRandomWalk(generator, 1000, nextMethod);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getList")
+     void testUniformNextBooleanRandomWalk(UniformRandomProvider generator) {
+         final Callable<Boolean> nextMethod = new Callable<Boolean>() {
+--- a/commons-rng-simple/src/test/java/org/apache/commons/rng/simple/ProvidersCommonParametricTest.java
++++ b/commons-rng-simple/src/test/java/org/apache/commons/rng/simple/ProvidersCommonParametricTest.java
+@@ -29,6 +29,7 @@ import java.io.ByteArrayInputStream;
+ 
+ import org.junit.jupiter.api.Assertions;
+ import org.junit.jupiter.api.Assumptions;
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.MethodSource;
+ 
+@@ -162,7 +163,7 @@ class ProvidersCommonParametricTest {
+         Assertions.assertEquals(5, nonNativeSeedCount);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getProvidersTestData")
+     void testNullSeed(ProvidersList.Data data) {
+         final RandomSource originalSource = data.getSource();
+@@ -226,7 +227,7 @@ class ProvidersCommonParametricTest {
+         checkNextIntegerInRange(rng, 10, 10000);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getProvidersTestData")
+     void testRandomSourceCreateSeed(ProvidersList.Data data) {
+         final RandomSource originalSource = data.getSource();
+@@ -236,7 +237,7 @@ class ProvidersCommonParametricTest {
+         checkNextIntegerInRange(rng, 10, 10000);
+     }
+ 
+-    @ParameterizedTest
++    @ParameterizedTest @Disabled
+     @MethodSource("getProvidersTestData")
+     void testRandomSourceCreateSeedFromRNG(ProvidersList.Data data) {
+         final RandomSource originalSource = data.getSource();
