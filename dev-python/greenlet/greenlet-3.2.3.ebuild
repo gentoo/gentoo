@@ -38,6 +38,8 @@ src_prepare() {
 	local PATCHES=(
 		# https://github.com/python-greenlet/greenlet/pull/457
 		"${FILESDIR}/${P}-py312-assert.patch"
+		# https://github.com/python-greenlet/greenlet/pull/461
+		"${FILESDIR}/${P}-skip-leak-tests.patch"
 	)
 
 	distutils-r1_src_prepare
@@ -47,5 +49,6 @@ src_prepare() {
 }
 
 python_test() {
+	local -x GREENLET_SKIP_LEAKCHECKS=1
 	eunittest greenlet.tests
 }
