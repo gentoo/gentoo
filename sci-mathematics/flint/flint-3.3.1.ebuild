@@ -93,7 +93,7 @@ src_configure() {
 		HTML_DOCS="doc/build/html/*.html
 			doc/build/html/*.js
 			doc/build/html/_static"
-		DOCS+=" doc/build/latex/Flint.pdf"
+		DOCS+=" doc/build/latex/flint.pdf"
 	fi
 }
 
