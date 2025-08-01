@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
-# kde-frameworks/kstatusnotifieritem not stable yet
-net-irc/kvirc kde
-
 # Pacho Ramos <pacho@gentoo.org> (2025-06-28)
 # Mask options needing to stabilize Gnome stuff
 gnome-base/gvfs google onedrive
