@@ -3,17 +3,17 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-inherit autotools dot-a python-single-r1 systemd
+PYTHON_COMPAT=( python3_{10..12} )
+inherit autotools python-single-r1 systemd
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="https://www.syslog-ng.com/products/open-source-log-management/"
-SRC_URI="https://github.com/syslog-ng/syslog-ng/releases/download/${P}/${P}.tar.gz"
+SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="amqp caps dbi geoip2 grpc http json kafka mongodb mqtt pacct python redis smtp snmp test spoof-source systemd tcpd"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+IUSE="amqp caps dbi geoip2 grpc http json kafka mongodb pacct python redis smtp snmp test spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( python )"
 RESTRICT="!test? ( test )"
@@ -21,10 +21,9 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.10.1:2
 	>=dev-libs/ivykis-0.42.4
-	>=dev-libs/libpcre2-10.0:=
+	>=dev-libs/libpcre2-10.0
 	dev-libs/openssl:0=
 	!dev-libs/eventlog
-	>=dev-libs/json-c-0.9:=
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
@@ -34,9 +33,9 @@ RDEPEND="
 		net-libs/grpc:=
 	)
 	http? ( net-misc/curl )
+	json? ( >=dev-libs/json-c-0.9:= )
 	kafka? ( >=dev-libs/librdkafka-1.0.0:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
-	mqtt? ( net-libs/paho-mqtt-c:1.3 )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0:0 )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -104,8 +103,8 @@ src_prepare() {
 	done
 
 	for f in syslog-ng.conf.gentoo.hardened.in-r1 \
-			syslog-ng.conf.gentoo.in-r2; do
-		sed -e "s/@SYSLOGNG_VERSION@/$(ver_cut 1-2)/g" "${FILESDIR}/${f}" > "${T}/${f/.in*/}" || die
+			syslog-ng.conf.gentoo.in-r1; do
+		sed -e "s/@SYSLOGNG_VERSION@/$(ver_cut 1-2)/g" "${FILESDIR}/${f}" > "${T}/${f/.in-r1/}" || die
 	done
 
 	default
@@ -113,8 +112,6 @@ src_prepare() {
 }
 
 src_configure() {
-	lto-guarantee-fat
-
 	# Needs bison/flex.
 	unset YACC LEX
 
@@ -123,7 +120,6 @@ src_configure() {
 		--disable-java
 		--disable-java-modules
 		--disable-riemann
-		--disable-stackdump  # 963387
 		--enable-ipv6
 		--enable-manpages
 		--localstatedir=/var/lib/syslog-ng
@@ -145,7 +141,6 @@ src_configure() {
 		$(use_enable json)
 		$(use_enable kafka)
 		$(use_enable mongodb)
-		$(use_enable mqtt)
 		$(usex mongodb --with-mongoc=system "--without-mongoc --disable-legacy-mongodb-options")
 		$(use_enable pacct)
 		$(use_enable python)
@@ -163,8 +158,6 @@ src_configure() {
 src_install() {
 	default
 
-	strip-lto-bytecode
-
 	# Install default configuration
 	insinto /etc/default
 	doins contrib/systemd/syslog-ng@default
@@ -180,7 +173,7 @@ src_install() {
 	keepdir /etc/syslog-ng/patterndb.d /var/lib/syslog-ng
 	find "${D}" -name '*.la' -delete || die
 
-	use python && python_optimize "${ED}/usr/$(get_libdir)/syslog-ng/python"
+	use python && python_optimize
 }
 
 pkg_postinst() {

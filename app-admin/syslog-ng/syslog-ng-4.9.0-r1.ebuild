@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-inherit autotools python-single-r1 systemd
+PYTHON_COMPAT=( python3_{11..14} )
+inherit autotools dot-a python-single-r1 systemd
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="https://www.syslog-ng.com/products/open-source-log-management/"
@@ -35,7 +35,7 @@ RDEPEND="
 	)
 	http? ( net-misc/curl )
 	kafka? ( >=dev-libs/librdkafka-1.0.0:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0:0 )
 	mqtt? ( net-libs/paho-mqtt-c:1.3 )
 	python? (
 		${PYTHON_DEPS}
@@ -104,8 +104,8 @@ src_prepare() {
 	done
 
 	for f in syslog-ng.conf.gentoo.hardened.in-r1 \
-			syslog-ng.conf.gentoo.in-r1; do
-		sed -e "s/@SYSLOGNG_VERSION@/$(ver_cut 1-2)/g" "${FILESDIR}/${f}" > "${T}/${f/.in-r1/}" || die
+			syslog-ng.conf.gentoo.in-r2; do
+		sed -e "s/@SYSLOGNG_VERSION@/$(ver_cut 1-2)/g" "${FILESDIR}/${f}" > "${T}/${f/.in*/}" || die
 	done
 
 	default
@@ -113,6 +113,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	# Needs bison/flex.
 	unset YACC LEX
 
@@ -121,6 +123,7 @@ src_configure() {
 		--disable-java
 		--disable-java-modules
 		--disable-riemann
+		--disable-stackdump  # 963387
 		--enable-ipv6
 		--enable-manpages
 		--localstatedir=/var/lib/syslog-ng
@@ -160,6 +163,8 @@ src_configure() {
 src_install() {
 	default
 
+	strip-lto-bytecode
+
 	# Install default configuration
 	insinto /etc/default
 	doins contrib/systemd/syslog-ng@default
@@ -175,7 +180,7 @@ src_install() {
 	keepdir /etc/syslog-ng/patterndb.d /var/lib/syslog-ng
 	find "${D}" -name '*.la' -delete || die
 
-	use python && python_optimize
+	use python && python_optimize "${ED}/usr/$(get_libdir)/syslog-ng/python"
 }
 
 pkg_postinst() {
