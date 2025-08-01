@@ -36,7 +36,7 @@ DEPEND="
 
 	>=app-crypt/gcr-3:0=[gtk]
 	x11-libs/cairo
-	opencv? ( >=media-libs/opencv-4.0.0:= )
+	opencv? ( >=media-libs/opencv-4.0.0:=[features2d] )
 "
 RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-gdkpixbuf:1.0
