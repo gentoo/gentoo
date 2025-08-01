@@ -320,10 +320,6 @@ sys-apps/groff uchardet
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
-# media-sound/lash not keyworded, bug #736725
-media-sound/fluidsynth lash
-
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
 dev-libs/efl avif lua_single_target_luajit physics
