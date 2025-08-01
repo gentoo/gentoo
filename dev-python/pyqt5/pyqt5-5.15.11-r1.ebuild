@@ -42,34 +42,31 @@ REQUIRED_USE="
 	xmlpatterns? ( network )
 "
 
-# Minimal supported version of Qt.
-QT_PV="5.15:5"
-
 DEPEND="
-	>=dev-qt/qtcore-${QT_PV}
-	>=dev-qt/qtxml-${QT_PV}
+	dev-qt/qtcore:5
+	dev-qt/qtxml:5
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
-		>=dev-qt/qtdbus-${QT_PV}
+		dev-qt/qtdbus:5
 		sys-apps/dbus
 	)
-	declarative? ( >=dev-qt/qtdeclarative-${QT_PV}[widgets?] )
-	designer? ( >=dev-qt/designer-${QT_PV} )
-	gui? ( >=dev-qt/qtgui-${QT_PV}[gles2-only=] )
-	help? ( >=dev-qt/qthelp-${QT_PV} )
-	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[widgets?] )
-	network? ( >=dev-qt/qtnetwork-${QT_PV}[ssl=] )
-	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
-	printsupport? ( >=dev-qt/qtprintsupport-${QT_PV} )
-	serialport? ( >=dev-qt/qtserialport-${QT_PV} )
-	speech? ( >=dev-qt/qtspeech-${QT_PV} )
-	sql? ( >=dev-qt/qtsql-${QT_PV} )
-	svg? ( >=dev-qt/qtsvg-${QT_PV} )
-	testlib? ( >=dev-qt/qttest-${QT_PV} )
-	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
-	widgets? ( >=dev-qt/qtwidgets-${QT_PV} )
-	x11extras? ( >=dev-qt/qtx11extras-${QT_PV} )
-	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
+	declarative? ( dev-qt/qtdeclarative:5[widgets?] )
+	designer? ( dev-qt/designer:5 )
+	gui? ( dev-qt/qtgui:5[gles2-only=] )
+	help? ( dev-qt/qthelp:5 )
+	multimedia? ( dev-qt/qtmultimedia:5[widgets?] )
+	network? ( dev-qt/qtnetwork:5[ssl=] )
+	opengl? ( dev-qt/qtopengl:5 )
+	printsupport? ( dev-qt/qtprintsupport:5 )
+	serialport? ( dev-qt/qtserialport:5 )
+	speech? ( dev-qt/qtspeech:5 )
+	sql? ( dev-qt/qtsql:5 )
+	svg? ( dev-qt/qtsvg:5 )
+	testlib? ( dev-qt/qttest:5 )
+	websockets? ( dev-qt/qtwebsockets:5 )
+	widgets? ( dev-qt/qtwidgets:5 )
+	x11extras? ( dev-qt/qtx11extras:5 )
+	xmlpatterns? ( dev-qt/qtxmlpatterns:5 )
 "
 RDEPEND="
 	${DEPEND}
@@ -78,7 +75,7 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/pyqt-builder-1.14.1[${PYTHON_USEDEP}]
 	>=dev-python/sip-6.8.6[${PYTHON_USEDEP}]
-	>=dev-qt/qtcore-${QT_PV}
+	dev-qt/qtcore:5
 	dbus? ( virtual/pkgconfig )
 "
 
