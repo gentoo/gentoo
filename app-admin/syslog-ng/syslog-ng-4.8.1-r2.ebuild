@@ -35,7 +35,7 @@ RDEPEND="
 	)
 	http? ( net-misc/curl )
 	kafka? ( >=dev-libs/librdkafka-1.0.0:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0:0 )
 	mqtt? ( net-libs/paho-mqtt-c:1.3 )
 	python? (
 		${PYTHON_DEPS}
