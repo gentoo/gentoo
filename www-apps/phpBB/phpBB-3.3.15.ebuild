@@ -20,6 +20,7 @@ PHP_RDEPEND="(
 )"
 
 RDEPEND="|| (
+	${PHP_RDEPEND//@SLOT@/8.4}
 	${PHP_RDEPEND//@SLOT@/8.3}
 	${PHP_RDEPEND//@SLOT@/8.2}
 )"
