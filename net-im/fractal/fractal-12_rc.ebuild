@@ -26,7 +26,7 @@ declare -A GIT_CRATES=(
 	[ruma]='https://github.com/ruma/ruma;de19ebaf71af620eb17abaefd92e43153f9d041d;ruma-%commit%/crates/ruma'
 )
 
-RUST_MIN_VER="1.82.0"
+RUST_MIN_VER="1.85.0"
 
 inherit cargo gnome2-utils meson
 
