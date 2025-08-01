@@ -379,7 +379,7 @@ multilib_src_configure() {
 			fi
 		fi
 
-		emesonargs+=(-Dvulkan-layers=device-select,overlay)
+		emesonargs+=(-Dvulkan-layers=device-select,overlay,anti-lag)
 	fi
 
 	driver_list() {
