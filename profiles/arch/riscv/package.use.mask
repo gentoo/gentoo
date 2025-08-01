@@ -3,6 +3,7 @@
 
 # Alfred Wingate <parona@protonmail.com> (2025-07-31)
 # mongodb not keyworded here
+app-admin/mongo-tools test-full
 sci-libs/gdal mongodb
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
