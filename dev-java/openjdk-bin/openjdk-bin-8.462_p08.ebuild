@@ -42,7 +42,7 @@ S="${WORKDIR}/jdk${MY_PV}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT=$(ver_cut 1)
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ppc64 ~x64-macos"
 
 IUSE="alsa cups examples headless-awt selinux source"
 
