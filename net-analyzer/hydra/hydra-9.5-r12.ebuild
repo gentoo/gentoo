@@ -33,7 +33,7 @@ RDEPEND="
 		)
 	)
 	mongodb? ( dev-libs/mongo-c-driver )
-	mysql? ( dev-db/mysql-connector-c:= )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	ncurses? ( sys-libs/ncurses:= )
 	oracle? ( dev-db/oracle-instantclient[sdk] )
 	pcre? ( dev-libs/libpcre2 )
