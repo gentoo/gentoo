@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-08-01)
+# dev-qt/qtlanguageserver:6 is keyworded here
+dev-qt/qtdeclarative:6 -qmlls
+dev-qt/qttools:6 -qmlls
+dev-python/pyside -tools
+
 # Alfred Wingate <parona@protonmail.com> (2025-06-10)
 # Upstream supports arm64
 media-libs/svt-av1 -test
