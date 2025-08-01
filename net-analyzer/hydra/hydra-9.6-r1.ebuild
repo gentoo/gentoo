@@ -31,7 +31,7 @@ RDEPEND="
 			dev-libs/libmemcached[sasl]
 		)
 	)
-	mongodb? ( dev-libs/mongo-c-driver )
+	mongodb? ( dev-libs/mongo-c-driver:0 )
 	mysql? ( dev-db/mysql-connector-c:= )
 	ncurses? ( sys-libs/ncurses:= )
 	oracle? ( dev-db/oracle-instantclient[sdk] )
