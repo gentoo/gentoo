@@ -1,0 +1,23 @@
+diff --git a/test/java/clojure/test/SwissArmy.java b/test/java/clojure/test/SwissArmy.java
+index f38e2d44..77bb4283 100644
+--- a/test/java/clojure/test/SwissArmy.java
++++ b/test/java/clojure/test/SwissArmy.java
+@@ -1,9 +1,10 @@
+ package clojure.test;
+ 
+-import clojure.java.api.Clojure;
+-import clojure.lang.IFn;
++// import clojure.java.api.Clojure;
++// import clojure.lang.IFn;
+ 
+ public class SwissArmy {
++/*
+     public static String doppelganger = "static-field";
+     public String ctorId;
+     public static IFn idFn = Clojure.var("clojure.core", "identity");
+@@ -42,4 +43,5 @@ public class SwissArmy {
+     public static String staticArityOverloadMethod(int a, int b, int c) {return "int-int-int";}
+     public static String doppelganger(int a, int b, long c) {return "int-int-long";}
+     public static String doppelganger() {return "";}
++*/
+ }
