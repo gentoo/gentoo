@@ -16,7 +16,7 @@ RDEPEND="
 	>=gui-libs/gtk-4.10:4
 	>=gui-libs/libadwaita-1.5:1
 	>=dev-libs/libgnome-games-support-2.0.0:2=
-	>=gnome-base/librsvg-2.46
+	>=gnome-base/librsvg-2.46[vala]
 	>=dev-libs/libgee-0.14.0:0.8=
 "
 DEPEND="${RDEPEND}"
