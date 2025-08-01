@@ -63,6 +63,7 @@ dev-php/pecl-mongodb test
 dev-python/pymongo test-full
 sci-libs/gdal mongodb
 dev-libs/mongo-cxx-driver test-full
+app-admin/mongo-tools test-full
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-04-25)
 # No Level-Zero on musl
