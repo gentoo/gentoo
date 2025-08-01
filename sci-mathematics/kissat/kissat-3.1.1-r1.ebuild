@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,6 @@ src_compile() {
 }
 
 src_install() {
-	dolib.a build/libkissat.a
 	exeinto /usr/bin/
 	doexe build/{kissat,kitten}
 	dodoc CONTRIBUTING NEWS.md README.md
