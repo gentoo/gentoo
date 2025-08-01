@@ -57,6 +57,7 @@ LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
 LLVM_TEST_COMPONENTS=(
 	llvm/include/llvm/ProfileData llvm/lib/Testing/Support third-party
 )
+LLVM_PATCHSET=${PV}
 llvm.org_set_globals
 
 python_check_deps() {
