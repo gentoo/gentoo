@@ -1036,16 +1036,30 @@ src_test() {
 }
 
 run_locale_gen() {
-	# if the host locales.gen contains no entries, we'll install everything
-	local root="$1"
-	local locale_list="${root%/}/etc/locale.gen"
-	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
-		ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
-		locale_list="${root%/}/usr/share/i18n/SUPPORTED"
+	local prefix=$1 user_config config
+	local -a localegen_args
+
+	config="${prefix}/usr/share/i18n/SUPPORTED"
+	user_config="${prefix}/etc/locale.gen"
+
+	if [[ ${EBUILD_PHASE_FUNC} == src_install ]]; then
+		# For USE=compile-locales, all locales should be built.
+		mkdir -p -- "${prefix}/usr/lib/locale" || die
+	elif locale-gen --list --config "${user_config}" | read -r; then
+		config=${user_config}
 	fi
 
-	locale-gen --jobs $(makeopts_jobs) --config "${locale_list}" \
-		--destdir "${root}"
+	localegen_args=( --config "${config}" --destdir "${prefix}" )
+
+	# bug 736794: we need to be careful with the parallelization... the
+	# number of processors saved in the environment of a binary package may
+	# differ strongly from the number of processes available during postinst
+	if [[ ${EMERGE_FROM} != binary ]]; then
+		localegen_args+=( --jobs "$(makeopts_jobs)" )
+	fi
+
+	printf 'Executing: locale-gen %s\n' "${localegen_args[*]@Q}" >&2
+	locale-gen "${localegen_args[@]}"
 }
 
 glibc_do_src_install() {
@@ -1219,7 +1233,9 @@ glibc_do_src_install() {
 
 	# Generate all locales if this is a native build as locale generation
 	if use compile-locales && ! is_crosscompile ; then
-		run_locale_gen "${ED}"
+		if ! run_locale_gen "${ED}"; then
+			die "locale-gen(1) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
+		fi
 	fi
 }
 
@@ -1311,8 +1327,10 @@ pkg_postinst() {
 		"${EROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}/"
 	fi
 
-	if ! is_crosscompile && [[ -n ${ROOT} ]] ; then
-		use compile-locales || run_locale_gen "${EROOT}/"
+	if ! is_crosscompile && [[ -z ${ROOT} ]] ; then
+		if ! use compile-locales && ! run_locale_gen "${EROOT}"; then
+			ewarn "locale-gen(1) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
+		fi
 	fi
 
 	# Check for sanity of /etc/nsswitch.conf, take 2
