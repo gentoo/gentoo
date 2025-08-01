@@ -41,7 +41,7 @@ RDEPEND="acct-group/mongodb
 	dev-libs/snowball-stemmer:=
 	net-misc/curl
 	dev-libs/libbson
-	dev-libs/mongo-c-driver
+	dev-libs/mongo-c-driver:0
 	>=sys-libs/zlib-1.2.12:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
 	ssl? (
