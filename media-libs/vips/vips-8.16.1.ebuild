@@ -111,8 +111,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# workaround for bug in lld (bug #921728)
-	tc-ld-is-lld && filter-lto
+	# workaround for segfault issue in LLVM lto (bug #921728)
+	tc-is-clang && filter-lto
 
 	local emesonargs=(
 		$(meson_use deprecated)
