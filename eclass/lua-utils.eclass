@@ -385,7 +385,7 @@ lua_enable_tests() {
 			test_pkg="dev-lua/busted"
 			if [[ ! ${_LUA_SINGLE_ECLASS} ]]; then
 				eval "lua_src_test() {
-					busted --lua=\"\${ELUA}\" --output=\"plainTerminal\" \"${test_directory}\" || die \"Tests fail with \${ELUA}\"
+					busted --lua=\"\${ELUA}\" --output=\"plainTerminal\" -C \"\${BUILD_DIR}\" \"${test_directory}\" || die \"Tests fail with \${ELUA}\"
 				}"
 				src_test() {
 					lua_foreach_impl lua_src_test
