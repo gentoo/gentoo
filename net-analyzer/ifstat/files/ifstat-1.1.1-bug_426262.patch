@@ -1,0 +1,17 @@
+Fix move configure.in to conifgure.ac
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -47,10 +47,10 @@
+ maintainer-clean: distclean
+ 	$(RM) configure config.h.in ifstat.1
+ 
+-${srcdir}/configure: configure.in
++${srcdir}/configure: configure.ac
+ 	cd ${srcdir} && autoconf
+ 
+-${srcdir}/config.h.in: configure.in acconfig.h
++${srcdir}/config.h.in: configure.ac acconfig.h
+ 	cd ${srcdir} && autoheader
+ 
+ Makefile: Makefile.in config.status
