@@ -26,6 +26,7 @@ RDEPEND="
 # eautoreconf requires gnome-base/gnome-common
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-cpp/catch:0
 	dev-util/glib-utils
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
