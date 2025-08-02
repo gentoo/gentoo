@@ -70,7 +70,7 @@ COMMON_DEPEND="
 		app-arch/xz-utils
 		app-arch/lzma
 	) )
-	mongodb? ( dev-db/mongodb:= )
+	mongodb? ( dev-libs/mongo-cxx-driver:= )
 	muparser? ( dev-cpp/muParser:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
@@ -141,6 +141,7 @@ PATCHES=(
 	"${FILESDIR}"/gdal-3.11.3-x86.patch
 	"${FILESDIR}"/gdal-3.11.3-java-no-strict-aliasing.patch
 	"${FILESDIR}"/gdal-3.11.3-fix-completions.patch
+	"${FILESDIR}"/gdal-3.11.3-mongocxx4.patch
 )
 
 pkg_setup() {

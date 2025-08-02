@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{12..13} )
 
 inherit autotools flag-o-matic linux-info python-any-r1 systemd
 
@@ -11,9 +11,9 @@ DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="https://www.rsyslog.com/
 	https://github.com/rsyslog/rsyslog/"
 
-if [[ "${PV}" == *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/rsyslog/${PN}.git"
-	DOC_REPO_URI="https://github.com/rsyslog/${PN}-doc.git"
+if [[ "${PV}" == *9999* ]] ; then
+	EGIT_REPO_URI="https://github.com/rsyslog/${PN}"
+	DOC_REPO_URI="https://github.com/rsyslog/${PN}-doc"
 
 	inherit git-r3
 else
@@ -24,13 +24,13 @@ else
 		)
 	"
 
-	KEYWORDS="amd64 arm arm64 ~hppa ~ppc64 ~riscv ~sparc x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
 
-IUSE="clickhouse curl dbi debug doc elasticsearch +gcrypt gnutls imhttp"
+IUSE="clickhouse curl dbi debug doc elasticsearch +gcrypt gnutls imdocker imhttp"
 IUSE+=" impcap jemalloc kafka kerberos kubernetes mdblookup"
 IUSE+=" mongodb mysql normalize omhttp omhttpfs omudpspoof +openssl"
 IUSE+=" postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp +ssl"
@@ -43,15 +43,16 @@ REQUIRED_USE="
 	ssl? ( || ( gnutls openssl ) )
 "
 
-BDEPEND=">=dev-build/autoconf-archive-2015.02.24
+BDEPEND="
+	>=dev-build/autoconf-archive-2015.02.24
 	sys-apps/lsb-release
 	virtual/pkgconfig
 	test? (
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
 		!jemalloc? ( sys-libs/libfaketime )
 		${PYTHON_DEPS}
-	)"
-
+	)
+"
 RDEPEND="
 	>=dev-libs/libfastjson-0.99.8:=
 	>=dev-libs/libestr-0.1.9
@@ -60,6 +61,7 @@ RDEPEND="
 	dbi? ( >=dev-db/libdbi-0.8.3 )
 	elasticsearch? ( >=net-misc/curl-7.35.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:= )
+	imdocker? ( >=net-misc/curl-7.40.0 )
 	imhttp? (
 		dev-libs/apr-util
 		www-servers/civetweb
@@ -71,7 +73,7 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 	kubernetes? ( >=net-misc/curl-7.35.0 )
 	mdblookup? ( dev-libs/libmaxminddb:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:= )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:0= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	normalize? (
 		>=dev-libs/liblognorm-2.0.3:=
@@ -102,8 +104,8 @@ RDEPEND="
 	xxhash? ( dev-libs/xxhash:= )
 	zeromq? (
 		>=net-libs/czmq-4:=[drafts]
-	)"
-
+	)
+"
 DEPEND="
 	${RDEPEND}
 	elibc_musl? ( sys-libs/queue-standalone )
@@ -217,7 +219,6 @@ src_configure() {
 		# Input Plugins without dependencies
 		--enable-imbatchreport
 		--enable-imdiag
-		--enable-imdocker
 		--enable-imfile
 		--enable-improg
 		--enable-impstats
@@ -273,6 +274,7 @@ src_configure() {
 		$(use_enable elasticsearch)
 		$(use_enable gcrypt libgcrypt)
 		$(use_enable gnutls)
+		$(use_enable imdocker)
 		$(use_enable imhttp)
 		$(use_enable impcap)
 		$(use_enable jemalloc)

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -35,7 +35,7 @@ RDEPEND="
 	http? ( net-misc/curl )
 	json? ( >=dev-libs/json-c-0.9:= )
 	kafka? ( >=dev-libs/librdkafka-1.0.0:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0:0 )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
