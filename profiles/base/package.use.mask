@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-08-02)
+# Fails to build, needs looking into but isn't currently needed
+# by anything and can leave it masked for now.
+>=media-libs/vips-8.17 vala
+
 # Alfred Wingate (2025-07-31)
 # Missing dependency
 sci-libs/gdal mongodb
