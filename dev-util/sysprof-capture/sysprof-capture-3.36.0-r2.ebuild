@@ -7,7 +7,7 @@ GNOME_ORG_MODULE="sysprof"
 inherit dot-a gnome.org meson-multilib systemd
 
 DESCRIPTION="Static library for sysprof capture data generation"
-HOMEPAGE="http://sysprof.com/"
+HOMEPAGE="https://www.sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="3"
