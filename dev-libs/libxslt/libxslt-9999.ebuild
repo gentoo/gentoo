@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="crypt debug examples python static-libs"
+IUSE="crypt debug debugger examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND=">=virtual/pkgconfig-1"
@@ -59,6 +59,7 @@ multilib_src_configure() {
 			--without-python \
 			$(use_with crypt crypto) \
 			$(use_with debug) \
+			$(use_with debugger) \
 			$(use_enable static-libs static) \
 			"$@"
 	}
