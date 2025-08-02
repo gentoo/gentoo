@@ -5,6 +5,9 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:gnu:nano</remote-id>
+	</upstream>
 	<longdescription>
 GNU nano - an enhanced clone of the Pico text editor.
 
