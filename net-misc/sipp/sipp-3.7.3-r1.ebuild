@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,11 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-overflow.patch
 )
+
+src_prepare() {
+	sed -e 's/ -Werror / /' -i "${S}/CMakeLists.txt"
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
