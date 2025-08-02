@@ -38,15 +38,13 @@ MY_PV="${PV/_p/+}"
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
 SRC_URI="
-	https://github.com/${PN}/jdk/archive/jdk-${MY_PV}.tar.gz
-
+	https://github.com/${PN}/jdk25u/archive/jdk-${MY_PV}.tar.gz
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
 	)
 "
-# S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
-S="${WORKDIR}/jdk-jdk-${MY_PV//+/-}"
+S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="${MY_PV%%[.+]*}"
