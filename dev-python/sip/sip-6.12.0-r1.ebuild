@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
@@ -21,7 +21,6 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/tomli[${PYTHON_USEDEP}]' 3.10)
 "
 BDEPEND="
 	>=dev-python/setuptools-scm-8[${PYTHON_USEDEP}]
@@ -30,4 +29,6 @@ BDEPEND="
 distutils_enable_sphinx docs \
 	dev-python/myst-parser \
 	dev-python/sphinx-rtd-theme
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

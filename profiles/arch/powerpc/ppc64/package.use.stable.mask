@@ -71,11 +71,6 @@ dev-ruby/kramdown unicode
 # app-emacs/flycheck is not marked stable here yet
 dev-util/pkgcheck emacs
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
-# The corresponding Qt5 modules are not stable keyworded on ppc64, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/pyqt5 bluetooth
-
 # Sam James <sam@gentoo.org> (2022-03-07)
 # sys-cluster/torque not marked stable on ppc64
 sys-cluster/openmpi openmpi_rm_pbs
