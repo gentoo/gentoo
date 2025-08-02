@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
@@ -32,7 +32,7 @@ RESTRICT="!test? ( test )"
 # Second block is dependency() from subdir meson.builds, sorted by directory name occurrence order
 DEPEND="
 	gnome-online-accounts? (
-		x11-libs/gtk+:3
+		x11-libs/gtk+:3[X,wayland=]
 		>=net-libs/gnome-online-accounts-3.49.1:=
 	)
 	>=media-libs/libpulse-2.0[glib]
