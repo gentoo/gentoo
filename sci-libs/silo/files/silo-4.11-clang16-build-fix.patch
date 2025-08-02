@@ -1,0 +1,95 @@
+Bug: https://bugs.gentoo.org/886464
+--- a/src/hdf5_drv/H5FDsilo.c
++++ b/src/hdf5_drv/H5FDsilo.c
+@@ -541,40 +541,40 @@ typedef struct H5FD_class_t {
+ #endif
+ 
+ static const H5FD_class_t H5FD_silo_g = {
+-    "silo",				        /*name			*/
+-    MAXADDR,				        /*maxaddr		*/
+-    H5F_CLOSE_WEAK,				/* fc_degree		*/
++    .name = "silo",				        /*name			*/
++    .maxaddr = MAXADDR,				        /*maxaddr		*/
++    .fc_degree = H5F_CLOSE_WEAK,				/* fc_degree		*/
+ #if HDF5_VERSION_GE(1,10,4)
+-    0,                                          /* terminate            */
++    .terminate = 0,                                          /* terminate            */
+ #endif
+-    H5FD_silo_sb_size,                          /*sb_size               */
+-    H5FD_silo_sb_encode,                        /*sb_encode             */
+-    H5FD_silo_sb_decode,                        /*sb_decode             */
+-    0, 						/*fapl_size		*/
+-    NULL,					/*fapl_get		*/
+-    NULL,					/*fapl_copy		*/
+-    NULL, 					/*fapl_free		*/
+-    0,						/*dxpl_size		*/
+-    NULL,					/*dxpl_copy		*/
+-    NULL,					/*dxpl_free		*/
+-    H5FD_silo_open,		                /*open			*/
+-    H5FD_silo_close,		                /*close			*/
+-    H5FD_silo_cmp,			        /*cmp			*/
+-    H5FD_silo_query,		                /*query			*/
+-    NULL,					/*get_type_map		*/
+-    NULL,					/*alloc			*/
+-    NULL,					/*free			*/
+-    H5FD_silo_get_eoa,		                /*get_eoa		*/
+-    H5FD_silo_set_eoa, 	                	/*set_eoa		*/
+-    H5FD_silo_get_eof,		                /*get_eof		*/
+-    H5FD_silo_get_handle,                       /*get_handle            */
+-    H5FD_silo_read,		                /*read			*/
+-    H5FD_silo_write,		                /*write			*/
+-    NULL,		                	/*flush			*/
+-    H5FD_silo_truncate,				/*truncate		*/
+-    NULL,                                       /*lock                  */
+-    NULL,                                       /*unlock                */
+-    H5FD_FLMAP_SINGLE				/*fl_map		*/
++    .sb_size = H5FD_silo_sb_size,                          /*sb_size               */
++    .sb_encode = H5FD_silo_sb_encode,                        /*sb_encode             */
++    .sb_decode = H5FD_silo_sb_decode,                        /*sb_decode             */
++    .fapl_size = 0, 						/*fapl_size		*/
++    .fapl_get = NULL,					/*fapl_get		*/
++    .fapl_copy = NULL,					/*fapl_copy		*/
++    .fapl_free = NULL, 					/*fapl_free		*/
++    .dxpl_size = 0,						/*dxpl_size		*/
++    .dxpl_copy = NULL,					/*dxpl_copy		*/
++    .dxpl_free = NULL,					/*dxpl_free		*/
++    .open = H5FD_silo_open,		                /*open			*/
++    .close = H5FD_silo_close,		                /*close			*/
++    .cmp = H5FD_silo_cmp,			        /*cmp			*/
++    .query = H5FD_silo_query,		                /*query			*/
++    .get_type_map = NULL,					/*get_type_map		*/
++    .alloc = NULL,					/*alloc			*/
++    .free = NULL,					/*free			*/
++    .get_eoa = H5FD_silo_get_eoa,		                /*get_eoa		*/
++    .set_eoa = H5FD_silo_set_eoa, 	                	/*set_eoa		*/
++    .get_eof = H5FD_silo_get_eof,		                /*get_eof		*/
++    .get_handle = H5FD_silo_get_handle,                       /*get_handle            */
++    .read = H5FD_silo_read,		                /*read			*/
++    .write = H5FD_silo_write,		                /*write			*/
++    .flush = NULL,		                	/*flush			*/
++    .truncate = H5FD_silo_truncate,				/*truncate		*/
++    .lock = NULL,                                       /*lock                  */
++    .unlock = NULL,                                       /*unlock                */
++    .fl_map = H5FD_FLMAP_SINGLE				/*fl_map		*/
+ };
+ 
+ #ifdef _WIN32
+--- a/src/hdf5_drv/silo_hdf5.c
++++ b/src/hdf5_drv/silo_hdf5.c
+@@ -198,6 +198,7 @@ static const unsigned SILO_HZIP_PERMUTATION[4] = {0,0,((unsigned) (0x00002130)),
+ #endif
+ #ifdef HAVE_ZFP
+ #include "H5Zzfp.h"
++#include "zfp.h"
+ #endif
+ 
+ /* Defining these to check overhead of PROTECT */
+@@ -1809,7 +1810,7 @@ db_hdf5_cwg(DBfile *_dbfile)
+              *dscount = m.MEMCNT;                                \
+         *dsnames = (char **) calloc(*dscount, sizeof(char**));   \
+         for (i = 0; i < *dscount; i++)                           \
+-            (*dsnames)[i] = strdup(m.MEMNAME[i]);                \
++            (*dsnames)[i] = strdup((const char *)m.MEMNAME[i]);  \
+         break;                                                   \
+     }
+ 
