@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/asmjit/asmjit"
 else
-	CommitId=REPLACE_ME
+	CommitId=a3199e8857792cd10b7589ff5d58343d2c9008ea
 	SRC_URI="https://github.com/asmjit/${PN}/archive/${CommitId}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}"/${PN}-${CommitId}
