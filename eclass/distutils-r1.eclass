@@ -292,7 +292,7 @@ _distutils_set_globals() {
 			;;
 		scikit-build-core)
 			bdep+='
-				>=dev-python/scikit-build-core-0.10.7[${PYTHON_USEDEP}]
+				>=dev-python/scikit-build-core-0.11.5[${PYTHON_USEDEP}]
 			'
 			;;
 		setuptools)
@@ -1145,9 +1145,9 @@ distutils_pep517_install() {
 					ninjaopts = shlex.split(os.environ["NINJAOPTS"])
 					print(json.dumps({
 						"build.tool-args": ninjaopts,
+						"build.verbose": True,
 						"cmake.args": ";".join(sys.argv[1:]),
 						"cmake.build-type": "${CMAKE_BUILD_TYPE}",
-						"cmake.verbose": True,
 						"install.strip": False,
 					}))
 				EOF
