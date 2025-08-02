@@ -45,7 +45,7 @@ DEPEND="${RDEPEND}
 	>=kde-frameworks/ktexteditor-${KFMIN}:6
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-25.07.70-cmake-boostpython.patch )
+PATCHES=( "${FILESDIR}"/${PN}-25.07.80-cmake-boostpython.patch )
 
 src_prepare() {
 	ecm_src_prepare
