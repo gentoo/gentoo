@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic
 
@@ -35,9 +35,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	rm m4/po.m4* || die
-	cp /usr/share/aclocal/po.m4 m4/ || die
-	AT_M4DIR=m4 eautoreconf
+	eautoreconf
 }
 
 src_configure() {
