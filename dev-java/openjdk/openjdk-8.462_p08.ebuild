@@ -192,8 +192,7 @@ src_configure() {
 	filter-flags -fexceptions
 
 	# Strip lto related flags, we rely on --with-jvm-features=link-time-opt
-	# See bug #833097 and bug #833098.
-	tc-is-lto && myconf+=( --with-jvm-features=link-time-opt )
+	# in newer JDKs. See bug #833097 and bug #833098.
 	filter-lto
 	filter-flags -fdevirtualize-at-ltrans
 
