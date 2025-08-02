@@ -11,7 +11,7 @@ HOMEPAGE="https://www.sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="4"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
@@ -35,11 +35,9 @@ multilib_src_configure() {
 		-Dsystemdunitdir=$(systemd_get_systemunitdir)
 		# -Ddebugdir
 		-Dhelp=false
-		-Dlibunwind=false
 		-Dtools=false
 		-Dtests=false
 		-Dexamples=false
-		-Dagent=false
 	)
 	meson_src_configure
 }

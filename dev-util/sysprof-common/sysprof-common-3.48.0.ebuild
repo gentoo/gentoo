@@ -1,4 +1,4 @@
-# Copyright 2020-2023 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ GNOME_ORG_MODULE="sysprof"
 inherit gnome.org
 
 DESCRIPTION="Static library for sysprof capture data generation"
-HOMEPAGE="http://sysprof.com/"
+HOMEPAGE="https://www.sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="0"
