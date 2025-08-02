@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		Luanti (formerly Minetest) is a free software game engine to create various games
+		based on voxel gameplay, inspired by InfiniMiner, Minecraft, and the like.
+		Luanti was originally created by Perttu Ahola (alias “celeron55”).
+
+		The basic idea of each game is always the same: The player is thrown into a huge world
+		made out of cubes/blocks. Most of the time, these cubes make the landscape and these
+		blocks can be removed and placed almost entirely freely. Using the collected items,
+		new tools and other items can be crafted. Games in Luanti can, however, be much more
+		complex than this.
+
+		A core concept of Luanti is a built-in modding capability, based on the Lua programming language.
+		Mods allow one or more certain aspects of an existing game to be modified. Luanti mods can be
+		as simple as adding a few decoration blocks or very complex by (for example) introducing
+		complex new gameplay concepts or generating a completely different kind of world, and many
+		other things. For the player, using a new mod requires to copy or extract some files into
+		a certain location and pressing some buttons in Luanti’s interface.
+
+		Luanti can be played alone or online together with multiple players.
+
+		Games for Luanti can be found on ContentDB.
+
+		Features
+		* A big cube-based world to discover (61840 nodes (cubes) in every dimension)
+		* Procedurally generated world
+		* Several world generators with many adjustable parameters
+		* Extremely high configurability with an advanced settings editor and built-in descriptions,
+			or by using a configuration file
+		* Customize the graphics and sounds through texture packs
+		* Download games, mods and texture packs from the built-in ContentDB
+		* Singleplayer mode and online multiplayer mode
+		* Server list
+		* Sophisticated modding system using Lua
+		* Mods are entirely server-sided. You can join any Luanti server with any mods and start playing,
+			no additional software required
+		* Relatively low system requirements
+	</longdescription>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="benchmark">Build with benchmarking support</flag>
+		<flag name="client">Build Luanti client</flag>
+		<flag name="curl">Enable use of online mod repo, public serverlist and remote media with <pkg>net-misc/curl</pkg></flag>
+		<flag name="leveldb">Enable LevelDB map backend with <pkg>dev-libs/leveldb</pkg></flag>
+		<flag name="ncurses">Enable server side ncurses terminal</flag>
+		<flag name="openssl">Speed up SHA1 and SHA2 hashing with <pkg>dev-libs/openssl</pkg></flag>
+		<flag name="postgres">Enable PostgreSQL map backend with <pkg>dev-db/postgresql</pkg></flag>
+		<flag name="prometheus">Enable Prometheus client support</flag>
+		<flag name="redis">Enable Redis map backend with <pkg>dev-libs/hiredis</pkg></flag>
+		<flag name="server">Build Luanti server</flag>
+		<flag name="spatial">Speed up AreaStores with <pkg>sci-libs/libspatialindex</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/luanti-org/luanti/issues</bugs-to>
+		<changelog>https://docs.luanti.org/about/changelog/</changelog>
+		<doc>https://wiki.luanti.org/Main_Page</doc>
+		<remote-id type="github">luanti-org/luanti</remote-id>
+	</upstream>
+</pkgmetadata>
