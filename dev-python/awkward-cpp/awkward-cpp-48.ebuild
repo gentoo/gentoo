@@ -30,9 +30,3 @@ BDEPEND="
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-src_prepare() {
-	default
-	# https://github.com/scikit-build/scikit-build-core/issues/912
-	sed -i -e '/scikit-build-core/s:0\.11:0.8:' pyproject.toml || die
-}
