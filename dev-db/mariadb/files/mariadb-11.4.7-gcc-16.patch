@@ -1,40 +1,35 @@
-https://github.com/MariaDB/server/pull/4081
+https://github.com/MariaDB/server/pull/4170
 
-From 63735967891430ec44761330a6800d548ba32b71 Mon Sep 17 00:00:00 2001
-From: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
-Date: Sun, 1 Jun 2025 17:35:07 +0300
-Subject: [PATCH] Fix building with gcc 16 (evex512 removal)
+From 31aa8b6939ee9326b4145a9cceae7e5a3711d7bf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marko=20M=C3=A4kel=C3=A4?= <marko.makela@mariadb.com>
+Date: Mon, 7 Jul 2025 09:30:34 +0300
+Subject: [PATCH] MDEV-37170 Enable AVX10.1 CRC-32 on GCC 16
 
-Recently, evex512 was removed from gcc trunk [1] which will eventually
-become gcc 16, and that leads to a build failure in
-mariadb, originally reported downstream in a Gentoo bug [2].
+The AVX512 accelerated CRC-32 computation that had been added
+in commit 9ec7819c585d139c8fe64d0f7f0f0f51dcafa01f was disabled
+in commit a293dfd92a8cf2bf3bf279b7e68b19e6e80d6e48 for GCC 16.
 
-This is reproducible across all versions from 10.6 to current master.
-
-The change is as simple as adding an upper boundary to which
-gcc versions can use evex512.
-
-[1] https://gcc.gnu.org/git/?p=gcc.git;a=commitdiff;h=c052a6f4
-[2] https://bugs.gentoo.org/956632
-
-Signed-off-by: Kostadin Shishmanov <kostadinshishmanov@protonmail.com>
+Let us enable that logic by applying
+dr-m/crc32_simd@075bacb0cc7da8df18afa15a827ae4d11166fe32
+which makes use of the avx10.1 target attribute that had been
+introduced in GCC 15.
 ---
- mysys/crc32/crc32c_x86.cc | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ mysys/crc32/crc32c_x86.cc | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/mysys/crc32/crc32c_x86.cc b/mysys/crc32/crc32c_x86.cc
-index fb5dc19f7a5..134596db2cc 100644
+index fb5dc19f..a66093e5 100644
 --- a/mysys/crc32/crc32c_x86.cc
 +++ b/mysys/crc32/crc32c_x86.cc
-@@ -25,7 +25,7 @@
+@@ -25,6 +25,9 @@
  #else
  # include <cpuid.h>
  # ifdef __APPLE__ /* AVX512 states are not enabled in XCR0 */
--# elif __GNUC__ >= 14 || (defined __clang_major__ && __clang_major__ >= 18)
-+# elif (__GNUC__ >= 14 && __GNUC__ < 16) || (defined __clang_major__ && __clang_major__ >= 18)
++# elif __GNUC__ >= 15
++#  define TARGET "pclmul,avx10.1,vpclmulqdq"
++#  define USE_VPCLMULQDQ __attribute__((target(TARGET)))
+ # elif __GNUC__ >= 14 || (defined __clang_major__ && __clang_major__ >= 18)
  #  define TARGET "pclmul,evex512,avx512f,avx512dq,avx512bw,avx512vl,vpclmulqdq"
  #  define USE_VPCLMULQDQ __attribute__((target(TARGET)))
- # elif __GNUC__ >= 11 || (defined __clang_major__ && __clang_major__ >= 9)
 -- 
-2.49.0
-
+2.49.1
