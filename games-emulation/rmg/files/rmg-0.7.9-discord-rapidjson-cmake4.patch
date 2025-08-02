@@ -1,0 +1,24 @@
+https://github.com/Rosalie241/RMG/pull/382
+https://github.com/Rosalie241/RMG/commit/1c6210f9646229c81f6cfbf99e59516a20e4b623
+
+From 9c7e7c36d65f190ebeca1536559fe17d61bb8246 Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 4 Jul 2025 11:37:06 -0700
+Subject: [PATCH] 3rdParty: change minimum cmake version in discord-rpc's
+ rapidjson
+
+Gentoo-Issue: https://bugs.gentoo.org/959468
+---
+ Source/3rdParty/discord-rpc/thirdparty/rapidjson/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/3rdParty/discord-rpc/thirdparty/rapidjson/CMakeLists.txt b/Source/3rdParty/discord-rpc/thirdparty/rapidjson/CMakeLists.txt
+index ceda71b1b..844eafe76 100644
+--- a/Source/3rdParty/discord-rpc/thirdparty/rapidjson/CMakeLists.txt
++++ b/Source/3rdParty/discord-rpc/thirdparty/rapidjson/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ if(POLICY CMP0025)
+   # detect Apple's Clang
+   cmake_policy(SET CMP0025 NEW)
