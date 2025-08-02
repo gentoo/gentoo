@@ -426,16 +426,14 @@ CRATES="
 
 inherit cargo optfeature
 
-DESCRIPTION=""
-HOMEPAGE=""
+DESCRIPTION="A friendly language for building type-safe, scalable systems!"
+HOMEPAGE="https://gleam.run/"
 SRC_URI="
-	https://github.com/gleam-lang/gleam/archive/refs/tags/v${PV}.tar.gz
+	https://github.com/gleam-lang/gleam/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}
 "
 
-LICENSE=""
-# Dependent crate licenses
-LICENSE+="
+LICENSE="
 	Apache-2.0 BSD Boost-1.0 CC0-1.0 ISC MIT MPL-2.0 MPL-2.0 Unicode-3.0
 	Unicode-DFS-2016
 "
