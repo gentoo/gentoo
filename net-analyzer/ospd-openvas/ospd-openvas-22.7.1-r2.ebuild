@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1 systemd
 
@@ -25,7 +25,7 @@ DEPEND="
 	>=dev-python/defusedxml-0.6[${PYTHON_USEDEP}]
 	>=dev-python/deprecated-1.2.10[${PYTHON_USEDEP}]
 	>=dev-python/lxml-4.5.2[${PYTHON_USEDEP}]
-	<dev-python/lxml-6.0.0[${PYTHON_USEDEP}]
+	<dev-python/lxml-7.0.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	>=dev-python/psutil-5.5.1[${PYTHON_USEDEP}]
 	>=dev-python/redis-4.5.0[${PYTHON_USEDEP}]
