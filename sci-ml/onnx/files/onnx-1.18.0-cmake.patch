@@ -1,0 +1,36 @@
+--- a/CMakeLists.txt	2025-08-02 22:16:37.819326103 +0200
++++ b/CMakeLists.txt	2025-08-02 22:23:45.495251935 +0200
+@@ -531,10 +531,11 @@
+ add_onnx_global_defines(onnx)
+ 
+ if(ONNX_BUILD_PYTHON)
+-  Python3_add_library(onnx_cpp2py_export MODULE WITH_SOABI "${ONNX_ROOT}/onnx/cpp2py_export.cc")
++  add_library(onnx_cpp2py_export MODULE "${ONNX_ROOT}/onnx/cpp2py_export.cc")
+   set_target_properties(onnx_cpp2py_export PROPERTIES PREFIX "")
+   set_target_properties(onnx_cpp2py_export PROPERTIES CXX_VISIBILITY_PRESET hidden)
+   set_target_properties(onnx_cpp2py_export PROPERTIES VISIBILITY_INLINES_HIDDEN ON)
++  set_target_properties(onnx_cpp2py_export PROPERTIES SUFFIX ${PY_EXT_SUFFIX})
+   set_target_properties(onnx_cpp2py_export
+                         PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+   target_include_directories(onnx_cpp2py_export PRIVATE
+--- a/setup.py	2025-08-02 22:16:43.509352511 +0200
++++ b/setup.py	2025-08-02 22:23:50.189272010 +0200
+@@ -93,6 +93,10 @@
+         os.chdir(orig_path)
+ 
+ 
++def get_ext_suffix():
++    return sysconfig.get_config_var("EXT_SUFFIX")
++
++
+ def get_python_execute():
+     if WINDOWS:
+         return sys.executable
+@@ -173,6 +177,7 @@
+                 f"-DPython3_EXECUTABLE={get_python_execute()}",
+                 "-DONNX_BUILD_PYTHON=ON",
+                 f"-DONNX_NAMESPACE={ONNX_NAMESPACE}",
++                f"-DPY_EXT_SUFFIX={get_ext_suffix() or ''}",
+             ]
+             if COVERAGE:
+                 cmake_args.append("-DONNX_COVERAGE=ON")
