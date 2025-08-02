@@ -1416,7 +1416,7 @@ epytest() {
 	[[ ${NO_COLOR} ]] && color=no
 
 	mkdir -p "${T}/pytest-xml" || die
-	local junit_xml=$(mktemp "${T}/pytest-xml/${EPYTHON}-XXX.xml" || die)
+	local junit_xml=$(mktemp "${T}/pytest-xml/${EPYTHON}-XXXXXX.xml" || die)
 
 	local args=(
 		# verbose progress reporting and tracebacks
