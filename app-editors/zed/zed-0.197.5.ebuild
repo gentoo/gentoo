@@ -12,20 +12,21 @@ declare -A GIT_CRATES=(
 	[alacritty_terminal]='https://github.com/zed-industries/alacritty;828457c9ff1f7ea0a0469337cc8a37ee3a1b0590;alacritty-%commit%/alacritty_terminal'
 	[async-pipe]='https://github.com/zed-industries/async-pipe-rs;82d00a04211cf4e1236029aa03e6b6ce2a74c553;async-pipe-rs-%commit%'
 	[async-stripe]='https://github.com/zed-industries/async-stripe;3672dd4efb7181aa597bf580bf5a2f5d23db6735;async-stripe-%commit%'
-	[blade-graphics]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-graphics'
-	[blade-macros]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-macros'
-	[blade-util]='https://github.com/kvark/blade;416375211bb0b5826b3584dccdb6a43369e499ad;blade-%commit%/blade-util'
-	[cpal]='https://github.com/zed-industries/cpal;fd8bc2fd39f1f5fdee5a0690656caff9a26d9d50;cpal-%commit%'
-	[dap-types]='https://github.com/zed-industries/dap-types;be69a016ba710191b9fdded28c8b042af4b617f7;dap-types-%commit%/dap-types'
+	[blade-graphics]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-graphics'
+	[blade-macros]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-macros'
+	[blade-util]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-util'
+	[dap-types]='https://github.com/zed-industries/dap-types;7f39295b441614ca9dbf44293e53c32f666897f9;dap-types-%commit%/dap-types'
 	[font-kit]='https://github.com/zed-industries/font-kit;5474cfad4b719a72ec8ed2cb7327b2b01fd10568;font-kit-%commit%'
+	[jj-lib-proc-macros]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib/proc-macros'
+	[jj-lib]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib'
 	[jupyter-protocol]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/jupyter-protocol'
 	[jupyter-websocket-client]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/jupyter-websocket-client'
-	[libwebrtc]='https://github.com/zed-industries/livekit-rust-sdks;80bb8f4c9112789f7c24cc98d8423010977806a6;livekit-rust-sdks-%commit%/libwebrtc'
-	[livekit-api]='https://github.com/zed-industries/livekit-rust-sdks;80bb8f4c9112789f7c24cc98d8423010977806a6;livekit-rust-sdks-%commit%/livekit-api'
-	[livekit-protocol]='https://github.com/zed-industries/livekit-rust-sdks;80bb8f4c9112789f7c24cc98d8423010977806a6;livekit-rust-sdks-%commit%/livekit-protocol'
-	[livekit-runtime]='https://github.com/zed-industries/livekit-rust-sdks;80bb8f4c9112789f7c24cc98d8423010977806a6;livekit-rust-sdks-%commit%/livekit-runtime'
-	[livekit]='https://github.com/zed-industries/livekit-rust-sdks;80bb8f4c9112789f7c24cc98d8423010977806a6;livekit-rust-sdks-%commit%/livekit'
-	[lsp-types]='https://github.com/zed-industries/lsp-types;c9c189f1c5dd53c624a419ce35bc77ad6a908d18;lsp-types-%commit%'
+	[libwebrtc]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/libwebrtc'
+	[livekit-api]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit-api'
+	[livekit-protocol]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit-protocol'
+	[livekit-runtime]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit-runtime'
+	[livekit]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit'
+	[lsp-types]='https://github.com/zed-industries/lsp-types;39f629bdd03d59abd786ed9fc27e8bca02c0c0ec;lsp-types-%commit%'
 	[nbformat]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/nbformat'
 	[notify-types]='https://github.com/zed-industries/notify;bbb9ea5ae52b253e095737847e367c30653a2e96;notify-%commit%/notify-types'
 	[notify]='https://github.com/zed-industries/notify;bbb9ea5ae52b253e095737847e367c30653a2e96;notify-%commit%/notify'
@@ -56,22 +57,24 @@ declare -A GIT_CRATES=(
 	[pet]='https://github.com/microsoft/python-environment-tools;845945b830297a50de0e24020b980a65e4820559;python-environment-tools-%commit%/crates/pet'
 	[reqwest]='https://github.com/zed-industries/reqwest;951c770a32f1998d6e999cef3e59e0013e6c4415;reqwest-%commit%'
 	[runtimelib]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/runtimelib'
-	[scap]='https://github.com/zed-industries/scap;08f0a01417505cc0990b9931a37e5120db92e0d0;scap-%commit%'
+	[scap]='https://github.com/zed-industries/scap;808aa5c45b41e8f44729d02e38fd00a2fe2722e7;scap-%commit%'
 	[tree-sitter-gitcommit]='https://github.com/zed-industries/tree-sitter-git-commit;88309716a69dd13ab83443721ba6e0b491d37ee9;tree-sitter-git-commit-%commit%'
 	[tree-sitter-gomod]='https://github.com/camdencheek/tree-sitter-go-mod;6efb59652d30e0e9cd5f3b3a669afd6f1a926d3c;tree-sitter-go-mod-%commit%'
 	[tree-sitter-gowork]='https://github.com/zed-industries/tree-sitter-go-work;acb0617bf7f4fda02c6217676cc64acb89536dc7;tree-sitter-go-work-%commit%'
 	[tree-sitter-heex]='https://github.com/zed-industries/tree-sitter-heex;1dd45142fbb05562e35b2040c6129c9bca346592;tree-sitter-heex-%commit%'
 	[tree-sitter-md]='https://github.com/tree-sitter-grammars/tree-sitter-markdown;9a23c1a96c0513d8fc6520972beedd419a973539;tree-sitter-markdown-%commit%'
+	[tree-sitter-python]='https://github.com/zed-industries/tree-sitter-python;218fcbf3fda3d029225f3dec005cb497d111b35e;tree-sitter-python-%commit%'
 	[tree-sitter-yaml]='https://github.com/zed-industries/tree-sitter-yaml;baff0b51c64ef6a1fb1f8390f3ad6015b83ec13a;tree-sitter-yaml-%commit%'
-	[webrtc-sys-build]='https://github.com/zed-industries/livekit-rust-sdks;80bb8f4c9112789f7c24cc98d8423010977806a6;livekit-rust-sdks-%commit%/webrtc-sys/build'
-	[webrtc-sys]='https://github.com/zed-industries/livekit-rust-sdks;80bb8f4c9112789f7c24cc98d8423010977806a6;livekit-rust-sdks-%commit%/webrtc-sys'
+	[webrtc-sys-build]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/webrtc-sys/build'
+	[webrtc-sys]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/webrtc-sys'
+	[windows-capture]='https://github.com/zed-industries/windows-capture;f0d6c1b6691db75461b732f6d5ff56eed002eeb9;windows-capture-%commit%'
 	[xim-ctext]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%/xim-ctext'
 	[xim-parser]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%/xim-parser'
 	[xim]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%'
 )
 
-LLVM_COMPAT=( 19 )
-RUST_MIN_VER="1.86.0"
+LLVM_COMPAT=( 20 )
+RUST_MIN_VER="1.88.0"
 RUST_NEEDS_LLVM=1
 WEBRTC_COMMIT="b99fd2c-6"
 
@@ -81,7 +84,7 @@ DESCRIPTION="The fast, collaborative code editor"
 HOMEPAGE="https://zed.dev https://github.com/zed-industries/zed"
 SRC_URI="
 	https://github.com/zed-industries/zed/archive/refs/tags/v${PV/_/-}.tar.gz -> ${P}.tar.gz
-	https://gitlab.com/api/v4/projects/35204985/packages/generic/${PN}/${PV}/${P}-crates.tar.xz
+	https://github.com/gentoo-crate-dist/zed/releases/download/v${PV/_/-}/${P/_/-}-crates.tar.xz
 	amd64? (
 		https://github.com/livekit/rust-sdks/releases/download/webrtc-${WEBRTC_COMMIT}/webrtc-linux-x64-release.zip ->
 			webrtc-${WEBRTC_COMMIT}-linux-x64-release.zip
@@ -91,7 +94,6 @@ SRC_URI="
 			webrtc-${WEBRTC_COMMIT}-linux-arm64-release.zip
 	)
 	${CARGO_CRATE_URIS}"
-SRC_URI+=" https://github.com/gentoo-crate-dist/zed/releases/download/v${PV}/${P}-crates.tar.xz"
 
 S="${WORKDIR}/${PN}-${PV/_/-}"
 LICENSE="GPL-3+"
@@ -101,9 +103,8 @@ LICENSE+="
 	LGPL-3 MIT MIT-0 MPL-2.0 UoI-NCSA openssl Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
-IUSE="gles"
-CHECKREQS_DISK_BUILD="11G"
+KEYWORDS="~amd64 ~arm64"
+CHECKREQS_DISK_BUILD="12G"
 CHECKREQS_MEMORY="8G"
 
 DEPEND="
@@ -164,9 +165,6 @@ pkg_setup() {
 	export RUSTFLAGS="${RUSTFLAGS} -C symbol-mangling-version=v0 --cfg tokio_unstable -C link-arg=-fuse-ld=mold -C link-args=-Wl,--disable-new-dtags,-rpath,\$ORIGIN/../lib"
 	# fix error in livekit-rust-sdks
 	export RUSTFLAGS="${RUSTFLAGS} -A unexpected_cfgs"
-	if use gles; then
-		export RUSTFLAGS="${RUSTFLAGS} --cfg gles"
-	fi
 	llvm-r1_pkg_setup
 	rust_pkg_setup
 }
@@ -187,19 +185,19 @@ src_prepare() {
 	envsubst < "crates/zed/resources/zed.desktop.in" > ${APP_ID}.desktop || die
 
 	# Cargo offline fetch workaround
-	local CPAL_COMMIT="fd8bc2fd39f1f5fdee5a0690656caff9a26d9d50"
-	local CPAL_GIT="git = \"https://github.com/zed-industries/cpal\", rev = \"${CPAL_COMMIT}\""
-	local CPAL_PATH="path = \"${WORKDIR}/cpal-${CPAL_COMMIT}\""
-
 	local NOTIFY_COMMIT="bbb9ea5ae52b253e095737847e367c30653a2e96"
 	local NOTIFY_GIT="notify = { git = \"https://github.com/zed-industries/notify.git\", rev = \"${NOTIFY_COMMIT}\""
 	local NOTIFY_PATH="notify = \\{ path = \"${WORKDIR}/notify-${NOTIFY_COMMIT}/notify\""
 	local NOTIFY_TYPES_GIT="notify-types = { git = \"https://github.com/zed-industries/notify.git\", rev = \"${NOTIFY_COMMIT}\""
 	local NOTIFY_TYPES_PATH="notify-types = \\{ path = \"${WORKDIR}/notify-${NOTIFY_COMMIT}/notify-types\""
 
-	sed -e "s#${CPAL_GIT}#${CPAL_PATH}#" \
-		-e "s#${NOTIFY_GIT}#${NOTIFY_PATH}#" \
+	local WIN_CAP_COMMIT="f0d6c1b6691db75461b732f6d5ff56eed002eeb9"
+	local WIN_CAP_GIT="windows-capture = { git = \"https://github.com/zed-industries/windows-capture.git\", rev = \"${WIN_CAP_COMMIT}\""
+	local WIN_CAP_PATH="windows-capture = \\{ path = \"${WORKDIR}/windows-capture-${WIN_CAP_COMMIT}\""
+
+	sed -e "s#${NOTIFY_GIT}#${NOTIFY_PATH}#" \
 		-e "s#${NOTIFY_TYPES_GIT}#${NOTIFY_TYPES_PATH}#" \
+		-e "s#${WIN_CAP_GIT}#${WIN_CAP_PATH}#" \
 		-i "${S}/Cargo.toml" || die "Cargo fetch workaround failed"
 }
 
