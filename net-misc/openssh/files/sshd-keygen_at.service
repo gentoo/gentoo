@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenSSH %i Server Key Generation
+ConditionFileNotEmpty=|!/etc/ssh/ssh_host_%i_key
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/sshd-keygen %i
+
+[Install]
+WantedBy=sshd-keygen.target
