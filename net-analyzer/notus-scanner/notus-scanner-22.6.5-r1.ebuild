@@ -13,7 +13,7 @@ SRC_URI="https://github.com/greenbone/notus-scanner/archive/refs/tags/v${PV}.tar
 
 LICENSE="AGPL-3 AGPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	acct-user/gvm
