@@ -28,7 +28,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-# X/wayland are dlopen'ed optfeatures, not needed at build time
+# X/wayland are dlopen'ed and unneeded to build, little need to advertise/check
 RDEPEND="
 	media-libs/alsa-lib
 	virtual/libudev:=
