@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils greadme meson systemd xdg
 
 DESCRIPTION="System-wide Linux Profiler"
-HOMEPAGE="http://sysprof.com/"
+HOMEPAGE="https://www.sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 API_VERSION="4"
