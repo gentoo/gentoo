@@ -66,6 +66,9 @@ BDEPEND="
 # Not really prebuilt but BPF objects make our QA checks go crazy.
 QA_PREBUILT="*/rc_keymaps/protocols/*.o"
 
+# This is intended to be preloaded.
+QA_SONAME=".*/libv4l2tracer\.so"
+
 check_llvm() {
 	if [[ ${MERGE_TYPE} != binary ]] && use bpf; then
 		clang -target bpf -print-supported-cpus &>/dev/null ||
