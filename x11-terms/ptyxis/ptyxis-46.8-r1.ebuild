@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson xdg
+inherit flag-o-matic gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="A terminal for a container-oriented desktop"
 HOMEPAGE="https://gitlab.gnome.org/chergert/ptyxis"
@@ -11,20 +11,19 @@ HOMEPAGE="https://gitlab.gnome.org/chergert/ptyxis"
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="test"
+IUSE="X test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.80:2
-	>=gui-libs/gtk-4.12.2:4
-	>=gui-libs/libadwaita-1.6:1
-	>=gui-libs/vte-0.78.0:2.91-gtk4
-	dev-libs/libportal[gtk]
+	>=gui-libs/gtk-4.12.2:4[X?]
+	>=gui-libs/libadwaita-1.4_alpha:1
+	>=gui-libs/vte-0.75.0:2.91-gtk4[-vanilla]
 	gnome-base/libgtop:2=
 	>=dev-libs/libpcre2-10.32:0=
 	gnome-base/gsettings-desktop-schemas
 
-	x11-libs/pango
+	x11-libs/pango[X?]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -36,6 +35,8 @@ BDEPEND="
 "
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Ddevelopment=false
 		-Dgeneric=terminal

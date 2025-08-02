@@ -2,21 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnome.org gnome2-utils meson vala xdg
+inherit flag-o-matic gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="Manage your passwords and encryption keys"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/seahorse"
+HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="ldap zeroconf"
+IUSE="X ldap zeroconf"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.66:2
 	>=app-crypt/gcr-3.38:0=
 	>=app-crypt/gpgme-1.14.0:=
-	>=x11-libs/gtk+-3.24.0:3
+	>=x11-libs/gtk+-3.24.0:3[X?]
 	>=app-crypt/gnupg-2.2
 	>=gui-libs/libhandy-1.6.0:1
 	>=app-crypt/libsecret-0.16
@@ -46,8 +46,11 @@ BDEPEND="
 "
 
 PATCHES=(
-	# https://gitlab.gnome.org/GNOME/seahorse/-/issues/348
-	"${FILESDIR}/${PN}-47.0.1-ldap-test.patch"
+	"${FILESDIR}"/${P}-gnupg-2.4.patch
+	"${FILESDIR}"/${P}-musl-stdout.patch
+	"${FILESDIR}"/${P}-clang16.patch
+	"${FILESDIR}"/${P}-c99.patch
+	"${FILESDIR}"/${P}-c99-2.patch
 )
 
 src_prepare() {
@@ -57,6 +60,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Dhelp=true
 		-Dpgp-support=true

@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 readme.gentoo-r1 xdg
 
 DESCRIPTION="A terminal emulator for GNOME"
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/ https://gitlab.gnome.org/GNOME/g
 
 LICENSE="GPL-3+ GPL-3 CC-BY-SA-3.0 FDL-1.3"
 SLOT="0"
-IUSE="debug +gnome-shell +nautilus vanilla"
+IUSE="X debug +gnome-shell +nautilus vanilla wayland"
 SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~mattst88/distfiles/${PN}-3.44.0-cntr-ntfy-autottl-ts.patch.xz )"
 
 KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 # FIXME: automagic dependency on gtk+[X], just transitive but needs proper control, bug 624960
 RDEPEND="
 	>=dev-libs/glib-2.52:2
-	>=x11-libs/gtk+-3.22.27:3
+	>=x11-libs/gtk+-3.22.27:3[X?,wayland?]
 	>=x11-libs/vte-0.68.0:2.91[!vanilla?]
 	>=dev-libs/libpcre2-10
 	>=gnome-base/dconf-0.14
@@ -47,6 +47,9 @@ DOC_CONTENTS="To get previous working directory inherited in new opened tab, or
 	. /etc/profile.d/vte-2.91.sh"
 
 src_prepare() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	eapply "${FILESDIR}"/${P}-fix-missing-wexitcode.patch
 	if ! use vanilla; then
 		# https://bugzilla.gnome.org/show_bug.cgi?id=695371
@@ -63,6 +66,9 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
 	filter-lto
 
