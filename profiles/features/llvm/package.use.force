@@ -102,3 +102,19 @@
 # TODO: Make a profile without default-libcxx too?
 llvm-core/clang-common default-compiler-rt default-lld default-libcxx
 llvm-core/clang-runtime default-compiler-rt default-lld default-libcxx
+
+# Michal Rostecki <vadorovsky@disroot.org> (2025-06-19)
+# Force the toolchain environment on libcxx{abi,}. When the full LLVM toolchain
+# is upgraded (e.g. from 19 to 20), the order of ebuild upgrades is:
+#
+# - llvm-core/clang
+# - [...]
+# - llvm-runtime/libcxxabi
+# - llvm-runtime/libcxx
+# - llvm-core/clang-runtime
+#
+# libcxxabi, libcxx are emerged with a new clang, but since clang-runtime is
+# is not yet upgraded, that new clang doesn't have a correct configuration.
+# Therefore, we need to tell libcxx{abi,} what runtime libraries to use.
+llvm-runtimes/libcxxabi default-compiler-rt default-lld default-libcxx
+llvm-runtimes/libcxx default-compiler-rt default-lld default-libcxx
