@@ -121,7 +121,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
-	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${FILESDIR}"/${PN}-1.0.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
 	"${DISTDIR}/${PN}-18423.patch" # vtk-9.4
 	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
 )
