@@ -1,0 +1,15 @@
+# ZXINGCPP_CFLAGS includes the thirdparty zxingcpp, which leads to both the
+# system and thirdparty zxingcpp being included when opting to use the system
+# zxingcpp.
+# https://bugs.ghostscript.com/show_bug.cgi?id=708683
+--- a/Makefile
++++ b/Makefile
+@@ -155,7 +155,7 @@ $(OUT)/source/fitz/leptonica-wrap.o : source/fitz/leptonica-wrap.c
+ endif
+ 
+ $(OUT)/source/fitz/barcode.o : source/fitz/barcode.cpp
+-	$(CXX_CMD) $(WARNING_CFLAGS) $(LIB_CFLAGS) $(THIRD_CFLAGS) $(ZXINGCPP_CFLAGS) $(ZXINGCPP_LANGFLAGS)
++	$(CXX_CMD) $(WARNING_CFLAGS) $(LIB_CFLAGS) $(THIRD_CFLAGS) $(ZXINGCPP_LANGFLAGS)
+ 
+ $(OUT)/platform/%.o : platform/%.c
+ 	$(CC_CMD) $(WARNING_CFLAGS)
