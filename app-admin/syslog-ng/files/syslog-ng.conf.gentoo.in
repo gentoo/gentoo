@@ -14,11 +14,6 @@ options {
 	# Change it to every 12 hours so you get a nice daily update of
 	# how many messages syslog-ng missed (0).
 	stats_freq(43200);
-	# The default action of syslog-ng is to log a MARK line
-	# to the file every 20 minutes.  That's seems high for most
-	# people so turn it down to once an hour.  Set it to zero
-	# if you don't want the functionality at all.
-	mark_freq(3600);
 };
 
 source src { system(); internal(); };
