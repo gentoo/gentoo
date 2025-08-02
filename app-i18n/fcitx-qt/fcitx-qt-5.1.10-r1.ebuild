@@ -24,7 +24,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	!onlyplugin? (
-		>=app-i18n/fcitx-5.1.5:5
+		>=app-i18n/fcitx-5.1.13:5
 		qt5? ( dev-qt/qtconcurrent:5 )
 	)
 	qt5? (
