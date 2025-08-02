@@ -45,9 +45,6 @@ distutils_enable_tests pytest
 src_prepare() {
 	cmake_src_prepare
 	distutils-r1_src_prepare
-
-	# https://github.com/scikit-build/scikit-build-core/issues/912
-	sed -i -e '/scikit-build-core/s:0\.11\.2:0.8:' pyproject.toml || die
 }
 
 python_configure() {
