@@ -1,0 +1,41 @@
+From 77bd75928f0a8fece805b878218dcbf712c36fce Mon Sep 17 00:00:00 2001
+From: Thomas Beutlich <thomas.beutlich@apluss.de>
+Date: Tue, 20 Aug 2024 23:42:17 +0200
+Subject: [PATCH 02/19] Nullify userdata also in SASetupUtf8Hooks
+
+---
+ safileio.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/safileio.c b/safileio.c
+index 2799f81..13f278d 100644
+--- a/safileio.c
++++ b/safileio.c
+@@ -13,7 +13,7 @@
+  *
+  */
+ 
+-#include "shapefil.h"
++#include "shapefil_private.h"
+ 
+ #include <assert.h>
+ #include <math.h>
+@@ -101,7 +101,7 @@ void SASetupDefaultHooks(SAHooks *psHooks)
+ 
+     psHooks->Error = SADError;
+     psHooks->Atof = atof;
+-    psHooks->pvUserData = NULL;
++    psHooks->pvUserData = SHPLIB_NULLPTR;
+ }
+ 
+ #ifdef SHPAPI_WINDOWS
+@@ -182,5 +182,6 @@ void SASetupUtf8Hooks(SAHooks *psHooks)
+ 
+     psHooks->Error = SADError;
+     psHooks->Atof = atof;
++    psHooks->pvUserData = SHPLIB_NULLPTR;
+ }
+ #endif
+-- 
+2.49.0
+
