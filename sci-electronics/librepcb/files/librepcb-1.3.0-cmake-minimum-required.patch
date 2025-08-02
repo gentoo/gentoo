@@ -1,0 +1,26 @@
+diff --git a/libs/type_safe/CMakeLists.txt b/libs/type_safe/CMakeLists.txt
+index f8606ff..93b92c9 100644
+--- a/libs/type_safe/CMakeLists.txt
++++ b/libs/type_safe/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # This file is subject to the license terms in the LICENSE file
+ # found in the top-level directory of this distribution.
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(TYPE_SAFE)
+ 
+diff --git a/libs/type_safe/external/debug_assert/CMakeLists.txt b/libs/type_safe/external/debug_assert/CMakeLists.txt
+index 62b644f..913ac8f 100644
+--- a/libs/type_safe/external/debug_assert/CMakeLists.txt
++++ b/libs/type_safe/external/debug_assert/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # This file is subject to the license terms in the LICENSE file
+ # found in the top-level directory of this distribution.
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ project(DEBUG_ASSERT)
+ 
+ # Determine if debug_assert is built as a subproject (using add_subdirectory)
