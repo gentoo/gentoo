@@ -38,6 +38,7 @@ BDEPEND="
 "
 
 EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
