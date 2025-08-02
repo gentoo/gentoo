@@ -43,8 +43,6 @@ src_prepare() {
 	find src -name '*.cxx' -delete || die
 	# do not require exact taskflow version
 	sed -i -e '/Taskflow/s:3\.9\.0::' CMakeLists.txt || die
-	# https://github.com/scikit-build/scikit-build-core/issues/912
-	sed -i -e '/scikit-build-core/s:0\.11:0.8:' pyproject.toml || die
 
 	distutils-r1_src_prepare
 
