@@ -24,12 +24,12 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND=">=sci-libs/htslib-1.21"
+RDEPEND="=sci-libs/htslib-1.21*:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? (
-		>=sci-biology/bcftools-1.21
-		>=sci-biology/samtools-1.21
+		=sci-biology/bcftools-1.21*
+		=sci-biology/samtools-1.21*
 	)"
 
 distutils_enable_tests pytest
@@ -43,6 +43,7 @@ EPYTEST_DESELECT=(
 )
 
 python_prepare_all() {
+
 	# unbundle htslib
 	export HTSLIB_MODE="external"
 	export HTSLIB_INCLUDE_DIR="${ESYSROOT}"/usr/include
