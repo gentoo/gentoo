@@ -51,6 +51,7 @@ clang
 -cpu_flags_ppc_vsx
 -cpu_flags_ppc_vsx2
 -cpu_flags_ppc_vsx3
+-cpu_flags_ppc_vsx4
 
 # Incompatible Use Flags
 #

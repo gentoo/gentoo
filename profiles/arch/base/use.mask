@@ -92,6 +92,9 @@ svga
 cpu_flags_x86_3dnow
 cpu_flags_x86_3dnowext
 cpu_flags_x86_aes
+cpu_flags_x86_amx_bf16
+cpu_flags_x86_amx_int8
+cpu_flags_x86_amx_tile
 cpu_flags_x86_avx
 cpu_flags_x86_avx2
 cpu_flags_x86_avx512_4fmaps
@@ -112,6 +115,9 @@ cpu_flags_x86_avx512ifma
 cpu_flags_x86_avx512pf
 cpu_flags_x86_avx512vbmi
 cpu_flags_x86_avx512vl
+cpu_flags_x86_avx_vnni
+cpu_flags_x86_bmi1
+cpu_flags_x86_bmi2
 cpu_flags_x86_f16c
 cpu_flags_x86_fma3
 cpu_flags_x86_fma4
@@ -137,6 +143,7 @@ cpu_flags_ppc_altivec
 cpu_flags_ppc_vsx
 cpu_flags_ppc_vsx2
 cpu_flags_ppc_vsx3
+cpu_flags_ppc_vsx4
 
 # mips arch specific USE flags
 loongson2f
@@ -157,20 +164,30 @@ cpu_flags_arm_v5
 cpu_flags_arm_v6
 cpu_flags_arm_v7
 cpu_flags_arm_v8
+
 cpu_flags_arm_aes
+cpu_flags_arm_asimd
+cpu_flags_arm_asimddp
+cpu_flags_arm_asimdfhm
+cpu_flags_arm_asimdhp
 cpu_flags_arm_crc32
 cpu_flags_arm_edsp
+cpu_flags_arm_i8mm
 cpu_flags_arm_iwmmxt
 cpu_flags_arm_iwmmxt2
 cpu_flags_arm_neon
+cpu_flags_arm_neon-fp16
 cpu_flags_arm_sha1
 cpu_flags_arm_sha2
+cpu_flags_arm_sm4
+cpu_flags_arm_sve
+cpu_flags_arm_sve2
 cpu_flags_arm_thumb
 cpu_flags_arm_thumb2
 cpu_flags_arm_vfp
+cpu_flags_arm_vfp-d32
 cpu_flags_arm_vfpv3
 cpu_flags_arm_vfpv4
-cpu_flags_arm_vfp-d32
 
 # nVidia XvMC requires nvidia-drivers/nvidia-legacy-drivers
 nvidia
