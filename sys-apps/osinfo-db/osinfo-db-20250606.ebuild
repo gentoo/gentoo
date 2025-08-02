@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="osinfo database files"
+DESCRIPTION="Osinfo database for virtualization provisioning tools"
 HOMEPAGE="https://libosinfo.org/ https://gitlab.com/libosinfo/osinfo-db"
 SRC_URI="https://releases.pagure.org/libosinfo/${P}.tar.xz"
 S="${WORKDIR}"
