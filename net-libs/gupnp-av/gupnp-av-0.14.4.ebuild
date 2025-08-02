@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org meson vala
 
 DESCRIPTION="Utility library aiming to ease the handling UPnP A/V profiles"
-HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP https://gitlab.gnome.org/GNOME/gupnp-av"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gupnp-av"
 
 LICENSE="LGPL-2"
 SLOT="0/3" # subslot: soname version
