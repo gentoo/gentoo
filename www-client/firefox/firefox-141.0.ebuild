@@ -842,7 +842,6 @@ src_configure() {
 
 	# riscv-related options, bgo#947337, bgo#947338
 	if use riscv ; then
-		mozconfig_add_options_ac 'Disable JIT for RISC-V 64' --disable-jit
 		mozconfig_add_options_ac 'Disable webrtc for RISC-V' --disable-webrtc
 	fi
 
