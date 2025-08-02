@@ -29,9 +29,21 @@ BDEPEND="
 "
 
 # xdist is slightly flaky here
-EPYTEST_PLUGINS=( pytest-rerunfailures )
+EPYTEST_PLUGINS=()
+EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# fails if any setuptools plugin imported the module first
+	tests/test_bdist_wheel.py::test_deprecated_import
+
+	# broken by setuptools license changes
+	# upstream removed the tests already
+	tests/test_bdist_wheel.py::test_licenses_default
+	tests/test_bdist_wheel.py::test_licenses_deprecated
+	tests/test_bdist_wheel.py::test_licenses_override
+)
 
 src_prepare() {
 	local PATCHES=(
@@ -46,19 +58,4 @@ src_prepare() {
 	find -name '*.py' -exec sed -i \
 		-e 's:wheel\.vendored\.::' \
 		-e 's:\.\+vendored\.::' {} + || die
-}
-
-python_test() {
-	local EPYTEST_DESELECT=(
-		# fails if any setuptools plugin imported the module first
-		tests/test_bdist_wheel.py::test_deprecated_import
-
-		# broken by setuptools license changes
-		# upstream removed the tests already
-		tests/test_bdist_wheel.py::test_licenses_default
-		tests/test_bdist_wheel.py::test_licenses_deprecated
-		tests/test_bdist_wheel.py::test_licenses_override
-	)
-
-	epytest --reruns=5
 }
