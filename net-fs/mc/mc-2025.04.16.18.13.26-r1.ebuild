@@ -25,7 +25,7 @@ RDEPEND="!!app-misc/mc"
 
 src_compile() {
 	# go run buildscripts/gen-ldflags.go
-	local ldflags="-s -w \
+	local ldflags=" \
 		-X github.com/minio/mc/cmd.Version=${MY_PV} \
 		-X github.com/minio/mc/cmd.CopyrightYear=${YEAR} \
 		-X github.com/minio/mc/cmd.ReleaseTag=RELEASE.${MY_PV} \
