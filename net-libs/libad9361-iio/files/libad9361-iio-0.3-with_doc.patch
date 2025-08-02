@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3273ead..b20fffb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -122,11 +122,11 @@ set(CMAKE_INSTALL_DOCDIR "" CACHE PATH "documentation root (DATAROOTDIR/doc/${PR
+ 
+ set(CMAKE_INSTALL_DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${PROJECT_NAME}${LIBAD9361_VERSION_MAJOR}-doc")
+ 
+-find_package(Doxygen)
+-if(DOXYGEN_FOUND)
+-	option(WITH_DOC "Generate documentation with Doxygen" ON)
++option(WITH_DOC "Generate documentation with Doxygen" ON)
+ 
+-	if (WITH_DOC)
++if (WITH_DOC)
++	find_package(Doxygen REQUIRED)
++	if(DOXYGEN_FOUND)
+ 		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+ 		set(HTML_DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/html)
+ 		file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/doc DESTINATION ${HTML_DEST_DIR})
+@@ -140,9 +140,9 @@ if(DOXYGEN_FOUND)
+ 		if(NOT SKIP_INSTALL_ALL)
+ 			install(DIRECTORY ${HTML_DEST_DIR} DESTINATION ${CMAKE_INSTALL_DOCDIR})
+ 		endif()
++	else()
++		message(STATUS "Doxygen not found, API documentation won't be generated")
+ 	endif()
+-else()
+-	message(STATUS "Doxygen not found, API documentation won't be generated")
+ endif()
+ 
+ option(PYTHON_BINDINGS "Install Python bindings" OFF)

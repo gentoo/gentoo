@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.2-libdir-pkgconfig.patch
 	"${FILESDIR}"/${PN}-0.3-cmake-gnuinstalldirs.patch
 	"${FILESDIR}"/${PN}-0.3-cmake4.patch
+	"${FILESDIR}"/${PN}-0.3-with_doc.patch
 )
 
 src_configure() {
