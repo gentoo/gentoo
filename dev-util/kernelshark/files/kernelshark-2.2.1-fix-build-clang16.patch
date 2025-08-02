@@ -1,0 +1,50 @@
+Bug: https://bugs.gentoo.org/895838
+--- a/src/kernelshark.cpp
++++ b/src/kernelshark.cpp
+@@ -7,6 +7,7 @@
+ // C
+ #include <sys/stat.h>
+ #include <getopt.h>
++#include <libgen.h>
+ 
+ // Qt
+ #include <QApplication>
+--- a/src/libkshark-tepdata.c
++++ b/src/libkshark-tepdata.c
+@@ -1201,13 +1201,13 @@ static void kshark_tep_init_methods(struct kshark_generic_stream_interface *inte
+ 	interface->get_event_name = tepdata_get_event_name;
+ 	interface->aux_info= tepdata_get_latency;
+ 	interface->get_info = tepdata_get_info;
+-	interface->find_event_id = tepdata_find_event_id;
++	interface->find_event_id = (stream_find_id_func) tepdata_find_event_id;
+ 	interface->get_all_event_ids = tepdata_get_event_ids;
+ 	interface->dump_entry = tepdata_dump_entry;
+ 	interface->get_all_event_field_names = tepdata_get_field_names;
+ 	interface->get_event_field_type = tepdata_get_field_type;
+-	interface->read_record_field_int64 = tepdata_read_record_field;
+-	interface->read_event_field_int64 = tepdata_read_event_field;
++	interface->read_record_field_int64 = (stream_read_record_field)tepdata_read_record_field;
++	interface->read_event_field_int64 = (stream_read_event_field) tepdata_read_event_field;
+ 	interface->load_entries = tepdata_load_entries;
+ 	interface->load_matrix = tepdata_load_matrix;
+ }
+--- a/src/libkshark.h
++++ b/src/libkshark.h
+@@ -17,6 +17,7 @@
+ #include <string.h>
+ #include <pthread.h>
+ #include <errno.h>
++#include <sys/types.h>
+ 
+ // Json-C
+ #include <json-c/json.h>
+--- a/src/plugins/sched_events.c
++++ b/src/plugins/sched_events.c
+@@ -14,6 +14,7 @@
+ #include <stdio.h>
+ 
+ // trace-cmd
++#define _GNU_SOURCE             /* See feature_test_macros(7) */
+ #include <trace-cmd.h>
+ 
+ // KernelShark
