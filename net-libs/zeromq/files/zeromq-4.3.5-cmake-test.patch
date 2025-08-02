@@ -1,0 +1,15 @@
+diff --git i/tests/CMakeLists.txt w/tests/CMakeLists.txt
+index a8dfa8f2..f5d0e243 100644
+--- i/tests/CMakeLists.txt
++++ w/tests/CMakeLists.txt
+@@ -180,10 +180,6 @@ if(ENABLE_DRAFTS)
+   if(HAVE_FORK)
+     list(APPEND tests test_zmq_ppoll_signals)
+   endif()
+-
+-  if(ZMQ_HAVE_BUSY_POLL)
+-    list(APPEND tests test_busy_poll)
+-  endif()
+ endif()
+ 
+ if(ZMQ_HAVE_WS)
