@@ -71,7 +71,7 @@ RDEPEND="
 	dev-libs/sleef
 	sci-ml/foxi
 	~sci-ml/kineto-0.4.0_p20250214
-	sci-ml/onnx
+	<sci-ml/onnx-1.18.0
 	virtual/lapack
 	cuda? (
 		dev-libs/cudnn
