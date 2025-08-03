@@ -1,0 +1,58 @@
+To build man pages we need to invoke meson, but this also builds the html which
+we don't want if doc flag is not set, so patch make & install and remove
+html & pdf generation
+
+--- a/doc/sphinx/install-docs.sh.in
++++ b/doc/sphinx/install-docs.sh.in
+@@ -22,11 +22,5 @@
+ docdir="${target_path}/@docdir@"
+ mandir8="${target_path}/@mandir8@"
+ 
+-mkdir -p "${docdir}/html"
+-cp -r '@abs_sphinxbuilddir@/html'/* "${docdir}/html"
+-if test '@HAVE_PDFLATEX@' != 'no'; then
+-    @INSTALL@ -c -m 644 @abs_sphinxbuilddir@/latex/kea-arm.pdf "${docdir}"
+-    @INSTALL@ -c -m 644 @abs_sphinxbuilddir@/latex/kea-messages.pdf "${docdir}"
+-fi
+ mkdir -p "${mandir8}"
+ @INSTALL@ -c -m 644 @abs_sphinxbuilddir@/man/*.8 "${mandir8}"
+--- a/doc/sphinx/make-doc.sh.in
++++ b/doc/sphinx/make-doc.sh.in
+@@ -15,26 +15,7 @@
+ rm -f '@srcdir@/arm/platforms.rst'
+ cp '@TOP_SOURCE_DIR@/platforms.rst' '@srcdir@/arm/platforms.rst'
+ 
+-# html
+-@SPHINXBUILD@ -M html @srcdir@ @sphinxbuilddir@ @sphinxopts@
+-
+-# singlehtml
+-@SPHINXBUILD@ -M singlehtml @srcdir@ @sphinxbuilddir@ @sphinxopts@
+-
+-# text
+-@SPHINXBUILD@ -M text @srcdir@ @sphinxbuilddir@ @sphinxopts@
+ 
+ # mans
+ @SPHINXBUILD@ -M man @srcdir@ @sphinxbuilddir@ @sphinxopts@
+ 
+-# pdf
+-if test '@HAVE_PDFLATEX@' != 'no'; then
+-    @SPHINXBUILD@ -M latex @srcdir@ @sphinxbuilddir@ @sphinxopts@
+-    cd '@abs_sphinxbuilddir@/latex'
+-    @PDFLATEX_AND_OPTS@ kea-arm.tex
+-    makeindex -s python.ist kea-arm.idx
+-    @PDFLATEX_AND_OPTS@ kea-arm.tex
+-    @PDFLATEX_AND_OPTS@ kea-messages.tex
+-    makeindex -s python.ist kea-messages.idx
+-    @PDFLATEX_AND_OPTS@ kea-messages.tex
+-fi
+--- a/doc/sphinx/meson.build
++++ b/doc/sphinx/meson.build
+@@ -145,8 +145,6 @@
+ )
+ 
+ run_target('doc', command: [make_doc])
+-run_target('mes-doc', command: [make_mes_doc])
+-run_target('uml', command: [make_uml])
+ run_target(
+     'update-python-dependencies',
+     command: [make_update_python_dependencies],
