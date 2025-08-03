@@ -31,7 +31,7 @@ BDEPEND="
 	test? (
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
-		dev-python/pixelmatch-py[${PYTHON_USEDEP}]
+		dev-python/pixelmatch[${PYTHON_USEDEP}]
 		dev-python/selenium[${PYTHON_USEDEP}]
 		dev-util/selenium-manager
 	)"
