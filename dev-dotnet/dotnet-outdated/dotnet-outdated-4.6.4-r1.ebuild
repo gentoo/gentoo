@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=8.0
+DOTNET_PKG_COMPAT="9.0"
 NUGETS="
 castle.core@5.1.1
 csvhelper@30.0.1
@@ -167,7 +167,7 @@ HOMEPAGE="https://github.com/dotnet-outdated/dotnet-outdated/"
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
+	EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
