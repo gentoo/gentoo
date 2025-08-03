@@ -10,8 +10,9 @@ inherit distutils-r1
 
 DESCRIPTION="A fast pixel-level image comparison library"
 HOMEPAGE="https://pypi.org/project/pixelmatch/"
-SRC_URI="https://github.com/whtsky/pixelmatch-py/archive/refs/tags/v${PV}.tar.gz
+SRC_URI="https://github.com/whtsky/${PN}-py/archive/refs/tags/v${PV}.tar.gz
 	-> ${P}.gh.tar.gz"
+S="${WORKDIR}"/${PN}-py-${PV}
 
 LICENSE="ISC"
 SLOT="0"
