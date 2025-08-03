@@ -379,6 +379,8 @@ python_test() {
 	EPYTEST_IGNORE=(
 		# network-sandbox and deselecting tests turns into whac-a-mole with their interdependencies
 		"gcore/vsis3.py"
+		# All tests require network-sandbox
+		"ogr/ogr_ngw.py"
 	)
 
 	use !muparser && EPYTEST_IGNORE+=( "gdrivers/vrtpansharpen.py" )
