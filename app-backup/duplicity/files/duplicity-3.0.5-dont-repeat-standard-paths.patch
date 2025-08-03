@@ -1,0 +1,20 @@
+The toolchain will already search these locations by default if appropriate,
+but /usr/lib isn't right on a 64-bit system where native objects are in /usr/lib64
+and /usr/lib has multilib 32-bit ones. bfd warns on this but lld rejects it.
+
+https://bugs.gentoo.org/946846
+--- a/setup.py
++++ b/setup.py
+@@ -84,12 +84,6 @@ if os.environ.get("READTHEDOCS", None) is None:
+             )
+         )
+ 
+-    # add standard locs
+-    incdir_list.append("/usr/local/include")
+-    libdir_list.append("/usr/local/lib")
+-    incdir_list.append("/usr/include")
+-    libdir_list.append("/usr/lib")
+-
+     # build the librsync extension
+     ext_modules = [
+         Extension(
