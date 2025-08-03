@@ -19,15 +19,37 @@ SRC_URI="https://github.com/huggingface/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+evaluator +template +torch"
 
 RDEPEND="
 	$(python_gen_cond_dep '
+		dev-python/dill[${PYTHON_USEDEP}]
+		dev-python/fsspec[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
+		dev-python/multiprocess[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP},parquet]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/unidecode[${PYTHON_USEDEP}]
+		dev-python/xxhash[${PYTHON_USEDEP}]
+		evaluator? (
+			dev-python/scipy[${PYTHON_USEDEP}]
+		)
+		template? (
+			dev-util/cookiecutter[${PYTHON_USEDEP}]
+		)
 	')
 	sci-ml/datasets[${PYTHON_SINGLE_USEDEP}]
-	sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
+	sci-ml/huggingface_hub[${PYTHON_SINGLE_USEDEP}]
+	evaluator? (
+		sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
+	)
+	torch? (
+		sci-ml/caffe2[${PYTHON_SINGLE_USEDEP},distributed]
+		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+	)
 "
 BDEPEND="test? (
 	$(python_gen_cond_dep '
