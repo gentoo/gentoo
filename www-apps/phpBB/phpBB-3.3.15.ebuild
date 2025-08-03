@@ -7,7 +7,9 @@ inherit webapp
 
 DESCRIPTION="An open-source PHP-based bulletin board package"
 HOMEPAGE="https://www.phpbb.com/"
-SRC_URI="https://download.phpbb.com/pub/release/$(ver_cut 1-2)/${PV}/${P}.tar.bz2"
+# Cloudflare is currently blocking wget.
+#SRC_URI="https://download.phpbb.com/pub/release/$(ver_cut 1-2)/${PV}/${P}.tar.bz2"
+SRC_URI="https://fossies.org/linux/www/${P}.tar.bz2"
 S="${WORKDIR}/${PN}${PV%%.*}"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
