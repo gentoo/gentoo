@@ -58,5 +58,6 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	meson_src_test --no-suite fails-valgrind
+	export SLOW_TESTBED_FACTOR=10
+	meson test -v --num-processes=1 --timeout-multiplier=10 --setup installed
 }
