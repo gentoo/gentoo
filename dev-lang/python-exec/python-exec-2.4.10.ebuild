@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# This is just a stub for tooling, see the IUSE hack below. Don't panic
+# if the array here doesn't contain the latest impl. If you can't use a
+# new impl., it's likely because it's a stable-masked flag.
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit python-any-r1
