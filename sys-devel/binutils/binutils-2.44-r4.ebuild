@@ -134,12 +134,15 @@ src_prepare() {
 
 	if [[ -n ${PATCH_VER} ]] || [[ ${PV} == *9999 ]] ; then
 		if ! use vanilla; then
+			# We backported a patch in 2.44 but it needed a few
+			# followups. Better to just handle it in 2.45 instead.
+			rm "${WORKDIR}/patch/0007-strip-Add-GCC-LTO-IR-support.patch" \
+				"${WORKDIR}/patch/0008-ld-testsuite-Use-plug_opt-for-plugin-option.patch" \
+				"${WORKDIR}/patch/0009-binutils-Don-t-complain-plugin-with-all-LTO-sections.patch" || die
+
 			einfo "Applying binutils patchset ${patchsetname}"
 			eapply "${WORKDIR}/patch"
 			einfo "Done."
-
-			# This is a fix on top of a patch we backported to 2.44
-			eapply "${FILESDIR}"/${P}-strip-static.patch
 
 			# This is applied conditionally for now just out of caution.
 			# It should be okay on non-prefix systems though. See bug #892549.
