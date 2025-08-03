@@ -19,12 +19,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="s3 test"
 
-CDEPEND="
+COMMON_DEPEND="
 	net-libs/librsync
 	app-crypt/gnupg
 	dev-python/fasteners[${PYTHON_USEDEP}]
 "
-DEPEND="${CDEPEND}
+DEPEND="
+	${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
@@ -32,7 +33,8 @@ DEPEND="${CDEPEND}
 		dev-python/pexpect[${PYTHON_USEDEP}]
 	)
 "
-RDEPEND="${CDEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	s3? ( dev-python/boto3[${PYTHON_USEDEP}] )
 "
