@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 TMPFILES_OPTIONAL=1
 
-inherit pam python-r1 meson-multilib tmpfiles toolchain-funcs
+inherit flag-o-matic pam python-r1 meson-multilib tmpfiles toolchain-funcs
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
