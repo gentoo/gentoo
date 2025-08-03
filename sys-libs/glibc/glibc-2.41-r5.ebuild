@@ -12,7 +12,7 @@ TMPFILES_OPTIONAL=1
 EMULTILIB_PKG="true"
 
 # Gentoo patchset (ignored for live ebuilds)
-PATCH_VER=2
+PATCH_VER=7
 PATCH_DEV=dilfridge
 
 # gcc mulitilib bootstrap files version
@@ -768,6 +768,11 @@ g_int_to_KV() {
 	echo ${major}.${minor}.${micro}
 }
 
+eend_KV() {
+	[[ $(g_KV_to_int $1) -ge $(g_KV_to_int $2) ]]
+	eend $?
+}
+
 get_kheader_version() {
 	printf '#include <linux/version.h>\nLINUX_VERSION_CODE\n' | \
 	$(tc-getCPP ${CTARGET}) -I "${ESYSROOT}$(alt_headers)" - | \
@@ -861,13 +866,11 @@ sanity_prechecks() {
 			if ! is_crosscompile && ! tc-is-cross-compiler ; then
 				# Building fails on an non-supporting kernel
 				ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
-				if ! [[ $(g_KV_to_int ${run_kv}) -ge $(g_KV_to_int ${want_kv}) ]] ; then
-					eend 1
+				if ! eend_KV ${run_kv} ${want_kv} ; then
 					echo
 					eerror "You need a kernel of at least ${want_kv}!"
 					die "Kernel version too low!"
 				fi
-				eend 0
 			fi
 
 			# Do not run this check for pkg_pretend, just pkg_setup and friends (if we ever get used there).
@@ -878,13 +881,11 @@ sanity_prechecks() {
 			# but let's leave it as-is for now.
 			if [[ ${EBUILD_PHASE_FUNC} != pkg_pretend ]] ; then
 				ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-				if ! [[ $(g_KV_to_int ${build_kv}) -ge $(g_KV_to_int ${want_kv}) ]] ; then
-					eend 1
+				if ! eend_KV ${build_kv} ${want_kv} ; then
 					echo
 					eerror "You need linux-headers of at least ${want_kv}!"
 					die "linux-headers version too low!"
 				fi
-				eend 0
 			fi
 		fi
 	fi
@@ -1301,7 +1302,7 @@ glibc_src_test() {
 	# we give the tests a bit more time to avoid spurious
 	# bug reports on slow arches
 
-	SANDBOX_ON=0 LD_PRELOAD= TIMEOUTFACTOR=16 nonfatal emake ${myxfailparams} check
+	SANDBOX_ON=0 LD_PRELOAD= TIMEOUTFACTOR=16 emake ${myxfailparams} check
 }
 
 src_test() {
@@ -1309,8 +1310,6 @@ src_test() {
 		return
 	fi
 
-	# glibc_src_test uses nonfatal so that we can run tests for all ABIs
-	# and fail at the end instead.
 	foreach_abi glibc_src_test || die "tests failed"
 }
 
