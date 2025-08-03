@@ -353,6 +353,12 @@ multilib_src_configure() {
 
 src_configure() {
 	append-lfs-flags
+
+	# Workaround for bug #961040 (gcc PR120006)
+	if tc-is-gcc && [[ $(gcc-major-version) == 15 && $(gcc-minor-version) -lt 2 ]] ; then
+		append-flags -fno-ipa-pta
+	fi
+
 	multilib-minimal_src_configure
 }
 

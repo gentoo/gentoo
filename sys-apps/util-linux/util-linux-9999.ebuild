@@ -128,6 +128,11 @@ src_unpack() {
 src_prepare() {
 	default
 
+	# Workaround for bug #961040 (gcc PR120006)
+	if tc-is-gcc && [[ $(gcc-major-version) == 15 && $(gcc-minor-version) -lt 2 ]] ; then
+		append-flags -fno-ipa-pta
+	fi
+
 	if use test ; then
 		# Known-failing tests
 		local known_failing_tests=(
