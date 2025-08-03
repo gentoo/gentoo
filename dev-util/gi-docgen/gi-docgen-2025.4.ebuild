@@ -31,9 +31,6 @@ RDEPEND="
 		>=dev-python/jinja2-2[${PYTHON_USEDEP}]
 		>=dev-python/typogrify-2[${PYTHON_USEDEP}]
 	')
-	$(python_gen_cond_dep '
-		dev-python/tomli[${PYTHON_USEDEP}]
-	' 3.10)
 "
 
 distutils_enable_tests pytest
