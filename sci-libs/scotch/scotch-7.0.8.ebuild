@@ -110,7 +110,7 @@ src_install() {
 	insinto /usr/include/scotch
 	doins include/*
 
-	cat <<-EOF > scotchmetis.pc
+	cat <<-EOF > scotchmetis.pc || die
 		prefix=${EPREFIX}/usr
 		libdir=\${prefix}/$(get_libdir)
 		includedir=\${prefix}/include
@@ -130,7 +130,7 @@ src_install() {
 	#	/usr/$(get_libdir)/pkgconfig/metis.pc scotchmetis.pc
 
 	if use mpi; then
-		cat <<-EOF > ptscotchparmetis.pc
+		cat <<-EOF > ptscotchparmetis.pc || die
 			prefix=${EPREFIX}/usr
 			libdir=\${prefix}/$(get_libdir)
 			includedir=\${prefix}/include
