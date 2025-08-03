@@ -45,7 +45,7 @@ EPYTEST_DESELECT=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-docs-cmd.patch"
+	"${FILESDIR}/${PN}-3.0.4.0-fix-docs-cmd.patch"
 )
 
 distutils_enable_tests pytest
