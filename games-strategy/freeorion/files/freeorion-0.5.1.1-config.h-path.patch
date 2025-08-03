@@ -1,0 +1,8 @@
+https://github.com/freeorion/freeorion/pull/5259
+--- a/GG/GG/CMakeLists.txt
++++ b/GG/GG/CMakeLists.txt
+@@ -20,3 +20,3 @@
+         ${CMAKE_CURRENT_LIST_DIR}/Clr.h
+-        ${CMAKE_CURRENT_LIST_DIR}/Config.h
++        ${CMAKE_CURRENT_BINARY_DIR}/Config.h
+         ${CMAKE_CURRENT_LIST_DIR}/Control.h
