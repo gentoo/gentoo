@@ -65,8 +65,6 @@ test_compiler() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
-
 	local install_prefix=${EPREFIX}
 	is_crosspkg && install_prefix+=/usr/${CTARGET}
 
@@ -87,6 +85,7 @@ src_configure() {
 
 multilib_src_configure() {
 	if use clang; then
+		llvm_prepend_path -b "${LLVM_MAJOR}"
 		local -x CC=${CTARGET}-clang
 		local -x CXX=${CTARGET}-clang++
 		strip-unsupported-flags
@@ -114,6 +113,8 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
+
 		-DCMAKE_CXX_COMPILER_TARGET="${CTARGET}"
 		-DPython3_EXECUTABLE="${PYTHON}"
 		-DLLVM_ENABLE_RUNTIMES=libcxx
