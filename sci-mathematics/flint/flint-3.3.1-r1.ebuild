@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit flag-o-matic python-any-r1
 
 DESCRIPTION="Fast Library for Number Theory"
-HOMEPAGE="https://www.flintlib.org/"
+HOMEPAGE="https://flintlib.org/"
 
 SRC_URI="https://github.com/flintlib/flint/releases/download/v${PV}/flint-${PV}.tar.xz"
 LICENSE="LGPL-2.1+"
