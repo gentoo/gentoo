@@ -64,7 +64,6 @@ RDEPEND="
 		|| (
 			dev-lang/ruby:3.3
 			dev-lang/ruby:3.2
-			dev-lang/ruby:3.1
 		)
 	)
 	selinux? ( sec-policy/selinux-irc )
