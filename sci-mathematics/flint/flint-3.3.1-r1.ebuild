@@ -13,7 +13,7 @@ SRC_URI="https://github.com/flintlib/flint/releases/download/v${PV}/flint-${PV}.
 LICENSE="LGPL-2.1+"
 
 # Based off the soname, e.g. /usr/lib64/libflint.so -> libflint.so.15
-SLOT="0/19"
+SLOT="0/21"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc ntl test"
