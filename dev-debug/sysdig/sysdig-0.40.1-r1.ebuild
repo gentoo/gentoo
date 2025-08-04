@@ -8,7 +8,7 @@ LUA_COMPAT=( luajit )
 inherit bash-completion-r1 cmake flag-o-matic linux-info lua-single
 
 DESCRIPTION="A system exploration and troubleshooting tool"
-HOMEPAGE="https://sysdig.com/"
+HOMEPAGE="https://www.sysdig.com/"
 
 # The version of falcosecurity-libs required by sysdig as source tree
 LIBS_VERSION="0.20.0"
