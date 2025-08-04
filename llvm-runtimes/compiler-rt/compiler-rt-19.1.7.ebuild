@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake crossdev flag-o-matic llvm.org llvm-utils python-any-r1
 inherit toolchain-funcs
 
@@ -64,7 +64,9 @@ test_compiler() {
 }
 
 src_configure() {
-	llvm_prepend_path "${LLVM_MAJOR}"
+	if use clang || use test; then
+		llvm_prepend_path -b "${LLVM_MAJOR}"
+	fi
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
@@ -101,6 +103,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DCOMPILER_RT_EXCLUDE_ATOMIC_BUILTIN=$(usex !atomic-builtins)
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
