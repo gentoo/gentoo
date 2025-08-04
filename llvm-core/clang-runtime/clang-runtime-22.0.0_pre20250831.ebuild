@@ -35,16 +35,12 @@ RDEPEND="
 	)
 
 	llvm-core/clang-common
-	default-compiler-rt? (
-		~llvm-runtimes/compiler-rt-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
-		llvm-libunwind? ( llvm-runtimes/libunwind[static-libs] )
-		!llvm-libunwind? ( sys-libs/libunwind[static-libs] )
-	)
-	!default-compiler-rt? ( sys-devel/gcc )
-	default-libcxx? ( >=llvm-runtimes/libcxx-${PV}[static-libs] )
-	!default-libcxx? ( sys-devel/gcc )
-	default-lld? ( ~llvm-core/lld-${PV} )
-	!default-lld? ( sys-devel/binutils )
+
+	~llvm-core/clang-linker-config-${SLOT}[default-lld(-)?]
+	~llvm-runtimes/clang-rtlib-config-${SLOT}[default-compiler-rt(-)?]
+	~llvm-runtimes/clang-unwindlib-config-${SLOT}[default-compiler-rt(-)?,llvm-libunwind(-)?]
+	~llvm-runtimes/clang-stdlib-config-${SLOT}[default-libcxx(-)?]
+
 	polly? ( ~llvm-core/polly-${PV} )
 "
 
