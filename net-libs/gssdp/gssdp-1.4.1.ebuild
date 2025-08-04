@@ -15,6 +15,7 @@ IUSE="gtk-doc +introspection gtk vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
+	!<net-libs/gssdp-1.6.4:1.6
 	>=dev-libs/glib-2.54:2[${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.26.1:2.4[${MULTILIB_USEDEP},introspection?]
 	gtk? ( gui-libs/gtk:4 )

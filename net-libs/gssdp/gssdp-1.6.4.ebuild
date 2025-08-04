@@ -18,6 +18,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	!<net-libs/gssdp-1.4.1:0
 	>=dev-libs/glib-2.70:2[${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.99.0:3.0[${MULTILIB_USEDEP},introspection?]
 	gtk? ( gui-libs/gtk:4 )
