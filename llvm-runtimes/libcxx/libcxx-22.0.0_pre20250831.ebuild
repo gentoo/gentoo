@@ -29,6 +29,9 @@ DEPEND="
 BDEPEND="
 	clang? (
 		llvm-core/clang:${LLVM_MAJOR}
+		llvm-core/clang-linker-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-rtlib-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-unwindlib-config:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -93,29 +96,28 @@ multilib_src_configure() {
 
 	if use clang; then
 		llvm_prepend_path -b "${LLVM_MAJOR}"
-		local -x CC=${CTARGET}-clang
-		local -x CXX=${CTARGET}-clang++
+		local -x CC=${CTARGET}-clang-${LLVM_MAJOR}
+		local -x CXX=${CTARGET}-clang++-${LLVM_MAJOR}
 		strip-unsupported-flags
+
+		# The full clang configuration might not be ready yet. Use the partial
+		# configuration of components that libunwind depends on.
+		local flags=(
+			--config="${ESYSROOT}"/etc/clang/"${LLVM_MAJOR}"/gentoo-{rtlib,unwindlib,linker}.cfg
+		)
+		local -x CFLAGS="${CFLAGS} ${flags[@]}"
+		local -x CXXFLAGS="${CXXFLAGS} ${flags[@]}"
+		local -x LDFLAGS="${LDFLAGS} ${flags[@]}"
 	fi
 
 	# link to compiler-rt
 	local use_compiler_rt=OFF
 	[[ $(tc-get-c-rtlib) == compiler-rt ]] && use_compiler_rt=ON
 
-	# Scenarios to consider:
-	#
-	# 1. Compiler test works with the default flags.
-	# 2. There is a runtime library, but no stdlib. In that case, leave the
-	#    LDFLAGS untouched, since there is no self-dependency in libc++.
-	# 3. There is no runtime library nor stdlib. In that case, overwrite the
-	#    LDFLAGS.
-	local nostdlib_flags=( -nostdlib --rtlib=compiler-rt -lc )
-	local nort_flags=( -nodefaultlibs -lc )
-	if ! test_compiler && ! test_compiler "${nostdlib_flags[@]}"; then
-		if test_compiler "${nort_flags[@]}"; then
-			local -x LDFLAGS="${LDFLAGS} ${nort_flags[*]}"
-			ewarn "${CXX} seems to lack runtime, trying with ${nort_flags[*]}"
-		fi
+	local nostdlib_flags=( -nostdlib++ )
+	if ! test_compiler && test_compiler "${nostdlib_flags[@]}"; then
+		local -x LDFLAGS="${LDFLAGS} ${nort_flags[*]}"
+		ewarn "${CXX} seems to lack runtime, trying with ${nort_flags[*]}"
 	fi
 
 	local libdir=$(get_libdir)
