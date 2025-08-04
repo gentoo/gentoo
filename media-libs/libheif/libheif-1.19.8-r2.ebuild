@@ -36,6 +36,7 @@ DEPEND="
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	jpeg2k? ( media-libs/openjpeg:=[${MULTILIB_USEDEP}] )
+	kvazaar? ( media-libs/kvazaar:=[${MULTILIB_USEDEP}] )
 	openh264? ( media-libs/openh264:=[${MULTILIB_USEDEP}] )
 	rav1e? ( media-video/rav1e:= )
 	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
