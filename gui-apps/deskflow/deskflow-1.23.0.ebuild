@@ -58,6 +58,10 @@ DOCS=(
 	doc/user/configuration.md
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-default-proto.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GUI=$(usex gui)
