@@ -40,6 +40,8 @@ DEPEND="
 BDEPEND="
 	clang? (
 		llvm-core/clang:${LLVM_MAJOR}
+		llvm-core/clang-rtlib:${LLVM_MAJOR}
+		llvm-core/clang-stdlib:${LLVM_MAJOR}
 		llvm-runtimes/compiler-rt:${LLVM_MAJOR}
 	)
 	elibc_glibc? ( net-libs/libtirpc )
@@ -117,6 +119,16 @@ src_configure() {
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
 		strip-unsupported-flags
+
+		# The full clang configuration might not be ready yet. Use the partial
+		# configuration files that are guaranteed to exist even during initial
+		# installations and upgrades.
+		append-ldflags \
+			--no-default-config \
+			-nodefaultlibs -lc \
+			--config=${ESYSROOT}/etc/clang/${LLVM_MAJOR}/gentoo-rtlib.cfg \
+			--config=${ESYSROOT}/etc/clang/${LLVM_MAJOR}/gentoo-stdlib.cfg \
+			--config=${ESYSROOT}/etc/clang/${LLVM_MAJOR}/gentoo-linker.cfg
 	fi
 
 	local flag want_sanitizer=OFF
