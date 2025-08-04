@@ -493,7 +493,7 @@ test_strip_lto_mixed() {
 	# against the stripped archive?
 	# Note that this can only happen in a mixed build because strip-lto-bytecode
 	# checks for the toolchain type before deciding which strip to use.
-	tbegin "whether strip corrupts a Clang fat IR archive"
+	tbegin "whether strip can process (not corrupt) a Clang fat IR archive"
 	ret=0
 	(
 		export CFLAGS="-O2 -flto"
