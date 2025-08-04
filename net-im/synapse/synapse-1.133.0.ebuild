@@ -240,7 +240,7 @@ LICENSE+="
 	Unicode-DFS-2016
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="postgres selinux systemd test"
 RESTRICT="!test? ( test )"
 
