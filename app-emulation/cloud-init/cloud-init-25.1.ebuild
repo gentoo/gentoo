@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="selinux test"
+IUSE="selinux test netifrc"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -57,9 +57,11 @@ RDEPEND="
 	net-analyzer/macchanger
 	net-analyzer/openbsd-netcat
 	sys-apps/iproute2
+	sys-apps/locale-gen
 	sys-fs/growpart
 	virtual/logger
 	selinux? ( sec-policy/selinux-cloudinit )
+	netifrc? ( sys-apps/openrc )
 "
 
 EPYTEST_IGNORE=(
@@ -73,6 +75,9 @@ EPYTEST_IGNORE=(
 )
 
 src_prepare() {
+	if use netifrc; then
+		PATCHES+=( "${FILESDIR}/${PN}-25.1-netifrc.patch" )
+	fi
 	default
 
 	# Fix location of documentation installation
@@ -112,8 +117,13 @@ pkg_prerm() {
 pkg_postinst() {
 	udev_reload
 
-	elog "cloud-init-local needs to be run in the boot runlevel because it"
-	elog "modifies services in the default runlevel.  When a runlevel is started"
-	elog "it is cached, so modifications that happen to the current runlevel"
-	elog "while you are in it are not acted upon."
+	elog "Add following services to boot runlevel:"
+	elog "  cloud-init-ds-identify cloud-init-local"
+	elog "And following services to default runlevel:"
+	elog "  cloud-config cloud-final cloud-init cloud-init-hotplug"
+	elog ""
+	elog "With musl, you'd probably want to disable locale as musl's local-gen"
+	elog "command is not functional."
+	elog "In /etc/cloud/cloud.cfg.d/99-musl-disable-locale.cfg:"
+	elog "locale: false"
 }
