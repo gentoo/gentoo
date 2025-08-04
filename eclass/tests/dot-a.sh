@@ -603,7 +603,7 @@ test_strip_cross() {
 
 		return 0
 	) || ret=1
-	tend ${ret} ""
+	tend ${ret} "strip broke binary for a foreign architecture"
 }
 
 _repeat_tests_with_compilers() {
