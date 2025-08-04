@@ -21,7 +21,10 @@ DEPEND="
 	llvm-core/llvm:${LLVM_MAJOR}
 "
 BDEPEND="
-	clang? ( llvm-core/clang:${LLVM_MAJOR} )
+	clang? (
+		llvm-core/clang:${LLVM_MAJOR}
+		llvm-core/clang-linker:${LLVM_MAJOR}
+	)
 	test? (
 		$(python_gen_any_dep ">=dev-python/lit-15[\${PYTHON_USEDEP}]")
 		=llvm-core/clang-${LLVM_VERSION}*:${LLVM_MAJOR}
@@ -81,6 +84,13 @@ src_configure() {
 		fi
 
 		strip-unsupported-flags
+
+		# The full clang configuration might not be ready yet. Given that compiler-rt
+		# require runtime, use only the linker configuration.
+		append-ldflags \
+			--no-default-config \
+			-nodefaultlibs -lc \
+			--config=${ESYSROOT}/etc/clang/${LLVM_MAJOR}/gentoo-linker.cfg
 	fi
 
 	if ! is_crosspkg && ! test_compiler ; then
