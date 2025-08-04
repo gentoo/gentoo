@@ -58,7 +58,9 @@ src_configure() {
 	# COMPILER_RT_BUILTINS_HIDE_SYMBOLS option - compatibility with libgcc requires
 	# visibility of all symbols.
 
-	llvm_prepend_path "${LLVM_MAJOR}"
+	if use clang || use test; then
+		llvm_prepend_path -b "${LLVM_MAJOR}"
+	fi
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
@@ -68,6 +70,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCOMPILER_RT_INSTALL_PATH="${EPREFIX}/usr/lib/clang/${LLVM_MAJOR}"
+		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
 		-DCOMPILER_RT_BUILD_CRT=OFF
