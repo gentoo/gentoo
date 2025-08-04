@@ -77,7 +77,9 @@ pkg_pretend() {
 src_prepare() {
 	# manually apply patches to falcosecurity-libs
 	pushd "${WORKDIR}/libs-${LIBS_VERSION}"
-		eapply "${FILESDIR}/libs-0.20-fix-buffer-overrun-reading-sockets-from-procfs.patch" || die
+		eapply "${FILESDIR}/libs-0.20.0-fix-buffer-overrun-reading-sockets-from-procfs.patch" || die
+		eapply "${FILESDIR}/libs-0.20.0-fix-driver-and-bpf-makefile-for-kernel-6.13.patch" || die
+		eapply "${FILESDIR}/libs-0.20.0-fix-INET6_ADDRSTRLEN-buffer-size.patch" || die
 	popd
 
 	# do not build with debugging info
@@ -97,6 +99,10 @@ src_configure() {
 	local mycmakeargs=(
 		# do not build the kernel driver
 		-DBUILD_DRIVER=OFF
+		-DENABLE_DKMS=OFF
+
+		# disable all test targets
+		-DCREATE_TEST_TARGETS=OFF
 
 		# libscap examples are not installed or really useful
 		-DBUILD_LIBSCAP_EXAMPLES=OFF
@@ -104,10 +110,10 @@ src_configure() {
 		# do not build internal libs as shared
 		-DBUILD_SHARED_LIBS=OFF
 
-		# build BPF probe depending on USE
-		-DBUILD_SYSDIG_MODERN_BPF:BOOL=$(usex bpf)
+		# build modern BPF probe depending on USE
+		-DBUILD_SYSDIG_MODERN_BPF=$(usex bpf)
 
-		# set driver version to prevent downloading (don't ask..)
+		# set driver location/version
 		-DDRIVER_SOURCE_DIR="${WORKDIR}"/libs-${LIBS_VERSION}/driver
 		-DDRIVER_VERSION=${DRIVER_VERSION}
 
