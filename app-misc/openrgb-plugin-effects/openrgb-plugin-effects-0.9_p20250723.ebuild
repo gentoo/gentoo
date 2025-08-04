@@ -8,25 +8,28 @@ inherit flag-o-matic qmake-utils
 DESCRIPTION="Plugin for OpenRGB with various Effects that can be synced across devices"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin"
 
+MY_COMMIT="ee3690437020c19ccd73dd42bea193a8c0709752"
 MY_NOISE_COMMIT="97e62c5b5e26c8edabdc29a6b0a277192be3746c"
 MY_QCODEEDITOR_COMMIT="a9aab24c7970a38d14bc79939306d9d3ba78cf61"
 SRC_URI="
-	https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin/-/archive/release_${PV}/OpenRGBEffectsPlugin-release_${PV}.tar.bz2
+	https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin/-/archive/${MY_COMMIT}/OpenRGBEffectsPlugin-${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
 	https://github.com/SRombauts/SimplexNoise/archive/${MY_NOISE_COMMIT}.tar.gz -> SimplexNoise-2019-12-03.tar.gz
 	https://github.com/justxi/QCodeEditor/archive/${MY_QCODEEDITOR_COMMIT}.tar.gz -> QCodeEditor-2021-08-17.tar.gz
 "
-S="${WORKDIR}/OpenRGBEffectsPlugin-release_${PV}"
+S="${WORKDIR}/OpenRGBEffectsPlugin-${MY_COMMIT}"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 RDEPEND="
-	>=app-misc/openrgb-0.9:=[-qt6(-)]
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5[-gles2-only]
-	dev-qt/qtwidgets:5[-gles2-only]
+	>=app-misc/openrgb-0.9_p20250524:=
+	dev-libs/hidapi
+	dev-qt/qtbase:6[gui,opengl,widgets,-gles2-only]
+	dev-qt/qt5compat:6
+	media-libs/libglvnd
 	media-libs/openal
+	media-video/pipewire:=
 "
 DEPEND="
 	${RDEPEND}
@@ -34,7 +37,8 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/openrgb-plugin-effects-0.9-dep.patch"
+	"${FILESDIR}/${P}-dep.patch"
+	"${FILESDIR}/${P}-build-system.patch"
 )
 
 src_prepare() {
@@ -59,11 +63,14 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 \
-		INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann"
+	eqmake6 INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann" \
+		INCLUDEPATH+="${ESYSROOT}/usr/include/OpenRGB/SPDAccessor" \
+		INCLUDEPATH+="${ESYSROOT}/usr/include/OpenRGB/hidapi_wrapper" \
+		CONFIG+=link_pkgconfig \
+		PKGCONFIG+=hidapi-hidraw
 }
 
 src_install() {
-	exeinto /usr/$(get_libdir)/OpenRGB/plugins
-	doexe libOpenRGBEffectsPlugin.so.1.0.0
+	exeinto /usr/$(get_libdir)/openrgb/plugins
+	doexe libOpenRGBEffectsPlugin.so
 }
