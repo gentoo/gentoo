@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3 MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="+aom dav1d +de265 doc examples ffmpeg gdk-pixbuf +jpeg +jpeg2k +kvazaar openh264 rav1e svt-av1 test test-full +threads tools +webp x265"
+IUSE="+aom dav1d +de265 doc ffmpeg gdk-pixbuf gui +jpeg +jpeg2k +kvazaar openh264 rav1e svt-av1 test test-full +threads tools +webp x265"
 # IUSE+=" vvdec vvenc"
 REQUIRED_USE="test-full? ( test )"
 RESTRICT="!test? ( test )"
@@ -42,7 +42,7 @@ DEPEND="
 	rav1e? ( media-video/rav1e:= )
 	svt-av1? ( media-libs/svt-av1:=[${MULTILIB_USEDEP}] )
 	tools? (
-		examples? (
+		gui? (
 			media-libs/libsdl2:=[${MULTILIB_USEDEP}]
 		)
 	)
@@ -57,6 +57,12 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libheif/heif_version.h
 )
 
+pkg_pretend() {
+	if use gui && use !tools ; then
+		ewarn "Building heif-view requires USE=\"gui tools\"."
+	fi
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package doc Doxygen)
@@ -66,8 +72,8 @@ multilib_src_configure() {
 		-DWITH_AOM_DECODER=$(usex aom)
 		-DWITH_AOM_ENCODER=$(usex aom)
 		-DWITH_DAV1D=$(usex dav1d)
-		-DWITH_EXAMPLES=$(usex examples)
-		-DWITH_EXAMPLE_HEIF_VIEW=$(usex examples $(usex tools))
+		-DWITH_EXAMPLES=$(usex tools) # the examples are tools
+		-DWITH_EXAMPLE_HEIF_VIEW=$(usex tools $(usex gui))
 		-DWITH_FFMPEG_DECODER=$(usex ffmpeg)
 		-DWITH_GDK_PIXBUF=$(usex gdk-pixbuf)
 		-DWITH_OpenH264_DECODER=$(usex openh264)
@@ -97,7 +103,7 @@ multilib_src_configure() {
 	fi
 
 	# TODO WITH_EXAMPLE_HEIF_VIEW in -9999
-	if ! use tools; then
+	if ! use gui; then
 		mycmakeargs+=(
 			-DCMAKE_DISABLE_FIND_PACKAGE_SDL2=ON
 		)
