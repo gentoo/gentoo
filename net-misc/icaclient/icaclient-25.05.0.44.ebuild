@@ -232,7 +232,7 @@ src_install() {
 	dosym en /opt/Citrix/ICAClient/nls/C
 
 	insinto "${ICAROOT}"/icons
-	doins icons/*
+	doins -r icons/*
 
 	insinto "${ICAROOT}"/keyboard
 	doins keyboard/*
