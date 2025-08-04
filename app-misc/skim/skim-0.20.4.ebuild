@@ -19,18 +19,18 @@ CRATES="
 	bitflags@2.9.1
 	bstr@1.12.0
 	bumpalo@3.19.0
-	cc@1.2.27
+	cc@1.2.31
 	cfg-if@1.0.1
 	cfg_aliases@0.2.1
 	chrono@0.4.41
-	clap@4.5.40
-	clap_builder@4.5.40
-	clap_complete@4.5.54
+	clap@4.5.42
+	clap_builder@4.5.42
+	clap_complete@4.5.55
 	clap_complete_fig@4.5.2
-	clap_complete_nushell@4.5.7
-	clap_derive@4.5.40
+	clap_complete_nushell@4.5.8
+	clap_derive@4.5.41
 	clap_lex@0.7.5
-	clap_mangen@0.2.27
+	clap_mangen@0.2.29
 	colorchoice@1.0.4
 	core-foundation-sys@0.8.7
 	crossbeam-channel@0.5.15
@@ -72,7 +72,7 @@ CRATES="
 	js-sys@0.3.77
 	lazy_static@1.5.0
 	libc@0.2.174
-	libredox@0.1.4
+	libredox@0.1.9
 	linux-raw-sys@0.9.4
 	log@0.4.27
 	memchr@2.7.5
@@ -89,7 +89,7 @@ CRATES="
 	pulldown-cmark@0.13.0
 	quote@1.0.40
 	r-efi@5.3.0
-	rand@0.9.1
+	rand@0.9.2
 	rand_chacha@0.9.0
 	rand_core@0.9.3
 	rayon-core@1.12.1
@@ -99,7 +99,7 @@ CRATES="
 	regex-syntax@0.8.5
 	regex@1.11.1
 	roff@0.2.2
-	rustix@1.0.7
+	rustix@1.0.8
 	rustversion@1.0.21
 	serde@1.0.219
 	serde_derive@1.0.219
@@ -140,7 +140,7 @@ CRATES="
 	windows-sys@0.59.0
 	windows-sys@0.60.2
 	windows-targets@0.52.6
-	windows-targets@0.53.2
+	windows-targets@0.53.3
 	windows_aarch64_gnullvm@0.52.6
 	windows_aarch64_gnullvm@0.53.0
 	windows_aarch64_msvc@0.52.6
