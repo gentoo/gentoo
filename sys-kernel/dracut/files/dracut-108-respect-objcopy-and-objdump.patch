@@ -1,0 +1,89 @@
+diff --git a/dracut-functions.sh b/dracut-functions.sh
+index 84a34fafd..617ccf91c 100755
+--- a/dracut-functions.sh
++++ b/dracut-functions.sh
+@@ -1042,7 +1042,7 @@ get_dev_module() {
+ pe_file_format() {
+     if [[ $# -eq 1 ]]; then
+         local magic
+-        magic=$(objdump -p "$1" \
++        magic=$("${OBJDUMP:-objdump}" -p "$1" \
+             | awk '{if ($1 == "Magic"){print $2}}')
+         # 010b (PE32), 020b (PE32+)
+         [[ $magic == "020b" || $magic == "010b" ]] && return 0
+@@ -1055,7 +1055,7 @@ pe_get_header_data() {
+     local data_header
+     [[ $# -ne "2" ]] && return 1
+     [[ $(pe_file_format "$1") -eq 1 ]] && return 1
+-    data_header=$(objdump -p "$1" \
++    data_header=$("${OBJDUMP:-objdump}" -p "$1" \
+         | awk -v data="$2" '{if ($1 == data){print $2}}')
+     echo "$data_header"
+ }
+diff --git a/dracut.sh b/dracut.sh
+index 45373efb7..b53d72924 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -1649,7 +1649,7 @@ if [[ ! $print_cmdline ]]; then
+     fi
+ 
+     if [[ $uefi == yes ]]; then
+-        if ! command -v objcopy &> /dev/null; then
++        if ! command -v "${OBJCOPY:-objcopy}" &> /dev/null; then
+             dfatal "Need 'objcopy' to create a UEFI executable"
+             exit 1
+         fi
+@@ -2638,7 +2638,7 @@ clean_sbat_string() {
+ get_sbat_string() {
+     local inp=$1
+     local out=$uefi_outdir/$2
+-    objcopy -O binary --only-section=.sbat "$inp" "$out"
++    "${OBJCOPY:-objcopy}" -O binary --only-section=.sbat "$inp" "$out"
+     clean_sbat_string "$out"
+ }
+ 
+@@ -2656,7 +2656,7 @@ if [[ $uefi == yes ]]; then
+         fi
+     fi
+ 
+-    offs=$(($(objdump -h "$uefi_stub" 2> /dev/null | awk 'NF==7 {size=$3;
++    offs=$(($("${OBJDUMP:-objdump}" -h "$uefi_stub" 2> /dev/null | awk 'NF==7 {size=$3;
+                 offset=$4} END {print "16#"size" + 16#"offset}')))
+     if [[ $offs -eq 0 ]]; then
+         dfatal "Failed to get the size of $uefi_stub to create UEFI image file"
+@@ -2719,7 +2719,7 @@ if [[ $uefi == yes ]]; then
+ 
+     tmp_uefi_stub=$uefi_outdir/elf.stub
+     cp "$uefi_stub" "$tmp_uefi_stub"
+-    objcopy --remove-section .sbat "$tmp_uefi_stub" &> /dev/null
++    "${OBJCOPY:-objcopy}" --remove-section .sbat "$tmp_uefi_stub" &> /dev/null
+ 
+     if command -v ukify &> /dev/null; then
+         dinfo "*** Using ukify to create UKI ***"
+@@ -2749,7 +2749,7 @@ if [[ $uefi == yes ]]; then
+             exit 1
+         fi
+     else
+-        if objcopy \
++        if "${OBJCOPY:-objcopy}" \
+             ${SOURCE_DATE_EPOCH:+--enable-deterministic-archives --preserve-dates} \
+             ${uefi_osrelease:+--add-section .osrel="$uefi_osrelease" --change-section-vma .osrel=$(printf 0x%x "$uefi_osrelease_offs")} \
+             ${uefi_cmdline:+--add-section .cmdline="$uefi_cmdline" --change-section-vma .cmdline=$(printf 0x%x "$uefi_cmdline_offs")} \
+diff --git a/lsinitrd.sh b/lsinitrd.sh
+index 86b2c5a67..fd0633dfa 100755
+--- a/lsinitrd.sh
++++ b/lsinitrd.sh
+@@ -358,11 +358,11 @@ unpack_files() {
+ 
+ read -r -N 2 bin < "$image"
+ if [ "$bin" = "MZ" ]; then
+-    command -v objcopy > /dev/null || {
++    command -v "${OBJCOPY:-objcopy}" > /dev/null || {
+         echo "Need 'objcopy' to unpack an UEFI executable."
+         exit 1
+     }
+-    objcopy \
++    "${OBJCOPY:-objcopy}" \
+         --dump-section .linux="$TMPDIR/vmlinuz" \
+         --dump-section .initrd="$TMPDIR/initrd.img" \
+         --dump-section .cmdline="$TMPDIR/cmdline.txt" \

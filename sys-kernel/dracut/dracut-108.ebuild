@@ -102,7 +102,9 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	# Gentoo specific acct-user and acct-group conf adjustments
-	"${FILESDIR}"/${PN}-106-acct-user-group-gentoo.patch
+	"${FILESDIR}"/${PN}-108-acct-user-group-gentoo.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/1447
+	"${FILESDIR}"/${PN}-108-respect-objcopy-and-objdump.patch
 )
 
 pkg_setup() {
@@ -172,6 +174,9 @@ src_install() {
 		exeinto /usr/lib/dracut
 		doexe "src/dracut-cpio/$(cargo_target_dir)/dracut-cpio"
 	fi
+
+	# Use our own from sys-kernel/installkernel[dracut]
+	rm -r "${ED}/usr/lib/kernel" || die
 }
 
 pkg_preinst() {
