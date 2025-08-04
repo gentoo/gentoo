@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="A remote desktop client for the GNOME desktop environment"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/connections"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-connections"
 
 LICENSE="GPL-3+"
 SLOT="0"
