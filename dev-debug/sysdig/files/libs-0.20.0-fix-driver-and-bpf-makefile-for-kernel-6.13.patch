@@ -1,0 +1,39 @@
+Patch from:
+https://github.com/falcosecurity/libs/commit/7f01ec89c565fcb45ade833b1312ae69637bc4ec
+
+From: Federico Di Pierro <nierro92@gmail.com>
+Date: Fri, 28 Mar 2025 08:35:23 +0100
+Subject: [PATCH] fix(driver): fix driver and bpf makefile for linux 6.13.
+
+Signed-off-by: Federico Di Pierro <nierro92@gmail.com>
+---
+ driver/Makefile.in  | 2 +-
+ driver/bpf/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/driver/Makefile.in b/driver/Makefile.in
+index 7b1fdc2dba..ec60103d0d 100644
+--- a/driver/Makefile.in
++++ b/driver/Makefile.in
+@@ -29,7 +29,7 @@ install: all
+ 
+ else
+ 
+-KERNELDIR 	?= $(CURDIR)
++KERNELDIR 	?= $(realpath $(objtree))
+ #
+ # Get the path of the module sources
+ #
+diff --git a/driver/bpf/Makefile b/driver/bpf/Makefile
+index 58d1b11165..c94647c608 100644
+--- a/driver/bpf/Makefile
++++ b/driver/bpf/Makefile
+@@ -28,7 +28,7 @@ clean:
+ 
+ else
+ 
+-KERNELDIR 	?= $(CURDIR)
++KERNELDIR 	?= $(realpath $(objtree))
+ #
+ # Get the path of the module sources
+ #
