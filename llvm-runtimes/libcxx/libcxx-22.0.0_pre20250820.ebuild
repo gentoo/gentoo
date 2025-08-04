@@ -29,6 +29,9 @@ DEPEND="
 BDEPEND="
 	clang? (
 		llvm-core/clang:${LLVM_MAJOR}
+		llvm-core/clang-linker-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-rtlib-config:${LLVM_MAJOR}
+		llvm-runtimes/clang-unwindlib-config:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -93,9 +96,20 @@ multilib_src_configure() {
 
 	if use clang; then
 		llvm_prepend_path -b "${LLVM_MAJOR}"
-		local -x CC=${CTARGET}-clang
-		local -x CXX=${CTARGET}-clang++
+		local -x CC=${CTARGET}-clang-${LLVM_MAJOR}
+		local -x CXX=${CTARGET}-clang++-${LLVM_MAJOR}
 		strip-unsupported-flags
+
+		# The full clang configuration might not be ready yet. Use the partial
+		# configuration of components that libunwind depends on.
+		local flags=(
+			--no-default-config
+			-nostdlib++
+			--config=${ESYSROOT}/etc/clang/${LLVM_MAJOR}/gentoo-{rtlib,unwindlib,linker}.cfg
+		)
+		local -x CFLAGS="${CFLAGS} ${flags[@]}"
+		local -x CXXFLAGS="${CXXFLAGS} ${flags[@]}"
+		local -x LDFLAGS="${LDFLAGS} ${flags[@]}"
 	fi
 
 	# link to compiler-rt
