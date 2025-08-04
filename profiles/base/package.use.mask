@@ -6,16 +6,21 @@
 
 # New entries go on top.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-08-02)
+# Fails to build, needs looking into but isn't currently needed
+# by anything and can leave it masked for now.
+>=media-libs/vips-8.17 vala
+
+# Alfred Wingate (2025-07-31)
+# Missing dependency
+sci-libs/gdal mongodb
+
 # Ivy <openrc@posteo.de> (2025-07-11)
 # app-editors/gnome-text-editor[spell] has been dropped upstream and
 # replaced with app-text/libspelling, but will likely be added back
 # in future releases.
 ~app-editors/gnome-text-editor-47.2 spell
 ~app-editors/gnome-text-editor-47.4 spell
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-27)
-# Prepare cleanup of kde-apps/cervisia
-kde-apps/kdesdk-meta cvs
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
 # >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
@@ -30,11 +35,6 @@ media-libs/svt-av1 test
 # Alfred Wingate <parona@protonmail.com> <2025-05-24)
 # Doesn't work well at runtime.
 dev-games/ogre wayland
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
-# media-sound/hydrogen[lash] build is broken, and dropped upstream in next
-# version. Bug #946125
-media-sound/hydrogen lash
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
 # Does not compile as of 2024.1.1, requires buildsystem fixes.
@@ -110,10 +110,6 @@ sci-libs/opencascade ffmpeg
 # Requires dev-python/recommonmark with Python 3.10
 <llvm-core/clang-18 doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-13)
-# Prepare cleanup of dev-qt/qtgamepad:5
-dev-qt/qt3d gamepad
-
 # Michał Górny <mgorny@gentoo.org> (2025-02-08)
 # Requires dev-cpp/cpp-httplib that has extremely unstable ABI.
 # Not worth the constant churn of having to rebuild LLVM again and again.
@@ -140,11 +136,6 @@ dev-build/meson test-full
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
 # Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
 kde-frameworks/kfilemetadata:5 mobi
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
-# Prepare cleanup of kde-apps/kaccounts-integration:6[qt5] and
-# kde-frameworks/bluez-qt:5
-kde-frameworks/purpose:5 bluetooth kaccounts
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
@@ -489,10 +480,6 @@ app-misc/pax-utils seccomp
 # app-text/pandoc is not keyworded on most architectures
 net-libs/gssdp man
 
-# Sam James <sam@gentoo.org> (2022-11-19)
-# Needs long-EOL dev-lang/spidermonkey:60 (which also needs python:2.7).
-media-libs/coin javascript
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # gnome-music and gnome-photos have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
@@ -502,12 +489,6 @@ gnome-base/gnome-extra-apps tracker
 # tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
 # which has not been ported to libsoup:3.0.
 >=app-misc/localsearch-3.4.0-r1 rss
-
-# Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
-# Cannot test and fix pax-kernel related bugs on a current grsec kernel
-# Mask the flag for now
-# Bugs: #643466, #674872, #832161, #855722
-app-emulation/virtualbox pax-kernel
 
 # Sam James <sam@gentoo.org> (2022-10-02)
 # USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
@@ -909,10 +890,6 @@ sys-libs/glibc vanilla
 # Michael Orlitzky <mjo@gentoo.org> (2017-08-24)
 # This is a security risk if not used carefully, bug #628596.
 net-analyzer/nrpe command-args
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-04)
-# sys-kernel/openvz-sources is being treecleaned wrt bug #580516.
-app-emulation/libvirt openvz
 
 # Mike Gilbert <floppym@gentoo.org> (2017-07-09)
 # Matthias Dahl <matthias.dahl@binary-island.eu> (2017-07-05)

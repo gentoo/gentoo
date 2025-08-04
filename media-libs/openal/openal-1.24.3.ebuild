@@ -32,7 +32,7 @@ IUSE="
 # find it anyway, but no :=.
 RDEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	gui? ( dev-qt/qtbase:6[gui,widgets] )
+	gui? ( >=dev-qt/qtbase-6.7:6[gui,widgets] )
 	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	pipewire? ( media-video/pipewire[${MULTILIB_USEDEP}] )
 	portaudio? ( media-libs/portaudio[${MULTILIB_USEDEP}] )

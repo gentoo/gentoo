@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,19 +25,25 @@ KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/nanomsg:=
+RDEPEND="
 	dev-libs/libgit2:=
-	dev-libs/libffi:="
+	dev-libs/libffi:=
+	dev-libs/nanomsg:=
+"
 DEPEND="${RDEPEND}
 	>=dev-libs/boxfort-0.1.4
 	test? (
 		$(python_gen_any_dep 'dev-util/cram[${PYTHON_USEDEP}]')
-	)"
-BDEPEND="dev-build/cmake
-	virtual/pkgconfig"
+	)
+"
+BDEPEND="
+	dev-build/cmake
+	virtual/pkgconfig
+"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4.1-includes.patch
+	"${FILESDIR}"/${P}-includes.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug 957504
 )
 
 python_check_deps() {
@@ -49,12 +55,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
-
 	rm -r dependencies/{debugbreak,klib} || die
 	mv "${WORKDIR}/debugbreak-${DEBUGBREAK_COMMIT}" dependencies/debugbreak || die
 	mv "${WORKDIR}/klib-${KLIB_COMMIT}" dependencies/klib || die
 	mv "${WORKDIR}/nanopb-${NANOPB_COMMIT}" subprojects/nanopb || die
+
+	default
 }
 
 src_configure() {

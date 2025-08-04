@@ -71,6 +71,7 @@ dev-libs/mongo-c-driver test
 dev-php/pecl-mongodb test
 dev-python/pymongo test-full
 net-analyzer/zmap mongo
+sci-libs/gdal mongodb
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-04-25)
 # No Level-Zero on musl

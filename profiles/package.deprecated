@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-07-29)
+# dev-python/flaky and dev-python/pytest-rerunfailurse have conflicting
+# pytest fixtures, with the latter providing a more powerful fixture
+# (and the former breaking packages requiring it).  If your package
+# uses `@pytest.mark.flaky`, use pytest-rerunfailures instead.
+# If it uses `@flaky.flaky`, send a patch upstream to switch
+# to `@pytest.mark.flaky`.
+dev-python/flaky
+
 # Michał Górny <mgorny@gentoo.org> (2025-06-28)
 # versioningit does not provide any support for building via GitHub
 # archives, and has rejected the efforts to provide an envvar override

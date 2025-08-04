@@ -11,7 +11,7 @@ SRC_URI="https://www.rhyolite.com/dcc/source/old/${P}.tar.Z"
 
 LICENSE="DCC GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="cgi ipv6 rrdtool milter"
 
 RDEPEND="

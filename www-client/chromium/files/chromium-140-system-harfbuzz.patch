@@ -1,0 +1,51 @@
+From 66f3a2ee8deb59f20d7a70fbefb0f7d0e1d50c1e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dominik=20R=C3=B6ttsches?= <drott@chromium.org>
+Date: Mon, 28 Jul 2025 02:35:01 -0700
+Subject: [PATCH] Speculative fix for build with system HarfBuzz
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Previous change in [1] confused a config with a component, pkg-config()
+calls create a config, then we create a component that advertises
+this config.
+
+[1] https://crrev.com/c/6651534
+
+Bug: chromium:434369151
+Change-Id: I8b802987aa90a8ada264f2cc5daca6bc5f8a9a4e
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6790291
+Reviewed-by: Rune Lillesveen <futhark@chromium.org>
+Commit-Queue: Dominik Röttsches <drott@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1492659}
+---
+ third_party/harfbuzz-ng/BUILD.gn | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/third_party/harfbuzz-ng/BUILD.gn b/third_party/harfbuzz-ng/BUILD.gn
+index 2c4f90f4f01b00..ef09902639a36c 100644
+--- a/third_party/harfbuzz-ng/BUILD.gn
++++ b/third_party/harfbuzz-ng/BUILD.gn
+@@ -11,13 +11,20 @@ import("//third_party/harfbuzz-ng/harfbuzz.gni")
+ 
+ if (use_system_harfbuzz) {
+   import("//build/config/linux/pkg_config.gni")
+-  pkg_config("harfbuzz-ng") {
+-    visibility = [ "//third_party/harfbuzz-ng" ]
++  pkg_config("harfbuzz_from_pkgconfig") {
++    visibility = [
++      "//third_party/freetype",
++      "//third_party/harfbuzz-ng",
++    ]
+     packages = [
+       "harfbuzz",
+       "harfbuzz-subset",
+     ]
+   }
++
++  component("harfbuzz-ng") {
++    public_configs = [ ":harfbuzz_from_pkgconfig" ]
++  }
+ } else {
+   config("harfbuzz_config") {
+     include_dirs = [ "src/src" ]

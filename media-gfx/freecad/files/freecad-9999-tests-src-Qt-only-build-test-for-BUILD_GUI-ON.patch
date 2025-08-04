@@ -1,20 +1,38 @@
+From 9e10e873affcadbad27b0b71a7a4bb9bb7644ba4 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Mon, 14 Jul 2025 15:18:26 +0200
+Subject: [PATCH] tests src Qt only build test for BUILD_GUI=ON
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/tests/src/Base/CMakeLists.txt b/tests/src/Base/CMakeLists.txt
+index 0bdc34ba5c..850772b5b3 100644
 --- a/tests/src/Base/CMakeLists.txt
 +++ b/tests/src/Base/CMakeLists.txt
-@@ -11,4 +11,6 @@ target_sources(
-             ${CMAKE_CURRENT_SOURCE_DIR}/tst_Tools.cpp
+@@ -30,7 +30,9 @@ add_executable(Base_tests_run
+         Writer.cpp
  )
  
--setup_qt_test(InventorBuilder)
 +if(BUILD_GUI)
-+    setup_qt_test(InventorBuilder)
+ setup_qt_test(InventorBuilder)
 +endif()
+ 
+ target_link_libraries(Base_tests_run PRIVATE
+     GTest::gtest_main
+diff --git a/tests/src/Gui/CMakeLists.txt b/tests/src/Gui/CMakeLists.txt
+index bf6b87d0fd..0b186fbf5c 100644
 --- a/tests/src/Gui/CMakeLists.txt
 +++ b/tests/src/Gui/CMakeLists.txt
-@@ -6,4 +6,6 @@ target_sources(
+@@ -8,7 +8,9 @@ add_executable(Gui_tests_run
  )
  
  # Qt tests
--setup_qt_test(QuantitySpinBox)
 +if(BUILD_GUI)
-+    setup_qt_test(QuantitySpinBox)
+ setup_qt_test(QuantitySpinBox)
 +endif()
+ 
+ 
+ target_link_libraries(Gui_tests_run PRIVATE
+-- 
+2.50.1
+

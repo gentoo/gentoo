@@ -60,7 +60,7 @@ BDEPEND="
 	fcitx5? ( sys-devel/gettext )
 "
 DEPEND="
-	>=dev-cpp/abseil-cpp-20250127.0:=
+	>=dev-cpp/abseil-cpp-20250512.0:=
 	>=dev-libs/protobuf-3.0.0:=
 	fcitx5? (
 		app-i18n/fcitx:5

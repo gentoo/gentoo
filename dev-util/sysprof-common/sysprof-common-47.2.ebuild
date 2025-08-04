@@ -7,7 +7,7 @@ GNOME_ORG_MODULE="sysprof"
 inherit gnome.org
 
 DESCRIPTION="Static library for sysprof capture data generation"
-HOMEPAGE="http://sysprof.com/"
+HOMEPAGE="https://www.sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="0"

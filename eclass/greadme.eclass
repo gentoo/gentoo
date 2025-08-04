@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: greadme.eclass
@@ -80,10 +80,6 @@ greadme_stdin() {
 	[[ $# -eq 0 ]] || die "${FUNCNAME[0]}: Bad parameters: $*"
 
 	if [[ -n ${append} ]]; then
-		if [[ ! -f ${_GREADME_TMP_FILE} ]]; then
-			die "Gentoo README does not exist when trying to append to it"
-		fi
-
 		cat >> "${_GREADME_TMP_FILE}" || die
 	else
 		cat > "${_GREADME_TMP_FILE}" || die

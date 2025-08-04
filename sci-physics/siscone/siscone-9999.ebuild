@@ -29,10 +29,6 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
-	econf --disable-static
-}
-
 src_install() {
 	default
 	if use examples; then

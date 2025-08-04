@@ -13,7 +13,7 @@ DESCRIPTION="Import mbox email archives from various sources into Akonadi"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE=""
 
 DEPEND="
@@ -31,3 +31,9 @@ DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	ecm_src_prepare
+	# Pending: https://invent.kde.org/pim/mbox-importer/-/merge_requests/16
+	ecm_punt_kf_module KIO
+}

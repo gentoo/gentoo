@@ -293,6 +293,14 @@ ppc		default/linux/ppc/23.0/systemd					stable
 ppc		default/linux/ppc/23.0/split-usr				stable
 ppc		default/linux/ppc/23.0/split-usr/desktop			stable
 ppc		default/linux/ppc/23.0/split-usr/desktop/gnome			stable
+ppc		default/linux/ppc/23.0/time64					exp
+ppc		default/linux/ppc/23.0/time64/desktop				exp
+ppc		default/linux/ppc/23.0/time64/desktop/gnome			exp
+ppc		default/linux/ppc/23.0/time64/desktop/gnome/systemd		exp
+ppc		default/linux/ppc/23.0/time64/systemd				exp
+ppc		default/linux/ppc/23.0/time64/split-usr				exp
+ppc		default/linux/ppc/23.0/time64/split-usr/desktop			exp
+ppc		default/linux/ppc/23.0/time64/split-usr/desktop/gnome		exp
 
 
 # PPC64 profiles
@@ -363,11 +371,14 @@ riscv		default/linux/riscv/23.0/rv32/split-usr/ilp32				exp
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
 s390		default/linux/s390/23.0						stable
-s390		default/linux/s390/23.0/systemd					dev
+s390		default/linux/s390/23.0/systemd					stable
 s390		default/linux/s390/23.0/split-usr				dev
 s390		default/linux/s390/23.0/split-usr/s390x				stable
 s390		default/linux/s390/23.0/s390x					stable
 s390		default/linux/s390/23.0/s390x/systemd				stable
+s390		default/linux/s390/23.0/time64					stable
+s390		default/linux/s390/23.0/time64/systemd				stable
+s390		default/linux/s390/23.0/time64/split-usr			dev
 
 
 # SPARC Profiles

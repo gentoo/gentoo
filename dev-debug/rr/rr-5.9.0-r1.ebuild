@@ -54,6 +54,7 @@ RESTRICT="test" # toolchain and kernel version dependent
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.0-no-force-lto.patch
 	"${FILESDIR}"/${PN}-5.9.0-zen-workaround-service.patch
+	"${FILESDIR}"/${PN}-5.9.0-glibc-2.42-termio.patch
 )
 
 pkg_setup() {

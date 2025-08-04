@@ -1,0 +1,70 @@
+https://bugs.gentoo.org/925307
+https://github.com/OSGeo/gdal/pull/12772
+https://github.com/OSGeo/gdal/commit/2f6793bb31ec69cf6d99714cbfec343784c499f6
+https://github.com/OSGeo/gdal/commit/6cc5573c0f7e7cb426f172aafb51d2d51217ec46
+
+From 2f6793bb31ec69cf6d99714cbfec343784c499f6 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 22 Jul 2025 00:42:15 +0300
+Subject: [PATCH 1/2] CMake: install missing completions
+
+gdal-bash-completion.sh has the completions, just the symlinks are
+missing.
+
+Bug: https://bugs.gentoo.org/925307
+See-Also: a20b3e7e290cb12b62031745d13990f303bec2e4
+--- a/scripts/install_bash_completions.cmake.in
++++ b/scripts/install_bash_completions.cmake.in
+@@ -29,6 +29,7 @@ set(PROGRAMS
+     gdalsrsinfo
+     gdaltindex
+     gdaltransform
++    gdal_footprint
+     gdal_translate
+     gdalwarp
+     ogr2ogr
+@@ -36,8 +37,10 @@ set(PROGRAMS
+     ogrlineref
+     ogrmerge.py
+     ogrtindex
++    ogr_layer_algebra.py
+     gdal_viewshed
+-    gdal_create)
++    gdal_create
++    sozip)
+ 
+ set(INSTALL_DIR "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/@BASH_COMPLETIONS_DIR@")
+ 
+
+From 6cc5573c0f7e7cb426f172aafb51d2d51217ec46 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Tue, 22 Jul 2025 00:44:16 +0300
+Subject: [PATCH 2/2] CMake: Don't install completion symlinks for scripts that
+ are no longer installed
+
+The completions themselves were already removed, only the symlinks
+persist.
+
+Bug: https://bugs.gentoo.org/925307
+See-Also: be12e900c1d78b591cbabd0f4ac53719cdbb32be
+See-Also: 2af3a35aca1d53a691f0d8d88f3ea55f2488ba41
+See-Also: ffccab1ee20b5151e9bd45f1a2c46245a74f1f56
+--- a/scripts/install_bash_completions.cmake.in
++++ b/scripts/install_bash_completions.cmake.in
+@@ -6,7 +6,6 @@ set(PROGRAMS
+     gdaladdo
+     gdalbuildvrt
+     gdal_calc.py
+-    gdalchksum.py
+     gdalcompare.py
+     gdal-config
+     gdal_contour
+@@ -15,8 +14,6 @@ set(PROGRAMS
+     gdalenhance
+     gdal_fillnodata.py
+     gdal_grid
+-    gdalident.py
+-    gdalimport.py
+     gdallocationinfo
+     gdalmanage
+     gdal_merge.py

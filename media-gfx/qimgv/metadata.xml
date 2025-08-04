@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">easymodo/qimgv</remote-id>
+	</upstream>
 	<use>
 		<flag name="opencv">Enable HQ scaling via <pkg>media-libs/opencv</pkg></flag>
 		<flag name="video">Add support for gif/webm playback via libmpv</flag>

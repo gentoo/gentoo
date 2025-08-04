@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 
 BDEPEND="sys-devel/gettext
 	doc? ( app-text/doxygen )"
+
+PATCHES=( "${FILESDIR}/${P}-miniupnpc-2.2.8.patch" ) # bug 934332, git master
 
 src_prepare() {
 	# preprocessed graphics are unpacked into wrong directory

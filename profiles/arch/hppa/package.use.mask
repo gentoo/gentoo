@@ -287,7 +287,7 @@ sys-libs/libcap tools
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # PyQt5 and wxpython are not keyworded.
 dev-python/ipython qt5 qt6
-dev-python/matplotlib qt5 qt6 wxwidgets
+dev-python/matplotlib qt6 wxwidgets
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-23)
 # gui-libs/gtk is not keyworded
@@ -319,10 +319,6 @@ sys-apps/groff uchardet
 # Joonas Niilola <juippis@gentoo.org> (2021-01-15)
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
-# media-sound/lash not keyworded, bug #736725
-media-sound/fluidsynth lash
 
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.

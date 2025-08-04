@@ -306,6 +306,8 @@ src_prepare() {
 		${CARGO} generate-lockfile --offline || die "Failed to generate lockfiles"
 	fi
 
+	# Commit patches to the appropriate branch in proj/rust-patches.git
+	# then cut a new tag / tarball. Don't add patches to ${FILESDIR}
 	PATCHES=(
 		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
 	)

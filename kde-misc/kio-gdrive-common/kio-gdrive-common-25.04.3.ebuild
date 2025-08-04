@@ -10,7 +10,7 @@ inherit ecm-common gear.kde.org
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RDEPEND="
 	!<kde-misc/kio-gdrive-23.08.5-r2:5

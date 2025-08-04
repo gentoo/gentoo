@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 ~x86"
 
 RDEPEND="
 	dev-python/charset-normalizer[${PYTHON_USEDEP}]
@@ -61,7 +61,7 @@ EPYTEST_IGNORE=(
 )
 
 EPYTEST_PLUGINS=()
-EPYTEST_TIMEOUT=1800
+: ${EPYTEST_TIMEOUT:=1800}
 EPYTEST_XDIST=1
 
 distutils_enable_tests pytest

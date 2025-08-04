@@ -1,0 +1,11 @@
+--- a/git-cliff-core/src/command.rs	2025-07-28 22:01:16.272316366 +0200
++++ b/git-cliff-core/src/command.rs	2025-07-28 22:01:42.532450325 +0200
+@@ -72,7 +72,7 @@
+             run("rev", Some(env!("CARGO_PKG_NAME").to_string()), vec![])?.trim()
+         );
+         assert_eq!("testing", run("echo 'testing'", None, vec![])?.trim());
+-        assert!(run("some_command", None, vec![]).is_err());
++        assert!(run("false", None, vec![]).is_err());
+         Ok(())
+     }
+ }

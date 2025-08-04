@@ -1,0 +1,14 @@
+Don't fail if there's a : in CFLAGS or LDFLAGS.
+--- a/Makefile
++++ b/Makefile
+@@ -63,8 +63,8 @@ make.fil: $(IFDEFNAME) makefile.in
+ 	echo >> tmp.sed "s:%MANDIR%:$(MANDIR):"
+ 	echo >> tmp.sed "s:%ELKSSRC%:$(ELKSSRC):"
+ 	echo >> tmp.sed "s:%CC%:$(CC):"
+-	echo >> tmp.sed "s:%CFLAGS%:$(CFLAGS):"
+-	echo >> tmp.sed "s:%LDFLAGS%:$(LDFLAGS):"
++	echo >> tmp.sed "s|%CFLAGS%|$(CFLAGS)|"
++	echo >> tmp.sed "s|%LDFLAGS%|$(LDFLAGS)|"
+ 	sed -f tmp.sed < tmp.mak > make.tmp
+ 	mv -f make.tmp make.fil
+ 	@rm -f tmp.mak tmp.sed

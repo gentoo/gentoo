@@ -1,0 +1,71 @@
+From 739cc559ac42f41f6ccbc7d556d730fd424f3be8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 30 Jul 2025 12:17:47 +0200
+Subject: [PATCH] Fix py312+ crash test skips to correctly check for assertions
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix the skips for `test_trace_events_multiple_greenlets_switching*`
+to correctly detect assertions being enabled independently of
+`--with-pydebug`.  Gentoo builds Python `--without-pydebug` but
+`--with-assertions`, in order to benefit from assertion-implied safety
+checks without the full cost of PyDEBUG.  For the purpose of detecting
+it, check for `-DNDEBUG` in optimization flags, as implied by disabling
+assertions.  Leave the existing code as a fallback for when build flags
+are unavailable, e.g. in Windows packages.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ src/greenlet/tests/test_tracing.py | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/src/greenlet/tests/test_tracing.py b/src/greenlet/tests/test_tracing.py
+index c044d4b6..235fbcd6 100644
+--- a/src/greenlet/tests/test_tracing.py
++++ b/src/greenlet/tests/test_tracing.py
+@@ -1,5 +1,6 @@
+ from __future__ import print_function
+ import sys
++import sysconfig
+ import greenlet
+ import unittest
+ 
+@@ -7,9 +8,16 @@
+ from . import PY312
+ 
+ # https://discuss.python.org/t/cpython-3-12-greenlet-and-tracing-profiling-how-to-not-crash-and-get-correct-results/33144/2
+-DEBUG_BUILD_PY312 = (
+-    PY312 and hasattr(sys, 'gettotalrefcount'),
+-    "Broken on debug builds of Python 3.12"
++# When build variables are available, OPT is the best way of detecting
++# the build with assertions enabled. Otherwise, fallback to detecting PyDEBUG
++# build.
++ASSERTION_BUILD_PY312 = (
++    PY312 and (
++        "-DNDEBUG" not in sysconfig.get_config_var("OPT").split()
++        if sysconfig.get_config_var("OPT") is not None
++        else hasattr(sys, 'gettotalrefcount')
++    ),
++    "Broken on assertion-enabled builds of Python 3.12"
+ )
+ 
+ class SomeError(Exception):
+@@ -198,7 +206,7 @@ def run(self):
+ 
+         self._check_trace_events_from_greenlet_sets_profiler(X(), tracer)
+ 
+-    @unittest.skipIf(*DEBUG_BUILD_PY312)
++    @unittest.skipIf(*ASSERTION_BUILD_PY312)
+     def test_trace_events_multiple_greenlets_switching(self):
+         tracer = PythonTracer()
+ 
+@@ -236,7 +244,7 @@ def g2_run():
+             ('c_call', '__exit__'),
+         ])
+ 
+-    @unittest.skipIf(*DEBUG_BUILD_PY312)
++    @unittest.skipIf(*ASSERTION_BUILD_PY312)
+     def test_trace_events_multiple_greenlets_switching_siblings(self):
+         # Like the first version, but get both greenlets running first
+         # as "siblings" and then establish the tracing.

@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"
 	"${FILESDIR}/${P}-reboot.patch"
+	"${FILESDIR}/${PN}-1.0.1-sed-colon-flags.patch"
 )
 
 src_prepare() {

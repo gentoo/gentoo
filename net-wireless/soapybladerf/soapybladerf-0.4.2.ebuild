@@ -12,7 +12,7 @@ if [ "${PV}" = "9999" ]; then
 	EGIT_REPO_URI="https://github.com/pothosware/SoapyBladeRF.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~riscv ~x86"
+	KEYWORDS="amd64 ~arm ~riscv ~x86"
 	SRC_URI="https://github.com/pothosware/SoapyBladeRF/archive/soapy-bladerf-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/SoapyBladeRF-soapy-bladerf-"${PV}"
 fi

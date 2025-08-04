@@ -15,7 +15,6 @@
 	</longdescription>
 	<use>
 		<flag name="extended-keys">Support for extended keys (arrows, home etc)</flag>
-		<flag name="gtk">Use gtk+ to determine mimetypes</flag>
 		<flag name="glib">Use <pkg>dev-libs/glib</pkg>:2 to determine mimetypes</flag>
 		<flag name="vim">Install the vifm vim plugin and vim-compatible documentation</flag>
 	</use>

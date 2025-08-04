@@ -23,7 +23,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	dev-cpp/eigen:3
@@ -33,11 +33,12 @@ BDEPEND="
 		<dev-cpp/catch-3:0
 		>=dev-cpp/catch-2.13.9:0
 		dev-libs/boost
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/tomlkit[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=()
+EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -75,9 +76,8 @@ python_compile() {
 python_test() {
 	cmake_build cpptest test_cmake_build
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	cd "${BUILD_DIR}/tests" || die
-	epytest -p rerunfailures --reruns=5 "${S}/tests"
+	epytest "${S}/tests"
 }
 
 python_install() {

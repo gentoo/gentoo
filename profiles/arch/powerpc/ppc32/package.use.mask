@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
+# dev-python/pyqt5, dev-python/pyqt6 are not stable.
+dev-python/matplotlib qt6 test
+net-print/hplip qt5
+
 # Hans de Graaff <graaff@gentoo.org> (2025-06-29)
 # Requires large parts of dev-ruby/rails to be keyworded.
 dev-ruby/globalid test

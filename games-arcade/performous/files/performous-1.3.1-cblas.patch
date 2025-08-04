@@ -1,0 +1,22 @@
+Use cblas implementation instead of restricting openblas
+--- a/cmake/Modules/FindAubio.cmake
++++ b/cmake/Modules/FindAubio.cmake
+@@ -4,17 +4,9 @@ include(LibFetchMacros)
+ set(Aubio_GIT_VERSION "master")
+ 
+ #set(BLA_VENDOR OpenBLAS)
+-set(BLA_PKGCONFIG_BLAS openblas)
++set(BLA_PKGCONFIG_BLAS cblas)
+ find_package(BLAS REQUIRED)
+ 
+-# also Accelerate.framework for mac
+-
+-if (NOT APPLE AND NOT BLAS_LIBRARIES MATCHES "openblas")
+-	message(FATAL_ERROR "BLAS vendor is not OpenBLAS. Found: ${BLAS_LIBRARIES}")
+-elseif (APPLE AND NOT BLAS_LIBRARIES MATCHES "Accelerate.framework")
+-	message(FATAL_ERROR "BLAS vendor is not Accelerate.framework. Found: ${BLAS_LIBRARIES}")
+-endif()
+-
+ if(SELF_BUILT_AUBIO STREQUAL "ALWAYS")
+ 	message(STATUS "aubio forced to build from source")
+ 	libfetch_git_pkg(Aubio

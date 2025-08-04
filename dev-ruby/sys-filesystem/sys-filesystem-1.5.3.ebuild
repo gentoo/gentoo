@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/djberg96/sys-filesystem"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 ruby_add_depend "test? ( dev-ruby/mkmf-lite )"
 

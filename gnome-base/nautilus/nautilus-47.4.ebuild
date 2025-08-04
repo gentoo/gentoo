@@ -11,7 +11,7 @@ HOMEPAGE="https://apps.gnome.org/Nautilus/"
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 IUSE="+cloudproviders doc gnome +gstreamer +introspection +previewer selinux"
 REQUIRED_USE="doc? ( introspection )"

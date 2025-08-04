@@ -1,0 +1,14 @@
+https://github.com/rakshasa/libtorrent/pull/539.patch
+configure fails with slibtool because it doesn't define GREP
+diff --git a/scripts/common.m4 b/scripts/common.m4
+index 480bdef..7129204 100644
+--- a/scripts/common.m4
++++ b/scripts/common.m4
+@@ -23,6 +23,7 @@ AC_DEFUN([TORRENT_WITH_SYSROOT], [
+ 
+ AC_DEFUN([TORRENT_REMOVE_UNWANTED],
+ [
++  AC_REQUIRE([AC_PROG_GREP])
+   values_to_check=`for i in $2; do echo $i; done`
+   unwanted_values=`for i in $3; do echo $i; done`
+   if test -z "${unwanted_values}"; then

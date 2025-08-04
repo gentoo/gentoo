@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/960239
+https://gitlab.com/duplicity/duplicity/-/commit/3bc1bb974c252ceb170b8e3edd8f791af30c719f
+
+From 3bc1bb974c252ceb170b8e3edd8f791af30c719f Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 27 Jun 2025 14:53:12 +0000
+Subject: [PATCH] fix:usr: fix TotalDestinationSizeChange with concurrency.
+
+With --concurrency n (n \> 1), duplicity always prints TotalDestinationSizeChange 0 (0 bytes).
+
+Fix it by returning bytes_written from collect_put_results(). Fixes #880.
+---
+ duplicity/dup_main.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/duplicity/dup_main.py b/duplicity/dup_main.py
+index b98dd7a4..b6f08984 100644
+--- a/duplicity/dup_main.py
++++ b/duplicity/dup_main.py
+@@ -376,7 +376,8 @@ def write_multivol(backup_type, tarblock_iter, man_outfp, sig_outfp, backend):
+         transfer_success = False
+         manifest_written = False
+ 
+-    def collect_put_results(bytes_written: int, backend_pooler, command2vol_map: Dict[int, CommandMetaData]):
++    def collect_put_results(backend_pooler, command2vol_map: Dict[int, CommandMetaData]):
++        bytes_written = 0
+         for result in backend_pooler.results_since_last_call():
+             track_id = result.track_id
+             size = result.result
+@@ -392,6 +393,7 @@ def write_multivol(backup_type, tarblock_iter, man_outfp, sig_outfp, backend):
+                 f"Transfer of {command2vol_map[track_id].path_obj.get_filename()} with id {track_id} and size "
+                 f"{size} took {result.get_runtime()}"
+             )
++        return bytes_written
+ 
+     def write_manifest_in_sequence(mf, mf_file, command2vol_map: Dict[int, CommandMetaData]):
+         """
+@@ -499,7 +501,7 @@ def write_multivol(backup_type, tarblock_iter, man_outfp, sig_outfp, backend):
+                 progress.report_transfer(0, tdp.getsize())
+                 track_id = backend_pooler.command_throttled(backend.put_validated.__name__, args=(tdp, dest_filename))
+                 command2vol_map[track_id] = CommandMetaData(vol_num, tdp, vi)
+-                collect_put_results(bytes_written, backend_pooler, command2vol_map)
++                bytes_written += collect_put_results(backend_pooler, command2vol_map)
+                 write_manifest_in_sequence(mf, man_outfp, command2vol_map)
+             except (Exception, SystemExit) as e:
+                 # ensure pool processes terminate clean
+@@ -529,7 +531,7 @@ def write_multivol(backup_type, tarblock_iter, man_outfp, sig_outfp, backend):
+             # wait for background commands, collect some stats and shutdown clean.
+             log.Debug("Collecting remaining results from backend pool.")
+             while True and backend_pooler:
+-                collect_put_results(bytes_written, backend_pooler, command2vol_map)
++                bytes_written += collect_put_results(backend_pooler, command2vol_map)
+                 write_manifest_in_sequence(mf, man_outfp, command2vol_map)
+                 if backend_pooler.get_queue_length() == 0:
+                     break
+-- 
+GitLab

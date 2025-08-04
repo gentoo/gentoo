@@ -4,7 +4,7 @@
 EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -27,7 +27,6 @@ SLOT="0"
 RDEPEND=">=sci-libs/htslib-1.21"
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		>=sci-biology/bcftools-1.21
 		>=sci-biology/samtools-1.21

@@ -7,7 +7,7 @@ MODULES_OPTIONAL_IUSE=+modules
 inherit desktop dot-a eapi9-pipestatus flag-o-matic linux-mod-r1
 inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
-MODULES_KERNEL_MAX=6.15
+MODULES_KERNEL_MAX=6.16
 NV_URI="https://download.nvidia.com/XFree86/"
 # x86-64 .run was missing from the usual mirror at bump time, while
 # aarch64's is missing from this one.. so fetch from different ones

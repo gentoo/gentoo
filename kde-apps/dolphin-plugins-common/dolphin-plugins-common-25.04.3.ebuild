@@ -8,7 +8,7 @@ inherit ecm-common gear.kde.org
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="
 	!<app-cdr/dolphin-plugins-mountiso-24.07.90-r1

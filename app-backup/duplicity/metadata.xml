@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>rich0@gentoo.org</email>
-		<name>Rich Freeman</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>
 	</use>

@@ -21,6 +21,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 
 IUSE="test test-helpers"
 
 RDEPEND="
+	test? (
+		dev-cpp/gtest:=[${MULTILIB_USEDEP}]
+	)
 	test-helpers? (
 		dev-cpp/gtest:=[${MULTILIB_USEDEP}]
 	)
@@ -38,7 +41,6 @@ RESTRICT="!test? ( test )"
 PATCHES=(
 	"${FILESDIR}/${PN}-20230802.0-sdata-tests.patch"
 	"${FILESDIR}/${PN}-20240722.0-lto-odr.patch"
-	"${FILESDIR}/${PN}-20240722.0-ciso646-cxx17.patch"
 	"${DISTDIR}/${PN}-20250127.0-PR1834.patch"
 )
 

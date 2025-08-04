@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-07-31)
+# mongodb not keyworded here
+sci-libs/gdal mongodb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-26)
 # kde-apps/kamoso not keyworded yet, bug #946343
 >=kde-apps/kdemultimedia-meta-25.04.2-r1 gstreamer

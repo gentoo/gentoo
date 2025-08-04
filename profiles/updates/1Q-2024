@@ -19,7 +19,6 @@ move dev-util/valgrind dev-debug/valgrind
 move dev-util/meson-format-array dev-build/meson-format-array
 move dev-util/meson dev-build/meson
 move dev-util/cmake-fedora dev-build/cmake-fedora
-move dev-util/ignition-cmake dev-build/ignition-cmake
 move dev-util/rocm-cmake dev-build/rocm-cmake
 move dev-util/tinycmmc dev-build/tinycmmc
 move dev-util/cmake dev-build/cmake

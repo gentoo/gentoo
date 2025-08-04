@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=scikit-build-core
 PYPI_PN=RapidFuzz
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -28,11 +28,9 @@ DEPEND="
 "
 BDEPEND="
 	>=dev-python/cython-3[${PYTHON_USEDEP}]
-	test? (
-		dev-python/hypothesis[${PYTHON_USEDEP}]
-	)
 "
 
+EPYTEST_PLUGINS=( hypothesis )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -51,9 +49,4 @@ src_prepare() {
 	distutils-r1_src_prepare
 
 	export RAPIDFUZZ_BUILD_EXTENSION=1
-}
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest
 }

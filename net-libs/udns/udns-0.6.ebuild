@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="amd64 arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="ipv6 +tools"
 
+RDEPEND="tools? ( !mail-filter/rblcheck )"
+
 src_configure() {
 	# Uses non-standard configure script, econf doesn't work
 	CC="$(tc-getCC)" RANLIB="$(tc-getRANLIB)" edo ./configure $(use_enable ipv6)

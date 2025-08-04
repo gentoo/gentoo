@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit check-reqs cmake flag-o-matic llvm.org llvm-utils python-any-r1
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
@@ -57,6 +57,7 @@ LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
 LLVM_TEST_COMPONENTS=(
 	llvm/include/llvm/ProfileData llvm/lib/Testing/Support third-party
 )
+LLVM_PATCHSET=${PV}-r1
 llvm.org_set_globals
 
 python_check_deps() {

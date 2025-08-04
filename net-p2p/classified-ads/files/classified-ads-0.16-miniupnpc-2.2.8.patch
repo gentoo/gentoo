@@ -1,0 +1,47 @@
+https://github.com/operatornormal/classified-ads/commit/bfc61b0d41933f832451c288e3a36f87338afdc4
+
+From bfc61b0d41933f832451c288e3a36f87338afdc4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Antti=20J=C3=A4rvinen?= <antti.jarvinen@katiska.org>
+Date: Wed, 8 Jan 2025 21:23:22 +0200
+Subject: [PATCH] Support for miniupnpc 2.2.8 see
+ https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1076686 thanks for  Yangfl
+
+---
+ net/networklistener.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/net/networklistener.cpp b/net/networklistener.cpp
+index 24eaa4c..42de839 100644
+--- a/net/networklistener.cpp
++++ b/net/networklistener.cpp
+@@ -1,7 +1,7 @@
+ /*     -*-C++-*- -*-coding: utf-8-unix;-*-
+-    Classified Ads is Copyright (c) Antti Järvinen 2013.
++    Classified Ads is Copyright (c) Antti Järvinen 2013-2025.
+ 
+-   This file is part of Classified Ads.
++    This file is part of Classified Ads.
+ 
+     Classified Ads is free software; you can redistribute it and/or
+     modify it under the terms of the GNU Lesser General Public
+@@ -9,7 +9,7 @@
+     version 2.1 of the License, or (at your option) any later version.
+ 
+     Classified Ads is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+     Lesser General Public License for more details.
+ 
+@@ -291,7 +291,11 @@ void NetworkListener::figureOutLocalAddresses() {
+                 char lan_address[64];
+                 struct UPNPUrls upnp_urls;
+                 struct IGDdatas upnp_data;
++#if (MINIUPNPC_API_VERSION >= 18)
++                int status = UPNP_GetValidIGD(upnp_dev, &upnp_urls, &upnp_data, lan_address, sizeof(lan_address), NULL, 0);
++#else
+                 int status = UPNP_GetValidIGD(upnp_dev, &upnp_urls, &upnp_data, lan_address, sizeof(lan_address));
++#endif
+                 // look up possible "status" values, the number "1" indicates a valid IGD was found
+                 QLOG_STR("UPNP_GetValidIGD = " + QString::number(status)) ;
+                 if ( status > 0 ) {

@@ -1,0 +1,5 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="s390-ibm-linux-gnut64"
+CHOST_s390="${CHOST}"

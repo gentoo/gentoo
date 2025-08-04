@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-07-31)
+# mongodb not keyworded here
+sci-libs/gdal mongodb
+
 # Alfredo Tupone <tupone@gentoo.org> (2025-07-02)
 # sci-ml/pytorch is not keyworded here
 sci-ml/huggingface_hub test

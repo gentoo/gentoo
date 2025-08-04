@@ -22,7 +22,6 @@
 		<flag name="ableton-link">Enable support for Ableton Link</flag>
 		<flag name="vim">Enable the SCVIM user interface</flag>
 		<flag name="emacs">Enable the SCEL user interface</flag>
-		<flag name="gedit">Enable the SCED user interface</flag>
 		<flag name="gpl3">Build GPL-3 licensed code (recommended)</flag>
 		<flag name="server">Build with internal server</flag>
 		<flag name="webengine">Enable the internal help system using <pkg>dev-qt/qtwebengine</pkg></flag>

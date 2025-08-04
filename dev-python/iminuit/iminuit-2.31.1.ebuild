@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=scikit-build-core
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake distutils-r1 virtualx pypi
 
@@ -37,7 +37,17 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
+
+EPYTEST_DESELECT=(
+	# precision error
+	tests/test_cost.py::test_Template_with_model_2D
+
+	# TODO
+	tests/test_describe.py::test_with_pydantic_types
+)
 
 src_prepare() {
 	distutils-r1_src_prepare
@@ -50,18 +60,4 @@ src_prepare() {
 
 src_test() {
 	virtx distutils-r1_src_test
-}
-
-python_test() {
-	local EPYTEST_DESELECT=(
-		# precision error
-		tests/test_cost.py::test_Template_with_model_2D
-
-		# TODO
-		tests/test_describe.py::test_with_pydantic_types
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	# nonfatal implied by virtx
-	nonfatal epytest || die "Tests failed with ${EPYTHON}"
 }

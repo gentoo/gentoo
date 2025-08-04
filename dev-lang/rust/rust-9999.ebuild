@@ -10,7 +10,7 @@ RUST_PATCH_VER=${PVR}
 
 RUST_MAX_VER=${PV%%_*}
 if [[ ${PV} == *9999* ]]; then
-	RUST_MIN_VER="1.88.0" # Update this as new `beta` releases come out.
+	RUST_MIN_VER="1.89.0" # Update this as new `beta` releases come out.
 elif [[ ${PV} == *beta* ]]; then
 	RUST_MAX_VER="$(ver_cut 1).$(ver_cut 2).0"
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
@@ -320,6 +320,8 @@ src_prepare() {
 		${CARGO} generate-lockfile --offline || die "Failed to generate lockfiles"
 	fi
 
+	# Commit patches to the appropriate branch in proj/rust-patches.git
+	# then cut a new tag / tarball. Don't add patches to ${FILESDIR}
 	PATCHES=(
 		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
 	)
@@ -458,6 +460,7 @@ src_configure() {
 		cargo = "${rust_stage0_root}/bin/cargo"
 		rustc = "${rust_stage0_root}/bin/rustc"
 		rustfmt = "${rust_stage0_root}/bin/rustfmt"
+		description = "gentoo"
 		docs = $(toml_usex doc)
 		compiler-docs = false
 		submodules = false
@@ -495,7 +498,6 @@ src_configure() {
 			echo "default-linker = \"${CHOST}-cc\""
 		fi)
 		channel = "${build_channel}"
-		description = "gentoo"
 		rpath = true
 		verbose-tests = true
 		optimize-tests = $(toml_usex !debug)

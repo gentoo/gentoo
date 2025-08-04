@@ -35,16 +35,20 @@ distutils_enable_sphinx docs \
 distutils_enable_tests unittest
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/python-greenlet/greenlet/pull/457
+		"${FILESDIR}/${P}-py312-assert.patch"
+		# https://github.com/python-greenlet/greenlet/pull/461
+		"${FILESDIR}/${P}-skip-leak-tests.patch"
+	)
+
 	distutils-r1_src_prepare
 
 	# patch cflag manipulations out
 	sed -i -e 's:global_compile_args[.]append.*:pass:' setup.py || die
-	# broken assertions on py3.12+
-	# https://github.com/python-greenlet/greenlet/issues/368
-	sed -e 's:test_trace_events_multiple_greenlets_switching:_&: ' \
-		-i src/greenlet/tests/test_tracing.py || die
 }
 
 python_test() {
+	local -x GREENLET_SKIP_LEAKCHECKS=1
 	eunittest greenlet.tests
 }

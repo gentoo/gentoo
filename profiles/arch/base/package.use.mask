@@ -231,9 +231,6 @@ app-laptop/pbbuttonsd macbook
 # www-servers/nginx requires keywording
 www-servers/nginx nginx_modules_http_security
 
-# media-libs/libxmp requires keywording
-media-sound/qmmp xmp
-
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Need intel-hybrid-codec-driver, which only works on amd64
 media-libs/libva-intel-driver hybrid

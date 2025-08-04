@@ -15,7 +15,7 @@
   </maintainer>
 
   <upstream>
-    <remote-id type="github">wbhart/flint2</remote-id>
+    <remote-id type="github">flintlib/flint</remote-id>
   </upstream>
   <use>
     <flag name="ntl">Build NTL interface</flag>

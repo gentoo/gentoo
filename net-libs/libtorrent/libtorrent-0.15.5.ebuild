@@ -33,6 +33,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.14.0-tests-address.patch
 	"${FILESDIR}"/${PN}-0.15.3-unbundle_udns.patch
+	# https://github.com/rakshasa/libtorrent/pull/539.patch
+	"${FILESDIR}"/${PN}-0.15.5-find_grep.patch
 )
 
 src_prepare() {

@@ -44,7 +44,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	xdg_pkg_postrm
+	xdg_pkg_postinst
 
 	if has_version media-video/pipewire; then
 		ewarn "On pipewire systems scrcpy might not start due to a problem with libsdl2."

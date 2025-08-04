@@ -23,6 +23,12 @@ QA_FLAGS_IGNORED="
 	usr/lib/vdr/plugins/libvdr-.*
 	usr/lib64/vdr/plugins/libvdr-.*"
 
+src_prepare() {
+	# do not call g++ directly
+	sed -e 's|= g++|= $(CXX)|' -i Makefile || die
+	vdr-plugin-2_src_prepare
+}
+
 src_install() {
 	vdr-plugin-2_src_install
 

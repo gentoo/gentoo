@@ -223,6 +223,7 @@ src_install() {
 	cd "${S}"
 	dodoc CHANGES-* ChangeLog INSTALL Installation PROBLEMS README*
 
+	domenu "${S}"/etc/${PN}.desktop
 	newicon "${S}"/etc/${PN}-icon.xpm ${PN}.xpm
 }
 

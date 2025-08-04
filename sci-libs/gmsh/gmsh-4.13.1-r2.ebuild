@@ -53,7 +53,7 @@ RDEPEND="
 		sci-libs/hdf5:=[mpi=]
 	)
 	metis? ( >=sci-libs/metis-5.2.0 )
-	mpi? ( virtual/mpi[cxx] )
+	mpi? ( virtual/mpi )
 	mumps? ( sci-libs/mumps[mpi=] )
 	opencascade? ( sci-libs/opencascade:* )
 	pdf? ( app-text/poppler:= )

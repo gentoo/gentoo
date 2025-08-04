@@ -160,9 +160,6 @@ src_prepare() {
 			-i dlls/{ntdll,winevulkan}/Makefile.in || die
 	fi
 
-	# similarly to staging, append to `wine --version` for identification
-	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
-
 	# proton variant also needs specfiles and vulkan
 	tools/make_specfiles || die # perl
 	dlls/winevulkan/make_vulkan -X video.xml -x vk.xml || die # python

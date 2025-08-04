@@ -101,6 +101,9 @@ src_configure() {
 	# least solve it the ebuild see https://bugs.gentoo.org/959349
 	use x86 && filter-flags -mfpmath=sse
 
+	# Temporary workaround for build failures with gcc-15, see bug 951267
+	append-cflags -std=gnu17
+
 	# Hardcodes the path to FGREP in libgcrypt-config
 	export ac_cv_path_SED="sed"
 	export ac_cv_path_EGREP="grep -E"

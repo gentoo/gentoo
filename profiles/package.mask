@@ -36,6 +36,77 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
+# KF5 -> KF6 transitional package with no more revdeps since 25.04.
+# Removal on 2025-08-15.
+kde-apps/ffmpegthumbs-common
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-30)
+# Current package is 7 years old and upstream repository only gets the
+# occasional commit. Package is stuck with EAPI-7, Qt5, no Python 3.13
+# support. Bug #952654. Removal on 2025-08-29.
+sci-chemistry/molequeue
+
+# Hans de Graaff <graaff@gentoo.org> (2025-07-30)
+# Obsolete slot that is ruby33-only. Use the newer slot instead. Removal
+# on 2025-08-30.
+dev-ruby/tzinfo:1
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-28)
+# Unmaintained, out of date, last upstream release in 2018, last
+# packaged release 2015. Broken with modern system interfaces for
+# some time. Entire OpenVZ ecosystem is vaporware these days,
+# openvz-sources was last-rited in 2017 already.
+# Removal on 2025-08-27.  Bug #580516, #868252.
+sys-cluster/vzctl
+app-backup/vzdump
+app-misc/vzstats
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
+# Current package is 4 years old and outdated compared to upstream, needs
+# a real maintainer: still EAPI-7, Qt5-based with unclear upstream status.
+# Many bugs: #955642, #957424, #957402, #903803, #841740
+# Removal on 2025-08-27.
+dev-debug/edb-debugger
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
+# Current package is 4 years old and outdated compared to upstream.
+# Still Qt5-based with unclear upstream status. Needs real care.
+# Many bugs: #953380, #701988, #683464, #590002, #565034, #579396
+# Removal on 2025-08-27.
+app-office/texmacs
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
+# Last release in 2015, last commit more than 2 years ago, still Qt5-based,
+# EAPI-7, no signs of work towards Qt6 upstream. Bug #960817
+# Removal on 2025-08-27.
+media-video/baka-mplayer
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
+# Dead for many years, Qt5-based, EAPI-7. Anyone interested in its features
+# should look into qmp3gain instead (bug #949077) but it also needs porting
+# to Qt6. Removal on 2025-08-27.
+media-sound/qtgain
+
+# Hans de Graaff <graaff@gentoo.org> (2025-07-28)
+# Obsolete slots of cucumber components. These slots are no longer used
+# by dev-util/cucumber. Removal on 2025-08-28.
+dev-util/cucumber-gherkin:23
+dev-util/cucumber-gherkin:25
+dev-util/cucumber-messages:19
+dev-util/cucumber-messages:24
+
+# Bernard Cafarelli <voyageur@gentoo.org> (2025-07-27)
+# Current version in tree only supports python <=3.11
+# Needs major version bump, relevant dependencies, and tests fixes
+# Removal on 2025-08-26. Bug #952156.
+dev-python/aiocache
+dev-python/arsenic
+dev-python/browser-cookie3
+dev-python/tld
+dev-python/yaswfp
+net-analyzer/wapiti
+
 # Michał Górny <mgorny@gentoo.org> (2025-07-26)
 # Another pytest plugin causing random breakage.  Discontinued upstream,
 # last revdep stopped using it.
@@ -114,19 +185,6 @@ virtual/perl-Term-ReadLine
 virtual/perl-Unicode-Collate
 virtual/perl-Unicode-Normalize
 
-# Joonas Niilola <juippis@gentoo.org> (2025-07-01)
-# Python-3.13 enabled version of Spidermonkey. The test phase crashes
-# with 3.13 so I'm not fully convinced there won't be runtime issues
-# with rdeps (gjs, libpeas) but try it out and report back in
-# bug #952299.
-=dev-lang/spidermonkey-128.12.0-r1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-29)
-# KF5-based package, unmaintained upstream, see also:
-# https://mail.kde.org/pipermail/release-team/2025-June/013683.html
-# Removal on 2025-07-29.
-kde-apps/cervisia
-
 # Michał Górny <mgorny@gentoo.org> (2025-06-29)
 # File collision against gnome-base/gnome-keyring[pam], which is
 # required via pambase.  Masked until the maintainer determines a good
@@ -138,83 +196,15 @@ kde-apps/cervisia
 # no longer be used on this architecture.
 =net-proxy/mitmproxy-9.0.1
 
-# Jay Faulkner <jayf@gentoo.org> (2025-06-26)
-# Discontinued by upstream in Sept 2023, running on a likely vulnerable
-# electron version. Bug #959128.
-net-irc/irccloud-desktop-bin
-
-# David Seifert <soap@gentoo.org> (2025-06-25)
-# Skype has been shut down on 2025-05-05, use the Teams progressive web
-# application with your Skype username as alternative.
-# Removal on 2025-07-25.  Bug #942322.
-net-im/skypeforlinux
-sec-policy/selinux-skype
-x11-plugins/pidgin-skypeweb
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-25)
-# New problematic test dependencies.  No reverse dependencies.
-# Removal on 2025-07-25.  Bug #958987.
-dev-python/caldav
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-21)
-# Last commit in 2019.  Has an entry point conflict with
-# dev-python/pytest-tornasync.  No reverse dependencies left.
-# Removal on 2025-07-21.  Bug #958601.
-dev-python/pytest-tornado
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-21)
-# No commits for two years.  Broken with Python 3.14
-# and with >=dev-python/pytest-asyncio-1.0.0.  No reverse dependencies.
-# Removal on 2025-07-21.  Bug #958592.
-dev-python/backoff
-
 # Sam James <sam@gentoo.org> (2025-06-12)
 # Breaks several applications (bug #957943)
 >=dev-python/pygobject-3.52
 >=net-im/gajim-2.3.0
 
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Dead upstream, fails to compile with gcc 15 and cmake 4.
-# Removal on 2025-07-12. Bugs #957271, #944255
-games-arcade/tuxanci
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Dead upstream, doesn't build with gcc 15, we're the only ones packaging it.
-# Removal on 2025-07-12. Bugs #944434, #943845, #906249, #680698.
-app-shells/esh
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Unmaintained upstream since 2008, doesn't build. x86-only.
-# Removal on 2025-07-12. Bugs #77471, #926465, #941191, #948965.
-games-fps/tenebrae
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Dead upstream, fails to compile.
-# Removal on 2025-07-12. Bugs #919185, #882585, #871018, #913572
-net-analyzer/cryptcat
-
-# Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-06-09)
-# Deprecated and no longer maintained upstream. Open security
-# issues. Use media-gfx/fig2dev instead.
-# Removal on 2025-07-12. Bug #917279.
-media-gfx/transfig
-
 # Sam James <sam@gentoo.ogr> (2025-06-08)
 # Masked for testing (bug #957583).
 =sys-devel/gettext-0.25*
 =dev-libs/libintl-0.25*
-
-# Michał Górny <mgorny@gentoo.org> (2025-06-07)
-# Broken and dangerous.  Archived in 2022.  The last reverse dependency
-# stopped using it in 2023 (except for outdated ebuilds).
-# Removal on 2025-07-07.  Bug #957272, #806474.
-dev-python/pytest-tempdir
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-06-07)
-# EAPI=7, maintainer-needed, fails to compile, upstream gone, not
-# packaged anywhere else.
-# Removal on 2025-07-07.  Bug #957444.
-dev-util/bin_replace_string
 
 # Michał Górny <mgorny@gentoo.org> (2025-06-07)
 # Destabilized due to unresolved test failures.  If you need this
@@ -235,38 +225,9 @@ dev-util/bin_replace_string
 # >  Unable to locally verify the issuer's authority.
 =app-misc/ca-certificates-20250419.3.112
 
-# Michael Orlitzky <mjo@gentoo.org> (2025-05-28)
-# I added this for SageMath, but in hindsight do not think anyone is
-# using it. It has code issues and upstream is not terribly interested
-# in fixing it. (They are active and helpful, just not in love with this
-# particular codebase.) Bug 940232. Removal after 30 days.
-dev-gap/cohomolo
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-27)
-# sci-electronics/gazebo depends on x11-libs/qwt:6[qt5] and Qt5, lots of
-# open bugs. Most packages perpetually stuck at EAPI-7 and several major
-# version bumps out of date. Bugs #937608, #947390; removal on 2025-06-26.
-sci-electronics/gazebo
-dev-libs/sdformat
-net-libs/ignition-msgs
-net-libs/ignition-transport
-sci-libs/ignition-common
-sci-libs/ignition-fuel-tools
-sci-libs/ignition-math
-dev-build/ignition-cmake
-dev-libs/console_bridge
-dev-libs/urdfdom
-dev-libs/urdfdom_headers
-
 # Sam James <sam@gentoo.org> (2025-05-26)
 # Breaks some reverse dependencies and is abandoned upstream (bug #956630).
 =dev-cpp/glog-0.7.1
-
-# Nowa Ammerlaan <nowa@gentoo.org> (2025-05-25)
-# Archived upstream and no longer builds with modern compilers.
-# Bugs #956601, #930253
-# Removal on 2025-06-24
-media-libs/oneVPL-cpu
 
 # Sam James <sam@gentoo.org> (2025-05-23)
 # Severe memory leak (bug #953874)
@@ -279,13 +240,6 @@ media-libs/oneVPL-cpu
 # Ulrich Müller <ulm@gentoo.org> (2025-05-18)
 # Pretest versions, masked for testing.
 <app-editors/emacs-30.1.9999:30-vcs
-
-# David Seifert <soap@gentoo.org> (2025-05-17)
-# Historically split from dev-libs/icu, disabled by default upstream and not
-# recommended anymore. If need be, we can make it optional in icu itself.
-# Removal on 2025-06-16. Bug #956106.
-dev-libs/icu-layoutex
-dev-libs/icu-le-hb
 
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
 # Masked for testing

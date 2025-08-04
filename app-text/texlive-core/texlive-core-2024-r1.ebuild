@@ -133,7 +133,7 @@ SRC_URI+=" )"
 S="${WORKDIR}/${MY_P}"
 LICENSE="BSD CC-BY-SA-4.0 GPL-1+ GPL-2 GPL-2+ GPL-3+ MIT TeX-other-free"
 SLOT="0"
-KEYWORDS="amd64 ~loong ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="cjk X doc source tk +luajittex xetex xindy"
 
 TEXMF_PATH=/usr/share/texmf-dist

@@ -19,7 +19,7 @@ IUSE="cet debuginfod doc gprofng hardened multitarget +nls pgo +plugins static-l
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
 
-PATCH_VER=1
+PATCH_VER=4
 PATCH_DEV=dilfridge
 
 if [[ ${PV} == 9999 ]]; then
@@ -134,6 +134,12 @@ src_prepare() {
 
 	if [[ -n ${PATCH_VER} ]] || [[ ${PV} == *9999 ]] ; then
 		if ! use vanilla; then
+			# We backported a patch in 2.44 but it needed a few
+			# followups. Better to just handle it in 2.45 instead.
+			rm "${WORKDIR}/patch/0007-strip-Add-GCC-LTO-IR-support.patch" \
+				"${WORKDIR}/patch/0008-ld-testsuite-Use-plug_opt-for-plugin-option.patch" \
+				"${WORKDIR}/patch/0009-binutils-Don-t-complain-plugin-with-all-LTO-sections.patch" || die
+
 			einfo "Applying binutils patchset ${patchsetname}"
 			eapply "${WORKDIR}/patch"
 			einfo "Done."
