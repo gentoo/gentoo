@@ -564,6 +564,48 @@ test_strip_nolto() {
 	tend ${ret} "strip -d ignored an archive when it shouldn't"
 }
 
+test_strip_cross() {
+	# Make sure that strip doesn't break binaries for another architecture
+	# and instead bails out (bug #960493, https://sourceware.org/PR33230).
+	local machine=$($(tc-getCC) -dumpmachine)
+	# Just assume we're on x86_64-pc-linux-gnu and have a
+	# aarch64-unknown-linux-gnu toolchain available for testing.
+	if [[ ${machine} != x86_64-pc-linux-gnu ]] || ! type -P aarch64-unknown-linux-gnu-gcc &> /dev/null ; then
+		# TODO: Iterate over cross toolchains available?
+		return
+	fi
+	# The test only makes sense with binutils[-multitarget], otherwise
+	# binutils will iterate over all available targets and just pick one
+	# rather than not-figuring-it-out and setting EM_NONE.
+	if $(tc-getSTRIP) |& grep -q aarch ; then
+		return
+	fi
+
+	tbegin "whether strip breaks binaries for a foreign architecture"
+	ret=0
+	(
+		rm foo.a foo.a.bak 2>/dev/null
+		_create_test_progs
+
+		aarch64-unknown-linux-gnu-gcc a.c -o a.o -c -ggdb3 || return 1
+		cp a.o a.o.bak || return 1
+		# We want this to error out with binutils[-multitarget]
+		# and we skip the test earlier on if binutils[multitarget].
+		$(tc-getSTRIP) -p a.o &>/dev/null || return 0
+
+		if file a.o |& grep "no machine" ; then
+			return 1
+		fi
+
+		# They should not differ because it's unsafe to touch
+		# for a foreign architecture.
+		cmp -s a.a a.a.bak || return 1
+
+		return 0
+	) || ret=1
+	tend ${ret} ""
+}
+
 _repeat_tests_with_compilers() {
 	# Call test_lto_guarantee_fat and test_strip_lto_bytecode with
 	# various compilers and linkers.
@@ -623,4 +665,5 @@ test_search_recursion
 test_strip_lto
 test_strip_lto_mixed
 test_strip_nolto
+test_strip_cross
 texit
