@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.gnome.org/Builder/ https://gitlab.gnome.org/GNOME/gnome-b
 # FIXME: Review licenses at some point
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="clang doc +d-spy flatpak +git gtk-doc spell +sysprof test +webkit"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
