@@ -15,18 +15,19 @@ SRC_URI="https://github.com/linuxmint/cinnamon/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="BSD GPL-2+ GPL-3+ GPL-3-with-openssl-exception LGPL-2+ LGPL-2.1 LGPL-2.1+ MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
-IUSE="+eds +gstreamer gtk-doc internal-polkit +nls +networkmanager wayland"
+IUSE="+eds +gstreamer gtk-doc +nls +networkmanager wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
 	>=app-accessibility/at-spi2-core-2.46.0:2
+	>=app-crypt/gcr-3.7.5:0/1
 	>=dev-libs/glib-2.52.0:2[dbus]
 	>=dev-libs/gobject-introspection-1.29.15:=
 	dev-libs/libxml2:2=
-	>=gnome-extra/cinnamon-desktop-6.2:0=
-	>=gnome-extra/cinnamon-menus-6.2
-	>=gnome-extra/cjs-6.2[cairo]
+	>=gnome-extra/cinnamon-desktop-6.4:0=
+	>=gnome-extra/cinnamon-menus-6.4
+	>=gnome-extra/cjs-6.4[cairo(+)]
 	sys-apps/dbus
 	>=sys-auth/polkit-0.100[introspection]
 	virtual/opengl
@@ -37,8 +38,8 @@ DEPEND="
 	x11-libs/libX11
 	>=x11-libs/libXfixes-5.0
 	x11-libs/pango[introspection]
-	>=x11-libs/xapp-2.8.4[introspection]
-	>=x11-wm/muffin-6.2[introspection,wayland?]
+	>=x11-libs/xapp-2.8.8[introspection]
+	>=x11-wm/muffin-6.4[introspection,wayland?]
 
 	eds? (
 		gnome-extra/evolution-data-server
@@ -48,7 +49,8 @@ DEPEND="
 		media-libs/gstreamer:1.0
 	)
 	networkmanager? (
-		net-misc/networkmanager[introspection]
+		>=app-crypt/libsecret-0.18
+		>=net-misc/networkmanager-1.10.4[introspection]
 	)
 "
 # caribou used by onscreen keyboard
@@ -77,11 +79,11 @@ RDEPEND="
 	>=gnome-base/dconf-0.4.1
 	>=gnome-base/gsettings-desktop-schemas-2.91.91
 	>=gnome-base/libgnomekbd-2.91.4
-	>=gnome-extra/cinnamon-control-center-6.2[networkmanager=,wayland?]
-	>=gnome-extra/cinnamon-screensaver-6.2
-	>=gnome-extra/cinnamon-session-6.2
-	>=gnome-extra/cinnamon-settings-daemon-6.2[wayland?]
-	>=gnome-extra/nemo-6.2[wayland?]
+	>=gnome-extra/cinnamon-control-center-6.4[networkmanager=,wayland?]
+	>=gnome-extra/cinnamon-screensaver-6.4
+	>=gnome-extra/cinnamon-session-6.4
+	>=gnome-extra/cinnamon-settings-daemon-6.4[wayland?]
+	>=gnome-extra/nemo-6.4[wayland?]
 	media-libs/gsound
 	net-libs/libsoup:3.0[introspection]
 	net-misc/wget
@@ -96,14 +98,12 @@ RDEPEND="
 	x11-themes/adwaita-icon-theme
 	x11-themes/gnome-themes-standard
 
-	!internal-polkit? (
-		gnome-extra/polkit-gnome
-	)
 	nls? (
-		>=gnome-extra/cinnamon-translations-6.2
+		>=gnome-extra/cinnamon-translations-6.4
 	)
 "
 BDEPEND="
+	dev-lang/sassc
 	>=dev-util/intltool-0.40
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
@@ -120,32 +120,12 @@ PATCHES=(
 	# https://github.com/linuxmint/Cinnamon/issues/3576
 	"${FILESDIR}/${PN}-3.6.6-wheel-sudo.patch"
 
-	# Make wayland optional
-	# https://github.com/linuxmint/cinnamon/pull/12273
-	"${FILESDIR}/${PN}-6.2.0-optional-wayland.patch"
-
-	# Fix path for settings panels on arm64
-	# https://github.com/linuxmint/cinnamon/pull/12278
-	"${FILESDIR}/${PN}-6.2.0-fix-arm64-settings-panel-path.patch"
-
-	# Remove reference to non-existant gtk-doc file
-	# https://github.com/linuxmint/cinnamon/commit/1e43299b9ad548c9395edfd456cbba017ca02b9f
-	"${FILESDIR}/${PN}-6.2.0-remove-gtk-doc-recorder.patch"
+	# Use sassc instead of pysassc
+	# https://github.com/linuxmint/cinnamon/pull/12588
+	"${FILESDIR}/${PN}-6.4.0-use-sassc.patch"
 )
 
 src_prepare() {
-	if use internal-polkit; then
-		PATCHES+=(
-			# Use internal polkit agent on X11
-			# https://github.com/linuxmint/cinnamon/pull/12272
-			"${FILESDIR}/${PN}-6.2.0-polkit-agent-on-x11.patch"
-		)
-	else
-		# Add polkit agent to required components
-		# https://github.com/linuxmint/Cinnamon/issues/3579
-		sed -i "s/'REQUIRED', '/&polkit-cinnamon-authentication-agent-1;/" meson.build || die
-	fi
-
 	default
 
 	# shebang fixing craziness
@@ -177,13 +157,6 @@ src_install() {
 
 	# Doesn't exist by default
 	keepdir /etc/xdg/menus/applications-merged
-
-	if ! use internal-polkit; then
-		# Ensure authentication-agent is started, bug #523958
-		# https://github.com/linuxmint/Cinnamon/issues/3579
-		insinto /etc/xdg/autostart/
-		doins "${FILESDIR}"/polkit-cinnamon-authentication-agent-1.desktop
-	fi
 }
 
 pkg_postinst() {
