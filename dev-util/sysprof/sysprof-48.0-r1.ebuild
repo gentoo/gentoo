@@ -16,6 +16,7 @@ IUSE="gtk systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-libs/elfutils
 	>=dev-libs/glib-2.76.0:2
 	gtk? (
 		>=gui-libs/gtk-4.15:4
