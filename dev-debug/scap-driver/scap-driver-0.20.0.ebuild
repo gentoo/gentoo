@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake linux-mod-r1
 
 DESCRIPTION="Kernel module for dev-debug/sysdig"
-HOMEPAGE="https://sysdig.com/"
+HOMEPAGE="https://www.sysdig.com/"
 SRC_URI="https://github.com/falcosecurity/libs/archive/${PV}.tar.gz -> falcosecurity-libs-${PV}.tar.gz"
 S="${WORKDIR}/libs-${PV}"
 
