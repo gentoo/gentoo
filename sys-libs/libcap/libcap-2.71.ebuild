@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal toolchain-funcs pam
+inherit dot-a multilib-minimal toolchain-funcs pam
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -59,6 +59,7 @@ run_emake() {
 }
 
 src_configure() {
+	use static-libs && lto-guarantee-fat
 	tc-export_build_env BUILD_CC
 	multilib-minimal_src_configure
 }
@@ -75,7 +76,9 @@ multilib_src_install() {
 	# no configure, needs explicit install line #444724#c3
 	run_emake DESTDIR="${D}" install
 
-	if ! use static-libs ; then
+	if use static-libs ; then
+		strip-lto-bytecode
+	else
 		rm "${ED}"/usr/$(get_libdir)/lib{cap,psx}.a || die
 	fi
 
