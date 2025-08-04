@@ -42,10 +42,6 @@ RDEPEND="
 	dev-lang/python-exec[python_targets_pypy${PYVER/./_}(-)]
 	dev-libs/openssl:0=
 	dev-python/gentoo-common
-	ensurepip? (
-		dev-python/ensurepip-pip
-		dev-python/ensurepip-setuptools
-	)
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
@@ -59,6 +55,13 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+"
+
+PDEPEND="
+	ensurepip? (
+		dev-python/ensurepip-pip
+		dev-python/ensurepip-setuptools
+	)
 "
 
 src_prepare() {
