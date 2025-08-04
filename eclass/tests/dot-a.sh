@@ -428,7 +428,7 @@ test_strip_lto() {
 		$(tc-getCC) a.c -o a.o -c -flto -ggdb3 || return 1
 		$(tc-getAR) q foo.a a.o 2>/dev/null || return 1
 		cp foo.a foo.a.bak || return 1
-		$(tc-getSTRIP) -d foo.a || return 1
+		$(tc-getSTRIP) -p -d foo.a || return 1
 
 		# They should NOT differ after stripping because it
 		# can't be safely stripped without special arguments.
@@ -447,7 +447,7 @@ test_strip_lto() {
 		$(tc-getCC) a.c -o a.o -c -flto -ffat-lto-objects -ggdb3 || return 1
 		$(tc-getAR) q foo.a a.o 2>/dev/null || return 1
 		cp foo.a foo.a.bak || return 1
-		$(tc-getSTRIP) -d foo.a || return 1
+		$(tc-getSTRIP) -p -d foo.a || return 1
 
 		# They should NOT differ after stripping because it
 		# can't be safely stripped without special arguments.
@@ -525,7 +525,7 @@ test_strip_nolto() {
 		$(tc-getCC) a.c -o a.o -c -ggdb3 || return 1
 		$(tc-getAR) q foo.a a.o 2>/dev/null || return 1
 		cp foo.a foo.a.bak || return 1
-		$(tc-getSTRIP) -d foo.a || return 1
+		$(tc-getSTRIP) -p -d foo.a || return 1
 
 		# They should differ after stripping.
 		cmp -s foo.a foo.a.bak && return 1
@@ -549,7 +549,7 @@ test_strip_nolto() {
 		$(tc-getCC) a.c -o a.o -c -ggdb3 || return 1
 		$(tc-getAR) q foo.a a.o 2>/dev/null || return 1
 		cp foo.a foo.a.bak || return 1
-		$(tc-getSTRIP) -d foo.a || return 1
+		$(tc-getSTRIP) -p -d foo.a || return 1
 
 		# They should differ after stripping.
 		cmp -s foo.a foo.a.bak && return 1
