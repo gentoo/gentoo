@@ -334,7 +334,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.1-opencl-parallel-gmake-fix.patch
+	"${FILESDIR}"/ffmpeg-6.1-opencl-parallel-gmake-fix.patch
 )
 
 pkg_pretend() {
