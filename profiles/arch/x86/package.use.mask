@@ -372,10 +372,6 @@ x11-apps/igt-gpu-tools -overlay
 # freeipmi is supported on x86
 app-admin/conserver -freeipmi
 
-# Mikle Kolyada <zlogene@gentoo.org> (2019-03-03)
-# No Spice protocol for x86
-app-emulation/nemu spice
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-php/pecl-mongodb test
