@@ -9,8 +9,7 @@ inherit dot-a toolchain-funcs
 
 DESCRIPTION="Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols"
 HOMEPAGE="
-	http://www.laurentconstantin.com/en/netw/netwib/
-	http://ntwib.sourceforge.net/
+	https://ntwib.sourceforge.net/
 "
 SRC_URI="
 	https://downloads.sourceforge.net/ntwib/${P}-src.tgz
