@@ -44,6 +44,8 @@ src_configure() {
 	filter-lto
 
 	local mycmakeargs=(
+		# ignores FEATURES=ccache handling
+		-DGINKGO_WITH_CCACHE=OFF
 		-DGINKGO_DEVEL_TOOLS=OFF
 		-DGINKGO_BUILD_TESTS=OFF
 		-DGINKGO_BUILD_BENCHMARKS=OFF
