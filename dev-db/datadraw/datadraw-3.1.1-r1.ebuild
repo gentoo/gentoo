@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo toolchain-funcs
+inherit dot-a edo toolchain-funcs
 
 DESCRIPTION="feature rich database generator for high performance C applications"
 HOMEPAGE="http://datadraw.sourceforge.net/"
@@ -23,6 +23,7 @@ PATCHES=(
 
 src_configure() {
 	tc-export AR CC
+	lto-guarantee-fat
 	edo ./configure --prefix="${EPREFIX}/usr"
 }
 
@@ -35,6 +36,8 @@ src_install() {
 	done
 
 	doheader util/*.h
+
+	strip-lto-bytecode
 
 	HTML_DOCS=( www/index.html www/images )
 	einstalldocs
