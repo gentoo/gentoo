@@ -388,10 +388,6 @@ net-analyzer/zmap mongo
 # Unmask arch-specific USE flag available on x86
 net-analyzer/testssl -bundled-openssl
 
-# Rick Farina <zerochaos@gentoo.org> (2018-06-27)
-# Catalyst has support for assembling bootloader on this arch
-dev-util/catalyst -system-bootloader
-
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
 # Expose SVGA backend for x86 users
 app-emulation/fuse -backend-svga
