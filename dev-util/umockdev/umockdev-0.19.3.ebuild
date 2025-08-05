@@ -31,7 +31,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		${PYTHON_DEPS}
-		dev-libs/libgudev:=[${MULTILIB_USEDEP}]
+		dev-libs/libgudev:=[introspection,${MULTILIB_USEDEP}]
 	)
 "
 BDEPEND="
