@@ -4,7 +4,7 @@
 EAPI=8
 
 MY_PV="v${PV}"
-inherit autotools systemd
+inherit autotools dot-a systemd
 
 DESCRIPTION="A lightweight secured SOCKS5 proxy for embedded devices and low end boxes"
 HOMEPAGE="https://github.com/shadowsocks/shadowsocks-libev"
@@ -47,6 +47,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local myconf="
 		$(use_enable debug assert)
 		--enable-system-shared-lib
@@ -57,6 +59,7 @@ src_configure() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	find "${D}" -name '*.la' -type f -delete || die
 
