@@ -35,10 +35,10 @@ src_unpack() {
 
 src_compile() {
 	[[ ${PV} != 9999 ]] && export GH_VERSION="v${PV}"
-	emake prefix=/usr bin/gh manpages completions
+	emake prefix="${EPREFIX}/usr" bin/gh manpages completions
 }
 
 src_install() {
-	emake prefix=/usr DESTDIR="${D}" install
+	emake prefix="${EPREFIX}/usr" DESTDIR="${D}" install
 	dodoc README.md
 }
