@@ -1,0 +1,120 @@
+Non-_Ctx functions been deprecated for some time and
+>=nvidia-cuda-toolkit-13.0.0 removes the old functions.
+
+Just a quick fix (written by me), not familiar with npp but should
+work. Given we don't support old NPP that lacked _Ctx in Gentoo,
+there should be no need to keep the old calls in this quick fix.
+
+Signed-off-by: Ionen Wolkens <ionen@gentoo.org>
+--- a/libavfilter/vf_scale_npp.c
++++ b/libavfilter/vf_scale_npp.c
+@@ -710,11 +710,13 @@
+     AVHWFramesContext *in_frames_ctx = (AVHWFramesContext*)in->hw_frames_ctx->data;
+     NppStatus err;
++    NppStreamContext nppStreamCtx;
++    nppStreamCtx.hStream = NULL; // default stream
+ 
+     switch (in_frames_ctx->sw_format) {
+     case AV_PIX_FMT_NV12:
+-        err = nppiYCbCr420_8u_P2P3R(in->data[0], in->linesize[0],
++        err = nppiYCbCr420_8u_P2P3R_Ctx(in->data[0], in->linesize[0],
+                                     in->data[1], in->linesize[1],
+                                     out->data, out->linesize,
+-                                    (NppiSize){ in->width, in->height });
++                                    (NppiSize){ in->width, in->height }, nppStreamCtx);
+         break;
+     default:
+@@ -734,4 +736,6 @@
+     NPPScaleContext *s = ctx->priv;
+     NppStatus err;
++    NppStreamContext nppStreamCtx;
++    nppStreamCtx.hStream = NULL; // default stream
+     int i;
+ 
+@@ -742,10 +746,10 @@
+         int oh = stage->planes_out[i].height;
+ 
+-        err = nppiResizeSqrPixel_8u_C1R(in->data[i], (NppiSize){ iw, ih },
++        err = nppiResizeSqrPixel_8u_C1R_Ctx(in->data[i], (NppiSize){ iw, ih },
+                                         in->linesize[i], (NppiRect){ 0, 0, iw, ih },
+                                         out->data[i], out->linesize[i],
+                                         (NppiRect){ 0, 0, ow, oh },
+                                         (double)ow / iw, (double)oh / ih,
+-                                        0.0, 0.0, s->interp_algo);
++                                        0.0, 0.0, s->interp_algo, nppStreamCtx);
+         if (err != NPP_SUCCESS) {
+             av_log(ctx, AV_LOG_ERROR, "NPP resize error: %d\n", err);
+@@ -762,12 +766,14 @@
+     AVHWFramesContext *out_frames_ctx = (AVHWFramesContext*)out->hw_frames_ctx->data;
+     NppStatus err;
++    NppStreamContext nppStreamCtx;
++    nppStreamCtx.hStream = NULL; // default stream
+ 
+     switch (out_frames_ctx->sw_format) {
+     case AV_PIX_FMT_NV12:
+-        err = nppiYCbCr420_8u_P3P2R((const uint8_t**)in->data,
++        err = nppiYCbCr420_8u_P3P2R_Ctx((const uint8_t**)in->data,
+                                     in->linesize,
+                                     out->data[0], out->linesize[0],
+                                     out->data[1], out->linesize[1],
+-                                    (NppiSize){ in->width, in->height });
++                                    (NppiSize){ in->width, in->height }, nppStreamCtx);
+         break;
+     default:
+--- a/libavfilter/vf_sharpen_npp.c
++++ b/libavfilter/vf_sharpen_npp.c
+@@ -159,4 +159,6 @@
+     AVHWFramesContext* in_ctx = (AVHWFramesContext*)inl->hw_frames_ctx->data;
+     NPPSharpenContext* s = ctx->priv;
++    NppStreamContext nppStreamCtx;
++    nppStreamCtx.hStream = NULL; // default stream
+ 
+     const AVPixFmtDescriptor *desc = av_pix_fmt_desc_get(in_ctx->sw_format);
+@@ -166,7 +168,7 @@
+         int oh = AV_CEIL_RSHIFT(in->height, (i == 1 || i == 2) ? desc->log2_chroma_h : 0);
+ 
+-        NppStatus err = nppiFilterSharpenBorder_8u_C1R(
++        NppStatus err = nppiFilterSharpenBorder_8u_C1R_Ctx(
+             in->data[i], in->linesize[i], (NppiSize){ow, oh}, (NppiPoint){0, 0},
+-            out->data[i], out->linesize[i], (NppiSize){ow, oh}, s->border_type);
++            out->data[i], out->linesize[i], (NppiSize){ow, oh}, s->border_type, nppStreamCtx);
+         if (err != NPP_SUCCESS) {
+             av_log(ctx, AV_LOG_ERROR, "NPP sharpen error: %d\n", err);
+--- a/libavfilter/vf_transpose_npp.c
++++ b/libavfilter/vf_transpose_npp.c
+@@ -295,4 +295,6 @@
+     NPPTransposeContext *s = ctx->priv;
+     NppStatus err;
++    NppStreamContext nppStreamCtx;
++    nppStreamCtx.hStream = NULL; // default stream
+     int i;
+ 
+@@ -310,9 +312,9 @@
+         int shifth = (s->dir == NPP_TRANSPOSE_CCLOCK || s->dir == NPP_TRANSPOSE_CLOCK_FLIP) ? oh - 1 : 0;
+ 
+-        err = nppiRotate_8u_C1R(in->data[i], (NppiSize){ iw, ih },
++        err = nppiRotate_8u_C1R_Ctx(in->data[i], (NppiSize){ iw, ih },
+                                 in->linesize[i], (NppiRect){ 0, 0, iw, ih },
+                                 out->data[i], out->linesize[i],
+                                 (NppiRect){ 0, 0, ow, oh },
+-                                angle, shiftw, shifth, NPPI_INTER_NN);
++                                angle, shiftw, shifth, NPPI_INTER_NN, nppStreamCtx);
+         if (err != NPP_SUCCESS) {
+             av_log(ctx, AV_LOG_ERROR, "NPP rotate error: %d\n", err);
+@@ -328,4 +330,6 @@
+ {
+     NppStatus err;
++    NppStreamContext nppStreamCtx;
++    nppStreamCtx.hStream = NULL; // default stream
+     int i;
+ 
+@@ -334,7 +338,7 @@
+         int ih = stage->planes_in[i].height;
+ 
+-        err = nppiTranspose_8u_C1R(in->data[i], in->linesize[i],
++        err = nppiTranspose_8u_C1R_Ctx(in->data[i], in->linesize[i],
+                                    out->data[i], out->linesize[i],
+-                                   (NppiSize){ iw, ih });
++                                   (NppiSize){ iw, ih }, nppStreamCtx);
+         if (err != NPP_SUCCESS) {
+             av_log(ctx, AV_LOG_ERROR, "NPP transpose error: %d\n", err);

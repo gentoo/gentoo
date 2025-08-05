@@ -331,6 +331,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${WORKDIR}"/patches
+	"${FILESDIR}"/${PN}-7.1.1-npp13.patch
 )
 
 pkg_pretend() {
