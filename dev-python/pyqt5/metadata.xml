@@ -20,7 +20,6 @@
 		<flag name="sql">Build bindings for the QtSql module</flag>
 		<flag name="svg">Build bindings for the QtSvg module</flag>
 		<flag name="testlib">Build bindings for the QtTest module</flag>
-		<flag name="webchannel">Build bindings for the QtWebChannel module</flag>
 		<flag name="websockets">Build bindings for the QtWebSockets module</flag>
 		<flag name="widgets">Build bindings for the QtWidgets module</flag>
 		<flag name="x11extras">Build bindings for the QtX11Extras module</flag>
