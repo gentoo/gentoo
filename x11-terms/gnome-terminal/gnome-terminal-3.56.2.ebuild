@@ -14,12 +14,12 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="debug gnome-shell nautilus"
+IUSE="X debug gnome-shell nautilus wayland"
 
 # FIXME: automagic dependency on gtk+[X], just transitive but needs proper control, bug 624960
 RDEPEND="
 	>=dev-libs/glib-2.52:2
-	>=x11-libs/gtk+-3.22.27:3
+	>=x11-libs/gtk+-3.22.27:3[X?,wayland?]
 	>=gui-libs/libhandy-1.6.0:1
 	>=x11-libs/vte-0.80.0:2.91
 	>=dev-libs/libpcre2-10
@@ -53,6 +53,9 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	# Upstream don't support LTO & error out on it in meson.build (bug #926156)
 	filter-lto
 
