@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Compiler-compiler tool for aspect-oriented programming"
 HOMEPAGE="https://www.gnu.org/software/dotgnu/"
@@ -20,6 +20,11 @@ PATCHES=(
 	"${FILESDIR}/${P}-proto.patch"
 )
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_compile() {
 	emake AR="$(tc-getAR)"
 
@@ -34,6 +39,7 @@ src_compile() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	if use examples; then
 		docinto examples
