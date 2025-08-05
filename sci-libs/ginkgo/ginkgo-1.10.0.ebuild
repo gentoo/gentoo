@@ -40,6 +40,8 @@ src_configure() {
 	# https://github.com/ginkgo-project/ginkgo/issues/1657
 	#
 	# Do not trust it with LTO either.
+	#
+	# Fixed after 1.10.0, remove on next version bump.
 	append-flags -fno-strict-aliasing
 	filter-lto
 
