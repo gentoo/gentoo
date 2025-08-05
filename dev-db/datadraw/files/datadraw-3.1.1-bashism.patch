@@ -1,0 +1,26 @@
+From 9063dba4201216e8cc7b8f8d5100abbb83e0dc6f Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Mon, 4 Aug 2025 21:34:28 -0400
+Subject: [PATCH] fix horrible bashism
+
+Thou shalt never use == in shell scripts, even in bash.
+---
+ util/configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/configure b/util/configure
+index 357a9ae..e60e3aa 100755
+--- a/util/configure
++++ b/util/configure
+@@ -124,7 +124,7 @@ makeMakefileBottom () {
+ " >> Makefile
+     done
+ 
+-    if [ "$SUFFIX" == "$NONDBG_SUFFIX" ]; then
++    if [ "$SUFFIX" = "$NONDBG_SUFFIX" ]; then
+         echo "utdatabase$SUFFIX.c utdatabase$SUFFIX.h: DatadrawUtil.dd
+ 	datadraw $DATADRAW_FLAGS -s utdatabase$SUFFIX.c -h utdatabase$SUFFIX.h DatadrawUtil.dd
+ 
+-- 
+2.49.1
+
