@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings generator for C/C++ libraries"
@@ -32,3 +32,7 @@ distutils_enable_sphinx docs \
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-python314-test.patch
+)
