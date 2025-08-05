@@ -8,7 +8,8 @@ inherit cmake flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="https://www.rawtherapee.com/"
-SRC_URI="https://github.com/Beep6581/RawTherapee/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/Beep6581/RawTherapee/releases/download/${PV}/${P}.tar.xz
+	https://raw.githubusercontent.com/digitalcarp/RawTherapee/refs/heads/meyer-5.12/patch/0001-Fix-static-init-order-fiasco-crashes.patch"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3"
@@ -46,7 +47,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/rawtherapee-5.12-Fix-static-init-order-fiasco-crashes.patch" )
+PATCHES=( "${DISTDIR}/0001-Fix-static-init-order-fiasco-crashes.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
