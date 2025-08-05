@@ -93,3 +93,9 @@ src_configure() {
 
 	gnome2_src_configure "${myconf[@]}"
 }
+
+src_install() {
+	gnome2_src_install
+	insinto /usr/share/xdg-desktop-portal
+	doins "${FILESDIR}/${PN}-portals.conf"
+}
