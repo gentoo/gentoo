@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+
+USE_RUBY="ruby32 ruby33 ruby34"
 
 # Avoid the complexity of the "rake" recipe and run testrb-2 manually.
 RUBY_FAKEGEM_RECIPE_TEST=none
@@ -22,6 +23,12 @@ KEYWORDS="~amd64"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
+
+all_ruby_prepare() {
+	# Account for differences in Ruby 3.4 output of warnings.
+	sed -e '/expect/ s/test.logger/.*test.logger.?/' \
+		-i test/test_support.rb || die
+}
 
 each_ruby_test() {
 	ruby-ng_testrb-2 --pattern='test.*\.rb' test/
