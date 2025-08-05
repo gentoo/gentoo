@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Portable ISO C library for polynomial basis arithmetic"
 HOMEPAGE="https://www.libtom.net/"
@@ -27,10 +27,13 @@ src_prepare() {
 		-e "/^LIBPATH/s:/lib:/$(get_libdir):" \
 		makefile || die "Fixing makefile failed"
 	tc-export AR CC
+	lto-guarantee-fat
 }
 
 src_install() {
 	default
+	strip-lto-bytecode
+
 	dodoc changes.txt pb.pdf
 	docinto demo
 	dodoc demo/demo.c
