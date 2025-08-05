@@ -380,10 +380,6 @@ app-emulation/nemu spice
 # Requires dev-db/mongodb which has dropped x86 support
 dev-php/pecl-mongodb test
 
-# Alexys Jacob <ultrabug@gentoo.org> (2018-11-05)
-# Requires dev-db/mongodb which has dropped x86 support
-net-analyzer/zmap mongo
-
 # Michael Palimaka <kensington@gentoo.org> (2018-10-12)
 # Unmask arch-specific USE flag available on x86
 net-analyzer/testssl -bundled-openssl
