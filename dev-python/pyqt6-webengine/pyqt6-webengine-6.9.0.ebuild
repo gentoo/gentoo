@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 QT_PV=$(ver_cut 1-2):6
