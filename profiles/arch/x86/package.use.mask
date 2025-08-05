@@ -90,7 +90,6 @@ games-emulation/rmg -dynarec
 # We only want to support spirv-llvm-translator >= 17 on x86, which is a
 # dependency of mesa.
 >=media-libs/mesa-24.1 llvm_slot_15 llvm_slot_16
->=dev-util/intel_clc-24.1 llvm_slot_16
 
 # Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
 # The opcache extension fails to build on hardened x86, but only
