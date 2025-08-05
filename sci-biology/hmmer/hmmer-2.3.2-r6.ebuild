@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit flag-o-matic toolchain-funcs
+inherit dot-a flag-o-matic toolchain-funcs
 
 DESCRIPTION="Sequence analysis using profile hidden Markov models"
 HOMEPAGE="http://hmmer.org/"
@@ -26,6 +26,8 @@ PATCHES=(
 src_configure() {
 	# required to expose pthread_setconcurrency(), #882279
 	append-cppflags -D_XOPEN_SOURCE=500
+
+	lto-guarantee-fat
 
 	# prevent stray environmental variable
 	# from causing issues in the test phase
@@ -52,6 +54,8 @@ src_install() {
 	dolib.a squid/libsquid.a
 	insinto /usr/include/hmmer2
 	doins squid/*.h
+
+	strip-lto-bytecode
 
 	dodoc NOTES Userguide.pdf
 	newdoc 00README README
