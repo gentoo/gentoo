@@ -22,6 +22,8 @@ RDEPEND="app-containers/cri-tools
 	selinux? ( sec-policy/selinux-kubernetes )"
 BDEPEND=">=dev-lang/go-1.23.3"
 
+QA_PRESTRIPPED=usr/bin/kubeadm
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" FORCE_HOST_GO=yes \
 		emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}

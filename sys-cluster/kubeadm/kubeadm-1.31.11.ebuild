@@ -20,6 +20,8 @@ RDEPEND="app-containers/cri-tools
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
 
+QA_PRESTRIPPED=usr/bin/kubeadm
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" FORCE_HOST_GO=yes \
 		emake -j1 GOFLAGS=-v GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
