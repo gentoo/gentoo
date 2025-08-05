@@ -26,10 +26,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-disable_automagic_dependencies.patch
-)
-
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -52,6 +48,7 @@ src_configure() {
 		-DGINKGO_BUILD_TESTS=OFF
 		-DGINKGO_BUILD_BENCHMARKS=OFF
 		-DGINKGO_BUILD_REFERENCE=ON
+		-DGINKGO_BUILD_EXAMPLES=OFF
 		-DGINKGO_BUILD_CUDA=$(usex cuda)
 		-DGINKGO_BUILD_HWLOC=$(usex hwloc)
 		-DGINKGO_BUILD_OMP=$(usex openmp)
