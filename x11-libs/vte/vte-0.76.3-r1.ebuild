@@ -7,32 +7,39 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic gnome.org meson python-any-r1 vala xdg
 
 DESCRIPTION="Library providing a virtual terminal emulator widget"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/vte"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/vte/"
 
+# Upstream is hostile and refuses to upload tarballs.
+SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
+SRC_URI="${SRC_URI}
+	!vanilla? (
+		https://dev.gentoo.org/~pacho/${PN}/${P}-command-notify.patch.xz
+		https://dev.gentoo.org/~pacho/${PN}/${P}-a11y-implement-GtkAccessibleText.patch.xz )
+"
 # Once SIXEL support ships (0.66 or later), might need xterm license (but code might be considered upgraded to LGPL-3+)
 LICENSE="LGPL-3+ GPL-3+"
 
 SLOT="2.91"      # vte_api_version in meson.build
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
+IUSE="X +crypt debug gtk-doc +icu +introspection systemd +vala vanilla wayland"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
 	vala? ( introspection )
 "
 
 DEPEND="
-	>=x11-libs/gtk+-3.24.22:3[introspection?]
+	>=x11-libs/gtk+-3.24.22:3[X?,introspection?,wayland?]
 	>=x11-libs/cairo-1.0
 	>=dev-libs/fribidi-1.0.0
 	>=dev-libs/glib-2.72:2
 	crypt?  ( >=net-libs/gnutls-3.2.7:0= )
 	icu? ( dev-libs/icu:= )
-	>=x11-libs/pango-1.22.0
+	>=x11-libs/pango-1.22.0[introspection?]
+
 	>=dev-libs/libpcre2-10.21:=
 	systemd? ( >=sys-apps/systemd-220:= )
 	>=app-arch/lz4-1.9
 	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
-	x11-libs/pango[introspection?]
 "
 RDEPEND="${DEPEND}
 	~gui-libs/vte-common-${PV}[systemd?]
@@ -47,12 +54,23 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=( "${FILESDIR}/${PN}-0.76.3-stdint.patch" )
+
 src_prepare() {
 	default
 	use vala && vala_setup
 	xdg_environment_reset
 
 	use elibc_musl && eapply "${FILESDIR}"/${PN}-0.66.2-musl-W_EXITCODE.patch
+
+	if ! use vanilla; then
+		# From https://src.fedoraproject.org/rpms/vte291/raw/f40/f/0001-add-notification-and-shell-precmd-preexec.patch
+		# Adds OSC 777 support for desktop notifications in gnome-terminal or elsewhere
+		eapply "${WORKDIR}"/${P}-command-notify.patch
+		# From https://src.fedoraproject.org/rpms/vte291/raw/f40/f/0001-a11y-implement-GtkAccessibleText.patch
+		# Migrate to GTK4 and add VteTerminal:enable-a11y feature flag
+		eapply "${WORKDIR}"/${P}-a11y-implement-GtkAccessibleText.patch
+	fi
 
 	# -Ddebug option enables various debug support via VTE_DEBUG, but also ggdb3; strip the latter
 	sed -e '/ggdb3/d' -i meson.build || die
@@ -62,6 +80,9 @@ src_prepare() {
 src_configure() {
 	# Upstream don't support LTO & error out on it in meson.build
 	filter-lto
+
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
 
 	local emesonargs=(
 		-Da11y=true
