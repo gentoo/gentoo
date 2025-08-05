@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo unpacker toolchain-funcs
+inherit dot-a edo unpacker toolchain-funcs
 
 DESCRIPTION="OCR (Optical Character Recognition) program"
 HOMEPAGE="https://www.gnu.org/software/ocrad/ocrad.html"
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="$(unpacker_src_uri_depends)"
 
 src_configure() {
+	lto-guarantee-fat
 	# ./configure is not based on autotools
 	edo ./configure \
 		CPPFLAGS="${CPPFLAGS}" \
@@ -35,6 +36,7 @@ src_compile() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	doman doc/${PN}.1
 	doinfo doc/${PN}.info
