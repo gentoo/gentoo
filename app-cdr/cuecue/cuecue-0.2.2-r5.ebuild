@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools toolchain-funcs
+inherit autotools dot-a toolchain-funcs
 
 DESCRIPTION="Cuecue converts .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -43,6 +43,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	econf \
 		$(use_enable flac) \
 		$(use_enable mp3) \
@@ -58,6 +59,7 @@ src_compile() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	insinto /usr/include
 	doins src/libcuecue/cuecue.h
