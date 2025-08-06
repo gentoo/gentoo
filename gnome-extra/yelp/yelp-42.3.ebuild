@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnome.org gnome2-utils meson xdg
+inherit flag-o-matic gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Help browser for GNOME"
 HOMEPAGE="https://apps.gnome.org/Yelp/"
@@ -10,10 +10,11 @@ HOMEPAGE="https://apps.gnome.org/Yelp/"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="X"
 
 RDEPEND="
 	>=dev-libs/glib-2.67.4:2
-	>=x11-libs/gtk+-3.13.3:3
+	>=x11-libs/gtk+-3.13.3:3[X?]
 	>=gui-libs/libhandy-1.5.0:1
 	>=dev-libs/libxml2-2.6.5:2=
 	>=dev-libs/libxslt-1.1.4
@@ -31,6 +32,8 @@ BDEPEND="
 "
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Dlzma=enabled
 		-Dbzip2=enabled
