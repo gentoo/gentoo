@@ -3,16 +3,14 @@
 
 EAPI=8
 
+SEC_KEYS_VALIDPGPKEYS=(
+	'BD27B07A5EF45C2ADAF70E0484818A6819AF4A9B:eli-schwartz:github'
+	'EF51D308B1CE230888BE0D84EA423E93A16343F1:eli-schwartz2:manual'
+)
+
+inherit sec-keys
+
 DESCRIPTION="OpenPGP keys used by Eli Schwartz"
 HOMEPAGE="https://github.com/eli-schwartz"
-SRC_URI="https://github.com/eli-schwartz.gpg -> eli-schwartz-${PV}.gpg"
-S="${WORKDIR}"
 
-LICENSE="public-domain"
-SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-
-src_install() {
-	insinto /usr/share/openpgp-keys
-	newins "${DISTDIR}"/eli-schwartz-${PV}.gpg eschwartz.gpg
-}
