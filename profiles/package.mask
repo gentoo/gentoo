@@ -254,13 +254,6 @@ virtual/perl-Unicode-Normalize
 =dev-python/lmdb-1.5.1
 
 # Sam James <sam@gentoo.org> (2025-06-03)
-# Major changes to packaging as bindings are split out by upstream.
->=app-crypt/gpgme-2
->=dev-cpp/gpgmepp-2
->=dev-libs/qgpgme-2
->dev-python/gpgmepy-1.9999
-
-# Sam James <sam@gentoo.org> (2025-06-03)
 # Fetching from GitHub seems broken with this:
 # > Connecting to github.com|20.26.156.215|:443... connected.
 # > ERROR: cannot verify github.com's certificate, issued by 'CN=Sectigo ECC Domain Validation Secure Server CA,O=Sectigo Limited,L=Salford,ST=Greater Manchester,C=GB':
