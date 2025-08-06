@@ -13,12 +13,13 @@ inherit cargo flag-o-matic lua-single python-any-r1
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
 HOMEPAGE="https://www.dnsdist.org/index.html"
 SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.xz
+	doc? ( https://www.applied-asynchrony.com/distfiles/${PN}-docs-${PV}.tar.xz )
 	yaml? ( https://www.applied-asynchrony.com/distfiles/${PN}-rust-${PV}-crates.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bpf cdb dnscrypt dnstap doh doh3 ipcipher lmdb quic regex snmp +ssl systemd test web xdp yaml"
+IUSE="bpf cdb dnscrypt dnstap doc doh doh3 ipcipher lmdb quic regex snmp +ssl systemd test web xdp yaml"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}
@@ -72,10 +73,6 @@ src_prepare() {
 	rm -f README.md
 }
 
-src_compile() {
-	emake
-}
-
 src_configure() {
 	# bug #822855
 	append-lfs-flags
@@ -111,8 +108,21 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+# explicitly implement src_compile/test to override the
+# otherwise automagic cargo_src_compile/test phases
+
+src_compile() {
+	emake
+}
+
+src_test() {
+	emake check
+}
+
 src_install() {
 	default
+
+	use doc && dodoc -r "${WORKDIR}"/html
 
 	insinto /etc/dnsdist
 	doins "${FILESDIR}"/dnsdist.conf.example
