@@ -1,0 +1,184 @@
+# Remove tests that don't work in the network sandbox
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -230,27 +230,27 @@ if(BUILD_TESTS AND NOT SKIP_SRC)
+   set(
+     TESTS
+     array-test
+-    boreas-alivedetection-test
+-    boreas-cli-test
++#    boreas-alivedetection-test
++#    boreas-cli-test
+     boreas-error-test
+     boreas-io-test
+-    boreas-ping-test
+-    boreas-sniffer-test
++#    boreas-ping-test
++#    boreas-sniffer-test
+     compressutils-test
+     cpeutils-test
+     cvss-test
+     hosts-test
+     json-test
+     jsonpull-test
+-    logging-test
++#    logging-test
+     logging-domain-test
+-    networking-test
++#    networking-test
+     nvti-test
+     osp-test
+     passwordbasedauthentication-test
+     streamvalidator-test
+     test-hosts
+-    util-test
++#    util-test
+     version-test
+     versionutils-test
+     xmlutils-test
+@@ -259,11 +259,11 @@ if(BUILD_TESTS AND NOT SKIP_SRC)
+   if(OPENVASD)
+     list(APPEND TESTS openvasd-test httputils-test vtparser-test)
+   endif(OPENVASD)
+-
++#[===[
+   if(ENABLE_AGENTS)
+     list(APPEND TESTS agent-controller-test)
+   endif(ENABLE_AGENTS)
+-
++]===]
+   add_custom_target(tests DEPENDS ${TESTS})
+ 
+   # Code coverage
+--- a/agent_controller/CMakeLists.txt
++++ b/agent_controller/CMakeLists.txt
+@@ -58,6 +58,7 @@ endif()
+ ## Tests
+ 
+ if(BUILD_TESTS)
++#[===[
+   add_unit_test(
+     agent-controller-test
+     agent_controller_tests.c
+@@ -69,6 +70,7 @@ if(BUILD_TESTS)
+     ${CURL_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+ endif()
+ 
+ ## Install
+--- a/base/CMakeLists.txt
++++ b/base/CMakeLists.txt
+@@ -127,6 +127,7 @@ if(BUILD_TESTS)
+     NETWORKING_TEST_LINKER_WRAP_OPTIONS
+     "-Wl,-wrap,g_io_channel_new_file,-wrap,g_io_channel_shutdown"
+   )
++#[===[
+   add_unit_test(
+     networking-test
+     networking_tests.c
+@@ -136,6 +137,7 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${NETWORKING_TEST_LINKER_WRAP_OPTIONS}
+   )
++]===]
+   add_unit_test(
+     pwpolicy-test
+     pwpolicy_tests.c
+@@ -169,6 +171,7 @@ if(BUILD_TESTS)
+     ${GLIB_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++#[===[
+   add_unit_test(
+     logging-test
+     logging_tests.c
+@@ -176,6 +179,7 @@ if(BUILD_TESTS)
+     ${GLIB_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+ endif(BUILD_TESTS)
+ 
+ ## Install
+--- a/boreas/CMakeLists.txt
++++ b/boreas/CMakeLists.txt
+@@ -136,6 +136,7 @@ set(LIBGVM_BOREAS_NAME ${LIBGVM_BOREAS_NAME} PARENT_SCOPE)
+ ## Tests
+ 
+ if(BUILD_TESTS)
++#[===[
+   add_unit_test(
+     boreas-alivedetection-test
+     alivedetection_tests.c
+@@ -148,6 +149,7 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${CMAKE_THREAD_LIBS_INIT}
+   )
++]===]
+   add_unit_test(
+     boreas-error-test
+     boreas_error_tests.c
+@@ -167,6 +169,7 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${CMAKE_THREAD_LIBS_INIT}
+   )
++#[===[
+   add_unit_test(
+     boreas-cli-test
+     cli_tests.c
+@@ -202,8 +205,9 @@ if(BUILD_TESTS)
+     ${LINKER_HARDENING_FLAGS}
+     ${CMAKE_THREAD_LIBS_INIT}
+   )
+-
++]===]
+   set(UTIL_TEST_LINKER_WRAP_OPTIONS "-Wl,-wrap,socket,-wrap,setsockopt")
++#[===[
+   add_unit_test(
+     util-test
+     util_tests.c
+@@ -213,6 +217,7 @@ if(BUILD_TESTS)
+     ${CMAKE_THREAD_LIBS_INIT}
+     ${UTIL_TEST_LINKER_WRAP_OPTIONS}
+   )
++]===]
+ endif(BUILD_TESTS)
+ 
+ ## Install
+--- a/util/CMakeLists.txt
++++ b/util/CMakeLists.txt
+@@ -258,6 +258,7 @@ if(BUILD_TESTS)
+     ${UUID_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++#[===[
+   add_unit_test(
+     mqtt-test
+     mqtt_tests.c
+@@ -268,6 +269,7 @@ if(BUILD_TESTS)
+     ${UUID_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+   add_unit_test(
+     kb-test
+     kb_tests.c
+@@ -276,6 +278,7 @@ if(BUILD_TESTS)
+     ${REDIS_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++#[===[
+   add_unit_test(
+     radiusutils-test
+     radiusutils_tests.c
+@@ -295,6 +298,7 @@ if(BUILD_TESTS)
+     ${GNUTLS_LDFLAGS}
+     ${LINKER_HARDENING_FLAGS}
+   )
++]===]
+   add_unit_test(
+     streamvalidator-test
+     streamvalidator_tests.c
