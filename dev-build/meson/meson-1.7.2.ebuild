@@ -32,8 +32,8 @@ else
 	# Releases may be signed by those listed in Releasing.md. Jussi
 	# remains the default release manager.
 	# https://github.com/mesonbuild/meson/commit/c2d795735fa1c46c54d6aed4d4a30f36a1f853cb
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-eschwartz )"
-	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eschwartz.gpg
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-eschwartz-20250723-r1 )"
+	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eschwartz.asc
 
 	if [[ ${PV} != *_rc* ]] ; then
 		KEYWORDS="~alpha amd64 arm ~arm64 hppa ~loong ~m68k ~mips ~ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
