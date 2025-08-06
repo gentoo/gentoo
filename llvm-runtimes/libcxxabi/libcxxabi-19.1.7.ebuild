@@ -47,6 +47,12 @@ python_check_deps() {
 }
 
 multilib_src_configure() {
+	# Workaround for bgo #961153.
+	# TODO: Fix the multilib.eclass, so it sets CTARGET properly.
+	if ! is_crosspkg; then
+		export CTARGET=${CHOST}
+	fi
+
 	if use clang; then
 		llvm_prepend_path -b "${LLVM_MAJOR}"
 		local -x CC=${CTARGET}-clang
