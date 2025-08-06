@@ -63,6 +63,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cpp-fallthrough.patch
+)
+
 # Not really prebuilt but BPF objects make our QA checks go crazy.
 QA_PREBUILT="*/rc_keymaps/protocols/*.o"
 

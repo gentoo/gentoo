@@ -1,0 +1,29 @@
+From f431bb813df169858540b8a819cedeb1805515c9 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 3 Aug 2025 23:42:08 +0100
+Subject: [PATCH] compiler.h: Fix libc++ build now that _LIBCPP_FALLTHROUGH has
+ gone
+
+This has been dropped in favour of [[__fallthrough__]].
+
+https://github.com/llvm/llvm-project/commit/cb43fe33b5d5084cf3b5a2723a03b692edb68018
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/include/compiler.h
++++ b/include/compiler.h
+@@ -3,7 +3,11 @@
+ #else
+ 	#include <ciso646>
+ 	#ifdef _LIBCPP_VERSION
+-		#define fallthrough _LIBCPP_FALLTHROUGH()
++		#ifdef _LIBCPP_FALLTHROUGH
++			#define fallthrough _LIBCPP_FALLTHROUGH()
++		#else
++			#define fallthrough [[__fallthrough__]]
++		#endif // _LIBCPP_FALLTHROUGH
+ 	#else
+ 		#ifdef __clang__
+ 			#define fallthrough [[clang::fallthrough]]
+-- 
+2.50.1
+
