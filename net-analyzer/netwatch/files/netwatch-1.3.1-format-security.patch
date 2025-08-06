@@ -1,0 +1,20 @@
+--- a/dispdata.c
++++ b/dispdata.c
+@@ -1488,7 +1488,7 @@
+ 	      fprintf (fpspeclog, "%s\n", ttt);
+ 	    else
+ 	      //!!mvprintw (yact, xleft, "%s",ttt);
+-	      mvprintw (yact, xleft, ttt);
++	      mvprintw (yact, xleft, "%s", ttt);
+ 	    attron (col4);
+ 	    if (current->update)
+ 	    {
+@@ -1736,7 +1736,7 @@
+ 	      fprintf (fpspeclog, "%s\n", ttt);
+ 	    else
+ 	      //!!mvprintw (yact, xright,"%s", ttt);
+-	      mvprintw (yact, xright, ttt);
++	      mvprintw (yact, xright, "%s", ttt);
+ 	    attron (col4);
+ 	    if (current->update)
+ 	    {
