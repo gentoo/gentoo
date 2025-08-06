@@ -3,6 +3,14 @@
 
 EAPI=8
 
+SEC_KEYS_VALIDPGPKEYS=(
+	'A9C5DF4D22E99998D9875A5110C01C5A2F6059E7:markt:manual'
+	'DCFD35E0BF8CA7344752DE8B6FB21E8933C60243:markt2:manual'
+	'48F8E69F6390C9F25CFEDCD268248959359E722B:remm:manual'
+)
+
+inherit sec-keys
+
 DESCRIPTION="OpenPGP keys used by tomcat.apache.org"
 HOMEPAGE="https://tomcat.apache.org/download-90.cgi"
 SRC_URI="https://downloads.apache.org/tomcat/tomcat-$(ver_cut 1)/v${PV}/KEYS -> ${P}-KEYS.asc"
@@ -13,7 +21,6 @@ SLOT="${PV}"
 KEYWORDS="amd64 ~arm64"
 
 src_install() {
-	local files=( ${A} )
-	insinto /usr/share/openpgp-keys
-	newins - tomcat-${PV}.apache.org.asc < <(cat "${files[@]/#/${DISTDIR}/}" || die)
+	sec-keys_src_install
+	mv "${ED}"/usr/share/openpgp-keys/{apache-tomcat,tomcat-${SLOT}.apache.org}.asc || die
 }
