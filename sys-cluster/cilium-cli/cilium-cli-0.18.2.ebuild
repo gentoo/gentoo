@@ -17,6 +17,8 @@ src_prepare() {
 	sed -i -e 's/-race//' Makefile || die
 }
 
+QA_PRESTRIPPED=usr/bin/cilium
+
 src_compile() {
 	emake VERSION=v${PV}
 }
