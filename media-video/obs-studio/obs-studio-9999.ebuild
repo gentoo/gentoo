@@ -192,10 +192,10 @@ src_prepare() {
 src_configure() {
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
+		-DCCACHE_PROGRAM=OFF
 		-DENABLE_ALSA=$(usex alsa)
 		-DENABLE_AJA=OFF
 		-DENABLE_BROWSER=$(usex browser)
-		-DENABLE_CCACHE=OFF
 		-DENABLE_DECKLINK=$(usex decklink)
 		-DENABLE_FFMPEG_NVENC=$(usex nvenc)
 		-DENABLE_FREETYPE=$(usex truetype)
