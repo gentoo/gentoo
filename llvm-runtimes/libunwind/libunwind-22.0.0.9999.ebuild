@@ -54,6 +54,12 @@ multilib_src_configure() {
 	# also separately bug #863917
 	filter-lto
 
+	# Workaround for bgo #961153.
+	# TODO: Fix the multilib.eclass, so it sets CTARGET properly.
+	if ! is_crosspkg; then
+		export CTARGET=${CHOST}
+	fi
+
 	if use clang; then
 		local -x CC=${CTARGET}-clang
 		local -x CXX=${CTARGET}-clang++
