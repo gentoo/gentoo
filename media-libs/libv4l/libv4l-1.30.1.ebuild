@@ -55,7 +55,10 @@ DEPEND="
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
-	bpf? ( llvm-core/clang:*[llvm_targets_BPF] )
+	bpf? ( || (
+		sys-devel/bpf-toolchain
+		llvm-core/clang:*[llvm_targets_BPF]
+	) )
 	doc? ( app-text/doxygen )
 	utils? (
 		dev-lang/perl
@@ -65,6 +68,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cpp-fallthrough.patch
+	"${FILESDIR}"/${PN}-bpf-toolchain.patch
 )
 
 # Not really prebuilt but BPF objects make our QA checks go crazy.
@@ -74,14 +78,15 @@ QA_PREBUILT="*/rc_keymaps/protocols/*.o"
 QA_SONAME=".*/libv4l2tracer\.so"
 
 check_llvm() {
-	if [[ ${MERGE_TYPE} != binary ]] && use bpf; then
+	if [[ ${MERGE_TYPE} != binary ]] && use bpf &&
+		! has_version -b sys-devel/bpf-toolchain && has_version -b llvm-core/clang; then
 		clang -target bpf -print-supported-cpus &>/dev/null ||
 			die "clang does not support the BPF target. Please check LLVM_TARGETS."
 	fi
 }
 
 pkg_pretend() {
-	has_version -b llvm-core/clang && check_llvm
+	check_llvm
 }
 
 pkg_setup() {
