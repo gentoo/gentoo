@@ -481,10 +481,6 @@ sys-kernel/installkernel -systemd-boot -ukify -uki
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
 
-# Yixun Lan <dlan@gentoo.org> (2014-05-21)
-# sys-fs/zfs not keyworded on x86
-sys-cluster/ceph zfs
-
 # Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
 # Works on 32bit x86
 media-sound/lmms -vst
