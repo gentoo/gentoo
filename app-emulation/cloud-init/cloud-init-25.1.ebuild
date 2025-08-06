@@ -77,6 +77,7 @@ EPYTEST_IGNORE=(
 src_prepare() {
 	if use netifrc; then
 		PATCHES+=( "${FILESDIR}/${PN}-25.1-netifrc.patch" )
+		PATCHES+=( "${FILESDIR}/${PN}-25.1-hotplugd.patch" )
 	fi
 	default
 
