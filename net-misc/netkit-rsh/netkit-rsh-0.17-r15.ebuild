@@ -18,7 +18,15 @@ IUSE="pam"
 RDEPEND="
 	sys-libs/ncurses:=
 	virtual/libcrypt:=
-	pam? ( >=sys-auth/pambase-20080219.1 )"
+	pam? ( >=sys-auth/pambase-20080219.1 )
+	!net-misc/inetutils[rcp(-)]
+	!net-misc/inetutils[rexec(-)]
+	!net-misc/inetutils[rexecd(-)]
+	!net-misc/inetutils[rlogin(-)]
+	!net-misc/inetutils[rlogind(-)]
+	!net-misc/inetutils[rsh(-)]
+	!net-misc/inetutils[rshd(-)]
+"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/xz-utils"
 
