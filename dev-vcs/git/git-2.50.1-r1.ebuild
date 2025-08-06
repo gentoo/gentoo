@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL=no
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd meson
+inherit toolchain-funcs perl-module optfeature plocale python-single-r1 shell-completion systemd meson
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -50,7 +50,7 @@ if [[ ${PV} != *9999 ]]; then
 	SRC_URI+=" doc? ( ${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX} )"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 	fi
 fi
 
@@ -149,13 +149,11 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.48.1-macos-no-fsmonitor.patch
-	"${FILESDIR}"/${PN}-2.49.0-meson-use-test_environment-conditionally.patch
-	"${FILESDIR}"/${PN}-2.49.0-docs.patch
 
 	# This patch isn't merged upstream but is kept in the ebuild by
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
-	"${FILESDIR}"/${PN}-2.49.0-diff-implement-config.diff.renames-copies-harder.patch
+	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
 )
 
 pkg_setup() {
@@ -194,15 +192,6 @@ src_prepare() {
 		# bugs #838271, #838223
 		PATCHES+=(
 			"${FILESDIR}"/git-2.46.2-unsafe-directory.patch
-		)
-	fi
-
-	if [[ ${CHOST} == *-solaris* ]] ; then
-		# meson.build doesn't carry any Solaris logic, and "sees"
-		# functions that are not available by default, provide backup
-		# definitions to match autoconf/Makefile
-		PATCHES+=(
-			"${FILESDIR}"/${PN}-2.49.0-meson-solaris-override.patch
 		)
 	fi
 
@@ -279,12 +268,15 @@ src_configure() {
 	meson_src_configure
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			emesonargs=()
-			meson_src_configure
-		)
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				emesonargs=()
+				meson_src_configure
+			)
+		done
 	fi
 }
 
@@ -323,14 +315,14 @@ src_compile() {
 	fi
 
 	if use tk ; then
-		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core"
-
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_compile
-		)
-
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_compile
+			)
+		done
 	fi
 
 	if use doc ; then
@@ -376,6 +368,8 @@ src_install() {
 	# but still needed uncompressed (bug #507480)
 	insinto /usr/share/${PN}
 	doins contrib/completion/git-prompt.sh
+
+	newzshcomp contrib/completion/git-completion.zsh _${PN}
 
 	#dobin contrib/fast-import/git-p4 # Moved upstream
 	#dodoc contrib/fast-import/git-p4.txt # Moved upstream
@@ -470,13 +464,14 @@ src_install() {
 	fi
 
 	if use tk ; then
-		(
-			EMESON_SOURCE="${S}"/gitk-git
-			BUILD_DIR="${WORKDIR}"/gitk-git_build
-			meson_src_install
-		)
-
-		git_emake -C git-gui gitexecdir="${EPREFIX}/usr/libexec/git-core" DESTDIR="${D}" install
+		local tkdir
+		for tkdir in git-gui gitk-git ; do
+			(
+				EMESON_SOURCE="${S}"/${tkdir}
+				BUILD_DIR="${WORKDIR}"/${tkdir}_build
+				meson_src_install
+			)
+		done
 	fi
 
 	perl_delete_localpod

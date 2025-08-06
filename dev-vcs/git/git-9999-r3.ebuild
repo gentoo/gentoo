@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL=no
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd meson
+inherit toolchain-funcs perl-module optfeature plocale python-single-r1 shell-completion systemd meson
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -358,6 +358,8 @@ src_install() {
 	# but still needed uncompressed (bug #507480)
 	insinto /usr/share/${PN}
 	doins contrib/completion/git-prompt.sh
+
+	newzshcomp contrib/completion/git-completion.zsh _${PN}
 
 	#dobin contrib/fast-import/git-p4 # Moved upstream
 	#dodoc contrib/fast-import/git-p4.txt # Moved upstream
