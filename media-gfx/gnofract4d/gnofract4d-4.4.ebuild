@@ -1,22 +1,19 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit meson optfeature python-single-r1 virtualx xdg
 
-COMMIT="06e34bbf920692828bfd816ab5fb93e7ea9c51c2"
-
 DESCRIPTION="A program for drawing beautiful mathematically-based images known as fractals"
 HOMEPAGE="https://fract4d.github.io/gnofract4d/"
-SRC_URI="https://github.com/fract4d/gnofract4d/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${COMMIT}"
+SRC_URI="https://github.com/fract4d/gnofract4d/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
@@ -35,11 +32,6 @@ BDEPEND="
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
 	)"
-
-src_prepare() {
-	sed -i "s:4.3:${PV}:" meson.build || die
-	default
-}
 
 src_configure() {
 	local emesonargs=(
