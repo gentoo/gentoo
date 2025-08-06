@@ -24,9 +24,7 @@ COMMON_DEPEND="
 	nuspell? ( >=app-text/nuspell-5.1.0:0= )
 	voikko? ( dev-libs/libvoikko:= )
 "
-RDEPEND="${COMMON_DEPEND}
-	!<app-text/enchant-1.6.1-r2:0
-"
+RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	test? ( >=dev-libs/unittest++-2.0.0-r4 )
 "
