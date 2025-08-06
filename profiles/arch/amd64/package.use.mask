@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
+# x86-64 supports sframe
+>=sys-libs/glibc-2.42 -sframe
+
 # Alfred Wingate <parona@protonmail.com> (2025-05-22)
 # Upstream supports amd64
 media-libs/svt-av1 -test
