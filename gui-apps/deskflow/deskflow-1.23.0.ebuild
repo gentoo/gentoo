@@ -60,6 +60,7 @@ DOCS=(
 
 PATCHES=(
 	"${FILESDIR}"/${P}-default-proto.patch
+	"${FILESDIR}"/${P}-limit-includes.patch
 )
 
 src_configure() {
