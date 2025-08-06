@@ -51,7 +51,7 @@ SRC_URI+=" systemd? ( https://gitweb.gentoo.org/proj/toolchain/glibc-systemd.git
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 SLOT="2.2"
-IUSE="audit caps cet compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
+IUSE="audit caps cet compile-locales custom-cflags doc gd hash-sysv-compat headers-only +multiarch multilib multilib-bootstrap nscd perl profile selinux sframe +ssp stack-realign +static-libs suid systemd systemtap test vanilla"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -115,6 +115,7 @@ BDEPEND="
 		dev-lang/perl
 		sys-apps/texinfo
 	)
+	sframe? ( >=sys-devel/binutils-2.45 )
 	test? (
 		dev-lang/perl
 		>=net-dns/libidn2-2.3.0
@@ -1018,6 +1019,11 @@ glibc_do_configure() {
 
 	case ${ABI}-${CTARGET} in
 		amd64-x86_64-*|x32-x86_64-*-*-gnux32) myconf+=( $(use_enable cet) ) ;;
+		*) ;;
+	esac
+
+	case ${ABI}-${CTARGET} in
+		amd64-x86_64-*|arm64-aarch64-*) myconf+=( $(use_enable sframe) ) ;;
 		*) ;;
 	esac
 
