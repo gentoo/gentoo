@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit go-module
 
 DESCRIPTION="Tools and framework for data collection and system inspection using eBPF"
@@ -14,12 +15,6 @@ S="${WORKDIR}/inspektor-gadget-${PV}"
 LICENSE="Apache-2.0 GPL-2 MIT BSD-2 MPL-2.0 ISC imagemagick CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-
-src_unpack() {
-	mkdir "${S}" || die
-	ln -s ../vendor "${S}" || die
-	go-module_src_unpack
-}
 
 src_compile() {
 	ego build \
