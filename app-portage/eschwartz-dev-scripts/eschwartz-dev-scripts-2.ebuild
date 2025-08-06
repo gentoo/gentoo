@@ -30,10 +30,10 @@ RDEPEND="
 "
 BDEPEND="
 	${PYTHON_DEPS}
-	verify-sig? ( sec-keys/openpgp-keys-eschwartz )
+	verify-sig? ( >=sec-keys/openpgp-keys-eschwartz-20250723-r1 )
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eschwartz.gpg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eschwartz.asc
 
 src_install() {
 	meson_src_install
