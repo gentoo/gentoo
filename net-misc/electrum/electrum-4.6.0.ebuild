@@ -26,8 +26,8 @@ S=${WORKDIR}/${MY_P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="cli ncurses qrcode +qt5"
-REQUIRED_USE="|| ( cli ncurses qt5 )"
+IUSE="cli ncurses qrcode +qt6"
+REQUIRED_USE="|| ( cli ncurses qt6 )"
 
 # setuptools (distutils) & pyperclip vendored
 RDEPEND="
@@ -48,8 +48,8 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
-	qt5? (
-		dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
+	qt6? (
+		dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
 	)
 	ncurses? ( $(python_gen_impl_dep 'ncurses') )
 "
@@ -66,11 +66,6 @@ BDEPEND="
 EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
-
-EPYTEST_IGNORE=(
-	# test for qml/PyQt6 GUI that doesn't work anyway
-	tests/test_qml_types.py
-)
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/electrum.asc
 
@@ -92,7 +87,7 @@ src_prepare() {
 	sed -i -e 's:,<[0-9.]*::' contrib/requirements/requirements.txt || die
 
 	local bestgui
-	if use qt5; then
+	if use qt6; then
 		bestgui=qt
 	elif use ncurses; then
 		bestgui=text
