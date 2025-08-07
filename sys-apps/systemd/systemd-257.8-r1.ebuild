@@ -273,6 +273,7 @@ src_unpack() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/systemd-257-cred-util-tpm2.patch
+		"${FILESDIR}"/257-Revert-resolved-don-t-wait-for-TLS-close_notify-repl.patch
 	)
 
 	if ! use vanilla; then
