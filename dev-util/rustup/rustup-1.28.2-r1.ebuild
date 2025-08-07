@@ -31,6 +31,7 @@ RESTRICT="test"
 
 DEPEND="
 	app-arch/xz-utils
+	app-arch/zstd
 	net-misc/curl:=[http2,ssl]
 	dev-libs/openssl:0=
 "
@@ -67,6 +68,7 @@ src_configure() {
 
 src_compile() {
 	export OPENSSL_NO_VENDOR=true
+	export ZSTD_SYS_USE_PKG_CONFIG=1
 	cargo_src_compile
 }
 
