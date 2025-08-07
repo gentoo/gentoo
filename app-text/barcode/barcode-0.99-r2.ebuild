@@ -25,12 +25,6 @@ PATCHES=(
 src_prepare() {
 	default
 
-	sed -i -e '/^LDFLAGS =/s:=:+=:' \
-		-e "/^aLIBDIR/s:lib:$(get_libdir):" \
-		-e '/^INFODIR/s:info:share/info:' \
-		-e '/^MAN/s:man:share/man:' \
-		Makefile.in || die
-
 	eautoreconf
 }
 
