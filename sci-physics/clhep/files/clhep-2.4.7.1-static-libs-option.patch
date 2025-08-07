@@ -169,6 +169,27 @@ index 7f4fcc0f..b7445413 100644
    INSTALL(SCRIPT ${CMAKE_CURRENT_BINARY_DIR}/clhep_shared_symlink )
  
  endmacro(clhep_build_libclhep )
+diff --git c/cmake/Modules/ClhepBuildTest.cmake w/cmake/Modules/ClhepBuildTest.cmake
+index 614b18e8..4c2c9aea 100644
+--- c/cmake/Modules/ClhepBuildTest.cmake
++++ w/cmake/Modules/ClhepBuildTest.cmake
+@@ -26,14 +26,14 @@ macro( clhep_test testname )
+   if( CTST_NOLIB )
+     set(package_library_list)
+   else()
+-    set( package_library_list ${PACKAGE}S)
++    set( package_library_list ${PACKAGE})
+     #set( package_library_list ${PROJECT_BINARY_DIR}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP-${PACKAGE}-${VERSION}${CMAKE_STATIC_LIBRARY_SUFFIX} )
+   endif()
+ 
+   if( ${PACKAGE}_DEPS )
+      foreach ( dep ${${PACKAGE}_DEPS} )
+         ##message( STATUS "clhep_test ${testname} will use ${dep}")
+-	list(APPEND package_library_list ${PACKAGE}S)
++	list(APPEND package_library_list ${PACKAGE})
+ 	#list(APPEND package_library_list  ${PROJECT_BINARY_DIR}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}CLHEP-${dep}-${VERSION}${CMAKE_STATIC_LIBRARY_SUFFIX} )
+      endforeach()
+   endif()
 diff --git c/cmake/Modules/ClhepToolchain.cmake w/cmake/Modules/ClhepToolchain.cmake
 index a7f53c23..428ba3ac 100644
 --- c/cmake/Modules/ClhepToolchain.cmake
