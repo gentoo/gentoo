@@ -3,7 +3,7 @@
 
 EAPI="8"
 
-inherit autotools
+inherit autotools dot-a
 
 DESCRIPTION="Utilities and library to convert to/from X-Face format"
 HOMEPAGE="https://www.xemacs.org/Download/optLibs.html"
@@ -25,7 +25,13 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_install() {
 	default
+	strip-lto-bytecode
 	newbin xbm2xface{.pl,}
 }
