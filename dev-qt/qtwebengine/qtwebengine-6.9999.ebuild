@@ -268,11 +268,12 @@ src_configure() {
 }
 
 src_compile() {
-	# tentatively work around a possible (rare) race condition (bug #921680),
-	# has good chances to be obsolete but keep for now as a safety
-	cmake_build WebEngineCore_sync_all_public_headers
-
 	cmake_src_compile
+
+	# exact cause unknown, but >=qtwebengine-6.9.2 started to act as if
+	# QtWebEngineProcess is marked USER_FACING despite not set anywhere
+	# and this creates a user_facing_tool_links.txt with a broken symlink
+	:> "${BUILD_DIR}"/user_facing_tool_links.txt || die
 }
 
 src_test() {
