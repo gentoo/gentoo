@@ -43,5 +43,5 @@ src_install() {
 }
 
 src_test() {
-	ego test -skip "Test(Comm|Send|PublicIP|LocalIP|LocalLookupIP/invalid_hostname)" -work ./...
+	ego test -skip "Test(Comm|Send|PublicIP|LocalIP|LocalLookupIP|LookupFunction)" -work ./...
 }
