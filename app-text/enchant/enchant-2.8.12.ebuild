@@ -6,7 +6,7 @@ EAPI=8
 inherit libtool
 
 DESCRIPTION="Spellchecker wrapping library"
-HOMEPAGE="https://github.com/rrthomas/enchant"
+HOMEPAGE="https://rrthomas.github.io/enchant/ https://github.com/rrthomas/enchant"
 SRC_URI="https://github.com/rrthomas/enchant/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
