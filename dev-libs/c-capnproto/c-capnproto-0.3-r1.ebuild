@@ -12,3 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
 
 BDEPEND="app-arch/xz-utils"
+
+src_install() {
+	default
+	find "${ED}" -type f -name '*.la' -delete || die
+}
