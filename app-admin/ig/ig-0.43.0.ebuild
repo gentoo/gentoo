@@ -15,6 +15,7 @@ S="${WORKDIR}/inspektor-gadget-${PV}"
 LICENSE="Apache-2.0 GPL-2 MIT BSD-2 MPL-2.0 ISC imagemagick CC-BY-SA-4.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
+RESTRICT="test" # Not safe to run outside a container.
 
 src_compile() {
 	ego build \
