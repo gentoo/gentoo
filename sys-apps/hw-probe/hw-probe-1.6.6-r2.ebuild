@@ -16,9 +16,9 @@ KEYWORDS="amd64 ~arm64 ~loong x86"
 RDEPEND="
 	dev-lang/perl
 	dev-perl/Digest-SHA1
+	|| ( >=media-libs/libv4l-1.30.1[utils] sys-apps/edid-decode )
 	net-misc/curl
 	sys-apps/dmidecode
-	sys-apps/edid-decode
 	sys-apps/hwinfo
 	sys-apps/pciutils
 	sys-apps/smartmontools
