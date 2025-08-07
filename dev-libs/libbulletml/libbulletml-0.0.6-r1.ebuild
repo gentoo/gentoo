@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="A Library of Bullet Markup Language"
 HOMEPAGE="https://shinh.skr.jp/libbulletml/index_en.html"
@@ -30,10 +30,12 @@ src_prepare() {
 
 src_configure() {
 	tc-export AR CXX
+	lto-guarantee-fat
 }
 
 src_install() {
 	dolib.a libbulletml.a
+	strip-lto-bytecode
 
 	insinto /usr/include/bulletml
 	doins *.h
