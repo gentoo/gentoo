@@ -79,6 +79,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-0.4.1-gtest-1.10.patch"
 	"${FILESDIR}/${PN}-0.4.16-include-additional-paths.patch"
+	# backport of https://github.com/OpenRCT2/OpenRCT2/commit/1abd50ff1ff75360c9ad77ec07be15d97d7d643a
+	"${FILESDIR}/${P}-libcxx-21-cstdlib.patch"
 )
 
 src_unpack() {

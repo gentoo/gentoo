@@ -1,0 +1,18 @@
+From https://github.com/OpenRCT2/OpenRCT2/commit/1abd50ff1ff75360c9ad77ec07be15d97d7d643a Mon Sep 17 00:00:00 2001
+From: Violet Purcell <66446404+vimproved@users.noreply.github.com>
+Date: Thu, 7 Aug 2025 16:03:03 -0400
+Subject: [PATCH] Add explicit <cstdlib> include to Range.hpp (#24918)
+
+LLVM libc++ 21 shuffled around some includes internally, causing cstdlib
+to no longer be transitively included here. Explicitly include it for
+size_t.
+--- a/src/openrct2/core/Range.hpp
++++ b/src/openrct2/core/Range.hpp
+@@ -10,6 +10,7 @@
+ #pragma once
+ 
+ #include <cmath>
++#include <cstdlib>
+ #include <type_traits>
+ 
+ template<typename T>
