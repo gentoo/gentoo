@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools dot-a
 
 DESCRIPTION="barcode generator"
 HOMEPAGE="https://www.gnu.org/software/barcode/"
@@ -26,4 +26,10 @@ src_prepare() {
 	default
 
 	eautoreconf
+	lto-guarantee-fat
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }
