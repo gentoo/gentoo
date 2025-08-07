@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -27,7 +27,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=( "${FILESDIR}"/${PN}-autoconf-2.68.patch )
 
 FILECAPS=(
-	cap_sys_tty_config+ep usr/bin/${PN}
+	-m u+s cap_sys_tty_config+ep usr/bin/${PN}
 )
 
 src_prepare() {
@@ -46,12 +46,6 @@ src_configure() {
 
 src_compile() {
 	emake AR="$(tc-getAR)"
-}
-
-src_install() {
-	default
-
-	use filecaps || fperms u+s /usr/bin/${PN}
 }
 
 pkg_postinst() {
