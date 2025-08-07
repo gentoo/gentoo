@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="A C library implementing a suite of algorithms to factor large integers"
 HOMEPAGE="https://sourceforge.net/projects/msieve/"
@@ -30,6 +30,7 @@ PATCHES=(
 
 src_configure() {
 	tc-export AR CC RANLIB
+	lto-guarantee-fat
 
 	use ecm && export ECM=1
 
@@ -56,6 +57,7 @@ src_install() {
 	doins -r include/.
 
 	dolib.a libmsieve.a
+	strip-lto-bytecode
 
 	dodoc Readme*
 }
