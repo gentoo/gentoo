@@ -75,7 +75,7 @@ else
 			https://github.com/ShiqiYu/libfacedetection.train/raw/02246e79b1e976c83d1e135a85e0628120c93769/onnx/yunet_s_640_640.onnx -> yunet-202303.onnx
 		)
 	"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 fi
 
 LICENSE="Apache-2.0"
