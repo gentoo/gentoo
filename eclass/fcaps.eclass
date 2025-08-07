@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fcaps.eclass
@@ -105,11 +105,6 @@ fcaps() {
 	local mode=u+s
 	local caps_mode=
 
-	if [[ -n ${FCAPS_DENY_WORLD_READ} ]]; then
-		mode=u+s,go-r
-		caps_mode=go-r
-	fi
-
 	while [[ $# -gt 0 ]] ; do
 		case $1 in
 		-o) owner=$2; shift;;
@@ -143,12 +138,16 @@ fcaps() {
 	for file ; do
 		[[ ${file} != /* ]] && file="${root}/${file}"
 
+		# Remove the read bits if requested.
+		if [[ -n ${FCAPS_DENY_WORLD_READ} ]]; then
+			chmod go-r "${file}" || die
+		fi
+
 		if use filecaps ; then
 			# Try to set capabilities.  Ignore errors when the
 			# fs doesn't support it, but abort on all others.
 			debug-print "${FUNCNAME}: setting caps '${caps}' on '${file}'"
 
-			# Remove the read bits if requested.
 			if [[ -n ${caps_mode} ]]; then
 				chmod ${caps_mode} "${file}" || die
 			fi
