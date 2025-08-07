@@ -259,7 +259,7 @@ src_configure() {
 				-x test_strtod
 			)
 			;;
-		arm*)
+		arm*|aarch64*)
 			COMMON_TEST_SKIPS+=(
 				-x test_gdb
 			)
