@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,7 +6,7 @@ EAPI="7"
 inherit autotools
 
 DESCRIPTION="Utilities and library to convert to/from X-Face format"
-HOMEPAGE="http://www.xemacs.org/Download/optLibs.html"
+HOMEPAGE="https://www.xemacs.org/Download/optLibs.html"
 SRC_URI="http://ftp.xemacs.org/pub/xemacs/aux/${P}.tar.gz"
 
 LICENSE="MIT"
