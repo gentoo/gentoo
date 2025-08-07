@@ -60,6 +60,8 @@ PATCHES=(
 	"${FILESDIR}"/django-5.1-more-pypy3.patch
 	# https://code.djangoproject.com/ticket/34900
 	"${FILESDIR}"/django-4.2.21-py313.patch
+	# https://github.com/django/django/pull/19639
+	"${FILESDIR}"/django-5.2.5-htmlparser.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc
