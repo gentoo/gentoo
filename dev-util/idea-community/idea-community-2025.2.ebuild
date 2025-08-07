@@ -68,6 +68,11 @@ pkg_pretend() {
 	check-reqs_pkg_pretend
 }
 
+pkg_setup() {
+	CHECKREQS_DISK_BUILD="4G"
+	check-reqs_pkg_pretend
+}
+
 src_unpack() {
 
 	default_src_unpack
