@@ -29,6 +29,8 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# requires *.dist-info/RECORD file that we're stripping
 		pyfakefs/tests/fake_filesystem_test.py::RealFileSystemAccessTest::test_add_package_metadata
+		# wants dev-python/openpyxl
+		pyfakefs/tests/patched_packages_test.py::TestPatchedPackages::test_read_excel
 	)
 	local EPYTEST_IGNORE=(
 		# test for regression with opentimelineio package
