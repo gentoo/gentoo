@@ -18,6 +18,8 @@ KEYWORDS="~amd64"
 # tests communicate with gitlab.com and require a personal access token
 RESTRICT="test"
 
+QA_PRESTRIPPED=usr/bin/glab
+
 src_compile() {
 	emake \
 		GLAB_VERSION=v${PV} \
