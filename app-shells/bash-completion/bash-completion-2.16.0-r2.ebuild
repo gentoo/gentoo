@@ -27,6 +27,7 @@ RDEPEND="
 	>=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
 	!<app-text/tree-2.1.1-r1
+	!!<=net-fs/mc-2025.04.16.18.13.26
 "
 BDEPEND="
 	test? (
