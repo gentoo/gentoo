@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/joodland/bm/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~sparc ~x86"
+	KEYWORDS="amd64 ~sparc x86"
 fi
 
 LICENSE="GPL-2+"
