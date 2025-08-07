@@ -167,6 +167,8 @@ src_configure() {
 
 	# Set baseline test skip flags.
 	COMMON_TEST_SKIPS=(
+		# running gdb inside an ebuild as non-root, within sandbox,
+		# and possibly within a container is unreliable
 		-x test_gdb
 	)
 

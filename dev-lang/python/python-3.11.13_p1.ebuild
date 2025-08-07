@@ -228,6 +228,9 @@ src_configure() {
 
 	# Set baseline test skip flags.
 	COMMON_TEST_SKIPS=(
+		# running gdb inside an ebuild as non-root, within sandbox,
+		# and possibly within a container is unreliable
+		-x test_gdb
 		# this is actually test_gdb.test_pretty_print
 		-x test_pretty_print
 	)
@@ -251,11 +254,6 @@ src_configure() {
 				-x test_strtod
 			)
 			;;
-		arm*|aarch64*)
-			COMMON_TEST_SKIPS+=(
-				-x test_gdb
-			)
-			;;
 		mips*)
 			COMMON_TEST_SKIPS+=(
 				-x test_ctypes
@@ -266,7 +264,6 @@ src_configure() {
 		powerpc64-*) # big endian
 			COMMON_TEST_SKIPS+=(
 				-x test_descr
-				-x test_gdb
 			)
 			;;
 		riscv*)
@@ -283,7 +280,6 @@ src_configure() {
 
 				-x test_ctypes
 				-x test_descr
-				-x test_gdb
 				# bug 931908
 				-x test_exceptions
 			)

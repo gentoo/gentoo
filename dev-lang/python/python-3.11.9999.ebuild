@@ -217,6 +217,9 @@ src_configure() {
 
 	# Set baseline test skip flags.
 	COMMON_TEST_SKIPS=(
+		# running gdb inside an ebuild as non-root, within sandbox,
+		# and possibly within a container is unreliable
+		-x test_gdb
 		# this is actually test_gdb.test_pretty_print
 		-x test_pretty_print
 	)
@@ -238,11 +241,6 @@ src_configure() {
 				# bug 653850
 				-x test_resource
 				-x test_strtod
-			)
-			;;
-		arm*|aarch64*)
-			COMMON_TEST_SKIPS+=(
-				-x test_gdb
 			)
 			;;
 		mips*)
