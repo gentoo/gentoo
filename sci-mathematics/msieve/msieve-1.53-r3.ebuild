@@ -15,9 +15,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="zlib +ecm mpi"
 
 RDEPEND="
+	dev-libs/gmp:=
 	ecm? ( sci-mathematics/gmp-ecm )
 	mpi? ( virtual/mpi )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib )
+"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
