@@ -181,7 +181,7 @@ _meson_create_cross_file() {
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
 
 	[properties]
-	needs_exe_wrapper = true
+	needs_exe_wrapper = $(tc-is-cross-compiler && echo true || echo false)
 	sys_root = '${SYSROOT}'
 	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
@@ -205,7 +205,7 @@ _meson_create_native_file() {
 	local system cpu_family cpu
 	_meson_get_machine_info "${CBUILD}"
 
-	local fn=${T}/meson.${CBUILD}.${ABI}.ini
+	local fn=${T}/meson.${CBUILD}.ini
 
 	cat > "${fn}" <<-EOF || die "failed to create native file"
 	[binaries]
@@ -382,7 +382,7 @@ setup_meson_src_configure() {
 		MESONARGS+=( -Dbuildtype="${EMESON_BUILDTYPE}" )
 	fi
 
-	if tc-is-cross-compiler; then
+	if tc-is-cross-compiler || [[ "${ABI}" != "${DEFAULT_ABI}" ]]; then
 		MESONARGS+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
 
