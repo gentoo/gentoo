@@ -84,13 +84,16 @@ esac
 # appropriate path var ($D/$ROOT/etc...) will be prefixed based on the current
 # ebuild phase.
 #
-# The caps mode (default 711) is used to set the permission on the file if
-# capabilities were properly set on the file.
+# The caps mode is used to set the permission on the file if capabilities
+# were properly set on the file.  No change is applied by default.
 #
 # If the system is unable to set capabilities, it will use the specified user,
-# group, and mode (presumably to make the binary set*id).  The defaults there
-# are 0:0 and 4711.  Otherwise, the ownership and permissions will be
-# unchanged.
+# group, and mode.  The user and group default to 0.  If mode is unspecified, no
+# change is applied.
+#
+# For example, "-m u+s" may be used to enable suid as a fallback when file caps
+# are unavailable.  This should be used with care, typically when the
+# application is written to handle dropping privileges itself.
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -102,7 +105,7 @@ fcaps() {
 	# Process the user options first.
 	local owner='0'
 	local group='0'
-	local mode=u+s
+	local mode=
 	local caps_mode=
 
 	while [[ $# -gt 0 ]] ; do
@@ -181,11 +184,11 @@ fcaps() {
 		fi
 
 		# If we're still here, setcaps failed.
-		if [[ -n ${owner} || -n ${group} ]]; then
-			debug-print "${FUNCNAME}: setting owner on '${file}'"
-			chown "${owner}:${group}" "${file}" || die
-		fi
 		if [[ -n ${mode} ]]; then
+			if [[ -n ${owner} || -n ${group} ]]; then
+				debug-print "${FUNCNAME}: setting owner on '${file}'"
+				chown "${owner}:${group}" "${file}" || die
+			fi
 			debug-print "${FUNCNAME}: setting mode on '${file}'"
 			chmod ${mode} "${file}" || die
 		fi
