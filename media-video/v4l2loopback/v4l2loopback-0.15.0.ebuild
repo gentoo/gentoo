@@ -5,6 +5,8 @@ EAPI=8
 
 inherit linux-mod-r1 toolchain-funcs
 
+MODULES_KERNEL_MAX=6.15
+
 case ${PV} in
 9999)
 	inherit git-r3
