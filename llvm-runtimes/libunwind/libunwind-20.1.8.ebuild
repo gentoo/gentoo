@@ -26,6 +26,8 @@ DEPEND="
 BDEPEND="
 	clang? (
 		llvm-core/clang:${LLVM_MAJOR}
+		llvm-core/clang-linker:${LLVM_MAJOR}
+		llvm-core/clang-rtlib:${LLVM_MAJOR}
 	)
 	!test? (
 		${PYTHON_DEPS}
@@ -65,6 +67,15 @@ multilib_src_configure() {
 		local -x CC=${CTARGET}-clang
 		local -x CXX=${CTARGET}-clang++
 		strip-unsupported-flags
+
+		# The full clang configuration might not be ready yet. Use the partial
+		# configuration files that are guaranteed to exist even during initial
+		# installations and upgrades.
+		append-ldflags \
+			--no-default-config \
+			-nodefaultlibs -lc \
+			--config=${ESYSROOT}/etc/clang/${LLVM_MAJOR}/gentoo-rtlib.cfg \
+			--config=${ESYSROOT}/etc/clang/${LLVM_MAJOR}/gentoo-linker.cfg
 	fi
 
 	# link to compiler-rt
