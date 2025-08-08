@@ -29,7 +29,10 @@ else
 fi
 
 DESCRIPTION="Complete solution to record/convert/stream audio and video"
-HOMEPAGE="https://ffmpeg.org/"
+HOMEPAGE="
+	https://ffmpeg.org/
+	https://code.ffmpeg.org/FFmpeg/FFmpeg/
+"
 
 [[ ${PN} == *-compat ]] && FFMPEG_UNSLOTTED= || FFMPEG_UNSLOTTED=1
 
