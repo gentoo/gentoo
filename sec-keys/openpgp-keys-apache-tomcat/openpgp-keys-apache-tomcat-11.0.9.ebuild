@@ -22,5 +22,5 @@ KEYWORDS="amd64 ~arm64"
 
 src_install() {
 	sec-keys_src_install
-	mv "${ED}"/usr/share/openpgp-keys/{apache-tomcat,tomcat-${SLOT}.apache.org}.asc || die
+	mv "${ED}"/usr/share/openpgp-keys/{apache-tomcat-${SLOT},tomcat-${SLOT}.apache.org}.asc || die
 }
