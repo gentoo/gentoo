@@ -96,7 +96,7 @@ SLOT="0"
 
 IUSE="test"
 PROPERTIES="test_network"
-RESTRICT="!test? ( test )"
+RESTRICT="!test? ( test ) test"
 
 BDEPEND="
 	app-crypt/gnupg
