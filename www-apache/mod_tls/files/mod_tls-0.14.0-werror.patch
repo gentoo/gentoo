@@ -1,0 +1,21 @@
+--- a/configure.ac	2024-09-18 16:00:53.000000000 +0200
++++ b/configure.ac	2025-08-08 10:05:06.225282494 +0200
+@@ -90,7 +90,6 @@
+     AX_CHECK_COMPILE_FLAG([-Wall], [WERROR_CFLAGS="$WERROR_CFLAGS -Wall"])
+     AX_CHECK_COMPILE_FLAG([-Wconversion], [WERROR_CFLAGS="$WERROR_CFLAGS -Wconversion"])
+     AX_CHECK_COMPILE_FLAG([-Wextra], [WERROR_CFLAGS="$WERROR_CFLAGS -Wextra"])
+-    AX_CHECK_COMPILE_FLAG([-Werror], [WERROR_CFLAGS="$WERROR_CFLAGS -Werror"])
+     AX_CHECK_COMPILE_FLAG([-Wmissing-prototypes], [WERROR_CFLAGS="$WERROR_CFLAGS -Wmissing-prototypes"])
+     AX_CHECK_COMPILE_FLAG([-Wstrict-prototypes], [WERROR_CFLAGS="$WERROR_CFLAGS -Wstrict-prototypes"])
+     AX_CHECK_COMPILE_FLAG([-Wmissing-declarations], [WERROR_CFLAGS="$WERROR_CFLAGS -Wmissing-declarations"])
+--- a/src/Makefile.am	2024-09-18 16:00:53.000000000 +0200
++++ b/src/Makefile.am	2025-08-08 10:16:27.571458349 +0200
+@@ -23,7 +23,7 @@
+ # mod_md for httpd
+ #---------------------------------------------------------------------------------------------------
+ 
+-mod_tls_la_CPPFLAGS = -g -I../src -std=c99 -D_GNU_SOURCE -Werror @WERROR_CFLAGS@
++mod_tls_la_CPPFLAGS = -I../src -std=c99 -D_GNU_SOURCE @WERROR_CFLAGS@
+ mod_tls_la_LDFLAGS  = -lrustls -module -export-symbols-regex tls_module
+ 
+ 

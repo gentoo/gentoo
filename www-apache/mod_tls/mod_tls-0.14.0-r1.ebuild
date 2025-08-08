@@ -20,6 +20,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-werror.patch" )
+
 need_apache2_4
 
 src_prepare() {
