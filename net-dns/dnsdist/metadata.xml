@@ -16,6 +16,7 @@
 		<flag name="bpf">Enable support for eBPF socket filtering</flag>
 		<flag name="dnscrypt">Enable the ability to act as a DNSCrypt server</flag>
 		<flag name="dnstap">Enable support for dnstap</flag>
+		<flag name="doc">Install the HTML documentation</flag>
 		<flag name="doh">Enable support for dns over http via <pkg>net-libs/nghttp2</pkg></flag>
 		<flag name="doh3">Enable support for dns over http3 via <pkg>net-libs/quiche</pkg></flag>
 		<flag name="ipcipher">Enable support for ipcipher via <pkg>dev-libs/openssl</pkg></flag>
