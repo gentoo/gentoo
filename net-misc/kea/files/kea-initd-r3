@@ -1,0 +1,76 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${KEA_USER:=dhcp}
+: ${KEA_GROUP:=dhcp}
+: ${KEA_CONFIG:=/etc/kea/${RC_SVCNAME}.conf}
+: ${KEA_PIDFILE:=/run/kea/${RC_SVCNAME}.kea-${KEA_SVC}.pid}
+
+description="kea ${KEA_SVC} services"
+command="/usr/sbin/kea-${KEA_SVC}"
+command_args="-c ${KEA_CONFIG}"
+command_user="${KEA_USER}:${KEA_GROUP}"
+pidfile="${KEA_PIDFILE}"
+required_files="${KEA_CONFIG}"
+start_stop_daemon_args="--background"
+
+extra_commands="check_kea_svc checkconfig"
+extra_started_commands="reload"
+
+check_kea_svc() {
+	if [ "${RC_SVCNAME}" = "kea" ]; then
+		eerror "You are not supposed to run this script directly."
+		eerror "Create a symlink for the kea service you want to run."
+		eerror "Symlinks should have been created during installation."
+		return 1
+	fi
+
+	case "${KEA_SVC}" in
+	dhcp4)
+	    capabilities="^cap_net_bind_service,^cap_net_raw"
+	    ;;
+	dhcp6|dhcp-ddns)
+	    capabilities="^cap_net_bind_service"
+	    ;;
+	ctrl-agent)
+	    ;;
+	*)
+	    eerror "KEA_SVC is undefined or invalid!"
+	    eerror "It should be defined in /etc/conf.d/${RC_SVCNAME}"
+	    return 1
+	    ;;
+	esac
+}
+
+checkconfig() {
+	${command} -t ${KEA_CONFIG} 1>/dev/null 2>/dev/null || return 1
+}
+
+reload() {
+	checkconfig || return 1
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --pidfile ${pidfile}
+	eend $?
+}
+
+start_pre() {
+	check_kea_svc || return 1
+
+	if [ $(stat -c "%U:%G" ${KEA_CONFIG}) != "root:${KEA_GROUP}" ] ; then
+		eerror "${KEA_CONFIG} config file is not owned by root:${KEA_GROUP}"
+		eerror "you should reset the ownership:"
+		eerror "chown root:${KEA_GROUP} ${KEA_CONFIG}"
+		return 1
+	fi
+
+	if [ "${RC_CMD}" != "restart" ]; then
+		checkconfig || return 1
+	fi
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		checkconfig || return 1
+	fi
+}

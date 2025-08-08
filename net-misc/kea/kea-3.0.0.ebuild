@@ -9,7 +9,7 @@ inherit eapi9-ver flag-o-matic meson python-r1 systemd tmpfiles toolchain-funcs
 DESCRIPTION="High-performance production grade DHCPv4 & DHCPv6 server"
 HOMEPAGE="https://www.isc.org/kea/"
 
-if [[ ${PV} == *9999* ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
@@ -232,8 +232,15 @@ src_install() {
 
 	fowners -R root:dhcp /etc/${PN}
 
-	newconfd "${FILESDIR}"/${PN}-confd-r2 ${PN}
-	newinitd "${FILESDIR}"/${PN}-initd-r2 ${PN}
+	# Install a conf per service and a linked init script per service
+	newinitd "${FILESDIR}"/${PN}-initd-r3 ${PN}
+	local svc
+	for svc in dhcp4 dhcp6 dhcp-ddns ctrl-agent; do
+		newconfd "${FILESDIR}"/${PN}-confd-r3 kea-${svc}
+		sed -e "s:@KEA_SVC@:${svc}:g" \
+			-i "${ED}"/etc/conf.d/kea-${svc} || die
+		dosym kea "${EPREFIX}"/etc/init.d/kea-${svc}
+	done
 
 	systemd_newunit "${FILESDIR}"/${PN}-ctrl-agent.service-r2 ${PN}-ctrl-agent.service
 	systemd_newunit "${FILESDIR}"/${PN}-dhcp-ddns.service-r2 ${PN}-dhcp-ddns.service
@@ -262,6 +269,17 @@ pkg_postinst() {
 		ewarn "  Daemons are launched by default with the unprivileged user 'dhcp'"
 		ewarn
 		ewarn "Please check your configuration!"
+	fi
+
+	if ver_replacing -lt 3.0; then
+		ewarn "If using openrc;"
+		ewarn "  There are now separate conf.d scripts and associated init.d per daemon!"
+		ewarn "    Each Daemon needs to be launched separately, i.e. the daemons are"
+		ewarn "      kea-dhcp4"
+		ewarn "      kea-dhcp6"
+		ewarn "      kea-dhcp-ddns"
+		ewarn "      kea-ctrl"
+		ewarn "Please adjust your service startups appropriately"
 	fi
 
 	if ! has_version net-misc/kea; then
