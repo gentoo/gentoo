@@ -1,0 +1,8 @@
+# KEA_SVC must be defined here!
+# Available values: dhcp4 dhcp6 dhcp-ddns ctrl-agent
+KEA_SVC="@KEA_SVC@"
+
+#KEA_USER=dhcp
+#KEA_GROUP=dhcp
+#KEA_CONFIG=/etc/kea/kea-@KEA_SVC@.conf
+#KEA_PIDFILE=/run/kea/kea-@KEA_SVC@.kea-@KEA_SVC@.pid
