@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# py3.14: https://bugs.gentoo.org/960115
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit meson-multilib python-any-r1
 
 if [[ ${PV} == 9999 ]]; then
@@ -70,6 +69,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.229.1-llvm-libunwind.patch
+	"${FILESDIR}"/${P}-vulkan-python-xml.patch
 )
 
 python_check_deps() {
