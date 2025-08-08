@@ -9,7 +9,7 @@ inherit cargo
 DESCRIPTION="Cargo subcommand to see license of dependencies"
 HOMEPAGE="https://github.com/onur/cargo-license"
 SRC_URI="https://github.com/onur/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://github.com/gentoo-crate-dist/anki/releases/download/v${PV}/${P}-crates.tar.xz"
+SRC_URI+=" https://github.com/gentoo-crate-dist/${PN}/releases/download/v${PV}/${P}-crates.tar.xz"
 
 LICENSE="Apache-2.0 Boost-1.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
