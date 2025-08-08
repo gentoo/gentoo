@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2025-08-08)
+# ruby-openid fails tests and is archived upstream. Last release 6 years
+# ago. rack-openid is the only reverse dependency.
+# Removal on 2025-09-08
+dev-ruby/rack-openid
+dev-ruby/ruby-openid
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-08-07)
 # Unused java library, pinned to virtual/jdk:1.8.
 # Removal on 2025-09-07.
