@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="The DWARF Debugging Information Format"
+DESCRIPTION="Library intended to simplify reading (and writing) applications using DWARF"
 HOMEPAGE="
 	https://www.prevanders.net/dwarf.html
 	https://github.com/davea42/libdwarf-code
