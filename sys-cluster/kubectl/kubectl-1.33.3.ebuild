@@ -20,6 +20,8 @@ RESTRICT="test"
 
 BDEPEND=">=dev-lang/go-1.24.0"
 
+QA_PRESTRIPPED=usr/bin/kubectl
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
 		emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \
