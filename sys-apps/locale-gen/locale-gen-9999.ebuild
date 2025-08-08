@@ -19,7 +19,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
-	dev-lang/perl
+	>=dev-lang/perl-5.36
 	!<sys-libs/glibc-2.37-r3
 "
 
