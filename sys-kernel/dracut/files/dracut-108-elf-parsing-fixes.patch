@@ -1,0 +1,122 @@
+From 88e375f89c11c989737f6d00b0cfe6309f7447d7 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Fri, 8 Aug 2025 12:50:12 +0100
+Subject: [PATCH 1/3] fix(dracut-install): the -n short option for --dry-run
+
+I forgot to update the getopt call.
+
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/src/install/dracut-install.c
++++ b/src/install/dracut-install.c
+@@ -1638,7 +1638,7 @@ static int parse_argv(int argc, char *argv[])
+                 {NULL, 0, NULL, 0}
+         };
+ 
+-        while ((c = getopt_long(argc, argv, "madfhlL:oD:Hr:Rp:P:s:S:N:v", options, NULL)) != -1) {
++        while ((c = getopt_long(argc, argv, "madfhlL:oD:Hr:Rp:P:s:S:N:vn", options, NULL)) != -1) {
+                 switch (c) {
+                 case ARG_VERSION:
+                         puts(PROGRAM_VERSION_STRING);
+-- 
+2.50.1
+
+
+From 06e95cc602d0c6df99f4a54b2ade7deb59343a40 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Fri, 8 Aug 2025 12:52:23 +0100
+Subject: [PATCH 2/3] fix(dracut-install): the RUNPATH expansion returning
+ empty strings
+
+The input was not initially copied into the result, so the result would
+start with a null pointer and be treated as an empty string. Expansion
+will not occur in most cases, leading to a straight copy of input being
+returned, so just do that in the first place.
+
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/src/install/dracut-install.c
++++ b/src/install/dracut-install.c
+@@ -770,7 +770,7 @@ static char *search_via_ldconf(const char *conf_pattern, const char *soname, con
+    expands to the directory of the given src path. $LIB expands to lib if
+    match64 is NULL or lib64 otherwise. Returns a newly allocated string even if
+    no expansion was necessary. */
+-static char *expand_runpath(char *input, const char *src, const Elf64_Ehdr *match64)
++static char *expand_runpath(const char *input, const char *src, const Elf64_Ehdr *match64)
+ {
+         regex_t regex;
+         regmatch_t rmatch[3]; /* 0: full match, 1: without brackets, 2: with brackets */
+@@ -780,11 +780,15 @@ static char *expand_runpath(char *input, const char *src, const Elf64_Ehdr *matc
+                 return NULL;
+         }
+ 
+-        char *result = NULL, *current = input;
++        char *result = strdup(input);
++        if (!result)
++                goto oom;
++
++        const char *current = input;
+         int offset = 0;
+ 
+         while (regexec(&regex, current + offset, 3, rmatch, 0) == 0) {
+-                char *varname = NULL;
++                const char *varname = NULL;
+                 _cleanup_free_ char *varval = NULL;
+                 size_t varname_len, varval_len;
+ 
+@@ -823,7 +827,7 @@ static char *expand_runpath(char *input, const char *src, const Elf64_Ehdr *matc
+         }
+ 
+         regfree(&regex);
+-        return result ?: strdup(current);
++        return result;
+ 
+ oom:
+         log_error("Out of memory");
+-- 
+2.50.1
+
+
+From 9f2f306fa971ee00cee0ae307479bc8a8dbc5263 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Fri, 8 Aug 2025 13:18:07 +0100
+Subject: [PATCH 3/3] fix(dracut-install): the handling of absolute paths in
+ sonames
+
+If the soname is an absolute path, expand it like the RUNPATH, and
+return it (with the sysroot) without further checks like glibc and musl
+do.
+
+They also support relative paths, but we cannot feasibly support them.
+Such paths are relative to the current directory of the calling process
+at runtime, which we cannot know in this context.
+
+This was observed with Neovim.
+
+Bug: https://bugs.gentoo.org/961101
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/src/install/dracut-install.c
++++ b/src/install/dracut-install.c
+@@ -894,6 +894,21 @@ oom:
+ static char *find_library(const char *soname, const char *src, size_t src_len, const Elf64_Ehdr *match64,
+                           const Elf32_Ehdr *match32)
+ {
++        /* If the soname is an absolute path, expand it like the RUNPATH, and
++           return it (with the sysroot) without further checks like glibc and
++           musl do. They also support relative paths, but we cannot feasibly
++           support them. Such paths are relative to the current directory of the
++           calling process at runtime, which we cannot know in this context. */
++        if (soname[0] == '/') {
++                _cleanup_free_ char *expanded = expand_runpath(soname, src, match64);
++                if (!expanded)
++                        return NULL;
++
++                char *sysroot_expanded = NULL;
++                _asprintf(&sysroot_expanded, "%s%s", sysrootdir ?: "", expanded);
++                return sysroot_expanded;
++        }
++
+         if (match64)
+                 FIND_LIBRARY_RUNPATH_FOR_BITS(64, match64);
+         else if (match32)
+-- 
+2.50.1
+

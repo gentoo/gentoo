@@ -105,6 +105,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-108-acct-user-group-gentoo.patch
 	# https://github.com/dracut-ng/dracut-ng/pull/1447
 	"${FILESDIR}"/${PN}-108-respect-objcopy-and-objdump.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/1538
+	"${FILESDIR}"/${PN}-108-elf-parsing-fixes.patch
 )
 
 pkg_setup() {
