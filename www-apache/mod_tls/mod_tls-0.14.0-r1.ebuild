@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_compile() {
-	econf --disable-werror
+	default
 }
 
 src_install() {
