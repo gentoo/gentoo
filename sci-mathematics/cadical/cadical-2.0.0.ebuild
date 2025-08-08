@@ -6,7 +6,7 @@ EAPI=8
 inherit dot-a toolchain-funcs
 
 DESCRIPTION="Simplified Satisfiability Solver"
-HOMEPAGE="http://fmv.jku.at/cadical/
+HOMEPAGE="https://fmv.jku.at/cadical/
 	https://github.com/arminbiere/cadical/"
 
 if [[ "${PV}" == *9999* ]] ; then
