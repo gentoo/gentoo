@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Simplified Satisfiability Solver"
 HOMEPAGE="http://fmv.jku.at/cadical/
@@ -34,6 +34,7 @@ DOCS=( CONTRIBUTING.md NEWS.md README.md )
 src_configure() {
 	tc-export AR
 
+	lto-guarantee-fat
 	CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} ${LDFLAGS}" ./configure || die
 }
 
@@ -44,6 +45,7 @@ src_install() {
 	dolib.a build/libcadical.a
 	doheader src/cadical.hpp
 	doheader src/ccadical.h
+	strip-lto-bytecode
 
 	einstalldocs
 }
