@@ -30,7 +30,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	sed -e 's/ -Werror / /' -i "${S}/CMakeLists.txt"
+	sed -e 's/ -Werror / /' -i "${S}/CMakeLists.txt" || die
 	cmake_src_prepare
 }
 
