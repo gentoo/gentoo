@@ -315,6 +315,9 @@ src_configure() {
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
 
+	# Workaround for bug #959423 (https://jira.mariadb.org/browse/MDEV-37148)
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-flags -fno-tree-vectorize
+
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
 
 	# debug hack wrt #497532
