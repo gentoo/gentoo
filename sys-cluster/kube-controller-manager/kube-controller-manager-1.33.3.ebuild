@@ -23,6 +23,8 @@ DEPEND="acct-group/kube-controller-manager
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-lang/go-1.24.0"
 
+QA_PRESTRIPPED=usr/bin/kube-controller-manager
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
 		emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \
