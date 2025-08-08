@@ -41,7 +41,11 @@ app-emulation/qemu X
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
 # Currently fails to build without, and Valve would likely not be
-# interested in a bug. May leave forced depending on how this goes.
+# interested in a bug. Even if this gets fixed, not sure if want
+# to unforce because of this lack of upstream support outside
+# normal Steam+Proton usage with matching build options, we try
+# to only allow a configuration similar to upstream's to minimize
+# issues (but feel free to unforce at your own risks).
 app-emulation/wine-proton mingw
 
 # Sebastian Pipping <sping@gentoo.org> (2025-03-27)
