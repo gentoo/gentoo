@@ -419,6 +419,8 @@ test_strip_lto() {
 	# one needs -ffat-lto-objects for our purposes in dot-a.eclass,
 	# but still, strip shouldn't break a non-fat object, and we want
 	# to know if that regresses.
+	#
+	# See test_strip_index as well.
 	tbegin "whether strip ignores LTO static archives"
 	ret=0
 	(
@@ -606,6 +608,29 @@ test_strip_cross() {
 	tend ${ret} "strip broke binary for a foreign architecture"
 }
 
+test_strip_index() {
+	# Check specifically for whether we mangle the index in an archive
+	# which was the original testcase given in https://sourceware.org/PR21479.
+	tbegin "whether strip breaks index on LTO static archive"
+	ret=0
+	(
+		rm foo.a foo.a.bak 2>/dev/null
+		_create_test_progs
+
+		$(tc-getCC) a.c -o a.o -c -flto -ggdb3 || return 1
+		$(tc-getAR) qD foo.a a.o 2>/dev/null || return 1
+		cp foo.a foo.a.bak || return 1
+		$(tc-getSTRIP) --enable-deterministic-archives -p --strip-unneeded foo.a || return 1
+
+		# They should NOT differ after stripping because it
+		# can't be safely stripped without special arguments.
+		cmp -s foo.a foo.a.bak || return 1
+
+		return 0
+	) || ret=1
+	tend ${ret} "strip broke index on LTO static archive"
+}
+
 _repeat_tests_with_compilers() {
 	# Call test_lto_guarantee_fat and test_strip_lto_bytecode with
 	# various compilers and linkers.
@@ -666,4 +691,5 @@ test_strip_lto
 test_strip_lto_mixed
 test_strip_nolto
 test_strip_cross
+test_strip_index
 texit
