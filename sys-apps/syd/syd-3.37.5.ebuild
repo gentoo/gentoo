@@ -12,10 +12,10 @@ CRATES="
 	aho-corasick@1.1.3
 	android-tzdata@0.1.1
 	android_system_properties@0.1.5
-	anstream@0.6.19
+	anstream@0.6.20
 	anstyle-parse@0.2.7
-	anstyle-query@1.1.3
-	anstyle-wincon@3.0.9
+	anstyle-query@1.1.4
+	anstyle-wincon@3.0.10
 	anstyle@1.0.11
 	anyhow@1.0.98
 	arrayref@0.3.9
@@ -28,17 +28,17 @@ CRATES="
 	bitvec@1.0.1
 	blake2b_simd@0.5.11
 	block-buffer@0.10.4
-	brunch@0.7.0
+	brunch@0.5.3
 	btoi@0.5.0
 	bumpalo@3.19.0
 	bytes@1.10.1
 	caps@0.5.5
-	cc@1.2.30
+	cc@1.2.32
 	cfg-if@1.0.1
 	cfg_aliases@0.2.1
 	chrono@0.4.41
-	clap@4.5.41
-	clap_builder@4.5.41
+	clap@4.5.43
+	clap_builder@4.5.43
 	clap_derive@4.5.41
 	clap_lex@0.7.5
 	colorchoice@1.0.4
@@ -53,7 +53,7 @@ CRATES="
 	crc@3.3.0
 	crossbeam-utils@0.8.21
 	crypto-common@0.1.6
-	dactyl@0.8.0
+	dactyl@0.7.4
 	darling@0.20.11
 	darling_core@0.20.11
 	darling_macro@0.20.11
@@ -86,7 +86,7 @@ CRATES="
 	goblin@0.9.3
 	gperftools@0.2.0
 	hashbrown@0.12.3
-	hashbrown@0.15.4
+	hashbrown@0.15.5
 	heck@0.5.0
 	hermit-abi@0.5.2
 	hex@0.4.3
@@ -114,7 +114,7 @@ CRATES="
 	libcontainer@0.5.4
 	libloading@0.8.8
 	liboci-cli@0.5.4
-	libredox@0.1.6
+	libredox@0.1.9
 	libseccomp-sys@0.2.1
 	libseccomp-sys@0.3.0
 	libseccomp@0.3.0
@@ -174,14 +174,14 @@ CRATES="
 	redox_syscall@0.1.57
 	redox_users@0.3.5
 	redox_users@0.4.6
-	redox_users@0.5.0
+	redox_users@0.5.2
 	regex-automata@0.4.9
 	regex-syntax@0.8.5
 	regex@1.11.1
 	ringbuf@0.4.8
 	rust-argon2@0.8.3
 	rust-criu@0.4.0
-	rustc-demangle@0.1.25
+	rustc-demangle@0.1.26
 	rustix@0.38.44
 	rustix@1.0.8
 	rustversion@1.0.21
@@ -193,7 +193,7 @@ CRATES="
 	sendfd@0.4.4
 	serde@1.0.219
 	serde_derive@1.0.219
-	serde_json@1.0.141
+	serde_json@1.0.142
 	sha1@0.10.6
 	sha3@0.10.8
 	sharded-slab@0.1.7
@@ -203,9 +203,7 @@ CRATES="
 	smallstr@0.2.0
 	smallvec@1.15.1
 	strsim@0.11.1
-	strum@0.26.3
 	strum@0.27.2
-	strum_macros@0.26.4
 	strum_macros@0.27.2
 	subtle@2.6.1
 	syn@2.0.104
@@ -257,7 +255,7 @@ CRATES="
 	windows-sys@0.59.0
 	windows-sys@0.60.2
 	windows-targets@0.52.6
-	windows-targets@0.53.2
+	windows-targets@0.53.3
 	windows_aarch64_gnullvm@0.52.6
 	windows_aarch64_gnullvm@0.53.0
 	windows_aarch64_msvc@0.52.6
