@@ -288,6 +288,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${WORKDIR}"/patches
+	"${FILESDIR}"/ffmpeg-7.1.1-libv4l-1.30.patch
 )
 
 pkg_pretend() {

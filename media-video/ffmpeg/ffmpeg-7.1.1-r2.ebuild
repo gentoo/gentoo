@@ -343,6 +343,7 @@ PATCHES=(
 	"${FILESDIR}"/ffmpeg-6.1-opencl-parallel-gmake-fix.patch
 	"${FILESDIR}"/ffmpeg-7.1.1-svt-av1-3.patch
 	"${FILESDIR}"/ffmpeg-7.1.1-npp13.patch
+	"${FILESDIR}"/ffmpeg-7.1.1-libv4l-1.30.patch
 )
 
 pkg_pretend() {
