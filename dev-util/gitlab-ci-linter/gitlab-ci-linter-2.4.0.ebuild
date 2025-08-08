@@ -8,6 +8,7 @@ DESCRIPTION="linter for .gitlab-ci.yml files"
 HOMEPAGE="https://gitlab.com/orobardet/gitlab-ci-linter"
 SRC_URI="https://gitlab.com/orobardet/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
+S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="MIT"
 SLOT="0"
@@ -16,7 +17,6 @@ KEYWORDS="~amd64"
 BDEPEND=">=dev-lang/go-1.24"
 
 RESTRICT="test"
-S="${WORKDIR}/${PN}-v${PV}"
 
 QA_PRESTRIPPED=usr/bin/gitlab-ci-linter
 
