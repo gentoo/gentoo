@@ -22,7 +22,10 @@ elif [[ ${PV} == *beta* ]]; then
 else
 	# curl -Ls static.rust-lang.org/dist/channel-rust-${PV}.toml | grep "xz_url.*rust-src"
 	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
-		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-06-26/rust-src-${PV}.tar.xz )
+		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-08-07/rust-src-${PV}.tar.xz )
+		ppc64? ( elibc_musl? ( !big-endian? (
+			$(rust_arch_uri powerpc64le-unknown-linux-musl rust-${PV})
+		) ) )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
 fi
@@ -50,7 +53,6 @@ if [[ ${PV} != *9999* && ${PV} != *beta* ]] && false ; then
 	)"
 	SRC_URI+=" ppc64? ( elibc_musl? (
 		big-endian?  ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-powerpc64-unknown-linux-musl.tar.xz )
-		!big-endian? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-powerpc64le-unknown-linux-musl.tar.xz )
 	) )"
 fi
 
@@ -58,9 +60,11 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
 IUSE="big-endian clippy cpu_flags_x86_sse2 doc prefix rust-analyzer rust-src rustfmt"
 
+# net-misc/curl is needed for our own bootstrapped rustc, since cross-compiling bundled curl is not supported
 RDEPEND="
 	>=app-eselect/eselect-rust-20190311
 	dev-libs/openssl
+	net-misc/curl
 	sys-apps/lsb-release
 	|| (
 		llvm-runtimes/libgcc
