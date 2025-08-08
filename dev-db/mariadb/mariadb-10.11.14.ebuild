@@ -89,11 +89,16 @@ COMMON_DEPEND="
 		>=dev-libs/openssl-1.0.0:0=
 	)
 "
-BDEPEND="app-alternatives/yacc"
+BDEPEND="
+	app-alternatives/yacc
+	test? (
+		acct-group/mysql
+		acct-user/mysql
+	)
+"
 DEPEND="${COMMON_DEPEND}
 	server? (
 		extraengine? ( jdbc? ( >=virtual/jdk-1.8 ) )
-		test? ( acct-group/mysql acct-user/mysql )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
 "
