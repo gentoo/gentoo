@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DOTNET_PKG_COMPAT=8.0
+DOTNET_PKG_COMPAT="9.0"
 NUGETS="
 dotnet-xunit@2.3.1
 fsharp.compiler.service@26.0.1
