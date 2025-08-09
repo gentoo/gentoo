@@ -314,7 +314,7 @@ DEPEND="
 	ladspa? ( media-libs/ladspa-sdk )
 	nvenc? ( >=media-libs/nv-codec-headers-12.1.14.0 )
 	opencl? ( dev-util/opencl-headers )
-	vulkan? ( dev-util/vulkan-headers )
+	vulkan? ( >=dev-util/vulkan-headers-1.4.317 )
 "
 BDEPEND="
 	app-alternatives/awk
@@ -467,6 +467,7 @@ multilib_src_configure() {
 		--disable-pocketsphinx
 		--disable-rkmpp
 		--disable-vapoursynth
+		--disable-whisper
 
 		# disabled for other or additional reasons
 		--disable-cuda-nvcc # prefer cuda-llvm for less issues
