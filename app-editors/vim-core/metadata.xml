@@ -5,6 +5,10 @@
 		<email>xxc3ncoredxx@gmail.com</email>
 		<name>Oskari Pirhonen</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>douglarek@gmail.com</email>
+		<name>Leo Douglas</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>vim@gentoo.org</email>
 		<name>Gentoo Vim Project</name>
