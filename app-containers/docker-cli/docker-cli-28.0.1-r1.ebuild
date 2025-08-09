@@ -3,17 +3,11 @@
 
 EAPI=8
 
-inherit shell-completion go-module
+inherit bash-completion-r1 go-module
 MY_PV=${PV/_/-}
 
 # update this on every bump
-GIT_COMMIT=b8034c0ed70494a90c133461d145cd072d920d7c
-
-# To create the man pages tarball, run the following in the git source
-# directory:
-#git checkout ${PV}
-# make manpages
-# tar -acf ${P}-man.tar.xz man/man?
+GIT_COMMIT=068a01ea9470df6494cc92d9e64e240805ae47a7
 
 DESCRIPTION="the command line binary for docker"
 HOMEPAGE="https://www.docker.com/"
@@ -23,7 +17,7 @@ S="${WORKDIR}/cli-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="hardened selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-docker )"
@@ -61,8 +55,10 @@ src_install() {
 	doman "${WORKDIR}"/man/man?/*
 	dobashcomp contrib/completion/bash/docker
 	bashcomp_alias docker dockerd
-	dofishcomp contrib/completion/fish/docker.fish
-	dozshcomp contrib/completion/zsh/_*
+	insinto /usr/share/fish/vendor_completions.d/
+	doins contrib/completion/fish/docker.fish
+	insinto /usr/share/zsh/site-functions
+	doins contrib/completion/zsh/_*
 }
 
 pkg_postinst() {
