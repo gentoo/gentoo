@@ -4,7 +4,7 @@
 EAPI=7
 
 GNOME2_LA_PUNT="yes"
-inherit gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="CD/DVD burning application for the GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/Apps/Brasero"
@@ -12,13 +12,13 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Brasero"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0/3.1" # subslot is 3.suffix of libbrasero-burn3
 KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
-IUSE="+css +introspection +libburn mp3 nautilus playlist tracker"
+IUSE="X +css +introspection +libburn mp3 nautilus playlist tracker"
 
 DEPEND="
 	>=dev-libs/glib-2.29.14:2
-	>=x11-libs/gtk+-3:3[introspection?]
+	>=x11-libs/gtk+-3:3[X?,introspection?]
 	media-libs/gstreamer:1.0
-	media-libs/gst-plugins-base:1.0
+	media-libs/gst-plugins-base:1.0[X?]
 	>=dev-libs/libxml2-2.6:2=
 	>=x11-libs/libnotify-0.6.1:=
 	|| (
@@ -37,7 +37,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-libs/gst-plugins-good:1.0
-	media-plugins/gst-plugins-meta:1.0[mp3?]
+	media-plugins/gst-plugins-meta:1.0[X?,mp3?]
 	x11-themes/hicolor-icon-theme
 	css? ( media-libs/libdvdcss:1.2 )
 	!libburn? (
@@ -64,6 +64,8 @@ PATCHES=(
 )
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
 	gnome2_src_configure \
 		--disable-caches \
 		$(use_enable !libburn cdrtools) \

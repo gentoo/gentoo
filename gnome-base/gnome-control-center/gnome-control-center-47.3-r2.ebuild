@@ -2,21 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+PYTHON_COMPAT=( python3_{11..14} )
 
-PYTHON_COMPAT=( python3_{10..13} )
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 virtualx xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://apps.gnome.org/Settings"
-SRC_URI+=" https://dev.gentoo.org/~pacho/${PN}/${P}-patchset-r1.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~pacho/${PN}/${P}-patchset.tar.xz"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo.svg"
 SRC_URI+=" https://dev.gentoo.org/~mattst88/distfiles/${PN}-gentoo-logo-dark.svg"
 # Logo is CC-BY-SA-2.5
 LICENSE="GPL-2+ CC-BY-SA-2.5"
 SLOT="2"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="+bluetooth +cups debug elogind +gnome-online-accounts +ibus input_devices_wacom kerberos +geolocation networkmanager systemd test wayland"
+IUSE="X +bluetooth +cups debug elogind +gnome-online-accounts +ibus input_devices_wacom kerberos +geolocation networkmanager systemd test wayland"
 REQUIRED_USE="
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime,
@@ -32,19 +32,19 @@ RESTRICT="!test? ( test )"
 # Second block is dependency() from subdir meson.builds, sorted by directory name occurrence order
 DEPEND="
 	gnome-online-accounts? (
-		x11-libs/gtk+:3
-		>=net-libs/gnome-online-accounts-3.49.1:=
+		x11-libs/gtk+:3[X?,wayland?]
+		>=net-libs/gnome-online-accounts-3.51.0:=
 	)
-	>=media-libs/libpulse-2.0[glib]
-	>=gui-libs/gtk-4.11.2:4[X,wayland=]
-	>=gui-libs/libadwaita-1.4_alpha:1
+	>=media-libs/libpulse-2.0[X?,glib]
+	>=gui-libs/gtk-4.15.2:4[X?,wayland?]
+	>=gui-libs/libadwaita-1.6_beta:1
 	>=sys-apps/accountsservice-0.6.39
 	>=x11-misc/colord-0.1.34:0=
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=dev-libs/glib-2.76.6:2
 	gnome-base/gnome-desktop:4=
-	>=gnome-base/gnome-settings-daemon-41.0[colord,input_devices_wacom?]
-	>=gnome-base/gsettings-desktop-schemas-46_beta
+	>=gnome-base/gnome-settings-daemon-41.0[colord,input_devices_wacom?,wayland?]
+	>=gnome-base/gsettings-desktop-schemas-47.0
 	dev-libs/libxml2:2=
 	>=sys-power/upower-0.99.8:=
 	>=dev-libs/libgudev-232
@@ -68,7 +68,7 @@ DEPEND="
 	input_devices_wacom? ( >=dev-libs/libwacom-1.4:= )
 	kerberos? ( app-crypt/mit-krb5 )
 
-	x11-libs/cairo[glib]
+	x11-libs/cairo[X?,glib]
 	>=x11-libs/colord-gtk-0.3.0:=
 	media-libs/fontconfig
 	gnome-base/libgtop:2=
@@ -77,7 +77,7 @@ DEPEND="
 	net-libs/gnutls:=
 	media-libs/gsound
 
-	x11-libs/pango
+	x11-libs/pango[X?]
 "
 # media-libs/libcanberra[pulseaudio,sound] needed for Speaker tests in
 # Settings/Sound/Output/Output Device, bug #814110
@@ -132,6 +132,7 @@ BDEPEND="${PYTHON_DEPS}
 		$(python_gen_any_dep '
 			dev-python/python-dbusmock[${PYTHON_USEDEP}]
 		')
+		x11-apps/setxkbmap
 	)
 "
 
@@ -167,6 +168,9 @@ src_configure() {
 	# Do not trust with LTO either
 	append-flags -fno-strict-aliasing
 	filter-lto
+
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
 
 	local emesonargs=(
 		$(meson_use bluetooth)
