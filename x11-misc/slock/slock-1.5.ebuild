@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -58,7 +58,7 @@ pkg_postinst() {
 	# cap_dac_read_search used to be enough for shadow access
 	# but now slock wants to write to /proc/self/oom_score_adj
 	# and for that it needs:
-	fcaps \
+	fcaps -m u+s \
 		cap_dac_override,cap_setgid,cap_setuid,cap_sys_resource \
 		/usr/bin/slock
 

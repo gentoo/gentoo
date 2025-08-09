@@ -187,5 +187,5 @@ pkg_postinst() {
 
 	# The pam_unix module needs to check the password of the user which requires
 	# read access to /etc/shadow only.
-	fcaps cap_dac_override sbin/unix_chkpwd
+	fcaps -m u+s cap_dac_override sbin/unix_chkpwd
 }
