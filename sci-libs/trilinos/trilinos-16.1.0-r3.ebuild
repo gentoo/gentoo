@@ -28,7 +28,7 @@ IUSE="
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-cpp/kokkos-4.5.1:=[openmp=]
+	>=dev-cpp/kokkos-4.5.1:=[cuda=,openmp=]
 	dev-libs/boost:=
 	sys-libs/binutils-libs:=
 	virtual/blas
