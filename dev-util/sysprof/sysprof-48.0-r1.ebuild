@@ -46,6 +46,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-48.0-shadowed-variable.patch
+)
+
 src_prepare() {
 	default
 	xdg_environment_reset
