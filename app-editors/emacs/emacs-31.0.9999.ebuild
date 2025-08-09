@@ -217,8 +217,6 @@ src_prepare() {
 }
 
 src_configure() {
-	replace-flags "-O[3-9]" -O2			#839405
-
 	# We want floating-point arithmetic to be correct #933380
 	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
