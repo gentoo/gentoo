@@ -31,6 +31,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-nsf.patch
+)
+
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \

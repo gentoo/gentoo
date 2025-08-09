@@ -1,0 +1,23 @@
+https://gitlab.com/jgemu/jgrf/-/commit/b0cadbd7829c76e4fdb1a99961a17d4cf23d31a4
+
+From b0cadbd7829c76e4fdb1a99961a17d4cf23d31a4 Mon Sep 17 00:00:00 2001
+From: Rupert Carmichael <5050061-carmiker@users.noreply.gitlab.com>
+Date: Tue, 5 Aug 2025 01:15:20 -0400
+Subject: [PATCH] detect: Add NSF detection
+
+---
+ src/detect.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/detect.c b/src/detect.c
+index 8522f4c..025d057 100644
+--- a/src/detect.c
++++ b/src/detect.c
+@@ -94,6 +94,7 @@ static extmap_t extmap[] = {
+     {"nes", "nes"},
+     {"ngc", "ngp"},
+     {"ngp", "ngp"},
++    {"nsf", "nes"},
+     {"pce", "pce"},
+     {"rom", "coleco"},
+     {"sfc", "snes"},
