@@ -86,7 +86,6 @@ RDEPEND="
 	>=dev-python/parsedatetime-2.4[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-25.0.0[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
-	>=dev-python/pytz-2019.3[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
 	certbot-apache? (
 		dev-python/python-augeas[${PYTHON_USEDEP}]
