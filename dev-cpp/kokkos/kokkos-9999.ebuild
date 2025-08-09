@@ -65,6 +65,7 @@ src_configure() {
 		-DKokkos_ENABLE_SERIAL=ON
 		-DKokkos_ENABLE_HWLOC=ON
 		-DKokkos_ENABLE_CUDA="$(usex cuda)"
+		-DKokkos_ENABLE_CUDA_CONSTEXPR="$(usex cuda)"
 		-DKokkos_HWLOC_DIR="${EPREFIX}/usr"
 		-DKokkos_ENABLE_OPENMP="$(usex openmp)"
 		-DBUILD_SHARED_LIBS=ON
