@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
@@ -19,12 +19,12 @@ HOMEPAGE="https://github.com/simplecov-ruby/simplecov"
 SRC_URI="https://github.com/simplecov-ruby/simplecov/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 SLOT="0.8"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="doc"
 
 ruby_add_rdepend "
-	dev-ruby/simplecov-html:0.12
+	|| ( dev-ruby/simplecov-html:0.13 dev-ruby/simplecov-html:0.12 )
 	>=dev-ruby/simplecov_json_formatter-0.1:0
 	>=dev-ruby/docile-1.1:0"
 
@@ -49,6 +49,10 @@ all_ruby_prepare() {
 	sed -e '/start_coverage_measurement/,/^  end/ s|with(lines: true)|with({lines: true})|' \
 		-e '/start_coverage_measurement/,/^  end/ s|with(lines: true, branches: true)|with({lines: true, branches: true})|' \
 		-i spec/simplecov_spec.rb || die
+
+	# Loosen test that is fragile for simplecov-html versions.
+	sed -e 's: 2 / 3 LOC:2 / 3:' \
+		-i spec/coverage_for_eval_spec.rb || die
 }
 
 each_ruby_test() {
