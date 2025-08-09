@@ -115,5 +115,9 @@ src_install() {
 	# currently no option to disable building static libs
 	use static-libs || rm -- "${ED}"/usr/$(get_libdir)/*.a || die
 
+	# these are installed twice, overwrite the static fltk copy
+	mv -- "${ED}"/usr/bin/fluid{-shared,} || die
+	mv -- "${ED}"/usr/bin/fltk-options{-shared,} || die
+
 	strip-lto-bytecode
 }
