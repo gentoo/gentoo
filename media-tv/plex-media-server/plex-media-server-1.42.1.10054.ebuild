@@ -5,7 +5,7 @@ EAPI=8
 
 inherit readme.gentoo-r1 systemd unpacker pax-utils
 
-MY_PV="${PV}-46083195d"
+MY_PV="${PV}-f333bdaa8"
 MY_URI="https://downloads.plex.tv/plex-media-server-new"
 
 DESCRIPTION="Free media library that is intended for use with a plex client"
