@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib.eclass
@@ -487,6 +487,17 @@ multilib_toolchain_setup() {
 	local save_restore_variables=(
 		CBUILD
 		CHOST
+		BUILD_AR
+		BUILD_CC
+		BUILD_CXX
+		BUILD_LD
+		BUILD_NM
+		BUILD_OBJCOPY
+		BUILD_PKG_CONFIG
+		BUILD_RANLIB
+		BUILD_READELF
+		BUILD_STRINGS
+		BUILD_STRIP
 		AR
 		CC
 		CXX
@@ -535,6 +546,20 @@ multilib_toolchain_setup() {
 		#
 		# Make sure ${save_restore_variables[@]} list matches below.
 		export CHOST=$(get_abi_CHOST ${DEFAULT_ABI})
+
+		# Derive the build-machine toolchain variables before we
+		# override the host-machine toolchain variables.
+		export BUILD_AR="$(tc-getBUILD_AR)" # Avoid 'ar', use "${CBUILD}-ar"
+		export BUILD_CC="$(tc-getBUILD_CC) $(get_abi_CFLAGS)"
+		export BUILD_CXX="$(tc-getBUILD_CXX) $(get_abi_CFLAGS)"
+		export BUILD_LD="$(tc-getBUILD_LD) $(get_abi_LDFLAGS)"
+		export BUILD_NM="$(tc-getBUILD_NM)" # Avoid 'nm', use "${CBUILD}-nm"
+		export BUILD_OBJCOPY="$(tc-getBUILD_OBJCOPY)" # Avoid 'objcopy', use "${CBUILD}-objcopy"
+		export BUILD_PKG_CONFIG="$(tc-getBUILD_PKG_CONFIG)"
+		export BUILD_RANLIB="$(tc-getBUILD_RANLIB)" # Avoid 'ranlib', use "${CBUILD}-ranlib"
+		export BUILD_READELF="$(tc-getBUILD_READELF)" # Avoid 'readelf', use "${CBUILD}-readelf"
+		export BUILD_STRINGS="$(tc-getBUILD_STRINGS)" # Avoid 'strings', use "${CBUILD}-strings"
+		export BUILD_STRIP="$(tc-getBUILD_STRIP)" # Avoid 'strip', use "${CBUILD}-strip"
 
 		export AR="$(tc-getAR)" # Avoid 'ar', use '${CHOST}-ar'
 		export CC="$(tc-getCC) $(get_abi_CFLAGS)"
