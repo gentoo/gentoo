@@ -163,6 +163,9 @@
 -cpu_flags_x86_3dnow
 -cpu_flags_x86_3dnowext
 -cpu_flags_x86_aes
+-cpu_flags_x86_amx_bf16
+-cpu_flags_x86_amx_int8
+-cpu_flags_x86_amx_tile
 -cpu_flags_x86_avx
 -cpu_flags_x86_avx2
 -cpu_flags_x86_avx512_4fmaps
@@ -182,6 +185,9 @@
 -cpu_flags_x86_avx512ifma
 -cpu_flags_x86_avx512pf
 -cpu_flags_x86_avx512vbmi
+-cpu_flags_x86_avx_vnni
+-cpu_flags_x86_bmi1
+-cpu_flags_x86_bmi2
 -cpu_flags_x86_avx512vl
 -cpu_flags_x86_f16c
 -cpu_flags_x86_fma3
