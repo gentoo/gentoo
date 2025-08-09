@@ -34,6 +34,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-Adapt-llvmorg-20-init-12964-gdf9a14d7bbf1-createDiag.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DCCLS_VERSION=${PV}
