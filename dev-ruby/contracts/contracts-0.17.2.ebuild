@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -17,6 +17,8 @@ HOMEPAGE="https://github.com/egonSchiele/contracts.ruby"
 LICENSE="MIT"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+
+PATCHES=( "${FILESDIR}/${P}-ruby34.patch" )
 
 each_ruby_test() {
 	# COLUMNS needed for specs that test line wrapping in spec/contracts_spec.rb
