@@ -71,6 +71,10 @@ src_prepare() {
 
 	sed -r -e 's/(set\(ARM_ARGS -O3)/# \1/g' -i CMakeLists.txt || die
 
+	# fix hardcoded path
+	# libvmaf ERROR could not read model from path: "/usr/local/share/model/vmaf_v0.6.1.json"
+	sed -e "s#/usr/local/share/model/#${EPREFIX}/usr/share/vmaf/model/#g" -i x265.h || die
+
 	# TODO check so_name via
 	# X265_BUILD 215
 }
