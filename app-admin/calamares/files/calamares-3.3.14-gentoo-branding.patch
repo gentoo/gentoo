@@ -1,0 +1,788 @@
+From: Morovan Mihai <mihaimorovan1@gmail.com>
+Date: Fri, 1 Aug 2025 12:00:16 +0300
+Subject: [PATCH] Added Gentoo Stage3 chooser module
+
+---
+ src/modules/stagechoose/CMakeLists.txt        | 13 +++
+ src/modules/stagechoose/Config.cpp            | 64 +++++++++++++
+ src/modules/stagechoose/Config.h              | 44 +++++++++
+ src/modules/stagechoose/SetStage3Job.cpp      | 61 ++++++++++++
+ src/modules/stagechoose/SetStage3Job.h        | 22 +++++
+ src/modules/stagechoose/StageChoosePage.cpp   | 91 ++++++++++++++++++
+ src/modules/stagechoose/StageChoosePage.h     | 45 +++++++++
+ src/modules/stagechoose/StageChoosePage.ui    | 53 +++++++++++
+ .../stagechoose/StageChooseViewStep.cpp       | 80 ++++++++++++++++
+ src/modules/stagechoose/StageChooseViewStep.h | 53 +++++++++++
+ src/modules/stagechoose/StageFetcher.cpp      | 92 +++++++++++++++++++
+ src/modules/stagechoose/StageFetcher.h        | 22 +++++
+ src/modules/stagechoose/stagechoose.conf      |  7 ++
+ .../stagechoose/stagechoose.schema.yaml       | 17 ++++
+ 14 files changed, 664 insertions(+)
+ create mode 100644 src/modules/stagechoose/CMakeLists.txt
+ create mode 100644 src/modules/stagechoose/Config.cpp
+ create mode 100644 src/modules/stagechoose/Config.h
+ create mode 100644 src/modules/stagechoose/SetStage3Job.cpp
+ create mode 100644 src/modules/stagechoose/SetStage3Job.h
+ create mode 100644 src/modules/stagechoose/StageChoosePage.cpp
+ create mode 100644 src/modules/stagechoose/StageChoosePage.h
+ create mode 100644 src/modules/stagechoose/StageChoosePage.ui
+ create mode 100644 src/modules/stagechoose/StageChooseViewStep.cpp
+ create mode 100644 src/modules/stagechoose/StageChooseViewStep.h
+ create mode 100644 src/modules/stagechoose/StageFetcher.cpp
+ create mode 100644 src/modules/stagechoose/StageFetcher.h
+ create mode 100644 src/modules/stagechoose/stagechoose.conf
+ create mode 100644 src/modules/stagechoose/stagechoose.schema.yaml
+
+diff --git a/src/modules/stagechoose/CMakeLists.txt b/src/modules/stagechoose/CMakeLists.txt
+new file mode 100644
+index 000000000..f1ee399f9
+--- /dev/null
++++ b/src/modules/stagechoose/CMakeLists.txt
+@@ -0,0 +1,13 @@
++calamares_add_plugin(stagechoose
++    TYPE viewmodule
++    EXPORT_MACRO PLUGINDLLEXPORT_PRO
++    SOURCES
++        Config.cpp
++        StageChooseViewStep.cpp
++        StageChoosePage.cpp
++        SetStage3Job.cpp
++        StageFetcher.cpp
++    UI
++        StageChoosePage.ui
++    SHARED_LIB
++)
+diff --git a/src/modules/stagechoose/Config.cpp b/src/modules/stagechoose/Config.cpp
+new file mode 100644
+index 000000000..c16eaac62
+--- /dev/null
++++ b/src/modules/stagechoose/Config.cpp
+@@ -0,0 +1,64 @@
++/* === This file is part of Calamares - <https://calamares.io> ===
++ *
++ *   SPDX-FileCopyrightText: 2019-2020 Adriaan de Groot <groot@kde.org>
++ *   SPDX-License-Identifier: GPL-3.0-or-later
++ *
++ *   Calamares is Free Software: see the License-Identifier above.
++ *
++ */
++
++#include "Config.h"
++#include "locale/Global.h"
++#include "JobQueue.h"
++#include "GlobalStorage.h"
++#include "StageFetcher.h"
++
++#include <QDateTime>
++
++Config::Config(QObject* parent)
++    : QObject(parent)
++{
++
++}
++
++QStringList Config::availableArchitectures()
++{
++    return { "amd64", "arm", "arm64", "x86" };
++}
++
++QStringList Config::availableStagesFor(const QString& arch)
++{
++    m_selectedArch = arch;
++    m_selectedVariant.clear();
++    m_selectedTarball.clear();
++
++    return StageFetcher::fetchVariants(arch);
++}
++
++void Config::selectVariant(const QString& variant)
++{
++    m_selectedVariant = variant;
++
++    m_selectedTarball = StageFetcher::fetchLatestTarball(m_selectedArch,variant);
++}
++
++QString Config::selectedStage3() const
++{
++    return m_selectedTarball;
++}
++
++bool Config::isValid() const
++{
++    return !m_selectedTarball.isEmpty();
++}
++
++void Config::updateGlobalStorage()
++{
++    Calamares::GlobalStorage* gs = Calamares::JobQueue::instance()->globalStorage();
++
++    gs->insert( "BASE_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(m_selectedArch,m_selectedVariant));
++    gs->insert( "FINAL_DOWNLOAD_URL",  QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/%3").arg(m_selectedArch,m_selectedVariant,m_selectedTarball));
++    gs->insert( "STAGE_NAME_TAR", m_selectedTarball );
++}
++
++
+diff --git a/src/modules/stagechoose/Config.h b/src/modules/stagechoose/Config.h
+new file mode 100644
+index 000000000..a508a4b34
+--- /dev/null
++++ b/src/modules/stagechoose/Config.h
+@@ -0,0 +1,44 @@
++/* === This file is part of Calamares - <https://calamares.io> ===
++ *
++ *   SPDX-FileCopyrightText: 2019-2020 Adriaan de Groot <groot@kde.org>
++ *   SPDX-License-Identifier: GPL-3.0-or-later
++ *
++ *   Calamares is Free Software: see the License-Identifier above.
++ *
++ */
++
++#ifndef CONFIG_H
++#define CONFIG_H
++
++#include <QObject>
++#include <QPair>
++#include <QString>
++#include <QList>
++
++class Config : public QObject
++{
++    Q_OBJECT
++
++public:
++    using Entry = QPair<QString, QString>; // (label, value)
++
++    explicit Config(QObject* parent = nullptr);
++
++    void selectVariant(const QString& variantKey);
++
++    QStringList availableArchitectures();
++    QStringList availableStagesFor(const QString& architecture);
++
++    QString selectedStage3() const;
++    bool isValid() const;
++
++    void updateGlobalStorage();
++
++private:
++    QString m_selectedArch;
++    QString m_selectedVariant;
++    QString m_selectedTarball;
++};
++
++#endif // CONFIG_H
++
+diff --git a/src/modules/stagechoose/SetStage3Job.cpp b/src/modules/stagechoose/SetStage3Job.cpp
+new file mode 100644
+index 000000000..086085862
+--- /dev/null
++++ b/src/modules/stagechoose/SetStage3Job.cpp
+@@ -0,0 +1,61 @@
++#include "SetStage3Job.h"
++
++#include "utils/Logger.h"
++#include <QFile>
++#include <QTextStream>
++#include <QRegularExpression>
++
++SetStage3Job::SetStage3Job(const QString& tarballName)
++    : m_tarballName(tarballName)
++{
++}
++
++QString SetStage3Job::prettyName() const
++{
++    return QString("Write selected Gentoo Stage3 to config: %1").arg(m_tarballName);
++}
++
++Calamares::JobResult SetStage3Job::exec()
++{
++    if(m_tarballName.isEmpty()){
++        return Calamares::JobResult::error(
++            "No stage3 tarball selected.","Stage3 tarball name is empty."
++        );
++    }
++
++    QString configPath = "/etc/calamares.conf";
++    QFile file(configPath);
++    QString contents;
++
++    if (file.exists()) {
++        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
++            return Calamares::JobResult::error(
++                "Failed to open Calamares config file for reading.",
++                configPath);
++        }
++        QTextStream in(&file);
++        contents = in.readAll();
++        file.close();
++    }
++
++    QString stage3Line = QString("stage3 = %1").arg(m_tarballName);
++
++    if (contents.contains(QRegularExpression(R"(stage3\s*=)"))) {
++        contents.replace(QRegularExpression(R"(stage3\s*=.*)"), stage3Line);
++    } else {
++        contents.append("\n" + stage3Line + "\n");
++    }
++
++    if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
++        return Calamares::JobResult::error(
++            "Failed to open Calamares config file for writing.",
++            configPath);
++    }
++
++    QTextStream out(&file);
++    out << contents;
++    file.close();
++
++    cDebug() << "Wrote stage3 tarball to config:" << m_tarballName;
++    return Calamares::JobResult::ok();
++}
+diff --git a/src/modules/stagechoose/SetStage3Job.h b/src/modules/stagechoose/SetStage3Job.h
+new file mode 100644
+index 000000000..edea12ce2
+--- /dev/null
++++ b/src/modules/stagechoose/SetStage3Job.h
+@@ -0,0 +1,22 @@
++#ifndef SETSTAGE3JOB_H
++#define SETSTAGE3JOB_H
++
++#include <Job.h>
++#include <QString>
++
++/**
++ * @brief A job to write the selected Stage3 tarball name to /etc/calamares.conf
++ */
++class SetStage3Job : public Calamares::Job
++{
++public:
++    explicit SetStage3Job(const QString& tarballName);
++
++    QString prettyName() const override;
++    Calamares::JobResult exec() override;
++
++private:
++    QString m_tarballName;
++};
++
++#endif // SETSTAGE3JOB_H
+diff --git a/src/modules/stagechoose/StageChoosePage.cpp b/src/modules/stagechoose/StageChoosePage.cpp
+new file mode 100644
+index 000000000..f8056af26
+--- /dev/null
++++ b/src/modules/stagechoose/StageChoosePage.cpp
+@@ -0,0 +1,91 @@
++/* === This file is part of Calamares - <https://calamares.io> ===
++ *
++ *   SPDX-FileCopyrightText: 2014-2015 Teo Mrnjavac <teo@kde.org>
++ *   SPDX-FileCopyrightText: 2015 Anke Boersma <demm@kaosx.us>
++ *   SPDX-FileCopyrightText: 2017-2019 Adriaan de Groot <groot@kde.org>
++ *   SPDX-License-Identifier: GPL-3.0-or-later
++ *
++ *   Calamares is Free Software: see the License-Identifier above.
++ *
++ */
++#include "StageChoosePage.h"
++#include "Config.h"
++#include "ui_StageChoosePage.h"
++
++#include <QComboBox>
++#include <QLabel>
++#include <QTimer>
++
++StageChoosePage::StageChoosePage(Config* config, QWidget* parent)
++    : QWidget(parent)
++    , ui(new Ui::StageChoosePage)
++    , m_config(config)
++{
++    ui->setupUi(this);
++
++    connect(ui->architectureComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
++            this, &StageChoosePage::onArchitectureChanged);
++    connect(ui->variantComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
++            this, &StageChoosePage::onVariantChanged);
++
++    populateArchs();
++}
++
++void StageChoosePage::populateArchs()
++{
++    if (!m_config)
++        return;
++
++    QStringList archs = m_config->availableArchitectures();
++    for(const QString& arch : archs){
++        ui->architectureComboBox->addItem(arch,arch);
++    }
++
++    updateSelectedTarballLabel();
++}
++
++void StageChoosePage::onArchitectureChanged(int index)
++{
++    if (!m_config)
++        return;
++
++    const QString archKey = ui->architectureComboBox->itemData(index).toString();
++
++    ui->variantComboBox->clear();
++
++    QStringList stages = m_config->availableStagesFor(archKey);
++    for(const QString& stage : stages){
++        ui->variantComboBox->addItem( stage, stage);
++    }
++
++    if(!stages.isEmpty()){
++        ui->variantComboBox->setCurrentIndex(0);
++        onVariantChanged(0);
++    }
++}
++
++void StageChoosePage::onVariantChanged(int index)
++{
++    if (!m_config)
++        return;
++
++    const QString variantKey = ui->variantComboBox->itemData(index).toString();
++    m_config->selectVariant(variantKey);
++    updateSelectedTarballLabel();
++}
++
++void StageChoosePage::updateSelectedTarballLabel()
++{
++    if (!m_config)
++        return;
++
++    if(m_config->selectedStage3().isEmpty())
++         ui->selectedTarballLabel->setText("Selected: None");
++    else
++        ui->selectedTarballLabel->setText("Selected: " + m_config->selectedStage3());
++}
++
++StageChoosePage::~StageChoosePage()
++{
++    delete ui;
++}
+diff --git a/src/modules/stagechoose/StageChoosePage.h b/src/modules/stagechoose/StageChoosePage.h
+new file mode 100644
+index 000000000..6ef59a7bc
+--- /dev/null
++++ b/src/modules/stagechoose/StageChoosePage.h
+@@ -0,0 +1,45 @@
++/* === This file is part of Calamares - <https://calamares.io> ===
++ *
++ *   SPDX-FileCopyrightText: 2014 Teo Mrnjavac <teo@kde.org>
++ *   SPDX-FileCopyrightText: 2019 Adriaan de Groot <groot@kde.org>
++ *   SPDX-License-Identifier: GPL-3.0-or-later
++ *
++ *   Calamares is Free Software: see the License-Identifier above.
++ *
++ */
++
++#ifndef STAGECHOOSEPAGE_H
++#define STAGECHOOSEPAGE_H
++
++#include <QWidget>
++
++class QComboBox;
++class QLabel;
++class Config;
++
++namespace Ui {
++class StageChoosePage;
++}
++
++class StageChoosePage : public QWidget
++{
++    Q_OBJECT
++
++public:
++    explicit StageChoosePage( Config* config, QWidget* parent = nullptr);
++    ~StageChoosePage() override;
++
++    void populateArchs();
++
++private slots:
++    void onArchitectureChanged(int index);
++    void onVariantChanged(int index);
++    void updateSelectedTarballLabel();
++
++private:
++    Ui::StageChoosePage* ui;
++    Config* m_config;
++};
++
++#endif // STAGECHOOSEPAGE_H
++
+diff --git a/src/modules/stagechoose/StageChoosePage.ui b/src/modules/stagechoose/StageChoosePage.ui
+new file mode 100644
+index 000000000..4b17d9f7a
+--- /dev/null
++++ b/src/modules/stagechoose/StageChoosePage.ui
+@@ -0,0 +1,53 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
++ <class>StageChoosePage</class>
++ <widget class="QWidget" name="StageChoosePage">
++  <layout class="QVBoxLayout" name="verticalLayout">
++   <item>
++    <widget class="QLabel" name="archLabel">
++     <property name="text">
++      <string>Select Architecture:</string>
++     </property>
++    </widget>
++   </item>
++   <item>
++    <widget class="QComboBox" name="architectureComboBox"/>
++   </item>
++   <item>
++    <widget class="QLabel" name="variantLabel">
++     <property name="text">
++      <string>Select Stage3 Variant:</string>
++     </property>
++    </widget>
++   </item>
++   <item>
++    <widget class="QComboBox" name="variantComboBox"/>
++   </item>
++   <item>
++    <widget class="QLabel" name="selectedTarballLabel">
++     <property name="text">
++      <string>Selected: </string>
++     </property>
++    </widget>
++   </item>
++   <item>
++    <spacer name="verticalSpacer">
++     <property name="orientation">
++      <enum>Qt::Vertical</enum>
++     </property>
++     <property name="sizeType">
++      <enum>QSizePolicy::Expanding</enum>
++     </property>
++     <property name="sizeHint" stdset="0">
++      <size>
++       <width>20</width>
++       <height>40</height>
++      </size>
++     </property>
++    </spacer>
++   </item>
++  </layout>
++ </widget>
++ <resources/>
++ <connections/>
++</ui>
+diff --git a/src/modules/stagechoose/StageChooseViewStep.cpp b/src/modules/stagechoose/StageChooseViewStep.cpp
+new file mode 100644
+index 000000000..d979a73ef
+--- /dev/null
++++ b/src/modules/stagechoose/StageChooseViewStep.cpp
+@@ -0,0 +1,80 @@
++/* === This file is part of Calamares - <https://calamares.io> ===
++ *
++ *   SPDX-FileCopyrightText: 2014-2015 Teo Mrnjavac <teo@kde.org>
++ *   SPDX-FileCopyrightText: 2018 Adriaan de Groot <groot@kde.org>
++ *   SPDX-License-Identifier: GPL-3.0-or-later
++ *
++ *   Calamares is Free Software: see the License-Identifier above.
++ *
++ */
++
++#include "StageChooseViewStep.h"
++
++#include "Config.h"
++#include "StageChoosePage.h"
++#include "SetStage3Job.h"
++
++#include "utils/Logger.h"
++
++CALAMARES_PLUGIN_FACTORY_DEFINITION(StageChooseViewStepFactory, registerPlugin<StageChooseViewStep>();)
++
++StageChooseViewStep::StageChooseViewStep(QObject* parent)
++    : Calamares::ViewStep(parent)
++    , m_config(new Config(this))
++    , m_widget(new StageChoosePage(m_config))
++{
++   // m_widget->setParent(this)
++}
++
++StageChooseViewStep::~StageChooseViewStep() 
++{
++    if ( m_widget && m_widget->parent() == nullptr )
++    {
++        m_widget->deleteLater();
++    }
++}
++
++QString StageChooseViewStep::prettyName() const
++{
++    return tr("Select Stage");
++}
++
++QWidget* StageChooseViewStep::widget()
++{
++    return m_widget;
++}
++
++bool StageChooseViewStep::isNextEnabled() const
++{
++    return m_config->isValid();
++}
++
++bool StageChooseViewStep::isBackEnabled() const
++{
++    return true;
++}
++
++bool StageChooseViewStep::isAtBeginning() const
++{
++    return true;
++}
++
++bool StageChooseViewStep::isAtEnd() const
++{
++    return true;
++}
++
++void StageChooseViewStep::onLeave()
++{
++    m_config->updateGlobalStorage();
++}
++
++Calamares::JobList StageChooseViewStep::jobs() const
++{
++    Calamares::JobList list;
++    if (m_config->isValid())
++    {
++        list.append(QSharedPointer<SetStage3Job>::create(m_config->selectedStage3()));
++    }
++    return list;
++}
+diff --git a/src/modules/stagechoose/StageChooseViewStep.h b/src/modules/stagechoose/StageChooseViewStep.h
+new file mode 100644
+index 000000000..d6efed30f
+--- /dev/null
++++ b/src/modules/stagechoose/StageChooseViewStep.h
+@@ -0,0 +1,53 @@
++/* === This file is part of Calamares - <https://calamares.io> ===
++ *
++ *   SPDX-FileCopyrightText: 2014-2015 Teo Mrnjavac <teo@kde.org>
++ *   SPDX-License-Identifier: GPL-3.0-or-later
++ *
++ *   Calamares is Free Software: see the License-Identifier above.
++ *
++ */
++
++#ifndef STAGECHOOSEVIEWSTEP_H
++#define STAGECHOOSEVIEWSTEP_H
++
++#include <QObject>
++#include <QWidget>
++#include <QString>
++
++#include "DllMacro.h"
++#include "utils/PluginFactory.h"
++#include "viewpages/ViewStep.h"
++
++class StageChoosePage;
++class Config;
++
++class PLUGINDLLEXPORT StageChooseViewStep : public Calamares::ViewStep
++{
++    Q_OBJECT
++
++public:
++    explicit StageChooseViewStep(QObject* parent = nullptr);
++    ~StageChooseViewStep() override;
++
++    QString prettyName() const override;
++
++    QWidget* widget() override;
++
++    bool isNextEnabled() const override;
++    bool isBackEnabled() const override;
++    bool isAtBeginning() const override;
++    bool isAtEnd() const override;
++
++    Calamares::JobList jobs() const override;
++
++    void onLeave() override;
++
++private:
++    Config* m_config;
++    StageChoosePage* m_widget;
++};
++
++CALAMARES_PLUGIN_FACTORY_DECLARATION( StageChooseViewStepFactory )
++
++#endif // STAGECHOOSEVIEWSTEP_H
++
+diff --git a/src/modules/stagechoose/StageFetcher.cpp b/src/modules/stagechoose/StageFetcher.cpp
+new file mode 100644
+index 000000000..e3f74d82b
+--- /dev/null
++++ b/src/modules/stagechoose/StageFetcher.cpp
+@@ -0,0 +1,92 @@
++#include "StageFetcher.h"
++
++#include <QNetworkAccessManager>
++#include <QNetworkReply>
++#include <QNetworkRequest>
++#include <QEventLoop>
++#include <QRegularExpression>
++#include <QRegularExpressionMatch>
++#include <QRegularExpressionMatchIterator>
++#include <QStringList>
++
++
++QString StageFetcher::fetchHtml(const QUrl& url)
++{
++    QNetworkAccessManager manager;
++    QNetworkRequest request(url);
++
++    QEventLoop loop;
++    QNetworkReply* reply = manager.get(request);
++    QObject::connect(reply,&QNetworkReply::finished, &loop, &QEventLoop::quit);
++    loop.exec(); 
++
++    QString html;
++    if(reply->error() == QNetworkReply::NoError){
++        html = reply->readAll();
++    }
++    else{
++        qWarning() << "StageFetcher: Couldn't fetch" << url.toString() << reply->errorString();
++    }
++
++    reply->deleteLater();
++    return html;
++}
++
++QStringList StageFetcher::fetchVariants(const QString& arch)
++{
++    QStringList variants;
++
++    QString urlStr = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/").arg(arch);
++    QUrl url(urlStr);
++    QString html = fetchHtml(url);
++
++    if(html.isEmpty())
++        return variants;
++
++    QRegularExpression re(R"((current-stage3-[^"/]+)[/])");
++    QRegularExpressionMatchIterator iterator = re.globalMatch(html);
++
++    QStringList seen;
++    while(iterator.hasNext()){
++        QRegularExpressionMatch match = iterator.next();
++        QString variant = match.captured(1);
++        if(!seen.contains(variant)){
++            variants.append(variant);
++            seen.append(variant);
++        }
++    }
++
++    return variants;
++}
++
++QString StageFetcher::extractvariantBase(const QString& variant){
++    if(variant.startsWith("current-"))
++        return variant.mid(8);
++    return variant;
++}
++
++QString StageFetcher::fetchLatestTarball(const QString& arch, const QString& variant)
++{
++    QString latest;
++    latest = QString("No tar fetched");
++
++    const QString baseUrl = QString("https://distfiles.gentoo.org/releases/%1/autobuilds/%2/").arg(arch,variant);
++    QUrl url(baseUrl);
++    QString html = fetchHtml(url);
++
++    if(html.isEmpty())
++        return latest;
++
++    QRegularExpression re(QString("(%1-[\\dTZ]+\\.tar\\.xz)").arg(StageFetcher::extractvariantBase(variant)));
++    QRegularExpressionMatchIterator iterator = re.globalMatch(html);
++
++    while(iterator.hasNext()){
++        QRegularExpressionMatch match = iterator.next();
++        QString filename = match.captured(1);
++        if(filename > latest){
++            latest = filename;
++        }
++    }
++
++    return latest;
++}
+\ No newline at end of file
+diff --git a/src/modules/stagechoose/StageFetcher.h b/src/modules/stagechoose/StageFetcher.h
+new file mode 100644
+index 000000000..8ba96f078
+--- /dev/null
++++ b/src/modules/stagechoose/StageFetcher.h
+@@ -0,0 +1,22 @@
++#ifndef STAGEFETCHER_H
++#define STAGEFETCHER_H
++
++#include <QObject>
++#include <QStringList>
++#include <QUrl>
++
++class StageFetcher : public QObject
++{
++    Q_OBJECT
++
++public: 
++    static QStringList fetchVariants(const QString& arch);
++
++    static QString fetchHtml(const QUrl& url);
++
++    static QString extractvariantBase(const QString& varaint);
++
++    static QString fetchLatestTarball(const QString& arch, const QString& variant);
++};
++
++#endif //STAGEFETCHER_H
+\ No newline at end of file
+diff --git a/src/modules/stagechoose/stagechoose.conf b/src/modules/stagechoose/stagechoose.conf
+new file mode 100644
+index 000000000..59602206d
+--- /dev/null
++++ b/src/modules/stagechoose/stagechoose.conf
+@@ -0,0 +1,7 @@
++---
++type: viewmodule
++interface: qtplugin
++module: stagechoose
++
++viewmodule:
++  weight: 30
+diff --git a/src/modules/stagechoose/stagechoose.schema.yaml b/src/modules/stagechoose/stagechoose.schema.yaml
+new file mode 100644
+index 000000000..d1e3d9aa0
+--- /dev/null
++++ b/src/modules/stagechoose/stagechoose.schema.yaml
+@@ -0,0 +1,17 @@
++---
++type: map
++mapping:
++  type:
++    type: str
++    required: true
++  interface:
++    type: str
++    required: true
++  module:
++    type: str
++    required: true
++  viewmodule:
++    type: map
++    mapping:
++      weight:
++        type: int
+-- 
+2.49.1
+
