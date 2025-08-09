@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic multibuild
+inherit cmake-multilib edo flag-o-matic multibuild
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
 HOMEPAGE="https://www.x265.org/ https://bitbucket.org/multicoreware/x265_git/"
@@ -195,7 +195,7 @@ multilib_src_compile() {
 
 x265_variant_src_test() {
 	if [[ -x "${BUILD_DIR}/test/TestBench" ]] ; then
-		"${BUILD_DIR}/test/TestBench" || die
+		edo "${BUILD_DIR}/test/TestBench" --nobench
 	else
 		einfo "Unit tests check only assembly."
 		einfo "You do not seem to have any for ABI=${ABI}, x265 variant=${MULTIBUILD_VARIANT}"
