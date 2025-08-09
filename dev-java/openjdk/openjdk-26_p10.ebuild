@@ -39,7 +39,6 @@ DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
 SRC_URI="
 	https://github.com/${PN}/jdk/archive/jdk-${MY_PV}.tar.gz
-
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
