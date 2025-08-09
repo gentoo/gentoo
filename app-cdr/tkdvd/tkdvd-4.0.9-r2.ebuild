@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop
 
@@ -30,16 +30,16 @@ src_install() {
 	insinto /usr/share/${PF}
 	doins TkDVD.sh
 
-	cat <<- EOF >"${T}"tkdvd
+	cat <<- EOF >"${T}"/tkdvd
 	#!/bin/sh
 	cd /usr/share/${PF}
 	sh TkDVD.sh
 	EOF
 
-	dobin "${T}"tkdvd
+	dobin "${T}"/tkdvd
 
-	DOCS=( ChangeLog FAQ README TODO doc/config_file )
-	HTML_DOCS=( doc/combobox.html )
+	local DOCS=( ChangeLog FAQ README TODO doc/config_file )
+	local HTML_DOCS=( doc/combobox.html )
 	einstalldocs
 
 	doicon icons/*.png
