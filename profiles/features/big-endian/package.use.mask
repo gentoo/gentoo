@@ -54,9 +54,17 @@ app-i18n/ibus wayland
 app-office/libreoffice gtk4
 gnome-base/gnome-control-center wayland
 sys-apps/xdg-desktop-portal-gnome wayland
-net-libs/webkit-gtk:6 wayland
+net-libs/webkit-gtk wayland
 dev-libs/libportal wayland
 gnome-extra/tecla wayland
+app-text/evince wayland
+dev-util/glade wayland
+gnome-base/gnome-shell wayland
+gui-libs/vte wayland
+media-libs/clutter wayland
+media-libs/clutter-gtk wayland
+x11-libs/vte wayland
+x11-terms/gnome-terminal wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # media-libs/libldac casualties (#80238)
