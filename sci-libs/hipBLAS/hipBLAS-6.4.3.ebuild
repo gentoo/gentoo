@@ -19,11 +19,12 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-util/hip:${SLOT}
-	sci-libs/hipBLAS-common:${SLOT}
 	sci-libs/rocBLAS:${SLOT}
 	sci-libs/rocSOLVER:${SLOT}
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sci-libs/hipBLAS-common:${SLOT}
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.3.0-no-git.patch
