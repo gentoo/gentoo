@@ -1,0 +1,34 @@
+From 4ee18a4d5a14d63ff758bf94df04cd1d4e570074 Mon Sep 17 00:00:00 2001
+From: Erik Faye-Lund <erik.faye-lund@collabora.com>
+Date: Tue, 7 Jun 2022 16:33:02 +0200
+Subject: [PATCH] mesa/util: use c11 alignof instead of our own
+
+...with an exception for MSVC, which doesn't have stdalign.h, so let's
+add a definition for that.
+
+Taken from https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/16908
+
+Part-of: <https://gitlab.freedesktop.org/virgl/virglrenderer/-/merge_requests/1542>
+--- a/src/mesa/util/macros.h
++++ b/src/mesa/util/macros.h
+@@ -442,13 +442,11 @@ enum pipe_debug_type
+    PIPE_DEBUG_TYPE_CONFORMANCE,
+ };
+ 
+-#if !defined(alignof) && !defined(__cplusplus)
+-#if __STDC_VERSION__ >= 201112L
+-#define alignof(t) _Alignof(t)
+-#elif defined(_MSC_VER)
+-#define alignof(t) __alignof(t)
++#ifndef __cplusplus
++#ifdef _MSC_VER
++#define alignof _Alignof
+ #else
+-#define alignof(t) __alignof__(t)
++#include <stdalign.h>
+ #endif
+ #endif
+ 
+-- 
+2.50.1
+
