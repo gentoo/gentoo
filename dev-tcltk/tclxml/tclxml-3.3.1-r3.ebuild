@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit dot-a
+
 MYPN=TclXML
 MYP=${MYPN}-${PV}
 
@@ -38,6 +40,7 @@ PATCHES=(
 )
 
 src_configure() {
+	lto-guarantee-fat
 	local myconf=""
 
 	use threads && myconf="${myconf} --enable-threads"
@@ -49,4 +52,9 @@ src_configure() {
 		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \
 		$(use_enable amd64 64bit) \
 		$(use_enable debug symbols)
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }
