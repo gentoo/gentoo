@@ -47,8 +47,11 @@ KEYWORDS="~amd64"
 IUSE="benchmark test"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
-RDEPEND="=dev-util/hip-6*
-	sci-libs/rocPRIM:${SLOT}"
+RDEPEND="
+	dev-util/hip:${SLOT}
+	sci-libs/rocPRIM:${SLOT}
+	sci-libs/rocBLAS:${SLOT}
+"
 DEPEND="${RDEPEND}"
 BDEPEND="test? (
 	dev-cpp/gtest
