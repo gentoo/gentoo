@@ -71,7 +71,10 @@ dev-java/jide-oss
 # Inactive upstream, stuck on Qt5. Suggested alternatives:
 # media-sound/strawberry, media-sound/amarok.
 # Removal on 2025-09-03. Bug #960012.
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-10)
+# media-libs/liblastfm destabiliation mask.
 media-sound/clementine
+~media-libs/liblastfm-1.1.0_pre20190625
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
 # KF5 -> KF6 transitional package with no more revdeps since 25.04.
