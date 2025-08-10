@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs desktop optfeature toolchain-funcs readme.gentoo-r1
+inherit check-reqs desktop dot-a optfeature toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="General purpose, multi-paradigm Lisp-Scheme programming language"
 HOMEPAGE="https://racket-lang.org/
@@ -103,6 +103,7 @@ src_configure() {
 	#   --enable-libs & --disable-shared is the way to build
 	#   .a files that are needed to embed Racket into programs
 	#   https://docs.racket-lang.org/inside/cs-embedding.html
+	lto-guarantee-fat
 	local -a myconf=(
 		--disable-shared
 		--disable-strip
@@ -145,6 +146,8 @@ src_install() {
 
 	# Install Zuo.
 	emake -C zuo DESTDIR="${ED}" install
+
+	strip-lto-bytecode
 
 	# raco needs decompressed files for packages doc installation, bug #662424
 	if use doc ; then
