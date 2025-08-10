@@ -6,7 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=okteta</bugs-to>
+		<remote-id type="kde-invent">utilities/okteta</remote-id>
 	</upstream>
 	<use>
 		<flag name="designer">Build plugins for <pkg>dev-qt/designer</pkg></flag>
