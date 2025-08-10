@@ -32,24 +32,46 @@ bootstrap_uri() {
 # you will see, for example, jdk-17.0.4.1-ga and jdk-17.0.4.1+1, both point
 # to exact same commit sha. we should always use the full version.
 # -ga tag is just for humans to easily identify General Availability release tag.
-#	MY_PV="${PV%_p*}-ga" # '-ga' isn't available
-MY_PV="${PV/_p/+}"
+# MY_PV="${PV%_p*}-ga"
+
+# Upstream starts new major versions usually in https://github.com/openjdk/jdk.
+# In ebuilds for those early versions, use '_alpha' in the version string.
+# Exapmle: openjdk-26_alpha10.ebuild
+# Later, upstream creates the versioned repository like e.g.
+# https://github.com/openjdk/jdk25u.
+# In ebuilds for those later versions, use '_beta' in the version string.
+# Example: openjdk-25_beta35.ebuild
+if [[ "${PV%_alpha*}" != "${PV}" ]]; then # version string contains "_alpha"
+	MY_PV="${PV/_alpha/+}"
+	JDK_REPO="jdk"
+	MY_VERSION_STRING="${PV%_alpha*}"
+	MY_VERSION_BUILD="${PV#*_alpha}"
+elif [[ "${PV%_beta*}" != "${PV}" ]]; then # version string contains "_beta"
+	MY_PV="${PV/_beta/+}"
+	JDK_REPO="jdk$(ver_cut 1)u"
+	MY_VERSION_STRING="${PV%_beta*}"
+	MY_VERSION_BUILD="${PV#*_beta}"
+else
+	MY_PV="${PV%_p*}-ga"
+	JDK_REPO="jdk$(ver_cut 1)u"
+	MY_VERSION_STRING="${PV%_p*}"
+	MY_VERSION_BUILD="${PV#*_p}"
+fi
 
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.org"
 SRC_URI="
-	https://github.com/${PN}/jdk/archive/jdk-${MY_PV}.tar.gz
+	https://github.com/${PN}/${JDK_REPO}/archive/jdk-${MY_PV}.tar.gz
 		-> ${P}.tar.gz
 	!system-bootstrap? (
 		$(bootstrap_uri ppc64 ${PPC64_XPAK} big-endian)
 	)
 "
-# S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV//+/-}"
-S="${WORKDIR}/jdk-jdk-${MY_PV//+/-}"
+S="${WORKDIR}/${JDK_REPO}-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
 SLOT="$(ver_cut 1)"
-#	KEYWORDS="" # Not an LTS candidate
+#	KEYWORDS="" # LTS but not yet released
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source +system-bootstrap systemtap"
 
@@ -105,7 +127,6 @@ DEPEND="
 	javafx? ( dev-java/openjfx:${SLOT}= )
 	system-bootstrap? (
 		|| (
-			dev-java/openjdk:25
 			dev-java/openjdk-bin:${SLOT}
 			dev-java/openjdk:${SLOT}
 		)
@@ -138,7 +159,7 @@ pkg_setup() {
 
 	[[ ${MERGE_TYPE} == "binary" ]] && return
 
-	JAVA_PKG_WANT_BUILD_VM="openjdk-25 openjdk-${SLOT} openjdk-bin-${SLOT}"
+	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT}"
 	JAVA_PKG_WANT_SOURCE="${SLOT}"
 	JAVA_PKG_WANT_TARGET="${SLOT}"
 
@@ -167,9 +188,7 @@ src_prepare() {
 src_configure() {
 	local myconf=()
 
-	if has_version dev-java/openjdk:25; then
-		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-25
-	elif has_version dev-java/openjdk:${SLOT}; then
+	if has_version dev-java/openjdk:${SLOT}; then
 		export JDK_HOME=${BROOT}/usr/$(get_libdir)/openjdk-${SLOT}
 	elif use !system-bootstrap ; then
 		local xpakvar="${ARCH^^}_XPAK"
@@ -224,8 +243,8 @@ src_configure() {
 		--with-vendor-vm-bug-url="https://bugs.openjdk.java.net"
 		--with-vendor-version-string="${PVR}"
 		--with-version-pre=""
-		--with-version-string="${PV%_p*}"
-		--with-version-build="${PV#*_p}"
+		--with-version-string="${MY_VERSION_STRING}"
+		--with-version-build="${MY_VERSION_BUILD}"
 		--with-zlib="${XPAK_BOOTSTRAP:-system}"
 		--enable-jvm-feature-dtrace=$(usex systemtap yes no)
 		--enable-headless-only=$(usex headless-awt yes no)
