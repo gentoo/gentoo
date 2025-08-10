@@ -236,7 +236,7 @@ LICENSE+=" Apache-2.0 ISC MIT MPL-2.0 Unicode-DFS-2016"
 # cargo-husky-1.5.0
 LICENSE+=" MIT "
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64"
+KEYWORDS="amd64 arm64 ppc64 ~riscv"
 IUSE="+battery +gpu +zfs"
 
 # Rust packages ignore CFLAGS and LDFLAGS so let's silence the QA warnings
