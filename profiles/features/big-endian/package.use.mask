@@ -57,6 +57,7 @@ sys-apps/xdg-desktop-portal-gnome wayland
 net-libs/webkit-gtk:6 wayland
 dev-libs/libportal wayland
 gnome-extra/tecla wayland
+gnome-base/gnome-shell wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # media-libs/libldac casualties (#80238)
