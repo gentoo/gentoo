@@ -421,6 +421,9 @@ src_test() {
 		# lto-wrapper warnings which confuse tests
 		filter-flags '-Wa,*'
 
+		# Adds a property which confuses tests
+		filter-flags '-mno-direct-extern-access'
+
 		# bug #637066
 		filter-flags -Wall -Wreturn-type
 
