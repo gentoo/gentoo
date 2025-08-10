@@ -25,6 +25,7 @@
 		<flag name="test-full">Enable tests known not to play nicely with the sandbox</flag>
 		<flag name="tpm">Install Trusted Platform Module plugin</flag>
 		<flag name="uefi">Enable UEFI support</flag>
+		<flag name="protobuf">Enable protobuf plugins</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/fwupd/fwupd/issues</bugs-to>

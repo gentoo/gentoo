@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit meson python-single-r1 vala udev xdg
 
@@ -68,7 +68,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	virtual/libusb:1
 	protobuf? ( dev-libs/protobuf-c:= )
 	lzma? ( app-arch/xz-utils )
-	modemmanager? ( net-misc/modemmanager[mbim,qmi] )
+	modemmanager? ( >=net-misc/modemmanager-1.22.0[mbim,qmi] )
 	policykit? ( >=sys-auth/polkit-0.114 )
 	seccomp? ( sys-apps/systemd[seccomp] )
 	dev-db/sqlite
