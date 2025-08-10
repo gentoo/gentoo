@@ -9,7 +9,7 @@ MY_PV=${PN}-$(ver_rs 1- '-')
 TCLCONFIGId=4a924db4fb37fa0c7cc2ae987b294dbaa97bc713
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
-HOMEPAGE="http://incrtcl.sourceforge.net/"
+HOMEPAGE="https://incrtcl.sourceforge.net/"
 SRC_URI="
 	https://github.com/tcltk/${PN}/archive/refs/tags/${MY_PV}.tar.gz
 	https://github.com/tcltk/tclconfig/archive/${TCLCONFIGId}.tar.gz
