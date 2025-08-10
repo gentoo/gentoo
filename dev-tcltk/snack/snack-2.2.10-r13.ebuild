@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=yes
 
-inherit distutils-r1 flag-o-matic toolchain-funcs virtualx
+inherit dot-a distutils-r1 flag-o-matic toolchain-funcs virtualx
 
 DESCRIPTION="The Snack Sound Toolkit (Tcl)"
 HOMEPAGE="http://www.speech.kth.se/snack/"
@@ -60,6 +60,8 @@ src_prepare() {
 
 	# For Clang 16, bunch of -Wimplicit-int, etc
 	append-flags -std=gnu89
+
+	lto-guarantee-fat
 
 	sed \
 		-e "s:ar cr:$(tc-getAR) cr:g" \
@@ -123,6 +125,7 @@ src_install() {
 		cd "${S}"/../python || die
 		distutils-r1_src_install
 	fi
+	strip-lto-bytecode
 
 	cd "${S}"/.. || die
 
