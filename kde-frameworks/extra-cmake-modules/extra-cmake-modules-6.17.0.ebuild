@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.245.0-disable-qmlplugindump.patch"
 	"${FILESDIR}/${PN}-6.5.0-disable-appstreamtest.patch"
 	"${FILESDIR}/${PN}-6.5.0-disable-git-commit-hooks.patch"
+	"${FILESDIR}/${P}-fix-ECMAddAppIcon-w-cmake4.patch" # in 6.18.0
 )
 
 python_check_deps() {

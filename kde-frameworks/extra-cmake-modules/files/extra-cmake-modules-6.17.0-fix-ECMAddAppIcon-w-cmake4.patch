@@ -1,0 +1,32 @@
+From f4c6a973f1d18d9b402ab9cb506a12de488a038c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 6 Aug 2025 21:11:57 +0200
+Subject: [PATCH] ECMAddAppIcon: Fix empty ELSEIF warnings w/ >=CMake-4.1.0
+
+Introduced in CMake 4.1.0 by:
+https://gitlab.kitware.com/cmake/cmake/-/merge_requests/10643
+https://gitlab.kitware.com/cmake/cmake/-/commit/74c62a180dccfd2cb7d594474f93e0facccdd60d
+
+Amends 2c2bb8f4766fec5e391839dbc093b638acee3a22
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ modules/ECMAddAppIcon.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/ECMAddAppIcon.cmake b/modules/ECMAddAppIcon.cmake
+index 30f59beb..b247cf22 100644
+--- a/modules/ECMAddAppIcon.cmake
++++ b/modules/ECMAddAppIcon.cmake
+@@ -368,7 +368,7 @@ macro(_ecm_add_app_icon_categorize_icons icons type known_sizes)
+ 
+                     if (offset GREATER -1)
+                         list(APPEND ${type}_at_${size}px "${icon_full}")
+-                    elseif()
++                    else()
+                         message(STATUS "not found ${type}_at_${size}px ${icon_full}")
+                     endif()
+                 endif()
+-- 
+GitLab
+
