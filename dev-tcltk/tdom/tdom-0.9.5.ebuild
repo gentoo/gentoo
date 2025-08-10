@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic
+inherit autotools dot-a flag-o-matic
 
 MY_P="tDOM-${PV}"
 
@@ -47,6 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local myeconfargs=(
 		$(use_enable threads)
 		--enable-shared
@@ -83,4 +84,5 @@ src_install() {
 			emake DESTDIR="${D}" install
 		popd > /dev/null
 	done
+	strip-lto-bytecode
 }
