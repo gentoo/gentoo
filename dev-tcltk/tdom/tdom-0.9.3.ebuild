@@ -9,7 +9,7 @@ MY_P="tDOM-${PV}"
 
 DESCRIPTION="A XML/DOM/XPath/XSLT Implementation for Tcl"
 HOMEPAGE="https://core.tcl.tk/tdom/"
-SRC_URI="http://tdom.org/downloads/${P}-src.tgz"
+SRC_URI="https://tdom.org/downloads/${P}-src.tgz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
