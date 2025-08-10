@@ -23,6 +23,7 @@ DEPEND="
 		llvm-core/llvm:${LLVM_SLOT}=
 	')
 "
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7.1-fix-clang-libs.patch"
@@ -33,6 +34,9 @@ src_prepare() {
 	sed -i 's:/../libexec/hipify::' \
 		bin/hipconvertinplace.sh bin/hipconvertinplace-perl.sh \
 		bin/hipexamine-perl.sh bin/hipexamine.sh || die
+
+	# Set clang resource prefix to /usr/lib/clang/...
+	sed -i 's:/lib/llvm/lib/clang/:/lib/clang/:' src/main.cpp || die
 }
 
 src_configure() {
