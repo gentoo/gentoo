@@ -48,7 +48,7 @@ SRC_URI="
 S="${WORKDIR}/jdk-jdk-${MY_PV//+/-}"
 
 LICENSE="GPL-2-with-classpath-exception"
-SLOT="${MY_PV%%[.+]*}"
+SLOT="$(ver_cut 1)"
 #	KEYWORDS="" # Not an LTS candidate
 
 IUSE="alsa big-endian cups debug doc examples headless-awt javafx +jbootstrap selinux source +system-bootstrap systemtap"
