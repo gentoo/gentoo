@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit virtualx
+inherit dot-a virtualx
 
 MY_PV=${PN}-$(ver_rs 1- '-')
 TCLCONFIGId=4a924db4fb37fa0c7cc2ae987b294dbaa97bc713
@@ -42,6 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local itcl_package=$(best_version dev-tcltk/itcl)
 	local itcl_version=${itcl_package#*/*-}
 	local ITCL_VERSION="${itcl_version%-*}"
@@ -65,6 +66,7 @@ src_test() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	dodoc license.terms
 
