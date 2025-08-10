@@ -58,12 +58,12 @@ ck_check-reqs() {
 
 	# It takes ~2Gb of RAM per build thread
 	local user_jobs=$(makeopts_jobs)
-	local free_memory_mb=$(free -m | awk '/Mem:/ {print $4}')
-	local max_jobs=$(( free_memory_mb / 2048 ))
+	local available_memory_mb=$(free -m | awk '/Mem:/ {print $7}')
+	local max_jobs=$(( available_memory_mb / 2048 ))
 	max_jobs=$(( max_jobs < 1 ? 1 : max_jobs ))
 	local limited_jobs=$(( user_jobs < max_jobs ? user_jobs : max_jobs ))
 	if [[ "${max_jobs}" -lt "${user_jobs}" ]]; then
-		ewarn "${free_memory_mb} MB of free RAM is not enough for ${user_jobs} parallel build jobs (~2Gb per job)."
+		ewarn "${available_memory_mb} MB of free RAM is not enough for ${user_jobs} parallel build jobs (~2Gb per job)."
 		ewarn "Please consider setting MAKEOPTS=\"-j${limited_jobs}\" for this package."
 	fi
 
