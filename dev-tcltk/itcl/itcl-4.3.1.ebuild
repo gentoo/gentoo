@@ -8,7 +8,7 @@ inherit autotools dot-a
 MYP="${PN}-$(ver_rs 1- '-')"
 
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
-HOMEPAGE="http://incrtcl.sourceforge.net/"
+HOMEPAGE="https://incrtcl.sourceforge.net/"
 SRC_URI="https://github.com/tcltk/${PN}/archive/refs/tags/${MYP}.tar.gz"
 
 S="${WORKDIR}/${PN}-${MYP}"
