@@ -48,7 +48,7 @@ src_configure() {
 		-Dprofiling=false
 		$(meson_feature introspection)
 		$(meson_use vala vapi)
-		-Dgtk_doc=false # we ship pregenerated docs
+		-Dgtk_doc=false
 		$(meson_use test tests)
 		-Dexamples=false
 	)
@@ -62,8 +62,4 @@ src_test() {
 
 src_install() {
 	meson_src_install
-
-	insinto /usr/share/gtk-doc/html
-	# This will install libadwaita API docs unconditionally, but this is intentional
-	doins -r "${S}"/doc/libadwaita-1
 }
