@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-08-10)
+# Significant regression breaking dev-python/websockets.
+# Masking until upstream decides how to proceed.
+=dev-lang/python-3.13.6
+=dev-python/python-tests-3.13.6
+
 # Hans de Graaff <graaff@gentoo.org> (2025-08-08)
 # ruby-openid fails tests and is archived upstream. Last release 6 years
 # ago. rack-openid is the only reverse dependency.
