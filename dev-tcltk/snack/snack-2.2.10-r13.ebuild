@@ -10,8 +10,8 @@ DISTUTILS_OPTIONAL=yes
 inherit dot-a distutils-r1 flag-o-matic toolchain-funcs virtualx
 
 DESCRIPTION="The Snack Sound Toolkit (Tcl)"
-HOMEPAGE="http://www.speech.kth.se/snack/"
-SRC_URI="http://www.speech.kth.se/snack/dist/${PN}${PV}.tar.gz"
+HOMEPAGE="https://www.speech.kth.se/snack/"
+SRC_URI="https://www.speech.kth.se/snack/dist/${PN}${PV}.tar.gz"
 S="${WORKDIR}/${PN}${PV}/unix"
 
 LICENSE="GPL-2"
