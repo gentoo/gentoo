@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..14} )
 
 LLVM_COMPAT=( 20 )
 
-inherit cmake flag-o-matic llvm-r1 python-any-r1 rocm
+inherit cmake flag-o-matic multiprocessing llvm-r1 python-any-r1 rocm
 DESCRIPTION="General matrix-matrix operations library for AMD Instinct accelerators"
 HOMEPAGE="https://github.com/ROCm/hipBLASLt"
 SRC_URI="https://github.com/ROCm/hipBLASLt/archive/rocm-${PV}.tar.gz -> ${P}.tar.gz"
@@ -18,15 +18,20 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-SUPPORTED_GPUS=( gfx908 gfx90a gfx940 gfx941 gfx942 gfx1100 gfx1101 gfx1200 gfx1201 )
+SUPPORTED_GPUS=( gfx908 gfx90a gfx940 gfx941 gfx942 gfx1100 gfx1101 gfx1103 gfx1200 gfx1201 gfx1150 gfx1151 )
 IUSE_TARGETS=( "${SUPPORTED_GPUS[@]/#/amdgpu_targets_}" )
-IUSE="${IUSE_TARGETS[@]/#/+} benchmark roctracer test"
+IUSE="${IUSE_TARGETS[*]/#/+} benchmark roctracer test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/hip:${SLOT}
 	dev-cpp/msgpack-cxx
 	roctracer? ( dev-util/roctracer:${SLOT} )
+	benchmark? (
+		dev-util/rocm-smi:${SLOT}
+		sci-libs/lapack
+		sci-libs/openblas
+	)
 "
 
 DEPEND="${RDEPEND}"
@@ -77,8 +82,8 @@ pkg_setup() {
 }
 
 pkg_pretend() {
-	if [[ "${AMDGPU_TARGETS[@]}" = "" ]]; then
-		ewarn "hipBLASLt supports only few GPUs: ${SUPPORTED_GPUS[@]},"
+	if [[ "${AMDGPU_TARGETS[*]}" = "" ]]; then
+		ewarn "hipBLASLt supports only few GPUs: ${SUPPORTED_GPUS[*]},"
 		ewarn "but none of them were defined in AMDGPU_TARGETS USE_EXPAND variable."
 		ewarn
 		ewarn "Library will continue to be built in \"dummy\" mode,"
@@ -88,7 +93,7 @@ pkg_pretend() {
 
 src_prepare() {
 	local shebangs=($(grep -rl "#!/usr/bin/env python3" tensilelite/Tensile || die))
-	python_fix_shebang -q ${shebangs[*]}
+	python_fix_shebang -q "${shebangs[@]}"
 
 	rocm_use_clang
 	sed -e "s:\${rocm_path}/bin/amdclang++:${CXX}:" \
@@ -109,7 +114,7 @@ src_configure() {
 	append-cxxflags -Wno-explicit-specialization-storage-class
 
 	local targets="$(get_amdgpu_flags)"
-	local build_with_tensile=$([ "${AMDGPU_TARGETS[@]}" = "" ] && echo OFF || echo ON )
+	local build_with_tensile=$([ "${AMDGPU_TARGETS[*]}" = "" ] && echo OFF || echo ON )
 
 	local mycmakeargs=(
 		-DROCM_SYMLINK_LIBS=OFF
@@ -120,6 +125,7 @@ src_configure() {
 		-DBUILD_CLIENTS_BENCHMARKS="$(usex benchmark ON OFF)"
 		-DPython_EXECUTABLE="${PYTHON}"
 		-DHIPBLASLT_ENABLE_MARKER="$(usex roctracer ON OFF)"
+		-DTensile_CPU_THREADS=$(makeopts_jobs)
 		-Wno-dev
 	)
 
