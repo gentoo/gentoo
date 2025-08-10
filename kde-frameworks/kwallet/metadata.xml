@@ -10,7 +10,6 @@
 		<remote-id type="kde-invent">frameworks/kwallet</remote-id>
 	</upstream>
 	<use>
-		<flag name="gpg">Support wallets with GnuPG encryption in addition to the default blowfish-encrypted file</flag>
 		<flag name="minimal">Pull in required runtime components for KWallet via <pkg>kde-frameworks/kwallet</pkg></flag>
 	</use>
 	<slots>
