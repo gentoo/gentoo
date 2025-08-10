@@ -24,27 +24,32 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-util/hip:${SLOT}
-	>=dev-db/sqlite-3.17
+	dev-db/sqlite:3
+	app-arch/bzip2
 	sci-libs/rocRAND:${SLOT}
-	>=dev-libs/boost-1.72
-	dev-cpp/nlohmann_json
-	dev-cpp/frugally-deep
+	dev-libs/boost:=
+	dev-libs/rocm-comgr:${SLOT}
 
 	composable-kernel? ( sci-libs/composable-kernel:${SLOT} )
-	hipblaslt? (
-		sci-libs/hipBLAS:${SLOT}
-		sci-libs/hipBLASLt:${SLOT}
-	)
+	hipblaslt? ( sci-libs/hipBLASLt:${SLOT} )
 	rocblas? ( sci-libs/rocBLAS:${SLOT} )
 	roctracer? ( dev-util/roctracer:${SLOT} )
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	dev-cpp/nlohmann_json
+	>=dev-libs/half-1.12.0-r1
+	test? ( dev-cpp/gtest )
+
+	amdgpu_targets_gfx908? ( dev-cpp/frugally-deep )
+	amdgpu_targets_gfx940? ( dev-cpp/frugally-deep )
+	amdgpu_targets_gfx941? ( dev-cpp/frugally-deep )
+	amdgpu_targets_gfx942? ( dev-cpp/frugally-deep )
+"
 
 BDEPEND="
-	>=dev-libs/half-1.12.0-r1
 	dev-build/rocm-cmake
-	test? ( dev-cpp/gtest )
 "
 
 PATCHES=(
@@ -90,6 +95,15 @@ src_configure() {
 		CMAKE_BUILD_TYPE="Debug"
 	fi
 
+	local use_ai_tuning=OFF
+	if use amdgpu_targets_gfx908 || use amdgpu_targets_gfx940 || use amdgpu_targets_gfx941 \
+	|| use amdgpu_targets_gfx942; then
+		use_ai_tuning=ON
+	fi
+
+	# Too many warnings
+	append-cxxflags -Wno-switch-default
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DGPU_TARGETS="$(get_amdgpu_flags)"
@@ -106,7 +120,10 @@ src_configure() {
 		-DROCM_SYMLINK_LIBS=OFF
 		-DMIOPEN_HIP_COMPILER="${ESYSROOT}/usr/bin/hipcc"
 		-DMIOPEN_AMDGCN_ASSEMBLER="$(get_llvm_prefix)/bin/clang"
+		-DMIOPEN_OFFLOADBUNDLER_BIN="$(get_llvm_prefix)/bin/clang-offload-bundler"
 		-DHIP_OC_COMPILER="$(get_llvm_prefix)/bin/clang"
+		-DMIOPEN_ENABLE_AI_KERNEL_TUNING=${use_ai_tuning}
+		-DMIOPEN_ENABLE_AI_IMMED_MODE_FALLBACK=${use_ai_tuning}
 	)
 
 	if use test; then
