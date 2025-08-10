@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools dot-a
 
 MYP="${PN}-$(ver_rs 1- '-')"
 
@@ -37,6 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	econf \
 		--with-tcl="${EPREFIX}"/usr/$(get_libdir) \
 		--with-tclinclude="${EPREFIX}"/usr/include \
@@ -58,6 +59,7 @@ src_compile() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	local MY_P=${PN}${PV}
 
