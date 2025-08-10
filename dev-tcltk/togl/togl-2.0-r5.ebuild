@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit dot-a
+
 MY_P=Togl${PV}
 
 DESCRIPTION="A Tk widget for OpenGL rendering"
@@ -42,6 +44,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	econf \
 		$(use_enable debug symbols) \
 		$(use_enable threads)
@@ -50,4 +53,5 @@ src_configure() {
 src_install() {
 	HTML_DOCS=( doc/* )
 	default
+	strip-lto-bytecode
 }
