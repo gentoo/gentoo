@@ -48,6 +48,8 @@ BDEPEND="
 PATCHES=(
 	# https://gitlab.gnome.org/GNOME/seahorse/-/issues/348
 	"${FILESDIR}/${PN}-47.0.1-ldap-test.patch"
+	# https://bugs.gentoo.org/961310
+	"${FILESDIR}/${PN}-47.0.1-gpgme-2.patch"
 )
 
 src_prepare() {
