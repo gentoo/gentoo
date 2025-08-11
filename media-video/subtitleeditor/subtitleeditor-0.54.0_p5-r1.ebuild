@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/gst-plugins-good:1.0
 	media-libs/gstreamer:1.0
 	media-plugins/gst-plugins-meta:1.0
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	nls? ( virtual/libintl )
 "
 #	opengl? (

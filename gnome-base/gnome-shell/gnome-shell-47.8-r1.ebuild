@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
 
@@ -13,7 +13,7 @@ LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
 
-IUSE="elogind gtk-doc +ibus +networkmanager pipewire systemd test"
+IUSE="X elogind gtk-doc +ibus +networkmanager pipewire systemd test wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
@@ -25,11 +25,10 @@ DEPEND="
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.73.1[cairo(+)]
-	>=gui-libs/gtk-4:4[introspection]
-	>=x11-wm/mutter-47.0:0/15[introspection,test?]
+	>=gui-libs/gtk-4:4[X?,introspection,wayland?]
+	>=x11-wm/mutter-47.0:0/15[X?,introspection,test?,wayland?]
 	>=sys-auth/polkit-0.120_p20220509[introspection]
 	>=gnome-base/gsettings-desktop-schemas-47_alpha[introspection]
-	>=app-i18n/ibus-1.5.19
 	dev-python/docutils
 	>=gnome-base/gnome-desktop-40.0:4=
 	networkmanager? (
@@ -37,7 +36,7 @@ DEPEND="
 		net-libs/libnma[introspection]
 		>=app-crypt/libsecret-0.18
 	)
-	pipewire? ( >=media-video/pipewire-0.3.49:= )
+	pipewire? ( >=media-video/pipewire-0.3.49:=[X?] )
 	systemd? (
 		>=sys-apps/systemd-246:=
 		>=gnome-base/gnome-desktop-3.34.2:3=[systemd]
@@ -47,12 +46,12 @@ DEPEND="
 	app-arch/gnome-autoar
 	dev-libs/json-glib
 
-	>=app-accessibility/at-spi2-core-2.46:2[introspection]
+	>=app-accessibility/at-spi2-core-2.46:2[X?,introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
 	dev-libs/libxml2:2=
 	x11-libs/libX11
 
-	>=media-libs/libpulse-2[glib]
+	>=media-libs/libpulse-2[X?,glib]
 	dev-libs/libical:=
 	>=x11-libs/libXfixes-5.0
 
@@ -62,7 +61,7 @@ DEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
-	media-libs/libglvnd[X]
+	media-libs/libglvnd[X?]
 "
 # Runtime-only deps are probably incomplete and approximate.
 # Introspection deps generated from inspection of the output of:
@@ -87,16 +86,16 @@ RDEPEND="${DEPEND}
 	app-accessibility/at-spi2-core:2[introspection]
 	app-misc/geoclue:2.0[introspection]
 	media-libs/graphene[introspection]
-	x11-libs/pango[introspection]
+	x11-libs/pango[X?,introspection]
 	net-libs/libsoup:3.0[introspection]
 	>=sys-power/upower-0.99:=[introspection]
 	gnome-base/librsvg:2[introspection]
 	gui-libs/libadwaita:1[introspection]
 
-	>=gnome-base/gnome-session-2.91.91
-	>=gnome-base/gnome-settings-daemon-3.8.3
+	>=gnome-base/gnome-session-2.91.91[X(+)?]
+	>=gnome-base/gnome-settings-daemon-3.8.3[wayland?]
 
-	x11-misc/xdg-utils
+	x11-misc/xdg-utils[X?]
 
 	>=x11-themes/adwaita-icon-theme-3.26
 
@@ -104,15 +103,15 @@ RDEPEND="${DEPEND}
 		net-misc/mobile-broadband-provider-info
 		sys-libs/timezone-data
 	)
-	ibus? ( >=app-i18n/ibus-1.5.26[gtk3,gtk4,introspection] )
-	media-fonts/cantarell
+	ibus? ( >=app-i18n/ibus-1.5.26[X?,gtk3,gtk4,introspection,wayland?] )
+	media-fonts/cantarell[X?]
 
-	sys-apps/xdg-desktop-portal-gnome
+	sys-apps/xdg-desktop-portal-gnome[X?,wayland?]
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
-	>=gnome-base/gdm-3.5[introspection(+)]
-	>=gnome-base/gnome-control-center-3.26[networkmanager(+)?]
+	>=gnome-base/gdm-3.5[X(+)?,introspection(+),wayland?]
+	>=gnome-base/gnome-control-center-3.26[networkmanager(+)?,wayland?]
 "
 BDEPEND="
 	>=dev-build/meson-1.3.0
@@ -125,7 +124,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (
-		sys-apps/dbus
+		sys-apps/dbus[X?]
 		x11-wm/mutter[test]
 	)
 "

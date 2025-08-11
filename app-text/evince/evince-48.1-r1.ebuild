@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson systemd xdg
+inherit flag-o-matic gnome.org gnome2-utils meson systemd xdg
 
 DESCRIPTION="Simple document viewer for GNOME"
 HOMEPAGE="https://apps.gnome.org/Evince/"
@@ -11,8 +11,8 @@ HOMEPAGE="https://apps.gnome.org/Evince/"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 # subslot = evd3.(suffix of libevdocument3)-evv3.(suffix of libevview3)
 SLOT="0/evd3.4-evv3.3"
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~x64-solaris"
-IUSE="cups djvu dvi gstreamer gnome keyring gtk-doc +introspection postscript spell tiff xps"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~x64-solaris"
+IUSE="X cups djvu dvi gstreamer gnome keyring gtk-doc +introspection postscript spell tiff xps wayland"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 # atk used in libview
@@ -24,9 +24,9 @@ DEPEND="
 	>=dev-libs/libxml2-2.5:2=
 	sys-libs/zlib:=
 	>=x11-libs/gdk-pixbuf-2.40:2
-	>=x11-libs/gtk+-3.22.0:3[cups?,introspection?]
+	>=x11-libs/gtk+-3.22.0:3[X?,cups?,introspection?,wayland?]
 	gnome-base/gsettings-desktop-schemas
-	>=x11-libs/cairo-1.10
+	>=x11-libs/cairo-1.10[X?]
 	>=app-text/poppler-22.05.0:=[cairo]
 	>=app-arch/libarchive-3.6.0:=
 	djvu? ( >=app-text/djvu-3.5.22:= )
@@ -69,6 +69,9 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	local emesonargs=(
 		-Ddevelopment=false
 		-Dplatform=gnome
