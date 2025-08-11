@@ -23,6 +23,8 @@ BDEPEND=">=dev-lang/go-1.23.0"
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
 
+QA_PRESTRIPPED=usr/bin/kube-apiserver
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fNO-PIC ' '')" FORCE_HOST_GO="yes" \
 		emake -j1 GOFLAGS=-v GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}

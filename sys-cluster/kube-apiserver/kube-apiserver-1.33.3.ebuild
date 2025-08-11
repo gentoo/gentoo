@@ -24,6 +24,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-lang/go-1.24.0"
 
+QA_PRESTRIPPED=usr/bin/kube-apiserver
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fNO-PIC ' '')" FORCE_HOST_GO="yes" \
 		emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
