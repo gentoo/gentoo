@@ -35,3 +35,23 @@ src_configure() {
 
 	meson_src_configure
 }
+
+src_test() {
+	local -a tests
+	tests=( $(meson test --list -C "${BUILD_DIR}") )
+
+	local -a skip_tests=(
+		# Incompatabilities with >=libpng-1.6.47
+		# bug #956692
+		ch1n3p04
+		ch2n3p08
+	)
+
+	for test_index in ${!tests[@]}; do
+		if [[ ${skip_tests[@]} =~ ${tests[${test_index}]} ]]; then
+			unset tests[${test_index}]
+		fi
+	done
+
+	meson_src_test ${tests[@]}
+}
