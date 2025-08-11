@@ -8,7 +8,7 @@ DIST_VERSION=1.24
 DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
-DESCRIPTION="A class for european VAT numbers validation"
+DESCRIPTION="Class for European VAT numbers validation"
 
 LICENSE="GPL-3"
 SLOT="0"
