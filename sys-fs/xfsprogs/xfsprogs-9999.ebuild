@@ -138,51 +138,52 @@ pkg_postinst() {
 }
 
 call_prepare_release() {
-	local version
+	# pass it to sed so it returns 1 when no replace occurred
+	local RS=';tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x'
 
 	#test sed -i
 	#	's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9a999/'
 	#	configure.ac
-
+	local version
 	version="$(grep -o -- \
 		'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
 		configure.ac || die)"
 
 	#test version+='a'
-	version=$(echo "${version}" | ( sed -r \
-		's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9999/;tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x' \
+	version=$( echo "${version}" | ( sed -r \
+		's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9999/'"${RS}" \
 		|| die ) )
 
 	#test sed -i 's/^update_version\(\) \{/aupdate_version()  {/g' release.sh
 	# https://stackoverflow.com/questions/8818119/how-can-i-run-a-function-from-a-script-in-command-line
-	local update_version_function=$(sed -n \
-		'/^update_version() {/,/^}$/p' release.sh) || die
-	update_version_function=$( echo "${update_version_function}" | (sed -r \
-		's/^update_version\(\) \{$//;tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x' \
-		|| die ) )
-	update_version_function=$( echo "${update_version_function}" | (sed -r \
-		's/^\}$//;tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x' \
-		|| die ) )
+	local update_version_function
+	update_version_function=$( sed -n \
+		'/^update_version() {/,/^}$/p' release.sh || die )
+	update_version_function=$( echo "${update_version_function}" \
+		| ( sed -r 's/^update_version\(\) \{$//'"${RS}" || die ) )
+	update_version_function=$( echo "${update_version_function}" \
+		| ( sed -r 's/^\}$//'"${RS}" || die ) )
 	echo "${update_version_function}" > ./release_update_version.sh
 
 	#test version+='a'
 	local version_file
+	local version_major
+	local version_minor
+	local version_revision
 	# https://stackoverflow.com/questions/15965073/return-value-of-sed-for-no-match
-	local version_major=$( echo "${version}" | ( sed -r \
-		's/^([0-9]+).([0-9]+).([0-9]+)$/\1/;tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x' \
-		|| die ) )
-	version_file+="PKG_MAJOR="${version_major}""
-	version_file+=$'\n'
-	local version_minor=$( echo "${version}" | ( sed -r \
-		's/^([0-9]+).([0-9]+).([0-9]+)$/\2/;tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x' \
-		|| die ) )
-	version_file+="PKG_MINOR="${version_minor}""
-	version_file+=$'\n'
+
+	version_major=$( echo "${version}" | ( sed -r \
+		's/^([0-9]+).([0-9]+).([0-9]+)$/\1/'"${RS}" || die ) )
+	version_file+='PKG_MAJOR='"${version_major}"$'\n'
+
+	version_minor=$( echo "${version}" | ( sed -r \
+		's/^([0-9]+).([0-9]+).([0-9]+)$/\2/'"${RS}" || die ) )
+	version_file+='PKG_MINOR='"${version_minor}"$'\n'
+
 	local version_revision=$( echo "${version}" | ( sed -r \
-		's/^([0-9]+).([0-9]+).([0-9]+)$/\3/;tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x' \
-		|| die ) )
-	version_file+="PKG_REVISION="${version_revision}""
-	version_file+=$'\n'
+		's/^([0-9]+).([0-9]+).([0-9]+)$/\3/'"${RS}" || die ) )
+	version_file+='PKG_REVISION='"${version_revision}"$'\n'
+
 	echo "${version_file}" > ./VERSION
 	chmod +x release_update_version.sh
 	# https://stackoverflow.com/questions/17583578/what-command-means-do-nothing-in-a-conditional-in-bash
