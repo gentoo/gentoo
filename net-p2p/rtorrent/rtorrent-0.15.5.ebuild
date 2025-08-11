@@ -44,6 +44,8 @@ DOCS=( doc/rtorrent.rc )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.15.3-unbundle_json.patch
+	# fix configure w/ slibtool. to be removed for next version.
+	"${FILESDIR}"/${P}-find_grep.patch
 )
 
 pkg_setup() {
