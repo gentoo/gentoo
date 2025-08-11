@@ -57,11 +57,11 @@ src_prepare() {
 	sed 's@\(CHANGES\)\.gz[[:space:]]@\1 @' -i doc/Makefile || die
 
 	if [[ ${PV} == *9999 ]]; then
-		prepare_release || die
+		prepare_release
 	fi
 
 	if [[ ${PV} == *9999 ]]; then
-		make configure || die
+		make configure
 	fi
 }
 
@@ -149,6 +149,7 @@ prepare_release() {
 		#	's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9a999/'
 		#	configure.ac
 
+
 		local -n parsed_version="${1}" # modify the variable passed as reference
 		parsed_version="$(grep -o -- \
 			'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
@@ -209,5 +210,5 @@ prepare_release() {
 	update_VERSION_file "${version}"
 
 	# https://stackoverflow.com/questions/17583578/what-command-means-do-nothing-in-a-conditional-in-bash
-	EDITOR="true" version="${version}" ./release_update_version.sh || die
+	EDITOR="true" version="${version}" ./release_update_version.sh
 }
