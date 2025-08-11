@@ -198,6 +198,8 @@ src_configure() {
 
 	# Keep things sane
 	strip-flags
+	# Adds a property which confuses tests (PR33267)
+	filter-flags '-mno-direct-extern-access'
 	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 	lto-guarantee-fat
@@ -420,9 +422,6 @@ src_test() {
 
 		# lto-wrapper warnings which confuse tests
 		filter-flags '-Wa,*'
-
-		# Adds a property which confuses tests
-		filter-flags '-mno-direct-extern-access'
 
 		# bug #637066
 		filter-flags -Wall -Wreturn-type
