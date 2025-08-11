@@ -13,5 +13,6 @@
 	</use>
 	<upstream>
 		<bugs-to>https://code.videolan.org/videolan/libplacebo/-/issues</bugs-to>
+		<remote-id type="github">haasn/libplacebo</remote-id>
 	</upstream>
 </pkgmetadata>
