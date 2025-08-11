@@ -28,7 +28,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.11.0-c99.patch
+	# Backports, drop on bump
+	"${FILESDIR}"/${PV}
 )
 
 src_prepare() {
