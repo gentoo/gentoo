@@ -24,6 +24,9 @@ RDEPEND="dev-libs/glib"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/distlib[${PYTHON_USEDEP}]
+	')
 	dev-lang/perl
 	app-alternatives/ninja
 "
@@ -31,6 +34,10 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/qemu-8.1.0-find-sphinx.patch
 )
+
+python_check_deps() {
+	python_has_version "dev-python/distlib[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	tc-export AR LD OBJCOPY RANLIB
