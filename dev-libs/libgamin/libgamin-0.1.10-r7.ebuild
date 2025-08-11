@@ -9,10 +9,10 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit autotools gnome.org multilib-minimal
 
 DESCRIPTION="Library providing the FAM File Alteration Monitor API"
-HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gamin"
 SRC_URI="${SRC_URI}
 	mirror://gentoo/gamin-0.1.9-freebsd.patch.bz2
-	https://dev.gentoo.org/~grobian/patches/libgamin-0.1.10-opensolaris.patch.bz2
+	https://dev.gentoo.org/~grobian/patches/${P}-opensolaris.patch.bz2
 	https://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz" # pkg.m4 for eautoreconf
 
 LICENSE="LGPL-2"
@@ -23,8 +23,7 @@ IUSE="debug static-libs"
 RESTRICT="test" # needs gam-server
 
 RDEPEND="
-	!app-admin/fam
-	!<app-admin/gamin-0.1.10"
+	!app-admin/fam"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
