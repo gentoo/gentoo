@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit autotools flag-o-matic gnome.org
 
 DESCRIPTION="Library providing the FAM File Alteration Monitor API"
-HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gamin"
 SRC_URI="${SRC_URI}
 	mirror://gentoo/gamin-0.1.9-freebsd.patch.bz2
 	https://pkgconfig.freedesktop.org/releases/pkg-config-0.26.tar.gz" # pkg.m4 for eautoreconf
@@ -21,8 +21,7 @@ IUSE="debug"
 
 RDEPEND=">=dev-libs/glib-2:2
 	>=dev-libs/libgamin-0.1.10
-	!app-admin/fam
-	!<app-admin/gamin-0.1.10"
+	!app-admin/fam"
 
 DEPEND="${RDEPEND}"
 
@@ -46,6 +45,9 @@ src_prepare() {
 
 	# Fix deadlocks with glib-2.32, bug #413331, upstream #667230
 	eapply "${FILESDIR}/${P}-ih_sub_cancel-deadlock.patch"
+
+	# Fix build with gcc-14 and clang bug #559464 #870574 #920356
+	eapply "${FILESDIR}/${P}-fix-build-with-gcc-14-and-clang.patch"
 
 	# Drop DEPRECATED flags
 	sed -i -e 's:-DG_DISABLE_DEPRECATED:$(NULL):g' server/Makefile.am || die
