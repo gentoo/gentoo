@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs toolchain-funcs
+inherit check-reqs dot-a toolchain-funcs
 
 DESCRIPTION="Purely functional programming language with first class types"
 HOMEPAGE="https://idris-lang.org/"
@@ -11,7 +11,7 @@ HOMEPAGE="https://idris-lang.org/"
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/idris-lang/${PN^}.git"
+	EGIT_REPO_URI="https://github.com/idris-lang/${PN^}"
 else
 	SRC_URI="https://github.com/idris-lang/${PN^}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
@@ -50,7 +50,7 @@ BDEPEND="
 
 CHECKREQS_DISK_BUILD="1200M"
 
-PATCHES=( "${FILESDIR}/${PN}-0.7.0-disable-allbackends-tests.patch"  )
+PATCHES=( "${FILESDIR}/${PN}-0.7.0-disable-allbackends-tests.patch" )
 
 # Generated via "SCHEME", not CC
 RESTRICT="strip"
@@ -101,6 +101,9 @@ src_configure() {
 	export IDRIS2_VERSION="${PV}"
 	export IDRIS2_CG="$(usex chez chez racket)"
 	export SCHEME="$(usex chez chezscheme racket)"
+
+	# bug #958431
+	lto-guarantee-fat
 }
 
 src_compile() {
@@ -139,9 +142,16 @@ src_install() {
 	local -x PATH="${S}/build/exec:${PATH}"
 
 	if ! use minimal ; then
-		emake -j1 DESTDIR="${ED}" install-with-src-api
-		emake -j1 DESTDIR="${ED}" install-with-src-libs
+		emake -j1 IDRIS2_PREFIX="${ED}/usr/lib/idris2" install-with-src-api
+		emake -j1 IDRIS2_PREFIX="${ED}/usr/lib/idris2" install-with-src-libs
+
+		sed -e "s|${D}||g" \
+			-i "${ED}/usr/lib/${PN}/${P}/${P}/IdrisPaths.idr" \
+			|| die
 	fi
+
+	# bug #958431
+	strip-lto-bytecode
 
 	cat <<EOF > "${ED}/usr/lib/${PN}/gentoo-build-info.txt"
 Package: ${P}
