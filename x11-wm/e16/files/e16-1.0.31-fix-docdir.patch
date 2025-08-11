@@ -1,0 +1,10 @@
+Docs go into /usr/share/doc/e16, we preffer them in /usr/share/doc/${PF}
+
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -1,4 +1,4 @@
+-e16docdir = ${datadir}/doc/${PACKAGE}
++e16docdir = ${docdir}
+ 
+ EXTRA_DIST = e16.asc e16.man.in e16.html
+ 

@@ -5,6 +5,7 @@
   <use>
     <flag name="debug">Build libtrip debugging library</flag>
     <flag name="dialogs">Enable support for configuration dialogs</flag>
+    <flag name="editline">Use <pkg>dev-libs/editline</pkg> for line editing</flag>
     <flag name="libhack">Build libhack window mode helper library</flag>
     <flag name="modules">Enable support for loadable modules</flag>
     <flag name="no-container">Do not use container window (experimental)</flag>
