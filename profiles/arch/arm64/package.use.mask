@@ -285,11 +285,6 @@ dev-util/diffoscope pascal
 # media-plugins/zam-plugins not keyworded here
 media-sound/easyeffects zamaudio
 
-# Sam James <sam@gentoo.org> (2021-04-14)
-# Supports 64-bit NEON
-# Note: libpng-compat 1.5.30 does NOT seem to.
-media-libs/libpng -cpu_flags_arm_neon
-
 # Sam James <sam@gentoo.org> (2021-03-20)
 # Supports both 'neon32' and 'neon64'
 sys-libs/zlib-ng -cpu_flags_arm_neon
