@@ -58,9 +58,6 @@ src_prepare() {
 
 	if [[ ${PV} == *9999 ]]; then
 		prepare_release
-	fi
-
-	if [[ ${PV} == *9999 ]]; then
 		make configure
 	fi
 }
