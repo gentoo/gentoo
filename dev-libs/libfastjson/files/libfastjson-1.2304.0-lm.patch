@@ -1,0 +1,24 @@
+From 919f7d204291047182a042ef8f76d70fefb11c2f Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@whissi.de>
+Date: Sun, 10 Aug 2025 00:18:31 +0200
+Subject: [PATCH] build: link libfastjson against libm for modf()
+
+glibc-2.42 changed modf causing IFUNC modf() resolution to fail at runtime
+in rsyslog due to missing direct link against libm.
+
+Adding -lm to Libs ensures the shared library has a DT_NEEDED entry for libm.
+---
+ libfastjson.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libfastjson.pc.in b/libfastjson.pc.in
+index 7d3d375..c230c47 100644
+--- a/libfastjson.pc.in
++++ b/libfastjson.pc.in
+@@ -8,5 +8,5 @@ Description: a fast JSON implementation in C
+ Version: @VERSION@
+ Requires:
+ Libs.private: @LIBS@
+-Libs:  -L${libdir} -lfastjson
++Libs:  -L${libdir} -lfastjson -lm
+ Cflags: -I${includedir}/libfastjson
