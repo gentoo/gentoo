@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit desktop toolchain-funcs
+inherit desktop dot-a toolchain-funcs
 
 MY_PV=$(ver_rs 1 '')
 DESCRIPTION="Node builder specially designed for OpenGL ports of the DOOM game engine"
@@ -26,6 +26,8 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	lto-guarantee-fat
 
 	sed -i \
 		-e "/^CC=/s:=.*:=$(tc-getCC):" \
@@ -67,4 +69,6 @@ src_install() {
 		docinto nodeview
 		dodoc nodeview/{README,TODO}.txt
 	fi
+
+	strip-lto-bytecode
 }
