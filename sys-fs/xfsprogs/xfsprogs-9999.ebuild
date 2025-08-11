@@ -18,7 +18,6 @@ if [[ ${PV} == *9999 ]]; then
 	"
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git"
 	EGIT_BRANCH="for-next"
-	EGIT_CLONE_TYPE="shallow"
 else
 	REGEN_BDEPEND=""
 	SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
