@@ -9,7 +9,7 @@ inherit libtool multilib-minimal
 
 MY_P="libpng-${PV}"
 DESCRIPTION="Portable Network Graphics library"
-HOMEPAGE="http://www.libpng.org/"
+HOMEPAGE="https://www.libpng.org/"
 SRC_URI="https://downloads.sourceforge.net/libpng/${MY_P}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
