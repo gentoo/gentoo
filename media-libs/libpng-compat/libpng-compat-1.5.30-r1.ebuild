@@ -38,6 +38,10 @@ src_prepare() {
 	elibtoolize
 }
 
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf
+}
+
 multilib_src_compile() {
 	emake libpng15.la
 }
