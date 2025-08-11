@@ -148,6 +148,7 @@ prepare_release() {
 		#test sed -i
 		#	's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9a999/'
 		#	configure.ac
+
 		local -n parsed_version="${1}" # modify the variable passed as reference
 		parsed_version="$(grep -o -- \
 			'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
@@ -164,14 +165,14 @@ prepare_release() {
 		#test sed -i 's/^update_version\(\) \{/aupdate_version()  {/g' release.sh
 
 		# https://stackoverflow.com/questions/8818119/how-can-i-run-a-function-from-a-script-in-command-line
-		local update_version_function
-		update_version_function=$( sed -n \
+		local updateversion_function
+		updateversion_function=$( sed -n \
 			'/^update_version() {/,/^}$/p' release.sh || die )
-		update_version_function=$( echo "${update_version_function}" \
+		updateversion_function=$( echo "${updateversion_function}" \
 			| ( sed -r 's/^update_version\(\) \{$//'"${RS}" || die ) )
-		update_version_function=$( echo "${update_version_function}" \
+		updateversion_function=$( echo "${updateversion_function}" \
 			| ( sed -r 's/^\}$//'"${RS}" || die ) )
-		echo "${update_version_function}" > ./release_update_version.sh
+		echo "${updateversion_function}" > ./release_update_version.sh
 		chmod +x release_update_version.sh
 	}
 
@@ -201,7 +202,7 @@ prepare_release() {
 	}
 
 	local version
-	parse_version version # passing version as reference
+	parse_version version # pass version as reference
 
 	isolate_updateversion_function
 
