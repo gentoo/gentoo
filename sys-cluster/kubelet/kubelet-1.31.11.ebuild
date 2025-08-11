@@ -19,6 +19,8 @@ RDEPEND="selinux? ( sec-policy/selinux-kubernetes )"
 RESTRICT+=" test "
 S="${WORKDIR}/kubernetes-${PV}"
 
+QA_PRESTRIPPED=usr/bin/kubelet
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
 	emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \
