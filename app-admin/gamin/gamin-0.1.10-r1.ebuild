@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit multilib-build
 
 DESCRIPTION="Meta package providing the File Alteration Monitor API & Server"
-HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gamin"
 
 LICENSE="LGPL-2"
 SLOT="0"
