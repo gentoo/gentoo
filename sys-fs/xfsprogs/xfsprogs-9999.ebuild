@@ -57,7 +57,7 @@ src_prepare() {
 	sed 's@\(CHANGES\)\.gz[[:space:]]@\1 @' -i doc/Makefile || die
 
 	if [[ ${PV} == *9999 ]]; then
-		call_prepare_release || die
+		prepare_release || die
 	fi
 
 	if [[ ${PV} == *9999 ]]; then
@@ -137,55 +137,76 @@ pkg_postinst() {
 	udev_reload
 }
 
-call_prepare_release() {
+prepare_release() {
 	# pass it to sed so it returns 1 when no replace occurred
+	# https://stackoverflow.com/questions/15965073/return-value-of-sed-for-no-match
+	# https://www.baeldung.com/linux/sed-awk-return-value
 	local RS=';tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x'
 
-	#test sed -i
-	#	's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9a999/'
-	#	configure.ac
+	parse_version() {
+
+		#test sed -i
+		#	's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9a999/'
+		#	configure.ac
+		local -n parsed_version="${1}" # modify the variable passed as reference
+		parsed_version="$(grep -o -- \
+			'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
+			configure.ac || die)"
+
+		#test version+='a'
+		parsed_version=$( echo "${parsed_version}" | ( sed -r \
+			's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9999/'"${RS}" \
+			|| die ) )
+	}
+
+	isolate_updateversion_function() {
+
+		#test sed -i 's/^update_version\(\) \{/aupdate_version()  {/g' release.sh
+
+		# https://stackoverflow.com/questions/8818119/how-can-i-run-a-function-from-a-script-in-command-line
+		local update_version_function
+		update_version_function=$( sed -n \
+			'/^update_version() {/,/^}$/p' release.sh || die )
+		update_version_function=$( echo "${update_version_function}" \
+			| ( sed -r 's/^update_version\(\) \{$//'"${RS}" || die ) )
+		update_version_function=$( echo "${update_version_function}" \
+			| ( sed -r 's/^\}$//'"${RS}" || die ) )
+		echo "${update_version_function}" > ./release_update_version.sh
+		chmod +x release_update_version.sh
+	}
+
+	update_VERSION_file() {
+
+		local version="$1"
+		local version_file
+		local version_major
+		local version_minor
+		local version_revision
+
+		#test version+='a'
+
+		version_major=$( echo "${version}" | ( sed -r \
+			's/^([0-9]+).([0-9]+).([0-9]+)$/\1/'"${RS}" || die ) )
+		version_file+='PKG_MAJOR='"${version_major}"$'\n'
+
+		version_minor=$( echo "${version}" | ( sed -r \
+			's/^([0-9]+).([0-9]+).([0-9]+)$/\2/'"${RS}" || die ) )
+		version_file+='PKG_MINOR='"${version_minor}"$'\n'
+
+		local version_revision=$( echo "${version}" | ( sed -r \
+			's/^([0-9]+).([0-9]+).([0-9]+)$/\3/'"${RS}" || die ) )
+		version_file+='PKG_REVISION='"${version_revision}"$'\n'
+
+		echo "${version_file}" > ./VERSION
+	}
+
 	local version
-	version="$(grep -o -- \
-		'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
-		configure.ac || die)"
+	parse_version version # passing version as reference
 
-	#test version+='a'
-	version=$( echo "${version}" | ( sed -r \
-		's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9999/'"${RS}" \
-		|| die ) )
+	isolate_updateversion_function
 
-	#test sed -i 's/^update_version\(\) \{/aupdate_version()  {/g' release.sh
-	# https://stackoverflow.com/questions/8818119/how-can-i-run-a-function-from-a-script-in-command-line
-	local update_version_function
-	update_version_function=$( sed -n \
-		'/^update_version() {/,/^}$/p' release.sh || die )
-	update_version_function=$( echo "${update_version_function}" \
-		| ( sed -r 's/^update_version\(\) \{$//'"${RS}" || die ) )
-	update_version_function=$( echo "${update_version_function}" \
-		| ( sed -r 's/^\}$//'"${RS}" || die ) )
-	echo "${update_version_function}" > ./release_update_version.sh
+	update_VERSION_file "${version}"
 
-	#test version+='a'
-	local version_file
-	local version_major
-	local version_minor
-	local version_revision
-	# https://stackoverflow.com/questions/15965073/return-value-of-sed-for-no-match
-
-	version_major=$( echo "${version}" | ( sed -r \
-		's/^([0-9]+).([0-9]+).([0-9]+)$/\1/'"${RS}" || die ) )
-	version_file+='PKG_MAJOR='"${version_major}"$'\n'
-
-	version_minor=$( echo "${version}" | ( sed -r \
-		's/^([0-9]+).([0-9]+).([0-9]+)$/\2/'"${RS}" || die ) )
-	version_file+='PKG_MINOR='"${version_minor}"$'\n'
-
-	local version_revision=$( echo "${version}" | ( sed -r \
-		's/^([0-9]+).([0-9]+).([0-9]+)$/\3/'"${RS}" || die ) )
-	version_file+='PKG_REVISION='"${version_revision}"$'\n'
-
-	echo "${version_file}" > ./VERSION
-	chmod +x release_update_version.sh
 	# https://stackoverflow.com/questions/17583578/what-command-means-do-nothing-in-a-conditional-in-bash
 	EDITOR="true" version="${version}" ./release_update_version.sh || die
 }
