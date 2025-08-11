@@ -10,16 +10,10 @@ HOMEPAGE="https://xfs.wiki.kernel.org/ https://git.kernel.org/pub/scm/fs/xfs/xfs
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	inherit autotools
-	REGEN_BDEPEND="
-		dev-build/autoconf
-		dev-build/automake
-		dev-build/libtool
-	"
+	inherit autotools # autoconf is used by the make configure
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git"
 	EGIT_BRANCH="for-next"
 else
-	REGEN_BDEPEND=""
 	SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
@@ -39,10 +33,19 @@ DEPEND="
 	${RDEPEND}
 	>=sys-kernel/linux-headers-6.11
 "
+
 BDEPEND="
 	${REGEN_BDEPEND}
 	nls? ( sys-devel/gettext )
 "
+if [[ ${PV} == *9999 ]]; then
+	BDEPEND+="
+		dev-build/autoconf
+		dev-build/automake
+		dev-build/libtool
+	"
+fi
+
 RDEPEND+=" selinux? ( sec-policy/selinux-xfs )"
 
 src_prepare() {
