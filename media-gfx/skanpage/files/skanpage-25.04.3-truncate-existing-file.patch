@@ -1,0 +1,32 @@
+From 19308900da27b46739f2360426b91479e7179a2f Mon Sep 17 00:00:00 2001
+From: Jeff Robertson <syntaxaire@gmail.com>
+Date: Sat, 19 Jul 2025 11:35:29 -0400
+Subject: [PATCH] Truncate existing files when overwriting
+
+WriteOnly mode truncates existing files when overwriting,
+but ReadWrite does not.
+
+https://doc.qt.io/qt-6/qiodevicebase.html
+
+BUG: 507174
+(cherry picked from commit de3ad2941054a26920e022dc7c4a3dc16c065b5a)
+---
+ src/DocumentSaver.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/DocumentSaver.cpp b/src/DocumentSaver.cpp
+index 8311c316..79f45fa6 100644
+--- a/src/DocumentSaver.cpp
++++ b/src/DocumentSaver.cpp
+@@ -79,7 +79,7 @@ void DocumentSaver::savePDF(const QUrl &fileUrl, const SkanpageUtils::DocumentPa
+ {
+     const QString localName = getLocalNameForFile(fileUrl);
+     QFile file(localName);
+-    bool ok = file.open(QIODevice::ReadWrite);
++    bool ok = file.open(QIODevice::WriteOnly);
+     if (!ok) {
+         Q_EMIT showUserMessage(SkanpageUtils::ErrorMessage, i18nc("%1 is the error message", "An error ocurred while saving: %1.", file.errorString()));
+         return;
+-- 
+GitLab
+
