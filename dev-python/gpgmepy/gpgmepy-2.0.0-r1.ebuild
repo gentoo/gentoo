@@ -63,6 +63,12 @@ python_configure() {
 	emake -Onone prepare
 }
 
+python_compile() {
+	# otherwise distutils will try to build out of S
+	cd "${BUILD_DIR}" || die
+	distutils-r1_python_compile
+}
+
 python_test() {
 	emake -C "${BUILD_DIR}"/tests -Onone check \
 		PYTHON=${EPYTHON} \
