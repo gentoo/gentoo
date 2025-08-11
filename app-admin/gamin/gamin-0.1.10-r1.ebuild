@@ -6,7 +6,7 @@ EAPI=8
 inherit multilib-build
 
 DESCRIPTION="Meta package providing the File Alteration Monitor API & Server"
-HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gamin"
 
 LICENSE="LGPL-2"
 SLOT="0"
