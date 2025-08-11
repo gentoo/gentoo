@@ -705,15 +705,6 @@ dev-build/automake:1.11
 media-plugins/kodi-game-libretro-nestopia
 media-plugins/kodi-game-libretro-dosbox
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
-# Masked for more testing especially of reverse-deps.
-# ogre 1.11/1.12 breakage: bug #834468
-# ogre 2.x breakage: bug #740424
-dev-games/ogre:0/1.12
-dev-games/ogre:0/2.1
-dev-games/ogre:0/13.6
-dev-games/ogre:0/14.3
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # Mask transition ebuilds that were needed only for <glibc-2.26
 # We will keep them in the tree as long as we have masked
