@@ -20,7 +20,9 @@ fi
 LICENSE="curl"
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
+# Tests fail w/ >=net-misc/curl-8.15
+# https://github.com/curl/trurl/issues/394
+RESTRICT="!test? ( test ) test"
 
 # Older curls may work but not all features will be present
 DEPEND=">=net-misc/curl-7.81.0"
