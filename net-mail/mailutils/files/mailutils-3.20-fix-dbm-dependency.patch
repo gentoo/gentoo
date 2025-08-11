@@ -1,0 +1,30 @@
+--- a/libmu_sieve/extensions/Makefile.am	2025-08-11 16:25:13.850209754 +0200
++++ b/libmu_sieve/extensions/Makefile.am	2025-08-11 16:35:28.312393817 +0200
+@@ -15,17 +15,23 @@
+ ## along with GNU Mailutils.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ moddir=$(MU_SIEVE_MODDIR)
+-mod_LTLIBRARIES = \
++
++BASE_MODULES = \
+  editheader.la\
+  list.la\
+  moderator.la\
+  pipe.la\
+  spamd.la\
+  timestamp.la\
+- uidnew.la\
+  vacation.la
++
++if MU_COND_DBM
++DBM_MODULES = uidnew.la
++uidnew_la_LIBADD = ${top_builddir}/libmu_dbm/libmu_dbm.la
++endif
++
++mod_LTLIBRARIES = $(BASE_MODULES) $(DBM_MODULES)
++
+ AM_CPPFLAGS = $(MU_APP_COMMON_INCLUDES)
+ AM_LDFLAGS = -module -avoid-version -no-undefined -rpath '$(moddir)'
+ LIBS = ../libmu_sieve.la
+-
+-uidnew_la_LIBADD = ${top_builddir}/libmu_dbm/libmu_dbm.la
