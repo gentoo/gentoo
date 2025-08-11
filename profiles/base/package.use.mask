@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-13)
+# This has been going on for long enough. Bug #834469
+<sci-libs/ViSP-3.7 ogre
+
 # Alfred Wingate <parona@protonmail.com> (2025-08-12)
 # Marked Beta tier upstream. Tests don't work with it.
 dev-games/ogre vulkan
