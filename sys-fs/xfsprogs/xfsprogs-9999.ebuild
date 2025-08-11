@@ -134,35 +134,24 @@ pkg_postinst() {
 	udev_reload
 }
 
-prepare_release() {
+prepare_release() { # updates the version number in several places
+
 	# pass it to sed so it returns 1 when no replace occurred
-	# https://stackoverflow.com/questions/15965073/return-value-of-sed-for-no-match
-	# https://www.baeldung.com/linux/sed-awk-return-value
 	local RS=';tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x'
 
 	parse_version() {
-
-		#test sed -i
-		#	's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9a999/'
-		#	configure.ac
-
-
 		local -n parsed_version="${1}" # modify the variable passed as reference
 		parsed_version="$(grep -o -- \
 			'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
 			configure.ac || die)"
 
-		#test version+='a'
 		parsed_version=$( echo "${parsed_version}" | ( sed -r \
 			's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9999/'"${RS}" \
 			|| die ) )
 	}
 
 	isolate_updateversion_function() {
-
-		#test sed -i 's/^update_version\(\) \{/aupdate_version()  {/g' release.sh
-
-		# https://stackoverflow.com/questions/8818119/how-can-i-run-a-function-from-a-script-in-command-line
+		# parses a function block from the upstream script
 		local updateversion_function
 		updateversion_function=$( sed -n \
 			'/^update_version() {/,/^}$/p' release.sh || die )
@@ -175,14 +164,11 @@ prepare_release() {
 	}
 
 	update_VERSION_file() {
-
 		local version="$1"
 		local version_file
 		local version_major
 		local version_minor
 		local version_revision
-
-		#test version+='a'
 
 		version_major=$( echo "${version}" | ( sed -r \
 			's/^([0-9]+).([0-9]+).([0-9]+)$/\1/'"${RS}" || die ) )
@@ -206,6 +192,6 @@ prepare_release() {
 
 	update_VERSION_file "${version}"
 
-	# https://stackoverflow.com/questions/17583578/what-command-means-do-nothing-in-a-conditional-in-bash
+	# replace editor with true to avoid manually editing the VERSION file
 	EDITOR="true" version="${version}" ./release_update_version.sh
 }
