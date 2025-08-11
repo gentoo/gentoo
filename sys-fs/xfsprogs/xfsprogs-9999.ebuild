@@ -146,8 +146,7 @@ call_prepare_release() {
 
 	version="$(grep -o -- \
 		'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
-		configure.ac)"
-	if [ $? != 0 ]; then die; fi
+		configure.ac || die)"
 
 	#test version+='a'
 	version=$(echo "${version}" | ( sed -r \
