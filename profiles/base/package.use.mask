@@ -567,10 +567,6 @@ sys-libs/ncurses stack-realign
 # https://github.com/aria2/aria2/issues/1636
 net-misc/aria2 gnutls
 
-# Sam James <sam@gentoo.org> (2022-03-02)
-# Needs masked version of ogre (>=1.12), bug #825330
->=dev-games/mygui-3.4.1 ogre
-
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2022-02-04)
 # We're still ironing out some kinks and writing documentation for
 # this feature, so keep masked for now.
