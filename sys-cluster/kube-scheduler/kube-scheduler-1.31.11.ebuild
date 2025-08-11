@@ -22,6 +22,8 @@ BDEPEND=">=dev-lang/go-1.23.0"
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
 
+QA_PRESTRIPPED=usr/bin/kube-scheduler
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
 		emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \

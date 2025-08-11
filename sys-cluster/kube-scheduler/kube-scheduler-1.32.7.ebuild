@@ -23,6 +23,8 @@ DEPEND="acct-group/kube-scheduler
 RDEPEND="${DEPEND}"
 BDEPEND=">=dev-lang/go-1.23.3"
 
+QA_PRESTRIPPED=usr/bin/kube-scheduler
+
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
 		emake -j1 GOFLAGS="${GOFLAGS}" GOLDFLAGS="" LDFLAGS="" FORCE_HOST_GO=yes \
