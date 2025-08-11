@@ -13,7 +13,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${PV}/${P}-full.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 
 IUSE="+sbcl cmucl gcl ecl clisp clozurecl X emacs gmp doc"
 REQUIRED_USE="^^ ( sbcl cmucl gcl ecl clisp clozurecl )
