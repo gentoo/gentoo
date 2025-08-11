@@ -1,0 +1,121 @@
+https://bugs.gentoo.org/961317
+https://invent.kde.org/pim/kleopatra/-/commit/10b618703d74618c09b5e2b16e2db9d829aed93b
+https://invent.kde.org/pim/kleopatra/-/commit/b1f3736de7ed3c2d4f58aa454064a4cd0f423250
+https://invent.kde.org/pim/kleopatra/-/commit/d4f777ffa137148302ca39d5a2238c01c896605d
+
+From 10b618703d74618c09b5e2b16e2db9d829aed93b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 14 May 2025 17:29:18 +0200
+Subject: [PATCH] Include QGpgME/Debug for QDebug operator for GpgME::Error
+
+The missing QDebug operator was caught by the new explicit
+conversion-to-bool operator for GpgME::Error. The safe-bool idiom didn't
+prevent conversion of GpgME::Error to bool when passed to QDebug's
+operator<<.
+---
+ src/dialogs/useridswidget.cpp | 1 +
+ src/view/cardkeysview.cpp     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/dialogs/useridswidget.cpp b/src/dialogs/useridswidget.cpp
+index bcb540bc4..fc26e7b9e 100644
+--- a/src/dialogs/useridswidget.cpp
++++ b/src/dialogs/useridswidget.cpp
+@@ -33,6 +33,7 @@
+ #include <QPushButton>
+ #include <QVBoxLayout>
+ 
++#include <QGpgME/Debug>
+ #include <QGpgME/KeyListJob>
+ #include <QGpgME/Protocol>
+ 
+diff --git a/src/view/cardkeysview.cpp b/src/view/cardkeysview.cpp
+index eee754f7b..1f5a233aa 100644
+--- a/src/view/cardkeysview.cpp
++++ b/src/view/cardkeysview.cpp
+@@ -34,6 +34,7 @@
+ #include <KLocalizedString>
+ #include <KSharedConfig>
+ 
++#include <QGpgME/Debug>
+ #include <QGpgME/KeyListJob>
+ #include <QGpgME/Protocol>
+ 
+-- 
+GitLab
+
+From b1f3736de7ed3c2d4f58aa454064a4cd0f423250 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 14 May 2025 17:31:47 +0200
+Subject: [PATCH] Use Error::isError() to check if an error occurred
+
+The new explicit conversion-to-bool operator for Error prevents
+implicit conversion of Error to bool.
+---
+ src/crypto/signencrypttask.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/crypto/signencrypttask.cpp b/src/crypto/signencrypttask.cpp
+index 483353f59..788a8865b 100644
+--- a/src/crypto/signencrypttask.cpp
++++ b/src/crypto/signencrypttask.cpp
+@@ -27,6 +27,7 @@
+ #include <QGpgME/SignEncryptArchiveJob>
+ #include <QGpgME/SignEncryptJob>
+ #include <QGpgME/SignJob>
++#include <qgpgme/qgpgme_version.h>
+ 
+ #include <gpgme++/encryptionresult.h>
+ #include <gpgme++/key.h>
+@@ -1009,9 +1010,15 @@ QString SignEncryptFilesResult::overview() const
+                             m_output.label,
+                             !m_sresult.isNull(),
+                             !m_eresult.isNull(),
++#if QGPGME_VERSION >= QT_VERSION_CHECK(2, 0, 0)
++                            m_sresult.error().isError(),
++                            m_eresult.error().isError(),
++                            m_sresult.error().isError() ? m_sresult.error() : m_eresult.error());
++#else
+                             m_sresult.error(),
+                             m_eresult.error(),
+                             m_sresult.error().code() ? m_sresult.error() : m_eresult.error());
++#endif
+ }
+ 
+ QString SignEncryptFilesResult::details() const
+-- 
+GitLab
+
+From d4f777ffa137148302ca39d5a2238c01c896605d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 14 May 2025 16:37:23 +0200
+Subject: [PATCH] Remove long obsolete feature check
+
+---
+ src/selftest/gpgagentcheck.cpp | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/src/selftest/gpgagentcheck.cpp b/src/selftest/gpgagentcheck.cpp
+index 7f15d1c71..285635b83 100644
+--- a/src/selftest/gpgagentcheck.cpp
++++ b/src/selftest/gpgagentcheck.cpp
+@@ -37,16 +37,7 @@ public:
+     {
+         m_skipped = true;
+ 
+-        if (!hasFeature(AssuanEngineFeature, 0)) {
+-            m_error = i18n("GpgME library too old");
+-            m_explanation = i18nc("@info",
+-                                  "Either the GpgME library itself is too old, "
+-                                  "or the GpgME++ library was compiled against "
+-                                  "an older GpgME that did not support connecting to gpg-agent.");
+-            m_proposedFix = xi18nc("@info",
+-                                   "Upgrade to <application>gpgme</application> 1.2.0 or higher, "
+-                                   "and ensure that gpgme++ was compiled against it.");
+-        } else if (ensureEngineVersion(GpgME::GpgConfEngine, 2, 1, 0)) {
++        if (ensureEngineVersion(GpgME::GpgConfEngine, 2, 1, 0)) {
+             // 2.1 starts the agent on demand and requires it. So for 2.1.0 we can assume
+             // autostart works and we don't need to care about the agent.
+             m_skipped = false;
+-- 
+GitLab
