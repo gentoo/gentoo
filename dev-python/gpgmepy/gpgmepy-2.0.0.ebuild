@@ -8,15 +8,9 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools distutils-r1
 
-GPGMEPY_COMMIT="1c2c1c0b41af5e34e4f6897639fa41ef3932ec7d"
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use (Python bindings)"
 HOMEPAGE="https://www.gnupg.org/related_software/gpgme"
-SRC_URI="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgmepy.git;a=snapshot;h=${GPGMEPY_COMMIT};sf=tgz -> ${P}.tar.gz"
-#SRC_URI="
-#	mirror://gnupg/${PN}/${P}.tar.xz
-#	verify-sig? ( mirror://gnupg/${PN}/${P}.tar.xz.sig )
-#"
-S="${WORKDIR}"/${PN}-${GPGMEPY_COMMIT:0:7}
+SRC_URI="mirror://gnupg/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+ test? ( GPL-2+ )"
 SLOT="0"
@@ -42,11 +36,21 @@ PATCHES=(
 )
 
 src_prepare() {
+	# autoreconf adds '-unknown' suffix and may even blast the version away
+	# entirely to 0.0.0.
+	sed -i -e "s:mym4_version:${PV}:" configure.ac || die
+	# The dynamic version machinery doesn't work with proper PEP517
+	# builds, as it relies on a hack in setup.py.
+	sed -i -e "s:dynamic = \[\"version\"\]:version = \"${PV}\":" pyproject.toml || die
+
 	distutils-r1_src_prepare
 	eautoreconf
 }
 
 python_configure() {
+	mkdir "${BUILD_DIR}" || die
+	cd "${BUILD_DIR}" || die
+
 	local myeconfargs=(
 		$(use_enable test gpg-test)
 
@@ -60,7 +64,7 @@ python_configure() {
 }
 
 python_test() {
-	emake -C tests -Onone check \
+	emake -C "${BUILD_DIR}"/tests -Onone check \
 		PYTHON=${EPYTHON} \
 		PYTHONS=${EPYTHON} \
 		TESTFLAGS="--python-libdir=${BUILD_DIR}/lib"
