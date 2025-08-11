@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.1-lz.patch
 	"${FILESDIR}"/${P}-fix-multiple-definition-in-alsa-and-oss.patch
 	"${FILESDIR}"/${P}-fix-build-with-dash.patch
+	"${FILESDIR}"/${P}-fix-build-with-gcc-15.patch
 )
 
 src_prepare() {
