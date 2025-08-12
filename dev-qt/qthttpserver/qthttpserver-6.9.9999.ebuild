@@ -22,15 +22,6 @@ DEPEND="
 	test? ( ~dev-qt/qtbase-${PV}:6[concurrent] )
 "
 
-CMAKE_SKIP_TESTS=(
-	# most http/2 tests are fine but two been failing since 6.9.1,
-	# needs looking into but skip for now (maybe(?) due to changes
-	# in tst_qhttpserver.cpp rather than a runtime issue):
-	# tst_QHttpServer::multipleRequests(http/2)
-	# tst_QHttpServer::pipelinedRequests(http/2)
-	tst_qhttpserver
-)
-
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package websockets Qt6WebSockets)
