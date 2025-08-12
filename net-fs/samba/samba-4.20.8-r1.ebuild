@@ -209,10 +209,6 @@ src_prepare() {
 	# Ugly hackaround for bug #592502
 	#cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
 
-	sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \
-		-i source4/dsdb/samdb/ldb_modules/password_hash.c \
-		|| die
-
 	# WAF
 	multilib_copy_sources
 }
