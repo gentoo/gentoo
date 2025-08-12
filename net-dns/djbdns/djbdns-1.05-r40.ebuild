@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -83,6 +83,16 @@ src_prepare() {
 }
 
 src_compile() {
+	# djb is a skeptic when it comes to optimizing compilers. He doesn't like
+	# them "ruining" his code, thinks only algorithms matter for performance,
+	# and writes code that triggers UB warnings. Respect his point of view.
+	if is-flagq -O?; then
+		CFLAGS="-O2"
+	else
+		CFLAGS=""
+	fi
+	append-flags -fno-strict-aliasing
+
 	# Bug 927539. This is beyond our ability to realistically fix due
 	# to patch conflicts.
 	append-cflags $(test-flags-CC -Wno-error=incompatible-pointer-types)
