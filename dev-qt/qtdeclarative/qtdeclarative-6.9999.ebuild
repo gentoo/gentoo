@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 QT6_HAS_STATIC_LIBS=1
 # behaves very badly when qtdeclarative is not already installed, also
 # other more minor issues (installs junk, sandbox/offscreen issues)
