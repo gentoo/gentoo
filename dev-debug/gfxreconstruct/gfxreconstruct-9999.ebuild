@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit cmake
+inherit cmake flag-o-matic
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/LunarG/gfxreconstruct.git"
@@ -63,6 +63,12 @@ src_unpack() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/956019
+	# https://github.com/LunarG/gfxreconstruct/issues/2358
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_WERROR=OFF
