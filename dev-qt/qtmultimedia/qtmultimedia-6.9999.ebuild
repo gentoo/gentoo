@@ -26,7 +26,7 @@ REQUIRED_USE="
 
 # dlopen/dbus: pipewire
 RDEPEND="
-	~dev-qt/qtbase-${PV}:6[gui,network,opengl=,vulkan=,widgets]
+	~dev-qt/qtbase-${PV}:6[concurrent,gui,network,opengl=,vulkan=,widgets]
 	alsa? (
 		!pulseaudio? ( media-libs/alsa-lib )
 	)
