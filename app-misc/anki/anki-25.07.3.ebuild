@@ -130,6 +130,7 @@ EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 PATCHES=(
+	"${FILESDIR}"/${P}-rust-1.89.0.patch
 	"${FILESDIR}"/24.06.3/remove-yarn.patch
 	"${FILESDIR}"/24.04.1/remove-mypy-protobuf.patch
 	"${FILESDIR}"/24.04.1/revert-cert-store-hack.patch
