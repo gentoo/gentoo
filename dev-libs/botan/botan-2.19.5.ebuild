@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-distutils.patch
 	"${FILESDIR}"/${P}-boost-1.87.patch
 	"${FILESDIR}"/${P}-cloudflare.patch
+	"${FILESDIR}"/${P}-include.patch
 )
 
 python_check_deps() {
