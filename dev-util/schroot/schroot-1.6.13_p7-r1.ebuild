@@ -135,6 +135,7 @@ src_install() {
 		doexe "${FILESDIR}/06zfscloneopts"
 	fi
 
+	keepdir /etc/schroot/chroot.d # bug 961345
 	keepdir /var/lib/schroot/{session,unpack,union/{overlay,underlay}}
 
 	docinto contrib/setup.d
