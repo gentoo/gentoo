@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	inherit autotools # autoconf is used by the make configure
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/fs/xfs/xfsprogs-dev.git"
-	EGIT_BRANCH="for-next"
+	EGIT_BRANCH="for-next" # next release branch
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
@@ -60,8 +60,8 @@ src_prepare() {
 	sed 's@\(CHANGES\)\.gz[[:space:]]@\1 @' -i doc/Makefile || die
 
 	if [[ ${PV} == *9999 ]]; then
-		livebuild_prepare_release
-		make configure
+		livebuild_prepare_release # update version number where needed
+		make configure # uses autoconf for generating the configure file
 	fi
 }
 
@@ -143,18 +143,19 @@ livebuild_prepare_release() { # updates the version number in several places
 	local RS=';tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x'
 
 	parse_version() {
-		local -n parsed_version="${1}" # modify the variable passed as reference
+		local -n parsed_version="${1}" # modify the variable (version) passed as reference
+
+		# keep the same version number as parsed from configure.ac
 		parsed_version="$(grep -o -- \
 			'^AC_INIT(\[xfsprogs\],\[[0-9]\+\.[0-9]\+\.[0-9]\+\],\[linux-xfs@vger.kernel.org\])$' \
 			configure.ac || die)"
-
 		parsed_version=$( echo "${parsed_version}" | ( sed -r \
 			's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.\3/'"${RS}" \
 			|| die ) )
 	}
 
 	isolate_updateversion_function() {
-		# parses a function block from the upstream script
+		# parses and isolate the code from the updateversion function of the upstream release script
 		local updateversion_function
 		updateversion_function=$( sed -n \
 			'/^update_version() {/,/^}$/p' release.sh || die )
@@ -167,34 +168,33 @@ livebuild_prepare_release() { # updates the version number in several places
 	}
 
 	update_VERSION_file() {
-		local version="$1"
-		local version_file
+		local version="$1" # the received version number from parse_version()
 		local version_major
 		local version_minor
 		local version_revision
 
 		version_major=$( echo "${version}" | ( sed -r \
 			's/^([0-9]+).([0-9]+).([0-9]+)$/\1/'"${RS}" || die ) )
-		version_file+='PKG_MAJOR='"${version_major}"$'\n'
-
 		version_minor=$( echo "${version}" | ( sed -r \
 			's/^([0-9]+).([0-9]+).([0-9]+)$/\2/'"${RS}" || die ) )
-		version_file+='PKG_MINOR='"${version_minor}"$'\n'
-
 		local version_revision=$( echo "${version}" | ( sed -r \
 			's/^([0-9]+).([0-9]+).([0-9]+)$/\3/'"${RS}" || die ) )
-		version_file+='PKG_REVISION='"${version_revision}"$'\n'
 
-		echo "${version_file}" > ./VERSION
+		cat <<-EOF > ./VERSION || die
+			PKG_MAJOR=${version_major}
+			PKG_MINOR=${version_minor}
+			PKG_REVISION=${version_revision}
+		EOF
 	}
 
 	local version
-	parse_version version # pass version as reference
+	parse_version version # pass version as reference, get the result in-situ
 
 	isolate_updateversion_function
 
 	update_VERSION_file "${version}"
 
+	# calls the isolated function from isolate_updateversion_function
 	# replace editor with true to avoid manually editing the VERSION file
 	( EDITOR="true" version="${version}" ./release_update_version.sh ) || die
 }
