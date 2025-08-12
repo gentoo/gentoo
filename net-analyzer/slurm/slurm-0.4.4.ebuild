@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}-upstream-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"
