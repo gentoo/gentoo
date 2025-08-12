@@ -41,3 +41,13 @@ RDEPEND="
 BDEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	# fix deprecated NPY API
+	sed \
+		-e "s:NPY_IN_ARRAY:NPY_ARRAY_IN_ARRAY:g" \
+		-e "s:NPY_ALIGNED:NPY_ARRAY_ALIGNED:g" \
+		-e "s:NPY_ENSURECOPY:NPY_ARRAY_ENSURECOPY:g" \
+		-i MDAnalysis/lib/src/transformations/transformations.c || die
+	distutils-r1_src_prepare
+}
