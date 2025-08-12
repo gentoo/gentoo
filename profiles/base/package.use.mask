@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Alfred Wingate <parona@protonmail.com> (2025-08-12)
+# Marked Beta tier upstream. Tests don't work with it.
+dev-games/ogre vulkan
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
 # General mask, to be unmasked on arches where glibc supports this
 >=sys-libs/glibc-2.42 sframe
