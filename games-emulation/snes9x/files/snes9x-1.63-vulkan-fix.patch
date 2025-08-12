@@ -1,0 +1,64 @@
+Backport of https://github.com/snes9xgit/snes9x/commit/5449e2d3c549c172f0e81397a9f2be19b800f902
+Fix Vulkan compilation errors.
+--- a/vulkan/vulkan_context.cpp
++++ b/vulkan/vulkan_context.cpp
+@@ -224,27 +224,33 @@ bool Context::init_device(int preferred_device)
+     };
+ 
+     auto device_list = instance->enumeratePhysicalDevices().value;
+-    physical_device = nullptr;
++    bool device_chosen = false;
++    physical_device = vk::PhysicalDevice();
+ 
+     if (preferred_device > -1 &&
+         (size_t)preferred_device < device_list.size() &&
+         check_extensions(required_extensions, device_list[preferred_device]))
+     {
+         physical_device = device_list[preferred_device];
++        device_chosen = true;
+     }
+ 
+-    if (physical_device == nullptr)
++    if (!device_chosen)
+     {
+         for (auto &device : device_list)
+         {
+             if (check_extensions(required_extensions, device))
+             {
+                 physical_device = device;
++                device_chosen = true;
+                 break;
+             }
+         }
+     }
+ 
++    if (!device_chosen)
++        return false;
++
+     auto extension_properties = physical_device.enumerateDeviceExtensionProperties().value;
+     physical_device.getProperties(&physical_device_props);
+ 
+--- a/vulkan/vulkan_pipeline_image.cpp
++++ b/vulkan/vulkan_pipeline_image.cpp
+@@ -1,3 +1,5 @@
++#include <cassert>
++
+ #include "vulkan_pipeline_image.hpp"
+ #include "slang_helpers.hpp"
+ 
+--- a/vulkan/vulkan_shader_chain.cpp
++++ b/vulkan/vulkan_shader_chain.cpp
+@@ -1,3 +1,5 @@
++#include <cassert>
++
+ #include "vulkan_shader_chain.hpp"
+ #include "slang_helpers.hpp"
+ #include "stb_image.h"
+--- a/vulkan/vulkan_texture.cpp
++++ b/vulkan/vulkan_texture.cpp
+@@ -1,3 +1,5 @@
++#include <cassert>
++
+ #include "vulkan_texture.hpp"
+ #include "vulkan/vulkan_enums.hpp"
+ #include "slang_helpers.hpp"

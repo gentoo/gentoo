@@ -1,0 +1,21 @@
+USE_SLANG currently disregards whether USE_WAYLAND was used or not
+and leads to trying to use wayland headers that may be missing.
+--- a/gtk/CMakeLists.txt
++++ b/gtk/CMakeLists.txt
+@@ -105,13 +105,15 @@ if(USE_SLANG)
+     list(APPEND INCLUDES "../external/glslang")
+ 
+     list(APPEND DEFINES "VK_USE_PLATFORM_XLIB_KHR"
+-                        "VK_USE_PLATFORM_WAYLAND_KHR"
+                         "VULKAN_HPP_DISPATCH_LOADER_DYNAMIC=1"
+                         "VULKAN_HPP_NO_NODISCARD_WARNINGS=1"
+                         "VULKAN_HPP_NO_EXCEPTIONS=1"
+                         "VMA_DYNAMIC_VULKAN_FUNCTIONS=1"
+                         "VMA_STATIC_VULKAN_FUNCTIONS=0"
+                         "IMGUI_IMPL_VULKAN_NO_PROTOTYPES")
++    if(USE_WAYLAND)
++        list(APPEND DEFINES "VK_USE_PLATFORM_WAYLAND_KHR")
++    endif()
+     list(APPEND INCLUDES ../external/vulkan-headers/include)
+     list(APPEND INCLUDES ../external/VulkanMemoryAllocator-Hpp/include)
+     list(APPEND INCLUDES ../external/stb)
