@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,10 +34,6 @@ src_configure() {
 		$(cmake_use_find_package qml Qt6Qml)
 		$(qt_feature flite)
 		$(qt_feature speechd)
-
-		# flite_alsa was likely to work around old issues in flite, it does
-		# nothing but add -lasound (no code change, and is unneeded)
-		-DQT_FEATURE_flite_alsa=OFF
 	)
 
 	qt6-build_src_configure
