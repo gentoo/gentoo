@@ -60,7 +60,7 @@ src_prepare() {
 	sed 's@\(CHANGES\)\.gz[[:space:]]@\1 @' -i doc/Makefile || die
 
 	if [[ ${PV} == *9999 ]]; then
-		prepare_release
+		livebuild_prepare_release
 		make configure
 	fi
 }
@@ -137,7 +137,7 @@ pkg_postinst() {
 	udev_reload
 }
 
-prepare_release() { # updates the version number in several places
+livebuild_prepare_release() { # updates the version number in several places
 
 	# pass it to sed so it returns 1 when no replace occurred
 	local RS=';tm;${x;/1/{x;q};x;q1};b;:m;x;s/.*/1/;x'
@@ -149,7 +149,7 @@ prepare_release() { # updates the version number in several places
 			configure.ac || die)"
 
 		parsed_version=$( echo "${parsed_version}" | ( sed -r \
-			's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.9999/'"${RS}" \
+			's/^AC_INIT\(\[xfsprogs\],\[([0-9]+).([0-9]+).([0-9]+)\],\[linux-xfs@vger\.kernel\.org\]\)$/\1.\2.\3/'"${RS}" \
 			|| die ) )
 	}
 
