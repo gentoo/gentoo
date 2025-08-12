@@ -120,3 +120,213 @@ Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
 -- 
 2.50.1
 
+
+From 7186fa47fee7060a70fa6698748c4f4793edadf8 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Mon, 11 Aug 2025 10:12:59 +0100
+Subject: [PATCH 4/6] fix(dracut-install): handling of multiple sonames in
+ dlopen JSON
+
+We should not try to install every library referenced in the soname
+array, only the first one present. The array is intended to be an
+ordered preference list.
+
+Closes: https://github.com/dracut-ng/dracut-ng/issues/1552
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/src/install/dracut-install.c
++++ b/src/install/dracut-install.c
+@@ -951,9 +951,10 @@ static void resolve_deps_dlopen_parse_json(Hashmap *pdeps, Hashmap *deps, const
+         for (size_t entry_idx = 0; entry_idx < sd_json_variant_elements(dlopen_json); entry_idx++) {
+                 sd_json_variant *entry = sd_json_variant_by_index(dlopen_json, entry_idx);
+                 sd_json_variant *feature_json = sd_json_variant_by_key(entry, "feature");
++                const char *feature = NULL;
+ 
+                 if (feature_json && sd_json_variant_is_string(feature_json)) {
+-                        const char *feature = sd_json_variant_string(feature_json);
++                        feature = sd_json_variant_string(feature_json);
+                         const char *name = src_soname ?: basename(fullsrcpath);
+ 
+                         Iterator i;
+@@ -988,12 +989,15 @@ static void resolve_deps_dlopen_parse_json(Hashmap *pdeps, Hashmap *deps, const
+ 
+                         const char *soname = sd_json_variant_string(soname_json);
+                         if (hashmap_get(pdeps, soname))
+-                                continue;
++                                goto skip;
+ 
+                         char *library = find_library(soname, fullsrcpath, src_len, match64, match32);
+-                        if (!library || hashmap_put_strdup_key(deps, soname, library) < 0)
+-                                log_warning("WARNING: could not locate dlopen dependency %s requested by '%s'", soname, fullsrcpath);
++                        if (library && hashmap_put_strdup_key(deps, soname, library) == 0)
++                                goto skip;
+                 }
++
++                log_warning("WARNING: could not locate dlopen dependency for %s feature requested by '%s'", feature ?: "unnamed",
++                            fullsrcpath);
+ skip:
+         }
+ }
+-- 
+2.50.1
+
+
+From 5c69be7d20af599cc6dd94d451a16d8639139bce Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Mon, 11 Aug 2025 10:51:51 +0100
+Subject: [PATCH 5/6] fix(dracut-install): cache resolve_deps calls for speed
+ and less noise
+
+The dlopen dependency failure warning was particularly noisy and likely
+to trigger. We were already caching the processed items in resolve_lazy,
+but resolve_deps recurses many times, so it was necessary to move the
+cache down a level. I didn't reuse "items" here because it would have
+clashed with its usage elsewhere.
+
+I had to think about whether the cache would function correctly with
+changing values of pdeps. If a dependency is not found on the first
+attempt, it does not prevent its consumer from being installed, so it
+does not matter that it might be found via a RUNPATH on a subsequent
+attempt.
+
+Closes: https://github.com/dracut-ng/dracut-ng/issues/1552
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/src/install/dracut-install.c
++++ b/src/install/dracut-install.c
+@@ -93,6 +93,7 @@ static Hashmap *items_failed = NULL;
+ static Hashmap *modules_loaded = NULL;
+ static Hashmap *modules_suppliers = NULL;
+ static Hashmap *processed_suppliers = NULL;
++static Hashmap *processed_deps = NULL;
+ static Hashmap *modalias_to_kmod = NULL;
+ static Hashmap *add_dlopen_features = NULL;
+ static Hashmap *omit_dlopen_features = NULL;
+@@ -1132,13 +1133,21 @@ skip:
+    Both ELF binaries and scripts with shebangs are handled. */
+ static int resolve_deps(const char *src, Hashmap *pdeps)
+ {
+-        _cleanup_free_ char *fullsrcpath = NULL;
+-
+-        fullsrcpath = get_real_file(src, true);
++        char *fullsrcpath = get_real_file(src, true);
+         log_debug("resolve_deps('%s') -> get_real_file('%s', true) = '%s'", src, src, fullsrcpath);
+         if (!fullsrcpath)
+                 return 0;
+ 
++        switch (hashmap_put(processed_deps, fullsrcpath, fullsrcpath)) {
++        case -EEXIST:
++                free(fullsrcpath);
++                return 0;
++        case -ENOMEM:
++                log_error("Out of memory");
++                free(fullsrcpath);
++                return -ENOMEM;
++        }
++
+         _cleanup_close_ int fd = open(fullsrcpath, O_RDONLY | O_CLOEXEC);
+         if (fd < 0) {
+                 log_error("ERROR: cannot open '%s': %m", fullsrcpath);
+@@ -1838,27 +1847,10 @@ static int parse_argv(int argc, char *argv[])
+ static int resolve_lazy(int argc, char **argv)
+ {
+         int i;
+-        size_t destrootdirlen = strlen(destrootdir);
+         int ret = 0;
+-        char *item;
+         for (i = 0; i < argc; i++) {
+-                const char *src = argv[i];
+-                char *p = argv[i];
+-
+-                log_debug("resolve_deps('%s')", src);
+-
+-                if (strstr(src, destrootdir)) {
+-                        p = &argv[i][destrootdirlen];
+-                }
+-
+-                if (check_hashmap(items, p)) {
+-                        continue;
+-                }
+-
+-                item = strdup(p);
+-                hashmap_put(items, item, item);
+-
+-                ret += resolve_deps(src, NULL);
++                log_debug("resolve_deps('%s')", argv[i]);
++                ret += resolve_deps(argv[i], NULL);
+         }
+         return ret;
+ }
+@@ -3008,13 +3000,14 @@ int main(int argc, char **argv)
+         items = hashmap_new(string_hash_func, string_compare_func);
+         items_failed = hashmap_new(string_hash_func, string_compare_func);
+         processed_suppliers = hashmap_new(string_hash_func, string_compare_func);
++        processed_deps = hashmap_new(string_hash_func, string_compare_func);
+         modalias_to_kmod = hashmap_new(string_hash_func, string_compare_func);
+ 
+         dlopen_features[0] = add_dlopen_features = hashmap_new(string_hash_func, string_compare_func);
+         dlopen_features[1] = omit_dlopen_features = hashmap_new(string_hash_func, string_compare_func);
+ 
+         if (!items || !items_failed || !processed_suppliers || !modules_loaded ||
+-            !add_dlopen_features || !omit_dlopen_features) {
++            !processed_deps || !add_dlopen_features || !omit_dlopen_features) {
+                 log_error("Out of memory");
+                 r = EXIT_FAILURE;
+                 goto finish1;
+@@ -3093,6 +3086,9 @@ finish2:
+         while ((i = hashmap_steal_first(processed_suppliers)))
+                 item_free(i);
+ 
++        while ((i = hashmap_steal_first(processed_deps)))
++                item_free(i);
++
+         for (size_t j = 0; j < 2; j++) {
+                 char ***array;
+                 Iterator it;
+@@ -3118,6 +3114,7 @@ finish2:
+         hashmap_free(modules_loaded);
+         hashmap_free(modules_suppliers);
+         hashmap_free(processed_suppliers);
++        hashmap_free(processed_deps);
+         hashmap_free(modalias_to_kmod);
+ 
+         if (arg_mod_filter_path)
+-- 
+2.50.1
+
+
+From edb94a1b2c7d11a29eb055a28fa598e8fd317fe4 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Tue, 12 Aug 2025 10:15:58 +0100
+Subject: [PATCH 6/6] fix(dracut-install): broken calls to mmap with 0 length
+
+This results in an invalid argument error, so check for 0 length first.
+
+Fixes: https://bugs.gentoo.org/961340
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/src/install/dracut-install.c
++++ b/src/install/dracut-install.c
+@@ -632,7 +632,11 @@ static char *check_lib_match(const char *dirname, const char *basename, const ch
+         if (fstat(fd, &sb) < 0)
+                 goto finish2;
+ 
+-        void *map = mmap(NULL, sb.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
++        size_t lib_len = sb.st_size;
++        if (lib_len == 0)
++                goto finish2;
++
++        void *map = mmap(NULL, lib_len, PROT_READ, MAP_PRIVATE, fd, 0);
+         if (map == MAP_FAILED)
+                 goto finish2;
+ 
+@@ -1161,6 +1165,9 @@ static int resolve_deps(const char *src, Hashmap *pdeps)
+         }
+ 
+         size_t src_len = sb.st_size;
++        if (src_len == 0)
++                return 0;
++
+         void *map = mmap(NULL, src_len, PROT_READ, MAP_PRIVATE, fd, 0);
+         if (map == MAP_FAILED) {
+                 log_error("ERROR: cannot mmap '%s': %m", fullsrcpath);
+-- 
+2.50.1
+
