@@ -196,5 +196,5 @@ prepare_release() { # updates the version number in several places
 	update_VERSION_file "${version}"
 
 	# replace editor with true to avoid manually editing the VERSION file
-	EDITOR="true" version="${version}" ./release_update_version.sh
+	( EDITOR="true" version="${version}" ./release_update_version.sh ) || die
 }
