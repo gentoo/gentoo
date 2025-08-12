@@ -1,0 +1,16 @@
+diff -burN 7kaa-2.15.7/configure.ac 7kaa-2.15.7_patched/configure.ac
+--- a/configure.ac	2025-07-27 04:13:39.000000000 +0300
++++ b/configure.ac	2025-08-11 20:45:49.540795010 +0300
+@@ -361,6 +361,12 @@
+   ])
+ ])
+ 
++AS_IF([test "$enable_fhs" = yes], [
++  AC_DEFINE([USE_FHS], [1], [
++    Define to 1 if using FHS directory layout
++  ])
++])
++
+ AS_IF([test "$have_register" = yes], [
+   AC_DEFINE([REGISTER], [register], [
+     Define to the register keyword your compiler allows
