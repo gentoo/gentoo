@@ -28,9 +28,6 @@ S=${WORKDIR}
 LICENSE="NVIDIA-2025 Apache-2.0 BSD BSD-2 GPL-2 MIT ZLIB curl openssl"
 SLOT="0/${PV%%.*}"
 KEYWORDS="-* ~amd64 ~arm64"
-# TODO: enable kernel-open by default to match nvidia upstream, but should
-# first setup a supported-gpus.json "kernelopen" check to abort and avoid bad
-# surprises (should abort for legacy cards too, and have a bypass variable)
 IUSE="+X abi_x86_32 abi_x86_64 kernel-open persistenced powerd +static-libs +tools wayland"
 REQUIRED_USE="kernel-open? ( modules )"
 
