@@ -103,6 +103,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-16.0.0-musl-no-execinfo.patch
 	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
+	"${FILESDIR}"/${P}-qt692.patch
 )
 
 # written in Go, use PREBUILT rather than FLAGS_IGNORED given the
