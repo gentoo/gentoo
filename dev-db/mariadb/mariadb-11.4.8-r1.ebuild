@@ -105,11 +105,21 @@ DEPEND="${COMMON_DEPEND}
 	)
 	static? ( sys-libs/ncurses[static-libs] )
 "
-RDEPEND="
-	${COMMON_DEPEND}
-	!<dev-db/mariadb-$(ver_cut 1-2)
-	!dev-db/mysql
-	!dev-db/percona-server
+RDEPEND="${COMMON_DEPEND}
+	!dev-db/mysql !dev-db/percona-server
+	!dev-db/mariadb:10.3
+	!dev-db/mariadb:10.4
+	!dev-db/mariadb:10.5
+	!dev-db/mariadb:10.6
+	!dev-db/mariadb:10.7
+	!dev-db/mariadb:10.8
+	!dev-db/mariadb:10.9
+	!dev-db/mariadb:10.10
+	!dev-db/mariadb:10.11
+	!dev-db/mariadb:11.0
+	!dev-db/mariadb:11.1
+	!dev-db/mariadb:11.2
+	!dev-db/mariadb:11.3
 	selinux? ( sec-policy/selinux-mysql )
 	server? (
 		columnstore? ( dev-db/mariadb-connector-c )
@@ -298,7 +308,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 
 	# Workaround for bug #959423 (https://jira.mariadb.org/browse/MDEV-37148)
-	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-flags -fno-tree-vectorize
+	append-flags -fno-tree-vectorize
 
 	# debug hack wrt #497532
 	local mycmakeargs=(
@@ -570,11 +580,19 @@ src_test() {
 		"innodb_gis.gis;MDEV-25095;Known rounding error with latest AMD processors"
 		"main.gis;MDEV-25095;Known rounding error with latest AMD processors"
 
+		# Test which fail in network-sandbox because hostname is set to "localhost"
+		"main.explain_non_select;0;Fails in network-sandbox"
+		"main.mysql_upgrade;MDEV-27044;Fails in network-sandbox"
+		"main.selectivity_no_engine;MDEV-26320;Fails in network-sandbox"
+		"main.stat_tables;0;Fails in network-sandbox"
+		"main.stat_tables_innodb;0;Fails in network-sandbox"
+		"main.upgrade_MDEV-19650;MDEV-25096;Fails in network-sandbox"
+		"perfschema.privilege_table_io;MDEV-27045;Fails in network-sandbox"
+		"roles.acl_statistics;0;Fails in network-sandbox"
+		"sysschema.v_privileges_by_table_by_level;MDEV-36030;Fails with network sandbox"
+
 		# Some tests are unable to retrieve HW address
 		"spider.*;MDEV-37098;Fails with network sandbox"
-
-		# issue introduced in 11.8.2
-		"main.mysqld--help-aria;MDEV-36668;broken test regex"
 	)
 
 	use latin1 || disabled_tests+=(

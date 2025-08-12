@@ -316,7 +316,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 
 	# Workaround for bug #959423 (https://jira.mariadb.org/browse/MDEV-37148)
-	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-flags -fno-tree-vectorize
+	append-flags -fno-tree-vectorize
 
 	CMAKE_BUILD_TYPE="RelWithDebInfo"
 
