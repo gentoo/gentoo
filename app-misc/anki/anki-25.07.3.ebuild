@@ -54,7 +54,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE="+gui"
-REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	doc? ( gui )
+	gui? ( ${PYTHON_REQUIRED_USE} )
+"
 RESTRICT="!gui? ( test ) !test? ( test )"
 
 # Dependencies:
