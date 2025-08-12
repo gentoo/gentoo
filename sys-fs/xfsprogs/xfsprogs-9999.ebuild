@@ -163,7 +163,10 @@ livebuild_prepare_release() { # updates the version number in several places
 			| ( sed -r 's/^update_version\(\) \{$//'"${RS}" || die ) )
 		updateversion_function=$( echo "${updateversion_function}" \
 			| ( sed -r 's/^\}$//'"${RS}" || die ) )
-		echo "${updateversion_function}" > ./release_update_version.sh
+		cat <<-EOF > ./release_update_version.sh || die
+			#!/bin/bash
+			${updateversion_function}
+		EOF
 		chmod +x release_update_version.sh
 	}
 
