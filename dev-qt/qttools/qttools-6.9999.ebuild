@@ -87,13 +87,7 @@ src_configure() {
 		$(qt_feature qtattributionsscanner)
 		$(qt_feature qtdiag)
 		$(qt_feature qtplugininfo)
-
 		$(usev widgets -DQT_INSTALL_XDG_DESKTOP_ENTRIES=ON)
-
-		# TODO?: package litehtml, but support for latest releases seem
-		# to lag behind and bundled may work out better for now
-		# https://github.com/litehtml/litehtml/issues/266
-		#$(usev assistant -DQLITEHTML_USE_SYSTEM_LITEHTML=ON)
 
 		# USE=qmlls' help plugin may be temporary, upstream has plans to split
 		# QtHelp into another package so that qtdeclarative can depend on it

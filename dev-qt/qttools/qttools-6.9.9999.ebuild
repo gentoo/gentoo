@@ -90,11 +90,6 @@ src_configure() {
 		$(qt_feature qtdiag)
 		$(qt_feature qtplugininfo)
 
-		# TODO?: package litehtml, but support for latest releases seem
-		# to lag behind and bundled may work out better for now
-		# https://github.com/litehtml/litehtml/issues/266
-		$(usev assistant -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=ON)
-
 		# USE=qmlls' help plugin may be temporary, upstream has plans to split
 		# QtHelp into another package so that qtdeclarative can depend on it
 		# without a circular dependency with qttools
