@@ -6,7 +6,6 @@ inherit go-module
 
 # update on every bump
 GIT_COMMIT=8514bc42ef2c15a0ff27782a22b3add584b0d21c/
-go-mod/
 
 DESCRIPTION="the official gitlab command line interface"
 HOMEPAGE="https://gitlab.com/gitlab-org/cli"
