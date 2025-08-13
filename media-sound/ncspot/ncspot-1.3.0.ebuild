@@ -19,7 +19,7 @@ LICENSE="BSD-2"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD Boost-1.0 ISC MIT MPL-2.0 openssl Unicode-3.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="clipboard cover mpris ncurses +notify pulseaudio"
 
