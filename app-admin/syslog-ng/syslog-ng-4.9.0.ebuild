@@ -104,7 +104,7 @@ src_prepare() {
 	done
 
 	for f in syslog-ng.conf.gentoo.hardened.in-r1 \
-			syslog-ng.conf.gentoo.in-r1; do
+			syslog-ng.conf.gentoo.in-r2; do
 		sed -e "s/@SYSLOGNG_VERSION@/$(ver_cut 1-2)/g" "${FILESDIR}/${f}" > "${T}/${f/.in-r1/}" || die
 	done
 
