@@ -45,6 +45,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/kget-25.04.03-fix-gpgmepp-2.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package bittorrent KTorrent6)
