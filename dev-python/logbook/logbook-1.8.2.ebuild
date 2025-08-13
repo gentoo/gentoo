@@ -29,24 +29,19 @@ BDEPEND="
 		>=dev-python/execnet-1.0.9[${PYTHON_USEDEP}]
 		dev-python/jinja2[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
 		dev-python/pyzmq[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-1.4[${PYTHON_USEDEP}]
 	)
 "
+EPYTEST_PLUGINS=( pytest-rerunfailures )
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
 
+EPYTEST_DESELECT=(
+	# Delete test file requiring local connection to redis server
+	tests/test_queues.py
+)
+
 python_configure_all() {
 	export DISABLE_LOGBOOK_CEXT=1
-}
-
-python_test() {
-	local EPYTEST_DESELECT=(
-		# Delete test file requiring local connection to redis server
-		tests/test_queues.py
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p rerunfailures
 }
