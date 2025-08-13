@@ -1305,7 +1305,7 @@ java-pkg_getjar() {
 	classpath=$(java-config --classpath=${pkg})
 	[[ $? != 0 ]] && die ${error_msg}
 
-	java-pkg_ensure-dep "${build_only}" "${pkg}"
+	[[ -z ${PORTAGE_QUIET} ]] && java-pkg_ensure-dep "${build_only}" "${pkg}"
 
 	# Record the package(Virtual) as a dependency and then set build_only
 	# So that individual jars are not recorded.
@@ -1325,7 +1325,7 @@ java-pkg_getjar() {
 
 		if [[ "$(basename ${jar})" == "${target_jar}" ]] ; then
 			# Only record jars that aren't build-only
-			if [[ -z "${record_jar}" ]]; then
+			if [[ -z "${record_jar}" && -z ${PORTAGE_QUIET} ]]; then
 				if [[ -z "${build_only}" ]]; then
 					java-pkg_record-jar_ "${pkg}" "${jar}"
 				else
