@@ -26,10 +26,6 @@ RDEPEND="
 	>=dev-python/django-4.2[${PYTHON_USEDEP}]
 	>=dev-python/django-crispy-forms-2.3[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-django[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-django )
 distutils_enable_tests pytest
