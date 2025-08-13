@@ -56,6 +56,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -111,7 +112,6 @@ python_test() {
 	local -x JUPYTER_PLATFORM_DIRS=1
 
 	rm -rf qiskit_aer || die
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -s
 }
 
