@@ -40,10 +40,10 @@ fi
 if [[ -n ${MOZ_ESR} ]] ; then
 	# ESR releases have slightly different version numbers
 	MOZ_PV="${MOZ_PV}esr"
-	HOMEPAGE="https://www.mozilla.org/firefox https://www.mozilla.org/firefox/enterprise/"
+	HOMEPAGE="https://www.firefox.com https://www.firefox.com/enterprise/"
 	SLOT="esr"
 else
-	HOMEPAGE="https://www.mozilla.org/firefox"
+	HOMEPAGE="https://www.firefox.com"
 	SLOT="rapid"
 fi
 
