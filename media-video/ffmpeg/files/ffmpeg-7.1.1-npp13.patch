@@ -1,3 +1,5 @@
+https://code.ffmpeg.org/FFmpeg/FFmpeg/issues/20191
+
 Non-_Ctx functions been deprecated for some time and
 >=nvidia-cuda-toolkit-13.0.0 removes the old functions.
 
