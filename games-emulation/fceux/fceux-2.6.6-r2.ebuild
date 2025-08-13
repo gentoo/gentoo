@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -39,6 +39,11 @@ PATCHES=(
 )
 
 src_prepare() {
+	# It is literally called "attic". It is full of files that weren't deleted
+	# from a VCS, just moved into the trashbin. We should NOT care about these
+	# files, but, they trigger QA check false positives for cmake 4.
+	rm -r attic/ || die "failed to remove packrat files in attic/"
+
 	cmake_src_prepare
 
 	local use
