@@ -17,7 +17,7 @@ SRC_URI="https://github.com/laurent22/joplin/releases/download/v${PV}/${APPIMAGE
 LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="-* amd64"
-RESTRICT="bindist"
+RESTRICT="bindist splitdebug"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
