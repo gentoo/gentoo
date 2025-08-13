@@ -4,6 +4,7 @@
 # Ionen Wolkens <ionen@gentoo.org> (2025-05-25)
 # media-sound/liblc3 is not stable here yet
 media-video/ffmpeg liblc3
+media-video/ffmpeg-compat liblc3
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-12)
 # app-arch/snappy is not stable here yet

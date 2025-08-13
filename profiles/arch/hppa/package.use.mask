@@ -79,6 +79,7 @@ sys-apps/systemd bpf
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # media-libs/quirc and media-sound/liblc3 are not keyworded here
 media-video/ffmpeg quirc liblc3
+media-video/ffmpeg-compat quirc liblc3
 
 # Sam James <sam@gentoo.org> (2024-07-03)
 # kde-frameworks/kservice not keyworded here

@@ -54,6 +54,7 @@
 		</flag>
 		<flag name="libaribb24">Enable ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg></flag>
 		<flag name="libilbc">Enable internet Low Bitrate Codec de/encoding support via <pkg>media-libs/libilbc</pkg></flag>
+		<flag name="liblc3">Enable Low Complexity Communication Codec de/encoding support via <pkg>media-sound/liblc3</pkg></flag>
 		<flag name="libplacebo">Enable use of GPU-accelerated filters from <pkg>media-libs/libplacebo</pkg></flag>
 		<flag name="librtmp">
 			Enable Real Time Messaging Protocol support via <pkg>media-video/rtmpdump</pkg>
@@ -77,7 +78,9 @@
 			Enable libpostproc video post processing library support
 			(should not disable this unless need to disable USE=gpl)
 		</flag>
+		<flag name="qrcode">Enable QR encode generation support via <pkg>media-gfx/qrencode</pkg></flag>
 		<flag name="qsv">Enable Intel Quick Sync Video support via <pkg>media-libs/libvpl</pkg></flag>
+		<flag name="quirc">Enable QR decoding support via <pkg>media-libs/quirc</pkg></flag>
 		<flag name="rabbitmq">Enable AMQP stream support via <pkg>net-libs/rabbitmq-c</pkg></flag>
 		<flag name="rav1e">Enable AV1 encoding support via <pkg>media-video/rav1e</pkg></flag>
 		<flag name="rubberband">Enable time-stretching and pitch-shifting audio filter support via <pkg>media-libs/rubberband</pkg></flag>
