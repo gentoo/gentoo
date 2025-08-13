@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-inherit cmake lua-single xdg
+inherit cmake flag-o-matic lua-single xdg
 
 DESCRIPTION="Portable Famicom/NES emulator, an evolution of the original FCE Ultra"
 HOMEPAGE="https://fceux.com/"
@@ -56,6 +56,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/959771
+	# https://github.com/TASEmulators/fceux/commit/e2ac013cbb12350bd21fefdbe5a6aa251e171fe8
+	#
+	# Fixed after 2.6.6 -- retest on next version bump and remove.
+	filter-lto
+
 	local mycmakeargs=(
 		-DGLVND=yes
 		-DPUBLIC_RELEASE=yes
