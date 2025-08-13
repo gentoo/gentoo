@@ -1,0 +1,23 @@
+From https://github.com/PDAL/PDAL/commit/6e3d5ed48205dcef884243db6585f7da4631604c Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Thu, 26 Jun 2025 13:28:17 +0200
+Subject: [PATCH] Fix build without googletest when WITH_TESTS=OFF (#4753)
+
+Don't pull the library if we are not going to use it.
+---
+ cmake/macros.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/macros.cmake b/cmake/macros.cmake
+index 25fe690930..645c77e1c2 100644
+--- a/cmake/macros.cmake
++++ b/cmake/macros.cmake
+@@ -185,7 +185,7 @@ endmacro(PDAL_ADD_PLUGIN)
+ #    INCLUDES header file directories
+ #
+ # If we don't have GTest go activate it first
+-if(NOT TARGET GTest::gtest)
++if(WITH_TESTS AND NOT TARGET GTest::gtest)
+     include (${PDAL_CMAKE_DIR}/gtest.cmake)
+ endif()
+ 
