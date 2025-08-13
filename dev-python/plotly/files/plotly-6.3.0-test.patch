@@ -1,0 +1,27 @@
+From 622428a4f3f5831dc2d32a74743265fe7dc1f9d6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 13 Aug 2025 09:55:23 +0200
+Subject: [PATCH] Fix broken import in `mplexporter` tests
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes #5253
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ plotly/matplotlylib/mplexporter/tests/test_utils.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plotly/matplotlylib/mplexporter/tests/test_utils.py b/plotly/matplotlylib/mplexporter/tests/test_utils.py
+index 5659163084a..1373dd46795 100644
+--- a/plotly/matplotlylib/mplexporter/tests/test_utils.py
++++ b/plotly/matplotlylib/mplexporter/tests/test_utils.py
+@@ -1,6 +1,6 @@
+ from numpy.testing import assert_allclose, assert_equal
+-from . import plt
+ from .. import utils
++import matplotlib.pyplot as plt
+ 
+ 
+ def test_path_data():
