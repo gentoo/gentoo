@@ -33,7 +33,7 @@ CP_DEPEND="
 # https://bugs.openjdk.org/browse/JDK-8359053
 DEPEND="
 	${CP_DEPEND}
-	<=virtual/jdk-25:*
+	<virtual/jdk-26:*
 "
 
 RDEPEND="
