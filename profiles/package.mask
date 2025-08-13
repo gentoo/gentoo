@@ -36,6 +36,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-08-13)
+# While it fixes several issues and is meant to be a stable branch,
+# 580.x has too many regressions in its current state. One of the most
+# prominent one is GTK4 applications hanging on exit when vulkan
+# (default) is used on wayland for many users, some games are also
+# known to have problems with it among other things.
+#
+# Can browse NVIDIA's 580 feedback thread[1] to get an idea.
+#
+# Feel free to unmask if not affected.
+#
+# [1] https://forums.developer.nvidia.com/t/580-release-feedback-discussion/
+~x11-drivers/nvidia-drivers-580.65.06
+~x11-drivers/nvidia-drivers-580.76.05
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-10)
 # Outdated version packaged in Gentoo, pending version bump request for
 # over a year, depends on Qt5 but worse, Qt5Script, no signs of upstream
