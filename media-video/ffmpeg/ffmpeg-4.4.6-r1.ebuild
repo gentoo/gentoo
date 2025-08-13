@@ -18,7 +18,7 @@ else
 	SRC_URI="
 		https://ffmpeg.org/releases/ffmpeg-${PV}.tar.xz
 		verify-sig? ( https://ffmpeg.org/releases/ffmpeg-${PV}.tar.xz.asc )
-		https://dev.gentoo.org/~ionen/distfiles/ffmpeg-$(ver_cut 1-2)-patchset-2.tar.xz
+		https://dev.gentoo.org/~ionen/distfiles/ffmpeg-$(ver_cut 1-2)-patchset-3.tar.xz
 	"
 	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P} for ffmpeg-compat
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ~ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
@@ -291,7 +291,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${WORKDIR}"/patches
-	"${FILESDIR}"/ffmpeg-7.1.1-libv4l-1.30.patch
 )
 
 pkg_pretend() {
