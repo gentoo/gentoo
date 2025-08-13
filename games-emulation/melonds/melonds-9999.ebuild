@@ -10,7 +10,7 @@ REAL_P="${REAL_PN}-${REAL_PV}"
 inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
-HOMEPAGE="http://melonds.kuribo64.net
+HOMEPAGE="https://melonds.kuribo64.net
 	https://github.com/Arisotura/melonDS"
 
 if [[ "${PV}" == *9999* ]] ; then
