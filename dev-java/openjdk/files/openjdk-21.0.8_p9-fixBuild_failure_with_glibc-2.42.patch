@@ -1,0 +1,191 @@
+From 3445b99bedfba659da49d72a39979703969cfc91 Mon Sep 17 00:00:00 2001
+From: Francesco Andreuzzi <andreuzzi.francesco@gmail.com>
+Date: Fri, 6 Jun 2025 14:29:04 +0000
+Subject: [PATCH] 8354941: Build failure with glibc 2.42 due to uabs() name
+ collision
+
+Backport-of: 38bb8adf4f632b08af15f2d8530b35f05f86a020
+---
+ src/hotspot/cpu/aarch64/assembler_aarch64.cpp      | 2 +-
+ src/hotspot/cpu/aarch64/assembler_aarch64.hpp      | 2 +-
+ src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp | 2 +-
+ src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp  | 4 ++--
+ src/hotspot/cpu/riscv/assembler_riscv.hpp          | 2 +-
+ src/hotspot/cpu/riscv/stubGenerator_riscv.cpp      | 4 ++--
+ src/hotspot/share/opto/mulnode.cpp                 | 4 ++--
+ src/hotspot/share/opto/subnode.cpp                 | 4 ++--
+ src/hotspot/share/utilities/globalDefinitions.hpp  | 8 ++++----
+ 9 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/src/hotspot/cpu/aarch64/assembler_aarch64.cpp b/src/hotspot/cpu/aarch64/assembler_aarch64.cpp
+index c7b867a4207..fab224847f4 100644
+--- a/src/hotspot/cpu/aarch64/assembler_aarch64.cpp
++++ b/src/hotspot/cpu/aarch64/assembler_aarch64.cpp
+@@ -461,7 +461,7 @@ void Assembler::bang_stack_with_offset(int offset) { Unimplemented(); }
+ 
+ bool asm_util::operand_valid_for_immediate_bits(int64_t imm, unsigned nbits) {
+   guarantee(nbits == 8 || nbits == 12, "invalid nbits value");
+-  uint64_t uimm = (uint64_t)uabs((jlong)imm);
++  uint64_t uimm = (uint64_t)g_uabs((jlong)imm);
+   if (uimm < (UCONST64(1) << nbits))
+     return true;
+   if (uimm < (UCONST64(1) << (2 * nbits))
+diff --git a/src/hotspot/cpu/aarch64/assembler_aarch64.hpp b/src/hotspot/cpu/aarch64/assembler_aarch64.hpp
+index dafb4f5229b..5d3ca441b41 100644
+--- a/src/hotspot/cpu/aarch64/assembler_aarch64.hpp
++++ b/src/hotspot/cpu/aarch64/assembler_aarch64.hpp
+@@ -930,7 +930,7 @@ class Assembler : public AbstractAssembler {
+   static const uint64_t branch_range = NOT_DEBUG(128 * M) DEBUG_ONLY(2 * M);
+ 
+   static bool reachable_from_branch_at(address branch, address target) {
+-    return uabs(target - branch) < branch_range;
++    return g_uabs(target - branch) < branch_range;
+   }
+ 
+   // Unconditional branch (immediate)
+diff --git a/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp b/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp
+index 0a2dd0dce97..8ec1af1bd7a 100644
+--- a/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp
++++ b/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp
+@@ -2894,7 +2894,7 @@ void MacroAssembler::wrap_add_sub_imm_insn(Register Rd, Register Rn, uint64_t im
+   if (fits) {
+     (this->*insn1)(Rd, Rn, imm);
+   } else {
+-    if (uabs(imm) < (1 << 24)) {
++    if (g_uabs(imm) < (1 << 24)) {
+        (this->*insn1)(Rd, Rn, imm & -(1 << 12));
+        (this->*insn1)(Rd, Rd, imm & ((1 << 12)-1));
+     } else {
+diff --git a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
+index b2cc462ff8e..2bfc49d05dd 100644
+--- a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
++++ b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
+@@ -1130,7 +1130,7 @@ class StubGenerator: public StubCodeGenerator {
+ 
+   void copy_memory_small(DecoratorSet decorators, BasicType type, Register s, Register d, Register count, int step) {
+     bool is_backwards = step < 0;
+-    size_t granularity = uabs(step);
++    size_t granularity = g_uabs(step);
+     int direction = is_backwards ? -1 : 1;
+ 
+     Label Lword, Lint, Lshort, Lbyte;
+@@ -1189,7 +1189,7 @@ class StubGenerator: public StubCodeGenerator {
+                    Register s, Register d, Register count, int step) {
+     copy_direction direction = step < 0 ? copy_backwards : copy_forwards;
+     bool is_backwards = step < 0;
+-    unsigned int granularity = uabs(step);
++    unsigned int granularity = g_uabs(step);
+     const Register t0 = r3, t1 = r4;
+ 
+     // <= 80 (or 96 for SIMD) bytes do inline. Direction doesn't matter because we always
+diff --git a/src/hotspot/cpu/riscv/assembler_riscv.hpp b/src/hotspot/cpu/riscv/assembler_riscv.hpp
+index 24de7c15fe3..afb661e180d 100644
+--- a/src/hotspot/cpu/riscv/assembler_riscv.hpp
++++ b/src/hotspot/cpu/riscv/assembler_riscv.hpp
+@@ -2913,7 +2913,7 @@ enum Nf {
+   static const unsigned long branch_range = 1 * M;
+ 
+   static bool reachable_from_branch_at(address branch, address target) {
+-    return uabs(target - branch) < branch_range;
++    return g_uabs(target - branch) < branch_range;
+   }
+ 
+   // Decode the given instruction, checking if it's a 16-bit compressed
+diff --git a/src/hotspot/cpu/riscv/stubGenerator_riscv.cpp b/src/hotspot/cpu/riscv/stubGenerator_riscv.cpp
+index 8c5e1c097ef..bc4d2e94414 100644
+--- a/src/hotspot/cpu/riscv/stubGenerator_riscv.cpp
++++ b/src/hotspot/cpu/riscv/stubGenerator_riscv.cpp
+@@ -917,7 +917,7 @@ class StubGenerator: public StubCodeGenerator {
+ 
+   void copy_memory_v(Register s, Register d, Register count, int step) {
+     bool is_backward = step < 0;
+-    int granularity = uabs(step);
++    int granularity = g_uabs(step);
+ 
+     const Register src = x30, dst = x31, vl = x14, cnt = x15, tmp1 = x16, tmp2 = x17;
+     assert_different_registers(s, d, cnt, vl, tmp1, tmp2);
+@@ -973,7 +973,7 @@ class StubGenerator: public StubCodeGenerator {
+     }
+ 
+     bool is_backwards = step < 0;
+-    int granularity = uabs(step);
++    int granularity = g_uabs(step);
+ 
+     const Register src = x30, dst = x31, cnt = x15, tmp3 = x16, tmp4 = x17, tmp5 = x14, tmp6 = x13;
+     const Register gct1 = x28, gct2 = x29, gct3 = t2;
+diff --git a/src/hotspot/share/opto/mulnode.cpp b/src/hotspot/share/opto/mulnode.cpp
+index f42d06a3650..43d842173dd 100644
+--- a/src/hotspot/share/opto/mulnode.cpp
++++ b/src/hotspot/share/opto/mulnode.cpp
+@@ -245,7 +245,7 @@ Node *MulINode::Ideal(PhaseGVN *phase, bool can_reshape) {
+   // Check for negative constant; if so negate the final result
+   bool sign_flip = false;
+ 
+-  unsigned int abs_con = uabs(con);
++  unsigned int abs_con = g_uabs(con);
+   if (abs_con != (unsigned int)con) {
+     sign_flip = true;
+   }
+@@ -480,7 +480,7 @@ Node *MulLNode::Ideal(PhaseGVN *phase, bool can_reshape) {
+ 
+   // Check for negative constant; if so negate the final result
+   bool sign_flip = false;
+-  julong abs_con = uabs(con);
++  julong abs_con = g_uabs(con);
+   if (abs_con != (julong)con) {
+     sign_flip = true;
+   }
+diff --git a/src/hotspot/share/opto/subnode.cpp b/src/hotspot/share/opto/subnode.cpp
+index 8b2538f8ab5..c4a86d76506 100644
+--- a/src/hotspot/share/opto/subnode.cpp
++++ b/src/hotspot/share/opto/subnode.cpp
+@@ -1899,14 +1899,14 @@ const Type* AbsNode::Value(PhaseGVN* phase) const {
+   case Type::Int: {
+     const TypeInt* ti = t1->is_int();
+     if (ti->is_con()) {
+-      return TypeInt::make(uabs(ti->get_con()));
++      return TypeInt::make(g_uabs(ti->get_con()));
+     }
+     break;
+   }
+   case Type::Long: {
+     const TypeLong* tl = t1->is_long();
+     if (tl->is_con()) {
+-      return TypeLong::make(uabs(tl->get_con()));
++      return TypeLong::make(g_uabs(tl->get_con()));
+     }
+     break;
+   }
+diff --git a/src/hotspot/share/utilities/globalDefinitions.hpp b/src/hotspot/share/utilities/globalDefinitions.hpp
+index 0083442be6c..625fdcc414f 100644
+--- a/src/hotspot/share/utilities/globalDefinitions.hpp
++++ b/src/hotspot/share/utilities/globalDefinitions.hpp
+@@ -1164,7 +1164,7 @@ inline bool is_even(intx x) { return !is_odd(x); }
+ 
+ // abs methods which cannot overflow and so are well-defined across
+ // the entire domain of integer types.
+-static inline unsigned int uabs(unsigned int n) {
++static inline unsigned int g_uabs(unsigned int n) {
+   union {
+     unsigned int result;
+     int value;
+@@ -1173,7 +1173,7 @@ static inline unsigned int uabs(unsigned int n) {
+   if (value < 0) result = 0-result;
+   return result;
+ }
+-static inline julong uabs(julong n) {
++static inline julong g_uabs(julong n) {
+   union {
+     julong result;
+     jlong value;
+@@ -1182,8 +1182,8 @@ static inline julong uabs(julong n) {
+   if (value < 0) result = 0-result;
+   return result;
+ }
+-static inline julong uabs(jlong n) { return uabs((julong)n); }
+-static inline unsigned int uabs(int n) { return uabs((unsigned int)n); }
++static inline julong g_uabs(jlong n) { return g_uabs((julong)n); }
++static inline unsigned int g_uabs(int n) { return g_uabs((unsigned int)n); }
+ 
+ // "to" should be greater than "from."
+ inline intx byte_size(void* from, void* to) {
