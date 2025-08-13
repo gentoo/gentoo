@@ -22,7 +22,7 @@ else
 		${FFMPEG_SOC_PATCH:+"
 			soc? ( https://dev.gentoo.org/~chewi/distfiles/${FFMPEG_SOC_PATCH} )
 		"}
-		https://dev.gentoo.org/~ionen/distfiles/ffmpeg-$(ver_cut 1-2)-patchset-1.tar.xz
+		https://dev.gentoo.org/~ionen/distfiles/ffmpeg-$(ver_cut 1-2)-patchset-2.tar.xz
 	"
 	S=${WORKDIR}/ffmpeg-${PV} # avoid ${P} for ffmpeg-compat
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
@@ -334,7 +334,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${WORKDIR}"/patches
-	"${FILESDIR}"/ffmpeg-7.1.1-npp13.patch
 )
 
 pkg_pretend() {
