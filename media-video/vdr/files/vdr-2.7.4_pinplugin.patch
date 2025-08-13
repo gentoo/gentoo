@@ -1,24 +1,7 @@
-original vdr-pinplugin_vdr-2.3.1.diff
-rebased for media-video/vdr-2.6.1
-
-Signed-off-by: Christian Kunkel <ch.kunkel@gmx.de> ( 2021 Feb 12 )
-Reviewed-by: Martin Dummer <martin.dummer@gmx.net> ( 2022-06-22 )
-diff -Naur a/Makefile b/Makefile
---- a/Makefile	2022-02-02 10:56:43.000000000 +0100
-+++ b/Makefile	2022-06-20 08:08:11.346956148 +0200
-@@ -351,7 +351,7 @@
- clean:
- 	@$(MAKE) --no-print-directory -C $(LSIDIR) clean
- 	@-rm -f $(OBJS) $(DEPFILE) vdr vdr.pc core* *~
--	@-rm -rf $(LOCALEDIR) $(PODIR)/*.mo $(PODIR)/*.pot
-+	@-rm -rf $(LOCALEDIR) $(PODIR)/*~ $(PODIR)/*.mo $(PODIR)/*.pot
- 	@-rm -rf include
- 	@-rm -rf srcdoc
- CLEAN: clean
-diff -Naur a/device.c b/device.c
---- a/device.c	2022-02-02 10:56:43.000000000 +0100
-+++ b/device.c	2022-06-20 08:08:11.346956148 +0200
-@@ -839,6 +839,7 @@
+diff '--color=auto' -Naur vdr-2.7.4.orig/device.c vdr-2.7.4/device.c
+--- vdr-2.7.4.orig/device.c	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/device.c	2025-04-09 21:26:38.951141144 +0200
+@@ -857,6 +857,7 @@
       const cChannel *Channel;
       while ((Channel = Channels->GetByNumber(n, Direction)) != NULL) {
             // try only channels which are currently available
@@ -26,7 +9,7 @@ diff -Naur a/device.c b/device.c
             if (GetDevice(Channel, LIVEPRIORITY, true, true))
                break;
             n = Channel->Number() + Direction;
-@@ -860,6 +861,12 @@
+@@ -878,6 +879,12 @@
  
  eSetChannelResult cDevice::SetChannel(const cChannel *Channel, bool LiveView)
  {
@@ -39,10 +22,10 @@ diff -Naur a/device.c b/device.c
    cMutexLock MutexLock(&mutexChannel); // to avoid a race between SVDRP CHAN and HasProgramme()
    cStatus::MsgChannelSwitch(this, 0, LiveView);
  
-diff -Naur a/menu.c b/menu.c
---- a/menu.c	2022-02-02 10:56:43.000000000 +0100
-+++ b/menu.c	2022-06-20 08:08:11.346956148 +0200
-@@ -1035,6 +1035,18 @@
+diff '--color=auto' -Naur vdr-2.7.4.orig/menu.c vdr-2.7.4/menu.c
+--- vdr-2.7.4.orig/menu.c	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/menu.c	2025-04-09 21:26:38.955141126 +0200
+@@ -1037,6 +1037,18 @@
       Add(new cMenuEditBitItem( tr("VPS"),          &data.flags, tfVps));
       Add(new cMenuEditIntItem( tr("Priority"),     &data.priority, 0, MAXPRIORITY));
       Add(new cMenuEditIntItem( tr("Lifetime"),     &data.lifetime, 0, MAXLIFETIME));
@@ -61,7 +44,7 @@ diff -Naur a/menu.c b/menu.c
       Add(file = new cMenuEditStrItem( tr("File"),   data.file, sizeof(data.file)));
       SetFirstDayItem();
       SetPatternItem(true);
-@@ -3130,7 +3142,8 @@
+@@ -3135,7 +3147,8 @@
                        }
                     }
                 }
@@ -81,7 +64,7 @@ diff -Naur a/menu.c b/menu.c
       if (ri->IsDirectory())
          Open();
       else {
-@@ -4506,28 +4522,32 @@
+@@ -4519,28 +4535,32 @@
  
    // Basic menu items:
  
@@ -119,7 +102,7 @@ diff -Naur a/menu.c b/menu.c
       Add(new cOsdItem(hk(tr("Commands")),  osCommands));
  
    Update(true);
-@@ -4600,6 +4620,14 @@
+@@ -4613,6 +4633,14 @@
    eOSState state = cOsdMenu::ProcessKey(Key);
    HadSubMenu |= HasSubMenu();
  
@@ -134,7 +117,7 @@ diff -Naur a/menu.c b/menu.c
    switch (state) {
      case osSchedule:   return AddSubMenu(new cMenuSchedule);
      case osChannels:   return AddSubMenu(new cMenuChannels);
-@@ -4624,6 +4652,7 @@
+@@ -4637,6 +4665,7 @@
                           if (item) {
                              cPlugin *p = cPluginManager::GetPlugin(item->PluginIndex());
                              if (p) {
@@ -142,7 +125,7 @@ diff -Naur a/menu.c b/menu.c
                                 cOsdObject *menu = p->MainMenuAction();
                                 if (menu) {
                                    if (menu->IsMenu())
-@@ -4635,6 +4664,7 @@
+@@ -4648,6 +4677,7 @@
                                    }
                                 }
                              }
@@ -150,7 +133,7 @@ diff -Naur a/menu.c b/menu.c
                           state = osEnd;
                         }
                         break;
-@@ -4814,6 +4844,7 @@
+@@ -4828,6 +4858,7 @@
             Channel = Direction > 0 ? Channels->Next(Channel) : Channels->Prev(Channel);
             if (!Channel && Setup.ChannelsWrap)
                Channel = Direction > 0 ? Channels->First() : Channels->Last();
@@ -158,7 +141,7 @@ diff -Naur a/menu.c b/menu.c
             if (Channel && !Channel->GroupSep() && cDevice::GetDevice(Channel, LIVEPRIORITY, true, true))
                return Channel;
             }
-@@ -5491,6 +5522,7 @@
+@@ -5505,6 +5536,7 @@
             for (int i = 0; i < MAXRECORDCONTROLS; i++) {
                 if (!RecordControls[i]) {
                    RecordControls[i] = new cRecordControl(device, Timers, Timer, Pause);
@@ -166,10 +149,10 @@ diff -Naur a/menu.c b/menu.c
                    return RecordControls[i]->Process(time(NULL));
                    }
                 }
-diff -Naur a/osd.c b/osd.c
---- a/osd.c	2022-02-02 10:56:43.000000000 +0100
-+++ b/osd.c	2022-06-20 08:08:11.346956148 +0200
-@@ -1844,6 +1844,7 @@
+diff '--color=auto' -Naur vdr-2.7.4.orig/osd.c vdr-2.7.4/osd.c
+--- vdr-2.7.4.orig/osd.c	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/osd.c	2025-04-09 21:26:38.955141126 +0200
+@@ -1907,6 +1907,7 @@
  cSize cOsd::maxPixmapSize(INT_MAX, INT_MAX);
  cVector<cOsd *> cOsd::Osds;
  cMutex cOsd::mutex;
@@ -177,10 +160,10 @@ diff -Naur a/osd.c b/osd.c
  
  cOsd::cOsd(int Left, int Top, uint Level)
  {
-diff -Naur a/osd.h b/osd.h
---- a/osd.h	2022-02-02 10:56:43.000000000 +0100
-+++ b/osd.h	2022-06-20 08:08:11.346956148 +0200
-@@ -957,6 +957,7 @@
+diff '--color=auto' -Naur vdr-2.7.4.orig/osd.h vdr-2.7.4/osd.h
+--- vdr-2.7.4.orig/osd.h	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/osd.h	2025-04-09 21:26:38.955141126 +0200
+@@ -994,6 +994,7 @@
         ///<
         ///< If a plugin uses a derived cPixmap implementation, it needs to use that
         ///< type instead of cPixmapMemory.
@@ -188,9 +171,9 @@ diff -Naur a/osd.h b/osd.h
    };
  
  #define MAXOSDIMAGES 64
-diff -Naur a/status.c b/status.c
---- a/status.c	2022-02-02 10:56:43.000000000 +0100
-+++ b/status.c	2022-06-20 08:08:11.346956148 +0200
+diff '--color=auto' -Naur vdr-2.7.4.orig/status.c vdr-2.7.4/status.c
+--- vdr-2.7.4.orig/status.c	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/status.c	2025-04-09 21:26:38.955141126 +0200
 @@ -136,3 +136,55 @@
    for (cStatus *sm = statusMonitors.First(); sm; sm = statusMonitors.Next(sm))
        sm->OsdProgramme(PresentTime, PresentTitle, PresentSubtitle, FollowingTime, FollowingTitle, FollowingSubtitle);
@@ -247,18 +230,18 @@ diff -Naur a/status.c b/status.c
 +         return true;
 +      return false;
 +}
-diff -Naur a/status.h b/status.h
---- a/status.h	2022-02-02 10:56:43.000000000 +0100
-+++ b/status.h	2022-06-20 08:08:11.350956230 +0200
-@@ -14,6 +14,7 @@
- #include "device.h"
+diff '--color=auto' -Naur vdr-2.7.4.orig/status.h vdr-2.7.4/status.h
+--- vdr-2.7.4.orig/status.h	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/status.h	2025-04-09 21:26:38.959141108 +0200
+@@ -15,6 +15,7 @@
  #include "player.h"
+ #include "skins.h"
  #include "tools.h"
 +#include "plugin.h"
  
  // Several member functions of the following classes are called with a pointer to
  // an object from a global list (cTimer, cChannel, cRecording or cEvent). In these
-@@ -99,6 +100,22 @@
+@@ -107,6 +108,22 @@
                 // The OSD displays the single line Text with the current channel information.
    virtual void OsdProgramme(time_t PresentTime, const char *PresentTitle, const char *PresentSubtitle, time_t FollowingTime, const char *FollowingTitle, const char *FollowingSubtitle) {}
                 // The OSD displays the given programme information.
@@ -281,7 +264,7 @@ diff -Naur a/status.h b/status.h
  public:
    cStatus(void);
    virtual ~cStatus();
-@@ -122,6 +139,14 @@
+@@ -132,6 +149,14 @@
    static void MsgOsdTextItem(const char *Text,  bool Scroll = false);
    static void MsgOsdChannel(const char *Text);
    static void MsgOsdProgramme(time_t PresentTime, const char *PresentTitle, const char *PresentSubtitle, time_t FollowingTime, const char *FollowingTitle, const char *FollowingSubtitle);
@@ -296,10 +279,10 @@ diff -Naur a/status.h b/status.h
    };
  
  #endif //__STATUS_H
-diff -Naur a/timers.c b/timers.c
---- a/timers.c	2022-02-02 10:56:43.000000000 +0100
-+++ b/timers.c	2022-06-20 08:14:07.898392829 +0200
-@@ -81,6 +81,7 @@
+diff '--color=auto' -Naur vdr-2.7.4.orig/timers.c vdr-2.7.4/timers.c
+--- vdr-2.7.4.orig/timers.c	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/timers.c	2025-04-09 21:26:38.959141108 +0200
+@@ -85,6 +85,7 @@
       stop -= 2400;
    priority = Pause ? Setup.PausePriority : Setup.DefaultPriority;
    lifetime = Pause ? Setup.PauseLifetime : Setup.DefaultLifetime;
@@ -307,7 +290,7 @@ diff -Naur a/timers.c b/timers.c
    if (Instant && channel)
       snprintf(file, sizeof(file), "%s%s", Setup.MarkInstantRecord ? "@" : "", *Setup.NameInstantRecord ? Setup.NameInstantRecord : channel->Name());
  }
-@@ -212,11 +213,13 @@
+@@ -220,11 +221,13 @@
       stop -= 2400;
    priority = PatternTimer ? PatternTimer->Priority() : Setup.DefaultPriority;
    lifetime = PatternTimer ? PatternTimer->Lifetime() : Setup.DefaultLifetime;
@@ -321,15 +304,15 @@ diff -Naur a/timers.c b/timers.c
  }
  
  cTimer::cTimer(const cTimer &Timer)
-@@ -255,6 +258,7 @@
+@@ -263,6 +266,7 @@
       stop         = Timer.stop;
       priority     = Timer.priority;
       lifetime     = Timer.lifetime;
 +     fskProtection = Timer.fskProtection;    // PIN PATCH
+      vpsNotRunning = 0;
+      vpsActive    = false;
       strncpy(pattern, Timer.pattern, sizeof(pattern));
-      strncpy(file, Timer.file, sizeof(file));
-      free(aux);
-@@ -484,6 +488,7 @@
+@@ -496,6 +500,7 @@
          result = false;
          }
       }
@@ -337,7 +320,7 @@ diff -Naur a/timers.c b/timers.c
    free(channelbuffer);
    free(daybuffer);
    free(filebuffer);
-@@ -1037,6 +1042,36 @@
+@@ -1102,6 +1107,36 @@
    Matches(); // refresh start and end time
  }
  
@@ -374,10 +357,10 @@ diff -Naur a/timers.c b/timers.c
  // --- cTimers ---------------------------------------------------------------
  
  cTimers cTimers::timers;
-diff -Naur a/timers.h b/timers.h
---- a/timers.h	2022-02-02 10:56:43.000000000 +0100
-+++ b/timers.h	2022-06-20 08:08:11.350956230 +0200
-@@ -45,6 +45,7 @@
+diff '--color=auto' -Naur vdr-2.7.4.orig/timers.h vdr-2.7.4/timers.h
+--- vdr-2.7.4.orig/timers.h	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/timers.h	2025-04-09 21:26:38.959141108 +0200
+@@ -47,6 +47,7 @@
    int start;          ///< the start and stop time of this timer as given by the user,
    int stop;           ///< in the form hhmm, with hh (00..23) and mm (00..59) added as hh*100+mm
    int priority;
@@ -385,7 +368,7 @@ diff -Naur a/timers.h b/timers.h
    int lifetime;
    mutable char pattern[NAME_MAX * 2 + 1]; // same size as 'file', to be able to initially fill 'pattern' with 'file' in the 'Edit timer' menu
    mutable char file[NAME_MAX * 2 + 1]; // *2 to be able to hold 'title' and 'episode', which can each be up to 255 characters long
-@@ -70,6 +71,7 @@
+@@ -72,6 +73,7 @@
    int Start(void) const { return start; }
    int Stop(void) const { return stop; }
    int Priority(void) const { return priority; }
@@ -393,7 +376,7 @@ diff -Naur a/timers.h b/timers.h
    int Lifetime(void) const { return lifetime; }
    const char *Pattern(void) const { return pattern; }
    const char *File(void) const { return file; }
-@@ -120,6 +122,7 @@
+@@ -122,6 +124,7 @@
    void SetRemote(const char *Remote);
    void SetDeferred(int Seconds);
    void SetFlags(uint Flags);
@@ -401,10 +384,10 @@ diff -Naur a/timers.h b/timers.h
    void ClrFlags(uint Flags);
    void InvFlags(uint Flags);
    bool HasFlags(uint Flags) const;
-diff -Naur a/vdr.c b/vdr.c
---- a/vdr.c	2022-02-02 10:56:43.000000000 +0100
-+++ b/vdr.c	2022-06-20 08:08:11.350956230 +0200
-@@ -71,6 +71,7 @@
+diff '--color=auto' -Naur vdr-2.7.4.orig/vdr.c vdr-2.7.4/vdr.c
+--- vdr-2.7.4.orig/vdr.c	2025-02-26 10:35:03.000000000 +0100
++++ vdr-2.7.4/vdr.c	2025-04-09 21:26:38.959141108 +0200
+@@ -72,6 +72,7 @@
  #include "tools.h"
  #include "transfer.h"
  #include "videodir.h"
@@ -412,7 +395,7 @@ diff -Naur a/vdr.c b/vdr.c
  
  #define MINCHANNELWAIT        10 // seconds to wait between failed channel switchings
  #define ACTIVITYTIMEOUT       60 // seconds before starting housekeeping
-@@ -1210,6 +1211,7 @@
+@@ -1218,6 +1219,7 @@
          if (!Menu)
             Interact = Control = cControl::Control(ControlMutexLock);
          if (ISREALKEY(key)) {
@@ -420,7 +403,7 @@ diff -Naur a/vdr.c b/vdr.c
             EITScanner.Activity();
             // Cancel shutdown countdown:
             if (ShutdownHandler.countdown)
-@@ -1282,10 +1284,12 @@
+@@ -1290,10 +1292,12 @@
                       Control->Hide();
                    cPlugin *plugin = cPluginManager::GetPlugin(PluginName);
                    if (plugin) {
@@ -433,7 +416,7 @@ diff -Naur a/vdr.c b/vdr.c
                    else
                       esyslog("ERROR: unknown plugin '%s'", PluginName);
                    }
-@@ -1505,9 +1509,11 @@
+@@ -1513,9 +1517,11 @@
               case kPlay:
                    if (cReplayControl::LastReplayed()) {
                       Control = NULL;
