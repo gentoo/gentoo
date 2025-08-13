@@ -74,7 +74,7 @@ dev-java/jide-oss
 # Removal on 2025-09-03. Bug #960012.
 media-sound/clementine
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-10)
-# media-libs/liblastfm and media-libs/libmygpo-qt destabiliation mask.
+# media-libs/liblastfm and media-libs/libmygpo-qt destabilisation mask.
 # No more stable revdeps after media-sound/clementine removal.
 ~media-libs/liblastfm-1.1.0_pre20190625
 ~media-libs/libmygpo-qt-1.1.0
