@@ -1,0 +1,22 @@
+From 72f327b2c19afffa9df2ce0ef817c13b3dd75804 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <jlecuirot@microsoft.com>
+Date: Wed, 13 Aug 2025 15:52:31 +0100
+Subject: [PATCH] Fix IMDS token requests for managed identities
+
+This was broken by a035ee5f9416ef9188533de40b4ab1c37fb7c0af, which
+accidentally constructed the IMDS URL with a double slash at the start
+of the path. This is not properly routed on the server side, leading to
+a 404 error with some very misleading XML.
+
+Signed-off-by: James Le Cuirot <jlecuirot@microsoft.com>
+--- a/src/managed_identity_source.cpp
++++ b/src/managed_identity_source.cpp
+@@ -527,7 +527,7 @@ std::unique_ptr<ManagedIdentitySource> ImdsManagedIdentitySource::Create(
+ 
+     imdsUrl = Core::Url{imdsEndpointEnvVarValue};
+   }
+-  imdsUrl.SetPath("/metadata/identity/oauth2/token");
++  imdsUrl.SetPath("metadata/identity/oauth2/token");
+ 
+   return std::unique_ptr<ManagedIdentitySource>(
+       new ImdsManagedIdentitySource(clientId, objectId, resourceId, imdsUrl, options));

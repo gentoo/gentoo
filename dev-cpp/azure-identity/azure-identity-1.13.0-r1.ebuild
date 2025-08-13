@@ -30,6 +30,10 @@ BDEPEND="
 	doc? ( app-text/doxygen )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-imds-double-slash.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc)
