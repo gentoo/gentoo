@@ -104,6 +104,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.4-abseil-cpp-20230125.2-c++17.patch
 	"${FILESDIR}"/${PN}-3.9.1-poppler-24.12.patch
 	"${FILESDIR}"/${P}-poppler-25.0{2,5}.patch
+	"${FILESDIR}"/gdal-3.11.3-java-no-strict-aliasing.patch
 )
 
 pkg_setup() {
