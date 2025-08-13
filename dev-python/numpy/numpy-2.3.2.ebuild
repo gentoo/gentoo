@@ -53,7 +53,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 EPYTEST_PLUGINS=( hypothesis pytest-timeout )
-EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -84,6 +83,11 @@ python_test() {
 		numpy/_core/tests/test_umath_accuracy.py::TestAccuracy::test_validate_transcendentals
 
 		numpy/typing/tests/test_typing.py
+
+		# Flaky, reruns don't help
+		numpy/f2py/tests/test_crackfortran.py
+		numpy/f2py/tests/test_f2py2e.py::test_gh22819_cli
+		numpy/f2py/tests/test_data.py::TestDataF77::test_crackedlines
 	)
 
 	if [[ $(uname -m) == armv8l ]]; then
