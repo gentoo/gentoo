@@ -62,7 +62,7 @@ declare -A GIT_CRATES=(
 	[version-ranges]='https://github.com/astral-sh/pubgrub;06ec5a5f59ffaeb6cf5079c6cb184467da06c9db;pubgrub-%commit%/version-ranges'
 )
 
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.86.0"
 
 inherit cargo
 
