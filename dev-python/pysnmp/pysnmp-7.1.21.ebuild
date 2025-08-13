@@ -29,12 +29,8 @@ RDEPEND="
 	>=dev-python/pyasn1-0.4.8[${PYTHON_USEDEP}]
 	>=dev-python/pysmi-1.5.7[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 # TODO
 # distutils_enable_sphinx docs/source dev-python/furo dev-python/sphinx-copybutton dev-python/sphinx-sitemap
@@ -45,10 +41,9 @@ python_test() {
 		tests/smi/manager/test_mib-tree-inspection.py::test_getNodeName_by_symbol_description_with_module_name_2
 	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	mibdump CISCO-ENHANCED-IPSEC-FLOW-MIB.py || die
 	mibdump LEXTUDIO-TEST-MIB || die
 	mibdump NET-SNMP-EXAMPLES-MIB || die
 	mibdump IF-MIB || die
-	epytest -p asyncio
+	epytest
 }
