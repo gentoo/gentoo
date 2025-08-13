@@ -10,7 +10,6 @@ inherit flag-o-matic unpacker verify-sig guile-single
 DESCRIPTION="Standard tool to compile source trees"
 HOMEPAGE="https://www.gnu.org/software/make/make.html"
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/make.git"
 	inherit autotools git-r3
 elif [[ $(ver_cut 3) -ge 90 || $(ver_cut 4) -ge 90 ]] ; then
 	SRC_URI="https://alpha.gnu.org/gnu/make/${P}.tar.lz"
@@ -50,6 +49,15 @@ PATCHES=(
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
+		EGIT_REPO_URI=("https://git.savannah.gnu.org/git/make.git")
+		git-r3_src_unpack
+
+		EGIT_REPO_URI=(
+			"https://github.com/coreutils/gnulib/"
+			"https://git.savannah.gnu.org/git/gnulib.git"
+		)
+		EGIT_BRANCH=$(. "${S}/bootstrap.conf" && echo "${GNULIB_REVISION}" || die)
+		EGIT_CHECKOUT_DIR=${S}/gnulib
 		git-r3_src_unpack
 
 		cd "${S}" || die
