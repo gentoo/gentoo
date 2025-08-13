@@ -36,7 +36,7 @@ CP_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	${CP_DEPEND}
-	<=virtual/jdk-25:*
+	<virtual/jdk-26:*
 "
 
 RDEPEND="
