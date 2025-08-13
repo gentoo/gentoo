@@ -337,7 +337,7 @@ src_prepare() {
 	# respect user preferences
 	sed -i '/cflags -fdiagnostics-color/d' configure || die
 
-	# handle *FLAGS here to avoid repeating for each ABI below (bug #923491)
+	# handle here to avoid repeating for each ABI below (bug #923491)
 	filter-lto
 	use elibc_musl && append-cppflags -D__musl__ #940733
 }
