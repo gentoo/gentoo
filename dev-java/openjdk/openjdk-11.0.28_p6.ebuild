@@ -114,6 +114,8 @@ DEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/openjdk-11.0.28_p6-fixBuild_failure_with_glibc-2.42.patch" )
+
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.

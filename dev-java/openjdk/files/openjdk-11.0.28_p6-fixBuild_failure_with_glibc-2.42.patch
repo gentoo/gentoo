@@ -1,0 +1,130 @@
+From fa28fbdc260351ff9ae735e473b3d0d9bdc659bf Mon Sep 17 00:00:00 2001
+From: Francesco Andreuzzi <andreuzzi.francesco@gmail.com>
+Date: Mon, 4 Aug 2025 09:42:56 +0000
+Subject: [PATCH] Backport 38bb8adf4f632b08af15f2d8530b35f05f86a020
+
+---
+ src/hotspot/cpu/aarch64/assembler_aarch64.cpp      | 2 +-
+ src/hotspot/cpu/aarch64/assembler_aarch64.hpp      | 2 +-
+ src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp | 2 +-
+ src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp  | 4 ++--
+ src/hotspot/share/opto/mulnode.cpp                 | 4 ++--
+ src/hotspot/share/utilities/globalDefinitions.hpp  | 8 ++++----
+ 6 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/src/hotspot/cpu/aarch64/assembler_aarch64.cpp b/src/hotspot/cpu/aarch64/assembler_aarch64.cpp
+index 8047ed8fd2a..aece16763a6 100644
+--- a/src/hotspot/cpu/aarch64/assembler_aarch64.cpp
++++ b/src/hotspot/cpu/aarch64/assembler_aarch64.cpp
+@@ -1702,7 +1702,7 @@ void Assembler::add_sub_immediate(Register Rd, Register Rn, unsigned uimm, int o
+ }
+ 
+ bool Assembler::operand_valid_for_add_sub_immediate(int64_t imm) {
+-  uint64_t uimm = (uint64_t)uabs((jlong)imm);
++  uint64_t uimm = (uint64_t)g_uabs((jlong)imm);
+   if (uimm < (1 << 12))
+     return true;
+   if (uimm < (1 << 24)
+diff --git a/src/hotspot/cpu/aarch64/assembler_aarch64.hpp b/src/hotspot/cpu/aarch64/assembler_aarch64.hpp
+index e07bbba3f6e..be13d560345 100644
+--- a/src/hotspot/cpu/aarch64/assembler_aarch64.hpp
++++ b/src/hotspot/cpu/aarch64/assembler_aarch64.hpp
+@@ -854,7 +854,7 @@ class Assembler : public AbstractAssembler {
+   static const uint64_t branch_range = NOT_DEBUG(128 * M) DEBUG_ONLY(2 * M);
+ 
+   static bool reachable_from_branch_at(address branch, address target) {
+-    return uabs(target - branch) < branch_range;
++    return g_uabs(target - branch) < branch_range;
+   }
+ 
+   // Unconditional branch (immediate)
+diff --git a/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp b/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp
+index 7f329a45d30..c280df9f726 100644
+--- a/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp
++++ b/src/hotspot/cpu/aarch64/macroAssembler_aarch64.cpp
+@@ -2206,7 +2206,7 @@ void MacroAssembler::wrap_add_sub_imm_insn(Register Rd, Register Rn, unsigned im
+   if (operand_valid_for_add_sub_immediate((int)imm)) {
+     (this->*insn1)(Rd, Rn, imm);
+   } else {
+-    if (uabs(imm) < (1 << 24)) {
++    if (g_uabs(imm) < (1 << 24)) {
+        (this->*insn1)(Rd, Rn, imm & -(1 << 12));
+        (this->*insn1)(Rd, Rd, imm & ((1 << 12)-1));
+     } else {
+diff --git a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
+index 598a25969d8..31817702b6b 100644
+--- a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
++++ b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
+@@ -1009,7 +1009,7 @@ class StubGenerator: public StubCodeGenerator {
+ 
+   void copy_memory_small(Register s, Register d, Register count, Register tmp, int step) {
+     bool is_backwards = step < 0;
+-    size_t granularity = uabs(step);
++    size_t granularity = g_uabs(step);
+     int direction = is_backwards ? -1 : 1;
+     int unit = wordSize * direction;
+ 
+@@ -1065,7 +1065,7 @@ class StubGenerator: public StubCodeGenerator {
+                    Register count, Register tmp, int step) {
+     copy_direction direction = step < 0 ? copy_backwards : copy_forwards;
+     bool is_backwards = step < 0;
+-    unsigned int granularity = uabs(step);
++    unsigned int granularity = g_uabs(step);
+     const Register t0 = r3, t1 = r4;
+ 
+     // <= 80 (or 96 for SIMD) bytes do inline. Direction doesn't matter because we always
+diff --git a/src/hotspot/share/opto/mulnode.cpp b/src/hotspot/share/opto/mulnode.cpp
+index 6616fa0ad01..78cd34490da 100644
+--- a/src/hotspot/share/opto/mulnode.cpp
++++ b/src/hotspot/share/opto/mulnode.cpp
+@@ -194,7 +194,7 @@ Node *MulINode::Ideal(PhaseGVN *phase, bool can_reshape) {
+   // Check for negative constant; if so negate the final result
+   bool sign_flip = false;
+ 
+-  unsigned int abs_con = uabs(con);
++  unsigned int abs_con = g_uabs(con);
+   if (abs_con != (unsigned int)con) {
+     sign_flip = true;
+   }
+@@ -290,7 +290,7 @@ Node *MulLNode::Ideal(PhaseGVN *phase, bool can_reshape) {
+ 
+   // Check for negative constant; if so negate the final result
+   bool sign_flip = false;
+-  julong abs_con = uabs(con);
++  julong abs_con = g_uabs(con);
+   if (abs_con != (julong)con) {
+     sign_flip = true;
+   }
+diff --git a/src/hotspot/share/utilities/globalDefinitions.hpp b/src/hotspot/share/utilities/globalDefinitions.hpp
+index c758fc57432..581753769d7 100644
+--- a/src/hotspot/share/utilities/globalDefinitions.hpp
++++ b/src/hotspot/share/utilities/globalDefinitions.hpp
+@@ -1166,7 +1166,7 @@ inline bool is_even(intx x) { return !is_odd(x); }
+ 
+ // abs methods which cannot overflow and so are well-defined across
+ // the entire domain of integer types.
+-static inline unsigned int uabs(unsigned int n) {
++static inline unsigned int g_uabs(unsigned int n) {
+   union {
+     unsigned int result;
+     int value;
+@@ -1175,7 +1175,7 @@ static inline unsigned int uabs(unsigned int n) {
+   if (value < 0) result = 0-result;
+   return result;
+ }
+-static inline julong uabs(julong n) {
++static inline julong g_uabs(julong n) {
+   union {
+     julong result;
+     jlong value;
+@@ -1184,8 +1184,8 @@ static inline julong uabs(julong n) {
+   if (value < 0) result = 0-result;
+   return result;
+ }
+-static inline julong uabs(jlong n) { return uabs((julong)n); }
+-static inline unsigned int uabs(int n) { return uabs((unsigned int)n); }
++static inline julong g_uabs(jlong n) { return g_uabs((julong)n); }
++static inline unsigned int g_uabs(int n) { return g_uabs((unsigned int)n); }
+ 
+ // "to" should be greater than "from."
+ inline intx byte_size(void* from, void* to) {
