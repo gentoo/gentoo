@@ -18,6 +18,7 @@ IUSE="debug postgres test"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
+	test? ( >=dev-cpp/gtest-1.15.0 )
 "
 RDEPEND="
 	net-misc/curl
@@ -40,6 +41,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-includes.patch
+	"${FILESDIR}"/${P}-fix-build-without-gtest.patch
 )
 
 src_configure() {
@@ -47,6 +49,7 @@ src_configure() {
 		-DBUILD_PLUGIN_PGPOINTCLOUD="$(usex postgres)"
 		-DWITH_COMPLETION=ON
 		-DWITH_BACKTRACE="$(usex debug)"
+		-DWITH_TESTS="$(usex test)"
 	)
 
 	cmake_src_configure
