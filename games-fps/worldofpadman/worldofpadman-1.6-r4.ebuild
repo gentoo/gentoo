@@ -43,6 +43,7 @@ DOCS=( id-readme.txt IOQ3-README voip-readme.txt ../XTRAS/{changelog.txt,sounds_
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${WORKDIR}"/${P}-bison-3.patch # bug 921029, in 1.6.1
+	"${FILESDIR}"/${P}-clang.patch # bug 944329, in 1.6.0
 	"${FILESDIR}"/${P}-c23.patch # bug 944329, git main
 )
 
