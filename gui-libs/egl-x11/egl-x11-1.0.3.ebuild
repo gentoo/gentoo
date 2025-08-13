@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/NVIDIA/egl-x11/"
 if [[ ${PV} == *_pre* ]]; then
 	# happens often that nvidia-drivers ships with a (yet) unreleased
 	# version and we need to ship a snapshot to provide the same fixes
-	HASH_EGLX11=5dc860774a201ee6b90ce45dc4c70f1c2a6c419a
+	HASH_EGLX11=
 	SRC_URI="
 		https://github.com/NVIDIA/egl-x11/archive/${HASH_EGLX11}.tar.gz
 			-> ${P}.tar.gz
