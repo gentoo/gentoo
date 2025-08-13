@@ -123,6 +123,10 @@ src_configure() {
 	# https://bugs.gentoo.org/860492
 	# https://github.com/csound/csound/issues/1919
 	filter-lto
+	# -Werror=strict-aliasin
+	# https://bugs.gentoo.org/960628
+	# https://github.com/csound/csound/pull/2232
+	use java && append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DBUILD_BELA=OFF
