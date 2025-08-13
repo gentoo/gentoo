@@ -1,0 +1,56 @@
+https://github.com/marlam/msmtp/pull/200
+https://bugs.gentoo.org/948087
+
+From fce1dfefd7af8175708deabc3e55f8682d181d22 Mon Sep 17 00:00:00 2001
+From: Gabi Falk <gabifalk@gmx.com>
+Date: Wed, 13 Aug 2025 09:00:00 +0000
+Subject: [PATCH] tests: skip msmtpd-dependent tests if msmtpd is not built
+
+Link: https://bugs.gentoo.org/948087
+---
+ tests/test-auth-plain.sh      | 8 +++++++-
+ tests/test-header-handling.sh | 8 +++++++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test-auth-plain.sh b/tests/test-auth-plain.sh
+index 27d406e..a670dcd 100755
+--- a/tests/test-auth-plain.sh
++++ b/tests/test-auth-plain.sh
+@@ -2,9 +2,15 @@
+ 
+ set -e
+ 
++msmtpd=../src/msmtpd
++if [ ! -x $msmtpd ]; then
++	echo 'msmtpd is not built'
++	exit 77
++fi
++
+ # Start an msmtpd with PLAIN authentication
+ echo "Starting msmtpd"
+-../src/msmtpd --interface=::1 --port=12345 --auth='testuser,echo testpassword' \
++$msmtpd --interface=::1 --port=12345 --auth='testuser,echo testpassword' \
+ 	--command='cat > out-auth-plain-mail.txt; echo > out-auth-plain-rcpt.txt' &
+ MSMTPD_PID=$!
+ trap "kill $MSMTPD_PID" EXIT
+diff --git a/tests/test-header-handling.sh b/tests/test-header-handling.sh
+index e58cde4..9109bd3 100755
+--- a/tests/test-header-handling.sh
++++ b/tests/test-header-handling.sh
+@@ -2,9 +2,15 @@
+ 
+ set -e
+ 
++msmtpd=../src/msmtpd
++if [ ! -x $msmtpd ]; then
++	echo 'msmtpd is not built'
++	exit 77
++fi
++
+ # Start an msmtpd that dumps the mail and the recipient lists so we can check them
+ echo "Starting msmtpd"
+-../src/msmtpd --interface=::1 --port=12346 \
++$msmtpd --interface=::1 --port=12346 \
+ 	--command='cat > out-header-handling-mail.txt; echo > out-header-handling-rcpt.txt' &
+ MSMTPD_PID=$!
+ trap "kill $MSMTPD_PID" EXIT
