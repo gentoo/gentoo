@@ -34,7 +34,7 @@ CRATES="
 	unindent@0.2.4
 "
 
-RUST_MIN_VER="1.77.1"
+RUST_MIN_VER="1.85.0"
 
 inherit cargo distutils-r1 pypi
 
