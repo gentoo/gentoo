@@ -49,6 +49,7 @@ python_test() {
 	local -x PYTHONPATH="tests/legacy_tests:${PYTHONPATH}"
 	# upstream indicates testing may pollute the package
 	cp -a "${BUILD_DIR}"/{install,test} || die
+	rm -rf yaml || die
 	epytest
 }
 
