@@ -1,0 +1,49 @@
+PRs merged
+https://github.com/trofi/ski/pull/17.patch
+https://github.com/trofi/ski/pull/18.patch
+Remove occurrences of termio.h and struct termio. Bug #961423
+--- a/src/dos.c
++++ b/src/dos.c
+@@ -35,13 +35,10 @@
+ #include <sys/stat.h>
+ #include <signal.h>
+ #include <string.h>
+-#if defined(__FreeBSD__)
+ #include <termios.h>
+-#define termio  termios
++#if defined(__FreeBSD__)
+ #define TCGETA  TIOCGETA
+ #define TCSETA  TIOCSETA
+-#else
+-#include <termio.h>
+ #endif
+ #include <time.h>
+ #if defined __linux__
+@@ -140,7 +137,7 @@ Status dosInt21(BYTE func, BYTE subFunc)
+ 	break;
+     case 0x08:				/* read keyboard without echo */
+ 	if (isatty(fhmap[0])) {
+-	    struct termio origTermio, newTermio;
++	    struct termios origTermio, newTermio;
+ 
+ 	    (void)ioctl(fhmap[0], TCGETA, &origTermio);
+ 	    newTermio = origTermio;
+--- a/src/linux/syscall-linux.c
++++ b/src/linux/syscall-linux.c
+@@ -2147,14 +2147,14 @@ doSyscall (HWORD num, REG arg0, REG arg1, REG arg2, REG arg3, REG arg4,
+ 
+ 	case TCGETA:
+ 	  /* assumes host OS matches Linux/ia64 */
+-	  bytes_out = sizeof (struct termio);
++	  bytes_out = sizeof (struct termios);
+ 	  break;
+ 
+ 	case TCSETA:
+ 	case TCSETAW:
+ 	case TCSETAF:
+ 	  /* assumes host OS matches Linux/ia64 */
+-	  bytes_in = sizeof (struct termio);
++	  bytes_in = sizeof (struct termios);
+ 	  break;
+ 
+ 	case TIOCGPGRP:
