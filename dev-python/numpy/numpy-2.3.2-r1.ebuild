@@ -108,7 +108,7 @@ python_configure_all() {
 
 			# these two imply ASIMDHP
 			if [[ ${cpu_baseline[@]} && ${cpu_baseline[-1]} == ASIMDHP ]]; then
-				for flag in asimdhfm sve; do
+				for flag in asimdfhm sve; do
 					cpu_baseline+=(
 						$(usex "cpu_flags_arm_${flag}" "${flag^^}")
 					)
