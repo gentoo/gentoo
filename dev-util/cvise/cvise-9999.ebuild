@@ -52,7 +52,6 @@ BDEPEND="
 	app-alternatives/lex
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pebble[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
 		')
 	)
