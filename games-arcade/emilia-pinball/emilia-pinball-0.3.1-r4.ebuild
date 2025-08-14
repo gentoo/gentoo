@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools desktop
+inherit autotools desktop dot-a
 
 MY_PN=${PN/emilia-/}
 MY_P=${MY_PN}-${PV}
@@ -51,6 +51,7 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	econf --with-x
 }
 
@@ -60,6 +61,7 @@ src_compile() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 	find "${ED}" -type f -name '*.la' -delete || die
 
 	dosym pinball /usr/bin/emilia-pinball
