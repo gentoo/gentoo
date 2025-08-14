@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..13} )
 LLVM_COMPAT=( {16..21} )
 inherit cmake llvm-r2 python-single-r1
 
@@ -39,6 +39,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
+		dev-python/msgspec[${PYTHON_USEDEP}]
 		dev-python/pebble[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
