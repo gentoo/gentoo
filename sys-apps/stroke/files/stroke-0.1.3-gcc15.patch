@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/880509
+
+--- a/src/aux.c
++++ b/src/aux.c
+@@ -292,7 +292,7 @@ lutime_symlink(const char *filename, const struct utimbuf *times)
+ 		{times->modtime, 0}
+ 	};
+ 	
+-	if(!(cwd = scwd(cwd)) ||
++	if(!(cwd = scwd()) ||
+ 	   chdir(dirname(new_str(filename))) < 0)
+ 		goto error;
+ 	
