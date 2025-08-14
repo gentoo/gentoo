@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit findlib
+inherit dot-a findlib
 
 DESCRIPTION="Ocaml bindings for Augeas"
 HOMEPAGE="http://augeas.net/"
@@ -29,10 +29,16 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ocaml-4.09.patch
 )
 
+src_configure() {
+	lto-guarantee-fat
+	default
+}
+
 src_compile() {
 	emake -j1
 }
 
 src_install() {
 	findlib_src_install
+	strip-lto-bytecode
 }
