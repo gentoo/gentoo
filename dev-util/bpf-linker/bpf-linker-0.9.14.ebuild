@@ -18,8 +18,8 @@ declare -A GIT_CRATES=(
 	[compiletest_rs]='https://github.com/Manishearth/compiletest-rs;cb121796a041255ae0afcd9c2766bee4ebfd54f0;compiletest-rs-%commit%'
 )
 
-# https://crates.io/crates/llvm-sys#llvm-compatibility
-LLVM_COMPAT=( {20..21} )
+# this version of bpf-linker is incompatible with changes in LLVM 21
+LLVM_COMPAT=( 20 )
 RUST_REQ_USE="llvm_targets_BPF(+),rust-src"
 
 inherit cargo llvm-r2
