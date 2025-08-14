@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd
+inherit linux-info systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
@@ -63,6 +63,8 @@ PATCHES=(
 	"${FILESDIR}"/ocserv-1.3.0-seccomp-readlinkat.patch
 	"${FILESDIR}"/ocserv-1.3.0-freeradius-1.1.8.patch
 )
+
+CONFIG_CHECK="~TUN ~UNIX_DIAG"
 
 src_prepare() {
 	default

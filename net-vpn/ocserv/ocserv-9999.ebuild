@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd
+inherit linux-info systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
@@ -58,6 +58,8 @@ DEPEND="
 	tcpd? ( sys-apps/tcp-wrappers:0= )
 "
 RDEPEND="${DEPEND}"
+
+CONFIG_CHECK="~TUN ~UNIX_DIAG"
 
 src_prepare() {
 	default
