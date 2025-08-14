@@ -7,6 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
+RUST_MIN_VER="1.77.0"
 CRATES="
 	autocfg@1.3.0
 	bitflags@1.3.2
