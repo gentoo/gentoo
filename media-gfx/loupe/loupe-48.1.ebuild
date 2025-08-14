@@ -268,6 +268,8 @@ CRATES="
 	zvariant_utils@3.2.0
 "
 
+RUST_MIN_VER="1.81"
+
 inherit cargo gnome.org gnome2 meson xdg
 
 DESCRIPTION="View images"
