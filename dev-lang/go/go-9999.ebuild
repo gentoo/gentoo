@@ -46,7 +46,8 @@ QA_MULTILIB_PATHS="usr/lib/go/pkg/tool/.*/.*"
 
 # This package triggers "unrecognized elf file(s)" notices on riscv.
 # https://bugs.gentoo.org/794046
-QA_PREBUILT='.*'
+QA_PREBUILT="*"
+QA_PRESTRIPPED="*.syso"
 
 DOCS=(
 	CONTRIBUTING.md
