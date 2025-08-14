@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="OpenPGP keys used by commons.apache.org"
-HOMEPAGE="https://logging.apache.org/log4j/2.x/download.html"
+HOMEPAGE="https://downloads.apache.org/commons/"
 SRC_URI="https://downloads.apache.org/commons/KEYS -> ${P}-KEYS.asc"
 
 LICENSE="public-domain"
