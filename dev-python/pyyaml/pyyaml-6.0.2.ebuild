@@ -38,6 +38,7 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_configure() {
