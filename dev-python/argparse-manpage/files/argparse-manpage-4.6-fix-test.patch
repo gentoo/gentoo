@@ -1,0 +1,16 @@
+https://bugs.gentoo.org/955432
+https://github.com/praiskup/argparse-manpage/commit/6dc54a5272e70b081af728958fd7554a6b0372f3
+From: =?UTF-8?q?Lum=C3=ADr=20=27Frenzy=27=20Balhar?=
+ <frenzy.madness@gmail.com>
+Date: Thu, 3 Apr 2025 16:07:35 +0200
+Subject: [PATCH] Fix compatibility with newer setuptools
+
+New setuptools expects all options to use lower_snake_case.
+--- a/examples/old_format_file_name/setup.cfg
++++ b/examples/old_format_file_name/setup.cfg
+@@ -1,4 +1,4 @@
+ [build_manpage]
+ output=example.1
+ parser=IGNORED:get_parser
+-parser-file=example.py
++parser_file=example.py
