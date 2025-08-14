@@ -1,0 +1,107 @@
+From b1e6dcd3c8a75489329707709a14403e247e0fa0 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <vadorovsky@disroot.org>
+Date: Thu, 14 Aug 2025 13:36:12 +0200
+Subject: [PATCH 2/3] di: Update operand indices
+
+Operand indices in `DIType` and all children types were moved starting
+from LLVM 21[0].
+
+[0] llvm/llvm-project@3b90597c2ceaae86608214f6b62b43e55823102b
+---
+ src/llvm/types/di.rs | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/llvm/types/di.rs b/src/llvm/types/di.rs
+index 76757cb1..c44252f0 100644
+--- a/src/llvm/types/di.rs
++++ b/src/llvm/types/di.rs
+@@ -150,8 +150,8 @@ impl<'ctx> From<DIDerivedType<'ctx>> for DIType<'ctx> {
+ #[repr(u32)]
+ enum DIDerivedTypeOperand {
+     /// [`DIType`] representing a base type of the given derived type.
+-    /// [Reference in LLVM code](https://github.com/llvm/llvm-project/blob/llvmorg-17.0.3/llvm/include/llvm/IR/DebugInfoMetadata.h#L1032).
+-    BaseType = 3,
++    /// [Reference in LLVM code](https://github.com/llvm/llvm-project/blob/llvmorg-21.1.0-rc3/llvm/include/llvm/IR/DebugInfoMetadata.h#L1386).
++    BaseType = 5,
+ }
+ 
+ /// Represents the debug information for a derived type in LLVM IR.
+@@ -212,8 +212,8 @@ impl DIDerivedType<'_> {
+ #[repr(u32)]
+ enum DICompositeTypeOperand {
+     /// Elements of the composite type.
+-    /// [Reference in LLVM code](https://github.com/llvm/llvm-project/blob/llvmorg-17.0.3/llvm/include/llvm/IR/DebugInfoMetadata.h#L1230).
+-    Elements = 4,
++    /// [Reference in LLVM code](https://github.com/llvm/llvm-project/blob/llvmorg-21.1.0-rc3/llvm/include/llvm/IR/DebugInfoMetadata.h#L1813).
++    Elements = 6,
+ }
+ 
+ /// Represents the debug info for a composite type in LLVM IR.
+
+From 9668fb5b6f9497a598de920a218d28d57b3e1917 Mon Sep 17 00:00:00 2001
+From: Michal Rostecki <vadorovsky@disroot.org>
+Date: Thu, 14 Aug 2025 14:20:20 +0200
+Subject: [PATCH 3/3] fix: Do not expect strictly sequential order when not
+ necessary
+
+We've noticed that ordering is different on different environments.
+Let's relax the check with `CHECK-DAG`. What matters is that all
+expected names/instructions are present.
+---
+ tests/assembly/di_generics.rs          | 6 +++---
+ tests/assembly/ignore-inline-never.rs  | 4 ++--
+ tests/btf/assembly/exported-symbols.rs | 8 ++++----
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/tests/assembly/di_generics.rs b/tests/assembly/di_generics.rs
+index 08282d4c..0ec5a749 100644
+--- a/tests/assembly/di_generics.rs
++++ b/tests/assembly/di_generics.rs
+@@ -63,6 +63,6 @@ pub fn my_function<T: Add<Output = T> + Copy>(x: T, y: T) -> T {
+         .add(y)
+ }
+ 
+-// CHECK: name: "Foo_3C_u32_3E_"
+-// CHECK: name: "Bar_3C_di_generics_3A__3A_Foo_3C_u32_3E__3E_"
+-// CHECK: name: "my_function_3C_u32_3E_"
++// CHECK-DAG: name: "Foo_3C_u32_3E_"
++// CHECK-DAG: name: "Bar_3C_di_generics_3A__3A_Foo_3C_u32_3E__3E_"
++// CHECK-DAG: name: "my_function_3C_u32_3E_"
+diff --git a/tests/assembly/ignore-inline-never.rs b/tests/assembly/ignore-inline-never.rs
+index 58a8e583..02bdbc25 100644
+--- a/tests/assembly/ignore-inline-never.rs
++++ b/tests/assembly/ignore-inline-never.rs
+@@ -21,6 +21,6 @@ fn actually_inlined(a: u64) -> u64 {
+ pub extern "C" fn fun(a: u64) -> u64 {
+     // CHECK-LABEL: fun:
+     actually_inlined(a)
+-    // CHECK: r{{[0-9]}} = r{{[0-9]}}
+-    // CHECK-NEXT: r{{[0-9]}} += 42
++    // CHECK-DAG: r{{[0-9]}} = r{{[0-9]}}
++    // CHECK-DAG: r{{[0-9]}} += 42
+ }
+diff --git a/tests/btf/assembly/exported-symbols.rs b/tests/btf/assembly/exported-symbols.rs
+index a5b99bf0..921b2e68 100644
+--- a/tests/btf/assembly/exported-symbols.rs
++++ b/tests/btf/assembly/exported-symbols.rs
+@@ -35,7 +35,7 @@ fn inline_function_2(v: u8) -> u8 {
+ }
+ 
+ // #[no_mangle] functions keep linkage=global
+-// CHECK: <FUNC> 'local_no_mangle' --> global [{{[0-9]+}}
++// CHECK-DAG: <FUNC> 'local_no_mangle' --> global [{{[0-9]+}}
+ 
+ // check that parameter names are preserved
+ // CHECK: <FUNC_PROTO>
+@@ -43,8 +43,8 @@ fn inline_function_2(v: u8) -> u8 {
+ // CHECK-NEXT: _arg2
+ 
+ // public functions get static linkage
+-// CHECK: <FUNC> '{{.*}}local_public{{.*}}' --> static
+-// CHECK: <FUNC> '{{.*}}dep_public_symbol{{.*}}' --> static
++// CHECK-DAG: <FUNC> '{{.*}}local_public{{.*}}' --> static
++// CHECK-DAG: <FUNC> '{{.*}}dep_public_symbol{{.*}}' --> static
+ 
+ // #[no_mangle] is honored for dep functions
+-// CHECK: <FUNC> 'dep_no_mangle' --> global
++// CHECK-DAG: <FUNC> 'dep_no_mangle' --> global
