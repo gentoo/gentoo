@@ -1,0 +1,22 @@
+Use standard library search path to find librocm_smi64.
+--- a/python_smi_tools/rsmiBindingsInit.py.in
++++ b/python_smi_tools/rsmiBindingsInit.py.in
+@@ -26,17 +26,7 @@ def initRsmiBindings(silent=False):
+     if (rocm_smi_lib_path != None):
+         path_librocm = rocm_smi_lib_path
+     else:
+-        path_librocm = os.path.dirname(os.path.realpath(__file__)) + '/../../@CMAKE_INSTALL_LIBDIR@/librocm_smi64.so.@VERSION_MAJOR@'
+-
+-    if not os.path.isfile(path_librocm):
+-        print_silent('Unable to find %s . Trying /opt/rocm*' % path_librocm)
+-        for root, dirs, files in os.walk('/opt', followlinks=True):
+-            if 'librocm_smi64.so.@VERSION_MAJOR@' in files:
+-                path_librocm = os.path.join(os.path.realpath(root), 'librocm_smi64.so.@VERSION_MAJOR@')
+-        if os.path.isfile(path_librocm):
+-            print_silent('Using lib from %s' % path_librocm)
+-        else:
+-            print('Unable to find librocm_smi64.so.@VERSION_MAJOR@')
++        path_librocm = 'librocm_smi64.so.@VERSION_MAJOR@'
+ 
+     # ----------> TODO: Support static libs as well as SO
+     try:

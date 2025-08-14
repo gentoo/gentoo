@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.1-remove-example.patch
 	"${FILESDIR}"/${PN}-6.3.0-fix-flags.patch
 	"${FILESDIR}"/${PN}-6.4.1-log-exceptions.patch
+	"${FILESDIR}"/${PN}-6.4.3-fix-library-path.patch
 )
 
 CONFIG_CHECK="~HSA_AMD ~DRM_AMDGPU"
@@ -42,10 +43,10 @@ CONFIG_CHECK="~HSA_AMD ~DRM_AMDGPU"
 src_prepare() {
 	cmake_src_prepare
 
-	sed -e "s/@VERSION_MAJOR@/$(ver_cut 1)/" \
-		-e "s/@VERSION_MINOR@/$(ver_cut 2)/" \
-		-e "s/@VERSION_PATCH@/$(ver_cut 3)/" \
-		-i CMakeLists.txt || die
+	# Disable code that relies on missing .git directory.
+	# Just silences potential "git: command not found" QA warnings.
+	sed "/find_program (GIT NAMES git)/d" -i CMakeLists.txt || die
+	sed "/num_change_since_prev_pkg(\${VERSION_PREFIX})/d" -i cmake_modules/utils.cmake || die
 }
 
 src_configure() {
