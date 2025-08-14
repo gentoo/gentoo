@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	app-admin/augeas
-	dev-libs/libxml2:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
