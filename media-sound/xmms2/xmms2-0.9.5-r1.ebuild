@@ -72,7 +72,7 @@ COMMON_DEPEND="
 			media-libs/libvorbis
 		)
 		jack? ( virtual/jack )
-		mac? ( <=media-sound/mac-4.12 )
+		mac? ( <media-sound/mac-4.12 )
 		mad? ( media-libs/libmad )
 		modplug? ( media-libs/libmodplug )
 		mp3? ( media-sound/mpg123-base )
