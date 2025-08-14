@@ -24,6 +24,11 @@ DEPEND="
 	dev-util/gperf
 "
 
+PATCHES=(
+	# merged, to be removed for the next version
+	"${FILESDIR}"/${P}-fix_termio.patch
+)
+
 src_configure() {
 	local myeconfargs=(
 		$(use_with debug bfd)
