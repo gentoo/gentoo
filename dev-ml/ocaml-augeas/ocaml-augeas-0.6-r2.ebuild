@@ -6,8 +6,8 @@ EAPI=8
 inherit dot-a findlib
 
 DESCRIPTION="Ocaml bindings for Augeas"
-HOMEPAGE="http://augeas.net/"
-#SRC_URI="http://augeas.net/download/ocaml/${P}.tar.gz"
+HOMEPAGE="https://augeas.net/"
+#SRC_URI="https://augeas.net/download/ocaml/${P}.tar.gz"
 SRC_URI="https://people.redhat.com/~rjones/augeas/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
