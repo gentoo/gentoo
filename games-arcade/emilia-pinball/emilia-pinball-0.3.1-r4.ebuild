@@ -60,6 +60,7 @@ src_compile() {
 
 src_install() {
 	default
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	dosym pinball /usr/bin/emilia-pinball
 
