@@ -288,10 +288,6 @@ virtual/perl-Unicode-Normalize
 # Introduces REQUIRED_USE that needs more discussion (bug #956402)
 =media-gfx/gimp-3.0.2-r2
 
-# Ulrich Müller <ulm@gentoo.org> (2025-05-18)
-# Pretest versions, masked for testing.
-<app-editors/emacs-30.1.9999:30-vcs
-
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
 # Masked for testing
 dev-db/mysql:8.4
