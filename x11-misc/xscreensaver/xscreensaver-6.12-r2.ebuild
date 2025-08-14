@@ -282,7 +282,7 @@ src_install() {
 		Xscreensaver was built without any means to support image manipulation
 		(i.e. with neither USE=gtk-pixbuf or USE=png. Several screensavers
 		will likely just fail to work without it and several others will
-		have deminished apperance like displaying a checkerboard pattern
+		have diminished appearance like displaying a checkerboard pattern
 		instead of an image. It is strongly recommended to enable at lest one
 		of those flags.
 
