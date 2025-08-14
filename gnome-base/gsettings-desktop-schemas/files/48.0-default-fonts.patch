@@ -1,0 +1,20 @@
+Do not override distribution choices for default monospace and document font.
+--- a/schemas/org.gnome.desktop.interface.gschema.xml.in	2025-03-17 13:36:02.000000000 +0100
++++ b/schemas/org.gnome.desktop.interface.gschema.xml.in	2025-08-14 15:08:12.337541033 +0200
+@@ -156,14 +156,14 @@
+       </description>
+     </key>
+     <key name="document-font-name" type="s">
+-      <default>'Adwaita Sans 11'</default>
++      <default>'Sans 11'</default>
+       <summary>Document font</summary>
+       <description>
+         Name of the default font used for reading documents.
+       </description>
+     </key>
+     <key name="monospace-font-name" type="s">
+-      <default>'Adwaita Mono 11'</default>
++      <default>'Monospace 11'</default>
+       <summary>Monospace font</summary>
+       <description>
+         Name of a monospaced (fixed-width) font for use in locations like
