@@ -75,6 +75,16 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-detect.patch
 )
 
+has_all_x86() {
+	local flag
+	for flag; do
+		if ! use "cpu_flags_x86_${flag}"; then
+			return 1
+		fi
+	done
+	return 0
+}
+
 python_configure_all() {
 	local cpu_baseline=()
 	local map flag
@@ -155,23 +165,44 @@ python_configure_all() {
 
 			if [[ ${cpu_baseline[@]} && ${cpu_baseline[-1]} == AVX512CD ]]; then
 				# upstream combines multiple instructions into per-CPU sets
-				local avx512_mapping=(
-					"AVX512_KNL:avx512pf avx512er"
-					"AVX512_KNM:avx512_vpopcntdq avx512_4vnniw avx512_4fmaps"
-					"AVX512_SKX:avx512dq avx512bw avx512vl"
-					"AVX512_CLX:avx512_vnni"
-					"AVX512_CNL:avx512ifma avx512vbmi"
-					"AVX512_ICL:avx512_vbmi2 avx512_bitalg"
-					"AVX512_SPR:avx512_fp16"
+				local -A avx512_mapping=(
+					[AVX512_KNL]="avx512pf avx512er"
+					[AVX512_KNM]="avx512_vpopcntdq avx512_4vnniw avx512_4fmaps"
+					[AVX512_SKX]="avx512dq avx512bw avx512vl"
+					[AVX512_CLX]="avx512_vnni"
+					[AVX512_CNL]="avx512ifma avx512vbmi"
+					[AVX512_ICL]="avx512_vbmi2 avx512_bitalg"
+					[AVX512_SPR]="avx512_fp16"
 				)
-				for map in "${avx512_mapping[@]}"; do
-					for flag in ${map#*:}; do
-						if ! use "cpu_flags_x86_${flag}"; then
-							break 2
+
+				# 1. AVX512CD -> AVX512_KNL -> AVX512_KNM
+				if has_all_x86 ${avx512_mapping[AVX512_KNL]}; then
+					cpu_baseline+=( AVX512_KNL )
+					if has_all_x86 ${avx512_mapping[AVX512_KNM]}; then
+						cpu_baseline+=( AVX512_KNM )
+					fi
+				fi
+				# 2. AVX512CD -> AVX512_SKX -> [AVX512_CLX, AVX512_CNL]
+				if has_all_x86 ${avx512_mapping[AVX512_SKX]}; then
+					cpu_baseline+=( AVX512_SKX )
+					if has_all_x86 ${avx512_mapping[AVX512_CLX]}; then
+						cpu_baseline+=( AVX512_CLX )
+					fi
+					if has_all_x86 ${avx512_mapping[AVX512_CNL]}; then
+						cpu_baseline+=( AVX512_CNL )
+					fi
+				fi
+				# 3. [AVX512_CLX, AVX512_CNL] -> AVX512_ICL -> AVX512_SPR
+				if [[ ${cpu_baseline[-1]} == AVX512_CNL &&
+					${cpu_baseline[-2]} == AVX512_CLX ]]
+				then
+					if has_all_x86 ${avx512_mapping[AVX512_ICL]}; then
+						cpu_baseline+=( AVX512_ICL )
+						if has_all_x86 ${avx512_mapping[AVX512_SPR]}; then
+							cpu_baseline+=( AVX512_SPR )
 						fi
-					done
-					cpu_baseline+=( "${map%:*}" )
-				done
+					fi
+				fi
 			fi
 			;;
 		*)
