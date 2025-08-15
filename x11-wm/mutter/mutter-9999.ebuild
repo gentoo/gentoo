@@ -13,13 +13,13 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/mutter.git"
 	SRC_URI=""
-	SLOT="0/15" # This can get easily out of date, but better than 9967
+	SLOT="0/16" # This can get easily out of date, but better than 9967
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
-IUSE="debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland X +xwayland video_cards_nvidia"
+IUSE="bash-completion debug elogind gnome gtk-doc input_devices_wacom +introspection screencast sysprof systemd test udev wayland X +xwayland video_cards_nvidia"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	|| ( X wayland )
@@ -46,13 +46,13 @@ RDEPEND="
 	>=gnome-base/gsettings-desktop-schemas-47_beta[introspection?]
 	>=dev-libs/glib-2.81.1:2
 	gnome-base/gnome-settings-daemon
-	>=x11-libs/libxkbcommon-0.4.3[X?]
+	>=x11-libs/libxkbcommon-1.8.0[X?]
 	>=app-accessibility/at-spi2-core-2.46:2[introspection?]
 	sys-apps/dbus
 	>=x11-misc/colord-1.4.5:=
 	>=media-libs/lcms-2.6:2
 	>=media-libs/harfbuzz-2.6.0:=
-	>=dev-libs/libei-1.0.901
+	>=dev-libs/libei-1.3.901
 	>=media-libs/libdisplay-info-0.2:=
 
 	gnome? ( gnome-base/gnome-desktop:4= )
@@ -63,11 +63,11 @@ RDEPEND="
 
 	>=dev-libs/wayland-1.23.0
 	wayland? (
-		>=dev-libs/wayland-protocols-1.36
+		>=dev-libs/wayland-protocols-1.41
 
 		>=x11-libs/libdrm-2.4.118
 		media-libs/mesa[gbm(+)]
-		>=dev-libs/libinput-1.26.0:=
+		>=dev-libs/libinput-1.27.0:=
 
 		elogind? ( sys-auth/elogind )
 		xwayland? ( >=x11-base/xwayland-23.2.1[libei(+)] )
@@ -141,6 +141,13 @@ BDEPEND="
 		>=sys-kernel/linux-headers-4.4
 		x11-libs/libxcvt
 	)
+	bash-completion? (
+		app-shells/bash-completion
+		${PYTHON_DEPS}
+		$(python_gen_any_dep '
+			dev-python/argcomplete[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 PATCHES=(
@@ -150,6 +157,9 @@ PATCHES=(
 python_check_deps() {
 	if use test; then
 		python_has_version ">=dev-python/python-dbusmock-0.28[${PYTHON_USEDEP}]"
+	fi
+	if use bash-completion; then
+		python_has_version dev-python/argcomplete[${PYTHON_USEDEP}]
 	fi
 }
 
@@ -175,6 +185,7 @@ src_configure() {
 		-Degl=true
 		$(meson_use X glx)
 		$(meson_use wayland)
+		-Dfonts=true
 	)
 
 	if use wayland; then
@@ -187,8 +198,13 @@ src_configure() {
 		)
 	fi
 
+	if use elogind || use systemd; then
+		emesonargs+=(
+			-Dlogind=true
+		)
+	fi
+
 	emesonargs+=(
-		$(meson_use systemd)
 		$(meson_use wayland native_backend)
 		$(meson_use screencast remote_desktop)
 		$(meson_use gnome libgnome_desktop)
@@ -209,6 +225,7 @@ src_configure() {
 		$(meson_use sysprof profiler)
 		-Dinstalled_tests=false
 		$(meson_use X x11)
+		$(meson_use bash-completion bash_completion)
 
 		#verbose # Let upstream choose default for verbose mode
 		#xwayland_path
