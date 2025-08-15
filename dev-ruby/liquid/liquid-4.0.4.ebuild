@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="History.md README.md"
@@ -19,8 +20,7 @@ SLOT="4"
 KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 
-ruby_add_bdepend "test? ( dev-ruby/minitest
-	dev-ruby/spy )"
+ruby_add_bdepend "test? ( dev-ruby/minitest )"
 
 all_ruby_prepare() {
 	# liquid-c is not packaged
