@@ -4,4 +4,7 @@
 <maintainer type="project">
 <email>freedesktop-bugs@gentoo.org</email>
 </maintainer>
+  <upstream>
+    <remote-id type="gnome-gitlab">Archive/gamin</remote-id>
+  </upstream>
 </pkgmetadata>
