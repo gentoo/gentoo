@@ -6,7 +6,7 @@ EAPI=8
 MY_PN="${PN%-*}"
 MY_PV="${PV/_rc/-rc.}"
 
-inherit desktop xdg
+inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="Mattermost Desktop application"
 HOMEPAGE="https://mattermost.com/"
@@ -52,6 +52,10 @@ RDEPEND="
 	x11-libs/pango
 "
 
+BDEPEND="
+	dev-util/debugedit
+"
+
 QA_PREBUILT="
 	opt/mattermost-desktop/mattermost-desktop
 	opt/mattermost-desktop/libnode.so
@@ -66,6 +70,19 @@ QA_PREBUILT="
 DOCS=(
 	NOTICE.txt
 )
+
+src_prepare() {
+	default
+
+	# file collision with FEATURES=splitdebug, see bug #961437
+	tc-export OBJCOPY
+	find . -type f ! -name '*$(*)*' -print0 | while IFS= read -r -d '' file; do
+		if file "${file}" | grep -qE "ELF (32|64)-bit"; then
+			${OBJCOPY} --remove-section .note.gnu.build-id "${file}" || die
+			debugedit -b "${EPREFIX}/opt/${MY_PN}" -d "/usr/lib/debug" -i "${file}" || die
+		fi
+	done
+}
 
 src_install() {
 	if use amd64; then
