@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-31)
+# Unmask arch-specific USE flag available on x86
+<net-analyzer/testssl-3.1 -bundled-openssl
+
 # Alfred Wingate <parona@protonmail.com> (2025-07-31)
 # mongodb not keyworded here
 sci-libs/gdal mongodb
@@ -383,10 +387,6 @@ dev-php/pecl-mongodb test
 # Alexys Jacob <ultrabug@gentoo.org> (2018-11-05)
 # Requires dev-db/mongodb which has dropped x86 support
 net-analyzer/zmap mongo
-
-# Michael Palimaka <kensington@gentoo.org> (2018-10-12)
-# Unmask arch-specific USE flag available on x86
-net-analyzer/testssl -bundled-openssl
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
