@@ -49,7 +49,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.25.2
 	x11-misc/xkeyboard-config
 	drm? (
-		<media-libs/libdisplay-info-0.3.0:=
+		<media-libs/libdisplay-info-0.4.0:=
 		>=media-libs/mesa-21.1.1
 		>=sys-libs/mtdev-1.1.0
 		>=virtual/udev-136
@@ -103,6 +103,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-kiosk-test.patch
+	"${FILESDIR}"/${PN}-libdisplay-info-0.3.0.patch
 )
 
 src_configure() {
