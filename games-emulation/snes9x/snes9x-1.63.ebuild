@@ -72,6 +72,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.63-flags.patch
 	"${FILESDIR}"/${PN}-1.63-optional-wayland.patch
 	"${FILESDIR}"/${PN}-1.63-vulkan-fix.patch
+	"${FILESDIR}"/${PN}-1.63-compile.patch
 )
 
 pkg_setup() {

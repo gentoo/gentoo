@@ -1,0 +1,35 @@
+diff --git a/external/glslang/SPIRV/SpvBuilder.h b/external/glslang/SPIRV/SpvBuilder.h
+index 02e9cf40..f5d9c2c6 100644
+--- a/external/glslang/SPIRV/SpvBuilder.h
++++ b/external/glslang/SPIRV/SpvBuilder.h
+@@ -61,6 +61,7 @@ namespace spv {
+ #include <set>
+ #include <sstream>
+ #include <stack>
++#include <cstdint>
+ #include <unordered_map>
+ #include <map>
+
+diff --git a/unix/Makefile.in b/unix/Makefile.in
+index a87cd079..7c78a0a5 100644
+--- a/unix/Makefile.in
++++ b/unix/Makefile.in
+@@ -37,7 +37,7 @@ GASM       = @CXX@
+ INCLUDES   += -I. -I.. -I../apu/ -I../apu/bapu -I../jma/ -I../filter/
+
+ CCFLAGS    = @S9XFLGS@ @S9XDEFS@ $(DEFS)
+-CFLAGS     = $(CCFLAGS)
++CFLAGS     += $(CCFLAGS)
+
+ .SUFFIXES: .o .cpp .c .cc .h .m .i .s .obj
+ 
+diff --git a/gtk/CMakeLists.txt b/gtk/CMakeLists.txt
+index 6d13d493..ef56eea2 100644
+--- a/gtk/CMakeLists.txt
++++ b/gtk/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.18)
++cmake_minimum_required(VERSION 4.0)
+ project(snes9x-gtk VERSION 1.63)
+
+ option(USE_SLANG "Build support for Vulkan output and .slangp shaders" ON)
