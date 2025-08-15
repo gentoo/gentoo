@@ -319,6 +319,8 @@ CRATES="
 	zerovec@0.10.4
 "
 
+RUST_MIN_VER="1.78"
+
 inherit cargo fcaps
 
 DESCRIPTION="A network diagnostic tool"
