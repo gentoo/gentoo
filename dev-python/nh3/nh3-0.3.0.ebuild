@@ -3,6 +3,11 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=maturin
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+
+RUST_MIN_VER="1.82.0"
 CRATES="
 	aliasable@0.1.3
 	ammonia@4.1.1
@@ -108,10 +113,6 @@ CRATES="
 	zerovec-derive@0.11.1
 	zerovec@0.11.2
 "
-
-DISTUTILS_EXT=1
-DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit cargo distutils-r1 pypi
 
