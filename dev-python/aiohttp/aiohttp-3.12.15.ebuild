@@ -41,6 +41,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/multidict-4.5.0[${PYTHON_USEDEP}]
+	dev-python/pkgconfig[${PYTHON_USEDEP}]
 	native-extensions? (
 		>=dev-python/cython-3.1.1[${PYTHON_USEDEP}]
 		dev-python/pkgconfig[${PYTHON_USEDEP}]
