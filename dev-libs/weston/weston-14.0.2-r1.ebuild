@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	EXPERIMENTAL="true"
 fi
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit meson python-any-r1 readme.gentoo-r1 xdg-utils ${GIT_ECLASS}
 
 DESCRIPTION="Wayland reference compositor"
