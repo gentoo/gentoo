@@ -44,13 +44,14 @@ DEPEND="
 	video_cards_amdgpu? (
 		dev-util/rocminfo:${SLOT}
 		dev-libs/rocm-comgr:${SLOT}
-		dev-libs/rocr-runtime:${SLOT}
+		>=dev-libs/rocr-runtime-6.4.3:${SLOT}
 	)
 	video_cards_nvidia? (
 		dev-libs/hipother:${SLOT}
 	)
 	x11-base/xorg-proto
 	virtual/opengl
+	sys-process/numactl
 "
 BDEPEND="
 	video_cards_amdgpu? (

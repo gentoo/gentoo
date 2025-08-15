@@ -13,34 +13,33 @@ inherit cmake docs edo flag-o-matic multiprocessing rocm llvm-r1
 
 DESCRIPTION="AMD's library for BLAS on ROCm"
 HOMEPAGE="https://github.com/ROCm/rocBLAS"
-SRC_URI="https://github.com/ROCm/rocBLAS/archive/rocm-${PV}.tar.gz -> rocm-${P}.tar.gz"
-S="${WORKDIR}/${PN}-rocm-${PV}"
+
+if [[ "${PV}" == 9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/ROCm/rocm-libraries.git"
+	EGIT_BRANCH="develop"
+	S="${WORKDIR}/${P}/projects/rocblas"
+	SLOT="0/6.4"
+else
+	SRC_URI="https://github.com/ROCm/rocBLAS/archive/rocm-${PV}.tar.gz -> rocm-${P}.tar.gz"
+	S="${WORKDIR}/${PN}-rocm-${PV}"
+	SLOT="0/$(ver_cut 1-2)"
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="BSD"
-SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
 IUSE="benchmark hipblaslt test video_cards_amdgpu"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
 BDEPEND="
 	>=dev-build/rocm-cmake-5.3
-	video_cards_amdgpu? (
-		dev-util/Tensile:${SLOT}
-	)
-	hipblaslt? ( sci-libs/hipBLASLt:${SLOT} )
-	test? ( dev-cpp/gtest )
 "
 
-DEPEND="
-	>=dev-cpp/msgpack-cxx-6.0.0
+RDEPEND="
 	dev-util/hip:${SLOT}
 	dev-util/roctracer:${SLOT}
-	test? (
-		virtual/blas
-		dev-cpp/gtest
-		llvm-runtimes/openmp
-	)
+	hipblaslt? ( sci-libs/hipBLASLt:${SLOT} )
 	benchmark? (
 		virtual/blas
 		dev-cpp/gtest
@@ -48,15 +47,20 @@ DEPEND="
 	)
 "
 
-QA_FLAGS_IGNORED="/usr/lib64/rocblas/library/.*"
+DEPEND="
+	${RDEPEND}
+	>=dev-cpp/msgpack-cxx-6.0.0
+	test? (
+		virtual/blas
+		dev-cpp/gtest
+		llvm-runtimes/openmp
+	)
+	video_cards_amdgpu? (
+		dev-util/Tensile:${SLOT}
+	)
+"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-5.4.2-add-missing-header.patch
-	"${FILESDIR}"/${PN}-5.4.2-link-cblas.patch
-	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
-	"${FILESDIR}"/${PN}-6.3.0-no-git.patch
-	"${FILESDIR}"/${PN}-6.3.0-find-cblas.patch
-)
+QA_FLAGS_IGNORED="/usr/lib64/rocblas/library/.*"
 
 src_prepare() {
 	cmake_src_prepare
@@ -72,7 +76,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
-		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DROCM_SYMLINK_LIBS=OFF
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
 		-DBUILD_WITH_TENSILE="$(usex video_cards_amdgpu)"
@@ -83,6 +86,7 @@ src_configure() {
 		-DBUILD_WITH_PIP=OFF
 		-DBUILD_WITH_HIPBLASLT="$(usex hipblaslt ON OFF)"
 		-DLINK_BLIS=OFF
+		-DTensile_CPU_THREADS=$(makeopts_jobs)
 		-Wno-dev
 	)
 
