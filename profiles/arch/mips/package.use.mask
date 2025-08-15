@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Pacho Ramos <pacho@gentoo.org> (2025-08-15)
+# dev-lang/spidermonkey:128 is not keyworded on mips, #941187
+app-crypt/libsecret test-rust
+dev-util/glade gjs
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-18)
 # Not keyworded for mips
 app-alternatives/sh ksh
