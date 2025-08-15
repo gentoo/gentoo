@@ -450,7 +450,9 @@ sci-libs/netcdf hdf
 
 # Markus Meier <maekke@gentoo.org> (2014-09-24)
 # Unkeyworded deps, bug #519618
-sys-block/fio glusterfs rbd
+# Pengyu Tao <i@f2light.com> (2025-08-04)
+# sys-libs/libnbd is not keyworded on arm yet
+sys-block/fio glusterfs nbd rbd
 
 # Rick Farina <zerochaos@gentoo.org> (2014-07-27)
 # net-misc/dahdi doesn't build
