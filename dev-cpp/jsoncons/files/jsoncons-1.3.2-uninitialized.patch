@@ -1,0 +1,14 @@
+Fix error: ‘c’ may be used uninitialized [-Werror=maybe-uninitialized]
+https://github.com/danielaparker/jsoncons/pull/628
+
+--- a/include/jsoncons/source.hpp
++++ b/include/jsoncons/source.hpp
+@@ -767,7 +767,7 @@ namespace jsoncons {
+                 std::size_t actual = 0;
+                 while (actual < n)
+                 {
+-                    typename Source::value_type c;
++                    typename Source::value_type c{};
+                     if (source.read(&c,1) != 1)
+                     {
+                         break;

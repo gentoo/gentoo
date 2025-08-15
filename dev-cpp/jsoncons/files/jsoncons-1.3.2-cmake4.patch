@@ -1,0 +1,62 @@
+https://github.com/danielaparker/jsoncons/commit/d396ec86ea20b9805ba483d6c3dc20994824e823
+From: "Markus Kitsinger (SwooshyCueb)" <root@swooshalicio.us>
+Date: Tue, 22 Apr 2025 10:58:00 -0500
+Subject: [PATCH] Update CMake policy usage to 3.14
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ project(jsoncons CXX)
+ 
+@@ -60,7 +60,7 @@ configure_package_config_file(cmake/Config.cmake
+ 
+ # jsoncons is header-only and does not depend on the architecture.
+ 
+-if (${CMAKE_VERSION} VERSION_LESS "3.14.0")
++if (CMAKE_VERSION VERSION_LESS "3.14.0")
+    write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+                                     VERSION ${${PROJECT_NAME}_VERSION}
+                                     COMPATIBILITY AnyNewerVersion)
+--- a/examples/build/cmake/CMakeLists.txt
++++ b/examples/build/cmake/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ # jsoncons examples CMake file
+ #
+ 
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required(VERSION 3.5...3.14)
+ 
+ # load global config
+ include (../../build/cmake/Config.cmake)
+@@ -27,7 +27,7 @@ foreach(example_file ${Example_sources})
+     # Create an executable with the example name and file
+     add_executable(${example_name} ${example_file})
+ 
+-    if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux" AND ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
++    if ((CMAKE_SYSTEM_NAME STREQUAL "Linux") AND (CMAKE_CXX_COMPILER_ID STREQUAL "Clang"))
+       # special link option on Linux because llvm stl rely on GNU stl
+       target_link_libraries(${example_name} -Wl,-lstdc++)
+     endif()
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -50,7 +50,7 @@ set(JSONCONS_THIRD_PARTY_INCLUDE_DIR ${JSONCONS_TESTS_DIR}/thirdparty)
+ set(CATCH_INCLUDE_DIR ${JSONCONS_THIRD_PARTY_INCLUDE_DIR}/catch)
+ add_library(catch INTERFACE)
+ 
+-if (${CMAKE_VERSION} VERSION_LESS "3.8.0")
++if (CMAKE_VERSION VERSION_LESS "3.8.0")
+     target_compile_features(catch INTERFACE cxx_range_for)  # for C++11 - flags
+ else()
+     target_compile_features(catch INTERFACE cxx_std_11)
+@@ -198,7 +198,7 @@ add_executable(unit_tests
+                corelib/src/testmain.cpp
+ )              
+ 
+-if (${CMAKE_VERSION} VERSION_LESS "3.8.0")
++if (CMAKE_VERSION VERSION_LESS "3.8.0")
+     target_compile_features(unit_tests INTERFACE cxx_range_for)  # for C++11 - flags
+ else()
+     target_compile_features(unit_tests INTERFACE cxx_std_11)

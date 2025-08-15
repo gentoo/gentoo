@@ -1,0 +1,14 @@
+https://github.com/danielaparker/jsoncons/pull/629
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,8 +51,7 @@ install(DIRECTORY ${JSONCONS_INCLUDE_DIR}/jsoncons
+                   ${JSONCONS_INCLUDE_DIR}/jsoncons_ext
+         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+-# GNUInstallDirs "DATADIR" wrong here; CMake search path wants "share".
+-set(JSONCONS_CMAKECONFIG_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}" CACHE STRING "install path for jsonconsConfig.cmake")
++set(JSONCONS_CMAKECONFIG_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}" CACHE STRING "install path for jsonconsConfig.cmake")
+ 
+ configure_package_config_file(cmake/Config.cmake
+                               "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
