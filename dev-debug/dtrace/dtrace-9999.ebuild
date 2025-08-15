@@ -73,10 +73,6 @@ QA_EXECSTACK="
 	usr/*/dtrace/bpf_dlib.*
 "
 
-PATCHES=(
-	"${FILESDIR}"/0001-bpf-compile-BPF-library-functions-with-ffreestanding.patch
-)
-
 pkg_pretend() {
 	# TODO: optional kernel patches
 
