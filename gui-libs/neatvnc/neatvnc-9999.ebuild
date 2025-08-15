@@ -23,7 +23,7 @@ REQUIRED_USE="h264? ( gbm )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	=dev-libs/aml-0.3*
+	>=dev-libs/aml-1.0.0
 	sys-libs/zlib
 	x11-libs/pixman
 	examples? (
@@ -54,7 +54,7 @@ src_prepare() {
 	default
 
 	# useful soname (https://github.com/any1/neatvnc/issues/124)
-	sed -i -e "s/'0.0.0'/meson.project_version()/" meson.build || die
+	sed -i -e "s/'0.0.0'/'0.10'/" meson.build || die
 }
 
 src_configure() {
