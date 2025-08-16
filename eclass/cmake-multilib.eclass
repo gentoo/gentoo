@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-multilib.eclass
@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: cmake multilib-minimal
 # @BLURB: cmake wrapper for multilib builds
 # @DESCRIPTION:
@@ -27,7 +27,7 @@
 : "${CMAKE_ECLASS:=cmake}"
 
 case ${EAPI} in
-	7|8)
+	8)
 		case ${CMAKE_ECLASS} in
 			cmake) ;;
 			*)
