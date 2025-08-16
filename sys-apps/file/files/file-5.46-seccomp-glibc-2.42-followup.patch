@@ -1,0 +1,20 @@
+There's no need for the __linux__ check, as seccomp is Linux-only. Avoid
+including <termios.h> which will clash with <sys/ioctl.h>.
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -34,14 +34,7 @@ FILE_RCSID("@(#)$File: seccomp.c,v 1.31 2025/03/20 14:57:41 christos Exp $")
+ #include <seccomp.h> /* libseccomp */
+ #include <sys/prctl.h> /* prctl */
+ #include <sys/socket.h>
+-#ifdef __powerpc64__
+-// See: https://sourceware.org/bugzilla/show_bug.cgi?id=32806
+-# include <asm/termbits.h>
+-#elif defined __linux__
+-# include <linux/termios.h>
+-#else
+-# include <termios.h>
+-#endif
++#include <asm/termbits.h>
+ #include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <stdlib.h>

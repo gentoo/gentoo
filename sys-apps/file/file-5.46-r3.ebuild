@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}/file-5.46-buffer-overflow.patch"
 	"${FILESDIR}/file-5.46-seccomp-rseq.patch"
 	"${FILESDIR}/file-5.46-seccomp-glibc-2.42.patch"
+	"${FILESDIR}/file-5.46-seccomp-glibc-2.42-followup.patch"
 )
 
 src_prepare() {
