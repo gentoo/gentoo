@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{10..14} pypy3 pypy3_11 )
 
 inherit distutils-r1
 
@@ -32,6 +32,10 @@ BDEPEND="
 		dev-python/pip[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-test.patch" # bug 955432
+)
 
 distutils_enable_tests pytest
 
