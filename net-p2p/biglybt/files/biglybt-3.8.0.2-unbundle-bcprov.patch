@@ -1,0 +1,491 @@
+Description: Use the version of BouncyCastle packaged in Debian
+Author: David Juran <djuran@redhat.com>
+Forwarded: no
+
+Gentoo relevant:
+* Bug: https://bugs.gentoo.org/936549
+* PR: https://github.com/gentoo/gentoo/pull/40734#issuecomment-3028397493
+--- a/core/src/com/biglybt/core/security/CryptoECCUtils.java
++++ b/core/src/com/biglybt/core/security/CryptoECCUtils.java
+@@ -24,15 +24,15 @@
+ import java.security.*;
+ import java.security.spec.KeySpec;
+ 
+-import org.gudy.bouncycastle.jce.ECNamedCurveTable;
+-import org.gudy.bouncycastle.jce.interfaces.ECPrivateKey;
+-import org.gudy.bouncycastle.jce.interfaces.ECPublicKey;
+-import org.gudy.bouncycastle.jce.provider.BouncyCastleProvider;
+-import org.gudy.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
+-import org.gudy.bouncycastle.jce.spec.ECParameterSpec;
+-import org.gudy.bouncycastle.jce.spec.ECPrivateKeySpec;
+-import org.gudy.bouncycastle.jce.spec.ECPublicKeySpec;
+-import org.gudy.bouncycastle.math.ec.ECPoint;
++import org.bouncycastle.jce.ECNamedCurveTable;
++import org.bouncycastle.jce.interfaces.ECPrivateKey;
++import org.bouncycastle.jce.interfaces.ECPublicKey;
++import org.bouncycastle.jce.provider.BouncyCastleProvider;
++import org.bouncycastle.jce.spec.ECNamedCurveParameterSpec;
++import org.bouncycastle.jce.spec.ECParameterSpec;
++import org.bouncycastle.jce.spec.ECPrivateKeySpec;
++import org.bouncycastle.jce.spec.ECPublicKeySpec;
++import org.bouncycastle.math.ec.ECPoint;
+ 
+ public class
+ CryptoECCUtils
+--- a/core/src/com/biglybt/core/security/impl/CryptoManagerImpl.java
++++ b/core/src/com/biglybt/core/security/impl/CryptoManagerImpl.java
+@@ -29,9 +29,9 @@
+ import javax.crypto.spec.PBEKeySpec;
+ import javax.crypto.spec.PBEParameterSpec;
+ 
+-import org.gudy.bouncycastle.crypto.CipherParameters;
+-import org.gudy.bouncycastle.crypto.engines.RC4Engine;
+-import org.gudy.bouncycastle.crypto.params.KeyParameter;
++import org.bouncycastle.crypto.CipherParameters;
++import org.bouncycastle.crypto.engines.RC4Engine;
++import org.bouncycastle.crypto.params.KeyParameter;
+ 
+ import com.biglybt.core.config.COConfigurationManager;
+ import com.biglybt.core.security.*;
+--- a/core/src/com/biglybt/core/security/impl/CryptoHandlerECC.java
++++ b/core/src/com/biglybt/core/security/impl/CryptoHandlerECC.java
+@@ -27,9 +27,9 @@
+ import javax.crypto.Cipher;
+ import javax.crypto.IllegalBlockSizeException;
+ 
+-import org.gudy.bouncycastle.jce.provider.JCEIESCipher;
+-import org.gudy.bouncycastle.jce.spec.IEKeySpec;
+-import org.gudy.bouncycastle.jce.spec.IESParameterSpec;
++import org.bouncycastle.jce.provider.BouncyCastleProvider;
++import org.bouncycastle.jce.spec.IEKeySpec;
++import org.bouncycastle.jce.spec.IESParameterSpec;
+ 
+ import com.biglybt.core.config.COConfigurationManager;
+ import com.biglybt.core.security.*;
+@@ -64,6 +64,7 @@
+ 		CryptoManagerImpl		_manager,
+ 		int						_instance_id )
+ 	{
++		Security.addProvider(new BouncyCastleProvider());
+ 		manager		= _manager;
+ 		instance_id	= _instance_id;
+ 		
+@@ -227,11 +228,11 @@
+ 
+ 			IESParameterSpec param = new IESParameterSpec( d, e, 128);
+ 
+-			InternalECIES	cipher = new InternalECIES();
++			Cipher cipher = Cipher.getInstance("ECIES");
+ 
+-			cipher.internalEngineInit( Cipher.ENCRYPT_MODE, key_spec, param, null );
++			cipher.init( Cipher.ENCRYPT_MODE, key_spec, param, null );
+ 
+-			byte[]	encrypted = cipher.internalEngineDoFinal(data, 0, data.length );
++			byte[]	encrypted = cipher.doFinal(data, 0, data.length );
+ 
+ 			byte[] result = new byte[32+encrypted.length];
+ 
+@@ -271,11 +272,11 @@
+ 
+ 			IESParameterSpec param = new IESParameterSpec( d, e, 128);
+ 
+-			InternalECIES	cipher = new InternalECIES();
++			Cipher cipher = Cipher.getInstance("ECIES");
+ 
+-			cipher.internalEngineInit( Cipher.DECRYPT_MODE, key_spec, param, null );
++			cipher.init( Cipher.DECRYPT_MODE, key_spec, param, null );
+ 
+-			return( cipher.internalEngineDoFinal( data, 32, data.length - 32 ));
++			return( cipher.doFinal( data, 32, data.length - 32 ));
+ 
+ 		}catch( CryptoManagerException e ){
+ 
+@@ -886,32 +887,4 @@
+ 		return((int)COConfigurationManager.getIntParameter( CONFIG_PREFIX + "pwtype", CryptoManagerPasswordHandler.HANDLER_TYPE_USER ));
+ 	}
+ 
+-	static class InternalECIES
+-		extends JCEIESCipher.ECIES
+-	{
+-			// we use this class to obtain compatibility with BC
+-
+-		public void
+-		internalEngineInit(
+-			int                     opmode,
+-			Key                     key,
+-			AlgorithmParameterSpec  params,
+-			SecureRandom            random )
+-
+-			throws InvalidKeyException, InvalidAlgorithmParameterException
+-		{
+-			engineInit(opmode, key, params, random);
+-		}
+-
+-		protected byte[]
+-		internalEngineDoFinal(
+-			byte[]  input,
+-			int     inputOffset,
+-			int     inputLen )
+-
+-			throws IllegalBlockSizeException, BadPaddingException
+-		{
+-			return engineDoFinal(input, inputOffset, inputLen);
+-		}
+-	}
+ }
+--- a/core/src/com/biglybt/core/security/impl/SESecurityManagerBC.java
++++ b/core/src/com/biglybt/core/security/impl/SESecurityManagerBC.java
+@@ -33,9 +33,9 @@
+ import java.security.cert.X509Certificate;
+ import java.util.Calendar;
+ 
+-import org.gudy.bouncycastle.asn1.x509.X509Name;
+-import org.gudy.bouncycastle.jce.X509V3CertificateGenerator;
+-import org.gudy.bouncycastle.jce.provider.BouncyCastleProvider;
++import org.bouncycastle.asn1.x509.X509Name;
++import org.bouncycastle.x509.X509V3CertificateGenerator;
++import org.bouncycastle.jce.provider.BouncyCastleProvider;
+ 
+ import com.biglybt.core.util.Constants;
+ import com.biglybt.core.util.Debug;
+@@ -49,7 +49,7 @@
+ 	initialise()
+ 	{
+ 		try{
+-			Security.addProvider(new org.gudy.bouncycastle.jce.provider.BouncyCastleProvider());
++			Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+ 
+ 			KeyFactory kf = KeyFactory.getInstance( "ECDSA", BouncyCastleProvider.PROVIDER_NAME );
+ 
+@@ -59,7 +59,7 @@
+ 
+ 				try{
+ 
+-					where = BouncyCastleProvider.class.getClassLoader().getResource( "org/gudy/bouncycastle/jce/provider/BouncyCastleProvider.class" ).toExternalForm();
++					where = BouncyCastleProvider.class.getClassLoader().getResource( "org/bouncycastle/jce/provider/BouncyCastleProvider.class" ).toExternalForm();
+ 
+ 				}catch( Throwable e ){
+ 
+--- a/core/src/com/biglybt/core/security/impl/CryptoSTSEngineImpl.java
++++ b/core/src/com/biglybt/core/security/impl/CryptoSTSEngineImpl.java
+@@ -22,7 +22,7 @@
+ import java.nio.ByteBuffer;
+ import java.security.*;
+ 
+-import org.gudy.bouncycastle.jce.provider.JCEECDHKeyAgreement;
++import javax.crypto.KeyAgreement;
+ 
+ import com.biglybt.core.security.CryptoECCUtils;
+ import com.biglybt.core.security.CryptoManagerException;
+@@ -46,7 +46,7 @@
+ 	private PublicKey 	remotePubKey;
+ 	private byte[] 		sharedSecret;
+ 
+-	private InternalDH	ecDH;
++	private KeyAgreement	ecDH;
+ 
+ 	/**
+ 	 *
+@@ -65,8 +65,8 @@
+ 		ephemeralKeyPair = CryptoECCUtils.createKeys();
+ 
+ 		try{
+-			ecDH = new InternalDH();
+-
++			Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
++			ecDH = KeyAgreement.getInstance("ECDH");
+ 			//ecDH = KeyAgreement.getInstance("ECDH", BouncyCastleProvider.PROVIDER_NAME);
+ 
+ 			ecDH.init(ephemeralKeyPair.getPrivate());
+@@ -398,40 +398,4 @@
+ 		}
+ 	}
+ 
+-	static class
+-	InternalDH
+-		extends JCEECDHKeyAgreement.DH
+-	{
+-			// we use this class to obtain compatibility with BC
+-
+-		@Override
+-		public void
+-		init(
+-			Key		key )
+-
+-			throws InvalidKeyException, InvalidAlgorithmParameterException
+-		{
+-			engineInit( key, null );
+-		}
+-
+-		@Override
+-		public Key
+-		doPhase(
+-			Key		key,
+-			boolean	lastPhase )
+-
+-			throws InvalidKeyException, IllegalStateException
+-		{
+-			return( engineDoPhase( key, lastPhase ));
+-		}
+-
+-		@Override
+-		public byte[]
+-		generateSecret()
+-
+-			throws IllegalStateException
+-		{
+-			return( engineGenerateSecret());
+-		}
+-	}
+-}
+\ No newline at end of file
++}
+--- a/core/src/com/biglybt/core/subs/impl/SubscriptionManagerImpl.java
++++ b/core/src/com/biglybt/core/subs/impl/SubscriptionManagerImpl.java
+@@ -32,7 +32,7 @@
+ import java.util.zip.GZIPOutputStream;
+ 
+ import com.biglybt.util.MapUtils;
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.Core;
+ import com.biglybt.core.CoreFactory;
+--- a/core/src/com/biglybt/core/subs/impl/SubscriptionImpl.java
++++ b/core/src/com/biglybt/core/subs/impl/SubscriptionImpl.java
+@@ -28,7 +28,7 @@
+ import java.util.concurrent.atomic.AtomicLong;
+ 
+ import com.biglybt.util.MapUtils;
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ import org.json.simple.JSONObject;
+ 
+ import com.biglybt.core.internat.MessageText;
+--- a/core/src/com/biglybt/core/pairing/impl/PairingManagerTunnelHandler.java
++++ b/core/src/com/biglybt/core/pairing/impl/PairingManagerTunnelHandler.java
+@@ -34,9 +34,9 @@
+ import javax.crypto.spec.IvParameterSpec;
+ import javax.crypto.spec.SecretKeySpec;
+ 
+-import org.gudy.bouncycastle.crypto.agreement.srp.SRP6Server;
+-import org.gudy.bouncycastle.crypto.agreement.srp.SRP6VerifierGenerator;
+-import org.gudy.bouncycastle.crypto.digests.SHA256Digest;
++import org.bouncycastle.crypto.agreement.srp.SRP6Server;
++import org.bouncycastle.crypto.agreement.srp.SRP6VerifierGenerator;
++import org.bouncycastle.crypto.digests.SHA256Digest;
+ import org.json.simple.JSONObject;
+ 
+ import com.biglybt.core.Core;
+--- a/core/src/com/biglybt/core/networkmanager/impl/udp/UDPConnectionSet.java
++++ b/core/src/com/biglybt/core/networkmanager/impl/udp/UDPConnectionSet.java
+@@ -26,9 +26,9 @@
+ 
+ import javax.crypto.spec.SecretKeySpec;
+ 
+-import org.gudy.bouncycastle.crypto.CipherParameters;
+-import org.gudy.bouncycastle.crypto.engines.RC4Engine;
+-import org.gudy.bouncycastle.crypto.params.KeyParameter;
++import org.bouncycastle.crypto.CipherParameters;
++import org.bouncycastle.crypto.engines.RC4Engine;
++import org.bouncycastle.crypto.params.KeyParameter;
+ 
+ import com.biglybt.core.logging.LogEvent;
+ import com.biglybt.core.logging.LogIDs;
+--- a/core/src/com/biglybt/core/networkmanager/impl/TransportCipher.java
++++ b/core/src/com/biglybt/core/networkmanager/impl/TransportCipher.java
+@@ -26,9 +26,9 @@
+ import javax.crypto.Cipher;
+ import javax.crypto.spec.SecretKeySpec;
+ 
+-import org.gudy.bouncycastle.crypto.CipherParameters;
+-import org.gudy.bouncycastle.crypto.engines.RC4Engine;
+-import org.gudy.bouncycastle.crypto.params.KeyParameter;
++import org.bouncycastle.crypto.CipherParameters;
++import org.bouncycastle.crypto.engines.RC4Engine;
++import org.bouncycastle.crypto.params.KeyParameter;
+ 
+ import com.biglybt.core.util.Debug;
+ 
+--- a/core/src/com/biglybt/core/dht/control/impl/DHTControlImpl.java
++++ b/core/src/com/biglybt/core/dht/control/impl/DHTControlImpl.java
+@@ -29,9 +29,9 @@
+ import java.util.Map.Entry;
+ import java.util.concurrent.atomic.AtomicBoolean;
+ 
+-import org.gudy.bouncycastle.crypto.CipherParameters;
+-import org.gudy.bouncycastle.crypto.engines.RC4Engine;
+-import org.gudy.bouncycastle.crypto.params.KeyParameter;
++import org.bouncycastle.crypto.CipherParameters;
++import org.bouncycastle.crypto.engines.RC4Engine;
++import org.bouncycastle.crypto.params.KeyParameter;
+ 
+ import com.biglybt.core.dht.*;
+ import com.biglybt.core.dht.control.*;
+--- a/core/src/com/biglybt/core/tracker/server/impl/tcp/TRTrackerServerProcessorTCP.java
++++ b/core/src/com/biglybt/core/tracker/server/impl/tcp/TRTrackerServerProcessorTCP.java
+@@ -25,7 +25,7 @@
+ import java.util.*;
+ import java.util.zip.GZIPOutputStream;
+ 
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.dht.netcoords.DHTNetworkPosition;
+ import com.biglybt.core.dht.netcoords.DHTNetworkPositionManager;
+--- a/core/src/com/biglybt/core/util/AddressUtils.java
++++ b/core/src/com/biglybt/core/util/AddressUtils.java
+@@ -23,7 +23,7 @@
+ import java.security.MessageDigest;
+ import java.util.*;
+ 
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.CoreFactory;
+ import com.biglybt.core.config.COConfigurationManager;
+@@ -786,11 +786,11 @@
+ 			try{
+ 					// unfortunately we have an incompatible base64 standard in i2p, they replaced / with ~ and + with -
+ 
+-				char[]	encoded = to_decode.toCharArray();
++				byte[]	encoded = to_decode.getBytes();
+ 
+ 				for ( int i=0;i<encoded.length;i++){
+ 
+-					char c = encoded[i];
++					byte c = encoded[i];
+ 
+ 					if ( c == '~' ){
+ 						encoded[i] = '/';
+--- a/core/src/com/biglybt/core/util/MD4Hasher.java
++++ b/core/src/com/biglybt/core/util/MD4Hasher.java
+@@ -21,7 +21,7 @@
+ 
+ import java.security.MessageDigest;
+ 
+-import org.gudy.bouncycastle.jce.provider.BouncyCastleProvider;
++import org.bouncycastle.jce.provider.BouncyCastleProvider;
+ 
+ 
+ public class
+--- a/core/src/com/biglybt/core/util/UrlUtils.java
++++ b/core/src/com/biglybt/core/util/UrlUtils.java
+@@ -25,7 +25,7 @@
+ 
+ import javax.net.ssl.*;
+ 
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.CoreFactory;
+ import com.biglybt.core.config.COConfigurationManager;
+--- a/core/src/com/biglybt/net/magneturi/impl/MagnetURIHandlerImpl.java
++++ b/core/src/com/biglybt/net/magneturi/impl/MagnetURIHandlerImpl.java
+@@ -23,7 +23,7 @@
+ import java.net.*;
+ import java.util.*;
+ 
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.CoreFactory;
+ import com.biglybt.core.config.COConfigurationManager;
+--- a/core/src/com/biglybt/util/JSONUtils.java
++++ b/core/src/com/biglybt/util/JSONUtils.java
+@@ -20,7 +20,7 @@
+ import java.io.UnsupportedEncodingException;
+ import java.util.*;
+ 
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ import org.json.simple.JSONArray;
+ import org.json.simple.JSONObject;
+ import org.json.simple.JSONValue;
+--- a/core/src/com/biglybt/util/MapUtils.java
++++ b/core/src/com/biglybt/util/MapUtils.java
+@@ -23,7 +23,7 @@
+ import java.util.*;
+ 
+ import com.biglybt.core.util.UrlUtils;
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.util.Base32;
+ import com.biglybt.core.util.Constants;
+--- a/uis/src/com/biglybt/ui/console/util/StringEncrypter.java
++++ b/uis/src/com/biglybt/ui/console/util/StringEncrypter.java
+@@ -29,7 +29,7 @@
+ import javax.crypto.spec.DESKeySpec;
+ import javax.crypto.spec.DESedeKeySpec;
+ 
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ /**
+  * utility class to encrypt strings. this class was taken from the examples at:
+--- a/uis/src/com/biglybt/ui/swt/auth/AuthenticatorWindow.java
++++ b/uis/src/com/biglybt/ui/swt/auth/AuthenticatorWindow.java
+@@ -36,7 +36,7 @@
+ import org.eclipse.swt.layout.GridData;
+ import org.eclipse.swt.layout.GridLayout;
+ import org.eclipse.swt.widgets.*;
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.config.COConfigurationManager;
+ import com.biglybt.core.internat.MessageText;
+--- a/uis/src/com/biglybt/ui/swt/browser/listener/TorrentListener.java
++++ b/uis/src/com/biglybt/ui/swt/browser/listener/TorrentListener.java
+@@ -28,7 +28,7 @@
+ import com.biglybt.core.config.COConfigurationManager;
+ import com.biglybt.core.torrent.TOTorrent;
+ import com.biglybt.core.util.*;
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.messenger.ClientMessageContext;
+ import com.biglybt.core.messenger.ClientMessageContext.torrentURLHandler;
+--- a/core/pom.xml
++++ b/core/pom.xml
+@@ -24,6 +24,11 @@
+ 			<groupId>org.assertj</groupId>
+ 			<artifactId>assertj-core</artifactId>
+ 		</dependency>
++		<dependency>
++			<groupId>org.bouncycastle</groupId>
++			<artifactId>bcprov</artifactId>
++			<version>debian</version>
++		</dependency>
+ 	</dependencies>
+ 
+ 	<build>
+--- a/core/src/com/biglybt/core/security/impl/SESecurityManagerImpl.java
++++ b/core/src/com/biglybt/core/security/impl/SESecurityManagerImpl.java
+@@ -182,7 +182,7 @@
+ 		String[]	providers =
+ 			{ 	"com.sun.net.ssl.internal.ssl.Provider",
+ 				"org.metastatic.jessie.provider.Jessie",
+-				"org.gudy.bouncycastle.jce.provider.BouncyCastleProvider"};
++				"org.bouncycastle.jce.provider.BouncyCastleProvider"};
+ 
+ 		String	provider = null;
+ 
+--- a/core/src/com/biglybt/net/udp/uc/impl/PRUDPPacketHandlerSupport.java
++++ b/core/src/com/biglybt/net/udp/uc/impl/PRUDPPacketHandlerSupport.java
+@@ -44,7 +44,7 @@
+ import java.util.Set;
+ import java.util.concurrent.ConcurrentHashMap;
+ 
+-import org.gudy.bouncycastle.util.encoders.Base64;
++import org.bouncycastle.util.encoders.Base64;
+ 
+ import com.biglybt.core.config.COConfigurationManager;
+ import com.biglybt.core.config.ParameterListener;
+@@ -2097,4 +2097,4 @@
+ 			return( buf );
+ 		}
+ 	}
+-}
+\ No newline at end of file
++}
