@@ -410,6 +410,11 @@ pkg_postinst() {
 
 	elog "At upstream's request, please report any issues to https://bugs.gentoo.org"
 	elog "rather than going directly to them."
+	elog "Sunshine requires permissions of /dev/uinput to create virtual game controllor for remote game controllor support"
+	elog "You need to add yourself to 'input' group for granting the permission"
+	elog ""
+	elog "As a example, run the following command as root would add USER into group"
+	elog "# gpasswd -a USER input"
 }
 
 pkg_postrm() {
