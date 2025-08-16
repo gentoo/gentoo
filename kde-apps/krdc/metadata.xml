@@ -6,9 +6,11 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=krdc</bugs-to>
+		<remote-id type="kde-invent">network/krdc</remote-id>
 	</upstream>
 	<use>
 		<flag name="activities">Enable Plasma Activities support via <pkg>kde-plasma/plasma-activities</pkg></flag>
+		<flag name="ssh">Enable VNC/RDP SSH tunnel support via <pkg>net-libs/libssh</pkg></flag>
 	</use>
 </pkgmetadata>
