@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,14 +9,14 @@ EAPI=8
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="A lightweight PDF viewer and toolkit written in portable C"
-HOMEPAGE="https://mupdf.com/ https://git.ghostscript.com/?p=mupdf.git"
+HOMEPAGE="https://mupdf.com/ https://cgit.ghostscript.com/mupdf.git/"
 SRC_URI="https://mupdf.com/downloads/archive/${P}-source.tar.gz"
 S="${WORKDIR}"/${P}-source
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="archive +javascript opengl ssl X"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="archive barcode brotli +javascript +jpeg2k opengl ssl X"
 REQUIRED_USE="opengl? ( javascript )"
 
 # Although we use the bundled, patched version of freeglut in mupdf (because of
@@ -24,15 +24,17 @@ REQUIRED_USE="opengl? ( javascript )"
 # install system's freeglut.
 RDEPEND="
 	archive? ( app-arch/libarchive )
+	barcode? ( media-libs/zxing-cpp:= )
+	brotli? ( app-arch/brotli:= )
 	dev-libs/gumbo:=
 	media-libs/freetype:2
 	media-libs/harfbuzz:=[truetype]
 	media-libs/jbig2dec:=
 	media-libs/libpng:0=
-	>=media-libs/openjpeg-2.1:2=
 	>=media-libs/libjpeg-turbo-1.5.3-r2:0=
 	net-misc/curl
 	javascript? ( >=dev-lang/mujs-1.2.0:= )
+	jpeg2k? ( >=media-libs/openjpeg-2.1:2= )
 	opengl? ( >=media-libs/freeglut-3.0.0 )
 	ssl? ( >=dev-libs/openssl-1.1:0= )
 	sys-libs/zlib
@@ -49,15 +51,16 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.15-CFLAGS.patch
-	"${FILESDIR}"/${PN}-1.19.0-Makefile.patch
-	"${FILESDIR}"/${P}-add-desktop-pc-files.patch
-	"${FILESDIR}"/${PN}-1.24.1-cross-fixes.patch
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-thirdparty.patch
+	"${FILESDIR}"/${P}-jpx.patch
+	"${FILESDIR}"/${PN}-1.24.8-add-desktop-pc-files.patch
+	"${FILESDIR}"/${P}-cross-fixes.patch
 	"${FILESDIR}"/${PN}-1.24.1-darwin.patch
 	# See bugs #662352
-	"${FILESDIR}"/${PN}-1.24.1-openssl-x11.patch
+	"${FILESDIR}"/${P}-openssl-x11.patch
 	# General cross fixes from Debian (refreshed)
 	"${FILESDIR}"/${PN}-1.21.1-fix-aliasing-violation.patch
-	"${FILESDIR}"/${PN}-1.24.8-c23.patch
 )
 
 src_prepare() {
@@ -67,6 +70,13 @@ src_prepare() {
 
 	append-cflags "-DFZ_ENABLE_JS=$(usex javascript 1 0)"
 
+	if ! use jpeg2k; then
+		append-cflags "-DFZ_ENABLE_JPX=0"
+		sed -i '/_OPENJPEG_/d' Makerules || die
+		# https://github.com/ArtifexSoftware/mupdf/pull/60
+		sed -i '/openjpeg.h/d' 'source/fitz/encode-jpx.c' || die
+	fi
+
 	sed -e "1iOS = Linux" \
 		-e "1iCC = $(tc-getCC)" \
 		-e "1iCXX = $(tc-getCXX)" \
@@ -74,10 +84,12 @@ src_prepare() {
 		-e "1iAR = $(tc-getAR)" \
 		-e "1iverbose = yes" \
 		-e "1ibuild = debug" \
+		-e "1ibarcode = $(usex barcode)" \
+		-e "1ibrotli = $(usex brotli)" \
 		-i Makerules || die "Failed adding build variables to Makerules in src_prepare()"
 
 	# Adjust MuPDF version in .pc file created by the
-	# mupdf-1.21.0-add-desktop-pc-files.patch file
+	# [...]-add-desktop-pc-files.patch file
 	sed -e "s/Version: \(.*\)/Version: ${PV}/" \
 		-i platform/debian/${PN}.pc || die "Failed substituting version in ${PN}.pc"
 }
@@ -113,9 +125,13 @@ _emake() {
 		HAVE_GLUT=$(usex opengl)
 		HAVE_LIBCRYPTO=$(usex ssl)
 		HAVE_X11=$(usex X)
+		HAVE_ZXINGCPP=$(usex barcode)
+		HAVE_SYS_ZXINGCPP=$(usex barcode)
 		USE_SYSTEM_LIBS=yes
-		USE_SYSTEM_MUJS=$(usex javascript)
+		USE_SYSTEM_BROTLI=$(usex brotli)
 		USE_SYSTEM_GLUT=no
+		USE_SYSTEM_MUJS=$(usex javascript)
+		USE_SYSTEM_ZXINGCPP=$(usex barcode)
 		HAVE_OBJCOPY=no
 		"$@"
 	)
