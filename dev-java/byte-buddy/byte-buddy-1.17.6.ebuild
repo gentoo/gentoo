@@ -4,29 +4,34 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_PROVIDES="net.bytebuddy:byte-buddy-agent:${PV} net.bytebuddy:byte-buddy:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_PROVIDES="net.bytebuddy:byte-buddy-agent:${PV} net.bytebuddy:byte-buddy:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Offers convenience for attaching an agent to the local or a remote VM"
 HOMEPAGE="https://bytebuddy.net"
-SRC_URI="https://github.com/raphw/byte-buddy/archive/${P}.tar.gz"
+# As long asm-jdk-bridge isn't keyworded we use a pre-built version.
+AJBV="0.0.10"
+SRC_URI="https://github.com/raphw/byte-buddy/archive/${P}.tar.gz
+	https://repo1.maven.org/maven2/codes/rafael/asmjdkbridge/asm-jdk-bridge/${AJBV}/asm-jdk-bridge-${AJBV}.jar
+"
 S="${WORKDIR}/byte-buddy-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-# KEYWORDS="~amd64" # Not keyworded bacause of dependency on asm-jdk-bridge
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
+# Min java 11 because of module-info.
+# Re-insert this line after stabilizing asm-jdk-bridge:
+#	>=dev-java/asm-jdk-bridge-0.0.10:0
 DEPEND="
-	>=dev-java/asm-9.8:0
-	dev-java/asm-jdk-bridge:0
+	>=dev-java/asm-9.8-r1:0
 	dev-java/findbugs-annotations:0
 	>=dev-java/jna-5.17.0:0
 	dev-java/jsr305:0
 	>=virtual/jdk-11:*
 	test? (
-		dev-java/asm-jdk-bridge:0
 		>=dev-java/mockito-2.28.2-r1:2
 	)
 "
@@ -35,18 +40,12 @@ RDEPEND=">=virtual/jre-1.8:*"
 
 PATCHES=( "${FILESDIR}/byte-buddy-1.15.10-Skip-testIgnoreExistingField.patch" )
 
-JAVA_CLASSPATH_EXTRA="
-	asm
-	asm-jdk-bridge
-	findbugs-annotations
-	jna
-	jsr305
-"
+# Remove that line after stabilizing asm-jfdk-bridge:
+JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/asm-jdk-bridge-${AJBV}.jar"
+#	JAVA_CLASSPATH_EXTRA="asm asm-jdk-bridge findbugs-annotations jna jsr305"
+JAVA_CLASSPATH_EXTRA="asm findbugs-annotations jna jsr305"
 JAVADOC_CLASSPATH="${JAVA_CLASSPATH_EXTRA}"
-JAVADOC_SRC_DIRS=(
-	"byte-buddy-agent/src/main/java"
-	"byte-buddy/src/main/java"
-)
+JAVADOC_SRC_DIRS=( byte-buddy{,-agent}/src/main/java )
 
 src_prepare() {
 	default #780585
@@ -87,7 +86,8 @@ src_test() {
 	mv byte-buddy{-dep,}/src/test || die "cannot move tests"
 
 	JAVAC_ARGS="-g"
-	JAVA_TEST_GENTOO_CLASSPATH="asm-jdk-bridge,junit-4,mockito-2"
+#	JAVA_TEST_GENTOO_CLASSPATH="asm asm-jdk-bridge junit-4 mockito-2"
+	JAVA_TEST_GENTOO_CLASSPATH="asm junit-4 mockito-2"
 
 	einfo "Testing byte-buddy-agent"
 	# https://github.com/raphw/byte-buddy/issues/1321#issuecomment-1252776459
@@ -107,8 +107,10 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_dojar "byte-buddy-agent.jar"
 	java-pkg-simple_src_install
+	java-pkg_dojar "byte-buddy-agent.jar"
+	# Remove that line after stabilizing asm-jfdk-bridge:
+	java-pkg_dojar "${DISTDIR}/asm-jdk-bridge-${AJBV}.jar"
 
 	if use source; then
 		java-pkg_dosrc "byte-buddy-agent/src/main/java/*"
