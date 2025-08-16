@@ -12,7 +12,7 @@ HOMEPAGE="https://libcxx.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-IUSE="+clang +libcxxabi +static-libs test"
+IUSE="+clang hardened +libcxxabi +static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
@@ -141,6 +141,7 @@ multilib_src_configure() {
 		-DLIBCXX_USE_COMPILER_RT=${use_compiler_rt}
 		# this is broken with standalone builds, and also meaningless
 		-DLIBCXXABI_USE_LLVM_UNWINDER=OFF
+		-DLIBCXX_HARDENING_MODE=$(usex hardened extensive none)
 	)
 	if is_crosspkg; then
 		# Needed to target built libc headers
