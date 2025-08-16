@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_PROVIDES="net.bytebuddy:byte-buddy-agent:${PV} net.bytebuddy:byte-buddy:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_PROVIDES="net.bytebuddy:byte-buddy-agent:${PV} net.bytebuddy:byte-buddy:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -16,17 +16,21 @@ S="${WORKDIR}/byte-buddy-${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-# KEYWORDS="~amd64" # Not keyworded bacause of dependency on asm-jdk-bridge
+KEYWORDS="~amd64"
 
+# Min java 11 because of module-info.
+# Max jdk 25 because of test failures with openjdk-26
+# There were 31 failures:
+# 1) testClassFileIsNotParsedForExtendedProperties[1](net.bytebuddy.pool.TypePoolDefaultWithLazyResolutionTypeDescriptionTest)
+# java.lang.IllegalStateException: Could not invoke proxy: Method not available on current VM: codes.rafael.asmjdkbridge.JdkClassReader.getSuperClass()
 DEPEND="
-	>=dev-java/asm-9.8:0
-	dev-java/asm-jdk-bridge:0
+	>=dev-java/asm-9.8-r1:0
+	>=dev-java/asm-jdk-bridge-0.0.10:0
 	dev-java/findbugs-annotations:0
 	>=dev-java/jna-5.17.0:0
 	dev-java/jsr305:0
-	>=virtual/jdk-11:*
+	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	test? (
-		dev-java/asm-jdk-bridge:0
 		>=dev-java/mockito-2.28.2-r1:2
 	)
 "
@@ -35,18 +39,9 @@ RDEPEND=">=virtual/jre-1.8:*"
 
 PATCHES=( "${FILESDIR}/byte-buddy-1.15.10-Skip-testIgnoreExistingField.patch" )
 
-JAVA_CLASSPATH_EXTRA="
-	asm
-	asm-jdk-bridge
-	findbugs-annotations
-	jna
-	jsr305
-"
+JAVA_CLASSPATH_EXTRA="asm asm-jdk-bridge findbugs-annotations jna jsr305"
 JAVADOC_CLASSPATH="${JAVA_CLASSPATH_EXTRA}"
-JAVADOC_SRC_DIRS=(
-	"byte-buddy-agent/src/main/java"
-	"byte-buddy/src/main/java"
-)
+JAVADOC_SRC_DIRS=( byte-buddy{,-agent}/src/main/java )
 
 src_prepare() {
 	default #780585
@@ -87,7 +82,7 @@ src_test() {
 	mv byte-buddy{-dep,}/src/test || die "cannot move tests"
 
 	JAVAC_ARGS="-g"
-	JAVA_TEST_GENTOO_CLASSPATH="asm-jdk-bridge,junit-4,mockito-2"
+	JAVA_TEST_GENTOO_CLASSPATH="asm asm-jdk-bridge junit-4 mockito-2"
 
 	einfo "Testing byte-buddy-agent"
 	# https://github.com/raphw/byte-buddy/issues/1321#issuecomment-1252776459
