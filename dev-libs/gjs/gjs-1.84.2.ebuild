@@ -33,6 +33,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.84.2-tests-gtk4warnings.patch
+)
+
 src_configure() {
 	append-cppflags -DG_DISABLE_CAST_CHECKS
 

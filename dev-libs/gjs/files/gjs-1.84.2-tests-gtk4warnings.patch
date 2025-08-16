@@ -1,0 +1,28 @@
+https://gitlab.gnome.org/GNOME/gjs/-/commit/cc092fccd101ffcb1a08605451b1b4902d968b2e
+
+From 866dda360212bd7899a5e6e55f0968aa466fb330 Mon Sep 17 00:00:00 2001
+From: Gary Li <gary.li1@uwaterloo.ca>
+Date: Sun, 10 Aug 2025 17:41:06 -0400
+Subject: [PATCH] testGtk4Warnings: use opengl renderer The CI servers seem to
+ have issues with the vulkan renderer. Set the test environment to use opengl
+ instead. Fixes https://gitlab.gnome.org/GNOME/gjs/-/issues/698
+
+---
+ meson.build                 | 2 ++
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 8ff0400e3..6a3f2f041 100644
+--- a/meson.build
++++ b/meson.build
+@@ -636,6 +636,8 @@ tests_environment.set('GTK_A11Y', 'none')
+ tests_environment.set('GSETTINGS_SCHEMA_DIR', js_tests_builddir)
+ tests_environment.set('GSETTINGS_BACKEND', 'memory')
+ tests_environment.set('G_DEBUG', 'fatal-warnings,fatal-criticals')
++# Vulkan renderer may not be compatible in all environments e.g CI, use opengl instead
++tests_environment.set('GSK_RENDERER', 'ngl')
+ 
+ tests_locale = 'N/A'
+ if cxx.get_argument_syntax() != 'msvc'
+-- 
+GitLab
