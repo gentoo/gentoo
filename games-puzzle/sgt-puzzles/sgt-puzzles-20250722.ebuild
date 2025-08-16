@@ -7,7 +7,7 @@ inherit cmake xdg-utils
 
 DESCRIPTION="Simon Tatham's Portable Puzzle Collection"
 HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/"
-MY_HASH=8314b03
+MY_HASH=dbe6378
 SRC_URI="https://www.chiark.greenend.org.uk/~sgtatham/puzzles/puzzles-${PV}.${MY_HASH}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}"/puzzles-${PV}.${MY_HASH}
 
@@ -24,13 +24,14 @@ DEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	app-text/halibut
 	dev-lang/perl
+	virtual/imagemagick-tools[png]
 	virtual/pkgconfig
 "
 
 DOCS=( puzzles.txt HACKING )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-20250627-fix-linking.patch
+	"${FILESDIR}"/${PN}-20250722-no-cli.patch
 )
 
 src_configure() {
