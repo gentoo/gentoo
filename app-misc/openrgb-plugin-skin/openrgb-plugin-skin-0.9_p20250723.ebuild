@@ -8,23 +8,24 @@ inherit qmake-utils
 DESCRIPTION="Plugin for OpenRGB that allows you to customize the look and feel of OpenRGB"
 HOMEPAGE="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin"
 
-SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin/-/archive/release_${PV}/OpenRGBSkinPlugin-release_${PV}.tar.bz2"
-S="${WORKDIR}/OpenRGBSkinPlugin-release_${PV}"
+MY_COMMIT="21c546a5cfd7edd19bd5c1b679c024cd689e4980"
+SRC_URI="https://gitlab.com/OpenRGBDevelopers/OpenRGBSkinPlugin/-/archive/${MY_COMMIT}/OpenRGBSkinPlugin-${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
+S="${WORKDIR}/OpenRGBSkinPlugin-${MY_COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 RDEPEND="
-	>=app-misc/openrgb-0.9:=[-qt6(-)]
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	>=app-misc/openrgb-0.9_p20250802:=
+	dev-qt/qtbase:6[gui,widgets]
 "
 DEPEND="
 	${RDEPEND}
 	dev-cpp/nlohmann_json
 "
+
+PATCHES=( "${FILESDIR}"/${PV}-build-system.patch )
 
 src_prepare() {
 	default
@@ -39,11 +40,10 @@ src_prepare() {
 }
 
 src_configure() {
-	eqmake5 \
-		INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann"
+	eqmake6 INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann"
 }
 
 src_install() {
-	exeinto /usr/$(get_libdir)/OpenRGB/plugins
-	doexe libOpenRGBSkinPlugin.so.1.0.0
+	exeinto /usr/$(get_libdir)/openrgb/plugins
+	doexe libOpenRGBSkinPlugin.so
 }
