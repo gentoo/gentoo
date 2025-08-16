@@ -17,7 +17,7 @@ S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test test-full"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -61,7 +61,12 @@ src_configure() {
 }
 
 src_test() {
-	use test-full || local CMAKE_SKIP_TESTS=(
+	local CMAKE_SKIP_TESTS=()
+	use x86 && CMAKE_SKIP_TESTS+=(
+		softmax-output-smoketest
+		softmax-output-imagenet
+	)
+	use test-full || CMAKE_SKIP_TESTS+=(
 		convolution-output-overfeat
 		convolution-kernel-gradient-vgg
 		convolution-input-gradient-overfeat
