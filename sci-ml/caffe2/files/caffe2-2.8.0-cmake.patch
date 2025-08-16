@@ -1,0 +1,8 @@
+--- a/.ci/pytorch/test_example_code/CMakeLists.txt	2025-06-24 11:57:17.268200696 +0200
++++ b/.ci/pytorch/test_example_code/CMakeLists.txt	2025-06-24 11:57:27.656239353 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ project(simple-torch-test)
+ 
+ find_package(Torch REQUIRED)
