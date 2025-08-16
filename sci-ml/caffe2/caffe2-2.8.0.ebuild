@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${PN}-2.7.0-glog-0.7.1.patch
 	"${FILESDIR}"/${PN}-2.7.1-aotriton-fixes.patch
+	"${FILESDIR}"/${PN}-2.8.0-rocm-minus-flash.patch
 )
 
 src_prepare() {
