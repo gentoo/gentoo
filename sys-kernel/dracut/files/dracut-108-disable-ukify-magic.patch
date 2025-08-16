@@ -1,0 +1,13 @@
+diff --git a/dracut.sh b/dracut.sh
+index e6d2d9f25..792ab3d34 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -2732,7 +2732,7 @@ if [[ $uefi == yes ]]; then
+     cp "$uefi_stub" "$tmp_uefi_stub"
+     "${OBJCOPY:-objcopy}" --remove-section .sbat "$tmp_uefi_stub" &> /dev/null
+ 
+-    if command -v ukify &> /dev/null; then
++    if false; then
+         dinfo "*** Using ukify to create UKI ***"
+         if ukify build \
+             --linux "$kernel_image" \

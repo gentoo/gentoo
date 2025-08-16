@@ -107,6 +107,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-108-respect-objcopy-and-objdump.patch
 	# https://github.com/dracut-ng/dracut-ng/pull/1538
 	"${FILESDIR}"/${PN}-108-elf-parsing-fixes.patch
+	# https://github.com/dracut-ng/dracut-ng/pull/1122#issuecomment-3192110686
+	"${FILESDIR}"/${PN}-108-disable-ukify-magic.patch
 )
 
 pkg_setup() {
