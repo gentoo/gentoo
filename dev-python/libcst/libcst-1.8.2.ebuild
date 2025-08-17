@@ -7,6 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
+RUST_MIN_VER="1.80.0"
 CRATES="
 	aho-corasick@1.0.4
 	anes@0.1.6
