@@ -189,7 +189,7 @@ CRATES="
 	dirs@6.0.0
 	displaydoc@0.2.5
 	dlv-list@0.5.2
-	dns-update@0.1.3
+	dns-update@0.1.5
 	doc-comment@0.3.3
 	downcast-rs@2.0.1
 	dsa@0.6.3
@@ -960,7 +960,6 @@ src_compile() {
 src_install() {
 	cargo_src_install --path crates/main
 
-	keepdir /var/run/stalwart-mail
 	newinitd "${FILESDIR}"/stalwart-mail.initd stalwart-mail
 	systemd_dounit "${S}"/resources/systemd/stalwart-mail.service
 

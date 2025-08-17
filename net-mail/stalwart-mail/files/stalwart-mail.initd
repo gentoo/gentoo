@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2007-2024 Gentoo Authors
+# Copyright 2007-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command=${RC_PREFIX}/usr/bin/stalwart-mail
@@ -13,4 +13,9 @@ depend()
 	need net
 	use postgresql mysql
 	before provide mta
+}
+
+start_pre()
+{
+	checkpath -d -m 0755 -o stalwart-mail:stalwart-mail `dirname ${pidfile}`
 }
