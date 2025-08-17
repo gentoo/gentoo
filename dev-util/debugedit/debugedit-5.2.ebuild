@@ -53,6 +53,10 @@ src_configure() {
 		# avoid BDEP on dwz
 		DWZ=dwz
 		ac_cv_dwz_j=yes
+
+		# We don't want to effectively bundle xxhash. It fails to
+		# build with -Og and such too (bug #956627).
+		--disable-inlined-xxhash
 	)
 	econf "${myconf[@]}"
 }
