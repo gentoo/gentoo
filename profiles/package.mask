@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
+# Unmaintained in Gentoo for a long time, resulting in a very outdated
+# package. Many bugs, selecting just #803635, #884609, #890762, #958160
+# Needs a dedicated maintainer. Removal on 2025-09-16.
+dev-db/percona-server
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
 # Effectively unmaintained in Gentoo with many unattended bugs, still
 # EAPI-7 based, broken with non-ancient dev-games/ogre, broken with non-
 # ancient sci-libs/pcl. Bugs #729576, #796806, #834469.
