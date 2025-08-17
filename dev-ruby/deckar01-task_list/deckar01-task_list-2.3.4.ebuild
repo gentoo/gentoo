@@ -1,8 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby31 ruby32 ruby33"
+
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -21,7 +22,7 @@ ruby_add_rdepend "
 "
 
 ruby_add_bdepend "test? (
-	dev-ruby/commonmarker
+	=dev-ruby/commonmarker-0*
 	dev-ruby/coffee-script
 	dev-ruby/json
 	dev-ruby/rack
