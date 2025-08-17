@@ -24,11 +24,13 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="!mail-mta/sendmail"
 DEPEND="${RDEPEND}
 	sys-devel/m4"
+PATCHES=(
+	"${FILESDIR}"/sendmail-8.18.1-c23.patch
+)
 
 src_prepare() {
+	default
 	local confENVDEF="-DXDEBUG=0"
-
-	eapply "${FILESDIR}"/${PN}-8.18.1-c23-sm_strtoll.patch
 
 	if use elibc_musl; then
 		eapply "${FILESDIR}"/${PN}-musl-disable-cdefs.patch
@@ -36,8 +38,6 @@ src_prepare() {
 	fi
 
 	cd "${S}/${PN}" || die
-
-	default
 
 	sed -e "s:/usr/libexec:/usr/sbin:g" \
 		-e "s:/usr/adm/sm.bin:/var/lib/smrsh:g" \
