@@ -1,0 +1,50 @@
+Pending MR: https://invent.kde.org/sdk/umbrello/-/merge_requests/67
+
+From 7982ba18ad401c8d030afeb6bda13652addc9f85 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 17 Aug 2025 18:40:14 +0200
+Subject: [PATCH] Do not rely on BUILD_WITH_QT6 being set for build targets
+
+In fact, even QtVersionOption will return early if QT_MAJOR_VERSION
+is already set. BUILD_WITH_QT6 is not necessarily set in such a case.
+
+Amends bd0cd90a0ef37e4a2e7fe4eb0602973a58666d04
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt          | 2 +-
+ umbrello/CMakeLists.txt | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3d0a8581c..304cba56b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -113,7 +113,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+ endif()
+ 
+ if(BUILD_PHP_IMPORT)
+-    if(BUILD_WITH_QT6)
++    if(QT_MAJOR_VERSION STREQUAL "6")
+         set(_name KDevelopPGQt)
+     else()
+         set(_name KDevelop-PG-Qt)
+diff --git a/umbrello/CMakeLists.txt b/umbrello/CMakeLists.txt
+index ce97ff703..c9b2fac00 100644
+--- a/umbrello/CMakeLists.txt
++++ b/umbrello/CMakeLists.txt
+@@ -535,8 +535,10 @@ target_link_libraries(libumbrello
+     ${LIBXSLT_LIBRARIES}
+     ${LIBXML2_LIBRARIES}
+     codeimport
+-    $<$<BOOL:${BUILD_WITH_QT6}>:KF6::KIOWidgets>
+ )
++if(QT_MAJOR_VERSION STREQUAL "6")
++    target_link_libraries(libumbrello KF6::KIOWidgets)
++endif()
+ ecm_add_app_icon(umbrello_SRCS
+     ICONS
+     ${CMAKE_CURRENT_SOURCE_DIR}/pics/global/16-apps-umbrello.png
+-- 
+2.50.1
+

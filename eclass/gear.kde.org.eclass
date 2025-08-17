@@ -316,7 +316,8 @@ fi
 # list of applications ported to KF6 post-25.08 having to block SLOT=5
 if $(ver_test -gt 25.11.50); then
 	case ${PN} in
-		rocs)
+		rocs | \
+		umbrello)
 			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
 		*) ;;
 	esac
