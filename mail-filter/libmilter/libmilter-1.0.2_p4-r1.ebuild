@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/sendmail-8.16.1-build-system.patch
 	"${FILESDIR}"/${PN}-sharedlib.patch
 	"${FILESDIR}"/${PN}-1.0.2_p3-c23-bool.patch
+	"${FILESDIR}"/${PN}-1.0.2_p4-systemd-socket-activation.patch
 )
 
 src_prepare() {
