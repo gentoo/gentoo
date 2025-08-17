@@ -6,6 +6,7 @@
 # requiring Rust to install, and their dependencies.
 dev-python/gherkin-official
 dev-python/pytest-bdd
+dev-python/uv-build
 
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
 # Requires masked packages (bug #958030)
