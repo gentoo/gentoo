@@ -14,15 +14,13 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
 	inherit git-r3
 else
-	MDDS_SLOT="1/3.0"
-	# "404s" but serves HTML for 0.20.0
-	#SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
-	SRC_URI="https://gitlab.com/api/v4/projects/orcus%2Forcus/packages/generic/source/${PV}/${P}.tar.gz"
+	MDDS_SLOT="1/2.1"
+	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
-SLOT="0/0.20" # based on SONAME of liborcus.so
+SLOT="0/0.18" # based on SONAME of liborcus.so
 IUSE="python +spreadsheet-model test tools"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -34,12 +32,12 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	spreadsheet-model? ( dev-libs/libixion:${SLOT} )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	dev-util/mdds:${MDDS_SLOT}
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.19.2-gcc15-cstdint.patch
 	"${FILESDIR}"/${PN}-0.19.2-boost-m4.patch
 )
 
@@ -54,7 +52,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--without-benchmark
 		--disable-werror
 		$(use_enable python)
 		$(use_enable spreadsheet-model)
