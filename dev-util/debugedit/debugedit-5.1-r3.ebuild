@@ -12,7 +12,7 @@ SRC_URI="
 	verify-sig? ( https://sourceware.org/ftp/debugedit/${PV}/${P}.tar.xz.sig )
 "
 
-LICENSE="GPL-2+ LGPL-2+"
+LICENSE="GPL-3+ GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
 #KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
