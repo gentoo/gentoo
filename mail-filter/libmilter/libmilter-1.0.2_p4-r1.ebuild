@@ -35,7 +35,6 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="poll"
 
-RDEPEND="!<mail-mta/sendmail-8.16.1"
 BDEPEND="sys-devel/m4"
 
 # build system patch copied from sendmail ebuild
