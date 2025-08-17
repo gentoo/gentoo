@@ -133,7 +133,7 @@ src_prepare() {
 	use secureboot && merge_configs+=( "${dist_conf_path}/secureboot.config" )
 
 	# 5.15 series: No ZBOOT, disable explicitly to not confuse the eclass
-	echo "# CONFIG_EFI_ZBOOT is not set" > "${dist_conf_path}/secureboot.config" || die
+	echo "# CONFIG_EFI_ZBOOT is not set" >> "${dist_conf_path}/secureboot.config" || die
 
 	kernel-build_merge_configs "${merge_configs[@]}"
 }
