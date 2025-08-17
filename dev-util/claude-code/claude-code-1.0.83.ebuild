@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64"
 
 QA_PREBUILT="usr/lib64/node_modules/@anthropic-ai/claude-code/vendor/*"
-RESTRICT="strip"
+RESTRICT="bindist strip"
 
 RDEPEND="
 	>=net-libs/nodejs-18

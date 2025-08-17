@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 
 IUSE="jetbrains vscode"
-RESTRICT="strip"
+RESTRICT="bindist strip"
 
 RDEPEND="
 	net-libs/nodejs
