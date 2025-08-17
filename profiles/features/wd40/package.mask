@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2024-05-08)
+# Pure Python packages using dev-python/uv-build, and therefore
+# requiring Rust to install, and their dependencies.
+dev-python/gherkin-official
+dev-python/pytest-bdd
+
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
 # Requires masked packages (bug #958030)
 # (dev-python/keyring, dev-python/pydantic)
