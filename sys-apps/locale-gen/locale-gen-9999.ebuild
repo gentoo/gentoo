@@ -18,6 +18,10 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
+BDEPEND="
+	>=dev-lang/perl-5.36
+	dev-perl/File-Slurper
+"
 RDEPEND="
 	>=dev-lang/perl-5.36
 	!<sys-libs/glibc-2.37-r3
@@ -27,6 +31,17 @@ src_install() {
 	dosbin locale-gen
 	doman *.[0-8]
 	insinto /etc
-	doins locale.gen
+	{
+		cat <<-'EOF' &&
+		# This file defines which locales to incorporate into the glibc locale archive.
+		# See the locale.gen(5) and locale-gen(8) man pages for more details.
+
+		EOF
+		# Run the interpreter by name so as not to have to prefixify mkconfig.
+		perl mkconfig "${EROOT}"
+	} | newins - locale.gen
+	if (( PIPESTATUS[0] || PIPESTATUS[1] )); then
+		die "Failed to generate and/or install locale.gen"
+	fi
 	keepdir /usr/lib/locale
 }
