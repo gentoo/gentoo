@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Dead upstream for > 10 years. Only a snapshot could save this from
+# cleanup in 2018 for Qt5, but not this time (for Qt6). Bug #958435.
+# Removal on 2025-09-16.
+media-sound/qtagger
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
 # Unmaintained upstream with no prospect to port from Qt5 to Qt6.
 # Alternatives exist. Bug #961635. Removal on 2025-09-16.
 media-sound/coquillo
