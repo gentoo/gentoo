@@ -189,7 +189,7 @@ CRATES="
 	dirs@6.0.0
 	displaydoc@0.2.5
 	dlv-list@0.5.2
-	dns-update@0.1.3
+	dns-update@0.1.5
 	doc-comment@0.3.3
 	downcast-rs@2.0.1
 	dsa@0.6.3
@@ -901,7 +901,7 @@ inherit cargo
 
 DESCRIPTION="Stalwart Mail Server command line utility"
 HOMEPAGE="https://stalw.art"
-SRC_URI="https://github.com/stalwartlabs/stalwart/archive/refs/tags/v${PV}.tar.gz -> stalwart-${PV}.tar.gz
+SRC_URI="https://github.com/stalwartlabs/stalwart/archive/refs/tags/v${PV}.tar.gz -> stalwart-mail-${PV}.tar.gz
 	${CARGO_CRATE_URIS}
 "
 
