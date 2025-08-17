@@ -70,11 +70,13 @@ PDEPEND="
 		)
 	)
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.13.1-delivered_hdr.patch
+	"${FILESDIR}"/${PN}-8.16.1-build-system.patch
+)
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-8.16.1-build-system.patch
-	eapply -p0 "${FILESDIR}"/${PN}-delivered_hdr.patch
-	eapply_user
+	default
 
 	local confCCOPTS="${CFLAGS}"
 	local confENVDEF="-DMAXDAEMONS=64 -DHAS_GETHOSTBYNAME2=1"
