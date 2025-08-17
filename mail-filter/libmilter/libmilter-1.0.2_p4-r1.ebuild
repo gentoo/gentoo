@@ -5,7 +5,8 @@ EAPI=8
 
 # Note: please bump this together with mail-mta/sendmail and app-shells/smrsh
 
-inherit toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/sendmail.asc"
+inherit toolchain-funcs verify-sig
 
 # This library is part of sendmail, but it does not share the version number with it.
 # In order to find the right libmilter version number, check SMFI_VERSION definition
@@ -19,10 +20,20 @@ DESCRIPTION="The Sendmail Filter API (Milter)"
 HOMEPAGE="https://www.proofpoint.com/us/products/email-protection/open-source-email-solution"
 if [[ -n $(ver_cut 4 ${SENDMAIL_VER}) ]] ; then
 	# Snapshots have an extra version component (e.g. 8.17.1 vs 8.17.1.9)
-	SRC_URI="https://ftp.sendmail.org/snapshots/sendmail.${SENDMAIL_VER}.tar.gz"
+	SRC_URI="
+			https://ftp.sendmail.org/snapshots/sendmail.${SENDMAIL_VER}.tar.gz
+			verify-sig? ( https://ftp.sendmail.org/snapshots/sendmail.${SENDMAIL_VER}.tar.gz.sig )
+
+"
 fi
-SRC_URI+=" https://ftp.sendmail.org/sendmail.${SENDMAIL_VER}.tar.gz"
-SRC_URI+=" https://ftp.sendmail.org/past-releases/sendmail.${SENDMAIL_VER}.tar.gz"
+SRC_URI+="
+	https://ftp.sendmail.org/sendmail.${SENDMAIL_VER}.tar.gz
+	verify-sig? ( https://ftp.sendmail.org/sendmail.${SENDMAIL_VER}.tar.gz.sig )
+"
+SRC_URI+="
+	https://ftp.sendmail.org/past-releases/sendmail.${SENDMAIL_VER}.tar.gz
+	verify-sig? ( https://ftp.sendmail.org/past-releases/sendmail.${SENDMAIL_VER}.tar.gz.sig )
+"
 S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 LICENSE="Sendmail"
@@ -35,7 +46,10 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="poll"
 
-BDEPEND="sys-devel/m4"
+BDEPEND="
+	sys-devel/m4
+	verify-sig? ( ~sec-keys/openpgp-keys-sendmail-20250220 )
+"
 
 # build system patch copied from sendmail ebuild
 PATCHES=(
