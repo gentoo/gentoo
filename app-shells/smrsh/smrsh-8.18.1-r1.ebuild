@@ -22,8 +22,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="!mail-mta/sendmail"
-DEPEND="${RDEPEND}
-	sys-devel/m4"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/m4"
+
 PATCHES=(
 	"${FILESDIR}"/sendmail-8.18.1-c23.patch
 )
