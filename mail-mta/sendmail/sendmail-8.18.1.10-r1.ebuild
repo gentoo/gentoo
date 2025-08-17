@@ -5,16 +5,27 @@ EAPI=8
 
 # Note: please bump this together with mail-filter/libmilter and app-shells/smrsh
 
-inherit systemd toolchain-funcs
+VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/sendmail.asc"
+inherit systemd toolchain-funcs verify-sig
 
 DESCRIPTION="Widely-used Mail Transport Agent (MTA)"
 HOMEPAGE="https://www.sendmail.org/"
 if [[ -n $(ver_cut 4) ]] ; then
 	# Snapshots have an extra version component (e.g. 8.17.1 vs 8.17.1.9)
-	SRC_URI="https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz"
+	SRC_URI="
+			https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz
+			verify-sig? ( https://ftp.sendmail.org/snapshots/${PN}.${PV}.tar.gz.sig )
+"
 fi
-SRC_URI+=" https://ftp.sendmail.org/${PN}.${PV}.tar.gz"
-SRC_URI+=" https://ftp.sendmail.org/past-releases/${PN}.${PV}.tar.gz"
+
+SRC_URI+="
+	https://ftp.sendmail.org/${PN}.${PV}.tar.gz
+	verify-sig? ( https://ftp.sendmail.org/${PN}.${PV}.tar.gz.sig )
+"
+SRC_URI+="
+	https://ftp.sendmail.org/past-releases/${PN}.${PV}.tar.gz
+	verify-sig? ( https://ftp.sendmail.org/past-releases/${PN}.${PV}.tar.gz.sig )
+"
 
 LICENSE="Sendmail GPL-2" # GPL-2 is here for initscript
 SLOT="0"
@@ -61,6 +72,7 @@ RDEPEND="
 BDEPEND="
 	sys-devel/m4
 	virtual/pkgconfig
+	verify-sig? ( ~sec-keys/openpgp-keys-sendmail-20250220 )
 "
 PDEPEND="
 	!mbox? (
