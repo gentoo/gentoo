@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit libtool python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
@@ -12,17 +12,15 @@ HOMEPAGE="https://gitlab.com/ixion/ixion"
 if [[ ${PV} == *9999* ]]; then
 	MDDS_SLOT="1/3.0"
 	EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
-	inherit git-r3 autotools
+	inherit git-r3
 else
 	MDDS_SLOT="1/2.1"
-	# Invalid as of 0.20.0, serves HTML
-	#SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
-	SRC_URI="https://gitlab.com/api/v4/projects/ixion%2Fixion/packages/generic/source/${PV}/${P}.tar.xz"
+	SRC_URI="https://kohei.us/files/ixion/src/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="MIT"
-SLOT="0/0.20" # based on SONAME of libixion.so
+SLOT="0/0.18" # based on SONAME of libixion.so
 IUSE="debug python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -34,17 +32,19 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19.0-gcc15-cstdint.patch # bug 937388
+	"${FILESDIR}"/${PN}-0.19.0-fix-win32-ifdef.patch # bug 939807
+	"${FILESDIR}"/${PN}-0.19.0-boost-m4.patch # bug 961528
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
-	if [[ ${PV} == *9999* ]]; then
-		eautoreconf
-	else
-		elibtoolize
-	fi
+	eautoreconf
 }
 
 src_configure() {
