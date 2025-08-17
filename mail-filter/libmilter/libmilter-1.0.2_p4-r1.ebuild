@@ -33,7 +33,7 @@ LICENSE="Sendmail"
 # versions) but that doesn't seem to apply for sendmail snapshots.
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="ipv6 poll"
+IUSE="poll"
 
 RDEPEND="!<mail-mta/sendmail-8.16.1"
 BDEPEND="sys-devel/m4"
@@ -78,14 +78,11 @@ src_prepare() {
 		die "Package version ${PV} appears to be incorrect. Please check the source or rename the ebuild."
 	fi
 
-	local ENVDEF="-DNETUNIX -DNETINET -DHAS_GETHOSTBYNAME2=1"
-
-	use ipv6 && ENVDEF+=" -DNETINET6"
+	local ENVDEF="-DNETUNIX -DNETINET -DNETINET6 -DHAS_GETHOSTBYNAME2=1"
 	use poll && ENVDEF+=" -DSM_CONF_POLL=1"
 
 	if use elibc_musl; then
-		use ipv6 && ENVDEF+=" -DNEEDSGETIPNODE"
-
+		ENVDEF+=" -DNEEDSGETIPNODE"
 		eapply "${FILESDIR}"/${PN}-musl-stack-size.patch
 		eapply "${FILESDIR}"/${PN}-musl-disable-cdefs.patch
 	fi
