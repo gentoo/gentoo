@@ -388,7 +388,6 @@ src_install() {
 		fast-import
 		rerere-train.sh
 		stats
-		workdir
 	)
 	local i
 	for i in "${contrib_objects[@]}" ; do
