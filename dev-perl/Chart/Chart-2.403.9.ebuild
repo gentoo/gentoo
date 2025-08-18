@@ -12,7 +12,7 @@ DESCRIPTION="The Perl Chart Module"
 # Bundles lots of things in jquery.js (bug #724570)
 LICENSE="|| ( Artistic GPL-1+ ) || ( MIT ( GPL-1 GPL-2 ) )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-perl/GD-2.0.36
