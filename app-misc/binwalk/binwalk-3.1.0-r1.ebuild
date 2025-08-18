@@ -162,6 +162,7 @@ CRATES="
 	zerocopy-derive@0.7.35
 	zerocopy@0.7.35
 "
+RUST_MIN_VER="1.77"
 
 inherit cargo optfeature
 
