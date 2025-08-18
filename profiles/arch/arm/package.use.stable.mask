@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
+# net-libs/farstream is not stable here. Bug #953811
+net-im/pidgin gstreamer
+
 # Pacho Ramos <pacho@gentoo.org> (2025-06-28)
 # It needs gnome-control-center and many more gnome packages to be
 # stabilized before
