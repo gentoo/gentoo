@@ -101,7 +101,8 @@ PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
 	# Patches to or from Chet, posted to the bug-bash mailing list.
-	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
+	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${FILESDIR}"/${PN}-5.3-read-sys.patch
 )
 
 pkg_setup() {
