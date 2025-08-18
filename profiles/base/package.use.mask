@@ -864,10 +864,6 @@ net-fs/samba ceph
 # media-libs/svgalib is not keyworded everywhere
 app-emulation/fuse backend-svga
 
-# Brian Evans <grknight@gentoo.org> (2018-02-28)
-# Mask client-libs USE to force users to install alternative standard pacakges
-dev-db/mysql client-libs
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
 # This feature is not ready yet pre-2.29-r4, see bug #146882 comment 26
 <sys-libs/glibc-2.29-r4 compile-locales
