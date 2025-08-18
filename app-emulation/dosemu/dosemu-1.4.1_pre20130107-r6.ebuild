@@ -1,4 +1,4 @@
-# Copyright 2002-2024 Gentoo Authors
+# Copyright 2002-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -60,6 +60,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-nm.patch
 	"${FILESDIR}"/${P}-pcm_write_interleaved-incompatiible-pointer-type.patch
 	"${FILESDIR}"/${P}-gcc10-const.patch
+	"${FILESDIR}"/${P}-gcc-15.patch
 )
 
 pkg_pretend() {
