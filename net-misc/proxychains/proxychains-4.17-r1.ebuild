@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
@@ -10,19 +10,19 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="force any tcp connections to flow through a proxy (or proxy chain)"
 HOMEPAGE="https://github.com/rofl0r/proxychains-ng/"
-SRC_URI="http://ftp.barfooze.de/pub/sabotage/tarballs/${MY_P}.tar.xz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 ppc ~riscv ~sparc x86"
+SRC_URI="https://ftp.barfooze.de/pub/sabotage/tarballs/${MY_P}.tar.xz"
 
 S=${WORKDIR}/${MY_P}
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~riscv ~sparc ~x86"
 
 PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_prepare() {
 	default
 	sed -i "s/^\(LDSO_SUFFIX\).*/\1 = so.${PV}/" Makefile || die
+	mv completions/zsh/_proxychains4 completions/zsh/_proxychains || die
 	tc-export CC
 }
 
@@ -37,6 +37,7 @@ src_configure() {
 
 src_install() {
 	dobin ${PN}
+	dobin ${PN}-daemon
 	dodoc AUTHORS README TODO
 
 	dolib.so lib${PN}.so.${PV}
