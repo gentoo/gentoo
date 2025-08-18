@@ -1,0 +1,46 @@
+From 66f55acef3b683134970300ab4c4dfee578a4a3b Mon Sep 17 00:00:00 2001
+From: Nicholas Vinson <nvinson234@gmail.com>
+Date: Sun, 17 Aug 2025 00:26:37 -0400
+Subject: [PATCH] lib/softtoken/{sdb.c,sftkdbti.h}: Align
+ sftkdb_known_attributes_size type
+
+sftkdb_known_attributes_size is defined with conflicting types. In
+/lib/softtoken/sdb.c it is defined as a 'const size_t'; whereas in
+lib/softtoken/sftkdbti.h it is defined as an 'unsigned int'. The correct
+type for sftkdb_known_attributes_size is size_t since its value is
+derived from the size of the sftkdb_known_attributes array.
+
+Fixes: 1983399
+
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+---
+ lib/softoken/sdb.c      | 2 +-
+ lib/softoken/sftkdbti.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/softoken/sdb.c b/lib/softoken/sdb.c
+index 8b5ce70e30..022164a1f4 100644
+--- a/lib/softoken/sdb.c
++++ b/lib/softoken/sdb.c
+@@ -158,7 +158,7 @@ const CK_ATTRIBUTE_TYPE sftkdb_known_attributes[] = {
+ };
+ // clang-format on
+ 
+-const int sftkdb_known_attributes_size = PR_ARRAY_SIZE(sftkdb_known_attributes);
++const size_t sftkdb_known_attributes_size = PR_ARRAY_SIZE(sftkdb_known_attributes);
+ 
+ /*
+  * Note on use of sqlReadDB: Only one thread at a time may have an actual
+diff --git a/lib/softoken/sftkdbti.h b/lib/softoken/sftkdbti.h
+index c08334919d..7dfbdabf1c 100644
+--- a/lib/softoken/sftkdbti.h
++++ b/lib/softoken/sftkdbti.h
+@@ -27,7 +27,7 @@ struct SFTKDBHandleStr {
+ };
+ 
+ extern const CK_ATTRIBUTE_TYPE sftkdb_known_attributes[];
+-extern unsigned int sftkdb_known_attributes_size;
++extern size_t sftkdb_known_attributes_size;
+ 
+ #define SFTK_KEYDB_TYPE 0x40000000
+ #define SFTK_CERTDB_TYPE 0x00000000

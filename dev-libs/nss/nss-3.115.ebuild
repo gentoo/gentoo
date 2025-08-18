@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/nss-3.103-gentoo-fixes-add-pkgconfig-files.patch
 	"${FILESDIR}"/nss-3.21-gentoo-fixup-warnings.patch
 	"${FILESDIR}"/nss-3.87-use-clang-as-bgo892686.patch
+	"${FILESDIR}"/nss-3.115-bmo-1983399-align-sftkdb_known_attributes_size-type.patch
 )
 
 src_prepare() {
