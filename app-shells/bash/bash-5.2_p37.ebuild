@@ -326,7 +326,7 @@ src_install() {
 
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc}; do
-		newins "${FILESDIR}/dot-${f}" ".${f}"
+		newins "${FILESDIR}/skel/dot-${f}" ".${f}"
 	done
 
 	if use plugins; then
