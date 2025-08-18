@@ -460,10 +460,6 @@ dev-ruby/rubygems server
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here
 app-admin/gkrellm hddtemp
 
-# Christian Heim <phreak@gentoo.org> (2007-07-07)
-# virtual/mysql-5 not keyworded yet, still apr-util has the mips keyword.
-dev-libs/apr-util mysql
-
 # Stuart Longland <redhatter@gentoo.org> (2007-09-07)
 # mplayer not tested with these flags yet.  I may remove these slowly as I test
 # more functions of mplayer.
