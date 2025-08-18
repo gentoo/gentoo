@@ -12,6 +12,5 @@ RDEPEND="
 	|| (
 		>=dev-db/mariadb-10.0[server?,static?]
 		>=dev-db/mysql-${PV}[server?,static(-)?]
-		>=dev-db/percona-server-${PV}[server?,static(-)?]
 	)
 "
