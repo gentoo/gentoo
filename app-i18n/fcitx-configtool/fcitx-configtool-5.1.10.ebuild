@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~loong"
+KEYWORDS="amd64 ~loong"
 IUSE="kcm +config-qt test X"
 RESTRICT="!test? ( test )"
 
