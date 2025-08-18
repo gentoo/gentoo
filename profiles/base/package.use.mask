@@ -864,10 +864,6 @@ net-fs/samba ceph
 # media-libs/svgalib is not keyworded everywhere
 app-emulation/fuse backend-svga
 
-# Brian Evans <grknight@gentoo.org> (2018-03-05)
-# Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
-virtual/mysql embedded
-
 # Brian Evans <grknight@gentoo.org> (2018-02-28)
 # Mask client-libs USE to force users to install alternative standard pacakges
 dev-db/mysql client-libs
