@@ -62,5 +62,6 @@ src_configure() {
 }
 
 src_test() {
+	local -x CCACHE_DISABLE=1
 	emake -Onone check TESTSUITEFLAGS="--jobs=$(get_makeopts_jobs)"
 }
