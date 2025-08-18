@@ -160,6 +160,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# Reportedly also -Werror=odr but I could not get that far.
+	# https://bugs.gentoo.org/915226
+	# https://github.com/audacity/audacity/issues/6096
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	setup-wxwidgets
 
 	# bug #944212
