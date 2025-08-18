@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Alternative handles_via implementation"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~riscv x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~riscv x86"
 
 RDEPEND="
 	dev-perl/Class-Method-Modifiers
