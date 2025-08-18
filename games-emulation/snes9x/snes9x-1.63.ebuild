@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools cmake flag-o-matic python-any-r1 toolchain-funcs xdg
 
 # TODO: try unbundling, albeit compatibility with (and between) these
@@ -23,11 +23,13 @@ SRC_URI="
 			-> spirv-cross-${HASH_SPIRV}.tar.gz
 		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
 			-> vulkan-headers-${HASH_VULKAN}.tar.gz
-	)"
+	)
+"
 
 LICENSE="
 	Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB
-	gui? ( Apache-2.0 CC0-1.0 BSD )"
+	gui? ( Apache-2.0 CC0-1.0 BSD )
+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="alsa debug gui libretro netplay oss portaudio pulseaudio wayland xinerama +xv"
@@ -69,10 +71,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.63-flags.patch
+	"${FILESDIR}"/${PN}-1.62.1-flags.patch
 	"${FILESDIR}"/${PN}-1.63-optional-wayland.patch
-	"${FILESDIR}"/${PN}-1.63-vulkan-fix.patch
-	"${FILESDIR}"/${PN}-1.63-compile.patch
+	"${FILESDIR}"/${P}-vulkan-fix.patch
 )
 
 pkg_setup() {
@@ -87,11 +88,12 @@ src_prepare() {
 		mv ../SPIRV-Cross-${HASH_SPIRV} external/SPIRV-Cross || die
 		mv ../Vulkan-Headers-${HASH_VULKAN} external/vulkan-headers || die
 
-		CMAKE_USE_DIR="${S}/gtk"
-		cmake_src_prepare
+		# these modify the above, so need to be done here (both upstreamed)
+		eapply "${FILESDIR}"/${P}-cstdint.patch
+		eapply "${FILESDIR}"/${P}-cmake4.patch
 
-		# https://bugs.gentoo.org/958599
-		PATCHES= CMAKE_USE_DIR="${S}/external/SPIRV-Cross" cmake_src_prepare
+		CMAKE_USE_DIR=${S}/gtk
+		cmake_src_prepare
 	else
 		default
 	fi
