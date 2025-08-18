@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2025-08-18)
+# Due to a critical bug, krb5-1.22 has been withdrawn, and krb5-1.21.3 is again
+# the latest supported release.  krb5-1.22.1 will be issued with a correction.
+=app-crypt/mit-krb5-1.22
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
 # Dead upstream for > 10 years. Only a snapshot could save this from
 # cleanup in 2018 for Qt5, but not this time (for Qt6). Bug #958435.
