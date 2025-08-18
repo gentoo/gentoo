@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
+# Only translation commits since 2020, still Qt5-based. Worse, packaged
+# version in Gentoo is from 2016, no one bothered to bump it since then.
+# Really needs a package maintainer while upstream is looking into Qt6.
+# Bug #955260. Removal on 2025-09-26.
+media-sound/fmit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # Qt5 based, still EAPI-7, last commit in upstream repo 7 years ago.
 # Alternatives are games-emulation/mednafen or, from guru overlay,
 # games-emulation/RetroArch. Bugs #953641, #957257, #879693.
