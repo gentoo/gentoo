@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.1-patches/.
+# Determine the patchlevel. See https://ftp.gnu.org/gnu/bash/bash-5.1-patches/.
 case ${PV} in
 	*_p*)
 		PLEVEL=${PV##*_p}

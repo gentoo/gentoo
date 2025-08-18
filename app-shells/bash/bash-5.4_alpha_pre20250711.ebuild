@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.2-patches/.
+# Determine the patchlevel.
 case ${PV} in
 	9999|*_alpha*|*_beta*|*_rc*)
 		# Set a negative patchlevel to indicate that it's a pre-release.

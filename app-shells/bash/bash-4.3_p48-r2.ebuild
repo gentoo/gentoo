@@ -10,7 +10,7 @@ GENTOO_PATCH_DEV="sam"
 GENTOO_PATCH_VER="${PV}-r2"
 
 # Official patchlevel
-# See ftp://ftp.cwru.edu/pub/bash/bash-4.3-patches/
+# See https://ftp.gnu.org/gnu/bash/bash-4.3-patches/
 PLEVEL="${PV##*_p}"
 MY_PV="${PV/_p*}"
 MY_PV="${MY_PV/_/-}"
