@@ -27,13 +27,20 @@ src_configure() {
 	multilib-minimal_src_configure
 }
 
+myemake() {
+	emake \
+		AR="$(tc-getAR)" \
+		CC="$(tc-getCC)" \
+		"${@}"
+}
+
 multilib_src_compile() {
-	emake AR="$(tc-getAR)" CC="$(tc-getCC)"
+	myemake
 }
 
 multilib_src_test() {
 	# Injecting CPPFLAGS into CFLAGS is needed for test_sanity
-	emake CC="$(tc-getCC)" CFLAGS="${CPPFLAGS} ${CFLAGS}" check
+	myemake CFLAGS="${CPPFLAGS} ${CFLAGS}" check
 }
 
 multilib_src_install() {
@@ -43,7 +50,7 @@ multilib_src_install() {
 		LIBDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
 
-	emake "${emakeargs[@]}" install
+	myemake "${emakeargs[@]}" install
 	einstalldocs
 
 	rm "${ED}"/usr/$(get_libdir)/libxxhash.a || die
