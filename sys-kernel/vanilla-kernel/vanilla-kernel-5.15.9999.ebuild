@@ -130,13 +130,7 @@ src_prepare() {
 		merge_configs+=( "${dist_conf_path}/big-endian.config" )
 	fi
 
-	use secureboot && merge_configs+=(
-		"${dist_conf_path}/secureboot.config"
-		"${dist_conf_path}/zboot.config"
-	)
-
-	# 5.15 series: No ZBOOT, disable explicitly to not confuse the eclass
-	echo "# CONFIG_EFI_ZBOOT is not set" >> "${dist_conf_path}/secureboot.config" || die
+	use secureboot && merge_configs+=( "${dist_conf_path}/secureboot.config" )
 
 	kernel-build_merge_configs "${merge_configs[@]}"
 }
