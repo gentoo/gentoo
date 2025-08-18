@@ -11,7 +11,7 @@ SRC_URI="https://github.com/crosswire/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="dbus debug"
 
 RDEPEND="
