@@ -198,8 +198,10 @@ src_configure() {
 
 		-DBUILD_PLUGIN_SERIALTERMINAL=$(usex serialterminal)
 		-DENABLE_SVG_SUPPORT=$(usex svg)
-		$(usev !cmdbridge-server -DGO_BIN=GO_BIN-NOTFOUND) #945925
 		-DWITH_QMLDESIGNER=$(usex qmldesigner)
+
+		$(usev !cmdbridge-server -DGO_BIN=GO_BIN-NOTFOUND) #945925
+		-DUPX_BIN=UPX_BIN-NOTFOUND #961623
 
 		# meant to be in sync with qtbase[journald], but think(?) not worth
 		# handling given qt-creator can use QT_FORCE_STDERR_LOGGING=1 nowadays
