@@ -10,7 +10,7 @@ inherit git-r3 kernel-build toolchain-funcs
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.10.12
 CONFIG_HASH=836165dd2dff34e4f2c47ca8f9c803002c1e6530
-GENTOO_CONFIG_VER=g16
+GENTOO_CONFIG_VER=g17
 
 DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="
@@ -126,7 +126,10 @@ src_prepare() {
 		merge_configs+=( "${dist_conf_path}/big-endian.config" )
 	fi
 
-	use secureboot && merge_configs+=( "${dist_conf_path}/secureboot.config" )
+	use secureboot && merge_configs+=(
+		"${dist_conf_path}/secureboot.config"
+		"${dist_conf_path}/zboot.config"
+	)
 
 	# 5.10 series: No ZBOOT, disable explicitly to not confuse the eclass
 	echo "# CONFIG_EFI_ZBOOT is not set" >> "${dist_conf_path}/secureboot.config" || die
