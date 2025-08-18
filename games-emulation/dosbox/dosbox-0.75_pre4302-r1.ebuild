@@ -20,7 +20,7 @@ case ${PV} in
 	*)
 		MY_PV=$(ver_rs 2 -)
 		MY_P=${PN}-${MY_PV}
-		SRC_URI="mirror://sourceforge/dosbox/${MY_P}.tar.gz"
+		SRC_URI="https://downloads.sourceforge.net/dosbox/${MY_P}.tar.gz"
 		;;
 esac
 
