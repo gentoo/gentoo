@@ -36,7 +36,7 @@ DEPEND="
 	nis? ( net-libs/libnsl:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.10 )
 	ssl? (
-		dev-libs/openssl:=
+		>=dev-libs/openssl-1.1.1:=
 		fips? ( >=dev-libs/openssl-3:=[fips] )
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
