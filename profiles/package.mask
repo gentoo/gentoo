@@ -51,7 +51,7 @@ sci-libs/ViSP
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
 # Dead upstream, based on Qt5, hardware obsolete. Removal on 2025-09-16.
-# Bugs #955638, #957411, #957589, #957590
+# Bugs #954122, #955638, #957411, #957589, #957590
 app-crypt/nitrokey-app
 app-crypt/libnitrokey
 dev-libs/cppcodec
