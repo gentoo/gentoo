@@ -1,0 +1,13 @@
+Global cowpath.d directory install is botched.
+Fixed in src_install()
+
+--- a/Makefile
++++ b/Makefile
+@@ -79,7 +79,6 @@
+ 
+ .PHONY: install
+ install:
+-	$(INSTALL_DIR) $(DESTDIR)$(cowpathdir)
+ 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
+ 	$(INSTALL_PROGRAM) bin/cowsay $(DESTDIR)$(bindir)/cowsay
+ 	$(LN_S) cowsay $(DESTDIR)$(bindir)/cowthink
