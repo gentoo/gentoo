@@ -124,8 +124,11 @@ src_prepare() {
 
 multilib_src_configure() {
 	# defang automagic dependencies, bug #927952
-	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
-	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
+	# bug #952961
+	tc-is-lto && filter-flags -fno-semantic-interposition
 
 	# Workaround for bug #915154
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)

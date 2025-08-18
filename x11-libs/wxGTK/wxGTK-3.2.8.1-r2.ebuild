@@ -3,13 +3,10 @@
 
 EAPI=8
 
-inherit multilib-minimal flag-o-matic
+inherit edo multilib-minimal flag-o-matic toolchain-funcs
 
-WXSUBVERSION="${PV}-gtk3"				# 3.2.6-gtk3
-WXVERSION="$(ver_cut 1-3)"				# 3.2.6
 # Make sure that this matches the number of components in ${PV}
 WXRELEASE="$(ver_cut 1-2)-gtk3"			# 3.2-gtk3
-WXRELEASE_NODOT=${WXRELEASE//./}		# 32-gtk3
 
 DESCRIPTION="GTK version of wxWidgets, a cross-platform C++ GUI toolkit"
 HOMEPAGE="https://wxwidgets.org/"
@@ -19,8 +16,8 @@ SRC_URI="
 S="${WORKDIR}/wxWidgets-${PV}"
 
 LICENSE="wxWinLL-3 GPL-2 doc? ( wxWinFDL-3 )"
-SLOT="${WXRELEASE}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+SLOT="${WXRELEASE}/3.2"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+X curl doc debug keyring gstreamer libnotify +lzma opengl pch sdl +spell test tiff wayland webkit X"
 REQUIRED_USE="test? ( tiff ) tiff? ( X ) spell? ( X ) keyring? ( X )"
 RESTRICT="!test? ( test )"
@@ -81,51 +78,16 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.2.1-wayland-control.patch"
 	"${FILESDIR}/${PN}-3.2.1-prefer-lib64-in-tests.patch"
 	"${FILESDIR}/${PN}-3.2.5-dont-break-flags.patch"
+	"${FILESDIR}/${P}-wayland-titlebar.patch"
 )
-
-src_prepare() {
-	default
-
-	# find . -iname Makefile.in -not -path ./samples'/*' \
-	#        | xargs grep -l WX_RELEASE
-	local versioned_makefiles=(
-		./tests/benchmarks/Makefile.in
-		./tests/Makefile.in
-		./utils/emulator/src/Makefile.in
-		./utils/execmon/Makefile.in
-		./utils/wxrc/Makefile.in
-		./utils/helpview/src/Makefile.in
-		./utils/hhp2cached/Makefile.in
-		./utils/screenshotgen/src/Makefile.in
-		./utils/ifacecheck/src/Makefile.in
-		./Makefile.in
-		./demos/life/Makefile.in
-		./demos/bombs/Makefile.in
-		./demos/fractal/Makefile.in
-		./demos/forty/Makefile.in
-		./demos/poem/Makefile.in
-	)
-
-	# Versionating
-	sed -i \
-		-e "s:\(WX_RELEASE = \).*:\1${WXRELEASE}:"\
-		-e "s:\(WX_RELEASE_NODOT = \).*:\1${WXRELEASE_NODOT}:"\
-		-e "s:\(WX_VERSION = \).*:\1${WXVERSION}:"\
-		-e "s:aclocal):aclocal/wxwin${WXRELEASE_NODOT}.m4):" \
-		"${versioned_makefiles[@]}" || die
-
-	sed -i \
-		-e "s:\(WX_VERSION=\).*:\1${WXVERSION}:" \
-		-e "s:\(WX_RELEASE=\).*:\1${WXRELEASE}:" \
-		-e "s:\(WX_SUBVERSION=\).*:\1${WXSUBVERSION}:" \
-		-e '/WX_VERSION_TAG=/ s:${WX_RELEASE}:3.0:' \
-		configure || die
-}
 
 multilib_src_configure() {
 	# defang automagic dependencies, bug #927952
-	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
-	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+
+	# bug #952961
+	tc-is-lto && filter-flags -fno-semantic-interposition
 
 	# Workaround for bug #915154
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
@@ -221,8 +183,14 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	emake -C tests
-	(cd tests && ./test '~[.]~[net]') || die
+	pushd tests >/dev/null || die
+
+	emake
+	# TODO: Use --success for verbose logs, but it seems to change test results?
+	# TODO: test_gui too with xvfb-run, as Fedora does?
+	edo ./test '~[.]~[net]'
+
+	popd >/dev/null || die
 }
 
 multilib_src_install_all() {
@@ -237,6 +205,8 @@ multilib_src_install_all() {
 	# Unversioned links
 	rm "${ED}"/usr/bin/wx-config || die
 	rm "${ED}"/usr/bin/wxrc || die
+	# wxwin.m4 is owned by eselect-wxwidgets
+	mv "${ED}"/usr/share/aclocal/wxwin.m4 "${ED}"/usr/share/aclocal/wxwin32-gtk3.m4 || die
 
 	# version bakefile presets
 	pushd "${ED}"/usr/share/bakefile/presets >/dev/null || die

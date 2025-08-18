@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal flag-o-matic toolchain-funcs
+inherit multilib-minimal flag-o-matic
 
 WXSUBVERSION="${PV}-gtk3"				# 3.2.6-gtk3
 WXVERSION="$(ver_cut 1-3)"				# 3.2.6
@@ -81,43 +81,39 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.2.1-wayland-control.patch"
 	"${FILESDIR}/${PN}-3.2.1-prefer-lib64-in-tests.patch"
 	"${FILESDIR}/${PN}-3.2.5-dont-break-flags.patch"
-	# Please DO NOT rebase this without handling the underlying problem
-	# in bug #955902 properly first.
-	"${FILESDIR}/${PN}-3.2.8-bodge-version-script.patch"
 )
 
 src_prepare() {
 	default
 
-	# Versionating
-	#
 	# find . -iname Makefile.in -not -path ./samples'/*' \
 	#        | xargs grep -l WX_RELEASE
 	local versioned_makefiles=(
-		./Makefile.in
+		./tests/benchmarks/Makefile.in
+		./tests/Makefile.in
+		./utils/emulator/src/Makefile.in
+		./utils/execmon/Makefile.in
 		./utils/wxrc/Makefile.in
 		./utils/helpview/src/Makefile.in
-		./utils/execmon/Makefile.in
 		./utils/hhp2cached/Makefile.in
-		./utils/emulator/src/Makefile.in
 		./utils/screenshotgen/src/Makefile.in
 		./utils/ifacecheck/src/Makefile.in
-		./demos/poem/Makefile.in
+		./Makefile.in
 		./demos/life/Makefile.in
 		./demos/bombs/Makefile.in
 		./demos/fractal/Makefile.in
 		./demos/forty/Makefile.in
-		./tests/benchmarks/Makefile.in
-		./tests/Makefile.in
+		./demos/poem/Makefile.in
 	)
+
+	# Versionating
 	sed -i \
 		-e "s:\(WX_RELEASE = \).*:\1${WXRELEASE}:"\
 		-e "s:\(WX_RELEASE_NODOT = \).*:\1${WXRELEASE_NODOT}:"\
 		-e "s:\(WX_VERSION = \).*:\1${WXVERSION}:"\
 		-e "s:aclocal):aclocal/wxwin${WXRELEASE_NODOT}.m4):" \
 		"${versioned_makefiles[@]}" || die
-	# XXX: The WX_VERSION_TAG especially here is *radioactive*
-	# and must be removed in a new revision after 3.2.8. See bug #955902.
+
 	sed -i \
 		-e "s:\(WX_VERSION=\).*:\1${WXVERSION}:" \
 		-e "s:\(WX_RELEASE=\).*:\1${WXRELEASE}:" \
@@ -128,8 +124,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	# defang automagic dependencies, bug #927952
-	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
-	use X || append-cflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 
 	# bug #952961
 	tc-is-lto && filter-flags -fno-semantic-interposition
