@@ -1,0 +1,59 @@
+Fix build with gcc-14 and clang
+
+Origin: Combiened from original patches posted to Gentoo bugzilla
+Author: David Betancur Vallejo <sunset666@sunset666.net>
+Bug: https://bugs.gentoo.org/509696
+Bug: https://bugs.gentoo.org/870574
+Bug: https://bugs.gentoo.org/920356
+--- a/server/gam_connection.c	2007-07-04 09:36:49.000000000 -0400
++++ b/server/gam_connection.c	2025-06-10 23:55:11.300403185 -0400
+@@ -19,6 +19,7 @@
+ #include "gam_inotify.h"
+ #endif
+ #include "fam.h"
++#include "gam_excludes.h"
+ 
+ /************************************************************************
+  *									*
+--- a/server/gam_eq.c	2007-07-04 09:36:49.000000000 -0400
++++ b/server/gam_eq.c	2025-06-10 23:57:02.457123587 -0400
+@@ -124,7 +124,7 @@
+ {
+ 	gboolean done_work = FALSE;
+ 	if (!eq)
+-		return;
++		return done_work;
+ 
+ #ifdef GAM_EQ_VERBOSE
+ 	GAM_DEBUG(DEBUG_INFO, "gam_eq: Flushing event queue for %s\n", gam_connection_get_pidname (conn));
+--- a/server/gam_inotify.c	2025-06-10 23:58:55.040118509 -0400
++++ b/server/gam_inotify.c	2025-06-10 23:58:47.249981960 -0400
+@@ -30,6 +30,7 @@
+ #include "gam_server.h"
+ #include "gam_subscription.h"
+ #include "gam_inotify.h"
++#include "gam_poll_basic.h"
+ 
+ /* Transforms a inotify event to a gamin event. */
+ static GaminEventType
+--- a/server/gam_listener.c	2007-07-04 09:36:49.000000000 -0400
++++ b/server/gam_listener.c	2025-06-10 23:39:04.914127952 -0400
+@@ -25,6 +25,7 @@
+ #include "gam_server.h"
+ #include "gam_error.h"
+ #include "gam_pidname.h"
++#include "gam_excludes.h"
+ #ifdef ENABLE_INOTIFY
+ #include "gam_inotify.h"
+ #endif
+--- a/server/gam_server.h	2025-06-10 23:52:52.003110180 -0400
++++ b/server/gam_server.h	2025-06-10 23:52:07.096202211 -0400
+@@ -79,6 +79,8 @@
+ gboolean	gam_poll_remove_all_for		(GamListener *listener);
+ GaminEventType	gam_poll_file			(GamNode *node);
+ 
++extern void gam_error_init(void);
++
+ #ifdef __cplusplus
+ }
+ #endif
