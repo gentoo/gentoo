@@ -141,10 +141,6 @@ dev-perl/Mail-Sender
 # gtk2. Nuff said. See HOMEPAGE, too.
 dev-perl/Gtk2
 
-# Mart Raudsepp <leio@gentoo.org> (2020-07-04)
-# Port to gtk+:3 using wxGTK:3.0-gtk3 SLOT
-x11-libs/wxGTK:3.0
-
 # Kent Fredric <kentnl@gentoo.org> (2020-04-15)
 # Functionality now provided by Net::SMTP 3.25+
 # available with >=virtual/perl-libnet-1.28
