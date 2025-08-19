@@ -32,6 +32,10 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/953467
+	# https://github.com/google/XNNPACK/issues/8800
+	append-flags -fno-strict-aliasing
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/933414
 	# https://github.com/google/XNNPACK/issues/6806
