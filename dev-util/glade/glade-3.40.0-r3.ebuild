@@ -17,7 +17,7 @@ IUSE="X gjs gtk-doc +introspection python wayland webkit"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
-	dev-libs/atk[introspection?]
+	>=app-accessibility/at-spi2-core-2.46.0[introspection?]
 	>=dev-libs/glib-2.53.2:2
 	>=dev-libs/libxml2-2.4.0:2=
 	x11-libs/cairo:=
