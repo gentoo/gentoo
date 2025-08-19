@@ -133,7 +133,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.1-cpp-client.patch
 	"${FILESDIR}"/${PN}-0.9.1-faad.patch
-	"${FILESDIR}"/${P}-ffmpeg8.patch
 )
 
 src_prepare() {
