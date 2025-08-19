@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>hodges.daniel.scott@gmail.com</email>
+		<name>Daniel Hodges</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		oomd leverages PSI and	cgroupv2 to monitor a system holistically.
+		oomd then takes corrective action in userspace before an OOM
+		occurs in kernel space. Corrective action is configured via a
+		flexible plugin system, in which custom code can be written.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">facebookincubator/oomd</remote-id>
+	</upstream>
+</pkgmetadata>
