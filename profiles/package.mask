@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-19)
+# x11-libs/gtkglext is finally without revdeps, tracker bug #698950
+# Removal on 2025-09-16
+x11-libs/gtkglext
+
 # Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-08-18)
 # Deprecated by upstream, depends on Qt5. Use app-crypt/yubikey-manager
 # instead. Removal on 2025-09-16. Bug #955646
