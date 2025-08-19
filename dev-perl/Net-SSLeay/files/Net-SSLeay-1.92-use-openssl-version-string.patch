@@ -1,0 +1,17 @@
+diff --git a/Makefile.PL b/Makefile.PL
+index dc058ff..8e7c2e1 100644
+--- a/Makefile.PL
++++ b/Makefile.PL
+@@ -390,6 +390,12 @@ sub check_openssl_version {
+     my ($prefix, $exec) = @_;
+     my ( $output, $libssl, $major, $minor, $letter );
+ 
++    if ( defined $ENV{OPENSSL_VERSION_STRING} ) {
++	print "*** Assuming OpenSSL version $ENV{OPENSSL_VERSION_STRING}\n";
++        ($major, $minor, $letter) = $ENV{OPENSSL_VERSION_STRING} =~ /^(\d+\.\d+)\.(\d+)([a-z]?)/
++		or die 'Invalid version string passed through $OPENSSL_VERSION_STRING';
++	$libssl = 'openssl';
++    } else
+     {
+         my $pipe = gensym();
+         open($pipe, qq{"$exec" version |})
