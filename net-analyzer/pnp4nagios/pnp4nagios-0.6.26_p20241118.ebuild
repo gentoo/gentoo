@@ -1,18 +1,18 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="A performance data analyzer for nagios"
-HOMEPAGE="http://www.pnp4nagios.org/"
-GH_COMMIT="5e09f538373ac4310a13355746bb3d3a10eb7bef"
-SRC_URI="https://github.com/lingej/pnp4nagios/archive/${GH_COMMIT}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/${PN}-${GH_COMMIT}"
+HOMEPAGE="https://github.com/ConSol-Monitoring/pnp"
+GH_COMMIT="f4a831e7bd51651bb427931ab492d63197e77e0e"
+SRC_URI="https://github.com/ConSol-Monitoring/pnp/archive/${GH_COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/pnp-${GH_COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="apache2 icinga +nagios"
-KEYWORDS="amd64 ~ppc ppc64 ~sparc x86"
 
 REQUIRED_USE="^^ ( icinga nagios )"
 
@@ -43,8 +43,6 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6.14-makefile.patch"
-	"${FILESDIR}/${PN}-0.6.26_p20221106_compat.patch"
-	"${FILESDIR}/${PN}-0.6.26_p20221106_php80.patch"
 )
 
 src_configure() {
