@@ -10,5 +10,6 @@
     <remote-id type="github">projg2/certifi-system-store</remote-id>
     <remote-id type="github">tiran/certifi-system-store</remote-id>
     <remote-id type="pypi">certifi-system-store</remote-id>
+    <remote-id type="cpe">cpe:/a:certifi:certifi</remote-id>
   </upstream>
 </pkgmetadata>
