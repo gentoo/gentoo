@@ -1,0 +1,23 @@
+From https://code.videolan.org/rist/librist/-/merge_requests/281
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Thu, 26 Jun 2025 15:25:40 +0300
+Subject: [PATCH] Use MbedTLS cmake config module
+
+MbedTLS 3.6 provides cmake config module that can be used for searching
+mbedcrypto library.
+
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+--- a/contrib/mbedtls/meson.build
++++ b/contrib/mbedtls/meson.build
+@@ -3,7 +3,7 @@
+ # SPDX-License-Identifier: BSD-2-Clause
+ 
+ if not builtin_mbedtls
+-    mbedcrypto_lib = dependency('mbedcrypto', required: false)
++    mbedcrypto_lib = dependency('MbedTLS', required: false, method: 'cmake', modules: ['MbedTLS::mbedcrypto'])
+     if not mbedcrypto_lib.found()
+         mbedcrypto_lib = cc.find_library('mbedcrypto', required: required_library, has_headers: ['mbedtls/aes.h'])
+         if not mbedcrypto_lib.found()
+-- 
+GitLab
+
