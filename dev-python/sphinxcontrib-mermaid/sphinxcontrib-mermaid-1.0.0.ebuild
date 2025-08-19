@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=dev-python/sphinx-3.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-6.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
