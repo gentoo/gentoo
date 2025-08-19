@@ -105,7 +105,7 @@ src_install() {
 	newconfd "${FILESDIR}"/${PN}-1.0.0.confd ${PN}
 
 	insinto /etc/${PN}
-	newins "${FILESDIR}"/${PN}-1.3.0.config config.xml
+	newins "${FILESDIR}"/${PN}-2.6.1.config config.xml
 	fperms 0640 /etc/${PN}/config.xml
 	fowners root:gerbera /etc/${PN}/config.xml
 }
