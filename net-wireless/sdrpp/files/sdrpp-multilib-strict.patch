@@ -1,0 +1,37 @@
+diff --git a/core/CMakeLists.txt b/core/CMakeLists.txt
+index f194d7a..213f03a 100644
+--- a/core/CMakeLists.txt
++++ b/core/CMakeLists.txt
+@@ -167,4 +167,4 @@ set(CORE_FILES ${RUNTIME_OUTPUT_DIRECTORY} PARENT_SCOPE)
+ # cmake .. "-DCMAKE_TOOLCHAIN_FILE=C:/dev/vcpkg/scripts/buildsystems/vcpkg.cmake"
+ 
+ # Install directives
+-install(TARGETS sdrpp_core DESTINATION lib)
+\ No newline at end of file
++install(TARGETS sdrpp_core DESTINATION ${CMAKE_INSTALL_LIBDIR})
+\ No newline at end of file
+diff --git a/core/src/core.cpp b/core/src/core.cpp
+index 1fcbf95..bd68d74 100644
+--- a/core/src/core.cpp
++++ b/core/src/core.cpp
+@@ -258,7 +258,7 @@ int sdrpp_main(int argc, char* argv[]) {
+     defConfig["modulesDirectory"] = root + "/modules";
+     defConfig["resourcesDirectory"] = root + "/res";
+ #else
+-    defConfig["modulesDirectory"] = INSTALL_PREFIX "/lib/sdrpp/plugins";
++    defConfig["modulesDirectory"] = INSTALL_PREFIX "/lib64/sdrpp/plugins";
+     defConfig["resourcesDirectory"] = INSTALL_PREFIX "/share/sdrpp";
+ #endif
+ 
+diff --git a/sdrpp_module.cmake b/sdrpp_module.cmake
+index a14a1bb..5f0a2c1 100644
+--- a/sdrpp_module.cmake
++++ b/sdrpp_module.cmake
+@@ -16,4 +16,4 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "")
+ target_compile_options(${PROJECT_NAME} PRIVATE ${SDRPP_MODULE_COMPILER_FLAGS})
+ 
+ # Install directives
+-install(TARGETS ${PROJECT_NAME} DESTINATION lib/sdrpp/plugins)
+\ No newline at end of file
++install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR}/sdrpp/plugins)
+\ No newline at end of file
