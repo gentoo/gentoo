@@ -20,7 +20,6 @@ IUSE="acl caps nls unicode selinux"
 
 BDEPEND="
 	nls? ( >=sys-devel/gettext-0.18.1.1 )
-	x11-misc/makedepend
 "
 RDEPEND="
 	acl? ( virtual/acl )
