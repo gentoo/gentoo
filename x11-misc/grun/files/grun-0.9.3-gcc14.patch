@@ -1,0 +1,15 @@
+# Possibly related to https://bugs.gentoo.org/919460
+# But the issue was not reproducible with Clang 17
+# However, I got this error while compiling with GCC 14.
+# With Clang it just shows up as an warning.
+--- a/grun.c
++++ b/grun.c
+@@ -1034,7 +1034,7 @@ int main(int argc, char **argv) {
+ 	gtk_window_set_policy(GTK_WINDOW (win), FALSE, FALSE, FALSE);
+ 	gtk_widget_realize(win);
+ 	
+-	gtk_window_set_icon(GTK_WINDOW(win), gdk_pixbuf_new_from_xpm_data(grun2));
++	gtk_window_set_icon(GTK_WINDOW(win), gdk_pixbuf_new_from_xpm_data((const char **)grun2));
+ 
+ 	gtk_widget_show_all(win);
+ 	gtk_main();
