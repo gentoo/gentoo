@@ -1,5 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2025-06-09)
+# Requires net-analyzer/netdata-go-plugin.
+net-analyzer/netdata postgres
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-06)
 # sys-cluster/ceph no longer supports x86, versions that support
