@@ -12,6 +12,7 @@
 	</longdescription>
 	<use>
 		<flag name="compat">Build with compatibility interfaces for other crypt implementations</flag>
+		<flag name="sm3crypt">Include support for $sm3$ hashes</flag>
 		<flag name="system">Install as system libcrypt.so rather than to an alternate directory (will collide with <pkg>sys-libs/glibc</pkg>'s version)</flag>
 		<flag name="headers-only">Build and install only the headers. This is mostly useful for toolchain bootstrapping, to avoid circular deps.</flag>
 	</use>
