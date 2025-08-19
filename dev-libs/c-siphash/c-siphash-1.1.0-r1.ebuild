@@ -25,3 +25,13 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+src_install() {
+	meson_src_install
+
+	# upstream c-util tends to force static libs due to optimizing for
+	# subprojects usage.
+	#
+	# https://github.com/c-util/c-utf8/issues/8
+	rm "${ED}"/usr/$(get_libdir)/libcsiphash-1.a || die
+}
