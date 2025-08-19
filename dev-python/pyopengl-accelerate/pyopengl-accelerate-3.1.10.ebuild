@@ -5,9 +5,9 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Accelerate module for PyOpenGL"
 HOMEPAGE="
@@ -16,22 +16,9 @@ HOMEPAGE="
 	https://pypi.org/project/PyOpenGL-accelerate/
 "
 
-if [[ ${PV} = *9999* ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/mcfletch/pyopengl.git"
-	S="${S}/accelerate"
-else
-	MY_P=pyopengl-release-${PV}
-	SRC_URI="
-		https://github.com/mcfletch/pyopengl/archive/release-${PV}.tar.gz
-			-> ${MY_P}.gh.tar.gz
-	"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	S=${WORKDIR}/${MY_P}/accelerate
-fi
-
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="numpy"
 
 DEPEND="
@@ -50,19 +37,11 @@ BDEPEND="
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-src_prepare() {
-	default
-
-	touch requirements.txt || die
-
-	eapply -p2 "${FILESDIR}/${PN}-3.1.8-gcc-14.patch"
-
-	eapply -p1 "${FILESDIR}/${PN}-3.1.8-numpy-2.0.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/pyopengl-accelerate-3.1.9-cpython3.1.0.patch
+)
 
 src_configure() {
-	rm src/*.c || die
-
 	if ! use numpy; then
 		cat > "${T}"/numpy.py <<-EOF || die
 			raise ImportError("building numpy extension disabled")
