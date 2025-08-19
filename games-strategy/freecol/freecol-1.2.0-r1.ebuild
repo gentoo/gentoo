@@ -6,7 +6,7 @@ EAPI=8
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit desktop java-pkg-2 java-pkg-simple
+inherit desktop java-pkg-2 java-pkg-simple xdg-utils
 
 DESCRIPTION="Open source clone of the game Colonization"
 HOMEPAGE="https://www.freecol.org"
@@ -68,8 +68,16 @@ src_install() {
 	doins -r data schema
 
 	doicon -s 32 packaging/common/${PN}.xpm
-	doicon -s 64 packaging/common/${PN}_64x64.xpm
+	newicon -s 64 packaging/common/${PN}_64x64.xpm ${PN}.xpm
 	newicon packaging/common/${PN}_90x90.xpm ${PN}.xpm
 
 	domenu packaging/common/${PN}.desktop
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
