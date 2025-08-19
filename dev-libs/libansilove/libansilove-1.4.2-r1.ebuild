@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/ansilove/libansilove/"
 if [[ "${PV}" == *9999* ]]; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/ansilove/${PN}.git"
+	EGIT_REPO_URI="https://github.com/ansilove/${PN}"
 else
 	SRC_URI="https://github.com/ansilove/${PN}/archive/refs/tags/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
@@ -28,3 +28,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+
+src_install() {
+	cmake_src_install
+
+	find "${ED}" -type f -iname "*.a" -delete || die
+}
