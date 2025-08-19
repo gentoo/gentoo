@@ -13,7 +13,7 @@ DESCRIPTION="app-emulation/winetricks wrapper for Proton (Steam Play) games"
 HOMEPAGE="https://github.com/Matoking/protontricks"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+gui"
 
 RDEPEND="
