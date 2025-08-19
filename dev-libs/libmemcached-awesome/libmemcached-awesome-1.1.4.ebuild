@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake dot-a
 
 DESCRIPTION="a C/C++ memcached client library"
 HOMEPAGE="https://awesomized.github.io/libmemcached/ https://github.com/awesomized/libmemcached"
@@ -27,6 +27,7 @@ BDEPEND="app-alternatives/yacc
 	virtual/pkgconfig"
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 		-DENABLE_DTRACE=OFF
@@ -44,4 +45,9 @@ src_test() {
 	)
 
 	cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }
