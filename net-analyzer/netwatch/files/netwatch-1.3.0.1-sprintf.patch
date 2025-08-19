@@ -1,0 +1,29 @@
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -953,7 +953,7 @@
+     if (WIFEXITED (status))
+     {
+       sprintf (&status_lines[3][3],
+-	       "NETRESOLV normal termination... EXIT #%d for %ld",
++	       "NETRESOLV normal termination... EXIT #%d for %d",
+ 	       WEXITSTATUS (status), killpid);
+       cur_status_line = 3;
+ 
+@@ -961,7 +961,7 @@
+     else if (WIFSIGNALED (status))
+     {
+       sprintf (&status_lines[3][3],
+-	       "NETRESOLV Abnormal termination... signal #%d for %ld",
++	       "NETRESOLV Abnormal termination... signal #%d for %d",
+ 	       WTERMSIG (status), killpid);
+       cur_status_line = 3;
+     }
+@@ -2186,7 +2186,7 @@
+ 	}
+ 	else
+ 	{
+-		if (sscanf(ssh_env,"%s %u %u",ssh_orig_addr_asc,&ssh_orig_port,&ssh_dest_port)!=3)
++		if (sscanf(ssh_env,"%s %hu %hu",ssh_orig_addr_asc,&ssh_orig_port,&ssh_dest_port)!=3)
+ 			ssh_mask=0;
+ 		else
+ 		{

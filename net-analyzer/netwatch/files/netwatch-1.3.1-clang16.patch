@@ -1,0 +1,24 @@
+diff '--color=auto' -urw a/netwatch.c b/netwatch.c
+--- a/netwatch.c	2025-06-26 17:21:22.600737947 +0300
++++ b/netwatch.c	2025-06-26 17:23:03.075992985 +0300
+@@ -608,6 +608,8 @@
+ 
+ 
+ void findaddr (u_int32_t searchaddr);
++int doeth ();
++int gh (int opt);
+ 
+ 
+ void uthread_wait( long usec)
+diff '--color=auto' -urw a/netwatch.h b/netwatch.h
+--- a/netwatch.h	2025-06-26 17:21:22.602152316 +0300
++++ b/netwatch.h	2025-06-26 17:24:12.160583497 +0300
+@@ -218,6 +218,8 @@
+ void initlist(struct port_info *first[], int hash);
+ char *searchlist(struct port_info *first[], int port, int hash);
+ char *servicenm( char *s, int port);
++void uthread_wait( long usec);
++int dokeyin (int force);
+ 
+ extern char *simfmt;
+ 
