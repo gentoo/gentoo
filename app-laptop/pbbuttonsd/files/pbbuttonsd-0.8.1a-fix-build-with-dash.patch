@@ -1,0 +1,105 @@
+https://bugs.gentoo.org/886071
+diff --git a/Makefile.in b/Makefile.in
+index 038769f..d6b3293 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -821,7 +821,7 @@ install-data-local:
+ 	@for dir in power power/scripts.d power/event.d; do \
+ 		$(INSTALL) -d $(DESTDIR)$(sysconfdir)/$$dir; \
+ 		src=`basename $$dir`; \
+-		if [ $$src == $$dir ]; then src=""; fi; \
++		if [ "$$src" = "$$dir" ]; then src=""; fi; \
+ 		for file in $(srcdir)/scripts/$$src/*; do \
+ 			name=`basename $$file`; \
+ 			if [ "$$src" != "" ] && [ "$$src" != "scripts.d" ]; then \
+@@ -838,7 +838,7 @@ dist-hook:
+ 	@for dir in scripts scripts/scripts.d scripts/event.d; do \
+ 		$(INSTALL) -d $(distdir)/$$dir; \
+ 		for file in $(srcdir)/$$dir/*; do \
+-			if [ `basename $$file` == "laptop-mode" ]; then \
++			if [ `basename $$file` = "laptop-mode" ]; then \
+ 				continue; \
+ 			elif test -x $$file; then \
+ 				$(INSTALL_SCRIPT) $$file $(distdir)/$$dir/; \
+@@ -850,7 +850,7 @@ dist-hook:
+ 	$(INSTALL) -d $(distdir)/srcdoc;
+ 	$(INSTALL) -d $(distdir)/doc/images;
+ 	@for file in $(srcdir)/srcdoc/*; do \
+-		if [ `basename $$file` == "index.html" ]; then \
++		if [ `basename $$file` = "index.html" ]; then \
+ 			$(INSTALL_DATA) $$file $(distdir)/doc/; \
+ 		else \
+ 			$(INSTALL_DATA) $$file $(distdir)/srcdoc/; \
+diff --git a/configure.in b/configure.in
+index 33fed13..bded359 100644
+--- a/configure.in
++++ b/configure.in
+@@ -53,7 +53,7 @@ case "$ac_laptop" in
+     POWERBOOK | powerbook | pb | PB )
+ 		ac_laptop="Apple PowerBook"
+ 		AC_DEFINE_UNQUOTED(SYS_POWERBOOK, "", [machine to build the package for])
+-		PB_OBJECTS+=" driver_backlight_pmu.$OBJEXT module_pmac.$OBJEXT"
++		PB_OBJECTS="${PB_OBJECTS} driver_backlight_pmu.$OBJEXT module_pmac.$OBJEXT"
+ 		;;
+ 	MACBOOK | macbook | mb | MB )
+ 		ac_laptop="Apple MacBook (Intel based)"
+@@ -63,8 +63,8 @@ case "$ac_laptop" in
+ 			AC_DEFINE_UNQUOTED(WITH_SMBIOS, 1, [SMBIOS available]),
+ 			AC_MSG_ERROR([SMBios library not available. Please install development files for libsmbios.]), [/* dummy */])
+ 		PKG_CHECK_MODULES(LIBPCI, libpci)
+-		PB_OBJECTS+=" driver_backlight_x1600.$OBJEXT driver_backlight_gma950.$OBJEXT module_acpi.$OBJEXT module_imac.$OBJEXT"
+-		PB_LIBS+=" -lsmbios $LIBPCI_LIBS"
++		PB_OBJECTS="${PB_OBJECTS} driver_backlight_x1600.$OBJEXT driver_backlight_gma950.$OBJEXT module_acpi.$OBJEXT module_imac.$OBJEXT"
++		PB_LIBS="${PB_LIBS$} -lsmbios $LIBPCI_LIBS"
+ 		LCD_FADINGSPEED="448"
+ 		LCD_AUTOADJMODE="linear"
+ 		LCD_AUTOADJPARMBAT="0,10,80,30"
+@@ -113,7 +113,7 @@ AC_ARG_WITH(pmud, [  --with-pmud             use pmud as low level power manager
+ 	pbb_with_pmud=$withval, )
+ if test "$pbb_with_pmud" = "yes"; then
+ 	AC_DEFINE_UNQUOTED(WITH_PMUD, 1, [use pmud as basement])
+-	PB_OBJECTS+="tcp.$OBJEXT"
++	PB_OBJECTS="${PB_OBJECTS} tcp.$OBJEXT"
+ fi
+ 
+ pbb_with_oss=yes
+@@ -121,7 +121,7 @@ AC_ARG_WITH(oss,  [  --with-oss              enable OSS support in pbbuttonsd (d
+ 	pbb_with_oss=$withval, )
+ if test "$pbb_with_oss" = "yes"; then
+ 	AC_DEFINE_UNQUOTED(WITH_OSS, 1, [enable OSS support])
+-	PB_OBJECTS+=" driver_mixer_oss.$OBJEXT"
++	PB_OBJECTS="${PB_OBJECTS} driver_mixer_oss.$OBJEXT"
+ fi
+ 
+ pbb_with_alsa=yes
+@@ -131,8 +131,8 @@ if test "$pbb_with_alsa" = "yes"; then
+ 	AM_PATH_ALSA(1.0.0, [pbb_have_alsa=yes], [pbb_have_alsa=no]) 
+ 	if test "$pbb_have_alsa" = "yes"; then
+ 		AC_DEFINE_UNQUOTED(WITH_ALSA, 1, [enable ALSA support])
+-		PB_OBJECTS+=" driver_mixer_alsa.$OBJEXT"
+-		PB_LIBS+=$ALSA_LIBS
++		PB_OBJECTS="${PB_OBJECTS} driver_mixer_alsa.$OBJEXT"
++		PB_LIBS="${PB_LIBS} $ALSA_LIBS"
+ 	fi
+ fi
+ 
+@@ -141,8 +141,8 @@ AC_ARG_WITH(ibam, [  --with-ibam             enable IBAM support in pbbuttonsd (
+ 	pbb_with_ibam=$withval, )
+ if test "$pbb_with_ibam" = "yes"; then
+ 	AC_DEFINE_UNQUOTED(WITH_IBAM, 1, [enable IBAM support])
+-	PB_OBJECTS+=" ibam_stub.$OBJEXT"
+-	PB_LIBS+=" -lstdc++"
++	PB_OBJECTS="${PB_OBJECTS} ibam_stub.$OBJEXT"
++	PB_LIBS="${PB_LIBS} -lstdc++"
+ fi
+ 
+ AC_ARG_WITH(doxygen-docs,
+@@ -188,7 +188,7 @@ AC_MSG_RESULT($with_doxygen_docs)
+ 
+ AM_CONDITIONAL(DEBUG, test "$enable_debug" = yes)
+ if test "$enable_debug" = "yes"; then
+-	PB_OBJECTS+=" module_peep.$OBJEXT"
++	PB_OBJECTS="${PB_OBJECTS} module_peep.$OBJEXT"
+ else
+ 	enable_debug=no;
+ fi
