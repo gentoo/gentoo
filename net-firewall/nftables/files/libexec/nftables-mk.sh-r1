@@ -1,0 +1,73 @@
+#!/bin/sh
+
+main() {
+	local NFTABLES_SAVE=${2:-'/var/lib/nftables/rules-save'}
+	# Custom flush rule #789306
+	local NFTABLES_FLUSH=${NFTABLES_FLUSH:-'flush ruleset'}
+	# Explicit flush on save #789306
+	local NFTABLES_EXPLICIT_FLUSH=${NFTABLES_EXPLICIT_FLUSH:-'YES'}
+	# Hardcoded flush on load requiring stdin access #704186 #789306
+	local NFTABLES_LOAD_FLUSH=${NFTABLES_LOAD_FLUSH:-'YES'}
+	case "$1" in
+		"check")
+			nft -c -f "${NFTABLES_SAVE}"
+		;;
+		"clear")
+			nft "${NFTABLES_FLUSH}"
+		;;
+		"list")
+			nft ${SAVE_OPTIONS} list ruleset
+		;;
+		"load")
+			if [ "${NFTABLES_LOAD_FLUSH}" = "NO" ]; then
+				# Load directly from the file see #704186 and #789306
+				nft -f "${NFTABLES_SAVE}"
+			else
+				# We use an include because cat fails with long rulesets see #675188
+				printf '%s\ninclude "%s"\n' "${NFTABLES_FLUSH}" "${NFTABLES_SAVE}" | nft -f -
+			fi
+		;;
+		"panic")
+			panic hard | nft -f -
+		;;
+		"soft_panic")
+			panic soft | nft -f -
+		;;
+		"store")
+			local tmp_save="${NFTABLES_SAVE}.tmp"
+			umask 177
+			(
+				printf '#!/sbin/nft -f\n'
+				# Add the flush only if needed see #789306
+				[ "${NFTABLES_EXPLICIT_FLUSH}" = "NO" ] || printf '%s\n' "${NFTABLES_FLUSH}"
+				nft ${SAVE_OPTIONS} list ruleset
+			) > "$tmp_save" && mv ${tmp_save} ${NFTABLES_SAVE}
+		;;
+	esac
+}
+
+panic() {
+	local erule;
+	[ "$1" = soft ] && erule="ct state established,related accept;" || erule="";
+	cat <<EOF
+flush ruleset
+table inet filter {
+	chain input {
+		type filter hook input priority 0;
+		$erule
+		drop
+	}
+	chain forward {
+		type filter hook forward priority 0;
+		drop
+	}
+	chain output {
+		type filter hook output priority 0;
+		$erule
+		drop
+	}
+}
+EOF
+}
+
+main "$@"
