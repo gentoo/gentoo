@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index a5b28bf..99b5b26 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,2 @@
+-systemdunitsdir := $(shell pkg-config --define-variable=prefix=$(prefix) --variable=systemdsystemunitdir systemd 2>/dev/null \
+-                     || echo $(libdir)/systemd/system/)
+-udevdir := $(shell pkg-config --define-variable=prefix=$(prefix) --variable=udevdir udev 2>/dev/null \
+-                     || echo $(libdir)/udev/)
+-
+ install:
+ 	install -D -m755 ds_inhibit.py "$(DESTDIR)/usr/bin/ds-inhibit"
+-	install -D -m644 systemd.service "$(DESTDIR)$(systemdunitsdir)/ds-inhibit.service"
