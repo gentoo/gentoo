@@ -27,6 +27,16 @@ RDEPEND="
 	!<sys-libs/glibc-2.37-r3
 "
 
+src_prepare() {
+	# EPREFIX is readonly.
+	local -x MY_EPREFIX=${EPREFIX}
+
+	eapply_user
+
+	perl -pi -e '$f //= ($. == 1 && s/^#!\K\//$ENV{MY_EPREFIX}\//); END { exit !$f }' "${PN}" \
+	|| die "Failed to prefixify ${PN}"
+}
+
 src_install() {
 	dosbin locale-gen
 	doman *.[0-8]

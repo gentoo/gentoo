@@ -18,10 +18,24 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
+# In-place editing became safer in v5.28.
+BDEPEND="
+	>=dev-lang/perl-5.28
+"
 RDEPEND="
 	>=dev-lang/perl-5.36
 	!<sys-libs/glibc-2.37-r3
 "
+
+src_prepare() {
+	# EPREFIX is readonly.
+	local -x MY_EPREFIX=${EPREFIX}
+
+	eapply_user
+
+	perl -pi -e '$f //= ($. == 1 && s/^#!\K\//$ENV{MY_EPREFIX}\//); END { exit !$f }' "${PN}" \
+	|| die "Failed to prefixify ${PN}"
+}
 
 src_install() {
 	dosbin locale-gen
