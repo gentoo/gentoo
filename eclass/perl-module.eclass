@@ -297,6 +297,8 @@ perl-module_src_configure() {
 			RANLIB="$(tc-getRANLIB)" \
 			OPTIMIZE="${CFLAGS}" \
 			LDFLAGS="${LDFLAGS}" \
+			CCFLAGS="${CFLAGS}" \
+			LDDLFLAGS="-shared ${LDFLAGS}" \
 			PREFIX="${EPREFIX}"/usr \
 			INSTALLDIRS=vendor \
 			INSTALLMAN3DIR='none' \
