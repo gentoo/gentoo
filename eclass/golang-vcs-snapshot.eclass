@@ -70,10 +70,22 @@ _golang-vcs-snapshot_set_vendor_uri() {
 	for lib in "${EGO_VENDOR[@]}"; do
 		lib=(${lib})
 		if [[ -n ${lib[2]} ]]; then
-			EGO_VENDOR_URI+=" https://${lib[2]}/archive/${lib[1]}.tar.gz -> ${lib[2]//\//-}-${lib[1]}.tar.gz"
+			host="${lib[2]}"
 		else
-			EGO_VENDOR_URI+=" https://${lib[0]}/archive/${lib[1]}.tar.gz -> ${lib[0]//\//-}-${lib[1]}.tar.gz"
+			host="${lib[0]}"
 		fi
+
+		case "${host}" in
+			git.apache.org/*)
+				EGO_VENDOR_URI+=" https://gitbox.apache.org/repos/asf?p=${host#*/};a=snapshot;h=refs/tags/${lib[1]};sf=tgz -> ${host//\//-}-${lib[1]}.tar.gz"
+				;;
+			code.googlesource.com/*)
+				EGO_VENDOR_URI+=" https://code.googlesource.com/gocloud/+archive/refs/tags/${lib[1]}.tar.gz -> ${host//\//-}-${lib[1]}.tar.gz"
+				;;
+			*)
+				EGO_VENDOR_URI+=" https://${host}/archive/${lib[1]}.tar.gz -> ${host//\//-}-${lib[1]}.tar.gz"
+				;;
+		esac
 	done
 	readonly EGO_VENDOR_URI
 }
