@@ -183,10 +183,6 @@ dev-build/cmake dap
 dev-libs/mongo-c-driver test-full
 dev-python/pymongo test-full
 
-# Sam James <sam@gentoo.org> (2023-05-15)
-# Unkeyworded dependencies
-www-servers/apache apache2_modules_tls
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-04-22)
 # snap only works on amd64
 gnome-extra/gnome-software snap
@@ -306,7 +302,7 @@ llvm-runtimes/compiler-rt-sanitizers asan dfsan lsan msan hwasan tsan
 llvm-runtimes/compiler-rt-sanitizers ubsan safestack cfi scudo
 llvm-runtimes/compiler-rt-sanitizers shadowcallstack gwp-asan
 llvm-runtimes/compiler-rt-sanitizers libfuzzer memprof orc profile xray
-llvm-runtimes/compiler-rt-sanitizers ctx-profile nsan rtsan tysan
+llvm-runtimes/compiler-rt-sanitizers ctx-profile nsan rtsan
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
