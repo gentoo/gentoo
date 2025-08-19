@@ -39,8 +39,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-util/wayland-scanner
 	virtual/pkgconfig
+	wayland? ( dev-util/wayland-scanner )
 "
 
 multilib_src_configure() {
