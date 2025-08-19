@@ -1,0 +1,140 @@
+Fix warnings like this:
+
+etherpeek.c:394:53: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 3 has type ‘tt_uint32’ {aka ‘unsigned int’} [-Wformat=]
+  394 |         fprintf(stderr, "IS_EP says length number %ld\n",file_header2.length);
+      |                                                   ~~^    ~~~~~~~~~~~~~~~~~~~
+      |                                                     |                |
+      |                                                     long int         tt_uint32 {aka unsigned int}
+...
+
+--- a/etherpeek.c
++++ b/etherpeek.c
+@@ -391,14 +391,14 @@
+       
+ 	fprintf(stderr, "IS_EP says version number %d \n",file_header.version);
+ 	fprintf(stderr, "IS_EP says status number %d\n",file_header.status);
+-	fprintf(stderr, "IS_EP says length number %ld\n",file_header2.length);
+-	fprintf(stderr, "IS_EP says num packets number %ld \n",file_header2.numPackets);
+-	fprintf(stderr, "IS_EP says time date in mac format %lu \n", (tt_uint32)file_header2.timeDate);
+-	fprintf(stderr, "IS_EP says time start  %lu \n",file_header2.timeStart);
+-	fprintf(stderr, "IS_EP says time stop %lu \n",file_header2.timeStop);
++	fprintf(stderr, "IS_EP says length number %u\n",file_header2.length);
++	fprintf(stderr, "IS_EP says num packets number %u \n",file_header2.numPackets);
++	fprintf(stderr, "IS_EP says time date in mac format %u \n", (tt_uint32)file_header2.timeDate);
++	fprintf(stderr, "IS_EP says time start  %u \n",file_header2.timeStart);
++	fprintf(stderr, "IS_EP says time stop %u \n",file_header2.timeStop);
+ 	fprintf(stderr, "future is: ");
+ 	for(i=0;i<7;i++)
+-	    fprintf(stderr, " %ld ",file_header2.futureUse[i]);
++	    fprintf(stderr, " %u ",file_header2.futureUse[i]);
+ 	fprintf(stderr, "\n");
+ 	fprintf(stderr, "RLEN is %d \n",rlen);
+     }
+
+--- a/snoop.c
++++ b/snoop.c
+@@ -402,11 +402,11 @@
+     
+     /* sanity check on snoop version */
+     if (debug) {
+-	printf("Snoop version: %ld\n", buf.snoop_version);
++	printf("Snoop version: %u\n", buf.snoop_version);
+     }
+     if (buf.snoop_version != 2) {
+ 	printf("\
+-Warning! snoop file is version %ld.\n\
++Warning! snoop file is version %u.\n\
+ Tcptrace is only known to work with version 2\n",
+ 	       buf.snoop_version);
+     }
+@@ -416,20 +416,20 @@
+     switch (buf.mac_type) {
+       case SNOOP_DL_ETHER:
+ 	if (debug)
+-	    printf("Snoop hw type: %ld (Ethernet)\n", buf.mac_type);
++	    printf("Snoop hw type: %u (Ethernet)\n", buf.mac_type);
+ 	break;
+       case SNOOP_DL_FDDI:
+ 	if (debug)
+-	    printf("Snoop hw type: %ld (FDDI)\n", buf.mac_type);
++	    printf("Snoop hw type: %u (FDDI)\n", buf.mac_type);
+ 	break;
+       case SNOOP_DL_ATM:
+ 	if (debug)
+-	    printf("Snoop hw type: %ld (ATM)\n", buf.mac_type);
++	    printf("Snoop hw type: %u (ATM)\n", buf.mac_type);
+ 	break;
+       default:
+ 	if (debug)
+-	    printf("Snoop hw type: %ld (unknown)\n", buf.mac_type);
+-	printf("snoop hardware type %ld not understood\n", buf.mac_type);
++	    printf("Snoop hw type: %u (unknown)\n", buf.mac_type);
++	printf("snoop hardware type %u not understood\n", buf.mac_type);
+        
+ 	exit(-1);
+     }
+
+--- a/trace.c
++++ b/trace.c
+@@ -903,8 +903,8 @@
+ 		    printf("b2a.reset_count: %d\n", ptp->b2a.reset_count);
+ 		    printf("dir: %d (%s)\n", dir, dir==A2B?"A2B":"B2A");
+ 		    printf("seq:    %lu \n", (u_long)ntohl(ptcp->th_seq));
+-		    printf("winend: %lu \n", otherdir->windowend);
+-		    printf("syn:    %lu \n", otherdir->syn);
++		    printf("winend: %u \n", otherdir->windowend);
++		    printf("syn:    %u \n", otherdir->syn);
+ 		    printf("SEQ_GREATERTHAN winend: %d\n", 
+ 			   SEQ_GREATERTHAN(ntohl(ptcp->th_seq),otherdir->windowend));
+ 		    printf("SEQ_LESSTHAN init syn: %d\n", 
+@@ -1570,7 +1570,7 @@
+ 	    /* it changed, that shouldn't happen! */
+ 	    if (warn_printbad_syn_fin_seq)
+ 		fprintf(stderr, "\
+-%s->%s: rexmitted SYN had diff. seqnum! (was %lu, now %lu, etime: %d sec)\n",
++%s->%s: rexmitted SYN had diff. seqnum! (was %u, now %lu, etime: %d sec)\n",
+ 			thisdir->host_letter,thisdir->ptwin->host_letter,
+ 			thisdir->syn, start,
+ 			(int)(elapsed(ptp_save->first_time,current_time)/1000000));
+@@ -1589,7 +1589,7 @@
+ 	    /* it changed, that shouldn't happen! */
+ 	    if (warn_printbad_syn_fin_seq)
+ 		fprintf(stderr, "\
+-%s->%s: rexmitted FIN had diff. seqnum! (was %lu, now %lu, etime: %d sec)\n",
++%s->%s: rexmitted FIN had diff. seqnum! (was %u, now %lu, etime: %d sec)\n",
+ 			thisdir->host_letter,thisdir->ptwin->host_letter,
+ 			thisdir->fin, fin,
+ 			(int)(elapsed(ptp_save->first_time,current_time)/1000000));
+@@ -2124,9 +2124,9 @@
+       if(ACK_SET(ptcp)) {
+ 	 memset(&buf2, 0, sizeof(buf2));
+ 	 if(dir == A2B)
+-	   snprintf(buf2, sizeof(buf2), "ack %lu ", (th_ack - b2a_first_seqnum));
++	   snprintf(buf2, sizeof(buf2), "ack %u ", (th_ack - b2a_first_seqnum));
+ 	 else if(dir == B2A)
+-	   snprintf(buf2, sizeof(buf2), "ack %lu ", (th_ack - a2b_first_seqnum));
++	   snprintf(buf2, sizeof(buf2), "ack %u ", (th_ack - a2b_first_seqnum));
+ 	 strncat(buf1, buf2, strlen(buf2));
+       }
+       
+@@ -3205,7 +3205,7 @@
+ 	    /* count it */
+ 	    ++tcb->num_hardware_dups;
+ 	    if (warn_printhwdups) {
+-		printf("%s->%s: saw hardware duplicate of TCP seq %lu, IP ID %u (packet %lu == %lu)\n",
++		printf("%s->%s: saw hardware duplicate of TCP seq %u, IP ID %u (packet %lu == %lu)\n",
+ 		       tcb->host_letter,tcb->ptwin->host_letter,
+ 		       seq, id, pnum,pshd->hwdup_packnum);
+ 	    }
+
+--- a/mod_http.c
++++ b/mod_http.c
+@@ -262,7 +262,7 @@
+ 	off = tcb->syn-seq;
+ 
+     if (debug>1)
+-	fprintf(stderr,"DataOffset: seq is %lu, syn is %lu, offset is %ld\n",
++	fprintf(stderr,"DataOffset: seq is %u, syn is %u, offset is %ld\n",
+ 		seq, tcb->syn, off);
+ 
+     return(off);
