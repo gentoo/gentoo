@@ -134,7 +134,7 @@ x11-themes/gtk-engines-rezlooks
 x11-themes/gtk-engines-ubuntulooks
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-30)
-# Deprecated upstream, see HOMEPAGE
+# Deprecated upstream, see HOMEPAGE; Bug #961791
 dev-perl/Mail-Sender
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-06-11)
