@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit dot-a autotools
 
 DESCRIPTION="Poly/ML is a full implementation of Standard ML"
 HOMEPAGE="https://www.polyml.org/
@@ -25,11 +25,13 @@ SLOT="0/${PV}"
 IUSE="X +gmp portable"
 
 RDEPEND="
-	dev-libs/libffi:=
 	X? ( x11-libs/motif:0 )
 	gmp? ( >=dev-libs/gmp-5:= )
+	portable? ( dev-libs/libffi:= )
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
 
 PATCHES=(
 	"${FILESDIR}/polyml-5.9-c++11.patch"
@@ -41,6 +43,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local myconf=(
 		--enable-shared
 		--with-pic=pic-only
@@ -57,6 +61,7 @@ src_test() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	if [[ -f "${ED}"/usr/$(get_libdir)/libpolymain.la ]] ; then
 		rm "${ED}"/usr/$(get_libdir)/libpolymain.la || die
