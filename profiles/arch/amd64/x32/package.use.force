@@ -1,5 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Maciej Barć <xgqt@gentoo.org> (2025-08-19)
+# Only bytecode interpreter is available for dev-lang/polyml on x32.
+dev-lang/polyml portable
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-06)
 # Require ABIs matching MULTILIB_ABIS in gcc dependencies -- otherwise
