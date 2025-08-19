@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@aisha.cc</email>
+		<name>Aisha Tammy</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="gentoo">apply base gentoo genpatches</flag>
+		<flag name="experimental">apply experimental gentoo genpatches</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">oracle/linux-uek</remote-id>
+	</upstream>
+</pkgmetadata>
