@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 GNOME2_LA_PUNT="yes"
 inherit gnome2
@@ -16,7 +16,7 @@ IUSE="+css +introspection +libburn mp3 nautilus playlist tracker"
 
 DEPEND="
 	>=dev-libs/glib-2.29.14:2
-	>=x11-libs/gtk+-3:3[introspection?]
+	>=x11-libs/gtk+-3:3[X,introspection?]
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	>=dev-libs/libxml2-2.6:2=
