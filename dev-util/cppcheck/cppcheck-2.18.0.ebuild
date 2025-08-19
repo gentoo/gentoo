@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Static analyzer of C/C++ code"
@@ -49,6 +49,7 @@ BDEPEND="
 		htmlreport? (
 			$(python_gen_cond_dep '
 				dev-python/pytest[${PYTHON_USEDEP}]
+				dev-python/pytest-timeout[${PYTHON_USEDEP}]
 				dev-python/pygments[${PYTHON_USEDEP}]
 			')
 		)
@@ -83,10 +84,8 @@ src_configure() {
 		-DREGISTER_GUI_TESTS=$(usex test)
 
 		-DUSE_MATCHCOMPILER=ON
-		-DUSE_LIBCXX=OFF
 
 		-DDISABLE_DMAKE=ON
-		-DUSE_BOOST=OFF
 		-DUSE_BUNDLED_TINYXML2=OFF
 
 		# Yes, this is necessary to use the correct python version.
@@ -109,7 +108,9 @@ src_test() {
 		TestFileLister
 	)
 	cmake_src_test
-	use htmlreport && epytest htmlreport
+
+	rm test/cli/other_test.py || die
+	use htmlreport && TEST_CPPCHECK_EXE_LOOKUP_PATH="${BUILD_DIR}/bin/" epytest test
 }
 
 src_install() {
