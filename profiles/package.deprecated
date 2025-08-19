@@ -148,7 +148,3 @@ dev-perl/Gtk2
 # Try patching/removing dependent code to utilize this.
 # Bug #650320
 dev-perl/Net-SMTP-SSL
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
-# x11-libs/gtkglext is in the process of being removed, tracker bug #698950
-x11-libs/gtkglext
