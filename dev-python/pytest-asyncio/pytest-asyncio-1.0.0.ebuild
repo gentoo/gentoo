@@ -30,6 +30,14 @@ EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# redundant, and breaking setuptools-scm >= 1.2.0
+	# https://github.com/pypa/setuptools-scm/issues/1216
+	rm setup.cfg || die
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
 		# fail due to mismatched warning count

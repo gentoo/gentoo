@@ -36,3 +36,11 @@ EPYTEST_DESELECT=(
 	tests/test_event_loop_fixture.py::test_event_loop_fixture_asyncgen_error
 	tests/test_event_loop_fixture.py::test_event_loop_fixture_handles_unclosed_async_gen
 )
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# redundant, and breaking setuptools-scm >= 1.2.0
+	# https://github.com/pypa/setuptools-scm/issues/1216
+	rm setup.cfg || die
+}
