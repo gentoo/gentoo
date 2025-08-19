@@ -23,7 +23,7 @@ REQUIRED_USE="
 # do not depend on tslib, it does not build and is disabled by default upstream
 RDEPEND="
 	>=dev-libs/glib-2.53.4:2
-	>=dev-libs/atk-2.5.3[introspection?]
+	>=app-accessibility/at-spi2-core-2.46.0[introspection?]
 	>=dev-libs/json-glib-0.12[introspection?]
 	>=media-libs/cogl-1.21.2:1.0=[introspection?,pango,wayland?]
 	>=x11-libs/cairo-1.14:=[aqua?,glib]
