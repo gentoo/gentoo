@@ -7,7 +7,7 @@ USE_RUBY="ruby32"
 RUBY_OPTIONAL=yes
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit dot-a perl-module ruby-ng python-single-r1 strip-linguas
+inherit dot-a libtool perl-module ruby-ng python-single-r1 strip-linguas
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
 HOMEPAGE="https://libguestfs.org"
@@ -74,6 +74,7 @@ src_unpack() {
 
 src_prepare() {
 	default
+	elibtoolize
 
 	use perl && perl-module_src_prepare
 	use ruby && ruby-ng_src_prepare
