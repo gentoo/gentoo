@@ -332,7 +332,7 @@ app-text/enchant voikko
 llvm-runtimes/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 llvm-runtimes/compiler-rt-sanitizers -gwp-asan -shadowcallstack
-llvm-runtimes/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan -tysan
+llvm-runtimes/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan
 >=llvm-runtimes/compiler-rt-sanitizers-16 -orc
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2020-12-07)
