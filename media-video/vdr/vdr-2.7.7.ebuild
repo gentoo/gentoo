@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,15 +6,17 @@ EAPI=8
 inherit flag-o-matic strip-linguas toolchain-funcs user-info
 
 DESCRIPTION="Video Disk Recorder - turns a pc into a powerful set top box for DVB"
-HOMEPAGE="http://www.tvdr.de/"
-SRC_URI="http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/${PV};sf=tbz2 -> ${P}.tbz2
+HOMEPAGE="https://www.tvdr.de/"
+SRC_URI="https://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/${PV};sf=tbz2 -> ${P}.tbz2
 	menuorg? ( https://github.com/vdr-projects/vdr-plugin-menuorg/raw/master/vdr-patch/vdr-menuorg-2.3.x.diff )
+	naludump? ( https://md11.it.cx/download/${PN}/${P}_naludump.patch )
+	permashift? ( https://md11.it.cx/download/${PN}/${P}_patch-for-permashift.patch )
 	ttxtsubs? ( https://md11.it.cx/download/${PN}/${P}_ttxtsubs_v2.patch )"
 
 LICENSE="GPL-2+"
-SLOT="0"
+SLOT="0/9" # config.h: APIVERSION "9"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
-IUSE="bidi debug demoplugins html keyboard mainmenuhooks menuorg naludump permashift pinplugin systemd ttxtsubs verbose"
+IUSE="bidi debug demoplugins keyboard menuorg naludump permashift pinplugin systemd ttxtsubs verbose"
 
 COMMON_DEPEND="
 	acct-group/vdr
@@ -118,12 +120,11 @@ src_prepare() {
 	# fix clang/LLVM compile
 	eapply "${FILESDIR}/${PN}-2.4.6_clang.patch"
 
-	use naludump && eapply "${FILESDIR}/${PN}-2.6.1_naludump.patch"
-	use permashift && eapply "${FILESDIR}/${PN}-2.6.1-patch-for-permashift.patch"
-	use pinplugin && eapply "${FILESDIR}/${P}_pinplugin.patch"
+	use naludump && eapply "${DISTDIR}/${P}_naludump.patch"
+	use permashift && eapply "${DISTDIR}/${P}_patch-for-permashift.patch"
+	use pinplugin && eapply "${FILESDIR}/${PN}-2.7.4_pinplugin.patch"
 	use ttxtsubs && eapply "${DISTDIR}/${P}_ttxtsubs_v2.patch"
 	use menuorg && eapply "${DISTDIR}/vdr-menuorg-2.3.x.diff"
-	use mainmenuhooks && eapply "${FILESDIR}/${PN}-2.4.1_mainmenuhook-1.0.1.patch"
 
 	add_cap CAP_UTF8 \
 		CAP_IRCTRL_RUNTIME_PARAM \
@@ -172,9 +173,7 @@ src_install() {
 	# backup for plugins they don't be able to create this dir
 	keepdir "${CONF_DIR}/plugins"
 
-	if use html; then
-		local HTML_DOCS=( *.html )
-	fi
+	local HTML_DOCS=( *.html )
 	local DOCS=( MANUAL INSTALL README* HISTORY CONTRIBUTORS UPDATE-2* )
 	einstalldocs
 
