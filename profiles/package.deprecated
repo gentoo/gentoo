@@ -60,7 +60,7 @@ media-sound/pulseaudio
 
 # Sam James <sam@gentoo.org> (2023-04-07)
 # Inactive upstream, doesn't support newer Rubies.
-# Please port your package to use dev-ruby/erubis instead.
+# Please port your package to use dev-ruby/erubi instead.
 dev-ruby/erubis
 
 # Sam James <sam@gentoo.org> (2023-04-06)
