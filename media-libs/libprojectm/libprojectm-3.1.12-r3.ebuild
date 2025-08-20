@@ -50,6 +50,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${P}-missing-gl-header.patch" # bug 792204
 	"${FILESDIR}/${P}-cxx14.patch"
+	"${FILESDIR}/${PN}-3.1.12-drop-automagic-libcxx.patch"
 )
 
 src_prepare() {
