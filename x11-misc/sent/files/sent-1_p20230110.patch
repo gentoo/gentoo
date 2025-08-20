@@ -1,0 +1,295 @@
+create a post release with this patch (no tarball from the git webui)
+git diff 4736a61..882d54c
+update license
+Correctly handle files that contain no slides
+Avoid out-of-bounds access when a slide input line begins with \0
+free XImage before creating a new one
+Makefile: be verbose
+sent.1: fix some mandoc warnings
+remove unnecessary NULL checks and add `void` for an empty parameter list
+--- a/LICENSE
++++ b/LICENSE
+@@ -1,6 +1,6 @@
+ ISC-License
+ 
+-(c) 2014-2016 Markus Teich <markus.teich@stusta.mhn.de>
++(c) 2014-2017 Markus Teich <markus.teich@stusta.mhn.de>
+ 
+ Permission to use, copy, modify, and/or distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+@@ -14,15 +14,16 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+-(c) 2015 Jonas Jelten <jj@sft.mx>
+-(c) 2015 Szabolcs Nagy <nsz@port70.net>
+-(c) 2015 Tony Lainson <t.lainson@gmail.com>
+-(c) 2015 Jan Christoph Ebersbach <jceb@e-jc.de>
+-(c) 2015 Ivan Tham <pickfire@riseup.net>
+-(c) 2015 Quentin Rameau <quinq@fifth.space>
+-(c) 2015 Alexis <surryhill@gmail.com>
+-(c) 2015 Dimitris Papastamos <sin@2f30.org>
+-(c) 2015 Grant Mathews <grant.m.mathews@gmail.com>
+-(c) 2015 David Phillips <dbphillipsnz@gmail.com>
+-(c) 2016 Laslo Hunhold <dev@frign.de>
++(c) 2016,2017 Laslo Hunhold <dev@frign.de>
++(c) 2016 ssd <ssd@mailless.org>
+ (c) 2016 Hiltjo Posthuma <hiltjo@codemadness.org>
++(c) 2015 David Phillips <dbphillipsnz@gmail.com>
++(c) 2015 Grant Mathews <grant.m.mathews@gmail.com>
++(c) 2015 Dimitris Papastamos <sin@2f30.org>
++(c) 2015 Alexis <surryhill@gmail.com>
++(c) 2015 Quentin Rameau <quinq@fifth.space>
++(c) 2015 Ivan Tham <pickfire@riseup.net>
++(c) 2015 Jan Christoph Ebersbach <jceb@e-jc.de>
++(c) 2015 Tony Lainson <t.lainson@gmail.com>
++(c) 2015 Szabolcs Nagy <nsz@port70.net>
++(c) 2015 Jonas Jelten <jj@sft.mx>
+--- a/Makefile
++++ b/Makefile
+@@ -18,43 +18,35 @@ config.h:
+ 	cp config.def.h config.h
+ 
+ .c.o:
+-	@echo CC $<
+-	@${CC} -c ${CFLAGS} $<
++	${CC} -c ${CFLAGS} $<
+ 
+ ${OBJ}: config.h config.mk
+ 
+ sent: ${OBJ}
+-	@echo CC -o $@
+-	@${CC} -o $@ ${OBJ} ${LDFLAGS}
++	${CC} -o $@ ${OBJ} ${LDFLAGS}
+ 
+ cscope: ${SRC} config.h
+-	@echo cScope
+-	@cscope -R -b || echo cScope not installed
++	cscope -R -b || echo cScope not installed
+ 
+ clean:
+-	@echo cleaning
+-	@rm -f sent ${OBJ} sent-${VERSION}.tar.gz
++	rm -f sent ${OBJ} sent-${VERSION}.tar.gz
+ 
+ dist: clean
+-	@echo creating dist tarball
+-	@mkdir -p sent-${VERSION}
+-	@cp -R LICENSE Makefile config.mk config.def.h ${SRC} sent-${VERSION}
+-	@tar -cf sent-${VERSION}.tar sent-${VERSION}
+-	@gzip sent-${VERSION}.tar
+-	@rm -rf sent-${VERSION}
++	mkdir -p sent-${VERSION}
++	cp -R LICENSE Makefile config.mk config.def.h ${SRC} sent-${VERSION}
++	tar -cf sent-${VERSION}.tar sent-${VERSION}
++	gzip sent-${VERSION}.tar
++	rm -rf sent-${VERSION}
+ 
+ install: all
+-	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
+-	@mkdir -p ${DESTDIR}${PREFIX}/bin
+-	@cp -f sent ${DESTDIR}${PREFIX}/bin
+-	@chmod 755 ${DESTDIR}${PREFIX}/bin/sent
+-	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
+-	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
+-	@cp sent.1 ${DESTDIR}${MANPREFIX}/man1/sent.1
+-	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/sent.1
++	mkdir -p ${DESTDIR}${PREFIX}/bin
++	cp -f sent ${DESTDIR}${PREFIX}/bin
++	chmod 755 ${DESTDIR}${PREFIX}/bin/sent
++	mkdir -p ${DESTDIR}${MANPREFIX}/man1
++	cp sent.1 ${DESTDIR}${MANPREFIX}/man1/sent.1
++	chmod 644 ${DESTDIR}${MANPREFIX}/man1/sent.1
+ 
+ uninstall:
+-	@echo removing executable file from ${DESTDIR}${PREFIX}/bin
+-	@rm -f ${DESTDIR}${PREFIX}/bin/sent
++	rm -f ${DESTDIR}${PREFIX}/bin/sent
+ 
+ .PHONY: all options clean dist install uninstall cscope
+--- a/sent.1
++++ b/sent.1
+@@ -1,5 +1,6 @@
+-.Dd 2016-08-12
++.Dd August 12, 2016
+ .Dt SENT 1
++.Os
+ .Sh NAME
+ .Nm sent
+ .Nd simple plaintext presentation tool
+@@ -10,13 +11,14 @@
+ .Sh DESCRIPTION
+ .Nm
+ is a simple plain text presentation tool for X. sent does not need LaTeX,
+-LibreOffice or any other fancy file format. Instead, sent reads plain text
+-describing the slides. sent can also draw images.
++LibreOffice or any other fancy file format.
++Instead, sent reads plain text describing the slides. sent can also draw
++images.
+ .Pp
+-Every paragraph represents a slide in the presentation. Especially for
+-presentations using the Takahashi method this is very nice and allows
+-you to write the presentation for a quick lightning talk within a
+-few minutes.
++Every paragraph represents a slide in the presentation.
++Especially for presentations using the Takahashi method this is very nice and
++allows you to write the presentation for a quick lightning talk within a few
++minutes.
+ .Sh OPTIONS
+ .Bl -tag -width Ds
+ .It Fl v
+@@ -36,7 +38,8 @@ Go to previous slide, if existent.
+ .It Sy Escape | q
+ Quit.
+ .It Sy r
+-Reload the slides. Only works on file input.
++Reload the slides.
++Only works on file input.
+ .It Sy Right | Return | Space | l | j | Down | Next | n
+ Go to next slide, if existent.
+ .It Sy Left | Backspace | h | k | Up | Prior | p
+@@ -63,6 +66,7 @@ without interpreting them.
+ .Sh CUSTOMIZATION
+ .Nm
+ can be customized by creating a custom config.h and (re)compiling the
+-source code. This keeps it fast, secure and simple.
++source code.
++This keeps it fast, secure and simple.
+ .Sh SEE ALSO
+ .Xr 2ff 1
+--- a/sent.c
++++ b/sent.c
+@@ -99,12 +99,12 @@ static void load(FILE *fp);
+ static void advance(const Arg *arg);
+ static void quit(const Arg *arg);
+ static void resize(int width, int height);
+-static void run();
+-static void usage();
+-static void xdraw();
+-static void xhints();
+-static void xinit();
+-static void xloadfonts();
++static void run(void);
++static void usage(void);
++static void xdraw(void);
++static void xhints(void);
++static void xinit(void);
++static void xloadfonts(void);
+ 
+ static void bpress(XEvent *);
+ static void cmessage(XEvent *);
+@@ -216,8 +216,7 @@ ffload(Slide *s)
+ 	s->img->bufwidth = ntohl(*(uint32_t *)&hdr[8]);
+ 	s->img->bufheight = ntohl(*(uint32_t *)&hdr[12]);
+ 
+-	if (s->img->buf)
+-		free(s->img->buf);
++	free(s->img->buf);
+ 	/* internally the image is stored in 888 format */
+ 	s->img->buf = ecalloc(s->img->bufwidth * s->img->bufheight, strlen("888"));
+ 
+@@ -270,6 +269,9 @@ ffprepare(Image *img)
+ 	if (depth < 24)
+ 		die("sent: Display color depths < 24 not supported");
+ 
++	if (img->ximg)
++		XDestroyImage(img->ximg);
++
+ 	if (!(img->ximg = XCreateImage(xw.dpy, CopyFromParent, depth, ZPixmap, 0,
+ 	                               NULL, width, height, 32, 0)))
+ 		die("sent: Unable to create XImage");
+@@ -428,6 +430,10 @@ load(FILE *fp)
+ 		maxlines = 0;
+ 		memset((s = &slides[slidecount]), 0, sizeof(Slide));
+ 		do {
++			/* if there's a leading null, we can't do blen-1 */
++			if (buf[0] == '\0')
++				continue;
++
+ 			if (buf[0] == '#')
+ 				continue;
+ 
+@@ -457,6 +463,9 @@ load(FILE *fp)
+ 		if (!p)
+ 			break;
+ 	}
++
++	if (!slidecount)
++		die("sent: No slides in file");
+ }
+ 
+ void
+@@ -489,7 +498,7 @@ resize(int width, int height)
+ }
+ 
+ void
+-run()
++run(void)
+ {
+ 	XEvent ev;
+ 
+@@ -511,7 +520,7 @@ run()
+ }
+ 
+ void
+-xdraw()
++xdraw(void)
+ {
+ 	unsigned int height, width, i;
+ 	Image *im = slides[idx].img;
+@@ -539,7 +548,7 @@ xdraw()
+ }
+ 
+ void
+-xhints()
++xhints(void)
+ {
+ 	XClassHint class = {.res_name = "sent", .res_class = "presenter"};
+ 	XWMHints wm = {.flags = InputHint, .input = True};
+@@ -557,7 +566,7 @@ xhints()
+ }
+ 
+ void
+-xinit()
++xinit(void)
+ {
+ 	XTextProperty prop;
+ 	unsigned int i;
+@@ -601,7 +610,7 @@ xinit()
+ }
+ 
+ void
+-xloadfonts()
++xloadfonts(void)
+ {
+ 	int i, j;
+ 	char *fstrs[LEN(fontfallbacks)];
+@@ -620,8 +629,7 @@ xloadfonts()
+ 	}
+ 
+ 	for (j = 0; j < LEN(fontfallbacks); j++)
+-		if (fstrs[j])
+-			free(fstrs[j]);
++		free(fstrs[j]);
+ }
+ 
+ void
+@@ -670,7 +678,7 @@ configure(XEvent *e)
+ }
+ 
+ void
+-usage()
++usage(void)
+ {
+ 	die("usage: %s [file]", argv0);
+ }
+@@ -695,9 +703,6 @@ main(int argc, char *argv[])
+ 	load(fp);
+ 	fclose(fp);
+ 
+-	if (!slidecount)
+-		usage();
+-
+ 	xinit();
+ 	run();
+ 
