@@ -1,0 +1,319 @@
+Fix unprototyped functions and bool key
+patches from fedora, reported https://github.com/IgnorantGuru/spacefm/pull/828 
+https://src.fedoraproject.org/rpms/spacefm/blob/rawhide/f/spacefm-1.0.6-c23-function-proto.patch
+https://src.fedoraproject.org/rpms/spacefm/blob/rawhide/f/spacefm-1.0.6-c23-bool-keyword.patch
+
+commit 52260c8dbc45c4493aea6e458f486a18f7ff8b96
+Author: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date:   Tue Jan 21 16:10:54 2025 +0900
+--- a/src/main-window.c
++++ b/src/main-window.c
+@@ -6250,7 +6250,7 @@ GtkWidget* main_task_view_new( FMMainWindow* main_window )
+ 
+ // ============== socket commands
+ 
+-gboolean bool( const char* value )
++gboolean truthy( const char* value )
+ {
+     return ( !( value && value[0] ) || !strcmp( value, "1") || 
+                     !strcmp( value, "true") || 
+@@ -6441,14 +6441,14 @@ _missing_arg:
+         }
+         else if ( !strcmp( argv[i], "window_maximized" ) )
+         {
+-            if ( bool( argv[i+1] ) )
++            if ( truthy( argv[i+1] ) )
+                 gtk_window_maximize( GTK_WINDOW( main_window ) );
+             else
+                 gtk_window_unmaximize( GTK_WINDOW( main_window ) );
+         }
+         else if ( !strcmp( argv[i], "window_fullscreen" ) )
+         {
+-            xset_set_b( "main_full", bool( argv[i+1] ) );
++            xset_set_b( "main_full", truthy( argv[i+1] ) );
+             on_fullscreen_activate( NULL, main_window );
+         }
+         else if ( !strcmp( argv[i], "screen_size" ) )
+@@ -6591,7 +6591,7 @@ _missing_arg:
+                                                                     argv[i] );
+                     return 2;
+                 }
+-                xset_set_b_panel( j, "show", bool( argv[i+1] ) );
++                xset_set_b_panel( j, "show", truthy( argv[i+1] ) );
+                 show_panels_all_windows( NULL, main_window );
+                 return 0;
+             }
+@@ -6602,9 +6602,9 @@ _missing_arg:
+             if ( use_mode )
+                 xset_set_b_panel_mode( panel, str,
+                                         main_window->panel_context[panel-1],
+-                                        bool( argv[i+1] ) );
++                                        truthy( argv[i+1] ) );
+             else
+-                xset_set_b_panel( panel, str, bool( argv[i+1] ) );
++                xset_set_b_panel( panel, str, truthy( argv[i+1] ) );
+             update_views_all_windows( NULL, file_browser );
+         }
+         else if ( !strcmp( argv[i], "panel_hslider_top" ) ||
+@@ -6709,23 +6709,23 @@ _missing_arg:
+         {
+             if ( !strcmp( argv[i] + 5, "ascend" ) )
+             {
+-                ptk_file_browser_set_sort_type( file_browser, bool( argv[i+1] ) ?
++                ptk_file_browser_set_sort_type( file_browser, truthy( argv[i+1] ) ?
+                                         GTK_SORT_ASCENDING : GTK_SORT_DESCENDING );
+                 return 0;
+             }
+             else if ( !strcmp( argv[i] + 5, "natural" ) )
+             {
+                 str = "sortx_natural";
+-                xset_set_b( str, bool( argv[i+1] ) );
++                xset_set_b( str, truthy( argv[i+1] ) );
+             }
+             else if ( !strcmp( argv[i] + 5, "case" ) )
+             {
+                 str = "sortx_case";
+-                xset_set_b( str, bool( argv[i+1] ) );
++                xset_set_b( str, truthy( argv[i+1] ) );
+             }
+             else if ( !strcmp( argv[i] + 5, "hidden_first" ) )
+             {
+-                str = bool( argv[i+1] ) ? "sortx_hidfirst" : "sortx_hidlast";
++                str = truthy( argv[i+1] ) ? "sortx_hidfirst" : "sortx_hidlast";
+                 xset_set_b( str, TRUE );
+             }
+             else if ( !strcmp( argv[i] + 5, "first" ) )
+@@ -6748,7 +6748,7 @@ _missing_arg:
+         }
+         else if ( !strcmp( argv[i], "show_thumbnails" ) )
+         {
+-            if ( app_settings.show_thumbnail != bool( argv[i+1] ) )
++            if ( app_settings.show_thumbnail != truthy( argv[i+1] ) )
+                 main_window_toggle_thumbnails_all_windows();
+         }
+         else if ( !strcmp( argv[i], "large_icons" ) )
+@@ -6757,7 +6757,7 @@ _missing_arg:
+             {
+                 xset_set_b_panel_mode( panel, "list_large",
+                                         main_window->panel_context[panel-1],
+-                                        bool( argv[i+1] ) );
++                                        truthy( argv[i+1] ) );
+                 update_views_all_windows( NULL, file_browser );
+             }
+         }
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -2731,9 +2731,9 @@ gboolean xset_get_bool( const char* name, const char* var )
+ gboolean xset_get_bool_panel( int panel, const char* name, const char* var )
+ {
+     char* fullname = g_strdup_printf( "panel%d_%s", panel, name );
+-    gboolean bool = xset_get_bool( fullname, var );
++    gboolean truthy = xset_get_bool( fullname, var );
+     g_free( fullname );
+-    return bool;
++    return truthy;
+ }
+ 
+ int xset_get_int_set( XSet* set, const char* var )
+commit 86364a17a3146e23a52fcf86f748dd99b3b1cf93
+Author: Mamoru TASAKA <mtasaka@fedoraproject.org>
+Date:   Tue Jan 21 16:10:30 2025 +0900
+--- a/src/cust-dialog.c
++++ b/src/cust-dialog.c
+@@ -3806,7 +3806,7 @@ static void show_help()
+     fprintf( f, "    %s\n\n", DEFAULT_MANUAL );
+ }
+ 
+-void signal_handler()
++void signal_handler(int signal)
+ {
+     if ( signal_dialog )
+     {
+--- a/src/ptk/ptk-dir-tree-view.c
++++ b/src/ptk/ptk-dir-tree-view.c
+@@ -357,7 +357,7 @@ GtkTreeModel* get_dir_tree_model()
+ 
+     if ( G_UNLIKELY( ! dir_tree_model ) )
+     {
+-        dir_tree_model = ptk_dir_tree_new( TRUE );
++        dir_tree_model = ptk_dir_tree_new();
+         g_object_add_weak_pointer( G_OBJECT( dir_tree_model ),
+                                    ( gpointer * ) (GtkWidget *) & dir_tree_model );
+     }
+--- a/src/ptk/ptk-file-misc.c
++++ b/src/ptk/ptk-file-misc.c
+@@ -1338,7 +1338,7 @@ void on_opt_toggled( GtkMenuItem* item, MoveSet* mset )
+ void on_toggled( GtkMenuItem* item, MoveSet* mset )
+ {
+     //int (*show) () = NULL;
+-    void (*show) () = NULL;
++    void (*show) (GtkWidget *) = NULL;
+     gboolean someone_is_visible = FALSE;
+     gboolean opts_visible = FALSE;
+ 
+@@ -1406,54 +1406,54 @@ void on_toggled( GtkMenuItem* item, MoveSet* mset )
+     // entries
+     if ( xset_get_b( "move_name" ) )
+     {
+-        show = (GFunc)gtk_widget_show;
++        show = gtk_widget_show;
+         someone_is_visible = TRUE;
+     }
+     else
+-        show = (GFunc)gtk_widget_hide;
+-    show( mset->label_name );
++        show = gtk_widget_hide;
++    show( GTK_WIDGET(mset->label_name) );
+     show( mset->scroll_name );
+     show( mset->hbox_ext );
+-    show( mset->blank_name );
++    show( GTK_WIDGET(mset->blank_name) );
+ 
+     if ( xset_get_b( "move_filename" ) )
+     {
+-        show = (GFunc)gtk_widget_show;
++        show = gtk_widget_show;
+         someone_is_visible = TRUE;
+     }
+     else
+-        show = (GFunc)gtk_widget_hide;
+-    show( mset->label_full_name );
++        show = gtk_widget_hide;
++    show( GTK_WIDGET(mset->label_full_name) );
+     show( mset->scroll_full_name );
+-    show( mset->blank_full_name );
++    show( GTK_WIDGET(mset->blank_full_name) );
+ 
+     if ( xset_get_b( "move_parent" ) )
+     {
+-        show = (GFunc)gtk_widget_show;
++        show = gtk_widget_show;
+         someone_is_visible = TRUE;
+     }
+     else
+-        show = (GFunc)gtk_widget_hide;
+-    show( mset->label_path );
++        show = gtk_widget_hide;
++    show( GTK_WIDGET(mset->label_path) );
+     show( mset->scroll_path );
+-    show( mset->blank_path );
++    show( GTK_WIDGET(mset->blank_path) );
+ 
+     if ( xset_get_b( "move_path" ) )
+     {
+-        show = (GFunc)gtk_widget_show;
++        show = gtk_widget_show;
+         someone_is_visible = TRUE;
+     }
+     else
+-        show = (GFunc)gtk_widget_hide;
+-    show( mset->label_full_path );
++        show = gtk_widget_hide;
++    show( GTK_WIDGET(mset->label_full_path) );
+     show( mset->scroll_full_path );
+ 
+     if ( !mset->is_link && !mset->create_new && xset_get_b( "move_type" ) )
+     {
+-        show = (GFunc)gtk_widget_show;
++        show = gtk_widget_show;
+     }
+     else
+-        show = (GFunc)gtk_widget_hide;
++        show = gtk_widget_hide;
+     show( mset->hbox_type );
+ 
+     gboolean new_file = FALSE;
+@@ -1468,15 +1468,15 @@ void on_toggled( GtkMenuItem* item, MoveSet* mset )
+     
+     if ( new_link || ( mset->is_link && xset_get_b( "move_target" ) ) )
+     {
+-        show = (GFunc)gtk_widget_show;
++        show = gtk_widget_show;
+     }
+     else
+-        show = (GFunc)gtk_widget_hide;
++        show = gtk_widget_hide;
+     show( mset->hbox_target );
+ 
+     if ( ( new_file || new_folder ) && xset_get_b( "move_template" ) )
+     {
+-        show = (GFunc)gtk_widget_show;
++        show = gtk_widget_show;
+         if ( new_file )
+         {
+             gtk_widget_show( GTK_WIDGET( mset->combo_template ) );
+@@ -1493,7 +1493,7 @@ void on_toggled( GtkMenuItem* item, MoveSet* mset )
+         }
+     }
+     else
+-        show = (GFunc)gtk_widget_hide;
++        show = gtk_widget_hide;
+     show( mset->hbox_template );
+ 
+     if ( !someone_is_visible )
+--- a/src/settings.c
++++ b/src/settings.c
+@@ -2987,7 +2987,7 @@ void xset_parse( char* line )
+     }
+ }
+ 
+-XSet* xset_set_cb( const char* name, void (*cb_func) (), gpointer cb_data )
++XSet* xset_set_cb_internal( const char* name, void (*cb_func) (GtkWidget*, gpointer), gpointer cb_data )
+ {
+     XSet* set = xset_get( name );
+     set->cb_func = cb_func;
+@@ -2995,10 +2995,10 @@ XSet* xset_set_cb( const char* name, void (*cb_func) (), gpointer cb_data )
+     return set;
+ }
+ 
+-XSet* xset_set_cb_panel( int panel, const char* name, void (*cb_func) (), gpointer cb_data )
++XSet* xset_set_cb_panel_internal( int panel, const char* name, void (*cb_func) (GtkWidget*, gpointer), gpointer cb_data )
+ {
+     char* fullname = g_strdup_printf( "panel%d_%s", panel, name );
+-    XSet* set = xset_set_cb( fullname, cb_func, cb_data );
++    XSet* set = xset_set_cb_internal( fullname, cb_func, cb_data );
+     g_free( fullname );
+     return set;
+ }
+@@ -8587,7 +8587,7 @@ gboolean xset_menu_keypress( GtkWidget* widget, GdkEventKey* event,
+ void xset_menu_cb( GtkWidget* item, XSet* set )
+ {
+     GtkWidget* parent;
+-    void (*cb_func) () = NULL;
++    void (*cb_func) (GtkWidget*, gpointer) = NULL;
+     gpointer cb_data = NULL;
+     char* title;
+     XSet* mset;  // mirror set or set
+--- a/src/settings.h
++++ b/src/settings.h
+@@ -261,7 +261,7 @@ typedef struct
+     char* menu_label;
+     int menu_style;         // not saved or read if locked
+     char* icon;
+-    void (*cb_func) ();     // not saved
++    void (*cb_func) (GtkWidget*, gpointer);     // not saved
+     gpointer cb_data;       // not saved
+     char* ob1;              // not saved
+     gpointer ob1_data;      // not saved
+@@ -415,7 +415,9 @@ XSet* xset_set_b_panel( int panel, const char* name, gboolean bval );
+ int xset_get_int( const char* name, const char* var );
+ int xset_get_int_panel( int panel, const char* name, const char* var );
+ XSet* xset_set_panel( int panel, const char* name, const char* var, const char* value );
+-XSet* xset_set_cb_panel( int panel, const char* name, void (*cb_func) (), gpointer cb_data );
++XSet* xset_set_cb_panel_internal( int panel, const char* name, void (*cb_func) (GtkWidget*, gpointer), gpointer cb_data );
++#define xset_set_cb_panel(panel, name, cb_func, cb_data) \
++        xset_set_cb_panel_internal(panel, name, (void(*)(GtkWidget*, gpointer))(cb_func), cb_data)
+ gboolean xset_get_b_set( XSet* set );
+ XSet* xset_get_panel_mode( int panel, const char* name, char mode );
+ gboolean xset_get_b_panel_mode( int panel, const char* name, char mode );
+@@ -450,7 +452,9 @@ GtkWidget* xset_add_menuitem( DesktopWindow* desktop, PtkFileBrowser* file_brows
+                                     GtkWidget* menu, GtkAccelGroup *accel_group,
+                                     XSet* set );
+ GtkWidget* xset_get_image( const char* icon, int icon_size );
+-XSet* xset_set_cb( const char* name, void (*cb_func) (), gpointer cb_data );
++XSet* xset_set_cb_internal( const char* name, void (*cb_func) (GtkWidget*, gpointer), gpointer cb_data );
++#define xset_set_cb(name, cb_func, cb_data) \
++        xset_set_cb_internal(name, (void(*)(GtkWidget*, gpointer))(cb_func), cb_data)
+ XSet* xset_set_ob1_int( XSet* set, const char* ob1, int ob1_int );
+ XSet* xset_set_ob1( XSet* set, const char* ob1, gpointer ob1_data );
+ XSet* xset_set_ob2( XSet* set, const char* ob2, gpointer ob2_data );
