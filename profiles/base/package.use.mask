@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-09-13)
+# No suitable versions of dev-libs/protobuf available.
+=dev-java/protobuf-java-4.32.1 system-protoc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-13)
 # This has been going on for long enough. Bug #834469
 <sci-libs/ViSP-3.7 ogre
