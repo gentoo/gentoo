@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-08-20)
+# No suitable versions of dev-libs/protobuf available.
+=dev-java/protobuf-java-4.32.0 system-protoc
+
 # Alfred Wingate <parona@protonmail.com> (2025-08-12)
 # Marked Beta tier upstream. Tests don't work with it.
 dev-games/ogre vulkan
