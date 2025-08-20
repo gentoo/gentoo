@@ -58,6 +58,7 @@ RESTRICT="!test? ( test )"
 DEPEND="dev-cpp/gflags
 	dev-cpp/gtest
 	dev-cpp/glog:=
+	dev-cpp/nlohmann_json:=
 	dev-libs/libfmt:=
 	dev-libs/pfs
 	net-misc/curl"
@@ -74,13 +75,19 @@ PATCHES=(
 	"${FILESDIR}"/${P}-musl.patch
 	"${FILESDIR}"/${P}-libcxx.patch
 	"${FILESDIR}"/${P}-gcc15.patch
-	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${P}-nofmt.patch
+	"${FILESDIR}"/${P}-nojson.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" "KernelCollecterTest.NetworkStatsTest" )
 
 src_prepare() {
+	rm -r third_party/fmt || die
+	rm -r third_party/gflags || die
+	rm -r third_party/glog || die
+	rm -r third_party/googletest || die
+	rm -r third_party/json || die
+	rm -r third_party/pfs || die
 	sed -i \
 		-e "s:__u64:ino_t:g" \
 		hbt/src/common/System.h \
@@ -89,12 +96,8 @@ src_prepare() {
 	cmake_comment_add_subdirectory third_party/fmt
 	cmake_comment_add_subdirectory third_party/gflags
 	cmake_comment_add_subdirectory third_party/glog
+	cmake_comment_add_subdirectory third_party/json
 	cmake_comment_add_subdirectory third_party/pfs
-	rm -r third_party/fmt || die
-	rm -r third_party/gflags || die
-	rm -r third_party/glog || die
-	rm -r third_party/googletest || die
-	rm -r third_party/pfs || die
 }
 
 src_configure() {
