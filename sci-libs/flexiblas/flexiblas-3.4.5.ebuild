@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake toolchain-funcs
 
 DESCRIPTION="A BLAS and LAPACK wrapper library with runtime exchangable backends"
 HOMEPAGE="
@@ -15,7 +15,7 @@ SRC_URI="https://csc.mpi-magdeburg.mpg.de/mpcsc/software/flexiblas/${P}.tar.xz"
 LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="blis openblas test"
+IUSE="blis openblas openmp test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -31,6 +31,18 @@ RDEPEND="
 BDEPEND="
 	test? ( ${CATEGORY}/${PN}[blis?,openblas?] )
 "
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
+		tc-check-openmp
+	fi
+}
+
+pkg_setup() {
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
+		tc-check-openmp
+	fi
+}
 
 src_prepare() {
 	cmake_src_prepare
@@ -49,6 +61,7 @@ src_configure() {
 		# TODO: ILP64 variant
 		-DINTEGER8=OFF
 		-DLAPACK=ON
+		-DLINK_OPENMP=$(usex openmp)
 		-DEXAMPLES=OFF
 		# disable autodetection, we don't want automagic deps
 		# plus openblas/blis gets hardcoded as openmp/pthread/serial
