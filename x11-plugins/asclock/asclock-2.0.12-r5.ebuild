@@ -7,7 +7,8 @@ inherit edo toolchain-funcs
 
 DESCRIPTION="Clock applet for AfterStep"
 HOMEPAGE="http://wiki.afterstep.org/index.php?title=AfterStep_Applets_DataBase#asclock"
-SRC_URI="http://www.tigr.net/afterstep/download/asclock/${P}.tar.gz"
+SRC_URI="mirror://debian/pool/main/a/asclock/${PN}_${PV}.orig.tar.gz"
+S="${WORKDIR}/asclock-xlib"
 
 LICENSE="GPL-2"
 SLOT="0"
