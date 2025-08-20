@@ -3,6 +3,8 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.74"
+
 CRATES="
 	aho-corasick@1.1.3
 	android-tzdata@0.1.1
