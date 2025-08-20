@@ -4,7 +4,6 @@
 EAPI=8
 
 FIREFOX_PATCHSET="firefox-141-patches-02t.tar.xz"
-FIREFOX_LOONG_PATCHSET="firefox-139-loong-patches-02.tar.xz"
 
 LLVM_COMPAT=( 19 20 )
 
@@ -59,10 +58,7 @@ PATCH_URIS=(
 )
 
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
-	${PATCH_URIS[@]}
-	loong? (
-		https://dev.gentoo.org/~xen0n/distfiles/www-client/${MOZ_PN}/${FIREFOX_LOONG_PATCHSET}
-	)"
+	${PATCH_URIS[@]}"
 S="${WORKDIR}/${PN}-${PV%_*}"
 
 if [[ -n ${MOZ_ESR} ]] ; then
