@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,6 @@ SRC_URI="https://github.com/grondo/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm64"
-IUSE="debug"
 
 DEPEND="sys-fs/sysfsutils"
 RDEPEND="${DEPEND}
@@ -35,12 +34,6 @@ src_prepare() {
 	# Needed to refresh libtool and friends to not call CC directly
 	# bug #725540
 	eautoreconf
-}
-
-src_configure() {
-	econf \
-		--disable-static \
-		$(use_enable debug)
 }
 
 src_install() {
