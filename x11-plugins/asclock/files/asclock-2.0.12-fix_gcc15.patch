@@ -1,0 +1,54 @@
+fix unprototyped functions
+https://build.opensuse.org/projects/openSUSE:Factory/packages/asclock/files/asclock-gcc15.patch
+--- a/asclock.h	2025-05-06 06:26:49.442371383 +0000
++++ b/asclock.h	2025-05-06 06:32:27.594886122 +0000
+@@ -151,9 +151,9 @@ void parseArgs(int argc, char **argv);
+ int read_init(FILE *f);
+ int read_type(int *type);
+ int read_token(char *str, int max);
+-int read_assign();
++int read_assign(void);
+ int read_int(int *ret);
+-int read_semicolon();
++int read_semicolon(void);
+ 
+ #endif /* ASCLOCK_H */
+ 
+--- a/config.c	2025-05-06 06:26:49.442272713 +0000
++++ b/config.c	2025-05-06 06:33:07.998999146 +0000
+@@ -147,13 +147,13 @@ int loadTheme(char *themesdir)
+ 	exit(-1);
+       } 
+ 
+-      if(!read_assign(f))
++      if(!read_assign())
+ 	printf("read_assign failed\n");
+       
+       if(!read_int(s->addr))
+ 	printf("read_int failed\n");
+       
+-      if(!read_semicolon(f))
++      if(!read_semicolon())
+ 	printf("read_semicolon failed\n");
+     }
+ 
+--- a/parser.c	2025-05-06 06:26:49.442342036 +0000
++++ b/parser.c	2025-05-06 06:32:42.238851768 +0000
+@@ -72,7 +72,7 @@ int read_token(char *str, int max)
+   return TRUE;
+ }
+ 
+-int read_assign() 
++int read_assign(void) 
+ {
+ 
+   while(next!='=')
+@@ -106,7 +106,7 @@ int read_int(int *ret)
+   return TRUE;
+ }
+ 
+-int read_semicolon() 
++int read_semicolon(void) 
+ {
+ 
+   while(next!=';')
