@@ -310,6 +310,7 @@ get_distribution_components() {
 			llvm-nm
 			llvm-objcopy
 			llvm-objdump
+			llvm-offload-wrapper
 			llvm-opt-report
 			llvm-otool
 			llvm-pdbutil
