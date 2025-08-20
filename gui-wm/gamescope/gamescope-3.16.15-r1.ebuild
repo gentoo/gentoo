@@ -43,7 +43,7 @@ RDEPEND="
 	>=dev-libs/libinput-1.14.0:=
 	>=dev-libs/wayland-1.23.1
 	gui-libs/libdecor
-	<media-libs/libdisplay-info-0.3:=
+	<media-libs/libdisplay-info-0.4:=
 	media-libs/vulkan-loader
 	sys-apps/hwdata
 	sys-libs/libcap
@@ -97,6 +97,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-deprecated-stb.patch
 	"${FILESDIR}"/${PN}-subprojects.patch
+	"${FILESDIR}"/${PN}-libdisplay-info-0.3.0.patch
 )
 
 FILECAPS=(
