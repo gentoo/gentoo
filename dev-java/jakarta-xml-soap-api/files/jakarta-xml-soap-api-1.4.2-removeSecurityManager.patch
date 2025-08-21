@@ -1,0 +1,30 @@
+bug #946904
+--- a/api/src/test/java/javax/xml/soap/test/SAAJFactoryTest.java
++++ b/api/src/test/java/javax/xml/soap/test/SAAJFactoryTest.java
+@@ -101,7 +101,6 @@ public class SAAJFactoryTest {
+                            String spiClass) {
+ 
+         // ensure setup may be done ...
+-        System.setSecurityManager(null);
+ 
+         if (systemProperty != null) {
+             System.setProperty("javax.xml.soap.MessageFactory", systemProperty);
+@@ -154,7 +153,6 @@ public class SAAJFactoryTest {
+ 
+             // unsafe; not running:
+             cleanResource(jdkFile);
+-            System.setSecurityManager(null);
+         }
+     }
+ 
+@@ -165,9 +163,7 @@ public class SAAJFactoryTest {
+     }
+ 
+     private void enableSM() {
+-        System.setSecurityManager(null);
+-        System.setProperty("java.security.policy", classesDir + "javax/xml/soap/test.policy");
+-        System.setSecurityManager(new SecurityManager());
++	// no-op
+     }
+ 
+     protected MessageFactory factory() throws Throwable {
