@@ -88,6 +88,9 @@ src_configure() {
 	tc-export AR CC PKG_CONFIG
 	lto-guarantee-fat
 
+	tc-export_build_env
+	export CBUILD_CFLAGS=${BUILD_CFLAGS}
+
 	# This sure is ugly. Should probably move into toolchain-funcs at some point.
 	local setns
 	pushd "${T}" >/dev/null || die
