@@ -1,0 +1,49 @@
+https://sourceforge.net/p/bluefish/tickets/112/
+call svnversion only if a svn tree exists and svnversion is found
+--- a/configure.ac
++++ b/configure.ac
+@@ -151,12 +151,19 @@ AC_ARG_ENABLE(
+ )
+ 
+ dnl # make DEVELOPEMENT enabled when compiling from svn, and disabled when compiling from an exported source tree.
+-AC_MSG_CHECKING([for svn tree or exported source tree])
+ BF_want_development="no"
+-BF_svnversion=`LANG=C svnversion -n . || echo exported`
+-if test "x$BF_svnversion" != "xexported" ; then
+-	AC_MSG_RESULT([svn])
+-	BF_want_development="yes"
++AC_MSG_CHECKING([for svn tree or exported source tree])
++AM_CONDITIONAL([SVN], [false])
++if test -f .svn/entries; then
++	AC_CHECK_PROG([HAVE_SVN], [svnversion], [yes], [no])
++	if test x$HAVE_SVN = "xyes"; then
++		BF_svnversion=`LANG=C svnversion -n . 2>/dev/null`
++		AM_CONDITIONAL([SVN], [true])
++		AC_MSG_RESULT([svn])
++		BF_want_development="yes"
++	else
++		AC_MSG_WARN([svn tree found but svnversion was not found, continue as an exported tree])
++	fi
+ else
+ 	AC_MSG_RESULT([exported])
+ fi
+--- a/src/plugin_about/Makefile.am
++++ b/src/plugin_about/Makefile.am
+@@ -29,7 +29,7 @@ about_rev.h: about_rev.h.tmp
+ 	@if test ! -e $@ || test -n "`diff $< $@`" ; then cp $< $@ ; fi
+        
+ about_rev.h.tmp:
+-	@SVN_REVISION=`LANG=C svnversion -n ${top_srcdir} || echo exported` ; \
++	@SVN_TRUE@SVN_REVISION=`LANG=C svnversion -n ${top_srcdir} || echo exported` ; \
+ 	echo "/* Automatically created by the Makefile." > $@ ; \
+ 	echo " * http://bugzilla.gnome.org/show_bug.cgi?id=578719 */" >> $@ ; \
+ 	echo "#ifndef __ABOUT_REV_H_" >> $@ ; \
+@@ -37,7 +37,7 @@ about_rev.h.tmp:
+ 	echo "#ifdef SVN_REVISION" >> $@ ; \
+ 	echo "#undef SVN_REVISION" >> $@ ; \
+ 	echo "#endif /* SVN_REVISION */" >> $@ ; \
+-	if test -n $${SVN_REVISION} -a "x$${SVN_REVISION}" != "xexported" ; then \
++	if test -n "$${SVN_REVISION}" -a "x$${SVN_REVISION}" != "xexported" ; then \
+ 		echo "#define SVN_REVISION \"$${SVN_REVISION}\"" >> $@ ; \
+ 	fi ; \
+ 	echo "#endif /* __ABOUT_REV_H_ */" >> $@
