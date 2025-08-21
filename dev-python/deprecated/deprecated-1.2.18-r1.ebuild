@@ -23,4 +23,12 @@ RDEPEND="
 	dev-python/wrapt[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin deps
+	sed -i -e 's:< [0-9.]*,::' setup.py || die
+}
