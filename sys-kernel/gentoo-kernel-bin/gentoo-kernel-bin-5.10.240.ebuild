@@ -6,7 +6,7 @@ EAPI=8
 inherit kernel-install toolchain-funcs unpacker verify-sig
 
 MY_P=linux-${PV%.*}
-PATCHSET=linux-gentoo-patches-5.15.187
+PATCHSET=linux-gentoo-patches-5.10.240
 BINPKG=${PF/-bin}-1
 SHA256SUM_DATE=20250717
 
