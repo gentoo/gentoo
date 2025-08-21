@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2025-08-21)
+# The required Direct3D 9 feature is being dropped from Mesa. Use DXVK or
+# WineD3D instead. Removal on 2025-09-21.
+app-emulation/gallium-nine-standalone
+
 # Michał Górny <mgorny@gentoo.org> (2025-08-21)
 # Version yanked due to "unintended change in behavior".
 =dev-python/click-8.2.2
