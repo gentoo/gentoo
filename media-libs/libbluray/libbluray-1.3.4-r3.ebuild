@@ -18,7 +18,7 @@ HOMEPAGE="https://www.videolan.org/developers/libbluray.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0/2"
-IUSE="aacs bdplus +fontconfig java +truetype utils +xml"
+IUSE="aacs bdplus +fontconfig +truetype utils +xml"
 
 COMMON_DEPEND="
 	>=dev-libs/libudfread-1.1.0:=[${MULTILIB_USEDEP}]
