@@ -273,7 +273,6 @@ perf_make() {
 		NO_BACKTRACE=
 		NO_CAPSTONE=$(puse capstone)
 		NO_DEMANGLE=
-		NO_JEVENTS=$(puse python)
 		NO_JVMTI=$(puse java)
 		NO_LIBAUDIT=1
 		NO_LIBBABELTRACE=$(puse babeltrace)
@@ -303,7 +302,7 @@ perf_make() {
 		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins"
 		"$@"
 	)
-	emake "${emakeargs[@]}"
+	NO_JEVENTS=$(puse python) emake "${emakeargs[@]}"
 }
 
 src_compile() {
