@@ -268,7 +268,7 @@ app-emulation/qemu capstone
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
 # Requires unkeyworded deps
->=dev-python/ipython-5.4.1 qt5
+>=dev-python/ipython-5.4.1 gui qt5
 
 # Amy Liffey <amynka@gentoo.org> (2018-01-21)
 # dev-libs/cereal not keyworded for ppc
