@@ -73,6 +73,8 @@ distutils_enable_tests pytest
 PATCHES=(
 	# https://github.com/numpy/numpy/pull/29459
 	"${FILESDIR}"/${P}-no-detect.patch
+	# https://github.com/numpy/numpy/pull/29579
+	"${FILESDIR}"/${P}-arm-asimddp.patch
 )
 
 has_all_x86() {
