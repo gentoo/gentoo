@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
@@ -19,7 +19,7 @@ IUSE="+doc"
 
 COMMON_DEP="
 	virtual/jdk:1.8
-	>=media-sound/pulseaudio-0.9.11"
+	media-libs/libpulse"
 RDEPEND="${COMMON_DEP}"
 DEPEND="${COMMON_DEP}"
 BDEPEND="app-arch/zip"
