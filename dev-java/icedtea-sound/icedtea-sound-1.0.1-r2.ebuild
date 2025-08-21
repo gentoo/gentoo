@@ -17,19 +17,16 @@ KEYWORDS="amd64 arm64 ppc64"
 
 IUSE="+doc"
 
-COMMON_DEP="
-	virtual/jdk:1.8
-	media-libs/libpulse"
-RDEPEND="${COMMON_DEP}"
-DEPEND="${COMMON_DEP}"
 BDEPEND="app-arch/zip"
-
-pkg_setup() {
-	JAVA_PKG_WANT_SOURCE="1.8"
-	JAVA_PKG_WANT_TARGET="1.8"
-
-	java-pkg-2_pkg_setup
-}
+COMMON_DEP="media-libs/libpulse"
+DEPEND="
+	${COMMON_DEP}
+	virtual/jdk:1.8
+"
+RDEPEND="
+	${COMMON_DEP}
+	virtual/jre:1.8
+"
 
 src_configure() {
 	econf --with-jdk-home="${JAVA_HOME}" \
