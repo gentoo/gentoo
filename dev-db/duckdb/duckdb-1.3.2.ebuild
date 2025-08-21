@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake
+inherit cmake dot-a
 
 DESCRIPTION="high-performance analytical database system"
 HOMEPAGE="https://duckdb.org https://github.com/duckdb/duckdb"
@@ -26,10 +26,16 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	mycmakeargs=( "-DINSTALL_LIB_DIR=/usr/$(get_libdir)/"
 		"-DOVERRIDE_GIT_DESCRIBE=v${PV}"
 		"-DBUILD_EXTENSIONS='autocomplete;icu;tpch;tpcds;json;jemalloc'"
 		"-DCXX_EXTRA=${CXXFLAGS}"
 		)
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }
