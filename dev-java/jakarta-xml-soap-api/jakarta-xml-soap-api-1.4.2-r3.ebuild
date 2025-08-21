@@ -22,9 +22,7 @@ LICENSE="BSD"
 SLOT="1"
 KEYWORDS="amd64 arm64 ppc64"
 
-CP_DEPEND="
-	>=dev-java/jakarta-activation-api-1.2.2-r1:1
-"
+CP_DEPEND=">=dev-java/jakarta-activation-api-1.2.2-r1:1"
 
 DEPEND="
 	>=virtual/jdk-11:*
@@ -36,18 +34,14 @@ RDEPEND="
 	${CP_DEPEND}
 "
 
-PATCHES=(
-	"${FILESDIR}/jakarta-xml-soap-api-1.4.2-removeSecurityManager.patch"
-)
+DOCS=( CONTRIBUTING.md NOTICE.md README.md )
+PATCHES=( "${FILESDIR}/jakarta-xml-soap-api-1.4.2-removeSecurityManager.patch" )
 
 JAVA_SRC_DIR="api/src/main/java"
-
-JAVA_TEST_GENTOO_CLASSPATH="junit-4"
-JAVA_TEST_SRC_DIR="api/src/test/java"
-JAVA_TEST_RESOURCE_DIRS=( "api/src/test/resources" )
 JAVA_TEST_EXTRA_ARGS=( -Xbootclasspath/a:target/classes )
-
-DOCS=( CONTRIBUTING.md NOTICE.md README.md )
+JAVA_TEST_GENTOO_CLASSPATH="junit-4"
+JAVA_TEST_RESOURCE_DIRS=( "api/src/test/resources" )
+JAVA_TEST_SRC_DIR="api/src/test/java"
 
 src_prepare() {
 	default #780585
