@@ -132,11 +132,6 @@ app-crypt/yubikey-manager-qt
 # Bugs #922311, #926229. Removal on 2025-09-14.
 media-gfx/opentoonz
 
-# Michał Górny <mgorny@gentoo.org> (2025-08-10)
-# Significant regression breaking dev-python/websockets.
-# Masking until upstream decides how to proceed.
-=dev-python/python-tests-3.13.6
-
 # Hans de Graaff <graaff@gentoo.org> (2025-08-08)
 # ruby-openid fails tests and is archived upstream. Last release 6 years
 # ago. rack-openid is the only reverse dependency.
