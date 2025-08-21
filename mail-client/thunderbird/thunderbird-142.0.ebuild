@@ -514,7 +514,6 @@ src_prepare() {
 	rm -v "${WORKDIR}"/firefox-patches/*bgo-928126-enable-jxl.patch || die
 
 	eapply "${WORKDIR}/firefox-patches"
-	use loong && eapply "${WORKDIR}/firefox-loong-patches"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
