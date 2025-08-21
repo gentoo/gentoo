@@ -32,11 +32,11 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# version number relies on git repo, sigh
-	# also all dependencies are pinned to exact versions, sigh
+	# also unpin dependencies
 	# also hack to install as "sphinx-prompt"
 	sed -i \
 		-e "/^version =/s:[0-9.]\+:${PV}:" \
-		-e '/^\[tool\.poetry\.dependencies\]$/,$s:"[0-9.]\+:"*:' \
+		-e '/^dependencies/s:==:>=:g' \
 		-e '/include.*sphinx-prompt/d' \
 		pyproject.toml || die
 
