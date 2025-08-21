@@ -20,10 +20,6 @@ gtk3
 gtk4
 wxwidgets
 
-# James Le Cuirot <chewi@gentoo.org> (2022-01-30)
-# The app-shells/fish tests fail on m68k, so it remains unkeyworded.
-fish-completion
-
 # James Le Cuirot <chewi@gentoo.org> (2022-01-15)
 # Most of the PostgreSQL tests pass on m68k, but some fail and some hang. I
 # suggest you put your data elsewhere.

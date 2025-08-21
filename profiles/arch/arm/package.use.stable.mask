@@ -180,10 +180,6 @@ dev-util/geany-plugins gtkspell
 # Missing stable
 dev-db/mariadb jdbc
 
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi
-
 # Brian Evans <grknight@gentoo.org> (2016-01-08)
 # net-misc/libteam is not yet stable on arm
 net-misc/networkmanager teamd

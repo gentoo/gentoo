@@ -83,11 +83,6 @@ dev-scheme/racket chez futures jit
 # Remove this once ruby32 is unmasked in base
 dev-ruby/activesupport msgpack test
 
-# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
-# Broken on <dev-lang/ruby-3.2
-# https://github.com/msgpack/msgpack-ruby/pull/355
-dev-ruby/msgpack ruby_targets_ruby31
-
 # matoro <matoro_gentoo@matoro.tk> (2023-11-19)
 # VSX asm causes passing test suite on LE to fail
 media-libs/libaom cpu_flags_ppc_vsx

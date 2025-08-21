@@ -243,10 +243,6 @@ sys-cluster/knem modules
 >=sys-apps/systemd-utils-254 -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 
-# WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
-# dev-python/pyopengl fails tests
-dev-python/sympy opengl
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
 # dev-cpp/glog fails tests, needs checking
 media-libs/opencv glog contribsfm

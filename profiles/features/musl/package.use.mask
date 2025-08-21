@@ -46,10 +46,6 @@ app-emulation/libvirt dtrace
 gui-libs/neatvnc tracing
 gui-apps/wayvnc tracing
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
-# Requires llvm-runtimes/libcxx.
-dev-cpp/benchmark libcxx
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-07-25)
 # Requires systemd-detect-virt
 app-emulation/virt-firmware test
@@ -70,7 +66,6 @@ dev-lang/python jit
 dev-libs/mongo-c-driver test
 dev-php/pecl-mongodb test
 dev-python/pymongo test-full
-net-analyzer/zmap mongo
 sci-libs/gdal mongodb
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-04-25)
@@ -233,7 +228,6 @@ sys-apps/man-pages l10n_hu l10n_id l10n_it l10n_ko l10n_mk l10n_nb l10n_nl
 sys-apps/man-pages l10n_pl l10n_pt-BR l10n_ro l10n_ru l10n_sr l10n_sv
 sys-apps/man-pages l10n_uk l10n_vi
 sys-apps/sysvinit nls
-sys-auth/sssd man
 sys-apps/util-linux nls
 
 # Sam James <sam@gentoo.org> (2021-11-07)

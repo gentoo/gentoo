@@ -373,25 +373,13 @@ x11-apps/igt-gpu-tools -overlay
 # freeipmi is supported on x86
 app-admin/conserver -freeipmi
 
-# Mikle Kolyada <zlogene@gentoo.org> (2019-03-03)
-# No Spice protocol for x86
-app-emulation/nemu spice
-
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
 # Requires dev-db/mongodb which has dropped x86 support
 dev-php/pecl-mongodb test
 
-# Alexys Jacob <ultrabug@gentoo.org> (2018-11-05)
-# Requires dev-db/mongodb which has dropped x86 support
-net-analyzer/zmap mongo
-
 # Michael Palimaka <kensington@gentoo.org> (2018-10-12)
 # Unmask arch-specific USE flag available on x86
 net-analyzer/testssl -bundled-openssl
-
-# Rick Farina <zerochaos@gentoo.org> (2018-06-27)
-# Catalyst has support for assembling bootloader on this arch
-dev-util/catalyst -system-bootloader
 
 # Jan Ziak <0xe2.0x9a.0x9b@gmail.com> (2018-03-14)
 # Expose SVGA backend for x86 users
@@ -481,10 +469,6 @@ sys-kernel/installkernel -systemd-boot -ukify -uki
 # Ben de Groot <yngwin@gentoo.org> (2015-03-15)
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
-
-# Yixun Lan <dlan@gentoo.org> (2014-05-21)
-# sys-fs/zfs not keyworded on x86
-sys-cluster/ceph zfs
 
 # Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
 # Works on 32bit x86

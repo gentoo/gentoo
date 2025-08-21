@@ -154,10 +154,6 @@ media-gfx/inkscape sourceview
 # sys-apps/dbus-broker is not keyworded
 app-accessibility/at-spi2-core dbus-broker
 
-# Michał Górny <mgorny@gentoo.org> (2023-05-20)
-# Requires dev-python/sphinx-autodoc-types that has unkeyworded depgraph.
-dev-python/jupyter-core doc
-
 # Sam James <sam@gentoo.org> (2023-05-19)
 # kde-frameworks/kwayland:5 is not keyworded here.
 app-crypt/pinentry wayland
@@ -551,7 +547,6 @@ app-text/texlive pdfannotextractor
 net-im/pidgin gstreamer
 x11-misc/xscreensaver gdm new-login
 x11-libs/wxGTK gstreamer
-net-p2p/mldonkey guionly gtk
 net-im/pidgin eds
 
 # Jeroen Roovers <jer@gentoo.org> (2008-04-15)

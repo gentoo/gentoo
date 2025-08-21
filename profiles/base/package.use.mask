@@ -85,12 +85,6 @@ app-i18n/fcitx-chinese-addons webengine
 # Bug #937565
 <games-strategy/freeciv-3.2.0 json
 
-# Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
-# Upstream is dead and broken. All 'whatsapp' deps
-# will be last-rited on 2025-04-28.
-# Bug #952588 #952589
-net-im/spectrum2 whatsapp
-
 # Z. Liu <zhixu.liu@gmail.com> (2025-03-24)
 # Upstream considers that the usbreset could potentially damage hardware.
 # bug #948216
@@ -393,15 +387,6 @@ dev-lang/ruby jemalloc
 # work properly in 136.0, bug #950687.
 mail-client/thunderbird system-icu
 
-# Marek Szuba <marecki@gentoo.org> (2023-07-10)
-# dev-python/mkdocs-material is by design directly integrated with
-# Google Fonts and as such violates the network sandbox [1].
-# Upstream documentation mentions an option which supposedly prevents
-# this, however adding it to the Molecule mkdocs.yml has had no effect.
-# Looks like this will have to be addressed at the level of mkdocs-material.
-# [1] https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/
-app-admin/ansible-molecule doc
-
 # William Hubbs <williamh@gentoo.org> (2023-06-30)
 # multiple repeated issues: Bug: #909394
 # Joonas Niilola <juippis@gentoo.org> (2024-04-22)
@@ -444,12 +429,6 @@ dev-lang/ruby jit
 # Depends on x11-libs/libdmx, which is masked for removal
 x11-apps/xdpyinfo dmx
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-04-05)
-# Currently broken on 11
-# https://bugs.gentoo.org/833097
-# https://bugs.gentoo.org/833098
-dev-java/openjdk:11 lto
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-09)
 # Bug #893686. Presently nothing depends on dev-java/swt built with this flag.
 dev-java/swt:4.10 webkit
@@ -469,10 +448,6 @@ llvm-runtimes/openmp llvm_targets_AMDGPU
 # Joonas Niilola <juippis@gentoo.org> (2023-01-08)
 # Doesn't compile currently, bug #853094.
 >=net-dialup/freeradius-3.2.0 oracle
-
-# Matt Turner <mattst88@gentoo.org> (2023-01-01)
-# Depends on nautilus < 43
->=app-text/evince-43.0 nautilus
 
 # Sam James <sam@gentoo.org> (2022-12-31)
 # seccomp cannot be disabled via a runtime toggle which introduces substantial
@@ -516,12 +491,6 @@ dev-util/schroot nls
 # on glibc, so it doesn't prevent usage of llvm-libunwind for other packages.
 # bug #870211.
 dev-lang/rust llvm-libunwind
-dev-lang/rust-bin llvm-libunwind
-
-# Matt Jolly <kangie@gentoo.org> (2022-09-09)
-# app-antivirus/clamav JIT support requires LLVM <=13
-# ebuild support is there but currently failing to link
-app-antivirus/clamav jit
 
 # Sam James <sam@gentoo.org> (2022-08-26)
 # Broken at runtime for now (bug #865113).
@@ -674,13 +643,6 @@ dev-lang/php jit
 sci-libs/gdal doc
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
-# Fails to build:
-#
-#   TEST-UNEXPECTED-FAIL | check_nsmodules | libxul.so | NSModules are not ordered appropriately
-#
-www-client/seamonkey lto
-
-# Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
 # Upstream considers this module being a high security risk
 # http://httpd.apache.org/docs/current/mod/mod_lua.html
 www-servers/apache apache2_modules_lua
@@ -690,10 +652,8 @@ www-servers/apache apache2_modules_lua
 # modern versions of PHP itself.
 dev-php/PEAR-Exception test
 dev-php/PHP_CodeSniffer test
-dev-php/awl test
 dev-php/fedora-autoloader test
 dev-php/json-schema test
-dev-php/jsonlint test
 dev-php/recaptcha test
 dev-php/symfony-filesystem test
 dev-php/symfony-finder test
