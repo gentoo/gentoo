@@ -32,7 +32,7 @@ DEPEND="
 	${COMMON_DEPEND}
 	java? (
 		>=dev-java/ant-1.10.14-r3:0
-		>=virtual/jdk-1.8:*
+		<virtual/jdk-25:*
 	)
 "
 RDEPEND="
