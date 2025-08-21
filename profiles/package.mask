@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-08-21)
+# Version yanked due to "unintended change in behavior".
+=dev-python/click-8.2.2
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-19)
 # x11-libs/gtkglext is finally without revdeps, tracker bug #698950
 # Removal on 2025-09-16
