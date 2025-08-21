@@ -255,11 +255,6 @@ sci-libs/eccodes
 dev-libs/libindicate
 app-text/gnome-doc-utils
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-07-04)
-# EAPI=7, upstream gone, Gentoo is the last distro packaging it.
-# Removal on 2025-08-03.  Bug #959505.
-app-misc/pip
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-04)
 # Obsolete Perl virtuals that will be removed (the list is work in progress).
 # If you have any of these installed, just remove them; they should not be
