@@ -3,8 +3,7 @@
 
 EAPI=8
 
-CRATES="
-"
+RUST_MIN_VER="1.88.0"
 
 declare -A GIT_CRATES=(
 	[matrix-sdk-base]='https://github.com/matrix-org/matrix-rust-sdk;872713c4bc024ac9246dfa72f834584ebe92a3d7;matrix-rust-sdk-%commit%/crates/matrix-sdk-base'
@@ -25,8 +24,6 @@ declare -A GIT_CRATES=(
 	[ruma-macros]='https://github.com/ruma/ruma;e73f302e4df7f5f0511fca1aa43853d4cf8416c8;ruma-%commit%/crates/ruma-macros'
 	[ruma]='https://github.com/ruma/ruma;e73f302e4df7f5f0511fca1aa43853d4cf8416c8;ruma-%commit%/crates/ruma'
 )
-
-RUST_MIN_VER="1.82.0"
 
 inherit cargo gnome2-utils meson
 
