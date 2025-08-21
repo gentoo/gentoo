@@ -256,12 +256,6 @@ sci-libs/eccodes
 dev-libs/libindicate
 app-text/gnome-doc-utils
 
-# Michał Górny <mgorny@gentoo.org> (2025-07-05)
-# Metapackage used as a dependency in dev-lang/python and dev-lang/pypy.
-# Replaced with inlined specific dev-python/ensurepip-* packages.
-# Removal on 2025-08-04.
-dev-python/ensurepip-wheels
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-07-04)
 # EAPI=7, upstream gone, Gentoo is the last distro packaging it.
 # Removal on 2025-08-03.  Bug #959505.
