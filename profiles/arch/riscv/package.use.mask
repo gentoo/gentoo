@@ -110,6 +110,7 @@ sys-block/tgt rbd
 llvm-runtimes/compiler-rt-sanitizers -asan -lsan
 >=llvm-runtimes/compiler-rt-sanitizers-19 -libfuzzer -hwasan -profile -tsan
 >=llvm-runtimes/compiler-rt-sanitizers-19 -ubsan -scudo
+>=llvm-runtimes/compiler-rt-sanitizers-21 -xray
 
 # Yixun Lan <dlan@gentoo.org> (2023-02-16)
 # USE=java depend on virtual/jdk:1.8 which is not support on RISC-V

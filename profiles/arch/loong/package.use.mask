@@ -331,6 +331,7 @@ media-plugins/gst-plugins-meta libvisual
 # Profile: https://reviews.llvm.org/D154405 (LLVM 17 since 20230706)
 # XRay: https://reviews.llvm.org/D140727 (LLVM 17 since 20230714)
 # libFuzzer: https://reviews.llvm.org/D140601 (LLVM 17 since 20230718)
+# ORC: 79231a86846b7dff09497fc58ea1e82e892052bd (21 since 2025-01-21)
 >=llvm-runtimes/compiler-rt-sanitizers-15 -asan
 >=llvm-runtimes/compiler-rt-sanitizers-16 -lsan -safestack -scudo -tsan -ubsan
 >=llvm-runtimes/compiler-rt-sanitizers-17.0.0_pre20230630 -msan
@@ -338,6 +339,7 @@ media-plugins/gst-plugins-meta libvisual
 >=llvm-runtimes/compiler-rt-sanitizers-17.0.0_pre20230717 -profile -xray
 >llvm-runtimes/compiler-rt-sanitizers-17.0.0_pre20230717 -libfuzzer
 >=llvm-runtimes/compiler-rt-sanitizers-19 -cfi
+>=llvm-runtimes/compiler-rt-sanitizers-21 -orc
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.
