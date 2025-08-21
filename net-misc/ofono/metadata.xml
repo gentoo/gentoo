@@ -15,6 +15,7 @@
     <flag name="phonesim">Enable phone Simulator support</flag>
     <flag name="provision">Enable GPRS provisioning support</flag>
     <flag name="qmimodem">Enable Qualcomm QMI modem support</flag>
+    <flag name="system-ell">Use the system-wide <pkg>dev-libs/ell</pkg></flag>
     <flag name="tools">Enable testing tools</flag>
   </use>        
 </pkgmetadata>
