@@ -20,6 +20,7 @@ SLOT="0"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.00-toolchain.patch
+	"${FILESDIR}"/${PN}-2.27-ipl-c17.patch # bug 961813
 )
 
 src_compile() {

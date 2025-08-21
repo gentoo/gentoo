@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,6 +20,7 @@ SLOT="0"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.00-toolchain.patch
+	"${FILESDIR}"/${PN}-2.27-ipl-c17.patch # bug 961813
 )
 
 src_compile() {
