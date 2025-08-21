@@ -44,15 +44,20 @@ CRATES="
 
 inherit cargo cmake dot-a
 
+DcgmCommitId=ffde4e54bc7249a6039a5e6b45b395141e1217f9
+
 DESCRIPTION="Performance monitoring daemon for heterogeneous CPU-GPU systems"
 HOMEPAGE="https://github.com/facebookincubator/dynolog"
-SRC_URI="https://dev.gentoo.org/~tupone/distfiles/${P}.tar.gz
+SRC_URI="https://github.com/facebookincubator/${PN}/archive/refs/tags/v${PV}.tar.gz
+	-> ${P}.tar.gz
+	https://github.com/NVIDIA/DCGM/archive/${DcgmCommitId}.tar.gz
+	-> ${P}_dcgm.tar.gz
 	${CARGO_CRATE_URIS}"
 
 LICENSE="BSD Apache-2.0 Boost-1.0 MIT Unicode-DFS-2016 Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="test"
+IUSE="perf-events test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-cpp/gflags
@@ -68,26 +73,19 @@ RDEPEND="${DEPEND}"
 QA_FLAGS_IGNORED=/usr/bin/dyno
 
 PATCHES=(
-	"${FILESDIR}"/${P}-gcc13.patch
-	"${FILESDIR}"/${P}-unbundling.patch
-	"${FILESDIR}"/${P}-noWerror.patch
-	"${FILESDIR}"/${P}-riscv.patch
-	"${FILESDIR}"/${P}-musl.patch
-	"${FILESDIR}"/${P}-libcxx.patch
-	"${FILESDIR}"/${P}-gcc15.patch
-	"${FILESDIR}"/${P}-nofmt.patch
-	"${FILESDIR}"/${P}-nojson.patch
+	"${FILESDIR}"/${PN}-0.3.1_p20230126-gcc13.patch
+	"${FILESDIR}"/${PN}-0.3.1_p20230126-unbundling.patch
+	"${FILESDIR}"/${PN}-0.3.1_p20230126-riscv.patch
+	"${FILESDIR}"/${PN}-0.3.1_p20230126-musl.patch
+	"${FILESDIR}"/${PN}-0.3.1_p20230126-libcxx.patch
+	"${FILESDIR}"/${PN}-0.3.1_p20230126-nofmt.patch
+	"${FILESDIR}"/${PN}-0.3.1_p20230126-nojson.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" "KernelCollecterTest.NetworkStatsTest" )
 
 src_prepare() {
-	rm -r third_party/fmt || die
-	rm -r third_party/gflags || die
-	rm -r third_party/glog || die
-	rm -r third_party/googletest || die
-	rm -r third_party/json || die
-	rm -r third_party/pfs || die
+	mv "${WORKDIR}"/DCGM-${DcgmCommitId}/* third_party/DCGM/ || die
 	sed -i \
 		-e "s:__u64:ino_t:g" \
 		hbt/src/common/System.h \
@@ -104,8 +102,8 @@ src_configure() {
 	lto-guarantee-fat
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=OFF
-		-DCPR_FORCE_USE_SYSTEM_CURL=ON
 		-DBUILD_TESTS=$(usex test)
+		-DUSE_JSON_GENERATED_PERF_EVENTS=$(usex perf-events)
 	)
 	cmake_src_configure
 	cd cli
@@ -119,12 +117,11 @@ src_compile() {
 }
 
 src_install() {
-	cmake_src_install
 	mkdir -p headers/dynolog/src/ipcfabric
 	cp dynolog/src/ipcfabric/FabricManager.h \
 		headers/dynolog/src/ipcfabric || die
 	doheader -r dynolog
-	cd ../cli
+	einstalldocs
 	cd cli
 	cargo_src_install
 	strip-lto-bytecode
