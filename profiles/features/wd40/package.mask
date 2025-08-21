@@ -36,7 +36,6 @@ dev-python/tuf
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-20)
 # The mitmproxy bundle.
-dev-python/mitmproxy-wireguard
 dev-util/bpf-linker
 dev-util/btfdump
 net-proxy/mitmproxy
