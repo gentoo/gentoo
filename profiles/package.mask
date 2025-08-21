@@ -144,13 +144,6 @@ dev-ruby/ruby-openid
 # Removal on 2025-09-07.
 dev-java/jide-oss
 
-# Michał Górny <mgorny@gentoo.org> (2025-08-05)
-# Accidental breaking change.  Yanked upstream.  Bug #961089.
-# Followed by another yanked breaking release.
-=dev-python/setuptools-scm-9.1.1
-=dev-python/setuptools-scm-9.0.3
-=dev-python/setuptools-scm-9.0.0
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-08-03)
 # Inactive upstream, stuck on Qt5. Suggested alternatives:
 # media-sound/strawberry, media-sound/amarok.
