@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-08-22)
+# maintainer-needed, depends on Qt5, no upstream activity since 2017.
+# Removal on 2025-09-21.  Bugs #961889, #960823.
+x11-misc/fracplanet
+
 # James Le Cuirot <chewi@gentoo.org> (2025-08-21)
 # The required Direct3D 9 feature is being dropped from Mesa. Use DXVK or
 # WineD3D instead. Removal on 2025-09-21.
@@ -153,6 +158,7 @@ dev-java/jide-oss
 # media-sound/strawberry, media-sound/amarok.
 # Removal on 2025-09-03. Bug #960012.
 media-sound/clementine
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-10)
 # media-libs/liblastfm and media-libs/libmygpo-qt destabilisation mask.
 # No more stable revdeps after media-sound/clementine removal.
