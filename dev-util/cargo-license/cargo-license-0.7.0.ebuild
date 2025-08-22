@@ -3,6 +3,7 @@
 
 EAPI=8
 
+RUST_MIN_VER="1.86.0"
 CRATES=" "
 inherit cargo
 
