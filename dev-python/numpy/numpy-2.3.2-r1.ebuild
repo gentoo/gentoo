@@ -113,7 +113,7 @@ python_configure_all() {
 			if [[ ${cpu_baseline[@]} && ${cpu_baseline[-1]} == ASIMD ]]; then
 				for flag in dp hp; do
 					cpu_baseline+=(
-						$(usex "cpu_flags_arm_asimd${flag}" "ASIMD${flag^^}")
+						$(usev "cpu_flags_arm_asimd${flag}" "ASIMD${flag^^}")
 					)
 				done
 			fi
@@ -122,7 +122,7 @@ python_configure_all() {
 			if [[ ${cpu_baseline[@]} && ${cpu_baseline[-1]} == ASIMDHP ]]; then
 				for flag in asimdfhm sve; do
 					cpu_baseline+=(
-						$(usex "cpu_flags_arm_${flag}" "${flag^^}")
+						$(usev "cpu_flags_arm_${flag}" "${flag^^}")
 					)
 				done
 			fi
