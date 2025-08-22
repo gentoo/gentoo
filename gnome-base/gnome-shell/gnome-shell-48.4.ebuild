@@ -4,7 +4,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
+inherit flag-o-matic gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
 
 DESCRIPTION="Provides core UI functions for the GNOME desktop"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-shell"
@@ -13,7 +13,7 @@ LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
-IUSE="elogind gtk-doc +ibus +networkmanager pipewire systemd test"
+IUSE="X elogind gtk-doc +ibus +networkmanager pipewire systemd test wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
@@ -24,8 +24,8 @@ DEPEND="
 	>=app-crypt/gcr-3.90.0:4=[introspection]
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/gobject-introspection-1.49.1:=
-	>=dev-libs/gjs-1.81.2[cairo(+)]
-	>=gui-libs/gtk-4:4[introspection]
+	>=dev-libs/gjs-1.73.1[cairo(+)]
+	>=gui-libs/gtk-4:4[X?,introspection,wayland?]
 	>=x11-wm/mutter-48.0:0/16[introspection,test?]
 	>=sys-auth/polkit-0.120_p20220509[introspection]
 	>=gnome-base/gsettings-desktop-schemas-48_beta[introspection]
@@ -141,6 +141,9 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	local emesonargs=(
 		$(meson_use pipewire camera_monitor)
 		-Dextensions_tool=true
