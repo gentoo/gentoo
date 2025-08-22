@@ -42,6 +42,10 @@ RDEPEND="
 	)
 	mp3? ( media-sound/mpg123-base[${MULTILIB_USEDEP}] )
 	opus? ( media-libs/opusfile[${MULTILIB_USEDEP}] )
+	playtools? (
+		!media-libs/sdl-mixer[playtools]
+		!media-libs/sdl3-mixer[playtools]
+	)
 	vorbis? (
 		stb? ( dev-libs/stb )
 		tremor? ( media-libs/tremor[${MULTILIB_USEDEP}] )

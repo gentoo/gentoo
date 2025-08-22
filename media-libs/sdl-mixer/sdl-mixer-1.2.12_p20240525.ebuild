@@ -47,6 +47,10 @@ RDEPEND="
 		mad? ( >=media-libs/libmad-0.15.1b-r8[${MULTILIB_USEDEP}] )
 		smpeg? ( >=media-libs/smpeg-0.4.4-r10[${MULTILIB_USEDEP}] )
 	)
+	playtools? (
+		!media-libs/sdl2-mixer[playtools]
+		!media-libs/sdl3-mixer[playtools]
+	)
 	vorbis? (
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]

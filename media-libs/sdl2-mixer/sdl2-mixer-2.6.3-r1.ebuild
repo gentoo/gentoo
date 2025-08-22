@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,10 @@ RDEPEND="
 	mod? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	mp3? ( media-sound/mpg123[${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opusfile-0.2 )
+	playtools? (
+		!media-libs/sdl-mixer[playtools]
+		!media-libs/sdl3-mixer[playtools]
+	)
 	vorbis? (
 		tremor? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
 		!tremor? ( >=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}] )

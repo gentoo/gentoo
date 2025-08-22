@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,10 @@ RDEPEND="
 	mp3? (
 		mad? ( >=media-libs/libmad-0.15.1b-r8[${MULTILIB_USEDEP}] )
 		smpeg? ( >=media-libs/smpeg-0.4.4-r10[${MULTILIB_USEDEP}] )
+	)
+	playtools? (
+		!media-libs/sdl2-mixer[playtools]
+		!media-libs/sdl3-mixer[playtools]
 	)
 	vorbis? (
 		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
