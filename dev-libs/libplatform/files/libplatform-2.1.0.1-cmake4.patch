@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/951812
+https://github.com/Pulse-Eight/platform/issues/52
+https://github.com/Pulse-Eight/platform/commit/d7faed1c696b1a6a67f114a63a0f4c085f0f9195
+
+Removed cmake_minimum unrelated chunk
+
+From d7faed1c696b1a6a67f114a63a0f4c085f0f9195 Mon Sep 17 00:00:00 2001
+From: Lars Op den Kamp <lars@opdenkamp.eu>
+Date: Tue, 25 Feb 2025 16:11:43 +0100
+Subject: [PATCH] fixed: match debug flags of the c++ library with .net on
+ windows
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
++cmake_minimum_required(VERSION 3.12.0)
+ project(p8-platform)
+ 
+-cmake_minimum_required(VERSION 2.8.9)
+ enable_language(CXX)
+ 
+ set(CMAKE_CXX_STANDARD 11)

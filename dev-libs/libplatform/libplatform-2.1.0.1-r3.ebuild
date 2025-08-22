@@ -22,3 +22,8 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
+
+PATCHES=(
+	"${FILESDIR}"/libplatform-2.1.0.1-cmake4.patch
+	"${FILESDIR}"/libplatform-2.1.0.1-libcxx.patch
+)
