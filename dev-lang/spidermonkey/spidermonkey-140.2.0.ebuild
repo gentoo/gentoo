@@ -60,10 +60,11 @@ DESCRIPTION="Mozilla's JavaScript engine written in C and C++"
 HOMEPAGE="https://spidermonkey.dev https://firefox-source-docs.mozilla.org/js/index.html"
 SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}.source.tar.xz
 	${PATCH_URIS[@]}"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-
+S="${WORKDIR}/firefox-${PV%_*}"
 LICENSE="MPL-2.0"
 SLOT="$(ver_cut 1)"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+
 IUSE="clang cpu_flags_arm_neon debug +jit test"
 
 #RESTRICT="test"
@@ -87,8 +88,6 @@ DEPEND=">=dev-libs/icu-76.1:=
 	sys-libs/readline:0=
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/firefox-${PV%_*}"
 
 llvm_check_deps() {
 	if use clang ; then
