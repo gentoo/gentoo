@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,9 +8,8 @@ inherit qmake-utils xdg optfeature
 DESCRIPTION="editor for the TikZ drawing language"
 HOMEPAGE="https://github.com/fhackenberger/ktikz"
 SRC_URI="
-	https://github.com/fhackenberger/ktikz/archive/${PV}.tar.gz -> ktikz-${PV}.tar.gz
+	https://github.com/fhackenberger/ktikz/archive/${PV}.tar.gz -> ${P}.tar.gz
 "
-S="${WORKDIR}/ktikz-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -39,7 +38,7 @@ src_configure() {
 		LRELEASECOMMAND="$(qt5_get_bindir)/lrelease"
 		QCOLLECTIONGENERATORCOMMAND="$(qt5_get_bindir)/qcollectiongenerator"
 	)
-	eqmake5 ${PN}.pro "${myqmakeargs[@]}"
+	eqmake5 qtikz.pro "${myqmakeargs[@]}"
 }
 
 src_install() {
