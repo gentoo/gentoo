@@ -1825,12 +1825,12 @@ toolchain_src_configure() {
 	if in_iuse pie ; then
 		confgcc+=( $(use_enable pie default-pie) )
 
-		if tc_version_is_at_least 14.1 ${PV} ; then
+		if tc_version_is_at_least 14.1 ${PV} || tc_version_is_at_least 13.4.1_p20250814 ${PV} ; then
 			confgcc+=( --enable-host-pie )
 		fi
 	fi
 
-	if in_iuse default-znow && tc_version_is_at_least 14.1 ${PV}; then
+	if in_iuse default-znow && { tc_version_is_at_least 14.1 ${PV} || tc_version_is_at_least 13.4.1_p20250814 ${PV} ; } ; then
 		# See https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=33ebb0dff9bb022f1e0709e0e73faabfc3df7931.
 		# TODO: Add to LDFLAGS_FOR_TARGET?
 		confgcc+=(
