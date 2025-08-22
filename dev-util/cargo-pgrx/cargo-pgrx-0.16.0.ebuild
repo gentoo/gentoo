@@ -4,11 +4,11 @@
 EAPI=8
 
 CRATES=""
+RUST_MIN_VER="1.85.0"
+inherit cargo
 
 DESCRIPTION="pgrx: A Rust framework for creating Postgres extensions"
 HOMEPAGE="https://github.com/pgcentralfoundation/pgrx/"
-
-inherit cargo
 
 MY_PV="${PV/alpha/alpha.}"
 MY_PV="${MY_PV/_/-}"
@@ -21,6 +21,8 @@ S=${WORKDIR}/pgrx-${MY_PV}/cargo-pgrx
 LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-DFS-2016 ZLIB"
+# ring crate
+LICENSE+=" openssl"
 SLOT="0"
 
 KEYWORDS="~amd64"
