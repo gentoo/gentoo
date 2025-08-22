@@ -13,7 +13,7 @@ HOMEPAGE="https://apps.kde.org/kclock/"
 
 LICENSE="CC0-1.0 CC-BY-4.0 GPL-2+ GPL-3+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
 
 # slot op: Uses Qt6WaylandClientPrivate
 COMMON_DEPEND="
