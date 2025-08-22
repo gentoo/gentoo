@@ -60,14 +60,18 @@ KEYWORDS="~amd64 ~arm64"
 IUSE="perf-events test"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-cpp/gflags
-	dev-cpp/gtest
+RDEPEND="
+	dev-cpp/gflags
 	dev-cpp/glog:=
-	dev-cpp/nlohmann_json:=
 	dev-libs/libfmt:=
 	dev-libs/pfs
-	net-misc/curl"
-RDEPEND="${DEPEND}"
+"
+
+DEPEND="
+	${RDEPEND}
+	dev-cpp/nlohmann_json:=
+"
+BDEPEND="test? ( dev-cpp/gtest )"
 
 # Partially rust build
 QA_FLAGS_IGNORED=/usr/bin/dyno
