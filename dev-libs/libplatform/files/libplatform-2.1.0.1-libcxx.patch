@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/914866
+https://github.com/Pulse-Eight/platform/pull/45
+https://github.com/Pulse-Eight/platform/commit/a0d1a41ac47930a3d45020d1a8d26b90d3856ce9
+
+From a0d1a41ac47930a3d45020d1a8d26b90d3856ce9 Mon Sep 17 00:00:00 2001
+From: Lukas Rusak <lorusak@gmail.com>
+Date: Thu, 10 Sep 2020 11:32:55 -0700
+Subject: [PATCH] StringUtils: fix build with -std=c++17
+
+--- a/src/util/StringUtils.cpp
++++ b/src/util/StringUtils.cpp
+@@ -453,7 +453,7 @@ static int isspace_c(char c)
+ 
+ std::string& StringUtils::TrimLeft(std::string &str)
+ {
+-  str.erase(str.begin(), ::find_if(str.begin(), str.end(), ::not1(::ptr_fun(isspace_c))));
++  str.erase(str.begin(), ::find_if(str.begin(), str.end(), [](char s) { return isspace_c(s) == 0; }));
+   return str;
+ }
+ 
+@@ -466,7 +466,7 @@ std::string& StringUtils::TrimLeft(std::string &str, const char* const chars)
+ 
+ std::string& StringUtils::TrimRight(std::string &str)
+ {
+-  str.erase(::find_if(str.rbegin(), str.rend(), ::not1(::ptr_fun(isspace_c))).base(), str.end());
++  str.erase(::find_if(str.rbegin(), str.rend(), [](char s) { return isspace_c(s) == 0; }).base(), str.end());
+   return str;
+ }
+ 
