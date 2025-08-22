@@ -1,0 +1,10 @@
+--- a/hbt/src/perf_event/CpuArch.h	2025-08-22 08:36:48.218963948 +0200
++++ b/hbt/src/perf_event/CpuArch.h	2025-08-22 08:37:08.810742811 +0200
+@@ -8,6 +8,7 @@
+ #pragma once
+ 
+ #include <sstream>
++#include <cstdint>
+ 
+ namespace facebook::hbt::perf_event {
+ 
