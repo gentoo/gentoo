@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person" proxied="yes">
+		<email>inbox@peterleese.org</email>
+		<name>Peter Leese</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>dev-libs/botan</pkg></flag>
 		<flag name="shell">Install kea-shell text management client for Control Agent</flag>
+		<flag name="mysql">Add interface to MySQL for lease, host reservations and/or server config</flag>
+		<flag name="postgres">Add interface to PostgreSQL for lease, host reservations and/or server config</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://gitlab.isc.org/isc-projects/kea/-/issues</bugs-to>
