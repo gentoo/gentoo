@@ -18,7 +18,7 @@ arm64? (
 	https://dl.grafana.com/oss/release/grafana-${PV}.linux-arm64.tar.gz -> ${P}.arm64.tar.gz
 )
 "
-S=${WORKDIR}/${MY_PN}-v${MY_PV}
+S=${WORKDIR}/${MY_PN}-${MY_PV}
 
 LICENSE="AGPL-3"
 SLOT="0"
