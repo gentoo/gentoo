@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit libtool multilib-minimal
 
 MY_P="libopenmpt-${PV}+release.autotools"
 DESCRIPTION="Library to decode tracked music files (modules)"
@@ -27,6 +27,11 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 ECONF_SOURCE="${S}"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 multilib_src_configure() {
 	# A lot of these optional dependencies relate to openmpt123, which
