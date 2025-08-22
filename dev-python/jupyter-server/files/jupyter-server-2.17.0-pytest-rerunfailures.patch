@@ -1,0 +1,113 @@
+From 336adff91dfc7e592fc60e49b15a31ee67014832 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 24 Jul 2025 11:41:20 +0200
+Subject: [PATCH] Replace `@flaky.flaky` decorate with pytest marker
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Use the `@pytest.mark.flaky` marker in place of the `@flaky.flaky`
+decorator, to modernize the code and improve compatibility with other
+plugins providing the feature such as `pytest-rerunfailures`.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ tests/services/kernels/test_api.py             | 3 +--
+ tests/services/kernels/test_execution_state.py | 3 +--
+ tests/services/sessions/test_api.py            | 3 +--
+ tests/test_terminal.py                         | 5 ++---
+ 4 files changed, 5 insertions(+), 9 deletions(-)
+
+diff --git a/tests/services/kernels/test_api.py b/tests/services/kernels/test_api.py
+index 60009e8978..8bea6acae1 100644
+--- a/tests/services/kernels/test_api.py
++++ b/tests/services/kernels/test_api.py
+@@ -7,7 +7,6 @@
+ import jupyter_client
+ import pytest
+ import tornado
+-from flaky import flaky
+ from jupyter_client.kernelspec import NATIVE_KERNEL_NAME
+ from tornado.httpclient import HTTPClientError
+ 
+@@ -257,7 +256,7 @@ async def test_kernel_handler_startup_error_pending(
+         await jp_ws_fetch("api", "kernels", kid, "channels")
+ 
+ 
+-@flaky
++@pytest.mark.flaky
+ @pytest.mark.timeout(TEST_TIMEOUT)
+ async def test_connection(jp_fetch, jp_ws_fetch, jp_http_port, jp_auth_header):
+     # Create kernel
+diff --git a/tests/services/kernels/test_execution_state.py b/tests/services/kernels/test_execution_state.py
+index 50155ec76f..7625a16608 100644
+--- a/tests/services/kernels/test_execution_state.py
++++ b/tests/services/kernels/test_execution_state.py
+@@ -9,7 +9,6 @@
+ 
+ import jupyter_client
+ import pytest
+-from flaky import flaky
+ from tornado.httpclient import HTTPClientError
+ from traitlets.config import Config
+ 
+@@ -18,7 +17,7 @@
+ MINIMUM_CONSISTENT_COUNT = 4
+ 
+ 
+-@flaky
++@pytest.mark.flaky
+ async def test_execution_state(jp_fetch, jp_ws_fetch):
+     r = await jp_fetch("api", "kernels", method="POST", allow_nonstandard_methods=True)
+     kernel = json.loads(r.body.decode())
+diff --git a/tests/services/sessions/test_api.py b/tests/services/sessions/test_api.py
+index a0502b544e..3a8ad5437b 100644
+--- a/tests/services/sessions/test_api.py
++++ b/tests/services/sessions/test_api.py
+@@ -9,7 +9,6 @@
+ import jupyter_client
+ import pytest
+ import tornado
+-from flaky import flaky
+ from jupyter_client.ioloop import AsyncIOLoopKernelManager
+ from nbformat import writes
+ from nbformat.v4 import new_notebook
+@@ -505,7 +504,7 @@ async def test_modify_kernel_id(session_client, jp_fetch, jp_serverapp, session_
+         assert kernel_list == [kernel]
+ 
+ 
+-@flaky
++@pytest.mark.flaky
+ @pytest.mark.timeout(TEST_TIMEOUT)
+ async def test_restart_kernel(session_client, jp_base_url, jp_fetch, jp_ws_fetch, session_is_ready):
+     # Create a session.
+diff --git a/tests/test_terminal.py b/tests/test_terminal.py
+index 8f35c7df60..d4e9464dd6 100644
+--- a/tests/test_terminal.py
++++ b/tests/test_terminal.py
+@@ -7,7 +7,6 @@
+ import warnings
+ 
+ import pytest
+-from flaky import flaky  # type:ignore[import-untyped]
+ from tornado.httpclient import HTTPClientError
+ from traitlets.config import Config
+ 
+@@ -230,7 +229,7 @@ async def test_terminal_create_with_bad_cwd(jp_fetch, jp_ws_fetch):
+     assert non_existing_path not in message_stdout
+ 
+ 
+-@flaky
++@pytest.mark.flaky
+ def test_culling_config(jp_server_config, jp_configurable_serverapp):
+     app = jp_configurable_serverapp()
+     terminal_mgr_config = app.config.ServerApp.TerminalManager
+@@ -242,7 +241,7 @@ def test_culling_config(jp_server_config, jp_configurable_serverapp):
+     assert terminal_mgr_settings.cull_interval == CULL_INTERVAL
+ 
+ 
+-@flaky
++@pytest.mark.flaky
+ async def test_culling(jp_server_config, jp_fetch):
+     # POST request
+     resp = await jp_fetch(
