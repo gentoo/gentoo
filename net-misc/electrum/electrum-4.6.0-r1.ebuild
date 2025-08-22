@@ -75,7 +75,7 @@ src_prepare() {
 	# remove bundled dependencies
 	rm -r electrum/_vendor packages || die
 	find -name '*.py' -exec \
-		sed -i -e 's:[.]_vendor[.]::' {} + || die
+		sed -i -e 's:\(electrum\)\?[.]_vendor[.]::' {} + || die
 
 	# use backwards-compatible cryptodome API
 	sed -i -e 's:Cryptodome:Crypto:' electrum/crypto.py || die
