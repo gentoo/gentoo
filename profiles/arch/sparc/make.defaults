@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="sparc"
-ACCEPT_KEYWORDS="${ARCH}"
+ACCEPT_KEYWORDS="${ARCH} ~${ARCH}"
 
 # 64bit kernel, 32bit userland
 PROFILE_ARCH="sparc64"
