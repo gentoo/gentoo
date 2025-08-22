@@ -307,7 +307,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 
 	# Stop forcing openmp on by default in the eclass. Gradually phase it out.
 	# See bug #890999.
-	if tc_version_is_at_least 13.0.0_pre20221218 ; then
+	if tc_version_is_at_least 13.1 ; then
 		IUSE+=" openmp"
 	else
 		IUSE+=" +openmp"
@@ -333,14 +333,14 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 12 && IUSE+=" ieee-long-double"
 	tc_version_is_at_least 12.2.1_p20221203 ${PV} && IUSE+=" default-znow"
 	tc_version_is_at_least 12.2.1_p20221203 ${PV} && IUSE+=" default-stack-clash-protection"
-	tc_version_is_at_least 13.0.0_pre20221218 ${PV} && IUSE+=" modula2"
+	tc_version_is_at_least 13.1 ${PV} && IUSE+=" modula2"
 	# See https://gcc.gnu.org/pipermail/gcc-patches/2023-April/615944.html
 	# and https://rust-gcc.github.io/2023/04/24/gccrs-and-gcc13-release.html for why
 	# it was disabled in 13.
-	tc_version_is_at_least 14.0.0_pre20230423 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
+	tc_version_is_at_least 14.1 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
 	tc_version_is_at_least 13.3.1_p20250522 ${PV} && IUSE+=" time64"
-	tc_version_is_at_least 15.0.0_pre20241124 ${PV} && IUSE+=" libgdiagnostics"
-	tc_version_is_at_least 15.0.1_pre20250316 ${PV} && IUSE+=" cobol"
+	tc_version_is_at_least 15.1 ${PV} && IUSE+=" libgdiagnostics"
+	tc_version_is_at_least 15.1 ${PV} && IUSE+=" cobol"
 fi
 
 if tc_version_is_at_least 10; then
@@ -450,7 +450,7 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	BDEPEND+=" d? ( || ( sys-devel/gcc:${SLOT}[d(-)] <sys-devel/gcc-${SLOT}[d(-)] <sys-devel/gcc-12[d(-)] ) )"
 fi
 
-if tc_has_feature rust && tc_version_is_at_least 14.0.0_pre20230421 ; then
+if tc_has_feature rust && tc_version_is_at_least 14.1 ; then
 	# This was added upstream in r14-9968-g3e1e73fc995844 as a temporary measure.
 	# See https://inbox.sourceware.org/gcc/34fec7ea-8762-4cac-a1c8-ff54e20e31ed@embecosm.com/
 	BDEPEND+=" rust? ( ${RUST_DEPEND} )"
@@ -1825,12 +1825,12 @@ toolchain_src_configure() {
 	if in_iuse pie ; then
 		confgcc+=( $(use_enable pie default-pie) )
 
-		if tc_version_is_at_least 14.0.0_pre20230612 ${PV} ; then
+		if tc_version_is_at_least 14.1 ${PV} ; then
 			confgcc+=( --enable-host-pie )
 		fi
 	fi
 
-	if in_iuse default-znow && tc_version_is_at_least 14.0.0_pre20230619 ${PV}; then
+	if in_iuse default-znow && tc_version_is_at_least 14.1 ${PV}; then
 		# See https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=33ebb0dff9bb022f1e0709e0e73faabfc3df7931.
 		# TODO: Add to LDFLAGS_FOR_TARGET?
 		confgcc+=(
@@ -1975,7 +1975,7 @@ toolchain_src_configure() {
 			confgcc_jit+=( $(use_with zstd) )
 		fi
 
-		if tc_version_is_at_least 15.0.0_pre20241124 ${PV} ; then
+		if tc_version_is_at_least 15.1 ${PV} ; then
 			confgcc_jit+=( $(use_enable libgdiagnostics) )
 		fi
 
