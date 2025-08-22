@@ -37,6 +37,13 @@ DEPEND="
 	sys-kernel/linux-headers
 "
 
+PATCHES=(
+	# ALready in main, can be dropped in newer versions
+	"${FILESDIR}/0001-mesa-util-use-c11-alignof-instead-of-our-own.patch"
+	# bug 961270
+	"${FILESDIR}/${PN}-fix-clang-warning-about-typeof.patch"
+)
+
 src_configure() {
 	local -a gpus=()
 	use video_cards_amdgpu && gpus+=( amdgpu-experimental )

@@ -137,7 +137,6 @@ openexr
 
 # Stuff we don't want
 afs
-ots
 frei0r
 libtar
 devil

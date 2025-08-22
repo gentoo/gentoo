@@ -1,0 +1,28 @@
+--- a/CMakeLists.txt	2025-08-20 07:00:23.147426248 +0200
++++ b/CMakeLists.txt	2025-08-20 06:56:58.840619946 +0200
+@@ -59,6 +59,7 @@
+ # https://github.com/nlohmann/json#cmake
+ set(JSON_BuildTests OFF CACHE INTERNAL "")
+ add_subdirectory(third_party/json)
++find_package(nlohmann_json)
+ target_link_libraries(dynolog_lib PUBLIC nlohmann_json::nlohmann_json)
+ 
+ add_subdirectory(third_party/pfs)
+--- a/dynolog/src/rpc/CMakeLists.txt	2025-08-20 06:57:51.378055835 +0200
++++ b/dynolog/src/rpc/CMakeLists.txt	2025-08-20 06:58:18.054769410 +0200
+@@ -15,5 +15,6 @@
+ target_link_libraries(dynolog_rpc_lib PUBLIC gflags)
+ find_package(glog)
+ target_link_libraries(dynolog_rpc_lib PUBLIC glog::glog)
++find_package(nlohmann_json)
+ target_link_libraries(dynolog_rpc_lib PUBLIC nlohmann_json::nlohmann_json)
+ target_link_libraries(dynolog_rpc_lib PUBLIC -lfmt)
+--- a/dynolog/src/gpumon/CMakeLists.txt	2025-08-20 06:58:53.538388408 +0200
++++ b/dynolog/src/gpumon/CMakeLists.txt	2025-08-20 06:59:19.535109259 +0200
+@@ -19,5 +19,6 @@
+ target_link_libraries(dynolog_dcgm_lib PUBLIC gflags)
+ find_package(glog)
+ target_link_libraries(dynolog_dcgm_lib PUBLIC glog::glog)
++find_package(nlohmann_json)
+ target_link_libraries(dynolog_dcgm_lib PUBLIC nlohmann_json::nlohmann_json)
+ target_link_libraries(dynolog_dcgm_lib PUBLIC pfs)

@@ -143,7 +143,6 @@ chm
 ebook
 capi
 lensfun
-jingle
 vaapi
 librtmp
 rtmp
@@ -179,7 +178,6 @@ bluray
 gps
 
 # Stuff we don't want
-ots
 frei0r
 redis
 

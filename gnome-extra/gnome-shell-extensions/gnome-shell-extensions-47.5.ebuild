@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-shell-extensions"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="X"
 
 DEPEND="

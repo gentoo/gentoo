@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.79.0"
+RUST_MIN_VER="1.82.0"
 inherit cargo shell-completion
 
 DESCRIPTION="A new way to see and navigate directory trees"

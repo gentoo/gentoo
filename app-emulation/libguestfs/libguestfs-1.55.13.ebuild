@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 USE_RUBY=( ruby3{2..3} )
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-inherit autotools bash-completion-r1 linux-info lua-single perl-functions\
+inherit autotools bash-completion-r1 dot-a linux-info lua-single perl-functions\
 		python-single-r1 ruby-single toolchain-funcs vala
 
 MY_PV_1="$(ver_cut 1-2)"
@@ -150,6 +150,10 @@ src_configure() {
 	# Bug #915339
 	unset LEX YACC
 
+	if use ocaml || use static-libs; then
+		lto-guarantee-fat
+	fi
+
 	local myconf=(
 		--disable-appliance
 		--disable-daemon
@@ -193,6 +197,8 @@ src_configure() {
 
 src_install() {
 	emake INSTALLDIRS=vendor DESTDIR="${D}" install "LINGUAS=""${LINGUAS}"""
+	# ocaml always installs a static lib even without USE=static-libs
+	strip-lto-bytecode "${ED}"
 
 	find "${ED}" -name '*.la' -delete || die
 

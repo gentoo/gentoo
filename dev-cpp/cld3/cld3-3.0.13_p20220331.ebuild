@@ -14,7 +14,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~loong"
 
 RDEPEND="
 	dev-cpp/abseil-cpp:=

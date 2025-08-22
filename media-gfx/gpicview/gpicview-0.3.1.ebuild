@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lxde/gpicview/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ppc ~riscv x86"
 
 RDEPEND="
 	dev-libs/glib:2

@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-08-21)
+# Requires dev-python/qtconsole.
+dev-python/ipython gui
+
 # Ian Jordan <immoloism@gmail.com> (2025-07-28)
 # Needs app-text/ronn-ng, which is not keyworded here
 app-accessibility/espeakup man

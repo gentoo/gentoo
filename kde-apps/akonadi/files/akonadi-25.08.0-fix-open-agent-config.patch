@@ -1,0 +1,25 @@
+From 8a2dfd13b3c4730636a962121368d49c57f79273 Mon Sep 17 00:00:00 2001
+From: Tobias Fella <tobias.fella@kde.org>
+Date: Fri, 25 Jul 2025 15:50:15 +0200
+Subject: [PATCH] Fix opening agent configuration
+
+---
+ src/quick/qml/AgentConfigurationForm.qml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/quick/qml/AgentConfigurationForm.qml b/src/quick/qml/AgentConfigurationForm.qml
+index 374e3a573..335c62d7c 100644
+--- a/src/quick/qml/AgentConfigurationForm.qml
++++ b/src/quick/qml/AgentConfigurationForm.qml
+@@ -25,7 +25,7 @@ FormCard.FormCard {
+     Components.MessageDialog {
+         id: dialog
+ 
+-        property Item agentDelegate
++        property var agentDelegate
+ 
+         title: i18ndc("libakonadi6", "@title:dialog", "Configure %1", agentDelegate?.name)
+         parent: root.QQC2.Overlay.overlay
+-- 
+GitLab
+

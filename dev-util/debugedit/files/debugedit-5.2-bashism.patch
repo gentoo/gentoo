@@ -1,0 +1,35 @@
+https://sourceware.org/cgit/debugedit/commit/?id=40b9c550dd2f94a069f3bedf51ceb310d7487d88
+
+From 40b9c550dd2f94a069f3bedf51ceb310d7487d88 Mon Sep 17 00:00:00 2001
+From: Michał Górny <mgorny@gentoo.org>
+Date: Tue, 8 Jul 2025 07:40:20 +0200
+Subject: tests/debugedit.at: Replace 'type -p' bashism
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Replace 'type -p' with more portable 'command -v', in order to fix
+running the test suite on non-bash shells.  Note that while the test
+itself invokes bash, the backticks are evaluated within the context
+of the shell used by autotest.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ tests/find-debuginfo.at | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/find-debuginfo.at b/tests/find-debuginfo.at
+index 5552ce1..dd59374 100644
+--- a/tests/find-debuginfo.at
++++ b/tests/find-debuginfo.at
+@@ -67,7 +67,7 @@ AT_CHECK([$READELF --debug-dump=line subdir_build/dupes.a | grep `pwd`], [0], [s
+ 
+ # run conversion, under bash -x tracing for fuller testing log
+ AT_CHECK([[env RPM_BUILD_DIR=${PWD} RPM_BUILD_ROOT=${PWD} RPM_PACKAGE_NAME=pkg RPM_PACKAGE_VERSION=ver RPM_PACKAGE_RELEASE=rel RPM_ARCH=arch \
+-               bash -x `type -p find-debuginfo` -S sourcefiles.list -v ${PWD}/subdir_build]], [0], [stdout], [ignore])
++               bash -x `command -v find-debuginfo` -S sourcefiles.list -v ${PWD}/subdir_build]], [0], [stdout], [ignore])
+ 
+ # list new .a contents; ar tPv contains timestamps / subdirs, so not a good fit for AT_DATA() here
+ AT_CHECK([$AR tPv subdir_build/dupes.a],[0],[stdout],[ignore])
+-- 
+cgit

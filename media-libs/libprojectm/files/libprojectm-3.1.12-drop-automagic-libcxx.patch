@@ -1,0 +1,18 @@
+Since 776c012c6e3b6dd66aeeff851aedb48851f93975, we build GCC s.t. it has
+-stdlib= if one wishes to use it for advanced cases. Unfortunately, the
+libprojectm configure script automagically uses -stdlib=libc++ if available
+which is completely wrong and breaks the Qt check.
+--- a/configure.ac
++++ b/configure.ac
+@@ -153,11 +153,6 @@ AC_PREFIX_DEFAULT([/usr/local])
+ 
+ AC_PROG_MKDIR_P
+ 
+-AS_IF([echo ${host} | grep -Fq android], [],
+-  [AX_CHECK_COMPILE_FLAG([-stdlib=libc++], [
+-                        CXXFLAGS="$CXXFLAGS -stdlib=libc++"])
+-])
+-
+ AX_CHECK_COMPILE_FLAG([-std=c++14], [
+                         CXXFLAGS="$CXXFLAGS -std=c++14"])
+ 

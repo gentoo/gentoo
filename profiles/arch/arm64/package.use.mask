@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
+# dev-games/ogre is not keyworded here
+>=dev-games/mygui-3.4.1 ogre
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
 # aarch64 supports sframe
 >=sys-libs/glibc-2.42 -sframe
@@ -107,7 +111,6 @@ sci-chemistry/gromacs nnpot
 
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
 # Available on arm64.
-www-client/firefox -wasm
 www-client/firefox -wasm-sandbox
 
 # Michał Górny <mgorny@gentoo.org> (2024-10-23)
@@ -260,10 +263,6 @@ sys-cluster/openmpi openmpi_fabrics_knem
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
 
-# Jakov Smolić <jsmolic@gentoo.org> (2021-10-07)
-# dev-libs/mongo-c-driver is not keyworded here
-net-analyzer/zmap mongo
-
 # Sam James <sam@gentoo.org> (2021-08-14)
 # Needs Raspberry Pi specific applications
 media-video/mjpg-streamer -input-raspicam
@@ -333,7 +332,7 @@ app-text/enchant voikko
 llvm-runtimes/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 llvm-runtimes/compiler-rt-sanitizers -gwp-asan -shadowcallstack
-llvm-runtimes/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan -tysan
+llvm-runtimes/compiler-rt-sanitizers -libfuzzer -profile -xray -rtsan
 >=llvm-runtimes/compiler-rt-sanitizers-16 -orc
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2020-12-07)
@@ -438,10 +437,6 @@ media-gfx/gnome-photos upnp-av
 # Roy Bamford <neddyseagoon@gentoo.org> (2019-03-11)
 # net-misc/dropbox is binary amd64/x86 only
 kde-apps/kdenetwork-meta dropbox
-
-# Roy Bamford <neddyseagoon@gentoo.org> (2019-03-10)
-# sci-chemistry/openbabel is not keyworded/fails to build
-kde-apps/kalzium editor
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2019-03-10)
 # No arm64 ever had bios, but sys-apps/fwupdate needs
@@ -549,7 +544,7 @@ net-libs/libpcap bluetooth
 
 # Mart Raudsepp <leio@gentoo.org> (2017-02-16)
 # Not yet tested features/dependencies
-app-text/evince dvi nautilus postscript xps
+app-text/evince dvi postscript xps
 
 # Markus Meier <maekke@gentoo.org> (2013-12-26)
 # Unkeyworded deps, bug #488724

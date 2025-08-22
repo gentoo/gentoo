@@ -26,10 +26,6 @@ app-arch/mt-st test
 # Bug #910229, #920713
 >=mail-client/thunderbird-115.0 system-icu
 
-# Michał Górny <mgorny@gentoo.org> (2023-06-11)
-# xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
-xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
-
 # Daniel Pielmeier <billie@gentoo.org> (2023-03-04)
 # For docs, app-text/pandoc is required. For details see:
 # Bug #737612
@@ -138,7 +134,6 @@ sci-libs/indilib websocket
 # These features require dev-perl/GD, which currently can't be
 # considered stable due to serious defects upstream. Bug #661634
 app-misc/g15daemon perl
-dev-lang/php coverage
 dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
 media-fonts/unifont utils fontforge
@@ -225,7 +220,3 @@ app-crypt/tpm-tools pkcs11
 # Bug #486076, ocaml masked to allow xen to once again
 # become a stabilisable package
 app-emulation/xen-tools ocaml
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
-# Depends on unstable sci-libs/avogadrolibs
-kde-apps/kalzium editor

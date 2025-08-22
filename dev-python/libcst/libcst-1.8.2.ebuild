@@ -7,6 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
+RUST_MIN_VER="1.80.0"
 CRATES="
 	aho-corasick@1.0.4
 	anes@0.1.6
@@ -133,6 +134,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -170,7 +172,6 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 	# fixtures
 	ln -s "${S}/native" . || die

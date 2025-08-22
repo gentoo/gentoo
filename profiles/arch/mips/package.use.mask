@@ -1,6 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
+# virtual/mysql[static] has no keyworded implementations here.
+>=virtual/mysql-8.0 static
+
+# Pacho Ramos <pacho@gentoo.org> (2025-08-15)
+# dev-lang/spidermonkey:128 is not keyworded on mips, #941187
+app-crypt/libsecret test-rust
+dev-util/glade gjs
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-18)
 # Not keyworded for mips
 app-alternatives/sh ksh
@@ -450,10 +459,6 @@ dev-ruby/rubygems server
 # Jim Ramsay <lack@gentoo.org> (2007-09-07)
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here
 app-admin/gkrellm hddtemp
-
-# Christian Heim <phreak@gentoo.org> (2007-07-07)
-# virtual/mysql-5 not keyworded yet, still apr-util has the mips keyword.
-dev-libs/apr-util mysql
 
 # Stuart Longland <redhatter@gentoo.org> (2007-09-07)
 # mplayer not tested with these flags yet.  I may remove these slowly as I test

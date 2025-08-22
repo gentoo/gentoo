@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -25,7 +25,7 @@ IUSE="test"
 ruby_add_rdepend "
 	>=dev-ruby/activesupport-3.0:*
 	>=dev-ruby/railties-3.0:*
-	>=dev-ruby/rspec-rails-2.2:*
+	|| ( dev-ruby/rspec-rails:7 dev-ruby/rspec-rails:6 )
 "
 
 ruby_add_bdepend "
@@ -57,5 +57,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	RAILS_VERSION="< 7.2" RSPEC_VERSION=">=4" ${RUBY} -S bundle exec ${RUBY} -S rspec-3 spec || die
+	RAILS_VERSION="< 7.2" RSPEC_VERSION="< 8" ${RUBY} -S bundle exec ${RUBY} -S rspec-3 spec || die
 }

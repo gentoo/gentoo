@@ -147,9 +147,6 @@ cpu_flags_ppc_vsx4
 
 # mips arch specific USE flags
 loongson2f
-mipsdspr1
-mipsdspr2
-mipsfpu
 
 # ppc64 arch specific USE flags
 ibm

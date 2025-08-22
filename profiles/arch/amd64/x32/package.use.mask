@@ -63,6 +63,7 @@ games-util/lgogdownloader gui
 kde-apps/kde-apps-meta pim
 kde-apps/kdenetwork-meta bittorrent
 kde-apps/kleopatra pim
+kde-apps/umbrello php
 kde-misc/kio-gdrive share
 kde-plasma/plasma-nm openconnect
 net-misc/seafile-client shibboleth

@@ -1,0 +1,82 @@
+https://bugs.astron.com/view.php?id=678
+Two patches:
+1) https://github.com/file/file/commit/f49e4b1a393c0378e43b65c36765676c98d018c4
+2) From the bug
+
+From f49e4b1a393c0378e43b65c36765676c98d018c4 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Thu, 20 Mar 2025 14:57:41 +0000
+Subject: [PATCH] Fix termios handling on linux/ppc (Dr. Werner Fink)
+
+---
+ src/seccomp.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/seccomp.c b/src/seccomp.c
+index 9e00034ad..f05c30f9f 100644
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -27,15 +27,20 @@
+ #include "file.h"
+ 
+ #ifndef	lint
+-FILE_RCSID("@(#)$File: seccomp.c,v 1.30 2024/11/28 14:04:24 christos Exp $")
++FILE_RCSID("@(#)$File: seccomp.c,v 1.31 2025/03/20 14:57:41 christos Exp $")
+ #endif	/* lint */
+ 
+ #if HAVE_LIBSECCOMP
+ #include <seccomp.h> /* libseccomp */
+ #include <sys/prctl.h> /* prctl */
+-#include <sys/ioctl.h>
+ #include <sys/socket.h>
+-#include <termios.h>
++#ifdef __powerpc64__
++// See: https://sourceware.org/bugzilla/show_bug.cgi?id=32806
++# include <asm/termbits.h>
++#else
++# include <termios.h>
++#endif
++#include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <stdlib.h>
+ #include <errno.h>
+
+
+From 7b23bd3f87069fcebc9173c8d1637c2a2e1a12d1 Mon Sep 17 00:00:00 2001
+From: Tobias Stoeckmann <tobias@stoeckmann.org>
+Date: Wed, 6 Aug 2025 23:11:10 +0200
+Subject: [PATCH] Extend seccomp for glibc and  physical terminals
+
+New glibc implementations might also use TCGETS2 instead of TCGETS.
+This happens on current Arch Linux systems. Allow TCGETS2 in seccomp
+sandbox as well.
+---
+ src/seccomp.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/seccomp.c b/src/seccomp.c
+index f05c30f9..dddb821c 100644
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -37,6 +37,8 @@ FILE_RCSID("@(#)$File: seccomp.c,v 1.31 2025/03/20 14:57:41 christos Exp $")
+ #ifdef __powerpc64__
+ // See: https://sourceware.org/bugzilla/show_bug.cgi?id=32806
+ # include <asm/termbits.h>
++#elif defined __linux__
++# include <linux/termios.h>
+ #else
+ # include <termios.h>
+ #endif
+@@ -121,6 +123,10 @@ enable_sandbox(void)
+ #ifdef TCGETS
+ 	// glibc may call ioctl TCGETS on stdout on physical terminal
+ 	ALLOW_IOCTL_RULE(TCGETS);
++#endif
++#ifdef TCGETS2
++	// glibc may call ioctl TCGETS2 on stdout on physical terminal
++	ALLOW_IOCTL_RULE(TCGETS2);
+ #endif
+ 	ALLOW_RULE(lseek);
+  	ALLOW_RULE(_llseek);
+-- 
+2.50.1

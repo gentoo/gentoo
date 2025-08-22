@@ -1,0 +1,52 @@
+Pending MR: https://invent.kde.org/sdk/umbrello/-/merge_requests/68
+
+From 22e2973e24762296d0bdf0fcd0c7f11353c0e376 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 18 Aug 2025 18:10:52 +0200
+Subject: [PATCH] Fix install paths
+
+Deprecated since KF5, removed in KF6, leading to install to "/":
+- DATA_INSTALL_DIR
+- HTML_INSTALL_DIR
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt             | 2 +-
+ doc/CMakeLists.txt         | 2 +-
+ doc/apphelp/CMakeLists.txt | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 304cba56b..7ce9fce61 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -150,7 +150,7 @@ else()
+     set(BUILD_PHP_IMPORT 0)
+ endif()
+ 
+-set(UMBRELLO_DATA_INSTALL_DIR ${DATA_INSTALL_DIR}/umbrello${APP_SUFFIX})
++set(UMBRELLO_DATA_INSTALL_DIR ${KDE_INSTALL_DATADIR}/umbrello${APP_SUFFIX})
+ 
+ ki18n_install(po)
+ kdoctools_install(po)
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 1a4696e5d..cb67d93fd 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -1,4 +1,4 @@
+ ########### install files ###############
+-kdoctools_create_handbook(index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/en SUBDIR umbrello)
++kdoctools_create_handbook(index.docbook INSTALL_DESTINATION ${KDE_INSTALL_DOCBUNDLEDIR}/en SUBDIR umbrello)
+ 
+ add_subdirectory(apphelp)
+diff --git a/doc/apphelp/CMakeLists.txt b/doc/apphelp/CMakeLists.txt
+index 57b171f82..d9164008a 100644
+--- a/doc/apphelp/CMakeLists.txt
++++ b/doc/apphelp/CMakeLists.txt
+@@ -1,2 +1,2 @@
+ ########### install files ###############
+-kdoctools_create_handbook(index.docbook INSTALL_DESTINATION ${HTML_INSTALL_DIR}/en SUBDIR umbrello/apphelp)
++kdoctools_create_handbook(index.docbook INSTALL_DESTINATION ${KDE_INSTALL_DOCBUNDLEDIR}/en SUBDIR umbrello/apphelp)
+-- 
+2.50.1
+

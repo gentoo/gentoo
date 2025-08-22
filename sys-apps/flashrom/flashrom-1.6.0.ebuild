@@ -13,6 +13,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
+# These programmers cannot be compiled, so excluded in the list below
+# ni845x_spi   windows/x86 only (we are linux/...)
+
 # The defaults should match the upstream "default" flags in meson.build
 IUSE_PROGRAMMERS="
 	+asm106x
@@ -38,7 +41,6 @@ IUSE_PROGRAMMERS="
 	parade-lspcon
 	mediatek-i2c-spi
 	mstarddc-spi
-	ni845x-spi
 	+nic3com
 	+nicintel
 	+nicintel-eeprom

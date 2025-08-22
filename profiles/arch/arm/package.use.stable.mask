@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
+# net-libs/farstream is not stable here. Bug #953811
+net-im/pidgin gstreamer
+
 # Pacho Ramos <pacho@gentoo.org> (2025-06-28)
 # It needs gnome-control-center and many more gnome packages to be
 # stabilized before
@@ -175,10 +179,6 @@ dev-util/geany-plugins gtkspell
 # Markus Meier <maekke@gentoo.org> (2016-09-27)
 # Missing stable
 dev-db/mariadb jdbc
-
-# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
-# RPI support on arm
-dev-libs/libcec -raspberry-pi
 
 # Brian Evans <grknight@gentoo.org> (2016-01-08)
 # net-misc/libteam is not yet stable on arm

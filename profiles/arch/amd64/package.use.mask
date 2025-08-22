@@ -90,7 +90,6 @@ media-gfx/openscad -manifold
 
 # Joonas Niilola <juippis@gentoo.org> (2024-11-16)
 # Available on amd64.
-www-client/firefox -wasm
 www-client/firefox -wasm-sandbox
 
 # Sam James <sam@gentoo.org> (2024-10-29)
@@ -211,10 +210,6 @@ dev-build/cmake -dap
 dev-libs/mongo-c-driver -test-full
 dev-python/pymongo -test-full
 
-# Sam James <sam@gentoo.org> (2023-05-15)
-# net-libs/rustls-ffi is keyworded here
-www-servers/apache -apache2_modules_tls
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-04-22)
 # snap only works on amd64
 gnome-extra/gnome-software -snap
@@ -265,9 +260,6 @@ www-servers/nginx -nginx_modules_http_security
 # Allow stack to be realigned for compatibility with older 32-bit binaries.
 sys-libs/glibc -stack-realign
 sys-libs/ncurses -stack-realign
-
-# Unmask media-libs/libxmp here
-media-sound/qmmp -xmp
 
 # Kai-Chun Ning <kaichun.ning@gmail.com> (2022-05-23)
 # Need intel-hybrid-codec-driver, which only works on amd64
@@ -326,7 +318,7 @@ llvm-runtimes/compiler-rt-sanitizers -asan -dfsan -lsan -msan -hwasan -tsan
 llvm-runtimes/compiler-rt-sanitizers -ubsan -safestack -cfi -scudo
 llvm-runtimes/compiler-rt-sanitizers -gwp-asan
 llvm-runtimes/compiler-rt-sanitizers -libfuzzer -memprof -orc -profile -xray
-llvm-runtimes/compiler-rt-sanitizers -ctx-profile -nsan -rtsan -tysan
+llvm-runtimes/compiler-rt-sanitizers -ctx-profile -nsan -rtsan
 
 # Sam James <sam@gentoo.org> (2020-10-24)
 # asm redc is only available on amd64,
@@ -422,10 +414,6 @@ net-analyzer/testssl -bundled-openssl -kerberos
 # Dependency sys-cluster/ceph is keyworded for amd64
 net-fs/samba -ceph
 
-# Rick Farina <zerochaos@gentoo.org> (2018-06-27)
-# Catalyst has support for assembling bootloader on this arch
-dev-util/catalyst -system-bootloader
-
 # Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2018-06-17)
 # Vulkan support is only available on few selected arches atm.
 # Mask everywhere, unmask where appropriate.
@@ -433,7 +421,6 @@ media-video/mpv -vulkan
 
 # Richard Yao <ryao@gentoo.org> (2018-04-16)
 # sys-fs/zfs is keyworded on amd64
-sys-cluster/ceph -zfs
 sys-boot/grub -libzfs
 
 # Amy Liffey <amynka@gentoo.org> (2017-09-19)
@@ -585,10 +572,6 @@ app-backup/backup-manager s3
 # 11-12)
 media-libs/imlib2 cpu_flags_x86_mmx
 
-# Jeremy Olexa <darkside@gentoo.org> (2008-12-27)
-# Mask static USE flag because it just doesn't work on amd64. See bug 236591
->=app-arch/p7zip-4.58 static
-
 # Jeremy Olexa <darkside@gentoo.org> (2008-12-24)
 # unmask USE=bindist on amd64 - also unmasking the other flags that were under a
 # bad comment heading. see bug #246144
@@ -607,7 +590,6 @@ media-libs/sdl-gfx cpu_flags_x86_mmx
 media-libs/smpeg cpu_flags_x86_mmx
 
 # x86_64 opts are enabled with USE sse. so masking the rest
-media-sound/mpg123 cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 media-sound/mpg123-base cpu_flags_x86_mmx cpu_flags_x86_3dnow cpu_flags_x86_3dnowext
 
 # Alexis Ballier <aballier@gentoo.org> (2008-08-08)

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib.eclass
@@ -552,10 +552,10 @@ multilib_toolchain_setup() {
 		export STRIP="$(tc-getSTRIP)" # Avoid 'strip', use '${CHOST}-strip'
 
 		export CHOST=$(get_abi_CHOST $1)
-		export PKG_CONFIG_LIBDIR=${EPREFIX}/usr/$(get_libdir)/pkgconfig
-		export PKG_CONFIG_PATH=${EPREFIX}/usr/share/pkgconfig
-		export PKG_CONFIG_SYSTEM_INCLUDE_PATH=${EPREFIX}/usr/include
-		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${EPREFIX}/$(get_libdir):${EPREFIX}/usr/$(get_libdir)
+		export PKG_CONFIG_LIBDIR=${ESYSROOT}/usr/$(get_libdir)/pkgconfig
+		export PKG_CONFIG_PATH=${ESYSROOT}/usr/share/pkgconfig
+		export PKG_CONFIG_SYSTEM_INCLUDE_PATH=${ESYSROOT}/usr/include
+		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${ESYSROOT}/$(get_libdir):${ESYSROOT}/usr/$(get_libdir)
 	fi
 }
 

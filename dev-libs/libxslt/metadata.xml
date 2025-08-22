@@ -13,4 +13,7 @@
     <remote-id type="cpe">cpe:/a:xmlsoft:libxslt</remote-id>
     <remote-id type="gnome-gitlab">GNOME/libxslt</remote-id>
   </upstream>
+  <use>
+    <flag name="debugger">Build into the library callbacks and associated API for debugging XML processing.</flag>
+  </use>
 </pkgmetadata>

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic libtool
+inherit autotools dot-a flag-o-matic libtool
 
 MY_PV="libffcall-${PV}"
 
@@ -38,8 +38,8 @@ src_prepare() {
 	done
 
 	default
-	elibtoolize
 	eautoreconf
+	elibtoolize
 
 	if use kernel_linux ; then
 		QA_CONFIG_IMPL_DECL_SKIP=( PROT_MPROTECT )
@@ -49,6 +49,7 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fPIC
+	lto-guarantee-fat
 
 	# Doc goes in datadir
 	econf \
@@ -65,6 +66,7 @@ src_install() {
 	dodir /usr/share/man
 
 	default
+	strip-lto-bytecode
 
 	find "${ED}" -name '*.la' -delete || die
 }

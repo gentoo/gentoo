@@ -1,0 +1,82 @@
+--- a/CMakeLists.txt	2025-08-18 15:50:34.974028287 +0200
++++ b/CMakeLists.txt	2025-08-18 15:50:49.458873413 +0200
+@@ -66,7 +66,7 @@
+ target_link_libraries(dynolog_lib PUBLIC pfs)
+ 
+ add_subdirectory(third_party/fmt)
+-target_link_libraries(dynolog_lib PUBLIC fmt::fmt)
++target_link_libraries(dynolog_lib PUBLIC -lfmt)
+ 
+ if(USE_ODS_GRAPH_API)
+   add_subdirectory(third_party/cpr)
+--- a/dynolog/src/rpc/CMakeLists.txt	2025-08-18 15:52:56.200518354 +0200
++++ b/dynolog/src/rpc/CMakeLists.txt	2025-08-18 15:53:14.220325692 +0200
+@@ -16,4 +16,4 @@
+ find_package(glog)
+ target_link_libraries(dynolog_rpc_lib PUBLIC glog::glog)
+ target_link_libraries(dynolog_rpc_lib PUBLIC nlohmann_json::nlohmann_json)
+-target_link_libraries(dynolog_rpc_lib PUBLIC fmt::fmt)
++target_link_libraries(dynolog_rpc_lib PUBLIC -lfmt)
+--- a/hbt/src/common/CMakeLists.txt	2025-08-18 15:54:24.180577706 +0200
++++ b/hbt/src/common/CMakeLists.txt	2025-08-18 15:54:36.370447374 +0200
+@@ -7,7 +7,7 @@
+ 
+ add_library(System System.h System.cpp)
+ target_include_directories(System PUBLIC ${PROJECT_SOURCE_DIR})
+-target_link_libraries(System PUBLIC fmt::fmt)
++target_link_libraries(System PUBLIC -lfmt)
+ target_link_libraries(System PUBLIC pfs)
+ target_link_libraries(System PUBLIC Defs)
+ target_link_libraries(System PUBLIC CpuArch)
+--- a/dynolog/src/rpc/SimpleJsonServer.cpp	2025-08-19 13:18:10.657322435 +0200
++++ b/dynolog/src/rpc/SimpleJsonServer.cpp	2025-08-19 13:18:34.966063766 +0200
+@@ -11,6 +11,7 @@
+ #include <sys/socket.h>
+ #include <unistd.h>
+ #include <cerrno>
++#include <array>
+ 
+ constexpr int CLIENT_QUEUE_LEN = 50;
+ 
+--- a/dynolog/src/LibkinetoConfigManager.cpp	2025-08-19 13:16:39.565291966 +0200
++++ b/dynolog/src/LibkinetoConfigManager.cpp	2025-08-19 13:17:08.205986950 +0200
+@@ -6,6 +6,7 @@
+ #include "dynolog/src/LibkinetoConfigManager.h"
+ #include <fmt/core.h>
+ #include <fmt/format.h>
++#include <fmt/ranges.h>
+ #include <glog/logging.h>
+ #include <exception>
+ #include <fstream>
+@@ -16,6 +17,7 @@
+ #ifdef __linux__
+ #include <sys/prctl.h>
+ #endif
++#include <array>
+ 
+ namespace dynolog {
+ 
+--- a/hbt/src/common/System.cpp	2025-08-19 16:15:39.594211957 +0200
++++ b/hbt/src/common/System.cpp	2025-08-19 16:16:19.729787426 +0200
+@@ -362,9 +362,9 @@
+   os << fmt::format(
+       "<CpuInfo {0} {1}({2}) {3}({4}) Step: {5}>",
+       cpu_info.vendor_id,
+-      cpu_info.cpu_family,
++      fmt::underlying(cpu_info.cpu_family),
+       cpu_info.cpu_family_num,
+-      cpu_info.cpu_arch,
++      fmt::underlying(cpu_info.cpu_arch),
+       cpu_info.cpu_model_num,
+       cpu_info.cpu_step_num);
+   return os;
+--- a/hbt/src/common/System.h	2025-08-19 20:50:26.570739520 +0200
++++ b/hbt/src/common/System.h	2025-08-19 20:51:14.507232738 +0200
+@@ -11,6 +11,7 @@
+ 
+ #include <fmt/core.h>
+ #include <fmt/ostream.h>
++#include <fmt/ranges.h>
+ #include <limits.h>
+ #include <sys/prctl.h>
+ #include <unistd.h>

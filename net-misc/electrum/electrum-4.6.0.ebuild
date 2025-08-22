@@ -25,7 +25,7 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="cli ncurses qrcode +qt6"
 REQUIRED_USE="|| ( cli ncurses qt6 )"
 

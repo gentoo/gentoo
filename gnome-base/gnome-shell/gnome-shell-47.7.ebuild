@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-shell"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 IUSE="elogind gtk-doc +ibus +networkmanager pipewire systemd test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

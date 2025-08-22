@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>kangie@gentoo.org</email>
+    <description>Primary maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>wsl@gentoo.org</email>
+    <name>Gentoo WSL Project</name>
+  </maintainer>
+  <longdescription>
+    This repository contains a configuration for Gentoo Linux running on Windows Subsystem for Linux (WSL) 2.
+    It is designed to provide a seamless experience for users who want to run (or try) Gentoo on their Windows machines.
+
+    This package should be installed in the WSL 2 environment; it is not intended to be used on a native Gentoo installation.
+  </longdescription>
+  <use>
+    <flag name="interop">Enable Windows interoperability features for WSL</flag>
+  </use>
+  <upstream>
+    <remote-id type="gentoo">proj/gentoo-wsl-config</remote-id>
+    <remote-id type="github">kangie/gentoo-wsl-config</remote-id>
+  </upstream>
+</pkgmetadata>

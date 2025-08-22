@@ -12,7 +12,6 @@ else
 	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_${PV}/OpenRGB-release_${PV}.tar.bz2"
 	S="${WORKDIR}/OpenRGB-release_${PV}"
 	KEYWORDS="~amd64 ~loong ~x86"
-	PATCHES=( "${FILESDIR}"/OpenRGB-0.9-build-system.patch )
 fi
 
 DESCRIPTION="Open source RGB lighting control"
@@ -20,14 +19,12 @@ HOMEPAGE="https://openrgb.org https://gitlab.com/CalcProgrammer1/OpenRGB/"
 LICENSE="GPL-2"
 # subslot is OPENRGB_PLUGIN_API_VERSION from
 # https://gitlab.com/CalcProgrammer1/OpenRGB/-/blob/master/OpenRGBPluginInterface.h
-SLOT="0/3"
+SLOT="0/4"
 
 RDEPEND="
 	dev-cpp/cpp-httplib:=
 	dev-libs/hidapi
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	dev-qt/qtbase:6[gui,widgets]
 	net-libs/mbedtls:0=
 	virtual/libusb:1
 "
@@ -37,14 +34,17 @@ DEPEND="
 	dev-libs/mdns
 "
 BDEPEND="
-	dev-qt/linguist-tools:5
+	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
 
-PATCHES+=(
+PATCHES=(
 	"${FILESDIR}"/OpenRGB-0.7-r1-udev.patch
 	"${FILESDIR}"/OpenRGB-0.9-udev-check.patch
 )
+if [[ ${PV} != *9999* ]]; then
+	PATCHES+=( "${FILESDIR}"/${P}-build-system.patch )
+fi
 
 CHECKREQS_DISK_BUILD="2G"
 
@@ -73,10 +73,11 @@ src_configure() {
 		libs+=( -lcpp-httplib )
 	fi
 
-	eqmake5 \
+	eqmake6 \
 		INCLUDEPATH+="${ESYSROOT}/usr/include/nlohmann" \
-		DEFINES+="OPENRGB_EXTRA_PLUGIN_DIRECTORY=\\\\\"\\\"${EPREFIX}/usr/$(get_libdir)/OpenRGB/plugins\\\\\"\\\"" \
-		LIBS+="${libs[@]}"
+		OPENRGB_SYSTEM_PLUGIN_DIRECTORY="${EPREFIX}/usr/$(get_libdir)/openrgb/plugins" \
+		LIBS+="${libs[@]}" \
+		PREFIX="${EPREFIX}/usr"
 }
 
 src_install() {

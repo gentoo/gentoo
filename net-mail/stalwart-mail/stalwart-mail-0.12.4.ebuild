@@ -959,7 +959,6 @@ src_compile() {
 src_install() {
 	cargo_src_install --path crates/main
 
-	keepdir /var/run/stalwart-mail
 	newinitd "${FILESDIR}"/stalwart-mail.initd stalwart-mail
 	systemd_dounit "${S}"/resources/systemd/stalwart-mail.service
 

@@ -110,7 +110,15 @@
 			to find runtime problems in applications.
 		</flag>
 		<flag name="ssp">Build packages with stack smashing protection on by default</flag>
-		<flag name="systemtap">enable systemtap static probe points</flag>
+		<flag name="systemtap">
+			Enable enhanced debugging hooks/interface via SystemTap static probe points
+			in libgcc and libstdc++.
+
+			Note that this isn't exclusive to SystemTap, despite the name. This provides
+			an interface which <pkg>dev-debug/gdb</pkg> optionally uses, see
+			https://sourceware.org/gdb/wiki/LinkerInterface and
+			https://sourceware.org/gdb/wiki/DistroAdvice#sys.2Fsdt.h_probes.
+		</flag>
 		<flag name="vtv">
 			Build support for virtual table verification (a C++ hardening feature).
 

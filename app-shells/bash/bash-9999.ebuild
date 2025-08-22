@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.2-patches/.
+# Determine the patchlevel.
 case ${PV} in
 	9999|*_alpha*|*_beta*|*_rc*)
 		# Set a negative patchlevel to indicate that it's a pre-release.
@@ -308,18 +308,18 @@ src_install() {
 
 	insinto /etc/bash
 	doins "${FILESDIR}"/bash_logout
-	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
+	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r2 | newins - bashrc
 
 	insinto /etc/bash/bashrc.d
 	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color-r2.bash | newins - 10-gentoo-color.bash
 	newins "${FILESDIR}"/bashrc.d/10-gentoo-title-r2.bash 10-gentoo-title.bash
-	if [[ ! ${EPREFIX} ]]; then
-		doins "${FILESDIR}"/bashrc.d/15-gentoo-bashrc-check.bash
-	fi
+
+	insinto /etc/profile.d
+	doins "${FILESDIR}/profile.d/00-prompt-command.sh"
 
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc}; do
-		newins "${FILESDIR}/dot-${f}" ".${f}"
+		newins "${FILESDIR}/skel/dot-${f}" ".${f}"
 	done
 
 	if use plugins; then

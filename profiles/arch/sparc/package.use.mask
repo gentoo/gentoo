@@ -1,6 +1,14 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-08-21)
+# Requires dev-python/qtconsole.
+dev-python/ipython gui
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
+# virtual/mysql[static] has no keyworded implementations here.
+>=virtual/mysql-8.0 static
+
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
 # Needs gui-apps/grim, which is not keyworded here
 x11-misc/xscreensaver wayland
@@ -749,7 +757,7 @@ x11-misc/colord argyllcms extra-print-profiles
 
 # Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
->=dev-db/mysql-5.5 systemtap jemalloc
+>=dev-db/mysql-5.5 jemalloc
 >=dev-db/mariadb-5.5 systemtap jemalloc
 >=dev-db/percona-server-5.5 jemalloc
 

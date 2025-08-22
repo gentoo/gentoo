@@ -9,6 +9,45 @@ source version-funcs.sh || exit
 
 inherit dot-a
 
+_strip_is_gnu() {
+	local name=$($(tc-getSTRIP) --version 2>&1 | head -n 1)
+
+	if ! [[ ${name} =~ ^GNU.*strip ]] ; then
+		return 1
+	fi
+
+	return 0
+}
+
+_check_binutils_version() {
+	local tool=$1
+	# Convert this:
+	# ```
+	# GNU ld (Gentoo 2.38 p4) 2.38
+	# Copyright (C) 2022 Free Software Foundation, Inc.
+	# This program is free software; you may redistribute it under the terms of
+	# the GNU General Public License version 3 or (at your option) a later version.
+	# This program has absolutely no warranty.
+	# ```
+	#
+	# into...
+	# ```
+	# 2.38
+	# ```
+	local ver=$(${tool} --version 2>&1 | head -n 1 | rev | cut -d' ' -f1 | rev)
+
+	if ! [[ ${ver} =~ [0-9].[0-9][0-9](.[0-9]?) ]] ; then
+		# Skip if unrecognised format so we don't pass something
+		# odd into ver_cut.
+		return
+	fi
+
+	ver_major=$(ver_cut 1 "${ver}")
+	ver_minor=$(ver_cut 2 "${ver}")
+	ver_extra=$(ver_cut 3 "${ver}")
+	echo ${ver_major}.${ver_minor}${ver_extra:+.${ver_extra}}
+}
+
 _create_test_progs() {
 	cat <<-EOF > a.c
 	int foo();
@@ -115,6 +154,10 @@ test_strip_lto_bytecode() {
 		# strip-lto-bytecode will error out early with LLVM,
 		# so stop the test here.
 		tc-is-clang && return 0
+		# strip with >= GNU Binutils 2.46 won't corrupt the archive:
+		# https://sourceware.org/PR21479
+		# https://sourceware.org/PR33271
+		_strip_is_gnu && ver_test $(_check_binutils_version $(tc-getSTRIP)) -gt 2.45 && return 0
 
 		$(tc-getCC) ${CFLAGS} a.c -o a.o -c 2>/dev/null || return 1
 
@@ -153,6 +196,10 @@ test_strip_lto_bytecode() {
 		# strip-lto-bytecode will error out early with LLVM,
 		# so stop the test here.
 		tc-is-clang && return 0
+		# strip with >= GNU Binutils 2.46 won't corrupt the archive:
+		# https://sourceware.org/PR21479
+		# https://sourceware.org/PR33271
+		_strip_is_gnu && ver_test $(_check_binutils_version $(tc-getSTRIP)) -gt 2.45 && return 0
 
 		$(tc-getCC) ${CFLAGS} a.c -o a.o -c 2>/dev/null || return 1
 		$(tc-getAR) qD test.a a.o 2>/dev/null || return 1

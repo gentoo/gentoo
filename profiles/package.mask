@@ -36,6 +36,84 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (2025-08-21)
+# The required Direct3D 9 feature is being dropped from Mesa. Use DXVK or
+# WineD3D instead. Removal on 2025-09-21.
+app-emulation/gallium-nine-standalone
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-21)
+# Version yanked due to "unintended change in behavior".
+=dev-python/click-8.2.2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-19)
+# x11-libs/gtkglext is finally without revdeps, tracker bug #698950
+# Removal on 2025-09-16
+x11-libs/gtkglext
+
+# Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-08-18)
+# Deprecated by upstream, depends on Qt5. Use app-crypt/yubikey-manager
+# instead. Removal on 2025-09-16. Bug #955646
+sys-auth/yubikey-personalization-gui
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
+# Unmaintained in Gentoo for a long time, resulting in a very outdated
+# package. Many bugs, selecting just #803635, #884609, #890762, #958160
+# Needs a dedicated maintainer. Removal on 2025-09-16.
+dev-db/percona-server
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-18)
+# Effectively unmaintained in Gentoo with many unattended bugs, still
+# EAPI-7 based, broken with non-ancient dev-games/ogre, broken with non-
+# ancient sci-libs/pcl. Bugs #729576, #796806, #834469.
+# Removal on 2025-09-16.
+sci-libs/ViSP
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Dead upstream, based on Qt5, hardware obsolete. Removal on 2025-09-16.
+# Bugs #954122, #955638, #957411, #957589, #957590
+app-crypt/nitrokey-app
+app-crypt/libnitrokey
+dev-libs/cppcodec
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Dead upstream for > 10 years. Only a snapshot could save this from
+# cleanup in 2018 for Qt5, but not this time (for Qt6). Bug #958435.
+# Removal on 2025-09-16.
+media-sound/qtagger
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Unmaintained upstream with no prospect to port from Qt5 to Qt6.
+# Alternatives exist. Bug #961635. Removal on 2025-09-16.
+media-sound/coquillo
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Project was ported to Qt6 by upstream, but also ported to Qbs in doing
+# so. Needs a new maintainer to start with Qbs based package from scratch.
+# Bugs #931995, #955967. Removal on 2025-09-16.
+media-gfx/valentina
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# 1.2.3 is almost 10 years old, upstream repository archived, Qt5- and
+# EAPI-7 based. Bugs #832577, #830262, #846416 and finally #961631.
+# Removal on 2025-09-16.
+dev-util/qstlink2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Hopelessly outdated and unmaintained package in Gentoo, upstream still
+# Qt5- and EAPI-7 based, no revdeps. Bugs #729746, #729746
+# Removal on 2025-09-16.
+dev-util/sasm
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Last release over 5 years ago, Qt5-based, no upstream reaction to Qt6
+# porting PR for more than 1.5 years. Bug #955208. Removal on 2025-09-16.
+sci-electronics/NanoVNA-QT
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-17)
+# Archived and unmaintained upstream, Qt5-based, build broken for >1 year.
+# Bugs #932756, #952103. Removal on 2025-09-16.
+app-crypt/yubikey-manager-qt
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-08-13)
 # While it fixes several issues and is meant to be a stable branch,
 # 580.x has too many regressions in its current state. One of the most
@@ -58,12 +136,6 @@
 # Bugs #922311, #926229. Removal on 2025-09-14.
 media-gfx/opentoonz
 
-# Michał Górny <mgorny@gentoo.org> (2025-08-10)
-# Significant regression breaking dev-python/websockets.
-# Masking until upstream decides how to proceed.
-=dev-lang/python-3.13.6
-=dev-python/python-tests-3.13.6
-
 # Hans de Graaff <graaff@gentoo.org> (2025-08-08)
 # ruby-openid fails tests and is archived upstream. Last release 6 years
 # ago. rack-openid is the only reverse dependency.
@@ -76,13 +148,6 @@ dev-ruby/ruby-openid
 # Removal on 2025-09-07.
 dev-java/jide-oss
 
-# Michał Górny <mgorny@gentoo.org> (2025-08-05)
-# Accidental breaking change.  Yanked upstream.  Bug #961089.
-# Followed by another yanked breaking release.
-=dev-python/setuptools-scm-9.1.1
-=dev-python/setuptools-scm-9.0.3
-=dev-python/setuptools-scm-9.0.0
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2025-08-03)
 # Inactive upstream, stuck on Qt5. Suggested alternatives:
 # media-sound/strawberry, media-sound/amarok.
@@ -93,11 +158,6 @@ media-sound/clementine
 # No more stable revdeps after media-sound/clementine removal.
 ~media-libs/liblastfm-1.1.0_pre20190625
 ~media-libs/libmygpo-qt-1.1.0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
-# KF5 -> KF6 transitional package with no more revdeps since 25.04.
-# Removal on 2025-08-15.
-kde-apps/ffmpegthumbs-common
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-07-30)
 # Current package is 7 years old and upstream repository only gets the
@@ -171,24 +231,6 @@ net-analyzer/wapiti
 # Removal on 2025-08-25.  Bug #960760.
 dev-python/noseofyeti
 
-# Michał Górny <mgorny@gentoo.org> (2025-07-22)
-# Provider for PyPy3.10 executable.  This branch is no longer maintained
-# upstream, and it is vulnerable.  Removal on 2025-08-05.
-dev-lang/pypy:3.10
-dev-python/pypy3_10-exe
-dev-python/pypy3_10-exe-bin
-
-# Matt Turner <mattst88@gentoo.org> (2025-07-20)
-# No reverse dependencies remaining.
-# Removal on 2025-08-19.
-dev-util/volk
-
-# Michał Górny <mgorny@gentoo.org> (2025-07-20)
-# Discontinued in favor of net-proxy/mitmproxy-rs which is now
-# an unconditional dependency of net-proxy/mitmproxy.
-# Removal on 2025-08-19.  Bug #960470.
-dev-python/mitmproxy-wireguard
-
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
 # suppor for the old APIs this package needs. Impossible to use anymore.
@@ -212,17 +254,6 @@ sci-libs/eccodes
 # Removal on 2025-08-05.  Bug #928479, #929362.
 dev-libs/libindicate
 app-text/gnome-doc-utils
-
-# Michał Górny <mgorny@gentoo.org> (2025-07-05)
-# Metapackage used as a dependency in dev-lang/python and dev-lang/pypy.
-# Replaced with inlined specific dev-python/ensurepip-* packages.
-# Removal on 2025-08-04.
-dev-python/ensurepip-wheels
-
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-07-04)
-# EAPI=7, upstream gone, Gentoo is the last distro packaging it.
-# Removal on 2025-08-03.  Bug #959505.
-app-misc/pip
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-04)
 # Obsolete Perl virtuals that will be removed (the list is work in progress).
@@ -651,15 +682,6 @@ dev-build/automake:1.11
 # Bug #729672.
 media-plugins/kodi-game-libretro-nestopia
 media-plugins/kodi-game-libretro-dosbox
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-10-07)
-# Masked for more testing especially of reverse-deps.
-# ogre 1.11/1.12 breakage: bug #834468
-# ogre 2.x breakage: bug #740424
-dev-games/ogre:0/1.12
-dev-games/ogre:0/2.1
-dev-games/ogre:0/13.6
-dev-games/ogre:0/14.3
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # Mask transition ebuilds that were needed only for <glibc-2.26

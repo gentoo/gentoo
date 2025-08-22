@@ -15,7 +15,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-python/click-8.2[${PYTHON_USEDEP}]

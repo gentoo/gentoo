@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.2-patches/.
+# Determine the patchlevel. See https://ftp.gnu.org/gnu/bash/bash-5.3-patches/.
 case ${PV} in
 	9999|*_alpha*|*_beta*|*_rc*)
 		# Set a negative patchlevel to indicate that it's a pre-release.
@@ -320,7 +320,7 @@ src_install() {
 
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc}; do
-		newins "${FILESDIR}/dot-${f}" ".${f}"
+		newins "${FILESDIR}/skel/dot-${f}" ".${f}"
 	done
 
 	if use plugins; then

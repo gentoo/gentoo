@@ -94,7 +94,6 @@ src_configure() {
 		-DWITH_PLAYER=ON
 		-DWITH_UTILITIES=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Googlemock=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_LibOFA=ON
 		-DWITH_IPOD=$(usex ipod)
 		$(cmake_use_find_package lastfm LibLastFm)
 		$(cmake_use_find_package !mariadb MySQL)
@@ -103,7 +102,7 @@ src_configure() {
 		$(cmake_use_find_package webengine Qt6WebEngineWidgets)
 		-DWITH_X11=$(usex X)
 	)
-	use ipod && mycmakeargs+=$(cmake_use_find_package ipod GDKPixBuf)
+	use ipod && mycmakeargs+=( $(cmake_use_find_package ipod GDKPixBuf) )
 
 	ecm_src_configure
 }

@@ -5,4 +5,3 @@
 # We need to have the pic flag on.
 # Bugs 358929, 490276, 513464, 523736 and 512208.
 media-libs/x264 pic
-media-libs/xvid pic

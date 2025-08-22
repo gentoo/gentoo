@@ -12,7 +12,7 @@ SRC_URI="https://github.com/TartanLlama/expected/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~loong ~x86"
 RESTRICT="test"
 
 src_configure() {

@@ -1,0 +1,12 @@
+diff -Naur wmbattery-2.56.orig/sonypi.c wmbattery-2.56/sonypi.c
+--- wmbattery-2.56.orig/sonypi.c	2022-06-03 21:22:12.000000000 +0200
++++ wmbattery-2.56/sonypi.c	2025-08-22 01:21:59.483780914 +0200
+@@ -24,7 +24,7 @@
+ 		return 1;
+ }
+ 
+-inline int sonypi_ioctl(int ioctlno, void *param)
++static int sonypi_ioctl(int ioctlno, void *param)
+ {
+ 	if (ioctl(spicfd, ioctlno, param) < 0)
+ 		return 0;

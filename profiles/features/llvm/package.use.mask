@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Jimi Huotari <chiitoo@gentoo.org> (2024-08-22)
@@ -13,4 +13,3 @@ sys-devel/binutils pgo
 # Sam James <sam@gentoo.org> (2022-09-15)
 # Works on pure LLVM systems: bug #870211.
 dev-lang/rust -llvm-libunwind
-dev-lang/rust-bin -llvm-libunwind

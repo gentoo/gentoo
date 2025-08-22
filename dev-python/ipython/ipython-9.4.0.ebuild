@@ -19,7 +19,7 @@ HOMEPAGE="
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="examples notebook nbconvert qt5 +smp test"
+IUSE="examples gui notebook nbconvert +smp test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -64,7 +64,7 @@ RDEPEND+="
 "
 PDEPEND="
 	$(python_gen_cond_dep '
-		qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
+		gui? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	' 'python*')
 	$(python_gen_cond_dep '
 		notebook? (

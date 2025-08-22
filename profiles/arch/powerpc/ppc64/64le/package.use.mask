@@ -14,10 +14,6 @@ sci-mathematics/gmp-ecm custom-tune
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy3_11
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2021-11-13)
-# ppc64 has pipewire keyworded
-www-client/firefox -screencast
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2021-06-02)
 # altivec code is big-endian only, #773100
 media-libs/libdvbcsa cpu_flags_ppc_altivec

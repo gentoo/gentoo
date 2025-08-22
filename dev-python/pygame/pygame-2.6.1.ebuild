@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 
 inherit distutils-r1
 
@@ -78,6 +78,11 @@ python_configure_all() {
 }
 
 python_test() {
+	# Seems(?) there is no way to easily skip individual tests, but
+	# an msys2 hack exists which we can re-use for now (bug #951940).
+	# https://github.com/pygame/pygame/pull/4267
+	local -x PYGAME_MSYS2=1
+
 	local -x SDL_VIDEODRIVER=dummy
 	local -x SDL_AUDIODRIVER=disk
 	script -eqc "${EPYTHON} -m pygame.tests -v" || die

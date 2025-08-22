@@ -191,6 +191,20 @@ multilib_src_install() {
 		dolib.so lib/libc++_shared.so
 		use static-libs && dolib.a lib/libc++_static.a
 	fi
+
+	local install_prefix=
+	is_crosspkg && install_prefix=/usr/${CTARGET}
+	insinto "${install_prefix}/usr/share/libc++/gdb"
+	doins ../libcxx/utils/gdb/libcxx/printers.py
+
+	local lib_version=$(sed -n -e 's/^LIBCXX_LIBRARY_VERSION:STRING=//p' CMakeCache.txt || die)
+	[[ -n ${lib_version} ]] || die "Could not determine LIBCXX_LIBRARY_VERSION from CMakeCache.txt"
+
+	insinto "${install_prefix}/usr/share/gdb/auto-load/usr/$(get_libdir)"
+	newins - "libc++.so.${lib_version}-gdb.py" <<-EOF
+		__import__("sys").path.insert(0, "${EPREFIX}/usr/share/libc++/gdb")
+		__import__("printers").register_libcxx_printer_loader()
+	EOF
 }
 
 # Usage: deps
