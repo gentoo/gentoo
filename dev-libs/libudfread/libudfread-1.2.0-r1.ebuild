@@ -17,7 +17,7 @@ DESCRIPTION="Library for reading UDF from raw devices and image files"
 HOMEPAGE="https://code.videolan.org/videolan/libudfread/"
 
 LICENSE="LGPL-2.1+"
-SLOT="0"
+SLOT="0/3"
 
 multilib_src_install() {
 	meson_src_install
