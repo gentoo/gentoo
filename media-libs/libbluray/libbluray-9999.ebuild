@@ -21,7 +21,7 @@ SLOT="0/2"
 IUSE="aacs bdplus +fontconfig java +truetype utils +xml"
 
 COMMON_DEPEND="
-	>=dev-libs/libudfread-1.1.0[${MULTILIB_USEDEP}]
+	>=dev-libs/libudfread-1.1.0:=[${MULTILIB_USEDEP}]
 	aacs? ( >=media-libs/libaacs-0.6.0[${MULTILIB_USEDEP}] )
 	bdplus? ( media-libs/libbdplus[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
