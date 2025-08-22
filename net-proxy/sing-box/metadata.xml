@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>peeweep@0x0.ee</email>
+		<name>jinqiang zhang</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>me@puqns67.icu</email>
+		<name>Wang Zhuo Cheng</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<doc>https://sing-box.sagernet.org/</doc>
+		<bugs-to>https://github.com/SagerNet/sing-box/issues</bugs-to>
+		<remote-id type="github">SagerNet/sing-box</remote-id>
+	</upstream>
+	<use>
+		<flag name="quic">Build with QUIC support</flag>
+		<flag name="grpc">Build with standard gRPC support</flag>
+		<flag name="dhcp">Build with DHCP support</flag>
+		<flag name="wireguard">Build with WireGuard support</flag>
+		<flag name="utls">Build with uTLS support for TLS outbound</flag>
+		<flag name="acme">Build with ACME TLS certificate issuer support</flag>
+		<flag name="clash-api">Build with Clash API support</flag>
+		<flag name="v2ray-api">Build with V2Ray API support</flag>
+		<flag name="gvisor">Build with gVisor support</flag>
+		<flag name="tor">Build with embedded Tor support</flag>
+		<flag name="tailscale">Build with tailscale support</flag>
+	</use>
+</pkgmetadata>
