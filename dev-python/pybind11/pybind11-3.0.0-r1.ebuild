@@ -60,6 +60,9 @@ python_configure() {
 	local mycmakeargs=(
 		"${DISTUTILS_ARGS[@]}"
 		-DPYBIND11_TEST=$(usex test)
+
+		# use absolute path to force clean prefix in pkg-config file
+		-DCMAKE_INSTALL_DATAROOTDIR="${EPREFIX}"/usr/share
 	)
 	cmake_src_configure
 }
