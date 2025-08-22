@@ -23,7 +23,7 @@ IUSE="static-libs"
 
 DEPEND="
 	sys-kernel/linux-headers
-	virtual/libelf
+	>=virtual/libelf-3:=
 "
 RDEPEND="
 	${DEPEND}
