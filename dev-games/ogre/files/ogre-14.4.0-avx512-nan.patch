@@ -1,0 +1,39 @@
+https://bugs.gentoo.org/961871
+https://github.com/OGRECave/ogre/issues/3431
+https://github.com/OGRECave/ogre/pull/3434
+
+From 2130758685a58b963ee1012e0bf0ef50859d38f5 Mon Sep 17 00:00:00 2001
+From: Pavel Rojtberg <rojtberg@gmail.com>
+Date: Sat, 23 Aug 2025 01:36:01 +0200
+Subject: [PATCH] Main: Bitwise - do not generate nan for bits=0
+
+---
+ OgreMain/include/OgreBitwise.h      | 2 +-
+ Tests/OgreMain/src/BitwiseTests.cpp | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/OgreMain/include/OgreBitwise.h b/OgreMain/include/OgreBitwise.h
+index 3ce2115546b..ab321cfc5fb 100644
+--- a/OgreMain/include/OgreBitwise.h
++++ b/OgreMain/include/OgreBitwise.h
+@@ -246,7 +246,7 @@ namespace Ogre {
+          */
+         static inline float fixedToFloat(unsigned value, unsigned int bits)
+         {
+-            return (float)value/(float)((1<<bits)-1);
++            return bits ? (float)value/(float)((1<<bits)-1) : 0.0f;
+         }
+ 
+         /**
+diff --git a/Tests/OgreMain/src/BitwiseTests.cpp b/Tests/OgreMain/src/BitwiseTests.cpp
+index 2d482795904..3afb4e86acb 100644
+--- a/Tests/OgreMain/src/BitwiseTests.cpp
++++ b/Tests/OgreMain/src/BitwiseTests.cpp
+@@ -46,6 +46,7 @@ TEST(BitwiseTests,FixedPointConversion)
+ 
+     EXPECT_EQ(Bitwise::fixedToFloat(0xFF, 8), 1.0f);
+     EXPECT_EQ(Bitwise::fixedToFloat(0x00, 8), 0.0f);
++    EXPECT_EQ(Bitwise::fixedToFloat(0xFF, 0), 0.0f);
+ 
+     EXPECT_EQ(Bitwise::floatToFixed(1.0f, 8), (unsigned int)0xFF);
+     EXPECT_EQ(Bitwise::floatToFixed(0.0f, 8), (unsigned int)0x00);
