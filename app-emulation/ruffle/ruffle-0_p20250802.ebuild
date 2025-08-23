@@ -24,7 +24,7 @@ LICENSE+="
 	OFL-1.1 openssl UbuntuFontLicense-1.0 Unicode-3.0 ZLIB BZIP2
 " # crates
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
