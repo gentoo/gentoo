@@ -1,0 +1,48 @@
+From d58126e60e138da2684a6894818e056e8d5e58e2 Mon Sep 17 00:00:00 2001
+From: Shivam Raikundalia <sraikund@meta.com>
+Date: Thu, 12 Jun 2025 10:01:19 -0700
+Subject: [PATCH] Fix Kineto OSS Logger (#385)
+
+Summary:
+Pull Request resolved: https://github.com/facebookincubator/dynolog/pull/385
+
+In D56577485, we removed the Kineto case for logging from the FabricManager in OSS for some reason. Because of this we see build failures in this PR: https://github.com/pytorch/kineto/actions/runs/15552720676/job/43832280645?pr=1101
+
+We need to reintroduce it so we can bump up the version again.
+
+Reviewed By: dmm-fb
+
+Differential Revision: D76372804
+
+fbshipit-source-id: eb7b42b7a56dd36cbfab686512603ab4468bf22c
+---
+ dynolog/src/ipcfabric/FabricManager.h | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/dynolog/src/ipcfabric/FabricManager.h b/dynolog/src/ipcfabric/FabricManager.h
+index 0f328609..eb314e1d 100644
+--- a/dynolog/src/ipcfabric/FabricManager.h
++++ b/dynolog/src/ipcfabric/FabricManager.h
+@@ -13,13 +13,17 @@
+ #include "dynolog/src/ipcfabric/Utils.h"
+ 
+ // If building inside Kineto, use its logger, otherwise use glog
+-#if defined USE_GOOGLE_LOG
+-// We need to include the Logger header before here for LOG() macros.
++#if defined(KINETO_NAMESPACE) && defined(ENABLE_IPC_FABRIC)
++// We need to include the Logger header here for LOG() macros.
+ // However this can alias with other files that include this and
+-// also use glog. TODO(T131440833).
+-// Whoever includes this needs to also include Logger.h for use in kineto
++// also use glog. TODO(T131440833). Thus, the user should also set
++#include "Logger.h" // @manual
++// set error to use kineto version
++#define ERROR libkineto::ERROR
++
++#else // KINETO_NAMESPACE && ENABLE_IPC_FABRIC
+ #include <glog/logging.h>
+-#endif // USE_GOOGLE_LOG
++#endif // KINETO_NAMESPACE && ENABLE_IPC_FABRIC
+ 
+ namespace dynolog::ipcfabric {
+ 

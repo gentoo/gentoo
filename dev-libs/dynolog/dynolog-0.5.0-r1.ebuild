@@ -84,6 +84,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.1_p20230126-nojson.patch
 	"${FILESDIR}"/${PN}-0.3.1-gentoo.patch
 	"${FILESDIR}"/${P}-unbundling.patch
+	"${FILESDIR}"/${P}-log.patch
 )
 
 CMAKE_SKIP_TESTS=( "Defs.CpuSet" "KernelCollecterTest.NetworkStatsTest" )
