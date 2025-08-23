@@ -71,7 +71,7 @@ DEPEND="
 	${RDEPEND}
 	dev-cpp/nlohmann_json:=
 "
-BDEPEND="test? ( dev-cpp/gtest )"
+BDEPEND="dev-cpp/gtest"
 
 # Partially rust build
 QA_FLAGS_IGNORED=/usr/bin/dyno
