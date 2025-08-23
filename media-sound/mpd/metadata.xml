@@ -36,7 +36,6 @@
     <flag name="shout">Enable ShoutCast/IceCast plugin using <pkg>media-libs/libshout</pkg></flag>
     <flag name="signalfd">Use the signalfd function in MPD's event loop</flag>
     <flag name="snapcast">Snapcast audio plugin</flag>
-    <flag name="sndio">Enable support for the <pkg>media-sound/sndio</pkg> backend</flag>
     <flag name="soundcloud">Build plugin to access soundcloud</flag>
     <flag name="systemd">Enable support for systemd socket activation</flag>
     <flag name="tremor">Enable support for <pkg>media-libs/tremor</pkg>, a fixed-point version of the Ogg Vorbis decoder</flag>

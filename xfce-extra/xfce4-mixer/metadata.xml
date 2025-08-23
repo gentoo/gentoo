@@ -10,8 +10,5 @@
 			Enable support for global hotkeys using
 			<pkg>dev-libs/keybinder</pkg>.
 		</flag>
-		<flag name="sndio">
-			Enable <pkg>media-sound/sndio</pkg> backend.
-		</flag>
 	</use>
 </pkgmetadata>
