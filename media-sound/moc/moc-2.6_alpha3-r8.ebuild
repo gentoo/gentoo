@@ -13,7 +13,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modplug musepack
 	oss sid sndfile sndio speex timidity tremor +unicode vorbis wavpack"
 

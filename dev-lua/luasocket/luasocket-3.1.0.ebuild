@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/lunarmodules/${PN}/archive/refs/tags/v${PV}.tar.gz -
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE="doc"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="test"

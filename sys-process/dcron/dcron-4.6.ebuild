@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ptchinster/dcron/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 src_prepare() {
 	default

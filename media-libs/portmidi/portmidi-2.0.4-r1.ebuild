@@ -11,7 +11,7 @@ SRC_URI="https://github.com/PortMidi/portmidi/archive/refs/tags/v${PV}.tar.gz ->
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="debug test-programs"
 # Per pm-test/README:
 # "Because device numbers depend on the system, there is no automated

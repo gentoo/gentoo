@@ -14,7 +14,7 @@ SRC_URI="https://jak-linux.org/projects/${PN}/${MY_PR}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="aac flac mac mp3 musepack wavpack wma"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

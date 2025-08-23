@@ -11,7 +11,7 @@ SRC_URI="https://github.com/radvd-project/radvd/releases/download/v${PV}/${P}.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="selinux test"
 RESTRICT="!test? ( test )"
 

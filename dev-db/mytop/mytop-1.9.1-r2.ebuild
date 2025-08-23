@@ -11,7 +11,7 @@ HOMEPAGE="http://www.mysqlfanboy.com/mytop-3/"
 SRC_URI="http://www.mysqlfanboy.com/mytop-3/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 SLOT="0"
 
 RDEPEND="

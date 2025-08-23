@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://entropymine.com/jason/${PN}/${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc sparc x86 ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ppc ~sparc x86 ~x86-linux ~ppc-macos"
 IUSE=""
 
 BDEPEND="app-arch/unzip"

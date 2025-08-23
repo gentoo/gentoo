@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/mynyml/unindent"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 ruby_add_bdepend "test? ( dev-ruby/nanotest )"
 

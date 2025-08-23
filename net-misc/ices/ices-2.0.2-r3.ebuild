@@ -11,7 +11,7 @@ SRC_URI="http://downloads.xiph.org/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ppc64 ~sparc x86"
 
 RDEPEND="
 	acct-group/ices
