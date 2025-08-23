@@ -7,7 +7,7 @@ inherit meson
 
 DESCRIPTION="WSL2 configuration for Gentoo Linux"
 
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:WSL"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoo-wsl-config.git"
