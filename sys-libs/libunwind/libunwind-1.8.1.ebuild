@@ -1,4 +1,4 @@
-# Copyright 2005-2024 Gentoo Authors
+# Copyright 2005-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ else
 	S="${WORKDIR}"/${P/_rc/-rc}
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 -sparc x86 ~amd64-linux ~x86-linux"
+		KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 -sparc x86 ~amd64-linux ~x86-linux"
 	fi
 fi
 

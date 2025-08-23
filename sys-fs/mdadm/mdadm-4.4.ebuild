@@ -14,7 +14,7 @@ SRC_URI+=" mirror://debian/pool/main/m/mdadm/${PN}_${DEB_PF}.debian.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
 fi
 IUSE="static systemd +udev corosync"
 REQUIRED_USE="static? ( !udev )"
