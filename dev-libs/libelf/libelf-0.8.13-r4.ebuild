@@ -14,7 +14,7 @@ SRC_URI="http://www.mr511.de/software/${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 sparc x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~sparc x86 ~x64-solaris"
 IUSE="debug nls"
 
 RDEPEND="!dev-libs/elfutils"

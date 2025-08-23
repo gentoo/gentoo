@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/b/bing/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc sparc x86"
+KEYWORDS="amd64 ~arm ppc ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.5-Add-missing-string.h-for-memcpy.patch

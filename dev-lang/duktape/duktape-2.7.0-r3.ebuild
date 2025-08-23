@@ -13,7 +13,7 @@ LICENSE="MIT"
 # Upstream don't maintain binary compatibility
 # https://github.com/svaarala/duktape/issues/1524
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.0-respect-tc-env.patch

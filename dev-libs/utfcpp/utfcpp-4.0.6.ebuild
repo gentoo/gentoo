@@ -13,7 +13,7 @@ else
 	FTEST_GIT_REV="c4ad4af0946b73ce1a40cbc72205d15d196c7e06"
 	SRC_URI="https://github.com/nemtrif/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/nemtrif/ftest/archive/${FTEST_GIT_REV}.tar.gz -> ftest-${FTEST_GIT_REV:0:8}.tar.gz )"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="UTF-8 C++ library"

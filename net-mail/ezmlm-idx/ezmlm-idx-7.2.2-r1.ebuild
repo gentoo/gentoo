@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="https://untroubled.org/ezmlm/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ~sparc x86"
 #KEYWORDS="~alpha amd64 ~hppa ~mips ppc sparc x86"
 IUSE="mysql postgres sqlite"
 

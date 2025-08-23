@@ -10,7 +10,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ppc sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ~sparc x86"
 
 src_unpack() {
 	:

@@ -11,7 +11,7 @@ SRC_URI="https://people.redhat.com/tcallawa/lssbus/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* sparc"
+KEYWORDS="-* ~sparc"
 
 src_compile() {
 	append-cflags -std=gnu89 # Bug #951330

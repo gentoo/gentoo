@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ inherit perl-module optfeature virtualx
 DESCRIPTION="Provides a uniform interface to various event loops"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 ~riscv ~sparc x86"
 
 BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.520.0

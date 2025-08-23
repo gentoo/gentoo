@@ -12,7 +12,7 @@ SRC_URI="https://launchpad.net/ufw/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="examples ipv6"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

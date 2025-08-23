@@ -40,7 +40,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="${MY_PV}"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="afs +net nls +readline static"
 
 LIB_DEPEND=">=sys-libs/ncurses-5.2-r2[static-libs(+)]

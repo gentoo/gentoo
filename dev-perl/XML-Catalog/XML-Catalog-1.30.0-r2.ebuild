@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Resolve public identifiers and remap system identifiers"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ~sparc x86"
 
 RDEPEND="
 	dev-perl/XML-Parser

@@ -15,7 +15,7 @@ SRC_URI="https://github.com/pixelb/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 sparc x86"
+KEYWORDS="amd64 ~arm64 ppc64 ~sparc x86"
 
 python_install() {
 	distutils-r1_python_install --install-scripts="${EPREFIX}/usr/sbin"

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}-ttf"
 
 LICENSE="GPL-2 Aladdin" # bug #434262
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~loong ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~loong ppc ~s390 ~sparc x86"
 IUSE=""
 
 FONT_CONF=( "${FILESDIR}/65-urwvn.conf" )

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: Screensaver inspired by the Matrix"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1189"
 
 LICENSE="vim.org"
-KEYWORDS="amd64 ~mips ppc sparc x86"
+KEYWORDS="amd64 ~mips ppc ~sparc x86"
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides the :Matrix command. To exit the screensaver,

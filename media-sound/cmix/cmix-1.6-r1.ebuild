@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="http://antipoder.dyndns.org/downloads/${P}.tbz2"
 LICENSE="GPL-2"
 SLOT="0"
 #-amd64: 1.6: 'cmix list' gives: MIXER_READ(SOUND_MIXER_OUTSRC): Input/output error
-KEYWORDS="-amd64 ~ppc sparc x86"
+KEYWORDS="-amd64 ~ppc ~sparc x86"
 
 PATCHES=( "${FILESDIR}/${P}-ldflags.patch" )
 

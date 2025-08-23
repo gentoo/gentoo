@@ -13,4 +13,4 @@ DESCRIPTION="OpenPGP keys used by Adam Spiers"
 HOMEPAGE="https://savannah.gnu.org/users/aspiers"
 SRC_URI="https://savannah.gnu.org/people/viewgpg.php?user_id=85959 -> ${P}.asc"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"

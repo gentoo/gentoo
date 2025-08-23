@@ -10,7 +10,7 @@ HOMEPAGE="http://www.freebsd.org/projects/cvsweb.html"
 SRC_URI="http://distcache.freebsd.org/ports-distfiles/${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 
 RDEPEND="
 	>=app-text/enscript-1.6.3

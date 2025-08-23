@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -20,7 +20,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/70406/${P}.tar.gz
 
 LICENSE="ZLIB python? ( BSD )"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="perl python l10n_ja"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
