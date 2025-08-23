@@ -3,10 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit python-any-r1 cmake prefix
 
-CommitId=a054a4be0db117c579a21747debf19c863631f26
+CommitId=5e7501833f1021ce6f618572d3baf657b6319658
 
 DESCRIPTION="part of the PyTorch Profiler"
 HOMEPAGE="https://github.com/pytorch/kineto"
@@ -21,7 +21,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-libs/libfmt
-	<dev-libs/dynolog-0.5.0
+	dev-libs/dynolog
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -45,7 +45,7 @@ src_configure() {
 		-DCUDA_SOURCE_DIR=/opt/cuda
 		-DLIBKINETO_NOXPUPTI=Yes
 	)
-	eapply $(prefixify_ro "${FILESDIR}"/${PN}-0.4.0_p20231031-gentoo.patch)
+	eapply $(prefixify_ro "${FILESDIR}"/${P}-gentoo.patch)
 
 	cmake_src_configure
 }
