@@ -3,6 +3,8 @@
 
 EAPI=8
 
+KERNEL_IUSE_MODULES_SIGN=1
+
 inherit kernel-build toolchain-funcs verify-sig
 
 MY_P=linux-${PV%.*}
@@ -10,7 +12,7 @@ PATCHSET=linux-gentoo-patches-5.10.240
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.10.12
 CONFIG_HASH=836165dd2dff34e4f2c47ca8f9c803002c1e6530
-GENTOO_CONFIG_VER=g16
+GENTOO_CONFIG_VER=g17
 SHA256SUM_DATE=20250717
 
 DESCRIPTION="Linux kernel built with Gentoo patches"
@@ -159,6 +161,8 @@ src_prepare() {
 	if [[ ${biendian} == true && $(tc-endian) == big ]]; then
 		merge_configs+=( "${dist_conf_path}/big-endian.config" )
 	fi
+
+	use secureboot && merge_configs+=( "${dist_conf_path}/secureboot.config" )
 
 	kernel-build_merge_configs "${merge_configs[@]}"
 }
