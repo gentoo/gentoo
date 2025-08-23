@@ -137,9 +137,6 @@ src_prepare() {
 src_configure() {
 	local myconf=( )
 
-	# Bug #918997. Will probably be fixed upstream in the next release.
-	use vulkan && append-ldflags -Wl,-z,muldefs
-
 	local ffuse=( "${FFMPEG_FLAG_MAP[@]}" )
 
 	for i in "${ffuse[@]#+}" ; do
