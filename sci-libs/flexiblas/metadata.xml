@@ -7,6 +7,11 @@
 	</maintainer>
 	<use>
 		<flag name="blis">Support <pkg>sci-libs/blis</pkg> provider</flag>
+		<flag name="mkl">Support <pkg>sci-libs/mkl</pkg> provider</flag>
 		<flag name="openblas">Support <pkg>sci-libs/openblas</pkg> provider</flag>
+		<flag name="tbb">
+			Support <pkg>sci-libs/mkl</pkg> with <pkg>dev-cpp/tbb</pkg>
+			threading.
+		</flag>
 	</use>
 </pkgmetadata>
