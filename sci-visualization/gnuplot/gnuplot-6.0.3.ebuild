@@ -29,9 +29,7 @@ LICENSE="gnuplot"
 SLOT="0"
 IUSE="amos aqua bitmap cairo doc examples +gd gpic latex libcaca libcerf lua metafont metapost qt6 readline regis tgif wxwidgets X"
 
-REQUIRED_USE="
-	doc? ( gd )
-	lua? ( ${LUA_REQUIRED_USE} )"
+REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )"
 
 RDEPEND="
 	amos? ( dev-libs/openspecfun )
@@ -161,16 +159,18 @@ src_compile() {
 
 	emake all
 
-	if use doc; then
-		if use cairo; then
-			emake -C docs pdf
-		else
-			ewarn "Cannot build figures unless cairo is enabled."
-			ewarn "Building documentation without figures."
-			emake -C docs pdf_nofig
-			mv docs/nofigures.pdf docs/gnuplot.pdf || die
-		fi
-	fi
+	# Building the documentation is broken for some configurations.
+	# Install the pre-built gnuplot.pdf instead. #577828 #689894 #960528
+	#if use doc; then
+	#	if use cairo; then
+	#		emake -C docs pdf
+	#	else
+	#		ewarn "Cannot build figures unless cairo is enabled."
+	#		ewarn "Building documentation without figures."
+	#		emake -C docs pdf_nofig
+	#		mv docs/nofigures.pdf docs/gnuplot.pdf || die
+	#	fi
+	#fi
 }
 
 src_install() {
