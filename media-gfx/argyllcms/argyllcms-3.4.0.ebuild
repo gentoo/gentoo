@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~hppa ~loong ~mips ~riscv ~x86"
+KEYWORDS="~amd64 arm64 ~hppa ~loong ~mips ~riscv x86"
 IUSE="doc"
 
 RDEPEND="
