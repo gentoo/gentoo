@@ -3,8 +3,8 @@
 
 EAPI=8
 
-NBV=190
-NBT=20231030
+NBV=220
+NBT=20250323
 NBZ=nb${NBV}_platform_${NBT}.zip
 FLIGHT_RECORDER_VERSION="8.3.1"
 FLIGHT_RECORDER_FILE="flightrecorder-${FLIGHT_RECORDER_VERSION}.jar"
@@ -23,7 +23,7 @@ DESCRIPTION="Integrates commandline JDK tools and profiling capabilities"
 HOMEPAGE="https://visualvm.github.io"
 
 SRC_URI="https://github.com/oracle/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/oracle/${PN}/releases/download/2.1.8/${NBZ}
+	https://github.com/oracle/${PN}/releases/download/${PV}/${NBZ}
 	https://repo1.maven.org/maven2/org/openjdk/nashorn/nashorn-core/${NASHORN_CORE_VERSION}/${NASHORN_CORE_FILE}"
 S="${WORKDIR}/${P}/${PN}"
 
@@ -147,7 +147,7 @@ src_install() {
 	# replace bundled stuff
 	pushd "${ED}/${INSTALL_DIR}/platform/core" > /dev/null || die
 	for name in asm{,-commons,-tree}; do
-		rm ${name}-9.5.jar && java-pkg_jar-from asm ${name}.jar ${name}-9.2.jar || die
+		rm ${name}-9.7.jar && java-pkg_jar-from asm ${name}.jar ${name}-9.7.jar || die
 	done
 	popd > /dev/null
 
@@ -155,11 +155,11 @@ src_install() {
 	rm hamcrest-core-1.3.jar && java-pkg_jar-from hamcrest-core-1.3 hamcrest-core.jar hamcrest-core-1.3.jar || die
 	rm jcommander-1.78.jar && java-pkg_jar-from jcommander jcommander.jar jcommander-1.78.jar || die
 	for name in jna{,-platform}; do
-		rm ${name}-5.12.1.jar && java-pkg_jar-from jna ${name}.jar ${name}-5.12.1.jar || die
+		rm ${name}-5.14.0.jar && java-pkg_jar-from jna ${name}.jar ${name}-5.14.0.jar || die
 	done
 	rm junit-4.13.2.jar && java-pkg_jar-from junit-4 junit.jar junit-4.13.2.jar || die
 	for name in junit-jupiter-{api,engine,params}; do
-		rm ${name}-5.6.0.jar && java-pkg_jar-from junit-5 ${name}.jar ${name}-5.6.0.jar || die
+		rm ${name}-5.10.2.jar && java-pkg_jar-from junit-5 ${name}.jar ${name}-5.10.2.jar || die
 	done
 	rm testng-6.14.3.jar && java-pkg_jar-from testng testng.jar testng-6.14.3.jar || die
 	popd > /dev/null
