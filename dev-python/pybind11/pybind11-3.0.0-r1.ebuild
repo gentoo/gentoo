@@ -61,8 +61,8 @@ python_configure() {
 		"${DISTUTILS_ARGS[@]}"
 		-DPYBIND11_TEST=$(usex test)
 
-		# use absolute path to force clean prefix in pkg-config file
-		-DCMAKE_INSTALL_DATAROOTDIR="${EPREFIX}"/usr/share
+		# fix missing prefix, https://bugs.gentoo.org/961861
+		-Dprefix_for_pc_file="${EPREFIX}"/usr
 	)
 	cmake_src_configure
 }
