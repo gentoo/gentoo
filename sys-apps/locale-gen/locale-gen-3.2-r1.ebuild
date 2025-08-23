@@ -33,7 +33,7 @@ src_prepare() {
 
 	eapply_user
 
-	perl -pi -e '$f //= ($. == 1 && s/^#!\K\//$ENV{MY_EPREFIX}\//); END { exit !$f }' "${PN}" \
+	perl -pi -e '$f //= ($. == 1 && s/^#!\h*\K/$ENV{MY_EPREFIX}/); END { exit !$f }' "${PN}" \
 	|| die "Failed to prefixify ${PN}"
 }
 
