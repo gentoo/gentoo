@@ -102,7 +102,7 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	# Gentoo specific acct-user and acct-group conf adjustments
-	"${FILESDIR}"/${PN}-106-acct-user-group-gentoo.patch
+	"${FILESDIR}"/${PN}-108-acct-user-group-gentoo.patch
 )
 
 pkg_setup() {
