@@ -56,11 +56,11 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	rm -f \
+	rm \
 		"${ED}"/usr/*/*.la \
-		"${ED}"/usr/share/doc/${P}/LICENSE || die
+		"${ED}"/usr/share/doc/${PF}/LICENSE || die
 
 	if ! use examples; then
-		rm -r "${ED}"/usr/share/doc/${P}/examples || die
+		rm -r "${ED}"/usr/share/doc/${PF}/examples || die
 	fi
 }
