@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/keystone-engine/keystone/archive/${PV/_rc/-rc}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 fi
 S="${WORKDIR}"/${P/_rc/-rc}
 
