@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 
 RDEPEND="dev-ml/dune-configurator:=[ocamlopt?]
-	>=dev-lang/ocaml-4.09:=
+	x11-libs/libXft
 	x11-libs/libX11:="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
