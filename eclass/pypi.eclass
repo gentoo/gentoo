@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pypi.eclass
@@ -161,7 +161,7 @@ _pypi_sdist_url() {
 # generated using build systems that did not follow PEP 625
 # (i.e. the sdist name contains uppercase letters, hyphens or dots).
 #
-# If <package> is unspecified, it defaults to ${PYPI_PN}.  The package
+# If <project> is unspecified, it defaults to ${PYPI_PN}.  The package
 # name is normalized according to the specification unless
 # `--no-normalize` is passed.
 #
@@ -183,7 +183,7 @@ pypi_sdist_url() {
 # @DESCRIPTION:
 # Output the wheel filename for the specified project/version tuple.
 #
-# If <package> is unspecified, it defaults to ${PYPI_PN}.  The package
+# If <project> is unspecified, it defaults to ${PYPI_PN}.  The package
 # name is normalized according to the wheel specification.
 #
 # If <version> is unspecified, it defaults to ${PV} translated
@@ -221,7 +221,7 @@ pypi_wheel_name() {
 # the wheel contents will be unpacked straight into ${WORKDIR}.
 # You need to add a BDEPEND on app-arch/unzip.
 #
-# If <package> is unspecified, it defaults to ${PYPI_PN}.
+# If <project> is unspecified, it defaults to ${PYPI_PN}.
 #
 # If <version> is unspecified, it defaults to ${PV} translated
 # via pypi_translate_version.  If it is specified, then it is used
