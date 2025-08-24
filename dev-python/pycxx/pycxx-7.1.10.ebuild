@@ -44,36 +44,39 @@ python_compile() {
 		local S_SRCS="cxx_exceptions.cxx cxxextensions.c cxx_extensions.cxx cxxsupport.cxx IndirectPythonInterface.cxx"
 		local S_OBJS=""
 		for i in ${S_SRCS}; do
+			local S_O="${BUILD_DIR}/${i%%.c*}.o"
 			local c_cmd=(
 				$(tc-getCXX) \
 					${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
 					-I"${S}" -I"${EPREFIX}/usr/include/${EPYTHON}" \
-					-fPIC -c ${i}
+					-fPIC -c ${i} -o "${S_O}"
 			)
 			printf '%s\n' "${c_cmd[*]}"
 			"${c_cmd[@]}" || die "compile test ${i} failed"
-			S_OBJS+="../../Src/${i%%.c*}.o "
+			S_OBJS+="${S_O} "
 		done
 		popd || die
 		pushd Demo/Python3 || die
+		cp -p test_example.py "${BUILD_DIR}" || die
 		local D_SRCS="example.cxx range.cxx rangetest.cxx"
 		local D_OBJS=""
 		for i in ${D_SRCS}; do
+			local D_O="${BUILD_DIR}/${i%%.c*}.o"
 			local c_cmd=(
 				$(tc-getCXX) \
 					${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
 					-I"${S}" -I"${S}"/Demo/Python3 -I"${EPREFIX}/usr/include/${EPYTHON}" \
-					-fPIC -c ${i}
+					-fPIC -c ${i} -o "${D_O}"
 			)
 			printf '%s\n' "${c_cmd[*]}"
 			"${c_cmd[@]}" || die "compile test ${i} failed"
-			D_OBJS+="${i%%.c*}.o "
+			S_OBJS+="${D_O} "
 		done
 		local l_example_cmd=(
 			$(tc-getCXX) \
 				${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
 				-I$"{S}" -I"${S}"/Demo/Python3 -I$"{EPREFIX}/usr/include/${EPYTHON}" \
-				-shared -fPIC -o example.so ${S_OBJS} ${D_OBJS} -l${EPYTHON} -ldl
+				-shared -fPIC -o "${BUILD_DIR}"/example.so ${S_OBJS} ${D_OBJS} -l${EPYTHON} -ldl
 		)
 		printf '%s\n' "${l_example_cmd[*]}"
 		"${l_example_cmd[@]}" || die "link test example.so failed"
@@ -82,8 +85,8 @@ python_compile() {
 }
 
 python_test() {
-	pushd Demo/Python3 || die
-	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${PWD}"
+	pushd "${BUILD_DIR}" || die
+	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${BUILD_DIR}"
 	local cmd=(
 		"${EPYTHON}" test_example.py
 	)
