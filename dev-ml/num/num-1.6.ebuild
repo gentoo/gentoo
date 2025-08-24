@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="+ocamlopt"
 
+PATCHES=( "${FILESDIR}"/${P}-META.patch )
+
 src_compile() {
 	emake CFLAGS="${CFLAGS}" \
 		NATDYNLINK="$(usex ocamlopt true false)" \

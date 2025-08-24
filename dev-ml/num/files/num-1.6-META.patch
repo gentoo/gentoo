@@ -1,0 +1,14 @@
+--- a/src/Makefile	2025-08-24 20:37:54.276261621 +0200
++++ b/src/Makefile	2025-08-24 20:34:04.708721094 +0200
+@@ -156,9 +156,9 @@
+ 
+ install: num-top-install
+ 	$(INSTALL_DIR) $(DESTDIR)$(STDLIBDIR)
+-	cp META.num META
++	mv META.num META
+ 	$(OCAMLFIND) install num META
+-	rm -f META
++	mv META META.num
+ 	$(INSTALL_DATA) $(TOINSTALL) $(DESTDIR)$(STDLIBDIR)
+ ifeq "$(NATDYNLINK)" "true"
+ 	$(INSTALL_DLL) $(TOINSTALL_CMXS) $(DESTDIR)$(STDLIBDIR)
