@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-02)
+# dev-python/pypi-attestations is keyworded here.
+-verify-provenance
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-01)
 # media-libs/libspng only keyworded on amd64, arm64
 -spng
