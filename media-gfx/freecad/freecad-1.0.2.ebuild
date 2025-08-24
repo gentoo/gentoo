@@ -75,6 +75,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
+		dev-python/pycxx[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	assembly? ( sci-libs/ondselsolver )
@@ -138,6 +139,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-1.0.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${FILESDIR}/${PN}-1.0.2-pybind11-latent-slots-macro-conflicts-with-Qt.patch" # fixed in pybind-3.0.1
 	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
 	"${DISTDIR}/${PN}-21433.patch" # FindHDF5 fails to find HDF5 after a failing pkg_search_module
 )
@@ -266,6 +268,9 @@ src_prepare() {
 	# d9e731ca94abc14808ebeed208617116f6d5ea4a
 	sed -e 's#pcl/point_traits.h#pcl/type_traits.h#g' -i src/Mod/ReverseEngineering/App/SurfaceTriangulation.cpp || die
 
+	# removed bundled pycxx
+	rm -rf src/CXX
+
 	cmake_src_prepare
 }
 
@@ -288,6 +293,9 @@ src_configure() {
 		-DCMAKE_POLICY_DEFAULT_CMP0167="OLD" # FindBoost
 		-DCMAKE_POLICY_DEFAULT_CMP0175="OLD" # add_custom_command
 		-DCMAKE_POLICY_DEFAULT_CMP0153="OLD" # exec_program
+
+		-DPYCXX_INCLUDE_DIR="${EPREFIX}/usr/include/${PYTHON_SINGLE_TARGET/_/.}"
+		-DPYCXX_SOURCE_DIR="${EPREFIX}/usr/share/${PYTHON_SINGLE_TARGET/_/.}/CXX"
 
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
