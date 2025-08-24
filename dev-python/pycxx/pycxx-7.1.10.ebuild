@@ -1,0 +1,112 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI="8"
+
+PYTHON_COMPAT=( python3_{10..14} )
+DISTUTILS_USE_PEP517=setuptools
+
+inherit distutils-r1 toolchain-funcs
+
+DESCRIPTION="Set of facilities to extend Python with C++"
+HOMEPAGE="https://cxx.sourceforge.net"
+SRC_URI="https://sourceforge.net/code-snapshots/svn/c/cx/cxx/code/cxx-code-r464-trunk.zip -> ${P}.zip"
+
+S="${WORKDIR}"/cxx-code-r464-trunk/CXX
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+IUSE="doc examples test"
+RESTRICT="!test? ( test )"
+
+BDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	' 3.12)
+	app-arch/unzip
+"
+
+python_prepare_all() {
+	rm -R Src/Python2/ || die
+
+	# Without this, pysvn fails.
+	# Src/Python3/cxxextensions.c: No such file or directory
+	sed -e "/^#include/s:Src/::" -i Src/*.{c,cxx} || die "sed failed"
+
+	distutils-r1_python_prepare_all
+}
+
+python_compile() {
+	distutils-r1_python_compile
+	if use test; then
+		pushd Src || die
+		local S_SRCS="cxx_exceptions.cxx cxxextensions.c cxx_extensions.cxx cxxsupport.cxx IndirectPythonInterface.cxx"
+		local S_OBJS=""
+		for i in ${S_SRCS}; do
+			local c_cmd=(
+				$(tc-getCXX) \
+					${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
+					-I"${S}" -I"${EPREFIX}/usr/include/${EPYTHON}" \
+					-fPIC -c ${i}
+			)
+			printf '%s\n' "${c_cmd[*]}"
+			"${c_cmd[@]}" || die "compile test ${i} failed"
+			S_OBJS+="../../Src/${i%%.c*}.o "
+		done
+		popd || die
+		pushd Demo/Python3 || die
+		local D_SRCS="example.cxx range.cxx rangetest.cxx"
+		local D_OBJS=""
+		for i in ${D_SRCS}; do
+			local c_cmd=(
+				$(tc-getCXX) \
+					${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
+					-I"${S}" -I"${S}"/Demo/Python3 -I"${EPREFIX}/usr/include/${EPYTHON}" \
+					-fPIC -c ${i}
+			)
+			printf '%s\n' "${c_cmd[*]}"
+			"${c_cmd[@]}" || die "compile test ${i} failed"
+			D_OBJS+="${i%%.c*}.o "
+		done
+		local l_example_cmd=(
+			$(tc-getCXX) \
+				${CPPFLAGS} ${CFLAGS} ${ASFLAGS} \
+				-I$"{S}" -I"${S}"/Demo/Python3 -I$"{EPREFIX}/usr/include/${EPYTHON}" \
+				-shared -fPIC -o example.so ${S_OBJS} ${D_OBJS} -l${EPYTHON} -ldl
+		)
+		printf '%s\n' "${l_example_cmd[*]}"
+		"${l_example_cmd[@]}" || die "link test example.so failed"
+		popd || die
+	fi
+}
+
+python_test() {
+	pushd Demo/Python3 || die
+	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${PWD}"
+	local cmd=(
+		"${EPYTHON}" test_example.py
+	)
+	printf '%s\n' "${cmd[*]}"
+	"${cmd[@]}" || die "test_example failed"
+	popd || die
+}
+
+python_install() {
+	distutils-r1_python_install
+
+	# Move misplaced files into place
+	dodir "/usr/share/${EPYTHON}"
+	mv "${D}/usr/CXX" "${D}/usr/share/${EPYTHON}/CXX" || die
+	mv "${D}/usr/include/${EPYTHON}"/{cxx,CXX} || die
+}
+
+python_install_all() {
+	use doc && local HTML_DOCS=( Doc/. )
+	if use examples ; then
+		docinto examples
+		dodoc -r Demo/Python3/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+	distutils-r1_python_install_all
+}
