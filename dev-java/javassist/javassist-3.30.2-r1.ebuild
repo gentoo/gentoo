@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,8 +18,12 @@ LICENSE="Apache-2.0 LGPL-2.1 MPL-1.1"
 SLOT="3"
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux"
 
+# src/main/javassist/tools/rmi/ObjectImporter.java:99: error: package java.applet does not exist
+#     public ObjectImporter(@SuppressWarnings("deprecation") java.applet.Applet applet) {
+#                                                                       ^
+# See https://bugs.openjdk.org/browse/JDK-8359053 - so we exclude jdk:26
 DEPEND="
-	>=virtual/jdk-11:*
+	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	test? ( dev-java/hamcrest-library:1.3 )
 "
 
@@ -28,7 +32,10 @@ RDEPEND=">=virtual/jre-1.8:*"
 DOCS=( Changes.md README.md )
 HTML_DOCS=( tutorial/{brown.css,tutorial.html,tutorial2.html,tutorial3.html} )
 
-PATCHES=( "${FILESDIR}/javassist-3.29.2-gentoo.patch" )
+PATCHES=(
+	"${FILESDIR}/javassist-3.29.2-gentoo.patch"
+	"${FILESDIR}/javassist-3.30.2-skip_testDeprecatedAttribute.patch"
+)
 
 JAVA_AUTOMATIC_MODULE_NAME="org.javassist"
 JAVA_MAIN_CLASS="javassist.CtClass"
