@@ -71,6 +71,7 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	x86? ( dev-lang/yasm )
 "
+# depends on abseil-cpp via protobuf targets
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
@@ -92,6 +93,7 @@ RDEPEND="
 	cddb? ( media-libs/libcddb )
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
+		dev-cpp/abseil-cpp:=
 		>=dev-libs/protobuf-2.5.0:=
 		>=net-libs/libmicrodns-0.1.2:=
 	)
