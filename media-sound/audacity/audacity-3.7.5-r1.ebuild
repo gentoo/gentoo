@@ -8,7 +8,7 @@ WX_GTK_VER="3.2-gtk3"
 inherit cmake flag-o-matic wxwidgets xdg virtualx
 
 DESCRIPTION="Free crossplatform audio editor"
-HOMEPAGE="https://www.audacityteam.org/"
+HOMEPAGE="https://www.audacityteam.org"
 
 # A header-only thread pool library, without a build system, about 100
 # lines of code.  Probably not worth packaging individually.  Check
@@ -28,13 +28,10 @@ fi
 
 SRC_URI+=" audiocom? ( ${MY_THREADPOOL} )"
 
-# GPL-2+, GPL-3 - Audacity itself
-# ZLIB - The ThreadPool single-header library
+# GPL-3, GPL-2+ - Audacity itself
 # CC-BY-3.0 - Documentation
-LICENSE="GPL-2+
-	GPL-3
-	audiocom? ( ZLIB )
-"
+# ZLIB - The ThreadPool single-header library
+LICENSE="GPL-3 GPL-2+ CC-BY-3.0 audiocom? ( ZLIB )"
 SLOT="0"
 IUSE="alsa audiocom ffmpeg +flac id3tag +ladspa +lv2 mpg123 +ogg
 	opus +portmixer sbsms test twolame vamp +vorbis wavpack"
@@ -68,11 +65,12 @@ RESTRICT="!test? ( test )"
 #   - Lavc - 5[789]
 #   - Lavu - 5[2567]
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="
+	app-accessibility/at-spi2-core:2
+	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/glib:2
-	media-libs/libjpeg-turbo:=
-	media-libs/libpng:=
+	media-libs/harfbuzz:=
 	media-libs/libsndfile
 	media-libs/libsoundtouch:=
 	media-libs/portaudio[alsa?]
@@ -82,13 +80,13 @@ RDEPEND="dev-db/sqlite:3
 	media-sound/lame
 	sys-apps/util-linux
 	sys-libs/zlib:=
+	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
+	x11-libs/pango
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	alsa? ( media-libs/alsa-lib )
-	audiocom? (
-		net-misc/curl
-	)
+	audiocom? ( net-misc/curl )
 	ffmpeg? ( media-video/ffmpeg )
 	flac? ( media-libs/flac:=[cxx] )
 	id3tag? ( media-libs/libid3tag:= )
@@ -181,10 +179,10 @@ src_configure() {
 
 		-Daudacity_conan_enabled=off
 
-		-Daudacity_has_networking=$(usex audiocom on off)
 		# Not useful on Gentoo.
 		-Daudacity_has_updates_check=OFF
 		-Daudacity_has_audiocom_upload=$(usex audiocom on off)
+		-Daudacity_has_networking=$(usex audiocom on off)
 
 		# Disable telemetry features.
 		-Daudacity_has_sentry_reporting=off
@@ -200,10 +198,9 @@ src_configure() {
 		-Daudacity_obey_system_dependencies=ON
 		-Daudacity_use_expat=system
 		-Daudacity_use_ffmpeg=$(usex ffmpeg loaded off)
-		-Daudacity_use_libid3tag=$(usex id3tag system off)
 		-Daudacity_use_ladspa=$(usex ladspa)
 		-Daudacity_use_lame=system
-		-Daudacity_use_wxwidgets=system
+		-Daudacity_use_libid3tag=$(usex id3tag system off)
 		-Daudacity_use_libflac=$(usex flac system off)
 		-Daudacity_use_libmp3lame=system
 		-Daudacity_use_libmpg123=$(usex mpg123 system off)
@@ -226,6 +223,7 @@ src_configure() {
 		-Daudacity_use_twolame=$(usex twolame system off)
 		-Daudacity_use_vamp=$(usex vamp system off)
 		-Daudacity_use_wavpack=$(usex wavpack system off)
+		-Daudacity_use_wxwidgets=system
 
 		# See the allow-overriding-alsa-jack.patch patch
 		-DPA_HAS_ALSA=$(usex alsa on off)
