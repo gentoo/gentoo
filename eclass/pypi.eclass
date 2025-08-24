@@ -11,16 +11,18 @@
 # @DESCRIPTION:
 # The pypi.eclass can be used to easily obtain URLs for artifacts
 # uploaded to PyPI.org.  When inherited, the eclass defaults SRC_URI
-# and S to fetch .tar.gz sdist.  The project filename is normalized
-# by default (unless PYPI_NO_NORMALIZE is set prior to inheriting
-# the eclass), and the version is translated using
+# and S to fetch .tar.gz sdist.  The eclass defaults to using ${PN}
+# as PyPI project name; PYPI_PN can be set prior to inheriting it
+# to override that.  The source distribution filename is assumed
+# to be normalized by default; PYPI_NO_NORMALIZE can be set prior
+# to inherit to override that.  The version is translated using
 # pypi_translate_version.
 #
 # If necessary, SRC_URI and S can be overridden by the ebuild.  Two
 # helper functions, pypi_sdist_url and pypi_wheel_url are provided
 # to generate URLs to artifacts of specified type, with customizable
 # URL components.  Additionally, pypi_wheel_name can be used to generate
-# wheel filename.
+# the wheel filename.
 #
 # pypi_normalize_name can be used to normalize an arbitrary project name
 # according to sdist/wheel normalization rules.  pypi_translate_version
