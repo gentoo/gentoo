@@ -309,6 +309,9 @@ src_test() {
 	# Depends on local network.
 	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\|Test_glvs_\)'
 
+	echo "throw 'Skipped: needs X'" > src/testdir/test_clientserver.vim || die
+	echo "throw 'Skipped: needs X'" > src/testdir/test_vim9_builtin.vim || die
+
 	emake -j1 -C src/testdir nongui
 }
 
