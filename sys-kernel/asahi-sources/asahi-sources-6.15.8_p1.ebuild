@@ -44,7 +44,7 @@ SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}
 KV_FULL="${PVR/_p/-asahi-}"
 S="${WORKDIR}/linux-${KV_FULL}"
 
-KEYWORDS="arm64"
+KEYWORDS="~arm64"
 
 DEPEND="
 	${DEPEND}
@@ -54,7 +54,6 @@ DEPEND="
 UNIPATCH_STRICTORDER="yes"
 UNIPATCH_LIST="
 	${FILESDIR}/asahi-6.8-config-gentoo-Drop-RANDSTRUCT-from-GENTOO_KERNEL_SEL.patch
-	${FILESDIR}/1740_revert_x86-insn-decoder-test-allow-longer-symbol-names.patch
 	${DISTDIR}/linux-${ASAHI_TAG}.diff
 "
 
