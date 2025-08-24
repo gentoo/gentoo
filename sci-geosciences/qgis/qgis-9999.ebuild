@@ -36,9 +36,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 RESTRICT="!test? ( test )"
 
+# depends on abseil-cpp via protobuf targets
 COMMON_DEPEND="
 	>=app-crypt/qca-2.3.7:2[qt6(+),ssl]
-	dev-cpp/nlohmann_json
+	dev-cpp/abseil-cpp:=
 	>=dev-db/spatialite-4.2.0
 	dev-db/sqlite:3
 	dev-libs/expat
@@ -97,6 +98,7 @@ COMMON_DEPEND="
 	webengine? ( dev-qt/qtwebengine:6 )
 "
 DEPEND="${COMMON_DEPEND}
+	dev-cpp/nlohmann_json
 	test? ( python? (
 		app-text/poppler[cairo,utils]
 		app-text/qpdf
