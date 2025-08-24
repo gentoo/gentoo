@@ -18,16 +18,23 @@
 # to inherit to override that.  The version is translated using
 # pypi_translate_version.
 #
-# If necessary, SRC_URI and S can be overridden by the ebuild.  Two
-# helper functions, pypi_sdist_url and pypi_wheel_url are provided
-# to generate URLs to artifacts of specified type, with customizable
-# URL components.  Additionally, pypi_wheel_name can be used to generate
-# the wheel filename.
+# If PYPI_VERIFY_REPO is set to a non-empty value, verify-provenance
+# flag is added along with necessary BDEPEND.  The provenance file
+# for the default source distribution is added to SRC_URI, and a default
+# src_unpack() is exported to verify its provenance.
+#
+# If necessary, SRC_URI and S can be overridden by the ebuild.  Three
+# helper functions, pypi_sdist_url, pypi_wheel_url
+# and pypi_provenance_url are provided to generate URLs to artifacts
+# of specified type, with customizable URL components.  Additionally,
+# pypi_wheel_name can be used to generate the wheel filename.
 #
 # pypi_normalize_name can be used to normalize an arbitrary project name
 # according to sdist/wheel normalization rules.  pypi_translate_version
 # can be used to translate a Gentoo version string into its PEP 440
 # equivalent.
+#
+# pypi_verify_provenance can be used to verify the provenance directly.
 #
 # @EXAMPLE:
 # @CODE
@@ -64,6 +71,15 @@ _PYPI_ECLASS=1
 # PYPI_PN=${PN/-/.}
 # @CODE
 : "${PYPI_PN:=${PN}}"
+
+# @ECLASS_VARIABLE: PYPI_VERIFY_REPO
+# @DEFAULT_UNSET
+# @PRE_INHERIT
+# @DESCRIPTION:
+# The repository to verify provenance against.  If set to a non-empty
+# value, the eclass will add a "verify-provenance" flag that can be used
+# to download the provenance for the distribution, and verify it
+# against the provenance and the specified repository.
 
 # @FUNCTION: _pypi_normalize_name
 # @INTERNAL
@@ -259,6 +275,76 @@ pypi_wheel_url() {
 	fi
 }
 
+# @FUNCTION: _pypi_provenance_url
+# @INTERNAL
+# @USAGE: <dist> [<project> [<version>]]
+# @DESCRIPTION:
+# Internal function to generate provenance URL for <dist>, using
+# specified <project> and <version>.  Returns the result
+# via _PYPI_ATTESTATION_URL.
+_pypi_provenance_url() {
+	if [[ ${#} -lt 1 || ${#} -gt 3 ]]; then
+		die "Usage: ${FUNCNAME} <dist> [<project> [<version>]]"
+	fi
+
+	local dist=${1}
+	local project=${2-"${PYPI_PN}"}
+	local version=${3-"$(pypi_translate_version "${PV}")"}
+	_PYPI_ATTESTATION_URL="https://pypi.org/integrity/${project}/v${version}/${dist}/provenance"
+}
+
+# @FUNCTION: pypi_provenance_url
+# @USAGE: <dist> [<project> [<version>]]
+# @DESCRIPTION:
+# Output the URL to PyPI provenance for the specified artifact.
+pypi_provenance_url() {
+	local _PYPI_PROVENANCE_URL
+	_pypi_provenance_url "${@}"
+	echo "${_PYPI_PROVENANCE_URL}"
+}
+
+# @FUNCTION: pypi_verify_provenance
+# @USAGE: <dist> <provenance> [<repo>]
+# @DESCRIPTION:
+# Verify the specified artifact's provenance.  <dist> is the path
+# to the artifact to verify, while <provenance> is the provenance file.
+#
+# The function defaults to using PYPI_VERIFY_REPO as the expected
+# repository URL.  This can be overridden by specfying <repo>.
+#
+# The function dies on verification failure.
+pypi_verify_provenance() {
+	if [[ ${#} -lt 2 || ${#} -gt 3 ]]; then
+		die "Usage: ${FUNCNAME} <dist> <provenance> [<repo>]"
+	fi
+
+	local dist=${1}
+	local provenance=${2}
+	local repo=${3-"${PYPI_VERIFY_REPO}"}
+
+	einfo "Verifying ${dist##*/} ..."
+	pypi-attestations verify pypi --offline \
+		--repository "${repo}" \
+		--provenance-file "${provenance}" \
+		"${dist}" ||
+		die "Provenance verification failed for ${dist##*/}"
+}
+
+# @FUNCTION: pypi_src_unpack
+# @DESCRIPTION:
+# A src_unpack implementation that verifies provenances.  Exported only
+# with PYPI_VERIFY_REPO.
+pypi_src_unpack() {
+	if use verify-provenance; then
+		local sdist_url=$(pypi_sdist_url)
+		local filename=${sdist_url##*/}
+
+		pypi_verify_provenance "${DISTDIR}/${filename}"{,.provenance}
+	fi
+
+	default
+}
+
 # @FUNCTION: _pypi_set_globals
 # @INTERNAL
 # @DESCRIPTION:
@@ -278,8 +364,31 @@ _pypi_set_globals() {
 	fi
 
 	SRC_URI=${_PYPI_SDIST_URL}
+
+	if [[ -n ${PYPI_VERIFY_REPO} ]]; then
+		local dist=${_PYPI_SDIST_URL##*/}
+		local _PYPI_ATTESTATION_URL
+		_pypi_provenance_url "${dist}" "${PYPI_PN}" \
+			"${_PYPI_TRANSLATED_VERSION}"
+
+		IUSE="verify-provenance"
+		SRC_URI+="
+			verify-provenance? (
+				${_PYPI_ATTESTATION_URL} -> ${dist}.provenance
+			)
+		"
+		BDEPEND="
+			verify-provenance? (
+				dev-python/pypi-attestations
+			)
+		"
+	fi
 }
 
 _pypi_set_globals
+
+if [[ -n ${PYPI_VERIFY_REPO} ]]; then
+	EXPORT_FUNCTIONS src_unpack
+fi
 
 fi

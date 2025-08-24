@@ -363,6 +363,7 @@ valgrind - Enable annotations for accuracy. May slow down runtime slightly. Safe
 vanilla - Do not add extra patches which change default behaviour; DO NOT USE THIS ON A GLOBAL SCALE as the severity of the meaning changes drastically
 vcd - Video CD support
 vdpau - Enable the Video Decode and Presentation API for Unix acceleration interface
+verify-provenance - Verify provenance of PyPI distfiles (verifies that the artifact comes from upstream source repository)
 verify-sig - Verify upstream signatures on distfiles
 vhosts - Add support for installing web-based applications into a virtual-hosting environment
 videos - Install optional video files (used in some games)
