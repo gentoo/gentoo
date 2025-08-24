@@ -23,7 +23,9 @@ REQUIRED_USE="
 	|| ( client server )
 	examples? ( client )"
 
+# depends on abseil-cpp via protobuf targets
 RDEPEND="
+	dev-cpp/abseil-cpp:=
 	dev-libs/protobuf:=
 	sys-libs/ncurses:=
 	sys-libs/zlib
