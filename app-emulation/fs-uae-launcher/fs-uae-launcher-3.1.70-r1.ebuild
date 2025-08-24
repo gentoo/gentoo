@@ -9,9 +9,10 @@ DISTUTILS_SINGLE_IMPL=yes
 
 inherit distutils-r1 xdg
 
-DESCRIPTION="PyQt5-based launcher for FS-UAE"
+DESCRIPTION="PyQt-based launcher for FS-UAE"
 HOMEPAGE="https://fs-uae.net/"
-SRC_URI="https://fs-uae.net/files/FS-UAE-Launcher/Stable/${PV}/${P}.tar.xz"
+SRC_URI="https://fs-uae.net/files/FS-UAE-Launcher/Stable/${PV}/${P}.tar.xz
+	https://github.com/chewi/fs-uae-launcher/compare/stable...stable-qt6.patch -> ${P}-qt6.patch"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
@@ -21,7 +22,7 @@ RESTRICT="test" # The test files are just boilerplate.
 RDEPEND="
 	app-emulation/fs-uae
 	$(python_gen_cond_dep '
-		dev-python/pyqt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
+		dev-python/pyqt6[${PYTHON_USEDEP},gui,network,opengl,widgets]
 		dev-python/pyopengl[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		lha? ( dev-python/lhafile[${PYTHON_USEDEP}] )
@@ -33,6 +34,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${DISTDIR}"/${P}-qt6.patch
 	"${FILESDIR}"/${PN}-3.0.0-ROMs.patch
 )
 
@@ -49,8 +51,6 @@ pkg_postinst() {
 	xdg_pkg_postinst
 
 	elog "Some important information:"
-	elog
-	ewarn " - Do not use QtCurve, it will crash PyQt5!"
 	elog
 	elog " - By default, FS-UAE creates its directories under Documents/FS-UAE."
 	elog "   If your Documents directory is not configured according to the XDG"
