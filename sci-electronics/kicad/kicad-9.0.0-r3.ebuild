@@ -58,6 +58,7 @@ RESTRICT="!test? ( test )"
 # See https://gitlab.com/kicad/code/kicad/-/commit/74e4370a9b146b21883d6a2d1df46c7a10bd0424
 # Depend on opencascade:0 to get unslotted variant (so we know path to it), bug #833301
 # Depend wxGTK version needs to be limited due to switch from EGL to GLX, bug #911120
+# Depends on abseil-cpp via protobuf targets
 COMMON_DEPEND="
 	app-crypt/libsecret
 	dev-cpp/abseil-cpp:=
