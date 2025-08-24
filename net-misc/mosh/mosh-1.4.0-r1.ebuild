@@ -89,9 +89,10 @@ src_configure() {
 src_install() {
 	default
 
-	for myprog in $(find src/examples -type f -perm /0111) ; do
-		newbin ${myprog} ${PN}-$(basename ${myprog})
-		elog "${myprog} installed as ${PN}-$(basename ${myprog})"
+	find src/examples -type f -perm /0111 -print0 |
+	while IFS= read -r -d '' myprog; do
+		newbin "${myprog}" "${PN}-$(basename "${myprog}")"
+		elog "${myprog} installed as ${PN}-$(basename "${myprog}")"
 	done
 
 	# bug #477384
