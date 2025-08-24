@@ -73,6 +73,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pybind11[${PYTHON_USEDEP}]
+		dev-python/pycxx[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	assembly? ( sci-libs/ondselsolver )
@@ -268,6 +269,9 @@ src_prepare() {
 	sed -e 's/vtkVersion.GetVTKMajorVersion() > 9/vtkVersion.GetVTKMajorVersion() >= 9/g' \
 		-i src/Mod/Fem/femguiutils/data_extraction.py || die
 
+	# removed bundled pycxx
+	rm -rf src/CXX
+
 	cmake_src_prepare
 }
 
@@ -290,6 +294,9 @@ src_configure() {
 		-DCMAKE_POLICY_DEFAULT_CMP0167="OLD" # FindBoost
 		-DCMAKE_POLICY_DEFAULT_CMP0175="OLD" # add_custom_command
 		-DCMAKE_POLICY_DEFAULT_CMP0153="OLD" # exec_program
+
+		-DPYCXX_INCLUDE_DIR="${EPREFIX}/usr/include/${PYTHON_SINGLE_TARGET/_/.}"
+		-DPYCXX_SOURCE_DIR="${EPREFIX}/usr/share/${PYTHON_SINGLE_TARGET/_/.}/CXX"
 
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
