@@ -3,7 +3,7 @@
 
 EAPI=8
 
-KFMIN=6.0.0
+KFMIN=6.9.0
 QTMIN=6.5.0
 inherit ecm xdg
 
