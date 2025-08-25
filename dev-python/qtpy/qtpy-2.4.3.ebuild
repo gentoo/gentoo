@@ -103,7 +103,6 @@ distutils_enable_tests pytest
 
 src_prepare() {
 	distutils-r1_src_prepare
-	sed -i -e 's:--cov=qtpy --cov-report=term-missing::' pytest.ini || die
 	# Disable Qt for Python implementations that are not selected
 
 	# Always disable PyQt5
