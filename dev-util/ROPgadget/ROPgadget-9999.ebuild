@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,8 +28,8 @@ RDEPEND="
 	>=dev-libs/capstone-5.0.1[python,${PYTHON_USEDEP}]
 "
 
-src_test() {
+python_test() {
 	pushd test-suite-binaries || die
-	./test.sh || die
+	./test.sh || die "Tests failed with ${EPYTHON}"
 	popd || die
 }

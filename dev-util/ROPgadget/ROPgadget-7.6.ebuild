@@ -28,8 +28,8 @@ RDEPEND="
 	>=dev-libs/capstone-5.0.1[python,${PYTHON_USEDEP}]
 "
 
-src_test() {
+python_test() {
 	pushd test-suite-binaries || die
-	./test.sh || die
+	./test.sh || die "Tests failed with ${EPYTHON}"
 	popd || die
 }
