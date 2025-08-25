@@ -16,16 +16,11 @@ SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # Test works only with ocaml >= 5
 
-# Jane Street Minor
-JSM=0.17
-
-# It also works with ocaml >= 4 but tests are to be fixed
 RDEPEND="
-	>=dev-lang/ocaml-5:=
 	>=dev-ml/ocaml-compiler-libs-0.17:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
 	dev-ml/sexplib0:=[ocamlopt?]
@@ -35,10 +30,4 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-ml/dune-3.11
-	test? (
-		=dev-ml/base-${JSM}*:=[ocamlopt?]
-		dev-ml/cinaps
-		>=dev-ml/findlib-1.9.6[ocamlopt?]
-		dev-ml/re
-	)
 "
