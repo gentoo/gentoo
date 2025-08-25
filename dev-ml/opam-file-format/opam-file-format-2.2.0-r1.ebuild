@@ -19,4 +19,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? ( dev-ml/alcotest )"
+RDEPEND="dev-ml/menhir:=[ocamlopt?]"
+DEPEND="${RDEPEND}"
+BDEPEND="test? ( dev-ml/alcotest )"
