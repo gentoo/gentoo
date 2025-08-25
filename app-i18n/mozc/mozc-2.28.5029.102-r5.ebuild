@@ -121,12 +121,13 @@ S="${WORKDIR}/${P}/src"
 SITEFILE="50${PN}-gentoo.el"
 
 PATCHES=(
-	"${WORKDIR}"/mozc-2.28.5029.102-patches
-	"${FILESDIR}"/mozc-2.28.5029.102-abseil.patch
-	"${FILESDIR}"/mozc-2.28.5029.102-abseil-20230802.0.patch
-	"${FILESDIR}"/mozc-2.28.5029.102-abseil-20240116.patch
-	"${FILESDIR}"/mozc-2.28.5029.102-abseil-20250127.patch
-	"${FILESDIR}"/mozc-2.28.5029.102-abseil-20250512.patch
+	"${WORKDIR}/${P}-patches"
+	"${FILESDIR}/${P}-abseil.patch"
+	"${FILESDIR}/${P}-abseil-20230802.0.patch"
+	"${FILESDIR}/${P}-abseil-20240116.patch"
+	"${FILESDIR}/${P}-abseil-20250127.patch"
+	"${FILESDIR}/${P}-abseil-20250512.patch"
+	"${FILESDIR}/${P}-cxx20.patch" # bug 960019
 )
 
 python_check_deps() {
@@ -147,7 +148,7 @@ src_unpack() {
 		unpack ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
 		mv mozc-${MOZC_GIT_REVISION} ${P} || die
 
-		unpack ${PN}-2.28.5029.102-patches.tar.xz
+		unpack ${P}-patches.tar.xz
 
 		unpack japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
 		cp -p japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}/usage_dict.txt ${P}/src/third_party/japanese_usage_dictionary || die
@@ -163,7 +164,7 @@ src_unpack() {
 src_prepare() {
 	if use fcitx5; then
 		cp -pr "${WORKDIR}/fcitx5-mozc/src/unix/fcitx5" unix || die
-		PATCHES+=( "${FILESDIR}"/mozc-2.28.5029.102-abseil-20230802.0-fcitx5.patch )
+		PATCHES+=( "${FILESDIR}/${P}-abseil-20230802.0-fcitx5.patch" )
 	fi
 
 	pushd "${WORKDIR}/${P}" > /dev/null || die
