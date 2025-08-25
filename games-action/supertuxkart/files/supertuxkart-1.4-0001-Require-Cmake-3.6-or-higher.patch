@@ -1,0 +1,117 @@
+From 7f67e1ffb599d43cd2316e0320ce7944b49be02e Mon Sep 17 00:00:00 2001
+From: Alayan <25536748+Alayan-stk-2@users.noreply.github.com>
+Date: Tue, 21 May 2024 14:06:16 +0200
+Subject: [PATCH 1/2] Require Cmake 3.6 or higher
+
+This gets rid of deprecation warnings. Cmake 3.6 has been out for almost 8 years by now, so this requirement should not cause undue trouble to people trying to compile the game.
+
+Signed-off-by: G-Src <gsrc@fsfans.club>
+---
+ CMakeLists.txt                    | 6 +-----
+ lib/enet/CMakeLists.txt           | 2 +-
+ lib/graphics_utils/CMakeLists.txt | 2 +-
+ lib/libsquish/CMakeLists.txt      | 2 +-
+ lib/mcpp/CMakeLists.txt           | 2 +-
+ lib/tinygettext/CMakeLists.txt    | 2 +-
+ lib/wiiuse/CMakeLists.txt         | 8 +-------
+ 7 files changed, 7 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 98dd5dcae..23ed9dc26 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.4)
++cmake_minimum_required(VERSION 3.6.0)
+ 
+ # root CMakeLists for the SuperTuxKart project
+ project(SuperTuxKart)
+@@ -6,10 +6,6 @@ set(PROJECT_VERSION "1.4")
+ 
+ add_definitions( -DSUPERTUXKART_VERSION="${PROJECT_VERSION}" )
+ 
+-if(NOT (CMAKE_MAJOR_VERSION VERSION_LESS 3))
+-  cmake_policy(SET CMP0043 OLD)
+-endif()
+-
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
+ include(CMakeDependentOption)
+ 
+diff --git a/lib/enet/CMakeLists.txt b/lib/enet/CMakeLists.txt
+index 4176552c7..41cd842f5 100644
+--- a/lib/enet/CMakeLists.txt
++++ b/lib/enet/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.6.0)
+ 
+ project(enet)
+ 
+diff --git a/lib/graphics_utils/CMakeLists.txt b/lib/graphics_utils/CMakeLists.txt
+index 893624dfc..11230060a 100644
+--- a/lib/graphics_utils/CMakeLists.txt
++++ b/lib/graphics_utils/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.6.0)
+ include_directories("${PROJECT_SOURCE_DIR}/lib/simd_wrapper")
+ if (UNIX OR MINGW)
+     add_definitions(-O3)
+diff --git a/lib/libsquish/CMakeLists.txt b/lib/libsquish/CMakeLists.txt
+index f271694d6..6b5541e38 100644
+--- a/lib/libsquish/CMakeLists.txt
++++ b/lib/libsquish/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ #   Unix and VS: SSE2 support is enabled by default
+ #    use BUILD_SQUISH_WITH_SSE2 and BUILD_SQUISH_WITH_ALTIVEC to override
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.6.0)
+ 
+ OPTION(BUILD_SQUISH_WITH_OPENMP "Build with OpenMP." OFF)
+ 
+diff --git a/lib/mcpp/CMakeLists.txt b/lib/mcpp/CMakeLists.txt
+index 4deddcae3..d73810c8e 100644
+--- a/lib/mcpp/CMakeLists.txt
++++ b/lib/mcpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.6.0)
+ if (UNIX OR MINGW)
+     add_definitions(-O3)
+     if (APPLE)
+diff --git a/lib/tinygettext/CMakeLists.txt b/lib/tinygettext/CMakeLists.txt
+index 5a67ab425..52d581fef 100644
+--- a/lib/tinygettext/CMakeLists.txt
++++ b/lib/tinygettext/CMakeLists.txt
+@@ -39,7 +39,7 @@ set(VERSION "0.1.0")
+ 
+ ### CMake configuration
+ 
+-cmake_minimum_required(VERSION 2.4)
++cmake_minimum_required(VERSION 3.6.0)
+ if(COMMAND cmake_policy)
+ 	CMAKE_POLICY(SET CMP0003 NEW)
+ endif(COMMAND cmake_policy)
+diff --git a/lib/wiiuse/CMakeLists.txt b/lib/wiiuse/CMakeLists.txt
+index e56a750ae..61160361d 100644
+--- a/lib/wiiuse/CMakeLists.txt
++++ b/lib/wiiuse/CMakeLists.txt
+@@ -2,13 +2,7 @@
+ # http://academic.cleardefinition.com/
+ # Iowa State University HCI Graduate Program/VRAC
+ 
+-cmake_minimum_required(VERSION 2.8.0)
+-
+-# Added for STK, silences CMake warning
+-# See https://github.com/supertuxkart/stk-code/commit/b0ff15873ee7fa8901672672b47def9039a5534b#diff-a3e272598233e89e4b577a434cc2a89d
+-if(NOT (CMAKE_MAJOR_VERSION VERSION_LESS 3))
+-  cmake_policy(SET CMP0048 OLD)
+-endif()
++cmake_minimum_required(VERSION 3.6.0)
+ 
+ # Set package properties
+ project(WiiUse)
+-- 
+2.50.1
+

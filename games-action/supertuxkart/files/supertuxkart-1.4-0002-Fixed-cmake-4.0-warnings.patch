@@ -1,0 +1,109 @@
+From e2aaf730de5d43afaf4e2b2ed1a94e8c0eeb11e2 Mon Sep 17 00:00:00 2001
+From: Deve <deveee@gmail.com>
+Date: Thu, 15 May 2025 17:54:28 +0200
+Subject: [PATCH 2/2] Fixed cmake 4.0 warnings
+
+Signed-off-by: G-Src <gsrc@fsfans.club>
+---
+ CMakeLists.txt                                | 2 +-
+ lib/angelscript/projects/cmake/CMakeLists.txt | 2 +-
+ lib/enet/CMakeLists.txt                       | 2 +-
+ lib/graphics_utils/CMakeLists.txt             | 2 +-
+ lib/libsquish/CMakeLists.txt                  | 2 +-
+ lib/mcpp/CMakeLists.txt                       | 2 +-
+ lib/tinygettext/CMakeLists.txt                | 2 +-
+ lib/wiiuse/CMakeLists.txt                     | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 23ed9dc26..31fdc5910 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ 
+ # root CMakeLists for the SuperTuxKart project
+ project(SuperTuxKart)
+diff --git a/lib/angelscript/projects/cmake/CMakeLists.txt b/lib/angelscript/projects/cmake/CMakeLists.txt
+index 42883d5e3..baa26832c 100644
+--- a/lib/angelscript/projects/cmake/CMakeLists.txt
++++ b/lib/angelscript/projects/cmake/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ # STK Fix llvm mingw crashes
+ if (MINGW AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+diff --git a/lib/enet/CMakeLists.txt b/lib/enet/CMakeLists.txt
+index 41cd842f5..860ad5cc3 100644
+--- a/lib/enet/CMakeLists.txt
++++ b/lib/enet/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ 
+ project(enet)
+ 
+diff --git a/lib/graphics_utils/CMakeLists.txt b/lib/graphics_utils/CMakeLists.txt
+index 11230060a..7e6d558e6 100644
+--- a/lib/graphics_utils/CMakeLists.txt
++++ b/lib/graphics_utils/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ include_directories("${PROJECT_SOURCE_DIR}/lib/simd_wrapper")
+ if (UNIX OR MINGW)
+     add_definitions(-O3)
+diff --git a/lib/libsquish/CMakeLists.txt b/lib/libsquish/CMakeLists.txt
+index 6b5541e38..f3673a4a6 100644
+--- a/lib/libsquish/CMakeLists.txt
++++ b/lib/libsquish/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ #   Unix and VS: SSE2 support is enabled by default
+ #    use BUILD_SQUISH_WITH_SSE2 and BUILD_SQUISH_WITH_ALTIVEC to override
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.6.0)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.6.0...4.0)
+ 
+ OPTION(BUILD_SQUISH_WITH_OPENMP "Build with OpenMP." OFF)
+ 
+diff --git a/lib/mcpp/CMakeLists.txt b/lib/mcpp/CMakeLists.txt
+index d73810c8e..acd1c7db6 100644
+--- a/lib/mcpp/CMakeLists.txt
++++ b/lib/mcpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ if (UNIX OR MINGW)
+     add_definitions(-O3)
+     if (APPLE)
+diff --git a/lib/tinygettext/CMakeLists.txt b/lib/tinygettext/CMakeLists.txt
+index 52d581fef..3bbbc322e 100644
+--- a/lib/tinygettext/CMakeLists.txt
++++ b/lib/tinygettext/CMakeLists.txt
+@@ -39,7 +39,7 @@ set(VERSION "0.1.0")
+ 
+ ### CMake configuration
+ 
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ if(COMMAND cmake_policy)
+ 	CMAKE_POLICY(SET CMP0003 NEW)
+ endif(COMMAND cmake_policy)
+diff --git a/lib/wiiuse/CMakeLists.txt b/lib/wiiuse/CMakeLists.txt
+index 61160361d..9a2fb5339 100644
+--- a/lib/wiiuse/CMakeLists.txt
++++ b/lib/wiiuse/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # http://academic.cleardefinition.com/
+ # Iowa State University HCI Graduate Program/VRAC
+ 
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ 
+ # Set package properties
+ project(WiiUse)
+-- 
+2.50.1
+
