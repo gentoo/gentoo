@@ -1,0 +1,432 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# === This file is part of Calamares - <https://calamares.io> ===
+#
+#   SPDX-FileCopyrightText: 2014 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
+#   SPDX-FileCopyrightText: 2015-2017 Teo Mrnjavac <teo@kde.org>
+#   SPDX-FileCopyrightText: 2016-2017 Kyle Robbertze <kyle@aims.ac.za>
+#   SPDX-FileCopyrightText: 2017 Alf Gaida <agaida@siduction.org>
+#   SPDX-FileCopyrightText: 2018 Adriaan de Groot <groot@kde.org>
+#   SPDX-FileCopyrightText: 2018 Philip Müller <philm@manjaro.org>
+#   SPDX-License-Identifier: GPL-3.0-or-later
+#
+#   Calamares is Free Software: see the License-Identifier above.
+#
+#   Gentoo-specific package manager module that extends the standard packages
+#   module with additional functionality:
+#   
+#   Configuration options:
+#   - skip_unavailable: boolean (default: false)
+#     If true, treats all "install" operations as "try_install" and
+#     all "remove" operations as "try_remove", meaning package
+#     installation/removal failures won't cause Calamares to fail.
+#     This is useful when some packages might not be available in
+#     certain repositories or USE flag configurations.
+#   - gentoo_world_update: boolean (default: false)
+#     If true, performs an "emerge --update --deep --newuse @world" 
+#     after package operations to ensure system consistency.
+#   - accept_keywords: list of strings (default: [])
+#     List of packages to add to package.accept_keywords before
+#     package installation (for testing/unstable packages).
+#   - sync_method: string (default: "webrsync")
+#     Method to use for Portage tree sync. Options: "webrsync", "sync", "none".
+#     "webrsync" uses emerge-webrsync (faster, uses snapshots),
+#     "sync" uses emerge --sync (slower but more reliable),
+#     "none" skips syncing entirely.
+#
+
+import abc
+from string import Template
+import subprocess
+import os
+
+import libcalamares
+from libcalamares.utils import check_target_env_call, target_env_call
+from libcalamares.utils import gettext_path, gettext_languages
+
+import gettext
+_translation = gettext.translation("calamares-python",
+                                   localedir=gettext_path(),
+                                   languages=gettext_languages(),
+                                   fallback=True)
+_ = _translation.gettext
+_n = _translation.ngettext
+
+# For the entire job
+total_packages = 0
+# Done so far for this job
+completed_packages = 0
+# One group of packages from an -install or -remove entry
+group_packages = 0
+
+# You can override the status message by setting this variable
+custom_status_message = None
+
+INSTALL = object()
+REMOVE = object()
+mode_packages = None
+
+
+def _change_mode(mode):
+    global mode_packages
+    mode_packages = mode
+    libcalamares.job.setprogress(completed_packages * 1.0 / total_packages)
+
+
+def pretty_name():
+    return _("Install Gentoo packages.")
+
+
+def pretty_status_message():
+    if custom_status_message is not None:
+        return custom_status_message
+    if not group_packages:
+        if (total_packages > 0):
+            s = _("Processing packages (%(count)d / %(total)d)")
+        else:
+            s = _("Install Gentoo packages.")
+
+    elif mode_packages is INSTALL:
+        s = _n("Installing one package.",
+               "Installing %(num)d packages.", group_packages)
+    elif mode_packages is REMOVE:
+        s = _n("Removing one package.",
+               "Removing %(num)d packages.", group_packages)
+    else:
+        s = _("Install Gentoo packages.")
+
+    return s % {"num": group_packages,
+                "count": completed_packages,
+                "total": total_packages}
+
+
+class GentooPackageManager:
+    """
+    Gentoo-specific package manager using Portage (emerge).
+    This extends the basic package management with Gentoo-specific
+    features like USE flags, package.accept_keywords, and world updates.
+    """
+    
+    def __init__(self):
+        self.skip_unavailable = libcalamares.job.configuration.get("skip_unavailable", False)
+        self.gentoo_world_update = libcalamares.job.configuration.get("gentoo_world_update", False)
+        self.accept_keywords = libcalamares.job.configuration.get("accept_keywords", [])
+        self.sync_method = libcalamares.job.configuration.get("sync_method", "webrsync")
+        
+        if self.accept_keywords:
+            self._setup_accept_keywords()
+    
+    def _setup_accept_keywords(self):
+        """Setup package.accept_keywords file for testing packages."""
+        keywords_dir = "/etc/portage/package.accept_keywords"
+        keywords_file = os.path.join(keywords_dir, "calamares-install")
+        
+        try:
+            target_keywords_dir = libcalamares.globalstorage.value("rootMountPoint") + keywords_dir
+            os.makedirs(target_keywords_dir, exist_ok=True)
+            
+            target_keywords_file = libcalamares.globalstorage.value("rootMountPoint") + keywords_file
+            with open(target_keywords_file, 'w') as f:
+                f.write("# Generated by Calamares gentoopkg module\n")
+                for package in self.accept_keywords:
+                    f.write(f"{package} ~amd64\n")
+            
+            libcalamares.utils.debug(f"Created {target_keywords_file} with {len(self.accept_keywords)} entries")
+        except Exception as e:
+            libcalamares.utils.warning(f"Could not setup package.accept_keywords: {e}")
+
+    def install(self, pkgs, from_local=False):
+        """Install packages using emerge."""
+        command = ["emerge", "--ask=n", "--verbose=y"]
+        
+        if from_local:
+            command.extend(pkgs)
+        else:
+            command.extend(pkgs)
+        
+        if self.skip_unavailable:
+            # Use --keep-going to continue even if some packages fail
+            command.append("--keep-going")
+        
+        check_target_env_call(command)
+
+    def remove(self, pkgs):
+        """Remove packages using emerge."""
+        command = ["emerge", "--ask=n", "--verbose=y", "--unmerge"]
+        command.extend(pkgs)
+        
+        if self.skip_unavailable:
+            # Use --keep-going for removals too
+            command.append("--keep-going")
+        
+        check_target_env_call(command)
+
+    def update_db(self):
+        """Sync the Portage tree using the configured method."""
+        if self.sync_method == "none":
+            libcalamares.utils.debug("Skipping Portage tree sync (sync_method=none)")
+            return
+        
+        if self.sync_method == "webrsync":
+            # Try emerge-webrsync first (faster, uses snapshots)
+            try:
+                libcalamares.utils.debug("Syncing Portage tree with emerge-webrsync...")
+                check_target_env_call(["emerge-webrsync", "-q"])
+                return
+            except subprocess.CalledProcessError as e:
+                libcalamares.utils.warning(f"emerge-webrsync failed (exit code {e.returncode}), trying emerge --sync as fallback...")
+        
+        if self.sync_method == "sync" or self.sync_method == "webrsync":
+            # Use regular sync (either explicitly requested or as fallback)
+            libcalamares.utils.debug("Syncing Portage tree with emerge --sync...")
+            check_target_env_call(["emerge", "--sync", "--quiet"])
+        else:
+            raise ValueError(f"Unknown sync_method: {self.sync_method}")
+
+    def update_system(self):
+        """Update the system packages."""
+        if self.gentoo_world_update:
+            check_target_env_call(["emerge", "--ask=n", "--verbose=y", "--update", "--deep", "--newuse", "@world"])
+        else:
+            check_target_env_call(["emerge", "--ask=n", "--verbose=y", "--update", "@system"])
+
+    def run(self, script):
+        """Run a custom script."""
+        if script != "":
+            check_target_env_call(script.split(" "))
+
+    def install_package(self, packagedata, from_local=False):
+        """Install a single package with optional pre/post scripts."""
+        if isinstance(packagedata, str):
+            if self.skip_unavailable:
+                try:
+                    self.install([packagedata], from_local=from_local)
+                except subprocess.CalledProcessError:
+                    libcalamares.utils.warning(f"Could not install package {packagedata}")
+            else:
+                self.install([packagedata], from_local=from_local)
+        else:
+            self.run(packagedata.get("pre-script", ""))
+            if self.skip_unavailable:
+                try:
+                    self.install([packagedata["package"]], from_local=from_local)
+                except subprocess.CalledProcessError:
+                    libcalamares.utils.warning(f"Could not install package {packagedata['package']}")
+            else:
+                self.install([packagedata["package"]], from_local=from_local)
+            self.run(packagedata.get("post-script", ""))
+
+    def remove_package(self, packagedata):
+        """Remove a single package with optional pre/post scripts."""
+        if isinstance(packagedata, str):
+            if self.skip_unavailable:
+                try:
+                    self.remove([packagedata])
+                except subprocess.CalledProcessError:
+                    libcalamares.utils.warning(f"Could not remove package {packagedata}")
+            else:
+                self.remove([packagedata])
+        else:
+            self.run(packagedata.get("pre-script", ""))
+            if self.skip_unavailable:
+                try:
+                    self.remove([packagedata["package"]])
+                except subprocess.CalledProcessError:
+                    libcalamares.utils.warning(f"Could not remove package {packagedata['package']}")
+            else:
+                self.remove([packagedata["package"]])
+            self.run(packagedata.get("post-script", ""))
+
+    def operation_install(self, package_list, from_local=False):
+        """Install a list of packages."""
+        if self.skip_unavailable:
+            for package in package_list:
+                self.install_package(package, from_local=from_local)
+        else:
+            if all([isinstance(x, str) for x in package_list]):
+                self.install(package_list, from_local=from_local)
+            else:
+                for package in package_list:
+                    self.install_package(package, from_local=from_local)
+
+    def operation_try_install(self, package_list):
+        """Install packages with error tolerance (like skip_unavailable=true)."""
+        for package in package_list:
+            try:
+                self.install_package(package)
+            except subprocess.CalledProcessError:
+                libcalamares.utils.warning("Could not install package %s" % package)
+
+    def operation_remove(self, package_list):
+        """Remove a list of packages."""
+        if self.skip_unavailable:
+            for package in package_list:
+                self.remove_package(package)
+        else:
+            if all([isinstance(x, str) for x in package_list]):
+                self.remove(package_list)
+            else:
+                for package in package_list:
+                    self.remove_package(package)
+
+    def operation_try_remove(self, package_list):
+        """Remove packages with error tolerance."""
+        for package in package_list:
+            try:
+                self.remove_package(package)
+            except subprocess.CalledProcessError:
+                libcalamares.utils.warning("Could not remove package %s" % package)
+
+
+def subst_locale(plist):
+    """
+    Returns a locale-aware list of packages, based on @p plist.
+    Package names that contain LOCALE are localized with the
+    BCP47 name of the chosen system locale; if the system
+    locale is 'en' (e.g. English, US) then these localized
+    packages are dropped from the list.
+    """
+    locale = libcalamares.globalstorage.value("locale")
+    if not locale:
+        locale = "en"
+
+    ret = []
+    for packagedata in plist:
+        if isinstance(packagedata, str):
+            packagename = packagedata
+        else:
+            packagename = packagedata["package"]
+
+        if locale != "en":
+            packagename = Template(packagename).safe_substitute(LOCALE=locale)
+        elif 'LOCALE' in packagename:
+            packagename = None
+
+        if packagename is not None:
+            if isinstance(packagedata, str):
+                packagedata = packagename
+            else:
+                packagedata["package"] = packagename
+
+            ret.append(packagedata)
+
+    return ret
+
+
+def run_operations(pkgman, entry):
+    """
+    Call package manager with suitable parameters for the given package actions.
+    """
+    global group_packages, completed_packages, mode_packages
+
+    for key in entry.keys():
+        package_list = subst_locale(entry[key])
+        group_packages = len(package_list)
+        if key == "install":
+            _change_mode(INSTALL)
+            pkgman.operation_install(package_list)
+        elif key == "try_install":
+            _change_mode(INSTALL)
+            pkgman.operation_try_install(package_list)
+        elif key == "remove":
+            _change_mode(REMOVE)
+            pkgman.operation_remove(package_list)
+        elif key == "try_remove":
+            _change_mode(REMOVE)
+            pkgman.operation_try_remove(package_list)
+        elif key == "localInstall":
+            _change_mode(INSTALL)
+            pkgman.operation_install(package_list, from_local=True)
+        elif key == "source":
+            libcalamares.utils.debug("Package-list from {!s}".format(entry[key]))
+        else:
+            libcalamares.utils.warning("Unknown package-operation key {!s}".format(key))
+        completed_packages += len(package_list)
+        libcalamares.job.setprogress(completed_packages * 1.0 / total_packages)
+        libcalamares.utils.debug("Pretty name: {!s}, setting progress..".format(pretty_name()))
+
+    group_packages = 0
+    _change_mode(None)
+
+
+def run():
+    """
+    Main entry point for the gentoopkg module.
+    Installs/removes packages using Gentoo's Portage system with additional
+    Gentoo-specific features.
+    """
+    global mode_packages, total_packages, completed_packages, group_packages
+
+    pkgman = GentooPackageManager()
+
+    skip_this = libcalamares.job.configuration.get("skip_if_no_internet", False)
+    if skip_this and not libcalamares.globalstorage.value("hasInternet"):
+        libcalamares.utils.warning("Package installation has been skipped: no internet")
+        return None
+
+    update_db = libcalamares.job.configuration.get("update_db", False)
+    if update_db and libcalamares.globalstorage.value("hasInternet"):
+        libcalamares.utils.debug("Starting Portage tree sync...")
+        try:
+            pkgman.update_db()
+            libcalamares.utils.debug("Portage tree sync completed successfully")
+        except subprocess.CalledProcessError as e:
+            libcalamares.utils.warning(str(e))
+            libcalamares.utils.debug("stdout:" + str(e.stdout))
+            libcalamares.utils.debug("stderr:" + str(e.stderr))
+            # If skip_unavailable is enabled, don't fail completely on sync errors
+            if not pkgman.skip_unavailable:
+                return (_("Package Manager error"),
+                        _("The package manager could not prepare updates. The command <pre>{!s}</pre> returned error code {!s}.")
+                        .format(e.cmd, e.returncode))
+            else:
+                libcalamares.utils.warning("Portage sync failed but continuing due to skip_unavailable setting")
+
+    update_system = libcalamares.job.configuration.get("update_system", False)
+    if update_system and libcalamares.globalstorage.value("hasInternet"):
+        try:
+            pkgman.update_system()
+        except subprocess.CalledProcessError as e:
+            libcalamares.utils.warning(str(e))
+            libcalamares.utils.debug("stdout:" + str(e.stdout))
+            libcalamares.utils.debug("stderr:" + str(e.stderr))
+            return (_("Package Manager error"),
+                    _("The package manager could not update the system. The command <pre>{!s}</pre> returned error code {!s}.")
+                    .format(e.cmd, e.returncode))
+
+    operations = libcalamares.job.configuration.get("operations", [])
+    if libcalamares.globalstorage.contains("packageOperations"):
+        operations += libcalamares.globalstorage.value("packageOperations")
+
+    mode_packages = None
+    total_packages = 0
+    completed_packages = 0
+    for op in operations:
+        for packagelist in op.values():
+            total_packages += len(subst_locale(packagelist))
+
+    if not total_packages:
+        return None
+
+    for entry in operations:
+        group_packages = 0
+        libcalamares.utils.debug(pretty_name())
+        try:
+            run_operations(pkgman, entry)
+        except subprocess.CalledProcessError as e:
+            if not pkgman.skip_unavailable:
+                libcalamares.utils.warning(str(e))
+                libcalamares.utils.debug("stdout:" + str(e.stdout))
+                libcalamares.utils.debug("stderr:" + str(e.stderr))
+                return (_("Package Manager error"),
+                        _("The package manager could not make changes to the installed system. The command <pre>{!s}</pre> returned error code {!s}.")
+                        .format(e.cmd, e.returncode))
+            else:
+                # Just log the error and continue
+                libcalamares.utils.warning(f"Package operation failed but continuing due to skip_unavailable: {e}")
+
+    mode_packages = None
+    libcalamares.job.setprogress(1.0)
+
+    return None

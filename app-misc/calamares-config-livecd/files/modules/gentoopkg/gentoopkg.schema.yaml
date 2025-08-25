@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2020 Adriaan de Groot <groot@kde.org>
+# SPDX-License-Identifier: GPL-3.0-or-later
+---
+$schema: https://json-schema.org/schema#
+$id: https://calamares.io/schemas/gentoopkg
+additionalProperties: false
+type: object
+properties:
+    skip_unavailable: { type: boolean, default: false }
+    skip_if_no_internet: { type: boolean, default: false }
+    update_db: { type: boolean, default: true }
+    sync_method: 
+        type: string
+        enum: ["webrsync", "sync", "none"]
+        default: "webrsync"
+    update_system: { type: boolean, default: false }
+    gentoo_world_update: { type: boolean, default: false }
+    
+    accept_keywords:
+        type: array
+        items:
+            type: string
+        default: []
+
+    operations:
+        type: array
+        items:
+            additionalProperties: false
+            type: object
+            properties:
+                install: { type: array }
+                remove: { type: array }
+                try_install: { type: array }
+                try_remove: { type: array }
+                localInstall: { type: array }
+                source: { type: string }
