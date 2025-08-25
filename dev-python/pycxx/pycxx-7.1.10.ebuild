@@ -10,7 +10,7 @@ inherit distutils-r1 toolchain-funcs
 
 DESCRIPTION="Set of facilities to extend Python with C++"
 HOMEPAGE="https://cxx.sourceforge.net"
-SRC_URI="https://sourceforge.net/code-snapshots/svn/c/cx/cxx/code/cxx-code-r464-trunk.zip -> ${P}.zip"
+SRC_URI="https://dev.gentoo.org/~gienah/snapshots/${P}.zip"
 
 S="${WORKDIR}"/cxx-code-r464-trunk/CXX
 
