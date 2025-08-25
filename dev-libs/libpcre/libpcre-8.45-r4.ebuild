@@ -75,6 +75,9 @@ multilib_src_configure() {
 		--enable-shared
 	)
 
+	# bug #642284
+	[[ ${ABI} == x32 ]] && myeconfargs+=( --disable-jit --disable-pcregrep-jit )
+
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
