@@ -167,8 +167,10 @@ src_configure() {
 	# Upstream only test with Bison and require GNUisms like YYEOF and
 	# YYERRCODE. The former at least may be in POSIX soon:
 	# https://www.austingroupbugs.net/view.php?id=1269.
+	#
 	# configure warns on use of non-Bison but doesn't abort. The result
-	# may misbehave at runtime.
+	# may misbehave at runtime. Chet also advises against use of byacc:
+	# https://lists.gnu.org/archive/html/bug-bash/2025-08/msg00115.html
 	unset -v YACC
 
 	if tc-is-cross-compiler; then
