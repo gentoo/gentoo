@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~loong ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="debug nettle recorder sqlite wiimote"
 
 # - Don't unbundle irrlicht and bullet
