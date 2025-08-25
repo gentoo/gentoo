@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_TASK_TEST="test spec"
 RUBY_FAKEGEM_EXTRADOC="Contributors.rdoc History.rdoc README.rdoc"
