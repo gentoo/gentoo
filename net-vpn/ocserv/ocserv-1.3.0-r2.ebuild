@@ -93,6 +93,11 @@ src_configure() {
 
 src_test() {
 	addwrite /proc
+	if [[ ${LD_PRELOAD} == *libsandbox* ]]; then
+		# https://bugs.gentoo.org/961961
+		ewarn "Skipping tests: libsandbox in LD_PRELOAD"
+		return
+	fi
 	default
 }
 
