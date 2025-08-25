@@ -16,7 +16,7 @@ LICENSE="GPL-3+ handbook? ( CC-BY-SA-4.0 )"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 
-DEPEND="
+COMMON_DEPEND="
 	app-text/cmark:=
 	>=dev-libs/kirigami-addons-1.6.0:6
 	>=dev-libs/icu-61.0:=
@@ -49,7 +49,10 @@ DEPEND="
 	media-libs/kquickimageeditor:6
 	>=net-libs/libquotient-0.9.1:=
 "
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? ( >=dev-qt/qthttpserver-${QTMIN}:6 )
+"
+RDEPEND="${COMMON_DEPEND}
 	>=dev-qt/qt5compat-${QTMIN}:6[qml]
 	>=dev-qt/qtlocation-${QTMIN}:6
 	>=dev-qt/qtmultimedia-${QTMIN}:6[qml]
