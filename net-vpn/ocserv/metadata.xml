@@ -8,4 +8,7 @@
 	<use>
 		<flag name="otp">Enable support for one-time passwords</flag>
 	</use>
+	<upstream>
+		<remote-id type="gitlab">openconnect/ocserv</remote-id>
+	</upstream>
 </pkgmetadata>
