@@ -263,10 +263,6 @@ sys-cluster/openmpi openmpi_fabrics_knem
 # Supports 64-bit NEON
 dev-libs/libgcrypt -cpu_flags_arm_neon
 
-# Sam James <sam@gentoo.org> (2021-08-14)
-# Needs Raspberry Pi specific applications
-media-video/mjpg-streamer -input-raspicam
-
 # Alexey Sokolov <alexey+gentoo@asokolov.org> (2021-08-08)
 # dev-games/ogre doesn't build on arm64, see https://bugs.gentoo.org/806776#c12
 dev-games/mygui ogre

@@ -231,10 +231,6 @@ app-emulation/qemu qemu_softmmu_targets_ppc qemu_softmmu_targets_ppc64
 # Unkeyworded dependencies.
 app-admin/syslog-ng mongodb
 
-# Sam James <sam@gentoo.org> (2021-08-14)
-# Needs Raspberry Pi specific applications
-media-video/mjpg-streamer -input-raspicam
-
 # Sam James <sam@gentoo.org> (2021-07-25)
 # At present, dev-lang/fpc doesn't support arm64.
 # Java isn't here either.

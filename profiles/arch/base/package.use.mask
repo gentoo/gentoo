@@ -263,10 +263,6 @@ app-emulation/fs-uae jit
 # Lacks various keywords in media-libs/webrtc-audio-processing
 media-video/pipewire echo-cancel
 
-# Sam James <sam@gentoo.org> (2021-08-14)
-# Needs Raspberry Pi specific applications
-media-video/mjpg-streamer input-raspicam
-
 # James Le Cuirot <chewi@gentoo.org> (2021-08-07)
 # The ORBlite scanner plugin only works on amd64 and x86.
 net-print/hplip-plugin orblite
