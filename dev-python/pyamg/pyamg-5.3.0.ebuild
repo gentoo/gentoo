@@ -41,7 +41,15 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# invalid with >=setuptools-scm-9
+	sed -i -e '/version =/d' setup.cfg || die
+}
 
 python_test() {
 	cd "${T}" || die
