@@ -52,7 +52,7 @@ RESTRICT+=" test"
 QA_FLAGS_IGNORED="usr/bin/nu.*"
 
 src_prepare() {
-	use plugins || eapply "${FILESDIR/${PN}-dont-build-plugins.patch}"
+	use plugins || eapply "${FILESDIR}/${PN}-dont-build-plugins.patch"
 	default
 }
 
@@ -81,7 +81,7 @@ src_install() {
 		# Clear features to compile plugins
 		local myfeatures=()
 		cargo_src_configure
-		
+
 		cargo_src_install --path crates/nu_plugin_custom_values
 		cargo_src_install --path crates/nu_plugin_example
 		cargo_src_install --path crates/nu_plugin_formats

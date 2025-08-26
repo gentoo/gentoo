@@ -42,7 +42,7 @@ RESTRICT+=" test"
 QA_FLAGS_IGNORED="usr/bin/nu.*"
 
 src_prepare() {
-	use plugins || eapply "${FILESDIR/${PN}-dont-build-plugins.patch}"
+	use plugins || eapply "${FILESDIR}/${PN}-dont-build-plugins.patch"
 	default
 }
 
