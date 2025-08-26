@@ -319,6 +319,9 @@ llvm.org_set_globals() {
 				20*)
 					LLVM_MANPAGE_DIST="llvm-20.1.0-manpages.tar.xz"
 					;;
+				21*)
+					LLVM_MANPAGE_DIST="llvm-21.1.0-manpages.tar.xz"
+					;;
 			esac
 		fi
 
