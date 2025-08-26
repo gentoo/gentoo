@@ -200,12 +200,6 @@ dev-debug/edb-debugger
 # Removal on 2025-08-27.
 app-office/texmacs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
-# Last release in 2015, last commit more than 2 years ago, still Qt5-based,
-# EAPI-7, no signs of work towards Qt6 upstream. Bug #960817
-# Removal on 2025-08-27.
-media-video/baka-mplayer
-
 # Hans de Graaff <graaff@gentoo.org> (2025-07-28)
 # Obsolete slots of cucumber components. These slots are no longer used
 # by dev-util/cucumber. Removal on 2025-08-28.
