@@ -26,11 +26,11 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-util/hip
+RDEPEND="dev-util/hip:${SLOT}
 	sci-libs/rocPRIM:${SLOT}
 	test? ( dev-cpp/gtest )
 	benchmark? (
-		dev-cpp/benchmark
+		dev-cpp/benchmark:=
 		sci-libs/rocRAND:${SLOT}
 	)
 "
@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0-operator_new.patch"
 	"${FILESDIR}/${PN}-6.4.1-fix-libcxx.patch"
 	"${FILESDIR}/${PN}-6.4.1-no-tests-install.patch"
+	"${FILESDIR}/${PN}-6.4.3-gbenchmark-1.9.2.patch"
 )
 
 src_prepare() {
