@@ -12,7 +12,8 @@ HOMEPAGE="https://llvm.org/docs/ExceptionHandling.html"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-IUSE="+clang +debug static-libs test"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos"
+IUSE="+clang debug static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
@@ -137,10 +138,9 @@ multilib_src_configure() {
 		-DLIBUNWIND_INCLUDE_TESTS=$(usex test)
 		-DLIBUNWIND_INSTALL_HEADERS=ON
 
-		# cross-unwinding increases unwinding footprint (to account
-		# for the worst case) and causes some breakage on AArch64
-		# https://github.com/llvm/llvm-project/issues/152549
-		-DLIBUNWIND_ENABLE_CROSS_UNWINDING=OFF
+		# support non-native unwinding; given it's small enough,
+		# enable it unconditionally
+		-DLIBUNWIND_ENABLE_CROSS_UNWINDING=ON
 
 		# avoid dependency on libgcc_s if compiler-rt is used
 		-DLIBUNWIND_USE_COMPILER_RT=${use_compiler_rt}
