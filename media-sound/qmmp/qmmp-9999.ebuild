@@ -15,8 +15,7 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 else
 	inherit subversion
-	QMMP_DEV_BRANCH="2.2"
-	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
+	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/trunk/${PN}"
 fi
 
 LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
@@ -24,7 +23,7 @@ SLOT="0"
 # KEYWORDS further up
 IUSE="X aac +alsa archive bs2b cdda cddb curl +dbus doc enca
 ffmpeg flac game gnome jack ladspa libxmp +mad midi mpg123
-mplayer musepack opus pipewire projectm pulseaudio qtmedia
+musepack opus pipewire projectm pulseaudio qtmedia
 shout sid sndfile soxr +vorbis wavpack
 "
 REQUIRED_USE="
@@ -61,7 +60,6 @@ RDEPEND="
 	mad? ( media-libs/libmad )
 	midi? ( media-sound/wildmidi )
 	mpg123? ( media-sound/mpg123-base )
-	mplayer? ( media-video/mplayer )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
 	pipewire? ( media-video/pipewire:= )
@@ -90,6 +88,11 @@ BDEPEND="
 	dev-qt/qttools:6[linguist]
 	doc? ( app-text/doxygen )
 "
+
+PATCHES=(
+	# Avoid using xcb if qmmp is built without X but qtbase has xcb feature.
+	"${FILESDIR}"/${PN}-2.2.8-fix_xcb.patch
+)
 
 DOCS=( AUTHORS ChangeLog README )
 
@@ -138,7 +141,6 @@ src_configure() {
 		-DUSE_MAD="$(usex mad)"
 		-DUSE_MIDI="$(usex midi)"
 		-DUSE_MPG123="$(usex mpg123)"
-		-DUSE_MPLAYER="$(usex mplayer)"
 		-DUSE_MPC="$(usex musepack)"
 		-DUSE_NOTIFIER="$(usex X)"
 		-DUSE_OPUS="$(usex opus)"
@@ -155,6 +157,9 @@ src_configure() {
 		-DUSE_VORBIS="$(usex vorbis)"
 		-DUSE_WAVPACK="$(usex wavpack)"
 		-DUSE_XMP="$(usex libxmp)"
+
+		# custom option
+		-DUSE_XCB="$(usex X)"
 	)
 	cmake_src_configure
 }
@@ -165,6 +170,14 @@ src_compile() {
 		cmake_build docs
 		HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 	}
+}
+
+src_install() {
+	cmake_src_install
+
+	if use X; then
+		chmod +x "${ED}"/usr/share/qmmp/scripts/kwin6.sh || die
+	fi
 }
 
 pkg_postinst() {
