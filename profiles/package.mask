@@ -186,13 +186,6 @@ sys-cluster/vzctl
 app-backup/vzdump
 app-misc/vzstats
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-28)
-# Current package is 4 years old and outdated compared to upstream, needs
-# a real maintainer: still EAPI-7, Qt5-based with unclear upstream status.
-# Many bugs: #955642, #957424, #957402, #903803, #841740
-# Removal on 2025-08-27.
-dev-debug/edb-debugger
-
 # Hans de Graaff <graaff@gentoo.org> (2025-07-28)
 # Obsolete slots of cucumber components. These slots are no longer used
 # by dev-util/cucumber. Removal on 2025-08-28.
