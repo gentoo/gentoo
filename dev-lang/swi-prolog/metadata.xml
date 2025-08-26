@@ -10,6 +10,21 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
+  <longdescription>
+    SWI-Prolog is a versatile implementation of the Prolog
+    language. Although SWI-Prolog gained its popularity primarily in education,
+    its development is mostly driven by the needs for application
+    development. This is facilitated by a rich interface to other IT components
+    by supporting many document types and (network) protocols as well as a
+    comprehensive low-level interface to C that is the basis for high-level
+    interfaces to C++, Java (bundled) and other externally available.
+  </longdescription>
+  <upstream>
+    <changelog>https://www.swi-prolog.org/ChangeLog</changelog>
+    <doc>https://www.swi-prolog.org/pldoc/doc_for?object=manual</doc>
+    <bugs-to>https://github.com/SWI-Prolog/swipl-devel/issues/</bugs-to>
+    <remote-id type="github">SWI-Prolog/swipl-devel</remote-id>
+  </upstream>
   <use>
     <flag name="archive">Use libarchive for extension packs</flag>
     <flag name="cli">Add support for CLI interfaces based on readline and libedit</flag>
