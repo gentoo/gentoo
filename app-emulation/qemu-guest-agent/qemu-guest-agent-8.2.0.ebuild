@@ -44,6 +44,7 @@ pkg_setup() {
 	# default. Make sure it's enabled in kernel.
 	CONFIG_CHECK="~VIRTIO_CONSOLE"
 	linux-info_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_configure() {
