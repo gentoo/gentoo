@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/961995
+https://github.com/libunwind/libunwind/commit/244a713c37b5fd5963334888b63def0c401aa391
+
+From 244a713c37b5fd5963334888b63def0c401aa391 Mon Sep 17 00:00:00 2001
+From: aokblast <aokblast@FreeBSD.org>
+Date: Tue, 30 Jul 2024 12:17:20 +0800
+Subject: [PATCH] add Fix of ELFW in find_build_id_path
+
+--- a/src/elfxx.c
++++ b/src/elfxx.c
+@@ -819,10 +819,10 @@ elf_w (find_build_id_path) (const struct elf_image *ei, char *path, unsigned pat
+           const char prefix[] = "/usr/lib/debug/.build-id/";
+ 
+           /* See "man 5 elf" for notes about alignment in Nhdr */
+-          const Elf_W(Nhdr) *nhdr = (const ElfW(Nhdr) *) notes;
+-          const ElfW(Word) namesz = nhdr->n_namesz;
+-          const ElfW(Word) descsz = nhdr->n_descsz;
+-          const ElfW(Word) nameasz = UNW_ALIGN(namesz, 4); /* Aligned size */
++          const Elf_W(Nhdr) *nhdr = (const Elf_W(Nhdr) *) notes;
++          const Elf_W(Word) namesz = nhdr->n_namesz;
++          const Elf_W(Word) descsz = nhdr->n_descsz;
++          const Elf_W(Word) nameasz = UNW_ALIGN(namesz, 4); /* Aligned size */
+           const char *name = (const char *) (nhdr + 1);
+           const uint8_t *desc = (const uint8_t *) name + nameasz;
+           unsigned j;
+
