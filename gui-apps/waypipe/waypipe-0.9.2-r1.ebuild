@@ -40,9 +40,7 @@ DEPEND="
 	lz4? ( app-arch/lz4 )
 	systemtap? ( dev-debug/systemtap )
 	vaapi? ( media-libs/libva[drm(+),wayland] )
-	ffmpeg? (
-		media-video/ffmpeg[x264,vaapi?]
-	)
+	ffmpeg? ( media-video/ffmpeg:=[x264,vaapi?] )
 	zstd? ( app-arch/zstd )
 "
 RDEPEND="${DEPEND}"
