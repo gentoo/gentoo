@@ -19,10 +19,10 @@ NGINX_MODULES=(
 	+stream_{upstream_hash,upstream_least_conn,upstream_random,upstream_zone}
 	stream_{ssl,realip,geoip,ssl_preread}
 )
-NGINX_UPDATE_STREAM=stable
-NGINX_TESTS_COMMIT=06a36245e134eac985cdfc5fac982cb149f61412
+NGINX_UPDATE_STREAM=mainline
+NGINX_TESTS_COMMIT=7f1e88e10dca8e4c135ab9e688df0c2484091125
 NGINX_MISC_FILES=(
-	nginx-{r2.logrotate,r2.service,r4.conf,r5.initd,r1.confd}
+	nginx-{r2.logrotate,r2.service,r4.conf,r6.initd,r1.confd}
 	nginx.tmpfiles
 )
 
