@@ -30,7 +30,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-ldconfig_musl.patch
+	"${FILESDIR}"/${PN}-4.3.2-ldconfig_musl.patch
 )
 
 DOCS=( ChangeLog CREDITS README README.MaxMindDB README.GeoIP2 TODO USAGE )
