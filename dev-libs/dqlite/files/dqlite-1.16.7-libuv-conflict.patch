@@ -1,0 +1,167 @@
+https://bugs.gentoo.org/955349
+https://github.com/canonical/dqlite/pull/746
+
+From 40a4b04a5baf6584dc675d1c6864f690b085ada4 Mon Sep 17 00:00:00 2001
+From: Marco Manino <mrcmnn@gmail.com>
+Date: Mon, 28 Apr 2025 11:25:53 +0200
+Subject: [PATCH] chore: rename float_t to real_t
+
+This PR renames the `float_t` type to `real_t` so that it doesn't clash
+with `float_t` defined in `math.h`.
+
+While the build issue is caused by libuv now importing `math.h` in their
+header (?!) this was a mistake since the start: a program that redefines
+a standard type is ill-formed.
+
+I chose `real_t` to match SQL types listed in the SQLite manual at
+https://www.sqlite.org/datatype3.html
+---
+ src/bind.c             | 2 +-
+ src/lib/serialize.h    | 8 ++++----
+ src/query.c            | 2 +-
+ src/tuple.c            | 6 +++---
+ src/tuple.h            | 2 +-
+ test/unit/test_tuple.c | 6 +++---
+ 6 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/bind.c b/src/bind.c
+index 1bd622986..f1f77824f 100644
+--- a/src/bind.c
++++ b/src/bind.c
+@@ -18,7 +18,7 @@ static int bind_one(sqlite3_stmt *stmt, int n, struct value *value)
+ 			rc = sqlite3_bind_int64(stmt, n, value->integer);
+ 			break;
+ 		case SQLITE_FLOAT:
+-			rc = sqlite3_bind_double(stmt, n, value->float_);
++			rc = sqlite3_bind_double(stmt, n, value->real);
+ 			break;
+ 		case SQLITE_BLOB:
+ 			rc = sqlite3_bind_blob(stmt, n, value->blob.base,
+diff --git a/src/lib/serialize.h b/src/lib/serialize.h
+index d855c84e7..ab971020a 100644
+--- a/src/lib/serialize.h
++++ b/src/lib/serialize.h
+@@ -37,7 +37,7 @@ static_assert(sizeof(double) == sizeof(uint64_t),
+  * Basic type aliases to used by macro-based processing.
+  */
+ typedef const char *text_t;
+-typedef double float_t;
++typedef double real_t;
+ typedef uv_buf_t blob_t;
+ 
+ /**
+@@ -143,7 +143,7 @@ DQLITE_INLINE size_t int64__sizeof(const int64_t *value)
+ 	return sizeof(int64_t);
+ }
+ 
+-DQLITE_INLINE size_t float__sizeof(const float_t *value)
++DQLITE_INLINE size_t real__sizeof(const real_t *value)
+ {
+ 	(void)value;
+ 	return sizeof(double);
+@@ -194,7 +194,7 @@ DQLITE_INLINE void int64__encode(const int64_t *value, char **cursor)
+ 	*cursor += sizeof(int64_t);
+ }
+ 
+-DQLITE_INLINE void float__encode(const float_t *value, char **cursor)
++DQLITE_INLINE void real__encode(const real_t *value, char **cursor)
+ {
+ 	uint64_t x = ByteFlipLe64(*(uint64_t *)value);
+ 	memcpy(*cursor, &x, sizeof(uint64_t));
+@@ -282,7 +282,7 @@ DQLITE_INLINE int int64__decode(struct cursor *cursor, int64_t *value)
+ 	return 0;
+ }
+ 
+-DQLITE_INLINE int float__decode(struct cursor *cursor, float_t *value)
++DQLITE_INLINE int real__decode(struct cursor *cursor, real_t *value)
+ {
+ 	size_t n = sizeof(double);
+ 	if (n > cursor->cap) {
+diff --git a/src/query.c b/src/query.c
+index 9496e67c6..31fe96d57 100644
+--- a/src/query.c
++++ b/src/query.c
+@@ -51,7 +51,7 @@ static int encode_row(sqlite3_stmt *stmt, struct buffer *buffer, int n)
+ 				value.integer = sqlite3_column_int64(stmt, i);
+ 				break;
+ 			case SQLITE_FLOAT:
+-				value.float_ = sqlite3_column_double(stmt, i);
++				value.real = sqlite3_column_double(stmt, i);
+ 				break;
+ 			case SQLITE_BLOB:
+ 				value.blob.base =
+diff --git a/src/tuple.c b/src/tuple.c
+index a8f326d1b..f2759da37 100644
+--- a/src/tuple.c
++++ b/src/tuple.c
+@@ -128,7 +128,7 @@ int tuple_decoder__next(struct tuple_decoder *d, struct value *value)
+ 			rc = int64__decode(d->cursor, &value->integer);
+ 			break;
+ 		case SQLITE_FLOAT:
+-			rc = float__decode(d->cursor, &value->float_);
++			rc = real__decode(d->cursor, &value->real);
+ 			break;
+ 		case SQLITE_BLOB:
+ 			rc = blob__decode(d->cursor, &value->blob);
+@@ -244,7 +244,7 @@ int tuple_encoder__next(struct tuple_encoder *e, struct value *value)
+ 			size = int64__sizeof(&value->integer);
+ 			break;
+ 		case SQLITE_FLOAT:
+-			size = float__sizeof(&value->float_);
++			size = real__sizeof(&value->real);
+ 			break;
+ 		case SQLITE_BLOB:
+ 			size = blob__sizeof(&value->blob);
+@@ -280,7 +280,7 @@ int tuple_encoder__next(struct tuple_encoder *e, struct value *value)
+ 			int64__encode(&value->integer, &cursor);
+ 			break;
+ 		case SQLITE_FLOAT:
+-			float__encode(&value->float_, &cursor);
++			real__encode(&value->real, &cursor);
+ 			break;
+ 		case SQLITE_BLOB:
+ 			blob__encode(&value->blob, &cursor);
+diff --git a/src/tuple.h b/src/tuple.h
+index 4f4ba9bab..1660a2bfe 100644
+--- a/src/tuple.h
++++ b/src/tuple.h
+@@ -70,7 +70,7 @@ struct value
+ 	int type;
+ 	union {
+ 		int64_t integer;
+-		double float_;
++		double real;
+ 		uv_buf_t blob;
+ 		uint64_t null;
+ 		const char *text;
+diff --git a/test/unit/test_tuple.c b/test/unit/test_tuple.c
+index 1cc4e94fb..4c19a57b7 100644
+--- a/test/unit/test_tuple.c
++++ b/test/unit/test_tuple.c
+@@ -304,7 +304,7 @@ TEST_CASE(decoder, type, float, NULL)
+ 	DECODER_NEXT;
+ 
+ 	ASSERT_VALUE_TYPE(SQLITE_FLOAT);
+-	munit_assert_double(value.float_, ==, 3.1415);
++	munit_assert_double(value.real, ==, 3.1415);
+ 
+ 	return MUNIT_OK;
+ }
+@@ -588,14 +588,14 @@ TEST_CASE(encoder, type, float, NULL)
+ 	ENCODER_INIT(1, TUPLE__ROW);
+ 
+ 	value.type = SQLITE_FLOAT;
+-	value.float_ = 3.1415;
++	value.real = 3.1415;
+ 	ENCODER_NEXT;
+ 
+ 	munit_assert_int(buf[0][0], ==, SQLITE_FLOAT);
+ 	uint64_t *value_ptr =
+ 	    __builtin_assume_aligned(buf[1], sizeof(uint64_t));
+ 	munit_assert_uint64(*value_ptr, ==,
+-			    ByteFlipLe64(*(uint64_t *)&value.float_));
++			    ByteFlipLe64(*(uint64_t *)&value.real));
+ 
+ 	return MUNIT_OK;
+ }
+

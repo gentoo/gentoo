@@ -24,6 +24,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/dqlite-1.12.0-disable-werror.patch
 	"${FILESDIR}"/dqlite-1.16.6-respect-cflags.patch
+	"${FILESDIR}"/dqlite-1.16.7-libuv-conflict.patch
 )
 
 src_prepare() {
