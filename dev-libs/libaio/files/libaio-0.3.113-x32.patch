@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/722672#c4
+--- a/src/syscall-x86_64.h
++++ b/src/syscall-x86_64.h
+@@ -1,6 +1,16 @@
++#if ! defined(__ILP32__)
+ #define __NR_io_setup		206
+ #define __NR_io_destroy		207
+ #define __NR_io_getevents	208
+ #define __NR_io_submit		209
+ #define __NR_io_cancel		210
+ #define __NR_io_pgetevents	333
++#else
++#define __X32_SYSCALL_BIT       0x40000000
++#define __NR_io_setup		(__X32_SYSCALL_BIT + 543)
++#define __NR_io_destroy	(__X32_SYSCALL_BIT + 207)
++#define __NR_io_getevents	(__X32_SYSCALL_BIT + 208)
++#define __NR_io_submit		(__X32_SYSCALL_BIT + 544)
++#define __NR_io_cancel		(__X32_SYSCALL_BIT + 210)
++#define __NR_io_pgetevents	(__X32_SYSCALL_BIT + 333)
++#endif
+--- a/src/io_pgetevents.c
++++ b/src/io_pgetevents.c
+@@ -21,6 +21,7 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include <signal.h>
++#include <stdint.h>
+ #include "syscall.h"
+ #include "aio_ring.h"
+ 
+@@ -33,10 +34,17 @@
+ 		struct io_event *events, struct timespec *timeout,
+ 		sigset_t *sigmask)
+ {
++#if (defined(__x86_64__) && ! defined(__ILP32__)) || ! defined(__x86_64__)
+ 	struct {
+ 		unsigned long ss;
+ 		unsigned long ss_len;
+ 	} data;
++#else
++	struct {
++		uint64_t ss;
++		uint64_t ss_len;
++	} data;
++#endif
+ 
+ 	if (aio_ring_is_empty(ctx, timeout))
+ 		return 0;
