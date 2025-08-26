@@ -22,7 +22,7 @@ NGINX_MODULES=(
 NGINX_UPDATE_STREAM=live
 NGINX_TESTS_COMMIT=live
 NGINX_MISC_FILES=(
-	nginx-{r2.logrotate,r2.service,r4.conf,r5.initd,r1.confd}
+	nginx-{r2.logrotate,r2.service,r4.conf,r6.initd,r1.confd}
 	nginx.tmpfiles
 )
 
