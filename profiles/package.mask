@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
+# Qt5 based, still EAPI-7, last commit in upstream repo 7 years ago.
+# Alternatives are games-emulation/mednafen or, from guru overlay,
+# games-emulation/RetroArch. Bugs #953641, #957257, #879693.
+# Removal on 2025-09-26.
+games-emulation/yabause
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # Qt5 based, last release >3 years ago and no commits since then.
 # Bug #953258. Removal on 2025-09-26
 x11-terms/cool-retro-term
