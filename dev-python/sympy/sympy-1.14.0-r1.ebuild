@@ -24,7 +24,7 @@ S=${WORKDIR}/${P/_/}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
-IUSE="imaging ipython latex mathml pdf png pyglet symengine texmacs"
+IUSE="imaging ipython latex mathml pdf png pyglet symengine"
 
 RDEPEND="
 	>=dev-python/mpmath-1.1.0[${PYTHON_USEDEP}]
@@ -41,7 +41,6 @@ RDEPEND="
 	mathml? ( dev-python/lxml[${PYTHON_USEDEP}] )
 	pyglet? ( dev-python/pyglet[${PYTHON_USEDEP}] )
 	symengine? ( dev-python/symengine[${PYTHON_USEDEP}] )
-	texmacs? ( app-office/texmacs )
 "
 BDEPEND="
 	test? (
@@ -80,11 +79,4 @@ python_install_all() {
 	local DOCS=( AUTHORS README.md )
 
 	distutils-r1_python_install_all
-
-	if use texmacs; then
-		exeinto /usr/libexec/TeXmacs/bin/
-		doexe data/TeXmacs/bin/tm_sympy
-		insinto /usr/share/TeXmacs/plugins/sympy/
-		doins -r data/TeXmacs/progs
-	fi
 }
