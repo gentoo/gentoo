@@ -36,10 +36,6 @@ time64
 # If you really need it, then unmask it...
 perl_features_debug
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2024-04-06)
-# Telepathy is dead and packages masked for removal.
-telepathy
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-16)
 # dev-util/sysprof not keyworded on most arches yet
 sysprof
