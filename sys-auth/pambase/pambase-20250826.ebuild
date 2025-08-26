@@ -76,6 +76,10 @@ src_configure() {
 	use yescrypt && crypt=yescrypt
 
 	local pamargs=(
+		# Not all 'upstream' options are (currently) wired up
+		# in the ebuild.
+		#
+		# TODO: pam_shells
 		$(usev caps '--caps')
 		$(usev debug '--debug')
 		$(usev elogind '--elogind')
