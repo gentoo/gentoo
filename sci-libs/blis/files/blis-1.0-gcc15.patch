@@ -1,0 +1,93 @@
+From 6b970700a6fa352d71e1ea14ca44c5f39ce1c770 Mon Sep 17 00:00:00 2001
+From: Devin Matthews <damatthews@smu.edu>
+Date: Tue, 24 Jun 2025 14:45:14 -0500
+Subject: [PATCH 1/2] Apply temporary fix for gcc 15.
+
+Details:
+- As reported in #845, gcc 15 fails to build the haswell
+  gemmsup kernels due to the use of rbp.
+- As a temporary fix, disable slp-tree-vectorization in just
+  the affected files.
+- Thanks @loveshack for reporting and @chillenb for the suggested
+  fix.
+- Eventually, the kernels should be rewritten to avoid using rbp.
+---
+ kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c  | 7 +++++++
+ kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c  | 7 +++++++
+ kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c | 7 +++++++
+ kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c | 7 +++++++
+ 4 files changed, 28 insertions(+)
+
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
+index 918ca6d46b..e71732de3c 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
+@@ -33,6 +33,13 @@
+ 
+ */
+ 
++// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
++// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
++// make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
++#pragma GCC optimize("-fno-tree-slp-vectorize")
++#endif
++
+ #include "blis.h"
+ 
+ #define BLIS_ASM_SYNTAX_ATT
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
+index 3f49068786..880af4207a 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
+@@ -33,6 +33,13 @@
+ 
+ */
+ 
++// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
++// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
++// make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
++#pragma GCC optimize("-fno-tree-slp-vectorize")
++#endif
++
+ #include "blis.h"
+ 
+ #define BLIS_ASM_SYNTAX_ATT
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
+index 2b4ee7a9ba..d0814d6d82 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
+@@ -33,6 +33,13 @@
+ 
+ */
+ 
++// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
++// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
++// make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
++#pragma GCC optimize("-fno-tree-slp-vectorize")
++#endif
++
+ #include "blis.h"
+ 
+ #define BLIS_ASM_SYNTAX_ATT
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
+index cc47db8bc1..bc2d783e3b 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
+@@ -33,6 +33,13 @@
+ 
+ */
+ 
++// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
++// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
++// make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
++#pragma GCC optimize("-fno-tree-slp-vectorize")
++#endif
++
+ #include "blis.h"
+ 
+ #define BLIS_ASM_SYNTAX_ATT
+

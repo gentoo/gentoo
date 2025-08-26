@@ -1,9 +1,9 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="BLAS-like Library Instantiation Software Framework"
@@ -41,6 +41,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.1-pkg-config.patch
 	"${FILESDIR}"/${PN}-0.9.0-rpath.patch
 	"${FILESDIR}"/${PN}-1.0-no-helper-headers.patch
+	# https://github.com/flame/blis/pull/874
+	"${FILESDIR}"/${P}-gcc15.patch
 )
 
 get_confname() {
