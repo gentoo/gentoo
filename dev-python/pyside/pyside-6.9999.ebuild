@@ -8,7 +8,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 LLVM_COMPAT=( {16..20} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
@@ -266,6 +266,13 @@ python_prepare_all() {
 	[pyside6-deploy::test_pyside6_deploy]
 		linux
 	[pyside6-android-deploy::test_pyside6_android_deploy]
+		linux
+	# Behavior changed and test not changed to accomodate
+	# https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-3135
+	[registry::existence_test]
+		linux
+	# Doesn't appear to play well with virtualx as it tries to use wayland
+	[QtUiTools::loadUiType_test]
 		linux
 	EOF
 
