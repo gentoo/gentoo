@@ -1,0 +1,33 @@
+From 0c1cd4b65697dee4e4192902c9a2965d94700502 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Mon, 26 May 2025 12:59:44 +0100
+Subject: [PATCH] Fix CookieTests following fix for CPython #130631
+
+The fix for https://github.com/python/cpython/issues/130631 in Python
+3.14.0b1 (also cherry-picked to 3.13, but not yet released) causes
+`www.acme.com` to be unquoted in cookie strings.  Adjust a test to cope
+with this.
+---
+ test/test_cookies.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_cookies.py b/test/test_cookies.py
+index ec0c2ff..92227fc 100644
+--- a/test/test_cookies.py
++++ b/test/test_cookies.py
+@@ -332,9 +332,13 @@ def test_missing_name(self):
+         cookie = c._cookies["www.acme.com"]['/foo/']['"spam"']
+         assert cookie.name == '"spam"'
+         assert cookie.value is None
+-        assert lwp_cookie_str(cookie) == (
++        assert lwp_cookie_str(cookie) in (
++            r'"spam"; path="/foo/"; domain=www.acme.com; '
++            'path_spec; discard; version=0',
++            # prior to fix for https://github.com/python/cpython/issues/130631:
+             r'"spam"; path="/foo/"; domain="www.acme.com"; '
+-            'path_spec; discard; version=0')
++            'path_spec; discard; version=0',
++            )
+         old_str = repr(c)
+         c.save(ignore_expires=True, ignore_discard=True)
+         try:
