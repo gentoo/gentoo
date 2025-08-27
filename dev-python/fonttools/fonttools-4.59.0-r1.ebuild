@@ -25,9 +25,6 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="+native-extensions"
 
-RDEPEND="
-	>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
-"
 BDEPEND="
 	native-extensions? (
 		$(python_gen_cond_dep '
@@ -36,6 +33,7 @@ BDEPEND="
 	)
 	test? (
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
+		>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
 		dev-python/munkres[${PYTHON_USEDEP}]
 		app-arch/zopfli
 	)
