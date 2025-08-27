@@ -24,6 +24,7 @@ llvm-runtimes/libcxx
 llvm-runtimes/libgcc
 llvm-runtimes/openmp
 llvm-runtimes/offload
+llvm-core/clang-linker-config
 llvm-core/clang-runtime
 llvm-core/libclc
 llvm-runtimes/libatomic-stub
