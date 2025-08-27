@@ -1,0 +1,13 @@
+diff -Naur cgit-09d24d7cd0b7e85633f2f43808b12871bb209d69-orig/filters/syntax-highlighting.sh cgit-09d24d7cd0b7e85633f2f43808b12871bb209d69/filters/syntax-highlighting.sh
+--- cgit-09d24d7cd0b7e85633f2f43808b12871bb209d69-orig/filters/syntax-highlighting.sh	2024-08-02 09:22:56.000000000 -0700
++++ cgit-09d24d7cd0b7e85633f2f43808b12871bb209d69/filters/syntax-highlighting.sh	2025-08-27 03:11:32.749340803 -0700
+@@ -115,7 +115,7 @@
+ # found (for example) on EPEL 6.
+ #
+ # This is for version 2
+-exec highlight --force -f -I -X -S "$EXTENSION" 2>/dev/null
++#exec highlight --force -f -I -X -S "$EXTENSION" 2>/dev/null
+ 
+ # This is for version 3
+-#exec highlight --force -f -I -O xhtml -S "$EXTENSION" 2>/dev/null
++exec highlight --force -f -I -O xhtml -S "$EXTENSION" 2>/dev/null
