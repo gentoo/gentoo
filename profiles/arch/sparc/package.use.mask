@@ -397,8 +397,10 @@ dev-cpp/eigen test
 # Sam James <sam@gentoo.org> (2021-04-27)
 # Deps not yet tested/keyworded.
 llvm-core/clang-common default-compiler-rt default-lld
+llvm-core/clang-linker-config default-lld
 llvm-core/clang-runtime compiler-rt default-compiler-rt default-lld
 llvm-core/llvm z3
+llvm-runtimes/clang-rtlib-config default-compiler-rt
 
 # Sam James <sam@gentoo.org> (2021-03-19)
 # On sparc, we have to force sys-apps/grep[libsigsegv]
