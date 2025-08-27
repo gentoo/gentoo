@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 # The defaults should match the upstream "default" flags in meson.build
 IUSE_PROGRAMMERS="
