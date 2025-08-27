@@ -37,6 +37,41 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
+# EAPI-7 cmake.eclass straggler sci-libs/ libraries without revdeps.
+# If you need them, raise your hand by doing the necessary EAPI-8 porting.
+# Removal on 2025-09-26.
+sci-libs/clapack
+sci-libs/cminpack
+sci-libs/coinor-cppad
+sci-libs/exodusii
+sci-libs/fcl
+sci-libs/kim-api
+sci-libs/libccd
+sci-libs/neartree
+sci-libs/nemesis
+sci-libs/orocos_kdl
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
+# EAPI-7 cmake.eclass straggler dev-libs/ libraries without revdeps.
+# If you need them, raise your hand by doing the necessary EAPI-8 porting.
+# Bugs #957252, #957234. Removal on 2025-09-26.
+dev-libs/libdynd
+dev-libs/libflatarray
+dev-libs/redis-ipc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
+# EAPI-7 cmake.eclass straggler libraries without revdeps.
+# If you need them, raise your hand by doing the necessary EAPI-8 porting.
+# Bugs #957225, #957238. Removal on 2025-09-26.
+dev-cpp/cpp-hocon
+dev-libs/leatherman
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
+# EAPI-7 cmake.eclass library without any revdeps.
+# Removal on 2025-09-26.
+dev-cpp/robin-hood-hashing
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # Only translation commits since 2020, still Qt5-based. Worse, packaged
 # version in Gentoo is from 2016, no one bothered to bump it since then.
 # Really needs a package maintainer while upstream is looking into Qt6.
