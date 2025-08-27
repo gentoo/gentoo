@@ -5,7 +5,8 @@ EAPI=8
 
 DESCRIPTION="Algol 68 Genie compiler-interpreter"
 HOMEPAGE="https://jmvdveer.home.xs4all.nl/en.algol-68-genie.html"
-SRC_URI="https://jmvdveer.home.xs4all.nl/${P}.tar.gz"
+SRC_URI="https://jmvdveer.home.xs4all.nl/${P}.tar.gz
+	https://dev.gentoo.org/~xgqt/distfiles/mirrored/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
