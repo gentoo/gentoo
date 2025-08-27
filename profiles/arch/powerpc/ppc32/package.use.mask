@@ -205,6 +205,7 @@ dev-python/diskcache test
 # bug #708344
 llvm-core/clang-runtime compiler-rt default-compiler-rt sanitize
 llvm-core/clang-common default-compiler-rt
+llvm-runtimes/clang-rtlib-config default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and
