@@ -64,7 +64,7 @@ src_install() {
 	fi
 
 	insinto /etc/${PN}
-	doins "${FILESDIR}/policies.json"
+	doins "${FILESDIR}/managed-settings.json"
 
 	# nodejs defaults to disabling deprecation warnings when running code
 	# from any path containing a node_modules directory. Since we're installing
@@ -72,4 +72,10 @@ src_install() {
 	# deprecation warnings so it behaves the same as it does if installed via
 	# npm. It's proprietary; not like Gentoo users can fix the warnings anyway.
 	sed -i 's/env node/env -S node --no-deprecation/' "${ED}/opt/claude-code/cli.js"
+}
+
+pkg_preinst() {
+	if test -f "${ROOT}/etc/${PN}/policies.json"; then
+		mv "${ROOT}/etc/${PN}/policies.json" "${ROOT}/etc/${PN}/managed-settings.json"
+	fi
 }
