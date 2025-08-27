@@ -15,30 +15,28 @@ S="${WORKDIR}/${PN}-${PV/_/-}"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="autoipd bookmarks +dbus doc gdbm gtk howl-compat +introspection ipv6 mdnsresponder-compat nls python qt6 selinux systemd test"
+IUSE="autoipd bookmarks +dbus doc gdbm gtk howl-compat +introspection mdnsresponder-compat nls python qt6 selinux systemd test"
 
 REQUIRED_USE="
-	python? ( dbus gdbm ${PYTHON_REQUIRED_USE} )
 	bookmarks? ( python )
 	howl-compat? ( dbus )
 	mdnsresponder-compat? ( dbus )
+	python? ( dbus gdbm ${PYTHON_REQUIRED_USE} )
 	systemd? ( dbus )
 "
 
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/libdaemon
-	dev-libs/libevent:=[${MULTILIB_USEDEP}]
 	dev-libs/expat
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
-	gdbm? ( sys-libs/gdbm:=[${MULTILIB_USEDEP}] )
-	qt6? ( dev-qt/qtbase:6 )
-	gtk?  ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
+	dev-libs/libdaemon
+	dev-libs/libevent:=[${MULTILIB_USEDEP}]
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	kernel_linux? ( sys-libs/libcap )
+	gdbm? ( sys-libs/gdbm:=[${MULTILIB_USEDEP}] )
+	gtk?  ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
 	introspection? ( dev-libs/gobject-introspection:= )
-	systemd? ( sys-apps/systemd:=[${MULTILIB_USEDEP}] )
+	kernel_linux? ( sys-libs/libcap )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -47,8 +45,10 @@ DEPEND="
 			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )
 		')
 	)
+	qt6? ( dev-qt/qtbase:6 )
+	systemd? ( sys-apps/systemd:=[${MULTILIB_USEDEP}] )
 "
-RDEPEND="
+RDEPEND="${DEPEND}
 	acct-user/avahi
 	acct-group/avahi
 	acct-group/netdev
@@ -56,15 +56,14 @@ RDEPEND="
 		acct-user/avahi-autoipd
 		acct-group/avahi-autoipd
 	)
-	${DEPEND}
 	selinux? ( sec-policy/selinux-avahi )
 "
 BDEPEND="
-	dev-util/glib-utils
-	doc? ( app-text/doxygen )
 	app-text/xmltoman
+	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
+	doc? ( app-text/doxygen )
 "
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/avahi-qt6/qt-watch.h )
@@ -82,12 +81,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	if ! use ipv6; then
-		sed -i \
-			-e "s/use-ipv6=yes/use-ipv6=no/" \
-			avahi-daemon/avahi-daemon.conf || die
-	fi
 
 	sed -i \
 		-e "s:\\.\\./\\.\\./\\.\\./doc/avahi-docs/html/:../../../doc/${PF}/html/:" \
