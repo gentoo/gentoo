@@ -21,7 +21,7 @@ IUSE="+ocamlopt test"
 RESTRICT="test" # Test works only with ocaml >= 5
 
 RDEPEND="
-	>=dev-ml/ocaml-compiler-libs-0.17:=[ocamlopt?]
+	dev-ml/ocaml-compiler-libs:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
 	dev-ml/sexplib0:=[ocamlopt?]
 	dev-ml/stdlib-shims:=[ocamlopt?]
@@ -29,5 +29,5 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	>=dev-ml/dune-3.11
+	>=dev-ml/dune-3.8
 "
