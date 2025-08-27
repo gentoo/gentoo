@@ -28,6 +28,7 @@ RDEPEND="
 		>=dev-libs/glib-2.28.0
 		>=net-libs/libnice-0.1.0
 		media-libs/gstreamer:1.0
+		net-im/pidgin[v4l]
 		net-libs/farstream:0.2
 	)
 	!voice? (
