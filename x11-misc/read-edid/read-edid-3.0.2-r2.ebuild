@@ -17,7 +17,10 @@ IUSE="vbe-mode"
 DEPEND="vbe-mode? ( >=dev-libs/libx86-1.1 )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-fcommon.patch" ) # bug 706878
+PATCHES=(
+	"${FILESDIR}/${P}-fcommon.patch" # bug 706878
+	"${FILESDIR}/${P}-cmake4.patch" # bug 957514
+)
 
 pkg_setup() {
 	CONFIG_CHECK="~I2C_CHARDEV"

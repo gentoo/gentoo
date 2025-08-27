@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt	2014-02-05 17:27:26.000000000 +0100
++++ b/CMakeLists.txt	2025-08-27 23:01:08.868613931 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 2.6)
++cmake_minimum_required (VERSION 3.10)
+ project (read-edid)
+ 
+ option(I2CBUILD "Build I2C get-edid implementation" ON)
