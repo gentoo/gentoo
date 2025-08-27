@@ -11,5 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="archive">Enable support for CBR and other archive formats using libarchive</flag>
+		<flag name="barcode">Enable support for barcode detection/generation for mutool using zxingcpp</flag>
 	</use>
 </pkgmetadata>
