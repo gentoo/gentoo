@@ -1,0 +1,143 @@
+From 8cf9a0b40918ff1c53630779c584164b0c2d9d8a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 27 Aug 2025 20:00:42 +0200
+Subject: [PATCH] Raise CMake minimum to 3.11
+
+Use BUILD_TESTING also in bundled libs.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                          | 11 +++--------
+ src/contrib/Argengine/CMakeLists.txt    | 12 +++---------
+ src/contrib/SimpleLogger/CMakeLists.txt | 12 +++---------
+ src/game/MiniCore/CMakeLists.txt        |  9 ++-------
+ 4 files changed, 11 insertions(+), 33 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d2457ac..0cc8369 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,6 @@
+-project(DustRacing2D)
++cmake_minimum_required(VERSION 3.11)
+ 
+-cmake_minimum_required(VERSION 2.8.12)
+-cmake_policy(VERSION 2.8.12)
++project(DustRacing2D)
+ 
+ # Use cmake --help-policy [POLICY] for more information about these:
+ 
+@@ -145,11 +144,7 @@ endif()
+ 
+ # Find OpenGL
+ find_package(OpenGL REQUIRED)
+-if(${CMAKE_VERSION} VERSION_LESS "3.11.0")
+-    set(DUSTRAC_OPENGL_LIBS ${OPENGL_gl_LIBRARY})
+-else()
+-    set(DUSTRAC_OPENGL_LIBS OpenGL::GL)
+-endif()
++set(DUSTRAC_OPENGL_LIBS OpenGL::GL)
+ 
+ # OpenAL for sounds. OpenAL directory can be given by -DOPENALDIR=...
+ set(ENV{OPENALDIR} ${OpenALDir})
+diff --git a/src/contrib/Argengine/CMakeLists.txt b/src/contrib/Argengine/CMakeLists.txt
+index 8d4705e..7bf8caf 100644
+--- a/src/contrib/Argengine/CMakeLists.txt
++++ b/src/contrib/Argengine/CMakeLists.txt
+@@ -1,9 +1,8 @@
+ project(Argengine)
+ 
+-cmake_minimum_required(VERSION 2.8.12)
+-cmake_policy(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.11)
+ 
+-option(BUILD_TESTS "Build unit tests" OFF)
++option(BUILD_TESTING "Build unit tests" OFF)
+ 
+ option(BUILD_EXAMPLES "Build example apps" OFF)
+ 
+@@ -18,18 +17,13 @@ set(CMAKE_CXX_STANDARD 11)
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR MINGW OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
+-
+-    # CMAKE_CXX_STANDARD supported only by versions >= 3.1
+-    if (CMAKE_VERSION VERSION_LESS "3.1")
+-        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+-    endif ()
+ endif()
+ 
+ set(LIBRARY_NAME "Argengine")
+ 
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ 
+-if(BUILD_TESTS)
++if(BUILD_TESTING)
+     enable_testing()
+     add_subdirectory(src/tests)
+ endif()
+diff --git a/src/contrib/SimpleLogger/CMakeLists.txt b/src/contrib/SimpleLogger/CMakeLists.txt
+index 810a17a..9db40db 100644
+--- a/src/contrib/SimpleLogger/CMakeLists.txt
++++ b/src/contrib/SimpleLogger/CMakeLists.txt
+@@ -1,9 +1,8 @@
+ project(SimpleLogger)
+ 
+-cmake_minimum_required(VERSION 2.8.12)
+-cmake_policy(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.11)
+ 
+-option(BUILD_TESTS "Build unit tests" OFF)
++option(BUILD_TESTING "Build unit tests" OFF)
+ 
+ # Default to release C++ flags if CMAKE_BUILD_TYPE not set
+ if(NOT CMAKE_BUILD_TYPE)
+@@ -17,18 +16,13 @@ set(CMAKE_CXX_STANDARD 11)
+ if(CMAKE_COMPILER_IS_GNUCXX OR MINGW OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+-
+-    # CMAKE_CXX_STANDARD supported only by versions >= 3.1
+-    if (CMAKE_VERSION VERSION_LESS "3.1")
+-        set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+-    endif ()
+ endif()
+ 
+ set(LIBRARY_NAME "SimpleLogger")
+ 
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ 
+-if(BUILD_TESTS)
++if(BUILD_TESTING)
+     enable_testing()
+     add_subdirectory(src/tests)
+ endif()
+diff --git a/src/game/MiniCore/CMakeLists.txt b/src/game/MiniCore/CMakeLists.txt
+index ff983d3..ae5b0e7 100644
+--- a/src/game/MiniCore/CMakeLists.txt
++++ b/src/game/MiniCore/CMakeLists.txt
+@@ -1,7 +1,6 @@
+ project(MiniCore)
+ 
+-cmake_minimum_required(VERSION 2.8.12)
+-cmake_policy(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.11)
+ 
+ if(POLICY CMP0005)
+     cmake_policy(SET CMP0005 NEW)
+@@ -57,11 +56,7 @@ find_package(Qt5Widgets ${QT_MIN_VER} REQUIRED)
+ 
+ # Find OpenGL
+ find_package(OpenGL REQUIRED)
+-if(${CMAKE_VERSION} VERSION_LESS "3.11.0")
+-    set(MINICORE_OPENGL_LIBS ${OPENGL_gl_LIBRARY})
+-else()
+-    set(MINICORE_OPENGL_LIBS OpenGL::GL)
+-endif()
++set(MINICORE_OPENGL_LIBS OpenGL::GL)
+ 
+ add_subdirectory(src)
+ 
+-- 
+2.51.0
+

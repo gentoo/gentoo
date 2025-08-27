@@ -1,0 +1,118 @@
+From 463844b7742c98e336bdbeaf30026b27e62cbde7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 27 Aug 2025 19:32:52 +0200
+Subject: [PATCH] Fix CMake for our purpose
+
+Do not override CFLAGS
+Drop COPYING file
+Use CTest module for standard BUILD_TESTING switch and make Qt5Test optional
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                       | 14 ++++++++------
+ InstallLinux.cmake                   |  2 +-
+ src/game/CMakeLists.txt              |  4 +++-
+ src/game/MiniCore/CMakeLists.txt     |  3 ---
+ src/game/MiniCore/src/CMakeLists.txt |  4 +++-
+ 5 files changed, 15 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef09505..d2457ac 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -101,6 +101,9 @@ endif()
+ add_definitions(-DGLEW_STATIC)
+ add_definitions(-DGLEW_NO_GLU)
+ 
++# Enable CMake's unit test framework
++include(CTest)
++
+ if(UNIX)
+     include("InstallLinux.cmake")
+ elseif(WIN32)
+@@ -108,8 +111,7 @@ elseif(WIN32)
+ endif()
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR MINGW OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+-    add_compile_options("$<$<CONFIG:RELEASE>:-W;-Wall;-O3;-pedantic;-fomit-frame-pointer>")
+-    add_compile_options("$<$<CONFIG:DEBUG>:-W;-Wall;-O0;-pedantic>")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -W -Wall -fomit-frame-pointer -finline-functions")
+ 
+     # Automatically use ccache if found
+     find_program(CCACHE_FOUND ccache)
+@@ -136,7 +138,10 @@ find_package(Qt5Xml ${QT_MIN_VER} REQUIRED)
+ find_package(Qt5Widgets ${QT_MIN_VER} REQUIRED)
+ find_package(Qt5LinguistTools ${QT_MIN_VER} REQUIRED)
+ find_package(Qt5Sql ${QT_MIN_VER} REQUIRED)
+-find_package(Qt5Test ${QT_MIN_VER} REQUIRED)
++
++if(BUILD_TESTING)
++    find_package(Qt5Test ${QT_MIN_VER} REQUIRED)
++endif()
+ 
+ # Find OpenGL
+ find_package(OpenGL REQUIRED)
+@@ -173,9 +178,6 @@ include_directories(src/contrib/SimpleLogger/src)
+ add_subdirectory(src/contrib/Argengine EXCLUDE_FROM_ALL)
+ include_directories(src/contrib/Argengine/src)
+ 
+-# Enable CMake's unit test framework
+-enable_testing()
+-
+ # Install paths depend on the build type and target platform
+ resolve_install_paths()
+ 
+diff --git a/InstallLinux.cmake b/InstallLinux.cmake
+index 3c4806f..346305f 100644
+--- a/InstallLinux.cmake
++++ b/InstallLinux.cmake
+@@ -78,7 +78,7 @@ function(setup_install_targets BIN_PATH DATA_PATH DOC_PATH)
+     install(FILES data/editorModels.conf DESTINATION ${DATA_PATH})
+     install(FILES data/meshes.conf DESTINATION ${DATA_PATH})
+     install(FILES data/surfaces.conf DESTINATION ${DATA_PATH})
+-    install(FILES AUTHORS CHANGELOG COPYING README.md DESTINATION ${DOC_PATH})
++    install(FILES AUTHORS CHANGELOG README.md DESTINATION ${DOC_PATH})
+     install(DIRECTORY data/images DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.jpg")
+     install(DIRECTORY data/images DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.png")
+     install(DIRECTORY data/levels DESTINATION ${DATA_PATH} FILES_MATCHING PATTERN "*.trk")
+diff --git a/src/game/CMakeLists.txt b/src/game/CMakeLists.txt
+index 8368e2c..b8a5a61 100644
+--- a/src/game/CMakeLists.txt
++++ b/src/game/CMakeLists.txt
+@@ -169,4 +169,6 @@ set(COMMON_LIBS
+ target_link_libraries(${GAME_BINARY_NAME} ${COMMON_LIBS} Qt5::OpenGL Qt5::Sql Qt5::Xml ${DUSTRAC_OPENGL_LIBS} SimpleLogger_static Argengine_static)
+ set_property(TARGET ${GAME_BINARY_NAME} PROPERTY CXX_STANDARD 14)
+ 
+-add_subdirectory(unittests)
++if(BUILD_TESTING)
++    add_subdirectory(unittests)
++endif()
+diff --git a/src/game/MiniCore/CMakeLists.txt b/src/game/MiniCore/CMakeLists.txt
+index 2707310..ff983d3 100644
+--- a/src/game/MiniCore/CMakeLists.txt
++++ b/src/game/MiniCore/CMakeLists.txt
+@@ -63,8 +63,5 @@ else()
+     set(MINICORE_OPENGL_LIBS OpenGL::GL)
+ endif()
+ 
+-# Enable CMake's unit test framework
+-enable_testing()
+-
+ add_subdirectory(src)
+ 
+diff --git a/src/game/MiniCore/src/CMakeLists.txt b/src/game/MiniCore/src/CMakeLists.txt
+index 5c4d05f..68e5653 100644
+--- a/src/game/MiniCore/src/CMakeLists.txt
++++ b/src/game/MiniCore/src/CMakeLists.txt
+@@ -92,5 +92,7 @@ add_library(${MiniCoreTargetName} ${MiniCoreSRC})
+ target_link_libraries(${MiniCoreTargetName} Qt5::Core Qt5::OpenGL Qt5::Xml ${MINICORE_OPENGL_LIBS})
+ set_property(TARGET ${MiniCoreTargetName} PROPERTY CXX_STANDARD 14)
+ 
+-add_subdirectory(UnitTests)
++if(BUILD_TESTING)
++    add_subdirectory(UnitTests)
++endif()
+ 
+-- 
+2.51.0
+

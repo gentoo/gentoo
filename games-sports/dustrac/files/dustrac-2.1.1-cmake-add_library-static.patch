@@ -1,0 +1,49 @@
+From 9ba17dd402db811a89ea3b77b13898ee2c5a8de1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 27 Aug 2025 19:38:33 +0200
+Subject: [PATCH] Fix linking with BUILD_SHARED_LIBS=ON default in EAPI-7
+
+---
+ src/game/MTFH/CMakeLists.txt         | 2 +-
+ src/game/MiniCore/src/CMakeLists.txt | 2 +-
+ src/game/STFH/CMakeLists.txt         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/game/MTFH/CMakeLists.txt b/src/game/MTFH/CMakeLists.txt
+index 613d786..689b08e 100644
+--- a/src/game/MTFH/CMakeLists.txt
++++ b/src/game/MTFH/CMakeLists.txt
+@@ -10,5 +10,5 @@ set(MTFHSRC
+     menumanager.cpp
+     menuitemview.cpp)
+ 
+-add_library(MTFH ${MTFHSRC})
++add_library(MTFH STATIC ${MTFHSRC})
+ set_property(TARGET MTFH PROPERTY CXX_STANDARD 11)
+diff --git a/src/game/MiniCore/src/CMakeLists.txt b/src/game/MiniCore/src/CMakeLists.txt
+index 68e5653..de19d0f 100644
+--- a/src/game/MiniCore/src/CMakeLists.txt
++++ b/src/game/MiniCore/src/CMakeLists.txt
+@@ -88,7 +88,7 @@ set(MiniCoreSRC ${MiniCoreSRC} Graphics/contrib/glew/glew.c)
+ endif()
+ 
+ set(MiniCoreTargetName MiniCore)
+-add_library(${MiniCoreTargetName} ${MiniCoreSRC})
++add_library(${MiniCoreTargetName} STATIC ${MiniCoreSRC})
+ target_link_libraries(${MiniCoreTargetName} Qt5::Core Qt5::OpenGL Qt5::Xml ${MINICORE_OPENGL_LIBS})
+ set_property(TARGET ${MiniCoreTargetName} PROPERTY CXX_STANDARD 14)
+ 
+diff --git a/src/game/STFH/CMakeLists.txt b/src/game/STFH/CMakeLists.txt
+index 1f50ce1..2674a6c 100644
+--- a/src/game/STFH/CMakeLists.txt
++++ b/src/game/STFH/CMakeLists.txt
+@@ -10,5 +10,5 @@ set(STFHSRC
+     source.cpp
+ )
+ 
+-add_library(STFH ${STFHSRC})
++add_library(STFH STATIC ${STFHSRC})
+ set_property(TARGET STFH PROPERTY CXX_STANDARD 11)
+-- 
+2.51.0
+
