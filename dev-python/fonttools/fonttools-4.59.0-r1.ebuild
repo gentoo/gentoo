@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 virtualx
@@ -33,7 +33,9 @@ BDEPEND="
 	)
 	test? (
 		dev-python/brotlicffi[${PYTHON_USEDEP}]
-		>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/fs-2.4.9[${PYTHON_USEDEP}]
+		' 3.11 3.12 3.13)
 		dev-python/munkres[${PYTHON_USEDEP}]
 		app-arch/zopfli
 	)
