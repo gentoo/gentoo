@@ -1,0 +1,13 @@
+patch rules_python package to set shebang
+this patch is applied by bazel, not portage
+--- python/private/py_runtime_info.bzl
++++ python/private/py_runtime_info.bzl
+@@ -15,7 +15,7 @@
+ 
+ load(":util.bzl", "define_bazel_6_provider")
+ 
+-DEFAULT_STUB_SHEBANG = "#!/usr/bin/env python3"
++DEFAULT_STUB_SHEBANG = "#!@PYTHON@"
+ 
+ DEFAULT_BOOTSTRAP_TEMPLATE = Label("//python/private:bootstrap_template")
+ 
