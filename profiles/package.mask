@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# A version bump pending since 2020, Qt5-based and stuck on EAPI-7.
+# This package needs a maintainer. Step up if you need this, try to make
+# sense of upstream's repositories and contact them about the need to port
+# to Qt5. Bugs #759976, #910052, #961794. Removal on 2025-09-28.
+app-text/djview
+
 # Mike Pagano <mpagano@gentoo.org> (2025-08-28)
 # Long unmaintained upstream (20+ years since last release).
 # Does not compile.
