@@ -110,6 +110,10 @@ src_prepare() {
 
 	default
 
+	# add Gentoo patchset version
+	local extraversion=${PV#${PATCH_PV}}
+	sed -i -e "s:^\(EXTRAVERSION =\).*:\1 ${extraversion/_/-}:" Makefile || die
+
 	local biendian=false
 
 	# prepare the default config
@@ -144,9 +148,9 @@ src_prepare() {
 			;;
 	esac
 
-	local myversion="${PV#${PATCH_PV}}-gentoo-dist"
+	local myversion="-gentoo-dist"
 	use hardened && myversion+="-hardened"
-	echo "CONFIG_LOCALVERSION=\"${myversion/_p/-p}\"" > "${T}"/version.config || die
+	echo "CONFIG_LOCALVERSION=\"${myversion}\"" > "${T}"/version.config || die
 	local dist_conf_path="${WORKDIR}/gentoo-kernel-config-${GENTOO_CONFIG_VER}"
 
 	local merge_configs=(
