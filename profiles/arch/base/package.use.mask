@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sasha Finkelstein <fnkl.kernel@gmail.com> (2025-09-17)
+# Arm64-specific ABI that does not make sense anywhere else
+app-emulation/wine-proton arm64ec
+app-emulation/wine-staging arm64ec
+app-emulation/wine-vanilla arm64ec
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-12)
 # Other BLAS/LAPACK providers are not keyworded everywhere.
 sci-libs/flexiblas blis mkl openblas
