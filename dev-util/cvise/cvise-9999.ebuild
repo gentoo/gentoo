@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 LLVM_COMPAT=( {16..21} )
-inherit cmake llvm-r2 python-single-r1
+inherit cmake llvm-r2 optfeature python-single-r1
 
 DESCRIPTION="Super-parallel Python port of the C-Reduce"
 HOMEPAGE="https://github.com/marxin/cvise"
@@ -80,4 +80,8 @@ src_install() {
 	cmake_src_install
 
 	python_fix_shebang "${ED}"
+}
+
+pkg_postinst() {
+	optfeature "colorful --print-diff support" app-misc/colordiff
 }
