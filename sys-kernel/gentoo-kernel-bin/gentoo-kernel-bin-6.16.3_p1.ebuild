@@ -54,9 +54,8 @@ BDEPEND="
 	verify-sig? ( >=sec-keys/openpgp-keys-kernel-20250702 )
 "
 
-PV_SUFFIX=${PV#${PATCH_PV}}
-KV_LOCALVERSION="${PV_SUFFIX/_/-}-gentoo-dist"
-KV_FULL=${PATCH_PV}${KV_LOCALVERSION}
+KV_LOCALVERSION='-gentoo-dist'
+KV_FULL=${PV/_p/-p}${KV_LOCALVERSION}
 
 QA_PREBUILT='*'
 
