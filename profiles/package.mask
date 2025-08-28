@@ -271,12 +271,6 @@ dev-python/tld
 dev-python/yaswfp
 net-analyzer/wapiti
 
-# Michał Górny <mgorny@gentoo.org> (2025-07-26)
-# Another pytest plugin causing random breakage.  Discontinued upstream,
-# last revdep stopped using it.
-# Removal on 2025-08-25.  Bug #960760.
-dev-python/noseofyeti
-
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
 # suppor for the old APIs this package needs. Impossible to use anymore.
