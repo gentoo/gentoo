@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sasha Finkelstein <fnkl.kernel@gmail.com> (2025-08-28)
+# Arm64-specific ABI
+app-emulation/wine-staging -arm64ec
+app-emulation/wine-vanilla -arm64ec
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
 # dev-games/ogre is not keyworded here
 >=dev-games/mygui-3.4.1 ogre
