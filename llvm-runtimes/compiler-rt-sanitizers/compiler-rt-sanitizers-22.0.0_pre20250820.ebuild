@@ -82,6 +82,9 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e 's:-Werror::' lib/tsan/go/buildgo.sh || die
 
+	# builds freestanding code
+	filter-flags -fstack-protector*
+
 	local flag
 	for flag in "${SANITIZER_FLAGS[@]}"; do
 		if ! use "${flag}"; then
