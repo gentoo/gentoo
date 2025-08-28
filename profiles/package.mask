@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-01)
+# EAPI-7 cmake.eclass, no revdeps, no one else is packaging this.
+# Bugs #952062, #957253. Removal on 2025-10-01.
+sci-mathematics/diagrtb
+
 # Eli Schwartz <eschwartz@gentoo.org> (2025-09-01)
 # Effectively unmaintained in Gentoo. Upstream dead for 8 years. Stuck
 # on py3.11, but no testsuite and still has py2-specific source code so
