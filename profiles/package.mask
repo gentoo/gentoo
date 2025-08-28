@@ -260,12 +260,6 @@ dev-util/cucumber-gherkin:25
 dev-util/cucumber-messages:19
 dev-util/cucumber-messages:24
 
-# Bernard Cafarelli <voyageur@gentoo.org> (2025-07-27)
-# Current version in tree only supports python <=3.11
-# Needs major version bump, relevant dependencies, and tests fixes
-# Removal on 2025-08-26. Bug #952156.
-dev-python/aiocache
-
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
 # suppor for the old APIs this package needs. Impossible to use anymore.
