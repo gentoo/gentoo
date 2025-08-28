@@ -53,9 +53,13 @@ BDEPEND="
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/pytest-mock[${PYTHON_USEDEP}]
+			dev-python/pytest-subprocess[${PYTHON_USEDEP}]
 		')
 	)
 "
+
+EPYTEST_PLUGINS=( pytest-{mock,subprocess} )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
