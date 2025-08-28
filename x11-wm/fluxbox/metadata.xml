@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<!-- maintainer-needed -->
 	<longdescription>
 		Fluxbox is yet another windowmanager for X. Originally based upon the
 		Blackbox 0.61.1 code, Fluxbox has been extended to include a new tabbed
@@ -15,6 +15,7 @@
 		<flag name="toolbar">Enables the Fluxbox toolbar</flag>
 	</use>
 	<upstream>
+		<remote-id type="github">fluxbox/fluxbox</remote-id>
 		<remote-id type="sourceforge">fluxbox</remote-id>
 	</upstream>
 </pkgmetadata>
