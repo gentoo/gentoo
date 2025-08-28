@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="qt5 +introspection xfconf"
+IUSE="+introspection xfconf"
 RESTRICT="test"
 
 RDEPEND="dev-libs/glib:2
@@ -40,7 +40,6 @@ src_prepare() {
 		-e "/PKG_CHECK_MODULES/s/\(gtk+-2\.0\)/_/" \
 		-e "/PKG_CHECK_MODULES/s/\(check\)/_/" \
 		-e "/PKG_CHECK_MODULES/s/\(libxfconf-0\)/$(usex xfconf '\1' _)/" \
-		-e "s/use_qt=\"yes\"/use_qt=\"$(usex qt5)\"/" \
 		-e "/^GNOME_/d" \
 		-e "/^CFLAGS/s/\$WARN_CFLAGS/-Wall -Wmissing-prototypes/" \
 		configure.ac
