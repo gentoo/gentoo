@@ -39,6 +39,7 @@
 # Mike Pagano <mpagano@gentoo.org> (2025-08-28)
 # Long unmaintained upstream (20+ years since last release).
 # Does not compile.
+# Bug #962110
 # Removal on 2025-09-28.
 media-gfx/zgv
 
