@@ -88,6 +88,10 @@ src_prepare() {
 	done
 
 	default
+
+	# add Gentoo patchset version
+	local extraversion=${PV#${PATCH_PV}}
+	sed -i -e "s:^\(EXTRAVERSION =\).*:\1 ${extraversion/_/-}:" Makefile || die
 }
 
 src_configure() {
