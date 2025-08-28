@@ -268,7 +268,6 @@ dev-python/aiocache
 dev-python/arsenic
 dev-python/browser-cookie3
 dev-python/tld
-dev-python/yaswfp
 
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
