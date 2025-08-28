@@ -1,0 +1,12 @@
+diff '--color=auto' -r -u a/mingw-w64-crt/Makefile.am b/mingw-w64-crt/Makefile.am
+--- a/mingw64/mingw-w64-crt/Makefile.am	2025-06-04 07:00:28.000000000 +0200
++++ b/mingw64/mingw-w64-crt/Makefile.am	2025-07-20 14:35:17.851023512 +0200
+@@ -2408,7 +2408,7 @@
+ 	$(AM_V_CC)$(COMPILE) $(CPPFLAGSARM64) -c $< -o $@
+ 
+ libarm64/%.x86_64.o: %.S
+-	$(AM_V_CC)$(MKDIR_P) $(@D) && $(COMPILE) $(CPPFLAGSARM64) -target x86_64-windows-gnu -c $< -o $@
++	$(AM_V_CC)$(MKDIR_P) $(@D) && $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(AM_CFLAGS) $(CPPFLAGSARM64) -target x86_64-windows-gnu -c $< -o $@
+ 
+ # These source files aren't compiled in to any library yet.  I'm not sure how / where to do so.
+ # The source files that I did compile somewhere I just guessed at anyway.
