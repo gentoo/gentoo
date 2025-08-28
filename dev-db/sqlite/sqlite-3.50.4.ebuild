@@ -51,6 +51,7 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.47.2-hwtime.h-Don-t-use-rdtsc-on-i486.patch
+	"${FILESDIR}"/${PN}-3.50.4-clang.patch
 )
 
 _fossil_fetch() {
