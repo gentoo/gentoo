@@ -9,6 +9,6 @@
 		<flag name="xfconf">Enable support for <pkg>xfce-base/xfconf</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="bitbucket">tagoh/imsettings</remote-id>
+		<remote-id type="gitlab">tagoh/imsettings</remote-id>
 	</upstream>
 </pkgmetadata>
