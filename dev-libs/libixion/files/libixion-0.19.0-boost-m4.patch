@@ -1,0 +1,31 @@
+Minimal diff from upstream boost.m4 (https://github.com/tsuna/boost.m4)
+to make things work with >=boost-1.89.0, which made boost_system a
+header-only library.
+
+--- a/m4/boost.m4~
++++ b/m4/boost.m4
+@@ -1130,15 +1130,20 @@ BOOST_DEFUN([String_Algo],
+ ])
+ 
+ 
+-# BOOST_SYSTEM([PREFERRED-RT-OPT])
++# BOOST_SYSTEM([PREFERRED-RT-OPT], [ERROR_ON_UNUSABLE])
+ # --------------------------------
+ # Look for Boost.System.  For the documentation of PREFERRED-RT-OPT, see the
+ # documentation of BOOST_FIND_LIB above.  This library was introduced in Boost
+-# 1.35.0.
++# 1.35.0 and is header only since 1.70.
+ BOOST_DEFUN([System],
+-[BOOST_FIND_LIB([system], [$1],
++[
++if test $boost_major_version -ge 170; then
++  BOOST_FIND_HEADER([boost/system/error_code.hpp])
++else
++  BOOST_FIND_LIB([system], [$1],
+                 [boost/system/error_code.hpp],
+-                [boost::system::error_code e; e.clear();])
++                [boost::system::error_code e; e.clear();], [], [], [$2])
++fi
+ ])# BOOST_SYSTEM
+ 
+ 
