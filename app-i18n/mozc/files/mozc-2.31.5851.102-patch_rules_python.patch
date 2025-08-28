@@ -1,0 +1,17 @@
+install the patch to fix shebang, then applied by bazel
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -55,6 +55,13 @@ bazel_dep(
+     name = "rules_python",
+     version = "1.0.0",
+ )
++single_version_override(
++    module_name = "rules_python",
++    patches = [
++        "bazel/rules_python_fix_shebang.patch",
++    ],
++    version = "1.0.0",
++)
+
+ # Bazel macOS build (3.16.1 2024-12-13)
+ # https://github.com/bazelbuild/rules_apple
