@@ -44,6 +44,12 @@
 media-gfx/zgv
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-08-28)
+# EAPI=7, fails to compile, unmaintained in gentoo since git transition,
+# library with no rev-deps.
+# Removal on 2025-09-27.  Bugs #962066, #886470, #735672, #630248.
+dev-cpp/metslib
+
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-08-28)
 # EAPI=7, maintainer-needed, Gentoo is last distro to package it,
 # unmaintained in Gentoo since 2016.
 # Removal on 2025-09-27.  Bug #962064.
