@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wcm"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/wcm.git"
-	SLOT="0/0.10"
+	SLOT="0/0.11"
 else
 	SRC_URI="https://github.com/WayfireWM/wcm/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64"
