@@ -83,9 +83,7 @@ src_configure() {
 }
 
 src_compile() {
-	# -j1 for:
-	# gmake[2]: *** No rule to make target '../libhandle/libhandle.la', needed by 'xfs_spaceman'.  Stop.
-	emake V=1 -j1
+	emake V=1
 }
 
 src_install() {
