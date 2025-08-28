@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-08-28)
+# EAPI=7, maintainer-needed, Gentoo is last distro to package it,
+# unmaintained in Gentoo since 2016.
+# Removal on 2025-09-27.  Bug #962064.
+app-misc/glastree
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # EAPI-7 cmake.eclass straggler sci-libs/ libraries without revdeps.
 # If you need them, raise your hand by doing the necessary EAPI-8 porting.
