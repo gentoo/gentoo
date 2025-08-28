@@ -1,0 +1,62 @@
+* We either need to change Werror to Wno-error or remove the multiple declarations of FORTIFY_SOURCE
+* Do not process compressed versions of the manuals
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -69,7 +69,7 @@
+ 	set (WARN_FLAGS "-Wall -Wextra" CACHE STRING "" FORCE)
+ endif()
+ if(NOT DEFINED HARDEN_FLAGS)
+-	set (HARDEN_FLAGS "-fstack-protector -fstrict-aliasing -D_FORTIFY_SOURCE=2 -O1" CACHE STRING "" FORCE)
++	set (HARDEN_FLAGS "-fstack-protector -fstrict-aliasing  -O1" CACHE STRING "" FORCE)
+ endif()
+ 
+ set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
+@@ -227,13 +227,13 @@
+ 	set_target_properties (${BIN_FUSE} PROPERTIES LINK_FLAGS "-pie -fPIE")
+ 	add_custom_command (TARGET ${BIN_FUSE} POST_BUILD
+ 		COMMAND mkdir -p ${CMAKE_BINARY_DIR}/man/
+-		COMMAND gzip -c ${DIS_MAN}/${BIN_FUSE}.1 > ${CMAKE_BINARY_DIR}/man/${BIN_FUSE}.1.gz
++#		COMMAND gzip -c ${DIS_MAN}/${BIN_FUSE}.1 > ${CMAKE_BINARY_DIR}/man/${BIN_FUSE}.1.gz
+ 	)
+-	set (CLEAN_FILES ${CLEAN_FILES} ${CMAKE_BINARY_DIR}/man/${BIN_FUSE}.1.gz)
++#	set (CLEAN_FILES ${CLEAN_FILES} ${CMAKE_BINARY_DIR}/man/${BIN_FUSE}.1.gz)
+ 	install (TARGETS ${BIN_FUSE} RUNTIME DESTINATION "${bindir}")
+-	install (FILES ${CMAKE_BINARY_DIR}/man/${BIN_FUSE}.1.gz DESTINATION "${mandir}/man1")
++#	install (FILES ${CMAKE_BINARY_DIR}/man/${BIN_FUSE}.1.gz DESTINATION "${mandir}/man1")
+ 	install (CODE "execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${BIN_FUSE} \"\$ENV{DESTDIR}${bindir}/${PROJECT_NAME}\")")
+-	install (CODE "execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${BIN_FUSE}.1.gz \"\$ENV{DESTDIR}${mandir}/man1/${PROJECT_NAME}.1.gz\")")
++	install (CODE "execute_process (COMMAND ${CMAKE_COMMAND} -E create_symlink ${BIN_FUSE}.1 \"\$ENV{DESTDIR}${mandir}/man1/${PROJECT_NAME}.1\")")
+ endif()
+ 
+ set (BIN_FILE ${PROJECT_NAME}-file)
+@@ -242,11 +242,11 @@
+ set_target_properties (${BIN_FILE} PROPERTIES LINK_FLAGS "-pie -fPIE")
+ add_custom_command (TARGET ${BIN_FILE} POST_BUILD
+ 	COMMAND mkdir -p ${CMAKE_BINARY_DIR}/man/
+-	COMMAND gzip -c ${DIS_MAN}/${BIN_FILE}.1 > ${CMAKE_BINARY_DIR}/man/${BIN_FILE}.1.gz
++#	COMMAND gzip -c ${DIS_MAN}/${BIN_FILE}.1 > ${CMAKE_BINARY_DIR}/man/${BIN_FILE}.1.gz
+ )
+-set (CLEAN_FILES ${CLEAN_FILES} ${CMAKE_BINARY_DIR}/man/${BIN_FILE}.1.gz)
++#set (CLEAN_FILES ${CLEAN_FILES} ${CMAKE_BINARY_DIR}/man/${BIN_FILE}.1.gz)
+ install (TARGETS ${BIN_FILE} RUNTIME DESTINATION "${bindir}")
+-install (FILES ${CMAKE_BINARY_DIR}/man/${BIN_FILE}.1.gz DESTINATION "${mandir}/man1")
++#install (FILES ${CMAKE_BINARY_DIR}/man/${BIN_FILE}.1.gz DESTINATION "${mandir}/man1")
+ 
+ set (BIN_METADATA ${PROJECT_NAME}-metadata)
+ add_executable (${BIN_METADATA} ${BIN_METADATA}.c)
+@@ -271,11 +271,11 @@
+ 	set (CLEAN_FILES ${CLEAN_FILES} ${CMAKE_CURRENT_BINARY_DIR}/${BIN_FIND})
+ 	add_custom_command (TARGET ${BIN_FIND} POST_BUILD
+ 		COMMAND mkdir -p ${CMAKE_BINARY_DIR}/man/
+-		COMMAND gzip -c ${DIS_MAN}/${BIN_FIND}.1 > ${CMAKE_BINARY_DIR}/man/${BIN_FIND}.1.gz
++#		COMMAND gzip -c ${DIS_MAN}/${BIN_FIND}.1 > ${CMAKE_BINARY_DIR}/man/${BIN_FIND}.1.gz
+ 	)
+-	set (CLEAN_FILES ${CLEAN_FILES} ${CMAKE_BINARY_DIR}/man/${BIN_FIND}.1.gz)
++#	set (CLEAN_FILES ${CLEAN_FILES} ${CMAKE_BINARY_DIR}/man/${BIN_FIND}.1.gz)
+ 	install (PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${BIN_FIND} DESTINATION "${bindir}")
+-	install (FILES ${CMAKE_BINARY_DIR}/man/${BIN_FIND}.1.gz DESTINATION "${mandir}/man1")
++#	install (FILES ${CMAKE_BINARY_DIR}/man/${BIN_FIND}.1.gz DESTINATION "${mandir}/man1")
+ else()
+ 	set (BIN_FIND true)
+ endif()
