@@ -111,6 +111,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/2.1.5-dracut-zfs-missing.patch
+	"${FILESDIR}"/2.3.4-musl.patch
 )
 
 pkg_pretend() {
