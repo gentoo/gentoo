@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# More than a dozen pending bugs, still stuck on python3_11 and EAPI-7.
+# If you need this, raise your hand by fixing most of the bugs.
+# I guess dev-lang/swi-prolog would be the alternative to switch to.
+# Bugs #929405, #957228, #957433. Removal on 2025-09-28.
+dev-lang/yap
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-08-29)
 # EAPI=7, maintainer-needed, gentoo last distro to package it. If you
 # really need this tool, you can use 'openssl dgst -md4 -provider legacy'
