@@ -1,0 +1,26 @@
+Fix WARN_LOGFILE path
+
+The BOX2D_BINARY_DIR variable does not appear to be set, resulting in a
+Doxygen file that attempts to write to /docs/, outside the sandbox,
+resulting in a sandbox violation.  Replace with the CMAKE_BINARY_DIR
+variable, which seems to result in putting the warnings in a
+semi-sensible location.
+
+Alternative fix:  Set WARN_LOGFILE to a blank value, which results in
+the warnings being written to the build log instead.
+
+https://bugs.gentoo.org/show_bug.cgi?id=907072
+
+diff --git a/docs/Doxyfile.in b/docs/Doxyfile.in
+index 0123456..0123456 100644
+--- a/docs/Doxyfile.in
++++ b/docs/Doxyfile.in
+@@ -817,7 +817,7 @@ WARN_FORMAT            = "$file:$line: $text"
+ # messages should be written. If left blank the output is written to standard
+ # error (stderr).
+ 
+-WARN_LOGFILE           = "@BOX2D_BINARY_DIR@/docs/warnings.txt"
++WARN_LOGFILE           = "@CMAKE_BINARY_DIR@/docs/warnings.txt"
+ 
+ #---------------------------------------------------------------------------
+ # Configuration options related to the input files
