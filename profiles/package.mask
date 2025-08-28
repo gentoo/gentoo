@@ -266,7 +266,6 @@ dev-util/cucumber-messages:24
 # Removal on 2025-08-26. Bug #952156.
 dev-python/aiocache
 dev-python/arsenic
-dev-python/browser-cookie3
 
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
