@@ -1,0 +1,29 @@
+Fix gcc error: dereferencing type-punned pointer will break strict-aliasing rules [-Werror=strict-aliasing]
+--- a/contrib/Orochi/Orochi/Orochi.cpp
++++ b/contrib/Orochi/Orochi/Orochi.cpp
+@@ -940,7 +940,9 @@ oroDevice oroSetRawDevice( oroApi api, oroDevice dev )
+ {
+ 	ioroDevice d( dev );
+ 	d.setApi( api );
+-	return *(oroDevice*)&d;
++    oroDevice result;
++    memcpy(&result, &d, sizeof(result));
++    return result;
+ }
+ 
+ //=================================
+@@ -1005,7 +1007,13 @@ inline hipCtx_t* oroCtx2hip( oroCtx* a )
+ #define __ORO_FUNC(cuname,hipname)  if( s_api == ORO_API_HIP ) return hip2oro(hipname);
+ #endif
+ 
+-#define __ORO_FORCE_CAST(type,var)     *((type*)(&var))
++#define __ORO_FORCE_CAST(type,var) \
++    ({ \
++        type __temp_result; \
++        static_assert(sizeof(type) == sizeof(var), "Types must be the same size for casting"); \
++        memcpy(&__temp_result, &(var), sizeof(type)); \
++        __temp_result; \
++    })
+ 
+ 
+ 
