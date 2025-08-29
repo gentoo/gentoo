@@ -1,0 +1,37 @@
+Avoid a warning at launch
+> WARNING:QGuiApplication::setDesktopFileName: the specified desktop file name ends with .desktop.
+> For compatibility reasons, the .desktop suffix will be removed.
+> Please specify a desktop file name without .desktop suffix
+--- a/src/app/puzzle/main.cpp
++++ b/src/app/puzzle/main.cpp
+@@ -120,7 +120,7 @@ auto main(int argc, char *argv[]) -> int
+ 
+     QT_REQUIRE_VERSION(argc, argv, "5.15.0") // clazy:exclude=qstring-arg,qstring-allocations NOLINT
+ 
+-    VPApplication::setDesktopFileName(QStringLiteral("ua.com.smart-pattern.puzzle.desktop"));
++    VPApplication::setDesktopFileName(QStringLiteral("ua.com.smart-pattern.puzzle"));
+ 
+     QTimer::singleShot(0, &app, &VPApplication::ProcessCMD);
+ 
+--- a/src/app/tape/main.cpp
++++ b/src/app/tape/main.cpp
+@@ -119,7 +119,7 @@ auto main(int argc, char *argv[]) -> int
+ 
+     QT_REQUIRE_VERSION(argc, argv, "5.15.0"); // clazy:exclude=qstring-arg,qstring-allocations NOLINT
+ 
+-    MApplication::setDesktopFileName(QStringLiteral("ua.com.smart-pattern.tape.desktop"));
++    MApplication::setDesktopFileName(QStringLiteral("ua.com.smart-pattern.tape"));
+ 
+     QTimer::singleShot(0, &app, &MApplication::ProcessCMD);
+ 
+--- a/src/app/valentina/main.cpp
++++ b/src/app/valentina/main.cpp
+@@ -132,7 +132,7 @@ auto main(int argc, char *argv[]) -> int
+ 
+     QT_REQUIRE_VERSION(argc, argv, "5.15.0") // clazy:exclude=qstring-arg,qstring-allocations NOLINT
+ 
+-    VApplication::setDesktopFileName(QStringLiteral("ua.com.smart-pattern.valentina.desktop"));
++    VApplication::setDesktopFileName(QStringLiteral("ua.com.smart-pattern.valentina"));
+ 
+     MainWindow w;
+ #if !defined(Q_OS_MAC)
