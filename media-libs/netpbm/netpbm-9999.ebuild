@@ -14,7 +14,7 @@ ESVN_REPO_URI="http://svn.code.sf.net/p/netpbm/code/trunk"
 
 LICENSE="Artistic BSD GPL-2 IJG LGPL-2.1 MIT public-domain"
 SLOT="0/devel"
-IUSE="jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs svga test tiff X xml"
+IUSE="jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs test tiff X xml"
 RESTRICT="!test? ( test )"
 
 # app-text/ghostscript-gpl is really needed for postscript
@@ -33,7 +33,6 @@ RDEPEND="
 		sys-libs/zlib
 	)
 	rle? ( media-libs/urt:= )
-	svga? ( media-libs/svgalib )
 	tiff? ( >=media-libs/tiff-3.5.5:= )
 	xml? ( dev-libs/libxml2:= )
 	X? ( x11-libs/libX11 )
@@ -206,7 +205,7 @@ src_configure() {
 		JPEGLIB = $(netpbm_config_lib jpeg)
 		PNGLIB = $(netpbm_config_lib png)
 		ZLIB = $($(tc-getPKG_CONFIG) --libs zlib)
-		LINUXSVGALIB = $(netpbm_config_lib svga vga)
+		LINUXSVGALIB = NONE
 		XML2_LIBS = $(netpbm_config_lib xml xml2)
 		JBIGLIB = $(netpbm_config_lib jbig)
 		JBIGHDR_DIR =
