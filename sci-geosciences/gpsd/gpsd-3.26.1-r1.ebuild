@@ -30,7 +30,7 @@ GPSD_PROTOCOLS=(
 	sirf skytraq superstar2 tnt tripmate tsip
 )
 IUSE_GPSD_PROTOCOLS=${GPSD_PROTOCOLS[@]/#/+gpsd_protocols_}
-IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug ipv6 latency-timing ncurses ntp qt6 selinux +shm static systemd test udev usb X"
+IUSE="${IUSE_GPSD_PROTOCOLS} bluetooth +cxx dbus debug latency-timing ncurses ntp qt6 selinux +shm static systemd test udev usb X"
 REQUIRED_USE="
 	gpsd_protocols_nmea2000? ( gpsd_protocols_aivdm )
 	${PYTHON_REQUIRED_USE}
@@ -157,7 +157,6 @@ src_configure() {
 		libgpsmm=$(usex cxx)
 		clientdebug=$(usex debug)
 		dbus_export=$(usex dbus)
-		ipv6=$(usex ipv6)
 		timing=$(usex latency-timing)
 		ncurses=$(usex ncurses)
 		ntpshm=$(usex ntp)
