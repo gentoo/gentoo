@@ -57,6 +57,8 @@ DEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-gpgme2.patch" ) # bug 961474, in 0.15.1
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }

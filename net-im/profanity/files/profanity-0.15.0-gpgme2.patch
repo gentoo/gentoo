@@ -1,0 +1,98 @@
+From 606eaac31dfb97df16b0d2ba9466a3a67bec122a Mon Sep 17 00:00:00 2001
+From: Quaylyn Rimer <quaylynrimer11@gmail.com>
+Date: Tue, 22 Jul 2025 20:27:43 -0600
+Subject: [PATCH] Fix GPGME >= 2.0.0 compatibility issue #2048
+
+Replace deprecated gpgme_key_get_string_attr with modern API
+
+This commit fixes the build failure against GPGME >= 2.0.0 where
+gpgme_key_get_string_attr and GPGME_ATTR_EMAIL were removed.
+
+Changes made:
+- Replaced direct call to gpgme_key_get_string_attr(key, GPGME_ATTR_EMAIL, NULL, 0)
+- Added new helper function _gpgme_key_get_email() with backwards compatibility
+- Function uses conditional compilation to support both old and new GPGME versions
+
+Backwards Compatibility:
+- GPGME < 2.0.0: Uses gpgme_key_get_string_attr() if GPGME_ATTR_EMAIL is available
+- GPGME >= 2.0.0: Uses modern key->uids->email API
+
+Forward Compatibility:
+- Code compiles successfully with GPGME 2.0.0+ where deprecated functions are removed
+- Uses modern GPGME API that iterates through key user IDs to find email addresses
+
+Testing:
+- Tested with GPGME 1.18.0 (backwards compatibility confirmed)
+- Tested compilation compatibility for both old and new GPGME versions
+- Verified the exact error from issue #2048 is resolved
+- Confirmed no regression in functionality
+
+Fixes: #2048
+Resolves compilation error: 'gpgme_key_get_string_attr' undeclared
+Resolves compilation error: 'GPGME_ATTR_EMAIL' undeclared
+---
+ src/pgp/gpg.c | 37 ++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 36 insertions(+), 1 deletion(-)
+
+diff --git a/src/pgp/gpg.c b/src/pgp/gpg.c
+index cae16ffb3..81e03e4c3 100644
+--- a/src/pgp/gpg.c
++++ b/src/pgp/gpg.c
+@@ -76,6 +76,7 @@ static char* _add_header_footer(const char* const str, const char* const header,
+ static char* _gpgme_data_to_char(gpgme_data_t data);
+ static void _save_pubkeys(void);
+ static ProfPGPKey* _gpgme_key_to_ProfPGPKey(gpgme_key_t key);
++static const char* _gpgme_key_get_email(gpgme_key_t key);
+ 
+ void
+ _p_gpg_free_pubkeyid(ProfPGPPubKeyId* pubkeyid)
+@@ -656,7 +657,7 @@ p_gpg_decrypt(const char* const cipher)
+             error = gpgme_get_key(ctx, recipient->keyid, &key, 1);
+ 
+             if (!error && key) {
+-                const char* addr = gpgme_key_get_string_attr(key, GPGME_ATTR_EMAIL, NULL, 0);
++                const char* addr = _gpgme_key_get_email(key);
+                 if (addr) {
+                     g_string_append(recipients_str, addr);
+                 }
+@@ -888,6 +889,40 @@ _gpgme_key_to_ProfPGPKey(gpgme_key_t key)
+     return p_pgpkey;
+ }
+ 
++/**
++ * Extract the first email address from a gpgme_key_t object.
++ * This function provides backwards compatibility for both old and new GPGME versions.
++ * - GPGME < 2.0.0: Uses gpgme_key_get_string_attr (if available)
++ * - GPGME >= 2.0.0: Uses modern key->uids->email API
++ *
++ * @param key The gpgme_key_t object to extract email from.
++ * @return The first email address found in the key's user IDs, or NULL if none found.
++ *         The returned string should not be freed as it points to internal gpgme memory.
++ */
++static const char*
++_gpgme_key_get_email(gpgme_key_t key)
++{
++    if (!key) {
++        return NULL;
++    }
++
++#ifdef GPGME_ATTR_EMAIL
++    /* Use deprecated function if available (GPGME < 2.0.0) */
++    return gpgme_key_get_string_attr(key, GPGME_ATTR_EMAIL, NULL, 0);
++#else
++    /* Use modern API for GPGME >= 2.0.0 */
++    gpgme_user_id_t uid = key->uids;
++    while (uid) {
++        if (uid->email && strlen(uid->email) > 0) {
++            return uid->email;
++        }
++        uid = uid->next;
++    }
++
++    return NULL;
++#endif
++}
++
+ /**
+  * Convert a gpgme_data_t object to a null-terminated char* string.
+  *
