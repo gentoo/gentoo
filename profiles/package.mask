@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-08-29)
+# EAPI=7, maintainer-needed, gentoo last distro to package it. If you
+# really need this tool, you can use 'openssl dgst -md4 -provider legacy'
+# instead.
+# Removal on 2025-09-28.  Bugs #962124, #729162.
+app-crypt/md4sum
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # A version bump pending since 2020, Qt5-based and stuck on EAPI-7.
 # This package needs a maintainer. Step up if you need this, try to make
