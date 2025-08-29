@@ -174,4 +174,74 @@ out=$(CC=clang test-flags-CC -Wl,-O1)
 ftend
 fi
 
+clear-env() {
+	unset $(all-flag-vars)
+}
+
+fom-tbegin() {
+	clear-env
+	tbegin "${@}"
+}
+
+fom-run() {
+	out="$("$@")"
+	ret=${?}
+}
+
+fom-tend() {
+	local ret="${1:-"${?}"}" msg="${2:-"ret='${ret}' out='${out}'"}"
+	shift 2
+	tend ${ret} "${msg}" "${@}"
+	clear-env
+}
+
+fom-tbegin "get-flag() - match first from the end"
+CFLAGS='-O1 -O2'
+fom-run get-flag '-O*'
+[[ ${ret} == 0 && ${out} == '-O2' ]]
+fom-tend
+
+fom-tbegin "get-flag() - don't match substrings"
+CFLAGS='-W1,-O1'
+fom-run get-flag '-O*'
+[[ ${ret} != 0 ]]
+fom-tend
+
+fom-tbegin "get-flag() - check full string comparison"
+CFLAGS='-ggdb'
+fom-run get-flag '-g'
+[[ ${ret} != 0 ]]
+fom-tend
+
+fom-tbegin "get-flag() - return all"
+CFLAGS='-march=native'
+fom-run get-flag '-march'
+[[ ${ret} == 0 && ${out} == '-march=native' ]]
+fom-tend
+
+fom-tbegin "get-flag() - return value only"
+CFLAGS='-march=native'
+fom-run get-flag 'march'
+[[ ${ret} == 0 && ${out} == 'native' ]]
+fom-tend
+
+fom-tbegin "get-flag() - echo -e"
+CFLAGS='-n -e'
+fom-run get-flag '-e'
+[[ ${ret} == 0 && ${out} == '-e' ]]
+fom-tend
+
+fom-tbegin "get-flag() - echo -n"
+CFLAGS='-e -n'
+fom-run get-flag '-n'
+[[ ${ret} == 0 && ${out} == '-n' ]]
+fom-tend
+
+fom-tbegin "filter-mfpmath() - example"
+CFLAGS='-mfpmath=sse,386'
+filter-mfpmath 'sse'
+fom-run get-flag '-mfpmath'
+[[ ${ret} == 0 && ${out} == '-mfpmath=386' ]]
+fom-tend
+
 texit
