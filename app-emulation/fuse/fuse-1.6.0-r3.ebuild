@@ -6,13 +6,13 @@ EAPI=8
 inherit autotools flag-o-matic xdg
 
 DESCRIPTION="Free Unix Spectrum Emulator by Philip Kendall"
-HOMEPAGE="http://fuse-emulator.sourceforge.net"
+HOMEPAGE="https://fuse-emulator.sourceforge.net"
 SRC_URI="https://downloads.sourceforge.net/fuse-emulator/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
-IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl backend-svga gpm joystick memlimit png pulseaudio +xml +zlib"
+IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl gpm joystick memlimit png pulseaudio +xml +zlib"
 
 # TODO:
 # - allow using sdl audio driver without using for the UI
@@ -21,7 +21,7 @@ IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl backend-svga gpm
 
 # At most one audio driver and at most one UI back-end can be enabled at a time
 REQUIRED_USE="?? ( alsa ao backend-sdl pulseaudio )
-	?? ( backend-X backend-fbcon backend-gtk3 backend-sdl backend-svga )
+	?? ( backend-X backend-fbcon backend-gtk3 backend-sdl )
 	png? ( zlib )"
 
 RDEPEND="
@@ -29,15 +29,23 @@ RDEPEND="
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
-	backend-X? ( x11-libs/libX11 x11-libs/libXext )
-	backend-gtk3? ( x11-libs/gtk+:3 )
+	backend-X? (
+		x11-libs/libX11
+		x11-libs/libXext
+	)
+	backend-gtk3? (
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:3
+		x11-libs/libX11
+		x11-libs/pango
+	)
 	backend-sdl? ( media-libs/libsdl[joystick,sound] )
-	backend-svga? ( media-libs/svgalib )
 	gpm? ( backend-fbcon? ( sys-libs/gpm ) )
 	joystick? ( !backend-sdl? ( media-libs/libjsw ) )
 	png? ( media-libs/libpng:0= )
 	pulseaudio? ( media-libs/libpulse )
-	xml? ( dev-libs/libxml2:2= )
+	xml? ( dev-libs/libxml2 )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	backend-fbcon? ( virtual/linux-sources )"
@@ -48,6 +56,7 @@ DOCS=( AUTHORS ChangeLog README THANKS )
 
 PATCHES=(
 	"${FILESDIR}"/remove-local-prefix.patch
+	"${FILESDIR}"/${P}-fix-joystick.patch
 )
 
 _fuse_audio_driver() {
@@ -97,8 +106,6 @@ src_configure() {
 		myconf+=("--with-gtk")
 	elif use backend-sdl; then
 		myconf+=("--with-sdl")
-	elif use backend-svga; then
-		myconf+=("--with-svgalib")
 	else
 		myconf+=("--with-null-ui")
 	fi

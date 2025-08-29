@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/921615
+
+Add missing include
+
+--- a/ui/uijoystick.c
++++ b/ui/uijoystick.c
+@@ -38,6 +38,7 @@
+ 
+ #include "input.h"
+ #include "uijoystick.h"
++#include "peripherals/joystick.h"
+ 
+ #if defined USE_JOYSTICK && defined HAVE_JSW_H
+ 

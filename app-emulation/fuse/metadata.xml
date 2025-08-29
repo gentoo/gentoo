@@ -9,7 +9,6 @@
 		<flag name="backend-fbcon">Use framebuffer rendering backend</flag>
 		<flag name="backend-gtk3">Use Gtk+ rendering backend</flag>
 		<flag name="backend-sdl">Use SDL rendering backend</flag>
-		<flag name="backend-svga">Use svgalib rendering backend</flag>
 		<flag name="backend-X">Use X11 rendering backend</flag>
 		<flag name="memlimit">Add compile-time memory usage limiting</flag>
 	</use>
