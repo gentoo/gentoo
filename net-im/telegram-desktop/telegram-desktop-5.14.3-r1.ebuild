@@ -82,6 +82,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 	"${FILESDIR}"/tdesktop-5.12.3-fix-webview.patch
 	"${FILESDIR}"/tdesktop-5.14.3-system-cppgir.patch
+	"${FILESDIR}"/tdesktop-5.14.3-clang.patch
 )
 
 pkg_pretend() {

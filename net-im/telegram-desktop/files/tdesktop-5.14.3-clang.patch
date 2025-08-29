@@ -1,0 +1,11 @@
+--- a/Telegram/lib_webview/webview/webview_data_stream_memory.cpp
++++ b/Telegram/lib_webview/webview/webview_data_stream_memory.cpp
+@@ -10,6 +10,8 @@
+ #include <sys/mman.h>
+ #endif // !Q_OS_WIN && !Q_OS_MAC
+ 
++#include <unistd.h>
++
+ namespace Webview {
+ 
+ DataStreamFromMemory::DataStreamFromMemory(
