@@ -37,6 +37,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
+media-sound/pulseaudio
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # More than a dozen pending bugs, still stuck on python3_11 and EAPI-7.
 # If you need this, raise your hand by fixing most of the bugs.
 # I guess dev-lang/swi-prolog would be the alternative to switch to.
