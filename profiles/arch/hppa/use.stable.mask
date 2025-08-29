@@ -124,7 +124,7 @@ gtk3
 wxwidgets
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-01-21)
-# No stable media-sound/pulseaudio on hppa.
+# No stable media-libs/libpulse on hppa.
 pulseaudio
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-12-08)

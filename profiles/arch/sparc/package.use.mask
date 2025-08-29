@@ -614,7 +614,6 @@ net-libs/gnutls test-full
 
 # Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
-media-sound/pulseaudio ofono-headset
 media-sound/pulseaudio-daemon ofono-headset
 net-misc/ofono dundee
 

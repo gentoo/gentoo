@@ -569,7 +569,6 @@ net-misc/networkmanager wext
 
 # Tobias Klausmann <klausman@gentoo.org> (2015-08-10)
 # Opting out of the net-misc/ofono dep tree until we have a user request
->=media-sound/pulseaudio-6.0 ofono-headset
 media-sound/pulseaudio-daemon ofono-headset
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
