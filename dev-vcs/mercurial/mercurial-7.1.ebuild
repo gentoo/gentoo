@@ -8,6 +8,7 @@ DISTUTILS_USE_PEP517="setuptools"
 DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
+RUST_MIN_VER="1.81"
 
 CRATES="
 	adler2@2.0.0
