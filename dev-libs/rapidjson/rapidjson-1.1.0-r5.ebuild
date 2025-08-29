@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-valgrind_optional.patch"
 	"${FILESDIR}/${P}-gcc14-const.patch"
 	"${FILESDIR}/${P}-cmake4.patch"
+	"${FILESDIR}/${P}-doc-build.patch"
 )
 
 src_prepare() {
