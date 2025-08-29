@@ -18,7 +18,9 @@ IUSE="test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="test"
 
-RDEPEND="${LUA_DEPS}"
+RDEPEND="${LUA_DEPS}
+	$(lua_gen_cond_dep 'dev-lua/compat53[${LUA_USEDEP}]' lua5-1 luajit)
+"
 
 DEPEND="
 	net-misc/curl
@@ -42,6 +44,9 @@ src_prepare() {
 	# as no compiled modules are installed on a new, fresh installation,
 	# so this check must be disabled, otherwise 'configure' will fail.
 	sed -e '/LUA_LIBDIR is not a valid directory/d' -i configure || die
+
+	# unbundle lua-compat53 #961755
+	rm -r src/compat53/*.lua || die
 }
 
 src_configure() {
