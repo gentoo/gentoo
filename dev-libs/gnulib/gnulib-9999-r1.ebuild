@@ -34,8 +34,12 @@ src_install() {
 
 	# install the real script
 	exeinto /usr/share/${PN}
-	doexe gnulib-tool
+	doexe gnulib-tool.sh
+
+	# we cannot use the .py impl because it python-exec badly interacts,
+	# so we drop it, and force the .sh version; it's not that it matters
+	# a whole lot, since this is supposed to be run occasionally
 
 	# create and install the wrapper
-	dosym ../share/${PN}/gnulib-tool /usr/bin/gnulib-tool
+	dosym ../share/${PN}/gnulib-tool.sh /usr/bin/gnulib-tool
 }
