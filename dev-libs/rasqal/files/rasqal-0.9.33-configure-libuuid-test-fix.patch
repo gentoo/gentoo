@@ -1,0 +1,40 @@
+From 5d3a965e40c3dc8824f0b197ab904b1072ffb0a3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Arsen=20Arsenovi=C4=87?= <arsen@gentoo.org>
+Date: Fri, 29 Aug 2025 09:24:11 +0200
+Subject: [PATCH] configure: fix libuuid test
+
+&data, where data is a uuid_t, results in a unsigned char*, but uuid_t
+needs to be passed as unsigned char (*)[16], which is a distinct type.
+This causes configure to spuriously fail to detect libuuid.
+
+conftest.c: In function 'main':
+conftest.c:74:26: error: passing argument 1 of 'uuid_clear' from incompatible pointer type [-Wincompatible-pointer-types]
+   74 |  uuid_t data; uuid_clear(&data);
+      |                          ^~~~~
+      |                          |
+      |                          unsigned char (*)[16]
+In file included from conftest.c:70:
+/usr/include/uuid/uuid.h:85:31: note: expected 'unsigned char *' but argument is of type 'unsigned char (*)[16]'
+   85 | extern void uuid_clear(uuid_t uu);
+      |                        ~~~~~~~^~
+configure:17809: $? = 1
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 120d5d22..ead1882a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -941,7 +941,7 @@ PKG_CHECK_MODULES(UUID, uuid, [
+   #if defined(UUID_LEN_BIN) && defined(UUID_VERSION)
+   FAIL
+   #endif
+-  uuid_t data; uuid_clear(&data); ]])],[have_uuid_libuuid=yes],[have_uuid_libuuid=no])
++  uuid_t data; uuid_clear(data); ]])],[have_uuid_libuuid=yes],[have_uuid_libuuid=no])
+ 
+   CPPFLAGS="$oCPPFLAGS"
+   LIBS="$oLIBS"
+-- 
+2.51.0
+
