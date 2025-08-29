@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools toolchain-funcs
 
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}/mangler-version-info.patch"
 	"${FILESDIR}/fix_ftbfs_narrowing_conversion.patch"
 	"${FILESDIR}/mangler-1.2.5-espeak-ng.patch"
+	"${FILESDIR}/mangler-1.2.5-hostname-fix.patch"
 )
 
 src_prepare() {
