@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/Template-GD is not keyworded here. Bug #661634
+dev-perl/Template-Toolkit gd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
 # virtual/mysql[static] has no keyworded implementations here.
 >=virtual/mysql-8.0 static

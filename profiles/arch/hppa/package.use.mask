@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/Template-GD is not keyworded here. Bug #661634
+dev-perl/Template-Toolkit gd
+
 # Sam James <sam@gentoo.org> (2025-06-07)
 # Needs dev-python/matplotlib
 dev-python/mpmath test-full
