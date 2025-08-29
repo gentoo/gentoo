@@ -1,0 +1,29 @@
+From 4585ccd90f4251f4d42bfc338a5e14100236fa15 Mon Sep 17 00:00:00 2001
+From: Nobuyoshi Nakada <nobu@ruby-lang.org>
+Date: Thu, 12 Jun 2025 10:32:49 +0900
+Subject: [PATCH] [ruby/strscan] Update extconf.rb
+ (https://github.com/ruby/strscan/pull/158)
+
+- `have_func` includes "ruby.h" by default.
+- include "ruby/re.h" where `rb_reg_onig_match` is declared.
+
+https://github.com/ruby/strscan/commit/1ac96f47e9
+
+diff --git a/ext/strscan/extconf.rb b/ext/strscan/extconf.rb
+index bd65606a4e..abcbdb3ad2 100644
+--- a/ext/strscan/extconf.rb
++++ b/ext/strscan/extconf.rb
+@@ -2,8 +2,8 @@
+ require 'mkmf'
+ if RUBY_ENGINE == 'ruby'
+   $INCFLAGS << " -I$(top_srcdir)" if $extmk
+-  have_func("onig_region_memsize", "ruby.h")
+-  have_func("rb_reg_onig_match", "ruby.h")
++  have_func("onig_region_memsize")
++  have_func("rb_reg_onig_match", "ruby/re.h")
+   create_makefile 'strscan'
+ else
+   File.write('Makefile', dummy_makefile("").join)
+-- 
+2.45.2
+
