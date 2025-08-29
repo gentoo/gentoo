@@ -8,13 +8,12 @@ GIT_TAG="8b7815c867312d4eb51fe6c57dc912a4419f1dd7"
 DESCRIPTION="Library of common routines intended to be shared"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
 SRC_URI="https://gitweb.git.savannah.gnu.org/gitweb/?p=${PN}.git;a=snapshot;h=${GIT_TAG};sf=tgz -> ${PN}-${GIT_TAG}.tar.gz"
+S="${WORKDIR}/${PN}-${GIT_TAG:0:7}"
 
 LICENSE="GPL-3+ LGPL-2.1+ FDL-1.3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64-macos ~x64-macos ~x64-solaris"
 IUSE="doc"
-
-S="${WORKDIR}/${PN}-${GIT_TAG:0:7}"
 
 src_compile() {
 	if use doc; then
