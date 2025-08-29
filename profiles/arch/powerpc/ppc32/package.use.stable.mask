@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD is not stable here. Bug #962143
+media-fonts/unifont utils fontforge
+
 # Sam James <sam@gentoo.org> (2025-07-19)
 # Gradually unmask for newer Rust to avoid making users recompile for
 # the change. See bug #735154.

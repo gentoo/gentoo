@@ -1,6 +1,10 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD is not stable here. Bug #962143
+media-fonts/unifont utils fontforge
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-05-25)
 # media-sound/liblc3 is not stable here yet
 media-video/ffmpeg liblc3
