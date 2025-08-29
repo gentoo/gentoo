@@ -103,8 +103,6 @@ src_prepare() {
 	if use ubsan && ! use cfi; then
 		> test/cfi/CMakeLists.txt || die
 	fi
-	# hangs, sigh
-	rm test/tsan/getline_nohang.cpp || die
 
 	llvm.org_src_prepare
 }

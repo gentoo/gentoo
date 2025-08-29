@@ -112,6 +112,13 @@ src_prepare() {
 		rm test/dfsan/custom.cpp || die
 		rm test/dfsan/release_shadow_space.c || die
 	fi
+	if has_version -b ">=sys-libs/glibc-2.38"; then
+		# On glibc 2.38, the "nohang" test fails by... hanging.
+		# "fixed" in llvm 19.
+		# https://github.com/google/sanitizers/issues/1733
+		# https://github.com/llvm/llvm-project/commit/deebf6b312227e028dd3258b162306b9cdb21cf7
+		rm test/tsan/getline_nohang.cpp || die
+	fi
 
 	llvm.org_src_prepare
 }
