@@ -18,6 +18,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/GD-Barcode is not stable here. Bug #962143
+dev-perl/Business-ISBN barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # dev-perl/GD is not stable here. Bug #962143
 media-fonts/unifont utils fontforge
 
