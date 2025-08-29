@@ -135,7 +135,6 @@ sci-libs/indilib websocket
 # considered stable due to serious defects upstream. Bug #661634
 dev-perl/Business-ISBN barcode
 dev-perl/Template-Toolkit gd
-media-fonts/unifont utils fontforge
 
 # Mart Raudsepp <leio@gentoo.org> (2019-04-14)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable
