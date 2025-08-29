@@ -11,7 +11,7 @@ S="${WORKDIR}"/sof-bin-${PV}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+tools"
+IUSE="tools"
 
 RDEPEND="
 	tools? (
