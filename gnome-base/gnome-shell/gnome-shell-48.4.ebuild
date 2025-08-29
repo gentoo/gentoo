@@ -79,7 +79,7 @@ DEPEND="
 # 5. adwaita-icon-theme needed for various icons & arrows (3.26 for new video-joined-displays-symbolic and co icons; review for 3.28+)
 # 6. mobile-broadband-provider-info, timezone-data for shell-mobile-providers.c  # TODO: Review
 # 7. IBus is needed for nls integration
-# 8. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 8. Adwaita font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
 # 9. xdg-desktop-portal-gtk for various integration, e.g. #764632
 # 10. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
 RDEPEND="${DEPEND}
@@ -105,7 +105,7 @@ RDEPEND="${DEPEND}
 		sys-libs/timezone-data
 	)
 	ibus? ( >=app-i18n/ibus-1.5.26[gtk3,gtk4,introspection] )
-	media-fonts/cantarell
+	media-fonts/adwaita-fonts
 
 	sys-apps/xdg-desktop-portal-gnome
 "
