@@ -12,7 +12,7 @@ SRC_URI="http://www.mangler.org/downloads/${P}.tar.bz2"
 LICENSE="GPL-3 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+alsa opus espeak g15 +gsm oss pulseaudio +speex +xosd"
+IUSE="+alsa opus espeak +gsm oss pulseaudio +speex +xosd"
 
 RDEPEND="
 	dev-cpp/gtkmm:2.4
@@ -25,9 +25,8 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	opus? ( media-libs/opus )
 	espeak? ( app-accessibility/espeak-ng )
-	g15? ( app-misc/g15daemon )
 	gsm? ( media-sound/gsm )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.14 )
+	pulseaudio? ( media-libs/libpulse )
 	speex? ( >=media-libs/speex-1.2_rc1 )
 	xosd? ( x11-libs/xosd )
 "
@@ -35,10 +34,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/mangler-version-info.patch"
-	"${FILESDIR}/fix_ftbfs_narrowing_conversion.patch"
-	"${FILESDIR}/mangler-1.2.5-espeak-ng.patch"
-	"${FILESDIR}/mangler-1.2.5-hostname-fix.patch"
+	"${FILESDIR}/${P}-version-info.patch"
+	"${FILESDIR}/${P}-narrowing_conversion.patch"
+	"${FILESDIR}/${P}-espeak-ng.patch"
+	"${FILESDIR}/${P}-hostname-fix.patch" # bug 569006
 )
 
 src_prepare() {
@@ -50,12 +49,11 @@ src_configure() {
 	tc-export CC
 
 	econf \
-		--disable-static \
+		--disable-g15 \
 		$(use_enable gsm) \
 		$(use_enable speex) \
 		$(use_enable opus) \
 		$(use_enable xosd) \
-		$(use_enable g15) \
 		$(use_enable espeak) \
 		$(use_with pulseaudio) \
 		$(use_with alsa) \
