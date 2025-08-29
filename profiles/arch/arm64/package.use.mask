@@ -517,10 +517,6 @@ app-emulation/libvirt xen
 # Requires USE=sdl that is masked in this profile.
 media-video/mjpegtools sdlgfx
 
-# Roy Bamford <neddysegoon@gentoo.org> (2017-08-24)
-# Support for g15daemon still needs -9999 packages on all arches
-net-voip/mumble g15
-
 # Alexis Ballier <aballier@gentoo.org> (2017-07-20)
 # media-libs/libemf fails with #error unknown CPU.
 media-gfx/pstoedit emf
