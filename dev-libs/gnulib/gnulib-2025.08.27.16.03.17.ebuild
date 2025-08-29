@@ -7,7 +7,10 @@ GIT_TAG="8b7815c867312d4eb51fe6c57dc912a4419f1dd7"
 
 DESCRIPTION="Library of common routines intended to be shared"
 HOMEPAGE="https://www.gnu.org/software/gnulib"
-SRC_URI="https://gitweb.git.savannah.gnu.org/gitweb/?p=${PN}.git;a=snapshot;h=${GIT_TAG};sf=tgz -> ${PN}-${GIT_TAG}.tar.gz"
+# https://bugs.gentoo.org/962135
+# retrieving this on different days, produces different files :(
+#SRC_URI="https://gitweb.git.savannah.gnu.org/gitweb/?p=${PN}.git;a=snapshot;h=${GIT_TAG};sf=tgz -> ${PN}-${GIT_TAG}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${PN}-${GIT_TAG}.tar.gz"
 S="${WORKDIR}/${PN}-${GIT_TAG:0:7}"
 
 LICENSE="GPL-3+ LGPL-2.1+ FDL-1.3+"
