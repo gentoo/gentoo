@@ -1,0 +1,25 @@
+https://codeberg.org/sox_ng/sox_ng/commit/f6bb3e67a0cf84fa6afb4f252fddba66bb081664
+
+From f6bb3e67a0cf84fa6afb4f252fddba66bb081664 Mon Sep 17 00:00:00 2001
+From: Martin Guy <martinwguy@gmail.com>
+Date: Thu, 26 Jun 2025 21:52:32 +0200
+Subject: [PATCH] Fix opusfile detection, broken in 3245ebe
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 437d1e1c..4d9246ab 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -648,8 +648,8 @@ else
+     opus_old_cflags="$CFLAGS"
+     # Extra square brackets are required otherwise m4 mangles them
+     OPUS_CFLAGS="$(echo $CFLAGS | sed 's|\(-I[[^ ]]*\)|\1 \1/opus|g') -I/usr/local/include/opus -I/usr/include/opus"
+-    CFLAGS="$CFLAGS $OPUS_CFLAGS"
+ fi
++CFLAGS="$CFLAGS $OPUS_CFLAGS"
+ 
+ AC_OPTIONAL_FORMAT(opus, OPUS, [AC_CHECK_HEADER(opus/opusfile.h,
+   [AC_CHECK_LIB(opus, opus_decoder_create, OPUS_LIBS="$OPUS_LIBS -lopus", using_opus=no)
