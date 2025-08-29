@@ -93,11 +93,6 @@ dev-python/psycopg:2
 # Bug 915779
 dev-qt/qtscript:5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2023-06-10)
-# Obsolete transitional meta package. Switch to media-libs/libpulse
-# which ensures a sound server is installed via PDEPEND. Bug #961795
-media-sound/pulseaudio
-
 # Sam James <sam@gentoo.org> (2023-04-07)
 # Inactive upstream, doesn't support newer Rubies.
 # Please port your package to use dev-ruby/erubi instead.
