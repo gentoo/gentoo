@@ -1,0 +1,12 @@
+Fail test if test failed
+https://github.com/imneme/pcg-cpp/pull/100
+
+--- a/test-high/run-tests.sh
++++ b/test-high/run-tests.sh
+@@ -94,5 +94,6 @@ else
+         echo All tests except tests awkward tests with 128-bit math succceed.
+     else
+         echo ERROR: Some tests failed.
++        exit 1
+     fi
+ fi

@@ -1,0 +1,45 @@
+https://github.com/danielaparker/jsoncons/pull/629
+
+Export cmake as jsoncons::jsoncons
+    
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,6 +45,7 @@ install(TARGETS jsoncons
+ 
+ # Makes the project importable from the build directory
+ export(EXPORT ${PROJECT_NAME}-targets
++       NAMESPACE jsoncons::
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake")
+ 
+ install(DIRECTORY ${JSONCONS_INCLUDE_DIR}/jsoncons
+@@ -75,5 +76,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+         DESTINATION ${JSONCONS_CMAKECONFIG_INSTALL_DIR})
+ install(EXPORT ${PROJECT_NAME}-targets
+         FILE ${PROJECT_NAME}Targets.cmake
++        NAMESPACE jsoncons::
+         DESTINATION ${JSONCONS_CMAKECONFIG_INSTALL_DIR})
+ 
+--- a/cmake/Config.cmake
++++ b/cmake/Config.cmake
+@@ -1,5 +1,8 @@
+ # jsoncons cmake module
+-# This module sets the following variables in your project::
++#
++# This module adds target jsoncons::jsoncons
++#
++# It also sets the following variables in your project:
+ #
+ #   jsoncons_FOUND - true if jsoncons found on the system
+ #   jsoncons_INCLUDE_DIRS - the directory containing jsoncons headers
+@@ -7,7 +10,9 @@
+ 
+ @PACKAGE_INIT@
+ 
+-if(NOT TARGET @PROJECT_NAME@)
++if(NOT TARGET @PROJECT_NAME@::@PROJECT_NAME@)
+   include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
+-  get_target_property(@PROJECT_NAME@_INCLUDE_DIRS jsoncons INTERFACE_INCLUDE_DIRECTORIES)
++  get_target_property(@PROJECT_NAME@_INCLUDE_DIRS jsoncons::jsoncons INTERFACE_INCLUDE_DIRECTORIES)
++  # For compatibility with older versions
++  add_library(@PROJECT_NAME@ ALIAS @PROJECT_NAME@::@PROJECT_NAME@)
+ endif()
