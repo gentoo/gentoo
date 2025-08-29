@@ -66,7 +66,7 @@ RDEPEND="
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
 	gui? (
-		dev-qt/qtbase:6[concurrent,dbus,gui,widgets]
+		dev-qt/qtbase:6[concurrent,gui,widgets]
 		dev-qt/qt5compat:6
 		dev-qt/qtmultimedia:6
 		x11-misc/xdg-utils
