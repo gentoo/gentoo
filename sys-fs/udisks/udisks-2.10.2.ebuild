@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools bash-completion-r1 linux-info systemd tmpfiles udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks/ https://github.com/storaged-project/udisks"
 SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="LGPL-2+ GPL-2+"
