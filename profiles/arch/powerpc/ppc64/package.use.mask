@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-08-29)
+# net-misc/passt not yet keyworded here
+app-emulation/qemu passt
+
 # Sam James <sam@gentoo.org> (2025-06-05)
 # dev-util/spirv-llvm-translator not keyworded here
 dev-libs/pocl spirv
