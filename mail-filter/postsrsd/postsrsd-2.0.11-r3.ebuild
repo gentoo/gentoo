@@ -47,7 +47,7 @@ src_configure() {
 		# Do not generate the signing secret in src_install, as it would
 		# a) embed it in binary packages and b) overwrite existing secrets
 		# on every reinstall. Generate the secret in pkg_postinst instead.
-		-DGENERATE_SRS_SECRET=ON
+		-DGENERATE_SRS_SECRET=OFF
 
 		-DWITH_MILTER=OFF
 		-DWITH_SQLITE=OFF
