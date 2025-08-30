@@ -1,0 +1,55 @@
+https://gitlab.com/fastjet/fastjet/-/merge_requests/27
+diff --git i/pyinterface/Makefile.am w/pyinterface/Makefile.am
+index 0ab6ce5c..4749ce65 100644
+--- i/pyinterface/Makefile.am
++++ w/pyinterface/Makefile.am
+@@ -53,19 +53,22 @@ SWIGDEPENDENCIES = ../include/fastjet/config_auto.h\
+ EXTRA_DIST=$(SWIGINTERFACES) FastJetPythonExtensions.hh
+ 
+ if BUILD_INCLUDES_SWIG
+-BUILT_SOURCES = swig_wrap.cpp fastjet.py
++BUILT_SOURCES = swig_wrap.cpp __init__.py
+ swig_wrap.cpp : $(SWIGINTERFACES) $(SWIGDEPENDENCIES)
+ 	$(SWIG) $(AX_SWIG_PYTHON_OPT) -I../include -I$(top_srcdir)/include -I$(top_srcdir)/tools -o $@ -module fastjet -interface _fastjet_swig $<
+-fastjet.py: swig_wrap.cpp
+-	@echo "fastjet.py is built at the same time as swig_wrap.cpp"
++	mv fastjet.py __init__.py
++__init__.py: swig_wrap.cpp
++	@echo "__init__.py is built at the same time as swig_wrap.cpp"
+ else
+ # you're responsible for making sure this is available (through the
+ # distrib or by running swig for developpers)
+-EXTRA_DIST+=swig_wrap.cpp fastjet.py
++EXTRA_DIST+=swig_wrap.cpp __init__.py
+ endif
+ 
+-python_PYTHON = fastjet.py
+-pyexec_LTLIBRARIES = _fastjet_swig.la
++fastjetpythondir = $(pythondir)/fastjet
++fastjetpython_PYTHON = __init__.py
++fastjetpyexecdir = $(pyexecdir)/fastjet
++fastjetpyexec_LTLIBRARIES = _fastjet_swig.la
+ _fastjet_swig_la_LIBTOOLFLAGS = --silent
+ _fastjet_swig_la_SOURCES = swig_wrap.cpp
+ _fastjet_swig_la_CPPFLAGS = $(PYTHON_INCLUDE) $(AM_CXXFLAGS) $(CGAL_CPPFLAGS) -I../include -I$(top_srcdir)/include -I$(top_srcdir)/tools -DSWIG -DSWIG_TYPE_TABLE=fastjet_swig
+@@ -86,13 +89,17 @@ install-exec-local:
+ install-exec-hook:
+ 	$(eval AM_LIBTOOLFLAGS = "")
+ 	@echo "------------------------------------------------------------"
+-	@echo "The fastjet.py python module is installed in "
+-	@echo "  $(DESTDIR)$(pythondir)"
++	@echo "The fastjet __init__.py python module is installed in "
++	@echo "  $(DESTDIR)$(pythondir)/fastjet"
+ 	@echo "and the _fastjet_swig.so library is installed in" 
+-	@echo "  $(DESTDIR)$(pyexecdir)"
++	@echo "  $(DESTDIR)$(pyexecdir)/fastjet"
+ 	@echo "You should make sure that these are in your PYTHONPATH"
+ 	@echo "------------------------------------------------------------"
+ 
++# Clean generated files
++clean-local:
++	rm -f __init__.py
++
+ 
+ #----------------------------------------------------------------------
+ # If we were to let the end-user run swig, then we should have the following:
