@@ -6,7 +6,7 @@ EAPI=8
 ECM_HANDBOOK="forceoptional"
 ECM_QTHELP="false" # TODO: figure out install error
 ECM_TEST="forceoptional"
-KDE_ORG_COMMIT=6fe0db56e12269f38831b7cec77e9a5a413eda8e
+KDE_ORG_COMMIT=59a925c7109dea8f07e0b8b417af800107ecb43b
 KFMIN=6.16.0
 QTMIN=6.9.1
 inherit ecm gear.kde.org xdg
