@@ -6,7 +6,6 @@ EAPI="8"
 LUA_COMPAT=( lua5-{1..4} luajit )
 
 CRATES="
-	anyhow@1.0.87
 	base64@0.22.1
 	cc@1.1.18
 	codespan-reporting@0.11.1
@@ -19,9 +18,7 @@ CRATES="
 	indexmap@2.5.0
 	ipnet@2.10.0
 	itoa@1.0.11
-	libyml@0.0.5
 	link-cplusplus@1.0.9
-	memchr@2.7.4
 	once_cell@1.19.0
 	proc-macro2@1.0.86
 	quote@1.0.37
@@ -36,7 +33,6 @@ CRATES="
 	unicode-ident@1.0.12
 	unicode-width@0.1.13
 	unsafe-libyaml@0.2.11
-	version_check@0.9.5
 	winapi-util@0.1.9
 	windows-sys@0.59.0
 	windows-targets@0.52.6
