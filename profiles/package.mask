@@ -42,6 +42,16 @@
 =dev-python/pytest-rerunfailures-16.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# EAPI-7 cmake.eclass and very old library without any revdeps.
+# Bug #962048. Removal on 2025-09-28.
+sci-libs/levmar
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# EAPI-7 cmake.eclass and very outdated library without any revdeps.
+# Bug #962047. Removal on 2025-09-28.
+sci-libs/nanoflann
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
 media-sound/pulseaudio
 
