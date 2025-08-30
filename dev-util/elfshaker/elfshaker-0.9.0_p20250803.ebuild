@@ -157,7 +157,7 @@ CRATES="
 	zstd-sys@2.0.15+zstd.1.5.7
 	zstd@0.13.3
 "
-
+RUST_MIN_VER="1.82"
 inherit cargo
 
 ELFSHAKER_COMMIT="3656bdefcc1d375f9a928b0fc566b16ff3362685"
