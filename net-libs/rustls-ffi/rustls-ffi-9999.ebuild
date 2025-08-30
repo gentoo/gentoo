@@ -6,7 +6,7 @@ EAPI=8
 #CRATES=""
 
 RUST_MULTILIB=1
-
+RUST_MIN_VER="1.81"
 inherit cargo flag-o-matic multilib-minimal rust-toolchain
 
 DESCRIPTION="C-to-rustls bindings"
