@@ -58,9 +58,7 @@ src_configure() {
 	# COMPILER_RT_BUILTINS_HIDE_SYMBOLS option - compatibility with libgcc requires
 	# visibility of all symbols.
 
-	if use clang || use test; then
-		llvm_prepend_path -b "${LLVM_MAJOR}"
-	fi
+	llvm_prepend_path -b "${LLVM_MAJOR}"
 
 	# LLVM_ENABLE_ASSERTIONS=NO does not guarantee this for us, #614844
 	use debug || local -x CPPFLAGS="${CPPFLAGS} -DNDEBUG"
