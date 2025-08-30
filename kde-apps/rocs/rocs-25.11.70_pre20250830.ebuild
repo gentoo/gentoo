@@ -5,7 +5,7 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_TEST="true"
-KDE_ORG_COMMIT=ee286241710ce5ef55b4f0a4ae4fc8e985c6d781
+KDE_ORG_COMMIT=01b0570427b2042dc6e5f727a5e3057b3bdd21df
 KFMIN=6.16.0
 QTMIN=6.9.1
 inherit ecm gear.kde.org xdg
