@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Encrypt Data with Cipher Block Chaining Mode"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm64 ~ppc64 ~riscv ~sparc"
+KEYWORDS="~alpha amd64 arm64 ppc64 ~riscv ~sparc"
 
 RDEPEND="
 	dev-perl/CryptX
