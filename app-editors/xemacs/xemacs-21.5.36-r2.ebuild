@@ -65,6 +65,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-failing-tests.patch"
 	eapply "${FILESDIR}/${P}-failing-tests-2.patch"
 	eapply "${FILESDIR}/${P}-configure-postgresql.patch"
+	eapply "${FILESDIR}/${P}-embed.patch"
 	eapply_user
 
 	eautoconf
