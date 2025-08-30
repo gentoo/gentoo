@@ -55,16 +55,8 @@ BDEPEND="
 PATCHES=(
 	# fossil-2.10-check-lib64-for-tcl.patch: Bug 690828
 	"${FILESDIR}"/fossil-2.10-check-lib64-for-tcl.patch
+	"${FILESDIR}"/${P}-arm64-fossil_sntrdup.patch
 )
-
-# src_prepare() {
-# 	eapply -p0 -- \
-# 		   "${FILESDIR}"/fossil-2.24-test-fixes.patch \
-# 		   "${FILESDIR}"/fossil-2.24-disable-utf8-tests-1179-1586-1587.patch \
-# 		   "${FILESDIR}"/fossil-2.24-fix-json-test-content-length.patch
-
-# 	default
-# }
 
 src_configure() {
 	# this is not an autotools situation so don't make it seem like one
