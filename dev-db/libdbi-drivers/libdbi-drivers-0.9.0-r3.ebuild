@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,14 +12,12 @@ SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${P}/${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
-IUSE="doc firebird mysql oci8 postgres +sqlite static-libs"
+IUSE="doc mysql oci8 postgres +sqlite static-libs"
 
-REQUIRED_USE="|| ( mysql postgres sqlite firebird oci8 )"
-RESTRICT="firebird? ( bindist )"
+REQUIRED_USE="|| ( mysql postgres sqlite oci8 )"
 
 RDEPEND="
 	>=dev-db/libdbi-0.9.0
-	firebird? ( dev-db/firebird )
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite:3 )
@@ -60,7 +58,6 @@ src_configure() {
 	use mysql && myconf+=" --with-mysql"
 	use postgres && myconf+=" --with-pgsql"
 	use sqlite && myconf+=" --with-sqlite3"
-	use firebird && myconf+=" --with-firebird"
 	if use oci8; then
 		[[ -z "${ORACLE_HOME}" ]] && die "\$ORACLE_HOME is not set!"
 		myconf+=" --with-oracle-dir=${ORACLE_HOME} --with-oracle"
