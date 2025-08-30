@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-08-30)
+# Multiple cases of test suite breakage.
+# https://github.com/pytest-dev/pytest-rerunfailures/issues/303
+=dev-python/pytest-rerunfailures-16.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
 media-sound/pulseaudio
