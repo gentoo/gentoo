@@ -41,10 +41,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-util/intltool
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}/${P}"-build.patch
-)
-
 src_prepare() {
 	default
 	eautoreconf
