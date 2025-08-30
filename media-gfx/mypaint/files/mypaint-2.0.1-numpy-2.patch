@@ -1,0 +1,83 @@
+https://bugs.gentoo.org/961072
+
+Original commits:
+* https://github.com/mypaint/mypaint/commit/2a92b6baf452aba2cff3cc0a7782b301da3933d7
+* https://github.com/mypaint/mypaint/commit/ab017e073e83a4930a0fb09608682bf4b7ab1874
+
+Use the backport variants from wip/2.x-backports:
+* https://github.com/mypaint/mypaint/commit/1b5fa7ab6f13858d5747ca6eee6b4e8a6de265d1
+* https://github.com/mypaint/mypaint/commit/cbc3a41c4d4333a3cd4930dc833385febc0ccfab
+
+From 1b5fa7ab6f13858d5747ca6eee6b4e8a6de265d1 Mon Sep 17 00:00:00 2001
+From: Jan Tojnar <jtojnar@gmail.com>
+Date: Sun, 4 Aug 2024 05:41:28 +0200
+Subject: [PATCH] strokemap: Replace deprecated tostring with tobytes
+
+https: //numpy.org/devdocs/reference/generated/numpy.ndarray.tostring.html#numpy.ndarray.tostring
+
+(cherry picked from commit 2a92b6baf452aba2cff3cc0a7782b301da3933d7)
+---
+ lib/strokemap.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/strokemap.py b/lib/strokemap.py
+index 204c1da72..fe3f85d72 100644
+--- a/lib/strokemap.py
++++ b/lib/strokemap.py
+@@ -411,7 +411,7 @@ class _Tile:
+ 
+     """
+ 
+-    _ZDATA_ONES = zlib.compress(np.ones((N, N), 'uint8').tostring())
++    _ZDATA_ONES = zlib.compress(np.ones((N, N), 'uint8').tobytes())
+ 
+     def __init__(self):
+         """Initialize, as a tile filled with all ones."""
+@@ -451,7 +451,7 @@ def new_from_array(cls, array):
+             tile._zdata = None
+         else:
+             tile._all = False
+-            tile._zdata = zlib.compress(array.tostring())
++            tile._zdata = zlib.compress(array.tobytes())
+         return tile
+ 
+     @classmethod
+From cbc3a41c4d4333a3cd4930dc833385febc0ccfab Mon Sep 17 00:00:00 2001
+From: askmeaboutlo0m <askmeaboutlo0m@users.noreply.github.com>
+Date: Mon, 23 Jun 2025 15:51:28 +0200
+Subject: [PATCH] Replace tostring() with tobytes() in stroke.py (#1300)
+
+Because numpy removed the former function (in a minor release) with
+numpy/numpy#28254. The function was an alias, so there's no change in
+behavior, i.e. it always returned bytes.
+
+See also 2a92b6baf452aba2cff3cc0a7782b301da3933d7, where the same
+function was already replaced in strokemap.py.
+
+(cherry picked from commit ab017e073e83a4930a0fb09608682bf4b7ab1874)
+---
+ lib/stroke.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/stroke.py b/lib/stroke.py
+index 22991bc4a..7c41e8481 100644
+--- a/lib/stroke.py
++++ b/lib/stroke.py
+@@ -43,7 +43,7 @@ def start_recording(self, brush):
+ 
+         states = brush.get_states_as_array()
+         assert states.dtype == 'float32'
+-        self.brush_state = states.tostring()
++        self.brush_state = states.tobytes()
+ 
+         self.brush = brush
+         self.brush.new_stroke()  # resets the stroke_* members of the brush
+@@ -63,7 +63,7 @@ def stop_recording(self):
+         # - for space: just gzip? use integer datatypes?
+         # - for time: maybe already use array storage while recording?
+         data = np.array(self.tmp_event_list, dtype='float64')
+-        data = data.tostring()
++        data = data.tobytes()
+         version = b'2'
+         self.stroke_data = version + data
+ 
