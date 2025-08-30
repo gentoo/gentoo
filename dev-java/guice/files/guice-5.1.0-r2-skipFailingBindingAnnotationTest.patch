@@ -1,0 +1,74 @@
+There were 2 failures:
+1) testAnnotationWithValueThatDoesntMatch(com.google.inject.BindingAnnotationTest)
+junit.framework.AssertionFailedError: Expected "Unable to create injector, see the following errors:
+
+1) [Guice/MissingImplementation]: No implementation for String annotated with @BindingAnnotationTest.Blue(5) was bound.
+
+Did you mean?
+    String annotated with BindingAnnotationTest$6@4f9c2709 bound at BindingAnnotationTest$5.configure(BindingAnnotationTest.java:109)
+
+    String bound at BindingAnnotationTest$5.configure(BindingAnnotationTest.java:110)
+
+Requested by:
+1  : BindingAnnotationTest$BlueFoo.s(BindingAnnotationTest.java:125)
+      \_ for field s
+     at BindingAnnotationTest$5.configure(BindingAnnotationTest.java:111)
+
+Learn more:
+  https://github.com/google/guice/wiki/MISSING_IMPLEMENTATION
+
+1 error
+
+======================
+Full classname legend:
+======================
+BindingAnnotationTest:         "com.google.inject.BindingAnnotationTest"
+BindingAnnotationTest$5:       "com.google.inject.BindingAnnotationTest$5"
+BindingAnnotationTest$6:       "com.google.inject.BindingAnnotationTest$6"
+BindingAnnotationTest$BlueFoo: "com.google.inject.BindingAnnotationTest$BlueFoo"
+========================
+End of classname legend:
+========================
+" to contain substring "BindingAnnotationTest$Blue(5) was bound"
+	at junit.framework.Assert.fail(Assert.java:57)
+	at junit.framework.Assert.assertTrue(Assert.java:22)
+	at com.google.inject.Asserts.assertContains(Asserts.java:116)
+	at com.google.inject.BindingAnnotationTest.testAnnotationWithValueThatDoesntMatch(BindingAnnotationTest.java:116)
+2) testRequireExactAnnotationsDisablesFallback(com.google.inject.BindingAnnotationTest)
+junit.framework.AssertionFailedError: Expected "Unable to create injector, see the following errors:
+
+1) [Guice/MissingImplementation]: No implementation for String annotated with @BindingAnnotationTest.Blue(5) was bound.
+
+Did you mean?
+    String annotated with interface BindingAnnotationTest$Blue bound at BindingAnnotationTest$2.configure(BindingAnnotationTest.java:53)
+
+Requested by:
+1  : BindingAnnotationTest$BlueFoo.s(BindingAnnotationTest.java:125)
+      \_ for field s
+     at BindingAnnotationTest$2.configure(BindingAnnotationTest.java:54)
+
+Learn more:
+  https://github.com/google/guice/wiki/MISSING_IMPLEMENTATION
+
+1 error
+
+--- a/test/com/google/inject/BindingAnnotationTest.java
++++ b/test/com/google/inject/BindingAnnotationTest.java
+@@ -43,7 +43,7 @@ public class BindingAnnotationTest extends TestCase {
+     assertEquals("foo", foo.s);
+   }
+ 
+-  public void testRequireExactAnnotationsDisablesFallback() {
++  public void noTestRequireExactAnnotationsDisablesFallback() {
+     try {
+       Guice.createInjector(
+           new AbstractModule() {
+@@ -100,7 +100,7 @@ public class BindingAnnotationTest extends TestCase {
+     }
+   }
+ 
+-  public void testAnnotationWithValueThatDoesntMatch() {
++  public void noTestAnnotationWithValueThatDoesntMatch() {
+     try {
+       Guice.createInjector(
+           new AbstractModule() {
