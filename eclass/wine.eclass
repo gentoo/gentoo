@@ -469,8 +469,9 @@ _wine_flags() {
 				# are on their own just like with USE=custom-cflags.
 				local flag flags=${CFLAGS} CFLAGS=-O2
 				# not get-flag() given it returns only the first occurence
+				# TODO: can drop |-std=* when <wine-10 is gone
 				for flag in ${flags}; do
-					[[ ${flag} == @(-g*|-O[0-1g]) ]] && CFLAGS+=" ${flag}"
+					[[ ${flag} == @(-g*|-O[0-1g]|-std=*) ]] && CFLAGS+=" ${flag}"
 				done
 			else
 				# many hardening options are unlikely to work right
