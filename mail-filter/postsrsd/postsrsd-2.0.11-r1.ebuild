@@ -12,7 +12,7 @@ SRC_URI="https://github.com/roehling/postsrsd/archive/${PV}.tar.gz -> ${P}.tar.g
 # See REUSE.toml; GPL-3 for the main software, BSD for src/sha*.
 LICENSE="GPL-3 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
