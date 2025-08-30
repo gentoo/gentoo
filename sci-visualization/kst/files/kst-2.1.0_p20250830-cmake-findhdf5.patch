@@ -1,0 +1,43 @@
+From 58ea6c63dd800ebeb9f0b12744e4de87e8d372b5 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 23 Apr 2025 19:07:28 +0200
+Subject: [PATCH] Use CMake provided FindHDF5 module
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                 |  2 +-
+ src/datasources/CMakeLists.txt |  6 +--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bc84fbf0..db9c09fb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -166,7 +166,7 @@ if(kst_3rdparty)
+   find_package(Matio)
+   find_package(CFITSIO)
+   find_package(TIFF)
+-  find_package(HDF5)
++  find_package(HDF5 COMPONENTS CXX)
+   message(STATUS "----------------------------------------------")
+ else()
+   message(STATUS "Building plugins depending on 3rd party libraries suppressed")
+diff --git a/src/datasources/CMakeLists.txt b/src/datasources/CMakeLists.txt
+index f72c44b0..12da98c8 100644
+--- a/src/datasources/CMakeLists.txt
++++ b/src/datasources/CMakeLists.txt
+@@ -73,8 +73,8 @@ if(tiff)
+         kst_link(${TIFF_LIBRARIES})
+ endif()
+ 
+-if(hdf5)
+-        include_directories(${HDF5_INCLUDEDIR})
++if(HDF5_FOUND)
++        include_directories(${HDF5_CXX_INCLUDE_DIRS})
+         kst_add_plugin(. hdf5)
+-        kst_link(${HDF5_LIBRARIES})
++        kst_link(${HDF5_CXX_LIBRARIES})
+ endif()
+-- 
+2.49.0
+
