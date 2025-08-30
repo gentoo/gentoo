@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="GD plugin(s) for the Template Toolkit"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ppc64 ~riscv ~x86"
 
 RDEPEND="
 	dev-perl/GD
