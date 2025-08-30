@@ -3,12 +3,12 @@
 
 EAPI=8
 
-inherit go-module
+inherit go-module shell-completion
 
 DESCRIPTION="A tool to create identical machine images for multiple platforms"
 HOMEPAGE="https://www.packer.io"
 SRC_URI="https://github.com/hashicorp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://gentoo.neutroniak.com/${P}-deps.tar.xz"
+	https://dev.gentoo.org/~expeditioneer/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="Apache-2.0 BSD MIT MPL-2.0 unicode Unicode-DFS-2016 ISC BUSL-1.1 CC-BY-4.0 GPL-2 LGPL-2"
 SLOT="0"
@@ -30,6 +30,5 @@ src_install() {
 
 	einstalldocs
 
-	insinto /usr/share/zsh/site-functions
-	doins contrib/zsh-completion/_packer
+	dozshcomp  contrib/zsh-completion/_packer
 }
