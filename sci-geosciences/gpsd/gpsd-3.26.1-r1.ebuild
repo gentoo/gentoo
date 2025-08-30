@@ -70,7 +70,7 @@ if [[ ${PV} == *9999* ]] ; then
 	BDEPEND+=" dev-ruby/asciidoctor"
 fi
 
-PATCHES=( "${FILESDIR}/${P}-qt6.patch" ) # bug 962118
+PATCHES=( "${FILESDIR}/${P}-qt6.patch" ) # bug 962118, in git master
 
 python_check_deps() {
 	python_has_version -b "dev-build/scons[${PYTHON_USEDEP}]" || return 1
