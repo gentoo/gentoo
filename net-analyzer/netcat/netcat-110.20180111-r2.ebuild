@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,7 @@ IUSE="ipv6 static"
 
 PATCHES=(
 	"${FILESDIR}/${P}-variadic-holler.patch"
+	"${FILESDIR}/${PN}-110.20180111-c23.patch"
 )
 
 src_prepare() {
@@ -50,7 +51,7 @@ src_compile() {
 		LD="$(tc-getCC) ${LDFLAGS}" \
 		DFLAGS="${CPPFLAGS}" \
 		XFLAGS="${CFLAGS}" \
-		STATIC=$(usex static '-static' '') \
+		STATIC=$(usev static '-static') \
 		XLIBS="${xlibs}" \
 		nc
 }

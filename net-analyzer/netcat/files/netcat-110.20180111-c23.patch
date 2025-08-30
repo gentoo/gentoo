@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/944910
+--- a/netcat.c
++++ b/netcat.c
+@@ -257,7 +257,7 @@ void bail (str, p1, p2, p3, p4, p5, p6)
+ 
+ /* catch :
+    no-brainer interrupt handler */
+-void catch ()
++void catch (__attribute__ ((unused)) int unused)
+ {
+   errno = 0;
+   if (o_verbose > 1)		/* normally we don't care */
+@@ -267,14 +267,14 @@ void catch ()
+ 
+ /* quit :
+    handler for a "-q" timeout (exit 0 instead of 1) */
+-void quit ()
++void quit (__attribute__ ((unused)) int unused)
+ {
+   close (netfd);
+   exit (0);
+ }
+ 
+ /* timeout and other signal handling cruft */
+-void tmtravel ()
++void tmtravel (__attribute__ ((unused)) int unused)
+ {
+   signal (SIGALRM, SIG_IGN);
+   alarm (0);
