@@ -159,6 +159,11 @@ QA_PREBUILT="
 	usr/lib*/obs-plugins/swiftshader/libGLESv2.so
 "
 
+PATCHES=(
+	# Not needed for >31.1.2, merged upstream
+	"${FILESDIR}/${PN}-31.1.2-fix-build-with-ffmpeg8.patch"
+)
+
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	use python && python-single-r1_pkg_setup
@@ -179,8 +184,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
-
 	# -Werror=lto-type-mismatch
 	# https://bugs.gentoo.org/867250
 	# https://github.com/obsproject/obs-studio/issues/8988
