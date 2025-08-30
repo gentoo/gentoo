@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz
 )"
 
 LICENSE="Apache-2.0 AGPL-3+ BSD LGPL-3 MIT"
-SLOT="0/stable"
+SLOT="0/lts"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="apparmor nls"
 
@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 	>=sys-fs/lxcfs-5.0.0
 	sys-fs/squashfs-tools[lzma]
 	virtual/acl"
-BDEPEND=">=dev-lang/go-1.22.4
+BDEPEND=">=dev-lang/go-1.22
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-canonical )"
 
@@ -71,7 +71,6 @@ WARNING_VHOST_VSOCK="CONFIG_VHOST_VSOCK is required for virtual machines."
 # Go magic.
 QA_PREBUILT="/usr/bin/fuidshift
 	/usr/bin/lxc
-	/usr/bin/lxc-to-lxd
 	/usr/bin/lxd-agent
 	/usr/bin/lxd-benchmark
 	/usr/bin/lxd-migrate
@@ -98,11 +97,7 @@ src_prepare() {
 	# Fix hardcoded ovmf file path, see bug 763180
 	sed -i \
 		-e "s:/usr/share/OVMF:/usr/share/edk2/OvmfX64:g" \
-		-e "s:OVMF_VARS.ms.fd:OVMF_VARS.fd:g" \
-		doc/environment.md \
-		lxd/apparmor/instance.go \
-		lxd/apparmor/instance_qemu.go \
-		lxd/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
+		lxd/instance/drivers/edk2/edk2.go || die "Failed to fix hardcoded ovmf paths."
 
 	# Fix hardcoded virtfs-proxy-helper file path, see bug 798924
 	sed -i \
@@ -126,7 +121,7 @@ src_compile() {
 	export GOPATH="${S}/_dist"
 	export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
-	for k in fuidshift lxd-benchmark lxc lxc-to-lxd; do
+	for k in fuidshift lxd-benchmark lxc; do
 		go install -v -x "${S}/${k}" || die "failed compiling ${k}"
 	done
 
@@ -149,11 +144,9 @@ src_install() {
 
 	dosbin ${bindir}/lxd
 
-	for l in fuidshift lxd-agent lxd-benchmark lxd-migrate lxc lxc-to-lxd; do
+	for l in fuidshift lxd-agent lxd-benchmark lxd-migrate lxc; do
 		dobin ${bindir}/${l}
 	done
-
-	newbashcomp scripts/bash/lxd-client lxc
 
 	newconfd "${FILESDIR}"/lxd-4.0.0.confd lxd
 	newinitd "${FILESDIR}"/lxd-5.0.2-r1.initd lxd

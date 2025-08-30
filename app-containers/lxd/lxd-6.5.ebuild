@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1 go-module linux-info optfeature systemd verify-sig
+inherit go-module linux-info optfeature systemd verify-sig
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
 HOMEPAGE="https://ubuntu.com/lxd https://github.com/canonical/lxd"
@@ -11,16 +11,16 @@ SRC_URI="https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz
 	verify-sig? ( https://github.com/canonical/lxd/releases/download/${P}/${P}.tar.gz.asc
 )"
 
-LICENSE="Apache-2.0 BSD LGPL-3 MIT"
-SLOT="0/lts"
-KEYWORDS="amd64 ~arm64 ~x86"
+LICENSE="Apache-2.0 AGPL-3+ BSD LGPL-3 MIT"
+SLOT="0/stable"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="apparmor nls"
 
 DEPEND="acct-group/lxd
 	app-arch/xz-utils
-	>=app-containers/lxc-5.0.0:=[apparmor?,seccomp(+)]
+	>=app-containers/lxc-6.0.4:=[apparmor?,seccomp(+)]
 	dev-db/sqlite:3
-	>=dev-libs/dqlite-1.16.4:=[lz4]
+	>=dev-libs/dqlite-1.18.2:=[lz4]
 	dev-libs/lzo
 	>=dev-util/xdelta-3.0[lzma(+)]
 	net-dns/dnsmasq[dhcp]
@@ -35,11 +35,11 @@ RDEPEND="${DEPEND}
 			)
 	)
 	sys-apps/iproute2
-	sys-fs/fuse:*
-	>=sys-fs/lxcfs-5.0.0
+	sys-fs/fuse:3
+	>=sys-fs/lxcfs-6.0.4
 	sys-fs/squashfs-tools[lzma]
 	virtual/acl"
-BDEPEND="dev-lang/go
+BDEPEND=">=dev-lang/go-1.24.4
 	nls? ( sys-devel/gettext )
 	verify-sig? ( sec-keys/openpgp-keys-canonical )"
 
@@ -71,7 +71,6 @@ WARNING_VHOST_VSOCK="CONFIG_VHOST_VSOCK is required for virtual machines."
 # Go magic.
 QA_PREBUILT="/usr/bin/fuidshift
 	/usr/bin/lxc
-	/usr/bin/lxc-to-lxd
 	/usr/bin/lxd-agent
 	/usr/bin/lxd-benchmark
 	/usr/bin/lxd-migrate
@@ -84,12 +83,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/canonical.asc
 RESTRICT="test"
 
 GOPATH="${S}/_dist"
-
-PATCHES=(
-	"${FILESDIR}"/lxd-5.0.3-remove-shellcheck-buildsystem-checks.patch
-	"${FILESDIR}"/lxd-5.0.3-pr-12834-dont-stop-parsing-image-info.patch
-	"${FILESDIR}"/lxd-5.0.3-pr-12847-ignore-incus-archives.patch
-)
 
 src_prepare() {
 	export GOPATH="${S}/_dist"
@@ -104,11 +97,7 @@ src_prepare() {
 	# Fix hardcoded ovmf file path, see bug 763180
 	sed -i \
 		-e "s:/usr/share/OVMF:/usr/share/edk2/OvmfX64:g" \
-		-e "s:OVMF_VARS.ms.fd:OVMF_VARS.fd:g" \
-		doc/environment.md \
-		lxd/apparmor/instance.go \
-		lxd/apparmor/instance_qemu.go \
-		lxd/instance/drivers/driver_qemu.go || die "Failed to fix hardcoded ovmf paths."
+		lxd/instance/drivers/edk2/edk2.go || die "Failed to fix hardcoded ovmf paths."
 
 	# Fix hardcoded virtfs-proxy-helper file path, see bug 798924
 	sed -i \
@@ -132,7 +121,7 @@ src_compile() {
 	export GOPATH="${S}/_dist"
 	export CGO_LDFLAGS_ALLOW="-Wl,-z,now"
 
-	for k in fuidshift lxd-benchmark lxc lxc-to-lxd; do
+	for k in fuidshift lxd-benchmark lxc; do
 		go install -v -x "${S}/${k}" || die "failed compiling ${k}"
 	done
 
@@ -155,11 +144,9 @@ src_install() {
 
 	dosbin ${bindir}/lxd
 
-	for l in fuidshift lxd-agent lxd-benchmark lxd-migrate lxc lxc-to-lxd; do
+	for l in fuidshift lxd-agent lxd-benchmark lxd-migrate lxc; do
 		dobin ${bindir}/${l}
 	done
-
-	newbashcomp scripts/bash/lxd-client lxc
 
 	newconfd "${FILESDIR}"/lxd-4.0.0.confd lxd
 	newinitd "${FILESDIR}"/lxd-5.0.2-r1.initd lxd
@@ -171,6 +158,11 @@ src_install() {
 	dodoc AUTHORS
 	dodoc -r doc/*
 	use nls && domo po/*.mo
+
+	# LXD needs LXD_QEMU_FW_PATH in env to find OVMF files for virtual machines
+	newenvd - 90lxd <<- _EOF_
+		LXD_QEMU_FW_PATH=${EPREFIX}/usr/share/edk2-ovmf
+	_EOF_
 }
 
 pkg_postinst() {
@@ -190,26 +182,4 @@ pkg_postinst() {
 	optfeature "zfs storage backend" sys-fs/zfs
 	elog
 	elog "Be sure to add your local user to the lxd group."
-
-	if [[ ${REPLACING_VERSIONS} ]] &&
-	ver_test ${REPLACING_VERSIONS} -lt 5.0.1 &&
-	has_version app-emulation/qemu[spice,usbredir,virtfs]; then
-		ewarn ""
-		ewarn "You're updating from <5.0.1. Due to incompatible API updates in the lxd-agent"
-		ewarn "product, you'll have to restart any running virtual machines before they work"
-		ewarn "properly."
-		ewarn ""
-		ewarn "Run: 'lxc restart your-vm' after the update for your vm's managed by lxd."
-		ewarn ""
-	fi
-
-	if [[ ${REPLACING_VERSIONS} ]] &&
-	has_version "sys-apps/openrc"; then
-		elog ""
-		elog "The new init.d script will attempt to mount "
-		elog "  /sys/fs/cgroup/systemd"
-		elog "by default, which is needed to run systemd containers with openrc host."
-		elog "See the /etc/init.d/lxd file for requirements."
-		elog ""
-	fi
 }
