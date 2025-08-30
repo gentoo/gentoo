@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vadorovsky@protonmail.com</email>
+		<name>Michal Rostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>llvm@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="default-compiler-rt">Use compiler-rt + libunwind instead of libgcc as the default rtlib for clang</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">llvm/llvm-project</remote-id>
+	</upstream>
+</pkgmetadata>

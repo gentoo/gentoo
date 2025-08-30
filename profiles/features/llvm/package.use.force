@@ -101,4 +101,8 @@
 # profile settings expect it.
 # TODO: Make a profile without default-libcxx too?
 llvm-core/clang-common default-compiler-rt default-lld default-libcxx
+llvm-core/clang-linker-config default-lld
 llvm-core/clang-runtime default-compiler-rt default-lld default-libcxx
+llvm-runtimes/clang-rtlib-config default-compiler-rt
+llvm-runtimes/clang-stdlib-config default-libcxx
+llvm-runtimes/clang-unwindlib-config default-compiler-rt llvm-libunwind

@@ -12,6 +12,7 @@ HOMEPAGE="https://libcxx.llvm.org/"
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~sparc ~x86 ~arm64-macos ~x64-macos"
 IUSE="+clang +libcxxabi +static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
@@ -188,8 +189,6 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
-	# https://github.com/llvm/llvm-project/issues/153940
-	local -x LIT_XFAIL="libcxx/gdb/gdb_pretty_printer_test.sh.cpp"
 	cmake_build install-cxx-test-suite-prefix
 	cp "${BUILD_DIR}"/{lib,libcxx/test-suite-install/$(get_libdir)}/libc++_shared.so || die
 	if use static-libs; then
@@ -207,20 +206,6 @@ multilib_src_install() {
 		dolib.so lib/libc++_shared.so
 		use static-libs && dolib.a lib/libc++_static.a
 	fi
-
-	local install_prefix=
-	is_crosspkg && install_prefix=/usr/${CTARGET}
-	insinto "${install_prefix}/usr/share/libc++/gdb"
-	doins ../libcxx/utils/gdb/libcxx/printers.py
-
-	local lib_version=$(sed -n -e 's/^LIBCXX_LIBRARY_VERSION:STRING=//p' CMakeCache.txt || die)
-	[[ -n ${lib_version} ]] || die "Could not determine LIBCXX_LIBRARY_VERSION from CMakeCache.txt"
-
-	insinto "${install_prefix}/usr/share/gdb/auto-load/usr/$(get_libdir)"
-	newins - "libc++.so.${lib_version}-gdb.py" <<-EOF
-		__import__("sys").path.insert(0, "${EPREFIX}/usr/share/libc++/gdb")
-		__import__("printers").register_libcxx_printer_loader()
-	EOF
 }
 
 # Usage: deps
