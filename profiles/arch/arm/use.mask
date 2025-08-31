@@ -56,10 +56,6 @@ acpi
 # net-wireless/wimax not tested
 wimax
 
-# Raúl Porcel <armin76@gentoo.org>
-# I've been told xfs is broken on ARM
-xfs
-
 # No hardware to test by the team
 ios
 ipod

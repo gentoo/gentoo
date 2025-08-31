@@ -133,7 +133,6 @@ dmi
 ibm
 libedit
 reiserfs
-xfs
 
 # Need testing
 musepack
