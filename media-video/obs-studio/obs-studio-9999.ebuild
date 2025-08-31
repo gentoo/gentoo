@@ -11,9 +11,9 @@ PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
-CEF_AMD64="cef_binary_6533_linux_x86_64_v5"
-CEF_ARM64="cef_binary_6533_linux_aarch64_v5"
-OBS_BROWSER_COMMIT="bdabf8300ecefeb566b81f4a7ff75f8a8e21f62b"
+CEF_AMD64="cef_binary_6533_linux_x86_64_v6"
+CEF_ARM64="cef_binary_6533_linux_aarch64_v6"
+OBS_BROWSER_COMMIT="c3b1e81a12380cd3d3f2cac65ef50289f144b2b6"
 OBS_WEBSOCKET_COMMIT="40d26dbf4d29137bf88cd393a3031adb04d68bba"
 
 DESCRIPTION="Software for Recording and Streaming Live Video Content"
