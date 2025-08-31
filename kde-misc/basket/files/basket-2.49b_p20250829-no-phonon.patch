@@ -1,0 +1,187 @@
+From c5d3fc72659bed35507eba9e3655df51aa86cc2f Mon Sep 17 00:00:00 2001
+From: Jack Hill <jackhill3103@gmail.com>
+Date: Wed, 9 Jul 2025 20:50:02 +0100
+Subject: [PATCH] Port from Phonon to Qt Multimedia
+
+---
+ .kde-ci.yml         |  1 -
+ CMakeLists.txt      |  4 +---
+ src/CMakeLists.txt  |  2 +-
+ src/notecontent.cpp | 32 ++++++++++++++++++++------------
+ src/notecontent.h   | 11 ++++-------
+ 5 files changed, 26 insertions(+), 24 deletions(-)
+
+diff --git a/.kde-ci.yml b/.kde-ci.yml
+index a87a4f37..9bd25b55 100644
+--- a/.kde-ci.yml
++++ b/.kde-ci.yml
+@@ -27,7 +27,6 @@ Dependencies:
+     'frameworks/kwidgetsaddons': '@latest-kf6'
+     'frameworks/kwindowsystem': '@latest-kf6'
+     'frameworks/kxmlgui': '@latest-kf6'
+-    'libraries/phonon': '@latest'
+ 
+ Options:
+   require-passing-tests-on: ['Linux', 'FreeBSD', 'Windows']
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b095f871..2bb10d4b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,6 +90,7 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+     Core
+     DBus
+     Gui
++    Multimedia
+     Widgets
+     Xml
+     Core5Compat
+@@ -125,9 +126,6 @@ set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
+     TYPE OPTIONAL
+ )
+ 
+-
+-find_package(Phonon4Qt6 REQUIRED)
+-
+ if (GPGME_FOUND)
+     MESSAGE(STATUS "FOUND GPG")
+     set(HAVE_LIBGPGME 1)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index edad9b11..3cf53991 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -58,7 +58,6 @@ qt_add_resources(basket_RESOURCES ../basket.qrc)
+ add_library(LibBasket SHARED ${libbasket_SRCS} ${basket_FORM_HDRS} ${basket_RESOURCES})
+ 
+ target_link_libraries(LibBasket
+-    ${PHONON_LIBRARY}
+     ${GPGME_VANILLA_LIBRARIES}
+     KF6::Archive
+     KF6::ConfigWidgets
+@@ -80,6 +79,7 @@ target_link_libraries(LibBasket
+     KF6::WindowSystem
+     KF6::XmlGui
+     Qt::Core
++    Qt::Multimedia
+ )
+ 
+ set_target_properties(LibBasket PROPERTIES
+diff --git a/src/notecontent.cpp b/src/notecontent.cpp
+index a153a6df..6c10fa21 100644
+--- a/src/notecontent.cpp
++++ b/src/notecontent.cpp
+@@ -6,7 +6,9 @@
+ 
+ #include "notecontent.h"
+ 
++#include <QAudioOutput>
+ #include <QLocale>
++#include <QMediaPlayer>
+ #include <QMimeData>
+ #include <QMimeDatabase>
+ #include <QTextBlock>
+@@ -35,9 +37,6 @@
+ #include <KLocalizedString>
+ #include <KService>
+ 
+-#include <phonon/AudioOutput>
+-#include <phonon/MediaObject>
+-
+ #include "basketscene.h"
+ #include "common.h"
+ #include "config.h"
+@@ -1615,16 +1614,25 @@ SoundContent::SoundContent(Note *parent, const QString &fileName)
+     : FileContent(parent, fileName)
+ {
+     SoundContent::setFileName(fileName);
+-    music = new Phonon::MediaObject(this);
+-    music->setCurrentSource(Phonon::MediaSource(fullPathUrl()));
+-    auto *audioOutput = new Phonon::AudioOutput(Phonon::MusicCategory, this);
+-    Phonon::createPath(music, audioOutput);
+-    connect(music, &Phonon::MediaObject::stateChanged, this, &SoundContent::stateChanged);
++    music = new QMediaPlayer(this);
++    music->setAudioOutput(new QAudioOutput(music));
++    connect(music, &QMediaPlayer::playbackStateChanged, this, &SoundContent::stateChanged);
+ }
+ 
+-void SoundContent::stateChanged(int newState, int oldState)
++void SoundContent::stateChanged(int newState)
+ {
+-    qDebug() << "stateChanged " << oldState << " to " << newState;
++    qDebug() << "stateChanged to " << newState;
++}
++
++bool SoundContent::loadFromFile(bool lazyLoad)
++{
++    if (lazyLoad) {
++        return false;
++    }
++
++    setFileName(fileName()); // File changed: get new file preview!
++    music->setSource(fullPathUrl());
++    return true;
+ }
+ 
+ QString SoundContent::zoneTip(int zone)
+@@ -1637,13 +1645,13 @@ void SoundContent::setHoveredZone(int oldZone, int newZone)
+     if (newZone == Note::Custom0 || newZone == Note::Content) {
+         // Start the sound preview:
+         if (oldZone != Note::Custom0 && oldZone != Note::Content) { // Don't restart if it was already in one of those zones
+-            if (music->state() == 1) {
++            if (music->playbackState() != QMediaPlayer::PlayingState) {
+                 music->play();
+             }
+         }
+     } else {
+         //       Stop the sound preview, if it was started:
+-        if (music->state() != 1) {
++        if (music->playbackState() != QMediaPlayer::StoppedState) {
+             music->stop();
+             //          delete music;//TODO implement this in slot connected with music alted signal
+             //          music = 0;
+diff --git a/src/notecontent.h b/src/notecontent.h
+index 68b94651..cbebacce 100644
+--- a/src/notecontent.h
++++ b/src/notecontent.h
+@@ -19,6 +19,7 @@
+ 
+ class QBuffer;
+ class QColor;
++class QMediaPlayer;
+ class QMimeData;
+ class QMovie;
+ class QPainter;
+@@ -37,11 +38,6 @@ namespace KIO
+ class PreviewJob;
+ }
+ 
+-namespace Phonon
+-{
+-class MediaObject;
+-}
+-
+ class BasketScene;
+ struct FilterData;
+ class Note;
+@@ -549,6 +545,7 @@ public:
+     QString editToolTipText() const override;
+     // Complex Generic Methods:
+     QString cssClass() const override;
++    bool loadFromFile(bool lazyLoad) override;
+     // Custom Zones:
+     QString zoneTip(int zone) override;
+     void setHoveredZone(int oldZone, int newZone) override;
+@@ -561,9 +558,9 @@ public:
+     {
+         return LinkLook::soundLook;
+     }
+-    Phonon::MediaObject *music;
++    QMediaPlayer *music;
+ private Q_SLOTS:
+-    void stateChanged(int, int);
++    void stateChanged(int);
+ };
+ 
+ /** Real implementation of link notes:
+-- 
+GitLab
+
