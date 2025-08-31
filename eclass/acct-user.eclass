@@ -492,6 +492,19 @@ acct-user_pkg_postinst() {
 			die "usermod failed with status ${status}"
 		fi
 	fi
+
+	if [[ ${_ACCT_USER_HOME} != /dev/null ]]; then
+		# Update permissions on reinstall/upgrade, bug 958979
+		chown -h "${_ACCT_USER_HOME_OWNER}" "${EROOT}${_ACCT_USER_HOME}" || die
+		if has_version -b sys-apps/coreutils; then
+			chmod -h "${_ACCT_USER_HOME_PERMS}" "${EROOT}${_ACCT_USER_HOME}" || die
+		elif [[ ! -L "${EROOT}${_ACCT_USER_HOME}" ]]; then
+			# POSIX does not define chmod -h
+			chmod "${_ACCT_USER_HOME_PERMS}" "${EROOT}${_ACCT_USER_HOME}" || die
+		else
+			ewarn "Skipping mode update for symlink at '${EROOT}${_ACCT_USER_HOME}'"
+		fi
+	fi
 }
 
 # @FUNCTION: acct-user_pkg_prerm
