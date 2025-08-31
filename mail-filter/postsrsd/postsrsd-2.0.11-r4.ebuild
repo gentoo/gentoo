@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake eapi9-pipestatus eapi9-ver readme.gentoo-r1 systemd
+inherit cmake eapi9-ver readme.gentoo-r1 systemd
 
 DESCRIPTION="Postfix Sender Rewriting Scheme daemon"
 HOMEPAGE="https://github.com/roehling/postsrsd"
@@ -88,14 +88,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	local f="${EROOT}/etc/postsrsd.secret" ret=0
+	local f="${EROOT}/etc/postsrsd.secret"
 
-	if [[ ! -e ${f} ]]; then
+	if [[ ! -s ${f} ]]; then
 		ebegin "Generate the SRS signing secret and install it in ${f}"
 		(
 			umask 077
-			dd if=/dev/urandom bs=18 count=1 status=none | base64 > "${f}"
-			pipestatus
+			set -o pipefail
+			rnd="$(dd if=/dev/urandom bs=18 count=1 status=none | base64)" \
+				&& printf "%s\n" "${rnd}" > "${f}"
 		)
 		eend $? "Installing ${f} failed"
 	fi
