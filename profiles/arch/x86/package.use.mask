@@ -29,10 +29,6 @@ media-gfx/openvdb python
 >=dev-ml/findlib-1.9.8-r1 ocamlopt
 dev-ml/labltk ocamlopt
 
-# Conrad Kostecki <conikost@gentoo.org> (2025-04-02)
-# media-libs/libsdl3 is not keyworded
-app-emulation/faudio sdl3
-
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
