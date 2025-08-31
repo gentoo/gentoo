@@ -10,7 +10,7 @@ HOMEPAGE="https://clang.llvm.org/"
 S=${WORKDIR}
 
 LICENSE="metapackage"
-SLOT="${PV%%.*}"
+SLOT="${PV}"
 IUSE="
 	+compiler-rt libcxx offload openmp +sanitize
 	default-compiler-rt default-libcxx default-lld llvm-libunwind polly
@@ -21,9 +21,9 @@ REQUIRED_USE="
 
 RDEPEND="
 	compiler-rt? (
-		~llvm-runtimes/compiler-rt-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
+		>=llvm-runtimes/compiler-rt-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
 		sanitize? (
-			~llvm-runtimes/compiler-rt-sanitizers-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
+			>=llvm-runtimes/compiler-rt-sanitizers-${PV}:${SLOT}[abi_x86_32(+)?,abi_x86_64(+)?]
 		)
 	)
 	libcxx? ( >=llvm-runtimes/libcxx-${PV}[${MULTILIB_USEDEP}] )
@@ -41,7 +41,7 @@ RDEPEND="
 	~llvm-runtimes/clang-unwindlib-config-${SLOT}[default-compiler-rt(-)?,llvm-libunwind(-)?]
 	~llvm-runtimes/clang-stdlib-config-${SLOT}[default-libcxx(-)?]
 
-	polly? ( ~llvm-core/polly-${PV} )
+	polly? ( >=llvm-core/polly-${PV}:${SLOT} )
 "
 
 _doclang_cfg() {
