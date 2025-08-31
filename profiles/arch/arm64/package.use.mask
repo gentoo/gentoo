@@ -365,7 +365,9 @@ dev-lua/mpack test
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
-sys-block/fio -io-uring
+# Pengyu Tao <i@f2light.com> (2025-08-04)
+# sys-libs/libnbd is not keyworded on arm64 yet
+sys-block/fio -io-uring nbd
 
 # Sam James <sam@gentoo.org> (2020-06-11)
 # PGO works on arm64

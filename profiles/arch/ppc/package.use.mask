@@ -56,3 +56,7 @@ dev-libs/mongo-c-driver test
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-12-26)
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
+
+# Pengyu Tao <i@f2light.com> (2025-08-04)
+# sys-libs/libnbd is not keyworded on ppc yet
+sys-block/fio nbd

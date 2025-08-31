@@ -170,7 +170,9 @@ dev-lisp/clisp berkdb
 # Jakov Smolić <jsmolic@gentoo.org> (2022-04-07)
 # Depends on sys-cluster/ceph which pulls in valgrind, which is
 # unavailable on riscv currently
-sys-block/fio rbd
+# Pengyu Tao <i@f2light.com> (2025-08-04)
+# sys-libs/libnbd is not keyworded on riscv yet
+sys-block/fio nbd rbd
 
 # Jakov Smolić <jsmolic@gentoo.org> (2022-03-25)
 # sys-process/criu doesn't support riscv (bug #835975)

@@ -358,7 +358,9 @@ sys-libs/libseccomp -experimental-loong
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
 # Mask io-uring & zbc pending keywording
-sys-block/fio -io-uring -zbc
+# Pengyu Tao <i@f2light.com> (2025-08-04)
+# sys-libs/libnbd is not keyworded on loong yet
+sys-block/fio -io-uring nbd -zbc
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-04-18)
 # We never had non-deprecated libcrypt support from glibc, so disable compat
