@@ -1,0 +1,496 @@
+PR pending, selected commits to fix compilation with gcc15
+fix unprototyped functions :
+https://github.com/filebench/filebench/pull/116/commits/07194b64f7a9c7c473896934339775ab54f1da78.patch
+remove bool occurences / bug #943905 :
+https://github.com/filebench/filebench/pull/116/commits/64a08cf7caa1beb1de078ab1099de0f7a1fed8ec.patch
+https://github.com/filebench/filebench/pull/116/commits/fd3565c371d87a5d6cdebcedac557a231aa4a85e.patch
+From 07194b64f7a9c7c473896934339775ab54f1da78 Mon Sep 17 00:00:00 2001
+From: Nathaniel Wesley Filardo <nwf@auristor.com>
+Date: Wed, 1 Nov 2017 17:50:59 -0400
+Subject: [PATCH] Make real prototypes in some places
+
+--- a/aslr.c
++++ b/aslr.c
+@@ -23,7 +23,7 @@
+ 
+ #if defined(HAVE_SYS_PERSONALITY_H) && defined(HAVE_ADDR_NO_RANDOMIZE)
+ void
+-linux_disable_aslr()
++linux_disable_aslr(void)
+ {
+ 	int r;
+ 
+@@ -34,7 +34,7 @@ linux_disable_aslr()
+ }
+ #else /* HAVE_SYS_PERSONALITY_H && HAVE_ADDR_NO_RANDOMIZE */
+ void
+-other_disable_aslr()
++other_disable_aslr(void)
+ {
+ 	filebench_log(LOG_INFO, "Per-process disabling of ASLR is not "
+ 				"supported on this system. "
+--- a/aslr.h
++++ b/aslr.h
+@@ -5,19 +5,19 @@
+ 
+ #if defined(HAVE_SYS_PERSONALITY_H) && defined(HAVE_ADDR_NO_RANDOMIZE)
+ extern void
+-linux_disable_aslr();
++linux_disable_aslr(void);
+ 
+ static inline void
+-disable_aslr()
++disable_aslr(void)
+ {
+ 	return linux_disable_aslr();
+ }
+ #else /* HAVE_SYS_PERSONALITY_H && HAVE_ADDR_NO_RANDOMIZE */
+ extern void
+-other_disable_aslr();
++other_disable_aslr(void);
+ 
+ static inline void
+-disable_aslr() {
++disable_aslr(void) {
+ 	return other_disable_aslr();
+ }
+ #endif /* HAVE_SYS_PERSONALITY_H && HAVE_ADDR_NO_RANDOMIZE */
+--- a/cvars/cvar-erlang.c
++++ b/cvars/cvar-erlang.c
+@@ -122,7 +122,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -155,7 +155,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar-exponential.c
++++ b/cvars/cvar-exponential.c
+@@ -108,7 +108,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -135,7 +135,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar-gamma.c
++++ b/cvars/cvar-gamma.c
+@@ -242,7 +242,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -274,7 +274,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar-lognormal.c
++++ b/cvars/cvar-lognormal.c
+@@ -121,7 +121,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -154,7 +154,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar-normal.c
++++ b/cvars/cvar-normal.c
+@@ -109,7 +109,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -142,7 +142,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar-triangular.c
++++ b/cvars/cvar-triangular.c
+@@ -132,7 +132,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -169,7 +169,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar-uniform.c
++++ b/cvars/cvar-uniform.c
+@@ -115,7 +115,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -147,7 +147,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar-weibull.c
++++ b/cvars/cvar-weibull.c
+@@ -122,7 +122,7 @@ void cvar_free_handle(void *handle, void (*cvar_free)(void *ptr))
+ 	cvar_free(handle);
+ }
+ 
+-const char *cvar_usage()
++const char *cvar_usage(void)
+ {
+ 	int offset;
+ 
+@@ -155,7 +155,7 @@ const char *cvar_usage()
+ 	return usage;
+ }
+ 
+-const char *cvar_version()
++const char *cvar_version(void)
+ {
+ 	return VERSION;
+ }
+--- a/cvars/cvar.h
++++ b/cvars/cvar.h
+@@ -19,7 +19,7 @@
+  * Return 0 on success and a non-zero error code on failure.
+  */
+ 
+-int cvar_module_init();
++int cvar_module_init(void);
+ 
+ /*
+  * Allocate a new custom variable handle. A handle is subsequently used to
+@@ -84,7 +84,7 @@ void cvar_free_handle(void *cvar_handle, void (*cvar_free)(void *ptr));
+  * to quit without invoking cvar_module_exit.
+  */
+ 
+-void cvar_module_exit();
++void cvar_module_exit(void);
+ 
+ /*
+  * Show usage, including information on the list of parameters supported and the
+@@ -95,7 +95,7 @@ void cvar_module_exit();
+  * Return a non-null, formatted string to be displayed on screen.
+  */
+ 
+-const char *cvar_usage();
++const char *cvar_usage(void);
+ 
+ /*
+  * Show version.
+@@ -105,6 +105,6 @@ const char *cvar_usage();
+  * Return a non-null version string.
+  */
+ 
+-const char *cvar_version();
++const char *cvar_version(void);
+ 
+ #endif /* _CVAR_H */
+--- a/fb_cvar.c
++++ b/fb_cvar.c
+@@ -204,7 +204,7 @@ static char
+  * Returns 0 on success and non-zero on error.
+  */
+ int
+-init_cvar_libraries()
++init_cvar_libraries(void)
+ {
+ 	int count;
+ 	int ret = -1;
+@@ -425,7 +425,7 @@ get_cvar_value(cvar_t *cvar)
+  * Return 0 on success and a non-zero error code on failure.
+  */
+ int
+-revalidate_cvar_handles()
++revalidate_cvar_handles(void)
+ {
+ 	cvar_t *t;
+ 	cvar_library_t *cvar_lib;
+--- a/fb_cvar.h
++++ b/fb_cvar.h
+@@ -59,7 +59,7 @@ typedef struct cvar_operations {
+ 	int (*cvar_revalidate_handle)(void *cvar_handle);
+ 	int (*cvar_next_value)(void *cvar_handle, double *value);
+ 	void (*cvar_free_handle)(void *cvar_handle, void (*cvar_free)(void *ptr));
+-	void (*cvar_module_exit)();
++	void (*cvar_module_exit)(void);
+ 	const char *(*cvar_usage)(void);
+ 	const char *(*cvar_version)(void);
+ } cvar_operations_t;
+@@ -78,9 +78,9 @@ extern cvar_library_t **cvar_libraries;
+ 
+ cvar_t * cvar_alloc(void);
+ int init_cvar_library_info(const char *dirpath);
+-int init_cvar_libraries();
++int init_cvar_libraries(void);
+ int init_cvar_handle(cvar_t *cvar, const char *type, const char *parameters);
+ double get_cvar_value(cvar_t *cvar);
+-int revalidate_cvar_handles();
++int revalidate_cvar_handles(void);
+ 
+ #endif /* _FB_CVAR_H */
+--- a/fb_random.c
++++ b/fb_random.c
+@@ -103,7 +103,7 @@ fb_random32(uint32_t *randp,
+  * Same as filebench_randomno64, but for probability [0-1].
+  */
+ static double
+-fb_random_probability()
++fb_random_probability(void)
+ {
+ 	uint64_t randnum;
+ 
+--- a/fileset.c
++++ b/fileset.c
+@@ -1749,7 +1749,7 @@ fileset_checkraw(fileset_t *fileset)
+  * fail.
+  */
+ int
+-fileset_createsets()
++fileset_createsets(void)
+ {
+ 	fileset_t *list;
+ 	int ret = 0;
+--- a/fileset.h
++++ b/fileset.h
+@@ -142,7 +142,7 @@ typedef struct fileset {
+ 	pthread_mutex_t	fs_histo_lock;	/* lock for incr of histo */
+ } fileset_t;
+ 
+-int fileset_createsets();
++int fileset_createsets(void);
+ 
+ void fileset_delete_all_filesets(void);
+ int fileset_openfile(fb_fdesc_t *fd, fileset_t *fileset,
+--- a/flowop.h
++++ b/flowop.h
+@@ -37,9 +37,9 @@ typedef struct flowop {
+ 	struct flowop	*fo_comp_fops;	/* List of flowops in composite fo */
+ 	var_t		*fo_lvar_list;	/* List of composite local vars */
+ 	struct threadflow *fo_thread;	/* Backpointer to thread */
+-	int		(*fo_func)();	/* Method */
+-	int		(*fo_init)();	/* Init Method */
+-	void		(*fo_destruct)(); /* Destructor Method */
++	int		(*fo_func)(threadflow_t *, struct flowop *);	/* Method */
++	int		(*fo_init)(struct flowop *);	/* Init Method */
++	void		(*fo_destruct)(struct flowop *); /* Destructor Method */
+ 	int		fo_type;	/* Type */
+ 	int		fo_attrs;	/* Flow op attribute */
+ 	avd_t		fo_filename;	/* file/fileset name */
+@@ -118,9 +118,9 @@ typedef struct flowop_proto {
+ 	int	fl_type;
+ 	int	fl_attrs;
+ 	char	*fl_name;
+-	int	(*fl_init)();
+-	int	(*fl_func)();
+-	void	(*fl_destruct)();
++	int	(*fl_init)(flowop_t *);
++	int	(*fl_func)(threadflow_t *, flowop_t *);
++	void	(*fl_destruct)(flowop_t *);
+ } flowop_proto_t;
+ 
+ extern struct flowstats controlstats;
+@@ -148,7 +148,7 @@ void flowop_printall(void);
+ void flowop_init(int ismaster);
+ 
+ /* Local file system specific */
+-void fb_lfs_funcvecinit();
+-void fb_lfs_newflowops();
++void fb_lfs_funcvecinit(void);
++void fb_lfs_newflowops(void);
+ 
+ #endif	/* _FB_FLOWOP_H */
+--- a/parser_gram.y
++++ b/parser_gram.y
+@@ -69,7 +69,7 @@ static attr_t *alloc_attr(void);
+ static attr_t *alloc_lvar_attr(var_t *var);
+ static attr_t *get_attr(cmd_t *cmd, int64_t name);
+ static void get_attr_lvars(cmd_t *cmd, flowop_t *flowop);
+-static list_t *alloc_list();
++static list_t *alloc_list(void);
+ static probtabent_t *alloc_probtabent(void);
+ static void add_lvar_to_list(var_t *newlvar, var_t **lvar_list);
+ 
+@@ -1619,7 +1619,7 @@ master_mode(struct fbparams *fbparams) {
+ }
+ 
+ static void
+-init_common()
++init_common(void)
+ {
+ 	disable_aslr();
+ 	my_pid = getpid();
+@@ -3117,7 +3117,7 @@ get_attr_lvars(cmd_t *cmd, flowop_t *flowop)
+  * returns a pointer to it. On failure, returns NULL.
+  */
+ static list_t *
+-alloc_list()
++alloc_list(void)
+ {
+ 	list_t *list;
+ 
+--- a/procflow.c
++++ b/procflow.c
+@@ -560,7 +560,7 @@ procflow_cleanup(procflow_t *procflow)
+  * in which case it returns -1.
+  */
+ static int
+-procflow_allstarted()
++procflow_allstarted(void)
+ {
+ 	procflow_t *procflow = filebench_shm->shm_procflowlist;
+ 	int running_procs = 0;
+@@ -787,7 +787,7 @@ procflow_define(char *name, avd_t instances)
+  * system.
+  */
+ void
+-proc_create()
++proc_create(void)
+ {
+ 	filebench_shm->shm_1st_err = 0;
+ 	filebench_shm->shm_f_abort = FILEBENCH_OK;
+@@ -828,7 +828,7 @@ proc_create()
+  * It does not exit the filebench program though.
+  */
+ void
+-proc_shutdown()
++proc_shutdown(void)
+ {
+ 	filebench_log(LOG_INFO, "Shutting down processes");
+ 	procflow_shutdown();
+From 64a08cf7caa1beb1de078ab1099de0f7a1fed8ec Mon Sep 17 00:00:00 2001
+From: Marc Dionne <marc.dionne@auristor.com>
+Date: Mon, 13 Jan 2025 15:12:37 -0400
+Subject: [PATCH] vars: Avoid using keyword "bool" as an argument name
+
+With gcc 15, "bool" is a restricted keyword that can't be used as
+an argument name.
+
+Signed-off-by: Marc Dionne <marc.dionne@auristor.com>
+--- a/vars.c
++++ b/vars.c
+@@ -417,7 +417,7 @@ var_find_alloc(char *name)
+ }
+ 
+ int
+-var_assign_boolean(char *name, boolean_t bool)
++var_assign_boolean(char *name, boolean_t val)
+ {
+ 	var_t *var;
+ 
+@@ -427,7 +427,7 @@ var_assign_boolean(char *name, boolean_t bool)
+ 		return -1;
+ 	}
+ 
+-	VAR_SET_BOOL(var, bool);
++	VAR_SET_BOOL(var, val);
+ 
+ 	return 0;
+ }
+@@ -786,7 +786,7 @@ var_lvar_assign_var(char *name, char *src_name)
+ }
+ 
+ var_t *
+-var_lvar_assign_boolean(char *name, boolean_t bool)
++var_lvar_assign_boolean(char *name, boolean_t val)
+ {
+ 	var_t *var;
+ 
+@@ -797,7 +797,7 @@ var_lvar_assign_boolean(char *name, boolean_t bool)
+ 		return NULL;
+ 	}
+ 
+-	VAR_SET_BOOL(var, bool);
++	VAR_SET_BOOL(var, val);
+ 
+ 	return var;
+ }
+From fd3565c371d87a5d6cdebcedac557a231aa4a85e Mon Sep 17 00:00:00 2001
+From: Nathaniel Wesley Filardo <nwf@auristor.com>
+Date: Wed, 1 Nov 2017 23:46:20 -0400
+Subject: [PATCH] vars.h: don't use bool keyword as variable
+
+--- a/vars.h
++++ b/vars.h
+@@ -160,13 +160,13 @@ typedef struct var {
+ 		(vp)->var_type = VAR_UNKNOWN; \
+ 	}
+ 
+-avd_t avd_bool_alloc(boolean_t bool);
++avd_t avd_bool_alloc(boolean_t boolval);
+ avd_t avd_int_alloc(uint64_t integer);
+ avd_t avd_dbl_alloc(double integer);
+ avd_t avd_str_alloc(char *string);
+ avd_t avd_var_alloc(char *varname);
+ 
+-int var_assign_boolean(char *name, boolean_t bool);
++int var_assign_boolean(char *name, boolean_t boolval);
+ int var_assign_integer(char *name, uint64_t integer);
+ int var_assign_double(char *name, double dbl);
+ int var_assign_string(char *name, char *string);

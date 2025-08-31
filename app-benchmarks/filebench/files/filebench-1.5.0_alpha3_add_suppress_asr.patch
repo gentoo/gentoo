@@ -1,0 +1,116 @@
+PR pending to fix an issue with randomization, see upstream #110
+https://github.com/filebench/filebench/pull/143.patch
+From 18c708a9771d9414fb3fa44bd916c05cdd43868c Mon Sep 17 00:00:00 2001
+From: Tony Mason <fsgeek@cs.ubc.ca>
+Date: Sat, 20 Jun 2020 20:39:23 +0000
+Subject: [PATCH] Add ASR suppression logic
+
+--- a/parser_gram.y
++++ b/parser_gram.y
+@@ -45,6 +45,7 @@
+ #include <fcntl.h>
+ #include <sys/mman.h>
+ #include <sys/wait.h>
++#include <syscall.h>
+ #include "parsertypes.h"
+ #include "filebench.h"
+ #include "utils.h"
+@@ -1569,7 +1570,6 @@ parser_abort(int arg)
+ static void
+ master_mode(struct fbparams *fbparams) {
+ 	int ret;
+-
+ 	printf("Filebench Version %s\n", FILEBENCH_VERSION);
+ 
+ 	yyin = fopen(fbparams->fscriptname, "r");
+@@ -1620,6 +1620,66 @@ init_common()
+ 	fb_set_rlimit();
+ }
+ 
++static void suppress_asr(char *const argv[], char * const envp[])
++{
++#if defined(SYS_personality)
++	unsigned index = 0;
++	size_t space = 0;
++	char **newenvp = (char **)malloc(space);
++	char *detect_string = "FILEBENCH_ASR_REINVOKED";
++	int current;
++	unsigned long persona = (unsigned long)~0;
++	const unsigned long asr_disabled = 0x0040000;
++
++	// Is this a reinvocation?
++	for (index = 0; envp[index]; index++) {
++		if (0 == strcmp(envp[index], detect_string)) {
++			// Yes - no further checking.
++			return;
++		}
++	}
++
++	// check if ASR is already disabled
++	current = (long) syscall(SYS_personality, persona);
++	if (-1 != current) {
++		persona = (unsigned long) current;
++		
++		if (asr_disabled == (persona & asr_disabled)) { // ASR disabled
++			return;
++		}
++
++		persona |= 0x0040000;
++		errno = 0;
++		current = (long) syscall(SYS_personality, persona);
++
++		if (-1 == current) {
++			// failed - give up
++			fprintf(stderr, "ASR disable failed - good luck\n");
++			return;
++		}
++
++		space = (index + 2) * sizeof(char *); // + 1 null entry + 1 new entry
++		if (NULL == newenvp) {
++			fprintf(stderr, "Reinvocation after disable ASR malloc failed\n");
++			return;
++		}
++
++		for (unsigned i = 0; i < index; i++) {
++			newenvp[i] = envp[i];
++		}
++		newenvp[index] = detect_string;
++		newenvp[index+1] = NULL;
++
++		if (-1 != current) {
++			if (0 > execvpe(argv[0], argv, newenvp)) {
++				fprintf(stderr, "execvpe failed (errno %d - %s)\n", errno, strerror(errno));
++			}
++		}
++	}
++#endif // SYS_personality
++
++}
++
+ /*
+  * Entry point for Filebench. Processes command line arguments. The -f option
+  * will read in a workload file (the full name and extension must must be
+@@ -1635,11 +1695,13 @@ init_common()
+  * supplied workload file, or enters interactive mode.
+  */
+ int
+-main(int argc, char *argv[])
++main(int argc, char *argv[], char *envp[])
+ {
+ 	struct fbparams fbparams;
+ 	int mode;
+ 
++	suppress_asr(argv, envp);
++
+ 	/* parse_options() exits if detects wrong usage */
+ 	mode = parse_options(argc, argv, &fbparams);
+ 
+@@ -1651,7 +1713,7 @@ main(int argc, char *argv[])
+ 
+ 	init_common();
+ 
+-	if (mode == FB_MODE_MASTER)
++	if (mode == FB_MODE_MASTER) 
+ 		master_mode(&fbparams);
+ 
+ 	if (mode == FB_MODE_WORKER)

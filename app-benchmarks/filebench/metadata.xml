@@ -6,6 +6,7 @@
 		<flag name="auto-completion">Enable command-line autocompletion using <pkg>dev-libs/libtecla</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">filebench</remote-id>
+		<remote-id type="sourceforge">filebench</remote-id><!-- old -->
+		<remote-id type="github">filebench/filebench</remote-id>
 	</upstream>
 </pkgmetadata>
