@@ -252,7 +252,7 @@ media-video/ffmpeg-compat amf
 media-video/handbrake amf
 
 # Sam James <sam@gentoo.org> (2021-11-15)
-# Only available on PPC*.
+# Only available on ppc*.
 sys-apps/util-linux rtas
 
 # James Le Cuirot <chewi@gentoo.org> (2021-10-22)
