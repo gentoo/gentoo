@@ -9,7 +9,7 @@ DESCRIPTION="Meta-ebuild for clang runtime libraries"
 HOMEPAGE="https://clang.llvm.org/"
 S=${WORKDIR}
 
-LICENSE="metapackage"
+LICENSE="public-domain"
 SLOT="${PV}"
 IUSE="
 	+compiler-rt libcxx offload openmp +sanitize
