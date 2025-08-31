@@ -211,8 +211,8 @@ media-libs/libavif rav1e
 
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
 # Vulkan is not available here
-media-video/ffmpeg shaderc vulkan
-media-video/ffmpeg-compat shaderc vulkan
+media-video/ffmpeg shaderc
+media-video/ffmpeg-compat shaderc
 
 # Michał Górny <mgorny@gentoo.org> (2023-10-22)
 # This is not ISDN CAPI, so unmask it.
@@ -445,7 +445,7 @@ media-libs/libsdl2 fcitx
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa video_cards_zink vulkan vulkan-overlay
+media-libs/mesa video_cards_zink vulkan-overlay
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording

@@ -184,10 +184,6 @@ net-misc/seafile-client shibboleth
 net-p2p/ktorrent rss
 sci-physics/root qt6
 
-# Ionen Wolkens <ionen@gentoo.org> (2022-11-07)
-# Vulkan is usable here.
-media-video/mpv -vulkan
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-10-07)
 # sys-libs/libsmbios is available here.
 app-laptop/pbbuttonsd -macbook

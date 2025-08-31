@@ -44,10 +44,6 @@ media-libs/zxing-cpp experimental
 dev-python/qtconsole test
 dev-python/qtpy test
 
-# WANG Xuerui <xen0n@gentoo.org> (2025-01-12)
-# Vulkan works on loong.
-media-video/mpv -vulkan
-
 # Sam James <sam@gentoo.org> (2025-01-10)
 # dev-lang/ada-bootstrap exists here
 >=sys-devel/gcc-14 -ada
