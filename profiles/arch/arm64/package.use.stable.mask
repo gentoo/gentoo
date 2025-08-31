@@ -79,7 +79,6 @@ app-text/dblatex inkscape
 # Sam James <sam@gentoo.org> (2021-02-25)
 # Roy Bamford <neddyseagoon@gentoo.org> (2021-02-25)
 # Dependencies not yet stable, migrated from p.u.m.
-app-crypt/qca botan
 gnome-base/nautilus previewer
 
 # Sam James <sam@gentoo.org> (2021-02-05)
