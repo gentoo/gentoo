@@ -29,10 +29,6 @@ dev-libs/mongo-c-driver test
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-01-27)
-# dev-python/pyside is not stable here yet
-dev-python/qtpy pyside6
-
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # Needs unkeyworded dev-python/sympy
 dev-python/nbval test
