@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/961917
+
+--- a/util/inteltool/cpu.c
++++ b/util/inteltool/cpu.c
+@@ -53,7 +53,7 @@
+ 	return ret;
+ }
+ 
+-inline cpuid_result_t cpuid_ext(int op, unsigned int ecx)
++inline static cpuid_result_t cpuid_ext(int op, unsigned int ecx)
+ {
+ 	cpuid_result_t result;
+ 

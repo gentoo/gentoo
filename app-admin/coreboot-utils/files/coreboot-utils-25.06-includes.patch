@@ -1,0 +1,13 @@
+fix compilation when CFLAGS is set (which in Gentoo it always is)
+
+--- a/util/intelmetool/Makefile
++++ b/util/intelmetool/Makefile
+@@ -7,6 +7,8 @@
+ INSTALL ?= /usr/bin/env install
+ PREFIX  ?= /usr/local
+ CFLAGS  ?= -O0 -g -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-unused-function \
++#  \ on prev and next line for patch
++CFLAGS  += \
+            -I $(TOP)/src/commonlib/bsd/include
+ LDFLAGS += -lpci -lz
+ 
