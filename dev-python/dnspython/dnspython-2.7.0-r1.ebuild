@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1
 
-MY_P=${P/_}
 DESCRIPTION="DNS toolkit for Python"
 HOMEPAGE="
 	https://www.dnspython.org/
@@ -16,18 +15,18 @@ HOMEPAGE="
 	https://pypi.org/project/dnspython/
 "
 SRC_URI="
-	https://github.com/rthalley/dnspython/archive/v${PV/_}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+	https://github.com/rthalley/dnspython/archive/v${PV}.tar.gz
+		-> ${P}.gh.tar.gz
 "
-S=${WORKDIR}/${MY_P}
 
 LICENSE="ISC"
 SLOT="0"
+KEYWORDS="~amd64 ~arm64"
 IUSE="dnssec examples https quic"
 
 RDEPEND="
 	dnssec? (
-		>=dev-python/cryptography-45[${PYTHON_USEDEP}]
+		>=dev-python/cryptography-41[${PYTHON_USEDEP}]
 	)
 	>=dev-python/idna-2.1[${PYTHON_USEDEP}]
 	https? (
@@ -39,7 +38,7 @@ RDEPEND="
 # note: skipping DoH test deps because they require Internet anyway
 BDEPEND="
 	test? (
-		>=dev-python/cryptography-45[${PYTHON_USEDEP}]
+		>=dev-python/cryptography-41[${PYTHON_USEDEP}]
 		>=dev-python/quart-trio-0.11.0[${PYTHON_USEDEP}]
 	)
 "
