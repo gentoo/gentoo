@@ -39,10 +39,6 @@ gps
 # media-sound/musepack-tools not stable yet
 musepack
 
-# Mart Raudsepp <leio@gentoo.org> (2018-11-27)
-# x11-libs/fltk not stable yet
-fltk
-
 # Mart Raudsepp <leio@gentoo.org> (2017-01-28)
 # sys-auth/skey not marked stable yet
 skey
