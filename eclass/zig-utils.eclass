@@ -491,8 +491,11 @@ zig-utils_find_installation() {
 
 	einfo "Searching Zig ${ZIG_SLOT}..."
 
+	# Upstream skipped releasing 0.15.0
 	local zig_supported_versions=(
 		"9999"
+		"0.15.2"
+		"0.15.1"
 		"0.14.1"
 		"0.14.0"
 		"0.13.1"
