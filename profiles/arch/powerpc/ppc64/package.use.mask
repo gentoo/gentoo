@@ -100,10 +100,6 @@ sci-libs/symengine tcmalloc
 # https://github.com/rustsec/rustsec/issues/707
 dev-util/cargo-audit fix
 
-# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
-# Not keyworded here yet.
-lxqt-base/lxqt-meta desktop-portal
-
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.

@@ -213,10 +213,6 @@ app-vim/jedi test
 # Disable 64bit builds on x86
 sys-apps/memtest86+ bios64 uefi64 iso64
 
-# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
-# Not keyworded here yet.
-lxqt-base/lxqt-meta desktop-portal
-
 # Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
 # Untested useflag on other arches, needs keywording
 media-video/ffmpeg vmaf

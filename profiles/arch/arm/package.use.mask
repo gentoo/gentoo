@@ -201,10 +201,6 @@ media-gfx/blender optix
 # ceph, zfs not keyworded here
 app-emulation/libvirt rbd zfs
 
-# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
-# Not keyworded here yet.
-lxqt-base/lxqt-meta desktop-portal
-
 # Matt Turner <mattst88@gentoo.org> (2022-04-18)
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
