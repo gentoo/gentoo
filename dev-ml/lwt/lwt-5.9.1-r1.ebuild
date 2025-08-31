@@ -12,7 +12,8 @@ SRC_URI="https://github.com/ocsigen/lwt/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="+ocamlopt"
+IUSE="+ocamlopt test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libev
@@ -28,6 +29,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-ml/cppo
 	dev-ml/findlib
+	test? ( dev-ml/ppx_here )
 "
 
 # "domainslib" is unpackaged.
