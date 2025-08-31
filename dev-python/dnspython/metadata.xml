@@ -26,6 +26,12 @@ DNSPythonはPython言語用のDNSツールキットです。ほとんどのレ�
 			Use <pkg>dev-python/cryptography</pkg> to enable low-level
 			DNSSEC RSA, DSA, ECDSA and EdDSA signature validation.
 		</flag>
+		<flag name="https">
+			Enable DNS-over-HTTPS
+		</flag>
+		<flag name="quic">
+			Enable DNS-over-QUIC
+		</flag>
 	</use>
 	<stabilize-allarches/>
 	<upstream>
