@@ -25,10 +25,6 @@ dev-build/meson test-full
 # mongodb needed for tests which is not stable keyworded for arm64
 dev-libs/mongo-c-driver test
 
-# Sam Jamrs <sam@gentoo.org> (2024-06-07)
-# dev-libs/capstone hasn't been stabilized yet
-app-emulation/qemu capstone
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
 # Experimental, virt-firmware is keyworded only unstable
 sys-kernel/installkernel efistub
