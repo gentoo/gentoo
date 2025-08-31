@@ -38,6 +38,12 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-01)
 # EAPI-7 cmake.eclass, no revdeps, no one else is packaging this.
+# Bugs #951888, #957258. Removal on 2025-10-01.
+net-analyzer/nipper
+net-libs/libnipper
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-01)
+# EAPI-7 cmake.eclass, no revdeps, no one else is packaging this.
 # Bugs #952062, #957253. Removal on 2025-10-01.
 sci-mathematics/diagrtb
 
