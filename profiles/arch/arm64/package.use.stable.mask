@@ -76,15 +76,6 @@ app-emulation/libvirt glusterfs rbd
 # bug #785685
 app-text/dblatex inkscape
 
-# Sam James <sam@gentoo.org> (2021-02-05)
-# Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
-# No lua stable for this arch yet
-www-servers/nginx nginx_modules_http_lua
-
-# Sam James <sam@gentoo.org> (2020-12-23)
-# Needs stable dev-lang/luajit
-kde-apps/cantor lua
-
 # Sam James <sam@gentoo.org> (2020-10-18)
 # Needs dev-tex/hevea which isn't stable yet
 media-gfx/enblend doc
