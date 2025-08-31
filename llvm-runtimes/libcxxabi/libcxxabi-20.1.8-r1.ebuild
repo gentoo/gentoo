@@ -17,10 +17,6 @@ IUSE="+clang +static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
-# in 15.x, cxxabi.h is moving from libcxx to libcxxabi
-RDEPEND+="
-	!<llvm-runtimes/libcxx-15
-"
 DEPEND="
 	${RDEPEND}
 	llvm-core/llvm:${LLVM_MAJOR}
