@@ -2,6 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
+  <use>
+    <flag name="redis">
+      Add support for <pkg>dev-libs/hiredis</pkg> database backend
+    </flag>
+    <flag name="sqlite">
+      Add support for <pkg>dev-db/sqlite</pkg> database backend
+    </flag>
+  </use>
   <upstream>
     <remote-id type="github">roehling/postsrsd</remote-id>
   </upstream>
