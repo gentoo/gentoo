@@ -1,3 +1,5 @@
+https://review.coreboot.org/c/coreboot/+/89005
+
 Bug: https://bugs.gentoo.org/961917
 
 --- a/util/inteltool/cpu.c

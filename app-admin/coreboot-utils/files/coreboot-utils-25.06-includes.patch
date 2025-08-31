@@ -1,3 +1,5 @@
+https://review.coreboot.org/c/coreboot/+/89004
+
 fix compilation when CFLAGS is set (which in Gentoo it always is)
 
 --- a/util/intelmetool/Makefile
