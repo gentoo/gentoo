@@ -27,12 +27,10 @@ python_single_target_pypy3_11
 # app-misc/lirc not stable yet
 # dev-db/tokyocabinet not stable yet
 # dev-libs/libtar not stable yet
-# net-libs/ldns not stable yet
 # sci-geosciences/gpsd not stable yet
 lirc
 tokyocabinet
 libtar
-ldns
 gps
 
 # Mart Raudsepp <leio@gentoo.org> (2019-02-07)
