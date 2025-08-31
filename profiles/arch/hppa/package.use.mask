@@ -127,10 +127,6 @@ media-libs/libv4l bpf
 media-video/ffmpeg shaderc
 media-video/ffmpeg-compat shaderc
 
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-build/samurai is not keyworded here.
-app-alternatives/ninja samurai
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
 # Vulkan is not available here, ffmpeg also wants libplacebo[vulkan].
 media-libs/libplacebo shaderc
