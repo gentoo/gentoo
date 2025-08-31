@@ -1,0 +1,56 @@
+From f03121a4dfa51c3282a2dd7ef59a3418b4d860b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 31 Aug 2025 18:05:17 +0200
+Subject: [PATCH] Fix tests with `NO_COLOR=1` set
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fix tests to force internal coloring independently of `NO_COLOR`
+in the calling environment, to ensure that they pass.  This is needed
+when `NO_COLOR` is set globally in the environment, e.g. when collecting
+plain text test logs.
+
+Technically, `crossterm::style::force_color_output()` leaks to other
+tests.  However, there should be no harm in setting it globally,
+and the library does not seem to provide a trivial way to scope
+the change.  Just call it in both places where it is actually necessary,
+to ensure that things work correctly also when only parts of the test
+suite are run.
+
+Fixes #1136
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ src/display.rs      | 3 +++
+ src/meta/symlink.rs | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/src/display.rs b/src/display.rs
+index 2c9c2f1..842ffb2 100644
+--- a/src/display.rs
++++ b/src/display.rs
+@@ -584,6 +584,9 @@ mod tests {
+ 
+     #[test]
+     fn test_display_get_visible_width_with_colors() {
++        // crossterm implicitly colors if NO_COLOR is set.
++        crossterm::style::force_color_output(true);
++
+         for (s, l) in [
+             ("Ｈｅｌｌｏ,ｗｏｒｌｄ!", 22),
+             ("ASCII1234-_", 11),
+diff --git a/src/meta/symlink.rs b/src/meta/symlink.rs
+index 951ba24..786b492 100644
+--- a/src/meta/symlink.rs
++++ b/src/meta/symlink.rs
+@@ -121,6 +121,9 @@ mod tests {
+ 
+     #[test]
+     fn test_symlink_render_default_invalid_target_withcolor() {
++        // crossterm implicitly colors if NO_COLOR is set.
++        crossterm::style::force_color_output(true);
++
+         let link = SymLink {
+             target: Some("/target".to_string()),
+             valid: false,

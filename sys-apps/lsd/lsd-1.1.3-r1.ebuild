@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -212,6 +212,11 @@ DEPEND="
 QA_FLAGS_IGNORED="usr/bin/lsd"
 
 src_prepare() {
+	local PATCHES=(
+		# https://github.com/lsd-rs/lsd/pull/1161
+		"${FILESDIR}/${P}-no-color-test.patch"
+	)
+
 	sed -i -e '/strip/s:true:false:' Cargo.toml || die
 	default
 }
