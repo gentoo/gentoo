@@ -17,11 +17,9 @@ SRC_URI="https://download.libguestfs.org/${PN}/${MY_PV_1}-${SD}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0/${MY_PV_1}"
-# We can't keyword 1.54.x yet  because it depends on
-# >=app-emulation/libguestfs-1.55.6
-#if [[ ${SD} == "stable" ]] ; then
-#	KEYWORDS="~amd64"
-#fi
+if [[ ${SD} == "stable" ]] ; then
+	KEYWORDS=""
+fi
 IUSE="doc libvirt +ocaml +perl test"
 RESTRICT="!test? ( test )"
 
