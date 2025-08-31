@@ -424,8 +424,8 @@ python_test() {
 pkg_postinst() {
 	use emacs && elisp-site-regen
 
-	elog "If you want to convert repositories from other tools using convert"
-	elog "extension please install correct tool:"
+	elog "If you want to convert repositories from other tools using"
+	elog "the convert extension please install the correct tool:"
 	elog "  dev-vcs/cvs"
 	elog "  dev-vcs/darcs"
 	elog "  dev-vcs/git"
