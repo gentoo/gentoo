@@ -190,7 +190,7 @@ CRATES="
 	yaml-rust@0.4.5
 "
 
-inherit bash-completion-r1 cargo
+inherit cargo shell-completion
 
 DESCRIPTION="An ls command with a lot of pretty colors and some other stuff."
 HOMEPAGE="https://github.com/lsd-rs/lsd/"
@@ -233,10 +233,6 @@ src_install() {
 	einstalldocs
 
 	newbashcomp "${T}"/shell_completions/lsd.bash lsd
-
-	insinto /usr/share/fish/vendor_completions.d
-	doins "${T}"/shell_completions/lsd.fish
-
-	insinto /usr/share/zsh/site-functions
-	doins "${T}"/shell_completions/_lsd
+	dofishcomp "${T}"/shell_completions/lsd.fish
+	dozshcomp "${T}"/shell_completions/_lsd
 }
