@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 inherit cmake-multilib flag-o-matic llvm.org llvm-utils python-any-r1
 inherit toolchain-funcs
 
@@ -17,10 +17,6 @@ IUSE="+clang +static-libs test"
 REQUIRED_USE="test? ( clang )"
 RESTRICT="!test? ( test )"
 
-# in 15.x, cxxabi.h is moving from libcxx to libcxxabi
-RDEPEND+="
-	!<llvm-runtimes/libcxx-15
-"
 DEPEND="
 	${RDEPEND}
 	llvm-core/llvm:${LLVM_MAJOR}
