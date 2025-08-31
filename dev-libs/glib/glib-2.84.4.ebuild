@@ -114,14 +114,6 @@ pkg_setup() {
 src_prepare() {
 	if use test; then
 		# TODO: Review the test exclusions, especially now with meson
-		# Disable tests requiring dev-util/desktop-file-utils when not installed, bug #286629, upstream bug #629163
-		if ! has_version dev-util/desktop-file-utils ; then
-			ewarn "Some tests will be skipped due dev-util/desktop-file-utils not being present on your system,"
-			ewarn "think on installing it to get these tests run."
-			sed -i -e "/appinfo\/associations/d" gio/tests/appinfo.c || die
-			sed -i -e "/g_test_add_func/d" gio/tests/desktop-app-info.c || die
-		fi
-
 		# gdesktopappinfo requires existing terminal (gnome-terminal or any
 		# other), falling back to xterm if one doesn't exist
 		#if ! has_version x11-terms/xterm && ! has_version x11-terms/gnome-terminal ; then
