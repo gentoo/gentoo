@@ -4,6 +4,15 @@
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Sam James <sam@gentoo.org> (2025-08-31)
+# GPU-related USE flags.  While hardware with PCIe host
+# capabilities exists, mask these by default to reduce burden
+# on maintainers of GPU-related packages.  Can be unmasked
+# in the future upon user request.
+vulkan
+vaapi
+frei0r
+
 # Michał Górny <mgorny@gentoo.org> (2025-04-13)
 # media-libs/libavif is not keyworded here.
 avif
@@ -87,7 +96,6 @@ lirc
 llvm
 java
 hardened
-vaapi
 qt5
 qt6
 
