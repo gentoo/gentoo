@@ -64,6 +64,16 @@ pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	find . -type f \
+		\( -iname "*CMakeLists.txt*" -or -iname "*-config.cmake" \) \
+		-exec \
+		sed -e "/^cmake_minimum_required/I s|(.*)|(VERSION 3.20)|g" -i {} \; \
+		|| die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	# bug https://bugs.gentoo.org/926079
 	filter-lto
