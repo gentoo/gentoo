@@ -134,10 +134,6 @@ dev-build/meson test-full
 # No suitable versions of dev-libs/protobuf available.
 =dev-java/protobuf-java-4.29.3 system-protoc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
-# Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
-kde-frameworks/kfilemetadata:5 mobi
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
 # of dev-libs/boost in Gentoo.
