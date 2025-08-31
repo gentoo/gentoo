@@ -46,7 +46,10 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-man_gz.patch" )
+PATCHES=(
+	"${FILESDIR}/antimicrox-man_gz.patch"
+	"${FILESDIR}/antimicrox-3.5.1-cmake_minimum_required.patch"
+)
 
 DOCS=( CHANGELOG.md README.md )
 
