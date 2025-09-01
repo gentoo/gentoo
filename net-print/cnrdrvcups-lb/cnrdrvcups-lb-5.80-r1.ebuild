@@ -94,6 +94,10 @@ src_prepare() {
 	common_op sed -i -e 's/configure.in/configure.ac/' configure.ac || die
 	driver_op sed -i -e 's/configure.in/configure.ac/' configure.ac || die
 
+	# https://bugs.gentoo.org/931847
+	common_op sed -i -e "s|dir = /usr/lib/cups/|dir = /usr/$(get_libdir)/cups/|" Makefile.am || die
+	driver_op sed -i -e "s|dir = /usr/lib/cups/|dir = /usr/$(get_libdir)/cups/|" Makefile.am || die
+
 	# This should work with autoreconf
 	export "LIBS=-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"
 
