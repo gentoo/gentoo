@@ -4,7 +4,7 @@
 EAPI=8
 
 CRATES=" "
-LLVM_COMPAT=( {17..20} )
+LLVM_COMPAT=( {17..21} )
 RUST_MIN_VER="1.88.0"
 
 inherit cargo edo llvm-r2 multiprocessing shell-completion toolchain-funcs
@@ -79,12 +79,14 @@ src_test() {
 	# helper)
 	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
 
-	# The test failures appear ebuild-related
+	# check::ignore::tests::check: https://github.com/pkgcraft/pkgcraft/issues/334
 	edo cargo nextest run $(usev !debug '--release') \
 		--color always \
 		--all-features \
 		--tests \
-		--no-fail-fast
+		--no-fail-fast \
+		-- \
+		--skip 'check::ignore::tests::check'
 }
 
 src_install() {
