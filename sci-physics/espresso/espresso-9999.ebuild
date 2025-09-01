@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ RDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
 	dev-libs/boost:=[mpi]
-	hdf5? ( sci-libs/hdf5:=[mpi] )
+	hdf5? ( <sci-libs/hdf5-1.13:=[mpi] )
 "
 
 DEPEND="${RDEPEND}
