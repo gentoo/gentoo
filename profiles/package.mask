@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-09-01)
+# Effectively unmaintained in Gentoo. Upstream dead for 8 years. Stuck
+# on py3.11, but no testsuite and still has py2-specific source code so
+# the pity port to py3 was likely misguided and never tested!
+# Removal on 2025-10-01.  Bug #956814.
+app-vim/voom
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-31)
 # Qt5-based library without revdeps. Removal on 2025-09-30.
 dev-libs/grantlee
