@@ -1,0 +1,67 @@
+From a89fc7f978cf0f5a49a92d23ccc063dad38b964f Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Mon, 1 Sep 2025 16:06:48 +0200
+Subject: [PATCH] tests: Do not set proxy_temp_path
+
+It is unnecessary for the testing and conflicts with proxy_temp_path
+settings in Test::Nginx.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ t/proxy1.t      | 1 -
+ t/proxy1_vars.t | 1 -
+ t/proxy2.t      | 1 -
+ t/proxy2_vars.t | 1 -
+ 4 files changed, 4 deletions(-)
+
+diff --git a/t/proxy1.t b/t/proxy1.t
+index e5c0054..a9dcc7e 100644
+--- a/t/proxy1.t
++++ b/t/proxy1.t
+@@ -9,7 +9,6 @@ plan tests => repeat_each() * (blocks() * 4 + 3 * 1);
+ 
+ our $http_config = <<'_EOC_';
+     proxy_cache_path  /tmp/ngx_cache_purge_cache keys_zone=test_cache:10m;
+-    proxy_temp_path   /tmp/ngx_cache_purge_temp 1 2;
+ _EOC_
+ 
+ our $config = <<'_EOC_';
+diff --git a/t/proxy1_vars.t b/t/proxy1_vars.t
+index af3553d..7049463 100644
+--- a/t/proxy1_vars.t
++++ b/t/proxy1_vars.t
+@@ -9,7 +9,6 @@ plan tests => repeat_each() * (blocks() * 4 + 3 * 1);
+ 
+ our $http_config = <<'_EOC_';
+     proxy_cache_path  /tmp/ngx_cache_purge_cache keys_zone=test_cache:10m;
+-    proxy_temp_path   /tmp/ngx_cache_purge_temp 1 2;
+ _EOC_
+ 
+ our $config = <<'_EOC_';
+diff --git a/t/proxy2.t b/t/proxy2.t
+index c07b042..24e0744 100644
+--- a/t/proxy2.t
++++ b/t/proxy2.t
+@@ -9,7 +9,6 @@ plan tests => repeat_each() * (blocks() * 4 + 6 * 1);
+ 
+ our $http_config = <<'_EOC_';
+     proxy_cache_path  /tmp/ngx_cache_purge_cache keys_zone=test_cache:10m;
+-    proxy_temp_path   /tmp/ngx_cache_purge_temp 1 2;
+ _EOC_
+ 
+ our $config = <<'_EOC_';
+diff --git a/t/proxy2_vars.t b/t/proxy2_vars.t
+index d09c08e..d505390 100644
+--- a/t/proxy2_vars.t
++++ b/t/proxy2_vars.t
+@@ -9,7 +9,6 @@ plan tests => repeat_each() * (blocks() * 4 + 6 * 1);
+ 
+ our $http_config = <<'_EOC_';
+     proxy_cache_path  /tmp/ngx_cache_purge_cache keys_zone=test_cache:10m;
+-    proxy_temp_path   /tmp/ngx_cache_purge_temp 1 2;
+ _EOC_
+ 
+ our $config = <<'_EOC_';
+-- 
+2.49.1
+
