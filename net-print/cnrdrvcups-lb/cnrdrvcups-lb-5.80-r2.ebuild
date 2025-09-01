@@ -11,11 +11,11 @@ MY_PV="${PV//\./}"
 
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
 HOMEPAGE="https://www.canon-europe.com/support/products/imagerunner/"
-SRC_URI="https://gdlp01.c-wss.com/gds/${DL_ID}/linux-UFRII-drv-v${MY_PV}-uken-${CANON_REL}.tar.gz"
+SRC_URI="https://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNzY1ODM5&cmp=ABX&lang=EN -> linux-UFRII-drv-v${MY_PV}-m17n-${CANON_REL}.tar.gz"
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/atk
@@ -35,11 +35,11 @@ RDEPEND="${DEPEND}
 	!net-print/cndrvcups-lb"
 
 HTML_DOCS=(
-	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-uken/Documents/README-ufr2-${PV//0}xUK.html
-	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-uken/Documents/UsersGuide-ufr2-UK.html
+	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-m17n/Documents/uk_eng/README-ufr2-${PV//0}xUK.html
+	"${WORKDIR}"/linux-UFRII-drv-v${MY_PV}-m17n/Documents/uk_eng/UsersGuide-ufr2-UK.html
 )
 
-S="${WORKDIR}/linux-UFRII-drv-v${MY_PV}-uken/Sources"
+S="${WORKDIR}/linux-UFRII-drv-v${MY_PV}-m17n/Sources"
 
 common_op() {
 	local i
@@ -81,8 +81,8 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	cd "${WORKDIR}/linux-UFRII-drv-v${MY_PV}-uken/Sources/" || die
-	unpack ./${P}-1.tar.gz
+	cd "${WORKDIR}/linux-UFRII-drv-v${MY_PV}-m17n/Sources/" || die
+	unpack ./${P}-1.05.tar.xz
 }
 
 src_prepare() {
@@ -96,6 +96,10 @@ src_prepare() {
 
 	common_op sed -i -e 's/configure.in/configure.ac/' configure.ac || die
 	driver_op sed -i -e 's/configure.in/configure.ac/' configure.ac || die
+
+	# https://bugs.gentoo.org/931847
+	common_op sed -i -e "s|dir = /usr/lib/cups/|dir = /usr/$(get_libdir)/cups/|" Makefile.am || die
+	driver_op sed -i -e "s|dir = /usr/lib/cups/|dir = /usr/$(get_libdir)/cups/|" Makefile.am || die
 
 	# This should work with autoreconf
 	export "LIBS=-lgtk-x11-2.0 -lgobject-2.0 -lglib-2.0 -lgmodule-2.0"
@@ -133,7 +137,7 @@ src_install() {
 	driver_op emake DESTDIR="${D}" install COMMON_SUFFIX=2
 
 	insinto /usr/share/cups
-	doins "${S}"/cnrdrvcups-common-${PV}/Rule/canon-laser-printer_ufr2.usb-quirks
+	doins "${S}"/cnrdrvcups-common-${PV}/Rule/canon-laser-printer.usb-quirks
 
 	if use amd64; then
 		cd "${S}"/lib/libs64/intel/ || die "failed to switch into libs64"
