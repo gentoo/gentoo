@@ -88,6 +88,8 @@ src_prepare() {
 src_configure() {
 	# bug #686620
 	use sparc && tc-is-gcc && append-flags -fno-tree-ccp
+	# bug #922800, LTO failures:
+	use fortran && filter-lto
 
 	econf \
 		--disable-static \
