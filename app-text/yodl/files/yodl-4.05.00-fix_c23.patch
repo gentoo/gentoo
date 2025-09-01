@@ -1,0 +1,16 @@
+add missing includes for bool and va_copy
+https://gitlab.com/fbb-git/yodl/-/merge_requests/5 (commented)
+https://gitlab.com/fbb-git/yodl/-/merge_requests/6
+https://bugs.gentoo.org/929232
+https://bugs.gentoo.org/944159
+--- a/root/root.h
++++ b/root/root.h
+@@ -11,6 +11,8 @@
+ #define _GNU_SOURCE
+ #endif
+ 
++#include <stdarg.h>
++#include <stdbool.h>
+ #include <stddef.h>
+ 
+ #define MAX_LINE_LENGTH (1000)
