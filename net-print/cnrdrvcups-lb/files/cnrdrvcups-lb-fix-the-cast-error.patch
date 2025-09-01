@@ -1,0 +1,19 @@
+From: Pavel Sobolev <contact@paveloom.dev>
+Subject: [PATCH] Fix the cast error
+
+Bug: https://bugs.gentoo.org/944806
+
+Signed-off-by: Pavel Sobolev <contact@paveloom.dev>
+
+--- a/cngplp/cngplpmod/execjob.c
++++ b/cngplp/cngplpmod/execjob.c
+@@ -1149,7 +1149,7 @@ int make_ppd_param(cngplpData *data, char **param_list, int lpr_type)
+ 			ptr_param += num;
+ 			list_num += num;
+ 			if (strlen(ppd_opt->job_result_notice_address) > 0){
+-				num = add_param_int(ptr_param, kPPD_Items_CNJobResultNoticeAddress, ppd_opt->job_result_notice_address);
++				num = add_param_char(ptr_param, kPPD_Items_CNJobResultNoticeAddress, ppd_opt->job_result_notice_address);
+ 				ptr_param += num;
+ 				list_num += num;
+ 			}
+
