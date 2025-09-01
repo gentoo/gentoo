@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Vincent de Phily <moltonel@gmail.com (2025-09-01)
+# Another package requiring Rust
+app-portage/emlop
+
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # Pure Python packages using dev-python/uv-build, and therefore
 # requiring Rust to install, and their dependencies.
