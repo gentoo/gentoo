@@ -43,6 +43,7 @@ src_configure() {
 		-DINSTALL_SYSTEMD_SERVICE=ON
 		# https://github.com/roehling/postsrsd/blob/main/doc/packaging.rst#third-party-dependencies
 		-DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		# We don't want to run tests with sanitizers. They're
 		# unreliable under sandbox and don't run on all platforms
 		-DTESTS_WITH_ASAN=OFF
