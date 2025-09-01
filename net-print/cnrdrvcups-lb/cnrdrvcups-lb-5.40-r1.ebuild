@@ -169,6 +169,9 @@ src_install() {
 	dosym libColorGearCufr2.so.2.0.0 /usr/$(get_libdir)/libColorGearCufr2.so
 	dosym libColorGearCufr2.so.2.0.0 /usr/$(get_libdir)/libColorGearCufr2.so.2
 
+	# https://bugs.gentoo.org/735970
+	dosym libColorGearCufr2.so.2.0.0 /usr/$(get_libdir)/libColorGearC.so.2
+
 	dosym libufr2filterr.so.1.0.0 /usr/$(get_libdir)/libufr2filterr.so
 	dosym libufr2filterr.so.1.0.0 /usr/$(get_libdir)/libufr2filterr.so.1
 
