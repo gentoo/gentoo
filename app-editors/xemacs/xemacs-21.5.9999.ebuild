@@ -185,6 +185,8 @@ src_configure() {
 }
 
 src_compile() {
+	# bug: #959756
+	local -x CCACHE_DISABLE=1
 	emake EMACSLOADPATH="${S}"/lisp
 }
 
