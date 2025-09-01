@@ -76,6 +76,7 @@ PATCHES=(
 	# https://github.com/sphinx-doc/sphinx/pull/13610
 	# test assumptions for docutils 0.22
 	"${FILESDIR}"/${P}-testfix-docutils-0.22.patch
+	"${FILESDIR}"/${P}-metadata-docutils-0.22.patch
 )
 
 distutils_enable_tests pytest

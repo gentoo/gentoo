@@ -1,0 +1,27 @@
+From 5d3bb2e3b7c47e4ecd540c657018f16b961c821b Mon Sep 17 00:00:00 2001
+From: Adam Turner <9087854+AA-Turner@users.noreply.github.com>
+Date: Tue, 29 Jul 2025 19:44:31 +0200
+Subject: [PATCH] Support Docutils 0.22 (#13786)
+
+---
+ CHANGES.rst                      | 4 ++++
+ doc/changes/7.3.rst              | 2 +-
+ pyproject.toml                   | 2 +-
+ sphinx/transforms/__init__.py    | 2 +-
+ sphinx/transforms/references.py  | 2 +-
+ tests/test_markup/test_markup.py | 2 +-
+ 6 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 75ae0f71a9d..d915f293f3b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -76,7 +76,7 @@ dependencies = [
+     "sphinxcontrib-serializinghtml>=1.1.9",
+     "Jinja2>=3.1",
+     "Pygments>=2.17",
+-    "docutils>=0.20,<0.22",
++    "docutils>=0.20,<0.23",
+     "snowballstemmer>=2.2",
+     "babel>=2.13",
+     "alabaster>=0.7.14",
