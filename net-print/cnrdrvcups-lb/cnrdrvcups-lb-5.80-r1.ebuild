@@ -111,6 +111,8 @@ src_prepare() {
 
 	# For some reason, @AR@ is defined everywhere else correctly, but not here.
 	sed -i -e "s/AR = ar/AR = $(tc-getAR)/g" ./cnrdrvcups-common-${PV}/buftool/Makefile.in || die
+
+	eapply -d "${S}/cnrdrvcups-lb-${PV}" -- "${FILESDIR}/${PN}-fix-the-cast-error.patch"
 }
 
 src_configure() {
