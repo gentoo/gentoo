@@ -12,7 +12,7 @@ S="${WORKDIR}/${P}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 IUSE="alsa jack"
 
 RDEPEND="x11-libs/libXext
