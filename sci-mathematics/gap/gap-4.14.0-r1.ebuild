@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gap-system/gap/releases/download/v${PV}/${P}-core.ta
 
 LICENSE="GPL-2+"
 SLOT="0/9voidptr" # soname
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="cpu_flags_x86_popcnt debug memcheck minimal readline test valgrind"
 REQUIRED_USE="?? ( memcheck valgrind )"
 
