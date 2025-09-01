@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Christopher Byrne <salah.coronya@gmail.com> (2025-09-01)
+# net-emulation/libvirt is only keyworded on amd64 at this time
+sys-block/nbdkit -libguestfs
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
 # x86-64 supports sframe
 >=sys-libs/glibc-2.42 -sframe
