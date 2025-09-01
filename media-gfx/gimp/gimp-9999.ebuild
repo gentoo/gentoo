@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=app-arch/xz-utils-5.0.0
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
-	>=dev-libs/appstream-glib-0.7.16:=
+	>=dev-libs/appstream-0.16.1:=
 	>=dev-libs/glib-2.70.0:2
 	dev-libs/gobject-introspection
 	>=dev-libs/json-glib-1.4.4
