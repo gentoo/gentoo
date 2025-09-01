@@ -1,0 +1,22 @@
+Backport from upstream "fix potential double free error"
+https://sourceforge.net/p/anyremote/code/1086/
+--- a/src/dispatcher.c
++++ b/src/dispatcher.c
+@@ -2,7 +2,7 @@
+ // anyRemote
+ // a wi-fi or bluetooth remote for your PC.
+ //
+-// Copyright (C) 2006-2016 Mikhail Fedotov <anyremote@mail.ru>
++// Copyright (C) 2006-2020 Mikhail Fedotov <anyremote@mail.ru>
+ //
+ // This program is free software; you can redistribute it and/or modify
+ // it under the terms of the GNU General Public License as published by
+@@ -216,7 +216,7 @@
+         if (dm->value != NULL) {
+             free(dm->value);
+         }
+-        if (dm->file != NULL) {
++        if (dm->file != NULL && dm->file != dm->scaled) {
+             free(dm->file);
+         }
+         if (dm->scaled != NULL) {
