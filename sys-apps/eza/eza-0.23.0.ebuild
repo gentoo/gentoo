@@ -230,7 +230,7 @@ CRATES="
 	zerovec@0.11.2
 "
 
-MIN_RUST_VER="1.82.0"
+RUST_MIN_VER="1.82.0"
 
 inherit cargo shell-completion
 
