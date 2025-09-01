@@ -88,6 +88,9 @@ src_unpack() {
 src_prepare() {
 	default
 
+	# https://bugs.gentoo.org/774324
+	common_op sed -i -e 's/$(COMMON_SUFFIX)/${COMMON_SUFFIX}/' configure.in || die
+
 	common_op mv configure.in configure.ac || die "failed to move configure.in"
 	driver_op mv configure.in configure.ac || die "failed to move configure.in"
 
