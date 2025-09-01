@@ -172,11 +172,6 @@ dev-lisp/clisp berkdb
 # unavailable on riscv currently
 sys-block/fio rbd
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-03-25)
-# sys-process/criu doesn't support riscv (bug #835975)
-# Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
-app-containers/crun criu
-
 # Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
 # app-emulation/xen-tools doesn't support riscv yet
 app-emulation/qemu xen
