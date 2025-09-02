@@ -1,0 +1,152 @@
+From b8ce32889c45c98b44c4e247ec0b0ae206e9ee91 Mon Sep 17 00:00:00 2001
+From: Neil Booth <kyuupichan@pm.me>
+Date: Wed, 30 Jul 2025 14:41:44 -0400
+Subject: [PATCH] Remove event_loop fixture usage from tests
+
+---
+ tests/test_session.py    | 43 +++++++++-------------------------------
+ tests/test_socks.py      |  6 +++---
+ tests/test_unixsocket.py | 16 +++++----------
+ tests/test_util.py       |  3 ++-
+ 4 files changed, 19 insertions(+), 49 deletions(-)
+
+diff --git a/tests/test_session.py b/tests/test_session.py
+index 8877fca..f52ab6b 100755
+--- a/tests/test_session.py
++++ b/tests/test_session.py
+@@ -17,13 +17,6 @@ from aiorpcx.session import Concurrency
+ from util import RaiseTest
+ 
+ 
+-if sys.version_info >= (3, 7):
+-    from asyncio import all_tasks
+-else:
+-    from asyncio import Task
+-    all_tasks = Task.all_tasks
+-
+-
+ def raises_method_not_found(message):
+     return RaiseTest(JSONRPC.METHOD_NOT_FOUND, message, RPCError)
+ 
+@@ -86,21 +79,12 @@ def caplog_count(caplog, message):
+ 
+ 
+ @pytest.fixture
+-def server_port(unused_tcp_port, event_loop):
+-    coro = serve_rs(MyServerSession, 'localhost', unused_tcp_port, loop=event_loop)
+-    server = event_loop.run_until_complete(coro)
++async def server_port(unused_tcp_port):
++    server = await serve_rs(MyServerSession, 'localhost', unused_tcp_port)
+     yield unused_tcp_port
+-    if hasattr(asyncio, 'all_tasks'):
+-        tasks = asyncio.all_tasks(event_loop)
+-    else:
+-        tasks = asyncio.Task.all_tasks(loop=event_loop)
+ 
+-    async def close_all():
+-        server.close()
+-        await server.wait_closed()
+-        if tasks:
+-            await asyncio.wait(tasks)
+-    event_loop.run_until_complete(close_all())
++    server.close()
++    await server.wait_closed()
+ 
+ 
+ class TestRPCSession:
+@@ -765,21 +749,12 @@ class MessageServer(MessageSession):
+ 
+ 
+ @pytest.fixture
+-def msg_server_port(event_loop, unused_tcp_port):
+-    coro = serve_rs(MessageServer, 'localhost', unused_tcp_port, loop=event_loop)
+-    server = event_loop.run_until_complete(coro)
++async def msg_server_port(unused_tcp_port):
++    server = await serve_rs(MessageServer, 'localhost', unused_tcp_port)
+     yield unused_tcp_port
+-    if hasattr(asyncio, 'all_tasks'):
+-        tasks = asyncio.all_tasks(event_loop)
+-    else:
+-        tasks = asyncio.Task.all_tasks(loop=event_loop)
+-
+-    async def close_all():
+-        server.close()
+-        await server.wait_closed()
+-        if tasks:
+-            await asyncio.wait(tasks)
+-    event_loop.run_until_complete(close_all())
++
++    server.close()
++    await server.wait_closed()
+ 
+ 
+ def connect_message_session(host, port, proxy=None, framer=None):
+diff --git a/tests/test_socks.py b/tests/test_socks.py
+index 43ca282..a8d3af2 100755
+--- a/tests/test_socks.py
++++ b/tests/test_socks.py
+@@ -482,10 +482,10 @@ localhosts = ['127.0.0.1', '::1', 'localhost']
+ 
+ 
+ @pytest.fixture(params=localhosts)
+-def proxy_address(request, event_loop, unused_tcp_port):
++async def proxy_address(request, unused_tcp_port):
+     host = request.param
+-    coro = event_loop.create_server(FakeServer, host=host, port=unused_tcp_port)
+-    server = event_loop.run_until_complete(coro)
++    event_loop = asyncio.get_running_loop()
++    server = await event_loop.create_server(FakeServer, host=host, port=unused_tcp_port)
+     yield NetAddress(host, unused_tcp_port)
+     server.close()
+ 
+diff --git a/tests/test_unixsocket.py b/tests/test_unixsocket.py
+index f75f23d..ae8c27f 100755
+--- a/tests/test_unixsocket.py
++++ b/tests/test_unixsocket.py
+@@ -11,20 +11,14 @@ if sys.platform.startswith("win"):
+ 
+ 
+ @pytest.fixture
+-def us_server(event_loop):
++async def us_server():
++    event_loop = asyncio.get_running_loop()
+     with tempfile.TemporaryDirectory() as tmp_folder:
+         socket_path = path.join(tmp_folder, 'test.socket')
+-        coro = serve_us(MyServerSession, socket_path, loop=event_loop)
+-        server = event_loop.run_until_complete(coro)
++        server = await serve_us(MyServerSession, socket_path)
+         yield socket_path
+-        tasks = asyncio.all_tasks(event_loop)
+-
+-        async def close_all():
+-            server.close()
+-            await server.wait_closed()
+-            if tasks:
+-                await asyncio.wait(tasks)
+-        event_loop.run_until_complete(close_all())
++        server.close()
++        await server.wait_closed()
+ 
+ 
+ class TestUSTransport:
+diff --git a/tests/test_util.py b/tests/test_util.py
+index 8ce9691..5980607 100755
+--- a/tests/test_util.py
++++ b/tests/test_util.py
+@@ -15,6 +15,7 @@ async def coro(x, y):
+ 
+ 
+ def test_is_async_call():
++    event_loop = asyncio.new_event_loop()
+     z = coro(2, 3)
+     assert not is_async_call(z)
+     assert is_async_call(coro)
+@@ -23,7 +24,7 @@ def test_is_async_call():
+     assert not is_async_call(test_is_async_call)
+     assert not is_async_call(partial(is_async_call))
+     # Lose a warning
+-    asyncio.get_event_loop().run_until_complete(z)
++    event_loop.run_until_complete(z)
+ 
+ 
+ @pytest.mark.parametrize("hostname,answer", (

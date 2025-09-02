@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
 
@@ -26,15 +26,24 @@ KEYWORDS="amd64 ~arm arm64 x86"
 
 BDEPEND="
 	test? (
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/uvloop[${PYTHON_USEDEP}]
 		dev-python/websockets[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# require Internet
 	tests/test_socks.py::TestSOCKSProxy::test_create_connection_resolve_good
+)
+
+PATCHES=(
+	# https://github.com/kyuupichan/aiorpcX/commit/b8ce32889c45c98b44c4e247ec0b0ae206e9ee91
+	"${FILESDIR}/${PN}-0.25.0-pytest-asyncio-1.patch"
+	# parts of
+	# https://github.com/kyuupichan/aiorpcX/commit/b973b9b5612a47fe6311b43a4a4a2227b179d9b0
+	# https://github.com/kyuupichan/aiorpcX/commit/b3fe21c9ad6f21967b31422174ab648263d6d4d7
+	"${FILESDIR}/${P}-pytest-asyncio-1-more.patch"
 )
