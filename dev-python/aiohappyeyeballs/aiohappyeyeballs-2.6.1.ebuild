@@ -24,14 +24,16 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc 
 
 BDEPEND="
 	>=dev-python/poetry-core-2.0.0[${PYTHON_USEDEP}]
-	test? (
-		>=dev-python/pytest-asyncio-0.23.2[${PYTHON_USEDEP}]
-	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
+PATCHES=(
+	# https://github.com/aio-libs/aiohappyeyeballs/pull/181
+	"${FILESDIR}/${P}-pytest-asyncio-1.patch"
+)
+
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p asyncio -o addopts=
+	epytest -o addopts=
 }
