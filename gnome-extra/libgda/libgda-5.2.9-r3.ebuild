@@ -9,13 +9,12 @@ inherit db-use gnome2 java-pkg-opt-2 vala virtualx
 DESCRIPTION="GNOME database access library"
 HOMEPAGE="https://www.gnome-db.org/"
 
-# firebird license is not GPL compatible
 LICENSE="GPL-2+ LGPL-2+"
 
 SLOT="5/4" # subslot = libgda-5.0 soname version
 KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 
-IUSE="berkdb canvas debug firebird keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres sourceview ssl vala"
+IUSE="berkdb canvas debug keyring gtk graphviz http +introspection json ldap mdb mysql oci8 postgres sourceview ssl vala"
 REQUIRED_USE="
 	canvas? ( gtk )
 	graphviz? ( gtk )
@@ -31,7 +30,6 @@ RDEPEND="
 	sys-libs/readline:0=
 	sys-libs/ncurses:0=
 	berkdb? ( sys-libs/db:* )
-	firebird? ( dev-db/firebird )
 	keyring? ( app-crypt/libsecret )
 	gtk? (
 		>=x11-libs/gtk+-3.0.0:3
@@ -65,11 +63,6 @@ BDEPEND="
 	virtual/pkgconfig
 	java? ( >=virtual/jdk-1.6 )
 	vala? ( $(vala_depend) )
-"
-
-# firebird support bindist-restricted because it is not GPL compatible
-RESTRICT="
-	firebird? ( bindist )
 "
 
 pkg_setup() {
@@ -146,7 +139,6 @@ src_configure() {
 		$(use_with berkdb bdb-libdir-name "${bdblib}") \
 		$(use_with canvas goocanvas) \
 		$(use_enable debug) \
-		$(use_with firebird firebird /usr) \
 		$(use_with keyring libsecret) \
 		$(use_with graphviz) \
 		$(use_with gtk ui) \

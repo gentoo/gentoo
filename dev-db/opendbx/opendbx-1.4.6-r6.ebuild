@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,20 +12,18 @@ SRC_URI="https://www.linuxnetworks.de/opendbx/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
-IUSE="firebird +man +mysql oracle postgres sqlite test"
+IUSE="+man +mysql oracle postgres sqlite test"
 # The test programs need manual/interactive use.
 RESTRICT="
-	firebird? ( bindist )
 	!test? ( test )
 	test
 "
-REQUIRED_USE="|| ( firebird mysql oracle postgres sqlite )"
+REQUIRED_USE="|| ( mysql oracle postgres sqlite )"
 
 RDEPEND="mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite:3 )
-	oracle? ( dev-db/oracle-instantclient[sdk] )
-	firebird? ( dev-db/firebird )"
+	oracle? ( dev-db/oracle-instantclient[sdk] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	man? (
@@ -53,14 +51,12 @@ src_prepare() {
 src_configure() {
 	local backends=""
 
-	use firebird && backends="${backends} firebird"
 	use mysql && backends="${backends} mysql"
 	use oracle && backends="${backends} oracle"
 	use postgres && backends="${backends} pgsql"
 	use sqlite && backends="${backends} sqlite3"
 
 	use mysql && append-cppflags -I"${ESYSROOT}"/usr/include/mysql
-	use firebird && append-cppflags -I"${ESYSROOT}"/opt/firebird/include
 
 	if use oracle ; then
 		# Traditionally, OCI header files are provided in:
