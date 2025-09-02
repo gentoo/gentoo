@@ -1,0 +1,298 @@
+From 9a14ae7739524f376d94e075c5a8f2f26e79c674 Mon Sep 17 00:00:00 2001
+From: meejah <meejah@meejah.ca>
+Date: Sat, 21 Jun 2025 22:35:41 -0600
+Subject: [PATCH] Plain twisted utilities are sufficient (#1661)
+
+* Plain twisted utilities are sufficient
+
+* CI fixups
+---
+ autobahn/asyncio/test/test_aio_rawsocket.py   | 18 +++++------
+ autobahn/asyncio/test/test_aio_websocket.py   | 10 +++---
+ .../twisted/test/test_tx_websocket_agent.py   |  5 +--
+ autobahn/twisted/testing/__init__.py          | 31 +++----------------
+ autobahn/wamp/test/test_wamp_component_aio.py | 29 ++++++++---------
+ 5 files changed, 36 insertions(+), 57 deletions(-)
+
+diff --git a/autobahn/asyncio/test/test_aio_rawsocket.py b/autobahn/asyncio/test/test_aio_rawsocket.py
+index 726a6242..42c00c30 100644
+--- a/autobahn/asyncio/test/test_aio_rawsocket.py
++++ b/autobahn/asyncio/test/test_aio_rawsocket.py
+@@ -11,7 +11,7 @@ from autobahn.wamp.types import TransportDetails
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_sers(event_loop):
++def test_sers():
+     serializers = get_serializers()
+     assert len(serializers) > 0
+     m = serializers[0]().serialize(message.Abort('close'))
+@@ -19,7 +19,7 @@ def test_sers(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_prefix(event_loop):
++def test_prefix():
+     p = PrefixProtocol()
+     transport = Mock()
+     receiver = Mock()
+@@ -62,7 +62,7 @@ def test_prefix(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_is_closed(event_loop):
++def test_is_closed():
+     class CP(RawSocketClientProtocol):
+         @property
+         def serializer_id(self):
+@@ -83,7 +83,7 @@ def test_is_closed(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_raw_socket_server1(event_loop):
++def test_raw_socket_server1():
+ 
+     server = RawSocketServerProtocol()
+     ser = Mock(return_value=True)
+@@ -108,7 +108,7 @@ def test_raw_socket_server1(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_raw_socket_server_errors(event_loop):
++def test_raw_socket_server_errors():
+ 
+     server = RawSocketServerProtocol()
+     ser = Mock(return_value=True)
+@@ -139,7 +139,7 @@ def test_raw_socket_server_errors(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_raw_socket_client1(event_loop):
++def test_raw_socket_client1():
+     class CP(RawSocketClientProtocol):
+         @property
+         def serializer_id(self):
+@@ -162,7 +162,7 @@ def test_raw_socket_client1(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_raw_socket_client_error(event_loop):
++def test_raw_socket_client_error():
+     class CP(RawSocketClientProtocol):
+         @property
+         def serializer_id(self):
+@@ -181,7 +181,7 @@ def test_raw_socket_client_error(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_wamp_server(event_loop):
++def test_wamp_server():
+     transport = Mock(spec_set=('abort', 'close', 'write', 'get_extra_info'))
+     transport.write = Mock(side_effect=lambda m: messages.append(m))
+     server = Mock(spec=['onOpen', 'onMessage'])
+@@ -209,7 +209,7 @@ def test_wamp_server(event_loop):
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_wamp_client(event_loop):
++def test_wamp_client():
+     transport = Mock(spec_set=('abort', 'close', 'write', 'get_extra_info'))
+     transport.write = Mock(side_effect=lambda m: messages.append(m))
+     client = Mock(spec=['onOpen', 'onMessage'])
+diff --git a/autobahn/asyncio/test/test_aio_websocket.py b/autobahn/asyncio/test/test_aio_websocket.py
+index f80cc249..c2299991 100644
+--- a/autobahn/asyncio/test/test_aio_websocket.py
++++ b/autobahn/asyncio/test/test_aio_websocket.py
+@@ -23,16 +23,15 @@ async def test_echo_async():
+ 
+ # @pytest.mark.asyncio(forbid_global_loop=True)
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-def test_websocket_custom_loop(event_loop):
+-    factory = WebSocketServerFactory(loop=event_loop)
++def test_websocket_custom_loop():
++    factory = WebSocketServerFactory(loop=asyncio.new_event_loop())
+     server = factory()
+     transport = Mock()
+     server.connection_made(transport)
+ 
+ 
+ @pytest.mark.skipif(not os.environ.get('USE_ASYNCIO', False), reason='test runs on asyncio only')
+-@pytest.mark.asyncio
+-async def test_async_on_connect_server(event_loop):
++def test_async_on_connect_server():
+ 
+     num = 42
+     done = txaio.create_future()
+@@ -65,7 +64,8 @@ async def test_async_on_connect_server(event_loop):
+         b'\r\n',  # last string doesn't get a \r\n from join()
+     ])
+     server.processHandshake()
+-    await done
++
++    asyncio.get_event_loop().run_until_complete(done)
+ 
+     assert len(values) == 1
+     assert values[0] == num * num
+diff --git a/autobahn/twisted/test/test_tx_websocket_agent.py b/autobahn/twisted/test/test_tx_websocket_agent.py
+index c926cbef..d65c3ca8 100644
+--- a/autobahn/twisted/test/test_tx_websocket_agent.py
++++ b/autobahn/twisted/test/test_tx_websocket_agent.py
+@@ -1,12 +1,13 @@
+ from twisted.trial import unittest
+ 
+ try:
+-    from autobahn.twisted.testing import create_memory_agent, MemoryReactorClockResolver, create_pumper
++    from autobahn.twisted.testing import create_memory_agent, create_pumper
+     HAVE_TESTING = True
+ except ImportError:
+     HAVE_TESTING = False
+ 
+ from twisted.internet.defer import inlineCallbacks
++from twisted.internet.testing import MemoryReactorClock
+ from autobahn.twisted.websocket import WebSocketServerProtocol
+ 
+ 
+@@ -16,7 +17,7 @@ class TestAgent(unittest.TestCase):
+ 
+     def setUp(self):
+         self.pumper = create_pumper()
+-        self.reactor = MemoryReactorClockResolver()
++        self.reactor = MemoryReactorClock()
+         return self.pumper.start()
+ 
+     def tearDown(self):
+diff --git a/autobahn/twisted/testing/__init__.py b/autobahn/twisted/testing/__init__.py
+index 53d5f2d4..e014d350 100644
+--- a/autobahn/twisted/testing/__init__.py
++++ b/autobahn/twisted/testing/__init__.py
+@@ -37,7 +37,7 @@ except ImportError:
+ from twisted.internet.defer import Deferred
+ from twisted.internet.address import IPv4Address
+ from twisted.internet._resolver import HostResolution  # "internal" class, but it's simple
+-from twisted.internet.interfaces import ISSLTransport, IReactorPluggableNameResolver
++from twisted.internet.interfaces import ISSLTransport
+ try:
+     from twisted.internet.testing import MemoryReactorClock
+ except ImportError:
+@@ -73,32 +73,9 @@ class _StaticTestResolver(object):
+         receiver.resolutionComplete()
+ 
+ 
+-@implementer(IReactorPluggableNameResolver)
+-class _TestNameResolver(object):
+-    """
+-    A test version of IReactorPluggableNameResolver
+-    """
+-
+-    _resolver = None
+-
+-    @property
+-    def nameResolver(self):
+-        if self._resolver is None:
+-            self._resolver = _StaticTestResolver()
+-        return self._resolver
+-
+-    def installNameResolver(self, resolver):
+-        old = self._resolver
+-        self._resolver = resolver
+-        return old
+-
+-
+-class MemoryReactorClockResolver(MemoryReactorClock, _TestNameResolver):
+-    """
+-    Combine MemoryReactor, Clock and an IReactorPluggableNameResolver
+-    together.
+-    """
+-    pass
++# in previous revisions, we exported MemoryReactorClockResolver so
++# this maintains compatibility with any downstream code
++MemoryReactorClockResolver = MemoryReactorClock
+ 
+ 
+ class _TwistedWebMemoryAgent(IWebSocketClientAgent):
+diff --git a/autobahn/wamp/test/test_wamp_component_aio.py b/autobahn/wamp/test/test_wamp_component_aio.py
+index 2de9bf35..971f8ddd 100644
+--- a/autobahn/wamp/test/test_wamp_component_aio.py
++++ b/autobahn/wamp/test/test_wamp_component_aio.py
+@@ -29,15 +29,15 @@ import sys
+ import unittest.mock as mock
+ import pytest
+ import txaio
++import asyncio
+ 
+ if os.environ.get('USE_ASYNCIO', False):
+     from autobahn.asyncio.component import Component
+ 
+     @pytest.mark.skipif(sys.version_info < (3, 5), reason="requires Python 3.5+")
+-    @pytest.mark.asyncio(forbid_global_loop=True)
+-    async def test_asyncio_component(event_loop):
++    def test_asyncio_component():
+         orig_loop = txaio.config.loop
+-        txaio.config.loop = event_loop
++        txaio.config.loop = asyncio.get_event_loop()
+ 
+         comp = Component(
+             transports=[
+@@ -52,8 +52,8 @@ if os.environ.get('USE_ASYNCIO', False):
+         # if having trouble, try starting some logging (and use
+         # "py.test -s" to get real-time output)
+         # txaio.start_logging(level="debug")
+-        f = comp.start(loop=event_loop)
+-        txaio.config.loop = event_loop
++        f = comp.start(loop=asyncio.get_event_loop())
++        txaio.config.loop = asyncio.get_event_loop()
+         finished = txaio.create_future()
+ 
+         def fail():
+@@ -72,18 +72,18 @@ if os.environ.get('USE_ASYNCIO', False):
+             txaio.config.loop = orig_loop
+             assert comp._done_f is None
+         f.add_done_callback(done)
+-        await finished
++
++        asyncio.get_event_loop().run_until_complete(finished)
+ 
+     @pytest.mark.skipif(sys.version_info < (3, 5), reason="requires Python 3.5+")
+-    @pytest.mark.asyncio(forbid_global_loop=True)
+-    async def test_asyncio_component_404(event_loop):
++    def test_asyncio_component_404():
+         """
+         If something connects but then gets aborted, it should still try
+         to re-connect (in real cases this could be e.g. wrong path,
+         TLS failure, WebSocket handshake failure, etc)
+         """
+         orig_loop = txaio.config.loop
+-        txaio.config.loop = event_loop
++        txaio.config.loop = asyncio.get_event_loop()
+ 
+         class FakeTransport(object):
+             def close(self):
+@@ -104,8 +104,8 @@ if os.environ.get('USE_ASYNCIO', False):
+             else:
+                 return txaio.create_future_error(RuntimeError("second connection fails completely"))
+ 
+-        with mock.patch.object(event_loop, 'create_connection', create_connection):
+-            event_loop.create_connection = create_connection
++        with mock.patch.object(txaio.config.loop, 'create_connection', create_connection):
++            txaio.config.loop.create_connection = create_connection
+ 
+             comp = Component(
+                 transports=[
+@@ -120,8 +120,8 @@ if os.environ.get('USE_ASYNCIO', False):
+             # if having trouble, try starting some logging (and use
+             # "py.test -s" to get real-time output)
+             # txaio.start_logging(level="debug")
+-            f = comp.start(loop=event_loop)
+-            txaio.config.loop = event_loop
++            f = comp.start(loop=asyncio.get_event_loop())
++            txaio.config.loop = asyncio.get_event_loop()
+ 
+             # now that we've started connecting, we *should* be able
+             # to connetion_lost our transport .. but we do a
+@@ -151,4 +151,5 @@ if os.environ.get('USE_ASYNCIO', False):
+                 finished.set_result(None)
+                 txaio.config.loop = orig_loop
+             f.add_done_callback(done)
+-            await finished
++
++            asyncio.get_event_loop().run_until_complete(finished)
