@@ -94,7 +94,7 @@ dev-cpp/opentelemetry-cpp prometheus
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
-llvm-core/clang-runtime -offload
+llvm-runtimes/clang-runtime -offload
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-12-20)
 # qtremoteobjects and qthttpserver not yet keyworded here

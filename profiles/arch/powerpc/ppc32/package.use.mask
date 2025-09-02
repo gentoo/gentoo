@@ -70,7 +70,7 @@ media-gfx/graphicsmagick jpeg2k
 
 # Sam James <sam@gentoo.org> (2024-03-23)
 # llvm-runtimes/openmp does not support ppc32 (bug #907213).
-llvm-core/clang-runtime openmp
+llvm-runtimes/clang-runtime openmp
 
 # Matt Jolly <kangie@gentoo.org> (2024-03-02)
 # Fails tests, potential false negatives #911402
@@ -203,7 +203,7 @@ dev-python/diskcache test
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
-llvm-core/clang-runtime compiler-rt default-compiler-rt sanitize
+llvm-runtimes/clang-runtime compiler-rt default-compiler-rt sanitize
 llvm-core/clang-common default-compiler-rt
 llvm-runtimes/clang-rtlib-config default-compiler-rt
 

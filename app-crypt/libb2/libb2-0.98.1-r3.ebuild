@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="static-libs native-cflags openmp"
 
 DEPEND="
 	openmp? (
-		|| ( >=sys-devel/gcc-4.2:*[openmp] llvm-core/clang-runtime:*[openmp] )
+		|| ( >=sys-devel/gcc-4.2:*[openmp] llvm-runtimes/clang-runtime:*[openmp] )
 	)
 "
 RDEPEND="${DEPEND}"

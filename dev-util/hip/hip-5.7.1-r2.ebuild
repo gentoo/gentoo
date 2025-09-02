@@ -39,7 +39,7 @@ BDEPEND="test? ( =dev-util/hipcc-5* )"
 RDEPEND="${DEPEND}
 	=dev-util/hipcc-5*
 	dev-perl/URI-Encode
-	llvm-core/clang-runtime:=
+	llvm-runtimes/clang-runtime:=
 	>=dev-libs/roct-thunk-interface-5"
 
 PATCHES=(

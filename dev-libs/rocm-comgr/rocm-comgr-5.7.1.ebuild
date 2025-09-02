@@ -42,7 +42,7 @@ RDEPEND="
 	>=dev-libs/rocm-device-libs-${PV}
 	<dev-libs/rocm-device-libs-6
 	llvm-core/clang:${LLVM_MAX_SLOT}=
-	llvm-core/clang-runtime:=
+	llvm-runtimes/clang-runtime:=
 	llvm-core/lld:${LLVM_MAX_SLOT}="
 DEPEND="${RDEPEND}"
 

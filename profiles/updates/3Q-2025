@@ -1,2 +1,3 @@
 move dev-python/pixelmatch-py dev-python/pixelmatch
 move app-text/qtikz app-text/ktikz
+move llvm-core/clang-runtime llvm-runtimes/clang-runtime

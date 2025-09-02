@@ -28,6 +28,6 @@ llvm-core/clang-linker-config
 llvm-runtimes/clang-rtlib-config
 llvm-runtimes/clang-unwindlib-config
 llvm-runtimes/clang-stdlib-config
-llvm-core/clang-runtime
+llvm-runtimes/clang-runtime
 llvm-core/libclc
 llvm-runtimes/libatomic-stub

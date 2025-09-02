@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ PATCHES=(
 )
 
 RDEPEND=">=dev-libs/rocm-device-libs-${PV}
-	llvm-core/clang-runtime:=
+	llvm-runtimes/clang-runtime:=
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}=
 		llvm-core/lld:${LLVM_SLOT}=
