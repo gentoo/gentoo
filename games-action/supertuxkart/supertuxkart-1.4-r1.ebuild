@@ -12,7 +12,7 @@ SRC_URI="
 	https://github.com/${PN}/stk-code/releases/download/${PV}/${MY_P}.tar.xz
 	mirror://gentoo/${PN}.png
 "
-
+S="${WORKDIR}/${MY_P}"
 LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
@@ -50,8 +50,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-S="${WORKDIR}/${MY_P}"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1-irrlicht-arch-support.patch
 	"${FILESDIR}"/${PN}-1.3-irrlicht-system-libs.patch
@@ -60,6 +58,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-0001-Require-Cmake-3.6-or-higher.patch
 	"${FILESDIR}"/${P}-0002-Fixed-cmake-4.0-warnings.patch
 )
+
+src_prepare() {
+	# Delete unused code with CMake issues.
+	rm -r lib/wiiuse/cmake/{cmake-2.8.0-modules/,DashboardScript.cmake.in,FindOpenHaptics.cmake} \
+		lib/shaderc/ switch/ || die
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	# -Werror=strict-aliasing
