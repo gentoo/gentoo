@@ -141,7 +141,7 @@ python_test() {
 }
 
 python_install_all() {
-	cargo_src_install
+	dobin "$(cargo_target_dir)"/maturin
 
 	dodoc Changelog.md README.md
 	use doc && dodoc -r guide/html
