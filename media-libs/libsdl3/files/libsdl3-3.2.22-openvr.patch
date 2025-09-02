@@ -1,0 +1,16 @@
+Not looked into what led to this "Fixed build" commit[1] (maybe compatibility
+with another compiler due to that scoped declaration higher up), but it instead
+breaks it for us with both gcc and clang. Quick revert for now.
+
+SDL_openvrvideo.c:1543:5: error: 'hint' undeclared (first use in this function)
+
+[1] https://github.com/libsdl-org/SDL/commit/08c82a37814386be38bec7524ec57ff0e548be0b
+--- a/src/video/openvr/SDL_openvrvideo.c
++++ b/src/video/openvr/SDL_openvrvideo.c
+@@ -1541,5 +1541,5 @@
+     }
+ 
+-    hint = SDL_GetHint("SDL_OPENVR_INPUT_PROFILE");
++    const char *hint = SDL_GetHint("SDL_OPENVR_INPUT_PROFILE");
+     char *loadpath = 0;
+     EVRInputError err;
