@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	PGIS="$(ver_cut 1-2)"
 	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
@@ -86,7 +86,7 @@ src_configure() {
 	local myeconfargs=(
 		$(use_with address-standardizer)
 		$(use_with gtk gui)
-		"--with-topology"
+		$(use_with topology)
 	)
 	postgres-multi_foreach econf "${myeconfargs[@]}"
 }
@@ -103,7 +103,6 @@ src_compile() {
 
 src_install() {
 	postgres-multi_foreach emake DESTDIR="${D}" install
-	postgres-multi_foreach emake -C topology DESTDIR="${D}" install
 	postgres-multi_forbest dobin ./utils/postgis_restore.pl
 
 	dodoc CREDITS TODO loader/README.* doc/*txt
