@@ -47,10 +47,10 @@ RDEPEND="${CDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.3-java.patch # there are todo items in the patch
 	"${FILESDIR}"/${PN}-2.0.4-gcc6.patch
 	"${FILESDIR}"/${PN}-2.3.0-rivet.patch # properly support rivet/yoda weights in thepeg, reported to upstream by mail.
 	"${FILESDIR}"/${PN}-2.3.0-functional.patch # https://bugs.gentoo.org/941477
+	"${FILESDIR}"/${PN}-2.2.3-java.patch
 )
 
 src_prepare() {
@@ -62,6 +62,10 @@ src_prepare() {
 		-e '/dist_pkgdata_DATA = ThePEG.el/d' \
 		lib/Makefile.am || die
 	default
+	if use java; then
+		sed -i "s/JAVA_PKG_GET_SOURCE/$(java-pkg_get-source)/g" configure.ac java/Makefile.am || die
+		sed -i "s/JAVA_PKG_GET_TARGET/$(java-pkg_get-target)/g" configure.ac java/Makefile.am || die
+	fi
 	java-pkg-opt-2_src_prepare
 	eautoreconf
 }
