@@ -43,8 +43,8 @@ RDEPEND="${CDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.3-java.patch # there are todo items in the patch
 	"${FILESDIR}"/${PN}-2.0.4-gcc6.patch
+	"${FILESDIR}"/${PN}-2.2.3-java.patch
 )
 
 src_prepare() {
@@ -56,11 +56,16 @@ src_prepare() {
 		-e '/dist_pkgdata_DATA = ThePEG.el/d' \
 		lib/Makefile.am || die
 	default
+	if use java; then
+		sed -i "s/JAVA_PKG_GET_SOURCE/$(java-pkg_get-source)/g" configure.ac java/Makefile.am || die
+		sed -i "s/JAVA_PKG_GET_TARGET/$(java-pkg_get-target)/g" configure.ac java/Makefile.am || die
+	fi
 	java-pkg-opt-2_src_prepare
 	eautoreconf
 }
 
 src_configure() {
+	local -x CONFIG_SHELL=/bin/bash
 	if use java; then
 		local -x JAVAC="$(java-pkg_get-javac)"
 		local -x JAVA="$(java-config -J)"
@@ -94,7 +99,7 @@ src_install() {
 	use emacs && elisp-install ${PN} lib/ThePEG.el{,c}
 	use java && java-pkg_newjar java/ThePEG.jar
 
-	cat <<-EOF > "${T}"/50${PN}
+	cat <<-EOF > "${T}"/50${PN} || die
 	LDPATH="${EPREFIX}/usr/$(get_libdir)/ThePEG"
 	EOF
 	doenvd "${T}"/50${PN}
