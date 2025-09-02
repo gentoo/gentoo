@@ -27,7 +27,7 @@ RDEPEND="
 	dev-cpp/libmcpp
 	dev-libs/angelscript:=
 	media-libs/freetype:2
-	media-libs/harfbuzz:=
+	media-libs/harfbuzz:=[truetype]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsdl2[opengl,video]
