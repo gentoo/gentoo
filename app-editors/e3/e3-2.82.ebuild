@@ -1,14 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit toolchain-funcs
 
-MY_P="${PN}-$(ver_rs 2 '')"
 DESCRIPTION="Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings"
 HOMEPAGE="https://sites.google.com/site/e3editor/"
-SRC_URI="https://sites.google.com/site/e3editor/Home/${MY_P}.tgz"
+SRC_URI="https://sites.google.com/site/e3editor/Home/${P}.tgz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -16,7 +15,6 @@ KEYWORDS="-* amd64 x86"
 
 BDEPEND=">=dev-lang/nasm-2.09.04"
 
-S="${WORKDIR}/${MY_P}"
 PATCHES=("${FILESDIR}"/${P}-makefile.patch)
 
 # Suppress false positive QA warnings #726484 #924244
