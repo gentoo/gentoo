@@ -9,7 +9,7 @@ SRC_URI="https://github.com/mdbtools/mdbtools/releases/download/v${PV}/${P}.tar.
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/3"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="glib iconv odbc"
 
 BDEPEND="

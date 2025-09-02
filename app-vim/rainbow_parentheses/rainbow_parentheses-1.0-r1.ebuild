@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.zip"
 S="${WORKDIR}/${PN}.vim-master"
 
 LICENSE="vim"
-KEYWORDS="~alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 
 DEPEND="app-arch/unzip"
 RDEPEND="${DEPEND}"

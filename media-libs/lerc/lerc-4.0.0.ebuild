@@ -11,4 +11,4 @@ SRC_URI="https://github.com/Esri/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.t
 
 LICENSE="Apache-2.0"
 SLOT="0/4"
-KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"

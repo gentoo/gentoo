@@ -13,7 +13,7 @@ SLOT="3.0"
 
 IUSE="+brotli gssapi gtk-doc +introspection samba ssl sysprof test +vala"
 REQUIRED_USE="vala? ( introspection )"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 RESTRICT="!test? ( test )"
 
 DEPEND="

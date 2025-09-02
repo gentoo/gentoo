@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="BSD LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc64 ~sparc x86"
 
 # If you want to be picky, we should require that PHP be built with at
 # least one database driver enabled; otherwise adodb isn't going to be

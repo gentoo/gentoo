@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Produce common sub-string indices for two strings"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
 
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-swig.patch.xz"
 

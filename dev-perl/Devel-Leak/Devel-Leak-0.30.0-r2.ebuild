@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Utility for looking for perl objects that are not reclaimed"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~mips ppc ppc64 ~sparc x86"
 
 src_compile() {
 	mymake=(

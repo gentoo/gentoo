@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ DESCRIPTION="LaTeX package used to create Calendars.  Very flexible and robust"
 HOMEPAGE="https://www.ctan.org/tex-archive/macros/latex/contrib/calendar/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 LICENSE="LaTeX-Calendar"
 SLOT="0"

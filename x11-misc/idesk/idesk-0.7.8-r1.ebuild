@@ -11,7 +11,7 @@ SRC_URI="https://github.com/neagix/idesk/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="svg"
 
 RDEPEND="

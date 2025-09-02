@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ S="${WORKDIR}"/${MY_PN}-${SDL_SOUND_COMMIT}
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 sparc x86 ~x64-macos"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~sparc x86 ~x64-macos"
 IUSE="flac mikmod modplug mp3 speex static-libs vorbis"
 
 RDEPEND="

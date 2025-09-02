@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0/5"
-KEYWORDS="amd64 ~loong ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~loong ~ppc ppc64 ~sparc x86"
 IUSE="blas doc double-precision examples ffmpeg fftw jack libsamplerate sndfile python test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

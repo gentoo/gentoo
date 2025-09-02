@@ -11,7 +11,7 @@ SRC_URI="http://gael.roualland.free.fr/ifstat/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="snmp"
 
 DEPEND="snmp? ( >=net-analyzer/net-snmp-5.0 )"

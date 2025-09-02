@@ -12,7 +12,7 @@ HOMEPAGE="https://boltons.readthedocs.io/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

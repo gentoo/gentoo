@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="http://gkrellmlaunch.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
 
 RDEPEND="app-admin/gkrellm:2[X]"
 DEPEND="${RDEPEND}"

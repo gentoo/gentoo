@@ -11,7 +11,7 @@ SRC_URI="http://fwlogwatch.inside-security.de/sw/${P}.tar.bz2"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="geoip nls zlib"
 
 RDEPEND="

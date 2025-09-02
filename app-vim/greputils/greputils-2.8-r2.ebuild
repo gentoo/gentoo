@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: interface with grep, find and id-utils"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=1062"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~mips ppc ~sparc x86"
 
 VIM_PLUGIN_HELPURI="${HOMEPAGE}"
 

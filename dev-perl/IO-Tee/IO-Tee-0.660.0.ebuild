@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Multiplex output to multiple output handles"
 
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	virtual/perl-Carp

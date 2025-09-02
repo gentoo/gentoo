@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ DESCRIPTION="Interface to Bzip2 compression library"
 # https://bugs.gentoo.org/718946#c7
 LICENSE="|| ( Artistic GPL-1+ ) BZIP2"
 SLOT="0"
-KEYWORDS="amd64 ~mips sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="amd64 ~mips ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 RDEPEND="
 	app-arch/bzip2

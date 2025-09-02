@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/nagios/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~ppc ppc64 ~sparc x86"
 IUSE="tcpd +crypt minimal"
 
 DEPEND="crypt? ( >=dev-libs/libmcrypt-2.5.1-r4 )

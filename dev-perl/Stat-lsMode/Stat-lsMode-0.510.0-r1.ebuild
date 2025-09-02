@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl Stat-lsMode Module"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ppc64 ~sparc x86"
 
 BDEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.57
