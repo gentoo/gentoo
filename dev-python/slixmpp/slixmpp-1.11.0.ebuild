@@ -3,6 +3,10 @@
 
 EAPI=8
 
+DISTUTILS_EXT=1
+DISTUTILS_USE_PEP517=maturin
+PYTHON_COMPAT=( python3_{11..13} )
+
 CRATES="
 	autocfg@1.5.0
 	cfg-if@1.0.3
@@ -59,10 +63,6 @@ CRATES="
 	zerovec-derive@0.11.1
 	zerovec@0.11.4
 "
-
-DISTUTILS_EXT=1
-DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cargo distutils-r1 pypi
 
