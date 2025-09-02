@@ -15,7 +15,7 @@ S=${WORKDIR}/tools-gopls-v${PV}/${PN}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 BDEPEND=">=dev-lang/go-1.24.2"
 # TODO: fix test failure with deps tarball
