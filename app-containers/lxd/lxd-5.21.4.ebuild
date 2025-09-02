@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 go-module linux-info optfeature systemd verify-sig
+inherit go-module linux-info optfeature systemd verify-sig
 
 DESCRIPTION="Modern, secure and powerful system container and virtual machine manager"
 HOMEPAGE="https://ubuntu.com/lxd https://github.com/canonical/lxd"
