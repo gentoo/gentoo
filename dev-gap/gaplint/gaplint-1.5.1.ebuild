@@ -22,6 +22,18 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv"
 
-RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/rich[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	default
+	# The gaplint argument parser has workarounds for "pytest" and
+	# "py.test", but we run pytest with "python -m pytest":
+	#
+	#   https://github.com/james-d-mitchell/gaplint/issues/57
+	#
+	sed -e 's/py.test/__main__.py/' -i gaplint.py \
+		|| die "failed to further hack the existing pytest hack"
+}
