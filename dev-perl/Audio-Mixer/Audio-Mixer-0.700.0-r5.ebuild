@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ DESCRIPTION="Perl extension for Sound Mixer control"
 # https://rt.cpan.org/Ticket/Display.html?id=132448
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 PATCHES=(
 	"${FILESDIR}/${P}-volumepl.patch"

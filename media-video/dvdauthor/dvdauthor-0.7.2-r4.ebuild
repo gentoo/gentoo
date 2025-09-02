@@ -12,7 +12,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 IUSE="graphicsmagick +imagemagick"
 
 RDEPEND=">=dev-libs/fribidi-0.19.2

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SRC_URI="http://www.vanhemert.co.uk/files/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 
 RDEPEND=">=dev-perl/URI-1.10
 	>=dev-perl/HTML-Parser-3.15

@@ -18,7 +18,7 @@ S="${WORKDIR}"/${PN}-${FAM_PV}
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="static-libs"
 
 DEPEND="

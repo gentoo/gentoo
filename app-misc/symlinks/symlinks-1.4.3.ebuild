@@ -11,7 +11,7 @@ SRC_URI="https://github.com/brandt/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}
 
 LICENSE="symlinks"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~sparc x86"
 IUSE="static"
 
 DOCS=( Readme.md )

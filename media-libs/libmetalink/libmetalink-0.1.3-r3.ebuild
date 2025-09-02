@@ -9,7 +9,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${P}/+download/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="expat static-libs test xml"
 
 RDEPEND="expat? ( >=dev-libs/expat-2.1.0-r3 )

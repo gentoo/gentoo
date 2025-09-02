@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/w/wordnet/dict-wn_${PV/_p/-}_all.deb"
 S="${WORKDIR}"
 LICENSE="Princeton"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 ppc ppc64 ~riscv ~sparc x86"
 
 RDEPEND=">=app-text/dictd-1.5.5"
 

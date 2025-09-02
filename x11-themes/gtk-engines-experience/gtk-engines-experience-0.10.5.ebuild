@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="http://benjamin.sipsolutions.net/experience/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="amd64 ~ppc sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"

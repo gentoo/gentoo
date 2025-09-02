@@ -11,7 +11,7 @@ SRC_URI="https://www.ibiblio.org/pub/Linux/apps/sound/mixers/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 RDEPEND="sys-libs/ncurses:="
 DEPEND="${RDEPEND}"

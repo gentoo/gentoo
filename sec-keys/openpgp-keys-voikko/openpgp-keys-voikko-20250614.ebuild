@@ -9,7 +9,7 @@ SRC_URI="https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xac5d65f10c8596d
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 S="${WORKDIR}"
 

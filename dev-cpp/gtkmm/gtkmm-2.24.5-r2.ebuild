@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.4"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~loong ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 

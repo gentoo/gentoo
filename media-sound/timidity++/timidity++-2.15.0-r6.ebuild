@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="alsa ao emacs flac gtk jack motif nas ncurses ogg oss selinux slang speex tk vorbis X Xaw3d"
 
 REQUIRED_USE="tk? ( X )"

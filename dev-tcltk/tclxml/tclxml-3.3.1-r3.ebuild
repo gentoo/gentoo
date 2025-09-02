@@ -16,7 +16,7 @@ S="${WORKDIR}"/${MYP}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 IUSE="debug threads"
 
 DEPEND="

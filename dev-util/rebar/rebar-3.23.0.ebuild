@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 LICENSE="Apache-2.0 MIT BSD"
 SLOT="3"
-KEYWORDS="amd64 ~arm ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~sparc x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"

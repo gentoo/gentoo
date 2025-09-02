@@ -12,7 +12,7 @@ S="${WORKDIR}"/abs
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ~riscv sparc x86"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ppc ~riscv ~sparc x86"
 IUSE="pdf"
 
 src_unpack() {

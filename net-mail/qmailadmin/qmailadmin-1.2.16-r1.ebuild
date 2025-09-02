@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="amd64 arm ~hppa ~s390 sparc x86"
+KEYWORDS="amd64 arm ~hppa ~s390 ~sparc x86"
 IUSE="maildrop"
 # the RESTRICT is because the vpopmail lib directory is locked down
 # and non-root can't access them.

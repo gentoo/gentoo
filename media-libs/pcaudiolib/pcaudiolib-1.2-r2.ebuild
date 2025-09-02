@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/espeak-ng/pcaudiolib/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3+ ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="+alsa oss pulseaudio"
 
 REQUIRED_USE="|| ( alsa oss pulseaudio )"

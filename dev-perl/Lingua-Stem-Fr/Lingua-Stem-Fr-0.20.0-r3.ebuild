@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="French Stemming"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"

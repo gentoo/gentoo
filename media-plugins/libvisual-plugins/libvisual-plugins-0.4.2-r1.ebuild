@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/Libvisual/libvisual/releases/download/${P}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0.4"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="alsa debug gstreamer gtk jack mplayer opengl portaudio pulseaudio"
 
 RDEPEND=">=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}]
