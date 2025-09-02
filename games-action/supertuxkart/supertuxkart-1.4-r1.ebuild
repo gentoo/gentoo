@@ -101,4 +101,9 @@ src_install() {
 	dodoc CHANGELOG.md
 
 	doicon -s 64 "${DISTDIR}"/${PN}.png
+
+	if use wiimote; then
+		# This gets erroneously installed.
+		rm "${ED}"/usr/$(get_libdir)/libwiiuse.a || die
+	fi
 }
