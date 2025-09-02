@@ -123,9 +123,8 @@ x11-base/xwayland libei
 media-libs/libv4l bpf
 
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# media-libs/shaderc is not keyworded here, then libplacebo's USE=vulkan
-# has a REQUIRED_USE on shaderc and ffmpeg wants libplacebo[vulkan]
-media-libs/libplacebo shaderc vulkan
+# media-libs/shaderc and media-libs/libplacebo are not keyworded here
+# (ffmpeg further needs libplacebo[vulkan] which is use.masked here)
 media-video/ffmpeg libplacebo shaderc
 media-video/ffmpeg-compat libplacebo shaderc
 
