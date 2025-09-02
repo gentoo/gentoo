@@ -54,10 +54,6 @@ dev-python/qtpy remoteobjects
 # Upstream dropbox no longer producing x86 releases
 kde-apps/kdenetwork-meta dropbox
 
-# Alexander Puck Neuwirth <apn-pucky@gentoo.org> (2024-10-20)
-# sci-physics/rivet is unavailable on x86
-sci-physics/pythia rivet
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-10-17)
 # depends on java packages, not keyworded on x86
 app-forensics/sleuthkit java
