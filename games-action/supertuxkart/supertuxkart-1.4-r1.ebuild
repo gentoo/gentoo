@@ -42,7 +42,7 @@ RDEPEND="
 	!nettle? ( >=dev-libs/openssl-1.0.1d:= )
 	recorder? ( media-libs/libopenglrecorder )
 	sqlite? ( dev-db/sqlite:3 )
-	wiimote? ( net-wireless/bluez )
+	wiimote? ( net-wireless/bluez:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
