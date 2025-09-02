@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~m68k"
 IUSE="dnssec examples https quic"
 
 RDEPEND="
