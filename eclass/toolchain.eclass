@@ -422,9 +422,9 @@ if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
 		BDEPEND+="
 			ada? (
 				|| (
-					sys-devel/gcc:${SLOT}[ada]
 					<sys-devel/gcc-${SLOT}[ada]
 					<dev-lang/ada-bootstrap-$((${SLOT} + 1))
+					sys-devel/gcc:${SLOT}[ada]
 				)
 			)
 		"
@@ -432,9 +432,9 @@ if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
 		BDEPEND+="
 			ada? (
 				|| (
-					sys-devel/gcc:${SLOT}[ada]
 					<sys-devel/gcc-${SLOT}[ada]
 					<dev-lang/ada-bootstrap-${SLOT}
+					sys-devel/gcc:${SLOT}[ada]
 				)
 			)
 		"
@@ -447,7 +447,7 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	# D in 12+ is self-hosting and needs D to bootstrap.
 	# TODO: package some binary we can use, like for Ada
 	# bug #840182
-	BDEPEND+=" d? ( || ( sys-devel/gcc:${SLOT}[d(-)] <sys-devel/gcc-${SLOT}[d(-)] <sys-devel/gcc-12[d(-)] ) )"
+	BDEPEND+=" d? ( || ( <sys-devel/gcc-${SLOT}[d(-)] <sys-devel/gcc-12[d(-)] sys-devel/gcc:${SLOT}[d(-)] ) )"
 fi
 
 if tc_has_feature rust && tc_version_is_at_least 14.1 ; then
