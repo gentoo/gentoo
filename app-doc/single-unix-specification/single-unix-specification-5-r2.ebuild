@@ -11,7 +11,7 @@ S="${WORKDIR}/susv5-html"
 
 LICENSE="sus4-copyright"
 SLOT="5"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
 RESTRICT="mirror"
 
 src_install() {
