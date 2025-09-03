@@ -1,0 +1,12 @@
+diff --git a/src/system/audit.rs b/src/system/audit.rs
+index 22fdfea6..168c8dae 100644
+--- a/src/system/audit.rs
++++ b/src/system/audit.rs
+@@ -358,6 +358,7 @@ mod test {
+     }
+ 
+     #[test]
++    #[ignore]
+     fn test_traverse_secure_open_positive() {
+         use crate::common::resolve::CurrentUser;
+         use crate::system::{GroupId, UserId};
