@@ -76,7 +76,7 @@ src_install() {
 	if use system-names && use su; then
 		binaries+=( su )
 	else
-		binaries+=( su${ext} )
+		binaries+=( su-rs )
 	fi
 
 	dodoc "${DOCS[@]}"
