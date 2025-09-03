@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,26 +9,27 @@ HOMEPAGE="https://www.asterisk.org/products/add-ons/g729-codec/"
 AST_PV="$(ver_cut 1-2)"
 MY_PV="$(ver_rs 2 _)"
 
+MY_TOOLS_VERSION=20250903
+
 SRC_URI="x86? (
 	https://downloads.digium.com/pub/telephony/codec_g729/asterisk-${AST_PV}/x86-32/codec_g729a-${MY_PV}-x86_32.tar.gz
-	https://downloads.digium.com/pub/register/x86-32/register -> astregister-x86_32
-	https://downloads.digium.com/pub/register/x86-32/asthostid -> asthostid-x86_32
+	https://downloads.digium.com/pub/register/x86-32/register -> astregister-x86_32-${MY_TOOLS_VERSION}
+	https://downloads.digium.com/pub/register/x86-32/asthostid -> asthostid-x86_32-${MY_TOOLS_VERSION}
 )
 amd64? (
 	https://downloads.digium.com/pub/telephony/codec_g729/asterisk-${AST_PV}/x86-64/codec_g729a-${MY_PV}-x86_64.tar.gz
-	https://downloads.digium.com/pub/register/x86-64/register -> astregister-x86_64
-	https://downloads.digium.com/pub/register/x86-64/asthostid -> asthostid-x86_64
+	https://downloads.digium.com/pub/register/x86-64/register -> astregister-x86_64-${MY_TOOLS_VERSION}
+	https://downloads.digium.com/pub/register/x86-64/asthostid -> asthostid-x86_64-${MY_TOOLS_VERSION}
 )"
+
+S="${WORKDIR}"
 
 LICENSE="Digium"
 SLOT="0/${AST_PV}"
 KEYWORDS="-* amd64 x86"
-
-RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"
-
 RESTRICT="mirror strip"
 
-S="${WORKDIR}"
+RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"
 
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_g729a.so"
@@ -55,8 +56,8 @@ src_install() {
 		binsuffix=x86_64
 	fi
 
-	newsbin astregister-${binsuffix} astregister
-	newsbin asthostid-${binsuffix} asthostid
+	newsbin astregister-${binsuffix}-${MY_TOOLS_VERSION} astregister
+	newsbin asthostid-${binsuffix}-${MY_TOOLS_VERSION} asthostid
 
 	dodoc codec_g729a-${MY_PV}-${binsuffix}/README
 	insinto usr/$(get_libdir)/asterisk/modules/
