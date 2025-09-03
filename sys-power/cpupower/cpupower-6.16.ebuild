@@ -11,8 +11,8 @@ SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
 
 # Run from a kernel git repo to generate a tarball for version x.y:
 # PV=x.y
-# git archive --prefix=cpupower-${PV}/ v{PV} Makefile tools/scripts/Makefile.arch \
-# tools/power/cpupower | xz > /tmp/cpupower-${PV}.tar.xz
+# git archive --prefix=cpupower-${PV}/ v{PV} Makefile tools/power/cpupower |
+# xz > /tmp/cpupower-${PV}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0/0"
