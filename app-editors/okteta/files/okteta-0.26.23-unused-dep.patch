@@ -1,0 +1,25 @@
+From eead683156185ad492529a33afd38034d2a5949a Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 3 Sep 2025 22:30:30 +0200
+Subject: [PATCH] Drop unused Qt5Xml dependency
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 38c436879..4352b451b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,7 +65,6 @@ if( BUILD_OKTETAKASTENLIBS )
+         Qml
+         Script
+         ScriptTools
+-        Xml
+     )
+ endif()
+ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED
+-- 
+2.51.0
+
