@@ -1,0 +1,17 @@
+https://build.opensuse.org/projects/openSUSE:Factory/packages/chromium/files/chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch
+This is required to build with Rust <1.89.0, see https://github.com/rust-lang/rust/pull/141061
+--- chromium-140.0.7339.5/build/rust/allocator/lib.rs
++++ chromium-140.0.7339.5/build/rust/allocator/lib.rs
+@@ -90,6 +90,12 @@
+     #[linkage = "weak"]
+     fn __rust_no_alloc_shim_is_unstable_v2() {}
+ 
++    // TODO(crbug.com/422538133) Remove after rolling past
++    // https://github.com/rust-lang/rust/pull/141061
++    #[no_mangle]
++    #[linkage = "weak"]
++    static __rust_no_alloc_shim_is_unstable: u8 = 0;
++
+     // Mangle the symbol name as rustc expects.
+     #[rustc_std_internal_symbol]
+     #[allow(non_upper_case_globals)]

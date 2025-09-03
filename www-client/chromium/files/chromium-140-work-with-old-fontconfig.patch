@@ -1,0 +1,55 @@
+From 33c8f405a5a54148d72bd159f7ebb2cf6f0f4d03 Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Wed, 3 Sep 2025 16:34:26 +1000
+Subject: [PATCH] build with actually released fontconfig
+
+https://chromium.googlesource.com/chromium/src/+/9af749d9dfb0f4a5aaa0463bcad126973e3d5363
+
+rolls Chromium's fontconfig to include
+
+https://chromium.googlesource.com/external/fontconfig.git/+/59da606145558a0041eb90d9c80a26a6f0c1d348%5E%21/
+
+which _is_ available upstream, but is not in _any_ fontconfig release;
+this change updates the fontconfig cache magic number from `9` to `10`.
+
+As a result, any Chromium build using an unbundled fontconfig (like, say,
+every Linux distro...) will fail if building test targets, despite fontconfig
+being one of the few libraries supported by
+`build/linux/unbundle/replace_gn_files.py`.
+
+See-also: https://issues.chromium.org/issues/442698344
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+---
+ third_party/test_fonts/fontconfig/BUILD.gn                      | 2 +-
+ third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/third_party/test_fonts/fontconfig/BUILD.gn b/third_party/test_fonts/fontconfig/BUILD.gn
+index 6c940bb32f..2dd21554c9 100644
+--- a/third_party/test_fonts/fontconfig/BUILD.gn
++++ b/third_party/test_fonts/fontconfig/BUILD.gn
+@@ -49,7 +49,7 @@ if (is_linux || is_chromeos) {
+       args = []
+       inputs = [ "$root_out_dir/etc/fonts/fonts.conf" ]
+       outputs = [
+-        "$root_out_dir/fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-10",
++        "$root_out_dir/fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-9",
+         "$root_out_dir/fontconfig_caches/CACHEDIR.TAG",
+       ]
+     }
+diff --git a/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc b/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc
+index cb7af737d8..905854b755 100644
+--- a/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc
++++ b/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc
+@@ -56,7 +56,7 @@ int main() {
+   FcFini();
+ 
+   // Check existence of intended fontconfig cache file.
+-  auto cache = fontconfig_caches + "/" + kCacheKey + "-le64.cache-10";
++  auto cache = fontconfig_caches + "/" + kCacheKey + "-le64.cache-9";
+   bool cache_exists = access(cache.c_str(), F_OK) == 0;
+   return !cache_exists;
+ }
+-- 
+2.50.1
+
