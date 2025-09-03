@@ -70,14 +70,11 @@ src_install() {
 	cargo_src_install
 
 	local ext=$(usex system-names '' '-rs')
+	local su_ext=$(usex su "${ext}" '-rs')
 	local -a binaries=(
 		{sudo,visudo}${ext}
+		su${su_ext}
 	)
-	if use system-names && use su; then
-		binaries+=( su )
-	else
-		binaries+=( su-rs )
-	fi
 
 	dodoc "${DOCS[@]}"
 
@@ -85,7 +82,11 @@ src_install() {
 	for man in docs/man/*.?.man; do
 		dest="${man##*/}"
 		dest="${dest%.man}"
-		dest="${dest/./${ext}.}"
+		if [[ ${dest#.*} == su.* ]]; then
+			dest="${dest/./${su_ext}.}"
+		else
+			dest="${dest/./${ext}.}"
+		fi
 		newman "${man}" "${dest}"
 	done
 
