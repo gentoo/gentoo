@@ -24,9 +24,6 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="cuda doc examples +fftw +hdf5 test"
 
-# unittest_decorators not packaged
-RESTRICT="test"
-
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
@@ -34,7 +31,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=dev-python/cython-0.26.1[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
+		<dev-python/numpy-2[${PYTHON_USEDEP}]
 	')
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
@@ -48,6 +45,11 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/scipy[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 DOCS=( AUTHORS NEWS Readme.md ChangeLog )
@@ -57,11 +59,19 @@ PATCHES=(
 	# https://github.com/espressomd/espresso/pull/4655
 	# boost 1.81
 	"${FILESDIR}"/${P}-boost1.81.patch
+	"${FILESDIR}"/0001-allow-building-test-deps-without-running-ctest-indir.patch
+	"${FILESDIR}"/${P}-test-deprecations.patch
+	"${FILESDIR}"/${P}-test-rounding.patch
 )
 
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake_src_prepare
+
+	# These produce tests that aren't run by "make check", but ctest picks
+	# them up by default, against upstream's intention.
+	cd testsuite || die
+	cmake_comment_add_subdirectory cmake scripts
 }
 
 src_configure() {
@@ -73,7 +83,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_FFTW3=$(usex !fftw)
 		-DWITH_HDF5=$(usex hdf5)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
-		-DCMAKE_SKIP_RPATH=YES
 	)
 	cmake_src_configure
 }
@@ -85,7 +94,30 @@ src_compile() {
 }
 
 src_test() {
-	LD_PRELOAD="${BUILD_DIR}/src/core/Espresso_core.so" cmake_src_test
+	CMAKE_SKIP_TESTS=(
+		# These 13 tests fail with
+		# "The MPI_Type_free() function was called before MPI_INIT was invoked."
+		#
+		# I do not know why. But, we didn't used to run any tests at all,
+		# so, baby steps.
+		SingleReaction_test
+		reaction_methods_utils_test
+		rotation_test
+		grid_test
+		Lattice_test
+		lb_exceptions
+		thermostats_test
+		bonded_interactions_map_test
+		ObjectHandle_test
+		AutoParameters_test
+		Accumulators_test
+		Constraints_test
+		Actors_test
+	)
+
+	# testsuite uses exclude_from_all, and lists all targets as deps for their custom rule
+	cmake_build check
+	cmake_src_test
 }
 
 src_install() {
