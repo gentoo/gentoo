@@ -1068,8 +1068,8 @@ chromium_configure() {
 			myconf_gn+=(
 				'host_toolchain="//build/toolchain/linux/unbundle:host"'
 				'v8_snapshot_toolchain="//build/toolchain/linux/unbundle:host"'
-				"host_pkg_config=$(tc-getBUILD_PKG_CONFIG)"
-				"pkg_config=$(tc-getPKG_CONFIG)"
+				"host_pkg_config=\"$(tc-getBUILD_PKG_CONFIG)\""
+				"pkg_config=\"$(tc-getPKG_CONFIG)\""
 			)
 
 			# setup cups-config, build system only uses --libs option
