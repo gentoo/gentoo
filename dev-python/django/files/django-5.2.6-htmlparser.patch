@@ -1,0 +1,13 @@
+diff --git a/tests/utils_tests/test_html.py b/tests/utils_tests/test_html.py
+index 681071bf03..3744f5bdfb 100644
+--- a/tests/utils_tests/test_html.py
++++ b/tests/utils_tests/test_html.py
+@@ -132,7 +132,7 @@ class TestUtilsHtml(SimpleTestCase):
+             (3, 10): (3, 10, 19),
+             (3, 9): (3, 9, 24),
+         }
+-        htmlparser_fixed = sys.version_info >= min_fixed[sys.version_info[:2]]
++        htmlparser_fixed = True
+         items = (
+             (
+                 "<p>See: &#39;&eacute; is an apostrophe followed by e acute</p>",
