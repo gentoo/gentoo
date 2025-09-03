@@ -31,6 +31,8 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	!app-admin/sudo
+	!sys-apps/util-linux[su]
+	!sys-apps/shadow[su]
 "
 
 QA_FLAGS_IGNORED="usr/bin/.*"
