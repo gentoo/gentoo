@@ -18,7 +18,7 @@ else
 	SRC_URI="https://dl.foss21.org/sltdl/${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://dl.foss21.org/sltdl/${P}.tar.xz.sig )"
 
-	KEYWORDS="~amd64 ~riscv"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 BDEPEND="sys-devel/m4"
