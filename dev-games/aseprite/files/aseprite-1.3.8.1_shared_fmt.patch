@@ -1,0 +1,43 @@
+From 647b80ee1b3f78c269584e2d0890f4eb9d69959b Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Tue, 2 Jan 2024 20:00:12 +0300
+Subject: [PATCH 4/5] Use shared fmt library
+
+Added option -DUSE_SHARED_FMT
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,6 +39,7 @@ enable_testing()
+ 
+ option(USE_SHARED_CMARK   "Use your installed copy of cmark" off)
+ option(USE_SHARED_CURL    "Use your installed copy of curl" off)
++option(USE_SHARED_FMT     "Use your installed copy of libfmt" off)
+ option(USE_SHARED_GIFLIB  "Use your installed copy of giflib" off)
+ option(USE_SHARED_JPEGLIB "Use your installed copy of jpeglib" off)
+ option(USE_SHARED_JSON11  "Use your installed copy of json11" off)
+@@ -203,6 +204,10 @@ if(NOT USE_SHARED_CURL)
+   set(CURL_STATICLIB ON BOOL)
+ endif()
+ 
++if(USE_SHARED_FMT)
++  find_package(fmt REQUIRED)
++endif()
++
+ # zlib
+ if(USE_SHARED_ZLIB)
+   find_package(ZLIB REQUIRED)
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -103,7 +103,9 @@ if(NOT USE_SHARED_HARFBUZZ AND NOT LAF_BACKEND STREQUAL "skia")
+ endif()
+ 
+ add_subdirectory(simpleini)
+-add_subdirectory(fmt)
++if(NOT USE_SHARED_FMT)
++  add_subdirectory(fmt)
++endif()
+ 
+ # Add cmark without tests
+ if(NOT USE_SHARED_CMARK)
+-- 
+2.44.2
+
