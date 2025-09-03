@@ -11,6 +11,7 @@
 		<flag name="gui">Install graphical user interface tool (mozc_tool)</flag>
 		<flag name="ibus">Enable support for <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="renderer">Enable native candidate window</flag>
+		<flag name="system-bazel">Use <pkg>dev-build/bazel</pkg> instead of official upstream pre-built binary</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">google/mozc</remote-id>

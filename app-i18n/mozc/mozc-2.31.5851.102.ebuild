@@ -3,8 +3,9 @@
 
 EAPI=8
 
+JAVA_PKG_OPT_USE="system-bazel"
 PYTHON_COMPAT=( python3_{11..14} )
-inherit desktop dot-a edo elisp-common multiprocessing python-any-r1 savedconfig toolchain-funcs xdg
+inherit desktop dot-a edo elisp-common java-pkg-opt-2 multiprocessing python-any-r1 savedconfig toolchain-funcs xdg
 
 # USE_BAZEL_VERSION in .bazeliskrc
 BAZEL_VER="8.1.1"
@@ -27,11 +28,11 @@ HOMEPAGE="https://github.com/google/mozc"
 # for new release, update versions according to MODULE.bazel or failures of the fetch's phase of bazel
 SRC_URI="
 	amd64? (
-		https://releases.bazel.build/${BAZEL_VER}/release/bazel-${BAZEL_VER}-linux-x86_64
+		!system-bazel? ( https://releases.bazel.build/${BAZEL_VER}/release/bazel-${BAZEL_VER}-linux-x86_64 )
 		https://github.com/astral-sh/python-build-standalone/releases/download/${CPYTHON_VER#*+}/cpython-${CPYTHON_VER}-x86_64-unknown-linux-gnu-install_only.tar.gz
 	)
 	arm64? (
-		https://releases.bazel.build/${BAZEL_VER}/release/bazel-${BAZEL_VER}-linux-arm64
+		!system-bazel? ( https://releases.bazel.build/${BAZEL_VER}/release/bazel-${BAZEL_VER}-linux-arm64 )
 		https://github.com/astral-sh/python-build-standalone/releases/download/${CPYTHON_VER#*+}/cpython-${CPYTHON_VER}-aarch64-unknown-linux-gnu-install_only.tar.gz
 	)
 	!fcitx5? ( https://github.com/google/${PN}/archive/refs/tags/${PV}.tar.gz
@@ -87,7 +88,7 @@ S="${WORKDIR}/${P}/src"
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="debug emacs fcitx5 +gui ibus renderer test"
+IUSE="debug emacs fcitx5 +gui ibus renderer system-bazel test"
 REQUIRED_USE="|| ( emacs fcitx5 ibus )"
 RESTRICT="!test? ( test )"
 
@@ -107,6 +108,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	app-arch/unzip
 	virtual/pkgconfig
+	system-bazel? ( >=dev-build/bazel-${BAZEL_VER} )
 	fcitx5? ( sys-devel/gettext )
 "
 
@@ -118,17 +120,20 @@ PATCHES=(
 )
 
 pkg_setup() {
+	java-pkg-opt-2_pkg_setup
 	python-any-r1_pkg_setup
 }
 
 src_unpack() {
-	case $(tc-arch) in
-		amd64)		export EARCH=x86_64 ;;
-		arm64)		export EARCH=arm64 ;;
-		*)			die "architecture not supported: $(tc-arch)" ;;
-	esac
-	cp "${DISTDIR}"/bazel-${BAZEL_VER}-linux-${EARCH} bazel || die
-	chmod +x bazel || die
+	if ! use system-bazel; then
+		case $(tc-arch) in
+			amd64)		export EARCH=x86_64 ;;
+			arm64)		export EARCH=arm64 ;;
+			*)			die "architecture not supported: $(tc-arch)" ;;
+		esac
+		cp "${DISTDIR}"/bazel-${BAZEL_VER}-linux-${EARCH} bazel || die
+		chmod +x bazel || die
+	fi
 
 	unpack ${PN}-bcr-${BAZEL_BCR_HASH}.tar.gz
 	ln -sfT bazel-central-registry-${BAZEL_BCR_HASH} bcr || die
@@ -152,8 +157,11 @@ src_unpack() {
 
 ebazel() {
 	debug-print-function ${FUNCNAME} "${@}"
-
-	edo "${WORKDIR}"/bazel "$@"
+	if use system-bazel; then
+		edo "${EPREFIX}"/usr/bin/bazel "$@"
+	else
+		edo "${WORKDIR}"/bazel "$@"
+	fi
 }
 
 mozc_icons() {
@@ -228,6 +236,8 @@ src_configure() {
 
 	# https://bazel.build/reference/be/make-variables
 	tc-export CC AR
+
+	use system-bazel && export JAVA_HOME="$(java-config -g JAVA_HOME)"
 
 	MYEBAZELARGS=(
 		--compilation_mode="$(usex debug dbg opt)"
