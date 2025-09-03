@@ -3,7 +3,7 @@
 
 EAPI=8
 
-JAVA_PKG_IUSE="doc source"
+JAVA_PKG_IUSE="doc source test"
 MAVEN_ID="org.apache.commons:commons-text:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-jupiter"
 
@@ -19,25 +19,21 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-# Some test dependencies would need version bumps causing circular deps.
-# We'll enable tests later, after updating those test dependencies.
-RESTRICT="test"
-
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ggregory )"
 CP_DEPEND=">=dev-java/commons-lang-3.18.0:0"
 
 DEPEND="
 	${CP_DEPEND}
 	>=virtual/jdk-11:*
+	test? (
+		>=dev-java/commons-io-2.20.0:0
+		>=dev-java/commons-lang-3.18.0:0
+		dev-java/commons-rng:0
+		>=dev-java/jmh-core-1.37:0
+		>=dev-java/jmh-generator-annprocess-1.37:0
+		dev-java/mockito:4
+	)
 "
-#	test? (
-#		>=dev-java/commons-io-2.20.0:0
-#		>=dev-java/commons-lang-3.18.0:0
-#		dev-java/commons-rng:0
-#		>=dev-java/jmh-core-1.37:0
-#		>=dev-java/jmh-generator-annprocess-1.37:0
-#		dev-java/mockito:4
-#	)
 
 RDEPEND="
 	${CP_DEPEND}
@@ -58,9 +54,9 @@ JAVA_AUTOMATIC_MODULE_NAME="org.apache.commons.text"
 JAVA_INTERMEDIATE_JAR_NAME="org.apache.${PN/-/.}"
 JAVA_MODULE_INFO_OUT="src/main"
 JAVA_SRC_DIR="src/main/java"
-#	JAVA_TEST_GENTOO_CLASSPATH="commons-io commons-lang commons-rng jmh-core jmh-generator-annprocess mockito-4"
-#	JAVA_TEST_RESOURCE_DIRS="src/test/resources"
-#	JAVA_TEST_SRC_DIR="src/test/java"
+JAVA_TEST_GENTOO_CLASSPATH="commons-io commons-lang commons-rng jmh-core jmh-generator-annprocess mockito-4"
+JAVA_TEST_RESOURCE_DIRS="src/test/resources"
+JAVA_TEST_SRC_DIR="src/test/java"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/ggregory.asc"
 
 src_prepare() {
