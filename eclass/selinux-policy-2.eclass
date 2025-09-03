@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Eclass for installing SELinux policy, and optionally
@@ -109,10 +109,10 @@ PATCHBUNDLE="${DISTDIR}/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
 # Modules should always depend on at least the first release of the
 # selinux-base-policy for which they are generated.
 if [[ -n ${BASEPOL} ]]; then
-	RDEPEND=">=sys-apps/policycoreutils-2.0.82
+	RDEPEND=">=sys-apps/policycoreutils-2.5
 		>=sec-policy/selinux-base-policy-${BASEPOL}"
 else
-	RDEPEND=">=sys-apps/policycoreutils-2.0.82
+	RDEPEND=">=sys-apps/policycoreutils-2.5
 		>=sec-policy/selinux-base-policy-${PV}"
 fi
 
@@ -279,15 +279,11 @@ selinux-policy-2_pkg_postinst() {
 		semodule ${root_opts} -s ${i} -i ${COMMAND}
 		if [[ $? -ne 0 ]]; then
 			ewarn "SELinux module load failed. Trying full reload...";
-			local COMMAND_base="-i base.pp"
-			if has_version "<sys-apps/policycoreutils-2.5"; then
-				COMMAND_base="-b base.pp"
-			fi
 
 			if [[ "${i}" == "targeted" ]]; then
-				semodule ${root_opts} -s ${i} ${COMMAND_base} -i $(ls *.pp | grep -v base.pp);
+				semodule ${root_opts} -s ${i} -i *.pp
 			else
-				semodule ${root_opts} -s ${i} ${COMMAND_base} -i $(ls *.pp | grep -v base.pp | grep -v unconfined.pp);
+				semodule ${root_opts} -s ${i} -i $(ls *.pp | grep -v unconfined.pp);
 			fi
 			if [[ $? -ne 0 ]]; then
 				ewarn "Failed to reload SELinux policies."
@@ -302,9 +298,9 @@ selinux-policy-2_pkg_postinst() {
 				ewarn "command finished successfully."
 				ewarn ""
 				ewarn "To reload, run the following command from within /usr/share/selinux/${i}:"
-				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp)"
+				ewarn "  semodule -i *.pp"
 				ewarn "or"
-				ewarn "  semodule ${COMMAND_base} -i \$(ls *.pp | grep -v base.pp | grep -v unconfined.pp)"
+				ewarn "  semodule -i \$(ls *.pp | grep -v unconfined.pp)"
 				ewarn "depending on if you need the unconfined domain loaded as well or not."
 			else
 				einfo "SELinux modules reloaded successfully."
