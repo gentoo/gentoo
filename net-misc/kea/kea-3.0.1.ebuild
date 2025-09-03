@@ -261,6 +261,21 @@ src_install() {
 	fperms 750 /var/lib/${PN} /var/log/${PN}
 }
 
+pkg_preinst() {
+	if ver_replacing -lt 3.0; then
+		if [[ ${ROOT} ]]; then
+			return
+		elif [[ -d /run/openrc ]]; then
+			# There is no easy way to automatically switch to new init.d kea scripts, so we have to stop the
+			# old kea service if running otherwise the user will find it is not possible stop the old kea
+			# service post install
+			ebegin "Previous kea service will be stopped"
+			rc-service -q --ifstarted --nodeps kea stop
+			eend $?
+		fi
+	fi
+}
+
 pkg_postinst() {
 	tmpfiles_process ${PN}.conf
 
