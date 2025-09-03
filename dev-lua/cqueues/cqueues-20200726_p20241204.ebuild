@@ -9,7 +9,7 @@ inherit lua toolchain-funcs
 
 DESCRIPTION="Stackable Continuation Queues"
 HOMEPAGE="https://github.com/wahern/cqueues"
-HOMEPAGE+=" http://25thandclement.com/~william/projects/cqueues.html"
+HOMEPAGE+=" https://25thandclement.com/~william/projects/cqueues.html"
 EGIT_COMMIT="8c0142577d3cb1f24917879997678bef0d084815"
 SRC_URI="https://github.com/wahern/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
@@ -36,6 +36,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/cqueues-20200726_p20241204-qa-flags.patch
 	"${FILESDIR}"/cqueues-20200726_p20241204-rm-vendor-compat53.patch
+	"${FILESDIR}"/cqueues-20200726_p20241204-fix_c23.patch
 )
 
 DOCS=( "doc/." )
