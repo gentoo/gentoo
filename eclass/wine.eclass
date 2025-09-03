@@ -356,7 +356,7 @@ wine_src_install() {
 	fi
 
 	use arm64 && use wow64 &&
-	    dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
+		dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
 				${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
 
 	# delete unwanted files if requested, not done directly in ebuilds
