@@ -21,7 +21,7 @@ KEYWORDS="amd64"
 IUSE="doc test"
 
 DEPEND="
-	>=dev-libs/asmjit-2022.07.02
+	<dev-libs/asmjit-2025
 	dev-libs/cpuinfo
 "
 RDEPEND="${DEPEND}"
