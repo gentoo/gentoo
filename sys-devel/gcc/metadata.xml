@@ -6,7 +6,7 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<use>
-		<flag name="ada">Build the ADA language (GNAT) frontend</flag>
+		<flag name="ada">Build the Ada language (GNAT) frontend</flag>
 		<flag name="cet" restrict="&gt;=sys-devel/gcc-10">
 			Enable support for control flow hijacking protection.
 
