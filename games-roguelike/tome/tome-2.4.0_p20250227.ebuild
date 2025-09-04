@@ -36,7 +36,7 @@ PATCHES=(
 	"${FILESDIR}/tome-2.4.0-boost.patch"
 	"${FILESDIR}/tome-2.4.0-cmake4.patch"
 	"${FILESDIR}/tome-2.4.0-header.patch"
-	"${FILESDIR}/tome-2.4.0-fmt2.patch"
+	"${FILESDIR}/tome-2.4.0-fmt.patch"
 )
 
 src_prepare() {
