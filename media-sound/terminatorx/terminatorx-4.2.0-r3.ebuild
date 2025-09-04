@@ -37,7 +37,7 @@ RDEPEND="
 	pulseaudio? ( media-libs/libpulse )
 	vorbis? ( media-libs/libvorbis )
 	sox? (
-		media-sound/sox
+		media-sound/sox:=
 		media-sound/mpg123
 	)
 "
