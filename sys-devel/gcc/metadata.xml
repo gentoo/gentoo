@@ -37,7 +37,15 @@
 		<flag name="cobol">Enable support for the COBOL programming language</flag>
 		<flag name="d">Enable support for the D programming language</flag>
 		<flag name="debug">
-			Enables GCC's 'checking' facility via --enable-checking=yes,extra,rtl.
+			Enables GCC's 'checking' (assertions) facility.
+
+			For released GCCs:
+			* USE=debug  sets --enable-checking=yes,extra,rtl
+			* USE=-debug sets --enable-checking=release
+
+			For unreleased GCCs:
+			* USE=debug  sets --enable-checking=yes,extra,rtl
+			* USE=-debug sets --enable-checking=yes,extra
 
 			This adds checks to various compiler passes for integrity and input
 			validation. This can help catch possible miscompilations early as
