@@ -17,7 +17,7 @@ S="${WORKDIR}/${PN}-version-${PV}"
 
 LICENSE="dom4j"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ~ppc64"
 IUSE="jaxen"
 
 CP_DEPEND="
