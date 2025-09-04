@@ -44,9 +44,7 @@ REQUIRED_USE="
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	media-libs/libglvnd
 	x11-libs/libdrm
-	x11-libs/libX11
 	pro? ( media-libs/amdgpu-pro-vulkan )
 	radv? ( media-libs/mesa[proprietary-codecs,vulkan] )
 "
