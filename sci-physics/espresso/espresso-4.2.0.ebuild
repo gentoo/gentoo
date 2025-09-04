@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{9..11} )
-CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake cuda python-single-r1 savedconfig
 
