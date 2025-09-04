@@ -27,6 +27,7 @@ DEPEND="
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtscript-${QTMIN}:5[scripttools]
 	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
 	>=kde-frameworks/kcodecs-${KFMIN}:5
@@ -48,11 +49,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	# downstream
-	"${FILESDIR}/${PN}-0.26.13-doctools-optional.patch"
-	# git master
-	"${WORKDIR}/${PN}-0.26.21-drop-qca.patch"
-	"${FILESDIR}/${P}-unused-dep.patch"
+	"${FILESDIR}/${PN}-0.26.13-doctools-optional.patch" # downstream
+	"${WORKDIR}/${PN}-0.26.21-drop-qca.patch" # git master
 )
 
 src_configure() {
