@@ -13,18 +13,19 @@ SRC_URI="https://github.com/flacon/flacon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 BDEPEND="
 	dev-qt/qttools:6[linguist]
 	virtual/pkgconfig
 "
+# tests hang with sox-14.6.0.2. Live branch of flacon gets around this somehow.
 RDEPEND="
 	app-i18n/uchardet
 	dev-qt/qtbase:6[gui,network,widgets,concurrent]
 	media-libs/taglib:=
-	media-sound/sox[flac,wavpack]
+	<media-sound/sox-14.6[flac,wavpack]
 	media-video/mediainfo
 "
 DEPEND="${RDEPEND}
