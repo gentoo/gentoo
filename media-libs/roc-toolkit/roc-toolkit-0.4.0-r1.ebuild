@@ -1,9 +1,9 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="Real-time audio streaming over the network"
@@ -11,22 +11,23 @@ HOMEPAGE="https://roc-streaming.org/toolkit/docs/ https://github.com/roc-streami
 SRC_URI="https://github.com/roc-streaming/roc-toolkit/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
-SLOT="0/3"
+SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64"
-IUSE="alsa llvm-libunwind pulseaudio sox ssl tools test unwind"
+IUSE="alsa llvm-libunwind pulseaudio sox sndfile ssl tools test unwind"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/libuv:=
-	media-libs/openfec
-	media-libs/speexdsp
-	alsa? ( media-libs/alsa-lib )
-	pulseaudio? ( media-libs/libpulse )
-	sox? ( media-sound/sox )
-	ssl? ( dev-libs/openssl:= )
+	>=dev-libs/libuv-1.35.0:=
+	>=media-libs/openfec-1.4.2.9
+	>=media-libs/speexdsp-1.2.0
+	alsa? ( >=media-libs/alsa-lib-1.1.9 )
+	pulseaudio? ( >=media-libs/libpulse-12.2 )
+	sox? ( >=media-sound/sox-14.4.2:= )
+	sndfile? ( >=media-libs/libsndfile-1.0.28 )
+	ssl? ( >=dev-libs/openssl-3.0.8:= )
 	unwind? (
 		llvm-libunwind? ( llvm-runtimes/libunwind:= )
-		!llvm-libunwind? ( sys-libs/libunwind:= )
+		!llvm-libunwind? ( >=sys-libs/libunwind-1.2.1:= )
 	)
 "
 RDEPEND="${DEPEND}"
@@ -38,7 +39,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.5-dont-force-O3.patch
+	"${FILESDIR}"/${PN}-0.4.0-dont-force-O3.patch
 )
 
 src_prepare() {
@@ -66,6 +67,7 @@ src_compile() {
 		$(usev !pulseaudio '--disable-pulseaudio')
 		$(usev !tools '--disable-tools')
 		$(usev test '--enable-tests')
+		$(usev !sndfile '--disable-sndfile')
 		$(usev !ssl '--disable-openssl')
 		$(usev !unwind '--disable-libunwind')
 	)
