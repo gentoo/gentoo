@@ -168,7 +168,7 @@ PHP_TARGETS="php8-3"
 
 # Sam James <sam@gentoo.org> (2025-02-19)
 #
-# Default ADA target
+# Default Ada target
 ADA_TARGET="gcc_14"
 
 # Marek Szuba <marecki@gentoo.org> (2020-10-15)
