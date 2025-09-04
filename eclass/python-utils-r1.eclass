@@ -929,8 +929,12 @@ _python_wrapper_setup() {
 			chmod +x "${workdir}/bin/python-config" \
 				"${workdir}/bin/python3-config" || die
 
-			# Python 2.6+.
-			ln -s "${PYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
+			# Python 2.6+. Deprecated in 3.11, removed in 3.13.
+			if ver_test ${EPYTHON#python} -lt 3.13; then
+				ln -s "${PYTHON/python/2to3-}" "${workdir}"/bin/2to3 || die
+			else
+				nonsupp+=( 2to3 )
+			fi
 
 			# Python 2.7+.
 			ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}.pc \
