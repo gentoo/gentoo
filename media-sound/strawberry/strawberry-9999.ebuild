@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake optfeature virtualx xdg
+inherit cmake optfeature xdg
 
 DESCRIPTION="Modern music player and library organizer based on Clementine and Qt"
 HOMEPAGE="https://www.strawberrymusicplayer.org/"
@@ -104,8 +104,13 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_compile() {
+	cmake_src_compile
+	use test && cmake_build build_tests
+}
+
 src_test() {
-	virtx cmake_build run_strawberry_tests
+	QT_QPA_PLATFORM=offscreen cmake_build run_strawberry_tests
 }
 
 pkg_postinst() {
