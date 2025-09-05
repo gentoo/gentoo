@@ -689,10 +689,6 @@ sec-keys/openpgp-keys-jiatan
 # [2] https://wiki.gentoo.org/wiki/Nouveau
 x11-drivers/nvidia-drivers:0/390
 
-# Ben Kohler <bkohler@gentoo.org> (2023-01-30)
-# Breaks too many revdeps for now
-=app-text/discount-3*
-
 # Joonas Niilola <juippis@gentoo.org> (2022-04-29)
 # Apparently the "b" in version means "beta". 3.24 is available, we
 # should update to that. #841437
