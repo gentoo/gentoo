@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Eli Schwartz <eschwartz@gentoo.org> (2025-09-05)
+# dev-python/sphinx-tabs is not keyworded.
+dev-python/anyio doc
+
 # Mike Gilbert <floppym@gentoo.org> (2025-06-18)
 # media-libs/libsdl3 is missing keywords.
 >=net-misc/freerdp-3.16.0 sdl

@@ -51,7 +51,8 @@ distutils_enable_tests pytest
 distutils_enable_sphinx docs \
 	'>=dev-python/sphinx-rtd-theme-1.2.2' \
 	dev-python/sphinxcontrib-jquery \
-	dev-python/sphinx-autodoc-typehints
+	dev-python/sphinx-autodoc-typehints \
+	dev-python/sphinx-tabs
 
 python_test() {
 	local EPYTEST_DESELECT=(
