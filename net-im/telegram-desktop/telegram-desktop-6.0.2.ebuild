@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit xdg cmake python-any-r1 optfeature flag-o-matic
+inherit xdg cmake python-any-r1 optfeature toolchain-funcs flag-o-matic
 
 DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org https://github.com/telegramdesktop/tdesktop"
