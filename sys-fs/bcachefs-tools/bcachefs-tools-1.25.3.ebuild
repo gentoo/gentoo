@@ -88,7 +88,7 @@ CRATES="
 "
 
 LLVM_COMPAT=( {17..20} )
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 RUST_MIN_VER="1.77.0"
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/kentoverstreet.asc
 
