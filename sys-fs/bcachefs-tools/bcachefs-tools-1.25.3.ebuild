@@ -180,6 +180,7 @@ src_prepare() {
 	default
 	tc-export CC
 
+	sed -i s/^VERSION=.*$/VERSION=${PV}/ Makefile || die
 	sed \
 		-e '/^CFLAGS/s:-O2::' \
 		-e '/^CFLAGS/s:-g::' \
