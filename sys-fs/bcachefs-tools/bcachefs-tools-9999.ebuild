@@ -105,7 +105,9 @@ else
 	KEYWORDS="~amd64 ~arm64"
 fi
 
-LICENSE="Apache-2.0 BSD GPL-2 MIT"
+LICENSE="GPL-2"
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-DFS-2016"
 SLOT="0"
 IUSE="fuse verify-sig"
 RESTRICT="test"
