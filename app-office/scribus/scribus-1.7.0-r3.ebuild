@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic optfeature python-single-r1 xdg
 
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/scribusproject/scribus"
 	inherit git-r3
 else
-	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${PV}/${P}.tar.xz"
+	SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}-devel/${PV}/${P}.tar.xz"
 	S="${WORKDIR}/${P}"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
@@ -80,6 +80,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-findhyphen.patch
 	"${FILESDIR}"/${PN}-1.7.0-dont-install-qtadvanceddocking.patch # bugs 961290, 960017
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
+	"${FILESDIR}"/${P}-poppler-25.0{2,6,7,9}.0.patch # from trunk
+	"${FILESDIR}"/${PN}-1.7.0-fix-compiling-with-qt-6.9.0.patch # bug 957695
 )
 
 src_prepare() {
