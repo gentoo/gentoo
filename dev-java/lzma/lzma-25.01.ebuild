@@ -13,7 +13,7 @@ S="${WORKDIR}/Java"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 BDEPEND="$(unpacker_src_uri_depends)"
 DEPEND=">=virtual/jdk-1.8:*"
