@@ -1,19 +1,19 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit cmake xdg-utils
+inherit cmake xdg
 
 DESCRIPTION="Open-source reimplementation of the popular UFO: Enemy Unknown"
 HOMEPAGE="https://openxcom.org/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/SupSuper/OpenXcom.git"
+	EGIT_REPO_URI="https://github.com/OpenXcom/OpenXcom.git"
 else
-	COMMIT="ea9ac466221f8b4f8974d2db1c42dc4ad6126564"
-	SRC_URI="https://github.com/SupSuper/OpenXcom/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	COMMIT="a0927b73743fddf727eba97825f2b6ffeee324ff"
+	SRC_URI="https://github.com/OpenXcom/OpenXcom/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/OpenXcom-${COMMIT}"
 fi
@@ -23,9 +23,10 @@ SLOT="0"
 IUSE="doc"
 
 RDEPEND="
-	>=dev-cpp/yaml-cpp-0.5.1
+	>=dev-cpp/yaml-cpp-0.5.3:=
+	media-libs/libglvnd
 	media-libs/libsdl[opengl,video]
-	media-libs/sdl-gfx
+	media-libs/sdl-gfx:=
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[flac,mikmod,vorbis]"
 DEPEND="${RDEPEND}"
@@ -58,8 +59,4 @@ pkg_postinst() {
 	elog "If you need or want text in some language other than english, download:"
 	elog "https://openxcom.org/translations/latest.zip and uncompress it in"
 	elog "/usr/share/${PN}/common/Language"
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
