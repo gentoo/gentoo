@@ -125,7 +125,7 @@ src_configure() {
 	# bugs #954813 and #942551
 	filter-lto
 
-	# https://github.com/mongodb/mongo/blob/v8.0/docs/building.md 
+	# https://github.com/mongodb/mongo/blob/v8.0/docs/building.md
 	# --use-system-icu fails tests
 	# --use-system-tcmalloc is strongly NOT recommended:
 	# for MONGO_GIT_HASH use GitOrigin-RevId from the commit of the tag
