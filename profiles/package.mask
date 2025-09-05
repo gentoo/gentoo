@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-09-06)
+# Nothing depends on it.
+# Bug #961199.
+# Removal on 2025-10-06.
+net-libs/NativeThread
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-05)
 # Qt5-based library without revdeps. Needs a dedicated maintainer.
 # Bug #955270. Removal on 2025-10-05.
