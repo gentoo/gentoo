@@ -114,7 +114,10 @@ DEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/openjdk-17.0.16_p8-fixBuild_failure_with_glibc-2.42.patch" )
+PATCHES=(
+	"${FILESDIR}/openjdk-17.0.16_p8-fixBuild_failure_with_glibc-2.42.patch"
+	"${FILESDIR}/openjdk-17.0.16_p8-lto-memory.patch"
+)
 
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
