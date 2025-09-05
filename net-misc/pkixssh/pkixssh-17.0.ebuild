@@ -291,12 +291,6 @@ src_install() {
 	doins -r "${WORKDIR}"/etc/ssh/sshd_config.d
 }
 
-pkg_preinst() {
-	if ! use ssl && has_version "${CATEGORY}/${PN}[ssl]"; then
-		show_ssl_warning=1
-	fi
-}
-
 pkg_postinst() {
 	# bug #139235
 	optfeature "x11 forwarding" x11-apps/xauth
@@ -344,12 +338,6 @@ pkg_postinst() {
 		ewarn "but it can increase the vulnerability of the system in the event of a future exploit."
 		ewarn "If you have a web-facing setup or are concerned about security, it is recommended to"
 		ewarn "set 'Restart=no' in your sshd unit file."
-	fi
-
-	if [[ -n ${show_ssl_warning} ]]; then
-		elog "Be aware that by disabling openssl support in openssh, the server and clients"
-		elog "no longer support dss/rsa/ecdsa keys.  You will need to generate ed25519 keys"
-		elog "and update all clients/servers that utilize them."
 	fi
 
 	openssh_maybe_restart
