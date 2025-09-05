@@ -22,7 +22,7 @@ fi
 
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug doc mysql +openssl postgres shell test"
+IUSE="debug doc kerberos mysql +openssl postgres shell test"
 
 REQUIRED_USE="shell? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
@@ -30,6 +30,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=dev-libs/boost-1.66:=
 	dev-libs/log4cplus:=
+	kerberos? ( virtual/krb5 )
 	mysql? (
 		app-arch/zstd:=
 		dev-db/mysql-connector-c:=
@@ -112,7 +113,7 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir="${EPREFIX}/var"
 		-Drunstatedir="${EPREFIX}/run"
-		-Dkrb5=disabled
+		$(meson_feature kerberos krb5)
 		-Dnetconf=disabled
 		-Dcrypto=$(usex openssl openssl botan)
 		$(meson_feature mysql)
@@ -176,6 +177,12 @@ src_test() {
 			dhcp-pgsql-lib-tests
 			dhcp-forensic-log-libloadtests
 			kea-dhcp4-tests
+		)
+	fi
+
+	if use kerberos; then
+		SKIP_TESTS+=(
+			ddns-gss-tsig-tests
 		)
 	fi
 
