@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<use>
+		<flag name="ldns">Use LDNS for DNSSEC/SSHFP validation.</flag>
+		<flag name="ssl-engine">Enable OpenSSL (hardware) ENGINE support</flag>
+		<flag name="xmss">Enable XMSS post-quantum authentication algorithm</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">secsh/pkixssh</remote-id>
+	</upstream>
+</pkgmetadata>
