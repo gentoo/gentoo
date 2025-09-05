@@ -72,7 +72,7 @@ src_install() {
 	local ext=$(usex system-names '' '-rs')
 	local su_ext=$(usex su "${ext}" '-rs')
 	local -a binaries=(
-		{sudo,visudo}${ext}
+		sudo${ext}
 		su${su_ext}
 	)
 
