@@ -18,6 +18,7 @@ CK_P=composable_kernel-${CK_COMMIT:0:8}
 FLASH_PV=2.7.4
 FLASH_PN=flash-attention
 FLASH_P=${FLASH_PN}-${FLASH_PV}
+FLASH_ATT_URI="https://github.com/Dao-AILab/${FLASH_PN}/archive/refs/tags/v${FLASH_PV}.tar.gz -> ${FLASH_P}.gh.tar.gz"
 
 AOTRITON_PV=0.9.2b
 AOTRITON_PN=aotriton
@@ -32,10 +33,8 @@ SRC_URI="
 		https://github.com/ROCm/composable_kernel/archive/${CK_COMMIT}.tar.gz
 		-> ${CK_P}.tar.gz
 	)
-	flash? (
-		https://github.com/Dao-AILab/${FLASH_PN}/archive/refs/tags/v${FLASH_PV}.tar.gz
-		-> ${FLASH_P}.gh.tar.gz
-	)
+	flash? ( ${FLASH_ATT_URI} )
+	memefficient? ( ${FLASH_ATT_URI} )
 "
 
 S="${WORKDIR}"/${MYP}
@@ -151,7 +150,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	if use flash; then
+	if use flash || use memefficient; then
 		mv "${WORKDIR}"/${FLASH_P}/* third_party/${FLASH_PN}/ || die
 	fi
 	filter-lto #bug 862672
