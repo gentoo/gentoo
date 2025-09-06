@@ -86,9 +86,9 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/openscenegraph-3.6.3-cmake.patch
-	"${FILESDIR}"/openscenegraph-3.6.3-docdir.patch
-	"${FILESDIR}"/openscenegraph-3.6.5-cmake_lua_version.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug 960858
+	"${FILESDIR}"/${P}-cmake.patch # GNUInstalldirs, paths
+	"${FILESDIR}"/${P}-cmake-lua_version.patch # downstream patch
 	"${FILESDIR}"/openscenegraph-3.6-openexr3.patch
 )
 
@@ -126,7 +126,7 @@ src_configure() {
 		$(cmake_use_find_package jpeg JPEG)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
 		$(cmake_use_find_package las LIBLAS)
-		$(cmake_use_find_package lua Lua)
+		-DBUILD_OSG_LUA_PLUGIN=$(usex lua)
 		-DCMAKE_DISABLE_FIND_PACKAGE_OpenCascade=ON
 		$(cmake_use_find_package openexr OpenEXR)
 		$(cmake_use_find_package openinventor Inventor)

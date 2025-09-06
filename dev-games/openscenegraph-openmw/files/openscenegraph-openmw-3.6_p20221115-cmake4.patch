@@ -1,0 +1,175 @@
+Source: https://github.com/OpenMW/osg/pull/32
+
+From d83a247904ac5eb3a38fe68c341a1f54c6e203a7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 7 Sep 2025 15:01:03 +0200
+Subject: [PATCH 1/2] Raise CMake minimum version req to 3.5 (lowest still
+ supported by >=CMake-4)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                                | 81 ++++++-------------
+ .../Android/android.toolchain.cmake           |  2 +-
+ examples/osgCMakeExample/CMakeLists.txt       |  2 +-
+ examples/osgemscripten/CMakeLists.txt         |  2 +-
+ 4 files changed, 28 insertions(+), 59 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 21d2c05d4..478932641 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ #
+ # OpenSceneGraph CMake build file
+ #
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
++
+ SET(OPENSCENEGRAPH_MAJOR_VERSION 3)
+ SET(OPENSCENEGRAPH_MINOR_VERSION 6)
+ SET(OPENSCENEGRAPH_PATCH_VERSION 5)
+@@ -13,27 +15,19 @@ SET(OPENSCENEGRAPH_RELEASE_CANDIDATE 0)
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS TRUE)
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
+-
+-if(COMMAND cmake_policy)
+-    # Works around warnings libraries linked against that don't
+-    # have absolute paths (e.g. -lpthreads)
+-    cmake_policy(SET CMP0003 NEW)
++# Works around warnings libraries linked against that don't
++# have absolute paths (e.g. -lpthreads)
++cmake_policy(SET CMP0003 NEW)
+ 
+-    # Works around warnings about escaped quotes in ADD_DEFINITIONS
+-    # statements.
+-    cmake_policy(SET CMP0005 NEW)
++# Works around warnings about escaped quotes in ADD_DEFINITIONS
++# statements.
++cmake_policy(SET CMP0005 NEW)
+ 
+-    # tell CMake to prefer CMake's own CMake modules when available
+-    # only available from cmake-2.8.4
+-    if("${CMAKE_VERSION}" VERSION_GREATER 2.8.3)
+-        cmake_policy(SET CMP0017 NEW)
+-    endif()
++cmake_policy(SET CMP0017 NEW)
+ 
+-    # INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
+-    # Allows passing -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+-    cmake_policy(SET CMP0069 NEW)
+-endif()
++# INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
++# Allows passing -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
++cmake_policy(SET CMP0069 NEW)
+ 
+ IF(APPLE)
+   # Get OSX version in MAJOR.MINOR format
+@@ -155,6 +149,7 @@ IF(NOT CMAKE_BUILD_TYPE)
+     SET(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+ ENDIF(NOT CMAKE_BUILD_TYPE)
+ 
++INCLUDE(GNUInstallDirs)
+ 
+ IF(ANDROID)
+     INCLUDE(OsgAndroidMacroUtils)
+@@ -902,25 +897,8 @@ IF(DEFINED LIB_POSTFIX)
+   # Use LIB_POSTFIX if defined
+   SET(OSG_INSTALL_LIBDIR lib${LIB_POSTFIX})
+ ELSE()
+-  IF(CMAKE_VERSION VERSION_LESS "2.8.5")
+-    IF(UNIX AND NOT WIN32 AND NOT APPLE)
+-      IF(CMAKE_SIZEOF_VOID_P MATCHES "8")
+-        SET(LIB_POSTFIX "64" CACHE STRING "suffix for 32/64 dir placement")
+-        MARK_AS_ADVANCED(LIB_POSTFIX)
+-      ENDIF()
+-    ENDIF()
+-    IF(NOT DEFINED LIB_POSTFIX)
+-      SET(LIB_POSTFIX "")
+-    ENDIF()
+-    SET(OSG_INSTALL_LIBDIR lib${LIB_POSTFIX})
+-  ELSE()
+-    # Use the GNU standard installation directories for CMake >= 2.8.5
+-    INCLUDE(GNUInstallDirs)
+-    SET(OSG_INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR})
+-  ENDIF()
+-ENDIF()
+-IF(NOT DEFINED LIB_POSTFIX)
+-    SET(LIB_POSTFIX "")
++  SET(OSG_INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR})
++  SET(LIB_POSTFIX "")
+ ENDIF()
+ 
+ # Here we apparently do some funky stuff with making the bin/ and lib/
+@@ -952,25 +930,16 @@ ELSE(WIN32)
+     SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_LIBDIR})
+ ENDIF(WIN32)
+ 
+-# Testing CMAKE_VERSION is possible in >= 2.6.4 only
+-BUILDER_VERSION_GREATER(2 8 0)
+-IF(VALID_BUILDER_VERSION)  # If CMake >= 2.8.1
+-    FOREACH(CONF ${CMAKE_CONFIGURATION_TYPES})        # For each configuration (Debug, Release, MinSizeRel... and/or anything the user chooses)
+-        STRING(TOUPPER "${CONF}" CONF)                # Go uppercase (DEBUG, RELEASE...)
+-        SET("CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_LIBDIR}")
+-        SET("CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_BINDIR}")
+-        IF(WIN32)
+-            SET("CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_BINDIR}")
+-        ELSE()
+-            SET("CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_LIBDIR}")
+-        ENDIF()
+-    ENDFOREACH()
+-ENDIF(VALID_BUILDER_VERSION)
+-
+-#SET(INSTALL_BINDIR OpenSceneGraph/bin)
+-#SET(INSTALL_INCDIR OpenSceneGraph/include)
+-#SET(INSTALL_LIBDIR OpenSceneGraph/lib)
+-#SET(INSTALL_DOCDIR OpenSceneGraph/doc)
++FOREACH(CONF ${CMAKE_CONFIGURATION_TYPES})        # For each configuration (Debug, Release, MinSizeRel... and/or anything the user chooses)
++    STRING(TOUPPER "${CONF}" CONF)                # Go uppercase (DEBUG, RELEASE...)
++    SET("CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_LIBDIR}")
++    SET("CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_BINDIR}")
++    IF(WIN32)
++        SET("CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_BINDIR}")
++    ELSE()
++        SET("CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONF}" "${OUTPUT_LIBDIR}")
++    ENDIF()
++ENDFOREACH()
+ 
+ ################################################################################
+ # User Options
+diff --git a/PlatformSpecifics/Android/android.toolchain.cmake b/PlatformSpecifics/Android/android.toolchain.cmake
+index fc349162f..7015e6d8f 100644
+--- a/PlatformSpecifics/Android/android.toolchain.cmake
++++ b/PlatformSpecifics/Android/android.toolchain.cmake
+@@ -210,7 +210,7 @@
+ 
+ # Modified by Lasse Oorni and Yao Wei Tjong for Urho3D
+ 
+-cmake_minimum_required( VERSION 2.6.3 )
++cmake_minimum_required( VERSION 3.5 )
+ 
+ # Urho3D: on Windows Cygwin-based NDK tools may fail in the linking phase with too long command line. Turn on response files to avoid this
+ if( CMAKE_HOST_WIN32 )
+diff --git a/examples/osgCMakeExample/CMakeLists.txt b/examples/osgCMakeExample/CMakeLists.txt
+index cd843299a..418708630 100644
+--- a/examples/osgCMakeExample/CMakeLists.txt
++++ b/examples/osgCMakeExample/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.5)
+ 
+ SET(PROJECT_NAME osgCMakeExample)
+ 
+diff --git a/examples/osgemscripten/CMakeLists.txt b/examples/osgemscripten/CMakeLists.txt
+index b2bc9875a..10c4daf68 100644
+--- a/examples/osgemscripten/CMakeLists.txt
++++ b/examples/osgemscripten/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
+ 
+ # Path to OpenSceneGraph
+ SET(OSG_DIR "${CMAKE_SOURCE_DIR}/../..")
+-- 
+2.51.0
+

@@ -1,0 +1,51 @@
+Source: https://github.com/OpenMW/osg/pull/32
+
+From ef03c3442028dcfd6a861369926d0198bc4059cd Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 7 Sep 2025 15:13:57 +0200
+Subject: [PATCH 2/2] Use more GNUInstalldirs (CMAKE_INSTALL_DOCDIR)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                   | 4 ++--
+ CMakeModules/OsgMacroUtils.cmake | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 478932641..4f6ca614b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1191,7 +1191,7 @@ IF(BUILD_DOCUMENTATION)
+         ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs/osg32-32.png COPYONLY
+     )
+     #INSTALL(FILES ${PROJECT_BINARY_DIR}/doc/${PROJECT_NAME}ReferenceDocs-${OPENSCENEGRAPH_VERSION}.chm DESTINATION doc OPTIONAL COMPONENT openscenegraph-doc)
+-    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs DESTINATION doc COMPONENT openscenegraph-doc)
++    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT openscenegraph-doc)
+ 
+     # now set up openthreads documentation generation
+     IF(BUILD_REF_DOCS_TAGFILE)
+@@ -1207,7 +1207,7 @@ IF(BUILD_DOCUMENTATION)
+         ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs/osg32-32.png COPYONLY
+     )
+     #INSTALL(FILES ${PROJECT_BINARY_DIR}/doc/${PROJECT_NAME}ReferenceDocs-${OPENSCENEGRAPH_VERSION}.chm DESTINATION doc OPTIONAL COMPONENT openscenegraph-doc)
+-    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs DESTINATION doc COMPONENT openthreads-doc)
++    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT openthreads-doc)
+ 
+     # Process our other doxyfiles but don't create targets for these
+     CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/doc/Doxyfiles/all_Doxyfile
+diff --git a/CMakeModules/OsgMacroUtils.cmake b/CMakeModules/OsgMacroUtils.cmake
+index cafd8725b..1c2e6cb77 100644
+--- a/CMakeModules/OsgMacroUtils.cmake
++++ b/CMakeModules/OsgMacroUtils.cmake
+@@ -487,7 +487,7 @@ MACRO(SETUP_EXAMPLE EXAMPLE_NAME)
+         IF(APPLE)
+             INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION share/OpenSceneGraph/bin BUNDLE DESTINATION share/OpenSceneGraph/bin )
+         ELSE(APPLE)
+-            INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION share/OpenSceneGraph/bin COMPONENT openscenegraph-examples )
++            INSTALL(TARGETS ${TARGET_TARGETNAME} RUNTIME DESTINATION bin COMPONENT openscenegraph-examples )
+             IF(MSVC)
+                 INSTALL(FILES $<TARGET_PDB_FILE:${TARGET_NAME}> DESTINATION share/OpenSceneGraph/bin COMPONENT openscenegraph-examples)
+             ENDIF(MSVC)
+-- 
+2.51.0
+
