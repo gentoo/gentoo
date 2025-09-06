@@ -1,0 +1,58 @@
+diff --git a/setup.py b/setup.py
+index e9c0f587..06b1eeb0 100755
+--- a/setup.py
++++ b/setup.py
+@@ -18,7 +18,8 @@ def parse_version(fpath):
+ 
+ def static_parse(varname, fpath):
+     """
+-    Statically parse the a constant variable from a python file
++    Statically parse the a constant variable from a python file.
++    Raise an error if the variable is not a constant.
+     """
+     import ast
+ 
+@@ -29,10 +30,13 @@ def static_parse(varname, fpath):
+     pt = ast.parse(sourcecode)
+ 
+     class StaticVisitor(ast.NodeVisitor):
+-        def visit_Assign(self, node):
++        def visit_Assign(self, node: ast.Assign):
+             for target in node.targets:
+                 if getattr(target, "id", None) == varname:
+-                    self.static_value = node.value.s
++                    value: ast.expr = node.value
++                    if not isinstance(value, ast.Constant):
++                        raise ValueError("variable {!r} is not a constant".format(varname))
++                    self.static_value = value.value
+ 
+     visitor = StaticVisitor()
+     visitor.visit(pt)
+diff --git a/src/xdoctest/static_analysis.py b/src/xdoctest/static_analysis.py
+index d8171b2..cb1f798 100644
+--- a/src/xdoctest/static_analysis.py
++++ b/src/xdoctest/static_analysis.py
+@@ -21,8 +21,10 @@ import platform
+ PLAT_IMPL = platform.python_implementation()
+ 
+ 
+-IS_PY_GE_308 = sys.version_info[0] >= 3 and sys.version_info[1] >= 8
+-IS_PY_GE_312 = sys.version_info[0] >= 3 and sys.version_info[1] >= 12
++IS_PY_GE_312 = sys.version_info[0:2] >= (3, 12)
++IS_PY_GE_308 = sys.version_info[0:2] >= (3, 8)  # type: bool
++IS_PY_LT_314 = sys.version_info[0:2] < (3, 14)  # type: bool
++
+ 
+ if IS_PY_GE_312:
+     from xdoctest import _tokenize as tokenize
+@@ -771,7 +773,9 @@ def _parse_static_node_value(node):
+         values = map(_parse_static_node_value, node.values)
+         value = OrderedDict(zip(keys, values))
+         # value = dict(zip(keys, values))
+-    elif isinstance(node, (ast.NameConstant)):
++    elif IS_PY_LT_314 and isinstance(node, (ast.NameConstant)):
++        value = node.value
++    elif isinstance(node, ast.Constant):
+         value = node.value
+     else:
+         print(node.__dict__)
