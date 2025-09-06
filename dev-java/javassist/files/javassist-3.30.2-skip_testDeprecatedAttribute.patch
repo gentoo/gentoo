@@ -1,0 +1,24 @@
+There was 1 failure:
+1) testDeprecatedAttribute(javassist.bytecode.BytecodeTest)
+javassist.NotFoundException: suspend(..) is not found in java.lang.Thread
+	at javassist.CtClassType.getDeclaredMethod(CtClassType.java:1356)
+	at javassist.bytecode.BytecodeTest.testDeprecatedAttribute(BytecodeTest.java:315)
+
+FAILURES!!!
+Tests run: 434,  Failures: 1
+
+The failure occurs with jdk:25 and higher due to method 'suspend'
+being removed (https://bugs.openjdk.org/browse/JDK-8359053).
+The removal of 'suspend' only affects the test, so we skip the test.
+
+--- a/src/test/javassist/bytecode/BytecodeTest.java
++++ b/src/test/javassist/bytecode/BytecodeTest.java
+@@ -310,7 +310,7 @@ public class BytecodeTest extends TestCase {
+         assertEquals(0, invoke(obj, "test"));
+     }
+ 
+-    public void testDeprecatedAttribute() throws Exception {
++    public void noTestDeprecatedAttribute() throws Exception {
+         CtClass cc = loader.get("java.lang.Thread");
+         CtMethod m = cc.getDeclaredMethod("suspend");
+         MethodInfo minfo = m.getMethodInfo();
