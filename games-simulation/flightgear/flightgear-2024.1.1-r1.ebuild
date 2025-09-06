@@ -3,16 +3,15 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic git-r3
+inherit cmake flag-o-matic
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="https://www.flightgear.org/"
-EGIT_REPO_URI="https://gitlab.com/flightgear/${PN}.git"
-EGIT_BRANCH="next"
+SRC_URI="https://gitlab.com/flightgear/fgmeta/-/jobs/9264813015/artifacts/raw/fgbuild/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 dbus debug examples gdal qt6 +udev +utils"
 
 # Needs --fg-root with path to flightgear-data passed to test runner passed,
@@ -66,6 +65,11 @@ BDEPEND="qt6? ( dev-qt/qttools:6 )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2024.1.1-cmake.patch"
 	"${FILESDIR}/${PN}-2024.1.1-fix-fgpanel.patch"
+	"${FILESDIR}/0001-check-to-be-sure-that-n-is-not-being-set-as-format-t.patch"
+	"${FILESDIR}/0003-make-fglauncher-a-static-library.patch"
+	"${FILESDIR}/0005-make-fgqmlui-a-static-library.patch"
+	"${FILESDIR}/0006-fgviewer-fix-crash-on-exit.patch"
+	"${FILESDIR}/${P}-openal-init-decl.patch"
 )
 
 DOCS=( AUTHORS ChangeLog NEWS README Thanks )
@@ -107,7 +111,7 @@ src_configure() {
 		-DENABLE_VR=OFF
 		-DENABLE_YASIM=ON
 		-DEVENT_INPUT=$(usex udev)
-		-DFG_BUILD_TYPE=Nightly
+		-DFG_BUILD_TYPE=Release
 		-DFG_DATA_DIR=/usr/share/${PN}
 		-DJSBSIM_TERRAIN=ON
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
