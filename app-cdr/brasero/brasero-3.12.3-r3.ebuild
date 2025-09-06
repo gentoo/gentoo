@@ -16,7 +16,7 @@ IUSE="+css +introspection +libburn mp3 nautilus playlist tracker"
 
 DEPEND="
 	>=dev-libs/glib-2.29.14:2
-	>=x11-libs/gtk+-3:3[introspection?]
+	>=x11-libs/gtk+-3:3[X,introspection?]
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	>=dev-libs/libxml2-2.6:2=

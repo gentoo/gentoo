@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome2 virtualx
+inherit flag-o-matic gnome2 virtualx
 
 DESCRIPTION="Clutter is a library for creating graphical user interfaces"
 HOMEPAGE="https://wiki.gnome.org/Projects/Clutter"
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Clutter"
 LICENSE="LGPL-2.1+ FDL-1.1+"
 SLOT="1.0"
 KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
-IUSE="aqua debug doc egl gtk +introspection test wayland X"
+IUSE="X aqua debug doc egl gtk +introspection test wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( aqua wayland X )
@@ -23,7 +23,7 @@ REQUIRED_USE="
 # do not depend on tslib, it does not build and is disabled by default upstream
 RDEPEND="
 	>=dev-libs/glib-2.53.4:2
-	>=dev-libs/atk-2.5.3[introspection?]
+	>=app-accessibility/at-spi2-core-2.46.0[introspection?]
 	>=dev-libs/json-glib-0.12[introspection?]
 	>=media-libs/cogl-1.21.2:1.0=[introspection?,pango,wayland?]
 	>=x11-libs/cairo-1.14:=[aqua?,glib]
@@ -38,7 +38,7 @@ RDEPEND="
 		>=dev-libs/libgudev-136
 		x11-libs/libxkbcommon
 	)
-	gtk? ( >=x11-libs/gtk+-3.22.6:3[aqua?] )
+	gtk? ( >=x11-libs/gtk+-3.22.6:3[X?,aqua?,wayland?] )
 	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
 	X? (
 		media-libs/fontconfig
@@ -80,6 +80,9 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	# XXX: Conformance test suite (and clutter itself) does not work under Xvfb
 	# (GLX error blabla)
 	# XXX: coverage disabled for now
