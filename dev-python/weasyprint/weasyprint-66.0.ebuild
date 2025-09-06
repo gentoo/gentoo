@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
+PYPI_VERIFY_REPO=https://github.com/Kozea/WeasyPrint
 PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
