@@ -231,6 +231,7 @@ pkg_setup() {
 }
 
 src_unpack() {
+	go-module_setup_env
 	default
 	cd "${S}"
 	[[ -f go.mod ]] || ln -s vendor.mod go.mod || die
