@@ -1,0 +1,27 @@
+diff --git a/toolz/curried/operator.py b/toolz/curried/operator.py
+index 35979a68..78e54f98 100644
+--- a/toolz/curried/operator.py
++++ b/toolz/curried/operator.py
+@@ -9,7 +9,7 @@
+ IGNORE = {
+     "__abs__", "__index__", "__inv__", "__invert__", "__neg__", "__not__",
+     "__pos__", "_abs", "abs", "attrgetter", "index", "inv", "invert",
+-    "itemgetter", "neg", "not_", "pos", "truth"
++    "is_none", "is_not_none", "itemgetter", "neg", "not_", "pos", "truth"
+ }
+ locals().update(
+     {name: f if name in IGNORE else curry(f)
+diff --git a/toolz/tests/test_inspect_args.py b/toolz/tests/test_inspect_args.py
+index f26dbc64..b7f623c4 100644
+--- a/toolz/tests/test_inspect_args.py
++++ b/toolz/tests/test_inspect_args.py
+@@ -286,7 +286,8 @@ def test_has_keywords():
+     assert has_keywords(int)
+     assert has_keywords(sorted)
+     assert has_keywords(max)
+-    assert has_keywords(map) is False
++    # map gained `strict=False` keyword in Python 3.14
++    assert has_keywords(map) == (sys.version_info[1] >= 14)
+     assert has_keywords(bytearray) is None
+ 
+ 
