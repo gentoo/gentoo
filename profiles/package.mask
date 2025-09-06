@@ -36,6 +36,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-06)
+# Dead upstream which has already spawned a couple of forks. We are 
+# moving to dev-games/openscenegraph-openmw, which is based off OSG 3.6
+# so should be mosty compatible, to reduce maintenance burden.
+# Many bugs: #831082, #831486, #831557, #840164, #864352, #957582
+# Removal on 2025-10-06.
+dev-games/openscenegraph
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-06)
 # Abandoned.  Incompatible with py3.14.  Last release in 2020.
 # No revdeps left.
