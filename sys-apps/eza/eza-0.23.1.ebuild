@@ -25,14 +25,14 @@ CRATES="
 	bumpalo@3.19.0
 	by_address@1.2.1
 	cast@0.3.0
-	cc@1.2.27
+	cc@1.2.30
 	cfg-if@1.0.1
 	chrono@0.4.41
 	ciborium-io@0.2.2
 	ciborium-ll@0.2.2
 	ciborium@0.2.2
-	clap@4.5.40
-	clap_builder@4.5.40
+	clap@4.5.41
+	clap_builder@4.5.41
 	clap_lex@0.7.5
 	colorchoice@1.0.4
 	content_inspector@0.2.4
@@ -117,7 +117,7 @@ CRATES="
 	phf_macros@0.12.1
 	phf_shared@0.12.1
 	pkg-config@0.3.32
-	plist@1.7.2
+	plist@1.7.4
 	plotters-backend@0.3.7
 	plotters-svg@0.3.7
 	plotters@0.3.7
@@ -125,7 +125,7 @@ CRATES="
 	powerfmt@0.2.0
 	proc-macro2@1.0.95
 	proc-mounts@0.3.0
-	quick-xml@0.37.5
+	quick-xml@0.38.0
 	quote@1.0.40
 	r-efi@5.3.0
 	rayon-core@1.12.1
@@ -136,15 +136,15 @@ CRATES="
 	regex-syntax@0.8.5
 	regex@1.11.1
 	rustc-demangle@0.1.25
-	rustix@1.0.7
+	rustix@1.0.8
 	rustversion@1.0.21
 	ryu@1.0.20
 	same-file@1.0.6
 	serde@1.0.219
 	serde_derive@1.0.219
-	serde_json@1.0.140
+	serde_json@1.0.141
 	serde_norway@0.9.42
-	serde_spanned@0.6.9
+	serde_spanned@1.0.0
 	shlex@1.3.0
 	similar@2.7.0
 	siphasher@1.0.1
@@ -166,10 +166,11 @@ CRATES="
 	timeago@0.4.2
 	tinystr@0.8.1
 	tinytemplate@1.2.1
-	toml_datetime@0.6.11
-	toml_edit@0.22.27
-	toml_write@0.1.2
-	trycmd@0.15.9
+	toml_datetime@0.7.0
+	toml_edit@0.23.2
+	toml_parser@1.0.1
+	toml_writer@1.0.2
+	trycmd@0.15.10
 	unicode-ident@1.0.18
 	unicode-width@0.1.14
 	unicode-width@0.2.1
@@ -218,7 +219,7 @@ CRATES="
 	windows_x86_64_gnullvm@0.53.0
 	windows_x86_64_msvc@0.52.6
 	windows_x86_64_msvc@0.53.0
-	winnow@0.7.11
+	winnow@0.7.12
 	wit-bindgen-rt@0.39.0
 	writeable@0.6.1
 	yoke-derive@0.8.0
