@@ -74,6 +74,8 @@ BDEPEND="
 	kde-frameworks/extra-cmake-modules:0
 "
 
+PATCHES=( "${FILESDIR}"/${P}-fix-crashlog-odr.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DBUS=on
