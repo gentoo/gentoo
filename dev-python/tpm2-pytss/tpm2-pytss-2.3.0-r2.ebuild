@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYPI_NO_NORMALIZE=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -41,8 +41,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-preprocess-as-C99.patch"
 	"${FILESDIR}/${PN}-2.3.0-use-CC-enviromental-variable.patch"
-	)
+	# https://github.com/tpm2-software/tpm2-pytss/pull/643
+	"${FILESDIR}/${P}-cryptography-45.patch"
+)
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
