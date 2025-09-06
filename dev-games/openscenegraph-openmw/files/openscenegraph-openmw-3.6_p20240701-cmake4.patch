@@ -1,0 +1,30 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,3 +1,5 @@
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5 FATAL_ERROR)
++
+ #
+ # OpenSceneGraph CMake build file
+ #
+@@ -13,8 +15,6 @@
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS TRUE)
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
+-
+ if(COMMAND cmake_policy)
+     # Works around warnings libraries linked against that don't
+     # have absolute paths (e.g. -lpthreads)
+@@ -24,11 +24,7 @@
+     # statements.
+     cmake_policy(SET CMP0005 NEW)
+ 
+-    # tell CMake to prefer CMake's own CMake modules when available
+-    # only available from cmake-2.8.4
+-    if("${CMAKE_VERSION}" VERSION_GREATER 2.8.3)
+-        cmake_policy(SET CMP0017 NEW)
+-    endif()
++    cmake_policy(SET CMP0017 NEW)
+ 
+     # INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
+     # Allows passing -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
