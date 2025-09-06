@@ -36,6 +36,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-06)
+# dev-python/partd is a dep of dask which we removed in 2024.  It
+# test-depends on dev-python/locket which was last updated in 2022.
+# That one in turn test-depends on dev-python/spur which was last
+# updated in 2023 and is pinned to old dev-python/paramiko version.
+# Its SSH part is not tested by us at all, and the "spur.local"
+# alternative without SSH was last released in 2016.
+# These packages have no revdeps outside themselves left.
+# Removal on 2025-10-06.  Bug #962404.
+dev-python/locket
+dev-python/partd
+dev-python/spur
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-05)
 # Qt5-based library without revdeps. Needs a dedicated maintainer.
 # Bug #955270. Removal on 2025-10-05.
