@@ -13,9 +13,9 @@ HOMEPAGE="https://www.proofpoint.com/us/products/email-protection/open-source-em
 if [[ -n $(ver_cut 4) ]] ; then
 	# Snapshots have an extra version component (e.g. 8.17.1 vs 8.17.1.9)
 	SRC_URI="
-			https://ftp.sendmail.org/snapshots/sendmail.${PV}.tar.gz
-			verify-sig? ( https://ftp.sendmail.org/snapshots/sendmail.${PV}.tar.gz.sig )
-"
+		https://ftp.sendmail.org/snapshots/sendmail.${PV}.tar.gz
+		verify-sig? ( https://ftp.sendmail.org/snapshots/sendmail.${PV}.tar.gz.sig )
+	"
 fi
 SRC_URI+="
 	https://ftp.sendmail.org/sendmail.${PV}.tar.gz
