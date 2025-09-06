@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~sparc x86"
 
 DEPEND=">=sys-kernel/linux-headers-2.4.22"
 
