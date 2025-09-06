@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 
 LICENSE="MIT GPL-2 GPL-2+ GPL-3 GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~arm64 x86"
+KEYWORDS="~alpha amd64 arm ~arm64 x86"
 IUSE="contrib debug java perl selinux static-libs udev xfs"
 
 # The plugin lists have to follow here since they extend IUSE
