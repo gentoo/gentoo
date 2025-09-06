@@ -1,10 +1,28 @@
-# java.lang.UnsupportedOperationException: The Security Manager is deprecated and will be removed in a future release
-# https://github.com/jakartaee/jaxb-api/issues/303#issuecomment-1962748051
+Bug #946907
+
 --- a/jaxb-api-test/src/test/java/jakarta/xml/bind/test/JAXBContextTest.java
 +++ b/jaxb-api-test/src/test/java/jakarta/xml/bind/test/JAXBContextTest.java
-@@ -265,7 +265,6 @@ public class JAXBContextTest {
+@@ -150,7 +150,6 @@ public class JAXBContextTest {
+     ) {
+ 
+         // ensure setup may be done ...
+-        System.setSecurityManager(null);
+ 
+         if (systemProperty != null) {
+             System.setProperty("jakarta.xml.bind.JAXBContextFactory", systemProperty);
+@@ -240,7 +239,6 @@ public class JAXBContextTest {
+ 
+         // unsafe; not running:
+         cleanResource(jaxbPropsFile);
+-        System.setSecurityManager(null);
+     }
+ 
+     @Test
+@@ -263,9 +261,7 @@ public class JAXBContextTest {
+ 
+ 
      private void enableSM() {
-         System.setSecurityManager(null);
+-        System.setSecurityManager(null);
          System.setProperty("java.security.policy", classesDir + "jakarta/xml/bind/test.policy");
 -        System.setSecurityManager(new SecurityManager());
      }
