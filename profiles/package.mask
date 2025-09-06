@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2025-09-06)
+# Abandoned.  Incompatible with py3.14.  Last release in 2020.
+# No revdeps left.
+# Removal on 2025-10-06.  Bug #962431.
+dev-python/timeout-decorator
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-06)
 # dev-python/partd is a dep of dask which we removed in 2024.  It
 # test-depends on dev-python/locket which was last updated in 2022.
 # That one in turn test-depends on dev-python/spur which was last
