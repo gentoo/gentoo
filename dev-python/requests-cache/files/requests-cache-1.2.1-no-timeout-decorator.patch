@@ -1,0 +1,111 @@
+From a0069d9c57337c0815d9767cf6352282066baf3f Mon Sep 17 00:00:00 2001
+From: Jordan Cook <jordan.cook.git@proton.me>
+Date: Thu, 4 Sep 2025 17:56:02 -0500
+Subject: [PATCH] Replace timeout-decorator with threading-based version for
+ compatibility with python 3.14 and xdist
+
+multiprocessing-based timeout now raises `PicklingError` on python 3.14
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index ecbf2b1a..aeff1e16 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -11,6 +11,7 @@
+ 
+ import os
+ import platform
++import threading
+ import warnings
+ from contextlib import contextmanager, nullcontext
+ from datetime import datetime, timedelta, timezone
+@@ -27,7 +28,6 @@
+ from requests_mock import ANY as ANY_METHOD
+ from requests_mock import Adapter
+ from rich.logging import RichHandler
+-from timeout_decorator import timeout
+ 
+ from requests_cache import ALL_METHODS, CachedSession, install_cache, uninstall_cache, utcnow
+ 
+@@ -294,6 +294,40 @@ def assert_delta_approx_equal(dt1: datetime, dt2: datetime, target_delta, thresh
+     assert abs(diff_in_seconds - target_delta) <= threshold_seconds
+ 
+ 
++def timeout(timeout_seconds: float):
++    """Timeout decorator that uses threading instead of multiprocessing, for compatibility with
++    pytest-xdist on python 3.14+.
++    """
++
++    def decorator(func):
++        @wraps(func)
++        def wrapper(*args, **kwargs):
++            result = None
++            exception = None
++
++            def target() -> None:
++                nonlocal result, exception
++                try:
++                    result = func(*args, **kwargs)
++                except Exception as e:
++                    exception = e
++
++            thread = threading.Thread(target=target)
++            thread.daemon = True
++            thread.start()
++            thread.join(timeout=timeout_seconds)
++
++            if thread.is_alive():
++                raise TimeoutError(f'Function timed out after {timeout_seconds} seconds')
++            if exception is not None:
++                raise exception
++            return result
++
++        return wrapper
++
++    return decorator
++
++
+ def fail_if_no_connection(connect_timeout: float = 1.0) -> bool:
+     """Decorator for testing a backend connection. This will intentionally cause a test failure if
+     the wrapped function doesn't have dependencies installed, doesn't connect after a short timeout,
+@@ -307,7 +341,7 @@ def decorator(func):
+         @wraps(func)
+         def wrapper(*args, **kwargs):
+             try:
+-                timeout(connect_timeout, use_signals=False)(func)(*args, **kwargs)
++                timeout(connect_timeout)(func)(*args, **kwargs)
+             except Exception as e:
+                 logger.error(e)
+                 pytest.fail('Could not connect to backend')
+diff --git a/tests/integration/test_mongodb.py b/tests/integration/test_mongodb.py
+index 39f6dfef..d8ac5304 100644
+--- a/tests/integration/test_mongodb.py
++++ b/tests/integration/test_mongodb.py
+@@ -27,7 +27,10 @@ def ensure_connection():
+     from pymongo import MongoClient
+ 
+     client = MongoClient(serverSelectionTimeoutMS=2000)
+-    client.server_info()
++    try:
++        client.server_info()
++    finally:
++        client.close()
+ 
+ 
+ class TestMongoDict(BaseStorageTest):
+diff --git a/tests/integration/test_redis.py b/tests/integration/test_redis.py
+index 2a34899d..a850096d 100644
+--- a/tests/integration/test_redis.py
++++ b/tests/integration/test_redis.py
+@@ -15,7 +15,11 @@ def ensure_connection():
+     """Fail all tests in this module if Redis is not running"""
+     from redis import Redis
+ 
+-    Redis().info()
++    client = Redis()
++    try:
++        client.info()
++    finally:
++        client.close()
+ 
+ 
+ class TestRedisDict(BaseStorageTest):
