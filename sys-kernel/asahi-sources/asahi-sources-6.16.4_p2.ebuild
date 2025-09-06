@@ -7,7 +7,7 @@ ETYPE="sources"
 CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="4"
+K_GENPATCHES_VER="5"
 K_NODRYRUN="1"
 
 RUST_MIN_VER="1.85.0"
@@ -17,19 +17,8 @@ inherit kernel-2 rust
 detect_version
 detect_arch
 
-if [[ ${PV} != ${PV/_rc} ]] ; then
-	# $PV is expected to be of following form: 6.0_rc5_p1
-	MY_TAG="$(ver_cut 6)"
-	MY_BASE="$(ver_rs 2 - $(ver_cut 1-4))"
-else
-	# $PV is expected to be of following form: 5.19.0_p1
-	MY_TAG="$(ver_cut 5)"
-	if [[ "$(ver_cut 3)" == "0" ]] ; then
-		MY_BASE="$(ver_cut 1-2)"
-	else
-		MY_BASE="$(ver_cut 1-3)"
-	fi
-fi
+MY_BASE=${PV%_p*}
+MY_TAG=${PV#*_p}
 
 EXTRAVERSION="-asahi-${MY_TAG}"
 
