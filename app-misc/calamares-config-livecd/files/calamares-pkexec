@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+main() {
+	pkexec /usr/bin/calamares
+}
+
+main

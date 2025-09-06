@@ -1,0 +1,27 @@
+---
+componentName:  gentoo_branding
+
+strings:
+    productName:         Gentoo Linux
+    shortProductName:    Gentoo
+    version:             GENTOO_VERSION
+    shortVersion:        GENTOO_VERSION
+    versionedName:       Gentoo Linux GENTOO_VERSION
+    shortVersionedName:  Gentoo GENTOO_VERSION
+    bootloaderEntryName: Gentoo
+    productUrl:          https://www.gentoo.org/
+    supportUrl:          https://www.gentoo.org/inside-gentoo/contact/
+    knownIssuesUrl:      https://bugs.gentoo.org/
+    releaseNotesUrl:     https://www.gentoo.org/news/
+
+images:
+    productLogo:         "gentoo.png"
+    productIcon:         "gentoo.png"
+    productWelcome:      "languages.png"
+
+slideshow:               "show.qml"
+
+style:
+   sidebarBackground:    "#292F34"
+   sidebarText:          "#FFFFFF"
+   sidebarTextSelect:    "#292F34"
