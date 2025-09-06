@@ -58,3 +58,10 @@ src_configure() {
 		--program-suffix="-${PV}" \
 		--infodir="${TC_AUTOCONF_INFOPATH}"
 }
+
+src_install() {
+	default
+
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+}
