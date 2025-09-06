@@ -15,7 +15,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND=">=sci-physics/fastjet-3.4.1[plugins]"
 RDEPEND="${DEPEND}"
