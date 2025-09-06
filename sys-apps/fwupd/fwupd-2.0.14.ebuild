@@ -14,9 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="amdgpu +archive bash-completion bluetooth cbor flashrom gnutls gtk-doc introspection lzma minimal modemmanager nvme policykit protobuf seccomp spi synaptics systemd test tpm uefi"
+IUSE="amdgpu +archive bash-completion bluetooth cbor elogind flashrom gnutls gtk-doc introspection lzma minimal modemmanager nvme policykit protobuf seccomp spi synaptics systemd test tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	^^ ( minimal systemd )
+	^^ ( elogind minimal systemd )
 	minimal? ( !introspection )
 	spi? ( lzma )
 	seccomp? ( systemd )
@@ -63,6 +63,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.62.0
 	archive? ( app-arch/libarchive:= )
 	cbor? ( >=dev-libs/libcbor-0.7.0:= )
+	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	gnutls? ( >=net-libs/gnutls-3.6.0 )
 	virtual/libusb:1
@@ -93,6 +94,10 @@ DEPEND="
 		x11-libs/libdrm[video_cards_amdgpu]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.14-elogind.patch
+)
 
 src_prepare() {
 	default
@@ -125,6 +130,7 @@ src_configure() {
 		$(meson_use bash-completion bash_completion)
 		$(meson_feature bluetooth bluez)
 		$(meson_feature cbor)
+		$(meson_feature elogind)
 		$(meson_feature gnutls)
 		$(meson_feature gtk-doc docs)
 		$(meson_feature introspection)
