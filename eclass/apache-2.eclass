@@ -451,7 +451,7 @@ apache-2_src_prepare() {
 	# idea for everyone
 	case ${CHOST} in
 		*-linux-gnu|*-solaris*)
-			# do nothing, these use GNU binutils
+			# do nothing, these use GNU Binutils
 			:
 		;;
 		*-darwin*)
