@@ -15,7 +15,7 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel.
+# Determine the patchlevel. See https://ftp.gnu.org/gnu/bash/bash-5.3-patches/.
 case ${PV} in
 	9999|*_alpha*|*_beta*|*_rc*)
 		# Set a negative patchlevel to indicate that it's a pre-release.
@@ -101,7 +101,8 @@ PATCHES=(
 	#"${WORKDIR}"/${PN}-${GENTOO_PATCH_VER}/
 
 	# Patches to or from Chet, posted to the bug-bash mailing list.
-	"${FILESDIR}/${PN}-5.0-syslog-history-extern.patch"
+	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${FILESDIR}"/${PN}-5.3-read-sys.patch
 )
 
 pkg_setup() {
@@ -167,10 +168,8 @@ src_configure() {
 	# Upstream only test with Bison and require GNUisms like YYEOF and
 	# YYERRCODE. The former at least may be in POSIX soon:
 	# https://www.austingroupbugs.net/view.php?id=1269.
-	#
 	# configure warns on use of non-Bison but doesn't abort. The result
-	# may misbehave at runtime. Chet also advises against use of byacc:
-	# https://lists.gnu.org/archive/html/bug-bash/2025-08/msg00115.html
+	# may misbehave at runtime.
 	unset -v YACC
 
 	if tc-is-cross-compiler; then
