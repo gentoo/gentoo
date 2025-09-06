@@ -1,0 +1,17 @@
+commit 35f2afbc88f0cd92b270101b5e9f833f3156ed3c
+Author: Mario Haustein <mario.haustein@hrz.tu-chemnitz.de>
+Date:   Sat Sep 6 11:38:02 2025 +0200
+Upstream: https://sourceforge.net/p/fldigi/flmsg/merge-requests/2/
+
+    add missing header
+
+--- a/src/widgets/font_browser.cxx
++++ b/src/widgets/font_browser.cxx
+@@ -33,6 +33,7 @@
+ #include <string>
+ #include <cstdio>
+ #include <stdint.h>
++#include <pthread.h>
+ 
+ #include <FL/Fl.H>
+ #include <FL/Fl_Color_Chooser.H>
