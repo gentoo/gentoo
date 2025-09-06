@@ -6,15 +6,15 @@ EAPI=8
 inherit flag-o-matic strip-linguas toolchain-funcs user-info
 
 DESCRIPTION="Video Disk Recorder - turns a pc into a powerful set top box for DVB"
-HOMEPAGE="http://www.tvdr.de/"
-SRC_URI="http://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/${PV};sf=tbz2 -> ${P}.tbz2
+HOMEPAGE="https://www.tvdr.de/"
+SRC_URI="https://git.tvdr.de/?p=vdr.git;a=snapshot;h=refs/tags/${PV};sf=tbz2 -> ${P}.tbz2
 	menuorg? ( https://github.com/vdr-projects/vdr-plugin-menuorg/raw/master/vdr-patch/vdr-menuorg-2.3.x.diff )
 	ttxtsubs? ( https://md11.it.cx/download/${PN}/${P}_ttxtsubs_v2.patch )"
 
 LICENSE="GPL-2+"
-SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
-IUSE="bidi debug demoplugins html keyboard mainmenuhooks menuorg naludump permashift pinplugin systemd ttxtsubs verbose"
+SLOT="0/5" # config.h: APIVERSION "5"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+IUSE="bidi debug demoplugins keyboard mainmenuhooks menuorg naludump permashift pinplugin systemd ttxtsubs verbose"
 
 COMMON_DEPEND="
 	acct-group/vdr
@@ -111,7 +111,7 @@ src_prepare() {
 	EOT
 	eend 0
 
-	eapply "${FILESDIR}/${P}_gentoo.patch"
+	eapply "${FILESDIR}/vdr-2.6.6_gentoo.patch"
 	use demoplugins || eapply "${FILESDIR}/vdr-2.4_remove_plugins.patch"
 	eapply "${FILESDIR}/${PN}-2.4.6_makefile-variables.patch"
 
@@ -119,8 +119,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.4.6_clang.patch"
 
 	use naludump && eapply "${FILESDIR}/${PN}-2.6.1_naludump.patch"
-	use permashift && eapply "${FILESDIR}/${PN}-2.6.1-patch-for-permashift.patch"
-	use pinplugin && eapply "${FILESDIR}/${PN}-2.6.1_pinplugin.patch"
+	use permashift && eapply "${FILESDIR}/${PN}-2.7.2-patch-for-permashift.patch"
+	use pinplugin && eapply "${FILESDIR}/${PN}-2.7.3_pinplugin.patch"
 	use ttxtsubs && eapply "${DISTDIR}/${P}_ttxtsubs_v2.patch"
 	use menuorg && eapply "${DISTDIR}/vdr-menuorg-2.3.x.diff"
 	use mainmenuhooks && eapply "${FILESDIR}/${PN}-2.4.1_mainmenuhook-1.0.1.patch"
@@ -172,9 +172,7 @@ src_install() {
 	# backup for plugins they don't be able to create this dir
 	keepdir "${CONF_DIR}/plugins"
 
-	if use html; then
-		local HTML_DOCS=( *.html )
-	fi
+	local HTML_DOCS=( *.html )
 	local DOCS=( MANUAL INSTALL README* HISTORY CONTRIBUTORS UPDATE-2* )
 	einstalldocs
 
