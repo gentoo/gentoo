@@ -274,14 +274,6 @@ dev-ruby/ruby-openid
 # Removal on 2025-09-07.
 dev-java/jide-oss
 
-# Eli Schwartz <eschwartz@gentoo.org> (2025-07-28)
-# Unmaintained, out of date, last upstream release in 2018, last
-# packaged release 2015. Broken with modern system interfaces for
-# some time. Entire OpenVZ ecosystem is vaporware these days,
-# openvz-sources was last-rited in 2017 already.
-# Removal on 2025-08-27.  Bug #580516, #868252.
-sys-cluster/vzctl
-
 # Hans de Graaff <graaff@gentoo.org> (2025-07-28)
 # Obsolete slots of cucumber components. These slots are no longer used
 # by dev-util/cucumber. Removal on 2025-08-28.

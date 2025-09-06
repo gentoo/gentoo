@@ -217,11 +217,6 @@ net-analyzer/rrdtool rados
 # are missing keywords.
 games-simulation/openttd openmedia
 
-# Sergey Popov <pinkbyte@gentoo.org> (2013-02-18)
-# sys-cluster/ploop can not be build on ppc64, bug #447644
-# Masking USE-dep on it
-sys-cluster/vzctl ploop
-
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
 www-client/seamonkey ipc
