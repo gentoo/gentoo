@@ -31,15 +31,12 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/dictdiffer[${PYTHON_USEDEP}]
-		dev-python/pytest-check[${PYTHON_USEDEP}]
-		dev-python/pytest-rerunfailures[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		>=dev-python/stdio-mgr-1.0.1[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/timeout-decorator[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{check,rerunfailures,timeout} )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
@@ -56,9 +53,4 @@ src_prepare() {
 	sed -i -e 's:sphobjinv[.]_vendored[.]::' src/sphobjinv/*.py || die
 
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p check -p rerunfailures -p timeout
 }
