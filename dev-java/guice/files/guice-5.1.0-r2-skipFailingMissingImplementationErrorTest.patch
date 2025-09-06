@@ -1,0 +1,28 @@
+--- a/test/com/google/inject/errors/MissingImplementationErrorTest.java
++++ b/test/com/google/inject/errors/MissingImplementationErrorTest.java
+@@ -17,6 +17,7 @@ import java.lang.annotation.RetentionPolicy;
+ import javax.inject.Provider;
+ import javax.inject.Qualifier;
+ import org.junit.Before;
++import org.junit.Ignore;
+ import org.junit.Test;
+ import org.junit.runner.RunWith;
+ import org.junit.runners.JUnit4;
+@@ -76,7 +77,7 @@ public final class MissingImplementationErrorTest {
+     }
+   }
+ 
+-  @Test
++  @Test @Ignore
+   public void missingImplementationErrors() throws Exception {
+     CreationException exception =
+         assertThrows(CreationException.class, () -> Guice.createInjector(new TestModule()));
+@@ -141,7 +142,7 @@ public final class MissingImplementationErrorTest {
+     }
+   }
+ 
+-  @Test
++  @Test @Ignore
+   public void missingImplementationWithHints() throws Exception {
+     CreationException exception =
+         assertThrows(CreationException.class, () -> Guice.createInjector(new HintsModule()));

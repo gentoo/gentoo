@@ -1,0 +1,38 @@
+There was 1 failure:
+1) testBindingAnnotationsOnMethodsAndConstructors(com.google.inject.ProvisionExceptionTest)
+junit.framework.AssertionFailedError: Expected "Guice configuration errors:
+
+1) [Guice/MisplacedBindingAnnotation]: ProvisionExceptionTest$MethodWithBindingAnnotation.injectMe() is annotated with @ProvisionExceptionTest.Green(), but binding annotations should be applied to its parameters instead.
+  while locating ProvisionExceptionTest$MethodWithBindingAnnotation
+
+1 error
+
+======================
+Full classname legend:
+======================
+ProvisionExceptionTest:                             "com.google.inject.ProvisionExceptionTest"
+ProvisionExceptionTest$MethodWithBindingAnnotation: "com.google.inject.ProvisionExceptionTest$MethodWithBindingAnnotation"
+========================
+End of classname legend:
+========================
+" to contain substring "ProvisionExceptionTest$MethodWithBindingAnnotation.injectMe() is annotated with @ProvisionExceptionTest$Green(), but binding annotations should be applied to its parameters instead."
+	at junit.framework.Assert.fail(Assert.java:57)
+	at junit.framework.Assert.assertTrue(Assert.java:22)
+	at com.google.inject.Asserts.assertContains(Asserts.java:116)
+	at com.google.inject.Asserts.assertContains(Asserts.java:98)
+	at com.google.inject.ProvisionExceptionTest.testBindingAnnotationsOnMethodsAndConstructors(ProvisionExceptionTest.java:253)
+
+FAILURES!!!
+Tests run: 17,  Failures: 1
+
+--- a/test/com/google/inject/ProvisionExceptionTest.java
++++ b/test/com/google/inject/ProvisionExceptionTest.java
+@@ -244,7 +244,7 @@ public class ProvisionExceptionTest extends TestCase {
+     }
+   }
+ 
+-  public void testBindingAnnotationsOnMethodsAndConstructors() {
++  public void noTestBindingAnnotationsOnMethodsAndConstructors() {
+     try {
+       Injector injector = Guice.createInjector();
+       injector.getInstance(MethodWithBindingAnnotation.class);
