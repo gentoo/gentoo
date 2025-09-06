@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Conrad Kostecki <conikost@gentoo.org> (2025-09-06)
+# Currently does not build in headless mode.
+# See: https://github.com/OpenRCT2/OpenRCT2/issues/25119
+>=games-simulation/openrct2-0.4.26
+
 # idealseal <realidealseal@protonmail.com> (2025-07-08)
 # Only supported on x86-64.
 dev-util/sccache dist-server
