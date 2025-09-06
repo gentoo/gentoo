@@ -43,14 +43,14 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
 # TODO: Like to simplify these. Mostly the flags related to Groups.
 IUSE="all-modules boost +cgns cuda debug doc examples ffmpeg gdal gles2-only imaging
-	java las +logging minimal mpi mysql +netcdf odbc opencascade openmp openvdb pdal postgres
+	java +logging minimal mpi mysql +netcdf odbc opencascade openmp openvdb pdal postgres
 	python qt6 +rendering tbb test +threads tk +truetype video_cards_nvidia +views vtkm web"
 
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	all-modules? (
-		boost cgns ffmpeg gdal imaging las mysql netcdf odbc opencascade openvdb pdal
+		boost cgns ffmpeg gdal imaging mysql netcdf odbc opencascade openvdb pdal
 		postgres rendering truetype views
 	)
 	cuda? ( video_cards_nvidia vtkm )
@@ -98,7 +98,6 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:= )
 	gdal? ( sci-libs/gdal:= )
 	java? ( >=virtual/jdk-11:= )
-	las? ( sci-geosciences/liblas )
 	!minimal? (
 		>=media-libs/libharu-2.4.0:=
 		media-libs/libtheora:=
@@ -441,7 +440,7 @@ src_configure() {
 
 		-DVTK_MODULE_ENABLE_VTK_IOCGNSReader="$(usex cgns "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOExportPDF="$(usex minimal "NO" "YES")"
-		-DVTK_MODULE_ENABLE_VTK_IOLAS="$(usex las "YES" "NO")"
+		-DVTK_MODULE_ENABLE_VTK_IOLAS="NO"
 		-DVTK_MODULE_ENABLE_VTK_IONetCDF="$(usex netcdf "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOOCCT="$(usex opencascade "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_IOOggTheora="$(usex minimal "NO" "YES")"

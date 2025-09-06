@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-1 )
 WX_GTK_VER="3.2-gtk3"
 inherit cmake flag-o-matic lua-single toolchain-funcs wxwidgets
 
-MY_COMMIT="69cfecebfb6dc703b42e8de39eed750a84a87489"
+MY_COMMIT="43faf6fa88bd236e0911a5340bfbcbc25b3a98d9"
 
 DESCRIPTION="OpenMW-specific fork of OpenSceneGraph"
 HOMEPAGE="https://github.com/OpenMW/osg"
@@ -17,7 +17,7 @@ S="${WORKDIR}/osg-${MY_COMMIT}"
 
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/162" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="
 	+collada curl dicom debug doc egl examples fltk fox gdal
 	gif gstreamer +jpeg las lua openexr openinventor osgapps pdf +png
@@ -61,7 +61,7 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	las? ( >=sci-geosciences/liblas-1.8.0 )
+	las? ( sci-libs/pdal:= )
 	lua? ( ${LUA_DEPS} )
 	openexr? (
 		dev-libs/imath:=
@@ -86,10 +86,11 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/openscenegraph-3.6.3-cmake.patch
-	"${FILESDIR}"/openscenegraph-3.6.3-docdir.patch
 	"${FILESDIR}"/openscenegraph-3.6.5-cmake_lua_version.patch
 	"${FILESDIR}"/openscenegraph-3.6-openexr3.patch
+	"${FILESDIR}"/${P}-use-pdal-instead-of-liblas.patch
+	"${FILESDIR}"/${P}-cmake4.patch # bug 960858
+	"${FILESDIR}"/${P}-cmake.patch # GNUInstalldirs, paths
 )
 
 pkg_setup() {
@@ -125,7 +126,7 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_GtkGl=ON
 		$(cmake_use_find_package jpeg JPEG)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
-		$(cmake_use_find_package las LIBLAS)
+		$(cmake_use_find_package las PDAL)
 		$(cmake_use_find_package lua Lua)
 		-DCMAKE_DISABLE_FIND_PACKAGE_OpenCascade=ON
 		$(cmake_use_find_package openexr OpenEXR)

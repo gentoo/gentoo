@@ -3,23 +3,23 @@
 
 EAPI=8
 
-inherit cmake git-r3
+inherit cmake
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="https://www.flightgear.org/"
-EGIT_REPO_URI="https://gitlab.com/flightgear/${PN}.git"
-EGIT_BRANCH="next"
+SRC_URI="https://gitlab.com/flightgear/fgmeta/-/jobs/9264813015/artifacts/raw/sgbuild/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 debug ffmpeg gdal subversion test"
 RESTRICT="!test? ( test )"
 
 # TODO AeonWave, CycloneDDS
 COMMON_DEPEND="
+	app-arch/xz-utils
 	dev-libs/expat
-	dev-games/openscenegraph
+	dev-games/openscenegraph-openmw:=
 	media-libs/openal
 	net-libs/udns
 	net-misc/curl
@@ -34,6 +34,12 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
+
+PATCHES=(
+	"${FILESDIR}/0001-check-to-be-sure-that-n-is-not-being-set-as-format-t.patch"
+	"${FILESDIR}/0002-fix-support-for-aarch64.patch"
+	"${FILESDIR}/${P}-boost.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
