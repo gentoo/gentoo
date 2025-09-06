@@ -1,0 +1,170 @@
+https://github.com/fcitx/fcitx5/commit/5b12bf216dda31c0f11eb85af54a43fce9d5a2ab
+
+Fix crashlog being inconsistent type in main/errorhandler.
+
+--- a/src/server/errorhandler.cpp
++++ b/src/server/errorhandler.cpp
+@@ -14,7 +14,7 @@
+ #include <cstdint>
+ #include <cstring>
+ #include <ctime>
+-#include <string>
++#include <filesystem>
+ #include "fcitx-utils/fs.h"
+ #include "fcitx-utils/standardpaths.h"
+ #include "fcitx-utils/unixfd.h"
+@@ -31,15 +31,30 @@
+ #define MINIMAL_BUFFER_SIZE 256
+ #define BACKTRACE_SIZE 32
+
+-extern int selfpipe[2];
+-extern std::string crashlog;
++namespace fcitx {
++
++static int signalPipe;
++static std::filesystem::path crashlog;
+
+ struct MinimalBuffer {
+     char buffer[MINIMAL_BUFFER_SIZE];
+     int offset;
+ };
+
+-void SetMyExceptionHandler() {
++static void OnException(int signo);
++
++void SetMyExceptionHandler(int pipeFd) {
++
++    auto userDir =
++        StandardPaths::global().userDirectory(StandardPathsType::PkgConfig);
++    if (!userDir.empty()) {
++        if (fs::makePath(userDir)) {
++            crashlog = userDir / "crash.log";
++        }
++    }
++
++    signalPipe = pipeFd;
++
+     int signo;
+
+     for (signo = SIGHUP; signo < SIGUNUSED; signo++) {
+@@ -115,7 +130,7 @@ static inline void _write_buffer(int fd, const MinimalBuffer *buffer) {
+ void OnException(int signo) {
+     if (signo == SIGCHLD) {
+         uint8_t sig = (signo & 0xff);
+-        fcitx::fs::safeWrite(selfpipe[1], &sig, 1);
++        fcitx::fs::safeWrite(signalPipe, &sig, 1);
+         signal(signo, OnException);
+         return;
+     }
+@@ -180,10 +195,12 @@ void OnException(int signo) {
+         if (signo < 0xff) {
+             sig = (uint8_t)(signo & 0xff);
+         }
+-        fcitx::fs::safeWrite(selfpipe[1], &sig, 1);
++        fcitx::fs::safeWrite(signalPipe, &sig, 1);
+         signal(signo, OnException);
+     } break;
+     }
+ }
+
++} // namespace fcitx
++
+ // kate: indent-mode cstyle; space-indent on; indent-width 0;
+--- a/src/server/errorhandler.h
++++ b/src/server/errorhandler.h
+@@ -16,23 +16,15 @@
+ #ifndef SIGUNUSED
+ #define SIGUNUSED 29
+ #endif
+-/* ***********************************************************
+-// Data structures
+-// *********************************************************** */
+
+-/* ***********************************************************
+-// Functions
+-// *********************************************************** */
++namespace fcitx {
+
+ //
+ // Set Posix Signal Handler
+ //
+ //
+-void SetMyExceptionHandler(void);
++void SetMyExceptionHandler(int pipeFd);
+
+-//
+-// Process Posix signal
+-//
+-void OnException(int signo);
++} // namespace fcitx
+
+ #endif
+--- a/src/server/main.cpp
++++ b/src/server/main.cpp
+@@ -8,21 +8,17 @@
+ #include <sys/stat.h>
+ #include <clocale>
+ #include <cstdio>
+-#include <cstdlib>
+ #include <exception>
+ #include <filesystem>
+ #include <iostream>
+ #include <string>
+-#include <utility>
+ #include <vector>
+ #include "fcitx-utils/environ.h"
+-#include "fcitx-utils/fs.h"
+ #include "fcitx-utils/log.h"
+ #include "fcitx-utils/misc.h"
+ #include "fcitx-utils/misc_p.h"
+ #include "fcitx-utils/standardpath.h"
+ #include "fcitx-utils/standardpaths.h"
+-#include "fcitx-utils/stringutils.h"
+ #include "fcitx/addonfactory.h"
+ #include "fcitx/addoninstance.h"
+ #include "fcitx/addonloader.h"
+@@ -31,8 +27,6 @@
+ #include "errorhandler.h"
+
+ using namespace fcitx;
+-int selfpipe[2];
+-std::filesystem::path crashlog;
+
+ FCITX_DEFINE_STATIC_ADDON_REGISTRY(getStaticAddon)
+ #ifdef ENABLE_KEYBOARD
+@@ -43,7 +37,8 @@ int main(int argc, char *argv[]) {
+     umask(077);
+     StandardPath::global().syncUmask();
+     StandardPaths::global().syncUmask();
+-    if (safePipe(selfpipe) < 0) {
++    int selfPipe[2];
++    if (safePipe(selfPipe) < 0) {
+         fprintf(stderr, "Could not create self-pipe.\n");
+         return 1;
+     }
+@@ -54,15 +49,7 @@ int main(int argc, char *argv[]) {
+         return 1;
+     }
+
+-    auto userDir =
+-        StandardPaths::global().userDirectory(StandardPathsType::PkgConfig);
+-    if (!userDir.empty()) {
+-        if (fs::makePath(userDir)) {
+-            crashlog = userDir / "crash.log";
+-        }
+-    }
+-
+-    SetMyExceptionHandler();
++    SetMyExceptionHandler(selfPipe[1]);
+
+     setlocale(LC_ALL, "");
+
+@@ -74,7 +61,7 @@ int main(int argc, char *argv[]) {
+         FCITX_LOG_IF(Info, isInFlatpak()) << "Running inside flatpak.";
+         Instance instance(argc, argv);
+         instance.setBinaryMode();
+-        instance.setSignalPipe(selfpipe[0]);
++        instance.setSignalPipe(selfPipe[0]);
+         instance.addonManager().registerDefaultLoader(&getStaticAddon());
+
+         ret = instance.exec();
