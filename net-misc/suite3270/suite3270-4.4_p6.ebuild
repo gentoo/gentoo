@@ -21,7 +21,7 @@ SRC_URI="https://downloads.sourceforge.net/x3270/${MY_P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~s390 ~sparc x86"
 IUSE="cjk doc gui ncurses ssl tcl"
 # json_test fails on an obvious assert?
 RESTRICT="test"
