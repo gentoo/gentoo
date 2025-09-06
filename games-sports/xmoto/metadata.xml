@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="double-precision">more precise calculations at the expense of speed</flag>
+    <flag name="system-ode">Use system <pkg>dev-games/ode</pkg> instead of the bundled one</flag>
   </use>
   <upstream>
     <remote-id type="github">xmoto/xmoto</remote-id>
