@@ -1,15 +1,7 @@
 
-We are changing the javac -soure value from 1.4 to 1.8 which is supported by all
-Java versions presently available in ::gentoo.
-
-TODO: configure.ac
-Replace '1.8' with a variable to be set with $(java-pkg_get-source) in the ebuild.
-
-TODO java/Makefile.am
-Replace fixed values in
-	$(JAVAC) -source 1.8 -target 1.8 `for file in $(JAVASOURCES); do echo ThePEG/$$file; done`
-with values from java-pkg_get-source and java-pkg_get-target
-
+We are changing the javac -soure value from 1.4 to java-pkg_get-source
+and java-pkg_get-target which is supported by all Java versions presently
+available in ::gentoo.
 --- a/configure.ac
 +++ b/configure.ac
 @@ -123,7 +123,7 @@ AC_ARG_WITH(javagui,
@@ -17,7 +9,7 @@ with values from java-pkg_get-source and java-pkg_get-target
  
  if test "x$with_javagui" != "xno"; then
 -  THEPEG_HAS_JAVA([1.4], [], [with_javagui=no; AC_MSG_NOTICE([Java GUI disabled])])
-+  THEPEG_HAS_JAVA([1.8], [], [with_javagui=no; AC_MSG_NOTICE([Java GUI disabled])])
++  THEPEG_HAS_JAVA([JAVA_PKG_GET_SOURCE], [], [with_javagui=no; AC_MSG_NOTICE([Java GUI disabled])])
  fi
  
  AM_CONDITIONAL([JAVAGUI], [test "x$with_javagui" != "xno"])
@@ -42,7 +34,7 @@ with values from java-pkg_get-source and java-pkg_get-target
  
  ThePEG.jar: ThePEG $(JAVASOURCES)
 -	$(JAVAC) `for file in $(JAVASOURCES); do echo ThePEG/$$file; done`
-+	$(JAVAC) -source 1.8 -target 1.8 `for file in $(JAVASOURCES); do echo ThePEG/$$file; done`
++	$(JAVAC) -source JAVA_PKG_GET_SOURCE -target JAVA_PKG_GET_TARGET `for file in $(JAVASOURCES); do echo ThePEG/$$file; done`
  	$(JAR) cmf ThePEG/jar-manifest ThePEG.jar ThePEG/*.class
  
  thepeg.sh: thepeg.install Makefile
