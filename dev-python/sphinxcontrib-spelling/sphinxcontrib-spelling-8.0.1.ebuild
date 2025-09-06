@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -30,6 +30,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile() {
@@ -49,6 +50,5 @@ python_test() {
 	distutils_write_namespace sphinxcontrib
 	rm -rf sphinxcontrib || die
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest tests
 }
