@@ -281,7 +281,6 @@ dev-java/jide-oss
 # openvz-sources was last-rited in 2017 already.
 # Removal on 2025-08-27.  Bug #580516, #868252.
 sys-cluster/vzctl
-app-backup/vzdump
 
 # Hans de Graaff <graaff@gentoo.org> (2025-07-28)
 # Obsolete slots of cucumber components. These slots are no longer used
