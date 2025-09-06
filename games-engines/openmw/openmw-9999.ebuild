@@ -30,7 +30,7 @@ SRC_URI+="
 
 LICENSE="GPL-3 MIT BitstreamVera ZLIB"
 SLOT="0"
-IUSE="doc devtools +gui +osg-fork test"
+IUSE="doc devtools +gui test"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
@@ -46,6 +46,7 @@ RDEPEND="${LUA_DEPS}
 	dev-games/recastnavigation:=
 	dev-libs/collada-dom:=
 	>=dev-games/mygui-3.4.3:=
+	>=dev-games/openscenegraph-openmw-3.6:=[collada(-),jpeg,png,sdl,svg,truetype,zlib]
 	dev-libs/boost:=[zlib]
 	dev-libs/icu:=
 	dev-libs/tinyxml[stl]
@@ -55,8 +56,6 @@ RDEPEND="${LUA_DEPS}
 	>=sci-physics/bullet-2.86:=[double-precision]
 	sys-libs/zlib
 	virtual/opengl
-	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
-	!osg-fork? ( >=dev-games/openscenegraph-3.6.5:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
 	gui? (
 		app-arch/unshield:=
 		dev-qt/qtbase:6[gui,network,opengl,widgets]
