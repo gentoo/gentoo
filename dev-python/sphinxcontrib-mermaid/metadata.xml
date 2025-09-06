@@ -12,7 +12,7 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">sphinxcontrib-mermaid</remote-id>
-		<remote-id type="github">mgaitan/sphinxcontrib-spelling</remote-id>
+		<remote-id type="github">mgaitan/sphinxcontrib-mermaid</remote-id>
 		<doc>https://sphinxcontrib-mermaid-demo.readthedocs.io/</doc>
 	</upstream>
 </pkgmetadata>
