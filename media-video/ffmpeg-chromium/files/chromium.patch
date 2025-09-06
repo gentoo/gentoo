@@ -20,10 +20,15 @@ index 0000000..992cf3c
 +endif
 +
 +$(LIBFFMPEG): $(LIBFFMPEG_DEPS)
++	@grep -o '\bav[a-z0-9_]*(' chromium/ffmpeg.sigs | sed 's/(//' > chromium/sigs.txt
++	@echo -e "avformat_version\navutil_version\nff_h264_decode_init_vlc" >> chromium/sigs.txt # for opera
++	@echo -e "{\nglobal:" > chromium/export.map
++	@sed 's/$$/;/' chromium/sigs.txt |tee -a chromium/export.map
++	@echo -e "local:\n*;\n};" >> chromium/export.map
 +ifeq ($(CONFIG_SHARED),yes)
 +	$(LIBFFMPEG_LINK) -Wl,--no-as-needed -lavcodec -lavformat -lavutil
 +else
-+	$(LIBFFMPEG_LINK) -Wl,--whole-archive $^ -Wl,--no-whole-archive $(EXTRALIBS-avcodec) $(EXTRALIBS-avformat) $(EXTRALIBS-avutil)
++	$(LIBFFMPEG_LINK) -Wl,--start-group $^ -Wl,--end-group $(shell sed 's/^/-Wl,-u,/' chromium/sigs.txt | paste -sd " " -) -Wl,--version-script=chromium/export.map $(EXTRALIBS-avcodec) $(EXTRALIBS-avformat) $(EXTRALIBS-avutil)
 +endif
 +
 +libffmpeg: $(LIBFFMPEG)
