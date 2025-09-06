@@ -29,6 +29,7 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}
+	cuda? ( sci-ml/caffe2[cuda] )
 "
 
 BDEPEND="test? ( dev-cpp/gtest )"
@@ -49,6 +50,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DGLOO_USE_TORCH_DTYPES=$(usex cuda ON OFF)
 		-DBUILD_TEST=$(usex test ON OFF)
 		-DUSE_CUDA=$(usex cuda ON OFF)
 		-DGLOO_USE_CUDA_TOOLKIT=$(usex cuda ON OFF)
