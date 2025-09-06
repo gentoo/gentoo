@@ -59,7 +59,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-boost-1.85.patch
-	"${FILESDIR}"/${PN}-2.2.1-use-c++14.patch
+	"${FILESDIR}"/${PN}-2.2.1-use-c++17.patch
 )
 
 src_prepare() {
