@@ -21,4 +21,7 @@
     <upstream>
         <remote-id type="github">calamares/calamares</remote-id>
     </upstream>
+    <use>
+        <flag name="livecd">USE flag for Gentoo modules branding on LIVEDVD</flag>
+    </use>
 </pkgmetadata>
