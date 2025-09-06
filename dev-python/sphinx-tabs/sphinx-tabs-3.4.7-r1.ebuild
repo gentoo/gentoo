@@ -39,6 +39,11 @@ EPYTEST_PLUGINS=( pytest-{datadir,regressions} )
 distutils_enable_tests pytest
 distutils_enable_sphinx docs dev-python/sphinx-rtd-theme
 
+PATCHES=(
+	# https://github.com/executablebooks/sphinx-tabs/pull/200
+	"${FILESDIR}/${P}-sphinx-8.1.patch"
+)
+
 EPYTEST_DESELECT=(
 	# Unpackaged rinohtype
 	tests/test_build.py::test_rinohtype_pdf
