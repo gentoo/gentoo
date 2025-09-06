@@ -27,6 +27,7 @@ dev-python/poetry-plugin-export
 # Michał Górny <mgorny@gentoo.org> (2024-05-08)
 # The sigstore bundle.
 dev-python/betterproto
+dev-python/pypi-attestations
 dev-python/securesystemslib
 dev-python/sigstore
 dev-python/sigstore-protobuf-specs
