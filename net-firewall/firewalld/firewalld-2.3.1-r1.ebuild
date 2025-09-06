@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit bash-completion-r1 gnome2-utils linux-info optfeature
 inherit plocale python-single-r1 systemd xdg-utils
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/firewalld/firewalld/releases/download/v${PV}/${P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 arm ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="gui selinux test"
 # Tests are too unreliable in sandbox environment
 RESTRICT="!test? ( test ) test"
