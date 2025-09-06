@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -26,17 +26,11 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/flask[${PYTHON_USEDEP}]
-		dev-python/pytest-httpserver[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/requests-wsgi-adapter[${PYTHON_USEDEP}]
 		dev-python/trustme[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{httpserver,mock} )
 distutils_enable_tests pytest
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_httpserver -p pytest_mock
-}
