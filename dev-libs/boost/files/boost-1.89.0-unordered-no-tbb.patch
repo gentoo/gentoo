@@ -1,0 +1,14 @@
+Disable use of TBB aka OneAPI for tests due to some undiagnosed inclusion
+and/or linker issue: https://github.com/boostorg/unordered/issues/222
+
+--- boost_1_89_0/libs/unordered/test/Jamfile.v2~
++++ boost_1_89_0/libs/unordered/test/Jamfile.v2
+@@ -39,6 +39,8 @@ project
+         <toolset>gcc:<warnings-as-errors>on
+         <toolset>clang:<warnings-as-errors>on
+         <toolset>msvc:<warnings-as-errors>on
++
++         <cxxflags>-DBOOST_UNORDERED_DISABLE_PARALLEL_ALGORITHMS
+     ;
+ 
+ path-constant BOOST_UNORDERED_TEST_DIR : . ;
