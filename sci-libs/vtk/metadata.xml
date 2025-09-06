@@ -19,7 +19,6 @@
     <flag name="cgns">Build support to handle CGNS data files</flag>
     <flag name="gdal">Support for gdal formated data</flag>
     <flag name="imaging">Building Imaging modules</flag>
-    <flag name="las">Build support for LiDAR files</flag>
     <flag name="logging">Build the logging module</flag>
     <flag name="opencascade">Enable OpenCASCADE support</flag>
     <flag name="openvdb">Build support to handle VDB data files</flag>
