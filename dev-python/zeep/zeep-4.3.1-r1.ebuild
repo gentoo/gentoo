@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -36,11 +36,15 @@ BDEPEND="
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		>=dev-python/httpx-0.15.0[${PYTHON_USEDEP}]
 		dev-python/pretend[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-		dev-python/pytest-httpx[${PYTHON_USEDEP}]
 		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/xmlsec[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{asyncio,httpx} )
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/mvantellingen/python-zeep/pull/1468
+	"${FILESDIR}/${P}-httpx-0.28.patch"
+)

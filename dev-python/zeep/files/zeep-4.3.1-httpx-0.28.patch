@@ -1,0 +1,29 @@
+From 750326e549f467c5df170f46d1ae59939dbcce13 Mon Sep 17 00:00:00 2001
+From: Nikolai Korolev <korolevns98@gmail.com>
+Date: Sat, 16 Aug 2025 00:21:20 +0100
+Subject: [PATCH] Fix zeep for httpx after 0.28.0
+
+---
+ src/zeep/transports.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/zeep/transports.py b/src/zeep/transports.py
+index 2a1ee8bd..4036ecea 100644
+--- a/src/zeep/transports.py
++++ b/src/zeep/transports.py
+@@ -185,13 +185,13 @@ def __init__(
+         self.cache = cache
+         self.wsdl_client = wsdl_client or httpx.Client(
+             verify=verify_ssl,
+-            proxies=proxy,
+             timeout=timeout,
++            **({"proxies": proxy} if httpx.__version__ < "0.28.0" else {"proxy": proxy}),
+         )
+         self.client = client or httpx.AsyncClient(
+             verify=verify_ssl,
+-            proxies=proxy,
+             timeout=operation_timeout,
++            **({"proxies": proxy} if httpx.__version__ < "0.28.0" else {"proxy": proxy}),
+         )
+         self.logger = logging.getLogger(__name__)
+ 
