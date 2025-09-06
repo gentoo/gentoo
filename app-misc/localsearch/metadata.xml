@@ -11,6 +11,8 @@
   for ODT.</flag>
     <flag name="iptc">Enable extraction of IPTC data from pictures</flag>
     <flag name="iso">Enable extraction of metadata from ISO disk images</flag>
+    <flag name="gstreamer">Enable support for metadata writeback functionality</flag>
+    <flag name="landlock">Enable sandboxing using Landlock LSM</flag>
     <flag name="playlist">Add support for playlists</flag>
     <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
   </use>

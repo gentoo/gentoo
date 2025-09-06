@@ -36,7 +36,7 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}
 	|| (
 		app-misc/localsearch:3[gstreamer]
-		app-misc/localsearch:3[ffmpeg]
+		app-misc/localsearch:3[ffmpeg(+)]
 	)
 	x11-libs/libnotify[introspection]
 	media-libs/gstreamer:1.0[introspection]
