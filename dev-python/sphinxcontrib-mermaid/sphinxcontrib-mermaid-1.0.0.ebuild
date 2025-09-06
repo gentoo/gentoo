@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_13 )
+PYTHON_COMPAT=( python3_{13..14} )
 
 inherit distutils-r1
 
@@ -30,10 +30,10 @@ BDEPEND="
 	test? (
 		dev-python/defusedxml[${PYTHON_USEDEP}]
 		dev-python/myst-parser[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 python_compile() {
