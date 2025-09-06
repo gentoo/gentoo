@@ -282,7 +282,6 @@ dev-java/jide-oss
 # Removal on 2025-08-27.  Bug #580516, #868252.
 sys-cluster/vzctl
 app-backup/vzdump
-app-misc/vzstats
 
 # Hans de Graaff <graaff@gentoo.org> (2025-07-28)
 # Obsolete slots of cucumber components. These slots are no longer used
