@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc34.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-zlib-OF.patch
+	"${FILESDIR}"/${P}-additional.patch
 )
 
 src_configure() {
