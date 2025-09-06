@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-	<bugs-to>https://github.com/arut/nginx-rtmp-module/issues</bugs-to>
+		<bugs-to>https://github.com/arut/nginx-rtmp-module/issues</bugs-to>
 		<remote-id type="github">arut/nginx-rtmp-module</remote-id>
 	</upstream>
 </pkgmetadata>
