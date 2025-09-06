@@ -31,12 +31,7 @@ src_prepare() {
 }
 
 src_test() {
-	# encode_decode.sh fails w/ _FORTIFY_SOURCE(=3?) but the test
-	# is new in the snapshot we're taking (there were no tests before),
-	# and upstream development is over, so let's skip the one test unless
-	# someone really wants to investigate it (so we can have unrestricted
-	# tests rather than none running).
-	emake GF_COMPLETE_DIR="${BROOT}"/usr/bin check XFAIL_TESTS="encode_decode.sh"
+	emake GF_COMPLETE_DIR="${BROOT}"/usr/bin check
 }
 
 src_install() {
