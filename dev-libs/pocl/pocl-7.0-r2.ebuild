@@ -74,7 +74,6 @@ src_configure() {
 
 		-DENABLE_ICD=ON
 		-DPOCL_ICD_ABSOLUTE_PATH=ON
-		-DPOCL_INSTALL_PUBLIC_LIBDIR="${EPREFIX}/usr/$(get_libdir)/OpenCL/vendors/pocl"
 		-DINSTALL_OPENCL_HEADERS=OFF
 
 		# only appends -flto
@@ -98,6 +97,7 @@ src_configure() {
 		-DENABLE_EXAMPLES=$(usex examples)
 		-DENABLE_TESTS=$(usex test)
 		-DENABLE_SPIRV=$(usex spirv)
+
 	)
 
 	cmake_src_configure
