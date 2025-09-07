@@ -48,6 +48,8 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/3.38.0-optional-vapi.patch
 	"${FILESDIR}"/3.41.1-implicit-func-decl.patch
+	"${FILESDIR}"/3.41.2-lto-tests.patch
+	"${FILESDIR}"/3.41.2-ssh-agent-tests.patch
 )
 
 pkg_setup() {
