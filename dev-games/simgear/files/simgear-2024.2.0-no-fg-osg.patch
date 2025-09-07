@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -183,6 +183,7 @@
+     include(CreateOSGImportedTargets)
+ endif(SIMGEAR_HEADLESS)
+ 
++if(0)
+ # Ensure that we are using the right version of OSG
+ # This should probably be done by modifying FindOpenSceneGraph.cmake, but this
+ # is easier/faster and only requires minimal changes to OSG.
+@@ -230,6 +231,7 @@
+         "Please ensure that you are using the correct branch of the OSG fork."
+     )
+ endif()
++endif()
+ 
+ if(${CMAKE_SYSTEM_NAME} MATCHES "OpenBSD")
+     # As of 2020-08-01, OpenBSD's system zlib is slightly old, but it's usable

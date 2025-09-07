@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 # TODO AeonWave, CycloneDDS
 COMMON_DEPEND="
 	dev-libs/expat
-	dev-games/openscenegraph
+	dev-games/openscenegraph-openmw:=
 	media-libs/openal
 	net-libs/udns
 	net-misc/curl
@@ -34,6 +34,11 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
+
+PATCHES=(
+	# this one might be short-lived:
+	"${FILESDIR}/${PN}-2024.2.0-no-fg-osg.patch" # bug 957544, downstream
+)
 
 src_configure() {
 	local mycmakeargs=(
