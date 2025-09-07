@@ -9,4 +9,4 @@ inherit perl-module
 
 DESCRIPTION="Powerful and flexible message logging mechanism"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
