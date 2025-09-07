@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/956643
+https://bugs.ntp.org/show_bug.cgi?id=3981
+
+--- a/libntp/machines.c
++++ b/libntp/machines.c
+@@ -477,10 +477,8 @@
+ #endif /* HAVE_SETTIMEOFDAY */
+ #ifdef HAVE_STIME
+ 	if (rc && (SET_TOD_STIME == tod || !tod)) {
+-		long tp = tvp->tv_sec;
+-
+ 		errno = 0;
+-		rc = stime(&tp); /* lie as bad as SysVR4 */
++		rc = stime(&tvp->tv_sec);
+ 		saved_errno = errno;
+ 		TRACE(1, ("ntp_set_tod: stime: %d %m\n", rc));
+ 		if (!tod && !rc)
+

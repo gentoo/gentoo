@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch # bug #563922
 	"${FILESDIR}"/${PN}-4.2.8_p14-add_cap_ipc_lock.patch # bug #711530
 	"${FILESDIR}"/${PN}-4.2.8_p15-configure-clang16.patch
+	"${FILESDIR}"/${PN}-4.2.8_p18-c99.patch # bug #956643
 )
 
 src_prepare() {
