@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	sed -i -e "s/ARCH/MYARCH/g" -e "/ldconfig/d" -e "/bash.completion/d" Makefile || die
+	sed -i -e '/PYTHON_LDFLAGS/{s/$(PYTHON_LDFLAGS)/$(COMMON_LDFLAGS) $(PYTHON_LDFLAGS)/g; p}' Makefile || die
 }
 
 src_configure() {
