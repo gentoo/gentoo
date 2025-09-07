@@ -287,14 +287,6 @@ dev-ruby/ruby-openid
 # Removal on 2025-09-07.
 dev-java/jide-oss
 
-# Hans de Graaff <graaff@gentoo.org> (2025-07-28)
-# Obsolete slots of cucumber components. These slots are no longer used
-# by dev-util/cucumber. Removal on 2025-08-28.
-dev-util/cucumber-gherkin:23
-dev-util/cucumber-gherkin:25
-dev-util/cucumber-messages:19
-dev-util/cucumber-messages:24
-
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
 # suppor for the old APIs this package needs. Impossible to use anymore.
