@@ -12,7 +12,7 @@ S="${WORKDIR}"/${PN}-autoconf-${PV}
 
 LICENSE="tarsnap BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="acl bzip2 lzma xattr"
 # The tarsnap license allows redistribution only without modification.
 # Commented out because patches apply only to files with a free license.
