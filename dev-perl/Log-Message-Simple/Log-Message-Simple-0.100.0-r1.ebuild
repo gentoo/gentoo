@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Simplified interface to Log::Message"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 
 RDEPEND="
 	virtual/perl-Carp
