@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {17..20} ) # see .cmake.conf for minimum
+LLVM_COMPAT=( {17..21} ) # see .cmake.conf for minimum
 LLVM_OPTIONAL=1
 
 # behaves very badly when qttools is not already installed, also
@@ -66,7 +66,7 @@ src_prepare() {
 	qt6-build_src_prepare
 
 	# qttools is picky about clang versions and ignores LLVM_SLOT
-	sed -e '/find_package/s/${\(LLVM_\)*VERSION}//' \
+	sed -e '/find_package/s/${\(LLVM_\)*VERSION_CLEAN}//' \
 		-i cmake/FindWrapLibClang.cmake || die
 }
 
