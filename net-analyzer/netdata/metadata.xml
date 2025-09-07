@@ -10,7 +10,7 @@
     <flag name="bpf">Enable the extended Berkeley Packet Filter (eBPF) collector to monitor kernel-level metrics about applications with per-second granularity</flag>
     <flag name="cloud">Enable Netdata Cloud support</flag>
     <flag name="dbengine">Enable the Netdata database engine</flag>
-    <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
+    <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors</flag>
     <flag name="mongodb">Enable support for the mongodb backend</flag>
     <flag name="nfacct">Enable the nfacct plugin</flag>
     <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
