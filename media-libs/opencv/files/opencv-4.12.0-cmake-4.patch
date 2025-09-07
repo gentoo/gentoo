@@ -1,0 +1,23 @@
+From 48e5cddb04156cba8b8dba694af8dbec245c743d Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Wed, 3 Sep 2025 15:42:17 +0200
+Subject: [PATCH] cmake-4
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/modules/gapi/CMakeLists.txt b/modules/gapi/CMakeLists.txt
+index 29b20ca..1db3d5a 100644
+--- a/modules/gapi/CMakeLists.txt
++++ b/modules/gapi/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # FIXME: Rework standalone build in more generic maner
+ # (Restructure directories, add common pass, etc)
+ if(NOT DEFINED OPENCV_INITIAL_PASS)
+-    cmake_minimum_required(VERSION 3.3)
++    cmake_minimum_required(VERSION 3.5)
+     project(gapi_standalone)
+     include("cmake/standalone.cmake")
+     return()
+-- 
+2.51.0
+
