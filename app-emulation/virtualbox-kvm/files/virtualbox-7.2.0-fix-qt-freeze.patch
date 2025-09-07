@@ -1,0 +1,29 @@
+https://github.com/VirtualBox/virtualbox/issues/70#issuecomment-3233251540
+
+Fix freeze with QT 6.9
+
+--- a/src/VBox/Frontends/VirtualBox/src/globals/UITranslationEventListener.cpp
++++ b/src/VBox/Frontends/VirtualBox/src/globals/UITranslationEventListener.cpp
+@@ -81,7 +81,8 @@
+            && pEvent->type() == QEvent::LanguageChange
+            && pObject == qApp)
+     {
+-        emit sigRetranslateUI();
++        /* Send translation signal asynchronously: */
++        QMetaObject::invokeMethod(this, "sltRetranslateUI", Qt::QueuedConnection);
+     }
+     /* Call to base-class: */
+     return QObject::eventFilter(pObject, pEvent);
+--- a/src/VBox/Frontends/VirtualBox/src/globals/UITranslationEventListener.h
++++ b/src/VBox/Frontends/VirtualBox/src/globals/UITranslationEventListener.h
+@@ -55,6 +55,10 @@
+ 
+     bool eventFilter(QObject *pObject, QEvent *pEvent) RT_OVERRIDE RT_FINAL;
+ 
++private slots:
++
++    void sltRetranslateUI() { emit sigRetranslateUI(); }
++
+ private:
+ 
+     UITranslationEventListener(QObject *pParent = 0);
