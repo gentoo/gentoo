@@ -1,0 +1,12 @@
+# Remove tests that don't work in the network sandbox
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -387,7 +387,7 @@ add_executable(
+   ${TEST_TARGET_EXTRA_SRC}
+ )
+ 
+-add_test(gmp-tickets-test gmp-tickets-test)
++#add_test(gmp-tickets-test gmp-tickets-test)
+ 
+ set(TEST_TARGET_EXTRA_SRC ${ALL_MISC_SRC})
+ list(REMOVE_ITEM TEST_TARGET_EXTRA_SRC utils.c)
