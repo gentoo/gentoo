@@ -127,6 +127,11 @@ media-libs/zimg
 # https://gitlab.freedesktop.org/wayland/weston/-/issues/739
 dev-libs/weston
 
+# eluks <lschmelting@posteo.com> (2025-09-07)
+# Hard depends on gui-libs/gtk[wayland] since version 48.3,
+# while "gui-libs/gtk wayland" is in big-endian package.use.mask
+>=gnome-base/gnome-control-center-48.3
+
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
 # Explicit no-support for BE (#801238)
 media-libs/libldac
