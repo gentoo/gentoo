@@ -50,6 +50,11 @@ BDEPEND="
 	test? ( dev-libs/cgreen )
 "
 
+PATCHES=(
+	# Closes #962394
+	"${FILESDIR}/${P}-fix-c23-build.patch"
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# QA-Fix | Use correct FHS/Gentoo policy paths for 9.0.0

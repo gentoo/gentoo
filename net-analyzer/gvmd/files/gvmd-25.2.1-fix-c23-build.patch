@@ -1,0 +1,25 @@
+# Complete two function prototypes to fix C23 build
+# https://github.com/greenbone/gvmd/commit/37c5d9176cbb16c107f3ce2db34b1dcbb10a0c5e
+# https://github.com/greenbone/gvmd/commit/760064291b66ac72ce9fc184f2c5770680ae239d
+--- a/src/manage_sql_secinfo.h
++++ b/src/manage_sql_secinfo.h
+@@ -181,7 +181,7 @@
+ #define SECINFO_COMMIT_SIZE_DEFAULT 0
+ 
+ int
+-secinfo_feed_version_status ();
++secinfo_feed_version_status (const char *);
+ 
+ pid_t
+ manage_sync_scap (sigset_t *);
+--- a/src/manage_sql_tickets.h
++++ b/src/manage_sql_tickets.h
+@@ -50,7 +50,7 @@ void
+ empty_trashcan_tickets ();
+ 
+ void
+-check_tickets ();
++check_tickets (task_t);
+ 
+ void
+ delete_tickets_user (user_t);
