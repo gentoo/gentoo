@@ -30,7 +30,6 @@ REQUIRED_USE="
 RDEPEND="
 	app-arch/snappy:=
 	dev-libs/expat
-	dev-libs/libevent:=
 	dev-libs/libxml2:=[icu]
 	dev-libs/libxslt
 	dev-libs/nspr
@@ -76,6 +75,7 @@ RDEPEND="
 	)
 	system-icu? ( dev-libs/icu:= )
 	vaapi? ( media-libs/libva:=[X] )
+	!bindist? ( >=media-libs/openh264-2.4.1:= )
 "
 DEPEND="
 	${RDEPEND}
@@ -219,13 +219,16 @@ src_configure() {
 		# not necessary to pass these (default), but in case detection fails
 		# given qtbase's force_system_libs does not affect these right now
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
-			freetype gbm glib harfbuzz lcms2 libevent libjpeg \
-			libopenjpeg2 libpci libpng libtiff libudev libwebp \
-			libxml minizip opus snappy zlib)
+			freetype gbm glib harfbuzz lcms2 libjpeg libopenjpeg2 \
+			libpci libpng libtiff libudev libwebp libxml minizip \
+			openh264 opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
 		-DINSTALL_GN=OFF
+
+		# TODO: drop this if no longer errors out early during cmake generation
+		-DQT_GENERATE_SBOM=OFF
 	)
 
 	local mygnargs=(
@@ -283,11 +286,12 @@ src_test() {
 	fi
 
 	local CMAKE_SKIP_TESTS=(
-		# fails with network sandbox
+		# fails with *-sandbox
 		tst_certificateerror
 		tst_loadsignals
 		tst_qquickwebengineview
 		tst_qwebengineglobalsettings
+		tst_qwebenginepermission
 		tst_qwebengineview
 		# fails with offscreen rendering, may be worth retrying if the issue
 		# persist given these are rather major tests (or consider virtx)
