@@ -1,0 +1,36 @@
+https://github.com/LibreOffice/libexttextcat/pull/5
+
+From 96abcf3a68c7b3b089c256eb749e689879a61b10 Mon Sep 17 00:00:00 2001
+From: Alessandro Astone <alessandro.astone@canonical.com>
+Date: Fri, 28 Mar 2025 14:46:28 +0100
+Subject: [PATCH] Fix type mismatch between declaration and definition
+
+Compiling with LTO otherwise fails with:
+
+wg_mempool.h:91:18: error: type of 'wgmempool_Init' does not match original declaration [-Werror=lto-type-mismatch]
+   91 |     extern void *wgmempool_Init(uint4 blocksize, size_t maxstrsize);
+      |                  ^
+wg_mempool.c:86:14: note: type mismatch in parameter 1
+   86 | extern void *wgmempool_Init(size_t blocksize, size_t maxstrsize)
+      |              ^
+wg_mempool.c:86:14: note: type 'size_t' should match type 'uint4'
+wg_mempool.c:86:14: note: 'wgmempool_Init' was previously declared here
+wg_mempool.c:86:14: note: code may be misoptimized unless '-fno-strict-aliasing' is used
+---
+ src/wg_mempool.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/wg_mempool.c b/src/wg_mempool.c
+index 89d35a1..51ca894 100644
+--- a/src/wg_mempool.c
++++ b/src/wg_mempool.c
+@@ -83,7 +83,7 @@ static void addblock(mempool_t * h)
+ }
+ 
+ 
+-extern void *wgmempool_Init(size_t blocksize, size_t maxstrsize)
++extern void *wgmempool_Init(uint4 blocksize, size_t maxstrsize)
+ {
+     mempool_t *result = (mempool_t *) malloc(sizeof(mempool_t));
+ 
+
