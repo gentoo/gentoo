@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Generates HTML IRC stats based on irssi logs"
 HOMEPAGE="http://royale.zerezo.com/irssistats/"
@@ -21,7 +21,10 @@ PATCHES=(
 )
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
+	# bug #934979
+	append-cppflags -D_GNU_SOURCE
+
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} ${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
