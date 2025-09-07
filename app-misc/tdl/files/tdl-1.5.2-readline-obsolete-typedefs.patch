@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/944033
+--- a/inter.c
++++ b/inter.c
+@@ -28,7 +28,8 @@
+ #include <unistd.h>
+ 
+ #ifdef USE_READLINE
+-#if BARE_READLINE_H 
++#define WANT_OBSOLETE_TYPEDEFS
++#if BARE_READLINE_H
+ #include <readline.h>
+ #include <history.h>
+ #else

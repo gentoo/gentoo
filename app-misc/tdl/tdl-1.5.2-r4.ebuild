@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit edo toolchain-funcs
+inherit edo flag-o-matic toolchain-funcs
 
 MY_PV="$(ver_rs 1- '_')"
 DESCRIPTION="Command line To Do List manager"
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-list.c.patch
 	"${FILESDIR}"/${P}-main.c.patch
 	"${FILESDIR}"/${P}-man.patch
+	"${FILESDIR}"/${P}-readline-obsolete-typedefs.patch
 )
 
 DOCS=( README NEWS tdl.txt tdl.html )
@@ -40,7 +41,11 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --prefix="${EPREFIX}"/usr )
+	append-cflags -std=gnu17
+
+	local myconf=(
+		--prefix="${EPREFIX}"/usr
+	)
 
 	if ! use readline; then
 		myconf+=( "${myconf} --without-readline" )
