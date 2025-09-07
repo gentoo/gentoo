@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="produce tied (and other) separate but combined variables"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 
 RDEPEND="
 	virtual/perl-Carp
