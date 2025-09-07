@@ -64,12 +64,13 @@ src_configure() {
 }
 
 src_install() {
+	diropts -o postsrsd -g root -m 0755
+	keepdir "${CHROOT_DIR}"
+
 	cmake_src_install
 
 	newinitd "${FILESDIR}"/postsrsd-2.0.11.initd postsrsd
 	newconfd "${FILESDIR}"/postsrsd-2.0.11.confd postsrsd
-	diropts -o postsrsd -g root -m 0755
-	keepdir "${CHROOT_DIR}"
 
 	local DOC_CONTENTS="When updating from version 1.x:
 		\n\nNote that most configuration options can no longer be set from the
@@ -80,9 +81,17 @@ src_install() {
 		variable, i.e. the local domain name. In most cases, using the output
 		of \"postconf -h mydomain\" should be okay.
 		\n\nAlso note that PostSRSd 2.x by default uses Unix domain sockets
-		instead	of TCP sockets, so you must update \"sender_canonical_maps\"
+		instead of TCP sockets, so you must update \"sender_canonical_maps\"
 		and \"recipient_canonical_maps\" in ${EPREFIX}/etc/postfix/main.cf.
 		(Alternatively, you can update \"socketmap\" in postsrsd.conf.)
+		\n\nSince postsrsd will create its socket with file mode 0666, it is
+		recommended to place it in a directory with restricted permissions,
+		for example:
+		\n\n\t# mkdir /var/spool/postfix/sock
+		\n\t# chown root:postfix /var/spool/postfix/sock
+		\n\t# chmod 0770 /var/spool/postfix/sock
+		\n\nand adjust \"{sender,recipient}_canonical_maps\" in main.cf
+		as well as \"socketmap\" in postsrsd.conf accordingly.
 		\n\nSee README.rst and the comments in postsrsd.conf for more detailed
 		information."
 	readme.gentoo_create_doc
@@ -102,6 +111,6 @@ pkg_postinst() {
 		eend $? "Installing ${f} failed"
 	fi
 
-	ver_replacing -lt 2.0.11-r1 && local FORCE_PRINT_ELOG=1
+	ver_replacing -lt 2.0.11-r5 && local FORCE_PRINT_ELOG=1
 	readme.gentoo_print_elog
 }
