@@ -16,7 +16,7 @@ Subject: [PATCH] FFmpeg 8.0 support.
  #endif
          video_st = NULL;
      }
-@@ -2005,7 +2008,18 @@ void CvCapture_FFMPEG::get_rotation_angle()
+@@ -2005,7 +2008,21 @@ void CvCapture_FFMPEG::get_rotation_angle()
      rotation_angle = 0;
  #if LIBAVFORMAT_BUILD >= CALC_FFMPEG_VERSION(57, 68, 100)
      const uint8_t *data = 0;
@@ -29,7 +29,10 @@ Subject: [PATCH] FFmpeg 8.0 support.
 +    if (sd && nb_sd > 0)
 +    {
 +        const AVPacketSideData* mtx = av_packet_side_data_get(sd,  nb_sd, AV_PKT_DATA_DISPLAYMATRIX);
-+        data = mtx->data;
++        if ( mtx != NULL )
++        {
++          data = mtx->data;
++        }
 +    }
 +# endif
      if (data)

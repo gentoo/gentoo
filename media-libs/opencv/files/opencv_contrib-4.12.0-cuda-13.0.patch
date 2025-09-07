@@ -1,0 +1,32 @@
+From 94e5c643baaae1c942e0d6abf749ec4828a8e3dc Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Wed, 6 Aug 2025 15:05:27 +0200
+Subject: [PATCH] cuda 13.0
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/modules/videostab/src/cuda/global_motion.cu b/modules/videostab/src/cuda/global_motion.cu
+index 7eca6ff..6152f7d 100644
+--- a/modules/videostab/src/cuda/global_motion.cu
++++ b/modules/videostab/src/cuda/global_motion.cu
+@@ -44,7 +44,7 @@
+ 
+ #include <thrust/device_ptr.h>
+ #include <thrust/remove.h>
+-#include <thrust/functional.h>
++#include <cuda/std/functional>
+ #include "opencv2/core/cuda/common.hpp"
+ 
+ namespace cv { namespace cuda { namespace device { namespace globmotion {
+@@ -60,7 +60,7 @@ int compactPoints(int N, float *points0, float *points1, const uchar *mask)
+ 
+     return (int)(thrust::remove_if(thrust::make_zip_iterator(thrust::make_tuple(dpoints0, dpoints1)),
+                              thrust::make_zip_iterator(thrust::make_tuple(dpoints0 + N, dpoints1 + N)),
+-                             dmask, thrust::not1(thrust::identity<uchar>()))
++                             dmask, ::cuda::std::not_fn(::cuda::std::identity()))
+            - thrust::make_zip_iterator(make_tuple(dpoints0, dpoints1)));
+ }
+ 
+-- 
+2.50.1
+
