@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo flag-o-matic toolchain-funcs
+inherit edo toolchain-funcs
 
 MY_PV="$(ver_rs 1- '_')"
 DESCRIPTION="Command line To Do List manager"
@@ -17,13 +17,14 @@ KEYWORDS="amd64 ppc x86"
 IUSE="doc readline"
 
 RDEPEND="
-	sys-libs/ncurses:0=
-	sys-libs/readline:0="
-
-DEPEND="
-	${RDEPEND}
+	sys-libs/ncurses:=
+	sys-libs/readline:=
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-apps/texinfo
-	doc? ( virtual/texi2dvi )"
+	doc? ( virtual/texi2dvi )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-ldflags.patch
@@ -41,8 +42,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cflags -std=gnu17
-
 	local myconf=(
 		--prefix="${EPREFIX}"/usr
 	)
