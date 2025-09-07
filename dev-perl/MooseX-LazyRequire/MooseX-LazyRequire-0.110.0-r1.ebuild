@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Required attributes which fail only when trying to use them"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc x86"
 IUSE="minimal"
 
 RDEPEND="
