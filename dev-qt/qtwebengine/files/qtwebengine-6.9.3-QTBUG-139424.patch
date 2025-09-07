@@ -1,11 +1,21 @@
-Revert of [1] from [2] for [3][4]
+Revert of [1]+[2] from [3] for [4][5]
 [1] https://github.com/qt/qtwebengine/commit/ddcd30454a
-[2] https://bugreports.qt.io/browse/QTBUG-136257
-[3] https://bugreports.qt.io/browse/QTBUG-139424
-[4] https://bugs.gentoo.org/962055
+[2] https://github.com/qt/qtwebengine/commit/9168bc6f53
+[3] https://bugreports.qt.io/browse/QTBUG-136257
+[4] https://bugreports.qt.io/browse/QTBUG-139424
+[5] https://bugs.gentoo.org/962055
 --- a/src/core/ozone/egl_helper.cpp
 +++ b/src/core/ozone/egl_helper.cpp
-@@ -60,2 +60,80 @@
+@@ -7,5 +7,7 @@
+ #include "web_engine_context.h"
+ 
++#include <QtCore/qthread.h>
+ #include <QtGui/qguiapplication.h>
++#include <QtGui/qoffscreensurface.h>
+ #include <QtGui/qopenglcontext.h>
+ #include <QtGui/qopenglfunctions.h>
+@@ -58,4 +60,82 @@
+ QT_BEGIN_NAMESPACE
  
 +class ScopedGLContext
 +{
@@ -86,16 +96,36 @@ Revert of [1] from [2] for [3][4]
 +};
 +
  EGLHelper::EGLFunctions::EGLFunctions()
-@@ -66,4 +144,2 @@
+ {
+@@ -64,6 +144,4 @@
+     eglCreateImage =
              reinterpret_cast<PFNEGLCREATEIMAGEPROC>(context->getProcAddress("eglCreateImage"));
 -    eglCreateDRMImageMESA = reinterpret_cast<PFNEGLCREATEDRMIMAGEMESAPROC>(
 -            context->getProcAddress("eglCreateDRMImageMESA"));
      eglDestroyImage =
-@@ -124,3 +200,2 @@
+             reinterpret_cast<PFNEGLDESTROYIMAGEPROC>(context->getProcAddress("eglDestroyImage"));
+@@ -94,4 +172,5 @@
+     : m_eglDisplay(qApp->platformNativeInterface()->nativeResourceForIntegration("egldisplay"))
+     , m_functions(new EGLHelper::EGLFunctions())
++    , m_offscreenSurface(new QOffscreenSurface())
+ {
+     const char *extensions = m_functions->eglQueryString(EGL_NO_DISPLAY, EGL_EXTENSIONS);
+@@ -111,4 +190,7 @@
+     }
+ 
++    Q_ASSERT(QThread::currentThread() == qApp->thread());
++    m_offscreenSurface->create();
++
+     m_isDmaBufSupported = QtWebEngineCore::WebEngineContext::isGbmSupported();
+ 
+@@ -118,5 +200,4 @@
+         m_isDmaBufSupported = strstr(displayExtensions, "EGL_EXT_image_dma_buf_import")
                  && strstr(displayExtensions, "EGL_EXT_image_dma_buf_import_modifiers")
 -                && strstr(displayExtensions, "EGL_MESA_drm_image")
                  && strstr(displayExtensions, "EGL_MESA_image_dma_buf_export");
-@@ -145,13 +220,15 @@
+     }
+@@ -139,15 +220,17 @@
+         return;
  
 -    // clang-format off
 -    EGLint attribs[] = {
@@ -121,13 +151,31 @@ Revert of [1] from [2] for [3][4]
 +    EGLImage eglImage = m_functions->eglCreateImage(m_eglDisplay, eglContext, EGL_GL_TEXTURE_2D,
 +                                                    (EGLClientBuffer)textureId, NULL);
      if (eglImage == EGL_NO_IMAGE) {
+         qWarning("EGL: Failed to create EGLImage: %s", getLastEGLErrorString());
 --- a/src/core/ozone/egl_helper.h
 +++ b/src/core/ozone/egl_helper.h
-@@ -13,3 +13,2 @@
+@@ -13,5 +13,4 @@
+ 
  #undef eglCreateImage
 -#undef eglCreateDRMImageMESA
  #undef eglDestroyImage
-@@ -36,3 +35,2 @@
+ #undef eglExportDMABUFImageMESA
+@@ -26,4 +25,6 @@
+ QT_BEGIN_NAMESPACE
+ 
++class QOffscreenSurface;
++
+ class EGLHelper
+ {
+@@ -34,5 +35,4 @@
+ 
          PFNEGLCREATEIMAGEPROC eglCreateImage;
 -        PFNEGLCREATEDRMIMAGEMESAPROC eglCreateDRMImageMESA;
          PFNEGLDESTROYIMAGEPROC eglDestroyImage;
+         PFNEGLEXPORTDMABUFIMAGEMESAPROC eglExportDMABUFImageMESA;
+@@ -60,4 +60,5 @@
+     EGLDisplay m_eglDisplay = EGL_NO_DISPLAY;
+     QScopedPointer<EGLFunctions> m_functions;
++    QScopedPointer<QOffscreenSurface> m_offscreenSurface;
+     bool m_isDmaBufSupported = false;
+ };
