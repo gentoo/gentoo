@@ -1,0 +1,46 @@
+https://bugs.gentoo.org/884269
+https://bugs.gentoo.org/945178
+--- a/src/main.c
++++ b/src/main.c
+@@ -584,7 +584,7 @@ int main(int argc, char *argv[]){
+ 			else print_all("Error saving configuration.\n");
+ 		}
+ 	}
+-        end_run();
++        end_run(key);
+ 	return(0);	
+ }
+ 
+--- a/src/main.h
++++ b/src/main.h
+@@ -50,7 +50,7 @@ int resize_occured;
+ /* main finctions */
+ void parse_message(server *currentserver, char *buffer);
+ int parse_input(server *currentserver, char *buffer);
+-int end_run();
++int end_run(int key);
+ // menu *build_window_menu(int startx, int starty);
+ 
+ /* handler functions */
+--- a/src/option.h
++++ b/src/option.h
+@@ -189,7 +189,7 @@ form *create_favorite_dccsend_form();
+ /** fav/ban user edit **********************************************************************/
+ 
+ int edit_users(int key, int listnum);
+-form *create_edit_user_form();
++form *create_edit_user_form(char *, config_user *);
+ form *create_new_user_form(char *title);
+ form *create_change_user_form(char *title, char *user);
+ 
+--- a/src/screen.h
++++ b/src/screen.h
+@@ -155,7 +155,7 @@ int create_transfer_screen(transfer *T);
+ int redraw_transfer_screen(transfer *T);
+ void refresh_transfer_screen(transfer *T);
+ 
+-transfer *add_transfer();
++transfer *add_transfer(char *);
+ 
+ int transfer_update_status(transfer *S);
+ void set_transfer_update_status(transfer *S, int update);
