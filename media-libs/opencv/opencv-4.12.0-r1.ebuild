@@ -44,7 +44,7 @@ else
 		https://github.com/opencv/ade/archive/v${ADE_PV}.tar.gz -> ade-${ADE_PV}.tar.gz
 		contrib? (
 			https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${PN}_contrib-${PV}.tar.gz
-			wechat_qrcode? (
+			wechat-qrcode? (
 				https://github.com/${PN}/${PN}_3rdparty/archive/${QRCODE_COMMIT}.tar.gz -> ${PN}_3rdparty-${QRCODE_COMMIT}.tar.gz
 				https://github.com/${PN}/${PN}_3rdparty/archive/${DNN_SAMPLES_FACE_DETECTOR_COMMIT}.tar.gz
 					-> ${PN}_3rdparty-${DNN_SAMPLES_FACE_DETECTOR_COMMIT}.tar.gz
@@ -70,7 +70,8 @@ else
 		contribdnn? (
 			https://github.com/ShiqiYu/libfacedetection.train/raw/02246e79b1e976c83d1e135a85e0628120c93769/onnx/yunet_s_640_640.onnx -> yunet-202303.onnx
 		)
-		https://github.com/opencv/opencv/pull/27737.patch -> ${PN}-PR27737.patch
+		https://github.com/opencv/opencv/commit/54b03cc2f84cfe83222c59b747e17cb378a9744c.patch
+		-> ${P}-fix_videowriter_raw_return_code.patch
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
@@ -82,7 +83,7 @@ SLOT="0/${PV}" # subslot = libopencv* soname version
 IUSE="debug doc +eigen gflags glog java non-free opencvapps python test testprograms"
 
 # modules
-IUSE+=" contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d examples features2d wechat_qrcode"
+IUSE+=" contrib contribcvv contribdnn contribfreetype contribhdf contribovis contribsfm contribxfeatures2d examples features2d wechat-qrcode"
 # hardware
 IUSE+=" cuda cudnn opencl video_cards_intel"
 # video
@@ -178,16 +179,16 @@ REQUIRED_USE="
 	contribovis? ( contrib )
 	contribsfm? ( contrib eigen gflags glog )
 	contribxfeatures2d? ( contrib )
-	mkl? ( lapack )
-	java? ( python )
-	opengl? ( || ( gtk3 qt6 wayland ) )
 	jasper? ( !abi_x86_32 )
+	java? ( python )
+	mkl? ( lapack )
+	opengl? ( || ( gtk3 qt6 wayland ) )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	tesseract? ( contrib )
 	testprograms? ( test )
 	test? ( || ( ffmpeg gstreamer ) jpeg png tiff features2d )
 	wayland? ( !vtk )
-	wechat_qrcode? ( contribdnn )
+	wechat-qrcode? ( contribdnn )
 "
 # 	?? ( gtk3 qt6 wayland )
 
@@ -289,7 +290,7 @@ COMMON_DEPEND="
 		|| (
 			(
 				sci-libs/vtk[opencascade(+)]
-				sci-libs/opencascade[-ffmpeg]
+				sci-libs/opencascade[-ffmpeg(-)]
 			)
 			sci-libs/vtk[-opencascade(-)]
 		)
@@ -383,7 +384,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.12.0-cuda-13.0.patch"
 
 	"${FILESDIR}/${PN}-4.11.0-ffmpeg8.patch" # PR 27691
-	"${DISTDIR}/${PN}-PR27737.patch"
+	"${DISTDIR}/${P}-fix_videowriter_raw_return_code.patch"
 
 	# TODO applied in src_prepare
 	# "${FILESDIR}/${PN}_contrib-4.8.1-rgbd.patch"
@@ -455,7 +456,14 @@ cuda_get_host_compiler() {
 
 	ebegin "testing ${NVCC_CCBIN_default} (default)"
 
-	while ! nvcc "${NVCCFLAGS}" -ccbin "${NVCC_CCBIN}" - -x cu <<<"int main(){}" &>> "${T}/cuda_get_host_compiler.log" ; do
+	while ! \
+		nvcc "${NVCCFLAGS}" \
+			-x cu \
+			-ccbin "${NVCC_CCBIN}" \
+			- \
+			<<<"int main(){}" \
+			&>> "${T}/cuda_get_host_compiler.log" ;
+		do
 		eend 1
 
 		while true; do
@@ -626,7 +634,7 @@ src_prepare() {
 			-i "${S}/modules/gapi/cmake/DownloadADE.cmake" || die
 	fi
 
-	if use wechat_qrcode; then
+	if use wechat-qrcode; then
 		mkdir -p "${S}/.cache/wechat_qrcode" || die
 		for file in "detect.caffemodel" "detect.prototxt" "sr.prototxt" "sr.caffemodel"; do
 			mv \
@@ -879,7 +887,7 @@ multilib_src_configure() {
 		-DBUILD_opencv_gapi="$(usex ffmpeg yes "$(usex gstreamer)")"
 		-DBUILD_opencv_features2d="$(usex features2d)"
 		-DBUILD_opencv_java_bindings_generator="$(usex java)"
-		-DBUILD_opencv_wechat_qrcode="$(usex wechat_qrcode)"
+		-DBUILD_opencv_wechat_qrcode="$(usex wechat-qrcode)"
 		-DBUILD_opencv_julia="no"
 		-DBUILD_opencv_js="no"
 		-DBUILD_opencv_js_bindings_generator="no"
@@ -1341,7 +1349,7 @@ multilib_src_test() {
 		)
 	fi
 
-	if use wechat_qrcode; then
+	if use wechat-qrcode; then
 		local -x OPENCV_SKIP_TESTS_wechat_qrcode=(
 			# dnn/wechat_2021-01/detect.prototxt
 			'Objdetect_QRCode_points_position.rotate45'

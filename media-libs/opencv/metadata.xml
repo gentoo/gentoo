@@ -50,7 +50,7 @@
 		<flag name="video_cards_intel">Enable Video Acceleration API for hardware decoding for Intel cards</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on <pkg>sci-libs/vtk</pkg></flag>
 		<flag name="vulkan">Enable experimental Vulkan backend</flag>
-		<flag name="wechat_qrcode">Enable wechat_qrcode module</flag>
+		<flag name="wechat-qrcode">Enable wechat_qrcode module</flag>
 	</use>
 	<upstream>
 		<changelog>https://github.com/opencv/opencv/wiki/ChangeLog</changelog>
