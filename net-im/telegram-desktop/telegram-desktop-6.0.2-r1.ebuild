@@ -155,6 +155,7 @@ src_configure() {
 	# https://github.com/telegramdesktop/tdesktop/issues/17437#issuecomment-1001160398
 	use !libdispatch && append-cppflags -DCRL_FORCE_QT
 
+	local no_webkit_wayland=$(use webkit && use wayland && echo no || echo yes)
 	local use_webkit_wayland=$(use webkit && use wayland && echo yes || echo no)
 	local mycmakeargs=(
 		-DQT_VERSION_MAJOR=6
@@ -166,9 +167,17 @@ src_configure() {
 		# Control automagic dependencies on certain packages
 		## These libraries are only used in lib_webview, for wayland
 		## See Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.h
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6Quick=${use_webkit_wayland}
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6QuickWidgets=${use_webkit_wayland}
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6WaylandCompositor=${use_webkit_wayland}
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6Quick=${no_webkit_wayland}
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6QuickWidgets=${no_webkit_wayland}
+		-DCMAKE_DISABLE_FIND_PACKAGE_Qt6WaylandCompositor=${no_webkit_wayland}
+
+		# Make sure dependencies that aren't patched to be REQUIRED in
+		# src_prepare, are found.  This was suggested to me by the telegram
+		# devs, in lieu of having explicit flags in the build system.
+		-DCMAKE_REQUIRE_FIND_PACKAGE_Qt6DBus=$(usex dbus)
+		-DCMAKE_REQUIRE_FIND_PACKAGE_Qt6Quick=${use_webkit_wayland}
+		-DCMAKE_REQUIRE_FIND_PACKAGE_Qt6QuickWidgets=${use_webkit_wayland}
+		-DCMAKE_REQUIRE_FIND_PACKAGE_Qt6WaylandCompositor=${use_webkit_wayland}
 
 		-DDESKTOP_APP_DISABLE_QT_PLUGINS=ON
 		-DDESKTOP_APP_DISABLE_X11_INTEGRATION=$(usex !X)
