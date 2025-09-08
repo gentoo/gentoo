@@ -1,0 +1,11 @@
+Qt bundles assimp-6.x but the system library check still enforces
+the major version (5) rather than only check minimum. Ignore version
+for simplicity (we don't package incompatible <5.1.6 versions).
+--- a/src/plugins/assetimporters/configure.cmake
++++ b/src/plugins/assetimporters/configure.cmake
+@@ -16 +16 @@
+-qt_find_package(WrapQuick3DAssimp 5.1.6 PROVIDED_TARGETS WrapQuick3DAssimp::WrapQuick3DAssimp MODULE_NAME assetimporters QMAKE_LIB quick3d_assimp)
++qt_find_package(WrapQuick3DAssimp PROVIDED_TARGETS WrapQuick3DAssimp::WrapQuick3DAssimp MODULE_NAME assetimporters QMAKE_LIB quick3d_assimp)
+@@ -38 +38 @@
+-                   PACKAGES PACKAGE WrapQuick3DAssimp 5.1.6)
++                   PACKAGES PACKAGE WrapQuick3DAssimp)
