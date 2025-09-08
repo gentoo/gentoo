@@ -110,6 +110,7 @@ CONFIG_CHECK="~KEYS"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.8.2-krb5_pw_locked.patch"
 	"${FILESDIR}/${PN}-2.9.6-conditional-python-install.patch"
+	"${FILESDIR}/${PN}-2.9.7-kerberos-1-22.patch"
 	"${FILESDIR}/${PN}-2.10.0_beta2-fix-systemd-systemconfdir.patch"
 )
 
