@@ -5,6 +5,12 @@
 # New version is rewritten in rust
 >=app-misc/asciinema-3.0.0
 
+# Azamat H. Hackimov <azamat.hackimov@gmail.com> (2025-09-08)
+# app-i18n/libchewing was ported to Rust.
+>=app-i18n/ibus-chewing-2.1.7
+>=app-i18n/libchewing-0.10.3
+dev-build/corrosion
+
 # Vincent de Phily <moltonel@gmail.com> (2025-09-01)
 # Another package requiring Rust
 app-portage/emlop
