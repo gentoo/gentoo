@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/943846
+--- a/libinit.h
++++ b/libinit.h
+@@ -107,7 +107,11 @@
+ #define  DEFPIDEXT ".pid"
+ #define  DEFPIDLEN 14		/* The string length of /var/run/.pid + 1 */
+ 
++#if __STDC_VERSION__ <= 201710L
+ typedef enum _boolean {false, true} boolean;
++#else
++typedef bool boolean;
++#endif
+ 
+ extern char **environ;
+ extern char     * newenvp[];
