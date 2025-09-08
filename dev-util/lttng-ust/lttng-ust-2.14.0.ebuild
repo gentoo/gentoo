@@ -9,14 +9,17 @@ EAPI=8
 # dev-util/lttng-ust
 
 PYTHON_COMPAT=( python3_{11..14} )
-inherit autotools flag-o-matic python-any-r1
+inherit autotools flag-o-matic python-any-r1 verify-sig
 
 MY_P="${P/_rc/-rc}"
 MY_SLOT="$(ver_cut 1-2)"
 
 DESCRIPTION="Linux Trace Toolkit - UST library"
 HOMEPAGE="https://lttng.org"
-SRC_URI="https://lttng.org/files/${PN}/${MY_P}.tar.bz2"
+SRC_URI="
+	https://lttng.org/files/${PN}/${MY_P}.tar.bz2
+	verify-sig? ( https://lttng.org/files/${PN}/${MY_P}.tar.bz2.asc )
+"
 S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
@@ -34,7 +37,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 	test? ( dev-lang/perl )
+	verify-sig? ( sec-keys/openpgp-keys-mathieudesnoyers )
 "
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/mathieudesnoyers.asc
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	pthread_get_name_np # different from pthread_getname_*, not on linux
