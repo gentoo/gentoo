@@ -1,0 +1,40 @@
+From e0852a7cc236c500cfcd155dd1a58838dbdc438a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Tue, 2 Sep 2025 19:47:46 -0400
+Subject: [PATCH] allow building test deps without running ctest indirectly
+
+---
+ src/CMakeLists.txt              | 3 +--
+ testsuite/python/CMakeLists.txt | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2b80d67..abb251b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -20,8 +20,7 @@
+ 
+ # Target for the unit tests
+ add_custom_target(
+-  check_unit_tests COMMAND ${CMAKE_CTEST_COMMAND} --timeout ${TEST_TIMEOUT}
+-                           ${CTEST_ARGS} --output-on-failure)
++  check_unit_tests )
+ 
+ if(WITH_TESTS)
+   # Run unit tests on check
+diff --git a/testsuite/python/CMakeLists.txt b/testsuite/python/CMakeLists.txt
+index bb057cd..e2107e0 100644
+--- a/testsuite/python/CMakeLists.txt
++++ b/testsuite/python/CMakeLists.txt
+@@ -340,7 +340,6 @@ add_custom_target(
+ add_dependencies(check_python_skip_long pypresso python_test_data)
+ 
+ add_custom_target(
+-  check_python COMMAND ${CMAKE_CTEST_COMMAND} --timeout ${TEST_TIMEOUT}
+-                       ${CTEST_ARGS} --output-on-failure)
++  check_python )
+ add_dependencies(check_python pypresso python_test_data)
+ add_dependencies(check check_python)
+-- 
+2.49.1
+
