@@ -13,6 +13,10 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-qt610.patch
+)
+
 # uses Qt private APIs wrt :=
 # dlopen: qtsvg
 DEPEND="
