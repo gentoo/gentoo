@@ -16,6 +16,7 @@ KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${P}-glibc-2.30.patch
+	"${FILESDIR}"/${P}-fix_gcc15.patch
 )
 
 src_configure() {
