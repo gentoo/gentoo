@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic meson
 COMMIT="21a55145ddbc5d085e91352586875abe92cff73b"
@@ -19,7 +19,6 @@ HOMEPAGE="https://github.com/l4rzy/ncman"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 RDEPEND="dev-libs/json-c:0=
 	>=sys-apps/dbus-1.4
