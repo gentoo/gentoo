@@ -17,9 +17,10 @@ IUSE="qml"
 # building tests require developer mode which is messy to enable here
 RESTRICT="test"
 
+# uses Qt private APIs wrt :=
 RDEPEND="
-	dev-qt/qtbase:6[widgets]
-	qml? ( dev-qt/qtdeclarative:6 )
+	dev-qt/qtbase:6=[widgets]
+	qml? ( dev-qt/qtdeclarative:6= )
 "
 DEPEND="
 	${DEPEND}
@@ -28,6 +29,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-include-paths.patch
+	"${FILESDIR}"/${PN}-2.2.5-qt610.patch
 )
 
 src_configure() {
@@ -45,5 +47,6 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	rm -r -- "${ED}"/usr/share/doc/${P}-qt6 || die
+	# only has licenses and duplicate files
+	rm -r -- "${ED}"/usr/share/doc/${PF}-qt6 || die
 }
