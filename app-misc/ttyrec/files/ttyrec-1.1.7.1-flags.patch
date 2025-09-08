@@ -1,0 +1,41 @@
+remove filtering cflags in configure and respect userflags
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,6 +1,4 @@
+ CC ?= %CC%
+-CFLAGS += -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -I/usr/local/include %CFLAGS% $(RPM_OPT_FLAGS)
+-LDFLAGS += -L/usr/local/lib
+ LDLIBS += %LDLIBS% %PTHREAD%
+ 
+ BINARIES = ttyrec ttyplay ttytime
+--- a/configure
++++ b/configure
+@@ -237,27 +237,8 @@ EOF
+     fi
+ fi
+ 
+-echo "Checking for supported compiler options..."
+-for w in -Wall -Wextra -pedantic -Wno-unused-result -Wbad-function-cast -Wmissing-declarations \
+-    -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wstrict-prototypes \
+-    -Wpointer-sign -Wmissing-parameter-type -Wold-style-declaration -Wl,--as-needed \
+-    -Wno-unused-command-line-argument
+-do
+-    echo 'int main(void) { return 0; }' >"$srcfile.c"
+-    if [ "$($CC "$srcfile.c" $w -o /dev/null 2>&1 | wc -l)" = 0 ]; then
+-        echo "... OK $w"
+-        if echo "$w" | grep -q -- '-Wl,'; then
+-            LDFLAGS="$LDFLAGS $w"
+-        else
+-            CFLAGS="$CFLAGS $w"
+-        fi
+-    else
+-        echo "... unsupported $w"
+-    fi
+-done
+-
+ cat "$(dirname "$0")"/Makefile.in > "$(dirname "$0")"/Makefile.tmp
+-for i in CC LDLIBS CFLAGS COMPRESS_ZSTD PTHREAD
++for i in CC LDLIBS COMPRESS_ZSTD PTHREAD
+ do
+     replace=$(eval printf "%b" "\"\$$i\"")
+     sed "s:%$i%:$replace:g" "$(dirname "$0")"/Makefile.tmp > "$(dirname "$0")"/Makefile
