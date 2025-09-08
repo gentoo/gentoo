@@ -75,7 +75,6 @@ RDEPEND="
 	)
 	system-icu? ( dev-libs/icu:= )
 	vaapi? ( media-libs/libva:=[X] )
-	!bindist? ( >=media-libs/openh264-2.4.1:= )
 "
 DEPEND="
 	${RDEPEND}
@@ -128,7 +127,7 @@ qtwebengine_check-reqs() {
 		ewarn "If run into issues, please try disabling before reporting a bug."
 	fi
 
-	local CHECKREQS_DISK_BUILD=10G
+	local CHECKREQS_DISK_BUILD=11G
 	local CHECKREQS_DISK_USR=400M
 
 	if ! has distcc ${FEATURES}; then #830661
@@ -209,6 +208,10 @@ src_configure() {
 		# issues (e.g. builds but some files don't play even with support)
 		-DQT_FEATURE_webengine_system_ffmpeg=OFF
 
+		# currently seems unused with our configuration, doesn't link and grep
+		# seems(?) to imply no dlopen nor using bundled (TODO: check again)
+		-DQT_FEATURE_webengine_system_openh264=OFF
+
 		# use bundled re2 to avoid complications, Qt has also disabled
 		# this by default in 6.7.3+ (bug #913923)
 		-DQT_FEATURE_webengine_system_re2=OFF
@@ -223,7 +226,7 @@ src_configure() {
 		$(printf -- '-DQT_FEATURE_webengine_system_%s=ON ' \
 			freetype gbm glib harfbuzz lcms2 libjpeg libopenjpeg2 \
 			libpci libpng libtiff libudev libwebp libxml minizip \
-			openh264 opus snappy zlib)
+			opus snappy zlib)
 
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
@@ -325,8 +328,17 @@ src_install() {
 	[[ -e ${D}${QT6_LIBDIR}/libQt6WebEngineCore.so ]] || #601472
 		die "${CATEGORY}/${PF} failed to build anything. Please report to https://bugs.gentoo.org/"
 
-	if use test && use webdriver; then
-		rm -- "${D}${QT6_BINDIR}"/testbrowser || die
+	if use test; then
+		local delete=( # sigh
+			"${D}${QT6_ARCHDATADIR}"/metatypes/*testmockdelegates*
+			"${D}${QT6_ARCHDATADIR}"/modules/*TestMockDelegates*
+			"${D}${QT6_BINDIR}"/testbrowser
+			"${D}${QT6_LIBDIR}"/{,cmake,pkgconfig}/*TestMockDelegates*
+			"${D}${QT6_MKSPECSDIR}"/modules/*testmockdelegates*
+			"${D}${QT6_QMLDIR}"/QtWebEngine/TestMockDelegates
+		)
+		# using -f given not tracking which tests may be skipped or not
+		rm -rf -- "${delete[@]}" || die
 	fi
 }
 
