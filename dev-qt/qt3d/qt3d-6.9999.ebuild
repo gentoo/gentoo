@@ -26,6 +26,10 @@ DEPEND="
 	vulkan? ( dev-util/vulkan-headers )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.9.2-assimp6.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package qml Qt6Qml)
