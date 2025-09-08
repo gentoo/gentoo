@@ -9,4 +9,7 @@
 		well. It can record emacs -nw, vi, lynx, or any programs running on
 		tty.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">ovh/ovh-ttyrec</remote-id>
+	</upstream>
 </pkgmetadata>
