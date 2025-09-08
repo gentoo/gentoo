@@ -43,7 +43,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/cffi[${PYTHON_USEDEP}]
-		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/packaging[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
@@ -51,7 +50,7 @@ BDEPEND="
 	)
 "
 
-EPYTEST_PLUGINS=()
+EPYTEST_PLUGINS=( hypothesis )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
