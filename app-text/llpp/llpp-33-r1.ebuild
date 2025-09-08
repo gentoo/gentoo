@@ -34,8 +34,11 @@ BDEPEND="
 	>=dev-lang/ocaml-4.09[ocamlopt?]
 	virtual/pkgconfig
 "
-
 RESTRICT="!ocamlopt? ( strip )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-link.patch
+)
 
 src_prepare() {
 	default
