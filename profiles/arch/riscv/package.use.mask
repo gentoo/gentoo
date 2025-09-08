@@ -232,12 +232,6 @@ app-admin/syslog-ng test
 # dev-db/mongodb does not support riscv, fails src_configure
 dev-libs/mongo-c-driver test
 
-# Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
-# hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise
-# passes all tests on at least some systems. No longer needed for 1.12,
-# though.
-<sci-libs/hdf5-1.12.1 fortran debug
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-12)
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # LuaJIT does not support riscv
