@@ -9,6 +9,7 @@ inherit readme.gentoo-r1 toolchain-funcs systemd
 DESCRIPTION="uShare is a UPnP (TM) A/V & DLNA Media Server"
 HOMEPAGE="https://github.com/ddugovic/uShare/"
 SRC_URI="https://github.com/ddugovic/uShare/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/uShare-${COMMIT}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -30,8 +31,6 @@ DOCS="NEWS README.md TODO THANKS AUTHORS"
 DOC_CONTENTS="Please edit /etc/ushare.conf to set the shared directories
 	and other important settings. Check system log if ushare is
 	not booting."
-
-S="${WORKDIR}/uShare-${COMMIT}"
 
 src_configure() {
 	local myconf
