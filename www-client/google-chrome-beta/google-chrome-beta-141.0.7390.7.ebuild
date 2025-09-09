@@ -93,7 +93,6 @@ src_install() {
 	cd "${ED}" || die
 	unpacker
 
-	rm -r etc usr/share/menu || die
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 
 	gzip -d usr/share/doc/${PF}/changelog.gz || die
