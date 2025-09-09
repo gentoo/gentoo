@@ -6,5 +6,6 @@
   </maintainer>
   <upstream>
     <remote-id type="savannah">vcdimager</remote-id>
+    <remote-id type="github">rocky/vcdimager</remote-id>
   </upstream>
 </pkgmetadata>
