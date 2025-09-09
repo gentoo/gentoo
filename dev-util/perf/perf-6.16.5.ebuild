@@ -3,9 +3,9 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {18..20} )
+LLVM_COMPAT=( {18..21} )
 PYTHON_COMPAT=( python3_{10..14} python3_{13,14}t)
-inherit bash-completion-r1 estack flag-o-matic linux-info llvm-r1 toolchain-funcs python-r1
+inherit bash-completion-r1 estack flag-o-matic linux-info llvm-r1 toolchain-funcs python-single-r1
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
 HOMEPAGE="https://perfwiki.github.io/main/"
@@ -46,7 +46,9 @@ BDEPEND="
 	${LINUX_PATCH+dev-util/patchutils}
 	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_USEDEP}]
+    ')
 	app-alternatives/yacc
 	app-alternatives/lex
 	sys-apps/which
@@ -307,14 +309,10 @@ src_test() {
 }
 
 src_install() {
-	_install_python_ext() {
-		perf_make -f Makefile.perf install-python_ext DESTDIR="${D}"
-	}
-
 	perf_make -f Makefile.perf install DESTDIR="${D}"
 
 	if use python; then
-		python_foreach_impl _install_python_ext
+		perf_make -f Makefile.perf install-python_ext DESTDIR="${D}"
 	fi
 
 	if use gtk; then
