@@ -43,3 +43,5 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND="test? ( >=dev-qt/qtbase-${QTMIN}:6[wayland] )"
 BDEPEND+=" test? ( || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 ) )"
+
+PATCHES=( "${FILESDIR}/${P}-ffmpeg8.patch" )
