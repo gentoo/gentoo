@@ -1,9 +1,9 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake cuda python-single-r1 savedconfig
 
@@ -17,15 +17,13 @@ if [[ ${PV} = 9999 ]]; then
 else
 	SRC_URI="https://github.com/${PN}md/${PN}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux"
+	S="${WORKDIR}/${PN}"
 fi
-S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="cuda doc examples +fftw +hdf5 test"
-
-# unittest_decorators not packaged
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
@@ -48,6 +46,11 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/scipy[${PYTHON_USEDEP}]
+		')
+	)
 "
 
 DOCS=( AUTHORS NEWS Readme.md ChangeLog )
@@ -55,6 +58,11 @@ DOCS=( AUTHORS NEWS Readme.md ChangeLog )
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake_src_prepare
+
+	# These produce tests that aren't run by "make check", but ctest picks
+	# them up by default, against upstream's intention.
+	cd testsuite || die
+	cmake_comment_add_subdirectory cmake scripts
 }
 
 src_configure() {
@@ -66,7 +74,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_FFTW3=$(usex !fftw)
 		-DWITH_HDF5=$(usex hdf5)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
-		-DCMAKE_SKIP_RPATH=YES
 	)
 	cmake_src_configure
 }
@@ -78,13 +85,17 @@ src_compile() {
 }
 
 src_test() {
-	LD_PRELOAD="${BUILD_DIR}/src/core/Espresso_core.so" cmake_src_test
+	# testsuite uses exclude_from_all, and lists all targets as deps for their custom rule
+	cmake_build check
+	cmake_src_test
 }
 
 src_install() {
 	local i docdir="${S}"
 
 	cmake_src_install
+
+	python_optimize
 
 	insinto /usr/share/${PN}/
 	doins "${BUILD_DIR}/myconfig-sample.hpp"
