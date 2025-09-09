@@ -63,6 +63,14 @@ PATCHES=(
 	"${FILESDIR}"/${P}-numpy-2.x.patch
 )
 
+src_unpack() {
+	default
+
+	# vendored, cmake4 false positive. Used solely as a directory of *.hpp
+	rm "${S}"/libs/h5xx/CMakeLists.txt || die
+	rm -r "${S}"/libs/h5xx/example || die
+}
+
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake_src_prepare
