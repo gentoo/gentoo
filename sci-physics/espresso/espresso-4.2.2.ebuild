@@ -32,7 +32,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=dev-python/cython-0.26.1[${PYTHON_USEDEP}]
-		<dev-python/numpy-2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
@@ -58,6 +58,9 @@ DOCS=( AUTHORS NEWS Readme.md ChangeLog )
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.0-fix-disable-test.patch"
 	"${FILESDIR}"/0001-allow-building-test-deps-without-running-ctest-indir.patch
+	# https://github.com/espressomd/espresso/pull/4992
+	# https://src.fedoraproject.org/rpms/espresso/c/1c764324a21a92d6500289b4d72043471b5f3840
+	"${FILESDIR}"/${P}-numpy-2.x.patch
 )
 
 src_prepare() {
