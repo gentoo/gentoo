@@ -226,7 +226,7 @@ pkg_config() {
 	if [[ -f "${ROOT}/var/lib/opendkim/${selector}.private" ]]; then
 		ewarn "The private key for this selector already exists."
 	else
-		keysize=1024
+		keysize=2048
 		# Generate the private and public keys. Note that opendkim-genkeys
 		# sets umask=077 on its own to keep these safe. However, we want
 		# them to be readable (only!) to the opendkim user, and we manage
