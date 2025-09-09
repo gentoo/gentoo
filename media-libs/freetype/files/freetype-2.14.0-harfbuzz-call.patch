@@ -1,0 +1,30 @@
+https://cgit.git.savannah.gnu.org/cgit/freetype/freetype2.git/commit/?id=e969f52986ce38e7082f7efc1957ef5b145ac81e
+https://gitlab.freedesktop.org/freetype/freetype/-/issues/1354
+
+From e969f52986ce38e7082f7efc1957ef5b145ac81e Mon Sep 17 00:00:00 2001
+From: Behdad Esfahbod <behdad@behdad.org>
+Date: Mon, 8 Sep 2025 05:57:19 +0200
+Subject: [autofit] Fix HarfBuzz calling.
+
+* src/autofit/afadjust.c (af_reverse_character_map_new)
+  [FT_CONFIG_OPTION_USE_HARFBUZZ]: Use `ft_hb_enabled`.
+
+Fixes issue #1354.
+---
+ src/autofit/afadjust.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/autofit/afadjust.c b/src/autofit/afadjust.c
+index f55317bcf..6637cacfc 100644
+--- a/src/autofit/afadjust.c
++++ b/src/autofit/afadjust.c
+@@ -1355,6 +1355,7 @@
+ 
+ #ifdef FT_CONFIG_OPTION_USE_HARFBUZZ
+ 
++    if ( ft_hb_enabled( globals ) )
+     {
+       hb_font_t  *hb_font;
+       hb_face_t  *hb_face;
+-- 
+cgit v1.2.3

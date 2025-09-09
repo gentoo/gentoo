@@ -47,6 +47,8 @@ BDEPEND="
 PDEPEND="harfbuzz? ( >=media-libs/harfbuzz-1.3.0[truetype,${MULTILIB_USEDEP}] )"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-harfbuzz-call.patch
+	"${FILESDIR}"/${P}-tt-hint.patch
 )
 
 _egit_repo_handler() {
