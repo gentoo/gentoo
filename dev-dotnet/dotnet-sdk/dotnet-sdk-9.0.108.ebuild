@@ -178,6 +178,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	strip-flags
 	filter-flags -Werror=lto-type-mismatch  # Not implemented by Clang, bug 946334
 	filter-flags -Wlto-type-mismatch
 	filter-lto
