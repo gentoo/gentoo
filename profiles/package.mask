@@ -391,11 +391,6 @@ dev-db/mysql:8.4
 # Pleas upgrade to 5.1, 5.2 LTS, or downgrade to 4.2 LTS.
 =dev-python/django-5.0*
 
-# Alfred Wingate <parona@protonmail.com> (2025-05-05)
-# Masked for testing
->=dev-libs/libxml2-2.14
-dev-libs/libxml2-compat
-
 # Michał Górny <mgorny@gentoo.org> (2025-05-04)
 # New wave of breakage from random removals.
 # Bugs #955398, #955396, #955411.
