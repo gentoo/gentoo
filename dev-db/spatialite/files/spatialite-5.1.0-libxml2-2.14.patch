@@ -1,0 +1,52 @@
+Source: https://www.gaia-gis.it/fossil/libspatialite/tktview?name=ac85f0fca3
+
+Index: spatialite-5.1.0/configure.ac
+===================================================================
+--- a/configure.ac
++++ b/configure.ac
+@@ -61,6 +61,8 @@ AH_TEMPLATE([OMIT_FREEXL],
+             [Should be defined in order to disable FREEXL support.])
+ AH_TEMPLATE([ENABLE_LIBXML2],
+             [Should be defined in order to enable LIBXML2 support.])
++AH_TEMPLATE([ENABLE_LIBXML2_NANOHTTP],
++            [Should be defined in order to enable LIBXML2 HTTP support.])
+ AH_TEMPLATE([ENABLE_MINIZIP],
+             [Should be defined in order to enable MiniZIP support.])
+ AH_TEMPLATE([ENABLE_GEOPACKAGE],
+@@ -441,6 +443,7 @@ if test x"$enable_libxml2" != "xno"; the
+   AC_SUBST(LIBXML2_CFLAGS)
+   AC_SUBST(LIBXML2_LIBS)
+   AC_DEFINE(ENABLE_LIBXML2)
++  AC_SEARCH_LIBS(xmlNanoHTTPCleanup,xml2,AC_DEFINE(ENABLE_LIBXML2_NANOHTTP),,)
+ fi
+ 
+ #-----------------------------------------------------------------------
+Index: spatialite-5.1.0/src/wfs/wfs_in.c
+===================================================================
+--- a/src/wfs/wfs_in.c
++++ b/src/wfs/wfs_in.c
+@@ -76,7 +76,10 @@ Regione Toscana - Settore Sistema Inform
+ #ifdef ENABLE_LIBXML2          /* LIBXML2 enabled: supporting XML documents */
+ 
+ #include <libxml/parser.h>
++
++#ifdef ENABLE_LIBXML2_NANOHTTP
+ #include <libxml/nanohttp.h>
++#endif
+ 
+ #define MAX_GTYPES     28
+ 
+@@ -4636,8 +4639,13 @@ get_wfs_schema_column_info (gaiaWFScolum
+ SPATIALITE_DECLARE void
+ reset_wfs_http_connection (void)
+ {
++#ifdef ENABLE_LIBXML2_NANOHTTP
+ /* Resets the libxml2 "nano HTTP": useful when changing the HTTP_PROXY settings */
+     xmlNanoHTTPCleanup ();
++#else
++/* LIBXML2 doesn't have HTTP support: does absolutely nothing */
++    return;
++#endif
+ }
+ 
+ #else /* LIBXML2 isn't enabled */

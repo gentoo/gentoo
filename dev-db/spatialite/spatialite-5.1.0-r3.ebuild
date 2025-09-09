@@ -32,7 +32,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-macro-surgery.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-macro-surgery.patch"
+	"${FILESDIR}/${P}-libxml2-2.14.patch" # bug 955675
+)
 
 src_prepare() {
 	default
