@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-09)
+# Broken by dev-libs/libxml2-2.14.2, abandoned by upstream, almost no one
+# else is packaging this. Bugs #955705, 955817. Removal on 2025-10-09.
+net-news/rsstool
+x11-misc/xcave
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-06)
 # Abandoned.  Incompatible with py3.14.  Last release in 2020.
 # No revdeps left.
