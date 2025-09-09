@@ -23,6 +23,7 @@ S="${WORKDIR}/${PN}"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="cuda doc examples +fftw +hdf5 test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
