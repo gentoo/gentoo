@@ -83,7 +83,6 @@ src_configure() {
 		-DINSTALL_PYPRESSO=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_FFTW3=$(usex !fftw)
 		-DWITH_HDF5=$(usex hdf5)
-		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
 	)
 	cmake_src_configure
 }
