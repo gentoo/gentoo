@@ -105,27 +105,6 @@ src_compile() {
 }
 
 src_test() {
-	CMAKE_SKIP_TESTS=(
-		# These 13 tests fail with
-		# "The MPI_Type_free() function was called before MPI_INIT was invoked."
-		#
-		# I do not know why. But, we didn't used to run any tests at all,
-		# so, baby steps.
-		SingleReaction_test
-		reaction_methods_utils_test
-		rotation_test
-		grid_test
-		Lattice_test
-		lb_exceptions
-		thermostats_test
-		bonded_interactions_map_test
-		ObjectHandle_test
-		AutoParameters_test
-		Accumulators_test
-		Constraints_test
-		Actors_test
-	)
-
 	# testsuite uses exclude_from_all, and lists all targets as deps for their custom rule
 	cmake_build check
 	cmake_src_test
