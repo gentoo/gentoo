@@ -40,6 +40,10 @@ RDEPEND="${CDEPEND}"
 
 REQUIRED_USE="test? ( tools )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake4.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -53,7 +57,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DPython_EXECUTABLE="${PYTHON}"
-		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${P}"
+		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DEMBEDDED_LIBCURL=OFF
 		-DLIBCURL_BACKEND_BY_DEFAULT=OFF
 		-DENABLE_HTML_DOCS=$(usex doc)
@@ -61,7 +65,7 @@ src_configure() {
 		-DENABLE_TCP_NODELAY=TRUE
 		-DENABLE_THIRD_PARTY_COPY=TRUE
 		-DENABLE_TOOLS=$(usex tools)
-		-DHTML_INSTALL_DIR="${EPREFIX}/usr/share/doc/${P}/html"
+		-DHTML_INSTALL_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 		-DSOUND_INSTALL_DIR="${EPREFIX}/usr/share/${PN}/sounds"
 		-DSTATIC_LIBRARY=OFF
 		-DSYSCONF_INSTALL_DIR="${EPREFIX}/etc"
