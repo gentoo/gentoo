@@ -1,0 +1,41 @@
+From e9120748f39cd0851701e8e18a1a1199b58c2f7e Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <alexey+gentoo@asokolov.org>
+Date: Thu, 22 Jul 2021 20:10:30 +0100
+Subject: [PATCH] Fix find Gentoo system Lua
+
+Add BUILD_OSG_LUA_PLUGIN option to silence warning about empty LUA_VERSION
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index da4f7f58a..a1f7408a5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -736,6 +736,7 @@ IF(WIN32 AND NOT ANDROID AND OSG_FIND_3RD_PARTY_DEPS)
+     INCLUDE(Find3rdPartyDependencies)
+ ENDIF()
+ 
++OPTION(BUILD_OSG_LUA_PLUGIN "Enable to build OSG lua plugin" ON)
+ OPTION(OSG_USE_LOCAL_LUA_SOURCE "Enable to use local Lua source when building the lua plugin" ON)
+ 
+ #
+@@ -779,11 +780,8 @@ ELSE()
+ 
+     FIND_PACKAGE(PDAL CONFIG)
+ 
+-    IF (NOT(OSG_USE_LOCAL_LUA_SOURCE))
+-        FIND_PACKAGE(Lua52)
+-        IF (NOT (LUA_LIBRARIES AND LUA_INCLUDE_DIR))
+-            FIND_PACKAGE(Lua51)
+-        ENDIF()
++    IF (BUILD_OSG_LUA_PLUGIN AND NOT(OSG_USE_LOCAL_LUA_SOURCE))
++        FIND_PACKAGE(Lua ${LUA_VERSION} EXACT)
+     ENDIF()
+ 
+     # V8 and Python plugins are tests for linking against these libraries but aren't functionality beyond this.
+-- 
+2.51.0
+

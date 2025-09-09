@@ -29,9 +29,9 @@
 		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
 		<flag name="fox">Build examples using <pkg>x11-libs/fox</pkg> library</flag>
 		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>
-		<flag name="las">Enable support for geospatial data LAS LiDAR format using <pkg>sci-geosciences/liblas</pkg></flag>
 		<flag name="openinventor">Build OpenInventor plugin</flag>
 		<flag name="osgapps">Build osg applications</flag>
+		<flag name="pdal">Enable support for PDAL for point clouds via <pkg>sci-libs/pdal</pkg></flag>
 		<flag name="sdl2">Use <pkg>media-libs/libsdl2</pkg> additionally to <pkg>media-libs/libsdl</pkg></flag>
 		<flag name="xrandr">Enable support for the X xrandr extension</flag>
 	</use>
