@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake cuda flag-o-matic python-single-r1 savedconfig
 
