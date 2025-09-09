@@ -1,11 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit cmake cuda python-single-r1 savedconfig
+inherit cmake cuda flag-o-matic python-single-r1 savedconfig
 
 DESCRIPTION="Extensible Simulation Package for Research on Soft matter"
 HOMEPAGE="https://espressomd.org"
@@ -74,6 +74,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# cmake.eclass for EAPI 8 finally, correctly, wipes out -DNDEBUG, leading
+	# to test fails. Fixed in git.
+	append-cppflags -DBOOST_DISABLE_ASSERTS
+
 	local mycmakeargs=(
 		-DWITH_CUDA=$(usex cuda)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
