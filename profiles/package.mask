@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-09)
+# Packaged version is very outdated, was already broken by libxml2-2.12,
+# now once more by libxml2-2.14. Bugs #739362, #829005, #923828, #955798.
+# Removal on 2025-10-09.
+games-rpg/manaplus
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-09)
 # Broken by dev-libs/libxml2-2.14.2, abandoned by upstream, almost no one
 # else is packaging this. Bugs #955705, 955817. Removal on 2025-10-09.
 net-news/rsstool
