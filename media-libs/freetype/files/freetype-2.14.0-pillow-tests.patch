@@ -1,0 +1,14 @@
+https://gitlab.freedesktop.org/freetype/freetype/-/issues/1355
+--- a/src/base/ftmm.c
++++ b/src/base/ftmm.c
+@@ -310,7 +310,10 @@
+ 	if ( error != -1 )
+ 	{
+ 	  if ( error == -2 ) /* -2 means is_variable. */
++	  {
++	    error = FT_Err_Ok;
+ 	    face->face_flags |= FT_FACE_FLAG_VARIATION;
++	  }
+ 	  else
+ 	    face->face_flags &= ~FT_FACE_FLAG_VARIATION;
+ 	}
