@@ -28,6 +28,10 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.29-shared-blas-lapack.patch"
+	# 960514 replace by upstream fix in next release. Which reverts to worse cmake-config files.
+	# https://github.com/OpenMathLib/OpenBLAS/issues/5387
+	# https://github.com/OpenMathLib/OpenBLAS/pull/5391
+	"${FILESDIR}/${P}-cmake_libdir.patch"
 )
 
 pkg_pretend() {
