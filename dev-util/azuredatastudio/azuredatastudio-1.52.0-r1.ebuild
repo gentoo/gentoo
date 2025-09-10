@@ -31,7 +31,10 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/nspr
 	dev-libs/nss
-	dev-util/lttng-ust:0/2.12
+	|| (
+		dev-util/lttng-ust-compat:0/2.12
+		dev-util/lttng-ust:0/2.12
+	)
 	media-libs/alsa-lib
 	|| (
 		media-libs/libcanberra-gtk3
