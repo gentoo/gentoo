@@ -15,7 +15,7 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="amd64"
 
-IUSE="jetbrains vscode"
+IUSE="jetbrains"
 RESTRICT="bindist strip"
 
 RDEPEND="
@@ -43,7 +43,6 @@ src_install() {
 	# but removing these cuts the already-small package size in half, so
 	# it seems worth it.
 	use jetbrains || rm -r vendor/${PN}-jetbrains-plugin || die
-	use vscode || rm -r vendor/${PN}.vsix || die
 
 	insinto /opt/${PN}
 	doins -r ./*
@@ -78,4 +77,10 @@ pkg_preinst() {
 	if test -f "${ROOT}/etc/${PN}/policies.json"; then
 		mv "${ROOT}/etc/${PN}/policies.json" "${ROOT}/etc/${PN}/managed-settings.json"
 	fi
+}
+
+pkg_postinst() {
+	elog "As of claude-code 1.0.110, the claude-code VSCode plugin was removed"
+	elog "from the upstream npm package. Users previously using this bundled"
+	elog "extension will have to source it elsewhere."
 }
