@@ -41,6 +41,6 @@
     </flag>
   </use>
   <upstream>
-    <remote-id type="github">xianyi/OpenBLAS</remote-id>
+    <remote-id type="github">OpenMathLib/OpenBLAS</remote-id>
   </upstream>
 </pkgmetadata>
