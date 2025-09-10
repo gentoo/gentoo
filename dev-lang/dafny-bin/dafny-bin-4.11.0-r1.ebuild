@@ -6,19 +6,22 @@ EAPI=8
 DESCRIPTION="Verification-aware programming language"
 HOMEPAGE="https://dafny.org/
 	https://github.com/dafny-lang/dafny/"
-SRC_URI="https://github.com/dafny-lang/dafny/releases/download/v${PV}/dafny-${PV}-x64-ubuntu-20.04.zip"
+SRC_URI="https://github.com/dafny-lang/dafny/releases/download/v${PV}/dafny-${PV}-x64-ubuntu-22.04.zip"
 S="${WORKDIR}/dafny"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 REQUIRED_USE="elibc_glibc"
 RESTRICT="strip"
 
 RDEPEND="
 	!dev-lang/dafny
 	dev-libs/userspace-rcu
-	dev-util/lttng-ust:0/2.12
+	|| (
+		dev-util/lttng-ust-compat:0/2.12
+		dev-util/lttng-ust:0/2.12
+	)
 	sci-mathematics/z3
 "
 BDEPEND="
