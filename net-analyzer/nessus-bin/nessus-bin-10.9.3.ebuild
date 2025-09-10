@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,10 +14,10 @@ SRC_URI="
 	arm64? ( https://www.tenable.com/downloads/api/v2/pages/${PN%-bin}/files/${MY_P}.aarch64.rpm )
 "
 
+S="${WORKDIR}"
 LICENSE="GPL-2 Tenable-Master-Agreement"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
-
 RESTRICT="mirror strip"
 
 QA_PREBUILT="opt/nessus/bin/*
@@ -25,8 +25,6 @@ QA_PREBUILT="opt/nessus/bin/*
 	opt/nessus/lib/nessus/iconv/*.so
 	opt/nessus/lib/nessus/libjemalloc.so.*
 	opt/nessus/sbin/*"
-
-S="${WORKDIR}"
 
 src_install() {
 	# Using doins -r would strip executable bits from all binaries
