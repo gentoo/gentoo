@@ -23,16 +23,15 @@ BDEPEND="
 "
 RDEPEND="
 	app-arch/zstd:=
-	net-misc/curl
 	dev-libs/libxml2:=
 	dev-libs/openssl:=
+	net-misc/curl
 	sci-libs/gdal:=
 	>=sci-libs/libgeotiff-1.7.0:=
 	sys-libs/zlib
 	debug? ( sys-libs/libunwind:= )
 	postgres? ( dev-db/postgresql:*[xml] )
 "
-
 DEPEND="
 	${RDEPEND}
 	test? ( sci-libs/gdal[geos,jpeg,png,sqlite] )
