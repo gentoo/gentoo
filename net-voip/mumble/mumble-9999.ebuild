@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit cmake flag-o-matic multilib python-any-r1 xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
@@ -44,9 +44,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-cpp/ms-gsl
+	dev-db/soci[sqlite]
 	>=dev-libs/openssl-1.0.0b:0=
 	dev-libs/poco:=[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
+	dev-libs/spdlog:=
 	dev-qt/qtbase:6[dbus,gui,network,sqlite,widgets,xml]
 	dev-qt/qtsvg:6
 	>=media-libs/libsndfile-1.0.20[-minimal]
@@ -93,6 +95,9 @@ src_configure() {
 		-Dalsa="$(usex alsa)"
 		-Dbundled-gsl="OFF"
 		-Dbundled-json="OFF"
+		-Dbundled-rnnoise="OFF"
+		-Dbundled-spdlog="OFF"
+		-Dbundled-soci="OFF"
 		-Dbundled-speex="OFF"
 		-Dg15="OFF"
 		-Djackaudio="$(usex jack)"
@@ -101,7 +106,7 @@ src_configure() {
 		-Doverlay-xcompile="$(usex multilib)"
 		-Dpipewire="$(usex pipewire)"
 		-Dpulseaudio="$(usex pulseaudio)"
-		-Drenamenoise="$(usex rnnoise)"
+		-Drnnoise="$(usex rnnoise)"
 		-Dserver="OFF"
 		-Dspeechd="$(usex speech)"
 		-Dtests="$(usex test)"
