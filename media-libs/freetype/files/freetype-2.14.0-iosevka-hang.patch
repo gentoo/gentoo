@@ -1,0 +1,44 @@
+https://gitlab.freedesktop.org/freetype/freetype/-/issues/1356
+https://gitlab.freedesktop.org/freetype/freetype/-/commit/53b9319bff2deaa24eb6d29da7a304ac8c8e42a8
+
+From 53b9319bff2deaa24eb6d29da7a304ac8c8e42a8 Mon Sep 17 00:00:00 2001
+From: Werner Lemberg <wl@gnu.org>
+Date: Wed, 10 Sep 2025 14:10:23 +0200
+Subject: [PATCH] * src/autofit/afgsub.c (af_map_lookup): Fix handling of
+ lookup type 7.
+
+Fixes issue #1356.
+---
+ src/autofit/afgsub.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/autofit/afgsub.c b/src/autofit/afgsub.c
+index 6cc664ee8..386999d5c 100644
+--- a/src/autofit/afgsub.c
++++ b/src/autofit/afgsub.c
+@@ -649,6 +649,8 @@
+     {
+       FT_Error  error;
+ 
++      FT_UInt  real_lookupType = lookupType;
++
+       FT_Byte*  subtable = table + FT_NEXT_USHORT( p );
+ 
+ 
+@@ -657,11 +659,11 @@
+         FT_Byte*  q = subtable + 2;
+ 
+ 
+-        lookupType = FT_NEXT_USHORT( q );
+-        subtable  += FT_PEEK_ULONG( q );
++        real_lookupType = FT_NEXT_USHORT( q );
++        subtable       += FT_PEEK_ULONG( q );
+       }
+ 
+-      if ( lookupType == 1 )
++      if ( real_lookupType == 1 )
+       {
+         FT_UInt  format = FT_PEEK_USHORT( subtable );
+ 
+-- 
+GitLab
