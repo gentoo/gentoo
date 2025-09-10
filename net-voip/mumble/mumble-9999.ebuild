@@ -16,6 +16,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	# even if these components may not be compiled in
 	EGIT_SUBMODULES=(
 		'-*'
+		3rdparty/CLI11
 		3rdparty/cmake-compiler-flags
 		3rdparty/FindPythonInterpreter
 		3rdparty/flag-icons
@@ -43,6 +44,7 @@ IUSE="+alsa debug jack pipewire portaudio pulseaudio multilib nls +rnnoise speec
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	dev-cpp/cli11
 	dev-cpp/ms-gsl
 	dev-db/soci[sqlite]
 	>=dev-libs/openssl-1.0.0b:0=
@@ -93,6 +95,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
+		-Dbundled-cli11="OFF"
 		-Dbundled-gsl="OFF"
 		-Dbundled-json="OFF"
 		-Dbundled-rnnoise="OFF"
