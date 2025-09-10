@@ -239,7 +239,10 @@ COMMON_DEPEND="
 	)
 	lapack? (
 		atlas? ( sci-libs/atlas )
-		mkl? ( sci-libs/mkl )
+		mkl? (
+			sci-libs/mkl[tbb?]
+			openmp? ( sci-libs/mkl[gnu-openmp] )
+		)
 		!atlas? (
 			!mkl? (
 				virtual/cblas
@@ -365,6 +368,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.4.1-cuda-add-relaxed-constexpr.patch"
 	"${FILESDIR}/${PN}-4.1.2-opencl-license.patch"
 	"${FILESDIR}/${PN}-4.4.0-disable-native-cpuflag-detect.patch"
+	"${FILESDIR}/${PN}-4.12.0-link-with-cblas-for-lapack.patch"
 
 	"${FILESDIR}/${PN}-4.8.1-use-system-flatbuffers.patch"
 	"${FILESDIR}/${PN}-4.8.1-use-system-opencl.patch"
@@ -1123,13 +1127,19 @@ multilib_src_configure() {
 		)
 	fi
 
-	if use mkl; then
-		mycmakeargs+=(
-			-DLAPACK_IMPL="MKL"
-			-DWITH_MKL="yes"
-			-DMKL_WITH_OPENMP="$(usex openmp)"
-			-DMKL_WITH_TBB="$(usex tbb)"
-		)
+	if multilib_native_use lapack; then
+		if use mkl; then
+			mycmakeargs+=(
+				-DWITH_MKL="yes"
+				-DMKL_WITH_OPENMP="$(usex openmp)"
+				-DMKL_WITH_TBB="$(usex tbb)"
+			)
+		else
+			mycmakeargs+=(
+				-DSKIP_OPENBLAS_PACKAGE="yes"
+				-DOPENCV_LAPACK_DISABLE_MKL="yes"
+			)
+		fi
 	fi
 
 	if use gtk3 || use qt6 || use wayland; then
