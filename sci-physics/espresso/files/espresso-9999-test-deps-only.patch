@@ -1,0 +1,45 @@
+From 007a29960d91b03be501a9a3ef1cb79e31e81bb4 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Tue, 2 Sep 2025 19:47:46 -0400
+Subject: [PATCH] allow building test deps without running ctest indirectly
+
+---
+ src/CMakeLists.txt              | 4 +---
+ testsuite/python/CMakeLists.txt | 7 +------
+ 2 files changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 600a4ffa2..02f4cbb1e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -22,9 +22,7 @@
+ if(ESPRESSO_BUILD_TESTS)
+   # Target for the unit tests
+   add_custom_target(
+-    check_unit_tests
+-    COMMAND ${CMAKE_CTEST_COMMAND} --timeout ${ESPRESSO_TEST_TIMEOUT}
+-            ${ESPRESSO_CTEST_ARGS} --output-on-failure)
++    check_unit_tests)
+ 
+   # Run unit tests on check
+   add_dependencies(check check_unit_tests)
+diff --git a/testsuite/python/CMakeLists.txt b/testsuite/python/CMakeLists.txt
+index d06a42aa5..ce39c5c7f 100644
+--- a/testsuite/python/CMakeLists.txt
++++ b/testsuite/python/CMakeLists.txt
+@@ -482,11 +482,6 @@ add_custom_target(
+ add_dependencies(check_python_skip_long pypresso python_test_data)
+ 
+ add_custom_target(
+-  check_python
+-  JOB_POOL console
+-  COMMAND
+-    ${CMAKE_CTEST_COMMAND} --timeout ${ESPRESSO_TEST_TIMEOUT}
+-    --resource-spec-file ${ESPRESSO_CTEST_RESOURCE_SPEC_FILE}
+-    ${ESPRESSO_CTEST_ARGS} --output-on-failure)
++  check_python)
+ add_dependencies(check_python pypresso python_test_data)
+ add_dependencies(check check_python)
+-- 
+2.49.1
+

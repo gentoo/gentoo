@@ -55,24 +55,32 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS Readme.md ChangeLog )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test-deps-only.patch
+)
+
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake_src_prepare
+	# allow cython 3.1
+	sed -i '/Cython/{s/3\.1\.0/4.0/}' CMakeLists.txt || die
 
 	# These produce tests that aren't run by "make check", but ctest picks
 	# them up by default, against upstream's intention.
 	cd testsuite || die
-	cmake_comment_add_subdirectory cmake scripts
+	cmake_comment_add_subdirectory cmake scripts tutorials samples benchmarks
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_CUDA=$(usex cuda)
-		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DWITH_TESTS=$(usex test)
+		-DESPRESSO_BUILD_WITH_CUDA=$(usex cuda)
+		-DPython_EXECUTABLE="${PYTHON}"
+		# ignores site-packages dir and replaces with CMAKE_INSTALL_LIBDIR
+		-DESPRESSO_INSTALL_PYTHON="$(python_get_sitedir)"
+		-DESPRESSO_BUILD_TESTS=$(usex test)
 		-DINSTALL_PYPRESSO=OFF
-		-DCMAKE_DISABLE_FIND_PACKAGE_FFTW3=$(usex !fftw)
-		-DWITH_HDF5=$(usex hdf5)
+		-DESPRESSO_BUILD_WITH_FFTW=$(usex fftw)
+		-DESPRESSO_BUILD_WITH_HDF5=$(usex hdf5)
 	)
 	cmake_src_configure
 }
@@ -99,7 +107,7 @@ src_install() {
 	insinto /usr/share/${PN}/
 	doins "${BUILD_DIR}/myconfig-sample.hpp"
 
-	save_config "${BUILD_DIR}/src/config/myconfig-final.hpp"
+	save_config "${BUILD_DIR}/src/config/include/config/myconfig-final.hpp"
 
 	if use doc; then
 		dodoc -r "${BUILD_DIR}/doc/doxygen/html"
