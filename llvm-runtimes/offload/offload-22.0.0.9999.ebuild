@@ -87,16 +87,13 @@ src_configure() {
 	local ffi_cflags=$($(tc-getPKG_CONFIG) --cflags-only-I libffi)
 	local ffi_ldflags=$($(tc-getPKG_CONFIG) --libs-only-L libffi)
 	local plugins="host"
-	local build_devicertl=FALSE
 
 	if has "${CHOST%%-*}" aarch64 powerpc64le x86_64; then
 		if use llvm_targets_AMDGPU; then
 			plugins+=";amdgpu"
-			build_devicertl=TRUE
 		fi
 		if use llvm_targets_NVPTX; then
 			plugins+=";cuda"
-			build_devicertl=TRUE
 		fi
 	fi
 
@@ -107,7 +104,6 @@ src_configure() {
 		-DOFFLOAD_INCLUDE_TESTS=$(usex test)
 		-DLIBOMPTARGET_PLUGINS_TO_BUILD="${plugins}"
 		-DLIBOMPTARGET_OMPT_SUPPORT="$(usex ompt)"
-		-DLIBOMPTARGET_BUILD_DEVICERTL_BCLIB="${build_devicertl}"
 
 		# this breaks building static target libs
 		-DBUILD_SHARED_LIBS=OFF
