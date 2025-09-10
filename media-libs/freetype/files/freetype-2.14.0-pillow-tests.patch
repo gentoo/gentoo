@@ -1,14 +1,70 @@
 https://gitlab.freedesktop.org/freetype/freetype/-/issues/1355
+https://gitlab.freedesktop.org/freetype/freetype/-/commit/566f8805f3f7da63da8f2bd56d5f050104aac022
+
+From 566f8805f3f7da63da8f2bd56d5f050104aac022 Mon Sep 17 00:00:00 2001
+From: Behdad Esfahbod <behdad@behdad.org>
+Date: Wed, 10 Sep 2025 14:22:49 +0200
+Subject: [PATCH] [base] Fix return values of two Font Variation functions.
+
+* src/base/ftmm.c (FT_Set_Var_Design_Coordinates,
+  FT_Set_Var_Blend_Coordinates): Do it.
+
+Fixes issue #1355.
+---
+ src/base/ftmm.c | 34 ++++++++++++++++++++--------------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
+
+diff --git a/src/base/ftmm.c b/src/base/ftmm.c
+index 35b924b1b..9e6700140 100644
 --- a/src/base/ftmm.c
 +++ b/src/base/ftmm.c
-@@ -310,7 +310,10 @@
- 	if ( error != -1 )
- 	{
- 	  if ( error == -2 ) /* -2 means is_variable. */
-+	  {
-+	    error = FT_Err_Ok;
- 	    face->face_flags |= FT_FACE_FLAG_VARIATION;
-+	  }
- 	  else
- 	    face->face_flags &= ~FT_FACE_FLAG_VARIATION;
- 	}
+@@ -307,13 +307,16 @@
+         FT_Bool  is_variation_old = FT_IS_VARIATION( face );
+ 
+ 
+-	if ( error != -1 )
+-	{
+-	  if ( error == -2 ) /* -2 means is_variable. */
+-	    face->face_flags |= FT_FACE_FLAG_VARIATION;
+-	  else
+-	    face->face_flags &= ~FT_FACE_FLAG_VARIATION;
+-	}
++        if ( error != -1 )
++        {
++          if ( error == -2 ) /* -2 means is_variable. */
++          {
++            face->face_flags |= FT_FACE_FLAG_VARIATION;
++            error             = FT_Err_Ok;
++          }
++          else
++            face->face_flags &= ~FT_FACE_FLAG_VARIATION;
++        }
+ 
+         if ( service_mm->construct_ps_name )
+         {
+@@ -485,13 +488,16 @@
+         FT_Bool  is_variation_old = FT_IS_VARIATION( face );
+ 
+ 
+-	if ( error != -1 )
+-	{
+-	  if ( error == -2 ) /* -2 means is_variable. */
+-	    face->face_flags |= FT_FACE_FLAG_VARIATION;
+-	  else
+-	    face->face_flags &= ~FT_FACE_FLAG_VARIATION;
+-	}
++        if ( error != -1 )
++        {
++          if ( error == -2 ) /* -2 means is_variable. */
++          {
++            face->face_flags |= FT_FACE_FLAG_VARIATION;
++            error             = FT_Err_Ok;
++          }
++          else
++            face->face_flags &= ~FT_FACE_FLAG_VARIATION;
++        }
+ 
+         if ( service_mm->construct_ps_name )
+         {
+-- 
+GitLab
