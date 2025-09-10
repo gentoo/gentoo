@@ -134,5 +134,5 @@ src_test() {
 	# respect TMPDIR!
 	local -x LIT_PRESERVES_TMP=1
 
-	cmake_build check-offload
+	cmake_build check-offload check-offload-unit
 }
