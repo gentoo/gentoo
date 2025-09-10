@@ -46,7 +46,7 @@ BDEPEND="
 	)
 "
 
-LLVM_COMPONENTS=( offload cmake runtimes/cmake libc )
+LLVM_COMPONENTS=( runtimes offload cmake libc llvm/{cmake,utils/llvm-lit} )
 LLVM_TEST_COMPONENTS=( openmp/cmake )
 llvm.org_set_globals
 
@@ -98,20 +98,17 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DLLVM_ENABLE_RUNTIMES=offload
+		-DOPENMP_STANDALONE_BUILD=ON
+		-DOFFLOAD_LIBDIR_SUFFIX="${libdir#lib}"
 		-DLLVM_ROOT="${ESYSROOT}/usr/lib/llvm/${LLVM_MAJOR}"
 
-		-DOFFLOAD_LIBDIR_SUFFIX="${libdir#lib}"
 		-DOFFLOAD_INCLUDE_TESTS=$(usex test)
 		-DLIBOMPTARGET_PLUGINS_TO_BUILD="${plugins}"
 		-DLIBOMPTARGET_OMPT_SUPPORT="$(usex ompt)"
 
 		# this breaks building static target libs
 		-DBUILD_SHARED_LIBS=OFF
-
-		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
-		-DFFI_LIBRARY_DIR="${ffi_ldflags#-L}"
-		# force using shared libffi
-		-DFFI_STATIC_LIBRARIES=NO
 	)
 
 	[[ ! ${LLVM_ALLOW_GPU_TESTING} ]] && mycmakeargs+=(
