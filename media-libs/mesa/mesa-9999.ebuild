@@ -64,7 +64,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
-	sysprof test unwind vaapi valgrind vdpau vulkan
+	sysprof test unwind vaapi valgrind vulkan
 	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -74,7 +74,6 @@ REQUIRED_USE="
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_zink? ( vulkan opengl )
 	video_cards_nvk? ( vulkan video_cards_nouveau )
-	vdpau? ( X )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.121"
@@ -109,7 +108,6 @@ RDEPEND="
 	vaapi? (
 		>=media-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 	)
-	vdpau? ( >=x11-libs/libvdpau-1.5:=[${MULTILIB_USEDEP}] )
 	video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 	video_cards_zink? ( media-libs/vulkan-loader:=[${MULTILIB_USEDEP}] )
 	vulkan? ( virtual/libudev:= )
@@ -232,16 +230,6 @@ pkg_pretend() {
 		fi
 	fi
 
-	if use vdpau; then
-		if ! use video_cards_d3d12 &&
-		   ! use video_cards_nouveau &&
-		   ! use video_cards_r600 &&
-		   ! use video_cards_radeonsi &&
-		   ! use video_cards_virgl; then
-			ewarn "Ignoring USE=vdpau      since VIDEO_CARDS does not contain d3d12, nouveau, r600, radeonsi, or virgl"
-		fi
-	fi
-
 	if ! use llvm; then
 		use opencl     && ewarn "Ignoring USE=opencl     since USE does not contain llvm"
 	fi
@@ -312,16 +300,6 @@ multilib_src_configure() {
 
 	if use video_cards_d3d12; then
 		emesonargs+=($(meson_feature vaapi gallium-d3d12-video))
-	fi
-
-	if use video_cards_d3d12 ||
-	   use video_cards_nouveau ||
-	   use video_cards_r600 ||
-	   use video_cards_radeonsi ||
-	   use video_cards_virgl; then
-		emesonargs+=($(meson_feature vdpau gallium-vdpau))
-	else
-		emesonargs+=(-Dgallium-vdpau=disabled)
 	fi
 
 	gallium_enable !llvm softpipe
