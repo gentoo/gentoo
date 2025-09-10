@@ -30,7 +30,10 @@ RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	dev-libs/expat
 	dev-libs/glib:2
-	dev-util/lttng-ust:0/2.12
+	|| (
+		dev-util/lttng-ust-compat:0/2.12
+		dev-util/lttng-ust:0/2.12
+	)
 	dev-libs/nspr
 	dev-libs/nss
 	dev-libs/wayland
