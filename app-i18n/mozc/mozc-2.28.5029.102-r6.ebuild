@@ -7,6 +7,9 @@ PYTHON_COMPAT=( python3_{11..14} )
 
 inherit desktop edo elisp-common multiprocessing python-any-r1 savedconfig toolchain-funcs xdg
 
+DESCRIPTION="Mozc - Japanese input method editor"
+HOMEPAGE="https://github.com/google/mozc"
+
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 
@@ -24,19 +27,19 @@ else
 
 	JAPANESE_USAGE_DICTIONARY_GIT_REVISION="a4a66772e33746b91e99caceecced9a28507e925"
 	JAPANESE_USAGE_DICTIONARY_DATE="20180701040110"
-fi
-
-DESCRIPTION="Mozc - Japanese input method editor"
-HOMEPAGE="https://github.com/google/mozc"
-if [[ "${PV}" == "9999" ]]; then
-	SRC_URI=""
-else
 	SRC_URI="
-		https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz -> ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
-		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz -> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
+		https://github.com/google/${PN}/archive/${MOZC_GIT_REVISION}.tar.gz
+			-> ${PN}-${PV%%_p*}-${MOZC_DATE}.tar.gz
+		https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}.tar.gz
+			-> japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
 		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-2.28.5029.102-patches.tar.xz
-		fcitx5? ( https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz -> fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz )
+		fcitx5? (
+			https://github.com/fcitx/${PN}/archive/${FCITX_MOZC_GIT_REVISION}.tar.gz
+				-> fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz
+		)
 	"
+	S="${WORKDIR}/${P}/src"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 x86"
 fi
 
 # Mozc: BSD
@@ -45,23 +48,24 @@ fi
 # japanese-usage-dictionary: BSD-2
 LICENSE="BSD BSD-2 ipadic public-domain unicode"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 x86"
-IUSE="debug emacs fcitx5 +gui ibus renderer test"
+IUSE="debug emacs fcitx5 +gui +ibus renderer test"
 REQUIRED_USE="|| ( emacs fcitx5 ibus )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-build/gyp
-	$(python_gen_any_dep 'dev-python/six[${PYTHON_USEDEP}]')
-	>=dev-libs/protobuf-3.0.0
+	$(python_gen_any_dep '
+		dev-python/six[${PYTHON_USEDEP}]
+	')
+	<dev-libs/protobuf-32[protoc(+)]
 	app-alternatives/ninja
 	virtual/pkgconfig
 	emacs? ( app-editors/emacs:* )
 	fcitx5? ( sys-devel/gettext )
 "
 DEPEND="
-	>=dev-cpp/abseil-cpp-20250512.0:=
-	>=dev-libs/protobuf-3.0.0:=
+	=dev-cpp/abseil-cpp-20250512*:=
+	<dev-libs/protobuf-32:=
 	fcitx5? (
 		app-i18n/fcitx:5
 		app-i18n/libime
@@ -89,8 +93,8 @@ DEPEND="
 		dev-libs/jsoncpp
 	)"
 RDEPEND="
-	>=dev-cpp/abseil-cpp-20230802.0:=[cxx17(+)]
-	>=dev-libs/protobuf-3.0.0:=
+	=dev-cpp/abseil-cpp-20250512*:=[cxx17(+)]
+	<dev-libs/protobuf-32:=
 	emacs? ( app-editors/emacs:* )
 	fcitx5? (
 		app-i18n/fcitx:5
@@ -115,8 +119,6 @@ RDEPEND="
 		x11-libs/pango
 	)
 "
-
-S="${WORKDIR}/${P}/src"
 
 SITEFILE="50${PN}-gentoo.el"
 
@@ -151,7 +153,9 @@ src_unpack() {
 		unpack ${P}-patches.tar.xz
 
 		unpack japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_DATE}.tar.gz
-		cp -p japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}/usage_dict.txt ${P}/src/third_party/japanese_usage_dictionary || die
+		cp -p \
+			japanese-usage-dictionary-${JAPANESE_USAGE_DICTIONARY_GIT_REVISION}/usage_dict.txt \
+			${P}/src/third_party/japanese_usage_dictionary || die
 
 		if use fcitx5; then
 			unpack fcitx-${PN}-${PV%%_p*}-${FCITX_MOZC_DATE}.tar.gz
