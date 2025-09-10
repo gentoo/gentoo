@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -36,7 +36,10 @@ RESTRICT="splitdebug strip"
 RDEPEND="
 	app-crypt/mit-krb5:0/0
 	dev-libs/icu
-	dev-util/lttng-ust:0/2.12
+	|| (
+		dev-util/lttng-ust-compat:0/2.12
+		dev-util/lttng-ust:0/2.12
+	)
 	sys-libs/zlib:0/1
 "
 BDEPEND="
