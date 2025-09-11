@@ -32,8 +32,8 @@ RDEPEND="
 python_test() {
 	pushd "${BUILD_DIR}/install/$(python_get_sitedir)" >/dev/null || die
 	"${EPYTHON}" -c '
-		import sys,numexpr
-		sys.exit(0 if numexpr.test(verbosity=2).wasSuccessful() else 1)
+import sys,numexpr
+sys.exit(0 if numexpr.test(verbosity=2).wasSuccessful() else 1)
 	' || die "Tests failed with ${EPYTHON}"
 	pushd >/dev/null || die
 }
