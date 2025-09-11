@@ -363,7 +363,7 @@ setup_target_flags() {
 					[[ ${t} == "x86_64" ]] && t="x86-64"
 					filter-flags '-march=*'
 					# ugly, ugly, ugly.  ugly.
-					CFLAGS_x86=$(CFLAGS=${CFLAGS_x86} filter-flags '-march=*'; echo "${CFLAGS}")
+					CFLAGS_x86=$(CFLAGS=${CFLAGS_x86}; filter-flags '-march=*'; echo "${CFLAGS}")
 					export CFLAGS_x86="${CFLAGS_x86} -march=${t}"
 					einfo "Auto adding -march=${t} to CFLAGS_x86 #185404 (ABI=${ABI})"
 				fi
