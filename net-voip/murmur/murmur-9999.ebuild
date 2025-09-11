@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,6 +15,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	# even if these components may not be compiled in
 	EGIT_SUBMODULES=(
 		'-*'
+		3rdparty/CLI11
 		3rdparty/cmake-compiler-flags
 		3rdparty/FindPythonInterpreter
 		3rdparty/flag-icons
@@ -39,23 +40,22 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+ice test zeroconf"
+IUSE="+ice mysql postgres +sqlite test zeroconf"
+REQUIRED_USE="^^ ( mysql postgres sqlite )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/murmur
 	acct-user/murmur
+	dev-cpp/cli11
 	dev-cpp/ms-gsl
+	dev-cpp/nlohmann_json
+	dev-db/soci[mysql?,postgres?,sqlite?]
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtnetwork:5[ssl]
-	|| (
-		dev-qt/qtsql:5[sqlite]
-		dev-qt/qtsql:5[mysql]
-	)
-	dev-qt/qtxml:5
+	dev-libs/spdlog:=
+	dev-libs/utfcpp
+	dev-qt/qtbase:6[dbus,network,sqlite?,xml]
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
 	ice? ( dev-libs/Ice:= )
@@ -64,13 +64,17 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-qt/qttest:5
+	dev-qt/qtbase:6[test?]
 "
 BDEPEND="
 	acct-group/murmur
 	acct-user/murmur
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.6-unbundle-utf8cpp.patch"
+)
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
@@ -84,6 +88,11 @@ This will set the built-in 'SuperUser' password to '<pw>' when starting murmur.
 "
 
 src_prepare() {
+	sed '/TRACY_ON_DEMAND/s@ ON @ OFF @' -i src/CMakeLists.txt || die
+
+	# Fix unneeded dependency on GSL in database
+	sed '/target_link_libraries/s@ GSL @ @' -i src/murmur/database/CMakeLists.txt || die
+
 	# Adjust default server settings to be correct for our default setup
 	sed \
 		-e 's:database=:database=/var/lib/murmur/database.sqlite:' \
@@ -100,8 +109,15 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING="$(usex test)"
+		-Dbundled-cli11="OFF"
 		-Dbundled-gsl="OFF"
+		-Dbundled-json="OFF"
+		-Dbundled-soci="OFF"
+		-Dbundled-spdlog="OFF"
 		-Dclient="OFF"
+		-Denable-sqlite="$(usex sqlite)"
+		-Denable-mysql="$(usex mysql)"
+		-Denable-postgresql="$(usex postgres)"
 		-Dice="$(usex ice)"
 		-DMUMBLE_INSTALL_SYSCONFDIR="/etc/murmur"
 		-Dserver="ON"

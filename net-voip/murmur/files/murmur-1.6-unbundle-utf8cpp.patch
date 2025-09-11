@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -152,7 +152,8 @@ set(CMAKE_UNITY_BUILD_BATCH_SIZE 40)
+ set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ${lto})
+ set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_DEBUG OFF)
+ 
+-add_subdirectory(${3RDPARTY_DIR}/utfcpp)
++find_pkg("utf8cpp" REQUIRED)
++add_library(utfcpp ALIAS utf8cpp::utf8cpp)
+ 
+ if(g15 AND WIN32)
+        add_subdirectory("helpers/g15helper")
