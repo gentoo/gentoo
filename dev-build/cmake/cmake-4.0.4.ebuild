@@ -103,7 +103,6 @@ PATCHES=(
 
 	# Upstream fixes (can usually be removed with a version bump)
 	"${FILESDIR}"/${PN}-3.31.7-hdf5.patch
-	"${FILESDIR}/${PN}-4.1.1-curl-8.16.0.patch"
 )
 
 cmake_src_bootstrap() {
