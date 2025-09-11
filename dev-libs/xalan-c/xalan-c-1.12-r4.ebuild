@@ -17,10 +17,8 @@ else
 	inherit verify-sig
 	SRC_URI="
 		mirror://apache/xalan/xalan-c/sources/${MY_PN}-${PV}.tar.gz
-		https://archive.apache.org/dist/xalan/xalan-c/sources/${MY_PN}-${PV}.tar.gz
 		verify-sig? (
 			mirror://apache/xalan/xalan-c/sources/${MY_PN}-${PV}.tar.gz.asc
-			https://archive.apache.org/dist/xalan/xalan-c/sources/${MY_PN}-${PV}.tar.gz.asc
 		)
 	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/apache-xalan-c.asc
