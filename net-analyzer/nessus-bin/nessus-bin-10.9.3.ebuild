@@ -21,7 +21,7 @@ KEYWORDS="-* ~amd64 ~arm64"
 RESTRICT="mirror strip"
 
 QA_PREBUILT="opt/nessus/bin/*
-	opt/nessus/lib/nessus/*.so
+	opt/nessus/lib/nessus/*.so*
 	opt/nessus/lib/nessus/iconv/*.so
 	opt/nessus/lib/nessus/libjemalloc.so.*
 	opt/nessus/sbin/*"
