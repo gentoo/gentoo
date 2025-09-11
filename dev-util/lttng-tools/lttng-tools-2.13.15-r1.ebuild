@@ -82,6 +82,7 @@ src_configure() {
 		--disable-test-sdt-uprobe
 		--disable-python-bindings
 		--disable-Werror
+		--disable-maintainer-mode
 	)
 
 	econf "${myeconfargs[@]}"

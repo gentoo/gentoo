@@ -99,6 +99,7 @@ src_configure() {
 		--disable-python-bindings
 		--disable-Werror
 		$(use_enable test tests)
+		--disable-maintainer-mode
 	)
 
 	econf "${myeconfargs[@]}"
