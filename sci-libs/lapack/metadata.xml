@@ -28,6 +28,9 @@ This package installs the reference FORTRAN 77 implementation from Netlib.
 	</longdescription>
 	<use>
 		<flag name="deprecated">Also build deprecated functions</flag>
+		<flag name="flexiblas">
+			Rename install files, for system FlexiBLAS compatibility
+		</flag>
 		<flag name="index64">Build a separate ILP64 library in addition to LP64</flag>
 		<flag name="lapacke">Build LAPACKE</flag>
 		<flag name="eselect-ldso">Enable runtime library switching by
