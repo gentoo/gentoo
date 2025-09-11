@@ -98,6 +98,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.30.3-cudahostld.patch"
 
 	# Upstream fixes (can usually be removed with a version bump)
+	"${FILESDIR}"/${PN}-3.31.6-curl-8.13.0.patch
+	"${FILESDIR}/${PN}-4.1.1-curl-8.16.0.patch"
 )
 
 cmake_src_bootstrap() {
