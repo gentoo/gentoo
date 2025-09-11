@@ -55,7 +55,10 @@ REQUIRED_USE="
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
 "
+# live+snapshots need bison+flex
 BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
 	>=sys-devel/gettext-0.19.8
 	sys-devel/flex
 	virtual/pkgconfig
@@ -254,7 +257,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
-	if [[ ${PV} = *9999 ]] ; then
+	if [[ ${PV} == *9999* || ${PV} == *_p[0-9]* ]] ; then
 		./bootstrap
 	fi
 
@@ -283,8 +286,8 @@ src_prepare() {
 }
 
 src_configure() {
-	# bug #944778
-	unset LEX
+	# live+snapshots need bison+flex
+	unset LEX YACC
 
 	local -x BUILDCC="$(tc-getBUILD_CC)"
 
