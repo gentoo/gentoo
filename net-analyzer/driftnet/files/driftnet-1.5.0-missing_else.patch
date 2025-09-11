@@ -1,0 +1,17 @@
+Origin: https://github.com/deiv/driftnet/pull/50
+From: Bastian Germann <bage@debian.org>
+Date: Sat, 7 Oct 2023 15:06:52 +0200
+Subject: Recover else clause in endianess if
+
+The else clause was included in the inner (GTK3) if clause in
+465a1ff68a (Add RGB byte ordering implementation in PEL related macros).
+--- a/src/display/img.h
++++ b/src/display/img.h
+@@ -69,6 +69,7 @@ typedef uint32_t pel;
+ #   define GETB(p)             ((chan)(((p) & (pel)0xff000000) >> 24))
+ #   define GETA(p)             ((chan)(((p) & (pel)0x000000ff)      ))
+ #endif
++#else
+ #   error "no endianness defined"
+ #endif
+ 
