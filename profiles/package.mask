@@ -423,12 +423,6 @@ dev-db/mysql:8.4
 >=xfce-base/xfce4-settings-4.21
 >=xfce-base/xfconf-4.21
 
-# Sam James <sam@gentoo.org> (2025-03-07)
-# May cause emerge to hang (bug #950707). Tests hang on one machine
-# and another strange report upstream: https://github.com/pkgconf/pkgconf/issues/383.
-# Mask out of caution for now.
-=dev-util/pkgconf-2.4.1
-
 # John Helmert III <ajak@gentoo.org> (2025-03-02)
 # Doesn't seem to cleanly load, see:
 # https://github.com/lkrg-org/lkrg/issues/364
