@@ -238,9 +238,6 @@ src_prepare() {
 	# bug 608256
 	xdg_environment_reset
 
-	has_version 'net-libs/libupnp:1.8' && \
-		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
-
 	# Bootstrap when we are on a git checkout.
 	if [[ ${PV} == *9999* || ${PV} == *_p[0-9]* ]] ; then
 		./bootstrap
