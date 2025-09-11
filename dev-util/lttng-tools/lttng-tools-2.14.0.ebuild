@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools flag-o-matic python-any-r1 verify-sig
 
 # Please bump the following packages together:
