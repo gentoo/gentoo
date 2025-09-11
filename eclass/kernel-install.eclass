@@ -674,27 +674,16 @@ kernel-install_extract_from_uki() {
 			die "Failed to extract ${extract_type}"
 
 	# Sanity checks for kernel images
-	if [[ ${extract_type} == linux ]] &&
+	if [[ -n ${SECUREBOOT_SIGN_CERT} && ${extract_type} == linux ]] &&
 		{ ! in_iuse secureboot || use secureboot ;}
 	then
-		# Extract the used SECUREBOOT_SIGN_CERT to verify the kernel image
-		local cert=${T}/pcrpkey
-		kernel-install_extract_from_uki pcrpkey "${uki}" "${cert}"
-		if [[ $(head -n1 "${cert}") != "-----BEGIN CERTIFICATE-----" ]]; then
-			# This is a DER format certificate, convert it to PEM
-			openssl x509 \
-				-inform DER -in "${cert}" \
-				-outform PEM -out "${cert}" ||
-					die "Failed to convert pcrpkey to PEM format"
-		fi
-
 		# Check if the signature on the UKI is valid
-		sbverify --cert "${cert}" "${uki}" ||
+		sbverify --cert "${SECUREBOOT_SIGN_CERT}" "${uki}" ||
 			die "ERROR: UKI signature is invalid"
 
 		# Check if the signature on the kernel image is valid
 		local sbverify_err=$(
-			sbverify --cert "${cert}" "${out_temp}" 2>&1 >/dev/null
+			sbverify --cert "${SECUREBOOT_SIGN_CERT}" "${out_temp}" 2>&1 >/dev/null
 		)
 
 		# Check if there was a padding warning
@@ -708,7 +697,7 @@ kernel-install_extract_from_uki() {
 				>"${out_temp}_trimmed" || die
 			# Check if the signature verifies now
 			sbverify_err=$(
-				sbverify --cert "${cert}" "${out_temp}_trimmed" 2>&1 >/dev/null
+				sbverify --cert "${SECUREBOOT_SIGN_CERT}" "${out_temp}_trimmed" 2>&1 >/dev/null
 			)
 			[[ -z ${sbverify_err} ]] && out_temp=${out_temp}_trimmed
 		fi
