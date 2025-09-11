@@ -37,7 +37,7 @@ IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d
 	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate kms
 	libass libcaca libnotify libplacebo +libsamplerate libtiger linsys lirc live
 	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	nfs ogg omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba
+	nfs ogg omxil optimisememory opus png projectm pulseaudio run-as-root samba
 	sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
 	twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf
 	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
@@ -172,7 +172,6 @@ RDEPEND="
 		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-libs/libpulse )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0:2= )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )
@@ -280,6 +279,7 @@ src_configure() {
 
 	local myeconfargs=(
 		--disable-amf-frc # DirectX specific
+		--disable-freerdp # bug 921096
 		--disable-optimizations
 		--disable-postproc # bug 961436
 		--disable-rpath
@@ -365,7 +365,6 @@ src_configure() {
 		$(use_enable png)
 		$(use_enable projectm)
 		$(use_enable pulseaudio pulse)
-		$(use_enable rdp freerdp)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)
 		$(use_enable sdl-image)
