@@ -8,17 +8,15 @@ inherit go-module
 DESCRIPTION="Disk Usage/Free Utility - a better 'df' alternative"
 HOMEPAGE="https://github.com/muesli/duf"
 SRC_URI="https://github.com/muesli/duf/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://github.com/mrmagic223325/deps/releases/download/${P}/${P}-deps.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-deps.tar.xz"
 
 LICENSE="MIT BSD Apache-2.0"
 # Dependent licenses
 LICENSE+="  Apache-2.0 BSD MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="pie"
 
 src_compile() {
-	use pie && GOFLAGS+=" -buildmode=pie"
 	ego build
 }
 
