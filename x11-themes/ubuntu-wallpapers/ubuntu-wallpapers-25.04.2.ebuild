@@ -12,7 +12,7 @@ SRC_URI="mirror://ubuntu/pool/main/u/${PN}/${MY_P}.orig.tar.gz"
 LICENSE="CC-BY-SA-3.0"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 
 src_compile() { :; }
 src_test() { :; }
