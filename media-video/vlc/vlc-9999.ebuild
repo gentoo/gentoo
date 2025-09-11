@@ -277,9 +277,6 @@ src_prepare() {
 	sed -i -e s/GETTEXT_VERSION/GETTEXT_REQUIRE_VERSION/ configure.ac || die
 
 	eautoreconf
-
-	# Disable automatic running of tests.
-	find . -name 'Makefile.in' -exec sed -i 's/\(..*\)check-TESTS/\1/' {} \; || die
 }
 
 src_configure() {
