@@ -235,6 +235,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-9999-no-vlc-cache-gen.patch # bugs 564842, 608256
 	"${FILESDIR}"/${PN}-9999-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-9999-configure-lua-version.patch
 )
@@ -268,10 +269,6 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
-
-	# Disable running of vlc-cache-gen, we do that in pkg_postinst
-	sed -e "/test.*build.*host/s/\$(host)/nothanks/" \
-		-i Makefile.am -i bin/Makefile.am || die "Failed to disable vlc-cache-gen"
 
 	# Fix gettext version mismatch errors.
 	sed -i -e s/GETTEXT_VERSION/GETTEXT_REQUIRE_VERSION/ configure.ac || die

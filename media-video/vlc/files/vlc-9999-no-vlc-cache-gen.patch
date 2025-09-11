@@ -1,0 +1,39 @@
+Disable vlc-cache-gen, to run it later manually from pkg_postinst
+https://bugs.gentoo.org/564842
+https://bugs.gentoo.org/608256
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ Makefile.am     | 2 +-
+ bin/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index eb00a3c..9f9891c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -163,7 +163,7 @@ if BUILD_VLC
+ # Installing plugins cache
+ ###############################################################################
+ install-exec-hook:
+-	if test "$(build)" = "$(host)"; then \
++	if test "$(build)" = "nothanks"; then \
+ 		PATH="$(DESTDIR)$(bindir):$$PATH" \
+ 		LD_LIBRARY_PATH="$(DESTDIR)$(libdir):$$LD_LIBRARY_PATH" \
+ 		DYLD_LIBRARY_PATH="$(DESTDIR)$(libdir):$$DYLD_LIBRARY_PATH" \
+diff --git a/bin/Makefile.am b/bin/Makefile.am
+index 4de299d..e9794b5 100644
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -144,7 +144,7 @@ endif
+ 
+ ../modules/plugins.dat: vlc-cache-gen$(EXEEXT)
+ 	$(AM_V_at)rm -f ../modules/plugins.dat
+-	$(AM_V_GEN)if test "$(build)" = "$(host)"; then \
++	$(AM_V_GEN)if test "$(build)" = "nothanks"; then \
+ 		./vlc-cache-gen$(EXEEXT) `cd "../modules" ; pwd -P` ; \
+ 	else \
+ 		echo "Cross-compilation: cache generation skipped!" ; \
+-- 
+2.51.0
+
