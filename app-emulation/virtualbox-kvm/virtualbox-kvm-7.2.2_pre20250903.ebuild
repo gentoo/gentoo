@@ -15,12 +15,12 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
 	python-single-r1 tmpfiles toolchain-funcs udev xdg
 
-PATCHES_PV="7.2.0_pre20250723"
+PATCHES_PV="7.2.0_p20250830"
 ORIGIN_PN="VirtualBox"
 ORIGIN_PV=${PV%_pre*}
 
@@ -207,8 +207,6 @@ PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${PATCHES_PV}/patches
 	"${PATCHES_DIR}"/patches
-
-	"${FILESDIR}"/virtualbox-7.2.0-fix-qt-freeze.patch
 )
 
 pkg_pretend() {
