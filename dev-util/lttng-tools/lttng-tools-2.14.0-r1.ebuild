@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit autotools flag-o-matic verify-sig
+PYTHON_COMPAT=( python3_{11..14} )
+inherit autotools flag-o-matic python-any-r1 verify-sig
 
 # Please bump the following packages together:
 # dev-util/lttng-modules
@@ -32,15 +33,23 @@ RDEPEND="
 	dev-libs/popt
 	>=dev-libs/libxml2-2.7.6:=
 	kmod? ( sys-apps/kmod )
-	ust? ( >=dev-util/lttng-ust-${MY_SLOT}.0:= )
+	ust? ( dev-util/lttng-ust:0/${MY_SLOT} )
 "
 DEPEND="
 	${RDEPEND}
-	test? ( >=dev-libs/libpfm-4.0 )
+	test? (
+		>=dev-libs/libpfm-4.0
+		dev-util/babeltrace:2
+	)
 "
 BDEPEND="
 	virtual/pkgconfig
-	test? ( dev-util/babeltrace:0 )
+	test? (
+		${PYTHON_DEPS}
+		$(python_gen_any_dep '
+			dev-util/babeltrace:2[python,${PYTHON_SINGLE_USEDEP}]
+		')
+	)
 	verify-sig? ( sec-keys/openpgp-keys-jeremiegalarneau )
 "
 
@@ -51,15 +60,22 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	pthread_set_name_np # different from pthread_setname_*, not on linux
 )
 
-PATCHES=(
-	"${FILESDIR}"/lttng-tools-2.13.0-libxml2-2.14.patch
-)
+python_check_deps() {
+	python_has_version -d "dev-util/babeltrace:2[python,${PYTHON_SINGLE_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_prepare() {
 	default
 
 	# skip tests that appear to fail due to the sandbox
 	sed -e '/tools\/save-load\/test_autoload/d' \
+		-e '/ust\/ust-app-ctl-paths\/test_blocking/d' \
+		-e '/ust\/ust-app-ctl-paths\/test_path_separators/d' \
+		-e '/ust\/ust-app-ctl-paths\/test_ust_app_ctl_paths/d' \
 		-e '/tools\/metadata\/test_ust/d' \
 		-i tests/regression/Makefile.am || die
 
@@ -82,6 +98,7 @@ src_configure() {
 		--disable-test-sdt-uprobe
 		--disable-python-bindings
 		--disable-Werror
+		$(use_enable test tests)
 		--disable-maintainer-mode
 	)
 
@@ -93,10 +110,13 @@ src_test() {
 	local -x LTTNG_ENABLE_DESTRUCTIVE_TESTS=0
 	local -x LTTNG_TOOLS_DISABLE_KERNEL_TESTS=1
 
-	# Otherwise it might try to use the system installed binary (and fail if its not installed prior!)
+	# Useful for cases like bug #762475
+	local -x LTTNG_TEST_SERIAL_TEST_TIMEOUT_MINUTES=30
+
+	# Otherwise it will try to use the system installed binary (and fail if its not installed prior!)
 	local -x LTTNG_SESSIOND_PATH="${S}/src/bin/lttng-sessiond/lttng-sessiond"
 
-	# Otherwise it might try to use /var/lib/portage/home
+	# Otherwise it tries to use /var/lib/portage/home
 	local -x LTTNG_HOME="${HOME}/lttng"
 	mkdir -p "${LTTNG_HOME}" || die
 
