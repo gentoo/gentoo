@@ -21,9 +21,10 @@ KEYWORDS="-* ~amd64 ~arm64"
 RESTRICT="mirror strip"
 
 QA_PREBUILT="opt/nessus_agent/bin/*
-	opt/nessus_agent/lib/nessus/*.so
+	opt/nessus_agent/lib/nessus/*.so*
 	opt/nessus_agent/lib/nessus/iconv/*.so
 	opt/nessus_agent/lib/nessus/libjemalloc.so.*
+	opt/nessus_agent/var/nessus/mod/com.tenable.*
 	opt/nessus_agent/sbin/*"
 
 src_install() {
