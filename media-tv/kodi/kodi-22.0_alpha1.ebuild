@@ -273,6 +273,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
 	"${FILESDIR}"/kodi-22-silence-libdvdread-git.patch
+	"${FILESDIR}"/kodi-22.0_alpha1-fix-curl-8.16.patch
 )
 
 # bug #544020
