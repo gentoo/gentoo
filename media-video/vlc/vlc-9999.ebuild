@@ -288,7 +288,7 @@ src_configure() {
 		--enable-vcd
 		--enable-vlc
 		--enable-vorbis
-		$(use_enable a52)
+		$(use_enable a52) # not officially supported anymore (avcodec takes priority)
 		$(use_enable alsa)
 		$(use_enable aom)
 		$(use_enable archive)
@@ -312,7 +312,7 @@ src_configure() {
 		$(use_enable directx)
 		$(use_enable directx d3d11va)
 		$(use_enable directx dxva2)
-		$(use_enable dts dca)
+		$(use_enable dts dca) # not officially supported anymore (avcodec takes priority)
 		$(use_enable dvbpsi)
 		$(use_enable dvd dvdnav)
 		$(use_enable dvd dvdread)
@@ -353,7 +353,7 @@ src_configure() {
 		$(use_enable matroska)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mpg123)
-		$(use_enable mpeg libmpeg2)
+		$(use_enable mpeg libmpeg2) # not officially supported anymore (avcodec takes priority)
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
