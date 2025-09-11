@@ -34,7 +34,7 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate
-	libass libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
+	libass libcaca libnotify +libsamplerate libtiger linsys lirc live lua
 	macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses nfs ogg
 	omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba sdl-image
 	sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype twolame
@@ -46,7 +46,6 @@ REQUIRED_USE="
 	directx? ( ffmpeg )
 	fontconfig? ( truetype )
 	libcaca? ( X )
-	libtar? ( skins )
 	libtiger? ( kate )
 	lua? ( ${LUA_REQUIRED_USE} )
 	skins? ( archive gui truetype X xml )
@@ -147,7 +146,6 @@ RDEPEND="
 		x11-libs/libnotify
 	)
 	libsamplerate? ( media-libs/libsamplerate )
-	libtar? ( dev-libs/libtar )
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
@@ -343,7 +341,6 @@ src_configure() {
 		$(use_enable libcaca caca)
 		$(use_enable libnotify notify)
 		$(use_enable libsamplerate samplerate)
-		$(use_enable libtar)
 		$(use_enable libtiger tiger)
 		$(use_enable linsys)
 		$(use_enable lirc)
