@@ -1,0 +1,90 @@
+From 0af5f24b742d35e65264fc483584c6980069a5d2 Mon Sep 17 00:00:00 2001
+From: Christoph Cullmann <christoph@cullmann.dev>
+Date: Thu, 11 Sep 2025 14:32:57 +0200
+Subject: [PATCH] remove activities API call as KRecentFiles::add handles it
+ internally
+
+---
+ CMakeLists.txt           | 6 ------
+ autotests/CMakeLists.txt | 4 ++--
+ shell/CMakeLists.txt     | 5 -----
+ shell/shell.cpp          | 6 ------
+ 4 files changed, 2 insertions(+), 19 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 03e1b9d199..a822103796 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -206,12 +206,6 @@ if(NOT WIN32 AND NOT ANDROID AND NOT APPLE AND NOT HAIKU)
+     else()
+         find_package(Qt6Gui REQUIRED COMPONENTS Private)
+     endif()
+-    find_package(PlasmaActivities REQUIRED)
+-    set_package_properties("PlasmaActivities" PROPERTIES
+-        DESCRIPTION  "Activities interface library"
+-        URL "https://invent.kde.org/plasma/plasma-activities"
+-        PURPOSE "Required for Activities integration."
+-    )
+     set(HAVE_X11 TRUE)
+ else()
+     set(HAVE_X11 FALSE)
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index 5736f6009a..9da8c38f08 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -118,10 +118,10 @@ ecm_add_test(check_distinguished_name_parser.cpp
+     TEST_NAME "distinguishednameparser"
+     LINK_LIBRARIES Qt6::Test)
+ 
+-if(PlasmaActivities_FOUND AND BUILD_DESKTOP)
++if(BUILD_DESKTOP)
+     ecm_add_test(mainshelltest.cpp ../shell/okular_main.cpp ../shell/shellutils.cpp ../shell/shell.cpp ../shell/welcomescreen.cpp ../shell/recentitemsmodel.cpp closedialoghelper.cpp
+         TEST_NAME "mainshelltest"
+-        LINK_LIBRARIES Qt6::Test Plasma::Activities okularpart okularcore
++        LINK_LIBRARIES Qt6::Test okularpart okularcore
+     )
+     target_compile_definitions(mainshelltest PRIVATE OKULAR_BINARY="$<TARGET_FILE:okular>")
+ 
+diff --git a/shell/CMakeLists.txt b/shell/CMakeLists.txt
+index 7fe88349cc..3a1abe7ffc 100644
+--- a/shell/CMakeLists.txt
++++ b/shell/CMakeLists.txt
+@@ -30,11 +30,6 @@ target_link_libraries(okular KF6::I18n KF6::Parts KF6::WindowSystem KF6::Crash K
+ if (TARGET Qt6::DBus)
+     target_link_libraries(okular Qt6::DBus)
+ endif()
+-if(TARGET Plasma::Activities)
+-    target_compile_definitions(okular PUBLIC -DWITH_KACTIVITIES=1)
+-    target_link_libraries(okular Plasma::Activities)
+-endif()
+-
+ if (HAVE_X11)
+     target_link_libraries(okular Qt6::GuiPrivate)
+ endif()
+diff --git a/shell/shell.cpp b/shell/shell.cpp
+index 72240737e7..55d9ccc0a3 100644
+--- a/shell/shell.cpp
++++ b/shell/shell.cpp
+@@ -53,9 +53,6 @@
+ #include <QTabBar>
+ #include <QTabWidget>
+ #include <QTimer>
+-#ifdef WITH_KACTIVITIES
+-#include <PlasmaActivities/ResourceInstance>
+-#endif
+ 
+ #include <kio_version.h>
+ #include <kxmlgui_version.h>
+@@ -489,9 +486,6 @@ void Shell::openUrl(const QUrl &url, const QString &serializedOptions)
+         const bool isstdin = url.fileName() == QLatin1String("-") || url.scheme() == QLatin1String("fd");
+         if (!isstdin) {
+             if (openOk) {
+-#ifdef WITH_KACTIVITIES
+-                KActivities::ResourceInstance::notifyAccessed(url);
+-#endif
+                 m_recent->addUrl(url);
+             } else {
+                 m_recent->removeUrl(url);
+-- 
+GitLab
+
