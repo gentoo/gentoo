@@ -1,0 +1,44 @@
+diff '--color=auto' -ru llpp-original/link.c llpp-33/link.c
+--- llpp-original/link.c	2025-09-08 12:17:13.252453812 -0300
++++ llpp-33/link.c	2025-09-08 12:36:30.352987826 -0300
+@@ -639,7 +639,7 @@
+ 
+             fz_var (pageobj);
+             if (pdf->rev_page_map) {
+-                for (int i = 0; i < pdf->rev_page_count; ++i) {
++                for (int i = 0; i < pdf->map_page_count; ++i) {
+                     if (pdf->rev_page_map[i].page == pageno) {
+                         pageobj = pdf_get_xref_entry (
+                             ctx, pdf, pdf->rev_page_map[i].object
+@@ -984,13 +984,13 @@
+ static void recurse_outline (fz_outline *outline, int level)
+ {
+     while (outline) {
+-        if (outline->page >= 0) {
++        if (outline->page.page >= 0) {
+             fz_point p = {.x = outline->x, .y = outline->y};
+-            struct pagedim *pdim = pdimofpageno (outline->page);
++            struct pagedim *pdim = pdimofpageno (outline->page.page);
+             int h = fz_maxi (fz_absi (pdim->bounds.y1 - pdim->bounds.y0), 0);
+             p = fz_transform_point (p, pdim->ctm);
+             printd ("o %d %d %d %d %s",
+-                    level, outline->page, (int) p.y, h, outline->title);
++                    level, outline->page.page, (int) p.y, h, outline->title);
+         }
+         else {
+             printd ("on %d %s", level, outline->title);
+@@ -1494,13 +1494,7 @@
+ 
+             nameddest = p + 9 + off;
+             if (pdf && nameddest && *nameddest) {
+-                fz_point xy;
+-                struct pagedim *pdim;
+-                int pageno = pdf_lookup_anchor (state.ctx, pdf, nameddest,
+-                                                &xy.x, &xy.y);
+-                pdim = pdimofpageno (pageno);
+-                xy = fz_transform_point (xy, pdim->ctm);
+-                printd ("a %d %d %d", pageno, (int) xy.x, (int) xy.y);
++                printd ("a 0 0 0");
+             }
+ 
+             state.gen++;
