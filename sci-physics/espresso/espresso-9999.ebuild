@@ -28,6 +28,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}"
 
+# cmake built hdf5 fails to detect, -r1 switched to cmake
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
@@ -37,7 +38,7 @@ RDEPEND="
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
 	dev-libs/boost:=[mpi]
-	hdf5? ( <sci-libs/hdf5-1.13:=[mpi] )
+	hdf5? ( <sci-libs/hdf5-1.14.6-r1:=[mpi] )
 "
 
 DEPEND="${RDEPEND}
