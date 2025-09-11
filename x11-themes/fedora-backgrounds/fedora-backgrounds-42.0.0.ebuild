@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 # Migrate to virtual/imagemagick-tools when it supports jpegxl:
 # https://bugs.gentoo.org/953960
 BDEPEND="|| (
-		media-gfx/imagemagick[jpegxl,png]
+		media-gfx/imagemagick[jpegxl(-),png]
 		media-gfx/graphicsmagick[imagemagick,jpegxl,png]
 	)
 "
