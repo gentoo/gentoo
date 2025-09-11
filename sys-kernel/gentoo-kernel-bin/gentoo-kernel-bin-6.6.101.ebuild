@@ -152,6 +152,14 @@ src_configure() {
 
 	local image="${kernel_dir}/$(dist-kernel_get_image_path)"
 	local uki="${image%/*}/uki.efi"
+
+	# Override user variable with the cert used during build
+	openssl x509 \
+		-inform DER -in "${kernel_dir}/certs/signing_key.x509" \
+		-outform PEM -out "${T}/cert.pem" ||
+			die "Failed to convert pcrpkey to PEM format"
+	export SECUREBOOT_SIGN_CERT=${T}/cert.pem
+
 	if [[ -s ${uki} ]]; then
 		# We need to extract the plain image for the test phase
 		# and USE=-generic-uki.
