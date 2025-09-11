@@ -81,6 +81,9 @@ src_test() {
 src_install() {
 	toolchain-autoconf_src_install
 
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+
 	local f
 	for f in config.{guess,sub} ; do
 		ln -fs ../../gnuconfig/${f} \
