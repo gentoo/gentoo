@@ -16,7 +16,6 @@ DESCRIPTION="Advanced version control system"
 HOMEPAGE="https://subversion.apache.org/"
 SRC_URI="
 	mirror://apache/${PN}/${MY_P}.tar.bz2
-	https://archive.apache.org/dist/${PN}/${MY_P}.tar.bz2
 "
 S="${WORKDIR}/${MY_P}"
 
