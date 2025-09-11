@@ -88,7 +88,7 @@ src_install() {
 	default
 
 	# bug #956668
-	python_optimize "${ED}"
+	use python && python_optimize "${ED}"
 
 	find "${D}" -name '*.la' -delete || die
 }
