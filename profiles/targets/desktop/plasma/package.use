@@ -55,6 +55,3 @@ kde-apps/marble phonon
 # Required by kde-plasma/plasma-meta
 kde-plasma/kwin lock
 kde-plasma/kwin-x11 lock
-
-# plasma profile never enabled pulseaudio. We're skipping to pipewire.
-media-video/pipewire sound-server

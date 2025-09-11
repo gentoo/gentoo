@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ian Jordan <immoloism@gmail.com> (2025-08-29)
+# Use PipeWire sound server. It also acts as PulseAudio implementation for
+# packages using media-libs/libpulse (e.g. via USE="pulseaudio").
+media-video/pipewire sound-server
+
 # Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-03)
 # Desktop users will probably want QR code scanning in Bitcoin-Qt, but
 # enabling USE=qrcode by default in the ebuild requires also enabling
