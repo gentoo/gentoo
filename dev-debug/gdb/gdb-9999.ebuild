@@ -138,6 +138,7 @@ pkg_setup() {
 	if [[ ${CHOST} == *-linux-* ]] ; then
 		if kernel_is -ge 6.11.3 ; then
 			# https://forums.gentoo.org/viewtopic-p-8846891.html
+			# See also PR31520.
 			#
 			# Either CONFIG_PROC_MEM_ALWAYS_FORCE or CONFIG_PROC_MEM_FORCE_PTRACE
 			# should be okay, but not CONFIG_PROC_MEM_NO_FORCE.
