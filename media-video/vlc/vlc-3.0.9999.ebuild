@@ -103,7 +103,7 @@ RDEPEND="
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
-	ffmpeg? ( >=media-video/ffmpeg-3.1.3:=[postproc(-),vaapi?,vdpau?] )
+	ffmpeg? ( >=media-video/ffmpeg-3.1.3:=[vaapi?,vdpau?] )
 	flac? (
 		media-libs/flac:=
 		media-libs/libogg
@@ -282,6 +282,7 @@ src_configure() {
 		--disable-aa
 		--disable-amf-frc # DirectX specific
 		--disable-optimizations
+		--disable-postproc # bug 961436
 		--disable-rpath
 		--disable-update-check
 		--enable-fast-install
@@ -323,7 +324,6 @@ src_configure() {
 		$(use_enable fdk fdkaac)
 		$(use_enable ffmpeg avcodec)
 		$(use_enable ffmpeg avformat)
-		$(use_enable ffmpeg postproc)
 		$(use_enable ffmpeg swscale)
 		$(use_enable flac)
 		$(use_enable fluidsynth)
