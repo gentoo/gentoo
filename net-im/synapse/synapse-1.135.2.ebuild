@@ -7,6 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{11..13} )
 
+RUST_MIN_VER="1.82"
 CRATES="
 	addr2line@0.24.2
 	adler2@2.0.0
