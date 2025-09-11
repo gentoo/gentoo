@@ -15,7 +15,7 @@ SRC_URI="https://github.com/intel/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="debug vc"
 
 DEPEND="
