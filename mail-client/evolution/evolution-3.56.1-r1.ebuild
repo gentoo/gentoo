@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/evolution/-/wikis/home https://gitlab.g
 LICENSE="|| ( LGPL-2 LGPL-3 ) CC-BY-SA-3.0 FDL-1.3+ OPENLDAP"
 SLOT="2.0"
 
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 IUSE="archive +bogofilter geolocation gtk-doc highlight ldap libnotify selinux sound spamassassin spell ssl +weather ytnef"
 
@@ -27,7 +27,7 @@ DEPEND="
 	>=app-text/enchant-2.2.0:2
 	>=dev-db/sqlite-3.7.17:3
 	>=dev-libs/glib-2.70:2[dbus]
-	>=dev-libs/libxml2-2.7.3:2
+	>=dev-libs/libxml2-2.7.3:2=
 	>=gnome-base/gnome-desktop-2.91.3:3=
 	>=gnome-base/gsettings-desktop-schemas-2.91.92
 	>=gnome-extra/evolution-data-server-${PV}:=[gtk,sound?,weather?]
