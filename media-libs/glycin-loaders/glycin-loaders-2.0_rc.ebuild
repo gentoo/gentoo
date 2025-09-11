@@ -5,7 +5,7 @@ EAPI=8
 
 CRATES="
 "
-RUST_MIN_VERSION=1.83.0
+RUST_MIN_VER=1.83.0
 
 inherit cargo meson
 
