@@ -3,21 +3,24 @@
 
 EAPI=8
 
-inherit cmake git-r3 multilib toolchain-funcs
+inherit cmake multilib toolchain-funcs
 
+MY_P=flexiblas-release-v${PV}
 DESCRIPTION="A BLAS and LAPACK wrapper library with runtime exchangable backends"
 HOMEPAGE="
 	https://www.mpi-magdeburg.mpg.de/projects/flexiblas/
 	https://gitlab.mpi-magdeburg.mpg.de/software/flexiblas-release/
 "
-EGIT_REPO_URI="
-	https://gitlab.mpi-magdeburg.mpg.de/software/flexiblas-release.git
+SRC_URI="
+	https://gitlab.mpi-magdeburg.mpg.de/software/flexiblas-release/-/archive/v${PV}/${MY_P}.tar.bz2
 "
+S=${WORKDIR}/${MY_P}
 
 # BSD for vendored cblas/lapacke
 LICENSE="LGPL-3+ BSD"
 SLOT="0"
-IUSE="blis elibc_glibc index64 mkl openblas openmp system-blas tbb test"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+IUSE="blis index64 mkl openblas openmp system-blas tbb test"
 RESTRICT="!test? ( test )"
 
 # flexiblas only supports gnu-openmp using clang/gcc
@@ -61,6 +64,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		# extracted from
+		# https://gitlab.mpi-magdeburg.mpg.de/software/flexiblas-release/-/commit/04021ceada30f136036a22dc6c811b3d352b199d
+		"${FILESDIR}/${P}-xerbla-array.patch"
+	)
+
 	cmake_src_prepare
 
 	# remove bundled netlib blas/lapack

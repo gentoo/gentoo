@@ -10,6 +10,10 @@
 		<flag name="index64">Build a separate ILP64 library in addition to LP64</flag>
 		<flag name="mkl">Support <pkg>sci-libs/mkl</pkg> provider</flag>
 		<flag name="openblas">Support <pkg>sci-libs/openblas</pkg> provider</flag>
+		<flag name="system-blas">
+			Install symlinks to use FlexiBLAS as the system BLAS / LAPACK
+			provider.
+		</flag>
 		<flag name="tbb">
 			Support <pkg>sci-libs/mkl</pkg> with <pkg>dev-cpp/tbb</pkg>
 			threading.
