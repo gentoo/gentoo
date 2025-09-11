@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 PYTHON_REQ_USE="threads(+)"
-inherit python-single-r1 waf-utils multilib-minimal
+inherit python-single-r1 waf-utils multilib-minimal flag-o-matic
 
 DESCRIPTION="LDAP-like embedded database"
 HOMEPAGE="https://ldb.samba.org"
@@ -133,6 +133,8 @@ multilib_src_configure() {
 	if ! use python || ! multilib_is_native_abi; then
 		myconf+=( --disable-python )
 	fi
+
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version) # bug 915199
 
 	waf-utils_src_configure "${myconf[@]}"
 }
