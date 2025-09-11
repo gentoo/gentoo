@@ -609,14 +609,13 @@ kernel-build_src_install() {
 			done
 
 			if [[ ${KERNEL_IUSE_MODULES_SIGN} ]] && use secureboot; then
-				# --pcrpkey is appended as is. If the certificate and key
-				# are in the same file, we could accidentally leak the key
-				# into the UKI. Pass the certificate through openssl to ensure
-				# that it truly contains *only* the certificate.
+				# The PCR public key option should contain *only* the
+				# public key, not the full certificate containing the
+				# public key. Bug #960276
 				openssl x509 \
 					-in "${SECUREBOOT_SIGN_CERT}" -inform PEM \
-					-out "${T}/pcrpkey.pem" -outform PEM ||
-						die "Failed to extract certificate"
+					-noout -pubkey > "${T}/pcrpkey.pem" ||
+						die "Failed to extract public key"
 				ukify_args+=(
 					--secureboot-private-key="${SECUREBOOT_SIGN_KEY}"
 					--secureboot-certificate="${SECUREBOOT_SIGN_CERT}"
@@ -627,17 +626,19 @@ kernel-build_src_install() {
 					ukify_args+=(
 						--signing-engine="pkcs11"
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
-						--pcr-public-key="${SECUREBOOT_SIGN_CERT}"
+						--pcr-public-key="${T}/pcrpkey.pem"
 						--phases="enter-initrd"
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
-						--pcr-public-key="${SECUREBOOT_SIGN_CERT}"
+						--pcr-public-key="${T}/pcrpkey.pem"
 						--phases="enter-initrd:leave-initrd enter-initrd:leave-initrd:sysinit enter-initrd:leave-initrd:sysinit:ready"
 					)
 				else
 					ukify_args+=(
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--pcr-public-key="${T}/pcrpkey.pem"
 						--phases="enter-initrd"
 						--pcr-private-key="${SECUREBOOT_SIGN_KEY}"
+						--pcr-public-key="${T}/pcrpkey.pem"
 						--phases="enter-initrd:leave-initrd enter-initrd:leave-initrd:sysinit enter-initrd:leave-initrd:sysinit:ready"
 					)
 				fi
