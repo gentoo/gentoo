@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic libtool python-single-r1 verify-sig
 
 DESCRIPTION="Command-line tool and library to read and convert trace files"
