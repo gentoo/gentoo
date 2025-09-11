@@ -1,0 +1,57 @@
+diff --git a/sphinxcontrib/websupport/storage/sqlalchemy_db.py b/sphinxcontrib/websupport/storage/sqlalchemy_db.py
+index e681a68..13e094e 100644
+--- a/sphinxcontrib/websupport/storage/sqlalchemy_db.py
++++ b/sphinxcontrib/websupport/storage/sqlalchemy_db.py
+@@ -5,10 +5,11 @@
+ 
+ from __future__ import annotations
+ 
+-from datetime import datetime, timezone
++from datetime import datetime
+ 
+ from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
+ from sqlalchemy.orm import aliased, declarative_base, relationship, sessionmaker
++from sqlalchemy.sql.expression import true
+ 
+ Base = declarative_base()
+ Session = sessionmaker()
+@@ -51,7 +52,7 @@ def nested_comments(self, username, moderator):
+ 
+         # Filter out all comments that are not moderated yet.
+         if not moderator:
+-            q = q.filter(Comment.displayed is True)
++            q = q.filter(Comment.displayed == true())
+ 
+         # Retrieve all results. Results must be ordered by Comment.path
+         # so that we can easily transform them from a flat list to a tree.
+@@ -159,7 +160,7 @@ def serializable(self, vote=0):
+         """Creates a serializable representation of the comment. This is
+         converted to JSON, and used on the client side.
+         """
+-        delta = datetime.now(tz=timezone.utc) - self.time
++        delta = datetime.now() - self.time  # noqa: DTZ005
+ 
+         time = {
+             "year": self.time.year,
+diff --git a/sphinxcontrib/websupport/storage/sqlalchemystorage.py b/sphinxcontrib/websupport/storage/sqlalchemystorage.py
+index 070692b..b48c32f 100644
+--- a/sphinxcontrib/websupport/storage/sqlalchemystorage.py
++++ b/sphinxcontrib/websupport/storage/sqlalchemystorage.py
+@@ -2,7 +2,7 @@
+ 
+ from __future__ import annotations
+ 
+-from datetime import datetime, timezone
++from datetime import datetime
+ 
+ import sqlalchemy
+ from sqlalchemy.orm import aliased
+@@ -72,7 +72,7 @@ def add_comment(self, text, displayed, username, time,
+                 raise CommentNotAllowedError(msg)
+ 
+         comment = Comment(text, displayed, username, 0,
+-                          time or datetime.now(tz=timezone.utc), proposal, proposal_diff)
++                          time or datetime.now(), proposal, proposal_diff)  # noqa: DTZ005
+         session.add(comment)
+         session.flush()
+         # We have to flush the session before setting the path so the
