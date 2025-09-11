@@ -9,7 +9,7 @@ LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS=""
 
 SLOT=$(ver_cut 1)
 
@@ -22,8 +22,9 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug doc icu kerberos ldap llvm +lz4 nls pam perl python +readline
-	  selinux +server systemd ssl static-libs tcl uuid xml zlib"
+IUSE="debug doc +icu kerberos ldap llvm +lz4 +numa nls oauth pam perl python
+	+readline selinux +server systemd ssl static-libs tcl uuid +uring
+	xml zlib +zstd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -34,13 +35,15 @@ acct-user/postgres
 sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
-kerberos? ( virtual/krb5 )
+kerberos? ( app-crypt/mit-krb5 )
 ldap? ( net-nds/openldap:= )
 llvm? ( $(llvm_gen_dep '
 	llvm-core/clang:${LLVM_SLOT}
 	llvm-core/llvm:${LLVM_SLOT}
 	') )
 lz4? ( app-arch/lz4 )
+numa? ( sys-process/numactl )
+oauth? ( net-misc/curl[adns] )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
@@ -48,8 +51,10 @@ readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
-xml? ( dev-libs/libxml2 dev-libs/libxslt )
+uring? ( sys-libs/liburing )
+xml? ( dev-libs/libxml2:= dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
+zstd? ( app-arch/zstd )
 "
 
 # uuid flags -- depend on sys-apps/util-linux for Linux libcs, or if no
@@ -84,6 +89,18 @@ RDEPEND="${CDEPEND}
 selinux? ( sec-policy/selinux-postgresql )
 "
 
+# Openjade, docbook, XML, and XSLT are needed to generate manpages and
+# any documentation that may be elected.
+BDEPEND="
+app-text/openjade
+app-text/docbook-dsssl-stylesheets
+app-text/docbook-sgml-dtd:4.5
+app-text/docbook-xml-dtd:4.5
+app-text/docbook-xsl-stylesheets
+dev-libs/libxml2
+dev-libs/libxslt
+"
+
 pkg_setup() {
 	use llvm && llvm-r1_pkg_setup
 
@@ -102,7 +119,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || eapply "${FILESDIR}/${PN}-14.5-no-server.patch"
+	use server || eapply "${FILESDIR}/${PN}-17.0-no-server.patch"
 
 	if use pam ; then
 		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -115,6 +132,10 @@ src_prepare() {
 
 src_configure() {
 	lto-guarantee-fat
+
+	# Fails to build with C23, fallback to the old default in < GCC 15
+	# for now: https://marc.info/?l=pgsql-bugs&m=173185132906874&w=2
+	append-cflags -std=gnu17
 
 	case ${CHOST} in
 		*-darwin*|*-solaris*)
@@ -148,6 +169,8 @@ src_configure() {
 		$(use_with ldap) \
 		$(use_with llvm) \
 		$(use_with lz4) \
+		$(use_with numa libnuma) \
+		$(use_with oauth libcurl) \
 		$(use_with pam) \
 		$(use_with perl) \
 		$(use_with python) \
@@ -155,10 +178,12 @@ src_configure() {
 		$(use_with ssl openssl) \
 		$(usex server "$(use_with systemd)" '--without-systemd') \
 		$(use_with tcl) \
+		$(use_with uring liburing) \
 		${uuid_config} \
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \
 		$(use_with zlib) \
+		$(use_with zstd) \
 		$(use_enable nls)"
 	if use alpha; then
 		myconf+=" --disable-spinlocks"
@@ -172,13 +197,14 @@ src_configure() {
 src_compile() {
 	emake
 	emake -C contrib
+	emake -C doc
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
 	emake DESTDIR="${D}" install -C contrib
 
-	dodoc README HISTORY
+	dodoc HISTORY
 
 	# man pages are already built, but if we have the target make them,
 	# they'll be generated from source before being installed so we

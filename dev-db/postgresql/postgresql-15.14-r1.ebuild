@@ -22,9 +22,8 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug doc +icu kerberos ldap llvm +lz4 nls pam perl python
-	  +readline selinux +server systemd ssl static-libs tcl uuid xml
-	  zlib +zstd"
+IUSE="debug doc icu kerberos ldap llvm +lz4 nls pam perl python +readline
+	  selinux +server systemd ssl static-libs tcl uuid xml zlib +zstd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -35,7 +34,7 @@ acct-user/postgres
 sys-apps/less
 virtual/libintl
 icu? ( dev-libs/icu:= )
-kerberos? ( app-crypt/mit-krb5 )
+kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap:= )
 llvm? ( $(llvm_gen_dep '
 	llvm-core/clang:${LLVM_SLOT}
@@ -49,7 +48,7 @@ readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
-xml? ( dev-libs/libxml2 dev-libs/libxslt )
+xml? ( dev-libs/libxml2:= dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
 zstd? ( app-arch/zstd )
 "
