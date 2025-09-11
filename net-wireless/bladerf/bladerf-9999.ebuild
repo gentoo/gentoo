@@ -34,15 +34,14 @@ fi
 
 BDEPEND="doc? ( app-text/doxygen )"
 CDEPEND=">=dev-libs/libusb-1.0.16:1
+	net-misc/curl
+	sys-libs/ncurses:=
 	tecla? ( dev-libs/libtecla )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	>=net-wireless/bladerf-firmware-2.4.0
 	>=net-wireless/bladerf-fpga-0.15.0"
-
-PATCHES=( "${FILESDIR}/bladerf-cmake-glob.patch"
-	"${FILESDIR}"/${PN}-2023.02-cmake4.patch )
 
 src_unpack() {
 	if [ "${PV}" = "9999" ]; then
