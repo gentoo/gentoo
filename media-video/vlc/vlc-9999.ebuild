@@ -235,6 +235,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-9999-gettext-version.patch # bug 766549
 	"${FILESDIR}"/${PN}-9999-no-vlc-cache-gen.patch # bugs 564842, 608256
 	"${FILESDIR}"/${PN}-9999-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-9999-configure-lua-version.patch
@@ -269,9 +270,6 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
-
-	# Fix gettext version mismatch errors.
-	sed -i -e s/GETTEXT_VERSION/GETTEXT_REQUIRE_VERSION/ configure.ac || die
 
 	eautoreconf
 }
