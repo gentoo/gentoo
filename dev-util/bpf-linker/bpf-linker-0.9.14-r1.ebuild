@@ -8,6 +8,7 @@ EAPI=8
 CRATES="
 	compiler_builtins@0.1.146
 	compiler_builtins@0.1.152
+	compiler_builtins@0.1.158
 "
 
 # Implied by crates above.
@@ -68,6 +69,8 @@ src_prepare() {
 	local PATCHES=(
 		# https://github.com/aya-rs/bpf-linker/pull/289
 		"${FILESDIR}/${P}-llvm-21.patch"
+		# https://github.com/aya-rs/bpf-linker/pull/265
+		"${FILESDIR}/${P}-rust-1.88.patch"
 	)
 
 	default
