@@ -16,7 +16,7 @@ LICENSE="
 "
 SLOT="${PV}"
 
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64"
 
 # Options to use as use_enable in the foo[:bar] form.
 # This will feed configure with $(use_enable foo bar)
@@ -158,7 +158,11 @@ src_configure() {
 	# will just ignore it.
 	for i in $(get-flag mcpu) $(get-flag march) ; do
 		[[ ${i} = native ]] && i="host" # bug #273421
-		myconf+=( --cpu=${i} )
+		if use arm64; then # 830165 - 'host' explicitly not supported on arm64
+			[[ ${i} != host ]] && myconf+=( --cpu=${i} )
+		else
+			myconf+=( --cpu=${i} )
+		fi
 		break
 	done
 

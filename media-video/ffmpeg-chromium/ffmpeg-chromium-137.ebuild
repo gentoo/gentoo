@@ -158,7 +158,11 @@ src_configure() {
 	# will just ignore it.
 	for i in $(get-flag mcpu) $(get-flag march) ; do
 		[[ ${i} = native ]] && i="host" # bug #273421
-		myconf+=( --cpu=${i} )
+		if use arm64; then # 830165 - 'host' explicitly not supported on arm64
+			[[ ${i} != host ]] && myconf+=( --cpu=${i} )
+		else
+			myconf+=( --cpu=${i} )
+		fi
 		break
 	done
 
