@@ -21,8 +21,9 @@ IUSE="alsa debug gif gpm pop postgres ldap xface nas X jpeg tiff png motif xft x
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
 
+# If sys-libs/db:5.3 is removed from tree 4.8 can be used.
 RDEPEND="
-	berkdb? ( >=sys-libs/db-4:= )
+	berkdb? ( sys-libs/db:5.3= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3:=[berkdb(+)] )
 	>=sys-libs/zlib-1.1.4
 	>=dev-libs/openssl-0.9.6:0=
@@ -65,6 +66,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${P}-failing-tests.patch"
 	eapply "${FILESDIR}/${P}-failing-tests-2.patch"
 	eapply "${FILESDIR}/${P}-configure-postgresql.patch"
+	eapply "${FILESDIR}/${P}-berkdb-5.3.patch"
 	eapply_user
 
 	eautoconf
@@ -147,9 +149,9 @@ src_configure() {
 	myconf="${myconf} --with-sound=${soundconf}"
 
 	if use gdbm || use berkdb ; then
-		use gdbm   && mydb="gdbm"
-		use berkdb && mydb="${mydb},berkdb"
-
+		local mydb="nodbm"
+		use gdbm   && mydb="${mydb},gdbm"   || mydb="${mydb},nogdbm"
+		use berkdb && mydb="${mydb},berkdb" || mydb="${mydb},noberkdb"
 		myconf="${myconf} --with-database=${mydb}"
 	else
 		myconf="${myconf} --without-database"
