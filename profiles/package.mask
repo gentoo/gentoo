@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Rick Farina <zerochaos@gentoo.org> (2025-09-11)
+# Dead upstream, fails to compile on modern gcc. Bug #919250
+# Removal on 2025-10-12
+net-wireless/mdk
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-09)
 # Packaged version is very outdated, was already broken by libxml2-2.12,
 # now once more by libxml2-2.14. Bugs #739362, #829005, #923828, #955798.
