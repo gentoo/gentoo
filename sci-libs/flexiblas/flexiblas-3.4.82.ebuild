@@ -19,6 +19,7 @@ S=${WORKDIR}/${MY_P}
 # BSD for vendored cblas/lapacke
 LICENSE="LGPL-3+ BSD"
 SLOT="0"
+KEYWORDS="~amd64"
 # TODO: 64bit-index
 IUSE="blis mkl openblas openmp tbb test"
 RESTRICT="!test? ( test )"
