@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-panel/"
 
 LICENSE="GPL-2+ FDL-1.1 LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv"
+KEYWORDS="amd64 ~riscv"
 IUSE="eds elogind systemd"
 REQUIRED_USE="^^ ( elogind systemd )"
 
