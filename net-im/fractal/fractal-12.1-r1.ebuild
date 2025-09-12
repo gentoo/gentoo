@@ -79,7 +79,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	media-libs/glycin-loaders
+	media-libs/glycin-loaders:1
 	media-plugins/gst-plugin-gtk4
 	virtual/secret-service
 "
