@@ -33,20 +33,13 @@ RDEPEND="
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		tests/test_parser.py::test_benchmark_text_string_to_metric_families
-	)
+EPYTEST_DESELECT=(
+	tests/test_parser.py::test_benchmark_text_string_to_metric_families
+)
 
-	case ${EPYTHON} in
-		python3.14*)
-			EPYTEST_DESELECT+=(
-				# broken asyncio use in tests
-				# https://github.com/prometheus/client_python/issues/1137
-				tests/test_asgi.py
-			)
-			;;
-	esac
+src_prepare() {
+	distutils-r1_src_prepare
 
-	epytest
+	# https://github.com/prometheus/client_python/pull/1138
+	sed -i -e 's:get_event_loop:new_event_loop:' tests/test_asgi.py || die
 }
