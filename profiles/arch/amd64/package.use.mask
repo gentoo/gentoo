@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-12)
+# These BLAS/LAPACK providers are keyworded here.
+sci-libs/flexiblas -blis -mkl -openblas
+
 # Christopher Byrne <salah.coronya@gmail.com> (2025-09-01)
 # net-emulation/libvirt is only keyworded on amd64 at this time
 sys-block/nbdkit -libguestfs
