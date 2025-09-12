@@ -37,7 +37,6 @@ RESTRICT="!test? ( test )"
 # RDEPEND here (due to lack of recursive DEPEND).
 RDEPEND="
 	!<dev-libs/gobject-introspection-1.80.1
-	!<dev-util/gdbus-codegen-${PV}
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=dev-libs/libpcre2-10.32:0=[${MULTILIB_USEDEP},unicode(+),static-libs?]
 	>=dev-libs/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]

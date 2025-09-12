@@ -3,15 +3,15 @@
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit dot-a gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
+inherit dot-a eapi9-ver gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
 
 DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
 
 INTROSPECTION_PN="gobject-introspection"
-INTROSPECTION_PV="1.80.1"
+INTROSPECTION_PV="1.82.0"
 INTROSPECTION_P="${INTROSPECTION_PN}-${INTROSPECTION_PV}"
 SRC_URI="
 	${SRC_URI}
@@ -22,7 +22,7 @@ INTROSPECTION_BUILD_DIR="${WORKDIR}/${INTROSPECTION_P}-build"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="dbus debug +elf doc +introspection +mime selinux static-libs sysprof systemtap test utils xattr"
 RESTRICT="!test? ( test )"
 
@@ -56,14 +56,12 @@ DEPEND="${RDEPEND}"
 # libxml2 used for optional tests that get automatically skipped
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
+	>=dev-build/meson-1.4.0
 	dev-libs/libxslt
 	>=sys-devel/gettext-0.19.8
 	doc? ( >=dev-util/gi-docgen-2023.1 )
 	dev-python/docutils
 	systemtap? ( >=dev-debug/systemtap-1.3 )
-	$(python_gen_any_dep '
-		dev-python/packaging[${PYTHON_USEDEP}]
-	')
 	${PYTHON_DEPS}
 	test? ( >=sys-apps/dbus-1.2.14 )
 	virtual/pkgconfig
@@ -93,15 +91,11 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.64.1-mark-gdbus-server-auth-test-flaky.patch
-	"${FILESDIR}"/${P}-tests-autoptr-ffi.patch
 )
 
 python_check_deps() {
 	if use introspection ; then
-		python_has_version "dev-python/packaging[${PYTHON_USEDEP}]" &&
 		python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
-	else
-		python_has_version "dev-python/packaging[${PYTHON_USEDEP}]"
 	fi
 }
 
@@ -120,14 +114,6 @@ pkg_setup() {
 src_prepare() {
 	if use test; then
 		# TODO: Review the test exclusions, especially now with meson
-		# Disable tests requiring dev-util/desktop-file-utils when not installed, bug #286629, upstream bug #629163
-		if ! has_version dev-util/desktop-file-utils ; then
-			ewarn "Some tests will be skipped due dev-util/desktop-file-utils not being present on your system,"
-			ewarn "think on installing it to get these tests run."
-			sed -i -e "/appinfo\/associations/d" gio/tests/appinfo.c || die
-			sed -i -e "/g_test_add_func/d" gio/tests/desktop-app-info.c || die
-		fi
-
 		# gdesktopappinfo requires existing terminal (gnome-terminal or any
 		# other), falling back to xterm if one doesn't exist
 		#if ! has_version x11-terms/xterm && ! has_version x11-terms/gnome-terminal ; then
@@ -146,6 +132,9 @@ src_prepare() {
 
 		ewarn "Tests for search-utils have been skipped"
 		sed -i -e "/search-utils/d" glib/tests/meson.build || die
+
+		# Running gdb inside a test within sandbox is brittle
+		sed -i -e '/self.__gdb = shutil.which("gdb")/s:"gdb":"gdb-idonotexist":' glib/tests/assert-msg-test.py || die
 
 		# Play nice with network-sandbox, but this approach would defeat the purpose of the test
 		#sed -i -e "s/localhost/127.0.0.1/g" gio/tests/gsocketclient-slow.c || die
@@ -198,11 +187,6 @@ src_prepare() {
 	# Link the glib source to the introspection subproject directory so it can be built there first
 	if use introspection ; then
 		ln -s "${S}" "${INTROSPECTION_SOURCE_DIR}/subprojects/glib"
-
-		# bug #946578
-		cd "${INTROSPECTION_SOURCE_DIR}" || die
-		eapply "${FILESDIR}"/glib-2.80.5-gobject-introspection-1.80.patch
-		cd "${S}" || die
 	fi
 
 	default
@@ -280,8 +264,8 @@ multilib_src_configure() {
 			-Dglib:xattr=false
 			-Dglib:libmount=disabled
 			-Dglib:man-pages=disabled
-			-Dglib:dtrace=false
-			-Dglib:systemtap=false
+			-Dglib:dtrace=disabled
+			-Dglib:systemtap=disabled
 			-Dglib:sysprof=disabled
 			-Dglib:documentation=false
 			-Dglib:tests=false
@@ -352,8 +336,8 @@ multilib_src_configure() {
 		$(meson_use xattr)
 		-Dlibmount=enabled # only used if host_system == 'linux'
 		-Dman-pages=enabled
-		$(meson_use systemtap dtrace)
-		$(meson_use systemtap)
+		$(meson_feature systemtap dtrace)
+		$(meson_feature systemtap)
 		$(meson_feature sysprof)
 		$(meson_use doc documentation)
 		$(meson_use test tests)
@@ -471,12 +455,10 @@ pkg_postinst() {
 		ewarn "installing GIO modules get upgraded or added to the image."
 	fi
 
-	for v in ${REPLACING_VERSIONS}; do
-		if ver_test "$v" "-lt" "2.63.6"; then
-			ewarn "glib no longer installs the gio-launch-desktop binary. You may need"
-			ewarn "to restart your session for \"Open With\" dialogs to work."
-		fi
-	done
+	if ver_replacing "-lt" "2.63.6"; then
+		ewarn "glib no longer installs the gio-launch-desktop binary. You may need"
+		ewarn "to restart your session for \"Open With\" dialogs to work."
+	fi
 }
 
 pkg_postrm() {
