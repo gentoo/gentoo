@@ -1,6 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sasha Finkelstein <fnkl.kernel@gmail.com> (2025-09-09)
+# Arm64-specific ABI that does not make sense anywhere else
+app-emulation/wine-proton arm64ec
+app-emulation/wine-staging arm64ec
+app-emulation/wine-vanilla arm64ec
+
 # Christopher Byrne <salah.coronya@gmail.com> (2025-09-01)
 # net-emulation/libvirt is only keyworded on amd64 at this time
 sys-block/nbdkit libguestfs

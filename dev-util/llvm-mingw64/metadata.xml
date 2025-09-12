@@ -8,4 +8,7 @@
 		<remote-id type="sourceforge">mingw-w64</remote-id>
 		<remote-id type="github">llvm/llvm-project</remote-id>
 	</upstream>
+	<use>
+		<flag name="arm64ec-pe">Enable the arm64ec-w64-mingw32 target</flag>
+	</use>
 </pkgmetadata>

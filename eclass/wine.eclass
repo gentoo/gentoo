@@ -41,7 +41,7 @@ inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 readonly WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 
 IUSE="
-	+abi_x86_32 +abi_x86_64 crossdev-mingw custom-cflags
+	+abi_x86_32 +abi_x86_64 arm64ec crossdev-mingw custom-cflags
 	+mingw +strip wow64
 "
 REQUIRED_USE="
@@ -50,7 +50,10 @@ REQUIRED_USE="
 	wow64? ( !arm64? ( abi_x86_64 !abi_x86_32 ) )
 "
 
-RDEPEND="arm64? ( wow64? ( app-emulation/fex-xtajit ) )"
+RDEPEND="
+	arm64? ( wow64? ( app-emulation/fex-xtajit[wow64(+)] ) )
+	arm64ec? ( app-emulation/fex-xtajit[arm64ec(-)] )
+"
 BDEPEND="
 	|| (
 		sys-devel/binutils:*
@@ -90,6 +93,7 @@ wine_pkg_pretend() {
 			$(usev abi_x86_32 i686)
 			$(usev wow64 i686)
 			$(usev arm64 aarch64)
+			$(usev arm64ec arm64ec)
 		)
 
 		local mingw
@@ -217,6 +221,7 @@ wine_src_configure() {
 		# no mingw64-toolchain ~arm64, but "may" be usable with crossdev
 		# (aarch64- rather than arm64- given it is what Wine searches for)
 		wcc_arm64=${CROSSCC:-${CROSSCC_arm64:-aarch64-w64-mingw32-gcc}}
+		wcc_arm64ec=${CROSSCC:-${CROSSCC_arm64ec:-arm64ec-w64-mingw32-gcc}}
 	else
 		conf+=( --with-mingw=clang )
 
@@ -230,6 +235,8 @@ wine_src_configure() {
 		wcc_x86_testflags="-target i386-windows"
 		wcc_arm64=${CROSSCC:-${CROSSCC_arm64:-${clang}}}
 		wcc_arm64_testflags="-target aarch64-windows"
+		wcc_arm64ec=${CROSSCC:-${CROSSCC_arm64ec:-${clang}}}
+		wcc_arm64ec_testflags="-target arm64ec-windows"
 
 		# do not copy from regular LDFLAGS given odds are they all are
 		# incompatible, and difficult to test linking without llvm-mingw
@@ -240,6 +247,7 @@ wine_src_configure() {
 		ac_cv_prog_x86_64_CC="${wcc_amd64}"
 		ac_cv_prog_i386_CC="${wcc_x86}"
 		ac_cv_prog_aarch64_CC="${wcc_arm64}"
+		ac_cv_prog_arm64ec_CC="${wcc_arm64ec}"
 	)
 
 	if ver_test -ge 10; then
@@ -252,6 +260,8 @@ wine_src_configure() {
 			i386_LDFLAGS="${CROSSLDFLAGS_x86:-${CROSSLDFLAGS:-$(_wine_flags ld x86)}}"
 			aarch64_CFLAGS="${CROSSCFLAGS_arm64:-${CROSSCFLAGS:-$(_wine_flags c arm64)}}"
 			aarch64_LDFLAGS="${CROSSLDFLAGS_arm64:-${CROSSLDFLAGS:-$(_wine_flags ld arm64)}}"
+			arm64ec_CFLAGS="${CROSSCFLAGS_arm64ec:-${CROSSCFLAGS:-$(_wine_flags c arm64ec)}}"
+			arm64ec_LDFLAGS="${CROSSLDFLAGS_arm64ec:-${CROSSLDFLAGS:-$(_wine_flags ld arm64ec)}}"
 		)
 	elif use abi_x86_64; then
 		conf+=(
@@ -298,6 +308,7 @@ wine_src_configure() {
 			$(usev abi_x86_64 x86_64)
 			$(usev wow64 i386) # 32-on-64bit "new" wow64
 			$(usev arm64 aarch64)
+			$(usev arm64ec arm64ec)
 		)
 		conf+=( ${archs:+--enable-archs="${archs[*]}"} )
 
@@ -358,6 +369,10 @@ wine_src_install() {
 	use arm64 && use wow64 &&
 		dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
 			${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
+
+	use arm64ec &&
+		dosym -r /usr/lib/fex-xtajit/libarm64ecfex.dll \
+			${WINE_PREFIX}/wine/aarch64-windows/xtajit64.dll
 
 	# delete unwanted files if requested, not done directly in ebuilds
 	# given must be done after install and before wrappers
@@ -421,14 +436,6 @@ wine_pkg_postinst() {
 			ewarn "USE=abi_x86_32 (ABI_X86=32), hardware acceleration with 32bit"
 			ewarn "applications under ${PN} will likely not be usable."
 		fi
-	fi
-
-	if use arm64 && use wow64; then
-		ewarn
-		ewarn "You have enabled x86 emulation via FEX-Emu's xtajit implementation."
-		ewarn "This currently *does not* include amd64/x86_64/x64 emulation. Only i386"
-		ewarn "and ARM64 Windows applications are supported at this time. Please do not"
-		ewarn "file bugs about amd64 applications."
 	fi
 
 	eselect wine update --if-unset || die

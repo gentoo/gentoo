@@ -10,6 +10,7 @@
 		<name>Wine</name>
 	</maintainer>
 	<use>
+		<flag name="arm64ec">Enable support for running x86_64 applications on arm64 via binary translation</flag>
 		<flag name="crossdev-mingw">
 			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
 			<pkg>dev-util/mingw64-toolchain</pkg> (requires manual setting up

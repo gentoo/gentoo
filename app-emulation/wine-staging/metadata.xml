@@ -13,6 +13,7 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 This variant of the Wine packaging includes the Wine-Staging patchset.
 	</longdescription>
 	<use>
+		<flag name="arm64ec">Enable support for running x86_64 applications on arm64 via binary translation</flag>
 		<flag name="capi">Enable ISDN support using <pkg>net-libs/libcapi</pkg></flag>
 		<flag name="crossdev-mingw">
 			Use <pkg>sys-devel/crossdev</pkg> for the toolchain rather than
