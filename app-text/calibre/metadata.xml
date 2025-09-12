@@ -6,8 +6,10 @@
     <name>Eli Schwartz</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">kovidgoyal/calibre</remote-id>
+    <bugs-to>https://calibre-ebook.com/bugs</bugs-to>
     <changelog>https://calibre-ebook.com/whats-new</changelog>
+    <doc>https://manual.calibre-ebook.com/</doc>
+    <remote-id type="github">kovidgoyal/calibre</remote-id>
   </upstream>
   <use>
     <flag name="font-subsetting">Enable font subsetting support</flag>
