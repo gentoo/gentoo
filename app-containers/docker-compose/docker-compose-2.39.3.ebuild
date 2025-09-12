@@ -20,6 +20,7 @@ RDEPEND="|| (
 	>=app-containers/docker-cli-23.0.0
 	app-containers/podman[wrapper(+)]
 )"
+BDEPEND=">=dev-lang/go-1.24.7"
 
 RESTRICT="test"
 
