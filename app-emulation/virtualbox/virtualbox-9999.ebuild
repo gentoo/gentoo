@@ -205,6 +205,8 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${PATCHES_TAG}/patches
+
+	"${FILESDIR}"/${PN}-7.2.2-curl-8.16.patch
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs
