@@ -1,0 +1,171 @@
+From b1b6c0a48f0009d1ef192a2accbbc899624c9c8a Mon Sep 17 00:00:00 2001
+From: Sungjoon Moon <sumoon@seoulsaram.org>
+Date: Sat, 13 Sep 2025 04:35:33 +0900
+Subject: [PATCH] Enable building/disting standard library in stage 0
+
+Reference: https://github.com/rust-lang/rust/pull/145876
+Disabled from here: https://github.com/rust-lang/rust/commit/52882f6522ae9f34f1d574b2efabc4b18e691ae0
+---
+ src/bootstrap/src/core/build_steps/compile.rs | 99 +++++++++++--------
+ 1 file changed, 58 insertions(+), 41 deletions(-)
+
+diff --git a/src/bootstrap/src/core/build_steps/compile.rs b/src/bootstrap/src/core/build_steps/compile.rs
+index f6efb23e8d8..0371211348b 100644
+--- a/src/bootstrap/src/core/build_steps/compile.rs
++++ b/src/bootstrap/src/core/build_steps/compile.rs
+@@ -150,8 +150,13 @@ fn make_run(run: RunConfig<'_>) {
+     fn run(self, builder: &Builder<'_>) {
+         let target = self.target;
+ 
+-        // We already have std ready to be used for stage 0.
+-        if self.compiler.stage == 0 {
++        // In most cases, we already have the std ready to be used for stage 0.
++        // However, if we are doing a local rebuild (so the build compiler can compile the standard
++        // library even on stage 0), and we're cross-compiling (so the stage0 standard library for
++        // *target* is not available), we still allow the stdlib to be built here.
++        if self.compiler.stage == 0
++            && !(builder.local_rebuild && target != builder.host_target)
++        {
+             let compiler = self.compiler;
+             builder.ensure(StdLink::from_std(self, compiler));
+ 
+@@ -204,13 +209,7 @@ fn run(self, builder: &Builder<'_>) {
+         let compiler_to_use = builder.compiler_for(compiler.stage, compiler.host, target);
+         trace!(?compiler_to_use);
+ 
+-        if compiler_to_use != compiler
+-            // Never uplift std unless we have compiled stage 1; if stage 1 is compiled,
+-            // uplift it from there.
+-            //
+-            // FIXME: improve `fn compiler_for` to avoid adding stage condition here.
+-            && compiler.stage > 1
+-        {
++        if compiler_to_use != compiler {
+             trace!(?compiler_to_use, ?compiler, "compiler != compiler_to_use, uplifting library");
+ 
+             builder.ensure(Std::new(compiler_to_use, target));
+@@ -235,6 +234,8 @@ fn run(self, builder: &Builder<'_>) {
+             return;
+         }
+ 
++
++
+         trace!(
+             ?compiler_to_use,
+             ?compiler,
+@@ -243,6 +244,27 @@ fn run(self, builder: &Builder<'_>) {
+ 
+         target_deps.extend(self.copy_extra_objects(builder, &compiler, target));
+ 
++        // The LLD wrappers and `rust-lld` are self-contained linking components that can be
++        // necessary to link the stdlib on some targets. We'll also need to copy these binaries to
++        // the `stage0-sysroot` to ensure the linker is found when bootstrapping on such a target.
++        if compiler.stage == 0 && builder.config.is_host_target(compiler.host) {
++            trace!(
++                "(build == host) copying linking components to `stage0-sysroot` for bootstrapping"
++            );
++            // We want to copy the host `bin` folder within the `rustlib` folder in the sysroot.
++            let src_sysroot_bin = builder
++                .rustc_snapshot_sysroot()
++                .join("lib")
++                .join("rustlib")
++                .join(compiler.host)
++                .join("bin");
++            if src_sysroot_bin.exists() {
++                let target_sysroot_bin = builder.sysroot_target_bindir(compiler, target);
++                t!(fs::create_dir_all(&target_sysroot_bin));
++                builder.cp_link_r(&src_sysroot_bin, &target_sysroot_bin);
++            }
++        }
++
+         // We build a sysroot for mir-opt tests using the same trick that Miri does: A check build
+         // with -Zalways-encode-mir. This frees us from the need to have a target linker, and the
+         // fact that this is a check build integrates nicely with run_cargo.
+@@ -762,16 +784,23 @@ fn run(self, builder: &Builder<'_>) {
+             (libdir, hostdir)
+         };
+ 
+-        let is_downloaded_beta_stage0 = builder
+-            .build
+-            .config
+-            .initial_rustc
+-            .starts_with(builder.out.join(compiler.host).join("stage0/bin"));
++        add_to_sysroot(
++            builder,
++            &libdir,
++            &hostdir,
++            &build_stamp::libstd_stamp(builder, compiler, target),
++        );
+ 
+         // Special case for stage0, to make `rustup toolchain link` and `x dist --stage 0`
+         // work for stage0-sysroot. We only do this if the stage0 compiler comes from beta,
+         // and is not set to a custom path.
+-        if compiler.stage == 0 && is_downloaded_beta_stage0 {
++        if compiler.stage == 0
++            && builder
++                .build
++                .config
++                .initial_rustc
++                .starts_with(builder.out.join(compiler.host).join("stage0/bin"))
++        {
+             // Copy bin files from stage0/bin to stage0-sysroot/bin
+             let sysroot = builder.out.join(compiler.host).join("stage0-sysroot");
+ 
+@@ -781,9 +810,21 @@ fn run(self, builder: &Builder<'_>) {
+             t!(fs::create_dir_all(&sysroot_bin_dir));
+             builder.cp_link_r(&stage0_bin_dir, &sysroot_bin_dir);
+ 
++            // Copy all files from stage0/lib to stage0-sysroot/lib
+             let stage0_lib_dir = builder.out.join(host).join("stage0/lib");
+-            t!(fs::create_dir_all(sysroot.join("lib")));
+-            builder.cp_link_r(&stage0_lib_dir, &sysroot.join("lib"));
++            if let Ok(files) = fs::read_dir(stage0_lib_dir) {
++                for file in files {
++                    let file = t!(file);
++                    let path = file.path();
++                    if path.is_file() {
++                        builder.copy_link(
++                            &path,
++                            &sysroot.join("lib").join(path.file_name().unwrap()),
++                            FileType::Regular,
++                        );
++                    }
++                }
++            }
+ 
+             // Copy codegen-backends from stage0
+             let sysroot_codegen_backends = builder.sysroot_codegen_backends(compiler);
+@@ -797,30 +838,6 @@ fn run(self, builder: &Builder<'_>) {
+             if stage0_codegen_backends.exists() {
+                 builder.cp_link_r(&stage0_codegen_backends, &sysroot_codegen_backends);
+             }
+-        } else if compiler.stage == 0 {
+-            let sysroot = builder.out.join(compiler.host.triple).join("stage0-sysroot");
+-
+-            if builder.local_rebuild {
+-                // On local rebuilds this path might be a symlink to the project root,
+-                // which can be read-only (e.g., on CI). So remove it before copying
+-                // the stage0 lib.
+-                let _ = fs::remove_dir_all(sysroot.join("lib/rustlib/src/rust"));
+-            }
+-
+-            builder.cp_link_r(&builder.initial_sysroot.join("lib"), &sysroot.join("lib"));
+-        } else {
+-            if builder.download_rustc() {
+-                // Ensure there are no CI-rustc std artifacts.
+-                let _ = fs::remove_dir_all(&libdir);
+-                let _ = fs::remove_dir_all(&hostdir);
+-            }
+-
+-            add_to_sysroot(
+-                builder,
+-                &libdir,
+-                &hostdir,
+-                &build_stamp::libstd_stamp(builder, compiler, target),
+-            );
+         }
+     }
+ }
+-- 
+2.51.0
+
