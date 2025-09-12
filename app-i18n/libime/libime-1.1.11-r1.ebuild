@@ -30,6 +30,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-fix-kenlm-odr.patch )
+
 src_configure() {
 	# 957570 : remove unused kenlm CMakeLists.txt
 	rm src/libime/core/kenlm/CMakeLists.txt || die
