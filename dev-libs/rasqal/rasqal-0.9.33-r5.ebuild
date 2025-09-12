@@ -24,7 +24,7 @@ RDEPEND="
 	!gmp? ( dev-libs/mpfr:= )
 	gmp? ( dev-libs/gmp:= )
 	kernel_linux? ( >=sys-apps/util-linux-2.19 )
-	pcre? ( dev-libs/libpcre2 )
+	pcre? ( dev-libs/libpcre2:= )
 	xml? ( dev-libs/libxml2:= )
 "
 DEPEND="${RDEPEND}"
@@ -58,7 +58,6 @@ src_configure() {
 	local myeconfargs=(
 		--with-decimal=$(usex gmp gmp mpfr)
 		--with-uuid-library=$(usex kernel_linux libuuid internal)
-		$(use_enable pcre)
 		--with-regex-library=$(usex pcre pcre2 posix)
 		$(use_enable static-libs static)
 		$(use_enable xml xml2)
