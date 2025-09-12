@@ -35,8 +35,10 @@ RDEPEND="
 # bug #801460
 BDEPEND="
 	app-arch/xz-utils[extra-filters(+)]
-	app-eselect/eselect-blas
-	app-eselect/eselect-lapack
+	eselect-ldso? (
+		app-eselect/eselect-blas
+		app-eselect/eselect-lapack
+	)
 "
 
 QA_PREBUILT="*"
