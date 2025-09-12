@@ -34,7 +34,7 @@ LICENSE+="
 	LGPL-3+ MIT Unicode-3.0
 	|| ( LGPL-2.1+ MPL-2.0 )
 "
-SLOT="0"
+SLOT="1"
 IUSE="heif jpeg2k jpegxl svg test"
 REQUIRED_USE="test? ( heif jpegxl )"
 RESTRICT="!test? ( test )"

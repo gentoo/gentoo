@@ -64,7 +64,7 @@ DEPEND+="
 "
 RDEPEND="
 	${DEPEND}
-	media-libs/glycin-loaders:0
+	media-libs/glycin-loaders:1
 "
 BDEPEND="
 	dev-libs/glib:2

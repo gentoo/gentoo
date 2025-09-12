@@ -25,7 +25,7 @@ LICENSE+="
 	MIT Unicode-3.0
 	|| ( LGPL-2.1+ MPL-2.0 )
 "
-SLOT="0"
+SLOT="1"
 KEYWORDS="amd64 arm64"
 IUSE="heif jpegxl svg test"
 REQUIRED_USE="test? ( heif jpegxl )"
