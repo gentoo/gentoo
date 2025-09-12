@@ -53,7 +53,7 @@ RDEPEND="
 	dev-libs/icu:=
 	dev-libs/libgcrypt:0=
 	dev-libs/libtasn1:=
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
