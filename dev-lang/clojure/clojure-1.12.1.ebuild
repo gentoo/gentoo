@@ -47,7 +47,7 @@ S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="EPL-1.0 Apache-2.0 BSD"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~x86-linux"
+KEYWORDS="amd64 ~x86-linux"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
