@@ -1,0 +1,42 @@
+From cb0bcd5c33b7f758ebe2081f1b39d2337e70e320 Mon Sep 17 00:00:00 2001
+From: Miklos Vajna <vmiklos@collabora.com>
+Date: Mon, 11 Feb 2019 09:06:58 +0100
+Subject: [PATCH] Fix too small loop variables
+
+These loop variables had narrower type than the iteration's upper bound.
+
+Change-Id: I70bbbb5fcc68aafc8bdd2181be13740310003b35
+---
+ src/lib/BMIHeader.cpp    | 2 +-
+ src/lib/ZMFCollector.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/BMIHeader.cpp b/src/lib/BMIHeader.cpp
+index 31a502e..c28e625 100644
+--- a/src/lib/BMIHeader.cpp
++++ b/src/lib/BMIHeader.cpp
+@@ -141,7 +141,7 @@ void BMIHeader::readOffsets(const RVNGInputStreamPtr &input, uint16_t offsetCoun
+ 
+   m_offsets.erase(std::unique(m_offsets.begin(), m_offsets.end()), m_offsets.end());
+ 
+-  for (unsigned i = 0; i < m_offsets.size() - 1; i++)
++  for (size_t i = 0; i < m_offsets.size() - 1; i++)
+   {
+     m_offsets[i].end = m_offsets[i + 1].start;
+   }
+diff --git a/src/lib/ZMFCollector.cpp b/src/lib/ZMFCollector.cpp
+index 0b2608f..07ce41f 100644
+--- a/src/lib/ZMFCollector.cpp
++++ b/src/lib/ZMFCollector.cpp
+@@ -118,7 +118,7 @@ librevenge::RVNGString getPathStr(const librevenge::RVNGPropertyListVector &path
+ {
+   librevenge::RVNGString s("");
+ 
+-  for (unsigned i = 0; i < path.count(); ++i)
++  for (unsigned long i = 0; i < path.count(); ++i)
+   {
+     if (!path[i]["librevenge:path-action"])
+       continue;
+-- 
+2.51.0
+

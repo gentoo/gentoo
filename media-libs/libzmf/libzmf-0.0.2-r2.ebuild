@@ -7,8 +7,8 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://git.libreoffice.org/libzmf"
 	inherit git-r3
 else
-	SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm arm64 ~loong ppc ppc64 ~riscv x86"
+	SRC_URI="https://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 inherit autotools
 
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/icu:=
 	dev-libs/librevenge
 	media-libs/libpng:0=
-	virtual/zlib:=
+	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
@@ -34,6 +34,8 @@ BDEPEND="doc? ( app-text/doxygen )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-doc-install.patch" # bug 961617
+	"${FILESDIR}/${P}-fix-configure-warning.patch"
+	"${FILESDIR}/${P}-fix-too-small-loop-vars.patch"
 )
 
 src_prepare() {
