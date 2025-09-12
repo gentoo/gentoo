@@ -309,7 +309,7 @@ DEPEND+="
 	>=sys-libs/libseccomp-2.5.0
 "
 RDEPEND="${DEPEND}
-	media-libs/glycin-loaders[heif?,jpegxl?,svg?]
+	media-libs/glycin-loaders:1[heif?,jpegxl?,svg?]
 "
 
 QA_FLAGS_IGNORED="usr/bin/loupe"
