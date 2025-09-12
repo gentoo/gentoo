@@ -18,6 +18,9 @@
 		license. Please see license terms and home page for proper use.
 	</longdescription>
 	<use>
+		<flag name="eselect-ldso">
+			Enable BLAS/LAPACK runtime switching.
+		</flag>
 		<flag name="gnu-openmp">
 			Install versions with GNU OpenMP (libgomp) support.
 		</flag>

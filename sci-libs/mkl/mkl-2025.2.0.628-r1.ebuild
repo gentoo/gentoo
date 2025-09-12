@@ -20,12 +20,14 @@ S="${WORKDIR}"
 LICENSE="ISSL"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="examples gnu-openmp llvm-openmp static-libs tbb"
+IUSE="eselect-ldso examples gnu-openmp llvm-openmp static-libs tbb"
 RESTRICT="strip"
 
 RDEPEND="
-	app-eselect/eselect-blas
-	app-eselect/eselect-lapack
+	eselect-ldso? (
+		app-eselect/eselect-blas
+		app-eselect/eselect-lapack
+	)
 	gnu-openmp? ( sys-devel/gcc:*[openmp] )
 	llvm-openmp? ( llvm-runtimes/openmp )
 	tbb? ( dev-cpp/tbb )
@@ -92,16 +94,18 @@ src_install() {
 	# Create convenience symlink that does not include the version number
 	dosym "${PN_VER}" /opt/intel/oneapi/mkl/latest
 
-	local lib=../../../../${libroot}/libmkl_rt.so
-	dodir "/usr/${libdir}"/{blas,lapack}/mkl
-	dosym "${lib}" "/usr/${libdir}/blas/mkl/libblas.so"
-	dosym "${lib}" "/usr/${libdir}/blas/mkl/libblas.so.3"
-	dosym "${lib}" "/usr/${libdir}/blas/mkl/libcblas.so"
-	dosym "${lib}" "/usr/${libdir}/blas/mkl/libcblas.so.3"
-	dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapack.so"
-	dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapack.so.3"
-	dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapacke.so"
-	dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapacke.so.3"
+	if use eselect-ldso; then
+		local lib=../../../../${libroot}/libmkl_rt.so
+		dodir "/usr/${libdir}"/{blas,lapack}/mkl
+		dosym "${lib}" "/usr/${libdir}/blas/mkl/libblas.so"
+		dosym "${lib}" "/usr/${libdir}/blas/mkl/libblas.so.3"
+		dosym "${lib}" "/usr/${libdir}/blas/mkl/libcblas.so"
+		dosym "${lib}" "/usr/${libdir}/blas/mkl/libcblas.so.3"
+		dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapack.so"
+		dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapack.so.3"
+		dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapacke.so"
+		dosym "${lib}" "/usr/${libdir}/lapack/mkl/liblapacke.so.3"
+	fi
 
 	# https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2025-1/dynamic-select-the-interface-and-threading-layer.html
 	local default_threading_layer
@@ -127,6 +131,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	use eselect-ldso || return
+
 	local libdir=$(get_libdir) me="mkl"
 
 	# check blas
@@ -155,6 +161,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	use eselect-ldso || return
+
 	eselect blas validate
 	eselect lapack validate
 }
