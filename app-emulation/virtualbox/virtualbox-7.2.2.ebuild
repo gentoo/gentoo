@@ -200,6 +200,8 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${PATCHES_PV}/patches
+
+	"${FILESDIR}"/${P}-curl-8.16.patch
 )
 
 pkg_pretend() {
