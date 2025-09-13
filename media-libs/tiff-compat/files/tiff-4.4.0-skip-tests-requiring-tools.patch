@@ -1,0 +1,58 @@
+https://bugs.gentoo.org/915075
+https://gitlab.com/libtiff/libtiff/-/issues/421
+https://gitlab.com/libtiff/libtiff/-/merge_requests/334
+
+Modified to apply without prerequisite AM_CONDITIONAL. This a "dead"
+version of tiff so hardcoded patches aren't biggest sin.
+
+From 223078d72232c1e71e2fddb140d232c457667d19 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Sat, 21 May 2022 01:01:35 +0100
+Subject: [PATCH] test (autotools): skip script tests if tools aren't built
+
+In Gentoo, we avoid building the tools for multilib (32-bit, x86) builds on
+amd64/x86_64 because we only need the library to keep binary applications working.
+
+This causes a test failure in e.g. tiffcp-thumbnail.sh as the 'thumbnail'
+binary isn't built. Skip it if unavailable.
+
+Fixes: https://gitlab.com/libtiff/libtiff/-/issues/421
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -55,13 +55,14 @@ XFAIL_TESTS =
+ CLEANFILES = test_packbits.tif o-*
+ 
+ if HAVE_JPEG
++if FALSE
+ JPEG_DEPENDENT_CHECK_PROG=raw_decode
+ JPEG_DEPENDENT_TESTSCRIPTS=\
+ 	tiff2rgba-quad-tile.jpg.sh \
+ 	tiff2rgba-ojpeg_zackthecat_subsamp22_single_strip.sh \
+ 	tiff2rgba-ojpeg_chewey_subsamp21_multi_strip.sh \
+ 	tiff2rgba-ojpeg_single_strip_no_rowsperstrip.sh
+-
++endif
+ else
+ JPEG_DEPENDENT_CHECK_PROG=
+ JPEG_DEPENDENT_TESTSCRIPTS=
+@@ -80,6 +81,7 @@ check_PROGRAMS = \
+ endif
+ 
+ # Test scripts to execute
++if FALSE
+ TESTSCRIPTS = \
+ 	ppm2tiff_pbm.sh \
+ 	ppm2tiff_pgm.sh \
+@@ -161,6 +163,9 @@ TESTSCRIPTS = \
+ 	testfax3_bug_513.sh \
+ 	testdeflatelaststripextradata.sh \
+ 	$(JPEG_DEPENDENT_TESTSCRIPTS)
++else
++TESTSCRIPTS=
++endif
+ 
+ # This list should contain the references files
+ # from the 'refs' subdirectory
+-- 
+GitLab
+
