@@ -1,0 +1,15 @@
+do not erase userflags
+--- a/configure.ac
++++ b/configure.ac
+@@ -81,9 +81,9 @@ AC_ARG_ENABLE([debug],
+     [enable_debug=yes])
+ 
+ if test "x$enable_debug" = xyes; then
+-    CFLAGS="-O2 -g -DDEBUG"
++    CFLAGS="-g -DDEBUG $CFLAGS"
+ else
+-	CFLAGS="-O2 -DNDEBUG"
++	CFLAGS="-DNDEBUG $CFLAGS"
+ fi
+ #AM_CONDITIONAL(ENABLE_DEBUG, test "$enable_debug" = "yes")
+ 

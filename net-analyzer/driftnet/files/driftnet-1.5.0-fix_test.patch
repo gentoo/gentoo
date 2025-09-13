@@ -1,0 +1,22 @@
+PR pending, commit to fix incompatible-pointer-types and missing include
+https://github.com/deiv/driftnet/pull/56.patch
+--- a/src/media/tests/test_unit.c
++++ b/src/media/tests/test_unit.c
+@@ -7,6 +7,8 @@
+  *
+  */
+ 
++#include "compat/compat.h"
++
+ #include <stdarg.h>
+ #include <stddef.h>
+ #include <setjmp.h>
+@@ -227,7 +229,7 @@ void test_dont_parse_other_formats(void** state)
+     }
+ }
+ 
+-void test_correct_media_drivers_for_mediatype_count()
++void test_correct_media_drivers_for_mediatype_count(void **state)
+ {
+     drivers_t* image_drivers = NULL;
+     drivers_t* audio_drivers = NULL;

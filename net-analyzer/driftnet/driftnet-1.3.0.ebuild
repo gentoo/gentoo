@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-CFLAGS.patch
 	"${FILESDIR}"/${PN}-1.3.0-gtk.patch
 	"${FILESDIR}"/${PN}-1.3.0-musl-stdint.patch
+	"${FILESDIR}"/${PN}-1.3.0-libwebsocket_compat.patch
 )
 
 src_prepare() {

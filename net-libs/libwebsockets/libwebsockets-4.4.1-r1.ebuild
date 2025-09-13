@@ -10,7 +10,7 @@ HOMEPAGE="https://libwebsockets.org/"
 SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/19" # libwebsockets.so.19
+SLOT="0/20" # libwebsockets.so.20
 KEYWORDS="amd64 arm arm64 ~loong ppc ~ppc64 ~riscv x86"
 IUSE="access-log caps cgi client dbus extensions generic-sessions http-proxy http2 ipv6
 	+lejp libev libevent libuv mbedtls peer-limits server-status smtp socks5
