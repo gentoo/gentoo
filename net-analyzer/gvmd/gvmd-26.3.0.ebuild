@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-libs/cJSON-1.7.14
 	>=dev-libs/glib-2.42:2
 	>=dev-libs/libical-1.0.0:=
-	>=net-analyzer/gvm-libs-22.23
+	>=net-analyzer/gvm-libs-22.28
 	>=net-libs/gnutls-3.2.15:=[tools]
 "
 
