@@ -10,4 +10,4 @@ HOMEPAGE="https://github.com/tree-sitter/tree-sitter-jsdoc"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~loong ~riscv"
+KEYWORDS="amd64 ~loong ~ppc64 ~riscv"
