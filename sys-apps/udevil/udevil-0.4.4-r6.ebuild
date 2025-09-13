@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.4-no-libtool.patch
 	"${FILESDIR}"/${PN}-0.4.4-no-conf.d.patch
 	"${FILESDIR}"/${PN}-0.4.4-remove-exfat-options.patch
+	"${FILESDIR}"/${PN}-0.4.4-signal-handlers.patch
 )
 
 src_prepare() {
