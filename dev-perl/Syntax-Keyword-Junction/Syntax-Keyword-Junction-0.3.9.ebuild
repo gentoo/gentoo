@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl6 style Junction operators in Perl5"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="
 	>=dev-perl/Sub-Exporter-Progressive-0.1.6
