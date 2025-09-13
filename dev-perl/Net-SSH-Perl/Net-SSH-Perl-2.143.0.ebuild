@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl client Interface to SSH"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="minimal"
 
 RDEPEND="
