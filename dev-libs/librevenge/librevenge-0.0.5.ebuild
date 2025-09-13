@@ -5,7 +5,7 @@ EAPI=8
 
 inherit multilib-minimal
 
-if [[ ${PV} == *9999 ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/libwpd/librevenge"
 	inherit git-r3 autotools
 else
@@ -29,7 +29,10 @@ BDEPEND="doc? ( app-text/doxygen[dot] )"
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999 ]] && eautoreconf
+	[[ ${PV} == *9999* ]] && eautoreconf
+	if multilib_is_native_abi && use doc; then
+		doxygen -u docs/doxygen/doxygen.cfg || die
+	fi
 }
 
 multilib_src_configure() {
