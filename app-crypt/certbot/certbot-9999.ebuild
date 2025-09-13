@@ -71,19 +71,17 @@ BDEPEND="
 RDEPEND="
 	!<app-crypt/acme-3.2.0-r100
 	!<app-crypt/certbot-apache-3.2.0-r100
-	!<app-crypt/certbot-dns-desec-3.2.0-r100
 	!<app-crypt/certbot-dns-dnsimple-3.2.0-r100
 	!<app-crypt/certbot-dns-nsone-3.2.0-r100
 	!<app-crypt/certbot-dns-rfc2136-3.2.0-r100
 	!<app-crypt/certbot-nginx-3.2.0-r100
 
-	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-1.5.3[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-43.0.0[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/josepy-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/parsedatetime-2.4[${PYTHON_USEDEP}]
+	>=dev-python/parsedatetime-2.6[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-25.0.0[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.20.0[${PYTHON_USEDEP}]
@@ -141,7 +139,7 @@ RDEPEND="
 # 	)
 # 	certbot-dns-digitalocean? (
 # 		# Available in GURU
-# 		>=dev-python/digitalocean-1.11[${PYTHON_USEDEP}]
+# 		>=dev-python/digitalocean-1.15.0[${PYTHON_USEDEP}]
 # 	)
 # "
 
