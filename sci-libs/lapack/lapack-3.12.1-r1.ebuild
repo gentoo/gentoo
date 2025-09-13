@@ -14,8 +14,7 @@ SRC_URI="https://github.com/Reference-LAPACK/lapack/archive/v${PV}.tar.gz -> ${P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos"
-# TODO: static-libs 64bit-index
-IUSE="lapacke deprecated doc eselect-ldso test"
+IUSE="lapacke deprecated doc eselect-ldso index64 test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -37,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.12.1-broken-flow.patch
 	"${FILESDIR}"/${PN}-3.12.1-broken-flow-deux.patch
 	"${FILESDIR}"/${PN}-3.12.1-broken-flow-trois.patch
+	"${FILESDIR}"/${PN}-3.12.1-lapack64-pc.patch
 )
 
 pkg_setup() {
@@ -60,10 +60,23 @@ src_configure() {
 	)
 
 	cmake_src_configure
+
+	if use index64; then
+		mycmakeargs+=(
+			-DBUILD_INDEX64=ON
+		)
+		BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_configure
+	fi
+}
+
+src_compile() {
+	cmake_src_compile
+	use index64 && BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_compile
 }
 
 src_install() {
 	cmake_src_install
+	use index64 && BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_install
 
 	use eselect-ldso || return
 	# Create private lib directory for eselect::blas (ld.so.conf)
