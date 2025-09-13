@@ -18,7 +18,8 @@ else
 	if [[ ${MY_P} = ${P} ]] ; then
 		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
 	else
-		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+		# SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+		SRC_URI="https://code.videolan.org/videolan/vlc/-/archive/${MY_PV}/${MY_P}.tar.bz2"
 	fi
 	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
@@ -257,7 +258,7 @@ src_prepare() {
 	fi
 
 	# Make it build with libtool 1.5
-	rm m4/lt* m4/libtool.m4 || die
+	# rm m4/lt* m4/libtool.m4 || die
 
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
