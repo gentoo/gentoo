@@ -26,6 +26,7 @@
 		routine calls. An object-based API unique to BLIS is also available.
 	</longdescription>
 	<use>
+		<flag name="index64">Build an ILP64 libblis64 in addition to LP64 libblis</flag>
 		<flag name="openmp">Use openmp threadding model</flag>
 		<flag name="pthread">Use pthread threadding model</flag>
 		<flag name="serial">Use no threadding model</flag>
