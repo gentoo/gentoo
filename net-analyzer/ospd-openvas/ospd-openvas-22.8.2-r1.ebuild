@@ -13,7 +13,7 @@ SRC_URI="https://github.com/greenbone/ospd-openvas/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="AGPL-3+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc +notus"
 
 DEPEND="
