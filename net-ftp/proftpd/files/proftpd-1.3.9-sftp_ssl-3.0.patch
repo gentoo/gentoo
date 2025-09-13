@@ -1,0 +1,25 @@
+PR pending https://github.com/proftpd/proftpd/pull/1980.patch
+AES_ctr_128 is not supported with >=openssl-3.0
+--- a/contrib/mod_sftp/crypto.c
++++ b/contrib/mod_sftp/crypto.c
+@@ -715,8 +715,9 @@ static int do_aes_ctr(EVP_CIPHER_CTX *ctx, unsigned char *dst,
+     return 0;
+   }
+ 
+-# if OPENSSL_VERSION_NUMBER <= 0x0090704fL || \
+-     OPENSSL_VERSION_NUMBER >= 0x10100000L
++# if (OPENSSL_VERSION_NUMBER <= 0x0090704fL || \
++     OPENSSL_VERSION_NUMBER >= 0x10100000L) && \
++     OPENSSL_VERSION_NUMBER < 0x30000000L
+   /* In OpenSSL-0.9.7d and earlier, the AES CTR code did not properly handle
+    * the IV as big-endian; this would cause the dreaded "Incorrect MAC
+    * received on packet" error when using clients e.g. PuTTy.  To see
+@@ -747,7 +748,7 @@ static int do_aes_ctr(EVP_CIPHER_CTX *ctx, unsigned char *dst,
+   }
+ 
+   return 1;
+-# else
++# elif OPENSSL_VERSION_NUMBER < 0x30000000L
+   /* Thin wrapper around AES_ctr128_encrypt(). */
+   AES_ctr128_encrypt(src, dst, len, &(ace->key), ace->counter, ace->enc_counter,
+     &(ace->num));
