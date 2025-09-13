@@ -23,7 +23,7 @@ S="${WORKDIR}/postgresql-${PV}-jdbc-src"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # Most tests fail with:
 # "org.postgresql.util.PSQLException: Connection to localhost:5432 refused.
