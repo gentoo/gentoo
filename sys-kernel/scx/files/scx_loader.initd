@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+supervisor=supervise-daemon
+
+name="scx_loader service"
+description="Loader service for sched_ext schedulers"
+command=/usr/bin/scx_loader
+command_args="${scx_loader_args}"
