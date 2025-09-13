@@ -25,7 +25,7 @@ src_install() {
 	for exe in "clang" "clang++" "clang-cpp"; do
 		newbin - "${CTARGET}-${exe}" <<-EOF
 		#!/bin/sh
-		exec ${exe}-${SLOT} --no-default-config --config="/etc/clang/cross/${CTARGET}.cfg" \${@}
+		exec ${exe}-${SLOT} --no-default-config --config="/etc/clang/cross/${CTARGET}.cfg" "\${@}"
 		EOF
 	done
 
