@@ -6,10 +6,6 @@
     <doc>https://github.com/flame/blis</doc>
     <remote-id type="github">flame/blis</remote-id>
   </upstream>
-  <maintainer type="person" proxied="yes">
-    <name>Mo Zhou</name>
-    <email>lumin@debian.org</email>
-  </maintainer>
   <maintainer type="project">
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
