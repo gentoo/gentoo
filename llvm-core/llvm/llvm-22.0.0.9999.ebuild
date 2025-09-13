@@ -134,7 +134,7 @@ check_distribution_components() {
 					LLVM|LLVMgold)
 						;;
 					# TableGen lib + deps
-					LLVMDemangle|LLVMSupport|LLVMTableGen)
+					LLVMDemangle|LLVMSupport|LLVMSupportLSP|LLVMTableGen)
 						;;
 					# for mlir-tblgen
 					LLVMCodeGenTypes)
@@ -235,6 +235,7 @@ get_distribution_components() {
 		LLVMTableGen
 		# mlir-tblgen
 		LLVMCodeGenTypes
+		LLVMSupportLSP
 
 		# testing libraries
 		llvm_gtest
