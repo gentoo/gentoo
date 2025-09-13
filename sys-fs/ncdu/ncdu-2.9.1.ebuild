@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-yorhel )"
 DEPEND="
