@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN/-compat}-4.4.0_rc1-skip-thumbnail-test.patch
 	"${FILESDIR}"/${P/-compat}-hylafaxplus-regression.patch
 	"${FILESDIR}"/${P/-compat}-C23.patch
+	"${FILESDIR}"/${P/-compat}-skip-tests-requiring-tools.patch
 )
 
 src_prepare() {
