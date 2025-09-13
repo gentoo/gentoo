@@ -4,86 +4,85 @@
 EAPI=8
 
 CRATES="
-	addr2line@0.21.0
+	addr2line@0.22.0
 	adler@1.0.2
-	ahash@0.7.7
+	ahash@0.7.8
 	atty@0.2.14
-	autocfg@1.1.0
-	backtrace@0.3.69
+	autocfg@1.3.0
+	backtrace@0.3.73
 	base64@0.13.1
 	bitflags@1.3.2
-	bitflags@2.4.2
+	bitflags@2.6.0
 	byteorder@1.5.0
 	cbindgen@0.26.0
-	cc@1.0.83
+	cc@1.1.6
 	cfg-if@1.0.0
 	clap@3.2.25
 	clap_lex@0.2.4
 	concread@0.2.21
-	crossbeam-channel@0.5.11
+	crossbeam-channel@0.5.13
 	crossbeam-deque@0.8.5
 	crossbeam-epoch@0.9.18
 	crossbeam-queue@0.3.11
-	crossbeam-utils@0.8.19
+	crossbeam-utils@0.8.20
 	crossbeam@0.8.4
-	errno@0.3.8
-	fastrand@2.0.1
+	errno@0.3.9
+	fastrand@2.1.0
 	fernet@0.1.4
 	foreign-types-shared@0.1.1
 	foreign-types@0.3.2
-	getrandom@0.2.12
-	gimli@0.28.1
+	getrandom@0.2.15
+	gimli@0.29.0
 	hashbrown@0.12.3
 	heck@0.4.1
 	hermit-abi@0.1.19
 	indexmap@1.9.3
-	instant@0.1.12
-	itoa@1.0.10
-	jobserver@0.1.27
-	libc@0.2.152
-	linux-raw-sys@0.4.13
-	lock_api@0.4.11
-	log@0.4.20
+	instant@0.1.13
+	itoa@1.0.11
+	jobserver@0.1.31
+	libc@0.2.155
+	linux-raw-sys@0.4.14
+	lock_api@0.4.12
+	log@0.4.22
 	lru@0.7.8
-	memchr@2.7.1
-	miniz_oxide@0.7.1
-	object@0.32.2
+	memchr@2.7.4
+	miniz_oxide@0.7.4
+	object@0.36.1
 	once_cell@1.19.0
 	openssl-macros@0.1.1
-	openssl-sys@0.9.99
-	openssl@0.10.63
+	openssl-sys@0.9.103
+	openssl@0.10.66
 	os_str_bytes@6.6.1
 	parking_lot@0.11.2
 	parking_lot_core@0.8.6
 	paste-impl@0.1.18
 	paste@0.1.18
-	pin-project-lite@0.2.13
-	pkg-config@0.3.29
+	pin-project-lite@0.2.14
+	pkg-config@0.3.30
 	ppv-lite86@0.2.17
 	proc-macro-hack@0.5.20+deprecated
-	proc-macro2@1.0.78
-	quote@1.0.35
+	proc-macro2@1.0.86
+	quote@1.0.36
 	rand@0.8.5
 	rand_chacha@0.3.1
 	rand_core@0.6.4
 	redox_syscall@0.2.16
-	redox_syscall@0.4.1
-	rustc-demangle@0.1.23
-	rustix@0.38.30
-	ryu@1.0.16
+	rustc-demangle@0.1.24
+	rustix@0.38.34
+	ryu@1.0.18
 	scopeguard@1.2.0
-	serde@1.0.196
-	serde_derive@1.0.196
-	serde_json@1.0.113
-	smallvec@1.13.1
+	serde@1.0.204
+	serde_derive@1.0.204
+	serde_json@1.0.120
+	smallvec@1.13.2
 	strsim@0.10.0
 	syn@1.0.109
-	syn@2.0.48
-	tempfile@3.9.0
+	syn@2.0.72
+	tempfile@3.10.1
 	termcolor@1.4.1
-	textwrap@0.16.0
-	tokio-macros@2.2.0
-	tokio@1.35.1
+	textwrap@0.16.1
+	tokio-macros@2.3.0
+	tokio@1.38.1
 	toml@0.5.11
 	unicode-ident@1.0.12
 	uuid@0.8.2
@@ -91,19 +90,20 @@ CRATES="
 	version_check@0.9.4
 	wasi@0.11.0+wasi-snapshot-preview1
 	winapi-i686-pc-windows-gnu@0.4.0
-	winapi-util@0.1.6
+	winapi-util@0.1.8
 	winapi-x86_64-pc-windows-gnu@0.4.0
 	winapi@0.3.9
 	windows-sys@0.52.0
-	windows-targets@0.52.0
-	windows_aarch64_gnullvm@0.52.0
-	windows_aarch64_msvc@0.52.0
-	windows_i686_gnu@0.52.0
-	windows_i686_msvc@0.52.0
-	windows_x86_64_gnu@0.52.0
-	windows_x86_64_gnullvm@0.52.0
-	windows_x86_64_msvc@0.52.0
-	zeroize@1.7.0
+	windows-targets@0.52.6
+	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_msvc@0.52.6
+	windows_i686_gnu@0.52.6
+	windows_i686_gnullvm@0.52.6
+	windows_i686_msvc@0.52.6
+	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_msvc@0.52.6
+	zeroize@1.8.1
 	zeroize_derive@1.4.2
 "
 
@@ -111,8 +111,6 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-
-RUST_MAX_VER="1.77.1"
 
 inherit autotools cargo distutils-r1 readme.gentoo-r1 systemd tmpfiles
 
@@ -199,11 +197,14 @@ RDEPEND="${DEPEND}
 	virtual/perl-Time-Local
 	virtual/logger
 	selinux? ( sec-policy/selinux-dirsrv )
+	!dev-python/lib389
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-db-gentoo.patch"
 	"${FILESDIR}/${PN}-3.0.2-fix-rust-in-configure.patch"
+	"${FILESDIR}/${PN}-3.0.6-CVE-2025-2487.patch"
+	"${FILESDIR}/${PN}-3.0.6-rust-1.89.patch"
 )
 
 distutils_enable_tests pytest
@@ -214,6 +215,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# according to an upstream comment, this got commited by accident
+	rm src/librslapd/Cargo.lock || die
+
 	# https://github.com/389ds/389-ds-base/issues/4292
 	if use !systemd; then
 		sed -i \

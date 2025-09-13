@@ -1,0 +1,32 @@
+From 1701419551c246e9dc21778b118220eeb2258125 Mon Sep 17 00:00:00 2001
+From: Viktor Ashirov <vashirov@redhat.com>
+Date: Mon, 11 Aug 2025 13:19:13 +0200
+Subject: [PATCH] Issue 6929 - Compilation failure with rust-1.89 on Fedora ELN
+
+Bug Description:
+The `ValueArrayRefIter` struct has a lifetime parameter `'a`.
+But in the `iter` method  the return type doesn't specify the lifetime parameter.
+
+Fix Description:
+Make the lifetime explicit.
+
+Fixes: https://github.com/389ds/389-ds-base/issues/6929
+
+Reviewed by: @droideck (Thanks!)
+---
+ src/slapi_r_plugin/src/value.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/slapi_r_plugin/src/value.rs b/src/slapi_r_plugin/src/value.rs
+index 2fd35c808d..fec74ac254 100644
+--- a/src/slapi_r_plugin/src/value.rs
++++ b/src/slapi_r_plugin/src/value.rs
+@@ -61,7 +61,7 @@ impl ValueArrayRef {
+         ValueArrayRef { raw_slapi_val }
+     }
+ 
+-    pub fn iter(&self) -> ValueArrayRefIter {
++    pub fn iter(&self) -> ValueArrayRefIter<'_> {
+         ValueArrayRefIter {
+             idx: 0,
+             va_ref: &self,
