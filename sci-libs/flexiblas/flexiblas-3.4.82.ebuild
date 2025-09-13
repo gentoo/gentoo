@@ -20,19 +20,18 @@ S=${WORKDIR}/${MY_P}
 LICENSE="LGPL-3+ BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-# TODO: 64bit-index
-IUSE="blis mkl openblas openmp tbb test"
+IUSE="blis index64 mkl openblas openmp tbb test"
 RESTRICT="!test? ( test )"
 
 # flexiblas only supports gnu-openmp using clang/gcc
 DEPEND="
-	sci-libs/lapack:=[deprecated]
-	blis? ( sci-libs/blis:=[-64bit-index] )
+	sci-libs/lapack:=[deprecated,index64(-)?]
+	blis? ( sci-libs/blis:=[-64bit-index(-),index64(-)?] )
 	mkl? (
 		sci-libs/mkl:=[tbb?]
 		openmp? ( sci-libs/mkl[gnu-openmp] )
 	)
-	openblas? ( sci-libs/openblas:= )
+	openblas? ( sci-libs/openblas:=[index64(-)?] )
 "
 RDEPEND="
 	${DEPEND}
@@ -65,7 +64,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DTESTS=$(usex test)
 		-DCBLAS=ON
-		# TODO: ILP64 variant
 		-DINTEGER8=OFF
 		-DLAPACK=ON
 		-DLINK_OPENMP=$(usex openmp)
@@ -77,9 +75,15 @@ src_configure() {
 		-DOpenBLASSerial=OFF
 		-DOpenBLASPThread=OFF
 		-DOpenBLASOpenMP=OFF
+		-DOpenBLASSerial64=OFF
+		-DOpenBLASPThread64=OFF
+		-DOpenBLASOpenMP64=OFF
 		-DBlisSerial=OFF
 		-DBlisPThread=OFF
 		-DBlisOpenMP=OFF
+		-DBlisSerial64=OFF
+		-DBlisPThread64=OFF
+		-DBlisOpenMP64=OFF
 		# variants we use autodetection for
 		-DMklSerial=$(usex mkl ON OFF)
 		-DMklOpenMP=$(usex mkl "$(usex openmp ON OFF)" OFF)
@@ -102,17 +106,40 @@ src_configure() {
 
 	cmake_src_configure
 
+	if use index64; then
+		mycmakeargs+=(
+			-DINTEGER8=ON
+			-DSYS_BLAS_LIBRARY="${libdir}/libblas64.so"
+			-DSYS_LAPACK_LIBRARY="${libdir}/liblapack64.so"
+			-Dblis_LIBRARY="${libdir}/libblis64.so"
+			-Dopenblas_LIBRARY="${libdir}/libopenblas64.so"
+		)
+
+		BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_configure
+	fi
+
 	BACKENDS+=( netlib )
+	BACKENDS_ILP64=( "${BACKENDS[@]}" )
 	if use mkl; then
 		BACKENDS+=(
 			MklSerial
 			$(usev openmp MklOpenMP)
 			$(usev tbb MklTBB)
 		)
+		BACKENDS_ILP64+=(
+			MklSerial64
+			$(usev openmp MklOpenMP64)
+			$(usev tbb MklTBB64)
+		)
 	fi
 }
 
-src_test() {
+src_compile() {
+	cmake_src_compile
+	use index64 && BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_compile
+}
+
+my_test() {
 	# We run tests in parallel, so avoid having n^2 threads.
 	local -x BLIS_NUM_THREADS=1
 	local -x MKL_NUM_THREADS=1
@@ -121,7 +148,7 @@ src_test() {
 
 	local failures=()
 	local backend
-	for backend in "${BACKENDS[@]}"; do
+	for backend in "${@}"; do
 		# TODO: remove this, and XFAIL them properly when cmake.eclass
 		# is fixed to respect nonfatal, https://bugs.gentoo.org/961929
 		if [[ ${backend} == Mkl* ]]; then
@@ -145,20 +172,34 @@ src_test() {
 	fi
 }
 
-src_install() {
-	cmake_src_install
+src_test() {
+	my_test "${BACKENDS[@]}"
+	use index64 && BUILD_DIR=${BUILD_DIR}-ilp64 my_test "${BACKENDS_ILP64[@]}"
+}
 
-	# verify built backends
-	cd "${ED}/usr/$(get_libdir)/flexiblas" || die
+verify_backends() {
+	local lib=${1}
+	shift
+	cd "${ED}/usr/$(get_libdir)/${lib}" || die
+
 	local missing=()
 	local backend
-	for backend in "${BACKENDS[@]}"; do
+	for backend in "${@}"; do
 		if [[ ! -f libflexiblas_${backend,,}$(get_libname) ]]; then
 			missing+=( "${backend}" )
 		fi
 	done
 
 	if [[ ${missing[@]} ]]; then
-		die "Not all requested backends built. Missing: ${missing[*]}"
+		die "Not all requested ${lib} backends built. Missing: ${missing[*]}"
 	fi
+}
+
+src_install() {
+	cmake_src_install
+	use index64 && BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_install
+
+	# verify built backends
+	verify_backends flexiblas "${BACKENDS[@]}"
+	use index64 && verify_backends flexiblas64 "${BACKENDS_ILP64[@]}"
 }
