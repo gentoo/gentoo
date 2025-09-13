@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="sourceforge">skfans</remote-id>
-		<remote-id type="github">the3dfxdude/7kaa</remote-id>
-	</upstream>
+        <maintainer type="person" proxied="yes">
+                <email>stefan.cristian+git@rogentos.ro</email>
+                <name>Stefan Cristian B.</name>
+        </maintainer>
+        <maintainer type="project" proxied="proxy">
+                <email>proxy-maint@gentoo.org</email>
+                <name>Proxy Maintainers</name>
+        </maintainer>
+    <longdescription>
+        Seven Kingdoms: Ancient Adversaries is a real-time strategy game set in
+        the medieval world, where players can control one of several factions
+        and engage in battles, diplomacy, and resource management.
+    </longdescription>
+    <use>
+      <flag name="multiplayer">Enable multiplayer.</flag>
+    </use>
+    <upstream>
+        <remote-id type="sourceforge">skfans</remote-id>
+    </upstream>
 </pkgmetadata>
