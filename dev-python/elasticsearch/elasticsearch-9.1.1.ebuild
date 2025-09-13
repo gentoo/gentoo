@@ -23,13 +23,13 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 RDEPEND="
 	<dev-python/aiohttp-4[${PYTHON_USEDEP}]
 	>=dev-python/aiohttp-3[${PYTHON_USEDEP}]
-	<dev-python/elastic-transport-9[${PYTHON_USEDEP}]
-	>=dev-python/elastic-transport-8.15.1[${PYTHON_USEDEP}]
+	<dev-python/elastic-transport-10[${PYTHON_USEDEP}]
+	>=dev-python/elastic-transport-9.1.0[${PYTHON_USEDEP}]
 	>=dev-python/orjson-3[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	<dev-python/requests-3[${PYTHON_USEDEP}]
@@ -45,7 +45,6 @@ BDEPEND="
 		dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pyarrow[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
 		>=dev-python/pyyaml-5.4[${PYTHON_USEDEP}]
 		dev-python/unasync[${PYTHON_USEDEP}]
@@ -55,6 +54,8 @@ BDEPEND="
 distutils_enable_sphinx docs/sphinx \
 	dev-python/sphinx-autodoc-typehints \
 	dev-python/sphinx-rtd-theme
+
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 python_test() {
@@ -70,12 +71,11 @@ python_test() {
 		# as well.
 		"test_elasticsearch/test_server/"
 		"test_elasticsearch/test_async/test_server/"
-		# require nltk
-		test_elasticsearch/test_dsl/test_integration/test_examples/_async/test_vectors.py
-		test_elasticsearch/test_dsl/test_integration/test_examples/_sync/test_vectors.py
+		"test_elasticsearch/test_dsl/test_integration/"
+		"test_elasticsearch/test_dsl/_async/test_esql.py"
+		"test_elasticsearch/test_dsl/_sync/test_esql.py"
 	)
 
 	local -x TEST_WITH_OTEL=1
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -o addopts= -p asyncio
+	epytest -o addopts=
 }
