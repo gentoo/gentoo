@@ -1,0 +1,41 @@
+diff '--color=auto' -urP lilo-24.2.orig/Makefile lilo-24.2/Makefile
+--- lilo-24.2.orig/Makefile	2015-11-21 16:46:57.000000000 -0700
++++ lilo-24.2/Makefile	2025-07-28 21:11:19.651957639 -0600
+@@ -12,7 +12,6 @@
+ #
+ all: test
+ 	make -C src all
+-	make -C images all
+ 
+ #
+ #  make help
+@@ -45,7 +44,6 @@
+ #
+ alles: test
+ 	$(MAKE) -C src alles
+-	$(MAKE) -C images all
+ 
+ #
+ # documentation files
+@@ -104,7 +102,6 @@
+ #
+ install:  all
+ 	$(MAKE) -C src install
+-	$(MAKE) -C images install
+ 	$(MAKE) -C hooks install
+ 	$(MAKE) -C sample install
+ 	$(MAKE) -C scripts install
+diff '--color=auto' -urP lilo-24.2.orig/src/Makefile lilo-24.2/src/Makefile
+--- lilo-24.2.orig/src/Makefile	2015-11-21 16:50:25.000000000 -0700
++++ lilo-24.2/src/Makefile	2025-07-28 21:11:19.662957638 -0600
+@@ -242,10 +242,8 @@
+ 	if [ -f diag1.img ]; then cp -f diag1.img $$DESTDIR$(BOOT_DIR); fi
+ 	if [ -f diag2.img ]; then cp -f diag2.img $$DESTDIR$(BOOT_DIR); fi
+ 
+-	strip lilo
+ 	cp lilo $$DESTDIR$(SBIN_DIR)/lilo
+ 	if [ -f lilo.static ]; then \
+-	  strip lilo.static; \
+ 	  cp lilo.static $$DESTDIR$(SBIN_DIR)/lilo.static; \
+ 	fi
+ 	cp ../mkrescue $$DESTDIR$(USRSBIN_DIR)/mkrescue

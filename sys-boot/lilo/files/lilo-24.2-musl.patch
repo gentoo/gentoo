@@ -1,0 +1,17 @@
+Adapted from https://git.sr.ht/~kqz/repo/tree/b8808d806c887c0b800d3548f0c6201440b25a5e/item/server/lilo/patches/musl.patch
+--- a/src/common.h
++++ b/src/common.h
+@@ -23,12 +23,7 @@
+ # define PAGE_SIZE 4096U
+ #endif
+ 
+-#ifdef O_ACCMODE
+-# define O_NOACCESS O_ACCMODE
+-#else
+-/* open a file for "no access" */
+-# define O_NOACCESS 3
+-#endif
++#define O_NOACCESS O_RDONLY
+ 
+ /* special for LILO, bypass the actual open in  dev_open( , ,-1)   */
+ #define O_BYPASS -1
