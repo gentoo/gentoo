@@ -11,7 +11,7 @@ DESCRIPTION="Perl module to get and parse the Linux .desktop files"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="
 	dev-perl/Module-Build
