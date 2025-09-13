@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/enlightenment/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+alsa audiofile +dbus debug +dialogs doc examples gnome
 libhack editline modules nls no-container opengl +pango player
 pulseaudio readline +sndfile sound +themes xcomposite +xft
