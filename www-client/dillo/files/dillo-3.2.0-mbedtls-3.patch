@@ -1,0 +1,51 @@
+From https://github.com/dillo-browser/dillo/pull/414
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Sat, 28 Jun 2025 16:28:54 +0300
+Subject: [PATCH] Add options to search custom MbedTLS installations
+
+Some Linux distributions (like Gentoo or Arch) allows to install
+MbedTLS 2.x and 3.x branches simultaneously. This change helps to
+inding custom MbedTLS locations.
+
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,6 +21,14 @@ AC_ARG_WITH([jpeg-inc],
+   [AS_HELP_STRING([--with-jpeg-inc=DIR], [Specify where to find libjpeg headers])],
+   LIBJPEG_INCDIR=$withval)
+ 
++AC_ARG_WITH([mbedtls-lib],
++  [AS_HELP_STRING([--with-mbedtls-lib=DIR], [Specify where to find MbedTLS libraries])],
++  [LDFLAGS="$LDFLAGS -L$withval"])
++
++AC_ARG_WITH([mbedtls-inc],
++  [AS_HELP_STRING([--with-mbedtls-inc=DIR], [Specify where to find MbedTLS headers])],
++  [CFLAGS="$CFLAGS -I$withval" CXXFLAGS="$CXXFLAGS -I$withval"])
++
+ AC_ARG_ENABLE([efence],
+   [AS_HELP_STRING([--enable-efence], [Try to compile and run with Electric Fence])],
+   [enable_efence=$enableval],
+@@ -489,17 +497,20 @@ if test "x$enable_tls" = "xyes"; then
+       dnl If the headers are found, try to link with mbedTLS
+       if test "x$mbedtls_ok" = "xyes"; then
+         old_libs="$LIBS"
+-        AC_CHECK_LIB(mbedtls, mbedtls_ssl_init, mbedtls_ok=yes, mbedtls_ok=no, -lmbedx509 -lmbedcrypto)
++        AC_SEARCH_LIBS(mbedtls_ssl_init, [mbedtls-3 mbedtls], mbedtls_ok=yes, mbedtls_ok=no)
++        AC_SEARCH_LIBS(mbedtls_pk_get_name, [mbedcrypto-3 mbedcrypto], mbedcrypto_ok=yes, mbedcrypto_ok=no)
++        AC_SEARCH_LIBS(mbedtls_x509_crt_init, [mbedx509-3 mbedx509], mbedx509_ok=yes, mbedx509_ok=no)
+         LIBS="$old_libs"
+       fi
+ 
+       dnl If it went good, use it, otherwise disable TLS support
+-      if test "x$mbedtls_ok" = "xyes"; then
++      if test "x$mbedtls_ok" = "xyes" && test "x$mbedcrypto_ok" = "xyes" && test "x$mbedx509_ok" = "xyes" ; then
+         AC_MSG_NOTICE([Using mbedTLS as TLS library.])
+         tls_impl="mbedTLS"
+         AC_DEFINE([HAVE_MBEDTLS], [1], [mbedTLS works])
+-        LIBSSL_LIBS="-lmbedtls -lmbedx509 -lmbedcrypto"
++        LIBSSL_LIBS="$ac_cv_search_mbedtls_ssl_init $ac_cv_search_mbedtls_pk_get_name $ac_cv_search_mbedtls_x509_crt_init"
+       else
++        mbedtls_ok=no
+         AC_MSG_NOTICE([Cannot find mbedTLS])
+       fi
+     fi
