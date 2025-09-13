@@ -6,6 +6,10 @@
 		<doc>https://github.com/flame/blis</doc>
 		<remote-id type="github">flame/blis</remote-id>
 	</upstream>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
