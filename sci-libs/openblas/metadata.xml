@@ -30,7 +30,7 @@
 		<flag name="eselect-ldso">
 			Enable BLAS/LAPACK runtime switching
 		</flag>
-		<flag name="index-64bit">
+		<flag name="index64">
 			Compile a separate INTERFACE64 OpenBLAS
 		</flag>
 		<flag name="pthread">
