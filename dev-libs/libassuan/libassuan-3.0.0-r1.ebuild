@@ -38,6 +38,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
+		GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
 		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
 	)
 	econf "${myeconfargs[@]}"
