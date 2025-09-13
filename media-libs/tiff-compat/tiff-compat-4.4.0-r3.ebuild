@@ -10,7 +10,7 @@ QA_PKGCONFIG_VERSION="$(ver_cut 1-3)"
 # stuff too like PROJ, GDAL. Previous release manager of TIFF was
 # GraphicsMagick maintainer Bob Friesenhahn. Please be careful when verifying
 # who made releases.
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rouault.asc
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/evenrouault.asc
 inherit multilib-minimal verify-sig flag-o-matic autotools
 
 MY_P="${P/_rc/rc}"
@@ -41,7 +41,7 @@ RDEPEND="
 	zstd? ( >=app-arch/zstd-1.3.7-r1:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="verify-sig? ( sec-keys/openpgp-keys-evenrouault )"
+BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-evenrouault-20250913 )"
 
 # Easier to keep this even though we remove the headers to avoid
 # triggering multilib header check
