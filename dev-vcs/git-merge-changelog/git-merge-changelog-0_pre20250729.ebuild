@@ -8,7 +8,7 @@
 EAPI=8
 
 DESCRIPTION="Git merge driver for GNU style ChangeLog files"
-HOMEPAGE="https://www.gnu.org/software/gnulib/"
+HOMEPAGE="https://www.gnu.org/software/vc-changelog/"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${PN}-${PV#*pre}.tar.xz"
 S="${WORKDIR}/${PN}"
 
