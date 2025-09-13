@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-find-xxdate.patch
 	"${FILESDIR}"/${PN}-1.1.1-shuffle.patch
 	"${FILESDIR}"/${P}-python-3.13.patch
+	"${FILESDIR}"/${P}-stdcompat.patch
 )
 SITEFILE=50coccinelle-gentoo.el
 
