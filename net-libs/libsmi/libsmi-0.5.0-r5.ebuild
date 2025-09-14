@@ -46,6 +46,11 @@ src_configure() {
 	econf
 }
 
+src_compile() {
+	# bug #962192
+	emake -j1
+}
+
 src_test() {
 	# sming test is known to fail and some other fail if LC_ALL!=C:
 	# https://mail.ibr.cs.tu-bs.de/pipermail/libsmi/2008-March/001014.html
