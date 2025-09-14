@@ -49,7 +49,7 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt6? (
-		dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
+		dev-python/pyqt6[gui,multimedia,printsupport,qml,quick,widgets,${PYTHON_USEDEP}]
 	)
 	ncurses? ( $(python_gen_impl_dep 'ncurses') )
 "
