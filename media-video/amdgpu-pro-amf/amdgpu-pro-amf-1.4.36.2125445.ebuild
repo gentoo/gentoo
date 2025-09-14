@@ -16,7 +16,7 @@ MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
 MY_PN="amf-amdgpu-pro"
 MY_PN_ENC="libamdenc-amdgpu-pro"
 
-INTERNAL_VER="6.3.2"
+INTERNAL_VER="6.3.4"
 UBUNTU_VER="24.04"
 
 DESCRIPTION="AMD's closed source Advanced Media Framework (AMF) driver for AMD GPUs"
@@ -44,9 +44,7 @@ REQUIRED_USE="
 RESTRICT="bindist mirror"
 
 RDEPEND="
-	media-libs/libglvnd
 	x11-libs/libdrm
-	x11-libs/libX11
 	pro? ( media-libs/amdgpu-pro-vulkan )
 	radv? ( media-libs/mesa[proprietary-codecs,vulkan] )
 "

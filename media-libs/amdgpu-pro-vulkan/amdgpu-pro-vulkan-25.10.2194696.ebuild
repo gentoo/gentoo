@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ MY_PV_REV=$(ver_cut 3)
 
 MY_PV="${MY_PV_HIGH}.${MY_PV_MIDDLE}"
 
-INTERNAL_VER="6.3.2"
+INTERNAL_VER="6.4.3"
 
 MY_PV_FULL="${MY_PV}-${MY_PV_REV}"
 
@@ -38,6 +38,10 @@ RESTRICT="bindist mirror"
 REQUIRED_USE="video_cards_amdgpu"
 
 BDEPEND="dev-util/patchelf"
+
+RDEPEND="
+	sys-libs/zlib
+"
 
 QA_PREBUILT="
 	usr/lib64/amdvlkpro64.so*
