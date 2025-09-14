@@ -285,13 +285,6 @@ sci-electronics/NanoVNA-QT
 # Bugs #932756, #952103. Removal on 2025-09-16.
 app-crypt/yubikey-manager-qt
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-10)
-# Outdated version packaged in Gentoo, pending version bump request for
-# over a year, depends on Qt5 but worse, Qt5Script, no signs of upstream
-# porting away from it, many unattended build error bugs.
-# Bugs #922311, #926229. Removal on 2025-09-14.
-media-gfx/opentoonz
-
 # Hans de Graaff <graaff@gentoo.org> (2025-08-08)
 # ruby-openid fails tests and is archived upstream. Last release 6 years
 # ago. rack-openid is the only reverse dependency.
