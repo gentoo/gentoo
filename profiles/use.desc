@@ -140,6 +140,7 @@ ieee1394 - Enable FireWire/iLink IEEE1394 support (dv, camera, ...)
 imagemagick - Enable optional support for the ImageMagick or GraphicsMagick image converter
 imap - Add support for IMAP (Internet Mail Application Protocol)
 imlib - Add support for imlib, an image loading and rendering library
+index64 - Enable 64-bit array indexing support
 infiniband - Enable Infiniband RDMA transport support
 initramfs - Include kernel modules in the initramfs, and re-install the kernel (only effective for distribution kernels)
 inotify - Enable inotify filesystem monitoring support
