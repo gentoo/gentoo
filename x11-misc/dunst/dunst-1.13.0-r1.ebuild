@@ -49,8 +49,8 @@ src_prepare() {
 	sed -e 's/-Os//' -i config.mk || die
 
 	# Use correct path for dbus and system unit
-	sed -e "s|##PREFIX##|${EPREFIX}/usr|" -i dunst.systemd.service.in || die
-	sed -e "s|##PREFIX##|${EPREFIX}/usr|" -i org.knopwob.dunst.service.in || die
+	sed -e "s|@bindir@|${EPREFIX}/usr/bin|" -i dunst.systemd.service.in || die
+	sed -e "s|@bindir@|${EPREFIX}/usr/bin|" -i org.knopwob.dunst.service.in || die
 }
 
 src_configure() {
