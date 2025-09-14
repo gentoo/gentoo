@@ -22,7 +22,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	SRC_URI="https://www.hepforge.org/archive/rivet/${MY_PF}.tar.gz -> ${P}.tar.gz"
 	S=${WORKDIR}/${MY_PF}
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-3+"
