@@ -54,6 +54,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.28.17-c++17.patch
 	"${FILESDIR}"/${PN}-1.28.17-CVE-2023-24805.patch
+	"${FILESDIR}"/${PN}-1.28.17-qpdf-12.patch
 )
 
 src_configure() {

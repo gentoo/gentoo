@@ -1,0 +1,276 @@
+https://bugs.gentoo.org/962385#c4
+diff '--color=auto' -rupN a/filter/pdf.cxx b/filter/pdf.cxx
+--- a/filter/pdf.cxx	2023-01-24 18:41:08.000000000 -0700
++++ b/filter/pdf.cxx	2025-09-05 10:07:29.738695867 -0600
+@@ -138,7 +138,7 @@ extern "C" void pdf_prepend_stream(pdf_t
+   }
+ 
+   // prepare the new stream which is to be prepended
+-  PointerHolder<Buffer> stream_data = PointerHolder<Buffer>(new Buffer(len));
++  std::shared_ptr<Buffer> stream_data = std::shared_ptr<Buffer>(new Buffer(len));
+   memcpy(stream_data->getBuffer(), buf, len);
+   QPDFObjectHandle stream = QPDFObjectHandle::newStream(pdf, stream_data);
+   stream = pdf->makeIndirectObject(stream);
+diff '--color=auto' -rupN a/filter/pdftopdf/qpdf_pdftopdf_processor.cc b/filter/pdftopdf/qpdf_pdftopdf_processor.cc
+--- a/filter/pdftopdf/qpdf_pdftopdf_processor.cc	2023-01-24 18:41:08.000000000 -0700
++++ b/filter/pdftopdf/qpdf_pdftopdf_processor.cc	2025-09-05 09:57:51.836902479 -0600
+@@ -83,10 +83,10 @@ QPDFObjectHandle QPDF_PDFTOPDF_PageHandl
+     page.getKey("/Resources").replaceKey("/XObject",QPDFObjectHandle::newDictionary(xobjs));
+     content.append("Q\n");
+     page.getKey("/Contents").replaceStreamData(content,QPDFObjectHandle::newNull(),QPDFObjectHandle::newNull());
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(rotation));
++    page.replaceKey("/Rotate",makeRotate(rotation));
+   } else {
+     Rotation rot=getRotate(page)+rotation;
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(rot));
++    page.replaceKey("/Rotate",makeRotate(rot));
+   }
+   page=QPDFObjectHandle(); // i.e. uninitialized
+   return ret;
+@@ -181,9 +181,9 @@ Rotation QPDF_PDFTOPDF_PageHandle::crop(
+   page.assertInitialized();
+   Rotation save_rotate = getRotate(page);
+   if(orientation==ROT_0||orientation==ROT_180)
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_90));
++    page.replaceKey("/Rotate",makeRotate(ROT_90));
+   else
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_0));
++    page.replaceKey("/Rotate",makeRotate(ROT_0));
+ 
+   PageRect currpage= getBoxAsRect(getTrimBox(page));
+   double width = currpage.right-currpage.left;
+@@ -242,7 +242,7 @@ Rotation QPDF_PDFTOPDF_PageHandle::crop(
+   //Cropping.
+   // TODO: Borders are covered by the image. buffer space?
+   page.replaceKey("/TrimBox",makeBox(currpage.left,currpage.bottom,currpage.right,currpage.top));
+-  page.replaceOrRemoveKey("/Rotate",makeRotate(save_rotate));
++  page.replaceKey("/Rotate",makeRotate(save_rotate));
+   return getRotate(page);
+ }
+ 
+@@ -251,14 +251,14 @@ bool QPDF_PDFTOPDF_PageHandle::is_landsc
+   page.assertInitialized();
+   Rotation save_rotate = getRotate(page);
+   if(orientation==ROT_0||orientation==ROT_180)
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_90));
++    page.replaceKey("/Rotate",makeRotate(ROT_90));
+   else
+-    page.replaceOrRemoveKey("/Rotate",makeRotate(ROT_0));
++    page.replaceKey("/Rotate",makeRotate(ROT_0));
+ 
+   PageRect currpage= getBoxAsRect(getTrimBox(page));
+   double width = currpage.right-currpage.left;
+   double height = currpage.top-currpage.bottom;
+-  page.replaceOrRemoveKey("/Rotate",makeRotate(save_rotate));
++  page.replaceKey("/Rotate",makeRotate(save_rotate));
+   if(width>height)
+     return true;
+   return false;
+@@ -662,7 +662,7 @@ void QPDF_PDFTOPDF_Processor::autoRotate
+       // TODO? other rotation direction, e.g. if (src_rot==ROT_0)&&(param.orientation==ROT_270) ... etc.
+       // rotation=ROT_270;
+ 
+-      page.replaceOrRemoveKey("/Rotate",makeRotate(src_rot+rotation));
++      page.replaceKey("/Rotate",makeRotate(src_rot+rotation));
+     }
+   }
+ }
+diff '--color=auto' -rupN a/filter/pdftopdf/qpdf_xobject.cc b/filter/pdftopdf/qpdf_xobject.cc
+--- a/filter/pdftopdf/qpdf_xobject.cc	2023-01-24 18:41:08.000000000 -0700
++++ b/filter/pdftopdf/qpdf_xobject.cc	2025-09-05 10:09:23.131598674 -0600
+@@ -136,7 +136,7 @@ QPDFObjectHandle makeXObject(QPDF *pdf,Q
+ 
+   std::vector<QPDFObjectHandle> contents=page.getPageContents();  // (will assertPageObject)
+ 
+-  auto ph=PointerHolder<QPDFObjectHandle::StreamDataProvider>(new CombineFromContents_Provider(contents));
++  auto ph=std::shared_ptr<QPDFObjectHandle::StreamDataProvider>(new CombineFromContents_Provider(contents));
+   ret.replaceStreamData(ph,filter,decode_parms);
+ 
+   return ret;
+diff '--color=auto' -rupN a/filter/rastertopdf.cpp b/filter/rastertopdf.cpp
+--- a/filter/rastertopdf.cpp	2023-01-24 18:41:08.000000000 -0700
++++ b/filter/rastertopdf.cpp	2025-09-05 10:20:21.324455441 -0600
+@@ -310,10 +310,10 @@ struct pdf_info
+     std::vector<std::string>  pclm_source_resolution_supported;
+     std::string               pclm_source_resolution_default;
+     std::string               pclm_raster_back_side;
+-    std::vector< PointerHolder<Buffer> > pclm_strip_data;
++    std::vector< std::shared_ptr<Buffer> > pclm_strip_data;
+     std::string render_intent;
+     cups_cspace_t color_space;
+-    PointerHolder<Buffer> page_data;
++    std::shared_ptr<Buffer> page_data;
+     double page_width,page_height;
+     OutFormatType outformat;
+ };
+@@ -442,7 +442,7 @@ QPDFObjectHandle embedIccProfile(QPDF &p
+     std::map<std::string,QPDFObjectHandle> streamdict;
+     std::string n_value = "";
+     std::string alternate_cs = "";
+-    PointerHolder<Buffer>ph;
++    std::shared_ptr<Buffer>ph;
+ 
+ #ifdef USE_LCMS1
+     size_t profile_size;
+@@ -481,7 +481,7 @@ QPDFObjectHandle embedIccProfile(QPDF &p
+     cmsSaveProfileToMem(colorProfile, buff, &profile_size);
+ 
+     // Write ICC profile buffer into PDF
+-    ph = new Buffer(buff, profile_size);  
++    ph = std::shared_ptr<Buffer>(new Buffer(buff, profile_size));  
+     iccstream = QPDFObjectHandle::newStream(&pdf, ph);
+     iccstream.replaceDict(QPDFObjectHandle::newDictionary(streamdict));
+ 
+@@ -605,7 +605,7 @@ QPDFObjectHandle getCalGrayArray(double
+  * O - std::vector of QPDFObjectHandle
+  * I - QPDF object
+  * I - number of strips per page
+- * I - std::vector of PointerHolder<Buffer> containing data for each strip
++ * I - std::vector of std::shared_ptr<Buffer> containing data for each strip
+  * I - strip width
+  * I - strip height
+  * I - color space
+@@ -613,7 +613,7 @@ QPDFObjectHandle getCalGrayArray(double
+  */
+ std::vector<QPDFObjectHandle>
+ makePclmStrips(QPDF &pdf, unsigned num_strips,
+-               std::vector< PointerHolder<Buffer> > &strip_data,
++               std::vector< std::shared_ptr<Buffer> > &strip_data,
+                std::vector<CompressionMethod> &compression_methods,
+                unsigned width, std::vector<unsigned>& strip_height, cups_cspace_t cs, unsigned bpc)
+ {
+@@ -679,7 +679,7 @@ makePclmStrips(QPDF &pdf, unsigned num_s
+         Pl_Flate pflate("pflate", &psink, Pl_Flate::a_deflate);
+         pflate.write(strip_data[i]->getBuffer(), strip_data[i]->getSize());
+         pflate.finish();
+-        ret[i].replaceStreamData(PointerHolder<Buffer>(psink.getBuffer()),
++        ret[i].replaceStreamData(std::shared_ptr<Buffer>(psink.getBuffer()),
+                               QPDFObjectHandle::newName("/FlateDecode"),QPDFObjectHandle::newNull());
+       }
+       else if (compression == RLE_DECODE)
+@@ -687,7 +687,7 @@ makePclmStrips(QPDF &pdf, unsigned num_s
+         Pl_RunLength prle("prle", &psink, Pl_RunLength::a_encode);
+         prle.write(strip_data[i]->getBuffer(),strip_data[i]->getSize());
+         prle.finish();
+-        ret[i].replaceStreamData(PointerHolder<Buffer>(psink.getBuffer()),
++        ret[i].replaceStreamData(std::shared_ptr<Buffer>(psink.getBuffer()),
+                               QPDFObjectHandle::newName("/RunLengthDecode"),QPDFObjectHandle::newNull());
+       }
+       else if (compression == DCT_DECODE)
+@@ -695,7 +695,7 @@ makePclmStrips(QPDF &pdf, unsigned num_s
+         Pl_DCT pdct("pdct", &psink, width, strip_height[i], components, color_space);
+         pdct.write(strip_data[i]->getBuffer(),strip_data[i]->getSize());
+         pdct.finish();
+-        ret[i].replaceStreamData(PointerHolder<Buffer>(psink.getBuffer()),
++        ret[i].replaceStreamData(std::shared_ptr<Buffer>(psink.getBuffer()),
+                               QPDFObjectHandle::newName("/DCTDecode"),QPDFObjectHandle::newNull());
+       }
+     }
+@@ -703,7 +703,7 @@ makePclmStrips(QPDF &pdf, unsigned num_s
+ }
+ #endif
+ 
+-QPDFObjectHandle makeImage(QPDF &pdf, PointerHolder<Buffer> page_data, unsigned width, 
++QPDFObjectHandle makeImage(QPDF &pdf, std::shared_ptr<Buffer> page_data, unsigned width, 
+                            unsigned height, std::string render_intent, cups_cspace_t cs, unsigned bpc)
+ {
+     QPDFObjectHandle ret = QPDFObjectHandle::newStream(&pdf);
+@@ -843,7 +843,7 @@ QPDFObjectHandle makeImage(QPDF &pdf, Po
+     pflate.write(page_data->getBuffer(),page_data->getSize());
+     pflate.finish();
+ 
+-    ret.replaceStreamData(PointerHolder<Buffer>(psink.getBuffer()),
++    ret.replaceStreamData(std::shared_ptr<Buffer>(psink.getBuffer()),
+                           QPDFObjectHandle::newName("/FlateDecode"),QPDFObjectHandle::newNull());
+ #else
+     ret.replaceStreamData(page_data,QPDFObjectHandle::newNull(),QPDFObjectHandle::newNull());
+@@ -857,7 +857,7 @@ void finish_page(struct pdf_info * info)
+     if (info->outformat == OUTPUT_FORMAT_PDF)
+     {
+       // Finish previous PDF Page
+-      if(!info->page_data.getPointer())
++      if(!info->page_data.get())
+           return;
+ 
+       QPDFObjectHandle image = makeImage(info->pdf, info->page_data, info->width, info->height, info->render_intent, info->color_space, info->bpc);
+@@ -874,7 +874,7 @@ void finish_page(struct pdf_info * info)
+         return;
+ 
+       for (size_t i = 0; i < info->pclm_strip_data.size(); i ++)
+-        if(!info->pclm_strip_data[i].getPointer())
++        if(!info->pclm_strip_data[i].get())
+           return;
+ 
+       std::vector<QPDFObjectHandle> strips = makePclmStrips(info->pdf, info->pclm_num_strips, info->pclm_strip_data, info->pclm_compression_method_preferred, info->width, info->pclm_strip_height, info->color_space, info->bpc);
+@@ -932,7 +932,7 @@ void finish_page(struct pdf_info * info)
+ #endif
+ 
+     // bookkeeping
+-    info->page_data = PointerHolder<Buffer>();
++    info->page_data = std::shared_ptr<Buffer>();
+ #ifdef QPDF_HAVE_PCLM
+     info->pclm_strip_data.clear();
+ #endif
+@@ -1101,12 +1101,12 @@ int add_pdf_page(struct pdf_info * info,
+             die("Page too big");
+         }
+         if (info->outformat == OUTPUT_FORMAT_PDF)
+-          info->page_data = PointerHolder<Buffer>(new Buffer(info->line_bytes*info->height));
++          info->page_data = std::shared_ptr<Buffer>(new Buffer(info->line_bytes*info->height));
+         else if (info->outformat == OUTPUT_FORMAT_PCLM)
+         {
+           // reserve space for PCLm strips
+           for (size_t i = 0; i < info->pclm_num_strips; i ++)
+-            info->pclm_strip_data[i] = PointerHolder<Buffer>(new Buffer(info->line_bytes*info->pclm_strip_height[i]));
++            info->pclm_strip_data[i] = std::shared_ptr<Buffer>(new Buffer(info->line_bytes*info->pclm_strip_height[i]));
+         }
+ 
+         QPDFObjectHandle page = QPDFObjectHandle::parse(
+diff '--color=auto' -rupN a/filter/urftopdf.cpp b/filter/urftopdf.cpp
+--- a/filter/urftopdf.cpp	2023-01-24 18:41:08.000000000 -0700
++++ b/filter/urftopdf.cpp	2025-09-05 10:09:30.535788230 -0600
+@@ -80,7 +80,7 @@ struct pdf_info
+     unsigned pixel_bytes;
+     unsigned line_bytes;
+     unsigned bpp;
+-    PointerHolder<Buffer> page_data;
++    std::shared_ptr<Buffer> page_data;
+     double page_width,page_height;
+ };
+ 
+@@ -119,7 +119,7 @@ enum ColorSpace {
+     iprintf("Created temporary file '%s'\n", tempfile_name);
+ */
+ 
+-QPDFObjectHandle makeImage(QPDF &pdf, PointerHolder<Buffer> page_data, unsigned width, unsigned height, ColorSpace cs, unsigned bpc)
++QPDFObjectHandle makeImage(QPDF &pdf, std::shared_ptr<Buffer> page_data, unsigned width, unsigned height, ColorSpace cs, unsigned bpc)
+ {
+     QPDFObjectHandle ret = QPDFObjectHandle::newStream(&pdf);
+ 
+@@ -153,7 +153,7 @@ QPDFObjectHandle makeImage(QPDF &pdf, Po
+ 
+ //    /Filter /FlateDecode
+ //    /DecodeParms  [<</Predictor 1 /Colors 1[3] /BitsPerComponent $bits /Columns $x>>]  ??
+-    ret.replaceStreamData(PointerHolder<Buffer>(psink.getBuffer()),
++    ret.replaceStreamData(std::shared_ptr<Buffer>(psink.getBuffer()),
+                           QPDFObjectHandle::newName("/FlateDecode"),QPDFObjectHandle::newNull());
+ #else
+     ret.replaceStreamData(page_data,QPDFObjectHandle::newNull(),QPDFObjectHandle::newNull());
+@@ -182,7 +182,7 @@ void finish_page(struct pdf_info * info)
+     info->page.getKey("/Contents").replaceStreamData(content,QPDFObjectHandle::newNull(),QPDFObjectHandle::newNull());
+ 
+     // bookkeeping
+-    info->page_data = PointerHolder<Buffer>();
++    info->page_data = std::shared_ptr<Buffer>();
+ }
+ 
+ int add_pdf_page(struct pdf_info * info, int pagen, unsigned width, unsigned height, int bpp, unsigned dpi)
+@@ -199,7 +199,7 @@ int add_pdf_page(struct pdf_info * info,
+         if (info->height > (std::numeric_limits<unsigned>::max() / info->line_bytes)) {
+             die("Page too big");
+         }
+-        info->page_data = PointerHolder<Buffer>(new Buffer(info->line_bytes*info->height));
++        info->page_data = std::shared_ptr<Buffer>(new Buffer(info->line_bytes*info->height));
+ 
+         QPDFObjectHandle page = QPDFObjectHandle::parse(
+             "<<"
