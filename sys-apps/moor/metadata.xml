@@ -6,6 +6,6 @@
 		<name>Sam James</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">walles/moar</remote-id>
+		<remote-id type="github">walles/moor</remote-id>
 	</upstream>
 </pkgmetadata>

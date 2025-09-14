@@ -2,3 +2,4 @@ move dev-python/pixelmatch-py dev-python/pixelmatch
 move app-text/qtikz app-text/ktikz
 move llvm-core/clang-runtime llvm-runtimes/clang-runtime
 slotmove media-libs/glycin-loaders 0 1
+move sys-apps/moar sys-apps/moor
