@@ -37,11 +37,12 @@ PATCHES=(
 	"${FILESDIR}"/0001-modern-C-fix-for-implicit-int.patch
 	"${FILESDIR}"/xsb-4.0.0-gcc14-build-fix.patch
 	"${FILESDIR}"/xsb-4.0.0-gcc14-sql.patch
+	"${FILESDIR}"/xsb-4.0.0-ld-typo.patch
 )
 
 src_prepare() {
 	default
-	cd "${S}"/build
+	cd "${S}"/build || die
 	eautoconf
 
 	if use mariadb ; then
@@ -63,7 +64,7 @@ src_configure() {
 	append-flags -fno-strict-aliasing
 	filter-lto
 
-	cd "${S}"/build
+	cd "${S}"/build || die
 
 	econf \
 		--prefix=/usr/$(get_libdir) \
@@ -76,42 +77,42 @@ src_configure() {
 		$(use_enable debug)
 
 	if use curl ; then
-		cd "${S}"/packages/curl
+		cd "${S}"/packages/curl || die
 		econf
 	fi
 
 	if use mysql || use mariadb ; then
 		local impl=$(usex mariadb mariadb mysql)
-		cd "${S}"/packages/dbdrivers/mysql
+		cd "${S}"/packages/dbdrivers/mysql || die
 		econf \
 			--with-mysql-incdir=/usr/include/${impl}
 	fi
 
 	if use odbc ; then
-		cd "${S}"/packages/dbdrivers/odbc
+		cd "${S}"/packages/dbdrivers/odbc || die
 		econf
 	fi
 
 	if use pcre ; then
-		cd "${S}"/packages/pcre
+		cd "${S}"/packages/pcre || die
 		econf
 	fi
 
 	if use xml ; then
-		cd "${S}"/packages/xpath
+		cd "${S}"/packages/xpath || die
 		econf
 	fi
 }
 
 src_compile() {
-	cd "${S}"/build
+	cd "${S}"/build || die
 
 	default
 
 	# All XSB Packages are compiled using a single Prolog engine.
 	# Consequently they must all be compiled using a single make job.
 
-	cd "${S}"/packages
+	cd "${S}"/packages || die
 	rm -f *.xwam
 	emake -j1
 
@@ -137,13 +138,13 @@ src_compile() {
 }
 
 src_install() {
-	cd "${S}"/build
+	cd "${S}"/build || die
 	default
 
 	local XSB_INSTALL_DIR=/usr/$(get_libdir)/xsb-${PV}
 	dosym ${XSB_INSTALL_DIR}/bin/xsb /usr/bin/xsb
 
-	cd "${S}"/packages
+	cd "${S}"/packages || die
 	local PACKAGES=${XSB_INSTALL_DIR}/packages
 	insinto ${PACKAGES}
 	doins *.xwam
@@ -220,6 +221,6 @@ src_install() {
 		doins pcre/cc/*.H
 	fi
 
-	cd "${S}"
+	cd "${S}" || die
 	dodoc FAQ README
 }
