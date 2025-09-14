@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit meson
+PYTHON_COMPAT=( python3_{11..14} )
+inherit meson python-any-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/virglrenderer.git"
@@ -36,6 +37,7 @@ DEPEND="
 	${RDEPEND}
 	sys-kernel/linux-headers
 "
+BDEPEND="${PYTHON_DEPS}"
 
 PATCHES=(
 	# ALready in main, can be dropped in newer versions
