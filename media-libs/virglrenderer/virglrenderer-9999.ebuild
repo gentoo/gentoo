@@ -37,7 +37,16 @@ DEPEND="
 	${RDEPEND}
 	sys-kernel/linux-headers
 "
-BDEPEND="${PYTHON_DEPS}"
+BDEPEND="
+	${PYTHON_DEPS}
+	$(python_gen_any_dep "
+		dev-python/pyyaml[\${PYTHON_USEDEP}]
+	")
+"
+
+python_check_deps() {
+	python_has_version -b "dev-python/pyyaml[${PYTHON_USEDEP}]" || return 1
+}
 
 src_configure() {
 	local -a gpus=()
