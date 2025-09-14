@@ -32,7 +32,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	test? ( dev-util/gdbus-codegen )
+	test? (
+		dev-util/gdbus-codegen
+		dev-util/glib-utils
+	)
 "
 RESTRICT="!test? ( test )"
 
