@@ -125,10 +125,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If you are upgrading from a previous version, you need to update the database version."
-	elog "Please, create the running directory and give write permission to the database user"
-	elog "then run gvmd as the gvm user with --migrate option:"
-	elog "~# mkdir /run/gvmd"
-	elog "~# setfacl -m u:gvm:rwx /run/gvmd/"
-	elog "~# sudo -u gvm gvmd --migrate"
+	if [[ ${REPLACING_VERSIONS} ]]; then
+		elog "If you are upgrading from a previous version, you need to update the database version."
+		elog "Please, create the running directory and give write permission to the database user"
+		elog "then run gvmd as the gvm user with --migrate option:"
+		elog "~# mkdir /run/gvmd"
+		elog "~# setfacl -m u:gvm:rwx /run/gvmd/"
+		elog "~# sudo -u gvm gvmd --migrate"
+	fi
 }
