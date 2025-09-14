@@ -1,0 +1,45 @@
+Sent upstream by email.
+
+Subject: [PATCH] Fix -Wl,--export-dynamic typo
+Date: Sun, 14 Sep 2025 08:24:48 +0100
+Message-ID: <743ab0056b4284bca1415fffe8cba323efeb8084.1757834688.git.sam@gentoo.org>
+--- a/autoconf/aclocal.m4
++++ b/autoconf/aclocal.m4
+@@ -617,7 +617,7 @@ M_LIB="-lm"
+ 
+ case "$host_os" in
+   *linux*|*gnu*|k*bsd*-gnu )
+-    DYNAMIC_LINK_FLAGS="-Wl,-export-dynamic"
++    DYNAMIC_LINK_FLAGS="-Wl,--export-dynamic"
+     ELF_CC="\$(CC)"
+     ELF_CFLAGS="\$(CFLAGS) \$(CPPFLAGS) -fPIC"
+     ELF_LINK="\$(CC) \$(LDFLAGS) -shared -Wl,-O1 -Wl,--version-script,\$(VERSION_SCRIPT) -Wl,-soname,\$(ELFLIB_MAJOR)"
+@@ -739,7 +739,7 @@ case "$host_os" in
+     ;;
+   *haiku* )
+     M_LIB=""
+-    DYNAMIC_LINK_FLAGS="-Wl,-export-dynamic"
++    DYNAMIC_LINK_FLAGS="-Wl,--export-dynamic"
+     ELF_CC="\$(CC)"
+     ELF_CFLAGS="\$(CFLAGS) \$(CPPFLAGS) -fPIC"
+     ELF_LINK="\$(CC) \$(LDFLAGS) -shared -Wl,-O1 -Wl,--version-script,\$(VERSION_SCRIPT) -Wl,-soname,\$(ELFLIB_MAJOR)"
+--- a/configure
++++ b/configure
+@@ -6060,7 +6060,7 @@ M_LIB="-lm"
+ 
+ case "$host_os" in
+   *linux*|*gnu*|k*bsd*-gnu )
+-    DYNAMIC_LINK_FLAGS="-Wl,-export-dynamic"
++    DYNAMIC_LINK_FLAGS="-Wl,--export-dynamic"
+     ELF_CC="\$(CC)"
+     ELF_CFLAGS="\$(CFLAGS) \$(CPPFLAGS) -fPIC"
+     ELF_LINK="\$(CC) \$(LDFLAGS) -shared -Wl,-O1 -Wl,--version-script,\$(VERSION_SCRIPT) -Wl,-soname,\$(ELFLIB_MAJOR)"
+@@ -6181,7 +6181,7 @@ case "$host_os" in
+     ;;
+   *haiku* )
+     M_LIB=""
+-    DYNAMIC_LINK_FLAGS="-Wl,-export-dynamic"
++    DYNAMIC_LINK_FLAGS="-Wl,--export-dynamic"
+     ELF_CC="\$(CC)"
+     ELF_CFLAGS="\$(CFLAGS) \$(CPPFLAGS) -fPIC"
+     ELF_LINK="\$(CC) \$(LDFLAGS) -shared -Wl,-O1 -Wl,--version-script,\$(VERSION_SCRIPT) -Wl,-soname,\$(ELFLIB_MAJOR)"
