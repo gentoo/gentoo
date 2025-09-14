@@ -31,6 +31,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? (
 		app-alternatives/cpio
+		dev-debug/gdb
 		sys-devel/dwz
 	)
 	verify-sig? (
