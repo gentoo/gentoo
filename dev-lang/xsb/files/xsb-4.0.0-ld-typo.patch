@@ -1,5 +1,7 @@
 -Wl,-export-dynamic tells the linker we want an entry point of 'xport-dynamic'.
 Fix the typo accordingly.
+
+https://sourceforge.net/p/xsb/bugs/266/
 --- a/build/configure.in
 +++ b/build/configure.in
 @@ -1343,10 +1343,10 @@ else
