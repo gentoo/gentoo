@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib
+inherit libtool multilib
 
 MY_P="libopenmpt-${PV}+release.autotools"
 DESCRIPTION="libopenmpt-based command line player for tracked music files (modules)"
@@ -29,6 +29,7 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
+	elibtoolize
 
 	# Normally libopenmpt is built alongside openmpt123. Avoid the
 	# internal dependency and link it externally.
