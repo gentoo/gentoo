@@ -1,0 +1,29 @@
+From 659ef0c02068d76d82622875e413aa362407b677 Mon Sep 17 00:00:00 2001
+From: Thomas Beierlein <tomjbe@gentoo.org>
+Date: Mon, 15 Sep 2025 08:27:30 +0200
+Subject: [PATCH] Fix broken DRM decode
+
+Pick up start of currentDataPacket.ba not only once but after each
+advance() operation.
+Qt documentation states that an address of a QByteArray obtained by
+ba.data() gets invalidaded by an remove() actioni (part of advance() ).
+With Qt5 it seems to work by accident, but fails with Qt6.
+---
+ src/drmrx/sourcedecoder.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drmrx/sourcedecoder.cpp b/drmrx/sourcedecoder.cpp
+index 1605d67..35039cc 100644
+--- a/drmrx/sourcedecoder.cpp
++++ b/drmrx/sourcedecoder.cpp
+@@ -342,6 +342,7 @@ bool sourceDecoder::addHeaderSegment()
+ 
+   while(currentDataPacket.ba.count())
+     {
++      dataPtr=(unsigned char *)currentDataPacket.ba.data();
+       PLI=dataPtr[0]>>6;
+       paramID=dataPtr[0]&0x3F;
+       switch (PLI)
+-- 
+2.49.1
+
