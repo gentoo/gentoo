@@ -5,9 +5,6 @@ EAPI=8
 
 LLVM_COMPAT=( {16..20} )
 
-CRATES="
-"
-
 RUST_MIN_VER="1.82.0"
 
 inherit eapi9-ver llvm-r2 linux-info cargo rust-toolchain toolchain-funcs meson
