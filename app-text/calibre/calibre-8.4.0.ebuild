@@ -224,7 +224,7 @@ src_install() {
 	#    raise ValueError, 'unknown locale: %s' % localename
 	#ValueError: unknown locale: 46
 	export -n LANG LANGUAGE ${!LC_*}
-	export LC_ALL=C.utf8 # bug #709682
+	export LC_ALL=C.UTF-8 # bug #709682
 
 	# Bug #295672 - Avoid sandbox violation in ~/.config by forcing
 	# variables to point to our fake temporary $HOME.
