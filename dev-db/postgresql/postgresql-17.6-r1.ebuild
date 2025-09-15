@@ -4,12 +4,12 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {15..20} )
+LLVM_COMPAT=( {15..21} )
 LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
-KEYWORDS=""
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 SLOT=$(ver_cut 1)
 
@@ -22,9 +22,9 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="debug doc +icu kerberos ldap llvm +lz4 +numa nls oauth pam perl python
-	+readline selinux +server systemd ssl static-libs tcl uuid +uring
-	xml zlib +zstd"
+IUSE="debug doc +icu kerberos ldap llvm +lz4 nls pam perl python
+	  +readline selinux +server systemd ssl static-libs tcl uuid xml
+	  zlib +zstd"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -42,8 +42,6 @@ llvm? ( $(llvm_gen_dep '
 	llvm-core/llvm:${LLVM_SLOT}
 	') )
 lz4? ( app-arch/lz4 )
-numa? ( sys-process/numactl )
-oauth? ( net-misc/curl[adns] )
 pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
@@ -51,8 +49,7 @@ readline? ( sys-libs/readline:0= )
 server? ( systemd? ( sys-apps/systemd ) )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
-uring? ( sys-libs/liburing )
-xml? ( dev-libs/libxml2:= dev-libs/libxslt )
+xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
 zstd? ( app-arch/zstd )
 "
@@ -101,6 +98,8 @@ dev-libs/libxml2
 dev-libs/libxslt
 "
 
+PATCHES=( "${FILESDIR}"/postgresql-17.6-llvm21.patch )
+
 pkg_setup() {
 	use llvm && llvm-r1_pkg_setup
 
@@ -127,6 +126,7 @@ src_prepare() {
 			die 'PGSQL_PAM_SERVICE rename failed.'
 	fi
 
+	default
 	eapply_user
 }
 
@@ -169,8 +169,6 @@ src_configure() {
 		$(use_with ldap) \
 		$(use_with llvm) \
 		$(use_with lz4) \
-		$(use_with numa libnuma) \
-		$(use_with oauth libcurl) \
 		$(use_with pam) \
 		$(use_with perl) \
 		$(use_with python) \
@@ -178,7 +176,6 @@ src_configure() {
 		$(use_with ssl openssl) \
 		$(usex server "$(use_with systemd)" '--without-systemd') \
 		$(use_with tcl) \
-		$(use_with uring liburing) \
 		${uuid_config} \
 		$(use_with xml libxml) \
 		$(use_with xml libxslt) \

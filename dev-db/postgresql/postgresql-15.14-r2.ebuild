@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {15..20} )
+LLVM_COMPAT=( {15..21} )
 LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
@@ -85,6 +85,8 @@ RDEPEND="${CDEPEND}
 selinux? ( sec-policy/selinux-postgresql )
 "
 
+PATCHES=( "${FILESDIR}"/postgresql-17.6-llvm21.patch )
+
 pkg_setup() {
 	use llvm && llvm-r1_pkg_setup
 
@@ -111,6 +113,7 @@ src_prepare() {
 			die 'PGSQL_PAM_SERVICE rename failed.'
 	fi
 
+	default
 	eapply_user
 }
 

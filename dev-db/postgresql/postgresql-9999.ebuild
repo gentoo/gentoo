@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-LLVM_COMPAT=( {15..20} )
+LLVM_COMPAT=( {15..21} )
 LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 meson pam python-single-r1 \
