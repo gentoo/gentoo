@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} python3_14t pypy3_11 )
 
 inherit distutils-r1
 
@@ -67,6 +67,7 @@ python_test() {
 		# check for bundled zstd version, fails on other system zstd
 		tests/test_module_attributes.py::TestModuleAttributes::test_version
 	)
+	local -x ZSTD_SLOW_TESTS=1
 
 	rm -rf zstandard || die
 	epytest
