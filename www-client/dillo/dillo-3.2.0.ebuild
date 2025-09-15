@@ -8,11 +8,20 @@ inherit autotools toolchain-funcs virtualx xdg-utils
 DESCRIPTION="Lean FLTK based web browser"
 HOMEPAGE="https://dillo-browser.github.io/"
 
-SRC_URI="https://github.com/dillo-browser/dillo/releases/download/v${PV}/${P}.tar.bz2"
-LICENSE="GPL-3+"
-SLOT="0"
+if [[ ${PV} == *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/dillo-browser/dillo.git"
+else
+	SRC_URI="https://github.com/dillo-browser/dillo/releases/download/v${PV}/${P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
 
-KEYWORDS="~amd64 ~x86"
+	PATCHES=(
+		"${FILESDIR}/dillo-3.2.0-mbedtls-3.patch"
+	)
+fi
+
+LICENSE="GPL-3"
+SLOT="0"
 IUSE="debug doc +gif +jpeg mbedtls +png +ssl +openssl +xembed"
 REQUIRED_USE="
 	ssl? ( || ( openssl mbedtls ) )
@@ -46,10 +55,6 @@ BDEPEND="
 
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
 
-PATCHES=(
-	"${FILESDIR}/dillo-3.2.0-mbedtls-3.patch"
-)
-
 src_prepare() {
 	default
 	eautoreconf
@@ -67,6 +72,12 @@ src_configure() {
 		$(use_enable xembed)
 		--enable-ipv6
 	)
+
+	if [[ ${PV} == *9999* ]]; then
+		myeconfargs+=(
+			--enable-svg # Vendored nanosvg dep, no point in disabling
+		)
+	fi
 
 	use mbedtls && myeconfargs+=(
 		--with-mbedtls-inc="${ESYSROOT}/usr/include/mbedtls3"

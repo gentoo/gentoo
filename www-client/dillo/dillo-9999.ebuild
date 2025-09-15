@@ -14,6 +14,10 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/dillo-browser/dillo/releases/download/v${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
+
+	PATCHES=(
+		"${FILESDIR}/dillo-3.2.0-mbedtls-3.patch"
+	)
 fi
 
 LICENSE="GPL-3"
@@ -30,25 +34,22 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( >=media-libs/libpng-1.2:= )
 	ssl? (
-		mbedtls? ( net-libs/mbedtls:0= )
+		mbedtls? ( net-libs/mbedtls:3= )
 		openssl? ( dev-libs/openssl:= )
+	)
+"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	doc? (
+		app-text/doxygen[dot]
+		app-text/texlive
 	)
 	test? (
 		media-fonts/dejavu
 		media-gfx/imagemagick[X]
 		x11-apps/xwd
 		x11-apps/xwininfo
-	)
-"
-
-DEPEND="
-	${RDEPEND}
-"
-
-BDEPEND="
-	doc? (
-		app-text/doxygen[dot]
-		app-text/texlive
+		x11-base/xorg-server[xvfb]
 	)
 "
 
@@ -69,10 +70,18 @@ src_configure() {
 		$(use_enable png)
 		$(use_enable ssl tls)
 		$(use_enable xembed)
-		--enable-svg # Vendored nanosvg dep, no point in disabling
 		--enable-ipv6
 	)
 
+	if [[ ${PV} == *9999* ]]; then
+		myeconfargs+=(
+			--enable-svg # Vendored nanosvg dep, no point in disabling
+		)
+	fi
+
+	use mbedtls && myeconfargs+=(
+		--with-mbedtls-inc="${ESYSROOT}/usr/include/mbedtls3"
+	)
 	use test && myeconfargs+=( --enable-html-tests=yes )
 
 	econf "${myeconfargs[@]}"
@@ -87,8 +96,18 @@ src_compile() {
 }
 
 src_test() {
+	# Prepare test framework (#942051)
+	local test_dir="${WORKDIR}/build-test"
+	emake DESTDIR="${test_dir}" install
+	mkdir -p "${HOME}/.dillo/" || die
+
+	# dillo expects dpid binary in homedir
+	cp "${test_dir}"/etc/dillo/* dpid/dpid "${HOME}/.dillo/" || die
+	sed -e "s|[@]libdir[@]|${test_dir}/usr/$(get_libdir)|;s|[@]EXEEXT[@]||g" \
+		dpid/dpidrc.in > "${HOME}/.dillo/dpidrc" || die
+
 	# The test suite consistently fails with -jN in portage
-	virtx emake -j1 check
+	DILLOBIN="${test_dir}/usr/bin/dillo" virtx emake -j1 check
 }
 
 src_install() {
@@ -99,8 +118,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
