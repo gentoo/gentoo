@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-15)
+# Masking due to regressions.
+# https://github.com/pyparsing/pyparsing/issues/618
+=dev-python/pyparsing-3.2.4
+
 # Conrad Kostecki <conikost@gentoo.org> (2025-09-14)
 # Replaced by >=media-libs/libv4l-1.30.1[utils], as merged by upstream.
 # Bugs #953534 and #962841.
