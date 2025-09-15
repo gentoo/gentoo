@@ -43,7 +43,7 @@ src_configure() {
 
 src_test() {
 	# Tests don't work with C
-	LC_ALL=en_US.utf8 virtx cmake_src_test
+	LC_ALL=en_US.UTF-8 virtx cmake_src_test
 }
 
 pkg_postinst() {
