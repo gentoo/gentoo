@@ -24,8 +24,8 @@ DEPEND="
 RDEPEND="
 	${RDEPEND}
 	nagios? (
-		|| ( net-analyzer/icinga net-analyzer/nagios )
 		dev-lang/perl
+		net-analyzer/nagios
 	)
 "
 
