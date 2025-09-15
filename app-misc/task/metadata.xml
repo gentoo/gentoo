@@ -9,6 +9,9 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+	<remote-id type="github">GothenburgBitFactory/taskwarrior</remote-id>
+	</upstream>
 	<use>
 		<flag name="sync">Enable "task sync" support</flag>
 	</use>
