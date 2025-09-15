@@ -27,6 +27,8 @@ src_prepare() {
 
 	cmake_src_prepare
 
+	eapply "${FILESDIR}/task-2.6.2-gcc15-cstdint-include.patch"
+
 	# don't automatically install scripts
 	sed -i '/scripts/d' CMakeLists.txt || die
 }
