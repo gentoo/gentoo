@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ src_compile() {
 
 src_test() {
 	# workaround parallel test failures
-	LC_ALL=en_US.utf8 emake -j1 test
+	LC_ALL=en_US.UTF-8 emake -j1 test
 }
 
 src_install() {

@@ -11,7 +11,7 @@
 # https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html
 #
 # Entries are single lines and contain the entity's name and an optional
-# e-mail address. Keep the list sorted (use "LC_ALL=en_US.utf-8 sort").
+# e-mail address. Keep the list sorted (use "LC_ALL=en_US.UTF-8 sort").
 #
 Eli Schwartz <eschwartz@gentoo.org>
 Michał Górny <mgorny@gentoo.org>
