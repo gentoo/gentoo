@@ -18,8 +18,10 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-libs/libfido2:=
 	dev-libs/openssl:=
-	sys-libs/pam"
+	sys-libs/pam
+"
 RDEPEND="${DEPEND}"
+BDEPEND="app-text/asciidoc"
 
 src_configure() {
 	local mycmakeargs=(
