@@ -55,7 +55,10 @@ RDEPEND="
 	x11-libs/libxshmfence
 	x11-libs/pango
 	x11-misc/xdg-utils
-	mip? ( app-crypt/libsecret )
+	mip? (
+		app-crypt/libsecret
+		|| ( dev-libs/libxml2-compat:2/2 dev-libs/libxml2:2/2 )
+	)
 	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 "
 
