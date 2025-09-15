@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,13 +21,15 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/task-2.6.2-gcc15-cstdint-include.patch"
+)
+
 src_prepare() {
 	# move test directory into source directory
 	mv "${WORKDIR}"/test "${WORKDIR}"/${P} || die
 
 	cmake_src_prepare
-
-	eapply "${FILESDIR}/task-2.6.2-gcc15-cstdint-include.patch"
 
 	# don't automatically install scripts
 	sed -i '/scripts/d' CMakeLists.txt || die
