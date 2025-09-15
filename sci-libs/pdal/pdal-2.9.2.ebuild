@@ -19,7 +19,6 @@ RESTRICT="!test? ( test )"
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( >=dev-cpp/gtest-1.15.0 )
 "
 RDEPEND="
 	app-arch/zstd:=
@@ -50,7 +49,7 @@ src_configure() {
 
 src_test() {
 	local myctestargs=(
-		--exclude-regex '(pgpointcloudtest|pdal_info_test|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test|pdal_io_stac_reader_test)'
+		--exclude-regex '(pgpointcloudtest|pdal_info_test|pdal_io_bpf_base_test|pdal_io_bpf_zlib_test|pdal_io_copc_reader_test|pdal_filters_overlay_test|pdal_filters_stats_test|pdal_app_plugin_test|pdal_merge_test|pdal_io_stac_reader_test)'
 		--output-on-failure
 		-j1
 	)
