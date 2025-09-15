@@ -8,6 +8,8 @@ PYTHON_COMPAT=( python3_{11..13} )
 
 QTMIN="6.7.1"
 KFMIN="6.9.0"
+LIVEPATCH="${P}a"
+
 inherit ecm python-single-r1 xdg
 
 DESCRIPTION="Distribution-independent installer framework"
@@ -15,7 +17,7 @@ HOMEPAGE="https://calamares.io https://github.com/tableflipper9/calamares"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz
 	livecd? (
 		https://github.com/calamares/calamares/compare/95aa33f...TableFlipper9:calamares:gentoo-patches-3.3.14a.patch \
-		-> ${P}-gentoo-patches.patch
+		-> ${LIVEPATCH}-gentoo-patches.patch
 	)
 "
 
@@ -57,8 +59,8 @@ BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-boost-python-fix.patch
 	if use "livecd" ; then
-		cp "${DISTDIR}"/${P}-gentoo-patches.patch ${P}-gentoo-patches.patch || die
-		eapply ${P}-gentoo-patches.patch
+		cp "${DISTDIR}/${LIVEPATCH}-gentoo-patches.patch" "${LIVEPATCH}-gentoo-patches.patch" || die
+		eapply "${LIVEPATCH}-gentoo-patches.patch"
 	fi
 
 	ecm_src_prepare
