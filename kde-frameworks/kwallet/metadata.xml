@@ -10,7 +10,7 @@
 		<remote-id type="kde-invent">frameworks/kwallet</remote-id>
 	</upstream>
 	<use>
-		<flag name="minimal">Pull in required runtime components for KWallet via <pkg>kde-frameworks/kwallet</pkg></flag>
+		<flag name="minimal">Do not pull in <pkg>kde-frameworks/kwallet-runtime</pkg> runtime components</flag>
 	</use>
 	<slots>
 		<subslots>
