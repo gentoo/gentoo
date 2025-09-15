@@ -1,9 +1,9 @@
 # Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
+HOMEPAGE="https://pi-hole.net"
 DESCRIPTION="A metapackage for Pi-hole dependencies."
-
 LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
