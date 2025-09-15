@@ -174,11 +174,8 @@ src_prepare() {
 	fi
 
 	if use kerberos ; then
-		# in_dir mod_gss-${MOD_GSS} eapply "${FILESDIR}"/${PN}-1.3.6_rc4-gss-refresh-api.patch
 		in_dir mod_gss-${MOD_GSS} eapply "${FILESDIR}"/${PN}-1.3.9-gss-refresh-api.patch
-
-		# Support app-crypt/heimdal / Gentoo Bug #284853
-		sed -i -e "s/krb5_principal2principalname/_\0/" "${WORKDIR}"/mod_gss-${MOD_GSS}/mod_auth_gss.c.in || die
+		in_dir mod_gss-${MOD_GSS} eapply "${FILESDIR}"/${PN}-1.3.9-fix_heimdal.patch
 
 		# ./configure will modify files. Symlink them instead of copying
 		ln -sv "${WORKDIR}"/mod_gss-${MOD_GSS}/mod_auth_gss.c "${S}"/contrib || die
@@ -214,7 +211,7 @@ src_configure() {
 	use ifsession && m="${m}:mod_ifsession"
 	use ifversion && m="${m}:mod_ifversion"
 	if use kerberos ; then
-		in_dir mod_gss-${MOD_GSS} econf
+		in_dir mod_gss-${MOD_GSS} econf --with-krb5-config="${EPREFIX}/usr/bin/krb5-config"
 		m="${m}:mod_gss:mod_auth_gss"
 	fi
 	use ldap && m="${m}:mod_ldap"
