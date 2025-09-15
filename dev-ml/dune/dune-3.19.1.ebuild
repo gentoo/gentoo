@@ -55,14 +55,14 @@ src_compile() {
 }
 
 src_install() {
+	DOCS=( README.md CHANGES.md )
 	# OCaml generates textrels on 32-bit arches
 	if use arm || use ppc || use x86 ; then
 		export QA_TEXTRELS='.*'
 	fi
 	default
 
-	mv "${ED}"/usr/share/doc/dune "${ED}"/usr/share/doc/${PF} || die
-
+	rm -r "${ED}"/usr/share/doc/dune
 	if use emacs ; then
 		elisp-install ${PN} editor-integration/emacs/*.el{,c}
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}"
