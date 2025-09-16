@@ -9,6 +9,7 @@ DESCRIPTION="Pager designed to do the right thing without any configuration"
 HOMEPAGE="https://github.com/walles/moor"
 SRC_URI="https://github.com/walles/moor/archive/refs/tags/v${PV}.tar.gz -> moar-${PV}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/moar/moar-${PV}-deps.tar.xz"
+S="${WORKDIR}"/moar-${PV}
 
 LICENSE="BSD-2 BSD MIT"
 # Dependent licenses
