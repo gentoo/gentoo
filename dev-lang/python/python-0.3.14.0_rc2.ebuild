@@ -14,7 +14,7 @@ REAL_PV=${PV#0.}
 MY_PV=${REAL_PV/_/}
 MY_P="Python-${MY_PV%_p*}"
 PYVER="$(ver_cut 2-3)t"
-PATCHSET="python-gentoo-patches-${MY_PV}"
+PATCHSET="python-gentoo-patches-${MY_PV}_p1"
 
 DESCRIPTION="Freethreading (no-GIL) version of Python programming language"
 HOMEPAGE="
