@@ -20,7 +20,7 @@ S=${WORKDIR}/${MY_P}
 LICENSE="LGPL-3+ BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
-IUSE="blis index64 mkl openblas openmp tbb test"
+IUSE="blis index64 mkl openblas openmp system-blas tbb test"
 RESTRICT="!test? ( test )"
 
 # flexiblas only supports gnu-openmp using clang/gcc
@@ -32,9 +32,15 @@ DEPEND="
 		openmp? ( sci-libs/mkl[gnu-openmp] )
 	)
 	openblas? ( sci-libs/openblas:=[index64(-)?] )
+	system-blas? ( sci-libs/lapack[flexiblas(-)] )
 "
 RDEPEND="
 	${DEPEND}
+	system-blas? (
+		!app-eselect/eselect-blas
+		!app-eselect/eselect-cblas
+		!app-eselect/eselect-lapack
+	)
 "
 
 pkg_pretend() {
@@ -96,24 +102,46 @@ src_configure() {
 		-DEXTRA="${extra// /;}"
 		# respect CFLAGS
 		-DLTO=OFF
-		# use system sci-libs/lapack
-		-DSYS_BLAS_LIBRARY="${libdir}/libblas.so"
-		-DSYS_LAPACK_LIBRARY="${libdir}/liblapack.so"
 		# these are used only with -DEXTRA
 		-Dblis_LIBRARY="${libdir}/libblis.so"
 		-Dopenblas_LIBRARY="${libdir}/libopenblas.so"
 	)
+
+	# use system sci-libs/lapack
+	if use system-blas; then
+		# this is sci-libs/lapack[flexiblas] install
+		mycmakeargs+=(
+			-DSYS_BLAS_LIBRARY="${libdir}/libblas-reference.so"
+			-DSYS_LAPACK_LIBRARY="${libdir}/liblapack-reference.so"
+		)
+	else
+		mycmakeargs+=(
+			-DSYS_BLAS_LIBRARY="${libdir}/libblas.so"
+			-DSYS_LAPACK_LIBRARY="${libdir}/liblapack.so"
+		)
+	fi
 
 	cmake_src_configure
 
 	if use index64; then
 		mycmakeargs+=(
 			-DINTEGER8=ON
-			-DSYS_BLAS_LIBRARY="${libdir}/libblas64.so"
-			-DSYS_LAPACK_LIBRARY="${libdir}/liblapack64.so"
 			-Dblis_LIBRARY="${libdir}/libblis64.so"
 			-Dopenblas_LIBRARY="${libdir}/libopenblas64.so"
 		)
+
+		if use system-blas; then
+			# this is sci-libs/lapack[flexiblas] install
+			mycmakeargs+=(
+				-DSYS_BLAS_LIBRARY="${libdir}/libblas64-reference.so"
+				-DSYS_LAPACK_LIBRARY="${libdir}/liblapack64-reference.so"
+			)
+		else
+			mycmakeargs+=(
+				-DSYS_BLAS_LIBRARY="${libdir}/libblas64.so"
+				-DSYS_LAPACK_LIBRARY="${libdir}/liblapack64.so"
+			)
+		fi
 
 		BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_configure
 	fi
@@ -199,7 +227,44 @@ src_install() {
 	cmake_src_install
 	use index64 && BUILD_DIR=${BUILD_DIR}-ilp64 cmake_src_install
 
-	# verify built backends
+	# Verify built backends.
 	verify_backends flexiblas "${BACKENDS[@]}"
 	use index64 && verify_backends flexiblas64 "${BACKENDS_ILP64[@]}"
+
+	# Install symlinks for system BLAS / LAPACK use.
+	if use system-blas; then
+		local libdir="/usr/$(get_libdir)"
+		local fn suffix
+		for fn in cblas.h lapack.h lapacke{,_config,_mangling,_utils}.h; do
+			dosym "flexiblas/${fn}" "/usr/include/${fn}"
+		done
+
+		for suffix in '' $(usev index64 64); do
+			for fn in blas cblas lapack lapacke; do
+				dosym "libflexiblas${suffix}.so.3" \
+					"${libdir}/lib${fn}${suffix}.so.3"
+				dosym "libflexiblas${suffix}.so" \
+					"${libdir}/lib${fn}${suffix}.so"
+				dosym "flexiblas${suffix}.pc" \
+					"${libdir}/pkgconfig/${fn}${suffix}.pc"
+			done
+		done
+	fi
+}
+
+pkg_postinst() {
+	if use system-blas; then
+		# eselect-{blas,lapack} doesn't clean up its configs
+		local prev_opt=$(shopt -p nullglob)
+		shopt -s nullglob
+		local files=(
+			"${EROOT}"/etc/ld.so.conf.d/81-blas-*.conf
+			"${EROOT}"/etc/ld.so.conf.d/82-lapack-*.conf
+		)
+		${prev_opt}
+
+		if [[ ${files[@]} ]]; then
+			rm -v "${files[@]}"
+		fi
+	fi
 }

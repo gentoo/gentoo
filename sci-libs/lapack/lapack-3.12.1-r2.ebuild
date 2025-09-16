@@ -14,7 +14,8 @@ SRC_URI="https://github.com/Reference-LAPACK/lapack/archive/v${PV}.tar.gz -> ${P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos"
-IUSE="lapacke deprecated doc eselect-ldso index64 test"
+IUSE="flexiblas lapacke deprecated doc eselect-ldso index64 test"
+REQUIRED_USE="flexiblas? ( deprecated !eselect-ldso )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -31,6 +32,11 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( ${PYTHON_DEPS} )
 "
+PDEPEND="
+	flexiblas? (
+		sci-libs/flexiblas[system-blas(-)]
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.12.1-broken-flow.patch
@@ -42,6 +48,15 @@ PATCHES=(
 pkg_setup() {
 	fortran-2_pkg_setup
 	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	cmake_src_prepare
+
+	if use flexiblas; then
+		# install libraries renamed to '*-reference'
+		sed -i -e '/set([A-Z]*LIB/s:"):-reference"):' CMakeLists.txt || die
+	fi
 }
 
 src_configure() {
@@ -58,6 +73,11 @@ src_configure() {
 		# Breaks cross
 		-DTEST_FORTRAN_COMPILER=OFF
 	)
+	if use flexiblas; then
+		mycmakeargs+=(
+			-DCMAKE_INSTALL_INCLUDEDIR=include/lapack-reference
+		)
+	fi
 
 	cmake_src_configure
 
