@@ -273,7 +273,6 @@ sci-libs/ViSP
 # Dead upstream, based on Qt5, hardware obsolete. Removal on 2025-09-16.
 # Bugs #954122, #955638, #957411, #957589, #957590
 app-crypt/nitrokey-app
-app-crypt/libnitrokey
 
 # Hans de Graaff <graaff@gentoo.org> (2025-08-08)
 # ruby-openid fails tests and is archived upstream. Last release 6 years
