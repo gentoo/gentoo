@@ -11,7 +11,7 @@ SRC_URI="https://github.com/canonical/snapd-glib/archive/refs/tags/${PV}.tar.gz 
 
 LICENSE="LGPL-3"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="doc introspection qml qt6 vala"
 REQUIRED_USE="
