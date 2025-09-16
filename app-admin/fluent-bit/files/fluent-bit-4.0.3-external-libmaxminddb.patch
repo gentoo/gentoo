@@ -1,0 +1,13 @@
+--- fluent-bit-4.0.3/plugins/filter_geoip2/CMakeLists.txt.o	2025-06-25 16:14:56.482210741 +0200
++++ fluent-bit-4.0.3/plugins/filter_geoip2/CMakeLists.txt	2025-06-25 16:15:02.852218701 +0200
+@@ -10,8 +10,8 @@
+ #
+ option(BUILD_TESTING "" OFF)
+ set(CMAKE_C_FLAGS "-std=gnu99 ${CMAKE_C_FLAGS}")
+-add_subdirectory(libmaxminddb-1.12.2 EXCLUDE_FROM_ALL)
+-include_directories(libmaxminddb/include/)
++#add_subdirectory(libmaxminddb-1.12.2 EXCLUDE_FROM_ALL)
++#include_directories(libmaxminddb/include/)
+ 
+ set(src
+   geoip2.c)
