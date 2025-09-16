@@ -1,9 +1,9 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-single-r1 flag-o-matic autotools optfeature bash-completion-r1
 
@@ -25,19 +25,18 @@ else
 fi
 
 LICENSE="GPL-3+"
-SLOT="3"
+SLOT="4/${PV}"
 IUSE="+hepmc3 hepmc2 +zlib +python"
 REQUIRED_USE="
 	^^ ( hepmc3 hepmc2 )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-# <sci-physics/hepmc-3.2.7 due to https://gitlab.com/hepcedar/rivet/-/issues/414
 RDEPEND="
 	>=sci-physics/fastjet-3.4.0[plugins]
 	>=sci-physics/fastjet-contrib-1.048
 	hepmc2? ( sci-physics/hepmc:2=[-cm(-),gev(+)] )
-	hepmc3? ( <sci-physics/hepmc-3.2.7:3=[-cm(-),gev(+)] )
+	hepmc3? ( <sci-physics/hepmc-3.3.0:3=[-cm(-),gev(+)] )
 
 	sci-libs/gsl
 	zlib? ( sys-libs/zlib )
@@ -53,6 +52,7 @@ RDEPEND="
 		>=sci-physics/yoda-1.9.8
 		<sci-physics/yoda-2
 	)
+	!sci-physics/rivet:3
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -67,7 +67,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.6-binreloc.patch
 	"${FILESDIR}"/${PN}-3.1.9-pythontests.patch
-	"${FILESDIR}"/${PN}-3.1.10-ref_cin.patch # https://gitlab.com/hepcedar/rivet/-/merge_requests/844
 )
 
 pkg_setup() {

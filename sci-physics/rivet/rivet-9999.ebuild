@@ -26,7 +26,7 @@ else
 fi
 
 LICENSE="GPL-3+"
-SLOT="4"
+SLOT="4/${PV}"
 IUSE="+zlib +python +highfive"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -51,7 +51,7 @@ RDEPEND="
 		')
 		>=sci-physics/yoda-2.1[${PYTHON_SINGLE_USEDEP}]
 	)
-	>=sci-physics/yoda-2.1[highfive(-)?]
+	>=sci-physics/yoda-2.1:=[highfive(-)?]
 	!sci-physics/rivet:3
 "
 DEPEND="${RDEPEND}"
