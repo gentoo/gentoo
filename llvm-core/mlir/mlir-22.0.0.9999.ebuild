@@ -194,7 +194,10 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	local known_xfail=()
+	local known_xfail=(
+		# https://github.com/llvm/llvm-project/pull/157885#issuecomment-3288095032
+		mlir-pdll-lsp-server/view-output.test
+	)
 
 	case ${ABI} in
 		arm|ppc|x86)
