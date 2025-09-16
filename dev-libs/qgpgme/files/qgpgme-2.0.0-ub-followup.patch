@@ -1,0 +1,42 @@
+https://bugs.gentoo.org/962891
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgmeqt.git;a=commit;h=86d58c452e0028ea3b59a6ceac7060ece99b4fd2
+
+From 86d58c452e0028ea3b59a6ceac7060ece99b4fd2 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 14 Jul 2025 12:24:09 +0200
+Subject: [PATCH] Improve the fix for the DN parser
+
+* src/dn.cpp (parse_dn_part): Set end of hex string to size of string if
+no non-hex characters were found. Remove special-casing of remove_prefix
+call.
+--
+---
+ src/dn.cpp | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/dn.cpp b/src/dn.cpp
+index 90632cc..fb64c6e 100644
+--- a/src/dn.cpp
++++ b/src/dn.cpp
+@@ -215,15 +215,14 @@ static std::pair<std::optional<std::string_view>, std::pair<std::string, std::st
+         /* hexstring */
+         stringv.remove_prefix(1);
+         auto endHex = stringv.find_first_not_of("1234567890abcdefABCDEF"sv);
++        if (endHex == std::string_view::npos) {
++            endHex = stringv.size();
++        }
+         auto value = parseHexString(stringv.substr(0, endHex));
+         if (!value.has_value()) {
+             return {};
+         }
+-        if (endHex == std::string_view::npos) {
+-            stringv = {};
+-        } else {
+-            stringv.remove_prefix(endHex);
+-        }
++        stringv.remove_prefix(endHex);
+         dnPair.second = value.value();
+     } else if (stringv.front() == '"') {
+         stringv.remove_prefix(1);
+-- 
+2.30.2

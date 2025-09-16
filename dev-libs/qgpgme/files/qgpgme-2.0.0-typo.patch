@@ -1,0 +1,162 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgmeqt.git;a=commit;h=dcec6832e81b7b972cf7fd85dc7c2efd5464908e
+
+From dcec6832e81b7b972cf7fd85dc7c2efd5464908e Mon Sep 17 00:00:00 2001
+From: Carl Schwan <carl.schwan@gnupg.com>
+Date: Fri, 13 Jun 2025 10:01:07 +0200
+Subject: [PATCH] Fix typo in outputIsBase64Encoded
+
+--
+* src/{qgpgmesignjob.cpp,qgpgmesignencryptjob.cpp,qgpgmeencryptjob.cpp}:
+  Replace bsse with base in outputIsBase64Encoded
+---
+ src/qgpgmeencryptjob.cpp     | 10 +++++-----
+ src/qgpgmesignencryptjob.cpp | 10 +++++-----
+ src/qgpgmesignjob.cpp        | 10 +++++-----
+ 3 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/src/qgpgmeencryptjob.cpp b/src/qgpgmeencryptjob.cpp
+index 7e15eea..041edda 100644
+--- a/src/qgpgmeencryptjob.cpp
++++ b/src/qgpgmeencryptjob.cpp
+@@ -99,7 +99,7 @@ static QGpgMEEncryptJob::result_type encrypt(Context *ctx, QThread *thread,
+         const std::weak_ptr<QIODevice> &plainText_,
+         const std::weak_ptr<QIODevice> &cipherText_,
+         const Context::EncryptionFlags eflags,
+-        bool outputIsBsse64Encoded,
++        bool outputIsBase64Encoded,
+         Data::Encoding inputEncoding,
+         const QString &fileName)
+ {
+@@ -127,7 +127,7 @@ static QGpgMEEncryptJob::result_type encrypt(Context *ctx, QThread *thread,
+         QGpgME::QByteArrayDataProvider out;
+         Data outdata(&out);
+ 
+-        if (outputIsBsse64Encoded) {
++        if (outputIsBase64Encoded) {
+             outdata.setEncoding(Data::Base64Encoding);
+         }
+ 
+@@ -139,7 +139,7 @@ static QGpgMEEncryptJob::result_type encrypt(Context *ctx, QThread *thread,
+         QGpgME::QIODeviceDataProvider out(cipherText);
+         Data outdata(&out);
+ 
+-        if (outputIsBsse64Encoded) {
++        if (outputIsBase64Encoded) {
+             outdata.setEncoding(Data::Base64Encoding);
+         }
+ 
+@@ -151,14 +151,14 @@ static QGpgMEEncryptJob::result_type encrypt(Context *ctx, QThread *thread,
+ 
+ }
+ 
+-static QGpgMEEncryptJob::result_type encrypt_qba(Context *ctx, const std::vector<Key> &recipients, const QByteArray &plainText, const Context::EncryptionFlags eflags, bool outputIsBsse64Encoded, Data::Encoding inputEncoding, const QString &fileName)
++static QGpgMEEncryptJob::result_type encrypt_qba(Context *ctx, const std::vector<Key> &recipients, const QByteArray &plainText, const Context::EncryptionFlags eflags, bool outputIsBase64Encoded, Data::Encoding inputEncoding, const QString &fileName)
+ {
+     const std::shared_ptr<QBuffer> buffer(new QBuffer);
+     buffer->setData(plainText);
+     if (!buffer->open(QIODevice::ReadOnly)) {
+         assert(!"This should never happen: QBuffer::open() failed");
+     }
+-    return encrypt(ctx, nullptr, recipients, buffer, std::shared_ptr<QIODevice>(), eflags, outputIsBsse64Encoded, inputEncoding, fileName);
++    return encrypt(ctx, nullptr, recipients, buffer, std::shared_ptr<QIODevice>(), eflags, outputIsBase64Encoded, inputEncoding, fileName);
+ }
+ 
+ static QGpgMEEncryptJob::result_type encrypt_to_filename(Context *ctx,
+diff --git a/src/qgpgmesignencryptjob.cpp b/src/qgpgmesignencryptjob.cpp
+index 769a078..65159f0 100644
+--- a/src/qgpgmesignencryptjob.cpp
++++ b/src/qgpgmesignencryptjob.cpp
+@@ -97,7 +97,7 @@ void QGpgMESignEncryptJob::setOutputIsBase64Encoded(bool on)
+ 
+ static QGpgMESignEncryptJob::result_type sign_encrypt(Context *ctx, QThread *thread, const std::vector<Key> &signers,
+                                                       const std::vector<Key> &recipients, const std::weak_ptr<QIODevice> &plainText_,
+-                                                      const std::weak_ptr<QIODevice> &cipherText_, const Context::EncryptionFlags eflags, bool outputIsBsse64Encoded, const QString &fileName)
++                                                      const std::weak_ptr<QIODevice> &cipherText_, const Context::EncryptionFlags eflags, bool outputIsBase64Encoded, const QString &fileName)
+ {
+     const std::shared_ptr<QIODevice> &plainText = plainText_.lock();
+     const std::shared_ptr<QIODevice> &cipherText = cipherText_.lock();
+@@ -129,7 +129,7 @@ static QGpgMESignEncryptJob::result_type sign_encrypt(Context *ctx, QThread *thr
+         QGpgME::QByteArrayDataProvider out;
+         Data outdata(&out);
+ 
+-        if (outputIsBsse64Encoded) {
++        if (outputIsBase64Encoded) {
+             outdata.setEncoding(Data::Base64Encoding);
+         }
+ 
+@@ -141,7 +141,7 @@ static QGpgMESignEncryptJob::result_type sign_encrypt(Context *ctx, QThread *thr
+         QGpgME::QIODeviceDataProvider out(cipherText);
+         Data outdata(&out);
+ 
+-        if (outputIsBsse64Encoded) {
++        if (outputIsBase64Encoded) {
+             outdata.setEncoding(Data::Base64Encoding);
+         }
+ 
+@@ -154,14 +154,14 @@ static QGpgMESignEncryptJob::result_type sign_encrypt(Context *ctx, QThread *thr
+ }
+ 
+ static QGpgMESignEncryptJob::result_type sign_encrypt_qba(Context *ctx, const std::vector<Key> &signers,
+-                                                          const std::vector<Key> &recipients, const QByteArray &plainText, const Context::EncryptionFlags eflags, bool outputIsBsse64Encoded, const QString &fileName)
++                                                          const std::vector<Key> &recipients, const QByteArray &plainText, const Context::EncryptionFlags eflags, bool outputIsBase64Encoded, const QString &fileName)
+ {
+     const std::shared_ptr<QBuffer> buffer(new QBuffer);
+     buffer->setData(plainText);
+     if (!buffer->open(QIODevice::ReadOnly)) {
+         assert(!"This should never happen: QBuffer::open() failed");
+     }
+-    return sign_encrypt(ctx, nullptr, signers, recipients, buffer, std::shared_ptr<QIODevice>(), eflags, outputIsBsse64Encoded, fileName);
++    return sign_encrypt(ctx, nullptr, signers, recipients, buffer, std::shared_ptr<QIODevice>(), eflags, outputIsBase64Encoded, fileName);
+ }
+ 
+ static QGpgMESignEncryptJob::result_type sign_encrypt_to_filename(Context *ctx,
+diff --git a/src/qgpgmesignjob.cpp b/src/qgpgmesignjob.cpp
+index f94044b..29ff35f 100644
+--- a/src/qgpgmesignjob.cpp
++++ b/src/qgpgmesignjob.cpp
+@@ -97,7 +97,7 @@ static QGpgMESignJob::result_type sign(Context *ctx, QThread *thread,
+                                        const std::weak_ptr<QIODevice> &plainText_,
+                                        const std::weak_ptr<QIODevice> &signature_,
+                                        SignatureMode mode,
+-                                       bool outputIsBsse64Encoded)
++                                       bool outputIsBase64Encoded)
+ {
+ 
+     const std::shared_ptr<QIODevice> plainText = plainText_.lock();
+@@ -125,7 +125,7 @@ static QGpgMESignJob::result_type sign(Context *ctx, QThread *thread,
+         QGpgME::QByteArrayDataProvider out;
+         Data outdata(&out);
+ 
+-        if (outputIsBsse64Encoded) {
++        if (outputIsBase64Encoded) {
+             outdata.setEncoding(Data::Base64Encoding);
+         }
+ 
+@@ -137,7 +137,7 @@ static QGpgMESignJob::result_type sign(Context *ctx, QThread *thread,
+         QGpgME::QIODeviceDataProvider out(signature);
+         Data outdata(&out);
+ 
+-        if (outputIsBsse64Encoded) {
++        if (outputIsBase64Encoded) {
+             outdata.setEncoding(Data::Base64Encoding);
+         }
+ 
+@@ -153,14 +153,14 @@ static QGpgMESignJob::result_type sign_qba(Context *ctx,
+         const std::vector<Key> &signers,
+         const QByteArray &plainText,
+         SignatureMode mode,
+-        bool outputIsBsse64Encoded)
++        bool outputIsBase64Encoded)
+ {
+     const std::shared_ptr<QBuffer> buffer(new QBuffer);
+     buffer->setData(plainText);
+     if (!buffer->open(QIODevice::ReadOnly)) {
+         assert(!"This should never happen: QBuffer::open() failed");
+     }
+-    return sign(ctx, nullptr, signers, buffer, std::shared_ptr<QIODevice>(), mode, outputIsBsse64Encoded);
++    return sign(ctx, nullptr, signers, buffer, std::shared_ptr<QIODevice>(), mode, outputIsBase64Encoded);
+ }
+ 
+ static QGpgMESignJob::result_type sign_to_filename(Context *ctx,
+-- 
+2.30.2
