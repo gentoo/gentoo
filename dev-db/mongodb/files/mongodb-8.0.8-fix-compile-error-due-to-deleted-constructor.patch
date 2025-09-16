@@ -1,0 +1,28 @@
+https://jira.mongodb.org/browse/SERVER-97048
+
+From ce43ef7147fabfa5b7f14a3040a0fc19b9228d9f Mon Sep 17 00:00:00 2001
+From: James Bronsted <32047428+jpbronsted@users.noreply.github.com>
+Date: Wed, 27 Nov 2024 17:59:39 -0500
+Subject: [PATCH] SERVER-97048 fix compile error on Clang 19 due to
+ BSONColumnBuilder default constructor (#29231)
+
+GitOrigin-RevId: 82d5ad449944292fe4cfdb7a27886439725d58de
+
+diff --git a/src/mongo/bson/util/bsoncolumnbuilder.h b/src/mongo/bson/util/bsoncolumnbuilder.h
+index d9cd20e07b7..b7d36fa1b28 100644
+--- a/src/mongo/bson/util/bsoncolumnbuilder.h
++++ b/src/mongo/bson/util/bsoncolumnbuilder.h
+@@ -282,7 +282,9 @@ struct EncodingState {
+ template <class Allocator = std::allocator<void>>
+ class BSONColumnBuilder {
+ public:
+-    explicit BSONColumnBuilder(const Allocator& = {});
++    template <typename A = Allocator>
++    BSONColumnBuilder() : BSONColumnBuilder{A{}} {}
++    explicit BSONColumnBuilder(const Allocator&);
+     explicit BSONColumnBuilder(allocator_aware::BufBuilder<Allocator>, const Allocator& = {});
+ 
+     /**
+-- 
+2.49.1
+
