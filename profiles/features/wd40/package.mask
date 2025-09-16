@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2025-09-16)
+# New version is rewritten in rust
+>=app-misc/asciinema-3.0.0
+
 # Vincent de Phily <moltonel@gmail.com> (2025-09-01)
 # Another package requiring Rust
 app-portage/emlop
