@@ -16,10 +16,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${P}"-uninitialized.patch
-	"${FILESDIR}/${P}"-cmake4.patch
-	"${FILESDIR}/${P}"-usrshare.patch
-	"${FILESDIR}/${P}"-namespace.patch
+	"${FILESDIR}"/${P}-uninit.patch
 )
 
 DOCS=( doc )
