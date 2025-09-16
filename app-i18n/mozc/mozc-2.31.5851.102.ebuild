@@ -17,6 +17,8 @@ MOZC_FCITX_HASH="f16444e45bd3c7f7a0af718f4af86ad181b6dd8b"
 ABS_VER="20250127.0"
 GTEST_VER="1.15.2"
 JUD_VER="2025-01-25"
+# sha256sum of tarball
+JUD_CHECKSUM="ebfc8681eb207f14a2c36a7a71522b1aa8a405d10ab36a83a9a024d4ce58c0ca"
 PROTO_VER="29.3"
 
 # to simplify update
@@ -42,8 +44,8 @@ SRC_URI="
 	https://github.com/bazelbuild/bazel-central-registry/archive/${BAZEL_BCR_HASH}.tar.gz
 		-> ${PN}-bcr-${BAZEL_BCR_HASH}.tar.gz
 	https://github.com/abseil/abseil-cpp/releases/download/${ABS_VER}/abseil-cpp-${ABS_VER}.tar.gz
-	https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JUD_VER}.zip
-		-> japanese-usage-dictionary-${JUD_VER}.zip
+	https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/${JUD_VER}.tar.gz
+		-> japanese-usage-dictionary-${JUD_VER}.tar.gz
 	https://github.com/protocolbuffers/protobuf/releases/download/v${PROTO_VER}/protobuf-${PROTO_VER}.zip
 	https://github.com/bazelbuild/apple_support/releases/download/1.16.0/apple_support.1.16.0.tar.gz
 	https://github.com/bazel-contrib/bazel_features/releases/download/v1.21.0/bazel_features-v1.21.0.tar.gz
@@ -138,7 +140,7 @@ src_unpack() {
 	for dep in *.{tar.gz,zip,png,svg}; do
 		ln -sfT "${DISTDIR}/${dep}" "${WORKDIR}/bazel_dist/${dep#${P}-}" || die
 	done
-	ln -sfT "${DISTDIR}"/japanese-usage-dictionary-${JUD_VER}.zip "${WORKDIR}"/bazel_dist/${JUD_VER}.zip  || die
+	ln -sfT "${DISTDIR}"/japanese-usage-dictionary-${JUD_VER}.tar.gz "${WORKDIR}"/bazel_dist/${JUD_VER}.tar.gz  || die
 	popd || die
 
 	if use fcitx5; then
@@ -163,6 +165,11 @@ mozc_icons() {
 
 src_prepare() {
 	default
+
+	# use tarball instead of zip for japanese-usage-dictionary (avoid CI failure)
+	sed -e "/^ *module_name = \"ja_usage_dict\"/,/^ *sha256/s/sha256 =.*,$/sha256 = \"${JUD_CHECKSUM}\",/" \
+		-e "\@.*github.com/hiroyuki-komatsu/japanese-usage-dictionary@s:%s.zip:%s.tar.gz:" \
+		-i MODULE.bazel || die
 
 	# patch applied by bazel with MODULE.bazel patched
 	cp "${FILESDIR}"/${PN}-2.31.5851.102-bazel_patch-fix_shebang.patch bazel/rules_python_fix_shebang.patch || die
