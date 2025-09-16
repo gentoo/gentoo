@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-08)
+# Binary bazel is compiled against glibc
+>=app-i18n/mozc-2.31.5851.102
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-28)
 # Required DT_AUXILIARY support in the dynamic linker.
 =sci-libs/blas-lapack-aux-wrappers-0
