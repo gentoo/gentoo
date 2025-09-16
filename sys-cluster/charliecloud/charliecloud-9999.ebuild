@@ -9,15 +9,15 @@ inherit autotools optfeature python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://gitlab.com/${PN}/main.git"
+	EGIT_REPO_URI="https://gitlab.com/${PN}/${PN}.git"
 else
-	SRC_URI="https://gitlab.com/${PN}/main/-/archive/v${PV}/main-v${PV}.tar.bz2 -> ${P}.tar.bz2"
+	SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2"
 	KEYWORDS="~amd64 ~x86 ~x86-linux"
-	S="${WORKDIR}/main-v${PV}"
+	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
 DESCRIPTION="Lightweight user-defined software stacks for high-performance computing"
-HOMEPAGE="https://hpc.github.io/charliecloud/"
+HOMEPAGE="https://charliecloud.io/"
 LICENSE="Apache-2.0"
 
 SLOT="0"
