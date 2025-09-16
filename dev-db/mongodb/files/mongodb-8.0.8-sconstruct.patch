@@ -1,0 +1,45 @@
+check whether "-latomic" is required for composite type, see src/mongo/bson/timestamp.h,
+otherwise the build fails with:
+
+> /usr/bin/x86_64-pc-linux-gnu-ld.bfd: build/gentoo/mongo/db/storage/wiredtiger/wiredtiger_record_store.o: in function `mongo::WiredTigerRecordStore::getEarliestOplogTimestamp(mongo::OperationContext*)':
+> /usr/lib/gcc/x86_64-pc-linux-gnu/14/include/g++-v14/bits/atomic_base.h:1002:(.text+0x7da9): undefined reference to `__atomic_compare_exchange'
+> clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+
+diff --git a/SConstruct b/SConstruct
+index 2a32456..4cfb5fd 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -5369,10 +5369,33 @@ def doConfigure(myenv):
+ 
+     conf.AddTest("CheckStdAtomic", CheckStdAtomic)
+ 
++    def CheckTimestampAtomic(context, extra_message):
++        test_body = """
++        #include <atomic>
++        struct Timestamp { unsigned int t, i; };
++        template<typename T> struct AtomicWord { std::atomic<T> v; T compareAndSwap(T e, T n) { v.compare_exchange_strong(e,n); return e; } };
++        int main() {
++            AtomicWord<Timestamp> x;
++            Timestamp a{0,0}, b{1,1};
++            x.compareAndSwap(a,b);
++            return 0;
++        }
++        """
++
++        context.Message("Checking if AtomicWord<Timestamp> works{0}... ".format(extra_message))
++
++        ret = context.TryLink(textwrap.dedent(test_body), ".cpp")
++        context.Result(ret)
++        return ret
++
++    conf.AddTest("CheckTimestampAtomic", CheckTimestampAtomic)
++
+     def check_all_atomics(extra_message=''):
+         for t in ('int64_t', 'uint64_t', 'int32_t', 'uint32_t'):
+             if not conf.CheckStdAtomic(t, extra_message):
+                 return False
++        if not conf.CheckTimestampAtomic(extra_message):
++            return False
+         return True
+ 
+     if not check_all_atomics():

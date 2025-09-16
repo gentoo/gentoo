@@ -77,6 +77,8 @@ PATCHES=(
 	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.4-scons.patch"
 	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-mozjs-remove-unused-constructor.patch"
 	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-use-tenacity.patch"
+	"${FILESDIR}/${PN}-8.0.8-sconstruct.patch"
+	"${FILESDIR}/${PN}-8.0.8-fix-compile-error-due-to-deleted-constructor.patch"
 )
 
 python_check_deps() {
