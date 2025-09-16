@@ -50,6 +50,7 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	x11-libs/libxshmfence
 	x11-libs/libXtst
 	x11-libs/pango
+	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-renderutil
