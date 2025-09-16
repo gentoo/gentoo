@@ -415,11 +415,6 @@ app-metrics/collectd collectd_plugins_mqtt
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # It's only supported on amd64, ia64, powerpc and x86
 dev-db/mysql numa
-dev-db/percona-server numa
-
-# Brian Evans <grknight@gentoo.org> (2016-08-23)
-# It's only supported on amd64
-dev-db/percona-server tokudb tokudb-backup-plugin
 
 # Brian Evans <grknight@gentoo.org> (2016-08-18)
 # Mask jdbc as most arches don't support java

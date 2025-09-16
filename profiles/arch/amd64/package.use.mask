@@ -463,11 +463,6 @@ app-metrics/collectd -collectd_plugins_mqtt
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa
-dev-db/percona-server -numa
-
-# Brian Evans <grknight@gentoo.org> (2016-08-23)
-# It's only supported on amd64
-dev-db/percona-server -tokudb -tokudb-backup-plugin
 
 # Brian Evans <grknight@gentoo.org> (2016-08-18)
 # Allow jdbc on this arch

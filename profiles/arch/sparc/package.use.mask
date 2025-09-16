@@ -751,7 +751,6 @@ x11-misc/colord argyllcms extra-print-profiles
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 jemalloc
 >=dev-db/mariadb-5.5 systemtap jemalloc
->=dev-db/percona-server-5.5 jemalloc
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit
