@@ -1,0 +1,16 @@
+Do not depend on boost_system's test build directory since it no longer exists.
+
+--- boost_1_89_0/libs/graph/test/Jamfile.v2~
++++ boost_1_89_0/libs/graph/test/Jamfile.v2
+@@ -172,11 +172,9 @@ alias graph_test_with_filesystem : :
+ alias graph_test_with_filesystem :
+     [ run all_planar_input_files_test.cpp
+         ../../filesystem/build
+-        ../../system/build
+         : $(PLANAR_INPUT_FILES) ]
+     [ run parallel_edges_loops_test.cpp
+         ../../filesystem/build
+-        ../../system/build
+         : $(PLANAR_INPUT_FILES) ]
+     ;
+ 
