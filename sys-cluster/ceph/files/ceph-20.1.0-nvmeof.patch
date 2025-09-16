@@ -1,0 +1,30 @@
+--- a/src/CMakeLists.txt	2025-09-15 15:00:18.003748368 -0000
++++ b/src/CMakeLists.txt	2025-09-15 15:04:40.923163569 -0000
+@@ -906,7 +906,7 @@
+ 
+ # NVMEOF GATEWAY MONITOR CLIENT
+ # Supported on RPM-based platforms only, depends on grpc devel libraries/tools
+-if(EXISTS "/etc/redhat-release" OR EXISTS "/etc/fedora-release")
++if(EXISTS "/etc/redhat-release" OR EXISTS "/etc/fedora-release" OR EXISTS "/etc/gentoo-release")
+   option(WITH_NVMEOF_GATEWAY_MONITOR_CLIENT "build nvmeof gateway monitor client" ON)
+ else()
+   option(WITH_NVMEOF_GATEWAY_MONITOR_CLIENT "build nvmeof gateway monitor client" OFF)
+
+
+--- a/src/CMakeLists.txt	2025-09-16 05:15:55.633004241 -0000
++++ b/src/CMakeLists.txt	2025-09-16 13:24:29.640098498 -0000
+@@ -918,6 +918,14 @@
+   # Looks for protobuf-config.cmake file installed by Protobuf's cmake installation.
+   option(protobuf_MODULE_COMPATIBLE TRUE)
+   find_package(Protobuf REQUIRED)
++  find_library (UPB_LIBRARIES NAMES upb)
++  if (UPB_LIBRARIES)
++    add_library(protobuf::libupb STATIC IMPORTED)
++    add_executable(protobuf::protoc-gen-upb IMPORTED)
++    add_executable(protobuf::protoc-gen-upbdefs IMPORTED)
++    add_executable(protobuf::protoc-gen-upb_minitable IMPORTED)
++  endif()
++
+ 
+   set(_REFLECTION grpc++_reflection)
+   if(CMAKE_CROSSCOMPILING)
