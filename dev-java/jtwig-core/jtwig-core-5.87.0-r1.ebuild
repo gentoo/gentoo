@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ DEPEND="
 		dev-java/commons-io:1
 		dev-java/commons-lang:3.6
 		dev-java/hamcrest:0
-		dev-java/mockito:0
+		dev-java/mockito:1
 	)
 "
 
@@ -58,7 +58,7 @@ JAVA_TEST_GENTOO_CLASSPATH="
 	commons-lang-3.6
 	hamcrest
 	junit-4
-	mockito
+	mockito-1
 "
 JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
