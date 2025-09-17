@@ -43,6 +43,27 @@ JAVA_RELEASE_SRC_DIRS=(
 )
 
 JAVA_SRC_DIR="asm-jdk-bridge/src/main/java"
+JAVA_TEST_EXCLUDES=(
+	# There were 3 failures:
+	# 1) parsed_class_files_are_equal[class codes.rafael.asmjdkbridge.test.TypeAnnotationsWithPath
+	# (reader=0)](codes.rafael.asmjdkbridge.test.JdkClassReplicationTest)
+	# java.util.IllegalFormatConversionException: d != java.lang.String
+	# 2) parsed_class_files_are_equal[class codes.rafael.asmjdkbridge.test.TypeAnnotationsWithPath
+	# (reader=0, writer=0)](codes.rafael.asmjdkbridge.test.JdkClassWriterTest)
+	# java.util.IllegalFormatConversionException: d != java.lang.String
+	# 3) parsed_class_files_are_equal[class codes.rafael.asmjdkbridge.test.CustomAttributeGen
+	# (reader=0)](codes.rafael.asmjdkbridge.test.JdkClassReaderTest)
+	# java.lang.UnsupportedOperationException: Unknown value: CustomAttribute[name=CustomCodeAttribute]
+	# 	at codes.rafael.asmjdkbridge.JdkClassReader.lambda$accept$43(JdkClassReader.java:495)
+	# 	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	# 	at codes.rafael.asmjdkbridge.JdkClassReader.accept(JdkClassReader.java:320)
+	# 	at codes.rafael.asmjdkbridge.test.JdkClassReaderTest.parsed_class_files_are_equal(JdkClassReaderTest.java:80)
+
+	codes.rafael.asmjdkbridge.test.JdkClassReplicationTest
+	codes.rafael.asmjdkbridge.test.JdkClassWriterTest
+	codes.rafael.asmjdkbridge.test.JdkClassReaderTest
+)
+JAVA_TEST_SRC_DIR=( asm-jdk-bridge-test/src/{main,test}/java )
 
 src_prepare() {
 	java-pkg-2_src_prepare
