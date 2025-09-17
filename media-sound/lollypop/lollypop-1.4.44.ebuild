@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="sqlite"
 inherit eapi9-ver gnome2-utils meson python-single-r1 xdg
 
@@ -14,7 +14,7 @@ SRC_URI="https://adishatz.org/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 
 IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
