@@ -1,0 +1,41 @@
+From 915d03eda5597d7f5597c5eae5635e62a639935a Mon Sep 17 00:00:00 2001
+From: Orion Poplawski <orion@nwra.com>
+Date: Fri, 7 Oct 2022 00:53:02 +0000
+Subject: [PATCH] Support for libharu 2.4
+
+https://sourceforge.net/p/mathgl/bugs/48/
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/prc.cpp | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/prc.cpp b/src/prc.cpp
+index 7b4966a..b35fa70 100644
+--- a/src/prc.cpp
++++ b/src/prc.cpp
+@@ -36,6 +36,7 @@
+ #include <hpdf.h>
+ #include <hpdf_u3d.h>
+ #include <hpdf_annotation.h>
++#include <hpdf_version.h>
+ #endif // MGL_HAVE_PDF
+ 
+ 
+@@ -959,8 +960,12 @@ void MGL_EXPORT mgl_write_prc(HMGL gr, const char *fname,const char* /*descr*/,
+ 		HPDF_U3D_SetDefault3DView(u3d, "DefaultView");
+ 
+ 		//	Create annotation
+-		annot = HPDF_Page_Create3DAnnot (page, rect, u3d );
+-//		annot = HPDF_Page_Create3DAnnot (page, rect, 0, 0, u3d, 0 );	for the new version ???
++		annot
++#if HPDF_VERSION_ID >= 20400
++		= HPDF_Page_Create3DAnnot (page, rect, HPDF_FALSE, HPDF_FALSE, u3d, NULL);
++#else
++		= HPDF_Page_Create3DAnnot (page, rect, u3d );
++#endif
+ 
+ 		//  Enable toolbar
+ 		HPDF_Dict action = (HPDF_Dict)HPDF_Dict_GetItem (annot, "3DA", HPDF_OCLASS_DICT);
+-- 
+2.51.0
+

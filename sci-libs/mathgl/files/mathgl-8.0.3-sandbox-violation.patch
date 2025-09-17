@@ -1,0 +1,35 @@
+From 1757c4f09728b8025fb6a04ebd9f45522d590d94 Mon Sep 17 00:00:00 2001
+From: Pacho Ramos <pacho@gentoo.org>
+Date: Sat, 23 Nov 2024 14:04:23 +0000
+Subject: [PATCH] Prevent sandbox violation
+
+disable update-mime-database, update-desktop-database
+
+Bug: https://bugs.gentoo.org/808713
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ udav/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/udav/CMakeLists.txt b/udav/CMakeLists.txt
+index 393bca2..c4ef21f 100644
+--- a/udav/CMakeLists.txt
++++ b/udav/CMakeLists.txt
+@@ -45,12 +45,12 @@ install(
+ )
+ install(FILES udav.png DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps/)
+ install(FILES udav_ru.qm DESTINATION ${CMAKE_INSTALL_PREFIX}/share/udav/)
+-find_program(findupddb update-desktop-database)
++find_program(findupddb true)
+ if(findupddb)
+ 	install(FILES udav.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
+ 	install(CODE "execute_process(COMMAND \"${findupddb}\" \"${CMAKE_INSTALL_PREFIX}/share/applications\")")
+ endif(findupddb)
+-find_program(findupmdb update-mime-database)
++find_program(findupmdb true)
+ if(findupmdb)
+ 	install(FILES ${CMAKE_BINARY_DIR}/udav/mgl.xml DESTINATION ${CMAKE_INSTALL_PREFIX}/share/mime/packages/)
+ 	install(CODE "execute_process(COMMAND \"${findupmdb}\" \"${CMAKE_INSTALL_PREFIX}/share/mime\")")
+-- 
+2.51.0
+
