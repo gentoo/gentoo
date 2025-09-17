@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,9 +26,9 @@ DEPEND="${CP_DEPEND}
 	dev-java/osgi-annotation:0
 	>=virtual/jdk-11:*
 	test? (
-		dev-java/asm:9
+		dev-java/asm:0
 		dev-java/easymock:2.5
-		dev-java/mockito:0
+		dev-java/mockito:1
 	)"
 
 RDEPEND="${CP_DEPEND}
@@ -41,7 +41,7 @@ JAVA_CLASSPATH_EXTRA="felix-resolver,osgi-annotation"
 JAVA_SRC_DIR="src/main/java"
 JAVA_RESOURCE_DIRS="src/main/resources"
 
-JAVA_TEST_GENTOO_CLASSPATH="asm-9,junit-4,easymock-2.5,mockito"
+JAVA_TEST_GENTOO_CLASSPATH="asm,junit-4,easymock-2.5,mockito-1"
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_prepare() {
