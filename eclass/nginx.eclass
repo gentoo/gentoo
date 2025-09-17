@@ -612,7 +612,7 @@ nginx_src_configure() {
 		conf="${conf%%-temp-path*}"
 		conf="${conf#--http-}"
 		nginx_flags+=(
-			"--http-${conf}-temp-path=${EPREFIX}/var/tmp/nginx/${conf//-/_}_temp"
+			"--http-${conf}-temp-path=${EPREFIX}/var/cache/nginx/${conf//-/_}_temp"
 		)
 	done < <(econf_ngx --help 2>/dev/null | grep -E -- '--http-([A-Za-z]+-?)+-temp-path')
 	unset conf _txt
@@ -939,11 +939,7 @@ nginx_pkg_postinst() {
 	local file
 	for file in "${NGINX_MISC_FILES[@]}"; do
 		if [[ ${file} == *.tmpfiles ]]; then
-			# NGINX wrtites to /var/tmp/nginx as root during startup, therefore
-			# we abuse tmpfiles_process to pass the '--remove' option.
-			# This is done in order to clean possibly non-empty /var/tmp/nginx
-			# directory in world-writable /var/tmp.
-			tmpfiles_process --remove "${PN}-tmp.conf"
+			tmpfiles_process "${PN}-tmp.conf"
 			break
 		fi
 	done
