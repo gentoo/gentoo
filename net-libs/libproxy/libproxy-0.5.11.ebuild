@@ -26,7 +26,7 @@ DEPEND="
 		dev-lang/duktape:=
 		net-misc/curl
 	)
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
