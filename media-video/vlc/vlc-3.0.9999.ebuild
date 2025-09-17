@@ -234,7 +234,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 	"${FILESDIR}"/${PN}-3.0.11.1-configure_lua_version.patch
 	"${FILESDIR}"/${PN}-3.0.18-drop-minizip-dep.patch
-	"${FILESDIR}"/${PN}-3.0.22-live555-fix-w-20241128.patch # git master
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
