@@ -222,7 +222,6 @@ sci-libs/orocos_kdl
 # EAPI-7 cmake.eclass straggler dev-libs/ libraries without revdeps.
 # If you need them, raise your hand by doing the necessary EAPI-8 porting.
 # Bugs #957252, #957234. Removal on 2025-09-26.
-dev-libs/libdynd
 dev-libs/libflatarray
 dev-libs/redis-ipc
 
