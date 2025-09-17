@@ -37,7 +37,7 @@ BDEPEND="
 		app-text/doxygen[dot]
 		glib? ( dev-util/gtk-doc )
 	)
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	test? (
 		${PYTHON_DEPS}
 		glib? ( $(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]') )
