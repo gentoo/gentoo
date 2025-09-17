@@ -56,11 +56,11 @@ PATCHES=(
 
 src_prepare() {
 	if ! use system-names; then
-		find "${S}" -name '*.rs' -or -name 'Cargo.toml' -print0 \
-			| xargs --null sed -r -e 's:"(sudo|visudo|su|su-l)":"\1-rs": ; s:"sudo-i":"sudo-rs-i":' -i || die
+		find "${S}" -name '*.rs' -or -name 'Cargo.toml' \
+			| xargs sed -r -e 's:"(sudo|visudo|su|su-l)":"\1-rs": ; s:"sudo-i":"sudo-rs-i":' -i || die
 	elif ! use su; then
-		find "${S}" -name '*.rs' -or -name 'Cargo.toml' -print0 \
-			| xargs --null sed -r -e 's:"(su|su-l)":"\1-rs":' -i || die
+		find "${S}" -name '*.rs' -or -name 'Cargo.toml' \
+			| xargs sed -r -e 's:"(su|su-l)":"\1-rs":' -i || die
 	fi
 
 	default
