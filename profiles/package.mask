@@ -231,7 +231,6 @@ dev-libs/redis-ipc
 # If you need them, raise your hand by doing the necessary EAPI-8 porting.
 # Bugs #957225, #957238. Removal on 2025-09-26.
 dev-cpp/cpp-hocon
-dev-libs/leatherman
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # Qt5 based and still EAPI-7, last release from 2016, broken Qt6 "support"
