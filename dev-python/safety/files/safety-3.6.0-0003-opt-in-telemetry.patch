@@ -1,0 +1,81 @@
+From 267fdf9090ee7f3906d95525465c71166d585949 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Sat, 5 Jul 2025 14:03:59 +0200
+Subject: [PATCH] make telemetry opt-in
+
+See https://github.com/pyupio/safety/pull/774
+
+Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
+---
+ safety/cli.py            | 11 ++++++-----
+ safety/scan/constants.py |  6 ++----
+ 2 files changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/safety/cli.py b/safety/cli.py
+index 6b5a86c..14d8f94 100644
+--- a/safety/cli.py
++++ b/safety/cli.py
+@@ -68,7 +68,7 @@ from safety.scan.constants import (
+     CLI_CONFIGURE_PROXY_TIMEOUT,
+     CLI_CONFIGURE_SAVE_TO_SYSTEM,
+     CLI_DEBUG_HELP,
+-    CLI_DISABLE_OPTIONAL_TELEMETRY_DATA_HELP,
++    CLI_ENABLE_OPTIONAL_TELEMETRY_DATA_HELP,
+     CLI_GENERATE_HELP,
+     CLI_GENERATE_MINIMUM_CVSS_SEVERITY,
+     CLI_GENERATE_PATH,
+@@ -218,6 +218,7 @@ def configure_logger(ctx, param, debug):
+             )
+ 
+         # Collect and log network telemetry data
++        # These metrics are not sent, only logged locally
+         network_telemetry = get_network_telemetry()
+         LOG.debug("Network telemetry: %s", network_telemetry)
+ 
+@@ -228,22 +229,22 @@ def configure_logger(ctx, param, debug):
+ @auth_options()
+ @proxy_options
+ @click.option(
+-    "--disable-optional-telemetry",
++    "--enable-optional-telemetry",
+     default=False,
+     is_flag=True,
+     show_default=True,
+-    help=CLI_DISABLE_OPTIONAL_TELEMETRY_DATA_HELP,
++    help=CLI_ENABLE_OPTIONAL_TELEMETRY_DATA_HELP,
+ )
+ @click.option("--debug", is_flag=True, help=CLI_DEBUG_HELP, callback=configure_logger)
+ @click.version_option(version=get_version())
+ @click.pass_context
+ @preprocess_args
+-def cli(ctx, debug, disable_optional_telemetry):
++def cli(ctx, debug, enable_optional_telemetry):
+     """
+     Scan and secure Python projects against package vulnerabilities. To get started navigate to a Python project and run `safety scan`.
+     """
+     SafetyContext().safety_source = "cli"
+-    telemetry = not disable_optional_telemetry
++    telemetry = enable_optional_telemetry
+     ctx.obj.config = ConfigModel(telemetry_enabled=telemetry)
+     level = logging.CRITICAL
+     if debug:
+diff --git a/safety/scan/constants.py b/safety/scan/constants.py
+index 145c0d5..1e7ffe1 100644
+--- a/safety/scan/constants.py
++++ b/safety/scan/constants.py
+@@ -90,10 +90,8 @@ CLI_DEBUG_HELP = (
+     "[bold]Example: safety --debug scan[/bold]"
+ )
+ 
+-CLI_DISABLE_OPTIONAL_TELEMETRY_DATA_HELP = (
+-    "Opt-out of sending optional telemetry data. Anonymized telemetry data will remain.\n\n"
+-    "[bold]Example: safety --disable-optional-telemetry scan[/bold]"
+-)
++CLI_ENABLE_OPTIONAL_TELEMETRY_DATA_HELP = "Opt-in to sending optional telemetry data. Anonymized telemetry data will remain.\n\n" \
++"[bold]Example: safety --enable-optional-telemetry scan[/bold]"
+ 
+ # Scan Help options
+ SCAN_POLICY_FILE_HELP = (
+-- 
+2.49.0
+
