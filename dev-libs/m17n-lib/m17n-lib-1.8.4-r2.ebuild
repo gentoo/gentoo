@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-configure.patch
+	"${FILESDIR}"/${P}-configure.patch
 	"${FILESDIR}"/${PN}-freetype.patch
 	"${FILESDIR}"/${PN}-ispell.patch
 )
