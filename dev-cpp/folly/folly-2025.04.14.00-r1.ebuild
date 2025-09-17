@@ -75,6 +75,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# bug #949607
+	filter-lto
+
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DIR="$(get_libdir)/cmake/${PN}"
 		-DLIB_INSTALL_DIR="$(get_libdir)"
