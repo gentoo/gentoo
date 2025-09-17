@@ -6,13 +6,14 @@ EAPI=8
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-4"
 
-inherit java-pkg-2 java-pkg-simple systemd verify-sig
+inherit java-pkg-2 java-pkg-simple systemd toolchain-funcs verify-sig
 
 DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="https://www.hyphanet.org"
-PEV="3.1.6"
+FEV="29"
 SRC_URI="https://github.com/hyphanet/fred/releases/download/build0${PV#*p}/freenet-build0${PV#*p}-source.tar.bz2
 	https://github.com/hyphanet/seedrefs/archive/build01480.tar.gz -> seednodes-0.7.5_p1480.tar.gz
+	https://github.com/hyphanet/contrib/archive/v${FEV}.tar.gz -> freenet-ext-${FEV}.tar.gz
 	verify-sig? (
 		https://github.com/hyphanet/fred/releases/download/build0${PV#*p}/freenet-build0${PV#*p}-source.tar.bz2.sig
 	)"
@@ -26,13 +27,13 @@ IUSE="+nss"
 CP_DEPEND="
 	dev-java/bcprov:0
 	dev-java/commons-compress:0
-	dev-java/commons-io:1
+	>=dev-java/commons-io-2.19.0:0
 	dev-java/fec:0
 	dev-java/freenet-ext:29
 	dev-java/java-service-wrapper:0
 	dev-java/jbitcollider-core:0
-	dev-java/jna:4
-	dev-java/lzma:0
+	>=dev-java/jna-5.17.0:0
+	>=dev-java/lzma-24.09:0
 	dev-java/lzmajio:0
 	dev-java/mersennetwister:0
 	dev-java/pebble:0
@@ -44,11 +45,11 @@ DEPEND="
 	${CP_DEPEND}
 	test? (
 		dev-java/hamcrest:0
-		dev-java/mockito:0
+		dev-java/mockito:1
 		dev-java/objenesis:0
-		net-libs/NativeThread:0
 	)
 "
+
 RDEPEND="
 	acct-user/freenet
 	acct-group/freenet
@@ -56,11 +57,11 @@ RDEPEND="
 	${CP_DEPEND}
 	nss? ( dev-libs/nss )
 "
+
 BDEPEND="
 	app-arch/unzip
 	verify-sig? ( sec-keys/openpgp-keys-freenet )
 "
-PDEPEND="net-libs/NativeThread:0"
 
 DOCS=(
 	AUTHORS
@@ -70,22 +71,13 @@ DOCS=(
 	SECURITY.md
 )
 
-PATCHES=(
-	"${FILESDIR}/freenet-0.7.5_p1498-ignore-failing-tests.patch"
-)
+PATCHES=( "${FILESDIR}/freenet-0.7.5_p1503-ignore-failing-tests.patch" )
 
-JAVA_CLASSPATH_EXTRA="
-	java-service-wrapper
-	unbescape
-"
+JAVA_CLASSPATH_EXTRA="java-service-wrapper,unbescape"
 JAVA_RESOURCE_DIRS="res"
 JAVA_SRC_DIR="src"
-JAVA_TEST_GENTOO_CLASSPATH="
-	hamcrest
-	junit-4
-	mockito
-	objenesis
-"
+JAVA_TEST_GENTOO_CLASSPATH="hamcrest,junit-4,mockito-1,objenesis"
+
 # Yes, both variables point to the same directory
 # https://github.com/hyphanet/fred/blob/build01497/build.gradle#L169-L173
 JAVA_TEST_RESOURCE_DIRS="test"
@@ -100,6 +92,12 @@ src_unpack() {
 	fi
 	unpack freenet-build0${PV#*p}-source.tar.bz2
 	unpack seednodes-0.7.5_p1480.tar.gz
+
+	# we need NativeThread.c
+	unpack freenet-ext-${FEV}.tar.gz
+	mkdir "${S}/NativeThread" || die "mkdir NativeThread"
+	mv "${WORKDIR}/contrib-${FEV}/NativeThread/NativeThread.c" \
+		"${S}/NativeThread" || die "move NativeThread.c"
 }
 
 src_prepare() {
@@ -153,12 +151,29 @@ src_compile() {
 	done
 	IFS=${ifs_original}
 	echo "wrapper.java.library.path.2=/usr/$(get_libdir)/java-service-wrapper" >> freenet-wrapper.conf || die
-	echo "wrapper.java.library.path.3=/usr/$(get_libdir)/jna-4" >> freenet-wrapper.conf || die
+	echo "wrapper.java.library.path.3=/usr/$(get_libdir)/jna" >> freenet-wrapper.conf || die
+
+	einfo "NativeThread"
+	cd NativeThread || die "cd NativeThread"
+
+	einfo "Generate header"
+	ejavac -h . -classpath ../target/classes:"$(java-pkg_getjars jna)" \
+		../src/freenet/support/io/NativeThread.java
+
+	mv {freenet_support_io_NativeThread_Linux,}NativeThread.h || die
+
+	"$(tc-getCC)" ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+		$(java-pkg_get-jni-cflags) -Ibuild/. \
+		-c -o libNativeThread.o NativeThread.c || die
+
+	"$(tc-getCC)" ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} \
+		-shared -Wl,-soname,libNativeThread.so \
+		-o libNativeThread.so libNativeThread.o || die
 }
 
 src_test() {
 	JAVA_TEST_EXTRA_ARGS=(
-		-Djava.library.path="${EPREFIX}/usr/$(get_libdir)/jna-4/"
+		-Djava.library.path="${EPREFIX}/usr/$(get_libdir)/jna/"
 		-Djna.nosys=false
 		-Dnetworkaddress.cache.negative.ttl=0
 		-Dnetworkaddress.cache.ttl=0
@@ -166,23 +181,18 @@ src_test() {
 		# "test.l10npath_main" reads from the JAR file.
 		-Dtest.l10npath_test="freenet/l10n/"
 		-Dtest.l10npath_main="freenet/l10n/"
+		--enable-native-access=ALL-UNNAMED
 	)
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 	if ver_test "${vm_version}" -ge 17; then
 		JAVA_TEST_EXTRA_ARGS+=(
-			--add-opens=java.base/java.io=ALL-UNNAMED
-			--add-opens=java.base/java.lang=ALL-UNNAMED
-			--add-opens=java.base/java.util=ALL-UNNAMED
+			--add-opens=java.base/java.{io,lang,util}=ALL-UNNAMED
 		)
 	fi
 
-	pushd test > /dev/null || die
-		local JAVA_TEST_RUN_ONLY=$(find * \
-			-type f  -name "*Test.java" \
-			)
-		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
-		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
-	popd > /dev/null || die
+	local JAVA_TEST_RUN_ONLY=$(find test -type f -name "*Test.java" -printf '%P\n')
+	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
+	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
 	java-pkg-simple_src_test
 }
 
@@ -198,6 +208,10 @@ src_install() {
 	insinto /var/freenet
 	doins run.sh seednodes.fref
 	fperms +x /var/freenet/run.sh
+
+	cd NativeThread || die "cd NativeThread"
+	dolib.so libNativeThread.so
+	dosym libNativeThread.so /usr/$(get_libdir)/libnative.so
 }
 
 pkg_postinst() {

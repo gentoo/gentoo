@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ DEPEND="
 	${CP_DEPEND}
 	test? (
 		dev-java/felix-utils:0
-		dev-java/mockito:0
+		dev-java/mockito:1
 	)
 "
 
@@ -46,7 +46,7 @@ S="${WORKDIR}/org.apache.felix.resolver-${PV}"
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR="src/main/java"
 
-JAVA_TEST_GENTOO_CLASSPATH="felix-utils,junit-4,mockito"
+JAVA_TEST_GENTOO_CLASSPATH="felix-utils,junit-4,mockito-1"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
 
