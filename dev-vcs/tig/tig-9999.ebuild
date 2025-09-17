@@ -58,7 +58,7 @@ src_test() {
 
 src_install() {
 	emake DESTDIR="${D}" install install-doc-man
-	dodoc doc/manual.html README.html NEWS.html
+	dodoc {doc/manual,README,NEWS}.{adoc,html}
 	newbashcomp contrib/tig-completion.bash ${PN}
 
 	docinto examples
