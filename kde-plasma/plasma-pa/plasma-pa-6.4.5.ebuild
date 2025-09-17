@@ -13,7 +13,7 @@ DESCRIPTION="Plasma applet for audio volume management using PulseAudio"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 RESTRICT="test" # missing selenium-webdriver-at-spi
