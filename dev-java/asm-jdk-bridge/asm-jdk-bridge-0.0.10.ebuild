@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="codes.rafael.asmjdkbridge:asm-jdk-bridge:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="codes.rafael.asmjdkbridge:asm-jdk-bridge:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -16,9 +16,7 @@ S="${WORKDIR}/${PN}-${PN}-parent-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-
-# Not keyworded because java 25 isn't.
-# KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 
 CP_DEPEND="
 	>=dev-java/asm-9.8:0
@@ -43,3 +41,8 @@ JAVA_RELEASE_SRC_DIRS=(
 )
 
 JAVA_SRC_DIR="asm-jdk-bridge/src/main/java"
+
+src_prepare() {
+	java-pkg-2_src_prepare
+	rm -r asm-jdk-bridge/src/main/java-9/codes || die "Dummy"
+}
