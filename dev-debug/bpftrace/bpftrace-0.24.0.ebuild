@@ -61,6 +61,7 @@ BDEPEND="
 	app-editors/vim-core
 	dev-libs/cereal
 	test? (
+		${RUST_DEPEND}
 		dev-lang/go
 		dev-util/pahole
 	)
