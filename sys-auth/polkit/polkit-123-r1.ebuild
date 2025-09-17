@@ -46,7 +46,7 @@ BDEPEND="
 	dev-util/glib-utils
 	sys-devel/gettext
 	virtual/pkgconfig
-	introspection? ( >=dev-libs/gobject-introspection-0.6.2 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	test? (
 		$(python_gen_any_dep '
 			dev-python/dbus-python[${PYTHON_USEDEP}]
