@@ -22,8 +22,7 @@ NGINX_MODULES=(
 NGINX_UPDATE_STREAM=stable
 NGINX_TESTS_COMMIT=06a36245e134eac985cdfc5fac982cb149f61412
 NGINX_MISC_FILES=(
-	nginx-{r2.logrotate,r2.service,r4.conf,r6.initd,r1.confd}
-	nginx.tmpfiles
+	nginx-{r2.logrotate,r2.service,r4.conf,r6.initd,r1.confd,r1.tmpfiles}
 )
 
 inherit nginx
