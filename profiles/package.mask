@@ -234,11 +234,6 @@ dev-cpp/cpp-hocon
 dev-libs/leatherman
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
-# EAPI-7 cmake.eclass library without any revdeps.
-# Removal on 2025-09-26.
-dev-cpp/robin-hood-hashing
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # Qt5 based and still EAPI-7, last release from 2016, broken Qt6 "support"
 # in upstream repo. Needs someone to pick up the pieces of upstream's
 # porting effort. Bugs #953885, #955828, #957574. Removal on 2025-09-26.
