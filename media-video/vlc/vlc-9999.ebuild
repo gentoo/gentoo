@@ -8,26 +8,31 @@ LUA_COMPAT=( lua5-{1..2} )
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
-if [[ ${PV} = *9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	if [[ ${PV%.9999} != ${PV} ]] ; then
-		EGIT_BRANCH="3.0.x"
+		EGIT_BRANCH="${PV%.9999}.x"
 	fi
 	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
-	if [[ ${MY_P} = ${P} ]] ; then
-		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+	COMMIT=
+	if [[ -n ${COMMIT} ]] ; then
+		SRC_URI="https://code.videolan.org/videolan/vlc/-/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
+		S="${WORKDIR}/${PN}-${COMMIT}"
 	else
-		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+		if [[ ${MY_P} == ${P} ]] ; then
+			SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+		else
+			SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+		fi
+		S="${WORKDIR}/${MY_P}"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 -sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
 fi
-
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/12-9" # vlc - vlccore
@@ -231,14 +236,14 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
+DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-gettext-version.patch # bug 766549
 	"${FILESDIR}"/${PN}-9999-no-vlc-cache-gen.patch # bugs 564842, 608256
 	"${FILESDIR}"/${PN}-9999-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-9999-configure-lua-version.patch
 )
-
-DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
 
 pkg_setup() {
 	if use lua; then

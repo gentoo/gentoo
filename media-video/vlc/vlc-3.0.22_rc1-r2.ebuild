@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
-	COMMIT=
+	COMMIT=5bd37679406d364c39c3385867794cce814aa664
 	if [[ -n ${COMMIT} ]] ; then
 		SRC_URI="https://code.videolan.org/videolan/vlc/-/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
 		S="${WORKDIR}/${PN}-${COMMIT}"
@@ -262,7 +262,7 @@ src_prepare() {
 	fi
 
 	# Make it build with libtool 1.5
-	rm m4/lt* m4/libtool.m4 || die
+	# rm m4/lt* m4/libtool.m4 || die
 
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
