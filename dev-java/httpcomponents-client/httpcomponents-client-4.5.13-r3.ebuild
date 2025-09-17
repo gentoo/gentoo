@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ DEPEND="${CDEPEND}
 	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/hamcrest-core:1.3
-		dev-java/mockito:0
+		dev-java/mockito:1
 	)"
 
 RDEPEND="${CDEPEND}
@@ -47,7 +47,7 @@ JAVA_SRC_DIR=(
 )
 JAVA_RESOURCE_DIRS="src/main/resources"
 
-JAVA_TEST_GENTOO_CLASSPATH="junit-4,mockito,hamcrest-core-1.3"
+JAVA_TEST_GENTOO_CLASSPATH="junit-4,mockito-1,hamcrest-core-1.3"
 JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 
