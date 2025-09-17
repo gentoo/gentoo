@@ -219,12 +219,6 @@ sci-libs/nemesis
 sci-libs/orocos_kdl
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
-# EAPI-7 cmake.eclass straggler dev-libs/ libraries without revdeps.
-# If you need them, raise your hand by doing the necessary EAPI-8 porting.
-# Bugs #957252, #957234. Removal on 2025-09-26.
-dev-libs/redis-ipc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # Qt5 based and still EAPI-7, last release from 2016, broken Qt6 "support"
 # in upstream repo. Needs someone to pick up the pieces of upstream's
 # porting effort. Bugs #953885, #955828, #957574. Removal on 2025-09-26.
