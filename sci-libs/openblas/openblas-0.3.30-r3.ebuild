@@ -172,13 +172,13 @@ src_install() {
 	fi
 
 	if use eselect-ldso; then
-		insinto /usr/${libdir}/blas/openblas/
-		doins interface/lib{,c}blas.so.3
+		exeinto /usr/${libdir}/blas/openblas/
+		doexe interface/lib{,c}blas.so.3
 		dosym libblas.so.3 /usr/${libdir}/blas/openblas/libblas.so
 		dosym libcblas.so.3 /usr/${libdir}/blas/openblas/libcblas.so
 
-		insinto /usr/${libdir}/lapack/openblas/
-		doins interface/liblapack{,e}.so.3
+		exeinto /usr/${libdir}/lapack/openblas/
+		doexe interface/liblapack{,e}.so.3
 		dosym liblapack.so.3 /usr/${libdir}/lapack/openblas/liblapack.so
 		dosym liblapacke.so.3 /usr/${libdir}/lapack/openblas/liblapacke.so
 	fi
