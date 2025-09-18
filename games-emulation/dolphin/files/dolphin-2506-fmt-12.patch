@@ -1,0 +1,244 @@
+From 4b65cc9a4c51af4308f748b3e7bf25d80db83860 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joshua=20Vanda=C3=ABle?= <joshua@vandaele.software>
+Date: Wed, 4 Jun 2025 13:12:50 +0200
+Subject: [PATCH] fmt: Replace deprecated `fmt::localtime` usage with
+ `Common::LocalTime`
+
+---
+ Source/Core/AudioCommon/AudioCommon.cpp     |  8 ++++++--
+ Source/Core/Common/FatFsUtil.cpp            |  8 ++------
+ Source/Core/Common/SettingsHandler.cpp      |  3 +--
+ Source/Core/Common/TimeUtil.cpp             | 12 +++++++-----
+ Source/Core/Common/TimeUtil.h               |  2 +-
+ Source/Core/Core/Core.cpp                   | 14 ++++++++++----
+ Source/Core/Core/NetworkCaptureLogger.cpp   |  3 ++-
+ Source/Core/Core/State.cpp                  |  2 +-
+ Source/Core/VideoCommon/FrameDumpFFMpeg.cpp |  7 ++++++-
+ 9 files changed, 36 insertions(+), 23 deletions(-)
+
+diff --git a/Source/Core/AudioCommon/AudioCommon.cpp b/Source/Core/AudioCommon/AudioCommon.cpp
+index de046a9aab7d..1258e0fd7e02 100644
+--- a/Source/Core/AudioCommon/AudioCommon.cpp
++++ b/Source/Core/AudioCommon/AudioCommon.cpp
+@@ -16,6 +16,7 @@
+ #include "AudioCommon/WASAPIStream.h"
+ #include "Common/FileUtil.h"
+ #include "Common/Logging/Log.h"
++#include "Common/TimeUtil.h"
+ #include "Core/Config/MainSettings.h"
+ #include "Core/ConfigManager.h"
+ #include "Core/System.h"
+@@ -218,8 +219,11 @@ void StartAudioDump(Core::System& system)
+ 
+   std::string path_prefix = File::GetUserPath(D_DUMPAUDIO_IDX) + SConfig::GetInstance().GetGameID();
+ 
+-  std::string base_name =
+-      fmt::format("{}_{:%Y-%m-%d_%H-%M-%S}", path_prefix, fmt::localtime(start_time));
++  const auto local_time = Common::LocalTime(start_time);
++  if (!local_time)
++    return;
++
++  std::string base_name = fmt::format("{}_{:%Y-%m-%d_%H-%M-%S}", path_prefix, *local_time);
+ 
+   const std::string audio_file_name_dtk = fmt::format("{}_dtkdump.wav", base_name);
+   const std::string audio_file_name_dsp = fmt::format("{}_dspdump.wav", base_name);
+diff --git a/Source/Core/Common/FatFsUtil.cpp b/Source/Core/Common/FatFsUtil.cpp
+index 9c513d5e42b0..80e2c424b44a 100644
+--- a/Source/Core/Common/FatFsUtil.cpp
++++ b/Source/Core/Common/FatFsUtil.cpp
+@@ -25,6 +25,7 @@
+ #include "Common/Logging/Log.h"
+ #include "Common/ScopeGuard.h"
+ #include "Common/StringUtil.h"
++#include "Common/TimeUtil.h"
+ 
+ #include "Core/Config/MainSettings.h"
+ 
+@@ -95,12 +96,7 @@ int SDCardDiskIOCtl(File::IOFile* image, u8 pdrv, u8 cmd, void* buff)
+ u32 GetSystemTimeFAT()
+ {
+   const std::time_t time = std::time(nullptr);
+-  std::tm tm;
+-#ifdef _WIN32
+-  localtime_s(&tm, &time);
+-#else
+-  localtime_r(&time, &tm);
+-#endif
++  std::tm tm = *Common::LocalTime(time);
+ 
+   DWORD fattime = 0;
+   fattime |= (tm.tm_year - 80) << 25;
+diff --git a/Source/Core/Common/SettingsHandler.cpp b/Source/Core/Common/SettingsHandler.cpp
+index 6cc9f5a8fe34..b0faf6f6f03f 100644
+--- a/Source/Core/Common/SettingsHandler.cpp
++++ b/Source/Core/Common/SettingsHandler.cpp
+@@ -122,7 +122,6 @@ std::string SettingsWriter::GenerateSerialNumber()
+ 
+   // Must be 9 characters at most; otherwise the serial number will be rejected by SDK libraries,
+   // as there is a check to ensure the string length is strictly lower than 10.
+-  // 3 for %j, 2 for %H, 2 for %M, 2 for %S.
+-  return fmt::format("{:%j%H%M%S}", fmt::localtime(t));
++  return fmt::format("{:09}", t % 1000000000);
+ }
+ }  // namespace Common
+diff --git a/Source/Core/Common/TimeUtil.cpp b/Source/Core/Common/TimeUtil.cpp
+index 39d989fb3fe4..93327e9136ce 100644
+--- a/Source/Core/Common/TimeUtil.cpp
++++ b/Source/Core/Common/TimeUtil.cpp
+@@ -2,23 +2,25 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include "Common/TimeUtil.h"
++#include "Common/Logging/Log.h"
+ 
+ #include <ctime>
+ #include <optional>
+ 
+ namespace Common
+ {
+-std::optional<std::tm> Localtime(std::time_t time)
++std::optional<std::tm> LocalTime(std::time_t time)
+ {
+   std::tm local_time;
+ #ifdef _MSC_VER
+   if (localtime_s(&local_time, &time) != 0)
+-    return std::nullopt;
+ #else
+-  std::tm* result = localtime_r(&time, &local_time);
+-  if (result != &local_time)
+-    return std::nullopt;
++  if (localtime_r(&time, &local_time) == NULL)
+ #endif
++  {
++    ERROR_LOG_FMT(COMMON, "Failed to convert time to local time: {}", std::strerror(errno));
++    return std::nullopt;
++  }
+   return local_time;
+ }
+ }  // Namespace Common
+diff --git a/Source/Core/Common/TimeUtil.h b/Source/Core/Common/TimeUtil.h
+index ff9ca02a12b7..3abb525e5eb8 100644
+--- a/Source/Core/Common/TimeUtil.h
++++ b/Source/Core/Common/TimeUtil.h
+@@ -9,5 +9,5 @@
+ namespace Common
+ {
+ // Threadsafe and error-checking variant of std::localtime()
+-std::optional<std::tm> Localtime(std::time_t time);
++std::optional<std::tm> LocalTime(std::time_t time);
+ }  // Namespace Common
+diff --git a/Source/Core/Core/Core.cpp b/Source/Core/Core/Core.cpp
+index e80e382930d2..8fe5e3d353a9 100644
+--- a/Source/Core/Core/Core.cpp
++++ b/Source/Core/Core/Core.cpp
+@@ -8,6 +8,7 @@
+ #include <cstring>
+ #include <functional>
+ #include <mutex>
++#include <optional>
+ #include <queue>
+ #include <utility>
+ #include <variant>
+@@ -34,6 +35,7 @@
+ #include "Common/ScopeGuard.h"
+ #include "Common/StringUtil.h"
+ #include "Common/Thread.h"
++#include "Common/TimeUtil.h"
+ #include "Common/Version.h"
+ 
+ #include "Core/AchievementManager.h"
+@@ -737,15 +739,17 @@ static std::string GenerateScreenshotFolderPath()
+   return path;
+ }
+ 
+-static std::string GenerateScreenshotName()
++static std::optional<std::string> GenerateScreenshotName()
+ {
+   // append gameId, path only contains the folder here.
+   const std::string path_prefix =
+       GenerateScreenshotFolderPath() + SConfig::GetInstance().GetGameID();
+ 
+   const std::time_t cur_time = std::time(nullptr);
+-  const std::string base_name =
+-      fmt::format("{}_{:%Y-%m-%d_%H-%M-%S}", path_prefix, fmt::localtime(cur_time));
++  const auto local_time = Common::LocalTime(cur_time);
++  if (!local_time)
++    return std::nullopt;
++  const std::string base_name = fmt::format("{}_{:%Y-%m-%d_%H-%M-%S}", path_prefix, *local_time);
+ 
+   // First try a filename without any suffixes, if already exists then append increasing numbers
+   std::string name = fmt::format("{}.png", base_name);
+@@ -761,7 +765,9 @@ static std::string GenerateScreenshotName()
+ void SaveScreenShot()
+ {
+   const Core::CPUThreadGuard guard(Core::System::GetInstance());
+-  g_frame_dumper->SaveScreenshot(GenerateScreenshotName());
++  std::optional<std::string> name = GenerateScreenshotName();
++  if (name)
++    g_frame_dumper->SaveScreenshot(*name);
+ }
+ 
+ void SaveScreenShot(std::string_view name)
+diff --git a/Source/Core/Core/NetworkCaptureLogger.cpp b/Source/Core/Core/NetworkCaptureLogger.cpp
+index bc645a05c450..b6706fc59f95 100644
+--- a/Source/Core/Core/NetworkCaptureLogger.cpp
++++ b/Source/Core/Core/NetworkCaptureLogger.cpp
+@@ -16,6 +16,7 @@
+ #include "Common/Network.h"
+ #include "Common/PcapFile.h"
+ #include "Common/ScopeGuard.h"
++#include "Common/TimeUtil.h"
+ #include "Core/Config/MainSettings.h"
+ #include "Core/ConfigManager.h"
+ 
+@@ -82,7 +83,7 @@ PCAPSSLCaptureLogger::PCAPSSLCaptureLogger()
+ {
+   const std::string filepath =
+       fmt::format("{}{} {:%Y-%m-%d %Hh%Mm%Ss}.pcap", File::GetUserPath(D_DUMPSSL_IDX),
+-                  SConfig::GetInstance().GetGameID(), fmt::localtime(std::time(nullptr)));
++                  SConfig::GetInstance().GetGameID(), *Common::LocalTime(std::time(nullptr)));
+   m_file = std::make_unique<Common::PCAP>(
+       new File::IOFile(filepath, "wb", File::SharedAccess::Read), Common::PCAP::LinkType::Ethernet);
+ }
+diff --git a/Source/Core/Core/State.cpp b/Source/Core/Core/State.cpp
+index 556aff170a93..f508fd202d45 100644
+--- a/Source/Core/Core/State.cpp
++++ b/Source/Core/Core/State.cpp
+@@ -281,7 +281,7 @@ static std::string SystemTimeAsDoubleToString(double time)
+ {
+   // revert adjustments from GetSystemTimeAsDouble() to get a normal Unix timestamp again
+   const time_t seconds = static_cast<time_t>(time) + DOUBLE_TIME_OFFSET;
+-  const auto local_time = Common::Localtime(seconds);
++  const auto local_time = Common::LocalTime(seconds);
+   if (!local_time)
+     return "";
+ 
+diff --git a/Source/Core/VideoCommon/FrameDumpFFMpeg.cpp b/Source/Core/VideoCommon/FrameDumpFFMpeg.cpp
+index 44ec0a6a27f7..e0e61529f732 100644
+--- a/Source/Core/VideoCommon/FrameDumpFFMpeg.cpp
++++ b/Source/Core/VideoCommon/FrameDumpFFMpeg.cpp
+@@ -2,6 +2,7 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ #include "VideoCommon/FrameDumpFFMpeg.h"
++#include "Common/TimeUtil.h"
+ 
+ #if defined(__FreeBSD__)
+ #define __STDC_CONSTANT_MACROS 1
+@@ -124,11 +125,15 @@ std::string GetDumpPath(const std::string& extension, std::time_t time, u32 inde
+   if (!dump_path.empty())
+     return dump_path;
+ 
++  const auto local_time = Common::LocalTime(time);
++  if (!local_time)
++    return "";
++
+   const std::string path_prefix =
+       File::GetUserPath(D_DUMPFRAMES_IDX) + SConfig::GetInstance().GetGameID();
+ 
+   const std::string base_name =
+-      fmt::format("{}_{:%Y-%m-%d_%H-%M-%S}_{}", path_prefix, fmt::localtime(time), index);
++      fmt::format("{}_{:%Y-%m-%d_%H-%M-%S}_{}", path_prefix, *local_time, index);
+ 
+   const std::string path = fmt::format("{}.{}", base_name, extension);
+ 

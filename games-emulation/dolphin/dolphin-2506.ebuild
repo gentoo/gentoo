@@ -157,6 +157,8 @@ declare -A KEEP_BUNDLED=(
 
 PATCHES=(
 	"${FILESDIR}"/dolphin-2407-minizip.patch
+	# https://github.com/dolphin-emu/dolphin/pull/13727
+	"${FILESDIR}/${P}-fmt-12.patch"
 )
 
 add_bundled_licenses() {
