@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="OpenPGP keys used for ccache"
+DESCRIPTION="minisig keys used for ccache"
 HOMEPAGE="https://ccache.dev/download.html"
 S="${WORKDIR}"
 
