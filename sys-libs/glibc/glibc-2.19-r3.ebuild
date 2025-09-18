@@ -1234,7 +1234,7 @@ glibc_do_src_install() {
 	# Generate all locales if this is a native build as locale generation
 	if use compile-locales && ! is_crosscompile ; then
 		if ! run_locale_gen "${ED}"; then
-			die "locale-gen(1) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
+			die "locale-gen(8) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
 		fi
 	fi
 }
@@ -1329,7 +1329,7 @@ pkg_postinst() {
 
 	if ! is_crosscompile && [[ -z ${ROOT} ]] ; then
 		if ! use compile-locales && ! run_locale_gen "${EROOT}"; then
-			ewarn "locale-gen(1) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
+			ewarn "locale-gen(8) unexpectedly failed during the ${EBUILD_PHASE_FUNC} phase"
 		fi
 	fi
 
