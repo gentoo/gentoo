@@ -57,6 +57,9 @@ src_compile() {
 src_install() {
 	default
 
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+
 	rm \
 		"${ED}"/usr/bin/{aclocal,automake} \
 		"${ED}"/usr/share/man/man1/{aclocal,automake}.1 || die
