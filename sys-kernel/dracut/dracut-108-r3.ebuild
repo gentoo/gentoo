@@ -124,7 +124,7 @@ src_configure() {
 		--disable-dracut-cpio
 	)
 
-	if ! has_version dev-ruby/asciidoctor; then
+	if ! has_version -b dev-ruby/asciidoctor; then
 		myconf+=( --disable-asciidoctor )
 	fi
 
