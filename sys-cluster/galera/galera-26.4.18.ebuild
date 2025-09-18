@@ -33,6 +33,10 @@ DEPEND="
 	dev-libs/check
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-26.4-musl.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 
