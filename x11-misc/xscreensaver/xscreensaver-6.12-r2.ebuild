@@ -8,7 +8,7 @@ inherit autotools flag-o-matic font greadme optfeature pam strip-linguas systemd
 DESCRIPTION="Modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="
-	https://www.jwz.org/xscreensaver/${PN}-${PV}.tar.gz
+	https://www.jwz.org/xscreensaver/${P}.tar.gz
 	logind-idle-hint? (
 		https://github.com/Flowdalic/xscreensaver/commit/e79e2f41be3367c196899ef2f38ab97436fa1a65.patch ->
 			${PN}-6.12-logind-idle-hint.patch
@@ -29,7 +29,7 @@ S="${WORKDIR}/${PN}-$(ver_cut 1-2)"
 LICENSE="BSD fonts? ( MIT Apache-2.0 ) systemd? ( ISC )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="elogind ffmpeg fonts gdm gles glx jpeg +locking logind-idle-hint new-login offensive pam +perl selinux suid systemd xinerama wayland"
+IUSE="elogind ffmpeg fonts +gdk-pixbuf gdm gles glx +gtk jpeg +locking logind-idle-hint new-login offensive pam +perl +png selinux suid systemd xinerama wayland"
 REQUIRED_USE="
 	gles? ( !glx )
 	?? ( elogind systemd )
@@ -48,8 +48,8 @@ COMMON_DEPEND="
 	x11-libs/libXt
 	x11-libs/libXxf86vm
 	elogind? ( sys-auth/elogind )
-	>=x11-libs/gdk-pixbuf-2.42.0:2
-	>=x11-libs/gtk+-3.0.0:3
+	gdk-pixbuf? ( >=x11-libs/gdk-pixbuf-2.42.0:2[jpeg?] )
+	gtk? ( >=x11-libs/gtk+-3.0.0:3 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	locking? ( virtual/libcrypt:= )
@@ -60,18 +60,19 @@ COMMON_DEPEND="
 	virtual/glu
 	virtual/opengl
 	pam? ( sys-libs/pam )
-	media-libs/libpng:=
+	png? ( media-libs/libpng:= )
 	systemd? ( >=sys-apps/systemd-221:= )
 	>=x11-libs/libXft-2.1.0
 	xinerama? ( x11-libs/libXinerama )
 	wayland? ( >=dev-libs/wayland-1.8 )
 "
-# For USE="perl" see output of `qlist xscreensaver | grep bin | xargs grep '::'`
+# For USE="perl" see output of `qlist xscreensaver | grep '\(bin\|misc\)' | xargs grep '::'`
 RDEPEND="
 	${COMMON_DEPEND}
-	media-gfx/fbida
 	perl? (
 		dev-lang/perl
+		dev-perl/HTML-Parser
+		dev-perl/LWP-Protocol-https
 		dev-perl/libwww-perl
 	)
 	selinux? ( sec-policy/selinux-xscreensaver )
@@ -194,10 +195,10 @@ src_configure() {
 	ECONF_OPTS=(
 		$(use_enable locking)
 		$(use_with elogind)
-		--with-pixbuf
+		$(use_with gdk-pixbuf pixbuf)
 		$(use_with gles)
 		$(use_with glx)
-		--with-gtk
+		$(use_with gtk)
 		$(use_with new-login login-manager)
 		$(use_with pam)
 		$(use_with suid setuid-hacks)
@@ -206,7 +207,7 @@ src_configure() {
 		$(use_with wayland)
 		--with-jpeg=$(usex jpeg yes no)
 		--with-record-animation=$(usex ffmpeg yes no)
-		--with-png=yes
+		--with-png=$(usex png yes no)
 		--with-xft=yes
 		--with-app-defaults="${EPREFIX}"/usr/share/X11/app-defaults
 		--with-configdir="${EPREFIX}"/usr/share/${PN}/config
@@ -260,6 +261,11 @@ src_install() {
 		pamd_mimic_system ${PN} auth
 	fi
 
+	# bugs #809599, #828869
+	if ! use gtk; then
+		rm "${ED}/usr/bin/xscreensaver-demo" || die
+	fi
+
 	if use systemd; then
 		systemd_douserunit "${ED}/usr/share/${PN}/xscreensaver.service"
 	fi
@@ -271,14 +277,54 @@ src_install() {
 	# bug #885989
 	fperms 4755 /usr/$(get_libdir)/misc/xscreensaver/xscreensaver-auth
 
-	greadme_stdin <<-EOF
-	You can configure xscreensaver via 'xscreensaver-settings'.
-	EOF
+	if ! { use png || use gdk-pixbuf; }; then
+		greadme_stdin --append <<-EOF
+		Xscreensaver was built without any means to support image manipulation
+		(i.e. with neither USE=gtk-pixbuf or USE=png. Several screensavers
+		will likely just fail to work without it and several others will
+		have diminished appearance like displaying a checkerboard pattern
+		instead of an image. It is strongly recommended to enable at least one
+		of those flags.
+
+		EOF
+	elif ! use gdk-pixbuf; then
+		greadme_stdin --append <<-EOF
+		Xscreensaver was built with png support only. This means that most of
+		screensavers won't be able to use images in any other formats. It is
+		recommended to enable USE=gtk-pixbuf.
+
+		EOF
+	fi
+
+	if ! use jpeg; then
+		greadme_stdin --append <<-EOF
+		Xscreensaver was built without jpeg support. This mean that
+		'webcollage' screensaver will be considerably slower. Enable
+		USE=jpeg if that will become an issue.
+
+		EOF
+	fi
+
+	if use gtk; then
+		greadme_stdin --append <<-EOF
+		You can configure xscreensaver via 'xscreensaver-settings'.
+
+		EOF
+	else
+		greadme_stdin --append <<-EOF
+		Since xscreensaver had been built without USE=gtk
+		'xscreensaver-settings' was not installed. Hence the only
+		way to configure it is via some third-party utilities or
+		directly via configuration file '~/.xscreensaver'.
+
+		EOF
+	fi
 
 	# bug #811885
 	if ! use glx; then
 		greadme_stdin --append <<-EOF
 		Enable USE='glx' if OpenGL screensavers are crashing.
+
 		EOF
 	fi
 
@@ -301,6 +347,12 @@ pkg_postinst() {
 
 	greadme_pkg_postinst
 
+	optfeature_header 'Additional dependencies for specific screensavers'
+	optfeature 'vidwhacker' 'media-libs/netpbm[jpeg,png] virtual/imagemagick-tools' \
+			'media-libs/netpbm[jpeg,png] media-libs/libjpeg-turbo  media-gfx/fbida'
+	optfeature 'webcollage' 'virtual/imagemagick-tools[jpeg,png] x11-apps/xdpyinfo'
+
+	optfeature_header 'Fonts'
 	optfeature 'Bitmap fonts 75dpi' media-fonts/font-adobe-75dpi
 	optfeature 'Bitmap fonts 100dpi' media-fonts/font-adobe-100dpi
 	optfeature 'Truetype font Luxi Mono' media-fonts/font-bh-ttf
