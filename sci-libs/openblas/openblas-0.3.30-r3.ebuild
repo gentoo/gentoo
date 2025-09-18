@@ -133,45 +133,54 @@ src_configure() {
 	export PREFIX="${EPREFIX}/usr"
 }
 
+emake64() {
+	emake -C "${S}-index64" \
+		INTERFACE64=1 \
+		LIBNAMESUFFIX=64 \
+		"${@}"
+}
+
 src_compile() {
 	emake shared
 
 	use eselect-ldso && emake -C interface shared-blas-lapack
 
 	if use index64; then
-		emake -C "${S}-index64" \
-			  INTERFACE64=1 \
-			  LIBPREFIX=libopenblas64 shared
+		emake64 shared
 	fi
 }
 
 src_test() {
 	emake tests
+	emake64 tests
 }
 
 src_install() {
-	emake install DESTDIR="${D}" \
-		OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/${PN} \
-		OPENBLAS_LIBRARY_DIR='$(PREFIX)'/$(get_libdir)
+	local libdir=$(get_libdir)
+	emake install \
+		DESTDIR="${D}" \
+		OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/openblas \
+		OPENBLAS_LIBRARY_DIR='$(PREFIX)'/${libdir}
 
 	dodoc GotoBLAS_*.txt *.md Changelog.txt
 
 	if use index64; then
-		dolib.so "${S}-index64"/libopenblas64*.so*
+		emake64 install \
+			DESTDIR="${D}" \
+			OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/openblas64 \
+			OPENBLAS_LIBRARY_DIR='$(PREFIX)'/${libdir}
 	fi
 
 	if use eselect-ldso; then
-		insinto /usr/$(get_libdir)/blas/openblas/
-		doins interface/libblas.so.3
-		dosym -r /usr/$(get_libdir)/blas/openblas/libblas.so.3 /usr/$(get_libdir)/blas/openblas/libblas.so
-		doins interface/libcblas.so.3
-		dosym -r /usr/$(get_libdir)/blas/openblas/libcblas.so.3 /usr/$(get_libdir)/blas/openblas/libcblas.so
+		insinto /usr/${libdir}/blas/openblas/
+		doins interface/lib{,c}blas.so.3
+		dosym libblas.so.3 /usr/${libdir}/blas/openblas/libblas.so
+		dosym libcblas.so.3 /usr/${libdir}/blas/openblas/libcblas.so
 
-		insinto /usr/$(get_libdir)/lapack/openblas/
-		doins interface/liblapack.so.3
-		dosym -r /usr/$(get_libdir)/lapack/openblas/liblapack.so.3 /usr/$(get_libdir)/lapack/openblas/liblapack.so
-		doins interface/liblapacke.so.3
-		dosym -r /usr/$(get_libdir)/lapack/openblas/liblapacke.so.3 /usr/$(get_libdir)/lapack/openblas/liblapacke.so
+		insinto /usr/${libdir}/lapack/openblas/
+		doins interface/liblapack{,e}.so.3
+		dosym liblapack.so.3 /usr/${libdir}/lapack/openblas/liblapack.so
+		dosym liblapacke.so.3 /usr/${libdir}/lapack/openblas/liblapacke.so
 	fi
 }
 
