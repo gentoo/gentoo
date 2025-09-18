@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..12} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..12} )
 
 inherit cmake toolchain-funcs flag-o-matic distutils-r1
 
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/google/jsonnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv ~x86"
 IUSE="custom-optimization doc examples python test"
 
 RDEPEND="
