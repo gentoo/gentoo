@@ -7,7 +7,6 @@ RESTRICT="test" # fails with sandbox
 
 RUST_MIN_VER="1.82.0"
 
-
 CRATES="
 	addr2line@0.24.2
 	adler2@2.0.1
