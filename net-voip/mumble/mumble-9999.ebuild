@@ -44,8 +44,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-cpp/cli11
-	dev-cpp/ms-gsl
-	dev-db/soci[sqlite]
+	>=dev-db/soci-4.1.0[sqlite]
 	>=dev-libs/openssl-1.0.0b:0=
 	dev-libs/poco:=[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
@@ -80,10 +79,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.6-unbundle-utf8cpp.patch"
-)
-
 pkg_setup() {
 	python-any-r1_pkg_setup
 }
@@ -100,12 +95,12 @@ src_configure() {
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
 		-Dbundled-cli11="OFF"
-		-Dbundled-gsl="OFF"
 		-Dbundled-json="OFF"
 		-Dbundled-rnnoise="OFF"
 		-Dbundled-spdlog="OFF"
 		-Dbundled-soci="OFF"
 		-Dbundled-speex="OFF"
+		-Dbundled-utfcpp="OFF"
 		-Dg15="OFF"
 		-Djackaudio="$(usex jack)"
 		-Doverlay="ON"
