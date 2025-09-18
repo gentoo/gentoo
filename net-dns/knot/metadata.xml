@@ -33,6 +33,9 @@
 		<flag name="quic">
 			Enable the DNS over QUIC (DoQ) module using libngtcp2
 		</flag>
+		<flag name="redis">
+			Enable database zone backend using Redis
+		</flag>
 		<flag name="utils">
 			Install Knot utilities, such as kdig, kzonecheck, ...
 		</flag>
