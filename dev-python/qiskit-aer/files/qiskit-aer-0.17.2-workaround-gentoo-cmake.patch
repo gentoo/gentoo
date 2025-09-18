@@ -1,0 +1,11 @@
+diff '--color=auto' -dupr qiskit-aer-0.17.2.orig/CMakeLists.txt qiskit-aer-0.17.2/CMakeLists.txt
+--- qiskit-aer-0.17.2.orig/CMakeLists.txt	2025-09-19 15:18:04.608064418 +0200
++++ qiskit-aer-0.17.2/CMakeLists.txt	2025-09-19 15:18:09.888931812 +0200
+@@ -236,6 +236,7 @@ else()
+ 		if(NOT BLA_VENDOR)
+ 		  set(BLA_VENDOR "OpenBLAS")
+ 		endif()
++		set(BLA_PKGCONFIG_BLAS "openblas")
+ 	endif()
+ 	if(WIN32 AND USE_BUNDLED_BLAS_WIN)
+ 		message(STATUS "Uncompressing OpenBLAS static library...")
