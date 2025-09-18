@@ -41,16 +41,15 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="+ice mysql postgres +sqlite test zeroconf"
-REQUIRED_USE="^^ ( mysql postgres sqlite )"
+REQUIRED_USE="|| ( mysql postgres sqlite )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/murmur
 	acct-user/murmur
 	dev-cpp/cli11
-	dev-cpp/ms-gsl
 	dev-cpp/nlohmann_json
-	dev-db/soci[mysql?,postgres?,sqlite?]
+	>=dev-db/soci-4.1.0[mysql?,postgres?,sqlite?]
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-libs/spdlog:=
@@ -71,10 +70,6 @@ BDEPEND="
 	acct-user/murmur
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.6-unbundle-utf8cpp.patch"
-)
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
@@ -110,10 +105,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING="$(usex test)"
 		-Dbundled-cli11="OFF"
-		-Dbundled-gsl="OFF"
 		-Dbundled-json="OFF"
 		-Dbundled-soci="OFF"
 		-Dbundled-spdlog="OFF"
+		-Dbundled-utfcpp="OFF"
 		-Dclient="OFF"
 		-Denable-sqlite="$(usex sqlite)"
 		-Denable-mysql="$(usex mysql)"
