@@ -1,0 +1,38 @@
+https://github.com/fail2ban/fail2ban/pull/4072
+https://bugs.gentoo.org/963047
+
+commit 0fee8dbe9241f8d387f064a079668457a0efd33d
+Author: Ulrich Müller <ulm@gentoo.org>
+Date:   Thu Sep 18 07:20:38 2025 +0200
+
+    filter.d/postfix.conf: Add optional "NOQUEUE:" to mdpr-ddos
+    
+    The current regex doesn't match the following log entry, seen with
+    Postfix 3.10.2:
+    
+    Sep 17 18:19:20 mxhost postfix/smtpd[12345]: NOQUEUE: lost connection after CONNECT from unknown[192.0.2.25]
+    Sep 17 18:19:20 mxhost postfix/smtpd[12345]: disconnect from unknown[192.0.2.25] commands=0/0
+
+--- a/config/filter.d/postfix.conf
++++ b/config/filter.d/postfix.conf
+@@ -38,7 +38,7 @@
+ 
+ # Includes some of the log messages described in
+ # <http://www.postfix.org/POSTSCREEN_README.html>.
+-mdpr-ddos = (?:lost connection after (?!(?:DATA|AUTH)\b)[A-Z]+|disconnect(?= from \S+(?: \S+=\d+)* auth=0/(?:[1-9]|\d\d+))|(?:PREGREET \d+|HANGUP) after \S+|COMMAND (?:TIME|COUNT|LENGTH) LIMIT)
++mdpr-ddos = (?:NOQUEUE: )?(?:lost connection after (?!(?:DATA|AUTH)\b)[A-Z]+|disconnect(?= from \S+(?: \S+=\d+)* auth=0/(?:[1-9]|\d\d+))|(?:PREGREET \d+|HANGUP) after \S+|COMMAND (?:TIME|COUNT|LENGTH) LIMIT)
+ mdre-ddos = ^from [^[]*\[<HOST>\]%(_port)s:?
+ 
+ mdpr-extra = (?:%(mdpr-auth)s|%(mdpr-normal)s)
+--- a/fail2ban/tests/files/logs/postfix
++++ b/fail2ban/tests/files/logs/postfix
+@@ -187,6 +187,9 @@
+ # failJSON: { "time": "2005-06-08T23:14:54", "match": true , "host": "192.0.2.26", "desc": "abusive clients hitting command limit (gh-3040)" }
+ Jun  8 23:14:54 proxy2 postfix/postscreen[473]: COMMAND COUNT LIMIT from [192.0.2.26]:15592 after RCPT
+ 
++# failJSON: { "time": "2004-09-17T18:19:20", "match": true , "host": "192.0.2.25" }
++Sep 17 18:19:20 mxhost postfix/smtpd[12345]: NOQUEUE: lost connection after CONNECT from unknown[192.0.2.25]
++
+ 
+ # filterOptions: [{}, {"mode": "ddos"}, {"mode": "aggressive"}]
+ # failJSON: { "match": false, "desc": "don't affect lawful data (sporadical connection aborts within DATA-phase, see gh-1813 for discussion)" }
