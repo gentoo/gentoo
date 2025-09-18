@@ -24,6 +24,7 @@ RDEPEND="
 	sys-apps/file
 	sys-apps/util-linux
 	x11-libs/libX11
+	x11-libs/libXt
 	x11-libs/libXtst
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]
 	qr? ( media-gfx/qrencode:= )
@@ -38,7 +39,7 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-cpp/gtest )"
 
-PATCHES=( "${FILESDIR}/passwordsafe-1.20.0-CMake.patch" )
+PATCHES=( "${FILESDIR}/${P}-CMake.patch" )
 
 src_configure() {
 	setup-wxwidgets
