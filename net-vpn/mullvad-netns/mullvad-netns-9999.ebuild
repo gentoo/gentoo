@@ -1,14 +1,14 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/chutz/mullvad-netns.git"
 else
-	SRC_URI=""
-	die
+	SRC_URI="https://github.com/chutz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Script to run a command within a Mullvad network namespace"
@@ -16,8 +16,6 @@ HOMEPAGE="https://github.com/chutz/mullvad-netns"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
 RDEPEND="
 	app-misc/jq
