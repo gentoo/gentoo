@@ -170,7 +170,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	fcaps -m 0755 cap_net_admin,cap_net_raw=eip usr/bin/pcsx2-qt
+	fcaps cap_net_admin,cap_net_raw=eip usr/bin/pcsx2-qt
 
 	# calls aplay or gst-play/launch-1.0 as fallback
 	# https://github.com/PCSX2/pcsx2/issues/11141
