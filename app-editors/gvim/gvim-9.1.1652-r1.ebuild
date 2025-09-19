@@ -6,10 +6,10 @@ EAPI=8
 # Please bump with app-editors/vim-core and app-editors/vim
 
 VIM_VERSION="9.1"
-VIM_PATCHES_VERSION="9.0.2092"
+VIM_PATCHES_VERSION="9.1.1432"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{10..14} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby31 ruby32"
 GENTOO_DEPEND_ON_PERL=no
@@ -22,8 +22,9 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
-		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
+		# https://github.com/douglarek/gentoo-vim-patches/releases/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
 DESCRIPTION="GUI version of the Vim text editor"
@@ -72,8 +73,7 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-"
+	x11-base/xorg-proto"
 # configure runs the Lua interpreter
 BDEPEND="
 	dev-build/autoconf
@@ -86,14 +86,14 @@ PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 if [[ ${PV} != 9999* ]]; then
 	# Gentoo patches to fix runtime issues, cross-compile errors, etc
 	PATCHES=(
-		"${WORKDIR}/vim-${VIM_PATCHES_VERSION}-patches"
+		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
 	)
 fi
 
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
 
-# platform-specific checks (bug #898450 #898452):
+# platform-specific checks (bug #898450):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -102,7 +102,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 pkg_setup() {
-	# people with broken alphabets run into trouble. bug #82186.
+	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
 	export LC_COLLATE="C"
 
@@ -126,7 +126,7 @@ src_prepare() {
 
 	# Use exuberant ctags which installs as /usr/bin/exuberant-ctags.
 	# Hopefully this pattern won't break for a while at least.
-	# This fixes bug #29398 (27 Sep 2003 agriffis)
+	# This fixes bug 29398 (27 Sep 2003 agriffis)
 	sed -i -e \
 		's/\<ctags\("\| [-*.]\)/exuberant-&/g' \
 		"${S}"/runtime/doc/syntax.txt \
@@ -147,7 +147,7 @@ src_prepare() {
 	if [[ -d "${S}"/src/po ]]; then
 		sed -i -e \
 			'/-S check.vim/s,..VIM.,ln -s $(VIM) testvim \; ./testvim -X,' \
-			"${S}"/src/po/Makefile || die "sed failed"
+			"${S}"/src/po/Makefile || die
 	fi
 
 	cp -v "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk || die "cp failed"
@@ -159,7 +159,7 @@ src_prepare() {
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
 	sed -i -e \
 		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
-	rm src/auto/configure || die "rm failed"
+	rm -v src/auto/configure || die "rm failed"
 
 	# --with-features=huge forces on cscope even if we --disable it. We need
 	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
@@ -177,24 +177,18 @@ src_prepare() {
 src_configure() {
 	emake -j1 -C src autoconf
 
-	# This should fix a sandbox violation (see bug #24447). The hvc
-	# things are for ppc64, see bug #86433.
+	# This should fix a sandbox violation (see bug 24447). The hvc
+	# things are for ppc64, see bug 86433.
 	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
 		if [[ -e ${file} ]]; then
-			addwrite ${file}
+			addwrite $file
 		fi
 	done
 
-	local myconf=(
-		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
-		--with-vim-name=gvim
-		--with-x
-	)
-
 	use debug && append-flags "-DDEBUG"
 
-	myconf+=(
+	local myconf=(
 		--with-features=huge
 		--disable-gpm
 		--with-gnome=no
@@ -252,7 +246,11 @@ src_configure() {
 			   vim_cv_toupper_broken=no
 	fi
 
-	econf "${myconf[@]}"
+	econf \
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)" \
+		--with-vim-name=gvim \
+		--with-x \
+		"${myconf[@]}"
 }
 
 src_compile() {
@@ -287,7 +285,7 @@ src_test() {
 }
 
 # Call eselect vi update with --if-unset
-# to respect user's choice (bug #187449)
+# to respect user's choice (bug 187449)
 eselect_vi_update() {
 	ebegin "Calling eselect vi update"
 	eselect vi update --if-unset
@@ -328,7 +326,7 @@ pkg_postinst() {
 	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
 
-	# update desktop file mime cache
+	# update fdo mime stuff, bug #78394
 	xdg_desktop_database_update
 
 	# update icon cache
@@ -342,7 +340,7 @@ pkg_postrm() {
 	# update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
 
-	# update desktop file mime cache
+	# update fdo mime stuff, bug #78394
 	xdg_desktop_database_update
 
 	# update icon cache
