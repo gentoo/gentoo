@@ -6,22 +6,23 @@ EAPI=8
 # Please bump with app-editors/vim-core and app-editors/gvim
 
 VIM_VERSION="9.1"
-VIM_PATCHES_VERSION="9.0.2092"
+VIM_PATCHES_VERSION="9.1.1432"
 
 LUA_COMPAT=( lua5-{1..4} luajit )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{10..14} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby31 ruby32"
 GENTOO_DEPEND_ON_PERL=no
 
-inherit bash-completion-r1 flag-o-matic lua-single desktop perl-module python-single-r1 ruby-single toolchain-funcs vim-doc xdg-utils
+inherit vim-doc flag-o-matic bash-completion-r1 lua-single perl-module python-single-r1 ruby-single toolchain-funcs desktop xdg-utils
 
-if [[ ${PV} == 9999* ]]; then
+if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://git.sr.ht/~xxc3nsoredxx/vim-patches/refs/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.xz"
+		https://gitweb.gentoo.org/proj/vim-patches.git/snapshot/vim-patches-vim-${VIM_PATCHES_VERSION}-patches.tar.bz2"
+		# https://github.com/douglarek/gentoo-vim-patches/releases/download/vim-${VIM_PATCHES_VERSION}-patches/vim-${VIM_PATCHES_VERSION}-patches.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
@@ -30,7 +31,7 @@ HOMEPAGE="https://www.vim.org https://github.com/vim/vim"
 
 LICENSE="vim"
 SLOT="0"
-IUSE="acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager X ${GENTOO_PERL_USESTRING}"
+IUSE="X acl crypt cscope debug gpm lua minimal nls perl python racket ruby selinux sound tcl terminal vim-pager ${GENTOO_PERL_USESTRING}"
 REQUIRED_USE="
 	lua? ( ${LUA_REQUIRED_USE} )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -38,18 +39,18 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
 	>=sys-libs/ncurses-5.2-r2:0=
+	nls? ( virtual/libintl )
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	crypt? ( dev-libs/libsodium:= )
 	cscope? ( dev-util/cscope )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
-	lua? (
-		${LUA_DEPS}
+	lua? ( ${LUA_DEPS}
 		$(lua_gen_impl_dep 'deprecated' lua5-1)
 	)
-	nls? ( virtual/libintl )
+	~app-editors/vim-core-${PV}
+	vim-pager? ( app-editors/vim-core[-minimal] )
 	perl? (
 		${GENTOO_PERL_DEPSTRING}
 		dev-lang/perl:=
@@ -60,7 +61,6 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )
 	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
-	vim-pager? ( app-editors/vim-core[-minimal] )
 	X? ( x11-libs/libXt )
 "
 DEPEND="${RDEPEND}
@@ -77,11 +77,11 @@ PDEPEND="!minimal? ( app-vim/gentoo-syntax )"
 if [[ ${PV} != 9999* ]]; then
 	# Gentoo patches to fix runtime issues, cross-compile errors, etc
 	PATCHES=(
-		"${WORKDIR}/vim-${VIM_PATCHES_VERSION}-patches"
+		"${WORKDIR}/vim-patches-vim-${VIM_PATCHES_VERSION}-patches"
 	)
 fi
 
-# platform-specific checks (bug #898450 #898452):
+# platform-specific checks (bug #898452):
 # - acl()     -- Solaris
 # - statacl() -- AIX
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -158,16 +158,8 @@ src_prepare() {
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
-	sed -i -e \
-		's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
+	sed -i 's# auto/config\.mk:#:#' src/Makefile || die "Makefile sed failed"
 	rm src/auto/configure || die "rm failed"
-
-	# --with-features=huge forces on cscope even if we --disable it. We need
-	# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
-	if ! use cscope; then
-		sed -i -e \
-			'/# define FEAT_CSCOPE/d' src/feature.h || die "couldn't disable cscope"
-	fi
 
 	# bug 908961
 	if use elibc_musl ; then
@@ -180,26 +172,22 @@ src_configure() {
 
 	# This should fix a sandbox violation (see bug #24447). The hvc
 	# things are for ppc64, see bug #86433.
-	local file
 	for file in /dev/pty/s* /dev/console /dev/hvc/* /dev/hvc*; do
-		if [[ -e ${file} ]]; then
+		if [[ -e "${file}" ]]; then
 			addwrite ${file}
 		fi
 	done
 
-	local myconf=(
-		--with-modified-by="Gentoo-${PVR} (RIP Bram)"
-		--enable-gui=no
-		--disable-darwin
-	)
-
+	local myconf=()
 	if use minimal; then
-		myconf+=(
+		myconf=(
 			--with-features=tiny
 			--disable-nls
 			--disable-canberra
 			--disable-acl
+			--enable-gui=no
 			--without-x
+			--disable-darwin
 			--disable-luainterp
 			--disable-perlinterp
 			--disable-pythoninterp
@@ -212,7 +200,7 @@ src_configure() {
 	else
 		use debug && append-flags "-DDEBUG"
 
-		myconf+=(
+		myconf=(
 			--with-features=huge
 			$(use_enable sound canberra)
 			$(use_enable acl)
@@ -230,6 +218,13 @@ src_configure() {
 			$(use_enable terminal)
 		)
 
+		# --with-features=huge forces on cscope even if we --disable it. We need
+		# to sed this out to avoid screwiness. (1 Sep 2004 ciaranm)
+		if ! use cscope; then
+			sed -i -e \
+				'/# define FEAT_CSCOPE/d' src/feature.h || die "sed failed"
+		fi
+
 		if use lua; then
 			# -DLUA_COMPAT_OPENLIB=1 is required to enable the
 			# deprecated (in 5.1) luaL_openlib API (#874690)
@@ -245,6 +240,8 @@ src_configure() {
 		# don't test USE=X here ... see bug #19115
 		# but need to provide a way to link against X ... see bug #20093
 		myconf+=(
+			--enable-gui=no
+			--disable-darwin
 			$(use_with X x)
 		)
 	fi
@@ -263,7 +260,9 @@ src_configure() {
 			   vim_cv_toupper_broken=no
 	fi
 
-	econf "${myconf[@]}"
+	econf \
+		--with-modified-by="Gentoo-${PVR} (RIP Bram)" \
+		"${myconf[@]}"
 }
 
 src_compile() {
@@ -314,7 +313,9 @@ src_test() {
 	# Depends on local network.
 	export TEST_SKIP_PAT='\(Test_expand_star_star\|Test_exrc\|Test_job_tty_in_out\|Test_spelldump_bang\|Test_fuzzy_completion_env\|Test_term_mouse_multiple_clicks_to_select_mode\|Test_spelldump\|Test_glvs_\)'
 
-	# Don't do additional GUI tests.
+	echo "throw 'Skipped: needs X'" > src/testdir/test_clientserver.vim || die
+	echo "throw 'Skipped: needs X'" > src/testdir/test_vim9_builtin.vim || die
+
 	emake -j1 -C src/testdir nongui
 }
 
@@ -354,23 +355,23 @@ src_install() {
 }
 
 pkg_postinst() {
-	# update documentation tags (from vim-doc.eclass)
+	# Update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# Call eselect vi update
+	eselect_vi_update
 
 	# update desktop file mime cache
 	xdg_desktop_database_update
-
-	# call eselect vi update
-	eselect_vi_update
 }
 
 pkg_postrm() {
-	# update documentation tags (from vim-doc.eclass)
+	# Update documentation tags (from vim-doc.eclass)
 	update_vim_helptags
+
+	# Call eselect vi update
+	eselect_vi_update
 
 	# update desktop file mime cache
 	xdg_desktop_database_update
-
-	# call eselect vi update
-	eselect_vi_update
 }
