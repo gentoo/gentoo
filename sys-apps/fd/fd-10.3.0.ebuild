@@ -128,7 +128,7 @@ LICENSE="|| ( Apache-2.0 MIT )"
 # Dependent crate licenses
 LICENSE+=" MIT Unicode-3.0"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64 x86"
+KEYWORDS="amd64 arm64 ppc64 x86"
 
 DEPEND="
 	!elibc_musl? ( >=dev-libs/jemalloc-5.1.0:= )
