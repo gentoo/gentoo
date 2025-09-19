@@ -14,7 +14,10 @@ LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~riscv ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="
+	!test? ( test )
+	x86? ( test )
+"
 
 BDEPEND="
 	test? ( >=dev-libs/mpfr-4.2 )
