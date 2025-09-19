@@ -346,6 +346,7 @@ src_test() {
 		tst_qopengl{,config,widget,window}
 		tst_qx11info
 		tst_surface
+		tst_wl_reconnect
 		tst_xdgdecorationv1
 		# fails for unknown reasons, but seatv4 is not actually used nowadays
 		tst_seatv4
