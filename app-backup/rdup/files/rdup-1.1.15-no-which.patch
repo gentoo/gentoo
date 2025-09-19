@@ -6,7 +6,7 @@ https://bugs.gentoo.org/963094
  
  if $mcrypt; then
 -    if ! which mcrypt 2>/dev/null 1>&2; then
-+    if ! command -v bash > /dev/null; then
++    if ! command -v mcrypt > /dev/null; then
  	echo2 "Mcrypt not found, can not continue"
  	exit 1
      fi
