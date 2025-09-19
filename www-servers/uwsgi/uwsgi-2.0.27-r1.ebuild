@@ -6,7 +6,7 @@ EAPI=8
 # Check the upstream uwsgi-2.0 branch, not master, for backports
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -31,7 +31,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~ppc x86 ~amd64-linux"
+KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86 ~amd64-linux"
 
 UWSGI_PLUGINS_STD=(
 	ping cache carbon nagios rpc rrdtool
