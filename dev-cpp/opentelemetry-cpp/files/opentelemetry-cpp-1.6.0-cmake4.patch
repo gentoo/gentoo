@@ -1,0 +1,17 @@
+https://github.com/open-telemetry/opentelemetry-cpp/commit/3e4b7d3c73d5c117069fb9becb7e2145dc06608d
+
+Modified to apply cleanly
+
+From 3e4b7d3c73d5c117069fb9becb7e2145dc06608d Mon Sep 17 00:00:00 2001
+From: Marc Alff <marc.alff@oracle.com>
+Date: Fri, 8 Mar 2024 09:35:12 +0100
+Subject: [PATCH] [BUILD] Bump cmake version to 3.9 (#2581)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.9)
+ 
+ # See https://cmake.org/cmake/help/v3.3/policy/CMP0057.html required by certain
+ # versions of gtest
