@@ -38,6 +38,7 @@ dev-python/betterproto
 dev-python/pypi-attestations
 dev-python/securesystemslib
 dev-python/sigstore
+dev-python/sigstore-models
 dev-python/sigstore-protobuf-specs
 dev-python/sigstore-rekor-types
 dev-python/rfc3161-client
