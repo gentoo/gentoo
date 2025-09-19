@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick Lauer <patrick@gentoo.org> (2025-09-19)
+# Dependency currently in ::guru
+games-board/lc0 onnx
+
 # Conrad Kostecki <conikost@gentoo.org> (2025-09-06)
 # Currently does not build in headless mode.
 # See: https://github.com/OpenRCT2/OpenRCT2/issues/25119
