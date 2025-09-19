@@ -154,12 +154,13 @@ qt6-build_src_prepare() {
 	if use !custom-cflags; then
 		_qt6-build_sanitize_cpu_flags
 
-		# LTO cause test failures in several components (qtcharts,
-		# multimedia, scxml, wayland, webchannel, and likely more --
-		# also 1 qtbase test wrt bug #955531), albeit many need
-		# retesting (not as bad as it used to). Many (all?) of these
-		# issues only happen with GCC.
-		filter-lto
+		# lto+gcc used to break a lot of tests, but this has improved so
+		# tentatively allow again for Qt >=6.10 + GCC >=15.2 (bug #955531)
+		if ver_test ${PV} -lt 6.10 ||
+			{ tc-is-gcc && ver_test $(gcc-version) -lt 15.2; };
+		then
+			filter-lto
+		fi
 	fi
 
 	[[ ${QT6_HAS_STATIC_LIBS} ]] && lto-guarantee-fat
