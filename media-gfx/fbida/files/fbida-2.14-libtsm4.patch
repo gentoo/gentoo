@@ -1,0 +1,13 @@
+fix API libtsm-4.0.0 (https://github.com/Aetf/libtsm/commit/78a34f9b0d338064e29935d5d7470e1c541ee741)
+https://github.com/kraxel/fbida/pull/5.patch
+--- a/fbcon.c
++++ b/fbcon.c
+@@ -241,7 +241,7 @@ struct color fbcon_tsm_color(const struct tsm_screen_attr *attr,
+     return c;
+ }
+ 
+-int fbcon_tsm_draw_cb(struct tsm_screen *con, uint32_t id,
++int fbcon_tsm_draw_cb(struct tsm_screen *con, uint64_t id,
+                       const uint32_t *ch, size_t len,
+                       unsigned int width, unsigned int posx, unsigned int posy,
+                       const struct tsm_screen_attr *attr,
