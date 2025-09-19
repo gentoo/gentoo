@@ -29,7 +29,7 @@ else
 			-> vulkan-headers-${HASH_VULKAN}.tar.gz
 		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/libdisplay-info-${HASH_DISPLAYINFO}.tar.bz2
 	"
-	KEYWORDS="-* ~amd64 x86"
+	KEYWORDS="-* amd64 x86"
 fi
 
 DESCRIPTION="Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine"
