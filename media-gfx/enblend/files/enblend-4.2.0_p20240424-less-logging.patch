@@ -1,0 +1,12 @@
+diff '--color=auto' -ruN enblend.orig/src/fixmath.h enblend/src/fixmath.h
+--- enblend.orig/src/fixmath.h	2024-04-24 04:42:26.000000000 +0100
++++ enblend/src/fixmath.h	2025-09-19 18:37:51.712304445 +0100
+@@ -44,7 +44,7 @@
+ 
+ // ANTICIPATED CHANGE: Remove this define after Lab/Luv optimization
+ // has gotten enough testing.
+-#define LOG_COLORSPACE_OPTIMIZATION
++// #define LOG_COLORSPACE_OPTIMIZATION
+ 
+ 
+ #define XYZ_SCALE 100.0
