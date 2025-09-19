@@ -1,0 +1,122 @@
+From ff46c252b040fd6e8fb0562bf4cc4c8db4eac95f Mon Sep 17 00:00:00 2001
+From: Devin Matthews <damatthews@smu.edu>
+Date: Thu, 11 Sep 2025 10:58:36 -0500
+Subject: [PATCH 1/2] Update Haswell gemmsup fix for gcc 16 and later.
+
+---
+ kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c | 9 ++++-----
+ kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c | 9 ++++-----
+ .../haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c    | 9 ++++-----
+ .../haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c    | 9 ++++-----
+ 4 files changed, 16 insertions(+), 20 deletions(-)
+
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
+index e71732de3c..2b38c9a4b1 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8m.c
+@@ -33,11 +33,10 @@
+ 
+ */
+ 
+-// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
+-// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
+-// make sure the compiler isn't clang since it also confusingly defines __GNUC__
+-#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
+-#pragma GCC optimize("-fno-tree-slp-vectorize")
++// This avoids a known issue with GCC15+ ("error: bp cannot be used in asm here", #845).
++// Make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ >= 15
++#pragma GCC optimize("-fno-tree-vectorize")
+ #endif
+ 
+ #include "blis.h"
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
+index 880af4207a..093d149a54 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_d6x8n.c
+@@ -33,11 +33,10 @@
+ 
+ */
+ 
+-// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
+-// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
+-// make sure the compiler isn't clang since it also confusingly defines __GNUC__
+-#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
+-#pragma GCC optimize("-fno-tree-slp-vectorize")
++// This avoids a known issue with GCC15+ ("error: bp cannot be used in asm here", #845).
++// Make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ >= 15
++#pragma GCC optimize("-fno-tree-vectorize")
+ #endif
+ 
+ #include "blis.h"
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
+index d0814d6d82..e9697f9771 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16m.c
+@@ -33,11 +33,10 @@
+ 
+ */
+ 
+-// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
+-// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
+-// make sure the compiler isn't clang since it also confusingly defines __GNUC__
+-#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
+-#pragma GCC optimize("-fno-tree-slp-vectorize")
++// This avoids a known issue with GCC15+ ("error: bp cannot be used in asm here", #845).
++// Make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ >= 15
++#pragma GCC optimize("-fno-tree-vectorize")
+ #endif
+ 
+ #include "blis.h"
+diff --git a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
+index bc2d783e3b..73517976eb 100644
+--- a/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
++++ b/kernels/haswell/3/sup/bli_gemmsup_rv_haswell_asm_s6x16n.c
+@@ -33,11 +33,10 @@
+ 
+ */
+ 
+-// This avoids a known issue with GCC15 ("error: bp cannot be used in asm here", #845).
+-// Only check for version 15 since this may be fixed in 16 (**fingers crossed**), and also
+-// make sure the compiler isn't clang since it also confusingly defines __GNUC__
+-#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ == 15
+-#pragma GCC optimize("-fno-tree-slp-vectorize")
++// This avoids a known issue with GCC15+ ("error: bp cannot be used in asm here", #845).
++// Make sure the compiler isn't clang since it also confusingly defines __GNUC__
++#if !defined(__clang__) && defined(__GNUC__) && __GNUC__ >= 15
++#pragma GCC optimize("-fno-tree-vectorize")
+ #endif
+ 
+ #include "blis.h"
+
+From b62a9f11c080189a8742ce9949f5930793fbdaf4 Mon Sep 17 00:00:00 2001
+From: Devin Matthews <damatthews@smu.edu>
+Date: Thu, 11 Sep 2025 11:04:13 -0500
+Subject: [PATCH 2/2] Update CREDITS [ci skip].
+
+---
+ CREDITS | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/CREDITS b/CREDITS
+index b677cbaa8d..a0615da121 100644
+--- a/CREDITS
++++ b/CREDITS
+@@ -64,6 +64,7 @@ but many others have contributed code, ideas, and feedback, including
+   Aaron Hutchinson         @Aaron-Hutchinson          (SiFive)
+   Francisco Igual          @figual                    (Universidad Complutense de Madrid)
+                            @j-bm
++  Sam James                @thesamesam
+   Madeesh Kannan           @shadeMe
+   Tony Kelman              @tkelman
+   Lee Killough             @leekillough               (Tactical Computing Labs)
+@@ -149,6 +150,7 @@ but many others have contributed code, ideas, and feedback, including
+   Chenhan Yu               @ChenhanYu                 (The University of Texas at Austin)
+   Roman Yurchak            @rth                       (Symerio)
+   Stefano Zampini          @stefanozampini
++  Paul Zander              @negril
+   M. Zhou                  @cdluminate
+   Igor Zhuravlov           @jip                       (Far Eastern Federal University)
+                            @AngryLoki
