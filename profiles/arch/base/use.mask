@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-09-19)
+# libquadmath from GCC is only available on some arches
+# https://gcc.gnu.org/PR96016
+perl_features_quadmath
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-02)
 # dev-python/pypi-attestations is not keyworded everywhere.
 verify-provenance

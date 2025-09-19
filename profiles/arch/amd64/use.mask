@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -amd64
 
+# Sam James <sam@gentoo.org> (2025-09-19)
+# libquadmath from GCC is only available on some arches
+# https://gcc.gnu.org/PR96016
+-perl_features_quadmath
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-02)
 # dev-python/pypi-attestations is keyworded here.
 -verify-provenance

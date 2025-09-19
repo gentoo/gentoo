@@ -4,6 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Sam James <sam@gentoo.org> (2025-09-19)
+# libquadmath from GCC is only available on some arches
+# https://gcc.gnu.org/PR96016
+-perl_features_quadmath
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-04-14)
 # media-libs/quirc is keyworded on amd64
 -quirc
