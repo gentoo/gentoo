@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	S=${WORKDIR}/engauge-${PV}
 else
 	SRC_URI="https://github.com/akhuettel/engauge-digitizer/archive/v${PV}.tar.gz -> engauge-digitizer-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	S=${WORKDIR}/engauge-digitizer-${PV}
 fi
 
