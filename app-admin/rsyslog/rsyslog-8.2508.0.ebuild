@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm ~arm64"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
