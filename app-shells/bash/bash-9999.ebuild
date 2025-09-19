@@ -366,14 +366,21 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	local old_ver
+	local IFS old_ver ver
+	local -a versions
 
 	# If /bin/sh does not exist, provide it.
 	if [[ ! -e ${EROOT}/bin/sh ]]; then
 		ln -sf -- bash "${EROOT}"/bin/sh || die
 	fi
 
-	read -r old_ver <<<"${REPLACING_VERSIONS}"
+	read -rd '' -a versions <<<"${REPLACING_VERSIONS}"
+	for ver in "${versions[@]}"; do
+		if [[ ! ${old_ver} ]] || ver_test "${ver}" -lt "${old_ver}"; then
+			old_ver=${ver}
+		fi
+	done
+
 	if [[ ! $old_ver ]]; then
 		:
 	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r8"; then
