@@ -1,0 +1,42 @@
+make fbcon and systemd optional
+--- a/meson.build
++++ b/meson.build
+@@ -24,9 +24,9 @@ webp_dep     = dependency('libwebp', required : get_option('webp'))
+ udev_dep     = dependency('libudev')
+ input_dep    = dependency('libinput')
+ xkb_dep      = dependency('xkbcommon')
+-glib_dep     = dependency('glib-2.0')
+-tsm_dep      = dependency('libtsm', required : false)
+-systemd_dep  = dependency('libsystemd', required : false, version : '>=237')
++glib_dep     = dependency('glib-2.0', required : get_option('fbcon'))
++tsm_dep      = dependency('libtsm', required : get_option('fbcon'))
++systemd_dep  = dependency('libsystemd', required : get_option('systemd'), version : '>=237')
+ 
+ # other library deps
+ cc           = meson.get_compiler('c')
+@@ -74,7 +74,7 @@ if get_option('webp').enabled()
+     read_srcs += 'rd/read-webp.c'
+     config.set('HAVE_LIBWEBP', true)
+ endif
+-if systemd_dep.found()
++if systemd_dep.found() and get_option('systemd').enabled()
+     config.set('HAVE_SYSTEMD', true)
+ endif
+ 
+@@ -155,7 +155,7 @@ fbcon_srcs   = [ 'fbcon.c', 'drmtools.c', 'fbtools.c', 'gfx.c',
+ fbcon_deps   = [ drm_dep, cairo_dep, util_dep, udev_dep, input_dep, xkb_dep, glib_dep,
+                  tsm_dep, systemd_dep ]
+ 
+-if tsm_dep.found() and target_machine.system() == 'linux'
++if tsm_dep.found() and target_machine.system() == 'linux' and get_option('fbcon').enabled()
+     executable('fbcon',
+                sources             : fbcon_srcs,
+                dependencies        : fbcon_deps,
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,3 +4,5 @@ option('tiff', type: 'feature', value : 'enabled')
+ option('webp', type: 'feature', value : 'auto')
+ option('motif', type: 'feature', value : 'auto')
+ option('pdf', type: 'feature', value : 'enabled')
++option('fbcon', type: 'feature', value : 'auto')
++option('systemd', type: 'feature', value : 'auto')
