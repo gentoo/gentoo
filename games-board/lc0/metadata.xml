@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
+	</maintainer>
+	<use>
+		<flag name="dnnl">Enable dnnl / OneDNN backend</flag>
+		<flag name="ispc">Enable ispc backend</flag>
+		<flag name="onnx">Enable onnx backend</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">LeelaChessZero/lc0</remote-id>
+	</upstream>
+</pkgmetadata>
