@@ -18,7 +18,7 @@
 		<flag name="zlib">Build with <pkg>sys-libs/zlib</pkg></flag>
 		<flag name="hepmc3">Build with <pkg>sci-physics/hepmc</pkg> version 3</flag>
 		<flag name="hepmc2">Build with <pkg>sci-physics/hepmc</pkg> version 2</flag>
-		<flag name="highfive">Build with <pkg>sci-libs/HighFive</pkg> and <pkg>sci-libs/hdf5</pkg></flag>
+		<flag name="highfive">Build with <pkg>sci-libs/highfive</pkg> and <pkg>sci-libs/hdf5</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="gitlab">hepcedar/rivet</remote-id>

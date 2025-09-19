@@ -29,7 +29,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	dev-cpp/yaml-cpp
 	highfive? (
-		sci-libs/HighFive
+		sci-libs/highfive
 		sci-libs/hdf5[cxx]
 	)
 	python? ( ${PYTHON_DEPS} )
