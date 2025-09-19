@@ -9,7 +9,7 @@ DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake distutils-r1
+inherit cmake distutils-r1 toolchain-funcs
 
 DESCRIPTION="A lightweight multi-platform, multi-architecture CPU emulator framework"
 HOMEPAGE="https://www.unicorn-engine.org"
@@ -69,6 +69,8 @@ src_prepare() {
 }
 
 src_configure(){
+	tc-export STRINGS
+
 	local mycmakeargs=(
 		-DUNICORN_ARCH="${UNICORN_TARGETS// /;}"
 		-DUNICORN_LOGGING=$(usex logging)
