@@ -1,0 +1,76 @@
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+# Bump with app-editors/vile
+GENTOO_DEPEND_ON_PERL="no"
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/thomasdickey.asc
+inherit perl-module verify-sig
+
+MY_P="${PN/x/}-${PV}"
+DESCRIPTION="VI Like Emacs -- yet another full-featured vi clone"
+HOMEPAGE="https://invisible-island.net/vile/"
+SRC_URI="https://invisible-island.net/archives/vile/current/${MY_P}.tgz"
+SRC_URI+=" verify-sig? ( https://invisible-island.net/archives/vile/current/${MY_P}.tgz.asc )"
+S="${WORKDIR}"/${MY_P}
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~ppc ~riscv ~sparc ~x86"
+IUSE="perl ${GENTOO_PERL_USESTRING}"
+
+RDEPEND="
+	~app-editors/vile-${PV}
+	virtual/libcrypt:=
+	>=x11-libs/libX11-1.0.0
+	>=x11-libs/libXt-1.0.0
+	>=x11-libs/libICE-1.0.0
+	>=x11-libs/libSM-1.0.0
+	>=x11-libs/libXaw-1.0.1
+	>=x11-libs/libXpm-3.5.4.2
+	perl? (
+		${GENTOO_PERL_DEPSTRING}
+		dev-lang/perl:=
+	)
+"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
+BDEPEND="
+	app-alternatives/lex
+	virtual/pkgconfig
+	verify-sig? ( >=sec-keys/openpgp-keys-thomasdickey-20240114 )
+"
+
+src_prepare() {
+	# Avoid perl-module_src_prepare
+	default
+}
+
+src_configure() {
+	econf \
+		--disable-stripping \
+		--with-ncurses \
+		--with-pkg-config \
+		--with-x \
+		$(use_with perl)
+}
+
+src_compile() {
+	# Avoid perl-module_src_compile
+	default
+}
+
+src_test() {
+	# Avoid perl-module_src_test
+	default
+}
+
+src_install() {
+	dobin xvile
+	dodoc CHANGES* README doc/*.doc
+	docinto html
+	dodoc doc/*.html
+}
