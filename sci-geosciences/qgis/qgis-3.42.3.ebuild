@@ -16,8 +16,12 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 	inherit git-r3
 else
-	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
-		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
+	SRC_URI="
+		https://qgis.org/downloads/${P}.tar.bz2
+		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )
+	"
+	# bug #957156
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.42.3-sip-6.11.patch.xz"
 	KEYWORDS="~amd64"
 fi
 inherit cmake flag-o-matic python-single-r1 xdg
@@ -125,6 +129,7 @@ PATCHES=(
 	# Fixes pulled from upstream branches, see bug #955031
 	"${FILESDIR}/${P}-fix-qt6-heatmap.patch"
 	"${FILESDIR}/${P}-fix-qt6-qgsserver-getmap.patch"
+	"${WORKDIR}/${PN}-3.42.3-sip-6.11.patch"
 )
 
 src_prepare() {
