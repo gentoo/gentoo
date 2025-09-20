@@ -18,7 +18,7 @@ HOMEPAGE="https://www.videolan.org/developers/libbluray.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0/2"
-IUSE="aacs bdplus +fontconfig java +truetype utils +xml"
+IUSE="aacs bdplus +fontconfig +truetype utils +xml"
 
 COMMON_DEPEND="
 	>=dev-libs/libudfread-1.1.0:=[${MULTILIB_USEDEP}]
@@ -31,8 +31,8 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	java? (
-		>=dev-java/ant-1.10.14-r3:0
-		>=virtual/jdk-1.8:*
+		>=dev-java/ant-1.10.15:0
+		<virtual/jdk-25:*
 	)
 "
 RDEPEND="
@@ -55,10 +55,14 @@ DOCS=( ChangeLog README.md )
 src_prepare() {
 	default
 
-	cat > src/libbluray/bdj/build.properties <<-EOF
-		java_version_asm=1.8
-		java_version_bdj=1.8
-	EOF
+	if use java; then
+		cat > src/libbluray/bdj/build.properties <<-EOF || die "build.properties"
+			ant.build.javac.source=$(java-pkg_get-source)
+			ant.build.javac.target=$(java-pkg_get-target)
+			java_version_asm=1.8
+			java_version_bdj=1.8
+		EOF
+	fi
 
 	eautoreconf
 }
@@ -87,7 +91,7 @@ multilib_src_install() {
 
 	use utils &&
 		find .libs/ -type f -executable ! -name "${PN}.*" \
-			 $(use java || echo '! -name bdj_test') -exec dobin {} +
+			$(use java || echo '! -name bdj_test') -exec dobin {} +
 
 	use java && java-pkg_regjar "${ED}"/usr/share/${PN}/lib/*.jar
 }
