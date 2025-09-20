@@ -37,13 +37,10 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3[X]
 	x11-libs/pango"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/pygobject:3="
 BDEPEND="dev-util/intltool
 	virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${P}"-build.patch
-)
 
 src_prepare() {
 	default
