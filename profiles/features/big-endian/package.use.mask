@@ -57,7 +57,13 @@ sys-apps/xdg-desktop-portal-gnome wayland
 net-libs/webkit-gtk:6 wayland
 dev-libs/libportal wayland
 gnome-extra/tecla wayland
+app-text/evince wayland
+dev-util/glade wayland
 gnome-base/gnome-shell wayland
+gui-libs/vte wayland
+media-libs/clutter wayland
+media-libs/clutter-gtk wayland
+x11-libs/vte wayland
 gnome-base/nautilus wayland
 
 # matoro <matoro_gentoo@matoro.tk> (2023-04-10)
