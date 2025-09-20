@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 WX_GTK_VER="3.2-gtk3"
 
 inherit check-reqs cmake flag-o-matic optfeature python-single-r1 toolchain-funcs wxwidgets xdg-utils
@@ -18,13 +18,10 @@ else
 	MY_PV="${PV/_rc/-rc}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://gitlab.com/kicad/code/${PN}/-/archive/${MY_PV}/${MY_P}.tar.bz2"
-	SRC_URI+="
-		https://gitlab.com/kicad/code/kicad/-/commit/5774338af2e22e1ff541ad9ab368e459e2a2add2.patch -> ${PN}-9.0.0-protobuf-30.patch
-	"
 	S="${WORKDIR}/${MY_P}"
 
 	if [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="amd64 ~riscv"
+		KEYWORDS="~amd64 ~riscv"
 	fi
 fi
 
@@ -60,6 +57,7 @@ RESTRICT="!test? ( test )"
 # Depend wxGTK version needs to be limited due to switch from EGL to GLX, bug #911120
 COMMON_DEPEND="
 	app-crypt/libsecret
+	dev-cpp/abseil-cpp:=
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
 	dev-libs/libgit2:=
@@ -75,7 +73,7 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
+	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
@@ -102,11 +100,9 @@ if [[ ${PV} == 9999 ]] ; then
 	BDEPEND+=" >=x11-misc/util-macros-1.18"
 fi
 
-CHECKREQS_DISK_BUILD="1500M"
+PATCHES=( "${FILESDIR}/${PN}-cmake-3.5.patch" )
 
-PATCHES=(
-	"${DISTDIR}/${P}-protobuf-30.patch" # drop in 9.0.1
-)
+CHECKREQS_DISK_BUILD="1500M"
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -147,7 +143,6 @@ src_configure() {
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 
 		-DKICAD_INSTALL_DEMOS="$(usex examples)"
-		-DCMAKE_SKIP_RPATH="ON"
 
 		-DOCC_INCLUDE_DIR="${CASROOT}"/include/opencascade
 		-DOCC_LIBRARY_DIR="${CASROOT}"/$(get_libdir)/opencascade
@@ -176,9 +171,7 @@ src_test() {
 		qa_cli
 	)
 
-	# LD_LIBRARY_PATH is there to help it pick up the just-built libraries
-	LD_LIBRARY_PATH="${BUILD_DIR}/common:${BUILD_DIR}/common/gal:${BUILD_DIR}/3d-viewer/3d_cache/sg:${LD_LIBRARY_PATH}" \
-		cmake_src_test
+	cmake_src_test
 }
 
 src_install() {
