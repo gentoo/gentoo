@@ -4,7 +4,7 @@
 EAPI=8
 GST_ORG_MODULE="gst-plugins-base"
 
-inherit flag-o-matic gstreamer-meson
+inherit flag-o-matic meson-multilib gstreamer-meson
 
 DESCRIPTION="Basepack of plugins for gstreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -97,7 +97,7 @@ multilib_src_configure() {
 	GST_PLUGINS_NOAUTO="alsa gl ogg pango theora vorbis x11 xshm xvideo"
 
 	local emesonargs=(
-		-Dtools=enabled
+		$(meson_native_enabled tools)
 
 		$(meson_feature alsa)
 		$(meson_feature kernel_linux drm)
