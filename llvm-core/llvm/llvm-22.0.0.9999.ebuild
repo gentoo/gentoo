@@ -204,9 +204,6 @@ src_prepare() {
 	# Update config.guess to support more systems
 	cp "${BROOT}/usr/share/gnuconfig/config.guess" cmake/ || die
 
-	# Disable lit tests (we run them in dev-python/lit).
-	> utils/lit/CMakeLists.txt || die
-
 	# Verify that the ebuild is up-to-date
 	check_uptodate
 
