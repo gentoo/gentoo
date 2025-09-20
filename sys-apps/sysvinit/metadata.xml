@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="savannah-nongnu">sysvinit</remote-id>
 		<remote-id type="github">slicer69/sysvinit</remote-id>
+		<remote-id type="codeberg">thejessesmith/sysvinit</remote-id>
 	</upstream>
 </pkgmetadata>
