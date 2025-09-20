@@ -1,0 +1,44 @@
+From 379087322d76b9bc9e10a46f1a7d98f24ff71909 Mon Sep 17 00:00:00 2001
+From: "Victor M. Alvarez" <vmalvarez@virustotal.com>
+Date: Fri, 19 Sep 2025 22:41:51 +0200
+Subject: [PATCH] fix: doc-test not working in release mode.
+Upstream: https://github.com/VirusTotal/yara-x/issues/452
+
+The test was..
+
+```should_panic
+Span(0..1).offset(-1);
+```
+
+But it was failing because integer overflows don't cause panics in release mode.
+
+Fixes #452
+--- a/parser/src/lib.rs
++++ b/parser/src/lib.rs
+@@ -22,7 +22,7 @@ solve.
+  */
+ 
+ use std::fmt::{Display, Formatter};
+-use std::ops::{Add, Range, Sub};
++use std::ops::Range;
+ 
+ pub use parser::Parser;
+ 
+@@ -128,11 +128,13 @@ impl Span {
+     /// ```
+     pub fn offset(mut self, offset: isize) -> Self {
+         if offset.is_negative() {
+-            self.0.start = self.0.start.sub(offset.unsigned_abs() as u32);
+-            self.0.end = self.0.end.sub(offset.unsigned_abs() as u32);
++            let offset = offset.unsigned_abs() as u32;
++            self.0.start = self.0.start.checked_sub(offset).unwrap();
++            self.0.end = self.0.end.checked_sub(offset).unwrap();
+         } else {
+-            self.0.start = self.0.start.add(offset as u32);
+-            self.0.end = self.0.end.add(offset as u32);
++            let offset = offset as u32;
++            self.0.start = self.0.start.checked_add(offset).unwrap();
++            self.0.end = self.0.end.checked_add(offset).unwrap();
+         }
+         self
+     }
