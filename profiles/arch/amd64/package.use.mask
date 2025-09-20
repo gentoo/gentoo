@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2025-09-20)
+# Require dev-libs/libtsm, keyworded here
+>=media-gfx/fbida-2.14_p20241216 -fbcon
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-12)
 # These BLAS/LAPACK providers are keyworded here.
 sci-libs/flexiblas -blis -mkl -openblas
