@@ -19,7 +19,7 @@ RDEPEND="
 	sys-libs/zlib
 	!dedicated? (
 		media-libs/libjpeg-turbo:=
-		media-libs/libsdl[joystick,video,X]
+		media-libs/libsdl2[joystick,video,X]
 		media-libs/libtheora
 		media-libs/libogg
 		media-libs/libvorbis
@@ -27,7 +27,7 @@ RDEPEND="
 		net-misc/curl
 		virtual/glu
 		opengl? (
-			media-libs/libsdl[opengl]
+			media-libs/libsdl2[opengl]
 			virtual/opengl
 		)
 	)
