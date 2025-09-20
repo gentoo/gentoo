@@ -5,6 +5,9 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="test-full">Run expensive tests (mostly CPU intensive).</flag>
+	</use>
 	<upstream>
 		<remote-id type="savannah">sed</remote-id>
 		<remote-id type="cpe">cpe:/a:gnu:sed</remote-id>

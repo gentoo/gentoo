@@ -14,7 +14,7 @@ SRC_URI+=" verify-sig? ( mirror://gnu/sed/${P}.tar.xz.sig )"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos"
-IUSE="acl nls selinux static"
+IUSE="acl nls selinux static test-full"
 
 RDEPEND="
 	!static? (
@@ -58,6 +58,8 @@ src_configure() {
 }
 
 src_test() {
+	local -x RUN_{VERY_,}EXPENSIVE_TESTS=$(usex test-full yes no)
+
 	# We don't want to automagically use Valgrind for tests.
 	sed -i -e 's:valgrind --error-exitcode=1:false:' init.cfg || die
 
