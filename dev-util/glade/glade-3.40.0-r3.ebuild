@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit gnome2 python-single-r1 meson optfeature virtualx
+inherit flag-o-matic gnome2 python-single-r1 meson optfeature virtualx
 
 DESCRIPTION="A user interface designer for GTK+ and GNOME"
 HOMEPAGE="https://glade.gnome.org https://gitlab.gnome.org/GNOME/glade"
@@ -13,16 +13,16 @@ LICENSE="GPL-2+ FDL-1.1+"
 SLOT="3.10/13" # subslot = suffix of libgladeui-2.so
 KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
-IUSE="gjs gtk-doc +introspection python webkit"
+IUSE="X gjs gtk-doc +introspection python wayland webkit"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
-	dev-libs/atk[introspection?]
+	>=app-accessibility/at-spi2-core-2.46.0[introspection?]
 	>=dev-libs/glib-2.53.2:2
 	>=dev-libs/libxml2-2.4.0:2=
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2[introspection?]
-	>=x11-libs/gtk+-3.22.0:3[introspection?]
+	>=x11-libs/gtk+-3.22.0:3[X?,introspection?,wayland?]
 	x11-libs/pango[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	gjs? ( >=dev-libs/gjs-1.64.0 )
@@ -63,6 +63,9 @@ pkg_setup() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	local emesonargs=(
 		-Dgladeui=true
 		$(meson_feature gjs)

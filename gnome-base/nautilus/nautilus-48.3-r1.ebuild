@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson readme.gentoo-r1 virtualx xdg
+inherit flag-o-matic gnome.org gnome2-utils meson readme.gentoo-r1 virtualx xdg
 
 DESCRIPTION="Default file manager for the GNOME desktop"
 HOMEPAGE="https://apps.gnome.org/Nautilus/"
@@ -13,7 +13,7 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
-IUSE="+cloudproviders doc gnome +gstreamer +introspection +previewer selinux"
+IUSE="X +cloudproviders doc gnome +gstreamer +introspection +previewer selinux wayland"
 REQUIRED_USE="doc? ( introspection )"
 
 DEPEND="
@@ -25,7 +25,7 @@ DEPEND="
 	>=app-arch/gnome-autoar-0.4.4
 	>=gnome-base/gnome-desktop-43:4=
 	>=gnome-base/gsettings-desktop-schemas-42
-	>=gui-libs/gtk-4.17.5:4[introspection?]
+	>=gui-libs/gtk-4.17.5:4[X?,introspection?,wayland?]
 	>=gui-libs/libadwaita-1.6_beta:1
 	>=dev-libs/libportal-0.7:=[gtk]
 	>=x11-libs/pango-1.28.3
@@ -74,6 +74,9 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	local emesonargs=(
 		$(meson_use doc docs)
 		-Dextensions=true # image file properties, also required for -Dgstreamer=true
