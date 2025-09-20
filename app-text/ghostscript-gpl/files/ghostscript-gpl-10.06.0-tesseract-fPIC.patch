@@ -1,0 +1,25 @@
+ld: ./soobj/tesseract_api_pagerenderer.o: warning: relocation against `_ZTINSt8__detail11_AnyMatcherINSt7__cxx1112regex_traitsIcEELb1ELb0ELb0EEE' in read-only section `.text._ZNSt17_Function_handlerIFbcENSt8__detail11_AnyMatcherINSt7__cxx1112regex_traitsIcEELb1ELb0ELb0EEEE10_M_managerERSt9_Any_dataRKS8_St18_Manager_operation[_ZNSt17_Function_handlerIFbcENSt8__detail11_AnyMatcherINSt7__cxx1112regex_traitsIcEELb1ELb0ELb0EEEE10_M_managerERSt9_Any_dataRKS8_St18_Manager_operation]'
+ld: ./soobj/tessocr.o: relocation R_X86_64_PC32 against symbol `leptonica_free' can not be used when making a shared object; recompile with -fPIC
+ld: final link failed: bad value
+--- a/base/ocr.mak
++++ b/base/ocr.mak
+@@ -20,7 +20,7 @@
+ 
+ # Define the name of this makefile.
+ LIBOCR_MAK=$(GLSRC)ocr.mak $(TOP_MAKEFILES)
+-OCRCXX = $(CXX) $(TESSINCLUDES) $(TESSCXXFLAGS) $(CCXXFLAGS) -DTESSERACT_IMAGEDATA_AS_PIX -DTESSERACT_DISABLE_DEBUG_FONTS -DGRAPHICS_DISABLED -UCLUSTER
++OCRCXX = $(CXX) $(TESSINCLUDES) $(TESSCXXFLAGS) $(CCXXFLAGS) -DTESSERACT_IMAGEDATA_AS_PIX -DTESSERACT_DISABLE_DEBUG_FONTS -DGRAPHICS_DISABLED -UCLUSTER -fPIC
+ 
+ # Tesseract veneer.
+ $(GLGEN)tessocr.$(OBJ) : $(GLSRC)tessocr.cpp $(GLSRC)tessocr.h $(LIBOCR_MAK) \
+--- a/base/tesseract.mak
++++ b/base/tesseract.mak
+@@ -42,7 +42,7 @@ TESSINCLUDES=\
+ # this conflicts with Tesseract's use of a CLUSTER type. We work around this
+ # here by undefining CLUSTER for the tesseract portion of the build.
+ 
+-TESSCXX = $(CXX) $(TESSINCLUDES) $(TESSCXXFLAGS) $(CCXXFLAGS) -DTESSERACT_IMAGEDATA_AS_PIX -DTESSERACT_DISABLE_DEBUG_FONTS -DGRAPHICS_DISABLED -UCLUSTER -DDISABLED_LEGACY_ENGINE
++TESSCXX = $(CXX) $(TESSINCLUDES) $(TESSCXXFLAGS) $(CCXXFLAGS) -DTESSERACT_IMAGEDATA_AS_PIX -DTESSERACT_DISABLE_DEBUG_FONTS -DGRAPHICS_DISABLED -UCLUSTER -DDISABLED_LEGACY_ENGINE -fPIC
+ TESSOBJ = $(GLOBJDIR)$(D)tesseract_
+ TESSO_ = $(O_)$(TESSOBJ)
+ 
