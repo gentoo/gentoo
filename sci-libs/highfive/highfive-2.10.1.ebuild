@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,8 @@ inherit cmake docs
 
 DESCRIPTION="Header-only C++ interface for libhdf5"
 HOMEPAGE="https://github.com/BlueBrain/HighFive"
-SRC_URI="https://github.com/BlueBrain/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/BlueBrain/${PN}/archive/refs/tags/v${PV}.tar.gz -> HighFive-${PV}.tar.gz"
+S="${WORKDIR}/HighFive-${PV}"
 
 LICENSE="Boost-1.0"
 SLOT="0"
