@@ -14,6 +14,7 @@
 	<flag name="multicall">Build all tools into a single `coreutils` program akin to busybox to save space</flag>
 	<flag name="openssl">Use openssl libcrypto hash routines for hash functions</flag>
 	<flag name="split-usr">Enable this if /bin and /usr/bin are separate directories</flag>
+	<flag name="test-full">Run expensive tests (mostly CPU intensive).</flag>
 </use>
 <upstream>
 	<remote-id type="cpe">cpe:/a:gnu:coreutils</remote-id>
