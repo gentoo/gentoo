@@ -1,0 +1,69 @@
+https://github.com/rpm-software-management/createrepo_c/pull/451
+
+From 198667cde31452c5af81615f3980bce99fbf829f Mon Sep 17 00:00:00 2001
+From: Moritz Haase <Moritz.Haase@bmw.de>
+Date: Mon, 23 Jun 2025 09:21:07 +0200
+Subject: [PATCH 1/2] cmake: Allow builds without Doxygen being present with
+ CMake 4+
+
+With CMake 4+, the initial CMake run fails with
+
+    CMake Error at doc/CMakeLists.txt:18 (ADD_DEPENDENCIES):
+      The dependency target "doc-c" of target "doc" does not exist.
+
+in case Doxygen is not installed on the system, since non-existent dependencies
+are not ignored anymore (see [0]). Rectify that by making sure that we only add
+the dependency in case Doxygen has been found.
+
+[0]: https://cmake.org/cmake/help/latest/policy/CMP0046.html
+---
+ doc/CMakeLists.txt | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 6b2ef5e0..6332b912 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -1,11 +1,15 @@
+ ADD_SUBDIRECTORY (python)
+ 
++ADD_CUSTOM_TARGET (doc)
++ADD_DEPENDENCIES (doc doc-python)
++
+ find_package(Doxygen)
+ if(DOXYGEN_FOUND)
+     CONFIGURE_FILE("Doxyfile.in.in" "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in" @ONLY)
+     add_custom_target(doc-c
+         ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in
+         COMMENT "Building C API documentation with Doxygen" VERBATIM)
++    ADD_DEPENDENCIES (doc doc-c)
+ endif(DOXYGEN_FOUND)
+ 
+ IF(CREATEREPO_C_INSTALL_MANPAGES)
+@@ -13,6 +17,3 @@ IF(CREATEREPO_C_INSTALL_MANPAGES)
+             DESTINATION "${CMAKE_INSTALL_MANDIR}/man8"
+             COMPONENT bin)
+ ENDIF(CREATEREPO_C_INSTALL_MANPAGES)
+-
+-ADD_CUSTOM_TARGET (doc)
+-ADD_DEPENDENCIES (doc doc-python doc-c)
+
+From e7f1d2f517b3d838b7082f1f4287f51fb4f6b1d3 Mon Sep 17 00:00:00 2001
+From: Moritz Haase <Moritz.Haase@bmw.de>
+Date: Mon, 23 Jun 2025 09:47:49 +0200
+Subject: [PATCH 2/2] AUTHORS: Add myself
+
+... as part of my first contribution to the project.
+---
+ AUTHORS | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/AUTHORS b/AUTHORS
+index 2ffb7a93..bc0586a8 100644
+--- a/AUTHORS
++++ b/AUTHORS
+@@ -11,3 +11,4 @@ Ralph Bean <rbean@redhat.com>
+ Frank Schreiner <schreiner@suse.de>
+ Daniel Alley <dalley@redhat.com>
+ Matt Jolly <matt.jolly@footclan.ninja>
++Moritz Haase <moritz.haase at bmw dot de>

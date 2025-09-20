@@ -1,0 +1,45 @@
+https://github.com/rpm-software-management/createrepo_c/pull/456
+
+From 2c48ec51b7927d5258e166c3d9cff0e5beba4a32 Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@uls.co.za>
+Date: Tue, 16 Sep 2025 16:44:01 +0200
+Subject: [PATCH] Make building of doxygen based C API docs configurable.
+
+Signed-off-by: Jaco Kroon <jaco@uls.co.za>
+---
+ doc/CMakeLists.txt | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/doc/CMakeLists.txt b/doc/CMakeLists.txt
+index 6332b91..eaa6de2 100644
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -3,14 +3,17 @@ ADD_SUBDIRECTORY (python)
+ ADD_CUSTOM_TARGET (doc)
+ ADD_DEPENDENCIES (doc doc-python)
+ 
+-find_package(Doxygen)
+-if(DOXYGEN_FOUND)
+-    CONFIGURE_FILE("Doxyfile.in.in" "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in" @ONLY)
+-    add_custom_target(doc-c
+-        ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in
+-        COMMENT "Building C API documentation with Doxygen" VERBATIM)
+-    ADD_DEPENDENCIES (doc doc-c)
+-endif(DOXYGEN_FOUND)
++option(BUILD_DOC_C "Buil C API documentation" ON)
++if(BUILD_DOC_C)
++    find_package(Doxygen)
++    if(DOXYGEN_FOUND)
++        CONFIGURE_FILE("Doxyfile.in.in" "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in" @ONLY)
++        add_custom_target(doc-c
++            ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile.in
++            COMMENT "Building C API documentation with Doxygen" VERBATIM)
++        ADD_DEPENDENCIES (doc doc-c)
++    endif(DOXYGEN_FOUND)
++endif(BUILD_DOC_C)
+ 
+ IF(CREATEREPO_C_INSTALL_MANPAGES)
+     INSTALL(FILES createrepo_c.8 mergerepo_c.8 modifyrepo_c.8 sqliterepo_c.8
+-- 
+2.49.1
+
