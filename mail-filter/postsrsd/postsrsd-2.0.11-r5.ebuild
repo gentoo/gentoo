@@ -7,10 +7,11 @@ inherit cmake eapi9-ver readme.gentoo-r1 systemd
 
 DESCRIPTION="Postfix Sender Rewriting Scheme daemon"
 HOMEPAGE="https://github.com/roehling/postsrsd"
-SRC_URI="https://github.com/roehling/postsrsd/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/roehling/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-# See REUSE.toml; GPL-3 for the main software, BSD for src/sha*.
-LICENSE="GPL-3 BSD"
+# See REUSE.toml: GPL-3 (v3 only) for the main software,
+# BSD for src/{sha1,srs2}.*, FSFAP for cmake/*
+LICENSE="GPL-3 BSD FSFAP"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="redis sqlite test"
