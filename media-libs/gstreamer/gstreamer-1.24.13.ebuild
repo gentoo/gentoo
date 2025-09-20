@@ -36,12 +36,8 @@ BDEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS MAINTAINERS README.md RELEASE )
 
-PATCHES=(
-	"${FILESDIR}"/gstreamer-1.24.10-disable-test-with-no-tools.patch
-)
-
 # Rust
-QA_FLAGS_IGNORED="usr/libexec/gstreamer-1.0/gst-ptp-helper"
+QA_FLAGS_IGNORED="usr/.*/libexec/gstreamer-1.0/gst-ptp-helper"
 
 pkg_setup() {
 	gstreamer-meson_pkg_setup
@@ -50,7 +46,10 @@ pkg_setup() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dtools=$(multilib_is_native_abi && echo enabled || echo disabled)
+		# Install tools for all abi's in separate dirs bug #870361
+		-Dtools=enabled
+		-Dlibexecdir=$(get_libdir)/libexec
+
 		-Dbenchmarks=disabled
 		-Dexamples=disabled
 		-Dcheck=enabled
