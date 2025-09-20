@@ -69,6 +69,10 @@ src_unpack() {
 }
 
 src_configure() {
+	if use tod && tc-ld-is-lld; then
+		eapply "${FILESDIR}/${PN}-1.94.9-tod-fix-linking-with-lld.patch"
+	fi
+
 	# TODO: wire up test deps (cairo, pygobject, etc) for extra tests
 	# currently skipped.
 	local emesonargs=(
