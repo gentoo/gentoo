@@ -1,0 +1,4 @@
+d /var/cache/nginx 0755 root root
+
+# Clean up the cache only on boot to not break running NGINX
+e! /var/cache/nginx/ - - - 0
