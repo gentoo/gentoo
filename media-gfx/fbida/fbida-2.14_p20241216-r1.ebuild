@@ -24,7 +24,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/libexif
 	media-libs/libjpeg-turbo:=
-	sys-apps/systemd-utils[udev]
+	virtual/libudev
 	virtual/ttf-fonts
 	x11-libs/cairo
 	x11-libs/libdrm
