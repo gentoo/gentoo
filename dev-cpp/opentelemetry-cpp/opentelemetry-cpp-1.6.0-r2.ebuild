@@ -14,40 +14,44 @@ SRC_URI="https://github.com/open-telemetry/${PN}/archive/refs/tags/v${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="+jaeger prometheus test"
 
 RDEPEND="
 	net-misc/curl:=
 	dev-libs/thrift:=
 	dev-libs/boost:=
+	prometheus? ( dev-cpp/prometheus-cpp )
 "
 DEPEND="
 	${RDEPEND}
-	prometheus? (
-		dev-cpp/prometheus-cpp
-	)
-	test? (
-		dev-cpp/gtest
-		dev-cpp/benchmark
-	)
+	test? ( dev-cpp/gtest )
 "
 
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	# remove tests the need network
-	"${FILESDIR}/opentelemetry-cpp-1.3.0-tests.patch"
+	# bug #865029
+	"${FILESDIR}/opentelemetry-cpp-1.6.0-dont-install-nosend.patch"
+	"${FILESDIR}/opentelemetry-cpp-1.6.0-cmake4.patch"
+	"${FILESDIR}/opentelemetry-cpp-1.6.0-gcc13.patch"
+	"${FILESDIR}/opentelemetry-cpp-1.6.0-add-benchmark-option.patch"
 )
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
-		-DBUILD_SHARED_LIBS:BOOL=ON
 		-DBUILD_TESTING:BOOL=$(usex test)
-		-DWITH_JAEGER:BOOL=$(usex jaeger)
-		-DWITH_PROMETHEUS:BOOL=$(usex prometheus)
+		-DWITH_BENCHMARK=OFF # benchmark tests dont make sense in ebuilds
+		-DBUILD_W3CTRACECONTEXT_TEST=OFF # network-sandbox breaking tests
+
+		-DWITH_JAEGER=$(usex jaeger)
+		-DWITH_PROMETHEUS=$(usex prometheus)
 	)
 
 	cmake_src_configure
+}
+
+src_test() {
+	# curl tests fragile
+	cmake_src_test -j1
 }
