@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://www.hatari-emu.org/
 	https://framagit.org/hatari/hatari/
 "
-SRC_URI="https://framagit.org/hatari/releases/-/raw/main/v$(ver_cut 1-2)/${P}.tar.bz2"
+SRC_URI="https://framagit.org/hatari/releases/-/raw/main/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
