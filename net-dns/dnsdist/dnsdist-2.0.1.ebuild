@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 RUST_MIN_VER=1.85.1
 RUST_OPTIONAL=1
 
-inherit cargo flag-o-matic lua-single python-any-r1
+inherit cargo flag-o-matic lua-single python-any-r1 toolchain-funcs
 
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
 HOMEPAGE="https://www.dnsdist.org/index.html"
@@ -76,6 +76,13 @@ src_prepare() {
 src_configure() {
 	# bug #822855
 	append-lfs-flags
+
+	# There is currently no reliable way to handle mixed C++/Rust + LTO
+	# correctly: https://bugs.gentoo.org/963128
+	if use yaml && tc-is-lto ; then
+		ewarn "Disabling LTO because of mixed C++/Rust toolchains."
+		filter-lto
+	fi
 
 	# some things can only be enabled/disabled by defines
 	! use dnstap && append-cppflags -DDISABLE_PROTOBUF
