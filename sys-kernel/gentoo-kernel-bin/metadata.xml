@@ -6,10 +6,6 @@
 		<name>Distribution Kernel Project</name>
 	</maintainer>
 	<use>
-		<flag name="generic-uki">
-			Install a prebuilt generic initramfs and Unified Kernel Image
-			(EXPERIMENTAL).
-		</flag>
 		<flag name="initramfs">
 			Build initramfs along with the kernel.
 		</flag>

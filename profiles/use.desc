@@ -97,6 +97,7 @@ freetds - Add support for the TDS protocol to connect to MSSQL/Sybase databases
 ftp - Add FTP (File Transfer Protocol) support
 gd - Add support for media-libs/gd (to generate graphics on the fly)
 gdbm - Add support for sys-libs/gdbm (GNU database libraries)
+generic-uki - Install a generic initramfs and Unified Kernel Image alongside the distribution kernel
 geoip - Add geoip support for country and city lookup based on IPs
 geolocation - Enable physical position determination
 ggi - Add support for media-libs/libggi (non-X video api/drivers)
