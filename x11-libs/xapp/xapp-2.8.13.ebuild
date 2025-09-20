@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2-utils vala meson python-r1
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/linuxmint/xapp/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-3 xfce? ( GPL-3 )"
 SLOT="0"
 
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="gtk-doc introspection mate vala xfce"
 REQUIRED_USE="${PYTHON_REQUIRED_USE} vala? ( introspection )"
 
@@ -33,6 +33,7 @@ DEPEND="
 RDEPEND="
 	${PYTHON_DEPS}
 	${DEPEND}
+	sys-power/switcheroo-control
 
 	introspection? (
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -59,14 +60,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	# Make introspection/vala optional
-	# https://github.com/linuxmint/xapp/pull/184
-	"${FILESDIR}"/${PN}-2.8.4-optional-introspection.patch
-
-	# Allow multiple gobject installation targets
-	# https://github.com/linuxmint/xapp/pull/183
-	"${FILESDIR}"/${PN}-2.8.4-multiple-python-targets.patch
-
 	# Don't install pastebin upload wrapper
 	"${FILESDIR}"/0001-don-t-install-pastebin-upload-wrapper.patch
 )

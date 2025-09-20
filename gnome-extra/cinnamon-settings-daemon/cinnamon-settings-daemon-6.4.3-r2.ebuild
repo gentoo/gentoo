@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,14 +13,14 @@ SRC_URI="https://github.com/linuxmint/cinnamon-settings-daemon/archive/${PV}.tar
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1 LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+colord cups input_devices_wacom smartcard systemd wayland"
 
 RDEPEND="
 	>=dev-libs/glib-2.40.0:2[dbus]
 	dev-libs/libgudev
 	>=gnome-base/libgnomekbd-3.6:=
-	>=gnome-extra/cinnamon-desktop-6.2:0=
+	>=gnome-extra/cinnamon-desktop-6.4:0=
 	media-libs/fontconfig
 	>=media-libs/lcms-2.2:2
 	|| (
@@ -29,6 +29,7 @@ RDEPEND="
 	)
 	>=media-libs/libpulse-0.9.16[glib]
 	>=sys-auth/polkit-0.97
+	sys-libs/timezone-data:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libnotify-0.7.3
@@ -38,7 +39,7 @@ RDEPEND="
 	x11-libs/libXi
 	>=x11-libs/libxklavier-5.0:=
 	>=x11-libs/pango-1.20.0
-	>=sys-power/upower-0.9.11:=
+	>=sys-power/upower-0.99.11:=
 
 	colord? ( >=x11-misc/colord-0.1.27:= )
 	cups? (
@@ -51,7 +52,7 @@ RDEPEND="
 		>=gnome-base/librsvg-2.36.2
 	)
 	!input_devices_wacom? (
-		>=x11-libs/gtk+-3.14.0:3
+		>=x11-libs/gtk+-3.14.0:3[X]
 	)
 	smartcard? (
 		dev-libs/nspr
@@ -72,9 +73,20 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	# Generate tz data header on build
+	# https://github.com/linuxmint/cinnamon-settings-daemon/pull/405
+	"${FILESDIR}/${PN}-6.4.0-generate-tz-data.patch"
+
+	# Fix tz data coordinate parsing
+	# https://github.com/linuxmint/cinnamon-settings-daemon/commit/eec27984940dfb11904b02228357f430b585c41f
+	"${FILESDIR}/${PN}-6.4.0-fix-tz-data-parsing.patch"
+)
+
 src_prepare() {
 	default
-	python_fix_shebang install-scripts
+	python_fix_shebang install-scripts plugins/color
+	rm plugins/color/tz-coords.h || die "Error removing stale tz-coords.h"
 }
 
 src_configure() {
@@ -89,6 +101,8 @@ src_configure() {
 		-Duse_gudev=enabled
 		-Duse_polkit=enabled
 		-Duse_logind=enabled
+		-Dgenerate_tz_coords=true
+		-Dzone_tab="${EPREFIX}/usr/share/zoneinfo/zone1970.tab"
 		$(meson_feature colord use_color)
 		$(meson_feature cups use_cups)
 		$(meson_feature smartcard use_smartcard)
