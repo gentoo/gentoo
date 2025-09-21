@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,6 +7,8 @@ MY_PV="$(ver_cut 1-3)-$(ver_cut 4)"
 DOTNET_RUNTIME_V="8.0.7"
 
 CMAKE_IN_SOURCE_BUILD="ON"
+CMAKE_MAKEFILE_GENERATOR="emake"
+
 DOTNET_PKG_COMPAT="8.0"
 NUGETS="
 microsoft.codeanalysis.analyzers@1.1.0
@@ -164,7 +166,8 @@ DOTNET_PKG_PROJECTS=(
 	src/managed/ManagedPart.csproj   # Restore but do not build those projects.
 )
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0.1012-compileoptions.patch"
+	"${FILESDIR}/netcoredbg-3.0.0.1012-compileoptions.patch"
+	"${FILESDIR}/netcoredbg-3.1.2.1054-cmake_minimum_required.patch"
 )
 QA_FLAGS_IGNORED=".*/libdbgshim.so"
 
