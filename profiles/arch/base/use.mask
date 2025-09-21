@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-09-20)
+# Experimental and only available on a subset of architectures
+generic-uki
+
 # Sam James <sam@gentoo.org> (2025-09-19)
 # libquadmath from GCC is only available on some arches
 # https://gcc.gnu.org/PR96016

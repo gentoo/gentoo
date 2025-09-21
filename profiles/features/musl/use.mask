@@ -5,6 +5,10 @@
 -elibc_musl
 elibc_glibc
 
+# Alfred Wingate <parona@protonmail.com> (2025-09-20)
+# Requires systemd
+generic-uki
+
 # Sam James <sam@gentoo.org> (2025-07-12)
 # dev-debug/dtrace and dev-debug/systemtap don't work on musl
 dtrace
