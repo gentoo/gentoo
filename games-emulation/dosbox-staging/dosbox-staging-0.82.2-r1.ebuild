@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit flag-o-matic meson xdg
+inherit meson xdg
 
 DESCRIPTION="Modernized DOSBox soft-fork"
 HOMEPAGE="https://dosbox-staging.github.io/"
@@ -50,11 +50,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# -Werror=odr
-	# https://bugs.gentoo.org/926078
-	# https://github.com/dosbox-staging/dosbox-staging/issues/3519
-	filter-lto
-
 	# xinput2 comes with libsdl2[X]
 	local emesonargs=(
 		-Duse_xinput2=true
