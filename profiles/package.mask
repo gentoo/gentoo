@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-09-21)
+# Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
+# not just network. See bug #963106.
+=sys-kernel/linux-firmware-20250917
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-09-18)
 # No revdeps left, in-tree version is broken with cmake4, and is a pain
 # to maintain due to its overly custom cmake usage. Also outdated given
