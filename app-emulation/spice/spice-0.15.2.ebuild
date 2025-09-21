@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ inherit meson python-any-r1 readme.gentoo-r1 xdg-utils
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/spice/spice.git"
 	inherit git-r3
 
 	DEPEND="~app-emulation/spice-protocol-9999"
