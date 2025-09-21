@@ -11,21 +11,19 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 RDEPEND=">=media-libs/opencv-4.1.2-r3:=[contrib,contribdnn,${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/gst-plugins-bad-1.24.10-use-system-libs-opencv.patch
-)
-
-multilib_src_configure() {
-	local emesonargs=(
-		# We need to disable here to avoid colliding w/ gst-plugins-bad
-		# on translations, because we currently do a "full" install in
-		# multilib_src_install in this package. See bug #907480.
-		-Dnls=disabled
-	)
-
-	gstreamer_multilib_src_configure
-}
-
 multilib_src_install() {
-	DESTDIR="${D}" eninja install
+	gstreamer_multilib_src_install
+
+	# Handhold install of libgstopencv.so outside of gst-plugins-bad
+	for file in gst-libs/gst/opencv/* ; do
+		if [[ -f ${file} ]] && ! [[ -d ${file} ]] && ! [[ -h ${file} ]]; then
+			# libgstopencv-1.0.so.0.2413.0 -> libgstopencv-1.0.so.0 -> libgstopencv-1.0.so
+			dolib.so "${file}"
+			file_name="${file##*\/}"
+			dosym "${file_name}" "${EPREFIX}/usr/$(get_libdir)/${file_name%.*.*}"
+			dosym "${file_name%.*.*}" "${EPREFIX}/usr/$(get_libdir)/${file_name%.*.*.*}"
+		fi
+	done
+	insinto /usr/include/gstreamer-${SLOT}/gst/opencv/
+	doins "${S}"/gst-libs/gst/opencv/*.h
 }
