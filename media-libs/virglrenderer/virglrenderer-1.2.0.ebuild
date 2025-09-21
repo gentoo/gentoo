@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit meson python-any-r1
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/virglrenderer.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/virgl/virglrenderer.git"
 	inherit git-r3
 else
 	MY_P="${PN}-${P}"
