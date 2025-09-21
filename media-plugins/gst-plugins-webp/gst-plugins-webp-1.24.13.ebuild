@@ -9,5 +9,5 @@ inherit gstreamer-meson
 DESCRIPTION="WebP image format support for GStreamer"
 KEYWORDS="~amd64 ~arm64"
 
-RDEPEND=">=media-libs/libwebp-0.2.1[${MULTILIB_USEDEP}]"
+RDEPEND=">=media-libs/libwebp-0.2.1:=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
