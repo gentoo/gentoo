@@ -33,6 +33,13 @@ multilib_src_configure() {
 	gstreamer_multilib_src_configure
 }
 
+multilib_src_test() {
+	# User env may cause issues (notably dconf isnt multilib)
+	export GSETTINGS_BACKEND="memory"
+
+	gstreamer_multilib_src_configure
+}
+
 multilib_src_install_all() {
 	einstalldocs
 
