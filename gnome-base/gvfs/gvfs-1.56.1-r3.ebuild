@@ -71,7 +71,7 @@ RDEPEND="
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
 	onedrive? (
 		>=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts]
-		>=net-libs/msgraph-0.2.0
+		>=net-libs/msgraph-0.2.0:0/0.1
 	)
 	virtual/openssh
 "
