@@ -8,6 +8,7 @@ MY_PN="gstreamer-vaapi"
 DESCRIPTION="Hardware accelerated video decoding through VA-API plugin for GStreamer"
 HOMEPAGE="https://gitlab.freedesktop.org/gstreamer/gstreamer-vaapi"
 SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.0"
@@ -66,8 +67,6 @@ RDEPEND="
 		x11-libs/libXrender[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 # FIXME: "Failed to create vaapipostproc element"
 RESTRICT="test"
