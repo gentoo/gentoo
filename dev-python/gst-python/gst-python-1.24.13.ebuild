@@ -26,10 +26,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/gstreamer_compat__ge_pygobject-3.52.3.patch"
-)
-
 src_prepare() {
 	default
 
