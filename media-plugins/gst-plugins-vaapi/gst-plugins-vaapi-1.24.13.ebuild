@@ -65,9 +65,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-# FIXME: "Failed to create vaapipostproc element"
-RESTRICT="test"
-
 multilib_src_configure() {
 	GST_PLUGINS_NOAUTO="wayland"
 
