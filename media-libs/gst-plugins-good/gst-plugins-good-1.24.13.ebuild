@@ -4,7 +4,7 @@
 EAPI=8
 GST_ORG_MODULE="gst-plugins-good"
 
-inherit gstreamer-meson
+inherit gstreamer-meson virtualx
 
 DESCRIPTION="Basepack of plugins for GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -34,4 +34,36 @@ multilib_src_configure() {
 	)
 
 	gstreamer_multilib_src_configure
+}
+
+multilib_src_test() {
+	# Homebrew test skips for meson
+	local -a tests
+	tests=( $(meson test --list -C "${BUILD_DIR}") )
+
+	local -a _skip_tests=(
+		# known flaky test bug #930448
+		# https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/2803
+		elements_flvmux
+	)
+
+	# Add suites which in this case are the project name
+	if has_version ">=dev-build/meson-1.10.0"; then
+		local -a skip_tests=()
+		for skip_test in ${_skip_tests[@]}; do
+			skip_tests+=( "${PN}:${skip_test}" )
+		done
+	else
+		local -a skip_tests=( ${_skip_tests[@]} )
+	fi
+	unset _skip_tests
+
+	for test_index in ${!tests[@]}; do
+		if [[ ${skip_tests[@]} =~ ${tests[${test_index}]} ]]; then
+			unset tests[${test_index}]
+		fi
+	done
+
+	# gstreamer_multilib_src_test doesn't pass arguments
+	GST_GL_WINDOW=x11 virtx meson_src_test --timeout-multiplier 5 ${tests[@]}
 }
