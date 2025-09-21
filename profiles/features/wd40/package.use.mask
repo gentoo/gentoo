@@ -125,6 +125,7 @@ net-misc/zerotier sso
 # Michał Górny <mgorny@gentoo.org> (2023-06-06)
 # Packages needing dev-python/pydantic.
 dev-python/jaraco-itertools test
+dev-python/rich-click test
 dev-python/versioningit test
 dev-python/zipp test
 
