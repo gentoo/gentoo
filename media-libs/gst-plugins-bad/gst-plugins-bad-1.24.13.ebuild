@@ -3,7 +3,7 @@
 
 EAPI=8
 GST_ORG_MODULE="gst-plugins-bad"
-inherit gstreamer-meson
+inherit gstreamer-meson virtualx
 
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -72,6 +72,23 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	# Homebrew test skips for meson
+	local -a tests
+	tests=( $(meson test --list -C "${BUILD_DIR}") )
+
+	local -a skip_tests=(
+		# known flaky test bug #931737
+		elements_netsim
+	)
+	for test_index in ${!tests[@]}; do
+		if [[ ${skip_tests[@]} =~ ${tests[${test_index}]} ]]; then
+			unset tests[${test_index}]
+		fi
+	done
+
 	# Tests are slower than upstream expects
-	CK_DEFAULT_TIMEOUT=300 gstreamer_multilib_src_test
+	local -x CK_DEFAULT_TIMEOUT=300
+
+	# gstreamer_multilib_src_test doesn't pass arguments
+	GST_GL_WINDOW=x11 virtx meson_src_test --timeout-multiplier 5 ${tests[@]}
 }
