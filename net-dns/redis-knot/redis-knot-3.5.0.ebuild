@@ -45,7 +45,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --disable-daemon --disable-modules --disable-utilities --enable-redis=module
+	econf --disable-daemon --disable-modules --disable-utilities --disable-xdp --enable-redis=module
 }
 
 src_compile() {
