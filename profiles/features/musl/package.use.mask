@@ -125,12 +125,6 @@ sys-kernel/installkernel -systemd
 # Requires dev-libs/level-zero.
 dev-lang/ispc gpu
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
-# Requires systemd
-sys-kernel/gentoo-kernel generic-uki
-sys-kernel/gentoo-kernel-bin generic-uki
-sys-kernel/vanilla-kernel generic-uki
-
 # Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
 # execinfo.h required for server.
 games-board/cockatrice server
