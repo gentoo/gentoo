@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -83,7 +83,7 @@ src_prepare() {
 }
 
 src_compile() {
-	append-cflags -fcommon # https://bugs.gentoo.org/707838
+	append-cflags -fcommon -std=gnu17 # bug #707838, bug #963048
 
 	local JAWTSO="libjawt.so"
 	IFS=":" read -r -a ldpaths <<< $(java-config -g LDPATH)
