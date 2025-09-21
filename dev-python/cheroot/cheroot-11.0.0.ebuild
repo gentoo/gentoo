@@ -46,7 +46,6 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -e '/cov/d' \
-		-e '/--testmon/d' \
 		-e '/--numproc/d' \
 		-i pytest.ini || die
 
