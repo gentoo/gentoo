@@ -32,7 +32,11 @@ BDEPEND="
 	)
 "
 
-DOCS=( AUTHORS BUGS NEWS README THANKS TODO ChangeLog doc/FAQ )
+if [[ ${PV} == *9999 ]] ; then
+	DOCS=( AUTHORS BUGS NEWS README THANKS TODO doc/FAQ )
+else
+	DOCS=( AUTHORS BUGS NEWS README THANKS TODO ChangeLog doc/FAQ )
+fi
 
 src_prepare() {
 	default
