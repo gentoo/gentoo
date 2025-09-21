@@ -1,0 +1,32 @@
+From b03f13f32c2547b050f88e0a5ad758734c9be96c Mon Sep 17 00:00:00 2001
+From: "Evgeny Grin (Karlson2k)" <k2k@narod.ru>
+Date: Sun, 21 Sep 2025 16:20:49 +0200
+Subject: test_get_close_keep_alive: a minimal fix for curl 8.16
+
+curl 8.16 is silently dropping second 'Connection: ' header from
+requests, making some of the checks in the test unreliable.
+
+See https://bugs.gnunet.org/view.php?id=10403
+---
+ src/testcurl/test_get_close_keep_alive.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/testcurl/test_get_close_keep_alive.c b/src/testcurl/test_get_close_keep_alive.c
+index 243a8087..0e70a348 100644
+--- a/src/testcurl/test_get_close_keep_alive.c
++++ b/src/testcurl/test_get_close_keep_alive.c
+@@ -919,6 +919,11 @@ performTestQueries (struct MHD_Daemon *d, uint16_t d_port)
+     if ((! ! res_close) != (! ! conn_close))
+       continue; /* Another mode is in test currently */
+ 
++#if CURL_AT_LEAST_VERSION (8,16,0)
++    if ((f_client_close) && (f_client_k_alive))
++      continue;
++#endif /* CURL >= 8.16.0 */
++
+     mhd_add_close = f_mhd_close;
+     mhd_set_10_cmptbl = f_10_cmptbl;
+     mhd_set_10_server = f_10_server;
+-- 
+cgit v1.2.3
+
