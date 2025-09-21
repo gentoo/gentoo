@@ -40,17 +40,12 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	# https://github.com/cherrypy/cheroot/pull/703
-	"${FILESDIR}/${PN}-10.0.1-no-pytest-forked.patch"
-)
-
-EPYTEST_PLUGINS=( pytest-mock )
+EPYTEST_PLUGINS=( pytest-mock pytest-rerunfailures )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	sed -e '/--cov/d' \
+	sed -e '/cov/d' \
 		-e '/--testmon/d' \
 		-e '/--numproc/d' \
 		-i pytest.ini || die
