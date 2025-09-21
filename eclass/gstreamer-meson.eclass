@@ -36,7 +36,7 @@ case "${EAPI:-0}" in
 esac
 
 # multilib-minimal goes last
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit python-any-r1 meson multilib toolchain-funcs xdg-utils multilib-minimal
 
 # @ECLASS_VARIABLE: GST_PLUGINS_ENABLED
