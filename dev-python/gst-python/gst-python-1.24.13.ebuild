@@ -20,15 +20,12 @@ RDEPEND="${PYTHON_DEPS}
 	>=media-libs/gstreamer-${PV}:1.0[introspection]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection]
 	>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}]
+	<dev-python/pygobject-3.52:3
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	"${FILESDIR}/gstreamer_compat__ge_pygobject-3.52.3.patch"
-)
 
 src_prepare() {
 	default
