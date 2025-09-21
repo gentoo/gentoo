@@ -71,6 +71,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.12-cmake-lua-version.patch"
 	"${FILESDIR}/${PN}-3.12-unbundle-lua.patch"
 	"${FILESDIR}/${PN}-3.12-unbundle-snowball.patch"
+
+	"${FILESDIR}/${P}-disabled-hyperscan.patch"
+	"${FILESDIR}/${P}-lua-5.2+.patch" #963055
 )
 
 src_prepare() {
