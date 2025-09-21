@@ -12,7 +12,7 @@ MY_DMF="https://archive.eclipse.org/eclipse/downloads/drops4/R-${MY_PV}-20230903
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="GTK based SWT Library"
-HOMEPAGE="https://www.eclipse.org/swt/"
+HOMEPAGE="https://eclipse.dev/eclipse/swt/"
 SRC_URI="
 	amd64? ( ${MY_DMF}/${MY_P}-gtk-linux-x86_64.zip )
 	arm64? ( ${MY_DMF}/${MY_P}-gtk-linux-aarch64.zip )
