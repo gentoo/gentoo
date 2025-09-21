@@ -1,0 +1,12 @@
+diff -Naur Terminal-0.9.9.orig/TerminalView.m Terminal-0.9.9/TerminalView.m
+--- Terminal-0.9.9.orig/TerminalView.m	2017-08-02 19:17:43.000000000 +0200
++++ Terminal-0.9.9/TerminalView.m	2025-09-21 21:16:42.291775485 +0200
+@@ -46,7 +46,7 @@
+ #  include <sys/ioctl.h>
+ #elif defined (__GNU__)
+ #else
+-#  include <termio.h>
++#  include <termios.h>
+ #endif
+ 
+ #include <sys/time.h>
