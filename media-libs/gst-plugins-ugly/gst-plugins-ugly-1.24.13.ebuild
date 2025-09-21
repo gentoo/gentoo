@@ -11,6 +11,9 @@ HOMEPAGE="https://gstreamer.freedesktop.org/"
 LICENSE="LGPL-2+" # some split plugins are LGPL but combining with a GPL library
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
+# False positive as only a52dec uses symbols from orc.
+# QA: IUSE=orc is missing while plugin supports it
+
 RDEPEND="
 	>=media-libs/gst-plugins-base-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 "
