@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit flag-o-matic
+
 MY_P="${P}a"
 
 DESCRIPTION="A s-lang based newsreader"
@@ -39,6 +41,7 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 )
 
 src_configure() {
+	append-cppflags -DPROTOTYPES # fix c23
 	econf \
 		--with-docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--with-slrnpull \
