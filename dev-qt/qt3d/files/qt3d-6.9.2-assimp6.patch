@@ -1,12 +1,10 @@
-Reason is currently unclear, but somehow it thinks 6.0.2 is not
-higher than 5? Or is there some rule that enforces == major version?
-Dropping the lower bound allows it to find assimp6.
+Seems that the '5' enforces the major version and it refuses to find
+system's assimp-6.0.2 (which is perfectly usable given Qt 6.9.2 bundles
+that version without it).
 
-Issue could potentially be in our own assimp6 rather than in Qt given
-it does sed some bits, but needs investigation.
+We don't package older ones, so drop the check as a quick workaround.
 
-Either way, Qt bundles assimp-6.0.2 in Qt 6.9.2 and it should work fine
-with that system version.
+https://bugreports.qt.io/browse/QTBUG-137996
 --- a/src/core/configure.cmake
 +++ b/src/core/configure.cmake
 @@ -16 +16 @@
