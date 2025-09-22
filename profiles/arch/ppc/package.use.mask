@@ -1,6 +1,10 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
+# media-libs/zxingcpp is not keyworded here
+app-text/mupdf barcode
+
 # Zero_Chaos <zerochaos@gentoo.org> (2025-09-05)
 # Needs app-misc/mosquitto, which is not keyworded
 net-wireless/kismet mqtt
