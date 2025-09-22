@@ -102,6 +102,7 @@ src_configure() {
 }
 
 multilib_src_configure() {
+	# https://unicode-org.github.io/icu/userguide/icu4c/packaging
 	local myeconfargs=(
 		--disable-renaming
 		--disable-samples
