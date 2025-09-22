@@ -1,0 +1,10 @@
+--- a/3rdparty/fmt/include/fmt/format.h
++++ b/3rdparty/fmt/include/fmt/format.h
+@@ -52,6 +52,7 @@
+ #    include <memory>  // std::allocator_traits
+ #  endif
+ #  include <stdexcept>     // std::runtime_error
++#  include <stdlib.h>
+ #  include <string>        // std::string
+ #  include <system_error>  // std::system_error
+ 
