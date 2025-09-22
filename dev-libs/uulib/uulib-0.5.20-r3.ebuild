@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_P=uudeview-${PV}
 
@@ -24,6 +24,11 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	append-cppflags -DPROTOTYPES # 943841
+	default
 }
 
 src_install() {
