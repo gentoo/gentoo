@@ -32,6 +32,7 @@ PATCHES=( "${FILESDIR}/${P}-zone_nr.patch"
 	  "${FILESDIR}/${P}-prototypes.patch"
 	  "${FILESDIR}/${P}-pi.patch"
 	  "${FILESDIR}/${P}-filterLog.patch"
+	  "${FILESDIR}/${P}-cmocka-118.patch"
 	)
 
 # suppress warning wrt 'implicit function declaration' in config logs
