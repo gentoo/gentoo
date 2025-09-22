@@ -12,27 +12,21 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="async-connect chat-screen +colors doc +help-screen
-key-screen +library-screen lirc lyrics-screen +mouse
-nls outputs-screen pcre search-screen +song-screen test
-"
+IUSE="async-connect chat-screen +colors doc +help-screen key-screen +library-screen lirc lyrics-screen +mouse nls outputs-screen pcre search-screen +song-screen test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 "
-DEPEND="
+RDEPEND="
 	dev-libs/libfmt:=
 	media-libs/libmpdclient:=
 	sys-libs/ncurses:=[unicode(+)]
 	lirc? ( app-misc/lirc )
 	pcre? ( dev-libs/libpcre2 )
 "
-RDEPEND="
-	${DEPEND}
-	dev-lang/ruby
-"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
