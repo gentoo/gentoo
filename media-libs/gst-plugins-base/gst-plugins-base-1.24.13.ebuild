@@ -93,9 +93,6 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS NEWS README.md RELEASE )
 
-PATCHES=(
-)
-
 multilib_src_configure() {
 	filter-flags -mno-sse -mno-sse2 -mno-sse4.1 #610340
 
