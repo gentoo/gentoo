@@ -122,11 +122,11 @@ src_compile() {
 	cargo_env cmake_src_compile
 }
 
-src_install() {
-	cargo_env cmake_src_install
-}
-
 src_test() {
 	# https://github.com/chewing/libchewing/issues/293
 	cmake_src_test -j1
+}
+
+src_install() {
+	cargo_env cmake_src_install
 }
