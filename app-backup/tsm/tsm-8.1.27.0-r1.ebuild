@@ -246,8 +246,8 @@ src_install() {
 	# https://www.ibm.com/support/pages/apar/IT46420
 	insinto /opt/tivoli/tsm/client/ba/bin
 	newins - dsmcad.lang <<-EOF
-		LANG=en_US.UTF-8
-		LC_ALL=en_US.UTF-8
+		LANG=en_US
+		LC_ALL=en_US
 	EOF
 
 	# Need this for hardened, otherwise a cryptic "connection to server lost" message appears
