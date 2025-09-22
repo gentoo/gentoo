@@ -1,6 +1,12 @@
-Qt bundles assimp-6.x but the system library check still enforces
-the major version (5) rather than only check minimum. Ignore version
-for simplicity (we don't package incompatible <5.1.6 versions).
+Reason is currently unclear, but somehow it thinks 6.0.2 is not
+higher than 5? Or is there some rule that enforces == major version?
+Dropping the lower bound allows it to find assimp6.
+
+Issue could potentially be in our own assimp6 rather than in Qt given
+it does sed some bits, but needs investigation.
+
+Either way, Qt bundles assimp-6.0.2 in Qt 6.9.2 and it should work fine
+with that system version.
 --- a/src/plugins/assetimporters/configure.cmake
 +++ b/src/plugins/assetimporters/configure.cmake
 @@ -16 +16 @@
