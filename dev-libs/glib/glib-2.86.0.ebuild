@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit dot-a eapi9-ver gnome.org gnome2-utils linux-info meson-multilib multilib python-any-r1 toolchain-funcs xdg
 
@@ -22,7 +22,7 @@ INTROSPECTION_BUILD_DIR="${WORKDIR}/${INTROSPECTION_P}-build"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="dbus debug +elf doc +introspection +mime selinux static-libs sysprof systemtap test utils xattr"
 RESTRICT="!test? ( test )"
 
@@ -37,6 +37,7 @@ RESTRICT="!test? ( test )"
 # RDEPEND here (due to lack of recursive DEPEND).
 RDEPEND="
 	!<dev-libs/gobject-introspection-1.80.1
+	!<dev-util/gdbus-codegen-${PV}
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=dev-libs/libpcre2-10.32:0=[${MULTILIB_USEDEP},unicode(+),static-libs?]
 	>=dev-libs/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
@@ -55,6 +56,7 @@ DEPEND="${RDEPEND}"
 # libxml2 used for optional tests that get automatically skipped
 BDEPEND="
 	app-text/docbook-xsl-stylesheets
+	>=dev-build/meson-1.4.0
 	dev-libs/libxslt
 	>=sys-devel/gettext-0.19.8
 	doc? ( >=dev-util/gi-docgen-2023.1 )
@@ -112,14 +114,6 @@ pkg_setup() {
 src_prepare() {
 	if use test; then
 		# TODO: Review the test exclusions, especially now with meson
-		# Disable tests requiring dev-util/desktop-file-utils when not installed, bug #286629, upstream bug #629163
-		if ! has_version dev-util/desktop-file-utils ; then
-			ewarn "Some tests will be skipped due dev-util/desktop-file-utils not being present on your system,"
-			ewarn "think on installing it to get these tests run."
-			sed -i -e "/appinfo\/associations/d" gio/tests/appinfo.c || die
-			sed -i -e "/g_test_add_func/d" gio/tests/desktop-app-info.c || die
-		fi
-
 		# gdesktopappinfo requires existing terminal (gnome-terminal or any
 		# other), falling back to xterm if one doesn't exist
 		#if ! has_version x11-terms/xterm && ! has_version x11-terms/gnome-terminal ; then
@@ -138,6 +132,9 @@ src_prepare() {
 
 		ewarn "Tests for search-utils have been skipped"
 		sed -i -e "/search-utils/d" glib/tests/meson.build || die
+
+		# Running gdb inside a test within sandbox is brittle
+		sed -i -e '/self.__gdb = shutil.which("gdb")/s:"gdb":"gdb-idonotexist":' glib/tests/assert-msg-test.py || die
 
 		# Play nice with network-sandbox, but this approach would defeat the purpose of the test
 		#sed -i -e "s/localhost/127.0.0.1/g" gio/tests/gsocketclient-slow.c || die
