@@ -39,7 +39,12 @@ BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 	dev-python/docutils
-	gtk-doc? ( dev-util/gi-docgen )
+	gtk-doc? (
+		introspection? (
+			>=dev-libs/gobject-introspection-1.83.2
+			dev-util/gi-docgen
+		)
+	)
 	test? ( media-fonts/cantarell )
 "
 
