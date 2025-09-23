@@ -26,8 +26,6 @@ BDEPEND="sys-devel/gettext"
 # Most tests are quite old and do not run
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${P}-py13.patch )
-
 src_prepare() {
 	default
 
