@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -26,10 +26,3 @@ distutils_enable_sphinx docs \
 	'>=dev-python/sphinx-4.3.0' \
 	'>=dev-python/sphinx-rtd-theme-1.0'
 distutils_enable_tests pytest
-
-src_prepare() {
-	# I haven't seen a single switch to poetry without major bugs yet...
-	sed -i -e 's:^include:exclude:' pyproject.toml || die
-
-	distutils-r1_src_prepare
-}
