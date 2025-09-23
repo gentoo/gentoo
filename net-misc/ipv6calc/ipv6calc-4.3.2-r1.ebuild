@@ -34,6 +34,7 @@ PATCHES=(
 	# both are merged. to be removed.
 	"${FILESDIR}"/${P}-fix_directcall_ar.patch
 	"${FILESDIR}"/${P}-fix_libs.patch
+	"${FILESDIR}"/${P}-fix_configure.patch
 )
 
 DOCS=( ChangeLog CREDITS README README.MaxMindDB README.GeoIP2 TODO USAGE )
