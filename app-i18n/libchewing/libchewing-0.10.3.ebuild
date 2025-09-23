@@ -84,7 +84,7 @@ LICENSE="LGPL-2.1"
 # Dependent crate licenses
 LICENSE+=" MIT Unicode-3.0 ZLIB"
 SLOT="0/3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
