@@ -4,7 +4,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-{3,4} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic lua-single python-single-r1 toolchain-funcs
 
