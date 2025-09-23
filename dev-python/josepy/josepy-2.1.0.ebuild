@@ -25,4 +25,6 @@ RDEPEND="
 distutils_enable_sphinx docs \
 	'>=dev-python/sphinx-4.3.0' \
 	'>=dev-python/sphinx-rtd-theme-1.0'
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
