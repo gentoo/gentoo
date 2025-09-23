@@ -20,10 +20,16 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="nls"
 
 # File collision w/ headers of the deprecated cpufrequtils
-RDEPEND="sys-apps/pciutils"
+RDEPEND="
+	sys-apps/pciutils
+"
 DEPEND="${RDEPEND}
 	virtual/os-headers
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
+BDEPEND="
+	sys-apps/which
+"
 
 PATCHES=(
 	"${FILESDIR}/cpupower-5.4-cflags.patch"
