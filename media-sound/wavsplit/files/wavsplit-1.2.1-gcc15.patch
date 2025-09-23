@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/945262
+
+--- a/wavsplit.h
++++ b/wavsplit.h
+@@ -113,7 +113,7 @@ static __inline__ short _LE_short (unsigned char *lp)
+ 
+ #endif
+ 
+-static char *findchunk ();
++static char *findchunk (char *pstart, char *fourcc, size_t n);
+ static int readheader ();
+ static void Report (const char *Message, const char *Severity, int Verbose);
+ static int TokenOK (const char *Message, char **strPtr);
