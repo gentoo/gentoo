@@ -1,0 +1,34 @@
+https://github.com/astromatic/skymaker/pull/7
+https://bugs.gentoo.org/862246
+https://bugs.gentoo.org/786663
+gstr[MAXCHAR] gains 2 definitions depending on value of MAXCHAR, and MAXCHAR is defined twice, with different values.
+
+--- a/src/define.h
++++ b/src/define.h
+@@ -48,7 +48,7 @@
+ #define		OUTPUT		stdout		/* where all msgs are sent */
+ #define		BIG		1e+30		/* a huge number */
+ #define		SMALL		(1/BIG)		/* A very small number */
+-#define		MAXCHAR		1024		/* max. number of characters */
++#define		MAXCHAR		512		/* max. number of characters */
+ #ifndef PI
+ #define PI	3.1415926535898			/* never met before? */
+ #endif
+--- a/src/main.c
++++ b/src/main.c
+@@ -137,3 +137,4 @@ int	main(int argc, char *argv[])
+ 
+   exit(EXIT_SUCCESS);
+   }
++int nproc;
+--- a/src/threads.h
++++ b/src/threads.h
+@@ -129,7 +129,7 @@ typedef struct _threads_gate_t
+   } threads_gate_t;
+ 
+ /*----------------------------- Global variables ----------------------------*/
+- int		nproc;	/* Number of child threads */
++extern int		nproc;	/* Number of child threads */
+ 
+ /*--------------------------------- Functions -------------------------------*/
+ threads_gate_t	*threads_gate_init(int nthreads, void (*func)(void));
