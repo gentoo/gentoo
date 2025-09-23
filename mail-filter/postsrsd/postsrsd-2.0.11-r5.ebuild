@@ -13,7 +13,7 @@ SRC_URI="https://github.com/roehling/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # BSD for src/{sha1,srs2}.*, FSFAP for cmake/*
 LICENSE="GPL-3 BSD FSFAP"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="redis sqlite test"
 RESTRICT="!test? ( test )"
 
