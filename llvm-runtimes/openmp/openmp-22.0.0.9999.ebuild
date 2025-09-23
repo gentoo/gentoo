@@ -78,6 +78,9 @@ multilib_src_configure() {
 
 		-DOPENMP_TEST_C_COMPILER="$(type -P "${CHOST}-clang")"
 		-DOPENMP_TEST_CXX_COMPILER="$(type -P "${CHOST}-clang++")"
+		# disable Fortran tests for now
+		# (TODO: enable where we have flang keyworded)
+		-DOPENMP_TEST_Fortran_COMPILER=
 	)
 	cmake_src_configure
 }
