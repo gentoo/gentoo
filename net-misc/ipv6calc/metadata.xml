@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
+		<flag name="apache">Build the apache module mod_ipv6calc</flag>
 		<flag name="openssl">Use <pkg>dev-libs/openssl</pkg> instead of <pkg>app-crypt/libmd</pkg> for MD5 digest</flag>
 	</use>
 	<upstream>
