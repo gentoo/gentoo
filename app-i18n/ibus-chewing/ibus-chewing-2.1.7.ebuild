@@ -13,7 +13,7 @@ S="${WORKDIR}/${P}-Source"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=app-i18n/ibus-1.5.4
 	>=app-i18n/libchewing-0.9.0
