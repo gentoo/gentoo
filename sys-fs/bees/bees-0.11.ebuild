@@ -17,7 +17,7 @@ else
 	S=${WORKDIR}/${MY_P}
 
 	SRC_URI="https://github.com/Zygo/bees/archive/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 LICENSE="GPL-3"
