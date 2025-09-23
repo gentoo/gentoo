@@ -1,0 +1,65 @@
+PR merged https://github.com/pbiering/ipv6calc/pull/51.patch
+use LIBS instead of LDFLAGS #962710
+fix the failure that might happen with --as-needed
+--- a/configure.ac
++++ b/configure.ac
+@@ -310,8 +310,8 @@ AC_CHECK_HEADER(md5.h, [
+ 	AC_MSG_RESULT([libmd/md5.h header file found])
+ 	AC_CHECK_LIB(md, MD5Init,
+ 	[
+-		LDFLAGS_ORIG="$LDFLAGS"
+-		LDFLAGS="-lmd $LDFLAGS"
++		LIBS_ORIG="$LIBS"
++		LIBS="-lmd $LIBS"
+ 		HAVE_LIBMD_MD5=1
+ 		AC_CHECK_FUNCS(MD5Init MD5Update MD5Final,
+ 		[
+@@ -319,7 +319,7 @@ AC_CHECK_HEADER(md5.h, [
+ 			AC_MSG_RESULT([libmd crypto library supports MD5])
+ 			HAVE_OPENSSL_MD5=0
+ 		])
+-		LDFLAGS="$LDFLAGS_ORIG"
++		LIBS="$LIBS_ORIG"
+ 
+ 		if test "$HAVE_LIBMD_MD5" = "1"; then
+ 			AC_MSG_RESULT([*** libmd crypto library supports MD5])
+@@ -336,8 +336,8 @@ AC_CHECK_HEADER(openssl/evp.h, [
+ 	AC_MSG_RESULT([openssl/evp.h header file found])
+ 	AC_CHECK_LIB(crypto, EVP_DigestInit_ex,
+ 	[
+-		LDFLAGS_ORIG="$LDFLAGS"
+-		LDFLAGS="-lcrypto $LDFLAGS"
++		LIBS_ORIG="$LIBS"
++		LIBS="-lcrypto $LIBS"
+ 		HAVE_OPENSSL_EVP_MD5=1
+ 		HAVE_OPENSSL_EVP_MD5_LEGACY=1
+ 
+@@ -357,7 +357,7 @@ AC_CHECK_HEADER(openssl/evp.h, [
+ 			HAVE_OPENSSL_EVP_MD5_LEGACY=0
+ 		])
+ 
+-		LDFLAGS="$LDFLAGS_ORIG"
++		LIBS="$LIBS_ORIG"
+ 
+ 		if test "$HAVE_OPENSSL_EVP_MD5" = "1"; then
+ 			AC_MSG_RESULT([*** OpenSSL crypto library supports MD5 via EVP implementation])
+@@ -374,8 +374,8 @@ AC_CHECK_HEADER(openssl/md5.h, [
+ 	AC_MSG_RESULT([openssl/md5.h header file found])
+ 	AC_CHECK_LIB(crypto, MD5_Init,
+ 	[
+-		LDFLAGS_ORIG="$LDFLAGS"
+-		LDFLAGS="-lcrypto $LDFLAGS"
++		LIBS_ORIG="$LIBS"
++		LIBS="-lcrypto $LIBS"
+ 		HAVE_OPENSSL_MD5=1
+ 		AC_CHECK_FUNCS(MD5_Init MD5_Update MD5_Final,
+ 		[
+@@ -383,7 +383,7 @@ AC_CHECK_HEADER(openssl/md5.h, [
+ 			AC_MSG_RESULT([OpenSSL crypto library supports MD5 via legacy implementation])
+ 			HAVE_OPENSSL_MD5=0
+ 		])
+-		LDFLAGS="$LDFLAGS_ORIG"
++		LIBS="$LIBS_ORIG"
+ 
+ 		if test "$HAVE_OPENSSL_MD5" = "1"; then
+ 			AC_MSG_RESULT([*** OpenSSL crypto library supports MD5 via legacy implementation])
