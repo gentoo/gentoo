@@ -169,6 +169,7 @@ multilib_src_configure() {
 multilib_src_compile() {
 	cmake_src_compile
 	if [[ ${CHOST} != *-darwin* ]] ; then
+		local libdir=$(get_libdir)
 		gen_shared_ldscript
 		use static-libs && gen_static_ldscript
 	fi
@@ -179,9 +180,12 @@ multilib_src_test() {
 	# https://github.com/llvm/llvm-project/issues/153940
 	local -x LIT_XFAIL="libcxx/gdb/gdb_pretty_printer_test.sh.cpp"
 	cmake_build install-cxx-test-suite-prefix
-	cp "${BUILD_DIR}"/{lib,libcxx/test-suite-install/$(get_libdir)}/libc++_shared.so || die
-	if use static-libs; then
-		cp "${BUILD_DIR}"/{lib,libcxx/test-suite-install/$(get_libdir)}/libc++_static.a || die
+	if [[ ${CHOST} != *-darwin* ]] ; then
+		local libdir=$(get_libdir)
+		cp "${BUILD_DIR}"/{,libcxx/test-suite-install/}"${libdir}"/libc++_shared.so || die
+		if use static-libs; then
+			cp "${BUILD_DIR}"/{,libcxx/test-suite-install/}"${libdir}"/libc++_static.a || die
+		fi
 	fi
 	cmake_build check-cxx
 }
@@ -191,9 +195,10 @@ multilib_src_install() {
 	# since we've replaced libc++.{a,so} with ldscripts, now we have to
 	# install the extra symlinks
 	if [[ ${CHOST} != *-darwin* ]] ; then
+		local libdir=$(get_libdir)
 		is_crosspkg && into /usr/${CTARGET}
-		dolib.so lib/libc++_shared.so
-		use static-libs && dolib.a lib/libc++_static.a
+		dolib.so "${libdir}"/libc++_shared.so
+		use static-libs && dolib.a "${libdir}"/libc++_static.a
 	fi
 
 	local install_prefix=
@@ -228,7 +233,7 @@ END_LDSCRIPT
 
 gen_static_ldscript() {
 	# Move it first.
-	mv lib/libc++{,_static}.a || die
+	mv "${libdir}"/libc++{,_static}.a || die
 	# Generate libc++.a ldscript for inclusion of its dependencies so that
 	# clang++ -stdlib=libc++ -static works out of the box.
 	local deps=(
@@ -239,17 +244,17 @@ gen_static_ldscript() {
 	# fine on FreeBSD.
 	use elibc_glibc && deps+=( libpthread.a libdl.a )
 
-	gen_ldscript "${deps[*]}" > lib/libc++.a || die
+	gen_ldscript "${deps[*]}" > "${libdir}"/libc++.a || die
 }
 
 gen_shared_ldscript() {
 	# Move it first.
-	mv lib/libc++{,_shared}.so || die
+	mv "${libdir}"/libc++{,_shared}.so || die
 	local deps=(
 		libc++_shared.so
 		# libsupc++ doesn't have a shared version
 		$(usex libcxxabi libc++abi.so libsupc++.a)
 	)
 
-	gen_ldscript "${deps[*]}" > lib/libc++.so || die
+	gen_ldscript "${deps[*]}" > "${libdir}"/libc++.so || die
 }
