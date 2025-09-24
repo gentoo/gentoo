@@ -61,14 +61,11 @@ DEPEND="
 	media-libs/freetype
 	media-libs/libpng:=
 	media-libs/libsamplerate
-	media-libs/libsdl2[haptic,joystick,opengl,sound,vulkan]
+	media-libs/libsdl3[opengl,vulkan]
 	media-libs/speexdsp
 	sys-libs/zlib[minizip(+)]
 	virtual/opengl
-	netplay? (
-		dev-qt/qtwebsockets:6
-		media-libs/sdl2-net
-	)
+	netplay? ( dev-qt/qtwebsockets:6 )
 	rust-plugin? ( dev-libs/libusb:1 )
 "
 RDEPEND="${DEPEND}"
