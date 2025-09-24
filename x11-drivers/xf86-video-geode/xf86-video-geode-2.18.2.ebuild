@@ -6,7 +6,7 @@ EAPI=8
 inherit xorg-3
 
 DESCRIPTION="AMD Geode GX and LX graphics driver"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="ztv"
 
 DEPEND="
