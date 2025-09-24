@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib elisp-common multilib
+inherit cmake-multilib dot-a elisp-common flag-o-matic multilib
 
 # NOTE from https://github.com/protocolbuffers/protobuf/blob/main/cmake/dependencies.cmake
 ABSEIL_MIN_VER="20250127.0"
@@ -77,6 +77,14 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# bug #963340 (seems to only happen when upgrading from older pb,
+	# possibly w/o tests too).
+	filter-lto
+
+	# Currently, the only static library is libupb (and there is no
+	# USE=static-libs), so optimize away the fat-lto build time penalty.
+	use libupb && lto-guarantee-fat
+
 	local mycmakeargs=(
 		-Dprotobuf_BUILD_CONFORMANCE="$(usex test "$(usex conformance)")"
 		-Dprotobuf_BUILD_LIBPROTOC="$(usex libprotoc)"
@@ -143,6 +151,7 @@ src_test() {
 }
 
 multilib_src_install_all() {
+	use libupb && strip-lto-bytecode
 	find "${ED}" -name "*.la" -delete || die
 
 	if [[ ! -f "${ED}/usr/$(get_libdir)/libprotobuf$(get_libname "${SLOT#*/}")" ]]; then
