@@ -1,0 +1,41 @@
+https://github.com/openssh/openssh-portable/commit/4b1f172fe91c253d09d75650981a3e0c87651fa3
+
+From 4b1f172fe91c253d09d75650981a3e0c87651fa3 Mon Sep 17 00:00:00 2001
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Wed, 30 Apr 2025 05:23:15 +0000
+Subject: [PATCH] upstream: fix a out-of-bounds read if the known_hosts file is
+
+truncated after the hostname.
+
+Reported by the OpenAI Security Research Team
+
+ok deraadt@
+
+OpenBSD-Commit-ID: c0b516d7c80c4779a403826f73bcd8adbbc54ebd
+---
+ hostfile.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/hostfile.c b/hostfile.c
+index c5669c70373..a4a5a9a5e3a 100644
+--- a/hostfile.c
++++ b/hostfile.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: hostfile.c,v 1.95 2023/02/21 06:48:18 dtucker Exp $ */
++/* $OpenBSD: hostfile.c,v 1.96 2025/04/30 05:23:15 djm Exp $ */
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+@@ -810,6 +810,12 @@ hostkeys_foreach_file(const char *path, FILE *f, hostkeys_foreach_fn *callback,
+ 		/* Find the end of the host name portion. */
+ 		for (cp2 = cp; *cp2 && *cp2 != ' ' && *cp2 != '\t'; cp2++)
+ 			;
++		if (*cp2 == '\0') {
++			verbose_f("truncated line at %s:%lu", path, linenum);
++			if ((options & HKF_WANT_MATCH) == 0)
++				goto bad;
++			continue;
++		}
+ 		lineinfo.hosts = cp;
+ 		*cp2++ = '\0';
+ 
