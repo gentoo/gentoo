@@ -155,6 +155,13 @@ src_configure() {
 		die "USE=generic-uki requires a CONFIG_EFI_ZBOOT enabled build"
 	fi
 
+	# Override user variable with the cert used during build
+	openssl x509 \
+		-inform DER -in "${kernel_dir}/certs/signing_key.x509" \
+		-outform PEM -out "${T}/cert.pem" ||
+			die "Failed to convert pcrpkey to PEM format"
+	export SECUREBOOT_SIGN_CERT=${T}/cert.pem
+
 	local image="${kernel_dir}/$(dist-kernel_get_image_path)"
 	local uki="${image%/*}/uki.efi"
 	if [[ -s ${uki} ]]; then
