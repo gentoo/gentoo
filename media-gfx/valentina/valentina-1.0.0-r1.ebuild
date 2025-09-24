@@ -53,7 +53,7 @@ qbs_config() {
 
 src_configure() {
 	# setup the toolchain in a profile 'mytoolchain'
-	edo qbs setup-toolchains $(tc-getCC) mytoolchain
+	edo qbs setup-toolchains "$(tc-getCC)" mytoolchain
 
 	# create a profile 'gentoo' with 'mytoolchain' inherited
 	edo qbs setup-qt "$(qt6_get_bindir)"/qmake gentoo
@@ -70,7 +70,7 @@ src_configure() {
 	# define global options
 	qbs_config preferences.jobs "$(get_makeopts_jobs)"
 	qbs_config qbs.installPrefix "${EPREFIX}/usr"
-	qbs_config qbs.installRoot "${D}"
+	qbs_config qbs.sysroot "${ESYSROOT}"
 
 	# define system flags
 	qbs_config cpp.cppFlags "$(qbs_format_flags ${CPPFLAGS})"
@@ -112,7 +112,7 @@ src_test() {
 }
 
 src_install() {
-	edo qbs install "${qbsargs[@]}" --no-build
+	edo qbs install "${qbsargs[@]}" --no-build --install-root "${D}"
 
 	dodoc AUTHORS.txt ChangeLog.txt README.md
 
