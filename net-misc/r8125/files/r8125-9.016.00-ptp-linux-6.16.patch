@@ -1,0 +1,30 @@
+From 2f8c3c336aba02cfd8a0ebf2c4f348d6196906c2 Mon Sep 17 00:00:00 2001
+From: "Evgeny Grin (Karlson2k)" <k2k@drgrin.dev>
+Date: Wed, 24 Sep 2025 20:02:20 +0200
+Subject: [PATCH] Fix build with PTP with kernels >=6.16
+
+---
+ src/r8125_ptp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/r8125_ptp.c b/src/r8125_ptp.c
+index 457fa6d..41cc2a2 100644
+--- a/src/r8125_ptp.c
++++ b/src/r8125_ptp.c
+@@ -1213,8 +1213,13 @@ void rtl8125_ptp_init(struct rtl8125_private *tp)
+         switch (tp->HwSuppPtpVer) {
+         case 3:
+                 tp->pps_enable = 0;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,13,0)
++                hrtimer_setup(&tp->pps_timer, rtl8125_phy_hrtimer_for_pps, CLOCK_MONOTONIC,
++                              HRTIMER_MODE_REL);
++#else
+                 hrtimer_init(&tp->pps_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+                 tp->pps_timer.function = rtl8125_phy_hrtimer_for_pps;
++#endif
+                 break;
+         default:
+                 break;
+-- 
+2.49.1
+

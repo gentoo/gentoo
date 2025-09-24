@@ -18,6 +18,7 @@ IUSE="down-speed-100 fiber hw-acceleration hw-optim-tx +eee +giga-lite +multi-tx
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-build-with-firmware.patch"
+	"${FILESDIR}/${P}-ptp-linux-6.16.patch" # Gentoo bug 963364
 )
 
 CONFIG_CHECK="~!R8169"
