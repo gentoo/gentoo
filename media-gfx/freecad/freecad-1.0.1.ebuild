@@ -27,7 +27,7 @@ else
 		https://github.com/FreeCAD/FreeCAD/commit/d91b3e051789623f0bc1eff65947c361e7a661d0.patch -> ${PN}-20710.patch
 		https://github.com/FreeCAD/FreeCAD/commit/3d2b7dc9c7ac898b30fe469b7cbd424ed1bca0a2.patch -> ${PN}-22221.patch
 	"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
 
