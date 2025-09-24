@@ -1,0 +1,118 @@
+From de4bcb51c893d81a741d4fac37c10107738a952f Mon Sep 17 00:00:00 2001
+Message-ID: <de4bcb51c893d81a741d4fac37c10107738a952f.1758727915.git.sam@gentoo.org>
+In-Reply-To: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+References: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Wed, 26 Feb 2025 18:25:33 +1100
+Subject: [PATCH 02/10] Update autoconf files for endian.h change.
+
+---
+ config.h.in | 12 +++++++++++
+ configure   | 60 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 72 insertions(+)
+
+diff --git a/config.h.in b/config.h.in
+index 14bee6087..c841417f4 100644
+--- a/config.h.in
++++ b/config.h.in
+@@ -363,10 +363,22 @@
+    don't. */
+ #undef HAVE_DECL_HOWMANY
+ 
++/* Define to 1 if you have the declaration of `htole64', and to 0 if you
++   don't. */
++#undef HAVE_DECL_HTOLE64
++
+ /* Define to 1 if you have the declaration of `h_errno', and to 0 if you
+    don't. */
+ #undef HAVE_DECL_H_ERRNO
+ 
++/* Define to 1 if you have the declaration of `le32toh', and to 0 if you
++   don't. */
++#undef HAVE_DECL_LE32TOH
++
++/* Define to 1 if you have the declaration of `le64toh', and to 0 if you
++   don't. */
++#undef HAVE_DECL_LE64TOH
++
+ /* Define to 1 if you have the declaration of `loginfailed', and to 0 if you
+    don't. */
+ #undef HAVE_DECL_LOGINFAILED
+diff --git a/configure b/configure
+index b4d33b7cd..ec1de26c2 100755
+--- a/configure
++++ b/configure
+@@ -11325,6 +11325,65 @@ then :
+ fi
+ 
+ 
++ac_fn_check_decl "$LINENO" "le32toh" "ac_cv_have_decl_le32toh" "
++#ifdef HAVE_SYS_TYPES_H
++# include <sys/types.h>
++#endif
++#ifdef HAVE_STDINT_H
++# include <stdint.h>
++#endif
++#ifdef HAVE_ENDIAN_H
++# include <endian.h>
++#endif
++
++" "$ac_c_undeclared_builtin_options" "CFLAGS"
++if test "x$ac_cv_have_decl_le32toh" = xyes
++then :
++  ac_have_decl=1
++else $as_nop
++  ac_have_decl=0
++fi
++printf "%s\n" "#define HAVE_DECL_LE32TOH $ac_have_decl" >>confdefs.h
++ac_fn_check_decl "$LINENO" "le64toh" "ac_cv_have_decl_le64toh" "
++#ifdef HAVE_SYS_TYPES_H
++# include <sys/types.h>
++#endif
++#ifdef HAVE_STDINT_H
++# include <stdint.h>
++#endif
++#ifdef HAVE_ENDIAN_H
++# include <endian.h>
++#endif
++
++" "$ac_c_undeclared_builtin_options" "CFLAGS"
++if test "x$ac_cv_have_decl_le64toh" = xyes
++then :
++  ac_have_decl=1
++else $as_nop
++  ac_have_decl=0
++fi
++printf "%s\n" "#define HAVE_DECL_LE64TOH $ac_have_decl" >>confdefs.h
++ac_fn_check_decl "$LINENO" "htole64" "ac_cv_have_decl_htole64" "
++#ifdef HAVE_SYS_TYPES_H
++# include <sys/types.h>
++#endif
++#ifdef HAVE_STDINT_H
++# include <stdint.h>
++#endif
++#ifdef HAVE_ENDIAN_H
++# include <endian.h>
++#endif
++
++" "$ac_c_undeclared_builtin_options" "CFLAGS"
++if test "x$ac_cv_have_decl_htole64" = xyes
++then :
++  ac_have_decl=1
++else $as_nop
++  ac_have_decl=0
++fi
++printf "%s\n" "#define HAVE_DECL_HTOLE64 $ac_have_decl" >>confdefs.h
++
++
+ # On some platforms (eg SunOS4) sys/audit.h requires sys/[time|types|label.h]
+ # to be included first.
+ ac_fn_c_check_header_compile "$LINENO" "sys/audit.h" "ac_cv_header_sys_audit_h" "
+@@ -27710,3 +27769,4 @@ if test "$AUDIT_MODULE" = "bsm" ; then
+ 	echo "WARNING: BSM audit support is currently considered EXPERIMENTAL."
+ 	echo "See the Solaris section in README.platform for details."
+ fi
++
+-- 
+2.51.0
+

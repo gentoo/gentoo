@@ -1,0 +1,48 @@
+From a38b48e77ccfe9528dd4a8516c114950fa7a111d Mon Sep 17 00:00:00 2001
+Message-ID: <a38b48e77ccfe9528dd4a8516c114950fa7a111d.1758727870.git.sam@gentoo.org>
+In-Reply-To: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+References: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+From: Damien Miller <djm@mindrot.org>
+Date: Wed, 13 Aug 2025 09:16:34 +1000
+Subject: [PATCH 7/7] mention sntrup761x25519-sha512 in manpages
+
+Spotted by Colin Watson
+---
+ ssh_config.5  | 1 +
+ sshd_config.5 | 3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/ssh_config.5 b/ssh_config.5
+index 2e1902283..9473f4692 100644
+--- a/ssh_config.5
++++ b/ssh_config.5
+@@ -1281,6 +1281,7 @@ default set.
+ .Pp
+ The default is:
+ .Bd -literal -offset indent
++sntrup761x25519-sha512,
+ sntrup761x25519-sha512@openssh.com,
+ curve25519-sha256,curve25519-sha256@libssh.org,
+ ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,
+diff --git a/sshd_config.5 b/sshd_config.5
+index ce872de52..3c727f4d3 100644
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -1050,11 +1050,14 @@ ecdh-sha2-nistp384
+ .It
+ ecdh-sha2-nistp521
+ .It
++sntrup761x25519-sha512
++.It
+ sntrup761x25519-sha512@openssh.com
+ .El
+ .Pp
+ The default is:
+ .Bd -literal -offset indent
++sntrup761x25519-sha512,
+ sntrup761x25519-sha512@openssh.com,
+ curve25519-sha256,curve25519-sha256@libssh.org,
+ ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,
+-- 
+2.51.0
+

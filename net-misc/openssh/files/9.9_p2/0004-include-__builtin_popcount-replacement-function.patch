@@ -1,0 +1,92 @@
+From 3b4adf2018ae8fdd48623b6b5ede182319a76b8f Mon Sep 17 00:00:00 2001
+Message-ID: <3b4adf2018ae8fdd48623b6b5ede182319a76b8f.1758727915.git.sam@gentoo.org>
+In-Reply-To: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+References: <4b8d141ec165aa29a48316768089cb03aed3aada.1758727915.git.sam@gentoo.org>
+From: Damien Miller <djm@mindrot.org>
+Date: Sun, 2 Mar 2025 22:06:53 +1100
+Subject: [PATCH 04/10] include __builtin_popcount replacement function
+
+Some systems/compilers lack __builtin_popcount(), so replace it as
+necessary. Reported by Dennis Clarke; ok dtucker@
+---
+ configure.ac            | 13 +++++++++++++
+ libcrux_mlkem768_sha3.h |  8 ++++++--
+ mlkem768.sh             | 10 +++++++++-
+ 3 files changed, 28 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 57a8d1007..dbe189066 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2041,6 +2041,19 @@ AC_CHECK_FUNCS([ \
+ 	warn \
+ ])
+ 
++AC_MSG_CHECKING([whether compiler supports __builtin_popcount])
++AC_LINK_IFELSE([AC_LANG_PROGRAM([[
++		#include <stdlib.h>
++	]],
++	[[ int x = 123, y;
++	   y = __builtin_popcount(123);
++	   exit(y == 6 ? 0 : -1); ]])],
++	[ AC_MSG_RESULT([yes]) ], [
++		AC_MSG_RESULT([no])
++		AC_DEFINE([MISSING_BUILTIN_POPCOUNT], [1], [Define if your compiler lacks __builtin_popcount])
++	]
++)
++
+ AC_CHECK_DECLS([bzero, memmem])
+ 
+ dnl Wide character support.
+diff --git a/libcrux_mlkem768_sha3.h b/libcrux_mlkem768_sha3.h
+index b8ac1436f..885e82baf 100644
+--- a/libcrux_mlkem768_sha3.h
++++ b/libcrux_mlkem768_sha3.h
+@@ -177,10 +177,14 @@ static inline uint32_t core_num__u32_8__from_le_bytes(uint8_t buf[4]) {
+ }
+ 
+ static inline uint32_t core_num__u8_6__count_ones(uint8_t x0) {
+-#ifdef _MSC_VER
++#if defined(_MSC_VER)
+   return __popcnt(x0);
+-#else
++#elif !defined(MISSING_BUILTIN_POPCOUNT)
+   return __builtin_popcount(x0);
++#else
++  const uint8_t v[16] = { 0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4 };
++  return v[x0 & 0xf] + v[(x0 >> 4) & 0xf];
++
+ #endif
+ }
+ 
+diff --git a/mlkem768.sh b/mlkem768.sh
+index 3d12b2ed8..cbc3d14da 100644
+--- a/mlkem768.sh
++++ b/mlkem768.sh
+@@ -49,6 +49,11 @@ echo '#define KRML_HOST_EPRINTF(...)'
+ echo '#define KRML_HOST_EXIT(x) fatal_f("internal error")'
+ echo
+ 
++__builtin_popcount_replacement='
++  const uint8_t v[16] = { 0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4 };
++  return v[x0 & 0xf] + v[(x0 >> 4) & 0xf];
++'
++
+ for i in $FILES; do
+ 	echo "/* from $i */"
+ 	# Changes to all files:
+@@ -62,7 +67,10 @@ for i in $FILES; do
+ 		# Replace endian functions with versions that work.
+ 		perl -0777 -pe 's/(static inline void core_num__u64_9__to_le_bytes.*\n)([^}]*\n)/\1  v = htole64(v);\n\2/' |
+ 		perl -0777 -pe 's/(static inline uint64_t core_num__u64_9__from_le_bytes.*?)return v;/\1return le64toh(v);/s' |
+-		perl -0777 -pe 's/(static inline uint32_t core_num__u32_8__from_le_bytes.*?)return v;/\1return le32toh(v);/s'
++		perl -0777 -pe 's/(static inline uint32_t core_num__u32_8__from_le_bytes.*?)return v;/\1return le32toh(v);/s' |
++		# Compat for popcount.
++		perl -0777 -pe 's/\#ifdef (_MSC_VER)(.*?return __popcnt\(x0\);)/\#if defined(\1)\2/s' |
++		perl -0777 -pe "s/\\#else(\\n\\s+return __builtin_popcount\\(x0\\);)/\\#elif !defined(MISSING_BUILTIN_POPCOUNT)\\1\\n#else$__builtin_popcount_replacement/s"
+ 		;;
+ 	# Default: pass through.
+ 	*)
+-- 
+2.51.0
+

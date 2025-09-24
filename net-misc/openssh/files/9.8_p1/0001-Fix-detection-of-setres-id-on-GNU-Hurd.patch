@@ -1,0 +1,36 @@
+From 20950a7c047ca08f9317d27866c06587ed51a338 Mon Sep 17 00:00:00 2001
+Message-ID: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Tue, 26 Mar 2024 22:15:08 +0100
+Subject: [PATCH 1/7] Fix detection of setres*id on GNU/Hurd
+
+Like Linux, proper _SOURCE macros need to be set to get declarations of
+various standard functions, notably setres*id. Now that Debian is using
+-Werror=implicit-function-declaration this is really required. While at
+it, define other _SOURCE macros like on GNU/Linux, since GNU/Hurd uses
+the same glibc.
+---
+ configure.ac | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 5a865f8e1..2eede34c3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1348,6 +1348,13 @@ EOD
+ 	AC_DEFINE([BROKEN_SETVBUF], [1],
+ 	    [LynxOS has broken setvbuf() implementation])
+ 	;;
++*-*-gnu*)
++	dnl GNU Hurd.  Needs to be after the linux and the other *-gnu entries.
++	dnl Target SUSv3/POSIX.1-2001 plus BSD specifics.
++	dnl _DEFAULT_SOURCE is the new name for _BSD_SOURCE
++	dnl _GNU_SOURCE is needed for setres*id prototypes.
++	CPPFLAGS="$CPPFLAGS -D_XOPEN_SOURCE=600 -D_BSD_SOURCE -D_DEFAULT_SOURCE -D_GNU_SOURCE"
++	;;
+ esac
+ 
+ AC_MSG_CHECKING([compiler and flags for sanity])
+-- 
+2.51.0
+

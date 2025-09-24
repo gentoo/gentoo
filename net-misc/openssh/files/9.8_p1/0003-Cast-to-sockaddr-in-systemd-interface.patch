@@ -1,0 +1,29 @@
+From b35a64dd7d5278af859ff8cca1fbe42d2c308ac0 Mon Sep 17 00:00:00 2001
+Message-ID: <b35a64dd7d5278af859ff8cca1fbe42d2c308ac0.1758727870.git.sam@gentoo.org>
+In-Reply-To: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+References: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Sun, 7 Jul 2024 18:46:19 +1000
+Subject: [PATCH 3/7] Cast to sockaddr * in systemd interface.
+
+Fixes build with musl libx.  bz#3707.
+---
+ openbsd-compat/port-linux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/openbsd-compat/port-linux.c b/openbsd-compat/port-linux.c
+index 4c024c6d2..8adfec5a7 100644
+--- a/openbsd-compat/port-linux.c
++++ b/openbsd-compat/port-linux.c
+@@ -366,7 +366,7 @@ ssh_systemd_notify(const char *fmt, ...)
+ 		error_f("socket \"%s\": %s", path, strerror(errno));
+ 		goto out;
+ 	}
+-	if (connect(fd, &addr, sizeof(addr)) != 0) {
++	if (connect(fd, (struct sockaddr *)&addr, sizeof(addr)) != 0) {
+ 		error_f("socket \"%s\" connect: %s", path, strerror(errno));
+ 		goto out;
+ 	}
+-- 
+2.51.0
+
