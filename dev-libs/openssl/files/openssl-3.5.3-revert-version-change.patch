@@ -1,0 +1,67 @@
+https://github.com/openssl/openssl/issues/28227
+https://github.com/openssl/project/issues/1621
+https://github.com/openssl/openssl/pull/28603
+https://github.com/openssl/openssl/commit/be0013641917730dc7ea4a769731d0e083796164
+
+From be0013641917730dc7ea4a769731d0e083796164 Mon Sep 17 00:00:00 2001
+From: Richard Levitte <levitte@openssl.org>
+Date: Thu, 18 Sep 2025 07:14:13 +0200
+Subject: [PATCH] Fix OPENSSL_VERSION_NUMBER to always have zero status bits
+
+The documentation suggested that they were always zero, while the
+implementation in <openssl/opensslv.h> suggested that it could be
+0xf in OpenSSL releases...  which (almost) never happened because
+of a bug in said implementation.
+
+Therefore, we solidify that the status bits are indeed always zero,
+at least in all OpenSSL 3 versions.
+
+Resolves: https://github.com/openssl/project/issues/1621
+
+Reviewed-by: Paul Dale <ppzgs1@gmail.com>
+Reviewed-by: Tomas Mraz <tomas@openssl.org>
+(Merged from https://github.com/openssl/openssl/pull/28603)
+
+(cherry picked from commit 60c4feacce6faf0e98167dc2ab2a1c2e85882049)
+---
+ doc/man3/OpenSSL_version.pod  | 7 +++++++
+ include/openssl/opensslv.h.in | 4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/doc/man3/OpenSSL_version.pod b/doc/man3/OpenSSL_version.pod
+index e5dff33dcdda2..fc30dc0737865 100644
+--- a/doc/man3/OpenSSL_version.pod
++++ b/doc/man3/OpenSSL_version.pod
+@@ -256,6 +256,13 @@ L<crypto(7)>
+ The macros and functions described here were added in OpenSSL 3.0,
+ except for OPENSSL_VERSION_NUMBER and OpenSSL_version_num().
+ 
++=head1 BUGS
++
++There was a discrepancy between this manual and commentary + code
++in F<< <openssl/opensslv.h> >>, where the latter suggested that the
++four least significant bits of B<OPENSSL_VERSION_NUMBER> could be
++C<0x0f> in released OpenSSL versions.
++
+ =head1 COPYRIGHT
+ 
+ Copyright 2018-2022 The OpenSSL Project Authors. All Rights Reserved.
+diff --git a/include/openssl/opensslv.h.in b/include/openssl/opensslv.h.in
+index e547281ff527f..69b9caacf4dce 100644
+--- a/include/openssl/opensslv.h.in
++++ b/include/openssl/opensslv.h.in
+@@ -89,12 +89,12 @@ extern "C" {
+ 
+ # define OPENSSL_VERSION_TEXT "OpenSSL {- "$config{full_version} $config{release_date}" -}"
+ 
+-/* Synthesize OPENSSL_VERSION_NUMBER with the layout 0xMNN00PPSL */
++/* Synthesize OPENSSL_VERSION_NUMBER with the layout 0xMNN00PP0L */
+ # define OPENSSL_VERSION_NUMBER          \
+     ( (OPENSSL_VERSION_MAJOR<<28)        \
+       |(OPENSSL_VERSION_MINOR<<20)       \
+       |(OPENSSL_VERSION_PATCH<<4)        \
+-      |{- @config{prerelease} ? "0x0L" : "0xfL" -} )
++      |0x0L )
+ 
+ # ifdef  __cplusplus
+ }
