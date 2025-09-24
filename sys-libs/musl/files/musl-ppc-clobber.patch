@@ -1,0 +1,154 @@
+https://bugs.gentoo.org/956676
+https://git.musl-libc.org/cgit/musl/patch/?id=f6944eb3c4ce1c97dc39dc36d32390dc9f70b67b
+
+From f6944eb3c4ce1c97dc39dc36d32390dc9f70b67b Mon Sep 17 00:00:00 2001
+From: Rich Felker <dalias@aerifal.cx>
+Date: Thu, 7 Aug 2025 15:35:14 -0400
+Subject: powerpc[64]: fix missing ctr and xer regs in syscall asm clobberlists
+
+the ctr and xer special registers are call-clobbered and
+syscall-clobbered. failure to include them in the clobber list may
+result in wrong code that attempts to use a value which is no longer
+present in the register after the syscall. this has been reported to
+manifest newly with gcc 15.
+---
+ arch/powerpc/syscall_arch.h   | 14 +++++++-------
+ arch/powerpc64/syscall_arch.h | 14 +++++++-------
+ 2 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/arch/powerpc/syscall_arch.h b/arch/powerpc/syscall_arch.h
+index 54c885cb..fe893af4 100644
+--- a/arch/powerpc/syscall_arch.h
++++ b/arch/powerpc/syscall_arch.h
+@@ -9,7 +9,7 @@ static inline long __syscall0(long n)
+ 	register long r3 __asm__("r3");
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "=r"(r3)
+-	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -19,7 +19,7 @@ static inline long __syscall1(long n, long a)
+ 	register long r3 __asm__("r3") = a;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3)
+-	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -30,7 +30,7 @@ static inline long __syscall2(long n, long a, long b)
+ 	register long r4 __asm__("r4") = b;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4)
+-	:: "memory", "cr0", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -42,7 +42,7 @@ static inline long __syscall3(long n, long a, long b, long c)
+ 	register long r5 __asm__("r5") = c;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5)
+-	:: "memory", "cr0", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -55,7 +55,7 @@ static inline long __syscall4(long n, long a, long b, long c, long d)
+ 	register long r6 __asm__("r6") = d;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5), "+r"(r6)
+-	:: "memory", "cr0", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -69,7 +69,7 @@ static inline long __syscall5(long n, long a, long b, long c, long d, long e)
+ 	register long r7 __asm__("r7") = e;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5), "+r"(r6), "+r"(r7)
+-	:: "memory", "cr0", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -84,7 +84,7 @@ static inline long __syscall6(long n, long a, long b, long c, long d, long e, lo
+ 	register long r8 __asm__("r8") = f;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5), "+r"(r6), "+r"(r7), "+r"(r8)
+-	:: "memory", "cr0", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+diff --git a/arch/powerpc64/syscall_arch.h b/arch/powerpc64/syscall_arch.h
+index 7d34fbe4..4c5d3ae9 100644
+--- a/arch/powerpc64/syscall_arch.h
++++ b/arch/powerpc64/syscall_arch.h
+@@ -7,7 +7,7 @@ static inline long __syscall0(long n)
+ 	register long r3 __asm__("r3");
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "=r"(r3)
+-	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -17,7 +17,7 @@ static inline long __syscall1(long n, long a)
+ 	register long r3 __asm__("r3") = a;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3)
+-	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -28,7 +28,7 @@ static inline long __syscall2(long n, long a, long b)
+ 	register long r4 __asm__("r4") = b;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4)
+-	:: "memory", "cr0", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -40,7 +40,7 @@ static inline long __syscall3(long n, long a, long b, long c)
+ 	register long r5 __asm__("r5") = c;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5)
+-	:: "memory", "cr0", "r6", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -53,7 +53,7 @@ static inline long __syscall4(long n, long a, long b, long c, long d)
+ 	register long r6 __asm__("r6") = d;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5), "+r"(r6)
+-	:: "memory", "cr0", "r7", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r7", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -67,7 +67,7 @@ static inline long __syscall5(long n, long a, long b, long c, long d, long e)
+ 	register long r7 __asm__("r7") = e;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5), "+r"(r6), "+r"(r7)
+-	:: "memory", "cr0", "r8", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r8", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+@@ -82,7 +82,7 @@ static inline long __syscall6(long n, long a, long b, long c, long d, long e, lo
+ 	register long r8 __asm__("r8") = f;
+ 	__asm__ __volatile__("sc ; bns+ 1f ; neg %1, %1 ; 1:"
+ 	: "+r"(r0), "+r"(r3), "+r"(r4), "+r"(r5), "+r"(r6), "+r"(r7), "+r"(r8)
+-	:: "memory", "cr0", "r9", "r10", "r11", "r12");
++	:: "memory", "cr0", "r9", "r10", "r11", "r12", "ctr", "xer");
+ 	return r3;
+ }
+ 
+-- 
+cgit v1.2.1

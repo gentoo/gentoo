@@ -1,0 +1,33 @@
+https://git.musl-libc.org/cgit/musl/commit/?id=6915b34860459a963fb1ba468a4d5389dd65c67b
+
+From 6915b34860459a963fb1ba468a4d5389dd65c67b Mon Sep 17 00:00:00 2001
+From: Rich Felker <dalias@aerifal.cx>
+Date: Mon, 5 May 2025 09:23:32 -0400
+Subject: dns resolver: reorder sockaddr union to make initialization safe
+
+some recent compilers have adopted a dubious interpretation of the C
+specification for union initializers, that when the initialized member
+is smaller than the size of the union, the remaining padding does not
+have to be zero-initialized. in the interests of not depending on any
+particular interpretation, place the larger member first so it's
+initialized and ensures the whole object is zero-filled.
+---
+ src/network/res_msend.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/network/res_msend.c b/src/network/res_msend.c
+index 86c2fcf4..fcb52513 100644
+--- a/src/network/res_msend.c
++++ b/src/network/res_msend.c
+@@ -83,8 +83,8 @@ int __res_msend_rc(int nqueries, const unsigned char *const *queries,
+ 	int fd;
+ 	int timeout, attempts, retry_interval, servfail_retry;
+ 	union {
+-		struct sockaddr_in sin;
+ 		struct sockaddr_in6 sin6;
++		struct sockaddr_in sin;
+ 	} sa = {0}, ns[MAXNS] = {{0}};
+ 	socklen_t sl = sizeof sa.sin;
+ 	int nns = 0;
+-- 
+cgit v1.2.1

@@ -4,7 +4,11 @@
 EAPI=8
 
 inherit crossdev flag-o-matic toolchain-funcs prefix
-if [[ ${PV} == "9999" ]] ; then
+
+DESCRIPTION="Light, fast and, simple C library focused on standards-conformance and safety"
+HOMEPAGE="https://musl.libc.org"
+
+if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.musl-libc.org/git/musl"
 	inherit git-r3
 else
@@ -17,6 +21,7 @@ else
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-musl )"
 fi
+
 GETENT_COMMIT="93a08815f8598db442d8b766b463d0150ed8e2ab"
 GETENT_FILE="musl-getent-${GETENT_COMMIT}.c"
 SRC_URI+="
@@ -24,9 +29,6 @@ SRC_URI+="
 	https://gitlab.alpinelinux.org/alpine/aports/-/raw/${GETENT_COMMIT}/main/musl/getent.c -> ${GETENT_FILE}
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c
 "
-
-DESCRIPTION="Light, fast and simple C library focused on standards-conformance and safety"
-HOMEPAGE="https://musl.libc.org"
 
 LICENSE="MIT LGPL-2 GPL-2"
 SLOT="0"
@@ -49,10 +51,12 @@ else
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${P}-elfutils-0.190-relr.patch
 	"${FILESDIR}"/${PN}-1.2.4-arm64-crti-alignment.patch
 	"${FILESDIR}"/${PN}-sched.h-reduce-namespace-conflicts.patch
 	"${FILESDIR}"/${PN}-iconv-out-of-bound-fix.patch
+	"${FILESDIR}"/${PN}-arm-crti-alignment.patch
+	"${FILESDIR}"/${PN}-ppc-clobber.patch
+	"${FILESDIR}"/${PN}-dns-union.patch
 )
 
 just_headers() {
@@ -62,12 +66,12 @@ just_headers() {
 pkg_setup() {
 	if [[ ${CTARGET} == ${CHOST} ]] ; then
 		case ${CHOST} in
-		*-musl*) ;;
-		*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
+			*-musl*) ;;
+			*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
 		esac
 	fi
 
-	# fix for #667126, copied from glibc ebuild
+	# Fix for bug #667126, copied from glibc ebuild:
 	# make sure host make.conf doesn't pollute us
 	if target_is_not_host || tc-is-cross-compiler ; then
 		CHOST=${CTARGET} strip-unsupported-flags
@@ -125,7 +129,7 @@ src_compile() {
 			VPATH="${WORKDIR}/misc"
 	fi
 
-	$(tc-getCC) ${CFLAGS} -c -o libssp_nonshared.o  "${FILESDIR}"/stack_chk_fail_local.c || die
+	$(tc-getCC) ${CPPFLAGS} ${CFLAGS} -c -o libssp_nonshared.o "${FILESDIR}"/stack_chk_fail_local.c || die
 	$(tc-getAR) -rcs libssp_nonshared.a libssp_nonshared.o || die
 }
 
@@ -192,18 +196,66 @@ src_install() {
 	fi
 }
 
+# Simple test to make sure our new musl isn't completely broken.
+# Make sure we don't test with statically built binaries since
+# they will fail.  Also, skip if this musl is a cross compiler.
+#
+# If coreutils is built with USE=multicall, some of these files
+# will just be wrapper scripts, not actual ELFs we can test.
+musl_sanity_check() {
+	cd / #228809
+
+	# We enter ${ED} so to avoid trouble if the path contains
+	# special characters; for instance if the path contains the
+	# colon character (:), then the linker will try to split it
+	# and look for the libraries in an unexpected place. This can
+	# lead to unsafe code execution if the generated prefix is
+	# within a world-writable directory.
+	# (e.g. /var/tmp/portage:${HOSTNAME})
+	pushd "${ED}"/usr/$(get_libdir) >/dev/null
+
+	# first let's find the actual dynamic linker here
+	# symlinks may point to the wrong abi
+	local newldso=$(find . -maxdepth 1 -name 'libc.so' -type f -print -quit)
+
+	einfo Last-minute run tests with ${newldso} in /usr/$(get_libdir) ...
+
+	local x striptest
+	for x in cal date env free ls true uname uptime ; do
+		x=$(type -p ${x})
+		[[ -z ${x} || ${x} != ${EPREFIX}/* ]] && continue
+		striptest=$(LC_ALL="C" file -L ${x} 2>/dev/null) || continue
+		case ${striptest} in
+		*"statically linked"*) continue;;
+		*"static-pie linked"*) continue;;
+		*"ASCII text"*) continue;;
+		esac
+		# We need to clear the locale settings as the upgrade might want
+		# incompatible locale data.  This test is not for verifying that.
+		LC_ALL=C \
+		${newldso} --library-path . ${x} > /dev/null \
+			|| die "simple run test (${x}) failed"
+	done
+
+	popd >/dev/null
+}
+
 pkg_preinst() {
-	# nothing to do if just installing headers
+	# Nothing to do if just installing headers
 	just_headers && return
 
-	# prepare /etc/ld.so.conf.d/ for files
+	# Prepare /etc/ld.so.conf.d/ for files
 	mkdir -p "${EROOT}"/etc/ld.so.conf.d
+
+	[[ -n ${ROOT} ]] && return 0
+	[[ -d ${ED}/usr/$(get_libdir) ]] || return 0
+	musl_sanity_check
 }
 
 pkg_postinst() {
 	target_is_not_host && return 0
 
-	[ -n "${ROOT}" ] && return 0
+	[[ -n "${ROOT}" ]] && return 0
 
 	ldconfig || die
 }
