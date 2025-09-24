@@ -19,7 +19,7 @@ SRC_URI="https://github.com/greenbone/pontos/archive/refs/tags/v${PV}.tar.gz -> 
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-python/colorful-0.5.4[${PYTHON_USEDEP}]
