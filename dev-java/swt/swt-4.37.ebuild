@@ -60,7 +60,7 @@ RDEPEND="${COMMON_DEP}
 HTML_DOCS=( ../about.html )
 
 JAVA_RESOURCE_DIRS="../resources"
-JAVA_SRC_DIR="../src"
+JAVA_SRC_DIR="../org"
 
 PATCHES=( "${FILESDIR}/swt-4.37-as-needed-and-flag-fixes.patch" )
 
@@ -79,9 +79,6 @@ src_prepare() {
 	grep '^SWT-OS\|^SWT-Arch' META-INF/MANIFEST.MF \
 		> resources/META-INF/MANIFEST.MF || die "MANIFEST.MF"
 	java-pkg_clean
-	find org -type f -name '*.java' |
-		xargs cp --parent -t src -v \
-		|| die "copying resources failed"
 	find org -type f ! -name '*.java' |
 		xargs  cp --parent -t resources -v \
 		|| die "copying resources failed"
