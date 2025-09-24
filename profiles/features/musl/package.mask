@@ -309,6 +309,7 @@ dev-games/ps2-packer
 dev-java/openjdk-bin
 dev-java/openjdk-jre-bin
 dev-lang/dafny-bin
+dev-lang/deno-bin
 dev-libs/luise
 dev-libs/nwjs
 dev-perl/Lab-Zhinst
