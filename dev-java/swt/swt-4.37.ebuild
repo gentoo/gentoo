@@ -72,15 +72,13 @@ src_unpack() {
 src_prepare() {
 	default #780585
 	java-pkg-2_src_prepare
-	# .css stuff is essential at least for running net-p2p/biglybt
-	unzip ../swt.jar 'org/eclipse/swt/internal/gtk/*.css' -d resources || die
-	java-pkg_clean
 	cd .. || die
 	mkdir -p resources/META-INF src || die "mkdir failed"
 	# save SWT-OS and SWT-Arch attributes from original MANIFEST.MF
 	unzip swt.jar META-INF/MANIFEST.MF -d . || die "failed to extract manifest"
 	grep '^SWT-OS\|^SWT-Arch' META-INF/MANIFEST.MF \
 		> resources/META-INF/MANIFEST.MF || die "MANIFEST.MF"
+	java-pkg_clean
 	find org -type f -name '*.java' |
 		xargs cp --parent -t src -v \
 		|| die "copying resources failed"
