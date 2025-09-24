@@ -76,7 +76,11 @@ src_prepare() {
 	unzip ../swt.jar 'org/eclipse/swt/internal/gtk/*.css' -d resources || die
 	java-pkg_clean
 	cd .. || die
-	mkdir resources src || die "mkdir failed"
+	mkdir -p resources/META-INF src || die "mkdir failed"
+	# save SWT-OS and SWT-Arch attributes from original MANIFEST.MF
+	unzip swt.jar META-INF/MANIFEST.MF -d . || die "failed to extract manifest"
+	grep '^SWT-OS\|^SWT-Arch' META-INF/MANIFEST.MF \
+		> resources/META-INF/MANIFEST.MF || die "MANIFEST.MF"
 	find org -type f -name '*.java' |
 		xargs cp --parent -t src -v \
 		|| die "copying resources failed"
