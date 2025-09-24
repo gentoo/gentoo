@@ -79,8 +79,8 @@ src_prepare() {
 	grep '^SWT-OS\|^SWT-Arch' META-INF/MANIFEST.MF \
 		> resources/META-INF/MANIFEST.MF || die "MANIFEST.MF"
 	java-pkg_clean
-	find org -type f ! -name '*.java' |
-		xargs  cp --parent -t resources -v \
+	find org -type f ! -name '*.java' ! -name 'package.html' |
+		xargs  cp --parent -t resources \
 		|| die "copying resources failed"
 	cp version.txt resources || die "adding version.txt failed"
 }
