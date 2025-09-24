@@ -41,6 +41,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	# https://bugs.gentoo.org/962836
+	"${FILESDIR}"/${PN}-3.5.1-cmakeplugins.patch
+	"${FILESDIR}"/${PN}-3.5.1-cmakerpath.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	fortran-2_pkg_setup

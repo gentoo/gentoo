@@ -1,0 +1,34 @@
+https://gitlab.com/fastjet/fastjet/-/merge_requests/29
+From c47b6dca4e6d7b5bed5e73366b9adcac25f78a0f Mon Sep 17 00:00:00 2001
+From: Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>
+Date: Sun, 21 Sep 2025 12:35:13 +0200
+Subject: [PATCH] Forward CMake BUILD_SHARED_LIBS as HAS_SHARED to
+ fastjet-config generation
+
+Closes: https://gitlab.com/fastjet/fastjet/-/issues/8
+---
+ CMakeLists.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4b4bb6fe..31a61966 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -398,6 +398,14 @@ set(CONFIG_LIBS_PLUGINS "-lfastjetplugins")
+ if (FASTJET_ENABLE_PLUGIN_SISCONE) 
+   set(CONFIG_LIBS_PLUGINS "${CONFIG_LIBS_PLUGINS} -lsiscone -lsiscone_spherical")
+ endif()
++
++# Set shared library variables
++if (BUILD_SHARED_LIBS OR NOT DEFINED BUILD_SHARED_LIBS)
++  set(HAS_SHARED "yes")
++else()
++  set(HAS_SHARED "no")
++endif()
++
+ configure_file(fastjet-config.in fastjet-config)
+ 
+ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/fastjet-config DESTINATION ${CMAKE_INSTALL_BINDIR})
+-- 
+GitLab
+
