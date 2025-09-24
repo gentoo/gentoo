@@ -31,7 +31,7 @@ CDEPEND="
 	sci-libs/gsl:0=
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fastjet? ( sci-physics/fastjet:0= )
-	rivet? ( sci-physics/rivet:3=[hepmc3] )
+	rivet? ( <sci-physics/rivet-4:=[hepmc3] )
 	hepmc3? ( sci-physics/hepmc:3= )
 	lhapdf? ( >=sci-physics/lhapdf-6.0:0= )
 	zlib? ( sys-libs/zlib:0= )"
