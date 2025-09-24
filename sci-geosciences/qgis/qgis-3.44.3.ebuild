@@ -166,6 +166,8 @@ src_configure() {
 	filter-lto
 
 	local mycmakeargs=(
+		-DCMAKE_POLICY_DEFAULT_CMP0175="OLD" # add_custom_command
+
 		-DQGIS_MANUAL_SUBDIR=share/man/
 		-DQGIS_LIB_SUBDIR=$(get_libdir)
 		-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis

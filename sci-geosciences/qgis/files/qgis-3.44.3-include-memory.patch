@@ -1,0 +1,22 @@
+From 3ba46f8b10f2b33e2136bc8773f6628172b65804 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 24 Aug 2025 11:41:16 +0200
+Subject: [PATCH] include memory
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/src/core/pal/priorityqueue.h b/src/core/pal/priorityqueue.h
+index 3386961..4bedbe8 100644
+--- a/src/core/pal/priorityqueue.h
++++ b/src/core/pal/priorityqueue.h
+@@ -34,6 +34,7 @@
+ 
+ 
+ #include <iostream>
++#include <memory>
+ 
+ #define LEFT(x) (2*x+1)
+ #define RIGHT(x) (2*x+2)
+-- 
+2.51.0
+
