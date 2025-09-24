@@ -11,7 +11,7 @@ inherit user-info flag-o-matic autotools optfeature pam systemd toolchain-funcs 
 
 # Make it more portable between straight releases
 # and _p? releases.
-PARCH=${P/_}
+PARCH=${PN}-10.0p1
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
