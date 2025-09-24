@@ -14,7 +14,7 @@ S="${WORKDIR}/tiled-${COMMIT}"
 
 LICENSE="BSD BSD-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="minimal python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
