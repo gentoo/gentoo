@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit gnome.org gnome2-utils meson readme.gentoo-r1 virtualx xdg
+inherit flag-o-matic gnome.org gnome2-utils meson readme.gentoo-r1 virtualx xdg
 
 DESCRIPTION="Default file manager for the GNOME desktop"
 HOMEPAGE="https://apps.gnome.org/Nautilus/"
@@ -11,9 +11,9 @@ HOMEPAGE="https://apps.gnome.org/Nautilus/"
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
-IUSE="+cloudproviders doc gnome +gstreamer +introspection +previewer selinux"
+IUSE="X +cloudproviders doc gnome +gstreamer +introspection +previewer selinux wayland"
 REQUIRED_USE="doc? ( introspection )"
 
 DEPEND="
@@ -25,7 +25,7 @@ DEPEND="
 	>=app-arch/gnome-autoar-0.4.4
 	>=gnome-base/gnome-desktop-43:4=
 	>=gnome-base/gsettings-desktop-schemas-42
-	>=gui-libs/gtk-4.15.2:4[introspection?]
+	>=gui-libs/gtk-4.15.2:4[X?,introspection?,wayland?]
 	>=gui-libs/libadwaita-1.6_beta:1
 	>=dev-libs/libportal-0.7:=[gtk]
 	>=x11-libs/pango-1.28.3
@@ -34,10 +34,9 @@ DEPEND="
 	cloudproviders? ( >=net-libs/libcloudproviders-0.3.1 )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
-# Uses org.freedesktop.Tracker.Miner.Files gsettings schema from localsearch
 RDEPEND="${DEPEND}
 	>=app-misc/localsearch-3.0:3=
-"
+" # uses org.freedesktop.Tracker.Miner.Files gsettings schema from tracker-miners
 BDEPEND="
 	>=dev-util/gdbus-codegen-2.51.2
 	dev-util/glib-utils
@@ -71,9 +70,15 @@ src_prepare() {
 			To activate the previewer, select a file and press space; to
 			close the previewer, press space again."
 	fi
+
+	# Disable test-nautilus-search-engine-tracker; bug #831170
+	sed -e '/^tracker_tests = /{n;N;N;d}' -i test/automated/displayless/meson.build || die
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	local emesonargs=(
 		$(meson_use doc docs)
 		-Dextensions=true # image file properties, also required for -Dgstreamer=true
@@ -96,6 +101,8 @@ src_install() {
 src_test() {
 	# Avoid dconf that looks at XDG_DATA_DIRS, which can sandbox fail if flatpak is installed
 	gnome2_environment_reset
+	# TODO: Tests require tracker testutils (e.g. tracker-sandbox), which may
+	# need some sorting out with tracker use flag deps
 	# GIO_USE_VOLUME_MONITOR=unix due to https://gitlab.gnome.org/GNOME/gvfs/-/issues/629#note_1467280
 	GIO_USE_VOLUME_MONITOR=unix XDG_SESSION_TYPE=x11 virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
 }
