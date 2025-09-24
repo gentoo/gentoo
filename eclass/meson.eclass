@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -147,6 +147,7 @@ _meson_get_machine_info() {
 _meson_create_cross_file() {
 	local system cpu_family cpu
 	_meson_get_machine_info "${CHOST}"
+	local -n CHOST_default="CHOST_${DEFAULT_ABI}"
 
 	local fn=${T}/meson.${CHOST}.${ABI}.ini
 
@@ -181,7 +182,7 @@ _meson_create_cross_file() {
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
 
 	[properties]
-	needs_exe_wrapper = true
+	needs_exe_wrapper = $([[ "${CBUILD:-${CHOST}}" != "${CHOST_default}" ]] && echo true || echo false)
 	sys_root = '${SYSROOT}'
 	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
@@ -205,7 +206,7 @@ _meson_create_native_file() {
 	local system cpu_family cpu
 	_meson_get_machine_info "${CBUILD}"
 
-	local fn=${T}/meson.${CBUILD}.${ABI}.ini
+	local fn=${T}/meson.${CBUILD}.ini
 
 	cat > "${fn}" <<-EOF
 	[binaries]
