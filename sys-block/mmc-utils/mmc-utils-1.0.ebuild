@@ -13,7 +13,7 @@ SRC_URI="https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git/snapshot/mmc-uti
 LICENSE="GPL-2 BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 IUSE="doc"
 
