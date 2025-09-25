@@ -65,6 +65,8 @@ src_configure() {
 		-DLAPACK=ON
 		-DLINK_OPENMP=$(usex openmp)
 		-DEXAMPLES=OFF
+		# prefer OpenBLAS if available
+		-DFLEXIBLAS_DEFAULT=$(usex openblas openblas netlib)
 		# we need to enable autodetection for mkl
 		-DBLAS_AUTO_DETECT=ON
 		# ...so we need to explicitly disable autodetecting other libraries
