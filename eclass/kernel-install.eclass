@@ -728,10 +728,19 @@ kernel-install_install_all() {
 	local dir_ver=${1}
 	local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
 	local relfile=${kernel_dir}/include/config/kernel.release
+	local kernel_cert=${kernel_dir}/certs/signing_key.x509
 	local image_path=$(dist-kernel_get_image_path)
 	local image_dir=${image_path%/*}
 	local module_ver
 	module_ver=$(<"${relfile}") || die
+
+	if [[ ! -r ${SECUREBOOT_SIGN_CERT} && -r ${kernel_cert} ]]; then
+		openssl x509 \
+			-inform DER -in "${kernel_cert}" \
+			-outform PEM -out "${T}/cert.pem" ||
+				die "Failed to convert kernel certificate to PEM format"
+			export SECUREBOOT_SIGN_CERT=${T}/cert.pem
+	fi
 
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		if use generic-uki; then
