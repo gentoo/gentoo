@@ -25,7 +25,7 @@ SRC_URI="
 "
 if [[ ${PKGBUMPING} != ${PVR} ]]; then
 	SRC_URI+="
-		https://dev.gentoo.org/~tupone/distfiles/${P}-crates.tar.xz
+		https://dev.gentoo.org/~tupone/distfiles/${PN}-0.22.0-crates.tar.xz
 		https://dev.gentoo.org/~tupone/distfiles/${PN}-python-${PV}-crates.tar.xz
 	"
 fi
