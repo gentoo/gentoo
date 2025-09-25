@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,6 @@ KEYWORDS="amd64 arm arm64 ~ppc ~ppc64 x86"
 IUSE="+ocamlopt"
 
 DEPEND="
-	>=dev-lang/ocaml-4.09
 	dev-ml/core:=
 	dev-ml/core_kernel:${SLOT}
 	dev-ml/expect_test_helpers_core:${SLOT}
@@ -24,7 +23,6 @@ DEPEND="
 	dev-ml/timezone:${SLOT}
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
 
 PATCHES=( "${FILESDIR}"/${P}-musl.patch )
 
