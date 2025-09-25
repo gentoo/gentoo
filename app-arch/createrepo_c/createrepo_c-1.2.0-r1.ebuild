@@ -21,10 +21,13 @@ SLOT="0"
 IUSE="legacy test zstd"
 RESTRICT="!test? ( test )"
 
+# Restrict to <app-arch/rpm-6.0.0 because it fails to build with newer
+# versions due to header changes.
+# https://github.com/rpm-software-management/createrepo_c/commit/4e37bc582b1673ff767dbd0b570ef1c8871d3e8c
 DEPEND="
 	app-arch/bzip2:=
 	app-arch/drpm
-	app-arch/rpm
+	<app-arch/rpm-6.0.0
 	app-arch/xz-utils
 	app-arch/zchunk
 	app-arch/zstd:=

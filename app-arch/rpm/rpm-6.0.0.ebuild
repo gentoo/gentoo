@@ -3,9 +3,8 @@
 
 EAPI=8
 
-CMAKE_MAKEFILE_GENERATOR=emake
 LUA_COMPAT=( lua5-{3,4} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake flag-o-matic lua-single python-single-r1 toolchain-funcs
 
@@ -15,7 +14,7 @@ SRC_URI="https://ftp.osuosl.org/pub/rpm/releases/rpm-$(ver_cut 1-2).x/${P}.tar.b
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="acl audit bzip2 caps berkdb doc dbus iconv lzma nls openmp python
 	readline selinux +sequoia +sqlite +zstd"
 REQUIRED_USE="
@@ -45,12 +44,13 @@ DEPEND="
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:= )
 	selinux? ( sys-libs/libselinux )
-	sequoia? ( app-crypt/rpm-sequoia )
+	sequoia? ( >=app-crypt/rpm-sequoia-1.9.0 )
 	!sequoia? ( dev-libs/libgcrypt:= )
 	sqlite? ( dev-db/sqlite:3 )
 	zstd? ( app-arch/zstd:= )
 "
 BDEPEND="
+	app-text/scdoc
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 	nls? ( sys-devel/gettext )
@@ -61,8 +61,9 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.19.1.1-musl-compat.patch
-	"${FILESDIR}"/${P}-libdir.patch
+	"${FILESDIR}"/${PN}-6.0.0-musl-compat.patch
+	"${FILESDIR}"/${PN}-4.20.0-libdir.patch
+	"${FILESDIR}"/${PN}-6.0.0-no-hardened.patch
 )
 
 pkg_pretend() {
@@ -82,7 +83,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_NDB=ON
 		-DENABLE_TESTSUITE=OFF
-		-DWITH_ARCHIVE=ON
 		-DWITH_FSVERITY=OFF
 		-DWITH_IMAEVM=OFF
 		-DWITH_FAPOLICYD=OFF
@@ -106,6 +106,10 @@ src_configure() {
 		-DWITH_ZSTD=$(usex zstd)
 		-DWITH_LIBLZMA=$(usex lzma)
 		-DWITH_DOXYGEN=$(usex doc)
+		# Upstream expects these paths to be relative, but cmake.eclass
+		# sets them as absolute paths. bug #954379
+		-DCMAKE_INSTALL_INFODIR=share/info
+		-DCMAKE_INSTALL_MANDIR=share/man
 	)
 
 	# special handling for ASAN
@@ -118,16 +122,11 @@ src_configure() {
 }
 
 src_test() {
-	emake -C "${BUILD_DIR}" check
+	eninja -C "${BUILD_DIR}" check
 }
 
 src_install() {
 	cmake_src_install
-
-	if ! use doc; then
-		# Remove pre-built API docs.
-		rm -r "${ED}/usr/share/doc/${PF}" || die
-	fi
 
 	dodoc CREDITS README
 
