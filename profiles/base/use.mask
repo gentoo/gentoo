@@ -4,10 +4,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Patrick Lauer <patrick@gentoo.org> (2025-09-25)
-# Postgres:18 is not stable yet
-postgres_targets_postgres18
-
 # Sam James <sam@gentoo.org> (2025-04-19)
 # Ruby 3.1 is no longer supported upstream and will no longer
 # receive security updates.

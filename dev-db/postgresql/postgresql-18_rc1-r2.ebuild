@@ -9,7 +9,7 @@ LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS=""
 
 SLOT=$(ver_cut 1)
 
@@ -100,6 +100,8 @@ app-text/docbook-xsl-stylesheets
 dev-libs/libxml2
 dev-libs/libxslt
 "
+
+PATCHES=( "${FILESDIR}"/postgresql-17.6-llvm21.patch )
 
 pkg_setup() {
 	use llvm && llvm-r1_pkg_setup
