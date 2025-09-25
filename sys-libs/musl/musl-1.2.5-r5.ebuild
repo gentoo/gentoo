@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-arm-crti-alignment.patch
 	"${FILESDIR}"/${PN}-ppc-clobber.patch
 	"${FILESDIR}"/${PN}-dns-union.patch
+	"${FILESDIR}"/${PN}-getauxval.patch
 )
 
 just_headers() {
