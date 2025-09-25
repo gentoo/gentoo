@@ -209,11 +209,6 @@ app-misc/glastree
 # porting effort. Bugs #953885, #955828, #957574. Removal on 2025-09-26.
 sci-calculators/speedcrunch
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-08-22)
-# maintainer-needed, depends on Qt5, no upstream activity since 2017.
-# Removal on 2025-09-21.  Bugs #961889, #960823.
-x11-misc/fracplanet
-
 # James Le Cuirot <chewi@gentoo.org> (2025-08-21)
 # The required Direct3D 9 feature is being dropped from Mesa. Use DXVK or
 # WineD3D instead. Removal on 2025-09-21.
