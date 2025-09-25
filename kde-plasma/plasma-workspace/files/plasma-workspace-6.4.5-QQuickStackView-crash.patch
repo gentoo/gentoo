@@ -1,0 +1,43 @@
+From 30273fb2afcc6e304951c8895bb17d38255fed39 Mon Sep 17 00:00:00 2001
+From: Oliver Beard <olib141@outlook.com>
+Date: Tue, 23 Sep 2025 22:37:31 +0100
+Subject: [PATCH] applets/mediacontroller: Workaround for common crash in
+ QQuickStackView
+
+This commit adds a workaround for QTBUG-140018 where a regression in Qt 6.9.2 causes a segfault as qmlEngine(view) returns null in QQuickStackElement::initialize, because a parent loader set the engine to null when unloading, but we still run.
+
+We avoid this by not pushing a new Image to the StackView when it isn't visible, which is coincident with the above and the cause of the crash.
+
+This does not regress any behaviour, functionality or animation.
+
+BUG: 509192
+
+Co-authored-by: David Edmundson <kde@davidedmundson.co.uk>
+---
+ applets/mediacontroller/AlbumArtStackView.qml | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/applets/mediacontroller/AlbumArtStackView.qml b/applets/mediacontroller/AlbumArtStackView.qml
+index 08159215cde..69dbd5a101c 100644
+--- a/applets/mediacontroller/AlbumArtStackView.qml
++++ b/applets/mediacontroller/AlbumArtStackView.qml
+@@ -58,6 +58,16 @@ Item {
+         });
+ 
+         function replaceWhenLoaded() {
++            // HACK: Workaround for QTBUG-140018 (see also: BUG 509192)
++            // When a parent loader is inactive, it'll drop the engine from the context, but this can still run
++            // afterwards which causes a crash in QQuickStackElement::initialize which asserts the engine is not null.
++            // This visiblity heuristic is always the case when we're in this state, returning without pushing
++            // anything to the StackView and avoiding the above. Since the artwork is always updated when expanding,
++            // we don't have to worry about not being visible due to other reasons.
++            if (!albumArt.visible) {
++                return;
++            }
++
+             // There can be a potential race: when the previous player is gone but the pending image is just ready in time,
+             // pendingImage.destroy() -> QQuickImage::deleteLater(), so in the event queue statusChanged may be emitted
+             // before pendingImage is deleted, but pendingImage is already set to null when the previous player is gone.
+-- 
+GitLab
+
