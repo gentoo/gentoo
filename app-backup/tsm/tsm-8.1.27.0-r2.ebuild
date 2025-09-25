@@ -5,7 +5,7 @@ EAPI=8
 
 MODULES_OPTIONAL_IUSE=journal
 MODULES_KERNEL_MAX=6.1
-inherit desktop linux-mod-r1 optfeature rpm toolchain-funcs pax-utils xdg
+inherit desktop linux-mod-r1 rpm toolchain-funcs pax-utils xdg
 
 DESCRIPTION="IBM Storage Protect (former Tivoli Storage Manager) Backup/Archive Client, API"
 HOMEPAGE="https://www.ibm.com/products/storage-protect"
@@ -43,7 +43,7 @@ LICENSE="
 SLOT="0"
 KEYWORDS="~amd64" # ppc64 s390 -*
 
-IUSE="gpfs"
+IUSE="gpfs gui"
 # GPFS is not supported for journal-based backups on Linux
 REQUIRED_USE="journal? ( !gpfs )"
 
@@ -65,7 +65,7 @@ done
 
 BDEPEND="
 	app-arch/xz-utils[extra-filters(+)]
-	media-gfx/imagemagick[png]
+	gui? ( media-gfx/imagemagick[png] )
 "
 DEPEND="
 	acct-group/tsm
@@ -75,11 +75,9 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/openssl:0/3
 	dev-libs/libxml2:2
-	media-libs/alsa-lib
 	sys-apps/acl
 	sys-fs/fuse:0
 	sys-libs/zlib:0/1
-	x11-libs/libXft
 	|| (
 		sys-libs/libxcrypt:0/1[compat]
 		sys-libs/glibc:2.2[crypt(-)]
@@ -88,6 +86,11 @@ RDEPEND="
 		app-shells/ksh
 		app-shells/loksh
 	) )
+	gui? (
+		media-libs/alsa-lib
+		virtual/jre
+		x11-libs/libXft
+	)
 "
 
 src_unpack() {
@@ -119,6 +122,14 @@ src_unpack() {
 		fi
 	else
 		die "Unsupported architecture"
+	fi
+
+	if ! use gui; then
+		rm -f TIVsm-WEBGUI.*.rpm || die
+	fi
+
+	if ! use journal; then
+		rm -f TIVsm-JBB.*.rpm || die
 	fi
 
 	mkdir rpms_unpacked || die
@@ -157,7 +168,9 @@ src_install() {
 	done
 
 	# Don't bundle java
-	rm -r "${ED}/opt/tivoli/tsm/tdpvmware/common/jre" || die
+	if [[ -e "${ED}/opt/tivoli/tsm/tdpvmware/common/jre" ]]; then
+		rm -r "${ED}/opt/tivoli/tsm/tdpvmware/common/jre" || die
+	fi
 
 	# The RPM files contain postinstall scripts which can be extracted
 	# e.g. using https://bugs.gentoo.org/attachment.cgi?id=234663 .
@@ -244,18 +257,25 @@ src_install() {
 	EOF
 
 	# https://www.ibm.com/support/pages/apar/IT46420
-	insinto /opt/tivoli/tsm/client/ba/bin
+	insinto /etc/tivoli
 	newins - dsmcad.lang <<-EOF
 		LANG=en_US
 		LC_ALL=en_US
 	EOF
+	dosym ../../../../../../etc/tivoli/dsmcad.lang /opt/tivoli/tsm/client/ba/bin/dsmcad.lang
 
 	# Need this for hardened, otherwise a cryptic "connection to server lost" message appears
 	pax-mark -m "${ED}/opt/tivoli/tsm/client/ba/bin/dsmc"
 
-	magick "${ED}/opt/tivoli/tsm/client/ba/bin/favicon.ico" "${T}/ibm.png" || die
-	doicon -s 16 "${T}/ibm.png"
-	make_desktop_entry dsmj "IBM Storage Protect" ibm System
+	if use gui; then
+		magick "${ED}/opt/tivoli/tsm/client/ba/bin/favicon.ico" "${T}/ibm.png" || die
+		doicon -s 16 "${T}/ibm.png"
+		make_desktop_entry dsmj "IBM Storage Protect" ibm System
+
+		# Respect our java setting
+		sed -e '/JAVA_HOME=/d' \
+			-i "${ED}/opt/tivoli/tsm/tdpvmware/common/scripts/webserver" || die
+	fi
 
 	# Ensure the services can start on Gentoo, respect our java setting
 	sed -e 's/Ubuntu/Gentoo/g' \
@@ -266,12 +286,13 @@ src_install() {
 		-e '/LD_LIBRARY_PATH=/d' \
 		-i "${ED}/opt/tivoli/tsm/client/ba/bin/"*.service || die
 
-	sed -e '/JAVA_HOME=/d' \
-		-i "${ED}/opt/tivoli/tsm/tdpvmware/common/scripts/webserver" || die
-
 	# Overwrite with relative symlinks
 	dosym ../../opt/tivoli/tsm/client/ba/bin/rc.dsmcad /etc/init.d/dsmcad
-	dosym ../../opt/tivoli/tsm/tdpvmware/common/scripts/webserver /etc/init.d/webserver
+	if use gui; then
+		dosym ../../opt/tivoli/tsm/tdpvmware/common/scripts/webserver /etc/init.d/webserver
+	else
+		rm -f "${ED}/etc/init.d/webserver" || die
+	fi
 	if use journal; then
 		dosym ../../opt/tivoli/tsm/client/ba/bin/rc.tsmjbb /etc/init.d/tsmjbbd
 	else
@@ -311,8 +332,6 @@ pkg_postinst() {
 	chmod 0755 "${dirs[@]}" || die
 
 	linux-mod-r1_pkg_postinst
-
-	optfeature "using the Java GUI client" virtual/jre
 
 	elog
 	elog "To use the client as a regular user, add the user to the \"tsm\" group"
