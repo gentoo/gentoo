@@ -24,7 +24,6 @@ IUSE="examples gui +ocamlopt"
 REQUIRED_USE="ocamlopt"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.09.0:=[ocamlopt=]
 	>=sci-mathematics/psmt2-frontend-0.4.0:=
 
 	<dev-ml/ocplib-simplex-0.5:=
