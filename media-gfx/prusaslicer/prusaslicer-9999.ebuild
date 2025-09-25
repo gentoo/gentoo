@@ -30,6 +30,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-cpp/eigen:3
 	dev-cpp/tbb:=
+	dev-cpp/nlohmann_json:=
 	dev-libs/boost:=[nls]
 	dev-libs/cereal
 	dev-libs/expat
