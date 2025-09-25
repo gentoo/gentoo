@@ -467,6 +467,7 @@ multilib_src_configure() {
 		--disable-libxeve
 		--disable-libxeveb
 		--disable-ohcodec
+		--disable-libmpeghdec
 		--disable-pocketsphinx
 		--disable-rkmpp
 		--disable-vapoursynth
