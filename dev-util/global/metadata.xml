@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <!-- maintainer-needed -->
-  <use>
-    <flag name="vim">Integrate the GNU GLOBAL source code tag system with Vim</flag>
-  </use>
   <upstream>
     <remote-id type="savannah">global</remote-id>
   </upstream>
