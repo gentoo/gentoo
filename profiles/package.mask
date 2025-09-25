@@ -358,6 +358,7 @@ virtual/perl-Unicode-Normalize
 # > Connecting to github.com|20.26.156.215|:443... connected.
 # > ERROR: cannot verify github.com's certificate, issued by 'CN=Sectigo ECC Domain Validation Secure Server CA,O=Sectigo Limited,L=Salford,ST=Greater Manchester,C=GB':
 # >  Unable to locally verify the issuer's authority.
+# See bug #963400.
 =app-misc/ca-certificates-20250419.3.112
 
 # Sam James <sam@gentoo.org> (2025-05-26)
