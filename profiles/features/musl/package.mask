@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-28)
+# Required DT_AUXILIARY support in the dynamic linker.
+sci-libs/blas-lapack-aux-wrappers
+
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-28)
 # Bundled pcap-thread, not ported to musl
 # bug #713498, https://github.com/DNS-OARC/pcap-thread/issues/128
