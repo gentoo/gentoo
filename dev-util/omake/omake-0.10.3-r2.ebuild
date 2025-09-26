@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc fam ncurses +ocamlopt readline"
 RESTRICT="installsources !ocamlopt? ( strip )"
 
-DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
+DEPEND="dev-lang/ocaml:=[ocamlopt?]
 	ncurses? ( >=sys-libs/ncurses-5.3:0= )
 	fam? ( virtual/fam )
 	readline? ( >=sys-libs/readline-4.3:0= )"
