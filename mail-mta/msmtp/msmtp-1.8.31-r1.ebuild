@@ -58,6 +58,8 @@ BDEPEND="
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS doc/msmtprc*"
 
+PATCHES=( "${FILESDIR}/${P}-fix-disable-nls.patch" )
+
 src_prepare() {
 	# Use default Gentoo location for mail aliases
 	sed 's:/etc/aliases:/etc/mail/aliases:' \
