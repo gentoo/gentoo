@@ -32,7 +32,7 @@ else
 	# Releases may be signed by those listed in Releasing.md. Jussi
 	# remains the default release manager.
 	# https://github.com/mesonbuild/meson/commit/c2d795735fa1c46c54d6aed4d4a30f36a1f853cb
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-eschwartz sec-keys/openpgp-keys-jpakkane )"
+	BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-eschwartz-20250723-r1 sec-keys/openpgp-keys-jpakkane )"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/eschwartz.asc
 	#VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/jpakkane.gpg
 
