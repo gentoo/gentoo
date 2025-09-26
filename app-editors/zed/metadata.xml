@@ -12,7 +12,4 @@
 	<upstream>
 		<remote-id type="github">zed-industries/zed</remote-id>
 	</upstream>
-	<use>
-		<flag name="gles">Use simplified OpenGLES instead of full-scale OpenGL</flag>
-	</use>
 </pkgmetadata>
