@@ -11,7 +11,7 @@ SRC_URI="https://shinh.skr.jp/libbulletml/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="dev-libs/boost"
 RDEPEND=${DEPEND}
