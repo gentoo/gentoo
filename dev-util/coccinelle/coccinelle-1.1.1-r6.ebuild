@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="strip !test? ( test ) test"
 
 RDEPEND="
-	>=dev-lang/ocaml-3.12:=[ocamlopt?]
+	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/sexplib:=[ocamlopt(+)?]
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/camlp4:=[ocamlopt?]
