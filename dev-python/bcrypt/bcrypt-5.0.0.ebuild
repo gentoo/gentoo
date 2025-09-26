@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 # TODO: freethreading
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
-RUST_MIN_VER="1.74.0"
+RUST_MIN_VER="1.82.0"
 CRATES="
 	autocfg@1.5.0
 	base64@0.22.1
