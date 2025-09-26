@@ -1,0 +1,159 @@
+https://gitlab.com/fastjet/fastjet/-/merge_requests/28
+https://bugs.gentoo.org/962836
+diff --git c/CMakeLists.txt w/CMakeLists.txt
+index 4b4bb6fe..bc9d3f9f 100644
+--- c/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -150,10 +150,11 @@ option(FASTJET_ENABLE_PLUGIN_D0RUNIICONE      "Enable the D0RunIICone plugin [de
+ option(FASTJET_ENABLE_PLUGIN_PXCONE           "Enable the PxCone plugin [default=OFF]"           OFF)
+ option(FASTJET_ENABLE_PLUGIN_TRACKJET         "Enable the TrackJet plugin [default=OFF]"         OFF)
+ 
+-option(FASTJET_ENABLE_ALLCXXPLUGINS           "Enable all the C++ plugins [default=OFF]"       OFF)
+-option(FASTJET_ENABLE_ALLPLUGINS              "Enable all the plugins [default=OFF]"           OFF)
++option(FASTJET_ENABLE_ALLCXXPLUGINS           "Enable all the C++ plugins [default=unset]"       "")
++option(FASTJET_ENABLE_ALLPLUGINS              "Enable all the plugins [default=unset]"           "")
+ 
+-if (FASTJET_ENABLE_ALLCXXPLUGINS OR FASTJET_ENABLE_ALLPLUGINS)
++if(NOT FASTJET_ENABLE_ALLCXXPLUGINS STREQUAL "")
++if (FASTJET_ENABLE_ALLCXXPLUGINS)
+   set(FASTJET_ENABLE_PLUGIN_ATLASCONE          ON)
+   set(FASTJET_ENABLE_PLUGIN_CDFCONES           ON)
+   set(FASTJET_ENABLE_PLUGIN_CMSITERATIVECONE   ON)
+@@ -165,10 +166,49 @@ if (FASTJET_ENABLE_ALLCXXPLUGINS OR FASTJET_ENABLE_ALLPLUGINS)
+   set(FASTJET_ENABLE_PLUGIN_NESTEDDEFS         ON)
+   set(FASTJET_ENABLE_PLUGIN_SISCONE            ON)
+   set(FASTJET_ENABLE_PLUGIN_TRACKJET           ON)
++else()
++  set(FASTJET_ENABLE_PLUGIN_ATLASCONE          OFF)
++  set(FASTJET_ENABLE_PLUGIN_CDFCONES           OFF)
++  set(FASTJET_ENABLE_PLUGIN_CMSITERATIVECONE   OFF)
++  set(FASTJET_ENABLE_PLUGIN_D0RUNICONE         OFF)
++  set(FASTJET_ENABLE_PLUGIN_D0RUNIICONE        OFF)
++  set(FASTJET_ENABLE_PLUGIN_EECAMBRIDGE        OFF)
++  set(FASTJET_ENABLE_PLUGIN_GRIDJET            OFF)
++  set(FASTJET_ENABLE_PLUGIN_JADE               OFF)
++  set(FASTJET_ENABLE_PLUGIN_NESTEDDEFS         OFF)
++  set(FASTJET_ENABLE_PLUGIN_SISCONE            OFF)
++  set(FASTJET_ENABLE_PLUGIN_TRACKJET           OFF)
++endif()
+ endif()
+ 
++if(NOT FASTJET_ENABLE_ALLPLUGINS STREQUAL "")
+ if (FASTJET_ENABLE_ALLPLUGINS)
+   set(FASTJET_ENABLE_PLUGIN_PXCONE             ON)
++  set(FASTJET_ENABLE_PLUGIN_ATLASCONE          ON)
++  set(FASTJET_ENABLE_PLUGIN_CDFCONES           ON)
++  set(FASTJET_ENABLE_PLUGIN_CMSITERATIVECONE   ON)
++  set(FASTJET_ENABLE_PLUGIN_D0RUNICONE         ON)
++  set(FASTJET_ENABLE_PLUGIN_D0RUNIICONE        ON)
++  set(FASTJET_ENABLE_PLUGIN_EECAMBRIDGE        ON)
++  set(FASTJET_ENABLE_PLUGIN_GRIDJET            ON)
++  set(FASTJET_ENABLE_PLUGIN_JADE               ON)
++  set(FASTJET_ENABLE_PLUGIN_NESTEDDEFS         ON)
++  set(FASTJET_ENABLE_PLUGIN_SISCONE            ON)
++  set(FASTJET_ENABLE_PLUGIN_TRACKJET           ON)
++else()
++  set(FASTJET_ENABLE_PLUGIN_PXCONE             OFF)
++  set(FASTJET_ENABLE_PLUGIN_ATLASCONE          OFF)
++  set(FASTJET_ENABLE_PLUGIN_CDFCONES           OFF)
++  set(FASTJET_ENABLE_PLUGIN_CMSITERATIVECONE   OFF)
++  set(FASTJET_ENABLE_PLUGIN_D0RUNICONE         OFF)
++  set(FASTJET_ENABLE_PLUGIN_D0RUNIICONE        OFF)
++  set(FASTJET_ENABLE_PLUGIN_EECAMBRIDGE        OFF)
++  set(FASTJET_ENABLE_PLUGIN_GRIDJET            OFF)
++  set(FASTJET_ENABLE_PLUGIN_JADE               OFF)
++  set(FASTJET_ENABLE_PLUGIN_NESTEDDEFS         OFF)
++  set(FASTJET_ENABLE_PLUGIN_SISCONE            OFF)
++  set(FASTJET_ENABLE_PLUGIN_TRACKJET           OFF)
++endif()
+ endif()
+ 
+ # compile-time debugging info
+diff --git c/plugins/CMakeLists.txt w/plugins/CMakeLists.txt
+index a44294c3..5dcbd51b 100644
+--- c/plugins/CMakeLists.txt
++++ w/plugins/CMakeLists.txt
+@@ -71,43 +71,47 @@ endif()
+ # make sure the parent gets access to the list of plugins
+ set(LIST_ALL_PLUGINS "${LIST_ALL_PLUGINS}" PARENT_SCOPE)
+ 
+-# build a local library
+-add_library(fastjetplugins SHARED ${combined_objects})
+-target_link_libraries(fastjetplugins PUBLIC fastjet)
++# if no plugins were selected, we should not try to build an empty library
++list(LENGTH combined_objects num_objects)
++if (num_objects GREATER 0)
++   # build a local library
++   add_library(fastjetplugins SHARED ${combined_objects})
++   target_link_libraries(fastjetplugins PUBLIC fastjet)
+ 
+-target_include_directories(fastjetplugins PUBLIC 
+-                             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Jade>
+-                             $<INSTALL_INTERFACE:include>
+-                           )
++   target_include_directories(fastjetplugins PUBLIC 
++                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Jade>
++                                $<INSTALL_INTERFACE:include>
++                              )
+ 
+-add_library(fastjet::fastjetplugins ALIAS fastjetplugins)
++   add_library(fastjet::fastjetplugins ALIAS fastjetplugins)
+ 
+-# NB this is specifically for building scikit-hep/fastjet wheels
+-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+-  set_target_properties(fastjetplugins PROPERTIES INSTALL_RPATH "@loader_path")
+-else()
+-  set_target_properties(fastjetplugins PROPERTIES INSTALL_RPATH "$ORIGIN")
+-endif()
++   # NB this is specifically for building scikit-hep/fastjet wheels
++   if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
++     set_target_properties(fastjetplugins PROPERTIES INSTALL_RPATH "@loader_path")
++   else()
++     set_target_properties(fastjetplugins PROPERTIES INSTALL_RPATH "$ORIGIN")
++   endif()
+ 
+-# make sure the SISCone libraries are included if necessary
+-if (FASTJET_ENABLE_PLUGIN_SISCONE)
+-   target_link_libraries(fastjetplugins PUBLIC siscone::siscone siscone::siscone_spherical)
+-endif()
++   # make sure the SISCone libraries are included if necessary
++   if (FASTJET_ENABLE_PLUGIN_SISCONE)
++      target_link_libraries(fastjetplugins PUBLIC siscone::siscone siscone::siscone_spherical)
++   endif()
+ 
+-# here we specify that runtime library components (e.g. .dlls, but not .so or .dylib)
+-# go into the binary directory (e.g. /bin, rather than the library directory e.g /lib)
+-# this is typical organization on windows installs
+-install(TARGETS
+-          fastjetplugins
+-        EXPORT
+-          FastjetTargets
+-        RUNTIME
+-          COMPONENT Runtime
+-          DESTINATION ${CMAKE_INSTALL_BINDIR}
+-        LIBRARY
+-          COMPONENT Runtime
+-          DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-        ARCHIVE
+-          COMPONENT Development
+-          DESTINATION ${CMAKE_INSTALL_LIBDIR}
+-        )
++   # here we specify that runtime library components (e.g. .dlls, but not .so or .dylib)
++   # go into the binary directory (e.g. /bin, rather than the library directory e.g /lib)
++   # this is typical organization on windows installs
++   install(TARGETS
++             fastjetplugins
++           EXPORT
++             FastjetTargets
++           RUNTIME
++             COMPONENT Runtime
++             DESTINATION ${CMAKE_INSTALL_BINDIR}
++           LIBRARY
++             COMPONENT Runtime
++             DESTINATION ${CMAKE_INSTALL_LIBDIR}
++           ARCHIVE
++             COMPONENT Development
++             DESTINATION ${CMAKE_INSTALL_LIBDIR}
++           )
++endif()
+\ No newline at end of file
