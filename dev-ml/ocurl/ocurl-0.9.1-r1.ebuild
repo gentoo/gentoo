@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,7 @@ IUSE="examples +ocamlopt"
 BDEPEND="virtual/pkgconfig"
 RDEPEND=">=net-misc/curl-7.9.8
 	dev-ml/lwt:=
-	dev-ml/camlp4:=
-	>=dev-lang/ocaml-3.12:=[ocamlopt?]"
+	dev-ml/camlp4:="
 DEPEND="${RDEPEND}"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 
