@@ -1,0 +1,24 @@
+From 15670523d8d25713d5c74f6e40519492f704b62e Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Fri, 26 Sep 2025 12:21:57 +1000
+Subject: [PATCH] rust_bindgen: band-aid with `-Wno-unknown-warning-option`
+
+Downstreams may wish to pass options such as `-Wno-unknown-warning-option`
+if building with older toolchains, this should be passed via `extra_cflags`
+or `extra_cxxflags` in the relevant toolchain definition, but this at least
+will let us build while trying to do that properly upstream.
+
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/build/rust/rust_bindgen_generator.gni
++++ b/build/rust/rust_bindgen_generator.gni
+@@ -217,6 +217,8 @@ template("rust_bindgen_generator") {
+       args += [ "{{cflags_c}}" ]
+     }
+ 
++    args += [ "-Wno-unknown-warning-option" ]
++
+     # libclang will run the system `clang` to find the "resource dir" which it
+     # places before the directory specified in `-isysroot`.
+     # https://github.com/llvm/llvm-project/blob/699e0bed4bfead826e210025bf33e5a1997c018b/clang/lib/Tooling/Tooling.cpp#L499-L510
+-- 
+2.50.1
