@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2025-09-16)
+# Deprecate app-admin/fluentd, based on ruby.  Nightmare to maintain.
+# Please migrate to app-admin/fluent-bit.  If not possible, please take over
+# maintainership of this package.
+# Removal on 2025-10-16. Bug #833260
+app-admin/fluentd
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-09-23)
 # Abandoned and barely functional, and will just keep getting worse if
 # it does not keep up with website changes. net-misc/youtube-viewer
