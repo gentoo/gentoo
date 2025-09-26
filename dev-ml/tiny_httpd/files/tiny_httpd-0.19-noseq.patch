@@ -1,0 +1,31 @@
+--- a/src/dune	2024-10-20 18:15:24.137632115 +0200
++++ b/src/dune	2024-10-20 18:15:39.144450132 +0200
+@@ -4,7 +4,6 @@
+  (flags :standard -open Tiny_httpd_core)
+  (libraries
+   threads
+-  seq
+   unix
+   hmap
+   (re_export tiny_httpd.core)
+--- a/src/core/dune	2024-10-21 12:06:33.365496763 +0200
++++ b/src/core/dune	2024-10-21 12:06:48.673307538 +0200
+@@ -4,7 +4,6 @@
+  (private_modules parse_ common_)
+  (libraries
+   threads
+-  seq
+   hmap
+   iostream
+   (select
+--- a/src/html/dune	2024-10-21 12:07:25.727849443 +0200
++++ b/src/html/dune	2024-10-21 12:07:39.004685307 +0200
+@@ -2,7 +2,7 @@
+  (name tiny_httpd_html)
+  (public_name tiny_httpd.html)
+  (flags :standard -open Tiny_httpd_core)
+- (libraries seq tiny_httpd.core))
++ (libraries tiny_httpd.core))
+ 
+ (rule
+  (targets html_.ml)
