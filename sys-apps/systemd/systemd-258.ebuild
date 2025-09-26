@@ -35,7 +35,7 @@ SLOT="0/2"
 IUSE="
 	acl apparmor audit boot bpf cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
 	fido2 +gcrypt homed http idn importd iptables +kernel-install +kmod
-	+lz4 lzma pam pcre pkcs11 policykit pwquality qrcode
+	+lz4 lzma pam passwdqc pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
 "
 REQUIRED_USE="
@@ -43,6 +43,8 @@ REQUIRED_USE="
 	fido2? ( cryptsetup )
 	homed? ( cryptsetup pam )
 	importd? ( curl lzma )
+	?? ( passwdqc pwquality )
+	passwdqc? ( homed )
 	pwquality? ( homed )
 	boot? ( kernel-install )
 	ukify? ( boot )
@@ -83,6 +85,7 @@ COMMON_DEPEND="
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	iptables? ( net-firewall/iptables:0= )
 	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
+	passwdqc? ( sys-auth/passwdqc:0= )
 	pkcs11? ( >=app-crypt/p11-kit-0.23.3:0= )
 	pcre? ( dev-libs/libpcre2 )
 	pwquality? ( >=dev-libs/libpwquality-1.4.1:0= )
@@ -344,6 +347,7 @@ multilib_src_configure() {
 		$(meson_feature zstd)
 		$(meson_native_use_feature iptables libiptc)
 		$(meson_feature pam)
+		$(meson_native_use_feature passwdqc)
 		$(meson_native_use_feature pkcs11 p11kit)
 		$(meson_native_use_feature pcre pcre2)
 		$(meson_native_use_feature policykit polkit)
