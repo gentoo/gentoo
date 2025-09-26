@@ -150,10 +150,6 @@ sci-mathematics/diagrtb
 # Removal on 2025-10-01.  Bug #956814.
 app-vim/voom
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-31)
-# Qt5-based library without revdeps. Removal on 2025-09-30.
-dev-libs/grantlee
-
 # Michał Górny <mgorny@gentoo.org> (2025-08-30)
 # Multiple cases of test suite breakage.
 # https://github.com/pytest-dev/pytest-rerunfailures/issues/303
