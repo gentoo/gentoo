@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="dev-libs/openssl:0=
-	>=dev-lang/ocaml-3.10:=[ocamlopt?]"
+DEPEND="dev-libs/openssl:0="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	dev-ml/dune-configurator
