@@ -734,7 +734,7 @@ kernel-install_install_all() {
 	local module_ver
 	module_ver=$(<"${relfile}") || die
 
-	if [[ ! -r ${SECUREBOOT_SIGN_CERT} && -r ${kernel_cert} ]]; then
+	if [[ ! -r ${SECUREBOOT_SIGN_CERT} && -s ${kernel_cert} ]]; then
 		openssl x509 \
 			-inform DER -in "${kernel_cert}" \
 			-outform PEM -out "${T}/cert.pem" ||
