@@ -203,12 +203,6 @@ dev-cpp/metslib
 # Removal on 2025-09-27.  Bug #962064.
 app-misc/glastree
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
-# Qt5 based and still EAPI-7, last release from 2016, broken Qt6 "support"
-# in upstream repo. Needs someone to pick up the pieces of upstream's
-# porting effort. Bugs #953885, #955828, #957574. Removal on 2025-09-26.
-sci-calculators/speedcrunch
-
 # James Le Cuirot <chewi@gentoo.org> (2025-08-21)
 # The required Direct3D 9 feature is being dropped from Mesa. Use DXVK or
 # WineD3D instead. Removal on 2025-09-21.
