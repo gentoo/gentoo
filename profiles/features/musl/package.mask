@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-09-16)
+# Binary bazel is compiled against glibc
+>=app-i18n/mozc-2.31.5851.102
+
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-07-28)
 # Bundled pcap-thread, not ported to musl
 # bug #713498, https://github.com/DNS-OARC/pcap-thread/issues/128
