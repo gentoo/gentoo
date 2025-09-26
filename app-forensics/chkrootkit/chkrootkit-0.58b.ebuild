@@ -23,6 +23,7 @@ PATCHES=(
 	"${WORKDIR}/${P}-gentoo.patch"
 	"${FILESDIR}/${PN}-0.55-fcntl_h.patch"
 	"${FILESDIR}/${PN}-0.55-limits_h.patch"
+	"${FILESDIR}/${PN}-0.58b-fix_c23.patch"
 )
 
 src_prepare() {

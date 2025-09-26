@@ -1,0 +1,35 @@
+fix c23, see https://bugs.gentoo.org/943851
+https://src.fedoraproject.org/rpms/chkrootkit/raw/rawhide/f/chkrootkit-0.57-sighandler-type.patch + remove old style definition
+--- a/chklastlog.c
++++ b/chklastlog.c
+@@ -77,7 +77,7 @@
+ long total_wtmp_bytes_read=0;
+ size_t wtmp_file_size;
+ uid_t *uid;
+-void read_status();
++void read_status(int signum);
+ 
+ struct s_localpwd {
+      int numentries;
+@@ -213,7 +213,7 @@
+ }
+ #endif
+ 
+-void read_status() {
++void read_status(int signum) {
+    double remaining_time;
+    static long last_total_bytes_read=0;
+    int diff;
+--- a/chkwtmp.c
++++ b/chkwtmp.c
+@@ -43,9 +43,7 @@ int main () { return 0; }
+ #endif
+ #endif
+ 
+-void printit(counter, start, end)
+-int counter;
+-long start,end;
++void printit(int counter, long start, long end)
+ {
+ 	char		buffer[30];
+ 
