@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/${PV}.tar.
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="+colord input_devices_wacom +networkmanager +modemmanager systemd test wayland"
 REQUIRED_USE="modemmanager? ( networkmanager )"
 RESTRICT="test"
@@ -22,8 +22,8 @@ COMMON_DEPEND="
 	app-accessibility/at-spi2-core:2
 	>=dev-libs/glib-2.44.0:2
 	>=gnome-base/libgnomekbd-3.0.0:0=
-	>=gnome-extra/cinnamon-desktop-6.2:0=
-	>=gnome-extra/cinnamon-menus-6.2
+	>=gnome-extra/cinnamon-desktop-6.4:0=
+	>=gnome-extra/cinnamon-menus-6.4
 	media-libs/fontconfig
 	>=sys-auth/polkit-0.103
 	>=sys-power/upower-0.99.8:=
