@@ -45,6 +45,9 @@ src_prepare() {
 
 	default
 
+	# 956793, use getopt from glibc / musl instead
+	rm getopt.h || die
+
 	[[ ${PV} == "9999" ]] && eautoreconf
 }
 
