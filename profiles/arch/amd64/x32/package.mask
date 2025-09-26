@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mario Haustein <mario.haustein@hrz.tu-chemnitz.de> (2025-10-06)
+# Requires qtwebengine
+media-radio/qlog
+
 # Jay Faulkner <jayf@gentoo.org> (2025-06-01)
 # Requires >=net-libs/nodejs-18[npm]
 dev-util/claude-code
