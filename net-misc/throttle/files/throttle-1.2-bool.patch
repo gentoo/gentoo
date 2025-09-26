@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/944354
+
+--- a/throttle.c
++++ b/throttle.c
+@@ -121,7 +121,8 @@
+     }
+ 
+ 
+-typedef enum { false = 0, true = 1 } boolean;
++#include <stdbool.h>
++typedef bool boolean;
+ 
+ 
+ typedef enum {
