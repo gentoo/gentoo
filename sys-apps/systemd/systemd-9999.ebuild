@@ -34,15 +34,16 @@ LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
 IUSE="
 	acl apparmor audit boot bpf cgroup-hybrid cryptsetup curl +dns-over-tls elfutils
-	fido2 +gcrypt homed http idn importd iptables +kernel-install +kmod
-	+lz4 lzma pam passwdqc pcre pkcs11 policykit pwquality qrcode
+	fido2 +gcrypt gnutls homed http idn importd iptables +kernel-install +kmod
+	+lz4 lzma +openssl pam passwdqc pcre pkcs11 policykit pwquality qrcode
 	+resolvconf +seccomp selinux split-usr +sysv-utils test tpm ukify vanilla xkb +zstd
 "
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	fido2? ( cryptsetup )
-	homed? ( cryptsetup pam )
-	importd? ( curl lzma )
+	dns-over-tls? ( openssl )
+	fido2? ( cryptsetup openssl )
+	homed? ( cryptsetup pam openssl )
+	importd? ( curl lzma openssl )
 	?? ( passwdqc pwquality )
 	passwdqc? ( homed )
 	pwquality? ( homed )
@@ -52,8 +53,6 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 MINKV="4.15"
-
-OPENSSL_DEP=">=dev-libs/openssl-1.1.0:0="
 
 COMMON_DEPEND="
 	>=sys-apps/util-linux-2.32:0=[${MULTILIB_USEDEP}]
@@ -65,18 +64,15 @@ COMMON_DEPEND="
 	bpf? ( >=dev-libs/libbpf-1.4.0:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-2.0.1:0= )
 	curl? ( >=net-misc/curl-7.32.0:0= )
-	dns-over-tls? ( ${OPENSSL_DEP} )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	fido2? (
-		${OPENSSL_DEP}
 		dev-libs/libfido2:0=
 	)
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
-	homed? ( ${OPENSSL_DEP} )
+	gnutls? ( >=net-libs/gnutls-3.6.0:0= )
 	http? ( >=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)] )
 	idn? ( net-dns/libidn2:= )
 	importd? (
-		${OPENSSL_DEP}
 		app-arch/bzip2:0=
 		sys-libs/zlib:0=
 	)
@@ -84,6 +80,7 @@ COMMON_DEPEND="
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1:0=[${MULTILIB_USEDEP}] )
 	iptables? ( net-firewall/iptables:0= )
+	openssl? ( >=dev-libs/openssl-1.1.0:0= )
 	pam? ( sys-libs/pam:=[${MULTILIB_USEDEP}] )
 	passwdqc? ( sys-auth/passwdqc:0= )
 	pkcs11? ( >=app-crypt/p11-kit-0.23.3:0= )
@@ -333,6 +330,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature elfutils)
 		$(meson_native_use_feature fido2 libfido2)
 		$(meson_feature gcrypt)
+		$(meson_native_use_feature gnutls)
 		$(meson_native_use_feature homed)
 		$(meson_native_use_feature http microhttpd)
 		$(meson_native_use_bool idn)
@@ -346,6 +344,7 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		$(meson_feature zstd)
 		$(meson_native_use_feature iptables libiptc)
+		$(meson_native_use_feature openssl)
 		$(meson_feature pam)
 		$(meson_native_use_feature passwdqc)
 		$(meson_native_use_feature pkcs11 p11kit)
