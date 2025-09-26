@@ -554,6 +554,12 @@ src_prepare() {
 				die "Failed to tell GN that we have adler and not adler2"
 		fi
 
+		# chromium@0420449584e2afb7473393f536379efe194ba23c
+		# this crate is not included in the latest versions of Rust,
+		# and apparently has been unnecessary in Chromium for a long time.
+		sed -i '/unicode_width/d' build/rust/std/BUILD.gn ||
+			die "Failed to remove unicode_width from build/rust/std/BUILD.gn"
+
 		if ver_test ${RUST_SLOT} -lt "1.89.0"; then
 			# The rust allocator was changed in 1.89.0, so we need to patch sources for older versions
 			PATCHES+=( "${FILESDIR}/chromium-140-__rust_no_alloc_shim_is_unstable.patch" )
