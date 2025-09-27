@@ -1,0 +1,21 @@
+From: https://github.com/luceneplusplus/LucenePlusPlus/pull/218
+
+From: Gianfranco Costamagna <locutusofborg@debian.org>
+Date: Mon, 8 Sep 2025 15:05:34 +0200
+Subject: [PATCH] Find and use system googletest if available
+
+--- a/src/test/CMakeLists.txt
++++ b/src/test/CMakeLists.txt
+@@ -8,8 +8,10 @@ if(MSVC)
+   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+ endif()
+ 
+-add_subdirectory(gtest)
+-
++find_package(GTest)
++if(NOT GTEST_FOUND)
++  add_subdirectory(gtest)
++endif()
+ 
+ ####################################
+ # src
