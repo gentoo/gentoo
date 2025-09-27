@@ -18,6 +18,10 @@
       Adds module which allows querying an endpoint to get dynamic public IP and updating records with DNS providers
       https://caddyserver.com/docs/modules/dynamic_dns
     </flag>
+    <flag name="dns-alidns">
+      Adds module which allows to manage Aliyun DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.alidns
+    </flag>
     <flag name="dns-azure">
       Adds module which allows to manage Azure hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.azure
@@ -42,9 +46,17 @@
       Adds module which allows to manage Google Cloud hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.googleclouddns
     </flag>
+    <flag name="dns-he">
+      Adds module which allows to manage Hurricane Electric hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.he
+    </flag>
     <flag name="dns-hetzner">
       Adds module which allows to manage Hetzner hosted DNS zones using Caddy
       https://caddyserver.com/docs/modules/dns.providers.hetzner
+    </flag>
+    <flag name="dns-huaweicloud">
+      Adds module which allows to manage Huawei Cloud hosted DNS zones using Caddy
+      https://caddyserver.com/docs/modules/dns.providers.huaweicloud
     </flag>
     <flag name="dns-mailinabox">
       Adds module which allows to manage Mail-in-a-Box hosted DNS zones using Caddy
