@@ -24,7 +24,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	<dev-ml/atd-2.16.0:=
-	>=dev-lang/ocaml-4.08.0:=
 	>=dev-ml/menhir-20211230:=
 	dev-ml/ppx_deriving:=
 	dev-ml/ppxlib:=
