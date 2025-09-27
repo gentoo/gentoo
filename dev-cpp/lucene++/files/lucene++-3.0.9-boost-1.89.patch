@@ -1,0 +1,83 @@
+Bug: https://bugs.gentoo.org/963333
+
+--- LucenePlusPlus-rel_3.0.9/cmake/dependencies.cmake
++++ LucenePlusPlus-rel_3.0.9-boost-1.89/cmake/dependencies.cmake
+@@ -7,7 +7,6 @@ find_package(Boost COMPONENTS
+   filesystem
+   iostreams
+   regex
+-  system
+   thread
+   REQUIRED
+ )
+@@ -20,7 +19,6 @@ set(lucene_boost_libs
+   ${Boost_FILESYSTEM_LIBRARIES}
+   ${Boost_IOSTREAMS_LIBRARIES}
+   ${Boost_REGEX_LIBRARIES}
+-  ${Boost_SYSTEM_LIBRARIES}
+   ${Boost_THREAD_LIBRARIES}
+ )
+ 
+--- LucenePlusPlus-rel_3.0.9/src/contrib/CMakeLists.txt
++++ LucenePlusPlus-rel_3.0.9-boost-1.89/src/contrib/CMakeLists.txt
+@@ -67,7 +67,6 @@ target_link_libraries(lucene++-contrib
+     Boost::filesystem
+     Boost::iostreams
+     Boost::regex
+-    Boost::system
+     Boost::thread
+     ZLIB::ZLIB
+     lucene++::lucene++)
+--- LucenePlusPlus-rel_3.0.9/src/core/CMakeLists.txt
++++ LucenePlusPlus-rel_3.0.9-boost-1.89/src/core/CMakeLists.txt
+@@ -57,7 +57,6 @@ target_link_libraries(lucene++
+     Boost::filesystem
+     Boost::iostreams
+     Boost::regex
+-    Boost::system
+     Boost::thread
+     ZLIB::ZLIB
+ )
+--- LucenePlusPlus-rel_3.0.9/src/demo/deletefiles/CMakeLists.txt
++++ LucenePlusPlus-rel_3.0.9-boost-1.89/src/demo/deletefiles/CMakeLists.txt
+@@ -38,7 +38,6 @@ target_link_libraries(deletefiles
+     Boost::filesystem
+     Boost::iostreams
+     Boost::regex
+-    Boost::system
+     Boost::thread
+     ZLIB::ZLIB
+     lucene++::lucene++
+diff -rup LucenePlusPlus-rel_3.0.9/src/demo/indexfiles/CMakeLists.txt LucenePlusPlus-rel_3.0.9-boost-1.89/src/demo/indexfiles/CMakeLists.txt
+--- LucenePlusPlus-rel_3.0.9/src/demo/indexfiles/CMakeLists.txt
++++ LucenePlusPlus-rel_3.0.9-boost-1.89/src/demo/indexfiles/CMakeLists.txt
+@@ -39,7 +39,6 @@ target_link_libraries(indexfiles
+     Boost::filesystem
+     Boost::iostreams
+     Boost::regex
+-    Boost::system
+     Boost::thread
+     ZLIB::ZLIB
+     lucene++::lucene++
+diff -rup LucenePlusPlus-rel_3.0.9/src/demo/searchfiles/CMakeLists.txt LucenePlusPlus-rel_3.0.9-boost-1.89/src/demo/searchfiles/CMakeLists.txt
+--- LucenePlusPlus-rel_3.0.9/src/demo/searchfiles/CMakeLists.txt
++++ LucenePlusPlus-rel_3.0.9-boost-1.89/src/demo/searchfiles/CMakeLists.txt
+@@ -38,7 +38,6 @@ target_link_libraries(searchfiles
+     Boost::filesystem
+     Boost::iostreams
+     Boost::regex
+-    Boost::system
+     Boost::thread
+     ZLIB::ZLIB
+     lucene++::lucene++
+diff -rup LucenePlusPlus-rel_3.0.9/src/test/CMakeLists.txt LucenePlusPlus-rel_3.0.9-boost-1.89/src/test/CMakeLists.txt
+--- LucenePlusPlus-rel_3.0.9/src/test/CMakeLists.txt
++++ LucenePlusPlus-rel_3.0.9-boost-1.89/src/test/CMakeLists.txt
+@@ -59,7 +59,6 @@ target_link_libraries(lucene++-tester
+     Boost::filesystem
+     Boost::iostreams
+     Boost::regex
+-    Boost::system
+     Boost::thread
+     ZLIB::ZLIB
+     gtest_main
