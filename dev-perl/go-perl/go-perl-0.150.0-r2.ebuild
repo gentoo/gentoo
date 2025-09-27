@@ -21,7 +21,6 @@ RDEPEND=">=dev-perl/Data-Stag-0.11"
 BDEPEND="${RDEPEND}
 	sys-apps/which
 "
-DEPEND=""
 
 src_prepare() {
 	for patch in $(< "${WORKDIR}"/debian/patches/series); do
