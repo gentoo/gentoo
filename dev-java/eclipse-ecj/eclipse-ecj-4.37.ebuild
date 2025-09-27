@@ -4,13 +4,10 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source"
-# 3.41.0 according to
-# https://github.com/eclipse-jdt/eclipse.jdt.core/blob/R4_35/org.eclipse.jdt.core.compiler.batch/pom.xml
-MAVEN_ID="org.eclipse.jdt:org.eclipse.jdt.core.compiler.batch:3.41.0"
 
 inherit java-pkg-2 java-pkg-simple
 
-DMF="R-${PV/_rc/RC}-202502280140"
+DMF="R-${PV/_rc/RC}-202509050730"
 
 DESCRIPTION="Eclipse Compiler for Java"
 HOMEPAGE="https://projects.eclipse.org/projects/eclipse.jdt"
@@ -18,32 +15,24 @@ SRC_URI="https://download.eclipse.org/eclipse/downloads/drops4/${DMF}/ecjsrc-${P
 S="${WORKDIR}"
 
 LICENSE="EPL-1.0"
-SLOT="4.35"
-# KEYWORDS="~amd64 ~arm64 ~ppc64" # Seems to depend on higher jdk which is not LTS
+SLOT="4.37"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 BDEPEND="app-arch/unzip"
 
-# restrict to >=virtual/jdk-23:*
-# ./org/eclipse/jdt/internal/compiler/apt/model/ElementsImpl9.java:347: error: cannot find symbol
-#     public DocCommentKind getDocCommentKind(Element e) {
-#            ^
-#   symbol:   class DocCommentKind
-#   location: class ElementsImpl9
 DEPEND="
 	>=dev-java/ant-1.10.15:0
-	>=virtual/jdk-23:*
+	>=virtual/jdk-21:*
 "
 
-# restrict to >=virtual/jre-21:*
-# ./org/eclipse/jdt/internal/compiler/lookup/TypeBinding.java:722:
-# error: unconditional patterns in instanceof are not supported in -source 17
-# 	return isRecord() && components() instanceof RecordComponentBinding [] components && components.length > 0;
-# 	                                  ^
-#   (use -source 21 or higher to enable unconditional patterns in instanceof)
-RDEPEND=">=virtual/jre-21:*"
+# ./org/eclipse/jdt/internal/compiler/env/ICompilationUnit.java:64:
+# error: pattern matching in instanceof is not supported in -source 11
+# 	if (environment.nameEnvironment instanceof IModuleAwareNameEnvironment modEnv) {
+# 	                                                                       ^
+#   (use -source 16 or higher to enable pattern matching in instanceof)
+RDEPEND=">=virtual/jre-17:*"
 
 DOCS=( org/eclipse/jdt/core/README.md )
-
 JAVA_AUTOMATIC_MODULE_NAME="org.eclipse.jdt.core.compiler.batch"
 JAVA_CLASSPATH_EXTRA="ant"
 JAVA_JAR_FILENAME="ecj.jar"
