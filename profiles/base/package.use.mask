@@ -6,6 +6,16 @@
 
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-27)
+# Building NumPy with ILP64 LAPACK can cause revdeps to segfault if they
+# link to LP64 LAPACK.  To support this properly, we either need to
+# ensure matching index64 flags along the whole chain of dependencies,
+# or support only ILP64 LAPACK implementations that use suffixed
+# symbols (so there are no symbol collisions).  Given the flag was only
+# really added to test if ILP64 packaging works, mask it for the time
+# being.
+dev-python/numpy index64
+
 # Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2025-09-20)
 # Require dev-libs/libtsm, only keyworded on amd64 and x86
 >=media-gfx/fbida-2.14_p20241216 fbcon
