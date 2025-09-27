@@ -123,6 +123,7 @@ src_configure() {
 		--disable-java
 		--disable-java-modules
 		--disable-riemann
+		--disable-stackdump  # 963387
 		--enable-ipv6
 		--enable-manpages
 		--localstatedir=/var/lib/syslog-ng
