@@ -89,7 +89,6 @@ FFMPEG_IUSE_MAP=(
 	lv2
 	lzma
 	modplug:libmodplug
-	npp:^libnpp@nonfree # no multilib
 	nvenc:cuvid,ffnvcodec,nvdec,nvenc
 	openal
 	opencl
@@ -143,7 +142,7 @@ LICENSE="
 		GPL-2+
 		amr? ( GPL-3+ ) amrenc? ( GPL-3+ ) libaribb24? ( GPL-3+ )
 		gmp? ( GPL-3+ ) openssl? ( GPL-3+ )
-		fdk? ( all-rights-reserved ) npp? ( all-rights-reserved )
+		fdk? ( all-rights-reserved )
 	)
 	!gpl? (
 		LGPL-2.1+
@@ -164,7 +163,6 @@ REQUIRED_USE="
 	fribidi? ( truetype )
 	gmp? ( !librtmp )
 	libplacebo? ( vulkan )
-	npp? ( nvenc )
 	shaderc? ( vulkan )
 	libaribb24? ( gpl ) cdio? ( gpl ) dvd? ( gpl ) frei0r? ( gpl )
 	rubberband? ( gpl ) samba? ( gpl ) vidstab? ( gpl ) x264? ( gpl )
@@ -172,7 +170,7 @@ REQUIRED_USE="
 	${FFMPEG_UNSLOTTED:+chromium? ( opus )}
 	${FFMPEG_SOC_PATCH:+soc? ( drm )}
 "
-RESTRICT="gpl? ( fdk? ( bindist ) npp? ( bindist ) )"
+RESTRICT="gpl? ( fdk? ( bindist ) )"
 
 # dlopen: amdgpu-pro-amf
 COMMON_DEPEND="
@@ -241,7 +239,6 @@ COMMON_DEPEND="
 	)
 	lzma? ( app-arch/xz-utils[${MULTILIB_USEDEP}] )
 	modplug? ( media-libs/libmodplug[${MULTILIB_USEDEP}] )
-	npp? ( dev-util/nvidia-cuda-toolkit:= )
 	openal? ( media-libs/openal[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? ( media-libs/libglvnd[X,${MULTILIB_USEDEP}] )
@@ -339,7 +336,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	"${FILESDIR}"/ffmpeg-6.1-opencl-parallel-gmake-fix.patch
-	"${FILESDIR}"/ffmpeg-7.1.1-npp13.patch
 )
 
 pkg_pretend() {
@@ -400,12 +396,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	if use npp && multilib_is_native_abi; then
-		local -x CPPFLAGS=${CPPFLAGS} LDFLAGS=${LDFLAGS}
-		append-cppflags $($(tc-getPKG_CONFIG) --cflags nppc || die)
-		append-ldflags $($(tc-getPKG_CONFIG) --libs-only-L nppc || die)
-	fi
-
 	local conf=( "${S}"/configure ) # not autotools-based
 
 	local prefix=${EPREFIX}/usr
@@ -479,6 +469,7 @@ multilib_src_configure() {
 		--disable-libglslang # prefer USE=shaderc (bug #918989,#920283,#922333)
 		--disable-liblensfun # https://trac.ffmpeg.org/ticket/9112 (abandoned?)
 		--disable-libmfx # prefer libvpl for USE=qsv
+		--disable-libnpp # deprecated and not supported for cuda 13.0+
 		--disable-libopencv # leaving for later due to circular opencv[ffmpeg]
 		--disable-librist # librist itself needs attention first (bug #822012)
 		--disable-libtensorflow # causes headaches, and is gone
