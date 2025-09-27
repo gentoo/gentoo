@@ -17,7 +17,7 @@ RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui]
 	~dev-qt/qtdeclarative-${PV}:6
 	~dev-qt/qtsvg-${PV}:6
-	sound? ( ~dev-qt/qtmultimedia-${PV}:6 )
+	sound? ( ~dev-qt/qtmultimedia-${PV}:6[qml] )
 	spell? ( app-text/hunspell:= )
 "
 DEPEND="${RDEPEND}"
