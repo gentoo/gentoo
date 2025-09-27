@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-nm.patch
 	"${FILESDIR}"/${P}-pcm_write_interleaved-incompatiible-pointer-type.patch
 	"${FILESDIR}"/${P}-gcc10-const.patch
+	"${FILESDIR}"/${P}-gcc-15.patch
 )
 
 pkg_pretend() {
