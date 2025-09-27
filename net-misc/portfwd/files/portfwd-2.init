@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# # Distributed under the terms of the GNU General Public License v2
+
+: ${PORTFWD_CONFIG:=/etc/portfwd.cfg}
+
+name="portfwd"
+description="Port Forwarding Daemon"
+command="/usr/sbin/portfwd"
+command_args="--foreground --config ${PORTFWD_CONFIG} ${PORTFWD_OPTS}"
+command_background=true
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="${PORTFWD_CONFIG}"
+
+depend() {
+	need net
+}
