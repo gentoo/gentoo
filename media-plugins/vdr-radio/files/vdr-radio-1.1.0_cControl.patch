@@ -1,0 +1,13 @@
+diff '--color=auto' -Naur vdr-plugin-radio-1.1.0.orig/radioaudio.c vdr-plugin-radio-1.1.0/radioaudio.c
+--- vdr-plugin-radio-1.1.0.orig/radioaudio.c	2018-02-23 16:33:59.000000000 +0100
++++ vdr-plugin-radio-1.1.0/radioaudio.c	2025-09-27 16:18:29.443910432 +0200
+@@ -2392,7 +2392,8 @@
+     // check end @ replay
+     if (RT_Replay) {
+         int rplayCur, rplayTot;
+-        cControl::Control()->GetIndex(rplayCur, rplayTot, false);
++	cMutexLock MutexLock;
++        cControl::Control(MutexLock)->GetIndex(rplayCur, rplayTot, false);
+         if (rplayCur >= rplayTot - 1) {
+             Hide();
+             return osEnd;
