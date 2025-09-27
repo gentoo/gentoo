@@ -6,8 +6,8 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="collection of command-line utilities to control cdrom devices"
-HOMEPAGE="http://hinterhof.net/cdtool/"
-SRC_URI="http://hinterhof.net/cdtool/dist/${P}.tar.gz"
+HOMEPAGE="https://hinterhof.net/cdtool/"
+SRC_URI="https://hinterhof.net/cdtool/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,6 +18,7 @@ RDEPEND="!media-sound/cdplay"
 PATCHES=(
 	"${FILESDIR}/${P}-glibc-2.10.patch"
 	"${FILESDIR}/${P}-fix-build-system.patch"
+	"${FILESDIR}/${P}-fix_c23.patch"
 )
 
 src_prepare() {
