@@ -57,6 +57,7 @@ RESTRICT="!test? ( test )"
 # Depend wxGTK version needs to be limited due to switch from EGL to GLX, bug #911120
 COMMON_DEPEND="
 	app-crypt/libsecret
+	dev-cpp/abseil-cpp:=
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
 	dev-libs/libgit2:=
@@ -72,7 +73,7 @@ COMMON_DEPEND="
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
 	sys-libs/zlib
-	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]
+	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]
 		>=dev-python/wxpython-4.2.0:*[${PYTHON_USEDEP}]
@@ -98,6 +99,8 @@ if [[ ${PV} == 9999 ]] ; then
 	# x11-misc-util/macros only required on live ebuilds
 	BDEPEND+=" >=x11-misc/util-macros-1.18"
 fi
+
+PATCHES=( "${FILESDIR}/${PN}-cmake-3.5.patch" )
 
 CHECKREQS_DISK_BUILD="1500M"
 

@@ -57,6 +57,7 @@ RESTRICT="!test? ( test )"
 # Depend wxGTK version needs to be limited due to switch from EGL to GLX, bug #911120
 COMMON_DEPEND="
 	app-crypt/libsecret
+	dev-cpp/abseil-cpp:=
 	dev-db/unixODBC
 	dev-libs/boost:=[context,nls]
 	dev-libs/libgit2:=
