@@ -45,11 +45,6 @@ media-gfx/blender oneapi
 # for now until more testing and integration is done.
 sys-devel/gcc cobol
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
-# dev-util/nvidia-cuda-toolkit has very few keywords
-media-video/ffmpeg npp
-media-video/ffmpeg-compat npp
-
 # Thibaud CANALE <thican@thican.net> (2025-03-09)
 # Too many dependencies are not keyworded (bug 949851)
 # - dev-python/google-api-python-client

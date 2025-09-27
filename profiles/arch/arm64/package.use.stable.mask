@@ -12,11 +12,6 @@ sys-block/fio rbd
 # scipy will surely be around in future.
 media-sound/liblc3 -test
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-03-12)
-# dev-util/nvidia-cuda-toolkit may never be stabilized
-media-video/ffmpeg npp
-media-video/ffmpeg-compat npp
-
 # Eli Schwartz <eschwartz@gentoo.org> (2025-01-27)
 # Dependencies e.g. pypy not stable here.
 dev-build/meson test-full
