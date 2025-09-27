@@ -552,6 +552,7 @@ x64-macos	prefix/darwin/macos/12.0/x64/gcc				exp
 x64-macos	prefix/darwin/macos/13.0/x64/gcc				exp
 x64-macos	prefix/darwin/macos/14.0/x64/gcc				exp
 x64-macos	prefix/darwin/macos/15.0/x64/gcc				exp
+x64-macos	prefix/darwin/macos/26.0/x64/gcc				exp
 arm64-macos	prefix/darwin/macos/11.0/arm64					exp
 arm64-macos	prefix/darwin/macos/11.0/arm64/gcc				exp
 arm64-macos	prefix/darwin/macos/12.0/arm64					exp
@@ -559,6 +560,7 @@ arm64-macos	prefix/darwin/macos/12.0/arm64/gcc				exp
 arm64-macos	prefix/darwin/macos/13.0/arm64/gcc				exp
 arm64-macos	prefix/darwin/macos/14.0/arm64/gcc				exp
 arm64-macos	prefix/darwin/macos/15.0/arm64/gcc				exp
+arm64-macos	prefix/darwin/macos/26.0/arm64/gcc				exp
 
 # Solaris Profiles
 x64-solaris	prefix/sunos/solaris/5.11/x64					exp
