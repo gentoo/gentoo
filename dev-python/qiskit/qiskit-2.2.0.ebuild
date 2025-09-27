@@ -83,6 +83,13 @@ src_prepare() {
 }
 
 python_test() {
+	# We run tests in parallel, so avoid having n^2 threads in lapack
+	# tests.
+	local -x BLIS_NUM_THREADS=1
+	local -x MKL_NUM_THREADS=1
+	local -x OMP_NUM_THREADS=1
+	local -x OPENBLAS_NUM_THREADS=1
+
 	local EPYTEST_DESELECT=(
 		# TODO
 		test/python/circuit/test_equivalence.py::TestEquivalenceLibraryVisualization::test_equivalence_draw
