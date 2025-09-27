@@ -232,6 +232,13 @@ python_configure_all() {
 }
 
 python_test() {
+	# We run tests in parallel, so avoid having n^2 threads in lapack
+	# tests.
+	local -x BLIS_NUM_THREADS=1
+	local -x MKL_NUM_THREADS=1
+	local -x OMP_NUM_THREADS=1
+	local -x OPENBLAS_NUM_THREADS=1
+
 	# don't run tests that require more than 2 GiB of RAM (per process)
 	local -x NPY_AVAILABLE_MEM="2 GiB"
 
