@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-systemd-order.patch
 	"${FILESDIR}"/${PN}-1.1.0-postfix-pref.patch
 	"${FILESDIR}"/${PN}-1.1.0-postfix-ddos.patch
+	"${FILESDIR}"/${PN}-1.1.0-sshd-ddos.patch
 )
 
 src_prepare() {
