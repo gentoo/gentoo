@@ -117,6 +117,13 @@ python_configure_all() {
 }
 
 python_test() {
+	# We run tests in parallel, so avoid having n^2 threads in lapack
+	# tests.
+	local -x BLIS_NUM_THREADS=1
+	local -x MKL_NUM_THREADS=1
+	local -x OMP_NUM_THREADS=1
+	local -x OPENBLAS_NUM_THREADS=1
+
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
 
 	local EPYTEST_DESELECT=(
