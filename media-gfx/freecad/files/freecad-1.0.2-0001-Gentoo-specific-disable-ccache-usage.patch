@@ -1,0 +1,13 @@
+Switch CCache off by default
+
+--- a/CMakeLists.txt	2025-08-19 02:07:53.356170565 +0300
++++ b/CMakeLists.txt	2025-08-19 02:08:43.026084392 +0300
+@@ -16,7 +16,7 @@
+     cmake_policy(SET CMP0148 OLD)
+ endif()
+ 
+-option(FREECAD_USE_CCACHE "Auto detect and use ccache during compilation" ON)
++option(FREECAD_USE_CCACHE "Auto detect and use ccache during compilation" OFF)
+ 
+ if(FREECAD_USE_CCACHE)
+     find_program(CCACHE_PROGRAM ccache)  #This check should occur before project()
