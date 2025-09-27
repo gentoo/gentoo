@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-openssh-9.8-fixups.patch
 	"${FILESDIR}"/${PN}-1.1.0-openrc-nftables.patch
 	"${FILESDIR}"/${PN}-1.1.0-systemd-order.patch
+	"${FILESDIR}"/${PN}-1.1.0-postfix-pref.patch
 	"${FILESDIR}"/${PN}-1.1.0-postfix-ddos.patch
 )
 
