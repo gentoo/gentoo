@@ -46,7 +46,7 @@ BDEPEND+=" test? ( || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6
 
 src_prepare() {
 	# https://invent.kde.org/plasma/kpipewire/-/merge_requests/208#note_1310965
-	if has_version ">=media-video/ffmpeg-5"; then
+	if has_version ">=media-video/ffmpeg-6.1"; then
 		PATCHES+=( "${FILESDIR}/${P}-ffmpeg8.patch" )
 	fi
 	cmake_src_prepare
