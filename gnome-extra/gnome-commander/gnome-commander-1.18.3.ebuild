@@ -59,8 +59,3 @@ pkg_postinst() {
 	gnome2_pkg_postinst
 	optfeature "synchronizing files and directories" dev-util/meld
 }
-
-pkg_postrm() {
-	gnome2_pkg_postrm
-	gnome2_schemas_update
-}
