@@ -4,7 +4,6 @@
 EAPI=8
 
 MY_PV="${PV/_p/+}"
-SLOT="${MY_PV%%[.+]*}"
 EGRADLE_VER="4.10.3"
 
 inherit flag-o-matic java-pkg-2 multiprocessing toolchain-funcs
@@ -28,6 +27,7 @@ SRC_URI="
 S="${WORKDIR}/rt-${MY_PV}"
 
 LICENSE="GPL-2-with-classpath-exception"
+SLOT="${MY_PV%%[.+]*}"
 KEYWORDS="-* ~amd64 ~ppc64"
 IUSE="cpu_flags_x86_sse2 debug doc source +media"
 REQUIRED_USE="amd64? ( cpu_flags_x86_sse2 )"
