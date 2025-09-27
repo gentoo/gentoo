@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/dar/dar/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux"
 IUSE="argon2 curl dar32 dar64 doc gcrypt gpg lz4 lzo nls rsync sftp whirlpool xattr"
 
 REQUIRED_USE="
@@ -42,7 +42,7 @@ RDEPEND="
 	lzo? ( dev-libs/lzo:2 )
 	nls? ( virtual/libintl )
 	rsync? ( net-libs/librsync:= )
-	sftp? ( net-libs/libssh:= )
+	sftp? ( net-libs/libssh:=[sftp] )
 	whirlpool? ( app-crypt/rhash:= )
 	xattr? ( sys-apps/attr )
 "
