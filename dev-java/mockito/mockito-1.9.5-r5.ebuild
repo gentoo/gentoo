@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/mockito/mockito"
 SRC_URI="https://repo1.maven.org/maven2/org/mockito/mockito-core/${PV}/mockito-core-${PV}-sources.jar"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="1"
 KEYWORDS="amd64 arm64 ppc64"
 
 CP_DEPEND="
