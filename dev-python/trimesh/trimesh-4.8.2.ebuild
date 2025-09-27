@@ -67,6 +67,17 @@ EPYTEST_XDIST=1
 
 distutils_enable_tests pytest
 
+python_test() {
+	# We run tests in parallel, so avoid having n^2 threads in lapack
+	# tests.
+	local -x BLIS_NUM_THREADS=1
+	local -x MKL_NUM_THREADS=1
+	local -x OMP_NUM_THREADS=1
+	local -x OPENBLAS_NUM_THREADS=1
+
+	epytest
+}
+
 pkg_postinst() {
 	optfeature_header "${PN} functionality can be extended by installing the following packages:"
 	optfeature "making GUI applications with 3D stuff" dev-python/glooey
