@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit cmake flag-o-matic multilib python-any-r1 xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
@@ -16,7 +16,6 @@ if [[ "${PV}" == 9999 ]] ; then
 	# even if these components may not be compiled in
 	EGIT_SUBMODULES=(
 		'-*'
-		3rdparty/CLI11
 		3rdparty/cmake-compiler-flags
 		3rdparty/FindPythonInterpreter
 		3rdparty/flag-icons
@@ -34,23 +33,27 @@ else
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 		S="${WORKDIR}/${P/_*}"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ppc64 x86"
 fi
 
 LICENSE="BSD MIT"
 SLOT="0"
-IUSE="+alsa debug jack pipewire portaudio pulseaudio multilib nls +rnnoise speech test zeroconf"
+IUSE="+alsa debug g15 jack pipewire portaudio pulseaudio multilib nls +rnnoise speech test zeroconf"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-cpp/cli11
-	>=dev-db/soci-4.1.0[sqlite]
+	dev-cpp/ms-gsl
 	>=dev-libs/openssl-1.0.0b:0=
 	dev-libs/poco:=[util,xml,zip]
 	>=dev-libs/protobuf-2.2.0:=
-	dev-libs/spdlog:=
-	dev-qt/qtbase:6[dbus,gui,network,sqlite,widgets,xml]
-	dev-qt/qtsvg:6
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	>=media-libs/libsndfile-1.0.20[-minimal]
 	>=media-libs/opus-1.3.1
 	>=media-libs/speex-1.2.0
@@ -59,7 +62,9 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXi
 	alsa? ( media-libs/alsa-lib )
+	g15? ( app-misc/g15daemon:= )
 	jack? ( virtual/jack )
+	rnnoise? ( media-libs/rnnoise )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )
 	pipewire? ( media-video/pipewire )
@@ -69,15 +74,19 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	dev-cpp/nlohmann_json
-	dev-qt/qtbase:6[concurrent]
+	dev-qt/qtconcurrent:5
+	dev-qt/qttest:5
 	dev-libs/boost
-	dev-libs/utfcpp
 	x11-base/xorg-proto
 "
 BDEPEND="
-	dev-qt/qttools:6[linguist]
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.735-Fix-building-with-GCC-15.patch
+)
 
 pkg_setup() {
 	python-any-r1_pkg_setup
@@ -94,21 +103,17 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
-		-Dbundled-cli11="OFF"
+		-Dbundled-gsl="OFF"
 		-Dbundled-json="OFF"
-		-Dbundled-rnnoise="OFF"
-		-Dbundled-spdlog="OFF"
-		-Dbundled-soci="OFF"
 		-Dbundled-speex="OFF"
-		-Dbundled-utfcpp="OFF"
-		-Dg15="OFF"
+		-Dg15="$(usex g15)"
 		-Djackaudio="$(usex jack)"
 		-Doverlay="ON"
 		-Dportaudio="$(usex portaudio)"
 		-Doverlay-xcompile="$(usex multilib)"
 		-Dpipewire="$(usex pipewire)"
 		-Dpulseaudio="$(usex pulseaudio)"
-		-Drnnoise="$(usex rnnoise)"
+		-Drenamenoise="$(usex rnnoise)"
 		-Dserver="OFF"
 		-Dspeechd="$(usex speech)"
 		-Dtests="$(usex test)"

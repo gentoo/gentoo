@@ -60,6 +60,7 @@ RDEPEND="
 	x11-libs/libXi
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
+	rnnoise? ( media-libs/rnnoise )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )
 	pipewire? ( media-video/pipewire )
@@ -71,7 +72,7 @@ DEPEND="${RDEPEND}
 	dev-cpp/nlohmann_json
 	dev-qt/qtbase:6[concurrent]
 	dev-libs/boost
-	dev-libs/utfcpp
+	>=dev-libs/utfcpp-4.0.0
 	x11-base/xorg-proto
 "
 BDEPEND="
