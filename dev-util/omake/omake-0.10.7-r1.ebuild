@@ -21,7 +21,7 @@ DEPEND="dev-lang/ocaml:=[ocamlopt?]
 	fam? ( virtual/fam )
 	readline? ( >=sys-libs/readline-4.3:0= )"
 RDEPEND="${DEPEND}"
-BDEPEND=">=dev-lang/ocaml-3.10.2"
+BDEPEND="dev-lang/ocaml"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.10.2-cflags.patch"
