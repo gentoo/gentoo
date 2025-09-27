@@ -1,0 +1,14 @@
+https://github.com/Subsentient/epoch/pull/26
+https://bugs.gentoo.org/944368
+
+--- a/src/epoch.h
++++ b/src/epoch.h
+@@ -146,7 +146,7 @@
+ /**Enums go here.*/
+ 
+ /*Our own boolean type.*/
+-enum { false, true }; /*I don't want to use stdbool.*/
++#include <stdbool.h>
+ typedef signed char Bool; //Don't change this. Some code relies on this being signed 8 bits.
+ 
+ /*How objects are stopped on shutdown.*/
