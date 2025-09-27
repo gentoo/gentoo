@@ -24,7 +24,9 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="gtk-doc +gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala valgrind wayland webdav"
+IUSE="gtk-doc +gtk3 +introspection lz4 mjpeg policykit sasl smartcard usbredir vala valgrind wayland webdav X"
+
+REQUIRED_USE="|| ( wayland X ) wayland? ( gtk3 )"
 
 # TODO:
 # * check if sys-freebsd/freebsd-lib (from virtual/acl) provides acl/libacl.h
@@ -40,8 +42,8 @@ RDEPEND="
 	sys-libs/zlib
 	>=x11-libs/cairo-1.2
 	>=x11-libs/pixman-0.17.7
-	x11-libs/libX11
-	gtk3? ( x11-libs/gtk+:3[introspection?] )
+	X? ( x11-libs/libX11 )
+	gtk3? ( x11-libs/gtk+:3[X?,wayland?,introspection?] )
 	introspection? ( dev-libs/gobject-introspection )
 	dev-libs/openssl:=
 	lz4? ( app-arch/lz4 )
