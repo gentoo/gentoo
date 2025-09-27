@@ -796,7 +796,7 @@ cmake_src_test() {
 cmake_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	DESTDIR="${D}" cmake_build install "$@"
+	DESTDIR="${D}" cmake_build "$@" install
 
 	if [[ ${EAPI} == 7 ]]; then
 		pushd "${S}" > /dev/null || die
