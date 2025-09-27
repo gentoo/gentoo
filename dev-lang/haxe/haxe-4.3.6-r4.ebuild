@@ -27,7 +27,7 @@ RESTRICT="strip"
 
 RDEPEND="
 	=dev-ml/extlib-1.7.9*:=
-	>=dev-lang/ocaml-4:=[ocamlopt?]
+	dev-lang/ocaml:=[ocamlopt?]
 	>=dev-ml/luv-0.5.13:=
 
 	dev-ml/ocaml-sha:=
