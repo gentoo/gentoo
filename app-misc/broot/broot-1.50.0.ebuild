@@ -3,7 +3,7 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.79.0"
+RUST_MIN_VER="1.82.0"
 inherit cargo shell-completion
 
 DESCRIPTION="A new way to see and navigate directory trees"
@@ -18,7 +18,7 @@ LICENSE+="
 	LGPL-3+ MIT MPL-2.0 UoI-NCSA Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="X"
 
 DEPEND="
@@ -43,7 +43,7 @@ src_prepare() {
 src_configure() {
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export RUSTFLAGS="-Cstrip=none ${RUSTFLAGS}" #835400
-	local myfeatures=( $(usev X clipboard) trash )
+	local myfeatures=( $(usev X clipboard) )
 
 	cargo_src_configure --no-default-features
 }
