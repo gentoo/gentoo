@@ -11,15 +11,16 @@ SRC_URI="http://vdr.websitec.de/download/vdr-vcd/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=media-video/vdr-1.5.9"
+DEPEND="media-video/vdr:="
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}_xgettext.diff"
 		"${FILESDIR}/${P}_vdr-1.7.2.diff"
 		"${FILESDIR}/${P}_devicetrickspeed.patch"
-		"${FILESDIR}/${P}_gcc-6.patch" )
+		"${FILESDIR}/${P}_gcc-6.patch"
+		"${FILESDIR}/${P}_Control.patch" )
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
