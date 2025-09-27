@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 discord? ( MIT )"
 SLOT="0"
 IUSE="alsa cdda chromaprint +dbus debug discord kde +loudness ipod moodbar mtp +pulseaudio streaming test X"
 RESTRICT="!test? ( test )"
