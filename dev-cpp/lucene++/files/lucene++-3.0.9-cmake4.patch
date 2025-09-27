@@ -1,0 +1,62 @@
+From: https://github.com/luceneplusplus/LucenePlusPlus/pull/218
+
+From: Gianfranco Costamagna <locutusofborg@debian.org>
+Date: Mon, 8 Sep 2025 15:05:10 +0200
+Subject: [PATCH] Bump minimum required cmake version to 3.10, for new cmake 4
+ compatibility fix
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # init
+ ####################################
+ 
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ 
+ project(lucene++)
+ 
+--- a/cmake/cotire.cmake
++++ b/cmake/cotire.cmake
+@@ -37,7 +37,7 @@ set(__COTIRE_INCLUDED TRUE)
+ if (NOT CMAKE_SCRIPT_MODE_FILE)
+ 	cmake_policy(PUSH)
+ endif()
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.10)
+ if (NOT CMAKE_SCRIPT_MODE_FILE)
+ 	cmake_policy(POP)
+ endif()
+--- a/src/test/gtest/CMakeLists.txt
++++ b/src/test/gtest/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # Note: CMake support is community-based. The maintainers do not use CMake
+ # internally.
+ 
+-cmake_minimum_required(VERSION 2.8.8)
++cmake_minimum_required(VERSION 3.10)
+ 
+ if (POLICY CMP0048)
+   cmake_policy(SET CMP0048 NEW)
+--- a/src/test/gtest/googlemock/CMakeLists.txt
++++ b/src/test/gtest/googlemock/CMakeLists.txt
+@@ -42,7 +42,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gmock VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.6.4)
++cmake_minimum_required(VERSION 3.10)
+ 
+ if (COMMAND set_up_hermetic_build)
+   set_up_hermetic_build()
+--- a/src/test/gtest/googletest/CMakeLists.txt
++++ b/src/test/gtest/googletest/CMakeLists.txt
+@@ -53,7 +53,7 @@ else()
+   cmake_policy(SET CMP0048 NEW)
+   project(gtest VERSION ${GOOGLETEST_VERSION} LANGUAGES CXX C)
+ endif()
+-cmake_minimum_required(VERSION 2.6.4)
++cmake_minimum_required(VERSION 3.10)
+ 
+ if (POLICY CMP0063) # Visibility
+   cmake_policy(SET CMP0063 NEW)
