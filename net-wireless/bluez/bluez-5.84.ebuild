@@ -67,10 +67,6 @@ PATCHES=(
 	# https://github.com/bluez/bluez/issues/268
 	"${FILESDIR}"/${PN}-udevadm-path-r1.patch
 
-	# https://bugs.gentoo.org/928365
-	# https://github.com/bluez/bluez/issues/726
-	"${FILESDIR}"/${PN}-disable-test-vcp.patch
-
 	# Fix Bluetooth LE audio (from Fedora)
 	"${FILESDIR}"/${P}-A2DP-config.patch
 )
