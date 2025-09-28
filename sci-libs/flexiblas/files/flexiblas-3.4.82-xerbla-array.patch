@@ -1,0 +1,55 @@
+diff --git a/src/xerbla.c b/src/xerbla.c
+index a12fc78e..209c0f23 100644
+--- a/src/xerbla.c
++++ b/src/xerbla.c
+@@ -42,6 +42,7 @@ void flexiblas_internal_xerbla(char *SNAME, Int *Info, flexiblas_fortran_charlen
+ #ifdef __ELF__
+ #pragma weak xerbla_
+ #pragma weak xerbla
++#pragma weak XERBLA
+ void xerbla_(char *, Int *, flexiblas_fortran_charlen_t) __attribute__ (( alias ("flexiblas_internal_xerbla")));
+ void xerbla(char *, Int *, flexiblas_fortran_charlen_t) __attribute__ (( alias ("flexiblas_internal_xerbla")));
+ void XERBLA(char *, Int *, flexiblas_fortran_charlen_t) __attribute__ (( alias ("flexiblas_internal_xerbla")));
+@@ -130,6 +131,33 @@ void flexiblas_internal_xerbla(char *SNAME, Int *Info, flexiblas_fortran_charlen
+     return;
+ }
+ 
++/* XERBLA_ARRAY handler */
++
++void xerbla_array_ (char *srname_array, Int *srname_len, Int *info, flexiblas_fortran_charlen_t srname_array_len)
++{
++    size_t k = 0;
++    size_t len = 0;
++    if (*srname_len > 0 ) len = (int) *srname_len;
++    (void) srname_array_len;
++    char tmp[len+1];
++    tmp[len] = '\0';
++
++    for(k = 0; k < len; k++) tmp[k] = srname_array[k];
++
++    flexiblas_internal_xerbla(tmp, info, len);
++    return;
++}
++
++void xerbla_array(char *srname_array, Int *srname_len, Int *info, flexiblas_fortran_charlen_t srname_array_len)
++{
++    xerbla_array_(srname_array, srname_len, info, srname_array_len);
++}
++
++void XERBLA_ARRAY(char *srname_array, Int *srname_len, Int *info, flexiblas_fortran_charlen_t srname_array_len)
++{
++    xerbla_array_(srname_array, srname_len, info, srname_array_len);
++}
++
+ 
+ 
+ /*
+@@ -155,7 +183,7 @@ void internal_cblas_xerbla(CBLAS_INT _info, const char *rout, const char *form,
+     va_list argptr;
+ 
+     va_start(argptr, form);
+-    Int info = _info; 
++    Int info = _info;
+ 
+     if (RowMajorStrg)
+     {
