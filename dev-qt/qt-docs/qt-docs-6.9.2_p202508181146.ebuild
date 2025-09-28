@@ -14,6 +14,7 @@ KEYWORDS="amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv x86"
 IUSE="+examples +html +qch"
 REQUIRED_USE="|| ( examples html qch )"
 
+# passing .7z to avoid looping through the massive list of archives for nothing
 BDEPEND="
 	examples? ( $(unpacker_src_uri_depends .7z) )
 "
