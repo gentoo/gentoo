@@ -20,9 +20,10 @@ KEYWORDS="~amd64 ~arm64"
 
 BDEPEND="app-arch/unzip"
 
+# jdk-25 because of compilation errors with jdk-21
 DEPEND="
 	>=dev-java/ant-1.10.15:0
-	>=virtual/jdk-21:*
+	>=virtual/jdk-25:*
 "
 
 # ./org/eclipse/jdt/internal/compiler/env/ICompilationUnit.java:64:
