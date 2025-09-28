@@ -32,6 +32,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-ml/camlzip:=
 	dev-ml/num:=
+	dev-ml/yojson:=
 	dev-ml/zarith:=
 	gui? (
 		>=dev-ml/lablgtk-3.1.2:3=[sourceview,ocamlopt?]
