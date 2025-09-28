@@ -303,6 +303,8 @@ _cmake_check_build_dir() {
 	if [[ ${EAPI} == 7 ]]; then
 		: "${CMAKE_USE_DIR:=${S}}"
 	else
+		# Since EAPI-8 we use current working directory, bug #704524
+		# esp. test with 'special' pkgs like: app-arch/brotli, net-libs/quiche
 		: "${CMAKE_USE_DIR:=${PWD}}"
 	fi
 	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
@@ -394,48 +396,11 @@ _cmake_modify-cmakelists() {
 	_EOF_
 }
 
-# @FUNCTION: cmake_src_prepare
+# @FUNCTION: _cmake4_callout
+# @INTERNAL
 # @DESCRIPTION:
-# Apply ebuild and user patches. *MUST* be run or cmake_src_configure will fail.
-cmake_src_prepare() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ ${EAPI} == 7 ]]; then
-		pushd "${S}" > /dev/null || die # workaround from cmake-utils
-		# in EAPI-8, we use current working directory instead, bug #704524
-		# esp. test with 'special' pkgs like: app-arch/brotli, net-libs/quiche
-	fi
-	_cmake_check_build_dir
-
-	default_src_prepare
-
-	# check if CMakeLists.txt exists and if not then die
-	if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
-		eerror "Unable to locate CMakeLists.txt under:"
-		eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
-		eerror "Consider not inheriting the cmake eclass."
-		die "FATAL: Unable to find CMakeLists.txt"
-	fi
-
-	local modules_list
-	if [[ ${EAPI} == 7 && $(declare -p CMAKE_REMOVE_MODULES_LIST) != "declare -a"* ]]; then
-		modules_list=( ${CMAKE_REMOVE_MODULES_LIST} )
-	else
-		modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
-	fi
-
-	local name
-	for name in "${modules_list[@]}" ; do
-		if [[ ${EAPI} == 7 ]]; then
-			find "${S}" -name "${name}.cmake" -exec rm -v {} + || die
-		else
-			find -name "${name}.cmake" -exec rm -v {} + || die
-		fi
-	done
-
-	# Remove dangerous things.
-	_cmake_modify-cmakelists
-
+# QA notice printout for build systems unsupported w/ CMake-4.
+_cmake4_callout() {
 	if [[ ${_CMAKE_MINREQVER_UNSUPPORTED} ]]; then
 		eqawarn "QA Notice: Compatibility with CMake < 3.5 has been removed from CMake 4,"
 		eqawarn "${CATEGORY}/${PN} will fail to build w/o a fix."
@@ -445,26 +410,93 @@ cmake_src_prepare() {
 			eqawarn "CMake 4 detected; building with -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
 			eqawarn "This is merely a workaround and *not* a permanent fix."
 		fi
-		if [[ ${EAPI} == 7 ]]; then
-			eqawarn "QA Notice: EAPI=7 detected; this package is now a prime last-rites target."
-		fi
 	fi
+}
+
+# @FUNCTION: cmake_prepare
+# @DESCRIPTION:
+# Check existence of and sanitise CMake files, then make ${CMAKE_USE_DIR}
+# read-only.  *MUST* be run or cmake_src_configure will fail.  EAPI-8 only.
+cmake_prepare() {
+	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ ${EAPI} == 7 ]]; then
-		popd > /dev/null || die
+		eerror "${FUNCNAME} is EAPI-8 only. Call cmake_src_prepare instead."
+		die "FATAL: Forbidden function call."
 	fi
 
-	# Make ${CMAKE_USE_DIR} (in EAPI-7: ${S}) read-only in order to detect
-	# broken build systems.
+	_cmake_check_build_dir
+
+	# Check if CMakeLists.txt exists and if not then die
+	if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
+		eerror "Unable to locate CMakeLists.txt under:"
+		eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
+		eerror "Consider not inheriting the cmake eclass."
+		die "FATAL: Unable to find CMakeLists.txt"
+	fi
+
+	local modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
+
+	local name
+	for name in "${modules_list[@]}" ; do
+		find -name "${name}.cmake" -exec rm -v {} + || die
+	done
+
+	# Remove dangerous things.
+	_cmake_modify-cmakelists
+	_cmake4_callout
+
+	# Make ${CMAKE_USE_DIR} read-only in order to detect broken build systems
 	if [[ ${CMAKE_QA_SRC_DIR_READONLY} && ! ${CMAKE_IN_SOURCE_BUILD} ]]; then
-		if [[ ${EAPI} == 7 ]]; then
-			chmod -R a-w "${S}"
-		else
-			chmod -R a-w "${CMAKE_USE_DIR}"
-		fi
+		chmod -R a-w "${CMAKE_USE_DIR}"
 	fi
 
-	_CMAKE_SRC_PREPARE_HAS_RUN=1
+	_CMAKE_PREPARE_HAS_RUN=1
+}
+
+# @FUNCTION: cmake_src_prepare
+# @DESCRIPTION:
+# Apply ebuild and user patches via default_src_prepare.  In case of
+# conflict with another eclass' src_prepare phase, use cmake_prepare
+# instead (EAPI-8 only).
+# In EAPI-7, this phase *must* be run or cmake_src_configure will fail.
+cmake_src_prepare() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ${EAPI} == 7 ]]; then
+		pushd "${S}" > /dev/null || die # workaround from cmake-utils
+			default_src_prepare
+			_cmake_check_build_dir
+			# check if CMakeLists.txt exists and if not then die
+			if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
+				eerror "Unable to locate CMakeLists.txt under:"
+				eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
+				eerror "Consider not inheriting the cmake eclass."
+				die "FATAL: Unable to find CMakeLists.txt"
+			fi
+			local modules_list
+			if [[ $(declare -p CMAKE_REMOVE_MODULES_LIST) != "declare -a"* ]]; then
+				modules_list=( ${CMAKE_REMOVE_MODULES_LIST} )
+			else
+				modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
+			fi
+			local name
+			for name in "${modules_list[@]}" ; do
+				find "${S}" -name "${name}.cmake" -exec rm -v {} + || die
+			done
+			_cmake_modify-cmakelists # Remove dangerous things.
+			_cmake4_callout
+		popd > /dev/null || die
+		# Make ${S} read-only in order to detect broken build systems
+		if [[ ${CMAKE_QA_SRC_DIR_READONLY} && ! ${CMAKE_IN_SOURCE_BUILD} ]]; then
+			chmod -R a-w "${S}"
+		fi
+		_CMAKE_PREPARE_HAS_RUN=1
+		eqawarn "QA Notice: cmake.eclass will throw unsupported EAPI=7 error after 2025-11-01."
+	else
+		default_src_prepare
+		cmake_prepare
+	fi
 }
 
 # @VARIABLE: MYCMAKEARGS
@@ -490,8 +522,13 @@ cmake_src_prepare() {
 cmake_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${_CMAKE_SRC_PREPARE_HAS_RUN} ]] || \
-		die "FATAL: cmake_src_prepare has not been run"
+	if [[ -z ${_CMAKE_PREPARE_HAS_RUN} ]]; then
+		if [[ ${EAPI} == 7 ]]; then
+			die "FATAL: cmake_src_prepare has not been run"
+		else
+			die "FATAL: cmake_src_prepare (or cmake_prepare) has not been run"
+		fi
+	fi
 
 	_cmake_check_build_dir
 
