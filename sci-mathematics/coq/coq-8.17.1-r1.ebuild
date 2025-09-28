@@ -9,8 +9,9 @@ MY_P="${PN}-${MY_PV}"
 inherit check-reqs desktop dune edo
 
 DESCRIPTION="Proof assistant written in O'Caml"
-HOMEPAGE="http://coq.inria.fr/
-	https://github.com/coq/coq/"
+HOMEPAGE="https://rocq-prover.org
+	https://github.com/rocq-prover/rocq/"
+
 SRC_URI="https://github.com/coq/coq/archive/V${MY_PV}.tar.gz
 	-> ${P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
