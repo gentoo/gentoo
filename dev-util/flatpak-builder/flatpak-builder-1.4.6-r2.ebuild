@@ -19,6 +19,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.4:=
 	dev-libs/json-glib:=
 	net-misc/curl:=
+	>=sys-apps/flatpak-0.99.1
 	yaml? ( dev-libs/libyaml:= )
 "
 DEPEND="${RDEPEND}"
