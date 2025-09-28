@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person" proxied="yes">
+    <email>kacper.slominski72@gmail.com</email>
+    <name>Kacper Słomiński</name>
+  </maintainer>
+  <maintainer type="person" proxied="proxy">
+    <email>sam@gentoo.org</email>
+    <name>Sam James</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">limine-bootloader/limine</remote-id>
+    <remote-id type="codeberg">Limine/Limine</remote-id>
+    <bugs-to>https://codeberg.org/Limine/Limine/issues</bugs-to>
+    <changelog>https://codeberg.org/Limine/Limine/src/branch/trunk/ChangeLog</changelog>
+  </upstream>
+  <use>
+    <flag name="uefi32">
+      Enable 32-bit UEFI support.
+    </flag>
+    <flag name="uefi64">
+      Enable 64-bit UEFI support.
+    </flag>
+    <flag name="uefiaa64">
+      Enable AArch64 UEFI support.
+    </flag>
+    <flag name="uefirv64">
+      Enable 64-bit RISC-V UEFI support.
+    </flag>
+    <flag name="uefiloong64">
+      Enable 64-bit LoongArch UEFI support.
+    </flag>
+    <flag name="cd-efi">
+        Enable building cd-efi.bin using <pkg>sys-fs/mtools</pkg>.
+        This flag was previously known as eltorito-efi.
+    </flag>
+
+    <flag name="bios">
+      Enable BIOS/MBR boot support.
+    </flag>
+    <flag name="bios-pxe">
+      Enables BIOS PXE boot support.
+    </flag>
+    <flag name="bios-cd">
+      Enables BIOS boot support for CDs.
+    </flag>
+  </use>
+</pkgmetadata>
