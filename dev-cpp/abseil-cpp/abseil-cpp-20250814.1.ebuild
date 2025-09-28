@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib flag-o-matic python-any-r1
 
 DESCRIPTION="Abseil Common Libraries (C++), LTS Branch"
 HOMEPAGE="https://abseil.io/"
@@ -21,7 +21,7 @@ SLOT="0/${PV:2:4}.$(ver_cut 2).0"
 # SLOT="0/${PV:2:4}.0.0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
-IUSE="test test-helpers"
+IUSE="debug test test-helpers"
 
 RDEPEND="
 	test? (
@@ -63,6 +63,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	append-cxxflags $(usex debug '-DDEBUG' '-DNDEBUG')
+
 	local mycmakeargs=(
 		-DABSL_ENABLE_INSTALL="yes"
 		-DABSL_USE_EXTERNAL_GOOGLETEST="yes"
