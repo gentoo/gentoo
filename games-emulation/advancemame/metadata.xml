@@ -19,6 +19,7 @@
 	limitations you can anyway choice from different types of stretch.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">amadvance/advancemame</remote-id>
 		<remote-id type="sourceforge">advancemame</remote-id>
 	</upstream>
 </pkgmetadata>
