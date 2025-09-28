@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -15,6 +15,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE=""
 
 BDEPEND="
-	app-alternatives/yacc
 	app-alternatives/lex
+	app-alternatives/yacc
 "
+
+PATCHES=( "${FILESDIR}/${P}-cmake4.patch" )
