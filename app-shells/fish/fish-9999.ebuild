@@ -3,12 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+CRATES=""
 
-# Tests fail when build directory is not inside source directory.
-BUILD_DIR="${S}/build"
+declare -A GIT_CRATES=(
+	[pcre2-sys]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%/pcre2-sys'
+	[pcre2]='https://github.com/fish-shell/rust-pcre2;85b7afba1a9d9bd445779800e5bcafeb732e4421;rust-pcre2-%commit%'
+)
 
-inherit cargo cmake multiprocessing python-any-r1 readme.gentoo-r1 xdg
+inherit cargo cmake readme.gentoo-r1 xdg
 
 DESCRIPTION="Friendly Interactive SHell"
 HOMEPAGE="https://fishshell.com/"
@@ -38,33 +40,15 @@ IUSE="+doc nls test"
 
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	nls? ( sys-devel/gettext )
-	test? (
-		${PYTHON_DEPS}
-		$(python_gen_any_dep '
-			dev-python/pexpect[${PYTHON_USEDEP}]
-		')
-	)
-"
+BDEPEND="nls? ( sys-devel/gettext )"
 # Release tarballs contain prebuilt documentation.
 [[ ${PV} == 9999 ]] && BDEPEND+=" doc? ( dev-python/sphinx )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-9999-use-cargo-eclass-for-build.patch"
+	"${FILESDIR}/${P}-use-cargo-eclass-for-build.patch"
 )
 
 QA_FLAGS_IGNORED="usr/bin/.*"
-
-python_check_deps() {
-	use test || return 0
-	python_has_version "dev-python/pexpect[${PYTHON_USEDEP}]"
-}
-
-pkg_setup() {
-	use test && python-any-r1_pkg_setup
-	rust_pkg_setup
-}
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -78,8 +62,8 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
-		-DCTEST_PARALLEL_LEVEL=$(makeopts_jobs)
 		-DINSTALL_DOCS="$(usex doc)"
+		-DWITH_GETTEXT="$(usex nls 1 0)"
 	)
 	cargo_src_configure --no-default-features \
 		--bin fish \
@@ -91,7 +75,6 @@ src_configure() {
 src_compile() {
 	local -x PREFIX="${EPREFIX}/usr"
 	local -x DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
-	local -x CMAKE_WITH_GETTEXT="$(usex nls 1 0)"
 
 	# Bug: https://bugs.gentoo.org/950699
 	local -x SYSCONFDIR="${EPREFIX}/etc"
@@ -108,24 +91,10 @@ src_compile() {
 }
 
 src_test() {
-	# Tests will create temporary directories.
-	local -x TMPDIR="${T}"
-
-	# Otherwise the dimension will be 0x0
-	local -x COLUMNS=80
-	local -x LINES=24
-
-	# Both depend in locale variables which might not be available.
-	# No die to allow repeated test runs.
-	rm -v tests/checks/{basic,locale}.fish || :
-
-	# Gets skipped when tmux is missing, but we want consistency across different systems.
-	# No die to allow repeated test runs.
-	rm -v tests/checks/tmux-*.fish || :
-
-	# Enable colored output for building tests.
 	local -x CARGO_TERM_COLOR=always
-	cargo_env cmake_build fish_run_tests
+	local -x TEST_VERBOSE=1
+	# cargo_env cmake_src_compile fish_run_tests
+	cargo_env cmake_src_test fish_run_tests
 }
 
 src_install() {
