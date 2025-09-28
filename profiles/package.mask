@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-28)
+# Unmaintained for ages, thus not deserving of stable keywords.
+# media-video/ccextractor-0.89 is available for ~amd64 and ~x86.
+<media-video/ccextractor-0.89
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-09-23)
 # Abandoned and barely functional, and will just keep getting worse if
 # it does not keep up with website changes. net-misc/youtube-viewer
