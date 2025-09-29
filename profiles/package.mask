@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-29)
+# Effectively unmaintained in Gentoo for 5 years, EAPI-7 based, 3.17.2
+# version bump pending in bug #962079. Removal on 2025-10-29.
+x11-terms/roxterm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-28)
 # Unmaintained for ages, thus not deserving of stable keywords.
 # media-video/ccextractor-0.89 is available for ~amd64 and ~x86.
