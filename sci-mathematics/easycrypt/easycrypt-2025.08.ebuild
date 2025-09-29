@@ -25,7 +25,6 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.08.0:=[ocamlopt?]
 	>=sci-mathematics/why3-1.8.0:=
 
 	dev-ml/batteries:=
