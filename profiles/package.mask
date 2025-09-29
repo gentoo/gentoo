@@ -170,13 +170,6 @@ media-sound/pulseaudio
 # Removal on 2025-09-28.  Bugs #962124, #729162.
 app-crypt/md4sum
 
-# Mike Pagano <mpagano@gentoo.org> (2025-08-28)
-# Long unmaintained upstream (20+ years since last release).
-# Does not compile.
-# Bug #962110
-# Removal on 2025-09-28.
-media-gfx/zgv
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-08-28)
 # EAPI=7, fails to compile, unmaintained in gentoo since git transition,
 # library with no rev-deps.
