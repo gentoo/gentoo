@@ -1,0 +1,30 @@
+https://bugs.gentoo.org/913669
+fix underlinking with slibtool
+--- a/plugins/loaders/cdx/Makefile.am
++++ b/plugins/loaders/cdx/Makefile.am
+@@ -18,8 +18,9 @@ gcu_loader_cdx_LTLIBRARIES = cdx.la
+ cdx_la_LDFLAGS = -module -avoid-version -no-undefined
+ 
+ cdx_la_LIBADD = \
+-		$(gsf_LIBS) \
+-		$(top_builddir)/libs/gcu/libgcu-@GCU_API_VER@.la
++		$(gtk_LIBS) $(gsf_LIBS) \
++ 		$(top_builddir)/libs/gcu/libgcu-@GCU_API_VER@.la \
++		$(top_builddir)/libs/gcp/libgcp-@GCU_API_VER@.la
+ 
+ cdx_la_SOURCES =	\
+ 	cdx.cc
+--- a/plugins/loaders/cdxml/Makefile.am
++++ b/plugins/loaders/cdxml/Makefile.am
+@@ -17,8 +17,9 @@ gcu_loader_cdxml_LTLIBRARIES = cdxml.la
+ cdxml_la_LDFLAGS = -module -avoid-version -no-undefined
+ 
+ cdxml_la_LIBADD = \
+-		$(gsf_LIBS) $(goffice_LIBS) \
+-		$(top_builddir)/libs/gcu/libgcu-@GCU_API_VER@.la
++ 		$(gtk_LIBS) $(gsf_LIBS) $(goffice_LIBS) \
++		$(top_builddir)/libs/gcu/libgcu-@GCU_API_VER@.la \
++		$(top_builddir)/libs/gcp/libgcp-@GCU_API_VER@.la
+ 
+ cdxml_la_SOURCES =	\
+ 	cdxml.cc
