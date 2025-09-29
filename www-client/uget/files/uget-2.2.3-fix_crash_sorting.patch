@@ -1,0 +1,15 @@
+fix crash when changing sort
+https://github.com/ugetdm/uget/issues/40
+patch from upstream: 0c5b01
+--- a/ui-gtk/UgtkApp-callback.c
++++ b/ui-gtk/UgtkApp-callback.c
+@@ -549,6 +549,9 @@ static void node_updated (UgetNode* child)
+ 	UgtkApp*     app;
+ 
+ 	node = child->parent;
++	if(node == NULL) {
++		return;
++	}
+ 	app = node->control->notifier->data;
+ 	if (node == (UgetNode*) app->traveler.category.model->root) {
+ 		// category changed
