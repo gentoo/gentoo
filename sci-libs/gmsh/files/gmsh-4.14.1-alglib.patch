@@ -1,0 +1,14 @@
+Partially reverts https://gitlab.onelab.info/gmsh/gmsh/-/commit/8becbc0bca57e5f823a36327a400d2d3688b3dba
+which could not possibly have worked with system alglib.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -774,7 +774,7 @@
+ 
+ if(ENABLE_ALGLIB)
+   find_library(ALGLIB_LIB alglib)
+-  find_path(ALGLIB_INC "stdafx.h" PATH_SUFFIXES libalglib)
++  find_path(ALGLIB_INC "stdafx.h" PATH_SUFFIXES alglib)
+   if(ENABLE_SYSTEM_CONTRIB AND ALGLIB_LIB AND ALGLIB_INC)
+     list(APPEND EXTERNAL_LIBRARIES ${ALGLIB_LIB})
+     list(APPEND EXTERNAL_INCLUDES ${ALGLIB_INC})
