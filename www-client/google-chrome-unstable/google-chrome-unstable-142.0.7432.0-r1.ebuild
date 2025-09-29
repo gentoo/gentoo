@@ -95,6 +95,11 @@ src_install() {
 
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 
+	# Since M141 Google Chrome comes with its own bundled cron
+	# scripts which invoke `apt` directly. Useless on Gentoo!
+	rm -r etc/cron.daily || die "Failed to remove cron scripts"
+	rm -r "${CHROME_HOME}"/cron || die "Failed to remove cron scripts"
+
 	gzip -d usr/share/doc/${PF}/changelog.gz || die
 	gzip -d usr/share/man/man1/${MY_PN}.1.gz || die
 	if [[ -L usr/share/man/man1/google-chrome.1.gz ]]; then
