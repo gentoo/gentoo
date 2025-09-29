@@ -52,6 +52,12 @@ sys-apps/thunderbolt-software-user-space
 # version bump pending in bug #962079. Removal on 2025-10-29.
 x11-terms/roxterm
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-29)
+# No stable revdeps, destabilising package together with cleanup of
+# really outdated version 3.17.0. sci-libs/alglib-3.20.0 is available
+# for ~amd64 and ~x86.
+<sci-libs/alglib-3.20.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-28)
 # Unmaintained for ages, thus not deserving of stable keywords.
 # media-video/ccextractor-0.89 is available for ~amd64 and ~x86.
