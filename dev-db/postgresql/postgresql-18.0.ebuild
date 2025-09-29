@@ -9,7 +9,7 @@ LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 SLOT=$(ver_cut 1)
 
@@ -186,12 +186,6 @@ src_configure() {
 		$(use_with zlib) \
 		$(use_with zstd) \
 		$(use_enable nls)"
-	if use alpha; then
-		myconf+=" --disable-spinlocks"
-	else
-		# Should be the default but just in case
-		myconf+=" --enable-spinlocks"
-	fi
 	econf ${myconf}
 }
 
