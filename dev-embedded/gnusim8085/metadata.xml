@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">gnusim8085</remote-id>
+		<remote-id type="github">GNUSim8085/GNUSim8085</remote-id>
 	</upstream>
 </pkgmetadata>
