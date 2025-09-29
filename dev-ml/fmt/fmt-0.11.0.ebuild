@@ -17,7 +17,6 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-ml/cmdliner:=[ocamlopt]
-	>=dev-lang/ocaml-4.08:=[ocamlopt]
 	dev-ml/result:=[ocamlopt]
 	dev-ml/stdlib-shims:=[ocamlopt]
 	dev-ml/uchar:=[ocamlopt]
