@@ -5,8 +5,8 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
-KFMIN=6.16.0
-QTMIN=6.8.1
+KFMIN=6.18.0
+QTMIN=6.9.1
 inherit ecm fcaps plasma.kde.org xdg
 
 DESCRIPTION="Power management for KDE Plasma Shell"
@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/powerdevil"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="brightness-control"
 
 RESTRICT="test" # bug 926513
@@ -45,19 +45,20 @@ COMMON_DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:6
 	>=kde-plasma/libkscreen-${KDE_CATV}:6
 	>=kde-plasma/libplasma-${KDE_CATV}:6
-	>=kde-plasma/plasma-activities-${KDE_CATV}:6
+	>=kde-plasma/plasma-activities-${KDE_CATV}:6=
 	>=kde-plasma/plasma-workspace-${KDE_CATV}:6
 	virtual/libudev:=
 	x11-libs/libxcb
 	brightness-control? ( app-misc/ddcutil:= )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/plasma-wayland-protocols-1.18.0
+	>=dev-libs/plasma-wayland-protocols-1.19.0
 "
 RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-workspace-6.1.90:*
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	|| (
+		sys-apps/tuned[ppd]
 		sys-power/power-profiles-daemon
 		sys-power/tlp
 	)
