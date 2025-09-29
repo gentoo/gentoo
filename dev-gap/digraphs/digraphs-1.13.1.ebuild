@@ -30,8 +30,6 @@ BDEPEND="test? ( || (
 	kde-apps/okular
 ) )"
 
-PATCHES=( "${FILESDIR}/digraphs-planarity-4.x.patch" )
-
 DOCS=( CHANGELOG.md README.md )
 
 GAP_PKG_EXTRA_INSTALL=( data notebooks )
