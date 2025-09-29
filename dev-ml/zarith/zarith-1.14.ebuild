@@ -18,7 +18,6 @@ IUSE="doc +ocamlopt"
 RESTRICT="!ocamlopt? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.05:=[ocamlopt=]
 	dev-libs/gmp:0=
 "
 DEPEND="${RDEPEND} dev-lang/perl"
