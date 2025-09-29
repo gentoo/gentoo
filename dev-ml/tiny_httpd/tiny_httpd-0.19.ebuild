@@ -18,7 +18,6 @@ KEYWORDS="~amd64"
 IUSE="camlzip ocamlopt test"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.08
 	dev-ml/hmap:=
 	dev-ml/iostream:=[ocamlopt?]
 	dev-ml/logs:=[ocamlopt?]
