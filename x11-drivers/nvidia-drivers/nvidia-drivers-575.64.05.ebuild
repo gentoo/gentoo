@@ -9,15 +9,11 @@ inherit readme.gentoo-r1 systemd toolchain-funcs unpacker user-info
 
 MODULES_KERNEL_MAX=6.16
 NV_URI="https://download.nvidia.com/XFree86/"
-# x86-64 .run was missing from the usual mirror at bump time, while
-# aarch64's is missing from this one.. so fetch from different ones
-# for now and drop this next bump
-[[ ${PV} == 575.64.05 ]] && NV_URI_TMP="https://us.download.nvidia.com/XFree86/"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://www.nvidia.com/"
 SRC_URI="
-	amd64? ( ${NV_URI_TMP}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
+	amd64? ( ${NV_URI}Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
 	arm64? ( ${NV_URI}Linux-aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
 	$(printf "${NV_URI}%s/%s-${PV}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})
