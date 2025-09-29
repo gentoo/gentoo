@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/963560
+https://github.com/systemd/systemd/pull/39119
+
+From 6cae201ca1b0bf4a136bdf1002b4bc7983f0ceee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mantas=20Mikul=C4=97nas?= <grawity@gmail.com>
+Date: Thu, 25 Sep 2025 22:52:18 +0300
+Subject: [PATCH] resolve: undo change to return code of next_search_domain()
+ (#39119)
+
+This caused resolved to only consider the 1st search domain of every
+interface and ignore the rest.
+
+Fixes a regression caused by 81ae2237c1792943a1ec712ae2e630bcc592175b (v258).
+Fixes #39118.
+---
+ src/resolve/resolved-dns-query.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/resolve/resolved-dns-query.c b/src/resolve/resolved-dns-query.c
+index 8ad7bff398d85..4e11ad87bf545 100644
+--- a/src/resolve/resolved-dns-query.c
++++ b/src/resolve/resolved-dns-query.c
+@@ -147,7 +147,7 @@ static int dns_query_candidate_next_search_domain(DnsQueryCandidate *c) {
+         dns_search_domain_unref(c->search_domain);
+         c->search_domain = dns_search_domain_ref(next);
+ 
+-        return 0;
++        return 1;
+ }
+ 
+ static int dns_query_candidate_add_transaction(

@@ -279,6 +279,7 @@ src_unpack() {
 src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}/systemd-258-shared-add-missing-alloc-util.patch"
+		"${FILESDIR}/systemd-258-resolve-undo-change-to-return-code.patch"
 	)
 
 	if ! use vanilla; then
