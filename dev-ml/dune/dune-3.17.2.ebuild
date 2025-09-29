@@ -16,7 +16,7 @@ IUSE="emacs"
 RESTRICT="strip test"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.08:=
+	dev-lang/ocaml:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}"
