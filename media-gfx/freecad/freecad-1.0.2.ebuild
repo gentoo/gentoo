@@ -24,6 +24,8 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="
 		https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/FreeCAD/FreeCAD/commit/d91b3e051789623f0bc1eff65947c361e7a661d0.patch -> ${PN}-20710.patch
+		https://github.com/FreeCAD/FreeCAD/commit/9ea0f32692e13eee85b1e74bd42514942d357906.patch -> ${PN}-21433.patch
 	"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
@@ -134,10 +136,10 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-Gentoo-specific-don-t-check-vcs.patch
-	"${FILESDIR}"/${PN}-9999-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
-	"${FILESDIR}/${PN}-1.0.0-r4-error-cannot-convert-bool-to-App-DocumentInitFlags.patch"
-	"${FILESDIR}/${PN}-1.0.2-pybind11-latent-slots-macro-conflicts-with-Qt.patch" # fixed in pybind-3.0.1
+	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
+	"${FILESDIR}"/${PN}-1.0.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
+	"${DISTDIR}/${PN}-21433.patch" # FindHDF5 fails to find HDF5 after a failing pkg_search_module
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
@@ -263,10 +265,6 @@ src_prepare() {
 	# The PCL point_traits.h header was renamed (and deprecated) since 1.11.0 and removed in 1.15.0.
 	# d9e731ca94abc14808ebeed208617116f6d5ea4a
 	sed -e 's#pcl/point_traits.h#pcl/type_traits.h#g' -i src/Mod/ReverseEngineering/App/SurfaceTriangulation.cpp || die
-
-	# band-aid fix for botched version check, needs to be revisited for VTK-10
-	sed -e 's/vtkVersion.GetVTKMajorVersion() > 9/vtkVersion.GetVTKMajorVersion() >= 9/g' \
-		-i src/Mod/Fem/femguiutils/data_extraction.py || die
 
 	cmake_src_prepare
 }

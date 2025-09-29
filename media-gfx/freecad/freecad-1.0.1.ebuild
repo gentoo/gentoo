@@ -137,7 +137,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
-	"${FILESDIR}"/${PN}-0.21.0-0001-Gentoo-specific-disable-ccache-usage.patch
 	"${FILESDIR}"/${PN}-1.0.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
 	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
 	"${DISTDIR}/${PN}-22221.patch" # vtk-9.5
@@ -284,6 +283,8 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
+		-DFREECAD_USE_CCACHE="no" # Do not use CCache
+
 		-DCMAKE_POLICY_DEFAULT_CMP0144="OLD" # FLANN_ROOT
 		-DCMAKE_POLICY_DEFAULT_CMP0167="OLD" # FindBoost
 		-DCMAKE_POLICY_DEFAULT_CMP0175="OLD" # add_custom_command
