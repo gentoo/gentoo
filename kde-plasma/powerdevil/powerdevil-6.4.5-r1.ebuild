@@ -58,6 +58,7 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/plasma-workspace-6.1.90:*
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	|| (
+		sys-apps/tuned[ppd]
 		sys-power/power-profiles-daemon
 		sys-power/tlp
 	)
