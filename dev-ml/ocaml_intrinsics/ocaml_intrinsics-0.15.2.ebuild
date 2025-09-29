@@ -17,7 +17,6 @@ IUSE="+ocamlopt"
 RESTRICT="test"
 
 DEPEND="
-	>=dev-lang/ocaml-4.08
 	dev-ml/dune-configurator:=
 "
 RDEPEND="${DEPEND}"
