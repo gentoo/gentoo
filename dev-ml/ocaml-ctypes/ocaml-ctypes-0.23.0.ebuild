@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,6 @@ IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.03:=
 	>=dev-libs/libffi-3.3_rc0:=
 	dev-ml/bigarray-compat:=
 	dev-ml/integers:=
