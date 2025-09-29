@@ -1,0 +1,47 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Based on: https://src.fedoraproject.org/rpms/alglib/blob/rawhide/f/CMakeLists.txt
+
+set(ALGLIB_VERSION "" CACHE STRING "Package version")
+set(ALGLIB_SOVERSION "" CACHE STRING "Shared library target ABI version")
+
+project(alglib
+    VERSION ${ALGLIB_VERSION}
+    LANGUAGES CXX
+)
+
+include(GNUInstallDirs)
+include(CTest)
+
+file(GLOB_RECURSE HDR RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*.h)
+file(GLOB_RECURSE SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*.cpp)
+
+add_library(alglib SHARED ${SRC})
+set_target_properties(alglib PROPERTIES
+    SOVERSION ${ALGLIB_SOVERSION}
+    VERSION ${PROJECT_VERSION}
+)
+target_include_directories(alglib PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+)
+
+install(TARGETS alglib)
+install(FILES ${HDR} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/alglib)
+
+if (BUILD_TESTING)
+    foreach(test IN ITEMS
+        test_c
+        test_i
+        # test_x
+    )
+        add_executable(${test} tests/${test}.cpp)
+        target_compile_definitions(${test} PRIVATE
+            AE_USE_ALLOC_COUNTER
+            AE_DEBUG4POSIX
+        )
+        target_link_libraries(${test} PRIVATE alglib)
+        add_test(NAME ${test}
+            COMMAND ${test}
+        )
+    endforeach()
+endif()
