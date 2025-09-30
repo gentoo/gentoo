@@ -14,7 +14,6 @@
 	</maintainer>
 	<use>
 		<flag name="mariadb">Add mariadb database support</flag>
-		<flag name="mmal">Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Motion-Project/motion</remote-id>
