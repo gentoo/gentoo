@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
+# No stable revdeps, destabilising package together with cleanup
+# of EAPI-7 based -r2. media-libs/aften-0.0.8-r3 is available
+# for ~amd64, ~ppc and ~x86.
+<media-libs/aften-0.0.8-r3
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-29)
 # Unmaintained in ::gentoo, EAPI-7 based, broken by CMake 4 and modern C++
 # Package in search of a dedicated maintainer.
