@@ -68,6 +68,7 @@ S=${WORKDIR}
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="-* amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc"
+IUSE="prefix"
 
 RDEPEND="
 	>=dev-libs/gmp-4.3.2:0/10.4
@@ -75,6 +76,9 @@ RDEPEND="
 	>=dev-libs/mpc-0.8.1:0/3
 	sys-libs/zlib
 	virtual/libiconv
+"
+BDEPEND="
+	prefix? ( dev-util/patchelf )
 "
 
 src_unpack() {
@@ -122,6 +126,17 @@ src_install() {
 	# This gives us the same layout as older dev-lang/ada-bootstrap
 	dosym -r /usr/lib/ada-bootstrap/bin /usr/lib/ada-bootstrap/usr/bin
 	dosym -r /usr/lib/ada-bootstrap/usr/libexec /usr/lib/ada-bootstrap/libexec
+
+	if use prefix ; then
+		local ret=0
+		local interpreter=$(patchelf --print-interpreter "${EPREFIX}"/bin/bash)
+		ebegin "Changing interpreter to ${interpreter} for Gentoo prefix at ${ED}/usr/lib/ada-bootstrap/usr/bin"
+		find "${ED}"/usr/lib/ada-bootstrap/usr/bin -type f -print0 | \
+			while IFS=  read -r -d '' filename; do
+				patchelf ${filename} --set-interpreter ${interpreter} \; || ret=1
+			done
+		eend ${ret} || die "patchelf invocation failed"
+	fi
 }
 
 # TODO: pkg_postinst warning/log?
