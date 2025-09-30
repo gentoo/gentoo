@@ -1,12 +1,12 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
 inherit autotools toolchain-funcs
 
-DESCRIPTION="A collection of tools that operate on patch files"
-HOMEPAGE="http://cyberelk.net/tim/patchutils/"
+DESCRIPTION="Collection of tools that operate on patch files"
+HOMEPAGE="https://cyberelk.net/tim/software/patchutils/"
 SRC_URI="https://github.com/twaugh/patchutils/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
