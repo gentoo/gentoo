@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <longdescription>
+    Emacs provides the binding conditionals if-let, if-let*, when-let,
+    when-let*, and-let* and while-let.
+  </longdescription>
+  <stabilize-allarches/>
+  <upstream>
+    <bugs-to>https://github.com/tarsius/cond-let/issues/</bugs-to>
+    <doc>https://github.com/tarsius/cond-let/wiki/</doc>
+    <remote-id type="github">tarsius/cond-let</remote-id>
+  </upstream>
+</pkgmetadata>
