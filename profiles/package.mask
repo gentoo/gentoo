@@ -37,6 +37,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
+# Unmaintained in ::gentoo, EAPI-7 based, a *lot* of ancient unsolved bugs
+# #576768, #594846, #601126, #724848, #770802, #770994, #832774, #925000,
+# #925001, #926243, #926244, #944452. Removal on 2025-10-29.
+media-libs/raspberrypi-userland
+media-libs/raspberrypi-userland-bin
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
 # EAPI-7 based, depends on dead media-libs/raspberrypi-userland, broken
 # by current available version anyway.
 # Several bugs #770802, #881797, #926326, #928521. Removal on 2025-10-29.
