@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mike-fabian/ibus-table-chinese/releases/download/${P
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND="app-i18n/ibus-table"
 DEPEND="${RDEPEND}"
