@@ -1,0 +1,66 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -86,7 +86,7 @@
+ else()
+   include(GNUInstallDirs)
+   set(FWB_INSTALL_DATADIR ${CMAKE_INSTALL_DATADIR}/fwbuilder-${PROJECT_VERSION})
+-  set(FWB_INSTALL_DOCDIR ${CMAKE_INSTALL_DATADIR}/doc/fwbuilder-${PROJECT_VERSION})
++  set(FWB_INSTALL_DOCDIR ${CMAKE_INSTALL_DOCDIR})
+   set(FWB_INSTALL_BINDIR ${CMAKE_INSTALL_BINDIR})
+ endif()
+ 
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -3,42 +3,22 @@
+ install(FILES
+         AUTHORS
+         ChangeLog
+-        COPYING
++        # COPYING
+         Credits
+-        FWBuilder-Routing-LICENSE.txt
++        # FWBuilder-Routing-LICENSE.txt
+         PatchAcceptancePolicy.txt
+ 	${readme_files}
+ 	DESTINATION ${FWB_INSTALL_DOCDIR})
+ 
+ if(UNIX AND NOT APPLE)
+-    FIND_PROGRAM(GZIP_TOOL
+-    	NAMES gzip
+-    	PATHS /bin
+-    	      /usr/bin
+-    	      /usr/local/bin)
+-    
+-    IF(NOT GZIP_TOOL)
+-        MESSAGE(FATAL_ERROR "Could not find gzip for man page compression.")
+-    endif(NOT GZIP_TOOL)
+-    
+-    add_custom_target(generate_man ALL
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwbedit.1 > ${CMAKE_BINARY_DIR}/fwbedit.1.gz
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwbuilder.1 > ${CMAKE_BINARY_DIR}/fwbuilder.1.gz
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwb_iosacl.1 > ${CMAKE_BINARY_DIR}/fwb_iosacl.1.gz
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwb_ipf.1 > ${CMAKE_BINARY_DIR}/fwb_ipf.1.gz
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwb_ipfw.1 > ${CMAKE_BINARY_DIR}/fwb_ipfw.1.gz
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwb_ipt.1 > ${CMAKE_BINARY_DIR}/fwb_ipt.1.gz
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwb_pf.1 > ${CMAKE_BINARY_DIR}/fwb_pf.1.gz
+-        COMMAND ${GZIP_TOOL} -c ${CMAKE_CURRENT_SOURCE_DIR}/fwb_pix.1 > ${CMAKE_BINARY_DIR}/fwb_pix.1.gz)
+-    
+-    install(FILES ${CMAKE_BINARY_DIR}/fwbedit.1.gz
+-            ${CMAKE_BINARY_DIR}/fwbuilder.1.gz
+-            ${CMAKE_BINARY_DIR}/fwb_iosacl.1.gz
+-            ${CMAKE_BINARY_DIR}/fwb_ipf.1.gz
+-            ${CMAKE_BINARY_DIR}/fwb_ipfw.1.gz
+-            ${CMAKE_BINARY_DIR}/fwb_ipt.1.gz
+-            ${CMAKE_BINARY_DIR}/fwb_pf.1.gz
+-            ${CMAKE_BINARY_DIR}/fwb_pix.1.gz
++    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/fwbedit.1
++            ${CMAKE_CURRENT_SOURCE_DIR}/fwbuilder.1
++            ${CMAKE_CURRENT_SOURCE_DIR}/fwb_iosacl.1
++            ${CMAKE_CURRENT_SOURCE_DIR}/fwb_ipf.1
++            ${CMAKE_CURRENT_SOURCE_DIR}/fwb_ipfw.1
++            ${CMAKE_CURRENT_SOURCE_DIR}/fwb_ipt.1
++            ${CMAKE_CURRENT_SOURCE_DIR}/fwb_pf.1
++            ${CMAKE_CURRENT_SOURCE_DIR}/fwb_pix.1
+             DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ endif(UNIX AND NOT APPLE)
+ 
