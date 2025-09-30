@@ -1,0 +1,64 @@
+[Unit]
+Description=An Ethereum execution client written in Go
+Documentation=https://geth.ethereum.org/
+
+# https://www.freedesktop.org/wiki/Software/systemd/NetworkTarget/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/geth --%i \
+						--datadir "${STATE_DIRECTORY}" \
+						--authrpc.jwtsecret "%d/jwt" \
+						--ipcpath "${RUNTIME_DIRECTORY}/geth.ipc"
+
+PermissionsStartOnly=true
+
+# Process management
+####################
+
+Type=exec
+
+Restart=on-failure
+TimeoutStartSec=infinity
+TimeoutStopSec=600
+
+# Directory creation and permissions
+####################################
+
+# Run as geth:geth
+User=geth
+Group=geth
+
+RuntimeDirectory=geth/%i
+RuntimeDirectoryMode=0710
+
+StateDirectory=geth/%i
+StateDirectoryMode=0710
+
+# Credentials
+#############
+
+LoadCredential=jwt:/etc/credstore/ethereum/%i/jwt.hex
+
+# Hardening measures
+####################
+
+PrivateUsers=self
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=strict
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+NoNewPrivileges=true
+PrivateDevices=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
