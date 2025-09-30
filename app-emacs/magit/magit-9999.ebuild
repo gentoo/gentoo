@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 S="${WORKDIR}/${P}/lisp"
@@ -25,15 +25,13 @@ S="${WORKDIR}/${P}/lisp"
 LICENSE="GPL-3+"
 SLOT="0"
 
-DOCS=( ../README.md ../docs/AUTHORS.md ../docs/RelNotes )
-ELISP_TEXINFO="../docs/*.texi"
-SITEFILE="50${PN}-gentoo.el"
-
 RDEPEND="
-	>=app-emacs/compat-30.0.0.0
-	>=app-emacs/dash-2.19.1
-	>=app-emacs/transient-0.7.7
-	>=app-emacs/with-editor-3.4.2
+	>=app-emacs/compat-30.1.0.0
+	app-emacs/cond-let
+	app-emacs/dash
+	app-emacs/llama
+	app-emacs/transient
+	app-emacs/with-editor
 "
 BDEPEND="
 	${RDEPEND}
@@ -42,6 +40,10 @@ BDEPEND="
 RDEPEND+="
 	>=dev-vcs/git-2.44.2
 "
+
+DOCS=( ../README.md ../docs/AUTHORS.md ../docs/RelNotes )
+ELISP_TEXINFO="../docs/*.texi"
+SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	default
