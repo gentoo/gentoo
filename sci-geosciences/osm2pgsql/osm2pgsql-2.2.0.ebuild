@@ -43,6 +43,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-cmake_lua_version.patch
+	"${FILESDIR}"/${P}-cmake-boost-warning.patch
 )
 
 src_configure() {
