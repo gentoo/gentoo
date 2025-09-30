@@ -37,6 +37,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
+# EAPI-7 based, depends on dead media-libs/raspberrypi-userland, broken
+# by current available version anyway.
+# Several bugs #770802, #881797, #926326, #928521. Removal on 2025-10-29.
+media-plugins/vdr-rpihddevice
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
 # Dead upstream, EAPI-7 based, no one else is left packaging this.
 # Bug #957218. Removal on 2025-10-29.
 net-firewall/itval
