@@ -1,0 +1,31 @@
+https://github.com/ImageMagick/ImageMagick/issues/8359
+https://github.com/ImageMagick/ImageMagick/commit/b7baa4e419c2316de4a7d01e4cf794992f74598f
+
+From b7baa4e419c2316de4a7d01e4cf794992f74598f Mon Sep 17 00:00:00 2001
+From: Dirk Lemstra <dirk@lemstra.org>
+Date: Mon, 22 Sep 2025 07:50:13 +0200
+Subject: [PATCH] Revert incorrect and add double typecast to silence a build
+ error (#8359).
+
+---
+ MagickCore/distort.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/MagickCore/distort.c b/MagickCore/distort.c
+index b01adb53f61..8697f661767 100644
+--- a/MagickCore/distort.c
++++ b/MagickCore/distort.c
+@@ -1966,8 +1966,10 @@ MagickExport Image *DistortImage(const Image *image, DistortMethod method,
+         geometry.width = (size_t) ceil((coeff[0]-coeff[1])*
+           (coeff[5]-coeff[4])*0.5);
+         /* correct scaling factors relative to new size */
+-        coeff[6]=(coeff[5]-coeff[4]) * (double) geometry.width; /* changed width */
+-        coeff[7]=(coeff[0]-coeff[1]) * (double) geometry.height; /* should be about 1.0 */
++        coeff[6]=(coeff[5]-coeff[4]) * MagickSafeReciprocal(
++          (double) geometry.width); /* changed width */
++        coeff[7]=(coeff[0]-coeff[1]) * MagickSafeReciprocal(
++          (double) geometry.height); /* should be about 1.0 */
+         break;
+       }
+       case Cylinder2PlaneDistortion:
+
