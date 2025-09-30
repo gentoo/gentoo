@@ -19,9 +19,10 @@ DEPEND="
 	${RDEPEND}
 	elibc_musl? ( >=sys-libs/error-standalone-2.0 )
 "
-
 BDEPEND="virtual/pkgconfig"
-RDEPEND="!<app-shells/bash-completion-2.16.0-r3"
+RDEPEND+="
+	!<app-shells/bash-completion-2.16.0-r3
+"
 
 src_prepare() {
 	default
