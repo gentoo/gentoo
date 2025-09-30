@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit eapi9-ver python-any-r1 systemd
