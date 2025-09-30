@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
+# Unmaintained in ::gentoo, EAPI-7 based, almost no one else is left
+# packaging this. Removal on 2025-10-29.
+sys-auth/pam_abl
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
 # No stable revdeps, destabilising package together with cleanup
 # of EAPI-7 based -r2. media-libs/aften-0.0.8-r3 is available
 # for ~amd64, ~ppc and ~x86.
