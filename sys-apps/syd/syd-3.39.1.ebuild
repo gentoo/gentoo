@@ -17,7 +17,7 @@ CRATES="
 	anstyle-parse@0.2.7
 	anstyle-query@1.1.4
 	anstyle-wincon@3.0.10
-	anstyle@1.0.11
+	anstyle@1.0.13
 	anyhow@1.0.100
 	arrayref@0.3.9
 	arrayvec@0.5.2
@@ -283,7 +283,7 @@ CRATES="
 	yaxpeax-arm@0.3.1
 	zerocopy-derive@0.8.27
 	zerocopy@0.8.27
-	zeroize@1.8.1
+	zeroize@1.8.2
 "
 
 inherit cargo
