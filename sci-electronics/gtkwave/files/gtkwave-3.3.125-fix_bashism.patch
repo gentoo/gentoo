@@ -1,0 +1,32 @@
+https://github.com/gtkwave/gtkwave/pull/455.patch
+remove bashism
+the dev branch uses meson
+--- a/configure
++++ b/configure
+@@ -7036,7 +7036,7 @@ $as_echo "$EXZ" >&6; }
+ 
+ LIBXZ_LDADD=
+ LIBXZ_CFLAGS=
+-if test "X$EXZ" == "Xyes"; then
++if test "X$EXZ" = "Xyes"; then
+ 	have_liblzma=no
+ 	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+@@ -7126,7 +7126,7 @@ fi
+ $as_echo "$FASTTREE" >&6; }
+ 
+ FASTTREE_CFLAGS=
+-if test "X$FASTTREE" == "Xno"; then
++if test "X$FASTTREE" = "Xno"; then
+ 	FASTTREE_CFLAGS='-DWAVE_DISABLE_FAST_TREE'
+ fi
+ 
+@@ -7153,7 +7153,7 @@ $as_echo "$EJUDY" >&6; }
+ 
+ LIBJUDY_LDADD=
+ LIBJUDY_CFLAGS=
+-if test "X$EJUDY" == "Xyes"; then
++if test "X$EJUDY" = "Xyes"; then
+ 	have_libjudy=no
+ 	cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */

@@ -1,0 +1,51 @@
+https://github.com/gtkwave/gtkwave/pull/455.patch
+fix c23, remove old-style definition
+the files have been removed in the dev branch
+--- a/contrib/rtlbrowse/definehash.c
++++ b/contrib/rtlbrowse/definehash.c
+@@ -46,9 +46,7 @@ inline
+ #endif
+ #endif
+ static unsigned int
+-hash (str, len)
+-     register const char *str;
+-     register unsigned int len;
++hash (register const char *str, register unsigned int len)
+ {
+   static const unsigned char asso_values[] =
+     {
+@@ -110,9 +108,7 @@ __attribute__ ((__gnu_inline__))
+ #endif
+ #endif
+ const char *
+-is_builtin_define (str, len)
+-     register const char *str;
+-     register unsigned int len;
++is_builtin_define (register const char *str, register unsigned int len)
+ {
+   static const char * const wordlist[] =
+     {
+--- a/src/vcd_keywords.c
++++ b/src/vcd_keywords.c
+@@ -58,9 +58,7 @@ inline
+ #endif
+ #endif
+ static unsigned int
+-keyword_hash (str, len)
+-     register const char *str;
+-     register unsigned int len;
++keyword_hash (register const char *str, register unsigned int len)
+ {
+   static const unsigned char asso_values[] =
+     {
+@@ -101,9 +99,7 @@ __attribute__ ((__gnu_inline__))
+ #endif
+ #endif
+ const struct vcd_keyword *
+-check_identifier (str, len)
+-     register const char *str;
+-     register unsigned int len;
++check_identifier (register const char *str, register unsigned int len)
+ {
+   static const struct vcd_keyword wordlist[] =
+     {
