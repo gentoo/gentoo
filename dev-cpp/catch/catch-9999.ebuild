@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake python-any-r1
+inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -32,7 +32,7 @@ pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DCATCH_DEVELOPMENT_BUILD=ON
 		-DCATCH_ENABLE_WERROR=OFF

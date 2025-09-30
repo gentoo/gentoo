@@ -3,36 +3,42 @@
 
 EAPI=8
 
-inherit cmake-multilib
+PYTHON_COMPAT=( python3_{10..14} )
+
+inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/catchorg/Catch2.git"
-	EGIT_BRANCH="Catch1.x"
 else
-	MY_P=${PN^}-${PV}
+	MY_P=${PN^}2-${PV}
 	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	S="${WORKDIR}/${MY_P}"
 
-	S="${WORKDIR}/${PN^}2-${PV}"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 DESCRIPTION="Modern C++ header-only framework for unit-tests"
 HOMEPAGE="https://github.com/catchorg/Catch2"
 
 LICENSE="Boost-1.0"
-SLOT="1"
+SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-multilib_src_configure() {
-	local mycmakeargs=(
-		-DNO_SELFTEST=$(usex !test)
-	)
-	cmake_src_configure
+BDEPEND="test? ( ${PYTHON_DEPS} )"
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
 }
 
-multilib_src_install() {
-	cmake_src_install
-	dodoc -r docs/.
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DCATCH_ENABLE_WERROR=OFF
+		-DBUILD_TESTING=$(usex test)
+	)
+	use test &&
+		mycmakeargs+=( -DPYTHON_EXECUTABLE="${PYTHON}" )
+
+	cmake_src_configure
 }
