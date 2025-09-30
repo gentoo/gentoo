@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ a/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # CMake project file by Prakash Punnoor
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ 
+ SET(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules")
+ Project(Aften C)
+@@ -76,7 +76,7 @@
+ 
+ 
+ IF(CMAKE_UNAME)
+-  EXEC_PROGRAM(uname ARGS -m OUTPUT_VARIABLE CMAKE_SYSTEM_MACHINE)
++  execute_process(COMMAND uname -m OUTPUT_VARIABLE CMAKE_SYSTEM_MACHINE)
+ ELSE(CMAKE_UNAME)
+   MESSAGE("Could not detect machine type")
+   IF(CMAKE_SYSTEM MATCHES "Windows")
