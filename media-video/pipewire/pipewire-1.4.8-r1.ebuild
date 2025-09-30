@@ -200,9 +200,9 @@ src_prepare() {
 	default
 
 	# Used for upstream backports
-	#if [[ ${PV} != *9999 && -d "${FILESDIR}"/${PV} ]] ; then
-	#	eapply "${FILESDIR}"/${PV}
-	#fi
+	if [[ ${PV} != *9999 && -d "${FILESDIR}"/${PV} ]] ; then
+		eapply "${FILESDIR}"/${PV}
+	fi
 }
 
 multilib_src_configure() {
