@@ -9,6 +9,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">kravietz/poppassd-ceti</remote-id>
+  </upstream>
   <longdescription>
     Provides a daemon for changing passwords over the network. This feature
     is commonly used for TCP loopback password changing from web scripting
