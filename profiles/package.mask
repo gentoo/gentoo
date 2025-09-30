@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
+# Dead upstream, EAPI-7 based, no one else is left packaging this.
+# Bug #957218. Removal on 2025-10-29.
+net-firewall/itval
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
 # Unmaintained in ::gentoo, EAPI-7 based, broken by CMake-4, boost-1.89
 # but most importantly Google according to upstream user reports.
 # Bugs #907861, #957553, #957554, #963466. Removal on 2025-10-29.
