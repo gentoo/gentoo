@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 CMAKE_IN_SOURCE_BUILD=1
 inherit cmake pam readme.gentoo-r1 systemd
@@ -14,6 +14,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Password change daemon with PAM support"
 HOMEPAGE="https://github.com/kravietz/poppassd-ceti"
 SRC_URI="https://github.com/kravietz/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -26,8 +27,6 @@ RESTRICT="test"
 RDEPEND="sys-libs/pam"
 DEPEND="${RDEPEND}
 	test? ( app-admin/sudo )"
-
-S="${WORKDIR}/${MY_P}"
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="poppassd is installed, but has to be run as root to work.
