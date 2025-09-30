@@ -421,6 +421,10 @@ multilib_src_install_all() {
 	fi
 }
 
+pkg_preinst() {
+	multilib_foreach_abi gnome2_pkg_preinst
+}
+
 pkg_postinst() {
 	multilib_foreach_abi gnome2_pkg_postinst
 }
