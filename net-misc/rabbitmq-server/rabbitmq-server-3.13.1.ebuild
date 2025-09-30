@@ -34,6 +34,9 @@ DEPEND="
 	dev-libs/libxslt
 	${PYTHON_DEPS}
 "
+BDEPEND="
+	sys-apps/which
+"
 
 pkg_setup() {
 	python-any-r1_pkg_setup
