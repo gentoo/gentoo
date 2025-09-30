@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	MY_P=${PN^}-${PV}
 	SRC_URI="https://github.com/catchorg/Catch2/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 	S="${WORKDIR}/${PN^}2-${PV}"
 fi
@@ -24,6 +24,10 @@ LICENSE="Boost-1.0"
 SLOT="1"
 IUSE="test"
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.12.2-glibc-2.34-sigstksz.patch
+)
 
 multilib_src_configure() {
 	local mycmakeargs=(
