@@ -1,0 +1,20 @@
+From 04db5de69c6f030b432f44fc2a17cd9a28f91e61 Mon Sep 17 00:00:00 2001
+From: baranyaib90 <5031516+baranyaib90@users.noreply.github.com>
+Date: Wed, 28 Jul 2021 20:18:56 +0200
+Subject: [PATCH] Warning fixes
+
+---
+ CMakeLists.txt     | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ad116df..a5c0a28 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -0,5 +0,5 @@
++cmake_minimum_required(VERSION 3.7)
+ project(HttpsDnsProxy)
+-cmake_minimum_required(VERSION 2.8)
+ 
+ set(CMAKE_BUILD_TYPE "Debug")
+ #set(CMAKE_BUILD_TYPE "Release")

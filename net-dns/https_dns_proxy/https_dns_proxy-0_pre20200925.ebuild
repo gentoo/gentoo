@@ -1,20 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+
 inherit cmake
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/aarond10/https_dns_proxy.git"
 	inherit git-r3
 else
-	MY_COMMIT="2d9285e2b94bce21c588c8160f8fac660806987a"
-	SRC_URI="https://github.com/aarond10/https_dns_proxy/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
+	COMMIT="2d9285e2b94bce21c588c8160f8fac660806987a"
+	SRC_URI="https://github.com/aarond10/https_dns_proxy/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-${MY_COMMIT}"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
-DESCRIPTION="A lightweight DNS-over-HTTPS proxy"
+DESCRIPTION="Lightweight DNS-over-HTTPS proxy"
 HOMEPAGE="https://github.com/aarond10/https_dns_proxy"
 
 LICENSE="MIT"
@@ -25,6 +26,8 @@ RDEPEND="
 	net-dns/c-ares
 	net-misc/curl[http2,ssl]"
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-cmake4.patch" ) # git master
 
 src_configure() {
 	local mycmakeargs=(
