@@ -1,0 +1,48 @@
+From 361dee19b0451c998ae8e0dd12fff310f6aeada6 Mon Sep 17 00:00:00 2001
+From: fujiwarat <takao.fujiwara1@gmail.com>
+Date: Fri, 18 Jul 2025 17:38:45 +0900
+Subject: [PATCH] Fix CMake files with CMake 4.0
+
+---
+ CMakeLists.txt        | 2 +-
+ cmake/GSettings.cmake | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4eea9179a..95d0e0c22 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required (VERSION 3.0)
++cmake_minimum_required (VERSION 3.5)
+ project (ibus-unikey)
+ 
+ cmake_policy(SET CMP0054 NEW)
+diff --git a/cmake/GSettings.cmake b/cmake/GSettings.cmake
+index 0da7650ea..c0b8d6b16 100644
+--- a/cmake/GSettings.cmake
++++ b/cmake/GSettings.cmake
+@@ -65,6 +65,7 @@ macro(add_schemas GSETTINGS_TARGET SCHEMA_DIRECTORY PREFIX)
+                 ${GSETTINGS_TARGET}
+             COMMAND 
+                 ${CMAKE_COMMAND} -E make_directory "${COMPILE_IN_PLACE_DIR}"
++            POST_BUILD
+         )
+         
+         # Copy all schemas to the build folder.
+@@ -75,6 +76,7 @@ macro(add_schemas GSETTINGS_TARGET SCHEMA_DIRECTORY PREFIX)
+                 COMMAND 
+                     ${CMAKE_COMMAND} -E copy "${schema_file}" "${COMPILE_IN_PLACE_DIR}"
+                 COMMENT "Copying schema ${schema_file} to ${COMPILE_IN_PLACE_DIR}"
++                POST_BUILD
+             )
+         endforeach()
+         
+@@ -85,6 +87,7 @@ macro(add_schemas GSETTINGS_TARGET SCHEMA_DIRECTORY PREFIX)
+             COMMAND
+                 ${glib_schema_compiler} ${COMPILE_IN_PLACE_DIR}
+             COMMENT "Compiling schemas in folder: ${COMPILE_IN_PLACE_DIR}"
++            POST_BUILD
+         )
+     endif ()
+         
