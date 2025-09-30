@@ -15,9 +15,6 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm64 ~ppc ppc64 x86"
 IUSE="+ocamlopt"
 
-RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
-DEPEND="${RDEPEND}"
-
 PATCHES=( "${FILESDIR}"/${P}-dune.patch )
 
 src_prepare() {
