@@ -5,16 +5,24 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit meson python-any-r1
+inherit meson python-any-r1 toolchain-funcs
 
+LAPACK_VER=3.12.1
 DESCRIPTION="BLAS/LAPACK wrappers for FlexiBLAS"
 HOMEPAGE="https://gitweb.gentoo.org/proj/blas-lapack-aux-wrapper.git/"
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
+SRC_URI="
+	https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz
+	test? (
+		https://github.com/Reference-LAPACK/lapack/archive/v${LAPACK_VER}.tar.gz
+			-> lapack-${LAPACK_VER}.tar.gz
+	)
+"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="index64"
+IUSE="index64 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!sci-libs/lapack[-flexiblas(-)]
@@ -37,6 +45,57 @@ src_configure() {
 	)
 
 	meson_src_configure
+}
+
+check_result() {
+	local f=${1}
+
+	if ! grep -q "flexiblas.*TRIGGER-WARNING" "${f}.out"; then
+		die "No FlexiBLAS output found in ${f}.out"
+	fi
+	if grep -q -i "FAIL" "${f}.out"; then
+		die "Test failed in ${f}.out"
+	fi
+}
+
+run_test() {
+	local f=${1}
+
+	einfo "Running ${f} ..."
+	"${f}" &> "${f}.out" || die "Running ${f} failed"
+	check_result "${f}"
+}
+
+src_test() {
+	# Force a nonexisting provider to:
+	# a. get indication that FlexiBLAS is actually used on stderr.
+	# b. force fallback to Netlib LAPACK.
+	local -x FLEXIBLAS=trigger-warning
+	tc-export CC FC AR RANLIB
+
+	cd "${WORKDIR}/lapack-${LAPACK_VER}" || die
+	cat > make.inc <<-EOF || die
+		FFLAGS_DRV   = \$(FFLAGS)
+		FFLAGS_NOOPT = \$(FFLAGS) -O0
+		ARFLAGS      = rv
+
+		BLASLIB      = ${BUILD_DIR}/libblas.so
+		CBLASLIB     = ${BUILD_DIR}/libcblas.so
+		LAPACKLIB    = ${BUILD_DIR}/liblapack.so
+		TMGLIB       = \$(TOPSRCDIR)/libtmglib.a
+		LAPACKELIB   = ${BUILD_DIR}/liblapacke.so
+	EOF
+
+	emake -C BLAS/TESTING xblat1d
+	emake -C CBLAS include/cblas_mangling.h
+	run_test BLAS/TESTING/xblat1d
+
+	emake -C CBLAS/testing xdcblat1
+	run_test CBLAS/testing/xdcblat1
+
+	emake -C TESTING/MATGEN
+	emake -C TESTING dbb.out
+	check_result TESTING/dbb
 }
 
 src_install() {
