@@ -53,6 +53,7 @@ src_test() {
 
 src_install() {
 	dobin bin/etcdctl
+	dobin bin/etcdutl
 	use doc && dodoc -r Documentation
 	if use server; then
 		insinto /etc/${PN}
