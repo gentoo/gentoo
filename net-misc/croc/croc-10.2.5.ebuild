@@ -1,18 +1,15 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Gitlab CI notice (vendor deps):
-# https://gitlab.com/api/v4/projects/74956900 points to:
-# https://gitlab.com/ZaPpPeL/croc-go-deps/-/packages
-
 EAPI=8
 
 inherit bash-completion-r1 go-module systemd
 
 DESCRIPTION="Easily and securely send things from one computer to another"
 HOMEPAGE="https://github.com/schollz/croc"
-SRC_URI="https://github.com/schollz/croc/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-https://gitlab.com/api/v4/projects/74956900/packages/generic/croc/${PV}/${P}-deps.tar.xz
+SRC_URI="
+	https://github.com/schollz/croc/releases/download/v${PV}/${PN}_v${PV}_src.tar.gz
+		-> ${P}.tar.gz
 "
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
@@ -25,6 +22,8 @@ RDEPEND="
 "
 
 DOCS=( README.md )
+
+S="${WORKDIR}/${PN}-v${PV}"
 
 src_prepare() {
 	default
@@ -39,13 +38,13 @@ src_compile() {
 	ego build
 }
 
+src_test() {
+	ego test -skip "Test(Comm|Send|PublicIP|LocalIP|LocalLookupIP|LookupFunction)" -work ./...
+}
+
 src_install() {
 	dobin croc
 	systemd_dounit croc.service
 	newbashcomp src/install/bash_autocomplete croc
 	einstalldocs
-}
-
-src_test() {
-	ego test -skip "Test(Comm|Send|PublicIP|LocalIP|LocalLookupIP|LookupFunction)" -work ./...
 }
