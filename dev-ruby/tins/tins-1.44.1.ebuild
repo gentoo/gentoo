@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/flori/tins"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="test"
 
 ruby_add_rdepend "
