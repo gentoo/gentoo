@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
+	</maintainer>
 	<use>
 		<flag name="dist-kernel-cap">Prevents upgrading to an unsupported kernel version when combined with USE=dist-kernel</flag>
 		<flag name="rootfs">Pull dependencies and check kernel options required for root-on-zfs</flag>
