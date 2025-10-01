@@ -1,5 +1,8 @@
 https://github.com/openzfs/zfs/commit/ebbfc6cb853d2d2f3f0671362d5ff5588be39e9d
 https://github.com/openzfs/zfs/issues/13595
+
+This patch is required because of the order in which we generate the initramfs
+after installing modules.
 --- b/contrib/dracut/90zfs/module-setup.sh.in
 +++ a/contrib/dracut/90zfs/module-setup.sh.in
 @@ -19,7 +19,7 @@
