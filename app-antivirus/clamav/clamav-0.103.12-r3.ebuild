@@ -57,6 +57,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.103.12-missing-const.patch"
 	"${FILESDIR}/${PN}-0.103.12-fix-lzma-uaf.patch"
 	"${FILESDIR}/${PN}-0.103.12-cve-2025-20260.patch"
+	"${FILESDIR}/${PN}-0.103.12-impersonate-user-agent.patch"
 )
 
 src_prepare() {
