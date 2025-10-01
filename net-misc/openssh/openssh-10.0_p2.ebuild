@@ -299,7 +299,7 @@ src_test() {
 	if [[ ${shell} == */nologin ]] || [[ ${shell} == */false ]] ; then
 		ewarn "Running the full OpenSSH testsuite requires a usable shell for the 'portage'"
 		ewarn "user, so we will run a subset only."
-		tests+=( interop-tests )
+		tests+=( interop-tests file-tests unit )
 	else
 		tests+=( tests )
 	fi
