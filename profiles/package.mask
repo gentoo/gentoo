@@ -217,13 +217,6 @@ app-vim/voom
 # Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
 media-sound/pulseaudio
 
-# Arthur Zamarin <arthurzam@gentoo.org> (2025-08-29)
-# EAPI=7, maintainer-needed, gentoo last distro to package it. If you
-# really need this tool, you can use 'openssl dgst -md4 -provider legacy'
-# instead.
-# Removal on 2025-09-28.  Bugs #962124, #729162.
-app-crypt/md4sum
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-08-28)
 # EAPI=7, fails to compile, unmaintained in gentoo since git transition,
 # library with no rev-deps.
