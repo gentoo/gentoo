@@ -53,8 +53,6 @@ IUSE="doc +fortran test-rust"
 COMMON_DEPEND="
 	>=dev-python/numpy-1.23.5:=[lapack,${PYTHON_USEDEP}]
 	>=media-libs/qhull-2020.2:=
-	sci-libs/arpack:=
-	sci-libs/umfpack
 	virtual/cblas
 	>=virtual/lapack-3.8
 "
