@@ -121,6 +121,7 @@ src_test() {
 		-Djna.nosys=true
 		-Djna.boot.library.path=build/native
 		-Djna.library.path=build/native
+		--enable-native-access=ALL-UNNAMED
 	)
 
 	JAVA_TEST_GENTOO_CLASSPATH="junit-4,reflections"
