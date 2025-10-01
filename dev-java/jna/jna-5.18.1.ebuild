@@ -4,11 +4,11 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
+JAVA_TESTING_FRAMEWORKS="junit-4"
 MAVEN_PROVIDES="
 	net.java.dev.jna:jna:${PV}
 	net.java.dev.jna:jna-platform:${PV}
 "
-JAVA_TESTING_FRAMEWORKS="junit-4"
 
 inherit java-pkg-2 java-pkg-simple toolchain-funcs
 
