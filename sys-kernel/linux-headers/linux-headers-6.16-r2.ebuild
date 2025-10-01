@@ -9,7 +9,7 @@ inherit kernel-2
 detect_version
 
 PATCH_PV=${PV} # to ease testing new versions against not existing patches
-PATCH_VER="1"
+PATCH_VER="3"
 PATCH_DEV="sam"
 SRC_URI="
 	${KERNEL_URI}
