@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
 LICENSE="BSD BSD-with-attribution"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 IUSE="freeipmi ipv6 kerberos pam ssl tcpd"
 
 DEPEND="
