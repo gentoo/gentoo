@@ -1,7 +1,7 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Gitlab CI notice (vendor crates):
+# Gitlab CI notice (vendor deps):
 # https://gitlab.com/api/v4/projects/74956900 points to:
 # https://gitlab.com/ZaPpPeL/croc-go-deps/-/packages
 
