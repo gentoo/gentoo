@@ -30,7 +30,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	sci-libs/lapack:=[flexiblas(-),index64?,lapacke]
+	sci-libs/lapack:=[flexiblas(-),index64(-)?,lapacke]
 "
 BDEPEND="
 	${PYTHON_DEPS}
