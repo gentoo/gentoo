@@ -1,16 +1,11 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# Maintainers should consider lurking in the ZFS IRC channels (there's several)
-# and regularly checking ZFS GitHub issues and PRs. Look out for the 'zfs-*'
-# stable backport PRs when they're opened and subscribe to them for any important
-# cherry-picks that may be needed in advance.
-
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit autotools bash-completion-r1 dist-kernel-utils distutils-r1 flag-o-matic linux-info pam systemd udev usr-ldscript
 
@@ -38,8 +33,8 @@ LICENSE="BSD-2 CDDL MIT"
 # just libzfs soname major for now.
 # possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
-SLOT="0/6"
-IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs selinux test-suite unwind"
+SLOT="0/5"
+IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +rootfs selinux test-suite"
 
 DEPEND="
 	dev-libs/openssl:=
@@ -52,7 +47,6 @@ DEPEND="
 	python? (
 		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 	)
-	unwind? ( sys-libs/libunwind:= )
 "
 
 BDEPEND="
@@ -111,6 +105,8 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}"/2.1.5-dracut-zfs-missing.patch
+	"${FILESDIR}"/2.2.2-no-USER_NS.patch
+	"${FILESDIR}"/2.2.3-musl.patch
 )
 
 pkg_pretend() {
@@ -226,7 +222,6 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pam)
 		$(use_enable python pyzfs)
-		$(use_with unwind libunwind)
 		--disable-static
 		$(usex minimal --without-python --with-python="${EPYTHON}")
 	)
@@ -295,7 +290,7 @@ pkg_postinst() {
 	fi
 
 	if systemd_is_booted || has_version sys-apps/systemd; then
-		einfo "Please refer to $(systemd_get_systempresetdir)/50-zfs.preset"
+		einfo "Please refer to ${EROOT}/$(systemd_get_systempresetdir)/50-zfs.preset"
 		einfo "for default zfs systemd service configuration"
 	else
 		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
