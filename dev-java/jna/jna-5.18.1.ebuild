@@ -54,11 +54,14 @@ src_prepare() {
 	java-pkg-2_src_prepare
 	java-pkg_clean
 
-	# https://github.com/java-native-access/jna/blob/5.13.0/build.xml#L402-L407
+	# build.xml lines 245-250
 	sed \
 		-e "/VERSION =/s:TEMPLATE:${PV}:" \
-		-e '/VERSION_NATIVE =/s:TEMPLATE:5.1.0:' \
+		-e "/VERSION_NATIVE =/s:TEMPLATE:${PV}:" \
 		-i src/com/sun/jna/Version.java || die
+	sed \
+		-e "s:^JNA_JNI_VERSION=.*$:JNA_JNI_VERSION=${PV}:" \
+		-i native/Makefile || die
 }
 
 src_compile() {
