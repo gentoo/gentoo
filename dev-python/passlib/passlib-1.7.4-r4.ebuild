@@ -28,12 +28,17 @@ BDEPEND="
 		)
 	)"
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {
-	# fix compatibility with >=dev-python/bcrypt-4.1
-	# https://foss.heptapod.net/python-libs/passlib/-/issues/190
-	sed -i -e '/bcrypt/s:__about__\.::' passlib/handlers/bcrypt.py || die
+	local PATCHES=(
+		# combined bcrypt compatibility fixes
+		# https://foss.heptapod.net/python-libs/passlib/-/issues/190
+		# https://foss.heptapod.net/python-libs/passlib/-/issues/196
+		"${FILESDIR}/${P}-bcrypt.patch"
+	)
 
 	distutils-r1_src_prepare
 }
@@ -42,6 +47,11 @@ python_test() {
 	local EPYTEST_DESELECT=(
 		# broken all the time by new django releases
 		passlib/tests/test_ext_django.py
+
+		# bcrypt now disallows implicit password truncation
+		passlib/tests/test_handlers_bcrypt.py::bcrypt_bcrypt_test::test_70_hashes
+		passlib/tests/test_handlers_bcrypt.py::bcrypt_bcrypt_test::test_secret_w_truncate_size
+		passlib/tests/test_handlers_django.py::django_bcrypt_test::test_secret_w_truncate_size
 	)
 
 	case ${EPYTHON} in
