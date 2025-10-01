@@ -17,6 +17,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-10-01)
+# dev-python/passlib is unmaintained upstream (last release in 2020),
+# and we keep having to patch breakage out.  Packages really need
+# to migrate out of it.
+dev-python/passlib
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-20)
 # Qt5 upstream OSS support ended on 2020-12-08. Public availability of
 # commercial 5.15 LTS releases is delayed by 1 year since then. The final
