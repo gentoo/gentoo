@@ -1,6 +1,10 @@
 # Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Gitlab CI notice (vendor crates):
+# https://gitlab.com/api/v4/projects/72067412 points to:
+# https://gitlab.com/ZaPpPeL/git-cliff-crates/-/packages
+
 EAPI=8
 
 RUST_MIN_VER="1.85.1"
