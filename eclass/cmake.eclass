@@ -10,7 +10,7 @@
 # Maciej Mrozowski <reavertm@gentoo.org>
 # (undisclosed contributors)
 # Original author: Zephyrus (zephyrus@mirach.it)
-# @SUPPORTED_EAPIS: 7 8
+# @SUPPORTED_EAPIS: 8
 # @PROVIDES: ninja-utils
 # @BLURB: common ebuild functions for cmake-based packages
 # @DESCRIPTION:
@@ -19,10 +19,6 @@
 # out-of-source builds (default) and in-source builds.
 
 case ${EAPI} in
-	7)
-		ewarn "${CATEGORY}/${PF}: ebuild uses ${ECLASS} with deprecated EAPI ${EAPI}!"
-		ewarn "${CATEGORY}/${PF}: Support will be removed on 2025-11-14. Please port to newer EAPI."
-		;;
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
@@ -38,16 +34,13 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # Build directory where all cmake processed files should be generated.
 # For in-source build it's fixed to ${CMAKE_USE_DIR}.
 # For out-of-source build it can be overridden, by default it uses
-# ${CMAKE_USE_DIR}_build (in EAPI-7: ${WORKDIR}/${P}_build).
-[[ ${EAPI} == 7 ]] && : "${BUILD_DIR:=${WORKDIR}/${P}_build}"
-# EAPI-8: set inside _cmake_check_build_dir
+# ${CMAKE_USE_DIR}_build (set inside _cmake_check_build_dir).
 
 # @ECLASS_VARIABLE: CMAKE_BINARY
 # @DESCRIPTION:
 # Eclass can use different cmake binary than the one provided in by system.
 : "${CMAKE_BINARY:=cmake}"
 
-[[ ${EAPI} == 7 ]] && : "${CMAKE_BUILD_TYPE:=Gentoo}"
 # @ECLASS_VARIABLE: CMAKE_BUILD_TYPE
 # @DESCRIPTION:
 # Set to override default CMAKE_BUILD_TYPE. Only useful for packages
@@ -57,8 +50,6 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # The default is RelWithDebInfo as that is least likely to append undesirable
 # flags. However, you may still need to sed CMake files or choose a different
 # build type to achieve desirable results.
-#
-# In EAPI 7, the default was non-standard build type of Gentoo.
 : "${CMAKE_BUILD_TYPE:=RelWithDebInfo}"
 
 # @ECLASS_VARIABLE: CMAKE_IN_SOURCE_BUILD
@@ -79,15 +70,13 @@ inherit flag-o-matic multiprocessing ninja-utils toolchain-funcs xdg-utils
 # @PRE_INHERIT
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Array of .cmake modules to be removed in ${CMAKE_USE_DIR} (in EAPI-7: ${S})
-# during src_prepare, in order to force packages to use the system version.
+# Array of .cmake modules to be removed in ${CMAKE_USE_DIR} during
+# src_prepare, in order to force packages to use the system version.
 # By default, contains "FindBLAS" and "FindLAPACK".
 # Set to empty to disable removing modules entirely.
 if [[ ${CMAKE_REMOVE_MODULES_LIST} ]]; then
-	if [[ ${EAPI} != 7 ]]; then
-		[[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* ]] ||
-			die "CMAKE_REMOVE_MODULES_LIST must be an array"
-	fi
+	[[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* ]] ||
+		die "CMAKE_REMOVE_MODULES_LIST must be an array"
 else
 	if ! [[ ${CMAKE_REMOVE_MODULES_LIST@a} == *a* && ${#CMAKE_REMOVE_MODULES_LIST[@]} -eq 0 ]]; then
 		CMAKE_REMOVE_MODULES_LIST=( FindBLAS FindLAPACK )
@@ -98,7 +87,7 @@ fi
 # @DESCRIPTION:
 # Sets the directory where we are working with cmake, for example when
 # application uses autotools and only one plugin needs to be done by cmake.
-# By default it uses current working directory (in EAPI-7: ${S}).
+# By default it uses current working directory.
 
 # @ECLASS_VARIABLE: CMAKE_VERBOSE
 # @USER_VARIABLE
@@ -167,9 +156,9 @@ _CMAKE_MINREQVER_CMAKE316=()
 # @USER_VARIABLE
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# After running cmake_src_prepare, sets ${CMAKE_USE_DIR} (in EAPI-7: ${S}) to
-# read-only. This is a user flag and should under _no circumstances_ be set in
-# the ebuild. Helps in improving QA of build systems that write to source tree.
+# After running cmake_src_prepare, sets ${CMAKE_USE_DIR} to read-only.
+# This is a user flag and should under _no circumstances_ be set in the
+# ebuild. Helps in improving QA of build systems that write to source tree.
 
 # @ECLASS_VARIABLE: CMAKE_SKIP_TESTS
 # @DEFAULT_UNSET
@@ -342,13 +331,8 @@ cmake-utils_useno() { _cmake_banned_func "" "$@" ; }
 # @DESCRIPTION:
 # Determine using IN or OUT source build
 _cmake_check_build_dir() {
-	if [[ ${EAPI} == 7 ]]; then
-		: "${CMAKE_USE_DIR:=${S}}"
-	else
-		# Since EAPI-8 we use current working directory, bug #704524
-		# esp. test with 'special' pkgs like: app-arch/brotli, net-libs/quiche
-		: "${CMAKE_USE_DIR:=${PWD}}"
-	fi
+	# Since EAPI-8 we use current working directory, bug #704524
+	: "${CMAKE_USE_DIR:=${PWD}}"
 	if [[ -n ${CMAKE_IN_SOURCE_BUILD} ]]; then
 		# we build in source dir
 		BUILD_DIR="${CMAKE_USE_DIR}"
@@ -560,14 +544,9 @@ _cmake_modify-cmakelists() {
 # @FUNCTION: cmake_prepare
 # @DESCRIPTION:
 # Check existence of and sanitise CMake files, then make ${CMAKE_USE_DIR}
-# read-only.  *MUST* be run or cmake_src_configure will fail.  EAPI-8 only.
+# read-only.  *MUST* be run or cmake_src_configure will fail.
 cmake_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	if [[ ${EAPI} == 7 ]]; then
-		eerror "${FUNCNAME} is EAPI-8 only. Call cmake_src_prepare instead."
-		die "FATAL: Forbidden function call."
-	fi
 
 	_cmake_check_build_dir
 
@@ -602,44 +581,12 @@ cmake_prepare() {
 # @DESCRIPTION:
 # Apply ebuild and user patches via default_src_prepare.  In case of
 # conflict with another eclass' src_prepare phase, use cmake_prepare
-# instead (EAPI-8 only).
-# In EAPI-7, this phase *must* be run or cmake_src_configure will fail.
+# instead.
 cmake_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ ${EAPI} == 7 ]]; then
-		pushd "${S}" > /dev/null || die # workaround from cmake-utils
-			default_src_prepare
-			_cmake_check_build_dir
-			# check if CMakeLists.txt exists and if not then die
-			if [[ ! -e ${CMAKE_USE_DIR}/CMakeLists.txt ]] ; then
-				eerror "Unable to locate CMakeLists.txt under:"
-				eerror "\"${CMAKE_USE_DIR}/CMakeLists.txt\""
-				eerror "Consider not inheriting the cmake eclass."
-				die "FATAL: Unable to find CMakeLists.txt"
-			fi
-			local modules_list
-			if [[ $(declare -p CMAKE_REMOVE_MODULES_LIST) != "declare -a"* ]]; then
-				modules_list=( ${CMAKE_REMOVE_MODULES_LIST} )
-			else
-				modules_list=( "${CMAKE_REMOVE_MODULES_LIST[@]}" )
-			fi
-			local name
-			for name in "${modules_list[@]}" ; do
-				find "${S}" -name "${name}.cmake" -exec rm -v {} + || die
-			done
-			_cmake_modify-cmakelists # Remove dangerous things.
-			_cmake_minreqver-info
-		popd > /dev/null || die
-		# Make ${S} read-only in order to detect broken build systems
-		if [[ ${CMAKE_QA_SRC_DIR_READONLY} && ! ${CMAKE_IN_SOURCE_BUILD} ]]; then
-			chmod -R a-w "${S}"
-		fi
-		_CMAKE_PREPARE_HAS_RUN=1
-	else
-		default_src_prepare
-		cmake_prepare
-	fi
+	default_src_prepare
+	cmake_prepare
 }
 
 # @VARIABLE: MYCMAKEARGS
@@ -666,11 +613,7 @@ cmake_src_configure() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	if [[ -z ${_CMAKE_PREPARE_HAS_RUN} ]]; then
-		if [[ ${EAPI} == 7 ]]; then
-			die "FATAL: cmake_src_prepare has not been run"
-		else
-			die "FATAL: cmake_src_prepare (or cmake_prepare) has not been run"
-		fi
+		die "FATAL: cmake_src_prepare (or cmake_prepare) has not been run"
 	fi
 
 	_cmake_check_build_dir
@@ -791,11 +734,6 @@ cmake_src_configure() {
 		echo 'set(CMAKE_COLOR_MAKEFILE OFF CACHE BOOL "pretty colors during make" FORCE)' >> "${common_config}" || die
 	fi
 
-	# See bug 735820
-	if [[ ${EAPI} != 7 ]]; then
-		echo 'set(CMAKE_INSTALL_ALWAYS 1)' >> "${common_config}" || die
-	fi
-
 	# Wipe the default optimization flags out of CMake
 	if [[ ${CMAKE_BUILD_TYPE} != Gentoo ]]; then
 		cat >> ${common_config} <<- _EOF_ || die
@@ -808,6 +746,7 @@ cmake_src_configure() {
 			set(CMAKE_MODULE_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			set(CMAKE_SHARED_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
 			set(CMAKE_STATIC_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+			set(CMAKE_INSTALL_ALWAYS 1) # see Gentoo-bug 735820
 		_EOF_
 	fi
 
@@ -977,15 +916,9 @@ cmake_src_install() {
 
 	DESTDIR="${D}" cmake_build "$@" install
 
-	if [[ ${EAPI} == 7 ]]; then
-		pushd "${S}" > /dev/null || die
+	pushd "${CMAKE_USE_DIR}" > /dev/null || die
 		einstalldocs
-		popd > /dev/null || die
-	else
-		pushd "${CMAKE_USE_DIR}" > /dev/null || die
-		einstalldocs
-		popd > /dev/null || die
-	fi
+	popd > /dev/null || die
 
 	local file files=()
 	while read -d '' -r file ; do
