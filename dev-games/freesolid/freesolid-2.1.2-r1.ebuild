@@ -1,7 +1,7 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -19,13 +19,17 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="app-arch/unzip"
 
 src_prepare() {
-	cmake_src_prepare
+	sed -e 's/ \(-ffast-math -msse\|-mfpmath=sse\)//' \
+		-e "/cmake_minimum_required/s/2\.8\.8/3\.10/" \
+		-i CMakeLists.txt || die
 
-	sed -i 's/ \(-ffast-math -msse\|-mfpmath=sse\)//' CMakeLists.txt || die
+	cmake_src_prepare
 }
 
 src_configure() {
-	local mycmakeargs=( -DBUILD_SHARED_LIBS=no )
+	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=no
+	)
 
 	cmake_src_configure
 }
