@@ -1,0 +1,116 @@
+From 0f573edc898fd00de3cf6e3271a6ea6cdd4ff8f8 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 30 Sep 2025 12:37:33 -0400
+Subject: [PATCH] Use __fpurge when fpurge is undeclared
+
+glibc neither declares nor defines fpurge(). Instead, it provides an
+equivalent function __fpurge() in stdio_ext.h.
+
+musl defines fpurge as an alias for __fpurge, but does not declare the
+former in stdio.h.
+
+Checking for the fpurge symbol breaks building on musl since the
+function is not declared in headers. Check for the declaration instead.
+
+Bug: https://bugs.gentoo.org/963567
+---
+ Src/utils.c      | 23 ++++++++++++++++-------
+ Src/zsh_system.h |  3 +++
+ configure.ac     |  6 +++++-
+ 3 files changed, 24 insertions(+), 8 deletions(-)
+
+diff --git a/Src/utils.c b/Src/utils.c
+index 4ea7b8e93..332d5db66 100644
+--- a/Src/utils.c
++++ b/Src/utils.c
+@@ -2011,6 +2011,17 @@ movefd(int fd)
+     return fd;
+ }
+ 
++static void
++invoke_fpurge(FILE *fp)
++{
++#if HAVE_DECL_FPURGE
++    fpurge(fp);
++#elif HAVE_DECL___FPURGE
++    /* glibc and musl do not declare fpurge, use __fpurge instead */
++    __fpurge(fp);
++#endif
++}
++
+ /*
+  * Move fd x to y.  If x == -1, fd y is closed.
+  * Returns y for success, -1 for failure.
+@@ -2022,7 +2033,6 @@ redup(int x, int y)
+ {
+     int ret = y;
+ 
+-#ifdef HAVE_FPURGE
+     /* Make sure buffers are cleared when changing descriptor for a
+      * FILE object.  No fflush() here because the only way anything
+      * can legitimately be left in the buffer is when an error has
+@@ -2030,18 +2040,17 @@ redup(int x, int y)
+      * and at worst squirt out something unexpected.
+      */
+     if (stdout && y == fileno(stdout))
+-	fpurge(stdout);
++	invoke_fpurge(stdout);
+     if (stderr && y == fileno(stderr))
+-	fpurge(stderr);
++	invoke_fpurge(stderr);
+     if (shout && y == fileno(shout))
+-	fpurge(shout);
++	invoke_fpurge(shout);
+     if (xtrerr && y == fileno(xtrerr))
+-	fpurge(xtrerr);
++	invoke_fpurge(xtrerr);
+ #ifndef _IONBF
+     /* See init.c setupshin() -- stdin otherwise unbuffered */
+     if (stdin && y == fileno(stdin))
+-	fpurge(stdin);
+-#endif
++	invoke_fpurge(stdin);
+ #endif
+ 
+     if(x < 0)
+diff --git a/Src/zsh_system.h b/Src/zsh_system.h
+index 21446a9b1..2b9e9deee 100644
+--- a/Src/zsh_system.h
++++ b/Src/zsh_system.h
+@@ -136,6 +136,9 @@ char *alloca (size_t);
+ #endif
+ 
+ #include <stdio.h>
++#ifdef HAVE_STDIO_EXT_H
++# include <stdio_ext.h>
++#endif
+ #include <ctype.h>
+ #include <sys/stat.h>
+ #include <signal.h>
+diff --git a/configure.ac b/configure.ac
+index 13895bb1d..8d9198a4d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1250,7 +1250,7 @@ AC_CHECK_FUNCS(strftime strptime mktime timelocal \
+ 	       select poll \
+ 	       readlink faccessx fchdir ftruncate \
+ 	       fstat lstat lchown fchown fchmod \
+-	       fpurge fseeko ftello \
++	       fseeko ftello \
+ 	       mkfifo _mktemp mkstemp \
+ 	       waitpid wait3 \
+ 	       sigqueue \
+@@ -1292,6 +1292,10 @@ AC_CHECK_FUNCS(strftime strptime mktime timelocal \
+ 	       setutxent getutxent endutxent getutent)
+ AC_FUNC_STRCOLL
+ 
++AC_CHECK_DECLS([fpurge])
++AC_CHECK_HEADERS([stdio_ext.h])
++AC_CHECK_DECLS([__fpurge], , , [#include <stdio_ext.h>])
++
+ # isinf() and isnan() can exist as either functions or macros.
+ AH_TEMPLATE([HAVE_ISINF],
+   [Define to 1 if you have the `isinf' macro or function.])
+-- 
+2.51.0
+
