@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="kernel-builtin">Disable dependency on <pkg>sys-fs/zfs-kmod</pkg> under the assumption that ZFS is part of the kernel source tree</flag>
 		<flag name="minimal">Don't install python scripts (arcstat, dbufstat etc) and avoid dependency on <pkg>dev-lang/python</pkg></flag>
