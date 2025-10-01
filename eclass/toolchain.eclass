@@ -2811,8 +2811,8 @@ toolchain_src_install() {
 	export QA_PRESTRIPPED="usr/lib*/go/*/*/*.gox"
 
 	# Disable RANDMMAP so PCH works, bug #301299
-	pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1"
-	pax-mark -r "${ED}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1plus"
+	pax-mark -r "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1"
+	pax-mark -r "${D}${PREFIX}/libexec/gcc/${CTARGET}/${GCC_CONFIG_VER}/cc1plus"
 
 	if [[ -n ${TOOLCHAIN_HAS_TESTS} ]] && use test ; then
 		mkdir "${T}"/test-results || die
