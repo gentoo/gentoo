@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-10-02)
+# Nothing depends on it.
+# Removal: 2025-11-01.  Bug #961199
+net-libs/NativeThread
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-10-07)
 # Masked for testing the new .0 version and leave time for packages
 # to catch up on support. Will likely be kept masked until 6.10.1
