@@ -6,7 +6,7 @@ EAPI=8
 WX_GTK_VER="3.2-gtk3"
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit mercurial python-single-r1 wxwidgets cmake xdg
+inherit mercurial python-single-r1 wxwidgets cmake xdg toolchain-funcs
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
@@ -58,8 +58,13 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( authors.txt README TODO )
 
+pkg_pretend() {
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
+}
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-openmp
 }
 
 src_prepare() {
