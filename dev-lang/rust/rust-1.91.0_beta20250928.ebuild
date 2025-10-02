@@ -10,7 +10,7 @@ RUST_PATCH_VER=${PVR}
 
 RUST_MAX_VER=${PV%%_*}
 if [[ ${PV} == *9999* ]]; then
-	RUST_MIN_VER="1.91.0" # Update this as new `beta` releases come out.
+	RUST_MIN_VER="1.88.0" # Update this as new `beta` releases come out.
 elif [[ ${PV} == *beta* ]]; then
 	RUST_MAX_VER="$(ver_cut 1).$(ver_cut 2).0"
 	RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
@@ -724,7 +724,7 @@ src_install() {
 
 	# bug #689562, #689160
 	rm -v "${ED}/usr/lib/${PN}/${SLOT}/etc/bash_completion.d/cargo" || die
-	rmdir -v "${ED}/usr/lib/${PN}/${SLOT}"/etc{/bash_completion.d,} || die
+	rmdir -v "${ED}/usr/lib/${PN}/${SLOT}"/etc/bash_completion.d || die
 
 	local symlinks=(
 		cargo
