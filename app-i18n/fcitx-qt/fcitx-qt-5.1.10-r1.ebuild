@@ -51,6 +51,8 @@ BDEPEND="
 	!onlyplugin? ( sys-devel/gettext )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-fix-cmake-for-qt6.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_QT4=no
