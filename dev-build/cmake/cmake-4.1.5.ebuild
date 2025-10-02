@@ -293,7 +293,6 @@ src_test() {
 	)
 
 	local myctestargs=(
-		--output-on-failure
 		# higher number breaks tests
 		-j1
 	)
