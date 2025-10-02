@@ -182,7 +182,9 @@ src_configure() {
 		$(meson_feature openexr)
 		$(meson_feature openmp)
 		$(meson_feature postscript ghostscript)
-		$(meson_feature test headless-tests)
+		# https://gitlab.gnome.org/GNOME/gimp/-/issues/14822
+		-Dheadless-tests=disabled
+		#$(meson_feature test headless-tests)
 		$(meson_feature udev gudev)
 		$(meson_feature vala)
 		$(meson_feature webp)
