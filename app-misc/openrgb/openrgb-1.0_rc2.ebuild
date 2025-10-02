@@ -12,7 +12,7 @@ else
 	MY_PV=$(ver_rs 2 "")
 	SRC_URI="https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_${MY_PV}/OpenRGB-release_candidate_${MY_PV}.tar.bz2"
 	S="${WORKDIR}/OpenRGB-release_candidate_${MY_PV}"
-	KEYWORDS="~amd64 ~loong ~x86"
+	KEYWORDS="amd64 ~loong ~x86"
 fi
 
 DESCRIPTION="Open source RGB lighting control"
