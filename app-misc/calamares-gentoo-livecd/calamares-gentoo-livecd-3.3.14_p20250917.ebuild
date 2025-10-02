@@ -1,11 +1,7 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI="8"
-
-MY_PN="calamares"
-MY_P="${MY_PN}-${PV}"
 
 inherit xdg
 
@@ -19,7 +15,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="app-admin/${MY_PN}[livecd(-)]"
+RDEPEND="
+	app-admin/calamares[livecd(-)]
+	app-admin/sudo
+"
 
 src_prepare() {
 	default
