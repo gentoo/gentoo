@@ -122,7 +122,7 @@ set_login_opt() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" suidperms=4711 install
+	emake DESTDIR="${D}" suidperms=4755 install
 
 	# 4.9 regression: https://github.com/shadow-maint/shadow/issues/389
 	emake DESTDIR="${D}" -C man install
