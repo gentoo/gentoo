@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 2016-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="uWSGI metrics exporter for prometheus.io"
+pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+user=${user:-${RC_SVCNAME}}
+group=${group:-${RC_SVCNAME}}
+output_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+error_log=/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log
+
+command="/usr/bin/uwsgi_exporter"
+command_args="${command_args:---web.listen-address=:9117 --stats.uri=http://localhost:1717}"
+command_background="true"
+
+depend() {
+	after net
+}
