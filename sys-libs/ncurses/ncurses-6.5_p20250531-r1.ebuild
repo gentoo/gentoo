@@ -351,7 +351,7 @@ do_configure() {
 	# See comments in src_configure.
 	if [[ ${target} != "cross" ]] ; then
 		local cross_path="${WORKDIR}/cross"
-		[[ -d ${cross_path} ]] && export TIC_PATH="${cross_path}/progs/tic"
+		[[ -d ${cross_path} ]] && export TIC="${cross_path}/progs/tic"
 	fi
 
 	ECONF_SOURCE="${S}" econf "${conf[@]}" "$@"
