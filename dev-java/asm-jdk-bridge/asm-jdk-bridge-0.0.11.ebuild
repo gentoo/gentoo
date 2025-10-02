@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="codes.rafael.asmjdkbridge:asm-jdk-bridge:${PV}"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="codes.rafael.asmjdkbridge:asm-jdk-bridge:${PV}"
 
 inherit java-pkg-2 java-pkg-simple
 
