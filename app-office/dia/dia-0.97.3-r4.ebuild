@@ -4,7 +4,7 @@
 EAPI=8
 
 GNOME2_EAUTORECONF="yes"
-inherit gnome2
+inherit flag-o-matic gnome2 toolchain-funcs
 
 DESCRIPTION="Diagram/flowchart creation program"
 HOMEPAGE="https://wiki.gnome.org/Apps/Dia"
@@ -42,7 +42,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.97.0-gnome-doc.patch #159381 , upstream #470812 #558690
 	"${FILESDIR}"/${PN}-0.97.2-underlinking.patch #420685, upstream #678761
-	"${FILESDIR}"/${PN}-0.97.3-freetype_pkgconfig.patch #654814, upstream https://gitlab.gnome.org/GNOME/dia/merge_requests/1
+	"${FILESDIR}"/${PN}-0.97.3-freetype_pkgconfig.patch #654814, upstream PR 1
 	"${FILESDIR}"/${PN}-0.97.3-slibtool.patch
 	"${FILESDIR}"/${PN}-0.97.3-configure-clang16.patch
 	"${FILESDIR}"/${PN}-0.97.3-c99.patch
@@ -67,6 +67,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -std=gnu17 # bugs 943791 948501
+	tc-export PKG_CONFIG
 	# --exec-prefix makes Python look for modules in the Prefix
 	# --enable-gnome only adds support for deprecated stuff, bug #442294
 	# https://bugzilla.redhat.com/show_bug.cgi?id=996759
