@@ -14,7 +14,7 @@ S="${WORKDIR}/OpenRGBSkinPlugin-release_candidate_${MY_PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=app-misc/openrgb-0.9_p20250802:=
