@@ -5,9 +5,6 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System Project</name>
 	</maintainer>
-	<use>
-		<flag name="minimal">Disable library, install command-line program only</flag>
-	</use>
 	<upstream>
 		<changelog>https://invisible-island.net/dialog/CHANGES.html</changelog>
 		<remote-id type="github">ThomasDickey/dialog-snapshots</remote-id>
