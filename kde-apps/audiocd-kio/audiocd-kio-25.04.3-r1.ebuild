@@ -5,15 +5,15 @@ EAPI=8
 
 ECM_HANDBOOK="optional"
 PVCUT=$(ver_cut 1-3)
-KFMIN=6.16.0
-QTMIN=6.9.1
+KFMIN=6.13.0
+QTMIN=6.7.2
 inherit ecm gear.kde.org
 
 DESCRIPTION="KIO worker for accessing audio CDs"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="flac vorbis"
 
 DEPEND="
@@ -37,7 +37,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-19.04.0-handbook.patch" )
+PATCHES=( "${FILESDIR}/${PN}-25.08.1-handbook.patch" )
 
 src_configure() {
 	local mycmakeargs=(
