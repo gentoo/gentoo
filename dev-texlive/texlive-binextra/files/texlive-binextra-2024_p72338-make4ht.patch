@@ -1,0 +1,49 @@
+Fix invalid html in longtable captions
+https://puszcza.gnu.org.ua/bugs/?315
+https://bugs.gentoo.org/963668
+
+commit 771081cac0d63632e67730e530eb8937271a68d9
+Author: Michal Hoftich <michal.h21@gmail.com>
+Date:   Wed Oct 1 14:56:02 2025 +0200
+
+    added tablecaption dom filter
+
+--- /dev/null
++++ b/texmf-dist/scripts/make4ht/domfilters/make4ht-tablecaption.lua
+@@ -0,0 +1,25 @@
++local function get_parent_table(caption)
++  -- recursively find the parent table of a caption element, as it can be inside <tr> and <td>
++  local parent = caption:get_parent()
++  if parent and parent:get_element_name() == "table" then
++    return parent
++  elseif parent then
++    return get_parent_table(parent)
++  else
++    return nil
++  end
++end
++
++return function(dom)
++  -- the caption element must be a first element in table, it cannot be contained inside tr
++  for _, caption in ipairs(dom:query_selector("table caption")) do
++    local table = get_parent_table(caption)
++    if table then
++      -- insert caption as the first child of table
++      table:add_child_node(caption:copy_node(),1)
++      -- remove the original caption
++      caption:remove_node()
++    end
++  end
++  return dom
++end
+--- a/texmf-dist/scripts/make4ht/extensions/make4ht-ext-common_domfilters.lua
++++ b/texmf-dist/scripts/make4ht/extensions/make4ht-ext-common_domfilters.lua
+@@ -26,7 +26,7 @@ function M.modify_build(make)
+     make:match("4om$", process, {charclasses= charclasses})
+     count = 2
+   else
+-    local process = filter({"fixinlines", "idcolons", "joincharacters", "mathmlfixes", "tablerows","booktabs", "sectionid", "itemparagraphs"}, "commondomfilters")
++    local process = filter({"fixinlines", "idcolons", "joincharacters", "tablecaption", "mathmlfixes", "tablerows","booktabs", "sectionid", "itemparagraphs"}, "commondomfilters")
+     make:match("html?$", process)
+     count = 1
+   end
