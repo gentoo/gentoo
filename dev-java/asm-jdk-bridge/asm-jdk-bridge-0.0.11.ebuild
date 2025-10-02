@@ -16,9 +16,7 @@ S="${WORKDIR}/${PN}-${PN}-parent-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-
-# Not keyworded because java 25 isn't.
-# KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 
 CP_DEPEND="
 	>=dev-java/asm-9.8:0
@@ -32,7 +30,7 @@ DEPEND="
 
 RDEPEND="
 	${CP_DEPEND}
-	>=virtual/jre-24:*
+	>=virtual/jre-17:*
 "
 
 JAVA_INTERMEDIATE_JAR_NAME="codes.rafael.asmjdkbridge"
