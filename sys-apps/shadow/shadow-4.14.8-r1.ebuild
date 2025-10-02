@@ -7,7 +7,7 @@ EAPI=8
 # official. Don't keyword the pre-releases!
 # Check https://github.com/shadow-maint/shadow/releases.
 
-inherit libtool pam verify-sig
+inherit libtool pam user-info verify-sig
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow"
@@ -46,10 +46,12 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
+	acct-group/shadow
 	pam? ( >=sys-auth/pambase-20150213 )
 	su? ( !sys-apps/util-linux[su(-)] )
 "
 BDEPEND="
+	acct-group/shadow
 	app-arch/xz-utils
 	sys-devel/gettext
 "
@@ -123,6 +125,9 @@ set_login_opt() {
 
 src_install() {
 	emake DESTDIR="${D}" suidperms=4755 install
+
+	fowners :shadow /usr/bin/{chage,expiry}
+	fperms u-s,g+s /usr/bin/{chage,expiry}
 
 	# 4.9 regression: https://github.com/shadow-maint/shadow/issues/389
 	emake DESTDIR="${D}" -C man install
@@ -252,10 +257,25 @@ pkg_postinst() {
 		ewarn "Running 'pwck' returned errors. Please run it manually to fix any errors."
 	fi
 
+	local gid=$(egetent group shadow | cut -d: -f3)
+
+	if [[ -n ${ROOT} ]]; then
+		# Portage does not currently update the gid on installed files
+		# based on ${EROOT}/etc/group.
+		if [[ -n ${gid} ]]; then
+			chgrp "${gid}" "${EROOT}"/usr/bin/{chage,expiry} &&
+			chmod g+s "${EROOT}"/usr/bin/{chage,expiry}
+		fi  
+	fi
+
 	# Enable shadow groups.
 	if [[ ! -f "${EROOT}"/etc/gshadow ]] ; then
 		if grpck -r -R "${EROOT:-/}" 2>/dev/null ; then
 			grpconv -R "${EROOT:-/}"
+			if [[ -n ${gid} ]]; then
+				chgrp "${gid}" "${EROOT}"/etc/gshadow &&
+				chmod g+r "${EROOT}"/etc/gshadow
+			fi
 		else
 			ewarn "Running 'grpck' returned errors. Please run it by hand, and then"
 			ewarn "run 'grpconv' afterwards!"
