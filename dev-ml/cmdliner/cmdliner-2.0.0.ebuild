@@ -34,8 +34,8 @@ src_install() {
 	# Can't use opam-installer here as it is an opam dep...
 	findlib_src_preinst
 	local nativelibs=""
-	use ocamlopt && nativelibs="$(echo _build/cmdliner.cm{x,xa,xs} _build/cmdliner.a)"
+	use ocamlopt && nativelibs="$(echo _build/src/cmdliner.cm{x,xa,xs} _build/src/cmdliner.a)"
 	ocamlfind install cmdliner pkg/META \
-		_build/cmdliner.mli _build/cmdliner.cm{a,i} ${nativelibs} || die
+		_build/src/cmdliner.mli _build/src/cmdliner.cm{a,i} ${nativelibs} || die
 	dodoc README.md CHANGES.md
 }
