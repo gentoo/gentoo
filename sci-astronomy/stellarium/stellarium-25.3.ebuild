@@ -112,7 +112,6 @@ src_configure() {
 	filter-lto # https://bugs.gentoo.org/862249
 
 	local mycmakeargs=(
-		-DCCACHE_PROGRAM=no
 		-DCPM_LOCAL_PACKAGES_ONLY=yes
 		-DUSE_BUNDLED_QTCOMPRESS=no
 		-DENABLE_CCACHE=no
