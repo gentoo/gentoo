@@ -36,9 +36,9 @@ src_install() {
 	S="${WORKDIR}/vdr-plugin-markad-${PV}/plugin"
 	vdr-plugin-2_src_install
 
-	cd "${S}/.."
-	emake install DESTDIR="${D}" || die "emake install failed"
+	cd "${S}/.." || die
+	emake install DESTDIR="${D}"
 
-	cd "${WORKDIR}/${VDRPLUGIN}-${PV}"
+	cd "${WORKDIR}/${VDRPLUGIN}-${PV}" || die
 	dodoc README HISTORY
 }
