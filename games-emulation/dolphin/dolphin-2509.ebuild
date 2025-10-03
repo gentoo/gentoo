@@ -71,7 +71,6 @@ RDEPEND="
 	>=sys-libs/minizip-ng-4.0.4:=
 	dev-libs/hidapi
 	>=dev-libs/libfmt-10.1:=
-	>=dev-util/glslang-1.4.321.0:=
 	dev-libs/lzo:2
 	dev-libs/pugixml
 	dev-libs/xxhash
@@ -128,6 +127,7 @@ declare -A KEEP_BUNDLED=(
 	[cpp-optparse]=MIT
 	[imgui]=MIT
 	[implot]=MIT
+	[glslang]=BSD
 
 	[tinygltf]=MIT
 
@@ -224,7 +224,6 @@ src_configure() {
 
 		# Use system libraries
 		-DUSE_SYSTEM_FMT=ON
-		-DUSE_SYSTEM_GLSLANG=ON
 		-DUSE_SYSTEM_PUGIXML=ON
 		-DUSE_SYSTEM_ENET=ON
 		-DUSE_SYSTEM_XXHASH=ON

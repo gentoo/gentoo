@@ -1,0 +1,29 @@
+From 200fd2e83f82e2726e5dc447490b788f8177cbd6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joshua=20Vanda=C3=ABle?= <joshua@vandaele.software>
+Date: Fri, 3 Oct 2025 14:43:47 +0200
+Subject: [PATCH] Retro Achievements Test
+
+---
+ Source/UnitTests/Core/PatchAllowlistTest.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Source/UnitTests/Core/PatchAllowlistTest.cpp b/Source/UnitTests/Core/PatchAllowlistTest.cpp
+index c2b6be61e6..4d91514689 100644
+--- a/Source/UnitTests/Core/PatchAllowlistTest.cpp
++++ b/Source/UnitTests/Core/PatchAllowlistTest.cpp
+@@ -1,6 +1,7 @@
+ // Copyright 2024 Dolphin Emulator Project
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
++#ifdef USE_RETRO_ACHIEVEMENTS
+ #include <array>
+ #include <map>
+ #include <string>
+@@ -191,3 +192,4 @@ void ReadVerified(const Common::IniFile& ini, const std::string& filename,
+     }
+   }
+ }
++#endif  // USE_RETRO_ACHIEVEMENTS
+-- 
+2.49.1
+
