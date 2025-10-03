@@ -20,7 +20,7 @@ else
 	SRC_URI="https://www.swi-prolog.org/download/devel/src/${REAL_P}.tar.gz"
 	S="${WORKDIR}/${REAL_P}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="BSD-2"
