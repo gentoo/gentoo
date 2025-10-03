@@ -52,7 +52,7 @@ src_test() {
 
 python_test() {
 	cd "${T}" || die
-	GIT_CONFIG_NOSYSTEM=true LC_ALL="C.utf8" \
+	GIT_CONFIG_NOSYSTEM=true LC_ALL="C.UTF-8" \
 	epytest "${S}"/test
 }
 
