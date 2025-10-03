@@ -276,6 +276,8 @@ src_prepare_perlcross() {
 
 	# bug 794463, needs further analysis what is exactly wrong here
 	eapply "${FILESDIR}/perl-5.34.0-crossfit.patch"
+	# bug 959686, rebase via upstream PR (no 5.42.0 release)
+	eapply "${FILESDIR}/perl-5.42.0-cross-rebase.patch"
 
 	# bug 604072
 	MAKEOPTS+=" -j1"
