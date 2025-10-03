@@ -1,0 +1,41 @@
+This package is intended to be compiled with gcc. However, if we tune the check in the 
+configure script a bit we can get away with compiling it with clang.
+
+The configure script of biew-6.1.0 fails with
+    Checking for C compiler name ... gcc-Version
+if using the de_DE.UTF-8 locale and sys-devel/gcc-4.5.2. It may fail with other
+locales and/or compilers, too. The problem occurs due to the fact that the
+string “gcc version” written by gcc for ‘gcc -v’ is translated according to the
+language (German in the case mentioned above).
+
+This patch makes sure that the POSIX locale is used when the biew configure
+script checks for the name of the compiler. This allows the configure script to
+parse the output properly.
+
+ -nico
+
+Bug: https://bugs.gentoo.org/730688
+
+Signed-off-by: Pascal Jäger <pascal.jaeger@leimstift.de>
+
+--- a/configure
++++ b/configure
+@@ -497,7 +497,8 @@ echo "Detected host..."$system_name
+
+ _cdefos="-DDATADIR='\"$_datadir\"'"
+
+-cc_name=`$_cc -v 2>&1 | tail -n 1 | cut -d ' ' -f 1`
++cc_name=`LC_ALL=POSIX $_cc -v 2>&1 | tail -n 1 | cut -d ' ' -f 1`
++if ! [ $cc_name = "gcc" ]; then cc_name=$_cc; fi
+ cc_version=`$_cc -dumpversion`
+
+ echocheck "C compiler name"
+@@ -505,6 +506,8 @@ echores $cc_name
+ case $cc_name in
+     gcc)
+     ;;
++    clang)
++    ;;
+     *)
+       die "Unknown compiler name $cc_name. Project required GCC"
+     ;;
