@@ -32,9 +32,9 @@ KEYWORDS="amd64 arm64 ppc64"
 SLOT="0"
 
 CP_DEPEND="
-	>=dev-java/ant-1.10.14-r3:0
+	>=dev-java/ant-1.10.15:0
 	dev-java/bsh:0
-	dev-java/guice:4
+	dev-java/guice:0
 	dev-java/jcommander:1.64
 	dev-java/junit:4
 	dev-java/snakeyaml:0
@@ -43,8 +43,9 @@ CP_DEPEND="
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-1.8:*
 	test? (
-		dev-java/assertj-core:3
+		dev-java/assertj-core:0
 		dev-java/guava:0
+		dev-java/javax-inject:0
 	)"
 
 RDEPEND="${CP_DEPEND}
@@ -57,7 +58,7 @@ DOCS=( README {ANNOUNCEMENT,CHANGES}.txt )
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR="src/main/java"
 
-JAVA_TEST_GENTOO_CLASSPATH="assertj-core-3"
+JAVA_TEST_GENTOO_CLASSPATH="assertj-core javax-inject"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_RUN_ONLY="src/test/resources/testng.xml"
 JAVA_TEST_SRC_DIR="src/test/java"
