@@ -114,7 +114,6 @@ src_configure() {
 		#  - Disable documentation as the generating is bit automagic
 		#    if anyone wants to work on it just create bug with patch
 		-Ddocs=false
-		-Dexiv2=disabled
 		-Dgdk-pixbuf=enabled
 		-Djasper=disabled
 		#  - libspiro: not in portage main tree
