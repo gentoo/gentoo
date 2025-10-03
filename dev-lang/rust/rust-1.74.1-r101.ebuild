@@ -237,7 +237,10 @@ pkg_setup() {
 
 		if use mrustc-bootstrap; then
 			if ! tc-is-gcc; then
-				die "USE=mrustc-bootstrap reqires that the build environment use GCC"
+				# USE="mrustc-bootstrap" reqires that the build environment use GCC
+				export CC=${CHOST}-gcc
+				export CXX=${CHOST}-g++
+				tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
 			fi
 		else
 			rust_pkg_setup
@@ -460,9 +463,15 @@ src_configure() {
 			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
 		_EOF_
 		if use system-llvm; then
-			cat <<- _EOF_ >> "${S}"/config.toml
-				llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
-			_EOF_
+			if use mrustc-bootstrap; then
+				cat <<- _EOF_ >> "${S}"/config.toml
+					llvm-config = "${WORKDIR}/llvm-config"
+				_EOF_
+			else
+				cat <<- _EOF_ >> "${S}"/config.toml
+					llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
+				_EOF_
+			fi
 		fi
 		# by default librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
 		# but we patch it and set to false here as well
@@ -654,6 +663,14 @@ mrustc_bootstrap() {
 		llvm_bootstrap
 		export LLVM_CONFIG="${WORKDIR}/bootstrap/llvm/bin/llvm-config"
 	fi
+
+	cat > ${WORKDIR}/llvm-config <<-EOF || die
+	#!/bin/bash
+
+	${LLVM_CONFIG} "\${@}" | sed 's:-std=c++:-I${EPREFIX}/usr/include/c++/v1 -std=c++:g'
+	EOF
+	chmod +x ${WORKDIR}/llvm-config || die
+	export LLVM_CONFIG="${WORKDIR}/llvm-config"
 
 	# define the mrustc sysroot and common minicargo arguments.
 	local mrustc_sysroot="${BROOT}/usr/lib/rust/mrustc-${MRUSTC_VERSION}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"
