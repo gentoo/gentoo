@@ -13,6 +13,9 @@
     possible to add support for new shapes by writing simple XML
     files, using a subset of SVG to draw the shape.
   </longdescription>
+  <use>
+    <flag name="xslt">Enable the plugin for xslt</flag>
+  </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/dia</remote-id>
   </upstream>

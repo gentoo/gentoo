@@ -1,0 +1,76 @@
+make the plugins w/ deps conditional
+--- a/meson.build
++++ b/meson.build
+@@ -47,14 +47,14 @@ if xsltproc.found()
+ endif
+ 
+ # Optional deps
+-libpoppler_dep = dependency('poppler', version: '> 21.03.0', required: false)
+-libpopplercpp_dep = dependency('poppler-cpp', required: false)
++libpoppler_dep = dependency('poppler', version: '> 21.03.0', required: get_option('pdf'))
++libpopplercpp_dep = dependency('poppler-cpp', required: get_option('pdf'))
+ conf.set('HAVE_POPPLER', libpoppler_dep.found() and libpopplercpp_dep.found())
+-libemf_dep = cc.find_library('EMF', required: false)
++libemf_dep = cc.find_library('EMF', required: get_option('wmf'))
+ conf.set('HAVE_LIBEMF', libemf_dep.found())
+ libogdf_dep = cc.find_library('ogdf', required: false)
+ conf.set('HAVE_OGDF', libogdf_dep.found())
+-libxslt_dep = dependency('libxslt', required: false)
++libxslt_dep = dependency('libxslt', required: get_option('xslt'))
+ conf.set('HAVE_XSLT', libxslt_dep.found())
+ # TODO: Why does Win32 break without this
+ conf.set('ENABLE_NLS', true)
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,6 +4,18 @@ option('gtk_doc',
+ option('doc',
+        type: 'feature', deprecated: {'true': 'enabled', 'false': 'disabled'},
+        description: 'Whether to generate the doc')
++option('pdf',
++       type: 'boolean', value: true,
++       description: 'Whether to compile with pdf plugin')
++option('python',
++       type: 'boolean', value: true,
++       description: 'Whether to compile with python plugin')
+ option('tests',
+        type: 'boolean', value: true,
+        description: 'Whether to compile unit tests')
++option('wmf',
++       type: 'boolean', value: true,
++       description: 'Whether to compile with wmf plugin')
++option('xslt',
++       type: 'boolean', value: true,
++       description: 'Whether to compile with xslt plugin')
+--- a/plug-ins/meson.build
++++ b/plug-ins/meson.build
+@@ -17,20 +17,26 @@ subdir('shape')
+ subdir('pixbuf')
+ subdir('layout')  # Non-standard: shared_module
+ subdir('metapost')
+-subdir('pdf')
++if get_option('pdf')
++  subdir('pdf')
++endif
+ subdir('pgf')
+ subdir('pstricks')
+-subdir('python')  # Non-standard: shared_module
++if get_option('python')
++  subdir('python')  # Non-standard: shared_module
++endif
+ subdir('stress')
+ subdir('svg')
+ subdir('vdx')
+ # TODO: Port to Windows.
+-if host_machine.system() != 'windows'
++if host_machine.system() != 'windows' and get_option('wmf')
+   subdir('wmf')  # Non-standard: Only installs if libemf present.
+ endif
+ subdir('wpg')
+ subdir('xfig')
+-subdir('xslt')
++if get_option('xslt')
++  subdir('xslt')
++endif
+ 
+ foreach p : install_plugins_desc
+     message(p.get('name'))
