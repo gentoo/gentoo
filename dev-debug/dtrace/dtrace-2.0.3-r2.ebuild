@@ -167,7 +167,8 @@ src_test() {
 src_install() {
 	emake DESTDIR="${D}" -j1 install $(usev test-install install-test)
 
-	# Stripping the BPF libs breaks them
+	# We want to strip neither the BPF libraries nor libdtrace.so itself
+	# as probes attach to some symbols that would get removed otherwise.
 	dostrip -x "/usr/$(get_libdir)"
 
 	# It's a binary (TODO: move it?)
