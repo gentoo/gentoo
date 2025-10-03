@@ -97,6 +97,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-nocputuning.patch"
+	"${FILESDIR}/${PN}-7.1.2.3-32bit.patch"
 )
 
 pkg_pretend() {
