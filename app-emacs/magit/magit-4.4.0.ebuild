@@ -3,6 +3,8 @@
 
 EAPI=8
 
+NEED_EMACS="29.2"
+
 inherit elisp
 
 DESCRIPTION="A Git porcelain inside Emacs"
