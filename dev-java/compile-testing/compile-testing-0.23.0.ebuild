@@ -16,7 +16,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
 	dev-java/auto-value:0
