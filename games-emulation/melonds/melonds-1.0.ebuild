@@ -22,7 +22,7 @@ else
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${REAL_P}"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="BSD-2 GPL-2 GPL-3 Unlicense"
