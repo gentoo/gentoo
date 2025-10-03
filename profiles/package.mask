@@ -736,3 +736,9 @@ sys-libs/newlib
 dev-embedded/avr-libc
 sys-devel/nvptx-tools
 sys-devel/clang-crossdev-wrappers
+
+# Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
+# breaks e.g. in combination with gnome-shell-48.4
+>=dev-util/gdbus-codegen-2.86.0
+>=dev-util/glib-2.86.0
+>=dev-util/glib-utils-2.86.0
