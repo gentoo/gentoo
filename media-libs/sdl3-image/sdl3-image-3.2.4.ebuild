@@ -13,7 +13,7 @@ S="${WORKDIR}/SDL_image-release-${PV}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="avif gif jpeg jpegxl png samples static-libs stb test tiff webp"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
