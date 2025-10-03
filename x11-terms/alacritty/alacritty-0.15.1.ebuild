@@ -285,7 +285,7 @@ MY_PV="${PV//_rc/-rc}"
 
 RUST_MIN_VER="1.74.1"
 
-inherit bash-completion-r1 cargo desktop
+inherit cargo desktop shell-completion
 
 DESCRIPTION="GPU-accelerated terminal emulator"
 HOMEPAGE="https://alacritty.org"
@@ -378,11 +378,9 @@ src_install() {
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 
-	insinto /usr/share/fish/vendor_completions.d/
-	doins extra/completions/alacritty.fish
+	dofishcomp extra/completions/alacritty.fish
 
-	insinto /usr/share/zsh/site-functions
-	doins extra/completions/_alacritty
+	dozshcomp extra/completions/_alacritty
 
 	domenu extra/linux/Alacritty.desktop
 	newicon extra/logo/compat/alacritty-term.svg Alacritty.svg
