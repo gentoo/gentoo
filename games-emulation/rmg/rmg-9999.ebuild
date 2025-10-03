@@ -75,6 +75,11 @@ BDEPEND="
 	rust-plugin? ( ${RUST_DEPEND} )
 "
 
+PATCHES=(
+	# https://github.com/Rosalie241/RMG/issues/436
+	"${FILESDIR}"/${PN}-0.8.3-rust.patch
+)
+
 pkg_setup() {
 	QA_FLAGS_IGNORED="/usr/$(get_libdir)/RMG/Plugin/Input/libmupen64plus_input_gca.so"
 	use rust-plugin && rust_pkg_setup
