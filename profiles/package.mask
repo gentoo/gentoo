@@ -37,9 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
-# breaks e.g. in combination with gnome-shell-48.4
->=dev-util/gdbus-codegen-2.86.0
+# Breaks e.g. in combination with gnome-shell-48.4
 >=dev-libs/glib-2.86.0
+>=dev-libs/gobject-introspection-1.86.0
+>=dev-libs/gobject-introspection-common-1.86.0
+>=dev-util/gdbus-codegen-2.86.0
 >=dev-util/glib-utils-2.86.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-01)
