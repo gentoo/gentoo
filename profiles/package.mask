@@ -53,7 +53,6 @@
 dev-games/newton
 games-action/lugaru
 games-action/supermariowar
-games-arcade/blobby
 games-arcade/ninvaders
 games-arcade/slimevolley
 games-engines/frobtads
