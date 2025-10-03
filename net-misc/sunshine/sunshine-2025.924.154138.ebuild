@@ -190,6 +190,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2025.122.141614-nvcodec.patch
+	"${FILESDIR}"/${PN}-new-cuda.patch
 )
 
 # Make this mess a bit simpler.

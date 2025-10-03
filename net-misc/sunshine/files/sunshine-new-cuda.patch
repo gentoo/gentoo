@@ -1,0 +1,26 @@
+From 220c88f1a4b93ca79427803dae237aca9abf1596 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 3 Oct 2025 23:06:32 +0100
+Subject: [PATCH] Don't target CUDA architectures that LLVM doesn't support yet
+
+Upstream builds with NVCC, but we don't.
+--- a/cmake/compile_definitions/linux.cmake
++++ b/cmake/compile_definitions/linux.cmake
+@@ -37,12 +37,12 @@ if(${SUNSHINE_ENABLE_CUDA})
+         endif()
+ 
+         # https://docs.nvidia.com/cuda/archive/12.9.0/cuda-compiler-driver-nvcc/index.html
+-        if(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 12.9)
++        if(FALSE)
+             list(APPEND CMAKE_CUDA_ARCHITECTURES 103 121)
+         endif()
+ 
+         # https://docs.nvidia.com/cuda/archive/13.0.0/cuda-compiler-driver-nvcc/index.html
+-        if(CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 13.0)
++        if(FALSE)
+             list(REMOVE_ITEM CMAKE_CUDA_ARCHITECTURES 101)
+             list(APPEND CMAKE_CUDA_ARCHITECTURES 110)
+         else()
+-- 
+2.51.0
+
