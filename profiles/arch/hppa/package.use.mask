@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-04)
+# media-libs/libemf is not keyworded here
+app-office/dia wmf
+
 # Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
 # media-libs/zxingcpp is not keyworded here
 app-text/mupdf barcode
