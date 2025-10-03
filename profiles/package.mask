@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Jaco Kroon <jaco@uls.co.za> (2025-09-16)
+# Deprecate app-admin/fluentd, based on ruby.  Nightmare to maintain.
+# Please migrate to app-admin/fluent-bit.  If not possible, please take over
+# maintainership of this package.
+# Removal on 2025-11-03. Bug #833260
+
+app-admin/fluentd
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-01)
 # Remaining old EAPI-7 based cmake.eclass consumers after 4 years of
 # tracking EAPI-7 removal. Port to EAPI-8 if you can.
