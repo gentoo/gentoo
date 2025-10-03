@@ -1,6 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-10-03)
+# Now keyworded on x86 too.
+sci-libs/flexiblas -system-blas
+sci-libs/lapack -flexiblas
+virtual/blas -flexiblas
+virtual/cblas -flexiblas
+virtual/lapack -flexiblas
+virtual/lapacke -flexiblas
+
 # Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-10-02)
 # Michael Palimaka <kensington@gentoo.org> (2018-10-12)
 # Unmask arch-specific USE flag available on x86
