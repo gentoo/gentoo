@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ignamartinoli@proton.me</email>
+		<name>Igna Martinoli</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">clojure/clojure</remote-id>
+	</upstream>
+</pkgmetadata>
