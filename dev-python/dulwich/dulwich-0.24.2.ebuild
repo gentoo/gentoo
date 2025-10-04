@@ -6,7 +6,7 @@ EAPI=8
 CARGO_OPTIONAL=1
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 CRATES="
 	autocfg@1.5.0
@@ -76,6 +76,11 @@ BDEPEND="
 distutils_enable_sphinx docs
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/dulwich/_.*.so"
+
+PATCHES=(
+	# https://github.com/jelmer/dulwich/pull/1906
+	"${FILESDIR}/${P}-test-path.patch"
+)
 
 pkg_setup() {
 	# avoid rust_pkg_setup which will die when there's no Rust found
