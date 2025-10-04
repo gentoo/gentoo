@@ -19,9 +19,10 @@ KEYWORDS="~amd64 ~arm64 ~ppc-macos ~x64-macos"
 IUSE="ant-task examples test vim-syntax"
 REQUIRED_USE="test? ( ant-task )"
 
+# jdk-11:* for bug #963787
 # <dev-java/ognl-3.1.25:0 because of test failures with 3.1.25 or higher
 DEPEND="
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	dev-java/auto-value:0
 	dev-java/escapevelocity:0
 	dev-java/incap:0
