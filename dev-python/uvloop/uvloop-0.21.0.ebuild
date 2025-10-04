@@ -5,7 +5,8 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+# py3.14: https://github.com/MagicStack/uvloop/issues/637
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -14,7 +15,9 @@ HOMEPAGE="
 	https://github.com/magicstack/uvloop/
 	https://pypi.org/project/uvloop/
 "
-SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.19.0-cython3.patch.xz"
+SRC_URI+="
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-0.19.0-cython3.patch.xz
+"
 
 LICENSE="MIT"
 SLOT="0"
@@ -30,12 +33,12 @@ RDEPEND="
 BDEPEND="
 	>=dev-python/cython-3.0[${PYTHON_USEDEP}]
 	test? (
-		>=dev-python/aiohttp-3.10.5[${PYTHON_USEDEP}]
 		>=dev-python/pyopenssl-22.0.0[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( aiohttp )
 distutils_enable_tests pytest
 
 python_prepare_all() {
@@ -57,7 +60,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	local EPYTEST_IGNORE=(
 		# linting
 		tests/test_sourcecode.py
