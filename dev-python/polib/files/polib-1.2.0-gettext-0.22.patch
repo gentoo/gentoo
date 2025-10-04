@@ -1,0 +1,23 @@
+From 127f746ebef68cd3485a5feee2739ab83a9c3612 Mon Sep 17 00:00:00 2001
+From: Dave Vasilevsky <dave@vasilevsky.ca>
+Date: Fri, 28 Mar 2025 16:38:43 -0400
+Subject: [PATCH] Don't convert to UTF-8 in test
+
+Fixes #150
+---
+ tests/tests.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/tests.py b/tests/tests.py
+index 4b408d5..61533d0 100644
+--- a/tests/tests.py
++++ b/tests/tests.py
+@@ -675,7 +675,7 @@ def test_save_as_mofile(self):
+             os.close(fd)
+             po = polib.pofile(reffile, autodetect_encoding=False, encoding=encoding)
+             po.save_as_mofile(tmpfile1)
+-            subprocess.call([msgfmt, '--no-hash', '--endianness=%s' % sys.byteorder, '-o', tmpfile2, reffile])
++            subprocess.call([msgfmt, '--no-hash', '--endianness=%s' % sys.byteorder, '--no-convert', '-o', tmpfile2, reffile])
+             try:
+                 f = open(tmpfile1, 'rb')
+                 s1 = f.read()
