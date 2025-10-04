@@ -23,8 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="doc +perl +python ${GENTOO_PERL_USESTRING} test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-# depends on the package already being installed
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	perl? (
@@ -106,8 +105,29 @@ src_compile() {
 }
 
 src_test() {
-	# Avoid perl-module_src_test
+	# Avoid perl-module_src_test. We also need to avoid running the
+	# Python tests in the wrong environment here.
+	mv swig/python/test/test_python.py.in{,.bak} || die
+	touch swig/python/test/test_python.py.in
 	default
+	mv swig/python/test/test_python.py.in{.bak,} || die
+
+	if use python ; then
+		pushd swig/python > /dev/null || die
+		distutils-r1_src_test
+		popd > /dev/null || die
+	fi
+}
+
+python_test() {
+	cd test || die
+
+	# Force regeneration wrt the earlier hack we did
+	touch test_python.py.in || die
+	# Create test_python.py from test_python.py.in
+	emake test_python.py
+
+	LD_LIBRARY_PATH="${S}/src/.libs:${LD_LIBRARY_PATH}" ${EPYTHON} test_python.py || die
 }
 
 src_install() {
