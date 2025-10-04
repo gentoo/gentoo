@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -18,11 +18,5 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-BDEPEND="
-	test? (
-		dev-python/pyfakefs[${PYTHON_USEDEP}]
-		dev-python/time-machine[${PYTHON_USEDEP}]
-	)
-"
-
+EPYTEST_PLUGINS=( pyfakefs time-machine )
 distutils_enable_tests pytest
