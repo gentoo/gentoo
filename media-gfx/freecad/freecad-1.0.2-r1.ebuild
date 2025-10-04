@@ -25,9 +25,9 @@ else
 	SRC_URI="
 		https://github.com/${MY_PN}/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/FreeCAD/FreeCAD/commit/d91b3e051789623f0bc1eff65947c361e7a661d0.patch -> ${PN}-20710.patch
-		https://github.com/FreeCAD/FreeCAD/commit/3d2b7dc9c7ac898b30fe469b7cbd424ed1bca0a2.patch -> ${PN}-22221.patch
+		https://github.com/FreeCAD/FreeCAD/commit/9ea0f32692e13eee85b1e74bd42514942d357906.patch -> ${PN}-21433.patch
 	"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 	S="${WORKDIR}/FreeCAD-${PV}"
 fi
 
@@ -74,7 +74,8 @@ RDEPEND="
 	sys-libs/zlib
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
-		<dev-python/pybind11-3[${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
+		dev-python/pycxx[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	assembly? ( sci-libs/ondselsolver )
@@ -108,7 +109,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=dev-cpp/eigen-3.3.1:3
+	<dev-cpp/eigen-5:=
 	dev-cpp/ms-gsl
 	test? (
 		$(python_gen_impl_dep '-debug')
@@ -138,8 +139,9 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.0-r1-Gentoo-specific-don-t-check-vcs.patch
 	"${FILESDIR}"/${PN}-1.0.1-tests-src-Qt-only-build-test-for-BUILD_GUI-ON.patch
+	"${FILESDIR}/${PN}-1.0.2-pybind11-latent-slots-macro-conflicts-with-Qt.patch" # fixed in pybind-3.0.1
 	"${DISTDIR}/${PN}-20710.patch" # DESTDIR in env
-	"${DISTDIR}/${PN}-22221.patch" # vtk-9.5
+	"${DISTDIR}/${PN}-21433.patch" # FindHDF5 fails to find HDF5 after a failing pkg_search_module
 )
 
 DOCS=( CODE_OF_CONDUCT.md README.md )
@@ -256,18 +258,19 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Fix desktop file
-	sed -e 's/Exec=FreeCAD/Exec=freecad/' -i src/XDGData/org.freecad.FreeCAD.desktop || die
-
 	# deprecated in python-3.11 removed in python-3.13
 	sed -e '/import imghdr/d' -i src/Mod/CAM/CAMTests/TestCAMSanity.py || die
 
-	cmake_src_prepare
+	# The PCL point_traits.h header was renamed (and deprecated) since 1.11.0 and removed in 1.15.0.
+	# d9e731ca94abc14808ebeed208617116f6d5ea4a
+	sed -e 's#pcl/point_traits.h#pcl/type_traits.h#g' -i src/Mod/ReverseEngineering/App/SurfaceTriangulation.cpp || die
 
-	if ! grep -q TKExpress cMake/FindOCC.cmake ; then
-		eqawarn "Applying opencascade-7.9.0 patch"
-		eapply -l "${FILESDIR}/${PN}-1.0.1-opencascade-7.9.0.patch"
+	# removed bundled pycxx
+	if [[ ${PV} != *9999* ]]; then
+		rm -r src/CXX || die "remove bundled pycxx"
 	fi
+
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -289,6 +292,9 @@ src_configure() {
 		-DCMAKE_POLICY_DEFAULT_CMP0167="OLD" # FindBoost
 		-DCMAKE_POLICY_DEFAULT_CMP0175="OLD" # add_custom_command
 		-DCMAKE_POLICY_DEFAULT_CMP0153="OLD" # exec_program
+
+		-DPYCXX_INCLUDE_DIR="${ESYSROOT}/usr/include/${PYTHON_SINGLE_TARGET/_/.}"
+		-DPYCXX_SOURCE_DIR="${ESYSROOT}/usr/share/${PYTHON_SINGLE_TARGET/_/.}/CXX"
 
 		-DBUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DBUILD_FORCE_DIRECTORY=ON				# force building in a dedicated directory
@@ -346,7 +352,7 @@ src_configure() {
 		-DFREECAD_BUILD_DEBIAN=OFF
 
 		-DFREECAD_USE_EXTERNAL_E57FORMAT="no"
-		-DFREECAD_USE_EXTERNAL_GTEST="yes"
+		-DFREECAD_USE_EXTERNAL_GTEST="$(usex test)"
 		-DFREECAD_USE_EXTERNAL_ONDSELSOLVER=$(usex assembly)
 		-DFREECAD_USE_EXTERNAL_SMESH=OFF		# no package in Gentoo
 		-DFREECAD_USE_EXTERNAL_ZIPIOS=OFF		# doesn't work yet, also no package in Gentoo tree
@@ -369,7 +375,7 @@ src_configure() {
 
 	if [[ ${PV} == *9999* ]]; then
 		mycmakeargs+=(
-			-DENABLE_DEVELOPER_TESTS=ON
+			-DENABLE_DEVELOPER_TESTS="$(usex test)"
 
 			-DPACKAGE_WCREF="%{release} (Git)"
 			-DPACKAGE_WCURL="git://github.com/FreeCAD/FreeCAD.git main"
@@ -458,6 +464,10 @@ src_test() {
 		)
 	fi
 
+	local -x CMAKE_SKIP_TESTS=(
+		"^ConstraintPointsAccess."
+	)
+
 	local -x FREECAD_USER_HOME="${HOME}"
 	local -x FREECAD_USER_DATA="${T}/data"
 	local -x FREECAD_USER_TEMP="${T}/temp"
@@ -528,7 +538,7 @@ src_install() {
 	cmake_src_install
 
 	if use gui; then
-		newbin - freecad <<- _EOF_
+		newbin - FreeCAD <<- _EOF_
 			#!/bin/sh
 			# https://github.com/coin3d/coin/issues/451
 			: "\${QT_QPA_PLATFORM:=xcb}"
@@ -536,9 +546,15 @@ src_install() {
 			exec ${EPREFIX}/usr/$(get_libdir)/${PN}/bin/FreeCAD "\${@}"
 		_EOF_
 	fi
-	dosym -r "/usr/$(get_libdir)/${PN}/bin/FreeCADCmd" "/usr/bin/freecadcmd"
+	dosym -r "/usr/$(get_libdir)/${PN}/bin/FreeCADCmd" "/usr/bin/FreeCADCmd"
+	dosym -r "/usr/$(get_libdir)/${PN}/bin/freecad-thumbnailer" "/usr/bin/freecad-thumbnailer"
+
+	for dir in share/{applications,icons,metainfo,mime,pixmaps,thumbnailers}; do
+		mv "${ED}/usr/$(get_libdir)/${PN}/${dir}" "${ED}/usr/share/" || die "mv failed"
+	done
 
 	rm -r "${ED}/usr/$(get_libdir)/${PN}/include/E57Format" || die "failed to drop unneeded include directory E57Format"
+	rmdir "${ED}/usr/$(get_libdir)/${PN}/include/" || die "failed to drop unneeded include directory"
 
 	python_optimize "${ED}/usr/share/${PN}/data/Mod/Start/" "${ED}/usr/$(get_libdir)/${PN}/"{Ext,Mod}/
 	# compile main package in python site-packages as well
