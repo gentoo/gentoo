@@ -11,6 +11,7 @@ MAN_DATE="2004-11-26"
 DESCRIPTION="Diagram/flowchart creation program"
 HOMEPAGE="https://wiki.gnome.org/Apps/Dia"
 SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${COMMIT_HASH}/${PN}-${COMMIT_HASH}.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/dia-0.98-patches.tar.xz"
 S="${WORKDIR}/${PN}-${COMMIT_HASH}"
 
 LICENSE="GPL-2+"
@@ -49,9 +50,9 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.98-revert_xpm_replacement.patch
-	"${FILESDIR}"/${PN}-0.98-use_gtkfontbutton.patch
-	"${FILESDIR}"/${PN}-0.98-deps_optional.patch
+	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-revert_xpm_replacement.patch
+	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-use_gtkfontbutton.patch
+	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-deps_optional.patch
 )
 
 pkg_setup() {
