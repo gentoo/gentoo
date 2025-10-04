@@ -128,7 +128,7 @@ declare -A QT_REQUIREMENTS=(
 	["xml"]="core"
 )
 
-IUSE="${!QT_MODULES[@]} debug doc gles2-only numpy test tools"
+IUSE="${!QT_MODULES[*]} debug doc gles2-only numpy test tools"
 RESTRICT="!test? ( test )"
 
 # majority of QtQml tests require QtQuick support
@@ -137,7 +137,7 @@ REQUIRED_USE="
 		qml? ( quick )
 	)
 "
-for requirement in ${!QT_REQUIREMENTS[@]}; do
+for requirement in "${!QT_REQUIREMENTS[@]}"; do
 	REQUIRED_USE+=" ${requirement}? ( ${QT_REQUIREMENTS[${requirement}]} ) "
 done
 
@@ -313,25 +313,25 @@ python_configure_all() {
 		if [[ -n ${dependencies} ]]; then
 			local depflag
 			for depflag in ${dependencies}; do
-				if use ${depflag}; then
+				if use "${depflag}"; then
 					if [[ -z ${QT_MODULES[${depflag}]} ]]; then
 						depflag=+${depflag}
 					fi
-					enable_qt_mod ${depflag}
+					enable_qt_mod "${depflag}"
 				else
 					die "${depflag} is required but not enabled"
 				fi
 			done
 		fi
 		if [[ "${ENABLED_QT_MODULES[*]}" != *${modules}* ]]; then
-			ENABLED_QT_MODULES+=( ${modules} )
+			ENABLED_QT_MODULES+=( "${modules}" )
 		fi
 	}
 	# Enable specified qt modules
 	local flag
-	for flag in ${!QT_MODULES[@]}; do
-		if use ${flag//+}; then
-			enable_qt_mod ${flag}
+	for flag in "${!QT_MODULES[@]}"; do
+		if use "${flag//+}"; then
+			enable_qt_mod "${flag}"
 		fi
 	done
 
@@ -351,23 +351,34 @@ python_configure_all() {
 
 	# Arguments listed in options.py
 	MAIN_DISTUTILS_ARGS=(
-		--cmake="${EPREFIX}/usr/bin/cmake"
+		--cmake="${ESYSROOT}/usr/bin/cmake"
 		--ignore-git
 		--limited-api=no
 		--module-subset="$(printf '%s,' "${ENABLED_QT_MODULES[@]}")"
 		--no-strip
 		--no-size-optimization
-		--openssl="${EPREFIX}/usr/bin/openssl"
-		--qt=$(ver_cut 1-3)
-		--qtpaths=$(qt6_get_bindir)/qtpaths
+		--openssl="${ESYSROOT}/usr/bin/openssl"
+		--qt="$(ver_cut 1-3)"
+		--qtpaths="$(qt6_get_bindir)/qtpaths"
 		--verbose-build
-		--parallel=$(makeopts_jobs)
-		$(usex debug "--debug" "--relwithdebinfo")
-		$(usex doc "--build-docs" "--skip-docs")
-		$(usex numpy "--enable-numpy-support" "--disable-numpy-support")
-		$(usex test "--build-tests --use-xvfb" "")
-		$(usex tools "" "--no-qt-tools")
+		--parallel="$(makeopts_jobs)"
+		"$(usex debug "--debug" "--relwithdebinfo")"
+		"--$(usex doc "build" "skip")-docs"
+		"--$(usex numpy "enable" "disable")-numpy-support"
 	)
+
+	if use test; then
+		MAIN_DISTUTILS_ARGS+=(
+			"--build-tests"
+			"--use-xvfb"
+		)
+	fi
+
+	if ! use tools; then
+		MAIN_DISTUTILS_ARGS+=(
+			"--no-qt-tools"
+		)
+	fi
 }
 
 python_compile() {
@@ -378,8 +389,12 @@ python_compile() {
 	distutils-r1_python_compile
 
 	# The build system uses its own build dir, find the name of this dir.
-	local pyside_build_dir=$(find "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))" -maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n")
-	export pyside_build_id=${pyside_build_dir#qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-}
+	local pyside_build_dir
+	read -r pyside_build_dir < <(
+		find "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))" \
+			-maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n"
+	)
+	export pyside_build_id="${pyside_build_dir#"qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-"}"
 
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
@@ -410,7 +425,7 @@ python_compile() {
 		ln -s "${base}" "${lib%/*}/${base%%.*}-${EPYTHON}.so" ||
 			die
 	done
-	for lib in */*.cpython-*.so.$(ver_cut 1-2)
+	for lib in */*.cpython-*.so."$(ver_cut 1-2)"
 	do
 		local base=${lib##*/}
 		ln -s "${base}" "${lib%/*}/${base%%.*}-${EPYTHON}.so.$(ver_cut 1-2)" ||
@@ -447,7 +462,7 @@ python_compile() {
 	done
 
 	# Install misc files from inner install dir
-	find "${BUILD_DIR}"/build*/${pyside_build_dir}/install -type f \
+	find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type f \
 		-name libPySidePlugin.so -exec \
 		mkdir -p "${BUILD_DIR}/install/$(qt6_get_plugindir)/designer/" \; \
 		-exec \
@@ -455,7 +470,7 @@ python_compile() {
 			|| die
 
 	for dir in cmake pkgconfig; do
-		find "${BUILD_DIR}"/build*/${pyside_build_dir}/install -type d -name ${dir} \
+		find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type d -name "${dir}" \
 			-exec cp -r "{}" "${BUILD_DIR}/install/usr/lib/" \; \
 				|| die
 	done
