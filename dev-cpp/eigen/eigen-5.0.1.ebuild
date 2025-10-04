@@ -82,7 +82,7 @@ IUSE_TEST_BACKENDS=(
 	"umfpack"
 )
 
-IUSE="benchmark ${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
+IUSE="${CPU_FEATURES_MAP[*]%:*} clang-cuda cuda hip debug doc lapack mathjax test ${IUSE_TEST_BACKENDS[*]}" #zvector
 
 REQUIRED_USE="
 	test? (
@@ -208,21 +208,14 @@ src_unpack() {
 
 src_prepare() {
 	sed \
+		-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
 		-e "/add_subdirectory(demos/s/^/#DONOTCOMPILE /g" \
 		-i CMakeLists.txt || die
 
-	rm -r demos || die
+	rm -r bench demos || die
 
 	# run patches here as we patch in test/
 	cmake_src_prepare
-
-	if ! use bench; then
-		sed \
-			-e "/add_subdirectory(bench\/spbench/s/^/#DONOTCOMPILE /g" \
-			-i CMakeLists.txt || die
-
-		rm -r bench || die
-	fi
 
 	if ! use test; then
 		sed \
@@ -246,7 +239,6 @@ src_configure() {
 
 		-DCMAKE_CXX_STANDARD="17"
 
-		-DEIGEN_BUILD_BTL="$(usex benchmark)" # Build benchmark suite
 		-DEIGEN_BUILD_DOC="$(usex doc)" # Enable creation of Eigen documentation
 		-DEIGEN_BUILD_PKGCONFIG="yes" # Build pkg-config .pc file for Eigen
 	)
