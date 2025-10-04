@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -22,7 +22,7 @@ IUSE="ffmpeg gstreamer mad"
 RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/audioop-lts[${PYTHON_USEDEP}]
-	' python3_13)
+	' 3.13 3.14)
 	ffmpeg? (
 		media-video/ffmpeg
 	)
@@ -41,6 +41,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 PATCHES=(
