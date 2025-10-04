@@ -18,7 +18,7 @@ REQUIRED_USE="utftrip? ( ocamlopt )"
 
 RDEPEND="
 	dev-ml/uchar:=
-	utftrip? ( dev-ml/cmdliner:=[ocamlopt?] )"
+	utftrip? ( <dev-ml/cmdliner-2.0.0:=[ocamlopt?] )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/ocamlbuild
 	dev-ml/topkg
