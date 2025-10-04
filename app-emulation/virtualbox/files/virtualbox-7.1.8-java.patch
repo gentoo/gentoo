@@ -1,0 +1,22 @@
+
+--- a/Config.kmk
++++ b/Config.kmk
+@@ -9356,17 +9356,10 @@ endif
+ # Java compiler options, needs some version checking.
+ if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 110000
+  VBOX_JAVA_WS_PATH ?= /usr/share/java
+- VBOX_JAVA_WS_EXTRA_JARS ?= $(VBOX_JAVA_WS_PATH)/jws-api.jar$(VBOX_SEP)$(VBOX_JAVA_WS_PATH)/jaxb-api.jar$(VBOX_SEP)$(VBOX_JAVA_WS_PATH)/jaxws-api.jar
++ VBOX_JAVA_WS_EXTRA_JARS ?= $(GENTOO_JWS_API_PATH)/jws-api.jar$(VBOX_SEP)$(GENTOO_JAXB_API_PATH)/jaxb-api.jar$(VBOX_SEP)$(GENTOO_JAXWS_API_PATH)/jaxws-api.jar
+ else if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 10900
+  VBOX_JAVA_WS_OPTS ?= --add-modules java.xml.ws
+ endif
+-if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 110000
+- VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 9 -target 9 -Xlint:unchecked
+-else if defined(VBOX_JAVA_VERSION) && $(VBOX_JAVA_VERSION) >= 90000
+- VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 6 -target 6 -Xlint:unchecked
+-else
+- VBOX_JAVAC_OPTS   = -encoding UTF-8 -source 1.5 -target 1.5 -Xlint:unchecked
+-endif
+ VBOX_JAVADOC_OPTS = -encoding UTF-8
+ 
+ 
