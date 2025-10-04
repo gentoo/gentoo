@@ -108,7 +108,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=dev-cpp/eigen-3.3.1:3
+	<dev-cpp/eigen-5:=
 	dev-cpp/ms-gsl
 	test? (
 		$(python_gen_impl_dep '-debug')
