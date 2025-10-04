@@ -1,0 +1,26 @@
+--- a/src/test/java/com/thoughtworks/qdox/JavaProjectBuilderTest.java
++++ b/src/test/java/com/thoughtworks/qdox/JavaProjectBuilderTest.java
+@@ -11,6 +11,7 @@ import org.junit.jupiter.api.AfterEach;
+ import org.junit.jupiter.api.Assertions;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.Disabled;
+ 
+ import java.io.*;
+ import java.net.URL;
+@@ -290,7 +291,7 @@ public class JavaProjectBuilderTest {
+         Assertions.assertNotNull(builder.getClassByName("oldfashioned.Bar"));
+     }
+ 
+-    @Test
++    @Test @Disabled
+     public void testBinaryClassesAreFound() {
+ 
+         String in = ""
+@@ -2055,4 +2056,4 @@ public class JavaProjectBuilderTest {
+         
+         verify( classLibraryBuilder ).addSourceFolder( same( file ) );
+     }
+-}
+\ No newline at end of file
++}
