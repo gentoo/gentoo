@@ -18,20 +18,24 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~ppc64 ~riscv"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
+# Needs fixing to use the right Python
 RESTRICT="test"
 
 COMMON_DEPEND="
 	~sys-libs/libapparmor-${PV}
-	${PYTHON_DEPS}"
-DEPEND="${COMMON_DEPEND}
+	${PYTHON_DEPS}
+"
+DEPEND="
+	${COMMON_DEPEND}
 	sys-devel/gettext
 "
-RDEPEND="${COMMON_DEPEND}
-	~sys-libs/libapparmor-${PV}[python,${PYTHON_USEDEP}]
-	~sys-apps/apparmor-${PV}
+RDEPEND="
+	${COMMON_DEPEND}
 	dev-python/notify2[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]"
+	dev-python/psutil[${PYTHON_USEDEP}]
+	~sys-apps/apparmor-${PV}
+	~sys-libs/libapparmor-${PV}[python,${PYTHON_USEDEP}]
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.0.3-binutils-Fix-missing-include-limits.h.patch"
@@ -60,6 +64,12 @@ src_compile() {
 	pushd binutils > /dev/null || die
 	export EXTRA_CFLAGS="${CFLAGS}"
 	emake CC="$(tc-getCC)" USE_SYSTEM=1
+	popd > /dev/null || die
+}
+
+src_test() {
+	pushd utils > /dev/null || die
+	python_foreach_impl emake USE_SYSTEM=1 PYFLAKES=true check
 	popd > /dev/null || die
 }
 
