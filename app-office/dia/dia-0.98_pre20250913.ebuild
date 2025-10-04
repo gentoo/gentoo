@@ -66,13 +66,13 @@ src_prepare() {
 	# do not build pdf with dblatex
 	sed -e "s:^helpdir =.*$:helpdir = datadir / 'doc' / '${PF}' / 'html':" \
 		-e "/^dblatex = /s:find_program(.*):disabler():" \
-		-i doc/meson.build
+		-i doc/meson.build || die
 	sed -e "/.*helpdir =.*$/s:\"help\":\"../doc/${PF}/html\":" \
 		-i app/commands.c || die
 
 	# use local docbook
 	sed -e "s:^DB2MAN =.*$:DB2MAN = '${EPREFIX}/usr/share/sgml/docbook/xsl-stylesheets/manpages/docbook.xsl':" \
-		-i doc/meson.build
+		-i doc/meson.build || die
 }
 
 src_configure() {
