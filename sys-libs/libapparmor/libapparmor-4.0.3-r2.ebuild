@@ -37,6 +37,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-build/autoconf-archive
+	sys-apps/which
 	sys-devel/bison
 	sys-devel/flex
 	doc? ( dev-lang/perl )
