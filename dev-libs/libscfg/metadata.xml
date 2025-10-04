@@ -6,6 +6,6 @@
 		<name>Arthur Zamarin</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourcehut">~emersion/libscfg</remote-id>
+		<remote-id type="codeberg">emersion/libscfg</remote-id>
 	</upstream>
 </pkgmetadata>
