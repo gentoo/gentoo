@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -35,12 +35,8 @@ RDEPEND="
 		dev-python/segno[${PYTHON_USEDEP}]
 	)
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 python_test() {
@@ -48,16 +44,6 @@ python_test() {
 		# flaky (relies on time.sleep(0.01) magically being sufficient)
 		fritzconnection/tests/test_fritzmonitor.py::test_terminate_thread_on_failed_reconnection
 	)
-
-	if has_version "dev-python/segno[${PYTHON_USEDEP}]"; then
-		EPYTEST_DESELECT+=(
-			# requires "QR Code detection" support in media-libs/opencv
-			# https://bugs.gentoo.org/917121
-			fritzconnection/tests/test_fritzwlan.py::test_get_wifi_qr_code
-			fritzconnection/tests/test_fritzwlan.py::test_helper_functions
-			fritzconnection/tests/test_fritzwlan.py::test_tools
-		)
-	fi
 
 	# "routertest" marks tests against live hardware
 	epytest -m "not routertest"
