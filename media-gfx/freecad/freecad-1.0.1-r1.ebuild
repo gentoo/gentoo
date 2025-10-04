@@ -343,7 +343,7 @@ src_configure() {
 		-DFREECAD_BUILD_DEBIAN=OFF
 
 		-DFREECAD_USE_EXTERNAL_E57FORMAT="no"
-		-DFREECAD_USE_EXTERNAL_GTEST="yes"
+		-DFREECAD_USE_EXTERNAL_GTEST="$(usex test)"
 		-DFREECAD_USE_EXTERNAL_ONDSELSOLVER=$(usex assembly)
 		-DFREECAD_USE_EXTERNAL_SMESH=OFF		# no package in Gentoo
 		-DFREECAD_USE_EXTERNAL_ZIPIOS=OFF		# doesn't work yet, also no package in Gentoo tree
@@ -366,7 +366,7 @@ src_configure() {
 
 	if [[ ${PV} == *9999* ]]; then
 		mycmakeargs+=(
-			-DENABLE_DEVELOPER_TESTS=ON
+			-DENABLE_DEVELOPER_TESTS="$(usex test)"
 
 			-DPACKAGE_WCREF="%{release} (Git)"
 			-DPACKAGE_WCURL="git://github.com/FreeCAD/FreeCAD.git main"
