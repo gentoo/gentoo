@@ -229,6 +229,9 @@ src_configure() {
 		# TODO: fixup gn cross, or package dev-qt/qtwebengine-gn with =ON
 		# (see also BUILD_ONLY_GN option added in 6.8+ for the latter)
 		-DINSTALL_GN=OFF
+
+		# TODO: drop this if no longer errors out early during cmake generation
+		-DQT_GENERATE_SBOM=OFF
 	)
 
 	local mygnargs=(
