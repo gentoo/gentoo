@@ -356,11 +356,11 @@ src_test() {
 		tst_qsharedmemory
 		# typical to lack SCTP support on non-generic kernels
 		tst_qsctpsocket
-		# randomly fails without -j1, and not worth it over this (bug #916181)
-		tst_qfiledialog{,2}
-		# may randomly hang+timeout, perhaps related to -j as well
+		# flaky tests, may be better with -j1 but not worth using over this
+		tst_qfiledialog{,2} #916181
 		tst_qprocess #936484
 		tst_qtimer
+		tst_wayland_cursor
 		# haystacksWithMoreThan4GiBWork can easily OOM (16GB ram not enough)
 		tst_qlatin1stringmatcher
 		# these can be flaky depending on the environment/toolchain
