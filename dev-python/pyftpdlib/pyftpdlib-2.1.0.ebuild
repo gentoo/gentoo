@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1 pypi
@@ -24,7 +24,7 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/pyasynchat[${PYTHON_USEDEP}]
 		dev-python/pyasyncore[${PYTHON_USEDEP}]
-	' 3.12 3.13)
+	' 3.12 3.13 3.14)
 	ssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
 "
 BDEPEND="
