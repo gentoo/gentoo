@@ -72,7 +72,7 @@ multilib_src_configure() {
 		# Never use gi-docgen subproject
 		--wrap-mode nofallback
 
-		$(meson_use gtk-doc documentation)
+		$(meson_native_use_bool gtk-doc documentation)
 		$(meson_native_use_feature introspection)
 		-Dman-pages=true
 		$(meson_use test build-testsuite)
