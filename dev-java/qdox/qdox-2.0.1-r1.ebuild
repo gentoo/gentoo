@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~ppc-macos ~x64-macos"
 
 DEPEND="
 	dev-java/jflex:0
+	>=dev-java/javacup-11b_p20160615-r2:0
 	>=virtual/jdk-1.8:*
 	test? (
 		dev-java/junit:4
@@ -42,7 +43,10 @@ JAVA_TEST_GENTOO_CLASSPATH="
 
 src_compile() {
 	einfo "Running jflex"
-	jflex src/grammar/lexer.flex src/grammar/commentlexer.flex \
+	"$(java-config -J)" -cp "$(java-pkg_getjars --build-only jflex):$(java-pkg_getjars --build-only javacup)" \
+		jflex.Main \
+		src/grammar/lexer.flex \
+		src/grammar/commentlexer.flex \
 		-d src/main/java/com/thoughtworks/qdox/parser/impl || die
 
 	einfo "Running byaccj for DefaultJavaCommentParser"
