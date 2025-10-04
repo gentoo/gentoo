@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="+ocamlopt"
 RESTRICT="test" # sandbox not working
 
 RDEPEND="
-	dev-ml/cmdliner:=[ocamlopt?]
+	<dev-ml/cmdliner-2.0.0:=[ocamlopt?]
 	dev-ml/jsonm:=[ocamlopt?]
 	dev-ml/ocamlgraph:=[ocamlopt?]
 	dev-ml/ocaml-sha:=[ocamlopt?]
