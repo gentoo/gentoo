@@ -51,6 +51,10 @@ BDEPEND="
 	nls? ( >=sys-devel/gettext-0.19.6 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.2-perl-5.42.patch
+)
+
 src_prepare() {
 	default
 
