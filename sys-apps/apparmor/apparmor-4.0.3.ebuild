@@ -78,7 +78,7 @@ src_compile() {
 }
 
 src_test() {
-	emake CXX="$(tc-getCXX)" USE_SYSTEM=1 check
+	emake CXX="$(tc-getCXX)" USE_SYSTEM=1 check -Onone
 }
 
 src_install() {
