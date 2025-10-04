@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="com.thoughtworks.qdox:qdox:2.0.1"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="com.thoughtworks.qdox:qdox:2.0.1"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -31,15 +31,11 @@ RDEPEND=">=virtual/jre-1.8:*"
 BDEPEND="dev-java/byaccj:0"
 
 JAVA_AUTOMATIC_MODULE_NAME="com.thoughtworks.qdox"
-JAVA_SRC_DIR="src/main/java"
 JAVA_CLASSPATH_EXTRA="jflex"
-
-JAVA_TEST_SRC_DIR="src/test/java"
+JAVA_SRC_DIR="src/main/java"
+JAVA_TEST_GENTOO_CLASSPATH="junit-4 mockito-1"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
-JAVA_TEST_GENTOO_CLASSPATH="
-	junit-4
-	mockito-1
-"
+JAVA_TEST_SRC_DIR="src/test/java"
 
 src_compile() {
 	einfo "Running jflex"
