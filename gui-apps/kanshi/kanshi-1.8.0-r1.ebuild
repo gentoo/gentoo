@@ -16,12 +16,12 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+man varlink"
 
 RDEPEND="
-	dev-libs/libscfg
+	dev-libs/libscfg:=
 	dev-libs/wayland
 	varlink? ( dev-libs/libvarlink )
 "
+DEPEND="${RDEPEND}"
 BDEPEND="
-	${RDEPEND}
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
 	dev-util/wayland-scanner
