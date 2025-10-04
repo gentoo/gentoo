@@ -92,5 +92,4 @@ src_install() {
 	pushd binutils > /dev/null || die
 	emake install DESTDIR="${D}" USE_SYSTEM=1
 	popd > /dev/null || die
-
 }
