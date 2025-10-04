@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
 
@@ -24,5 +24,12 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 distutils_enable_sphinx docs
+
+EPYTEST_DESELECT=(
+	# fragile to Core Metadata version changing in setuptools
+	# https://bugs.launchpad.net/pkginfo/+bug/2103804 (again)
+	pkginfo/tests/test_installed.py::test_installed_ctor_w_dist_info
+)
