@@ -37,6 +37,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-8.13.47-protobuf-link-abseil.patch
 	# bug #889910
 	"${FILESDIR}"/${PN}-8.13.47-werror.patch
+	# bug 963681
+	"${FILESDIR}"/${PN}-8.13.47-boost-1.89.patch
 )
 
 src_prepare() {
