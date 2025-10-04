@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -26,8 +26,8 @@ BDEPEND="
 	>=dev-python/setuptools-scm-3.4.1[${PYTHON_USEDEP}]
 	test? (
 		dev-python/path[${PYTHON_USEDEP}]
-		dev-python/pytest-subprocess[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-subprocess )
 distutils_enable_tests pytest
