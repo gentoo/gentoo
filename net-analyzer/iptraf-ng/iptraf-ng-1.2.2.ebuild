@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 inherit flag-o-matic toolchain-funcs
 
-DESCRIPTION="A console-based network monitoring utility"
+DESCRIPTION="Console-based network monitoring utility"
 HOMEPAGE="https://github.com/iptraf-ng/iptraf-ng"
 SRC_URI="https://github.com/iptraf-ng/iptraf-ng/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -12,15 +13,15 @@ LICENSE="GPL-2 doc? ( FDL-1.1 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc"
+RESTRICT="test"
 
 RDEPEND="
-	>=sys-libs/ncurses-5.7-r7:0=
+	>=sys-libs/ncurses-5.7-r7:=
 "
 DEPEND="
 	${RDEPEND}
 	virtual/os-headers
 "
-RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.2.2-buffer_overflow.patch"
@@ -54,10 +55,11 @@ src_install() {
 	doman src/*.8
 	dodoc AUTHORS CHANGES* FAQ README*
 
+	# bug #376157
+	keepdir /var/{lib,log}/iptraf-ng
+
 	if use doc; then
 		docinto html
 		dodoc -r Documentation/*
 	fi
-
-	keepdir /var/{lib,log}/iptraf-ng #376157
 }
