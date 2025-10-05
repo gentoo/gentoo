@@ -5,10 +5,6 @@
 # MySQL is marked -ppc (bug #761715) because of a failing static assert.
 dev-db/mysql
 
-# Sam James <sam@gentoo.org> (2024-12-10)
-# Crashes in libuv (bug #941738)
->=dev-build/cmake-3.29
-
 # Sam James <sam@gentoo.org> (2024-03-23)
 # llvm-runtimes/openmp does not support ppc32 (bug #907213).
 llvm-runtimes/openmp
