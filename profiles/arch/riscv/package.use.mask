@@ -1,6 +1,15 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jakov Smolić <jsmolic@gentoo.org> (2025-10-05)
+# These packages are keyworded on riscv
+sci-libs/flexiblas -system-blas
+sci-libs/lapack -flexiblas
+virtual/blas -flexiblas
+virtual/cblas -flexiblas
+virtual/lapack -flexiblas
+virtual/lapacke -flexiblas
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-12)
 # These BLAS/LAPACK providers are keyworded here.
 sci-libs/flexiblas -openblas
