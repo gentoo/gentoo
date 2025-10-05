@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="SANE network daemon"
+pidfile="/var/run/saned.pid"
+command="/usr/sbin/saned"
+command_args="--user ${SANED_USER:-saned} \
+	${SANED_ADDRESS:+--bind} ${SANED_ADDRESS} \
+	${SANED_PORT:+--port} ${SANED_PORT} \
+	${SANED_ARGS:---listen}"
+command_args_background="--daemonize"
+# pidfile created after forking process
+start_stop_daemon_args="--wait 1000"
