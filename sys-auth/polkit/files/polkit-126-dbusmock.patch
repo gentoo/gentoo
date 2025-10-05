@@ -1,4 +1,5 @@
 https://github.com/polkit-org/polkit/commit/690e6972ffe30473dacbfaa81158f5507cef99f6
+https://github.com/polkit-org/polkit/commit/247952425829e41a47e83b2e433b9703713739f5
 
 From 690e6972ffe30473dacbfaa81158f5507cef99f6 Mon Sep 17 00:00:00 2001
 From: Jan Rybar <jrybar@redhat.com>
@@ -75,3 +76,24 @@ index 14f4abdb..dc62f702 100755
      print(f"Executing '{args.test_executable}'")
      sys.stdout.flush()
 
+From 247952425829e41a47e83b2e433b9703713739f5 Mon Sep 17 00:00:00 2001
+From: Jan Rybar <jrybar@redhat.com>
+Date: Sun, 5 Oct 2025 16:40:30 +0200
+Subject: [PATCH] Missed 'errno' import in wrapper
+
+---
+ test/wrapper.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/wrapper.py b/test/wrapper.py
+index dc62f70..9547720 100755
+--- a/test/wrapper.py
++++ b/test/wrapper.py
+@@ -7,6 +7,7 @@
+ import sys
+ import signal
+ import time
++import errno
+ 
+ import dbus
+ import dbus.mainloop.glib
