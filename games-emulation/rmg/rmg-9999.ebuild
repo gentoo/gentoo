@@ -52,7 +52,7 @@ LICENSE="
 	rust-plugin? ( ISC Unicode-DFS-2016 )
 "
 SLOT="0"
-IUSE="angrylion-plugin discord dynarec netplay rust-plugin"
+IUSE="angrylion-plugin dynarec netplay rust-plugin"
 
 DEPEND="
 	dev-libs/hidapi
@@ -103,7 +103,6 @@ src_unpack() {
 
 src_prepare() {
 	# Remove unused 3rdParty code - https://bugs.gentoo.org/959468
-	rm -r "${S}"/Source/3rdParty/discord-rpc/thirdparty/rapidjson/example || die
 	rm -r "${S}"/Source/3rdParty/fmt || die
 	rm -r "${S}"/Source/3rdParty/imgui/examples || die
 	rm -r "${S}"/Source/3rdParty/mupen64plus-rsp-parallel/win32 || die
@@ -128,7 +127,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DAPPIMAGE_UPDATER=OFF
-		-DDISCORD_RPC=$(usex discord)
 		-DNETPLAY=$(usex netplay)
 		-DNO_ASM=$(usex dynarec OFF ON)
 		-DNO_RUST=$(usex rust-plugin OFF ON)
