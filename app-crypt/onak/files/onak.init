@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${ONAK_CONFIG:=/etc/onak.ini}
+: ${ONAK_GROUP:=onak}
+: ${ONAK_USER:=onak}
+
+name="onak"
+description="Backend caching key daemon for onak OpenPGP keyserver"
+command=/usr/sbin/onak-keyd
+command_args="-f -c ${ONAK_CONFIG}"
+command_user="${ONAK_USER}:${ONAK_GROUP}"
+command_background=true
+pidfile="/run/onak.pid"
+
+start_pre() {
+	if ! grep -q -E '^use_keyd=*(true|yes|1)$' ${ONAK_CONFIG}; then
+		eerror "You must enable the keyd backend in ${ONAK_CONFIG} with 'use_keyd=true'"
+		return 1
+	fi
+	# only for socket
+	checkpath -d -q -o ${ONAK_USER}:${ONAK_GROUP} /var/run/onak
+}
+
+stop() {
+	ebegin "Stopping ${name}"
+	/usr/bin/onak-keydctl quit
+	eend $? "Failed to stop ${name}"
+}
+
+status() {
+	default_status
+	if [ $? = 0 ]; then
+		ebegin "Showing ${name} status"
+		/usr/bin/onak-keydctl status
+	fi
+}
