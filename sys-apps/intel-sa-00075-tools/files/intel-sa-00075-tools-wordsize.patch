@@ -1,0 +1,11 @@
+--- a/INTEL-SA-00075.h
++++ b/INTEL-SA-00075.h
+@@ -72,7 +72,7 @@
+ #include <errno.h>
+ #include <stdint.h>
+ #include <stdbool.h>
+-#include <bits/wordsize.h>
++#include <limits.h>
+ #include <linux/mei.h>
+
+ #define DEFAULT_MEI_DEV_NODE "/dev/mei0"
