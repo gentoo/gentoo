@@ -13,7 +13,7 @@ SRC_URI="https://codeberg.org/Limine/Limine/releases/download/v${PV}/limine-${PV
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+bios +bios-pxe +bios-cd +cd-efi +uefi32 +uefi64 +uefiaa64 +uefirv64 +uefiloong64"
+IUSE="+bios +bios-pxe +bios-cd +uefi-cd +uefi-ia32 +uefi-x86-64 +uefi-aarch64 +uefi-riscv64 +uefi-loongarch64"
 
 MY_LLVM_TARGETS="AArch64 ARM X86 RISCV LoongArch"
 MY_LLVM_FLAGS="llvm_targets_${MY_LLVM_TARGETS// /(-),llvm_targets_}(-)"
@@ -27,7 +27,7 @@ BDEPEND="
 		llvm-core/clang:\${LLVM_SLOT}[${MY_LLVM_FLAGS}]
 		llvm-core/lld:\${LLVM_SLOT}
 	")
-	cd-efi? ( sys-fs/mtools )
+	uefi-cd? ( sys-fs/mtools )
 "
 
 src_configure() {
@@ -36,12 +36,12 @@ src_configure() {
 		"$(use_enable bios-cd)"
 		"$(use_enable bios-pxe)"
 
-		"$(use_enable uefi32 uefi-ia32)"
-		"$(use_enable uefi64 uefi-x86-64)"
-		"$(use_enable uefiaa64 uefi-aarch64)"
-		"$(use_enable uefirv64 uefi-riscv64)"
-		"$(use_enable uefiloong64 uefi-loongarch64)"
-		"$(use_enable cd-efi uefi-cd)"
+		"$(use_enable uefi-ia32)"
+		"$(use_enable uefi-x86-64)"
+		"$(use_enable uefi-aarch64)"
+		"$(use_enable uefi-riscv64)"
+		"$(use_enable uefi-loongarch64)"
+		"$(use_enable uefi-cd)"
 	)
 
 	econf "${myconf[@]}"
