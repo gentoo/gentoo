@@ -17,6 +17,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-include.patch
 	"${FILESDIR}"/${P}-fno-common.patch
 	"${FILESDIR}"/${P}-incompatible-pointer-types.patch
+	"${FILESDIR}"/${P}-musl.patch
 )
 
 src_configure() {

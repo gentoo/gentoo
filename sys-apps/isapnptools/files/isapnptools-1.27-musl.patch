@@ -1,0 +1,30 @@
+--- a/include/isapnp/iopl.h
++++ b/include/isapnp/iopl.h
+@@ -52,15 +52,7 @@ extern "C" {
+ #include <dos.h>
+ #else
+ #ifndef _OS2_
+-#  if defined __GLIBC__ && __GLIBC__ >= 2
+-#    include <sys/io.h>
+-#  else
+-#    ifdef _AXP_
+-#       include <sys/io.h>
+-#    else
+-#       include <asm/io.h>
+-#    endif
+-#  endif	      	   /* __GLIBC__ */
++#include <sys/io.h>
+ #else
+ #include <sys/hw.h>
+ #endif /* _OS2_ */
+--- a/src/pnp-select.c
++++ b/src/pnp-select.c
+@@ -6,6 +6,8 @@
+    Foundation.
+ */
+ 
++#include <stdlib.h>
++
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif
