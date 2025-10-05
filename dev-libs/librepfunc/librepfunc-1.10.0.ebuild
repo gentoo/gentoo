@@ -9,7 +9,7 @@ SRC_URI="https://github.com/wirbel-at-vdr-portal/librepfunc/archive/refs/tags/${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
 
