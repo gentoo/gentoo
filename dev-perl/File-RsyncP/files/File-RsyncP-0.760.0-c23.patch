@@ -1,0 +1,211 @@
+https://bugs.gentoo.org/943963
+https://bugzilla.redhat.com/show_bug.cgi?id=2341029
+
+--- a/Digest/global.h
++++ b/Digest/global.h
+@@ -3,11 +3,11 @@
+ 
+ /* PROTOTYPES should be set to one if and only if the compiler supports
+   function argument prototyping.
+-The following makes PROTOTYPES default to 0 if it has not already
++The following makes PROTOTYPES default to 1 if it has not already
+   been defined with C compiler flags.
+  */
+ #ifndef PROTOTYPES
+-#define PROTOTYPES 0
++#define PROTOTYPES 1
+ #endif
+ 
+ /* POINTER defines a generic pointer type */
+--- a/Digest/md4c.c
++++ b/Digest/md4c.c
+@@ -81,8 +81,7 @@ static unsigned char PADDING[64] = {
+ 
+ /* MD4 initialization. Begins an MD4 operation, writing a new context.
+  */
+-void RsyncMD4Init (context)
+-RsyncMD4_CTX *context;                                        /* context */
++void RsyncMD4Init (RsyncMD4_CTX *context)
+ {
+   context->count[0] = context->count[1] = 0;
+ 
+@@ -99,10 +98,7 @@ RsyncMD4_CTX *context;
+      operation, processing another message block, and updating the
+      context.
+  */
+-void RsyncMD4Update (context, input, inputLen)
+-RsyncMD4_CTX *context;                                        /* context */
+-unsigned char *input;                                /* input block */
+-unsigned int inputLen;                     /* length of input block */
++void RsyncMD4Update (RsyncMD4_CTX *context, unsigned char *input, unsigned int inputLen)
+ {
+   unsigned int i, index, partLen;
+ 
+@@ -140,9 +136,7 @@ unsigned int inputLen;
+ /* MD4 finalization. Ends an MD4 message-digest operation, writing the
+      the message digest and zeroizing the context.
+  */
+-void RsyncMD4Final (digest, context)
+-unsigned char digest[16];                         /* message digest */
+-RsyncMD4_CTX *context;                                        /* context */
++void RsyncMD4Final (unsigned char digest[16], RsyncMD4_CTX *context)
+ {
+   unsigned char bits[8];
+   unsigned int index, padLen;
+@@ -179,9 +173,7 @@ RsyncMD4_CTX *context;
+  * If context->rsyncMD4Bug is clear we correctly implement md4 (rsync
+  * protocol >= 27).
+  */
+-void RsyncMD4FinalRsync (digest, context)
+-unsigned char digest[16];                         /* message digest */
+-RsyncMD4_CTX *context;                                 /* context */
++void RsyncMD4FinalRsync (unsigned char digest[16], RsyncMD4_CTX *context)
+ {
+   unsigned char bits[8];
+   unsigned int index, padLen;
+@@ -212,9 +204,7 @@ RsyncMD4_CTX *context;
+ 
+ /* MD4 basic transformation. Transforms state based on block.
+  */
+-static void RsyncMD4Transform (state, block)
+-UINT4 state[4];
+-unsigned char block[64];
++static void RsyncMD4Transform (UINT4 state[4], unsigned char block[64])
+ {
+   UINT4 a = state[0], b = state[1], c = state[2], d = state[3], x[16];
+ 
+@@ -287,10 +277,7 @@ unsigned char block[64];
+ /* Encodes input (UINT4) into output (unsigned char). Assumes len is
+      a multiple of 4.
+  */
+-void RsyncMD4Encode (output, input, len)
+-unsigned char *output;
+-UINT4 *input;
+-unsigned int len;
++void RsyncMD4Encode (unsigned char *output, UINT4 *input, unsigned int len)
+ {
+   unsigned int i, j;
+ 
+@@ -305,11 +292,7 @@ unsigned int len;
+ /* Decodes input (unsigned char) into output (UINT4). Assumes len is
+      a multiple of 4.
+  */
+-void RsyncMD4Decode (output, input, len)
+-
+-UINT4 *output;
+-unsigned char *input;
+-unsigned int len;
++void RsyncMD4Decode (UINT4 *output, unsigned char *input, unsigned int len)
+ {
+   unsigned int i, j;
+ 
+@@ -320,10 +303,7 @@ unsigned int len;
+ 
+ /* Note: Replace "for loop" with standard memcpy if possible.
+  */
+-static void RsyncMD4_memcpy (output, input, len)
+-POINTER output;
+-POINTER input;
+-unsigned int len;
++static void RsyncMD4_memcpy (POINTER output, POINTER input, unsigned int len)
+ {
+   unsigned int i;
+ 
+@@ -333,10 +313,7 @@ unsigned int len;
+ 
+ /* Note: Replace "for loop" with standard memset if possible.
+  */
+-static void RsyncMD4_memset (output, value, len)
+-POINTER output;
+-int value;
+-unsigned int len;
++static void RsyncMD4_memset (POINTER output, int value, unsigned int len)
+ {
+   unsigned int i;
+ 
+--- a/FileList/flist.c
++++ b/FileList/flist.c
+@@ -861,7 +861,7 @@ void clean_flist(struct file_list *flist
+         return;
+ 
+     qsort(flist->files, flist->count,
+-        sizeof flist->files[0], (int (*)())file_compare);
++        sizeof flist->files[0], (int (*)(const void*, const void *))file_compare);
+ 
+     for (i = no_dups? 0 : flist->count; i < flist->count; i++) {
+         if (flist->files[i]->basename) {
+@@ -1166,7 +1166,7 @@ char *sanitize_path(char *dest, const ch
+     return dest;
+ }
+ 
+-void out_of_memory(char *str)
++void out_of_memory(const char *str)
+ {               
+     fprintf(stderr, "ERROR: File::RsyncP out of memory in %s\n", str);
+     exit(1);
+--- a/FileList/hlink.c
++++ b/FileList/hlink.c
+@@ -127,7 +127,7 @@ void init_hard_links(struct file_list *f
+     }
+ 
+     qsort(hlink_list, hlink_count,
+-        sizeof hlink_list[0], (int (*)()) hlink_compare);
++        sizeof hlink_list[0], (int (*)(const void *, const void *)) hlink_compare);
+ 
+     if (!hlink_count) {
+         free(hlink_list);
+--- a/FileList/pool_alloc.c
++++ b/FileList/pool_alloc.c
+@@ -9,7 +9,7 @@ struct alloc_pool
+ 	struct pool_extent	*live;		/* current extent for
+ 						 * allocations		*/
+ 	struct pool_extent	*free;		/* unfreed extent list	*/
+-	void			(*bomb)();
++	void			(*bomb)(const char *);
+ 						/* function to call if
+ 						 * malloc fails		*/
+ 	int			flags;
+@@ -45,7 +45,7 @@ struct align_test {
+ 
+ alloc_pool_t
+ pool_create(size_t size, size_t quantum,
+-    void (*bomb)(char *), int flags)
++    void (*bomb)(const char *), int flags)
+ {
+ 	struct alloc_pool	*pool;
+ 
+@@ -95,7 +95,7 @@ pool_destroy(alloc_pool_t p)
+ }
+ 
+ void *
+-pool_alloc(alloc_pool_t p, size_t len, char *bomb)
++pool_alloc(alloc_pool_t p, size_t len, const char *bomb)
+ {
+ 	struct alloc_pool *pool = (struct alloc_pool *) p;
+ 	if (!pool)
+--- a/FileList/pool_alloc.h
++++ b/FileList/pool_alloc.h
+@@ -7,9 +7,9 @@
+ 
+ typedef void *alloc_pool_t;
+ 
+-alloc_pool_t pool_create(size_t size, size_t quantum, void (*bomb)(char *), int flags);
++alloc_pool_t pool_create(size_t size, size_t quantum, void (*bomb)(const char *), int flags);
+ void pool_destroy(alloc_pool_t pool);
+-void *pool_alloc(alloc_pool_t pool, size_t size, char *bomb);
++void *pool_alloc(alloc_pool_t pool, size_t size, const char *bomb);
+ void pool_free(alloc_pool_t pool, size_t size, void *addr);
+ 
+ #define pool_talloc(pool, type, count, bomb) \
+--- a/FileList/proto.h
++++ b/FileList/proto.h
+@@ -229,7 +229,7 @@ void set_nonblocking(int fd);
+ void set_blocking(int fd);
+ int fd_pair(int fd[2]);
+ void print_child_argv(char **cmd);
+-void out_of_memory(char *str);
++void out_of_memory(const char *str);
+ void overflow(char *str);
+ int set_modtime(char *fname, time_t modtime);
+ int create_directory_path(char *fname, int base_umask);
+
