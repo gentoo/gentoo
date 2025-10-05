@@ -1,0 +1,83 @@
+Fix this warnings and errors
+---
+ttcp.c:410:27: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘long unsigned int’ [-Wformat=]
+  410 |                 "ttcp%s: %d I/O calls, msec/call = %.2f, calls/sec = %.2f\n",
+      |                          ~^
+      |                           |
+      |                           int
+      |                          %ld
+  411 |                 trans?"-t":"-r",
+  412 |                 numCalls,
+      |                 ~~~~~~~~   
+      |                 |
+      |                 long unsigned int
+ttcp.c:418:43: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 4 has type ‘char *’ [-Wformat=]
+  418 |                 "ttcp%s: buffer address %#x\n",
+      |                                         ~~^
+      |                                           |
+      |                                           unsigned int
+      |                                         %#s
+  419 |                 trans?"-t":"-r",
+  420 |                 buf);
+      |                 ~~~                        
+      |                 |
+      |                 char *
+ttcp.c:425:24: warning: format not a string literal and no format arguments [-Wformat-security]
+  425 |         fprintf(stderr,Usage);
+      |                        ^~~~~
+ttcp.c: In function ‘read_timer’:
+ttcp.c:540:1: error: type of ‘len’ defaults to ‘int’ [-Wimplicit-int]
+  540 | read_timer(str,len)
+      | ^~~~~~~~~~
+ttcp.c: In function ‘delay’:
+ttcp.c:787:1: error: type of ‘us’ defaults to ‘int’ [-Wimplicit-int]
+  787 | delay(us)
+      | ^~~~~
+make: *** [<builtin>: ttcp] Error 1
+---
+
+--- a/ttcp.c
++++ b/ttcp.c
+@@ -407,7 +407,7 @@
+ 		nbytes, cput, outfmt(nbytes/cput));
+ 	}
+ 	fprintf(stderr,
+-		"ttcp%s: %d I/O calls, msec/call = %.2f, calls/sec = %.2f\n",
++		"ttcp%s: %lu I/O calls, msec/call = %.2f, calls/sec = %.2f\n",
+ 		trans?"-t":"-r",
+ 		numCalls,
+ 		1024.0 * realt/((double)numCalls),
+@@ -415,14 +415,14 @@
+ 	fprintf(stderr,"ttcp%s: %s\n", trans?"-t":"-r", stats);
+ 	if (verbose) {
+ 	    fprintf(stderr,
+-		"ttcp%s: buffer address %#x\n",
++		"ttcp%s: buffer address %#lx\n",
+ 		trans?"-t":"-r",
+-		buf);
++		(uintptr_t) buf);
+ 	}
+ 	exit(0);
+ 
+ usage:
+-	fprintf(stderr,Usage);
++	fprintf(stderr, "%s", Usage);
+ 	exit(1);
+ }
+ 
+@@ -539,6 +539,7 @@
+ double
+ read_timer(str,len)
+ char *str;
++int len;
+ {
+ 	struct timeval timedol;
+ 	struct rusage ru1;
+@@ -785,6 +786,7 @@
+ 
+ void
+ delay(us)
++unsigned int us;
+ {
+ 	struct timeval tv;
+ 
