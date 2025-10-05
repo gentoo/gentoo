@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit pax-utils readme.gentoo-r1 systemd tmpfiles
 
 QA_PREBUILT="usr/bin/rslsync"
-BASE_URI="https://download-cdn.resilio.com/stable/linux-@arch@/${PN}_@arch@.tar.gz"
+BASE_URI="https://download-cdn.resilio.com/stable/linux/@arch@/0/${PN}_@arch@.tar.gz"
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://www.resilio.com"
