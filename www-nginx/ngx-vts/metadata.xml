@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		nginx-module-vts is an NGINX module that provides access to virtual host status information.
+		It contains the current status such as servers, upstreams, caches. This is similar to the
+		live activity monitoring of NGINX Plus.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/vozlt/nginx-module-vts/issues</bugs-to>
+		<remote-id type="github">vozlt/nginx-module-vts</remote-id>
+		<changelog>https://github.com/vozlt/nginx-module-vts/blob/master/CHANGELOG.md</changelog>
+	</upstream>
+</pkgmetadata>
