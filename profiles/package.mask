@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
+# Last release 8 years ago, broken by CMake 4, unclear purpose without any
+# revdeps. Bugs #800608, #866377, #955465. Removal on 2025-11-01.
+dev-build/cmake-fedora
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-10-05)
 # New major nasm version that seem to break several packages (can
 # confirm at least dav1d, x265, and x264 wrt bug #963796). Mask for
