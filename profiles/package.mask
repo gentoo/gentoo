@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-10-05)
+# Fails to build with to-be-stabled CMake 4, Qt 5, no upstream release in
+# 5 years (despite much activity), and a bunch of other open bugs in need
+# of attention.
+# Removal on 2025-11-04.  Bug #957460.
+media-sound/lmms
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
 # Dead upstream, replaced by sci-libs/pdal in most places.
 # Many bugs: #725938, #742668, #944868, #957235, #961718
