@@ -16,4 +16,7 @@
 		will allow you to unprovision management features, configured in
 		Client Control Mode (CCM).
 	</longdescription>
+	<upstream>
+		<remote-id type="github">intel/INTEL-SA-00075-Linux-Detection-And-Mitigation-Tools</remote-id>
+	</upstream>
 </pkgmetadata>
