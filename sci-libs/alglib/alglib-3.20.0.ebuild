@@ -17,6 +17,8 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+BDEPEND=">=dev-build/cmake-3.31"
+
 src_prepare() {
 	cp "${FILESDIR}"/CMakeLists.txt-3.20.0 CMakeLists.txt || die
 	cmake_src_prepare

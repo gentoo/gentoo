@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.31)
 
 # Based on: https://src.fedoraproject.org/rpms/alglib/blob/rawhide/f/CMakeLists.txt
 
