@@ -14,8 +14,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="examples readline sysprof test"
 RESTRICT="!test? ( test )"
 
+# <glib-2.86.0 for bug #963815
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
+	<dev-libs/glib-2.86.0:2
 	dev-libs/libffi:=
 	>=dev-libs/gobject-introspection-1.72.0:=
 	dev-lang/spidermonkey:128
