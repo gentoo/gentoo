@@ -150,6 +150,7 @@ multilib_src_configure() {
 		$(use asm || echo "--disable-asm")
 
 		GPG_ERROR_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpg-error-config"
+		GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
 	)
 
 	if use kernel_linux; then
