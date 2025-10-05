@@ -83,6 +83,7 @@ QA_MULTILIB_PATHS="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-elogind.patch
+	"${FILESDIR}"/${P}-dbusmock.patch
 )
 
 python_check_deps() {
