@@ -135,7 +135,7 @@ src_install() {
 	if use doc; then
 		dodoc doc/*.pdf
 		docinto html
-		dodoc doc/*.{css,html,png} doc/COPYRIGHT
+		dodoc doc/*.{css,html} doc/COPYRIGHT
 	fi
 
 	if use vim-syntax; then
