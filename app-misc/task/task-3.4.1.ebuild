@@ -384,6 +384,8 @@ LICENSE+="
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND="dev-build/corrosion"
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -393,16 +395,21 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DSYSTEM_CORROSION=ON
 		-DENABLE_TLS_NATIVE_ROOTS=ON
 		-DTASK_DOCDIR="share/doc/${PF}"
 		-DTASK_RCDIR="share/${PN}/rc"
 	)
 
-	cmake_src_configure
+	cargo_env cmake_src_configure
+}
+
+src_compile() {
+	cargo_env cmake_src_compile
 }
 
 src_install() {
-	cmake_src_install
+	cargo_env cmake_src_install
 
 	# Shell completions
 	newbashcomp scripts/bash/task.sh task
