@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
+# Preparation for sci-geosciences/liblas removal. Bug #957235
+<=dev-games/openscenegraph-3.6.5-r117 las
+<=dev-games/openscenegraph-openmw-3.6_p20221115-r2 las
+
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-10-03)
 # No suitable versions of dev-libs/protobuf available.
 =dev-java/protobuf-java-4.32.1 system-protoc
