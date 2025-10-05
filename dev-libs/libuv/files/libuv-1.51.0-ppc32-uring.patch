@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/941738
+
+There are reports of this working with libuv-1.51.0 and cmake-4.1.2 but
+the fix was likely on the kernel side which means it's not something we
+can rely on, especially for an arch like ppc32.
+
+This could be submitted upstream if we can identify what actually fixed
+it and therefore the first good kernel version to check for, as we do
+for hppa.
+--- a/src/unix/linux.c
++++ b/src/unix/linux.c
+@@ -464,6 +464,9 @@ static int uv__use_io_uring(uint32_t flags) {
+ #elif defined(__powerpc64__) || defined(__ppc64__)
+   /* See https://github.com/libuv/libuv/issues/4283. */
+   return 0; /* Random SIGSEGV in signal handler. */
++#elif defined(__powerpc__) && !defined(__powerpc64__)
++  /* See https://bugs.gentoo.org/941738. */
++  return 0; /* Crash in uv__spawn_and_init_child_fork. */
+ #else
+   /* Ternary: unknown=0, yes=1, no=-1 */
+   static _Atomic int use_io_uring;
