@@ -43,6 +43,13 @@ src_prepare() {
 		# Replace MagickCore in globals.cpp
 		sed -i -e "s/MagickCore/MagickLib/" "${S}/src/globals.cpp" ||
 			die "Failed to sed globals.cpp"
+
+		# GraphicsMagick++ doesn't implement a pingImages() function.
+		# Therefore, use readImages(). This may decrease performance,
+		# as pingImages() only reads image metadata.
+		sed -i -e "s/pingImages/readImages/" \
+			"${S}/src/Modules/multipageconverter.cpp" ||
+			die "Failed to replace pingImages() with readImages()"
 	fi
 }
 
