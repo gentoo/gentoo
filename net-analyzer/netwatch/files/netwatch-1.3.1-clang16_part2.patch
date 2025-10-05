@@ -1,0 +1,40 @@
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -955,7 +955,7 @@
+     if (WIFEXITED (status))
+     {
+       sprintf (&status_lines[3][3],
+-	       "NETRESOLV normal termination... EXIT #%d for %ld",
++	       "NETRESOLV normal termination... EXIT #%d for %d",
+ 	       WEXITSTATUS (status), killpid);
+       cur_status_line = 3;
+ 
+@@ -963,7 +963,7 @@
+     else if (WIFSIGNALED (status))
+     {
+       sprintf (&status_lines[3][3],
+-	       "NETRESOLV Abnormal termination... signal #%d for %ld",
++	       "NETRESOLV Abnormal termination... signal #%d for %d",
+ 	       WTERMSIG (status), killpid);
+       cur_status_line = 3;
+     }
+@@ -2194,7 +2194,7 @@
+ 	}
+ 	else
+ 	{
+-		if (sscanf(ssh_env,"%s %u %u",ssh_orig_addr_asc,&ssh_orig_port,&ssh_dest_port)!=3)
++		if (sscanf(ssh_env,"%s %hu %hu",ssh_orig_addr_asc,&ssh_orig_port,&ssh_dest_port)!=3)
+ 			ssh_mask=0;
+ 		else
+ 		{
+--- a/netwatch.h
++++ b/netwatch.h
+@@ -220,6 +220,7 @@
+ char *servicenm( char *s, int port);
+ void uthread_wait( long usec);
+ int dokeyin (int force);
++void setuphelp();
+ 
+ extern char *simfmt;
+ 
+Двоичные файлы a/netwatch.o и b/netwatch.o различаются
