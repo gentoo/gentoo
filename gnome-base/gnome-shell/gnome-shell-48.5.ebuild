@@ -54,6 +54,7 @@ DEPEND="
 
 	>=media-libs/libpulse-2[glib]
 	dev-libs/libical:=
+	x11-libs/libXext
 	>=x11-libs/libXfixes-5.0
 
 	gui-libs/gtk:4[introspection]
