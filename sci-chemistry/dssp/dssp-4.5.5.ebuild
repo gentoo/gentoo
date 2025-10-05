@@ -10,7 +10,7 @@ SRC_URI="https://github.com/PDB-REDO/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 # doc disabled as it only generates a PDF from the manpage for now
 # https://github.com/PDB-REDO/dssp/issues/64
 IUSE="test"
