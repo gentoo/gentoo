@@ -15,10 +15,18 @@ KEYWORDS="amd64 arm64 ~ppc64 x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+BDEPEND=">=dev-build/cmake-3.31"
+
 PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch" # TODO: upstream
+	"${FILESDIR}/${P}-cmake4.patch" # bug 955895
 	"${FILESDIR}/${P}-clang-19-const.patch"
 )
+
+src_prepare() {
+	rm -rv lib/doctest || die # unused bundled stuff using <CMake-3.5
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
