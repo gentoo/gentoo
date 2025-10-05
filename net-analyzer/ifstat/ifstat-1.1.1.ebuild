@@ -12,9 +12,12 @@ SRC_URI="https://github.com/matttbe/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="snmp"
+IUSE="snmp ssl"
 
-DEPEND="snmp? ( >=net-analyzer/net-snmp-5.0 )"
+DEPEND="
+	snmp? ( >=net-analyzer/net-snmp-5.0 )
+	ssl? ( dev-libs/openssl )
+	"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -30,5 +33,8 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with snmp) --enable-optim
+	econf \
+		$(use_with snmp) \
+		$(use_with ssl libcrypto) \
+		--with-ifmib
 }
