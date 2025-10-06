@@ -38,6 +38,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.46-libxkbcommon-2.11-tests.patch
+)
+
 python_check_deps() {
 	use test || return 0
 	python_has_version \
@@ -51,7 +55,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 
 	# Remove pytest timeout
 	sed -i -e "/test('pytest'/,/)$/ { s/timeout: [0-9]*/timeout: 0/ }" meson.build || die
