@@ -30,7 +30,7 @@ DUNE_PACKAGES=(
 )
 
 RDEPEND="
-	>=sci-mathematics/coq-${PV}
+	>=sci-mathematics/coq-${PV}:=
 "
 DEPEND="
 	${RDEPEND}
