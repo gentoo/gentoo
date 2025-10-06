@@ -189,30 +189,22 @@ my_test() {
 	local -x OMP_NUM_THREADS=1
 	local -x OPENBLAS_NUM_THREADS=1
 
-	local failures=()
 	local backend
 	for backend in "${@}"; do
-		# TODO: remove this, and XFAIL them properly when cmake.eclass
-		# is fixed to respect nonfatal, https://bugs.gentoo.org/961929
+		local args=()
 		if [[ ${backend} == Mkl* ]]; then
-			einfo "Skipping ${backend} tests, XFAIL"
-			continue
+			# XFAIL
+			args+=( -E 'cblat[23]' )
 		fi
 
 		local -x FLEXIBLAS_TEST=${backend}
 		local log=${BUILD_DIR}/Testing/Temporary/LastTest.log
 		einfo "Testing backend ${backend}"
-		if ! nonfatal cmake_src_test; then
-			failures+=( "${backend}" )
-		fi
+		cmake_src_test "${args[@]}"
 		if grep -q 'BLAS backend .* not found' "${log}"; then
 			die "Backend ${backend} failed to load while testing, see ${log}"
 		fi
 	done
-
-	if [[ ${failures[@]} ]]; then
-		die "Test runs failed for backends: ${failures[*]}"
-	fi
 }
 
 src_test() {
