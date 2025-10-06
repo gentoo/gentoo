@@ -1,0 +1,24 @@
+--- a/efi/wrapper.h
++++ b/efi/wrapper.h
+@@ -26,6 +26,21 @@
+ #define __packed	__attribute__((packed))
+ #define OFFSETOF(t,m)	((size_t)&((t *)0)->m)
+
++#include <stdint.h>
++
++#ifndef __uint8_t
++#define __uint8_t uint8_t
++#endif
++#ifndef __uint16_t
++#define __uint16_t uint16_t
++#endif
++#ifndef __uint32_t
++#define __uint32_t uint32_t
++#endif
++#ifndef __uint64_t
++#define __uint64_t uint64_t
++#endif
++
+ struct header {
+ 	__uint16_t msdos_signature;
+ 	__uint8_t _pad1[0x16];

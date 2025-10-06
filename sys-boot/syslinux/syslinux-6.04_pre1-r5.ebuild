@@ -48,6 +48,7 @@ src_prepare() {
 		"${FILESDIR}/syslinux-6.03-sysmacros.patch"
 		"${FILESDIR}/${PV}"
 		"${FILESDIR}/syslinux-6.04-binutils-2.41.patch"
+		"${FILESDIR}/syslinux-musl.patch"
 	)
 	default
 
