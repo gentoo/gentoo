@@ -13,7 +13,7 @@ inherit flag-o-matic python-any-r1 qt5-build
 
 DESCRIPTION="The QML and Quick modules for the Qt5 framework"
 
-IUSE="gles2-only +jit localstorage vulkan +widgets"
+IUSE="cpu_flags_x86_sse2 gles2-only +jit localstorage vulkan +widgets"
 
 # qtgui[gles2-only=] is needed because of bug 504322
 DEPEND="
@@ -27,6 +27,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"
+REQUIRED_USE="jit? (
+	x86? ( cpu_flags_x86_sse2 )
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
