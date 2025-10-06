@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-ml/extlib-1.7.8:=[ocamlopt?]
 	dev-ml/ocamlgraph:=[ocamlopt?]
 	dev-ml/re:=[ocamlopt?]
+	dev-ml/stdlib-shims:=[ocamlopt?]
 	dev-ml/parmap:=[ocamlopt?]
 	dev-ml/ocaml-expat:=[ocamlopt?]
 	dev-ml/xml-light:=[ocamlopt?]
