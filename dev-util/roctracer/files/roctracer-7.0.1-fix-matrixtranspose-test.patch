@@ -1,0 +1,20 @@
+In libc++ `std::__all` is defined, causing `reference to '__all' is ambiguous error`
+(clashes with `int __all(int predicate)` from /usr/include/hip/amd_detail/amd_warp_functions.h)
+
+Upstream PR: https://github.com/ROCm/rocm-systems/pull/1256
+--- a/test/app/MatrixTranspose_test.cpp
++++ b/test/app/MatrixTranspose_test.cpp
+@@ -22,13 +22,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#ifdef __cplusplus
+-#include <cstdlib>
+-using namespace std;
+-#else
+-#include <stdlib.h>
+-#endif
+-
+ // roctx header file
+ #include <roctx.h>
+ // roctracer extension API
