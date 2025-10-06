@@ -9,7 +9,10 @@ DESCRIPTION="Efficient I/O with io_uring"
 HOMEPAGE="https://github.com/axboe/liburing"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/axboe/liburing.git"
+	EGIT_REPO_URI="
+		https://git.kernel.org/pub/scm/linux/kernel/git/axboe/liburing.git
+		https://github.com/axboe/liburing.git
+	"
 	S="${WORKDIR}"/liburing-${PV}
 else
 	SRC_URI="
