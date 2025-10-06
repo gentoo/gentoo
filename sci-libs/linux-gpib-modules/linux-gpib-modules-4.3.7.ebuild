@@ -29,7 +29,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	# don't fix debian bugs if they break gentoo
-	"${FILESDIR}/${PN}-9999-depmod.patch"
+	"${FILESDIR}/${PN}-4.3.7-depmod.patch"
 )
 
 MODULES_KERNEL_MIN=4.0

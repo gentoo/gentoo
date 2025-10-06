@@ -1,0 +1,22 @@
+Depmod fails here since we're still in DESTDIR and the actual target path may
+not exist...
+
+
+diff --git a/Makefile b/Makefile
+index 356bba54..8f5b4b63 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,13 +27,9 @@ clean:
+                 M="$(GPIB_SRCDIR)/drivers/gpib" \
+                 GPIB_TOP_DIR=$(GPIB_SRCDIR) 
+ 
+-#We run depmod explicitly because the depmod.sh script run
+-#by modules_install fails on Debian due to it failing to find
+-#the System.map file.
+ install:
+ 	$(MAKE) -C $(LINUX_SRCDIR) V=$(VERBOSE) modules_install\
+                 M="$(GPIB_SRCDIR)/drivers/gpib" \
+                 GPIB_TOP_DIR=$(GPIB_SRCDIR) \
+                 INSTALL_MOD_DIR=gpib
+-	/sbin/depmod -A
+ 
