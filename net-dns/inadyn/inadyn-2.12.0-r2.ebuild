@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd tmpfiles
+inherit autotools systemd tmpfiles
 
 DESCRIPTION="Dynamic DNS client with multiple SSL/TLS library support"
 HOMEPAGE="https://github.com/troglobit/inadyn"
@@ -30,6 +30,13 @@ RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${PN}-2.12.0-musl.patch" )
+
+src_prepare() {
+	default
+
+	# Needed for musl patch
+	eautoreconf
+}
 
 src_configure() {
 	# Tests would need a custom config file in homedir per configure help?
