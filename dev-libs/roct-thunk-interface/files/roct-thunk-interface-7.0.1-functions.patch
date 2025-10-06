@@ -1,0 +1,13 @@
+https://github.com/ROCm/rocm-systems/issues/284
+--- a/src/libhsakmt.ver
++++ b/src/libhsakmt.ver
+@@ -89,6 +89,9 @@ hsaKmtPcSamplingDestroy;
+ hsaKmtPcSamplingStart;
+ hsaKmtPcSamplingStop;
+ hsaKmtPcSamplingSupport;
++hsaKmtCreateQueueExt;
++hsaKmtRegisterGraphicsHandleToNodesExt;
++hsaKmtModelEnabled;
+ local: *;
+ };
+ 
