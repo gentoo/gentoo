@@ -85,6 +85,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.0-findhyphen.patch
 	"${FILESDIR}"/${PN}-1.7.0-dont-install-qtadvanceddocking.patch # bugs 961290, 960017
 	"${FILESDIR}"/${PN}-1.7.0-fix-icon-version.patch
+	"${FILESDIR}"/${P}-poppler-25.10.0.patch # from trunk
 )
 
 src_prepare() {
