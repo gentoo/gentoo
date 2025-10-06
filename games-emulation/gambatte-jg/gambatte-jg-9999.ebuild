@@ -3,7 +3,10 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+DOCS_BUILDER="doxygen"
+DOCS_DIR="objs/doc"
+
+inherit docs toolchain-funcs
 
 MY_PN=${PN%-*}
 MY_P=${MY_PN}-${PV}
@@ -25,7 +28,10 @@ LICENSE="
 "
 SLOT="1"
 IUSE="examples +jgmodule shared"
-REQUIRED_USE="|| ( examples jgmodule shared )"
+REQUIRED_USE="
+	|| ( examples jgmodule shared )
+	doc? ( shared )
+"
 
 DEPEND="
 	examples? (
@@ -61,6 +67,8 @@ src_compile() {
 		${MY_MAKEOPTS}
 	)
 	emake "${mymakeargs[@]}"
+	use doc && emake doxyfile
+	docs_compile
 }
 
 src_install() {
@@ -72,4 +80,5 @@ src_install() {
 		${MY_MAKEOPTS}
 	)
 	emake install "${mymakeargs[@]}"
+	use doc && einstalldocs
 }
