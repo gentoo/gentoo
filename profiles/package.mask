@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-10-06)
+# Refcount errors that trigger crashes in dev-python/moto tests
+# tests/test_xray/test_xray_client.py.  TODO: investigate.
+=dev-python/pymongo-4.15.2
+
 # Sam James <sam@gentoo.org> (2025-10-05)
 # Fails to build with to-be-stabled CMake 4, Qt 5, no upstream release in
 # 5 years (despite much activity), and a bunch of other open bugs in need
