@@ -51,6 +51,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.1-fix-desktop-file-for-cmake.patch
 	"${FILESDIR}"/${PN}-2.2.1-set-metainfo-dir.patch
 	"${FILESDIR}"/${PN}-2.2.1-ffmpeg-8.patch
+	"${FILESDIR}"/${PN}-2.2.1-musl.patch
 )
 
 src_configure() {
