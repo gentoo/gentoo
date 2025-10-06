@@ -12,7 +12,7 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/localsearch"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="cue exif gif gsf +gstreamer iptc +iso +jpeg landlock +pdf +playlist raw seccomp test +tiff upower +xml xmp xps"
+IUSE="cue exif gif gsf +gstreamer iptc +iso +jpeg +pdf +playlist raw seccomp test +tiff upower +xml xmp xps"
 
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
@@ -121,7 +121,10 @@ src_configure() {
 		-Dtext=true
 		-Dunzip_ps_gz_files=true # spawns gunzip
 		# Broken with our library layout for libstdc++ (bug #957705)
-		$(meson_feature landlock)
+		# Once https://gitlab.gnome.org/GNOME/localsearch/-/issues/368 is fixed,
+		# we should add a USE flag for it but likely give it the same treatment
+		# as seccomp (i.e. package.use.force).
+		-Dlandlock=disabled
 		$(meson_feature cue)
 		$(meson_feature exif)
 		$(meson_feature gif)
