@@ -68,6 +68,11 @@ all_ruby_prepare() {
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
+each_ruby_prepare() {
+	sed -e "/sh/ s:\"bundle\", \"exec\", :\"${RUBY}\", \"-S\", :" \
+		-i Rakefile || die
+}
+
 all_ruby_compile() {
 	all_fakegem_compile
 
