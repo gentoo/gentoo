@@ -1,0 +1,10 @@
+--- a/lib/xe/xe_sriov_debugfs.c
++++ b/lib/xe/xe_sriov_debugfs.c
+@@ -5,6 +5,7 @@
+ 
+ #include <dirent.h>
+ #include <fcntl.h>
++#include <limits.h>
+ 
+ #include "drmtest.h"
+ #include "igt_debugfs.h"
