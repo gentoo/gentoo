@@ -59,7 +59,6 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dxkb-base="${EPREFIX}/usr/share/X11/xkb"
 		-Dcompat-rules=true
 	)
 	meson_src_configure
