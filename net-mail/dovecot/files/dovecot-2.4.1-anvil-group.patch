@@ -1,0 +1,26 @@
+# bug 962939
+diff --git a/src/anvil/anvil-settings.c b/src/anvil/anvil-settings.c
+index cf96ae7e1f4..15cd03957a1 100644
+--- a/src/anvil/anvil-settings.c
++++ b/src/anvil/anvil-settings.c
+@@ -33,7 +33,8 @@ const struct setting_keyvalue anvil_service_settings_defaults[] = {
+ 	{ "unix_listener", "anvil anvil-auth-penalty" },
+ 
+ 	{ "unix_listener/anvil/path", "anvil" },
+-	{ "unix_listener/anvil/mode", "0600" },
++	{ "unix_listener/anvil/mode", "0660" },
++	{ "unix_listener/anvil/group", "$SET:default_internal_group" },
+ 
+ 	{ "unix_listener/anvil-auth-penalty/path", "anvil-auth-penalty" },
+ #ifdef DOVECOT_PRO_EDITION
+diff --git a/src/lib-settings/settings-history-core.txt b/src/lib-settings/settings-history-core.txt
+index 2e0a9f6062d..71d08ffaaa5 100644
+--- a/src/lib-settings/settings-history-core.txt
++++ b/src/lib-settings/settings-history-core.txt
+@@ -1,4 +1,6 @@
+ default	service/lmtp/service_restart_request_count	unlimited	2.4.1	
+ default	service/auth/unix_listener/auth-userdb/unix_listener_group		2.4.1	
++default	service/anvil/unix_listener/anvil/unix_listener_mode	0600	2.4.1	
++default	service/anvil/unix_listener/anvil/unix_listener_group		2.4.1	
+ default	mail_cache_fields	flags	2.4.1	
+ default	lmtp_user_concurrency_limit	0	2.4.1	
