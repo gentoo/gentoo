@@ -6,6 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">mad</remote-id>
+		<remote-id type="sourceforge">mad</remote-id><!-- old -->
+		<remote-id type="codeberg">tenacityteam/libid3tag</remote-id>
 	</upstream>
 </pkgmetadata>
