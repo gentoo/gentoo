@@ -93,6 +93,10 @@ src_prepare() {
 	# which in turn requires discovery in Autoconf, something that upstream deeply resents.
 	sed -e "/DirectoryMode=/a ExecStartPost=-${EPREFIX}/bin/systemctl --user set-environment SSH_AUTH_SOCK=%t/gnupg/S.gpg-agent.ssh" \
 		-i "${T}"/gpg-agent-ssh.socket || die
+
+	# Since 2.5.3, --supervised is called --deprecated-supervised.  See
+	# https://dev.gnupg.org/rGa019a0fcd8dfb9d1eae5bc991fdd54b7cf55641e
+	sed -i "s/--supervised/--deprecated-supervised/g" "${T}"/*.service || die
 }
 
 my_src_configure() {
