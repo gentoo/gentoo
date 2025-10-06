@@ -31,7 +31,10 @@ RDEPEND="
 	xinerama? ( x11-libs/libXinerama )
 	xpm? ( x11-libs/libXpm )"
 
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+	x11-base/xorg-proto
+"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
