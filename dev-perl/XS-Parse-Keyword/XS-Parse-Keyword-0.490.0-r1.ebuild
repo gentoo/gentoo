@@ -19,5 +19,4 @@ BDEPEND="
 	>=dev-perl/ExtUtils-CChecker-0.110.0
 	>=dev-perl/Module-Build-0.400.400
 	>=virtual/perl-ExtUtils-ParseXS-3.160.0
-	test? ( virtual/perl-Test2-Suite )
 "
