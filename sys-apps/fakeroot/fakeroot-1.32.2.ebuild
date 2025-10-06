@@ -25,6 +25,11 @@ BDEPEND="nls? ( app-text/po4a )"
 
 DOCS=( AUTHORS BUGS DEBUG README doc/README.saving )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.32.2-musl.patch"
+	"${FILESDIR}/${PN}-1.32.2-configure-id_t.patch"
+)
+
 src_prepare() {
 	default
 
