@@ -3,16 +3,10 @@
 
 EAPI=8
 
-inherit pax-utils readme.gentoo-r1 systemd tmpfiles
-
-BASE_URI="https://download-cdn.resilio.com/stable/linux/@arch@/0/${PN}_@arch@.tar.gz"
+inherit edo pax-utils readme.gentoo-r1 systemd tmpfiles
 
 DESCRIPTION="Resilient, fast and scalable file synchronization tool"
 HOMEPAGE="https://www.resilio.com"
-SRC_URI="
-	amd64? ( ${BASE_URI//@arch@/x64} )
-	arm64? ( ${BASE_URI//@arch@/arm64} )
-"
 
 S="${WORKDIR}"
 LICENSE="all-rights-reserved"
@@ -26,12 +20,29 @@ RDEPEND="
 	acct-user/rslsync
 	virtual/libcrypt:=
 "
+BDEPEND="net-misc/wget"
 
 QA_PREBUILT="usr/bin/rslsync"
 
 DOC_CONTENTS="You may need to review /etc/resilio-sync/config.json\\n
 Default metadata path is /var/lib/resilio-sync/.sync\\n
 Default web-gui URL is http://localhost:8888/\\n\\n"
+
+src_unpack() {
+	local base_uri="https://download-cdn.resilio.com/stable/linux/@arch@/0/${PN}_@arch@.tar.gz"
+	local uri
+	if use amd64; then
+		uri="${base_uri//@arch@/x64}"
+	elif use arm64; then
+		uri="${base_uri//@arch@/arm64}"
+	else
+		die "arch not supported"
+	fi
+
+	local dest="${T}/${PN}.tar.gz"
+	edo wget -O "${dest}" "${uri}" || die
+	unpack "${dest}"
+}
 
 src_install() {
 	dobin rslsync
