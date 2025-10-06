@@ -18,10 +18,14 @@ IUSE="static-libs"
 PATCHES=(
 	"${FILESDIR}/${PN}-3.6.25-no_acl.patch"
 	"${FILESDIR}/${PN}-3.6.27-loff_t.patch"
+	"${FILESDIR}/${PN}-3.6.27-musl.patch"
 )
 
-# Needed for libuuid
-RDEPEND="sys-apps/util-linux"
+RDEPEND="
+	sys-apps/util-linux
+	sys-fs/e2fsprogs
+	elibc_musl? ( sys-libs/obstack-standalone )
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
@@ -31,6 +35,7 @@ src_prepare() {
 
 src_configure() {
 	append-flags -std=gnu89 #427300
+	use elibc_musl && append-ldflags -lobstack
 
 	local myeconfargs=(
 		--bindir="${EPREFIX}/bin"
