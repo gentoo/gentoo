@@ -93,7 +93,7 @@ jflex_compile() {
 		-d src/main/java \
 		--skel src/main/jflex/skeleton.nested \
 		src/main/jflex/LexScan.flex || die
-	use doc && java-pkg-simple_src_compile
+	java-pkg-simple_src_compile
 }
 
 src_compile() {
@@ -126,17 +126,17 @@ src_test() {
 }
 
 src_install() {
-	if use doc; then
-		dodoc doc/*.pdf
-		docinto html
-		dodoc doc/*.{css,html} doc/COPYRIGHT
-	fi
-
 	java-pkg-simple_src_install
 
 	use ant-task && java-pkg_register-ant-task
 
 	use examples && java-pkg_doexamples examples
+
+	if use doc; then
+		dodoc doc/*.pdf
+		docinto html
+		dodoc doc/*.{css,html} doc/COPYRIGHT
+	fi
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/syntax
