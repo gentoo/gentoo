@@ -1,13 +1,16 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+DOCS_BUILDER="doxygen"
+DOCS_DIR="objs/doc"
+
+inherit docs toolchain-funcs
 
 MY_PN=${PN%-*}
 MY_P=${MY_PN}-${PV}
-DESCRIPTION="Jolly Good ColecoVision Emulator"
+DESCRIPTION="Jolly Good ColecoVision, CreatiVision and My Vision Emulator"
 HOMEPAGE="https://gitlab.com/jgemu/jollycv"
 if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
@@ -18,29 +21,58 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="BSD MIT"
+LICENSE="
+	BSD MIT
+	examples? ( 0BSD )
+"
 SLOT="1"
+IUSE="examples +jgmodule shared"
+REQUIRED_USE="
+	|| ( examples jgmodule shared )
+	doc? ( shared )
+"
 
 DEPEND="
-	media-libs/jg:1=
 	media-libs/speexdsp
+	examples? ( media-libs/libsdl2[sound,video] )
+	jgmodule? ( media-libs/jg:1= )
 "
 RDEPEND="
 	${DEPEND}
-	games-emulation/jgrf
+	jgmodule? ( games-emulation/jgrf )
 "
 BDEPEND="
 	virtual/pkgconfig
 "
 
+src_configure() {
+	local makeopts=(
+		PREFIX="${EPREFIX}"/usr
+		DISABLE_MODULE=$(usex jgmodule 0 1)
+		ENABLE_EXAMPLE=$(usex examples 1 0)
+		ENABLE_SHARED=$(usex shared 1 0)
+	)
+	export MY_MAKEOPTS="${makeopts[@]}"
+}
+
 src_compile() {
-	emake CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
+	local mymakeargs=(
+		CC="$(tc-getCC)"
+		PKG_CONFIG="$(tc-getPKG_CONFIG)"
+		${MY_MAKEOPTS}
+	)
+	emake "${mymakeargs[@]}"
+	use doc && emake doxyfile
+	docs_compile
 }
 
 src_install() {
-	emake install \
-		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}"/usr \
-		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+	local mymakeargs=(
+		DESTDIR="${D}"
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF}
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		${MY_MAKEOPTS}
+	)
+	emake install "${mymakeargs[@]}"
+	use doc && einstalldocs
 }
