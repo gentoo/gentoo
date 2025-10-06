@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
@@ -27,7 +27,7 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-cpp/yaml-cpp
-	hdf5? ( sci-libs/HighFive )
+	hdf5? ( sci-libs/highfive )
 	!lapack? ( sci-libs/sundials:0= )
 	lapack? (
 		>=sci-libs/sundials-6.5.0:0=[lapack?]
