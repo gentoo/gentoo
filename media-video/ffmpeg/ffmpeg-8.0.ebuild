@@ -393,6 +393,8 @@ src_prepare() {
 	if tc-is-lto; then
 		: "$(get-flag -flto)" # get -flto=<val> (e.g. =thin)
 		FFMPEG_ENABLE_LTO=--enable-lto${_#-flto}
+
+		tc-ld-is-mold && tc-is-clang && FFMPEG_ENABLE_LTO= #963835
 	fi
 	filter-lto
 }
