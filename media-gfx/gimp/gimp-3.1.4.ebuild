@@ -64,7 +64,7 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.50.0[X?]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
-	fits? ( sci-libs/cfitsio )
+	fits? ( sci-libs/cfitsio:= )
 	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
