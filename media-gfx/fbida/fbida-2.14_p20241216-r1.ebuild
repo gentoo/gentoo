@@ -35,7 +35,10 @@ RDEPEND="
 		dev-libs/libtsm:=
 	)
 	gif? ( media-libs/giflib:= )
-	pdf? ( app-text/poppler[cairo] )
+	pdf? (
+		!app-text/fbpdf
+		app-text/poppler[cairo]
+	)
 	png? ( media-libs/libpng:= )
 	tiff? ( media-libs/tiff:= )
 	webp? ( media-libs/libwebp:= )
