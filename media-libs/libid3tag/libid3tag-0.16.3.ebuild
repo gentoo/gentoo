@@ -16,3 +16,9 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 
 RDEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	# patches from upstream
+	"${FILESDIR}"/${P}-cmake4.patch
+	"${FILESDIR}"/${P}-fix_c23.patch
+)
