@@ -6,6 +6,9 @@
 		<name>Gentoo Base System</name>
 	</maintainer>
 	<use>
+		<flag name="alternatives">
+		Install renamed, for compatibility with <pkg>app-alternatives/gpg</pkg>.
+		</flag>
 		<flag name="smartcard">
 		Build scdaemon software. Enables usage of OpenPGP cards. For
 		other type of smartcards, try <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.
