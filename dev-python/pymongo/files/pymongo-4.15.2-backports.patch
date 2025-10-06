@@ -1,0 +1,212 @@
+diff --git a/bson/__init__.py b/bson/__init__.py
+index b655e30c2c..6b2ba293a6 100644
+--- a/bson/__init__.py
++++ b/bson/__init__.py
+@@ -1009,7 +1009,7 @@ def _dict_to_bson(
+                 try:
+                     elements.append(_element_to_bson(key, value, check_keys, opts))
+                 except InvalidDocument as err:
+-                    raise InvalidDocument(f"Invalid document {doc} | {err}") from err
++                    raise InvalidDocument(f"Invalid document: {err}", doc) from err
+     except AttributeError:
+         raise TypeError(f"encoder expected a mapping type but got: {doc!r}") from None
+ 
+diff --git a/bson/_cbsonmodule.c b/bson/_cbsonmodule.c
+index be91e41734..bee7198567 100644
+--- a/bson/_cbsonmodule.c
++++ b/bson/_cbsonmodule.c
+@@ -1645,11 +1645,11 @@ static int write_raw_doc(buffer_t buffer, PyObject* raw, PyObject* _raw_str) {
+ }
+ 
+ 
+-/* Update Invalid Document error message to include doc.
++/* Update Invalid Document error to include doc as a property.
+  */
+ void handle_invalid_doc_error(PyObject* dict) {
+     PyObject *etype = NULL, *evalue = NULL, *etrace = NULL;
+-    PyObject *msg = NULL, *dict_str = NULL, *new_msg = NULL;
++    PyObject *msg = NULL, *new_msg = NULL, *new_evalue = NULL;
+     PyErr_Fetch(&etype, &evalue, &etrace);
+     PyObject *InvalidDocument = _error("InvalidDocument");
+     if (InvalidDocument == NULL) {
+@@ -1659,26 +1659,22 @@ void handle_invalid_doc_error(PyObject* dict) {
+     if (evalue && PyErr_GivenExceptionMatches(etype, InvalidDocument)) {
+         PyObject *msg = PyObject_Str(evalue);
+         if (msg) {
+-            // Prepend doc to the existing message
+-            PyObject *dict_str = PyObject_Str(dict);
+-            if (dict_str == NULL) {
+-                goto cleanup;
+-            }
+-            const char * dict_str_utf8 = PyUnicode_AsUTF8(dict_str);
+-            if (dict_str_utf8 == NULL) {
+-                goto cleanup;
+-            }
+             const char * msg_utf8 = PyUnicode_AsUTF8(msg);
+             if (msg_utf8 == NULL) {
+                 goto cleanup;
+             }
+-            PyObject *new_msg = PyUnicode_FromFormat("Invalid document %s | %s", dict_str_utf8, msg_utf8);
++            PyObject *new_msg = PyUnicode_FromFormat("Invalid document: %s", msg_utf8);
++            if (new_msg == NULL) {
++                goto cleanup;
++            }
++            // Add doc to the error instance as a property.
++            PyObject *new_evalue = PyObject_CallFunctionObjArgs(InvalidDocument, new_msg, dict, NULL);
+             Py_DECREF(evalue);
+             Py_DECREF(etype);
+             etype = InvalidDocument;
+             InvalidDocument = NULL;
+-            if (new_msg) {
+-                evalue = new_msg;
++            if (new_evalue) {
++                evalue = new_evalue;
+             } else {
+                 evalue = msg;
+             }
+@@ -1689,7 +1685,7 @@ void handle_invalid_doc_error(PyObject* dict) {
+     PyErr_Restore(etype, evalue, etrace);
+     Py_XDECREF(msg);
+     Py_XDECREF(InvalidDocument);
+-    Py_XDECREF(dict_str);
++    Py_XDECREF(new_evalue);
+     Py_XDECREF(new_msg);
+ }
+ 
+diff --git a/bson/errors.py b/bson/errors.py
+index a3699e704c..ffc117f7ac 100644
+--- a/bson/errors.py
++++ b/bson/errors.py
+@@ -15,6 +15,8 @@
+ """Exceptions raised by the BSON package."""
+ from __future__ import annotations
+ 
++from typing import Any, Optional
++
+ 
+ class BSONError(Exception):
+     """Base class for all BSON exceptions."""
+@@ -31,6 +33,17 @@ class InvalidStringData(BSONError):
+ class InvalidDocument(BSONError):
+     """Raised when trying to create a BSON object from an invalid document."""
+ 
++    def __init__(self, message: str, document: Optional[Any] = None) -> None:
++        super().__init__(message)
++        self._document = document
++
++    @property
++    def document(self) -> Any:
++        """The invalid document that caused the error.
++
++        ..versionadded:: 4.16"""
++        return self._document
++
+ 
+ class InvalidId(BSONError):
+     """Raised when trying to create an ObjectId from invalid data."""
+diff --git a/doc/changelog.rst b/doc/changelog.rst
+index 082c22fafc..7270043d41 100644
+--- a/doc/changelog.rst
++++ b/doc/changelog.rst
+@@ -1,6 +1,15 @@
+ Changelog
+ =========
+ 
++Changes in Version 4.16.0 (XXXX/XX/XX)
++--------------------------------------
++
++PyMongo 4.16 brings a number of changes including:
++
++- Removed invalid documents from :class:`bson.errors.InvalidDocument` error messages as
++  doing so may leak sensitive user data.
++  Instead, invalid documents are stored in :attr:`bson.errors.InvalidDocument.document`.
++
+ Changes in Version 4.15.1 (2025/09/16)
+ --------------------------------------
+ 
+diff --git a/test/test_bson.py b/test/test_bson.py
+index e4cf85c46c..f792db1e89 100644
+--- a/test/test_bson.py
++++ b/test/test_bson.py
+@@ -1163,7 +1163,7 @@ def __repr__(self):
+         ):
+             encode({"t": Wrapper(1)})
+ 
+-    def test_doc_in_invalid_document_error_message(self):
++    def test_doc_in_invalid_document_error_as_property(self):
+         class Wrapper:
+             def __init__(self, val):
+                 self.val = val
+@@ -1173,10 +1173,11 @@ def __repr__(self):
+ 
+         self.assertEqual("1", repr(Wrapper(1)))
+         doc = {"t": Wrapper(1)}
+-        with self.assertRaisesRegex(InvalidDocument, f"Invalid document {doc}"):
++        with self.assertRaisesRegex(InvalidDocument, "Invalid document:") as cm:
+             encode(doc)
++        self.assertEqual(cm.exception.document, doc)
+ 
+-    def test_doc_in_invalid_document_error_message_mapping(self):
++    def test_doc_in_invalid_document_error_as_property_mapping(self):
+         class MyMapping(abc.Mapping):
+             def keys(self):
+                 return ["t"]
+@@ -1192,6 +1193,11 @@ def __len__(self):
+             def __iter__(self):
+                 return iter(["t"])
+ 
++            def __eq__(self, other):
++                if isinstance(other, MyMapping):
++                    return True
++                return False
++
+         class Wrapper:
+             def __init__(self, val):
+                 self.val = val
+@@ -1201,8 +1207,9 @@ def __repr__(self):
+ 
+         self.assertEqual("1", repr(Wrapper(1)))
+         doc = MyMapping()
+-        with self.assertRaisesRegex(InvalidDocument, f"Invalid document {doc}"):
++        with self.assertRaisesRegex(InvalidDocument, "Invalid document:") as cm:
+             encode(doc)
++        self.assertEqual(cm.exception.document, doc)
+ 
+ 
+ class TestCodecOptions(unittest.TestCase):
+diff --git a/bson/_cbsonmodule.c b/bson/_cbsonmodule.c
+index bee7198567..7d184641c5 100644
+--- a/bson/_cbsonmodule.c
++++ b/bson/_cbsonmodule.c
+@@ -1657,26 +1657,28 @@ void handle_invalid_doc_error(PyObject* dict) {
+     }
+ 
+     if (evalue && PyErr_GivenExceptionMatches(etype, InvalidDocument)) {
+-        PyObject *msg = PyObject_Str(evalue);
++        msg = PyObject_Str(evalue);
+         if (msg) {
+             const char * msg_utf8 = PyUnicode_AsUTF8(msg);
+             if (msg_utf8 == NULL) {
+                 goto cleanup;
+             }
+-            PyObject *new_msg = PyUnicode_FromFormat("Invalid document: %s", msg_utf8);
++            new_msg = PyUnicode_FromFormat("Invalid document: %s", msg_utf8);
+             if (new_msg == NULL) {
+                 goto cleanup;
+             }
+             // Add doc to the error instance as a property.
+-            PyObject *new_evalue = PyObject_CallFunctionObjArgs(InvalidDocument, new_msg, dict, NULL);
++            new_evalue = PyObject_CallFunctionObjArgs(InvalidDocument, new_msg, dict, NULL);
+             Py_DECREF(evalue);
+             Py_DECREF(etype);
+             etype = InvalidDocument;
+             InvalidDocument = NULL;
+             if (new_evalue) {
+                 evalue = new_evalue;
++                new_evalue = NULL;
+             } else {
+                 evalue = msg;
++                msg = NULL;
+             }
+         }
+         PyErr_NormalizeException(&etype, &evalue, &etrace);
