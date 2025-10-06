@@ -1,0 +1,23 @@
+Building rocBLAS later fails with: No module named 'Tensile.BuildCommands'
+
+Upstream bug: https://github.com/ROCm/rocm-libraries/issues/1133
+--- a/setup.py
++++ b/setup.py
+@@ -28,7 +28,7 @@
+ # - creates executables for running benchmarking
+ # - installs TensileConfig.cmake so one call find_package(Tensile)
+ ################################################################################
+-from setuptools import setup
++from setuptools import setup, find_namespace_packages
+ import os.path
+ import re
+ 
+@@ -53,7 +53,7 @@ setup(
+   license="MIT",
+   install_requires=readRequirementsFromTxt(),
+   python_requires='>=3.5',
+-  packages=["Tensile"],
++  packages=find_namespace_packages(exclude=["docs"]),
+   package_data={ "Tensile": ["Tensile/cmake/*"] },
+   data_files=[ ("cmake", ["Tensile/cmake/TensileConfig.cmake", "Tensile/cmake/TensileConfigVersion.cmake"]) ],
+   include_package_data=True,

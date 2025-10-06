@@ -59,6 +59,7 @@ distutils_enable_tests pytest
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
+	"${FILESDIR}"/${PN}-6.3.0-use-ninja.patch
 	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
 	"${FILESDIR}"/${PN}-7.0.1-fix-install.patch
 )
