@@ -141,6 +141,10 @@ EPYTEST_RERUNS=5
 EPYTEST_XDIST=1
 # distutils_enable_tests unconditionally touches BDEPEND
 
+PATCHES=(
+	"${FILESDIR}"/${P}-poppler-25.10.patch
+)
+
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
 }

@@ -1,0 +1,42 @@
+From a716a6cd5ffd779b30950f046fce91878fc97b9d Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sun, 5 Oct 2025 00:50:51 +0200
+Subject: [PATCH] Add compatibility with Poppler 25.10 (support for older
+ versions kept)
+
+Fixes #13173
+---
+ frmts/pdf/pdfobject.cpp | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/frmts/pdf/pdfobject.cpp b/frmts/pdf/pdfobject.cpp
+index d8ded01d3e4b..2c5c44ba04d9 100644
+--- a/frmts/pdf/pdfobject.cpp
++++ b/frmts/pdf/pdfobject.cpp
+@@ -1437,7 +1437,12 @@ int64_t GDALPDFStreamPoppler::GetLength(int64_t nMaxSize)
+ 
+ static char *GooStringToCharStart(GooString &gstr)
+ {
+-    auto nLength = gstr.getLength();
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 10)
++    const auto nLength = gstr.size();
++#else
++    const auto nLength = gstr.getLength();
++#endif
+     if (nLength)
+     {
+         char *pszContent = static_cast<char *>(VSI_MALLOC_VERBOSE(nLength + 1));
+@@ -1514,7 +1519,12 @@ char *GDALPDFStreamPoppler::GetRawBytes()
+                  "GDALPDFStreamPoppler::GetRawBytes(): %s", e.what());
+         return nullptr;
+     }
++#if POPPLER_MAJOR_VERSION > 25 ||                                              \
++    (POPPLER_MAJOR_VERSION == 25 && POPPLER_MINOR_VERSION >= 10)
++    m_nRawLength = gstr.size();
++#else
+     m_nRawLength = gstr.getLength();
++#endif
+     return GooStringToCharStart(gstr);
+ }
+ 
