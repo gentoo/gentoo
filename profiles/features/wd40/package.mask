@@ -400,7 +400,7 @@ gnome-extra/gnome-browser-connector
 gnome-extra/gnome-tweaks
 gnome-extra/sushi
 >=media-gfx/libimagequant-4
-media-gfx/gimp
+<media-gfx/gimp-3.0.6
 >=media-libs/libopenraw-0.3.2
 media-plugins/gimp-lqr
 media-video/rav1e
