@@ -1,6 +1,10 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michal Rostecki <vadorovsky@protonmail.com> (2025-11-26)
+# llvm-core/lld supports loong from 17.x.
+<=llvm-core/clang-linker-config-16 default-lld
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-11-13)
 # media-libs/libvmaf is keyworded here
 media-libs/x265 -vmaf
