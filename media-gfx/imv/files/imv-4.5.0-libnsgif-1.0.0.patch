@@ -1,0 +1,231 @@
+https://bugs.gentoo.org/922496
+https://todo.sr.ht/~exec64/imv/55
+https://lists.sr.ht/~exec64/imv-devel/%3C20241113012702.30521-2-reallyjohnreed%40gmail.com%3E
+
+From: John Reed <reallyjohnreed@gmail.com>
+To: ~exec64/imv-devel@lists.sr.ht
+Cc: John Reed <reallyjohnreed+git@gmail.com>
+Subject: [PATCH imv] update libnsgif backend code to match with libnsgif v1.0.0 and re-enable gif viewing
+Date: Tue, 12 Nov 2024 20:27:03 -0500
+Message-ID: <20241113012702.30521-2-reallyjohnreed@gmail.com>
+X-Mailer: git-send-email 2.46.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+From: John Reed <reallyjohnreed+git@gmail.com>
+
+Fixes: https://todo.sr.ht/~exec64/imv/55
+---
+ meson.build            |  2 +-
+ src/backend_libnsgif.c | 92 ++++++++++++++++++++++++++----------------
+ 2 files changed, 58 insertions(+), 36 deletions(-)
+
+--- a/meson.build
++++ b/meson.build
+@@ -125,7 +125,7 @@ foreach backend : [
+   ['libpng', 'dependency', 'libpng', []],
+   ['libjpeg', 'dependency', 'libturbojpeg', []],
+   ['librsvg', 'dependency', 'librsvg-2.0', '>= 2.44'],
+-  ['libnsgif', 'dependency', 'libnsgif', '< 1.0.0'],
++  ['libnsgif', 'dependency', 'libnsgif', '1.0.0'],
+   ['libheif', 'dependency', 'libheif', []],
+   ['libjxl', 'dependency', 'libjxl', []],
+ ]
+--- a/src/backend_libnsgif.c
++++ b/src/backend_libnsgif.c
+@@ -6,7 +6,7 @@
+ #include "source_private.h"
+ 
+ #include <fcntl.h>
+-#include <libnsgif.h>
++#include <nsgif.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/mman.h>
+@@ -14,12 +14,12 @@
+ 
+ struct private {
+   int current_frame;
+-  gif_animation gif;
++  nsgif_t *gif;
+   void *data;
+   size_t len;
+ };
+ 
+-static void* bitmap_create(int width, int height)
++static nsgif_bitmap_t* bitmap_create(int width, int height)
+ {
+   const size_t bytes_per_pixel = 4;
+   return calloc(width * height, bytes_per_pixel);
+@@ -52,7 +52,7 @@ static void bitmap_mark_modified(void *bitmap)
+   (void)bitmap;
+ }
+ 
+-static gif_bitmap_callback_vt bitmap_callbacks = {
++static nsgif_bitmap_cb_vt bitmap_callbacks = {
+   bitmap_create,
+   bitmap_destroy,
+   bitmap_get_buffer,
+@@ -69,24 +69,27 @@ static void free_private(void *raw_private)
+   }
+ 
+   struct private *private = raw_private;
+-  gif_finalise(&private->gif);
++  nsgif_destroy(private->gif);
+   munmap(private->data, private->len);
+   free(private);
+ }
+ 
+ static void push_current_image(struct private *private,
+-    struct imv_image **image, int *frametime)
++    struct imv_image **image, int *frametime, void *gif_frame_data)
+ {
++  const nsgif_info_t *gif_info = nsgif_get_info(private->gif);
++  const nsgif_frame_info_t *frame_info = nsgif_get_frame_info(private->gif, private->current_frame);
++
+   struct imv_bitmap *bmp = malloc(sizeof *bmp);
+-  bmp->width = private->gif.width;
+-  bmp->height = private->gif.height;
++  bmp->width = gif_info->width;
++  bmp->height = gif_info->height;
+   bmp->format = IMV_ABGR;
+   size_t len = 4 * bmp->width * bmp->height;
+   bmp->data = malloc(len);
+-  memcpy(bmp->data, private->gif.frame_image, len);
++  memcpy(bmp->data, gif_frame_data, len);
+ 
+   *image = imv_image_create_from_bitmap(bmp);
+-  *frametime = private->gif.frames[private->current_frame].frame_delay * 10.0;
++  *frametime = frame_info->delay * 10.0;
+ }
+ 
+ static void first_frame(void *raw_private, struct imv_image **image, int *frametime)
+@@ -97,13 +100,14 @@ static void first_frame(void *raw_private, struct imv_image **image, int *framet
+   struct private *private = raw_private;
+   private->current_frame = 0;
+ 
+-  gif_result code = gif_decode_frame(&private->gif, private->current_frame);
+-  if (code != GIF_OK) {
++  void *gif_frame_data;
++  nsgif_error code = nsgif_frame_decode(private->gif, private->current_frame, &gif_frame_data);
++  if (code != NSGIF_OK) {
+     imv_log(IMV_DEBUG, "libnsgif: failed to decode first frame\n");
+     return;
+   }
+ 
+-  push_current_image(private, image, frametime);
++  push_current_image(private, image, frametime, gif_frame_data);
+ }
+ 
+ static void next_frame(void *raw_private, struct imv_image **image, int *frametime)
+@@ -114,15 +118,18 @@ static void next_frame(void *raw_private, struct imv_image **image, int *frameti
+   struct private *private = raw_private;
+ 
+   private->current_frame++;
+-  private->current_frame %= private->gif.frame_count;
+ 
+-  gif_result code = gif_decode_frame(&private->gif, private->current_frame);
+-  if (code != GIF_OK) {
++  const nsgif_info_t *gif_info = nsgif_get_info(private->gif);
++  private->current_frame %= gif_info->frame_count;
++
++  void *gif_frame_data;
++  nsgif_error code = nsgif_frame_decode(private->gif, private->current_frame, &gif_frame_data);
++  if (code != NSGIF_OK) {
+     imv_log(IMV_DEBUG, "libnsgif: failed to decode a frame\n");
+     return;
+   }
+ 
+-  push_current_image(private, image, frametime);
++  push_current_image(private, image, frametime, gif_frame_data);
+ }
+ 
+ static const struct imv_source_vtable vtable = {
+@@ -134,20 +141,27 @@ static const struct imv_source_vtable vtable = {
+ static enum backend_result open_memory(void *data, size_t len, struct imv_source **src)
+ {
+   struct private *private = calloc(1, sizeof *private);
+-  gif_create(&private->gif, &bitmap_callbacks);
+ 
+-  gif_result code;
+-  do {
+-    code = gif_initialise(&private->gif, len, data);
+-  } while (code == GIF_WORKING);
++  nsgif_error code;
+ 
+-  if (code != GIF_OK) {
+-    gif_finalise(&private->gif);
++  code = nsgif_create(&bitmap_callbacks, NSGIF_BITMAP_FMT_R8G8B8A8, &private->gif);
++  if (code != NSGIF_OK) {
++    nsgif_destroy(private->gif);
++    free(private);
++    imv_log(IMV_DEBUG, "libnsgif: unsupported file\n");
++    return BACKEND_UNSUPPORTED;
++  }
++
++  code = nsgif_data_scan(private->gif, len, data);
++  if (code != NSGIF_OK) {
++    nsgif_destroy(private->gif);
+     free(private);
+     imv_log(IMV_DEBUG, "libsngif: unsupported file\n");
+     return BACKEND_UNSUPPORTED;
+   }
+ 
++  nsgif_data_complete(private->gif);
++
+   *src = imv_source_create(&vtable, private);
+   return BACKEND_SUCCESS;
+ }
+@@ -176,30 +190,38 @@ static enum backend_result open_path(const char *path, struct imv_source **src)
+   struct private *private = calloc(1, sizeof *private);
+   private->data = data;
+   private->len = len;
+-  gif_create(&private->gif, &bitmap_callbacks);
++  nsgif_error code;
+ 
+-  gif_result code;
+-  do {
+-    code = gif_initialise(&private->gif, private->len, private->data);
+-  } while (code == GIF_WORKING);
++  code = nsgif_create(&bitmap_callbacks, NSGIF_BITMAP_FMT_R8G8B8A8, &private->gif);
++  if (code != NSGIF_OK) {
++    nsgif_destroy(private->gif);
++    munmap(private->data, private->len);
++    free(private);
++    imv_log(IMV_DEBUG, "libnsgif: unsupported file\n");
++    return BACKEND_UNSUPPORTED;
++  }
+ 
+-  if (code != GIF_OK) {
+-    gif_finalise(&private->gif);
++  code = nsgif_data_scan(private->gif, len, data);
++  if (code != NSGIF_OK) {
++    nsgif_destroy(private->gif);
+     munmap(private->data, private->len);
+     free(private);
+     imv_log(IMV_DEBUG, "libsngif: unsupported file\n");
+     return BACKEND_UNSUPPORTED;
+   }
+ 
+-  imv_log(IMV_DEBUG, "libnsgif: num_frames=%d\n", private->gif.frame_count);
+-  imv_log(IMV_DEBUG, "libnsgif: width=%d\n", private->gif.width);
+-  imv_log(IMV_DEBUG, "libnsgif: height=%d\n", private->gif.height);
++  nsgif_data_complete(private->gif);
++
++  const nsgif_info_t *gif_info = nsgif_get_info(private->gif);
++
++  imv_log(IMV_DEBUG, "libnsgif: num_frames=%d\n", gif_info->frame_count);
++  imv_log(IMV_DEBUG, "libnsgif: width=%d\n", gif_info->width);
++  imv_log(IMV_DEBUG, "libnsgif: height=%d\n", gif_info->height);
+ 
+   *src = imv_source_create(&vtable, private);
+   return BACKEND_SUCCESS;
+ }
+ 
+-
+ const struct imv_backend imv_backend_libnsgif = {
+   .name = "libnsgif",
+   .description = "Tiny GIF decoding library from the NetSurf project",
+-- 
+2.46.1
+
