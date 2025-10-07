@@ -1,0 +1,68 @@
+From fabf4cd14108a60d9486f38ae58694d615592bc9 Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Tue, 7 Oct 2025 21:07:05 +1100
+Subject: [PATCH 6/6] Use calloc for sshkeys if mmap is not supported.
+
+Based on Github PR#597 from Mike Frysinger, any bugs added by me.
+---
+ configure.ac | 2 ++
+ sshkey.c     | 8 ++++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 3eb6d4697..98f2e3e1c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -536,6 +536,7 @@ AC_CHECK_HEADERS([ \
+     nlist.h \
+     poll.h \
+     stdint.h \
++    sys/mmap.h \
+     sys/stat.h \
+     sys/time.h \
+     sys/un.h \
+@@ -2103,6 +2104,7 @@ AC_CHECK_FUNCS([ \
+ 	memmove \
+ 	memset_s \
+ 	mkdtemp \
++	mmap \
+ 	ngetaddrinfo \
+ 	nlist \
+ 	nsleep \
+diff --git a/sshkey.c b/sshkey.c
+index e17e929e0..206b72921 100644
+--- a/sshkey.c
++++ b/sshkey.c
+@@ -723,6 +723,7 @@ sshkey_sk_cleanup(struct sshkey *k)
+ static int
+ sshkey_prekey_alloc(u_char **prekeyp, size_t len)
+ {
++#if defined(HAVE_MMAP) && defined(MAP_ANON) && defined(MAP_PRIVATE)
+ 	u_char *prekey;
+ 
+ 	*prekeyp = NULL;
+@@ -734,14 +735,21 @@ sshkey_prekey_alloc(u_char **prekeyp, size_t len)
+ #endif
+ 	*prekeyp = prekey;
+ 	return 0;
++#else
++	*prekeyp = calloc(1, len);
++#endif /* HAVE_MMAP et al */
+ }
+ 
+ static void
+ sshkey_prekey_free(void *prekey, size_t len)
+ {
++#if defined(HAVE_MMAP) && defined(MAP_ANON) && defined(MAP_PRIVATE)
+ 	if (prekey == NULL)
+ 		return;
+ 	munmap(prekey, len);
++#else
++	free(prekey);
++#endif /* HAVE_MMAP et al */
+ }
+ 
+ static void
+-- 
+2.51.0
+

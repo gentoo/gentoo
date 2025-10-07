@@ -1,0 +1,76 @@
+From 979cbc2c1e0c9cd2f60d45d8d1da69519ec425cf Mon Sep 17 00:00:00 2001
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Tue, 7 Oct 2025 08:02:32 +0000
+Subject: [PATCH 1/6] upstream: don't reuse c->isatty for signalling that the
+ remote channel
+
+has a tty attached as this causes side effects, e.g. in channel_handle_rfd().
+bz3872
+
+ok markus@
+
+OpenBSD-Commit-ID: 4cd8a9f641498ca6089442e59bad0fd3dcbe85f8
+---
+ channels.c | 9 +++++----
+ channels.h | 3 ++-
+ 2 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/channels.c b/channels.c
+index f1d7bcf34..80014ff34 100644
+--- a/channels.c
++++ b/channels.c
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: channels.c,v 1.451 2025/09/25 06:33:19 djm Exp $ */
++/* $OpenBSD: channels.c,v 1.452 2025/10/07 08:02:32 djm Exp $ */
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+  * Copyright (c) 1995 Tatu Ylonen <ylo@cs.hut.fi>, Espoo, Finland
+@@ -362,7 +362,7 @@ channel_classify(struct ssh *ssh, Channel *c)
+ {
+ 	struct ssh_channels *sc = ssh->chanctxt;
+ 	const char *type = c->xctype == NULL ? c->ctype : c->xctype;
+-	const char *classifier = c->isatty ?
++	const char *classifier = (c->isatty || c->remote_has_tty) ?
+ 	    sc->bulk_classifier_tty : sc->bulk_classifier_notty;
+ 
+ 	c->bulk = type != NULL && match_pattern_list(type, classifier, 0) == 1;
+@@ -566,7 +566,7 @@ channel_new(struct ssh *ssh, char *ctype, int type, int rfd, int wfd, int efd,
+ void
+ channel_set_tty(struct ssh *ssh, Channel *c)
+ {
+-	c->isatty = 1;
++	c->remote_has_tty = 1;
+ 	channel_classify(ssh, c);
+ }
+ 
+@@ -1078,7 +1078,8 @@ channel_format_status(const Channel *c)
+ 	    c->rfd, c->wfd, c->efd, c->sock, c->ctl_chan,
+ 	    c->have_ctl_child_id ? "c" : "nc", c->ctl_child_id,
+ 	    c->io_want, c->io_ready,
+-	    c->isatty ? "T" : "", c->bulk ? "B" : "I");
++	    c->isatty ? "T" : (c->remote_has_tty ? "RT" : ""),
++	    c->bulk ? "B" : "I");
+ 	return ret;
+ }
+ 
+diff --git a/channels.h b/channels.h
+index df7c7f364..7456541f8 100644
+--- a/channels.h
++++ b/channels.h
+@@ -1,4 +1,4 @@
+-/* $OpenBSD: channels.h,v 1.161 2025/09/25 06:33:19 djm Exp $ */
++/* $OpenBSD: channels.h,v 1.162 2025/10/07 08:02:32 djm Exp $ */
+ 
+ /*
+  * Author: Tatu Ylonen <ylo@cs.hut.fi>
+@@ -145,6 +145,7 @@ struct Channel {
+ 	int     ctl_chan;	/* control channel (multiplexed connections) */
+ 	uint32_t ctl_child_id;	/* child session for mux controllers */
+ 	int	have_ctl_child_id;/* non-zero if ctl_child_id is valid */
++	int     remote_has_tty;	/* remote side has a tty */
+ 	int     isatty;		/* rfd is a tty */
+ #ifdef _AIX
+ 	int     wfd_isatty;	/* wfd is a tty */
+-- 
+2.51.0
+

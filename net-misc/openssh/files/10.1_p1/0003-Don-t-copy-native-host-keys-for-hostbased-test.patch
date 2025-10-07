@@ -1,0 +1,27 @@
+From aefeee5bedcf117aa9278014eda5f099b5898a10 Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Tue, 7 Oct 2025 20:10:56 +1100
+Subject: [PATCH 3/6] Don't copy native host keys for hostbased test.
+
+Some github runners (notably macos-14) seem to have host keys where
+public and private do not match, so generate our own keys for testing
+purposes.
+---
+ .github/run_test.sh | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/.github/run_test.sh b/.github/run_test.sh
+index aac9ce579..33c90ac29 100755
+--- a/.github/run_test.sh
++++ b/.github/run_test.sh
+@@ -13,7 +13,6 @@ if [ ! -z "$SUDO" ] && [ ! -z "$TEST_SSH_HOSTBASED_AUTH" ]; then
+     hostname | $SUDO tee $sshconf/shosts.equiv >/dev/null
+     echo "EnableSSHKeysign yes" | $SUDO tee $sshconf/ssh_config >/dev/null
+     $SUDO mkdir -p $sshconf
+-    $SUDO cp -p /etc/ssh/ssh_host*key* $sshconf
+     $SUDO make install
+     for key in $sshconf/ssh_host*key*.pub; do
+         echo `hostname` `cat $key` | \
+-- 
+2.51.0
+
