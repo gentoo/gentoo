@@ -19,7 +19,8 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc
 
 BDEPEND="
 	app-arch/xz-utils
-	dev-lang/perl"
+	dev-lang/perl
+	net-misc/rsync"
 
 # bug #816762
 RESTRICT="test"
