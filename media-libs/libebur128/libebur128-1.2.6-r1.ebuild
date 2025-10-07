@@ -17,6 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? (
 		app-arch/unzip
 		media-libs/libsndfile[${MULTILIB_USEDEP}]
@@ -25,6 +26,7 @@ DEPEND="
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DENABLE_INTERNAL_QUEUE_H=OFF
 		-DENABLE_TESTS=$(usex test)
 	)
 	cmake_src_configure
