@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,7 @@ src_prepare() {
 	default
 
 	sed -i src/Makefile.am -e 's| -Werror||g' || die
+	sed -i src/TCPHeader.h -e '1i#include <sys/types.h>' || die # for musl
 
 	mv configure.{in,ac} || die
 
