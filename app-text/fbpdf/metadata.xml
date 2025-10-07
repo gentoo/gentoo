@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="github">aligrudi/fbpdf</remote-id>
 	</upstream>
+	<use>
+		<flag name="poppler">Use <pkg>app-text/poppler</pkg> instead of <pkg>app-text/mupdf</pkg> for rendering PDF files</flag>
+	</use>
 </pkgmetadata>
