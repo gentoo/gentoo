@@ -40,7 +40,7 @@ RDEPEND="
 	>=dev-libs/json-glib-1.2.6
 	>=media-libs/babl-0.1.116[introspection?,lcms?,vala?]
 	media-libs/libjpeg-turbo:=
-	media-libs/libnsgif:=
+	>=media-libs/libnsgif-1.0.0:=
 	>=media-libs/libpng-1.6.0:0=
 	>=sys-libs/zlib-1.2.0
 	>=x11-libs/gdk-pixbuf-2.32:2
