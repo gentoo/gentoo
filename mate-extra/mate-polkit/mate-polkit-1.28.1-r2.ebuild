@@ -18,7 +18,7 @@ IUSE="accountsservice appindicator"
 
 COMMON_DEPEND="x11-libs/gdk-pixbuf:2
 	virtual/libintl:0
-	>=x11-libs/gtk+-3.22.0:3
+	>=x11-libs/gtk+-3.22.0:3[X]
 	appindicator? ( dev-libs/libayatana-appindicator )"
 
 RDEPEND="${COMMON_DEPEND}
