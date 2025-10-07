@@ -24,11 +24,8 @@ KEYWORDS="~amd64"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ggregory )"
 
 # Min java 11 because of module-info.
-# Restrict to max java 25, because of error with java 26:
-# * ERROR: dev-java/commons-csv-1.14.1::testing failed (test phase):
-# *   ConsoleLauncher failed
 DEPEND="
-	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
+	>=virtual/jdk-11:*
 	>=dev-java/commons-codec-1.19.0:0
 	>=dev-java/commons-io-2.20.0:0
 	dev-java/findbugs-annotations:0
