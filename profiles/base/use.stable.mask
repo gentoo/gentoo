@@ -4,6 +4,11 @@
 # New entries go on top.
 # Please use the same syntax as in use.mask.
 
+
+# Patrick Lauer <patrick@gentoo.org> (2025-10-07)
+# Postgres:18 is not stable yet
+postgres_targets_postgres18
+
 # Alfredo Tupone <tupone@gentoo.org> (1025-05-01)
 # gcc:15 is not stable yet
 ada_target_gcc_15
