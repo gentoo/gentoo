@@ -70,7 +70,8 @@ DEPEND="
 CONFIG_CHECK="~HIDRAW"
 
 PATCHES=(
-	"${FILESDIR}"/libratbag-0.17-python3.12-imp.patch
+	"${FILESDIR}"/${PN}-0.17-python3.12-imp.patch
+	"${FILESDIR}"/${PN}-0.17-basename.patch
 )
 
 pkg_setup() {

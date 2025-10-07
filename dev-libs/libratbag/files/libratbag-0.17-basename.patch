@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/935242#c3
+
+--- a/src/libratbag-data.c
++++ b/src/libratbag-data.c
+@@ -28,6 +28,7 @@
+ #include <assert.h>
+ #include <stdlib.h>
+ #include <glib.h>
++#include <libgen.h>
+ #include <limits.h>
+
+ #include "asus.h"

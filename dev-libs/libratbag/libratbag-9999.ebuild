@@ -69,6 +69,10 @@ DEPEND="
 
 CONFIG_CHECK="~HIDRAW"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.17-basename.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 	python-single-r1_pkg_setup
