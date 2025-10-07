@@ -59,6 +59,7 @@ pkg_setup() {
 			wg_quick_optional_config_nob IP_NF_RAW
 			wg_quick_optional_config_nob IP6_NF_FILTER
 			wg_quick_optional_config_nob IP_NF_FILTER
+			wg_quick_optional_config_nob IP_NF_MANGLE
 		fi
 	fi
 	get_version
