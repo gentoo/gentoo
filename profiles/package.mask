@@ -291,12 +291,6 @@ net-misc/ytfzf
 # 7 months ago. Removal on 2025-10-16. Bug #955964
 net-p2p/classified-ads
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-16)
-# Abandoned upstream, based on Qt5, "must be run as root", then fails to
-# start w/ current kde-plasma/kdesu-gui[X] within Wayland sessions too.
-# Removal on 2025-10-16. Bug #957179
-sys-boot/unetbootin
-
 # Viorel Munteanu <ceamac@gentoo.org> (2025-09-16)
 # Masked for testing.  This package is supposed to be installed in the livecd,
 # not on user's system.  We need a few more reports of it working before
