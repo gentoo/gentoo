@@ -36,6 +36,51 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-10-07)
+# Masked for testing the new .0 version and leave time for packages
+# to catch up on support. Will likely be kept masked until 6.10.1
+# is released unless there is a notable reason to need this earlier.
+#
+# If wanted, feel welcome to add `dev-qt/*:6/6.10.0` to package.unmask
+# and report issues.
+#
+# A common issue with 6.10 is builds failing to find Qt private headers
+# as it (now) requires searching for e.g. GuiPrivate in CMakeLists.txt.
+=dev-python/pyside-6.10.0*
+=dev-qt/qt-docs-6.10.0*
+=dev-qt/qt3d-6.10.0*
+=dev-qt/qt5compat-6.10.0*
+=dev-qt/qtbase-6.10.0*
+=dev-qt/qtcharts-6.10.0*
+=dev-qt/qtconnectivity-6.10.0*
+=dev-qt/qtdeclarative-6.10.0*
+=dev-qt/qtgraphs-6.10.0*
+=dev-qt/qthttpserver-6.10.0*
+=dev-qt/qtimageformats-6.10.0*
+=dev-qt/qtlanguageserver-6.10.0*
+=dev-qt/qtlocation-6.10.0*
+=dev-qt/qtmultimedia-6.10.0*
+=dev-qt/qtnetworkauth-6.10.0*
+=dev-qt/qtpositioning-6.10.0*
+=dev-qt/qtquick3d-6.10.0*
+=dev-qt/qtquicktimeline-6.10.0*
+=dev-qt/qtremoteobjects-6.10.0*
+=dev-qt/qtscxml-6.10.0*
+=dev-qt/qtsensors-6.10.0*
+=dev-qt/qtserialbus-6.10.0*
+=dev-qt/qtserialport-6.10.0*
+=dev-qt/qtshadertools-6.10.0*
+=dev-qt/qtspeech-6.10.0*
+=dev-qt/qtsvg-6.10.0*
+=dev-qt/qttools-6.10.0*
+=dev-qt/qttranslations-6.10.0*
+=dev-qt/qtvirtualkeyboard-6.10.0*
+=dev-qt/qtwayland-6.10.0*
+=dev-qt/qtwebchannel-6.10.0*
+=dev-qt/qtwebengine-6.10.0*
+=dev-qt/qtwebsockets-6.10.0*
+=dev-qt/qtwebview-6.10.0*
+
 # Michał Górny <mgorny@gentoo.org> (2025-10-06)
 # Refcount errors that trigger crashes in dev-python/moto tests
 # tests/test_xray/test_xray_client.py.  TODO: investigate.
