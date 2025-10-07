@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit bash-completion-r1 meson
+inherit meson shell-completion
 
 DESCRIPTION="Grab images from a Wayland compositor"
 HOMEPAGE="https://sr.ht/~emersion/grim"
@@ -49,6 +49,5 @@ src_install() {
 	meson_src_install
 
 	newbashcomp contrib/completions/bash/grim.bash grim
-	insinto /usr/share/fish/vendor_completions.d/
-	doins contrib/completions/fish/grim.fish
+	dofishcomp contrib/completions/fish/grim.fish
 }
