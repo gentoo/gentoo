@@ -17,7 +17,6 @@ IUSE="coq doc emacs gtk +ocamlopt re sexp stackify zip"
 
 RDEPEND="
 	!sci-mathematics/why3-for-spark
-	>=dev-lang/ocaml-4.05.0:=[ocamlopt?]
 	>=dev-ml/menhir-20170418:=
 	dev-ml/num:=
 	dev-ml/zarith:=
