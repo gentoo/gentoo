@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="emacs examples"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.09.0:=[ocamlopt]
+	dev-lang/ocaml:=[ocamlopt]
 	dev-ml/num:=
 	emacs? ( >=app-editors/emacs-23.1:* )
 "
