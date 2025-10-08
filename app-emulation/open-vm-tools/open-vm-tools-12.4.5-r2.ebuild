@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/glib
 	net-libs/libtirpc
 	deploypkg? ( dev-libs/libmspack )
-	fuse? ( sys-fs/fuse:0 )
+	fuse? ( sys-fs/fuse:3= )
 	pam? ( sys-libs/pam )
 	!pam? ( virtual/libcrypt:= )
 	ssl? ( dev-libs/openssl:= )
@@ -95,6 +95,15 @@ src_configure() {
 		$(use_with dnet)
 		$(use_with icu)
 		--with-udev-rules-dir="$(get_udevdir)"/rules.d
+		$(use_with fuse fuse 3)
+		# Disable it explicitly, we do not yet list the
+		# containerinfo dependencies in the ebuild
+		--disable-containerinfo
+		# Disable it explicitly, gtk2 is obsolete
+		--without-gtk2
+		# Possibly add a separate USE flag for the utility, or
+		# merge it into resolutionkms
+		--disable-vmwgfxctrl
 	)
 	# Avoid a bug in configure.ac
 	use ssl || myeconfargs+=( --without-ssl )
@@ -125,8 +134,11 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/vmtoolsd.service
 	fi
 
-	# Make fstype = vmhgfs-fuse work in fstab
-	dosym vmhgfs-fuse /usr/bin/mount.vmhgfs-fuse
+	# vmhgfs-fuse is built only when fuse is enabled
+	if use fuse; then
+		# Make fstype = vmhgfs-fuse work in fstab
+		dosym vmhgfs-fuse /usr/bin/mount.vmhgfs-fuse
+	fi
 
 	if use X; then
 		fperms 4711 /usr/bin/vmware-user-suid-wrapper
