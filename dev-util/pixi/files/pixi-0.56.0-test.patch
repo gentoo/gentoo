@@ -1,0 +1,38 @@
+From d3f39a7533efc0601144490cf41b8ad4867fcdf8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Tue, 16 Sep 2025 07:26:33 +0200
+Subject: [PATCH] test: Mark more online tests
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ crates/pixi/tests/integration_rust/add_tests.rs  | 1 +
+ crates/pixi/tests/integration_rust/pypi_tests.rs | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/crates/pixi/tests/integration_rust/add_tests.rs b/crates/pixi/tests/integration_rust/add_tests.rs
+index bbbb54518..1649c6625 100644
+--- a/crates/pixi/tests/integration_rust/add_tests.rs
++++ b/crates/pixi/tests/integration_rust/add_tests.rs
+@@ -83,6 +83,7 @@ async fn add_functionality() {
+ 
+ /// Test adding a package with a specific channel
+ #[tokio::test]
++#[cfg_attr(not(feature = "online_tests"), ignore)]
+ async fn add_with_channel() {
+     setup_tracing();
+ 
+diff --git a/crates/pixi/tests/integration_rust/pypi_tests.rs b/crates/pixi/tests/integration_rust/pypi_tests.rs
+index 21c23ffba..086851c5a 100644
+--- a/crates/pixi/tests/integration_rust/pypi_tests.rs
++++ b/crates/pixi/tests/integration_rust/pypi_tests.rs
+@@ -16,6 +16,7 @@ use crate::setup_tracing;
+ /// before when running `pixi list -e all`, this would have not included numpy
+ /// we are now explicitly testing that this works
+ #[tokio::test]
++#[cfg_attr(not(feature = "online_tests"), ignore)]
+ async fn pyproject_optional_dependencies_resolve_recursively() {
+     setup_tracing();
+ 
