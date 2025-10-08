@@ -205,6 +205,7 @@ src_configure() {
 		$(use_with fontconfig)
 		$(use_with gphoto2 gphoto)
 		$(use_with gstreamer)
+		--without-hwloc # currently only used on FreeBSD
 		$(use_with kerberos gssapi)
 		$(use_with kerberos krb5)
 		$(use_with netapi)
