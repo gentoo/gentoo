@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,11 @@ inherit autotools udev
 
 if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="	https://repo.or.cz/openocd.git"
+	EGIT_REPO_URI="
+		https://git.code.sf.net/p/openocd/code
+		https://repo.or.cz/openocd.git
+		https://github.com/openocd-org/openocd
+	"
 else
 	MY_PV="${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"
