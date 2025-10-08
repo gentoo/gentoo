@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
-RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt]
+RDEPEND="dev-lang/ocaml:=[ocamlopt]
 	~dev-ml/camlpdf-${PV}:="
 DEPEND="${RDEPEND}"
 
