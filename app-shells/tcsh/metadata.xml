@@ -12,4 +12,7 @@
 		includes a command-line editor, programmable word completion, spelling
 		correction, a history mechanism, job control and a C-like syntax.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">tcsh-org/tcsh</remote-id>
+	</upstream>
 </pkgmetadata>
