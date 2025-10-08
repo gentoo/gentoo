@@ -145,6 +145,7 @@ RDEPEND="
 "
 BDEPEND="
 	>=dev-python/hatch-fancy-pypi-readme-22.5.0[${PYTHON_USEDEP}]
+	dev-util/maturin[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep '
 			dev-python/cloudpickle[${PYTHON_USEDEP}]
