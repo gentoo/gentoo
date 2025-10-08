@@ -1,0 +1,77 @@
+Bug: https://bugs.gentoo.org/895978
+--- a/Source/GameDraw.cpp
++++ b/Source/GameDraw.cpp
+@@ -765,7 +765,7 @@ int Game::DrawGLScene(void)
+ 
+ 				GLfloat LightAmbient[]=	{ fogcolorr/4, fogcolorg/4, fogcolorb/4, 1.0f};
+ 
+-				GLfloat LightDiffuse[]=	{ fogcolorr*1.6, fogcolorg*1.6, fogcolorr*1.6, 1.0f };
++				GLfloat LightDiffuse[]=	{ static_cast<GLfloat>(fogcolorr*1.6), static_cast<GLfloat>(fogcolorg*1.6), static_cast<GLfloat>(fogcolorr*1.6), 1.0f };
+ 
+ 				glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient);		
+ 
+@@ -775,9 +775,9 @@ int Game::DrawGLScene(void)
+ 
+ 			if(environment!=sunny_environment){
+ 
+-				GLfloat LightAmbient[]=	{ fogcolorr*.8, fogcolorg*.8, fogcolorb*.8, 1.0f};
++				GLfloat LightAmbient[]=	{ static_cast<GLfloat>(fogcolorr*.8), static_cast<GLfloat>(fogcolorg*.8), static_cast<GLfloat>(fogcolorb*.8), 1.0f};
+ 
+-				GLfloat LightDiffuse[]=	{ fogcolorr*.8, fogcolorg*.8, fogcolorr*.8, 1.0f };
++				GLfloat LightDiffuse[]=	{ static_cast<GLfloat>(fogcolorr*.8), static_cast<GLfloat>(fogcolorg*.8), static_cast<GLfloat>(fogcolorr*.8), 1.0f };
+ 
+ 				glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient);		
+ 
+@@ -809,7 +809,7 @@ int Game::DrawGLScene(void)
+ 
+ 			GLfloat LightAmbient[]=		{ 0, 0, 0, 1.0f};
+ 
+-			GLfloat LightDiffuse[]=		{ .1+sinefluct/5, 0, 0, 1.0f };
++			GLfloat LightDiffuse[]=		{ static_cast<GLfloat>(.1+sinefluct/5), 0, 0, 1.0f };
+ 
+ 			
+ 
+--- a/Source/Maths.cpp
++++ b/Source/Maths.cpp
+@@ -1,7 +1,7 @@
+ /**> HEADER FILES <**/
+ #include "Maths.h"
+ 
+-double fast_sqrt (register double arg)
++double fast_sqrt (double arg)
+ {	
+ #ifdef OS9 
+ 	// Can replace with slower return std::sqrt(arg);
+--- a/Source/Maths.h
++++ b/Source/Maths.h
+@@ -5,7 +5,7 @@
+ /**> HEADER FILES <**/
+ #include <cmath>
+ 
+-double fast_sqrt (register double arg);
++double fast_sqrt (double arg);
+ 
+ #endif
+ 
+--- a/Source/Quaternions.cpp
++++ b/Source/Quaternions.cpp
+@@ -283,7 +283,7 @@ void Normalise(XYZ *vectory) {
+ 	vectory->z /= d;
+ }
+ 
+-float fast_sqrt (register float arg)
++float fast_sqrt (float arg)
+ {	
+ #ifdef OS9 
+ 	// Can replace with slower return std::sqrt(arg);
+--- a/Source/Quaternions.h
++++ b/Source/Quaternions.h
+@@ -69,7 +69,7 @@ XYZ Quat2Vector(quaternion Quat);
+ void CrossProduct(XYZ P, XYZ Q, XYZ *V);
+ void Normalise(XYZ *vectory);
+ float normaldotproduct(XYZ point1, XYZ point2);
+-float fast_sqrt (register float arg);
++float fast_sqrt (float arg);
+ bool PointInTriangle(XYZ *p, XYZ normal, XYZ *p1, XYZ *p2, XYZ *p3);
+ bool LineFacet(XYZ p1,XYZ p2,XYZ pa,XYZ pb,XYZ pc,XYZ *p);
+ float LineFacetd(XYZ p1,XYZ p2,XYZ pa,XYZ pb,XYZ pc,XYZ *p);
