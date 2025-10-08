@@ -26,8 +26,6 @@ ruby_targets_ruby34
 # Python implementations without stable keywords.
 python_targets_python3_14t
 python_single_target_python3_14t
-python_targets_python3_14
-python_single_target_python3_14
 python_targets_python3_13t
 python_single_target_python3_13t
 python_targets_pypy3_11
