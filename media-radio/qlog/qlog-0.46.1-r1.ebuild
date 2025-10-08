@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="Amateur radio logbook software"
 HOMEPAGE="https://github.com/foldynl/QLog"
