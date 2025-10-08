@@ -21,7 +21,6 @@ ELISP_DEPEND="
 	)
 "
 DEPEND="
-	>=dev-lang/ocaml-4.11
 	dev-ml/lambda-term:=[ocamlopt?]
 	dev-ml/logs:=[ocamlopt?]
 	dev-ml/lwt:=[ocamlopt?]
