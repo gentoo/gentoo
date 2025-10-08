@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.4.5-icu.patch
 	"${FILESDIR}"/${PN}-12.4.5-xmlsec1-pc.patch
 	"${FILESDIR}"/${PN}-12.5.0-c23.patch
+	"${FILESDIR}"/${PN}-12.4.5-CVE-2025-41244.patch
 )
 
 pkg_setup() {
