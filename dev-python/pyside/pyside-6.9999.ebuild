@@ -324,7 +324,8 @@ python_configure_all() {
 			done
 		fi
 		if [[ "${ENABLED_QT_MODULES[*]}" != *${modules}* ]]; then
-			ENABLED_QT_MODULES+=( "${modules}" )
+			# modules is whitespace separated. We expand implicitly.
+			ENABLED_QT_MODULES+=( ${modules} )
 		fi
 	}
 	# Enable specified qt modules
