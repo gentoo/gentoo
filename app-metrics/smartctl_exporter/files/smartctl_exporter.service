@@ -12,8 +12,8 @@ User=root
 Group=root
 Restart=on-failure
 Type=exec
-# TODO: find a good way to add args here
-ExecStart=/usr/sbin/smartctl_exporter
+EnvironmentFile=-/etc/conf.d/smartctl_exporter
+ExecStart=/usr/sbin/smartctl_exporter $command_args
 ExecReload=/usr/bin/kill -HUP $MAINPID
 TimeoutStopSec=20s
 SendSIGKILL=no
