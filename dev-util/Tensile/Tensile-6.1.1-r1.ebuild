@@ -11,8 +11,8 @@ LLVM_COMPAT=( 18 )
 inherit cmake distutils-r1 llvm-r1 prefix rocm
 
 DESCRIPTION="Stretching GPU performance for GEMMs and tensor contractions"
-HOMEPAGE="https://github.com/ROCmSoftwarePlatform/Tensile"
-SRC_URI="https://github.com/ROCmSoftwarePlatform/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
+HOMEPAGE="https://github.com/ROCm/Tensile"
+SRC_URI="https://github.com/ROCm/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
 S="${WORKDIR}/${PN}-rocm-${PV}"
 
 LICENSE="MIT"
@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.1.1-fix-msgpack-dependency.patch
 	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
 	"${FILESDIR}"/${PN}-6.1.1-ignore-asm-cap.patch
+	"${FILESDIR}"/${PN}-6.1.1-llvm-path.patch
 )
 
 CMAKE_USE_DIR="${S}/${PN}/Source"
@@ -81,6 +82,11 @@ src_prepare() {
 		-i ReplacementKernels.py Common.py ${PN}.py || die
 
 	sed -e "s|os\.path\.dirname.*$|\"${EPREFIX}/usr/share/Tensile/Source\", end='')|" -i __init__.py || die
+
+	sed -e "s,@LLVM_BIN_PATH@,$(get_llvm_prefix)/bin," -i Common.py || die
+
+	# Remove disabled tests which causes test failure: https://github.com/ROCm/Tensile/issues/2038
+	rm -rf Tests/disabled || die
 
 	popd || die
 

@@ -1,0 +1,22 @@
+Index: Tensile-rocm-6.3.3/Tensile/Common.py
+===================================================================
+--- Tensile-rocm-6.3.3.orig/Tensile/Common.py
++++ Tensile-rocm-6.3.3/Tensile/Common.py
+@@ -274,7 +274,7 @@ globalParameters["DictLibraryLogic"] = F
+ globalParameters["CurrentISA"] = (0,0,0)
+ globalParameters["ROCmAgentEnumeratorPath"] = None      # /opt/rocm/bin/rocm_agent_enumerator
+ globalParameters["ROCmSMIPath"] = None                  # /opt/rocm/bin/rocm-smi
+-globalParameters["AssemblerPath"] = None                # /opt/rocm/llvm/bin/clang++
++globalParameters["AssemblerPath"] = "@LLVM_BIN_PATH@/clang++"
+ globalParameters["WorkingPath"] = os.getcwd()           # path where tensile called from
+ globalParameters["IndexChars"] =  "IJKLMNOPQRSTUVWXYZ"  # which characters to use for C[ij]=Sum[k] A[ik]*B[jk]
+ globalParameters["ScriptPath"] = os.path.dirname(os.path.realpath(__file__))            # path to Tensile/Tensile.py
+@@ -2448,7 +2448,7 @@ def assignGlobalParameters( config ):
+     if os.name == "nt":
+       globalParameters["ClangOffloadBundlerPath"] = locateExe(globalParameters["ROCmBinPath"], "clang-offload-bundler.exe")
+     else:
+-      globalParameters["ClangOffloadBundlerPath"] = locateExe(os.path.join(globalParameters["ROCmPath"], "llvm/bin"), "clang-offload-bundler")
++      globalParameters["ClangOffloadBundlerPath"] = locateExe(os.path.join("@LLVM_BIN_PATH@"), "clang-offload-bundler")
+ 
+   if "ROCmAgentEnumeratorPath" in config:
+     globalParameters["ROCmAgentEnumeratorPath"] = config["ROCmAgentEnumeratorPath"]

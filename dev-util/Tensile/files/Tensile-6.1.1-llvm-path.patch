@@ -1,0 +1,22 @@
+diff --git a/Tensile/Common.py b/Tensile/Common.py
+index 6ececf1c..8ce4ae52 100644
+--- a/Tensile/Common.py
++++ b/Tensile/Common.py
+@@ -2264,7 +2264,7 @@ def assignGlobalParameters( config ):
+     if os.name == "nt":
+       globalParameters["AssemblerPath"] = locateExe(globalParameters["ROCmBinPath"], "clang++.exe")
+     else:
+-      globalParameters["AssemblerPath"] = locateExe(os.path.join(globalParameters["ROCmPath"], "llvm/bin"), "clang++")
++      globalParameters["AssemblerPath"] = locateExe(os.path.join("@LLVM_BIN_PATH@"), "clang++")
+ 
+   globalParameters["ROCmSMIPath"] = locateExe(globalParameters["ROCmBinPath"], "rocm-smi")
+ 
+@@ -2276,7 +2276,7 @@ def assignGlobalParameters( config ):
+     if os.name == "nt":
+       globalParameters["ClangOffloadBundlerPath"] = locateExe(globalParameters["ROCmBinPath"], "clang-offload-bundler.exe")
+     else:
+-      globalParameters["ClangOffloadBundlerPath"] = locateExe(os.path.join(globalParameters["ROCmPath"], "llvm/bin"), "clang-offload-bundler")
++      globalParameters["ClangOffloadBundlerPath"] = locateExe(os.path.join("@LLVM_BIN_PATH@"), "clang-offload-bundler")
+ 
+   if "ROCmAgentEnumeratorPath" in config:
+     globalParameters["ROCmAgentEnumeratorPath"] = config["ROCmAgentEnumeratorPath"]
