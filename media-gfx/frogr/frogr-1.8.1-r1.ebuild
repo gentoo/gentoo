@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="flickr applications for GNOME"
-HOMEPAGE="https://live.gnome.org/Frogr"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/frogr"
 
 LICENSE="GPL-3"
 SLOT="0"
