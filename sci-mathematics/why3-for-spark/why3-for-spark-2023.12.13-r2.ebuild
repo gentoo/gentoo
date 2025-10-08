@@ -21,7 +21,6 @@ IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt sexp zarith zip"
 RESTRICT="strip"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.11:=[ocamlopt?]
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/num:=[ocamlopt?]
 	dev-ml/re:=[ocamlopt?]
