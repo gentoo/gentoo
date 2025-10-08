@@ -1,0 +1,35 @@
+From 3c8f36c263b7b6574e69422b50c9a900efc5ef7f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Van=C4=9Bk?= <arkamar@gentoo.org>
+Date: Wed, 8 Oct 2025 15:33:27 +0200
+Subject: [PATCH] Fix INFO command parsing for lines with multiple colons
+
+This commit resolves an issue with parsing the INFO command output when
+lines contain multiple `:` characters, such as those with IPv6
+addresses:
+
+  listener0:name=tcp,bind=127.0.0.1,bind=::1,port=6379
+
+Such a line can appear there since the Redis version 7.2.0. Listneres
+info was introdcued commit 0c4d2fcc8eff ("Add listeners info string for
+'INFO' command").
+
+The fix is simple, the split() method in _process_info() is restricted
+to perform the split only on the first `:` character.
+
+Fixes: https://github.com/IlyaSkriblovsky/txredisapi/issues/151
+Signed-off-by: Petr Vaněk <arkamar@gentoo.org>
+Upstream-PR: https://github.com/IlyaSkriblovsky/txredisapi/pull/157
+
+diff --git a/txredisapi.py b/txredisapi.py
+index b02a78e..2f1875d 100644
+--- a/txredisapi.py
++++ b/txredisapi.py
+@@ -1685,7 +1685,7 @@ def _process_info(self, r):
+                     ':' in x and not x.startswith('#')]
+         d = {}
+         for kv in keypairs:
+-            k, v = kv.split(':')
++            k, v = kv.split(':', 1)
+             d[k] = v
+         return d
+ 

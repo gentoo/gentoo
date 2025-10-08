@@ -32,11 +32,15 @@ RDEPEND="
 BDEPEND="
 	test? (
 		${RDEPEND}
-		<dev-db/redis-7.2
+		dev-db/redis
 		dev-python/hiredis[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-multiple-colons.patch
+)
 
 src_prepare() {
 	sed -i "/redis_sock =/s:/tmp:${T}:" tests/test_unix_connection.py || die
