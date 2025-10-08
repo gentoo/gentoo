@@ -86,6 +86,7 @@ pkg_pretend() {
 	CONFIG_CHECK+=" ~UPROBES ~UPROBE_EVENTS"
 	CONFIG_CHECK+=" ~FTRACE ~FTRACE_SYSCALLS ~DYNAMIC_FTRACE ~FUNCTION_TRACER"
 	CONFIG_CHECK+=" ~FPROBE"
+	CONFIG_CHECK+=" ~BPF_KPROBE_OVERRIDE ~FUNCTION_ERROR_INJECTION"
 	# DTrace can fallback to kprobes for fbt but people often want them off
 	# for security and newer kernels work fine with BPF for that, so
 	# let's omit it. kprobes are slower and scale poorly.
