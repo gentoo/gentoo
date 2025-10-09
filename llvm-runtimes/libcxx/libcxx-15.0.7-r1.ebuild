@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_11 )
 inherit cmake-multilib flag-o-matic llvm llvm.org python-any-r1 \
 	toolchain-funcs
 
@@ -41,7 +41,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( runtimes libcxx{,abi} llvm/{cmake,utils/llvm-lit} cmake )
-LLVM_PATCHSET=${PV}-r1
+LLVM_PATCHSET=${PV}-r8
 llvm.org_set_globals
 
 python_check_deps() {
