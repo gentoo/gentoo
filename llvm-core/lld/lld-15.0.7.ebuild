@@ -35,7 +35,7 @@ PDEPEND="
 
 LLVM_COMPONENTS=( lld cmake libunwind/include/mach-o )
 LLVM_TEST_COMPONENTS=( llvm/utils/{lit,unittest} )
-LLVM_PATCHSET=16.0.6-r1
+LLVM_PATCHSET=${PV}-r8
 llvm.org_set_globals
 
 python_check_deps() {
