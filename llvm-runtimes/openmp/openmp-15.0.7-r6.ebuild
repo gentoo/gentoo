@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_11 )
 inherit flag-o-matic cmake-multilib linux-info llvm llvm.org python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
@@ -48,7 +48,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( openmp cmake llvm/include )
-LLVM_PATCHSET=15.0.7-r6
+LLVM_PATCHSET=${PV}-r8
 llvm.org_set_globals
 
 python_check_deps() {
