@@ -12,7 +12,7 @@ inherit ecm-common frameworks.kde.org
 DESCRIPTION="D-Bus service files for ksecretd kwallet runtime component"
 
 LICENSE="LGPL-2+"
-SLOT="0"
+SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="systemd"
 
