@@ -19,7 +19,7 @@ else
 	inherit verify-sig
 
 	SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
-	SRC_URI+=" verify-sig? ( https://www.wireshark.org/download/SIGNATURES-${PV}.txt -> ${P}-signatures.txt )"
+	SRC_URI+=" verify-sig? ( https://www.wireshark.org/download/SIGNATURES-${PV/_/}.txt -> ${P}-signatures.txt )"
 	S="${WORKDIR}/${P/_/}"
 
 	if [[ ${PV} != *_rc* ]] ; then
@@ -30,7 +30,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon"
-IUSE+=" +dumpcap +editcap +gui http2 http3 ilbc kerberos libxml2 lua lz4 maxminddb"
+IUSE+=" +dumpcap +editcap +gui http2 http3 ilbc kerberos lua lz4 maxminddb"
 IUSE+=" +mergecap +minizip +netlink opus +plugins +pcap +randpkt"
 IUSE+=" +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl"
 IUSE+=" sdjournal test +text2pcap +tshark +udpdump wifi zlib +zstd"
@@ -45,7 +45,8 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	acct-group/pcap
 	>=dev-libs/glib-2.50.0:2
-	dev-libs/libpcre2
+	dev-libs/libpcre2:=
+	dev-libs/libxml2:=
 	>=net-dns/c-ares-1.13.0:=
 	>=dev-libs/libgcrypt-1.8.0:=
 	media-libs/speexdsp
@@ -57,7 +58,6 @@ RDEPEND="
 	http3? ( net-libs/nghttp3 )
 	ilbc? ( media-libs/libilbc:= )
 	kerberos? ( virtual/krb5 )
-	libxml2? ( dev-libs/libxml2:= )
 	lua? ( ${LUA_DEPS} )
 	lz4? ( app-arch/lz4:= )
 	maxminddb? ( dev-libs/libmaxminddb:= )
@@ -203,7 +203,6 @@ src_configure() {
 		-DENABLE_GNUTLS=$(usex ssl)
 		-DENABLE_ILBC=$(usex ilbc)
 		-DENABLE_KERBEROS=$(usex kerberos)
-		-DENABLE_LIBXML2=$(usex libxml2)
 		-DENABLE_LUA=$(usex lua)
 		-DLUA_FIND_VERSIONS="${ELUA#lua}"
 		-DENABLE_LZ4=$(usex lz4)
@@ -248,19 +247,19 @@ src_install() {
 
 	if ! use doc; then
 		# prepare Relase Notes redirector (bug #939195)
-		local relnotes="doc/release-notes.html"
+		local relnotes="doc/Wireshark Release Notes.html"
 
 		# by default create a link for our specific version
 		local relversion="wireshark-${PV}.html"
 
 		# for 9999 we link to the release notes index page
-		if [[ ${PV} == *9999* ]] ; then
+		if [[ ${PV} == *_rc* ]] || [[ ${PV} == *9999* ]] ; then
 			relversion=""
 		fi
 
 		# patch version into redirector & install it
-		sed -e "s/#VERSION#/${relversion}/g" < "${FILESDIR}/release-notes.html" > ${relnotes} || die
-		dodoc ${relnotes}
+		sed -e "s/#VERSION#/${relversion}/g" < "${FILESDIR}/release-notes.html" > "${relnotes}" || die
+		dodoc "${relnotes}"
 	fi
 
 	# FAQ is not required as is installed from help/faq.txt
