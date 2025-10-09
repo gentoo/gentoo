@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/963958
+https://gitlab.archlinux.org/archlinux/packaging/packages/most/-/raw/a07ea9304fd99710f8fc15e3b9d02304fd766e6e/most-5.2.0-most_message-buffer-overlow.patch
+https://github.com/jedsoft/most/commit/77653f684ab2793696b0a5b9502e79d86632b10c
+
+From 77653f684ab2793696b0a5b9502e79d86632b10c Mon Sep 17 00:00:00 2001
+From: "John E. Davis" <jed@jedsoft.org>
+Date: Thu, 3 Jul 2025 19:51:37 -0400
+Subject: [PATCH] pre5.2.5: Avoid a buffer overflow in most_message.  This
+ addresses
+ https://gitlab.archlinux.org/archlinux/packaging/packages/most/-/issues/1
+
+---
+ src/window.c  | 3 ++-
+ 3 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/window.c b/src/window.c
+index 41f5356..483dc8b 100644
+--- a/src/window.c
++++ b/src/window.c
+@@ -61,7 +61,8 @@ static int Minibuffer_Selected;
+ 
+ void most_message(char *what, int how)
+ {
+-   strcpy (Most_Mini_Buf,what);
++   strncpy (Most_Mini_Buf, what, sizeof(Most_Mini_Buf));
++   Most_Mini_Buf[sizeof(Most_Mini_Buf)-1] = 0;
+    if (how) Beep_Mini = 1; else Beep_Mini = 0;
+ }
+ 
