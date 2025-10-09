@@ -424,3 +424,4 @@ www-apps/radicale
 >=x11-themes/adwaita-icon-theme-3.36
 x11-themes/adwaita-icon-theme-legacy
 >=gui-libs/gtk-4.20.1
+>=dev-cpp/gtkmm-4.20
