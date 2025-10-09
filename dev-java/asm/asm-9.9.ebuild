@@ -22,13 +22,12 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Bytecode manipulation framework for Java"
 HOMEPAGE="https://asm.ow2.io"
 MY_P="ASM_${PV//./_}"
-MY_COMMIT="d4c246469f5fcc477ae943957ac9fa46795ee249"
-SRC_URI="https://gitlab.ow2.org/asm/asm/-/archive/${MY_COMMIT}/asm-${MY_COMMIT}.tar.bz2"
-S="${WORKDIR}/asm-${MY_COMMIT}"
+SRC_URI="https://gitlab.ow2.org/asm/asm/-/archive/${MY_P}/asm-${MY_P}.tar.bz2"
+S="${WORKDIR}/asm-${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-#	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x64-macos"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"

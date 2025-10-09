@@ -19,32 +19,24 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 # Min java 11 because of module-info.
-# Max jdk 25 because of test failures with openjdk-26
-# There were 31 failures:
-# 1) testClassFileIsNotParsedForExtendedProperties[1](net.bytebuddy.pool.TypePoolDefaultWithLazyResolutionTypeDescriptionTest)
-# java.lang.IllegalStateException: Could not invoke proxy: Method not available on current VM: codes.rafael.asmjdkbridge.JdkClassReader.getSuperClass()
 DEPEND="
-	>=dev-java/asm-9.8-r1:0
-	>=dev-java/asm-jdk-bridge-0.0.10:0
+	>=dev-java/asm-9.9:0
+	>=dev-java/asm-jdk-bridge-0.0.12:0
 	dev-java/findbugs-annotations:0
-	>=dev-java/jna-5.17.0:0
+	>=dev-java/jna-5.18.1:0
 	dev-java/jsr305:0
-	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
+	>=virtual/jdk-11:*
 	test? (
 		>=dev-java/mockito-2.28.2-r1:2
 	)
 "
-
 RDEPEND=">=virtual/jre-1.8:*"
-
-PATCHES=( "${FILESDIR}/byte-buddy-1.15.10-Skip-testIgnoreExistingField.patch" )
 
 JAVA_CLASSPATH_EXTRA="asm asm-jdk-bridge findbugs-annotations jna jsr305"
 JAVADOC_CLASSPATH="${JAVA_CLASSPATH_EXTRA}"
 JAVADOC_SRC_DIRS=( byte-buddy{,-agent}/src/main/java )
 
 src_prepare() {
-	default #780585
 	java-pkg_clean ! -path "./byte-buddy-dep/src/test/*"	# Keep test-classes
 	java-pkg-2_src_prepare
 

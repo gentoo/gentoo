@@ -19,17 +19,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 CP_DEPEND="
-	>=dev-java/asm-9.8:0
+	>=dev-java/asm-9.9:0
 	dev-java/junit:4
 "
 
-# Restrict to jdk:25 due to additional test failures with jdk:26
 DEPEND="
 	${CP_DEPEND}
-	virtual/jdk:25
+	>=virtual/jdk-25:*
 "
-
-PATCHES=( "${FILESDIR}/asm-jdk-bridge-0.0.11-skipFailingTest.patch" )
 
 # asm-jdk-bridge-test/src/main/java/codes/rafael/asmjdkbridge/test/RecordComponents.java:6:
 # error: records are not supported in -source 8
@@ -41,13 +38,13 @@ RDEPEND="
 	>=virtual/jre-17:*
 "
 
-JAVA_INTERMEDIATE_JAR_NAME="codes.rafael.asmjdkbridge"
+PATCHES=( "${FILESDIR}/asm-jdk-bridge-0.0.11-skipFailingTest.patch" )
 
+JAVA_INTERMEDIATE_JAR_NAME="codes.rafael.asmjdkbridge"
 JAVA_RELEASE_SRC_DIRS=(
 	["9"]="asm-jdk-bridge/src/main/java-9"
 	["24"]="asm-jdk-bridge/src/main/java-24"
 )
-
 JAVA_SRC_DIR="asm-jdk-bridge/src/main/java"
 JAVA_TEST_SRC_DIR=( asm-jdk-bridge-test/src/{main,test}/java )
 
