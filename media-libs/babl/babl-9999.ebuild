@@ -48,7 +48,7 @@ src_configure() {
 	local emesonargs=(
 		-Dwith-docs=false
 		$(meson_use introspection enable-gir)
-		$(meson_use lcms with-lcms)
+		$(meson_feature lcms with-lcms)
 		$(meson_use vala enable-vapi)
 		$(meson_use cpu_flags_x86_avx2 enable-avx2)
 		$(meson_use cpu_flags_x86_f16c enable-f16c)
