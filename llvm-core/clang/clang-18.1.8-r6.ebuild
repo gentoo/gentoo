@@ -48,7 +48,7 @@ LLVM_COMPONENTS=(
 	llvm/lib/Transforms/Hello
 )
 LLVM_MANPAGES=1
-LLVM_PATCHSET=${PV}-r6
+LLVM_PATCHSET=${PV}-r7
 LLVM_TEST_COMPONENTS=(
 	llvm/utils
 )
