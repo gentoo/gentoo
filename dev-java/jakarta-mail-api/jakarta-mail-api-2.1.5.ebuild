@@ -4,8 +4,8 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="jakarta.mail:jakarta.mail-api:2.1.5"
 JAVA_TESTING_FRAMEWORKS="junit-4"
+MAVEN_ID="jakarta.mail:jakarta.mail-api:2.1.5"
 
 inherit java-pkg-2 java-pkg-simple
 
@@ -32,7 +32,6 @@ DOCS=( ../{CONTRIBUTING,NOTICE,README}.md )
 
 JAVA_CLASSPATH_EXTRA="jakarta-activation-api-2"
 JAVA_SRC_DIR="src/main/"
-
 JAVA_TEST_GENTOO_CLASSPATH="junit-4,angus-activation"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 JAVA_TEST_SRC_DIR="src/test/java"
