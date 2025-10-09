@@ -62,9 +62,6 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
 QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
 
-PATCHES=(
-	"${FILESDIR}"/1.89.0-enable-stage-0-build.patch  # remove for >=1.91.0
-)
 #
 # The cross magic
 #
