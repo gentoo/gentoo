@@ -3,7 +3,7 @@
 
 EAPI=8
 
-CHROMIUM_VERSION="134"
+CHROMIUM_VERSION="141"
 CHROMIUM_LANGS="
 	af
 	am
@@ -82,12 +82,12 @@ RDEPEND="
 	dev-libs/nspr
 	dev-libs/nss
 	media-libs/alsa-lib
+	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
 	sys-apps/util-linux
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXcomposite
@@ -95,16 +95,13 @@ RDEPEND="
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
-	x11-libs/libXi
 	x11-libs/libxkbcommon
 	x11-libs/libXrandr
-	x11-libs/libXrender
-	x11-libs/libXScrnSaver
-	x11-libs/libXtst
-	x11-libs/pango[X]
+	x11-libs/pango
+	virtual/libudev
 	|| ( gui-libs/gtk:4 x11-libs/gtk+:3 )
 	!<games-rpg/crosscode-1.4.2.2-r1
-	!ffmpeg-chromium? ( >=media-video/ffmpeg-6.1-r1:0/58.60.60[chromium] )
+	!ffmpeg-chromium? ( >=media-video/ffmpeg-7.1:0/59.61.61[chromium] )
 	ffmpeg-chromium? ( media-video/ffmpeg-chromium:${CHROMIUM_VERSION} )
 "
 
@@ -119,7 +116,7 @@ src_prepare() {
 	rm -r lib/libffmpeg.so swiftshader/ || die
 
 	cd locales || die
-	rm {ar-XB,en-XA}.pak* || die # No flags for pseudo locales.
+	rm {ar-XB,en-XA}*.pak* || die # No flags for pseudo locales.
 	chromium_remove_language_paks
 }
 
