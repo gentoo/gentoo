@@ -6,6 +6,7 @@
 		<name>Marc Schiffbauer</name>
 	</maintainer>
 	<use>
+		<flag name="dist-kernel-cap">Prevents upgrading to an unsupported kernel version when combined with USE=dist-kernel</flag>
 		<flag name="kernel-builtin">Disable dependency on <pkg>sys-fs/zfs-kmod</pkg> under the assumption that ZFS is part of the kernel source tree</flag>
 		<flag name="minimal">Don't install python scripts (arcstat, dbufstat etc) and avoid dependency on <pkg>dev-lang/python</pkg></flag>
 		<flag name="pam">Install zfs_key pam module, for automatically loading zfs encryption keys for home datasets</flag>
@@ -14,7 +15,7 @@
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/openzfs/zfs/issues</bugs-to>
-		<doc>https://openzfs.github.io/openzfs-docs</doc>
+		<doc>https://openzfs.github.io/openzfs-docs/</doc>
 		<remote-id type="github">openzfs/zfs</remote-id>
 	</upstream>
 	<longdescription lang="en">
