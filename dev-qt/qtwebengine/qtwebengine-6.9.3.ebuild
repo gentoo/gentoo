@@ -109,6 +109,7 @@ PATCHES=( "${WORKDIR}"/patches/${PN} )
 PATCHES+=(
 	# add extras as needed here, may merge in set if carries across versions
 	"${FILESDIR}"/${PN}-6.9.3-QTBUG-139424.patch
+	"${FILESDIR}"/${PN}-6.9.3-stdint.patch
 )
 
 python_check_deps() {
