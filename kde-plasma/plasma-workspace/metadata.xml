@@ -13,6 +13,7 @@
 		<flag name="appstream">Enable AppStream software metadata support</flag>
 		<flag name="ksysguard">Enable device notifier and system monitor applets as well as terminate applications runner</flag>
 		<flag name="networkmanager">Enable support for location-based time zone changes</flag>
+		<flag name="phonon">Enable KIO to Phonon bridge for network streaming via <pkg>media-libs/phonon</pkg></flag>
 		<flag name="policykit">Enable locale generation and Users KCM using <pkg>sys-auth/polkit</pkg> and <pkg>sys-apps/accountsservice</pkg></flag>
 		<flag name="screencast">Enable camera indicator applet (requires <pkg>media-video/pipewire</pkg> at runtime)</flag>
 		<flag name="telemetry">Enable User Feedback control module for <pkg>kde-plasma/systemsettings</pkg></flag>

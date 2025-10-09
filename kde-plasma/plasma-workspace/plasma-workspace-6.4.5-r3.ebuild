@@ -15,8 +15,9 @@ SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-patchset.tar.xz"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="appstream +calendar +fontconfig +ksysguard networkmanager +policykit
-screencast +semantic-desktop systemd telemetry +wallpaper-metadata +X"
+IUSE="appstream +calendar +fontconfig +ksysguard networkmanager phonon
++policykit screencast +semantic-desktop systemd telemetry
++wallpaper-metadata +X"
 
 REQUIRED_USE="fontconfig? ( X )"
 RESTRICT="test"
@@ -83,7 +84,6 @@ COMMON_DEPEND="
 	>=kde-plasma/plasma-activities-stats-${KDE_CATV}:6
 	>=kde-plasma/plasma5support-${KDE_CATV}:6
 	media-libs/libcanberra
-	>=media-libs/phonon-4.12.0[qt6(+)]
 	sci-libs/libqalculate:=
 	sys-apps/dbus
 	sys-libs/zlib
@@ -91,6 +91,7 @@ COMMON_DEPEND="
 	appstream? ( >=dev-libs/appstream-1[qt6] )
 	calendar? ( >=kde-frameworks/kholidays-${KFMIN}:6 )
 	ksysguard? ( >=kde-plasma/libksysguard-${KDE_CATV}:6 )
+	phonon? ( >=media-libs/phonon-4.12.0[qt6(+)] )
 	policykit? ( virtual/libcrypt:= )
 	networkmanager? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:6 )
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:6 )
@@ -168,6 +169,11 @@ src_prepare() {
 	ecm_src_prepare
 
 	cmake_comment_add_subdirectory login-sessions
+
+	if ! use phonon; then
+		sed -e "s/^find_package.*Phonon4Qt6/#&/" -i CMakeLists.txt || die
+		cmake_comment_add_subdirectory phonon
+	fi
 
 	if ! use policykit; then
 		cmake_run_in kcms cmake_comment_add_subdirectory users
