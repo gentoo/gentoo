@@ -1,0 +1,36 @@
+From c768240ec0a44fd508514d065c106b99a709e59c Mon Sep 17 00:00:00 2001
+From: Sungjoon Moon <sumoon@seoulsaram.org>
+Date: Thu, 9 Oct 2025 18:27:12 +0000
+Subject: [PATCH] Fix build stage 0
+
+---
+ src/bootstrap/src/core/config/config.rs | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/src/bootstrap/src/core/config/config.rs b/src/bootstrap/src/core/config/config.rs
+index 6055876c475..81adb1b4213 100644
+--- a/src/bootstrap/src/core/config/config.rs
++++ b/src/bootstrap/src/core/config/config.rs
+@@ -1073,19 +1073,6 @@ fn get_table(option: &str) -> Result<TomlConfig, toml::de::Error> {
+             | Subcommand::Vendor { .. } => flags_stage.unwrap_or(0),
+         };
+ 
+-        // Now check that the selected stage makes sense, and if not, print a warning and end
+-        match (config.stage, &config.cmd) {
+-            (0, Subcommand::Build) => {
+-                eprintln!("WARNING: cannot build anything on stage 0. Use at least stage 1.");
+-                exit!(1);
+-            }
+-            (0, Subcommand::Check { .. }) => {
+-                eprintln!("WARNING: cannot check anything on stage 0. Use at least stage 1.");
+-                exit!(1);
+-            }
+-            _ => {}
+-        }
+-
+         if config.compile_time_deps && !matches!(config.cmd, Subcommand::Check { .. }) {
+             eprintln!(
+                 "WARNING: Can't use --compile-time-deps with any subcommand other than check."
+-- 
+2.51.0
+
