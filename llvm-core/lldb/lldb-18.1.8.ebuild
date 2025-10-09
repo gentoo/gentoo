@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake flag-o-matic llvm.org llvm-utils python-single-r1
 
 DESCRIPTION="The LLVM debugger"
@@ -49,7 +49,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( lldb cmake llvm/utils )
-LLVM_PATCHSET=${PV}-r5
+LLVM_PATCHSET=${PV}-r7
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support third-party )
 llvm.org_set_globals
 
