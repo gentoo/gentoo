@@ -28,6 +28,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( ChangeLog NEWS README )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.8-attribute_unused.patch
+)
+
 src_unpack() {
 	default
 
