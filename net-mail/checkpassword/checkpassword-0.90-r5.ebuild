@@ -14,7 +14,6 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="static"
-RESTRICT="mirror bindist"
 
 RDEPEND="virtual/libcrypt:="
 DEPEND="${RDEPEND}"
