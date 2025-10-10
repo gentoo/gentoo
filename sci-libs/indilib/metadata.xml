@@ -11,6 +11,5 @@
 	</upstream>
 	<use>
 		<flag name="rtlsdr">Enable support for devices supported by <pkg>net-wireless/rtl-sdr</pkg></flag>
-		<flag name="websocket">Enable support for WebSocket protocol</flag>
 	</use>
 </pkgmetadata>
