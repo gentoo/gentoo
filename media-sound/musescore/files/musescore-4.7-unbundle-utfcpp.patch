@@ -1,0 +1,52 @@
+unbundle utfcpp
+--- a/src/framework/global/CMakeLists.txt
++++ b/src/framework/global/CMakeLists.txt
+@@ -25,7 +25,6 @@ include(${CMAKE_CURRENT_LIST_DIR}/async/async.cmake)
+ include(${CMAKE_CURRENT_LIST_DIR}/thirdparty/kors_logger/logger.cmake)
+ include(${CMAKE_CURRENT_LIST_DIR}/thirdparty/kors_profiler/profiler/profiler.cmake)
+ include(${CMAKE_CURRENT_LIST_DIR}/thirdparty/kors_modularity/modularity/modularity.cmake)
+-include(${CMAKE_CURRENT_LIST_DIR}/thirdparty/utfcpp/utfcpp.cmake)
+ 
+ find_package(TinyXml REQUIRED)
+ set(MODULE_SRC
+@@ -33,7 +32,6 @@ set(MODULE_SRC
+     ${ASYNC_SRC}
+     ${KORS_LOGGER_SRC}
+     ${KORS_PROFILER_SRC}
+-    ${UTFCPP_SRC}
+     ${CMAKE_CURRENT_LIST_DIR}/globaltypes.h
+     ${CMAKE_CURRENT_LIST_DIR}/iapplication.h
+     ${CMAKE_CURRENT_LIST_DIR}/iinteractive.h
+@@ -268,6 +266,10 @@ list(APPEND MODULE_LINK ${Z_LIB})
+ list(APPEND MODULE_LINK ${TINYXML_MODULE_LINK})
+ set(MODULE_DEF ${TINYXML_MODULE_DEF})
+ 
++find_package(utf8cpp REQUIRED CONFIG)
++get_target_property(UTFCPP_INC utf8::cpp INTERFACE_INCLUDE_DIRECTORIES)
++list(APPEND MODULE_INCLUDE_PRIVATE ${UTFCPP_INC})
++
+ if (QT_SUPPORT)
+     # These are needed by so many modules, that we make them public here,
+     # so that other modules get them transitively.
+--- a/src/framework/global/serialization/xmlstreamwriter.cpp
++++ b/src/framework/global/serialization/xmlstreamwriter.cpp
+@@ -23,7 +23,7 @@
+ 
+ #include <list>
+ 
+-#include <global/thirdparty/utfcpp/utf8.h>
++#include <utf8.h>
+ 
+ #include "global/containers.h"
+ #include "textstream.h"
+--- a/src/framework/global/types/string.cpp
++++ b/src/framework/global/types/string.cpp
+@@ -32,7 +32,7 @@
+ #include <sstream>
+ #include <utility>
+ 
+-#include "global/thirdparty/utfcpp/utf8.h"
++#include <utf8.h>
+ 
+ #include "bytearray.h"
+ 

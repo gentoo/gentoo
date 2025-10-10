@@ -10,6 +10,8 @@
 		<remote-id type="github">musescore/MuseScore</remote-id>
 	</upstream>
 	<use>
+		<flag name="pipewire">Enable PipeWire audio support (upstream's default)</flag>
 		<flag name="video">Support exporting scores as videos using the command line</flag>
+		<flag name="websockets">Enable websockets support</flag>
 	</use>
 </pkgmetadata>
