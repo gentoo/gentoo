@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="amd64 arm64 ~ppc64 ~x86"
 IUSE="+bwscheduler +downloadorder +infowidget +ipfilter +logviewer +magnetgenerator
-+mediaplayer rss +scanfolder +shutdown +stats +upnp +webengine +zeroconf"
+phonon rss +scanfolder +shutdown +stats +upnp +webengine +zeroconf"
 
 COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets,xml]
@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	>=net-libs/libktorrent-${PVCUT}:6
 	infowidget? ( dev-libs/geoip )
 	ipfilter? ( >=kde-frameworks/karchive-${KFMIN}:6 )
-	mediaplayer? (
+	phonon? (
 		>=media-libs/phonon-4.12.0[qt6(+)]
 		>=media-libs/taglib-1.5:=
 	)
@@ -75,7 +75,7 @@ src_configure() {
 		-DENABLE_IPFILTER_PLUGIN=$(usex ipfilter)
 		-DENABLE_LOGVIEWER_PLUGIN=$(usex logviewer)
 		-DENABLE_MAGNETGENERATOR_PLUGIN=$(usex magnetgenerator)
-		-DENABLE_MEDIAPLAYER_PLUGIN=$(usex mediaplayer)
+		-DENABLE_MEDIAPLAYER_PLUGIN=$(usex phonon)
 		$(cmake_use_find_package rss KF6Syndication)
 		-DENABLE_SCANFOLDER_PLUGIN=$(usex scanfolder)
 		-DENABLE_SHUTDOWN_PLUGIN=$(usex shutdown)
@@ -85,6 +85,6 @@ src_configure() {
 		-DENABLE_ZEROCONF_PLUGIN=$(usex zeroconf)
 	)
 # add back when ported
-# 		-DENABLE_WEBINTERFACE_PLUGIN=$(usex webinterface)
+#		-DENABLE_WEBINTERFACE_PLUGIN=$(usex webinterface)
 	ecm_src_configure
 }
