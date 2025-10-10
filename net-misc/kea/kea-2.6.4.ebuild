@@ -57,6 +57,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.0-openssl-version.patch
+	"${FILESDIR}"/${P}-boost-1.89.patch
 )
 
 python_check_deps() {

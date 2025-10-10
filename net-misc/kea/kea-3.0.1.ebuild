@@ -61,6 +61,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.89.patch
+)
+
 python_check_deps() {
 	use doc || return 0;
 	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" \
