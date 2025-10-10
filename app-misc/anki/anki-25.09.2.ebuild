@@ -22,9 +22,9 @@ DESCRIPTION="Smart spaced repetition flashcard program"
 HOMEPAGE="https://apps.ankiweb.net/"
 
 declare -A COMMITS=(
-	[anki]="539054c34dccf8b89ca7ea9c9c40ecaf172de759"
-	[ftl-core]="6552c95a81d162422b2a50126547cc7f1b50c2fd"
-	[ftl-desktop]="dad4e2736a2b53dcdb52d79b5703dd464c05d666"
+	[anki]="3890e12c9e48c028c3f12aa58cb64bd9f8895e30"
+	[ftl-core]="480ef0da728c7ea3485c58529ae7ee02be3e5dba"
+	[ftl-desktop]="fd5f984785ad07a0d3dbd893ee3d7e3671eaebd6"
 )
 SRC_URI="${CARGO_CRATE_URIS}
 	https://github.com/ankitects/anki/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz
@@ -32,7 +32,7 @@ SRC_URI="${CARGO_CRATE_URIS}
 	-> anki-core-i18n-${COMMITS[ftl-core]}.gh.tar.gz
 	https://github.com/ankitects/anki-desktop-ftl/archive/${COMMITS[ftl-desktop]}.tar.gz
 	-> anki-desktop-ftl-${COMMITS[ftl-desktop]}.gh.tar.gz
-	https://github.com/gentoo-crate-dist/anki/releases/download/${PV}/${P}-crates.tar.xz
+	https://github.com/gentoo-crate-dist/anki/releases/download/${PV%.*}/${P%.*}-crates.tar.xz
 	gui? (
 		https://home.cit.tum.de/~salu/distfiles/${P}-node_modules.tar.xz
 	)
@@ -135,7 +135,7 @@ EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 PATCHES=(
-	"${FILESDIR}"/24.06.3/remove-yarn.patch
+	"${FILESDIR}"/${P}-no-yarn-install.patch
 	"${FILESDIR}"/24.04.1/remove-mypy-protobuf.patch
 	"${FILESDIR}"/24.04.1/revert-cert-store-hack.patch
 	"${FILESDIR}"/23.12.1/ninja-rules-for-cargo.patch
@@ -154,6 +154,7 @@ pkg_setup() {
 
 python_prepare_all() {
 	mv "${WORKDIR}"/node_modules out || die
+	mv "${WORKDIR}"/yarn.lock . || die
 
 	# Expected files and directories
 	mkdir .git out/env || die
@@ -258,7 +259,7 @@ python_test() {
 
 python_test_all() {
 	local -x NEXTEST_TEST_THREADS="$(makeopts_jobs)"
-	edo cargo nextest run $(usev !debug '--release') \
+	edo "${CARGO}" nextest run $(usev !debug '--release') \
 			--color always \
 			--all-features \
 			--tests \
