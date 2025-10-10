@@ -50,7 +50,6 @@ BDEPEND="
 
 src_prepare() {
 	# Remove unused 3rdParty code - https://bugs.gentoo.org/959468
-	rm -r "${S}"/Source/3rdParty/fmt || die
 	rm -r "${S}"/Source/3rdParty/imgui/examples || die
 	rm -r "${S}"/Source/3rdParty/mupen64plus-rsp-parallel/win32 || die
 
@@ -79,7 +78,6 @@ src_configure() {
 		-DUPDATER=OFF
 		-DUSE_ANGRYLION=$(usex angrylion-plugin)
 		-DUSE_CCACHE=OFF
-		-DUSE_LIBFMT=OFF # Use std::format
 		-DUSE_LTO=OFF
 		-DVRU=OFF # Precompiled binaries
 	)
