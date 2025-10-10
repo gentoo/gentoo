@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Sam James <sam@gentoo.org> (2025-10-10)
+# Needs not-yet-stable GCC 15.
+dev-lang/python tail-call-interp
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-06)
 # USE=experimental is not stable by definition
 media-libs/zxing-cpp experimental
