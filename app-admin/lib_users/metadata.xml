@@ -6,6 +6,6 @@
     <name>Marc Schiffbauer</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">klausman/lib_users</remote-id>
+    <remote-id type="codeberg">klausman/lib_users</remote-id>
   </upstream>
 </pkgmetadata>
