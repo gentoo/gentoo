@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 # Reminder: relicensed to BSD-2-with-patent between 0.4.7 and 0.5.0
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 
 RDEPEND="
 	dev-python/cbor2[${PYTHON_USEDEP}]
