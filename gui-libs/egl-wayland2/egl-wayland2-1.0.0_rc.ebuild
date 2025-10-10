@@ -31,3 +31,9 @@ DEPEND="
 BDEPEND="
 	dev-util/wayland-scanner
 "
+
+pkg_postinst() {
+	ewarn "gui-libs/egl-wayland2 is still experimental and will be used over"
+	ewarn "gui-libs/egl-wayland(aka v1) if both are installed, please remember"
+	ewarn "to try uninstalling v2 if experience issues."
+}
