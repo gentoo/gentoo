@@ -20,7 +20,7 @@ IUSE="debug"
 
 COMMON_DEPEND=">=dev-libs/glib-2.56:2
 	>=dev-libs/libxml2-2.6:2=
-	>=net-libs/libsoup-2.54:2.4
+	net-libs/libsoup:3.0
 	>=sys-libs/timezone-data-2010k:0
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3
@@ -39,6 +39,10 @@ BDEPEND="
 	>=dev-build/libtool-2.2.6:2
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-libsoup3.patch
+)
 
 src_configure() {
 	mate_src_configure \
