@@ -97,6 +97,16 @@ src_prepare() {
 	# do not create /run
 	sed -e '/^install_emptydir(RUNSTATEDIR)$/d' \
 		-i meson.build || die
+
+	# fix build with boost 1.89
+	sed -e "s/, modules: \['system'\]//" \
+		-i meson.build || die
+	sed -e "/shared_ptr.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiolink/interval_timer.cc || die
+	sed -e "/posix_time_types.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiodns/io_fetch.cc || die
+	sed -e "/posix_time_types.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiodns/tests/io_fetch_unittest.cc || die
 }
 
 src_configure() {

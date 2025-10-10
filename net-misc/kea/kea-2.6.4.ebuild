@@ -108,6 +108,16 @@ src_prepare() {
 	sed -e '/$(DESTDIR)${runstatedir}/d' \
 		-i Makefile.am || die
 
+	# fix build with boost 1.89
+	sed -e "s:${BOOST_LIBS} -lboost_system:${BOOST_LIBS}:" \
+		-i m4macros/ax_boost_for_kea.m4 || die
+	sed -e "/shared_ptr.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiolink/interval_timer.cc || die
+	sed -e "/posix_time_types.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiodns/io_fetch.cc || die
+	sed -e "/posix_time_types.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiodns/tests/io_fetch_unittest.cc || die
+
 	eautoreconf
 }
 
