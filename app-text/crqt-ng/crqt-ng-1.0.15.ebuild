@@ -20,6 +20,8 @@ RDEPEND="${CDEPEND}"
 BDEPEND="${CDEPEND}
 	dev-qt/qttools:6[linguist]"
 
+PATCHES=( "${FILESDIR}"/cmake_minimum_required.patch )
+
 src_prepare() {
 	cmake_src_prepare
 	xdg_environment_reset

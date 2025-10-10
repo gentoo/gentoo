@@ -1,0 +1,25 @@
+From 47af063dc9b72f09c1e53225c7888c5f576f90a1 Mon Sep 17 00:00:00 2001
+From: Aleksey Chernov <valexlin@gmail.com>
+Date: Fri, 10 Oct 2025 00:52:54 +0400
+Subject: [PATCH] `cmake_minimum_required` is specified in the correct place.
+
+---
+ CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cd01e87..3f8d2e2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,6 @@
++cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+ project(crqt-ng)
+ 
+-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+-
+ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
+ 
+ 
+-- 
+2.50.1 (Apple Git-155)
+
