@@ -8,3 +8,4 @@ dev-java/openjdk:8 -system-bootstrap
 dev-java/openjdk:11 -system-bootstrap
 dev-java/openjdk:17 -system-bootstrap
 dev-java/openjdk:21 -system-bootstrap
+dev-java/openjdk:25 -system-bootstrap
