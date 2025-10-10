@@ -31,7 +31,6 @@ backbone of cloud and data center management.
     <flag name="mongodb">Support returning data to a mongodb server.</flag>
     <flag name="neutron">Support the OpenStack neutron network service.</flag>
     <flag name="nova">Enable support for the OpenStack Nova API</flag>
-    <flag name="openssl">Add support for using TLS via OpenSSL.</flag>
     <flag name="portage">Add support for package state enforcement using <pkg>sys-apps/portage</pkg></flag>
     <flag name="raet">Add support for the new RAET transport.</flag>
     <flag name="redis">Support returning data to a redis database.</flag>
