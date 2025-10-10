@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
 	SRC_URI="https://downloads.isc.org/isc/kea/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
@@ -107,6 +107,16 @@ src_prepare() {
 	# do not create /run
 	sed -e '/$(DESTDIR)${runstatedir}/d' \
 		-i Makefile.am || die
+
+	# fix build with boost 1.89
+	sed -e "s:${BOOST_LIBS} -lboost_system:${BOOST_LIBS}:" \
+		-i m4macros/ax_boost_for_kea.m4 || die
+	sed -e "/shared_ptr.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiolink/interval_timer.cc || die
+	sed -e "/posix_time_types.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiodns/io_fetch.cc || die
+	sed -e "/posix_time_types.hpp/a#include <boost/asio/deadline_timer.hpp>" \
+		-i src/lib/asiodns/tests/io_fetch_unittest.cc || die
 
 	eautoreconf
 }
