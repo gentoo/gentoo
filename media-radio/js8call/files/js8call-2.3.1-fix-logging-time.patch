@@ -1,0 +1,35 @@
+# Backported from actual development code on github
+From 2f99f5898492871155aecdc0c7ca37911c50b591 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20Kr=C3=BCger?= <dj3ei@famsik.de>
+Date: Tue, 29 Jul 2025 18:39:53 +0200
+Subject: [PATCH] Logging time always needs UTC, fix suggested by Joe K0OG
+
+See https://github.com/js8call/js8call/issues/37#issuecomment-3132750504 .
+---
+ logqso.ui | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/logqso.ui b/logqso.ui
+index 9b2fefd6..37502e52 100644
+--- a/logqso.ui
++++ b/logqso.ui
+@@ -164,6 +164,9 @@
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
++             <property name="TimeSpec">
++              <enum>Qt::UTC</enum>
++             </property>
+              <property name="displayFormat">
+               <string>yyyy-MM-dd HH:mm:ss</string>
+              </property>
+@@ -219,6 +222,9 @@
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
++             <property name="TimeSpec">
++              <enum>Qt::UTC</enum>
++             </property>
+              <property name="displayFormat">
+               <string>yyyy-MM-dd HH:mm:ss</string>
+              </property>
