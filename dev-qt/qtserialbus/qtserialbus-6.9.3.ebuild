@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Qt module to access CAN, ModBus, and other industrial serial buses and protocols"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 
 RDEPEND="
