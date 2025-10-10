@@ -88,7 +88,7 @@ src_install() {
 	systemd_dounit etc/linux-systemd/system/${PN}@.service
 	systemd_douserunit etc/linux-systemd/user/${PN}.service
 	newconfd "${FILESDIR}"/${PN}.confd-r1 ${PN}
-	newinitd "${FILESDIR}"/${PN}.initd-r3 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r4 ${PN}
 	exeinto /etc/user/init.d
 	newexe "${FILESDIR}"/syncthing.initd-user syncthing
 
