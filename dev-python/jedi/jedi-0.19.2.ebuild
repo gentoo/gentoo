@@ -68,14 +68,6 @@ python_test() {
 	)
 
 	case ${EPYTHON} in
-		pypy3)
-			EPYTEST_DESELECT+=(
-				test/test_api/test_api.py::test_preload_modules
-				test/test_api/test_interpreter.py::test_param_infer_default
-				test/test_inference/test_compiled.py::test_next_docstr
-				test/test_inference/test_compiled.py::test_time_docstring
-			)
-			;;
 		pypy3.11)
 			EPYTEST_DESELECT+=(
 				test/test_api/test_interpreter.py::test_param_infer_default
