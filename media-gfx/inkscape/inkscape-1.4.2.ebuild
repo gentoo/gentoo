@@ -135,6 +135,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	rm -vr src/3rdparty/2geom/tests/dependent-project || die # unused, causing bug #964016
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }
