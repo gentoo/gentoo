@@ -7,7 +7,6 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<changelog>https://github.com/Python-SIP/sip/blob/main/NEWS</changelog>
 		<doc>https://python-sip.readthedocs.io/en/latest/</doc>
 		<remote-id type="github">Python-SIP/sip</remote-id>
 		<remote-id type="pypi">sip</remote-id>
