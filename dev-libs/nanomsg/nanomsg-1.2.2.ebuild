@@ -24,6 +24,8 @@ src_prepare() {
 		-e '/ws_async_shutdown/s/10/80/' \
 		-e '/ipc_shutdown/s/40/80/' CMakeLists.txt || die
 
+	rm -vr demo || die # unused, causing bug #963845
+
 	cmake_src_prepare
 }
 
