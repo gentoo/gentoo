@@ -49,8 +49,9 @@ net-firewall/nftables json python xtables
 sys-libs/zlib minizip
 
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
-kde-apps/kio-extras phonon
-kde-apps/marble phonon
+<kde-apps/kio-extras-25.08.2 phonon
+<kde-apps/marble-25.08.2 phonon
+<net-p2p/ktorrent-25.08.2 phonon
 
 # Required by kde-plasma/plasma-meta
 kde-plasma/kwin lock
