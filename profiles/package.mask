@@ -87,8 +87,9 @@ net-libs/NativeThread
 =dev-qt/qtwebview-6.10.0*
 
 # Michał Górny <mgorny@gentoo.org> (2025-10-06)
-# Refcount errors that trigger crashes in dev-python/moto tests
-# tests/test_xray/test_xray_client.py.  TODO: investigate.
+# Refcount errors that trigger crashes in dev-python/moto
+# and dev-python/ipyparallel tests.
+=dev-python/pymongo-4.15.3
 =dev-python/pymongo-4.15.2
 
 # Sam James <sam@gentoo.org> (2025-10-05)
