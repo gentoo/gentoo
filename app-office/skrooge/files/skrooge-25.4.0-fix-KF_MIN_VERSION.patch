@@ -1,0 +1,62 @@
+From af13519eb01df8f63603ae14954f2e263490bfbe Mon Sep 17 00:00:00 2001
+From: Luigi Toscano <luigi.toscano@tiscali.it>
+Date: Fri, 27 Jun 2025 01:53:23 +0200
+Subject: [PATCH 1/2] Fix the usage of KF_MIN_VERSION
+
+Move it (and a few other related variables) before its first usage.
+
+(cherry picked from commit a498ce4bc1f86d09e55c589d90a8bb422fe86f57)
+---
+ CMakeLists.txt | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c0c6c037f..37357c047 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@ SET(CMAKE_CXX_STANDARD 17)
+ SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ OPTION(SKG_BUILD_TEST "Build the test" ON)
+-OPTION(SKG_DESIGNER   "Build designer library" ON)
++# OPTION(SKG_DESIGNER   "Build designer library" ON)
+ OPTION(SKG_WEBENGINE  "Build Skrooge with WebEngine" ON)
+ OPTION(SKG_DBUS  "Build with DBUS" ON)
+ IF(WIN32)
+@@ -22,13 +22,16 @@ IF(WIN32)
+     SET(SKG_DESIGNER OFF)
+ ENDIF(WIN32)
+ 
++SET(QT_MIN_VERSION "6.3.0")
++SET(KF_MIN_VERSION "6.3.0")
++SET(SKG_DESIGNER OFF)
++ADD_DEFINITIONS(-DBUILD_WITH_QT6=ON)
++ADD_DEFINITIONS(-DSKG_QT6=ON)
++
+ IF(POLICY CMP0063)
+   CMAKE_POLICY(SET CMP0063 NEW)
+ ENDIF(POLICY CMP0063)
+ 
+-SET(QT_MIN_VERSION "5.15.0")
+-SET(KF_MIN_VERSION "5.102.0")
+-
+ FIND_PACKAGE(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
+ 
+ SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${skrooge_SOURCE_DIR}/cmake/modules)
+@@ -44,13 +47,6 @@ INCLUDE(ECMGenerateHeaders)
+ INCLUDE(CMakePackageConfigHelpers)
+ INCLUDE(KDEFrameworkCompilerSettings)
+ 
+-IF(QT_MAJOR_VERSION STREQUAL "6")
+-    SET(QT_MIN_VERSION "6.3.0")
+-    SET(KF_MIN_VERSION "6.3.0")
+-    SET(SKG_DESIGNER OFF)
+-    ADD_DEFINITIONS(-DSKG_QT6=ON)
+-ENDIF()
+-
+ # Qt 6 build
+ MESSAGE(STATUS "Using Qt${QT_MAJOR_VERSION}/KF${QT_MAJOR_VERSION} to build Skrooge")
+ ADD_COMPILE_DEFINITIONS(
+-- 
+2.51.0
+
