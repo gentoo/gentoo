@@ -45,14 +45,6 @@ python_test() {
 	fi
 
 	local EPYTEST_DESELECT=()
-	case ${EPYTHON} in
-		pypy3)
-			EPYTEST_DESELECT+=(
-				"tests/test_main.py::test_small_samples[22bc344a43584c051d8962116e8fd149d72e7e68bcb54caf201ee6e78986b167.py]"
-				"tests/test_main.py::test_small_samples[46597f8f896f11c5d7f432236344cc7e5645c2a39836eb6abdd2437c0422f0f4.py]"
-			)
-			;;
-	esac
 	if ! has_version "dev-python/ipython[${PYTHON_USEDEP}]"; then
 		EPYTEST_DESELECT+=(
 			tests/test_ipython.py
