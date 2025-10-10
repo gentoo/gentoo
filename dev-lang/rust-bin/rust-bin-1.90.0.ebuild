@@ -27,7 +27,7 @@ else
 			$(rust_arch_uri powerpc64le-unknown-linux-musl rust-${PV})
 		) ) )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~s390 ~x86" # ~ppc64 ~riscv ~sparc ~mips
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/${PVR}" # omit trailing slash
@@ -35,7 +35,7 @@ GENTOO_BIN_BASEURI="https://github.com/projg2/rust-bootstrap/releases/download/$
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="https://www.rust-lang.org/"
 
-if false; then #[[ ${PV} != *9999* && ${PV} != *beta* ]]; then
+if [[ ${PV} != *9999* && ${PV} != *beta* ]]; then
 	# Keep this separate to allow easy commenting out if not yet built
 	SRC_URI+=" sparc? ( ${GENTOO_BIN_BASEURI}/rust-${PVR}-sparc64-unknown-linux-gnu.tar.xz ) "
 	SRC_URI+=" mips? (
