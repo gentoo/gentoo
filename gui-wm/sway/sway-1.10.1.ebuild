@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="+man +swaybar +swaynag tray wallpapers X"
+IUSE="+man +swaybar +swaynag tray wallpapers X systemd"
 REQUIRED_USE="tray? ( swaybar )"
 
 DEPEND="
@@ -46,6 +46,7 @@ DEPEND="
 		x11-libs/libxcb:0=
 		x11-libs/xcb-util-wm
 	)
+	systemd? ( sys-apps/systemd )
 "
 # x11-libs/xcb-util-wm needed for xcb-iccm
 if [[ ${PV} == 9999 ]]; then
@@ -94,6 +95,10 @@ src_install() {
 	meson_src_install
 	insinto /usr/share/xdg-desktop-portal
 	doins "${FILESDIR}/sway-portals.conf"
+	if use systemd; then
+		insinto /etc/sway/config.d
+		doins "${FILESDIR}/50-systemd-user.conf"
+	fi
 }
 
 pkg_postinst() {
