@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
   <maintainer type="person">
     <email>arsen@gentoo.org</email>
@@ -13,7 +14,15 @@
     <email>gnu-emacs@gentoo.org</email>
     <name>Gentoo GNU Emacs project</name>
   </maintainer>
+  <longdescription>
+    Dape is a debug adapter client for Emacs. The debug adapter
+    protocol, much like its more well-known counterpart, the language server
+    protocol, aims to establish a common API for programming tools. However,
+    instead of functionalities such as code completions, it provides a
+    standardized interface for debuggers.
+  </longdescription>
   <upstream>
+    <bugs-to>https://github.com/svaante/dape/issues/</bugs-to>
     <remote-id type="github">svaante/dape</remote-id>
   </upstream>
 </pkgmetadata>
