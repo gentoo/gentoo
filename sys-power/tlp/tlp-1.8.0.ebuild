@@ -14,12 +14,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64"
 
-# It's uncertain if elogind/systemd is actually required, however, without the sleep
-# hooks working, which require one of them, it doesn't seem like this app is very useful.
 RDEPEND="
 	dev-lang/perl
 	virtual/udev
-	|| ( sys-auth/elogind sys-apps/systemd )
 "
 
 src_install() {
@@ -45,6 +42,8 @@ pkg_postinst() {
 
 	optfeature "disable Wake-on-LAN" sys-apps/ethtool
 	optfeature "see disk drive health info in tlp-stat" sys-apps/smartmontools
+	optfeature "Sleep hooks (elogind)" sys-auth/elogind
+	optfeature "Sleep hooks (systemd)" sys-apps/systemd
 }
 
 pkg_postrm() {
