@@ -197,7 +197,6 @@ get_distribution_components() {
 			clang-linker-wrapper
 			clang-nvlink-wrapper
 			clang-offload-bundler
-			clang-offload-packager
 			clang-refactor
 			clang-repl
 			clang-scan-deps
