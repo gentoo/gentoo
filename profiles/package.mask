@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-11)
+# Stuck forever in 5.x because in 6.x it was rewritten around proprietary
+# aqlprofile. A potential future 7.x package would require packaging from
+# scratch with several additional new package dependencies.
+# Bugs #904074, #952456. Removal on 2025-11-10.
+dev-util/rocprofiler
+
 # Hans de Graaff <graaff@gentoo.org> (2025-10-10)
 # No longer supported upstream since 2025-04-01. Use Rails 7.2 or newer
 # instead. Masked for removal on 2025-11-10).
