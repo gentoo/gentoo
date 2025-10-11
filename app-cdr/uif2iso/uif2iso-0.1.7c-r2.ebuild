@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EAPI=8
 inherit toolchain-funcs
 
 DESCRIPTION="Convert CD images from uif (MagicISO) to iso"
-HOMEPAGE="http://aluigi.altervista.org/mytoolz.htm#uif2iso"
+HOMEPAGE="https://aluigi.altervista.org/mytoolz.htm#uif2iso"
 SRC_URI="
 	mirror://gentoo/${P}.zip
 	test? (
@@ -24,6 +24,11 @@ RESTRICT="!test? ( test )"
 RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
+
+PATCHES=(
+	# https://bugs.gentoo.org/943915
+	"${FILESDIR}"/${PN}-0.1.7c-fix_c23.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" -C src -f - <<- 'EOF'

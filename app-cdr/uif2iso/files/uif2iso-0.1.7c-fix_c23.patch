@@ -1,0 +1,99 @@
+see https://bugs.gentoo.org/943915
+fix c23, old-style def
+--- a/src/loki91.c
++++ b/src/loki91.c
+@@ -61,10 +61,10 @@
+ 
+ #define	MSB	0x80000000L		/* MSB of 32-bit word */
+ 
+-void perm32(out, in , perm)
+-Long	*out;		/* Output 32-bit block to be permuted                */
+-Long	*in;		/* Input  32-bit block after permutation             */
+-char	perm[32]; 	/* Permutation array                                 */
++void perm32(Long *out, Long *in, char perm[32])
++/*Long	*out;		Output 32-bit block to be permuted                */
++/*Long	*in;		Input  32-bit block after permutation             */
++/*char	perm[32]; 	Permutation array                                 */
+ {
+ 	Long	mask = MSB;		/* mask used to set bit in output    */
+ 	register int	i, o, b;	/* input bit no, output bit no, value */
+@@ -89,9 +89,9 @@ char	perm[32]; 	/* Permutation array                                 */
+ 
+ #define SIZE 256		/* 256 elements in GF(2^8) */
+ 
+-short mult8(a, b, gen)
+-short	a, b;		/* operands for multiply */
+-short	gen;		/* irreducible polynomial generating Galois Field */
++short mult8(short a, short b, short gen)
++/*short	a, b;		operands for multiply */
++/*short	gen;		irreducible polynomial generating Galois Field */
+ {
+ 	short	product = 0;		/* result of multiplication */
+ 
+@@ -112,10 +112,10 @@ short	gen;		/* irreducible polynomial generating Galois Field */
+  *			exp = base ^ exp mod gen
+  */
+ 
+-short exp8(base, exponent, gen)
+-short	base;		/* base of exponentiation 	*/
+-short	exponent;	/* exponent			*/
+-short	gen;		/* irreducible polynomial generating Galois Field */
++short exp8(short base, short exponent, short gen)
++/*short	base;		base of exponentiation 	*/
++/*short	exponent;	exponent			*/
++/*short	gen;		irreducible polynomial generating Galois Field */
+ {
+ 	short	accum = base;	/* superincreasing sequence of base */
+ 	short	result = 1;	/* result of exponentiation	    */
+@@ -139,8 +139,8 @@ short	gen;		/* irreducible polynomial generating Galois Field */
+ char	*loki_lib_ver = "LOKI91 library v3.0, Copyright (C) 1991 Lawrence Brown & UNSW";
+ 
+ 		/* subkeys at the 16 rounds */
+-static Long	f();			/* declare LOKI function f */
+-static short	s();			/* declare LOKI S-box fn s */
++static Long	f(register Long r, Long k);			/* declare LOKI function f */
++static short	s(register Long i);			/* declare LOKI S-box fn s */
+ 
+ 
+ /*
+@@ -270,9 +270,9 @@ deloki(Long loki_subkeys[ROUNDS], char b[LOKIBLK])
+ #define MASK12	0x0fff			/* 12 bit mask for expansion E */
+ 
+ static Long
+-f(r, k)
+-register Long	r;	/* Data value R(i-1) */
+-Long		k;	/* Key     K(i)   */
++f(register Long r, Long k)
++/*register Long	r;	Data value R(i-1) */
++/*Long		k;	Key     K(i)   */
+ {
+ 	Long	a, b, c;		/* 32 bit S-box output, & P output */
+ 
+@@ -298,11 +298,10 @@ Long		k;	/* Key     K(i)   */
+ /*
+  *	s(i) - return S-box value for input i
+  */
+-static short s(i)
+-register Long i;	/* return S-box value for input i */
++static short s(register Long i)
++/*register Long i;	return S-box value for input i */
+ {
+ 	register short	r, c, v, t;
+-	short	exp8();		/* exponentiation routine for GF(2^8) */
+ 
+ 	r = ((i>>8) & 0xc) | (i & 0x3);		/* row value-top 2 & bottom 2 */
+ 	c = (i>>2) & 0xff;			/* column value-middle 8 bits */
+--- a/src/seal.c
++++ b/src/seal.c
+@@ -46,10 +46,7 @@ typedef struct {
+ #define F3(x, y, z) (((x) & (y)) | ((x) & (z)) | ((y) & (z)))
+ #define F4(x, y, z) ((x) ^ (y) ^ (z))
+ 
+-int g(in,i,h)
+-unsigned char *in;
+-int i;
+-uint32_t *h;
++int g(unsigned char *in, int i, uint32_t *h)
+ {
+ 
+ uint32_t h0,h1,h2,h3,h4,a,b,c,d,e,temp;
