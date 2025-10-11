@@ -3170,7 +3170,7 @@ toolchain_death_notice() {
 	# TODO: For bootstrap comparison failures, include the stage2 & stage3
 	# differing objects to avoid having to ask reporters to manually collect...
 	local dir
-	for dir in "${WORKDIR}"/build-jit "${WORKDIR}"/build ; do
+	for dir in "${WORKDIR}"/build ; do
 		if [[ -e "${dir}" ]] ; then
 			pushd "${WORKDIR}" >/dev/null
 			(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > "${dir}"/gccinfo.log
