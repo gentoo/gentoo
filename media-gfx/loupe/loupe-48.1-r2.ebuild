@@ -273,7 +273,7 @@ RUST_MIN_VER="1.81"
 inherit cargo gnome.org gnome2 meson xdg
 
 DESCRIPTION="View images"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/loupe"
+HOMEPAGE="https://apps.gnome.org/Loupe"
 
 # SRC_URI for loupe is set by gnome.org eclass.
 SRC_URI+=" ${CARGO_CRATE_URIS}"
