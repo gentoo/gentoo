@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome2
 
 DESCRIPTION="Compiler for the GObject type system"
-HOMEPAGE="https://vala.dev https://gitlab.gnome.org/GNOME/vala"
+HOMEPAGE="https://vala.dev"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.56"
