@@ -261,6 +261,7 @@ get_distribution_components() {
 
 			# tools
 			bugpoint
+			clang-offload-packager
 			dsymutil
 			llc
 			lli
@@ -311,6 +312,7 @@ get_distribution_components() {
 			llvm-nm
 			llvm-objcopy
 			llvm-objdump
+			llvm-offload-binary
 			llvm-offload-wrapper
 			llvm-opt-report
 			llvm-otool
