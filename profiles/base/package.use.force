@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-10-27)
+# Other backends are experimental for now. Force the upstream default (LLVM).
+dev-lang/rust rust_codegen_backends_llvm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
 # This is currently more footgun than real option. Bug #958638
 <kde-plasma/kwin-6.5.0 X

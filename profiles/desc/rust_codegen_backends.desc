@@ -1,5 +1,5 @@
 # Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-bpf - Berkeley Packet Filter target
-wasm - WebAssembly target
+llvm - Backend based on llvm-core/llvm
+gcc - Backend based on sys-devel/gcc, using libgccjit
