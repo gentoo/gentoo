@@ -1,0 +1,236 @@
+Incomplete attempt at implementing the dist/install step mentioned in upstream
+commit 6f0746da4effaceae569ae69d4ea05758f49dff7 for rustc_codegen_gcc. It's
+partly there but not quite enough, see manual steps in src_install in the
+ebuild.
+--- a/src/bootstrap/src/core/build_steps/compile.rs
++++ b/src/bootstrap/src/core/build_steps/compile.rs
+@@ -1573,13 +1573,13 @@ fn run(self, builder: &Builder<'_>) {
+ /// It includes the path to the libgccjit library on which this backend depends.
+ #[derive(Clone)]
+ pub struct GccCodegenBackendOutput {
+-    stamp: BuildStamp,
++    pub stamp: BuildStamp,
+     gcc: GccOutput,
+ }
+ 
+ #[derive(Debug, Clone, PartialEq, Eq, Hash)]
+ pub struct GccCodegenBackend {
+-    compilers: RustcPrivateCompilers,
++    pub compilers: RustcPrivateCompilers,
+ }
+ 
+ impl Step for GccCodegenBackend {
+--- a/src/bootstrap/src/core/build_steps/dist.rs
++++ b/src/bootstrap/src/core/build_steps/dist.rs
+@@ -1582,6 +1582,93 @@ fn metadata(&self) -> Option<StepMetadata> {
+     }
+ }
+ 
++#[derive(Debug, Clone, Hash, PartialEq, Eq)]
++pub struct GccCodegenBackend {
++    pub compilers: RustcPrivateCompilers,
++    pub target: TargetSelection,
++}
++
++impl Step for GccCodegenBackend {
++    type Output = Option<GeneratedTarball>;
++    const DEFAULT: bool = true;
++    const IS_HOST: bool = true;
++
++    fn should_run(run: ShouldRun<'_>) -> ShouldRun<'_> {
++        // We only want to build the gcc backend in `x dist` if the backend was enabled
++        // in rust.codegen-backends.
++        // Sadly, we don't have access to the actual target for which we're disting gcc here..
++        // So we just use the host target.
++        let gcc_enabled_by_default = run
++            .builder
++            .config
++            .enabled_codegen_backends(run.builder.host_target)
++            .contains(&CodegenBackendKind::Gcc);
++        run.alias("rustc_codegen_gcc").default_condition(gcc_enabled_by_default)
++    }
++
++    fn make_run(run: RunConfig<'_>) {
++        run.builder.ensure(GccCodegenBackend {
++            compilers: RustcPrivateCompilers::new(run.builder, run.builder.top_stage, run.target),
++            target: run.target,
++        });
++    }
++
++    fn run(self, builder: &Builder<'_>) -> Option<GeneratedTarball> {
++        // This prevents rustc_codegen_gcc from being built for "dist"
++        // or "install" on the stable/beta channels. It is not yet stable and
++        // should not be included.
++        if !builder.build.unstable_features() {
++            return None;
++        }
++
++        let target = self.target;
++        // TODO: Is there an equivalent for the gcc backend here? cranelift has this.
++        //if !target_supports_gcc_backend(target) {
++        //    builder.info("target not supported by rustc_codegen_gcc. skipping");
++        //    return None;
++        //}
++
++        let mut tarball = Tarball::new(builder, "rustc-codegen-gcc", &target.triple);
++        tarball.set_overlay(OverlayKind::RustcCodegenGcc);
++        tarball.is_preview(true);
++        tarball.add_legal_and_readme_to("share/doc/rustc_codegen_gcc");
++
++        let compilers = self.compilers;
++        let stamp = builder.ensure(compile::GccCodegenBackend { compilers }).stamp;
++
++        if builder.config.dry_run() {
++            return None;
++        }
++
++        // Get the relative path of where the codegen backend should be stored.
++        let backends_dst = builder.sysroot_codegen_backends(compilers.target_compiler());
++        let backends_rel = backends_dst
++            .strip_prefix(builder.sysroot(compilers.target_compiler()))
++            .unwrap()
++            .strip_prefix(builder.sysroot_libdir_relative(compilers.target_compiler()))
++            .unwrap();
++        // Don't use custom libdir here because ^lib/ will be resolved again with installer
++        let backends_dst = PathBuf::from("lib").join(backends_rel);
++
++        let codegen_backend_dylib = get_codegen_backend_file(&stamp);
++        tarball.add_renamed_file(
++            &codegen_backend_dylib,
++            &backends_dst,
++            &normalize_codegen_backend_name(builder, &codegen_backend_dylib),
++            FileType::NativeLibrary,
++        );
++
++        Some(tarball.generate())
++    }
++
++    fn metadata(&self) -> Option<StepMetadata> {
++        Some(
++            StepMetadata::dist("rustc_codegen_gcc", self.target)
++                .built_by(self.compilers.build_compiler()),
++        )
++    }
++}
++
+ #[derive(Debug, Clone, Hash, PartialEq, Eq)]
+ pub struct Rustfmt {
+     pub compilers: RustcPrivateCompilers,
+@@ -1695,6 +1782,10 @@ macro_rules! add_component {
+             compilers: rustc_private_compilers,
+             target
+         });
++        add_component!("rustc-codegen-gcc" => GccCodegenBackend {
++            compilers: rustc_private_compilers,
++            target
++        });
+         add_component!("llvm-bitcode-linker" => LlvmBitcodeLinker {
+             build_compiler,
+             target
+@@ -1796,6 +1887,7 @@ fn filter(contents: &str, marker: &str) -> String {
+                 "rust-docs",
+                 "miri",
+                 "rustc-codegen-cranelift",
++                "rustc-codegen-gcc",
+             ] {
+                 if built_tools.contains(tool) {
+                     prepare(tool);
+--- a/src/bootstrap/src/core/build_steps/install.rs
++++ b/src/bootstrap/src/core/build_steps/install.rs
+@@ -289,6 +289,19 @@ fn run($sel, $builder: &Builder<'_>) {
+             );
+         }
+     };
++    RustcCodegenGcc, alias = "rustc-codegen-gcc", Self::should_build(_config), IS_HOST: true, {
++        if let Some(tarball) = builder.ensure(dist::GccCodegenBackend {
++            compilers: RustcPrivateCompilers::from_build_compiler(builder, self.build_compiler, self.target),
++            target: self.target
++        }) {
++            install_sh(builder, "rustc-codegen-gcc", self.build_compiler, Some(self.target), &tarball);
++        } else {
++            builder.info(
++                &format!("skipping Install CodegenBackend(\"gcc\") stage{} ({})",
++                         self.build_compiler.stage + 1, self.target),
++            );
++        }
++    };
+     LlvmBitcodeLinker, alias = "llvm-bitcode-linker", Self::should_build(_config), IS_HOST: true, {
+         if let Some(tarball) = builder.ensure(dist::LlvmBitcodeLinker { build_compiler: self.build_compiler, target: self.target }) {
+             install_sh(builder, "llvm-bitcode-linker", self.build_compiler, Some(self.target), &tarball);
+--- a/src/bootstrap/src/core/builder/mod.rs
++++ b/src/bootstrap/src/core/builder/mod.rs
+@@ -1185,6 +1185,7 @@ macro_rules! describe {
+                 dist::Mingw,
+                 dist::Rustc,
+                 dist::CraneliftCodegenBackend,
++                dist::GccCodegenBackend,
+                 dist::Std,
+                 dist::RustcDev,
+                 dist::Analysis,
+--- a/src/bootstrap/src/utils/tarball.rs
++++ b/src/bootstrap/src/utils/tarball.rs
+@@ -25,6 +25,7 @@ pub(crate) enum OverlayKind {
+     Rustfmt,
+     RustAnalyzer,
+     RustcCodegenCranelift,
++    RustcCodegenGcc,
+     LlvmBitcodeLinker,
+ }
+ 
+@@ -66,6 +67,11 @@ fn legal_and_readme(&self) -> &[&str] {
+                 "compiler/rustc_codegen_cranelift/LICENSE-APACHE",
+                 "compiler/rustc_codegen_cranelift/LICENSE-MIT",
+             ],
++            OverlayKind::RustcCodegenGcc => &[
++                "compiler/rustc_codegen_gcc/Readme.md",
++                //"compiler/rustc_codegen_cranelift/LICENSE-APACHE",
++                //"compiler/rustc_codegen_cranelift/LICENSE-MIT",
++            ],
+             OverlayKind::LlvmBitcodeLinker => &[
+                 "COPYRIGHT",
+                 "LICENSE-APACHE",
+@@ -93,6 +99,7 @@ fn version(&self, builder: &Builder<'_>) -> String {
+                 .rust_analyzer_info
+                 .version(builder, &builder.release_num("rust-analyzer/crates/rust-analyzer")),
+             OverlayKind::RustcCodegenCranelift => builder.rust_version(),
++            OverlayKind::RustcCodegenGcc => builder.rust_version(),
+             OverlayKind::LlvmBitcodeLinker => builder.rust_version(),
+         }
+     }
+--- a/src/tools/build-manifest/src/main.rs
++++ b/src/tools/build-manifest/src/main.rs
+@@ -490,6 +490,7 @@ fn target_host_combination(&mut self, host: &str, manifest: &Manifest) -> Option
+                 | PkgType::RustAnalysis
+                 | PkgType::JsonDocs
+                 | PkgType::RustcCodegenCranelift
++                | PkgType::RustcCodegenGcc
+                 | PkgType::LlvmBitcodeLinker => {
+                     extensions.push(host_component(pkg));
+                 }
+--- a/src/tools/build-manifest/src/versions.rs
++++ b/src/tools/build-manifest/src/versions.rs
+@@ -58,6 +58,7 @@ pub(crate) fn all() -> &'static [PkgType] {
+     Miri = "miri"; preview = true,
+     JsonDocs = "rust-docs-json"; preview = true,
+     RustcCodegenCranelift = "rustc-codegen-cranelift"; preview = true,
++    RustcCodegenGcc = "rustc-codegen-gcc"; preview = true,
+     LlvmBitcodeLinker = "llvm-bitcode-linker"; preview = true,
+ }
+ 
+@@ -82,6 +83,8 @@ fn should_use_rust_version(&self) -> bool {
+             PkgType::LlvmTools => false,
+             PkgType::Miri => false,
+             PkgType::RustcCodegenCranelift => false,
++            // TODO
++            PkgType::RustcCodegenGcc => false,
+ 
+             PkgType::Rust => true,
+             PkgType::RustStd => true,
+@@ -111,6 +114,7 @@ pub(crate) fn targets(&self) -> &[&str] {
+             RustcDocs => HOSTS,
+             Cargo => HOSTS,
+             RustcCodegenCranelift => HOSTS,
++            RustcCodegenGcc => HOSTS, // TODO
+             RustMingw => MINGW,
+             RustStd => TARGETS,
+             HtmlDocs => HOSTS,
