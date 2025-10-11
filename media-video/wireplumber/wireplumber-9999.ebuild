@@ -6,7 +6,7 @@ EAPI=8
 # 1. Please regularly check (even at the point of bumping) Fedora's packaging
 # for needed backports at https://src.fedoraproject.org/rpms/wireplumber/tree/rawhide
 #
-# 2. Keep an eye on git master (for both wireplumber and wireplumber) as things
+# 2. Keep an eye on git master (for both PipeWire and WirePlumber) as things
 # continue to move quickly. It's not uncommon for fixes to be made shortly
 # after releases.
 
@@ -29,15 +29,15 @@ PYTHON_COMPAT=( python3_{11..14} )
 
 inherit lua-single meson python-any-r1 systemd
 
-DESCRIPTION="Replacement for wireplumber-media-session"
-HOMEPAGE="https://gitlab.freedesktop.org/wireplumber/wireplumber"
+DESCRIPTION="Replacement for pipewire-media-session"
+HOMEPAGE="https://gitlab.freedesktop.org/pipewire/wireplumber"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/wireplumber/${PN}.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
 else
-	SRC_URI="https://gitlab.freedesktop.org/wireplumber/${PN}/-/archive/${PV}/${P}.tar.bz2"
+	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 	if [[ ${WIREPLUMBER_DOCS_PREBUILT} == 1 ]] ; then
 		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${WIREPLUMBER_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${WIREPLUMBER_DOCS_VERSION}-docs.tar.xz )"
@@ -94,9 +94,9 @@ RDEPEND="
 DOCS=( {NEWS,README}.rst )
 
 PATCHES=(
-	# Defer enabling sound server parts to media-video/wireplumber
+	# Defer enabling sound server parts to media-video/pipewire
 	# TODO: Soon, we should be able to migrate to just a dropin at
-	# /usr/share. See https://gitlab.freedesktop.org/wireplumber/wireplumber/-/issues/652#note_2399735.
+	# /usr/share. See https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/652#note_2399735.
 	"${FILESDIR}"/${PN}-0.5.6-config-disable-sound-server-parts.patch
 )
 
@@ -157,7 +157,7 @@ pkg_postinst() {
 	if use system-service; then
 		ewarn
 		ewarn "WARNING: you have enabled the system-service USE flag, which installs"
-		ewarn "the system-wide systemd units that enable wireplumber to run as a system"
+		ewarn "the system-wide systemd units that enable WirePlumber to run as a system"
 		ewarn "service. This is more than likely NOT what you want. You are strongly"
 		ewarn "advised not to enable this mode and instead stick with systemd user"
 		ewarn "units. The default configuration files will likely not work out of"
