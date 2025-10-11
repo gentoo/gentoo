@@ -6,7 +6,7 @@ EAPI=8
 inherit cmake edos2unix flag-o-matic
 
 DESCRIPTION="Weak signal ham radio communication with improvements"
-HOMEPAGE="https://physics.princeton.edu//pulsar/K1JT/wsjtx.html"
+HOMEPAGE="https://wsjt-x-improved.sourceforge.io/"
 SRC_URI="https://downloads.sourceforge.net/wsjt-x-improved/wsjtx-${PV}_improved_PLUS_250924_qt6.tgz"
 
 S=${WORKDIR}/wsjtx
