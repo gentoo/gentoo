@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 1999-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+supervisor=supervise-daemon
+name="atopgpud"
+command="/usr/sbin/atopgpud"
+command_args="-f"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	before atop atopacct
+}
