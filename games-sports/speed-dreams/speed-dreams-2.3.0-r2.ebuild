@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-2+ BitstreamVera CC0-1.0 Free-Art-1.2 OFL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug osggraph webstats"
+IUSE="debug osg webstats"
 
 COMMON_DEPEND="
 	dev-games/freesolid
@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	net-misc/curl
 	virtual/glu
 	virtual/opengl
-	osggraph? ( dev-games/openscenegraph:=[png] )
+	osg? ( dev-games/openscenegraph-openmw:=[png] )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -66,7 +66,7 @@ src_configure() {
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH=yes # see xmlversion-rpath patch
 		-DOPTION_3RDPARTY_SOLID=yes
 		-DOPTION_OFFICIAL_ONLY=yes
-		-DOPTION_OSGGRAPH=$(usex osggraph)
+		-DOPTION_OSGGRAPH=$(usex osg)
 		-DOPTION_TRACE_LEVEL=$(usex debug 5 3)
 		-DOPTION_WEBSERVER=$(usex webstats)
 		-DOpenGL_GL_PREFERENCE=LEGACY # legacy needed for gl*ARB symbols
