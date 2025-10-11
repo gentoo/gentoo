@@ -1,0 +1,51 @@
+From 7579b60a5aa697d4d1185a22d3c50d8ecd953181 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Gon=C3=A7alo=20Negrier=20Duarte?=
+ <gonegrier.duarte@gmail.com>
+Date: Fri, 31 Jan 2025 12:51:49 +0000
+Subject: [PATCH] Patch: Check for unw_set_caching_policy and uwn_backtrace
+ before using llvm-runtimes/libunwind does not implement unw_* functions yet
+ Include execinfo.h for backtrace
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Gonçalo Negrier Duarte <gonegrier.duarte@gmail.com>
+---
+ src/preload/backtrace-helper.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/preload/backtrace-helper.h b/src/preload/backtrace-helper.h
+index ac4f8e9a..389ac699 100644
+--- a/src/preload/backtrace-helper.h
++++ b/src/preload/backtrace-helper.h
+@@ -22,11 +22,14 @@
+ 
+ #define UNW_LOCAL_ONLY
+ #include <libunwind.h>
++#include <execinfo.h>
+ 
+ static void
+ backtrace_init (void)
+ {
++#ifdef UNW_CACHE_PER_THREAD
+   unw_set_caching_policy (unw_local_addr_space, UNW_CACHE_PER_THREAD);
++#endif
+ #ifdef HAVE_UNW_SET_CACHE_SIZE
+   unw_set_cache_size (unw_local_addr_space, 1024, 0);
+ #endif
+@@ -45,7 +48,11 @@ backtrace_func (SysprofCaptureAddress  *addrs,
+    * and subtract an offset from addrs to avoid having to
+    * copy frame pointers around.
+    */
+-  return unw_backtrace (((void **)addrs) - 2, n_addrs) - 2;
++  #ifdef UNW_CACHE_PER_THREAD
++    return unw_backtrace ((void **)addrs - 2, n_addrs) - 2;
++  #else
++    return backtrace ((void **)addrs - 2, n_addrs) - 2;
++  #endif
+ #else
+   static const int skip = 2;
+   void **stack = alloca (n_addrs * sizeof (gpointer));
+-- 
+2.48.0
+
