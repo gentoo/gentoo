@@ -7,6 +7,7 @@
 # Paul Zander <negril.nx+gentoo@gmail.com> (2023-11-17)
 # ROCm/HIP is not suitable for stabilization.
 hip
+hiprt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-06-06)
 # sci-libs/mkl is not stable, needs online registration to even run pkg_setup
