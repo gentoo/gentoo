@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org meson-multilib python-any-r1
 
 DESCRIPTION="C++ interface for glib2"
-HOMEPAGE="https://www.gtkmm.org https://gitlab.gnome.org/GNOME/glibmm"
+HOMEPAGE="https://gtkmm.gnome.org/en/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"

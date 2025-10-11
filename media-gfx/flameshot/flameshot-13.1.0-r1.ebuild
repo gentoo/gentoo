@@ -13,7 +13,7 @@ https://gitlab.com/mattbas/Qt-Color-Widgets/-/archive/${QTCW_COMMIT}/${PN}-qtcol
 
 LICENSE="Apache-2.0 Free-Art-1.3 GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="wayland"
 
 DEPEND="

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit gnome.org meson-multilib python-any-r1
 
 DESCRIPTION="C++ interface for the ATK library"
-HOMEPAGE="https://www.gtkmm.org https://gitlab.gnome.org/GNOME/atkmm"
+HOMEPAGE="https://gtkmm.gnome.org/en/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

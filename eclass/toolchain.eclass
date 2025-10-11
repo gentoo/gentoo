@@ -1295,6 +1295,7 @@ toolchain_src_configure() {
 	is_cobol && GCC_LANG+=",cobol"
 	is_modula2 && GCC_LANG+=",m2"
 	is_rust && GCC_LANG+=",rust"
+	is_jit && GCC_LANG+=",jit"
 
 	_need_ada_bootstrap_mangling() {
 		if [[ ${CATEGORY}/${PN} == dev-lang/gnat-gpl ]] ; then
@@ -1874,6 +1875,14 @@ toolchain_src_configure() {
 		confgcc+=( --with-gxx-libcxx-include-dir="${ESYSROOT}"/usr/include/c++/v1 )
 	fi
 
+	if is_jit || _tc_use_if_iuse libgdiagnostics ; then
+		confgcc+=( --enable-host-shared )
+	fi
+
+	if tc_version_is_at_least 15.1 ${PV} ; then
+		confgcc+=( $(use_enable libgdiagnostics) )
+	fi
+
 	# TODO: Ignore RCs here (but TOOLCHAIN_IS_RC isn't yet an eclass var)
 	if [[ ${PV} == *_p* && -f "${S}"/gcc/doc/gcc.info ]] ; then
 		# Safeguard against https://gcc.gnu.org/PR106899 being fixed
@@ -1922,66 +1931,6 @@ toolchain_src_configure() {
 	# use of bash for them.
 	if tc_version_is_at_least 11.2 ; then
 		gcc_shell="${BROOT}"/bin/sh
-	fi
-
-	if is_jit || _tc_use_if_iuse libgdiagnostics ; then
-		einfo "Configuring shared gcc for JIT/libgdiagnostics"
-
-		local confgcc_jit=(
-			"${confgcc[@]}"
-
-			--enable-lto
-			--disable-analyzer
-			--disable-bootstrap
-			--disable-cet
-			--disable-default-pie
-			--disable-default-ssp
-			--disable-gcov
-			--disable-libada
-			--disable-libatomic
-			--disable-libgomp
-			--disable-libitm
-			--disable-libquadmath
-			--disable-libsanitizer
-			--disable-libssp
-			--disable-libstdcxx-pch
-			--disable-libvtv
-			--disable-nls
-			--disable-objc-gc
-			--disable-systemtap
-
-			--enable-host-shared
-
-			# Might be used for the just-built GCC. Easier to just
-			# respect USE=graphite here in case the user passes some
-			# graphite flags rather than try strip them out.
-			$(use_with graphite isl)
-			--with-system-zlib
-		)
-
-		if is_jit ; then
-			confgcc_jit+=( --enable-languages=jit )
-		else
-			confgcc_jit+=( --enable-languages=c,c++ )
-		fi
-
-		if tc_has_feature zstd ; then
-			confgcc_jit+=( $(use_with zstd) )
-		fi
-
-		if tc_version_is_at_least 15.1 ${PV} ; then
-			confgcc_jit+=( $(use_enable libgdiagnostics) )
-		fi
-
-		if tc_version_is_at_least 13.1 ; then
-			confgcc_jit+=( --disable-fixincludes )
-		fi
-
-		mkdir -p "${WORKDIR}"/build-jit || die
-		pushd "${WORKDIR}"/build-jit > /dev/null || die
-
-		CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure "${confgcc_jit[@]}"
-		popd > /dev/null || die
 	fi
 
 	CONFIG_SHELL="${gcc_shell}" edo "${gcc_shell}" "${S}"/configure "${confgcc[@]}"
@@ -2401,12 +2350,6 @@ gcc_do_make() {
 		)
 	fi
 
-	if is_jit || _tc_use_if_iuse libgdiagnostics ; then
-		# TODO: docs for jit?
-		einfo "Building JIT"
-		emake -C "${WORKDIR}"/build-jit "${emakeargs[@]}"
-	fi
-
 	einfo "Compiling ${PN} (${GCC_MAKE_TARGET})..."
 	pushd "${WORKDIR}"/build >/dev/null || die
 	emake "${emakeargs[@]}" ${GCC_MAKE_TARGET}
@@ -2430,7 +2373,6 @@ gcc_do_make() {
 
 #---->> src_test <<----
 
-# TODO: add JIT testing
 toolchain_src_test() {
 	# GCC's testsuite is a special case.
 	#
@@ -2607,28 +2549,6 @@ toolchain_src_install() {
 			grep -q 'It has been auto-edited by fixincludes from' "${x}" \
 				&& rm -f "${x}"
 		done < <(find gcc/include*/ -name '*.h')
-	fi
-
-	if is_jit || _tc_use_if_iuse libgdiagnostics ; then
-		# See https://gcc.gnu.org/onlinedocs/gcc-11.3.0/jit/internals/index.html#packaging-notes
-		# and bug #843341.
-		#
-		# Both of the non-JIT and JIT builds are configured to install to $(DESTDIR)
-		# Install the configuration with --enable-host-shared first
-		# *then* the one without, so that the faster build
-		# of "cc1" et al overwrites the slower build.
-		#
-		# Do the 'make install' from the build directory
-		pushd "${WORKDIR}"/build-jit > /dev/null || die
-		S="${WORKDIR}"/build-jit emake DESTDIR="${D}" -j1 install
-
-		# This one comes with binutils
-		find "${ED}" -name libiberty.a -delete || die
-
-		# Move the libraries to the proper location
-		gcc_movelibs
-
-		popd > /dev/null || die
 	fi
 
 	# Do the 'make install' from the build directory
@@ -2838,16 +2758,14 @@ gcc_movelibs() {
 
 	# libgccjit gets installed to /usr/lib, not /usr/$(get_libdir). Probably
 	# due to a bug in gcc build system.
-	if [[ ${PWD} == "${WORKDIR}"/build-jit ]] ; then
-		dodir "${LIBPATH#${EPREFIX}}"
+	dodir "${LIBPATH#${EPREFIX}}"
 
-		if is_jit ; then
-			mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die
-		fi
+	if is_jit ; then
+		mv "${ED}"/usr/lib/libgccjit* "${D}${LIBPATH}" || die
+	fi
 
-		if _tc_use_if_iuse libgdiagnostics ; then
-			mv "${ED}"/usr/lib/libgdiagnostics* "${D}${LIBPATH}" || die
-		fi
+	if _tc_use_if_iuse libgdiagnostics ; then
+		mv "${ED}"/usr/lib/libgdiagnostics* "${D}${LIBPATH}" || die
 	fi
 
 	# For all the libs that are built for CTARGET, move them into the
@@ -3252,7 +3170,7 @@ toolchain_death_notice() {
 	# TODO: For bootstrap comparison failures, include the stage2 & stage3
 	# differing objects to avoid having to ask reporters to manually collect...
 	local dir
-	for dir in "${WORKDIR}"/build-jit "${WORKDIR}"/build ; do
+	for dir in "${WORKDIR}"/build ; do
 		if [[ -e "${dir}" ]] ; then
 			pushd "${WORKDIR}" >/dev/null
 			(echo '' | $(tc-getCC ${CTARGET}) ${CFLAGS} -v -E - 2>&1) > "${dir}"/gccinfo.log
