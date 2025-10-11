@@ -92,6 +92,7 @@ src_compile() {
 		PREFIX="${EPREFIX}/usr"
 		PROG_PREFIX="uu-"
 		MULTICALL=y
+		LN="ln -f"
 		MANDIR="/share/man/man1"
 
 		SELINUX_ENABLED=$(usex selinux 1 0)
