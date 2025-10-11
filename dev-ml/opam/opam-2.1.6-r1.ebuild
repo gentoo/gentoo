@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ IUSE="+ocamlopt"
 RESTRICT="test" #see bugs 838658
 
 RDEPEND="
-	dev-ml/cmdliner:=[ocamlopt?]
+	<dev-ml/cmdliner-2.0.0:=[ocamlopt?]
 	dev-ml/cudf:=[ocamlopt?]
 	dev-ml/dose3:=[ocamlopt?]
 	dev-ml/extlib:=[ocamlopt?]
