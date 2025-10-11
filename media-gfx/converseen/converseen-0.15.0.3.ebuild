@@ -13,7 +13,7 @@ S="${WORKDIR}/${P^}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="graphicsmagick debug"
 
 RDEPEND="
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-qt/qttools[linguist]"
 
 PATCHES=(
-	"${FILESDIR}/${P}-appdata-path.patch"
+	"${FILESDIR}/${PN}-0.12.2.4-appdata-path.patch"
 	"${FILESDIR}/${PN}-0.9.9.0-no-update.patch"
 	"${FILESDIR}/${PN}-0.12.0.1-graphicsmagick-support.patch"
 )
