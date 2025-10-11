@@ -282,7 +282,7 @@ multilib_src_configure() {
 		-DCLANG_DEFAULT_PIE_ON_LINUX=$(usex pie)
 
 		-DCLANG_ENABLE_LIBXML2=$(usex xml)
-		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
+		-DCLANG_ENABLE_OBJC_REWRITER=ON
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
 		# TODO: CLANG_ENABLE_HLSL?
 
