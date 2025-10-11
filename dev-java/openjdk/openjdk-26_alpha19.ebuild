@@ -9,7 +9,7 @@ JAVA_DISABLE_DEPEND_ON_JAVA_DEP_CHECK="true"
 inherit check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing toolchain-funcs
 
 # variable name format: <UPPERCASE_KEYWORD>_XPAK
-PPC64_XPAK="21.0.0_p35" # big-endian bootstrap tarball
+PPC64_XPAK="25_p36" # big-endian bootstrap tarball
 
 # Usage: bootstrap_uri <keyword> <version> [extracond]
 # Example: $(bootstrap_uri ppc64 17.0.1_p12 big-endian)
