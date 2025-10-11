@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome2 multilib-minimal
 
 DESCRIPTION="C++ interface for GTK+"
-HOMEPAGE="https://www.gtkmm.org"
+HOMEPAGE="https://gtkmm.gnome.org/en/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.4"
