@@ -15,6 +15,7 @@ S="${WORKDIR}"
 
 LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
+IUSE="pipewire pulseaudio"
 KEYWORDS="-* amd64"
 RESTRICT="splitdebug"
 
@@ -26,10 +27,10 @@ RDEPEND="
 	dev-libs/nss
 	>=media-fonts/noto-emoji-20231130
 	media-libs/alsa-lib
-	|| (
-		media-libs/libpulse
-		media-sound/apulse
+	pulseaudio? (
+		|| ( media-libs/libpulse media-sound/apulse )
 	)
+	pipewire? ( media-video/pipewire )
 	media-libs/mesa[X(+)]
 	net-print/cups
 	sys-apps/dbus
@@ -81,10 +82,17 @@ src_install() {
 	fperms u+s /opt/Signal/chrome-sandbox
 	pax-mark m opt/Signal/signal-desktop opt/Signal/chrome-sandbox opt/Signal/chrome_crashpad_handler
 
-	newbin - signal-desktop <<- _EOF_
-		#!/bin/sh
-		exec \$(command -pv apulse) ${EPREFIX}/opt/Signal/signal-desktop --ozone-platform-hint=auto "\${@}"
-	_EOF_
+	if use pulseaudio; then
+		newbin - signal-desktop <<- _EOF_
+			#!/bin/sh
+			exec \$(command -pv apulse) ${EPREFIX}/opt/Signal/signal-desktop --ozone-platform-hint=auto "\${@}"
+		_EOF_
+	else
+		newbin - signal-desktop <<- _EOF_
+			#!/bin/sh
+			exec ${EPREFIX}/opt/Signal/signal-desktop --ozone-platform-hint=auto "\${@}"
+		_EOF_
+	fi
 }
 
 pkg_postinst() {
