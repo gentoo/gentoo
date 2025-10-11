@@ -62,7 +62,10 @@ src_configure() {
 		$(meson_feature sysprof profiler)
 		-Dinstalled_tests=false
 		$(meson_use !test skip_dbus_tests)
-		$(meson_use !test skip_gtk_tests)
+		#$(meson_use !test skip_gtk_tests)
+		# XXX: Remove this w/ 1.86.x and go back to above
+		# https://gitlab.gnome.org/GNOME/gjs/-/issues/712
+		-Dskip_gtk_tests=true
 		-Db_pch=True # TODO this has to go
 	)
 	meson_src_configure
