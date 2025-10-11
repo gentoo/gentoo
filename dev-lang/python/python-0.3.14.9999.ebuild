@@ -77,6 +77,12 @@ BDEPEND="
 	dev-build/autoconf-archive
 	app-alternatives/awk
 	virtual/pkgconfig
+	tail-call-interp? (
+		|| (
+			>=sys-devel/gcc-15:*
+			>=llvm-core/clang-19:*
+		)
+	)
 "
 if [[ ${PV} != *_alpha* ]]; then
 	RDEPEND+="
@@ -121,6 +127,10 @@ pkg_setup() {
 				CONFIG_CHECK+="~${f} "
 			done
 			linux-info_pkg_setup
+		fi
+		if use tail-call-interp; then
+			tc-check-min_ver gcc 15
+			tc-check-min_ver clang 19
 		fi
 	fi
 }
