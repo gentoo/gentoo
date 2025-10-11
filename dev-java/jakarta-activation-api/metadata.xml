@@ -5,7 +5,8 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">jakartaee/jaf-api</remote-id>
+		<doc>https://jakarta.ee/specifications/activation/</doc>
 		<bugs-to>https://github.com/jakartaee/jaf-api/issues</bugs-to>
+		<remote-id type="github">jakartaee/jaf-api</remote-id>
 	</upstream>
 </pkgmetadata>
