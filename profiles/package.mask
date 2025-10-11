@@ -128,12 +128,6 @@ sci-geosciences/liblas
 # revdeps. Bugs #800608, #866377, #955465. Removal on 2025-11-01.
 dev-build/cmake-fedora
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-10-05)
-# New major nasm version that seem to break several packages (can
-# confirm at least dav1d, x265, and x264 wrt bug #963796). Mask for
-# now to give time for this to be looked into.
-=dev-lang/nasm-3*
-
 # Sam James <sam@gentoo.org> (2025-10-04)
 # Has some regressions:
 # * autoconf (https://lore.kernel.org/dash/ba3014e6-b1f6-4b6b-99ac-524dafd22f33@SystematicSW.ab.ca/)
