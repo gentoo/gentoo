@@ -5,6 +5,9 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<use>
+		<flag name="test-full">Run expensive tests (many tests and slow).</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">dbry/WavPack</remote-id>
 	</upstream>
