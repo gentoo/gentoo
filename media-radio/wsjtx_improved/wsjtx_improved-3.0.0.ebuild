@@ -37,7 +37,6 @@ PATCHES=(
 	"${FILESDIR}/wsjtx-2.3.0-drop-docs.patch"
 	"${FILESDIR}/wsjtx-clang.patch"
 	"${FILESDIR}/wsjtx-3.0.0-fix-sound-dir.patch"
-#	"${FILESDIR}/wsjtx-2.8.0-qt691.patch"
 	"${FILESDIR}/wsjtx-2.8.0-qt692-audio.patch"
 )
 
