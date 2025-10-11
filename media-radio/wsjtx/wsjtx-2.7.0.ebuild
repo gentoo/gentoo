@@ -8,7 +8,7 @@ inherit cmake edos2unix flag-o-matic
 MY_P=${P/_/-}
 
 DESCRIPTION="Weak signal ham radio communication"
-HOMEPAGE="https://physics.princeton.edu//pulsar/K1JT/wsjtx.html"
+HOMEPAGE="https://wsjt.sourceforge.io/"
 SRC_URI="https://downloads.sourceforge.net/wsjt/${MY_P}.tgz"
 
 S=${WORKDIR}/wsjtx
