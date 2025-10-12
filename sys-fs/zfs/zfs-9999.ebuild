@@ -129,10 +129,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.11-gentoo.patch
 )
 
-DOCS=(
-	AUTHORS COPYRIGHT META README.md
-)
-
 pkg_pretend() {
 	use rootfs || return 0
 
@@ -336,6 +332,8 @@ src_install() {
 
 	# enforce best available python implementation
 	use minimal || python_fix_shebang "${ED}/bin"
+
+	dodoc AUTHORS COPYRIGHT META README.md
 }
 
 _old_layout_cleanup() {
