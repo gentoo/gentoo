@@ -53,13 +53,13 @@ DEPEND="${LUA_DEPS}
 	>=dev-libs/libuv-1.50.0:=
 	>=dev-libs/libvterm-0.3.3
 	>=dev-libs/msgpack-3.0.0:=
-	>=dev-libs/tree-sitter-0.25.3:=
-	=dev-libs/tree-sitter-c-0.23*
-	=dev-libs/tree-sitter-lua-0.3*
-	=dev-libs/tree-sitter-markdown-0.4*
-	=dev-libs/tree-sitter-query-0.5*
-	=dev-libs/tree-sitter-vim-0.5*
-	=dev-libs/tree-sitter-vimdoc-3*
+	>=dev-libs/tree-sitter-0.25.6:=
+	=dev-libs/tree-sitter-c-0.24.1*
+	=dev-libs/tree-sitter-lua-0.4*
+	=dev-libs/tree-sitter-markdown-0.5*
+	=dev-libs/tree-sitter-query-0.6.2*
+	=dev-libs/tree-sitter-vim-0.7*
+	=dev-libs/tree-sitter-vimdoc-4*
 	>=dev-libs/unibilium-2.1.2:0=
 "
 RDEPEND="
