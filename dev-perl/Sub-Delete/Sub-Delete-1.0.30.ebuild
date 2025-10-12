@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Perl module enabling one to delete subroutines"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~riscv x86 ~x64-macos"
