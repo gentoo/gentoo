@@ -11,4 +11,7 @@
 	could do while maintaining backwards compatibility with daemontools. 
 	See the CHANGES file for more details on what features have been added.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">bruceg/daemontools-encore</remote-id>
+	</upstream>
 </pkgmetadata>
