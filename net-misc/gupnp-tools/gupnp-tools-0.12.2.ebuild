@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gupnp-tools"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 
 RDEPEND="
 	>=net-libs/gssdp-1.6.2:1.6=
