@@ -17,7 +17,7 @@ EAPI=8
 # Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-wireplumber-docs
 # Set to 1 if prebuilt, 0 if not
 # (the construct below is to allow overriding from env for script)
-: ${WIREPLUMBER_DOCS_PREBUILT:=1}
+: ${WIREPLUMBER_DOCS_PREBUILT:=0}
 
 WIREPLUMBER_DOCS_PREBUILT_DEV=sam
 WIREPLUMBER_DOCS_VERSION="$(ver_cut 1-3)"
