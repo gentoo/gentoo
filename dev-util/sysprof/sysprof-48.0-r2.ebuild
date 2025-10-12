@@ -12,7 +12,7 @@ LICENSE="GPL-3+ GPL-2+"
 API_VERSION="4"
 SLOT="0/${API_VERSION}"
 KEYWORDS="~amd64 ~arm64 ~loong ~x86"
-IUSE="gtk systemd test"
+IUSE="gtk llvm-libunwind systemd test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -28,7 +28,10 @@ RDEPEND="
 	dev-libs/json-glib
 	>=dev-libs/libdex-0.9
 	>=gui-libs/libpanel-1.4
-	sys-libs/libunwind:=
+	|| (
+		llvm-libunwind? ( llvm-runtimes/libunwind )
+		!llvm-libunwind? ( sys-libs/libunwind )
+	)
 	>=sys-auth/polkit-0.114[daemon(+)]
 	>=dev-util/sysprof-common-${PV}
 	>=dev-util/sysprof-capture-${PV}:${API_VERSION}
@@ -51,7 +54,6 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
 	xdg_environment_reset
 
 	# These are installed by dev-util/sysprof-capture
@@ -60,9 +62,29 @@ src_prepare() {
 			-e '/install.*sysprof_header_subdir/d' \
 			-e 's/pkgconfig\.generate/subdir_done()\npkgconfig\.generate/' \
 			src/libsysprof-capture/meson.build || die
+
+	if use llvm-libunwind ; then
+		PATCHES+=( "${FILESDIR}"/${PN}-llvm-libunwind-fix.patch )
+	fi
+	default
 }
 
 src_configure() {
+	# similar to samba bug #874633
+	if use llvm-libunwind ; then
+		mkdir -p "${T}"/${ABI}/pkgconfig || die
+
+		local -x PKG_CONFIG_PATH="${T}/${ABI}/pkgconfig:${PKG_CONFIG_PATH}"
+
+		cat <<-EOF > "${T}"/${ABI}/pkgconfig/libunwind-generic.pc || die
+
+		Name: libunwind-generic
+		Description: libunwind generic library
+		Version: 1.70
+		Libs: -L/usr/\$(get_libdir) -lunwind
+		EOF
+	fi
+
 	# -Dsysprofd=host currently unavailable from ebuild
 	local emesonargs=(
 		$(meson_use gtk)
