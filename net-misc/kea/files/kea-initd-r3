@@ -5,13 +5,12 @@
 : ${KEA_USER:=dhcp}
 : ${KEA_GROUP:=dhcp}
 : ${KEA_CONFIG:=/etc/kea/${RC_SVCNAME}.conf}
-: ${KEA_PIDFILE:=/run/kea/${RC_SVCNAME}.kea-${KEA_SVC}.pid}
 
 description="kea ${KEA_SVC} services"
 command="/usr/sbin/kea-${KEA_SVC}"
 command_args="-c ${KEA_CONFIG}"
 command_user="${KEA_USER}:${KEA_GROUP}"
-pidfile="${KEA_PIDFILE}"
+pidfile="/run/kea/$(basename ${KEA_CONFIG%.*}).kea-${KEA_SVC}.pid"
 required_files="${KEA_CONFIG}"
 start_stop_daemon_args="--background"
 
