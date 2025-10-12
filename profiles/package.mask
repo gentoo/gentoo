@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-10-12)
+# Requires Rust with RUST_SYSROOTS=bpf, which isn't currently supported
+# by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
+>=dev-util/bpf-linker-0.9.15-r1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-11)
 # Stuck forever in 5.x because in 6.x it was rewritten around proprietary
 # aqlprofile. A potential future 7.x package would require packaging from
