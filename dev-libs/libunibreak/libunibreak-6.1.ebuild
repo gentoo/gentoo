@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/adah1972/${PN}/releases/download/${PN}_$(ver_rs 1- '
 
 LICENSE="ZLIB"
 SLOT="0/6"
-KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm arm64 ppc ~ppc64 ~riscv x86"
 IUSE="doc +man static-libs test"
 RESTRICT="!test? ( test )"
 
