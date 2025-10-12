@@ -24,6 +24,11 @@ pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
+src_prepare() {
+	rm -vr samples/example3 || die # unused, causing bug #951718
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
