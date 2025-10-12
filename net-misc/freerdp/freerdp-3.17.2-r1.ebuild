@@ -108,6 +108,10 @@ RDEPEND="${COMMON_DEPEND}
 	smartcard? ( app-crypt/p11-kit )
 "
 
+PATCHES=(
+	"${FILESDIR}"/freerdp-3.17.2-pkgconfig.patch
+)
+
 option() {
 	usex "$1" ON OFF
 }

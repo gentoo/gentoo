@@ -1,0 +1,187 @@
+https://bugs.gentoo.org/963924
+https://github.com/FreeRDP/FreeRDP/pull/11876
+
+From 74a3a7695cdd09cf020acdeb09480ac8ee92ccbe Mon Sep 17 00:00:00 2001
+From: akallabeth <akallabeth@posteo.net>
+Date: Sun, 21 Sep 2025 19:06:58 +0200
+Subject: [PATCH] [cmake,pkg-config] properly set requires fields
+
+---
+ client/CMakeLists.txt                           | 1 +
+ client/freerdp-client.pc.in                     | 2 +-
+ libfreerdp/CMakeLists.txt                       | 1 +
+ libfreerdp/freerdp.pc.in                        | 2 +-
+ server/CMakeLists.txt                           | 1 +
+ server/freerdp-server.pc.in                     | 2 +-
+ server/proxy/CMakeLists.txt                     | 1 +
+ server/proxy/freerdp-proxy.pc.in                | 2 +-
+ server/proxy/modules/freerdp-proxy-module.pc.in | 2 +-
+ server/shadow/CMakeLists.txt                    | 1 +
+ server/shadow/freerdp-shadow.pc.in              | 2 +-
+ winpr/tools/CMakeLists.txt                      | 1 +
+ winpr/tools/winpr-tools.pc.in                   | 2 +-
+ 13 files changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/client/CMakeLists.txt b/client/CMakeLists.txt
+index c266afd92302..6194f385b34f 100644
+--- a/client/CMakeLists.txt
++++ b/client/CMakeLists.txt
+@@ -119,6 +119,7 @@ if(BUILD_SHARED_LIBS)
+   set(FREERDP_CLIENT_PC_REQUIRES_PRIVATE "")
+   set(FREERDP_CLIENT_PC_LIBRARY_PRIVATE "")
+ endif()
++set(FREERDP_CLIENT_PC_REQUIRES freerdp${FREERDP_API_VERSION})
+ 
+ include(pkg-config-install-prefix)
+ cleaning_configure_file(
+diff --git a/client/freerdp-client.pc.in b/client/freerdp-client.pc.in
+index 19192553e036..a0a22d0338c5 100644
+--- a/client/freerdp-client.pc.in
++++ b/client/freerdp-client.pc.in
+@@ -8,7 +8,7 @@ Name: FreeRDP client
+ Description: FreeRDP: A Remote Desktop Protocol Implementation
+ URL: http://www.freerdp.com/
+ Version: @FREERDP_VERSION@
+-Requires: 
++Requires: @FREERDP_CLIENT_PC_REQUIRES@
+ Requires.private: @FREERDP_CLIENT_PC_REQUIRES_PRIVATE@
+ Libs: -L${libdir} ${libs}
+ Libs.private: @FREERDP_CLIENT_PC_LIBRARY_PRIVATE@
+diff --git a/libfreerdp/CMakeLists.txt b/libfreerdp/CMakeLists.txt
+index 538b445a1459..66722c3b3a2b 100644
+--- a/libfreerdp/CMakeLists.txt
++++ b/libfreerdp/CMakeLists.txt
+@@ -284,6 +284,7 @@ if(BUILD_SHARED_LIBS)
+   set(FREERDP_PC_REQUIRES_PRIVATE "")
+   set(FREERDP_PC_LIBRARY_PRIVATE "")
+ endif()
++set(FREERDP_PC_REQUIRES winpr${FREERDP_API_VERSION})
+ 
+ cleaning_configure_file(
+   ${CMAKE_CURRENT_SOURCE_DIR}/freerdp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/freerdp${FREERDP_VERSION_MAJOR}.pc @ONLY
+diff --git a/libfreerdp/freerdp.pc.in b/libfreerdp/freerdp.pc.in
+index 1c0daa3b766f..2a3383d88fbc 100644
+--- a/libfreerdp/freerdp.pc.in
++++ b/libfreerdp/freerdp.pc.in
+@@ -13,7 +13,7 @@ Name: FreeRDP
+ Description: FreeRDP: A Remote Desktop Protocol Implementation
+ URL: http://www.freerdp.com/
+ Version: @FREERDP_VERSION@
+-Requires: 
++Requires: @FREERDP_PC_REQUIRES@
+ Requires.private: @FREERDP_PC_REQUIRES_PRIVATE@
+ Libs: -L${libdir} ${libs}
+ Libs.private: -L${plugindir} @FREERDP_PC_LIBRARY_PRIVATE@
+diff --git a/server/CMakeLists.txt b/server/CMakeLists.txt
+index 90e27d8b4100..1056b33ecfef 100644
+--- a/server/CMakeLists.txt
++++ b/server/CMakeLists.txt
+@@ -82,6 +82,7 @@ if(NOT BUILD_SHARED_LIBS)
+   set(FREERDP_SERVER_PC_REQUIRES_PRIVATE "freerdp${FREERDP_API_VERSION}")
+   set(FREERDP_SERVER_PC_LIBRARY_PRIVATE "-ldl -lpthread")
+ endif()
++set(FREERDP_SERVER_PC_REQUIRES freerdp${FREERDP_API_VERSION})
+ 
+ include(pkg-config-install-prefix)
+ cleaning_configure_file(
+diff --git a/server/freerdp-server.pc.in b/server/freerdp-server.pc.in
+index 75666b9451f1..31c2c33d2762 100644
+--- a/server/freerdp-server.pc.in
++++ b/server/freerdp-server.pc.in
+@@ -8,7 +8,7 @@ Name: FreeRDP server
+ Description: FreeRDP: A Remote Desktop Protocol Implementation
+ URL: http://www.freerdp.com/
+ Version: @FREERDP_VERSION@
+-Requires: 
++Requires: @FREERDP_SERVER_PC_REQUIRES@
+ Requires.private: @FREERDP_SERVER_PC_REQUIRES_PRIVATE@
+ Libs: -L${libdir} ${libs}
+ Libs.private: @FREERDP_SERVER_PC_LIBRARY_PRIVATE@
+diff --git a/server/proxy/CMakeLists.txt b/server/proxy/CMakeLists.txt
+index 1a31d6535360..53ac9b0511fd 100644
+--- a/server/proxy/CMakeLists.txt
++++ b/server/proxy/CMakeLists.txt
+@@ -82,6 +82,7 @@ if(NOT BUILD_SHARED_LIBS)
+   set(FREERDP_PROXY_PC_REQUIRES_PRIVATE "freerdp-client${FREERDP_API_VERSION} freerdp-server${FREERDP_API_VERSION}")
+   set(FREERDP_PROXY_PC_LIBS_PRIVATE "-ldl -lpthread")
+ endif()
++set(FREERDP_PROXY_PC_REQUIRES freerdp-server${FREERDP_API_VERSION})
+ 
+ include(pkg-config-install-prefix)
+ cleaning_configure_file(
+diff --git a/server/proxy/freerdp-proxy.pc.in b/server/proxy/freerdp-proxy.pc.in
+index 7b3e0e9a7611..e1023ed72c4c 100644
+--- a/server/proxy/freerdp-proxy.pc.in
++++ b/server/proxy/freerdp-proxy.pc.in
+@@ -8,7 +8,7 @@ Name: FreeRDP proxy
+ Description: FreeRDP: A Remote Desktop Protocol Implementation
+ URL: http://www.freerdp.com/
+ Version: @FREERDP_VERSION@
+-Requires: 
++Requires: @FREERDP_PROXY_PC_REQUIRES@
+ Requires.private: @FREERDP_PROXY_PC_REQUIRES_PRIVATE@
+ Libs: -L${libdir} ${libs}
+ Libs.private: @FREERDP_PROXY_PC_LIBS_PRIVATE@
+diff --git a/server/proxy/modules/freerdp-proxy-module.pc.in b/server/proxy/modules/freerdp-proxy-module.pc.in
+index 0cb09dc8506c..cc3e71ee4bcf 100644
+--- a/server/proxy/modules/freerdp-proxy-module.pc.in
++++ b/server/proxy/modules/freerdp-proxy-module.pc.in
+@@ -9,7 +9,7 @@ Name: @PROJECT_NAME@
+ Description: FreeRDP proxy module
+ URL: http://www.freerdp.com/
+ Version: @PROJECT_VERSION@
+-Requires:
++Requires: @PROJECT_PC_REQUIRES@ 
+ Requires.private: @PROJECT_PC_REQUIRES_PRIVATE@ 
+ Libs: -L${libdir}
+ Libs.private: -Wl,--whole-archive \${proxy_plugindir}/@PROJECT_LIBRARY_NAME@ -u @PROJECT_SHORT_NAME_UNDERSCORE@_proxy_module_entry_point -Wl,--no-whole-archive
+diff --git a/server/shadow/CMakeLists.txt b/server/shadow/CMakeLists.txt
+index 1fbfccf18794..758d6d2cd8f1 100644
+--- a/server/shadow/CMakeLists.txt
++++ b/server/shadow/CMakeLists.txt
+@@ -166,6 +166,7 @@ if(NOT BUILD_SHARED_LIBS)
+   set(FREERDP_SHADOW_PC_REQUIRES_PRIVATE "freerdp${FREERDP_API_VERSION}")
+   set(FREERDP_SHADOW_PC_LIBRARY_PRIVATE "-ldl -lpthread")
+ endif()
++set(FREERDP_SHADOW_PC_REQUIRES freerdp-server${FREERDP_API_VERSION})
+ 
+ include(pkg-config-install-prefix)
+ cleaning_configure_file(
+diff --git a/server/shadow/freerdp-shadow.pc.in b/server/shadow/freerdp-shadow.pc.in
+index 2e187bc9dedb..242089a41f77 100644
+--- a/server/shadow/freerdp-shadow.pc.in
++++ b/server/shadow/freerdp-shadow.pc.in
+@@ -8,7 +8,7 @@ Name: FreeRDP shadow
+ Description: FreeRDP: A Remote Desktop Protocol Implementation
+ URL: http://www.freerdp.com/
+ Version: @FREERDP_VERSION@
+-Requires: 
++Requires: @FREERDP_SHADOW_PC_REQUIRES@
+ Requires.private: @FREERDP_SHADOW_PC_REQUIRES_PRIVATE@
+ Libs: -L${libdir} ${libs}
+ Libs.private: @FREERDP_SHADOW_PC_LIBRARY_PRIVATE@
+diff --git a/winpr/tools/CMakeLists.txt b/winpr/tools/CMakeLists.txt
+index c7bf4b083189..976a78a11621 100644
+--- a/winpr/tools/CMakeLists.txt
++++ b/winpr/tools/CMakeLists.txt
+@@ -123,6 +123,7 @@ if(NOT BUILD_SHARED_LIBS)
+   set(WINPR_TOOLS_PC_REQUIRES_PRIVATE "winpr${WINPR_API_VERSION} libssl")
+   set(WINPR_TOOLS_PC_LIBRARY_PRIVATE "crypto")
+ endif()
++set(WINPR_TOOLS_PC_REQUIRES winpr${WINPR_API_VERSION})
+ 
+ include(pkg-config-install-prefix)
+ cleaning_configure_file(
+diff --git a/winpr/tools/winpr-tools.pc.in b/winpr/tools/winpr-tools.pc.in
+index 4360d3c2b2ed..9502fc60fbb0 100644
+--- a/winpr/tools/winpr-tools.pc.in
++++ b/winpr/tools/winpr-tools.pc.in
+@@ -8,7 +8,7 @@ Name: WinPR
+ Description: WinPR: Windows Portable Runtime
+ URL: http://www.freerdp.com/
+ Version: @WINPR_TOOLS_VERSION@
+-Requires:
++Requires: @WINPR_TOOLS_PC_REQUIRES@
+ Requires.private: @WINPR_TOOLS_PC_REQUIRES_PRIVATE@
+ Libs: -L${libdir} ${libs}
+ Libs.private: @WINPR_TOOLS_PC_LIBRARY_PRIVATE@
