@@ -17,11 +17,12 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <use>
-    <flag name="test">Perform rocblas-test to compare the result between rocBLAS and system BLAS.</flag>
     <flag name="benchmark">Build and install rocblas-bench.</flag>
     <flag name="hipblaslt">Build with hipBLASLt for some non-batched and strided batched problems on gfx12.</flag>
+    <flag name="roctracer">Enable roctracer (roctx) marker.</flag>
+    <flag name="test">Perform rocblas-test to compare the result between rocBLAS and system BLAS.</flag>
   </use>
   <upstream>
-    <remote-id type="github">ROCm/rocBLAS</remote-id>
+    <remote-id type="github">ROCm/rocm-libraries</remote-id>
   </upstream>
 </pkgmetadata>
