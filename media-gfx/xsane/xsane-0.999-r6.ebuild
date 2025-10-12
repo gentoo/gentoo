@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.999-lcms2.patch
 	# See bug #885311 and bug #899806
 	"${FILESDIR}"/${PN}-0.999-configure-clang16.patch
+	"${FILESDIR}"/${PN}-0.999-update-functions.patch
 )
 
 src_prepare() {
