@@ -1,0 +1,17 @@
+--- a/tensilelite/rocisa/CMakeLists.txt
++++ b/tensilelite/rocisa/CMakeLists.txt
+@@ -38,13 +38,7 @@ else()
+     message(FATAL_ERROR "Python version 3.8 or higher is required, but found version ${Python_VERSION}")
+ endif()
+ 
+-include(FetchContent)
+-FetchContent_Declare(
+-  nanobind
+-  GIT_REPOSITORY https://github.com/wjakob/nanobind.git
+-  GIT_TAG        9b3afa9dbdc23641daf26fadef7743e7127ff92f # v2.6.1
+-)
+-FetchContent_MakeAvailable(nanobind)
++find_package(nanobind CONFIG REQUIRED)
+ 
+ set(ROCISAINST_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/rocisa/src/instruction/instruction.cpp
+                       ${CMAKE_CURRENT_SOURCE_DIR}/rocisa/src/instruction/common.cpp
