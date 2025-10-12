@@ -91,6 +91,7 @@ BDEPEND="
 		sys-apps/dbus
 	)
 	dev-util/desktop-file-utils
+	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
