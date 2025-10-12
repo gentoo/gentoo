@@ -1,0 +1,21 @@
+From 70c9f1e09f332bb43c0c04d591cde36df592b20b Mon Sep 17 00:00:00 2001
+From: Aldo Bleeker <2095835+ableeker@users.noreply.github.com>
+Date: Wed, 28 Feb 2024 20:27:31 +0100
+Subject: [PATCH] This lets scantailor-advanced for Qt6 compile with MSVC.
+
+---
+ src/core/Utils.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/Utils.h b/src/core/Utils.h
+index 7b7646c2e..8018f4006 100644
+--- a/src/core/Utils.h
++++ b/src/core/Utils.h
+@@ -5,6 +5,7 @@
+ #define SCANTAILOR_CORE_UTILS_H_
+ 
+ #include <QString>
++#include <QObject>
+ #include <map>
+ #include <unordered_map>
+ 
