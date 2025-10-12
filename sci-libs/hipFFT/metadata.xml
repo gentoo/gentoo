@@ -18,6 +18,6 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCm/hipFFT</remote-id>
+    <remote-id type="github">ROCm/rocm-libraries</remote-id>
   </upstream>
 </pkgmetadata>
