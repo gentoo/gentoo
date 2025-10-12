@@ -10,6 +10,9 @@
         <name>Yiyang Wu</name>
     </maintainer>
     <upstream>
-        <remote-id type="github">ROCm/ROCm-OpenCL-Runtime</remote-id>
+        <remote-id type="github">ROCm/rocm-systems</remote-id>
     </upstream>
+    <use>
+        <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
+    </use>
 </pkgmetadata>
