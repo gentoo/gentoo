@@ -1,0 +1,12 @@
+Add a flag to build without ckprofiler, which takes few GB of space and not used in many cases.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -645,7 +645,7 @@ if(NOT GPU_ARCHS AND USER_GPU_TARGETS AND NOT MIOPEN_REQ_LIBS_ONLY)
+    endif()
+ endif()
+ 
+-if (NOT MIOPEN_REQ_LIBS_ONLY)
++if (NOT MIOPEN_REQ_LIBS_ONLY OR CK_USE_PROFILER)
+     rocm_package_setup_component(profiler
+         LIBRARY_NAME composablekernel
+         PACKAGE_NAME ckprofiler
