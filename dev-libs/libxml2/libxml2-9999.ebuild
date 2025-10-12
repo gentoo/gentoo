@@ -75,6 +75,7 @@ python_configure() {
 		$(meson_native_use_feature readline history)
 		-Ddocs=disabled
 		-Dpython=enabled
+		-Dschematron=enabled
 	)
 	mkdir "${BUILD_DIR}" || die
 	pushd "${BUILD_DIR}" >/dev/null || die
@@ -90,6 +91,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature readline)
 		$(meson_native_use_feature readline history)
 		-Dpython=disabled
+		-Dschematron=enabled
 
 		# There has been a clean break with a soname bump.
 		# It's time to deal with the breakage.
