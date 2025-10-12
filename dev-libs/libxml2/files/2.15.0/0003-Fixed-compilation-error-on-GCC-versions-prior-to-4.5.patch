@@ -1,0 +1,43 @@
+From 7d7ac6215ffa45b13c4e16c0b1478acb73de784e Mon Sep 17 00:00:00 2001
+Message-ID: <7d7ac6215ffa45b13c4e16c0b1478acb73de784e.1760256737.git.sam@gentoo.org>
+In-Reply-To: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+References: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+From: Lars Erik Wik <lars.erik.wik@northern.tech>
+Date: Thu, 25 Sep 2025 11:29:05 +0200
+Subject: [PATCH 3/8] Fixed compilation error on GCC versions prior to 4.5
+
+The deprecated attribute started accepting an optional string argument
+in GCC version 4.5. Compiling libxml2 with GCC versions prior to that
+would cause compilation errors such as:
+```
+./include/libxml/xmlmemory.h:134: error: wrong number of arguments specified for 'deprecated' attribute
+```
+
+Now the string argument is omitted for older versions of GCC.
+
+Signed-off-by: Lars Erik Wik <lars.erik.wik@northern.tech>
+---
+ include/libxml/xmlexports.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/include/libxml/xmlexports.h b/include/libxml/xmlexports.h
+index 3149c731..3a23c548 100644
+--- a/include/libxml/xmlexports.h
++++ b/include/libxml/xmlexports.h
+@@ -55,8 +55,12 @@
+ #ifndef XML_DEPRECATED
+   #if defined(IN_LIBXML)
+     #define XML_DEPRECATED
+-  #elif __GNUC__ * 100 + __GNUC_MINOR__ >= 301
++  #elif __GNUC__ * 100 + __GNUC_MINOR__ >= 405
++    /* GCC 4.5+ supports deprecated with message */
+     #define XML_DEPRECATED __attribute__((deprecated("See https://gnome.pages.gitlab.gnome.org/libxml2/html/deprecated.html")))
++  #elif __GNUC__ * 100 + __GNUC_MINOR__ >= 301
++    /* GCC 3.1+ supports deprecated without message */
++    #define XML_DEPRECATED __attribute__((deprecated))
+   #elif defined(_MSC_VER) && _MSC_VER >= 1400
+     /* Available since Visual Studio 2005 */
+     #define XML_DEPRECATED __declspec(deprecated("See https://gnome.pages.gitlab.gnome.org/libxml2/html/deprecated.html"))
+-- 
+2.51.0
+

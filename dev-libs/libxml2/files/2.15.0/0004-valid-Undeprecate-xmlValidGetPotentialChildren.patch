@@ -1,0 +1,42 @@
+From 49cf8724f542767fd38ac2a94b64c949b4dddb92 Mon Sep 17 00:00:00 2001
+Message-ID: <49cf8724f542767fd38ac2a94b64c949b4dddb92.1760256737.git.sam@gentoo.org>
+In-Reply-To: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+References: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Fri, 26 Sep 2025 16:29:10 +0200
+Subject: [PATCH 4/8] valid: Undeprecate xmlValidGetPotentialChildren
+
+Fixes #988.
+---
+ include/libxml/valid.h | 1 -
+ valid.c                | 2 --
+ 2 files changed, 3 deletions(-)
+
+diff --git a/include/libxml/valid.h b/include/libxml/valid.h
+index 2b8b8fb1..c5638031 100644
+--- a/include/libxml/valid.h
++++ b/include/libxml/valid.h
+@@ -395,7 +395,6 @@ XMLPUBFUN xmlElement *
+ 
+ #ifdef LIBXML_VALID_ENABLED
+ 
+-XML_DEPRECATED
+ XMLPUBFUN int
+ 		xmlValidGetPotentialChildren(xmlElementContent *ctree,
+ 					 const xmlChar **names,
+diff --git a/valid.c b/valid.c
+index 5c4ecfb5..9dbace65 100644
+--- a/valid.c
++++ b/valid.c
+@@ -6383,8 +6383,6 @@ xmlCtxtValidateDocument(xmlParserCtxt *ctxt, xmlDoc *doc) {
+ /**
+  * Build/extend a list of  potential children allowed by the content tree
+  *
+- * @deprecated Internal function, don't use.
+- *
+  * @param ctree  an element content tree
+  * @param names  an array to store the list of child names
+  * @param len  a pointer to the number of element in the list
+-- 
+2.51.0
+

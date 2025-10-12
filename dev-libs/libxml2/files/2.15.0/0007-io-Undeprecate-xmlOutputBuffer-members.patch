@@ -1,0 +1,50 @@
+From 2ec85657e33e81a96314bdd36af42ac39f0ae354 Mon Sep 17 00:00:00 2001
+Message-ID: <2ec85657e33e81a96314bdd36af42ac39f0ae354.1760256737.git.sam@gentoo.org>
+In-Reply-To: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+References: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Mon, 29 Sep 2025 11:04:03 +0200
+Subject: [PATCH 7/8] io: Undeprecate xmlOutputBuffer members
+
+The public API is too buggy, so direct access to struct members is
+required by projects like libxslt.
+---
+ include/libxml/xmlIO.h | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/include/libxml/xmlIO.h b/include/libxml/xmlIO.h
+index 3090215b..575b7eb5 100644
+--- a/include/libxml/xmlIO.h
++++ b/include/libxml/xmlIO.h
+@@ -148,20 +148,20 @@ struct _xmlParserInputBuffer {
+  * Output buffer
+  */
+ struct _xmlOutputBuffer {
+-    void*                   context XML_DEPRECATED_MEMBER;
+-    xmlOutputWriteCallback  writecallback XML_DEPRECATED_MEMBER;
+-    xmlOutputCloseCallback  closecallback XML_DEPRECATED_MEMBER;
++    void*                   context;
++    xmlOutputWriteCallback  writecallback;
++    xmlOutputCloseCallback  closecallback;
+ 
+     /* I18N conversions to UTF-8 */
+-    xmlCharEncodingHandler *encoder XML_DEPRECATED_MEMBER;
++    xmlCharEncodingHandler *encoder;
+ 
+     /* Local buffer encoded in UTF-8 or ISOLatin */
+-    xmlBuf *buffer XML_DEPRECATED_MEMBER;
++    xmlBuf *buffer;
+     /* if encoder != NULL buffer for output */
+-    xmlBuf *conv XML_DEPRECATED_MEMBER;
++    xmlBuf *conv;
+     /* total number of byte written */
+-    int written XML_DEPRECATED_MEMBER;
+-    int error XML_DEPRECATED_MEMBER;
++    int written;
++    int error;
+ };
+ #endif /* LIBXML_OUTPUT_ENABLED */
+ 
+-- 
+2.51.0
+
