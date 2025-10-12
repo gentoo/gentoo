@@ -10,7 +10,7 @@ HOMEPAGE="https://apps.gnome.org/Dspy/"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="1"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 DEPEND="
 	>=dev-libs/glib-2.76:2
