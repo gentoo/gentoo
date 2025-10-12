@@ -132,6 +132,15 @@ fi
 # version lower than 3.5.
 _CMAKE_MINREQVER_CMAKE305=()
 
+# @ECLASS_VARIABLE: _CMAKE_MINREQVER_CMAKE310
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Internal array containing <file>:<version> tuples detected by
+# _cmake_minreqver-check() for any CMakeLists.txt with cmake_minimum_required
+# version lower than 3.10 (causes CMake warnings as of 4.0) on top of those
+# already added to _CMAKE_MINREQVER_CMAKE305.
+_CMAKE_MINREQVER_CMAKE310=()
+
 # @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -363,6 +372,11 @@ _cmake_minreqver-check() {
 			_CMAKE_MINREQVER_CMAKE305+=( "${file}":"${ver}" )
 			chk=0
 		fi
+		# we don't want duplicates that were already flagged
+		if [[ $chk != 0 ]] && ver_test "${ver}" -lt "3.10"; then
+			_CMAKE_MINREQVER_CMAKE310+=( "${file}":"${ver}" )
+			chk=0
+		fi
 	fi
 	return ${chk}
 }
@@ -370,21 +384,62 @@ _cmake_minreqver-check() {
 # @FUNCTION: _cmake_minreqver-info
 # @INTERNAL
 # @DESCRIPTION:
-# QA Notice and file listing for any CMakeLists.txt file unsupported w/ CMake-4.
+# QA Notice and file listings for any CMakeLists.txt file not meeting various
+# minimum standards for cmake_minimum_required.
 _cmake_minreqver-info() {
-	local info
+	local warnlvl
+	[[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]] && warnlvl=305
+	[[ -n ${_CMAKE_MINREQVER_CMAKE310[@]} ]] || [[ ${warnlvl} ]] && warnlvl=310
+
+	local weak_qaw="QA Notice: "
+	minreqver_qanotice() {
+		case ${1} in
+			305)
+				eqawarn "${weak_qaw}Compatibility with CMake < 3.5 has been removed from CMake 4,"
+				eqawarn "${CATEGORY}/${PN} will fail to build w/o a fix."
+				eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
+				eqawarn "this package, and take it upstream."
+				;;
+			310)
+				eqawarn "${weak_qaw}Compatibility with CMake < 3.10 will be removed in a future release."
+				eqawarn "If not fixed in upstream's code repository, we should make sure they are aware."
+				eqawarn "See also tracker bug #964405; check existing or file a new bug for this package."
+				;;
+		esac
+		eqawarn
+		weak_qaw="" # weak notice: no "QA Notice" starting with second call
+	}
+
+	minreqver_listing() {
+		local info
+		case ${1} in
+			305)
+				eqawarn "The following CMakeLists.txt files are causing errors:"
+				for info in ${_CMAKE_MINREQVER_CMAKE305[*]}; do eqawarn "  ${info}"; done
+				eqawarn
+				;;
+			310)
+				if [[ -n ${_CMAKE_MINREQVER_CMAKE310[@]} ]]; then
+					eqawarn "The following CMakeLists.txt files are causing warnings:"
+					for info in ${_CMAKE_MINREQVER_CMAKE310[*]}; do eqawarn "  ${info}"; done
+					eqawarn
+				fi
+				;;
+		esac
+	}
+
+	# CMake 4-caused error is highest priority and must always be shown
 	if [[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]]; then
-		eqawarn "QA Notice: Compatibility with CMake < 3.5 has been removed from CMake 4,"
-		eqawarn "${CATEGORY}/${PN} will fail to build w/o a fix."
-		eqawarn "See also tracker bug #951350; check existing bug or file a new one for"
-		eqawarn "this package, and take it upstream."
-		eqawarn
-		eqawarn "The following CMakeLists.txt files are causing errors:"
-		for info in ${_CMAKE_MINREQVER_CMAKE305[*]}; do
-			eqawarn "  ${info}"
-		done
-		eqawarn
-		if has_version -b ">=dev-build/cmake-4"; then
+		minreqver_qanotice 305
+		minreqver_listing 305
+	fi
+	# for warnings, we only want the latest relevant one, but list all flagged files
+	if [[ ${warnlvl} -ge 310 ]]; then
+		minreqver_qanotice ${warnlvl}
+		minreqver_listing 310
+	fi
+	if [[ ${warnlvl} ]]; then
+		if [[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]] && has_version -b ">=dev-build/cmake-4"; then
 			eqawarn "CMake 4 detected; building with -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
 			eqawarn "This is merely a workaround to avoid CMake Error and *not* a permanent fix;"
 			eqawarn "there may be new build or runtime bugs as a result."
