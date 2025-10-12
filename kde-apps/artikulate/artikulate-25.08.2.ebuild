@@ -37,6 +37,8 @@ RDEPEND="${DEPEND}
 	dev-libs/kirigami-addons:6
 "
 
+PATCHES=( "${FILESDIR}/${P}-editorsession-test.patch" ) # bug #963522
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_autotests=$(usex test)
