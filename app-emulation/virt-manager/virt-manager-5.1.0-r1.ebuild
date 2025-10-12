@@ -17,6 +17,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="
 		https://releases.pagure.org/${PN}/${P}.tar.xz
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-elementtree-fallback.patch.xz
 		verify-sig? ( https://releases.pagure.org/${PN}/${P}.tar.xz.asc	)
 	"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
@@ -64,6 +65,19 @@ BDEPEND="
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/virt-manager.asc
 
 DOCS=( {DESIGN,NEWS,README}.md )
+
+PATCHES=(
+	"${WORKDIR}"/${P}-elementtree-fallback.patch
+)
+
+src_unpack() {
+	if use verify-sig ; then
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+	fi
+
+	unpack ${P}.tar.xz
+	unpack ${P}-elementtree-fallback.patch.xz
+}
 
 src_configure() {
 	local emesonargs=( # in upstream's order
