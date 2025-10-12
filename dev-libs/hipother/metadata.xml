@@ -9,6 +9,6 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCm/hipother</remote-id>
+    <remote-id type="github">ROCm/rocm-systems</remote-id>
   </upstream>
 </pkgmetadata>
