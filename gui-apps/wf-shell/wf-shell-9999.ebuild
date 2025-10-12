@@ -36,7 +36,7 @@ DEPEND="
 	>=gui-libs/wf-config-0.7.0:=
 	gui-wm/wayfire
 	x11-libs/cairo
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[wayland]
 	pulseaudio? (
 		media-libs/alsa-lib
 		media-libs/libpulse
