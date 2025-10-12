@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.gnome.org/World/gnome-firmware/-/archive/${PV}/${P}.tar.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+man elogind systemd"
 
 RDEPEND="
