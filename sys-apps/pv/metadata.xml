@@ -6,6 +6,6 @@
 		<name>Sam James</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="codeberg">a-j-wood/pv</remote-id>
+		<remote-id type="codeberg">ivarch/pv</remote-id>
 	</upstream>
 </pkgmetadata>
