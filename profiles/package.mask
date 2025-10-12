@@ -258,6 +258,7 @@ net-misc/ytfzf
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
 =sys-kernel/linux-firmware-20250917
+=sys-kernel/linux-firmware-20251011
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-16)
 # Appears dead upstream w/ last release from 2016, no reponse to Qt5 EOL
