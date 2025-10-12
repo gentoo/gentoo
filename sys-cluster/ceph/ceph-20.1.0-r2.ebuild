@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_WARN_UNUSED_CLI=no # false positives unless all USE flags are on
 PYTHON_COMPAT=( python3_{10..13} )
 LUA_COMPAT=( lua5-{3..4} )
 
@@ -23,8 +24,6 @@ LICENSE="Apache-2.0 LGPL-2.1 CC-BY-SA-3.0 GPL-2 GPL-2+ LGPL-2+ LGPL-2.1 LGPL-3 G
 SLOT="0"
 KEYWORDS="~amd64"
 
-CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
-
 IUSE="
 	babeltrace +cephfs custom-cflags diskprediction dpdk fuse grafana
 	jemalloc jaeger kafka kerberos ldap lttng +mgr nvmeof +parquet pmdk rabbitmq
@@ -32,7 +31,25 @@ IUSE="
 	systemd +tcmalloc test +uring xfs zbd
 "
 
+CPU_FLAGS_X86=(avx2 avx512f pclmul sse{,2,3,4_1,4_2} ssse3)
 IUSE+="$(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
+
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	${LUA_REQUIRED_USE}
+	?? ( jemalloc tcmalloc )
+	diskprediction? ( mgr )
+	kafka? ( radosgw )
+	mgr? ( cephfs )
+	rabbitmq? ( radosgw )
+	rgw-lua? ( radosgw )
+	nvmeof? ( spdk )
+"
+
+RESTRICT="!test? ( test )"
+
+# tests need root access, and network access
+RESTRICT+=" test"
 
 DEPEND="
 	${LUA_DEPS}
@@ -42,8 +59,7 @@ DEPEND="
 	virtual/libudev:=
 	app-arch/bzip2:=
 	app-arch/lz4:=
-	app-arch/snappy:=
-	>=app-arch/snappy-1.1.9-r1
+	>=app-arch/snappy-1.1.9-r1:=
 	app-arch/zstd:=
 	app-shells/bash:0
 	app-misc/jq:=
@@ -182,27 +198,6 @@ RDEPEND="
 	)
 	selinux? ( sec-policy/selinux-ceph )
 "
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	${LUA_REQUIRED_USE}
-	?? ( jemalloc tcmalloc )
-	diskprediction? ( mgr )
-	kafka? ( radosgw )
-	mgr? ( cephfs )
-	rabbitmq? ( radosgw )
-	rgw-lua? ( radosgw )
-	nvmeof? ( spdk )
-"
-
-RESTRICT="
-	!test? ( test )
-"
-
-# tests need root access, and network access
-RESTRICT+="test"
-
-# false positives unless all USE flags are on
-CMAKE_WARN_UNUSED_CLI=no
 
 PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
@@ -288,7 +283,7 @@ src_prepare() {
 	local lua_version
 	lua_version=$(ver_cut 1-2 $(lua_get_version))
 	sed "s:find_package(Lua [0-9][.][0-9] REQUIRED):find_package(Lua ${lua_version} EXACT REQUIRED):" \
-		-i src/CMakeLists.txt
+		-i src/CMakeLists.txt || die
 
 	if use spdk; then
 		# https://bugs.gentoo.org/871942
@@ -302,7 +297,7 @@ src_prepare() {
 
 	if use parquet; then
 		# hammer in newer version of parquet/arrow
-		rm -rf src/arrow/
+		rm -r src/arrow/ || die
 		mv "${WORKDIR}/apache-arrow-17.0.0" src/arrow || die
 	fi
 
