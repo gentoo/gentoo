@@ -38,9 +38,9 @@ BDEPEND="
 BDEPEND+=" || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )"
 
 pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.4.0
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.4
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.4.0
+	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.4
 }
