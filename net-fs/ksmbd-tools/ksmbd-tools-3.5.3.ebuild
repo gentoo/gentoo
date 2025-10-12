@@ -11,7 +11,7 @@ SRC_URI="https://github.com/cifsd-team/ksmbd-tools/releases/download/${PV}/${P}.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 
 DEPEND="
 	dev-libs/glib:2
