@@ -1,0 +1,18 @@
+--- a/Makefile
++++ b/Makefile
+@@ -8,12 +8,12 @@
+ #/******************************************************************************
+ # * if you prefer verbose non-coloured build messages, remove the '@' here:
+ # *****************************************************************************/
+-CC  = @gcc
+-CXX = @g++
++CC  ?= @gcc
++CXX ?= @g++
+ 
+           
+ PWD = $(shell pwd)
+-PLUGIN = $(shell basename $(PWD) | cut -d- -f1)
++PLUGIN = wirbelscan
+ CPPSRC = $(wildcard *.cpp)
+ OBJS   = $(CPPSRC:%.cpp=%.o)
+ LDFLAGS?=
