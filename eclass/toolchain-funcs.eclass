@@ -659,11 +659,11 @@ _tc-has-openmp() {
 # build-time, e.g.
 # @CODE
 # pkg_pretend() {
-#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2.0
+#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2
 # }
 #
 # pkg_setup() {
-#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2.0
+#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2
 # }
 # @CODE
 tc-check-min_ver() {
