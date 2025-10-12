@@ -1,0 +1,23 @@
+--- a/title.c
++++ b/title.c
+@@ -108,7 +108,7 @@ static void show_help()
+ 		top+150, W_Cyan);
+ }
+ 
+-int read_credits()
++void read_credits()
+ {
+     int hsf;
+     int i,j,l,lines;
+@@ -117,9 +117,9 @@ int read_credits()
+ 
+     j = 0; lines = 0;
+     chFBuf = (char *) malloc (8000+1);
+-    if (chFBuf == 0) return (-1);
++    if (chFBuf == 0) return;
+     gchLBuf = (char *) malloc (LINESIZE+1);
+-    if (gchLBuf == 0) return (-2);
++    if (gchLBuf == 0) return;
+     hsf = open (CREDITSFILE, O_RDONLY);
+     if ( hsf > 0 ) 
+     {
