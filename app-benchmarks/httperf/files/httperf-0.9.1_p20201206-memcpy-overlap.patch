@@ -1,0 +1,36 @@
+https://github.com/httperf/httperf/pull/81
+
+From c0e7d018ec0f5d10029e07e6eababb8dc86b4603 Mon Sep 17 00:00:00 2001
+From: Raphael Isemann <teemperor@gmail.com>
+Date: Wed, 20 Apr 2022 13:30:05 +0200
+Subject: [PATCH] Fix UB when memcpy'ing overlapping buffers
+
+memcpy doesn't allow overlapping src/dst so instead using memmove here to fix
+that the buffer gets corrupted.
+---
+ src/gen/wsesspage.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/gen/wsesspage.c b/src/gen/wsesspage.c
+index 46b697d..267188a 100755
+--- a/src/gen/wsesspage.c
++++ b/src/gen/wsesspage.c
+@@ -369,7 +369,7 @@ call_recv_data (Event_Type et, Object *obj, Any_Type regarg, Any_Type callarg)
+ 		    }
+ 		  else
+ 		    {
+-		      memcpy (cpriv->buf, cpriv->buf + 1, 3);
++		      memmove (cpriv->buf, cpriv->buf + 1, 3);
+ 		      cpriv->buf_len = 3;
+ 		    }
+ 		}
+@@ -391,7 +391,7 @@ call_recv_data (Event_Type et, Object *obj, Any_Type regarg, Any_Type callarg)
+ 		    }
+ 		  else
+ 		    {
+-		      memcpy (cpriv->buf, cpriv->buf + 1, 4);
++		      memmove (cpriv->buf, cpriv->buf + 1, 4);
+ 		      cpriv->buf_len = 4;
+ 		    }
+ 		}
+

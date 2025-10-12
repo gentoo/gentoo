@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.1_p20201206-c23.patch
+	"${FILESDIR}"/${PN}-0.9.1_p20201206-memcpy-overlap.patch
 )
 
 src_prepare() {
