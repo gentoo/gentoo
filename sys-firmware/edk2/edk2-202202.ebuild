@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ SLOT="0"
 KEYWORDS="-* amd64"
 
 BDEPEND="app-emulation/qemu
-	>=dev-lang/nasm-2.0.7
+	<dev-lang/nasm-3
 	sys-apps/which
 	>=sys-power/iasl-20160729
 	${PYTHON_DEPS}"
