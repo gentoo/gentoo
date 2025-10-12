@@ -32,6 +32,8 @@ PATCHES=(
 	# https://github.com/OpenMathLib/OpenBLAS/issues/5387
 	# https://github.com/OpenMathLib/OpenBLAS/pull/5391
 	"${FILESDIR}/${P}-cmake_libdir.patch"
+	# https://github.com/OpenMathLib/OpenBLAS/pull/5378
+	"${FILESDIR}/${P}-lunar-lake.patch"
 )
 
 pkg_pretend() {
