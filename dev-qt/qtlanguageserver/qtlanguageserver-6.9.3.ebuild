@@ -9,7 +9,7 @@ inherit qt6-build
 DESCRIPTION="Implementation of the Language Server Protocol for Qt"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm64"
+	KEYWORDS="amd64 arm64"
 fi
 
 RDEPEND="~dev-qt/qtbase-${PV}:6"
