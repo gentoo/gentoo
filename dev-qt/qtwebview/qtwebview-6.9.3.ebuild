@@ -8,7 +8,7 @@ inherit qt6-build
 DESCRIPTION="Module for displaying web content in a QML application using the Qt6 framework"
 
 if [[ ${QT6_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 fi
 
 RDEPEND="
