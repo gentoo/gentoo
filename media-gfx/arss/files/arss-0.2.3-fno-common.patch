@@ -1,5 +1,5 @@
---- a/arss.c
-+++ b/arss.c
+--- a/src/arss.c
++++ b/src/arss.c
 @@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
  
  char *version = "0.2.3";
@@ -8,8 +8,8 @@
  
  #define MSG_NUMBER_EXPECTED "A number is expected after %s\nExiting with error.\n"
  
---- a/dsp.c
-+++ b/dsp.c
+--- a/src/dsp.c
++++ b/src/dsp.c
 @@ -1,5 +1,12 @@
  #include "dsp.h"
  
@@ -23,8 +23,8 @@
  void fft(double *in, double *out, int32_t N, uint8_t method)
  {
  	/* method :
---- a/dsp.h
-+++ b/dsp.h
+--- a/src/dsp.h
++++ b/src/dsp.h
 @@ -17,13 +17,13 @@
  #define LOOP_SIZE_SEC_D	10.0
  #define BMSQ_LUT_SIZE_D	16000
@@ -44,8 +44,8 @@
  
  extern void fft(double *in, double *out, int32_t N, uint8_t method);
  extern void normi(double **s, int32_t xs, int32_t ys, double ratio);
---- a/util.c
-+++ b/util.c
+--- a/src/util.c
++++ b/src/util.c
 @@ -1,5 +1,7 @@
  #include "util.h"
  
@@ -54,8 +54,8 @@
  void win_return()
  {
  	#ifdef WIN32
---- a/util.h
-+++ b/util.h
+--- a/src/util.h
++++ b/src/util.h
 @@ -11,7 +11,7 @@
  
  #include "dsp.h"

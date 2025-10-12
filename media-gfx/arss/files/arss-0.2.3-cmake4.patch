@@ -1,0 +1,48 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,38 +1,16 @@
++cmake_minimum_required(VERSION 3.31)
++
+ project (arss C)
++
++include(GNUInstallDirs)
++
+ add_executable (arss arss.c dsp.c util.c image_io.c sound_io.c)
+ 
+ 
+ SET (CMAKE_BUILD_TYPE Release)
+ 
+-# look for the FFTW library
+-FIND_PATH (FFTW3_INCLUDE_DIR fftw3.h PATHS /usr/local/include /usr/include /sw/include)
+-FIND_LIBRARY (FFTW3_LIBRARY fftw3 fftw PATHS /usr/local/lib /usr/lib /lib /sw/lib)
+-
+-IF (FFTW3_INCLUDE_DIR AND FFTW3_LIBRARY)
+-	SET (HAVE_FFTW3 TRUE)
+-ELSE (FFTW3_INCLUDE_DIR AND FFTW3_LIBRARY)
+-	IF (NOT FFTW3_FIND_QUIETLY)
+-		IF (NOT FFTW3_INCLUDE_DIR)
+-			MESSAGE (STATUS "Unable to find FFTW3 header files!")
+-		ENDIF (NOT FFTW3_INCLUDE_DIR)
+-		IF (NOT FFTW3_LIBRARY)
+-			MESSAGE (STATUS "Unable to find FFTW3 library files!")
+-		ENDIF (NOT FFTW3_LIBRARY)
+-	ENDIF (NOT FFTW3_FIND_QUIETLY)
+-ENDIF (FFTW3_INCLUDE_DIR AND FFTW3_LIBRARY)
+-
+-IF (HAVE_FFTW3)
+-	IF (NOT FFTW3_FIND_QUIETLY)
+-		MESSAGE (STATUS "Found components for FFTW3")
+-		MESSAGE (STATUS "FFTW3_INCLUDE_DIR = ${FFTW3_INCLUDE_DIR}")
+-		MESSAGE (STATUS "FFTW3_LIBRARY		 = ${FFTW3_LIBRARY}")
+-	ENDIF (NOT FFTW3_FIND_QUIETLY)
+-ELSE (HAVE_FFTW3)
+-	IF (FFTW3_FIND_REQUIRED)
+-		MESSAGE (FATAL_ERROR "Could not find FFTW3!")
+-	ENDIF (FFTW3_FIND_REQUIRED)
+-ENDIF (HAVE_FFTW3)
++find_package(FFTW3 CONFIG REQUIRED)
+ 
+ TARGET_LINK_LIBRARIES (arss fftw3 m)
+ 
+-INSTALL(PROGRAMS arss DESTINATION bin)
++INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/arss DESTINATION ${CMAKE_INSTALL_BINDIR})
