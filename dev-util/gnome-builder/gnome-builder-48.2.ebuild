@@ -62,7 +62,7 @@ RDEPEND="
 
 	>=dev-libs/gobject-introspection-1.74.0:=
 	${PYTHON_DEPS}
-	clang? ( $(llvm_gen_dep "llvm-core/clang:${LLVM_SLOT}=") )
+	clang? ( $(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}=') )
 	spell? (
 		>=app-text/libspelling-0.3
 	)
