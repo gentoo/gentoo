@@ -1,0 +1,37 @@
+https://gitlab.freedesktop.org/freetype/freetype/-/issues/1362
+https://gitlab.freedesktop.org/freetype/freetype/-/commit/7955c9b86abfbce40ca7b06579bb1de8c945762f
+
+From 7955c9b86abfbce40ca7b06579bb1de8c945762f Mon Sep 17 00:00:00 2001
+From: Werner Lemberg <wl@gnu.org>
+Date: Wed, 24 Sep 2025 05:56:34 +0200
+Subject: [PATCH] * src/bdf/bdfdriver.c (BDF_Glyph_Load): Use
+ `bdf->bdffont->bpp` directly.
+
+Fixes issue #1362.
+---
+ src/bdf/bdfdrivr.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/bdf/bdfdrivr.c b/src/bdf/bdfdrivr.c
+index f57bb0007..94549b692 100644
+--- a/src/bdf/bdfdrivr.c
++++ b/src/bdf/bdfdrivr.c
+@@ -800,7 +800,6 @@ THE SOFTWARE.
+     FT_Error     error  = FT_Err_Ok;
+     FT_Bitmap*   bitmap = &slot->bitmap;
+     bdf_glyph_t  glyph;
+-    int          bpp    = bdf->bdffont->bpp;
+ 
+     FT_UNUSED( load_flags );
+ 
+@@ -839,7 +838,7 @@ THE SOFTWARE.
+     /*       we can simply point to it                         */
+     ft_glyphslot_set_bitmap( slot, glyph.bitmap );
+ 
+-    switch ( bpp )
++    switch ( bdf->bdffont->bpp )
+     {
+     case 1:
+       bitmap->pixel_mode = FT_PIXEL_MODE_MONO;
+-- 
+GitLab
