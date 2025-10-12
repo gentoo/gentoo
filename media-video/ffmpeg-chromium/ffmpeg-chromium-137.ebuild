@@ -211,6 +211,7 @@ src_configure() {
 		--ranlib="$(tc-getRANLIB)" \
 		--pkg-config="$(tc-getPKG_CONFIG)" \
 		--optflags="${CFLAGS}" \
+		--disable-large-tests \
 		--disable-all \
 		--disable-autodetect \
 		--disable-error-resilience \
