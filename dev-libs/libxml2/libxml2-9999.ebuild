@@ -24,9 +24,7 @@ S="${WORKDIR}/${PN}-${PV%_rc*}"
 LICENSE="MIT"
 # see so_version = v_maj + v_min_compat for subslot
 SLOT="2/16"
-# TODO: switch Python bindings off by default with >=2.15.0, per upstream,
-# once more reverse dependencies are sorted.
-IUSE="doc icu +python readline static-libs test"
+IUSE="doc icu python readline static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
