@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-12)
+# Dead upstream, broken with CMake-4, no one else packaging this anymore.
+# Bug #958051. Removal on 2025-11-11.
+sci-electronics/Stage
+
 # Michał Górny <mgorny@gentoo.org> (2025-10-12)
 # Requires Rust with RUST_SYSROOTS=bpf, which isn't currently supported
 # by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
