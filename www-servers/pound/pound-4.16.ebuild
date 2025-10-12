@@ -38,6 +38,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-test-threads.patch
+)
+
 src_configure() {
 	local myconf=(
 		--disable-dynamic-backends
