@@ -1,3 +1,6 @@
+https://bugs.gentoo.org/963749
+https://gitlab.isc.org/isc-projects/kea/-/issues/4085
+https://gitlab.isc.org/isc-projects/kea/-/merge_requests/2771
 Fixes the build with Boost 1.89
 diff --git a/meson.build b/meson.build
 index ab2fa78212..8592196856 100644

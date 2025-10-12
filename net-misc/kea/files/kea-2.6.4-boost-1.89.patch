@@ -1,3 +1,4 @@
+https://bugs.gentoo.org/963975
 Fixes the build with Boost 1.89
 diff --git a/m4macros/ax_boost_for_kea.m4 b/m4macros/ax_boost_for_kea.m4
 index 996413374a..7d616eb03e 100644
