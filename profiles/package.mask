@@ -37,6 +37,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-12)
+# Dead upstream, depends on Qt5.
+# Bug #949899, #953384. Removal on 2025-11-11.
+games-puzzle/colorcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-12)
 # Dead upstream, broken with CMake-4, no one else packaging this anymore.
 # Bug #958051. Removal on 2025-11-11.
 sci-electronics/Stage
