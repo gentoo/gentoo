@@ -1,0 +1,35 @@
+diff --git a/src/xsane-gamma.c b/src/xsane-gamma.c
+index 7951354..93b8943 100644
+--- a/src/xsane-gamma.c
++++ b/src/xsane-gamma.c
+@@ -553,7 +553,7 @@ void xsane_update_sliders()
+
+ /* ---------------------------------------------------------------------------------------------------------------------- */
+
+-static gint xsane_batch_scan_gamma_event()
++static gint xsane_batch_scan_gamma_event(void* userdata)
+ {
+   DBG(DBG_proc, "xsane_batch_scan_gamma_event\n");
+
+@@ -567,7 +567,7 @@ static gint xsane_batch_scan_gamma_event()
+
+ /* ---------------------------------------------------------------------------------------------------------------------- */
+
+-static gint xsane_slider_hold_event()
++static gint xsane_slider_hold_event(void* userdata)
+ {
+   DBG(DBG_proc, "xsane_slider_hold_event\n");
+
+diff --git a/src/xsane-save.h b/src/xsane-save.h
+index 64db676..e6fdab6 100644
+--- a/src/xsane-save.h
++++ b/src/xsane-save.h
+@@ -50,7 +50,7 @@ struct pdf_xref
+
+
+ extern int xsane_create_secure_file(const char *filename);
+-extern void xsane_cancel_save();
++extern void xsane_cancel_save(int*);
+ extern void xsane_convert_text_to_filename(char **filename);
+ extern int xsane_get_filesize(char *filename);
+ extern void xsane_ensure_counter_in_filename(char **filename, int counter_len);
