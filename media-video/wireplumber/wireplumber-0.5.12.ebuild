@@ -33,7 +33,7 @@ DESCRIPTION="Replacement for pipewire-media-session"
 HOMEPAGE="https://gitlab.freedesktop.org/pipewire/wireplumber"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://gitlab.freedesktop.org/wireplumber/${PN}.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/pipewire/${PN}.git"
 	EGIT_BRANCH="master"
 	inherit git-r3
 else
