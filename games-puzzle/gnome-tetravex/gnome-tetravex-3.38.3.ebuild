@@ -12,8 +12,9 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-tetravex"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
-IUSE="cli +gui"
+IUSE="cli +gui test"
 REQUIRED_USE="|| ( cli gui )"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.0:2
@@ -24,6 +25,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	$(vala_depend)
 	gui? ( dev-util/itstool )
+	test? (
+		dev-util/desktop-file-utils
+		dev-libs/appstream
+	)
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
