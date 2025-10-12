@@ -1,0 +1,44 @@
+target/hppa: correct size bit parity for fmpyadd
+
+For the fmpyadd instruction on the hppa architecture, there is a bit
+used to specify whether the instruction is operating on a 32 bit or 64
+bit floating point register. For most instructions, such a bit is 0 when
+operating on the smaller register and 1 when operating on the larger
+register. However, according to page 6-57 of the PA-RISC 1.1 Architecture
+and Instruction Set Reference Manual, this convention is reversed for the
+fmpyadd instruction specifically, meaning the bit is 1 for operations on
+32 bit registers and 0 for 64 bit registers. Previously, QEMU decoded
+this operation as operating on the other size of register, leading to
+bugs when translating the fmpyadd instruction. This patch fixes that
+issue.
+
+Reported-by: Andreas Hüttel <andreas.huettel@ur.de>
+Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3096
+---
+ target/hppa/insns.decode | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/target/hppa/insns.decode b/target/hppa/insns.decode
+index 4eaac750ea..13c6a55bf2 100644
+--- a/target/hppa/insns.decode
++++ b/target/hppa/insns.decode
+@@ -365,10 +365,10 @@ fstd            011100 ..... ..... .. ............1.    @ldstim11
+ &mpyadd         rm1 rm2 ta ra tm
+ @mpyadd         ...... rm1:5 rm2:5 ta:5 ra:5 . tm:5     &mpyadd
+ 
+-fmpyadd_f       000110 ..... ..... ..... ..... 0 .....  @mpyadd
+-fmpyadd_d       000110 ..... ..... ..... ..... 1 .....  @mpyadd
+-fmpysub_f       100110 ..... ..... ..... ..... 0 .....  @mpyadd
+-fmpysub_d       100110 ..... ..... ..... ..... 1 .....  @mpyadd
++fmpyadd_f       000110 ..... ..... ..... ..... 1 .....  @mpyadd
++fmpyadd_d       000110 ..... ..... ..... ..... 0 .....  @mpyadd
++fmpysub_f       100110 ..... ..... ..... ..... 1 .....  @mpyadd
++fmpysub_d       100110 ..... ..... ..... ..... 0 .....  @mpyadd
+ 
+ ####
+ # Conditional Branches
+
+---
+base-commit: 94474a7733a57365d5a27efc28c05462e90e8944
+change-id: 20251009-hppa-correct-fmpyadd-size-bit-decoding-059501a0ae49
