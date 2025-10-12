@@ -64,7 +64,7 @@ QA_FLAGS_IGNORED="/usr/lib64/rocblas/library/.*"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.2-add-missing-header.patch
-	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
+	"${FILESDIR}"/${PN}-7.0.2-expand-isa-compatibility.patch
 	"${FILESDIR}"/${PN}-6.3.0-no-git.patch
 	"${FILESDIR}"/${PN}-7.0.1-find-cblas.patch
 )
