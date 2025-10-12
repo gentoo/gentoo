@@ -1,0 +1,62 @@
+https://bugs.gentoo.org/943906
+https://github.com/httperf/httperf/pull/84
+
+From e6dd35c7bffbec001fe0eba4071bfcf3395c9cc6 Mon Sep 17 00:00:00 2001
+From: Matt Hartley <mt-hartley@hotmail.com>
+Date: Thu, 9 Oct 2025 18:44:15 -0500
+Subject: [PATCH 1/2] fixed build issue with gcc 15
+
+---
+ src/httperf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/httperf.c b/src/httperf.c
+index 5dbba07..c355493 100755
+--- a/src/httperf.c
++++ b/src/httperf.c
+@@ -1381,7 +1381,7 @@ main(int argc, char **argv)
+ 	}
+ 	core_init();
+ 
+-	signal(SIGINT, (void (*)()) core_exit);
++	signal(SIGINT, (__sighandler_t) core_exit);
+ 
+ 	for (i = 0; i < num_stats; ++i)
+ 		(*stat[i]->init) ();
+
+From 620afdd3a7d39764203c66d7b3144b5500653d4e Mon Sep 17 00:00:00 2001
+From: Matt Hartley <mt-hartley@hotmail.com>
+Date: Thu, 9 Oct 2025 18:55:03 -0500
+Subject: [PATCH 2/2] got rid of offending cast entirely using a wrapper
+ function
+
+---
+ src/httperf.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/httperf.c b/src/httperf.c
+index c355493..a9bf213 100755
+--- a/src/httperf.c
++++ b/src/httperf.c
+@@ -228,6 +228,11 @@ perf_sample(struct Timer *t, Any_Type regarg)
+ 		      __LINE__);
+ }
+ 
++void wrapped_core_exit(int _)
++{
++  core_exit();
++}
++
+ int
+ main(int argc, char **argv)
+ {
+@@ -1381,7 +1386,7 @@ main(int argc, char **argv)
+ 	}
+ 	core_init();
+ 
+-	signal(SIGINT, (__sighandler_t) core_exit);
++	signal(SIGINT, wrapped_core_exit);
+ 
+ 	for (i = 0; i < num_stats; ++i)
+ 		(*stat[i]->init) ();
+
