@@ -10,4 +10,4 @@ inherit perl-module
 DESCRIPTION="Perl extension for Consistent Signal Handling"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
