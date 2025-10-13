@@ -114,7 +114,7 @@ RDEPEND="
 		sys-fs/mdadm
 		sys-process/procps
 	)
-	!sys-fs/zfs-kmod
+	!<sys-fs/zfs-kmod-2.4.0_rc2-r1
 "
 
 REQUIRED_USE="
