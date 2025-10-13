@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="hamlib nls pulseaudio"
 IUSE_CPU_FLAGS=" sse sse2 sse3"
 IUSE+=" ${IUSE_CPU_FLAGS// / cpu_flags_x86_}"
