@@ -17,6 +17,9 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCm/hipBLAS</remote-id>
+    <remote-id type="github">ROCm/rocm-libraries</remote-id>
   </upstream>
+  <use>
+    <flag name="rocsolver">Add additional functions from <pkg>sci-libs/rocSOLVER</pkg></flag>
+  </use>
 </pkgmetadata>
