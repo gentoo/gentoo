@@ -56,9 +56,7 @@ python_test() {
 		'tests/test_functional.py::test_functional[dataclass_with_field]'
 		'tests/test_functional.py::test_functional[no_name_in_module]'
 		'tests/test_functional.py::test_functional[shadowed_import]'
-		'tests/test_functional.py::test_functional[unused_import]'
 		'tests/test_functional.py::test_functional[use_yield_from]'
-		'tests/test_functional.py::test_functional[wrong_import_order]'
 	)
 	local EPYTEST_IGNORE=(
 		# No need to run the benchmarks
@@ -72,8 +70,6 @@ python_test() {
 			tests/testutils/_primer/test_primer.py
 		)
 	fi
-
-	rm -rf pylint || die
 
 	epytest
 }
