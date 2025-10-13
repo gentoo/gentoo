@@ -110,6 +110,15 @@ fi
 # The default is set to "yes" (enabled).
 : "${CMAKE_WARN_UNUSED_CLI:=yes}"
 
+# @ECLASS_VARIABLE: CMAKE_ECM_MODE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Default value is "auto", which means _cmake_modify-cmakelists will make an
+# effort to detect find_package(ECM) in CMakeLists.txt.  If set to true, make
+# extra checks and add common config settings related to ECM (KDE Extra CMake
+# Modules).  If set to false, do nothing.
+: "${CMAKE_ECM_MODE:=auto}"
+
 # @ECLASS_VARIABLE: CMAKE_EXTRA_CACHE_FILE
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -141,6 +150,15 @@ _CMAKE_MINREQVER_CMAKE305=()
 # already added to _CMAKE_MINREQVER_CMAKE305.
 _CMAKE_MINREQVER_CMAKE310=()
 
+# @ECLASS_VARIABLE: _CMAKE_MINREQVER_CMAKE316
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Internal array containing <file>:<version> tuples detected by
+# _cmake_minreqver-check() for any CMakeLists.txt with cmake_minimum_required
+# version lower than 3.16 (causes ECM warnings since 5.100), on top of those
+# already added to _CMAKE_MINREQVER_CMAKE305 and _CMAKE_MINREQVER_CMAKE310.
+_CMAKE_MINREQVER_CMAKE316=()
+
 # @ECLASS_VARIABLE: CMAKE_QA_SRC_DIR_READONLY
 # @USER_VARIABLE
 # @DEFAULT_UNSET
@@ -160,6 +178,14 @@ _CMAKE_MINREQVER_CMAKE310=()
 [[ ${CMAKE_UTILS_QA_SRC_DIR_READONLY} ]] && die "Use CMAKE_QA_SRC_DIR_READONLY instead"
 [[ ${WANT_CMAKE} ]] && die "WANT_CMAKE has been removed and is a no-op"
 [[ ${PREFIX} ]] && die "PREFIX has been removed and is a no-op"
+
+case ${CMAKE_ECM_MODE} in
+	auto|true|false) ;;
+	*)
+		eerror "Unknown value for \${CMAKE_ECM_MODE}"
+		die "Value ${CMAKE_ECM_MODE} is not supported"
+		;;
+esac
 
 case ${CMAKE_MAKEFILE_GENERATOR} in
 	emake)
@@ -377,6 +403,11 @@ _cmake_minreqver-check() {
 			_CMAKE_MINREQVER_CMAKE310+=( "${file}":"${ver}" )
 			chk=0
 		fi
+		# we don't want duplicates that were already flagged
+		if [[ $chk != 0 ]] && ver_test "${ver}" -lt "3.16"; then
+			_CMAKE_MINREQVER_CMAKE316+=( "${file}":"${ver}" )
+			chk=0
+		fi
 	fi
 	return ${chk}
 }
@@ -390,6 +421,8 @@ _cmake_minreqver-info() {
 	local warnlvl
 	[[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]] && warnlvl=305
 	[[ -n ${_CMAKE_MINREQVER_CMAKE310[@]} ]] || [[ ${warnlvl} ]] && warnlvl=310
+	[[ ${CMAKE_ECM_MODE} == true ]] &&
+		{ [[ -n ${_CMAKE_MINREQVER_CMAKE316[@]} ]] || [[ ${warnlvl} ]] } && warnlvl=316
 
 	local weak_qaw="QA Notice: "
 	minreqver_qanotice() {
@@ -405,13 +438,18 @@ _cmake_minreqver-info() {
 				eqawarn "If not fixed in upstream's code repository, we should make sure they are aware."
 				eqawarn "See also tracker bug #964405; check existing or file a new bug for this package."
 				;;
+			316)
+				eqawarn "${weak_qaw}Compatibility w/ CMake < 3.16 will be removed in future ECM release."
+				eqawarn "If not fixed in upstream's code repository, we should make sure they are aware."
+				eqawarn "See also tracker bug #964407; check existing or file a new bug for this package."
+				;;
 		esac
 		eqawarn
 		weak_qaw="" # weak notice: no "QA Notice" starting with second call
 	}
 
+	local info
 	minreqver_listing() {
-		local info
 		case ${1} in
 			305)
 				eqawarn "The following CMakeLists.txt files are causing errors:"
@@ -422,6 +460,13 @@ _cmake_minreqver-info() {
 				if [[ -n ${_CMAKE_MINREQVER_CMAKE310[@]} ]]; then
 					eqawarn "The following CMakeLists.txt files are causing warnings:"
 					for info in ${_CMAKE_MINREQVER_CMAKE310[*]}; do eqawarn "  ${info}"; done
+					eqawarn
+				fi
+				;;
+			316)
+				if [[ ${warnlvl} -ge 316 ]] && [[ -n ${_CMAKE_MINREQVER_CMAKE316[@]} ]]; then
+					eqawarn "The following CMakeLists.txt files are causing warnings:"
+					for info in ${_CMAKE_MINREQVER_CMAKE316[*]}; do eqawarn "  ${info}"; done
 					eqawarn
 				fi
 				;;
@@ -436,7 +481,7 @@ _cmake_minreqver-info() {
 	# for warnings, we only want the latest relevant one, but list all flagged files
 	if [[ ${warnlvl} -ge 310 ]]; then
 		minreqver_qanotice ${warnlvl}
-		minreqver_listing 310
+		for info in 310 316; do minreqver_listing ${info}; done
 	fi
 	if [[ ${warnlvl} ]]; then
 		if [[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]] && has_version -b ">=dev-build/cmake-4"; then
@@ -476,6 +521,9 @@ _cmake_modify-cmakelists() {
 			for mod_line in "${mod_lines[@]}"; do
 				einfo "${mod_line:22:99}"
 			done
+		fi
+		if [[ ${CMAKE_ECM_MODE} == auto ]] && grep -Eq "\s*find_package\s*\(\s*ECM " "${file}"; then
+			CMAKE_ECM_MODE=true
 		fi
 		# Detect unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
 		if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
@@ -725,7 +773,7 @@ cmake_src_configure() {
 		set(CMAKE_LINK_WARNING_AS_ERROR OFF CACHE BOOL "")
 	_EOF_
 
-	if [[ -n ${_ECM_ECLASS} ]]; then
+	if [[ ${CMAKE_ECM_MODE} == true ]]; then
 		cat >> ${common_config} <<- _EOF_ || die
 			set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "")
 			set(ECM_DISABLE_APPSTREAMTEST ON CACHE BOOL "")
