@@ -10,7 +10,7 @@ S=${WORKDIR}
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~arm"
+KEYWORDS="-* arm"
 RESTRICT="mirror bindist"
 
 QA_PREBUILT="
