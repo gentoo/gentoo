@@ -18,19 +18,13 @@ IUSE="minimal"
 # has the ROOT check fixed. Didn't happen with XML-SAX-Expat, but best to be careful.
 # bug #840053
 RDEPEND="
-	virtual/perl-Carp
-	virtual/perl-Encode
-	>=virtual/perl-Exporter-5.570.0
-	virtual/perl-IO
-	virtual/perl-Scalar-List-Utils
 	>=dev-perl/XML-NamespaceSupport-1.70.0
 	>=dev-perl/XML-SAX-1.20.0-r1
 	dev-perl/XML-SAX-Base
 	>=dev-libs/libxml2-2.6.21:2=
-	virtual/perl-parent
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
+BDEPEND="
+	${RDEPEND}
 	dev-perl/Alien-Build
 	>=dev-perl/Alien-Libxml2-0.140.0
 	test? (
