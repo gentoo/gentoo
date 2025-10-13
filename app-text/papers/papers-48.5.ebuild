@@ -233,7 +233,7 @@ LICENSE+="
 # subslot = ppsd4.0.(suffix of libppsdocument-4.0)-ppsv4.0.(suffix of libppsview-4.0)
 SLOT="0/ppsd4.0.5-ppsv4.0.4"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="+comics djvu doc gnome-keyring introspection nautilus +spell sysprof
 test tiff"
