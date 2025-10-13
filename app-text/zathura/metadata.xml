@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="landlock">Build the sandboxed version using the Landlock (a Linux Security Module)</flag>
 		<flag name="synctex">Use libsynctex to get latex codeline from pdf</flag>
 	</use>
 	<upstream>

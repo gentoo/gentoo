@@ -18,7 +18,7 @@ fi
 
 LICENSE="ZLIB"
 SLOT="0/6.7" # plugin versions api.abi (see meson.build)
-IUSE="+man seccomp synctex test wayland X"
+IUSE="+man landlock seccomp synctex test wayland X"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	test? ( X )
@@ -58,11 +58,19 @@ src_configure() {
 
 	local emesonargs=(
 		-Dconvert-icon=disabled
-		-Dlandlock=enabled
 		$(meson_feature man manpages)
+		$(meson_feature landlock)
 		$(meson_feature seccomp)
 		$(meson_feature synctex)
 		$(meson_feature test tests)
 	)
 	meson_src_configure
+}
+src_install() {
+	meson_src_install
+
+	if use seccomp || use landlock; then
+		mv "${D}"/usr/bin/zathura{,-full}
+		dosym zathura-sandbox /usr/bin/zathura
+	fi
 }
