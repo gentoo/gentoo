@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl module for concise attribute rewriting"
 
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86"
+KEYWORDS="amd64 ~riscv ~x86"
 
 RDEPEND="
 	dev-perl/URI
