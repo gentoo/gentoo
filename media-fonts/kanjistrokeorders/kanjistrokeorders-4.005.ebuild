@@ -12,7 +12,7 @@ S="${WORKDIR}/KanjiStrokeOrders-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 arm64 ~loong ~riscv x86"
+KEYWORDS="amd64 arm64 ~loong ~riscv x86"
 RESTRICT="binchecks"
 
 BDEPEND="app-arch/unzip"
