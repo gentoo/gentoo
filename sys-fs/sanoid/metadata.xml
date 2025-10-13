@@ -5,7 +5,7 @@
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="person" proxied="yes">
 		<email>johnmh@johnmh.me</email>
 		<name>John M. Harris, Jr.</name>
 	</maintainer>
