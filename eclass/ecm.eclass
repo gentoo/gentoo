@@ -29,6 +29,11 @@ esac
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 
+# @ECLASS_VARIABLE: CMAKE_ECM_MODE
+# @DESCRIPTION:
+# For proper description see cmake.eclass manpage.
+CMAKE_ECM_MODE=true
+
 inherit cmake flag-o-matic
 
 if [[ ${EAPI} == 8 ]]; then
