@@ -36,6 +36,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2025-10-13)
+# Crashes in memtodest when handling PATH. Not yet reported upstream.
+=app-shells/dash-0.5.13.1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-12)
 # Dead upstream, depends on Qt5.
 # Bug #949899, #953384. Removal on 2025-11-11.
@@ -149,14 +153,6 @@ sci-geosciences/liblas
 # Last release 8 years ago, broken by CMake 4, unclear purpose without any
 # revdeps. Bugs #800608, #866377, #955465. Removal on 2025-11-01.
 dev-build/cmake-fedora
-
-# Sam James <sam@gentoo.org> (2025-10-04)
-# Has some regressions:
-# * autoconf (https://lore.kernel.org/dash/ba3014e6-b1f6-4b6b-99ac-524dafd22f33@SystematicSW.ab.ca/)
-#            (https://savannah.gnu.org/support/?111321)
-# * expansion (https://lore.kernel.org/dash/d3a79537-be6a-4e5d-afe6-8b8d9dd57955@reillybrogan.com/)
-# * parsing (https://lore.kernel.org/dash/105f1d0e-f7c4-431b-b95d-efad442aaa34@reillybrogan.com/)
-=app-shells/dash-0.5.13
 
 # Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
 # Breaks e.g. in combination with gnome-shell-48.4
