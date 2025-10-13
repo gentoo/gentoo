@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi.git"
 else
 	SRC_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 arm arm64 ~loong ~mips ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ~ppc ~ppc64 ~riscv x86"
 fi
 
 PYTHON_COMPAT=( python3_{11..14} )
