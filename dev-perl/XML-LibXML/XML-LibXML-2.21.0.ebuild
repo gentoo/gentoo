@@ -50,6 +50,7 @@ PERL_RM_FILES=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.21.0-libxml2-2.13.patch
 	"${FILESDIR}"/${PN}-2.21.0-libxml2-2.14.patch
+	"${FILESDIR}"/${PN}-2.21.0-libxml2-2.15.patch
 )
 
 src_compile() {
