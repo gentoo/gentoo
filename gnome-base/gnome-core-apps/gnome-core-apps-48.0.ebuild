@@ -10,7 +10,7 @@ S="${WORKDIR}"
 
 LICENSE="metapackage"
 SLOT="3.0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="+bluetooth cups"
 
