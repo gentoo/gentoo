@@ -5,10 +5,16 @@
 		<email>mschiff@gentoo.org</email>
 		<name>Marc Schiffbauer</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>johnmh@johnmh.me</email>
+		<name>John M. Harris, Jr.</name>
+	</maintainer>
 	<use>
 		<flag name="cron">Installs cron file</flag>
 	</use>
 	<upstream>
+		<changelog>https://github.com/jimsalterjrs/sanoid/releases</changelog>
+		<bugs-to>https://github.com/jimsalterjrs/sanoid/issues</bugs-to>
 		<remote-id type="github">jimsalterjrs/sanoid</remote-id>
 	</upstream>
 	<longdescription lang="en">
