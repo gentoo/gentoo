@@ -386,7 +386,8 @@ _cmake_minreqver-info() {
 		eqawarn
 		if has_version -b ">=dev-build/cmake-4"; then
 			eqawarn "CMake 4 detected; building with -DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-			eqawarn "This is merely a workaround and *not* a permanent fix."
+			eqawarn "This is merely a workaround to avoid CMake Error and *not* a permanent fix;"
+			eqawarn "there may be new build or runtime bugs as a result."
 			eqawarn
 		fi
 		eqawarn "An upstreamable patch should take any resulting CMake policy changes"
@@ -748,7 +749,9 @@ cmake_src_configure() {
 		cmakeargs+=( -C "${CMAKE_EXTRA_CACHE_FILE}" )
 	fi
 
-	if [[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]] && has_version -b ">=dev-build/cmake-4"; then
+	if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]] &&
+		[[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]] &&
+		has_version -b ">=dev-build/cmake-4"; then
 		cmakeargs+=( -DCMAKE_POLICY_VERSION_MINIMUM=3.5 )
 	fi
 
