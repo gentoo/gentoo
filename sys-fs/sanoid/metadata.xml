@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
+	</maintainer>
+	<use>
+		<flag name="cron">Installs cron file</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">jimsalterjrs/sanoid</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		Sanoid is a policy-driven snapshot management tool for ZFS filesystems.
+		When combined with the Linux KVM hypervisor, you can use it to make your
+		systems functionally immortal.
+		More prosaically, you can use Sanoid to create, automatically thin, and
+		monitor snapshots and pool health from a single eminently human-readable
+		TOML config file at /etc/sanoid/sanoid.conf.
+		(Sanoid also requires a "defaults" file located at
+		/etc/sanoid/sanoid.defaults.conf, which is not user-editable.)
+	</longdescription>
+</pkgmetadata>
