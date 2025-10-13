@@ -10,7 +10,7 @@ S="${WORKDIR}"
 
 LICENSE="metapackage"
 SLOT="2.0" # Cannot be installed at the same time as gnome-2
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="accessibility +bluetooth +classic cups +extras"
 
