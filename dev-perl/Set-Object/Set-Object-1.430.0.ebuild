@@ -11,7 +11,7 @@ DESCRIPTION="Set of objects and strings"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc ~sparc x86"
 
 PERL_RM_FILES=(
 	"t/misc/kwalitee.t"
