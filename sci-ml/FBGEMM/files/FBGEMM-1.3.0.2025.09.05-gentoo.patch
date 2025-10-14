@@ -1,0 +1,40 @@
+--- a/CMakeLists.txt	2022-05-21 13:13:50.806813151 +0200
++++ b/CMakeLists.txt	2022-05-21 13:16:46.448969453 +0200
+@@ -419,6 +419,9 @@
+   FILES ${FBGEMM_PUBLIC_HEADERS}
+   DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/fbgemm")
+ 
++install(FILES src/RefImplementations.h
++  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/fbgemm/src")
++
+ install(
+   EXPORT fbgemmLibraryConfig
+   DESTINATION share/cmake/fbgemm
+@@ -428,7 +428,7 @@
+ # Asmjit Target
+ ################################################################################
+ 
+-if(NOT TARGET asmjit)
++if(FALSE)
+   # Download asmjit from github if ASMJIT_SRC_DIR is not specified.
+   if(NOT DEFINED ASMJIT_SRC_DIR)
+     set(ASMJIT_SRC_DIR "${FBGEMM_SOURCE_DIR}/external/asmjit"
+@@ -450,7 +450,7 @@
+ # Cpuinfo Target
+ ################################################################################
+ 
+-if(NOT TARGET cpuinfo)
++if(FALSE)
+   #Download cpuinfo from github if CPUINFO_SOURCE_DIR is not specified.
+   if(NOT DEFINED CPUINFO_SOURCE_DIR)
+     set(CPUINFO_SOURCE_DIR "${FBGEMM_SOURCE_DIR}/external/cpuinfo"
+--- a/src/PackMatrix.cc	2022-05-24 08:19:00.639462626 +0200
++++ b/src/PackMatrix.cc	2022-05-24 08:27:59.127720548 +0200
+@@ -32,6 +32,7 @@
+ }
+ 
+ template <typename PT, typename inpType, typename accType>
++FBGEMM_API
+ int PackMatrix<PT, inpType, accType>::packedBufferSize(
+     int rows,
+     int cols,
