@@ -9,18 +9,16 @@ LLVM_OPTIONAL=1
 
 inherit dot-a flag-o-matic linux-info llvm-r1 pam python-single-r1 systemd tmpfiles
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
-
-SLOT=$(ver_cut 1)
-
-MY_PV=${PV/_/}
-S="${WORKDIR}/${PN}-${MY_PV}"
-
-SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
-
-LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
+
+MY_PV=${PV/_/}
+SRC_URI="https://ftp.postgresql.org/pub/source/v${MY_PV}/postgresql-${MY_PV}.tar.bz2"
+S="${WORKDIR}/${PN}-${MY_PV}"
+LICENSE="POSTGRESQL GPL-2"
+SLOT=$(ver_cut 1)
+
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 IUSE="debug doc +icu kerberos ldap llvm +lz4 +numa nls oauth pam perl python
 	+readline selinux +server systemd ssl static-libs tcl uuid +uring
@@ -119,7 +117,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || eapply "${FILESDIR}/${PN}-17.0-no-server.patch"
+	use server || eapply "${FILESDIR}/${PN}-18.0-no-server.patch"
 
 	if use pam ; then
 		sed "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -186,6 +184,7 @@ src_configure() {
 		$(use_with zlib) \
 		$(use_with zstd) \
 		$(use_enable nls)"
+
 	econf ${myconf}
 }
 
