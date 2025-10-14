@@ -5,4 +5,7 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<use>
+		<flag name="mpv">Enable video support via <pkg>media-video/mpv</pkg>(experimental)</flag>
+	</use>
 </pkgmetadata>
