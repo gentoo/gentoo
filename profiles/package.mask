@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Beierlein <tomjbe@gentoo.org> (2025-10-14)
+# Depends on Qt5.
+# Superseded by media-radio/wsjtx_improved. While both are based on the same
+# base code wsjtx_improved will be more actual AND provides Qt6 support.
+# Removal on 2025-11-13.  Bug #955965.
+media-radio/wsjtx
+
 # Sam James <sam@gentoo.org> (2025-10-13)
 # Crashes in memtodest when handling PATH. Not yet reported upstream.
 =app-shells/dash-0.5.13.1
