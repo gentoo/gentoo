@@ -14,9 +14,10 @@
 		<flag name="shared">Build shared library</flag>
 	</use>
 	<longdescription>
-		JollyCV is a highly accurate emulator for the ColecoVision,
-		including support for the Super Game Module. It was written in
-		standards compliant ISO C11 specifically for The Jolly Good API.
+		JollyCV is a highly accurate emulator for the ColecoVision
+		(including Super Game Module), CreatiVision and My Vision.
+		It was written in standards compliant ISO C11 specifically
+		for The Jolly Good API.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://gitlab.com/jgemu/jollycv/-/issues</bugs-to>
