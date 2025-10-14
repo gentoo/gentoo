@@ -1287,7 +1287,7 @@ distutils-r1_python_compile() {
 			# from the oldest to the newest implementation,
 			# and the wheels are forward-compatible.
 			if [[
-				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
+				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none* ) ||
 				(
 					${EPYTHON} == python* &&
 					# freethreading does not support stable ABI
