@@ -127,7 +127,7 @@ RDEPEND="
 	)
 	virtiofsd? ( app-emulation/virtiofsd )
 	virtualbox? ( <app-emulation/virtualbox-7.1.0 )
-	wireshark-plugins? ( >=net-analyzer/wireshark-2.6.0:= )
+	wireshark-plugins? ( <net-analyzer/wireshark-4.6.0:= )
 	xen? (
 		>=app-emulation/xen-4.9.0
 		app-emulation/xen-tools:=
