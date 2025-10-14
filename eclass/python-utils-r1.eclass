@@ -1538,9 +1538,17 @@ epytest() {
 			)
 		fi
 
-		args+=(
-			"--reruns=${EPYTEST_RERUNS}"
-		)
+		if has_version ">=dev-python/pytest-rerunfailures-16.1"; then
+			args+=(
+				# --reruns only adds N reruns for tests not marked for reruns
+				# --force-reruns overrides the rerun count for all tests
+				"--force-reruns=${EPYTEST_RERUNS}"
+			)
+		else
+			args+=(
+				"--reruns=${EPYTEST_RERUNS}"
+			)
+		fi
 	fi
 
 	if [[ -n ${EPYTEST_TIMEOUT} ]]; then
