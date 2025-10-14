@@ -22,7 +22,7 @@ LICENSE="CC-BY-SA-4.0 GPL-2+" # default skin & source code
 SLOT="0"
 # KEYWORDS further up
 IUSE="X aac +alsa archive bs2b cdda cddb curl +dbus doc enca
-ffmpeg flac game gnome jack ladspa libxmp +mad midi mpg123
+ffmpeg flac game gnome jack ladspa libxmp mad midi +mpg123
 musepack opus pipewire projectm pulseaudio qtmedia
 shout sid sndfile soxr +vorbis wavpack
 "
@@ -183,5 +183,6 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
+	optfeature "various plugins: input, decoder, video, visualization..." media-plugins/qmmp-plugin-pack
 	use dbus && optfeature "removable device detection" sys-fs/udisks
 }
