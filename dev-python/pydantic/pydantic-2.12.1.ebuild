@@ -175,6 +175,11 @@ distutils_enable_tests pytest
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/pydantic_core/_pydantic_core.*.so"
 
+src_unpack() {
+	pypi_src_unpack
+	cargo_src_unpack
+}
+
 src_prepare() {
 	sed -i -e '/benchmark/d' {.,"${PYDANTIC_CORE_S}"}/pyproject.toml || die
 	sed -i -e '/^strip/d' "${PYDANTIC_CORE_S}"/Cargo.toml || die
