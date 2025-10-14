@@ -24,9 +24,7 @@ else
 	MY_PV="${MY_PV/_rc/-rc}"
 	SRC_URI="https://github.com/capstone-engine/capstone/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${MY_PV}"
-	if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-	fi
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="BSD"
