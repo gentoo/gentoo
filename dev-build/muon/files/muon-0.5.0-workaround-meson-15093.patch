@@ -1,0 +1,28 @@
+Workaround for a meson bug: https://github.com/mesonbuild/meson/issues/15093
+
+diff --git i/tests/project/meson.build w/tests/project/meson.build
+index f409198d..b582d83b 100644
+--- i/tests/project/meson.build
++++ w/tests/project/meson.build
+@@ -45,7 +45,7 @@ foreach t : tests
+     endif
+
+     test_source = props.get('source_root', meson.current_source_dir()) / name
+-    kwargs = props.get('kwargs', {})
++    kwargs = props.get('kwargs_', {})
+     suites = ['project', name.split('/')[0]]
+
+     # skip objc tests on non darwin platforms
+diff --git i/subprojects/meson-tests/meson.build w/subprojects/meson-tests/meson.build
+index 861e57b..eb540a2 100644
+--- i/subprojects/meson-tests/meson.build
++++ w/subprojects/meson-tests/meson.build
+@@ -252,7 +252,7 @@ foreach t : [
+     ['common/235 invalid standard overridden to valid'],
+     [
+         'common/236 proper args splitting',
+-        {'kwargs': {'env': {'CFLAGS': '-DFOO -DBAR'}}},
++        {'kwargs_': {'env': {'CFLAGS': '-DFOO -DBAR'}}},
+     ],
+     ['common/237 fstrings'],
+     ['common/238 dependency include_type inconsistency'],
