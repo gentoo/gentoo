@@ -41,6 +41,9 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	__bswap_16
 	__bswap_32
 	__bswap_64
+
+	# has fallback code to handle this missing on musl
+	stdc_leading_zeros
 )
 
 # [fonts note] doc/psfonts.ph defines ordered list of font preference.
@@ -60,6 +63,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.15-bsd-cp-doc.patch
+	"${FILESDIR}"/${P}-musl.patch # merged upstream
 )
 
 src_prepare() {
