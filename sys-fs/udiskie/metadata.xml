@@ -9,4 +9,7 @@
 		<remote-id type="pypi">udiskie</remote-id>
 		<remote-id type="github">coldfix/udiskie</remote-id>
 	</upstream>
+	<use>
+		<flag name="autostart">Enable XDG-compatible autostart of udiskie</flag>
+	</use>
 </pkgmetadata>
