@@ -47,7 +47,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/tar-1.34-r2
 	$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 	app-alternatives/yacc
 	app-alternatives/lex
@@ -196,6 +196,9 @@ src_prepare() {
 
 	# The code likes to compile local assembly files which lack ELF markings.
 	find -name '*.S' -exec sed -i '$a.section .note.GNU-stack,"",%progbits' {} +
+
+	# capstone-6 compatibility (#964350)
+	append-flags -DCAPSTONE_AARCH64_COMPAT_HEADER -DCAPSTONE_SYSTEMZ_COMPAT_HEADER
 }
 
 puse() { usex $1 "" 1; }
