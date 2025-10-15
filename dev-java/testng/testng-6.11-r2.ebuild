@@ -4,20 +4,20 @@
 EAPI=8
 
 JAVA_PKG_IUSE="doc source test"
-MAVEN_ID="org.testng:testng:6.11"
 JAVA_TESTING_FRAMEWORKS="testng"
+MAVEN_ID="org.testng:testng:6.11"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Testing framework inspired by JUnit and NUnit with new features"
 HOMEPAGE="https://testng.org/"
-# Presently we install the binary version of jquery since it is not packaged in ::gentoo.
-JQV="3.5.1"
 # Currently we bundle the binary versions of spock-core, groovy-all and apache-groovy-binary.
 # These are used only for tests, we don't install them.
-SCV="1.0-groovy-2.4"
-GAV="2.4.7"
 AGV="2.4.21"
+GAV="2.4.7"
+# Presently we install the binary version of jquery since it is not packaged in ::gentoo.
+JQV="3.5.1"
+SCV="1.0-groovy-2.4"
 SRC_URI="https://github.com/testng-team/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://repo1.maven.org/maven2/org/webjars/jquery/${JQV}/jquery-${JQV}.jar
 	test? (
@@ -52,8 +52,6 @@ DEPEND="${CP_DEPEND}
 
 RDEPEND="${CP_DEPEND}
 	>=virtual/jre-1.8:*"
-
-BDEPEND="app-arch/unzip"
 
 DOCS=( README {ANNOUNCEMENT,CHANGES}.txt )
 
