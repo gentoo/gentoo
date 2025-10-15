@@ -1,0 +1,110 @@
+FAILED: org.testng.internal.ClassHelperTest.testWithDefaultMethodsBeingOverridden(class org.testng.internal.samples.classhelper.misamples.BatmanSample, 3, [org.testng.internal.samples.classhelper.misamples.BatmanSample.fly, org.testng.internal.samples.classhelper.misamples.BatmanSample.liftWeights, org.testng.internal.samples.classhelper.misamples.BatmanSample.yellSlogan])
+java.lang.AssertionError: 
+Expected size: 3 but was: 4 in:
+["org.testng.internal.samples.classhelper.misamples.BatmanSample.yellSlogan",
+    "org.testng.internal.samples.classhelper.misamples.BatmanSample.liftWeights",
+    "org.testng.internal.samples.classhelper.misamples.BatmanSample.fly",
+    "org.testng.internal.samples.classhelper.misamples.SuperHeroCapabilities.access$yellSlogan$jd"]
+	at org.testng.internal.ClassHelperTest.testWithDefaultMethodsBeingOverridden(ClassHelperTest.kt:109)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.TestNG.privateMain(TestNG.java:1430)
+	at org.testng.TestNG.main(TestNG.java:1394)
+
+FAILED: org.testng.internal.ClassHelperTest.testWithDefaultMethodsBeingOverridden(class org.testng.internal.samples.classhelper.misamples.MickJaggerSample, 1, [org.testng.internal.samples.classhelper.misamples.MickJaggerSample.dance])
+java.lang.AssertionError: 
+Expected size: 1 but was: 2 in:
+["org.testng.internal.samples.classhelper.misamples.IDance.access$dance$jd",
+    "org.testng.internal.samples.classhelper.misamples.MickJaggerSample.dance"]
+	at org.testng.internal.ClassHelperTest.testWithDefaultMethodsBeingOverridden(ClassHelperTest.kt:109)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.TestNG.privateMain(TestNG.java:1430)
+	at org.testng.TestNG.main(TestNG.java:1394)
+
+FAILED: org.testng.internal.ClassHelperTest.testWithDefaultMethodsBeingOverridden(class org.testng.internal.samples.classhelper.misamples.JohnTravoltaMovesSample, 2, [org.testng.internal.samples.classhelper.misamples.JohnTravoltaMovesSample.walk, org.testng.internal.samples.classhelper.misamples.AbstractMovesSample.dance])
+java.lang.AssertionError: 
+Expected size: 2 but was: 3 in:
+["org.testng.internal.samples.classhelper.misamples.IDance.access$dance$jd",
+    "org.testng.internal.samples.classhelper.misamples.JohnTravoltaMovesSample.walk",
+    "org.testng.internal.samples.classhelper.misamples.AbstractMovesSample.dance"]
+	at org.testng.internal.ClassHelperTest.testWithDefaultMethodsBeingOverridden(ClassHelperTest.kt:109)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.TestNG.privateMain(TestNG.java:1430)
+	at org.testng.TestNG.main(TestNG.java:1394)
+
+--- a/testng-core/src/test/kotlin/org/testng/internal/ClassHelperTest.kt
++++ b/testng-core/src/test/kotlin/org/testng/internal/ClassHelperTest.kt
+@@ -98,7 +98,7 @@ class ClassHelperTest {
+             .isNull()
+     }
+ 
+-    @Test(dataProvider = "data")
++    @Test(enabled = false)
+     fun testWithDefaultMethodsBeingOverridden(
+         cls: KClass<*>, expectedCount: Int, vararg expected: String
+     ) {

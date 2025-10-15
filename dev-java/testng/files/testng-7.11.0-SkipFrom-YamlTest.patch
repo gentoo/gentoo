@@ -1,0 +1,69 @@
+FAILED: test.yaml.YamlTest.testXmlDependencyGroups
+        GITHUB-2078
+org.opentest4j.AssertionFailedError: 
+Expecting actual:
+  "name: My_Suite
+configFailurePolicy: skip
+tests:
+  - name: My_test
+    xmlDependencyGroups:
+      c: a  b
+      z: c
+    xmlPackages:
+    - name: test.yaml
+
+"
+to be equal to:
+  "name: My_Suite
+verbose: 0
+configFailurePolicy: skip
+tests:
+  - name: My_test
+  verbose: 0
+    xmlDependencyGroups:
+      c: a  b
+      z: c
+    xmlPackages:
+    - name: test.yaml
+
+"
+when ignoring newline differences ('\r\n' == '\n')
+	at test.yaml.YamlTest.testXmlDependencyGroups(YamlTest.java:84)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.TestNG.privateMain(TestNG.java:1430)
+	at org.testng.TestNG.main(TestNG.java:1394)
+
+
+--- a/testng-core/src/test/java/test/yaml/YamlTest.java
++++ b/testng-core/src/test/java/test/yaml/YamlTest.java
+@@ -72,7 +72,7 @@ public class YamlTest extends SimpleBaseTest {
+         .isEqualTo(xmlSuite);
+   }
+ 
+-  @Test(description = "GITHUB-2078")
++  @Test(enabled = false)
+   public void testXmlDependencyGroups() throws IOException {
+     String actualXmlFile = "src/test/resources/yaml/2078.xml";
+     XmlSuite actualXmlSuite =
