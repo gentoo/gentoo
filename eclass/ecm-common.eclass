@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm-common.eclass
@@ -133,7 +133,10 @@ fi
 
 DESCRIPTION="Common files for ${PN/-common/}"
 
-BDEPEND=">=kde-frameworks/extra-cmake-modules-${KFMIN}:*"
+BDEPEND="
+	>=dev-build/cmake-3.31.9-r1
+	>=kde-frameworks/extra-cmake-modules-${KFMIN}:*
+"
 
 case ${ECM_I18N} in
 	true)
@@ -185,7 +188,7 @@ fi
 # Create a CMakeLists.txt file with minimum ECM setup.
 _ecm-common_preamble() {
 	cat > CMakeLists.txt <<- _EOF_ || die
-		cmake_minimum_required(VERSION 3.16)
+		cmake_minimum_required(VERSION 3.31)
 		project(${PN} VERSION ${PV})
 
 		find_package(ECM "${KFMIN}" REQUIRED NO_MODULE)
