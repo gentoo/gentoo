@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=hatchling
 # no provenance for pydantic-core:
 # https://github.com/pydantic/pydantic-core/issues/1842
 PYPI_VERIFY_REPO=https://github.com/pydantic/pydantic
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 PYDANTIC_CORE_PV=2.41.4
 RUST_MIN_VER="1.75.0"
