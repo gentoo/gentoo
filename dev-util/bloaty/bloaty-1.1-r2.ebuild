@@ -32,6 +32,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1-system-abseil.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBLOATY_ENABLE_CMAKETARGETS=OFF
