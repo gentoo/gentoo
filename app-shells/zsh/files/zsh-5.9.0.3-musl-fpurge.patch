@@ -1,0 +1,53 @@
+From 31d360646d7c1866a6ca1ee4b452b2c19940d028 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 15 Oct 2025 14:26:43 -0400
+Subject: [PATCH] Check for fpurge declaration
+
+musl libc defines fpurge, but does not declare it in stdio.h.
+It seems to be unnecessary to call fpurge on musl.
+
+Bug: https://bugs.gentoo.org/963567
+---
+ Src/utils.c  | 2 +-
+ configure.ac | 5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/Src/utils.c b/Src/utils.c
+index 4ea7b8e93..5e41b712b 100644
+--- a/Src/utils.c
++++ b/Src/utils.c
+@@ -2022,7 +2022,7 @@ redup(int x, int y)
+ {
+     int ret = y;
+ 
+-#ifdef HAVE_FPURGE
++#if HAVE_DECL_FPURGE
+     /* Make sure buffers are cleared when changing descriptor for a
+      * FILE object.  No fflush() here because the only way anything
+      * can legitimately be left in the buffer is when an error has
+diff --git a/configure.ac b/configure.ac
+index 13895bb1d..1f035bc0d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1250,7 +1250,7 @@ AC_CHECK_FUNCS(strftime strptime mktime timelocal \
+ 	       select poll \
+ 	       readlink faccessx fchdir ftruncate \
+ 	       fstat lstat lchown fchown fchmod \
+-	       fpurge fseeko ftello \
++	       fseeko ftello \
+ 	       mkfifo _mktemp mkstemp \
+ 	       waitpid wait3 \
+ 	       sigqueue \
+@@ -1292,6 +1292,9 @@ AC_CHECK_FUNCS(strftime strptime mktime timelocal \
+ 	       setutxent getutxent endutxent getutent)
+ AC_FUNC_STRCOLL
+ 
++# fpurge exists on musl, but is undeclared in stdio.h and isn't actually required
++AC_CHECK_DECLS([fpurge])
++
+ # isinf() and isnan() can exist as either functions or macros.
+ AH_TEMPLATE([HAVE_ISINF],
+   [Define to 1 if you have the `isinf' macro or function.])
+-- 
+2.51.0
+

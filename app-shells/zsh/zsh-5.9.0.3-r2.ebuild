@@ -55,8 +55,7 @@ fi
 PATCHES=(
 	# Add openrc specific options for init.d completion
 	"${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
-
-	"${FILESDIR}"/zsh-5.9.0.3-Use-__fpurge-when-fpurge-is-undeclared.patch
+	"${FILESDIR}"/zsh-5.9.0.3-musl-fpurge.patch
 )
 
 src_prepare() {
