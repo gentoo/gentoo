@@ -7,9 +7,9 @@ EGIT_REPO_URI="https://github.com/MaskRay/${PN}"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
-	LLVM_COMPAT=( {18..20} )
+	LLVM_COMPAT=( {18..21} )
 else
-	LLVM_COMPAT=( {18..20} )
+	LLVM_COMPAT=( {18..21} )
 fi
 
 inherit cmake llvm-r1 ${GIT_ECLASS}
