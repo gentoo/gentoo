@@ -26,6 +26,7 @@ SLOT="0"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/capstone-5.0.1[python,${PYTHON_USEDEP}]
+	<dev-libs/capstone-6[python,${PYTHON_USEDEP}]
 "
 
 python_test() {
