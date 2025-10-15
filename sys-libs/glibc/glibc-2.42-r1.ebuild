@@ -952,7 +952,9 @@ src_unpack() {
 		[[ ${PV} == *.*.9999 ]] && EGIT_BRANCH=release/${PV%.*}/master
 		git-r3_src_unpack
 	else
-		verify-sig_verify_detached "${DISTDIR}/${P}.tar.xz" "${DISTDIR}/${P}.tar.xz.sig"
+		if use verify-sig; then
+			verify-sig_verify_detached "${DISTDIR}/${P}.tar.xz" "${DISTDIR}/${P}.tar.xz.sig"
+		fi
 		unpack ${P}.tar.xz
 
 		cd "${WORKDIR}" || die
