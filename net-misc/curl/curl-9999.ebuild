@@ -123,7 +123,7 @@ RDEPEND="
 		)
 		mbedtls? (
 			app-misc/ca-certificates
-			net-libs/mbedtls:0=[${MULTILIB_USEDEP}]
+			net-libs/mbedtls:3=[${MULTILIB_USEDEP}]
 		)
 		openssl? (
 			>=dev-libs/openssl-1.0.2:=[static-libs?,${MULTILIB_USEDEP}]
