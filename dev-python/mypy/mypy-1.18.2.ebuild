@@ -64,6 +64,12 @@ src_prepare() {
 
 	# don't force pytest-xdist, in case user asked for EPYTEST_JOBS=1
 	sed -i -e '/addopts/s:-nauto::' pyproject.toml || die
+
+	# https://github.com/python/mypy/issues/20070
+	if has_version ">=dev-libs/libxml2-2.15"; then
+		sed -e 's:<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">:<meta charset="UTF-8">:' \
+			-i test-data/unit/reports.test || die
+	fi
 }
 
 python_compile() {
