@@ -35,7 +35,18 @@ BDEPEND="
 		dev-python/colorama[${PYTHON_USEDEP}]
 	)
 "
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	# combined upstream test fixes:
+	# https://github.com/psf/black/pull/4577
+	# https://github.com/psf/black/pull/4591
+	# https://github.com/psf/black/pull/4666
+	# https://github.com/psf/black/pull/4690
+	"${FILESDIR}/${P}-test.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=()
@@ -50,7 +61,6 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
 

@@ -1,0 +1,130 @@
+diff --git a/tests/data/cases/pep_701.py b/tests/data/cases/pep_701.py
+index 9acee95..6f86988 100644
+--- a/tests/data/cases/pep_701.py
++++ b/tests/data/cases/pep_701.py
+@@ -74,9 +74,9 @@
+ x = f"a{2+2:=^{foo(x+y**2):something else}one more}b"
+ f'{(abc:=10)}'
+ 
+-f"This is a really long string, but just make sure that you reflow fstrings {
++f"""This is a really long string, but just make sure that you reflow fstrings {
+     2+2:d
+-}"
++}"""
+ f"This is a really long string, but just make sure that you reflow fstrings correctly {2+2:d}"
+ 
+ f"{2+2=}"
+@@ -213,9 +213,9 @@
+ x = f"a{2+2:=^{foo(x+y**2):something else}one more}b"
+ f"{(abc:=10)}"
+ 
+-f"This is a really long string, but just make sure that you reflow fstrings {
++f"""This is a really long string, but just make sure that you reflow fstrings {
+     2+2:d
+-}"
++}"""
+ f"This is a really long string, but just make sure that you reflow fstrings correctly {2+2:d}"
+ 
+ f"{2+2=}"
+diff --git a/tests/test_black.py b/tests/test_black.py
+index 31bc34d..f7a68aa 100644
+--- a/tests/test_black.py
++++ b/tests/test_black.py
+@@ -14,6 +14,7 @@
+ from concurrent.futures import ThreadPoolExecutor
+ from contextlib import contextmanager, redirect_stderr
+ from dataclasses import fields, replace
++from importlib.metadata import version as imp_version
+ from io import BytesIO
+ from pathlib import Path, WindowsPath
+ from platform import system
+@@ -25,6 +26,7 @@
+ import pytest
+ from click import unstyle
+ from click.testing import CliRunner
++from packaging.version import Version
+ from pathspec import PathSpec
+ 
+ import black
+@@ -114,7 +116,10 @@ class BlackRunner(CliRunner):
+     """Make sure STDOUT and STDERR are kept separate when testing Black via its CLI."""
+ 
+     def __init__(self) -> None:
+-        super().__init__(mix_stderr=False)
++        if Version(imp_version("click")) >= Version("8.2.0"):
++            super().__init__()
++        else:
++            super().__init__(mix_stderr=False)
+ 
+ 
+ def invokeBlack(
+@@ -187,10 +192,10 @@ def test_piping(self) -> None:
+             input=BytesIO(source.encode("utf-8")),
+         )
+         self.assertEqual(result.exit_code, 0)
+-        self.assertFormatEqual(expected, result.output)
+-        if source != result.output:
+-            black.assert_equivalent(source, result.output)
+-            black.assert_stable(source, result.output, DEFAULT_MODE)
++        self.assertFormatEqual(expected, result.stdout)
++        if source != result.stdout:
++            black.assert_equivalent(source, result.stdout)
++            black.assert_stable(source, result.stdout, DEFAULT_MODE)
+ 
+     def test_piping_diff(self) -> None:
+         diff_header = re.compile(
+@@ -210,7 +215,7 @@ def test_piping_diff(self) -> None:
+             black.main, args, input=BytesIO(source.encode("utf-8"))
+         )
+         self.assertEqual(result.exit_code, 0)
+-        actual = diff_header.sub(DETERMINISTIC_HEADER, result.output)
++        actual = diff_header.sub(DETERMINISTIC_HEADER, result.stdout)
+         actual = actual.rstrip() + "\n"  # the diff output has a trailing space
+         self.assertEqual(expected, actual)
+ 
+@@ -295,7 +300,7 @@ def test_expression_diff(self) -> None:
+             self.assertEqual(result.exit_code, 0)
+         finally:
+             os.unlink(tmp_file)
+-        actual = result.output
++        actual = result.stdout
+         actual = diff_header.sub(DETERMINISTIC_HEADER, actual)
+         if expected != actual:
+             dump = black.dump_to_file(actual)
+@@ -404,7 +409,7 @@ def test_skip_magic_trailing_comma(self) -> None:
+             self.assertEqual(result.exit_code, 0)
+         finally:
+             os.unlink(tmp_file)
+-        actual = result.output
++        actual = result.stdout
+         actual = diff_header.sub(DETERMINISTIC_HEADER, actual)
+         actual = actual.rstrip() + "\n"  # the diff output has a trailing space
+         if expected != actual:
+@@ -1826,7 +1831,7 @@ def test_bpo_2142_workaround(self) -> None:
+             self.assertEqual(result.exit_code, 0)
+         finally:
+             os.unlink(tmp_file)
+-        actual = result.output
++        actual = result.stdout
+         actual = diff_header.sub(DETERMINISTIC_HEADER, actual)
+         self.assertEqual(actual, expected)
+ 
+@@ -1836,7 +1841,7 @@ def compare_results(
+     ) -> None:
+         """Helper method to test the value and exit code of a click Result."""
+         assert (
+-            result.output == expected_value
++            result.stdout == expected_value
+         ), "The output did not match the expected value."
+         assert result.exit_code == expected_exit_code, "The exit code is incorrect."
+ 
+@@ -1913,7 +1918,8 @@ def test_code_option_safe(self) -> None:
+             args = ["--safe", "--code", code]
+             result = CliRunner().invoke(black.main, args)
+ 
+-            self.compare_results(result, error_msg, 123)
++            assert error_msg == result.output
++            assert result.exit_code == 123
+ 
+     def test_code_option_fast(self) -> None:
+         """Test that the code option ignores errors when the sanity checks fail."""
