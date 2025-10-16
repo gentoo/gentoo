@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-16)
+# media-libs/opencv is not keyworded here
+opencv
+
 # Michał Górny <mgorny@gentoo.org> (2025-04-13)
 # Converted to global mask.
 #
