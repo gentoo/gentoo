@@ -21,7 +21,7 @@ case ${PV} in
 		# Set a negative patchlevel to indicate that it's a pre-release.
 		PLEVEL=-1
 		if [[ ${PV} =~ _pre[0-9]{8}$ ]]; then
-			BASH_COMMIT=
+			BASH_COMMIT="2a645237d3a0de3c758cd0df322973ce9446b94f"
 		fi
 		;;
 	*_p*)
