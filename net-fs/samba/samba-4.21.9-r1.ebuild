@@ -57,9 +57,9 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/ctdb_version.h
 )
 
-TALLOC_VERSION="2.4.3"
-TDB_VERSION="1.4.13"
-TEVENT_VERSION="0.16.2"
+TALLOC_VERSION="2.4.2"
+TDB_VERSION="1.4.12"
+TEVENT_VERSION="0.16.1"
 
 COMMON_DEPEND="
 	>=app-arch/libarchive-3.1.2:=[${MULTILIB_USEDEP}]
@@ -87,9 +87,12 @@ COMMON_DEPEND="
 			dev-python/cryptography[${PYTHON_USEDEP}]
 			dev-python/dnspython:=[${PYTHON_USEDEP}]
 			dev-python/markdown[${PYTHON_USEDEP}]
+			net-dns/bind[gssapi]
 		)
 		ads? (
+			dev-python/cryptography[${PYTHON_USEDEP}]
 			dev-python/dnspython:=[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 			net-dns/bind[gssapi]
 		)
 	')
