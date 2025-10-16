@@ -45,7 +45,8 @@ UNICORN_TARGETS="x86 arm aarch64 riscv mips sparc m68k ppc s390x tricore"
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.3-strings.patch
+	"${FILESDIR}/${P}-strings.patch"
+	"${FILESDIR}/${P}-delay_slot_flag.patch"
 )
 
 wrap_python() {
