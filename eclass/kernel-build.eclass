@@ -113,10 +113,10 @@ IUSE="+strip"
 # empty, then the contents are used as the first kernel cmdline
 # option of the multi-profile generic UKI. Supplementing the four
 # standard options of:
-# - root=/dev/gpt-auto-root ro
-# - root=/dev/gpt-auto-root ro quiet splash
-# - root=/dev/gpt-auto-root ro lockdown=integrity
-# - root=/dev/gpt-auto-root ro quiet splash lockdown=integrity
+# - ro
+# - ro quiet splash
+# - ro lockdown=integrity
+# - ro quiet splash lockdown=integrity
 
 if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
 	IUSE+=" modules-sign"
@@ -581,10 +581,10 @@ kernel-build_src_install() {
 			)
 
 			cmdlines+=(
-				"root=/dev/gpt-auto-root ro"
-				"root=/dev/gpt-auto-root ro quiet splash"
-				"root=/dev/gpt-auto-root ro lockdown=integrity"
-				"root=/dev/gpt-auto-root ro quiet splash lockdown=integrity"
+				"ro"
+				"ro quiet splash"
+				"ro lockdown=integrity"
+				"ro quiet splash lockdown=integrity"
 			)
 
 			local ukify_args=(
