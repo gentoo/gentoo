@@ -547,7 +547,10 @@ src_install() {
 		_EOF_
 	fi
 	dosym -r "/usr/$(get_libdir)/${PN}/bin/FreeCADCmd" "/usr/bin/FreeCADCmd"
-	dosym -r "/usr/$(get_libdir)/${PN}/bin/freecad-thumbnailer" "/usr/bin/freecad-thumbnailer"
+
+	if [[ -f src/Tools/freecad-thumbnailer ]]; then
+		dobin src/Tools/freecad-thumbnailer
+	fi
 
 	for dir in share/{applications,icons,metainfo,mime,pixmaps,thumbnailers}; do
 		mv "${ED}/usr/$(get_libdir)/${PN}/${dir}" "${ED}/usr/share/" || die "mv failed"
