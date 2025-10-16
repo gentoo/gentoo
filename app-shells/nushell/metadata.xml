@@ -20,6 +20,7 @@
 		<remote-id type="github">nushell/nushell</remote-id>
 	</upstream>
 	<use>
+		<flag name="mcp">Build MCP server</flag>
 		<flag name="plugins">Build official plugins</flag>
 		<flag name="system-clipboard">System clipboard support in `reedline`</flag>
 	</use>
