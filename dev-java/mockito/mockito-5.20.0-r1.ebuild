@@ -18,6 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
+	>=dev-java/apiguardian-api-1.1.2-r1:0
 	>=dev-java/asm-9.8-r1:0
 	>=dev-java/byte-buddy-1.17.7:0
 	>=dev-java/hamcrest-3.0:0
@@ -39,13 +40,14 @@ DEPEND="
 #   symbol:   class var
 RDEPEND=">=virtual/jre-11:*"
 
-JAVA_CLASSPATH_EXTRA="asm byte-buddy hamcrest jna jsr305 junit-5 objenesis opentest4j"
+JAVA_CLASSPATH_EXTRA="apiguardian-api asm byte-buddy hamcrest jna jsr305 objenesis opentest4j"
 JAVA_TEST_SRC_DIR="mockito-core/src/test/java"
 
 src_prepare() {
 	java-pkg-2_src_prepare
-	# junit:4 --with-dependencies seems to pull another hamcrest into classpath.
+	# prevent junit:{4,5} to pull hamcrest-core on classpath
 	JAVA_GENTOO_CLASSPATH_EXTRA=":$(java-pkg_getjars --build-only junit-4)"
+	JAVA_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjars --build-only junit-5)"
 
 	# dev-java/byte-buddy is built from byte-buddy-dep without shaded stuff.
 	sed \
