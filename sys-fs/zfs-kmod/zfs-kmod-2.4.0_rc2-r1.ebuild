@@ -8,6 +8,5 @@ HOMEPAGE="https://github.com/openzfs/zfs"
 
 LICENSE="CDDL MIT"
 SLOT="0/${PVR}"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~sparc"
 
 RDEPEND=">=sys-fs/zfs-2.4.0_rc2-r1"
