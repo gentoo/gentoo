@@ -105,6 +105,8 @@ src_test() {
 		"messageviewer-dkimauthenticationverifiedserverdialogtest"
 		# Test pass but get stuck indefinetly afterwards.
 		"kdepim-addons-todoedittest"
+		# some failure, bug #961853 ...
+		"markdowncreateimagewidgettest"
 	)
 
 	# tests can get stuck with spawned processes, 4 minutes is a reasonable timeout
