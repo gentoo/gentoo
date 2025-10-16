@@ -16,8 +16,7 @@ SRC_URI="
 
 LICENSE="BSD-2 BSD"
 SLOT="5"
-# https://github.com/Python-SIP/sip/issues/95
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 RDEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
@@ -33,6 +32,10 @@ distutils_enable_sphinx docs \
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-pyqt5.patch
+)
 
 python_test() {
 	# some tests currently fails to find test/utils without this
