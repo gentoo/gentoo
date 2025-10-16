@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Joonas Niilola <juippis@gentoo.org> (2025-10-16)
-# Firefox and Thunderbird 144.0, built with gcc can crash. While it is
-# being investigated, it's safer to just force everyone to compile
-# with clang meanwhile. #964368 for details and discussion.
+# Firefox and Thunderbird 144.0, when built with gcc, is prone to
+# crashing randomly. While it is being investigated, it's safer to
+# force compilation with clang in the meantime. #964368 for details
+# and discussion.
 >=mail-client/thunderbird-144.0 clang
 >=www-client/firefox-144.0 clang
 
