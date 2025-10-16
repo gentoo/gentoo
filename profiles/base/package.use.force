@@ -61,10 +61,6 @@ app-emulation/wine-proton mingw
 # for now (bug #952113)
 <dev-libs/xmlrpc-c-1.59.03-r2 libxml2
 
-# Joonas Niilola <juippis@gentoo.org> (2025-03-05)
-# 136.0 can't be compiled with "-rust-extensions".
-~mail-client/thunderbird-136.0 rust-extensions
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-12-24)
 # ebuild currently only support luajit, spare users from having
 # to set it by forcing it here (bug #946881)
