@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.2.3-cmake-4.patch
+	"${FILESDIR}"/${PN}-4.2.3-boost-1.89.patch
 )
 
 src_prepare() {

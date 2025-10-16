@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/963777
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -105,7 +105,7 @@ SET (Boost_DEBUG FALSE)
+ SET (Boost_USE_MULTITHREADED ${BOOST_MULTITHREADED_BUILD})
+ SET (Boost_USE_STATIC_LIBS ${BOOST_STATIC_BUILD})
+ 
+-FIND_PACKAGE(Boost COMPONENTS filesystem regex date_time thread system)
++FIND_PACKAGE(Boost COMPONENTS filesystem regex date_time thread OPTIONAL_COMPONENTS system)
+ 
+ if(Boost_FOUND)
+   INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
