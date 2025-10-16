@@ -23,7 +23,7 @@ COMMON_DEPEND="dev-cpp/atkmm:0
 	dev-libs/glib:2
 	dev-libs/libconfig:=[cxx]
 	dev-libs/libsigc++:2
-	dev-libs/libxml2:2
+	dev-libs/libxml2:2=
 	>=media-libs/libnsgif-1.0.0:=
 	media-plugins/gst-plugins-gtk
 	net-misc/curl
