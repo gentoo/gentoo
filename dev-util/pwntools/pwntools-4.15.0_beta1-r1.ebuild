@@ -29,6 +29,7 @@ RDEPEND="
 	>=dev-libs/capstone-3.0.5[python,${PYTHON_USEDEP}]
 	>=dev-util/ROPgadget-5.3[${PYTHON_USEDEP}]
 	>=dev-util/unicorn-1.0.2[python,${PYTHON_USEDEP}]
+	!=dev-util/unicorn-2.1.4-r0[python,${PYTHON_USEDEP}]
 	dev-python/colored-traceback[${PYTHON_USEDEP}]
 	>=dev-python/intervaltree-3.0[${PYTHON_USEDEP}]
 	>=dev-python/mako-1.0.0[${PYTHON_USEDEP}]
