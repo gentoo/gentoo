@@ -54,10 +54,6 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins gdbinit.py
 
-	# Signal pwndbg not to create it's own python venv (Bug #918705).
-	# See: https://github.com/pwndbg/pwndbg/commit/139b7542cd9567eaff32bd713df971b6ac5b81de
-	touch "${ED}/usr/share/${PN}/.skip-venv" || die
-
 	python_optimize "${ED}"/usr/share/${PN}
 
 	dodoc README.md
