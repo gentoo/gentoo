@@ -47,6 +47,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-6.17.0-musl.patch # bug #963708
 	"${FILESDIR}"/${PN}-6.10.0-musl-2.patch # bug #926341
 	"${FILESDIR}"/${PN}-6.9.0-mtu.patch # bug #291907
 	"${FILESDIR}"/${PN}-6.8.0-configure-nomagic-nolibbsd.patch # bug #643722 & #911727
