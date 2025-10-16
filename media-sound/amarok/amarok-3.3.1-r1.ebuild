@@ -23,7 +23,6 @@ IUSE="ipod lastfm mariadb mtp podcast webengine X"
 
 # ipod requires gdk enabled and also gtk compiled in libgpod
 DEPEND="
-	>=app-crypt/qca-2.3.9:2[qt6(+)]
 	dev-libs/glib:2
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,sql,widgets,xml]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
