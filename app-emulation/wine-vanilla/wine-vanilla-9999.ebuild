@@ -6,7 +6,7 @@ EAPI=8
 inherit optfeature wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.2.0
+WINE_MONO=10.3.0
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -144,6 +144,8 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	res_getservers # false positive
 )
 QA_TEXTRELS="usr/lib/*/wine/i386-unix/*.so" # uses -fno-PIC -Wl,-z,notext
+# intentionally ignored: https://gitlab.winehq.org/wine/wine/-/commit/433c2f8c06
+QA_FLAGS_IGNORED="usr/lib/.*/wine/.*-unix/wine-preloader"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-noexecstack.patch
