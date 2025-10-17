@@ -1,9 +1,9 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-NEED_EMACS=27.1
+NEED_EMACS="29.1"
 
 inherit elisp
 
@@ -12,10 +12,12 @@ HOMEPAGE="https://github.com/minad/cape/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/minad/${PN}.git"
+
+	EGIT_REPO_URI="https://github.com/minad/${PN}"
 else
 	SRC_URI="https://github.com/minad/${PN}/archive/refs/tags/${PV}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${P}.gh.tar.gz"
+
 	KEYWORDS="~amd64"
 fi
 
@@ -23,7 +25,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	>=app-emacs/compat-29.1.4.0
+	app-emacs/compat
 "
 DEPEND="
 	${RDEPEND}
