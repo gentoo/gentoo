@@ -3,7 +3,7 @@
 
 EAPI=8
 
-NEED_EMACS="28.1"
+NEED_EMACS="29.1"
 
 inherit elisp
 
@@ -25,13 +25,13 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
-	>=app-emacs/compat-30.1.0.0
+	app-emacs/compat
 "
 BDEPEND="
 	${RDEPEND}
 "
 
-DOCS=( README.org )
+DOCS=( CHANGELOG.org README.org )
 SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
