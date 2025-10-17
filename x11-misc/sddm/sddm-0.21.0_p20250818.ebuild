@@ -58,6 +58,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.20.0-respect-user-flags.patch"
 	"${FILESDIR}/${PN}-0.21.0_p20250310-Xsession-xinitrc.patch" # bug 611210
 	"${FILESDIR}/${PN}-0.21.0_p20250310-set-XAUTHLOCALHOSTNAME.patch" # bug 913862, thx opensuse
+	"${FILESDIR}/${P}-cmake-minreqver-3.16.patch" # bug 964439
 )
 
 pkg_setup() {
