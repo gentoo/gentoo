@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,21 +11,27 @@ HOMEPAGE="https://www.gnu.org/software/emms/
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emms.git"
+
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/emms"
 else
 	SRC_URI="https://git.savannah.gnu.org/cgit/emms.git/snapshot/${P}.tar.gz"
+
 	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
 
-RDEPEND="media-libs/taglib:="
-DEPEND="${RDEPEND}"
+# NOTE: EMMS can use almost anything for playing media files therefore
+# the dependency possibilities are so broad that we refrain from setting
+# anything explicitly in DEPEND/RDEPEND.
 
-# EMMS can use almost anything for playing media files therefore the dependency
-# possibilities are so broad that we refrain from setting anything explicitly
-# in DEPEND/RDEPEND.
+RDEPEND="
+	media-libs/taglib:=
+"
+DEPEND="
+	${RDEPEND}
+"
 
 DOCS=( AUTHORS NEWS README )
 SITEFILE="50${PN}-gentoo.el"
