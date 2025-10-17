@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Robert Siebeck <gentoo.2019@r123.de> (2025-10-17)
+# Binary compiled against glibc
+# Bug #964371
+net-im/signal-desktop-bin
+
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-08)
 # Binary bazel is compiled against glibc
 >=app-i18n/mozc-2.31.5851.102
