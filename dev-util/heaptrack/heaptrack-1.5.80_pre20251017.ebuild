@@ -3,6 +3,7 @@
 
 EAPI=8
 
+KDE_ORG_COMMIT=f813c68d2ca89989334734f2183598ee2f8aa1b5
 inherit cmake kde.org xdg
 
 DESCRIPTION="Fast heap memory profiler"
@@ -11,7 +12,7 @@ https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="+gui test zstd"
 
 RESTRICT="!test? ( test )"
