@@ -19,9 +19,11 @@ IUSE="+introspection test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
 
+# <pygobject-3.52: bug 957940
 RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.40.0:2
+	<dev-python/pygobject-3.52[${PYTHON_USEDEP}]
 	>=media-libs/gstreamer-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-bad-${PV}:1.0[introspection?]
