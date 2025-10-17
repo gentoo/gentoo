@@ -16,7 +16,6 @@
 	<use>
 		<flag name="devtools">Install development tools like
 			bsatool, esmtool and opencs.</flag>
-		<flag name="osg-fork">Use OpenSceneGraph forked by OpenMW instead of upstream OSG.</flag>
 	</use>
 	<upstream>
 		<changelog>https://github.com/OpenMW/openmw/releases</changelog>

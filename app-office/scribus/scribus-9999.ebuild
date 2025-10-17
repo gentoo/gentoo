@@ -58,7 +58,7 @@ DEPEND="${PYTHON_DEPS}
 	x11-libs/libxcb
 	boost? ( dev-libs/boost:= )
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
-	osg? ( dev-games/openscenegraph:= )
+	osg? ( dev-games/openscenegraph-openmw:= )
 	pdf? ( app-text/podofo:0= )
 	scripts? (
 		$(python_gen_cond_dep '

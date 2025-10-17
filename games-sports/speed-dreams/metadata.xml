@@ -6,7 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="osggraph">Enable the new work-in-progress 3D engine using <pkg>dev-games/openscenegraph</pkg></flag>
+		<flag name="osg">Enable the new work-in-progress 3D engine using <pkg>dev-games/openscenegraph-openmw</pkg></flag>
 		<flag name="webstats">Enable support for sending racing statistics to a web server (experimental)</flag>
 	</use>
 	<upstream>
