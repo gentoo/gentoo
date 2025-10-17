@@ -23,6 +23,7 @@ RDEPEND="
 	sasl?	( dev-libs/cyrus-sasl )
 	ssl?	( >=dev-libs/openssl-0.9.6:0= )
 	zlib?	( sys-libs/zlib:0= )
+	!sci-chemistry/mdtraj
 "
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-lang/perl-5.14"
