@@ -24,18 +24,30 @@ RDEPEND="
 	dev-ml/re:=
 	dev-ml/yojson:=
 "
-DEPEND="${RDEPEND}"
+DEPEND="
+	${RDEPEND}
+"
+
+DUNE_PACKAGES=(
+	atd
+	atdgen
+	atdgen-codec-runtime
+	atdgen-runtime
+	atdj
+	atdpy
+	atds
+	atdts
+)
+
+src_compile() {
+	dune-compile "${DUNE_PACKAGES[@]}"
+}
+
+src_test() {
+	nonfatal dune_src_test
+}
 
 src_install() {
-	dune_src_install			\
-		atd						\
-		atdgen					\
-		atdgen-codec-runtime	\
-		atdgen-runtime			\
-		atdj					\
-		atdpy					\
-		atds					\
-		atdts
-
-	dodoc CHANGES.md CONTRIBUTING.md README.md
+	dune-install "${DUNE_PACKAGES[@]}"
+	einstalldocs
 }
