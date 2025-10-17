@@ -47,6 +47,8 @@ src_test() {
 		# bug 770781
 		kaboutdatatest
 		klistopenfilesjobtest_unix
+		# bug 963953
+		kpluginmetadatatest
 	)
 	# bug 619656
 	ecm_src_test -j1
