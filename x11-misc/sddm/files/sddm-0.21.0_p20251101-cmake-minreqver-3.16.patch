@@ -1,0 +1,23 @@
+From 13f0e5d63a8c8b56c753a4f0407b14998ac7a748 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 17 Oct 2025 18:25:17 +0200
+Subject: [PATCH] Bump cmake_minimum_required to 3.10..3.31 range
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1b5f54a..5417b9e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10..3.31)
+ 
+ project(SDDM)
+ 
+-- 
+2.51.0
+
