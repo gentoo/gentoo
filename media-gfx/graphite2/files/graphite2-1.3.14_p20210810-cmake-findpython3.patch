@@ -1,0 +1,95 @@
+From e3e6a1d23140d3d60b11afefed20a0094efd0ed7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 17 Oct 2025 14:20:26 +0200
+Subject: [PATCH] Port PythonInterp -> Python3(REQUIRED COMPONENTS),
+ exec_program -> execute_process
+
+Use BUILD_TESTING to avoid building tests if not needed
+Requires >=CMake-3.12
+Fixes CMP0148 and CMP0153 warnings
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 20 ++++++++++----------
+ Graphite.cmake | 12 ++++++------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d670bd4d..55dac3ca 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,6 +3,5 @@
+ cmake_minimum_required(VERSION 3.16)
+ include(TestBigEndian)
+-find_package(PythonInterp 3.6)
+ project(graphite2)
+ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR})
+ if (NOT CMAKE_BUILD_TYPE)
+@@ -65,15 +64,14 @@ if (GRAPHITE2_VM_TYPE STREQUAL "direct" AND NOT (CMAKE_COMPILER_IS_GNUCXX OR CMA
+ endif()
+ message(STATUS "Using vm machine type: ${GRAPHITE2_VM_TYPE}")
+ 
+-if (BUILD_SHARED_LIBS)
+-    if (PYTHONINTERP_FOUND)
+-        EXEC_PROGRAM(${PYTHON_EXECUTABLE}
+-            ARGS -c \"import ctypes\; print(ctypes.sizeof(ctypes.c_void_p)) \"
++if (BUILD_TESTING AND BUILD_SHARED_LIBS)
++    find_package(Python3 3.6 REQUIRED COMPONENTS Interpreter)
++    if (TARGET Python3::Interpreter)
++        execute_process(COMMAND ${Python3_EXECUTABLE}
++            -c "import ctypes; print(ctypes.sizeof(ctypes.c_void_p), end=\"\")"
+             OUTPUT_VARIABLE PYTHON_SIZEOF_VOID_P)
+-        if (NOT (PYTHON_VERSION_MAJOR GREATER 2 AND PYTHON_VERSION_MINOR GREATER 5))
+-            message(WARNING "Python version 3.6 or greater required. Disabling some tests.")
+-        elseif ((PYTHON_SIZEOF_VOID_P STREQUAL CMAKE_SIZEOF_VOID_P) AND (NOT GRAPHITE2_NFILEFACE) AND ((NOT GRAPHITE2_SANITIZERS MATCHES "address") OR CMAKE_COMPILER_IS_GNUCXX))
+-            set(PYTHON_CTYPES_COMPATBILE TRUE)
++        if ((PYTHON_SIZEOF_VOID_P STREQUAL CMAKE_SIZEOF_VOID_P) AND (NOT GRAPHITE2_NFILEFACE) AND ((NOT GRAPHITE2_SANITIZERS MATCHES "address") OR CMAKE_COMPILER_IS_GNUCXX))
++            set(PYTHON_CTYPES_COMPATIBLE TRUE)
+         else ()
+             if ((NOT GRAPHITE2_SANITIZERS MATCHES "address") OR CMAKE_COMPILER_IS_GNUCXX)
+                 message(WARNING "Python ctypes is incompatible with built DLL. Disabling some tests.")
+@@ -83,7 +81,9 @@ if (BUILD_SHARED_LIBS)
+ endif()
+ 
+ add_subdirectory(src)
+-add_subdirectory(tests)
++if (BUILD_TESTING)
++    add_subdirectory(tests)
++endif()
+ add_subdirectory(doc)
+ if (NOT GRAPHITE2_NFILEFACE)
+     add_subdirectory(gr2fonttest)
+diff --git a/Graphite.cmake b/Graphite.cmake
+index 02e34903..774d2cac 100644
+--- a/Graphite.cmake
++++ b/Graphite.cmake
+@@ -83,10 +83,10 @@ function(fonttest TESTNAME FONTFILE)
+         add_test(NAME ${TESTNAME} COMMAND $<TARGET_FILE:gr2fonttest> -trace ${PROJECT_BINARY_DIR}/${TESTNAME}.json -log ${PROJECT_BINARY_DIR}/${TESTNAME}.log ${PROJECT_SOURCE_DIR}/fonts/${FONTFILE} -codes ${ARGN})
+         set_tests_properties(${TESTNAME} PROPERTIES TIMEOUT 3)
+         add_test(NAME ${TESTNAME}Output COMMAND ${CMAKE_COMMAND} -E compare_files ${PROJECT_BINARY_DIR}/${TESTNAME}.log ${PROJECT_SOURCE_DIR}/standards/${TESTNAME}${PLATFORM_TEST_SUFFIX}.log)
+-        if ((NOT GRAPHITE2_NTRACING) AND PYTHONINTERP_FOUND)
+-            add_test(NAME ${TESTNAME}Debug COMMAND ${PYTHON_EXECUTABLE} ${PROJECT_SOURCE_DIR}/jsoncmp ${PROJECT_BINARY_DIR}/${TESTNAME}.json ${PROJECT_SOURCE_DIR}/standards/${TESTNAME}.json)
++        if ((NOT GRAPHITE2_NTRACING) AND TARGET Python3::Interpreter)
++            add_test(NAME ${TESTNAME}Debug COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/jsoncmp ${PROJECT_BINARY_DIR}/${TESTNAME}.json ${PROJECT_SOURCE_DIR}/standards/${TESTNAME}.json)
+             set_tests_properties(${TESTNAME}Debug  PROPERTIES DEPENDS ${TESTNAME})
+-        endif ((NOT GRAPHITE2_NTRACING) AND PYTHONINTERP_FOUND)
++        endif ((NOT GRAPHITE2_NTRACING) AND TARGET Python3::Interpreter)
+         set_tests_properties(${TESTNAME}Output PROPERTIES DEPENDS ${TESTNAME})
+     endif (NOT GRAPHITE2_NFILEFACE)
+ endfunction(fonttest)
+@@ -109,9 +109,9 @@ function(cmptest TESTNAME FONTFILE TEXTFILE)
+     if (EXISTS ${PROJECT_SOURCE_DIR}/standards/${TESTNAME}${CMAKE_SYSTEM_NAME}.json)
+         set(PLATFORM_TEST_SUFFIX ${CMAKE_SYSTEM_NAME})
+     endif (EXISTS ${PROJECT_SOURCE_DIR}/standards/${TESTNAME}${CMAKE_SYSTEM_NAME}.json)
+-    if (PYTHON_CTYPES_COMPATBILE)
+-        add_test(NAME ${TESTNAME} COMMAND ${PYTHON_EXECUTABLE} ${PROJECT_SOURCE_DIR}/fnttxtrender --graphite_library=$<TARGET_FILE:graphite2> -t ${PROJECT_SOURCE_DIR}/texts/${TEXTFILE} -o ${PROJECT_BINARY_DIR}/${TESTNAME}.json -c ${PROJECT_SOURCE_DIR}/standards/${TESTNAME}${PLATFORM_TEST_SUFFIX}.json ${ARGN} ${PROJECT_SOURCE_DIR}/fonts/${FONTFILE})
++    if (PYTHON_CTYPES_COMPATIBLE)
++        add_test(NAME ${TESTNAME} COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/fnttxtrender --graphite_library=$<TARGET_FILE:graphite2> -t ${PROJECT_SOURCE_DIR}/texts/${TEXTFILE} -o ${PROJECT_BINARY_DIR}/${TESTNAME}.json -c ${PROJECT_SOURCE_DIR}/standards/${TESTNAME}${PLATFORM_TEST_SUFFIX}.json ${ARGN} ${PROJECT_SOURCE_DIR}/fonts/${FONTFILE})
+         set_tests_properties(${TESTNAME} PROPERTIES ENVIRONMENT PYTHONPATH=${CMAKE_SOURCE_DIR}/python)
+-    endif (PYTHON_CTYPES_COMPATBILE)
++    endif ()
+   endif ()
+ endfunction(cmptest)
+-- 
+2.51.0
+
