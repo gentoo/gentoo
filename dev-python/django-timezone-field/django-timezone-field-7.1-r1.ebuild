@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -29,12 +29,11 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/djangorestframework[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}]
-		dev-python/pytest-lazy-fixtures[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-django pytest-lazy-fixtures )
 distutils_enable_tests pytest
 
 python_test() {
