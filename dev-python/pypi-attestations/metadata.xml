@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">trailofbits/pypi-attestations</remote-id>
+		<remote-id type="github">pypi/pypi-attestations</remote-id>
 		<remote-id type="pypi">pypi-attestations</remote-id>
 	</upstream>
 </pkgmetadata>
