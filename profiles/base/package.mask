@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-12-01)
+# New release after years. Plenty of breakages. Masked for testing.
+dev-cpp/eigen:3/5.0
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-11-28)
 # Requires media-libs/openjph #966735
 media-libs/openexr:0/33
