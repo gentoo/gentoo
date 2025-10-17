@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-inherit toolchain-funcs python-single-r1
+inherit toolchain-funcs python-single-r1 optfeature
 
 MV=$(ver_cut 1-2)
 MY_P="${PN}${PV//./}"
@@ -52,7 +52,7 @@ RDEPEND="
 		sci-libs/hdf5[cxx]
 	)
 	rivet? (
-		sci-physics/rivet:*
+		>=sci-physics/rivet-4:*
 	)
 	mpich? ( sys-cluster/mpich )
 	python? ( ${PYTHON_DEPS} )
@@ -64,6 +64,10 @@ BDEPEND="
 		root? ( sci-physics/root:= )
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.3.15-ar.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -181,7 +185,7 @@ src_install() {
 	dolib.so lib/libpythia8.so
 	use lhapdf && dolib.so lib/libpythia8lhapdf6.so
 	insinto "${PYTHIADIR}"
-	doins -r share/Pythia8/xmldoc share/Pythia8/pdfdata examples/Makefile.inc
+	doins -r share/Pythia8/tunes share/Pythia8/xmldoc share/Pythia8/pdfdata examples/Makefile.inc
 
 	newenvd - 99pythia8 <<- _EOF_
 		PYTHIA8DATA=${EPYTHIADIR}/xmldoc
@@ -211,4 +215,9 @@ src_install() {
 
 	# cleanup
 	unset PYTHIADIR EPYTHIADIR
+}
+
+pkg_postinstall() {
+	optfeature "python interface awkward array support" dev-python/awkward
+	optfeature "python interface vector support" dev-python/vector
 }
