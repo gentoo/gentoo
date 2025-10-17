@@ -1,0 +1,65 @@
+Source:
+https://build.opensuse.org/projects/openSUSE:Factory/packages/ebook-tools/files/0002-Avoid-crash-on-spine-itemref-without-idref.patch?expand=1
+
+From 37ccdd11e30ea60225276cbfaba4cdd483f9f6fd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 23 Apr 2023 05:16:20 +0200
+Subject: [PATCH 2/2] Avoid crash on spine itemref without idref
+
+Although the idref attribute is required, it may be missing in a
+malformed epub file.
+
+Warn during parsing, and skip the node when linearizing.
+
+Return a non-null empty string in case the iterator points to an
+invalid element but not the last one, otherwise the iteration is stopped.
+---
+ src/libepub/epub.c | 9 ++++++++-
+ src/libepub/opf.c  | 4 ++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/libepub/epub.c b/src/libepub/epub.c
+index a259d9d..956c7c5 100644
+--- a/src/libepub/epub.c
++++ b/src/libepub/epub.c
+@@ -255,6 +255,12 @@ char *_get_spine_it_url(struct eiterator *it) {
+ 	  return NULL;
+   
+   data = GetNodeData(it->curr);
++  if (!((struct spine *)data)->idref) {
++	  _epub_print_debug(it->epub, DEBUG_INFO,
++						"skipping spine itemref without idref");
++	  return NULL;
++  }
++
+   tmp = _opf_manifest_get_by_id(it->epub->opf, 
+                                 ((struct spine *)data)->idref);
+   if (!tmp) {
+@@ -375,7 +381,8 @@ char *epub_it_get_next(struct eiterator *it) {
+     break;
+   }
+   
+-  return epub_it_get_curr(it);
++  epub_it_get_curr(it);
++  return it->cache ? it->cache : it->curr ? "" : NULL;
+ }
+ 
+ int epub_close(struct epub *epub) {
+diff --git a/src/libepub/opf.c b/src/libepub/opf.c
+index ae41184..3eba55c 100644
+--- a/src/libepub/opf.c
++++ b/src/libepub/opf.c
+@@ -701,6 +701,10 @@ void _opf_parse_spine(struct opf *opf, xmlTextReaderPtr reader) {
+ 	memset(item, 0, sizeof(struct spine));
+ 
+     item->idref = xmlTextReaderGetAttribute(reader, (xmlChar *)"idref");
++    if (!item->idref) {
++      _epub_print_debug(opf->epub, DEBUG_WARNING,
++                        "- missing idref in spine itemref");
++    }
+     linear = xmlTextReaderGetAttribute(reader, (xmlChar *)"linear");
+     if (linear && xmlStrcasecmp(linear, (xmlChar *)"no") == 0) {
+       item->linear = 0;
+-- 
+2.40.0
+
