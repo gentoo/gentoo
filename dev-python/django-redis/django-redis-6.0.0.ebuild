@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -27,10 +27,10 @@ BDEPEND="
 		dev-db/redis
 		dev-python/lz4[${PYTHON_USEDEP}]
 		dev-python/msgpack[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{mock,xdist} )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
@@ -42,13 +42,12 @@ src_prepare() {
 }
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	# no clue why we need to set it explicitly
 	local -x DJANGO_SETTINGS_MODULE=settings.sqlite
 	# sqlite_zstd requires pyzstd
 	# the test suite only works with -n4
 	# https://github.com/jazzband/django-redis/issues/777
-	epytest -p xdist -n 4 -p pytest_mock -k "not sqlite_zstd"
+	epytest -n 4 -k "not sqlite_zstd"
 }
 
 src_test() {
