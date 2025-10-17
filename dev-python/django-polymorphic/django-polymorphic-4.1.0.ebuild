@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -30,8 +30,8 @@ BDEPEND="
 		$(python_gen_impl_dep sqlite)
 		${RDEPEND}
 		dev-python/dj-database-url[${PYTHON_USEDEP}]
-		dev-python/pytest-django[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-django )
 distutils_enable_tests pytest
