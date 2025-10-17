@@ -51,7 +51,7 @@ LICENSE+=" Apache-2.0-with-LLVM-exceptions MIT Unicode-3.0"
 LICENSE+=" )"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc examples +native-extensions test"
 RESTRICT="!test? ( test )"
 
