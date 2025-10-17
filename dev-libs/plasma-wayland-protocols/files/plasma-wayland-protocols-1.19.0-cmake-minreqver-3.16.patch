@@ -1,0 +1,26 @@
+From 7d28de1fdee9fa30ae9e0f15d149ad348f292db8 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Fri, 26 Sep 2025 20:24:26 +0200
+Subject: [PATCH] cmake: bump required version to 3.16
+
+Old enough, and required by Plasma 5.22 already.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3bc288d7..d7049fb2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ #
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.16)
+ 
+ project(PlasmaWaylandProtocols VERSION 1.19.0)
+ 
+-- 
+GitLab
+

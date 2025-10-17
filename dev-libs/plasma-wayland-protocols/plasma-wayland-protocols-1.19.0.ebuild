@@ -26,6 +26,8 @@ BDEPEND="
 	test? ( dev-util/wayland-scanner )
 "
 
+PATCHES=( "${FILESDIR}/${P}-cmake-minreqver-3.16.patch" ) # bug 964522
+
 src_configure() {
 	local mycmakeargs=(
 		-DQT_MAJOR_VERSION=6
