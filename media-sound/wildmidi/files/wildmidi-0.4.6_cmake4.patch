@@ -1,0 +1,14 @@
+From https://github.com/Mindwerks/wildmidi/commit/1e21a829ce3b00a4747a50f8ae5e0cf11402a293
+From: Ozkan Sezer <sezeroz@gmail.com>
+Date: Sat, 3 May 2025 14:56:50 +0300
+Subject: [PATCH] cmake: set maximum policy to 3.10
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # Project setup
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.4...3.5)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.4...3.10)
+ PROJECT(wildmidi LANGUAGES C VERSION 0.4.6)
+ 
+ # WildMIDI Version

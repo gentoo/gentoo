@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,6 +8,8 @@ inherit cmake readme.gentoo-r1
 DESCRIPTION="MIDI processing library and player using the GUS patch set"
 HOMEPAGE="http://www.mindwerks.net/projects/wildmidi/"
 SRC_URI="https://github.com/Mindwerks/${PN}/archive/${P}.tar.gz"
+
+S="${WORKDIR}/${PN}-${P}"
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
@@ -29,7 +31,9 @@ DOC_CONTENTS="${PN} is using timidity-freepats for midi playback.
 	A default configuration file was placed on /etc/${PN}/${PN}.cfg.
 	For more information please read the ${PN}.cfg manpage."
 
-S="${WORKDIR}/${PN}-${P}"
+PATCHES=(
+	"${FILESDIR}/wildmidi-0.4.6_cmake4.patch"
+)
 
 src_prepare() {
 	cmake_src_prepare
