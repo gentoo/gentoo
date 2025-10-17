@@ -147,7 +147,6 @@ _meson_get_machine_info() {
 _meson_create_cross_file() {
 	local system cpu_family cpu
 	_meson_get_machine_info "${CHOST}"
-	local -n CHOST_default="CHOST_${DEFAULT_ABI}"
 
 	local fn=${T}/meson.${CHOST}.${ABI}.ini
 
@@ -182,7 +181,7 @@ _meson_create_cross_file() {
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
 
 	[properties]
-	needs_exe_wrapper = $([[ "${CBUILD:-${CHOST}}" != "${CHOST_default}" ]] && echo true || echo false)
+	needs_exe_wrapper = $(tc-is-cross-compiler && echo true || echo false)
 	sys_root = '${SYSROOT}'
 	pkg_config_libdir = '${PKG_CONFIG_LIBDIR:-${EPREFIX}/usr/$(get_libdir)/pkgconfig}'
 
@@ -371,7 +370,7 @@ setup_meson_src_configure() {
 		MESONARGS+=( -Dbuildtype="${EMESON_BUILDTYPE}" )
 	fi
 
-	if tc-is-cross-compiler; then
+	if tc-is-cross-compiler || [[ "${ABI}" != "${DEFAULT_ABI}" ]]; then
 		MESONARGS+=( --cross-file "$(_meson_create_cross_file)" )
 	fi
 
