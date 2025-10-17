@@ -1,0 +1,133 @@
+From 82592c9815409a1e023152f565a65b0105565ed2 Mon Sep 17 00:00:00 2001
+From: Mariusz Felisiak <felisiak.mariusz@gmail.com>
+Date: Mon, 28 Jul 2025 23:21:17 +0200
+Subject: [PATCH] Fixed #36531 -- Added forkserver support to parallel test
+ runner.
+
+---
+ django/db/backends/sqlite3/creation.py    | 10 +++++-----
+ django/test/runner.py                     | 16 ++++++++++------
+ tests/backends/sqlite/test_creation.py    |  4 ++--
+ tests/test_runner/test_discover_runner.py | 10 ++++++++++
+ 4 files changed, 27 insertions(+), 13 deletions(-)
+
+diff --git a/django/db/backends/sqlite3/creation.py b/django/db/backends/sqlite3/creation.py
+index 802e8b8357..8a07e0c417 100644
+--- a/django/db/backends/sqlite3/creation.py
++++ b/django/db/backends/sqlite3/creation.py
+@@ -62,7 +62,7 @@ class DatabaseCreation(BaseDatabaseCreation):
+         start_method = multiprocessing.get_start_method()
+         if start_method == "fork":
+             return orig_settings_dict
+-        if start_method == "spawn":
++        if start_method in {"forkserver", "spawn"}:
+             return {
+                 **orig_settings_dict,
+                 "NAME": f"{self.connection.alias}_{suffix}.sqlite3",
+@@ -99,9 +99,9 @@ class DatabaseCreation(BaseDatabaseCreation):
+                 self.log("Got an error cloning the test database: %s" % e)
+                 sys.exit(2)
+         # Forking automatically makes a copy of an in-memory database.
+-        # Spawn requires migrating to disk which will be re-opened in
+-        # setup_worker_connection.
+-        elif multiprocessing.get_start_method() == "spawn":
++        # Forkserver and spawn require migrating to disk which will be
++        # re-opened in setup_worker_connection.
++        elif multiprocessing.get_start_method() in {"forkserver", "spawn"}:
+             ondisk_db = sqlite3.connect(target_database_name, uri=True)
+             self.connection.connection.backup(ondisk_db)
+             ondisk_db.close()
+@@ -137,7 +137,7 @@ class DatabaseCreation(BaseDatabaseCreation):
+             # Update settings_dict in place.
+             self.connection.settings_dict.update(settings_dict)
+             self.connection.close()
+-        elif start_method == "spawn":
++        elif start_method in {"forkserver", "spawn"}:
+             alias = self.connection.alias
+             connection_str = (
+                 f"file:memorydb_{alias}_{_worker_id}?mode=memory&cache=shared"
+diff --git a/django/test/runner.py b/django/test/runner.py
+index b83cd37343..cc2fb2ebdf 100644
+--- a/django/test/runner.py
++++ b/django/test/runner.py
+@@ -387,8 +387,9 @@ def get_max_test_processes():
+     The maximum number of test processes when using the --parallel option.
+     """
+     # The current implementation of the parallel test runner requires
+-    # multiprocessing to start subprocesses with fork() or spawn().
+-    if multiprocessing.get_start_method() not in {"fork", "spawn"}:
++    # multiprocessing to start subprocesses with fork(), forkserver(), or
++    # spawn().
++    if multiprocessing.get_start_method() not in {"fork", "spawn", "forkserver"}:
+         return 1
+     try:
+         return int(os.environ["DJANGO_TEST_PROCESSES"])
+@@ -433,9 +434,12 @@ def _init_worker(
+         counter.value += 1
+         _worker_id = counter.value
+ 
+-    start_method = multiprocessing.get_start_method()
++    is_spawn_or_forkserver = multiprocessing.get_start_method() in {
++        "forkserver",
++        "spawn",
++    }
+ 
+-    if start_method == "spawn":
++    if is_spawn_or_forkserver:
+         if process_setup and callable(process_setup):
+             if process_setup_args is None:
+                 process_setup_args = ()
+@@ -446,7 +450,7 @@ def _init_worker(
+     db_aliases = used_aliases if used_aliases is not None else connections
+     for alias in db_aliases:
+         connection = connections[alias]
+-        if start_method == "spawn":
++        if is_spawn_or_forkserver:
+             # Restore initial settings in spawned processes.
+             connection.settings_dict.update(initial_settings[alias])
+             if value := serialized_contents.get(alias):
+@@ -589,7 +593,7 @@ class ParallelTestSuite(unittest.TestSuite):
+         return iter(self.subsuites)
+ 
+     def initialize_suite(self):
+-        if multiprocessing.get_start_method() == "spawn":
++        if multiprocessing.get_start_method() in {"forkserver", "spawn"}:
+             self.initial_settings = {
+                 alias: connections[alias].settings_dict for alias in connections
+             }
+diff --git a/tests/backends/sqlite/test_creation.py b/tests/backends/sqlite/test_creation.py
+index 8aa24674d2..fe3959c85b 100644
+--- a/tests/backends/sqlite/test_creation.py
++++ b/tests/backends/sqlite/test_creation.py
+@@ -36,8 +36,8 @@ class TestDbSignatureTests(SimpleTestCase):
+                 clone_settings_dict = creation_class.get_test_db_clone_settings("1")
+                 self.assertEqual(clone_settings_dict["NAME"], expected_clone_name)
+ 
+-    @mock.patch.object(multiprocessing, "get_start_method", return_value="forkserver")
++    @mock.patch.object(multiprocessing, "get_start_method", return_value="unsupported")
+     def test_get_test_db_clone_settings_not_supported(self, *mocked_objects):
+-        msg = "Cloning with start method 'forkserver' is not supported."
++        msg = "Cloning with start method 'unsupported' is not supported."
+         with self.assertRaisesMessage(NotSupportedError, msg):
+             connection.creation.get_test_db_clone_settings(1)
+diff --git a/tests/test_runner/test_discover_runner.py b/tests/test_runner/test_discover_runner.py
+index 4f13cceeff..c6ce7f1e1d 100644
+--- a/tests/test_runner/test_discover_runner.py
++++ b/tests/test_runner/test_discover_runner.py
+@@ -98,6 +98,16 @@ class DiscoverRunnerParallelArgumentTests(SimpleTestCase):
+         mocked_cpu_count,
+     ):
+         mocked_get_start_method.return_value = "forkserver"
++        self.assertEqual(get_max_test_processes(), 12)
++        with mock.patch.dict(os.environ, {"DJANGO_TEST_PROCESSES": "7"}):
++            self.assertEqual(get_max_test_processes(), 7)
++
++    def test_get_max_test_processes_other(
++        self,
++        mocked_get_start_method,
++        mocked_cpu_count,
++    ):
++        mocked_get_start_method.return_value = "other"
+         self.assertEqual(get_max_test_processes(), 1)
+         with mock.patch.dict(os.environ, {"DJANGO_TEST_PROCESSES": "7"}):
+             self.assertEqual(get_max_test_processes(), 1)
