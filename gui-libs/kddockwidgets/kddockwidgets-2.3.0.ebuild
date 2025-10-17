@@ -28,6 +28,8 @@ DEPEND="
 	dev-cpp/nlohmann_json
 "
 
+CMAKE_QA_COMPAT_SKIP=1 #964536
+
 src_configure() {
 	local mycmakeargs=(
 		-DKDDockWidgets_FRONTENDS=qtwidgets$(usev qml ';qtquick')

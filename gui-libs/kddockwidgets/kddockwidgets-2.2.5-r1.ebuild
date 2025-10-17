@@ -32,6 +32,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.5-qt610.patch
 )
 
+CMAKE_QA_COMPAT_SKIP=1 #964536
+
 src_configure() {
 	local mycmakeargs=(
 		-DKDDockWidgets_FRONTENDS=qtwidgets$(usev qml ';qtquick')
