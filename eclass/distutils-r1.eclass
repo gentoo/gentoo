@@ -551,6 +551,7 @@ distutils_enable_tests() {
 	case ${1} in
 		import-check)
 			test_pkgs+=' dev-python/pytest-import-check[${PYTHON_USEDEP}]'
+			EPYTEST_PLUGINS+=( pytest-import-check )
 			;&
 		pytest)
 			test_pkgs+=' >=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
