@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 optfeature
 
@@ -32,11 +32,11 @@ BDEPEND="
 		>=dev-python/flask-2.1.1[${PYTHON_USEDEP}]
 		>=dev-python/jinja2-3.1.1[${PYTHON_USEDEP}]
 		>=dev-python/mako-1.1.3[${PYTHON_USEDEP}]
-		>=dev-python/pytest-asyncio-0.19.0[${PYTHON_USEDEP}]
 		>=dev-python/tornado-6.0.4[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 src_prepare() {
