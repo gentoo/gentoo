@@ -214,9 +214,17 @@ src_install() {
 		pushd "${ED}"/usr/$(get_libdir)/R >/dev/null || die
 		for mod in $(find . -name "*.dylib") ; do
 			mod=${mod#./}
-			install_name_tool -id "${EPREFIX}/usr/$(get_libdir)/R/${mod}" "${mod}"
+			install_name_tool \
+				-id "${EPREFIX}/usr/$(get_libdir)/R/${mod}" \
+				"${mod}" || die
 		done
 		popd >/dev/null || die
+		# 911553
+		if [[ -f "${ED}/usr/$(get_libdir)/libRmath.dylib" ]] ; then
+			install_name_tool \
+				-id "${EPREFIX}/usr/$(get_libdir)/libRmath.dylib" \
+				"${ED}/usr/$(get_libdir)/libRmath.dylib" || die
+		fi
 	fi
 
 	# Users are encouraged to access some of the the R documentation
