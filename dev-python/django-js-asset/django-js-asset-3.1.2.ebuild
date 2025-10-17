@@ -10,7 +10,7 @@ inherit distutils-r1 pypi
 
 DESCRIPTION="Script tag with additional attributes for django.forms.Media"
 HOMEPAGE="
-	https://github.com/matthiask/django-js-asset/
+	https://github.com/feincms/django-js-asset/
 	https://pypi.org/project/django-js-asset/
 "
 

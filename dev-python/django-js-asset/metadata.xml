@@ -7,7 +7,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">matthiask/django-js-asset</remote-id>
+		<remote-id type="github">feincms/django-js-asset</remote-id>
 		<remote-id type="pypi">django-js-asset</remote-id>
 	</upstream>
 </pkgmetadata>
