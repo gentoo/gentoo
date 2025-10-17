@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.10..3.22)
+ 
+ # https://cmake.org/cmake/help/latest/command/project.html
+ project(box2d VERSION 2.4.1)
