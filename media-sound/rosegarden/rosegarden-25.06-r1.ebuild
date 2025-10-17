@@ -50,6 +50,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
+		# Avoid automagic gtk+:2 and runtime crash (bug #957755)
+		-DCMAKE_DISABLE_FIND_PACKAGE_GTK2=ON
 		-DDISABLE_LIRC=$(usex !lirc)
 		-DUSE_QT6=ON
 	)
