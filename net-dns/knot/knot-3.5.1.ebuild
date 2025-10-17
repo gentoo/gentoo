@@ -66,7 +66,7 @@ RDEPEND="
 		geoip? ( dev-libs/libmaxminddb:= )
 		redis? ( >=dev-libs/hiredis-1.1.0:= )
 		systemd? ( sys-apps/systemd:= )
-		)
+	)
 	prometheus? (
 		dev-python/prometheus-client[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
@@ -207,7 +207,7 @@ src_install() {
 	default
 
 	if use daemon; then
-		rmdir "${D}/var/run/${PN}" "${D}/var/run/" || die
+		rm -r "${ED}"/var/run/ || die
 
 		newinitd "${FILESDIR}"/knot-3.init knot
 		newconfd "${FILESDIR}"/knot.confd knot
