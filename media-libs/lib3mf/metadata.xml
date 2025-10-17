@@ -15,13 +15,6 @@
 	It provides reading and writing capabilities for 3MF files, as well
 	as conversion and validation tools for input and output data.
 </longdescription>
-<use>
-	<flag name="system-act">
-		Use system-provided <pkg>dev-go/act</pkg> as code generator
-		instead of package provided binaries. This flag will be removed
-		after some time used for testing!
-	</flag>
-</use>
 <upstream>
 	<remote-id type="github">3MFConsortium/lib3mf</remote-id>
 </upstream>
