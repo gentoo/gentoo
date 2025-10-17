@@ -3,7 +3,7 @@
 
 EAPI=8
 
-NEED_EMACS="28.1"
+NEED_EMACS="29.1"
 
 inherit elisp
 
@@ -16,7 +16,7 @@ if [[ "${PV}" == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/minad/${PN}"
 else
 	SRC_URI="https://github.com/minad/${PN}/archive/${PV}.tar.gz
-		-> ${P}.tar.gz"
+		-> ${P}.gh.tar.gz"
 
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -26,14 +26,14 @@ SLOT="0"
 
 BDEPEND="
 	>=app-editors/emacs-${NEED_EMACS}:*[jpeg,json(+),libxml2,png,svg]
-	>=app-emacs/compat-30.0.2.0
+	app-emacs/compat
 "
 RDEPEND="
 	${BDEPEND}
 	net-misc/curl[ssl]
 "
 
-DOCS=( README.org )
+DOCS=( CHANGELOG.org README.org )
 SITEFILE="50${PN}-gentoo.el"
 
 src_compile() {
