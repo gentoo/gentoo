@@ -56,6 +56,11 @@ BDEPEND="
 	doc? ( sys-apps/texinfo )
 	nls? ( sys-devel/gettext )
 "
+# maintainer mode
+BDEPEND+="
+	media-gfx/fig2dev
+	virtual/imagemagick-tools
+"
 
 DOCS=(
 	ChangeLog NEWS README THANKS TODO VERSION
