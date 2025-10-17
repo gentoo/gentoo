@@ -1,0 +1,30 @@
+From eaa4a100fdcb5e2eac02d8b44a73cd6ad9caafd8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 17 Oct 2025 12:44:25 +0200
+Subject: [PATCH] Bump minimum CMAKE_MINIMUM_REQUIRED version to 3.5, set range
+ up to 3.31
+
+CMake 3.31 started to warn about removing < 3.10 compatibility in the future.
+CMake 4 dropped < 3.5 compatibility.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 269ea77..6bacc4f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ #
+ #
+ 
+-cmake_minimum_required(VERSION 3.3)
++cmake_minimum_required(VERSION 3.10..3.31)
+ 
+ project(tslib LANGUAGES C)
+ 
+-- 
+2.51.0
+
