@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alfred Wingate <parona@protonmail.com> (2025-10-18)
+# Only exists temporarily to facilitate upgrades for exaile.
+# Bug 892854
+dev-python/berkeleydb
+
 # Michał Górny <mgorny@gentoo.org> (2025-10-01)
 # dev-python/passlib is unmaintained upstream (last release in 2020),
 # and we keep having to patch breakage out.  Packages really need
