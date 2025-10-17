@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
-inherit toolchain-funcs python-single-r1
+inherit toolchain-funcs python-single-r1 optfeature
 
 MV=$(ver_cut 1-2)
 MY_P="${PN}${PV//./}"
@@ -34,7 +34,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="8"
-IUSE="doc examples fastjet +hepmc3 hepmc2 lhapdf root test zlib python highfive mpich rivet" # evtgen mg5mes rivet powheg
+IUSE="doc examples fastjet +hepmc3 hepmc2 lhapdf root test zlib python highfive mpich rivet static-libs" # evtgen mg5mes rivet powheg
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	?? ( hepmc3 hepmc2 )
@@ -52,7 +52,7 @@ RDEPEND="
 		sci-libs/hdf5[cxx]
 	)
 	rivet? (
-		sci-physics/rivet:*
+		>=sci-physics/rivet-4:*
 	)
 	mpich? ( sys-cluster/mpich )
 	python? ( ${PYTHON_DEPS} )
@@ -64,6 +64,10 @@ BDEPEND="
 		root? ( sci-physics/root:= )
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.3.15-ar.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -179,9 +183,11 @@ src_install() {
 	dobin bin/pythia8-config
 	doheader -r include/*
 	dolib.so lib/libpythia8.so
+	use static-libs && dolib.a lib/libpythia8.a
 	use lhapdf && dolib.so lib/libpythia8lhapdf6.so
 	insinto "${PYTHIADIR}"
-	doins -r share/Pythia8/xmldoc share/Pythia8/pdfdata examples/Makefile.inc
+	doins -r share/Pythia8/tunes share/Pythia8/xmldoc share/Pythia8/pdfdata examples/Makefile.inc
+	dosym Pythia8 /usr/share/${PN}
 
 	newenvd - 99pythia8 <<- _EOF_
 		PYTHIA8DATA=${EPYTHIADIR}/xmldoc
@@ -194,12 +200,9 @@ src_install() {
 		dodoc -r share/Pythia8/htmldoc/.
 	fi
 	if use examples; then
-		# reuse system Makefile.inc
-		rm examples/Makefile.inc || die
 		sed -i "s|include Makefile.inc|include ${EPYTHIADIR}|" \
 			examples/Makefile || die
 
-		insinto /usr/share/${PN}
 		doins -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
@@ -211,4 +214,9 @@ src_install() {
 
 	# cleanup
 	unset PYTHIADIR EPYTHIADIR
+}
+
+pkg_postinstall() {
+	optfeature "python interface awkward array support" dev-python/awkward
+	optfeature "python interface vector support" dev-python/vector
 }
