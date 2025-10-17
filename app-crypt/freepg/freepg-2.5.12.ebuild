@@ -168,4 +168,6 @@ my_src_install_all() {
 
 	use tools && dobin tools/{convert-from-106,mail-signed-keys,lspgpot}
 	use doc && dodoc doc/*.png
+	systemd_douserunit doc/examples/systemd-user/*.{service,socket}
+	newdoc doc/examples/systemd-user/README README-systemd
 }
