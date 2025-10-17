@@ -536,20 +536,16 @@ multilib_toolchain_setup() {
 		done
 		export _DEFAULT_ABI_SAVED="true"
 
-		# Set CBUILD only if not cross-compiling.
-		#
-		# It must use the default ABI since build-time helper
-		# executables might link with libraries that are installed
-		# only for the default ABI.
-		if [[ ${CBUILD} == "${CHOST}" ]]; then
-			export CBUILD=$(get_abi_CHOST ${DEFAULT_ABI})
-		fi
-
 		# Set the CHOST native first so that we pick up the native
 		# toolchain and not a cross-compiler by accident #202811.
 		#
 		# Make sure ${save_restore_variables[@]} list matches below.
 		export CHOST=$(get_abi_CHOST ${DEFAULT_ABI})
+
+		# Set CBUILD only if not cross-compiling.
+		if [[ "${_abi_saved_CBUILD:-${_abi_saved_CHOST}}" == "${_abi_saved_CHOST}" ]]; then
+			export CBUILD=${CHOST}
+		fi
 
 		# Derive the build-machine toolchain variables before we
 		# override the host-machine toolchain variables.
@@ -585,6 +581,12 @@ multilib_toolchain_setup() {
 		export PKG_CONFIG_PATH=${ESYSROOT}/usr/share/pkgconfig
 		export PKG_CONFIG_SYSTEM_INCLUDE_PATH=${ESYSROOT}/usr/include
 		export PKG_CONFIG_SYSTEM_LIBRARY_PATH=${ESYSROOT}/$(get_libdir):${ESYSROOT}/usr/$(get_libdir)
+
+		# Also set CBUILD so as not to trigger cross-compilation
+		# mode falsely in build systems.
+		if [[ "${_abi_saved_CBUILD:-${_abi_saved_CHOST}}" == "${_abi_saved_CHOST}" ]]; then
+			export CBUILD=${CHOST}
+		fi
 	fi
 }
 
