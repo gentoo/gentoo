@@ -19,8 +19,14 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/libvirt/libvirt.git"
 	EGIT_BRANCH="master"
 else
-	SRC_URI="https://download.libvirt.org/${P}.tar.xz
-		verify-sig? ( https://download.libvirt.org/${P}.tar.xz.asc )"
+	SRC_URI="
+		https://download.libvirt.org/${P}.tar.xz
+		https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz
+		verify-sig? (
+			https://download.libvirt.org/${P}.tar.xz.asc
+			https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}.tar.xz.asc
+		)
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
