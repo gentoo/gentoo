@@ -26,6 +26,9 @@ BDEPEND="
 	doc? ( app-text/doxygen[dot] )
 "
 
+# https://github.com/taglib/taglib/pull/1285
+PATCHES=( "${FILESDIR}"/${P}-cmake-minreqver-3.10.patch ) # bug #964576
+
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/taglib-config
 )

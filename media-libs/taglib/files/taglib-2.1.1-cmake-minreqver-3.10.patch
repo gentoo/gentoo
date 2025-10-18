@@ -1,0 +1,35 @@
+From 245c33c73002a6472ad422d4f0d1f6d6614cae8f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 18 Oct 2025 12:21:41 +0200
+Subject: [PATCH] Raise CMake minimum version to 3.10..3.31 range
+
+CMake 3.10 was released in 2017.
+
+Amends 967aaf7af2f4aa2e9fed0edb2cbaca98b737eebe, fixes warning since CMake-3.31:
+
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9e6589c7..2e631da5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10..3.31)
+ 
+ project(taglib)
+ 
+-- 
+2.51.0
+
