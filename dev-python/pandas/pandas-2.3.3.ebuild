@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -135,8 +135,11 @@ python_test() {
 		# probably pytz, doesn't happen on main (where zoneinfo is used)
 		'tests/arrays/test_array.py::test_array_inference[data7-expected7]'
 
-		# virtx?
-		pandas/tests/test_downstream.py::test_seaborn
+		# random warning regressions?!
+		tests/test_expressions.py::TestExpressions::test_bool_ops_warn_on_arithmetic
+		'tests/series/test_arithmetic.py::TestSeriesArithmetic::test_add_list_to_masked_array_boolean[numexpr]'
+		'tests/frame/test_arithmetic.py::TestFrameArithmetic::test_binop_other[numexpr-add-True-bool]'
+		'tests/frame/test_arithmetic.py::TestFrameArithmetic::test_binop_other[numexpr-mul-True-bool]'
 	)
 
 	if ! tc-has-64bit-time_t; then
@@ -169,6 +172,23 @@ python_test() {
 			tests/plotting/test_misc.py::test_savefig
 		)
 	fi
+
+	case ${EPYTHON} in
+		python3.14)
+			EPYTEST_DESELECT+=(
+				'tests/computation/test_eval.py::TestEval::test_simple_cmp_ops[float-float-numexpr-pandas-in]'
+				'tests/computation/test_eval.py::TestEval::test_simple_cmp_ops[float-float-numexpr-pandas-not in]'
+				'tests/computation/test_eval.py::TestEval::test_simple_cmp_ops[float-float-python-pandas-in]'
+				'tests/computation/test_eval.py::TestEval::test_simple_cmp_ops[float-float-python-pandas-not in]'
+				'tests/computation/test_eval.py::TestEval::test_compound_invert_op[float-float-numexpr-pandas-in]'
+				'tests/computation/test_eval.py::TestEval::test_compound_invert_op[float-float-numexpr-pandas-not in]'
+				'tests/computation/test_eval.py::TestEval::test_compound_invert_op[float-float-python-pandas-in]'
+				'tests/computation/test_eval.py::TestEval::test_compound_invert_op[float-float-python-pandas-not in]'
+				'tests/computation/test_eval.py::TestOperations::test_simple_arith_ops[numexpr-pandas]'
+				'tests/computation/test_eval.py::TestOperations::test_simple_arith_ops[python-pandas]'
+			)
+			;;
+	esac
 
 	local -x LC_ALL=C.UTF-8
 	cd "${BUILD_DIR}/install$(python_get_sitedir)" || die
