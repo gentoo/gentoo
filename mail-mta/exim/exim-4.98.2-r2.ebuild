@@ -1,14 +1,32 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit db-use flag-o-matic toolchain-funcs pam systemd
 
+DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
+HOMEPAGE="https://www.exim.org/"
+
+SDIR=$(
+	[[ ${PV} == *_rc* ]]   && echo /test
+	[[ ${PV} == *.*.*.* ]] && echo /fixes
+)
+COMM_URI="https://downloads.exim.org/exim4${SDIR}"
+
+SRC_URI="${COMM_URI}/${P//_rc/-RC}.tar.xz
+	mirror://gentoo/system_filter.exim.gz
+	doc? ( ${COMM_URI}/${PN}-pdf-${PV//_rc/-RC}.tar.xz )"
+S=${WORKDIR}/${P//_rc/-RC}
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+
 IUSE="arc berkdb +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl
-dsn gdbm gnutls idn ipv6 ldap lmtp maildir mbx
-mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux
-socks5 spf sqlite srs +ssl syslog tdb tcpd +tpda X"
+	dsn gdbm gnutls gsasl idn ipv6 ldap lmtp maildir mbx
+	mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl
+	selinux socks5 spf sqlite srs +ssl syslog +tdb tcpd +tpda"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
@@ -17,7 +35,7 @@ REQUIRED_USE="
 	dkim? ( ssl !gnutls )
 	gnutls? ( ssl )
 	pkcs11? ( ssl )
-	|| ( berkdb gdbm tdb )
+	|| ( berkdb gdbm tdb sqlite )
 "
 # NOTE on USE="gnutls dane", gnutls[dane] is masked in base, unmasked
 # for x86 and amd64 only (probably due to unbound dep)
@@ -30,21 +48,6 @@ REQUIRED_USE="
 # so we make -dane mandatory to use gnutls.  Bleh.
 # We cannot express a required use for berkdb/gdbm/tdb correctly because
 # berkdb and gdbm are both enabled in base profile
-
-SDIR=$([[ ${PV} == *_rc* ]]   && echo /test
-	 [[ ${PV} == *.*.*.* ]] && echo /fixes)
-COMM_URI="https://downloads.exim.org/exim4${SDIR}"
-
-GPV="r0"
-DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
-SRC_URI="${COMM_URI}/${P//_rc/-RC}.tar.xz
-	mirror://gentoo/system_filter.exim.gz
-	doc? ( ${COMM_URI}/${PN}-pdf-${PV//_rc/-RC}.tar.xz )"
-HOMEPAGE="https://www.exim.org/"
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ppc ppc64 ~sparc x86"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	dev-libs/libpcre2:=
@@ -75,21 +78,15 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r2 )
+	gsasl? ( net-misc/gsasl )
 	redis? ( dev-libs/hiredis:= )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )
 	dmarc? ( mail-filter/opendmarc:= )
-	X? (
-		x11-libs/libX11
-		x11-libs/libXmu
-		x11-libs/libXt
-		x11-libs/libXaw
-	)
-	sqlite? ( dev-db/sqlite )
+	sqlite? ( dev-db/sqlite:= )
 	radius? ( net-dialup/freeradius-client )
 	virtual/libcrypt:=
 	virtual/libiconv
 	"
-	# added X check for #57206
 BDEPEND="virtual/pkgconfig"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}
@@ -108,8 +105,6 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-exim )
 	"
 
-S=${WORKDIR}/${P//_rc/-RC}
-
 src_prepare() {
 	# Legacy patches which need a respin for -p1
 	eapply -p0 "${FILESDIR}"/exim-4.14-tail.patch
@@ -119,10 +114,7 @@ src_prepare() {
 	eapply     "${FILESDIR}"/exim-4.69-r1.27021.patch
 	eapply     "${FILESDIR}"/exim-4.97-localscan_dlopen.patch
 	eapply     "${FILESDIR}"/exim-4.97-no-exim_id_update.patch
-	eapply     "${FILESDIR}"/exim-4.97.1-memory-usage-bug-3047.patch # 922780
-
-	eapply -p2 "${FILESDIR}"/exim-4.97.1-CVE-2024-39929-part1.patch
-	eapply -p2 "${FILESDIR}"/exim-4.97.1-CVE-2024-39929-part2.patch
+	eapply     "${FILESDIR}"/exim-4.98-tidydb-crash.patch # upstream #3144
 
 	# oddity, they disable berkdb as hack, and then throw an error when
 	# berkdb isn't enabled
@@ -170,6 +162,7 @@ src_configure() {
 		-e "s:CONFIGURE_FILE=.*$:CONFIGURE_FILE=${conffile}:" \
 		-e "s:ZCAT_COMMAND=.*$:ZCAT_COMMAND=${EPREFIX}/bin/zcat:" \
 		-e "s:COMPRESS_COMMAND=.*$:COMPRESS_COMMAND=${EPREFIX}/bin/gzip:" \
+		-e "s:^LOOKUP_DBM = yes:# LOOKUP_DBM = yes:" \
 		src/EDITME > Local/Makefile || die
 
 	# work on Local/Makefile from now on
@@ -184,34 +177,40 @@ src_configure() {
 	EOC
 
 	# configure db implementation, Exim always needs one for its hints
-	# database, we prefer tdb and gdbm, since bdb is kind of getting
-	# less and less support
-	if use tdb ; then
+	# database, we prefer sqlite, tdb and gdbm, since bdb is kind of
+	# getting less and less support
+	sed -i \
+		-e 's:^USE_DB=yes:# USE_DB=yes:' \
+		-e 's:^USE_GDBM=yes:# USE_GDBM=yes:' \
+		-e 's:^USE_TDB=yes:# USE_TDB=yes:' \
+		-e 's:^USE_SQLITE=yes:# USE_SQLITE=yes:' \
+		Makefile || die
+	if use sqlite ; then
+		cat >> Makefile <<- EOC
+			USE_SQLITE=yes
+			DBMLIB = -lsqlite3
+		EOC
+	elif use tdb ; then
 		cat >> Makefile <<- EOC
 			USE_TDB=yes
 			DBMLIB = -ltdb
 		EOC
-		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
-		sed -i -e 's:^USE_GDBM=yes:# USE_GDBM=yes:' Makefile || die
 	elif use gdbm ; then
 		cat >> Makefile <<- EOC
 			USE_GDBM=yes
 			DBMLIB = -lgdbm
 		EOC
-		sed -i -e 's:^USE_DB=yes:# USE_DB=yes:' Makefile || die
-		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
 	else # must be berkdb via required_use
 		# use the "native" interfaces to the DBM and CDB libraries, support
 		# passwd and directory lookups by default
 		local DB_VERS="5.3 5.1 4.8 4.7 4.6 4.5 4.4 4.3 4.2 3.2"
 		cat >> Makefile <<- EOC
 			USE_DB=yes
+			LOOKUP_DBM = yes
 			# keep include in CFLAGS because exim.h -> dbstuff.h -> db.h
 			CFLAGS += -I$(db_includedir ${DB_VERS})
 			DBMLIB = -l$(db_libname ${DB_VERS})
 		EOC
-		sed -i -e 's:^USE_GDBM=yes:# USE_GDBM=yes:' Makefile || die
-		sed -i -e 's:^USE_TDB=yes:# USE_TDB=yes:' Makefile || die
 	fi
 
 	# if we use libiconv, now is the time to tell so
@@ -325,15 +324,6 @@ src_configure() {
 		cat >> Makefile <<- EOC
 			LOOKUP_REDIS=yes
 			LOOKUP_LIBS += -lhiredis
-		EOC
-	fi
-
-	# Exim monitor, enabled by default, controlled via X USE-flag,
-	# disable if not requested, bug #46778
-	if use X; then
-		cp ../exim_monitor/EDITME eximon.conf || die
-		cat >> Makefile <<- EOC
-			EXIM_MONITOR=eximon.bin
 		EOC
 	fi
 
@@ -519,6 +509,14 @@ src_configure() {
 		EOC
 	fi
 
+	# GNU SASL
+	if use gsasl; then
+		cat >> Makefile <<- EOC
+			AUTH_GSASL=yes
+			AUTH_GSASL_PC=libgsasl
+		EOC
+	fi
+
 	# Pluggable Authentication Modules
 	if use pam; then
 		cat >> Makefile <<- EOC
@@ -545,10 +543,6 @@ src_compile() {
 src_install() {
 	cd "${S}"/build-exim-gentoo || die
 	dosbin exim
-	if use X; then
-		dosbin eximon.bin
-		dosbin eximon
-	fi
 	fperms 4755 /usr/sbin/exim
 
 	dosym exim /usr/sbin/sendmail
@@ -630,8 +624,6 @@ pkg_postinst() {
 	fi
 	use dsn && einfo "extra information in fail DSN message is experimental"
 	einfo
-	elog "Note that this release contains a tainted variable check that"
-	elog "is likely to break your configuration used with Exim 4.93 and before."
-	elog "Please check your transports for occurences of \$local_part, and"
-	elog "use a replacement like \$local_part_data where possible."
+	elog "Support for eximon via USE=X was dropped in this ebuild."
+	elog "The eximon code no longer compiles using recent compilers."
 }
