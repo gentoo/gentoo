@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-10-18)
+# media-libs/freetype works better with media-libs/harfbuzz support.
+media-libs/freetype harfbuzz
+
 # Matt Whitlock <gentoo@mattwhitlock.name> (2025-04-03)
 # Desktop users will probably want QR code scanning in Bitcoin-Qt, but
 # enabling USE=qrcode by default in the ebuild requires also enabling

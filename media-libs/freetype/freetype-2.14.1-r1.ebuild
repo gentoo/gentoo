@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
-IUSE="X +adobe-cff brotli bzip2 +cleartype-hinting debug doc fontforge +harfbuzz +png static-libs svg utils"
+IUSE="X +adobe-cff brotli bzip2 +cleartype-hinting debug doc fontforge harfbuzz +png static-libs svg utils"
 
 RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
