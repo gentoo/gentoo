@@ -148,6 +148,8 @@ PATCHES=(
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
 	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
+
+	"${FILESDIR}"/${PN}-2.51.1-openssh-10.1-tests.patch
 )
 
 pkg_setup() {

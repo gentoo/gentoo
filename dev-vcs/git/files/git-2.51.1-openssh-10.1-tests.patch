@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/964608
+(Tangentially: https://bugs.debian.org/1118288)
+https://lore.kernel.org/git/4e2952e512afc780b621d2c153b3e6e4eb7ed89a.camel@xry111.site/
+--- a/t/t7528-signed-commit-ssh.sh
++++ b/t/t7528-signed-commit-ssh.sh
+@@ -82,7 +82,7 @@ test_expect_success GPGSSH 'create signed commits' '
+ test_expect_success GPGSSH 'sign commits using literal public keys with ssh-agent' '
+ 	test_when_finished "test_unconfig commit.gpgsign" &&
+ 	test_config gpg.format ssh &&
+-	eval $(ssh-agent) &&
++	eval $(ssh-agent -T || ssh-agent) &&
+ 	test_when_finished "kill ${SSH_AGENT_PID}" &&
+ 	test_when_finished "test_unconfig user.signingkey" &&
+ 	mkdir tmpdir &&
