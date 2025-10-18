@@ -7,7 +7,7 @@ DOCS_BUILDER="mkdocs"
 DOCS_DEPEND="dev-python/mkdocs-material"
 DOCS_DIR="doc"
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 docs xdg
@@ -29,7 +29,7 @@ else
 		https://codeberg.org/eduVPN/linux-app/releases/download/${PV}/${MY_P}.tar.xz -> ${P}.tar.xz
 		verify-sig? ( https://codeberg.org/eduVPN/linux-app/releases/download/${PV}/${MY_P}.tar.xz.asc -> ${P}.tar.xz.asc )
 	"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -47,8 +47,8 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	net-misc/networkmanager
-	>=net-vpn/eduvpn-common-3[${PYTHON_USEDEP}]
-	<net-vpn/eduvpn-common-4[${PYTHON_USEDEP}]
+	>=net-vpn/eduvpn-common-4[${PYTHON_USEDEP}]
+	<net-vpn/eduvpn-common-5[${PYTHON_USEDEP}]
 	x11-libs/libnotify
 "
 
