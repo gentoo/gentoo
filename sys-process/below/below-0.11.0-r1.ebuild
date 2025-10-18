@@ -286,8 +286,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND="
-	virtual/libelf
+	app-arch/zstd:=
 	sys-libs/zlib
+	virtual/libelf:=
 "
 DEPEND="
 	${RDEPEND}
@@ -295,6 +296,12 @@ DEPEND="
 "
 
 QA_FLAGS_IGNORED="usr/bin/below"
+
+src_configure() {
+	export ZSTD_SYS_USE_PKG_CONFIG=1
+
+	cargo_src_configure
+}
 
 src_test() {
 	local skip=(
