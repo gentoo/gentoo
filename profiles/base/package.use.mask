@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Fabian Groffen <grobian@gentoo.org> (2025-10-18)
+# PAM support is discouraged due to not being secure via Exim
+# https://bugs.gentoo.org/964377
+mail-mta/exim pam
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
 # Preparation for sci-geosciences/liblas removal. Bug #957235
 <=dev-games/openscenegraph-3.6.5-r117 las
