@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="Virtual for Java Development Kit (JDK)"
 SLOT="${PV}"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ppc64 ~riscv ~x86"
 IUSE="headless-awt"
 
 RDEPEND="|| (
