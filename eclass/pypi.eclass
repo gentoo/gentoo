@@ -298,9 +298,9 @@ _pypi_provenance_url() {
 # @DESCRIPTION:
 # Output the URL to PyPI provenance for the specified artifact.
 pypi_provenance_url() {
-	local _PYPI_PROVENANCE_URL
+	local _PYPI_ATTESTATION_URL
 	_pypi_provenance_url "${@}"
-	echo "${_PYPI_PROVENANCE_URL}"
+	echo "${_PYPI_ATTESTATION_URL}"
 }
 
 # @FUNCTION: pypi_verify_provenance

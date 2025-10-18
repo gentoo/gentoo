@@ -551,6 +551,7 @@ distutils_enable_tests() {
 	case ${1} in
 		import-check)
 			test_pkgs+=' dev-python/pytest-import-check[${PYTHON_USEDEP}]'
+			EPYTEST_PLUGINS+=( pytest-import-check )
 			;&
 		pytest)
 			test_pkgs+=' >=dev-python/pytest-7.4.4[${PYTHON_USEDEP}]'
@@ -1287,7 +1288,7 @@ distutils-r1_python_compile() {
 			# from the oldest to the newest implementation,
 			# and the wheels are forward-compatible.
 			if [[
-				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none-any* ) ||
+				( ! ${DISTUTILS_EXT} && ${whl} == *py3-none* ) ||
 				(
 					${EPYTHON} == python* &&
 					# freethreading does not support stable ABI
