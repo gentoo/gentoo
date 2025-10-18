@@ -1,0 +1,247 @@
+https://bugs.gentoo.org/963583
+https://github.com/esnet/iperf/issues/1951
+https://github.com/esnet/iperf/pull/1956
+
+From aab262afe1770b55bb865fd4dad2d5e737c758a6 Mon Sep 17 00:00:00 2001
+From: Michael Lowman <michael.d.lowman@gmail.com>
+Date: Wed, 8 Oct 2025 22:40:07 +0200
+Subject: [PATCH 1/5] Set output buffer size prior to encrypt operation
+
+When calling EVP_PKEY_encrypt with a non-null output buffer,
+the output buffer length must be provided. Attempts to write
+beyond this length will fail.
+---
+ src/iperf_auth.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/iperf_auth.c b/src/iperf_auth.c
+index eda015099..774e1b701 100644
+--- a/src/iperf_auth.c
++++ b/src/iperf_auth.c
+@@ -252,6 +252,7 @@ int encrypt_rsa_message(const char *plaintext, EVP_PKEY *public_key, unsigned ch
+ #endif
+     rsa_buffer  = OPENSSL_malloc(keysize * 2);
+     *encryptedtext = (unsigned char*)OPENSSL_malloc(keysize);
++    encryptedtext_len = keysize;
+ 
+     BIO *bioBuff   = BIO_new_mem_buf((void*)plaintext, (int)strlen(plaintext));
+     rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, keysize * 2);
+
+From 00840604c85c598f7aaeffd21db0c62472d8ab34 Mon Sep 17 00:00:00 2001
+From: Michael Lowman <michael.d.lowman@gmail.com>
+Date: Wed, 8 Oct 2025 22:29:12 +0200
+Subject: [PATCH 2/5] Rename keysize to output_buffer_len
+
+This more accurately represents the meaning; it is the minimum
+buffer allocation necessary for an encrypt or decrypt operation
+to succeed. This is the same size for both ciphertext and
+cleartext, as padding is applied.
+---
+ src/iperf_auth.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/src/iperf_auth.c b/src/iperf_auth.c
+index 774e1b701..ea516904f 100644
+--- a/src/iperf_auth.c
++++ b/src/iperf_auth.c
+@@ -236,26 +236,26 @@ int encrypt_rsa_message(const char *plaintext, EVP_PKEY *public_key, unsigned ch
+ #endif
+     unsigned char *rsa_buffer = NULL;
+     size_t encryptedtext_len = 0;
+-    int rsa_buffer_len, keysize;
++    int rsa_buffer_len, output_buffer_len;
+ 
+ #if OPENSSL_VERSION_MAJOR >= 3
+     int rc;
+     ctx = EVP_PKEY_CTX_new_from_pkey(NULL, public_key, "");
+     /* See evp_pkey_rsa(7) and provider-keymgmt(7) */
+-    rc = EVP_PKEY_get_int_param(public_key, OSSL_PKEY_PARAM_MAX_SIZE, &keysize); /* XXX not really keysize */
++    rc = EVP_PKEY_get_int_param(public_key, OSSL_PKEY_PARAM_MAX_SIZE, &output_buffer_len);
+     if (!rc) {
+         goto errreturn;
+     }
+ #else
+     rsa = EVP_PKEY_get1_RSA(public_key);
+-    keysize = RSA_size(rsa);
++    output_buffer_len = RSA_size(rsa);
+ #endif
+-    rsa_buffer  = OPENSSL_malloc(keysize * 2);
+-    *encryptedtext = (unsigned char*)OPENSSL_malloc(keysize);
+-    encryptedtext_len = keysize;
++    rsa_buffer  = OPENSSL_malloc(output_buffer_len * 2);
++    *encryptedtext = (unsigned char*)OPENSSL_malloc(output_buffer_len);
++    encryptedtext_len = output_buffer_len;
+ 
+     BIO *bioBuff   = BIO_new_mem_buf((void*)plaintext, (int)strlen(plaintext));
+-    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, keysize * 2);
++    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, output_buffer_len * 2);
+ 
+     int padding = RSA_PKCS1_OAEP_PADDING;
+     if (use_pkcs1_padding){
+@@ -295,26 +295,26 @@ int decrypt_rsa_message(const unsigned char *encryptedtext, const int encryptedt
+ #endif
+     unsigned char *rsa_buffer = NULL;
+     size_t plaintext_len = 0;
+-    int rsa_buffer_len, keysize;
++    int rsa_buffer_len, output_buffer_len;
+ 
+ #if OPENSSL_VERSION_MAJOR >= 3
+     int rc;
+     ctx = EVP_PKEY_CTX_new_from_pkey(NULL, private_key, "");
+     /* See evp_pkey_rsa(7) and provider-keymgmt(7) */
+-    rc = EVP_PKEY_get_int_param(private_key, OSSL_PKEY_PARAM_MAX_SIZE, &keysize); /* XXX not really keysize */
++    rc = EVP_PKEY_get_int_param(private_key, OSSL_PKEY_PARAM_MAX_SIZE, &output_buffer_len);
+     if (!rc) {
+         goto errreturn;
+     }
+ #else
+     rsa = EVP_PKEY_get1_RSA(private_key);
+-    keysize = RSA_size(rsa);
++    output_buffer_len = RSA_size(rsa);
+ #endif
+-    rsa_buffer  = OPENSSL_malloc(keysize * 2);
++    rsa_buffer  = OPENSSL_malloc(output_buffer_len * 2);
+     // Note: +1 for NULL
+-    *plaintext = (unsigned char*)OPENSSL_malloc(keysize + 1);
++    *plaintext = (unsigned char*)OPENSSL_malloc(output_buffer_len + 1);
+ 
+     BIO *bioBuff   = BIO_new_mem_buf((void*)encryptedtext, encryptedtext_len);
+-    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, keysize * 2);
++    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, output_buffer_len * 2);
+ 
+     int padding = RSA_PKCS1_OAEP_PADDING;
+     if (use_pkcs1_padding){
+@@ -322,7 +322,7 @@ int decrypt_rsa_message(const unsigned char *encryptedtext, const int encryptedt
+     }
+ #if OPENSSL_VERSION_MAJOR >= 3
+ 
+-    plaintext_len = keysize;
++    plaintext_len = output_buffer_len;
+     EVP_PKEY_decrypt_init(ctx);
+ 
+     ret = EVP_PKEY_CTX_set_rsa_padding(ctx, padding);
+
+From f30aaa3be199313c079d585f7eaf20a0745186b9 Mon Sep 17 00:00:00 2001
+From: Michael Lowman <michael.d.lowman@gmail.com>
+Date: Wed, 8 Oct 2025 16:46:20 +0200
+Subject: [PATCH 3/5] Avoid out-of-bounds access when base64 decoding short
+ strings
+
+Check the length before reading memory.
+---
+ src/iperf_auth.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/iperf_auth.c b/src/iperf_auth.c
+index ea516904f..eddc5a85f 100644
+--- a/src/iperf_auth.c
++++ b/src/iperf_auth.c
+@@ -130,9 +130,9 @@ int Base64Encode(const unsigned char* buffer, const size_t length, char** b64tex
+ 
+ size_t calcDecodeLength(const char* b64input) { //Calculates the length of a decoded string
+     size_t len = strlen(b64input), padding = 0;
+-    if (b64input[len-1] == '=' && b64input[len-2] == '=') //last two chars are =
++    if (len >= 2 && b64input[len-1] == '=' && b64input[len-2] == '=') //last two chars are =
+         padding = 2;
+-    else if (b64input[len-1] == '=') //last char is =
++    else if (len >= 1 && b64input[len-1] == '=') //last char is =
+         padding = 1;
+ 
+     return (len*3)/4 - padding;
+
+From 1cca42a1e77df8fba83ef6340388cad34625087c Mon Sep 17 00:00:00 2001
+From: Michael Lowman <michael.d.lowman@gmail.com>
+Date: Wed, 8 Oct 2025 17:57:37 +0200
+Subject: [PATCH 4/5] Don't over-allocate followed by partial reads
+
+We know how much we expect to read; the input buffer
+has a defined size. Allocate the exact buffer expected
+instead of a larger one with a read expected to return
+only partial data. This makes it simpler to follow the
+logic and to avoid off-by-one errors.
+---
+ src/iperf_auth.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/iperf_auth.c b/src/iperf_auth.c
+index eddc5a85f..d582c615a 100644
+--- a/src/iperf_auth.c
++++ b/src/iperf_auth.c
+@@ -235,7 +235,7 @@ int encrypt_rsa_message(const char *plaintext, EVP_PKEY *public_key, unsigned ch
+     RSA *rsa = NULL;
+ #endif
+     unsigned char *rsa_buffer = NULL;
+-    size_t encryptedtext_len = 0;
++    size_t encryptedtext_len = 0, plaintext_len = 0;
+     int rsa_buffer_len, output_buffer_len;
+ 
+ #if OPENSSL_VERSION_MAJOR >= 3
+@@ -250,12 +250,13 @@ int encrypt_rsa_message(const char *plaintext, EVP_PKEY *public_key, unsigned ch
+     rsa = EVP_PKEY_get1_RSA(public_key);
+     output_buffer_len = RSA_size(rsa);
+ #endif
+-    rsa_buffer  = OPENSSL_malloc(output_buffer_len * 2);
++    plaintext_len = strlen(plaintext);
++    rsa_buffer  = OPENSSL_malloc(output_buffer_len);
+     *encryptedtext = (unsigned char*)OPENSSL_malloc(output_buffer_len);
+     encryptedtext_len = output_buffer_len;
+ 
+-    BIO *bioBuff   = BIO_new_mem_buf((void*)plaintext, (int)strlen(plaintext));
+-    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, output_buffer_len * 2);
++    BIO *bioBuff   = BIO_new_mem_buf((void*)plaintext, (int)plaintext_len);
++    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, plaintext_len);
+ 
+     int padding = RSA_PKCS1_OAEP_PADDING;
+     if (use_pkcs1_padding){
+@@ -309,12 +310,12 @@ int decrypt_rsa_message(const unsigned char *encryptedtext, const int encryptedt
+     rsa = EVP_PKEY_get1_RSA(private_key);
+     output_buffer_len = RSA_size(rsa);
+ #endif
+-    rsa_buffer  = OPENSSL_malloc(output_buffer_len * 2);
++    rsa_buffer  = OPENSSL_malloc(output_buffer_len);
+     // Note: +1 for NULL
+     *plaintext = (unsigned char*)OPENSSL_malloc(output_buffer_len + 1);
+ 
+     BIO *bioBuff   = BIO_new_mem_buf((void*)encryptedtext, encryptedtext_len);
+-    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, output_buffer_len * 2);
++    rsa_buffer_len = BIO_read(bioBuff, rsa_buffer, encryptedtext_len);
+ 
+     int padding = RSA_PKCS1_OAEP_PADDING;
+     if (use_pkcs1_padding){
+
+From 92f288ff6230dbe186e95688c910268f6942e214 Mon Sep 17 00:00:00 2001
+From: Michael Lowman <michael.d.lowman@gmail.com>
+Date: Wed, 8 Oct 2025 17:58:52 +0200
+Subject: [PATCH 5/5] Add warnings on silent truncation
+
+Input should not be this long, but makes the expectations
+of the code clearer.
+---
+ src/iperf_auth.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/iperf_auth.c b/src/iperf_auth.c
+index d582c615a..4c38fa938 100644
+--- a/src/iperf_auth.c
++++ b/src/iperf_auth.c
+@@ -251,6 +251,9 @@ int encrypt_rsa_message(const char *plaintext, EVP_PKEY *public_key, unsigned ch
+     output_buffer_len = RSA_size(rsa);
+ #endif
+     plaintext_len = strlen(plaintext);
++    if (plaintext_len > output_buffer_len) {
++        fprintf(stderr, "Plaintext of size %zd truncated to %d; data is lost.\n", plaintext_len, output_buffer_len);
++    }
+     rsa_buffer  = OPENSSL_malloc(output_buffer_len);
+     *encryptedtext = (unsigned char*)OPENSSL_malloc(output_buffer_len);
+     encryptedtext_len = output_buffer_len;
+@@ -310,6 +313,9 @@ int decrypt_rsa_message(const unsigned char *encryptedtext, const int encryptedt
+     rsa = EVP_PKEY_get1_RSA(private_key);
+     output_buffer_len = RSA_size(rsa);
+ #endif
++    if (encryptedtext_len > output_buffer_len) {
++        fprintf(stderr, "Encrypted text of size %d truncated to %d; likely invalid input.\n", encryptedtext_len, output_buffer_len);
++    }
+     rsa_buffer  = OPENSSL_malloc(output_buffer_len);
+     // Note: +1 for NULL
+     *plaintext = (unsigned char*)OPENSSL_malloc(output_buffer_len + 1);
+
