@@ -33,12 +33,12 @@ RDEPEND="
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	>=sys-process/acct-6.6.4-r1
-	amd64? ( video_cards_nvidia? (
+	video_cards_nvidia? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/nvidia-ml-py[${PYTHON_USEDEP}]
 		')
-	) )
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
@@ -54,7 +54,7 @@ pkg_setup() {
 		linux-mod-r1_pkg_setup
 	fi
 
-	if use amd64 && use video_cards_nvidia ; then
+	if use video_cards_nvidia ; then
 		python-single-r1_pkg_setup
 	fi
 }
@@ -124,7 +124,7 @@ src_install() {
 
 		newinitd "${FILESDIR}"/atopgpud.initd atopgpud
 
-		python_fix_shebang ${ED}"/usr/sbin/atopgpud"
+		python_fix_shebang "${ED}/usr/sbin/atopgpud"
 	else
 		rm "${ED}"/usr/sbin/atopgpud || die
 	fi
