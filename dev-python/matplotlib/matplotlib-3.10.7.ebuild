@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
+PYPI_VERIFY_REPO=https://github.com/matplotlib/matplotlib
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
