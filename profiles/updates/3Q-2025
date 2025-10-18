@@ -4,3 +4,4 @@ move llvm-core/clang-runtime llvm-runtimes/clang-runtime
 slotmove media-libs/glycin-loaders 0 1
 move sys-apps/moar sys-apps/moor
 slotmove kde-frameworks/ksecretd-services 0 6
+move sci-libs/HighFive sci-libs/highfive
