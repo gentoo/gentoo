@@ -30,7 +30,7 @@ CP_DEPEND="
 	dev-java/osgi-cmpn:8
 	dev-java/osgi-core:0
 	dev-java/slf4j-simple:0
-	dev-java/snakeyaml:0
+	dev-java/snakeyaml:1
 	dev-java/xz-java:0
 "
 

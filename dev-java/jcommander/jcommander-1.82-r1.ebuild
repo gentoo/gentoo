@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
-	test? ( dev-java/jackson-annotations:2 )
+	test? ( dev-java/jackson-annotations:1 )
 "
 RDEPEND="
 	>=virtual/jre-1.8:*
@@ -40,7 +40,7 @@ JAVA_SRC_DIR="src/main/java"
 # Needs "java-util-2-runner-args.patch" from https://github.com/gentoo/gentoo/pull/21319#issuecomment-878128343
 JAVA_TEST_RUNNER_EXTRA_ARGS=( -verbose 3 -usedefaultlisteners true )
 
-JAVA_TEST_GENTOO_CLASSPATH="jackson-annotations-2,testng"
+JAVA_TEST_GENTOO_CLASSPATH="jackson-annotations-1,testng"
 JAVA_TEST_EXTRA_ARGS=( -Djava.io.tmpdir="${T}" )
 JAVA_TEST_SRC_DIR=( src/test/java )
 JAVA_TEST_RESOURCE_DIRS=( src/test/resources )

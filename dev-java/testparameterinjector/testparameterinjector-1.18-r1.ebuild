@@ -22,7 +22,7 @@ CP_DEPEND="
 	>=dev-java/guava-33.4.8:0
 	dev-java/jsr305:0
 	dev-java/junit:4
-	dev-java/snakeyaml:0
+	dev-java/snakeyaml:1
 "
 
 DEPEND="
@@ -32,7 +32,7 @@ DEPEND="
 	dev-java/incap:0
 	dev-java/javapoet:0
 	test? (
-		>=dev-java/protobuf-java-4.30.2:0
+		~dev-java/protobuf-java-4.32.1:0
 		dev-java/truth:0
 	)
 "
@@ -42,7 +42,7 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
-JAVA_CLASSPATH_EXTRA="jsr305,junit-4,snakeyaml"
+JAVA_CLASSPATH_EXTRA="jsr305,junit-4,snakeyaml-1"
 JAVA_SRC_DIR="src/main/java"
 JAVA_TEST_GENTOO_CLASSPATH="junit-4,protobuf-java,truth"
 JAVA_TEST_SRC_DIR="src/test/java"

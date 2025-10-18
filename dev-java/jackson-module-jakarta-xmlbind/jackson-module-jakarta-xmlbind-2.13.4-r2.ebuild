@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/FasterXML/jackson-modules-base"
 SRC_URI="https://github.com/FasterXML/jackson-modules-base/archive/jackson-modules-base-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="1"
 KEYWORDS="amd64 arm64 ppc64"
 
 # Common dependencies
@@ -29,9 +29,9 @@ KEYWORDS="amd64 arm64 ppc64"
 # jakarta.xml.bind:jakarta.xml.bind-api:3.0.1 -> >=dev-java/jaxb-api-3.0.1:3
 
 CP_DEPEND="
-	~dev-java/jackson-annotations-${PV}:2
-	~dev-java/jackson-core-${PV}:0
-	~dev-java/jackson-databind-${PV}.1:0
+	~dev-java/jackson-annotations-${PV}:1
+	~dev-java/jackson-core-${PV}:1
+	~dev-java/jackson-databind-${PV}.1:1
 	dev-java/jakarta-activation:1
 	dev-java/jaxb-api:4
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ HOMEPAGE="https://bitbucket.org/snakeyaml/snakeyaml"
 SRC_URI="https://bitbucket.org/${PN}/${PN}/get/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="1"
 KEYWORDS="amd64 arm64 ppc64"
 
 # Compile dependencies

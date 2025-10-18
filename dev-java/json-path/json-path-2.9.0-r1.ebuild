@@ -20,7 +20,7 @@ KEYWORDS="amd64"
 CP_DEPEND="
 	dev-java/tapestry-json:0
 	dev-java/gson:0
-	dev-java/jackson-databind:0
+	dev-java/jackson-databind:1
 	dev-java/jettison:0
 	dev-java/json:0
 	dev-java/jsonb-api:0
