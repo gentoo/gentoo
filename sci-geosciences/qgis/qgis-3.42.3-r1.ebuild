@@ -16,8 +16,12 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 	inherit git-r3
 else
-	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
-		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
+	SRC_URI="
+		https://qgis.org/downloads/${P}.tar.bz2
+		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )
+	"
+	# bug #957156
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.42.3-sip-6.11.patch.xz"
 	KEYWORDS="~amd64"
 fi
 inherit cmake flag-o-matic python-single-r1 xdg
@@ -40,7 +44,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=app-crypt/qca-2.3.7:2[qt6(+),ssl]
 	dev-cpp/abseil-cpp:=
-	>=dev-db/spatialite-4.2.0:=
+	>=dev-db/spatialite-4.2.0
 	dev-db/sqlite:3
 	dev-libs/expat
 	dev-libs/libzip:=
@@ -76,14 +80,7 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
-		|| (
-			(
-				$(python_gen_cond_dep '
-					sci-libs/gdal[python,${PYTHON_USEDEP}]
-				')
-			)
-			>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
-		)
+		>=sci-libs/gdal-2.2.3[python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/httplib2[${PYTHON_USEDEP}]
 			dev-python/jinja2[${PYTHON_USEDEP}]
@@ -123,17 +120,18 @@ BDEPEND="${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			dev-python/mock[${PYTHON_USEDEP}]
 			dev-python/nose2[${PYTHON_USEDEP}]
-			postgres? (
-				dev-python/psycopg:2[${PYTHON_USEDEP}]
-			)
+			dev-python/psycopg:2[${PYTHON_USEDEP}]
 			dev-python/pyqt6[${PYTHON_USEDEP},testlib]
 		')
 	) )
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.44.3-testReportDir.patch"
-	"${FILESDIR}/${PN}-3.44.3-include-memory.patch"
+	"${FILESDIR}/${PN}-3.42.2-testReportDir.patch"
+	# Fixes pulled from upstream branches, see bug #955031
+	"${FILESDIR}/${P}-fix-qt6-heatmap.patch"
+	"${FILESDIR}/${P}-fix-qt6-qgsserver-getmap.patch"
+	"${WORKDIR}/${PN}-3.42.3-sip-6.11.patch"
 )
 
 src_prepare() {
@@ -141,17 +139,14 @@ src_prepare() {
 	# Tests want to be run inside a git repo
 	if [[ ${PV} != *9999* ]]; then
 		if use test; then
-			git config set --append --global safe.directory "${S}" || die
+			git config --global --add safe.directory "${S}" || die
+			git init -q || die
+			git config --local gc.auto 0 || die
+			git config --local user.email "larry@gentoo.org" || die
+			git config --local user.name "Larry the Cow" || die
+			git add . || die
 
-			git init -q --initial-branch="master" || die
-
-			git config set --local gc.auto 0 || die
-			git config set --local user.email "larry@gentoo.org" || die
-			git config set --local user.name "Larry the Cow" || die
-			git add . > /dev/null || die
-
-			git commit -m "init" > /dev/null || die
-			git tag -a -m "${PV}" "${PV}" || die
+			git commit -m "init" || die
 		fi
 	fi
 }
@@ -263,162 +258,172 @@ src_test() {
 	addwrite "/dev/fuse"
 
 	local -x CMAKE_SKIP_TESTS=(
-		"^checkGitStatus$"
-		"^ProcessingQgisAlgorithmsTestPt1$"
-		"^ProcessingQgisAlgorithmsTestPt4$"
-		"^ProcessingGdalAlgorithmsRasterTest$"
-		"^ProcessingGdalAlgorithmsVectorTest$"
-		"^ProcessingGrassAlgorithmsImageryTest$"
-		"^ProcessingGrassAlgorithmsRasterTestPt1$"
-		"^ProcessingGrassAlgorithmsRasterTestPt2$"
-		"^ProcessingGrassAlgorithmsVectorTest$"
-		"^test_core_callout$"
-		"^test_core_compositionconverter$"
-		"^test_core_expression$"
-		"^test_core_fontmarker$"
-		"^test_core_gdalutils$"
-		"^test_core_labelingengine$"
-		"^test_core_layoutlabel$"
-		"^test_core_layoutmanualtable$"
-		"^test_core_layoutmap$"
-		"^test_core_layoutmapgrid$"
-		"^test_core_layoutpicture$"
-		"^test_core_layoutscalebar$"
-		"^test_core_layouttable$"
-		"^test_core_legendrenderer$"
-		"^test_core_maprendererjob$"
-		"^test_core_maprotation$"
-		"^test_core_meshlayer$"
-		"^test_core_pallabeling$"
-		"^test_core_project$"
-		"^test_core_projectstorage$"
-		"^test_core_svgmarker$"
-		"^test_core_tiledownloadmanager$"
-		"^test_core_vectortilelayer$"
-		"^test_gui_processinggui$"
-		"^test_gui_queryresultwidget$"
-		"^test_3d_3dcameracontroller$"
-		"^test_3d_3drendering$"
-		"^test_3d_3dutils$"
-		"^test_3d_layout3dmap$"
-		"^test_3d_mesh3drendering$"
-		"^test_3d_pointcloud3drendering$"
-		"^test_3d_rubberband3drendering$"
-		"^test_analysis_processingalgspt2$"
-		"^test_analysis_processing$"
-		"^test_provider_wcsprovider$"
-		"^test_provider_copcprovider$"
-		"^qgis_grassprovidertest8$"
-		"^test_app_qgisapp$"
-		"^test_app_qgisappclipboard$"
-		"^test_app_advanceddigitizing$"
-		"^PyQgsAFSProvider$"
-		"^PyQgsPythonProvider$"
-		"^PyQgsAnnotationLineTextItem$"
-		"^PyQgsAnnotationPictureItem$"
-		"^PyQgsAnnotationPointTextItem$"
-		"^PyQgsColorRampLegendNode$"
-		"^PyQgsDelimitedTextProvider$"
-		"^PyQgsExternalStorageWebDav$"
-		"^PyQgsExternalStorageAwsS3$"
-		"^PyQgsGeometryGeneratorSymbolLayer$"
-		"^PyQgsGeometryPaintDevice$"
-		"^PyQgsGeometryTest$"
-		"^PyQgsGoogleMapsGeocoder$"
-		"^PyQgsLayoutAtlas$"
-		"^PyQgsLayoutElevationProfile$"
-		"^PyQgsLayoutHtml$"
-		"^PyQgsLayoutLegend$"
-		"^PyQgsLayoutMap$"
-		"^PyQgsLayoutMapGrid$"
-		"^PyQgsLinearReferencingSymbolLayer$"
-		"^PyQgsMapLayerProxyModel$"
-		"^PyQgsMeshLayer$"
-		"^PyQgsMeshLayerLabeling$"
-		"^PyQgsMeshLayerRenderer$"
-		"^PyQgsMemoryProvider$"
-		"^PyQgsPalLabelingCanvas$"
-		"^PyQgsPalLabelingLayout$"
-		"^PyQgsPalLabelingPlacement$"
-		"^PyQgsPlot$"
-		"^PyQgsPointDisplacementRenderer$"
-		"^PyQgsProfileSourceRegistry$"
-		"^TestQgsRandomMarkerSymbolLayer$"
-		"^PyQgsRasterFileWriter$"
-		"^PyQgsRasterLayerRenderer$"
-		"^PyQgsShapefileProvider$"
-		"^PyQgsSvgCache$"
-		"^PyQgsTextRenderer$"
-		"^PyQgsStyleModel$"
-		"^PyQgsVectorFileWriter$"
-		"^PyQgsVectorLayerCache$"
-		"^PyQgsVectorLayerCache$"
-		"^PyQgsVectorLayerSelectedFeatureSource$"
-		"^PyQgsVirtualLayerProvider$"
-		"^PyQgsWFSProvider$"
-		"^PyQgsOapifProvider$"
-		"^PyQgsSettings$"
-		"^PyQgsSettingsEntry$"
-		"^PyQgsAuxiliaryStorage$"
-		"^PyQgsSelectiveMasking$"
-		"^PyQgsPalLabelingServer$"
-		"^PyQgsOGRProvider$"
-		"^PyQgsWFSProviderGUI$"
-		"^PyQgsAnnotation$"
-		"^PyQgsAuthenticationSystem$"
-		"^PyQgsEditWidgets$"
-		"^PyQgsElevationProfileCanvas$"
-		"^PyQgsMapLayerComboBox$"
-		"^PyQgsRasterLabeling$"
-		"^PyQgsVectorLayer$"
-		"^PyQgsVectorLayerShapefile$"
-		"^PyQgsAppStartup$"
-		"^PyQgsServerWMSGetMap$"
-		"^PyQgsServerWMSGetLegendGraphic$"
-		"^PyQgsServerWMSGetPrint$"
-		"^PyQgsServerWMSGetPrintExtra$"
-		"^PyQgsServerWMSGetPrintOutputs$"
-		"^PyQgsServerWMSGetPrintAtlas$"
-		"^PyQgsServerWFS$"
-		"^qgis_banned_keywords$"
-		"^qgis_class_names$"
-		"^qgis_licenses$"
-		"^PyQgsSipCoverage$"
+		PyQgsAFSProvider$
+		PyQgsAnnotation$
+		PyQgsAuthenticationSystem$
+		PyQgsAuxiliaryStorage$
+		PyQgsBlockingNetworkRequest$
+		PyQgsBlockingProcess$
+		PyQgsCodeEditor$
+		PyQgsDataItemProviderRegistry$
+		PyQgsDelimitedTextProvider$
+		PyQgsEditWidgets$
+		PyQgsElevationProfileCanvas$
+		PyQgsEmbeddedSymbolRenderer$
+		PyQgsExternalStorageAwsS3$
+		PyQgsExternalStorageWebDav$
+		PyQgsFileDownloader$
+		PyQgsFloatingWidget$
+		PyQgsGeometryTest$
+		PyQgsGoogleMapsGeocoder$
+		PyQgsGroupLayer$
+		PyQgsLayerDefinition$
+		PyQgsLayoutHtml$
+		PyQgsLayoutLegend$
+		PyQgsLayoutMap$
+		PyQgsLineSymbolLayers$
+		PyQgsMapBoxGlStyleConverter$
+		PyQgsMapLayerComboBox$
+		PyQgsMapLayerProxyModel$
+		PyQgsMemoryProvider$
+		PyQgsNetworkAccessManager$
+		PyQgsOGRProvider$
+		PyQgsOGRProviderGpkg$
+		PyQgsPainting$
+		PyQgsPalLabelingCanvas$
+		PyQgsPalLabelingLayout$
+		PyQgsPalLabelingPlacement$
+		PyQgsPlot$
+		PyQgsPointCloudAttributeByRampRenderer$
+		PyQgsPointCloudClassifiedRenderer$
+		PyQgsPointCloudRgbRenderer$
+		PyQgsProcessExecutablePt1$
+		PyQgsProcessExecutablePt2$
+		PyQgsProcessingAlgRunner$
+		PyQgsProcessingInPlace$
+		PyQgsProcessingPackageLayersAlgorithm$
+		PyQgsProcessingParameters$
+		PyQgsProject$
+		PyQgsPythonProvider$
+		PyQgsRasterFileWriter$
+		PyQgsRasterLayer$
+		PyQgsRasterLayerRenderer$
+		PyQgsSelectiveMasking$
+		PyQgsSettings$
+		PyQgsSettingsEntry$
+		PyQgsShapefileProvider$
+		PyQgsSpatialiteProvider$
+		PyQgsStyleModel$
+		PyQgsSvgCache$
+		PyQgsSymbolLayerReadSld$
+		PyQgsTextRenderer$
+		PyQgsVectorFileWriter$
+		PyQgsVectorLayerCache$
+		PyQgsVectorLayerEditBuffer$
+		PyQgsVectorLayerEditUtils$
+		PyQgsVectorLayerProfileGenerator$
+		PyQgsWFSProvider$
+		TestQgsRandomMarkerSymbolLayer$
+		qgis_sip_uptodate$
+		test_3d_3drendering$
+		test_3d_layout3dmap$
+		test_3d_mesh3drendering$
+		test_3d_pointcloud3drendering$
+		test_3d_tessellator$
+		test_analysis_gcptransformer$
+		test_app_advanceddigitizing$
+		test_authmethod_authoauth2method$
+		test_core_mapdevicepixelratio$
+		test_core_ogcutils$
+		test_core_openclutils$
+		test_core_vectortilelayer$
+		test_gui_dockwidget$
+		test_gui_ogrprovidergui$
 
-		# slow af
-		"^qgis_sip_uptodate$"
+		PyQgsDocCoverage$
+		PyQgsSipCoverage$
+	)
+
+	CMAKE_SKIP_TESTS+=(
+		test_core_blendmodes$
+		test_core_callout$
+		test_core_compositionconverter$
+		test_core_dataitem$
+		test_core_expression$
+		test_core_gdalutils$
+		test_core_labelingengine$
+		test_core_layoutmap$
+		test_core_layoutmapoverview$
+		test_core_layoutpicture$
+		test_core_linefillsymbol$
+		test_core_maprendererjob$
+		test_core_maprotation$
+		test_core_meshlayer$
+		test_core_meshlayerrenderer$
+		test_core_networkaccessmanager$
+		test_core_pointcloudlayerexporter$
+		test_core_project$
+		test_core_rastercontourrenderer$
+		test_core_rasterlayer$
+		test_core_simplemarker$
+		test_core_tiledownloadmanager$
+		test_gui_processinggui$
+		test_gui_filedownloader$
+		test_gui_newdatabasetablewidget$
+		test_gui_queryresultwidget$
+		test_analysis_processingalgspt2$
+		test_analysis_meshcontours$
+		test_analysis_triangulation$
+		test_analysis_processing$
+		test_provider_wcsprovider$
+		test_app_maptoolcircularstring$
+		test_app_vertextool$
 	)
 
 	if ! use netcdf; then
 		CMAKE_SKIP_TESTS+=(
-			"^test_core_gdalprovider$"
+			test_core_gdalprovider$
 		)
 	fi
 
 	if ! use hdf5; then
 		CMAKE_SKIP_TESTS+=(
-			"^test_gui_meshlayerpropertiesdialog$"
-			"^test_app_maptooleditmesh$"
+			test_gui_meshlayerpropertiesdialog$
+			test_app_maptooleditmesh$
 		)
 	fi
 
 	if ! use python || ! use postgres; then
 		CMAKE_SKIP_TESTS+=(
-			"^ProcessingCheckValidityAlgorithmTest$"
-			"^ProcessingGdalAlgorithmsGeneralTest$"
-			"^ProcessingGdalAlgorithmsRasterTest$"
-			"^ProcessingGdalAlgorithmsVectorTest$"
-			"^ProcessingGrassAlgorithmsImageryTest$"
-			"^ProcessingGrassAlgorithmsRasterTestPt1$"
-			"^ProcessingGrassAlgorithmsRasterTestPt2$"
-			"^ProcessingGrassAlgorithmsVectorTest$"
-			"^ProcessingQgisAlgorithmsTestPt1$"
-			"^ProcessingQgisAlgorithmsTestPt3$"
-			"^ProcessingQgisAlgorithmsTestPt4$"
-			"^ProcessingQgisAlgorithmsTestPt5$"
-			"^ProcessingScriptUtilsTest$"
+			ProcessingGrassAlgorithmsRasterTestPt2$
+			ProcessingCheckValidityAlgorithmTest$
+			ProcessingGdalAlgorithmsGeneralTest$
+			ProcessingGdalAlgorithmsRasterTest$
+			ProcessingGdalAlgorithmsVectorTest$
+			ProcessingGeneralTest$
+			ProcessingGenericAlgorithmsTest$
+			ProcessingGrassAlgorithmsImageryTest$
+			ProcessingGrassAlgorithmsRasterTestPt1$
+			ProcessingGrassAlgorithmsVectorTest$
+			ProcessingGuiTest$
+			ProcessingModelerTest$
+			ProcessingParametersTest$
+			ProcessingProjectProviderTest$
+			ProcessingQgisAlgorithmsTestPt1$
+			ProcessingQgisAlgorithmsTestPt2$
+			ProcessingQgisAlgorithmsTestPt3$
+			ProcessingQgisAlgorithmsTestPt4$
+			ProcessingQgisAlgorithmsTestPt5$
+			ProcessingQgisAlgorithmsTestPt5$
+			ProcessingScriptUtilsTest$
+			ProcessingToolsTest$
 		)
 	fi
+
+	local myctestargs=(
+		--output-on-failure
+		-j1
+	)
 
 	xdg_environment_reset
 
@@ -432,7 +437,6 @@ src_install() {
 	if use test; then
 		git config --global --add safe.directory "${S}" || die
 	fi
-
 	cmake_src_install
 
 	insinto /usr/share/mime/packages
@@ -451,12 +455,6 @@ src_install() {
 
 	if use grass; then
 		python_fix_shebang "${ED}"/usr/share/qgis/grass/scripts
-	fi
-
-	if ! [[ ${PV} == *9999* ]]; then
-		if use test; then
-			git config unset --all --global --value="${S}" safe.directory || die
-		fi
 	fi
 }
 

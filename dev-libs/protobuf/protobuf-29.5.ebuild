@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib dot-a elisp-common flag-o-matic multilib toolchain-funcs
+inherit cmake-multilib dot-a elisp-common multilib
 
 # NOTE from https://github.com/protocolbuffers/protobuf/blob/main/cmake/dependencies.cmake
 ABSEIL_MIN_VER="20250127.0"
@@ -24,7 +24,7 @@ DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing st
 HOMEPAGE="https://protobuf.dev/"
 
 LICENSE="BSD"
-IUSE="conformance debug emacs examples +libprotoc +libupb +protobuf +protoc test zlib"
+IUSE="conformance debug emacs examples +libprotoc libupb +protobuf +protoc test zlib"
 
 # Require protobuf for the time being
 REQUIRED_USE="
@@ -33,7 +33,6 @@ REQUIRED_USE="
 	examples? ( protobuf )
 	libprotoc? ( protobuf )
 	libupb? ( protobuf )
-	protoc? ( libupb )
 "
 
 RESTRICT="!test? ( test )"
@@ -65,7 +64,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-23.3-static_assert-failure.patch"
-	# "${FILESDIR}/${PN}-28.0-disable-test_upb-lto.patch" # applied manually
+	"${FILESDIR}/${PN}-28.0-disable-test_upb-lto.patch"
 	"${FILESDIR}/${PN}-30.0-findJsonCpp.patch"
 )
 
@@ -74,18 +73,10 @@ DOCS=( CONTRIBUTORS.txt README.md )
 src_prepare() {
 	cmake_src_prepare
 
-# 	if tc-is-lto; then
-# 		eapply "${FILESDIR}/${PN}-28.0-disable-test_upb-lto.patch"
-# 	fi
-
 	cp "${FILESDIR}/FindJsonCpp.cmake" "${S}/cmake" || die
 }
 
 multilib_src_configure() {
-	# bug #963340 (seems to only happen when upgrading from older pb,
-	# possibly w/o tests too).
-	use libupb && filter-lto
-
 	# Currently, the only static library is libupb (and there is no
 	# USE=static-libs), so optimize away the fat-lto build time penalty.
 	use libupb && lto-guarantee-fat
@@ -131,45 +122,28 @@ src_compile() {
 	fi
 }
 
-# we override here to inject env vars
-multilib_src_test() {
-	local -x TEST_TMPDIR="${T%/}/TEST_TMPDIR_${ABI}"
-	mkdir -p -m 770 "${TEST_TMPDIR}" || die
-
-	ln -srf "${S}/src" "${BUILD_DIR}/include" || die
-
-	cmake_src_test "${_cmake_args[@]}"
-}
-
 src_test() {
 	local -x srcdir="${S}/src"
 
-	local GTEST_SKIP_TESTS=(
-		"PackedTest/12.DecodeEmptyPackedField"
-	)
+	# we override here to inject env vars
+	multilib_src_test() {
+		local -x TEST_TMPDIR="${T%/}/TEST_TMPDIR_${ABI}"
+		mkdir -p -m 770 "${TEST_TMPDIR}" || die
 
-	if tc-is-lto; then
-		# Do headstands for LTO # 942985
-		GTEST_SKIP_TESTS+=(
-			"FileDescriptorSetSource/EncodeDecodeTest*"
-			"LazilyBuildDependenciesTest.GeneratedFile"
-			"PythonGeneratorTest/PythonGeneratorTest.PythonWithCppFeatures/*"
-		)
-	fi
+		ln -srf "${S}/src" "${BUILD_DIR}/include" || die
 
-	if [[ ! -v GTEST_FILTER ]]; then
-		local -x GTEST_FILTER
-	fi
-	[[ -n ${GTEST_RUN_TESTS[*]} ]] && GTEST_FILTER+="$(IFS=':' ; echo "${GTEST_SKIP_TESTS[*]}")"
-	[[ -n ${GTEST_SKIP_TESTS[*]} ]] && GTEST_FILTER+="${GTEST_FILTER+:}-$(IFS=':' ; echo "${GTEST_SKIP_TESTS[*]}")"
+		cmake_src_test "${_cmake_args[@]}"
+	}
+
+	# Do headstands for LTO # 942985
+	local -x GTEST_FILTER
+	GTEST_FILTER="-FileDescriptorSetSource/EncodeDecodeTest*:LazilyBuildDependenciesTest.GeneratedFile:PythonGeneratorTest/PythonGeneratorTest.PythonWithCppFeatures/*"
 
 	cmake-multilib_src_test
 
-# 	if tc-is-lto; then
-# 		GTEST_FILTER="${GTEST_FILTER//-/}"
-#
-# 		cmake-multilib_src_test
-# 	fi
+	GTEST_FILTER="${GTEST_FILTER//-/}"
+
+	cmake-multilib_src_test
 }
 
 multilib_src_install_all() {
