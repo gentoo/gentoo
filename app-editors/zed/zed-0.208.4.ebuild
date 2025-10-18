@@ -9,24 +9,19 @@ CRATES="
 "
 
 declare -A GIT_CRATES=(
-	[alacritty_terminal]='https://github.com/zed-industries/alacritty;828457c9ff1f7ea0a0469337cc8a37ee3a1b0590;alacritty-%commit%/alacritty_terminal'
 	[async-pipe]='https://github.com/zed-industries/async-pipe-rs;82d00a04211cf4e1236029aa03e6b6ce2a74c553;async-pipe-rs-%commit%'
-	[async-stripe]='https://github.com/zed-industries/async-stripe;3672dd4efb7181aa597bf580bf5a2f5d23db6735;async-stripe-%commit%'
-	[blade-graphics]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-graphics'
-	[blade-macros]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-macros'
-	[blade-util]='https://github.com/kvark/blade;e0ec4e720957edd51b945b64dd85605ea54bcfe5;blade-%commit%/blade-util'
-	[dap-types]='https://github.com/zed-industries/dap-types;7f39295b441614ca9dbf44293e53c32f666897f9;dap-types-%commit%/dap-types'
-	[font-kit]='https://github.com/zed-industries/font-kit;5474cfad4b719a72ec8ed2cb7327b2b01fd10568;font-kit-%commit%'
-	[jj-lib-proc-macros]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib/proc-macros'
-	[jj-lib]='https://github.com/jj-vcs/jj;e18eb8e05efaa153fad5ef46576af145bba1807f;jj-%commit%/lib'
+	[candle-core]='https://github.com/zed-industries/candle;724d75eb3deebefe83f2a7381a45d4fac6eda383;candle-%commit%/candle-core'
+	[candle-nn]='https://github.com/zed-industries/candle;724d75eb3deebefe83f2a7381a45d4fac6eda383;candle-%commit%/candle-nn'
+	[candle-onnx]='https://github.com/zed-industries/candle;724d75eb3deebefe83f2a7381a45d4fac6eda383;candle-%commit%/candle-onnx'
+	[dap-types]='https://github.com/zed-industries/dap-types;1b461b310481d01e02b2603c16d7144b926339f8;dap-types-%commit%/dap-types'
 	[jupyter-protocol]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/jupyter-protocol'
 	[jupyter-websocket-client]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/jupyter-websocket-client'
-	[libwebrtc]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/libwebrtc'
-	[livekit-api]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit-api'
-	[livekit-protocol]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit-protocol'
-	[livekit-runtime]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit-runtime'
-	[livekit]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/livekit'
-	[lsp-types]='https://github.com/zed-industries/lsp-types;39f629bdd03d59abd786ed9fc27e8bca02c0c0ec;lsp-types-%commit%'
+	[libwebrtc]='https://github.com/zed-industries/livekit-rust-sdks;5f04705ac3f356350ae31534ffbc476abc9ea83d;livekit-rust-sdks-%commit%/libwebrtc'
+	[livekit-api]='https://github.com/zed-industries/livekit-rust-sdks;5f04705ac3f356350ae31534ffbc476abc9ea83d;livekit-rust-sdks-%commit%/livekit-api'
+	[livekit-protocol]='https://github.com/zed-industries/livekit-rust-sdks;5f04705ac3f356350ae31534ffbc476abc9ea83d;livekit-rust-sdks-%commit%/livekit-protocol'
+	[livekit-runtime]='https://github.com/zed-industries/livekit-rust-sdks;5f04705ac3f356350ae31534ffbc476abc9ea83d;livekit-rust-sdks-%commit%/livekit-runtime'
+	[livekit]='https://github.com/zed-industries/livekit-rust-sdks;5f04705ac3f356350ae31534ffbc476abc9ea83d;livekit-rust-sdks-%commit%/livekit'
+	[lsp-types]='https://github.com/zed-industries/lsp-types;0874f8742fe55b4dc94308c1e3c0069710d8eeaf;lsp-types-%commit%'
 	[nbformat]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/nbformat'
 	[notify-types]='https://github.com/zed-industries/notify;bbb9ea5ae52b253e095737847e367c30653a2e96;notify-%commit%/notify-types'
 	[notify]='https://github.com/zed-industries/notify;bbb9ea5ae52b253e095737847e367c30653a2e96;notify-%commit%/notify'
@@ -55,26 +50,29 @@ declare -A GIT_CRATES=(
 	[pet-windows-registry]='https://github.com/microsoft/python-environment-tools;845945b830297a50de0e24020b980a65e4820559;python-environment-tools-%commit%/crates/pet-windows-registry'
 	[pet-windows-store]='https://github.com/microsoft/python-environment-tools;845945b830297a50de0e24020b980a65e4820559;python-environment-tools-%commit%/crates/pet-windows-store'
 	[pet]='https://github.com/microsoft/python-environment-tools;845945b830297a50de0e24020b980a65e4820559;python-environment-tools-%commit%/crates/pet'
-	[reqwest]='https://github.com/zed-industries/reqwest;951c770a32f1998d6e999cef3e59e0013e6c4415;reqwest-%commit%'
+	[rodio]='https://github.com/RustAudio/rodio;e2074c6c2acf07b57cf717e076bdda7a9ac6e70b;rodio-%commit%'
 	[runtimelib]='https://github.com/ConradIrwin/runtimed;7130c804216b6914355d15d0b91ea91f6babd734;runtimed-%commit%/crates/runtimelib'
-	[scap]='https://github.com/zed-industries/scap;808aa5c45b41e8f44729d02e38fd00a2fe2722e7;scap-%commit%'
+	[tiktoken-rs]='https://github.com/zed-industries/tiktoken-rs;30c32a4522751699adeda0d5840c71c3b75ae73d;tiktoken-rs-%commit%/tiktoken-rs'
+	[tree-sitter-cpp]='https://github.com/tree-sitter/tree-sitter-cpp;5cb9b693cfd7bfacab1d9ff4acac1a4150700609;tree-sitter-cpp-%commit%'
 	[tree-sitter-gitcommit]='https://github.com/zed-industries/tree-sitter-git-commit;88309716a69dd13ab83443721ba6e0b491d37ee9;tree-sitter-git-commit-%commit%'
 	[tree-sitter-gomod]='https://github.com/camdencheek/tree-sitter-go-mod;6efb59652d30e0e9cd5f3b3a669afd6f1a926d3c;tree-sitter-go-mod-%commit%'
 	[tree-sitter-gowork]='https://github.com/zed-industries/tree-sitter-go-work;acb0617bf7f4fda02c6217676cc64acb89536dc7;tree-sitter-go-work-%commit%'
 	[tree-sitter-heex]='https://github.com/zed-industries/tree-sitter-heex;1dd45142fbb05562e35b2040c6129c9bca346592;tree-sitter-heex-%commit%'
 	[tree-sitter-md]='https://github.com/tree-sitter-grammars/tree-sitter-markdown;9a23c1a96c0513d8fc6520972beedd419a973539;tree-sitter-markdown-%commit%'
-	[tree-sitter-python]='https://github.com/zed-industries/tree-sitter-python;218fcbf3fda3d029225f3dec005cb497d111b35e;tree-sitter-python-%commit%'
 	[tree-sitter-yaml]='https://github.com/zed-industries/tree-sitter-yaml;baff0b51c64ef6a1fb1f8390f3ad6015b83ec13a;tree-sitter-yaml-%commit%'
-	[webrtc-sys-build]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/webrtc-sys/build'
-	[webrtc-sys]='https://github.com/zed-industries/livekit-rust-sdks;d2eade7a6b15d6dbdb38ba12a1ff7bf07fcebba4;livekit-rust-sdks-%commit%/webrtc-sys'
+	[webrtc-sys-build]='https://github.com/zed-industries/livekit-rust-sdks;5f04705ac3f356350ae31534ffbc476abc9ea83d;livekit-rust-sdks-%commit%/webrtc-sys/build'
+	[webrtc-sys]='https://github.com/zed-industries/livekit-rust-sdks;5f04705ac3f356350ae31534ffbc476abc9ea83d;livekit-rust-sdks-%commit%/webrtc-sys'
 	[windows-capture]='https://github.com/zed-industries/windows-capture;f0d6c1b6691db75461b732f6d5ff56eed002eeb9;windows-capture-%commit%'
-	[xim-ctext]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%/xim-ctext'
-	[xim-parser]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%/xim-parser'
-	[xim]='https://github.com/XDeme1/xim-rs;d50d461764c2213655cd9cf65a0ea94c70d3c4fd;xim-rs-%commit%'
+	[xim-ctext]='https://github.com/zed-industries/xim-rs;16f35a2c881b815a2b6cdfd6687988e84f8447d8;xim-rs-%commit%/xim-ctext'
+	[xim-parser]='https://github.com/zed-industries/xim-rs;16f35a2c881b815a2b6cdfd6687988e84f8447d8;xim-rs-%commit%/xim-parser'
+	[zed-font-kit]='https://github.com/zed-industries/font-kit;110523127440aefb11ce0cf280ae7c5071337ec5;font-kit-%commit%'
+	[zed-reqwest]='https://github.com/zed-industries/reqwest;c15662463bda39148ba154100dd44d3fba5873a4;reqwest-%commit%'
+	[zed-scap]='https://github.com/zed-industries/scap;4afea48c3b002197176fb19cd0f9b180dd36eaac;scap-%commit%'
+	[zed-xim]='https://github.com/zed-industries/xim-rs;16f35a2c881b815a2b6cdfd6687988e84f8447d8;xim-rs-%commit%'
 )
 
 LLVM_COMPAT=( 20 )
-RUST_MIN_VER="1.88.0"
+RUST_MIN_VER="1.90.0"
 RUST_NEEDS_LLVM=1
 WEBRTC_COMMIT="b99fd2c-6"
 
@@ -103,8 +101,8 @@ LICENSE+="
 	LGPL-3 MIT MIT-0 MPL-2.0 UoI-NCSA openssl Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
-CHECKREQS_DISK_BUILD="12G"
+KEYWORDS="~amd64 ~arm64"
+CHECKREQS_DISK_BUILD="14G"
 CHECKREQS_MEMORY="8G"
 
 DEPEND="
