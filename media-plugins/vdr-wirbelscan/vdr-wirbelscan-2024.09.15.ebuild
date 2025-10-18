@@ -16,7 +16,9 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-libs/librepfunc
-	>=media-video/vdr-2.4:="
+	>=media-video/vdr-2.4:=
+"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/vdr-wirbelscan_Makefile.patch" )
 
