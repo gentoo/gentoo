@@ -1,0 +1,61 @@
+Source: https://invent.kde.org/sdk/heaptrack/-/merge_requests/52
+
+From f799dc69049c69575ea605c58703ea4b133b26b6 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 17 Oct 2025 22:16:38 +0200
+Subject: [PATCH] Allow to use system robin-map instead of bundled
+
+Adds new HEAPTRACK_USE_SYSTEM_ROBINMAP CMake option
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ 3rdparty/CMakeLists.txt |  7 ++++---
+ CMakeLists.txt          | 10 ++++++++++
+ 2 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/3rdparty/CMakeLists.txt b/3rdparty/CMakeLists.txt
+index a2c8e69b..297e227a 100644
+--- a/3rdparty/CMakeLists.txt
++++ b/3rdparty/CMakeLists.txt
+@@ -18,6 +18,7 @@ if (ZSTD_FOUND AND NOT BOOST_IOSTREAMS_HAS_ZSTD)
+     mark_as_system_target(boost-zstd)
+ endif()
+ 
+-add_subdirectory(robin-map)
+-
+-mark_as_system_target(robin_map)
++if(NOT HEAPTRACK_USE_SYSTEM_ROBINMAP)
++    add_subdirectory(robin-map)
++    mark_as_system_target(robin_map)
++endif()
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index adc08a32..90fd6c07 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,6 +99,12 @@ option(
+   ON
+ )
+ 
++option(
++  HEAPTRACK_USE_SYSTEM_ROBINMAP
++  "Use system robin-map instead of bundled"
++  OFF
++)
++
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+ 
+ if (NOT MSVC)
+@@ -158,6 +164,10 @@ if (HEAPTRACK_BUILD_TRACK)
+     endif()
+ endif()
+ 
++if (HEAPTRACK_USE_SYSTEM_ROBINMAP)
++    find_package(tsl-robin-map CONFIG REQUIRED)
++endif()
++
+ add_subdirectory(3rdparty)
+ add_subdirectory(src)
+ add_subdirectory(tests)
+-- 
+GitLab
+
