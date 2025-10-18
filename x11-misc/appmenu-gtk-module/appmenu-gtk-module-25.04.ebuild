@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/-/project/6865053/uploads/4f517338d3c65a0ea6f49faf36
 
 LICENSE="LGPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="gtk2 test wayland"
 # Tests are manual and hang in the ebuild
 RESTRICT="!test? ( test ) test"
