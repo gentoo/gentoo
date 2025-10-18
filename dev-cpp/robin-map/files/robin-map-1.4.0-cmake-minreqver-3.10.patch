@@ -1,0 +1,48 @@
+Source: https://github.com/Tessil/robin-map/pull/89
+
+From 0f85726168ebd32bf169de269df245121506748c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 18 Oct 2025 22:28:16 +0200
+Subject: [PATCH] Raise CMake minimum version to 3.10..3.31 range
+
+CMake 3.10 was released in 2017.
+
+Amends 1115dad3ffa0994e3f43b693d9b9cc99944c64c1, fixes warning since CMake-3.31:
+
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+Compatibility with CMake < 3.10 will be removed from a future version of
+CMake.
+
+Update the VERSION argument value. Or, use the ... syntax
+to tell CMake that the project requires at least but has been updated
+to work with policies introduced by or earlier.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt       | 2 +-
+ tests/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index be1a3ff..c08cc6f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10..3.31)
+ 
+ project(tsl-robin-map VERSION 1.4.0 LANGUAGES CXX)
+ 
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 6d3bbcd..dac2039 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.10..3.31)
+ 
+ project(tsl_robin_map_tests)
+ 
+-- 
+2.51.1
+
