@@ -18,13 +18,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	dev-java/jackson-databind:0
+	dev-java/jackson-databind:1
 	dev-java/junit:5
 	>=virtual/jdk-11:*
 "
 
 RDEPEND=">=virtual/jre-1.8:*"
 
-JAVA_CLASSPATH_EXTRA="jackson-databind junit-5"
+JAVA_CLASSPATH_EXTRA="jackson-databind-1 junit-5"
 JAVA_RESOURCE_DIRS="src/main/resources"
 JAVA_SRC_DIR=( src/main/{java,module} )

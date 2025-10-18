@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/FasterXML/jackson-databind"
 SRC_URI="https://github.com/FasterXML/${PN}/archive/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="1"
 KEYWORDS="amd64 arm64 ppc64"
 
 # Common dependencies
@@ -27,8 +27,8 @@ KEYWORDS="amd64 arm64 ppc64"
 # com.fasterxml.jackson.core:jackson-core:2.13.4 -> >=dev-java/jackson-core-2.13.4:0
 
 CP_DEPEND="
-	~dev-java/jackson-annotations-2.13.4:2
-	~dev-java/jackson-core-2.13.4:0
+	~dev-java/jackson-annotations-2.13.4:1
+	~dev-java/jackson-core-2.13.4:1
 "
 
 # Compile dependencies

@@ -32,8 +32,8 @@ DEPEND="
 	test? (
 		>=dev-java/guava-33.4.8:0
 		dev-java/mockito:4
-		dev-java/snakeyaml:0
-		dev-java/testparameterinjector:0
+		dev-java/snakeyaml:1
+		~dev-java/testparameterinjector-1.18:0
 		dev-java/truth:0
 	)
 "
@@ -44,7 +44,7 @@ JAVA_AUTOMATIC_MODULE_NAME="com.google.protobuf"
 JAVA_JAR_FILENAME="protobuf.jar"
 JAVA_RESOURCE_DIRS="java/core/src/main/resources"
 JAVA_SRC_DIR="java/core/src/main/java"
-JAVA_TEST_GENTOO_CLASSPATH="guava,junit-4,mockito-4,snakeyaml"
+JAVA_TEST_GENTOO_CLASSPATH="guava,junit-4,mockito-4,snakeyaml-1"
 JAVA_TEST_RESOURCE_DIRS="java/core/src/main/resources"
 JAVA_TEST_SRC_DIR="java/core/src/test/java"
 

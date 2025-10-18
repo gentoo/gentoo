@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,13 +17,13 @@ HOMEPAGE="https://github.com/FasterXML/jackson-dataformats-text"
 SRC_URI="https://github.com/FasterXML/jackson-dataformats-text/archive/jackson-dataformats-text-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="1"
 KEYWORDS="amd64 arm64 ppc64"
 
 DEPEND="
-	~dev-java/jackson-core-${PV}:0
-	~dev-java/jackson-databind-${PV}.1:0
-	dev-java/snakeyaml:0
+	~dev-java/jackson-core-${PV}:1
+	~dev-java/jackson-databind-${PV}.1:1
+	dev-java/snakeyaml:1
 	>=virtual/jdk-11:*
 "
 
@@ -33,7 +33,7 @@ DOCS=( README.md release-notes/{CREDITS,VERSION} )
 
 S="${WORKDIR}/jackson-dataformats-text-jackson-dataformats-text-${PV}/yaml"
 
-JAVA_CLASSPATH_EXTRA="jackson-core,jackson-databind,snakeyaml"
+JAVA_CLASSPATH_EXTRA="jackson-core-1,jackson-databind-1,snakeyaml-1"
 JAVA_SRC_DIR=( "src/main/java" "src/moditect" )
 JAVA_RESOURCE_DIRS="src/main/resources"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Skeleton command:
@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/FasterXML/jackson-dataformat-xml"
 SRC_URI="https://github.com/FasterXML/${PN}/archive/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="1"
 KEYWORDS="amd64 arm64 ppc64"
 
 # Common dependencies
@@ -29,9 +29,9 @@ KEYWORDS="amd64 arm64 ppc64"
 # org.codehaus.woodstox:stax2-api:4.2.1 -> >=dev-java/stax2-api-4.2.1:0
 
 CP_DEPEND="
-	~dev-java/jackson-annotations-${PV}:2
-	~dev-java/jackson-core-${PV}:0
-	~dev-java/jackson-databind-${PV}.1:0
+	~dev-java/jackson-annotations-${PV}:1
+	~dev-java/jackson-core-${PV}:1
+	~dev-java/jackson-databind-${PV}.1:1
 	>=dev-java/stax2-api-4.2.1-r1:0
 	dev-java/woodstox-core:0
 "
@@ -47,7 +47,7 @@ DEPEND="
 	>=virtual/jdk-11:*
 	${CP_DEPEND}
 	test? (
-		~dev-java/jackson-module-jakarta-xmlbind-${PV}:0
+		~dev-java/jackson-module-jakarta-xmlbind-${PV}:1
 		dev-java/jaxb-api:4
 		dev-java/sjsxp:0
 	)
@@ -64,7 +64,7 @@ S="${WORKDIR}/${PN}-${P}"
 JAVA_SRC_DIR=( "src/main/java" "src/moditect" )
 JAVA_RESOURCE_DIRS="src/main/resources"
 
-JAVA_TEST_GENTOO_CLASSPATH="jackson-module-jakarta-xmlbind,sjsxp,jaxb-api-4,junit-4"
+JAVA_TEST_GENTOO_CLASSPATH="jackson-module-jakarta-xmlbind-1,sjsxp,jaxb-api-4,junit-4"
 JAVA_TEST_SRC_DIR="src/test/java"
 JAVA_TEST_RESOURCE_DIRS="src/test/resources"
 
