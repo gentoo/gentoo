@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -43,13 +43,6 @@ EPYTEST_PLUGINS=( pytest-{asyncio,localserver} )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-src_prepare() {
-	distutils-r1_src_prepare
-
-	# unpin deps
-	sed -i -e 's:,<[0-9.]*::' setup.py || die
-}
-
 EPYTEST_DESELECT=(
 	# tests are broken with up-to-date pyopenssl
 	tests/transport/test__mtls_helper.py::TestDecryptPrivateKey::test_success
@@ -60,3 +53,10 @@ EPYTEST_IGNORE=(
 	# disable them to unblock removal of that package
 	tests/test__oauth2client.py
 )
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin deps
+	sed -i -e 's:,<[0-9.]*::' setup.py || die
+}
