@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,20 +13,20 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	media-video/vdr
-"
-
-RDEPEND="
-	${DEPEND}
-	acct-user/vdr[serial]
-"
+DEPEND="media-video/vdr:="
+RDEPEND="${DEPEND}
+	acct-user/vdr[serial]"
 
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	sed -i serial.c -e "s:RegisterI18n://RegisterI18n:"
+	sed -i serial.c -e "s:RegisterI18n://RegisterI18n:" || die
 
 	cd "${S}"/tools
 	emake clean
+}
+
+src_install() {
+	local DOCS=( README circuit.jpg tools/Connector.txt )
+	vdr-plugin-2_src_install
 }
