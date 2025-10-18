@@ -3,26 +3,26 @@
 
 EAPI=8
 
-inherit meson virtualx
+inherit flag-o-matic meson
 
 DESCRIPTION="UI library that focuses on simplicity and minimalism"
 HOMEPAGE="https://pwmt.org/projects/girara/"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
+	EGIT_REPO_URI="https://github.com/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
 else
 	SRC_URI="https://github.com/pwmt/girara/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm ~arm64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="ZLIB"
-SLOT="0/4.4"
-IUSE="doc libnotify test"
-
+SLOT="0/$(ver_cut 2-3)"
+IUSE="doc test X"
 RESTRICT="!test? ( test )"
 
+# REVIEW: are all those really needed?
 RDEPEND="
 	app-accessibility/at-spi2-core
 	>=dev-libs/glib-2.72:2
@@ -30,33 +30,39 @@ RDEPEND="
 	media-libs/harfbuzz:=
 	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-3.24:3
+	>=x11-libs/gtk+-3.24:3[X?]
 	x11-libs/pango
-	libnotify? ( x11-libs/libnotify )
 "
-# Tests are run under virtx
 DEPEND="
 	${RDEPEND}
 	test? (
-		dev-libs/check
 		x11-base/xorg-proto
 		x11-libs/gtk+:3[X]
+		x11-misc/xvfb-run
 	)
 "
 BDEPEND="
+	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "
 
+DOCS=( AUTHORS README.md )
+
 src_configure() {
-	local -a emesonargs=(
+	# defang automagic dependencies
+	# Currently only needed for X11-specific workarounds
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+
+	local emesonargs=(
 		-Djson=enabled
 		$(meson_feature doc docs)
+		$(meson_feature test tests)
 	)
 	meson_src_configure
 }
 
-src_test() {
-	# TODO: run test on wayland
-	virtx meson_src_test
+src_compile() {
+	meson_src_compile
+	use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. ) # BUILD_DIR is set by meson_src_compile
 }
