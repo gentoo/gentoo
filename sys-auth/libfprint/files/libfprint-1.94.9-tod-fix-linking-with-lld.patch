@@ -1,0 +1,23 @@
+https://gitlab.freedesktop.org/3v1n0/libfprint/-/issues/10
+From: Brahmajit Das <listout@listout.xyz>
+Date: Sat, 20 Sep 2025 10:14:33 +0530
+Subject: [PATCH] fix fpi_byte_writer_change_pos not defined with clang
+
+On clang, linking with LLD fails.
+ld.lld: error: version script assignment of 'LIBFPRINT_TOD_1_1.94' to symbol 'fpi_byte_writer_change_pos' failed: symbol not defined
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/libfprint/tod/libfprint-tod.ver.in
++++ b/libfprint/tod/libfprint-tod.ver.in
+@@ -238,7 +238,6 @@ global:
+ 
+ LIBFPRINT_TOD_@tod_soversion@_1.94 {
+ global:
+-    fpi_byte_writer_change_pos;
+     fpi_device_critical_enter;
+     fpi_device_critical_leave;
+     fpi_device_resume;
+-- 
+2.51.0
+
