@@ -50,17 +50,17 @@ QA_FLAGS_IGNORED="
 	usr/lib/rust/${P}/lib/rustlib/$(rust_abi)/lib/*.rlib
 "
 
-pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] && ! tc-is-gcc; then
-		die "mrustc needs to be built using GCC."
-	fi
-}
-
 src_configure() {
 	:
 }
 
 src_compile() {
+	if ! tc-is-gcc ; then
+		# mrustc needs to be built using GCC
+		export CC=${CHOST}-gcc
+		export CXX=${CHOST}-g++
+		tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
+	fi
 	export PARLEVEL=$(makeopts_jobs)
 	export RUSTC_VERSION=${MRUSTC_RUST_VER} # Pretend that we're using upstream-supported Rust
 	export MRUSTC_TARGET_VER=${RUSTC_VERSION%.*}
