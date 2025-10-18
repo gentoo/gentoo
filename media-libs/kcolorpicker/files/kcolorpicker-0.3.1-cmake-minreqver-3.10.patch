@@ -1,0 +1,35 @@
+Source: https://github.com/ksnip/kColorPicker/pull/15
+
+From d91ba101b65bc9e2a5506959295472ed42bde943 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 18 Oct 2025 23:44:14 +0200
+Subject: [PATCH] Raise CMake minimum version to 3.10..3.31 range
+
+CMake 3.10 was released in 2017, fixes warning since CMake-3.31:
+
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+Compatibility with CMake < 3.10 will be removed from a future version of
+CMake.
+
+Update the VERSION argument value. Or, use the ... syntax
+to tell CMake that the project requires at least but has been updated
+to work with policies introduced by or earlier.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1d15048..8d07fd5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10..3.31)
+ project(kColorPicker LANGUAGES CXX VERSION 0.3.1)
+ 
+ set(QT_MIN_VERSION 5.15.2)
+-- 
+2.51.1
+
