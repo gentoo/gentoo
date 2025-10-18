@@ -6,7 +6,7 @@ MY_PV=${PV/_/-}
 
 inherit go-module linux-info optfeature systemd toolchain-funcs udev
 
-GIT_COMMIT=6430e49a55babd9b8f4d08e70ecb2b68900770fe
+GIT_COMMIT=bbd0a17ccc67e48d4a69393287b7fcc4f0578683
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
 HOMEPAGE="https://www.docker.com/"
@@ -15,7 +15,7 @@ S="${WORKDIR}/moby-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ppc64 ~riscv ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="apparmor btrfs +container-init cuda +overlay2 seccomp selinux systemd"
 
 DEPEND="
@@ -35,8 +35,8 @@ RDEPEND="
 	sys-process/procps
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
-	>=app-containers/containerd-2.0.4[apparmor?,btrfs?,seccomp?]
-	>=app-containers/runc-1.2.5[apparmor?,seccomp?]
+	>=app-containers/containerd-2.0.2[apparmor?,btrfs?,seccomp?]
+	>=app-containers/runc-1.2.3[apparmor?,seccomp?]
 	!app-containers/docker-proxy
 	!<app-containers/docker-cli-${PV}
 	container-init? ( >=sys-process/tini-0.19.0[static] )
