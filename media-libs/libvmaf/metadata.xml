@@ -18,5 +18,6 @@
 	</upstream>
 	<use>
 		<flag name="embed-models">Compile default vmaf models into the library (needs <pkg>app-editors/vim-core</pkg>)</flag>
+		<flag name="float">Compile floating-point feature extractors into the library</flag>
 	</use>
 </pkgmetadata>
