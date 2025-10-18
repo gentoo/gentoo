@@ -54,6 +54,8 @@ src_configure() {
 	# a better fix is found.
 	[[ $(tc-get-c-rtlib) = "compiler-rt" ]] && append-cxxflags "-fno-fast-math"
 
+	append-cflags "-mssse3"
+
 	local mycmakeargs=(
 		-DWANT_GUI=$(usex gui)
 		-DWANT_JACK=$(usex jack)
