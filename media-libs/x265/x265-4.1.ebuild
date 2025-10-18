@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic multilib-minimal multibuild
+inherit cmake-multilib edo flag-o-matic multibuild
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
 HOMEPAGE="https://www.x265.org/ https://bitbucket.org/multicoreware/x265_git/"
@@ -14,7 +14,7 @@ if [[ ${PV} = 9999* ]]; then
 	MY_P="${PN}-${PV}"
 else
 	SRC_URI="https://bitbucket.org/multicoreware/x265_git/downloads/${PN}_${PV}.tar.gz -> ${PN}-${PV}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
 	MY_P="${PN}_${PV}"
 fi
 
@@ -23,16 +23,21 @@ unset MY_P
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/209"
-IUSE="+10bit +12bit cpu_flags_ppc_vsx2 numa test"
+SLOT="0/215"
+IUSE="+10bit +12bit cpu_flags_ppc_vsx2 numa test vmaf"
 RESTRICT="!test? ( test )"
 
-RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
+RDEPEND="
+	numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )
+	vmaf? ( media-libs/libvmaf[${MULTILIB_USEDEP}] )
+"
 DEPEND="${RDEPEND}"
 ASM_DEPEND=">=dev-lang/nasm-2.13"
 BDEPEND="
 	abi_x86_32? ( ${ASM_DEPEND} )
-	abi_x86_64? ( ${ASM_DEPEND} )"
+	abi_x86_64? ( ${ASM_DEPEND} )
+	arm64? ( ${ASM_DEPEND} )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-arm.patch"
@@ -43,13 +48,13 @@ PATCHES=(
 
 	"${FILESDIR}/${PN}-3.6-cmake-cleanup.patch"
 
-	"${FILESDIR}/${PN}-3.6-test-ns.patch"
-	"${FILESDIR}/${PN}-3.6-test-ns_2.patch"
+	"${FILESDIR}/${PN}-4.1-test-ns.patch"
 
-	"${FILESDIR}/${PN}-3.6-code-cleanup.patch"
 	"${FILESDIR}/${PN}-3.6-code-cleanup_2.patch"
 	"${FILESDIR}/${PN}-3.6-code-cleanup_3.patch"
 	"${FILESDIR}/${PN}-3.6-code-cleanup_4.patch"
+
+	"${FILESDIR}/${PN}-4.1-vmaf.patch"
 
 	"${FILESDIR}/${PN}-cmake-min-version-3.28.patch"
 )
@@ -59,6 +64,19 @@ pkg_setup() {
 		$(usev 12bit "main12")
 		$(usev 10bit "main10")
 	)
+}
+
+src_prepare() {
+	cmake_src_prepare
+
+	sed -r -e 's/(set\(ARM_ARGS -O3)/# \1/g' -i CMakeLists.txt || die
+
+	# fix hardcoded path
+	# libvmaf ERROR could not read model from path: "/usr/local/share/model/vmaf_v0.6.1.json"
+	sed -e "s#/usr/local/share/model/#${EPREFIX}/usr/share/vmaf/model/#g" -i x265.h || die
+
+	# TODO check so_name via
+	# X265_BUILD 215
 }
 
 # By default, the library and the encoder is configured for only one output bit
@@ -111,8 +129,12 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PIC=ON
 		-DENABLE_LIBNUMA="$(usex numa)"
-		-DENABLE_SVT_HEVC="no" # missing
-		-DENABLE_VTUNE="no" # missing
+		-DENABLE_ALPHA="yes"
+		-DENABLE_MULTIVIEW="yes"
+		-DENABLE_SVT_HEVC="no" # broken
+		-DENABLE_SCC_EXT="yes"
+		-DENABLE_LIBVMAF="$(usex vmaf)"
+		-DENABLE_VTUNE="no" # missing Vtune
 		-DGIT_ARCHETYPE=1 #814116
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
@@ -162,7 +184,7 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DEXTRA_LIB="${liblist}"
 			-DEXTRA_LINK_FLAGS="-L${BUILD_DIR}"
-			-DLINKED_10BIT"=$(usex 10bit)"
+			-DLINKED_10BIT="$(usex 10bit)"
 			-DLINKED_12BIT="$(usex 12bit)"
 		)
 	fi
@@ -180,7 +202,7 @@ multilib_src_compile() {
 
 x265_variant_src_test() {
 	if [[ -x "${BUILD_DIR}/test/TestBench" ]] ; then
-		"${BUILD_DIR}/test/TestBench" || die
+		edo "${BUILD_DIR}/test/TestBench" --nobench
 	else
 		einfo "Unit tests check only assembly."
 		einfo "You do not seem to have any for ABI=${ABI}, x265 variant=${MULTIBUILD_VARIANT}"

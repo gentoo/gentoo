@@ -1,0 +1,23 @@
+From a6d121cbaf3f2cdcaf89b2188691a668a2803fd7 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 29 Jun 2025 18:38:36 +0200
+Subject: [PATCH] cmake min version 3.28
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/dynamicHDR10/CMakeLists.txt b/dynamicHDR10/CMakeLists.txt
+index 3639281..88171de 100644
+--- a/dynamicHDR10/CMakeLists.txt
++++ b/dynamicHDR10/CMakeLists.txt
+@@ -10,7 +10,7 @@ add_library(dynamicHDR10 OBJECT
+     hdr10plus.h
+     api.cpp )
+ 
+-cmake_minimum_required (VERSION 2.8.11)
++cmake_minimum_required (VERSION 3.28)
+ project(dynamicHDR10)
+ include(CheckIncludeFiles)
+ include(CheckFunctionExists)
+-- 
+2.50.0
+

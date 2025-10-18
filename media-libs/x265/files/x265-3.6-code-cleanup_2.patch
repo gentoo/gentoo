@@ -1,0 +1,23 @@
+From 4ec09af244e2cfe3dfb739d74af7640ac114e775 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:45:33 +0200
+Subject: [PATCH 3/4] register is a unused and reserved keyword in c++-17
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/common/md5.cpp b/common/md5.cpp
+index a9042f4..7e638e7 100644
+--- a/common/md5.cpp
++++ b/common/md5.cpp
+@@ -185,7 +185,10 @@ void MD5Final(MD5Context *ctx, uint8_t *digest)
+  */
+ void MD5Transform(uint32_t *buf, uint32_t *in)
+ {
+-    register uint32_t a, b, c, d;
++#if __cplusplus < 201703L
++    register
++#endif
++    uint32_t a, b, c, d;
+ 
+     a = buf[0];
+     b = buf[1];

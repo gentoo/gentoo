@@ -1,0 +1,24 @@
+From 8a327700139481378a5b4d25e349c059190057c2 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sat, 21 Sep 2024 19:17:22 +0200
+Subject: [PATCH] enable vmaf for shared lib
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a203f4f..c14767f 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -814,6 +814,9 @@ if(ENABLE_SHARED)
+     endif()
+     if(EXTRA_LIB)
+         target_link_libraries(x265-shared ${EXTRA_LIB})
++    endif()
++    if(ENABLE_LIBVMAF)
++        target_link_libraries(x265-shared ${VMAF})
+     endif()
+ 	 target_link_libraries(x265-shared ${PLATFORM_LIBS})
+     if(SVTHEVC_FOUND)
+-- 
+2.46.0
+

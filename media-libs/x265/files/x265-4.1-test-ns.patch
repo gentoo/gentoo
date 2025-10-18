@@ -1,7 +1,17 @@
-Namespace functions for multi-bitdepth builds so that libraries are self-contained.
+From 6500375a8b2eab7250f5ba59961f441aeaef56c1 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 24 Jun 2025 17:02:25 +0200
+Subject: [PATCH] Namespace functions for multi-bitdepth builds
+
+so that libraries are self-contained.
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/common/param.cpp b/common/param.cpp
+index a35b063..1a3666f 100755
 --- a/common/param.cpp
 +++ b/common/param.cpp
-@@ -102,7 +102,7 @@ x265_param *x265_param_alloc()
+@@ -103,7 +103,7 @@ x265_param *x265_param_alloc()
  
  void x265_param_free(x265_param* p)
  {
@@ -10,9 +20,11 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
  #ifdef SVT_HEVC
       x265_free(p->svtHevcParam);
  #endif
+diff --git a/common/param.h b/common/param.h
+index f504ec9..0d01e21 100644
 --- a/common/param.h
 +++ b/common/param.h
-@@ -55,6 +55,18 @@ int x265_param_apply_profile(x265_param *, const char *profile);
+@@ -55,6 +55,22 @@ int x265_param_apply_profile(x265_param *, const char *profile);
  int x265_param_parse(x265_param *p, const char *name, const char *value);
  int x265_scenecut_aware_qp_param_parse(x265_param* p, const char* name, const char* value);
  int x265_zone_param_parse(x265_param* p, const char* name, const char* value);
@@ -28,9 +40,15 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
 +int x265_encoder_reconfig(x265_encoder *, x265_param *);
 +x265_picture *x265_picture_alloc(void);
 +void x265_picture_init(x265_param *param, x265_picture *pic);
++#if ENABLE_LIBVMAF
++double x265_calculate_vmafscore(x265_param*, x265_vmaf_data*);
++double x265_calculate_vmaf_framelevelscore(x265_param*, x265_vmaf_framedata*);
++#endif
  #define PARAM_NS X265_NS
  #endif
  }
+diff --git a/common/threadpool.cpp b/common/threadpool.cpp
+index b3505e5..b565093 100644
 --- a/common/threadpool.cpp
 +++ b/common/threadpool.cpp
 @@ -25,6 +25,7 @@
@@ -42,17 +60,19 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
  #include <new>
  
 @@ -314,7 +315,7 @@ ThreadPool* ThreadPool::allocThreadPools(x265_param* p, int& numPools, bool isTh
-                    sprintf(nextCount, "%d", cpusPerNode[i]);
+                    snprintf(nextCount, sizeof(nextCount), "%d", cpusPerNode[i]);
               strcat(poolString, nextCount);
           }
 -         x265_param_parse(p, "pools", poolString);
 +         PARAM_NS::x265_param_parse(p, "pools", poolString);
       }
  #endif
-     if (p->numaPools && *p->numaPools)
+     if (strlen(p->numaPools))
+diff --git a/encoder/api.cpp b/encoder/api.cpp
+index e89f0cf..e19c6c6 100644
 --- a/encoder/api.cpp
 +++ b/encoder/api.cpp
-@@ -106,9 +106,9 @@ x265_encoder *x265_encoder_open(x265_param *p)
+@@ -109,9 +109,9 @@ x265_encoder *x265_encoder_open(x265_param *p)
      if (p->rc.zoneCount || p->rc.zonefileCount)
      {
          int zoneCount = p->rc.zonefileCount ? p->rc.zonefileCount : p->rc.zoneCount;
@@ -65,16 +85,16 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
      }
  
      x265_copy_params(param, p);
-@@ -214,7 +214,7 @@ x265_encoder *x265_encoder_open(x265_param *p)
+@@ -215,7 +215,7 @@ x265_encoder *x265_encoder_open(x265_param *p)
      /* Try to open CSV file handle */
-     if (encoder->m_param->csvfn)
+     if (strlen(encoder->m_param->csvfn))
      {
 -        encoder->m_param->csvfpt = x265_csvlog_open(encoder->m_param);
 +        encoder->m_param->csvfpt = PARAM_NS::x265_csvlog_open(encoder->m_param);
          if (!encoder->m_param->csvfpt)
          {
              x265_log(encoder->m_param, X265_LOG_ERROR, "Unable to open CSV log file <%s>, aborting\n", encoder->m_param->csvfn);
-@@ -319,7 +319,7 @@ int x265_encoder_reconfig(x265_encoder* enc, x265_param* param_in)
+@@ -321,7 +321,7 @@ int x265_encoder_reconfig(x265_encoder* enc, x265_param* param_in)
      if (encoder->m_latestParam->rc.zoneCount || encoder->m_latestParam->rc.zonefileCount)
      {
          int zoneCount = encoder->m_latestParam->rc.zonefileCount ? encoder->m_latestParam->rc.zonefileCount : encoder->m_latestParam->rc.zoneCount;
@@ -83,16 +103,61 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
      }
      x265_copy_params(&save, encoder->m_latestParam);
      int ret = encoder->reconfigureParam(encoder->m_latestParam, param_in);
-@@ -604,7 +604,7 @@ fail:
+@@ -329,7 +329,7 @@ int x265_encoder_reconfig(x265_encoder* enc, x265_param* param_in)
+     {
+         /* reconfigure failed, recover saved param set */
+         x265_copy_params(encoder->m_latestParam, &save);
+-        x265_zone_free(&save);
++        PARAM_NS::x265_zone_free(&save);
+         ret = -1;
+     }
+     else
+@@ -342,7 +342,7 @@ int x265_encoder_reconfig(x265_encoder* enc, x265_param* param_in)
+                 if (encoder->m_scalingList.parseScalingList(encoder->m_latestParam->scalingLists))
+                 {
+                     x265_copy_params(encoder->m_latestParam, &save);
+-                    x265_zone_free(&save);
++                    PARAM_NS::x265_zone_free(&save);
+                     return -1;
+                 }
+                 encoder->m_scalingList.setupQuantMatrices(encoder->m_param->internalCsp);
+@@ -351,7 +351,7 @@ int x265_encoder_reconfig(x265_encoder* enc, x265_param* param_in)
+             {
+                 x265_log(encoder->m_param, X265_LOG_ERROR, "Repeat headers is turned OFF, cannot reconfigure scalinglists\n");
+                 x265_copy_params(encoder->m_latestParam, &save);
+-                x265_zone_free(&save);
++                PARAM_NS::x265_zone_free(&save);
+                 return -1;
+             }
+         }
+@@ -378,7 +378,7 @@ int x265_encoder_reconfig(x265_encoder* enc, x265_param* param_in)
+     /* Zones support modifying num of Refs. Requires determining level at each zone start*/
+     if (encoder->m_param->rc.zonefileCount)
+         determineLevel(*encoder->m_latestParam, encoder->m_vps);
+-    x265_zone_free(&save);
++    PARAM_NS::x265_zone_free(&save);
+     return ret;
+ }
+ 
+@@ -617,7 +617,7 @@ fail:
      if (numEncoded && encoder->m_param->csvLogLevel && encoder->m_outputCount >= encoder->m_latestParam->chunkStart)
      {
          for (int layer = 0; layer < encoder->m_param->numLayers; layer++)
--            x265_csvlog_frame(encoder->m_param, pic_out[layer]);
-+            PARAM_NS::x265_csvlog_frame(encoder->m_param, pic_out[layer]);
+-            x265_csvlog_frame(encoder->m_param, pic_out + layer);
++            PARAM_NS::x265_csvlog_frame(encoder->m_param, pic_out + layer);
      }
  
      if (numEncoded < 0)
-@@ -646,7 +646,7 @@ void x265_vmaf_encoder_log(x265_encoder* enc, int argc, char **argv, x265_param
+@@ -649,7 +649,7 @@ void x265_vmaf_encoder_log(x265_encoder* enc, int argc, char **argv, x265_param
+     {
+         Encoder *encoder = static_cast<Encoder*>(enc);
+         x265_stats stats;       
+-        stats.aggregateVmafScore = x265_calculate_vmafscore(param, vmafdata);
++        stats.aggregateVmafScore = PARAM_NS::x265_calculate_vmafscore(param, vmafdata);
+         if(vmafdata->reference_file)
+             fclose(vmafdata->reference_file);
+         if(vmafdata->distorted_file)
+@@ -659,7 +659,7 @@ void x265_vmaf_encoder_log(x265_encoder* enc, int argc, char **argv, x265_param
          encoder->fetchStats(&stats, sizeof(stats));
          int padx = encoder->m_sps.conformanceWindow.rightOffset;
          int pady = encoder->m_sps.conformanceWindow.bottomOffset;
@@ -101,7 +166,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
      }
  }
  #endif
-@@ -662,7 +662,7 @@ void x265_encoder_log(x265_encoder* enc, int argc, char **argv)
+@@ -675,7 +675,7 @@ void x265_encoder_log(x265_encoder* enc, int argc, char **argv)
          for (int layer = 0; layer < encoder->m_param->numLayers; layer++)
          {
              encoder->fetchStats(stats, sizeof(stats[layer]), layer);
@@ -110,7 +175,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
          }
      }
  }
-@@ -884,7 +884,7 @@ void x265_alloc_analysis_data(x265_param *param, x265_analysis_data* analysis)
+@@ -897,7 +897,7 @@ void x265_alloc_analysis_data(x265_param *param, x265_analysis_data* analysis)
      return;
  
  fail:
@@ -119,6 +184,19 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
  }
  
  void x265_free_analysis_data(x265_param *param, x265_analysis_data* analysis)
+@@ -1099,8 +1099,8 @@ static const x265_api libapi =
+     &x265_dither_image,
+     &x265_set_analysis_data,
+ #if ENABLE_LIBVMAF
+-    &x265_calculate_vmafscore,
+-    &x265_calculate_vmaf_framelevelscore,
++    &PARAM_NS::x265_calculate_vmafscore,
++    &PARAM_NS::x265_calculate_vmaf_framelevelscore,
+     &x265_vmaf_encoder_log,
+ #endif
+     &PARAM_NS::x265_zone_param_parse
+diff --git a/encoder/encoder.cpp b/encoder/encoder.cpp
+index 2e65cb1..db09b64 100644
 --- a/encoder/encoder.cpp
 +++ b/encoder/encoder.cpp
 @@ -217,8 +217,8 @@ void Encoder::create()
@@ -132,7 +210,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
              m_dupBuffer[i]->dupPlane = NULL;
              m_dupBuffer[i]->dupPlane = X265_MALLOC(char, framesize);
              m_dupBuffer[i]->dupPic->planes[0] = m_dupBuffer[i]->dupPlane;
-@@ -774,7 +774,7 @@ int Encoder::setAnalysisData(x265_analysis_data *analysis_data, int poc, uint32_
+@@ -779,7 +779,7 @@ int Encoder::setAnalysisData(x265_analysis_data *analysis_data, int poc, uint32_
          curFrame->m_analysisData = (*analysis_data);
          curFrame->m_analysisData.numCUsInFrame = widthInCU * heightInCU;
          curFrame->m_analysisData.numPartitions = m_param->num4x4Partitions;
@@ -141,7 +219,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
          if (m_param->maxCUSize == 16)
          {
              if (analysis_data->sliceType == X265_TYPE_IDR || analysis_data->sliceType == X265_TYPE_I)
-@@ -881,7 +881,7 @@ void Encoder::destroy()
+@@ -886,7 +886,7 @@ void Encoder::destroy()
          for (uint32_t i = 0; i < DUP_BUFFER; i++)
          {
              X265_FREE(m_dupBuffer[i]->dupPlane);
@@ -150,34 +228,34 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
              X265_FREE(m_dupBuffer[i]);
          }
  
-@@ -1491,7 +1491,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture** pic_out)
+@@ -1414,7 +1414,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
      if (*m_exportedPic)
      {
-         if (!m_param->bUseAnalysisFile && m_param->analysisSave)
+         if (!m_param->bUseAnalysisFile && strlen(m_param->analysisSave))
 -            x265_free_analysis_data(m_param, &m_exportedPic[0]->m_analysisData);
 +            PARAM_NS::x265_free_analysis_data(m_param, &m_exportedPic[0]->m_analysisData);
  
          for (int i = 0; i < m_param->numLayers; i++)
          {
-@@ -1973,7 +1973,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture** pic_out)
+@@ -1907,7 +1907,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
  
                  /* Free up inputPic->analysisData since it has already been used */
-                 if ((m_param->analysisLoad && !m_param->analysisSave) || ((m_param->bAnalysisType == AVC_INFO) && slice->m_sliceType != I_SLICE))
+                 if ((strlen(m_param->analysisLoad) && !strlen(m_param->analysisSave)) || ((m_param->bAnalysisType == AVC_INFO) && slice->m_sliceType != I_SLICE))
 -                    x265_free_analysis_data(m_param, &outFrame->m_analysisData);
 +                    PARAM_NS::x265_free_analysis_data(m_param, &outFrame->m_analysisData);
-                 if (pic_out[sLayer])
+                 if (pic_out)
                  {
                      PicYuv* recpic = outFrame->m_reconPic[0];
-@@ -2052,7 +2052,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture** pic_out)
-                         writeAnalysisFile(&pic_out[sLayer]->analysisData, *outFrame->m_encData);
-                         pic_out[sLayer]->analysisData.saveParam = pic_out[sLayer]->analysisData.saveParam;
+@@ -1986,7 +1986,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
+                         writeAnalysisFile(&pic_out[sLayer].analysisData, *outFrame->m_encData);
+                         pic_out[sLayer].analysisData.saveParam = pic_out[sLayer].analysisData.saveParam;
                          if (m_param->bUseAnalysisFile)
--                            x265_free_analysis_data(m_param, &pic_out[sLayer]->analysisData);
-+                            PARAM_NS::x265_free_analysis_data(m_param, &pic_out[sLayer]->analysisData);
+-                            x265_free_analysis_data(m_param, &pic_out[sLayer].analysisData);
++                            PARAM_NS::x265_free_analysis_data(m_param, &pic_out[sLayer].analysisData);
                      }
                  }
                  if (m_param->rc.bStatWrite && (m_param->analysisMultiPassRefine || m_param->analysisMultiPassDistortion))
-@@ -2067,7 +2067,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture** pic_out)
+@@ -2001,7 +2001,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
                      writeAnalysisFileRefine(&outFrame->m_analysisData, *outFrame->m_encData);
                  }
                  if (m_param->analysisMultiPassRefine || m_param->analysisMultiPassDistortion)
@@ -186,7 +264,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
                  if (m_param->internalCsp == X265_CSP_I400)
                  {
                      if (slice->m_sliceType == P_SLICE)
-@@ -2250,7 +2250,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture** pic_out)
+@@ -2186,7 +2186,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
                  uint32_t heightInCU = (m_param->sourceHeight + m_param->maxCUSize - 1) >> m_param->maxLog2CUSize;
                  frameEnc[0]->m_analysisData.numCUsInFrame = widthInCU * heightInCU;
                  frameEnc[0]->m_analysisData.numPartitions = m_param->num4x4Partitions;
@@ -195,7 +273,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
                  frameEnc[0]->m_analysisData.poc = frameEnc[0]->m_poc;
                  if (m_param->rc.bStatRead)
                      readAnalysisFile(&frameEnc[0]->m_analysisData, frameEnc[0]->m_poc, frameEnc[0]->m_lowres.sliceType);
-@@ -2261,7 +2261,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture** pic_out)
+@@ -2197,7 +2197,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
                  for (int i = 0; i < m_param->rc.zonefileCount; i++)
                  {
                      if (m_param->rc.zones[i].startFrame == frameEnc[0]->m_poc)
@@ -204,7 +282,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
                  }
              }
  
-@@ -2408,7 +2408,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture** pic_out)
+@@ -2371,7 +2371,7 @@ int Encoder::encode(const x265_picture* pic_in, x265_picture* pic_out)
                  analysis->numCUsInFrame  = numCUsInFrame;
                  analysis->numCuInHeight = heightInCU;
                  analysis->numPartitions  = m_param->num4x4Partitions;
@@ -213,7 +291,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
              }
              if (m_param->bEnableTemporalSubLayers > 2)
              {
-@@ -4711,7 +4711,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+@@ -4669,7 +4669,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
          else if (fread(val, size, readSize, fileOffset) != readSize)\
      {\
          x265_log(NULL, X265_LOG_ERROR, "Error reading analysis data\n");\
@@ -222,7 +300,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
          m_aborted = true;\
          return;\
      }\
-@@ -4747,7 +4747,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+@@ -4705,7 +4705,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
          if (poc != curPoc || feof(m_analysisFileIn))
          {
              x265_log(NULL, X265_LOG_WARNING, "Error reading analysis data: Cannot find POC %d\n", curPoc);
@@ -231,7 +309,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
              return;
          }
      }
-@@ -4781,7 +4781,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+@@ -4739,7 +4739,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
      if (m_param->scaleFactor)
          analysis->numPartitions *= factor;
      /* Memory is allocated for inter and intra analysis data based on the slicetype */
@@ -240,7 +318,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
  
      if (m_param->ctuDistortionRefine == CTU_DISTORTION_INTERNAL)
      {
-@@ -5034,7 +5034,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+@@ -4992,7 +4992,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
      else if (fread(val, size, readSize, fileOffset) != readSize)\
      {\
          x265_log(NULL, X265_LOG_ERROR, "Error reading analysis data\n");\
@@ -249,7 +327,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
          m_aborted = true;\
          return;\
      }\
-@@ -5071,7 +5071,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+@@ -5029,7 +5029,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
          if (poc != curPoc || feof(m_analysisFileIn))
          {
              x265_log(NULL, X265_LOG_WARNING, "Error reading analysis data: Cannot find POC %d\n", curPoc);
@@ -258,7 +336,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
              return;
          }
      }
-@@ -5102,7 +5102,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
+@@ -5060,7 +5060,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, const x
      analysis->numCuInHeight = cuLoc.heightInCU;
  
      /* Memory is allocated for inter and intra analysis data based on the slicetype */
@@ -267,7 +345,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
  
      if (m_param->ctuDistortionRefine == CTU_DISTORTION_INTERNAL)
      {
-@@ -5717,7 +5717,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, int sli
+@@ -5675,7 +5675,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, int sli
      if (fread(val, size, readSize, fileOffset) != readSize)\
      {\
      x265_log(NULL, X265_LOG_ERROR, "Error reading analysis 2 pass data\n"); \
@@ -276,7 +354,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
      m_aborted = true; \
      return; \
  }\
-@@ -5731,7 +5731,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, int sli
+@@ -5689,7 +5689,7 @@ void Encoder::readAnalysisFile(x265_analysis_data* analysis, int curPoc, int sli
      if (poc != curPoc || feof(m_analysisFileIn))
      {
          x265_log(NULL, X265_LOG_WARNING, "Error reading analysis 2 pass data: Cannot find POC %d\n", curPoc);
@@ -285,7 +363,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
          return;
      }
      /* Now arrived at the right frame, read the record */
-@@ -5838,7 +5838,7 @@ void Encoder::writeAnalysisFile(x265_analysis_data* analysis, FrameData &curEncD
+@@ -5796,7 +5796,7 @@ void Encoder::writeAnalysisFile(x265_analysis_data* analysis, FrameData &curEncD
      if (fwrite(val, size, writeSize, fileOffset) < writeSize)\
      {\
          x265_log(NULL, X265_LOG_ERROR, "Error writing analysis data\n");\
@@ -294,7 +372,7 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
          m_aborted = true;\
          return;\
      }\
-@@ -6060,7 +6060,7 @@ void Encoder::writeAnalysisFileRefine(x265_analysis_data* analysis, FrameData &c
+@@ -6018,7 +6018,7 @@ void Encoder::writeAnalysisFileRefine(x265_analysis_data* analysis, FrameData &c
      if (fwrite(val, size, writeSize, fileOffset) < writeSize)\
      {\
      x265_log(NULL, X265_LOG_ERROR, "Error writing analysis 2 pass data\n"); \
@@ -303,3 +381,19 @@ Namespace functions for multi-bitdepth builds so that libraries are self-contain
      m_aborted = true; \
      return; \
  }\
+diff --git a/encoder/frameencoder.cpp b/encoder/frameencoder.cpp
+index 5749f99..fbd0407 100644
+--- a/encoder/frameencoder.cpp
++++ b/encoder/frameencoder.cpp
+@@ -2426,7 +2426,7 @@ void FrameEncoder::vmafFrameLevelScore()
+     vmafframedata->internalBitDepth = m_param->internalBitDepth;
+     vmafframedata->reference_frame = fenc;
+     vmafframedata->distorted_frame = recon;
+-    fenc->m_vmafScore = x265_calculate_vmaf_framelevelscore(m_param,vmafframedata);
++    fenc->m_vmafScore = PARAM_NS::x265_calculate_vmaf_framelevelscore(m_param,vmafframedata);
+ 
+     if (vmafframedata)
+     x265_free(vmafframedata);
+-- 
+2.50.0
+
