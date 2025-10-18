@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_QA_COMPAT_SKIP=1 # bug #964519 tests/ subdir is irrelevant
 PYTHON_COMPAT=( python3_{10..13} )
 QTMIN=6.7.2
 inherit cmake frameworks.kde.org python-any-r1
