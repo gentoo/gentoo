@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 pypi virtualx
@@ -221,6 +221,12 @@ python_test() {
 		python3.12)
 			EPYTEST_DESELECT+=(
 				tests/test_constrainedlayout.py::test_compressed1
+			)
+			;;
+		python3.14)
+			EPYTEST_DESELECT+=(
+				# some minor asyncio trouble
+				tests/test_backends_interactive.py::test_webagg
 			)
 			;;
 	esac
