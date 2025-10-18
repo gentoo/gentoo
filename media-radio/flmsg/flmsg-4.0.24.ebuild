@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/fldigi/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="media-radio/fldigi
 		x11-libs/fltk:=
