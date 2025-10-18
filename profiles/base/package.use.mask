@@ -154,10 +154,6 @@ kde-frameworks/knewstuff:5 opds
 # most places.
 dev-build/meson test-full
 
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-09)
-# No suitable versions of dev-libs/protobuf available.
-=dev-java/protobuf-java-4.29.3 system-protoc
-
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
 # of dev-libs/boost in Gentoo.
