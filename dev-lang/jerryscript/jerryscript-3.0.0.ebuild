@@ -21,6 +21,7 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/jerryscript-3.0.0-no-werror.patch"
+	"${FILESDIR}/jerryscript-3.0.0-cmake.patch"
 )
 
 src_prepare() {

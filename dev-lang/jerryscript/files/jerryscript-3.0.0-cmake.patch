@@ -1,0 +1,57 @@
+https://github.com/jerryscript-project/jerryscript/pull/5262
+
+From f4fe9ba21590e5ef2eebb51c0713883708c0a7aa Mon Sep 17 00:00:00 2001
+From: Zac Medico <zmedico@gmail.com>
+Date: Fri, 17 Oct 2025 20:17:26 -0700
+Subject: [PATCH] chore: allow CMake though to 3.10
+
+This is allows the build with cmake-4.0.0 without deprecation warnings.
+
+use min...max syntax to allow build with newer cmake.
+ref: https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html
+
+Fixes:
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 has been removed from CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+  Or, add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to try configuring anyway.
+
+JerryScript-DCO-1.0-Signed-off-by: Zac Medico <zmedico@gmail.com>
+---
+ targets/baremetal-sdk/espressif/CMakeLists.txt      | 2 +-
+ targets/baremetal-sdk/espressif/main/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/targets/baremetal-sdk/espressif/CMakeLists.txt b/targets/baremetal-sdk/espressif/CMakeLists.txt
+index 826baf76..17ee60bd 100644
+--- a/targets/baremetal-sdk/espressif/CMakeLists.txt
++++ b/targets/baremetal-sdk/espressif/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...3.10)
+ 
+ set(SDKCONFIG ${CMAKE_BINARY_DIR}/sdkconfig)
+ # Workaround to generate sdkconfig into the build directory.
+diff --git a/targets/baremetal-sdk/espressif/main/CMakeLists.txt b/targets/baremetal-sdk/espressif/main/CMakeLists.txt
+index 78fa2b84..3657a25a 100644
+--- a/targets/baremetal-sdk/espressif/main/CMakeLists.txt
++++ b/targets/baremetal-sdk/espressif/main/CMakeLists.txt
+@@ -11,7 +11,7 @@
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...3.10)
+ 
+ # Set JerryScript variables
+ set(JERRY_ROOT_DIR ${PROJECT_DIR}/../../..)
+-- 
+2.49.0
+
