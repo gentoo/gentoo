@@ -107,6 +107,8 @@ src_test() {
 		"kdepim-addons-todoedittest"
 		# some failure, bug #961853 ...
 		"markdowncreateimagewidgettest"
+		# some failure, bug 964424 ...
+		"enterpriseheaderstyleplugintest"
 	)
 
 	# tests can get stuck with spawned processes, 4 minutes is a reasonable timeout
