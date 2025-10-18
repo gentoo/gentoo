@@ -1,0 +1,84 @@
+From eb5dad3493c959a97f889a145afa749db4ad2780 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 17 Oct 2025 22:22:07 +0200
+Subject: [PATCH] Raise CMake minimum to 3.10..3.31 range
+
+Successfully tested with CMake 4.1.2.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                         | 2 +-
+ autotests/CMakeLists.txt               | 2 --
+ docs/CMakeLists.txt                    | 2 --
+ examples/onvif-discover/CMakeLists.txt | 2 --
+ src/CMakeLists.txt                     | 2 --
+ 5 files changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 56361f6..20a885c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ # SPDX-FileCopyrightText: 2019 Casper Meijn <casper@meijn.net>
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ 
+-cmake_minimum_required(VERSION 3.7)
++cmake_minimum_required(VERSION 3.16..3.31)
+ 
+ project(kdsoap-ws-discovery-client VERSION 0.4.0)
+ 
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
+index 3635fec..7ecabb0 100644
+--- a/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
+@@ -2,8 +2,6 @@
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ #
+ 
+-cmake_minimum_required(VERSION 3.7)
+-
+ include(ECMAddTests)
+ 
+ ecm_add_tests(
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index 60e26a4..f2d75c8 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -2,8 +2,6 @@
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ #
+ 
+-cmake_minimum_required(VERSION 3.7)
+-
+ find_package(Doxygen
+              OPTIONAL_COMPONENTS dot mscgen dia)
+              
+diff --git a/examples/onvif-discover/CMakeLists.txt b/examples/onvif-discover/CMakeLists.txt
+index 3f011ad..b12d84e 100644
+--- a/examples/onvif-discover/CMakeLists.txt
++++ b/examples/onvif-discover/CMakeLists.txt
+@@ -2,8 +2,6 @@
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ #
+ 
+-cmake_minimum_required(VERSION 3.7)
+-
+ project(onvif-discover)
+ 
+ add_executable(${PROJECT_NAME}
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 177b304..33b4473 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,8 +2,6 @@
+ # SPDX-License-Identifier: GPL-3.0-or-later
+ #
+ 
+-cmake_minimum_required(VERSION 3.7)
+-
+ set(GLOBAL_KSWSDL2CPP_OPTION)
+ get_filename_component(KDWSDL_IMPORT_PATH ../wsdl/ ABSOLUTE)
+ set(GLOBAL_KSWSDL2CPP_OPTION -import-path ${KDWSDL_IMPORT_PATH} -use-local-files-only)
+-- 
+2.51.0
+
