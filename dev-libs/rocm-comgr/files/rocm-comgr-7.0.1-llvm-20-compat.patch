@@ -1,0 +1,22 @@
+--- a/src/comgr-cache.cpp
++++ b/src/comgr-cache.cpp
+@@ -130,7 +130,6 @@ void saveCommandOutput(CachedCommandAdaptor &C, AddStreamFn &AddStream,
+ 
+   CachedFileStream *CFS = FileOrErr->get();
+   serializeCacheEntry(*CFS->OS, *Buffer, CapturedLogS);
+-  ErrorHandler(CFS->commit(), "when commiting file stream");
+ }
+ 
+ bool readEntryFromCache(CachedCommandAdaptor &C, MemoryBuffer &CachedBuffer,
+--- a/src/comgr-cache-bundler-command.cpp
++++ b/src/comgr-cache-bundler-command.cpp
+@@ -155,7 +155,8 @@ void UnbundleCommand::addOptionsIdentifier(HashAlgorithm &H) const {
+ Error UnbundleCommand::addInputIdentifier(HashAlgorithm &H) const {
+   StringRef InputFilename = Config.InputFileNames.front();
+ 
+-  constexpr size_t LargestHeaderSize = CompressedOffloadBundle::V3HeaderSize;
++  constexpr size_t LargestHeaderSize = 4 + sizeof(uint16_t) + sizeof(uint32_t) + sizeof(uint16_t) +
++  sizeof(uint32_t) + sizeof(uint64_t);
+ 
+   ErrorOr<std::unique_ptr<MemoryBuffer>> MaybeInputBuffer =
+       MemoryBuffer::getFileSlice(InputFilename, LargestHeaderSize, 0);

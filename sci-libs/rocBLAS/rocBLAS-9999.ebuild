@@ -12,14 +12,14 @@ ROCM_VERSION=${PV}
 inherit cmake docs edo flag-o-matic multiprocessing rocm llvm-r1
 
 DESCRIPTION="AMD's library for BLAS on ROCm"
-HOMEPAGE="https://github.com/ROCm/rocBLAS"
+HOMEPAGE="https://github.com/ROCm/rocm-libraries/tree/develop/projects/rocblas"
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ROCm/rocm-libraries.git"
 	EGIT_BRANCH="develop"
 	S="${WORKDIR}/${P}/projects/rocblas"
-	SLOT="0/6.4"
+	SLOT="0/7.0"
 else
 	SRC_URI="https://github.com/ROCm/rocBLAS/archive/rocm-${PV}.tar.gz -> rocm-${P}.tar.gz"
 	S="${WORKDIR}/${PN}-rocm-${PV}"
@@ -27,18 +27,18 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="BSD"
-IUSE="benchmark hipblaslt test video_cards_amdgpu"
+LICENSE="MIT BSD"
+IUSE="benchmark hipblaslt roctracer test video_cards_amdgpu"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
 BDEPEND="
-	>=dev-build/rocm-cmake-5.3
+	dev-build/rocm-cmake:${SLOT}
 "
 
 RDEPEND="
 	dev-util/hip:${SLOT}
-	dev-util/roctracer:${SLOT}
+	roctracer? ( dev-util/roctracer:${SLOT} )
 	hipblaslt? ( sci-libs/hipBLASLt:${SLOT} )
 	benchmark? (
 		virtual/blas
@@ -62,9 +62,22 @@ DEPEND="
 
 QA_FLAGS_IGNORED="/usr/lib64/rocblas/library/.*"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.4.2-add-missing-header.patch
+	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
+	"${FILESDIR}"/${PN}-6.3.0-no-git.patch
+	"${FILESDIR}"/${PN}-7.0.1-find-cblas.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
-	sed -e "s:,-rpath=.*\":\":" -i clients/CMakeLists.txt || die
+
+	# Remove RPATH's, fixes multilib compatibility
+	sed -e "/apply_omp_settings/a return()" -i clients/CMakeLists.txt || die
+
+	# Disable automagic linking with roctracer
+	sed -e "s/if(ROCTRACER_INCLUDE_DIR/if(ROCBLAS_ENABLE_MARKER AND ROCTRACER_INCLUDE_DIR/" \
+		-i library/CMakeLists.txt || die
 }
 
 src_configure() {
@@ -85,6 +98,7 @@ src_configure() {
 		-DBUILD_CLIENTS_BENCHMARKS="$(usex benchmark ON OFF)"
 		-DBUILD_WITH_PIP=OFF
 		-DBUILD_WITH_HIPBLASLT="$(usex hipblaslt ON OFF)"
+		-DROCBLAS_ENABLE_MARKER="$(usex roctracer ON OFF)"
 		-DLINK_BLIS=OFF
 		-DTensile_CPU_THREADS=$(makeopts_jobs)
 		-Wno-dev

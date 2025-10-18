@@ -10,15 +10,15 @@ LLVM_COMPAT=( 20 )
 
 inherit cmake distutils-r1 llvm-r1 prefix rocm
 
-DESCRIPTION="Stretching GPU performance for GEMMs and tensor contractions"
-HOMEPAGE="https://github.com/ROCm/Tensile"
+DESCRIPTION="A tool for creating a benchmark-driven GEMMs and tensor contractions code"
+HOMEPAGE="https://rocm.docs.amd.com/projects/Tensile/en/latest/src/index.html"
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ROCm/rocm-libraries.git"
 	EGIT_BRANCH="develop"
 	S="${WORKDIR}/${P}/shared/tensile"
-	SLOT="0/6.4"
+	SLOT="0/7.0"
 else
 	SRC_URI="https://github.com/ROCm/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
 	S="${WORKDIR}/${PN}-rocm-${PV}"
@@ -41,9 +41,9 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/joblib[${PYTHON_USEDEP}]
 	dev-util/hip:${SLOT}
 	dev-util/rocm-smi:${SLOT}
-	$(llvm_gen_dep '
-		llvm-core/clang:${LLVM_SLOT}
-	')
+	$(llvm_gen_dep "
+		llvm-core/clang:\${LLVM_SLOT}
+	")
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -57,22 +57,21 @@ BDEPEND="
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
+	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
+	"${FILESDIR}"/${PN}-7.0.1-fix-install.patch
+)
+
 CMAKE_USE_DIR="${S}/${PN}/Source"
 
 src_prepare() {
 	distutils-r1_src_prepare
 	sed -e "s,\@LLVM_PATH\@,$(get_llvm_prefix),g" \
-		"${FILESDIR}"/${PN}-5.7.1-gentoopath.patch > "${S}"/gentoopath.patch || die
+		"${FILESDIR}/${PN}-5.7.1-gentoopath.patch" > "${S}"/gentoopath.patch || die
 	eapply $(prefixify_ro "${S}"/gentoopath.patch)
 
-	# https://github.com/ROCm/rocm-libraries/issues/1133
-	sed 's/\["Tensile"\]/__import__("setuptools").find_packages()/' \
-		-i setup.py || die
-
-	# https://github.com/ROCm/rocm-libraries/issues/944
-	sed 's/amdclang/clang/g' -i Tensile/Utilities/Toolchain.py || die
-
-	pushd ${PN} || die
+	pushd "${PN}" || die
 
 	sed -e "/ROCM_SMI_ROOT/s,lib,$(get_libdir)," \
 		-i Source/cmake/FindROCmSMI.cmake || die
@@ -86,21 +85,24 @@ src_prepare() {
 	sed -e "/HipClangVersion/s/0.0.0/$(hipconfig -v)/" -i Common.py || die
 
 	sed -e "s,os.path.dirname(os.path.realpath(__file__)),${Tensile_share_dir},g" \
-		-i ReplacementKernels.py Common.py ${PN}.py || die
+		-i ReplacementKernels.py Common.py "${PN}.py" || die
 
 	sed -e "s|os\.path\.dirname.*$|\"${EPREFIX}/usr/share/Tensile/Source\", end='')|" -i __init__.py || die
 
 	# bug 949817: fix v_dot4_i32_i8 syntax for clang-20
 	sed  's/ op_sel:\[0,0\] op_sel_hi:\[1,1\]//' -i Components/MAC_I8X4.py || die
 
+	# Fix compiler "validation"
+	rocm_use_clang
+	sed "s/amdclang/$(basename "$CC")/g" -i Utilities/Toolchain.py || die
+
 	popd || die
 
-	sed -e "/package_data/d" -e "/data_files/d" -i setup.py || die
 	use client && PATCHES='' cmake_src_prepare  # do not apply patches again in cmake_src_prepare
 }
 
 src_configure() {
-	rocm_use_hipcc
+	rocm_use_clang
 
 	distutils-r1_src_configure
 	if use client; then
@@ -133,16 +135,19 @@ python_install() {
 src_install() {
 	distutils-r1_src_install
 
-	pushd ${PN} || die
-	insinto /usr/share/${PN}
+	pushd "${PN}" || die
+	insinto "/usr/share/${PN}"
 	doins -r Configs Perf Source CustomKernels
-	insinto /usr/$(get_libdir)/cmake/${PN}
+	insinto "/usr/$(get_libdir)/cmake/${PN}"
 	doins cmake/*.cmake
 
 	if use client; then
 		pushd "${BUILD_DIR}" || die
 		dobin client/tensile_client
 	fi
+
+	# Remove extra copy
+	rm -rf "${ED}"/usr/cmake || die
 }
 
 # Test suite fails to start without this

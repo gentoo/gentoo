@@ -1,0 +1,26 @@
+When Tensile_SKIP_BUILD is enabled, fixes error:
+Cannot add target-level dependencies to non-existent target "TENSILE_LIBRARY_TARGET".
+--- a/library/src/amd_detail/rocblaslt/src/CMakeLists.txt
++++ b/library/src/amd_detail/rocblaslt/src/CMakeLists.txt
+@@ -93,9 +93,8 @@
+     )
+   endif()
+ 
+-  add_dependencies(TENSILE_LIBRARY_TARGET rocisa)
+-
+   if(NOT Tensile_SKIP_BUILD)
++    add_dependencies(TENSILE_LIBRARY_TARGET rocisa)
+     add_subdirectory(extops)
+   endif()
+ 
+--- a/library/CMakeLists.txt
++++ b/library/CMakeLists.txt
+@@ -237,7 +237,7 @@ rocm_install(
+     PATTERN "*.hpp"
+ )
+ 
+-if ( NOT BUILD_CUDA )
++if ( NOT BUILD_CUDA AND HIPBLASLT_ENABLE_DEVICE )
+     if (WIN32)
+       set( HIPBLASLT_TENSILE_LIBRARY_DIR "\${CPACK_PACKAGING_INSTALL_PREFIX}hipblaslt/bin" CACHE PATH "path to tensile library" )
+     else()

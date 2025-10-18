@@ -14,7 +14,7 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCm/hipSOLVER</remote-id>
+    <remote-id type="github">ROCm/rocm-libraries</remote-id>
   </upstream>
   <use>
     <flag name="sparse">Build hipSOLVER with sparse functionality (sci-libs/cholmod)</flag>

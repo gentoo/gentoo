@@ -22,10 +22,11 @@
     <name>Sv. Lockal</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">ROCm/HIP</remote-id>
+    <remote-id type="github">ROCm/rocm-systems</remote-id>
   </upstream>
   <use>
     <flag name="hip">Build HIP runtime</flag>
+    <flag name="numa">Enable NUMA support using <pkg>sys-process/numactl</pkg> (NUMA kernel support is also required)</flag>
     <flag name="opencl">Build OpenCL runtime</flag>
     <flag name="video_cards_amdgpu">Build for AMD platform</flag>
     <flag name="video_cards_nvidia">Build for Nvidia platform</flag>

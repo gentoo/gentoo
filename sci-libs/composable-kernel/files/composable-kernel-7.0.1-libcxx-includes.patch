@@ -1,0 +1,420 @@
+--- a/include/ck/tensor_operation/gpu/device/impl/device_batched_contraction_multiple_d_wmma_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_batched_contraction_multiple_d_wmma_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_multiple_d_xdl_cshuffle_v3.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_multiple_d_xdl_cshuffle_v3.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_softmax_gemm_permute_wmma_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_softmax_gemm_permute_wmma_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include <numeric>
+ #include <initializer_list>
+--- a/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_wmma_cshuffle_v3.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_wmma_cshuffle_v3.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_xdl.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_xdl.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_xdl_fpAintB_b_scale.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_batched_gemm_xdl_fpAintB_b_scale.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_contraction_multiple_abd_xdl_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_contraction_multiple_abd_xdl_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include <vector>
+ 
+--- a/include/ck/tensor_operation/gpu/device/impl/device_fpAintB_gemm_wmma.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_fpAintB_gemm_wmma.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_dpp.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_dpp.hpp
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_abd_xdl_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_abd_xdl_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_layernorm_xdl_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_layernorm_xdl_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_wmma_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_wmma_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle.hpp
+@@ -5,6 +5,7 @@
+ 
+ #ifndef __HIPCC_RTC__
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include "ck/host_utility/device_prop.hpp"
+ #include "ck/host_utility/kernel_launch.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_lds_direct_load.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_lds_direct_load.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3_ab_scale.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3_ab_scale.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3_b_preshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3_b_preshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3_blockscale_bpreshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_multiple_d_xdl_cshuffle_v3_blockscale_bpreshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_wmma.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_wmma.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_wmma_cshuffle_v3.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_wmma_cshuffle_v3.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_lds_direct_load.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_lds_direct_load.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_streamk_v3.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_streamk_v3.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v2.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v2.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3_b_preshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3_b_preshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3_b_scale.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3_b_scale.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3_mx.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3_mx.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3r1.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_cshuffle_v3r1.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include <typeinfo>
+ 
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_splitk_c_shuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_splitk_c_shuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_splitk_c_shuffle_lds_direct_load.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_gemm_xdl_splitk_c_shuffle_lds_direct_load.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_bwd_weight_two_stage_xdl_cshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_bwd_weight_two_stage_xdl_cshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <numeric>
+ #include <sstream>
+ 
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_multiple_abd_xdl_cshuffle_v3.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_conv_fwd_multiple_abd_xdl_cshuffle_v3.hpp
+@@ -6,6 +6,7 @@
+ #include <functional>
+ #include <iostream>
+ #include <iterator>
++#include <map>
+ #include <numeric>
+ #include <sstream>
+ 
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_gemm_multiple_d_xdl_cshuffle_tile_loop.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_gemm_multiple_d_xdl_cshuffle_tile_loop.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include <tuple>
+ 
+--- a/include/ck/tensor_operation/gpu/device/impl/device_grouped_query_attention_forward_wmma.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_grouped_query_attention_forward_wmma.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include <numeric>
+ #include <initializer_list>
+--- a/include/ck/tensor_operation/gpu/device/impl/device_moe_gemm.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_moe_gemm.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_moe_gemm_blockscale.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_moe_gemm_blockscale.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include <hip/hip_runtime.h>
+ 
+--- a/include/ck/tensor_operation/gpu/device/impl/device_moe_mx_gemm.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_moe_mx_gemm.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_moe_mx_gemm_bns.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_moe_mx_gemm_bns.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_moe_mx_gemm_bpreshuffle.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_moe_mx_gemm_bpreshuffle.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ 
+ #include "ck/utility/common_header.hpp"
+--- a/include/ck/tensor_operation/gpu/device/impl/device_multi_query_attention_forward_wmma.hpp
++++ b/include/ck/tensor_operation/gpu/device/impl/device_multi_query_attention_forward_wmma.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
+ #include <iostream>
++#include <map>
+ #include <sstream>
+ #include <numeric>
+ #include <initializer_list>

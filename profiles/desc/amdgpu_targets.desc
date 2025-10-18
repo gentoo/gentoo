@@ -16,6 +16,7 @@ gfx90a - CDNA2 Accelerator, codename aldebaran, including AMD Instinct MI200 ser
 gfx940 - CDNA3 Accelerator, codename aqua_vangaram, MI300A rev 0
 gfx941 - CDNA3 Accelerator, codename aqua_vangaram, MI300X rev 0
 gfx942 - CDNA3 Accelerator, codename aqua_vangaram, MI300A and MI300X rev >=1
+gfx950 - CDNA4 Accelerator, including AMD Instinct MI350X and MI355X
 gfx1010 - RDNA GPU, codename navi10, including Radeon RX 5700XT/5700/5700M/5700B/5700XTB/5600XT/5600/5600M, Radeon Pro 5700XT/5700, Radeon Pro W5700X/W5700
 gfx1011 - RDNA GPU, codename navi12, including Radeon Pro 5600M/V520
 gfx1012 - RDNA GPU, codename navi14, including Radeon RX 5500XT/5500/5500M/5500XTB/5300/5300M, Radeon Pro 5500XT/5500M/5300/5300M, Radeon Pro W5500X/W5500/W5500M/W5300M

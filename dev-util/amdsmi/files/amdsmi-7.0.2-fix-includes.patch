@@ -1,0 +1,43 @@
+Fix missing includes for >=libstdc++-15.
+Upstream bug: https://github.com/ROCm/amdsmi/issues/123
+Upstream bug: https://github.com/ROCm/amdsmi/issues/124
+--- a/rocm_smi/include/rocm_smi/rocm_smi_common.h
++++ b/rocm_smi/include/rocm_smi/rocm_smi_common.h
+@@ -23,6 +23,7 @@
+ #ifndef INCLUDE_ROCM_SMI_ROCM_SMI_COMMON_H_
+ #define INCLUDE_ROCM_SMI_ROCM_SMI_COMMON_H_
+ 
++#include <cstdint>
+ #include <memory>
+ #include <map>
+ #include <vector>
+--- a/tests/amd_smi_test/functional/frequencies_read.cc
++++ b/tests/amd_smi_test/functional/frequencies_read.cc
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <cstdint>
++#include <iomanip>
+ #include <iostream>
+ #include <string>
+ 
+--- a/tests/amd_smi_test/functional/hw_topology_read.cc
++++ b/tests/amd_smi_test/functional/hw_topology_read.cc
+@@ -24,6 +24,7 @@
+ #include <stdint.h>
+ #include <stddef.h>
+ 
++#include <iomanip>
+ #include <iostream>
+ #include <string>
+ #include <vector>
+--- a/tests/amd_smi_test/functional/sys_info_read.cc
++++ b/tests/amd_smi_test/functional/sys_info_read.cc
+@@ -24,6 +24,7 @@
+ #include <stddef.h>
+ #include <gtest/gtest.h>
+ 
++#include <iomanip>
+ #include <iostream>
+ #include <string>
+ #include <limits>

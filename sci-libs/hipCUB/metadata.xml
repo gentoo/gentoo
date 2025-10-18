@@ -17,7 +17,7 @@
 		<name>Sv. Lockal</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">ROCm/hipCUB</remote-id>
+		<remote-id type="github">ROCm/rocm-libraries</remote-id>
 	</upstream>
 	<use>
 		<flag name="benchmark">Build and install benchmark binaries.</flag>
