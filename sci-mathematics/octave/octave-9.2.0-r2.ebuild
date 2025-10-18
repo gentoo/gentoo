@@ -113,6 +113,9 @@ src_prepare() {
 	rm doc/interpreter/contributors.texi || die
 
 	eautoreconf
+
+	# bug 956766
+	rm build-aux/texinfo.tex || die
 }
 
 src_configure() {
