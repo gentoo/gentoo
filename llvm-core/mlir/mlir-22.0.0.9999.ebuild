@@ -68,6 +68,8 @@ check_distribution_components() {
 					# installed test libraries
 					MLIRTestAnalysis|MLIRTestDialect|MLIRTestIR)
 						;;
+					MLIROpenACCTestPasses)
+						;;
 					# static libraries
 					MLIR*)
 						continue
@@ -122,6 +124,7 @@ get_distribution_components() {
 		mlir_runner_utils
 
 		# test libraries required by flang
+		MLIROpenACCTestPasses
 		MLIRTestAnalysis
 		MLIRTestDialect
 		MLIRTestIR
