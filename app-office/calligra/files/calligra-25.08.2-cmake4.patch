@@ -1,0 +1,29 @@
+Source: https://invent.kde.org/office/calligra/-/merge_requests/161
+
+From 1cd552847b4d936dd494159ba1fb8f8a9b83d065 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 19 Oct 2025 00:11:16 +0200
+Subject: [PATCH] Align words generator CMake minimum version w/ root
+ CMakeLists.txt
+
+CMake 4 dropped support for versions below 3.5.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ filters/words/msword-odf/wv2/src/generator/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/filters/words/msword-odf/wv2/src/generator/CMakeLists.txt b/filters/words/msword-odf/wv2/src/generator/CMakeLists.txt
+index 10d1c022e9e..df964873b0e 100644
+--- a/filters/words/msword-odf/wv2/src/generator/CMakeLists.txt
++++ b/filters/words/msword-odf/wv2/src/generator/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # Generate parsers for some Word structures.
+-cmake_minimum_required(VERSION 3.2.0)
++cmake_minimum_required(VERSION 3.16)
+ 
+ set( scanner_word95
+ 	${CMAKE_CURRENT_BINARY_DIR}/word95_generated.h
+-- 
+2.51.1
+
