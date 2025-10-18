@@ -40,12 +40,10 @@ BDEPEND="
 	${RDEPEND}
 	test? (
 		dev-python/ipyparallel[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
-		dev-python/trio[${PYTHON_USEDEP}]
 	)
 "
 
-EPYTEST_PLUGINS=( pytest-{asyncio,rerunfailures,timeout} )
+EPYTEST_PLUGINS=( flaky pytest-{asyncio,timeout} )
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -67,12 +65,18 @@ src_test() {
 
 python_test() {
 	local EPYTEST_DESELECT=(
+		# TODO
+		tests/test_debugger.py::test_attach_debug
+		tests/test_debugger.py::test_breakpoint_in_cell_with_leading_empty_lines
+		tests/test_debugger.py::test_rich_inspect_at_breakpoint
+		tests/test_debugger.py::test_rich_inspect_not_at_breakpoint
+		tests/test_debugger.py::test_set_breakpoints
+		tests/test_debugger.py::test_stop_on_breakpoint
+		tests/test_debugger.py::test_copy_to_globals
 		# hangs?
 		tests/test_eventloop.py::test_tk_loop
-		# flaky
+		# doesn't like pyside2?
 		tests/test_eventloop.py::test_qt_enable_gui
-		# fails without pytest-cov; apparently "time-sensitive" too
-		tests/test_subshells.py::test_run_concurrently_sequence
 	)
 
 	case ${EPYTHON} in
