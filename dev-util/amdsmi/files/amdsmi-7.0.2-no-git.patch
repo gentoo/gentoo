@@ -1,0 +1,21 @@
+Should not check and update esmi_ib_library in network isolation
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,7 +39,7 @@ find_package(PkgConfig)
+ generic_add_rocm()
+ 
+ # provide git to utilities
+-find_program(GIT NAMES git)
++# find_program(GIT NAMES git)
+ 
+ ## Setup the package version based on git tags.
+ set(PKG_VERSION_GIT_TAG_PREFIX "amdsmi_pkg_ver")
+@@ -126,7 +126,7 @@ if(ENABLE_ESMI_LIB)
+         message(STATUS "Adding esmi_ib_library...")
+         execute_process(COMMAND git clone --depth=1 -b ${current_esmi_tag} https://github.com/amd/esmi_ib_library.git
+                                 ${PROJECT_SOURCE_DIR}/esmi_ib_library)
+-    else()
++    elseif(FALSE)
+         message(STATUS "esmi_ib_library already installed, checking version...")
+ 
+         # Grab latest commit and get the tag
