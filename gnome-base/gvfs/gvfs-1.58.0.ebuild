@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gvfs"
 LICENSE="LGPL-2+"
 SLOT="0"
 
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="afp archive bluray cdda cdr elogind fuse google keyring gnome-online-accounts gphoto2 +http ios mtp nfs onedrive policykit samba systemd test +udev udisks zeroconf"
 RESTRICT="!test? ( test )"
 # elogind/systemd only relevant to udisks (in v1.38.1)
@@ -27,7 +27,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/glib-2.70.0:2
+	>=dev-libs/glib-2.83.0:2
 	>=gnome-base/gsettings-desktop-schemas-3.33.0
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	sys-apps/dbus
@@ -53,7 +53,7 @@ RDEPEND="
 		>=app-pda/libimobiledevice-1.2:=
 		>=app-pda/libplist-1:=
 	)
-	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.17.1:= )
+	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.53.1:= )
 	keyring? ( app-crypt/libsecret )
 	bluray? ( media-libs/libbluray:= )
 	mtp? (
@@ -71,7 +71,7 @@ RDEPEND="
 	nfs? ( >=net-fs/libnfs-1.9.8:= )
 	onedrive? (
 		>=dev-libs/libgdata-0.18.0:=[crypt,gnome-online-accounts]
-		>=net-libs/msgraph-0.2.0
+		>=net-libs/msgraph-0.3.0:=
 	)
 	virtual/openssh
 "
@@ -140,6 +140,7 @@ src_configure() {
 		# but they aren't automated tests in 1.38.1
 		-Ddevel_utils=false
 		-Dinstalled_tests=false
+		-Dunit_tests=false
 		-Dman=true
 		-Dprivileged_group=wheel
 		# wsdd not in gentoo repository
