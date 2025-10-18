@@ -1,0 +1,19 @@
+https://github.com/exaile/exaile/pull/978
+https://github.com/exaile/exaile/commit/9f77f883ee9bb63726a4963a3ed8bbf3c42f67e1
+
+From 9f77f883ee9bb63726a4963a3ed8bbf3c42f67e1 Mon Sep 17 00:00:00 2001
+From: "Felipe A. Hernandez" <ergoithz@gmail.com>
+Date: Wed, 8 Oct 2025 10:50:28 +0100
+Subject: [PATCH] [py312] replace deprecated RawConfigParser.readp
+
+--- a/xl/playlist.py
++++ b/xl/playlist.py
+@@ -534,7 +534,7 @@ def import_from_file(self, path):
+ 
+         try:
+             with GioFileInputStream(gfile) as stream:
+-                pls_playlist.readfp(stream)
++                pls_playlist.read_file(stream)
+         except MissingSectionHeaderError:
+             # Most likely version 1, thus only a list of URIs
+             playlist = Playlist(self.name_from_path(path))
