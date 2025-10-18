@@ -1,0 +1,12 @@
+diff --git a/src/gui/src/Widgets/InlineEdit.h b/src/gui/src/Widgets/InlineEdit.h
+index fa06186d1..3d5188791 100644
+--- a/src/gui/src/Widgets/InlineEdit.h
++++ b/src/gui/src/Widgets/InlineEdit.h
+@@ -23,6 +23,7 @@
+ #define INLINE_EDIT_H
+ 
+ #include <QLineEdit>
++#include <QKeyEvent>
+ 
+ #include <core/config.h>
+ #include <core/Object.h>
