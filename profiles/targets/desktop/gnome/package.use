@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2025-10-18)
-# Needed by net-misc/gnome-remote-desktop[rdp]
+# Needed by net-misc/gnome-remote-desktop. Default +rdp needs freerdp[server].
 net-misc/freerdp server
+x11-wm/mutter screencast
 
 # Mart Raudsepp <leio@gentoo.org> (2022-01-05)
 # gnome-boxes requires spice-gtk[vala]
