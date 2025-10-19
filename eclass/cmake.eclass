@@ -453,20 +453,26 @@ _cmake_minreqver-info() {
 		case ${1} in
 			305)
 				eqawarn "The following CMakeLists.txt files are causing errors:"
-				for info in ${_CMAKE_MINREQVER_CMAKE305[*]}; do eqawarn "  ${info}"; done
+				for info in ${_CMAKE_MINREQVER_CMAKE305[*]}; do
+					eqawarn "  ${info#"${CMAKE_USE_DIR}/"}";
+				done
 				eqawarn
 				;;
 			310)
 				if [[ -n ${_CMAKE_MINREQVER_CMAKE310[@]} ]]; then
 					eqawarn "The following CMakeLists.txt files are causing warnings:"
-					for info in ${_CMAKE_MINREQVER_CMAKE310[*]}; do eqawarn "  ${info}"; done
+					for info in ${_CMAKE_MINREQVER_CMAKE310[*]}; do
+						eqawarn "  ${info#"${CMAKE_USE_DIR}/"}";
+					done
 					eqawarn
 				fi
 				;;
 			316)
 				if [[ ${warnlvl} -ge 316 ]] && [[ -n ${_CMAKE_MINREQVER_CMAKE316[@]} ]]; then
 					eqawarn "The following CMakeLists.txt files are causing warnings:"
-					for info in ${_CMAKE_MINREQVER_CMAKE316[*]}; do eqawarn "  ${info}"; done
+					for info in ${_CMAKE_MINREQVER_CMAKE316[*]}; do
+						eqawarn "  ${info#"${CMAKE_USE_DIR}/"}";
+					done
 					eqawarn
 				fi
 				;;
@@ -527,7 +533,7 @@ _cmake_modify-cmakelists() {
 		fi
 		# Detect unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
 		if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
-			_cmake_minreqver-check "${file#"${CMAKE_USE_DIR}/"}"
+			_cmake_minreqver-check "${file}"
 		fi
 	done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0 || die)
 
