@@ -99,8 +99,6 @@ RDEPEND="
 
 	systemd? ( sys-apps/systemd:= )
 	gamepad? ( >=dev-libs/libmanette-0.2.4 )
-	!<net-libs/webkit-gtk-2.38:4
-	!<net-libs/webkit-gtk-2.44:4.1
 "
 DEPEND="${RDEPEND}"
 # Need real bison, not yacc

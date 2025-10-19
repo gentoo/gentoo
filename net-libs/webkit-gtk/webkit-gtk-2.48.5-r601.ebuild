@@ -55,8 +55,6 @@ RESTRICT="test"
 #   and we don't need any more new problems.
 #
 RDEPEND="
-	!<net-libs/webkit-gtk-2.38:4
-	!<net-libs/webkit-gtk-2.44:4.1
 	app-accessibility/at-spi2-core:2
 	dev-db/sqlite:3
 	dev-libs/glib:2
