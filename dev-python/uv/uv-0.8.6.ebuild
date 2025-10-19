@@ -5,6 +5,7 @@ EAPI=8
 
 CRATES="
 "
+RUST_MIN_VER="1.88.0"
 
 declare -A GIT_CRATES=(
 	[async_zip]='https://github.com/astral-sh/rs-async-zip;285e48742b74ab109887d62e1ae79e7c15fd4878;rs-async-zip-%commit%'
