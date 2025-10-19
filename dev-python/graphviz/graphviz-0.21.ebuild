@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -33,6 +33,8 @@ BDEPEND="
 		media-gfx/graphviz[gts,pdf]
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}_fix_python3_14_tests.patch" )
 
 distutils_enable_tests pytest
 
