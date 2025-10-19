@@ -90,6 +90,9 @@ python_test() {
 		tests/crdb/test_typing.py
 		# TODO, relying on undefined ordering in Python?
 		tests/test_dns_srv.py::test_srv
+		# requires pproxy?
+		tests/test_waiting_async.py::test_remote_closed
+		tests/test_waiting.py::test_remote_closed
 	)
 
 	case ${ARCH} in
