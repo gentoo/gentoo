@@ -24,6 +24,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.1-narrowing.patch
+	"${FILESDIR}"/${PN}-1.0.1-lto.patch
+)
+
 src_compile() {
 	emake GAMEDATA="/usr/share/${PN}"
 }

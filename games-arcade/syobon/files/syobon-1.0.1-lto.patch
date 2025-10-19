@@ -1,0 +1,100 @@
+diff --git a/loadg.cpp b/loadg.cpp
+index 4415cb8..c662c7c 100644
+--- a/loadg.cpp
++++ b/loadg.cpp
+@@ -2,7 +2,7 @@
+ #include "Windows.h"
+ #endif
+ #include "DxLib.h"
+-
++#include "size.h"
+ 
+ void end();
+ 
+@@ -20,7 +20,7 @@ extern Mix_Chunk *otofinal;
+ #endif
+ 
+ extern int anx[160], any[160];
+-extern int ne[40], nf[40];
++extern int ne[nmax], nf[nmax];
+ 
+ void loadg(void)
+ {
+diff --git a/main.h b/main.h
+index 2dd49d8..9aab7cc 100644
+--- a/main.h
++++ b/main.h
+@@ -1,4 +1,6 @@
+ #include "DxLib.h"
++#include "size.h"
++
+ using namespace std;
+ 
+ #define SHORT
+@@ -129,7 +131,6 @@ double pai = 3.1415926535;
+ 
+ 
+ //地面
+-#define smax 31
+ int sx, sco;
+ int sa[smax], sb[smax], sc[smax], sd[smax], stype[smax], sxtype[smax],
+     sr[smax];
+@@ -159,7 +160,6 @@ int mascrollmax = 21000;	//9000
+ //ブロック
+ void tyobi(int x, int y, int type);
+ void brockbreak(int t);
+-#define tmax 641
+ int tco;
+ int ta[tmax], tb[tmax], tc[tmax], td[tmax], thp[tmax], ttype[tmax];
+ int titem[tmax], txtype[tmax];
+@@ -173,7 +173,6 @@ void setfont(int x, int y);
+ //効果を持たないグラ
+ void eyobi(int xa, int xb, int xc, int xd, int xe, int xf, int xnobia,
+ 	   int xnobib, int xgtype, int xtm);
+-#define emax 201
+ int eco;
+ int ea[emax], eb[emax], enobia[emax], enobib[emax], ec[emax], ed[emax];
+ int ee[emax], ef[emax], etm[emax];
+@@ -185,7 +184,6 @@ int egtype[emax];
+ void ayobi(int xa, int xb, int xc, int xd, int xnotm, int xtype,
+ 	   int xxtype);
+ void tekizimen();
+-#define amax 24
+ int aco;
+ int aa[amax], ab[amax], anobia[amax], anobib[amax], ac[amax], ad[amax];
+ int ae[amax], af[amax], abrocktm[amax];
+@@ -196,21 +194,18 @@ int atm[amax], a2tm[amax];
+ int amsgtm[amax], amsgtype[amax];
+ 
+ //敵出現
+-#define bmax 81
+ int bco;
+ int ba[bmax], bb[bmax], btm[bmax];
+ int btype[bmax], bxtype[bmax], bz[bmax];
+ 
+ 
+ //背景
+-#define nmax 41
+ int nxxmax, nco;
+ int na[nmax], nb[nmax], nc[nmax], nd[nmax], ntype[nmax];
+ int ne[nmax], nf[nmax], ng[nmax], nx[nmax];
+ 
+ 
+ //リフト
+-#define srmax 21
+ int srco;
+ int sra[srmax], srb[srmax], src[srmax], srd[srmax], sre[srmax], srf[srmax];
+ int srtype[srmax], srgtype[srmax], sracttype[srmax], srsp[srmax];
+diff --git a/size.h b/size.h
+new file mode 100644
+index 0000000..8f91ec1
+--- /dev/null
++++ b/size.h
+@@ -0,0 +1,7 @@
++#define amax 24
++#define bmax 81
++#define emax 201
++#define nmax 41
++#define smax 31
++#define srmax 21
++#define tmax 641
