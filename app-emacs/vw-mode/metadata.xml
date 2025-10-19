@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnu-emacs@gentoo.org</email>
+    <name>Gentoo GNU Emacs project</name>
+  </maintainer>
+  <stabilize-allarches/>
+  <longdescription>
+    Major mode for editing programming language descriptions in the
+    style used by the Algol 68 Revised Report.  The syntax of the language
+    is expressed formally using a van-Wijngaarden grammar, also known as
+    VW-grammars or two-level grammars. These grammars have the same
+    expression power than a Turing machine, and can therefore cover much
+    more than the usual BNF-style representations which are restricted to
+    what can be expressed by context-free grammars.  Pragmatic annotations
+    and cross-references complement the grammar rules, which are organized
+    in numbered sections.
+  </longdescription>
+  <upstream>
+    <remote-id type="sourcehut">~jemarch/vw-mode</remote-id>
+  </upstream>
+</pkgmetadata>
