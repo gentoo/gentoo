@@ -4,6 +4,9 @@
 
 : ${VDRMANAGER_PORT:=6420}
 
+# default path from ebuild merge; no option in config file to overwrite
+: ${VDRMANAGER_CERTFILE:=/etc/vdr/plugins/vdrmanager/vdrmanager.pem}
+
 if [[ -z ${VDRMANAGER_PASS} ]]; then
 	eerror "Empty password in /etc/conf.d/vdr.vdrmanager"
 	logger -t vdr "ERROR: need password for plugin vdr-manager"
@@ -17,5 +20,9 @@ plugin_pre_vdr_start() {
 	if yesno ${SVDRPHOSTS_CHECK:-no}; then
 		add_plugin_param "-s"
 	fi
-}
 
+	add_plugin_param "-k ${VDRMANAGER_CERTFILE}"
+
+	# vdrmanager_compression
+	add_plugin_param "-c ${VDRMANAGER_COMPRESSION}"
+}

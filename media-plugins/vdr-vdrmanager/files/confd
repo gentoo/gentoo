@@ -8,6 +8,10 @@
 # Set the port where the plugin is listen on
 #   allowed values: port number
 #   default: 6420
+#   default port on ssl connection is always VDRMANAGER_PORT +1
+#   this means, if you enable ssl support on your android vdrmanager app
+#   add +1 in the app port setup, else it will still the non ssl connection be used
+#   try to remember on this ;)
 #
 #VDRMANAGER_PORT="6420"
 
@@ -26,3 +30,12 @@ VDRMANAGER_PASS=""
 #
 #SVDRPHOSTS_CHECK="no"
 
+# Compressionsmode for data transfer
+# 'g' for gzip, if you has use-flag gzip enabled on plugin install
+# 'z' for zlib, if you has use-flag zlib enabled on plugin install
+# 'n' for none, if you would like to disable compression
+#
+#	allowed values: g | z | n
+#	default: unset
+#
+#VDRMANAGER_COMPRESSION=""
