@@ -1,0 +1,12 @@
+diff --git a/avidemux_plugins/CMakeLists.txt b/avidemux_plugins/CMakeLists.txt
+index afccc07bf..0fd5677ce 100644
+--- a/avidemux_plugins/CMakeLists.txt
++++ b/avidemux_plugins/CMakeLists.txt
+@@ -20,6 +20,7 @@ MESSAGE("")
+ MESSAGE(STATUS "Checking for avidemux development files ..")
+ 
+ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
++LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../avidemux/qt4/cmake)
+ IF(NOT FAKEROOT)
+   SET(AVIDEMUX_FAKEROOT "")
+ ELSE()
