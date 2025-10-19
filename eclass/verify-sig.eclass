@@ -380,6 +380,7 @@ _gpg_verify_signed_checksums() {
 
 	verify-sig_verify_unsigned_checksums - "${algo}" "${files}" < <(
 		verify-sig_verify_message "${checksum_file}" - "${key}"
+		echo
 	)
 }
 
