@@ -1,0 +1,42 @@
+From 26942b401070e6628e4c85768632ca33538bb99c Mon Sep 17 00:00:00 2001
+From: Melvin Keskin <melvo@olomono.de>
+Date: Mon, 13 Oct 2025 21:02:48 +0200
+Subject: [PATCH] Add dependency Qt6GuiPrivate needed since Qt 6.10.0
+
+---
+ CMakeLists.txt | 5 +++++
+ README.md      | 2 +-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index abbd885df..f9ea0e47c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,6 +52,11 @@ set(AUTOMOC_MOC_OPTIONS -Muri=${APPLICATION_ID})
+ 
+ # Find packages
+ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Core Concurrent Qml Quick Svg Sql QuickControls2 Xml Multimedia Positioning Location)
++
++if(Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0" AND NOT WIN32 AND NOT APPLE)
++    find_package(Qt6GuiPrivate ${QT_MIN_VERSION} REQUIRED NO_MODULE)
++endif()
++
+ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS KIO Kirigami Prison)
+ if (NOT ANDROID)
+    find_package(KF6 ${KF_MIN_VERSION} OPTIONAL_COMPONENTS Crash)
+diff --git a/README.md b/README.md
+index eb6685eab..eb6bf6c61 100644
+--- a/README.md
++++ b/README.md
+@@ -48,7 +48,7 @@ Kaidan yourself can be found in our [Wiki][wiki].
+ 
+ The following dependencies are needed by Kaidan:
+ 
+-* [Qt][qt-build-sources] >= 6.7.0 - Core | Concurrent | Qml | Quick | Svg | Sql | QuickControls2 | Xml | Multimedia | Positioning | Location
++* [Qt][qt-build-sources] >= 6.7.0 - Core | Concurrent | Qml | Quick | Svg | Sql | QuickControls2 | Xml | Multimedia | Positioning | Location | Qt6GuiPrivate (since Qt 6.10.0)
+ * [KDE Frameworks][kf] >= 6.11.0 - [ECM (extra-cmake-modules)][ecm] | [KWindowSystem][kwindowsystem] | [KNotifications][knotifications] (`-DUSE_KNOTIFICATIONS=OFF` to disable) | [KIO][kio] | [Kirigami][kirigami-repo] | [Prison][prison]
+ * [KDSingleApplication][kdsingleapplication]
+ * [Kirigami Addons][kirigami-addons] >= 1.4.0
+-- 
+GitLab
+
