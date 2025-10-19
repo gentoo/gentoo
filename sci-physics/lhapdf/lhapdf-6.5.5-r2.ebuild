@@ -12,7 +12,7 @@ DOCS_DEPEND="
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
 "
-inherit python-single-r1 docs autotools
+inherit python-single-r1 docs
 
 MY_PV=$(ver_cut 1-3)
 MY_PF=LHAPDF-${MY_PV}
@@ -49,12 +49,6 @@ BDEPEND="
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-	# live git does not have a configure script
-	eautoreconf
 }
 
 src_configure() {
