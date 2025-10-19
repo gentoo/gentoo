@@ -1,0 +1,12 @@
+# /etc/conf.d/vdr.skinelchihd
+#
+# skinelchihd - ElchiHD skin
+#
+#  -e <EPGImageDir>, --epgimages=<ImageDir>  path to EPG images
+#                                            (default: '<CacheDir>/plugins/skinelchi/epgimages')
+#  -l <LogoPath>,  --logopath=<LogoPath>     path to channel logos (SVG or PNG format)
+#                                            (default: '<ResourceDir>/plugins/skinelchi/logos')
+#
+# uncomment the next line and adjust it to your needs
+# _EXTRAOPTS="--logopath=/usr/share/vdr/channel-logos/"
+
