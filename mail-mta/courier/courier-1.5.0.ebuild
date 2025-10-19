@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls split-usr test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=net-libs/courier-authlib-0.72.5
