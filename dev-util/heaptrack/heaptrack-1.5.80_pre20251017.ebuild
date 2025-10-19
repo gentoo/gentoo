@@ -13,13 +13,13 @@ https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+gui test zstd"
+IUSE="+gui test"
 
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-cpp/robin-map
-	dev-libs/boost:=[zstd?,zlib]
+	dev-libs/boost:=[zstd,zlib]
 	sys-libs/libunwind:=
 	sys-libs/zlib
 	gui? (
@@ -34,14 +34,16 @@ DEPEND="
 		kde-frameworks/kwidgetsaddons:6
 		kde-frameworks/threadweaver:6
 	)
-	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}
 	gui? ( >=kde-frameworks/kf-env-4 )
 "
 BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:0 )"
 
-PATCHES=( "${FILESDIR}/${P}-unbundle-robin-map.patch" ) # bug #964521
+PATCHES=(
+	"${FILESDIR}/${P}-unbundle-robin-map.patch" # bug #964521
+	"${FILESDIR}/${P}-fix-zstd-use-boost-1.69.patch" # bug #964695
+)
 
 QA_CONFIG_IMPL_DECL_SKIP=(
 	# This doesn't exist in libunwind (bug #898768).
@@ -58,7 +60,6 @@ src_configure() {
 		-DHEAPTRACK_USE_SYSTEM_ROBINMAP=ON
 		-DHEAPTRACK_BUILD_GUI=$(usex gui)
 		-DBUILD_TESTING=$(usex test)
-		$(cmake_use_find_package zstd ZSTD)
 	)
 	cmake_src_configure
 }

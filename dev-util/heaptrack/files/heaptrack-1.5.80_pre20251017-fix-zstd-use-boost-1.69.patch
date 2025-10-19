@@ -1,0 +1,161 @@
+Source: https://invent.kde.org/sdk/heaptrack/-/merge_requests/53
+
+From 56b327da62281a126bb0ea1400f4b0be00cfb64d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 19 Oct 2025 21:05:39 +0200
+Subject: [PATCH] Raise Boost minimum version to 1.69
+
+Boost 1.69 was released on December 5th, 2018.
+
+This solves multiple issues:
+- Mainly, with <boost-1.89, the second FindBoost call for System reset
+  Boost_IOSTREAMS_FOUND since 99348321819fe8efb3771b2dcd9aaffbc598b271,
+  ending up never checking BOOST_IOSTREAMS_HAS_ZSTD
+- Boost-1.69 introduced zstd compression/decompression filter, so the
+  bundled lib is unnecessary
+- Boost-1.69 made Boost.System header-only, providing a stub library,
+  so we can simply drop all references - see also:
+  https://www.boost.org/doc/libs/1_69_0/libs/system/doc/html/system.html#changes_in_boost_1_69
+
+Further fixes:
+- Set CMake Policy CMP0167 too OLD if available to silence warnings
+  in CMake >=3.30 (use old CMake provided FindBoost.cmake module)
+- Do not expand variables beforehand - see also:
+  https://invent.kde.org/plasma/libplasma/-/merge_requests/267
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                    | 15 +++++++--------
+ src/analyze/CMakeLists.txt        |  2 +-
+ src/interpret/CMakeLists.txt      |  2 +-
+ tests/auto/CMakeLists.txt         |  7 ++-----
+ tests/auto/no_asan/CMakeLists.txt |  3 +--
+ 5 files changed, 12 insertions(+), 17 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index adc08a3..4f896e3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,11 @@
+ cmake_minimum_required(VERSION 3.16.0)
+ 
+ project(heaptrack)
++
++if(POLICY CMP0167) # in CMake >=3.30; BoostConfig.cmake is shipped only by Boost >=1.82
++  cmake_policy(SET CMP0167 OLD)
++endif()
++
+ enable_testing()
+ 
+ if(NOT CMAKE_BUILD_TYPE)
+@@ -25,18 +30,12 @@ if (APPIMAGE_BUILD)
+ endif()
+ 
+ include(FeatureSummary)
+-find_package(Boost 1.60.0 ${REQUIRED_IN_APPIMAGE} COMPONENTS filesystem iostreams container)
+-# boost_system no longer exists in 1.89
+-if (Boost_VERSION VERSION_LESS 1.89.0)
+-    find_package(Boost ${REQUIRED_IN_APPIMAGE} COMPONENTS system)
+-else()
+-    set(Boost_SYSTEM_FOUND TRUE)
+-endif()
++find_package(Boost 1.69.0 ${REQUIRED_IN_APPIMAGE} COMPONENTS filesystem iostreams container)
+ set_package_properties(Boost PROPERTIES TYPE RECOMMENDED PURPOSE "Boost container libraries can greatly improve performance (via pmr allocators)")
+ find_package(Threads REQUIRED)
+ find_package(ZLIB REQUIRED)
+ 
+-if (${Boost_IOSTREAMS_FOUND})
++if (Boost_IOSTREAMS_FOUND)
+     find_package(ZSTD ${REQUIRED_IN_APPIMAGE})
+ 
+     include(CheckCXXSourceCompiles)
+diff --git a/src/analyze/CMakeLists.txt b/src/analyze/CMakeLists.txt
+index 340eb7f..a37812a 100644
+--- a/src/analyze/CMakeLists.txt
++++ b/src/analyze/CMakeLists.txt
+@@ -2,7 +2,7 @@ if (ECM_FOUND)
+     include(ECMEnableSanitizers)
+ endif()
+ 
+-find_package(Boost 1.41.0 REQUIRED COMPONENTS iostreams program_options filesystem)
++find_package(Boost 1.69.0 REQUIRED COMPONENTS iostreams program_options filesystem)
+ 
+ configure_file(analyze_config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/analyze_config.h)
+ 
+diff --git a/src/interpret/CMakeLists.txt b/src/interpret/CMakeLists.txt
+index ef0d5be..c9fd174 100644
+--- a/src/interpret/CMakeLists.txt
++++ b/src/interpret/CMakeLists.txt
+@@ -3,7 +3,7 @@ if (ECM_FOUND)
+ endif()
+ 
+ find_package(Elfutils 0.158 REQUIRED)
+-find_package(Boost 1.41.0 REQUIRED COMPONENTS program_options)
++find_package(Boost 1.69.0 REQUIRED COMPONENTS program_options)
+ 
+ include_directories(
+     ${PROJECT_SOURCE_DIR}/3rdparty/
+diff --git a/tests/auto/CMakeLists.txt b/tests/auto/CMakeLists.txt
+index c4959cc..be9712c 100644
+--- a/tests/auto/CMakeLists.txt
++++ b/tests/auto/CMakeLists.txt
+@@ -11,7 +11,7 @@ include_directories(
+     ${CMAKE_CURRENT_SOURCE_DIR}/../../src/track
+ )
+ 
+-if ("${Boost_FILESYSTEM_FOUND}" AND "${Boost_SYSTEM_FOUND}")
++if (Boost_FILESYSTEM_FOUND)
+     if (CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+         set(LIBUTIL_LIBRARY "util")
+     endif()
+@@ -44,7 +44,7 @@ add_test(NAME tst_trace COMMAND tst_trace)
+ configure_file(tst_heaptrack_interpret.cmake.sh ${CMAKE_CURRENT_BINARY_DIR}/tst_heaptrack_interpret.sh @ONLY)
+ add_test(NAME tst_heaptrack_interpret COMMAND ${CMAKE_CURRENT_BINARY_DIR}/tst_heaptrack_interpret.sh)
+ 
+-if ("${Boost_FILESYSTEM_FOUND}" AND "${Boost_SYSTEM_FOUND}")
++if (Boost_FILESYSTEM_FOUND)
+     add_executable(tst_libheaptrack
+         tst_libheaptrack.cpp
+         ../../src/track/libheaptrack.cpp)
+@@ -56,7 +56,6 @@ if ("${Boost_FILESYSTEM_FOUND}" AND "${Boost_SYSTEM_FOUND}")
+             ${LIBUTIL_LIBRARY}
+             heaptrack_unwind
+             rt
+-            ${Boost_SYSTEM_LIBRARY}
+             ${Boost_FILESYSTEM_LIBRARY}
+     )
+     add_test(NAME tst_libheaptrack COMMAND tst_libheaptrack)
+@@ -64,7 +63,6 @@ if ("${Boost_FILESYSTEM_FOUND}" AND "${Boost_SYSTEM_FOUND}")
+     add_executable(tst_io tst_io.cpp)
+     set_target_properties(tst_io PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${BIN_INSTALL_DIR}")
+     target_link_libraries(tst_io
+-            ${Boost_SYSTEM_LIBRARY}
+             ${Boost_FILESYSTEM_LIBRARY}
+     )
+     add_test(NAME tst_io COMMAND tst_io)
+@@ -75,7 +73,6 @@ if ("${Boost_FILESYSTEM_FOUND}" AND "${Boost_SYSTEM_FOUND}")
+             add_executable(tst_parser tst_parser.cpp)
+             set_target_properties(tst_parser PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${BIN_INSTALL_DIR}")
+             target_link_libraries(tst_parser
+-                    ${Boost_SYSTEM_LIBRARY}
+                     ${Boost_FILESYSTEM_LIBRARY}
+                     heaptrack_gui_private
+                     Qt6::Test
+diff --git a/tests/auto/no_asan/CMakeLists.txt b/tests/auto/no_asan/CMakeLists.txt
+index 1aed05d..927e6ff 100644
+--- a/tests/auto/no_asan/CMakeLists.txt
++++ b/tests/auto/no_asan/CMakeLists.txt
+@@ -1,9 +1,8 @@
+-if ("${Boost_FILESYSTEM_FOUND}" AND "${Boost_SYSTEM_FOUND}")
++if (Boost_FILESYSTEM_FOUND)
+     add_executable(tst_inject tst_inject.cpp)
+     set_target_properties(tst_inject PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${BIN_INSTALL_DIR}")
+     target_link_libraries(tst_inject
+             ${CMAKE_DL_LIBS}
+-            ${Boost_SYSTEM_LIBRARY}
+             ${Boost_FILESYSTEM_LIBRARY}
+     )
+     add_test(NAME tst_inject COMMAND tst_inject)
+-- 
+2.51.1
+
