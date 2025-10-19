@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,22 +8,20 @@ inherit vdr-plugin-2 ssl-cert
 VERSION="1971" # every bump, new version
 
 DESCRIPTION="VDR Plugin: remote programming VDR using VDR-Manager running on Android devices"
-HOMEPAGE="https://projects.vdr-developer.org/projects/vdr-manager/wiki"
-SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
-S="${WORKDIR}/${P}"
+HOMEPAGE="https://github.com/vdr-projects/vdr-plugin-vdrmanager/"
+SRC_URI="https://github.com/vdr-projects/vdr-plugin-vdrmanager/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/vdr-plugin-vdrmanager-${PV}/vdr-vdrmanager"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gzip +ssl stream zlib"
 
-DEPEND=">=media-video/vdr-2
-		ssl? ( dev-libs/openssl )"
-RDEPEND="stream? ( media-plugins/vdr-streamdev[server] )
-		zlib? ( sys-libs/zlib )"
-
-VDR_RCADDON_FILE="${FILESDIR}/rc-addon-0.12.sh"
-VDR_CONFD_FILE="${FILESDIR}/confd-0.12"
+DEPEND="media-video/vdr:=
+	ssl? ( dev-libs/openssl )"
+RDEPEND="${DEPEND}
+	stream? ( media-plugins/vdr-streamdev[server] )
+	zlib? ( sys-libs/zlib )"
 
 VDRMANAGER_SSL_KEY_DIR="/etc/vdr/plugins/vdrmanager"
 VDRMANAGER_SSL_KEY_FILE="${VDRMANAGER_SSL_KEY_DIR}/vdrmanager"
