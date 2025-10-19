@@ -150,6 +150,16 @@ src_configure() {
 		-DKICAD_BUILD_QA_TESTS="$(usex test)"
 	)
 
+	if ! [[ ${PV} == *9999* ]]; then
+		mycmakeargs+=(
+			-DCMAKE_POLICY_DEFAULT_CMP0167="OLD"
+
+			# 939141
+			-DCMAKE_DISABLE_FIND_PACKAGE_Git="yes"
+			-DKICAD_VERSION="${PVR}"
+		)
+	fi
+
 	cmake_src_configure
 }
 
