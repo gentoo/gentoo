@@ -22,7 +22,7 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls gtk-doc +introspection iptables iwd libedit +modemmanager +nss nftables ofono ovs policykit +ppp psl resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
+IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls gtk-doc +introspection iptables iwd libedit +modemmanager nbft +nss nftables ofono ovs policykit +ppp psl resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -64,6 +64,7 @@ COMMON_DEPEND="
 		net-misc/mobile-broadband-provider-info
 		>=net-misc/modemmanager-0.7.991:0=
 	)
+	nbft? ( >=sys-libs/libnvme-1.5 )
 	nss? (
 		dev-libs/nspr[${MULTILIB_USEDEP}]
 		>=dev-libs/nss-3.11[${MULTILIB_USEDEP}]
@@ -227,6 +228,7 @@ multilib_src_configure() {
 		$(meson_native_use_bool bluetooth bluez5_dun)
 		# ebpf is problematic in at least v1.46.0, bug #926943
 		-Debpf=false
+		$(meson_native_use_bool nbft)
 
 		# configuration plugins
 		-Dconfig_plugins_default=keyfile
