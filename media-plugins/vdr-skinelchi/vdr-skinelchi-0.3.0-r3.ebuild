@@ -1,21 +1,28 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit flag-o-matic vdr-plugin-2
 
 DESCRIPTION="VDR Skin Plugin: skinelchi"
-HOMEPAGE="http://firefly.vdr-developer.org/skinelchi"
+HOMEPAGE="http://firefly.vdr-developer.org/skinelchi/"
 SRC_URI="http://firefly.vdr-developer.org/skinelchi/${P}.tar.bz2"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-video/vdr"
+DEPEND="~media-video/vdr-2.2.0"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
+	if has_version ">=media-video/vdr-2.4"; then
+		einfo "\nvdr-skinelchi is designed for media-video/vdr-2.2.x"
+		einfo "\nuse media-plugins/vdr-skinelchihd instead\n"
+		die "plugin too old for >=media-video/vdr-2.4"
+	fi
+
 	vdr-plugin-2_src_prepare
 
 	#bug #599148
