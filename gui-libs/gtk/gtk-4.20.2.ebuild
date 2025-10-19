@@ -248,7 +248,7 @@ src_install() {
 
 	if use gtk-doc; then
 		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
-		mv "${ED}"/usr/share/doc/{gtk4,gsk4,gdk4{,-wayland,-x11}} "${ED}"/usr/share/gtk-doc/html/ || die
+		mv "${ED}"/usr/share/doc/{gtk4,gsk4,gdk4*} "${ED}"/usr/share/gtk-doc/html/ || die
 	fi
 }
 
