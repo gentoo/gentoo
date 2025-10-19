@@ -30,7 +30,7 @@ unset _IUSE_QT_MODULES
 
 REQUIRED_USE="
 	|| ( pyqt6 pyside6 )
-	pyside6? ( $(python_gen_useflags python3_{11..13}) )
+	pyside6? ( || ( $(python_gen_useflags python3_{11..13}) ) )
 "
 
 # These flags are currently *not* common to the PySide2/6 and PyQt5/6 ebuilds
