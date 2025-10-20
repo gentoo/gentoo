@@ -1,23 +1,22 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
-MY_P=${P/_/.}
+MY_PV=${PV/_beta/.beta}
+MY_P=${PN}-${MY_PV}
 DESCRIPTION="A library that creates colored ASCII-art graphics"
 HOMEPAGE="http://libcaca.zoy.org/"
-SRC_URI="http://libcaca.zoy.org/files/${PN}/${MY_P}.tar.gz"
+SRC_URI="https://github.com/cacalabs/libcaca/releases/download/v${MY_PV}/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 ISC LGPL-2.1 WTFPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="doc imlib ncurses opengl slang static-libs test truetype X"
 RESTRICT="!test? ( test )"
-
-REQUIRED_USE=""
 
 DEPEND="
 	imlib? ( >=media-libs/imlib2-1.4.6-r2[${MULTILIB_USEDEP}] )
@@ -47,26 +46,17 @@ BDEPEND="
 	test? ( dev-util/cppunit )
 "
 
-DOCS=( AUTHORS ChangeLog NEWS NOTES README THANKS )
+DOCS=( AUTHORS NEWS NOTES README THANKS )
 
 PATCHES=(
-	# Fix out of source tests
-	"${FILESDIR}"/${PN}-0.99_beta18-fix-tests.patch
-	# Debian patches
-	"${FILESDIR}/CVE-2018-20544.patch"
-	"${FILESDIR}/CVE-2018-20545+20547+20549.patch"
-	"${FILESDIR}/CVE-2018-20546+20547.patch"
-	"${FILESDIR}/canvas-fix-an-integer-overflow-in-caca_resize.patch"
-	"${FILESDIR}/Fix-a-problem-in-the-caca_resize-overflow-detection-.patch"
-	"${FILESDIR}/100_doxygen.diff"
-	# Fix doxygen docs install, bug 543870
-	"${FILESDIR}/fix-css-path.patch"
-	"${FILESDIR}/configure-lto.patch"
+	"${FILESDIR}/fix-css-path.patch"  # bug 543870
+	"${FILESDIR}/configure-lto.patch"  # upstream PR 76
+	"${FILESDIR}/${P}-linking.patch"  # upstream PR 70 related
 )
 
 src_prepare() {
 	# bug #339962
-	sed -i -e '/doxygen_tests = check-doxygen/d' test/Makefile.am || die
+	sed -i -e '/doxygen_tests = check-doxygen/d' caca/t/Makefile.am || die
 
 	sed -i \
 		-e 's:-g -O2 -fno-strength-reduce -fomit-frame-pointer::' \
@@ -77,6 +67,14 @@ src_prepare() {
 		sed -i -e '/PKG_CHECK_MODULES/s:ftgl:dIsAbLe&:' configure.ac || die
 	fi
 
+	# fix docs install path, bug 543870#c14
+	sed -i "s/libcaca-dev/${PF}/g" doc/Makefile.am || die
+
+	default
+	eautoreconf
+}
+
+src_configure() {
 	if use imlib && ! use X; then
 		append-cflags -DX_DISPLAY_MISSING
 	fi
@@ -87,11 +85,10 @@ src_prepare() {
 	# bug #601902, bug #825058
 	use ncurses && append-libs $($(tc-getPKG_CONFIG) --libs tinfow || die)
 
-	# fix docs install path, bug 543870#c14
-	sed -i "s/libcaca-dev/${PF}/g" doc/Makefile.am || die
+	# https://github.com/cacalabs/libcaca/issues/86
+	append-flags -fno-strict-overflow
 
-	default
-	eautoreconf
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
