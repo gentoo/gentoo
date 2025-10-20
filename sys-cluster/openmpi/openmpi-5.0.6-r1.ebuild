@@ -32,7 +32,9 @@ REQUIRED_USE="
 	openmpi_rm_pbs? ( !openmpi_rm_slurm )
 "
 
+# !dev-lang/pcc # 951474 file collision in /usr/bin/pcc
 RDEPEND="
+	!dev-lang/pcc
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
