@@ -1,0 +1,47 @@
+Backport upstream patch to fix deprecation warning for CMake < 3.10
+introduced with CMake version 3.31.
+
+See-also: https://github.com/naelstrof/slop/commit/6756a334a63dec0cca890d56f67c0042d40c4851
+From: Lucio Sauer <watermanpaint@posteo.net>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5.0)
++cmake_minimum_required(VERSION 3.11)
+ 
+ project(slop VERSION 7.7 LANGUAGES CXX)
+ 
+@@ -18,7 +18,6 @@ set( BUILD_SHARED_LIBS ON CACHE BOOL "Build all libraries as shared" )
+ set( SLOP_OPENGL TRUE CACHE BOOL "To enable or disable OpenGL support." )
+ if ( SLOP_OPENGL )
+   add_definitions(-DSLOP_OPENGL="True")
+-  set(OpenGL_GL_PREFERENCE "GLVND")
+ endif()
+ 
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/")
+@@ -100,16 +99,12 @@ endif()
+ 
+ target_link_libraries(${EXECUTABLE_NAME} ${LIBRARY_NAME} )
+ 
+-if( CMAKE<3.7 )
+-  message( WARNING "CMake version is below 3.7, CMake version >= 3.7 is required for unicode support." )
+-else()
+-  find_package(ICU COMPONENTS uc)
+-  set( SLOP_UNICODE TRUE CACHE BOOL "To enable or disable unicode support." )
+-  if ( SLOP_UNICODE AND ICU_FOUND )
+-    add_definitions(-DCXXOPTS_USE_UNICODE)
+-    include_directories( ${ICU_INCLUDE_DIR} )
+-    target_link_libraries(${EXECUTABLE_NAME} ${ICU_UC_LIBRARIES} )
+-  endif()
++find_package(ICU COMPONENTS uc)
++set( SLOP_UNICODE TRUE CACHE BOOL "To enable or disable unicode support." )
++if ( SLOP_UNICODE AND ICU_FOUND )
++  add_definitions(-DCXXOPTS_USE_UNICODE)
++  include_directories( ${ICU_INCLUDE_DIR} )
++  target_link_libraries(${EXECUTABLE_NAME} ${ICU_UC_LIBRARIES} )
+ endif()
+ 
+ install( TARGETS ${EXECUTABLE_NAME} DESTINATION "${CMAKE_INSTALL_BINDIR}" )
+-- 
+2.51.0
+
