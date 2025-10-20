@@ -34,6 +34,11 @@ BDEPEND="
 MIN_GCC_SLOT=15
 MAX_GCC_SLOT=16
 
+# https://bugs.gentoo.org/964370
+PATCHES=(
+	"${FILESDIR}/${P}-fix-shared-folder-deletion.patch"
+)
+
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && _setup_gdc
 }
