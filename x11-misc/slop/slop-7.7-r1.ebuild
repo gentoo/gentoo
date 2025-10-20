@@ -29,7 +29,7 @@ DEPEND="
 	media-libs/glm
 	x11-base/xorg-proto
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="opengl? ( virtual/pkgconfig )"
 
 PATCHES=( "${FILESDIR}"/${P}-cmake-min-ver-3.11.patch ) # bug 964438
 
