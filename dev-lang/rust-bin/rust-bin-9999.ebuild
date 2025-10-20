@@ -21,8 +21,8 @@ elif [[ ${PV} == *beta* ]]; then
 	"
 else
 	# curl -Ls static.rust-lang.org/dist/channel-rust-${PV}.toml | grep "xz_url.*rust-src"
-	SRC_URI="$(rust_all_arch_uris "${PV}")
-		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-01-30/rust-src-${PV}.tar.xz )
+	SRC_URI="$(rust_all_arch_uris "rust-${PV}")
+		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/}/2025-09-18/rust-src-${PV}.tar.xz )
 	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
@@ -283,10 +283,21 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		rust_native_abi_install
 	else
-		local rust_target
+		local rust_target version
+		case ${PV} in
+			*9999*)
+				version=nightly
+				;;
+			*beta*)
+				version=beta
+				;;
+			*)
+				version=${PV}
+				;;
+		esac
 		rust_target="$(rust_abi $(get_abi_CHOST ${v##*.}))"
 		dodir "/opt/${P}/lib/rustlib"
-		cp -vr "${WORKDIR}/rust-${PV}-${rust_target}/rust-std-${rust_target}/lib/rustlib/${rust_target}"\
+		cp -vr "${WORKDIR}/rust-${version}-${rust_target}/rust-std-${rust_target}/lib/rustlib/${rust_target}"\
 			"${ED}/opt/${P}/lib/rustlib" || die
 	fi
 
