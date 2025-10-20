@@ -1,0 +1,54 @@
+From 90c94d8b83979f832ca7c67ee125ad5f3e3f631d Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 20 Oct 2025 18:48:59 +0200
+Subject: [PATCH] Workaround linking issues with function _caca_alloc2d
+
+---
+ caca/caca.c           | 3 +--
+ caca/caca.h           | 1 +
+ caca/caca_internals.h | 3 ---
+ 3 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/caca/caca.c b/caca/caca.c
+index 327a8f9..d78f50d 100644
+--- a/caca/caca.c
++++ b/caca/caca.c
+@@ -283,8 +283,7 @@ char const * caca_get_version(void)
+ /*
+  * XXX: The following functions are private.
+  */
+-
+-extern void *_caca_alloc2d(size_t width, size_t height, size_t elem_size)
++void *_caca_alloc2d(size_t width, size_t height, size_t elem_size)
+ {
+     if (width == 0 || height == 0 || elem_size == 0 || SIZE_MAX / width / height < elem_size)
+         return NULL;
+diff --git a/caca/caca.h b/caca/caca.h
+index 9f79be2..339f71d 100644
+--- a/caca/caca.h
++++ b/caca/caca.h
+@@ -241,6 +241,7 @@ __extern uint32_t const * caca_get_canvas_attrs(caca_canvas_t const *);
+ __extern int caca_free_canvas(caca_canvas_t *);
+ __extern int caca_rand(int, int);
+ __extern char const * caca_get_version(void);
++__extern void *_caca_alloc2d(size_t width, size_t height, size_t elem_size);
+ /*  @} */
+ 
+ /** \defgroup caca_canvas libcaca canvas drawing
+diff --git a/caca/caca_internals.h b/caca/caca_internals.h
+index b2cedba..494dab4 100644
+--- a/caca/caca_internals.h
++++ b/caca/caca_internals.h
+@@ -259,9 +259,6 @@ extern int _pop_event(caca_display_t *, caca_privevent_t *);
+ /* Internal window functions */
+ extern void _caca_set_term_title(char const *);
+ 
+-/* Internal memory function */
+-extern void *_caca_alloc2d(size_t width, size_t height, size_t elem_size);
+-
+ /* Profiling functions */
+ #if defined PROF
+ extern void _caca_dump_stats(void);
+-- 
+2.51.0
+
