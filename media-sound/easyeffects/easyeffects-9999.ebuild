@@ -47,6 +47,7 @@ RDEPEND="
 	>=media-libs/lilv-0.24
 	media-libs/rnnoise
 	media-libs/speexdsp
+	media-libs/webrtc-audio-processing:2
 	>=media-libs/zita-convolver-3.0.0:=
 	>=media-video/pipewire-1.0.6:=[sound-server]
 	sci-libs/fftw:3.0=
