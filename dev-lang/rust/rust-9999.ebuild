@@ -735,7 +735,7 @@ src_install() {
 	# bash-completion files are installed by dev-lang/rust-common instead
 	# bug #689562, #689160.
 	rm -v "${ED}/usr/lib/${PN}/${SLOT}/etc/bash_completion.d/cargo" || die
-	rmdir -v "${ED}/usr/lib/${PN}/${SLOT}"/etc{/bash_completion.d,} || die
+	rmdir -v "${ED}/usr/lib/${PN}/${SLOT}/etc/bash_completion.d" || die
 
 	local symlinks=(
 		cargo
