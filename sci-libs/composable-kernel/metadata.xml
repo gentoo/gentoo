@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>lockalsash@gmail.com</email>
-    <name>Sv. Lockal</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-    <name>Science Project</name>
-  </maintainer>
-  <use>
-    <flag name="profiler">Build and install the Composable Kernal profiler (ckProfiler)</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">ROCm/composable_kernel</remote-id>
-  </upstream>
+	<maintainer type="person" proxied="yes">
+		<email>lockalsash@gmail.com</email>
+		<name>Sv. Lockal</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>xgreenlandforwyy@gmail.com</email>
+		<name>Yiyang Wu</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+		<description>General GPGPU stuff</description>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ROCm/composable_kernel</remote-id>
+	</upstream>
+	<use>
+		<flag name="profiler">Build and install the Composable Kernal profiler (ckProfiler)</flag>
+	</use>
 </pkgmetadata>
