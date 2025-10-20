@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="tinyxml2">
-		Use vendor tinyxml2 instead of xmlrpc-c. This allows significant reduction in overhead (experimental)
+		Use vendor tinyxml2 instead of xmlrpc-c. This allows significant reduction in overhead
 		</flag>
 	</use>
 	<upstream>
