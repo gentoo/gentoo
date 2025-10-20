@@ -49,6 +49,10 @@ src_unpack() {
 }
 
 src_prepare() {
+	# prevent cmake.eclass warnings
+	sed -i -e "s/cmake_minimum_required(VERSION 3.7)/cmake_minimum_required(VERSION 3.20)/" \
+		avidemux/qt4/xdg_data/CMakeLists.txt || die
+
 	processes="buildCli:avidemux/cli"
 	use gui && processes+=" buildQt4:avidemux/qt4"
 
