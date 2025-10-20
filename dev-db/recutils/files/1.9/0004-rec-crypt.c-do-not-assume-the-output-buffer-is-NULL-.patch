@@ -1,7 +1,7 @@
 From 2160498461d6a9298cc7e6707bf3cad94d66d14f Mon Sep 17 00:00:00 2001
-Message-ID: <2160498461d6a9298cc7e6707bf3cad94d66d14f.1728191717.git.sam@gentoo.org>
-In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
-References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+Message-ID: <2160498461d6a9298cc7e6707bf3cad94d66d14f.1760957586.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1760957586.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1760957586.git.sam@gentoo.org>
 From: Craig Mason-Jones <craig@lateral.co.za>
 Date: Sun, 3 Sep 2023 12:04:37 +0200
 Subject: [PATCH 04/10] rec-crypt.c: do not assume the output buffer is NULL
@@ -106,5 +106,5 @@ index b868cef..6ce2a59 100755
  
  test_tool recsel-sort ok \
 -- 
-2.46.2
+2.51.1
 

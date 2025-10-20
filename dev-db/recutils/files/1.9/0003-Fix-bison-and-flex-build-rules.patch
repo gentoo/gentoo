@@ -1,7 +1,7 @@
 From c09d1b1fa83be41f6d0568c50cc287ae718de498 Mon Sep 17 00:00:00 2001
-Message-ID: <c09d1b1fa83be41f6d0568c50cc287ae718de498.1728191717.git.sam@gentoo.org>
-In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
-References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+Message-ID: <c09d1b1fa83be41f6d0568c50cc287ae718de498.1760957586.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1760957586.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1760957586.git.sam@gentoo.org>
 From: "Jose E. Marchesi" <jose.marchesi@oracle.com>
 Date: Mon, 5 Jun 2023 23:44:03 +0200
 Subject: [PATCH 03/10] Fix bison and flex build rules.
@@ -12,7 +12,6 @@ Subject: [PATCH 03/10] Fix bison and flex build rules.
 	* src/Makefile.am: Fix bison and flex rules.
 	* src/rec-sex-ast.h: Include stddef.h for size_t.
 	* src/rec-sex-lex.l: Use header-file option and fix includes.
-	* .gitignore: Ignore /src/rec-sex-lex.h.
 ---
  ChangeLog         |  8 +++++
  configure.ac      |  2 +-
@@ -194,5 +193,5 @@ index 2d4a891..8eee8dd 100644
  
  %{
 -- 
-2.46.2
+2.51.1
 

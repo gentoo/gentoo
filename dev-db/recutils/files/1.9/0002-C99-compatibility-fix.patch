@@ -1,7 +1,7 @@
 From e154822aeec19cb790f8618ee740875c048859e4 Mon Sep 17 00:00:00 2001
-Message-ID: <e154822aeec19cb790f8618ee740875c048859e4.1728191717.git.sam@gentoo.org>
-In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
-References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+Message-ID: <e154822aeec19cb790f8618ee740875c048859e4.1760957586.git.sam@gentoo.org>
+In-Reply-To: <9f08064fef75ce02df9b6133d240c0fa84df458e.1760957586.git.sam@gentoo.org>
+References: <9f08064fef75ce02df9b6133d240c0fa84df458e.1760957586.git.sam@gentoo.org>
 From: Florian Weimer <fweimer@redhat.com>
 Date: Thu, 15 Dec 2022 14:55:10 +0100
 Subject: [PATCH 02/10] C99 compatibility fix
@@ -72,5 +72,5 @@ index 6c31edd..f011bc4 100644
    void sexerror (rec_sex_parser_t context, const char *err)
    {
 -- 
-2.46.2
+2.51.1
 
