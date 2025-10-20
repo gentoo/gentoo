@@ -148,8 +148,10 @@ src_unpack() {
 		fi
 
 		default_src_unpack
-
 	fi
+
+	# We only want to do this for the native ABI. Non-native ABIs are
+	# handled differently in multilib_src_install.
 	case ${PV} in
 		*9999*)
 			mv "${WORKDIR}/rust-nightly-$(rust_abi)" "${S}" || die
