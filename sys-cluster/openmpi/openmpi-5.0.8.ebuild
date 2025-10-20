@@ -52,6 +52,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	valgrind? ( dev-debug/valgrind )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.0.8-braces-around-scalar-initializer.patch"
+)
+
 pkg_setup() {
 	fortran-2_pkg_setup
 
