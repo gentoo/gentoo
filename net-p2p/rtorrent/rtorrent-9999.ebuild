@@ -6,7 +6,7 @@ EAPI=8
 # require 64-bit integer
 LUA_COMPAT=( lua5-{3,4} )
 
-inherit autotools linux-info lua-single systemd
+inherit autotools lua-single systemd
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="https://rakshasa.github.io/rtorrent/"
@@ -47,12 +47,6 @@ BDEPEND="
 DOCS=( doc/rtorrent.rc )
 
 pkg_setup() {
-	if ! linux_config_exists || ! linux_chkconfig_present IPV6; then
-		ewarn "rtorrent will not start without IPv6 support in your kernel"
-		ewarn "without further configuration. Please set bind=0.0.0.0 or"
-		ewarn "similar in your rtorrent.rc"
-		ewarn "Upstream bug: https://github.com/rakshasa/rtorrent/issues/732"
-	fi
 	use lua && lua-single_pkg_setup
 }
 
@@ -104,4 +98,13 @@ src_install() {
 	newinitd "${FILESDIR}/rtorrent-r1.init" rtorrent
 	newconfd "${FILESDIR}/rtorrentd.conf" rtorrent
 	systemd_newunit "${FILESDIR}/rtorrentd_at-r1.service" "rtorrentd@.service"
+}
+
+pkg_postinst() {
+	einfo "This release could introduce new commands to configure RTorrent."
+	einfo "Please read the release notes before restarting:"
+	einfo "https://github.com/rakshasa/rtorrent/releases"
+	einfo ""
+	einfo "For configuration assistance, see:"
+	einfo "https://github.com/rakshasa/rtorrent/wiki"
 }
