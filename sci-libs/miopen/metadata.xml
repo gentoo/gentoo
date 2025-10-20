@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
-    <email>gentoo@holzke.net</email>
-    <name>Wilfried Holzke</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>xgreenlandforwyy@gmail.com</email>
-    <name>Yiyang Wu</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>lockalsash@gmail.com</email>
-    <name>Sv. Lockal</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">ROCm/rocm-libraries</remote-id>
-  </upstream>
-  <use>
-    <flag name="composable-kernel">Use composable-kernel for GEMM-like and reduction-like operators.</flag>
-    <flag name="hipblaslt">Use hipBLASLt for some non-batched and strided batched problems.</flag>
-    <flag name="rocblas">Build with rocBLAS support</flag>
-    <flag name="roctracer">Build with roctracer support</flag>
-  </use>
+	<maintainer type="person" proxied="yes">
+		<email>lockalsash@gmail.com</email>
+		<name>Sv. Lockal</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>xgreenlandforwyy@gmail.com</email>
+		<name>Yiyang Wu</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+		<description>General GPGPU stuff</description>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">ROCm/rocm-libraries</remote-id>
+	</upstream>
+	<use>
+		<flag name="composable-kernel">Use <pkg>sci-libs/composable-kernel</pkg> for GEMM-like and reduction-like operators</flag>
+		<flag name="hipblaslt">Use <pkg>sci-libs/hipBLASLt</pkg> for some non-batched and strided batched problems</flag>
+		<flag name="rocblas">Build with <pkg>sci-libs/rocBLAS</pkg> support</flag>
+		<flag name="roctracer">Build with <pkg>dev-util/roctracer</pkg> support</flag>
+	</use>
 </pkgmetadata>
