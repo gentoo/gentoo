@@ -116,7 +116,7 @@ src_configure() {
 
 		$(use_with cma)
 
-		$(use_with cuda cuda "${EPREFIX}"/opt/cuda)
+		$(use_with cuda cuda "${CUDA_PATH:-${ESYSROOT}/opt/cuda}")
 		$(use_with valgrind)
 		$(use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr)
 		$(use_with openmpi_rm_pbs tm)
