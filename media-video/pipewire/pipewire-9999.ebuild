@@ -105,8 +105,7 @@ BDEPEND="
 # * While udev could technically be optional, it's needed for a number of options,
 # and not really worth it, bug #877769.
 #
-# * Supports both legacy webrtc-audio-processing:2 and new webrtc-audio-processing:1.
-# Automagic but :2 isn't yet packaged.
+# * Supports both new webrtc-audio-processing:2 and legacy webrtc-audio-processing:1.
 #
 # * Older Doxygen (<1.9.8) may work but inferior output is created:
 #   - https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/1778
@@ -130,7 +129,12 @@ RDEPEND="
 	)
 	elogind? ( sys-auth/elogind )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
-	echo-cancel? ( >=media-libs/webrtc-audio-processing-1.2:1 )
+	echo-cancel? (
+		|| (
+			>=media-libs/webrtc-audio-processing-2.0:2
+			>=media-libs/webrtc-audio-processing-1.2:1
+		)
+	)
 	extra? ( >=media-libs/libsndfile-1.0.20 )
 	ffmpeg? ( media-video/ffmpeg:= )
 	fftw? ( sci-libs/fftw:3.0=[${MULTILIB_USEDEP}] )
