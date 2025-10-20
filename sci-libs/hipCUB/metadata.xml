@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sci@gentoo.org</email>
-	</maintainer>
-	<maintainer type="person">
-		<email>candrews@gentoo.org</email>
-		<name>Craig Andrews</name>
-	</maintainer>
 	<maintainer type="person" proxied="yes">
-		<email>gentoo@holzke.net</email>
-		<name>Wilfried Holzke</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>lockalsash@gmail.com</email>
 		<name>Sv. Lockal</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>xgreenlandforwyy@gmail.com</email>
+		<name>Yiyang Wu</name>
+	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>negril.nx+gentoo@gmail.com</email>
+		<name>Paul Zander</name>
+		<description>General GPGPU stuff</description>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">ROCm/rocm-libraries</remote-id>
 	</upstream>
 	<use>
-		<flag name="benchmark">Build and install benchmark binaries.</flag>
+		<flag name="benchmark">Build and install benchmark binaries</flag>
 	</use>
 </pkgmetadata>
