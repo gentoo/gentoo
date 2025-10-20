@@ -27,4 +27,7 @@
 		<flag name="51degrees">Device Detection using 51 Degrees</flag>
 		<flag name="wurfl">Device Detection using WURFL</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">haproxy/haproxy</remote-id>
+	</upstream>
 </pkgmetadata>
