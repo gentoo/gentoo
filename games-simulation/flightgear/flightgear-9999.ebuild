@@ -23,7 +23,7 @@ RESTRICT="test"
 # TODO add osgXR
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	>=dev-games/openscenegraph-3.6.0[jpeg,png]
+	>=dev-games/openscenegraph-openmw-3.6:=[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/plib-1.8.5
@@ -68,7 +68,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2024.1.1-fix-fgpanel.patch"
 )
 
-DOCS=(AUTHORS ChangeLog NEWS README Thanks)
+DOCS=( AUTHORS ChangeLog NEWS README Thanks )
 
 src_configure() {
 	# -Werror=lto-type-mismatch, -Werror=odr
