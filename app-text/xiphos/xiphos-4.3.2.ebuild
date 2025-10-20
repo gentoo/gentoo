@@ -41,10 +41,17 @@ BDEPEND="
 "
 
 PATCHES=(
+	# both merged. to be removed at next version
 	"${FILESDIR}"/${PN}-4.3.2-include_dbus.patch
-	# merged. to be removed at next version
 	"${FILESDIR}"/${PN}-4.3.2-fix_odr.patch
 )
+
+src_prepare() {
+	cmake_src_prepare
+
+	# bug 964692, don't build translations for help-pages for now
+	echo "" > help/HELP_LINGUAS || die
+}
 
 src_configure() {
 	local mycmakeargs=(
