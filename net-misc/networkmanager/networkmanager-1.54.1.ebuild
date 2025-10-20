@@ -22,7 +22,7 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
-IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls gtk-doc +introspection iptables iwd psl libedit +nss nftables +modemmanager ofono ovs policykit +ppp resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
+IUSE="audit bluetooth +concheck connection-sharing debug dhclient dhcpcd elogind gnutls gtk-doc +introspection iptables iwd libedit +modemmanager +nss nftables ofono ovs policykit +ppp psl resolvconf selinux syslog systemd teamd test +tools vala +wext +wifi"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -41,48 +41,48 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	sys-apps/util-linux[${MULTILIB_USEDEP}]
-	elogind? ( >=sys-auth/elogind-219 )
 	>=virtual/libudev-175:=[${MULTILIB_USEDEP}]
 	sys-apps/dbus[${MULTILIB_USEDEP}]
 	net-libs/libndp
-	systemd? ( >=sys-apps/systemd-209:0= )
 	>=dev-libs/glib-2.42:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
-	selinux? (
-		sec-policy/selinux-networkmanager
-		sys-libs/libselinux
-	)
 	audit? ( sys-process/audit )
-	teamd? (
-		>=dev-libs/jansson-2.7:=
-		>=net-misc/libteam-1.9
-	)
-	policykit? ( >=sys-auth/polkit-0.106 )
-	nss? (
-		dev-libs/nspr[${MULTILIB_USEDEP}]
-		>=dev-libs/nss-3.11[${MULTILIB_USEDEP}]
-	)
-	gnutls? (
-		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}]
-	)
-	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6(+)] )
-	modemmanager? (
-		net-misc/mobile-broadband-provider-info
-		>=net-misc/modemmanager-0.7.991:0=
-	)
 	bluetooth? ( >=net-wireless/bluez-5:= )
-	ofono? ( net-misc/ofono )
-	dhclient? ( >=net-misc/dhcp-4[client] )
-	dhcpcd? ( >=net-misc/dhcpcd-9.3.3 )
-	ovs? ( >=dev-libs/jansson-2.7:= )
-	resolvconf? ( virtual/resolvconf )
+	concheck? ( net-misc/curl )
 	connection-sharing? (
 		net-dns/dnsmasq[dbus,dhcp]
 		iptables? ( net-firewall/iptables )
 		nftables? ( net-firewall/nftables )
 	)
+	dhclient? ( >=net-misc/dhcp-4[client] )
+	dhcpcd? ( >=net-misc/dhcpcd-9.3.3 )
+	elogind? ( >=sys-auth/elogind-219 )
+	gnutls? (
+		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}]
+	)
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
+	modemmanager? (
+		net-misc/mobile-broadband-provider-info
+		>=net-misc/modemmanager-0.7.991:0=
+	)
+	nss? (
+		dev-libs/nspr[${MULTILIB_USEDEP}]
+		>=dev-libs/nss-3.11[${MULTILIB_USEDEP}]
+	)
+	ofono? ( net-misc/ofono )
+	ovs? ( >=dev-libs/jansson-2.7:= )
+	policykit? ( >=sys-auth/polkit-0.106 )
+	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6(+)] )
 	psl? ( net-libs/libpsl )
-	concheck? ( net-misc/curl )
+	resolvconf? ( virtual/resolvconf )
+	selinux? (
+		sec-policy/selinux-networkmanager
+		sys-libs/libselinux
+	)
+	systemd? ( >=sys-apps/systemd-209:0= )
+	teamd? (
+		>=dev-libs/jansson-2.7:=
+		>=net-misc/libteam-1.9
+	)
 	tools? (
 		>=dev-libs/jansson-2.7:=
 		>=dev-libs/newt-0.52.15
@@ -110,12 +110,12 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	>=sys-devel/gettext-0.17
+	virtual/pkgconfig
 	gtk-doc? (
 		dev-util/gtk-doc
 		app-text/docbook-xml-dtd:4.1.2
 	)
-	>=sys-devel/gettext-0.17
-	virtual/pkgconfig
 	introspection? (
 		$(python_gen_any_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]')
 		dev-lang/perl
@@ -184,9 +184,11 @@ multilib_src_configure() {
 	# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2053
 	tc-is-clang && [[ $(clang-major-version) -lt 18 ]] && filter-lto
 
+	# Follow order of options in meson_options.txt
 	local emesonargs=(
-		--localstatedir="${EPREFIX}/var"
+		--localstatedir="${EPREFIX}/var" # overrride eclass ${EPREFIX}/var/lib
 
+		# system paths
 		-Dsystemdsystemunitdir=$(systemd_get_systemunitdir)
 		-Dsystem_ca_path=/etc/ssl/certs
 		-Dudev_dir=$(get_udevdir)
@@ -196,6 +198,7 @@ multilib_src_configure() {
 		-Dnft=/sbin/nft
 		-Ddnsmasq=/usr/sbin/dnsmasq
 
+		# platform
 		-Ddist_version=${PVR}
 		$(meson_native_use_bool policykit polkit)
 		$(meson_native_use_bool policykit config_auth_polkit_default)
@@ -203,9 +206,11 @@ multilib_src_configure() {
 		-Dpolkit_agent_helper_1=/usr/lib/polkit-1/polkit-agent-helper-1
 		$(meson_native_use_bool selinux)
 		$(meson_native_use_bool systemd systemd_journal)
+		-Dconfig_wifi_backend_default=$(multilib_native_usex iwd iwd default)
 		-Dhostname_persist=gentoo
 		-Dlibaudit=$(multilib_native_usex audit)
 
+		# features
 		$(meson_native_use_bool wext)
 		$(meson_native_use_bool wifi)
 		$(meson_native_use_bool iwd)
@@ -223,19 +228,22 @@ multilib_src_configure() {
 		# ebpf is problematic in at least v1.46.0, bug #926943
 		-Debpf=false
 
-		-Dconfig_wifi_backend_default=$(multilib_native_usex iwd iwd default)
+		# configuration plugins
 		-Dconfig_plugins_default=keyfile
 		-Difcfg_rh=false
 		-Difupdown=false
 		-Dconfig_migrate_ifcfg_rh_default=false
 
+		# handlers for resolv.conf
 		$(meson_nm_native_program resolvconf "" /sbin/resolvconf)
 		-Dnetconfig=no
 		-Dconfig_dns_rc_manager_default=auto
 
+		# dhcp clients
 		$(meson_nm_program dhclient "" /sbin/dhclient)
 		$(meson_nm_program dhcpcd "" /sbin/dhcpcd)
 
+		# miscellaneous
 		$(meson_native_use_bool introspection)
 		$(meson_native_use_bool vala vapi)
 		$(meson_native_use_bool gtk-doc docs)
