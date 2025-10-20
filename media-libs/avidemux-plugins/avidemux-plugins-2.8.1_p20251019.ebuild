@@ -85,18 +85,10 @@ PATCHES=( "${FILESDIR}/${PN}-2.8.1_p20251019-optional-pulse.patch"
 	"${FILESDIR}/${PN}-2.8.1_p20251019-include.patch" )
 
 src_prepare() {
-	default
+	# only used on windows and generates cmake.eclass warnings
+	rm -r "${PN/-/_}/ADM_demuxers/NativeAvisynth" || die
 
-	# Don't reapply PATCHES during cmake_src_prepare
-	unset PATCHES
-
-	processes="buildPluginsCommon:avidemux_plugins
-		buildPluginsCLI:avidemux_plugins"
-	use gui && processes+=" buildPluginsQt4:avidemux_plugins"
-
-	for process in ${processes} ; do
-		CMAKE_USE_DIR="${S}"/${process#*:} cmake_src_prepare
-	done
+	CMAKE_USE_DIR="${S}/${PN/-/_}" cmake_src_prepare
 }
 
 src_configure() {
@@ -109,6 +101,9 @@ src_configure() {
 
 	# See bug 432322.
 	use x86 && replace-flags -O0 -O1
+
+	processes="buildPluginsCommon:avidemux_plugins buildPluginsCLI:avidemux_plugins"
+	use gui && processes+=" buildPluginsQt4:avidemux_plugins"
 
 	for process in ${processes} ; do
 		local build="${WORKDIR}/${P}_build/${process%%:*}"
