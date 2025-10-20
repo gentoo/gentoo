@@ -37,6 +37,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-26.4-musl.patch
 )
 
+# Skip false positive QA Notice for wsrep/src/CMakeLists.txt, which is not used
+# in this package. Galera uses wsrep/src only as a include directory.
+CMAKE_QA_COMPAT_SKIP=1
+
 src_prepare() {
 	cmake_src_prepare
 
