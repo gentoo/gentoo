@@ -1,0 +1,24 @@
+From c6a3c08d458e5119a2c683c6832bf3f5e4e8fa80 Mon Sep 17 00:00:00 2001
+From: Gnarwhal <git.aspect893@passmail.net>
+Date: Wed, 27 Aug 2025 15:13:23 +0000
+Subject: [PATCH] auth-dialog: include locale.h header
+
+---
+ auth-dialog/main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/auth-dialog/main.c b/auth-dialog/main.c
+index c5907ab7..f182a224 100644
+--- a/auth-dialog/main.c
++++ b/auth-dialog/main.c
+@@ -24,6 +24,7 @@
+ 
+ #include "nm-default.h"
+ 
++#include <locale.h>
+ #include <errno.h>
+ #include <string.h>
+ #include <stdlib.h>
+-- 
+GitLab
+

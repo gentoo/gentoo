@@ -42,6 +42,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.12.3-locale-h.patch"
+)
+
 src_configure() {
 	# Workaround for LLD on musl systems (bug #947147)
 	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
