@@ -58,10 +58,8 @@ src_configure() {
 	# Avoid automagic on libdevmapper (bug #709694)
 	export ac_cv_search_dm_task_create=no
 
-	# bug 903611, 948468, 960632
-	use elibc_musl && \
-		append-flags -D_LARGEFILE64_SOURCE -DOVERRIDE_SYSTEM_STATX \
-			-DSTATX__RESERVED=0x80000000U
+	# bug 903611
+	use elibc_musl && append-flags -D_LARGEFILE64_SOURCE
 
 	# Upstream does NOT support --disable-static anymore,
 	# https://www.spinics.net/lists/linux-xfs/msg30185.html
