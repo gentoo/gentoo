@@ -78,3 +78,10 @@ pkg_preinst() {
 		mv "${ROOT}/etc/${PN}/policies.json" "${ROOT}/etc/${PN}/managed-settings.json"
 	fi
 }
+
+pkg_postinst() {
+	elog "As of claude-code 2.0.25, the claude-code SDK entrypoint was removed"
+	elog "upstream recommends using the @anthropic-ai/claude-code-sdk npm package"
+	elog "which is not packaged in gentoo. Users of the SDK will have to source "
+	elog "it elsewhere."
+}
