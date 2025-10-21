@@ -23,7 +23,7 @@ index 56361f6..20a885c 100644
  # SPDX-License-Identifier: GPL-3.0-or-later
  
 -cmake_minimum_required(VERSION 3.7)
-+cmake_minimum_required(VERSION 3.16..3.31)
++cmake_minimum_required(VERSION 3.16...3.31)
  
  project(kdsoap-ws-discovery-client VERSION 0.4.0)
  
