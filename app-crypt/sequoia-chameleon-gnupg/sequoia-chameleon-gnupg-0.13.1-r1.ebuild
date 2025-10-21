@@ -41,7 +41,15 @@ DEPEND="
 	dev-libs/nettle:=
 	dev-libs/openssl:=
 "
-RDEPEND="${DEPEND}"
+# gpg-agent needed for secret key operations
+# https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg#gpg-sq
+RDEPEND="
+	${DEPEND}
+	|| (
+		app-crypt/gnupg
+		app-crypt/freepg
+	)
+"
 # Clang needed for bindgen
 BDEPEND="
 	$(llvm_gen_dep '
