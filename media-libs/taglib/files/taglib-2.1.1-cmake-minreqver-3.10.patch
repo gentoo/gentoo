@@ -26,7 +26,7 @@ index 9e6589c7..2e631da5 100644
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
-+cmake_minimum_required(VERSION 3.10..3.31)
++cmake_minimum_required(VERSION 3.10...3.31)
  
  project(taglib)
  
