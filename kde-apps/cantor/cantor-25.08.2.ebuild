@@ -18,7 +18,7 @@ HOMEPAGE="https://apps.kde.org/cantor/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="+analitza julia lua postscript python qalculate R webengine"
 
 REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} ) python? ( ${PYTHON_REQUIRED_USE} )"
