@@ -44,6 +44,9 @@ src_prepare() {
 	DISTUTILS_ARGS=(
 		--system-zstd
 	)
+
+	# remove namespace file
+	rm src/python/backports/__init__.py || die
 }
 
 python_test() {
