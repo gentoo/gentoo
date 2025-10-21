@@ -29,7 +29,7 @@ index be1a3ff..c08cc6f 100644
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.5)
-+cmake_minimum_required(VERSION 3.10..3.31)
++cmake_minimum_required(VERSION 3.10...3.31)
  
  project(tsl-robin-map VERSION 1.4.0 LANGUAGES CXX)
  
