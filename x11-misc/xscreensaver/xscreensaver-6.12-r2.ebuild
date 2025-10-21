@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	elogind? ( sys-auth/elogind )
 	gdk-pixbuf? ( >=x11-libs/gdk-pixbuf-2.42.0:2[jpeg?] )
 	gtk? ( >=x11-libs/gtk+-3.0.0:3 )
-	ffmpeg? ( media-video/ffmpeg:= )
+	ffmpeg? ( >=media-video/ffmpeg-6.1:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	locking? ( virtual/libcrypt:= )
 	new-login? (
@@ -102,6 +102,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.07-allow-no-pam.patch
 	"${FILESDIR}"/${PN}-6.07-fix-desktop-files.patch
 	"${FILESDIR}"/${PN}-6.09-ffmpeg.patch
+	"${FILESDIR}"/${PN}-6.12-ffmpeg8.patch
 )
 
 DOCS=( README{,.hacking} )
