@@ -24,9 +24,9 @@ BDEPEND="evdev? ( virtual/pkgconfig )"
 DOCS=( AUTHORS NEWS README{,.md} )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.21-optional-utils.patch"
-	"${FILESDIR}/${P}-cmake4-1.patch" # bug 955696
-	"${FILESDIR}/${P}-fix-64bit-time_t-printf-ub.patch"
+	"${FILESDIR}/${PN}-1.21-optional-utils.patch" # downstream
+	"${FILESDIR}/${P}-cmake4-1.patch" # bug 955696, git master
+	"${FILESDIR}/${P}-fix-64bit-time_t-printf-ub.patch" # git master
 )
 
 src_configure() {
