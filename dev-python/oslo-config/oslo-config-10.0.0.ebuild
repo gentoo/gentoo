@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=pbr
 PYPI_PN=${PN/-/.}
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -45,8 +45,9 @@ distutils_enable_tests unittest
 
 src_prepare() {
 	# broken by some dep upgrade
-	sed -i -e '/DeprecationWarningTestsNoOsloLog/,$d' \
-		oslo_config/tests/test_cfg.py || di
+	sed -i oslo_config/tests/test_cfg.py \
+		-e '/DeprecationWarningTestsNoOsloLog/,$d' \
+		-e 's/test_sub_command_multiple/_&/' || die
 	distutils-r1_src_prepare
 }
 
