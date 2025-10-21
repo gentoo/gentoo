@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-include.patch"
 	"${FILESDIR}/${PN}-4.5.0-missing-includes.patch"
 	"${WORKDIR}/${P}-fix_qt69.patch"
+	"${FILESDIR}/${P}-ffmpeg8.patch"
 )
 
 src_unpack() {
