@@ -8,6 +8,10 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>kfm@plushkava.net</email>
+		<name>Kerin Millar</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/gentoo-functions</remote-id>
 		<remote-id type="github">gentoo/gentoo-functions</remote-id>
