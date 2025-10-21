@@ -422,7 +422,7 @@ _cmake_minreqver-info() {
 	[[ -n ${_CMAKE_MINREQVER_CMAKE305[@]} ]] && warnlvl=305
 	[[ -n ${_CMAKE_MINREQVER_CMAKE310[@]} ]] || [[ ${warnlvl} ]] && warnlvl=310
 	[[ ${CMAKE_ECM_MODE} == true ]] &&
-		{ [[ -n ${_CMAKE_MINREQVER_CMAKE316[@]} ]] || [[ ${warnlvl} ]] } && warnlvl=316
+		{ [[ -n ${_CMAKE_MINREQVER_CMAKE316[@]} ]] || [[ ${warnlvl} ]]; } && warnlvl=316
 
 	local weak_qaw="QA Notice: "
 	minreqver_qanotice() {
