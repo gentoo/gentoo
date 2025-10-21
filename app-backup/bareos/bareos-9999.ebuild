@@ -84,6 +84,7 @@ RDEPEND="${DEPEND}
 			app-arch/mt-st
 		)
 	)
+	sys-libs/libcap
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 	"
 
