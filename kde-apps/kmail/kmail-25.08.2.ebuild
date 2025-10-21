@@ -16,7 +16,7 @@ https://kontact.kde.org/components/kmail/"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="activities speech telemetry"
 
 RESTRICT="test" # bug 616878
