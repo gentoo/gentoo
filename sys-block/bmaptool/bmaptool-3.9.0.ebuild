@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=hatchling
 inherit distutils-r1 optfeature
 
-DESCRIPTION="The better dd for embedded projects, based on block maps."
+DESCRIPTION="The better dd for embedded projects, based on block maps"
 HOMEPAGE="https://github.com/yoctoproject/bmaptool"
 SRC_URI="
 	https://github.com/yoctoproject/bmaptool/archive/refs/tags/v${PV}.tar.gz
@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-# pyproject.toml isnt the ultimate truth for dependencies.
+# pyproject.tom'l isnt the ultimate truth for dependencies.
 # Check the Debian control file and rpm spec for a better idea.
 RDEPEND="
 	app-arch/tar
