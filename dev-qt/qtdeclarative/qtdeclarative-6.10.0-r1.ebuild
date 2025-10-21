@@ -34,6 +34,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.9.3-QTBUG-140018.patch
+	"${FILESDIR}"/${PN}-6.10.0-QTBUG-139626.patch
 )
 
 src_configure() {
