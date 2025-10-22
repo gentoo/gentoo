@@ -5,33 +5,51 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
-inherit distutils-r1 git-r3 optfeature shell-completion wrapper
+inherit distutils-r1 optfeature shell-completion wrapper
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/yt-dlp/yt-dlp.git"
+else
+	SRC_URI="
+		https://github.com/yt-dlp/yt-dlp/releases/download/${PV}/${PN}.tar.gz
+			-> ${P}.tar.gz
+	"
+	S=${WORKDIR}/${PN}
+	# note that yt-dlp bumps are typically done straight-to-stable (unless some
+	# major/breaking changes) given website changes breaks it on a whim
+	KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
+fi
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"
 HOMEPAGE="https://github.com/yt-dlp/yt-dlp/"
-EGIT_REPO_URI="https://github.com/yt-dlp/yt-dlp.git"
 
 LICENSE="Unlicense"
 SLOT="0"
-IUSE="man"
 
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	man? ( virtual/pandoc )
 	test? ( media-video/ffmpeg[webp] )
 "
+
+if [[ ${PV} == 9999 ]]; then
+	IUSE+=" man"
+	BDEPEND+=" man? ( virtual/pandoc )"
+fi
 
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_compile() {
-	# generate missing files in live, not in compile_all nor prepare
-	# given need lazy before compile and it needs a usable ${PYTHON}
-	emake completions lazy-extractors $(usev man yt-dlp.1)
+	if [[ ${PV} == 9999 ]]; then
+		# generate missing files in live, not in compile_all nor prepare
+		# given need lazy before compile and it needs a usable ${PYTHON}
+		emake completions lazy-extractors $(usev man yt-dlp.1)
 
-	"${EPYTHON}" devscripts/update-version.py || die
+		"${EPYTHON}" devscripts/update-version.py || die
+	fi
 
 	distutils-r1_python_compile
 }
@@ -53,7 +71,13 @@ python_test() {
 
 python_install_all() {
 	dodoc README.md Changelog.md supportedsites.md
-	use man && doman yt-dlp.1
+
+	if [[ ${PV} == 9999 ]]; then
+		use man && doman yt-dlp.1
+	else
+		doman yt-dlp.1
+		rm -r -- "${ED}"/usr/share/doc/yt_dlp || die
+	fi
 
 	dobashcomp completions/bash/yt-dlp
 	dofishcomp completions/fish/yt-dlp.fish
