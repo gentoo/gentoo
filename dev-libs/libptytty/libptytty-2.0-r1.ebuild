@@ -6,8 +6,8 @@ EAPI=8
 inherit cmake
 
 DESCRIPTION="A library for mostly OS-independent handling of pty/tty/utmp/wtmp/lastlog"
-HOMEPAGE="http://software.schmorp.de/pkg/libptytty.html"
-SRC_URI="http://dist.schmorp.de/${PN}/${P}.tar.gz"
+HOMEPAGE="https://software.schmorp.de/pkg/libptytty.html"
+SRC_URI="https://dist.schmorp.de/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
