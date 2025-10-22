@@ -110,6 +110,7 @@ PATCHES=(
 	"${FILESDIR}/openjdk-8.402_p06-0002-Fix-Wincompatible-pointer-types.patch"
 	"${FILESDIR}/openjdk-8.402_p06-0003-Fix-negative-value-left-shift.patch"
 	"${FILESDIR}/openjdk-8.402_p06-0004-Fix-misc.-warnings.patch"
+	"${FILESDIR}/openjdk-8.472_p08-fixBuild_failure_with_glibc-2.42.patch"
 )
 
 # The space required to build varies wildly depending on USE flags,
