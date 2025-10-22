@@ -30,7 +30,7 @@ inherit desktop edo flag-o-matic git-r3 java-pkg-opt-2 linux-mod-r1 multilib \
 MY_PN="VirtualBox"
 BASE_PV=7.1.0
 MY_P=${MY_PN}-${PV}
-PATCHES_TAG=7.2.0_p20250830
+PATCHES_TAG=7.2.4
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
@@ -205,8 +205,6 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${PATCHES_TAG}/patches
-
-	"${FILESDIR}"/${PN}-7.2.2-curl-8.16.patch
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs

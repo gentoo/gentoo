@@ -23,7 +23,7 @@ inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature p
 MY_PN="VirtualBox"
 MY_P=${MY_PN}-${PV^^}
 HELP_PV=${PV}
-PATCHES_PV="7.2.0_p20250830"
+PATCHES_PV="7.2.4"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
@@ -200,8 +200,6 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${PATCHES_PV}/patches
-
-	"${FILESDIR}"/${P}-curl-8.16.patch
 )
 
 pkg_pretend() {
