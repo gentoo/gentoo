@@ -1,0 +1,66 @@
+From 9a09ef3996bc65e131651c07db5ba57d87417844 Mon Sep 17 00:00:00 2001
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Fri, 9 Oct 2020 02:18:36 +0300
+Subject: [PATCH 1/4] Make LibArchive as shared library dependency
+
+Signed-off-by: Azamat H. Hackimov <azamat.hackimov@gmail.com>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,6 +69,7 @@ option(USE_SHARED_CURL    "Use your installed copy of curl" off)
+ option(USE_SHARED_GIFLIB  "Use your installed copy of giflib" off)
+ option(USE_SHARED_JPEGLIB "Use your installed copy of jpeglib" off)
+ option(USE_SHARED_ZLIB    "Use your installed copy of zlib" off)
++option(USE_SHARED_LIBARCHIVE "Use your installed copy of libarchive" off)
+ option(USE_SHARED_LIBPNG  "Use your installed copy of libpng" off)
+ option(USE_SHARED_TINYEXIF "Use your installed copy of TinyEXIF" off)
+ option(USE_SHARED_TINYXML "Use your installed copy of tinyxml" off)
+@@ -239,6 +240,16 @@ else()
+ endif()
+ include_directories(${ZLIB_INCLUDE_DIRS})
+ 
++# libarchive
++if(USE_SHARED_LIBARCHIVE)
++  find_package(LibArchive REQUIRED)
++else()
++  set(LibArchive_FOUND)
++  set(LibArchive_LIBRARIES archive_static)
++  set(LibArchive_INCLUDE_DIRS $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libarchive/libarchive>)
++endif()
++include_directories(${LibArchive_INCLUDE_DIRS})
++
+ # libpng
+ if(USE_SHARED_LIBPNG)
+   find_package(PNG REQUIRED)
+--- a/src/app/CMakeLists.txt
++++ b/src/app/CMakeLists.txt
+@@ -752,8 +752,8 @@ target_link_libraries(app-lib
+   ${GIF_LIBRARIES}
+   ${PNG_LIBRARIES}
+   ${ZLIB_LIBRARIES}
++  ${LibArchive_LIBRARIES}
+   json11
+-  archive_static
+   fmt
+   tinyexpr
+   qoi)
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -130,6 +130,7 @@ endif()
+ add_subdirectory(json11)
+ 
+ # libarchive
++if(NOT USE_SHARED_LIBARCHIVE)
+ set(HAVE_WCSCPY 1)
+ set(HAVE_WCSLEN 1)
+ 
+@@ -151,6 +152,7 @@ set(ENABLE_LIBB2 OFF CACHE BOOL "Enable the use of the system LIBB2 library if f
+ add_subdirectory(libarchive)
+ target_include_directories(archive_static INTERFACE
+   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libarchive/libarchive>)
++endif()
+ 
+ # benchmark
+ if(ENABLE_BENCHMARKS)
+-- 
+2.48.1
+
