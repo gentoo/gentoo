@@ -5,7 +5,10 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="High quality rendering engine library for C++"
-HOMEPAGE="http://antigrain.com/"
+HOMEPAGE="
+	https://web.archive.org/web/20180307180425/http://www.antigrain.com/
+	https://sourceforge.net/projects/agg/
+"
 SRC_URI="http://antigrain.com/${P}.tar.gz"
 
 LICENSE="GPL-2 gpc? ( free-noncomm )"
