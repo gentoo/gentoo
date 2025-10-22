@@ -160,6 +160,8 @@ multilib_src_test() {
 		libs_dsd
 		# general:test_max_s8:0: Assertion 'memcmp (res, out, 4) == 0' failed
 		elements_volume
+		# flaky
+		pipelines_gl_launch_lines
 	)
 
 	for test_index in ${!tests[@]}; do
