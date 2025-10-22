@@ -212,6 +212,9 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	emake build_sw
+	if multilib_is_native_abi; then
+		emake build_docs
+	fi
 }
 
 multilib_src_test() {
