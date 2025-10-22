@@ -20,7 +20,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
-IUSE="mcp plugins system-clipboard X network"
+IUSE="mcp plugins system-clipboard X"
 
 DEPEND="
 	dev-libs/openssl:0=
@@ -52,7 +52,7 @@ src_configure() {
 
 	local myfeatures=(
 		$(usev mcp)
-		$(usev network)
+		network
 		plugin
 		native-tls
 		sqlite

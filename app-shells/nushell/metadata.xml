@@ -21,7 +21,6 @@
 	</upstream>
 	<use>
 		<flag name="mcp">Build MCP server</flag>
-		<flag name="network">Build networking functionality</flag>
 		<flag name="plugins">Build official plugins</flag>
 		<flag name="system-clipboard">System clipboard support in `reedline`</flag>
 	</use>
