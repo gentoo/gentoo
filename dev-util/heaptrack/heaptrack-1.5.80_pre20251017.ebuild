@@ -42,7 +42,7 @@ BDEPEND="gui? ( kde-frameworks/extra-cmake-modules:0 )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-robin-map.patch" # bug #964521
-	"${FILESDIR}/${P}-fix-zstd-use-boost-1.69.patch" # bug #964695
+	"${FILESDIR}/${P}-fix-zstd-use-boost-1.70.patch" # bug #964695
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
