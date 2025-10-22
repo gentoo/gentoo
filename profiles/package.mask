@@ -244,12 +244,6 @@ x11-wm/ctwm
 # packaging this. Removal on 2025-10-29.
 sys-auth/pam_abl
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
-# No stable revdeps, destabilising package together with cleanup
-# of EAPI-7 based -r2. media-libs/aften-0.0.8-r3 is available
-# for ~amd64, ~ppc and ~x86.
-<media-libs/aften-0.0.8-r3
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-29)
 # Unmaintained in ::gentoo, EAPI-7 based, broken by CMake 4 and modern C++
 # Package in search of a dedicated maintainer.
@@ -265,12 +259,6 @@ sys-apps/thunderbolt-software-user-space
 # Effectively unmaintained in Gentoo for 5 years, EAPI-7 based, 3.17.2
 # version bump pending in bug #962079. Removal on 2025-10-29.
 x11-terms/roxterm
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-29)
-# No stable revdeps, destabilising package together with cleanup of
-# really outdated version 3.17.0. sci-libs/alglib-3.20.0 is available
-# for ~amd64 and ~x86.
-<sci-libs/alglib-3.20.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-28)
 # Unmaintained for ages, thus not deserving of stable keywords.
