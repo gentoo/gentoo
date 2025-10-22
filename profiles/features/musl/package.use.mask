@@ -169,8 +169,9 @@ media-libs/opencv atlas
 media-video/ffmpeg amf
 media-video/ffmpeg-compat amf
 media-video/handbrake amf
-net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
+net-fs/openafs tsm
+net-misc/yt-dlp deno
 sys-apps/hwloc gl
 www-client/qutebrowser widevine
 

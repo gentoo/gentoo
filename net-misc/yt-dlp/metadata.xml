@@ -6,6 +6,19 @@
 		<name>Ionen Wolkens</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<use>
+		<flag name="deno">
+			(warning: this USE is for testing versions only
+			currently and can be ignored at the moment)
+
+			Pull in <pkg>dev-lang/deno-bin</pkg> by default
+			needed for proper YouTube support (if this USE
+			is masked on your profile, refer to yt-dlp's
+			documentation for lesser supported alternatives
+			which are not supported out-of-the-box due to
+			security concerns)
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">yt-dlp/yt-dlp</remote-id>
 		<remote-id type="pypi">yt-dlp</remote-id>
