@@ -19,7 +19,7 @@ S="${WORKDIR}/${MY_PN}4-${PV}"
 
 LICENSE="BSD"
 SLOT="4"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 DEPEND="
 	>=virtual/jdk-1.8:*
