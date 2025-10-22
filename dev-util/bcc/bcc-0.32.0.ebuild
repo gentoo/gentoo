@@ -193,6 +193,7 @@ src_install() {
 	for tool in "${ED}"/usr/share/bcc/tools/*; do
 		[[ -d ${tool} || ! -x ${tool} || ${tool} =~ .*[.](c|txt) ]] && continue
 		grep -qE '^#!/usr/bin/(env |)python' "${tool}" && continue
+		sed -e 's:dirname \$0:dirname "$(realpath "$0")":' -i "${tool}" || die
 
 		target="/usr/sbin/$(bcc_tool_name "${tool}")"
 		[[ -e ${ED}${target} ]] && continue
