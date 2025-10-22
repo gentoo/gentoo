@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_QA_COMPAT_SKIP=1 # bug 964964, fixed in >=25.12
 KFMIN=6.16.0
 QTMIN=6.9.1
 inherit ecm gear.kde.org
