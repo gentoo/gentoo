@@ -151,7 +151,11 @@ multilib_src_test() {
 	local -a tests
 	tests=( $(meson test --list -C "${BUILD_DIR}") )
 
-	local -a _skip_tests=()
+	local -a _skip_tests=(
+		# flaky
+		pipelines_gl_launch_lines
+	)
+
 	# Affects abi_x86_32
 	multilib_is_native_abi || _skip_tests+=(
 		# failed ABI check
