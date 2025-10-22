@@ -72,6 +72,4 @@ src_configure() {
 	cargo_src_configure --no-default-features
 
 	export "LLVM_SYS_${LLVM_SLOT}1_PREFIX"="$(get_llvm_prefix -d)"
-	# the package requires BPF target that is only available in nightly
-	export RUSTC_BOOTSTRAP=1
 }
