@@ -279,12 +279,6 @@ net-misc/ytfzf
 =sys-kernel/linux-firmware-20251011
 
 # Viorel Munteanu <ceamac@gentoo.org> (2025-09-16)
-# Masked for testing.  This package is supposed to be installed in the livecd,
-# not on user's system.  We need a few more reports of it working before
-# unmasking.
-app-misc/calamares-gentoo-livecd
-
-# Viorel Munteanu <ceamac@gentoo.org> (2025-09-16)
 # Unmaintained upstream, last release more than 7 years old.
 # Old data is getting harder to read.
 # Alternatives: sys-fs/gocryptfs or rclone crypt.
