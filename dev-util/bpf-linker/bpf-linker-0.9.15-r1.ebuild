@@ -15,7 +15,7 @@ declare -A GIT_CRATES=(
 LLVM_COMPAT=( {20..21} )
 RUST_REQ_USE="llvm_targets_BPF(+),rust_sysroots_bpf(-)"
 
-inherit cargo llvm-r2
+inherit cargo llvm-r2 toolchain-funcs
 
 DESCRIPTION="Simple BPF static linker"
 HOMEPAGE="https://github.com/aya-rs/bpf-linker/"
@@ -72,4 +72,8 @@ src_configure() {
 	cargo_src_configure --no-default-features
 
 	export "LLVM_SYS_${LLVM_SLOT}1_PREFIX"="$(get_llvm_prefix -d)"
+
+	if [[ $(tc-get-cxx-stdlib) == "libc++" ]]; then
+		export LLVM_SYS_LIBCPP=c++
+	fi
 }
