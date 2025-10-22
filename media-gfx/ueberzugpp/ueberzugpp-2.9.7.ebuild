@@ -53,6 +53,10 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cli11-2.6.0.patch
+)
+
 src_configure() {
 	if use X && tc-is-clang &&
 		[[ $(tc-get-cxx-stdlib) == libc++ && $(clang-major-version) -lt 20 ]]
