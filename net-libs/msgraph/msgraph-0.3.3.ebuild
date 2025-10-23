@@ -9,8 +9,8 @@ DESCRIPTION="GLib-based library for accessing online serive APIs using MS Graph 
 HOMEPAGE="https://gitlab.gnome.org/GNOME/msgraph"
 
 LICENSE="LGPL-2+"
-SLOT="0/1"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+SLOT="0/1.1"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
 IUSE="debug gtk-doc +introspection man test"
 REQUIRED_USE="gtk-doc? ( introspection )"
@@ -44,4 +44,12 @@ src_configure() {
 		$(meson_use test tests)
 	)
 	meson_src_configure
+}
+
+src_install(){
+	meson_install
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html || die
+		mv "${ED}"/usr/share/doc/msgraph-* "${ED}"/usr/share/gtk-doc/html || die
+	fi
 }
