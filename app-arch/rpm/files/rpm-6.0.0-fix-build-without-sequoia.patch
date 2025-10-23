@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/965006
+https://github.com/rpm-software-management/rpm/commit/aadbe7d611149f583b8b23f1b58a6a0300c02c82
+
+From: Panu Matilainen <pmatilai@redhat.com>
+Date: Wed, 1 Oct 2025 12:45:40 +0300
+Subject: [PATCH] Fix build regression on WITH_SEQUOIA=OFF
+
+Commit c36c717f41683953b9c23e447a8df0d0ac7c845c neglected to add the
+stub for non-sequoia builds.
+
+Fixes: #3970
+--- a/rpmio/rpmpgp_dummy.cc
++++ b/rpmio/rpmpgp_dummy.cc
+@@ -121,3 +121,8 @@ rpmRC pgpPubkeyMerge(const uint8_t *pkts1, size_t pkts1len, const uint8_t *pkts2
+ {
+     return RPMRC_FAIL;
+ }
++
++int pgpDigParamsSalt(pgpDigParams digp, const uint8_t **datap, size_t *lenp)
++{
++    return -1;
++}
