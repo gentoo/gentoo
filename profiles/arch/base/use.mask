@@ -83,6 +83,7 @@ cudnn
 
 # ROCm/HIP only works on amd64
 hip
+hiprt
 
 # masking here, and unmasking in arch/x86/use.mask
 vidix

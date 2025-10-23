@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lockalsash@gmail.com</email>
+		<name>Sv. Lockal</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		HIP RT is a ray tracing library for HIP, released by AMD's GPUOpen team. This
+		library is notably used in the Blender 3D modeling software for ray tracing acceleration
+		on Radeon GPUs.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">GPUOpen-LibrariesAndSDKs/HIPRT</remote-id>
+	</upstream>
+</pkgmetadata>
