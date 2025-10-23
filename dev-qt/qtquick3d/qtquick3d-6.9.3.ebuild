@@ -4,7 +4,7 @@
 EAPI=8
 
 QT6_HAS_STATIC_LIBS=1
-inherit qt6-build
+inherit flag-o-matic qt6-build toolchain-funcs
 
 DESCRIPTION="Qt module and API for defining 3D content in Qt QuickTools"
 
@@ -46,6 +46,9 @@ PATCHES=(
 )
 
 src_configure() {
+	tc-is-gcc && [[ $(gcc-major-version) -ge 16 ]] &&
+		append-cxxflags -fno-devirtualize-speculatively #964252
+
 	local mycmakeargs=(
 		# TODO: if someone wants it, openxr should likely have its own
 		# USE and be packaged rather than use the bundled copy (if use
