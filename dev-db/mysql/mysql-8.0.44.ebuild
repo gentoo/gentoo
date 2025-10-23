@@ -3,48 +3,30 @@
 
 EAPI=8
 
-inherit check-reqs cmake edo flag-o-matic linux-info multiprocessing toolchain-funcs prefix verify-sig
+inherit check-reqs cmake dot-a edo flag-o-matic linux-info multiprocessing prefix toolchain-funcs
 
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
-# $ git format-patch mysql-${PV}...mysql-${PV}-patches -o mysql-patches
-# $ tar caf mysql-${PV}-patches-01.tar.xz mysql-patches
-PATCH_SET=(
-	# https://github.com/parona-source/mysql-server/releases/tag/mysql-8.4.5-patches-01
-	https://github.com/parona-source/mysql-server/releases/download/mysql-8.4.5-patches-01/mysql-8.4.5-patches-01.tar.xz
-)
+# Patch version
+PATCH_SET=( https://github.com/parona-source/mysql-server/releases/download/mysql-8.0.43-patches-01/mysql-8.0.43-patches-01.tar.xz )
 
-DESCRIPTION="Fast, multi-threaded, multi-user SQL database server"
+DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 HOMEPAGE="https://www.mysql.com/"
-# Latest source distributions are available at https://dev.mysql.com/downloads/mysql/
-# before they are moved to https://downloads.mysql.com/archives/community/
-SRC_URI="
-	https://dev.mysql.com/get/Downloads/MySQL-$(ver_cut 1-2)/${MY_P}.tar.gz
-	https://cdn.mysql.com/archives/mysql-$(ver_cut 1-2)/${MY_P}.tar.gz
-	verify-sig? (
-		https://dev.mysql.com/downloads/gpg/?file=${MY_P}.tar.gz&p=23
-			-> ${MY_P}.tar.gz.asc
-		https://downloads.mysql.com/archives/gpg/?file=${MY_P}.tar.gz&p=23
-			-> ${MY_P}.tar.gz.asc
-	)
-	${PATCH_SET[@]}
-"
+# https://dev.mysql.com/downloads/mysql/
+SRC_URI="https://dev.mysql.com/get/Downloads/MySQL-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz"
+# https://downloads.mysql.com/archives/community/
+SRC_URI+=" https://cdn.mysql.com/archives/mysql-$(ver_cut 1-2)/mysql-boost-${MY_PV}.tar.gz"
+SRC_URI+=" ${PATCH_SET[@]}"
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
 S="${WORKDIR}/mysql"
 
-VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/mysql.asc"
-
 LICENSE="GPL-2"
-# https://dev.mysql.com/blog-archive/introducing-mysql-innovation-and-long-term-support-lts-versions/
-SLOT="$(ver_cut 1-2)"
-# 64-bit only since 8.2.0
-# https://github.com/mysql/mysql-server/commit/07bf1bdb620daf62c02ead0d5439d65c7c34aa00
-# -arm -hppa -mips -ppc -x86 -x86-linux
+SLOT="8.0"
 # -ppc for bug #761715
-KEYWORDS="~amd64 -arm ~arm64 -hppa -mips -ppc ~ppc64 ~riscv ~s390 ~sparc -x86 ~amd64-linux -x86-linux ~x64-macos ~x64-solaris"
-IUSE="cjk cracklib debug jemalloc numa +perl profiling router selinux +server tcmalloc test test-install"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips -ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
+IUSE="cjk cracklib debug jemalloc latin1 numa +perl profiling router selinux +server tcmalloc test test-install"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
@@ -69,6 +51,7 @@ COMMON_DEPEND="
 	>=sys-libs/zlib-1.2.13:=
 	server? (
 		dev-libs/icu:=
+		dev-libs/libevent:=[ssl,threads(+)]
 		net-libs/libtirpc:=
 		cjk? ( app-text/mecab )
 		jemalloc? ( dev-libs/jemalloc:= )
@@ -80,9 +63,9 @@ COMMON_DEPEND="
 		tcmalloc? ( dev-util/google-perftools:= )
 	)
 "
+
 DEPEND="
 	${COMMON_DEPEND}
-	virtual/libudev
 	server? ( net-libs/rpcsvc-proto )
 "
 RDEPEND="
@@ -93,7 +76,6 @@ RDEPEND="
 	!dev-db/mysql-cluster
 	!dev-db/mysql:0
 	!dev-db/mysql:5.7
-	!dev-db/mysql:8.0
 	selinux? ( sec-policy/selinux-mysql )
 	!prefix? (
 		acct-group/mysql
@@ -126,15 +108,17 @@ BDEPEND="
 		dev-perl/JSON
 		sys-libs/timezone-data
 	)
-	verify-sig? ( ~sec-keys/openpgp-keys-mysql-20231023 )
+
 "
 
 PATCHES=(
 	"${WORKDIR}"/mysql-patches
+	# Needed due to bundled boost-1.77, this fix is included in boost-1.81
+	"${FILESDIR}"/mysql-8.0.36-boost-clang-fix.patch
+	# Needed due to bundled boost-1.77, this fix is included in boost-1.79
+	"${FILESDIR}"/mysql-8.0.37-fix-bundled-boost.patch
 	# Needed due to bundled abseil-cpp-20230802, this fix is included in abseil-cpp-20240722
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-abseil.patch
-	# Needed due to bundled abseil-cpp-20230802, this fix is in no release as of 2025-01-09
-	"${FILESDIR}"/mysql-8.0.40-fix-bundled-abseil-gcc15.patch
 )
 
 mysql_init_vars() {
@@ -150,54 +134,72 @@ mysql_init_vars() {
 }
 
 pkg_pretend() {
-	CHECKREQS_DISK_BUILD="3G"
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		if use server ; then
+			CHECKREQS_DISK_BUILD="3G"
 
-	if has test ${FEATURES} ; then
-		# <parona@protonmail.com> i've seen it take 17GB on musl with FEATURES="test" USE="perl server"
-		CHECKREQS_DISK_BUILD="18G"
+			if has test ${FEATURES} ; then
+				CHECKREQS_DISK_BUILD="10G"
 
-		# Bug #213475 - MySQL _will_ object strenuously if your machine is named
-		# localhost. Also causes weird failures.
-		[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
+				if use elibc_musl; then
+					# <parona@protonmail.com> i've seen it take 17GB on musl with FEATURES="test" USE="perl server"
+					CHECKREQS_DISK_BUILD="18G"
+				fi
+			fi
 
-		if ! has userpriv ${FEATURES} ; then
-			die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
+			check-reqs_pkg_pretend
 		fi
 	fi
-
-	if use kernel_linux && use numa ; then
-		linux-info_get_any_version
-
-		local CONFIG_CHECK="~NUMA"
-
-		local WARNING_NUMA="\
-This package expects NUMA support in kernel which this system does not have at the moment; \
-Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
-
-		check_extra_config
-	fi
-	check-reqs_pkg_pretend
 }
 
 pkg_setup() {
-	CHECKREQS_DISK_BUILD="3G"
-	if has test ${FEATURES} ; then
-		# <parona@protonmail.com> i've seen it take 17GB on musl with FEATURES="test" USE="perl server"
-		CHECKREQS_DISK_BUILD="18G"
+	if [[ ${MERGE_TYPE} != binary ]] ; then
+		CHECKREQS_DISK_BUILD="3G"
 
-		local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
-		if [[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] ; then
-			die "FEATURES=test requires fs.aio-max-nr=250000 at minimum!"
+		if has test ${FEATURES} ; then
+			CHECKREQS_DISK_BUILD="10G"
+
+			if use elibc_musl; then
+				# <parona@protonmail.com> i've seen it take 17GB on musl with FEATURES="test" USE="perl server"
+				CHECKREQS_DISK_BUILD="18G"
+			fi
+
+			# Bug #213475 - MySQL _will_ object strenuously if your machine is named
+			# localhost. Also causes weird failures.
+			[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
+
+			if ! has userpriv ${FEATURES} ; then
+				die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
+			fi
+
+			local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
+			if [[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] ; then
+				die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
+			fi
+
+			if use latin1 ; then
+				# Upstream only supports tests with default charset
+				die "Testing with USE=latin1 is not supported."
+			fi
 		fi
+
+		if use kernel_linux && use numa ; then
+			linux-info_get_any_version
+
+			local CONFIG_CHECK="~NUMA"
+
+			local WARNING_NUMA="\
+This package expects NUMA support in kernel which this system does not have at the moment; \
+Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+
+			check_extra_config
+		fi
+
+		use server && check-reqs_pkg_setup
 	fi
-	check-reqs_pkg_setup
 }
 
 src_unpack() {
-	if use verify-sig; then
-		verify-sig_verify_detached "${DISTDIR}/${MY_P}.tar.gz" "${DISTDIR}/${MY_P}.tar.gz.asc"
-	fi
-
 	unpack ${A}
 
 	mv -f "${WORKDIR}/${MY_P}" "${S}" || die
@@ -214,6 +216,13 @@ src_prepare() {
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
+	# Remove man pages for client-lib tools we don't install
+	rm \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1 \
+		|| die
+
 	cmake_src_prepare
 }
 
@@ -221,67 +230,16 @@ src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
+	# Code requires C++17 due to https://github.com/mysql/mysql-server/commit/236ab55bedd8c9eacd80766d85edde2a8afacd08
+	append-cxxflags -std=c++17
+
 	# Debug build type used extensively to add preprocessor definitions
 	use debug && CMAKE_BUILD_TYPE="Debug"
 
+	lto-guarantee-fat
+
 	local mycmakeargs=(
-		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
-
-		-DINSTALL_BINDIR="bin"
-		-DINSTALL_DOCDIR="share/doc/${PF}"
-		-DINSTALL_DOCREADMEDIR="share/doc/${PF}"
-		-DINSTALL_INCLUDEDIR="include/mysql"
-		-DINSTALL_INFODIR="share/info"
-		-DINSTALL_LIBDIR="$(get_libdir)"
-		-DINSTALL_PRIV_LIBDIR="$(get_libdir)/mysql/private"
-		-DINSTALL_MANDIR="share/man"
-		-DINSTALL_MYSQLDATADIR="${EPREFIX}/var/lib/mysql"
-		-DINSTALL_MYSQLSHAREDIR="share/mysql"
-		-DINSTALL_PLUGINDIR="$(get_libdir)/mysql/plugin"
-		-DINSTALL_SBINDIR="sbin"
-		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
-		-DMYSQL_DATADIR="${EPREFIX}/var/lib/mysql"
-		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
-		-DSYSCONFDIR="${EPREFIX}/etc/mysql"
-
-		-DENABLED_PROFILING=$(usex profiling)
-		-DWITHOUT_SERVER=$(usex !server)
-
-		-DWITH_ROUTER=$(usex router)
-		-DROUTER_INSTALL_PLUGINDIR="$(get_libdir)/mysqlrouter"
-		-DROUTER_INSTALL_LIBDIR="$(get_libdir)/mysqlrouter/private"
-		-DROUTER_INSTALL_DOCDIR="share/doc/${PF}"
-		-DROUTER_INSTALL_LOGROTATEDIR="${EPREFIX}/etc/logrotate.d"
-
-		# Webauthn plugins not available in community build
-		# https://dev.mysql.com/doc/refman/8.4/en/webauthn-pluggable-authentication.html
-		# Which is why FIDO, KERBEROS and LDAP are disabled.
-
-		# Valid options differ.
-		# With some none is disabled, while with others empty is disabled.
-		-DWITH_CURL=system
-		-DWITH_EDITLINE=bundled # Using bundled editline to get CTRL+C working
-		-DWITH_FIDO=none
-		-DWITH_ICU=$(usex server system none)
-		-DWITH_JEMALLOC=$(usex jemalloc)
-		-WITH_KERBEROS=none
-		-WITH_LDAP=none
-		-DWITH_LZ4=system
-		-DWITH_NUMA=$(usex numa)
-		-DWITH_PROTOBUF=$(usex server bundled none) # Cannot handle protobuf >23 bug #912797
-		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
-		# see extra/RAPIDJSON-README
-		-DWITH_RAPIDJSON=bundled
-		-DWITH_SASL=system
-		-DWITH_SSL=system
-		-DWITH_ZLIB=system
-		-DWITH_ZSTD=system
-
-		# Installs support files that would conflict with dev-db/mysql-init-scripts
-		-DWITH_SYSTEMD=0
-
-		# These are installed via dev-db/mysql-connector-c
-		-DWITHOUT_CLIENTLIBS=ON
+		-Wno-dev # less noise
 
 		# Building everything as shared breaks upstream assumptions.
 		# For example bundled abseil is excpected to be static and is therefore not installed.
@@ -289,47 +247,71 @@ src_configure() {
 		# but then dynamically linked against system abseil once installed.
 		-DBUILD_SHARED_LIBS=OFF
 
-		-DENABLED_LOCAL_INFILE=ON # Should LOAD DATA LOCAL be enabled by default?
+		-DMYSQL_DATADIR="${EPREFIX}/var/lib/mysql"
+		-DSYSCONFDIR="${EPREFIX}/etc/mysql"
 
-		-Wno-dev # less noise
+		-DINSTALL_BINDIR=bin
+		-DINSTALL_DOCDIR=share/doc/${PF}
+		-DINSTALL_DOCREADMEDIR=share/doc/${PF}
+		-DINSTALL_INCLUDEDIR=include/mysql
+		-DINSTALL_INFODIR=share/info
+		-DINSTALL_LIBDIR=$(get_libdir)
+		-DINSTALL_MANDIR=share/man
+		-DINSTALL_PRIV_LIBDIR=$(get_libdir)/mysql/private
+		-DINSTALL_MYSQLSHAREDIR=share/mysql
+		-DINSTALL_PLUGINDIR=$(get_libdir)/mysql/plugin
+		-DINSTALL_MYSQLDATADIR="${EPREFIX}/var/lib/mysql"
+		-DINSTALL_SBINDIR=sbin
+		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
 
-		-DMYSQL_MAINTAINER_MODE=OFF # Enables -Werror
-		# These are fine as they don't override user flags
-		# (also means you don't specify expected things like c++ standard)
-		-DWITH_DEFAULT_COMPILER_OPTIONS=ON
+		-DROUTER_INSTALL_PLUGINDIR="$(get_libdir)/mysqlrouter"
+		-DROUTER_INSTALL_LIBDIR="$(get_libdir)/mysqlrouter/private"
+		-DROUTER_INSTALL_LOGROTATEDIR="${EPREFIX}/etc/logrotate.d"
+		-DROUTER_INSTALL_DOCDIR="share/doc/${PF}"
+
+		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
+		-DWITH_UNIT_TESTS=$(usex test ON OFF)
+
+		# Enables -Werror
+		-DMYSQL_MAINTAINER_MODE=OFF
+
+		 # debug hack wrt #497532
+		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
+		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
+
+		# Automagically uses LLD when not using LTO (bug #710272, #775845)
+		-DUSE_LD_LLD=OFF
 
 		# Causes issues on musl bug #922808
 		-DWITH_BUILD_ID=OFF
 
-		-DWITH_DEBUG=$(usex debug)
-		# debug hack wrt #497532
-		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
-		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usev !debug '-DNDEBUG' )"
+		# These are installed via dev-db/mysql-connector-c
+		-DWITHOUT_CLIENTLIBS=YES
 
-		-DWITH_UNIT_TESTS=$(usex test)
+		# Using bundled editline to get CTRL+C working
+		-DWITH_EDITLINE=bundled
+		-DWITH_ZLIB=system
+		-DWITH_SSL=system
+		-DWITH_LIBWRAP=0
+		-DENABLED_LOCAL_INFILE=1
+		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
+		-DWITH_DEFAULT_COMPILER_OPTIONS=0
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+
+		-DWITH_CURL=system
+		-DWITH_BOOST="${S}/boost"
+		-DWITH_ROUTER=$(usex router ON OFF)
+
+		-DWITH_ICU=system
+		-DWITH_LZ4=system
+		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
+		-DWITH_RAPIDJSON=bundled
+		-DWITH_ZSTD=system
+
 		# This is the expected location for upstream RPM's and the script will search for location relative to it.
 		# Other locations will not work.
 		-DINSTALL_MYSQLTESTDIR=$(usex test-install 'share/mysql-test' 0)
 	)
-
-	if use server ; then
-		mycmakeargs+=(
-			-DWITH_EXTRA_CHARSETS=all
-
-			-DWITH_MECAB=$(usex cjk system)
-
-			# Storage engines
-			-DWITH_ARCHIVE_STORAGE_ENGINE=ON
-			-DWITH_BLACKHOLE_STORAGE_ENGINE=ON
-			-DWITH_CSV_STORAGE_ENGINE=ON
-			-DWITH_EXAMPLE_STORAGE_ENGINE=OFF
-			-DWITH_FEDERATED_STORAGE_ENGINE=ON
-			-DWITH_HEAP_STORAGE_ENGINE=ON
-			-DWITH_INNOBASE_STORAGE_ENGINE=ON
-			-DWITH_MYISAMMRG_STORAGE_ENGINE=ON
-			-DWITH_MYISAM_STORAGE_ENGINE=ON
-		)
-	fi
 
 	if tc-is-lto ; then
 		mycmakeargs+=( -DWITH_LTO=ON )
@@ -347,10 +329,62 @@ src_configure() {
 			-DDEFAULT_CHARSET=${MYSQL_DEFAULT_CHARSET}
 			-DDEFAULT_COLLATION=${MYSQL_DEFAULT_COLLATION}
 		)
+	elif use latin1 ; then
+		mycmakeargs+=(
+			-DDEFAULT_CHARSET=latin1
+			-DDEFAULT_COLLATION=latin1_swedish_ci
+		)
 	else
 		mycmakeargs+=(
 			-DDEFAULT_CHARSET=utf8mb4
 			-DDEFAULT_COLLATION=utf8mb4_0900_ai_ci
+		)
+	fi
+
+	if use server ; then
+		mycmakeargs+=(
+			-DWITH_EXTRA_CHARSETS=all
+			-DWITH_DEBUG=$(usex debug)
+			-DWITH_MECAB=$(usex cjk system OFF)
+			-DWITH_LIBEVENT=system
+			# Cannot handle protobuf >23 bug #912797
+			# 05/06/2024: protobuf has been updated,
+			# but it cannot handle abseil when building against system
+			# Currently bundles protobuf-25.1
+			-DWITH_PROTOBUF=bundled
+			-DWITH_NUMA=$(usex numa ON OFF)
+		)
+
+		if use jemalloc ; then
+			mycmakeargs+=( -DWITH_JEMALLOC=ON )
+		elif use tcmalloc ; then
+			mycmakeargs+=( -DWITH_TCMALLOC=ON )
+		fi
+
+		if use profiling ; then
+			# Setting to OFF doesn't work: Once set, profiling options will be added
+			# to `mysqld --help` output via sql/sys_vars.cc causing
+			# "main.mysqld--help-notwin" test to fail
+			mycmakeargs+=( -DENABLED_PROFILING=ON )
+		fi
+
+		# Storage engines
+		mycmakeargs+=(
+			-DWITH_EXAMPLE_STORAGE_ENGINE=0
+			-DWITH_ARCHIVE_STORAGE_ENGINE=1
+			-DWITH_BLACKHOLE_STORAGE_ENGINE=1
+			-DWITH_CSV_STORAGE_ENGINE=1
+			-DWITH_FEDERATED_STORAGE_ENGINE=1
+			-DWITH_HEAP_STORAGE_ENGINE=1
+			-DWITH_INNOBASE_STORAGE_ENGINE=1
+			-DWITH_INNODB_MEMCACHED=0
+			-DWITH_MYISAMMRG_STORAGE_ENGINE=1
+			-DWITH_MYISAM_STORAGE_ENGINE=1
+		)
+	else
+		mycmakeargs+=(
+			-DWITHOUT_SERVER=1
+			-DWITH_SYSTEMD=no
 		)
 	fi
 
@@ -377,39 +411,11 @@ src_test() {
 	einfo "Official test instructions:"
 	einfo "ulimit -n 16500 && USE='perl server' FEATURES='test userpriv' ebuild ..."
 
-	# Try to increase file limits to increase test coverage
-	local ulimit_n
-	for ulimit_n in {16500,4162,3000}; do
-		ulimit -n ${ulimit_n} 1>/dev/null 2>&1 && break
-	done
-
-	case ${ulimit_n} in
-		16500)
-			# Upper limit comes from parts.partition_* tests
-			einfo "Will run test suite with open file limit set to 16500 (best test coverage)."
-			;;
-		4162)
-			# Medium limit comes from
-			# '[Warning] Buffered warning: Could not increase number of max_open_files to more than 3000 (request: 4162)'
-			einfo "Will run test suite with open file limit set to 4162 (medium test coverage)."
-			;;
-		3000)
-			einfo "Will run test suite with open file limit set to 3000 (minimum test coverage)."
-			;;
-		*)
-			ewarn "For minimum test coverage, please raise open file limit to 3000 (ulimit -n 3000) before calling the package manager."
-			;;
-	esac
-
-	# Documentation for mysql-test-run (MTR_* variables and so on)
-	# https://dev.mysql.com/doc/dev/mysql-server/latest/PAGE_MYSQL_TEST_RUN_PL.html
-
 	# Ensure that parallel runs don't die
 	local -x MTR_BUILD_THREAD="$((${RANDOM} % 100))"
 
 	# Use a tmpfs opportunistically, otherwise set MTR_PARALLEL to 1.
-	# MySQL tests are I/O heavy. They benefit greatly from a tmpfs,
-	# parallel tests without a tmpfs are flaky due to timeouts.
+	# MySQL tests are I/O heavy. They benefit greatly from a tmpfs, parallel tests without a tmpfs are flaky due to timeouts.
 	if mountpoint -q /dev/shm ; then
 		local VARDIR="/dev/shm/mysql-var-${MTR_BUILD_THREAD}"
 		local -x MTR_PARALLEL=${MTR_PARALLEL:-$(makeopts_jobs)}
@@ -435,7 +441,9 @@ src_test() {
 	sed \
 		-e "s/@GENTOO_PORTAGE_EPREFIX@/${EPREFIX}/" \
 		-e "s/@DATADIR@/${MY_DATADIR}/" \
-		"${FILESDIR}"/my.cnf-8.4.distro-server > "${T}"/my.cnf || die
+		"${FILESDIR}"/my.cnf-8.0.distro-client \
+		"${FILESDIR}"/my.cnf-8.0.distro-server \
+			> "${T}"/my.cnf || die
 	local -x PATH_CONFIG_FILE="${T}/my.cnf"
 
 	# Create directories because mysqladmin might run out of order
@@ -448,6 +456,8 @@ src_test() {
 
 	local -a disabled_tests=(
 		"auth_sec.atomic_rename_user;103512;Depends on user running test"
+		"auth_sec.keyring_file_data_qa;0;Won't work with user privileges"
+		"auth_sec.openssl_without_fips;94718;Known test failure"
 
 		"gis.geometry_class_attri_prop;5452;Known rounding error with latest AMD processors (PS)"
 		"gis.geometry_property_function_issimple;5452;Known rounding error with latest AMD processors (PS)"
@@ -478,89 +488,40 @@ src_test() {
 		"main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet"
 		"main.with_recursive;0;Known rounding error with latest AMD processors -- no upstream bug yet"
+		"perfschema.statement_digest_query_sample;0;Test will fail on slow hardware"
 
 		"rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch;0;Unstable test"
 		"rpl_gtid.rpl_multi_source_mtr_includes;97844;Unstable test"
 		"main.partition_datatype;0;Unstable test"
-		"rpl.rpl_replication_observers_example_plugin_ongoing_transaction;0;Unstable test"
-		"main.ps;0;Unstable test"
-		"innodb.dblwr_encrypt_rowcomp;0;Unstable test"
-		"main.slow_log;0;Unstable test"
 
-		"perfschema.statement_digest_query_sample;0;Test will fail on slow hardware"
 		"sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware"
 
-		# mysql-test/suite/innodb/t/sdi.test
-		"innodb.sdi;0;Skip this test when MySQL has been built with other storage engines than InnoDB"
+		"sys_vars.build_id_basic;0;Requires -DWITH_BUILD_ID=ON"
 
-		"sys_vars.build_id_basic;0;build_id disabled in build"
-
-		"innodb.alter_kill;0;Known test failure -- no upstream bug yet"
-		"main.all_persisted_variables;0;Known failure - no upstream bug yet"
-		"perfschema.idx_compare_mutex_instances;0;Known failure - no upstream bug yet"
+		"main.keyring_migration_password;0;Known test failure -- no upstream bug yet"
+		"innodb.upgrade_orphan;0;Known test failure -- no upstream bug yet"
 	)
 
-	local -a CMAKE_SKIP_TESTS=(
-		# timing test, can be unreliable
-		"routertest_harness_net_ts_timer"
-
-		# Could not get local host address: Name or service not known(errno: -2)
-		# Socket file path can be at most 107 characters (was 110)
-		"routertest_component_bootstrap"
-		"routertest_component_bootstrap_account"
-		"routertest_component_bootstrap_clusterset"
-		"routertest_component_config_overwrites"
-		"routertest_component_rest_api_enable"
-		"routertest_component_router_stacktrace"
-		"routertest_component_routing"
-		"routertest_component_sd_notify"
-		"routertest_component_state_file"
-		"routertest_integration_routing_direct"
-		"routertest_integration_routing_reuse"
-		"routertest_integration_routing_router_require"
-		"routertest_integration_routing_sharing"
-		"routertest_integration_routing_sharing_constrained_pools"
-		"routertest_integration_routing_sharing_restart"
-
-		# /tmp/foo:/var/lib/mysql:/test//foo
-		# t2: 5 days
-		# ${S}/storage/ndb/src/common/util/NodeCertificate.cpp:1485: require((csr->verify())) failed
-		"NodeCertificate-t"
-
-		# TODO: ???
-		# Signal 11 thrown, attempting backtrace.
-		# stack_bottom = 0 thread_stack 0x0
-		# #0 0x5610e9d53916 _ZN19PFS_all_memory_stat5resetEv at storage/perfschema/pfs_stat.h:1026
-		# #1 0x5610e9d53916 _ZN27PFS_session_all_memory_stat5resetEv at storage/perfschema/pfs_stat.cc:399
-		# #2 0x5610e9d53916 _Z13create_threadP16PFS_thread_classjPKvy at storage/perfschema/pfs_instr.cc:723
-		# #3 0x5610e9d5960f test_oom at storage/perfschema/unittest/pfs_instr-oom-t.cc:305
-		# #4 0x5610e9d4abed do_all_tests at storage/perfschema/unittest/pfs_instr-oom-t.cc:464
-		# #5 0x5610e9d4abed main at storage/perfschema/unittest/pfs_instr-oom-t.cc:469
-		# #6 0x7f214d22b68a <unknown>
-		# #7 0x7f214d22b739 <unknown>
-		# #8 0x5610e9d4e014 <unknown>
-		# #9 0xffffffffffffffff <unknown>
-		"pfs_host-oom"
-		"pfs_user-oom"
-		"pfs_instr-oom"
-
-		# flaky
-		"logger-t"
-	)
-
-	if ! use profiling; then
+	if ! hash zip 1>/dev/null 2>&1 ; then
+		# No need to force dep app-arch/zip for one test
 		disabled_tests+=(
-			"main.mysql_client_test;0;Requires profiling support"
-			"main.mysqld--help-notwin;0;Result output expects profiling support"
+			"innodb.discarded_partition_create;0;Requires app-arch/zip"
+			"innodb.partition_upgrade_create;0;Requires app-arch/zip"
+		)
+	fi
+
+	if has_version ">=dev-libs/openssl-3.2" ; then
+		# https://bugs.mysql.com/bug.php?id=113258
+		# Fails still with 8.0.41
+		disabled_tests+=(
+			"rpl.rpl_tlsv13;0;CCM8 ciphers have a lower security level with OpenSSL 3.2"
+			"auth_sec.wl15800_ciphers_tlsv13;0;CCM8 ciphers have a lower security level with OpenSSL 3.2"
 		)
 	fi
 
 	if use debug; then
 		disabled_tests+=(
 			"innodb.dblwr_unencrypt;0;Unstable test"
-		)
-		CMAKE_SKIP_TESTS+=(
-			"testSecureSocket-t"
 		)
 	fi
 
@@ -576,6 +537,61 @@ src_test() {
 	done
 	unset test_infos_str test_infos_arr
 
+	local -a CMAKE_SKIP_TESTS=(
+		# timing test, can be unreliable
+		"routertest_harness_net_ts_timer"
+
+		# Could not get local host address: Name or service not known(errno: -2)
+		"routertest_component_bootstrap"
+		"routertest_component_bootstrap_account"
+		"routertest_component_bootstrap_clusterset"
+		"routertest_component_config_overwrites"
+		"routertest_component_rest_api_enable"
+		"routertest_component_routing"
+		"routertest_component_sd_notify"
+		"routertest_component_state_file"
+		"routertest_integration_routing_direct"
+		"routertest_integration_routing_reuse"
+		"routertest_integration_routing_sharing"
+		"routertest_integration_routing_sharing_constrained_pools"
+		"routertest_integration_routing_sharing_restart"
+
+		# TODO: ???
+		"pfs_host-oom"
+		"pfs_user-oom"
+		"pfs"
+	)
+
+	# Try to increase file limits to increase test coverage
+	if ! ulimit -n 16500 1>/dev/null 2>&1 ; then
+		# Upper limit comes from parts.partition_* tests
+		ewarn "For maximum test coverage, please raise open file limit to 16500 (ulimit -n 16500) before calling the package manager."
+
+		if ! ulimit -n 4162 1>/dev/null 2>&1 ; then
+			# Medium limit comes from
+			# '[Warning] Buffered warning: Could not increase number of max_open_files to more than 3000 (request: 4162)'
+			ewarn "For medium test coverage please raise open file limit to 4162 (ulimit -n 4162) before calling the package manager."
+
+			if ! ulimit -n 3000 1>/dev/null 2>&1 ; then
+				ewarn "For minimum test coverage, please raise open file limit to 3000 (ulimit -n 3000) before calling the package manager."
+			else
+				einfo "Will run test suite with open file limit set to 3000 (minimum test coverage)."
+			fi
+		else
+			einfo "Will run test suite with open file limit set to 4162 (medium test coverage)."
+		fi
+	else
+		einfo "Will run test suite with open file limit set to 16500 (best test coverage)."
+	fi
+
+	local test_failures=()
+
+	# bug #823656
+	nonfatal cmake_src_test --test-command "--gtest_death_test_style=threadsafe"
+	if [[ $? -ne 0 ]]; then
+		test_failures+=( cmake_src_test )
+	fi
+
 	# run mysql-test tests
 	# Enable force restart to ensure success when tests don't cleanup sufficiently.
 	# Anything touching gtid_executed is negatively affected if you have unlucky ordering
@@ -587,7 +603,13 @@ src_test() {
 		--retry=3 --retry-failure=2 \
 		--report-unstable-tests \
 		--report-features
-	retstatus_tests=$?
+	if [[ $? -ne 0 ]]; then
+		test_failures+=( mysql-test-run.pl )
+
+		eerror "Tests failed. When you file a bug, please attach the following items:"
+		eerror "The file that is created with this command:"
+		eerror "\t'find ${T}/var-tests -name '*.log' | tar -caf mysql-test-logs.tar.xz --files-from -'"
+	fi
 
 	if [[ "${VARDIR}" != "${T}/var-tests" ]]; then
 		# Move vardir to tempdir.
@@ -596,26 +618,21 @@ src_test() {
 		rm -rf "${VARDIR}" 2>/dev/null
 	fi
 
-	if [[ "${retstatus_tests}" -ne 0 ]]; then
-		eerror "Tests failed. When you file a bug, please attach the following items:"
-		eerror "The file that is created with this command:"
-		eerror "\t'find ${T}/var-tests -name '*.log' | tar -caf mysql-test-logs.tar.xz --files-from -'"
-	fi
-
 	popd &>/dev/null || die
 
 	# Cleanup is important for these testcases.
 	pkill -9 -f "${S}/ndb" 2>/dev/null
 	pkill -9 -f "${S}/sql" 2>/dev/null
 
-	# bug #823656
-	cmake_src_test --test-command "--gtest_death_test_style=threadsafe"
-
-	[[ "${retstatus_tests}" -ne 0 ]] && die "Test failures: mysql-test-run.pl"
-	einfo "Tests successfully completed"
+	if [[ ${#test_failures} -eq 0 ]]; then
+		einfo "Tests successfully completed"
+	else
+		die "Test failures: ${test_failures[@]}"
+	fi
 }
 
 src_install() {
+	strip-lto-bytecode
 	cmake_src_install
 
 	# Make sure the vars are correctly initialized
@@ -629,7 +646,7 @@ src_install() {
 
 	# INSTALL_LAYOUT=STANDALONE causes cmake to create a /usr/data dir
 	if [[ -d "${ED}/usr/data" ]] ; then
-		rm -rf "${ED}/usr/data" || die
+		rm -Rf "${ED}/usr/data" || die
 	fi
 
 	# Configuration stuff
@@ -640,11 +657,11 @@ src_install() {
 	eprefixify "${TMPDIR}/my.cnf"
 	doins "${TMPDIR}/my.cnf"
 	insinto "${MY_SYSCONFDIR#${EPREFIX}}/mysql.d"
-	cp "${FILESDIR}/my.cnf-8.4.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
+	cp "${FILESDIR}/my.cnf-8.0.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
 	eprefixify "${TMPDIR}/50-distro-client.cnf"
 	doins "${TMPDIR}/50-distro-client.cnf"
 
-	mycnf_src="my.cnf-8.4.distro-server"
+	mycnf_src="my.cnf-8.0.distro-server"
 	sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
 		"${FILESDIR}/${mycnf_src}" \
 		> "${TMPDIR}/my.cnf.ok" || die
@@ -654,14 +671,18 @@ src_install() {
 			"${TMPDIR}/my.cnf.ok" || die
 	fi
 
+	if use latin1 ; then
+		sed -i \
+			-e "/character-set/s|utf8mb4|latin1|g" \
+			"${TMPDIR}/my.cnf.ok" || die
+	fi
+
 	eprefixify "${TMPDIR}/my.cnf.ok"
 
 	newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
 
-	# Remove mytop if perl is not selected
-	if [[ -e "${ED}/usr/bin/mytop" ]] && ! use perl ; then
-		rm -f "${ED}/usr/bin/mytop" || die
-	fi
+	#Remove mytop if perl is not selected
+	[[ -e "${ED}/usr/bin/mytop" ]] && ! use perl && rm -f "${ED}/usr/bin/mytop"
 
 	if use router ; then
 		rm -rf \
@@ -671,6 +692,9 @@ src_install() {
 			"${ED}/usr/var" \
 			|| die
 	fi
+
+	# Kill old libmysqclient_r symlinks if they exist. Time to fix what depends on them.
+	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
 }
 
 pkg_postinst() {
@@ -700,7 +724,7 @@ pkg_postinst() {
 	else
 		einfo
 		elog "Upgrade process for ${PN}-8.x has changed. Please read"
-		elog "https://dev.mysql.com/doc/refman/8.4/en/upgrade-binary-package.html"
+		elog "https://dev.mysql.com/doc/refman/8.0/en/upgrade-binary-package.html"
 		einfo
 	fi
 }
@@ -757,7 +781,8 @@ pkg_config() {
 				fi
 			done < <(echo -n "${template}")
 
-			if [[ ! -f "${tmpfile}" ]] ; then
+			if [[ ! -f "${tmpfile}" ]]
+			then
 				echo "${tmpfile}"
 				return
 			fi
@@ -1019,7 +1044,7 @@ pkg_config() {
 	if [[ -f "${config_file}" ]] ; then
 		config_files+=( "${config_file}" )
 	else
-		ewarn "Server configuration '${config_file}' not found."
+		ewarn "Server configuration '${config_file}' not found"
 		ewarn "Skipping configuration of default authentication plugin for mysqld ..."
 	fi
 
