@@ -1,0 +1,27 @@
+Very basic tests but adding early to ensure ebuild is sorted out
+before this starts getting used in full.
+https://github.com/yt-dlp/ejs/pull/17
+--- a/test/__init__.py
++++ b/test/__init__.py
+@@ -0,0 +1 @@
++
+--- a/test/test_modules.py
++++ b/test/test_modules.py
+@@ -0,0 +1,17 @@
++import unittest
++from pathlib import Path
++
++import yt_dlp_ejs.yt.solver
++
++CORE_PATH = Path('yt_dlp_ejs/yt/solver/core.min.js')
++LIB_PATH = Path('yt_dlp_ejs/yt/solver/lib.min.js')
++
++
++class TestModules(unittest.TestCase):
++    def test_yt_solver(self):
++        self.assertEqual(yt_dlp_ejs.yt.solver.core(), CORE_PATH.read_text(encoding='utf-8'))
++        self.assertEqual(yt_dlp_ejs.yt.solver.lib(), LIB_PATH.read_text(encoding='utf-8'))
++
++
++if __name__ == '__main__':
++    unittest.main()

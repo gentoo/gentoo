@@ -12,24 +12,28 @@ HOMEPAGE="https://github.com/yt-dlp/ejs/"
 SRC_URI+=" $(pypi_wheel_url --unpack)"
 
 LICENSE="Unlicense"
-LICENSE+=" ISC MIT" # .js dependencies
+LICENSE+=" ISC MIT" # .js dependencies from the wheel
 SLOT="0"
-# in-sync with yt-dlp and always straight-to-stable like yt-dlp itself
+# bumps should typically be done straight-to-stable like yt-dlp itself
 KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
-# tests do not use python and are troublesome due to javascript, if in
-# doubt try downloading a youtube video with yt-dlp as a basic test
-RESTRICT="test"
 
 BDEPEND="
 	app-arch/unzip
 	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 "
 
+# this only tests basic python bits without javascript to avoid headaches
+distutils_enable_tests unittest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
+
 src_prepare() {
 	distutils-r1_src_prepare
 
 	# drop deno/npm calls and use the pre-generated .js from the .whl
-	# instead, this both prevent network use and ensures no hash
+	# instead, this both prevents network use and ensures no hash
 	# mismatch given yt-dlp checks the sha512sum of the .js files
 	# (makes generating our own meaningless given can't be patched)
 	sed -i '/wheel.hooks.custom/d' pyproject.toml || die
