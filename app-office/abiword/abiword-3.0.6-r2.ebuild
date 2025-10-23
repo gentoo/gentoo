@@ -35,6 +35,7 @@ RDEPEND="
 	>=dev-libs/fribidi-0.10.4
 	>=dev-libs/glib-2.16:2
 	>=dev-libs/libgcrypt-1.4.5:0=
+	>=dev-libs/libxml2-2.4:2=
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.16:2
 	>=gnome-extra/libgsf-1.14.18:=
@@ -52,7 +53,6 @@ RDEPEND="
 	map? ( >=media-libs/libchamplain-0.12:0.12[gtk] )
 	plugins? (
 		collab? (
-			>=dev-libs/libxml2-2.4:2=
 			>=net-libs/loudmouth-1
 			net-libs/libsoup:2.4
 			net-libs/gnutls:=
