@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.0-musl-compat.patch
 	"${FILESDIR}"/${PN}-4.20.0-libdir.patch
 	"${FILESDIR}"/${PN}-6.0.0-no-hardened.patch
+	"${FILESDIR}"/${PN}-6.0.0-fix-build-without-sequoia.patch
 )
 
 pkg_pretend() {
