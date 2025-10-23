@@ -1,0 +1,20 @@
+--- a/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake
++++ b/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake
+@@ -194,6 +194,7 @@
+ 		APPEND_SUMMARY_LIST("Audio Device" "PulseAudioS" "${USE_PULSE_SIMPLE}")
+ ]]
+     OPTION(PULSEAUDIO "" ON)
++    IF (PULSEAUDIO)
+     MESSAGE(STATUS "Checking for PulseAudio")
+     include(FindPkgConfig)
+     pkg_check_modules(PULSEAUDIO libpulse)
+@@ -203,6 +203,9 @@
+     ELSE()
+         MESSAGE(STATUS "Could not find PulseAudio")
+     ENDIF()
++    ELSE (PULSEAUDIO)
++	MESSAGE("${MSG_DISABLE_OPTION}")
++    ENDIF (PULSEAUDIO)
+     APPEND_SUMMARY_LIST("Audio Device" "PulseAudio" "${USE_PULSE}")
+ ELSE()
+ 	SET(PULSEAUDIOSIMPLE_CAPABLE FALSE)
