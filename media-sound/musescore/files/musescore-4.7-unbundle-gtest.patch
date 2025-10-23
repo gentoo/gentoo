@@ -51,10 +51,11 @@ unbundle gmock/gtest
      # end compat
  
      ${MODULE_TEST_INCLUDE}
-@@ -74,11 +69,15 @@ endif()
+@@ -74,11 +69,16 @@ endif()
  
  find_package(Qt6Core REQUIRED)
  find_package(Qt6Gui REQUIRED)
++find_package(PkgConfig REQUIRED)
 +pkg_check_modules(gtest REQUIRED IMPORTED_TARGET gtest)
 +pkg_check_modules(gmock REQUIRED IMPORTED_TARGET gmock)
 +list(APPEND MODULE_TEST_INCLUDE ${gtest_INCLUDE_DIRS} ${gmock_INCLUDE_DIRS})
