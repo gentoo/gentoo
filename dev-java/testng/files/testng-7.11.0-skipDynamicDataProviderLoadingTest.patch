@@ -1,0 +1,25 @@
+197 [main] ERROR org.testng.TestNG -
+Cannot find class in classpath: org.testng.dataprovider.DynamicDataProviderLoadingTest
+
+The error occurs because we had to delete that class as is also described in the src_test() phase.
+
+# import org.netbeans.lib.profiler.heap.HeapFactory2 # error: unresolved reference 'HeapFactory2'
+# Tried with 'org-netbeans-lib-profiler-2.2.0.jar' which contains 'HeapFactory' but not 'HeapFactory2'.
+rm testng-core/src/test/kotlin/org/testng/dataprovider/DynamicDataProviderLoadingTest.kt || die
+# With a patch we also remove it from testng-core/src/test/resources/testng.xml
+
+# Removing the above file leads to:
+# import org.testng.dataprovider.DynamicDataProviderLoadingTest
+# error: unresolved reference 'DynamicDataProviderLoadingTest'.
+rm testng-core/src/test/kotlin/org/testng/dataprovider/sample/issue2724/SampleDPUnloaded.kt || die
+
+--- a/testng-core/src/test/resources/testng.xml
++++ b/testng-core/src/test/resources/testng.xml
+@@ -971,7 +971,6 @@
+   <test name="Kotlin">
+     <classes>
+       <class name="org.testng.BasicTest"/>
+-      <class name="org.testng.dataprovider.DynamicDataProviderLoadingTest" />
+     </classes>
+   </test>
+ </suite>
