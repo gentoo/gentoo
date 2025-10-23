@@ -14,7 +14,7 @@
 			debugger in <pkg>media-gfx/fontforge</pkg> (built with
 			USE=truetype-debugger)</flag>
 		<flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> for auto-hinting
-			OpenType fonts. WARNING: may trigger circular dependencies!</flag>
+			OpenType fonts.</flag>
 		<flag name="utils">Install utilities and examples from ft2demos</flag>
 	</use>
 	<upstream>
