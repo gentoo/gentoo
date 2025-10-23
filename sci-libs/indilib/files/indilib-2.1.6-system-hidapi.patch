@@ -1,0 +1,370 @@
+From 3fe3a66ff3f89a5412f044fe098725b0437c3552 Mon Sep 17 00:00:00 2001
+From: Mattia Verga <mattia.verga@tiscali.it>
+Date: Mon, 13 Oct 2025 19:27:50 +0200
+Subject: [PATCH] Allow using hidapi from system (#2272)
+
+Signed-off-by: Mattia Verga <mattia.verga@tiscali.it>
+---
+ CMakeLists.txt                        | 17 ++++++++++++++++-
+ drivers/focuser/CMakeLists.txt        | 12 ++++++------
+ drivers/focuser/activefocuser.h       |  8 +++++++-
+ drivers/focuser/activefocuser_utils.h | 10 ++++++++--
+ drivers/focuser/fcusb.h               |  8 +++++++-
+ drivers/focuser/hitecastrodcfocuser.h |  7 ++++++-
+ drivers/focuser/perfectstar.h         |  7 ++++++-
+ drivers/focuser/si_efs.h              |  7 ++++++-
+ libs/hid/CMakeLists.txt               |  6 +++---
+ libs/hid/hid_libusb.c                 |  2 +-
+ libs/hid/hid_mac.c                    |  2 +-
+ libs/hid/hid_win.c                    |  2 +-
+ libs/hid/hidtest.cpp                  |  2 +-
+ libs/hid/{hidapi.h => indi_hidapi.h}  |  0
+ libs/indibase/CMakeLists.txt          |  7 ++++++-
+ obsolete/focusmaster.h                |  8 +++++++-
+ 16 files changed, 82 insertions(+), 23 deletions(-)
+ rename libs/hid/{hidapi.h => indi_hidapi.h} (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e36fe1334d..0e84420db7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -102,6 +102,7 @@ OPTION(INDI_BUILD_EXAMPLES "Build INDI examples" ON)
+ OPTION(INDI_INSTALL_UDEV_RULES "Install INDI udev rules" ON)
+ 
+ # System provided or bundled libs
++OPTION(INDI_SYSTEM_HIDAPILIB "Use system provided hidapilib" OFF)
+ OPTION(INDI_SYSTEM_HTTPLIB "Use system provided httplib" OFF)
+ OPTION(INDI_SYSTEM_JSONLIB "Use system provided json library" OFF)
+ 
+@@ -177,6 +178,18 @@ install(FILES
+ # ##################################################################################################
+ # ####################################  bundled libs  ##############################################
+ # ##################################################################################################
++if(INDI_SYSTEM_HIDAPILIB)
++    find_package(hidapi REQUIRED)
++    set(SYSTEM_HIDAPILIB 1)
++    set(HIDAPILIB hidapi::libusb)
++    add_definitions(-D_USE_SYSTEM_HIDAPILIB)
++    message(STATUS "Using system provided hidapilib version ${hidapi_VERSION_STR}")
++else()
++    set(SYSTEM_HIDAPILIB 0)
++    set(HIDAPILIB "")
++    message(STATUS "Using bundled hidapi")
++endif(INDI_SYSTEM_HIDAPILIB)
++
+ if(INDI_SYSTEM_HTTPLIB)
+     find_package(httplib REQUIRED)
+     include_directories(${HTTPLIB_INCLUDE_DIR})
+@@ -322,7 +335,9 @@ if(INDI_BUILD_DRIVERS OR INDI_BUILD_COMMON)
+         add_subdirectory(libs/eventloop)
+         add_subdirectory(libs/dsp)
+         add_subdirectory(libs/fpack)
+-        add_subdirectory(libs/hid)
++        if(NOT SYSTEM_HIDAPILIB)
++            add_subdirectory(libs/hid)
++        endif(NOT SYSTEM_HIDAPILIB)
+ 
+         # #################################################
+         # ########## INDI Driver Library ##################
+diff --git a/drivers/focuser/CMakeLists.txt b/drivers/focuser/CMakeLists.txt
+index 6ebe06711d..b8d4a9f522 100644
+--- a/drivers/focuser/CMakeLists.txt
++++ b/drivers/focuser/CMakeLists.txt
+@@ -29,7 +29,7 @@ SET(fcusb_SRC
+     fcusb.cpp)
+ 
+ add_executable(indi_fcusb_focus ${fcusb_SRC})
+-target_link_libraries(indi_fcusb_focus indidriver)
++target_link_libraries(indi_fcusb_focus indidriver ${HIDAPILIB})
+ install(TARGETS indi_fcusb_focus RUNTIME DESTINATION bin)
+ 
+ # ############### Rigelsys NFocus Focuser ################
+@@ -180,7 +180,7 @@ install(TARGETS indi_esattoarco_focus RUNTIME DESTINATION bin)
+ # focusmaster.cpp)
+ 
+ # add_executable(indi_focusmaster_focus ${focusmaster_SRC})
+-# target_link_libraries(indi_focusmaster_focus indidriver)
++# target_link_libraries(indi_focusmaster_focus indidriver ${HIDAPILIB})
+ # install(TARGETS indi_focusmaster_focus RUNTIME DESTINATION bin)
+ 
+ # ############### RainbowAstro RSF Focuser ################
+@@ -310,7 +310,7 @@ SET(perfectstar_SRC
+     perfectstar.cpp)
+ 
+ add_executable(indi_perfectstar_focus ${perfectstar_SRC})
+-target_link_libraries(indi_perfectstar_focus indidriver)
++target_link_libraries(indi_perfectstar_focus indidriver ${HIDAPILIB})
+ install(TARGETS indi_perfectstar_focus RUNTIME DESTINATION bin)
+ 
+ # ############### Starlight Instruments EFS ################
+@@ -318,7 +318,7 @@ SET(siefs_SRC
+     si_efs.cpp)
+ 
+ add_executable(indi_siefs_focus ${siefs_SRC})
+-target_link_libraries(indi_siefs_focus indidriver)
++target_link_libraries(indi_siefs_focus indidriver ${HIDAPILIB})
+ install(TARGETS indi_siefs_focus RUNTIME DESTINATION bin)
+ 
+ # ############### hitechfocus Focuser ################
+@@ -326,7 +326,7 @@ SET(hitecastrodcfocuser_SRC
+     hitecastrodcfocuser.cpp)
+ 
+ add_executable(indi_hitecastrodc_focus ${hitecastrodcfocuser_SRC})
+-target_link_libraries(indi_hitecastrodc_focus indidriver)
++target_link_libraries(indi_hitecastrodc_focus indidriver ${HIDAPILIB})
+ install(TARGETS indi_hitecastrodc_focus RUNTIME DESTINATION bin)
+ 
+ # ############### DeepSky Dad AF1 ################
+@@ -398,5 +398,5 @@ SET(activefocuser_SRC
+ 
+ add_executable(indi_activefocuser_focus ${activefocuser_SRC})
+ 
+-target_link_libraries(indi_activefocuser_focus indidriver)
++target_link_libraries(indi_activefocuser_focus indidriver ${HIDAPILIB})
+ install(TARGETS indi_activefocuser_focus RUNTIME DESTINATION bin)
+diff --git a/drivers/focuser/activefocuser.h b/drivers/focuser/activefocuser.h
+index 8ace38e3b0..44c9ffa23f 100644
+--- a/drivers/focuser/activefocuser.h
++++ b/drivers/focuser/activefocuser.h
+@@ -20,7 +20,13 @@
+ #include <cstring>
+ #include <sstream>
+ #include <unistd.h>
+-#include "hidapi.h"
++
++#ifdef _USE_SYSTEM_HIDAPILIB
++#include <hidapi/hidapi.h>
++#else
++#include <indi_hidapi.h>
++#endif
++
+ #include "indifocuser.h"
+ 
+ class ActiveFocuser : public INDI::Focuser
+diff --git a/drivers/focuser/activefocuser_utils.h b/drivers/focuser/activefocuser_utils.h
+index ffbc420fa7..adf1ec7a65 100644
+--- a/drivers/focuser/activefocuser_utils.h
++++ b/drivers/focuser/activefocuser_utils.h
+@@ -23,7 +23,13 @@
+ 
+ #include <map>
+ #include <string>
+-#include <hidapi.h>
++
++#ifdef _USE_SYSTEM_HIDAPILIB
++#include <hidapi/hidapi.h>
++#else
++#include <indi_hidapi.h>
++#endif
++
+ #include <mutex>
+ #include <future>
+ #include <cstring>
+@@ -130,4 +136,4 @@ class ActiveFocuserUtils
+         ~ActiveFocuserUtils() = delete;
+         void operator=(const ActiveFocuserUtils &) = delete;
+ 
+-};
+\ No newline at end of file
++};
+diff --git a/drivers/focuser/fcusb.h b/drivers/focuser/fcusb.h
+index ade3f91cd8..27d62a2006 100644
+--- a/drivers/focuser/fcusb.h
++++ b/drivers/focuser/fcusb.h
+@@ -21,7 +21,13 @@
+ #pragma once
+ 
+ #include "indifocuser.h"
+-#include "hidapi.h"
++
++#ifdef _USE_SYSTEM_HIDAPILIB
++#include <hidapi/hidapi.h>
++#else
++#include <indi_hidapi.h>
++#endif
++
+ 
+ #include <map>
+ 
+diff --git a/drivers/focuser/hitecastrodcfocuser.h b/drivers/focuser/hitecastrodcfocuser.h
+index 7d0ad0ff3a..7dcb6f3b05 100644
+--- a/drivers/focuser/hitecastrodcfocuser.h
++++ b/drivers/focuser/hitecastrodcfocuser.h
+@@ -20,7 +20,12 @@
+ 
+ #pragma once
+ 
+-#include "hidapi.h"
++#ifdef _USE_SYSTEM_HIDAPILIB
++#include <hidapi/hidapi.h>
++#else
++#include <indi_hidapi.h>
++#endif
++
+ #include "indifocuser.h"
+ #include "indiusbdevice.h"
+ 
+diff --git a/drivers/focuser/perfectstar.h b/drivers/focuser/perfectstar.h
+index 17c3e78e58..80e99dc6df 100644
+--- a/drivers/focuser/perfectstar.h
++++ b/drivers/focuser/perfectstar.h
+@@ -21,7 +21,12 @@
+ #pragma once
+ 
+ #include "indifocuser.h"
+-#include "hidapi.h"
++
++#ifdef _USE_SYSTEM_HIDAPILIB
++#include <hidapi/hidapi.h>
++#else
++#include <indi_hidapi.h>
++#endif
+ 
+ class PerfectStar : public INDI::Focuser
+ {
+diff --git a/drivers/focuser/si_efs.h b/drivers/focuser/si_efs.h
+index 52990d81d7..8477139e03 100644
+--- a/drivers/focuser/si_efs.h
++++ b/drivers/focuser/si_efs.h
+@@ -21,7 +21,12 @@
+ #pragma once
+ 
+ #include "indifocuser.h"
+-#include "hidapi.h"
++
++#ifdef _USE_SYSTEM_HIDAPILIB
++#include <hidapi/hidapi.h>
++#else
++#include <indi_hidapi.h>
++#endif
+ 
+ #include <map>
+ 
+diff --git a/libs/hid/CMakeLists.txt b/libs/hid/CMakeLists.txt
+index a663b91ca2..3bfec800e4 100644
+--- a/libs/hid/CMakeLists.txt
++++ b/libs/hid/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ cmake_minimum_required(VERSION 3.18)
+-project(hid C)
++project(indi_hid C)
+ if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.31)
+     cmake_policy(SET CMP0177 NEW)
+ endif()
+@@ -8,7 +8,7 @@ add_library(${PROJECT_NAME} OBJECT "")
+ 
+ # Headers
+ list(APPEND ${PROJECT_NAME}_HEADERS
+-    hidapi.h
++    indi_hidapi.h
+ )
+ 
+ list(APPEND ${PROJECT_NAME}_PRIVATE_HEADERS
+@@ -51,5 +51,5 @@ elseif(CYGWIN OR UNIX)
+ endif()
+ 
+ add_executable(indi_hid_test hidtest.cpp)
+-target_link_libraries(indi_hid_test hid ${USB1_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${LIBS})
++target_link_libraries(indi_hid_test indi_hid ${USB1_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${LIBS})
+ install(TARGETS indi_hid_test RUNTIME DESTINATION bin)
+diff --git a/libs/hid/hid_libusb.c b/libs/hid/hid_libusb.c
+index 527168f0f9..06a632334b 100644
+--- a/libs/hid/hid_libusb.c
++++ b/libs/hid/hid_libusb.c
+@@ -33,7 +33,7 @@
+ 
+ #define _GNU_SOURCE // needed for wcsdup() before glibc 2.10
+ 
+-#include "hidapi.h"
++#include "indi_hidapi.h"
+ #include "locale_compat.h"
+ 
+ /* GNU / LibUSB */
+diff --git a/libs/hid/hid_mac.c b/libs/hid/hid_mac.c
+index e752334ce1..25e0c09883 100644
+--- a/libs/hid/hid_mac.c
++++ b/libs/hid/hid_mac.c
+@@ -29,7 +29,7 @@
+ 
+ /* See Apple Technical Note TN2187 for details on IOHidManager. */
+ 
+-#include "hidapi.h"
++#include "indi_hidapi.h"
+ 
+ #include <IOKit/hid/IOHIDManager.h>
+ #include <IOKit/hid/IOHIDKeys.h>
+diff --git a/libs/hid/hid_win.c b/libs/hid/hid_win.c
+index 0d214444c5..f70ede8599 100644
+--- a/libs/hid/hid_win.c
++++ b/libs/hid/hid_win.c
+@@ -65,7 +65,7 @@ extern "C" {
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include "hidapi.h"
++#include "indi_hidapi.h"
+ 
+ #ifdef _MSC_VER
+ // Thanks Microsoft, but I know how to use strncpy().
+diff --git a/libs/hid/hidtest.cpp b/libs/hid/hidtest.cpp
+index fe110329aa..2992bb7cb0 100644
+--- a/libs/hid/hidtest.cpp
++++ b/libs/hid/hidtest.cpp
+@@ -18,7 +18,7 @@
+ #include <wchar.h>
+ #include <string.h>
+ #include <stdlib.h>
+-#include "hidapi.h"
++#include "indi_hidapi.h"
+ 
+ // Headers needed for sleeping.
+ #ifdef _WIN32
+diff --git a/libs/hid/hidapi.h b/libs/hid/indi_hidapi.h
+similarity index 100%
+rename from libs/hid/hidapi.h
+rename to libs/hid/indi_hidapi.h
+diff --git a/libs/indibase/CMakeLists.txt b/libs/indibase/CMakeLists.txt
+index f1a6e5d147..db1cc3a52c 100644
+--- a/libs/indibase/CMakeLists.txt
++++ b/libs/indibase/CMakeLists.txt
+@@ -18,8 +18,8 @@ list(APPEND ${PROJECT_NAME}_LIBS
+     eventloop
+     dsp
+     fpack
+-    hid
+     AlignmentDriver
++    ${HIDAPILIB}
+     ${USB1_LIBRARIES}
+     ${NOVA_LIBRARIES}
+     ${CMAKE_THREAD_LIBS_INIT}
+@@ -31,6 +31,11 @@ list(APPEND ${PROJECT_NAME}_LIBS
+     ${CURL}
+ )
+ 
++# When bundled hid library is used
++if(NOT SYSTEM_HIDAPILIB)
++    list(APPEND ${PROJECT_NAME}_LIBS indi_hid)
++endif()
++
+ # Add Iconv - FreeBSD/OpenBSD need to find the correct GNU iconv library.
+ if(CYGWIN OR UNIX OR (CMAKE_SYSTEM_NAME MATCHES "FreeBSD|OpenBSD"))
+     find_package(Iconv REQUIRED)
+diff --git a/obsolete/focusmaster.h b/obsolete/focusmaster.h
+index 68cdce9266..2756ea13f7 100644
+--- a/obsolete/focusmaster.h
++++ b/obsolete/focusmaster.h
+@@ -21,7 +21,13 @@
+ #pragma once
+ 
+ #include "indifocuser.h"
+-#include "hidapi.h"
++
++#ifdef _USE_SYSTEM_HIDAPILIB
++#include <hidapi/hidapi.h>
++#else
++#include <indi_hidapi.h>
++#endif
++
+ 
+ class FocusMaster : public INDI::Focuser
+ {

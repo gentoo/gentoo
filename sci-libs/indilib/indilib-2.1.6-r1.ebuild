@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-cpp/cpp-httplib:=
 	dev-cpp/nlohmann_json
+	dev-libs/hidapi
 	dev-libs/libev
 	media-libs/libjpeg-turbo:=
 	net-misc/curl
@@ -40,8 +41,11 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-system-hidapi.patch" ) # git master
+
 src_configure() {
 	local mycmakeargs=(
+		-DINDI_SYSTEM_HIDAPILIB=ON
 		-DINDI_SYSTEM_HTTPLIB=ON
 		-DINDI_SYSTEM_JSONLIB=ON
 		-DINDI_BUILD_QT5_CLIENT=OFF
