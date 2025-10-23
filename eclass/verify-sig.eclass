@@ -58,7 +58,7 @@ IUSE="verify-sig"
 # Signature verification method to use.  The allowed value are:
 #
 #  - minisig -- verify signatures with (base64) Ed25519 public key using app-crypt/minisign
-#  - openpgp -- verify PGP signatures using app-crypt/gnupg (the default)
+#  - openpgp -- verify PGP signatures using app-alternatives/gpg (the default)
 #  - sigstore -- verify signatures using dev-python/sigstore
 #  - signify -- verify signatures with Ed25519 public key using app-crypt/signify
 : "${VERIFY_SIG_METHOD:=openpgp}"
@@ -70,7 +70,7 @@ case ${VERIFY_SIG_METHOD} in
 	openpgp)
 		BDEPEND="
 			verify-sig? (
-				app-crypt/gnupg
+				app-alternatives/gpg
 				>=app-portage/gemato-20
 			)
 		"
