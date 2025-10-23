@@ -16,7 +16,7 @@ S="${WORKDIR}/jsch-agent-proxy-${MY_COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 CP_DEPEND="
 	>=dev-java/jna-5.17.0:0
