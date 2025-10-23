@@ -1,0 +1,101 @@
+From 99797714c2699a3e010eae5a9176d9c137a7666c Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Sun, 29 Jun 2025 15:45:18 +0200
+Subject: [PATCH 1/3] cuda fix crappy memory handling
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/libvmaf/src/cuda/picture_cuda.c b/libvmaf/src/cuda/picture_cuda.c
+index f615b9d..65510a4 100644
+--- a/libvmaf/src/cuda/picture_cuda.c
++++ b/libvmaf/src/cuda/picture_cuda.c
+@@ -22,6 +22,7 @@
+ #include "picture_cuda.h"
+ #include "common.h"
+ #include "log.h"
++#include "ref.h"
+ 
+ #include <cuda.h>
+ #include <errno.h>
+@@ -41,7 +42,7 @@ int vmaf_cuda_picture_download_async(VmafPicture *cuda_pic, VmafPicture *pic,
+ 
+     VmafPicturePrivate *cuda_priv = cuda_pic->priv;
+     for (int i = 0; i < 3; i++) {
+-        m.srcDevice = cuda_pic->data[i];
++        m.srcDevice = (CUdeviceptr)cuda_pic->data[i];
+         m.srcPitch = cuda_pic->stride[i];
+         m.dstHost = pic->data[i];
+         m.dstPitch = pic->stride[i];
+@@ -68,7 +69,7 @@ int vmaf_cuda_picture_upload_async(VmafPicture *cuda_pic,
+     for (int i = 0; i < 3; i++) {
+         m.srcHost = pic->data[i];
+         m.srcPitch = pic->stride[i];
+-        m.dstDevice = cuda_pic->data[i];
++        m.dstDevice = (CUdeviceptr)cuda_pic->data[i];
+         m.dstPitch = cuda_pic->stride[i];
+         m.WidthInBytes = cuda_pic->w[i] * ((pic->bpc + 7) / 8);
+         m.Height = cuda_pic->h[i];
+@@ -223,7 +224,7 @@ int vmaf_cuda_picture_free(VmafPicture *pic, void *cookie)
+ 
+     for (int i = 0; i < 3; i++) {
+ 	    if (pic->data[i])
+-		    CHECK_CUDA(cuMemFreeAsync(pic->data[i], priv->cuda.str));
++		    CHECK_CUDA(cuMemFreeAsync((CUdeviceptr)pic->data[i], priv->cuda.str));
+     }
+ 
+     CHECK_CUDA(cuEventDestroy(priv->cuda.finished));
+diff --git a/libvmaf/src/feature/cuda/integer_vif_cuda.c b/libvmaf/src/feature/cuda/integer_vif_cuda.c
+index fcf68f4..a0a951c 100644
+--- a/libvmaf/src/feature/cuda/integer_vif_cuda.c
++++ b/libvmaf/src/feature/cuda/integer_vif_cuda.c
+@@ -157,29 +157,31 @@ static int init_fex_cuda(VmafFeatureExtractor *fex, enum VmafPixelFormat pix_fmt
+     ret = vmaf_cuda_buffer_get_dptr(s->buf.data, &data);
+     if (ret) goto free_ref;
+ 
++    // BUG BUG BUG THIS IS NOT HOW YOU PARSE MEMORY
++    // BUG BUG BUG THIS IS BRAINROT
+     s->buf.ref = data; data += frame_size;
+     s->buf.dis = data; data += frame_size;
+-    s->buf.mu1 = data; data += h * s->buf.stride_16;
+-    s->buf.mu2 = data; data += h * s->buf.stride_16;
+-    s->buf.mu1_32 = data; data += h * s->buf.stride_32;
+-    s->buf.mu2_32 = data; data += h * s->buf.stride_32;
+-    s->buf.ref_sq = data; data += h * s->buf.stride_32;
+-    s->buf.dis_sq = data; data += h * s->buf.stride_32;
+-    s->buf.ref_dis = data; data += h * s->buf.stride_32;
+-    s->buf.tmp.mu1 = data; data += s->buf.stride_tmp * h;
+-    s->buf.tmp.mu2 = data; data += s->buf.stride_tmp * h;
+-    s->buf.tmp.ref = data; data += s->buf.stride_tmp * h;
+-    s->buf.tmp.dis = data; data += s->buf.stride_tmp * h;
+-    s->buf.tmp.ref_dis = data; data += s->buf.stride_tmp * h;
+-    s->buf.tmp.ref_convol = data; data += s->buf.stride_tmp  * h;
+-    s->buf.tmp.dis_convol = data; data += s->buf.stride_tmp  * h;
+-    s->buf.tmp.padding = data; data += s->buf.stride_tmp  * h;
++    s->buf.mu1 = (uint16_t*)data; data += h * s->buf.stride_16;
++    s->buf.mu2 = (uint16_t*)data; data += h * s->buf.stride_16;
++    s->buf.mu1_32 = (uint32_t*)data; data += h * s->buf.stride_32;
++    s->buf.mu2_32 = (uint32_t*)data; data += h * s->buf.stride_32;
++    s->buf.ref_sq = (uint32_t*)data; data += h * s->buf.stride_32;
++    s->buf.dis_sq = (uint32_t*)data; data += h * s->buf.stride_32;
++    s->buf.ref_dis = (uint32_t*)data; data += h * s->buf.stride_32;
++    s->buf.tmp.mu1 = (uint32_t*)data; data += s->buf.stride_tmp * h;
++    s->buf.tmp.mu2 = (uint32_t*)data; data += s->buf.stride_tmp * h;
++    s->buf.tmp.ref = (uint32_t*)data; data += s->buf.stride_tmp * h;
++    s->buf.tmp.dis = (uint32_t*)data; data += s->buf.stride_tmp * h;
++    s->buf.tmp.ref_dis = (uint32_t*)data; data += s->buf.stride_tmp * h;
++    s->buf.tmp.ref_convol = (uint32_t*)data; data += s->buf.stride_tmp  * h;
++    s->buf.tmp.dis_convol = (uint32_t*)data; data += s->buf.stride_tmp  * h;
++    s->buf.tmp.padding = (uint32_t*)data; data += s->buf.stride_tmp  * h;
+ 
+     CUdeviceptr data_accum;
+     ret = vmaf_cuda_buffer_get_dptr(s->buf.accum_data, &data_accum);
+     if (ret) goto free_ref;
+ 
+-    s->buf.accum = data_accum;
++    s->buf.accum = (int64_t*)data_accum;
+ 
+     s->buf.cpu_param_buf = malloc(sizeof(write_score_parameters_vif));
+     write_score_parameters_vif *data_p = s->buf.cpu_param_buf;
+-- 
+2.50.0
+
