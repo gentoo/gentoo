@@ -25,7 +25,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="doc +iso qcow2"
+IUSE="doc +iso"
 
 BDEPEND="
 	app-text/asciidoc
@@ -72,22 +72,12 @@ RDEPEND="
 			sys-boot/grub[grub_platforms_efi-32]
 		)
 	)
-
-	qcow2? (
-		amd64? (
-			sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64]
-			sys-fs/dosfstools
-			sys-fs/xfsprogs
-			sys-block/parted
-			app-emulation/qemu
-		)
-	)
 "
 
 pkg_setup() {
 	CONFIG_CHECK="
 		~UTS_NS ~IPC_NS
-		~SQUASHFS ~SQUASHFS_ZLIB ~XFS_FS ~VFAT_FS
+		~SQUASHFS ~SQUASHFS_ZLIB
 	"
 	linux-info_pkg_setup
 }
