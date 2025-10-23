@@ -226,10 +226,6 @@ net-misc/grive
 # Bugs #952796, #957240. Removal on 2025-10-29.
 sys-auth/google-authenticator-wrappers
 
-# Jason A. Donenfeld <zx2c4@gentoo.org> (2025-09-30)
-# Upstream is dead, package is broken. Removal on 2025-10-29.
-net-analyzer/speedtest++
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
 # Unmaintained in ::gentoo, EAPI-7 based, almost no one else is left
 # packaging this. Removal on 2025-10-29.
