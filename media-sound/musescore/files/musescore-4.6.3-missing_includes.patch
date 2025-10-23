@@ -1,0 +1,86 @@
+backported from master
+https://github.com/musescore/MuseScore/pull/30365.patch
+https://github.com/musescore/MuseScore/pull/30397.patch
+--- a/src/framework/audio/driver/platform/jack/audiodeviceslistener.h
++++ b/src/framework/audio/driver/platform/jack/audiodeviceslistener.h
+@@ -27,7 +27,7 @@
+ #include <condition_variable>
+ 
+ #include "async/notification.h"
+-#include "audiotypes.h"
++#include "audio/common/audiotypes.h"
+ 
+ namespace muse::audio {
+ class AudioDevicesListener
+--- a/src/framework/ui/view/qmldrag.h
++++ b/src/framework/ui/view/qmldrag.h
+@@ -23,6 +23,7 @@
+ 
+ #include <QObject>
+ #include <QQmlEngine>
++#include <QQuickItem>
+ 
+ #include "global/modularity/ioc.h"
+ #include "../idragcontroller.h"
+--- a/src/framework/ui/view/windowsmodel.cpp
++++ b/src/framework/ui/view/windowsmodel.cpp
+@@ -22,6 +22,8 @@
+ 
+ #include "windowsmodel.h"
+ 
++#include <QRect>
++
+ using namespace muse::ui;
+ 
+ WindowsModel::WindowsModel(QObject* parent)
+--- a/src/importexport/midi/internal/midiimport/importmidi_instrument.h
++++ b/src/importexport/midi/internal/midiimport/importmidi_instrument.h
+@@ -21,6 +21,8 @@
+  */
+ #pragma once
+ 
++#include <QList>
++
+ #include "internal/midishared/generalmidi.h"
+ 
+ class QString;
+--- a/src/notation/view/abstractnotationpaintview.cpp
++++ b/src/notation/view/abstractnotationpaintview.cpp
+@@ -21,6 +21,7 @@
+  */
+ #include "abstractnotationpaintview.h"
+ 
++#include <QCursor>
+ #include <QPainter>
+ #include <QMimeData>
+ 
+--- a/src/palette/view/widgets/palettewidget.cpp
++++ b/src/palette/view/widgets/palettewidget.cpp
+@@ -35,6 +35,7 @@
+ #include <QMimeData>
+ #include <QResizeEvent>
+ #include <QToolTip>
++#include <QWindow>
+ 
+ #include "translation.h"
+ #include "types/bytearray.h"
+--- a/thirdparty/rtf2html/rtf_table.cpp
++++ b/thirdparty/rtf2html/rtf_table.cpp
+@@ -5,6 +5,7 @@
+ #include <stdexcept>
+ #include <functional>
+ #include <algorithm>
++#include <tgmath.h>
+ 
+ typedef std::set<int> intset;
+ 
+--- a/thirdparty/rtf2html/rtf_table.h
++++ b/thirdparty/rtf2html/rtf_table.h
+@@ -6,6 +6,7 @@
+    #include <stdio.h> // Just to make debug version of STLPort work under BC
+ #endif
+ #include "common.h"
++#include <string>
+ #include <vector>
+ #include <cmath>
+ #include <list>
