@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
+PYPI_VERIFY_REPO=https://github.com/crate-py/rpds
 PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 CRATES="
@@ -55,7 +56,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/rpds/rpds.*.so"
 
-export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
-
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+src_unpack() {
+	pypi_src_unpack
+	cargo_src_unpack
+}
