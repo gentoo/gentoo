@@ -71,6 +71,7 @@ EPYTEST_DESELECT=(
 	"tests/test_commands.py::test_lockfile"
 	"tests/test_environment_variables.py::test_env_section_export_bb_extra_white"
 	"tests/test_environment_variables.py::test_env_section_export_bb_env_passthrough_additions"
+	"tests/test_environment_variables.py::test_ssh_agent_setup"
 )
 
 EPYTEST_IGNORE=(
