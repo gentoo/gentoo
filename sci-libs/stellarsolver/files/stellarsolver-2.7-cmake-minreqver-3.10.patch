@@ -1,0 +1,32 @@
+Source: https://github.com/rlancaste/stellarsolver/pull/168
+
+From 06bfa26fd4831ee178415ea54eabfa8edf422aaf Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 23 Oct 2025 10:57:14 +0200
+Subject: [PATCH] Raise CMake minimum to 3.10
+
+CMake >=3.31 warns about compat. for <3.10 being removed in the future.
+
+CMake Policies changed up to 3.10:
+https://cmake.org/cmake/help/latest/manual/cmake-policies.7.html#policies-introduced-by-cmake-3-10
+
+CMake 3.10 was released in 2017.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 29b2942..03ea518 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ PROJECT(StellarSolver C CXX)
+ set(CMAKE_CXX_STANDARD 17)
+ if(APPLE)
+-- 
+2.51.1
+

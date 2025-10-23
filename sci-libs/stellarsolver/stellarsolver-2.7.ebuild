@@ -22,7 +22,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-file-descriptor-leak.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-file-descriptor-leak.patch" # git master
+	"${FILESDIR}/${P}-cmake-minreqver-3.10.patch" # bug #965002
+)
 
 src_configure() {
 	# bug #862930
