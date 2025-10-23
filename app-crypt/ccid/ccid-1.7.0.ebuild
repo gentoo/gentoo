@@ -3,44 +3,37 @@
 
 EAPI=8
 
-inherit autotools udev
+inherit meson udev
 
 DESCRIPTION="CCID free software driver"
 HOMEPAGE="https://ccid.apdu.fr https://github.com/LudovicRousseau/CCID"
-SRC_URI="https://ccid.apdu.fr/files/${P}.tar.bz2"
+SRC_URI="https://ccid.apdu.fr/files/${P}.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1+ LGPL-2+ GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
-IUSE="twinserial +usb"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="twinserial"
 
 RDEPEND="
-	>=sys-apps/pcsc-lite-1.8.3
-	twinserial? ( dev-lang/perl )
-	usb? ( virtual/libusb:1 )
+	sys-apps/pcsc-lite
+	virtual/libusb:1
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-remove-flex-configure-dependency.patch
-)
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
+BDEPEND="
+	app-alternatives/lex
+	dev-lang/perl
+	virtual/pkgconfig"
 
 src_configure() {
-	econf \
-		LEX=: \
-		$(use_enable twinserial) \
-		$(use_enable usb libusb)
+	local emesonargs=(
+		-Dudev-rules=false
+		$(meson_use twinserial serial)
+	)
+	meson_src_configure
 }
 
 src_install() {
-	default
+	meson_src_install
 	udev_newrules src/92_pcscd_ccid.rules 92-pcsc-ccid.rules
 }
 
