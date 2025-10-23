@@ -1,0 +1,64 @@
+Issue: https://github.com/ksnip/kImageAnnotator/issues/326
+Source: https://github.com/ksnip/kImageAnnotator/pull/339
+
+From 74a85ecc256e9404f764ee7394301813d0af53c2 Mon Sep 17 00:00:00 2001
+From: Dashon Wells <sparky123558wify@pm.me>
+Date: Sun, 24 Mar 2024 15:11:21 -0500
+Subject: [PATCH] Revert custom scaling for kde
+
+---
+ src/common/provider/ScaledSizeProvider.cpp | 17 ++++++++++-------
+ src/common/provider/ScaledSizeProvider.h   |  4 ++++
+ 2 files changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/src/common/provider/ScaledSizeProvider.cpp b/src/common/provider/ScaledSizeProvider.cpp
+index cb2a1631..1df26365 100644
+--- a/src/common/provider/ScaledSizeProvider.cpp
++++ b/src/common/provider/ScaledSizeProvider.cpp
+@@ -55,21 +55,24 @@ qreal ScaledSizeProvider::scaleFactor()
+ qreal ScaledSizeProvider::getScaleFactor()
+ {
+ #if defined(__linux__)
+-    DesktopEnvironmentChecker desktopEnvironmentChecker;
+-	auto environment = desktopEnvironmentChecker.getDesktopEnvironment();
+-
+-	if (environment == DesktopEnvironmentType::Gnome) {
++	if(isGnomeEnvironment()) {
+ 		auto screen = QApplication::primaryScreen();
+ 		auto logicalDotsPerInch = (int) screen->logicalDotsPerInch();
+ 		auto physicalDotsPerInch = (int) screen->physicalDotsPerInch();
+ 		return (qreal)logicalDotsPerInch / (qreal)physicalDotsPerInch;
+-	} else if (environment == DesktopEnvironmentType::Kde) {
+-		auto screen = QApplication::primaryScreen();
+-		return screen->devicePixelRatio();
+ 	}
+ #endif
+ 
+ 	return 1;
+ }
+ 
++#if defined(__linux__)
++bool ScaledSizeProvider::isGnomeEnvironment()
++{
++	auto currentDesktop = QString(qgetenv("XDG_CURRENT_DESKTOP"));
++	return currentDesktop.contains(QLatin1String("gnome"), Qt::CaseInsensitive)
++		|| currentDesktop.contains(QLatin1String("unity"), Qt::CaseInsensitive);
++}
++#endif
++
+ } // namespace kImageAnnotator
+diff --git a/src/common/provider/ScaledSizeProvider.h b/src/common/provider/ScaledSizeProvider.h
+index e66f58a1..bb9c6ce4 100644
+--- a/src/common/provider/ScaledSizeProvider.h
++++ b/src/common/provider/ScaledSizeProvider.h
+@@ -46,6 +46,10 @@ class ScaledSizeProvider
+ 	static qreal scaleFactor();
+ 	static qreal getScaleFactor();
+ 
++#if defined(__linux__)
++	static bool isGnomeEnvironment();
++#endif
++
+ 	ScaledSizeProvider() = default;
+ 	~ScaledSizeProvider() = default;
+ };
