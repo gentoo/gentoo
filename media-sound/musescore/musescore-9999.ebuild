@@ -5,6 +5,7 @@ EAPI=8
 
 # https://bugs.gentoo.org/958256, bundled fluidsynth:
 # src/framework/audio/thirdparty/fluidsynth/fluidsynth-2.3.3/src/gentables/CMakeLists.txt
+# upstream files are >=3.16, KDDockWidgets is 3.12
 CMAKE_QA_COMPAT_SKIP=yes
 CHECKREQS_DISK_BUILD=3500M
 inherit cmake flag-o-matic xdg check-reqs
