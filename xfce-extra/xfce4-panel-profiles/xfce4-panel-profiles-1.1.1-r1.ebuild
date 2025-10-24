@@ -57,7 +57,7 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-	mv "${ED}"/usr/share/doc/{${PN},${PF}} || die
+	rm -r "${ED}/usr/share/doc/${PN}" || die
 }
 
 pkg_postinst() {
