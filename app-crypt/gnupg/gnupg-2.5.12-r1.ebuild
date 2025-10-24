@@ -31,7 +31,7 @@ REQUIRED_USE="test? ( tofu )"
 # Existence of executables is checked during configuration.
 # Note: On each bump, update dep bounds on each version from configure.ac!
 DEPEND="
-	>=dev-libs/libassuan-3.0.0:=
+	>=dev-libs/libassuan-3.0.0-r1:=
 	>=dev-libs/libgcrypt-1.11.0:=
 	>=dev-libs/libgpg-error-1.51
 	>=dev-libs/libksba-1.6.3
