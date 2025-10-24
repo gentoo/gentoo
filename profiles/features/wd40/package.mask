@@ -24,7 +24,9 @@ app-portage/emlop
 # requiring Rust to install, and their dependencies.
 dev-python/gherkin-official
 dev-python/pytest-bdd
+dev-python/pytest-describe
 dev-python/uv-build
+sys-auth/ssh-ldap-pubkey
 
 # Sebastian Pipping <sping@gentoo.org> (2025-06-20)
 # Requires masked packages (bug #958030)
