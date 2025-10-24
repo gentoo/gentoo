@@ -16,8 +16,8 @@
 			to /usr/share/gemato.</flag>
 	</use>
 	<upstream>
-		<bugs-to>https://github.com/projg2/gemato/issues/</bugs-to>
-		<remote-id type="github">projg2/gemato</remote-id>
+		<bugs-to>https://github.com/gentoo/gemato/issues/</bugs-to>
+		<remote-id type="github">gentoo/gemato</remote-id>
 		<remote-id type="pypi">gemato</remote-id>
 	</upstream>
 </pkgmetadata>
