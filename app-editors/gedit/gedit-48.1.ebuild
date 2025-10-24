@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 vala xdg
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://gedit-text-editor.org/"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv ~x86"
 
 IUSE="+python gtk-doc"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
