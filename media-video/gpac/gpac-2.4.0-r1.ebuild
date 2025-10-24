@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-configure-stddef.patch
 	"${FILESDIR}"/${P}-ffmpeg6.patch
 	"${FILESDIR}"/${P}-ffmpeg7.patch
+	"${FILESDIR}"/${P}-ffmpeg8.patch
 )
 
 src_prepare() {
