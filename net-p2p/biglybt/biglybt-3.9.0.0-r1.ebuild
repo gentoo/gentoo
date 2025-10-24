@@ -33,9 +33,15 @@ CP_DEPEND="
 # sun.net.spi.nameservice.NameServiceDescriptor: Provider com.biglybt.core.util.spi.AENameServiceDescriptor not found
 #
 # NOTE: BiglyBT works with [headless-awt]
+# Restrict to max jdk:25 because of a compilation error with jdk:26.
+# core/src/com/biglybt/core/security/impl/SESecurityManagerImpl.java:415: error: cannot find symbol
+# 			t.stop();
+# 			 ^
+#   symbol:   method stop()
+#   location: variable t of type Thread
 DEPEND="
 	${CP_DEPEND}
-	>=virtual/jdk-11:*
+	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	test? ( dev-java/assertj-core:3 )
 "
 
