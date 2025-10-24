@@ -1,0 +1,53 @@
+--- a/.ci/pytorch/test_example_code/CMakeLists.txt	2025-10-24 18:25:10.584717735 +0200
++++ b/.ci/pytorch/test_example_code/CMakeLists.txt	2025-10-24 18:25:17.195639297 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ project(simple-torch-test)
+ 
+ find_package(Torch REQUIRED)
+--- a/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt	2025-10-24 18:26:46.165583599 +0200
++++ b/aten/src/ATen/native/quantized/cpu/qnnpack/CMakeLists.txt	2025-10-24 18:27:00.085418425 +0200
+@@ -4,7 +4,7 @@
+ # This source code is licensed under the BSD-style license found in the
+ # LICENSE file in the root directory of this source tree.
+ 
+-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+ 
+ include(GNUInstallDirs)
+ 
+--- a/aten/src/ATen/test/test_install/CMakeLists.txt	2025-10-24 18:27:36.180990366 +0200
++++ b/aten/src/ATen/test/test_install/CMakeLists.txt	2025-10-24 18:27:46.812864333 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ find_package(ATen REQUIRED)
+ include_directories(${ATEN_INCLUDE_DIR})
+ 
+--- a/aten/src/ATen/nnapi/CMakeLists.txt	2025-10-24 18:28:58.948009238 +0200
++++ b/aten/src/ATen/nnapi/CMakeLists.txt	2025-10-24 18:29:11.040865888 +0200
+@@ -1,6 +1,6 @@
+ # Define this to build the NNAPI binding out of tree.
+ if(PYTORCH_NNAPI_STANDALONE)
+-  cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
++  cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+   project(pytorch_nnapi)
+ 
+   set(CMAKE_CXX_STANDARD 14 CACHE STRING "The C++ standard whose features are requested to build this target.")
+--- a/android/pytorch_android_torchvision/CMakeLists.txt	2025-10-24 18:29:31.653621543 +0200
++++ b/android/pytorch_android_torchvision/CMakeLists.txt	2025-10-24 18:29:41.668502824 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ project(pytorch_vision_jni CXX)
+ set(CMAKE_CXX_STANDARD 17 CACHE STRING "The C++ standard whose features are requested to build this target.")
+ #_cmake_modify_IGNORE set(CMAKE_VERBOSE_MAKEFILE ON)
+--- a/android/pytorch_android/CMakeLists.txt	2025-10-24 18:29:54.079355700 +0200
++++ b/android/pytorch_android/CMakeLists.txt	2025-10-24 18:30:39.793813797 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ option(BUILD_LITE_INTERPRETER "Master flag to build pytorch_jni_lite" ON)
+ message(
+   STATUS
