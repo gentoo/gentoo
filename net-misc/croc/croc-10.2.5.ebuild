@@ -12,6 +12,8 @@ SRC_URI="
 		-> ${P}.tar.gz
 "
 
+S="${WORKDIR}/${PN}-v${PV}"
+
 LICENSE="Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
@@ -22,8 +24,6 @@ RDEPEND="
 "
 
 DOCS=( README.md )
-
-S="${WORKDIR}/${PN}-v${PV}"
 
 src_prepare() {
 	default
