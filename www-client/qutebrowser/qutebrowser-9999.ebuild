@@ -60,7 +60,7 @@ BDEPEND="
 if [[ ${PV} == 9999 ]]; then
 	BDEPEND+=" app-text/asciidoc"
 else
-	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-qutebrowser )"
+	BDEPEND+=" verify-sig? ( >=sec-keys/openpgp-keys-qutebrowser-20251024 )"
 fi
 
 EPYTEST_PLUGINS=( hypothesis pytest-{bdd,mock,qt,rerunfailures,xvfb} )
