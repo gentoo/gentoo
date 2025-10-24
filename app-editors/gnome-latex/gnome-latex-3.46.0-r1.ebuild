@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome2
+inherit gnome2 vala
 
 DESCRIPTION="Integrated LaTeX environment for GNOME"
 HOMEPAGE="https://gitlab.gnome.org/swilmet/gnome-latex"
@@ -33,6 +33,7 @@ RDEPEND="${DEPEND}
 	rubber? ( dev-tex/rubber )
 "
 BDEPEND="
+	$(vala_depend)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	>=dev-build/gtk-doc-am-1.14
@@ -40,6 +41,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.6:0
 	virtual/pkgconfig
 "
+
+pkg_setup() {
+	vala_setup
+}
 
 src_configure() {
 	gnome2_src_configure \
