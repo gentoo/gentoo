@@ -24,8 +24,14 @@ KEYWORDS="~amd64"
 DEPEND="dev-libs/libinjection:="
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.7-use-ngx_module_libs.patch"
+)
+
 src_install() {
 	nginx-module_src_install
 	insinto /etc/nginx/naxsi
 	doins -r "${NGINX_MOD_S}"/../naxsi_rules/*
+	docompress -x "/usr/share/doc/${PF}"
+	dodoc -r "${NGINX_MOD_S}"/../docs/*
 }
