@@ -58,12 +58,6 @@ if [[ ${CATEGORY} == kde-frameworks ]]; then
 	ECM_NONGUI=true
 fi
 
-# @ECLASS_VARIABLE: ECM_KDEINSTALLDIRS
-# @DESCRIPTION:
-# Assume the package is using KDEInstallDirs macro and switch
-# KDE_INSTALL_USE_QT_SYS_PATHS to ON. If set to "false", do nothing.
-: "${ECM_KDEINSTALLDIRS:=true}"
-
 # @ECLASS_VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
 # Add "debug" to IUSE. If !debug, add -DQT_NO_DEBUG to CPPFLAGS. If set to
@@ -656,23 +650,36 @@ ecm_src_configure() {
 		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
 	fi
 
-	if [[ ${ECM_KDEINSTALLDIRS} = true ]] ; then
-		cmakeargs+=(
-			# install mkspecs in the same directory as Qt stuff
-			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-			# move handbook outside of doc dir, bug 667138
-			-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help"
-		)
+	# Common ECM configure parameters (invariants)
+	local ecm_config=${BUILD_DIR}/gentoo_ecm_config.cmake
+	cat > ${ecm_config} <<- _EOF_ || die
+		# Gentoo downstream-added ECM options
+		set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "") # bug #835995, *-disable-qmlplugindump.patch
+		set(ECM_DISABLE_APPSTREAMTEST ON CACHE BOOL "") # *-disable-appstreamtest.patch
+		set(ECM_DISABLE_GIT ON CACHE BOOL "") # *-disable-git-commit-hooks.patch
 
-		# bug 928345
-		# TODO: Eventually it should be put to upstream as to why LIBEXECDIR
-		# in KDEInstallDirsCommon.cmake is set to EXECROOTDIR/LIBDIR/libexec
-		[[ ${_KFSLOT} == 6 ]] && \
-			cmakeargs+=( -DKDE_INSTALL_LIBEXECDIR="${EPREFIX}/usr/libexec" )
+		# KDEInstallDirs[56] section
+		set(KDE_INSTALL_USE_QT_SYS_PATHS ON CACHE BOOL "") # install mkspecs in same dir as Qt stuff
+		# move handbook outside of doc dir, bug #667138
+		set(KDE_INSTALL_DOCBUNDLEDIR "${EPREFIX}/usr/share/help" CACHE PATH "")
+		set(KDE_INSTALL_INFODIR "${EPREFIX}/usr/share/info" CACHE PATH "")
+		set(KDE_INSTALL_LIBDIR $(get_libdir) CACHE PATH "Output directory for libraries")
+		set(KDE_INSTALL_MANDIR "${EPREFIX}/usr/share/man" CACHE PATH "")
+	_EOF_
+
+	if [[ ${_KFSLOT} == 6 ]]; then
+		cat >> ${ecm_config} <<- _EOF_ || die
+			# TODO: Ask upstream why LIBEXECDIR is set to EXECROOTDIR/LIBDIR/libexec, bug #928345
+			set(KDE_INSTALL_LIBEXECDIR "${EPREFIX}/usr/libexec" CACHE PATH "")
+		_EOF_
 	fi
 
 	# allow the ebuild to override what we set here
-	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
+	mycmakeargs=(
+		-C "${ecm_config}"
+		"${cmakeargs[@]}"
+		"${mycmakeargs[@]}"
+	)
 
 	cmake_src_configure
 }
