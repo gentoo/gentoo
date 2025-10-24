@@ -427,3 +427,5 @@ www-apps/radicale
 x11-themes/adwaita-icon-theme-legacy
 >=gui-libs/gtk-4.20.1
 >=dev-cpp/gtkmm-4.20
+>=gui-libs/libadwaita-1.8.1
+>=www-client/epiphany-49.1
