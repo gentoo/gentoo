@@ -263,13 +263,6 @@ x11-terms/roxterm
 # media-video/ccextractor-0.89 is available for ~amd64 and ~x86.
 <media-video/ccextractor-0.89
 
-# Ionen Wolkens <ionen@gentoo.org> (2025-09-23)
-# Abandoned and barely functional, and will just keep getting worse if
-# it does not keep up with website changes. net-misc/youtube-viewer
-# can be used as an alternative albeit it requires a YouTube API key.
-# Removal on 2025-10-23.
-net-misc/ytfzf
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
