@@ -40,7 +40,7 @@ IUSE="+deno"
 # sync as there is no plans for a yt-dlp-ejs live ebuild at the moment
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	~dev-python/yt-dlp-ejs-0.1.0[${PYTHON_USEDEP}]
+	~dev-python/yt-dlp-ejs-0.2.1[${PYTHON_USEDEP}]
 	deno? ( dev-lang/deno-bin )
 "
 BDEPEND="
