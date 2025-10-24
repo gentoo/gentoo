@@ -25,10 +25,6 @@ BDEPEND="
 # this only tests basic python bits without javascript to avoid headaches
 distutils_enable_tests unittest
 
-PATCHES=(
-	"${FILESDIR}"/${P}-tests.patch
-)
-
 src_prepare() {
 	distutils-r1_src_prepare
 
