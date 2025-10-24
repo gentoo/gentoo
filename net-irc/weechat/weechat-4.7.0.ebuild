@@ -6,9 +6,8 @@ EAPI=8
 GUILE_COMPAT=( 2-2 3-0 )
 LUA_COMPAT=( lua5-{1..4} )
 PYTHON_COMPAT=( python3_{10..13} )
-GENTOO_DEPEND_ON_PERL=no
 
-inherit guile-single lua-single perl-module python-single-r1 cmake xdg
+inherit cmake guile-single lua-single python-single-r1 xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -32,7 +31,7 @@ NETWORKS="+irc"
 PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spell +trigger +typing +xfer"
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 # dev-lang/php eclass support is lacking, php plugins don't work. bug #705702
-SCRIPT_LANGS="guile lua +perl +python ruby tcl ${GENTOO_PERL_USESTRING}"
+SCRIPT_LANGS="guile lua +perl +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru sr tr"
 IUSE="doc enchant man nls relay-api selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 
@@ -56,7 +55,6 @@ RDEPEND="
 	lua? ( ${LUA_DEPS} )
 	nls? ( virtual/libintl )
 	perl? (
-		${GENTOO_PERL_DEPSTRING}
 		dev-lang/perl:=
 		virtual/libcrypt:=
 	)
