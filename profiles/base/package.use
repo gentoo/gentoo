@@ -1,6 +1,15 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-10-25)
+# Use FlexiBLAS by default.
+sci-libs/flexiblas system-blas
+sci-libs/lapack flexiblas
+virtual/blas flexiblas
+virtual/cblas flexiblas
+virtual/lapack flexiblas
+virtual/lapacke flexiblas
+
 # Mike Gilbert <floppym@gentoo.org> (2025-01-12)
 # Requires >= lua-5.3.
 >=dev-lua/lutok-0.6 lua_single_target_lua5-4
