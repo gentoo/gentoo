@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit multilib-minimal autotools
 
 DESCRIPTION="a configuration file parser library"
 HOMEPAGE="https://github.com/libconfuse/libconfuse"
@@ -39,6 +39,7 @@ DOCS=( AUTHORS )
 
 src_prepare() {
 	default
+	eautoreconf
 	multilib_copy_sources
 }
 
