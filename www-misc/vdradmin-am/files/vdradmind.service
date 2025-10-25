@@ -1,10 +1,17 @@
 [Unit]
-Description=WWW interface daemon for VDR
+Description=vdradmin-am, the web-based administration tool for VDR
 Documentation=man:vdradmind(8)
-Documentation=file:///usr/share/doc/vdradmin-am/INSTALL
+
+After=vdr.service
+After=network.target
+
+ConditionPathExists=/etc/vdradmin
+ConditionPathExists=/etc/vdradmin/vdradmind.conf
 
 [Service]
-ExecStart=/usr/bin/vdradmind --nofork
+EnvironmentFile=/etc/vdradmin/vdradmin-systemd.env
+ExecStartPre=/usr/share/vdradmin/systemd/vdradmin-systemd-helper.sh
+ExecStart=/usr/bin/vdradmind $CONF_D_OPTS --nofork
 User=vdradmin
 
 [Install]
