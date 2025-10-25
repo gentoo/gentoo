@@ -17,8 +17,8 @@ S="${WORKDIR}/live"
 LICENSE="LGPL-2.1"
 # follow versioning in config.linux-with-shared-libraries
 # SLOT="0/${libliveMedia_VERSION_CURRENT}.${libBasicUsageEnvironment_VERSION_CURRENT}.${libUsageEnvironment_VERSION_CURRENT}.${libgroupsock_VERSION_CURRENT}"
-SLOT="0/116.3.5.32"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
+SLOT="0/117.3.5.32"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="ssl tools"
 
