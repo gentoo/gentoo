@@ -139,21 +139,19 @@ egnustep_env() {
 		fi
 
 		# Set up env vars for make operations
-		GS_ENV=( AUXILIARY_LDFLAGS="${LDFLAGS}" \
-			ADDITIONAL_NATIVE_LIB_DIRS="${GNUSTEP_SYSTEM_LIBRARIES}" \
-			DESTDIR="${D}" \
-			HOME="${T}" \
-			GNUSTEP_CONFIG_FILE="${WORKDIR}"/GNUstep.conf \
-			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM \
-			TAR_OPTIONS="${TAR_OPTIONS} --no-same-owner" \
-			messages=yes )
+		GS_ENV=(
+			AUXILIARY_LDFLAGS="${LDFLAGS}"
+			ADDITIONAL_NATIVE_LIB_DIRS="${GNUSTEP_SYSTEM_LIBRARIES}"
+			DESTDIR="${D}"
+			HOME="${T}"
+			GNUSTEP_CONFIG_FILE="${WORKDIR}"/GNUstep.conf
+			GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
+			TAR_OPTIONS="${TAR_OPTIONS} --no-same-owner"
+			messages=yes
+			debug="$(usex debug yes no)"
+		)
 
-		use doc \
-			&& GS_ENV=( "${GS_ENV[@]}" VARTEXFONTS="${T}"/fonts )
-
-		use debug \
-			&& GS_ENV=( "${GS_ENV[@]}" "debug=yes" ) \
-			|| GS_ENV=( "${GS_ENV[@]}" "debug=no" )
+		use doc && GS_ENV+=( VARTEXFONTS="${T}"/fonts )
 
 		if has_version "gnustep-base/gnustep-make[libobjc2]" && tc-is-gcc;
 		then
