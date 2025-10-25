@@ -131,6 +131,19 @@ egnustep_env() {
 			esac
 		fi
 
+		if has_version "gnustep-base/gnustep-make[libobjc2]" && tc-is-gcc;
+		then
+			# Set clang for packages that do not respect gnustep-make
+			# settings (gnustep-base's configure for example)
+			einfo "Forcing clang"
+			export CC="${CHOST}-clang"
+			export CXX="${CHOST}-clang"
+			export CPP="${CHOST}-clang -E"
+			export LD="${CHOST}-clang"
+
+			strip-unsupported-flags
+		fi
+
 		# Set up env vars for make operations
 		GS_ENV=(
 			AUXILIARY_LDFLAGS="${LDFLAGS}"
@@ -150,13 +163,6 @@ egnustep_env() {
 		)
 
 		use doc && GS_ENV+=( VARTEXFONTS="${T}"/fonts )
-
-		if has_version "gnustep-base/gnustep-make[libobjc2]" && tc-is-gcc;
-		then
-			# Set clang for packages that do not respect gnustep-make
-			# settings (gnustep-base's configure for example)
-			export CC=clang CXX=clang CPP="clang -E" LD="clang"
-		fi
 
 		return 0
 	fi
