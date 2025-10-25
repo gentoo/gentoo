@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-10-25)
+# EAPI=7, maintainer-needed, no rev deps, source digest mismatch.
+# Removal on 2025-11-24.  Bugs #965097, #927089.
+dev-libs/eventlog
+
 # Michał Górny <mgorny@gentoo.org> (2025-10-21)
 # Old backport with no revdeps left.
 # Removal on 2025-11-20.  Bug #964780.
