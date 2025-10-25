@@ -1,0 +1,31 @@
+https://github.com/libconfuse/libconfuse/commit/e967a307bf570306acd949513559e044b0da1f2d
+From: Mike Frysinger <vapier@chromium.org>
+Date: Tue, 10 Jan 2023 14:03:09 -0500
+Subject: [PATCH] configure.ac: enable automatic LFS support
+
+Automatically enable large filesystem support so we use the newer
+interfaces when interacting with the filesystem.  Without this,
+code that tries to stat a file with 64-bit inodes can fail if the
+stat structure is only 32-bit (which is common on x86 & arm).  On
+Linux, this can manifest with some filesystems more often than
+others.
+
+Practically speaking, since libconfuse doesn't do too much file
+I/O, the overhead should be non-existent.  Especially since the
+C library (e.g. glibc) is already using the 64-bit syscall even
+if the function call was 32-bit.
+
+On systems that have 64-bit stat already (which is common on x86_64
+and aarch64), there is no overhead as the code is exactly the same.
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,6 +31,9 @@ AM_GNU_GETTEXT([external])
+ AM_GNU_GETTEXT_VERSION([0.19.6])
+ AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
+
++# Checks for OS settings.
++AC_SYS_LARGEFILE
++
+ # Checks for header files.
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS([unistd.h string.h strings.h sys/stat.h windows.h])
