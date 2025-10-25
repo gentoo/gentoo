@@ -37,13 +37,6 @@ typeset -a GS_ENV
 
 # Ebuild function overrides
 gnustep-base_pkg_setup() {
-	if test_version_info 3.3 ; then
-		strip-unsupported-flags
-	elif test_version_info 3.4 ; then
-		# strict-aliasing is known to break obj-c stuff in gcc-3.4*
-		filter-flags -fstrict-aliasing
-	fi
-
 	# known to break ObjC (bug 86089)
 	filter-flags -fomit-frame-pointer
 }
