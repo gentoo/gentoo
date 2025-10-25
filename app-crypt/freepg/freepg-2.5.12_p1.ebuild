@@ -3,28 +3,25 @@
 
 EAPI=8
 
-# Maintainers should:
-# 1. Join the "Gentoo" project at https://dev.gnupg.org/project/view/27/
-# 2. Subscribe to release tasks like https://dev.gnupg.org/T6159
-# (find the one for the current release then subscribe to it +
-# any subsequent ones linked within so you're covered for a while.)
-
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnupg.asc
 # in-source builds are not supported: https://dev.gnupg.org/T6313#166339
-inherit flag-o-matic out-of-source multiprocessing systemd toolchain-funcs verify-sig
+inherit autotools flag-o-matic out-of-source multiprocessing systemd toolchain-funcs
 
-MY_P="${P/_/-}"
+EGIT_TAG="gnupg-${PV%_p*}-freepg"
+[[ ${PV} == *_p* ]] && EGIT_TAG+="-${PV#*_p}"
+MY_P="gnupg-${EGIT_TAG}"
 
-DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
+DESCRIPTION="GnuPG fork with improved RFC9850 compatibility"
 HOMEPAGE="https://gnupg.org/"
-SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
-SRC_URI+=" verify-sig? ( mirror://gnupg/gnupg/${P}.tar.bz2.sig )"
+SRC_URI="
+	https://gitlab.com/freepg/gnupg/-/archive/${EGIT_TAG}/${MY_P}.tar.bz2
+"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="+alternatives bzip2 doc ldap nls readline selinux +smartcard ssl test +tofu tpm tools usb user-socket wks-server"
+KEYWORDS="~amd64"
+IUSE="bzip2 doc ldap nls readline selinux +smartcard ssl test +tofu tpm tools usb user-socket wks-server"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tofu )"
 
@@ -33,7 +30,7 @@ REQUIRED_USE="test? ( tofu )"
 DEPEND="
 	>=dev-libs/libassuan-3.0.0:=
 	>=dev-libs/libgcrypt-1.11.0:=
-	>=dev-libs/libgpg-error-1.56
+	>=dev-libs/libgpg-error-1.51
 	>=dev-libs/libksba-1.6.3
 	>=dev-libs/npth-1.2
 	sys-libs/zlib
@@ -50,18 +47,21 @@ RDEPEND="
 	nls? ( virtual/libintl )
 	selinux? ( sec-policy/selinux-gpg )
 	wks-server? ( virtual/mta )
+	!app-crypt/gnupg
 "
 PDEPEND="
+	app-alternatives/gpg[-reference]
 	app-crypt/pinentry
-	alternatives? (
-		app-alternatives/gpg[-freepg(-)]
-	)
 "
 BDEPEND="
 	virtual/pkgconfig
 	doc? ( sys-apps/texinfo )
 	nls? ( sys-devel/gettext )
-	verify-sig? ( sec-keys/openpgp-keys-gnupg )
+"
+# maintainer mode
+BDEPEND+="
+	media-gfx/fig2dev
+	virtual/imagemagick-tools
 "
 
 DOCS=(
@@ -70,36 +70,12 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1.20-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch
+	"${FILESDIR}"/gnupg-2.1.20-gpgscm-Use-shorter-socket-path-lengts-to-improve-tes.patch
 )
 
 src_prepare() {
 	default
-
-	GNUPG_SYSTEMD_UNITS=(
-		dirmngr.service
-		dirmngr.socket
-		gpg-agent-browser.socket
-		gpg-agent-extra.socket
-		gpg-agent.service
-		gpg-agent.socket
-		gpg-agent-ssh.socket
-	)
-
-	cp "${GNUPG_SYSTEMD_UNITS[@]/#/${FILESDIR}/}" "${T}" || die
-
-	# Inject SSH_AUTH_SOCK into user's sessions after enabling gpg-agent-ssh.socket in systemctl --user mode,
-	# idea borrowed from libdbus, see
-	#   https://gitlab.freedesktop.org/dbus/dbus/-/blob/master/bus/systemd-user/dbus.socket.in#L6
-	#
-	# This cannot be upstreamed, as it requires determining the exact prefix of 'systemctl',
-	# which in turn requires discovery in Autoconf, something that upstream deeply resents.
-	sed -e "/DirectoryMode=/a ExecStartPost=-${EPREFIX}/bin/systemctl --user set-environment SSH_AUTH_SOCK=%t/gnupg/S.gpg-agent.ssh" \
-		-i "${T}"/gpg-agent-ssh.socket || die
-
-	# Since 2.5.3, --supervised is called --deprecated-supervised.  See
-	# https://dev.gnupg.org/rGa019a0fcd8dfb9d1eae5bc991fdd54b7cf55641e
-	sed -i "s/--supervised/--deprecated-supervised/g" "${T}"/*.service || die
+	eautoreconf
 }
 
 my_src_configure() {
@@ -135,6 +111,9 @@ my_src_configure() {
 		--disable-ntbtls
 		--enable-gpgsm
 		--enable-large-secmem
+
+		# needed from building from git
+		--enable-maintainer-mode
 
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
 		GPGRT_CONFIG="${ESYSROOT}/usr/bin/${CHOST}-gpgrt-config"
@@ -178,16 +157,11 @@ my_src_test() {
 my_src_install() {
 	emake DESTDIR="${D}" install
 
-	use tools && dobin tools/{gpgconf,gpgsplit,gpg-check-pattern} tools/make-dns-cert
+	# rename for app-alternatives/gpg
+	mv "${ED}"/usr/bin/gpg{,-freepg} || die
+	mv "${ED}"/usr/bin/gpgv{,-freepg} || die
 
-	if use alternatives; then
-		# rename for app-alternatives/gpg
-		mv "${ED}"/usr/bin/gpg{,-reference} || die
-		mv "${ED}"/usr/bin/gpgv{,-reference} || die
-	else
-		dosym gpg /usr/bin/gpg2
-		dosym gpgv /usr/bin/gpgv2
-	fi
+	use tools && dobin tools/{gpgconf,gpgsplit,gpg-check-pattern} tools/make-dns-cert
 
 	echo ".so man1/gpg.1" > "${ED}"/usr/share/man/man1/gpg2.1 || die
 	echo ".so man1/gpgv.1" > "${ED}"/usr/share/man/man1/gpgv2.1 || die
@@ -203,8 +177,20 @@ my_src_install_all() {
 
 	use tools && dobin tools/{convert-from-106,mail-signed-keys,lspgpot}
 	use doc && dodoc doc/*.png
+	systemd_douserunit doc/examples/systemd-user/*.{service,socket}
+	newdoc doc/examples/systemd-user/README README-systemd
+}
 
-	# Dropped upstream in https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commitdiff;h=eae28f1bd4a5632e8f8e85b7248d1c4d4a10a5ed.
-	dodoc "${FILESDIR}"/README-systemd
-	systemd_douserunit "${GNUPG_SYSTEMD_UNITS[@]/#/${T}/}"
+pkg_preinst() {
+	if has_version app-crypt/gnupg; then
+		elog "When switching between GnuPG and FreePG, it is recommended to stop all"
+		elog "daemons, using: gpgconf --kill all"
+	fi
+}
+
+pkg_postrm() {
+	if has_version app-crypt/gnupg; then
+		elog "When switching between GnuPG and FreePG, it is recommended to stop all"
+		elog "daemons, using: gpgconf --kill all"
+	fi
 }

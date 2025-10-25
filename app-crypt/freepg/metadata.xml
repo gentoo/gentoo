@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>base-system@gentoo.org</email>
-		<name>Gentoo Base System</name>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
 	</maintainer>
 	<use>
-		<flag name="alternatives">
-		Install renamed, for compatibility with <pkg>app-alternatives/gpg</pkg>.
-		</flag>
 		<flag name="smartcard">
 		Build scdaemon software. Enables usage of OpenPGP cards. For
 		other type of smartcards, try <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.
@@ -34,6 +31,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="cpe">cpe:/a:gnupg:gnupg</remote-id>
+		<remote-id type="gitlab">freepg/gnupg</remote-id>
 	</upstream>
 </pkgmetadata>
