@@ -149,6 +149,11 @@ egnustep_env() {
 			TAR_OPTIONS="${TAR_OPTIONS} --no-same-owner"
 			messages=yes
 			debug="$(usex debug yes no)"
+
+			# bug #950346
+			OPTFLAG="${CFLAGS}"
+			LDFLAGS="${LDFLAGS}"
+			CCFLAGS="${CFLAGS}"
 		)
 
 		use doc && GS_ENV+=( VARTEXFONTS="${T}"/fonts )
