@@ -26,4 +26,7 @@
 	<upstream>
 		<remote-id type="github">gnustep/libobjc2</remote-id>
 	</upstream>
+	<use>
+		<flag name="libdispatch">Build against the blocks runtime in <pkg>dev-libs/libdispatch</pkg></flag>
+	</use>
 </pkgmetadata>
