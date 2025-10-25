@@ -340,7 +340,7 @@ if [[ ${PN} != kgcc64 && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 14.1 ${PV} && IUSE+=" rust" TC_FEATURES+=( rust )
 	tc_version_is_at_least 13.3.1_p20250522 ${PV} && IUSE+=" time64"
 	tc_version_is_at_least 15.1 ${PV} && IUSE+=" libgdiagnostics"
-	tc_version_is_at_least 15.1 ${PV} && IUSE+=" cobol"
+	tc_version_is_at_least 15.1 ${PV} && IUSE+=" cobol" TC_FEATURES+=( cobol )
 fi
 
 if tc_version_is_at_least 10; then
@@ -362,6 +362,10 @@ RDEPEND="
 GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0="
 RDEPEND+=" ${GMP_MPFR_DEPS}"
 RDEPEND+=" >=dev-libs/mpc-0.8.1:0="
+
+if tc_has_feature cobol ; then
+	RDEPEND+=" cobol? ( dev-libs/libxml2:= )"
+fi
 
 if tc_has_feature objc-gc ; then
 	RDEPEND+=" objc-gc? ( >=dev-libs/boehm-gc-7.4.2 )"
