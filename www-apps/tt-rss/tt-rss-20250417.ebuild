@@ -7,7 +7,7 @@ inherit webapp
 
 if [[ ${PV} == *9999999* ]]; then
 	SLOT="${PV}" # Single live slot.
-	EGIT_REPO_URI="https://git.tt-rss.org/fox/${PN}.git"
+	EGIT_REPO_URI="https://github.com/tt-rss/${PN}.git"
 	inherit git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
-HOMEPAGE="https://tt-rss.org/"
+HOMEPAGE="https://github.com/tt-rss/"
 LICENSE="GPL-3"
 IUSE="+acl daemon gd +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
@@ -118,7 +118,7 @@ pkg_postinst() {
 		elog "Export/Import articles could be done with an official plugin:"
 		elog "ttrss-data-migration"
 		elog "For plugin installation and export/import, see:"
-		elog "https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-data-migration"
+		elog "https://github.com/tt-rss/tt-rss-plugin-data-migration"
 		elog
 		elog "Example of migration steps:"
 		elog "0. Setup PostgreSQL (dev-db/postgresql)"
