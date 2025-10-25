@@ -4,7 +4,7 @@
 # Michał Górny <mgorny@gentoo.org> (2025-10-25)
 # Use FlexiBLAS by default.
 sci-libs/flexiblas system-blas
-sci-libs/lapack flexiblas
+sci-libs/lapack flexiblas deprecated
 virtual/blas flexiblas
 virtual/cblas flexiblas
 virtual/lapack flexiblas
