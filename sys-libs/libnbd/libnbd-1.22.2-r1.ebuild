@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools bash-completion-r1 dot-a python-single-r1
+inherit autotools bash-completion-r1 python-single-r1
 
 MY_PV_1="$(ver_cut 1-2)"
 MY_PV_2="$(ver_cut 2)"
@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 # libxml2 - URI support
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	examples? (	dev-libs/glib
 			dev-libs/libev )
 	fuse? ( sys-fs/fuse:3 )
@@ -36,7 +36,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	ocaml? ( dev-ml/findlib )
 	test? (	sys-block/nbdkit[gnutls?]
 		net-libs/gnutls:=[tools]
 		ocaml? ( dev-ml/findlib[ocamlopt] )
@@ -68,10 +67,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# /usr/lib64/ocaml/nbd/libmlnbd.a
-	# /usr/lib64/ocaml/stublibs/dllmlnbd.so
-	use ocaml && lto-guarantee-fat
-
 	local myeconfargs=(
 		$(use_enable examples)
 		$(use_enable fuse)
@@ -91,8 +86,6 @@ src_configure() {
 
 src_install() {
 	default
-
-	use ocaml && strip-lto-bytecode
 
 	find "${ED}" -name '*.la' -delete || die
 	use python && python_optimize
