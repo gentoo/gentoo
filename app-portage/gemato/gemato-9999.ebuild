@@ -22,7 +22,7 @@ IUSE="+gpg pretty-log tools"
 
 RDEPEND="
 	gpg? (
-		>=app-crypt/gnupg-2.2.20-r1[ssl]
+		app-alternatives/gpg[ssl]
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 	pretty-log? (
