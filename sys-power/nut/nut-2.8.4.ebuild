@@ -101,9 +101,9 @@ pkg_setup() {
 
 src_prepare() {
 	if use systemd; then
-		PATCHES+=( "${FILESDIR}/systemd_notify_285.patch" )
+		PATCHES+=( "${FILESDIR}/systemd_notify.patch" )
 	else
-		PATCHES+=( "${FILESDIR}/systemd_notify_285_openrc.patch" )
+		PATCHES+=( "${FILESDIR}/systemd_notify_openrc.patch" )
 	fi
 
 	default

@@ -43,5 +43,5 @@ _dostop() {
 	# Not in our control at all
 	ebegin "Stopping UPS $msgtext"
 	/usr/sbin/upsdrvctl stop $UPSNAME
-	ewarn $? "Failed to stop UPS $msgtext!"
+	eend $? "Failed to stop UPS $msgtext!"
 }

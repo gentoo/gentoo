@@ -21,7 +21,7 @@ start() {
 	local UPS_CTL UPS_POWERDOWN
 
 	if [ -f /etc/killpower -o -f /etc/nut/killpower ]; then
-		UPS_CTL=/sbin/upsdrvctl
+		UPS_CTL=/usr/sbin/upsdrvctl
 		UPS_POWERDOWN="${UPS_CTL} shutdown"
 	elif [ -f /etc/apcupsd/powerfail ]; then
 		UPS_CTL=/sbin/apcupsd
