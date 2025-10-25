@@ -30,6 +30,8 @@ DOCS=(docs/fangfrisch.pdf)
 HTML_DOCS=(docs/index.html)
 
 DEPEND="
+	acct-group/clamav
+	acct-user/clamav
 	>=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.4.0[${PYTHON_USEDEP},sqlite]
 "
