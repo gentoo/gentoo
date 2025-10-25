@@ -50,6 +50,7 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/harfbuzz:=
 	media-libs/libopusenc
+	media-libs/libsndfile
 	media-libs/opus
 	media-sound/lame
 	sys-libs/zlib:=
@@ -64,10 +65,15 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	# backported from master
+	"${FILESDIR}/${PN}-4.5.2-ffmpeg8.patch"
+	"${FILESDIR}/${PN}-4.6.3-rm_tinyxml.patch"
+	"${FILESDIR}/${PN}-4.6.3-missing_includes.patch"
+	"${FILESDIR}/${PN}-4.6.3-fix_qt610.patch"
 	# unbundle 3rd libs
+	"${FILESDIR}/${PN}-4.6.3-unbundle-lame.patch"
+	"${FILESDIR}/${PN}-4.6.3-unbundle-pugixml.patch"
 	"${FILESDIR}/${PN}-4.7-unbundle-gtest.patch"
-	"${FILESDIR}/${PN}-4.7-unbundle-lame.patch"
-	"${FILESDIR}/${PN}-4.7-unbundle-pugixml.patch"
 	"${FILESDIR}/${PN}-4.7-unbundle-utfcpp.patch"
 )
 
@@ -93,6 +99,7 @@ src_prepare() {
 		audio/thirdparty/opusenc
 		draw/thirdparty/freetype
 		global/thirdparty/pugixml
+		global/thirdparty/tinyxml
 		global/thirdparty/utfcpp
 		testing/thirdparty/googletest
 	)
@@ -156,6 +163,8 @@ src_test() {
 		muse_audio_tests
 		# see bug #950450 too
 		iex_musicxml_tests
+		# fixed in master
+		converter_tests
 	)
 
 	QT_QPA_PLATFORM=offscreen cmake_src_test
