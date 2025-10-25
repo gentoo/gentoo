@@ -215,7 +215,6 @@ dev-python/httpx-socks test
 dev-python/hypercorn test
 dev-python/keystoneauth1 test
 dev-python/libtmux test
-dev-python/locket test
 dev-python/pyjwt test
 dev-python/python-keystoneclient test
 dev-python/python-socks test
