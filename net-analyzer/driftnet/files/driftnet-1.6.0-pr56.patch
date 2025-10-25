@@ -1,0 +1,76 @@
+title:	fix test_unit with gcc-15 / use standard uint* instead of u_int
+state:	OPEN
+author:	PPN-SD
+labels:	
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	56
+url:	https://github.com/deiv/driftnet/pull/56
+additions:	27
+deletions:	25
+auto-merge:	disabled
+--
+fix test_unit:
+>tests/test_unit.c:152:9: error: use of undeclared identifier 'uintptr_t'; did
+>      you mean 'intptr_t'?
+>  152 |         assert_null(media_data);
+
+>tests/test_unit.c: In function ‘main’:
+>tests/test_unit.c:297:30: error: initialization of ‘void (*)(void **)’
+>from incompatible pointer type ‘void (*)(void)’ [-Wincompatible-pointer-types]
+>  297 |             cmocka_unit_test(test_correct_media_drivers_for_mediatype_count)
+
+use uint*, thus fix building w/ musl:
+>image.c:466:5: error: unknown type name 'u_int32_t'; did you mean 'uint32_t'?
+>  466 |     u_int32_t current_box_len = __bswap_32(*((u_int32_t*) avifhdr));
+>      |     ^~~~~~~~~
+>      |     uint32_t
+diff -urw a/src/media/image.c b/src/media/image.c
+--- a/src/media/image.c
++++ b/src/media/image.c
+@@ -463,11 +463,11 @@
+     avifhdr = avifhdr - 4;
+ 
+     unsigned char *current_box = avifhdr;
+-    u_int32_t current_box_len = __bswap_32(*((u_int32_t*) avifhdr));
++    uint32_t current_box_len = __bswap_32(*((uint32_t*) avifhdr));
+ 
+     while (len > (current_box + current_box_len + 8) - avifhdr) {
+         current_box = current_box + current_box_len;
+-        current_box_len = __bswap_32(*((u_int32_t *) current_box));
++        current_box_len = __bswap_32(*((uint32_t *) current_box));
+ 
+         unsigned char *current_box_type = current_box + 4;
+ 
+@@ -476,7 +476,7 @@
+             continue;
+         }
+ 
+-        u_int32_t file_len = (current_box - avifhdr) + current_box_len;
++        uint32_t file_len = (current_box - avifhdr) + current_box_len;
+ 
+         /* enough room ? */
+         if (len >= file_len) {
+diff -urw a/src/media/tests/test_unit.c b/src/media/tests/test_unit.c
+--- a/src/media/tests/test_unit.c
++++ b/src/media/tests/test_unit.c
+@@ -7,6 +7,8 @@
+  *
+  */
+ 
++#include "compat/compat.h"
++
+ #include <stdarg.h>
+ #include <stddef.h>
+ #include <setjmp.h>
+@@ -244,7 +246,7 @@
+     }
+ }
+ 
+-void test_correct_media_drivers_for_mediatype_count()
++void test_correct_media_drivers_for_mediatype_count(void** state)
+ {
+     drivers_t* image_drivers = NULL;
+     drivers_t* audio_drivers = NULL;

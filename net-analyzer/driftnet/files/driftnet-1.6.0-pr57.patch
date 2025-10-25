@@ -1,0 +1,55 @@
+title:	switch to a simplified configuration for httpd
+state:	OPEN
+author:	PPN-SD
+labels:	
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	57
+url:	https://github.com/deiv/driftnet/pull/57
+additions:	4
+deletions:	20
+auto-merge:	disabled
+--
+because params are default values
+
+tested with libwebsockets-4.3/4.4 and driftnet-1.5.0
+
+Closes: #55 
+
+diff --git a/src/http_display/httpd.c b/src/http_display/httpd.c
+index 73222b6..d08c2f1 100644
+--- a/src/http_display/httpd.c
++++ b/src/http_display/httpd.c
+@@ -177,26 +177,10 @@ static void * http_server_dispatch(void *arg)
+     };
+ 
+    const struct lws_http_mount mount = {
+-        (struct lws_http_mount *)NULL,	/* linked-list pointer to next*/
+-        "/",		                    /* mountpoint in URL namespace on this vhost */
+-        server_root,                    /* where to go on the filesystem for that */
+-        "index.html",	                /* default filename if none given */
+-        NULL,
+-        NULL,
+-        mime_types,
+-        NULL,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        LWSMPRO_FILE,	                /* mount type is a directory in a filesystem */
+-        1,		                        /* strlen("/"), ie length of the mountpoint */
+-        NULL,
+-#if LWS_LIBRARY_VERSION_MAJOR <= 4 && LWS_LIBRARY_VERSION_MINOR < 3
+-        { NULL, NULL } // sentinel
+-#endif
++	.mountpoint		= "/",
++	.origin			= server_root,
++	.origin_protocol	= LWSMPRO_FILE,
++	.mountpoint_len		= 1,
+     };
+ 
+     memset(&info, 0, sizeof info);
