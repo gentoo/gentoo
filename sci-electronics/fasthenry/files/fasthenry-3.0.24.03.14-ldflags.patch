@@ -1,0 +1,40 @@
+diff '--color=auto' -ruN fasthenry-3.0wr.orig/src/fasthenry/Makefile fasthenry-3.0wr/src/fasthenry/Makefile
+--- fasthenry-3.0wr.orig/src/fasthenry/Makefile	2024-03-16 22:10:11.000000000 +0100
++++ fasthenry-3.0wr/src/fasthenry/Makefile	2025-10-25 23:04:36.696574531 +0200
+@@ -53,7 +53,7 @@
+ 	@if [ $(SOLVER) = SPARSE_SOLVER ]; then \
+ 	    cd ../sparse; make CC=$(CC); \
+ 	fi
+-	$(CC) -o $(BIN)/fasthenry $(CFLAGS) $(OBJS) $(MOBJS) $(NONUNIOBJS) \
++	$(CC) -o $(BIN)/fasthenry $(LDFLAGS) $(CFLAGS) $(OBJS) $(MOBJS) $(NONUNIOBJS) \
+ $(SOLVERLIB) -lm
+ 
+ clean:
+diff '--color=auto' -ruN fasthenry-3.0wr.orig/src/misc/Makefile fasthenry-3.0wr/src/misc/Makefile
+--- fasthenry-3.0wr.orig/src/misc/Makefile	2024-03-16 20:28:28.000000000 +0100
++++ fasthenry-3.0wr/src/misc/Makefile	2025-10-25 23:02:40.023816161 +0200
+@@ -1,10 +1,10 @@
+ all: MakeLcircuit ReadOutput
+ 
+ MakeLcircuit: MakeLcircuit.c
+-	$(CC) -O -o MakeLcircuit MakeLcircuit.c -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -o MakeLcircuit MakeLcircuit.c -lm
+ 
+ ReadOutput: ReadOutput.c
+-	$(CC) -O -o ReadOutput ReadOutput.c -lm
++	$(CC) $(LDFLAGS) $(CFLAGS) -o ReadOutput ReadOutput.c -lm
+ 
+ clean::
+ 	-@rm -f *.o MakeLcircuit ReadOutput
+diff '--color=auto' -ruN fasthenry-3.0wr.orig/src/zbuf/Makefile fasthenry-3.0wr/src/zbuf/Makefile
+--- fasthenry-3.0wr.orig/src/zbuf/Makefile	2024-03-16 21:09:10.000000000 +0100
++++ fasthenry-3.0wr/src/zbuf/Makefile	2025-10-25 23:03:50.656880672 +0200
+@@ -45,7 +45,7 @@
+ zbuf::
+ 	$(MAKE) $(BIN)/zbuf
+ $(BIN)/zbuf: $(OBJS)
+-	$(CC) -o $(BIN)/zbuf $(CFLAGS) $(OBJS) $(LIBS)
++	$(CC) $(LDFLAGS) -o $(BIN)/zbuf $(CFLAGS) $(OBJS) $(LIBS)
+ 
+ clean:
+ 	$(RM) -f *.o
