@@ -38,6 +38,8 @@ JAVADOC_SRC_DIRS=(
 	commons-rng-core/src/main/java
 	commons-rng-simple/src/main/java
 )
+JAVA_TEST_GENTOO_CLASSPATH="commons-math-3 jmh-core junit-5 opentest4j"
+JAVA_TEST_SRC_DIR=( commons-rng-{client-api,core,simple}/src/test/java )
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/aherbert.asc"
 
 src_prepare() {
@@ -80,19 +82,6 @@ src_compile() {
 	rm -r target || die
 
 	use doc && ejavadoc
-}
-
-src_test() {
-	JAVA_TEST_GENTOO_CLASSPATH="commons-math-3 jmh-core junit-5 opentest4j"
-
-	JAVA_TEST_SRC_DIR="commons-rng-client-api/src/test/java"
-	junit5_src_test
-
-	JAVA_TEST_SRC_DIR="commons-rng-core/src/test/java"
-	junit5_src_test
-
-	JAVA_TEST_SRC_DIR="commons-rng-simple/src/test/java"
-	junit5_src_test
 }
 
 src_install() {
