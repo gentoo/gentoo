@@ -1,0 +1,97 @@
+Force en_US locale for certain tests.
+
+--- a/libs/maildrop/Makefile.am
++++ b/libs/maildrop/Makefile.am
+@@ -82,17 +82,22 @@
+ 	$(MAKE) run-testsuite-mailbot-old
+ 
+ run-testsuite: testsuite
++if HAS_EN_US
+ 	VALGRIND="`which valgrind 2>/dev/null`"; export VALGRIND; \
+ 		@SHELL@ ./testsuite >testsuite.diff || exit 1; \
+ 		sed '/^Message envelope sender/d' <testsuite.diff | \
+ 		diff -U 3 $(srcdir)/testsuite.txt.idn - || exit 1; \
+ 		rm -f testsuite.diff
++endif
+ 
+ run-testsuite2:
++if HAS_EN_US
+-	VALGRIND="`which valgrind 2>/dev/null`"; export VALGRIND; \
++	VALGRIND=""; export VALGRIND; \
+ 		@SHELL@ $(srcdir)/testsuite2
++endif
+ 
+ run-testsuite-mailbot: testsuite.mailbot
++if HAS_EN_US
+ 	VALGRIND="`which valgrind 2>/dev/null`"; export VALGRIND; \
+ 		VALGRIND_EXTRA_OPTS="--leak-check=full"; \
+ 		export VALGRIND_EXTRA_OPTS; \
+@@ -101,14 +106,17 @@
+ 		@SHELL@ $(srcdir)/testsuite.mailbot >testsuite.diff
+ 	diff -U 3 $(srcdir)/testsuite.mailbot.txt testsuite.diff
+ 	rm -f mailbot.tst testsuite.diff
++endif
+ 
+ run-testsuite-mailbot-old: testsuite.mailbot
++if HAS_EN_US
+ 	VALGRIND="`which valgrind 2>/dev/null`"; export VALGRIND; \
+ 		rm -f ./mailbot.tst; \
+ 		ln -s mailbot-old mailbot.tst; \
+ 		@SHELL@ $(srcdir)/testsuite.mailbot >testsuite.diff
+ 	diff -U 3 $(srcdir)/testsuite.mailbot.txt testsuite.diff
+ 	rm -f mailbot.tst testsuite.diff
++endif
+ 
+ noinst_DATA=maildrop.html maildrop.1 maildropfilter.html maildropfilter.7 \
+ 	maildropgdbm.html maildropgdbm.7
+--- maildrop-3.0.0/libs/maildrop/configure.ac
++++ maildrop-3.0.0/libs/maildrop/configure.ac
+@@ -202,6 +202,15 @@
+ AC_DEFINE_UNQUOTED(MAXLONGSIZE, $MAXLONGSIZE,
+ 				[ Maximum character size of a long ])
+ 
++dnl check for en_US locale
++check_en_US() {
++	locale -a | grep en_US.utf8 > /dev/null
++	return $?
++}
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ dnl Checks for library functions.
+ 
+ AC_FUNC_CLOSEDIR_VOID
+--- a/libs/rfc2045/Makefile.am
++++ b/libs/rfc2045/Makefile.am
+@@ -97,6 +97,7 @@
+ endif
+ 
+ check-am:
++if HAS_EN_US
+ 	@SHELL@ $(srcdir)/testsuite | diff -U 3 $(srcdir)/testsuite.txt.idn -
+ 	@SHELL@ $(srcdir)/testsuitemm | diff -U 3 $(srcdir)/testsuitemm.txt -
+ 	@SHELL@ $(srcdir)/testrfc3676parsersuite | diff -U 3 $(srcdir)/testrfc3676parsersuite.txt -
+@@ -107,3 +108,4 @@
+ 		valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 ./testrfc6533parser ; \
+ 		valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 ./testsuitecpp ; \
+ 		valgrind --tool=memcheck --leak-check=yes --error-exitcode=1 ./testsuitecpp2
++endif
+--- maildrop-3.0.0/libs/rfc2045/configure.ac
++++ maildrop-3.0.0/libs/rfc2045/configure.ac
+@@ -60,6 +60,15 @@
+ dnl Checks for library functions.
+ AC_CHECK_FUNCS(setlocale)
+ 
++dnl check for en_US locale
++check_en_US() {
++	locale -a | grep en_US.utf8 > /dev/null
++	return $?
++}
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ AC_ARG_WITH(package, [], package="$withval",
+ 	[
+ 		package="$PACKAGE"

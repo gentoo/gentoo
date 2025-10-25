@@ -23,7 +23,7 @@ CDEPEND="!mail-mta/courier
 	net-mail/mailbase
 	dev-libs/libpcre2
 	net-dns/libidn2:=
-	net-libs/courier-unicode:=
+	<net-libs/courier-unicode-2.4:=
 	gdbm?     ( sys-libs/gdbm:= )
 	mysql?    ( net-libs/courier-authlib )
 	postgres? ( net-libs/courier-authlib )
