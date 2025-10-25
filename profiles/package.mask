@@ -302,7 +302,6 @@ net-wireless/mdk
 # These packages have no revdeps outside themselves left.
 # Removal on 2025-10-06.  Bug #962404.
 dev-python/locket
-dev-python/partd
 dev-python/spur
 
 # Eli Schwartz <eschwartz@gentoo.org> (2025-09-01)
