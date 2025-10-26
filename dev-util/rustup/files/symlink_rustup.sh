@@ -88,11 +88,14 @@ symlink_rustup() {
 		fi
 	done
 
+	# prevent reading rust-toolchain.toml from $(pwd)
+	pushd $(mktemp -d) > /dev/null
 	good "Setting gentoo ${gentoo_rust// /} as default toolchain"
 	[[ ${QUIET+set} != set ]] && "${CARGO_HOME}/bin/rustup" -V
 	"${CARGO_HOME}/bin/rustup" ${QUIET--v} toolchain link gentoo "/usr"
 	"${CARGO_HOME}/bin/rustup" ${QUIET--v} default gentoo
 	[[ ${QUIET+set} != set ]] && "${CARGO_HOME}/bin/rustup" show
+	popd > /dev/null
 
 	good "Prepend ${CARGO_HOME}/bin to your PATH to use rustup"
 	good "rustup selfupdate is disabled, it will be updated by portage"
