@@ -18,6 +18,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2025-10-26)
+# No activity since 2022.  Already requires extensive patching,
+# broken with Python 3.14.
+dev-python/httpretty
+
+# Michał Górny <mgorny@gentoo.org> (2025-10-26)
 # Upstream discontinued the PyPI package, expects people to vendor it
 # instead.  They also made random changes that make backporting fixes
 # hard.
