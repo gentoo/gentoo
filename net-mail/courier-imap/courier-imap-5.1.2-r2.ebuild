@@ -21,7 +21,7 @@ CDEPEND="
 		dev-libs/openssl:0=
 	)
 	>=net-libs/courier-authlib-0.71
-	>=net-libs/courier-unicode-2:=
+	<net-libs/courier-unicode-2.4:=
 	>=net-mail/mailbase-0.00-r8
 	net-dns/libidn:=
 	berkdb? ( sys-libs/db:= )

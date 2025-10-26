@@ -22,7 +22,7 @@ CDEPEND="
 		dev-libs/openssl:0=
 	)
 	net-libs/courier-authlib
-	net-libs/courier-unicode
+	<net-libs/courier-unicode-2.4:=
 	net-mail/mailbase
 	net-dns/libidn:=
 	berkdb? ( sys-libs/db:= )
@@ -65,6 +65,7 @@ and rerun mkdhparams if needed. Location has changed
 PATCHES=(
 	"${FILESDIR}/${PN}-5.1.8-aclocal-fix.patch"
 	"${FILESDIR}/${PN}-5.0.8-ar-fix.patch"
+	"${FILESDIR}/${P}-gcc15.patch"
 )
 
 src_prepare() {
