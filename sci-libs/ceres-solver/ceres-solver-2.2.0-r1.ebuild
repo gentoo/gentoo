@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -97,7 +97,7 @@ src_configure() {
 
 src_test() {
 	use cuda && cuda_add_sandbox -w
-	cmake_src_test
+	cmake-multilib_src_test
 }
 
 src_install() {
