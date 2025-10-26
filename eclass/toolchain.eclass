@@ -363,7 +363,7 @@ GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0="
 RDEPEND+=" ${GMP_MPFR_DEPS}"
 RDEPEND+=" >=dev-libs/mpc-0.8.1:0="
 
-if tc_has_feature cobol ; then
+if tc_has_feature cobol && tc_version_is_at_least 16.0.0_p20251019 ; then
 	RDEPEND+=" cobol? ( dev-libs/libxml2:= )"
 fi
 
