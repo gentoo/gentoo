@@ -130,6 +130,7 @@ RDEPEND="
 	elogind? ( sys-auth/elogind )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	echo-cancel? (
+		media-libs/webrtc-audio-processing:=
 		|| (
 			>=media-libs/webrtc-audio-processing-2.0:2
 			>=media-libs/webrtc-audio-processing-1.2:1
