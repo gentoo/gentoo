@@ -157,7 +157,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.1-glog-0.6.0.patch
 	"${FILESDIR}"/${PN}-2.5.1-newfix-functorch-install.patch
 	"${FILESDIR}"/${PN}-2.6.0-rocm-fix-std-cpp17.patch
-	"${FILESDIR}"/${PN}-2.8.0-cmake.patch
 	"${FILESDIR}"/${PN}-2.7.0-glog-0.7.1.patch
 	"${FILESDIR}"/${PN}-2.7.1-aotriton-fixes.patch
 	"${FILESDIR}"/${PN}-2.8.0-rocm-minus-flash.patch
