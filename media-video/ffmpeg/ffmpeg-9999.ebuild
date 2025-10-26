@@ -47,6 +47,7 @@ FFMPEG_IUSE_MAP=(
 	bluray:libbluray
 	bs2b:libbs2b
 	bzip2:bzlib
+	cairo
 	cdio:libcdio
 	chromaprint
 	codec2:libcodec2
@@ -186,6 +187,7 @@ COMMON_DEPEND="
 	bluray? ( media-libs/libbluray:=[${MULTILIB_USEDEP}] )
 	bs2b? ( media-libs/libbs2b[${MULTILIB_USEDEP}] )
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
+	cairo? ( x11-libs/cairo[${MULTILIB_USEDEP}] )
 	cdio? ( dev-libs/libcdio-paranoia:=[${MULTILIB_USEDEP}] )
 	chromaprint? ( media-libs/chromaprint:=[${MULTILIB_USEDEP}] )
 	codec2? ( media-libs/codec2:=[${MULTILIB_USEDEP}] )
