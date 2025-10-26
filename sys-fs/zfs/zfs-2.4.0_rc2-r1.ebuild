@@ -129,10 +129,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.11-gentoo.patch
 )
 
-DOCS=(
-	AUTHORS COPYRIGHT META README.md
-)
-
 pkg_pretend() {
 	use rootfs || return 0
 
@@ -307,12 +303,17 @@ src_compile() {
 }
 
 src_install() {
+	DOCS=( AUTHORS COPYRIGHT META README.md )
 	if use modules; then
 		emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
 		modules_post_process
+		einstalldocs
 	else
 		default
 	fi
+	# distutils-r1_src_install tries to run einstalldocs as well
+	# bug #965156
+	unset DOCS
 
 	gen_usr_ldscript -a nvpair uutil zfsbootenv zfs zfs_core zpool
 
