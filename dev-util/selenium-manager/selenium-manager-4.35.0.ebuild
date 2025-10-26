@@ -34,7 +34,7 @@ LICENSE+="
 	Unicode-DFS-2016 ZLIB BZIP2
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 IUSE="telemetry test"
 RESTRICT="!test? ( test )"
 
