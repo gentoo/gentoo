@@ -1,0 +1,58 @@
+diff --git a/tests/test_plugins.py b/tests/test_plugins.py
+index 935f37a..26549ef 100644
+--- a/tests/test_plugins.py
++++ b/tests/test_plugins.py
+@@ -78,7 +78,7 @@ def test_registered():
+ def test_register_and_run(runner):
+ 
+     result = runner.invoke(good_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == 2
+ 
+     for ep in iter_entry_points('_test_click_plugins.test_plugins'):
+         cmd_result = runner.invoke(good_cli, [ep.name, 'something'])
+@@ -89,7 +89,7 @@ def test_register_and_run(runner):
+ def test_broken_register_and_run(runner):
+ 
+     result = runner.invoke(broken_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == 2
+     assert u'\U0001F4A9' in result.output or u'\u2020' in result.output
+ 
+     for ep in iter_entry_points('_test_click_plugins.broken_plugins'):
+@@ -108,7 +108,7 @@ def test_group_chain(runner):
+         pass
+ 
+     result = runner.invoke(good_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == 2
+     assert sub_cli.name in result.output
+     for ep in iter_entry_points('_test_click_plugins.test_plugins'):
+         assert ep.name in result.output
+@@ -121,7 +121,7 @@ def test_group_chain(runner):
+         pass
+ 
+     result = runner.invoke(good_cli, ['sub-cli-plugins'])
+-    assert result.exit_code == 0
++    assert result.exit_code == 2
+     for ep in iter_entry_points('_test_click_plugins.test_plugins'):
+         assert ep.name in result.output
+ 
+@@ -142,7 +142,7 @@ def test_exception():
+ 
+ def test_broken_register_and_run_with_help(runner):
+     result = runner.invoke(broken_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == 2
+     assert u'\U0001F4A9' in result.output or u'\u2020' in result.output
+ 
+     for ep in iter_entry_points('_test_click_plugins.broken_plugins'):
+@@ -153,7 +153,7 @@ def test_broken_register_and_run_with_help(runner):
+ 
+ def test_broken_register_and_run_with_args(runner):
+     result = runner.invoke(broken_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == 2
+     assert u'\U0001F4A9' in result.output or u'\u2020' in result.output
+ 
+     for ep in iter_entry_points('_test_click_plugins.broken_plugins'):
