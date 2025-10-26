@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 
 # libxml2 - URI support
 RDEPEND="
-	dev-libs/libxml2
+	dev-libs/libxml2:=
 	examples? (	dev-libs/glib
 			dev-libs/libev )
 	fuse? ( sys-fs/fuse:3 )
