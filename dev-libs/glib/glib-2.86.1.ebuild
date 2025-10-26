@@ -11,7 +11,7 @@ DESCRIPTION="The GLib library of C routines"
 HOMEPAGE="https://www.gtk.org/"
 
 INTROSPECTION_PN="gobject-introspection"
-INTROSPECTION_PV="1.82.0"
+INTROSPECTION_PV="1.86.0"
 INTROSPECTION_P="${INTROSPECTION_PN}-${INTROSPECTION_PV}"
 SRC_URI="
 	${SRC_URI}
@@ -91,6 +91,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.64.1-mark-gdbus-server-auth-test-flaky.patch
+	"${FILESDIR}"/${PN}-2.84.4-libpcre2-10.47.patch
 )
 
 python_check_deps() {
