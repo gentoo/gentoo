@@ -306,7 +306,7 @@ multilib_src_configure() {
 		export PATH="${INTROSPECTION_BIN_DIR}:${PATH}"
 
 		# Override primary pkgconfig search paths to prioritize our internal copy
-		export PKG_CONFIG_LIBDIR="${INTROSPECTION_LIB_DIR}/pkgconfig:${INTROSPECTION_BUILD_DIR}/meson-private:${PKG_CONFIG_LIBDIR}"
+		export PKG_CONFIG_LIBDIR="${INTROSPECTION_LIB_DIR}/pkgconfig:${INTROSPECTION_BUILD_DIR}/meson-private:$($(tc-getPKG_CONFIG) --variable pc_system_libdirs pkg-config)"
 
 		# Set the normal primary pkgconfig search paths as secondary
 		# (We also need to prepend our just-built one for later use of
