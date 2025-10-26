@@ -37,12 +37,15 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="Apache-2.0"
 SLOT="0/$(ver_cut 1)" # .so version of libssl/libcrypto
-IUSE="+asm cpu_flags_x86_sse2 fips ktls +quic rfc3779 sctp static-libs test tls-compression vanilla weak-ssl-ciphers"
+IUSE="+asm brotli cpu_flags_x86_sse2 fips ktls +quic rfc3779 sctp static-libs test tls-compression vanilla weak-ssl-ciphers zlib zstd"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	!<net-misc/openssh-9.2_p1-r3
+	brotli? ( app-arch/brotli[${MULTILIB_USEDEP}] )
 	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zstd? ( app-arch/zstd[${MULTILIB_USEDEP}] )
 "
 BDEPEND+="
 	>=dev-lang/perl-5
@@ -179,6 +182,7 @@ multilib_src_configure() {
 		${sslout}
 
 		$(multilib_is_native_abi || echo "no-docs")
+		$(use_ssl brotli)
 		$(use cpu_flags_x86_sse2 || echo "no-sse2")
 		enable-camellia
 		enable-ec
@@ -198,6 +202,8 @@ multilib_src_configure() {
 		$(use test || echo "no-tests")
 		$(use_ssl tls-compression zlib)
 		$(use_ssl weak-ssl-ciphers)
+		$(use_ssl zlib)
+		$(use_ssl zstd)
 
 		--prefix="${EPREFIX}"/usr
 		--openssldir="${EPREFIX}"${SSL_CNF_DIR}
