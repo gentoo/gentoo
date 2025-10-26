@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+# py3.14: https://github.com/vmagamedov/grpclib/pull/208
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -34,11 +35,10 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/async-timeout[${PYTHON_USEDEP}]
-		dev-python/faker[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( faker pytest-asyncio )
 distutils_enable_tests pytest
 
 PATCHES=(
