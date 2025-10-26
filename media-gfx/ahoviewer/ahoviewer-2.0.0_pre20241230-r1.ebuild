@@ -35,7 +35,7 @@ COMMON_DEPEND="dev-cpp/atkmm:0
 		media-libs/gstreamer:1.0
 	)
 	plugins? (
-		dev-libs/gobject-introspection
+		>=dev-libs/gobject-introspection-1.82.0-r2
 		dev-libs/libpeas:0
 	)
 	rar? ( app-arch/unrar:= )

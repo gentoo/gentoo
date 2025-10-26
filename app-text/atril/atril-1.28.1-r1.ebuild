@@ -41,7 +41,7 @@ DEPEND="
 		net-libs/webkit-gtk:4.1
 	)
 	keyring? ( app-crypt/libsecret )
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	postscript? ( app-text/libspectre )
 	synctex? ( virtual/tex-base )
 	tiff? ( media-libs/tiff:= )

@@ -28,7 +28,7 @@ DEPEND="
 	>=xfce-base/xfconf-4.12.0:=
 	>=x11-libs/vte-0.70:=
 	exif? ( >=media-libs/gexiv2-0.14.0 )
-	introspection? ( >=dev-libs/gobject-introspection-1.72.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	libnotify? ( >=x11-libs/libnotify-0.7.0 )
 	pcre? ( >=dev-libs/libpcre2-10.0:= )
 	trash-panel-plugin? ( >=xfce-base/xfce4-panel-4.14.0:= )

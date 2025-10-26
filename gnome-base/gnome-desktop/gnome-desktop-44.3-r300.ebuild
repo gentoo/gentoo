@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	seccomp? ( sys-libs/libseccomp )
 
 	x11-libs/cairo
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${COMMON_DEPEND}
 	media-libs/fontconfig

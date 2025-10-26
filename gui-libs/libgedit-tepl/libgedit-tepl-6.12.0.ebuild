@@ -23,7 +23,7 @@ RDEPEND="
 	gui-libs/libgedit-gfls
 	dev-libs/icu:=
 	gnome-base/gsettings-desktop-schemas
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

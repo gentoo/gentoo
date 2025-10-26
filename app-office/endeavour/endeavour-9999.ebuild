@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 	>=net-libs/gnome-online-accounts-3.2.0:=
 	>=dev-libs/libpeas-1.17:0
 	>=gnome-extra/evolution-data-server-3.33.2:=[gtk]
-	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

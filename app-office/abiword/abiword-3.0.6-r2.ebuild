@@ -48,7 +48,7 @@ RDEPEND="
 	goffice? ( >=x11-libs/goffice-0.10.2:0.10 )
 	introspection? (
 		${PYTHON_DEPS}
-		>=dev-libs/gobject-introspection-1.0.0:=
+		>=dev-libs/gobject-introspection-1.82.0-r2:=
 	)
 	map? ( >=media-libs/libchamplain-0.12:0.12[gtk] )
 	plugins? (

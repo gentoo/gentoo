@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ DEPEND="
 		media-libs/babl[introspection?]
 		>=media-libs/gegl-0.4.14:0.4[introspection?]
 	)
-	introspection? ( >=dev-libs/gobject-introspection-1.32 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	nls? ( sys-devel/gettext )
 "
 RDEPEND="

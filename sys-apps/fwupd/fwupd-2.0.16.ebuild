@@ -40,7 +40,7 @@ BDEPEND="$(vala_depend)
 		>=dev-util/gi-docgen-2021.1
 	)
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	test? (
 		net-libs/gnutls[tools]
 	)

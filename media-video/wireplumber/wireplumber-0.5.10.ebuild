@@ -38,7 +38,7 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# introspection? ( dev-libs/gobject-introspection ) is valid but likely only used for doc building
+# introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 ) is valid but likely only used for doc building
 BDEPEND="
 	dev-libs/glib
 	dev-util/gdbus-codegen

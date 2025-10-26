@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RDEPEND="
 	graphviz? ( media-gfx/graphviz[gtk2] )
 	introspection? (
 		app-text/yelp-tools
-		dev-libs/gobject-introspection:=[doctool]
+		>=dev-libs/gobject-introspection-1.82.0-r2:=[doctool]
 	)
 "
 DEPEND="${RDEPEND}

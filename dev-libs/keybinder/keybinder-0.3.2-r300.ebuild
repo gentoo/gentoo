@@ -27,7 +27,7 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 
 src_configure() {

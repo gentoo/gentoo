@@ -14,7 +14,7 @@ IUSE="gtk-doc +introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.38.0:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-1.54.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

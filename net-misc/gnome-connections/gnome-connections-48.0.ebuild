@@ -15,7 +15,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/glib-2.50:2
 	>=x11-libs/gtk+-3.22:3[introspection]
 	>=sys-fs/fuse-3.9.1

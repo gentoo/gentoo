@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	x11-libs/libxklavier:=
 	audit? ( sys-process/audit )
 	gnome? ( sys-apps/accountsservice )
-	introspection? ( >=dev-libs/gobject-introspection-1 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	X? ( x11-base/xorg-drivers )
 "
 RDEPEND="${COMMON_DEPEND}

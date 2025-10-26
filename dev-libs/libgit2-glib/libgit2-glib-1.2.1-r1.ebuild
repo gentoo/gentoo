@@ -17,7 +17,7 @@ IUSE="gtk-doc python +ssh +vala"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-libs/gobject-introspection-1.54:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/glib-2.44.0:2
 	>=dev-libs/libgit2-0.26.0:=[ssh?]
 	python? (

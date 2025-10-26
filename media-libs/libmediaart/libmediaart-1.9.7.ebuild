@@ -21,7 +21,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.38.0:2
 	gtk? ( >=x11-libs/gdk-pixbuf-2.12:2 )
-	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	qt6? ( dev-qt/qtbase:6[gui] )
 "
 DEPEND="${RDEPEND}"

@@ -20,7 +20,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.20:3[introspection]
 	>=dev-libs/libxml2-2.6:2=
 
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

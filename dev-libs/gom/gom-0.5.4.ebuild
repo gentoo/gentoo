@@ -22,7 +22,7 @@ BDEPEND=""
 RDEPEND="
 	>=dev-db/sqlite-3.7:3
 	>=dev-libs/glib-2.38:2
-	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	python? ( ${PYTHON_DEPS}
 		>=dev-python/pygobject-3.16:3[${PYTHON_USEDEP}] )
 "

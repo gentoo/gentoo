@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.64:2
-	>=dev-libs/gobject-introspection-1.64:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	dev-libs/libffi:=
 	cairo? (
 		>=dev-python/pycairo-1.16.0[${PYTHON_USEDEP}]

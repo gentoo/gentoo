@@ -23,7 +23,7 @@ DEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=app-crypt/gcr-3.7.5:0/1
 	>=dev-libs/glib-2.52.0:2[dbus]
-	>=dev-libs/gobject-introspection-1.29.15:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	dev-libs/libxml2:2=
 	>=gnome-extra/cinnamon-desktop-6.4:0=
 	>=gnome-extra/cinnamon-menus-6.4

@@ -21,7 +21,7 @@ RDEPEND="
 	>=gui-libs/gtk-4.15.2:4[introspection?]
 	dev-libs/appstream:=
 	dev-libs/fribidi
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"

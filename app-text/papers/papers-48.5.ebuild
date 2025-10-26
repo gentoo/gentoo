@@ -266,7 +266,7 @@ DEPEND+="
 	sysprof? ( dev-util/sysprof-capture:4 )
 
 	nautilus? ( >=gnome-base/nautilus-43 )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	spell? ( >=app-text/libspelling-0.2 )
 	comics? ( >=app-arch/libarchive-3.6.0 )
 	djvu? ( >=app-text/djvu-3.5.22 )

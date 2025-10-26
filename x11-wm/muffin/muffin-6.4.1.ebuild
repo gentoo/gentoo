@@ -58,7 +58,7 @@ COMDEPEND="
 		>=dev-libs/libwacom-0.13:=
 	)
 	introspection? (
-		>=dev-libs/gobject-introspection-1.41.3:=
+		>=dev-libs/gobject-introspection-1.82.0-r2:=
 	)
 	screencast? (
 		>=media-video/pipewire-0.3.0:=

@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ DEPEND="
 	dev-util/glib-utils
 	net-libs/libsoup:3.0
 	doc? ( dev-util/gtk-doc )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	qml? (
 		qt6? ( dev-qt/qtdeclarative:6 )
 	)

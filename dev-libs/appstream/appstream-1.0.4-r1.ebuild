@@ -41,7 +41,7 @@ RDEPEND="
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
 	)
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	qt6? ( dev-qt/qtbase:6 )
 	systemd? ( sys-apps/systemd:= )
 "

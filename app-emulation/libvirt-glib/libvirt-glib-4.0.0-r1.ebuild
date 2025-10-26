@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.9.1:=
 	>=app-emulation/libvirt-1.2.8:=
 	>=dev-libs/glib-2.48.0:2
-	introspection? ( >=dev-libs/gobject-introspection-1.48.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 

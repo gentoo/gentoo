@@ -31,7 +31,7 @@ DEPEND="
 	selinux? ( >=sys-libs/libselinux-2.0 )
 	>=app-misc/tinysparql-3.0:3
 	cloudproviders? ( >=net-libs/libcloudproviders-0.3.1 )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 # Uses org.freedesktop.Tracker.Miner.Files gsettings schema from localsearch
 RDEPEND="${DEPEND}

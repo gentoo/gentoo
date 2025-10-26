@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	>=x11-libs/libSM-1.0
 	x11-libs/pango
-	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	spell? (
 		>=app-text/enchant-1.6:=
 		>=app-text/iso-codes-0.35

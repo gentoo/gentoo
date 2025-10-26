@@ -22,7 +22,7 @@ RDEPEND="
 	idn? ( net-dns/libidn2:= )
 	vala? (
 		$(vala_depend)
-		>=dev-libs/gobject-introspection-1.30.0:=
+		>=dev-libs/gobject-introspection-1.82.0-r2:=
 	)
 "
 DEPEND="${RDEPEND}

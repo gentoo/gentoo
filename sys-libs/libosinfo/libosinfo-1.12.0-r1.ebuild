@@ -26,7 +26,7 @@ RDEPEND="
 	sys-apps/hwdata
 	sys-apps/osinfo-db-tools
 	sys-apps/osinfo-db
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 # perl dep is for pod2man for automagic manpage building

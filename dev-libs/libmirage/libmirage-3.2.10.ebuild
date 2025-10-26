@@ -21,7 +21,7 @@ DEPEND="
 	>=media-libs/libsamplerate-0.1:=
 	>=media-libs/libsndfile-1.0:=
 	sys-libs/zlib:=
-	introspection? ( >=dev-libs/gobject-introspection-1.30 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 RDEPEND="
 	${DEPEND}
@@ -32,7 +32,7 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
-	introspection? ( >=dev-libs/gobject-introspection-1.30 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 
 DOCS=( AUTHORS README )

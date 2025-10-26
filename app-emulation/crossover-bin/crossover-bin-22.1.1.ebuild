@@ -63,7 +63,7 @@ RDEPEND="${DEPEND}
 	v4l? ( media-libs/libv4l[abi_x86_32(-)] )
 	vulkan? ( media-libs/vulkan-loader[abi_x86_32(-)] )
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	|| (
 		dev-libs/openssl-compat:1.1.1
 		=dev-libs/openssl-1.1.1*

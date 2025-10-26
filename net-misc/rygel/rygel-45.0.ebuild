@@ -36,7 +36,7 @@ DEPEND="
 	x11-libs/gdk-pixbuf:2
 	>=sys-apps/util-linux-2.20
 	x11-misc/shared-mime-info
-	introspection? ( >=dev-libs/gobject-introspection-1.33.4:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	tracker? ( app-misc/tinysparql:3=[vala(+)] )
 	transcode? (
 		media-libs/gst-plugins-bad:1.0

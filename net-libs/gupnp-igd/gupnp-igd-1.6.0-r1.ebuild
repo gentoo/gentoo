@@ -20,7 +20,7 @@ DEPEND="
 	>=dev-libs/glib-2.70.0:2[${MULTILIB_USEDEP}]
 	>=net-libs/gssdp-1.6:1.6=[${MULTILIB_USEDEP}]
 	>=net-libs/gupnp-1.6:1.6=[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.10 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 RDEPEND="${DEPEND}
 	gtk-doc? ( !net-libs/gupnp-igd:0[gtk-doc] )

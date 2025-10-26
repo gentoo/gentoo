@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 # Dependencies being checked by Meson
 DEPEND="
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	net-libs/libsoup:3.0[introspection]
 	x11-libs/gtk+:3[introspection]
 	${PYTHON_DEPS}

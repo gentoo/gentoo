@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -20,7 +20,7 @@ RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib
 	dev-libs/libgee:0.8
 	x11-libs/libxkbcommon
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="$(vala_depend)

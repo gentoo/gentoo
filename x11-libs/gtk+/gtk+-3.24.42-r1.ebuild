@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	cloudproviders? ( net-libs/libcloudproviders[${MULTILIB_USEDEP}] )
 	colord? ( >=x11-misc/colord-0.1.9:0=[${MULTILIB_USEDEP}] )
 	cups? ( >=net-print/cups-2.0[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.39:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	wayland? (
 		>=dev-libs/wayland-1.14.91[${MULTILIB_USEDEP}]
 		>=dev-libs/wayland-protocols-1.32

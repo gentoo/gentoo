@@ -23,7 +23,7 @@ DEPEND="
 	gnome-base/gsettings-desktop-schemas
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango
-	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	gnome-base/dconf
 "
 RDEPEND="${DEPEND}

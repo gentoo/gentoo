@@ -37,7 +37,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-util/glib-utils
 	doc? (
 		dev-libs/glib[gtk-doc(+),doc(+)]

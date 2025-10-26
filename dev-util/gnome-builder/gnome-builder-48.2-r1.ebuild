@@ -60,7 +60,7 @@ RDEPEND="
 		>=dev-libs/libgit2-glib-1.1.0[ssh]
 	)
 
-	>=dev-libs/gobject-introspection-1.74.0:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	${PYTHON_DEPS}
 	clang? ( $(llvm_gen_dep 'llvm-core/clang:${LLVM_SLOT}=') )
 	spell? (

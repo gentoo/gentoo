@@ -32,7 +32,7 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.30.0:2
 
-	>=dev-libs/gobject-introspection-1.34:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 
 	dev-libs/libpeas:0[${PYTHON_SINGLE_USEDEP}]
 

@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,7 +37,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-util/glib-utils
 	doc? (
 		dev-libs/glib[gtk-doc(+),doc(+)]

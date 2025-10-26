@@ -27,7 +27,7 @@ RDEPEND="
 	>=media-libs/gstreamer-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-base-${PV}:1.0[introspection?]
 	>=media-libs/gst-plugins-bad-${PV}:1.0[introspection?]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

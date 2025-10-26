@@ -32,7 +32,7 @@ DEPEND="
 	>=xfce-base/libxfce4windowing-4.20.1:=[X?]
 	>=xfce-base/xfconf-4.18.0:=
 	dbusmenu? ( >=dev-libs/libdbusmenu-16.04.0[gtk3] )
-	introspection? ( >=dev-libs/gobject-introspection-1.66:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	wayland? (
 		>=dev-libs/wayland-1.20
 		>=gui-libs/gtk-layer-shell-0.7.0

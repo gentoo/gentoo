@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 
 	dev-libs/atk[introspection]
 	>=dev-libs/glib-2.28:2
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	x11-libs/gdk-pixbuf[introspection]
 	x11-libs/libwnck:3[introspection]
 	x11-libs/pango[introspection]

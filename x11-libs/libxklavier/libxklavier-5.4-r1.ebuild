@@ -24,7 +24,7 @@ RDEPEND="
 	>=x11-libs/libXi-1.1.3:=
 	x11-libs/libxkbfile:=
 	>=x11-misc/xkeyboard-config-2.4.1-r3
-	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

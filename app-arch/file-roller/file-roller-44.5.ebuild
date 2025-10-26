@@ -24,7 +24,7 @@ RDEPEND="
 	nautilus? ( >=gnome-base/nautilus-43.0 )
 	>=dev-libs/json-glib-0.14
 	>=app-arch/libarchive-3.2:=
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango

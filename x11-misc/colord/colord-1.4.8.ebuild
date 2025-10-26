@@ -35,7 +35,7 @@ DEPEND="
 	)
 	>=sys-auth/polkit-0.114
 	argyllcms? ( media-gfx/argyllcms )
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}
 	acct-group/colord

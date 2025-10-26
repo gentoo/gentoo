@@ -56,7 +56,7 @@ RDEPEND="
 	>=dev-libs/libxslt-1.1.7
 	media-libs/woff2
 	keyring? ( app-crypt/libsecret )
-	introspection? ( >=dev-libs/gobject-introspection-1.59.1:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	x11-libs/libdrm
 	media-libs/mesa
 	spell? ( >=app-text/enchant-0.22:2 )

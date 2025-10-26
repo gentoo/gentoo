@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.70:2[${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.99.0:3.0[${MULTILIB_USEDEP},introspection?]
 	gtk? ( gui-libs/gtk:4 )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	man? ( virtual/pandoc )
 "
 DEPEND="${RDEPEND}"

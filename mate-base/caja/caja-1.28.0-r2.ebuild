@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	x11-libs/libXft
 	x11-libs/libXrender
 	>=x11-libs/pango-1.1.2
-	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	xmp? ( >=media-libs/exempi-1.99.5:2= )
 "
 

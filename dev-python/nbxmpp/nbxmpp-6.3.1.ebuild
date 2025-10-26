@@ -24,7 +24,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 
 RDEPEND="
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	net-libs/libsoup:3.0[introspection]
 	dev-python/idna[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]

@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-db/sqlite-1.12:3
 	>=gui-libs/gtk-4:4
 	>=net-libs/libsoup-3.0:3.0
-	introspection? ( >=dev-libs/gobject-introspection-0.6.3:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	>=dev-libs/json-glib-1.6.0[introspection?]
 	dev-libs/protobuf-c
 "

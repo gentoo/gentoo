@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ REQUIRED_USED="${GUILE_REQUIRED_USE}"
 
 DEPEND="
 	${GUILE_DEPS}
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	x11-libs/gtk+:3[introspection]
 "
 RDEPEND="${DEPEND}"

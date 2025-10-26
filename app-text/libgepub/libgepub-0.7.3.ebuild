@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libxml2:=
 	app-arch/libarchive:=
 	webkit? ( >=net-libs/webkit-gtk-2.38.0:4.1[introspection?] )
-	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

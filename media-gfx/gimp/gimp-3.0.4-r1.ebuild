@@ -42,7 +42,7 @@ COMMON_DEPEND="
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-glib-0.7.16:=
 	>=dev-libs/glib-2.70.0:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.4.4
 	>=gnome-base/librsvg-2.57.3:2
 	>=media-gfx/mypaint-brushes-1.3.1:1.0=
@@ -112,7 +112,7 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.21
 	doc? (
-		dev-libs/gobject-introspection[doctool]
+		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
 	virtual/pkgconfig

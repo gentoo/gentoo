@@ -26,7 +26,7 @@ DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	sys-apps/dbus
 	udev? ( >=dev-libs/libgudev-232:= )
-	introspection? ( >=dev-libs/gobject-introspection-1.38:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	mbim? ( >=net-libs/libmbim-1.32.0 )
 	policykit? ( >=sys-auth/polkit-0.106[introspection?] )
 	qmi? ( >=net-libs/libqmi-1.36.0:=[qrtr?] )

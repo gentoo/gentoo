@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc gtk-doc test"
 
-RDEPEND="dev-libs/gobject-introspection
+RDEPEND=">=dev-libs/gobject-introspection-1.82.0-r2
 	media-gfx/sane-backends"
 DEPEND="${RDEPEND}
 	doc? (

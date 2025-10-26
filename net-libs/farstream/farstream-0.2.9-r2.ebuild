@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	>=media-libs/gst-plugins-base-1.4:1.0
 	>=dev-libs/glib-2.40:2
 	>=net-libs/libnice-0.1.8
-	introspection? ( >=dev-libs/gobject-introspection-0.10.11:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	upnp? ( net-libs/gupnp-igd:1.6= )
 "
 RDEPEND="${COMMON_DEPEND}

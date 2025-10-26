@@ -28,7 +28,7 @@ RDEPEND="
 	x11-libs/libXext:=
 	x11-libs/libXrender:=
 	introspection? (
-		>=dev-libs/gobject-introspection-1:=
+		>=dev-libs/gobject-introspection-1.82.0-r2:=
 		>=gnome-extra/libgsf-1.14.23:=
 	)"
 DEPEND="${RDEPEND}"

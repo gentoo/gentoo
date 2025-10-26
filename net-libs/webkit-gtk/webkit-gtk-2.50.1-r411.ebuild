@@ -79,7 +79,7 @@ RDEPEND="
 		media-plugins/gst-plugins-opus:1.0
 		media-libs/gst-plugins-bad:1.0
 	)
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	jpegxl? ( media-libs/libjxl:= )
 	keyring? ( app-crypt/libsecret )
 	lcms? ( media-libs/lcms:2 )

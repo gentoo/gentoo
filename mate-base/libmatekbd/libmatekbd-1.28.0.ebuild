@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 	>=x11-libs/libxklavier-5.2:0[introspection?]
 	x11-libs/pango
 	>=x11-libs/gtk+-3.22:3[introspection?]
-	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 
 RDEPEND="${COMMON_DEPEND}"

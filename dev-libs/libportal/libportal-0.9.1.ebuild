@@ -22,7 +22,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=dev-libs/glib-2.72:2
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	gtk? (
 		>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
 		>=gui-libs/gtk-4.12.5-r2:4[introspection?,wayland?,X?]

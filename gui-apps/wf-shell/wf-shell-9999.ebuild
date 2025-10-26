@@ -28,7 +28,7 @@ DEPEND="
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0[wayland]
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/libsigc++:2
 	dev-libs/libdbusmenu[gtk3]
 	>=gui-libs/gtk-layer-shell-0.6

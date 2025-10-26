@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libxml2:=
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )

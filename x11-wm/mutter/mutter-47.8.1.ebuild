@@ -81,7 +81,7 @@ RDEPEND="
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
 	>=x11-libs/startup-notification-0.7
 	screencast? ( >=media-video/pipewire-1.2.0:= )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	libdisplay? ( media-libs/libdisplay-info:= )
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]

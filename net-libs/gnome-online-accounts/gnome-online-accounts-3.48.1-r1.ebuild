@@ -22,7 +22,7 @@ REQUIRED_USE="vala? ( introspection )"
 RDEPEND="
 	>=dev-libs/glib-2.67.4:2
 	sys-apps/dbus
-	introspection? ( >=dev-libs/gobject-introspection-0.6.2:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	>=x11-libs/gtk+-3.19.12:3
 	>=net-libs/webkit-gtk-2.33.1:4.1
 	>=dev-libs/json-glib-0.16
