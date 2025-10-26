@@ -1,0 +1,72 @@
+From b68e1c3a40aa116f0c6236114be79bd79f472258 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 17 Oct 2025 22:08:50 +0100
+Subject: [PATCH] cmake: Determine installation paths dynamically
+
+Use pkg-config data, then systemd-path, then respect GNUInstallDirs.
+CMAKE_INSTALL_LIBDIR is not used because that is the
+architecture-specific directory (e.g. lib64).
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ cmake_minimum_required(VERSION 3.13)
+ project(joycond)
+ 
++include(GNUInstallDirs)
++
+ set(CMAKE_CXX_STANDARD 17)
+ 
+ # Generate compile_commands.json
+@@ -25,19 +27,41 @@ target_link_libraries(
+ 
+ add_subdirectory(src)
+ 
+-install(TARGETS joycond DESTINATION /usr/bin/
++install(TARGETS joycond DESTINATION "${CMAKE_INSTALL_BINDIR}"
+         PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+         )
+-install(FILES udev/89-joycond.rules udev/72-joycond.rules DESTINATION /usr/lib/udev/rules.d/
+-        PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ 
++
++pkg_get_variable(UDEV_RULES_PATH udev udev_dir)
++if(NOT UDEV_RULES_PATH)
++    set(UDEV_RULES_PATH "${CMAKE_INSTALL_PREFIX}/lib/udev")
++endif()
++install(FILES udev/89-joycond.rules udev/72-joycond.rules DESTINATION "${UDEV_RULES_PATH}/rules.d/"
++        PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+         )
+-install(FILES systemd/joycond.service DESTINATION /usr/lib/systemd/system
++
++pkg_get_variable(SYSTEMD_SYSTEM_UNIT_PATH systemd systemd_system_unit_dir)
++if(NOT SYSTEMD_SYSTEM_UNIT_PATH)
++    execute_process(COMMAND systemd-path systemd-system-unit OUTPUT_VARIABLE SYSTEMD_SYSTEM_UNIT_PATH OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE UNIT_RETVAL)
++    if(NOT UNIT_RETVAL EQUAL 0)
++        set(SYSTEMD_SYSTEM_UNIT_PATH "${CMAKE_INSTALL_PREFIX}/lib/systemd/system")
++    endif()
++endif()
++install(FILES systemd/joycond.service DESTINATION "${SYSTEMD_SYSTEM_UNIT_PATH}"
+         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+         )
+-install(FILES systemd/joycond.conf DESTINATION /etc/modules-load.d
++
++pkg_get_variable(SYSTEMD_MODULES_LOAD_PATH systemd modules_load_dir)
++if(NOT SYSTEMD_MODULES_LOAD_PATH)
++    execute_process(COMMAND systemd-path modules-load OUTPUT_VARIABLE SYSTEMD_MODULES_LOAD_PATH OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE MODULES_RETVAL)
++    if(NOT MODULES_RETVAL EQUAL 0)
++        set(SYSTEMD_MODULES_LOAD_PATH "${CMAKE_INSTALL_PREFIX}/lib/modules-load.d")
++    endif()
++endif()
++install(FILES systemd/joycond.conf DESTINATION "${SYSTEMD_MODULES_LOAD_PATH}"
+         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+         )
++
+ install(FILES data/com.github.DanielOgorchock.joycond.metainfo.xml
+-        DESTINATION /usr/share/metainfo
++        DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo"
+         PERMISSIONS OWNER_WRITE OWNER_READ GROUP_READ WORLD_READ
+         )
+-- 
+2.51.0
+
