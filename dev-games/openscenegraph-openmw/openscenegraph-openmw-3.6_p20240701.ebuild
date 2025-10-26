@@ -8,7 +8,7 @@ LUA_COMPAT=( lua5-1 )
 WX_GTK_VER="3.2-gtk3"
 inherit cmake flag-o-matic lua-single toolchain-funcs wxwidgets
 
-MY_COMMIT="69cfecebfb6dc703b42e8de39eed750a84a87489"
+MY_COMMIT="43faf6fa88bd236e0911a5340bfbcbc25b3a98d9"
 
 DESCRIPTION="OpenMW-specific fork of OpenSceneGraph"
 HOMEPAGE="https://github.com/OpenMW/osg"
@@ -19,8 +19,8 @@ LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/162" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="
-	+collada curl dicom debug doc egl examples fltk fox gdal
-	gif gstreamer +jpeg las lua openexr openinventor osgapps pdf +png
+	+collada curl dicom debug doc egl examples fltk fox gdal gif
+	gstreamer +jpeg lua openexr openinventor osgapps pdal pdf +png
 	+sdl sdl2 +svg tiff +truetype vnc wxwidgets xrandr +zlib
 "
 
@@ -61,13 +61,13 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( ${LUA_DEPS} )
 	openexr? (
 		dev-libs/imath:=
 		>=media-libs/openexr-3:=
 	)
 	openinventor? ( media-libs/coin )
+	pdal? ( sci-libs/pdal:= )
 	pdf? ( app-text/poppler:=[cairo] )
 	png? ( media-libs/libpng:0= )
 	sdl? ( media-libs/libsdl )
@@ -86,10 +86,11 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-cmake4.patch # bug 960858
-	"${FILESDIR}"/${P}-cmake.patch # GNUInstalldirs, paths
-	"${FILESDIR}"/${P}-cmake-lua_version.patch # downstream patch
+	"${FILESDIR}"/${PN}-3.6_p20221115-cmake4.patch # bug 960858
+	"${FILESDIR}"/${PN}-3.6_p20221115-cmake.patch # GNUInstalldirs, paths
+	"${FILESDIR}"/${PN}-3.6_p20221115-cmake-lua_version.patch # downstream patch
 	"${FILESDIR}"/openscenegraph-3.6-openexr3.patch
+	"${FILESDIR}"/${P}-use-pdal-instead-of-liblas.patch
 )
 
 pkg_setup() {
@@ -125,12 +126,12 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_GtkGl=ON
 		$(cmake_use_find_package jpeg JPEG)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
-		$(cmake_use_find_package las LIBLAS)
 		-DBUILD_OSG_LUA_PLUGIN=$(usex lua)
 		-DCMAKE_DISABLE_FIND_PACKAGE_OpenCascade=ON
 		$(cmake_use_find_package openexr OpenEXR)
 		$(cmake_use_find_package openinventor Inventor)
 		-DBUILD_OSG_APPLICATIONS=$(usex osgapps)
+		$(cmake_use_find_package pdal PDAL)
 		$(cmake_use_find_package pdf Poppler-glib)
 		$(cmake_use_find_package png PNG)
 		$(cmake_use_find_package sdl SDL)

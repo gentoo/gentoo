@@ -163,6 +163,14 @@ net-libs/NativeThread
 media-sound/lmms
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
+# Dead upstream which has already spawned a couple of forks. We are
+# moving to dev-games/openscenegraph-openmw, which is based off OSG 3.6
+# so should be mosty compatible, to reduce maintenance burden.
+# Many bugs: #831082, #831486, #831557, #840164, #864352, #957582
+# Removal on 2025-11-04.
+dev-games/openscenegraph
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
 # Dead upstream, replaced by sci-libs/pdal in most places.
 # Many bugs: #725938, #742668, #944868, #957235, #961718
 # Removal on 2025-11-01.

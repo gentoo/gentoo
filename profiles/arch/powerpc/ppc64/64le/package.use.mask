@@ -1,6 +1,10 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
+# Prepare for dev-games/openscenegraph last-rites
+<app-office/scribus-1.7 osg
+
 # Marek Szuba <marecki@gentoo.org> (2023-12-05)
 # Needs USE=video_cards_amdgpu, which IS available on ppc64le.
 >=sys-apps/fwupd-1.9.10 -amdgpu

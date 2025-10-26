@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	app-arch/xz-utils
 	dev-libs/expat
-	dev-games/openscenegraph
+	dev-games/openscenegraph-openmw:=
 	media-libs/openal
 	net-libs/udns
 	net-misc/curl
