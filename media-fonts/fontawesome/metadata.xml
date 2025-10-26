@@ -10,6 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<stabilize-allarches/>
+	<use>
+		<flag name="woff2">Enable support for WOFF2 format</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">FortAwesome/Font-Awesome</remote-id>
 	</upstream>
