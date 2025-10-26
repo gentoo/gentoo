@@ -62,6 +62,10 @@ QA_FLAGS_IGNORED="
 	usr/lib.*/gdk-pixbuf*/*/loaders/*
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.60.0-libxml2-2.15.0-tests.patch
+)
+
 pkg_setup() {
 	rust_pkg_setup
 	python-any-r1_pkg_setup
