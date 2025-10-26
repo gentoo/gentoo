@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
+		<flag name="daemon">Enable the backend caching key daemon</flag>
 		<flag name="dynamic">Support for dynamic loading of backends</flag>
 		<flag name="hkp">Proxying backend support</flag>
 	</use>
