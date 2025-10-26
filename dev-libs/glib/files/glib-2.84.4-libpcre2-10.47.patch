@@ -1,0 +1,101 @@
+https://gitlab.gnome.org/GNOME/glib/-/issues/3809
+https://gitlab.gnome.org/GNOME/glib/-/merge_requests/4884
+
+From 8dceb68e6e6d6e205f70c7800c01e1fc23c04616 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Thu, 23 Oct 2025 22:35:42 +0200
+Subject: [PATCH 1/3] gregex: Handle PCRE2_ERROR_MISSING_NUMBER_TERMINATOR if
+ defined
+
+When the error is defined in a new enough PCRE2 we should handle it.
+
+However let's not define an error message for this in this commit (just
+let's use the old one that is generic enough), so that it can be backported
+to stable versions without having to require new translations.
+
+Closes: #3809
+---
+ glib/gregex.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/glib/gregex.c b/glib/gregex.c
+index 969c702b4d..fac3f58fe1 100644
+--- a/glib/gregex.c
++++ b/glib/gregex.c
+@@ -770,6 +770,9 @@ translate_compile_error (gint *errcode, const gchar **errmsg)
+       *errmsg = _("inconsistent NEWLINE options");
+       break;
+     case PCRE2_ERROR_BACKSLASH_G_SYNTAX:
++#ifdef PCRE2_ERROR_MISSING_NUMBER_TERMINATOR
++    case PCRE2_ERROR_MISSING_NUMBER_TERMINATOR:
++#endif
+       *errcode = G_REGEX_ERROR_MISSING_BACK_REFERENCE;
+       *errmsg = _("\\g is not followed by a braced, angle-bracketed, or quoted name or "
+                   "number, or by a plain number");
+-- 
+GitLab
+
+
+From ea5aa5419468c7c030a86b52878005bed7a31c60 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Thu, 23 Oct 2025 22:37:35 +0200
+Subject: [PATCH 2/3] tests/regex: Add the error messages to tests
+
+It can be useful for debugging purposes
+---
+ glib/tests/regex.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/glib/tests/regex.c b/glib/tests/regex.c
+index d7a698ec67..a052db9758 100644
+--- a/glib/tests/regex.c
++++ b/glib/tests/regex.c
+@@ -131,6 +131,8 @@ test_new_fail (gconstpointer d)
+ 
+   g_assert (regex == NULL);
+   g_assert_error (error, G_REGEX_ERROR, data->expected_error);
++  g_test_message ("Compiling pattern /%s/ failed with error: %s",
++                  data->pattern, error->message);
+   g_error_free (error);
+ }
+ 
+-- 
+GitLab
+
+
+From ef512a3f58ff4f918df0701d5bcfcd7de51775e3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marco=20Trevisan=20=28Trevi=C3=B1o=29?= <mail@3v1n0.net>
+Date: Thu, 23 Oct 2025 22:38:35 +0200
+Subject: [PATCH 3/3] gregex: Add translatable message for
+ PCRE2_ERROR_MISSING_NUMBER_TERMINATOR
+
+---
+ glib/gregex.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/glib/gregex.c b/glib/gregex.c
+index fac3f58fe1..6dfb05f613 100644
+--- a/glib/gregex.c
++++ b/glib/gregex.c
+@@ -770,13 +770,16 @@ translate_compile_error (gint *errcode, const gchar **errmsg)
+       *errmsg = _("inconsistent NEWLINE options");
+       break;
+     case PCRE2_ERROR_BACKSLASH_G_SYNTAX:
+-#ifdef PCRE2_ERROR_MISSING_NUMBER_TERMINATOR
+-    case PCRE2_ERROR_MISSING_NUMBER_TERMINATOR:
+-#endif
+       *errcode = G_REGEX_ERROR_MISSING_BACK_REFERENCE;
+       *errmsg = _("\\g is not followed by a braced, angle-bracketed, or quoted name or "
+                   "number, or by a plain number");
+       break;
++#ifdef PCRE2_ERROR_MISSING_NUMBER_TERMINATOR
++    case PCRE2_ERROR_MISSING_NUMBER_TERMINATOR:
++      *errcode = G_REGEX_ERROR_MISSING_BACK_REFERENCE;
++      *errmsg = _("syntax error in subpattern number (missing terminator?)");
++      break;
++#endif
+     case PCRE2_ERROR_VERB_ARGUMENT_NOT_ALLOWED:
+       *errcode = G_REGEX_ERROR_BACKTRACKING_CONTROL_VERB_ARGUMENT_FORBIDDEN;
+       *errmsg = _("an argument is not allowed for (*ACCEPT), (*FAIL), or (*COMMIT)");
+-- 
+GitLab
