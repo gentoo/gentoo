@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -26,12 +26,8 @@ RDEPEND="
 	dev-python/crashtest[${PYTHON_USEDEP}]
 	dev-python/rapidfuzz[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-mock )
 distutils_enable_tests pytest
 
 src_prepare() {
@@ -51,7 +47,5 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=pytest_mock
 	epytest
 }
