@@ -24,7 +24,7 @@ DEPEND="
 	>=dev-python/pyalsa-1.0.26
 	fltk? ( x11-libs/fltk:1= )
 	gtk? (
-		dev-libs/gobject-introspection
+		>=dev-libs/gobject-introspection-1.82.0-r2
 		x11-libs/gtk+:2
 		x11-libs/gtk+:3
 	)

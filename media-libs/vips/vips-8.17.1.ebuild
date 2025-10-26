@@ -47,7 +47,7 @@ RDEPEND="
 		!graphicsmagick? ( media-gfx/imagemagick:= )
 	)
 	imagequant? ( media-gfx/libimagequant )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:= )
 	jpegxl? ( media-libs/libjxl:= )

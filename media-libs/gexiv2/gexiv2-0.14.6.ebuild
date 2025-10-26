@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=media-gfx/exiv2-0.26:=
 	>=dev-libs/glib-2.46.0:2
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pygobject:3[${PYTHON_USEDEP}]

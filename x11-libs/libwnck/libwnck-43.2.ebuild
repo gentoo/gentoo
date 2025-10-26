@@ -21,7 +21,7 @@ RDEPEND="
 	startup-notification? ( >=x11-libs/startup-notification-0.4 )
 	x11-libs/libX11
 	>=x11-libs/libXres-1.2
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 # libXi header used by wnckprop.c, which is compiled even with USE=-tools (just not installed then)
 DEPEND="${RDEPEND}

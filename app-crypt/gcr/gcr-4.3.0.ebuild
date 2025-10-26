@@ -29,7 +29,7 @@ DEPEND="
 	systemd? ( sys-apps/systemd:= )
 	gtk? ( gui-libs/gtk:4[introspection?] )
 	>=sys-apps/dbus-1
-	introspection? ( >=dev-libs/gobject-introspection-1.58:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}"
 PDEPEND="app-crypt/gnupg"

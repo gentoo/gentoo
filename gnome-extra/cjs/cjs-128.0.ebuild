@@ -19,7 +19,7 @@ IUSE="examples readline sysprof test"
 RDEPEND="
 	dev-lang/spidermonkey:$(ver_cut 1)
 	>=dev-libs/glib-2.66.0:2
-	>=dev-libs/gobject-introspection-1.71.0:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/libffi-3.3:0=
 	x11-libs/cairo[glib,svg(+),X]
 	x11-libs/libX11

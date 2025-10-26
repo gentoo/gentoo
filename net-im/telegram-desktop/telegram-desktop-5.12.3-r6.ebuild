@@ -67,7 +67,7 @@ BDEPEND="
 	${PYTHON_DEPS}
 	>=dev-build/cmake-3.16
 	>=dev-cpp/cppgir-2.0_p20240315
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-util/gdbus-codegen
 	virtual/pkgconfig
 	wayland? ( dev-util/wayland-scanner )

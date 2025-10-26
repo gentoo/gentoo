@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	net-libs/libndp
 	systemd? ( >=sys-apps/systemd-209:0= )
 	>=dev-libs/glib-2.42:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	selinux? (
 		sec-policy/selinux-networkmanager
 		sys-libs/libselinux

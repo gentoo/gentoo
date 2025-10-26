@@ -42,7 +42,7 @@ COMMON_DEPEND="
 		x11-libs/libXau
 		>=x11-libs/libXrandr-1.3
 	)
-	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	wayland? ( gui-libs/gtk-layer-shell )
 "
 

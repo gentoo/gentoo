@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	${PYTHON_DEPS}
 	>=x11-libs/gtk+-3.9.4:3[introspection]
-	>=dev-libs/gobject-introspection-0.9.6:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 RDEPEND="
 	${DEPEND}

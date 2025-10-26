@@ -31,7 +31,7 @@ RDEPEND="
 	>=gui-libs/libadwaita-1.5.0:1[introspection,vala]
 	app-text/poppler:=[cairo,introspection]
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/libportal:=[gtk,introspection,vala]
 	media-libs/exempi
 "

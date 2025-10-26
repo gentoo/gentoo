@@ -17,7 +17,7 @@ KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.67.1:2
-	>=dev-libs/gobject-introspection-1.54:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=gui-libs/gtk-4.10.0:4[introspection]
 	>=gui-libs/libadwaita-1.5_beta:1=[introspection]
 	>=media-libs/libmediaart-1.9.1:2.0[introspection]

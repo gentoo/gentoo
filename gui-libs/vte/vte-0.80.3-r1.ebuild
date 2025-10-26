@@ -32,7 +32,7 @@ DEPEND="
 	>=dev-libs/libpcre2-10.21:=
 	systemd? ( >=sys-apps/systemd-220:= )
 	>=app-arch/lz4-1.9
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}
 	~gui-libs/vte-common-${PV}[systemd?]

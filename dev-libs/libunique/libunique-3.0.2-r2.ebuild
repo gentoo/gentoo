@@ -20,7 +20,7 @@ RDEPEND="
 	sys-apps/dbus[X]
 	>=x11-libs/gtk+-2.90.0:3[introspection?]
 	x11-libs/libX11
-	introspection? ( >=dev-libs/gobject-introspection-0.9.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils

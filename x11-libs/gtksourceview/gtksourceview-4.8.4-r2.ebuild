@@ -21,7 +21,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.24:3[introspection?]
 	>=dev-libs/libxml2-2.6:2=
 	glade? ( >=dev-util/glade-3.9:3.10 )
-	introspection? ( >=dev-libs/gobject-introspection-1.42.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	>=dev-libs/fribidi-0.19.7
 "
 DEPEND="${RDEPEND}"

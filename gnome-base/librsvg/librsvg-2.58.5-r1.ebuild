@@ -321,7 +321,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.9.1-r4:2=[${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.50.0[${MULTILIB_USEDEP}]
 
-	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

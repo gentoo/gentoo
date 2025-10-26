@@ -39,7 +39,7 @@ BDEPEND="
 "
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/libratbag-0.14
 	<dev-libs/libratbag-0.18
 	gnome-base/librsvg[introspection]

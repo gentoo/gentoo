@@ -25,7 +25,7 @@ RDEPEND="
 	gtk2? ( x11-libs/gtk+:2 )
 	gtk3? ( x11-libs/gtk+:3[wayland?,X?] )
 	gtk4? ( gui-libs/gtk:4[wayland?,X?] )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	X? ( x11-libs/libX11 )
 "
 DEPEND="${RDEPEND}"

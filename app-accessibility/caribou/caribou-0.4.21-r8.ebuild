@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	$(python_gen_cond_dep '
 		>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}]
 	')
-	>=dev-libs/gobject-introspection-0.10.7:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	dev-libs/libgee:0.8
 	dev-libs/libxml2:=
 	>=media-libs/clutter-1.5.11:1.0[introspection]

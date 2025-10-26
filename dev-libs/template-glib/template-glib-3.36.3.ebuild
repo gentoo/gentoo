@@ -18,7 +18,7 @@ REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 " # depends on go-i unconditionally for own functionality, USE flag controls GIR/typelib generation
 DEPEND="${RDEPEND}"
 BDEPEND="

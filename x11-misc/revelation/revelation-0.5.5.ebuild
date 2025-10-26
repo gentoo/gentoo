@@ -29,7 +29,7 @@ RDEPEND="${PYTHON_DEPS}
 	')
 	x11-libs/gtk+:3
 	dev-libs/glib
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 "
 
 DEPEND="${RDEPEND}"

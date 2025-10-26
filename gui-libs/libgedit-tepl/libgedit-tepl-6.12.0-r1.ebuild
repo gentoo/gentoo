@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/icu:=
 	>=gnome-base/gsettings-desktop-schemas-42
 	>=gui-libs/libhandy-1.6:1
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

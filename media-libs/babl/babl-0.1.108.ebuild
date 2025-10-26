@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 RDEPEND="
-	introspection? ( >=dev-libs/gobject-introspection-1.72:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	lcms? ( >=media-libs/lcms-2.13.1:2 )
 "
 DEPEND="${RDEPEND}"

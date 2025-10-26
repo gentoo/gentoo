@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	cairo? (
 		>=dev-libs/glib-2.64:2
 		>=x11-libs/cairo-1.16
-		introspection? ( >=dev-libs/gobject-introspection-1.72:= )
+		introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	)
 	curl? ( net-misc/curl )
 	gpgme? ( dev-cpp/gpgmepp:= )

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -19,7 +19,7 @@ RDEPEND="
 	>=dev-libs/glib-2.54:2[${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.26.1:2.4[${MULTILIB_USEDEP},introspection?]
 	gtk? ( gui-libs/gtk:4 )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

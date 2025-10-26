@@ -51,7 +51,7 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/libXi
 	)
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	libnotify? ( x11-libs/libnotify )
 	nls? ( virtual/libintl )
 	python? (

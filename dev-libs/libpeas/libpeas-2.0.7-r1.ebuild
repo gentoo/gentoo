@@ -21,7 +21,7 @@ REQUIRED_USE="lua? ( ${LUA_REQUIRED_USE} )
 
 RDEPEND="
 	>=dev-libs/glib-2.74:2
-	>=dev-libs/gobject-introspection-1.39:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	javascript? (
 		>=dev-libs/gjs-1.78.5
 		dev-lang/spidermonkey:128

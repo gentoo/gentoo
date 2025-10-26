@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/libxml2:=[${MULTILIB_USEDEP}]
 	gtk? ( x11-libs/gtk+:2[introspection?,${MULTILIB_USEDEP}] )
 	gtk3? ( >=x11-libs/gtk+-3.2:3[introspection?,${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1 )"
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )"
 # tests also have optional dep on valgrind which we do not enforce
 DEPEND="${RDEPEND}"
 BDEPEND="

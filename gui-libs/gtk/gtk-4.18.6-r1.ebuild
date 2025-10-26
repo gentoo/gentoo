@@ -46,7 +46,7 @@ COMMON_DEPEND="
 			>=media-libs/gst-plugins-base-1.24.0:1.0[opengl]
 		)
 	)
-	introspection? ( >=dev-libs/gobject-introspection-1.76:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	vulkan? ( >=media-libs/vulkan-loader-1.3:=[wayland?,X?] )
 	wayland? (
 		>=dev-libs/wayland-1.23.0

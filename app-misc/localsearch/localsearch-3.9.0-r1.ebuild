@@ -26,7 +26,7 @@ RDEPEND="
 	raw? ( media-libs/gexiv2 )
 	>=dev-libs/glib-2.70:2
 	dev-libs/libgudev
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	cue? ( media-libs/libcue:= )
 	exif? ( >=media-libs/libexif-0.6 )
 	gsf? ( >=gnome-extra/libgsf-1.14.24:= )

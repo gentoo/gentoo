@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib[introspection?]
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

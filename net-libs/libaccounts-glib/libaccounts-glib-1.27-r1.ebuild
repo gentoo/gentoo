@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	dev-libs/libxml2:=
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 "

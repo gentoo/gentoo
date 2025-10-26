@@ -16,7 +16,7 @@ REQUIRED_USE="gtk-doc? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/glib-2.72.0:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

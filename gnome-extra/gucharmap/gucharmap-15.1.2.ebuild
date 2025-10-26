@@ -37,7 +37,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	gtk-doc? ( >=dev-util/gtk-doc-1 )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	vala? ( $(vala_depend) )
 "
 

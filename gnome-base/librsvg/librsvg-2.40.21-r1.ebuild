@@ -23,7 +23,7 @@ RDEPEND="
 	>=x11-libs/cairo-1.12.14-r4[${MULTILIB_USEDEP}]
 	>=x11-libs/gdk-pixbuf-2.30.7:2[introspection?,${MULTILIB_USEDEP}]
 	>=x11-libs/pango-1.38.0[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	tools? ( >=x11-libs/gtk+-3.10.0:3 )
 "
 DEPEND="${RDEPEND}"

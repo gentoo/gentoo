@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	doc? ( dev-util/gtk-doc )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 BDEPEND="
 	${PYTHON_DEPS}

@@ -65,7 +65,7 @@ RDEPEND="
 	app-arch/zip
 	app-crypt/mit-krb5
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	|| (
 		<dev-libs/libxml2-2.14
 		dev-libs/libxml2-compat

@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.80:2
 	>=gui-libs/gtk-4.15:4[introspection?]
 	>=gui-libs/libadwaita-1.6:1
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

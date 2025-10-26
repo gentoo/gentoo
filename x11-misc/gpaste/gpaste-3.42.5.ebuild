@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ DEPEND="
 	)
 	introspection? (
 		dev-libs/gjs
-		>=dev-libs/gobject-introspection-1.48.0
+		>=dev-libs/gobject-introspection-1.82.0-r2
 		>=x11-wm/mutter-41.3[introspection]
 	)
 "

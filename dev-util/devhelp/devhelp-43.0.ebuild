@@ -20,7 +20,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.22:3[introspection?]
 	net-libs/webkit-gtk:4.1[introspection?]
 	gnome-base/gsettings-desktop-schemas
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}
 	gedit? (

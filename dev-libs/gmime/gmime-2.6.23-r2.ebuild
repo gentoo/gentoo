@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/glib:2
 	sys-libs/zlib
 	smime? ( >=app-crypt/gpgme-1.1.6:= )
-	vala? ( >=dev-libs/gobject-introspection-1.30.0:= )
+	vala? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}
 	virtual/libiconv

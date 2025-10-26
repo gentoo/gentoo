@@ -27,7 +27,7 @@ RDEPEND="
 	sci-geosciences/geocode-glib:2
 	>=dev-libs/libxml2-2.6.0:2=
 	dev-libs/json-glib
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

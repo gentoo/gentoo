@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ BDEPEND="
 		>=dev-util/gtk-doc-1.9
 	)
 	app-text/docbook-xsl-ns-stylesheets
-	introspection? ( >=dev-libs/gobject-introspection-0.9.8 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	vala? ( $(vala_depend) )
 "
 

@@ -48,7 +48,7 @@ RDEPEND="
 	>=x11-libs/pango-1.38.0
 	cairo? ( >=x11-libs/cairo-1.12.2 )
 	ffmpeg? ( media-video/ffmpeg:0= )
-	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	lcms? ( >=media-libs/lcms-2.8:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( >=media-libs/openexr-1.6.1:= )

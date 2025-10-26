@@ -20,7 +20,7 @@ IUSE="+caps +introspection ptp unwind"
 RDEPEND="
 	>=dev-libs/glib-2.64.0:2[${MULTILIB_USEDEP}]
 	caps? ( sys-libs/libcap[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	unwind? (
 		>=sys-libs/libunwind-1.2_rc1[${MULTILIB_USEDEP}]
 		dev-libs/elfutils[${MULTILIB_USEDEP}]

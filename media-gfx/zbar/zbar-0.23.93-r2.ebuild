@@ -32,7 +32,7 @@ COMMON_DEPEND="
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
 		x11-libs/gdk-pixbuf:2[introspection?]
 		x11-libs/gtk+:3[${MULTILIB_USEDEP},introspection?]
-		introspection? ( dev-libs/gobject-introspection )
+		introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	)
 	imagemagick? (
 		!graphicsmagick? ( media-gfx/imagemagick:=[png,jpeg?] )

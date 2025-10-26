@@ -23,7 +23,7 @@ DEPEND="
 	>=x11-libs/gtk+-3.12:3[X?,introspection?]
 	>=net-misc/networkmanager-1.7[introspection?]
 	pkcs11? ( >=app-crypt/gcr-4.0.0:4= )
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}
 	!<gnome-extra/nm-applet-1.16.0" # gschema moved to here before nm-applet-1.16.0

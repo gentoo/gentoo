@@ -42,7 +42,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7
 	x11-libs/libX11
 	gtk3? ( x11-libs/gtk+:3[introspection?] )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	dev-libs/openssl:=
 	lz4? ( app-arch/lz4 )
 	policykit? (

@@ -44,7 +44,7 @@ RDEPEND="
 
 	introspection? (
 		${PYTHON_DEPS}
-		>=dev-libs/gobject-introspection-1:=
+		>=dev-libs/gobject-introspection-1.82.0-r2:=
 	)
 	perl? ( dev-lang/perl:= )
 	libgda? ( gnome-extra/libgda:5[gtk] )"

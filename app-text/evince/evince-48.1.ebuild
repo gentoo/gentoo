@@ -40,7 +40,7 @@ DEPEND="
 		media-libs/gst-plugins-good:1.0 )
 	gnome? ( gnome-base/gnome-desktop:3= )
 	keyring? ( >=app-crypt/libsecret-0.5 )
-	introspection? ( >=dev-libs/gobject-introspection-1:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	postscript? ( >=app-text/libspectre-0.2:= )
 	spell? ( >=app-text/gspell-1.6.0:= )
 	tiff? ( >=media-libs/tiff-4.0:= )

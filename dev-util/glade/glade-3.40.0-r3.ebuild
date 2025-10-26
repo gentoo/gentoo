@@ -24,7 +24,7 @@ DEPEND="
 	x11-libs/gdk-pixbuf:2[introspection?]
 	>=x11-libs/gtk+-3.22.0:3[X?,introspection?,wayland?]
 	x11-libs/pango[introspection?]
-	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	gjs? ( >=dev-libs/gjs-1.64.0 )
 	python? (
 		${PYTHON_DEPS}

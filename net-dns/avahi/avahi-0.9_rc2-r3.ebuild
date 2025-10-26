@@ -35,7 +35,7 @@ DEPEND="
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	gdbm? ( sys-libs/gdbm:=[${MULTILIB_USEDEP}] )
 	gtk?  ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	kernel_linux? ( sys-libs/libcap )
 	python? (
 		${PYTHON_DEPS}

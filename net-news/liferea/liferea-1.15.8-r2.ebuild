@@ -20,7 +20,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
 	dev-libs/fribidi
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/json-glib
 	dev-libs/libpeas:0[gtk,python,${PYTHON_SINGLE_USEDEP}]
 	dev-libs/libxml2:2=

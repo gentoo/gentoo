@@ -31,7 +31,7 @@ COMMON_DEPEND="
 		>=dev-libs/libgudev-165:=
 	)
 	elogind? ( >=sys-auth/elogind-219 )
-	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	lvm? ( sys-fs/lvm2 )
 	systemd? ( >=sys-apps/systemd-209 )
 "
