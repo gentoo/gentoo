@@ -19,12 +19,11 @@ IUSE="debug gtk gtk3 +introspection test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/dbus-glib-0.100[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.35.4[${MULTILIB_USEDEP}]
-	dev-libs/libxml2:=[${MULTILIB_USEDEP}]
 	gtk? ( x11-libs/gtk+:2[introspection?,${MULTILIB_USEDEP}] )
 	gtk3? ( >=x11-libs/gtk+-3.2:3[introspection?,${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )"
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
+"
 # tests also have optional dep on valgrind which we do not enforce
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -38,7 +37,8 @@ BDEPEND="
 		>=dev-util/dbus-test-runner-15.04.0_p100
 		gtk? ( ${VIRTUALX_DEPEND} )
 		gtk3? ( ${VIRTUALX_DEPEND} )
-	)"
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-configure-fix.patch"
