@@ -3,9 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=scikit-build-core
+PYPI_VERIFY_REPO=https://github.com/scikit-hep/awkward
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
