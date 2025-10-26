@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<pkgmetadata>
+  <maintainer type="person">
+    <name>John Wason</name>
+    <email>wason@wasontech.com</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">robotraconteur/robotraconteur_companion</remote-id>
+    <bugs-to>https://github.com/robotraconteur/robotraconteur_companion/issues</bugs-to>
+    <doc>http://robotraconteur.com</doc>
+  </upstream>
+  <longdescription lang="en">
+    Robot Raconteur C++ companion library. See http://robotraconteur.com for documentation.
+  </longdescription>
+</pkgmetadata>
