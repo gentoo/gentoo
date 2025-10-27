@@ -10,11 +10,11 @@ inherit distutils-r1
 
 DESCRIPTION="A common interface to Gentoo package managers"
 HOMEPAGE="
-	https://github.com/projg2/gentoopm/
+	https://github.com/gentoo/gentoopm/
 	https://pypi.org/project/gentoopm/
 "
 SRC_URI="
-	https://github.com/projg2/gentoopm/archive/v${PV}.tar.gz
+	https://github.com/gentoo/gentoopm/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
