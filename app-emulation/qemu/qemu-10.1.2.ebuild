@@ -332,6 +332,7 @@ RDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-10.1.2-fix_passt.patch
 	"${FILESDIR}"/${PN}-9.0.0-disable-keymap.patch
 	"${FILESDIR}"/${PN}-9.2.0-capstone-include-path.patch
 	"${FILESDIR}"/${PN}-8.1.0-skip-tests.patch
@@ -636,6 +637,7 @@ qemu_src_configure() {
 		$(conf_notuser opengl)
 		$(conf_notuser pam auth-pam)
 		$(conf_notuser passt)
+		$(conf_notuser passt gio)
 		$(conf_notuser png)
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
