@@ -21,7 +21,7 @@ IUSE="doc vtk"
 
 RDEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,opengl,ssl,widgets]
-	>=sci-libs/avogadrolibs-${PV}[qt6,vtk?]
+	~sci-libs/avogadrolibs-${PV}[qt6,vtk?]
 	vtk? ( sci-libs/vtk:= )
 "
 DEPEND="${RDEPEND}
