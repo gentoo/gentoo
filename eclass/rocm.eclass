@@ -248,13 +248,44 @@ get_amdgpu_flags() {
 	echo $(printf "%s;" ${AMDGPU_TARGETS[@]})
 }
 
+# @FUNCTION: rocm_add_sandbox
+# @USAGE: [-w]
+# @DESCRIPTION:
+# Add AMD GPU/NPU dev nodes to the sandbox predict list.
+# with -w, add to the sandbox write list.
+rocm_add_sandbox() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+
+	local i
+	for i in /dev/kfd /dev/dri/render* /dev/accel/accel*; do
+		if [[ ! -c $i ]]; then
+			continue
+		elif [[ $1 == '-w' ]]; then
+			addwrite "$i"
+		else
+			addpredict "$i"
+		fi
+	done
+}
+
 # @FUNCTION: check_amdgpu
 # @USAGE: check_amdgpu
 # @DESCRIPTION:
-# grant and check read-write permissions on AMDGPU devices, die if not available.
+# Grant and check read-write permissions on AMDGPU and AMDNPU devices.
+# Die if no AMDGPU devices are available.
 check_amdgpu() {
-	for device in /dev/kfd /dev/dri/render*; do
-		addwrite ${device}
+	# Common case: no AMDGPU device or the kernel fusion driver is disabled in the kernel.
+	if [[ ! -c /dev/kfd ]]; then
+		eerror "Device /dev/kfd does not exist!"
+		eerror "To proceed, you need to have an AMD GPU and have CONFIG_HSA_AMD set in your kernel config."
+		die "/dev/kfd is missing"
+	fi
+
+	local device
+	for device in /dev/kfd /dev/dri/render* /dev/accel/accel*; do
+		[[ ! -c ${device} ]] && continue
+
+		addwrite "${device}"
 		if [[ ! -r ${device} || ! -w ${device} ]]; then
 			eerror "Cannot read or write ${device}!"
 			eerror "Make sure it is present and check the permission."
