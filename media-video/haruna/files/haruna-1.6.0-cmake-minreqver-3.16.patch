@@ -1,0 +1,32 @@
+From 98e3fdb0308b1cebf986136cc44f0e7c42bdd708 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 27 Oct 2025 17:24:34 +0100
+Subject: [PATCH] Raise CMake minimum to 3.16...3.31 range
+
+ECM Find* and Qt6 CMake modules already require 3.16, so it is a good
+base line. CMake 3.16 was released in 2019. At the same time, defining
+the range to 3.31 (last release before CMake 4) means the build system
+is already being tested with all the latest Policy changes up to build
+time CMake version <=3.31 enacted. Tested with CMake 4.1.2.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1e533e1f..ad5dac88 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ #
+ 
+-cmake_minimum_required(VERSION 3.15)
++cmake_minimum_required(VERSION 3.16...3.31)
+ 
+ cmake_policy(SET CMP0048 NEW)
+ project(haruna VERSION 1.6.0 LANGUAGES CXX)
+-- 
+2.51.1
+

@@ -46,3 +46,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	net-misc/yt-dlp
 "
+
+PATCHES=( "${FILESDIR}"/${P}-cmake-minreqver-3.16.patch )
