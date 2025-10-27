@@ -636,6 +636,7 @@ qemu_src_configure() {
 		$(conf_notuser opengl)
 		$(conf_notuser pam auth-pam)
 		$(conf_notuser passt)
+		$(conf_notuser passt gio)
 		$(conf_notuser png)
 		$(conf_notuser rbd)
 		$(conf_notuser sasl vnc-sasl)
