@@ -51,6 +51,7 @@ COMMON_DEPEND="
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 		x11-libs/libXext
+		x11-libs/libXfixes
 		x11-libs/libXpresent
 		x11-libs/libXrandr
 		xv? ( x11-libs/libXv )
@@ -127,18 +128,6 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 "
 
-pkg_pretend() {
-	if has_version "${CATEGORY}/${PN}[X,opengl]" && use !egl; then #953107
-		ewarn "${PN}'s 'opengl' USE was removed in favour of the 'egl' USE as it was"
-		ewarn "only for the deprecated 'gl-x11' mpv option when 'egl-x11/wayland'"
-		ewarn "should be used if --gpu-api=opengl. It is recommended to enable 'egl'"
-		ewarn "unless using vulkan (default since ${PN}-0.40) or something else."
-		ewarn
-		ewarn "USE=vdpau (for nvidia) still enables gl-x11 as it requires it, however"
-		ewarn "it is recommended to instead use --hwdec=nvdec (USE=nvenc) or =vulkan."
-	fi
-}
-
 pkg_setup() {
 	use lua && lua-single_pkg_setup
 	python-single-r1_pkg_setup
@@ -165,6 +154,7 @@ src_configure() {
 		-Dbuild-date=false
 
 		# misc options
+		$(meson_feature X x11-clipboard)
 		$(meson_feature archive libarchive)
 		$(meson_feature bluray libbluray)
 		$(meson_feature cdda)
