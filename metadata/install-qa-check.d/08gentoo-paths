@@ -34,8 +34,8 @@ gentoo_path_check() {
 	local bad_paths=()
 	local x
 
-	local shopt_save=$(shopt -p nullglob)
-	shopt -s nullglob
+	local shopt_save=$(shopt -p nullglob globstar)
+	shopt -s nullglob globstar
 
 	# 1. check for unexpected top-level directories
 	local toplevel_dirs=( "${ED%/}"/* )
@@ -65,7 +65,11 @@ gentoo_path_check() {
 		fi
 	done
 
-	${shopt_save}
+	# 5. check for nested /var/tmp directories (ED leak)
+	local var_tmp_dirs=( "${ED%/}"/**/var/tmp/ )
+	bad_paths+=( "${var_tmp_dirs[@]%/}" )
+
+	eval "${shopt_save}"
 
 	# report
 	# ------
