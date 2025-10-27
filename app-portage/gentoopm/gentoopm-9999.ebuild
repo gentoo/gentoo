@@ -10,10 +10,10 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="A common interface to Gentoo package managers"
 HOMEPAGE="
-	https://github.com/projg2/gentoopm/
+	https://github.com/gentoo/gentoopm/
 	https://pypi.org/project/gentoopm/
 "
-EGIT_REPO_URI="https://github.com/projg2/gentoopm.git"
+EGIT_REPO_URI="https://github.com/gentoo/gentoopm.git"
 
 LICENSE="BSD-2"
 SLOT="0"
