@@ -28,4 +28,5 @@ PDEPEND="
 	app-eselect/eselect-package-manager
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
