@@ -1,0 +1,12 @@
+Without --no-build-isolation "pip install" attempts to reinstall setuptools from pypi
+--- a/cmake/virtualenv.cmake
++++ b/cmake/virtualenv.cmake
+@@ -28,7 +28,7 @@ endfunction()
+ function(virtualenv_install)
+     virtualenv_create()
+     execute_process(
+-      COMMAND ${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install ${ARGN}
++      COMMAND ${VIRTUALENV_BIN_DIR}/${VIRTUALENV_PYTHON_EXENAME} -m pip install --no-build-isolation ${ARGN}
+       COMMAND_ECHO STDOUT
+       RESULT_VARIABLE return_code
+       ERROR_VARIABLE error_message

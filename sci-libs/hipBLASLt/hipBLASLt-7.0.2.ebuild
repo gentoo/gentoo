@@ -47,6 +47,7 @@ BDEPEND="
 		dev-python/pyyaml[\${PYTHON_USEDEP}]
 		dev-python/joblib[\${PYTHON_USEDEP}]
 		dev-python/nanobind[\${PYTHON_USEDEP}]
+		dev-python/setuptools[\${PYTHON_USEDEP}]
 	")
 	$(llvm_gen_dep "llvm-core/clang:\${LLVM_SLOT}")
 	test? (
@@ -69,13 +70,15 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.4.1-gentoopath.patch
 	"${FILESDIR}"/${PN}-7.0.1-system-nanobind.patch
 	"${FILESDIR}"/${PN}-7.0.1-no-arch.patch
+	"${FILESDIR}"/${PN}-7.0.1-fix-setuptools.patch
 )
 
 python_check_deps() {
 	python_has_version "dev-python/msgpack[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/pyyaml[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/joblib[${PYTHON_USEDEP}]" &&
-	python_has_version "dev-python/nanobind[${PYTHON_USEDEP}]"
+	python_has_version "dev-python/nanobind[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/setuptools[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
