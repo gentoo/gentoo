@@ -5,7 +5,7 @@ EAPI=8
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/moonlight-stream/moonlight-qt.git"
-	EGIT_SUBMODULES=( '*' -libs -soundio/libsoundio )
+	EGIT_SUBMODULES=( '*' -libs )
 	inherit git-r3
 else
 	SRC_URI="https://github.com/moonlight-stream/moonlight-qt/releases/download/v${PV}/MoonlightSrc-${PV}.tar.gz"
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/moonlight-stream/moonlight-qt"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda +libdrm embedded glslow soundio +vaapi vdpau vkslow wayland X"
+IUSE="cuda +libdrm embedded glslow +vaapi vdpau vkslow wayland X"
 
 RDEPEND="
 	dev-libs/openssl:=
@@ -36,7 +36,6 @@ RDEPEND="
 		media-video/ffmpeg[drm(-)]
 		x11-libs/libdrm
 	)
-	soundio? ( media-libs/libsoundio:= )
 	vaapi? ( media-libs/libva:=[wayland?,X?] )
 	vdpau? (
 		x11-libs/libvdpau
@@ -53,9 +52,6 @@ BDEPEND="
 
 src_prepare() {
 	default
-
-	# Force system libsoundio over bundled version.
-	rm -r soundio/ || die
 }
 
 src_configure() {
@@ -71,7 +67,6 @@ src_configure() {
 			$(usex X "" disable-x11)
 			$(usev embedded)
 			$(usev glslow)
-			$(usev soundio)
 			$(usev vkslow)
 		"
 	)
