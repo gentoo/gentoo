@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}/${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
-IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game nls postgres radius samba selinux snmp ssh +ssl"
+IUSE="ipv6 ldap mysql nagios-dns nagios-ping nagios-game nls postgres radius samba selinux snmp ssh +ssl rpc"
 
 # Most of the plugins use automagic dependencies, i.e. the plugin will
 # get built if the binary it uses is installed. For example, check_snmp
@@ -23,6 +23,7 @@ AUTOMAGIC_DEPEND="
 	nagios-dns? ( net-dns/bind )
 	nagios-game? ( games-util/qstat )
 	nagios-ping? ( net-analyzer/fping )
+	rpc? ( net-nds/rpcbind )
 	samba? ( net-fs/samba )
 	ssh? ( virtual/openssh )
 	snmp? ( dev-perl/Net-SNMP
