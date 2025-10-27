@@ -81,7 +81,6 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.2.2-libdispatch.patch
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
-	"${FILESDIR}"/tdesktop-5.12.3-fix-webview.patch
 	"${FILESDIR}"/tdesktop-5.14.3-system-cppgir.patch
 )
 
