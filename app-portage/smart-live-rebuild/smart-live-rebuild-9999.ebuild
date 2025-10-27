@@ -17,6 +17,7 @@ SLOT="0"
 
 RDEPEND=">=app-portage/gentoopm-0.2.1[${PYTHON_USEDEP}]"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_install_all() {
