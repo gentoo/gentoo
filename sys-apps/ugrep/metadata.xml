@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>eschwartz@gentoo.org</email>
+		<name>Eli Schwartz</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">Genivia/ugrep</remote-id>
+	</upstream>
+	<use>
+		<flag name="bzip3">Support for .bz3 files using <pkg>app-arch/bzip3</pkg>.</flag>
+	</use>
+</pkgmetadata>
