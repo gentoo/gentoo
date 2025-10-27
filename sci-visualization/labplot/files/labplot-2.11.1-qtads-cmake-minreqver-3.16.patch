@@ -1,0 +1,32 @@
+Source: https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/pull/710
+
+From 7d9f9b43a7957784c2b99f5a3e20b88e50b5b1c2 Mon Sep 17 00:00:00 2001
+From: "anoy." <anoymouserver@users.noreply.github.com>
+Date: Wed, 5 Feb 2025 11:52:17 +0100
+Subject: [PATCH] update minimum CMake version to 3.16 (#710)
+
+---
+ src/3rdparty/Qt-Advanced-Docking-System/CMakeLists.txt                            | 2 +-
+ src/3rdparty/Qt-Advanced-Docking-System/src/CMakeLists.txt                        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/3rdparty/Qt-Advanced-Docking-System/CMakeLists.txt b/src/3rdparty/Qt-Advanced-Docking-System/CMakeLists.txt
+index 00d0f0eb3..2b0a2a665 100644
+--- a/src/3rdparty/Qt-Advanced-Docking-System/CMakeLists.txt
++++ b/src/3rdparty/Qt-Advanced-Docking-System/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.16)
+ 
+ if (POLICY CMP0091)
+   cmake_policy(SET CMP0091 NEW)
+diff --git a/src/3rdparty/Qt-Advanced-Docking-System/src/CMakeLists.txt b/src/3rdparty/Qt-Advanced-Docking-System/src/CMakeLists.txt
+index dbe3b7a6f..a47896a16 100644
+--- a/src/3rdparty/Qt-Advanced-Docking-System/src/CMakeLists.txt
++++ b/src/3rdparty/Qt-Advanced-Docking-System/src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.16)
+ project(QtAdvancedDockingSystem LANGUAGES CXX VERSION ${VERSION_SHORT})
+ include(GNUInstallDirs)
+ if (${QT_VERSION_MAJOR})
