@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
 
 inherit distutils-r1
 
 DESCRIPTION="Check live packages for updates and emerge them as necessary"
-HOMEPAGE="https://github.com/projg2/smart-live-rebuild/"
-SRC_URI="https://github.com/projg2/smart-live-rebuild/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/gentoo/smart-live-rebuild/"
+SRC_URI="https://github.com/gentoo/smart-live-rebuild/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
