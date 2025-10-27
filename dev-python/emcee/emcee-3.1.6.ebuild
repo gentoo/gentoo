@@ -4,9 +4,9 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit distutils-r1 multiprocessing pypi
+inherit distutils-r1 pypi
 
 DESCRIPTION="Python ensemble sampling toolkit for affine-invariant MCMC"
 HOMEPAGE="
@@ -29,11 +29,12 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 DOCS=( AUTHORS.rst README.rst )
@@ -42,9 +43,4 @@ src_prepare() {
 	# unnecessary dep
 	sed -i -e '/wheel/d' setup.py || die
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p xdist -n "$(makeopts_jobs)" --dist=worksteal
 }
