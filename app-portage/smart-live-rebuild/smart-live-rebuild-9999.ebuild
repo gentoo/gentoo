@@ -15,7 +15,10 @@ EGIT_REPO_URI="https://github.com/gentoo/${PN}.git"
 LICENSE="BSD-2"
 SLOT="0"
 
-RDEPEND=">=app-portage/gentoopm-0.2.1[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=app-portage/gentoopm-0.2.1[${PYTHON_USEDEP}]
+	sys-apps/portage[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
