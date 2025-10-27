@@ -25,3 +25,5 @@ DEPEND="
 	media-video/mpv:=[libmpv]
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-cmake-minreqver-3.16.patch ) # bug #965104

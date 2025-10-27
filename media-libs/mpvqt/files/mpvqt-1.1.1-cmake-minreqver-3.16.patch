@@ -1,0 +1,48 @@
+Source: https://invent.kde.org/libraries/mpvqt/-/merge_requests/13
+
+From 2ebbd38bf65d01be9c55d673ecd43c8bb9a6fc8e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 27 Oct 2025 16:44:04 +0100
+Subject: [PATCH] Raise CMake minimum to 3.16...3.31 range
+
+ECM Find* and Qt6 CMake modules already require 3.16, so it is a good
+base line. CMake 3.16 was released in 2019. At the same time, defining
+the range to 3.31 (last release before CMake 4) means the build system
+is already being tested with all the latest Policy changes up to build
+time CMake version <=3.31 enacted. Tested with CMake 4.1.2.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                       | 2 +-
+ examples/video-player/CMakeLists.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3a8330f..ff53e6c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ #
+ 
+-cmake_minimum_required(VERSION 3.15)
++cmake_minimum_required(VERSION 3.16...3.31)
+ 
+ project(MpvQt VERSION 1.1.1 LANGUAGES CXX)
+ 
+diff --git a/examples/video-player/CMakeLists.txt b/examples/video-player/CMakeLists.txt
+index 82f8438..7ea7359 100644
+--- a/examples/video-player/CMakeLists.txt
++++ b/examples/video-player/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # SPDX-License-Identifier: BSD-3-Clause
+ #
+ 
+-cmake_minimum_required(VERSION 3.15)
++cmake_minimum_required(VERSION 3.16...3.31)
+ 
+ project(videoplayer LANGUAGES CXX)
+ 
+-- 
+2.51.1
+
