@@ -40,6 +40,6 @@ JAVA_TEST_GENTOO_CLASSPATH="asm byte-buddy hamcrest jaxb-runtime-2 junit-4 mocki
 JAVA_TEST_SRC_DIR="src/test/java"
 
 src_test() {
-	mv ${WORKDIR}/test-resources-${TEST}/* ../test-resources || die
+	mv "${WORKDIR}/test-resources-${TEST}"/* ../test-resources || die
 	java-pkg-simple_src_test
 }
