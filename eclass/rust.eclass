@@ -178,6 +178,13 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # an invalid combination of RUST and LLVM slots is detected; this probably
 # means that a LLVM slot in LLVM_COMPAT has had all of its Rust slots filtered.
 
+# @ECLASS_VARIABLE: RUST_SUPPORTED_CODEGEN_BACKENDS
+# @DESCRIPTION:
+# Defaults to all values of RUST_CODEGEN_BACKENDS. Can be defined as an
+# array as a subset of these to workaround bugs in alternative, upcoming
+# codegen backends.
+[[ ${#RUST_SUPPORTED_CODEGEN_BACKENDS[@]} -eq 0 ]] && RUST_SUPPORTED_CODEGEN_BACKENDS=( llvm gcc )
+
 # @ECLASS_VARIABLE: RUST_MULTILIB
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -249,6 +256,18 @@ _rust_set_globals() {
 
 	_RUST_SLOTS=( "${_RUST_SLOTS[@]}" )
 	readonly _RUST_SLOTS
+
+	# This will usually be the full set of supported backends, but
+	# on occasion, will be restricted to just 'llvm'.
+	local backend backend_usedep_joined
+	local backend_usedep=()
+	for backend in "${RUST_SUPPORTED_CODEGEN_BACKENDS[@]}" ; do
+		backend_usedep+=( "rust_codegen_backend_${backend}(+)" )
+	done
+	printf -v backend_usedep_joined "%s," "${backend_usedep[@]}"
+	# Strip trailing comma
+	backend_usedep_joined=${backend_usedep_joined%,}
+	RUST_REQ_USE+="${backend_usedep_joined}"
 
 	local rust_dep=()
 	local llvm_slot
