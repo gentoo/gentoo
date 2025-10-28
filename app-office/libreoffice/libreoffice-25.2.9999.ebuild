@@ -191,7 +191,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
+		media-plugins/gst-plugins-meta:1.0
 	)
 	gtk3? (
 		app-accessibility/at-spi2-core:2
