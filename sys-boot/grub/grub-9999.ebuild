@@ -69,7 +69,7 @@ PATCHES=(
 
 DEJAVU_VER=2.37
 DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
-UNIFONT=unifont-16.0.02
+UNIFONT=unifont-17.0.02
 SRC_URI+="
 	fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( https://downloads.sourceforge.net/project/dejavu/dejavu/${DEJAVU_VER}/${DEJAVU}.tar.bz2 )
