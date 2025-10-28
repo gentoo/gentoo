@@ -59,7 +59,9 @@ my_src_configure() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DMZ_BUILD_TESTS=$(usex test)
+		# Controls installing "minizip" and "minigzip" tools.  Install
+		# them unconditionally to avoid divergence with USE=test.
+		-DMZ_BUILD_TESTS=ON
 		-DMZ_BUILD_UNIT_TESTS=$(usex test)
 
 		-DMZ_FETCH_LIBS=OFF
