@@ -208,3 +208,14 @@ my_src_install_all() {
 	dodoc "${FILESDIR}"/README-systemd
 	systemd_douserunit "${GNUPG_SYSTEMD_UNITS[@]/#/${T}/}"
 }
+
+pkg_postinst() {
+	# If /usr/bin/gpg and /usr/bin/gpgv do not exist, provide them.
+	if [[ ! -e ${EROOT}/usr/bin/gpg ]]; then
+		ln -sf -- gpg-reference "${EROOT}"/usr/bin/gpg || die
+	fi
+
+	if [[ ! -e ${EROOT}/usr/bin/gpgv ]]; then
+		ln -sf -- gpgv-reference "${EROOT}"/usr/bin/gpgv || die
+	fi
+}
