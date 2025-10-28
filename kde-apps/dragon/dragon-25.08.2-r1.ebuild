@@ -27,7 +27,7 @@ DEPEND="
 	>=kde-frameworks/kio-${KFMIN}:6
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/kservice-${KFMIN}:6
-	>=kde-frameworks/kwindowsystem-${KFMIN}:6
+	>=kde-frameworks/kwindowsystem-${KFMIN}:6[wayland]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/gettext"
