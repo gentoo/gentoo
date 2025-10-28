@@ -178,10 +178,16 @@ declare -a -g -r _RUST_SLOTS_ORDERED=(
 # an invalid combination of RUST and LLVM slots is detected; this probably
 # means that a LLVM slot in LLVM_COMPAT has had all of its Rust slots filtered.
 
+# @ECLASS_VARIABLE: RUST_NEEDS_LLVM_BACKEND
+# @DESCRIPTION:
+# If set to a non-empty value, depend on Rust with the LLVM codegen backend
+# enabled.  Should only be used to workaround bugs in alternative, upcoming
+# codegen backends.
+
 # @ECLASS_VARIABLE: RUST_MULTILIB
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# If set to a non-empty value insert MULTILIB_USEDEP into the generated
+# If set to a non-empty value, insert MULTILIB_USEDEP into the generated
 # Rust dependency. For this to be useful inherit a multilib eclass and
 # configure the appropriate phase functions.
 
@@ -278,6 +284,9 @@ _rust_set_globals() {
 		rust_dep+=( ")" )
 		RUST_DEPEND="${rust_dep[*]}"
 	else
+		# RUST_NEEDS_LLVM implies RUST_NEEDS_LLVM_BACKEND
+		RUST_NEEDS_LLVM_BACKEND=1
+
 		for llvm_slot in "${LLVM_COMPAT[@]}"; do
 			# Quick sanity check to make sure that the llvm slot is valid for Rust.
 			if [[ "${_RUST_LLVM_MAP[@]}" == *"${llvm_slot}"* ]]; then
@@ -308,6 +317,21 @@ _rust_set_globals() {
 	readonly RUST_DEPEND
 	if [[ -z ${RUST_OPTIONAL} ]]; then
 		BDEPEND="${RUST_DEPEND}"
+	fi
+
+	# Make RUST_REQ_USE reflect that we need the LLVM codegen backend
+	# to be supported for RUST_NEEDS_LLVM_BACKEND so pkg_setup picks
+	# a suitable Rust.
+	#
+	# We're not modifying dependencies for alternative backends because
+	# specifying the correct dependency would be cumbersome and at least
+	# at this point, we're more interested in facilitating some testing
+	# than production use yet.
+	if [[ -n ${RUST_NEEDS_LLVM_BACKEND} ]] ; then
+		RUST_REQ_USE+=",rust_codegen_backends_llvm(+)"
+		# Strip leading & trailing comma
+		RUST_REQ_USE=${RUST_REQ_USE#,}
+		#RUST_REQ_USE=${RUST_REQ_USE%,}
 	fi
 }
 _rust_set_globals
