@@ -1,0 +1,18 @@
+--- a/ps.c 2010-07-21 23:40:33.000000000 +0300
++++ b/ps.c 2025-10-28 17:36:07.620187163 +0200
+@@ -67,10 +67,10 @@
+ };
+ 
+ 
+-static char *readline();
+-static char *gettextline();
+-static char *gettext();
+-static int  blank();
++static char *readline(char *line, int size, FILE *fp, long *position, unsigned *line_len);
++static char *gettextline(char *line);
++static char *gettext(char *line, char **next_char);
++static int  blank(char *line);
+ 
+ /*
+  *     psscan -- scan the PostScript file for document structuring comments.
+
