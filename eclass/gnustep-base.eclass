@@ -63,7 +63,7 @@ gnustep-base_src_prepare() {
 gnustep-base_src_configure() {
 	egnustep_env
 	if [[ -x ./configure ]] ; then
-		econf || die "configure failed"
+		econf ${*}
 	fi
 }
 
