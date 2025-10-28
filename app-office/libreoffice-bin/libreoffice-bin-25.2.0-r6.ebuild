@@ -77,9 +77,9 @@ RDEPEND="
 	media-fonts/liberation-fonts
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	media-libs/mesa[egl(+)]
+	media-plugins/gst-plugins-meta:1.0
 	net-dns/avahi
 	net-print/cups
 	sys-apps/dbus
