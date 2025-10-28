@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Many-Core Engine providing parallel processing capabilities"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="+sereal"
 
 RDEPEND="
