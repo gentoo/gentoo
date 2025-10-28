@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,4 +20,5 @@ RDEPEND=">=gnustep-libs/cenonlibrary-4.0.0"
 PATCHES=(
 	"${FILESDIR}"/${P}-install.patch
 	"${FILESDIR}"/${P}-invalid_array_syntax.patch
+	"${FILESDIR}"/${P}-gcc15.patch
 	)
