@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,3 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 RDEPEND="app-text/ghostscript-gpl"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+PATCHES=(
+	"${FILESDIR}"/gspdf-0.5-prototypes.patch
+)
