@@ -70,7 +70,10 @@ case ${VERIFY_SIG_METHOD} in
 	openpgp)
 		BDEPEND="
 			verify-sig? (
-				app-alternatives/gpg
+				|| (
+					app-alternatives/gpg
+					app-crypt/gnupg[-alternatives(-)]
+				)
 				>=app-portage/gemato-20
 			)
 		"
