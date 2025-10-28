@@ -20,9 +20,8 @@ RESTRICT="!test? ( test )"
 
 # m17n-gui>=1.6.3
 RDEPEND="
-	>=app-i18n/fcitx-5.1.13:5
+	>=app-i18n/fcitx-5.1.12:5
 	dev-db/m17n-db
-	dev-libs/libfmt
 	>=dev-libs/m17n-lib-1.6.3[X]
 "
 DEPEND="${RDEPEND}"
