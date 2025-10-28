@@ -31,6 +31,7 @@ src_compile() {
 		-X github.com/prometheus/common/version.BuildDate="$(date +%F-%T)"
 	)
 	ego build -mod=vendor -ldflags "${go_ldflags[*]}" -o bin/${PN} .
+	./bin/"${PN}" --help-man > "${PN}".1 || die
 }
 
 src_test() {
@@ -40,6 +41,7 @@ src_test() {
 src_install() {
 	dobin bin/*
 	dodoc {README,CHANGELOG,CONTRIBUTING}.md
+	doman "${PN}".1
 
 	keepdir /var/lib/mysqld_exporter /var/log/mysqld_exporter
 	fowners ${PN}:${PN} /var/lib/mysqld_exporter /var/log/mysqld_exporter
