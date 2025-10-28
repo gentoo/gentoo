@@ -5,7 +5,7 @@ EAPI=8
 
 MY_PN="fcitx5"
 
-inherit cmake unpacker xdg
+inherit cmake flag-o-matic toolchain-funcs unpacker xdg
 
 DESCRIPTION="Fcitx 5 is a generic input method framework"
 HOMEPAGE="https://fcitx-im.org/ https://github.com/fcitx/fcitx5"
@@ -75,6 +75,11 @@ BDEPEND="
 "
 
 src_configure() {
+	if [[ $(tc-get-cxx-stdlib) == "libc++" ]]; then
+		# std::osyncstream used in fcitx-utils/log.cpp is marked as experimental.
+		append-cxxflags $(test-flags-CXX -fexperimental-library)
+	fi
+
 	local mycmakeargs=(
 		-DENABLE_DBUS=on
 		-DENABLE_XDGAUTOSTART=$(usex autostart)
