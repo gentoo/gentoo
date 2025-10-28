@@ -15,6 +15,8 @@ if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
 _TOOLCHAIN_ECLASS=1
 
 RUST_OPTIONAL="1"
+# https://github.com/rust-lang/rustc_codegen_gcc/issues/787
+RUST_SUPPORTED_CODEGEN_BACKENDS=( llvm )
 
 case ${EAPI} in
 	8) ;;
