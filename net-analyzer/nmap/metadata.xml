@@ -19,6 +19,9 @@
 		<flag name="zenmap">Install the GTK+ based nmap GUI, zenmap</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/nmap/nmap/issues</bugs-to>
+		<changelog>https://svn.nmap.org/nmap/CHANGELOG</changelog>
+		<doc>https://nmap.org/docs.html</doc>
 		<remote-id type="github">nmap/nmap</remote-id>
 	</upstream>
 </pkgmetadata>
