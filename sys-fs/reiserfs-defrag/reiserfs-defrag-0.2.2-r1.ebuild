@@ -1,7 +1,7 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DOCS=( ChangeLog README.md )
+
+PATCHES=( "${FILESDIR}/${P}-cmake4-compat.patch" )
 
 pkg_postinst() {
 	ewarn "Defragmentation should be done OFFLINE only! You MUST unmount your reiserfs partition before starting ${PN}"
