@@ -117,6 +117,7 @@ pkg_postinst() {
 		ewarn "USE=deno is disabled, using ${PN} with some websites like YouTube may"
 		ewarn "not function properly. If your profile does not allow enabling this USE,"
 		ewarn "can use net-libs/nodejs instead but it is disabled by default due to"
-		ewarn "security concerns and requires manually passing '--js-runtimes node'."
+		ewarn "security(!) concerns and requires manually passing '--js-runtimes node'"
+		ewarn "(to be permanent: echo '--js-runtimes node' >> ~/.config/yt-dlp/config)"
 	fi
 }
