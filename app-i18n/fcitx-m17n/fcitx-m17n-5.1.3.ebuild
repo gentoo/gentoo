@@ -11,6 +11,7 @@ DESCRIPTION="m17n-provided input methods for Fcitx5"
 HOMEPAGE="https://github.com/fcitx/fcitx5-m17n"
 SRC_URI="https://download.fcitx-im.org/fcitx5/${MY_PN}/${MY_PN}-${PV}.tar.zst -> ${P}.tar.zst"
 
+S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="LGPL-2.1+"
 SLOT="5"
 KEYWORDS="amd64 ~arm64 ~loong ~riscv x86"
@@ -30,7 +31,7 @@ BDEPEND="
 	kde-frameworks/extra-cmake-modules:0
 "
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+PATCHES=( "${FILESDIR}/${P}-fix-i18n-string-format.patch") # bugs #959670
 
 src_configure() {
 	local mycmakeargs=(

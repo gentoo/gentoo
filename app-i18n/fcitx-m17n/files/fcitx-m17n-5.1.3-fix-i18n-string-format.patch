@@ -1,0 +1,103 @@
+port away from fmt to std::format
+
+Bugs: https://bugs.gentoo.org/959670
+Link: https://github.com/fcitx/fcitx5-m17n/commit/105bee2b3b9bc8a17f0546f879daa31e88a9613b
+Link: https://github.com/fcitx/fcitx5-m17n/commit/fbbfdcafaa5299e80c16d8bc4ed9cf8c6bd86395
+
+From 105bee2b3b9bc8a17f0546f879daa31e88a9613b Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Wed, 19 Feb 2025 18:59:31 +0000
+Subject: [PATCH] Port away from fmt to std::format
+
+---
+ CMakeLists.txt    | 7 -------
+ im/CMakeLists.txt | 2 +-
+ im/engine.cpp     | 9 +++++----
+ 3 files changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6ee6bb..ab5f3f3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,18 +16,11 @@ set(GCOV_TOOL "gcov" CACHE STRING "Path to gcov tool used by coverage.")
+ find_package(Fcitx5Core ${REQUIRED_FCITX_VERSION} REQUIRED)
+ find_package(Fcitx5Module REQUIRED COMPONENTS TestFrontend)
+ find_package(Gettext REQUIRED)
+-find_package(fmt REQUIRED)
+ find_package(PkgConfig REQUIRED)
+ pkg_check_modules(M17NGui IMPORTED_TARGET "m17n-gui>=1.6.3" REQUIRED)
+ # Required for data and testing
+ pkg_check_modules(M17NDB "m17n-db" REQUIRED)
+ 
+-if (TARGET fmt::fmt-header-only)
+-  set(FMT_TARGET fmt::fmt-header-only)
+-else()
+-  set(FMT_TARGET fmt::fmt)
+-endif ()
+-
+ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
+ add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-m17n\" -D_GNU_SOURCE)
+ fcitx5_add_i18n_definition()
+diff --git a/im/CMakeLists.txt b/im/CMakeLists.txt
+index 900437f..ba50bd3 100644
+--- a/im/CMakeLists.txt
++++ b/im/CMakeLists.txt
+@@ -5,7 +5,7 @@ set(fcitx_m17n_sources
+     )
+ 
+ add_fcitx5_addon(m17n ${fcitx_m17n_sources})
+-target_link_libraries(m17n Fcitx5::Core Fcitx5::Config ${FMT_TARGET} PkgConfig::M17NGui)
++target_link_libraries(m17n Fcitx5::Core Fcitx5::Config PkgConfig::M17NGui)
+ target_include_directories(m17n PRIVATE ${PROJECT_BINARY_DIR})
+ set_target_properties(m17n PROPERTIES PREFIX "")
+ install(TARGETS m17n DESTINATION "${CMAKE_INSTALL_LIBDIR}/fcitx5")
+diff --git a/im/engine.cpp b/im/engine.cpp
+index 9b9ee4f..0f6da54 100644
+--- a/im/engine.cpp
++++ b/im/engine.cpp
+@@ -32,7 +32,7 @@
+ #include <fcitx/text.h>
+ #include <fcitx/userinterface.h>
+ #include <fcntl.h>
+-#include <fmt/format.h>
++#include <format>
+ #include <m17n-core.h>
+ #include <m17n.h>
+ #include <memory>
+@@ -348,9 +348,10 @@ std::vector<InputMethodEntry> M17NEngine::listInputMethods() {
+ 
+         std::string iconName;
+         auto uniqueName = stringutils::concat("m17n_", lang, "_", name);
+-        auto fxName = fmt::format(
+-            _("{0} (M17N)"),
+-            (item && item->i18nName.size()) ? _(item->i18nName) : name);
++        const std::string i18nname =
++            (item && item->i18nName.size()) ? _(item->i18nName) : name;
++        auto fxName =
++            std::vformat(_("{0} (M17N)"), std::make_format_args(i18nname));
+ 
+         info = minput_get_title_icon(mlang, mname);
+         // head of info is a MText
+From fbbfdcafaa5299e80c16d8bc4ed9cf8c6bd86395 Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Wed, 19 Feb 2025 23:33:05 -0800
+Subject: [PATCH] Use new macro for i18n string format
+
+---
+ im/engine.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/im/engine.cpp b/im/engine.cpp
+index 0f6da54..1a22657 100644
+--- a/im/engine.cpp
++++ b/im/engine.cpp
+@@ -350,8 +350,7 @@ std::vector<InputMethodEntry> M17NEngine::listInputMethods() {
+         auto uniqueName = stringutils::concat("m17n_", lang, "_", name);
+         const std::string i18nname =
+             (item && item->i18nName.size()) ? _(item->i18nName) : name;
+-        auto fxName =
+-            std::vformat(_("{0} (M17N)"), std::make_format_args(i18nname));
++        auto fxName = _("{0} (M17N)", i18nname);
+ 
+         info = minput_get_title_icon(mlang, mname);
+         // head of info is a MText
