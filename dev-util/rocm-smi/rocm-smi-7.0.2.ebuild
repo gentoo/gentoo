@@ -28,7 +28,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers
-	x11-libs/libdrm
+	x11-libs/libdrm[video_cards_amdgpu]
 "
 
 PATCHES=(
