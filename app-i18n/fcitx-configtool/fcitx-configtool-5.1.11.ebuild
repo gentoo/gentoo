@@ -55,7 +55,10 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-make-x11-dependencies-optional.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-make-x11-dependencies-optional.patch
+	"${FILESDIR}"/${PN}-remove-unused-xkbfile.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
