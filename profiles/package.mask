@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2025-10-29)
+# No longer used by sys-boot/grub.
+# Removal on 2025-11-28.
+sec-keys/openpgp-keys-danielkiper
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-10-25)
 # EAPI=7, maintainer-needed, no rev deps, source digest mismatch.
 # Removal on 2025-11-24.  Bugs #965097, #927089.
