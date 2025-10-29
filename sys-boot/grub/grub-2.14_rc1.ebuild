@@ -39,11 +39,9 @@ if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
-		# https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz
-		# https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz.sig
 		SRC_URI="
-			https://dev.gentoo.org/~floppym/dist/${MY_P}.tar.xz
-			verify-sig? ( https://dev.gentoo.org/~floppym/dist/${MY_P}.tar.xz.sig )
+			https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz
+			verify-sig? ( https://alpha.gnu.org/gnu/${PN}/${MY_P}.tar.xz.sig )
 		"
 		S=${WORKDIR}/${MY_P}
 	else
