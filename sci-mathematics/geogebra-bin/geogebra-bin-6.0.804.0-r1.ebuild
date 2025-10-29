@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,13 +17,28 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 
 RDEPEND="
-	x11-libs/libxshmfence
-	dev-libs/nss
 	app-accessibility/at-spi2-core
-	x11-libs/libdrm
-	>=x11-libs/gtk+-3
+	dev-libs/expat
+	dev-libs/glib
+	dev-libs/nspr
+	dev-libs/nss
 	media-libs/alsa-lib
+	media-libs/mesa
 	net-print/cups
+	sys-apps/dbus
+	sys-libs/glibc
+	>=x11-libs/gtk+-3[X]
+	x11-libs/libX11
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrandr
+	x11-libs/libdrm
+	x11-libs/libxcb
+	x11-libs/libxkbcommon
+	x11-libs/libxshmfence
+	x11-libs/pango
 "
 BDEPEND="
 	app-arch/unzip
