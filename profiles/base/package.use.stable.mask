@@ -4,6 +4,10 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Alexey Shvetsov <alexxy@gentoo.org> (2025-10-29)
+# Need non-yet-stable caffe2
+sci-chemistry/gromacs nnpot
+
 # Sam James <sam@gentoo.org> (2025-10-10)
 # Needs not-yet-stable GCC 15.
 dev-lang/python tail-call-interp
