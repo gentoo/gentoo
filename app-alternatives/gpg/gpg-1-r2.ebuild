@@ -4,8 +4,8 @@
 EAPI=8
 
 ALTERNATIVES=(
-	"reference:>=app-crypt/gnupg-2.4.8-r1[alternatives(-),ssl?]"
-	"freepg:app-crypt/freepg[ssl?]"
+	"reference:>=app-crypt/gnupg-2.4.8-r1[alternatives(-),nls?,ssl?]"
+	"freepg:app-crypt/freepg[nls?,ssl?]"
 	"sequoia:app-crypt/sequoia-chameleon-gnupg"
 )
 
@@ -13,7 +13,7 @@ inherit app-alternatives
 
 DESCRIPTION="gpg symlink"
 KEYWORDS="~amd64"
-IUSE="ssl"
+IUSE="nls ssl"
 
 RDEPEND="
 	!app-crypt/gnupg[-alternatives(-)]
