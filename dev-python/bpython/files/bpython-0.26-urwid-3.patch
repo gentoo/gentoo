@@ -1,0 +1,36 @@
+From bbc9438a2638d60f131ede56d7c21a6f96592927 Mon Sep 17 00:00:00 2001
+From: Sebastian Ramacher <sebastian@ramacher.at>
+Date: Tue, 28 Oct 2025 23:12:28 +0100
+Subject: [PATCH] Fix compatibility with urwid 3.0 (fixes #1043)
+
+--- a/bpython/urwid.py
++++ b/bpython/urwid.py
+@@ -411,7 +411,7 @@ def keypress(self, size, key):
+         return key
+ 
+ 
+-class Tooltip(urwid.BoxWidget):
++class Tooltip(urwid.Widget):
+     """Container inspired by Overlay to position our tooltip.
+ 
+     bottom_w should be a BoxWidget.
+@@ -423,6 +423,9 @@ class Tooltip(urwid.BoxWidget):
+     from the bottom window and hides it if there is no cursor.
+     """
+ 
++    _sizing = frozenset(['box'])
++    _selectable = True
++
+     def __init__(self, bottom_w, listbox):
+         super().__init__()
+ 
+@@ -1322,7 +1325,8 @@ def run_find_coroutine():
+ 
+         run_find_coroutine()
+ 
+-    myrepl.main_loop.screen.run_wrapper(run_with_screen_before_mainloop)
++    with myrepl.main_loop.screen.start():
++        run_with_screen_before_mainloop()
+ 
+     if config.flush_output and not options.quiet:
+         sys.stdout.write(myrepl.getstdout())
