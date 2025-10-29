@@ -19,6 +19,8 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
+S="${WORKDIR}/${PN}-gentoo-${PV}"
+
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="dracut efistub grub refind systemd systemd-boot ugrd uki ukify"
