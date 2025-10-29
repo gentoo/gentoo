@@ -32,7 +32,10 @@ IUSE="common-lisp static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-crypt/gnupg-2
+	|| (
+		app-alternatives/gpg[reference]
+		app-alternatives/gpg[freepg(-)]
+	)
 	>=dev-libs/libassuan-2.5.3:=
 	>=dev-libs/libgpg-error-1.46-r1:=
 "
