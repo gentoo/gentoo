@@ -28,7 +28,7 @@ else
 fi
 
 LICENSE="MIT BSD"
-IUSE="benchmark hipblaslt roctracer test video_cards_amdgpu"
+IUSE="benchmark hipblaslt roctracer test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
@@ -41,9 +41,9 @@ RDEPEND="
 	roctracer? ( dev-util/roctracer:${SLOT} )
 	hipblaslt? ( sci-libs/hipBLASLt:${SLOT} )
 	benchmark? (
-		virtual/blas
 		dev-cpp/gtest
 		llvm-runtimes/openmp
+		sci-libs/flexiblas
 	)
 "
 
@@ -51,13 +51,11 @@ DEPEND="
 	${RDEPEND}
 	>=dev-cpp/msgpack-cxx-6.0.0
 	test? (
-		virtual/blas
 		dev-cpp/gtest
 		llvm-runtimes/openmp
+		sci-libs/flexiblas
 	)
-	video_cards_amdgpu? (
-		dev-util/Tensile:${SLOT}
-	)
+	dev-util/Tensile:${SLOT}
 "
 
 QA_FLAGS_IGNORED="/usr/lib64/rocblas/library/.*"
@@ -66,7 +64,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.2-add-missing-header.patch
 	"${FILESDIR}"/${PN}-7.0.2-expand-isa-compatibility.patch
 	"${FILESDIR}"/${PN}-6.3.0-no-git.patch
-	"${FILESDIR}"/${PN}-7.0.1-find-cblas.patch
 )
 
 src_prepare() {
@@ -91,7 +88,7 @@ src_configure() {
 		-DCMAKE_SKIP_RPATH=ON
 		-DROCM_SYMLINK_LIBS=OFF
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
-		-DBUILD_WITH_TENSILE="$(usex video_cards_amdgpu)"
+		-DBUILD_WITH_TENSILE=ON
 		-DCMAKE_INSTALL_INCLUDEDIR="include/rocblas"
 		-DBUILD_CLIENTS_SAMPLES=OFF
 		-DBUILD_CLIENTS_TESTS="$(usex test ON OFF)"
@@ -100,15 +97,16 @@ src_configure() {
 		-DBUILD_WITH_HIPBLASLT="$(usex hipblaslt ON OFF)"
 		-DROCBLAS_ENABLE_MARKER="$(usex roctracer ON OFF)"
 		-DLINK_BLIS=OFF
-		-DTensile_CPU_THREADS=$(makeopts_jobs)
+		-DTensile_COMPILER="${CXX}"
+		-DTensile_ROOT="${EPREFIX}/usr/share/Tensile"
+		-DTensile_CPU_THREADS="$(makeopts_jobs)"
 		-Wno-dev
 	)
 
-	if usex video_cards_amdgpu; then
+	if use benchmark || use test; then
 		mycmakeargs+=(
-			-DTensile_COMPILER="hipcc"
-			-DTensile_ROOT="${EPREFIX}/usr/share/Tensile"
-			-DTensile_CPU_THREADS="$(makeopts_jobs)"
+			-DBLA_PKGCONFIG_BLAS=ON
+			-DBLA_VENDOR=FlexiBLAS
 		)
 	fi
 
