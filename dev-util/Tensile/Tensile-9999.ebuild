@@ -18,11 +18,13 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/ROCm/rocm-libraries.git"
 	EGIT_BRANCH="develop"
 	S="${WORKDIR}/${P}/shared/tensile"
-	SLOT="0/7.0"
+	SLOT="0/9999"
+	SLOT_NOLIVE="0/7.0"
 else
 	SRC_URI="https://github.com/ROCm/Tensile/archive/rocm-${PV}.tar.gz -> rocm-Tensile-${PV}.tar.gz"
 	S="${WORKDIR}/${PN}-rocm-${PV}"
 	SLOT="0/$(ver_cut 1-2)"
+	SLOT_NOLIVE=${SLOT}
 	KEYWORDS="~amd64"
 fi
 
@@ -39,8 +41,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-python/joblib[${PYTHON_USEDEP}]
-	dev-util/hip:${SLOT}
-	dev-util/rocm-smi:${SLOT}
+	dev-util/hip:${SLOT_NOLIVE}
+	dev-util/rocm-smi:${SLOT_NOLIVE}
 	$(llvm_gen_dep "
 		llvm-core/clang:\${LLVM_SLOT}
 	")
