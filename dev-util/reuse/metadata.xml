@@ -6,8 +6,15 @@
 		<name>Jonas Stein</name>
 	</maintainer>
 	<upstream>
+		<maintainer status="active">
+			<name>Carmen Bianca</name>
+			<email>carmenbianca@fsfe.org</email>
+		</maintainer>
+		<bugs-to>https://github.com/fsfe/reuse-tool/issues</bugs-to>
+		<changelog>https://codeberg.org/fsfe/reuse-tool/releases</changelog>
 		<doc>https://reuse.readthedocs.io/</doc>
+		<remote-id type="codeberg">fsfe/reuse-tool</remote-id>
 		<remote-id type="pypi">reuse</remote-id>
-		<remote-id type="github">fsfe/reuse-tool</remote-id>
 	</upstream>
+	<stabilize-allarches/>
 </pkgmetadata>
