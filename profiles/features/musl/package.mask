@@ -408,6 +408,7 @@ sci-chemistry/cara-bin
 sci-electronics/labone
 sci-libs/aotriton-bin
 sci-libs/mkl
+sci-mathematics/geogebra-bin
 sci-mathematics/gimps
 sci-misc/jupyterlab-desktop-bin
 sci-misc/netlogo-bin
