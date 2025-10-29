@@ -28,7 +28,10 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~spar
 # Need gnupg[nls] for avoiding decode errors and possible hangs
 # w/ e.g. sec-keys/openpgp-keys-gentoo-developers but other pkgs too.
 DEPEND="
-	app-crypt/gnupg[nls]
+	|| (
+		app-alternatives/gpg[reference]
+		app-alternatives/gpg[freepg(-)]
+	)
 "
 RDEPEND="
 	${DEPEND}
