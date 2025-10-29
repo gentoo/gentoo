@@ -82,6 +82,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
+	QA_FLAGS_IGNORED="usr/$(get_libdir)/hipblaslt/library/.*"
 	python-any-r1_pkg_setup
 }
 
@@ -128,10 +129,12 @@ src_configure() {
 
 	local targets="$(get_amdgpu_flags)"
 	local Tensile_SKIP_BUILD=$([ "${AMDGPU_TARGETS[*]}" = "" ] && echo ON || echo OFF )
+	local HIPBLASLT_ENABLE_DEVICE=$([ "${AMDGPU_TARGETS[*]}" != "" ] && echo ON || echo OFF )
 
 	local mycmakeargs=(
 		-DROCM_SYMLINK_LIBS=OFF
 		-DTensile_SKIP_BUILD=${Tensile_SKIP_BUILD}
+		-DHIPBLASLT_ENABLE_DEVICE=${HIPBLASLT_ENABLE_DEVICE}
 		-DTensile_COMPILER=${CXX}
 		-DAMDGPU_TARGETS="${targets}"
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
