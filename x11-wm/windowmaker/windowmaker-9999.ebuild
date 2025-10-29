@@ -1,27 +1,45 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit autotools desktop git-r3
+
+inherit autotools desktop
 
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="https://www.windowmaker.org/"
-SRC_URI="https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
-EGIT_REPO_URI="https://repo.or.cz/wmaker-crm.git"
-EGIT_BRANCH="next"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://repo.or.cz/wmaker-crm.git"
+	SRC_URI="https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
+else
+	MY_P="WindowMaker-${PV}"
+	SRC_URI="
+		https://github.com/window-maker/wmaker/releases/download/wmaker-${PV}/${MY_P}.tar.gz
+		https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz
+	"
+	S="${WORKDIR}/${MY_P}"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+fi
 
-SLOT="0"
+# WRASTER_CURRENT-WRASTER_AGE.WINGS_CURRENT-WINGS_AGE.WUTIL_CURRENT-WUTIL_AGE from configure.ac
 LICENSE="GPL-2"
-IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
-KEYWORDS=""
+SLOT="0/6.3.5"
 
-DEPEND="media-libs/fontconfig
+IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
+
+DEPEND="
+	media-libs/fontconfig
+	media-libs/libexif
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXres
 	>=x11-libs/libXft-2.1.0
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libXt
 	x11-libs/libXv
-	gif? ( >=media-libs/giflib-4.1.0-r3 )
+	x11-libs/pango
+	gif? ( >=media-libs/giflib-4.1.0-r3:= )
 	imagemagick? ( >=media-gfx/imagemagick-7:0= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	nls? ( virtual/libintl )
@@ -29,7 +47,8 @@ DEPEND="media-libs/fontconfig
 	tiff? ( media-libs/tiff:= )
 	webp? ( media-libs/libwebp:= )
 	xinerama? ( x11-libs/libXinerama )
-	xrandr? ( x11-libs/libXrandr )"
+	xrandr? ( x11-libs/libXrandr )
+"
 RDEPEND="${DEPEND}"
 BDEPEND="nls? ( >=sys-devel/gettext-0.10.39 )"
 
@@ -37,10 +56,10 @@ DOCS=( AUTHORS BUGFORM BUGS ChangeLog INSTALL-WMAKER FAQ
 	NEWS README README.definable-cursor README.i18n TODO )
 
 src_unpack() {
-	# wm-extras
-	unpack ${A}
-
-	git-r3_src_unpack
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+	fi
+	default
 }
 
 src_prepare() {
@@ -53,12 +72,43 @@ src_prepare() {
 		fi
 	done
 
+	# Not relevant downstram
+	sed -e '/check-local/d' -i Makefile.am || die
+
 	default
+
+	# Fix issues with ignored cflags and mystery linkage to glib, freetype and harfbuzz
 	eautoreconf
 }
 
 src_configure() {
+	# sanity check subslot to kick would be drive by bumpers
+	local detected_abi
+	for lib in WRASTER WINGS WUTIL; do
+		# On Linux libtool will decide soname as CURRENT-AGE rather than just CURRENT
+		local current="$(sed -n -e "s/${lib}_CURRENT=\([0-9]*\)/\1/p" configure.ac)"
+		local age="$(sed -n -e "s/${lib}_AGE=\([0-9]*\)/\1/p" configure.ac)"
+		detected_abi+="$((current-age))."
+	done
+	detected_abi="${detected_abi%.}"
+	if [[ "${SLOT}" != "0/${detected_abi}" ]]; then
+		if [[ ${PV} == 9999 ]]; then
+			eerror "SLOT ${SLOT} doesn't match upstream specified ABI ${detected_abi}."
+		else
+			die "SLOT ${SLOT} doesn't match upstream specified ABI ${detected_abi}."
+		fi
+	fi
+
 	local -a myeconfargs=(
+		--localedir="${EPREFIX}"/usr/share/locale
+		--sysconfdir="${EPREFIX}"/etc/X11
+		--disable-static
+		--enable-usermenu
+		--with-incs-from=
+		--with-libs-from=
+		--with-pixmapdir="${EPREFIX}"/usr/share/pixmaps
+		--with-x
+
 		# image format types
 		$(use_enable gif)
 		$(use_enable imagemagick magick)
@@ -81,15 +131,7 @@ src_configure() {
 		myeconfargs+=( LINGUAS= )
 	fi
 
-	econf \
-		--localedir="${EPREFIX}"/usr/share/locale \
-		--sysconfdir="${EPREFIX}"/etc/X11 \
-		--disable-static \
-		--enable-usermenu \
-		--with-{incs,libs}-from= \
-		--with-pixmapdir="${EPREFIX}"/usr/share/pixmaps \
-		--with-x \
-		"${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 
 	pushd ../WindowMaker-extra-0.1 &>/dev/null || die
 	econf

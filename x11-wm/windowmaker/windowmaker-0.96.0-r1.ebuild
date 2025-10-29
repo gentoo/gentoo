@@ -5,20 +5,25 @@ EAPI=8
 
 inherit autotools desktop
 
-MY_P="WindowMaker-${PV}"
-
 DESCRIPTION="The fast and light GNUstep window manager"
 HOMEPAGE="https://www.windowmaker.org/"
-SRC_URI="
-	https://github.com/window-maker/wmaker/releases/download/wmaker-${PV}/${MY_P}.tar.gz
-	https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz
-"
-S="${WORKDIR}/${MY_P}"
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://repo.or.cz/wmaker-crm.git"
+	SRC_URI="https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
+else
+	MY_P="WindowMaker-${PV}"
+	SRC_URI="
+		https://github.com/window-maker/wmaker/releases/download/wmaker-${PV}/${MY_P}.tar.gz
+		https://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz
+	"
+	S="${WORKDIR}/${MY_P}"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+fi
 
 # WRASTER_CURRENT-WRASTER_AGE.WINGS_CURRENT-WINGS_AGE.WUTIL_CURRENT-WUTIL_AGE from configure.ac
 LICENSE="GPL-2"
 SLOT="0/6.3.5"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 
 IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
 
@@ -50,6 +55,13 @@ BDEPEND="nls? ( >=sys-devel/gettext-0.10.39 )"
 DOCS=( AUTHORS BUGFORM BUGS ChangeLog INSTALL-WMAKER FAQ
 	NEWS README README.definable-cursor README.i18n TODO )
 
+src_unpack() {
+	if [[ ${PV} == 9999 ]]; then
+		git-r3_src_unpack
+	fi
+	default
+}
+
 src_prepare() {
 	# Fix some paths
 	for file in WindowMaker/*menu* util/wmgenmenu.c; do
@@ -80,7 +92,11 @@ src_configure() {
 	done
 	detected_abi="${detected_abi%.}"
 	if [[ "${SLOT}" != "0/${detected_abi}" ]]; then
-		die "SLOT ${SLOT} doesn't match upstream specified ABI ${detected_abi}."
+		if [[ ${PV} == 9999 ]]; then
+			eerror "SLOT ${SLOT} doesn't match upstream specified ABI ${detected_abi}."
+		else
+			die "SLOT ${SLOT} doesn't match upstream specified ABI ${detected_abi}."
+		fi
 	fi
 
 	local -a myeconfargs=(
