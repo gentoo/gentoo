@@ -10,7 +10,8 @@
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
 # transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
 # after we made app-alternatives/gpg depend on newer gnupg to fix another problem.
-# Users can unmask these locally once their upgrade is done.
+# Users can unmask these locally in /etc/portage/profile/package.use.mask once
+# their upgrade is done.
 app-crypt/gnupg verify-sig
 app-crypt/pinentry verify-sig
 dev-libs/libgcrypt verify-sig
