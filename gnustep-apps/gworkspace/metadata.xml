@@ -11,4 +11,7 @@ GWorkspace is the official GNUstep workspace manager. It is a clone of the NeXT 
 <use>
 	<flag name="gwmetadata">Enable the metadata indexing and searching system</flag>
 </use>
+<upstream>
+	<remote-id type="github">gnustep/apps-gworkspace</remote-id>
+</upstream>
 </pkgmetadata>
