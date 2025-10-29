@@ -232,11 +232,6 @@ net-misc/grive
 sys-auth/google-authenticator-wrappers
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
-# Unmaintained in ::gentoo, EAPI-7 based, almost no one else is left
-# packaging this. Removal on 2025-10-29.
-sys-fs/reiserfs-defrag
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
 # Unmaintained in ::gentoo, EAPI-7 based, broken by CMake 4.
 # If you want to keep it, maintain it.
 # Bugs #789756, #951884, #956413, #957572. Removal on 2025-10-29.
