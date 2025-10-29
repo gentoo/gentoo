@@ -6,6 +6,10 @@
 		<name>Jonas Stein</name>
 	</maintainer>
 	<upstream>
+		<maintainer status="active">
+			<name>Carmen Bianca</name>
+			<email>carmenbianca@fsfe.org</email>
+		</maintainer>
 		<bugs-to>https://github.com/fsfe/reuse-tool/issues</bugs-to>
 		<changelog>https://github.com/fsfe/reuse-tool/releases</changelog>
 		<doc>https://reuse.readthedocs.io/</doc>
