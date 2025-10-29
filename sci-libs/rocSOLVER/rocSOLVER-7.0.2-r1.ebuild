@@ -19,18 +19,23 @@ KEYWORDS="~amd64"
 IUSE="benchmark sparse test"
 REQUIRED_USE="${ROCM_REQUIRED_USE}"
 
-RDEPEND="dev-util/hip:${SLOT}
+RDEPEND="
+	dev-libs/libfmt:=
+	dev-util/hip:${SLOT}
 	sci-libs/rocBLAS:${SLOT}
-	benchmark? ( virtual/blas )
+	benchmark? ( sci-libs/flexiblas )
 	sparse? ( sci-libs/rocSPARSE:${SLOT} )
 "
 DEPEND="
 	${RDEPEND}
-	dev-libs/libfmt
+	sci-libs/rocPRIM:${SLOT}
 "
-BDEPEND="test? ( dev-cpp/gtest
-	>=dev-build/cmake-3.22
-	virtual/blas )"
+BDEPEND="
+	test? (
+		dev-cpp/gtest
+		sci-libs/flexiblas
+	)
+"
 
 RESTRICT="!test? ( test )"
 
@@ -55,6 +60,14 @@ src_configure() {
 		-DBUILD_CLIENTS_BENCHMARKS=$(usex benchmark ON OFF)
 		-DBUILD_WITH_SPARSE=$(usex sparse ON OFF)
 	)
+
+	if use benchmark || use test; then
+		mycmakeargs+=(
+			-DROCSOLVER_FIND_PACKAGE_LAPACK_CONFIG=OFF
+			-DBLA_PKGCONFIG_BLAS=ON
+			-DBLA_VENDOR=FlexiBLAS
+		)
+	fi
 
 	cmake_src_configure
 }
