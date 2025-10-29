@@ -33,10 +33,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!dev-libs/libelf
+	>=app-arch/libarchive-3.1.2:=
 	>=sys-libs/zlib-1.2.8-r1[static-libs?,${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[static-libs?,${MULTILIB_USEDEP}] )
 	debuginfod? (
-		>=app-arch/libarchive-3.1.2:=
 		dev-db/sqlite:3=
 		>=dev-libs/json-c-0.11:=[${MULTILIB_USEDEP}]
 		>=net-libs/libmicrohttpd-0.9.33:=
