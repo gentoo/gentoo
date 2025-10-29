@@ -34,6 +34,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	${PYTHON_DEPS}
 	test? ( dev-cpp/gtest )
+	x11-libs/libdrm[video_cards_amdgpu]
 "
 RDEPEND="
 	${PYTHON_DEPS}
