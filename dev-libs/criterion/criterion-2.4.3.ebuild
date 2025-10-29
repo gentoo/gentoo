@@ -36,7 +36,9 @@ DEPEND="
 	${RDEPEND}
 	>=dev-libs/boxfort-0.1.4
 	test? (
-		$(python_gen_any_dep 'dev-util/cram[${PYTHON_USEDEP}]')
+		$(python_gen_any_dep '
+			dev-util/cram[${PYTHON_USEDEP}]
+		')
 	)
 "
 BDEPEND="
@@ -45,7 +47,7 @@ BDEPEND="
 "
 
 python_check_deps() {
-	python_has_version -d 'dev-util/cram[${PYTHON_USEDEP}]'
+	python_has_version -d "dev-util/cram[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
