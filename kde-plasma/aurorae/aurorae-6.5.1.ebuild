@@ -12,7 +12,7 @@ HOMEPAGE="https://invent.kde.org/plasma/aurorae"
 
 LICENSE="GPL-2+ MIT"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,opengl,widgets]
