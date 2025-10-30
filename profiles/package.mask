@@ -200,7 +200,6 @@ games-arcade/slimevolley
 games-engines/frobtads
 games-fps/avp
 games-kids/memonix
-games-puzzle/meandmyshadow
 
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
