@@ -81,6 +81,10 @@ src_configure() {
 }
 
 src_test() {
+	# long temporary file paths change output wrapping which leads
+	# to completely confusing test failures
+	local -x TMPDIR=/tmp
+
 	xdg_environment_reset
 	RUST_BACKTRACE=full cargo_src_test -vv
 }
