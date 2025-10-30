@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit bash-completion-r1 check-reqs cmake db-use desktop edo multiprocessing python-any-r1 systemd toolchain-funcs xdg-utils
+inherit bash-completion-r1 check-reqs cmake desktop edo multiprocessing python-any-r1 systemd toolchain-funcs xdg-utils
 
 DESCRIPTION="Reference implementation of the Bitcoin cryptocurrency"
 HOMEPAGE="https://bitcoincore.org/"
