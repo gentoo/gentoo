@@ -53,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.88.0-beast-network-sandbox.patch
 	"${FILESDIR}"/${PN}-1.88.0-bind-no-Werror.patch
 	"${FILESDIR}"/${PN}-1.88.0-mysql-cstdint.patch
+	"${FILESDIR}"/${PN}-1.88.0-py3.11-test-traceback.patch
 	"${FILESDIR}"/${PN}-1.88.0-range-any_iterator.patch
 	"${FILESDIR}"/${PN}-1.88.0-system-crashing-test.patch
 	"${FILESDIR}"/${PN}-1.88.0-yap-cstdint.patch
