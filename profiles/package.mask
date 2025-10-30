@@ -231,11 +231,6 @@ net-firewall/itval
 # Bugs #907861, #957553, #957554, #963466. Removal on 2025-10-29.
 net-misc/grive
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
-# Dead upstream, EAPI-7 based, no one else is left packaging this.
-# Bugs #952796, #957240. Removal on 2025-10-29.
-sys-auth/google-authenticator-wrappers
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
