@@ -214,12 +214,6 @@ games-util/qjoypad
 media-libs/raspberrypi-userland
 media-libs/raspberrypi-userland-bin
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
-# EAPI-7 based, depends on dead media-libs/raspberrypi-userland, broken
-# by current available version anyway.
-# Several bugs #770802, #881797, #926326, #928521. Removal on 2025-10-29.
-media-plugins/vdr-rpihddevice
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
