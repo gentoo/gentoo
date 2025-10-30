@@ -6,8 +6,16 @@
     <email>xgqt@gentoo.org</email>
     <name>Maciej Barć</name>
   </maintainer>
+  <longdescription>
+    loksh is a Linux port of OpenBSD's ksh. Unlike other ports of ksh,
+    loksh targets only one platform, follows upstream closely and keeps
+    changes to a minimum. loksh does not add any extra features; this
+    reduces the risk of introducing security vulnerabilities and makes loksh
+    a good fit for resource-constrained systems.
+  </longdescription>
   <upstream>
     <bugs-to>https://github.com/dimkr/loksh/issues/</bugs-to>
+    <changelog>https://github.com/dimkr/loksh/releases/</changelog>
     <remote-id type="github">dimkr/loksh</remote-id>
   </upstream>
 </pkgmetadata>
