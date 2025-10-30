@@ -13,7 +13,7 @@ DESCRIPTION="Flexible, composited X window manager"
 
 LICENSE="GPL-2+"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="accessibility gles2-only lock +shortcuts systemd"
 
 RESTRICT="test"
