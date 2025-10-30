@@ -220,11 +220,6 @@ media-libs/raspberrypi-userland-bin
 # Several bugs #770802, #881797, #926326, #928521. Removal on 2025-10-29.
 media-plugins/vdr-rpihddevice
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
-# Dead upstream, EAPI-7 based, no one else is left packaging this.
-# Bug #957218. Removal on 2025-10-29.
-net-firewall/itval
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
