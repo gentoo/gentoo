@@ -12,7 +12,7 @@ DESCRIPTION="Breeze inspired QQC2 Style"
 
 LICENSE="|| ( GPL-2+ LGPL-3+ ) CC0-1.0"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui]
