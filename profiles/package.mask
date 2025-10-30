@@ -258,11 +258,6 @@ net-p2p/fms
 # Bugs #851885, #951509, #955877. Removal on 2025-10-29.
 sys-apps/thunderbolt-software-user-space
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-29)
-# Effectively unmaintained in Gentoo for 5 years, EAPI-7 based, 3.17.2
-# version bump pending in bug #962079. Removal on 2025-10-29.
-x11-terms/roxterm
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
