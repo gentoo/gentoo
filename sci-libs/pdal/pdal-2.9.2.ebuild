@@ -33,7 +33,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( sci-libs/gdal[geos,jpeg,png,sqlite] )
+	test? ( sci-libs/gdal[geos,jpeg(+),png,sqlite] )
 "
 
 src_configure() {
