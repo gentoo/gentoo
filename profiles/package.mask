@@ -190,7 +190,7 @@ dev-build/cmake-fedora
 # Remaining old EAPI-7 based cmake.eclass consumers after 4 years of
 # tracking EAPI-7 removal. Port to EAPI-8 if you can.
 # Bugs #957246, #957403, #957788, #957819, #957869, #957918,
-# #958317, #958596, #958651, #960286
+# #958596, #958651, #960286
 # Removal on 2025-11-01.
 dev-games/newton
 games-action/lugaru
@@ -202,7 +202,6 @@ games-fps/avp
 games-kids/memonix
 games-puzzle/meandmyshadow
 games-server/pvpgn
-games-strategy/freesynd
 
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
