@@ -92,6 +92,11 @@ src_install() {
 
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 
+	# Microsoft Edge comes with its own bundled cron
+	# scripts which invoke `apt` directly. Useless on Gentoo!
+	rm -r etc/cron.daily || die "Failed to remove cron scripts"
+	rm -r "${EDGE_HOME}"/cron || die "Failed to remove cron scripts"
+
 	gzip -d usr/share/doc/${PF}/changelog.gz || die
 	gzip -d usr/share/man/man1/${MY_PN}.1.gz || die
 	if [[ -L usr/share/man/man1/${PN}.1.gz ]]; then
