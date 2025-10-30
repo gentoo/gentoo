@@ -81,12 +81,8 @@ src_configure() {
 }
 
 src_test() {
-	local -x GNUPGHOME="${T}"/.gnupg
 	local -x REAL_GPG_BIN="${BROOT}"/usr/bin/gpg
 	local -x REAL_GPGV_BIN="${BROOT}"/usr/bin/gpgv
-
-	mkdir "${GNUPGHOME}" || die
-	chmod 700 "${GNUPGHOME}" || die
 
 	xdg_environment_reset
 	RUST_BACKTRACE=full cargo_src_test -vv
