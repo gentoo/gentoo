@@ -30,8 +30,8 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-# Still some issue to do with columns?
-RESTRICT="test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/bzip2
@@ -52,6 +52,9 @@ BDEPEND="
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 	')
+	test? (
+		app-crypt/sequoia-sq
+	)
 "
 
 QA_FLAGS_IGNORED="usr/bin/gpg-sq usr/bin/gpgv-sq"
