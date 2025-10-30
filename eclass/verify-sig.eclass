@@ -279,7 +279,7 @@ verify-sig_verify_message() {
 			# https://bugs.gentoo.org/854492
 			local -x TMPDIR=/tmp
 			gemato gpg-wrap -K "${key}" "${extra_args[@]}" -- \
-				gpg --verify --output="${output_file}" "${file}" ||
+				"${GNUPG:-gpg}" --verify --output="${output_file}" "${file}" ||
 				die "PGP signature verification failed"
 			;;
 		signify)
