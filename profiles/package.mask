@@ -225,12 +225,6 @@ media-plugins/vdr-rpihddevice
 # Bug #957218. Removal on 2025-10-29.
 net-firewall/itval
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
-# Unmaintained in ::gentoo, EAPI-7 based, broken by CMake-4, boost-1.89
-# but most importantly Google according to upstream user reports.
-# Bugs #907861, #957553, #957554, #963466. Removal on 2025-10-29.
-net-misc/grive
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
