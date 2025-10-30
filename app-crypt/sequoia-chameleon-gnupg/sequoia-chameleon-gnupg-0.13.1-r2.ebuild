@@ -89,5 +89,5 @@ src_test() {
 	local -x TMPDIR=/tmp
 
 	xdg_environment_reset
-	RUST_BACKTRACE=full cargo_src_test -vv
+	RUST_BACKTRACE=full cargo_src_test -vv --no-fail-fast
 }
