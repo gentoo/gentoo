@@ -81,9 +81,6 @@ src_configure() {
 }
 
 src_test() {
-	local -x REAL_GPG_BIN="${BROOT}"/usr/bin/gpg
-	local -x REAL_GPGV_BIN="${BROOT}"/usr/bin/gpgv
-
 	xdg_environment_reset
 	RUST_BACKTRACE=full cargo_src_test -vv
 }
