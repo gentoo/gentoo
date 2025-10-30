@@ -15,7 +15,7 @@ S="${WORKDIR}/ognl-OGNL_${PV//./_}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 JAVACC_SLOT="7.0.13"
 BDEPEND="dev-java/javacc:${JAVACC_SLOT}"
