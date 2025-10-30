@@ -168,12 +168,6 @@ net-libs/NativeThread
 media-sound/lmms
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
-# Dead upstream, replaced by sci-libs/pdal in most places.
-# Many bugs: #725938, #742668, #944868, #957235, #961718
-# Removal on 2025-11-01.
-sci-geosciences/liblas
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
 # Last release 8 years ago, broken by CMake 4, unclear purpose without any
 # revdeps. Bugs #800608, #866377, #955465. Removal on 2025-11-01.
 dev-build/cmake-fedora
