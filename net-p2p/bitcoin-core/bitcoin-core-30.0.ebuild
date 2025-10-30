@@ -39,7 +39,7 @@ COMMON_DEPEND="
 		>=dev-qt/qtbase-6.2:6[dbus?,gui,network,widgets]
 	)
 	qrcode? ( >=media-gfx/qrencode-4.1.1:= )
-	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.6.0:=[asm=,ellswift,extrakeys,recovery,schnorr] )
+	system-libsecp256k1? ( >=dev-libs/libsecp256k1-0.6.0:=[asm=,ellswift,extrakeys,musig,recovery,schnorr] )
 	wallet? ( >=dev-db/sqlite-3.38.5:= )
 	zeromq? ( >=net-libs/zeromq-4.3.4:= )
 "
