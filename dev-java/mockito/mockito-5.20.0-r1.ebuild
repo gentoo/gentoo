@@ -15,7 +15,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=dev-java/apiguardian-api-1.1.2-r1:0
