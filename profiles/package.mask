@@ -253,11 +253,6 @@ sys-auth/pam_abl
 # Bugs #931705, #949793, #957249. Removal on 2025-10-29.
 net-p2p/fms
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-29)
-# Abandoned upstream for many years, no one else is packaging this.
-# Bugs #851885, #951509, #955877. Removal on 2025-10-29.
-sys-apps/thunderbolt-software-user-space
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
