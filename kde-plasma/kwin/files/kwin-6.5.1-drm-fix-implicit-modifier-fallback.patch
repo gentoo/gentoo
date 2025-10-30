@@ -1,0 +1,37 @@
+From a33cc222f53a7c8a9b5716ab48f236f5dfc7e5b0 Mon Sep 17 00:00:00 2001
+From: Xaver Hugl <xaver.hugl@kde.org>
+Date: Wed, 29 Oct 2025 20:46:51 +0100
+Subject: [PATCH] backends/drm: fix implicit modifier fallback
+
+The per-plane format list only contains explicit modifiers, so this basically
+forced explicit modifiers in all cases.
+
+BUG: 511216
+---
+ src/backends/drm/drm_plane.cpp | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/src/backends/drm/drm_plane.cpp b/src/backends/drm/drm_plane.cpp
+index fc265c238d5..ef0994ec04a 100644
+--- a/src/backends/drm/drm_plane.cpp
++++ b/src/backends/drm/drm_plane.cpp
+@@ -142,13 +142,9 @@ bool DrmPlane::updateProperties()
+     for (auto it = m_supportedFormats.begin(); it != m_supportedFormats.end(); it++) {
+         const auto info = FormatInfo::get(it.key());
+         if (info && info->bitsPerPixel <= 32) {
+-            if (it.value().contains(DRM_FORMAT_MOD_INVALID)) {
+-                // Mesa usually picks the modifier with lowest bandwidth requirements,
+-                // so prefer implicit modifiers for low bandwidth if supported
+-                m_lowBandwidthFormats.insert(it.key(), {DRM_FORMAT_MOD_INVALID});
+-            } else {
+-                m_lowBandwidthFormats.insert(it.key(), it.value());
+-            }
++            // Mesa usually picks the modifier with lowest bandwidth requirements,
++            // so prefer implicit modifiers for low bandwidth if supported
++            m_lowBandwidthFormats.insert(it.key(), {DRM_FORMAT_MOD_INVALID});
+         }
+     }
+ 
+-- 
+GitLab
+
