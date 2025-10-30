@@ -7,7 +7,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/icu.asc
-inherit autotools multilib-minimal python-any-r1 toolchain-funcs verify-sig
+inherit autotools flag-o-matic multilib-minimal python-any-r1 toolchain-funcs verify-sig
 
 MY_PV=${PV/_rc/-rc}
 MY_PV=${MY_PV//./_}
@@ -97,6 +97,9 @@ src_configure() {
 
 		popd >/dev/null || die
 	fi
+
+	# Workaround for bug #963337 (gcc PR122058)
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-cxxflags -fno-devirtualize-speculatively
 
 	multilib-minimal_src_configure
 }
