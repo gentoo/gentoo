@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit gnustep-base prefix toolchain-funcs
+inherit flag-o-matic gnustep-base prefix toolchain-funcs
 
 DESCRIPTION="GNUstep Makefile Package"
 HOMEPAGE="https://gnustep.github.io"
@@ -11,7 +11,7 @@ SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="libobjc2 native-exceptions"
+IUSE="custom-cflags libobjc2 native-exceptions"
 
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=dev-build/make-3.75
@@ -24,12 +24,15 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 		) )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.9.0-no_compress_man_pages.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.9.0-no_compress_man_pages.patch
+	"${FILESDIR}"/${PN}-2.9.3-support-libdispatch-in-libobjc2.patch
+)
 
 pkg_setup() {
 	# Determine libobjc.so to use
 	if use libobjc2; then
-		libobjc_version=libobjc.so.4
+		libobjc_version=libobjc.so
 	else
 		# Find version in active gcc
 		for ver in {2..5};
@@ -69,10 +72,6 @@ pkg_setup() {
 			ewarn "# gnustep-updater -l"
 		fi
 	fi
-
-	if use libobjc2; then
-		export CC=clang
-	fi
 }
 
 src_prepare() {
@@ -85,6 +84,23 @@ src_prepare() {
 }
 
 src_configure() {
+	if use libobjc2 && tc-is-gcc; then
+		einfo "Forcing clang"
+		export CC="${CHOST}-clang"
+		export CXX="${CHOST}-clang++"
+
+		# Strip unsupported flags for clang
+		# bug #949599
+		strip-unsupported-flags
+	fi
+
+	# gnustep-make has sticky flags that affect other gnustep packages
+	# https://bugs.gentoo.org/950346
+	if ! use custom-cflags; then
+		strip-flags
+		filter-lto
+	fi
+
 	econf \
 		INSTALL="${EPREFIX}"/usr/bin/install \
 		--with-layout=fhs-system \
@@ -112,7 +128,7 @@ src_install() {
 
 	# Copy the documentation
 	if use doc ; then
-		emake -C Documentation ${make_eval} DESTDIR="${D}" install
+		emake -C Documentation ${make_eval} DESTDIR="${D}" GNUSTEP_INSTALLATION_DOMAIN=SYSTEM install
 	fi
 
 	dodoc FAQ README RELEASENOTES

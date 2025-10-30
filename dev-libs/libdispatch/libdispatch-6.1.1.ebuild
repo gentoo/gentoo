@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,16 +11,17 @@ MY_PV="swift-${PV}-RELEASE"
 DESCRIPTION="A library for concurrent code execution on multicore hardware"
 HOMEPAGE="https://github.com/apple/swift-corelibs-libdispatch"
 SRC_URI="https://github.com/apple/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${MY_PN}-${MY_PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="test"
 
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	!gnustep-base/libobjc2
+	!gnustep-base/libobjc2[-libdispatch(-)]
 	!sys-libs/blocksruntime
 "
 RDEPEND="${DEPEND}"
@@ -30,11 +31,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-S="${WORKDIR}/${MY_PN}-${MY_PV}"
-
 PATCHES=(
 	"${FILESDIR}/remove-Werror.patch"
-	"${FILESDIR}/libdispatch-5.3.3-musl.patch"
 )
 
 src_configure () {
@@ -52,6 +50,9 @@ src_configure () {
 	export HOST_CXX="$(tc-getBUILD_CXX)"
 	tc-export CC CXX LD AR NM OBJDUMP RANLIB PKG_CONFIG
 
-	local mycmakeargs=( -DBUILD_TESTING=$(usex test) )
+	local mycmakeargs=(
+		-DINSTALL_PRIVATE_HEADERS=ON # private headers needed by gnustep-base/libobjc2[libdispatch]
+		-DBUILD_TESTING=$(usex test)
+	)
 	cmake_src_configure
 }
