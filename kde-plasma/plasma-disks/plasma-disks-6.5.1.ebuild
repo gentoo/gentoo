@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/plasma/plasma-disks"
 
 LICENSE="|| ( GPL-3 GPL-2 )"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 DEPEND="
