@@ -167,11 +167,6 @@ net-libs/NativeThread
 # Removal on 2025-11-04.  Bug #957460.
 media-sound/lmms
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
-# Last release 8 years ago, broken by CMake 4, unclear purpose without any
-# revdeps. Bugs #800608, #866377, #955465. Removal on 2025-11-01.
-dev-build/cmake-fedora
-
 # Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
 # Breaks e.g. in combination with gnome-shell-48.4
 >=dev-libs/glib-2.86.0
