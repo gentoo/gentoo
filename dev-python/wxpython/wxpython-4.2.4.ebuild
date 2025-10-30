@@ -84,7 +84,9 @@ src_configure() {
 
 python_compile() {
 	# Patch will fail if copy of refreshed sip file is not restored
-	# if using multiple Python implementations
+	# if using multiple Python implementations.
+	# TODO: Could we do this in python_compile_all() instead? It would
+	# save a lot of time.
 	DOXYGEN="$(type -P doxygen)" ${PYTHON} build.py dox touch etg sip --nodoc || die
 
 	cp "${S}/sip/cpp/sip_corewxAppTraits.cpp" "${S}" || die
