@@ -15,7 +15,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kde-cli-tools"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="X"
 
 DEPEND="
