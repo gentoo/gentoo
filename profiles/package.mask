@@ -207,13 +207,6 @@ games-strategy/maxr
 games-util/antimicro
 games-util/qjoypad
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-09-30)
-# Unmaintained in ::gentoo, EAPI-7 based, a *lot* of ancient unsolved bugs
-# #576768, #594846, #601126, #724848, #770802, #770994, #832774, #925000,
-# #925001, #926243, #926244, #944452. Removal on 2025-10-29.
-media-libs/raspberrypi-userland
-media-libs/raspberrypi-userland-bin
-
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
 # not just network. See bug #963106.
