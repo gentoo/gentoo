@@ -16,8 +16,8 @@ EAPI=8
 # If any of the above applies to a user patch, the user should set the
 # corresponding variable in make.conf or the environment.
 
+GRUB_AUTORECONF=1
 if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTORECONF=1
 	GRUB_BOOTSTRAP=1
 fi
 
@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
 	"${FILESDIR}"/grub-2.06-test-words.patch
+	"${FILESDIR}"/grub-2.14_rc1-configure.ac-avoid-bashisms.patch
 )
 
 DEJAVU_VER=2.37
