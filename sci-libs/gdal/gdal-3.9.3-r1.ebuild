@@ -280,9 +280,9 @@ src_install() {
 
 	if use java; then
 		# Move the native library into the proper place for Gentoo.  The
-		# library in ${D} has already had its RPATH fixed, so we use it
+		# library in ${ED} has already had its RPATH fixed, so we use it
 		# rather than ${BUILD_DIR}/swig/java/libgdalalljni.so.
-		java-pkg_doso "${D}/usr/$(get_libdir)/jni/libgdalalljni.so"
+		java-pkg_doso "${ED}/usr/$(get_libdir)/jni/libgdalalljni.so"
 		rm -rf "${ED}/usr/$(get_libdir)/jni" || die
 	fi
 
