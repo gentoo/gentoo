@@ -28,7 +28,10 @@ RDEPEND="
 
 	>=gnome-extra/gnome-clocks-47
 	>=media-fonts/fonts-meta-2
-	sys-power/power-profiles-daemon
+	|| (
+		sys-apps/tuned[ppd]
+		sys-power/power-profiles-daemon
+	)
 	x11-themes/papirus-icon-theme
 
 	breeze? ( kde-plasma/breeze:6 )

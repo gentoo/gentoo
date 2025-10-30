@@ -14,6 +14,7 @@ SRC_URI="https://github.com/redhat-performance/tuned/archive/v${PV}.tar.gz -> ${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+ppd"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -26,7 +27,12 @@ DEPEND="
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/python-linux-procfs[${PYTHON_USEDEP}]
 		dev-python/pyudev[${PYTHON_USEDEP}]
-	')"
+	')
+	ppd? (
+		$(python_gen_cond_dep '
+			dev-python/pyinotify[${PYTHON_USEDEP}]
+		')
+	)"
 
 RDEPEND="
 	${DEPEND}
@@ -35,6 +41,7 @@ RDEPEND="
 	sys-apps/dbus
 	sys-apps/ethtool
 	sys-power/powertop
+	ppd? ( !sys-power/power-profiles-daemon )
 	"
 
 RESTRICT="test"
@@ -53,6 +60,7 @@ src_prepare() {
 
 src_install() {
 	default
+	use ppd && emake DESTDIR="${ED}" install-ppd
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	python_fix_shebang "${D}"
