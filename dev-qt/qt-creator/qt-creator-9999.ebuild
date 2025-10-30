@@ -51,7 +51,6 @@ QT_PV=6.7.3:6
 COMMON_DEPEND="
 	app-arch/libarchive:=
 	dev-cpp/yaml-cpp:=
-	>=dev-qt/qt5compat-${QT_PV}
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,ssl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
 	clang? (
