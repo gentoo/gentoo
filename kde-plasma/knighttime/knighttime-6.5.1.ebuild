@@ -12,7 +12,7 @@ DESCRIPTION="Helpers for scheduling the dark-light cycle"
 
 LICENSE="BSD CC0-1.0 || ( GPL-2 GPL-3 ) || ( LGPL-2.1 LGPL-3 )"
 SLOT="6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui]
