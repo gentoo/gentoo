@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="
 	archive armadillo avif blosc cryptopp +curl cpu_flags_arm_neon cpu_flags_x86_avx
 	cpu_flags_x86_avx2 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
-	cpu_flags_x86_ssse3 exprtk fits geos gif gml hdf5 heif java jpeg jpeg2k jpegxl
+	cpu_flags_x86_ssse3 exprtk fits geos gif gml hdf5 heif java jpeg2k jpegxl
 	lerc libaec libdeflate lz4 lzma mongodb +muparser mysql netcdf odbc openexr
 	oracle parquet pdf png postgres python qhull spatialite sqlite test +tools webp
 	xls zstd
@@ -41,8 +41,9 @@ COMMON_DEPEND="
 	dev-libs/json-c:=
 	dev-libs/libxml2:2=
 	dev-libs/openssl:=
-	media-libs/tiff:=
+	media-libs/tiff:=[jpeg]
 	>=sci-libs/libgeotiff-1.5.1-r1:=
+	media-libs/libjpeg-turbo:=
 	>=sci-libs/proj-6.0.0:=
 	sys-libs/zlib[minizip(+)]
 	archive? ( app-arch/libarchive:= )
@@ -60,7 +61,6 @@ COMMON_DEPEND="
 	java? (
 		>=virtual/jdk-1.8:*
 	)
-	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	jpegxl? ( media-libs/libjxl:= )
 	lerc? ( media-libs/lerc:= )
@@ -247,10 +247,7 @@ src_configure() {
 		-DGDAL_USE_HDFS=OFF
 		-DGDAL_USE_ICONV=ON # TODO dep
 		-DGDAL_USE_IDB=OFF
-
-		# Enable internal implementation so that tests pass with the use disabled
-		-DGDAL_USE_JPEG=$(usex jpeg)
-		-DGDAL_USE_JPEG_INTERNAL=$(usex !jpeg)
+		-DGDAL_USE_JPEG=ON # bug #965329
 
 		# https://gdal.org/build_hints.html#jpeg12
 		# Independent of whether using system libjpeg
