@@ -194,7 +194,6 @@ dev-build/cmake-fedora
 dev-games/newton
 games-action/lugaru
 games-action/supermariowar
-games-arcade/ninvaders
 
 # Sam James <sam@gentoo.org> (2025-09-21)
 # Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
