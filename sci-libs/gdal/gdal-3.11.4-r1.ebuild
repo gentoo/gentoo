@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	media-libs/tiff:=[jpeg]
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	media-libs/libjpeg-turbo:=
-	>=sci-libs/proj-6.0.0:=
+	>=sci-libs/proj-6.0.0:=[tiff]
 	sys-libs/zlib[minizip(+)]
 	archive? ( app-arch/libarchive:= )
 	armadillo? ( sci-libs/armadillo:=[lapack] )
