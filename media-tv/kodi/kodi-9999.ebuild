@@ -12,7 +12,7 @@ CODENAME="Piers"
 LIBDVDCSS_VERSION="1.4.3-Next-Nexus-Alpha2-2"
 LIBDVDREAD_VERSION="6.1.3-Next-Nexus-Alpha2-2"
 LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
-FFMPEG_VERSION="7.1.1"
+FFMPEG_VERSION="8.0"
 
 # Java bundles from xbmc/interfaces/swig/CMakeLists.txt
 GROOVY_VERSION="4.0.26"
@@ -50,7 +50,7 @@ SRC_URI="
 			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	)
 	!system-ffmpeg? (
-		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz
+		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	)
 "
 if [[ ${PV} == *9999 ]] ; then
@@ -196,7 +196,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
 	system-ffmpeg? (
-		=media-video/ffmpeg-7*:=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
+		=media-video/ffmpeg-8*:=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
@@ -421,7 +421,7 @@ src_configure() {
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
 	use !system-ffmpeg && mycmakeargs+=(
-		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.gz"
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
