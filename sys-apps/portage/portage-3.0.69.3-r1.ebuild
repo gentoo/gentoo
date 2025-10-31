@@ -68,7 +68,7 @@ RDEPEND="
 		>=sec-keys/openpgp-keys-gentoo-release-20240703
 		>=sys-apps/sed-4.0.5
 		rsync-verify? (
-			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
+			app-alternatives/gpg[ssl(-)]
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
 		)
 	)
