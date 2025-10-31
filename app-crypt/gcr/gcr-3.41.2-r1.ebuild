@@ -32,7 +32,7 @@ DEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}"
-PDEPEND="app-crypt/gnupg"
+PDEPEND="app-alternatives/gpg"
 BDEPEND="
 	${PYTHON_DEPS}
 	gtk? ( dev-libs/libxml2:2 )
@@ -40,7 +40,7 @@ BDEPEND="
 	dev-util/glib-utils
 	gtk-doc? ( dev-util/gi-docgen )
 	>=sys-devel/gettext-0.19.8
-	test? ( app-crypt/gnupg )
+	test? ( app-alternatives/gpg )
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
