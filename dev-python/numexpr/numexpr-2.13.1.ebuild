@@ -33,6 +33,11 @@ RDEPEND="
 "
 
 python_test() {
+	# Tests will test that these variables are "safely" parsed, and break
+	# if you set them yourself. They don't do any real work, just asserts.
+	# Bug 963118.
+	unset NUMEXPR_MAX_THREADS NUMEXPR_NUM_THREADS OMP_NUM_THREADS
+
 	pushd "${BUILD_DIR}/install/$(python_get_sitedir)" >/dev/null || die
 	"${EPYTHON}" -c '
 import sys,numexpr
