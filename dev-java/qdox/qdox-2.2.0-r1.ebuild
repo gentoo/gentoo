@@ -22,7 +22,7 @@ BDEPEND="dev-java/byaccj:0"
 DEPEND="
 	dev-java/jflex:0
 	>=dev-java/javacup-11b_p20160615-r2:0
-	<virtual/jdk-26:*
+	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	test? (
 		>=dev-java/asm-9.8-r1:=
 		>=dev-java/assertj-core-3.27.6:0
