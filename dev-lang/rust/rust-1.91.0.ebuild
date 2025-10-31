@@ -3,6 +3,8 @@
 
 EAPI=8
 
+# Bump notes: https://wiki.gentoo.org/wiki/Project:Rust/Rust_bump
+
 LLVM_COMPAT=( 21 )
 PYTHON_COMPAT=( python3_{11..14} )
 
