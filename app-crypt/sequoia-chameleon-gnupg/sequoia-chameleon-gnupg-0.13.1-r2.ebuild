@@ -30,13 +30,14 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
-IUSE="test"
+IUSE="botan test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/bzip2
 	dev-db/sqlite:3
 	dev-libs/openssl:=
+	botan? ( dev-libs/botan:3= )
 "
 # gpg-agent needed for secret key operations
 # https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg#gpg-sq
@@ -76,8 +77,7 @@ src_configure() {
 	EOF
 
 	local myfeatures=(
-		# TODO: support botan?
-		crypto-openssl
+		$(usex botan crypto-{botan,openssl})
 	)
 
 	cargo_src_configure --no-default-features
