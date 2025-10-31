@@ -35,7 +35,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-smartmon )
 	systemd? ( sys-apps/systemd )
 	update-drivedb? (
-		app-crypt/gnupg
+		app-alternatives/gpg
 		|| (
 			net-misc/curl
 			net-misc/wget
