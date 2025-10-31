@@ -416,6 +416,9 @@ src_configure() {
 			build_channel="stable"
 			;;
 	esac
+
+	# TODO: Add optimized-compiler-builtins for system-llvm to avoid
+	# building bundled compiler-rt.
 	cat <<- _EOF_ > "${S}"/bootstrap.toml
 		# Suppresses a warning about tracking changes which we don't care about.
 		change-id = "ignore"
