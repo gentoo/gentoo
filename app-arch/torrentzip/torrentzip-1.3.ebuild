@@ -34,6 +34,10 @@ BDEPEND="
 
 DOCS=(AUTHORS NEWS.md README.md)
 
+PATCHES=(
+	"${FILESDIR}/${P}-cmake-minreq.patch" # bug #964532
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
