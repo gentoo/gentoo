@@ -1,0 +1,118 @@
+https://bugs.gentoo.org/964425
+https://github.com/PCRE2Project/pcre2/issues/831
+https://github.com/PCRE2Project/pcre2/pull/835 (doc change snipped)
+
+From 6454fac3920d9223a2b05becf15e3cb8e6022243 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
+Date: Thu, 30 Oct 2025 13:57:32 -0700
+Subject: [PATCH] pcre2test: dynamically allocate buffer for JITTARGET (#835)
+
+Always ask `pcre2_config()` for the expected size of buffers and abort if
+it is too small.
+
+In the documentation, remove the description of a static buffer size for
+JITTARGET.
+---
+ src/pcre2test.c     | 12 ++++++------
+ src/pcre2test_inc.h | 35 ++++++++++++++++++++++++++---------
+ 3 files changed, 43 insertions(+), 25 deletions(-)
+
+--- a/src/pcre2test.c
++++ b/src/pcre2test.c
+@@ -2942,9 +2942,9 @@ static int pcre2_config(uint32_t what, void *where)
+ DISPATCH(return, pcre2_config_, (what, where));
+ }
+ 
+-static void config_str(uint32_t what, char *where)
++static char *config_str(uint32_t what, char *where, int size)
+ {
+-DISPATCH(, config_str_, (what, where));
++DISPATCH(return, config_str_, (what, where, size));
+ }
+ 
+ static BOOL decode_modifiers(uint8_t *p, int ctx, patctl *pctl, datctl *dctl)
+@@ -3014,7 +3014,7 @@ static void
+ print_version(FILE *f, BOOL include_mode)
+ {
+ char buf[VERSION_SIZE];
+-config_str(PCRE2_CONFIG_VERSION, buf);
++config_str(PCRE2_CONFIG_VERSION, buf, sizeof(buf));
+ fprintf(f, "PCRE2 version %s", buf);
+ if (include_mode)
+   {
+@@ -3033,7 +3033,7 @@ static void
+ print_unicode_version(FILE *f)
+ {
+ char buf[VERSION_SIZE];
+-config_str(PCRE2_CONFIG_UNICODE_VERSION, buf);
++config_str(PCRE2_CONFIG_UNICODE_VERSION, buf, sizeof(buf));
+ fprintf(f, "Unicode version %s", buf);
+ }
+ 
+@@ -3046,9 +3046,9 @@ fprintf(f, "Unicode version %s", buf);
+ static void
+ print_jit_target(FILE *f)
+ {
+-char buf[VERSION_SIZE];
+-config_str(PCRE2_CONFIG_JITTARGET, buf);
++char *buf = config_str(PCRE2_CONFIG_JITTARGET, NULL, 0);
+ fputs(buf, f);
++free(buf);
+ }
+ 
+ 
+diff --git a/src/pcre2test_inc.h b/src/pcre2test_inc.h
+index c47074171..ce808a82f 100644
+--- a/src/pcre2test_inc.h
++++ b/src/pcre2test_inc.h
+@@ -558,24 +558,41 @@ return 0;
+ 
+ Arguments:
+   what       the item to read
+-  where      the 8-bit buffer to receive the string
++  where      the 8-bit buffer to receive the string (NULLABLE)
++  size       sizeof(where) or 0 to ask for the buffer to be allocated
++
++Returns:     the string where the data was written
+ */
+ 
+-static void
+-config_str(uint32_t what, char *where)
++static char *
++config_str(uint32_t what, char *where, int size)
+ {
+-int r1, r2;
+-PCRE2_UCHAR buf[VERSION_SIZE];
++int r2;
++PCRE2_UCHAR *buf;
++int needed_len;
+ 
+-r1 = pcre2_config(what, NULL);
+-r2 = pcre2_config(what, buf);
+-if (r1 < 0 || r1 != r2 || r1 >= VERSION_SIZE)
++needed_len = pcre2_config(what, NULL);
++if (needed_len <= 0)
+   {
+   cfprintf(clr_test_error, stderr, "pcre2test: Error in pcre2_config(%d)\n", what);
+   exit(1);
+   }
++else if (size != 0 && needed_len > size)
++  {
++  cfprintf(clr_test_error, stderr,
++    "pcre2test: Static buffer provided to pcre2_config(%d) too small\n", what);
++  exit(1);
++  }
++
++buf = malloc(needed_len * sizeof(PCRE2_UCHAR));
++r2 = pcre2_config(what, buf);
++PCRE2_ASSERT(r2 == needed_len);
++
++if (where == NULL) where = malloc(needed_len);
++while (r2-- > 0) where[r2] = (char)buf[r2];
++free(buf);
+ 
+-while (r1-- > 0) where[r1] = (char)buf[r1];
++return where;
+ }
+ 
+ 

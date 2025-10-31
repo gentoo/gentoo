@@ -48,6 +48,7 @@ MULTILIB_CHOST_TOOLS=(
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.10-000-Fix-multilib.patch
+	"${FILESDIR}"/${PN}-10.47-riscv.patch
 )
 
 src_prepare() {
