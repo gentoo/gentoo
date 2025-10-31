@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools xdg
+inherit autotools xdg flag-o-matic
 
 DESCRIPTION="let it snow on your desktop and windows"
 HOMEPAGE="https://www.ratrabbit.nl/ratrabbit/xsnow/"
@@ -22,7 +22,7 @@ RDEPEND="
 	sys-apps/dbus
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXinerama
@@ -47,6 +47,11 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	append-flags -DGENTOO_GTK_HIDE_WAYLAND
+	default
 }
 
 src_install() {
