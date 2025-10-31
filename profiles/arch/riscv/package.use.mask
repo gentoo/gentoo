@@ -272,6 +272,5 @@ media-libs/opencv vtk
 sci-libs/opencascade vtk
 
 # This doesn't work for (any) riscv yet.
-dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
