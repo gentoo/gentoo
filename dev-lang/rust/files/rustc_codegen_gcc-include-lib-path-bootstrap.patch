@@ -1,0 +1,108 @@
+This fixes finding tools built in earlier stages even with `rust.rpath = true`
+(at least for rustc_codegen_gcc).
+
+https://github.com/rust-lang/rust/issues/146930
+https://github.com/rust-lang/rust/pull/147419
+
+From 03cdcb5cd5383857b339af226471f96c46e26b47 Mon Sep 17 00:00:00 2001
+From: Josh Stone <jistone@redhat.com>
+Date: Mon, 6 Oct 2025 13:34:42 -0700
+Subject: [PATCH] bootstrap: add `Builder::rustc_cmd` that includes the lib
+ path
+
+When building with `rust.rpath = false`, every `rustc` invocation needs
+to include the library path as well. I particularly ran into this in
+`generate_target_spec_json_schema` when testing 1.91-beta in Fedora,
+where we do disable rpath for our system builds. The new helper function
+will hopefully encourage the right thing going forward.
+---
+ src/bootstrap/src/core/build_steps/compile.rs           | 2 +-
+ src/bootstrap/src/core/build_steps/dist.rs              | 2 +-
+ src/bootstrap/src/core/build_steps/synthetic_targets.rs | 3 +--
+ src/bootstrap/src/core/builder/cargo.rs                 | 6 ++----
+ src/bootstrap/src/core/builder/mod.rs                   | 8 ++++++++
+ 5 files changed, 13 insertions(+), 8 deletions(-)
+
+diff --git a/src/bootstrap/src/core/build_steps/compile.rs b/src/bootstrap/src/core/build_steps/compile.rs
+index d29d1041486bd..b363b8f93b361 100644
+--- a/src/bootstrap/src/core/build_steps/compile.rs
++++ b/src/bootstrap/src/core/build_steps/compile.rs
+@@ -519,7 +519,7 @@ pub fn std_cargo(builder: &Builder<'_>, target: TargetSelection, cargo: &mut Car
+         // Query rustc for the deployment target, and the associated env var.
+         // The env var is one of the standard `*_DEPLOYMENT_TARGET` vars, i.e.
+         // `MACOSX_DEPLOYMENT_TARGET`, `IPHONEOS_DEPLOYMENT_TARGET`, etc.
+-        let mut cmd = command(builder.rustc(cargo.compiler()));
++        let mut cmd = builder.rustc_cmd(cargo.compiler());
+         cmd.arg("--target").arg(target.rustc_target_arg());
+         cmd.arg("--print=deployment-target");
+         let output = cmd.run_capture_stdout(builder).stdout();
+diff --git a/src/bootstrap/src/core/build_steps/dist.rs b/src/bootstrap/src/core/build_steps/dist.rs
+index b79d2cb413db7..411d42962644d 100644
+--- a/src/bootstrap/src/core/build_steps/dist.rs
++++ b/src/bootstrap/src/core/build_steps/dist.rs
+@@ -625,7 +625,7 @@ fn generate_target_spec_json_schema(builder: &Builder<'_>, sysroot: &Path) {
+     // We do this by using the stage 1 compiler, which is always compiled for the host,
+     // even in a cross build.
+     let stage1_host = builder.compiler(1, builder.host_target);
+-    let mut rustc = command(builder.rustc(stage1_host)).fail_fast();
++    let mut rustc = builder.rustc_cmd(stage1_host).fail_fast();
+     rustc
+         .env("RUSTC_BOOTSTRAP", "1")
+         .args(["--print=target-spec-json-schema", "-Zunstable-options"]);
+diff --git a/src/bootstrap/src/core/build_steps/synthetic_targets.rs b/src/bootstrap/src/core/build_steps/synthetic_targets.rs
+index 21733c5d9e3f7..2cc691832b5f0 100644
+--- a/src/bootstrap/src/core/build_steps/synthetic_targets.rs
++++ b/src/bootstrap/src/core/build_steps/synthetic_targets.rs
+@@ -10,7 +10,6 @@
+ use crate::Compiler;
+ use crate::core::builder::{Builder, ShouldRun, Step};
+ use crate::core::config::TargetSelection;
+-use crate::utils::exec::command;
+ 
+ #[derive(Debug, Clone, PartialEq, Eq, Hash)]
+ pub(crate) struct MirOptPanicAbortSyntheticTarget {
+@@ -55,7 +54,7 @@ fn create_synthetic_target(
+         return TargetSelection::create_synthetic(&name, path.to_str().unwrap());
+     }
+ 
+-    let mut cmd = command(builder.rustc(compiler));
++    let mut cmd = builder.rustc_cmd(compiler);
+     cmd.arg("--target").arg(base.rustc_target_arg());
+     cmd.args(["-Zunstable-options", "--print", "target-spec-json"]);
+ 
+diff --git a/src/bootstrap/src/core/builder/cargo.rs b/src/bootstrap/src/core/builder/cargo.rs
+index a404aec512091..c2029f97391d4 100644
+--- a/src/bootstrap/src/core/builder/cargo.rs
++++ b/src/bootstrap/src/core/builder/cargo.rs
+@@ -728,10 +728,8 @@ impl Builder<'_> {
+                 // Build proc macros both for the host and the target unless proc-macros are not
+                 // supported by the target.
+                 if target != compiler.host && cmd_kind != Kind::Check {
+-                    let mut rustc_cmd = command(self.rustc(compiler));
+-                    self.add_rustc_lib_path(compiler, &mut rustc_cmd);
+-
+-                    let error = rustc_cmd
++                    let error = self
++                        .rustc_cmd(compiler)
+                         .arg("--target")
+                         .arg(target.rustc_target_arg())
+                         .arg("--print=file-names")
+diff --git a/src/bootstrap/src/core/builder/mod.rs b/src/bootstrap/src/core/builder/mod.rs
+index fc06db8f80b9d..1ddfbd51df523 100644
+--- a/src/bootstrap/src/core/builder/mod.rs
++++ b/src/bootstrap/src/core/builder/mod.rs
+@@ -1605,6 +1605,14 @@ Alternatively, you can set `build.local-rebuild=true` and use a stage0 compiler
+         }
+     }
+ 
++    /// Gets a command to run the compiler specified, including the dynamic library
++    /// path in case the executable has not been build with `rpath` enabled.
++    pub fn rustc_cmd(&self, compiler: Compiler) -> BootstrapCommand {
++        let mut cmd = command(self.rustc(compiler));
++        self.add_rustc_lib_path(compiler, &mut cmd);
++        cmd
++    }
++
+     /// Gets the paths to all of the compiler's codegen backends.
+     fn codegen_backends(&self, compiler: Compiler) -> impl Iterator<Item = PathBuf> {
+         fs::read_dir(self.sysroot_codegen_backends(compiler))
