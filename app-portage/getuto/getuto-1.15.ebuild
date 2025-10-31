@@ -25,8 +25,12 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+# gpg[sequoia] fails w/ 0.13.1 because of missing --lsign-key
 RDEPEND="
-	app-crypt/gnupg
+	|| (
+		app-alternatives/gpg[reference]
+		app-alternatives/gpg[freepg(-)]
+	)
 	dev-libs/openssl
 	sec-keys/openpgp-keys-gentoo-release
 	sys-apps/gentoo-functions
