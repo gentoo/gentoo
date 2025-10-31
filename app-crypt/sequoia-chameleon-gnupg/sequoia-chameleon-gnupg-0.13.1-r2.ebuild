@@ -8,7 +8,6 @@ CRATES="
 
 LLVM_COMPAT=( {18..20} )
 RUST_MIN_VER="1.79.0"
-RUST_NEEDS_LLVM=1
 
 inherit cargo llvm-r1 xdg-utils
 
