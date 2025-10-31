@@ -15,7 +15,7 @@ S="${WORKDIR}/assertj-assertj-build-${PV}/${PN}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ppc64"
 
 # package EngineTestKit does not exist
 # package jakarta.ws.rs.core does not exist
