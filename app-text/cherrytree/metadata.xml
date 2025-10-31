@@ -12,4 +12,9 @@
 	<upstream>
 		<remote-id type="github">giuspen/cherrytree</remote-id>
 	</upstream>
+	<use>
+		<flag name="gtk3">Build with GTK3</flag>
+		<flag name="gtk4">Build with GTK4 (Work in progress...)</flag>
+		<flag name="deprecated">Build with deprecated API enabled</flag>
+	</use>
 </pkgmetadata>
