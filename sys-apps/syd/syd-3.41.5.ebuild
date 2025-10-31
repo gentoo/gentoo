@@ -11,7 +11,7 @@ CRATES="
 	addr2line@0.25.1
 	adler2@2.0.1
 	ahash@0.8.12
-	aho-corasick@1.1.3
+	aho-corasick@1.1.4
 	android_system_properties@0.1.5
 	anstream@0.6.21
 	anstyle-parse@0.2.7
@@ -38,8 +38,8 @@ CRATES="
 	cfg-if@1.0.4
 	cfg_aliases@0.2.1
 	chrono@0.4.42
-	clap@4.5.50
-	clap_builder@4.5.50
+	clap@4.5.51
+	clap_builder@4.5.51
 	clap_derive@4.5.49
 	clap_lex@0.7.6
 	colorchoice@1.0.4
@@ -103,21 +103,19 @@ CRATES="
 	iprange@0.6.7
 	is_terminal_polyfill@1.70.2
 	itoa@1.0.15
-	js-sys@0.3.81
+	js-sys@0.3.82
 	keccak@0.1.5
 	lazy_static@1.5.0
 	lexis@0.2.3
 	lexopt@0.3.1
 	libc@0.2.177
-	libcgroups@0.5.5
-	libcontainer@0.5.5
+	libcgroups@0.5.6
+	libcontainer@0.5.6
 	libloading@0.8.9
 	libmimalloc-sys@0.1.44
-	liboci-cli@0.5.5
+	liboci-cli@0.5.6
 	libredox@0.1.10
-	libseccomp-sys@0.2.1
 	libseccomp-sys@0.3.0
-	libseccomp@0.3.0
 	libseccomp@0.4.0
 	linefeed@0.6.0
 	linux-raw-sys@0.11.0
@@ -231,8 +229,8 @@ CRATES="
 	tracing-subscriber@0.3.20
 	tracing@0.1.41
 	typenum@1.19.0
-	unicode-ident@1.0.20
-	unicode-normalization@0.1.24
+	unicode-ident@1.0.22
+	unicode-normalization@0.1.25
 	unicode-width@0.1.14
 	unicode-width@0.2.2
 	unicode-xid@0.2.6
@@ -242,11 +240,10 @@ CRATES="
 	wasi@0.11.1+wasi-snapshot-preview1
 	wasi@0.9.0+wasi-snapshot-preview1
 	wasip2@1.0.1+wasi-0.2.4
-	wasm-bindgen-backend@0.2.104
-	wasm-bindgen-macro-support@0.2.104
-	wasm-bindgen-macro@0.2.104
-	wasm-bindgen-shared@0.2.104
-	wasm-bindgen@0.2.104
+	wasm-bindgen-macro-support@0.2.105
+	wasm-bindgen-macro@0.2.105
+	wasm-bindgen-shared@0.2.105
+	wasm-bindgen@0.2.105
 	which@4.4.2
 	winapi-i686-pc-windows-gnu@0.4.0
 	winapi-x86_64-pc-windows-gnu@0.4.0
