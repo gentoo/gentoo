@@ -23,6 +23,7 @@
 	</longdescription>
 	<use>
 		<flag name="bundle">Install from Wolfram's bundle file or from Mathematica only</flag>
+		<flag name="mqtt">Enable MQTTLink support using <pkg>app-misc/mosquitto</pkg> (MQTT broker)</flag>
 		<flag name="R">Enable <pkg>dev-lang/R</pkg> backend support</flag>
 		<flag name="ffmpeg">Enable <pkg>media-video/ffmpeg</pkg> backend support</flag>
 	</use>
