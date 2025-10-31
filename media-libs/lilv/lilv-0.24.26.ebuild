@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..13} python3_13t )
+PYTHON_COMPAT=( python3_{9..14} python3_13t )
 PYTHON_REQ_USE='threads(+)'
 
 inherit meson-multilib python-single-r1
