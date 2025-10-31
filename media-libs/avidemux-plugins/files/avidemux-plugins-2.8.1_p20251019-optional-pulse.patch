@@ -1,0 +1,35 @@
+From 9994594ceb56cce6973717524ea131fd629908ed Mon Sep 17 00:00:00 2001
+From: Poncho <poncho@spahan.ch>
+Date: Sun, 26 Oct 2025 09:12:30 +0100
+Subject: [PATCH 2/3] avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake:
+ optional pulseaudio
+
+---
+ avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake b/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake
+index 8f3835deb..bc561804e 100644
+--- a/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake
++++ b/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake
+@@ -194,6 +194,7 @@ IF(UNIX AND NOT APPLE)
+ 		APPEND_SUMMARY_LIST("Audio Device" "PulseAudioS" "${USE_PULSE_SIMPLE}")
+ ]]
+     OPTION(PULSEAUDIO "" ON)
++    IF (PULSEAUDIO)
+     MESSAGE(STATUS "Checking for PulseAudio")
+     include(FindPkgConfig)
+     pkg_check_modules(PULSEAUDIO libpulse)
+@@ -203,6 +204,9 @@ IF(UNIX AND NOT APPLE)
+     ELSE()
+         MESSAGE(STATUS "Could not find PulseAudio")
+     ENDIF()
++    ELSE ()
++        MESSAGE("${MSG_DISABLE_OPTION}")
++    ENDIF ()
+     APPEND_SUMMARY_LIST("Audio Device" "PulseAudio" "${USE_PULSE}")
+ ELSE()
+ 	SET(PULSEAUDIOSIMPLE_CAPABLE FALSE)
+-- 
+2.51.0
+
