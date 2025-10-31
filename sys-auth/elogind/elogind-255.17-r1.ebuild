@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 inherit eapi9-ver linux-info meson pam python-any-r1 udev xdg-utils
@@ -57,7 +57,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-252.9-nodocs.patch"
 	# See also:
 	# https://github.com/elogind/elogind/issues/285
-	"${FILESDIR}/${P}-r0-revert-s2idle.patch" # bug 939042
+	"${FILESDIR}/${P}-revert-s2idle.patch" # bug 939042
 )
 
 python_check_deps() {
