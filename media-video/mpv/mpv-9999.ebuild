@@ -168,7 +168,6 @@ src_configure() {
 		$(meson_feature lcms lcms2)
 		-Dlua=$(usex lua "${ELUA}" disabled)
 		$(meson_feature rubberband)
-		-Dsdl2=$(use gamepad || use sdl && echo enabled || echo disabled) #857156
 		$(meson_feature uchardet)
 		-Dvapoursynth=disabled # only available in overlays
 		$(meson_feature zimg)
