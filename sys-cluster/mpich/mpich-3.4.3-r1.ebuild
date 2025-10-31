@@ -34,6 +34,7 @@ DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
+	!sys-cluster/mpich2
 	!sys-cluster/openmpi
 	!sys-cluster/nullmpi
 "
