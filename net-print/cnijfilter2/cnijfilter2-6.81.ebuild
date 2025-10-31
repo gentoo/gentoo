@@ -9,7 +9,7 @@ MY_P="${PN}-source-${PV}-1"
 
 DESCRIPTION="IJ Printer Driver"
 HOMEPAGE="https://www.usa.canon.com/support/p/pixma-g4270#idReference%3Dsoftware-drivers"
-SRC_URI="https://gdlp01.c-wss.com/gds/2/0100012302/02/${MY_P}.tar.gz"
+SRC_URI="https://gdlp01.c-wss.com/gds/4/0100012534/01/${MY_P}.tar.gz"
 
 S="${WORKDIR}"/${MY_P}
 
