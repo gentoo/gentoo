@@ -24,7 +24,7 @@ src_compile() {
 	local go_ldflags=(
 		-X github.com/hashicorp/terraform/version.dev=no
 	)
-	ego build -mod=vendor -ldflags "${go_ldflags[*]}" -o bin/${PN} .
+	ego build -ldflags "${go_ldflags[*]}" -o bin/${PN} .
 }
 
 src_install() {
