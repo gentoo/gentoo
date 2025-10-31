@@ -1,0 +1,41 @@
+From ee2202fe3a28640b68e1aec77f91971a3bceb786 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Sun, 12 Oct 2025 02:15:00 +0200
+Subject: [PATCH] config: Add dynamic build support
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ config | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/config b/config
+index 85bd6c3..7236e8b 100644
+--- a/config
++++ b/config
+@@ -48,11 +48,19 @@ if [ $ngx_found = no ]; then
+    exit 1
+ fi
+ 
+-CORE_INCS="$CORE_INCS $ngx_feature_path $ngx_addon_dir/src"
+-CORE_LIBS="$CORE_LIBS $ngx_feature_libs"
++if test -n "$ngx_module_link"; then
++	ngx_module_type=HTTP
++	ngx_module_name="$ngx_addon_name"
++	ngx_module_srcs="$ngx_addon_dir/ngx_http_metrics_module.c"
+ 
+-HTTP_MODULES="$HTTP_MODULES ngx_http_metrics_module"
+-NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_metrics_module.c"
++	. auto/module
++else
++	CORE_INCS="$CORE_INCS $ngx_feature_path $ngx_addon_dir/src"
++	CORE_LIBS="$CORE_LIBS $ngx_feature_libs"
++
++	HTTP_MODULES="$HTTP_MODULES ngx_http_metrics_module"
++	NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_metrics_module.c"
++fi
+ 
+ have=NGX_HTTP_METRICS . auto/have
+ 
+-- 
+2.49.1
+
