@@ -56,6 +56,7 @@ BDEPEND="
 	test? (
 		app-crypt/sequoia-sq
 	)
+	virtual/pkgconfig
 "
 
 QA_FLAGS_IGNORED="usr/bin/gpg-sq usr/bin/gpgv-sq"
