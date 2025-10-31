@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by commons.apache.org/rng"
 HOMEPAGE="https://downloads.apache.org/commons/rng/"
 
-KEYWORDS="amd64"
+KEYWORDS="amd64 ppc64"
