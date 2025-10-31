@@ -12,4 +12,7 @@
 	<upstream>
 		<remote-id type="gitlab">sequoia-pgp/sequoia-sqv</remote-id>
 	</upstream>
+	<use>
+		<flag name="botan">Use <pkg>dev-libs/botan</pkg> as crypto provider.</flag>
+	</use>
 </pkgmetadata>
