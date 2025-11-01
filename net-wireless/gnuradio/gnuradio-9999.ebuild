@@ -63,11 +63,11 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	fec? (
 		sci-libs/gsl:=
-		dev-python/scipy
+		$(python_gen_cond_dep 'dev-python/scipy[${PYTHON_USEDEP}]')
 	)
 	filter? (
-		dev-python/scipy
-		$(python_gen_cond_dep 'dev-python/pyqtgraph[${PYTHON_USEDEP}]')
+		$(python_gen_cond_dep 'dev-python/scipy[${PYTHON_USEDEP}]')
+		qt5? ( $(python_gen_cond_dep 'dev-python/pyqtgraph[qt5,${PYTHON_USEDEP}]') )
 	)
 	grc? (
 		$(python_gen_cond_dep 'dev-python/mako[${PYTHON_USEDEP}]
