@@ -185,11 +185,9 @@ src_configure() {
 
 		-DBUILD_PLUGIN_HELP=$(usex help)
 		-DBUILD_HELPVIEWERBACKEND_QTWEBENGINE=$(usex webengine)
+		# TODO?: unbundle litehtml, but support for latest releases
+		# tend to lag behind and bundled may work out better for now
 		-DBUILD_LIBRARY_QLITEHTML=$(usex help $(usex !webengine))
-		# TODO?: package litehtml, but support for latest releases seem
-		# to lag behind and bundled may work out better for now
-		# https://bugreports.qt.io/browse/QTCREATORBUG-29169
-		$(use help && usev !webengine -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=yes)
 
 		# help shouldn't use with the above, but qmldesigner is automagic
 		$(use help || use qmldesigner &&
@@ -200,7 +198,7 @@ src_configure() {
 		-DWITH_QMLDESIGNER=$(usex qmldesigner)
 
 		-DBUILD_EXECUTABLE_CMDBRIDGE=$(usex cmdbridge-server) #945925
-		-DUPX_BIN=UPX_BIN-NOTFOUND #961623
+		$(usev cmdbridge-server -DUPX_BIN=UPX_BIN-NOTFOUND) #961623
 
 		# meant to be in sync with qtbase[journald], but think(?) not worth
 		# handling given qt-creator can use QT_FORCE_STDERR_LOGGING=1 nowadays
