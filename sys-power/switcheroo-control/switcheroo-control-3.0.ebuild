@@ -55,7 +55,7 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Drulesdir="$(get_udevdir)"/rules.d
+		-Drulesdir="${EPREFIX}"/"$(get_udevdir)"/rules.d
 		-Dsystemdsystemunitdir="$(systemd_get_systemunitdir)"
 		$(meson_use gtk-doc gtk_doc)
 		$(meson_use test tests)
