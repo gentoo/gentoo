@@ -13,6 +13,7 @@
 		<flag name="rpc">Add support for NFS quotas</flag>
 		<flag name="solr">Add solr full text search (FTS) support</flag>
 		<flag name="stemmer">Add libstemmer support (for FTS)</flag>
+		<flag name="system-icu">Use system dev-libs/icu instead of the bundled library</flag>
 		<flag name="textcat">Add libtextcat language guessing support for full text search (FTS)</flag>
 		<flag name="xapian">Add xapian (flatcurve) full text search (FTS) support</flag>
 	</use>
