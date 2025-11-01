@@ -70,6 +70,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.1.0_env.patch"
+	"${FILESDIR}/${PN}-3.1.0_enable_py3.14_packaging.patch"
 )
 
 src_unpack() {
