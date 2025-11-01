@@ -13,7 +13,7 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="appstream +fontconfig +ksysguard networkmanager phonon +policykit
 screencast +semantic-desktop systemd telemetry +wallpaper-metadata +X"
 
