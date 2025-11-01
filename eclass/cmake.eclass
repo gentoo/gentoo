@@ -165,6 +165,13 @@ _CMAKE_MINREQVER_CMAKE316=()
 # @DESCRIPTION:
 # Array of tests that should be skipped when running CTest.
 
+case ${CMAKE_BUILD_TYPE} in
+	Gentoo)
+		ewarn "\${CMAKE_BUILD_TYPE} \"Gentoo\" is a no-op. Default is RelWithDebInfo."
+		;;
+	*) ;;
+esac
+
 case ${CMAKE_ECM_MODE} in
 	auto|true|false) ;;
 	*)
@@ -652,20 +659,18 @@ cmake_src_configure() {
 	fi
 
 	# Wipe the default optimization flags out of CMake
-	if [[ ${CMAKE_BUILD_TYPE} != Gentoo ]]; then
-		cat >> ${common_config} <<- _EOF_ || die
-			set(CMAKE_ASM_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_ASM-ATT_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_EXE_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_MODULE_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_SHARED_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_STATIC_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
-			set(CMAKE_INSTALL_ALWAYS 1) # see Gentoo-bug 735820
-		_EOF_
-	fi
+	cat >> ${common_config} <<- _EOF_ || die
+		set(CMAKE_ASM_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_ASM-ATT_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_Fortran_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_EXE_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_MODULE_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_SHARED_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_STATIC_LINKER_FLAGS_${CMAKE_BUILD_TYPE^^} "" CACHE STRING "")
+		set(CMAKE_INSTALL_ALWAYS 1) # see Gentoo-bug 735820
+	_EOF_
 
 	# Make the array a local variable since <=portage-2.1.6.x does not support
 	# global arrays (see bug #297255). But first make sure it is initialised.
