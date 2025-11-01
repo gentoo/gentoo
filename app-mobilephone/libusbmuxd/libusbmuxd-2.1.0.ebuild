@@ -12,8 +12,8 @@ SLOT="0/2.0-7" # based on SONAME of libusbmuxd-2.0.so
 KEYWORDS="amd64 ~arm ~arm64 ~hppa ~loong ppc ~ppc64 ~riscv ~s390 x86"
 
 RDEPEND="
-	>=app-pda/libimobiledevice-glue-1.2.0:=
-	>=app-pda/libplist-2.2.0:=
+	>=app-mobilephone/libimobiledevice-glue-1.2.0:=
+	>=app-mobilephone/libplist-2.2.0:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
