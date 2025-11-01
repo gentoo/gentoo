@@ -13,7 +13,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kscreen"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="X"
 
 # slot op: Uses Qt6GuiPrivate and Qt6WaylandClientPrivate
