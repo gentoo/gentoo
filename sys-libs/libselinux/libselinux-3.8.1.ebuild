@@ -1,12 +1,13 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
+
 PYTHON_COMPAT=( python3_{11..14} )
 USE_RUBY="ruby32 ruby33"
 
 # No, I am not calling ruby-ng
-inherit flag-o-matic python-r1 toolchain-funcs multilib-minimal
+inherit python-r1 toolchain-funcs multilib-minimal
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
