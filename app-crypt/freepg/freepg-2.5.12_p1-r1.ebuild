@@ -160,15 +160,16 @@ my_src_install() {
 	# rename for app-alternatives/gpg
 	mv "${ED}"/usr/bin/gpg{,-freepg} || die
 	mv "${ED}"/usr/bin/gpgv{,-freepg} || die
+	mv "${ED}"/usr/share/man/man1/gpg{,-freepg}.1 || die
+	mv "${ED}"/usr/share/man/man1/gpgv{,-freepg}.1 || die
 
 	# create *-reference symlinks too, to make it easier to use "some GnuPG"
 	dosym gpg-freepg /usr/bin/gpg-reference
 	dosym gpgv-freepg /usr/bin/gpgv-reference
+	newman - gpg-reference.1 <<<".so gpg-freepg.1"
+	newman - gpgv-reference.1 <<<".so gpgv-freepg.1"
 
 	use tools && dobin tools/{gpgconf,gpgsplit,gpg-check-pattern} tools/make-dns-cert
-
-	echo ".so man1/gpg.1" > "${ED}"/usr/share/man/man1/gpg2.1 || die
-	echo ".so man1/gpgv.1" > "${ED}"/usr/share/man/man1/gpgv2.1 || die
 
 	dodir /etc/env.d
 	echo "CONFIG_PROTECT=/usr/share/gnupg/qualified.txt" >> "${ED}"/etc/env.d/30gnupg || die
