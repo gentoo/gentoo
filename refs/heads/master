@@ -1,18 +1,17 @@
 certificate version 0.1
-pusher DF84256885283521 1761985220 +0100
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1761985219-d232809ac3cfdcc99d925c0cd7fde22ec715c4cd
+pusher 0x8883FA56A308A8D7 1761987185 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo
+nonce 1761987185-258193ef359d2c9b63185296761c2d71137fc483
 
-9d3b34f7e0fa038b20697c8bc6917db32c15e454 6c81468b4bd701055594fa5c57acb613fff1bda5 refs/heads/master
+6c81468b4bd701055594fa5c57acb613fff1bda5 bd7ac03a3edd37f788f933abc0b2987c7271e325 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-wsC7BAABCgBvBYJpBcLECRBjmtriMp4kDkcUAAAAAAAeACBzYWx0QG5vdGF0aW9u
-cy5zZXF1b2lhLXBncC5vcmc37n3syQR3bFvvzQdD3Z3XZbE67LK/xL8yRDGkf2Vl
-pxYhBMdqhFCUCY0ozIsmxWOa2uIyniQOAADjRwf/ZURJ7RbynHXMGpKxIkBCW8Y6
-Gs7h+ylWeqCuM4QD2tF9HCBxEWbCrucSjFqgMTRdWnadmEDjeeNV7SW719gEk0uO
-fnklzWZeu52Y1P8KIgh6nhqSwm5hTf1nq9FKXjNvUbQ3b0n4JT4ds8CEI2+Myhlq
-aoSI95Ne0Rxlr6gid13KFgIvnHIr0LmrIwQ/GHvwQmm8Azzs6Olq+kUKrs1BFKqH
-AHafAscx3PD77+upcky0IfGel70pssPYNf0tCxdtX7H4xu/0AEkxJJBxIH0dZ2S1
-PH2pbnkqB/vVsOlArwfhgLqqIDd8Y85WfKxgXj5Jb4+eXJzQLOpf1fietmE7vw==
-=XMmN
+iQEzBAABCAAdFiEEIggVRmJzp0YePtgn2zR/k4ZU+jQFAmkFynEACgkQ2zR/k4ZU
++jQqagf9HKv7FG0rq2UzFqitqB4D/+V/lTtjZhYz/cHY2FA08GJe6GMTu90WKYgl
+psFvVxyvaxVev6WcGjGqCQRlp+I5pGDSBLh0FvragM6auwiYcRoTXchapx0MeSDd
+5oburmutq14SpSa3QBP0pVn9PugCrD0o3ezuKtUyzbPGwwLTbs+lcXUOs8ZnOdMt
+jvRVYdI7iV8OejV3jJ8KKE9b1e1L7d7F20lygqPwcQN69SubuxINinS+M4Qc2+d6
+cWBejEYsyB2I9/dO2e9E2imbzZh7JGYittI1myimQVAviFtc6tWuXUO06JwZ1Z03
+GMWAqCTTuykbRqfBfI9NCiu/4zIiIw==
+=a1eC
 -----END PGP SIGNATURE-----
