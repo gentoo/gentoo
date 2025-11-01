@@ -77,10 +77,6 @@ else
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-andrewtridgell )"
 fi
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.4.1-c23.patch
-)
-
 pkg_setup() {
 	# - USE=examples needs Python itself at runtime, but nothing else
 	# - 9999 needs commonmark at build time
