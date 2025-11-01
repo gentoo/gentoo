@@ -50,6 +50,7 @@ SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pipewire pulseaudio
 	python qsv sndio speex test-input truetype v4l vlc wayland websocket
+	webrtc
 "
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
@@ -146,6 +147,9 @@ DEPEND="
 		dev-cpp/websocketpp
 		dev-libs/qr-code-generator
 	)
+	webrtc? (
+		net-libs/libdatachannel
+	)
 "
 RDEPEND="${DEPEND}"
 
@@ -215,7 +219,7 @@ src_configure() {
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
-		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
+		-DENABLE_WEBRTC=$(usex webrtc)
 		-DENABLE_WEBSOCKET=$(usex websocket)
 	)
 
