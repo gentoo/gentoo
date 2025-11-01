@@ -68,7 +68,6 @@ DEPEND="
 	dev-lang/jsonnet:=
 	dev-libs/libaio:=
 	dev-libs/libnl:3=
-	dev-libs/libxml2:=
 	dev-libs/libevent:=
 	dev-libs/libutf8proc:=
 	dev-libs/nss:=
