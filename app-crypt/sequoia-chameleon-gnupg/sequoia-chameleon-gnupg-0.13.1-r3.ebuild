@@ -9,7 +9,7 @@ CRATES="
 LLVM_COMPAT=( {18..20} )
 RUST_MIN_VER="1.79.0"
 
-inherit cargo llvm-r1 xdg-utils
+inherit cargo llvm-r1 shell-completion xdg-utils
 
 DESCRIPTION="Sequoia's reimplementation of the GnuPG interface"
 HOMEPAGE="https://sequoia-pgp.org/ https://gitlab.com/sequoia-pgp/sequoia-chameleon-gnupg/"
@@ -81,6 +81,8 @@ src_configure() {
 	)
 
 	cargo_src_configure --no-default-features
+
+	export ASSET_OUT_DIR=${T}/assets
 }
 
 src_test() {
@@ -90,4 +92,14 @@ src_test() {
 
 	xdg_environment_reset
 	RUST_BACKTRACE=full cargo_src_test -vv --no-fail-fast
+}
+
+src_install() {
+	cargo_src_install
+
+	doman "${T}"/assets/man-pages/*
+	newbashcomp "${T}"/assets/shell-completions/gpg-sq.bash gpg-sq
+	newbashcomp "${T}"/assets/shell-completions/gpgv-sq.bash gpgv-sq
+	dofishcomp "${T}"/assets/shell-completions/*.fish
+	dozshcomp "${T}"/assets/shell-completions/_gpg{,v}-sq
 }
