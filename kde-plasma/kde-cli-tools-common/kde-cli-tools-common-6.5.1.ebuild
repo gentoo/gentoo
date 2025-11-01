@@ -9,6 +9,6 @@ inherit ecm-common plasma.kde.org
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 
 RDEPEND="!<${CATEGORY}/${KDE_ORG_NAME}-6.1.4-r2:*"
