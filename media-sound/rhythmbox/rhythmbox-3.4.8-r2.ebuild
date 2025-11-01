@@ -28,7 +28,7 @@ DEPEND="
 	x11-libs/cairo
 	>=x11-libs/gdk-pixbuf-2.18:2
 	>=dev-libs/glib-2.66.0:2
-	>=dev-libs/gobject-introspection-0.10:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=media-libs/gstreamer-1.4.0:1.0[introspection]
 	>=media-libs/gst-plugins-base-1.4.0:1.0[introspection]
 	>=x11-libs/gtk+-3.20.0:3[X,introspection]

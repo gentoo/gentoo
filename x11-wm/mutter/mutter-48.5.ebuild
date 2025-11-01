@@ -15,7 +15,7 @@ if [[ ${PV} == 9999 ]]; then
 	SRC_URI=""
 	SLOT="0/16" # This can get easily out of date, but better than 9967
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 	SLOT="0/$(($(ver_cut 1) - 32))" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 fi
 
@@ -80,7 +80,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13:= )
 	screencast? ( >=media-video/pipewire-1.2.0:= )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	test? (
 		>=x11-libs/gtk+-3.19.8:3[X,introspection?]
 	)

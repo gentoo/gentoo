@@ -53,10 +53,6 @@ app-emulation/wine-proton mingw
 # for now (bug #952113)
 <dev-libs/xmlrpc-c-1.59.03-r2 libxml2
 
-# Joonas Niilola <juippis@gentoo.org> (2025-03-05)
-# 136.0 can't be compiled with "-rust-extensions".
-~mail-client/thunderbird-136.0 rust-extensions
-
 # Ionen Wolkens <ionen@gentoo.org> (2024-12-24)
 # ebuild currently only support luajit, spare users from having
 # to set it by forcing it here (bug #946881)
@@ -82,6 +78,10 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
+dev-lang/rust:1.91.0 llvm_slot_21
+dev-lang/rust-bin:1.91.0 llvm_slot_21
+dev-lang/rust:1.90.0 llvm_slot_20
+dev-lang/rust-bin:1.90.0 llvm_slot_20
 dev-lang/rust:1.89.0 llvm_slot_20
 dev-lang/rust-bin:1.89.0 llvm_slot_20
 dev-lang/rust:1.88.0 llvm_slot_20
@@ -196,6 +196,7 @@ dev-java/openjdk:8 system-bootstrap
 dev-java/openjdk:11 system-bootstrap
 dev-java/openjdk:17 system-bootstrap
 dev-java/openjdk:21 system-bootstrap
+dev-java/openjdk:25 system-bootstrap
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-04)
 # Enable all LLVM targets unconditionally.  Unfortunately, disabling

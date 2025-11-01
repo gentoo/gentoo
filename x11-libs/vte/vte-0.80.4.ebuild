@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/vte"
 LICENSE="LGPL-3+ GPL-3+"
 
 SLOT="2.91"      # vte_api_version in meson.build
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="+crypt debug gtk-doc +icu +introspection systemd +vala"
 REQUIRED_USE="
 	gtk-doc? ( introspection )
@@ -32,7 +32,7 @@ DEPEND="
 	>=dev-libs/libpcre2-10.21:=
 	systemd? ( >=sys-apps/systemd-220:= )
 	>=app-arch/lz4-1.9
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	x11-libs/pango[introspection?]
 "
 RDEPEND="${DEPEND}

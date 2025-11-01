@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYPI_VERIFY_REPO=https://github.com/django-auth-ldap/django-auth-ldap
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 

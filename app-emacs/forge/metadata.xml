@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
 <pkgmetadata>
   <maintainer type="person">
     <email>arsen@gentoo.org</email>
@@ -13,7 +14,13 @@
     <email>gnu-emacs@gentoo.org</email>
     <name>Gentoo GNU Emacs project</name>
   </maintainer>
+  <longdescription>
+    Work with Git forges, such as Github and Gitlab, from the comfort of
+    Magit and the rest of Emacs.
+  </longdescription>
   <upstream>
+    <bugs-to>https://github.com/magit/forge/issues/</bugs-to>
+    <changelog>https://raw.githubusercontent.com/magit/forge/refs/heads/main/CHANGELOG</changelog>
     <remote-id type="github">magit/forge</remote-id>
   </upstream>
 </pkgmetadata>

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -26,12 +26,8 @@ RDEPEND="
 	>=dev-python/django-4.1[${PYTHON_USEDEP}]
 	dev-python/djangorestframework[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	test? (
-		dev-python/pytest-django[${PYTHON_USEDEP}]
-	)
-"
 
+EPYTEST_PLUGINS=( pytest-django )
 distutils_enable_tests pytest
 
 python_test() {
@@ -44,6 +40,5 @@ python_test() {
 		)
 	fi
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p django -o DJANGO_SETTINGS_MODULE=tests.settings
+	epytest -o DJANGO_SETTINGS_MODULE=tests.settings
 }

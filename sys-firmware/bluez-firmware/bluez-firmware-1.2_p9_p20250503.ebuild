@@ -16,7 +16,7 @@ S="${WORKDIR}/bluez-firmware-${COMMIT_ID}"
 LICENSE="bluez-firmware GPL-2+"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 
 RESTRICT="bindist mirror"
 

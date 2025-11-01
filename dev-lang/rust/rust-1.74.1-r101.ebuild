@@ -237,7 +237,10 @@ pkg_setup() {
 
 		if use mrustc-bootstrap; then
 			if ! tc-is-gcc; then
-				die "USE=mrustc-bootstrap reqires that the build environment use GCC"
+				# USE="mrustc-bootstrap" reqires that the build environment use GCC
+				export CC=${CHOST}-gcc
+				export CXX=${CHOST}-g++
+				tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
 			fi
 		else
 			rust_pkg_setup
@@ -459,7 +462,11 @@ src_configure() {
 			ranlib = "$(tc-getRANLIB)"
 			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
 		_EOF_
-		if use system-llvm; then
+		if use mrustc-bootstrap; then
+			cat <<- _EOF_ >> "${S}"/config.toml
+				llvm-config = "${WORKDIR}/llvm-config"
+			_EOF_
+		elif use system-llvm; then
 			cat <<- _EOF_ >> "${S}"/config.toml
 				llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
 			_EOF_
@@ -648,12 +655,63 @@ mrustc_bootstrap() {
 	# These flags are used in every invocation of our bootstrap `cargo`.
 	local cargo_flags="--target ${CFG_COMPILER_HOST_TRIPLE} -j $(makeopts_jobs) --release --verbose"
 
+	# for bootstrap, let's using the built-in stdlib of compiler (could be the bundled one)
+	filter-flags '-stdlib=*'
+
+	# mrustc requires gcc, so disable libcxx to avoid linker failure on w/o '-lstdc++'
+	[[ "${LLVM_USE_LIBCXX}" == "1" ]] && unset LLVM_USE_LIBCXX
+
+	local llvm_config_wrapper_cxxflags=0
+
 	if use system-llvm; then
 		export LLVM_CONFIG="$(get_llvm_prefix)/bin/llvm-config"
+
+		local llvm_config_cxxflags=$(${LLVM_CONFIG} --cxxflags)
+		elog "Checking llvm-config --cxxflags: '${llvm_config_cxxflags}'"
+		[[ "${llvm_config_cxxflags}" =~ (^|[[:space:]])-stdlib=libc\+\+([[:space:]]|$) ]] && {
+			elog "Found LLVM CXXFLAGS has \"--stdlib=libc++\""
+			llvm_config_wrapper_cxxflags=1
+		}
 	else
 		llvm_bootstrap
 		export LLVM_CONFIG="${WORKDIR}/bootstrap/llvm/bin/llvm-config"
 	fi
+
+	elog "LLVM_CONFIG before wrappers: ${LLVM_CONFIG}"
+
+	# workaround for gcc bug 122409 on musl by wrapping llvm-config
+	# to append libc++ header if has "-stdlib=libc++"
+	elog "Preparing wrapper of llvm-config (${WORKDIR}/llvm-config)"
+	cat > ${WORKDIR}/llvm-config <<-EOF || die
+	#!/bin/bash
+
+	RULES=()
+	for flag in "\$@"; do
+	    case "\${flag}" in
+	$([[ "${llvm_config_wrapper_cxxflags}" == 1 ]] && {
+		echo "        --cxxflags) RULES+=( \"-E\" \"s@(^|[[:space:]]+)(-stdlib=libc\\+\\+)(\\$|[[:space:]])@\\1-I${EPREFIX}/usr/include/c++/v1 \\2\\3@g\" ) ;;"
+	})
+	        *)
+	            ;;
+	    esac
+	done
+
+	[[ -z "\${RULES}" ]] && {
+	    ${LLVM_CONFIG} "\$@"
+	} || {
+	    ${LLVM_CONFIG} "\$@" | \\
+	        tee -a ${T}/llvm-config.0.log | \\
+	        sed "\${RULES[@]}" | \\
+	        tee -a ${T}/llvm-config.1.log
+	    exit \${PIPESTATUS[0]}
+	}
+	EOF
+	export LLVM_CONFIG="${WORKDIR}/llvm-config"
+	chmod +x ${WORKDIR}/llvm-config || die
+
+	einfo "llvm-config wrapper contents:"
+	cat "${LLVM_CONFIG}" || die
+	echo
 
 	# define the mrustc sysroot and common minicargo arguments.
 	local mrustc_sysroot="${BROOT}/usr/lib/rust/mrustc-${MRUSTC_VERSION}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"

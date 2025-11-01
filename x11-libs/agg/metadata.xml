@@ -2,6 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
+<upstream>
+	<remote-id type="sourceforge">agg</remote-id>
+</upstream>
 <use>
 	<flag name="gpc">Enable gpc polygon clipper library</flag>
 </use>

@@ -28,7 +28,7 @@ DEPEND="
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0[wayland]
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/libsigc++:2
 	dev-libs/libdbusmenu[gtk3]
 	>=gui-libs/gtk-layer-shell-0.6
@@ -36,7 +36,7 @@ DEPEND="
 	>=gui-libs/wf-config-0.7.0:=
 	gui-wm/wayfire
 	x11-libs/cairo
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[wayland]
 	pulseaudio? (
 		media-libs/alsa-lib
 		media-libs/libpulse

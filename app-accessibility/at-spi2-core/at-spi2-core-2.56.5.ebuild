@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/at-spi2-core"
 
 LICENSE="LGPL-2.1+"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="X dbus-broker gtk-doc +introspection systemd"
 REQUIRED_USE="
 	dbus-broker? ( systemd )
@@ -21,7 +21,7 @@ DEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.67.4:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.1:2=[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-1.54.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	systemd? ( sys-apps/systemd[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11[${MULTILIB_USEDEP}]

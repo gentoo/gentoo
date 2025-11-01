@@ -15,7 +15,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.54.0:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 # TODO: Can we use a newer docbook-xml-dtd, or is one needed at all?

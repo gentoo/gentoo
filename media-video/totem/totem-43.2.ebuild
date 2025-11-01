@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	media-libs/libepoxy
 	>=x11-libs/cairo-1.14
 	x11-libs/gdk-pixbuf:2
-	>=dev-libs/gobject-introspection-1.54:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 
 	python? (
 		${PYTHON_DEPS}

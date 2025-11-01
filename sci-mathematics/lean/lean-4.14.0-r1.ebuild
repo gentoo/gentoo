@@ -85,6 +85,12 @@ src_configure() {
 	cmake_src_configure
 }
 
+src_compile() {
+	ulimit -s 30000000 || eerror "Failed to set required ulimit. Build may fail!"
+
+	cmake_src_compile
+}
+
 src_install() {
 	cmake_src_install
 

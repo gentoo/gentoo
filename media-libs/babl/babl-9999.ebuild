@@ -28,7 +28,7 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 RDEPEND="
-	introspection? ( >=dev-libs/gobject-introspection-1.72:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	lcms? ( >=media-libs/lcms-2.13.1:2 )
 "
 DEPEND="${RDEPEND}"
@@ -48,7 +48,7 @@ src_configure() {
 	local emesonargs=(
 		-Dwith-docs=false
 		$(meson_use introspection enable-gir)
-		$(meson_use lcms with-lcms)
+		$(meson_feature lcms with-lcms)
 		$(meson_use vala enable-vapi)
 		$(meson_use cpu_flags_x86_avx2 enable-avx2)
 		$(meson_use cpu_flags_x86_f16c enable-f16c)

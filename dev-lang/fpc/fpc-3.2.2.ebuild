@@ -1,19 +1,22 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit prefix toolchain-funcs
 
-HOMEPAGE="https://www.freepascal.org/"
 DESCRIPTION="Free Pascal Compiler"
-SRC_URI="https://downloads.sourceforge.net/freepascal/fpcbuild-${PV}.tar.gz
-	https://downloads.sourceforge.net/freepascal/fpc-${PV}.source.tar.gz
-	amd64? ( https://downloads.sourceforge.net/freepascal/${P}.x86_64-linux.tar )
-	arm64? ( https://downloads.sourceforge.net/freepascal/${P}.aarch64-linux.tar )
-	sparc? ( https://downloads.sourceforge.net/freepascal/${P}.sparc64-linux.tar )
-	x86? ( https://downloads.sourceforge.net/freepascal/${P}.i386-linux.tar )
-	doc? ( https://downloads.sourceforge.net/freepascal/Documentation/${PV}/doc-html.tar.gz -> ${P}-doc-html.tar.gz )"
+HOMEPAGE="https://www.freepascal.org/"
+SRC_URI="
+	https://downloads.freepascal.org/fpc/dist/${PV}/source/fpcbuild-${PV}.tar.gz
+	https://downloads.freepascal.org/fpc/dist/${PV}/source/fpc-${PV}.source.tar.gz
+	doc? ( https://downloads.freepascal.org/fpc/dist/${PV}/docs/doc-html.tar.gz -> ${P}-doc-html.tar.gz )
+
+	amd64? ( https://downloads.freepascal.org/fpc/dist/${PV}/x86_64-linux/${P}.x86_64-linux.tar )
+	arm64? ( https://downloads.freepascal.org/fpc/dist/${PV}/aarch64-linux/${P}.aarch64-linux.tar )
+	sparc? ( https://downloads.freepascal.org/fpc/dist/${PV}/sparc64-linux/${P}.sparc64-linux.tar )
+	x86? ( https://downloads.freepascal.org/fpc/dist/${PV}/i386-linux/${P}.i386-linux.tar )
+"
 S="${WORKDIR}/fpcbuild-${PV}/fpcsrc"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"

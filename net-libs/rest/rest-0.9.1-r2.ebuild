@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/json-glib:0[introspection?]
 	dev-libs/libxml2:2=
 	app-misc/ca-certificates
-	introspection? ( >=dev-libs/gobject-introspection-1.74.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

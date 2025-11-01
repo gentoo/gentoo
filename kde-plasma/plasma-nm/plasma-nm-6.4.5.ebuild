@@ -15,7 +15,7 @@ SLOT="6"
 KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE="openconnect teamd"
 
-DEPEND="
+COMMON_DEPEND="
 	>=app-crypt/qca-2.3.7:2[qt6(+)]
 	dev-libs/qcoro[dbus]
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,network,widgets,xml]
@@ -48,10 +48,13 @@ DEPEND="
 		net-vpn/openconnect:=
 	)
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kdeclarative-${KFMIN}:6
 	>=kde-frameworks/kirigami-${KFMIN}:6
 	>=kde-frameworks/kquickcharts-${KFMIN}:6
+"
+DEPEND="${COMMON_DEPEND}
+	>=net-misc/modemmanager-1.20
 "
 BDEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:6

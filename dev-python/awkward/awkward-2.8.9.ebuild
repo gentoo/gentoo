@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
 DISTUTILS_USE_PEP517=hatchling
+PYPI_VERIFY_REPO=https://github.com/scikit-hep/awkward
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 

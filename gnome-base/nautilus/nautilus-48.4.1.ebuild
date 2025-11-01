@@ -11,7 +11,7 @@ HOMEPAGE="https://apps.gnome.org/Nautilus/"
 LICENSE="GPL-3+ LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86"
 
 IUSE="X +cloudproviders doc gnome +gstreamer +introspection +previewer selinux wayland"
 REQUIRED_USE="doc? ( introspection )"
@@ -31,7 +31,7 @@ DEPEND="
 	selinux? ( >=sys-libs/libselinux-2.0 )
 	>=app-misc/tinysparql-3.0:3
 	cloudproviders? ( >=net-libs/libcloudproviders-0.3.1 )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 # Uses org.freedesktop.Tracker.Miner.Files gsettings schema from localsearch
 RDEPEND="${DEPEND}

@@ -1,0 +1,23 @@
+From 7e0fae6d28792a628a25cadd4ec1582c7351a7a3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
+ <meggy.calabkova@gmail.com>
+Date: Tue, 9 Sep 2025 16:26:28 +0200
+Subject: [PATCH] fix tests on Python 3.14
+
+---
+ tests/test_quoting.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_quoting.py b/tests/test_quoting.py
+index 3692d38a12..9dbe45ca50 100644
+--- a/tests/test_quoting.py
++++ b/tests/test_quoting.py
+@@ -17,7 +17,7 @@ def test_deprecated_escape(recwarn, char):
+     assert len(recwarn) == 1
+     w = recwarn.pop(DeprecationWarning if sys.version_info < (3, 12)
+                     else SyntaxWarning)
+-    assert str(w.message).startswith('invalid escape sequence')
++    assert 'invalid escape sequence' in str(w.message)
+ 
+     assert escape == f'\\{char}'
+     assert quoting.quote(escape) == f'"\\{char}"'

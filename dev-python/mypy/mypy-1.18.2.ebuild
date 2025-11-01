@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -64,6 +64,12 @@ src_prepare() {
 
 	# don't force pytest-xdist, in case user asked for EPYTEST_JOBS=1
 	sed -i -e '/addopts/s:-nauto::' pyproject.toml || die
+
+	# https://github.com/python/mypy/issues/20070
+	if has_version ">=dev-libs/libxml2-2.15"; then
+		sed -e 's:<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">:<meta charset="UTF-8">:' \
+			-i test-data/unit/reports.test || die
+	fi
 }
 
 python_compile() {
@@ -90,9 +96,9 @@ python_test() {
 		mypy/test/meta/test_update_data.py
 	)
 	case ${EPYTHON} in
-		python3.13)
+		python3.14)
 			;&
-		python3.12)
+		python3.1[23])
 			EPYTEST_DESELECT+=(
 				# more assertions, sigh
 				mypyc/test/test_run.py::TestRun::run-async.test::testRunAsyncMiscTypesInEnvironment

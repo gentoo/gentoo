@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gi-docgen )
 "

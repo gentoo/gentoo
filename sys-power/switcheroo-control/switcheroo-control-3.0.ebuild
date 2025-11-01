@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit meson python-single-r1 systemd udev
 
@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.freedesktop.org/hadess/switcheroo-control/-/releases/${P
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 
 IUSE="gtk-doc selinux test video_cards_amdgpu video_cards_nouveau"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

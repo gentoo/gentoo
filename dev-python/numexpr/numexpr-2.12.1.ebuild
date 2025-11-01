@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 
 DEPEND="
 	>=dev-python/numpy-2.0.0_rc:=[${PYTHON_USEDEP}]
@@ -33,6 +33,11 @@ RDEPEND="
 "
 
 python_test() {
+	# Tests will test that these variables are "safely" parsed, and break
+	# if you set them yourself. They don't do any real work, just asserts.
+	# Bug 963118.
+	unset NUMEXPR_MAX_THREADS NUMEXPR_NUM_THREADS OMP_NUM_THREADS
+
 	pushd "${BUILD_DIR}/install/$(python_get_sitedir)" >/dev/null || die
 	"${EPYTHON}" -c '
 import sys,numexpr

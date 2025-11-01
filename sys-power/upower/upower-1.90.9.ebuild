@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=dev-libs/glib-2.66:2
 	sys-apps/dbus:=
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	policykit? ( >=sys-auth/polkit-103 )
 	kernel_linux? (
 		>=dev-libs/libgudev-238:=

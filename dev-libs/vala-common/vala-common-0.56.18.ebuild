@@ -7,7 +7,7 @@ GNOME_ORG_MODULE="vala"
 inherit gnome.org
 
 DESCRIPTION="Build infrastructure for packages that use Vala"
-HOMEPAGE="https://vala.dev https://gitlab.gnome.org/GNOME/vala"
+HOMEPAGE="https://vala.dev"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

@@ -17,7 +17,7 @@ RDEPEND="
 	>=x11-libs/cairo-1.10.0
 	>=dev-libs/glib-2.28.0:2
 	>=x11-libs/gtk+-3.0.0:3
-	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

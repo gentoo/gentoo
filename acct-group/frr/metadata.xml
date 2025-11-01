@@ -5,8 +5,8 @@
 		<name>Alarig Le Lay</name>
 		<email>alarig@swordarmor.fr</email>
 	</maintainer>
-	<maintainer type="person" proxied="yes">
-		<email>jaco@uls.co.za</email>
+	<maintainer type="person" proxied="proxy">
+		<email>jkroon@gentoo.org</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
 	<maintainer type="project" proxied="proxy">

@@ -9,7 +9,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-shell-extensions"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="X"
 
 DEPEND="
@@ -20,7 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=app-accessibility/at-spi2-core-2.46.0[introspection]
 	>=dev-libs/gjs-1.29
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	gnome-base/gnome-menus:3[introspection]
 	=gnome-base/gnome-shell-$(ver_cut 1)*
 	gui-libs/libadwaita[introspection]

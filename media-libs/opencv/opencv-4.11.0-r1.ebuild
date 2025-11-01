@@ -343,6 +343,7 @@ RDEPEND="
 unset COMMON_DEPEND
 
 BDEPEND="
+	dev-util/patchelf
 	virtual/pkgconfig
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	doc? (

@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 IUSE="gnome libreoffice webcam"
 
 COMMON_DEPEND="
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]

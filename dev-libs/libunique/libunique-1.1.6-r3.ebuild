@@ -24,7 +24,7 @@ RDEPEND="
 		>=dev-libs/dbus-glib-0.70
 		sys-apps/dbus[X]
 	)
-	introspection? ( >=dev-libs/gobject-introspection-0.6.3:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils

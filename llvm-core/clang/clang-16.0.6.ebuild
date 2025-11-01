@@ -55,7 +55,7 @@ LLVM_TEST_COMPONENTS=(
 	llvm/utils
 	third-party
 )
-LLVM_PATCHSET=${PV}
+LLVM_PATCHSET=${PV}-r6
 LLVM_USE_TARGETS=llvm
 llvm.org_set_globals
 

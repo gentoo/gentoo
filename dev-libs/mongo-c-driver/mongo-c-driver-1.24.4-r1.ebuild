@@ -64,6 +64,9 @@ src_prepare() {
 	sed -i '/message (STATUS "disabling test-libmongoc since using system libbson")/{d}' CMakeLists.txt || die
 	sed -i '/SET (ENABLE_TESTS OFF)/{d}' CMakeLists.txt || die
 	sed -i 's#<bson/bson-private.h>#"bson/bson-private.h"#' src/libbson/tests/test-bson.c || die
+
+	# bug 953521
+	sed -i 's/message (FATAL_ERROR "System libbson built without static library target")/message (STATUS "System libbson built without static library target")/' CMakeLists.txt || die
 }
 
 src_configure() {

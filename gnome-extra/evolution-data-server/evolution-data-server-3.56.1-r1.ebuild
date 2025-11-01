@@ -53,7 +53,7 @@ RDEPEND="
 		oauth-gtk4? ( >=net-libs/webkit-gtk-2.39.90:6 )
 	)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.8:= )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	kerberos? ( virtual/krb5:= )
 	ldap? ( >=net-nds/openldap-2:= )
 	weather? ( >=dev-libs/libgweather-4.2.0:4= )

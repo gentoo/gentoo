@@ -13,7 +13,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gom"
 
 LICENSE="LGPL-2+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gtk-doc +introspection python test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
@@ -22,7 +22,7 @@ BDEPEND=""
 RDEPEND="
 	>=dev-db/sqlite-3.7:3
 	>=dev-libs/glib-2.38:2
-	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	python? ( ${PYTHON_DEPS}
 		>=dev-python/pygobject-3.16:3[${PYTHON_USEDEP}] )
 "

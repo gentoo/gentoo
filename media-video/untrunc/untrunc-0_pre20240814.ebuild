@@ -15,9 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	media-video/ffmpeg:=
+	>=media-video/ffmpeg-6.1:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0_pre20240814-ffmpeg8.patch
+)
 
 src_install() {
 	einstalldocs

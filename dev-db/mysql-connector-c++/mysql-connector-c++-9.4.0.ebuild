@@ -17,7 +17,7 @@ LICENSE="Artistic GPL-2"
 # See ABI_VERSION(s) is version.cmake
 SLOT="0/2.10" # ABI_VERSION_MAJOR/JDBC_ABI_VERSION_MAJOR
 # -ppc, -sparc for bug #711940
-KEYWORDS="amd64 arm ~arm64 -ppc ~ppc64 -sparc x86"
+KEYWORDS="amd64 arm ~arm64 -ppc ppc64 -sparc x86"
 IUSE="+legacy test"
 
 RESTRICT="!test? ( test )"

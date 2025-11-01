@@ -1,0 +1,86 @@
+From a587f513440e3acb1070f3c4a75642f20343cd63 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 12 Oct 2025 14:42:30 +0200
+Subject: [PATCH] Drop bogus Qt Network dependency
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt          | 10 ++++------
+ src/core/CMakeLists.txt |  4 ++--
+ 2 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b17c36..50ae9f0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -210,13 +210,13 @@ set(qt_min_version 5.9)
+ 
+ find_package(
+     Qt6
+-    COMPONENTS Core Gui Widgets Xml Network LinguistTools OpenGL Svg OpenGLWidgets
++    COMPONENTS Core Gui Widgets Xml LinguistTools OpenGL Svg OpenGLWidgets
+     CONFIG)
+ if (Qt6_FOUND)
+     set(QT_BINDIR "${QT6_INSTALL_PREFIX}/bin")
+ else()
+   find_package(Qt5 ${qt_min_version}
+-    COMPONENTS Core Gui Widgets Xml Network LinguistTools OpenGL Svg
++    COMPONENTS Core Gui Widgets Xml LinguistTools OpenGL Svg
+     CONFIG REQUIRED)
+     set(QT_BINDIR "${QT5_INSTALL_PREFIX}/bin")
+ endif()
+@@ -224,7 +224,6 @@ endif()
+ if(Qt6_FOUND)
+   set(Qt_Core_lib Qt::Core)
+   set(Qt_Gui_lib Qt::Gui)
+-  set(Qt_Network_lib Qt::Network)
+   set(Qt_OpenGL_lib Qt::OpenGL)
+   set(Qt_Svg_lib Qt::Svg)
+   set(Qt_Widgets_lib Qt::Widgets)
+@@ -233,7 +232,6 @@ if(Qt6_FOUND)
+ else()
+   set(Qt_Core_lib Qt5::Core)
+   set(Qt_Gui_lib Qt5::Gui)
+-  set(Qt_Network_lib Qt5::Network)
+   set(Qt_OpenGL_lib Qt5::OpenGL)
+   set(Qt_Svg_lib Qt5::Svg)
+   set(Qt_Widgets_lib Qt5::Widgets)
+@@ -365,12 +363,12 @@ if (WIN32)
+     set(dep_libs
+         JPEG::JPEG PNG::PNG ZLIB::ZLIB TIFF::TIFF
+         Qt::Core Qt::Gui Qt::Widgets Qt::Xml
+-        Qt::Network Qt::OpenGL Qt::Svg Qt6::OpenGLWidgets)
++        Qt::OpenGL Qt::Svg Qt6::OpenGLWidgets)
+   else()
+     set(dep_libs
+         JPEG::JPEG PNG::PNG ZLIB::ZLIB TIFF::TIFF
+         Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Xml
+-        Qt5::Network Qt5::OpenGL Qt5::Svg)
++        Qt5::OpenGL Qt5::Svg)
+   endif()
+ 
+   foreach (_target ${dep_libs})
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index b701c10..74cbdd3 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -123,14 +123,14 @@ if(Qt6_FOUND)
+   target_link_libraries(
+     core
+     PRIVATE TIFF::TIFF PNG::PNG ZLIB::ZLIB JPEG::JPEG
+-    PUBLIC Qt::Core Qt::Gui Qt::Widgets Qt::Xml Qt::Network Qt::OpenGL Qt::Svg Qt::OpenGLWidgets
++    PUBLIC Qt::Core Qt::Gui Qt::Widgets Qt::Xml Qt::OpenGL Qt::Svg Qt::OpenGLWidgets
+     imageproc zones
+     fix_orientation page_split deskew select_content page_layout output)
+ else()
+   target_link_libraries(
+     core
+     PRIVATE TIFF::TIFF PNG::PNG ZLIB::ZLIB JPEG::JPEG
+-    PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Xml Qt5::Network Qt5::OpenGL Qt5::Svg
++    PUBLIC Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Xml Qt5::OpenGL Qt5::Svg
+     imageproc zones
+     fix_orientation page_split deskew select_content page_layout output)
+ endif()
+-- 
+2.51.0
+

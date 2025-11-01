@@ -25,7 +25,7 @@ RDEPEND="
 	>=gui-libs/gtk-4.15.2:4
 	>=gui-libs/libadwaita-1.6_beta:1
 	>=gui-libs/gtksourceview-5.3.0:5
-	introspection? ( >=dev-libs/gobject-introspection-1.58:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -19,7 +19,7 @@ DEPEND="
 	>=gui-libs/gtk-4.4.0:4[introspection]
 	media-libs/gst-plugins-bad:1.0
 	>=gui-libs/libadwaita-1.1.0:1=
-	>=dev-libs/gobject-introspection-1.31.6
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	media-libs/gstreamer:1.0[introspection]
 	media-libs/gst-plugins-base:1.0[introspection,ogg]
 	x11-libs/gdk-pixbuf:2[introspection]

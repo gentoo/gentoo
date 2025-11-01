@@ -29,7 +29,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake GIT_REV=${GIT_COMMIT} VERSION=v${PV} GO_FLAGS="-mod=vendor" build
+	emake GIT_REV=${GIT_COMMIT} VERSION=v${PV} build
 }
 
 src_install() {

@@ -1,0 +1,15 @@
+Followup fix to:
+https://github.com/itstool/itstool/commit/32c7d07664dc37765100285d1202d488cd6a27e8
+but for the test runner, which we can now run.
+
+--- a/tests/run_tests.py
++++ b/tests/run_tests.py
+@@ -379,7 +379,7 @@ class ITSTestRunner(unittest.TextTestRun
+         test_binary_path = os.path.join(ITSTOOL_DIR, "itstool_test")
+         shutil.copy(os.path.join(ITSTOOL_DIR, "itstool.in"), test_binary_path)
+         data_dir = os.path.join(ITSTOOL_DIR, "its")
+-        call("sed -i -e 's/@DATADIR@/%s/' %s" % (data_dir.replace('/', '\/'), test_binary_path), shell=True)
++        call("sed -i -e 's/@DATADIR@/%s/' %s" % (data_dir.replace('/', r'\/'), test_binary_path), shell=True)
+ 
+         result = super(ITSTestRunner, self).run(test)
+ 

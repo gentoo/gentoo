@@ -99,7 +99,7 @@ PROPERTIES="test_network"
 RESTRICT="!test? ( test ) test"
 
 BDEPEND="
-	app-crypt/gnupg
+	app-alternatives/gpg
 	test? ( app-crypt/pgpdump )
 "
 

@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 multiprocessing
 
@@ -94,6 +94,7 @@ python_test() {
 		# fragile memory tests
 		tests/test_csv.py::TestSerialStreamingCSVRead::test_batch_lifetime
 		tests/test_csv.py::TestThreadedStreamingCSVRead::test_batch_lifetime
+		tests/test_array.py::test_to_pandas_zero_copy
 		# takes forever, and manages to generate timedeltas over 64 bits
 		tests/test_strategies.py
 		"tests/test_array.py::test_pickling[builtin_pickle]"

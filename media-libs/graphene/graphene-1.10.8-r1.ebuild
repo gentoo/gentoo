@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.30.0:2[${MULTILIB_USEDEP}]
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 # Python is only needed with USE=introspection or FEATURES=test, but not bothering with conditional python_setup, as meson uses it too anyway

@@ -12,7 +12,7 @@ S="${WORKDIR}/PDAL-${PV}-src"
 
 LICENSE="BSD"
 SLOT="0/19"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="debug postgres test"
 RESTRICT="!test? ( test )"
 
@@ -33,7 +33,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? ( sci-libs/gdal[geos,jpeg,png,sqlite] )
+	test? ( sci-libs/gdal[geos,jpeg(+),png,sqlite] )
 "
 
 src_configure() {

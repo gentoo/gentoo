@@ -83,7 +83,10 @@ RDEPEND="
 
 S="${WORKDIR}/avidemux2-${PV}"
 
-PATCHES=( "${FILESDIR}/${PN}-2.8.1-optional-pulse.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.8.1-optional-pulse.patch"
+	"${FILESDIR}/${PN}-2.8.1-x265-4.1.patch"
+)
 
 src_prepare() {
 	default

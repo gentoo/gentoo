@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
-inherit gnome.org gnome2-utils meson optfeature python-any-r1 toolchain-funcs virtualx xdg
+inherit flag-o-matic gnome.org gnome2-utils meson optfeature python-any-r1 toolchain-funcs virtualx xdg
 
 DESCRIPTION="GTK is a multi-platform toolkit for creating graphical user interfaces"
 HOMEPAGE="https://www.gtk.org/ https://gitlab.gnome.org/GNOME/gtk/"
@@ -15,7 +15,7 @@ REQUIRED_USE="
 	gtk-doc? ( introspection )
 	test? ( introspection )
 "
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="aqua broadway cloudproviders colord cups examples gstreamer gtk-doc +introspection sysprof test vulkan wayland +X cpu_flags_x86_f16c"
 
 # TODO: Optional gst build dep on >=gst-plugins-base-1.23.1, so depend on it once we can
@@ -46,7 +46,7 @@ COMMON_DEPEND="
 			>=media-libs/gst-plugins-base-1.24.0:1.0[opengl]
 		)
 	)
-	introspection? ( >=dev-libs/gobject-introspection-1.76:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	vulkan? ( >=media-libs/vulkan-loader-1.3:=[wayland?,X?] )
 	wayland? (
 		>=dev-libs/wayland-1.23.0
@@ -148,6 +148,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use x86 && append-flags -DDISABLE_X64=1 #943705 https://gitlab.gnome.org/GNOME/gtk/-/issues/4173
+
 	local emesonargs=(
 		# GDK backends
 		$(meson_use X x11-backend)

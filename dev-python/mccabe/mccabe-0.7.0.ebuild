@@ -33,8 +33,3 @@ PATCHES=(
 )
 
 distutils_enable_tests pytest
-
-python_prepare_all() {
-	sed -i -e '/pytest-runner/d' setup.py || die
-	distutils-r1_python_prepare_all
-}

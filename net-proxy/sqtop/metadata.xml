@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>jaco@uls.co.za</email>
+	<maintainer type="person">
+		<email>jkroon@gentoo.org</email>
 		<name>Jaco Kroon</name>
 	</maintainer>
-	<maintainer type="person" proxied="proxy">
+	<maintainer type="person">
 		<email>sam@gentoo.org</email>
 		<name>Sam James</name>
 	</maintainer>

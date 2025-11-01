@@ -113,7 +113,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-        "${FILESDIR}"/${P}-poppler-25.{06,07,09}.patch # bugs 949531, 957137, 962278
+        "${FILESDIR}"/${P}-poppler-25.{06,07,09,10}.patch # bugs 949531, 957137, 962278
 )
 
 pkg_pretend() {
@@ -135,6 +135,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	rm -vr src/3rdparty/2geom/tests/dependent-project || die # unused, causing bug #964016
 	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }

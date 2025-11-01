@@ -1,6 +1,0 @@
-# Copyright 1999-2025 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Alfred Wingate <parona@protonmail.com> (2025-09-20)
-# This is still experimental, prebuilt images may not boot on all systems.
-generic-uki

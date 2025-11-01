@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libxml2:2=
 	crypt? ( dev-libs/libgcrypt:0= )
 	uchardet? ( app-i18n/uchardet )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -30,7 +30,7 @@ BDEPEND="
 	>=dev-build/ninja-1.8.2
 	>=dev-libs/wayland-protocols-1.16
 	>=dev-util/wayland-scanner-1.10.0
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	doc? ( dev-util/gtk-doc )
 	test? ( >=dev-lang/python-3.8.19 )
 	vala? ( dev-lang/vala[vapigen(+)] )

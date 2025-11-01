@@ -1,3 +1,7 @@
+https://github.com/OSGeo/gdal/pull/13175
+https://github.com/OSGeo/gdal/issues/13173
+https://github.com/OSGeo/gdal/commit/a716a6cd5ffd779b30950f046fce91878fc97b9d
+
 From a716a6cd5ffd779b30950f046fce91878fc97b9d Mon Sep 17 00:00:00 2001
 From: Even Rouault <even.rouault@spatialys.com>
 Date: Sun, 5 Oct 2025 00:50:51 +0200
@@ -5,12 +9,6 @@ Subject: [PATCH] Add compatibility with Poppler 25.10 (support for older
  versions kept)
 
 Fixes #13173
----
- frmts/pdf/pdfobject.cpp | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
-
-diff --git a/frmts/pdf/pdfobject.cpp b/frmts/pdf/pdfobject.cpp
-index d8ded01d3e4b..2c5c44ba04d9 100644
 --- a/frmts/pdf/pdfobject.cpp
 +++ b/frmts/pdf/pdfobject.cpp
 @@ -1437,7 +1437,12 @@ int64_t GDALPDFStreamPoppler::GetLength(int64_t nMaxSize)

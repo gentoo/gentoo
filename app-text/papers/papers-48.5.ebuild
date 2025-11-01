@@ -233,7 +233,7 @@ LICENSE+="
 # subslot = ppsd4.0.(suffix of libppsdocument-4.0)-ppsv4.0.(suffix of libppsview-4.0)
 SLOT="0/ppsd4.0.5-ppsv4.0.4"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="+comics djvu doc gnome-keyring introspection nautilus +spell sysprof
 test tiff"
@@ -266,7 +266,7 @@ DEPEND+="
 	sysprof? ( dev-util/sysprof-capture:4 )
 
 	nautilus? ( >=gnome-base/nautilus-43 )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	spell? ( >=app-text/libspelling-0.2 )
 	comics? ( >=app-arch/libarchive-3.6.0 )
 	djvu? ( >=app-text/djvu-3.5.22 )

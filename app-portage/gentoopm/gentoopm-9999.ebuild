@@ -4,16 +4,16 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A common interface to Gentoo package managers"
 HOMEPAGE="
-	https://github.com/projg2/gentoopm/
+	https://github.com/gentoo/gentoopm/
 	https://pypi.org/project/gentoopm/
 "
-EGIT_REPO_URI="https://github.com/projg2/gentoopm.git"
+EGIT_REPO_URI="https://github.com/gentoo/gentoopm.git"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -28,4 +28,5 @@ PDEPEND="
 	app-eselect/eselect-package-manager
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

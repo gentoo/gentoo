@@ -11,7 +11,7 @@ SRC_URI="https://www.opencode.net/api/v4/projects/5459/packages/generic/qt6ct/${
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # uses Qt private APIs wrt :=
 # dlopen: qtsvg

@@ -22,7 +22,7 @@ DEPEND="
 	>=gui-libs/libgedit-amtk-5.6:=
 	>=gui-libs/tepl-6.8.0:=
 	>=dev-libs/libpeas-1.14.1:0[gtk]
-	>=dev-libs/gobject-introspection-1.54:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=app-text/gspell-0.2.5:0=
 	python? (
 		${PYTHON_DEPS}

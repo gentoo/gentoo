@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/glib:2
 	x11-libs/gtk+:3[introspection?]
 	>=x11-libs/pango-1.8.0[introspection?]
-	introspection? ( >=dev-libs/gobject-introspection-1.30:= )"
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-build/gtk-doc-am-1.17

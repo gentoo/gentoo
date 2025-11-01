@@ -20,7 +20,7 @@ DEPEND="
 RDEPEND="${DEPEND}
 	>=app-accessibility/at-spi2-core-2.46.0[introspection]
 	>=dev-libs/gjs-1.29
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	gnome-base/gnome-menus:3[introspection]
 	=gnome-base/gnome-shell-$(ver_cut 1)*
 	gui-libs/libadwaita[introspection]

@@ -23,7 +23,7 @@ RDEPEND="
 	>=media-libs/fontconfig-2.13.0:1.0[${MULTILIB_USEDEP}]
 	>=x11-libs/cairo-1.12.10[X?,${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	X? (
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXft-2.3.1-r1[${MULTILIB_USEDEP}]

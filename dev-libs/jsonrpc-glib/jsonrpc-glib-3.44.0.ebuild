@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib[introspection?]
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

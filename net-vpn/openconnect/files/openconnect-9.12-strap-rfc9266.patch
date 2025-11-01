@@ -1,0 +1,111 @@
+https://bugs.gentoo.org/965061
+https://gitlab.com/openconnect/openconnect/-/merge_requests/574
+
+From 94868eef754f88569f690f8440010b331a3a67fb Mon Sep 17 00:00:00 2001
+From: David Woodhouse <dwmw2@infradead.org>
+Date: Fri, 15 Nov 2024 15:46:05 +0000
+Subject: [PATCH] Use RFC9266 'tls-exporter' channel bindings for Cisco STRAP
+ with TLSv1.3
+
+Fixes #659
+
+Signed-off-by: David Woodhouse <dwmw2@infradead.org>
+(cherry picked from commit 94e0b16c011b7b88708b8a8505fac6bfbe2e3cca)
+---
+ gnutls.c               | 20 +++++++++++++++++++-
+ openconnect-internal.h |  5 +++++
+ openssl.c              | 30 +++++++++++++++++++++++-------
+ 3 files changed, 47 insertions(+), 8 deletions(-)
+
+diff --git a/gnutls.c b/gnutls.c
+index 9fc010b9..6c2e3aec 100644
+--- a/gnutls.c
++++ b/gnutls.c
+@@ -3176,7 +3176,25 @@ void append_strap_verify(struct openconnect_info *vpninfo,
+ 
+ 	/* Concatenate our Finished message with our pubkey to be signed */
+ 	struct oc_text_buf *nonce = buf_alloc();
+-	buf_append_bytes(nonce, vpninfo->finished, vpninfo->finished_len);
++	if (gnutls_protocol_get_version(vpninfo->https_sess) <= GNUTLS_TLS1_2) {
++		/* For TLSv1.2 and earlier, use RFC5929 'tls-unique' channel binding */
++		buf_append_bytes(nonce, vpninfo->finished, vpninfo->finished_len);
++	} else {
++		/* For TLSv1.3 use RFC9266 'tls-exporter' channel binding */
++		char channel_binding_buf[TLS_EXPORTER_KEY_SIZE];
++		err = gnutls_prf(vpninfo->https_sess, TLS_EXPORTER_LABEL_SIZE, TLS_EXPORTER_LABEL,
++				 0, 0, 0, TLS_EXPORTER_KEY_SIZE, channel_binding_buf);
++		if (err) {
++			vpn_progress(vpninfo, PRG_ERR,
++				     _("Failed to generate channel bindings for STRAP key: %s\n"),
++				     gnutls_strerror(err));
++			if (!buf_error(buf))
++				buf->error = -EIO;
++			buf_free(nonce);
++			return;
++		}
++		buf_append_bytes(nonce, channel_binding_buf, TLS_EXPORTER_KEY_SIZE);
++	}
+ 
+ 	if (rekey) {
+ 		/* We have a copy and we don't want it freed just yet */
+diff --git a/openconnect-internal.h b/openconnect-internal.h
+index f19b4d81..541d5594 100644
+--- a/openconnect-internal.h
++++ b/openconnect-internal.h
+@@ -1058,6 +1058,11 @@ static inline void __monitor_fd_new(struct openconnect_info *vpninfo,
+ #define PSK_LABEL_SIZE (sizeof(PSK_LABEL) - 1)
+ #define PSK_KEY_SIZE 32
+ 
++/* Key material for RFC9266 tls-exporter channel binding */
++#define TLS_EXPORTER_LABEL "EXPORTER-Channel-Binding"
++#define TLS_EXPORTER_LABEL_SIZE (sizeof(TLS_EXPORTER_LABEL) - 1)
++#define TLS_EXPORTER_KEY_SIZE 32
++
+ /* Packet types */
+ 
+ #define AC_PKT_DATA		0	/* Uncompressed data */
+diff --git a/openssl.c b/openssl.c
+index 12a08692..4177e3f9 100644
+--- a/openssl.c
++++ b/openssl.c
+@@ -2510,14 +2510,30 @@ void append_strap_verify(struct openconnect_info *vpninfo,
+ 			 struct oc_text_buf *buf, int rekey)
+ {
+ 	unsigned char finished[64];
+-	size_t flen = SSL_get_finished(vpninfo->https_ssl, finished, sizeof(finished));
++	size_t flen;
+ 
+-	if (flen > sizeof(finished)) {
+-		vpn_progress(vpninfo, PRG_ERR,
+-			     _("SSL Finished message too large (%zd bytes)\n"), flen);
+-		if (!buf_error(buf))
+-			buf->error = -EIO;
+-		return;
++	if (SSL_SESSION_get_protocol_version(SSL_get_session(vpninfo->https_ssl)) <= TLS1_2_VERSION) {
++		/* For TLSv1.2 and earlier, use RFC5929 'tls-unique' channel binding */
++		flen = SSL_get_finished(vpninfo->https_ssl, finished, sizeof(finished));
++		if (flen > sizeof(finished)) {
++			vpn_progress(vpninfo, PRG_ERR,
++				     _("SSL Finished message too large (%zu bytes)\n"), flen);
++			if (!buf_error(buf))
++				buf->error = -EIO;
++			return;
++		}
++	} else {
++		/* For TLSv1.3 use RFC9266 'tls-exporter' channel binding */
++		if (!SSL_export_keying_material(vpninfo->https_ssl,
++						finished, TLS_EXPORTER_KEY_SIZE,
++						TLS_EXPORTER_LABEL, TLS_EXPORTER_LABEL_SIZE,
++						NULL, 0, 0)) {
++			vpn_progress(vpninfo, PRG_ERR,
++				     _("Failed to generate channel bindings for STRAP key\n"));
++			openconnect_report_ssl_errors(vpninfo);
++			return;
++		}
++		flen = TLS_EXPORTER_KEY_SIZE;
+ 	}
+ 
+ 	/* If we're rekeying, we need to sign the Verify header with the *old* key. */
+-- 
+2.51.1
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,7 +42,7 @@ BDEPEND="$(vala_depend)
 		>=dev-util/gi-docgen-2021.1
 	)
 	bash-completion? ( >=app-shells/bash-completion-2.0 )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	test? (
 		net-libs/gnutls[tools]
 		test-full? ( dev-util/umockdev )

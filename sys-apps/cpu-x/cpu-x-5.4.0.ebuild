@@ -53,6 +53,8 @@ BDEPEND="
 
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=( "${FILESDIR}"/cpu-x-5.4.0-fix-for-nasm-3.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DFORCE_LIBSTATGRAB=$(usex force-libstatgrab)

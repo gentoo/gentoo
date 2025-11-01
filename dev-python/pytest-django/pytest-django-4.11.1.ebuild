@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1
 
@@ -31,19 +31,18 @@ BDEPEND="
 	test? (
 		dev-python/django[${PYTHON_USEDEP}]
 		>=dev-python/django-configurations-2.0[${PYTHON_USEDEP}]
-		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
 "
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
+EPYTEST_PLUGINS=( "${PN}" pytest-xdist )
 distutils_enable_tests pytest
 
 python_test() {
 	local -x DJANGO_SETTINGS_MODULE
 	local -x PYTHONPATH=${PWD}
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=pytest_django.plugin,xdist.plugin
 	for DJANGO_SETTINGS_MODULE in pytest_django_test.settings_sqlite{,_file}; do
 		einfo "Testing ${DJANGO_SETTINGS_MODULE}"
 		epytest tests

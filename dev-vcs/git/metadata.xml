@@ -30,6 +30,7 @@
     <flag name="subversion">Include git-svn for <pkg>dev-vcs/subversion</pkg> support</flag>
     <flag name="tk">Include the 'gitk' and 'git gui' tools</flag>
     <flag name="webdav">Adds support for push'ing to HTTP/HTTPS repositories via DAV</flag>
+    <flag name="perl">Adds Perl bindings and tools such as git-send-email</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:git:git</remote-id>

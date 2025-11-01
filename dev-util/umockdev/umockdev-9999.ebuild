@@ -26,7 +26,7 @@ RDEPEND="
 	net-libs/libpcap[${MULTILIB_USEDEP}]
 	virtual/libudev:=[${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.32:2[${MULTILIB_USEDEP}]
-	>=dev-libs/gobject-introspection-1.32:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="${RDEPEND}
 	test? (

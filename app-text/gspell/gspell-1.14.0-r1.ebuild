@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.20:3[introspection?]
 	dev-libs/icu:=
-	introspection? ( >=dev-libs/gobject-introspection-1.42.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}
 	test? ( sys-apps/dbus )

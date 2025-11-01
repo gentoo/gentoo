@@ -35,7 +35,6 @@ RDEPEND="
 	>=app-emulation/libvirt-glib-0.0.9[introspection]
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	$(python_gen_cond_dep '
-		dev-libs/libxml2[python,${PYTHON_USEDEP}]
 		dev-python/argcomplete[${PYTHON_USEDEP}]
 		>=dev-python/libvirt-python-6.10.0[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]

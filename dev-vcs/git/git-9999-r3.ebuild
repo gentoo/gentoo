@@ -79,7 +79,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	gpg? ( app-crypt/gnupg )
+	gpg? ( app-alternatives/gpg )
 	perl? (
 		dev-perl/Error
 		dev-perl/MailTools

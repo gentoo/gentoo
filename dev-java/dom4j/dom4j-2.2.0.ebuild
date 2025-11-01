@@ -29,7 +29,10 @@ CP_DEPEND="
 DEPEND="${CP_DEPEND}
 	>=virtual/jdk-11:*
 	jaxen? ( dev-java/jaxen:1.2[dom4j] )
-	test? ( dev-java/xerces:2 )
+	test? (
+		>=dev-java/xalan-2.7.3-r3:0
+		dev-java/xerces:2
+	)
 "
 
 RDEPEND="${CP_DEPEND}
@@ -45,7 +48,7 @@ JAVA_AUTOMATIC_MODULE_NAME="org.dom4j"
 JAVA_GENTOO_CLASSPATH_EXTRA="${DISTDIR}/jaxen-1.2.0.jar"
 JAVA_SRC_DIR="src/main/java"
 
-JAVA_TEST_GENTOO_CLASSPATH="testng,xerces-2"
+JAVA_TEST_GENTOO_CLASSPATH="testng,xalan,xerces-2"
 JAVA_TEST_RESOURCE_DIRS="xml"
 JAVA_TEST_SRC_DIR="src/test/java"
 

@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 DEPEND="
-	>media-video/vdr-2.4
+	>=media-video/vdr-2.4:=
 	dev-libs/expat
 	net-misc/curl"
 RDEPEND="${DEPEND}"

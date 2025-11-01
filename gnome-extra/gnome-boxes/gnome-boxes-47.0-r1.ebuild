@@ -31,7 +31,7 @@ DEPEND="
 	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	>=net-libs/webkit-gtk-2.38.0:4.1
 
-	>=dev-libs/gobject-introspection-1.56:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/libgudev-165:=
 " # gobject-introspection needed for libovf subproject
 # These are called via exec():

@@ -21,24 +21,21 @@ if [[ ${PV} == 9999  ]]; then
 	GRUB_BOOTSTRAP=1
 fi
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 WANT_LIBTOOL=none
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dkiper.gpg
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
 inherit bash-completion-r1 eapi9-ver flag-o-matic multibuild optfeature
-inherit python-any-r1 secureboot toolchain-funcs
+inherit python-any-r1 secureboot toolchain-funcs verify-sig
 
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="https://www.gnu.org/software/grub/"
 
 MY_P=${P}
 if [[ ${PV} != 9999 ]]; then
-	inherit verify-sig
-
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
 		# The quote style is to work with <=bash-4.2 and >=bash-4.3 #503860
 		MY_P=${P/_/'~'}
@@ -54,7 +51,12 @@ if [[ ${PV} != 9999 ]]; then
 		"
 		S=${WORKDIR}/${P%_*}
 	fi
-	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-danielkiper )"
+	BDEPEND="
+		verify-sig? (
+			sec-keys/openpgp-keys-grub
+			sec-keys/openpgp-keys-unifont
+		)
+	"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 else
 	inherit git-r3
@@ -69,9 +71,12 @@ PATCHES=(
 
 DEJAVU_VER=2.37
 DEJAVU=dejavu-fonts-ttf-${DEJAVU_VER}
-UNIFONT=unifont-16.0.02
+UNIFONT=unifont-17.0.02
 SRC_URI+="
-	fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
+	fonts? (
+		mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz
+		verify-sig? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz.sig )
+	)
 	themes? ( https://downloads.sourceforge.net/project/dejavu/dejavu/${DEJAVU_VER}/${DEJAVU}.tar.bz2 )
 "
 
@@ -160,7 +165,12 @@ src_unpack() {
 		git-r3_checkout "${GNULIB_URI}" gnulib
 		popd >/dev/null || die
 	elif use verify-sig; then
-		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig}
+		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig} \
+			"${BROOT}"/usr/share/openpgp-keys/grub.asc
+	fi
+	if use fonts && use verify-sig; then
+		verify-sig_verify_detached "${DISTDIR}"/${UNIFONT}.pcf.gz{,.sig} \
+			"${BROOT}"/usr/share/openpgp-keys/unifont.asc
 	fi
 	default
 }

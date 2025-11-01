@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/glib-2.58:2
-	>=dev-libs/gobject-introspection-1.54:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/libgee-0.10:0.8[introspection]
 	dev-libs/libxml2:2=
 	eds? ( >=gnome-extra/evolution-data-server-3.38:= )

@@ -6,7 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=ktorrent</bugs-to>
 		<remote-id type="cpe">cpe:/a:ktorrent:ktorrent</remote-id>
 	</upstream>
 	<use>
@@ -16,7 +16,7 @@
 		<flag name="ipfilter">Filter IP addresses through a blocklist</flag>
 		<flag name="logviewer">Displays the logging output</flag>
 		<flag name="magnetgenerator">Generates magnet URI's</flag>
-		<flag name="mediaplayer">Phonon-based media player</flag>
+		<flag name="phonon">Enable <pkg>media-libs/phonon</pkg> based media player</flag>
 		<flag name="rss">Syndication plugin for KTorrent, supporting RSS and Atom feeds</flag>
 		<flag name="scanfolder">Scan folders for torrent files and load them</flag>
 		<flag name="shutdown">Shutdown when done</flag>

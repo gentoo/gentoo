@@ -22,7 +22,7 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libX11
 	x11-libs/libgxim
 	x11-libs/libnotify
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	xfconf? ( xfce-base/xfconf )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/glib-utils

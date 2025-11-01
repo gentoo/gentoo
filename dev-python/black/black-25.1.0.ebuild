@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..13} pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -35,7 +35,18 @@ BDEPEND="
 		dev-python/colorama[${PYTHON_USEDEP}]
 	)
 "
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	# combined upstream test fixes:
+	# https://github.com/psf/black/pull/4577
+	# https://github.com/psf/black/pull/4591
+	# https://github.com/psf/black/pull/4666
+	# https://github.com/psf/black/pull/4690
+	"${FILESDIR}/${P}-test.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=()
@@ -50,7 +61,6 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
 

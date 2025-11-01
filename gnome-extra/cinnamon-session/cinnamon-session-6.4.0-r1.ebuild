@@ -50,7 +50,7 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	${PYTHON_DEPS}
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		dev-python/setproctitle[${PYTHON_USEDEP}]

@@ -22,6 +22,7 @@
 	</use>
 	<upstream>
 		<remote-id type="github">atuinsh/atuin</remote-id>
+		<changelog>https://github.com/atuinsh/atuin/releases</changelog>
 		<bugs-to>https://github.com/atuinsh/atuin/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

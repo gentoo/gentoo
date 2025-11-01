@@ -9,7 +9,7 @@ LICENSE="metapackage"
 SLOT="2.0"
 IUSE="cups +gnome-shell"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # XXX: Note to developers:
 # This is a wrapper for the 'light' GNOME desktop, and should only consist of

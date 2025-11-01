@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.isc.org/isc-projects/kea.git"
 else
 	SRC_URI="https://downloads.isc.org/isc/kea/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 arm arm64 ~x86"
 fi
 
 LICENSE="MPL-2.0"
@@ -57,6 +57,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.2.0-openssl-version.patch
+	"${FILESDIR}"/${P}-boost-1.89.patch
 )
 
 python_check_deps() {

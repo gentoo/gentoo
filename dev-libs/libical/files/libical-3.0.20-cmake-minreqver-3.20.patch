@@ -1,0 +1,68 @@
+From 63eefc63eb3637dfd246509b28a67e1a6f1fd158 Mon Sep 17 00:00:00 2001
+From: Allen Winter <winter@kde.org>
+Date: Thu, 19 Sep 2024 11:20:10 -0400
+Subject: [PATCH 1/2] Require CMake version 3.20 or higher
+
+CMake v3.20 adds the cmake_path() commands
+
+(cherry picked from commit 49149c02007a19ed143423724041ee02440add96)
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c61570e..0cc03472 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -88,7 +88,7 @@
+ #  Build with the thread sanitizer (requires gcc or clang)
+ #
+ 
+-cmake_minimum_required(VERSION 3.5.0) #first line, to shutup a cygwin warning
++cmake_minimum_required(VERSION 3.20.0)
+ project(libical C) #CXX is optional for the bindings
+ 
+ cmake_policy(SET CMP0003 NEW)
+-- 
+2.51.0
+
+
+From 9ea2ab20c3caffe782b7852777de4c25c9c20521 Mon Sep 17 00:00:00 2001
+From: Yegor Yefremov <yegorslists@googlemail.com>
+Date: Mon, 5 May 2025 16:04:15 +0200
+Subject: [PATCH 2/2] CMakeLists.txt: clean up policies
+
+All these policies are already enabled due to the following call:
+
+cmake_minimum_required(VERSION 3.20.0)
+
+(cherry picked from commit bd8c3d384f4fb6528f28da8681f39dbb6ca14118)
+---
+ CMakeLists.txt | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0cc03472..80178fb9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,17 +91,6 @@
+ cmake_minimum_required(VERSION 3.20.0)
+ project(libical C) #CXX is optional for the bindings
+ 
+-cmake_policy(SET CMP0003 NEW)
+-if(POLICY CMP0042)
+-  cmake_policy(SET CMP0042 NEW)
+-endif()
+-if(POLICY CMP0054)
+-  cmake_policy(SET CMP0054 NEW)
+-endif()
+-if(POLICY CMP0074)
+-  cmake_policy(SET CMP0074 NEW) #don't warn about ICU_ROOT envvar
+-endif()
+-
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Kitware/modules")
+ 
+-- 
+2.51.0
+

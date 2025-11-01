@@ -10,6 +10,6 @@
 	<name>Radio</name>
 </maintainer>
 <upstream>
-	<remote-id type="sourceforge">wsjt</remote-id>
+	<remote-id type="sourceforge">wsjt-x-improved</remote-id>
 </upstream>
 </pkgmetadata>

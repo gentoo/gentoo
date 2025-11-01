@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -28,14 +28,13 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		dev-python/pyfakefs[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
 
 DOCS=( CONTRIBUTING.md README.md )
 
+EPYTEST_PLUGINS=( pyfakefs )
 distutils_enable_tests pytest
 
 python_prepare_all() {

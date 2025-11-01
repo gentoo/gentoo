@@ -27,7 +27,7 @@ DEPEND="
 	sysprof? ( >=dev-util/sysprof-capture-3.40.1:4[${MULTILIB_USEDEP}] )
 	sys-libs/zlib
 	gssapi? ( virtual/krb5[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	samba? ( net-fs/samba )
 "
 RDEPEND="${DEPEND}

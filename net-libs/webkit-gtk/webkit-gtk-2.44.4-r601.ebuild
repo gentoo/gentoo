@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 USE_RUBY="ruby31 ruby32 ruby33"
 
 inherit check-reqs flag-o-matic gnome2 optfeature python-any-r1 ruby-single toolchain-funcs cmake
@@ -66,7 +66,7 @@ RDEPEND="
 	>=dev-libs/libxslt-1.1.7
 	media-libs/woff2
 	keyring? ( app-crypt/libsecret )
-	introspection? ( >=dev-libs/gobject-introspection-1.59.1:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	x11-libs/libdrm
 	media-libs/mesa
 	spell? ( >=app-text/enchant-0.22:2 )
@@ -99,8 +99,6 @@ RDEPEND="
 
 	systemd? ( sys-apps/systemd:= )
 	gamepad? ( >=dev-libs/libmanette-0.2.4 )
-	!<net-libs/webkit-gtk-2.38:4
-	!<net-libs/webkit-gtk-2.44:4.1
 "
 DEPEND="${RDEPEND}"
 # Need real bison, not yacc

@@ -1,6 +1,14 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-10-28)
+# Portability issues with dev-libs/apache-arrow (bug #923968).
+sci-libs/gdal parquet
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-06-29)
+# media-libs/libvmaf is keyworded
+media-libs/x265 -vmaf
+
 # Jakov Smolić <jsmolic@gentoo.org> (2025-10-05)
 # These packages are keyworded on riscv
 sci-libs/flexiblas -system-blas
@@ -264,6 +272,5 @@ media-libs/opencv vtk
 sci-libs/opencascade vtk
 
 # This doesn't work for (any) riscv yet.
-dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit

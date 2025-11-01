@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-10-22)
+# dev-lang/deno-bin is keyworded here
+net-misc/yt-dlp -deno
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-06-29)
+# media-libs/libvmaf is keyworded
+media-libs/x265 -vmaf
+
 # Michał Górny <mgorny@gentoo.org> (2025-09-28)
 # Unmask on amd64 for wider testing.
 sci-libs/flexiblas -system-blas
@@ -61,11 +69,6 @@ lxqt-base/lxqt-meta -wayland
 # The COBOL frontend only allows building on a small number of platforms
 # for now until more testing and integration is done.
 sys-devel/gcc -cobol
-
-# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
-# dev-util/nvidia-cuda-toolkit is keyworded here
-media-video/ffmpeg -npp
-media-video/ffmpeg-compat -npp
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # Old versions of ffmpeg needing old nv-codec-codecs complicate slots

@@ -29,6 +29,11 @@ esac
 if [[ -z ${_ECM_ECLASS} ]]; then
 _ECM_ECLASS=1
 
+# @ECLASS_VARIABLE: CMAKE_ECM_MODE
+# @DESCRIPTION:
+# For proper description see cmake.eclass manpage.
+CMAKE_ECM_MODE=true
+
 inherit cmake flag-o-matic
 
 if [[ ${EAPI} == 8 ]]; then
@@ -52,12 +57,6 @@ fi
 if [[ ${CATEGORY} == kde-frameworks ]]; then
 	ECM_NONGUI=true
 fi
-
-# @ECLASS_VARIABLE: ECM_KDEINSTALLDIRS
-# @DESCRIPTION:
-# Assume the package is using KDEInstallDirs macro and switch
-# KDE_INSTALL_USE_QT_SYS_PATHS to ON. If set to "false", do nothing.
-: "${ECM_KDEINSTALLDIRS:=true}"
 
 # @ECLASS_VARIABLE: ECM_DEBUG
 # @DESCRIPTION:
@@ -114,8 +113,7 @@ fi
 # @ECLASS_VARIABLE: ECM_PYTHON_BINDINGS
 # @DESCRIPTION:
 # Default value is "false", which means do nothing.
-# If set to "off", pass -DBUILD_PYTHON_BINDINGS=OFF to mycmakeargs, and also
-# disable cmake finding Python3, PySide6 and Shiboken6 to make it quiet.
+# If set to "off", pass -DBUILD_PYTHON_BINDINGS=OFF to mycmakeargs.
 # No other value is implemented as python bindings are not supported in Gentoo.
 : "${ECM_PYTHON_BINDINGS:=false}"
 
@@ -126,7 +124,9 @@ fi
 # If set to "true", add "doc" to IUSE, add the appropriate dependency, let
 # -DBUILD_QCH=ON generate and install Qt compressed help files when USE=doc.
 # If set to "false", do nothing.
-if [[ ${CATEGORY} = kde-frameworks ]] && ver_test -lt 6.15; then
+if [[ ${CATEGORY} = kde-frameworks && ${_KFSLOT} == 5 ]]; then
+# TODO: Implement KF 6.15 changes how API documentation is built. See also:
+#   https://mail.kde.org/pipermail/distributions/2025-June/001595.html
 	: "${ECM_QTHELP:=true}"
 fi
 : "${ECM_QTHELP:=false}"
@@ -563,11 +563,14 @@ ecm_src_prepare() {
 
 	# limit playing field of locale stripping to kde-*/ categories
 	if [[ ${CATEGORY} = kde-* ]] ; then
-		# always install unconditionally for kconfigwidgets - if you use
+		# TODO: cleanup after KF5 removal:
+		# always install unconditionally for <kconfigwidgets-6.16 - if you use
 		# language X as system language, and there is a combobox with language
 		# names, the translated language name for language Y is taken from
 		# /usr/share/locale/Y/kf${_KFSLOT}_entry.desktop
-		[[ ${PN} != kconfigwidgets ]] && _ecm_strip_handbook_translations
+		if ! [[ ${PN} == kconfigwidgets && ${_KFSLOT} == 5 ]]; then
+			_ecm_strip_handbook_translations
+		fi
 	fi
 
 	# only build unit tests when required
@@ -642,32 +645,42 @@ ecm_src_configure() {
 
 	if [[ ${ECM_PYTHON_BINDINGS} == off ]]; then
 		cmakeargs+=( -DBUILD_PYTHON_BINDINGS=OFF )
-		if ver_test -lt 6.15; then
-			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_{Python3,PySide6,Shiboken6}=ON )
-		fi
 	fi
 
 	if [[ ${ECM_QTHELP} = true ]]; then
 		cmakeargs+=( -DBUILD_QCH=$(usex doc) )
 	fi
 
-	if [[ ${ECM_KDEINSTALLDIRS} = true ]] ; then
-		cmakeargs+=(
-			# install mkspecs in the same directory as Qt stuff
-			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-			# move handbook outside of doc dir, bug 667138
-			-DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help"
-		)
+	# Common ECM configure parameters (invariants)
+	local ecm_config=${BUILD_DIR}/gentoo_ecm_config.cmake
+	cat > ${ecm_config} <<- _EOF_ || die
+		# Gentoo downstream-added ECM options
+		set(ECM_DISABLE_QMLPLUGINDUMP ON CACHE BOOL "") # bug #835995, *-disable-qmlplugindump.patch
+		set(ECM_DISABLE_APPSTREAMTEST ON CACHE BOOL "") # *-disable-appstreamtest.patch
+		set(ECM_DISABLE_GIT ON CACHE BOOL "") # *-disable-git-commit-hooks.patch
 
-		# bug 928345
-		# TODO: Eventually it should be put to upstream as to why LIBEXECDIR
-		# in KDEInstallDirsCommon.cmake is set to EXECROOTDIR/LIBDIR/libexec
-		[[ ${_KFSLOT} == 6 ]] && \
-			cmakeargs+=( -DKDE_INSTALL_LIBEXECDIR="${EPREFIX}/usr/libexec" )
+		# KDEInstallDirs[56] section
+		set(KDE_INSTALL_USE_QT_SYS_PATHS ON CACHE BOOL "") # install mkspecs in same dir as Qt stuff
+		# move handbook outside of doc dir, bug #667138
+		set(KDE_INSTALL_DOCBUNDLEDIR "${EPREFIX}/usr/share/help" CACHE PATH "")
+		set(KDE_INSTALL_INFODIR "${EPREFIX}/usr/share/info" CACHE PATH "")
+		set(KDE_INSTALL_LIBDIR $(get_libdir) CACHE PATH "Output directory for libraries")
+		set(KDE_INSTALL_MANDIR "${EPREFIX}/usr/share/man" CACHE PATH "")
+	_EOF_
+
+	if [[ ${_KFSLOT} == 6 ]]; then
+		cat >> ${ecm_config} <<- _EOF_ || die
+			# TODO: Ask upstream why LIBEXECDIR is set to EXECROOTDIR/LIBDIR/libexec, bug #928345
+			set(KDE_INSTALL_LIBEXECDIR "${EPREFIX}/usr/libexec" CACHE PATH "")
+		_EOF_
 	fi
 
 	# allow the ebuild to override what we set here
-	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
+	mycmakeargs=(
+		-C "${ecm_config}"
+		"${cmakeargs[@]}"
+		"${mycmakeargs[@]}"
+	)
 
 	cmake_src_configure
 }

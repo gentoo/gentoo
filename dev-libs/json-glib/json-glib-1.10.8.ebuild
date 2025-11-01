@@ -9,14 +9,14 @@ HOMEPAGE="https://wiki.gnome.org/Projects/JsonGlib"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="gtk-doc +introspection nls test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/glib-2.72.0:2[${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

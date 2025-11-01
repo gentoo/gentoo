@@ -14,7 +14,7 @@ SRC_URI="mirror://debian/pool/main/q/qcontrol/${P/-/_}.orig.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~arm"
+KEYWORDS="arm"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 

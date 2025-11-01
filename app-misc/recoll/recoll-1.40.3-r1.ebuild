@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit linux-info optfeature python-single-r1 qmake-utils meson systemd
 

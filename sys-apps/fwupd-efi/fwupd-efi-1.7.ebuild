@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit meson python-any-r1 secureboot
 
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/fwupd/fwupd-efi.git"
 else
 	SRC_URI="https://github.com/fwupd/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~loong ~riscv x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 fi
 
 LICENSE="LGPL-2.1+"

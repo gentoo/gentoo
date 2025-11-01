@@ -35,7 +35,7 @@ DEPEND="
 		dev-util/gi-docgen
 		dev-util/gtk-doc
 	)
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	qml? (
 		qt6? ( dev-qt/qtdeclarative:6 )
 	)

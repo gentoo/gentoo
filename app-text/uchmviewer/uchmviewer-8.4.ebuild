@@ -25,6 +25,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-cmake-minreqver-3.16.patch" # bug #964965, pending PR
+)
+
 DOCS=( AUTHORS.md ChangeLog DBUS-bindings README.md )
 
 src_configure() {

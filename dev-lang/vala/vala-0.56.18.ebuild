@@ -6,7 +6,7 @@ EAPI=8
 inherit gnome2
 
 DESCRIPTION="Compiler for the GObject type system"
-HOMEPAGE="https://vala.dev https://gitlab.gnome.org/GNOME/vala"
+HOMEPAGE="https://vala.dev"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.56"
@@ -20,7 +20,7 @@ RDEPEND="
 	valadoc? ( >=media-gfx/graphviz-2.16 )
 "
 DEPEND="${RDEPEND}
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	test? (
 		dev-libs/dbus-glib
 		>=dev-libs/glib-2.26:2

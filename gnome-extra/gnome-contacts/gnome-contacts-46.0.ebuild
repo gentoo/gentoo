@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="+gnome-online-accounts"
 
 VALA_DEPEND="
 	$(vala_depend)
-	>=dev-libs/gobject-introspection-1.54
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/folks[vala(+)]
 	gnome-online-accounts? ( net-libs/gnome-online-accounts[vala] )
 	gnome-extra/evolution-data-server[gtk,vala]

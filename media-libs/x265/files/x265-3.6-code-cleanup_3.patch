@@ -1,0 +1,61 @@
+From 09379bbfe797e54f91ef5702c802f75aad604067 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Mon, 26 Aug 2024 14:26:55 +0200
+Subject: [PATCH 4/4] use std::abs instead of abs to avoid truncating values
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/common/pixel.cpp b/common/pixel.cpp
+index 3cd074c..62410f3 100644
+--- a/common/pixel.cpp
++++ b/common/pixel.cpp
+@@ -124,10 +124,10 @@ int ads_x4(int encDC[4], uint32_t *sums, int delta, uint16_t *costMvX, int16_t *
+     int nmv = 0;
+     for (int16_t i = 0; i < width; i++, sums++)
+     {
+-        int ads = abs(encDC[0] - long(sums[0]))
+-            + abs(encDC[1] - long(sums[lx >> 1]))
+-            + abs(encDC[2] - long(sums[delta]))
+-            + abs(encDC[3] - long(sums[delta + (lx >> 1)]))
++        int ads = std::abs(encDC[0] - long(sums[0]))
++            + std::abs(encDC[1] - long(sums[lx >> 1]))
++            + std::abs(encDC[2] - long(sums[delta]))
++            + std::abs(encDC[3] - long(sums[delta + (lx >> 1)]))
+             + costMvX[i];
+         if (ads < thresh)
+             mvs[nmv++] = i;
+@@ -141,8 +141,8 @@ int ads_x2(int encDC[2], uint32_t *sums, int delta, uint16_t *costMvX, int16_t *
+     int nmv = 0;
+     for (int16_t i = 0; i < width; i++, sums++)
+     {
+-        int ads = abs(encDC[0] - long(sums[0]))
+-            + abs(encDC[1] - long(sums[delta]))
++        int ads = std::abs(encDC[0] - long(sums[0]))
++            + std::abs(encDC[1] - long(sums[delta]))
+             + costMvX[i];
+         if (ads < thresh)
+             mvs[nmv++] = i;
+@@ -156,7 +156,7 @@ int ads_x1(int encDC[1], uint32_t *sums, int, uint16_t *costMvX, int16_t *mvs, i
+     int nmv = 0;
+     for (int16_t i = 0; i < width; i++, sums++)
+     {
+-        int ads = abs(encDC[0] - long(sums[0]))
++        int ads = std::abs(encDC[0] - long(sums[0]))
+             + costMvX[i];
+         if (ads < thresh)
+             mvs[nmv++] = i;
+diff --git a/encoder/analysis.cpp b/encoder/analysis.cpp
+index aabf386..127032d 100644
+--- a/encoder/analysis.cpp
++++ b/encoder/analysis.cpp
+@@ -2692,8 +2692,8 @@ void Analysis::classifyCU(const CUData& ctu, const CUGeom& cuGeom, const Mode& b
+             {
+                 offset = (depth * X265_REFINE_INTER_LEVELS) + i;
+                 /* Calculate distance values */
+-                diffRefine[i] = abs((int64_t)(trainData.cuVariance - m_frame->m_classifyVariance[offset]));
+-                diffRefineRd[i] = abs((int64_t)(cuCost - m_frame->m_classifyRd[offset]));
++                diffRefine[i] = std::abs((int64_t)(trainData.cuVariance - m_frame->m_classifyVariance[offset]));
++                diffRefineRd[i] = std::abs((int64_t)(cuCost - m_frame->m_classifyRd[offset]));
+ 
+                 /* Calculate prior probability - ranges between 0 and 1 */
+                 if (trainingCount)

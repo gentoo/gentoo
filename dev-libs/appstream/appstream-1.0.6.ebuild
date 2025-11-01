@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	MY_PN="AppStream"
 	SRC_URI="https://www.freedesktop.org/software/appstream/releases/${MY_PN}-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv x86"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
@@ -41,7 +41,7 @@ RDEPEND="
 		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
 	)
-	introspection? ( >=dev-libs/gobject-introspection-1.56:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	qt6? ( dev-qt/qtbase:6 )
 	systemd? ( sys-apps/systemd:= )
 "

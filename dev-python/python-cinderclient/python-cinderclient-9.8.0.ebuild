@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~riscv x86"
 
 RDEPEND="
 	>=dev-python/keystoneauth1-5.9.0[${PYTHON_USEDEP}]

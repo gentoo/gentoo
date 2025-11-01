@@ -1,6 +1,9 @@
 https://bugs.gentoo.org/955783
 https://github.com/lttng/lttng-tools/pull/170
 
+Modified to be backwards compatible with libxml2-2.13
+https://bugs.gentoo.org/964303
+
 From 7d669a90212e105b0f669aa2ab38c987b187baab Mon Sep 17 00:00:00 2001
 From: Hongxu Jia <hongxu.jia@windriver.com>
 Date: Wed, 21 May 2025 13:09:25 +0800
@@ -36,12 +39,15 @@ Signed-off-by: Marko, Peter <Peter.Marko@siemens.com>
 Signed-off-by: Hongxu Jia <hongxu.jia@windriver.com>
 --- a/src/common/config/session-config.c
 +++ b/src/common/config/session-config.c
-@@ -429,7 +429,7 @@ static xmlChar *encode_string(const char *in_str)
+@@ -429,7 +429,11 @@ static xmlChar *encode_string(const char *in_str)
  		goto end;
  	}
  
--	ret = handler->input(out_str, &out_len, (const xmlChar *) in_str, &in_len);
++#if LIBXML_VERSION >= 21400
 +	ret = handler->input.func(NULL, out_str, &out_len, (const xmlChar *) in_str, &in_len, 0);
++#else
+ 	ret = handler->input(out_str, &out_len, (const xmlChar *) in_str, &in_len);
++#endif
  	if (ret < 0) {
  		xmlFree(out_str);
  		out_str = NULL;

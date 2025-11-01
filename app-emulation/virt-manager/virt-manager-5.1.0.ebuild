@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit gnome2 python-single-r1 optfeature meson verify-sig
 
 DESCRIPTION="Desktop tool for managing libvirt virtual machines"
@@ -19,7 +19,7 @@ else
 		https://releases.pagure.org/${PN}/${P}.tar.xz
 		verify-sig? ( https://releases.pagure.org/${PN}/${P}.tar.xz.asc	)
 	"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm64 ppc64 x86"
 fi
 
 LICENSE="CC0-1.0 GPL-2+" # appdata & source code

@@ -1,0 +1,31 @@
+From 848e9e6ba7c7eed58070b243867e328402b85443 Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Sun, 13 Jul 2025 20:34:19 +0200
+Subject: [PATCH] Add ID data for Intel Lunar Lake ("Core Ultra 200V series")
+
+---
+ cpuid_x86.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cpuid_x86.c b/cpuid_x86.c
+index 1b09c7217c..8e1438e500 100644
+--- a/cpuid_x86.c
++++ b/cpuid_x86.c
+@@ -1567,6 +1567,7 @@ int get_cpuname(void){
+           case 10:
+           case 15:
+ 	  case 14: // Alder Lake N
++	  case 13: // Lunar Lake
+             if(support_avx2())
+               return CPUTYPE_HASWELL;
+ 	    if(support_avx())
+@@ -2412,7 +2413,8 @@ int get_coretype(void){
+ 	  case 7: // Raptor Lake
+           case 10:
+           case 15:
+-	  case 14: // Alder Lake N	  
++	  case 14: // Alder Lake N
++	  case 13: // Lunar Lake
+ #ifndef NO_AVX2
+ 	  if(support_avx2())
+             return CORE_HASWELL;

@@ -69,7 +69,7 @@ RDEPEND="
 	app-text/iso-codes
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-1.31.1:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	ivorbis? ( >=media-libs/tremor-0_pre20130223[${MULTILIB_USEDEP}] )
 	ogg? ( >=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
 	orc? ( >=dev-lang/orc-0.4.33[${MULTILIB_USEDEP}] )

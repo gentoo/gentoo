@@ -14,7 +14,7 @@ SRC_URI="https://github.com/rabbitmq/rabbitmq-server/releases/download/v${PV}/${
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="test"
 

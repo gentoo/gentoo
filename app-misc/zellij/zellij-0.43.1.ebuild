@@ -596,7 +596,7 @@ LICENSE+="
 	MPL-2.0 Unicode-DFS-2016 WTFPL-2 ZLIB
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~riscv"
 IUSE="man"
 
 RDEPEND="

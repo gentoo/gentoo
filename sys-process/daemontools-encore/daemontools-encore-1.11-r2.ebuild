@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,6 +29,9 @@ PATCHES=(
 
 src_compile() {
 	use static && append-ldflags -static
+	# bug #944231
+	append-cflags -std=gnu17
+
 	qmail_set_cc
 	emake
 }

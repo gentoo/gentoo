@@ -1,0 +1,17 @@
+--- a/configure	2025-10-16 17:14:09.657394288 +0200
++++ b/configure	2025-10-16 17:14:23.127386983 +0200
+@@ -132,11 +132,11 @@
+ }
+ 
+ 
+-findprog gcc CC gcc clang || exit 1
++#findprog gcc CC gcc clang || exit 1
+ 
+-findprog g++ CXX g++ clang++ || exit 1
++#findprog g++ CXX g++ clang++ || exit 1
+ 
+-findprog fortran FC ${CONF_REAL10:+gfortran} ${CONF_QUAD:+ifort gfortran xlf} ifort pgf90 xlf gfortran g95 f90 || exit 1
++#findprog fortran FC ${CONF_REAL10:+gfortran} ${CONF_QUAD:+ifort gfortran xlf} ifort pgf90 xlf gfortran g95 f90 || exit 1
+ 
+ CONF_DEF="-D"
+ 

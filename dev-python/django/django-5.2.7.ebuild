@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
 inherit bash-completion-r1 distutils-r1 multiprocessing optfeature verify-sig
@@ -56,6 +56,8 @@ PATCHES=(
 	"${FILESDIR}"/django-4.0-bashcomp.patch
 	# upstream hardcodes fixed versions, we backported the fixes
 	"${FILESDIR}"/django-5.2.6-htmlparser.patch
+	# d55979334dcefdb11626220000bec97ade09df07
+	"${FILESDIR}"/django-5.2.7-py314.patch
 )
 
 distutils_enable_sphinx docs --no-autodoc

@@ -1,0 +1,190 @@
+Source: https://github.com/flameshot-org/flameshot/pull/4169
+
+From 06f41a86cc91d53d68871fcdc67053239ff1e87b Mon Sep 17 00:00:00 2001
+From: Yurii Puchkov <panpuchkov@gmail.com>
+Date: Sat, 30 Aug 2025 16:36:17 +0300
+Subject: [PATCH] fix: Screen positions in multi-monitor configuration when
+ devicePixelRatio is other than one (#4169)
+
+* fix: screen positions in multi-monitor configuration when devicePixelRatio is other than one (Xorg and probably Windows, Wayland is not fixed)
+
+* fix: poor screenshot quality with the scale > 1.0
+
+* fix(win): tool-buttons location
+
+(cherry picked from commit 52be77f401b107b6c8d06dc2b5485f3b00b18d40)
+
+---------
+
+Co-authored-by: Yuriy Puchkov <yuriy.puchkov@namecheap.com>
+---
+ src/utils/screengrabber.cpp           | 28 +++++++++++--------------
+ src/widgets/capture/buttonhandler.cpp |  6 +++---
+ src/widgets/capture/capturewidget.cpp | 30 ++++++++++++++++++++-------
+ 3 files changed, 38 insertions(+), 26 deletions(-)
+
+diff --git a/src/utils/screengrabber.cpp b/src/utils/screengrabber.cpp
+index cdbc598497..d787ace48b 100644
+--- a/src/utils/screengrabber.cpp
++++ b/src/utils/screengrabber.cpp
+@@ -137,6 +137,7 @@ void ScreenGrabber::freeDesktopPortal(bool& ok, QPixmap& res)
+     }
+ #endif
+ }
++
+ QPixmap ScreenGrabber::grabEntireDesktop(bool& ok)
+ {
+     ok = true;
+@@ -210,24 +211,16 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool& ok)
+     // multi-monitor setups where screens have different positions/heights.
+     // This fixes the dual monitor offset bug and handles edge cases where
+     // the desktop bounding box includes virtual space.
++    QScreen* primaryScreen = QGuiApplication::primaryScreen();
++    QRect r = primaryScreen->geometry();
+     QPixmap desktop(geometry.size());
+     desktop.fill(Qt::black); // Fill with black background
+-
+-    QPainter painter(&desktop);
+-    for (QScreen* screen : QGuiApplication::screens()) {
+-        QRect screenGeom = screen->geometry();
+-        QPixmap screenCapture = screen->grabWindow(
+-          wid, 0, 0, screenGeom.width(), screenGeom.height());
+-
+-        // Calculate position relative to desktop top-left
+-        QPoint relativePos = screenGeom.topLeft() - geometry.topLeft();
+-        painter.drawPixmap(relativePos, screenCapture);
+-    }
+-    painter.end();
+-
+-    // Set device pixel ratio based on the primary screen
+-    desktop.setDevicePixelRatio(
+-      QApplication::primaryScreen()->devicePixelRatio());
++    desktop =
++      primaryScreen->grabWindow(wid,
++                                -r.x() / primaryScreen->devicePixelRatio(),
++                                -r.y() / primaryScreen->devicePixelRatio(),
++                                geometry.width(),
++                                geometry.height());
+     return desktop;
+ #endif
+ }
+@@ -281,6 +274,9 @@ QRect ScreenGrabber::desktopGeometry()
+         // Qt6 fix: Don't divide by devicePixelRatio for multi-monitor setups
+         // This was causing coordinate offset issues in dual monitor
+         // configurations
++        // But it still has a screen position in real pixels, not logical ones
++        qreal dpr = screen->devicePixelRatio();
++        scrRect.moveTo(QPointF(scrRect.x() / dpr, scrRect.y() / dpr).toPoint());
+         geometry = geometry.united(scrRect);
+     }
+     return geometry;
+diff --git a/src/widgets/capture/buttonhandler.cpp b/src/widgets/capture/buttonhandler.cpp
+index 4a003714c1..4624fdcfad 100644
+--- a/src/widgets/capture/buttonhandler.cpp
++++ b/src/widgets/capture/buttonhandler.cpp
+@@ -64,7 +64,7 @@ size_t ButtonHandler::size() const
+ 
+ // updatePosition updates the position of the buttons around the
+ // selection area. Ignores the sides blocked by the end of the screen.
+-// When the selection is too small it works on a virtual selection with
++// When the selection is too small, it works on a virtual selection with
+ // the original in the center.
+ void ButtonHandler::updatePosition(const QRect& selection)
+ {
+@@ -122,7 +122,7 @@ void ButtonHandler::updatePosition(const QRect& selection)
+               horizontalPoints(center, addCounter, true);
+             moveButtonsToPoints(positions, elemIndicator);
+         }
+-        // Add buttons at the right side of the selection
++        // Add buttons to the right side of the selection
+         if (!m_blockedRight && elemIndicator < vecLength) {
+             int addCounter = buttonsPerCol;
+             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
+@@ -146,7 +146,7 @@ void ButtonHandler::updatePosition(const QRect& selection)
+               horizontalPoints(center, addCounter, false);
+             moveButtonsToPoints(positions, elemIndicator);
+         }
+-        // Add buttons at the left side of the selection
++        // Add buttons to the left side of the selection
+         if (!m_blockedLeft && elemIndicator < vecLength) {
+             int addCounter = buttonsPerCol;
+             addCounter = qBound(0, addCounter, vecLength - elemIndicator);
+diff --git a/src/widgets/capture/capturewidget.cpp b/src/widgets/capture/capturewidget.cpp
+index 4cb3b2c6e7..a152bb352c 100644
+--- a/src/widgets/capture/capturewidget.cpp
++++ b/src/widgets/capture/capturewidget.cpp
+@@ -13,11 +13,8 @@
+ #include "abstractlogger.h"
+ #include "copytool.h"
+ #include "src/config/cacheutils.h"
+-#include "src/config/generalconf.h"
+ #include "src/core/flameshot.h"
+ #include "src/core/qguiappcurrentscreen.h"
+-#include "src/tools/toolfactory.h"
+-#include "src/utils/colorutils.h"
+ #include "src/utils/screengrabber.h"
+ #include "src/utils/screenshotsaver.h"
+ #include "src/utils/systemnotification.h"
+@@ -32,9 +29,7 @@
+ #include <QApplication>
+ #include <QCheckBox>
+ #include <QDateTime>
+-#include <QDebug>
+ #include <QFontMetrics>
+-#include <QLabel>
+ #include <QMessageBox>
+ #include <QPaintEvent>
+ #include <QPainter>
+@@ -150,6 +145,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
+         QScreen* currentScreen = QGuiAppCurrentScreen().currentScreen();
+         move(currentScreen->geometry().x(), currentScreen->geometry().y());
+         resize(currentScreen->size());
++// LINUX
+ #else
+ // Call cmake with -DFLAMESHOT_DEBUG_CAPTURE=ON to enable easier debugging
+ #if !defined(FLAMESHOT_DEBUG_CAPTURE)
+@@ -161,6 +157,18 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
+         move(desktopGeom.topLeft());
+         resize(desktopGeom.size());
+ #endif
++        // Need to move to the top left screen
++        QPoint topLeft(0, INT_MAX);
++        for (QScreen* const screen : QGuiApplication::screens()) {
++            qreal dpr = screen->devicePixelRatio();
++            QPoint topLeftScreen = screen->geometry().topLeft() / dpr;
++            if (topLeftScreen.x() == 0) {
++                if (topLeftScreen.y() < topLeft.y()) {
++                    topLeft.setY(topLeftScreen.y());
++                }
++            }
++        }
++        move(topLeft);
+ #endif
+     }
+     QVector<QRect> areas;
+@@ -182,6 +190,7 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
+         r.moveTo(0, 0);
+         areas.append(r);
+ #else
++        // LINUX & WINDOWS
+         for (QScreen* const screen : QGuiApplication::screens()) {
+             QRect r = screen->geometry();
+             r.moveTo(r.x() / screen->devicePixelRatio(),
+@@ -259,8 +268,15 @@ CaptureWidget::CaptureWidget(const CaptureRequest& req,
+                 OverlayMessage::instance()->update();
+             });
+ 
+-    OverlayMessage::init(this,
+-                         QGuiAppCurrentScreen().currentScreen()->geometry());
++    // Qt6 has only sizes in logical values, position is in physical values.
++    // Move Help message to the logical pixel with devicePixelRatio.
++    QScreen* currentScreen = QGuiAppCurrentScreen().currentScreen();
++    QRect currentScreenGeometry = currentScreen->geometry();
++    qreal currentScreenDpr = currentScreen->devicePixelRatio();
++    currentScreenGeometry.moveTo(
++      int(currentScreenGeometry.x() / currentScreenDpr),
++      int(currentScreenGeometry.y() / currentScreenDpr));
++    OverlayMessage::init(this, currentScreenGeometry);
+ 
+     if (m_config.showHelp()) {
+         initHelpMessage();

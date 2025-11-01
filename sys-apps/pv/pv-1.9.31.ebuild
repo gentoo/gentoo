@@ -7,10 +7,10 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/pv.asc
 inherit linux-info toolchain-funcs verify-sig
 
 DESCRIPTION="Pipe Viewer: a tool for monitoring the progress of data through a pipe"
-HOMEPAGE="https://www.ivarch.com/programs/pv.shtml https://codeberg.org/a-j-wood/pv"
+HOMEPAGE="https://www.ivarch.com/programs/pv.shtml https://codeberg.org/ivarch/pv"
 
 if [[ ${PV} == 9999 ]] ; then
-	EGIT_REPO_URI="https://codeberg.org/a-j-wood/pv"
+	EGIT_REPO_URI="https://codeberg.org/ivarch/pv"
 	inherit autotools git-r3
 else
 	SRC_URI="

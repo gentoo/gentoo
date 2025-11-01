@@ -16,7 +16,7 @@ IUSE="+introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.26:2
-	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

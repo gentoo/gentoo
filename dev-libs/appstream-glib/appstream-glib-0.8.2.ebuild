@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/libyaml
 	stemmer? ( dev-libs/snowball-stemmer:= )
 	x11-libs/pango
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 # libxml2 required for glib-compile-resources

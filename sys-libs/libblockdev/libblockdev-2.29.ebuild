@@ -59,7 +59,7 @@ DEPEND="
 BDEPEND+="
 	dev-build/gtk-doc-am
 	gtk-doc? ( dev-util/gtk-doc )
-	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	test? (
 		$(python_gen_cond_dep '
 			dev-libs/libbytesize[python,${PYTHON_USEDEP}]

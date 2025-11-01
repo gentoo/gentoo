@@ -12,7 +12,7 @@ S=${WORKDIR}/KDDockWidgets-${PV}
 
 LICENSE="|| ( GPL-2 GPL-3 ) BSD MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="qml"
 # building tests require developer mode which is messy to enable here
 RESTRICT="test"
@@ -27,6 +27,8 @@ DEPEND="
 	${DEPEND}
 	dev-cpp/nlohmann_json
 "
+
+CMAKE_QA_COMPAT_SKIP=1 #964536
 
 src_configure() {
 	local mycmakeargs=(

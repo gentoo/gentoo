@@ -12,7 +12,7 @@ S="${WORKDIR}/ModemManager-${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc ~x86"
 
 IUSE="elogind gtk-doc +introspection +mbim policykit +qmi +qrtr selinux systemd test +udev vala"
 REQUIRED_USE="
@@ -26,7 +26,7 @@ DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	sys-apps/dbus
 	udev? ( >=dev-libs/libgudev-232:= )
-	introspection? ( >=dev-libs/gobject-introspection-1.38:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	mbim? ( >=net-libs/libmbim-1.32.0 )
 	policykit? ( >=sys-auth/polkit-0.106[introspection?] )
 	qmi? ( >=net-libs/libqmi-1.36.0:=[qrtr?] )

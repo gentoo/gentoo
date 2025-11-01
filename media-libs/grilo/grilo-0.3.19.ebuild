@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/grilo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0.3/0" # subslot is libgrilo-0.3 soname suffix
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
 
 IUSE="gtk gtk-doc +introspection +playlist test vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.66:2
 	>=net-libs/libsoup-3:3.0[introspection?]
 	playlist? ( >=dev-libs/totem-pl-parser-3.4.1:= )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 
 	gtk? (
 		net-libs/liboauth

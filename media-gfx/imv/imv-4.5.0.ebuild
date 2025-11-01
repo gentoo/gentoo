@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,12 +13,10 @@ S=${WORKDIR}/${PN}-v${PV}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~riscv x86"
-IUSE="+X +freeimage gif heif icu jpeg jpegxl png svg test tiff wayland"
+IUSE="+X +freeimage heif icu jpeg jpegxl png svg test tiff wayland"
 REQUIRED_USE="|| ( X wayland )"
 RESTRICT="!test? ( test )"
 
-# bug #922496 wrt nsgif, kept for now but USE can be masked if old nsgif
-# removal is wanted (freeimage still allows non-animated gif display)
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/inih
@@ -31,7 +29,6 @@ RDEPEND="
 		x11-libs/libxcb:=
 	)
 	freeimage? ( media-libs/freeimage )
-	gif? ( <media-libs/libnsgif-1:= )
 	heif? ( media-libs/libheif:= )
 	icu? ( dev-libs/icu:= )
 	!icu? ( >=dev-libs/libgrapheme-2:= )
@@ -53,10 +50,6 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.3.1_p20211221-animated-gif.patch
-)
-
 src_prepare() {
 	default
 
@@ -72,7 +65,6 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		$(meson_feature freeimage)
-		$(meson_feature gif libnsgif)
 		$(meson_feature heif libheif)
 		$(meson_feature jpeg libjpeg)
 		$(meson_feature jpegxl libjxl)
@@ -82,6 +74,12 @@ src_configure() {
 		$(meson_feature tiff libtiff)
 		-Dunicode=$(usex icu{,} grapheme)
 		-Dwindows=$(usex X $(usex wayland all x11) wayland)
+
+		# incompatible with >=libnsgif-1.0.0 and patches could use a
+		# proper review before using (upstream is currently inactive)
+		# See: https://github.com/gentoo/gentoo/pull/44086
+		# (note that can still view non-animated gif with USE=freeimage)
+		-Dlibnsgif=disabled
 	)
 
 	meson_src_configure

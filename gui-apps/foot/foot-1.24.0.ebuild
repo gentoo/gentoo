@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
 IUSE="+grapheme-clustering test utempter verify-sig"
 RESTRICT="!test? ( test )"
 

@@ -55,6 +55,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2024.11.04.00-musl-fix.patch
 	"${FILESDIR}"/${PN}-2025.04.14.00-boost-1.89.patch
+	"${FILESDIR}"/${PN}-2025.04.14.00-gcc16-workaround.patch
 )
 
 src_unpack() {

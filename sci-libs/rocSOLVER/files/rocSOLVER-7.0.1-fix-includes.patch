@@ -1,0 +1,12 @@
+Upstream commit: https://github.com/ROCm/rocm-libraries/commit/7c8d53fee5b3670fa49fb1c09fca506a62cbf724
+--- a/library/src/include/lib_device_helpers.hpp
++++ b/library/src/include/lib_device_helpers.hpp
+@@ -27,6 +27,8 @@
+ 
+ #pragma once
+ 
++#include <cassert>
++
+ #include <hip/hip_runtime.h>
+ 
+ #include "ideal_sizes.hpp"

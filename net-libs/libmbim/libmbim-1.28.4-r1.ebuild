@@ -16,7 +16,7 @@ IUSE="gtk-doc introspection"
 
 RDEPEND="
 	>=dev-libs/glib-2.56:2
-	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

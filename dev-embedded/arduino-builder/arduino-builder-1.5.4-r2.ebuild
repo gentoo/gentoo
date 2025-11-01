@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~williamh/dist/${P}-deps.tar.xz"
 LICENSE="GPL-2+"
 LICENSE+=" Apache-2.0 BSD BSD-2 GPL-3 LGPL-2.1 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-devel/crossdev
 	dev-embedded/avrdude

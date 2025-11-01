@@ -4,7 +4,7 @@
 EAPI=8
 
 # py3.14: bug #957070
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 TMPFILES_OPTIONAL=1
 
@@ -68,7 +68,7 @@ RDEPEND="
 		>=sec-keys/openpgp-keys-gentoo-release-20240703
 		>=sys-apps/sed-4.0.5
 		rsync-verify? (
-			>=app-crypt/gnupg-2.2.4-r2[ssl(-)]
+			app-alternatives/gpg[ssl(-)]
 			>=app-portage/gemato-14.5[${PYTHON_USEDEP}]
 		)
 	)

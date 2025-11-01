@@ -25,7 +25,7 @@ RDEPEND="dev-libs/glib:2
 	x11-libs/libxklavier
 	virtual/libintl
 	eekboard? ( dev-libs/eekboard )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	xtest? ( x11-libs/libXtst )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-util/intltool

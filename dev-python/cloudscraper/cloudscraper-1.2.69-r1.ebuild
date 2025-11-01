@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature
 
@@ -29,8 +29,6 @@ RDEPEND="
 "
 BDEPEND="
 	test? (
-		dev-python/pytest-forked[${PYTHON_USEDEP}]
-		dev-python/pytest-timeout[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		net-libs/nodejs
 	)
@@ -44,6 +42,7 @@ EPYTEST_DESELECT=(
 	"tests/test_cloudscraper.py::TestCloudScraper::test_reCaptcha_providers"
 )
 
+EPYTEST_PLUGINS=( pytest-{forked,timeout} )
 distutils_enable_tests pytest
 
 pkg_postinst() {

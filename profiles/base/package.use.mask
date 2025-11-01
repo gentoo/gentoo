@@ -6,14 +6,35 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2025-10-29)
+# Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
+# transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
+# after we made app-alternatives/gpg depend on newer gnupg to fix another problem.
+# Users can unmask these locally in /etc/portage/profile/package.use.mask once
+# their upgrade is done.
+app-crypt/gnupg verify-sig
+app-crypt/pinentry verify-sig
+dev-libs/libgcrypt verify-sig
+dev-libs/libgpg-error verify-sig
+dev-libs/libksba verify-sig
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-10-16)
+# No suitable versions of dev-libs/protobuf available.
+~dev-java/protobuf-java-4.33.0 system-protoc
+
+# Fabian Groffen <grobian@gentoo.org> (2025-10-18)
+# PAM support is discouraged due to not being secure via Exim
+# https://bugs.gentoo.org/964377
+mail-mta/exim pam
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
 # Preparation for sci-geosciences/liblas removal. Bug #957235
 <=dev-games/openscenegraph-3.6.5-r117 las
-<=dev-games/openscenegraph-openmw-3.6_p20221115-r2 las
+<=dev-games/openscenegraph-openmw-3.6_p20251012 las
 
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-10-03)
 # No suitable versions of dev-libs/protobuf available.
-=dev-java/protobuf-java-4.32.1 system-protoc
+~dev-java/protobuf-java-4.32.1 system-protoc
 
 # Michał Górny <mgorny@gentoo.org> (2025-09-27)
 # Building NumPy with ILP64 LAPACK can cause revdeps to segfault if they
@@ -148,10 +169,6 @@ kde-frameworks/knewstuff:5 opds
 # Dependencies e.g. bindgen/netcdf/pypy not keyworded or stable in
 # most places.
 dev-build/meson test-full
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-09)
-# No suitable versions of dev-libs/protobuf available.
-=dev-java/protobuf-java-4.29.3 system-protoc
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions

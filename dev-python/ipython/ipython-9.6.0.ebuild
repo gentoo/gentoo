@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=standalone
-PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 PYTHON_REQ_USE='readline(+),sqlite,threads(+)'
 
 inherit distutils-r1 optfeature pypi virtualx

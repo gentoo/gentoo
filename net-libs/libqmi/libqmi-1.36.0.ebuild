@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi.git"
 else
 	SRC_URI="https://gitlab.freedesktop.org/mobile-broadband/libqmi/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv x86"
 fi
 
 PYTHON_COMPAT=( python3_{11..14} )
@@ -24,7 +24,7 @@ IUSE="gtk-doc introspection +mbim +qrtr"
 RDEPEND="
 	>=dev-libs/glib-2.56
 	>=dev-libs/libgudev-232
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	mbim? ( >=net-libs/libmbim-1.18.0 )
 	qrtr? ( >=net-libs/libqrtr-glib-1.0.0:= )
 "

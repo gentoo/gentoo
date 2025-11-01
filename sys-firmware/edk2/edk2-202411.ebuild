@@ -55,7 +55,7 @@ BDEPEND="
 	app-emulation/qemu
 	app-emulation/virt-firmware
 	>=sys-power/iasl-20160729
-	amd64? ( >=dev-lang/nasm-2.0.7 )
+	amd64? ( <dev-lang/nasm-3 )
 "
 
 RDEPEND="

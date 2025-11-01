@@ -6,7 +6,7 @@ EGO_PN=github.com/git-lfs/git-lfs
 # Update the ID as it's included in each build.
 COMMIT_ID=""
 
-inherit go-module shell-completion
+inherit edo go-module shell-completion
 
 DESCRIPTION="Command line extension and specification for managing large files with git"
 HOMEPAGE="
@@ -25,9 +25,9 @@ else
 	#    pretty constraint systems.
 	# Use something like:
 	# GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
-	# tar cf $P-deps.tar go-mod \
+	# tar cf "${P}-deps.tar" go-mod \
 	#	--mtime="1970-01-01" --sort=name --owner=portage --group=portage
-	# xz -k -9eT0 --memlimit-decompress=256M $P-deps.tar
+	# xz -k -9eT0 --memlimit-decompress=256M "${P}-deps.tar"
 	SRC_URI+=" https://files.holgersson.xyz/gentoo/distfiles/golang-pkg-deps/${P}-deps.tar.xz"
 fi
 
@@ -42,6 +42,8 @@ BDEPEND="
 RDEPEND="dev-vcs/git"
 
 RESTRICT+=" !test? ( test )"
+# The golang compiler already strips.
+QA_PRESTRIPPED="/usr/bin/git-lfs"
 
 DOCS=(
 	CHANGELOG.md
@@ -66,7 +68,8 @@ src_compile() {
 
 	if use doc; then
 		for doc in docs/man/*adoc;
-			do asciidoctor -b manpage ${doc} || die "man building failed"
+		do
+			edo asciidoctor -b manpage "${doc}"
 		done
 	fi
 

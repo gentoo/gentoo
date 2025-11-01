@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,12 +38,20 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9999-arm.patch"
 	"${FILESDIR}/neon.patch"
 	"${FILESDIR}/tests.patch"
-	"${FILESDIR}/test-ns.patch"
 	"${FILESDIR}/${PN}-3.5-r5-cpp-std.patch"
 	"${FILESDIR}/${PN}-3.5-r5-gcc15.patch"
-	"${FILESDIR}/${PN}-3.6-test-ns_2.patch"
+
 	"${FILESDIR}/${PN}-3.6-cmake-cleanup.patch"
+
+	"${FILESDIR}/${PN}-3.6-test-ns.patch"
+	"${FILESDIR}/${PN}-3.6-test-ns_2.patch"
+
 	"${FILESDIR}/${PN}-3.6-code-cleanup.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup_2.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup_3.patch"
+	"${FILESDIR}/${PN}-3.6-code-cleanup_4.patch"
+
+	"${FILESDIR}/${PN}-cmake-min-version-3.28.patch"
 )
 
 pkg_setup() {

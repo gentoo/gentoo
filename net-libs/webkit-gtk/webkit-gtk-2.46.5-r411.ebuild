@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_REQ_USE="xml(+)"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 inherit check-reqs flag-o-matic gnome2 optfeature python-any-r1 ruby-single toolchain-funcs cmake
@@ -78,7 +78,7 @@ RDEPEND="
 		media-plugins/gst-plugins-opus:1.0
 		media-libs/gst-plugins-bad:1.0
 	)
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	jpegxl? ( media-libs/libjxl:= )
 	keyring? ( app-crypt/libsecret )
 	lcms? ( media-libs/lcms:2 )

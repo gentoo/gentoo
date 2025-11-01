@@ -34,7 +34,7 @@ COMMON_DEPEND="
 		media-libs/libjpeg-turbo:=
 	)
 	imagemagick? ( >=media-gfx/imagemagick-6.2.6 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	lcms? ( media-libs/lcms:2 )
 	svg? ( >=gnome-base/librsvg-2.36.2:2 )

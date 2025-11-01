@@ -41,7 +41,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? (
 		dev-libs/glib:2
-		dev-libs/gobject-introspection
+		>=dev-libs/gobject-introspection-1.82.0-r2
 		app-alternatives/ninja
 		dev-vcs/git
 		sys-libs/zlib[static-libs(+)]

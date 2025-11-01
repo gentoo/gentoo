@@ -1,0 +1,31 @@
+https://bugreports.qt.io/browse/QTBUG-141099
+https://codereview.qt-project.org/c/qt/qtbase/+/685911
+--- a/src/gui/kernel/qguiapplication.cpp
++++ b/src/gui/kernel/qguiapplication.cpp
+@@ -3418,4 +3418,13 @@
+     QWindowPrivate *p = qt_window_private(window);
+ 
++    if (e->isExposed) {
++        // If the window has been automatically positioned or resized by the
++        // window manager, we now assume those have taken effect, even for
++        // asynchronous window managers. From this point on we want the window
++        // to keep its geometry, even when recreated.
++        p->positionAutomatic = false;
++        p->resizeAutomatic = false;
++    }
++
+     if (!p->receivedExpose) {
+         if (p->resizeEventPending) {
+--- a/src/gui/kernel/qwindow.cpp
++++ b/src/gui/kernel/qwindow.cpp
+@@ -587,10 +587,4 @@
+     platformWindow->initialize();
+ 
+-    // Now that the window is created and initialized the platform has had
+-    // a chance to position and size it automatically. From this point on
+-    // we want the window to keep its geometry, even when recreated.
+-    positionAutomatic = false;
+-    resizeAutomatic = false;
+-
+     QObjectList childObjects = q->children();
+     for (int i = 0; i < childObjects.size(); i ++) {

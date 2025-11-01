@@ -52,6 +52,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.8.1-tests-parallel.patch
 )
 
+src_prepare() {
+	# fix hardcoded path
+	# libvmaf ERROR could not read model from path: "/usr/local/share/model/vmaf_v0.6.1.json"
+	sed -e "s#/usr/local/share/model/#${EPREFIX}/usr/share/vmaf/model/#g" -i README.md av1/av1_cx_iface.c || die
+
+	cmake_src_prepare
+}
+
 multilib_src_configure() {
 	# Follow upstream recommendations in README (bug #921438) and avoid
 	# asserts during common use (bug #914614).

@@ -32,7 +32,7 @@ if [[ ${PV} == *.9999 ]]; then
 else
 	SRC_URI="https://download.qt.io/official_releases/QtForPython/${PN}6/PySide6-${PV}-src/${MY_P}.tar.xz"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 )"

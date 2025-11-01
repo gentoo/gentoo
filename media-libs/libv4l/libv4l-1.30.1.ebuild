@@ -125,7 +125,7 @@ multilib_src_configure() {
 			-Dqvidcap=disabled
 		)
 	fi
-	meson_src_configure
+	PATH+=":${BROOT}/usr/lib/bpf-toolchain/bin" meson_src_configure
 }
 
 multilib_src_install_all() {

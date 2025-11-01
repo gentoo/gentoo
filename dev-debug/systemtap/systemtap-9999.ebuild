@@ -45,7 +45,7 @@ DEPEND="
 	app-text/xmlto
 	>=sys-devel/gettext-0.18.2
 
-	libvirt? ( dev-libs/libxml2 )
+	libvirt? ( dev-libs/libxml2:= )
 "
 RDEPEND="
 	${CDEPEND}

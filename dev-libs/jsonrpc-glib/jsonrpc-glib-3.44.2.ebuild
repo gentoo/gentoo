@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/jsonrpc-glib"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~riscv x86"
 
 IUSE="gtk-doc +introspection test vala"
 REQUIRED_USE="
@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/json-glib[introspection?]
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -12,7 +12,7 @@ S="${WORKDIR}"/muparser-${PV}
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc openmp test"
 RESTRICT="!test? ( test )"
 
@@ -22,6 +22,11 @@ pkg_pretend() {
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	rm -vr samples/example3 || die # unused, causing bug #951718
+	cmake_src_prepare
 }
 
 src_configure() {

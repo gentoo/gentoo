@@ -27,7 +27,7 @@ DEPEND="
 	>=xfce-base/libxfce4util-4.17.2:=[introspection?,vala?]
 	>=xfce-base/xfconf-4.12.0:=
 	glade? ( >=dev-util/glade-3.5.0:3.10 )
-	introspection? ( >=dev-libs/gobject-introspection-1.66:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	system-info? (
 		>=dev-libs/libgudev-232
 		>=gnome-base/libgtop-2.24.0

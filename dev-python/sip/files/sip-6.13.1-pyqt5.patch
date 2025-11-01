@@ -1,0 +1,13 @@
+https://github.com/Python-SIP/sip/issues/95
+https://github.com/Python-SIP/sip/commit/b6a7ec2453899
+--- a/sipbuild/generator/resolver/resolver.py
++++ b/sipbuild/generator/resolver/resolver.py
+@@ -39,4 +39,8 @@
+         mod.py_name = mod.fq_py_name.name.split('.')[-1]
+ 
++    # There is nothing else that needs doing for composite modules.
++    if spec.is_composite:
++        return
++
+     # Set the default meta-type for the main module if it doesn't have one
+     # explicitly set.

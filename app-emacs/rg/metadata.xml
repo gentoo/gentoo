@@ -19,6 +19,7 @@
   </longdescription>
   <upstream>
     <bugs-to>https://github.com/dajva/rg.el/issues/</bugs-to>
+    <changelog>https://github.com/dajva/rg.el/releases/</changelog>
     <remote-id type="github">dajva/rg.el</remote-id>
   </upstream>
 </pkgmetadata>

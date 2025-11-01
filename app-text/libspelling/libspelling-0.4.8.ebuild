@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
 SLOT="1"
-KEYWORDS="amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="gtk-doc sysprof vala"
 
 RDEPEND="
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	virtual/pkgconfig
 	gtk-doc? ( dev-util/gi-docgen )
 "

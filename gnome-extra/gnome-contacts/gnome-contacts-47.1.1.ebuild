@@ -16,7 +16,7 @@ IUSE="+gnome-online-accounts"
 
 VALA_DEPEND="
 	$(vala_depend)
-	>=dev-libs/gobject-introspection-1.54
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/folks[vala(+)]
 	gnome-online-accounts? ( net-libs/gnome-online-accounts[vala] )
 	gnome-extra/evolution-data-server[gtk,vala]

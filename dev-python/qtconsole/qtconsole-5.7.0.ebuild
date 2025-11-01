@@ -4,14 +4,14 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 pypi virtualx
 
 DESCRIPTION="Qt-based console for Jupyter with support for rich media output"
 HOMEPAGE="
-	https://spyder-ide.org/
+	https://www.spyder-ide.org/
 	https://github.com/spyder-ide/qtconsole/
 	https://pypi.org/project/qtconsole/
 "

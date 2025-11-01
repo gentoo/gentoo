@@ -10,7 +10,7 @@ HOMEPAGE="https://invent.kde.org/libraries/plasma-wayland-protocols"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv ~x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -25,6 +25,8 @@ BDEPEND="
 	>=kde-frameworks/extra-cmake-modules-6.0:*
 	test? ( dev-util/wayland-scanner )
 "
+
+PATCHES=( "${FILESDIR}/${P}-cmake-minreqver-3.16.patch" ) # bug 964522
 
 src_configure() {
 	local mycmakeargs=(

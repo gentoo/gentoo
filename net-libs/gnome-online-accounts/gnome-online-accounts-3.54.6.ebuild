@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-online-accounts"
 
 LICENSE="LGPL-2+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 IUSE="debug doc gnome +introspection kerberos ms365 +vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -22,7 +22,7 @@ REQUIRED_USE="vala? ( introspection )"
 RDEPEND="
 	>=dev-libs/glib-2.67.4:2
 	sys-apps/dbus
-	introspection? ( >=dev-libs/gobject-introspection-0.6.2:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	>=gui-libs/libadwaita-1.6_beta
 	>=gui-libs/gtk-4.15.2:4
 	>=dev-libs/json-glib-0.16

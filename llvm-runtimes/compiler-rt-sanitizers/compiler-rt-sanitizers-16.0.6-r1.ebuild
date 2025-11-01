@@ -54,7 +54,7 @@ BDEPEND="
 "
 
 LLVM_COMPONENTS=( compiler-rt cmake llvm/cmake )
-LLVM_PATCHSET=${PV}-r5
+LLVM_PATCHSET=${PV}-r6
 LLVM_TEST_COMPONENTS=( llvm/lib/Testing/Support third-party )
 llvm.org_set_globals
 

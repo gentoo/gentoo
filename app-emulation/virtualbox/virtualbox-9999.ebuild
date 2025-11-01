@@ -30,7 +30,7 @@ inherit desktop edo flag-o-matic git-r3 java-pkg-opt-2 linux-mod-r1 multilib \
 MY_PN="VirtualBox"
 BASE_PV=7.1.0
 MY_P=${MY_PN}-${PV}
-PATCHES_TAG=7.2.0_p20250830
+PATCHES_TAG=7.2.4
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
@@ -42,7 +42,7 @@ SRC_URI="
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde +vmmraw vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde vnc"
 RESTRICT="!test? ( test )"
 
 unset WATCOM #856769
@@ -59,7 +59,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	gui? (
-		dev-qt/qtbase:6[X,widgets]
+		dev-qt/qtbase:6[X,wayland,widgets]
 		dev-qt/qtscxml:6
 		dev-qt/qttools:6[assistant]
 		x11-libs/libX11
@@ -205,13 +205,11 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-${PATCHES_TAG}/patches
-
-	"${FILESDIR}"/${PN}-7.2.2-curl-8.16.patch
 )
 
 DOCS=()	# Don't install the default README file during einstalldocs
 
-CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
+CONFIG_CHECK="~!SPINLOCK JUMP_LABEL ~PREEMPT_NOTIFIERS"
 
 pkg_pretend() {
 	if ! use gui; then
@@ -383,7 +381,6 @@ src_configure() {
 		$(usev !python --disable-python)
 		$(usev !vboxwebsrv --with-gsoap-dir=/dev/null)
 		$(usev vde --enable-vde)
-		$(usev !vmmraw --disable-vmmraw)
 		$(usev vnc --enable-vnc)
 	)
 
@@ -397,10 +394,8 @@ src_configure() {
 		myconf+=(
 			--build-headless
 		)
-	fi
-
-	if use amd64 && ! has_multilib_profile; then
-		myconf+=( --disable-vmmraw )
+		# disable shared clipboard when headless, it crashes when connecting with RDP: bug #955867
+		echo -e "\nVBOX_WITH_SHARED_CLIPBOARD :=" >> LocalConfig.kmk || die
 	fi
 
 	# not an autoconf script
@@ -547,6 +542,19 @@ src_install() {
 		vboxdrv
 		vboxnetflt
 		vboxnetadp
+	EOF
+	insinto /etc/modprobe.d # bug #945135
+	newins - virtualbox.conf <<-EOF
+			# modprobe.d configuration file for VBOXSF
+
+			# Starting with kernel 6.12,
+			#   KVM initializes virtualization on module loading by default.
+			# This prevents VirtualBox VMs from starting.
+			# See also:
+			#   https://bugs.gentoo.org/945135
+			#   https://www.virtualbox.org/wiki/Changelog-7.1
+			# ------------------------------
+			options kvm enable_virt_at_load=0
 	EOF
 
 	cd "${S}"/out/linux.${ARCH}/$(usex debug debug release)/bin || die

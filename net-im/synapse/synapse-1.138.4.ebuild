@@ -225,13 +225,13 @@ SRC_URI="
 	${CARGO_CRATE_URIS}
 "
 
-LICENSE="AGPL-3+"
+LICENSE="|| ( AGPL-3+ Element-Commercial )"
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD ISC MIT Unicode-3.0
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 IUSE="postgres selinux systemd test"
 RESTRICT="!test? ( test )"
 

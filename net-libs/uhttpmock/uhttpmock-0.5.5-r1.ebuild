@@ -18,7 +18,7 @@ REQUIRED_USE="vala? ( introspection )"
 RDEPEND="
 	>=dev-libs/glib-2.38.0:2
 	>=net-libs/libsoup-2.47.3:2.4
-	introspection? ( >=dev-libs/gobject-introspection-0.9.7:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

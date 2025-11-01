@@ -40,9 +40,9 @@ COMMON_DEPEND="
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/appstream-0.16.1:=
 	>=dev-libs/glib-2.70.0:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.4.4
-	>=gnome-base/librsvg-2.57.3:2
+	>=gnome-base/librsvg-2.40.6:2
 	>=media-gfx/mypaint-brushes-1.3.0:2.0=
 	>=media-libs/babl-9999[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
@@ -63,7 +63,7 @@ COMMON_DEPEND="
 	>=x11-libs/pango-1.50.0[X?]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
-	fits? ( sci-libs/cfitsio )
+	fits? ( sci-libs/cfitsio:= )
 	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
@@ -110,7 +110,7 @@ BDEPEND="
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.21
 	doc? (
-		dev-libs/gobject-introspection[doctool]
+		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
 	virtual/pkgconfig

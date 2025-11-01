@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 " # depends on go-i unconditionally for own functionality, USE flag controls GIR/typelib generation
 DEPEND="${RDEPEND}"
 BDEPEND="

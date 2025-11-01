@@ -10,13 +10,13 @@ HOMEPAGE="https://apps.gnome.org/Maps/"
 
 LICENSE="CC0-1.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 # Pure introspection dependencies found by grepping imports in ${S}
 RDEPEND="
 	>=dev-libs/glib-2.66.0:2
 	>=dev-libs/gjs-1.69.2
-	>=dev-libs/gobject-introspection-0.10.1:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=gui-libs/gtk-4.10:4[introspection]
 	>=app-misc/geoclue-0.12.99:2.0[introspection]
 	>=gui-libs/libadwaita-1.7_alpha:1[introspection]

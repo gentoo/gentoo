@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rlancaste/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -22,7 +22,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-file-descriptor-leak.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-file-descriptor-leak.patch" # git master
+	"${FILESDIR}/${P}-cmake-minreqver-3.10.patch" # bug #965002
+)
 
 src_configure() {
 	# bug #862930

@@ -24,7 +24,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/dbus-glib-0.90
-	introspection? ( >=dev-libs/gobject-introspection-1.30 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

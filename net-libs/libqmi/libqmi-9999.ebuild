@@ -24,7 +24,7 @@ IUSE="gtk-doc introspection +mbim +qrtr"
 RDEPEND="
 	>=dev-libs/glib-2.56
 	>=dev-libs/libgudev-232
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	mbim? ( >=net-libs/libmbim-1.18.0 )
 	qrtr? ( >=net-libs/libqrtr-glib-1.0.0:= )
 "

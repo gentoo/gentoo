@@ -14,7 +14,7 @@ S="${WORKDIR}/eclipse.jdt.core-R${PV//./_}/org.eclipse.jdt.annotation"
 
 LICENSE="EPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 RDEPEND=">=virtual/jre-1.8:*"
 DEPEND=">=virtual/jdk-1.8:*"

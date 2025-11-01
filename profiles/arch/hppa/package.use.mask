@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Alfred Wingate <parona@protonmail.com> (2025-10-20)
+# sys-libs/libnvme is not keyworded here
+net-misc/networkmanager nbft
+
 # PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-04)
 # media-libs/libemf is not keyworded here
 app-office/dia wmf

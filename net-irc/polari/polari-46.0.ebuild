@@ -22,7 +22,7 @@ DEPEND="
 	>=dev-libs/glib-2.43.4:2
 	net-libs/telepathy-glib[introspection]
 	app-misc/tinysparql:3
-	>=dev-libs/gobject-introspection-1.50:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/gjs-1.73.1
 
 	x11-libs/gdk-pixbuf:2[introspection]

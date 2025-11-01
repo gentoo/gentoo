@@ -1,5 +1,5 @@
 From 9f08064fef75ce02df9b6133d240c0fa84df458e Mon Sep 17 00:00:00 2001
-Message-ID: <9f08064fef75ce02df9b6133d240c0fa84df458e.1728191717.git.sam@gentoo.org>
+Message-ID: <9f08064fef75ce02df9b6133d240c0fa84df458e.1760957586.git.sam@gentoo.org>
 From: "Jose E. Marchesi" <jose.marchesi@oracle.com>
 Date: Mon, 25 Apr 2022 09:32:09 +0200
 Subject: [PATCH 01/10] db: fix rec_db_set crash with empty databases
@@ -66,5 +66,5 @@ index f44ee59..d73d530 100755
            recset \
            '-n 0 -f foo -a bar' \
 -- 
-2.46.2
+2.51.1
 

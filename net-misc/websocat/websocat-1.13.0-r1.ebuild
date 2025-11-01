@@ -1,9 +1,9 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CRATES=" "
+CRATES="traitobject@0.1.1"
 
 inherit cargo
 
@@ -11,6 +11,7 @@ DESCRIPTION="Command-line client for WebSockets, like netcat, with socat-like fu
 HOMEPAGE="https://github.com/vi/websocat"
 SRC_URI="https://github.com/vi/websocat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/net-misc/${PN}/${P}-crates.tar.xz"
+SRC_URI+=" ${CARGO_CRATE_URIS}"
 
 LICENSE="MIT"
 # Dependent crate licenses
@@ -31,6 +32,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.0-traitobject-lock.patch
+)
+
 QA_FLAGS_IGNORED="/usr/bin/websocat"
 
 src_configure() {

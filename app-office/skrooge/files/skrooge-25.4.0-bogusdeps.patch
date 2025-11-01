@@ -1,0 +1,58 @@
+From f5759599ec9fb9e0038395062cc5d08588da0765 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 10 Oct 2025 19:06:36 +0200
+Subject: [PATCH] Drop unused dependencies
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt                                      |  2 --
+ plugins/skrooge/skrooge_importexport/CMakeLists.txt | 11 ++---------
+ 2 files changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a596f6d6d..c0c6c037f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -98,10 +98,8 @@ FIND_PACKAGE(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS
+   I18n                  # Tier 1
+   ItemViews             # Tier 1
+   WidgetsAddons         # Tier 1
+-  WindowSystem          # Tier 1
+   GuiAddons             # Tier 1
+   Completion            # Tier 2
+-  JobWidgets            # Tier 2
+   ConfigWidgets         # Tier 3
+   IconThemes            # Tier 3
+   KIO                   # Tier 3
+diff --git a/plugins/skrooge/skrooge_importexport/CMakeLists.txt b/plugins/skrooge/skrooge_importexport/CMakeLists.txt
+index a9178509a..454f78e15 100644
+--- a/plugins/skrooge/skrooge_importexport/CMakeLists.txt
++++ b/plugins/skrooge/skrooge_importexport/CMakeLists.txt
+@@ -7,10 +7,6 @@ MESSAGE( STATUS "..:: CMAKE PLUGIN_IMPORTEXPORT ::..")
+ 
+ PROJECT(plugin_importexport)
+ 
+-FIND_PACKAGE(KF${QT_MAJOR_VERSION} ${KF_MIN_VERSION} REQUIRED COMPONENTS 
+-  GuiAddons             # Tier 1
+-)
+-
+ LINK_DIRECTORIES (${LIBRARY_OUTPUT_PATH})
+ 
+ SET(skrooge_importexport_SRCS
+@@ -20,11 +16,8 @@ ki18n_wrap_ui(skrooge_importexport_SRCS skgimportexportpluginwidget_pref.ui)
+ kconfig_add_kcfg_files(skrooge_importexport_SRCS skgimportexport_settings.kcfgc )
+ 
+ KCOREADDONS_ADD_PLUGIN(skrooge_importexport SOURCES ${skrooge_importexport_SRCS} INSTALL_NAMESPACE "skg_gui")
+-IF(QT_MAJOR_VERSION STREQUAL "5")
+-  TARGET_LINK_LIBRARIES(skrooge_importexport KF${QT_MAJOR_VERSION}::Parts KF${QT_MAJOR_VERSION}::KIOCore KF${QT_MAJOR_VERSION}::KIOFileWidgets KF${QT_MAJOR_VERSION}::KIOWidgets skgbasemodeler skgbasegui skgbankmodeler)
+-ELSE()
+-  TARGET_LINK_LIBRARIES(skrooge_importexport KF${QT_MAJOR_VERSION}::GuiAddons KF${QT_MAJOR_VERSION}::Parts KF${QT_MAJOR_VERSION}::KIOCore KF${QT_MAJOR_VERSION}::KIOFileWidgets KF${QT_MAJOR_VERSION}::KIOWidgets skgbasemodeler skgbasegui skgbankmodeler)
+-ENDIF()
++TARGET_LINK_LIBRARIES(skrooge_importexport KF${QT_MAJOR_VERSION}::Parts KF${QT_MAJOR_VERSION}::KIOCore KF${QT_MAJOR_VERSION}::KIOFileWidgets KF${QT_MAJOR_VERSION}::KIOWidgets skgbasemodeler skgbasegui skgbankmodeler)
++
+ ########### install files ###############
+ INSTALL(FILES ${PROJECT_SOURCE_DIR}/skrooge_importexport.rc  DESTINATION  ${KDE_INSTALL_KXMLGUIDIR}/skrooge_importexport )
+ INSTALL(FILES ${PROJECT_SOURCE_DIR}/skgimportexport_settings.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR} )
+-- 
+2.51.0
+

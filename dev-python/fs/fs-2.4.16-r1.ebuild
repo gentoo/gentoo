@@ -4,15 +4,15 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+# py3.14: https://github.com/PyFilesystem/pyfilesystem2/issues/596
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 optfeature pypi
 
 DESCRIPTION="Filesystem abstraction layer"
 HOMEPAGE="
+	https://github.com/PyFilesystem/pyfilesystem2/
 	https://pypi.org/project/fs/
-	https://docs.pyfilesystem.org/
-	https://www.willmcgugan.com/tag/fs/
 "
 
 LICENSE="MIT"
@@ -34,6 +34,7 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs/source dev-python/sphinx-rtd-theme dev-python/recommonmark
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(

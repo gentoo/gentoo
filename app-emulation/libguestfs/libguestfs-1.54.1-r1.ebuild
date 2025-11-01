@@ -74,7 +74,7 @@ COMMON_DEPEND="
 	fuse? ( sys-fs/fuse:0 )
 	introspection? (
 		dev-libs/glib
-		dev-libs/gobject-introspection
+		>=dev-libs/gobject-introspection-1.82.0-r2
 	)
 	libvirt? ( app-emulation/libvirt[qemu] )
 	perl? (

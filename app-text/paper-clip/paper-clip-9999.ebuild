@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ RDEPEND="
 	>=gui-libs/libadwaita-1.4.2:1[introspection,vala]
 	app-text/poppler:=[cairo,introspection]
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/libportal:=[gtk,introspection,vala]
 	media-libs/exempi
 "

@@ -12,4 +12,4 @@ inherit sec-keys
 DESCRIPTION="OpenPGP keys used by commons.apache.org"
 HOMEPAGE="https://commons.apache.org"
 
-KEYWORDS="amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ppc64"

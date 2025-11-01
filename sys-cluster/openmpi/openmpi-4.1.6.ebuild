@@ -139,7 +139,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable openmpi_ofed_features_udcm openib-udcm)
 		$(multilib_native_use_enable openmpi_ofed_features_dynamic-sl openib-dynamic-sl)
 
-		$(multilib_native_use_with cuda cuda "${EPREFIX}"/opt/cuda)
+		$(multilib_native_use_with cuda cuda "${CUDA_PATH:-${ESYSROOT}/opt/cuda}")
 		$(multilib_native_use_with valgrind)
 		$(multilib_native_use_with openmpi_fabrics_ofed verbs "${EPREFIX}"/usr)
 		$(multilib_native_use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr)

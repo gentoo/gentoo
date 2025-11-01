@@ -19,7 +19,7 @@ LICENSE="
 
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
 
 IUSE="accessibility audit bluetooth-sound branding elogind fprint plymouth selinux systemd tcpd test wayland +X"
 
@@ -65,7 +65,7 @@ COMMON_DEPEND="
 
 	>=x11-misc/xdg-utils-1.0.2-r3
 
-	>=dev-libs/gobject-introspection-0.9.12:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 # XXX: These deps are from session and desktop files in data/ directory
 # fprintd is used via dbus by gdm-fingerprint-extension

@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_QA_COMPAT_SKIP=1 # will be gone before relevant
 inherit cmake flag-o-matic kde.org
 
 DESCRIPTION="VLC backend for the Phonon multimedia library"

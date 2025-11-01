@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1
@@ -32,6 +32,9 @@ BDEPEND="
 "
 
 distutils_enable_sphinx docs
+
+EPYTEST_PLUGINS=()
+EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
 src_prepare() {

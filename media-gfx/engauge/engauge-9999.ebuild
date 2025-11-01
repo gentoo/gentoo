@@ -39,7 +39,7 @@ src_prepare() {
 	default
 
 	# Make sure the documentation is looked for in the proper directory
-	sed -e "s:engauge-digitizer/engauge.qhc:${PF}/engauge.qhc:" \
+	sed -e "s:engauge-digitizer/engauge.qhc:${PF}/engauge.qch:" \
 		-i src/Help/HelpWindow.cpp || die
 
 	# This otherwise overrides user CFLAGS
