@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-11-01)
+# app-crypt/sequoia-chameleon-gnupg is not keyworded everywhere.
+app-alternatives/gpg sequoia
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-10-21)
 # Uses dev-lang/deno-bin which offers limited per-arch prebuilts
 # (source build is currently unpackaged and is non-trivial due to v8)
