@@ -1,0 +1,70 @@
+https://github.com/jd/tenacity/commit/eed7d785e667df145c0e3eeddff59af64e4e860d
+
+From eed7d785e667df145c0e3eeddff59af64e4e860d Mon Sep 17 00:00:00 2001
+From: Sandro Bonazzola <sandro.bonazzola@gmail.com>
+Date: Fri, 27 Jun 2025 10:18:58 +0200
+Subject: [PATCH] Support Python 3.14 (#528)
+
+Signed-off-by: Sandro Bonazzola <sandro.bonazzola@gmail.com>
+---
+ tenacity/__init__.py                                 | 12 ++++--------
+ tests/test_asyncio.py                                |  3 +--
+ tests/test_issue_478.py                              |  3 +--
+ 9 files changed, 24 insertions(+), 23 deletions(-)
+
+diff --git a/tenacity/__init__.py b/tenacity/__init__.py
+index e274c215..e93793cc 100644
+--- a/tenacity/__init__.py
++++ b/tenacity/__init__.py
+@@ -307,19 +307,15 @@ def statistics(self) -> t.Dict[str, t.Any]:
+                   future we may provide a way to aggregate the various
+                   statistics from each thread).
+         """
+-        try:
+-            return self._local.statistics  # type: ignore[no-any-return]
+-        except AttributeError:
++        if not hasattr(self._local, "statistics"):
+             self._local.statistics = t.cast(t.Dict[str, t.Any], {})
+-            return self._local.statistics
++        return self._local.statistics  # type: ignore[no-any-return]
+ 
+     @property
+     def iter_state(self) -> IterState:
+-        try:
+-            return self._local.iter_state  # type: ignore[no-any-return]
+-        except AttributeError:
++        if not hasattr(self._local, "iter_state"):
+             self._local.iter_state = IterState()
+-            return self._local.iter_state
++        return self._local.iter_state  # type: ignore[no-any-return]
+ 
+     def wraps(self, f: WrappedFn) -> WrappedFn:
+         """Wrap a function for retrying.
+diff --git a/tests/test_asyncio.py b/tests/test_asyncio.py
+index 0b74476b..f6793f0b 100644
+--- a/tests/test_asyncio.py
++++ b/tests/test_asyncio.py
+@@ -40,8 +40,7 @@
+ def asynctest(callable_):
+     @wraps(callable_)
+     def wrapper(*a, **kw):
+-        loop = asyncio.get_event_loop()
+-        return loop.run_until_complete(callable_(*a, **kw))
++        return asyncio.run(callable_(*a, **kw))
+ 
+     return wrapper
+ 
+diff --git a/tests/test_issue_478.py b/tests/test_issue_478.py
+index 7489ad7c..83182ac4 100644
+--- a/tests/test_issue_478.py
++++ b/tests/test_issue_478.py
+@@ -12,8 +12,7 @@ def asynctest(
+ ) -> typing.Callable[..., typing.Any]:
+     @wraps(callable_)
+     def wrapper(*a: typing.Any, **kw: typing.Any) -> typing.Any:
+-        loop = asyncio.get_event_loop()
+-        return loop.run_until_complete(callable_(*a, **kw))
++        return asyncio.run(callable_(*a, **kw))
+ 
+     return wrapper
+ 
