@@ -8,9 +8,6 @@
 	<stabilize-allarches/>
 	<use>
 		<flag name="deno">
-			(warning: this USE is for testing versions only
-			currently and can be ignored at the moment)
-
 			Pull in <pkg>dev-lang/deno-bin</pkg> by default
 			needed for proper YouTube support (if this USE
 			is masked on your profile, refer to yt-dlp's

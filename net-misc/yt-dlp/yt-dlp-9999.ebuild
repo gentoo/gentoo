@@ -26,9 +26,20 @@ HOMEPAGE="https://github.com/yt-dlp/yt-dlp/"
 
 LICENSE="Unlicense"
 SLOT="0"
+IUSE="+deno"
 
+# deno is technically a optfeature, but it is needed for proper YouTube
+# support and most users would expect that to work out-of-the-box
+# (there are alternatives like nodejs but upstream disables support by
+# default due to security concerns, users are on their own for these)
+#
+# yt-dlp-ejs requires pinning due to yt-dlp checking sha512sum of .js,
+# live ebuild users may need to use the self-updater method if out of
+# sync as there are no plans for a yt-dlp-ejs live ebuild at the moment
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
+	~dev-python/yt-dlp-ejs-0.3.0[${PYTHON_USEDEP}]
+	deno? ( dev-lang/deno-bin )
 "
 BDEPEND="
 	test? ( media-video/ffmpeg[webp] )
@@ -93,8 +104,18 @@ pkg_postinst() {
 	optfeature "decrypting cookies from Chromium-based browsers" dev-python/secretstorage
 
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog
 		elog 'A wrapper using "yt-dlp --compat-options youtube-dl" was installed'
 		elog 'as "youtube-dl". This is strictly for compatibility and it is'
 		elog 'recommended to use "yt-dlp" directly, it may be removed in the future.'
+	fi
+
+	if use !deno; then
+		ewarn
+		ewarn "USE=deno is disabled, using ${PN} with some websites like YouTube may"
+		ewarn "not function properly. If your profile does not allow enabling this USE,"
+		ewarn "can use net-libs/nodejs instead but it is disabled by default due to"
+		ewarn "security(!) concerns and requires manually passing '--js-runtimes node'"
+		ewarn "(to be permanent: echo '--js-runtimes node' >> ~/.config/yt-dlp/config)"
 	fi
 }
