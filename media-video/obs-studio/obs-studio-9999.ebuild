@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -49,7 +49,8 @@ LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
 IUSE="
 	+alsa browser decklink fdk jack lua mpegts nvenc pipewire pulseaudio
-	python qsv sndio speex test-input truetype v4l vlc wayland websocket
+	python qsv sndio speex test-input truetype v4l vlc wayland webrtc
+	websocket
 "
 REQUIRED_USE="
 	browser? ( || ( alsa pulseaudio ) )
@@ -141,6 +142,9 @@ DEPEND="
 		dev-libs/wayland
 		x11-libs/libxkbcommon
 	)
+	webrtc? (
+		net-libs/libdatachannel:=
+	)
 	websocket? (
 		<dev-cpp/asio-1.34.0
 		dev-cpp/websocketpp
@@ -217,7 +221,7 @@ src_configure() {
 		-DENABLE_VLC=$(usex vlc)
 		-DENABLE_VST=ON
 		-DENABLE_WAYLAND=$(usex wayland)
-		-DENABLE_WEBRTC=OFF # Requires libdatachannel.
+		-DENABLE_WEBRTC=$(usex webrtc)
 		-DENABLE_WEBSOCKET=$(usex websocket)
 	)
 
