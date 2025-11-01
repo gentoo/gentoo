@@ -125,7 +125,7 @@ src_configure() {
 
 	# rocminfo call during configuration; should not happen
 	# Bug: https://github.com/ROCm/composable_kernel/issues/2994
-	check_amdgpu
+	rocm_add_sandbox -w
 	addpredict /dev/random
 
 	cmake_src_configure
