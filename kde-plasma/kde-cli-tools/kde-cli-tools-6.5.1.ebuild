@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/kde-cli-tools"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~riscv"
 IUSE="kdesu X"
 
 # slot op: kstart Uses Qt6::GuiPrivate for qtx11extras_p.h
