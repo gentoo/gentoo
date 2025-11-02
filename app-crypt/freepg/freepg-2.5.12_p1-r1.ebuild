@@ -12,7 +12,10 @@ EGIT_TAG="gnupg-${PV%_p*}-freepg"
 MY_P="gnupg-${EGIT_TAG}"
 
 DESCRIPTION="GnuPG fork with improved RFC9850 compatibility"
-HOMEPAGE="https://gnupg.org/"
+HOMEPAGE="
+	https://freepg.org/
+	https://gitlab.com/freepg/gnupg/
+"
 SRC_URI="
 	https://gitlab.com/freepg/gnupg/-/archive/${EGIT_TAG}/${MY_P}.tar.bz2
 "
