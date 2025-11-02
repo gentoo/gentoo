@@ -17,7 +17,7 @@ SRC_URI="https://github.com/BestImageViewer/${PN}/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp X xmp zip"
 
 RDEPEND="gnome-extra/zenity
