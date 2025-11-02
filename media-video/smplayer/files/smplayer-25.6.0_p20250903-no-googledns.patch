@@ -1,0 +1,42 @@
+Source: https://salsa.debian.org/multimedia-team/smplayer/-/blob/master/debian/patches/11-drop-google-dns.patch
+
+Description: Drop hardcodes use of Google DNS resolver
+Author: Mateusz Łukasik <mati75@linuxmint.pl>
+Origin: other
+Bug-Debian: https://bugs.debian.org/1023546
+Last-Update: 2023-10-01
+Forwarded: not-needed
+
+--- a/webserver/mongoose.c
++++ b/webserver/mongoose.c
+@@ -11418,7 +11418,7 @@ int mg_dns_reply_record(struct mg_dns_re
+ /* Amalgamated: #include "mg_resolv.h" */
+ 
+ #ifndef MG_DEFAULT_NAMESERVER
+-#define MG_DEFAULT_NAMESERVER "8.8.8.8"
++#define MG_DEFAULT_NAMESERVER "0.0.0.0"
+ #endif
+ 
+ struct mg_resolve_async_request {
+--
+
+Source: https://salsa.debian.org/multimedia-team/smplayer/-/blob/master/debian/patches/12-drop-google-dns-from-chromecast.patch
+
+Description: Remove hardcodes use of Google DNS resolver from chromecast feature
+Author: Mateusz Łukasik <mati75@linuxmint.pl>
+Bug-Debian: https://bugs.debian.org/1023547
+Origin: other
+Last-Update: 2023-10-01
+Forwarded: not-needed
+
+--- a/src/chromecast.cpp
++++ b/src/chromecast.cpp
+@@ -281,7 +281,7 @@ QString Chromecast::findLocalAddress() {
+ 	QString local_address;
+ 
+ 	QUdpSocket s;
+-	s.connectToHost("8.8.8.8", 53);
++	s.connectToHost("0.0.0.0", 53);
+ 	if (s.waitForConnected(2000)) {
+ 		local_address = s.localAddress().toString();
+ 		qDebug() << "Chromecast::findLocalAddress: connected to:" << s.peerAddress().toString() << "local address:" << local_address;
