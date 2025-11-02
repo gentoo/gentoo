@@ -22,7 +22,7 @@ else
 fi
 
 LICENSE="MIT"
-SLOT="0/0.23"  # soversion / /usr/include/httplib.h: CPPHTTPLIB_VERSION
+SLOT="0/$(ver_cut 0-2)"  # soversion
 
 IUSE="brotli ssl test zlib zstd"
 RESTRICT="!test? ( test )"
@@ -48,6 +48,10 @@ BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-fixpidtest.patch
+)
 
 src_configure() {
 	local -a mycmakeargs=(
