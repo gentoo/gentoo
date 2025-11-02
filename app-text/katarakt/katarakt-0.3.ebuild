@@ -22,12 +22,13 @@ BDEPEND="
 "
 RDEPEND="
 	app-text/poppler:=[qt6]
-	dev-qt/qtbase:6[dbus,gui,network,widgets,xml]
+	dev-qt/qtbase:6[dbus,gui,network,widgets]
 "
 DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-install.patch"
+	"${FILESDIR}/${P}-unused-dep.patch"
 )
 
 src_configure() {
