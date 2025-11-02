@@ -15,11 +15,7 @@ else
 	S=${WORKDIR}/${PN}
 	# note that yt-dlp bumps are typically done straight-to-stable (unless some
 	# major/breaking changes) given website changes breaks it on a whim
-	# (unkeyworded for testing PR14517 with external n/sig solver)
-	# TODO for release version:
-	# - revert SRC_URI
-	# - drop warning from metadata.xml's USE=deno description
-	# - replace workaround `rm -rf` by `rm -r` in src_install
+	# (unkeyworded pre-snapshot including external n/sig solver, aka w/ deno)
 	#KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~riscv x86 ~arm64-macos ~x64-macos"
 fi
 
