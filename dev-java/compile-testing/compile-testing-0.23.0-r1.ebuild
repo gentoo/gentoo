@@ -28,7 +28,7 @@ DEPEND="
 	dev-java/javapoet:0
 	dev-java/junit:4
 	dev-java/truth:0
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 	test? (
 		>=dev-java/guava-testlib-33.4.8:0
 		dev-java/jspecify:0
