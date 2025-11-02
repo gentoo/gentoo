@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GNOME_ORG_MODULE="NetworkManager-${PN##*-}"
 
-inherit gnome2
+inherit flag-o-matic gnome2
 
 DESCRIPTION="NetworkManager OpenVPN plugin"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/NetworkManager-openvpn"
@@ -43,6 +43,8 @@ BDEPEND="
 "
 
 src_configure() {
+	# Workaround for LLD on musl systems (bug #947147)
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
 	# --localstatedir=/var needed per bug #536248
 	gnome2_src_configure \
 		--localstatedir=/var \

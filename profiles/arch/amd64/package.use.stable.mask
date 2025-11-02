@@ -26,8 +26,6 @@ media-sound/liblc3 -test
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
 # dev-util/nvidia-cuda-toolkit may never be stabilized
-media-video/ffmpeg npp
-media-video/ffmpeg-compat npp
 media-libs/osl clang-cuda
 
 # Sam James <sam@gentoo.org> (2025-02-13)
@@ -62,10 +60,6 @@ www-apps/hugo test
 # Jon Janzen <jon@jonjanzen.com> (2023-09-11)
 # librttopo has not been stabalized on this arch yet
 dev-db/spatialite rttopo
-
-# Sam James <sam@gentoo.org> (2023-05-15)
-# net-libs/rustls-ffi is not marked stable
-www-servers/apache apache2_modules_tls
 
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # pandoc is stable here.

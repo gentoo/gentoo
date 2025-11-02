@@ -5,9 +5,9 @@ EAPI=8
 
 # Please bump with dev-libs/icu-layoutex
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/icu.asc
-inherit autotools multilib-minimal python-any-r1 toolchain-funcs verify-sig
+inherit autotools flag-o-matic multilib-minimal python-any-r1 toolchain-funcs verify-sig
 
 MY_PV=${PV/_rc/-rc}
 MY_PV=${MY_PV//./_}
@@ -19,7 +19,7 @@ SRC_URI+=" verify-sig? ( https://github.com/unicode-org/icu/releases/download/re
 S="${WORKDIR}"/${PN}/source
 
 if [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 LICENSE="BSD"
 SLOT="0/${PV%.*}"
@@ -98,10 +98,14 @@ src_configure() {
 		popd >/dev/null || die
 	fi
 
+	# Workaround for bug #963337 (gcc PR122058)
+	tc-is-gcc && [[ $(gcc-major-version) -eq 16 ]] && append-cxxflags -fno-devirtualize-speculatively
+
 	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {
+	# https://unicode-org.github.io/icu/userguide/icu4c/packaging
 	local myeconfargs=(
 		--disable-renaming
 		--disable-samples

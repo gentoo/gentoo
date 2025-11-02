@@ -26,7 +26,8 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug doc +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib"
+IUSE="curl debug doc +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript +magic +matroska mysql systemd +taglib test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-group/gerbera
@@ -51,16 +52,17 @@ RDEPEND="
 	mysql? ( dev-db/mysql-connector-c:= )
 	taglib? ( media-libs/taglib:= )
 "
-
 DEPEND="${RDEPEND}"
-
-BDEPEND="doc? (
+BDEPEND="
+	doc? (
 		${PYTHON_DEPS}
 		$(python_gen_any_dep '
 			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
 		')
 		media-gfx/graphviz
-	)"
+	)
+	test? ( dev-cpp/gtest )
+"
 
 CONFIG_CHECK="~INOTIFY_USER"
 
@@ -85,6 +87,7 @@ src_configure() {
 		-DWITH_MYSQL=$(usex mysql)
 		-DWITH_SYSTEMD=$(usex systemd)
 		-DWITH_TAGLIB=$(usex taglib)
+		-DWITH_TESTS=$(usex test)
 	)
 
 	cmake_src_configure

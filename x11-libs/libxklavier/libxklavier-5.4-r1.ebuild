@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ SRC_URI="https://people.freedesktop.org/~svu/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0/16"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
@@ -24,7 +24,7 @@ RDEPEND="
 	>=x11-libs/libXi-1.1.3:=
 	x11-libs/libxkbfile:=
 	>=x11-misc/xkeyboard-config-2.4.1-r3
-	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

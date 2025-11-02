@@ -62,7 +62,7 @@ DESCRIPTION="TeXLive ConTeXt and packages"
 
 LICENSE="BSD BSD-2 GPL-1+ GPL-2 GPL-3 MIT TeX-other-free public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
 COMMON_DEPEND="
 	>=dev-texlive/texlive-basic-2024
 "

@@ -19,6 +19,7 @@ RDEPEND="
 	dev-vcs/git
 	>=app-crypt/gnupg-2
 "
+BDEPEND="sys-apps/which"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.15.3-skip-tests.patch"

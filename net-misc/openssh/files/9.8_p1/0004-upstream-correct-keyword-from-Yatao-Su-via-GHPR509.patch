@@ -1,0 +1,29 @@
+From c21fc9d953f6d858ea0a9d7da38359d2eb397ed0 Mon Sep 17 00:00:00 2001
+Message-ID: <c21fc9d953f6d858ea0a9d7da38359d2eb397ed0.1758727870.git.sam@gentoo.org>
+In-Reply-To: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+References: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+From: "djm@openbsd.org" <djm@openbsd.org>
+Date: Wed, 10 Jul 2024 21:58:34 +0000
+Subject: [PATCH 4/7] upstream: correct keyword; from Yatao Su via GHPR509
+
+OpenBSD-Commit-ID: 81c778c76dea7ef407603caa157eb0c381c52ad2
+---
+ sshd_config.5 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sshd_config.5 b/sshd_config.5
+index 1ab0f41d9..ce872de52 100644
+--- a/sshd_config.5
++++ b/sshd_config.5
+@@ -1586,7 +1586,7 @@ accumulated.
+ .Pp
+ Penalties are enabled by default with the default settings listed below
+ but may disabled using the
+-.Cm off
++.Cm no
+ keyword.
+ The defaults may be overridden by specifying one or more of the keywords below,
+ separated by whitespace.
+-- 
+2.51.0
+

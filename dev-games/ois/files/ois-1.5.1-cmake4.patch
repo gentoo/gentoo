@@ -1,0 +1,41 @@
+Source: https://github.com/wgois/OIS/pull/98
+
+From b71eafcb2e95c909b93d23937c420eab8a31536d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Tue, 8 Jul 2025 19:35:59 +0200
+Subject: [PATCH] Require CMake 3.10 or newer
+
+CMake 4.0 refuses to work with minimum
+require of CMake 3.4 or below. Everything
+below 3.10 is deprecated.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 951b2b1..98c67d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ project(OIS)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CmakeModules)
+
+
+* asturm 2025-10-01: How did that ever work?
+Gentoo-bug: https://bugs.gentoo.org/954105#c9
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -188,8 +188,7 @@
+ if(UNIX)
+ 
+     if (NOT APPLE)
+-        add_dependencies(OIS X11)
+-        target_link_libraries(OIS X11)
++        target_link_libraries(OIS ${X11_LIBRARIES})
+     endif()
+ 
+     set_target_properties(OIS PROPERTIES

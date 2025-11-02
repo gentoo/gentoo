@@ -98,6 +98,9 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/015*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/016*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/017*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
@@ -176,10 +179,6 @@ src_configure() {
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
 
-	# Avoid a compile error with certain USE flag combinations when
-	# using std=gnu23, bug #945643.
-	append-flags -std=gnu17
-
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
 		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
@@ -191,10 +190,6 @@ src_configure() {
 		# set and socks library is present, so need to unset
 		# SOCKS_SERVER in that case.
 		unset SOCKS_SERVER
-
-		# The socks code has a function prototype without parameters,
-		# bug #945502
-		append-cflags -std=gnu17
 	fi
 
 	# Increase GC_MALLOC_LIMIT if set (default is 8000000)

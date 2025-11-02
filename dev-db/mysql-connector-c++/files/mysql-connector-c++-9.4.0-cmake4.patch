@@ -1,0 +1,179 @@
+# bug https://bugs.gentoo.org/961903
+--- a/cdk/cmake/bootstrap/CMakeLists.txt
++++ b/cdk/cmake/bootstrap/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ # See bootstrap.cmake.
+ #
+ 
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.15)
+ project(Bootstrap C CXX)
+ include(TestBigEndian)
+ test_big_endian(big_endian)
+--- a/cdk/cmake/gtest.cmake
++++ b/cdk/cmake/gtest.cmake
+@@ -132,11 +132,11 @@ MESSAGE("gtest_main location: ${gtest_main_location}")
+ add_library(gtest ALIAS GTest::gtest)
+ add_library(gtest_main ALIAS GTest::gtest_main)
+ 
+-target_include_directories(gtest INTERFACE ${GTEST_INCLUDE_DIRS})
++target_include_directories(GTest::gtest INTERFACE ${GTEST_INCLUDE_DIRS})
+ 
+ # See: https://stackoverflow.com/questions/42847103/stdtr1-with-visual-studio-2017
+ 
+-target_compile_definitions(gtest INTERFACE
++target_compile_definitions(GTest::gtest INTERFACE
+   -DGTEST_LANG_CXX11=1
+ )
+ 
+--- a/cdk/cmake/headers/check.cmake.in
++++ b/cdk/cmake/headers/check.cmake.in
+@@ -31,7 +31,7 @@
+ # Auto generated file for compiling public header tests
+ #
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.15)
+ PROJECT(Headers_check)
+ 
+ add_compile_options(/wd4251)  # FIXME: DLL warning
+--- a/cdk/core/CMakeLists.txt
++++ b/cdk/core/CMakeLists.txt
+@@ -27,7 +27,7 @@
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+ 
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.15)
+ # TODO: Why it is not enough to set it in the top-level CMakeLists.txt?
+ #cmake_policy(SET CMP0023 OLD)
+ 
+--- a/cdk/extra/lz4/CMakeLists.txt
++++ b/cdk/extra/lz4/CMakeLists.txt
+@@ -26,7 +26,7 @@
+ # along with this program; if not, write to the Free Software Foundation, Inc.,
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.15)
+ PROJECT(zstd C)
+ 
+ include(../setup.cmake)
+--- a/cdk/extra/ngs_mockup/CMakeLists.txt
++++ b/cdk/extra/ngs_mockup/CMakeLists.txt
+@@ -27,7 +27,7 @@
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.15)
+ PROJECT(NGSMockupServer)
+ 
+ IF(NOT DEFINED WITH_NGS_MOCKUP)
+--- a/cdk/extra/process_launcher/CMakeLists.txt
++++ b/cdk/extra/process_launcher/CMakeLists.txt
+@@ -39,7 +39,7 @@
+ #  cmake -DBOOST_INCLUDE_DIR=/usr/local/include -DBOOST_LIB_DIR=/usr/local/lib -DMY_INCLUDE_DIR=/usr/local/include:/usr/include  -DCMAKE_BUILD_TYPE=Debug -DCMAKE_ECLIPSE_VERSION=4.4 -DCMAKE_ECLIPSE_GENERATE_SOURCE_PROJECT=TRUE -DGMOCK_LIBRARIES=gmock -G "Eclipse CDT4 - Unix Makefiles" ../process_launcher
+ #
+ 
+-cmake_minimum_required (VERSION 2.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ project (process_launcher)
+ 
+--- a/cdk/extra/protobuf/CMakeLists.txt
++++ b/cdk/extra/protobuf/CMakeLists.txt
+@@ -57,7 +57,7 @@
+ # - fix minor compilation issues on SunPro 5.14.0
+ 
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.15)
+ PROJECT(Protobuf)
+ 
+ include(../setup.cmake)
+--- a/cdk/extra/zlib/CMakeLists.txt
++++ b/cdk/extra/zlib/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.15)
+ cmake_policy(SET CMP0048 NEW)  # allow VERSION specification in project()
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
+ 
+--- a/cdk/extra/zstd/CMakeLists.txt
++++ b/cdk/extra/zstd/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ # ################################################################
+ 
+ PROJECT(zstd)
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.9)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.15)
+ 
+ include(../setup.cmake)
+ include(platform)
+--- a/cdk/protocol/mysqlx/tests/CMakeLists.txt
++++ b/cdk/protocol/mysqlx/tests/CMakeLists.txt
+@@ -26,7 +26,7 @@
+ # along with this program; if not, write to the Free Software Foundation, Inc.,
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+-cmake_minimum_required (VERSION 3.8)
++cmake_minimum_required (VERSION 3.15)
+ 
+ if (WITH_TESTS)
+ 
+--- a/jdbc/CMakeLists.txt
++++ b/jdbc/CMakeLists.txt
+@@ -28,7 +28,7 @@
+ 
+ 
+ PROJECT(MYSQLCPPCONN)
+-cmake_minimum_required(VERSION 3.8)
++cmake_minimum_required(VERSION 3.15)
+ 
+ if(POLICY CMP0003)
+   cmake_policy(SET CMP0003 NEW)
+--- a/jdbc/link_test/CMakeLists.txt
++++ b/jdbc/link_test/CMakeLists.txt
+@@ -27,7 +27,7 @@
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.15)
+ cmake_policy(SET CMP0022 NEW)
+ 
+ #set_property(GLOBAL PROPERTY GLOBAL_DEPENDS_DEBUG_MODE ON)
+--- a/packaging/WiX/CMakeLists.txt
++++ b/packaging/WiX/CMakeLists.txt
+@@ -21,7 +21,7 @@
+ # along with this program; if not, write to the Free Software Foundation, Inc.,
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.15)
+ 
+ #
+ # Build MSI package from files installed in CMAKE_INSTALL_PREFIX location.
+--- a/testapp/CMakeLists.txt
++++ b/testapp/CMakeLists.txt
+@@ -28,7 +28,7 @@
+ 
+ 
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.15)
+ PROJECT(MySQL_CONCPP_TEST)
+ 
+ #
+--- a/testing/sub_project_test/CMakeLists.txt
++++ b/testing/sub_project_test/CMakeLists.txt
+@@ -27,7 +27,7 @@
+ # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+ 
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.15)
+ 
+ #
+ # This is test cmake project that uses Connector/C++ as a subproject,

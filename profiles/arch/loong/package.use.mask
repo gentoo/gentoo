@@ -1,6 +1,31 @@
 # Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-04)
+# media-libs/libemf is not keyworded here
+app-office/dia wmf
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-12)
+# These BLAS/LAPACK providers are keyworded here.
+sci-libs/flexiblas -openblas
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-09-05)
+# dev-python/sphinx-tabs is not keyworded.
+dev-python/anyio doc
+
+# Mike Gilbert <floppym@gentoo.org> (2025-06-18)
+# media-libs/libsdl3 is missing keywords.
+>=net-misc/freerdp-3.16.0 sdl
+
+# WANG Xuerui <xen0n@gentoo.org> (2025-02-28)
+# Upstream only supports the 64-bit UEFI configuration for loong.
+sys-apps/memtest86+ bios32 bios64 uefi32 iso32
+
+# WANG Xuerui <xen0n@gentoo.org> (2025-05-29)
+# dist-server pulls in the libmount crate which is unmaintained and depends
+# on outdated nix that does not support loong
+dev-util/sccache dist-server
+
 # NRK <nrk@disroot.org> (2025-04-07)
 # media-libs/libyuv is not keyworded
 media-libs/imlib2 y4m
@@ -30,10 +55,6 @@ media-libs/zxing-cpp experimental
 # tests require qtwebengine which is unavailable
 dev-python/qtconsole test
 dev-python/qtpy test
-
-# WANG Xuerui <xen0n@gentoo.org> (2025-01-12)
-# Vulkan works on loong.
-media-video/mpv -vulkan
 
 # Sam James <sam@gentoo.org> (2025-01-10)
 # dev-lang/ada-bootstrap exists here
@@ -230,10 +251,6 @@ sys-cluster/knem modules
 >=sys-apps/systemd-utils-254 -boot -ukify
 sys-kernel/installkernel -systemd-boot -ukify -uki
 
-# WANG Xuerui <xen0n@gentoo.org> (2023-04-16)
-# dev-python/pyopengl fails tests
-dev-python/sympy opengl
-
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-06)
 # dev-cpp/glog fails tests, needs checking
 media-libs/opencv glog contribsfm
@@ -260,7 +277,7 @@ sci-libs/spqr tbb
 dev-cpp/eigen test
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
-# app-misc/tracker fails tests on loong.
+# app-misc/tinysparql fails tests on loong.
 app-cdr/brasero tracker
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-12-05)
@@ -322,6 +339,7 @@ media-plugins/gst-plugins-meta libvisual
 # Profile: https://reviews.llvm.org/D154405 (LLVM 17 since 20230706)
 # XRay: https://reviews.llvm.org/D140727 (LLVM 17 since 20230714)
 # libFuzzer: https://reviews.llvm.org/D140601 (LLVM 17 since 20230718)
+# ORC: 79231a86846b7dff09497fc58ea1e82e892052bd (21 since 2025-01-21)
 >=llvm-runtimes/compiler-rt-sanitizers-15 -asan
 >=llvm-runtimes/compiler-rt-sanitizers-16 -lsan -safestack -scudo -tsan -ubsan
 >=llvm-runtimes/compiler-rt-sanitizers-17.0.0_pre20230630 -msan
@@ -329,6 +347,7 @@ media-plugins/gst-plugins-meta libvisual
 >=llvm-runtimes/compiler-rt-sanitizers-17.0.0_pre20230717 -profile -xray
 >llvm-runtimes/compiler-rt-sanitizers-17.0.0_pre20230717 -libfuzzer
 >=llvm-runtimes/compiler-rt-sanitizers-19 -cfi
+>=llvm-runtimes/compiler-rt-sanitizers-21 -orc
 
 # WANG Xuerui <xen0n@gentoo.org> (2022-07-08)
 # virtual/{jdk,jre} is not available on loong yet.

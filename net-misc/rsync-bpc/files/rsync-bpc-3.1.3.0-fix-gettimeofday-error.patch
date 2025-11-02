@@ -1,14 +1,30 @@
---- rsync-bpc-3.1.3.0/configure.ac.old	2025-02-21 20:05:47.000000000 -0600
-+++ rsync-bpc-3.1.3.0/configure.ac	2025-02-21 20:02:27.000000000 -0600
-@@ -852,7 +852,9 @@
- 
- AC_CACHE_CHECK([if gettimeofday takes tz argument],rsync_cv_HAVE_GETTIMEOFDAY_TZ,[
+From 7ea8fe71a2e2f0ed4013cb9dcdea046c846e3c14 Mon Sep 17 00:00:00 2001
+From: Andreas Hasenack <andreas.hasenack@canonical.com>
+Date: Wed, 17 Apr 2024 20:49:13 -0300
+Subject: [PATCH] configure.ac: fix gettimeofday() args detection
+
+The configure check for gettimeofday() was failing not because of the
+arguments, but because exit() was undeclared.
+
+conftest.c: In function 'main':
+conftest.c:177:20: error: implicit declaration of function 'exit' [-Werror=implicit-function-declaration]
+  177 | struct timeval tv; exit(gettimeofday(&tv, NULL));
+      | ^~~~
+conftest.c:174:1: note: include '<stdlib.h>' or provide a declaration of 'exit'
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index cc685cb..b240cbe 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1148,6 +1148,7 @@ AC_CACHE_CHECK([if gettimeofday takes tz argument],rsync_cv_HAVE_GETTIMEOFDAY_TZ
  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <sys/time.h>
--#include <unistd.h>]], [[struct timeval tv; exit(gettimeofday(&tv, NULL));]])],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=yes],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=no])])
-+#ifdef HAVE_UNISTD_H
-+#include <unistd.h>
-+#endif]], [[struct timeval tv; return gettimeofday(&tv, NULL);]])],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=yes],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=no])])
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
++#include <stdlib.h>
+ #endif]], [[struct timeval tv; return gettimeofday(&tv, NULL);]])],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=yes],[rsync_cv_HAVE_GETTIMEOFDAY_TZ=no])])
  if test x"$rsync_cv_HAVE_GETTIMEOFDAY_TZ" != x"no"; then
      AC_DEFINE(HAVE_GETTIMEOFDAY_TZ, 1, [Define to 1 if gettimeofday() takes a time-zone arg])
- fi
 

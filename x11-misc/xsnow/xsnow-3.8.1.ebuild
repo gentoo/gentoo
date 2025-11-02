@@ -11,7 +11,7 @@ SRC_URI="https://www.ratrabbit.nl/downloads/xsnow/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ppc ppc64 sparc ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ppc64 ~sparc ~x86"
 
 IUSE="test"
 RESTRICT="!test? ( test )"

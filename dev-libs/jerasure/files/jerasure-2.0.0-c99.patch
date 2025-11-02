@@ -1,0 +1,327 @@
+https://bugs.gentoo.org/871453
+https://bugs.gentoo.org/955579
+--- a/Examples/cauchy_01.c
++++ b/Examples/cauchy_01.c
+@@ -50,10 +50,11 @@
+ #include <string.h>
+ #include "jerasure.h"
+ #include "reed_sol.h"
++#include "cauchy.h"
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: cauchy_01 n w - Converts the value n to a bitmatrix using GF(2^w).\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/cauchy_02.c
++++ b/Examples/cauchy_02.c
+@@ -54,7 +54,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: cauchy_02 k m w seed - CRS coding example using Bloemer's original matrix.\n");
+   fprintf(stderr, "       \n");
+@@ -84,7 +84,7 @@ usage(char *s)
+   exit(1);
+ }
+ 
+-static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
++static void print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
+ {
+   int i, j, x;
+   unsigned char *up;
+--- a/Examples/cauchy_03.c
++++ b/Examples/cauchy_03.c
+@@ -54,7 +54,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: cauchy_03 k m w seed - CRS coding example improving the matrix.\n");
+   fprintf(stderr, "       \n");
+@@ -88,7 +88,7 @@ usage(char *s)
+   exit(1);
+ }
+ 
+-static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
++static void print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
+ {
+   int i, j, x;
+   unsigned char *up;
+--- a/Examples/cauchy_04.c
++++ b/Examples/cauchy_04.c
+@@ -54,7 +54,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: cauchy_04 k m w seed - CRS coding example improving the matrix.\n");
+   fprintf(stderr, "       \n");
+@@ -85,7 +85,7 @@ usage(char *s)
+   exit(1);
+ }
+ 
+-static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
++static void print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
+ {
+   int i, j, x;
+   unsigned char *up;
+--- a/Examples/decoder.c
++++ b/Examples/decoder.c
+@@ -65,6 +65,7 @@ same arguments, and encoder.c does error check.
+ #include <sys/time.h>
+ #include <sys/stat.h>
+ #include <signal.h>
++#include <unistd.h>
+ #include "jerasure.h"
+ #include "reed_sol.h"
+ #include "galois.h"
+--- a/Examples/encoder.c
++++ b/Examples/encoder.c
+@@ -63,6 +63,7 @@ is the file name with "_k#" or "_m#" and then the extension.
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <signal.h>
++#include <unistd.h>
+ #include <gf_rand.h>
+ #include "jerasure.h"
+ #include "reed_sol.h"
+--- a/Examples/jerasure_01.c
++++ b/Examples/jerasure_01.c
+@@ -50,7 +50,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_01 r c w - creates and prints out a matrix in GF(2^w).\n\n");
+   fprintf(stderr, "       Element i,j is equal to 2^(i*c+j)\n");
+--- a/Examples/jerasure_02.c
++++ b/Examples/jerasure_02.c
+@@ -50,7 +50,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_02 r c w - Converts the matrix of jerasure_01 to a bit matrix.\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/jerasure_03.c
++++ b/Examples/jerasure_03.c
+@@ -51,7 +51,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_03 k w - Creates a kxk Cauchy matrix in GF(2^w). \n\n");
+   fprintf(stderr, "       k must be < 2^w.  Element i,j is 1/(i+(2^w-j-1)).  (If that is\n");
+--- a/Examples/jerasure_04.c
++++ b/Examples/jerasure_04.c
+@@ -51,7 +51,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_04 k w - Performs the analogous bit-matrix operations to jerasure_03.\n\n");
+   fprintf(stderr, "       It converts the matrix to a kw*kw bit matrix and does the same operations.\n");
+--- a/Examples/jerasure_05.c
++++ b/Examples/jerasure_05.c
+@@ -53,7 +53,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_05 k m w size seed - Does a simple Reed-Solomon coding example in GF(2^w).\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/jerasure_06.c
++++ b/Examples/jerasure_06.c
+@@ -53,7 +53,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_06 k m w packetsize seed\n");
+   fprintf(stderr, "Does a simple Cauchy Reed-Solomon coding example in GF(2^w).\n");
+@@ -72,7 +72,7 @@ usage(char *s)
+   exit(1);
+ }
+ 
+-static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
++static void print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
+ {
+   int i, j, x;
+   unsigned char *up;
+--- a/Examples/jerasure_07.c
++++ b/Examples/jerasure_07.c
+@@ -53,7 +53,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_07 k m w seed - Scheduled Cauchy Reed-Solomon coding example in GF(2^w).\n");
+   fprintf(stderr, "       \n");
+@@ -72,7 +72,7 @@ usage(char *s)
+   exit(1);
+ }
+ 
+-static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
++static void print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
+ {
+   int i, j, x;
+   unsigned char *up;
+--- a/Examples/jerasure_08.c
++++ b/Examples/jerasure_08.c
+@@ -53,7 +53,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: jerasure_08 k w seed - Example schedule cache usage with RAID-6\n");
+   fprintf(stderr, "       \n");
+@@ -75,7 +75,7 @@ usage(char *s)
+   exit(1);
+ }
+ 
+-static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
++static void print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
+ {
+   int i, j, x;
+   unsigned char *up;
+--- a/Examples/liberation_01.c
++++ b/Examples/liberation_01.c
+@@ -54,7 +54,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: liberation_01 k w seed - Liberation RAID-6 coding/decoding example in GF(2^w).\n");
+   fprintf(stderr, "       \n");
+@@ -73,7 +73,7 @@ usage(char *s)
+   exit(1);
+ }
+ 
+-static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
++static void print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)
+ {
+   int i, j, x;
+   unsigned char *up;
+--- a/Examples/reed_sol_01.c
++++ b/Examples/reed_sol_01.c
+@@ -54,7 +54,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: reed_sol_01 k m w seed - Does a simple Reed-Solomon coding example in GF(2^w).\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/reed_sol_02.c
++++ b/Examples/reed_sol_02.c
+@@ -52,7 +52,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: reed_sol_02 k m w - Vandermonde matrices in GF(2^w).\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/reed_sol_03.c
++++ b/Examples/reed_sol_03.c
+@@ -53,7 +53,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: reed_sol_03 k w seed - Does a simple RAID-6 coding example in GF(2^w).\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/reed_sol_04.c
++++ b/Examples/reed_sol_04.c
+@@ -54,7 +54,7 @@
+ 
+ #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: reed_sol_04 w seed - Shows reed_sol_galois_wXX_region_multby_2\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/reed_sol_test_gf.c
++++ b/Examples/reed_sol_test_gf.c
+@@ -49,6 +49,7 @@
+ #include <string.h>
+ #include <gf_complete.h>
+ #include <gf_method.h>
++#include <gf_rand.h>
+ #include <stdint.h>
+ #include "jerasure.h"
+ #include "reed_sol.h"
+@@ -68,7 +69,7 @@ static void free16(void *ptr) {
+ 
+ #define talloc(type, num) (type *) malloc16(sizeof(type)*(num))
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: reed_sol_test_gf k m w seed (additional GF args) - Tests Reed-Solomon in GF(2^w).\n");
+   fprintf(stderr, "       \n");
+--- a/Examples/reed_sol_time_gf.c
++++ b/Examples/reed_sol_time_gf.c
+@@ -51,6 +51,7 @@
+ #include <gf_rand.h>
+ #include <gf_method.h>
+ #include <stdint.h>
++#include <sys/time.h>
+ #include "jerasure.h"
+ #include "reed_sol.h"
+ 
+@@ -87,7 +88,7 @@ timer_split (const double *t)
+     return (cur_t - *t);
+ }
+ 
+-usage(char *s)
++void usage(char *s)
+ {
+   fprintf(stderr, "usage: reed_sol_time_gf k m w seed iterations bufsize (additional GF args) - Test and time Reed-Solomon in a particular GF(2^w).\n");
+   fprintf(stderr, "       \n");
+-- 
+2.50.1
+
+--- a/Examples/encoder.c
++++ b/Examples/encoder.c
+@@ -621,6 +621,7 @@ int is_prime(int w) {
+ 			else { return 0; }
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ /* Handles ctrl-\ event */

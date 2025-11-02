@@ -18,7 +18,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
-GTEST_VER=1.14.0
+GTEST_VER=1.16.0
 SRC_URI+=" test? ( https://github.com/google/googletest/archive/refs/tags/v${GTEST_VER}.tar.gz -> gtest-${GTEST_VER}.tar.gz )"
 
 LICENSE="Apache-2.0"

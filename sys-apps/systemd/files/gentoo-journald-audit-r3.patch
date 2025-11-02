@@ -1,0 +1,51 @@
+From 0f16422e52ef793407d1cbef0c38eff29d6e251c Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 17 Sep 2025 15:40:57 -0400
+Subject: [PATCH] journald: do not change the kernel audit setting by default
+
+Bug: https://bugs.gentoo.org/736910
+---
+ man/journald.conf.xml         | 2 +-
+ src/journal/journald-config.c | 2 +-
+ src/journal/journald.conf     | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/man/journald.conf.xml b/man/journald.conf.xml
+index 1d615b110d..4676d674a2 100644
+--- a/man/journald.conf.xml
++++ b/man/journald.conf.xml
+@@ -483,7 +483,7 @@
+         turn it off. When <literal>keep</literal> it will neither enable nor disable it, leaving the previous
+         state unchanged. This means if another tool turns on auditing even if
+         <command>systemd-journald</command> left it off, it will still collect the generated messages.
+-        Defaults to yes in the default journal namespace, and <literal>keep</literal> otherwise.</para>
++        Defaults to <literal>keep</literal>.</para>
+ 
+         <!-- Explicit assignment of an empty string is equivalent to 'keep', for backward compatibility. -->
+ 
+diff --git a/src/journal/journald-config.c b/src/journal/journald-config.c
+index 8cffec880b..ea3bb34a76 100644
+--- a/src/journal/journald-config.c
++++ b/src/journal/journald-config.c
+@@ -123,7 +123,7 @@ void manager_merge_configs(Manager *m) {
+         MERGE_NON_NEGATIVE(read_kmsg, !m->namespace);
+         /* By default, kernel auditing is enabled by the main namespace instance, and not controlled by
+          * non-default namespace instances. */
+-        MERGE_NON_NEGATIVE(set_audit, m->namespace ? AUDIT_KEEP : AUDIT_YES);
++        MERGE_NON_NEGATIVE(set_audit, AUDIT_KEEP);
+         MERGE_NON_ZERO(sync_interval_usec, DEFAULT_SYNC_INTERVAL_USEC);
+ 
+         /* TODO: also merge them when comdline or credentials support to configure them. */
+diff --git a/src/journal/journald.conf b/src/journal/journald.conf
+index 9a12ca7657..3be3ed7327 100644
+--- a/src/journal/journald.conf
++++ b/src/journal/journald.conf
+@@ -47,4 +47,4 @@
+ #MaxLevelSocket=debug
+ #LineMax=48K
+ #ReadKMsg=yes
+-#Audit=yes
++#Audit=keep
+-- 
+2.51.0
+

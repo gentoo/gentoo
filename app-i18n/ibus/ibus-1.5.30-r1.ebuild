@@ -19,7 +19,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="X appindicator +emoji gtk2 +gtk3 +gtk4 +gui +introspection libnotify nls +python systemd test +unicode vala wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -51,7 +51,7 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/libXi
 	)
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	libnotify? ( x11-libs/libnotify )
 	nls? ( virtual/libintl )
 	python? (

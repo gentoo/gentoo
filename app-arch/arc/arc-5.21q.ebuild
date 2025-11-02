@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Create & extract files from DOS .ARC files"
 HOMEPAGE="https://arc.sourceforge.net"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ani6al/${PN}/archive/refs/tags/${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.21m-darwin.patch
@@ -30,7 +30,11 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" OPT="${LDFLAGS}"
+	# bug #940242
+	filter-lto
+
+	# bug #944136 for gnu17
+	emake CC="$(tc-getCC) -std=gnu17" OPT="${LDFLAGS}"
 }
 
 src_install() {

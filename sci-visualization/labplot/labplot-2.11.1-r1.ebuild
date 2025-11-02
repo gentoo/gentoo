@@ -76,9 +76,15 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}/${P}-ods-buildfix.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-ods-buildfix.patch"
+	"${FILESDIR}/${P}-qtads-cmake-minreqver-3.16.patch" # bug #965103
+)
 
 src_prepare() {
+	# bug 958185
+	rm -r lib/example src/3rdparty/kdmactouchbar || die
+
 	ecm_src_prepare
 
 	sed -e "/^ *find_package.*QT NAMES/s/Qt5 //" \

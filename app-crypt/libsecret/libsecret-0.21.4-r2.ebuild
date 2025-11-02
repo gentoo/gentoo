@@ -1,18 +1,18 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit bash-completion-r1 gnome2 meson-multilib python-any-r1 vala virtualx
 
 DESCRIPTION="GObject library for accessing the freedesktop.org Secret Service API"
-HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
+HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libsecret"
 
 LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"
 
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 IUSE="+crypt +gcrypt gnutls gtk-doc +introspection pam test test-rust tpm +vala"
 
 RESTRICT="!test? ( test )"
@@ -28,7 +28,7 @@ DEPEND="
 	gnutls? ( >=net-libs/gnutls-3.8.2:0=[${MULTILIB_USEDEP}] )
 	pam? ( sys-libs/pam )
 	tpm? ( >=app-crypt/tpm2-tss-3.0.3:= )
-	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 RDEPEND="${DEPEND}"
 PDEPEND="virtual/secret-service"

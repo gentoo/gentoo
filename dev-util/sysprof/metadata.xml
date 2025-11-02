@@ -5,9 +5,6 @@
     <email>gnome@gentoo.org</email>
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
-  <use>
-    <flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> to unwind the stack</flag>
-  </use>
   <longdescription lang="en">
     Sysprof is a sampling CPU profiler for Linux that profiles the entire
     system, not just a single application.

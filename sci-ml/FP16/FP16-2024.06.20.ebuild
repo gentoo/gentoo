@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 BDEPEND="test? ( dev-cpp/gtest )"
@@ -27,7 +27,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	sed -i -e "s|CXX_STANDARD 11|CXX_STANDARD 14|" CMakeLists.txt || die
+	sed -i -e "s|CXX_STANDARD 11|CXX_STANDARD 17|" CMakeLists.txt || die
 	cmake_src_prepare
 }
 

@@ -6,7 +6,7 @@ EAPI=8
 PHP_EXT_INI="yes"
 PHP_EXT_NAME="apcu"
 PHP_EXT_ZENDEXT="no"
-USE_PHP="php8-1 php8-2 php8-3 php8-4"
+USE_PHP="php8-2 php8-3 php8-4"
 
 inherit php-ext-pecl-r3
 

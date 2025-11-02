@@ -1,15 +1,15 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="A filesystem backup utility based on rsync"
-HOMEPAGE="https://www.rsnapshot.org"
-SRC_URI="https://www.rsnapshot.org/downloads/${P}.tar.gz"
+HOMEPAGE="https://rsnapshot.org/"
+SRC_URI="https://rsnapshot.org/downloads/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-lang/perl-5.8.2

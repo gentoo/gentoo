@@ -9,14 +9,14 @@ MY_P=${MY_PF}.pl01
 inherit autotools
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
-HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisofs"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libisofs https://dev.lovelyhq.com/libburnia/libisofs"
 SRC_URI="https://files.libburnia-project.org/releases/${MY_P}.tar.gz"
 
 S="${WORKDIR}/${MY_PF}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="acl debug static-libs verbose-debug xattr zlib"
 
 BDEPEND="

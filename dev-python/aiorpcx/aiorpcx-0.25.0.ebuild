@@ -26,15 +26,20 @@ KEYWORDS="amd64 ~arm arm64 x86"
 
 BDEPEND="
 	test? (
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 		dev-python/uvloop[${PYTHON_USEDEP}]
 		>=dev-python/websockets-0.14[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-asyncio )
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
 	# require Internet
 	tests/test_socks.py::TestSOCKSProxy::test_create_connection_resolve_good
+)
+
+PATCHES=(
+	# https://github.com/kyuupichan/aiorpcX/commit/b8ce32889c45c98b44c4e247ec0b0ae206e9ee91
+	"${FILESDIR}/${P}-pytest-asyncio-1.patch"
 )

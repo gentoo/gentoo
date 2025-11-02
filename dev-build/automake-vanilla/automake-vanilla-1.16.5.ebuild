@@ -100,6 +100,9 @@ src_test() {
 src_install() {
 	default
 
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
+
 	#rm "${ED}"/usr/share/aclocal/README || die
 	#rmdir "${ED}"/usr/share/aclocal || die
 	rm \

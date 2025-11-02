@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<use>
+		<flag name="blis">Support <pkg>sci-libs/blis</pkg> provider</flag>
+		<flag name="index64">Build a separate ILP64 library in addition to LP64</flag>
+		<flag name="mkl">Support <pkg>sci-libs/mkl</pkg> provider</flag>
+		<flag name="openblas">Support <pkg>sci-libs/openblas</pkg> provider</flag>
+		<flag name="system-blas">
+			Install symlinks to use FlexiBLAS as the system BLAS / LAPACK
+			provider.
+		</flag>
+		<flag name="tbb">
+			Support <pkg>sci-libs/mkl</pkg> with <pkg>dev-cpp/tbb</pkg>
+			threading.
+		</flag>
+	</use>
+</pkgmetadata>

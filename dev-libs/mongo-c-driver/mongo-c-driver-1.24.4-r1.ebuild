@@ -13,7 +13,7 @@ SRC_URI="https://github.com/mongodb/mongo-c-driver/releases/download/${PV}/${P}.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~hppa ~riscv x86"
+KEYWORDS="~alpha amd64 arm64 ~hppa ~riscv x86"
 IUSE="debug examples icu sasl ssl static-libs test +test-full"
 REQUIRED_USE="test? ( static-libs )"
 
@@ -64,6 +64,9 @@ src_prepare() {
 	sed -i '/message (STATUS "disabling test-libmongoc since using system libbson")/{d}' CMakeLists.txt || die
 	sed -i '/SET (ENABLE_TESTS OFF)/{d}' CMakeLists.txt || die
 	sed -i 's#<bson/bson-private.h>#"bson/bson-private.h"#' src/libbson/tests/test-bson.c || die
+
+	# bug 953521
+	sed -i 's/message (FATAL_ERROR "System libbson built without static library target")/message (STATUS "System libbson built without static library target")/' CMakeLists.txt || die
 }
 
 src_configure() {

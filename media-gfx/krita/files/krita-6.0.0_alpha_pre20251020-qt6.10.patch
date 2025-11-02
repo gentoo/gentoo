@@ -1,0 +1,131 @@
+Source: https://invent.kde.org/graphics/krita/-/merge_requests/2386
+
+From c2bcea11d461729c6c156d43452d289d895d200b Mon Sep 17 00:00:00 2001
+From: Joshua Goins <josh@redstrate.com>
+Date: Sat, 11 Oct 2025 22:10:29 -0400
+Subject: [PATCH 1/2] Manually define Qt6Gui_PRIVATE_INCLUDE_DIRS CMake
+ variable
+
+Previously Krita was dependent on an implementation detail of Qt's CMake
+module, which has a history of breaking. For reference, Krita no longer
+builds on Qt dev because they shuffled things around again!
+
+Most notably, the variable Krita used isn't available anymore - so we
+need to manually re-create it so the other parts of the CMakeLists
+will work. The more correct and reliable solution would be to use the
+Qt6Private target itself, but Krita needs to selectively use the private
+headers for compilation speed reasons, so I decided to add a workaround
+for now.
+---
+ CMakeLists.txt | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b0f27a21ce8..c822d86b62e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -543,12 +543,33 @@ if (QT_MAJOR_VERSION STREQUAL "6")
+         REQUIRED COMPONENTS
+         ColorScheme
+     )
++
++    # Qt 6.10 has split this into it's own CMake module, it's no longer included with Gui
++    if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
++        find_package(Qt6GuiPrivate ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++        get_target_property(Qt6Gui_PRIVATE_INCLUDE_DIRS Qt6::GuiPrivate INTERFACE_INCLUDE_DIRECTORIES)
++
++        # QtGui depends on private headers form QtCore as well
++        find_package(Qt6CorePrivate ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++        get_target_property(Qt6Core_PRIVATE_INCLUDE_DIRS Qt6::CorePrivate INTERFACE_INCLUDE_DIRECTORIES)
++
++        # Currently we depend on the Qt6Gui_PRIVATE_INCLUDE_DIRS variable to selectively include
++        # the needed headers, but it will fail to compile in 6.10 since the private headers exist
++        # in separate directories. So we'll just shove them into the variable we expect for now.
++        list(APPEND Qt6Gui_PRIVATE_INCLUDE_DIRS ${Qt6Core_PRIVATE_INCLUDE_DIRS})
++    endif()
+ endif()
+ 
+ set(HAVE_WAYLAND FALSE)
+ if (TARGET Qt::WaylandClient)
+     message(STATUS "Found Qt::WaylandClient, enabling kritawayland platform")
+     set(HAVE_WAYLAND TRUE)
++
++    # Qt 6.10 has split the private module, see above for a better explanation
++    if (Qt6Gui_VERSION VERSION_GREATER_EQUAL "6.10.0")
++        find_package(Qt6WaylandClientPrivate ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
++        get_target_property(Qt6WaylandClient_PRIVATE_INCLUDE_DIRS Qt6::WaylandClientPrivate INTERFACE_INCLUDE_DIRECTORIES)
++    endif()
+ endif()
+ 
+ option(KRITA_USE_SURFACE_COLOR_MANAGEMENT_API "Use per-surface color management API (e.g. when using Wayland)" ${HAVE_WAYLAND})
+-- 
+GitLab
+
+
+From 64a665a1917657c8b0ad5238ccd0539192111bad Mon Sep 17 00:00:00 2001
+From: Joshua Goins <josh@redstrate.com>
+Date: Sat, 11 Oct 2025 22:10:41 -0400
+Subject: [PATCH 2/2] Add missing QElapsedTimer includes in tests
+
+Some upstream header that previously included QElapsedTimer no longer
+does in Qt 6.10, so I had to add these to get the full build to
+complete.
+---
+ benchmarks/KisAnimationRenderingBenchmark.cpp         | 1 +
+ benchmarks/kis_painter_benchmark.cpp                  | 1 +
+ libs/image/tests/KisOverlayPaintDeviceWrapperTest.cpp | 2 ++
+ sdk/tests/stroke_testing_utils.cpp                    | 1 +
+ 4 files changed, 5 insertions(+)
+
+diff --git a/benchmarks/KisAnimationRenderingBenchmark.cpp b/benchmarks/KisAnimationRenderingBenchmark.cpp
+index 808561dac07..bf21a736730 100644
+--- a/benchmarks/KisAnimationRenderingBenchmark.cpp
++++ b/benchmarks/KisAnimationRenderingBenchmark.cpp
+@@ -6,6 +6,7 @@
+ 
+ #include "KisAnimationRenderingBenchmark.h"
+ 
++#include <QElapsedTimer>
+ #include <QThread>
+ #include <simpletest.h>
+ 
+diff --git a/benchmarks/kis_painter_benchmark.cpp b/benchmarks/kis_painter_benchmark.cpp
+index b1a71bbfb29..ebc78092180 100644
+--- a/benchmarks/kis_painter_benchmark.cpp
++++ b/benchmarks/kis_painter_benchmark.cpp
+@@ -16,6 +16,7 @@ inline double drand48()
+ #include <simpletest.h>
+ 
+ #include <QtMath>
++#include <QElapsedTimer>
+ #include <QImage>
+ #include <kis_debug.h>
+ 
+diff --git a/libs/image/tests/KisOverlayPaintDeviceWrapperTest.cpp b/libs/image/tests/KisOverlayPaintDeviceWrapperTest.cpp
+index 33795764645..e91cc7197ea 100644
+--- a/libs/image/tests/KisOverlayPaintDeviceWrapperTest.cpp
++++ b/libs/image/tests/KisOverlayPaintDeviceWrapperTest.cpp
+@@ -11,6 +11,8 @@
+ #include <kis_paint_device.h>
+ #include "kistest.h"
+ 
++#include <QElapsedTimer>
++
+ #include <KoColor.h>
+ 
+ #include <kis_paint_device_debug_utils.h>
+diff --git a/sdk/tests/stroke_testing_utils.cpp b/sdk/tests/stroke_testing_utils.cpp
+index de71601ff46..b037e218293 100644
+--- a/sdk/tests/stroke_testing_utils.cpp
++++ b/sdk/tests/stroke_testing_utils.cpp
+@@ -9,6 +9,7 @@
+ #include <simpletest.h>
+ 
+ #include <QDir>
++#include <QElapsedTimer>
+ #include <KoColor.h>
+ #include <KoColorSpace.h>
+ #include <KoColorSpaceRegistry.h>
+-- 
+GitLab
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,11 +12,12 @@ SRC_URI="https://github.com/jiixyj/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? (
 		app-arch/unzip
 		media-libs/libsndfile[${MULTILIB_USEDEP}]
@@ -25,6 +26,7 @@ DEPEND="
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DENABLE_INTERNAL_QUEUE_H=OFF
 		-DENABLE_TESTS=$(usex test)
 	)
 	cmake_src_configure

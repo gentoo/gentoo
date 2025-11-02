@@ -1,0 +1,80 @@
+https://github.com/MariaDB/galera/pull/46
+
+From f5d53991e5c4f31d63c8d97e8d881d87974ac567 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Thu, 18 Sep 2025 12:35:03 +0000
+Subject: [PATCH 1/2] gu_alloc.cpp: fix build error with musl libc
+
+rename local constant to avoid collision with PAGE_SIZE macro
+defined in musl's <limits.h>. Otherwise compilation fails:
+
+galerautils/src/gu_alloc.cpp:32:37: error: expected unqualified-id
+   32 |     static page_size_type const PAGE_SIZE(gu_page_size_multiple(1 << 16));
+      |                                     ^
+
+/usr/include/limits.h:97:19: note: expanded from macro 'PAGE_SIZE'
+   97 | #define PAGE_SIZE PAGESIZE
+      |                   ^
+/usr/include/bits/limits.h:1:18: note: expanded from macro 'PAGESIZE'
+    1 | #define PAGESIZE 4096
+      |                  ^
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/galerautils/src/gu_alloc.cpp b/galerautils/src/gu_alloc.cpp
+index fe36d739..c4e1b291 100644
+--- a/galerautils/src/gu_alloc.cpp
++++ b/galerautils/src/gu_alloc.cpp
+@@ -29,10 +29,10 @@ gu::Allocator::HeapStore::my_new_page (page_size_type const size)
+     if (gu_likely(size <= left_))
+     {
+         /* to avoid too frequent allocation, make it (at least) 64K */
+-        static page_size_type const PAGE_SIZE(gu_page_size_multiple(1 << 16));
++        static page_size_type const TMP_PAGE_SIZE(gu_page_size_multiple(1 << 16));
+ 
+         page_size_type const page_size
+-            (std::min(std::max(size, PAGE_SIZE), left_));
++            (std::min(std::max(size, TMP_PAGE_SIZE), left_));
+ 
+         Page* ret = new HeapPage (page_size);
+ 
+-- 
+2.49.1
+
+
+From d530a7fdee80201ddd8323c839d214ae0c2e8be7 Mon Sep 17 00:00:00 2001
+From: "Z. Liu" <zhixu.liu@gmail.com>
+Date: Thu, 18 Sep 2025 12:42:54 +0000
+Subject: [PATCH 2/2] gu_arch.h: fix build with musl (no bits/wordsize.h)
+
+musl libc does not provide <bits/wordsize.h>, causing build to fail:
+
+galerautils/src/gu_arch.h:54:11: fatal error: 'bits/wordsize.h' file not found
+   54 | # include <bits/wordsize.h>
+      |           ^~~~~~~~~~~~~~~~~
+
+Signed-off-by: Z. Liu <zhixu.liu@gmail.com>
+
+diff --git a/galerautils/src/gu_arch.h b/galerautils/src/gu_arch.h
+index 1acc9747..7d542fd2 100644
+--- a/galerautils/src/gu_arch.h
++++ b/galerautils/src/gu_arch.h
+@@ -51,8 +51,13 @@
+ # include <stdint.h>
+ # define GU_WORDSIZE __WORDSIZE
+ #else
+-# include <bits/wordsize.h>
+-# define GU_WORDSIZE __WORDSIZE
++# if __SIZEOF_POINTER__ == 8
++#  define GU_WORDSIZE 64
++# elif __SIZEOF_POINTER__ == 4
++#  define GU_WORDSIZE 32
++# else
++#  error "Unsupported pointer size"
++# endif
+ #endif
+ 
+ #include <stdint.h>
+-- 
+2.49.1
+

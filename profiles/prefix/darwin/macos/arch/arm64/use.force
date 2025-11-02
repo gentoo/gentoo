@@ -1,8 +1,12 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Force the flag corresponding to the default ABI
 arm64-macos
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_AArch64
 
 # Instruction sets that are always available on M1
 cpu_flags_arm_v4

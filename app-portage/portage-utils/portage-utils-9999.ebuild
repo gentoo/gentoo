@@ -18,9 +18,21 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="openmp +qmanifest static"
+IUSE="+gpkg +gtree openmp +qmanifest static"
 
 RDEPEND="
+	gpkg? (
+		!static? (
+			app-crypt/gpgme:=
+			app-arch/libarchive:=
+		)
+	)
+	gtree? (
+		!static? (
+			app-crypt/gpgme:=
+			app-arch/libarchive:=[zstd]
+		)
+	)
 	openmp? ( || (
 		sys-devel/gcc:*[openmp]
 		llvm-runtimes/openmp
@@ -33,6 +45,18 @@ RDEPEND="
 		)
 	)"
 DEPEND="${RDEPEND}
+	gpkg? (
+		static? (
+			app-crypt/gpgme[static-libs]
+			app-arch/libarchive[static-libs]
+		)
+	)
+	gtree? (
+		static? (
+			app-crypt/gpgme[static-libs]
+			app-arch/libarchive[static-libs,zstd]
+		)
+	)
 	qmanifest? (
 		static? (
 			app-crypt/gpgme[static-libs]
@@ -65,6 +89,8 @@ src_configure() {
 	econf \
 		--disable-maintainer-mode \
 		--with-eprefix="${EPREFIX}" \
+		$(use_enable gpkg) \
+		$(use_enable gtree) \
 		$(use_enable qmanifest) \
 		$(use_enable openmp)
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Kenton Groombridge</name>
+		<email>concord@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tlby/netmask</remote-id>
+		<bugs-to>https://github.com/tlby/netmask/issues</bugs-to>
+	</upstream>
+	<longdescription>
+		This is a handy tool for generating terse netmasks in several common
+		formats. If you've ever maintained a firewall with more than a few rules in
+		it, you might use netmask to clean up and generalize sloppy rules left by
+		the netadmin before you. It will also convert netmasks from one format to
+		another for the day you change your firewall software.
+	</longdescription>
+</pkgmetadata>

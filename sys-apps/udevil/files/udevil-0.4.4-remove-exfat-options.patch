@@ -1,0 +1,23 @@
+diff --git a/etc/udevil.conf b/etc/udevil.conf
+index 75a4c0d..f0dd102 100644
+--- a/etc/udevil.conf
++++ b/etc/udevil.conf
+@@ -221,7 +221,7 @@ default_options_file      = nosuid, noexec, nodev, noatime, uid=$UID, gid=$GID,
+ default_options_iso9660   = nosuid, noexec, nodev, noatime, uid=$UID, gid=$GID, ro, utf8
+ default_options_udf       = nosuid, noexec, nodev, noatime, uid=$UID, gid=$GID
+ default_options_vfat      = nosuid, noexec, nodev, noatime, fmask=0133, dmask=0022, uid=$UID, gid=$GID, utf8
+-default_options_exfat     = nosuid, noexec, nodev, noatime, umask=0077, uid=$UID, gid=$GID, iocharset=utf8, namecase=0, nonempty
++default_options_exfat     = nosuid, noexec, nodev, noatime, umask=0077, uid=$UID, gid=$GID, iocharset=utf8
+ default_options_msdos     = nosuid, noexec, nodev, noatime, fmask=0133, dmask=0022, uid=$UID, gid=$GID
+ default_options_umsdos    = nosuid, noexec, nodev, noatime, fmask=0133, dmask=0022, uid=$UID, gid=$GID
+ default_options_ntfs      = nosuid, noexec, nodev, noatime, fmask=0133, uid=$UID, gid=$GID, utf8
+@@ -252,7 +252,7 @@ allowed_options_smbfs     = nosuid, noexec, nodev, ro, rw, remount, port=*, user
+ allowed_options_sshfs     = nosuid, noexec, nodev, noatime, ro, rw, uid=$UID, gid=$GID, nonempty, allow_other, idmap=user, BatchMode=yes, port=*
+ allowed_options_curlftpfs = nosuid, noexec, nodev, noatime, ro, rw, uid=$UID, gid=$GID, nonempty, allow_other, user=*
+ allowed_options_ftpfs     = nosuid, noexec, nodev, noatime, ro, rw, port=*, user=*, pass=*, root=*, uid=$UID, gid=$GID
+-allowed_options_exfat     = nosuid, noexec, nodev, noatime, fmask=0133, dmask=0022, uid=$UID, gid=$GID, umask=0077, namecase=*, ro, rw, sync, flush, iocharset=*, remount, nonempty
++allowed_options_exfat     = nosuid, noexec, nodev, noatime, fmask=0133, dmask=0022, uid=$UID, gid=$GID, umask=0077, ro, rw, sync, flush, iocharset=*, remount
+ 
+ 
+ # mount_point_mode, if present and set to a non-empty value, will cause udevil
+

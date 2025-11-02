@@ -1,0 +1,14 @@
+Avoid using X11 if qmmp is built without X but qtbase has xcb feature.
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,8 +99,9 @@ set(USE_SKINNED TRUE CACHE BOOL "enable/disable standard skinned user interface"
+ set(USE_DIR_ASSOC TRUE CACHE BOOL "enable/disable inode/directory mime type association")
+ #set(APP_NAME_SUFFIX "-1")
+ 
++option(USE_XCB "Use xcb if available in QtGui" ON)
+ get_target_property(QtGui_enabled_features Qt6::Gui QT_ENABLED_PUBLIC_FEATURES)
+-if("xcb" IN_LIST QtGui_enabled_features)
++if(USE_XCB AND "xcb" IN_LIST QtGui_enabled_features)
+     pkg_search_module(X11 x11 IMPORTED_TARGET)
+     set(XCB_ENABLED YES)
+     add_definitions(-DQMMP_WS_X11)

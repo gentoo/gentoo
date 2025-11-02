@@ -5,6 +5,10 @@
 		<email>toolchain@gentoo.org</email>
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>kfm@plushkava.net</email>
+		<name>Kerin Millar</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="gentoo">proj/locale-gen</remote-id>
 		<remote-id type="github">gentoo/locale-gen</remote-id>

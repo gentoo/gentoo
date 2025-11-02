@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mtorromeo/${PN}/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="down-speed-100 hw-acceleration +eee +giga-lite multi-tx-q rss s5-keep-mac +wol-s5 use-firmware +wol"
 

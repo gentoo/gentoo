@@ -1,0 +1,30 @@
+From dab752e2d55b35c73617acc9179d2164ccf95541 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Sat, 25 Oct 2025 00:27:17 +0200
+Subject: [PATCH] naxsi_src/config: Set the correct variable to link to system
+ libinjection
+
+ngx_module_libs should be used for specifying external libraries to link
+with.
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ naxsi_src/config | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/naxsi_src/config b/naxsi_src/config
+index 0b8d438..cd27c20 100644
+--- a/config
++++ b/config
+@@ -49,7 +49,7 @@ if [ "$LIBINJECTION_FOUND" != "0" ]; then
+ else
+     echo "Using system libinjection"
+     CFLAGS="$CFLAGS $LIBINJECTION_CFLAGS"
+-    ngx_feature_libs="$LIBINJECTION_LIBS"
++    ngx_module_libs="$LIBINJECTION_LIBS"
+ fi
+ 
+ # NGINX module condfiguration.
+-- 
+2.49.1
+

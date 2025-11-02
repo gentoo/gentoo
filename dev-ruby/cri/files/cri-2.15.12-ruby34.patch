@@ -1,0 +1,23 @@
+From bd4a37491a46b0f896af4e6846a8e40e542631b3 Mon Sep 17 00:00:00 2001
+From: Denis Defreyne <git@denisdefreyne.com>
+Date: Mon, 24 Feb 2025 18:14:09 +0100
+Subject: [PATCH] Fix test on Ruby 3.4
+
+---
+ test/test_command.rb | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/test_command.rb b/test/test_command.rb
+index 581b689..60a17d7 100644
+--- a/test/test_command.rb
++++ b/test/test_command.rb
+@@ -695,7 +695,8 @@ def test_subcommand_skip_option_parsing
+         super_cmd.run(['--aaa', 'test', 'sub', '--test', 'value'])
+       end
+ 
+-      assert_equal "opts={:aaa=>\"test\"} args=--test,value\n", out
++      expected_aaa_test = { aaa: 'test' }.inspect
++      assert_equal "opts=#{expected_aaa_test} args=--test,value\n", out
+     end
+ 
+     def test_wrong_number_of_args

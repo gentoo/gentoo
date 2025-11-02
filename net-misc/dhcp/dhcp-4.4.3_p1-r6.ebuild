@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd toolchain-funcs flag-o-matic tmpfiles
+inherit dot-a systemd toolchain-funcs flag-o-matic tmpfiles
 
 MY_PV="${PV//_alpha/a}"
 MY_PV="${MY_PV//_beta/b}"
@@ -22,13 +22,9 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="MPL-2.0 BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="+client ipv6 ldap selinux +server ssl vim-syntax"
 
-BDEPEND="
-	acct-group/dhcp
-	acct-user/dhcp
-"
 DEPEND="
 	sys-libs/zlib:=
 	client? (
@@ -42,7 +38,8 @@ DEPEND="
 		ssl? ( dev-libs/openssl:= )
 	)"
 RDEPEND="
-	${BDEPEND}
+	acct-group/dhcp
+	acct-user/dhcp
 	${DEPEND}
 	selinux? ( sec-policy/selinux-dhcp )
 	vim-syntax? ( app-vim/dhcpd-syntax )
@@ -150,6 +147,8 @@ src_configure() {
 	# bug #944907
 	append-cflags -std=gnu17
 
+	lto-guarantee-fat
+
 	# bind defaults to stupid `/usr/bin/ar`
 	tc-export AR BUILD_CC
 	export ac_cv_path_AR=${AR}
@@ -219,6 +218,8 @@ src_install() {
 	default
 
 	emake -C keama DESTDIR="${D}" install
+
+	strip-lto-bytecode
 
 	dodoc README RELNOTES doc/{api+protocol,IANA-arp-parameters}
 	docinto html

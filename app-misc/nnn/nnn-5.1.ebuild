@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit bash-completion-r1 flag-o-matic toolchain-funcs xdg
+inherit flag-o-matic shell-completion toolchain-funcs xdg
 
 DESCRIPTION="The missing terminal file browser for X"
 HOMEPAGE="https://github.com/jarun/nnn"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jarun/nnn/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="8contexts colemak emoji gitstatus icons namefirst nerdfonts pcre qsort +readline restorepreview"
 
 DEPEND="sys-libs/ncurses:=
@@ -56,11 +56,9 @@ src_install() {
 
 	newbashcomp misc/auto-completion/bash/nnn-completion.bash nnn
 
-	insinto /usr/share/fish/vendor_completions.d
-	doins misc/auto-completion/fish/nnn.fish
+	dofishcomp misc/auto-completion/fish/nnn.fish
 
-	insinto /usr/share/zsh/site-functions
-	doins misc/auto-completion/zsh/_nnn
+	dozshcomp misc/auto-completion/zsh/_nnn
 
 	einstalldocs
 

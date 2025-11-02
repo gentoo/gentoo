@@ -12,7 +12,7 @@
     <flag name="freebox">Build support for viewing TV channels using Freebox</flag>
     <flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> support</flag>
     <flag name="thetvdb">Build support for thetvdb.com</flag>
-    <flag name="tracker">Build support for content discovery using the <pkg>app-misc/tracker</pkg> indexer</flag>
+    <flag name="tracker">Build support for content discovery using the <pkg>app-misc/tinysparql</pkg> indexer</flag>
     <flag name="youtube">Build support for YouTube content discovery using <pkg>dev-libs/libgdata</pkg></flag>
   </use>
   <upstream>

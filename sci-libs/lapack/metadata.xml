@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sci@gentoo.org</email>
-    <name>Gentoo Science Project</name>
-  </maintainer>
-  <longdescription lang="en">
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
 The BLAS (Basic Linear Algebra Subprograms) are high quality "building
 block" routines for performing basic vector and matrix operations. Level 1
 BLAS do vector-vector operations, Level 2 BLAS do matrix-vector operations,
@@ -21,14 +25,18 @@ linear sets of equations, eigenvector analysis, singular value
 decomposition, etc. It is a very comprehensive and reputable package
 that has found extensive use in the scientific community.
 This package installs the reference FORTRAN 77 implementation from Netlib.
-  </longdescription>
-  <use>
-    <flag name="deprecated">Also build deprecated functions</flag>
-    <flag name="lapacke">Build LAPACKE</flag>
-    <flag name="eselect-ldso">Enable runtime library switching by
-    eselect and ld.so.</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">Reference-LAPACK/lapack</remote-id>
-  </upstream>
+	</longdescription>
+	<use>
+		<flag name="deprecated">Also build deprecated functions</flag>
+		<flag name="flexiblas">
+			Rename install files, for system FlexiBLAS compatibility
+		</flag>
+		<flag name="index64">Build a separate ILP64 library in addition to LP64</flag>
+		<flag name="lapacke">Build LAPACKE</flag>
+		<flag name="eselect-ldso">Enable runtime library switching by
+		eselect and ld.so.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Reference-LAPACK/lapack</remote-id>
+	</upstream>
 </pkgmetadata>

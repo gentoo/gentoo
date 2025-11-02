@@ -1,18 +1,18 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake dot-a
 
 DESCRIPTION="a C/C++ memcached client library"
-HOMEPAGE="https://github.com/awesomized/libmemcached"
+HOMEPAGE="https://awesomized.github.io/libmemcached/ https://github.com/awesomized/libmemcached"
 SRC_URI="https://github.com/awesomized/libmemcached/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/libmemcached-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 x86"
+KEYWORDS="~alpha amd64 arm arm64 ~ppc ~ppc64 ~riscv ~s390 x86"
 IUSE="+libevent sasl test"
 RESTRICT="!test? ( test )"
 
@@ -27,6 +27,7 @@ BDEPEND="app-alternatives/yacc
 	virtual/pkgconfig"
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DBUILD_TESTING=$(usex test)
 		-DENABLE_DTRACE=OFF
@@ -44,4 +45,9 @@ src_test() {
 	)
 
 	cmake_src_test
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }

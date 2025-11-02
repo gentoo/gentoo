@@ -12,6 +12,7 @@
 		<flag name="spamassassin">Add support for <pkg>mail-filter/spamassassin</pkg></flag>
 	</use>
 	<upstream>
+		<bugs-to>https://gitlab.com/amavis/amavis/-/issues</bugs-to>
 		<remote-id type="gitlab">amavis/amavis</remote-id>
 	</upstream>
 </pkgmetadata>

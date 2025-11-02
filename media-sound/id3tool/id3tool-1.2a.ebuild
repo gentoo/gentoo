@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,4 +9,4 @@ SRC_URI="http://nekohako.xware.cx/id3tool/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~ppc ppc64 ~sparc x86"

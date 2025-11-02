@@ -273,6 +273,7 @@ PATCHES=(
 	"${FILESDIR}"/kodi-21-optional-ffmpeg-libx11.patch
 	"${FILESDIR}"/kodi-21.1-silence-libdvdread-git.patch
 	"${FILESDIR}"/kodi-21.2-pipewire-1.4.0-fix.patch
+	"${FILESDIR}"/kodi-21.2-fix-curl-8.16.patch
 )
 
 # bug #544020

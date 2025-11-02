@@ -1,0 +1,13 @@
+Raise minimum required CMake version of docopt
+for CMake-4 support.
+https://bugs.gentoo.org/957536
+https://github.com/docopt/docopt.cpp/issues/166
+
+--- a/vendor/docopt/CMakeLists.txt
++++ b/vendor/docopt/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ project(docopt.cpp VERSION 0.6.2)
+ 
+ include(GNUInstallDirs)

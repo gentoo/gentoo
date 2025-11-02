@@ -16,7 +16,7 @@ SRC_URI="https://github.com/Gnucash/gnucash/releases/download/${PV}/${P}.tar.bz2
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~riscv x86"
 IUSE="aqbanking debug doc examples +gui mysql nls ofx postgres python quotes smartcard sqlite test"
 # Tests were previously restricted because guile would try to use installed,
 # not just-built modules. See https://bugs.gnucash.org/show_bug.cgi?id=799159#c1.
@@ -90,7 +90,6 @@ DEPEND="
 	${RDEPEND}
 	>=sys-devel/gettext-0.20
 	dev-lang/perl
-	dev-perl/XML-Parser
 	dev-build/libtool
 	>=dev-cpp/gtest-1.8.0
 "

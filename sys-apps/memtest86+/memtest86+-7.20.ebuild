@@ -15,7 +15,7 @@ S=${WORKDIR}/memtest86plus-${MY_PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~loong x86"
 IUSE="bios32 bios64 +boot uefi32 uefi64 iso32 iso64"
 
 ISODEPS="
@@ -57,6 +57,17 @@ src_prepare() {
 src_compile() {
 	tc-export OBJCOPY
 	export SIZE=$(tc-getPROG SIZE size)
+
+	if use loong; then
+		# a different build directory has to be selected for loong, and
+		# there's no "BIOS" support.
+		pushd build64/la64
+			use uefi64 && emake memtest.efi
+			use iso64 && emake iso
+		popd
+		return
+	fi
+
 	pushd build32
 		use bios32 && emake memtest.bin
 		use uefi32 && emake memtest.efi
@@ -71,6 +82,11 @@ src_compile() {
 }
 
 install_memtest_images() {
+	if use loong; then
+		use uefi64 && newins build64/la64/memtest.efi memtest.efi64
+		return
+	fi
+
 	use bios32 && newins build32/memtest.bin memtest32.bios
 	use bios64 && newins build64/memtest.bin memtest64.bios
 	use uefi32 && newins build32/memtest.efi memtest.efi32
@@ -88,8 +104,12 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	install_memtest_images
-	use iso32 && newins build32/memtest.iso memtest32.iso
-	use iso64 && newins build64/memtest.iso memtest64.iso
+	if use loong; then
+		use iso64 && newins build64/la64/memtest.iso memtest64.iso
+	else
+		use iso32 && newins build32/memtest.iso memtest32.iso
+		use iso64 && newins build64/memtest.iso memtest64.iso
+	fi
 
 	if use uefi32 || use uefi64; then
 		secureboot_auto_sign --in-place

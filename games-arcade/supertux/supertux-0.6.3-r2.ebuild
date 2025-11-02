@@ -3,7 +3,7 @@
 
 EAPI=8
 
-#: ${CMAKE_MAKEFILE_GENERATOR:=emake}
+CMAKE_QA_COMPAT_SKIP=1
 inherit cmake xdg
 
 MY_PV="${PV/_rc/-rc.}"

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit edo toolchain-funcs
+inherit dot-a edo toolchain-funcs
 
 DESCRIPTION="A programming language based on R6RS"
 HOMEPAGE="https://cisco.github.io/ChezScheme/
@@ -18,7 +18,7 @@ else
 		-> ${P}.tar.gz"
 	S="${WORKDIR}/csv${PV//a}"
 
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 fi
 
 # Chez Scheme itself is Apache 2.0, but it vendors Nanopass and stex
@@ -76,6 +76,8 @@ src_configure() {
 	)
 	local machine="$(usex threads 't' '')${arch_map[${ARCH}]}le"
 
+	lto-guarantee-fat
+
 	local -a myconfargs=(
 		--machine="${machine}"
 		--libkernel
@@ -114,5 +116,6 @@ src_install() {
 	sed -e "s|TempRoot=.*|TempRoot=${ED}|g" -i ./*/Mf-* || die
 
 	emake install
+	strip-lto-bytecode
 	einstalldocs
 }

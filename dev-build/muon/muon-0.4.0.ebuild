@@ -12,6 +12,7 @@ DESCRIPTION="A meson-compatible build system"
 HOMEPAGE="https://muon.build/"
 SRC_URI="
 	https://muon.build/releases/v${PV}/${PN}-v${PV}.tar.gz
+	https://muon.build/releases/v${PV}/docs/man.tar.gz -> ${P}-man.tar.gz
 	test? (
 		 https://git.sr.ht/~lattis/meson-tests/archive/${MESON_TESTS_HASH}.tar.gz
 			-> ${MESON_TESTS_DIRNAME}.tar.gz
@@ -21,7 +22,7 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~sparc"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="+archive +curl +libpkgconf test"
 
 DEPEND="
@@ -31,8 +32,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	app-text/scdoc
-	test? ( dev-util/gdbus-codegen )
+	test? (
+		dev-util/gdbus-codegen
+		dev-util/glib-utils
+	)
 "
 RESTRICT="!test? ( test )"
 
@@ -59,10 +62,18 @@ src_configure() {
 		$(meson_feature curl libcurl)
 		$(meson_feature archive libarchive)
 		$(meson_feature libpkgconf)
-		-Ddocs=enabled
+		-Ddocs=disabled
 		-Dtracy=disabled    # not in repos
 		-Dsamurai=disabled  # patched version of samurai downloaded via wraps
 		-Dreadline=bestline # small vendored dependency
 	)
 	meson_src_configure
+}
+
+src_install() {
+	meson_install
+
+	einstalldocs
+	doman "${WORKDIR}/man/muon.1"
+	doman "${WORKDIR}/man/meson.build.5"
 }

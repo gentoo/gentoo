@@ -3,11 +3,10 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic xdg
+inherit cmake xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
-HOMEPAGE="https://keepassxc.org/
-	https://github.com/keepassxreboot/keepassxc/"
+HOMEPAGE="https://keepassxc.org"
 
 if [[ "${PV}" = *9999* ]] ; then
 	inherit git-r3
@@ -27,7 +26,8 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 fi
 
-LICENSE="LGPL-2.1 GPL-2 GPL-3"
+# COPYING order
+LICENSE="|| ( GPL-2 GPL-3 ) BSD LGPL-2.1 MIT LGPL-2 CC0-1.0 Apache-2.0 GPL-2+ BSD-2"
 SLOT="0"
 IUSE="X autotype browser doc keeshare +keyring +network +ssh-agent test yubikey"
 
@@ -37,6 +37,7 @@ REQUIRED_USE="autotype? ( X )"
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/botan:3=
+	dev-libs/zxcvbn-c
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -70,20 +71,23 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.7.10-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.7.10-tests.patch"
+	"${FILESDIR}/${PN}-2.7.10-zxcvbn.patch"
+)
 
 src_prepare() {
-	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *9999 ]] ; then
-		printf '%s' "${PV}" > .version || die
+	if ! [[ "${PV}" =~ _beta|9999 ]]; then
+		echo "${PV}" > .version || die
 	fi
+
+	# Unbundle zxcvbn, bug 958062
+	rm -r ./src/thirdparty/zxcvbn || die
 
 	cmake_src_prepare
 }
 
 src_configure() {
-	# https://github.com/keepassxreboot/keepassxc/issues/5801
-	filter-lto
-
 	local -a mycmakeargs=(
 		# Gentoo users enable ccache via e.g. FEATURES=ccache or
 		# other means. We don't want the build system to enable it for us.

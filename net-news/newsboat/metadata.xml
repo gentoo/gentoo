@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>cedk@gentoo.org</email>
+		<email>arthurzam@gentoo.org</email>
+		<name>Arthur Zamarin</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">newsboat/newsboat</remote-id>

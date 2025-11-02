@@ -1,6 +1,29 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
+# This is currently more footgun than real option. Bug #958638
+<kde-plasma/kwin-6.5.0 X
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-06-17)
+# Build system currently does not allow static libs to be optional, and
+# deleting (as we do now) leaves both the cmake export and fltk-config
+# script unaware of the change and may cause problems. Will revisit if
+# improved upstream, would rather not invent a downstream solution.
+# https://bugs.gentoo.org/940572
+# https://github.com/gentoo/gentoo/pull/42633
+x11-libs/fltk static-libs
+
+# Sam James <sam@gentoo.org> (2025-06-05)
+# app-misc/ddcutil fails to build w/o USE=X as it always tries to include
+# <X11/Xlib.h>. See bug #950320 and https://github.com/rockowitz/ddcutil/issues/504
+~app-misc/ddcutil-2.2.0 X
+
+# Sam James <sam@gentoo.org> (2025-06-03)
+# -libupb fails to build (bug #957067)
+# https://github.com/protocolbuffers/protobuf/issues/20538
+>=dev-libs/protobuf-31.1 libupb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-13)
 # Force both "old" KWallet backend (now ksecretd service via IUSE keyring)
 # and the legacy KWalletAPI (via IUSE legacy-kwallet) until a (stable)
@@ -18,17 +41,17 @@ app-emulation/qemu X
 
 # Ionen Wolkens <ionen@gentoo.org> (2025-04-21)
 # Currently fails to build without, and Valve would likely not be
-# interested in a bug. May leave forced depending on how this goes.
+# interested in a bug. Even if this gets fixed, not sure if want
+# to unforce because of this lack of upstream support outside
+# normal Steam+Proton usage with matching build options, we try
+# to only allow a configuration similar to upstream's to minimize
+# issues (but feel free to unforce at your own risks).
 app-emulation/wine-proton mingw
 
 # Sebastian Pipping <sping@gentoo.org> (2025-03-27)
 # This blocks accidental use of bundled vulnerable dev-libs/expat
 # for now (bug #952113)
 <dev-libs/xmlrpc-c-1.59.03-r2 libxml2
-
-# Joonas Niilola <juippis@gentoo.org> (2025-03-05)
-# 136.0 can't be compiled with "-rust-extensions".
-~mail-client/thunderbird-136.0 rust-extensions
 
 # Ionen Wolkens <ionen@gentoo.org> (2024-12-24)
 # ebuild currently only support luajit, spare users from having
@@ -55,6 +78,14 @@ llvm-runtimes/libcxxabi clang
 #    echo "dev-lang/rust:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 #    echo "dev-lang/rust-bin:${slot} llvm_slot_${_RUST_LLVM_MAP[${slot}]}"
 # done
+dev-lang/rust:1.91.0 llvm_slot_21
+dev-lang/rust-bin:1.91.0 llvm_slot_21
+dev-lang/rust:1.90.0 llvm_slot_20
+dev-lang/rust-bin:1.90.0 llvm_slot_20
+dev-lang/rust:1.89.0 llvm_slot_20
+dev-lang/rust-bin:1.89.0 llvm_slot_20
+dev-lang/rust:1.88.0 llvm_slot_20
+dev-lang/rust-bin:1.88.0 llvm_slot_20
 dev-lang/rust:1.87.0 llvm_slot_20
 dev-lang/rust-bin:1.87.0 llvm_slot_20
 dev-lang/rust:1.86.0 llvm_slot_19
@@ -87,8 +118,6 @@ dev-lang/rust:1.75.0 llvm_slot_17
 dev-lang/rust-bin:1.75.0 llvm_slot_17
 dev-lang/rust:1.74.1 llvm_slot_17
 dev-lang/rust-bin:1.74.1 llvm_slot_17
-dev-lang/rust:1.71.1 llvm_slot_16
-dev-lang/rust-bin:1.71.1 llvm_slot_16
 
 # Sam James <sam@gentoo.org> (2024-06-03)
 # Poor rendering performance otherwise (bug #931215).
@@ -167,6 +196,7 @@ dev-java/openjdk:8 system-bootstrap
 dev-java/openjdk:11 system-bootstrap
 dev-java/openjdk:17 system-bootstrap
 dev-java/openjdk:21 system-bootstrap
+dev-java/openjdk:25 system-bootstrap
 
 # Michał Górny <mgorny@gentoo.org> (2021-11-04)
 # Enable all LLVM targets unconditionally.  Unfortunately, disabling
@@ -185,6 +215,7 @@ dev-java/openjdk:21 system-bootstrap
 >=llvm-core/clang-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
 >=llvm-core/clang-14 llvm_targets_VE
 >=llvm-core/clang-16 llvm_targets_LoongArch
+>=llvm-core/clang-20 llvm_targets_SPIRV
 >=llvm-core/llvm-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
 >=llvm-core/llvm-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
 >=llvm-core/llvm-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
@@ -195,6 +226,73 @@ dev-java/openjdk:21 system-bootstrap
 >=llvm-core/llvm-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
 >=llvm-core/llvm-14 llvm_targets_VE
 >=llvm-core/llvm-16 llvm_targets_LoongArch
+>=llvm-core/llvm-20 llvm_targets_SPIRV
+>=llvm-core/lld-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/lld-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/lld-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/lld-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/lld-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/lld-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/lld-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/lld-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/lld-14 llvm_targets_VE
+>=llvm-core/lld-16 llvm_targets_LoongArch
+>=llvm-core/lld-20 llvm_targets_SPIRV
+>=llvm-core/lld-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/lld-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/lld-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/lld-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/lld-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/lld-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/lld-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/lld-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/lld-14 llvm_targets_VE
+>=llvm-core/lld-16 llvm_targets_LoongArch
+>=llvm-core/lld-20 llvm_targets_SPIRV
+>=llvm-core/flang-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/flang-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/flang-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/flang-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/flang-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/flang-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/flang-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/flang-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/flang-14 llvm_targets_VE
+>=llvm-core/flang-16 llvm_targets_LoongArch
+>=llvm-core/flang-20 llvm_targets_SPIRV
+>=llvm-core/lldb-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/lldb-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/lldb-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/lldb-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/lldb-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/lldb-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/lldb-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/lldb-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/lldb-14 llvm_targets_VE
+>=llvm-core/lldb-16 llvm_targets_LoongArch
+>=llvm-core/lldb-20 llvm_targets_SPIRV
+>=llvm-core/lldb-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/lldb-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/lldb-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/lldb-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/lldb-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/lldb-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/lldb-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/lldb-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/lldb-14 llvm_targets_VE
+>=llvm-core/lldb-16 llvm_targets_LoongArch
+>=llvm-core/lldb-20 llvm_targets_SPIRV
+>=llvm-core/lldb-13.0.1_rc llvm_targets_AArch64 llvm_targets_AMDGPU
+>=llvm-core/lldb-13.0.1_rc llvm_targets_ARM llvm_targets_AVR llvm_targets_BPF
+>=llvm-core/lldb-13.0.1_rc llvm_targets_Hexagon llvm_targets_Lanai
+>=llvm-core/lldb-13.0.1_rc llvm_targets_MSP430 llvm_targets_Mips
+>=llvm-core/lldb-13.0.1_rc llvm_targets_NVPTX llvm_targets_PowerPC
+>=llvm-core/lldb-13.0.1_rc llvm_targets_RISCV llvm_targets_Sparc
+>=llvm-core/lldb-13.0.1_rc llvm_targets_SystemZ llvm_targets_WebAssembly
+>=llvm-core/lldb-13.0.1_rc llvm_targets_X86 llvm_targets_XCore
+>=llvm-core/lldb-14 llvm_targets_VE
+>=llvm-core/lldb-16 llvm_targets_LoongArch
+>=llvm-core/lldb-20 llvm_targets_SPIRV
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-07-14)
 # Upstream plans to drop libcrypt.so.1/crypt.h from glibc
@@ -301,7 +399,7 @@ sys-libs/ncurses-compat tinfo
 # Mart Raudsepp <leio@gentoo.org> (2018-12-14)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
-app-misc/tracker-miners seccomp
+app-misc/localsearch seccomp
 net-libs/webkit-gtk seccomp
 
 # Lukas Schmelting <lschmelting@posteo.com> after consulting

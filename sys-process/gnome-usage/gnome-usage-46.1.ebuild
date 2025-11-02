@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-usage"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 	>=dev-libs/libgee-0.8:0.8=
@@ -18,7 +18,7 @@ RDEPEND="
 	>=gui-libs/gtk-4.11.3:4
 	>=gnome-base/libgtop-2.34.0:2=
 	>=gui-libs/libadwaita-1.5:1
-	>=app-misc/tracker-3.0.3:3[vala(+)]
+	>=app-misc/tinysparql-3.0.3:3[vala(+)]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

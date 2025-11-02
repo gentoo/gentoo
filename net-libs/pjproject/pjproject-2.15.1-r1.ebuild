@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/pjsip/pjproject https://www.pjsip.org/"
 SRC_URI="https://github.com/pjsip/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 # g729 not included due to special bcg729 handling.
 CODEC_FLAGS="g711 g722 g7221 gsm ilbc speex l16"

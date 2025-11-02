@@ -1,0 +1,11 @@
+6620406c7280a1f56b53151131350050df8d24af
+--- a/snapd-qt/meson.build
++++ b/snapd-qt/meson.build
+@@ -113,6 +113,7 @@ source_h = [
+   'Snapd/task-data.h',
+   'Snapd/user-information.h',
+   'Snapd/wrapped-object.h',
++  'Snapd/snapdqt_global.h',
+ ]
+ 
+ source_alias_h = [

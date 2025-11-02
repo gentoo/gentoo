@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit dot-a autotools
 
 DESCRIPTION="implement a crash-reporting system."
 HOMEPAGE="https://chromium.googlesource.com/breakpad/breakpad/"
@@ -28,6 +28,7 @@ REQUIRED_USE="elibc_musl? ( !tools )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2023.06.01-gentoo.patch
+	"${FILESDIR}"/${PN}-2023.06.01-reinterpret.patch
 )
 
 src_prepare() {
@@ -54,8 +55,14 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	econf \
 		--enable-system-test-libs \
 		$(use_enable tools) \
 		|| die
+}
+
+src_install() {
+	default
+	strip-lto-bytecode
 }

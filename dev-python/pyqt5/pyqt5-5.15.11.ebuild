@@ -7,8 +7,7 @@ DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=sip
 PYPI_NO_NORMALIZE=1
 PYPI_PN=PyQt5
-PYTHON_COMPAT=( python3_{10..13} )
-
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1 flag-o-matic multiprocessing pypi qmake-utils
 
 DESCRIPTION="Python bindings for the Qt framework"
@@ -21,7 +20,7 @@ KEYWORDS="amd64 arm arm64 ~loong ~ppc ppc64 ~riscv x86"
 IUSE="
 	dbus debug declarative designer examples gles2-only gui help multimedia
 	network opengl printsupport serialport speech sql +ssl svg testlib
-	webchannel websockets widgets x11extras xmlpatterns
+	websockets widgets x11extras xmlpatterns
 "
 
 # The requirements below were extracted from the qmake_QT declarations
@@ -37,7 +36,6 @@ REQUIRED_USE="
 	sql? ( widgets )
 	svg? ( gui widgets )
 	testlib? ( widgets )
-	webchannel? ( network )
 	websockets? ( network )
 	widgets? ( gui )
 	xmlpatterns? ( network )
@@ -67,7 +65,6 @@ DEPEND="
 	sql? ( >=dev-qt/qtsql-${QT_PV} )
 	svg? ( >=dev-qt/qtsvg-${QT_PV} )
 	testlib? ( >=dev-qt/qttest-${QT_PV} )
-	webchannel? ( >=dev-qt/qtwebchannel-${QT_PV} )
 	websockets? ( >=dev-qt/qtwebsockets-${QT_PV} )
 	widgets? ( >=dev-qt/qtwidgets-${QT_PV} )
 	x11extras? ( >=dev-qt/qtx11extras-${QT_PV} )
@@ -134,7 +131,6 @@ python_configure_all() {
 		$(pyqt_use_enable sql QtSql)
 		$(pyqt_use_enable svg QtSvg)
 		$(pyqt_use_enable testlib QtTest)
-		$(pyqt_use_enable webchannel QtWebChannel)
 		$(pyqt_use_enable websockets QtWebSockets)
 		$(pyqt_use_enable widgets QtWidgets)
 		$(pyqt_use_enable x11extras QtX11Extras)
@@ -146,6 +142,7 @@ python_configure_all() {
 		--disable=QtLocation
 		--disable=QtPositioning
 		--disable=QtSensors
+		--disable=QtWebChannel
 
 		$(usev debug '--debug --qml-debug --tracing')
 

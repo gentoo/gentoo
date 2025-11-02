@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="github">verisign/dnscap</remote-id>
-  </upstream>
+	<!-- maintainer-needed -->
+	<upstream>
+		<remote-id type="github">DNS-OARC/dnscap</remote-id>
+	</upstream>
+	<use>
+		<flag name="cryptopant">Enable cryptopANT plugin, implementation of crypto-PAn algorithm using <pkg>app-crypt/cryptopant</pkg> to anonymize IP addresses</flag>
+	</use>
 </pkgmetadata>

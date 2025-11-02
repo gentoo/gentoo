@@ -14,7 +14,7 @@ SRC_URI="https://github.com/namhyung/uftrace/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="capstone lua python unwind"
 
 REQUIRED_USE="
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	default
 	sed -i -e "s/ARCH/MYARCH/g" -e "/ldconfig/d" -e "/bash.completion/d" Makefile || die
+	sed -i -e '/PYTHON_LDFLAGS/{s/$(PYTHON_LDFLAGS)/$(COMMON_LDFLAGS) $(PYTHON_LDFLAGS)/g; p}' Makefile || die
 }
 
 src_configure() {

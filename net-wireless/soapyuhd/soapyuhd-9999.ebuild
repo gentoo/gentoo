@@ -26,3 +26,8 @@ RDEPEND="net-wireless/soapysdr:=
 		net-wireless/uhd:=
 		dev-libs/boost:="
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	sed -i -e "s/2.8.7/3.5/" CMakeLists.txt || die
+	cmake_src_prepare
+}

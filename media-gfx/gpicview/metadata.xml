@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">lxde</remote-id>
+		<remote-id type="github">lxde/gpicview</remote-id>
+		<remote-id type="sourceforge">lxde</remote-id><!-- old -->
 	</upstream>
 </pkgmetadata>

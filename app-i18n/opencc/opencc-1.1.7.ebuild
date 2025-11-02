@@ -1,4 +1,4 @@
-# Copyright 2010-2024 Gentoo Authors
+# Copyright 2010-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ S="${WORKDIR}/OpenCC-ver.${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0/1.1"
-KEYWORDS="amd64 arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 

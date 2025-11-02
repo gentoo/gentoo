@@ -1,0 +1,25 @@
+From f3c224a321b86647cff902d69a5463823c2fdcbd Mon Sep 17 00:00:00 2001
+From: Raghuveer <devulapalli.raghuveer@gmail.com>
+Date: Fri, 5 Sep 2025 20:56:52 -0700
+Subject: [PATCH] Remove #error and fallback to AVX2 when compiled with just
+ -mavx512f
+
+---
+ src/x86simdsort-static-incl.h | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/x86simdsort-static-incl.h b/src/x86simdsort-static-incl.h
+--- a/numpy/_core/src/npysort/x86-simd-sort/src/x86simdsort-static-incl.h
++++ b/numpy/_core/src/npysort/x86-simd-sort/src/x86simdsort-static-incl.h
+@@ -197,10 +197,7 @@ void x86simdsortStatic::partial_qsort<_Float16>(
+ }
+ #endif
+ 
+-#elif defined(__AVX512F__)
+-#error "x86simdsort requires AVX512DQ and AVX512VL to be enabled in addition to AVX512F to use AVX512"
+-
+-#elif defined(__AVX2__) && !defined(__AVX512F__)
++#elif defined(__AVX2__)
+ /* 32-bit and 64-bit dtypes vector definitions on AVX2 */
+ #include "avx2-32bit-half.hpp"
+ #include "avx2-32bit-qsort.hpp"

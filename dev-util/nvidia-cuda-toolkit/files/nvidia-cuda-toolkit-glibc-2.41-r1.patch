@@ -33,7 +33,7 @@ index d8201f9..a9b19d4 100644
   *
   * \note_accuracy_double
   */
-+#if defined(__GLIBC__) && __GLIBC__ == 2 && __GLIBC_MINOR__ >= 41
++#if defined(__GLIBC__) && (__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 41)
 +extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 sinpi(double x) noexcept (true);
 +#else
  extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 sinpi(double x);
@@ -45,7 +45,7 @@ index d8201f9..a9b19d4 100644
   *
   * \note_accuracy_single
   */
-+#if defined(__GLIBC__) && __GLIBC__ == 2 && __GLIBC_MINOR__ >= 41
++#if defined(__GLIBC__) && (__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 41)
 +extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  sinpif(float x) noexcept (true);
 +#else
  extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  sinpif(float x);
@@ -57,7 +57,7 @@ index d8201f9..a9b19d4 100644
   *
   * \note_accuracy_double
   */
-+#if defined(__GLIBC__) && __GLIBC__ == 2 && __GLIBC_MINOR__ >= 41
++#if defined(__GLIBC__) && (__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 41)
 +extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 cospi(double x) noexcept (true);
 +#else
  extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ double                 cospi(double x);
@@ -69,7 +69,7 @@ index d8201f9..a9b19d4 100644
   *
   * \note_accuracy_single
   */
-+#if defined(__GLIBC__) && __GLIBC__ == 2 && __GLIBC_MINOR__ >= 41
++#if defined(__GLIBC__) && (__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 41)
 +extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  cospif(float x) noexcept (true);
 +#else
  extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ float                  cospif(float x);

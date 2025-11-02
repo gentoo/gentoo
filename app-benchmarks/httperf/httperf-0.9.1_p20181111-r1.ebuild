@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,6 +10,8 @@ DESCRIPTION="A tool from HP for measuring web server performance"
 HOMEPAGE="https://github.com/httperf/httperf"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
+S="${WORKDIR}/${PN}-${COMMIT}"
+
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
 KEYWORDS="amd64 ~mips x86 ~amd64-linux ~x64-macos"
@@ -20,8 +22,6 @@ DEPEND="
 	dev-libs/openssl:0=
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	default

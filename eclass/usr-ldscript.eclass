@@ -1,4 +1,4 @@
-# Copyright 2019-2023 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: usr-ldscript.eclass
@@ -131,7 +131,7 @@ gen_usr_ldscript() {
 			if [[ -n ${nowrite} ]] ; then
 				chmod u-w "${ED}/${libdir}/${tlib}" || die
 			fi
-			# Now as we don't use GNU binutils and our linker doesn't
+			# Now as we don't use GNU Binutils and our linker doesn't
 			# understand linker scripts, just create a symlink.
 			pushd "${ED}/usr/${libdir}" > /dev/null
 			ln -snf "../../${libdir}/${tlib}" "${lib}"

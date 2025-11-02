@@ -1,0 +1,46 @@
+https://gitlab.gnome.org/GNOME/gcr/-/commit/d86fafecd560ca53a3bd211fdf5155fa5635e236
+
+From d86fafecd560ca53a3bd211fdf5155fa5635e236 Mon Sep 17 00:00:00 2001
+From: Niels De Graef <nielsdegraef@gmail.com>
+Date: Wed, 8 Jan 2025 22:15:53 +0100
+Subject: [PATCH] ssh-agent: Request rsa-sha2-256 in tests
+
+Newer versions of OpenSSH decline providing a SHA1 signature since it's
+deemed unsafe. Our tests were failing because it's the default for a
+sign request, unless you specify some flags to say otherwise.o
+
+Fixes: https://gitlab.gnome.org/GNOME/gcr/-/issues/128
+(cherry picked from commit 039f2ce469c2e238771815a0ebafbc8b660c2870)
+---
+ gcr/gcr-ssh-agent-test.c    | 2 +-
+ gcr/test-ssh-agent-common.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/gcr/gcr-ssh-agent-test.c b/gcr/gcr-ssh-agent-test.c
+index 6196e8f1..b23ebb3e 100644
+--- a/gcr/gcr-ssh-agent-test.c
++++ b/gcr/gcr-ssh-agent-test.c
+@@ -302,7 +302,7 @@ prepare_sign_request (EggBuffer *req)
+ 	ret = egg_buffer_add_string (req, "data");
+ 	g_assert_true (ret);
+ 
+-	ret = egg_buffer_add_uint32 (req, 0);
++	ret = egg_buffer_add_uint32 (req, GCR_SSH_FLAG_RSA_SHA2_256);
+ 	g_assert_true (ret);
+ 
+ 	ret = egg_buffer_set_uint32 (req, 0, req->len - 4);
+diff --git a/gcr/test-ssh-agent-common.c b/gcr/test-ssh-agent-common.c
+index bc17a776..f811a8e1 100644
+--- a/gcr/test-ssh-agent-common.c
++++ b/gcr/test-ssh-agent-common.c
+@@ -302,7 +302,7 @@ prepare_sign_request (EggBuffer *req)
+ 	ret = egg_buffer_add_string (req, "data");
+ 	g_assert_true (ret);
+ 
+-	ret = egg_buffer_add_uint32 (req, 0);
++	ret = egg_buffer_add_uint32 (req, GCR_SSH_FLAG_RSA_SHA2_256);
+ 	g_assert_true (ret);
+ 
+ 	ret = egg_buffer_set_uint32 (req, 0, req->len - 4);
+-- 
+GitLab

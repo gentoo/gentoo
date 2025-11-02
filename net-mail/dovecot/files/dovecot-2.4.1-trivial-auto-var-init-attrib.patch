@@ -1,0 +1,60 @@
+https://bugs.gentoo.org/959838
+https://github.com/dovecot/core/pull/248
+https://github.com/dovecot/core/commit/a60ada751a827f73c3f0d0c0059f340918e981ad
+
+From a60ada751a827f73c3f0d0c0059f340918e981ad Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Mon, 30 Jun 2025 04:51:19 +0100
+Subject: [PATCH] lib-json: drop invalid ATTR_PURE
+
+Several functions in json-types.h mutate one of their arguments (usually *size_r)
+and hence aren't eligible for __attribute__((pure)) which promises that
+the function has no side-effects.
+
+This manifests as a test failure in test-json-istream.c when building
+Dovecot with -ftrivial-auto-var-init=zero (or =pattern).
+---
+ src/lib-json/json-types.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/lib-json/json-types.h b/src/lib-json/json-types.h
+index caa27193c3c..6ce966883c7 100644
+--- a/src/lib-json/json-types.h
++++ b/src/lib-json/json-types.h
+@@ -176,7 +176,7 @@ json_value_as_str(const struct json_value *jvalue)
+ 	}
+ 	return jvalue->content.str;
+ }
+-static inline ATTR_PURE const unsigned char *
++static inline const unsigned char *
+ json_value_get_data(const struct json_value *jvalue, size_t *size_r)
+ {
+ 	switch (jvalue->content_type) {
+@@ -192,7 +192,7 @@ json_value_get_data(const struct json_value *jvalue, size_t *size_r)
+ 	i_unreached();
+ }
+ 
+-static inline ATTR_PURE int
++static inline int
+ json_value_get_stream(const struct json_value *jvalue,
+ 		       struct istream **stream_r)
+ {
+@@ -314,7 +314,7 @@ json_node_as_str(const struct json_node *jnode)
+ 	return json_value_as_str(&jnode->value);
+ }
+ 
+-static inline ATTR_PURE const unsigned char *
++static inline const unsigned char *
+ json_node_get_data(const struct json_node *jnode, size_t *size_r)
+ {
+ 	const char *literal;
+@@ -497,7 +497,7 @@ json_node_is_boolean(const struct json_node *jnode)
+ 	return FALSE;
+ }
+ 
+-static inline ATTR_PURE int
++static inline int
+ json_node_get_boolean(const struct json_node *jnode, bool *bool_r)
+ {
+ 	switch (jnode->type) {
+

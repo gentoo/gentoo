@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	S="${WORKDIR}/taskflow-${PV}"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 	S="${WORKDIR}/taskflow-${PV}"
 fi
 
@@ -25,15 +25,6 @@ RESTRICT="!test? ( test )"
 DEPEND="test? ( dev-cpp/doctest )"
 
 HTML_DOCS=( docs/. )
-
-PATCHES=(
-	"${FILESDIR}"/taskflow-9999-fix_doctest.patch
-)
-
-src_prepare() {
-	rm -r "${S}/3rd-party" || die "rm failed"
-	cmake_src_prepare
-}
 
 src_configure() {
 	# TODO: enable CUDA via USE flag

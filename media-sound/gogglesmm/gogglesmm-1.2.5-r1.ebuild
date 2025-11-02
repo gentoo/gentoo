@@ -11,7 +11,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="a52 +aac alsa +dbus dca +flac jack libsamplerate +mad nls +opengl +opus"
 IUSE+=" +pulseaudio sndio stream tremor +vorbis"
 REQUIRED_USE="?? ( tremor vorbis )"
@@ -65,6 +65,8 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	# https://github.com/gogglesmm/gogglesmm/pull/120
 	"${FILESDIR}"/${PN}-1.2.5-libsamplerate.patch
+	# https://github.com/gogglesmm/gogglesmm/pull/121
+	"${FILESDIR}"/${PN}-1.2.5-cmake-4.patch
 )
 
 src_configure() {

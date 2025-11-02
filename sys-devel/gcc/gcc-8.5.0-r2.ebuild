@@ -9,12 +9,12 @@ EAPI="8"
 TOOLCHAIN_PATCH_SUFFIX="xz"
 TOOLCHAIN_PATCH_DEV="sam"
 TOOLCHAIN_HAS_TESTS=1
-PATCH_VER="4"
-PYTHON_COMPAT=( python3_{10..14} )
+PATCH_VER="5"
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit toolchain
 
-KEYWORDS="~alpha amd64 arm arm64 hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RDEPEND=""
 DEPEND="${RDEPEND}

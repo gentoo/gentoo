@@ -8,26 +8,31 @@ LUA_COMPAT=( lua5-{1..2} )
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
 MY_P="${PN}-${MY_PV}"
-if [[ ${PV} = *9999* ]] ; then
+if [[ ${PV} == *9999* ]] ; then
 	if [[ ${PV%.9999} != ${PV} ]] ; then
-		EGIT_BRANCH="3.0.x"
+		EGIT_BRANCH="${PV%.9999}.x"
 	fi
 	EGIT_REPO_URI="https://code.videolan.org/videolan/vlc.git"
 	inherit git-r3
 else
-	if [[ ${MY_P} = ${P} ]] ; then
-		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+	COMMIT=
+	if [[ -n ${COMMIT} ]] ; then
+		SRC_URI="https://code.videolan.org/videolan/vlc/-/archive/${COMMIT}.tar.gz -> ${P}-${COMMIT:0:8}.tar.gz"
+		S="${WORKDIR}/${PN}-${COMMIT}"
 	else
-		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+		if [[ ${MY_P} == ${P} ]] ; then
+			SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
+		else
+			SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
+		fi
+		S="${WORKDIR}/${MY_P}"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 -sparc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv -sparc ~x86"
 fi
-
 inherit autotools flag-o-matic lua-single toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/12-9" # vlc - vlccore
@@ -35,9 +40,9 @@ SLOT="0/12-9" # vlc - vlccore
 IUSE="a52 alsa aom archive aribsub bidi bluray cddb chromaprint chromecast dav1d dbus
 	dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac fluidsynth
 	fontconfig +gcrypt gme keyring gstreamer +gui ieee1394 jack jpeg kate kms
-	libass libcaca libnotify libplacebo +libsamplerate libtar libtiger linsys lirc live
+	libass libcaca libnotify libplacebo +libsamplerate libtiger linsys lirc live
 	loudness lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
-	nfs ogg omxil optimisememory opus png projectm pulseaudio rdp run-as-root samba
+	nfs ogg omxil optimisememory opus png projectm pulseaudio run-as-root samba
 	sdl-image sftp shout sid skins soxr speex srt ssl svg taglib theora tremor truetype
 	twolame udev upnp vaapi v4l vdpau vnc vpx wayland +X x264 x265 xml zeroconf
 	zvbi cpu_flags_arm_neon cpu_flags_ppc_altivec cpu_flags_x86_mmx cpu_flags_x86_sse
@@ -47,7 +52,6 @@ REQUIRED_USE="
 	directx? ( ffmpeg )
 	fontconfig? ( truetype )
 	libcaca? ( X )
-	libtar? ( skins )
 	libtiger? ( kate )
 	lua? ( ${LUA_REQUIRED_USE} )
 	skins? ( gui truetype X xml )
@@ -55,7 +59,10 @@ REQUIRED_USE="
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
 "
+# live+snapshots need bison+flex
 BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
 	>=sys-devel/gettext-0.19.8
 	sys-devel/flex
 	virtual/pkgconfig
@@ -64,7 +71,7 @@ BDEPEND="
 	wayland? ( dev-util/wayland-scanner )
 	x86? ( dev-lang/yasm )
 "
-# <media-plugins/live-2024.11.28: https://github.com/gentoo/gentoo/pull/40610#issuecomment-2664870395
+# depends on abseil-cpp via protobuf targets
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
@@ -86,6 +93,7 @@ RDEPEND="
 	cddb? ( media-libs/libcddb )
 	chromaprint? ( media-libs/chromaprint:= )
 	chromecast? (
+		dev-cpp/abseil-cpp:=
 		>=dev-libs/protobuf-2.5.0:=
 		>=net-libs/libmicrodns-0.1.2:=
 	)
@@ -103,7 +111,7 @@ RDEPEND="
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
-	ffmpeg? ( >=media-video/ffmpeg-3.1.3:=[postproc(-),vaapi?,vdpau?] )
+	ffmpeg? ( >=media-video/ffmpeg-3.1.3:=[vaapi?,vdpau?] )
 	flac? (
 		media-libs/flac:=
 		media-libs/libogg
@@ -145,11 +153,10 @@ RDEPEND="
 	)
 	libplacebo? ( media-libs/libplacebo:= )
 	libsamplerate? ( media-libs/libsamplerate )
-	libtar? ( dev-libs/libtar )
 	libtiger? ( media-libs/libtiger )
 	linsys? ( media-libs/zvbi )
 	lirc? ( app-misc/lirc )
-	live? ( <media-plugins/live-2024.11.28:= )
+	live? ( media-plugins/live:= )
 	loudness? ( >=media-libs/libebur128-1.2.4:= )
 	lua? ( ${LUA_DEPS} )
 	mad? ( media-libs/libmad )
@@ -172,7 +179,6 @@ RDEPEND="
 		>=media-libs/libprojectm-3.1.12:0=
 	)
 	pulseaudio? ( media-libs/libpulse )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc0:2= )
 	samba? ( >=net-fs/samba-4.0.0:0[client,-debug(-)] )
 	sdl-image? ( media-libs/sdl-image )
 	sftp? ( net-libs/libssh2 )
@@ -195,7 +201,7 @@ RDEPEND="
 		x11-libs/cairo
 	)
 	taglib? ( media-libs/taglib:= )
-	theora? ( media-libs/libtheora )
+	theora? ( media-libs/libtheora:= )
 	tremor? ( media-libs/tremor )
 	truetype? (
 		media-libs/freetype:2
@@ -232,12 +238,14 @@ DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )
 "
 
+DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
+
 PATCHES=(
+	"${FILESDIR}"/${PN}-9999-gettext-version.patch # bug 766549
+	"${FILESDIR}"/${PN}-9999-no-vlc-cache-gen.patch # bugs 564842, 608256
 	"${FILESDIR}"/${PN}-9999-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-9999-configure-lua-version.patch
 )
-
-DOCS=( AUTHORS THANKS NEWS README.md doc/fortunes.txt )
 
 pkg_setup() {
 	if use lua; then
@@ -251,11 +259,8 @@ src_prepare() {
 	# bug 608256
 	xdg_environment_reset
 
-	has_version 'net-libs/libupnp:1.8' && \
-		eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
-
 	# Bootstrap when we are on a git checkout.
-	if [[ ${PV} = *9999 ]] ; then
+	if [[ ${PV} == *9999* || ${PV} == *_p[0-9]* ]] ; then
 		./bootstrap
 	fi
 
@@ -270,28 +275,20 @@ src_prepare() {
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
 
-	# Disable running of vlc-cache-gen, we do that in pkg_postinst
-	sed -e "/test.*build.*host/s/\$(host)/nothanks/" \
-		-i Makefile.am -i bin/Makefile.am || die "Failed to disable vlc-cache-gen"
-
-	# Fix gettext version mismatch errors.
-	sed -i -e s/GETTEXT_VERSION/GETTEXT_REQUIRE_VERSION/ configure.ac || die
-
 	eautoreconf
-
-	# Disable automatic running of tests.
-	find . -name 'Makefile.in' -exec sed -i 's/\(..*\)check-TESTS/\1/' {} \; || die
 }
 
 src_configure() {
-	# bug #944778
-	unset LEX
+	# live+snapshots need bison+flex
+	unset LEX YACC
 
 	local -x BUILDCC="$(tc-getBUILD_CC)"
 
 	local myeconfargs=(
 		--disable-amf-frc # DirectX specific
+		--disable-freerdp # bug 921096
 		--disable-optimizations
+		--disable-postproc # bug 961436
 		--disable-rpath
 		--disable-update-check
 		--enable-fast-install
@@ -299,7 +296,7 @@ src_configure() {
 		--enable-vcd
 		--enable-vlc
 		--enable-vorbis
-		$(use_enable a52)
+		$(use_enable a52) # not officially supported anymore (avcodec takes priority)
 		$(use_enable alsa)
 		$(use_enable aom)
 		$(use_enable archive)
@@ -323,7 +320,7 @@ src_configure() {
 		$(use_enable directx)
 		$(use_enable directx d3d11va)
 		$(use_enable directx dxva2)
-		$(use_enable dts dca)
+		$(use_enable dts dca) # not officially supported anymore (avcodec takes priority)
 		$(use_enable dvbpsi)
 		$(use_enable dvd dvdnav)
 		$(use_enable dvd dvdread)
@@ -333,7 +330,6 @@ src_configure() {
 		$(use_enable fdk fdkaac)
 		$(use_enable ffmpeg avcodec)
 		$(use_enable ffmpeg avformat)
-		$(use_enable ffmpeg postproc)
 		$(use_enable ffmpeg swscale)
 		$(use_enable flac)
 		$(use_enable fluidsynth)
@@ -353,7 +349,6 @@ src_configure() {
 		$(use_enable libnotify notify)
 		$(use_enable libplacebo)
 		$(use_enable libsamplerate samplerate)
-		$(use_enable libtar)
 		$(use_enable libtiger tiger)
 		$(use_enable linsys)
 		$(use_enable lirc)
@@ -365,7 +360,7 @@ src_configure() {
 		$(use_enable matroska)
 		$(use_enable modplug mod)
 		$(use_enable mp3 mpg123)
-		$(use_enable mpeg libmpeg2)
+		$(use_enable mpeg libmpeg2) # not officially supported anymore (avcodec takes priority)
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
@@ -377,7 +372,6 @@ src_configure() {
 		$(use_enable png)
 		$(use_enable projectm)
 		$(use_enable pulseaudio pulse)
-		$(use_enable rdp freerdp)
 		$(use_enable run-as-root)
 		$(use_enable samba smbclient)
 		$(use_enable sdl-image)

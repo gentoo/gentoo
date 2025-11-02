@@ -7,6 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="github">pydantic/pydantic-core</remote-id>
-		<remote-id type="pypi">pydantic-core</remote-id>
+		<remote-id type="pypi">pydantic_core</remote-id>
 	</upstream>
 </pkgmetadata>

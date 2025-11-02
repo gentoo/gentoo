@@ -7,18 +7,18 @@ REAL_PN="melonDS"
 REAL_PV="${PV/_rc/rc}"
 REAL_P="${REAL_PN}-${REAL_PV}"
 
-inherit cmake readme.gentoo-r1 toolchain-funcs xdg
+inherit cmake flag-o-matic readme.gentoo-r1 toolchain-funcs xdg
 
 DESCRIPTION="Nintendo DS emulator, sorta"
-HOMEPAGE="http://melonds.kuribo64.net
-	https://github.com/Arisotura/melonDS"
+HOMEPAGE="https://melonds.kuribo64.net
+	https://github.com/melonDS-emu/melonDS"
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
 
-	EGIT_REPO_URI="https://github.com/Arisotura/${REAL_PN}"
+	EGIT_REPO_URI="https://github.com/melonDS-emu/${REAL_PN}"
 else
-	SRC_URI="https://github.com/Arisotura/${REAL_PN}/archive/${REAL_PV}.tar.gz
+	SRC_URI="https://github.com/melonDS-emu/${REAL_PN}/archive/${REAL_PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${REAL_P}"
 
@@ -65,6 +65,12 @@ Place them in ~/.config/melonDS
 Those files can be extracted from devices or found somewhere on the Internet ;-)"
 
 src_configure() {
+	# -Werror=strict-aliasing
+	# https://bugs.gentoo.org/959632
+	# https://github.com/melonDS-emu/melonDS/issues/2349
+	append-flags -fno-strict-aliasing
+	filter-lto
+
 	local -a mycmakeargs=(
 		-DUSE_CCACHE="OFF"
 

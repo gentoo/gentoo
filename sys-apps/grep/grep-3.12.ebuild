@@ -25,7 +25,7 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+egrep-fgrep nls pcre static"
+IUSE="+egrep-fgrep nls pcre static test-full"
 
 # We lack dev-libs/libsigsegv[static-libs] for now
 REQUIRED_USE="static? ( !sparc )"
@@ -73,6 +73,8 @@ src_prepare() {
 
 src_configure() {
 	use static && append-ldflags -static
+
+	export RUN_{VERY_,}EXPENSIVE_TESTS=$(usex test-full yes no)
 
 	# We used to turn this off unconditionally (bug #673524) but we now
 	# allow it for cases where libsigsegv is better for userspace handling

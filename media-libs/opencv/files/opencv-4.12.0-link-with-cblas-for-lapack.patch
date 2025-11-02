@@ -1,0 +1,20 @@
+diff --git a/cmake/OpenCVFindLAPACK.cmake b/cmake/OpenCVFindLAPACK.cmake
+index 2ec1889..ff6adf2 100644
+--- a/cmake/OpenCVFindLAPACK.cmake
++++ b/cmake/OpenCVFindLAPACK.cmake
+@@ -229,12 +229,13 @@ if(WITH_LAPACK)
+         if(NOT DEFINED CBLAS_INCLUDE_DIR)
+           find_path(CBLAS_INCLUDE_DIR "cblas.h")
+         endif()
+-        if(CBLAS_INCLUDE_DIR AND LAPACKE_INCLUDE_DIR)
++        find_package(CBLAS)
++        if(CBLAS_INCLUDE_DIR AND LAPACKE_INCLUDE_DIR AND CBLAS_FOUND)
+           ocv_lapack_check(IMPL "LAPACK/Generic"
+             CBLAS_H "cblas.h"
+             LAPACKE_H "lapacke.h"
+             INCLUDE_DIR "${CBLAS_INCLUDE_DIR}" "${LAPACKE_INCLUDE_DIR}"
+-            LIBRARIES "${LAPACK_LIBRARIES}")
++            LIBRARIES "${LAPACK_LIBRARIES};${CBLAS_LIBRARIES}")
+         elseif(APPLE)
+           ocv_lapack_check(IMPL "LAPACK/Apple"
+             CBLAS_H "Accelerate/Accelerate.h"

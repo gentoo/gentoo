@@ -1,0 +1,30 @@
+https://github.com/netblue30/firejail/pull/6888/commits/03eac22c108fbafd7dc9b94e2889cfb74bea8874
+From: Hank Leininger <hlein@korelogic.com>
+Date: Tue, 2 Sep 2025 20:44:16 -0600
+Subject: [PATCH] profiles: hashcat: fix runtime errors (#6364)
+
+private-bin messes with hashcat's ability to find its installed
+files under /usr/share/hashcat/.
+
+novideo makes hashcat unable to access /dev/nvidia* (on some distros?)
+
+Signed-off-by: Hank Leininger <hlein@korelogic.com>
+--- a/etc/profile-a-l/hashcat.profile
++++ b/etc/profile-a-l/hashcat.profile
+@@ -32,13 +32,11 @@ noroot
+ nosound
+ notv
+ nou2f
+-novideo
+ protocol unix
+ seccomp
+ x11 none
+ 
+ disable-mnt
+-private-bin hashcat
+ private-cache
+ private-dev
+ private-tmp
+-- 
+2.50.1
+

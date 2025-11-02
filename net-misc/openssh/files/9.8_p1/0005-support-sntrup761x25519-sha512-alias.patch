@@ -1,0 +1,250 @@
+From 26f73db15e0eee558a11b42a9d794d78c87dd11e Mon Sep 17 00:00:00 2001
+Message-ID: <26f73db15e0eee558a11b42a9d794d78c87dd11e.1758727870.git.sam@gentoo.org>
+In-Reply-To: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+References: <20950a7c047ca08f9317d27866c06587ed51a338.1758727870.git.sam@gentoo.org>
+From: Damien Miller <djm@mindrot.org>
+Date: Mon, 11 Aug 2025 16:40:24 +1000
+Subject: [PATCH 5/7] support sntrup761x25519-sha512 alias
+
+OpenSSH 9.8 supports the sntrup761x25519-sha512@openssh.com
+key agreement algorithm. As part of standardisation, this algorithm
+has been assigned the name sntrup761x25519-sha512.
+
+This commit enables the existing algorithm under this new name.
+---
+ configure           | 3 +++
+ kex-names.c         | 2 ++
+ kex.h               | 1 +
+ moduli.0            | 2 +-
+ myproposal.h        | 1 +
+ scp.0               | 2 +-
+ sftp-server.0       | 2 +-
+ sftp.0              | 2 +-
+ ssh-add.0           | 2 +-
+ ssh-agent.0         | 2 +-
+ ssh-keygen.0        | 2 +-
+ ssh-keyscan.0       | 2 +-
+ ssh-keysign.0       | 2 +-
+ ssh-pkcs11-helper.0 | 2 +-
+ ssh-sk-helper.0     | 2 +-
+ ssh.0               | 2 +-
+ ssh_config.0        | 2 +-
+ sshd.0              | 2 +-
+ sshd_config.0       | 6 +++---
+ 19 files changed, 24 insertions(+), 17 deletions(-)
+
+diff --git a/configure b/configure
+index 07d19fd30..32e38c4cb 100755
+--- a/configure
++++ b/configure
+@@ -13317,6 +13317,9 @@ EOD
+ printf "%s\n" "#define BROKEN_SETVBUF 1" >>confdefs.h
+ 
+ 	;;
++*-*-gnu*)
++					CPPFLAGS="$CPPFLAGS -D_XOPEN_SOURCE=600 -D_BSD_SOURCE -D_DEFAULT_SOURCE -D_GNU_SOURCE"
++	;;
+ esac
+ 
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking compiler and flags for sanity" >&5
+diff --git a/kex-names.c b/kex-names.c
+index 339eb1c23..1869b8ee1 100644
+--- a/kex-names.c
++++ b/kex-names.c
+@@ -77,6 +77,8 @@ static const struct kexalg kexalgs[] = {
+ 	{ KEX_CURVE25519_SHA256, KEX_C25519_SHA256, 0, SSH_DIGEST_SHA256 },
+ 	{ KEX_CURVE25519_SHA256_OLD, KEX_C25519_SHA256, 0, SSH_DIGEST_SHA256 },
+ #ifdef USE_SNTRUP761X25519
++	{ KEX_SNTRUP761X25519_SHA512_IANA, KEX_KEM_SNTRUP761X25519_SHA512, 0,
++	    SSH_DIGEST_SHA512 },
+ 	{ KEX_SNTRUP761X25519_SHA512, KEX_KEM_SNTRUP761X25519_SHA512, 0,
+ 	    SSH_DIGEST_SHA512 },
+ #endif
+diff --git a/kex.h b/kex.h
+index 34665eb20..ed22b929f 100644
+--- a/kex.h
++++ b/kex.h
+@@ -63,6 +63,7 @@
+ #define	KEX_CURVE25519_SHA256		"curve25519-sha256"
+ #define	KEX_CURVE25519_SHA256_OLD	"curve25519-sha256@libssh.org"
+ #define	KEX_SNTRUP761X25519_SHA512	"sntrup761x25519-sha512@openssh.com"
++#define	KEX_SNTRUP761X25519_SHA512_IANA	"sntrup761x25519-sha512"
+ 
+ #define COMP_NONE	0
+ /* pre-auth compression (COMP_ZLIB) is only supported in the client */
+diff --git a/moduli.0 b/moduli.0
+index 057a018ef..90700a16f 100644
+--- a/moduli.0
++++ b/moduli.0
+@@ -71,4 +71,4 @@ STANDARDS
+      M. Friedl, N. Provos, and W. Simpson, Diffie-Hellman Group Exchange for
+      the Secure Shell (SSH) Transport Layer Protocol, RFC 4419, March 2006.
+ 
+-OpenBSD 7.5                     April 16, 2022                     OpenBSD 7.5
++OpenBSD 7.7                     April 16, 2022                     OpenBSD 7.7
+diff --git a/myproposal.h b/myproposal.h
+index ee6e9f741..0528cd783 100644
+--- a/myproposal.h
++++ b/myproposal.h
+@@ -25,6 +25,7 @@
+  */
+ 
+ #define KEX_SERVER_KEX	\
++	"sntrup761x25519-sha512," \
+ 	"sntrup761x25519-sha512@openssh.com," \
+ 	"curve25519-sha256," \
+ 	"curve25519-sha256@libssh.org," \
+diff --git a/scp.0 b/scp.0
+index e098ddf55..85d5f83d5 100644
+--- a/scp.0
++++ b/scp.0
+@@ -229,4 +229,4 @@ CAVEATS
+      requires careful quoting of any characters that have special meaning to
+      the remote shell, such as quote characters.
+ 
+-OpenBSD 7.5                    December 16, 2022                   OpenBSD 7.5
++OpenBSD 7.7                    December 16, 2022                   OpenBSD 7.7
+diff --git a/sftp-server.0 b/sftp-server.0
+index 23fdda399..273b69908 100644
+--- a/sftp-server.0
++++ b/sftp-server.0
+@@ -95,4 +95,4 @@ HISTORY
+ AUTHORS
+      Markus Friedl <markus@openbsd.org>
+ 
+-OpenBSD 7.5                      July 27, 2021                     OpenBSD 7.5
++OpenBSD 7.7                      July 27, 2021                     OpenBSD 7.7
+diff --git a/sftp.0 b/sftp.0
+index c6a9e60c4..0476733c1 100644
+--- a/sftp.0
++++ b/sftp.0
+@@ -435,4 +435,4 @@ SEE ALSO
+      T. Ylonen and S. Lehtinen, SSH File Transfer Protocol, draft-ietf-secsh-
+      filexfer-00.txt, January 2001, work in progress material.
+ 
+-OpenBSD 7.5                    December 16, 2022                   OpenBSD 7.5
++OpenBSD 7.7                    December 16, 2022                   OpenBSD 7.7
+diff --git a/ssh-add.0 b/ssh-add.0
+index 30eed6672..20f1a88e2 100644
+--- a/ssh-add.0
++++ b/ssh-add.0
+@@ -206,4 +206,4 @@ AUTHORS
+      created OpenSSH.  Markus Friedl contributed the support for SSH protocol
+      versions 1.5 and 2.0.
+ 
+-OpenBSD 7.5                      June 17, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 17, 2024                     OpenBSD 7.7
+diff --git a/ssh-agent.0 b/ssh-agent.0
+index 2e4ef7b6e..238fa54e2 100644
+--- a/ssh-agent.0
++++ b/ssh-agent.0
+@@ -137,4 +137,4 @@ AUTHORS
+      created OpenSSH.  Markus Friedl contributed the support for SSH protocol
+      versions 1.5 and 2.0.
+ 
+-OpenBSD 7.5                     August 10, 2023                    OpenBSD 7.5
++OpenBSD 7.7                     August 10, 2023                    OpenBSD 7.7
+diff --git a/ssh-keygen.0 b/ssh-keygen.0
+index a731a7fa8..13b032f46 100644
+--- a/ssh-keygen.0
++++ b/ssh-keygen.0
+@@ -904,4 +904,4 @@ AUTHORS
+      created OpenSSH.  Markus Friedl contributed the support for SSH protocol
+      versions 1.5 and 2.0.
+ 
+-OpenBSD 7.5                      June 17, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 17, 2024                     OpenBSD 7.7
+diff --git a/ssh-keyscan.0 b/ssh-keyscan.0
+index 110399094..cf0962c82 100644
+--- a/ssh-keyscan.0
++++ b/ssh-keyscan.0
+@@ -120,4 +120,4 @@ AUTHORS
+      Davison <wayned@users.sourceforge.net> added support for protocol version
+      2.
+ 
+-OpenBSD 7.5                      June 17, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 17, 2024                     OpenBSD 7.7
+diff --git a/ssh-keysign.0 b/ssh-keysign.0
+index 577955d1b..ff3305809 100644
+--- a/ssh-keysign.0
++++ b/ssh-keysign.0
+@@ -47,4 +47,4 @@ HISTORY
+ AUTHORS
+      Markus Friedl <markus@openbsd.org>
+ 
+-OpenBSD 7.5                      June 17, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 17, 2024                     OpenBSD 7.7
+diff --git a/ssh-pkcs11-helper.0 b/ssh-pkcs11-helper.0
+index 564587259..4b1cb8d7d 100644
+--- a/ssh-pkcs11-helper.0
++++ b/ssh-pkcs11-helper.0
+@@ -32,4 +32,4 @@ HISTORY
+ AUTHORS
+      Markus Friedl <markus@openbsd.org>
+ 
+-OpenBSD 7.5                     April 29, 2022                     OpenBSD 7.5
++OpenBSD 7.7                     April 29, 2022                     OpenBSD 7.7
+diff --git a/ssh-sk-helper.0 b/ssh-sk-helper.0
+index ea2117abd..4abc5e8a0 100644
+--- a/ssh-sk-helper.0
++++ b/ssh-sk-helper.0
+@@ -31,4 +31,4 @@ HISTORY
+ AUTHORS
+      Damien Miller <djm@openbsd.org>
+ 
+-OpenBSD 7.5                     April 29, 2022                     OpenBSD 7.5
++OpenBSD 7.7                     April 29, 2022                     OpenBSD 7.7
+diff --git a/ssh.0 b/ssh.0
+index 78863b1b0..9c34e3e6e 100644
+--- a/ssh.0
++++ b/ssh.0
+@@ -1016,4 +1016,4 @@ AUTHORS
+      created OpenSSH.  Markus Friedl contributed the support for SSH protocol
+      versions 1.5 and 2.0.
+ 
+-OpenBSD 7.5                      June 27, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 27, 2024                     OpenBSD 7.7
+diff --git a/ssh_config.0 b/ssh_config.0
+index ef6c0936a..f9a82781b 100644
+--- a/ssh_config.0
++++ b/ssh_config.0
+@@ -1428,4 +1428,4 @@ AUTHORS
+      created OpenSSH.  Markus Friedl contributed the support for SSH protocol
+      versions 1.5 and 2.0.
+ 
+-OpenBSD 7.5                      June 17, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 17, 2024                     OpenBSD 7.7
+diff --git a/sshd.0 b/sshd.0
+index c7de2d311..eac127dcf 100644
+--- a/sshd.0
++++ b/sshd.0
+@@ -682,4 +682,4 @@ AUTHORS
+      versions 1.5 and 2.0.  Niels Provos and Markus Friedl contributed support
+      for privilege separation.
+ 
+-OpenBSD 7.5                      June 17, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 17, 2024                     OpenBSD 7.7
+diff --git a/sshd_config.0 b/sshd_config.0
+index 6883dda4b..ca030fcca 100644
+--- a/sshd_config.0
++++ b/sshd_config.0
+@@ -950,8 +950,8 @@ DESCRIPTION
+              accumulated.
+ 
+              Penalties are enabled by default with the default settings listed
+-             below but may disabled using the off keyword.  The defaults may
+-             be overridden by specifying one or more of the keywords below,
++             below but may disabled using the no keyword.  The defaults may be
++             overridden by specifying one or more of the keywords below,
+              separated by whitespace.  All keywords accept arguments, e.g.
+              "crash:2m".
+ 
+@@ -1390,4 +1390,4 @@ AUTHORS
+      versions 1.5 and 2.0.  Niels Provos and Markus Friedl contributed support
+      for privilege separation.
+ 
+-OpenBSD 7.5                      June 24, 2024                     OpenBSD 7.5
++OpenBSD 7.7                      June 24, 2024                     OpenBSD 7.7
+-- 
+2.51.0
+

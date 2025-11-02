@@ -8,4 +8,7 @@
 	<use>
 		<flag name="tools">Build and install command-line tools</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">LibtraceTeam/libprotoident</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,6 +19,7 @@ BDEPEND="test? ( sys-process/time )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.13.1-tests-no-benchmark.patch
+	"${FILESDIR}"/${PN}-0.14.1-replace-assert-by-urcu_posix_assert.patch
 )
 
 src_prepare() {

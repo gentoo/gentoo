@@ -1,4 +1,4 @@
-# Copyright 2017-2024 Gentoo Authors
+# Copyright 2017-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,7 +6,7 @@ EGO_PN=github.com/git-lfs/git-lfs
 # Update the ID as it's included in each build.
 COMMIT_ID=""
 
-inherit go-module shell-completion
+inherit edo go-module shell-completion
 
 DESCRIPTION="Command line extension and specification for managing large files with git"
 HOMEPAGE="
@@ -24,15 +24,16 @@ else
 	# 2) Compress the archive using XZ limiting decompression memory for
 	#    pretty constraint systems.
 	# Use something like:
-	# tar cf $P-deps.tar go-mod \
+	# GOMODCACHE="${PWD}"/go-mod go mod download -modcacherw
+	# tar cf "${P}-deps.tar" go-mod \
 	#	--mtime="1970-01-01" --sort=name --owner=portage --group=portage
-	# xz -k -9eT0 --memlimit-decompress=256M $P-deps.tar
+	# xz -k -9eT0 --memlimit-decompress=256M "${P}-deps.tar"
 	SRC_URI+=" https://files.holgersson.xyz/gentoo/distfiles/golang-pkg-deps/${P}-deps.tar.xz"
 fi
 
 LICENSE="Apache-2.0 BSD BSD-2 BSD-4 ISC MIT"
 SLOT="0"
-#KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+# KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 BDEPEND="
@@ -41,6 +42,8 @@ BDEPEND="
 RDEPEND="dev-vcs/git"
 
 RESTRICT+=" !test? ( test )"
+# The golang compiler already strips.
+QA_PRESTRIPPED="/usr/bin/git-lfs"
 
 DOCS=(
 	CHANGELOG.md
@@ -65,7 +68,8 @@ src_compile() {
 
 	if use doc; then
 		for doc in docs/man/*adoc;
-			do asciidoctor -b manpage ${doc} || die "man building failed"
+		do
+			edo asciidoctor -b manpage "${doc}"
 		done
 	fi
 
@@ -93,7 +97,7 @@ src_test() {
 	local mygotestargs=(
 		-ldflags="-X ${EGO_PN}/config.GitCommit=${COMMIT_ID}"
 	)
-	go test "${mygotestargs[@]}" ./... || die
+	ego test "${mygotestargs[@]}" ./...
 }
 
 pkg_postinst () {

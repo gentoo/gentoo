@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,6 +28,12 @@ RDEPEND="${DEPEND}"
 
 # https://github.com/greatscottgadgets/hackrf/issues/1193
 PATCHES=( "${FILESDIR}/hackrf-disable-static-2022.09.1.patch" )
+
+# Fix build with cmake4 (see https://github.com/greatscottgadgets/hackrf/pull/1514)
+src_prepare() {
+	sed -i -e "s/2.8.12/3.8/" CMakeLists.txt || die
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

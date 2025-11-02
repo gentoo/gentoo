@@ -25,7 +25,7 @@ sys-apps/memtest86+ bios64 uefi64
 
 # Theo Anderson <telans@posteo.de> (2021-03-06)
 # Enable 32-bit clang runtime to ease -m32 builds with non-GCC runtime
-llvm-core/clang-runtime abi_x86_32
+llvm-runtimes/clang-runtime abi_x86_32
 llvm-runtimes/libcxxabi abi_x86_32
 llvm-runtimes/libcxx abi_x86_32
 llvm-runtimes/openmp abi_x86_32
@@ -41,6 +41,9 @@ sys-boot/grub:2 grub_platforms_efi-64 grub_platforms_pc
 dev-ml/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 llvm-core/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 llvm-core/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/lld llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/flang llvm_targets_AMDGPU llvm_targets_NVPTX
+llvm-core/lldb llvm_targets_AMDGPU llvm_targets_NVPTX
 
 # Doug Goldstein <cardoe@gentoo.org> (2012-10-29)
 # Enable the native arch as the default qemu target

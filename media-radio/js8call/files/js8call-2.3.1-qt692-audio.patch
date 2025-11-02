@@ -1,0 +1,41 @@
+# Fixes missing audio output for pulseaudio with >=qt-6.9.2
+# Cherry picked from https://github.com/bazineta/js8call
+From c90ca32143352ec3b55a9779e75b42edc4584edc Mon Sep 17 00:00:00 2001
+From: Allan Bazinet <allan.bazinet@gmail.com>
+Date: Thu, 9 Oct 2025 11:15:36 -0700
+Subject: [PATCH] Make Modulator::bytesAvailable() universal
+
+As all platforms seem to now require a Modulator::bytesAvailable() override, remove the Windows platform guard from it. Properly decorate the accessor with `override`.
+---
+ Modulator.hpp | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/Modulator.hpp b/Modulator.hpp
+index d4bb4ae6..de199aca 100644
+--- a/Modulator.hpp
++++ b/Modulator.hpp
+@@ -74,15 +74,18 @@ class Modulator final
+     return -1;			// we don't consume data
+   }
+ 
+-#if defined(Q_OS_WIN)
+-// On Windows, bytesAvailable() must return a size that exceeds some threshold 
+-// in order for the AudioSink to go into Active state and start pulling data.
+-// See: https://bugreports.qt.io/browse/QTBUG-108672
+-  qint64 bytesAvailable() const
++  // In current Qt versions, bytesAvailable() must return a size
++  // that exceeds some threshold in order for the AudioSink to go
++  // into Active state and start pulling data. This behavior began
++  // on Windows with the 6.4 release, on Mac with 6.8, and on Linux
++  // with 6.9.
++  //
++  // See: https://bugreports.qt.io/browse/QTBUG-108672
++
++  qint64 bytesAvailable() const override
+   {
+     return 8000;
+   }
+-#endif
+ 
+ private:
+ 

@@ -1,0 +1,29 @@
+https://github.com/nghttp2/nghttp2/commit/1440e883475488ddda25556c7b3d9f78694716ba
+
+From 1440e883475488ddda25556c7b3d9f78694716ba Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyich@gmail.com>
+Date: Fri, 30 May 2025 21:20:51 +0100
+Subject: [PATCH] src/template.h: add missing `cstdint` include
+
+Without the change build against upcoming gcc-16 fails as:
+
+    template.h:457:9: error: ISO C++ forbids declaration of 'type name' with no type [-fpermissive]
+      457 |   const uint8_t, N == std::dynamic_extent ? std::dynamic_extent : N * sizeof(T)>
+          |         ^~~~~~~
+---
+ src/template.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/template.h b/src/template.h
+index e154057fd4..4f0622b2c4 100644
+--- a/src/template.h
++++ b/src/template.h
+@@ -27,6 +27,7 @@
+ 
+ #include "nghttp2_config.h"
+ 
++#include <cstdint>
+ #include <cstring>
+ #include <cstdio>
+ #include <cstdlib>
+

@@ -8,7 +8,7 @@ inherit autotools check-reqs flag-o-matic git-r3 multiprocessing pax-utils
 inherit prefix python-utils-r1 toolchain-funcs
 
 PYVER=$(ver_cut 1-2)
-PATCHSET="python-gentoo-patches-3.11.11"
+PATCHSET="python-gentoo-patches-3.11.13"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="
@@ -24,8 +24,8 @@ EGIT_BRANCH=${PYVER}
 LICENSE="PSF-2"
 SLOT="${PYVER}"
 IUSE="
-	bluetooth build debug +ensurepip examples gdbm libedit
-	+ncurses pgo +readline +sqlite +ssl test tk valgrind
+	bluetooth debug +ensurepip examples gdbm libedit +ncurses pgo
+	+readline +sqlite +ssl test tk valgrind
 "
 RESTRICT="!test? ( test )"
 
@@ -38,6 +38,7 @@ RDEPEND="
 	app-arch/bzip2:=
 	app-arch/xz-utils:=
 	app-crypt/libb2
+	app-misc/mime-types
 	>=dev-libs/expat-2.1:=
 	dev-libs/libffi:=
 	dev-libs/mpdecimal:=
@@ -45,7 +46,6 @@ RDEPEND="
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
 	virtual/libintl
-	ensurepip? ( dev-python/ensurepip-wheels )
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
 	kernel_linux? ( sys-apps/util-linux:= )
 	ncurses? ( >=sys-libs/ncurses-5.2:= )
@@ -66,7 +66,11 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	bluetooth? ( net-wireless/bluez )
-	test? ( app-arch/xz-utils )
+	test? (
+		app-arch/xz-utils
+		dev-python/ensurepip-pip
+		dev-python/ensurepip-setuptools
+	)
 	valgrind? ( dev-debug/valgrind )
 "
 # autoconf-archive needed to eautoreconf
@@ -75,14 +79,17 @@ BDEPEND="
 	app-alternatives/awk
 	virtual/pkgconfig
 "
-RDEPEND+="
-	!build? ( app-misc/mime-types )
-"
 if [[ ${PV} != *_alpha* ]]; then
 	RDEPEND+="
 		dev-lang/python-exec[python_targets_python${PYVER/./_}(-)]
 	"
 fi
+PDEPEND="
+	ensurepip? (
+		dev-python/ensurepip-pip
+		dev-python/ensurepip-setuptools
+	)
+"
 
 # large file tests involve a 2.5G file being copied (duplicated)
 CHECKREQS_DISK_BUILD=5500M
@@ -210,6 +217,9 @@ src_configure() {
 
 	# Set baseline test skip flags.
 	COMMON_TEST_SKIPS=(
+		# running gdb inside an ebuild as non-root, within sandbox,
+		# and possibly within a container is unreliable
+		-x test_gdb
 		# this is actually test_gdb.test_pretty_print
 		-x test_pretty_print
 	)
@@ -231,11 +241,6 @@ src_configure() {
 				# bug 653850
 				-x test_resource
 				-x test_strtod
-			)
-			;;
-		arm*)
-			COMMON_TEST_SKIPS+=(
-				-x test_gdb
 			)
 			;;
 		mips*)
@@ -367,7 +372,6 @@ src_configure() {
 		--enable-ipv6
 		--infodir='${prefix}/share/info'
 		--mandir='${prefix}/share/man'
-		--with-computed-gotos
 		--with-dbmliborder="${dbmliborder}"
 		--with-libc=
 		--enable-loadable-sqlite-extensions

@@ -36,7 +36,7 @@ RDEPEND="
 		dev-libs/libgpg-error
 	)
 	grub? ( sys-boot/grub:2= )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	libmount? ( sys-apps/util-linux )
 	selinux? ( sys-libs/libselinux )
 	sodium? ( >=dev-libs/libsodium-1.0.14:= )

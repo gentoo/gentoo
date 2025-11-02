@@ -13,6 +13,7 @@ KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
 IUSE="doc"
 
 BDEPEND="
+	dev-util/gperf
 	virtual/pkgconfig
 	doc? ( app-text/doxygen )
 "

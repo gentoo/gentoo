@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,6 @@ IUSE="+ocamlopt"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.11
 	>=dev-ml/base-0.15.1:${SLOT}
 	dev-ml/base_bigstring:${SLOT}
 	dev-ml/base_quickcheck:=

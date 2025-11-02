@@ -19,7 +19,7 @@ DEPEND="
 	>=dev-libs/libzip-1.7.2:=
 "
 RDEPEND="${DEPEND}
-	lit2epub? ( app-text/convertlit	)
+	lit2epub? ( app-text/convertlit )
 "
 
 PATCHES=(

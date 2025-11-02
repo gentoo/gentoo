@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/961078
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,6 +63,8 @@ AC_DISABLE_STATIC
+ AC_ENABLE_SHARED
+ AC_PROG_LIBTOOL
+ 
++AC_CHECK_LIB([m], [powf])
++
+ dnl intltool
+ ALL_LINGUAS="da de en_GB es fi fr it ja nl nn pl pt_PT ru sl sv tr zh_CN zh_TW"
+ AC_SUBST(ALL_LINGUAS)
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,9 +4,10 @@ transform = s/_/-/g
+ cairo_clock_LDFLAGS = -Wl,--export-dynamic
+ 
+ cairo_clock_LDADD =	\
++	$(LIBM)		\
+ 	$(GLIB_LIBS)	\
+ 	$(GTK_LIBS)	\
+-	$(GTK_DEP_LIBS)		 
++	$(GTK_DEP_LIBS)
+ 
+ cairo_clock_CFLAGS =			\
+ 	-I$(top_srcdir)			\

@@ -24,7 +24,7 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.11
 	>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
 	>=x11-libs/cairo-1.15.0
-	introspection? ( >=dev-libs/gobject-introspection-1.56.0:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	pulseaudio? ( media-libs/libpulse )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.27:2 )
 	X? ( >=x11-libs/libX11-1.6.5 )

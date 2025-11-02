@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
+	<pkgmetadata>
 		<maintainer type="person" proxied="yes">
 			<email>martin.dummer@gmx.net</email>
 			<name>Martin Dummer</name>
@@ -13,4 +13,7 @@
 			<email>vdr@gentoo.org</email>
 			<name>Gentoo VDR Project</name>
 		</maintainer>
+	<upstream>
+		<remote-id type="github">vdr-projects/vdr-plugin-devstatus</remote-id>
+	</upstream>
 </pkgmetadata>

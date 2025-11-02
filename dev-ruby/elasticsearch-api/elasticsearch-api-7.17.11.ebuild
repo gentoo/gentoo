@@ -3,7 +3,8 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
+
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 RUBY_FAKEGEM_TASK_DOC=doc
 
@@ -31,6 +32,7 @@ ruby_add_bdepend "
 		dev-ruby/ansi
 		dev-ruby/elasticsearch
 		dev-ruby/elasticsearch-transport
+		dev-ruby/hashie
 		dev-ruby/mocha:2
 		dev-ruby/pry
 		dev-ruby/rspec:3

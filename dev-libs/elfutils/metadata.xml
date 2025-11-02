@@ -6,14 +6,20 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<use>
+		<flag name="debuginfod">Enable debuginfod support, both the debuginfod server and the libdebuginfod client library</flag>
+		<flag name="libarchive">
+			Needed for debuginfod (the server) and also for
+			--zip support in the eu-srcfiles utility.
+
+			Requires <pkg>app-arch/libarchive</pkg>.
+		</flag>
 		<flag name="lzma">Support automatic decompression of LZMA-compressed files and kernel images</flag>
 		<flag name="stacktrace">
 			Build experimental eu-stacktrace tool. Relies on integration with dev-util/sysprof.
 
 			See https://developers.redhat.com/articles/2024/06/11/get-system-wide-profiles-binaries-without-frame-pointers.
 		</flag>
-		<flag name="utils">Install command-line utilities (all the eu-* programs)</flag>
-		<flag name="debuginfod">Enable debuginfod support, both the debuginfod server and the libdebuginfod client library</flag>
+		<flag name="utils">Install command-line utilities (all the eu-* programs).</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:elfutils_project:elfutils</remote-id>

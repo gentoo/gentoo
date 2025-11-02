@@ -67,7 +67,11 @@ fi
 # @DESCRIPTION:
 # Definitive list of Rust slots and the associated LLVM slot, newest first.
 declare -A -g -r _RUST_LLVM_MAP=(
-	["9999"]=20
+	["9999"]=21
+	["1.91.0"]=21
+	["1.90.0"]=20
+	["1.89.0"]=20
+	["1.88.0"]=20
 	["1.87.0"]=20
 	["1.86.0"]=19
 	["1.85.1"]=19
@@ -94,6 +98,10 @@ declare -A -g -r _RUST_LLVM_MAP=(
 # this array is used to store the Rust slots in a more convenient order for iteration.
 declare -a -g -r _RUST_SLOTS_ORDERED=(
 	"9999"
+	"1.91.0"
+	"1.90.0"
+	"1.89.0"
+	"1.88.0"
 	"1.87.0"
 	"1.86.0"
 	"1.85.1"

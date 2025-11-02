@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 07a8ba1..d9021cb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
++cmake_minimum_required(VERSION 3.10)
+ project(libxtrxll C)
+ 
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+-cmake_minimum_required(VERSION 2.8)
+ 
+ # Set the version information here
+ set(MAJOR_VERSION 0)

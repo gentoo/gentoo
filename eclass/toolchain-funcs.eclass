@@ -73,6 +73,10 @@ tc-getCPP() { tc-getPROG CPP "${CC:-gcc} -E" "$@"; }
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler
 tc-getCXX() { tc-getPROG CXX g++ "$@"; }
+# @FUNCTION: tc-getHIPCXX
+# @USAGE: [toolchain prefix]
+# @RETURN: name of the HIP compiler
+tc-getHIPCXX() { tc-getPROG HIPCXX "$(hipconfig --hipclangpath)/clang++" "$@"; }
 # @FUNCTION: tc-getLD
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the linker
@@ -288,7 +292,7 @@ tc-tuple-is-softfloat() {
 			echo "yes" ;;
 		*-softfp-*)
 			echo "softfp" ;;
-		arm*-hardfloat-*|arm*eabihf)
+		arm*-hardfloat-*|arm*eabihf*)
 			echo "no" ;;
 		# bare-metal targets have their defaults. bug #666896
 		*-newlib|*-elf|*-eabi)
@@ -655,11 +659,11 @@ _tc-has-openmp() {
 # build-time, e.g.
 # @CODE
 # pkg_pretend() {
-#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2.0
+#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2
 # }
 #
 # pkg_setup() {
-#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2.0
+#	[[ ${MERGE_TYPE} != binary ]] && tc-check-min_ver gcc 13.2
 # }
 # @CODE
 tc-check-min_ver() {

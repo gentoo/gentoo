@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 LUA_COMPAT=( lua5-{3,4} )
 
-inherit git-r3 lua-single meson optfeature xdg
+inherit flag-o-matic git-r3 lua-single meson optfeature xdg
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="https://www.geeqie.org"
@@ -13,11 +13,11 @@ EGIT_REPO_URI="https://github.com/BestImageViewer/geeqie.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp xmp zip"
+IUSE="debug djvu exif ffmpegthumbnailer heif jpeg jpeg2k jpegxl lcms lua map pdf raw spell tiff webp X xmp zip"
 
 RDEPEND="gnome-extra/zenity
 	virtual/libintl
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X?]
 	djvu? ( app-text/djvu )
 	exif? ( >=media-gfx/exiv2-0.17:=[xmp?] )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
@@ -31,7 +31,7 @@ RDEPEND="gnome-extra/zenity
 		media-libs/libchamplain:0.12[gtk] )
 	pdf? ( >=app-text/poppler-0.62[cairo] )
 	raw? ( >=media-libs/libraw-0.20:= )
-	spell? ( app-text/gspell )
+	spell? ( app-text/gspell:= )
 	tiff? ( media-libs/tiff:= )
 	webp? ( gui-libs/gdk-pixbuf-loader-webp:= )
 	zip? ( >=app-arch/libarchive-3.4.0 )"
@@ -57,6 +57,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# defang automagic dependencies
+	# Currently only needed for X11-specific workarounds.
+	use X || append-flags -DGENTOO_GTK_HIDE_X11
+
 	local emesonargs=(
 		-Dgq_helpdir="share/doc/${PF}"
 		-Dgq_htmldir="share/doc/${PF}/html"

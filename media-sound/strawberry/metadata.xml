@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="chromaprint">Enables audio fingerprinting support with <pkg>media-libs/chromaprint</pkg></flag>
+		<flag name="discord">Enables Discord Rich Presence</flag>
 		<flag name="loudness">Enable loudness normalisation according to the EBU R128 standard using <pkg>media-libs/libebur128</pkg></flag>
 		<flag name="moodbar">Enable moodbar support</flag>
 		<flag name="streaming">Enable Online Streaming Support</flag>

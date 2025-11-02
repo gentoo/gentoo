@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ FDL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="exif gtk-doc +nls selinux test tracker wayland xmp"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	>=dev-libs/glib-2.45.7:2[dbus]
-	>=dev-libs/gobject-introspection-0.9.12:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/json-glib-1.6.0
 	dev-libs/libxmlb:0/2[introspection]
 	>=gnome-extra/cinnamon-desktop-6.4:0=
@@ -43,7 +43,7 @@ COMMON_DEPEND="
 		sys-libs/libselinux
 	)
 	tracker? (
-		app-misc/tracker:3
+		app-misc/tinysparql:3
 	)
 	xmp? (
 		>=media-libs/exempi-2.2.0:=

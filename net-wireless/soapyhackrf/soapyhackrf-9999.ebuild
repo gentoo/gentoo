@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,3 +23,8 @@ SLOT="0"
 RDEPEND="net-wireless/soapysdr:=
 		net-libs/libhackrf:="
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	sed -i -e "s/2.8.7/3.5/" CMakeLists.txt || die
+	cmake_src_prepare
+}

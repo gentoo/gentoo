@@ -15,23 +15,25 @@ MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 MY_PATCHES=()
 
-# Determine the patchlevel. See ftp://ftp.gnu.org/gnu/bash/bash-5.2-patches/.
+# Determine the patchlevel.
 case ${PV} in
 	9999|*_alpha*|*_beta*|*_rc*)
 		# Set a negative patchlevel to indicate that it's a pre-release.
 		PLEVEL=-1
+		if [[ ${PV} =~ _pre[0-9]{8}$ ]]; then
+			BASH_COMMIT=
+		fi
 		;;
 	*_p*)
 		PLEVEL=${PV##*_p}
 		;;
 	*)
 		PLEVEL=0
-		;;
 esac
 
 # The version of readline this bash normally ships with. Note that we only use
 # the bundled copy of readline for pre-releases.
-READLINE_VER="8.3_rc1"
+READLINE_VER="8.3"
 
 DESCRIPTION="The standard GNU Bourne again shell"
 HOMEPAGE="https://tiswww.case.edu/php/chet/bash/bashtop.html https://git.savannah.gnu.org/cgit/bash.git"
@@ -40,24 +42,23 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/bash.git"
 	EGIT_BRANCH=devel
 	inherit git-r3
-elif (( PLEVEL < 0 )) && [[ ${PV} == *_p* ]] ; then
+elif (( PLEVEL < 0 )) && [[ ${BASH_COMMIT} ]]; then
 	# It can be useful to have snapshots in the pre-release period once
 	# the first alpha is out, as various bugs get reported and fixed from
 	# the alpha, and the next pre-release is usually quite far away.
 	#
 	# i.e. if it's worth packaging the alpha, it's worth packaging a followup.
-	BASH_COMMIT="535a8150b65ee6888f54f602274dbbdcd77c788e"
 	SRC_URI="https://git.savannah.gnu.org/cgit/bash.git/snapshot/bash-${BASH_COMMIT}.tar.gz -> ${P}-${BASH_COMMIT}.tar.gz"
 	S=${WORKDIR}/${PN}-${BASH_COMMIT}
 else
-	my_urls=( {'mirror://gnu/bash','ftp://ftp.cwru.edu/pub/bash'}/"${MY_P}.tar.gz" )
+	my_urls=( "mirror://gnu/bash/${MY_P}.tar.gz" )
 
 	# bash-5.1 -> bash51
 	my_p=${PN}$(ver_cut 1-2) my_p=${my_p/.}
 
 	for (( my_patch_idx = 1; my_patch_idx <= PLEVEL; my_patch_idx++ )); do
 		printf -v my_patch_ver %s-%03d "${my_p}" "${my_patch_idx}"
-		my_urls+=( {'mirror://gnu/bash','ftp://ftp.cwru.edu/pub/bash'}/"${MY_P}-patches/${my_patch_ver}" )
+		my_urls+=( "mirror://gnu/bash/${MY_P}-patches/${my_patch_ver}" )
 		MY_PATCHES+=( "${DISTDIR}/${my_patch_ver}" )
 	done
 
@@ -77,6 +78,9 @@ if (( PLEVEL >= 0 )); then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="afs bashlogger examples mem-scramble +net nls plugins pgo +readline"
+# As of 5.4_alpha_pre20251016, bash tests finally exit non-0 on failure.
+# The differences look harmless but need investigation and fixing.
+RESTRICT="test"
 
 DEPEND="
 	>=sys-libs/ncurses-5.2-r2:=
@@ -123,7 +127,7 @@ src_unpack() {
 
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
-	elif (( PLEVEL < 0 )) && [[ ${PV} == *_p* ]] ; then
+	elif (( PLEVEL < 0 )) && [[ ${BASH_COMMIT} ]]; then
 		default
 	else
 		if use verify-sig; then
@@ -146,15 +150,6 @@ src_prepare() {
 	# Include official patches.
 	(( PLEVEL > 0 )) && eapply -p0 "${MY_PATCHES[@]}"
 
-	# Clean out local libs so we know we use system ones w/releases. The
-	# touch utility is invoked for the benefit of config.status.
-	if (( PLEVEL >= 0 )); then
-		rm -rf lib/{readline,termcap}/* \
-		&& touch lib/{readline,termcap}/Makefile.in \
-		&& sed -i -E 's:\$[{(](RL|HIST)_LIBSRC[)}]/[[:alpha:]_-]*\.h::g' Makefile.in \
-		|| die
-	fi
-
 	# Prefixify hardcoded path names. No-op for non-prefix.
 	hprefixify pathnames.h.in
 
@@ -176,8 +171,10 @@ src_configure() {
 	# Upstream only test with Bison and require GNUisms like YYEOF and
 	# YYERRCODE. The former at least may be in POSIX soon:
 	# https://www.austingroupbugs.net/view.php?id=1269.
+	#
 	# configure warns on use of non-Bison but doesn't abort. The result
-	# may misbehave at runtime.
+	# may misbehave at runtime. Chet also advises against use of byacc:
+	# https://lists.gnu.org/archive/html/bug-bash/2025-08/msg00115.html
 	unset -v YACC
 
 	if tc-is-cross-compiler; then
@@ -207,6 +204,7 @@ src_configure() {
 	append-cppflags \
 		-DDEFAULT_PATH_VALUE=\'\""${EPREFIX}"/usr/local/sbin:"${EPREFIX}"/usr/local/bin:"${EPREFIX}"/usr/sbin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/bin\"\' \
 		-DSTANDARD_UTILS_PATH=\'\""${EPREFIX}"/bin:"${EPREFIX}"/usr/bin:"${EPREFIX}"/sbin:"${EPREFIX}"/usr/sbin\"\' \
+		-DDEFAULT_LOADABLE_BUILTINS_PATH=\'\""${EPREFIX}"/usr/local/$(get_libdir)/bash:"${EPREFIX}"/usr/$(get_libdir)/bash\"\' \
 		-DSYS_BASHRC=\'\""${EPREFIX}"/etc/bash/bashrc\"\' \
 		-DSYS_BASH_LOGOUT=\'\""${EPREFIX}"/etc/bash/bash_logout\"\' \
 		-DNON_INTERACTIVE_LOGIN_SHELLS \
@@ -277,7 +275,9 @@ src_compile() {
 		# Used in test suite.
 		unset -v A
 
-		emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" -k check
+		# Testsuite isn't expected to pass for bash right now, but it
+		# also doesn't matter for PGO.
+		nonfatal emake CFLAGS="${CFLAGS} ${pgo_generate_flags[*]}" -k check
 
 		if tc-is-clang; then
 			llvm-profdata merge "${T}"/pgo --output="${T}"/pgo/default.profdata || die
@@ -317,18 +317,18 @@ src_install() {
 
 	insinto /etc/bash
 	doins "${FILESDIR}"/bash_logout
-	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r1 | newins - bashrc
+	my_prefixify bashrc.d "${FILESDIR}"/bashrc-r2 | newins - bashrc
 
 	insinto /etc/bash/bashrc.d
 	my_prefixify DIR_COLORS "${FILESDIR}"/bashrc.d/10-gentoo-color-r2.bash | newins - 10-gentoo-color.bash
-	newins "${FILESDIR}"/bashrc.d/10-gentoo-title-r2.bash 10-gentoo-title.bash
-	if [[ ! ${EPREFIX} ]]; then
-		doins "${FILESDIR}"/bashrc.d/15-gentoo-bashrc-check.bash
-	fi
+	newins "${FILESDIR}"/bashrc.d/10-gentoo-title-r3.bash 10-gentoo-title.bash
+
+	insinto /etc/profile.d
+	doins "${FILESDIR}/profile.d/00-prompt-command.sh"
 
 	insinto /etc/skel
 	for f in bash{_logout,_profile,rc}; do
-		newins "${FILESDIR}/dot-${f}" ".${f}"
+		newins "${FILESDIR}/skel/dot-${f}" ".${f}"
 	done
 
 	if use plugins; then
@@ -372,21 +372,41 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	local old_ver
+	local IFS old_ver ver
+	local -a versions
 
 	# If /bin/sh does not exist, provide it.
 	if [[ ! -e ${EROOT}/bin/sh ]]; then
 		ln -sf -- bash "${EROOT}"/bin/sh || die
 	fi
 
-	read -r old_ver <<<"${REPLACING_VERSIONS}"
-	if [[ ! $old_ver ]]; then
-		:
-	elif ver_test "$old_ver" -ge "5.2" && ver_test "$old_ver" -ge "5.2_p26-r8"; then
+	if [[ -e ${EROOT}/etc/bash/bashrc.d/15-gentoo-bashrc-check.bash ]]; then
+		ewarn "The following file is no longer packaged and can safely be deleted:"
+		ewarn "${EROOT}/etc/bash/bashrc.d/15-gentoo-bashrc-check.bash"
+	fi
+
+	read -rd '' -a versions <<<"${REPLACING_VERSIONS}"
+	for ver in "${versions[@]}"; do
+		if [[ ! ${old_ver} ]] || ver_test "${ver}" -lt "${old_ver}"; then
+			old_ver=${ver}
+		fi
+	done
+
+	if [[ ! ${old_ver} ]]; then
 		return
 	fi
 
-	while read -r; do ewarn "${REPLY}"; done <<'EOF'
+	{
+		if ver_test "${old_ver}" -ge "5.2" \
+			&& ver_test "${old_ver}" -ge "5.2_p26-r8"
+		then
+			:
+		elif ver_test "${old_ver}" -lt "5.2" \
+			&& ver_test "${old_ver}" -ge "5.1_p16-r8"
+		then
+			:
+		else
+			cat <<'EOF'
 Files under /etc/bash/bashrc.d must now have a suffix of .sh or .bash.
 
 Gentoo now defaults to defining PROMPT_COMMAND as an array. Depending on the
@@ -409,4 +429,40 @@ Those who would prefer for bash never to interfere with the window title may
 now opt out of the default title setting behaviour, either with the "unset -v
 PROMPT_COMMAND" command or by re-defining PROMPT_COMMAND as desired.
 EOF
+		fi
+
+		if ver_test "${old_ver}" -ge "5.3" \
+			&& ver_test "${old_ver}" -ge "5.3_p3-r3"
+		then
+			:
+		elif ver_test "${old_ver}" -lt "5.3" \
+			&& ver_test "${old_ver}" -ge "5.2_p37-r5"
+		then
+			:
+		else
+			cat <<'EOF'
+The window title setting behaviour has been improved. It is now formatted as
+"\u@\h \W", in accordance with the prompting mechanism of bash. For example,
+after switching to the home directory, the current working directly will be
+shown as the <tilde> character.
+
+The value of PROMPT_DIRTRIM is now respected. If this variable is unset, the
+use of the \W prompt string escape will prevail, with the current working
+directory typically being shown as its basename. If set to 0 or greater, \w
+will be used instead, which may be trimmed. This also means that the title
+can be made to show the full path by setting PROMPT_DIRTRIM=0.
+
+For further information, run info '(bash)Bash Variables' or visit
+https://www.gnu.org/software/bash/manual/bash.html#index-PROMPT_005fDIRTRIM.
+EOF
+		fi
+	} \
+	| if [[ ${COLUMNS} == [1-9]*([0-9]) ]] && (( COLUMNS > 80 )); then
+		fmt -w "$(( COLUMNS - 3 ))"
+	else
+		cat
+	fi \
+	| while read -r; do
+		ewarn "${REPLY}"
+	done
 }

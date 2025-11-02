@@ -1,0 +1,24 @@
+https://src.fedoraproject.org/rpms/mscgen/blob/rawhide/f/mscgen-0.20-width-never-less-than-zero.patch
+
+Description: don't make width < 0 with an off-by-one fix-up
+ gdoTextWidth() tries to correct an off-by-one error in the calculated width
+ of a text bounding box; but doesn't account for the possibility that the
+ bounding box has a size of zero (which is the case in latest libgd for
+ zero-width text).  Account for this so we aren't accidentally returning
+ -1 where we mean 0.
+Author: Steve Langasek <steve.langasek@ubuntu.com>
+Bug-Debian: https://bugs.debian.org/960405
+Last-Update: 2020-05-15
+
+--- a/src/gd_out.c
++++ b/src/gd_out.c
+@@ -212,7 +212,7 @@
+      *  the right of the last character for the fixed width
+      *  font.
+      */
+-    return rect[2] - 1;
++    return rect[2] ? rect[2] - 1 : 0;
+ #endif
+ }
+ 
+

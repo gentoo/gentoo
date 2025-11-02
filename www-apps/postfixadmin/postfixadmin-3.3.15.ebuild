@@ -6,7 +6,7 @@ EAPI=8
 inherit webapp
 
 DESCRIPTION="Web Based Management tool for Postfix style virtual domains and users"
-HOMEPAGE="http://postfixadmin.sourceforge.net"
+HOMEPAGE="https://github.com/postfixadmin/postfixadmin"
 SRC_URI="https://github.com/postfixadmin/postfixadmin/archive/${P}.tar.gz"
 S="${WORKDIR}/${PN}-${P}"
 

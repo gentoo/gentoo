@@ -24,8 +24,11 @@ else
 	# curl -Ls static.rust-lang.org/dist/channel-rust-${PV}.toml | grep "xz_url.*rust-src"
 	SRC_URI="$(rust_all_arch_uris "${PV}")
 		rust-src? ( ${RUST_TOOLCHAIN_BASEURL%/rust-}/2025-05-15/rust-src-${PV}.tar.xz )
+		ppc64? ( elibc_musl? ( !big-endian? (
+			$(rust_arch_uri powerpc64le-unknown-linux-musl ${PV})
+		) ) )
 	"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 fi
 
 DESCRIPTION="Systems programming language from Mozilla"

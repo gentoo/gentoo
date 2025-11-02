@@ -1,6 +1,34 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-04)
+# media-libs/libemf is not keyworded here
+app-office/dia wmf
+
+# Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
+# media-libs/zxingcpp is not keyworded here
+app-text/mupdf barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/Template-GD is not keyworded here. Bug #661634
+dev-perl/Template-Toolkit gd
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-21)
+# Requires dev-python/qtconsole.
+dev-python/ipython gui
+
+# Ian Jordan <immoloism@gmail.com> (2025-07-28)
+# Needs app-text/ronn-ng, which is not keyworded here
+app-accessibility/espeakup man
+
+# Cristian Othón Martínez Vera <cfuga@cfuga.mx> (2025-07-15)
+# Needs gui-apps/grim, which is not keyworded here
+x11-misc/xscreensaver wayland
+
+# Mike Gilbert <floppym@gentoo.org> (2025-06-18)
+# media-libs/libsdl3 is missing keywords.
+>=net-misc/freerdp-3.16.0 sdl
+
 # NRK <nrk@disroot.org> (2025-05-18)
 # app-arch/plzip is not keyworded
 app-alternatives/lzip plzip
@@ -335,10 +363,6 @@ dev-util/ragel doc
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
-# media-sound/lash not keyworded, bug #736725
-media-sound/fluidsynth lash
-
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2020-10-14)
 # app-i18n/fcitx:4 not keyworded.
 media-libs/libsdl2 fcitx
@@ -353,7 +377,7 @@ mail-filter/pyzor mysql
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa video_cards_zink vulkan vulkan-overlay
+media-libs/mesa video_cards_zink vulkan-overlay
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-07-18)
 # net-libs/webkit-gtk has no alpha keywords
@@ -430,7 +454,6 @@ dev-util/geany-plugins markdown
 # Requires app-text/mecab which isn't yet keyworded
 # on alpha, bug 668674
 dev-db/mysql cjk
-dev-db/percona-server cjk
 
 # Mikle Kolyada <zlogene@gentoo.org> (2018-10-05)
 # Not keyworded (see bug #540540c#8)
@@ -557,7 +580,6 @@ net-misc/networkmanager wext
 
 # Tobias Klausmann <klausman@gentoo.org> (2015-08-10)
 # Opting out of the net-misc/ofono dep tree until we have a user request
->=media-sound/pulseaudio-6.0 ofono-headset
 media-sound/pulseaudio-daemon ofono-headset
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)

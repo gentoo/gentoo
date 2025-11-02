@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,6 +26,15 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	tc-ld-is-mold && {
+		# mold doesn't support --cref, bug #937354
+		find . -name Makefile -exec sed -r \
+			-e 's:map,--cref\s:map :g' \
+			-e 's:\s(-Wl,)?--cref(\s|$): :g' \
+			-i {} + || die
+	}
+
 	cd ports/unix || die
 
 	# 1) don't die on compiler warning

@@ -1,0 +1,15 @@
+Seems that the '5' enforces the major version and it refuses to find
+system's assimp-6.0.2 (which is perfectly usable given Qt 6.9.2 bundles
+that version without it).
+
+We don't package older ones, so drop the check as a quick workaround.
+
+https://bugreports.qt.io/browse/QTBUG-137996
+--- a/src/core/configure.cmake
++++ b/src/core/configure.cmake
+@@ -16 +16 @@
+-qt_find_package(WrapQt3DAssimp 5 PROVIDED_TARGETS WrapQt3DAssimp::WrapQt3DAssimp MODULE_NAME 3dcore QMAKE_LIB qt3d-assimp)
++qt_find_package(WrapQt3DAssimp PROVIDED_TARGETS WrapQt3DAssimp::WrapQt3DAssimp MODULE_NAME 3dcore QMAKE_LIB qt3d-assimp)
+@@ -23 +23 @@
+-                   PACKAGES PACKAGE WrapQt3DAssimp 5
++                   PACKAGES PACKAGE WrapQt3DAssimp

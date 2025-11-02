@@ -1,0 +1,40 @@
+diff --git a/test/test_searchlog.c b/test/test_searchlog.c
+index b4f2a46..f463e40 100644
+--- a/test/test_searchlog.c
++++ b/test/test_searchlog.c
+@@ -233,7 +233,7 @@ void test_init_search_panel_dxped(void **state) {
+ /* testing searchlog for refactoring */
+ void test_searchlog_pickup_call(void **state) {
+     strcpy (hiscall, "UA");
+-    filterLog("");
++    filterLog();
+     assert_int_equal (strncmp(searchresult[0], QSO3, 80), 0);
+     assert_int_equal (strncmp(searchresult[1], QSO5, 80), 0);
+ }
+@@ -241,7 +241,7 @@ void test_searchlog_pickup_call(void **state) {
+ void test_searchlog_pickup_call_mixedmode(void **state) {
+     mixedmode = 1;
+     strcpy (hiscall, "UA");
+-    filterLog("");
++    filterLog();
+     assert_int_equal (strncmp(searchresult[0], QSO3, 80), 0);
+     assert_int_equal (strncmp(searchresult[1], QSO4, 80), 0);
+     assert_int_equal (strncmp(searchresult[2], QSO5, 80), 0);
+@@ -249,7 +249,7 @@ void test_searchlog_pickup_call_mixedmode(void **state) {
+ 
+ void test_searchlog_extract_data(void **state) {
+     strcpy (hiscall, "UA");
+-    filterLog("");
++    filterLog();
+     assert_string_equal (result[0], " 40CW  0007 OE3UAI       15            ");
+     assert_string_equal (result[1], " 80CW  0009 UA9LM        17            ");
+ }
+@@ -257,7 +257,7 @@ void test_searchlog_extract_data(void **state) {
+ void test_searchlog_extract_data_mixedmode(void **state) {
+     mixedmode = 1;
+     strcpy (hiscall, "UA");
+-    filterLog("");
++    filterLog();
+     assert_string_equal (result[0], " 40CW  0007 OE3UAI       15            ");
+     assert_string_equal (result[1], " 80SSB 0008 UA3JK        16            ");
+ }

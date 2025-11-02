@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="hppa"
-ACCEPT_KEYWORDS="hppa"
+ACCEPT_KEYWORDS="hppa ~hppa"
 
 CHOST="hppa-unknown-linux-gnu"
 CFLAGS="-O2 -pipe"

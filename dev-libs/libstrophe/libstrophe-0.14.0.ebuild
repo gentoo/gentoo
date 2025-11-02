@@ -13,7 +13,7 @@ SRC_URI="
 LICENSE="|| ( MIT GPL-3 )"
 # Subslot: ${SONAME}.1 to differentiate from previous versions without SONAME
 SLOT="0/0.1"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="doc expat gnutls"
 
 RDEPEND="

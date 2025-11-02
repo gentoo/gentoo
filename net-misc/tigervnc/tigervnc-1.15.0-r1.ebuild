@@ -11,7 +11,7 @@ XSERVER_PATCH_VERSION="21"
 
 DESCRIPTION="Remote desktop viewer display system"
 HOMEPAGE="https://tigervnc.org"
-SRC_URI="server? ( ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
+SRC_URI="server? ( https://www.x.org/releases/individual/xserver/xorg-server-${XSERVER_VERSION}.tar.xz )"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3

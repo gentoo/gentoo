@@ -1,0 +1,128 @@
+From c7a96a66400ca0bf300821638e545ee25d111b42 Mon Sep 17 00:00:00 2001
+From: abraunegg <alex.braunegg@gmail.com>
+Date: Mon, 20 Oct 2025 10:22:34 +1100
+Subject: [PATCH] Fix Bug #3475: Fix Shared Folder data being deleted due to
+ 'skip_dir' entry of '.*' (#3476)
+
+* Add missing element of shared folder DB tie values to idsFaked when using --dry-run
+* Ensure that bad entries of '.*' are not added for 'skip_dir' to align to 'skip_file'
+* Update application messaging on what configuration option to use to skip .files and .folders
+
+diff --git a/src/clientSideFiltering.d b/src/clientSideFiltering.d
+index 0802cacbe..c6c32dd45 100644
+--- a/src/clientSideFiltering.d
++++ b/src/clientSideFiltering.d
+@@ -42,12 +42,24 @@ class ClientSideFiltering {
+ 			loadSyncList(appConfig.syncListFilePath);
+ 		}
+ 		
+-		// Configure skip_dir, skip_file, skip-dir-strict-match & skip_dotfiles from config entries
+ 		// Handle skip_dir configuration in config file
+-		if (debugLogging) {
+-			addLogEntry("Configuring skip_dir ...", ["debug"]);
+-			addLogEntry("skip_dir: " ~ to!string(appConfig.getValueString("skip_dir")), ["debug"]);
++		if (debugLogging) {addLogEntry("Configuring skip_dir ...", ["debug"]);}
++		
++		// Validate skip_dir entries to ensure that this does not contain an invalid configuration
++		// Do not use a skip_dir entry of .* as this will prevent correct searching of local changes to process.
++		foreach(entry; appConfig.getValueString("skip_dir").split("|")){
++			if (entry == ".*") {
++				// invalid entry element detected
++				addLogEntry();
++				addLogEntry("ERROR: Invalid skip_dir entry '.*' detected.");
++				addLogEntry("       To exclude hidden directories (those starting with '.'), enable the 'skip_dotfiles' configuration option instead of using wildcard patterns.");
++				addLogEntry();
++				return false;
++			}
+ 		}
++		
++		// All skip_dir entries are valid
++		if (debugLogging) {addLogEntry("skip_dir: " ~ appConfig.getValueString("skip_dir"), ["debug"]);}
+ 		setDirMask(appConfig.getValueString("skip_dir"));
+ 		
+ 		// Was --skip-dir-strict-match configured?
+@@ -59,24 +71,18 @@ class ClientSideFiltering {
+ 			setSkipDirStrictMatch();
+ 		}
+ 		
+-		// Was --skip-dot-files configured?
+-		if (debugLogging) {
+-			addLogEntry("Configuring skip_dotfiles ...", ["debug"]);
+-			addLogEntry("skip_dotfiles: " ~ to!string(appConfig.getValueBool("skip_dotfiles")), ["debug"]);
+-		}
+-		if (appConfig.getValueBool("skip_dotfiles")) {
+-			setSkipDotfiles();
+-		}
+-		
+ 		// Handle skip_file configuration in config file
+ 		if (debugLogging) {addLogEntry("Configuring skip_file ...", ["debug"]);}
+ 		
+-		// Validate skip_file to ensure that this does not contain an invalid configuration
++		// Validate skip_file entries to ensure that this does not contain an invalid configuration
+ 		// Do not use a skip_file entry of .* as this will prevent correct searching of local changes to process.
+ 		foreach(entry; appConfig.getValueString("skip_file").split("|")){
+ 			if (entry == ".*") {
+ 				// invalid entry element detected
+-				addLogEntry("ERROR: Invalid skip_file entry '.*' detected");
++				addLogEntry();
++				addLogEntry("ERROR: Invalid skip_file entry '.*' detected.");
++				addLogEntry("       To exclude hidden files (those starting with '.'), enable the 'skip_dotfiles' configuration option instead of using wildcard patterns.");
++				addLogEntry();
+ 				return false;
+ 			}
+ 		}
+@@ -85,6 +91,15 @@ class ClientSideFiltering {
+ 		if (debugLogging) {addLogEntry("skip_file: " ~ appConfig.getValueString("skip_file"), ["debug"]);}
+ 		setFileMask(appConfig.getValueString("skip_file"));
+ 		
++		// Was --skip-dot-files configured?
++		if (debugLogging) {
++			addLogEntry("Configuring skip_dotfiles ...", ["debug"]);
++			addLogEntry("skip_dotfiles: " ~ to!string(appConfig.getValueBool("skip_dotfiles")), ["debug"]);
++		}
++		if (appConfig.getValueBool("skip_dotfiles")) {
++			setSkipDotfiles();
++		}
++		
+ 		// All configured OK
+ 		return true;
+ 	}
+diff --git a/src/sync.d b/src/sync.d
+index f69f8272b..e0a4f06f6 100644
+--- a/src/sync.d
++++ b/src/sync.d
+@@ -3350,6 +3350,12 @@ class SyncEngine {
+ 		addLogEntry("Creating|Updating a DB Tie Record for this Shared Folder from the online parental data: " ~ sharedFolderDatabaseTie.name, ["debug"]);
+ 		addLogEntry("Shared Folder DB Tie Record data: " ~ to!string(sharedFolderDatabaseTie), ["debug"]);
+ 		
++		// Is this a dry-run excercise?
++		if (dryRun) {
++			// We need to ensure we add this to our faked entries
++			idsFaked ~= [sharedFolderDatabaseTie.driveId, sharedFolderDatabaseTie.id];
++		}
++		
+ 		// Save item
+ 		itemDB.upsert(sharedFolderDatabaseTie);
+ 		
+@@ -5138,6 +5144,12 @@ class SyncEngine {
+ 			}
+ 		}
+ 		
++		// Debug logging of paths being checked
++		if (debugLogging) {
++			addLogEntry("Database item being checked: " ~ to!string(dbItem), ["debug"]);
++			addLogEntry("Local Path being checked:    " ~ localFilePath, ["debug"]);
++		}
++		
+ 		// Determine which action to take
+ 		final switch (dbItem.type) {
+ 		case ItemType.file:
+@@ -5319,7 +5331,7 @@ class SyncEngine {
+ 			logKey = generateAlphanumericString();
+ 			displayFunctionProcessingStart(thisFunctionName, logKey);
+ 		}
+-			
++		
+ 		// What is the source of this item data?
+ 		string itemSource = "database";
+ 		

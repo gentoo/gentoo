@@ -20,7 +20,6 @@
     server.
   </longdescription>
   <use>
-    <flag name="blksha1">Use the new optimized SHA1 implementation</flag>
     <flag name="cgi">Install gitweb too</flag>
     <flag name="curl">Support fetching and pushing (requires webdav too) over http:// and https:// protocols</flag>
     <flag name="gpg">Pull in gnupg for signing -- without gnupg, attempts at signing will fail at runtime!</flag>
@@ -31,6 +30,7 @@
     <flag name="subversion">Include git-svn for <pkg>dev-vcs/subversion</pkg> support</flag>
     <flag name="tk">Include the 'gitk' and 'git gui' tools</flag>
     <flag name="webdav">Adds support for push'ing to HTTP/HTTPS repositories via DAV</flag>
+    <flag name="perl">Adds Perl bindings and tools such as git-send-email</flag>
   </use>
   <upstream>
     <remote-id type="cpe">cpe:/a:git:git</remote-id>

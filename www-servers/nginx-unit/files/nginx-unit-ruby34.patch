@@ -1,0 +1,106 @@
+From 7b7b29fcfe077e577cf088414cff0128bfb0c1bf Mon Sep 17 00:00:00 2001
+From: Andrew Clayton <a.clayton@nginx.com>
+Date: Tue, 21 Jan 2025 19:15:02 +0000
+Subject: [PATCH] ruby: Fix build failures with Ruby 3.4
+
+Ruby 3.4 started to actually mark some deprecated functions as
+*deprecated* now resulting in compiler warnings (which due to -Werror we
+treat as errors and thus the build fails).
+
+The *new* functions were actually introduced back in Ruby 1.9.2, so have
+been around for quite some time. We claim support for Ruby 2.0 onwards
+so this is more than fine.
+
+The new API replaces the old 'mark' and 'free' parameters with a struct
+that allows for more fine tuning/configuration. We never made use of
+either of those parameters and so the only members of this struct we
+*need* to set is the structure wrapper name and the dsize function
+pointer which is passed a pointer to the underlying wrapped structure to
+calculate its memory usage. While this is *not* required the
+documentation *recommends* setting it (though it doesn't say how it's
+used).
+
+Ruby pytests still pass after this change...
+
+Closes: https://github.com/nginx/unit/issues/1525
+Link: <https://bugs.ruby-lang.org/issues/19998>
+Link: <https://docs.ruby-lang.org/en/3.4/extension_rdoc.html#label-C+struct+to+Ruby+object>
+Signed-off-by: Andrew Clayton <a.clayton@nginx.com>
+---
+ src/ruby/nxt_ruby_stream_io.c | 28 +++++++++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 5 deletions(-)
+
+diff --git a/src/ruby/nxt_ruby_stream_io.c b/src/ruby/nxt_ruby_stream_io.c
+index 4ef69cee1..bda89b0f6 100644
+--- a/src/ruby/nxt_ruby_stream_io.c
++++ b/src/ruby/nxt_ruby_stream_io.c
+@@ -19,6 +19,24 @@ static VALUE nxt_ruby_stream_io_write(VALUE obj, VALUE args);
+ nxt_inline long nxt_ruby_stream_io_s_write(nxt_ruby_ctx_t *rctx, VALUE val);
+ static VALUE nxt_ruby_stream_io_flush(VALUE obj);
+ static VALUE nxt_ruby_stream_io_close(VALUE obj);
++nxt_inline size_t nxt_ruby_dt_dsize_rctx(const void *arg);
++
++
++static const rb_data_type_t  nxt_rctx_dt = {
++    .wrap_struct_name  = "rctx",
++    .function  = {
++        .dsize         = nxt_ruby_dt_dsize_rctx,
++    },
++};
++
++
++nxt_inline size_t
++nxt_ruby_dt_dsize_rctx(const void *arg)
++{
++    const nxt_ruby_ctx_t  *rctx = arg;
++
++    return sizeof(*rctx);
++}
+ 
+ 
+ VALUE
+@@ -73,7 +91,7 @@ nxt_ruby_stream_io_new(VALUE class, VALUE arg)
+ {
+     VALUE  self;
+ 
+-    self = Data_Wrap_Struct(class, 0, 0, (void *) (uintptr_t) arg);
++    self = TypedData_Wrap_Struct(class, &nxt_rctx_dt, (void *)(uintptr_t)arg);
+ 
+     rb_obj_call_init(self, 0, NULL);
+ 
+@@ -96,7 +114,7 @@ nxt_ruby_stream_io_gets(VALUE obj)
+     nxt_ruby_ctx_t           *rctx;
+     nxt_unit_request_info_t  *req;
+ 
+-    Data_Get_Struct(obj, nxt_ruby_ctx_t, rctx);
++    TypedData_Get_Struct(obj, nxt_ruby_ctx_t, &nxt_rctx_dt, rctx);
+     req = rctx->req;
+ 
+     if (req->content_length == 0) {
+@@ -152,7 +170,7 @@ nxt_ruby_stream_io_read(VALUE obj, VALUE args)
+     long            copy_size, u_size;
+     nxt_ruby_ctx_t  *rctx;
+ 
+-    Data_Get_Struct(obj, nxt_ruby_ctx_t, rctx);
++    TypedData_Get_Struct(obj, nxt_ruby_ctx_t, &nxt_rctx_dt, rctx);
+ 
+     copy_size = rctx->req->content_length;
+ 
+@@ -208,7 +226,7 @@ nxt_ruby_stream_io_puts(VALUE obj, VALUE args)
+         return Qnil;
+     }
+ 
+-    Data_Get_Struct(obj, nxt_ruby_ctx_t, rctx);
++    TypedData_Get_Struct(obj, nxt_ruby_ctx_t, &nxt_rctx_dt, rctx);
+ 
+     nxt_ruby_stream_io_s_write(rctx, RARRAY_PTR(args)[0]);
+ 
+@@ -226,7 +244,7 @@ nxt_ruby_stream_io_write(VALUE obj, VALUE args)
+         return Qnil;
+     }
+ 
+-    Data_Get_Struct(obj, nxt_ruby_ctx_t, rctx);
++    TypedData_Get_Struct(obj, nxt_ruby_ctx_t, &nxt_rctx_dt, rctx);
+ 
+     len = nxt_ruby_stream_io_s_write(rctx, RARRAY_PTR(args)[0]);
+ 

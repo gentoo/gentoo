@@ -5,6 +5,10 @@
 		<email>kangie@gentoo.org</email>
 		<name>Matt Jolly</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">sabnzbd/sabctools</remote-id>
 		<remote-id type="pypi">sabctools</remote-id>

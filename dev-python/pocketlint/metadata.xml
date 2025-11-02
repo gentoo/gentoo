@@ -2,6 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">rhinstaller/pocketlint</remote-id>
 		<remote-id type="pypi">pocketlint</remote-id>

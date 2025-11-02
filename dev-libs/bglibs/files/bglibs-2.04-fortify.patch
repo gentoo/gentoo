@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/956707
+--- a/net/dns_resolvconfip.c
++++ b/net/dns_resolvconfip.c
+@@ -71,7 +71,7 @@ static int init(ipv4addr ip[DNS_MAX_IPS])
+     memcpy(ip,"\177\0\0\1",4);
+     iplen = 4;
+   }
+-  memset(ip + iplen,0,64 - iplen);
++  memset(&ip[iplen],0,sizeof(ipv4addr));
+   return 0;
+ }
+ 

@@ -1,2 +1,6 @@
 # Force the flag which corresponds to ARCH.
 arm
+
+# Sam James <sam@gentoo.org> (2025-07-19)
+# Force the native/host target
+llvm_targets_ARM

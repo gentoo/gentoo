@@ -1,0 +1,35 @@
+https://github.com/transmission/transmission/pull/7086
+https://bugs.gentoo.org/958253
+
+From 036174aa0e3d1f878e2a629ffe3709942a947c06 Mon Sep 17 00:00:00 2001
+From: Yat Ho <lagoho7@gmail.com>
+Date: Wed, 28 Aug 2024 21:09:05 +0800
+Subject: [PATCH] fix: don't process http announce error if already succeeded
+
+---
+ libtransmission/announcer-http.cc | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/libtransmission/announcer-http.cc b/libtransmission/announcer-http.cc
+index cfb44022fab..4a231e64cea 100644
+--- a/libtransmission/announcer-http.cc
++++ b/libtransmission/announcer-http.cc
+@@ -154,16 +154,12 @@ void onAnnounceDone(tr_web::FetchResponse const& web_response)
+         }
+         else if (got_all_responses)
+         {
+-            auto const* response_used = &response;
+-
+             // All requests have been answered, but none were successful.
+             // Choose the one that went further to report.
+-            if (data->previous_response && !response.did_connect && !response.did_timeout)
++            if (data->previous_response)
+             {
+-                response_used = &*data->previous_response;
++                data->on_response(response.did_connect || response.did_timeout ? response : *data->previous_response);
+             }
+-
+-            data->on_response(*response_used);
+         }
+         else
+         {

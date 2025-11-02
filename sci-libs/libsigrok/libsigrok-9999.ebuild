@@ -1,29 +1,42 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
-
+PYTHON_COMPAT=( python3_{11..13} )
 USE_RUBY="ruby31 ruby32"
 RUBY_OPTIONAL="yes"
-
 inherit python-r1 java-pkg-opt-2 ruby-ng udev xdg-utils
 
-if [[ ${PV} == *9999* ]]; then
+case ${PV} in
+*9999*)
 	EGIT_REPO_URI="https://github.com/sigrokproject/${PN}.git"
 	inherit git-r3 autotools
-else
+	S="${WORKDIR}"/${P}
+	;;
+*_p*)
+	inherit autotools unpacker
+	COMMIT="f06f788118191d19fdbbb37046d3bd5cec91adb1"
+	SRC_URI="https://sigrok.org/gitweb/?p=${PN}.git;a=snapshot;h=${COMMIT};sf=zip -> ${PN}-${COMMIT:0:7}.zip"
+	S="${WORKDIR}"/${PN}-${COMMIT:0:7}
+	;;
+*)
 	SRC_URI="https://sigrok.org/download/source/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-fi
+	S="${WORKDIR}"/${P}
+	;;
+esac
 
 DESCRIPTION="Basic hardware drivers for logic analyzers and input/output file format support"
 HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
-SLOT="0/9999"
-IUSE="bluetooth +cxx ftdi hidapi java nettle parport python ruby serial static-libs test +udev usb"
+if [[ ${PV} == *9999* ]]; then
+	SLOT="0/9999"
+else
+	SLOT="0/4"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+fi
+IUSE="bluetooth +cxx ftdi gpib hidapi java nettle parport python ruby serial test +udev usb"
 REQUIRED_USE="java? ( cxx )
 	python? ( cxx ${PYTHON_REQUIRED_USE} )
 	ruby? ( cxx || ( $(ruby_get_use_targets) ) )"
@@ -31,30 +44,29 @@ REQUIRED_USE="java? ( cxx )
 RESTRICT="!test? ( test )"
 
 # We also support librevisa, but that isn't in the tree ...
-LIB_DEPEND="
-	>=dev-libs/glib-2.32.0[static-libs(+)]
-	>=dev-libs/libzip-0.8:=[static-libs(+)]
+COMMON_DEPEND="
+	>=dev-libs/glib-2.32.0
+	>=dev-libs/libzip-0.8:=
+	sys-libs/zlib
 	bluetooth? ( >=net-wireless/bluez-4.0:= )
-	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
-	ftdi? ( dev-embedded/libftdi:1[static-libs(+)] )
+	cxx? ( dev-cpp/glibmm:2 )
+	ftdi? ( dev-embedded/libftdi:1 )
+	gpib? ( sci-libs/linux-gpib )
 	hidapi? ( >=dev-libs/hidapi-0.8.0 )
-	nettle? ( dev-libs/nettle:=[static-libs(+)] )
-	parport? ( sys-libs/libieee1284[static-libs(+)] )
+	nettle? ( dev-libs/nettle:= )
+	parport? ( sys-libs/libieee1284 )
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}]
 	)
 	ruby? ( $(ruby_implementations_depend) )
-	serial? ( >=dev-libs/libserialport-0.1.1[static-libs(+)] )
-	usb? ( virtual/libusb:1[static-libs(+)] )
+	serial? ( >=dev-libs/libserialport-0.1.1 )
+	usb? ( virtual/libusb:1 )
 "
-RDEPEND="
+RDEPEND="${COMMON_DEPEND}
 	java? ( >=virtual/jre-1.8:* )
-	!static-libs? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	static-libs? ( ${LIB_DEPEND} )
 "
-DEPEND="${LIB_DEPEND//\[static-libs(+)]}
-	cxx? ( app-text/doxygen )
+DEPEND="${COMMON_DEPEND}
 	java? (
 		>=dev-lang/swig-3.0.6
 		>=virtual/jdk-1.8:*
@@ -66,10 +78,12 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	)
 	ruby? ( >=dev-lang/swig-3.0.8 )
 	test? ( >=dev-libs/check-0.9.4 )
-	virtual/pkgconfig
 "
-
-S="${WORKDIR}"/${P}
+BDEPEND="
+	virtual/pkgconfig
+	cxx? ( app-text/doxygen )
+"
+[[ ${PV} == *_p* ]] && BDEPEND+=" app-arch/unzip"
 
 pkg_setup() {
 	use python && python_setup
@@ -78,11 +92,17 @@ pkg_setup() {
 }
 
 src_unpack() {
-	[[ ${PV} == *9999* ]] && git-r3_src_unpack || default
+	case ${PV} in
+	*9999*)
+		git-r3_src_unpack ;;
+	*_p*)
+		unpack_zip ${A} ;;
+	esac
+	default
 }
 
 sigrok_src_prepare() {
-	[[ ${PV} == *9999* ]] && eautoreconf
+	[[ ${PV} == *9999* || ${PV} == *_p* ]] && eautoreconf
 }
 
 each_ruby_prepare() {
@@ -102,25 +122,26 @@ src_prepare() {
 }
 
 sigrok_src_configure() {
-	econf \
-		--disable-python \
-		--disable-ruby \
-		$(use_with bluetooth libbluez) \
-		$(use_with ftdi libftdi) \
-		$(use_with hidapi libhidapi) \
-		$(use_with nettle libnettle) \
-		$(use_with parport libieee1284) \
-		$(use_with serial libserialport) \
-		$(use_with usb libusb) \
-		$(use_enable cxx) \
-		$(use_enable java) \
-		$(use_enable static-libs static) \
-		"${@}"
+	local myeconfargs=(
+		--disable-python
+		--disable-ruby
+		$(use_with bluetooth libbluez)
+		$(use_enable cxx)
+		$(use_with ftdi libftdi)
+		$(use_with hidapi libhidapi)
+		$(use_enable java)
+		$(use_with nettle libnettle)
+		$(use_with parport libieee1284)
+		$(use_with serial libserialport)
+		$(use_with usb libusb)
+	)
+	econf "${myeconfargs[@]}" "${@}"
 }
 
 each_python_configure() {
-	cd "${BUILD_DIR}"
-	sigrok_src_configure --enable-python
+	pushd "${BUILD_DIR}" > /dev/null || die
+		sigrok_src_configure --enable-python
+	popd >/dev/null || die
 }
 
 each_ruby_configure() {
@@ -134,8 +155,9 @@ src_configure() {
 }
 
 each_python_compile() {
-	cd "${BUILD_DIR}"
-	emake python-build
+	pushd "${BUILD_DIR}" > /dev/null || die
+		emake python-build
+	popd >/dev/null || die
 }
 
 each_ruby_compile() {
@@ -153,9 +175,10 @@ src_test() {
 }
 
 each_python_install() {
-	cd "${BUILD_DIR}"
-	emake python-install DESTDIR="${D}"
-	python_optimize
+	pushd "${BUILD_DIR}" > /dev/null || die
+		emake python-install DESTDIR="${D}"
+		python_optimize
+	popd >/dev/null || die
 }
 
 each_ruby_install() {

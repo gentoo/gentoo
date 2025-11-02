@@ -24,7 +24,7 @@ LICENSE="FDL-1.3+"
 SLOT="0"
 IUSE="pdf"
 if [[ ${PV} != 9999 ]] ; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 BDEPEND="

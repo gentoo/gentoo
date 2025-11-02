@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/955898
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # Please note that the package source code is licensed under its own license.
+ 
+ project ( toluapp C )
+-cmake_minimum_required ( VERSION 2.8 )
++cmake_minimum_required ( VERSION 3.15 )
+ include ( GNUInstallDirs )
+ 
+ find_package ( Lua ${LUA_VERSION} EXACT REQUIRED )

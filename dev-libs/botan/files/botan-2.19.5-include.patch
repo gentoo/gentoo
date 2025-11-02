@@ -1,0 +1,13 @@
+Add missing include
+See https://bugs.gentoo.org/942814
+> src/.../cli.h: error: uint8_t does not name a type
+--- a/src/cli/cli.h
++++ b/src/cli/cli.h
+@@ -8,6 +8,7 @@
+ #define BOTAN_CLI_H_
+ 
+ #include <botan/build.h>
++#include <cstdint>
+ #include <functional>
+ #include <ostream>
+ #include <map>

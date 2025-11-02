@@ -1,0 +1,30 @@
+https://lore.kernel.org/keyrings/85561febfcf0618a9280448d5c53775646f470d6.1703712863.git.nvinson234@gmail.com/raw
+
+Functions keyctl_restrict() and keyctl_dh_compute_kdf_alloc() are
+nodefined. Their inclusion in version.lds causes clang/llvm LTO
+optimizations to fail with error messages similar to
+
+    error: version script assignment of KEYUTILS_1.7 to symbol
+    keyctl_restrict failed: symbol not defined
+
+This patch fixes the issue by removing the symbol names from
+version.lds.
+
+Fixes Gentoo bug 914637 (https://bugs.gentoo.org/914637)
+
+Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+
+--- a/version.lds
++++ b/version.lds
+@@ -76,9 +76,7 @@ KEYUTILS_1.6 {
+ 
+ KEYUTILS_1.7 {
+ 	/* management functions */
+-	keyctl_restrict;
+ 	keyctl_dh_compute_kdf;
+-	keyctl_dh_compute_kdf_alloc;
+ 
+ } KEYUTILS_1.6;
+ 
+-- 
+2.43.0

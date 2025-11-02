@@ -151,6 +151,7 @@ src_configure() {
 		$(meson_feature webdav with_webdav_props)
 
 		# Unpackaged in Gentoo
+		-Dwith_boringssl=false
 		-Dwith_wolfssl=false
 
 		$(meson_use xattr with_xattr)

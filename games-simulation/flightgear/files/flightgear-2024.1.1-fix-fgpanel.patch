@@ -376,7 +376,7 @@ diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGRGBTextureLoader.hx
  };
 diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGTextLayer.cxx my/utils/fgpanel/FGTextLayer.cxx
 --- flightgear-2024.1.1/utils/fgpanel/FGTextLayer.cxx	2025-02-27 15:49:32.000000000 +0100
-+++ my/utils/fgpanel/FGTextLayer.cxx	2025-05-22 07:19:55.218845401 +0200
++++ my/utils/fgpanel/FGTextLayer.cxx	2025-06-01 02:32:56.203092040 +0200
 @@ -156,7 +156,7 @@
      int Left, Bottom, W, H;
      double X1, Y1, X2, Y2;
@@ -415,6 +415,15 @@ diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/FGTextLayer.cxx my/ut
                             const float mult,
                             const float offs,
                             const bool truncation) :
+@@ -290,7 +290,7 @@
+       sprintf (m_buf, m_fmt.c_str (), m_text.c_str ());
+       break;
+     case TEXT_VALUE:
+-      sprintf (m_buf, m_fmt.c_str (), m_node->getStringValue ());
++      sprintf (m_buf, m_fmt.c_str (), m_node->getStringValue ().c_str());
+       break;
+     case DOUBLE_VALUE:
+       double d (m_offs + m_node->getFloatValue() * m_mult);
 diff '--color=auto' -ruN flightgear-2024.1.1/utils/fgpanel/GL_utils.cxx my/utils/fgpanel/GL_utils.cxx
 --- flightgear-2024.1.1/utils/fgpanel/GL_utils.cxx	2025-02-27 15:49:32.000000000 +0100
 +++ my/utils/fgpanel/GL_utils.cxx	2025-05-22 07:18:54.467677071 +0200

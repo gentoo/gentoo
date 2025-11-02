@@ -16,7 +16,7 @@ if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://git.sr.ht/~grimler/Heimdall/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Heimdall-v${PV}"
 
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="amd64 ~arm64"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.sr.ht/~grimler/Heimdall"

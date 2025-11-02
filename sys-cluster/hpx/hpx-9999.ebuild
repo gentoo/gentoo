@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -31,9 +31,15 @@ REQUIRED_USE="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+#
+# hpx v1.11.0 does not build with >=dev-cpp/asio-1.34.
+# See bug report: https://github.com/STEllAR-GROUP/hpx/issues/6730
+# It will be fixed in hpx v1.11.1.
+#
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-cpp/asio-1.12.0
+	<dev-cpp/asio-1.34
 	dev-libs/boost:=
 	sys-apps/hwloc:=
 	jemalloc? ( dev-libs/jemalloc:= )

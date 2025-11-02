@@ -1,0 +1,65 @@
+PR pending
+https://gitlab.nic.cz/knot/knot-dns/-/merge_requests/1809.patch
+GnuTLS is not needed to build the Redis module alone
+--- a/src/config.h.in
++++ b/src/config.h.in
+@@ -96,6 +96,9 @@
+ /* gnutls_early_cipher_get available */
+ #undef HAVE_GNUTLS_QUIC
+ 
++/* Define to 1 if GnuTLS is not needed, ie. to build the Redis module alone */
++#undef DISABLE_GNUTLS
++
+ /* Define to 1 if you have the 'initgroups' function. */
+ #undef HAVE_INITGROUPS
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -170,7 +170,11 @@ PKG_CHECK_MODULES([gnutls], [gnutls >= 3.6.10], [
+ 
+     CFLAGS=$save_CFLAGS
+     LIBS=$save_LIBS
+-])
++],
++    AS_IF([test "$enable_redis" != "module"],
++        [AC_MSG_ERROR([GnuTLS library not found])],
++        [AC_DEFINE([DISABLE_GNUTLS], [1], [Disable GnuTLS support.])])
++)
+ AM_CONDITIONAL([ENABLE_PKCS11], [test "$enable_pkcs11" = "yes"])
+ 
+ AC_ARG_ENABLE([recvmmsg],
+--- a/src/libdnssec/key/keytag.c
++++ b/src/libdnssec/key/keytag.c
+@@ -10,7 +10,9 @@
+ #include "libdnssec/binary.h"
+ #include "libdnssec/error.h"
+ #include "libdnssec/key/dnskey.h"
++#ifndef DISABLE_GNUTLS
+ #include "libdnssec/shared/shared.h"
++#endif
+ 
+ /*!
+  * Compute keytag for RSA/MD5 key.
+--- a/src/libdnssec/key/dnskey.h
++++ b/src/libdnssec/key/dnskey.h
+@@ -5,7 +5,9 @@
+ 
+ #pragma once
+ 
++#ifndef DISABLE_GNUTLS
+ #include <gnutls/abstract.h>
++#endif
+ 
+ #include "libdnssec/binary.h"
+ #include "libdnssec/error.h"
+@@ -28,8 +30,10 @@ enum dnskey_rdata_offsets {
+ int dnskey_rdata_set_pubkey(dnssec_binary_t *rdata,
+ 			    const dnssec_binary_t *pubkey);
+ 
++#ifndef DISABLE_GNUTLS
+ /*!
+  * Create a GnuTLS public key from DNSKEY RDATA.
+  */
+ int dnskey_rdata_to_crypto_key(const dnssec_binary_t *rdata,
+ 			       gnutls_pubkey_t *key_ptr);
++#endif

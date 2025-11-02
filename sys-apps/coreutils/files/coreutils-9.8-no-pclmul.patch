@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/959467
+https://debbugs.gnu.org/79491
+
+GL_CRC_X86_64_PCLMUL in effect overrides the earlier configure check which
+sets USE_PCLMUL_CRC32, so -mno-pclmul leads to a build failure. Just use
+the coreutils config check result for now.
+
+Thanks to Ionen Wolkens <ionen@gentoo.org> for the investigation and
+workaround.
+--- a/src/cksum.c
++++ b/src/cksum.c
+@@ -145,5 +145,5 @@
+ pclmul_supported (void)
+ {
+-# if USE_PCLMUL_CRC32 || GL_CRC_X86_64_PCLMUL
++# if USE_PCLMUL_CRC32
+   bool pclmul_enabled = (0 < __builtin_cpu_supports ("pclmul")
+                          && 0 < __builtin_cpu_supports ("avx"));

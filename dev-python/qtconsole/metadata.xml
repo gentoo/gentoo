@@ -16,6 +16,6 @@
   <stabilize-allarches/>
   <upstream>
     <remote-id type="pypi">qtconsole</remote-id>
-    <remote-id type="github">jupyter/qtconsole</remote-id>
+    <remote-id type="github">spyder-ide/qtconsole</remote-id>
   </upstream>
 </pkgmetadata>

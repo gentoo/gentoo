@@ -9,7 +9,7 @@
     <flag name="nautilus">Build the <pkg>gnome-base/nautilus</pkg> extension</flag>
     <flag name="libburn">Enable <pkg>dev-libs/libburn</pkg> backend</flag>
     <flag name="playlist">Enable support for playlists through <pkg>dev-libs/totem-pl-parser</pkg></flag>
-    <flag name="tracker">Enable audio playlist search using the <pkg>app-misc/tracker</pkg> indexer</flag>
+    <flag name="tracker">Enable audio playlist search using the <pkg>app-misc/tinysparql</pkg> indexer</flag>
   </use>
   <upstream>
     <remote-id type="gnome-gitlab">GNOME/brasero</remote-id>

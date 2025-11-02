@@ -1,6 +1,20 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-08-29)
+# net-misc/passt not yet keyworded here
+app-emulation/qemu passt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-07-31)
+# dev-python/pyqt5, dev-python/pyqt6 are not stable.
+dev-python/matplotlib qt6 test
+net-print/hplip qt5
+
+# Hans de Graaff <graaff@gentoo.org> (2025-06-29)
+# Requires large parts of dev-ruby/rails to be keyworded.
+dev-ruby/globalid test
+dev-ruby/minitest-hooks test
+
 # Sam James <sam@gentoo.org> (2025-05-16)
 # gpio: dev-libs/libgpiod not keyworded here
 # modbus: dev-libs/libmodbus not keyworded here
@@ -56,7 +70,7 @@ media-gfx/graphicsmagick jpeg2k
 
 # Sam James <sam@gentoo.org> (2024-03-23)
 # llvm-runtimes/openmp does not support ppc32 (bug #907213).
-llvm-core/clang-runtime openmp
+llvm-runtimes/clang-runtime openmp
 
 # Matt Jolly <kangie@gentoo.org> (2024-03-02)
 # Fails tests, potential false negatives #911402
@@ -69,7 +83,7 @@ app-benchmarks/stress-ng keyutils
 app-crypt/mit-krb5 keyutils
 app-emulation/qemu keyutils
 net-fs/cifs-utils ads creds pam
-net-fs/samba ads
+net-fs/samba ads addc
 >=sys-libs/libblockdev-3.0.0 cryptsetup
 sys-libs/libnvme keyutils
 
@@ -128,7 +142,7 @@ llvm-core/clang extra
 # Nowa Ammerlaan <nowa@gentoo.org> (2022-09-23)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/pyqt5 bluetooth location speech
+dev-python/pyqt5 speech
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2022-08-15)
 # deps not keyworded
@@ -189,8 +203,9 @@ dev-python/diskcache test
 # Sam James <sam@gentoo.org> (2021-02-28)
 # compiler-rt* has no support for ppc32 (yet?)
 # bug #708344
-llvm-core/clang-runtime compiler-rt default-compiler-rt sanitize
+llvm-runtimes/clang-runtime compiler-rt default-compiler-rt sanitize
 llvm-core/clang-common default-compiler-rt
+llvm-runtimes/clang-rtlib-config default-compiler-rt
 
 # Florian Schmaus <flo@geekplace.eu> (2020-12-03)
 # Rubber's testsuite depends on media-gfx/asymptote and

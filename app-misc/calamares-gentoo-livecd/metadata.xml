@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>stefan.cristian+git@rogentos.ro</email>
+		<name>Stefan Cristian B.</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>ceamac@gentoo.org</email>
+		<name>Viorel Munteanu</name>
+	</maintainer>
+	<longdescription>
+		Calamares livecd Gentoo configuration provided for Calamares
+		installer. It comes with a set of branding, configuration files
+		that Calamares needs in order to be able to install Gentoo
+		Linux from LiveGUI image.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">StefanCristian/calamares-gentoo-livecd</remote-id>
+	</upstream>
+</pkgmetadata>

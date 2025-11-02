@@ -237,7 +237,7 @@ if [ ${PV} == "9999" ] ; then
 else
 	SRC_URI="https://github.com/apognu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${CARGO_CRATE_URIS}"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+	KEYWORDS="amd64 ~arm64 ~ppc64 ~riscv"
 fi
 
 LICENSE="GPL-3+"

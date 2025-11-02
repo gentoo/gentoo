@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,8 +14,6 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
-RDEPEND=">=dev-lang/ocaml-4.03:=[ocamlopt?]"
-DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/ocamlbuild"
 
 # This is mostly a compat wrapper for older ocaml versions we don't support. No

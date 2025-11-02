@@ -5,7 +5,7 @@ EAPI=8
 
 # Note: Please bump this in sync with dev-libs/libxml2.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit python-r1 multilib-minimal
 
 DESCRIPTION="XSLT libraries and tools"
@@ -20,16 +20,16 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="crypt debug examples python static-libs"
+IUSE="crypt debug debugger examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND=">=virtual/pkgconfig-1"
 RDEPEND="
-	>=dev-libs/libxml2-2.13:2[${MULTILIB_USEDEP}]
+	>=dev-libs/libxml2-2.13:2=[${MULTILIB_USEDEP}]
 	crypt? ( >=dev-libs/libgcrypt-1.5.3:=[${MULTILIB_USEDEP}] )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-libs/libxml2-2.13:2[${MULTILIB_USEDEP},python,${PYTHON_USEDEP}]
+		>=dev-libs/libxml2-2.13:2=[${MULTILIB_USEDEP},python,${PYTHON_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}"
@@ -59,6 +59,7 @@ multilib_src_configure() {
 			--without-python \
 			$(use_with crypt crypto) \
 			$(use_with debug) \
+			$(use_with debugger) \
 			$(use_enable static-libs static) \
 			"$@"
 	}

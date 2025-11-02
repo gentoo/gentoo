@@ -1,0 +1,50 @@
+Compile into hiprt64.so (as Blender expects) instead of hiprt<some-number>64[D].so
+Install libraries to libdir, not /usr/bin
+
+Upstream bug (rejected): https://github.com/GPUOpen-LibrariesAndSDKs/HIPRT/issues/22
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -354,11 +354,7 @@ add_library(${HIPRT_NAME} SHARED)
+ target_compile_definitions(${HIPRT_NAME} PRIVATE HIPRT_EXPORTS)
+ 
+ 
+-if( ${CMAKE_BUILD_TYPE} STREQUAL "Debug" )
+-	set_target_properties(${HIPRT_NAME} PROPERTIES OUTPUT_NAME "${HIPRT_NAME}64D")
+-else()
+-	set_target_properties(${HIPRT_NAME} PROPERTIES OUTPUT_NAME "${HIPRT_NAME}64")
+-endif()
++set_target_properties(${HIPRT_NAME} PROPERTIES OUTPUT_NAME "hiprt64")
+ 
+ 
+ if(BITCODE)
+@@ -567,7 +563,7 @@ target_sources(${HIPRT_NAME} PRIVATE ${hiprt_sources} ${orochi_sources})
+ # install script
+ #
+ 
+-install(TARGETS ${HIPRT_NAME} DESTINATION bin)
++install(TARGETS ${HIPRT_NAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ # add header files
+ file(GLOB HIPRT_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/hiprt/*.h")
+@@ -589,7 +585,7 @@ install(FILES ${HIPRT_ORO_HEADERS}
+ # add hipfb files
+ if(PRECOMPILE AND NOT BAKE_COMPILED_KERNEL)
+ 	install(FILES ${KERNEL_HIPRT_COMP} ${KERNEL_OROCHI_COMP}
+-			DESTINATION bin)
++			DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif()
+ 
+ # Project: Unit Test
+@@ -605,11 +601,7 @@ if(NOT NO_UNITTEST)
+ 		target_link_libraries(unittest PRIVATE version)
+ 	endif()
+ 
+-	if( ${CMAKE_BUILD_TYPE} STREQUAL "Debug" )
+-		set_target_properties(unittest PROPERTIES OUTPUT_NAME "unittest64D")
+-	else()
+-		set_target_properties(unittest PROPERTIES OUTPUT_NAME "unittest64")
+-	endif()
++	set_target_properties(unittest PROPERTIES OUTPUT_NAME "unittest64")
+ 
+ 
+ 	target_include_directories(unittest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/contrib/Orochi)

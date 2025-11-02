@@ -14,6 +14,12 @@
 		<name>Python</name>
 	</maintainer>
 	<!-- no ALLARCHES: fragile to FP issues -->
+	<use>
+		<flag name="test-full">
+			Run test suite in full via additional (large) test
+			dependencies, like dev-python/matplotlib.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="pypi">mpmath</remote-id>
 		<remote-id type="github">mpmath/mpmath</remote-id>

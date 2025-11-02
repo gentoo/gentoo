@@ -1,27 +1,24 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit vdr-plugin-2
 
-VERSION="1657" # every bump, new version
-
 DESCRIPTION="VDR plugin: use a PVR350 as output device"
-HOMEPAGE="https://projects.vdr-developer.org/projects/plg-pvr350"
-SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
+HOMEPAGE="https://github.com/vdr-projects/vdr-plugin-pvr350/"
+SRC_URI="https://github.com/vdr-projects/vdr-plugin-pvr350/archive/refs/tags/${PV}.tar.gz -> ${P}.tgz"
+S="${WORKDIR}/pvr350-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=media-video/vdr-2
-	media-sound/mpg123
 	media-sound/twolame
+	media-sound/mpg123-base
 	media-libs/a52dec"
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${P#vdr-}"
 
 QA_FLAGS_IGNORED="
 	usr/lib/vdr/plugins/libvdr-.*

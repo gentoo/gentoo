@@ -1,6 +1,27 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-10-03)
+# Now keyworded on ppc* too.
+sci-libs/flexiblas -system-blas
+sci-libs/lapack -flexiblas
+virtual/blas -flexiblas
+virtual/cblas -flexiblas
+virtual/lapack -flexiblas
+virtual/lapacke -flexiblas
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-16)
+# dev-games/ogre is not keyworded here
+>=dev-games/mygui-3.4.1 ogre
+
+# Alfred Wingate <parona@protonmail.com> (2025-07-31)
+# mongodb not keyworded here
+sci-libs/gdal mongodb
+
+# Alfredo Tupone <tupone@gentoo.org> (2025-07-02)
+# sci-ml/pytorch is not keyworded here
+sci-ml/huggingface_hub test
+
 # Eray Aslan <eras@gentoo.org> (2025-05-08)
 # dev-db/tinycdb is not keyworded here
 net-mail/dovecot cdb
@@ -70,11 +91,6 @@ dev-scheme/racket chez futures jit
 # Casualty of dev-ruby/msgpack restriction to ruby32
 # Remove this once ruby32 is unmasked in base
 dev-ruby/activesupport msgpack test
-
-# matoro <matoro_gentoo@matoro.tk> (2023-11-22)
-# Broken on <dev-lang/ruby-3.2
-# https://github.com/msgpack/msgpack-ruby/pull/355
-dev-ruby/msgpack ruby_targets_ruby31
 
 # matoro <matoro_gentoo@matoro.tk> (2023-11-19)
 # VSX asm causes passing test suite on LE to fail
@@ -261,7 +277,7 @@ app-emulation/qemu capstone
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-03-02)
 # Requires unkeyworded deps
->=dev-python/ipython-5.4.1 qt5
+>=dev-python/ipython-5.4.1 gui qt5
 
 # Amy Liffey <amynka@gentoo.org> (2018-01-21)
 # dev-libs/cereal not keyworded for ppc
@@ -288,7 +304,8 @@ app-forensics/sleuthkit java
 # Michał Górny <mgorny@gentoo.org> (2017-03-24)
 # libcxx fails to compile on ppc*, #595744.
 llvm-core/clang-common default-libcxx
-llvm-core/clang-runtime default-libcxx libcxx
+llvm-runtimes/clang-runtime default-libcxx libcxx
+llvm-runtimes/clang-stdlib-config default-libcxx
 
 # James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
@@ -297,7 +314,6 @@ games-emulation/dosbox glide
 # Thomas Deutschmann <whissi@gentoo.org> (2016-08-26)
 # Enable numa support on supported architectures
 dev-db/mysql -numa
-dev-db/percona-server -numa
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies

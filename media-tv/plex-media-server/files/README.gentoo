@@ -8,3 +8,7 @@ You will then be able to access your library at http://localhost:32400/manage
 If installing on a remote host you will need to use a ssh tunnel eg,
 'ssh ip.address.of.server -L 8888:localhost:32400' then open the folowing in
 a local browser 'http://localhost:8888/web' to claim the remote server.
+
+Finally, please note usage of the plex-media-server is governed by a license
+grant detailed in their terms of service which can be reviewed at:
+https://www.plex.tv/about/privacy-legal/plex-terms-of-service/

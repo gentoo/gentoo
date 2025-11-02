@@ -1,0 +1,45 @@
+Source: https://salsa.debian.org/debian/mangler/-/blob/master/debian/patches/hostname-fix.patch?ref_type=heads
+
+Description: Fix mangled hostname/port strings in connection dialog
+Forwarded: no
+Author: Scott <spruett345@gmail.com>
+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1507232
+Last-Update: 2016-04-27
+
+--- a/src/mangler.cpp
++++ b/src/mangler.cpp
+@@ -567,13 +567,13 @@ void Mangler::quickConnectButton_clicked_cb(void) {/*{{{*/
+     dialog->set_icon(icons["tray_icon"]);
+ 
+     builder->get_widget("qcServerName", entry);
+-    entry->set_text(config["qc_lastserver.hostname"].toCString());
++    entry->set_text(config["qc_lastserver.hostname"].toUString());
+     builder->get_widget("qcPort", entry);
+-    entry->set_text(config["qc_lastserver.port"].toCString());
++    entry->set_text(config["qc_lastserver.port"].toUString());
+     builder->get_widget("qcUsername", entry);
+-    entry->set_text(config["qc_lastserver.username"].toCString());
++    entry->set_text(config["qc_lastserver.username"].toUString());
+     builder->get_widget("qcPassword", entry);
+-    entry->set_text(config["qc_lastserver.password"].toCString());
++    entry->set_text(config["qc_lastserver.password"].toUString());
+ 
+     builder->get_widget("qcConnectButton", button);
+     button->set_sensitive(!v3_is_loggedin());
+@@ -605,11 +605,11 @@ void Mangler::connectButton_clicked_cb(void) {/*{{{*/
+             Gtk::TreeModel::Row row = *iter;
+             connectedServerName = Glib::ustring( row[serverList->serverListColumns.name] );
+             iniSection &server(config.servers[connectedServerName]);
+-            Glib::ustring hostname = server["hostname"].toCString();
+-            Glib::ustring port     = server["port"].toCString();
+-            Glib::ustring username = server["username"].toCString();
+-            Glib::ustring password = server["password"].toCString();
+-            Glib::ustring phonetic = server["phonetic"].toCString();
++            Glib::ustring hostname = server["hostname"].toUString();
++            Glib::ustring port     = server["port"].toUString();
++            Glib::ustring username = server["username"].toUString();
++            Glib::ustring password = server["password"].toUString();
++            Glib::ustring phonetic = server["phonetic"].toUString();
+             if (!server.size() || hostname.empty() || port.empty() || username.empty()) {
+                 builder->get_widget("statusbar", statusbar);
+                 statusbar->pop();

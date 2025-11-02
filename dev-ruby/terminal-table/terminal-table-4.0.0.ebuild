@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby31 ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -23,7 +23,7 @@ LICENSE="MIT"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm64"
 
-ruby_add_rdepend "|| ( dev-ruby/unicode-display_width:2 >=dev-ruby/unicode-display_width-1.1.1:1 )"
+ruby_add_rdepend "dev-ruby/unicode-display_width:2"
 
 ruby_add_bdepend "test? ( dev-ruby/term-ansicolor )"
 

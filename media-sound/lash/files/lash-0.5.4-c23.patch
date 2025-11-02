@@ -1,0 +1,29 @@
+https://bugs.gentoo.org/944777#c4
+
+Fix function prototypes
+
+This allows compilation with GCC 15, which is more strict than previous
+versions.
+
+--- a/lashd/client.c
++++ b/lashd/client.c
+@@ -26,7 +26,7 @@
+ #include "alsa_patch.h"
+ 
+ client_t *
+-client_new(lash_connect_params_t * params)
++client_new()
+ {
+ 	client_t *client;
+ 
+--- a/lashd/server_event.h
++++ b/lashd/server_event.h
+@@ -51,7 +51,7 @@
+ };
+ 
+ server_event_t * server_event_new ();
+-void             server_event_destroy ();
++void             server_event_destroy (server_event_t * event);
+ 
+ void server_event_set_type           (server_event_t * event, enum Server_Event_Type type);
+ void server_event_set_conn_id        (server_event_t * event, unsigned long id);

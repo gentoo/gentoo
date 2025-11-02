@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit libtool autotools greadme
+inherit autotools flag-o-matic greadme
 
 DESCRIPTION="Powerful C/C++ function library for exporting 2-D vector graphics"
 HOMEPAGE="https://www.gnu.org/software/plotutils/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/plotutils/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+png X"
 
 DEPEND="
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-configure-c99.patch
 	"${FILESDIR}"/${P}-cxx17-fix.patch
+	"${FILESDIR}"/${P}-c23.patch
 )
 
 src_prepare() {
@@ -45,10 +46,12 @@ src_prepare() {
 	sed -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' -i configure.ac || die
 
 	eautoreconf
-	elibtoolize
 }
 
 src_configure() {
+	# Ancient bison confuses things
+	append-flags -Wno-format-security
+
 	local myeconfargs=(
 		--enable-shared
 		--enable-libplotter
@@ -57,11 +60,13 @@ src_configure() {
 		$(use_with png libpng)
 		$(usex X "--with-x --enable-libxmi" "--without-x")
 	)
+
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
+
 	find "${ED}" -type f -name '*.la' -delete || die
 
 	if use X ; then

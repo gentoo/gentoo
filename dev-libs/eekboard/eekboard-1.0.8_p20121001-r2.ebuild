@@ -28,7 +28,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libxklavier
 	x11-libs/pango
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	libcanberra? ( media-libs/libcanberra[gtk3(+)] )
 	vala? ( $(vala_depend) )
 	xtest? ( x11-libs/libXtst )

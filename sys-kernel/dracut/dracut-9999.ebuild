@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/dracut-ng/dracut-ng/wiki"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+dracut-cpio selinux test"
+IUSE="dracut-cpio selinux test"
 RESTRICT="test"
 PROPERTIES="test? ( test_privileged test_network )"
 
@@ -54,7 +54,10 @@ DEPEND="
 "
 
 BDEPEND="
-	app-text/asciidoc
+	|| (
+		dev-ruby/asciidoctor
+		app-text/asciidoc
+	)
 	app-text/docbook-xml-dtd:4.5
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
@@ -99,7 +102,7 @@ QA_MULTILIB_PATHS="usr/lib/dracut/.*"
 PATCHES=(
 	"${FILESDIR}"/gentoo-ldconfig-paths-r1.patch
 	# Gentoo specific acct-user and acct-group conf adjustments
-	"${FILESDIR}"/${PN}-106-acct-user-group-gentoo.patch
+	"${FILESDIR}"/${PN}-108-acct-user-group-gentoo.patch
 )
 
 pkg_setup() {
@@ -114,6 +117,10 @@ src_configure() {
 		--systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--disable-dracut-cpio
 	)
+
+	if ! has_version -b dev-ruby/asciidoctor; then
+		myconf+=( --disable-asciidoctor )
+	fi
 
 	# this emulates what the build system would be doing without us
 	append-cflags -D_FILE_OFFSET_BITS=64

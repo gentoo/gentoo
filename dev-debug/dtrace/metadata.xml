@@ -13,7 +13,10 @@
 		<flag name="test-install">
 			Install the testsuite for manual use. It is not suitable
 			for automatic execution within the ebuild because it
-			requires root privlieges.
+			requires root privileges.
+
+			BTF must be available for the running kernel at build-time
+			with this flag.
 		</flag>
 	</use>
 	<upstream>

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..13} python3_13t)
 inherit bash-completion-r1 estack flag-o-matic linux-info llvm-r1 toolchain-funcs python-r1
 
 DESCRIPTION="Userland tools for Linux Performance Counters"
-HOMEPAGE="https://perf.wiki.kernel.org/"
+HOMEPAGE="https://perfwiki.github.io/main/"
 
 LINUX_V="${PV:0:1}.x"
 if [[ ${PV} == *_rc* ]] ; then
@@ -274,7 +274,6 @@ perf_make() {
 		NO_BACKTRACE=
 		NO_CAPSTONE=$(puse capstone)
 		NO_DEMANGLE=
-		NO_JEVENTS=$(puse python)
 		NO_JVMTI=$(puse java)
 		NO_LIBAUDIT=1
 		NO_LIBBABELTRACE=$(puse babeltrace)
@@ -304,7 +303,7 @@ perf_make() {
 		plugindir="${EPREFIX}/usr/$(get_libdir)/perf/plugins"
 		"$@"
 	)
-	emake "${emakeargs[@]}"
+	NO_JEVENTS=$(puse python) emake "${emakeargs[@]}"
 }
 
 src_compile() {

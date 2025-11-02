@@ -4,13 +4,13 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
 DESCRIPTION="Script tag with additional attributes for django.forms.Media"
 HOMEPAGE="
-	https://github.com/matthiask/django-js-asset/
+	https://github.com/feincms/django-js-asset/
 	https://pypi.org/project/django-js-asset/
 "
 

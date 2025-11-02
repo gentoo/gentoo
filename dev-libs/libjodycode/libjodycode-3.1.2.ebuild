@@ -10,7 +10,7 @@ S="${WORKDIR}/${PN}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~riscv"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.1-static-lib.patch

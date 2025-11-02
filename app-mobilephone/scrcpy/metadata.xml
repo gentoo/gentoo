@@ -6,6 +6,9 @@
 		<name>Bernard Cafarelli</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/Genymobile/scrcpy/issues</bugs-to>
+		<changelog>https://github.com/Genymobile/scrcpy/releases</changelog>
+		<doc>https://github.com/Genymobile/scrcpy/tree/master/doc</doc>
 		<remote-id type="github">Genymobile/scrcpy</remote-id>
 	</upstream>
 </pkgmetadata>

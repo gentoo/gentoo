@@ -4,6 +4,14 @@
 # New entries go on top.
 # Please use the same syntax as in package.use.mask.
 
+# Alexey Shvetsov <alexxy@gentoo.org> (2025-10-29)
+# Need non-yet-stable caffe2
+sci-chemistry/gromacs nnpot
+
+# Sam James <sam@gentoo.org> (2025-10-10)
+# Needs not-yet-stable GCC 15.
+dev-lang/python tail-call-interp
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-05-06)
 # USE=experimental is not stable by definition
 media-libs/zxing-cpp experimental
@@ -12,11 +20,6 @@ media-libs/zxing-cpp experimental
 # dev-python/mpi4py has no stable keywords.
 media-gfx/netgen mpi
 sci-libs/vtk mpi
-
-# Sam James <sam@gentoo.org> (2025-03-07)
-# Gradually unmask for newer Rust to avoid making users recompile for
-# the change. See bug #735154.
-<dev-lang/rust-1.86 system-llvm
 
 # Arthur Zamarin <arthurzam@gentoo.org> (2025-02-03)
 # Requires dev-util/shelltestrunner
@@ -30,10 +33,6 @@ app-arch/mt-st test
 # Calendar is broken with some languages on 115.0 release with <icu-75.
 # Bug #910229, #920713
 >=mail-client/thunderbird-115.0 system-icu
-
-# Michał Górny <mgorny@gentoo.org> (2023-06-11)
-# xfce-base/libxfce4windowing is not ready to go stable (4.19 branch).
-xfce-extra/xfce4-pulseaudio-plugin libxfce4windowing
 
 # Daniel Pielmeier <billie@gentoo.org> (2023-03-04)
 # For docs, app-text/pandoc is required. For details see:
@@ -139,16 +138,6 @@ dev-lang/rust nightly
 # Declared experimental, and dev-cpp/websocketpp not stable yet
 sci-libs/indilib websocket
 
-# Kent Fredric <kentnl@gentoo.org> (2019-07-30)
-# These features require dev-perl/GD, which currently can't be
-# considered stable due to serious defects upstream. Bug #661634
-app-misc/g15daemon perl
-dev-lang/php coverage
-dev-perl/Business-ISBN barcode
-dev-perl/Template-Toolkit gd
-media-fonts/unifont utils fontforge
-media-video/vdrsync dvdr
-
 # Mart Raudsepp <leio@gentoo.org> (2019-04-14)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable
 # anywhere yet.
@@ -230,7 +219,3 @@ app-crypt/tpm-tools pkcs11
 # Bug #486076, ocaml masked to allow xen to once again
 # become a stabilisable package
 app-emulation/xen-tools ocaml
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
-# Depends on unstable sci-libs/avogadrolibs
-kde-apps/kalzium editor

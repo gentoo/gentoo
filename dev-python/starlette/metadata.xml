@@ -6,7 +6,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">encode/starlette</remote-id>
+		<remote-id type="github">Kludex/starlette</remote-id>
 		<remote-id type="pypi">starlette</remote-id>
 	</upstream>
 </pkgmetadata>

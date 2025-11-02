@@ -51,7 +51,6 @@ elif is_release ; then
 		my_patch_index=
 
 		upstream_url_base="mirror://gnu/readline"
-		mirror_url_base="ftp://ftp.cwru.edu/pub/readline"
 
 		for ((my_patch_index=1; my_patch_index <= ${PLEVEL} ; my_patch_index++)) ; do
 			printf -v mangled_patch_ver ${my_p}-%03d ${my_patch_index}
@@ -60,18 +59,14 @@ elif is_release ; then
 			SRC_URI+=" ${patch_url}"
 			SRC_URI+=" verify-sig? ( ${patch_url}.sig )"
 
-			# Add in the mirror URL too.
-			SRC_URI+=" ${patch_url/${upstream_url_base}/${mirror_url_base}}"
-			SRC_URI+=" verify-sig? ( ${patch_url/${upstream_url_base}/${mirror_url_base}}.sig )"
-
 			MY_PATCHES+=( "${DISTDIR}"/${mangled_patch_ver} )
 		done
 
-		unset my_p patch_url my_patch_index upstream_url_base mirror_url_base
+		unset my_p patch_url my_patch_index upstream_url_base
 	fi
 else
-	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz ftp://ftp.cwru.edu/pub/readline/${MY_P}.tar.gz"
-	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig ftp://ftp.cwru.edu/pub/readline/${MY_P}.tar.gz.sig )"
+	SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz"
+	SRC_URI+=" verify-sig? ( mirror://gnu/${PN}/${MY_P}.tar.gz.sig )"
 fi
 
 S="${WORKDIR}/${MY_P}"
@@ -83,7 +78,7 @@ fi
 LICENSE="GPL-3+"
 SLOT="0/8"  # subslot matches SONAME major
 if is_release ; then
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 IUSE="static-libs +unicode utils"
 
@@ -99,9 +94,6 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-8.1-rlfe-c99.patch
 	# Not needed with 8.3 which drops < C89 compat
 	"${FILESDIR}"/${PN}-8.2-c23.patch
-
-	# TODO: rebase
-	#"${FILESDIR}"/${PN}-8.0-darwin-shlib-versioning.patch
 )
 
 src_unpack() {

@@ -14,10 +14,12 @@
 	</longdescription>
 	<use>
 		<flag name="fuzzing">Build fuzzers (not install)</flag>
-		<flag name="doc">Install README files</flag>
 		<flag name="examples">Build examples (not install)</flag>
 	</use>
 	<upstream>
+		<bugs-to>https://github.com/stephenberry/glaze/issues</bugs-to>
+		<changelog>https://github.com/stephenberry/glaze/releases</changelog>
+		<doc>https://stephenberry.github.io/glaze/</doc>
 		<remote-id type="github">stephenberry/glaze</remote-id>
 	</upstream>
 </pkgmetadata>

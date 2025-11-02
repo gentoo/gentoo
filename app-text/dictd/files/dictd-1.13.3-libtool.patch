@@ -1,0 +1,67 @@
+https://bugs.gentoo.org/818535
+
+From: orbea <orbea@riseup.net>
+Date: Fri, 17 Jun 2022 16:18:40 -0700
+Subject: [PATCH] configure: Add missing LT_INIT
+
+Rebased for 1.13.3 (rename configure.{in,ac})
+
+diff --git a/Makefile.in b/Makefile.in
+index bcd23a8..4470ea9 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -28,6 +28,7 @@ endif
+ 
+ .SUFFIXES:	
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@:.
+ prefix=		@prefix@
+diff --git a/configure.ac b/configure.ac
+index f727770..51078a5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,6 +35,8 @@ AC_INIT([dict],[VERSION],[dict-beta@dict.org])
+ AC_CONFIG_SRCDIR([dictd.c])
+ AC_CONFIG_HEADERS([config.h])
+ 
++LT_INIT
++
+ echo Configuring for dict
+ echo .
+ 
+@@ -70,13 +72,10 @@ echo Checking for programs
+ 
+ AC_PROG_AWK
+ AC_PROG_INSTALL
+-AC_PROG_RANLIB
+ AC_PROG_MAKE_SET
+ AC_PROG_YACC
+ AC_PROG_LEX(yywrap)
+ 
+-AC_CHECK_PROG(LIBTOOL,libtool,libtool)
+-
+ AC_CHECK_PROGS(NROFF,gnroff nroff)
+ AC_CHECK_PROGS(TROFF,groff troff)
+ AC_CHECK_PROGS(COL,col cat)
+@@ -187,7 +186,6 @@ AC_SUBST(DICT_VERSION)
+ AC_SUBST(USE_PLUGIN)
+ AC_SUBST(EXEEXT)
+ AC_SUBST(allsubdirs)
+-AC_SUBST(LIBTOOL)
+ 
+ AC_SUBST(PLUGINS)
+ 
+diff --git a/doc/Makefile.in b/doc/Makefile.in
+index 233cc9f..3ee0853 100644
+--- a/doc/Makefile.in
++++ b/doc/Makefile.in
+@@ -28,6 +28,7 @@ endif
+ 
+ .SUFFIXES:	
+ 
++top_builddir=	@top_builddir@
+ srcdir=		@srcdir@
+ VPATH=		@srcdir@
+ prefix=		@prefix@

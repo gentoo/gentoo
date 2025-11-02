@@ -6,7 +6,6 @@
 		<flag name="proxy">Share V4L and V4L2 VBI devices between multiple applications</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">zapping</remote-id><!-- old -->
 		<remote-id type="github">zapping-vbi/zvbi</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" proxied="yes">
-		<email>torokhov-s-a@yandex.ru</email>
-		<name>Sergey Torokhov</name>
-	</maintainer>
-	<maintainer type="project" proxied="proxy">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg>.</flag>
 		<flag name="sdl2">Add support for Simple Direct Layer 2.0 (<pkg>media-libs/libsdl2</pkg>)</flag>

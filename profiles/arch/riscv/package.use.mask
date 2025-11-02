@@ -1,6 +1,31 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-10-28)
+# Portability issues with dev-libs/apache-arrow (bug #923968).
+sci-libs/gdal parquet
+
+# Paul Zander <negril.nx+gentoo@gmail.com> (2025-06-29)
+# media-libs/libvmaf is keyworded
+media-libs/x265 -vmaf
+
+# Jakov Smolić <jsmolic@gentoo.org> (2025-10-05)
+# These packages are keyworded on riscv
+sci-libs/flexiblas -system-blas
+sci-libs/lapack -flexiblas
+virtual/blas -flexiblas
+virtual/cblas -flexiblas
+virtual/lapack -flexiblas
+virtual/lapacke -flexiblas
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-12)
+# These BLAS/LAPACK providers are keyworded here.
+sci-libs/flexiblas -openblas
+
+# Alfred Wingate <parona@protonmail.com> (2025-07-31)
+# mongodb not keyworded here
+sci-libs/gdal mongodb
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
 # Broken bundled Eigen, fails to compile. See bug #865191.
 sci-geosciences/grass pdal
@@ -24,6 +49,10 @@ dev-ml/yojson test
 # NRK <nrk@disroot.org> (2025-03-17)
 # media-libs/libyuv is not keyworded
 media-libs/libavif libyuv
+
+# Zurab Kvachadze <zurabid2016@gmail.com> (2025-02-18)
+# www-servers/uwsgi, required for tests, is not keyworded on riscv.
+www-servers/nginx test
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2024-11-21)
 # sci-ml/caffe2 is not keyworded on riscv
@@ -102,6 +131,7 @@ sys-block/tgt rbd
 llvm-runtimes/compiler-rt-sanitizers -asan -lsan
 >=llvm-runtimes/compiler-rt-sanitizers-19 -libfuzzer -hwasan -profile -tsan
 >=llvm-runtimes/compiler-rt-sanitizers-19 -ubsan -scudo
+>=llvm-runtimes/compiler-rt-sanitizers-21 -xray
 
 # Yixun Lan <dlan@gentoo.org> (2023-02-16)
 # USE=java depend on virtual/jdk:1.8 which is not support on RISC-V
@@ -163,11 +193,6 @@ dev-lisp/clisp berkdb
 # unavailable on riscv currently
 sys-block/fio rbd
 
-# Jakov Smolić <jsmolic@gentoo.org> (2022-03-25)
-# sys-process/criu doesn't support riscv (bug #835975)
-# Upstream bug for criu: https://github.com/checkpoint-restore/criu/issues/1702
-app-containers/crun criu
-
 # Yongxinag Liang <tanekliang@gmail.com> (2022-01-09)
 # app-emulation/xen-tools doesn't support riscv yet
 app-emulation/qemu xen
@@ -185,8 +210,6 @@ dev-python/anyio test
 # but fails tests (Bug #782913).
 #  - www-client/firefox (bdepend)
 dev-ruby/capybara test
-#  - dev-qt/qtwebengine (bdepend)
-dev-python/ipython qt5
 
 # Jonathan Davies <jpds@protonmail.com> (2021-09-03)
 # Requires CPU with SSSE3 support
@@ -230,12 +253,6 @@ app-admin/syslog-ng test
 # dev-db/mongodb does not support riscv, fails src_configure
 dev-libs/mongo-c-driver test
 
-# Alex Fan <alexfanqi@yahoo.com> (2021-07-20)
-# hdf5-1.10 always fails tests with these 2 use flags enabled, otherwise
-# passes all tests on at least some systems. No longer needed for 1.12,
-# though.
-<sci-libs/hdf5-1.12.1 fortran debug
-
 # Alex Fan <alexfanqi@yahoo.com> (2021-08-12)
 # Marek Szuba <marecki@gentoo.org> (2021-07-14)
 # LuaJIT does not support riscv
@@ -255,6 +272,5 @@ media-libs/opencv vtk
 sci-libs/opencascade vtk
 
 # This doesn't work for (any) riscv yet.
-dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit

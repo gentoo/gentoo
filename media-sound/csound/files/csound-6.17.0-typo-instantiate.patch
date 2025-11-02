@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/938333
+--- a/include/plugin.h
++++ b/include/plugin.h
+@@ -1002,7 +1002,7 @@ template <std::size_t N> struct InPlug : OPDS {
+   /** check if this opcode runs at perf time
+   */
+   bool is_perf() {
+-      return this->opaddr ? true : false;
++      return this->opadr ? true : false;
+   }
+ 
+ };

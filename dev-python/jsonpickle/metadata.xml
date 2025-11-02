@@ -6,6 +6,12 @@
     <name>Python</name>
   </maintainer>
   <stabilize-allarches/>
+  <use>
+    <flag name="test-full">
+      Run test suite in full via additional (large) test
+      dependencies, like dev-python/pandas.
+    </flag>
+  </use>
   <upstream>
     <remote-id type="pypi">jsonpickle</remote-id>
     <remote-id type="github">jsonpickle/jsonpickle</remote-id>

@@ -1,7 +1,11 @@
-# Copyright 2020-2024 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+# Bug #957490 - all CMakeLists.txt files that are used during the build
+# require CMake 3.5 or later.
+CMAKE_QA_COMPAT_SKIP=yes
 
 inherit cmake flag-o-matic
 

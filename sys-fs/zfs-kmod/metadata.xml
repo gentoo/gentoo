@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
+		<email>mschiff@gentoo.org</email>
+		<name>Marc Schiffbauer</name>
 	</maintainer>
 	<use>
 		<flag name="dist-kernel-cap">Prevents upgrading to an unsupported kernel version when combined with USE=dist-kernel</flag>

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="vim plugin: GNU info documentation browser"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=21"
 
 LICENSE="BSD"
-KEYWORDS="~alpha amd64 ppc ~s390 sparc x86"
+KEYWORDS="~alpha amd64 ppc ~s390 ~sparc x86"
 
 VIM_PLUGIN_HELPTEXT="This plugin adds the :Info command."
 

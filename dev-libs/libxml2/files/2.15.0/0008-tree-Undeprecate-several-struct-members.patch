@@ -1,0 +1,112 @@
+From 196bfd340ac3c79e2c31b3103fcaf6d39d5b2e2c Mon Sep 17 00:00:00 2001
+Message-ID: <196bfd340ac3c79e2c31b3103fcaf6d39d5b2e2c.1760256737.git.sam@gentoo.org>
+In-Reply-To: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+References: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Tue, 7 Oct 2025 01:05:03 +0200
+Subject: [PATCH 8/8] tree: Undeprecate several struct members
+
+---
+ include/libxml/tree.h | 38 +++++++++++++++++++-------------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/include/libxml/tree.h b/include/libxml/tree.h
+index 32cea2fb..277110ae 100644
+--- a/include/libxml/tree.h
++++ b/include/libxml/tree.h
+@@ -296,11 +296,11 @@ typedef xmlNotation *xmlNotationPtr;
+  */
+ struct _xmlNotation {
+     /** Notation name */
+-    const xmlChar               *name XML_DEPRECATED_MEMBER;
++    const xmlChar               *name;
+     /** Public identifier, if any */
+-    const xmlChar               *PublicID XML_DEPRECATED_MEMBER;
++    const xmlChar               *PublicID;
+     /** System identifier, if any */
+-    const xmlChar               *SystemID XML_DEPRECATED_MEMBER;
++    const xmlChar               *SystemID;
+ };
+ 
+ /**
+@@ -375,11 +375,11 @@ struct _xmlAttribute {
+     struct _xmlDoc          *doc;
+ 
+     /** next in hash table */
+-    struct _xmlAttribute  *nexth XML_DEPRECATED_MEMBER;
++    struct _xmlAttribute  *nexth;
+     /** attribute type */
+-    xmlAttributeType       atype XML_DEPRECATED_MEMBER;
++    xmlAttributeType       atype;
+     /** attribute default */
+-    xmlAttributeDefault      def XML_DEPRECATED_MEMBER;
++    xmlAttributeDefault      def;
+     /** default value */
+     xmlChar *defaultValue;
+     /** enumeration tree if any */
+@@ -387,7 +387,7 @@ struct _xmlAttribute {
+     /** namespace prefix if any */
+     const xmlChar        *prefix;
+     /** element name */
+-    const xmlChar          *elem XML_DEPRECATED_MEMBER;
++    const xmlChar          *elem;
+ };
+ 
+ /**
+@@ -478,13 +478,13 @@ struct _xmlElement {
+     struct _xmlDoc          *doc;
+ 
+     /** element type */
+-    xmlElementTypeVal      etype XML_DEPRECATED_MEMBER;
++    xmlElementTypeVal      etype;
+     /** allowed element content */
+-    xmlElementContent *content XML_DEPRECATED_MEMBER;
++    xmlElementContent *content;
+     /** list of declared attributes */
+-    xmlAttribute     *attributes XML_DEPRECATED_MEMBER;
++    xmlAttribute     *attributes;
+     /** namespace prefix if any */
+-    const xmlChar        *prefix XML_DEPRECATED_MEMBER;
++    const xmlChar        *prefix;
+ #ifdef LIBXML_REGEXP_ENABLED
+     /** validating regexp */
+     xmlRegexp         *contModel XML_DEPRECATED_MEMBER;
+@@ -564,19 +564,19 @@ struct _xmlDtd {
+     /* End of common part */
+ 
+     /** hash table for notations if any */
+-    void          *notations XML_DEPRECATED_MEMBER;
++    void          *notations;
+     /** hash table for elements if any */
+-    void          *elements XML_DEPRECATED_MEMBER;
++    void          *elements;
+     /** hash table for attributes if any */
+-    void          *attributes XML_DEPRECATED_MEMBER;
++    void          *attributes;
+     /** hash table for entities if any */
+-    void          *entities XML_DEPRECATED_MEMBER;
++    void          *entities;
+     /** public identifier */
+-    xmlChar *ExternalID XML_DEPRECATED_MEMBER;
++    xmlChar *ExternalID;
+     /** system identifier */
+-    xmlChar *SystemID XML_DEPRECATED_MEMBER;
++    xmlChar *SystemID;
+     /** hash table for parameter entities if any */
+-    void          *pentities XML_DEPRECATED_MEMBER;
++    void          *pentities;
+ };
+ 
+ /** Attribute of an element */
+@@ -823,7 +823,7 @@ struct _xmlDoc {
+     /** external subset */
+     struct _xmlDtd  *extSubset;
+     /** used to hold the XML namespace if needed */
+-    struct _xmlNs   *oldNs XML_DEPRECATED_MEMBER;
++    struct _xmlNs   *oldNs;
+     /** version string from XML declaration */
+     xmlChar  *version;
+     /** actual encoding if any */
+-- 
+2.51.0
+

@@ -58,7 +58,6 @@ DEPEND="
 		app-benchmarks/dbench
 		dev-libs/xxhash
 		dev-vcs/git
-		virtual/perl-Test-Harness
 		dev-libs/yajl
 		sys-fs/xfsprogs
 		sys-apps/attr

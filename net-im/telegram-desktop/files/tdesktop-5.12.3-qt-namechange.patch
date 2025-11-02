@@ -1,0 +1,30 @@
+Qt 6.9.0 has renamed a couple of files, meaning telegram-desktop fails to build
+
+https://bugs.gentoo.org/959247
+
+--- tdesktop-5.12.3-full/Telegram/lib_base/base/platform/linux/base_linux_xdp_utilities.cpp	2025-06-29 10:42:13.725912379 +0100
++++ tdesktop-5.12.3-full-new/Telegram/lib_base/base/platform/linux/base_linux_xdp_utilities.cpp	2025-06-29 10:52:41.097335188 +0100
+@@ -16,7 +16,11 @@
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+ #include <qpa/qplatformintegration.h>
+ #include <private/qguiapplication_p.h>
++#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
++#include <private/qdesktopunixservices_p.h>
++#else
+ #include <private/qgenericunixservices_p.h>
++#endif // Qt >= 6.9.0
+ #endif // Qt >= 6.5.0
+ 
+ #include <sstream>
+@@ -39,7 +43,11 @@
+ 	}
+ 
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
++#if QT_VERSION >= QT_VERSION_CHECK(6, 9, 0)
++  if (const auto services = dynamic_cast<QDesktopUnixServices*>(
++#else
+ 	if (const auto services = dynamic_cast<QGenericUnixServices*>(
++#endif // Qt >= 6.9.0
+ 			QGuiApplicationPrivate::platformIntegration()->services())) {
+ 		return services->portalWindowIdentifier(window).toStdString();
+ 	}

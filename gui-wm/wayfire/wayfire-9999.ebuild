@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson toolchain-funcs
+inherit dot-a meson toolchain-funcs
 
 DESCRIPTION="compiz like 3D wayland compositor"
 HOMEPAGE="https://github.com/WayfireWM/wayfire"
@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wayfire"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/${PN}.git"
-	SLOT="0/0.10"
+	SLOT="0/0.11"
 else
 	SRC_URI="https://github.com/WayfireWM/${PN}/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~riscv"
@@ -25,7 +25,7 @@ RESTRICT="!test? ( test )"
 # bundled wlroots has the following dependency string according to included headers.
 # wlroots[drm,gles2-renderer,libinput,x11-backend?,X?]
 # enable x11-backend with X and vice versa
-CDEPEND="
+COMMON_DEPEND="
 	dev-cpp/nlohmann_json
 	dev-libs/glib:2
 	dev-libs/libevdev
@@ -34,11 +34,12 @@ CDEPEND="
 	dev-libs/yyjson
 	>=dev-libs/wayland-protocols-1.12
 	gui-libs/wf-config:${SLOT}
-	gui-libs/wlroots:0.18[drm(+),libinput(+),x11-backend,X?]
+	gui-libs/wlroots:0.19[drm(+),libinput(+),x11-backend,X?]
 	media-libs/glm
 	media-libs/libglvnd
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
+	media-libs/vulkan-loader
 	virtual/libudev:=
 	x11-libs/cairo
 	x11-libs/libxkbcommon
@@ -49,11 +50,11 @@ CDEPEND="
 "
 
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	x11-misc/xkeyboard-config
 "
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	test? ( dev-cpp/doctest )
 "
 BDEPEND="
@@ -62,7 +63,7 @@ BDEPEND="
 	openmp? (
 		|| (
 			sys-devel/gcc[openmp]
-			llvm-core/clang-runtime[openmp]
+			llvm-runtimes/clang-runtime[openmp]
 		)
 	)
 "
@@ -86,6 +87,8 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
+
 	local emesonargs=(
 		$(meson_feature test tests)
 		$(meson_feature X xwayland)
@@ -94,7 +97,6 @@ src_configure() {
 		-Duse_system_wfconfig=enabled
 		-Duse_system_wlroots=enabled
 	)
-
 	meson_src_configure
 }
 
@@ -112,4 +114,6 @@ src_install() {
 
 	insinto "/etc"
 	doins "${FILESDIR}"/wayfire.env
+
+	strip-lto-bytecode
 }

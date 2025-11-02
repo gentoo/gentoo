@@ -1,0 +1,23 @@
+From 6447282221084f46a7d39cf5a71ebd063a2302df Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 5 Oct 2025 16:21:57 +0200
+Subject: [PATCH] Raise cmake_minimum_required to 3.31 to fix build w/ cmake-4
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 951965f..24ca631 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.31)
+ 
+ project(olm VERSION 3.2.16 LANGUAGES CXX C)
+ 
+-- 
+2.51.0
+

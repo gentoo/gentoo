@@ -81,4 +81,3 @@ input_devices_joystick
 input_devices_vmmouse
 input_devices_void
 input_devices_synaptics
-input_devices_wacom

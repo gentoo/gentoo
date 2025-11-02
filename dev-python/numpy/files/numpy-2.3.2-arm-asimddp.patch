@@ -1,0 +1,30 @@
+From 111fe76ebf9e3dc528a2d808626808bd9601938d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Mon, 18 Aug 2025 20:55:31 +0200
+Subject: [PATCH] BLD: wire up `ASIMDDP` feature to `ARM_FEATURES`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Add the `ASIMDDP` feature to the `ARM_FEATURES` dictionary, to fix
+an error when it is explicitly listed in `cpu-baseline`.
+
+Fixes #29570
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ meson_cpu/arm/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson_cpu/arm/meson.build b/meson_cpu/arm/meson.build
+index 7ffa3ef58ed0..5478e52cdcea 100644
+--- a/meson_cpu/arm/meson.build
++++ b/meson_cpu/arm/meson.build
+@@ -60,6 +60,6 @@ SVE = mod_features.new(
+ # TODO: Add support for MSVC
+ ARM_FEATURES = {
+   'NEON': NEON, 'NEON_FP16': NEON_FP16, 'NEON_VFPV4': NEON_VFPV4,
+-  'ASIMD': ASIMD, 'ASIMDHP': ASIMDHP, 'ASIMDFHM': ASIMDFHM,
++  'ASIMD': ASIMD, 'ASIMDHP': ASIMDHP, 'ASIMDDP': ASIMDDP, 'ASIMDFHM': ASIMDFHM,
+   'SVE': SVE
+ }

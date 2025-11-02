@@ -1,14 +1,14 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.31)
 project (PDBMAT Fortran)
 
 include(GNUInstallDirs)
 
-option (EXAMPLES "Instal additional example files" OFF)
+option (EXAMPLES "Install additional example files" OFF)
 
 add_executable(diagstd diagstd.f)
 add_executable(pdbmat pdbmat.f)
 
-install (TARGETS diagstd pdbmat DESTINATION bin)
+install (TARGETS diagstd pdbmat DESTINATION ${CMAKE_INSTALL_BINDIR})
 install (FILES diagstd.README pdbmat.README DESTINATION ${CMAKE_INSTALL_DOCDIR})
 
 if ( EXAMPLES )

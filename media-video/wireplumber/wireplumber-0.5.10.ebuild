@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="MIT"
@@ -38,7 +38,7 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# introspection? ( dev-libs/gobject-introspection ) is valid but likely only used for doc building
+# introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 ) is valid but likely only used for doc building
 BDEPEND="
 	dev-libs/glib
 	dev-util/gdbus-codegen
@@ -106,20 +106,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if systemd_is_booted ; then
-		ewarn "pipewire-media-session.service is no longer installed. You must switch"
-		ewarn "to wireplumber.service user unit before your next logout/reboot:"
-		ewarn "systemctl --user disable pipewire-media-session.service"
-		ewarn "systemctl --user --force enable wireplumber.service"
-	else
-		ewarn "Switch to WirePlumber will happen the next time gentoo-pipewire-launcher"
-		ewarn "is started (a replacement for directly calling pipewire binary)."
-		ewarn
-		ewarn "Please ensure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist"
-		ewarn "or, if it does exist, that any reference to"
-		ewarn "${EROOT}/usr/bin/pipewire-media-session is commented out (begins with a #)."
-	fi
-
 	if use system-service; then
 		ewarn
 		ewarn "WARNING: you have enabled the system-service USE flag, which installs"

@@ -22,6 +22,7 @@ SLOT="0"
 IUSE="+gpg +http +notification-sound +omemo +rtp test"
 RESTRICT="!test? ( test )"
 
+# webrtc-audio-processing order follows upstream meson...
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
@@ -48,7 +49,11 @@ RDEPEND="
 	rtp? (
 		media-libs/gst-plugins-base:1.0
 		media-libs/gstreamer:1.0
-		media-libs/webrtc-audio-processing:1
+		|| (
+			media-libs/webrtc-audio-processing:1
+			>=media-libs/webrtc-audio-processing-0.2:0
+			media-libs/webrtc-audio-processing:2
+		)
 	)
 "
 DEPEND="${RDEPEND}

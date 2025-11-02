@@ -1,0 +1,27 @@
+From b2ffcca90ffa9fbf4a7293065a8926e7b13ac9f2 Mon Sep 17 00:00:00 2001
+From: PikachuEXE <git@pikachuexe.net>
+Date: Wed, 27 Nov 2024 09:39:28 +0800
+Subject: [PATCH] ! Fix a failed test case in 3.4 due to error message format
+ diff in ruby 3.4
+
+---
+ spec/ruby_version_specific/contracts_spec_2.1.rb | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/spec/ruby_version_specific/contracts_spec_2.1.rb b/spec/ruby_version_specific/contracts_spec_2.1.rb
+index 36b6ede..01180c8 100644
+--- a/spec/ruby_version_specific/contracts_spec_2.1.rb
++++ b/spec/ruby_version_specific/contracts_spec_2.1.rb
+@@ -56,7 +56,11 @@ def complicated(a, b = true, *c, d, e:, f:2, **g, &h)
+           @o.complicated("a", true, :b, :c, 2.0, e: (1..5), f: nil, g: :d) do |x|
+             x
+           end
+-        end.to raise_error(ContractError, /Expected: \(KeywordArgs\[{:e=>Range, :f=>Optional\[Num\], :g=>Symbol}\]\)/)
++        end.to raise_error(
++          ContractError,
++          # 3.3- vs 3.4+ error message format
++          /(Expected: \(KeywordArgs\[{:e=>Range, :f=>Optional\[Num\], :g=>Symbol}\]\)|Expected: \(KeywordArgs\[{e: Range, f: Optional\[Num\], g: Symbol}\]\))/,
++        )
+       end
+     end
+   end

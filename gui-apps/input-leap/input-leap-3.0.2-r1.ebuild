@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="https://github.com/input-leap/input-leap/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~chewi/distfiles/${P}-no-x11.patch"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Share a mouse and keyboard between computers (fork of Barrier)"
@@ -61,6 +61,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-gui-crash.patch
 	"${DISTDIR}"/${P}-no-x11.patch
+	"${FILESDIR}"/${P}-qt-6.9.patch
 )
 
 DOCS=(

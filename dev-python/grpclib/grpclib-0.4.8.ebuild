@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+# py3.14: https://github.com/vmagamedov/grpclib/pull/208
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1
 
@@ -21,7 +22,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 # setup.txt + requirements/runtime.in
 RDEPEND="
@@ -34,9 +35,13 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/async-timeout[${PYTHON_USEDEP}]
-		dev-python/faker[${PYTHON_USEDEP}]
-		dev-python/pytest-asyncio[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( faker pytest-asyncio )
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/vmagamedov/grpclib/pull/205
+	"${FILESDIR}/${P}-pytest-asyncio-1.patch"
+)

@@ -1,0 +1,98 @@
+https://codeberg.org/ciberandy/qiv/pulls/13.patch
+From d2ae120c0b9796b154224efddfcd6f1df1d78ceb Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Sat, 5 Jul 2025 21:19:37 +0200
+Subject: [PATCH] adapt Makefile for distro-building
+
+Allow more variables to be defined to avoid editing/patching to build
+a package.
+
+Launch-test with make check only
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ Makefile | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 595cdeb..cdf0e9b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ #######################################################################
+ 
+ # Directory where qiv will be installed under.
+-PREFIX = /usr/local
++PREFIX ?= /usr/local
+ 
+ # Fonts to use for statusbar and comments
+ STATUSBAR_FONT = "Monospace 9"
+@@ -30,7 +30,7 @@ GETOPT_LONG = -DHAVE_GETOPT_LONG
+ 
+ # This program will be run on the manual page after it is installed.
+ # If you don't want to compress the manpage, change it to 'true'.
+-COMPRESS_PROG = gzip -9f
++COMPRESS_PROG ?= gzip -9f
+ 
+ # Comment this line out if your system doesn't have lcms2 installed
+ # (for minimal Color Management support)
+@@ -50,12 +50,13 @@ EXIF = -DHAVE_EXIF
+ ######################################################################
+ 
+ ifeq ($(origin CC),default)
+-CC = gcc
++CC ?= gcc
+ endif
+ 
+ PKG_CONFIG ?= pkg-config
+ INSTALL    ?= install
+-CFLAGS    = -O2 -Wall \
++STRIP_FLAG ?= -s
++CFLAGS     ?= -O2 -Wall \
+ 	    -fcaller-saves -ffast-math -fno-strength-reduce \
+ 	    -fthread-jumps
+ 
+@@ -120,7 +121,7 @@ DEFINES_G = $(DEFINES) -DDEBUG
+ all: $(PROGRAM)
+ 
+ $(PROGRAM): $(OBJS)
+-	$(CC) $(CFLAGS) $(DEFINES) $(OBJS) $(LIBS) -o $(PROGRAM)
++	$(CC) $(CFLAGS) $(DEFINES) $(OBJS) $(LDFLAGS) $(LIBS) -o $(PROGRAM)
+ 
+ $(OBJS): %.o: %.c $(HEADERS) Makefile
+ 	$(CC) -c $(CFLAGS) $(DEFINES) $(INCLUDES) $< -o $@
+@@ -132,7 +133,7 @@ main.o: main.h
+ debug: $(PROGRAM_G)
+ 
+ $(PROGRAM_G): $(OBJS_G)
+-	$(CC) -g $(CFLAGS) $(DEFINES_G) $(OBJS_G) $(LIBS) -o $(PROGRAM_G)
++	$(CC) -g $(CFLAGS) $(DEFINES_G) $(OBJS_G) $(LDFLAGS) $(LIBS) -o $(PROGRAM_G)
+ 
+ $(OBJS_G): %.g: %.c $(HEADERS)
+ 	$(CC) -c -g $(CFLAGS) $(DEFINES_G) $(INCLUDES) $< -o $@
+@@ -152,7 +153,7 @@ install: $(PROGRAM)
+ 	  $(INSTALL) -d -m 0755 $(PREFIX)/bin; \
+ 	  echo install -d -m 0755 $(PREFIX)/bin; \
+         fi
+-	$(INSTALL) -s -m 0755 $(PROGRAM) $(PREFIX)/bin
++	$(INSTALL) $(STRIP_FLAG) -m 0755 $(PROGRAM) $(PREFIX)/bin
+ 	@if [ ! -e $(PREFIX)/share/man/man1 ]; then \
+ 	  echo install -d -m 0755 $(PREFIX)/share/man/man1; \
+ 	  $(INSTALL) -d -m 0755 $(PREFIX)/share/man/man1; \
+@@ -169,10 +170,12 @@ install: $(PROGRAM)
+ 	  $(INSTALL) -d -m 0755 $(PREFIX)/share/applications; \
+ 	fi
+ 	$(INSTALL) -m 0644 qiv.desktop $(PREFIX)/share/applications/qiv.desktop
++	@echo "\nDont forget to look into the \"qiv-command\" file and install it!\n-> cp qiv-command.example $(PREFIX)/bin/qiv-command\n\n"
++
++check: $(PROGRAM)
+ 	@if ./qiv -f ./intro.jpg ; \
+ 	then echo "-- Test Passed --" ; \
+ 	else echo "-- Test Failed --" ; \
+ 	fi
+-	@echo "\nDont forget to look into the \"qiv-command\" file and install it!\n-> cp qiv-command.example $(PREFIX)/bin/qiv-command\n\n"
+ 
+ # the end... ;-)
+-- 
+2.47.2
+

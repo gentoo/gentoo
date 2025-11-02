@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit cmake
+inherit cmake dot-a
 
 CommitId=d6860c477c99f1fce9e28eb206891af3c0e1a1d7
 
@@ -39,10 +39,16 @@ src_prepare() {
 }
 
 src_configure() {
+	lto-guarantee-fat
 	local mycmakeargs=(
 		-DUSE_SYSTEM_LIBS=ON
 		-DUSE_SYSTEM_GOOGLETEST=ON
 		-DCLOG_BUILD_TESTS=$(usex test ON OFF)
 	)
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+	strip-lto-bytecode
 }

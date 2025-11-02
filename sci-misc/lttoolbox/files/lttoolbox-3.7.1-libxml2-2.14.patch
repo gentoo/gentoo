@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/955673
+https://github.com/apertium/lttoolbox/issues/199
+https://github.com/apertium/lttoolbox/commit/92c2d2948a5396034dca7465a51dbb2fb1528fe4
+
+From 92c2d2948a5396034dca7465a51dbb2fb1528fe4 Mon Sep 17 00:00:00 2001
+From: Tino Didriksen <mail@tinodidriksen.com>
+Date: Thu, 12 Jun 2025 12:59:10 +0200
+Subject: [PATCH] initGenericErrorDefaultFunc -> xmlSetGenericErrorFunc (fixes
+ #199)
+
+--- a/lttoolbox/lt_comp.cc
++++ b/lttoolbox/lt_comp.cc
+@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
+     std::cerr << "Error: Cannot not open file '" << infile << "'." << std::endl << std::endl;
+     exit(EXIT_FAILURE);
+   }
+-  initGenericErrorDefaultFunc(NULL);
++  xmlSetGenericErrorFunc(nullptr, nullptr);
+ 
+ 
+   if(opc == "lr")

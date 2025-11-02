@@ -1,5 +1,0 @@
-Gentoo installs atuin's shell-init code under
-	/usr/share/atuin/shell-init/
-Therefore, instead of using, e.g., 'eval \"\$(atuin init zsh)\"' in
-your .zshrc you can simply put \"source /usr/share/atuin/shell-init/zsh\"
-there, which avoids the cost of forking a process.

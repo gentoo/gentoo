@@ -1,0 +1,47 @@
+-Wl,-export-dynamic tells the linker we want an entry point of 'xport-dynamic'.
+Fix the typo accordingly.
+
+https://sourceforge.net/p/xsb/bugs/266/
+--- a/build/configure.in
++++ b/build/configure.in
+@@ -1343,10 +1343,10 @@ else
+ fi
+ 
+ 
+-####### Test for -export-dynamic option of ld
++####### Test for --export-dynamic option of ld
+ TEMP_LDFLAGS=$LDFLAGS
+-LDFLAGS="-Wl,-export-dynamic"
+-AC_MSG_CHECKING([whether loader understands -Wl,-export-dynamic])
++LDFLAGS="-Wl,--export-dynamic"
++AC_MSG_CHECKING([whether loader understands -Wl,--export-dynamic])
+ # Ideally we should use AC_LINK_IFELSE instead of the obsolete AC_TRY_LINK
+ #AC_TRY_LINK([],[], __export_dynamic=yes, __export_dynamic=no)
+ AC_LINK_IFELSE([AC_LANG_SOURCE([[int main(){return 0;}]])], __export_dynamic=yes, __export_dynamic=no)
+@@ -1402,7 +1402,7 @@ case "$canonical" in
+                             LDFLAGS="${LDFLAGS} -ldl"
+ 
+                             if test "$__export_dynamic" = "yes" ; then
+-                                LDFLAGS="${LDFLAGS} -Wl,-export-dynamic"
++                                LDFLAGS="${LDFLAGS} -Wl,--export-dynamic"
+                             fi
+                         fi
+ 
+@@ -1416,7 +1416,7 @@ case "$canonical" in
+     *freebsd* ) AC_DEFINE(FREEBSD)
+                 AC_DEFINE(FOREIGN_ELF)
+                 if test "$__export_dynamic" = "yes" ; then
+-                    LDFLAGS="${LDFLAGS} -Wl,-export-dynamic"
++                    LDFLAGS="${LDFLAGS} -Wl,--export-dynamic"
+                 fi
+ 
+                 if test "${have_dl}" = yes ; then
+@@ -1498,7 +1498,7 @@ case "$canonical" in
+ 
+                 LDFLAGS="-lsocket ${LDFLAGS}"
+                 if test "$__export_dynamic" = "yes" ; then
+-                    LDFLAGS="${LDFLAGS} -Wl,-export-dynamic"
++                    LDFLAGS="${LDFLAGS} -Wl,--export-dynamic"
+                 fi
+                 if test "${have_socket}" = "no" ; then
+                     AC_MSG_ERROR(Your system is missing library: \`socket')

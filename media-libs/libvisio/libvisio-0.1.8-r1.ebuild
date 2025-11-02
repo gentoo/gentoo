@@ -6,7 +6,7 @@ EAPI=8
 inherit flag-o-matic
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libreoffice/libvisio.git"
+	EGIT_REPO_URI="https://git.libreoffice.org/libvisio.git"
 	inherit autotools git-r3
 else
 	SRC_URI="https://dev-www.libreoffice.org/src/libvisio/${P}.tar.xz"

@@ -1,0 +1,30 @@
+From 5f94f4bdc4f7b4b533d6517308a3d33a1a64e3cc Mon Sep 17 00:00:00 2001
+From: "J. Nick Koston" <nick@home-assistant.io>
+Date: Sun, 24 Aug 2025 01:18:33 -0500
+Subject: [PATCH] chore: updates for pytest-asyncio
+
+---
+ tests/conftest.py | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 6db53d2..9f7a4cb 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -41,10 +41,13 @@ def long_repr_strings() -> Generator[None, None, None]:
+ 
+ 
+ @pytest.fixture(autouse=True)
+-def verify_no_lingering_tasks(
+-    event_loop: asyncio.AbstractEventLoop,
+-) -> Generator[None, None, None]:
++def verify_no_lingering_tasks() -> Generator[None, None, None]:
+     """Verify that all tasks are cleaned up."""
++    try:
++        event_loop = asyncio.get_event_loop()
++    except RuntimeError:
++        yield
++        return
+     tasks_before = asyncio.all_tasks(event_loop)
+     yield
+ 

@@ -1,0 +1,33 @@
+From 3b65b8ac88d500d51bf5cb99f3ae5367756b3118 Mon Sep 17 00:00:00 2001
+From: Simone <simone@falcini.com>
+Date: Mon, 20 Feb 2023 08:30:04 +0100
+Subject: [PATCH] Dynamic module support
+
+---
+ config | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/config b/config
+index 34f42ec..b900680 100644
+--- a/config
++++ b/config
+@@ -15,7 +15,17 @@ if [ "$HTTP_UWSGI" = "YES" ]; then
+ fi
+ 
+ ngx_addon_name=ngx_http_cache_purge_module
+-HTTP_MODULES="$HTTP_MODULES ngx_http_cache_purge_module"
+-NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_cache_purge_module.c"
++CACHE_PURGE_SRCS="$ngx_addon_dir/ngx_cache_purge_module.c"
++
++if [ -n "$ngx_module_link" ]; then
++    ngx_module_type=HTTP
++    ngx_module_name="$ngx_addon_name"
++    ngx_module_srcs="$CACHE_PURGE_SRCS"
++
++    . auto/module
++else
++    HTTP_MODULES="$HTTP_MODULES $ngx_addon_name"
++    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $CACHE_PURGE_SRCS"
++fi
+ 
+ have=NGX_CACHE_PURGE_MODULE . auto/have

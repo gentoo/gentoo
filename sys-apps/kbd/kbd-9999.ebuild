@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,21 +24,26 @@ HOMEPAGE="https://kbd-project.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls selinux pam test"
+IUSE="bzip2 lzma nls selinux pam test zlib zstd"
 RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-alternatives/gzip
+	bzip2? ( app-arch/bzip2 )
+	lzma? ( app-arch/xz-utils )
 	pam? (
 		!app-misc/vlock
 		sys-libs/pam
 	)
+	zlib? ( sys-libs/zlib )
+	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="
 	${DEPEND}
 	selinux? ( sec-policy/selinux-loadkeys )
 "
 BDEPEND="
+	sys-devel/flex
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
@@ -61,12 +66,21 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/legionus/kbd/issues/121
+	unset LEX
+
 	local myeconfargs=(
 		--disable-werror
+		# No Valgrind for the testsuite
+		--disable-memcheck
 
 		$(use_enable nls)
 		$(use_enable pam vlock)
 		$(use_enable test tests)
+		$(use_with bzip2)
+		$(use_with lzma)
+		$(use_with zlib)
+		$(use_with zstd)
 	)
 
 	econf "${myeconfargs[@]}"

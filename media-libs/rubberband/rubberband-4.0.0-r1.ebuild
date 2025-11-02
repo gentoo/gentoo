@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,6 +32,10 @@ BDEPEND="
 	virtual/pkgconfig
 	test? ( dev-libs/boost[${MULTILIB_USEDEP}] )
 "
+
+PATCHES=(
+	"${FILESDIR}/rubberband-4.0.0-cstdlib-include.patch"
+)
 
 EMESON_BUILDTYPE=release
 

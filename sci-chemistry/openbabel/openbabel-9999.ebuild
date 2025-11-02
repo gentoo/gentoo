@@ -3,10 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+GENTOO_DEPEND_ON_PERL="no"
+PYTHON_COMPAT=( python3_{11..14} )
 WX_GTK_VER=3.2-gtk3
 
-inherit cmake desktop flag-o-matic perl-functions python-r1 toolchain-funcs wxwidgets xdg
+inherit cmake desktop flag-o-matic perl-module python-r1 toolchain-funcs wxwidgets xdg
 
 DESCRIPTION="Interconverts file formats used in molecular modeling"
 HOMEPAGE="https://openbabel.org/ https://github.com/openbabel/openbabel/"
@@ -31,7 +32,7 @@ fi
 LICENSE="GPL-2"
 # See src/CMakeLists.txt for LIBRARY_VERSION
 SLOT="0/7.0.0"
-IUSE="cpu_flags_arm_neon cpu_flags_x86_sse2 cpu_flags_x86_sse4_2 doc examples +inchi json minimal openmp perl png python test wxwidgets"
+IUSE="cpu_flags_arm_neon cpu_flags_x86_sse2 cpu_flags_x86_sse4_2 doc examples +inchi json minimal openmp perl png python test wxwidgets ${GENTOO_PERL_USESTRING}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -44,10 +45,13 @@ RDEPEND="
 	inchi? ( sci-libs/inchi )
 	json? ( >=dev-libs/rapidjson-1.1.0 )
 	!minimal? (
-		dev-libs/libxml2:2
+		dev-libs/libxml2:2=
 		png? ( x11-libs/cairo )
 	)
-	perl? ( dev-lang/perl:= )
+	perl? (
+		${GENTOO_PERL_DEPSTRING}
+		dev-lang/perl:=
+	)
 	python? ( ${PYTHON_DEPS} )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 "
@@ -156,6 +160,11 @@ src_configure() {
 	fi
 
 	cmake_src_configure
+}
+
+src_compile() {
+	# Avoid perl-module_src_compile (bug #963096)
+	cmake_src_compile
 }
 
 src_test() {

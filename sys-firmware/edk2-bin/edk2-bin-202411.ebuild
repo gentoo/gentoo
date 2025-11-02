@@ -12,7 +12,7 @@ DESCRIPTION="TianoCore EDK II UEFI firmware for virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
 SRC_URI=$(printf "https://dev.gentoo.org/~chewi/distfiles/${BINPKG}-%s.xpak\n" ${ARCHES})
 S="${WORKDIR}"
-LICENSE="BSD-2 MIT"
+LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 

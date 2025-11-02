@@ -5,7 +5,7 @@ EAPI=8
 
 COMMIT=80c52493ef42e6fe605a69dcddd2a691cd8a1380
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit flag-o-matic perl-module python-any-r1 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
@@ -15,7 +15,7 @@ S="${WORKDIR}/graphite-${COMMIT}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="perl test"
 RESTRICT="!test? ( test )"
 
@@ -33,7 +33,6 @@ BDEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/fonttools[${PYTHON_USEDEP}]')
 		media-libs/fontconfig
-		perl? ( virtual/perl-Test-Simple )
 	)
 "
 

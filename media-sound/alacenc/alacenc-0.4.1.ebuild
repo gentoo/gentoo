@@ -11,11 +11,12 @@ SRC_URI="https://github.com/flacon/alacenc/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
 	"${FILESDIR}/${P}-musl.patch"
 )
 

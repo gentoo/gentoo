@@ -97,6 +97,7 @@ freetds - Add support for the TDS protocol to connect to MSSQL/Sybase databases
 ftp - Add FTP (File Transfer Protocol) support
 gd - Add support for media-libs/gd (to generate graphics on the fly)
 gdbm - Add support for sys-libs/gdbm (GNU database libraries)
+generic-uki - Install a generic initramfs and Unified Kernel Image alongside the distribution kernel
 geoip - Add geoip support for country and city lookup based on IPs
 geolocation - Enable physical position determination
 ggi - Add support for media-libs/libggi (non-X video api/drivers)
@@ -140,6 +141,7 @@ ieee1394 - Enable FireWire/iLink IEEE1394 support (dv, camera, ...)
 imagemagick - Enable optional support for the ImageMagick or GraphicsMagick image converter
 imap - Add support for IMAP (Internet Mail Application Protocol)
 imlib - Add support for imlib, an image loading and rendering library
+index64 - Enable 64-bit array indexing support
 infiniband - Enable Infiniband RDMA transport support
 initramfs - Include kernel modules in the initramfs, and re-install the kernel (only effective for distribution kernels)
 inotify - Enable inotify filesystem monitoring support
@@ -363,6 +365,7 @@ valgrind - Enable annotations for accuracy. May slow down runtime slightly. Safe
 vanilla - Do not add extra patches which change default behaviour; DO NOT USE THIS ON A GLOBAL SCALE as the severity of the meaning changes drastically
 vcd - Video CD support
 vdpau - Enable the Video Decode and Presentation API for Unix acceleration interface
+verify-provenance - Verify provenance of PyPI distfiles (verifies that the artifact comes from upstream source repository)
 verify-sig - Verify upstream signatures on distfiles
 vhosts - Add support for installing web-based applications into a virtual-hosting environment
 videos - Install optional video files (used in some games)

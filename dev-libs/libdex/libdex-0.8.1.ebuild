@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libdex"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm64 ~loong ~x86"
+KEYWORDS="amd64 ~arm64 ~loong x86"
 
 IUSE="+eventfd gtk-doc +introspection +liburing sysprof test vala"
 REQUIRED_USE="
@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.68:2
 	liburing? ( >=sys-libs/liburing-0.7:= )
-	introspection? ( dev-libs/gobject-introspection:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	sysprof? ( dev-util/sysprof-capture:4 )
 	elibc_musl? ( sys-libs/libucontext )
 "

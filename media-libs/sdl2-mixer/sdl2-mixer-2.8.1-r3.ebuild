@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~ppc ppc64 ~riscv ~sparc x86"
 IUSE="flac fluidsynth gme midi mod modplug mp3 opus playtools stb timidity tremor vorbis +wav wavpack xmp"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
@@ -42,6 +42,10 @@ RDEPEND="
 	)
 	mp3? ( media-sound/mpg123-base[${MULTILIB_USEDEP}] )
 	opus? ( media-libs/opusfile[${MULTILIB_USEDEP}] )
+	playtools? (
+		!media-libs/sdl-mixer[playtools]
+		!media-libs/sdl3-mixer[playtools]
+	)
 	vorbis? (
 		stb? ( dev-libs/stb )
 		tremor? ( media-libs/tremor[${MULTILIB_USEDEP}] )

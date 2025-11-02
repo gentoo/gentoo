@@ -9,7 +9,7 @@ SRC_URI="https://github.com/aureliojargas/txt2regex/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE="nls cjk"
 RESTRICT="test" # tests need to run in a docker container it seems
 

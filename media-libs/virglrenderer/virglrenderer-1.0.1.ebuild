@@ -1,12 +1,13 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit meson
+PYTHON_COMPAT=( python3_{11..14} )
+inherit meson python-any-r1
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/virglrenderer.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/virgl/virglrenderer.git"
 	inherit git-r3
 else
 	MY_P="${PN}-${P}"
@@ -28,6 +29,7 @@ RDEPEND="
 	media-libs/libepoxy"
 
 DEPEND="${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}"
 
 # Most of the testsuite cannot run in our sandboxed environment, just don't
 # deal with it for now.

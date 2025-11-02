@@ -1,0 +1,55 @@
+From de434688d500204b979c0bcc6703a9cfb589c9a9 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Tue, 8 Apr 2025 17:48:40 +0200
+Subject: [PATCH] update version alpha3
+
+Signed-off-by: Paul Zander <negril.nx@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd556a0..1690b96 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,8 +74,8 @@ project(qhull)
+ # Define qhull_VERSION in README.txt, Announce.txt, qh-get.htm, CMakeLists.txt
+ #   qhull-zip.sh (twice), qhull-wiki.md, qhull-news.htm, File_id.diz, index.htm
+ #   qhull-warn.pri (VERSION), qhull-exports.def (VERSION), qhull_p-exports.def, qhull_r-exports.def
+-set(qhull_VERSION2 "2020.2  2023/01/02")  # not used, See global.c, global_r.c, rbox.c, rbox_r.c
+-set(qhull_VERSION  "8.1-alpha3")  # Advance every release
++set(qhull_VERSION2 "2020.2  2025/09/07")  # not used, See global.c, global_r.c, rbox.c, rbox_r.c
++set(qhull_VERSION  "8.1-alpha6")  # Advance every release
+ 
+ # SOVERSION -- qhull 2003 = empty, 2009 = 5, 2010-2012 = 6, 2015-2019 = 7, 2020 = 8.0
+ # Increase SOVERSION if ABI breaks (abi-compliance-checker)
+diff --git a/src/libqhull/global.c b/src/libqhull/global.c
+index a3ded46..fef32f4 100644
+--- a/src/libqhull/global.c
++++ b/src/libqhull/global.c
+@@ -47,8 +47,8 @@ qhT qh_qh;              /* all global variables.
+     recompile user_eg.c, rbox.c, libqhull.c, qconvex.c, qdelaun.c qvoronoi.c, qhalf.c, testqset.c
+ */
+ 
+-const char qh_version[]= "2020.2 2023/01/02";
+-const char qh_version2[]= "qhull 8.1-alpha3 (2020.2 2023/01/02)";
++const char qh_version[]= "2020.2 2025/09/07";
++const char qh_version2[]= "qhull 8.1-alpha6 (2020.2 2025/09/07)";
+ 
+ /*-<a                             href="qh-globa.htm#TOC"
+   >-------------------------------</a><a name="appendprint">-</a>
+diff --git a/src/libqhull_r/global_r.c b/src/libqhull_r/global_r.c
+index 3a5c7c7..889585a 100644
+--- a/src/libqhull_r/global_r.c
++++ b/src/libqhull_r/global_r.c
+@@ -39,8 +39,8 @@
+     recompile user_eg_r.c, rbox_r.c, libqhull_r.c, qconvex_r.c, qdelaun_r.c qvoronoi_r.c, qhalf_r.c, testqset_r.c
+ */
+ 
+-const char qh_version[]= "2020.2.r 2023/01/02";
+-const char qh_version2[]= "qhull_r 8.1-alpha3 (2020.2.r 2023/01/02)";
++const char qh_version[]= "2020.2.r 2025/09/07";
++const char qh_version2[]= "qhull_r 8.1-alpha6 (2020.2.r 2025/09/07)";
+ 
+ /*-<a                             href="qh-globa_r.htm#TOC"
+   >-------------------------------</a><a name="appendprint">-</a>
+-- 
+2.49.0
+

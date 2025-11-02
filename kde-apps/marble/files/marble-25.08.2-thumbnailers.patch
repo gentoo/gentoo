@@ -1,0 +1,385 @@
+From 025903718c4a40d48c846cb58e849d904de24aee Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Tue, 12 Aug 2025 14:54:55 +0200
+Subject: [PATCH] Restore thumbnailer functionality
+
+The thumbnailers were never properly ported to KF6.
+
+The code has multiple desktop files that all load the same thumbnailer plugin.
+
+That approach does not work with KF6. Instead we need a proper plugin with
+embedded JSON metadata for each.
+
+(cherry picked from commit 18528fa5062c4d9ec90785fc3d709163d86af6e8)
+
+* asturm 2025-10-12: Leaving ever changing .desktop files intact to keep
+  working with 25.08.3.
+---
+ src/plugins/runner/gpx/CMakeLists.txt                |  3 +++
+ src/plugins/runner/gpx/marble_thumbnail_gpx.json     |  8 ++++++++
+ src/plugins/runner/gpx/thumbnail.cpp                 | 11 +++++++++++
+ src/plugins/runner/json/CMakeLists.txt               |  3 +++
+ .../runner/json/marble_thumbnail_geojson.json        |  8 ++++++++
+ src/plugins/runner/json/thumbnail.cpp                | 11 +++++++++++
+ src/plugins/runner/kml/CMakeLists.txt                |  8 +++++---
+ src/plugins/runner/kml/marble_thumbnail_kml.json     |  8 ++++++++
+ src/plugins/runner/kml/marble_thumbnail_kmz.json     |  8 ++++++++
+ src/plugins/runner/kml/thumbnail_kml.cpp             | 11 +++++++++++
+ src/plugins/runner/kml/thumbnail_kmz.cpp             | 11 +++++++++++
+ src/plugins/runner/osm/CMakeLists.txt                |  7 +++----
+ src/plugins/runner/osm/marble_thumbnail_osm.json     |  8 ++++++++
+ src/plugins/runner/osm/thumbnail.cpp                 | 11 +++++++++++
+ src/plugins/runner/shp/CMakeLists.txt                |  4 ++--
+ src/plugins/runner/shp/marble_thumbnail_shp.json     |  8 ++++++++
+ src/plugins/runner/shp/thumbnail.cpp                 | 11 +++++++++++
+ src/thumbnailer/CMakeLists.txt                       |  4 +---
+ src/thumbnailer/main.cpp                             | 12 ------------
+ src/thumbnailer/thumbnailer.cpp                      |  4 ++--
+ src/thumbnailer/thumbnailer.h                        |  2 +-
+ 21 files changed, 134 insertions(+), 27 deletions(-)
+ create mode 100644 src/plugins/runner/gpx/marble_thumbnail_gpx.json
+ create mode 100644 src/plugins/runner/gpx/thumbnail.cpp
+ create mode 100644 src/plugins/runner/json/marble_thumbnail_geojson.json
+ create mode 100644 src/plugins/runner/json/thumbnail.cpp
+ create mode 100644 src/plugins/runner/kml/marble_thumbnail_kml.json
+ create mode 100644 src/plugins/runner/kml/marble_thumbnail_kmz.json
+ create mode 100644 src/plugins/runner/kml/thumbnail_kml.cpp
+ create mode 100644 src/plugins/runner/kml/thumbnail_kmz.cpp
+ create mode 100644 src/plugins/runner/osm/marble_thumbnail_osm.json
+ create mode 100644 src/plugins/runner/osm/thumbnail.cpp
+ create mode 100644 src/plugins/runner/shp/marble_thumbnail_shp.json
+ create mode 100644 src/plugins/runner/shp/thumbnail.cpp
+ delete mode 100644 src/thumbnailer/main.cpp
+
+diff --git a/src/plugins/runner/gpx/CMakeLists.txt b/src/plugins/runner/gpx/CMakeLists.txt
+index 69f63d5a0..cfc8a318d 100644
+--- a/src/plugins/runner/gpx/CMakeLists.txt
++++ b/src/plugins/runner/gpx/CMakeLists.txt
+@@ -74,6 +74,9 @@ if(NOT KF6_FOUND)
+     return()
+ endif()
+ 
++kcoreaddons_add_plugin(marble_thumbnail_gpx SOURCES thumbnail.cpp INSTALL_NAMESPACE "kf6/thumbcreator")
++target_link_libraries(marble_thumbnail_gpx PRIVATE marblethumbnail)
++
+ # register marble part as handler
+ # install again once part is fixed to load and show the passed file
+ # install(FILES marble_part_gpx.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+diff --git a/src/plugins/runner/gpx/marble_thumbnail_gpx.json b/src/plugins/runner/gpx/marble_thumbnail_gpx.json
+new file mode 100644
+index 000000000..e9074e32b
+--- /dev/null
++++ b/src/plugins/runner/gpx/marble_thumbnail_gpx.json
+@@ -0,0 +1,8 @@
++{
++    "KPlugin": {
++        "MimeTypes": [
++            "application/gpx+xml"
++        ],
++        "Name": "GPX Geographic Data"
++    }
++}
+diff --git a/src/plugins/runner/gpx/thumbnail.cpp b/src/plugins/runner/gpx/thumbnail.cpp
+new file mode 100644
+index 000000000..638d869e5
+--- /dev/null
++++ b/src/plugins/runner/gpx/thumbnail.cpp
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++// SPDX-FileCopyrightText: 2025 Nicolas Fella <nicolas.fella@gmx.de>
++
++#include "thumbnailer.h"
++
++#include <KPluginFactory>
++
++K_PLUGIN_CLASS_WITH_JSON(Marble::GeoDataThumbnailer, "marble_thumbnail_gpx.json")
++
++#include "thumbnail.moc"
+diff --git a/src/plugins/runner/json/CMakeLists.txt b/src/plugins/runner/json/CMakeLists.txt
+index fd52ff188..07a92f123 100644
+--- a/src/plugins/runner/json/CMakeLists.txt
++++ b/src/plugins/runner/json/CMakeLists.txt
+@@ -14,6 +14,9 @@ if(NOT KF6_FOUND)
+     return()
+ endif()
+ 
++kcoreaddons_add_plugin(marble_thumbnail_geojson SOURCES thumbnail.cpp INSTALL_NAMESPACE "kf6/thumbcreator")
++target_link_libraries(marble_thumbnail_geojson PRIVATE marblethumbnail)
++
+ # register marble part as handler
+ # install again once part is fixed to load and show the passed file
+ # install(FILES marble_part_geojson.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+diff --git a/src/plugins/runner/json/marble_thumbnail_geojson.json b/src/plugins/runner/json/marble_thumbnail_geojson.json
+new file mode 100644
+index 000000000..ff7a673a3
+--- /dev/null
++++ b/src/plugins/runner/json/marble_thumbnail_geojson.json
+@@ -0,0 +1,8 @@
++{
++    "KPlugin": {
++        "MimeTypes": [
++            "application/geo+json"
++        ],
++        "Name": "GeoJSON Geographic Data"
++    }
++}
+diff --git a/src/plugins/runner/json/thumbnail.cpp b/src/plugins/runner/json/thumbnail.cpp
+new file mode 100644
+index 000000000..5590ffa9a
+--- /dev/null
++++ b/src/plugins/runner/json/thumbnail.cpp
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++// SPDX-FileCopyrightText: 2025 Nicolas Fella <nicolas.fella@gmx.de>
++
++#include "thumbnailer.h"
++
++#include <KPluginFactory>
++
++K_PLUGIN_CLASS_WITH_JSON(Marble::GeoDataThumbnailer, "marble_thumbnail_geojson.json")
++
++#include "thumbnail.moc"
+diff --git a/src/plugins/runner/kml/CMakeLists.txt b/src/plugins/runner/kml/CMakeLists.txt
+index 59eb85928..6b5c0cbf3 100644
+--- a/src/plugins/runner/kml/CMakeLists.txt
++++ b/src/plugins/runner/kml/CMakeLists.txt
+@@ -20,9 +20,11 @@ endif()
+ # install(FILES marble_part_kml.desktop DESTINATION ${KDE_INSTALL_FULL_KSERVICESDIR})
+ # install(FILES marble_part_kmz.desktop DESTINATION ${KDE_INSTALL_FULL_KSERVICESDIR})
+ 
+-# register thumbnail plugin as handler
+-install(FILES marble_thumbnail_kml.desktop DESTINATION ${KDE_INSTALL_FULL_APPDIR})
+-install(FILES marble_thumbnail_kmz.desktop DESTINATION ${KDE_INSTALL_FULL_APPDIR})
++kcoreaddons_add_plugin(marble_thumbnail_kml SOURCES thumbnail_kml.cpp INSTALL_NAMESPACE "kf6/thumbcreator")
++target_link_libraries(marble_thumbnail_kml PRIVATE marblethumbnail)
++
++kcoreaddons_add_plugin(marble_thumbnail_kmz SOURCES thumbnail_kmz.cpp INSTALL_NAMESPACE "kf6/thumbcreator")
++target_link_libraries(marble_thumbnail_kmz PRIVATE marblethumbnail)
+ 
+ if(NOT WIN32 AND NOT APPLE)
+     # register marble app as handler
+diff --git a/src/plugins/runner/kml/marble_thumbnail_kml.json b/src/plugins/runner/kml/marble_thumbnail_kml.json
+new file mode 100644
+index 000000000..0523c56e9
+--- /dev/null
++++ b/src/plugins/runner/kml/marble_thumbnail_kml.json
+@@ -0,0 +1,8 @@
++{
++    "KPlugin": {
++        "MimeTypes": [
++            "application/vnd.google-earth.kml+xml"
++        ],
++        "Name": "KML Geographic Data"
++    }
++}
+diff --git a/src/plugins/runner/kml/marble_thumbnail_kmz.json b/src/plugins/runner/kml/marble_thumbnail_kmz.json
+new file mode 100644
+index 000000000..8ff4d3209
+--- /dev/null
++++ b/src/plugins/runner/kml/marble_thumbnail_kmz.json
+@@ -0,0 +1,8 @@
++{
++    "KPlugin": {
++        "MimeTypes": [
++            "application/vnd.google-earth.kmz"
++        ],
++        "Name": "KML Geographic Compressed Data"
++    }
++}
+diff --git a/src/plugins/runner/kml/thumbnail_kml.cpp b/src/plugins/runner/kml/thumbnail_kml.cpp
+new file mode 100644
+index 000000000..c3f9df0c3
+--- /dev/null
++++ b/src/plugins/runner/kml/thumbnail_kml.cpp
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++// SPDX-FileCopyrightText: 2025 Nicolas Fella <nicolas.fella@gmx.de>
++
++#include "thumbnailer.h"
++
++#include <KPluginFactory>
++
++K_PLUGIN_CLASS_WITH_JSON(Marble::GeoDataThumbnailer, "marble_thumbnail_kml.json")
++
++#include "thumbnail_kml.moc"
+diff --git a/src/plugins/runner/kml/thumbnail_kmz.cpp b/src/plugins/runner/kml/thumbnail_kmz.cpp
+new file mode 100644
+index 000000000..4dee965de
+--- /dev/null
++++ b/src/plugins/runner/kml/thumbnail_kmz.cpp
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++// SPDX-FileCopyrightText: 2025 Nicolas Fella <nicolas.fella@gmx.de>
++
++#include "thumbnailer.h"
++
++#include <KPluginFactory>
++
++K_PLUGIN_CLASS_WITH_JSON(Marble::GeoDataThumbnailer, "marble_thumbnail_kmz.json")
++
++#include "thumbnail_kmz.moc"
+diff --git a/src/plugins/runner/osm/CMakeLists.txt b/src/plugins/runner/osm/CMakeLists.txt
+index 3cb2f6fbb..e69a1e8b0 100644
+--- a/src/plugins/runner/osm/CMakeLists.txt
++++ b/src/plugins/runner/osm/CMakeLists.txt
+@@ -78,10 +78,9 @@ if(NOT KF6_FOUND)
+     return()
+ endif()
+ 
++kcoreaddons_add_plugin(marble_thumbnail_osm SOURCES thumbnail.cpp INSTALL_NAMESPACE "kf6/thumbcreator")
++target_link_libraries(marble_thumbnail_osm PRIVATE marblethumbnail)
++
+ # register marble part as handler
+ # install again once part is fixed to load and show the passed file
+ # install(FILES marble_part_osm.desktop DESTINATION ${KDE_INSTALL_FULL_KSERVICE5DIR})
+-
+-# register thumbnail plugin as handler
+-install(FILES marble_thumbnail_osm.desktop DESTINATION ${KDE_INSTALL_FULL_APPDIR})
+-
+diff --git a/src/plugins/runner/osm/marble_thumbnail_osm.json b/src/plugins/runner/osm/marble_thumbnail_osm.json
+new file mode 100644
+index 000000000..050615de6
+--- /dev/null
++++ b/src/plugins/runner/osm/marble_thumbnail_osm.json
+@@ -0,0 +1,8 @@
++{
++    "KPlugin": {
++        "MimeTypes": [
++            "application/x-osm+xml"
++        ],
++        "Name": "OSM Data"
++    }
++}
+diff --git a/src/plugins/runner/osm/thumbnail.cpp b/src/plugins/runner/osm/thumbnail.cpp
+new file mode 100644
+index 000000000..0536d304d
+--- /dev/null
++++ b/src/plugins/runner/osm/thumbnail.cpp
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++// SPDX-FileCopyrightText: 2025 Nicolas Fella <nicolas.fella@gmx.de>
++
++#include "thumbnailer.h"
++
++#include <KPluginFactory>
++
++K_PLUGIN_CLASS_WITH_JSON(Marble::GeoDataThumbnailer, "marble_thumbnail_osm.json")
++
++#include "thumbnail.moc"
+diff --git a/src/plugins/runner/shp/CMakeLists.txt b/src/plugins/runner/shp/CMakeLists.txt
+index 9d1cdc9a1..472b8190f 100644
+--- a/src/plugins/runner/shp/CMakeLists.txt
++++ b/src/plugins/runner/shp/CMakeLists.txt
+@@ -21,8 +21,8 @@ endif()
+ # install again once part is fixed to load and show the passed file
+ # install(FILES marble_part_shp.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+ 
+-# register thumbnail plugin as handler
+-install(FILES marble_thumbnail_shp.desktop DESTINATION ${KDE_INSTALL_APPDIR})
++kcoreaddons_add_plugin(marble_thumbnail_shp SOURCES thumbnail.cpp INSTALL_NAMESPACE "kf6/thumbcreator")
++target_link_libraries(marble_thumbnail_shp PRIVATE marblethumbnail)
+ 
+ if(NOT WIN32 AND NOT APPLE)
+     # register marble app as handler
+diff --git a/src/plugins/runner/shp/marble_thumbnail_shp.json b/src/plugins/runner/shp/marble_thumbnail_shp.json
+new file mode 100644
+index 000000000..401dd4e02
+--- /dev/null
++++ b/src/plugins/runner/shp/marble_thumbnail_shp.json
+@@ -0,0 +1,8 @@
++{
++    "KPlugin": {
++        "MimeTypes": [
++            "application/x-esri-shape"
++        ],
++        "Name": "ESRI Shapefile"
++    }
++}
+diff --git a/src/plugins/runner/shp/thumbnail.cpp b/src/plugins/runner/shp/thumbnail.cpp
+new file mode 100644
+index 000000000..caee98a89
+--- /dev/null
++++ b/src/plugins/runner/shp/thumbnail.cpp
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: LGPL-2.1-or-later
++//
++// SPDX-FileCopyrightText: 2025 Nicolas Fella <nicolas.fella@gmx.de>
++
++#include "thumbnailer.h"
++
++#include <KPluginFactory>
++
++K_PLUGIN_CLASS_WITH_JSON(Marble::GeoDataThumbnailer, "marble_thumbnail_shp.json")
++
++#include "thumbnail.moc"
+diff --git a/src/thumbnailer/CMakeLists.txt b/src/thumbnailer/CMakeLists.txt
+index 62e692b72..5ac0b1535 100644
+--- a/src/thumbnailer/CMakeLists.txt
++++ b/src/thumbnailer/CMakeLists.txt
+@@ -9,11 +9,9 @@ endif()
+ set(marblethumbnail_SRCS
+   thumbnailer.cpp
+   thumbnailer.h
+-  main.cpp
+ )
+-add_library(marblethumbnail MODULE ${marblethumbnail_SRCS})
++add_library(marblethumbnail STATIC ${marblethumbnail_SRCS})
+ target_link_libraries(marblethumbnail
+   marblewidget
+   KF6::KIOGui
+ )
+-install(TARGETS marblethumbnail  DESTINATION ${KDE_INSTALL_PLUGINDIR})
+diff --git a/src/thumbnailer/main.cpp b/src/thumbnailer/main.cpp
+deleted file mode 100644
+index c26e553dd..000000000
+--- a/src/thumbnailer/main.cpp
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// SPDX-FileCopyrightText: 2014 Friedrich W. H. Kossebau <kossebau@kde.org>
+-// SPDX-License-Identifier: LGPL-2.1-or-later
+-
+-#include "thumbnailer.h"
+-
+-extern "C" {
+-
+-Q_DECL_EXPORT ThumbnailCreator *new_creator()
+-{
+-    return new Marble::GeoDataThumbnailer;
+-}
+-}
+diff --git a/src/thumbnailer/thumbnailer.cpp b/src/thumbnailer/thumbnailer.cpp
+index ce84a86d4..6e2520396 100644
+--- a/src/thumbnailer/thumbnailer.cpp
++++ b/src/thumbnailer/thumbnailer.cpp
+@@ -18,8 +18,8 @@ static const int timeoutTime = 5000; // in msec
+ namespace Marble
+ {
+ 
+-GeoDataThumbnailer::GeoDataThumbnailer()
+-    : ThumbnailCreator(nullptr, QVariantList())
++GeoDataThumbnailer::GeoDataThumbnailer(QObject *parent)
++    : ThumbnailCreator(parent, QVariantList())
+ {
+     m_marbleMap.setMapThemeId(QStringLiteral("earth/openstreetmap/openstreetmap.dgml"));
+     m_marbleMap.setProjection(Equirectangular);
+diff --git a/src/thumbnailer/thumbnailer.h b/src/thumbnailer/thumbnailer.h
+index 47266050f..66ce681c2 100644
+--- a/src/thumbnailer/thumbnailer.h
++++ b/src/thumbnailer/thumbnailer.h
+@@ -26,7 +26,7 @@ class GeoDataThumbnailer : public ThumbnailCreator
+     Q_OBJECT
+ 
+ public:
+-    GeoDataThumbnailer();
++    GeoDataThumbnailer(QObject *parent);
+     ~GeoDataThumbnailer() override;
+ 
+     ThumbnailResult create(const ThumbnailRequest &request) override;
+-- 
+2.51.0
+

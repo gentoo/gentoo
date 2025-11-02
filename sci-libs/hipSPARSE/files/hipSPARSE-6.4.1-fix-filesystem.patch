@@ -1,0 +1,108 @@
+Fix USE=benchmark compilation with libstdc++-15
+
+Bug: https://bugs.gentoo.org/960459
+Upstream PR: https://github.com/ROCm/hipSPARSE/pull/568
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -66,11 +66,20 @@ endif( )
+ # hipSPARSE project
+ project(hipsparse LANGUAGES CXX ${fortran_language})
+ 
+-# Build flags
+-set(CMAKE_CXX_STANDARD 14)
++# Set CXX flags
++if (NOT DEFINED CMAKE_CXX_STANDARD)
++  set(CMAKE_CXX_STANDARD 17)
++endif()
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
++# Set CXX standard
++if (CMAKE_CXX_STANDARD EQUAL 14)
++  message( DEPRECATION "Builds using the C++14 standard will no longer be supported in the next major release" )
++elseif(NOT CMAKE_CXX_STANDARD EQUAL 17)
++  message(FATAL_ERROR "Only C++14 and C++17 are supported")
++endif()
++
+ # Build options
+ option(BUILD_SHARED_LIBS "Build hipSPARSE as a shared library" ON)
+ option(BUILD_CLIENTS_TESTS "Build tests (requires googletest)" OFF)
+--- a/clients/CMakeLists.txt
++++ b/clients/CMakeLists.txt
+@@ -55,11 +55,20 @@ if(NOT TARGET hipsparse)
+   option(BUILD_CLIENTS_BENCHMARKS "Build benchmarks" ON)
+ endif()
+ 
+-# Build flags
+-set(CMAKE_CXX_STANDARD 14)
++# Set CXX flags
++if (NOT DEFINED CMAKE_CXX_STANDARD)
++  set(CMAKE_CXX_STANDARD 17)
++endif()
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
++# Set CXX standard
++if (CMAKE_CXX_STANDARD EQUAL 14)
++  message( DEPRECATION "Builds using the C++14 standard will no longer be supported in the next major release" )
++elseif(NOT CMAKE_CXX_STANDARD EQUAL 17)
++  message(FATAL_ERROR "Only C++14 and C++17 are supported")
++endif()
++
+ # If OpenMP is available, we can use it to speed up some tests
+ find_package(OpenMP QUIET)
+ find_package(Threads QUIET)
+--- a/clients/common/utility.cpp
++++ b/clients/common/utility.cpp
+@@ -36,40 +36,10 @@
+ 
+ #ifdef __cpp_lib_filesystem
+ #include <filesystem>
++namespace fs = std::filesystem;
+ #else
+ #include <experimental/filesystem>
+-
+-namespace std
+-{
+-    namespace filesystem = experimental::filesystem;
+-}
+-#endif
+-#if 0
+-#ifdef WIN32
+-#include <windows.h>
+-#endif
+-
+-#include "utility.hpp"
+-
+-#include <hip/hip_runtime_api.h>
+-#include <hipsparse.h>
+-#include <stdio.h>
+-// #include <sys/time.h>
+-#include <chrono>
+-//#define _USE_MATH_DEFINES
+-#include <cmath>
+-#include <cstdlib>
+-
+-#ifdef __cpp_lib_filesystem
+-#include <filesystem>
+-#else
+-#include <experimental/filesystem>
+-
+-namespace std
+-{
+-    namespace filesystem = experimental::filesystem;
+-}
+-#endif
++namespace fs = std::experimental::filesystem;
+ #endif
+ 
+ /* ============================================================================================ */
+@@ -91,7 +61,7 @@ std::string hipsparse_exepath()
+         result.resize(result.size() * 2);
+     }
+ 
+-    std::filesystem::path exepath(result.begin(), result.end());
++    fs::path exepath(result.begin(), result.end());
+     exepath = exepath.remove_filename();
+     exepath += exepath.empty() ? "" : "/";
+     return exepath.string();

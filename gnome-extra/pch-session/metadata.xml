@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="gitlab">pachoramos/pch-session</remote-id>
 	</upstream>
+	<use>
+		<flag name="breeze">Use Breeze KDE theme as first option over Fusion for QT apps</flag>
+	</use>
 </pkgmetadata>

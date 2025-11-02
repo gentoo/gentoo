@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ S="${WORKDIR}"/ClanLib-${PV}
 LICENSE="ZLIB"
 SLOT="0.8"
 # Not big endian safe! #82779
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc ipv6 mikmod opengl sdl static-libs vorbis"
 
 # opengl keyword does not drop the GL/GLU requirement.

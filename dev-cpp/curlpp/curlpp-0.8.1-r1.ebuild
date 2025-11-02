@@ -23,6 +23,7 @@ DEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/curlpp-0.8.1-cmake_minimum.patch"
 	"${FILESDIR}/curlpp-0.8.1-fix-curloption.patch"
 	"${FILESDIR}/curlpp-0.8.1-fix-pkgconfig.patch"
 )

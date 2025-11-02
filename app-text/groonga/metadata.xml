@@ -3,11 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="abort">Enable query abortion</flag>
 		<flag name="benchmark">Build benchmark programs</flag>
-		<flag name="dynamic-malloc-change">Allow dynamic memory allocation change for testing</flag>
 		<flag name="exact-alloc-count">Atomic counting for memory alloc count</flag>
-		<flag name="fmalloc">Make memory allocation failed in specified condition for debug</flag>
 		<flag name="futex">Use futex</flag>
 		<flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> used for suggestion</flag>
 		<flag name="mecab">Use <pkg>app-text/mecab</pkg> for morphological analysis</flag>

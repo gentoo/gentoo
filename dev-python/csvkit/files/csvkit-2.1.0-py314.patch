@@ -1,0 +1,24 @@
+From de4ec58126e3341e4cf8c54735c297d6496fecf5 Mon Sep 17 00:00:00 2001
+From: James McKinney <26463+jpmckinney@users.noreply.github.com>
+Date: Mon, 9 Jun 2025 23:51:26 -0400
+Subject: [PATCH] fix: Set ArgumentParser(prog=) for Python 3.14, #1284 (bis)
+
+---
+ csvkit/cli.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/csvkit/cli.py b/csvkit/cli.py
+index a1bde8018..a1ad1bff8 100644
+--- a/csvkit/cli.py
++++ b/csvkit/cli.py
+@@ -163,7 +163,9 @@ def _init_common_parser(self):
+         whose single-letter form is contained in 'omitflags' will be left out of the configured parser. Use 'f' for
+         file.
+         """
+-        self.argparser = argparse.ArgumentParser(description=self.description, epilog=self.epilog)
++        self.argparser = argparse.ArgumentParser(
++            prog=type(self).__name__.lower(), description=self.description, epilog=self.epilog
++        )
+ 
+         # Input
+         if 'f' not in self.override_flags:

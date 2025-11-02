@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,3 +25,8 @@ RDEPEND="net-wireless/soapysdr:=
 		net-libs/libiio:=
 		net-libs/libad9361-iio:="
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	sed -i -e "s/2.8.9/3.10/" CMakeLists.txt || die
+	cmake_src_prepare
+}

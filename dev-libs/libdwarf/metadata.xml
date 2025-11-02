@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>davidroman96@gmail.com</email>
+		<name>David Roman</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">davea42/libdwarf-code</remote-id>
+	</upstream>
+	<use>
+		<flag name="dwarfexample">enable dwarfexample compilation</flag>
+		<flag name="dwarfgen">enable dwarfgen compilation</flag>
+	</use>
+</pkgmetadata>

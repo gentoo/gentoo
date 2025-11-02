@@ -1,9 +1,10 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-MY_PN="ifenslave-2.6" # this is NOT an error
+# This is NOT an error, Debian's 2.x is a rewrite using ifupdown instead.
+MY_PN="ifenslave-2.6"
 DEBIAN_PV="17"
 DEBIANPKG_TARBALL="${MY_PN}_${PV}.orig.tar.gz"
 DEBIANPKG_PATCH="${MY_PN}_${PV}-${DEBIAN_PV}.debian.tar.gz"
@@ -19,7 +20,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~mips ppc ~sparc x86"
 
 DEPEND=">=sys-kernel/linux-headers-2.4.22"
 

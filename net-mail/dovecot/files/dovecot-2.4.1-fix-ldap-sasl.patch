@@ -1,0 +1,65 @@
+From 431e328b3b035ddb187526cd13bccf29833aed90 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <timo.sirainen@open-xchange.com>
+Date: Mon, 2 Jun 2025 20:42:03 +0300
+Subject: [PATCH] auth: Fix LDAP SASL support
+
+The settings code didn't see the necessary defines.
+
+Based on patch by Jakob Haufe
+
+Broken by 961275fdb54878fdfa4ee1b9f1a4f00e82bf4a83
+---
+ src/auth/db-ldap-settings.h | 14 ++++++++++++++
+ src/auth/db-ldap.c          | 11 -----------
+ 2 files changed, 14 insertions(+), 11 deletions(-)
+
+diff --git a/src/auth/db-ldap-settings.h b/src/auth/db-ldap-settings.h
+index dc341dd3943..a5f2d09fa38 100644
+--- a/src/auth/db-ldap-settings.h
++++ b/src/auth/db-ldap-settings.h
+@@ -1,6 +1,20 @@
+ #ifndef DB_LDAP_SETTINGS_H
+ #define DB_LDAP_SETTINGS_H
+ 
++/* <settings checks> */
++#define HAVE_LDAP_SASL
++#ifdef HAVE_SASL_SASL_H
++#  include <sasl/sasl.h>
++#elif defined (HAVE_SASL_H)
++#  include <sasl.h>
++#else
++#  undef HAVE_LDAP_SASL
++#endif
++#if !defined(SASL_VERSION_MAJOR) || SASL_VERSION_MAJOR < 2
++#  undef HAVE_LDAP_SASL
++#endif
++/* </settings checks> */
++
+ enum db_ldap_lookup_type {
+ 	DB_LDAP_LOOKUP_TYPE_PASSDB,
+ 	DB_LDAP_LOOKUP_TYPE_USERDB,
+diff --git a/src/auth/db-ldap.c b/src/auth/db-ldap.c
+index 9dcebedd57e..302faf38f43 100644
+--- a/src/auth/db-ldap.c
++++ b/src/auth/db-ldap.c
+@@ -22,20 +22,9 @@
+ 
+ #include <unistd.h>
+ 
+-#define HAVE_LDAP_SASL
+-#ifdef HAVE_SASL_SASL_H
+-#  include <sasl/sasl.h>
+-#elif defined (HAVE_SASL_H)
+-#  include <sasl.h>
+-#else
+-#  undef HAVE_LDAP_SASL
+-#endif
+ #ifdef LDAP_OPT_X_TLS
+ #  define OPENLDAP_TLS_OPTIONS
+ #endif
+-#if !defined(SASL_VERSION_MAJOR) || SASL_VERSION_MAJOR < 2
+-#  undef HAVE_LDAP_SASL
+-#endif
+ 
+ #ifndef LDAP_SASL_QUIET
+ #  define LDAP_SASL_QUIET 0 /* Doesn't exist in Solaris LDAP */

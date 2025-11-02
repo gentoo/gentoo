@@ -5,6 +5,7 @@
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-29)
 # not available here (see openexr, opencolorio, opencv)
+color-management
 openvdb
 embree
 openimageio
@@ -20,11 +21,6 @@ osl
 # ...and openscenegraph needs openexr.
 openexr
 osg
-
-# Samuli Suominen <ssuominen@gentoo.org> (2012-11-24)
-# TODO: Keyword and stabilize media-gfx/opencolorio and media-libs/opencv
-color-management
-opencv
 
 # Brent Baude <ranger@gentoo.org> (2008-10-03)
 # Masking xindy use flag for ppc64

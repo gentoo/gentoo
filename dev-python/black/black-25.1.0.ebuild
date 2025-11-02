@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 optfeature pypi
 
@@ -17,7 +17,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/click-8.0.0[${PYTHON_USEDEP}]
@@ -25,10 +25,6 @@ RDEPEND="
 	>=dev-python/packaging-22.0[${PYTHON_USEDEP}]
 	>=dev-python/pathspec-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/platformdirs-2[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '
-		>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
-		>=dev-python/typing-extensions-4.0.1[${PYTHON_USEDEP}]
-	' 3.10)
 "
 BDEPEND="
 	dev-python/hatch-fancy-pypi-readme[${PYTHON_USEDEP}]
@@ -37,10 +33,20 @@ BDEPEND="
 		>=dev-python/aiohttp-3.10[${PYTHON_USEDEP}]
 		dev-python/aiohttp-cors[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
-		dev-python/parameterized[${PYTHON_USEDEP}]
 	)
 "
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
+
+PATCHES=(
+	# combined upstream test fixes:
+	# https://github.com/psf/black/pull/4577
+	# https://github.com/psf/black/pull/4591
+	# https://github.com/psf/black/pull/4666
+	# https://github.com/psf/black/pull/4690
+	"${FILESDIR}/${P}-test.patch"
+)
 
 python_test() {
 	local EPYTEST_DESELECT=()
@@ -55,7 +61,6 @@ python_test() {
 			;;
 	esac
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest
 }
 

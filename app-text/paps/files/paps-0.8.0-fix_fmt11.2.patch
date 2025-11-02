@@ -1,0 +1,31 @@
+https://github.com/dov/paps/pull/77.patch
+PR merged
+From 2a37bffcaddd93002bea9fb49122167274a0cbbd Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Fri, 11 Jul 2025 07:23:51 +0200
+Subject: [PATCH] Replace deprecated fmt::localtime with std::localtime
+
+fmt::localtime is deprecated since fmt 11.2.0
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ src/format_from_dict.cc | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/format_from_dict.cc b/src/format_from_dict.cc
+index bcad60e..ce72e99 100644
+--- a/src/format_from_dict.cc
++++ b/src/format_from_dict.cc
+@@ -54,7 +54,11 @@ static string scalar_to_string(scalar_t scalar,
+     time_t val = get<time_t>(scalar);
+     if (!spec.length())
+       return to_string(val);
+-    return format(runtime(format("{{:{}}}", spec)), fmt::localtime(val));
++    const auto *tm = std::localtime(&val);
++    if (tm == nullptr)
++      return {};
++
++    return format(runtime(format("{{:{}}}", spec)), *tm);
+   }
+   throw runtime_error("Unrecognized type!"); // I shouldn't be here!
+ }

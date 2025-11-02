@@ -6,6 +6,6 @@
 		<name>Cjk</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">definite/ibus-table-chinese</remote-id>
+		<remote-id type="github">mike-fabian/ibus-table-chinese</remote-id>
 	</upstream>
 </pkgmetadata>

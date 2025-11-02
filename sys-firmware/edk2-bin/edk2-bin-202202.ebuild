@@ -15,7 +15,7 @@ S="${WORKDIR}"
 # TODO: the binary 202105 package currently lacks the preseeded
 #       OVMF_VARS.secboot.fd file (that we typically get from fedora)
 
-LICENSE="BSD-2 MIT"
+LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
 KEYWORDS="amd64 arm64 ~loong ~ppc ppc64 ~riscv x86"
 

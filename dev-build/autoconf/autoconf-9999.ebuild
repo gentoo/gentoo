@@ -42,7 +42,6 @@ HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 
 LICENSE="GPL-3+"
 SLOT="$(ver_cut 1-2)"
-IUSE="emacs"
 
 BDEPEND+="
 	>=dev-lang/perl-5.10
@@ -55,7 +54,6 @@ RDEPEND="
 	!~${CATEGORY}/${P}:2.5
 "
 [[ ${PV} == 9999 ]] && BDEPEND+=" >=sys-apps/texinfo-4.3"
-PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
 src_prepare() {
 	if [[ ${PV} == *9999 ]] ; then
@@ -92,6 +90,9 @@ src_test() {
 
 src_install() {
 	toolchain-autoconf_src_install
+
+	# dissuade Portage from removing our dir file
+	touch "${ED}"/usr/share/${P}/info/.keepinfodir || die
 
 	local f
 	for f in config.{guess,sub} ; do

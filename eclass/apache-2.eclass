@@ -13,7 +13,7 @@
 # and inter-module dependency checking.
 
 LUA_COMPAT=( lua5-{1..4} )
-inherit autotools flag-o-matic lua-single multilib ssl-cert toolchain-funcs
+inherit autotools fcaps flag-o-matic lua-single multilib ssl-cert toolchain-funcs
 
 [[ ${CATEGORY}/${PN} != www-servers/apache ]] \
 	&& die "Do not use this eclass with anything else than www-servers/apache ebuilds!"
@@ -152,6 +152,7 @@ RDEPEND="
 	apache2_modules_lua? ( ${LUA_DEPS} )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10:= )
 	apache2_modules_mime? ( app-misc/mime-types )
+	apache2_modules_proxy_html? ( dev-libs/libxml2:= )
 	apache2_modules_proxy_http2? (
 		>=net-libs/nghttp2-${NGHTTP2_VERSION}:=
 		kernel_linux? ( sys-apps/util-linux )
@@ -159,6 +160,7 @@ RDEPEND="
 	apache2_modules_session_crypto? (
 		dev-libs/apr-util[openssl]
 	)
+	apache2_modules_xml2enc? ( dev-libs/libxml2:= )
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( net-nds/openldap:= )
 	selinux? ( sec-policy/selinux-apache )
@@ -451,7 +453,7 @@ apache-2_src_prepare() {
 	# idea for everyone
 	case ${CHOST} in
 		*-linux-gnu|*-solaris*)
-			# do nothing, these use GNU binutils
+			# do nothing, these use GNU Binutils
 			:
 		;;
 		*-darwin*)
@@ -554,8 +556,8 @@ apache-2_src_configure() {
 		--enable-layout=Gentoo
 	)
 
+	export PCRE_CONFIG="${T}"/pcre2-config
 	export ac_cv_prog_ac_ct_PCRE_CONFIG="${T}"/pcre2-config
-
 	MY_CONF+=(
 		--without-pcre
 		--with-pcre2="${T}"/pcre2-config
@@ -640,6 +642,8 @@ apache-2_src_install() {
 			fperms 4710 /usr/sbin/suexec
 			# provide legacy symlink for suexec, bug 177697
 			dosym /usr/sbin/suexec /usr/sbin/suexec2
+		else
+			FILECAPS=( cap_setgid,cap_setuid=ep usr/sbin/suexec )
 		fi
 	fi
 
@@ -659,6 +663,10 @@ apache-2_src_install() {
 # because the default webroot is a copy of the files that exist elsewhere and we
 # don't want them to be managed/removed by portage when apache is upgraded.
 apache-2_pkg_postinst() {
+	if use suexec && use suexec-syslog && use suexec-caps ; then
+		fcaps_pkg_postinst
+	fi
+
 	if use ssl && [[ ! -e "${EROOT}/etc/ssl/apache2/server.pem" ]]; then
 		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Apache HTTP Server}"
 		install_cert /etc/ssl/apache2/server

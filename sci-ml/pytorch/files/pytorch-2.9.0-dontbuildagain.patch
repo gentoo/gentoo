@@ -1,0 +1,25 @@
+--- a/setup.py
++++ b/setup.py
+@@ -291,6 +291,7 @@
+ import setuptools.errors
+ from setuptools import Command, Extension, find_packages, setup
+ from setuptools.dist import Distribution
++sys.path[:0] = os.getcwd()
+ 
+ 
+ CWD = Path(__file__).absolute().parent
+@@ -483,14 +483,6 @@
+ 
+     check_submodules()
+     check_pydep("yaml", "pyyaml")
+-    build_pytorch(
+-        version=TORCH_VERSION,
+-        cmake_python_library=CMAKE_PYTHON_LIBRARY.as_posix(),
+-        build_python=not BUILD_LIBTORCH_WHL,
+-        rerun_cmake=RERUN_CMAKE,
+-        cmake_only=CMAKE_ONLY,
+-        cmake=cmake,
+-    )
+ 
+     if CMAKE_ONLY:
+         report(

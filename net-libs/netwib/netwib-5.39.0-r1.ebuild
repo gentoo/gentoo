@@ -1,16 +1,15 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: netwib, netwox and netwag go together, bump all or bump none
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols"
 HOMEPAGE="
-	http://www.laurentconstantin.com/en/netw/netwib/
-	http://ntwib.sourceforge.net/
+	https://ntwib.sourceforge.net/
 "
 SRC_URI="
 	https://downloads.sourceforge.net/ntwib/${P}-src.tgz
@@ -37,12 +36,15 @@ src_configure() {
 	tc-export AR CC RANLIB
 	sed -e "s:/lib:/$(get_libdir):" \
 		-i config.dat || die
+	# the only package output is static libs
+	lto-guarantee-fat
 
 	sh genemake || die
 }
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	dodoc \
 		../README.TXT \

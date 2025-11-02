@@ -17,5 +17,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">gerbv</remote-id>
+		<remote-id type="github">gerbv/gerbv</remote-id>
 	</upstream>
 </pkgmetadata>

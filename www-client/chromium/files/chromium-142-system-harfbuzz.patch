@@ -1,0 +1,33 @@
+From 13e2738a95c6c870e22eebffe2af622783633d8a Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sun, 21 Sep 2025 08:48:37 +1000
+Subject: [PATCH] Fix build with unbundled harfbuzz
+
+210a7ea994ee4b4548894d190914dbd611316ed6 introduces a direct import of
+harfbuzz headers from third_party; this is inconsistent with the main harfbuzz
+include, inconsistent with everywhere else that `hb-ot.h` is included, and
+completely breaks builds where harfbuzz is unbundled.
+
+Closes: https://crbug.com/446344035
+Signed-off-by: Matt Jolly <kangie@gentoo.org>
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
+@@ -32,6 +32,7 @@
+ #include "third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.h"
+ 
+ #include <hb.h>
++#include <hb-ot.h>
+ #include <unicode/uchar.h>
+ #include <unicode/uscript.h>
+ 
+@@ -64,7 +65,6 @@
+ #include "third_party/blink/renderer/platform/wtf/math_extras.h"
+ #include "third_party/blink/renderer/platform/wtf/text/string_builder.h"
+ #include "third_party/blink/renderer/platform/wtf/text/unicode.h"
+-#include "third_party/harfbuzz-ng/src/src/hb-ot.h"
+ 
+ namespace blink {
+ 
+-- 
+2.50.1
+

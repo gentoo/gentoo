@@ -1,0 +1,85 @@
+from :
+https://github.com/quantcast/qfs/commit/f035a9569e61ae8dca3182e57c2380b4505cb6ee.patch
+reported :
+https://github.com/wahern/cqueues/issues/261
+https://github.com/wahern/cqueues/pull/264.patch
+From f035a9569e61ae8dca3182e57c2380b4505cb6ee Mon Sep 17 00:00:00 2001
+From: Mike Ovsiannikov <movsiannikov@quantcast.com>
+Date: Fri, 21 Apr 2023 22:40:51 -0700
+Subject: [PATCH] Ext DNS: add function pointers prototypes in order to
+ eliminate warnings.
+
+--- a/src/lib/dns.c
++++ b/src/lib/dns.c
+@@ -3962,29 +3962,34 @@ size_t dns_txt_print(void *_dst, size_t lim, struct dns_txt *txt) {
+ 	return dns_b_strllen(&dst);
+ } /* dns_txt_print() */
+ 
++typedef int (*parse_t)(void *any, struct dns_rr *rr, struct dns_packet *P);
++typedef int (*push_t)(struct dns_packet *P, void *any);
++typedef int (*cmp_t)(const void *a, const void *b);
++typedef size_t (*print_t)(void *_dst, size_t lim, void *any);
++typedef size_t (*cname_t)(void *_dst, size_t lim, void *any);
+ 
+ static const struct dns_rrtype {
+ 	enum dns_type type;
+ 	const char *name;
+ 	union dns_any *(*init)(union dns_any *, size_t);
+-	int (*parse)();
+-	int (*push)();
+-	int (*cmp)();
+-	size_t (*print)();
+-	size_t (*cname)();
++	parse_t parse;
++	push_t push;
++	cmp_t cmp;
++	print_t print;
++	cname_t cname;
+ } dns_rrtypes[]	= {
+-	{ DNS_T_A,      "A",      0,                 &dns_a_parse,      &dns_a_push,      &dns_a_cmp,      &dns_a_print,      0,                },
+-	{ DNS_T_AAAA,   "AAAA",   0,                 &dns_aaaa_parse,   &dns_aaaa_push,   &dns_aaaa_cmp,   &dns_aaaa_print,   0,                },
+-	{ DNS_T_MX,     "MX",     0,                 &dns_mx_parse,     &dns_mx_push,     &dns_mx_cmp,     &dns_mx_print,     &dns_mx_cname,    },
+-	{ DNS_T_NS,     "NS",     0,                 &dns_ns_parse,     &dns_ns_push,     &dns_ns_cmp,     &dns_ns_print,     &dns_ns_cname,    },
+-	{ DNS_T_CNAME,  "CNAME",  0,                 &dns_cname_parse,  &dns_cname_push,  &dns_cname_cmp,  &dns_cname_print,  &dns_cname_cname, },
+-	{ DNS_T_SOA,    "SOA",    0,                 &dns_soa_parse,    &dns_soa_push,    &dns_soa_cmp,    &dns_soa_print,    0,                },
+-	{ DNS_T_SRV,    "SRV",    0,                 &dns_srv_parse,    &dns_srv_push,    &dns_srv_cmp,    &dns_srv_print,    &dns_srv_cname,   },
+-	{ DNS_T_OPT,    "OPT",    &dns_opt_initany,  &dns_opt_parse,    &dns_opt_push,    &dns_opt_cmp,    &dns_opt_print,    0,                },
+-	{ DNS_T_PTR,    "PTR",    0,                 &dns_ptr_parse,    &dns_ptr_push,    &dns_ptr_cmp,    &dns_ptr_print,    &dns_ptr_cname,   },
+-	{ DNS_T_TXT,    "TXT",    &dns_txt_initany,  &dns_txt_parse,    &dns_txt_push,    &dns_txt_cmp,    &dns_txt_print,    0,                },
+-	{ DNS_T_SPF,    "SPF",    &dns_txt_initany,  &dns_txt_parse,    &dns_txt_push,    &dns_txt_cmp,    &dns_txt_print,    0,                },
+-	{ DNS_T_SSHFP,  "SSHFP",  0,                 &dns_sshfp_parse,  &dns_sshfp_push,  &dns_sshfp_cmp,  &dns_sshfp_print,  0,                },
++	{ DNS_T_A,      "A",      0,                 (parse_t)&dns_a_parse,      (push_t)&dns_a_push,      (cmp_t)&dns_a_cmp,      (print_t)&dns_a_print,      0,                },
++	{ DNS_T_AAAA,   "AAAA",   0,                 (parse_t)&dns_aaaa_parse,   (push_t)&dns_aaaa_push,   (cmp_t)&dns_aaaa_cmp,   (print_t)&dns_aaaa_print,   0,                },
++	{ DNS_T_MX,     "MX",     0,                 (parse_t)&dns_mx_parse,     (push_t)&dns_mx_push,     (cmp_t)&dns_mx_cmp,     (print_t)&dns_mx_print,     (cname_t)&dns_mx_cname,    },
++	{ DNS_T_NS,     "NS",     0,                 (parse_t)&dns_ns_parse,     (push_t)&dns_ns_push,     (cmp_t)&dns_ns_cmp,     (print_t)&dns_ns_print,     (cname_t)&dns_ns_cname,    },
++	{ DNS_T_CNAME,  "CNAME",  0,                 (parse_t)&dns_cname_parse,  (push_t)&dns_cname_push,  (cmp_t)&dns_cname_cmp,  (print_t)&dns_cname_print,  (cname_t)&dns_cname_cname, },
++	{ DNS_T_SOA,    "SOA",    0,                 (parse_t)&dns_soa_parse,    (push_t)&dns_soa_push,    (cmp_t)&dns_soa_cmp,    (print_t)&dns_soa_print,    0,                },
++	{ DNS_T_SRV,    "SRV",    0,                 (parse_t)&dns_srv_parse,    (push_t)&dns_srv_push,    (cmp_t)&dns_srv_cmp,    (print_t)&dns_srv_print,    (cname_t)&dns_srv_cname,   },
++	{ DNS_T_OPT,    "OPT",    &dns_opt_initany,  (parse_t)&dns_opt_parse,    (push_t)&dns_opt_push,    (cmp_t)&dns_opt_cmp,    (print_t)&dns_opt_print,    0,                },
++	{ DNS_T_PTR,    "PTR",    0,                 (parse_t)&dns_ptr_parse,    (push_t)&dns_ptr_push,    (cmp_t)&dns_ptr_cmp,    (print_t)&dns_ptr_print,    (cname_t)&dns_ptr_cname,   },
++	{ DNS_T_TXT,    "TXT",    &dns_txt_initany,  (parse_t)&dns_txt_parse,    (push_t)&dns_txt_push,    (cmp_t)&dns_txt_cmp,    (print_t)&dns_txt_print,    0,                },
++	{ DNS_T_SPF,    "SPF",    &dns_txt_initany,  (parse_t)&dns_txt_parse,    (push_t)&dns_txt_push,    (cmp_t)&dns_txt_cmp,    (print_t)&dns_txt_print,    0,                },
++	{ DNS_T_SSHFP,  "SSHFP",  0,                 (parse_t)&dns_sshfp_parse,  (push_t)&dns_sshfp_push,  (cmp_t)&dns_sshfp_cmp,  (print_t)&dns_sshfp_print,  0,                },
+ 	{ DNS_T_AXFR,   "AXFR",   0,                 0,                 0,                0,               0,                 0,                },
+ }; /* dns_rrtypes[] */
+ 
+@@ -8872,7 +8877,7 @@ struct {
+ 	const char *qname;
+ 	enum dns_type qtype;
+ 
+-	int (*sort)();
++	int (*sort)(struct dns_rr *a, struct dns_rr *b, struct dns_rr_i *i, struct dns_packet *P);
+ 
+ 	int verbose;
+ } MAIN = {
+--- a/src/lib/dns.h
++++ b/src/lib/dns.h
+@@ -538,7 +538,7 @@ struct dns_rr_i {
+ 
+ 	int follow;
+ 
+-	int (*sort)();
++	int (*sort)(struct dns_rr *a, struct dns_rr *b, struct dns_rr_i *i, struct dns_packet *P);
+ 	unsigned args[2];
+ 
+ 	struct {

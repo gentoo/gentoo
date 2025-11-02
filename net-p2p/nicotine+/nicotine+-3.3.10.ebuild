@@ -15,7 +15,7 @@ S="${WORKDIR}/nicotine-plus-${PV}"
 
 LICENSE="GPL-3+ MIT CC-BY-SA-4.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 # NOTE: good link - https://github.com/nicotine-plus/nicotine-plus/blob/master/doc/DEPENDENCIES.md
 BDEPEND="

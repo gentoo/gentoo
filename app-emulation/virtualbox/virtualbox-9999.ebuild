@@ -4,7 +4,7 @@
 EAPI=8
 
 # Important!
-# This compiles the latest svn version.
+# This compiles the latest git version.
 # It also compiles the kernel modules.  Does not depend on virtualbox-modules.
 # It is not meant to be used, might be very unstable.
 #
@@ -22,28 +22,27 @@ EAPI=8
 #  trunk branch but not release branch.
 #
 #  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit desktop edo flag-o-matic java-pkg-opt-2 linux-mod-r1 multilib optfeature pax-utils \
-	python-single-r1 subversion tmpfiles toolchain-funcs udev xdg
+inherit desktop edo flag-o-matic git-r3 java-pkg-opt-2 linux-mod-r1 multilib \
+	optfeature pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 BASE_PV=7.1.0
 MY_P=${MY_PN}-${PV}
-PATCHES_TAG=7.2.0_pre20250508
+PATCHES_TAG=7.2.4
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
-HOMEPAGE="https://www.virtualbox.org/"
-ESVN_REPO_URI="https://www.virtualbox.org/svn/vbox/trunk"
+HOMEPAGE="https://www.virtualbox.org/ https://github.com/VirtualBox/virtualbox"
+EGIT_REPO_URI="https://github.com/VirtualBox/virtualbox.git"
 SRC_URI="
 	https://gitweb.gentoo.org/proj/virtualbox-patches.git/snapshot/virtualbox-patches-${PATCHES_TAG}.tar.bz2
 	gui? ( !doc? ( https://dev.gentoo.org/~ceamac/${CATEGORY}/${PN}/${PN}-help-${BASE_PV}.tar.xz ) )
 "
-S="${WORKDIR}/trunk"
 
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde +vmmraw vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde vnc"
 RESTRICT="!test? ( test )"
 
 unset WATCOM #856769
@@ -60,7 +59,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	dbus? ( sys-apps/dbus )
 	gui? (
-		dev-qt/qtbase:6[X,widgets]
+		dev-qt/qtbase:6[X,wayland,widgets]
 		dev-qt/qtscxml:6
 		dev-qt/qttools:6[assistant]
 		x11-libs/libX11
@@ -210,7 +209,7 @@ PATCHES=(
 
 DOCS=()	# Don't install the default README file during einstalldocs
 
-CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
+CONFIG_CHECK="~!SPINLOCK JUMP_LABEL ~PREEMPT_NOTIFIERS"
 
 pkg_pretend() {
 	if ! use gui; then
@@ -243,7 +242,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	subversion_src_unpack
+	git-r3_src_unpack
 	default
 }
 
@@ -261,8 +260,6 @@ src_prepare() {
 		eapply "${FILESDIR}"/050_virtualbox-5.2.8-nopie.patch
 	fi
 
-	# Remove shipped binaries (kBuild, yasm) and tools, see bug #232775
-	rm -r kBuild/bin || die
 	# Remove everything in tools except kBuildUnits
 	find tools -mindepth 1 -maxdepth 1 -name kBuildUnits -prune -o -exec rm -r {} \+ || die
 
@@ -366,6 +363,8 @@ src_configure() {
 	tc-export AR CC CXX LD RANLIB
 	export HOST_CC="$(tc-getBUILD_CC)"
 
+	# --enable-webservice is a no-op
+	# webservice is automagically enabled if gsoap is found
 	local myconf=(
 		--with-gcc="$(tc-getCC)"
 		--with-g++="$(tc-getCXX)"
@@ -380,9 +379,8 @@ src_configure() {
 		$(usev !lvm --disable-devmapper)
 		$(usev !pulseaudio --disable-pulse)
 		$(usev !python --disable-python)
-		$(usev vboxwebsrv --enable-webservice)
+		$(usev !vboxwebsrv --with-gsoap-dir=/dev/null)
 		$(usev vde --enable-vde)
-		$(usev !vmmraw --disable-vmmraw)
 		$(usev vnc --enable-vnc)
 	)
 
@@ -396,10 +394,8 @@ src_configure() {
 		myconf+=(
 			--build-headless
 		)
-	fi
-
-	if use amd64 && ! has_multilib_profile; then
-		myconf+=( --disable-vmmraw )
+		# disable shared clipboard when headless, it crashes when connecting with RDP: bug #955867
+		echo -e "\nVBOX_WITH_SHARED_CLIPBOARD :=" >> LocalConfig.kmk || die
 	fi
 
 	# not an autoconf script
@@ -546,6 +542,19 @@ src_install() {
 		vboxdrv
 		vboxnetflt
 		vboxnetadp
+	EOF
+	insinto /etc/modprobe.d # bug #945135
+	newins - virtualbox.conf <<-EOF
+			# modprobe.d configuration file for VBOXSF
+
+			# Starting with kernel 6.12,
+			#   KVM initializes virtualization on module loading by default.
+			# This prevents VirtualBox VMs from starting.
+			# See also:
+			#   https://bugs.gentoo.org/945135
+			#   https://www.virtualbox.org/wiki/Changelog-7.1
+			# ------------------------------
+			options kvm enable_virt_at_load=0
 	EOF
 
 	cd "${S}"/out/linux.${ARCH}/$(usex debug debug release)/bin || die

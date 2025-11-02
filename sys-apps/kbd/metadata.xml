@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">legionus/kbd</remote-id>
 	</upstream>
+	<use>
+		<flag name="pam">Enable 'vlock' program (requires <pkg>sys-libs/pam</pkg>)</flag>
+	</use>
 </pkgmetadata>

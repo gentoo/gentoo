@@ -27,7 +27,7 @@
  # $Id$
  
 -LDADD = $(top_builddir)/src/libprng.a -lm
-+LDADD = $(top_builddir)/src/libprng.la -lm
++LDADD = $(top_builddir)/src/libprng.la $(LIBM)
  
  INCLUDES = -I$(top_srcdir)/src
  

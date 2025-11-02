@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
- <email>embedded@gentoo.org</email>
- <name>Embedded Gentoo</name>
-</maintainer>
-<longdescription>
-  libsigrok is a shared library written in C, which provides the basic
-  hardware access drivers for logic analyzers and other supported devices,
-  as well as input/output file format support.
-</longdescription>
-<use>
- <flag name="ftdi">Enable drivers that need <pkg>dev-embedded/libftdi</pkg></flag>
- <flag name="hidapi">Enable drivers that need <pkg>dev-libs/hidapi</pkg></flag>
- <flag name="nettle">Enable drivers that need <pkg>dev-libs/nettle</pkg></flag>
- <flag name="parport">Enable drivers that are parallel (IEEE1284) based</flag>
- <flag name="serial">Enable drivers that are serial (RS232) based</flag>
-</use>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<longdescription>
+	libsigrok is a shared library written in C, which provides the basic
+	hardware access drivers for logic analyzers and other supported devices,
+	as well as input/output file format support.
+	</longdescription>
+	<use>
+		<flag name="ftdi">Enable drivers that need <pkg>dev-embedded/libftdi</pkg></flag>
+		<flag name="gpib">Enable drivers that need <pkg>sci-libs/linux-gpib</pkg></flag>
+		<flag name="hidapi">Enable drivers that need <pkg>dev-libs/hidapi</pkg></flag>
+		<flag name="nettle">Enable drivers that need <pkg>dev-libs/nettle</pkg></flag>
+		<flag name="parport">Enable drivers that are parallel (IEEE1284) based</flag>
+		<flag name="serial">Enable drivers that are serial (RS232) based</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">sigrokproject/libsigrok</remote-id>
+	</upstream>
 </pkgmetadata>

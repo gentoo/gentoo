@@ -24,7 +24,7 @@ KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 CONFIG_CHECK="~TUN"
 
 RDEPEND="|| ( net-firewall/iptables net-firewall/nftables )"
-BDEPEND=">=dev-lang/go-1.22"
+BDEPEND=">=dev-lang/go-1.24"
 
 RESTRICT="test"
 

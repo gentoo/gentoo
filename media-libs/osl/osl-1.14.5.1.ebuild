@@ -277,7 +277,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DUSE_LLVM_BITCODE="$(usex clang-cuda)"
 			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
-			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
+			-DCUDA_OPT_FLAG_CLANG="$(get-flag O)"
 		)
 	fi
 

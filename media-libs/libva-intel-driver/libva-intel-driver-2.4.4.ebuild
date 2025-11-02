@@ -12,11 +12,11 @@ fi
 inherit meson-multilib
 
 DESCRIPTION="HW video decode support for Intel integrated graphics"
-HOMEPAGE="https://github.com/intel/intel-vaapi-driver"
+HOMEPAGE="https://github.com/irql-notlessorequal/intel-vaapi-driver"
 if [[ ${PV} != *9999* ]] ; then
 	SRC_URI="https://github.com/irql-notlessorequal/${MY_PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"

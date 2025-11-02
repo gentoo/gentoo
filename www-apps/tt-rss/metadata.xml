@@ -9,4 +9,7 @@
 	<use>
 		<flag name="daemon">Install additional init scripts for automated RSS updates</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">tt-rss/tt-rss</remote-id>
+	</upstream>
 </pkgmetadata>

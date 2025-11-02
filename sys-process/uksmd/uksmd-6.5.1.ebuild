@@ -1,4 +1,4 @@
-# Copyright 2022-2023 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="systemd"
 
 DEPEND="
 	sys-libs/libcap-ng
-	>=sys-process/procps-4:=
+	<sys-process/procps-4.0.5
 	systemd? ( sys-apps/systemd:= )
 "
 RDEPEND="${DEPEND}"

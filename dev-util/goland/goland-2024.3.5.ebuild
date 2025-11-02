@@ -30,7 +30,7 @@ LICENSE="|| ( JetBrains-business JetBrains-classroom JetBrains-educational JetBr
 	ZLIB
 "
 SLOT="0/2024"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="wayland"
 
 RESTRICT="bindist mirror"

@@ -1,0 +1,40 @@
+https://github.com/Supervisor/supervisor/issues/1560
+https://github.com/Supervisor/supervisor/pull/1675
+upstream will not merge soon as it's py3 only (find_namespace_packages)
+--- a/setup.py
++++ b/setup.py
+@@ -36,7 +36,7 @@
+             " dependency because pkg_resources is used to load plugins"
+             )
+ 
+-from setuptools import setup, find_packages
++from setuptools import setup, find_namespace_packages
+ here = os.path.abspath(os.path.dirname(__file__))
+ try:
+     with open(os.path.join(here, 'README.rst'), 'r') as f:
+@@ -93,7 +93,13 @@
+     classifiers=CLASSIFIERS,
+     author="Chris McDonough",
+     author_email="chrism@plope.com",
+-    packages=find_packages(),
++    packages=find_namespace_packages(exclude=["docs","supervisor.tests","supervisor.tests.*"]),
++    package_dir={"": "."},
++    package_data={
++        "supervisor": ["version.txt"],
++        "supervisor.ui": ["**/*"],
++        "supervisor.skel": ["*"]
++    },
+     install_requires=[],
+     extras_require={
+         'test': ['pytest', 'pytest-cov']
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -2,7 +2,7 @@
+ zip_ok = false
+ 
+ [bdist_wheel]
+-universal = 1
++universal = 0
+ 
+ [egg_info]
+ tag_build = 

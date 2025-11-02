@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~x64-macos"
 
 DEPEND="
 	>=dev-python/numpy-1.9.1:=[${PYTHON_USEDEP}]
@@ -26,12 +26,17 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
+BDEPEND="
+	dev-python/versioneer[${PYTHON_USEDEP}]
+"
 
 distutils_enable_tests pytest
 
 src_prepare() {
 	# don't overwrites user's optimization level
 	sed -e '/extra_compile_args=\["-O2"\]/d' -i setup.py || die
+
+	rm versioneer.py || die
 
 	distutils-r1_src_prepare
 }

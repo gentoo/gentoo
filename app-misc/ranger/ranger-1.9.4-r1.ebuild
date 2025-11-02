@@ -26,6 +26,7 @@ HOMEPAGE="https://ranger.github.io/"
 LICENSE="GPL-3"
 SLOT="0"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 PATCHES=(

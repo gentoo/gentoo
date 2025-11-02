@@ -1,7 +1,7 @@
 https://bugs.gentoo.org/955544
-https://github.com/tobster/snapcast/commit/fe0af5ec5eb47c7a6efd75cc2f252eb81c1f6129
+https://github.com/badaix/snapcast/commit/798e5cb142b90f19542a8bce897a4fe6460e5a10
 
-From fe0af5ec5eb47c7a6efd75cc2f252eb81c1f6129 Mon Sep 17 00:00:00 2001
+From 798e5cb142b90f19542a8bce897a4fe6460e5a10 Mon Sep 17 00:00:00 2001
 From: Tobias Hochwallner <tobster@gmx.at>
 Date: Wed, 7 May 2025 22:42:07 +0200
 Subject: [PATCH] Build failure with boost 1.88.0 #1367 fix compilation errors
@@ -13,7 +13,7 @@ Subject: [PATCH] Build failure with boost 1.88.0 #1367 fix compilation errors
  2 files changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/client/player/player.cpp b/client/player/player.cpp
-index 933a356b..8e2bbdc3 100644
+index c4b590c7..047a9ab1 100644
 --- a/client/player/player.cpp
 +++ b/client/player/player.cpp
 @@ -27,7 +27,11 @@
@@ -30,7 +30,7 @@ index 933a356b..8e2bbdc3 100644
  
  // standard headers
 diff --git a/server/streamreader/stream_control.hpp b/server/streamreader/stream_control.hpp
-index 32578fee..1b7894a5 100644
+index 358d9708..5007f208 100644
 --- a/server/streamreader/stream_control.hpp
 +++ b/server/streamreader/stream_control.hpp
 @@ -18,14 +18,16 @@
@@ -53,4 +53,3 @@ index 32578fee..1b7894a5 100644
  
  // standard headers
  #include <filesystem>
-

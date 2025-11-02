@@ -4,6 +4,30 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Alfred Wingate <parona@protonmail.com> (2025-10-20)
+# sys-libs/libnvme is not keyworded here
+net-misc/networkmanager nbft
+
+# PPN-SD <nicolas.parlant@parhuet.fr> (2025-10-04)
+# media-libs/libemf is not keyworded here
+app-office/dia wmf
+
+# Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
+# media-libs/zxingcpp is not keyworded here
+app-text/mupdf barcode
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# dev-perl/Template-GD is not keyworded here. Bug #661634
+dev-perl/Template-Toolkit gd
+
+# Sam James <sam@gentoo.org> (2025-06-07)
+# Needs dev-python/matplotlib
+dev-python/mpmath test-full
+
+# Hans de Graaff <graaff@gentoo.org> (2025-05-31)
+# Requires large parts of dev-ruby/rails to be keyworded.
+dev-ruby/minitest-hooks test
+
 # NRK <nrk@disroot.org> (2025-05-18)
 # app-arch/plzip is not keyworded
 app-alternatives/lzip plzip
@@ -40,10 +64,6 @@ dev-perl/Template-Toolkit gd latex vim-syntax
 # dev-vcs/mercurial is not keyworded on hppa
 app-eselect/eselect-repository mercurial
 
-# Ionen Wolkens <ionen@gentoo.org> (2024-12-02)
-# media-video/pipewire is not keyworded here.
-dev-qt/qtmultimedia:6 screencast
-
 # Christopher Byrne <salah.coronya@gmail.com> (2024-12-01)
 # requires dev-libs/hidapi to be keyworded
 dev-libs/libfido2 hidapi
@@ -75,6 +95,7 @@ sys-apps/systemd bpf
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2024-07-07)
 # media-libs/quirc and media-sound/liblc3 are not keyworded here
 media-video/ffmpeg quirc liblc3
+media-video/ffmpeg-compat quirc liblc3
 
 # Sam James <sam@gentoo.org> (2024-07-03)
 # kde-frameworks/kservice not keyworded here
@@ -113,25 +134,14 @@ x11-base/xwayland libei
 # USE=bpf depends on llvm-core/clang which is not keyworded on hppa
 media-libs/libv4l bpf
 
-# Leonardo Hernández Hernández <leohdz172@proton.me> (2023-11-15)
-# Vulkan is not available here
-media-video/ffmpeg shaderc vulkan
-media-video/ffmpeg-compat shaderc vulkan
-
-# Violet Purcell <vimproved@inventati.org> (2023-10-12)
-# dev-build/samurai is not keyworded here.
-app-alternatives/ninja samurai
-
 # Ionen Wolkens <ionen@gentoo.org> (2023-10-09)
-# Vulkan is not available here, ffmpeg also wants libplacebo[vulkan].
-media-libs/libplacebo shaderc vulkan
-media-video/ffmpeg libplacebo
-media-video/ffmpeg-compat libplacebo
+# media-libs/shaderc and media-libs/libplacebo are not keyworded here
+# (ffmpeg further needs libplacebo[vulkan] which is use.masked here)
+media-video/ffmpeg libplacebo shaderc
+media-video/ffmpeg-compat libplacebo shaderc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2023-10-08)
 # Vulkan is not available on hppa.
-dev-qt/qtdeclarative vulkan
-dev-qt/qtgui vulkan
 >=dev-qt/qtwayland-5.15.11:5 compositor
 # Patrick McLean <chutzpah@gentoo.org> (2023-10-03)
 # sys-apps/s6-linux-init has not been tested on this arch
@@ -148,10 +158,6 @@ media-gfx/inkscape sourceview
 # Matt Turner <mattst88@gentoo.org> (2023-05-30)
 # sys-apps/dbus-broker is not keyworded
 app-accessibility/at-spi2-core dbus-broker
-
-# Michał Górny <mgorny@gentoo.org> (2023-05-20)
-# Requires dev-python/sphinx-autodoc-types that has unkeyworded depgraph.
-dev-python/jupyter-core doc
 
 # Sam James <sam@gentoo.org> (2023-05-19)
 # kde-frameworks/kwayland:5 is not keyworded here.
@@ -282,8 +288,8 @@ sys-libs/libcap tools
 
 # Michał Górny <mgorny@gentoo.org> (2021-07-25)
 # PyQt5 and wxpython are not keyworded.
-dev-python/ipython qt5 qt6
-dev-python/matplotlib qt5 qt6 wxwidgets
+dev-python/ipython gui qt5
+dev-python/matplotlib qt6 wxwidgets
 
 # Matt Turner <mattst88@gentoo.org> (2021-07-23)
 # gui-libs/gtk is not keyworded
@@ -316,17 +322,13 @@ sys-apps/groff uchardet
 # Dependency not keyworded on this arch.
 app-text/enchant voikko
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-11-12)
-# media-sound/lash not keyworded, bug #736725
-media-sound/fluidsynth lash
-
 # Joonas Niilola <juippis@gentoo.org> (2020-10-08)
 # Dependency not keyworded on this arch.
 dev-libs/efl avif lua_single_target_luajit physics
 
 # Matt Turner <mattst88@gentoo.org> (2020-08-11)
 # No drivers on this architecture support Vulkan
-media-libs/mesa video_cards_zink vulkan vulkan-overlay
+media-libs/mesa video_cards_zink vulkan-overlay
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-07-02)
 # Mask io-uring & zbc pending keywording
@@ -516,12 +518,9 @@ net-libs/gupnp connman
 # HPPA is an unsupported architecture
 dev-libs/libpcre jit
 
-# Arun Raghavan <ford_prefect@gentoo.org> (2012-05-24)
-# media-sound/pulseaudio needs PyQt5[dbus] for making the equalizer module
-# usable. Mask until this is available.
 # Jeroen Roovers <jer@gentoo.org> (2014-02-18)
 # OSS is the only kernel audio interface that works on HPPA
-media-sound/pulseaudio-daemon equalizer -oss
+media-sound/pulseaudio-daemon -oss
 
 # Jeroen Roovers <jer@gentoo.org> (2012-05-21)
 # media-sound/lilypond has problems running mpost (bug #416961)
@@ -550,7 +549,6 @@ app-text/texlive pdfannotextractor
 net-im/pidgin gstreamer
 x11-misc/xscreensaver gdm new-login
 x11-libs/wxGTK gstreamer
-net-p2p/mldonkey guionly gtk
 net-im/pidgin eds
 
 # Jeroen Roovers <jer@gentoo.org> (2008-04-15)

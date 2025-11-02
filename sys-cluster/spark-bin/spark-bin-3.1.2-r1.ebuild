@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit java-pkg-2
 
 DESCRIPTION="Lightning-fast unified analytics engine"
 HOMEPAGE="https://spark.apache.org"
-SRC_URI="https://archive.apache.org/dist/spark/spark-${PV}/spark-${PV}-bin-hadoop3.2.tgz -> ${P}-hadoop.tgz"
+SRC_URI="mirror://apache/spark/spark-${PV}/spark-${PV}-bin-hadoop3.2.tgz -> ${P}-hadoop.tgz"
 S="${WORKDIR}/spark-${PV}-bin-hadoop3.2"
 
 LICENSE="Apache-2.0"

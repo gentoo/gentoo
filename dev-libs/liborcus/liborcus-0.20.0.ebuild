@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
@@ -38,6 +38,10 @@ DEPEND="
 	${RDEPEND}
 	dev-util/mdds:${MDDS_SLOT}
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19.2-boost-m4.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

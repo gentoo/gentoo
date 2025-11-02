@@ -1,0 +1,27 @@
+From 4f36be66d080cc57433ae2dbd13984e8361dec4b Mon Sep 17 00:00:00 2001
+From: Akira Matsuda <ronnie@dio.jp>
+Date: Mon, 19 Aug 2024 04:00:31 +0900
+Subject: [PATCH] Backtrace format has been changed since Ruby 3.4
+
+Method names are quoted with ''
+https://bugs.ruby-lang.org/issues/16495
+
+Method names include method owner
+https://bugs.ruby-lang.org/issues/19117
+---
+ test/haml/engine_test.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/haml/engine_test.rb b/test/haml/engine_test.rb
+index f0fe006d7..6cebd913e 100644
+--- a/test/haml/engine_test.rb
++++ b/test/haml/engine_test.rb
+@@ -97,7 +97,7 @@ def use_test_tracing(options)
+     unless options[:filename]
+       # use caller method name as fake filename. useful for debugging
+       i = -1
+-      caller[i+=1] =~ /`(.+?)'/ until $1 and $1.index('test_') == 0
++      caller[i+=1] =~ /[`'](?:.+?#)?(.+?)'/ until $1 and $1.index('test_') == 0
+       options[:filename] = "(#{$1})"
+     end
+     options

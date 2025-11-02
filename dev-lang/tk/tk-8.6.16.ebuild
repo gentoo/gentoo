@@ -101,7 +101,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	CI=1 virtx emake test
+	CI=1 virtx emake test || die "Tests failed"
 }
 
 multilib_src_install() {

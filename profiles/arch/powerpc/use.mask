@@ -51,6 +51,7 @@ clang
 -cpu_flags_ppc_vsx
 -cpu_flags_ppc_vsx2
 -cpu_flags_ppc_vsx3
+-cpu_flags_ppc_vsx4
 
 # Incompatible Use Flags
 #
@@ -79,7 +80,6 @@ mbrola
 
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
--input_devices_wacom
 
 # Diego Pettenò <flameeyes@gentoo.org> (2006-12-06)
 # Mask ALSA drivers for ISA cards

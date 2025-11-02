@@ -1,0 +1,34 @@
+Fix invalid html in longtable captions
+https://puszcza.gnu.org.ua/bugs/?315
+https://bugs.gentoo.org/963668
+
+r1745 | michal_h21 | 2025-10-01 13:41:06 +0200 (Wed, 01 Oct 2025) | 1 line
+don't put longtable caption inside <tr>
+
+r1747 | michal_h21 | 2025-10-02 12:35:43 +0200 (Thu, 02 Oct 2025) | 1 line
+prevent p end tags in logntable captions
+
+--- a/texmf/tex/generic/tex4ht/longtable.4ht
++++ b/texmf/tex/generic/tex4ht/longtable.4ht
+@@ -211,8 +211,8 @@
+ \HLet\LT@caption\:tempc
+ \NewConfigure{longtablecaption}{4}
+ \def\:tempc#1#2#3{%
+-    \a:longtablecaption #1{\cap:ref{#2}}\if\relax\detokenize{#1}\relax\else\b:longtablecaption\fi\c:longtablecaption#3\d:longtablecaption
+-    \endgraf%\vskip\baselineskip <- this caused error in https://tex.stackexchange.com/q/682383/2891
++    \o:noalign:{\a:longtablecaption #1{\cap:ref{#2}}\if\relax\detokenize{#1}\relax\else\b:longtablecaption\fi\c:longtablecaption#3\d:longtablecaption
++    \endgraf}%\vskip\baselineskip <- this caused error in https://tex.stackexchange.com/q/682383/2891
+  }
+ \HLet\LT@makecaption\:tempc
+ \def\:tempc#1[#2]#3{%
+--- a/texmf/tex/generic/tex4ht/html4.4ht
++++ b/texmf/tex/generic/tex4ht/html4.4ht
+@@ -21237,7 +21237,7 @@
+ \Css{div.longtable{text-align:center;}}
+ \Css{table.longtable{margin-left:auto; margin-right: auto;}}
+ \Configure{longtableparbox}{\IgnorePar\leavevmode\ShowPar\par}
+-\Configure{longtablecaption}{\ifvmode\IgnorePar\fi\EndP\HCode{<caption class="longtable">}\par\ShowPar\HCode{<span class="id">}}{:\ }{\HCode{</span><span class="content">}}{\HCode{</span>}\ifvmode\IgnorePar\fi\EndP\HCode{</caption>}}
++\Configure{longtablecaption}{\ifvmode\IgnorePar\fi\HCode{<caption class="longtable">}\HCode{<span class="id">}}{:\ }{\HCode{</span><span class="content">}}{\HCode{</span>}\ifvmode\IgnorePar\fi\HCode{</caption>}}
+ 
+ \Css{caption.longtable .id{font-weight:bold;}}
+ 

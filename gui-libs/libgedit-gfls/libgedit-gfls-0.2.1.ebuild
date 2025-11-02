@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/gedit/libgedit-gfls"
 
 LICENSE="LGPL-3+"
 SLOT="6/4"
-KEYWORDS="~amd64 ~arm ~arm64 ~loong ~riscv ~x86"
+KEYWORDS="amd64 ~arm arm64 ~loong ~riscv x86"
 IUSE="gtk-doc"
 RESTRICT="!test? ( test )"
 
@@ -18,7 +18,7 @@ RDEPEND="
 	>=dev-libs/glib-2.78:2
 	>=x11-libs/gtk+-3.22:3[introspection]
 	gnome-base/gsettings-desktop-schemas
-	dev-libs/gobject-introspection:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

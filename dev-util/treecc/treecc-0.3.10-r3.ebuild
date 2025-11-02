@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="Compiler-compiler tool for aspect-oriented programming"
 HOMEPAGE="https://www.gnu.org/software/dotgnu/"
@@ -11,7 +11,7 @@ SRC_URI="https://download.savannah.gnu.org/releases/dotgnu-pnet/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="doc examples"
 
 DEPEND="doc? ( app-text/texi2html )"
@@ -19,6 +19,11 @@ DEPEND="doc? ( app-text/texi2html )"
 PATCHES=(
 	"${FILESDIR}/${P}-proto.patch"
 )
+
+src_configure() {
+	lto-guarantee-fat
+	default
+}
 
 src_compile() {
 	emake AR="$(tc-getAR)"
@@ -34,6 +39,7 @@ src_compile() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 
 	if use examples; then
 		docinto examples

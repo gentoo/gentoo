@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">mboxgrep</remote-id>
+		<remote-id type="sourceforge">mboxgrep</remote-id><!-- old -->
+		<remote-id type="github">dspiljar/mboxgrep</remote-id>
 	</upstream>
 </pkgmetadata>

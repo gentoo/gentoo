@@ -7,16 +7,17 @@ inherit webapp
 
 if [[ ${PV} == *9999999* ]]; then
 	SLOT="${PV}" # Single live slot.
-	EGIT_REPO_URI="https://git.tt-rss.org/fox/${PN}.git"
+	EGIT_REPO_URI="https://github.com/tt-rss/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~chewi/distfiles/${P}.tar.xz"
-	S="${WORKDIR}/${PN}"
+	COMMIT=""
+	SRC_URI="https://github.com/tt-rss/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 fi
 
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
-HOMEPAGE="https://tt-rss.org/"
+HOMEPAGE="https://github.com/tt-rss/"
 LICENSE="GPL-3"
 IUSE="+acl daemon gd"
 
@@ -64,17 +65,17 @@ pkg_pretend() {
 		ewarn
 		ewarn "THIS IS NOT SUPPORTED ANYMORE."
 		ewarn
-		ewarn "Since 2025-04-14, tt-rss has dropped support for MySQL."
+		ewarn "Since 2025-04-17, tt-rss has dropped support for MySQL."
 		ewarn
 		ewarn "To upgrade, you need to migrate to PostgreSQL first."
 		ewarn
 		ewarn "Migrating between different tt-rss versions might work but is not recommended."
-		ewarn "It's recommended to switch to =www-apps/tt-rss-20250414 for migration."
+		ewarn "It's recommended to switch to =www-apps/tt-rss-20250417 for migration."
 		ewarn
 		ewarn "Export/Import articles could be done with an official plugin:"
 		ewarn "ttrss-data-migration"
 		ewarn "For plugin installation and export/import, see:"
-		ewarn "https://gitlab.tt-rss.org/tt-rss/plugins/ttrss-data-migration"
+		ewarn "https://github.com/tt-rss/tt-rss-plugin-data-migration"
 		ewarn
 		ewarn "Example of migration steps:"
 		ewarn "0. Setup PostgreSQL (dev-db/postgresql)"

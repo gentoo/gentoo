@@ -12,7 +12,4 @@
 	<upstream>
 		<remote-id type="github">linuxmint/Cinnamon</remote-id>
 	</upstream>
-	<use>
-		<flag name="internal-polkit">Use Cinnamon's internal polkit agent instead of <pkg>gnome-extra/polkit-gnome</pkg>. This does not currently support multi-user fast switching.</flag>
-	</use>
 </pkgmetadata>

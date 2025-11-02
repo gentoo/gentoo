@@ -22,6 +22,8 @@ RDEPEND="
 
 BDEPEND="${RDEPEND}"
 
+QA_PRESTRIPPED=usr/bin/vault_exporter
+
 src_compile() {
 	ego build -ldflags '-d -s -w' -tags netgo -installsuffix netgo -v -x .
 }

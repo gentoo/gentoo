@@ -16,14 +16,13 @@ HOMEPAGE="
 	https://github.com/apache/thrift
 "
 SRC_URI="
-	https://downloads.apache.org/${PN}/${PV}/${P}.tar.gz
-	https://archive.apache.org/dist/${PN}/${PV}/${P}.tar.gz
+	mirror://apache/${PN}/${PV}/${P}.tar.gz
 "
 S="${WORKDIR}/${P}/lib/py"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 distutils_enable_tests unittest
 

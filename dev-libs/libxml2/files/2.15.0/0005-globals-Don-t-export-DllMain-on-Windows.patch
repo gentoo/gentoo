@@ -1,0 +1,37 @@
+From baead423c9b7f1880f460390657e92798b8fe2b9 Mon Sep 17 00:00:00 2001
+Message-ID: <baead423c9b7f1880f460390657e92798b8fe2b9.1760256737.git.sam@gentoo.org>
+In-Reply-To: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+References: <17b056cb8ecff88326340ef9e70cd59d78d781a0.1760256737.git.sam@gentoo.org>
+From: Nick Wellnhofer <wellnhofer@aevum.de>
+Date: Sat, 27 Sep 2025 19:07:38 +0200
+Subject: [PATCH 5/8] globals: Don't export DllMain on Windows
+
+This shouldn't be done and lld 21 warns about it:
+
+https://github.com/msys2/MINGW-packages/issues/17820
+https://github.com/msys2/MINGW-packages/issues/25716
+
+Regressed with f05af837.
+---
+ globals.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/globals.c b/globals.c
+index 38db2954..de131552 100644
+--- a/globals.c
++++ b/globals.c
+@@ -782,9 +782,9 @@ xmlDllMain(ATTRIBUTE_UNUSED void *hinstDLL, unsigned long fdwReason,
+ /* declare to avoid "no previous prototype for 'DllMain'" warning */
+ /* Note that we do NOT want to include this function declaration in
+    a public header because it's meant to be called by Windows itself,
+-   not a program that uses this library.  This also has to be exported. */
++   not a program that uses this library. */
+ 
+-XMLPUBFUN BOOL WINAPI
++BOOL WINAPI
+ DllMain (HINSTANCE hinstDLL,
+          DWORD     fdwReason,
+          LPVOID    lpvReserved);
+-- 
+2.51.0
+

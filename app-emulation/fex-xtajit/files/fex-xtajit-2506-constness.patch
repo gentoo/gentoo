@@ -1,0 +1,13 @@
+diff --git a/Source/Windows/Common/CRT/String.cpp b/Source/Windows/Common/CRT/String.cpp
+index dab3cb8..ea0e028 100644
+--- a/Source/Windows/Common/CRT/String.cpp
++++ b/Source/Windows/Common/CRT/String.cpp
+@@ -187,7 +187,7 @@ DLLEXPORT_FUNC(int, _isctype, (int _C, int _Type)) {
+   UNIMPLEMENTED();
+ }
+ 
+-DLLEXPORT_FUNC(const unsigned short*, __pctype_func, (void)) {
++DLLEXPORT_FUNC(unsigned short*, __pctype_func, (void)) {
+   return CTypeData;
+ }
+ 

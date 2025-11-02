@@ -1,9 +1,0 @@
-https://bugs.gentoo.org/715132
-https://bugs.gentoo.org/798651
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -189,3 +189,3 @@
- 	IF ( WITH_OPENGL )
--		pkg_check_modules(OPENGL REQUIRED gl>=7.5)
-+		pkg_check_modules(OPENGL REQUIRED gl)
- 		INCLUDE_DIRECTORIES ( ${OPENGL_INCLUDE_DIRS} )

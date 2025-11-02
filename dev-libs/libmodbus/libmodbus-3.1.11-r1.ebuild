@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,8 +13,9 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~ppc ppc64 ~riscv x86"
 IUSE="static-libs test"
-
-# Tests are for manual testing
+# Tests fail at least when run via the ebuild w/ a timeout assertion being hit
+# See https://github.com/stephane/libmodbus/issues/791 and https://github.com/stephane/libmodbus/pull/794
+# Try again > 3.1.11.
 RESTRICT="test"
 
 PATCHES=( "${FILESDIR}/${PN}-3.1.11-cflags.patch" )

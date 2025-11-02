@@ -6,11 +6,11 @@ PYTHON_COMPAT=( python3_{10..13} )
 inherit gnome.org meson-multilib python-any-r1 virtualx
 
 DESCRIPTION="C++ interface for GTK+"
-HOMEPAGE="https://www.gtkmm.org https://gitlab.gnome.org/GNOME/gtkmm"
+HOMEPAGE="https://gtkmm.gnome.org/en/index.html"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="aqua gtk-doc test wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"

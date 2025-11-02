@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,6 @@ KEYWORDS="amd64"
 IUSE="+ocamlopt"
 
 RDEPEND="
-	>=dev-lang/ocaml-4.02.3:=[ocamlopt?]
 	dev-ml/camlp-streams:=[ocamlopt?]
 	dev-ml/easy-format:=[ocamlopt?]
 "

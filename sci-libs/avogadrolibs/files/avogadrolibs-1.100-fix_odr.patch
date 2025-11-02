@@ -1,0 +1,98 @@
+https://github.com/OpenChemistry/avogadrolibs/pull/2059.patch
+From ef234b94bcff5e4416e7ae0546c3e8977d3ad3a2 Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Tue, 24 Jun 2025 02:23:13 +0200
+Subject: [PATCH] Fix ODR violations, move enums into class scope
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+avogadrolibs-1.100.0/avogadro/qtplugins/cp2kinput/cp2kinputdialog.cpp:61:6:
+error: type ‘Avogadro::QtPlugins::BasisOption’ violates the C++ One Definition Rule [-Werror=odr]
+   61 | enum BasisOption
+      |      ^
+avogadrolibs-1.100.0/work/avogadrolibs-1.100.0/avogadro/qtplugins/cp2kinput/cp2kinputdialog.cpp:40:6:
+error: type ‘Avogadro::QtPlugins::CalculateOption’ violates the C++ One Definition Rule [-Werror=odr]
+   40 | enum CalculateOption
+      |      ^
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ .../qtplugins/cp2kinput/cp2kinputdialog.cpp   | 21 -------------------
+ .../qtplugins/cp2kinput/cp2kinputdialog.h     | 21 +++++++++++++++++++
+ 2 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/avogadro/qtplugins/cp2kinput/cp2kinputdialog.cpp b/avogadro/qtplugins/cp2kinput/cp2kinputdialog.cpp
+index 5eec8b6d..97f583a3 100644
+--- a/avogadro/qtplugins/cp2kinput/cp2kinputdialog.cpp
++++ b/avogadro/qtplugins/cp2kinput/cp2kinputdialog.cpp
+@@ -37,16 +37,6 @@ using Avogadro::MoleQueue::JobObject;
+ 
+ namespace Avogadro::QtPlugins {
+ 
+-enum CalculateOption
+-{
+-  CalculateEnergy = 0,
+-  CalculateEnergyAndForces,
+-  CalculateMolecularDynamics,
+-  CalculateGeometryOptimization,
+-
+-  CalculateCount
+-};
+-
+ enum FunctionalOption
+ {
+   FunctionalBLYP = 0,
+@@ -58,17 +48,6 @@ enum FunctionalOption
+   FunctionalCount
+ };
+ 
+-enum BasisOption
+-{
+-  BasisSZVGTH = 0,
+-  BasisDZVGTH,
+-  BasisDZVPGTH,
+-  BasisTZVPGTH,
+-  BasisTZV2PGTH,
+-
+-  BasisCount
+-};
+-
+ enum MethodOption
+ {
+   DFT = 0,
+diff --git a/avogadro/qtplugins/cp2kinput/cp2kinputdialog.h b/avogadro/qtplugins/cp2kinput/cp2kinputdialog.h
+index dc24594f..52be8dcd 100644
+--- a/avogadro/qtplugins/cp2kinput/cp2kinputdialog.h
++++ b/avogadro/qtplugins/cp2kinput/cp2kinputdialog.h
+@@ -31,6 +31,27 @@ class Cp2kInputDialog : public QDialog
+ {
+   Q_OBJECT
+ 
++  enum CalculateOption
++  {
++    CalculateEnergy = 0,
++    CalculateEnergyAndForces,
++    CalculateMolecularDynamics,
++    CalculateGeometryOptimization,
++
++    CalculateCount
++  };
++
++  enum BasisOption
++  {
++    BasisSZVGTH = 0,
++    BasisDZVGTH,
++    BasisDZVPGTH,
++    BasisTZVPGTH,
++    BasisTZV2PGTH,
++
++    BasisCount
++  };
++
+ public:
+   explicit Cp2kInputDialog(QWidget* parent_ = nullptr,
+                            Qt::WindowFlags f = Qt::WindowFlags());
+-- 
+2.49.0
+

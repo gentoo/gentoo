@@ -3,9 +3,9 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {15..20} )
+LLVM_COMPAT=( {15..21} )
 LLVM_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake edo flag-o-matic go-env llvm-r2 multiprocessing
 inherit python-any-r1 readme.gentoo-r1 xdg
 
@@ -51,10 +51,8 @@ QT_PV=6.7.3:6
 COMMON_DEPEND="
 	app-arch/libarchive:=
 	dev-cpp/yaml-cpp:=
-	>=dev-qt/qt5compat-${QT_PV}
-	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,widgets,xml]
+	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,ssl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
-	sys-libs/zlib:=
 	clang? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
@@ -106,7 +104,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-12.0.0-musl-no-malloc-trim.patch
 )
 
-QA_FLAGS_IGNORED="usr/libexec/qtcreator/cmdbridge-.*" # written in Go
+# written in Go, use PREBUILT rather than FLAGS_IGNORED given the
+# the different arch versions confuse portage's checks
+QA_PREBUILT="usr/libexec/qtcreator/cmdbridge-*"
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -185,11 +185,9 @@ src_configure() {
 
 		-DBUILD_PLUGIN_HELP=$(usex help)
 		-DBUILD_HELPVIEWERBACKEND_QTWEBENGINE=$(usex webengine)
+		# TODO?: unbundle litehtml, but support for latest releases
+		# tend to lag behind and bundled may work out better for now
 		-DBUILD_LIBRARY_QLITEHTML=$(usex help $(usex !webengine))
-		# TODO?: package litehtml, but support for latest releases seem
-		# to lag behind and bundled may work out better for now
-		# https://bugreports.qt.io/browse/QTCREATORBUG-29169
-		$(use help && usev !webengine -DCMAKE_DISABLE_FIND_PACKAGE_litehtml=yes)
 
 		# help shouldn't use with the above, but qmldesigner is automagic
 		$(use help || use qmldesigner &&
@@ -197,8 +195,10 @@ src_configure() {
 
 		-DBUILD_PLUGIN_SERIALTERMINAL=$(usex serialterminal)
 		-DENABLE_SVG_SUPPORT=$(usex svg)
-		$(usev !cmdbridge-server -DGO_BIN=GO_BIN-NOTFOUND) #945925
 		-DWITH_QMLDESIGNER=$(usex qmldesigner)
+
+		-DBUILD_EXECUTABLE_CMDBRIDGE=$(usex cmdbridge-server) #945925
+		$(usev cmdbridge-server -DUPX_BIN=UPX_BIN-NOTFOUND) #961623
 
 		# meant to be in sync with qtbase[journald], but think(?) not worth
 		# handling given qt-creator can use QT_FORCE_STDERR_LOGGING=1 nowadays

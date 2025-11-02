@@ -1,0 +1,112 @@
+https://bugreports.qt.io/browse/QTBUG-139626
+https://codereview.qt-project.org/c/qt/qtdeclarative/+/682564
+--- a/src/qmlcompiler/qqmljscodegenerator.cpp
++++ b/src/qmlcompiler/qqmljscodegenerator.cpp
+@@ -1472,5 +1472,5 @@
+ }
+ 
+-QString QQmlJSCodeGenerator::generateVariantMapLookup(
++QString QQmlJSCodeGenerator::generateVariantMapGetLookup(
+         const QString &map, const int nameIndex)
+ {
+@@ -1483,4 +1483,16 @@
+ }
+ 
++QString QQmlJSCodeGenerator::generateVariantMapSetLookup(
++        const QString &map, const int nameIndex,
++        const QQmlJSScope::ConstPtr &property, const QString &variableIn)
++{
++    const QString mapLookup = map
++            + u"["_s + QQmlJSUtils::toLiteral(m_jsUnitGenerator->lookupName(nameIndex)) + u"]"_s;
++
++    return mapLookup + u" = "_s
++            + conversion(property, m_typeResolver->varType(), variableIn)
++            + u";\n"_s;
++}
++
+ void QQmlJSCodeGenerator::generate_GetLookupHelper(int index)
+ {
+@@ -1628,5 +1640,5 @@
+         }
+     } else if (accumulatorIn.isStoredIn(m_typeResolver->variantMapType())) {
+-        m_body += generateVariantMapLookup(m_state.accumulatorVariableIn, index);
++        m_body += generateVariantMapGetLookup(m_state.accumulatorVariableIn, index);
+     } else {
+         if (m_state.isRegisterAffectedBySideEffects(Accumulator))
+@@ -1639,5 +1651,5 @@
+ 
+         if (scope.contains(m_typeResolver->variantMapType())) {
+-            m_body += generateVariantMapLookup(
++            m_body += generateVariantMapGetLookup(
+                     u"(*static_cast<const QVariantMap *>("_s
+                             + inputContentPointer + u"))"_s, index);
+@@ -1699,4 +1711,13 @@
+ }
+ 
++// TODO: This shouldn't be necessary. If the content can be stored directly, then it should
++//       be stored and used directly. If it cannot be stored directly, it should be stored
++//       as QVariant, but then we cannot dereference the content pointer either.
++static QString derefContentPointer(const QString &contentPointer)
++{
++    Q_ASSERT(contentPointer.startsWith(u'&') || contentPointer[0].isLetterOrNumber());
++    return contentPointer.startsWith(u'&') ? contentPointer.mid(1) : (u'*' + contentPointer);
++}
++
+ void QQmlJSCodeGenerator::generate_SetLookup(int index, int baseReg)
+ {
+@@ -1707,6 +1728,7 @@
+     const QQmlJSRegisterContent property = m_state.readAccumulator();
+     Q_ASSERT(property.isConversion());
+-    const QQmlJSScope::ConstPtr originalScope
+-        = m_typeResolver->original(property.conversionResultScope()).containedType();
++    const QQmlJSRegisterContent original
++            = m_typeResolver->original(property.conversionResultScope());
++    const QQmlJSScope::ConstPtr originalScope = original.containedType();
+ 
+     if (property.storedType().isNull()) {
+@@ -1758,7 +1780,5 @@
+         // We can resize without write back on a list property because it's actually a reference.
+         m_body += u"const int begin = "_s + object + u".count(&" + object + u");\n"_s;
+-        m_body += u"const int end = "_s
+-                + (variableIn.startsWith(u'&') ? variableIn.mid(1) : (u'*' + variableIn))
+-                + u";\n"_s;
++        m_body += u"const int end = "_s + derefContentPointer(variableIn) + u";\n"_s;
+         m_body += u"for (int i = begin; i < end; ++i)\n"_s;
+         m_body += u"    "_s + object + u".append(&"_s + object + u", nullptr);\n"_s;
+@@ -1770,8 +1790,24 @@
+     case QQmlJSScope::AccessSemantics::Value: {
+         const QQmlJSRegisterContent base = registerType(baseReg);
++        if (base.isStoredIn(m_typeResolver->variantMapType())) {
++            m_body += generateVariantMapSetLookup(
++                    registerVariable(baseReg), index, property.storedType(),
++                    derefContentPointer(variableIn));
++            generateWriteBack(baseReg);
++            break;
++        }
+         const QString baseContentPointer = resolveValueTypeContentPointer(
+                     originalScope, base, object,
+                     u"TypeError: Value is %1 and could not be converted to an object"_s);
+ 
++        if (original.contains(m_typeResolver->variantMapType())) {
++            m_body += generateVariantMapSetLookup(
++                    u"(*static_cast<const QVariantMap *>("_s
++                            + baseContentPointer + u"))"_s, index, property.storedType(),
++                    derefContentPointer(variableIn));
++            generateWriteBack(baseReg);
++            break;
++        }
++
+         const QString lookup = u"aotContext->setValueLookup("_s + indexString
+                 + u", "_s + baseContentPointer
+--- a/src/qmlcompiler/qqmljscodegenerator_p.h
++++ b/src/qmlcompiler/qqmljscodegenerator_p.h
+@@ -366,5 +366,8 @@
+             const QStringList &arguments, const QString &metaType, const QString &metaObject);
+ 
+-    QString generateVariantMapLookup(const QString &map, const int nameIndex);
++    QString generateVariantMapGetLookup(const QString &map, const int nameIndex);
++    QString generateVariantMapSetLookup(
++            const QString &map, const int nameIndex, const QQmlJSScope::ConstPtr &property,
++            const QString &variableIn);
+ 
+     QQmlJSRegisterContent originalType(QQmlJSRegisterContent tracked)

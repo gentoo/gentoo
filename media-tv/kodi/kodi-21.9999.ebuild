@@ -15,9 +15,9 @@ LIBDVDNAV_VERSION="6.1.1-Next-Nexus-Alpha2-2"
 FFMPEG_VERSION="6.0.1"
 
 # Java bundles from xbmc/interfaces/swig/CMakeLists.txt
-GROOVY_VERSION="4.0.16"
-APACHE_COMMON_LANG_VERSION="3.14.0"
-APACHE_COMMON_TEXT_VERSION="1.11.0"
+GROOVY_VERSION="4.0.26"
+APACHE_COMMON_LANG_VERSION="3.17.0"
+APACHE_COMMON_TEXT_VERSION="1.13.0"
 
 _JAVA_PKG_WANT_BUILD_VM=( {openjdk{,-jre},icedtea}{,-bin}-{8,11,17,21} )
 JAVA_PKG_WANT_BUILD_VM=${_JAVA_PKG_WANT_BUILD_VM[@]}
@@ -31,8 +31,8 @@ PYTHON_COMPAT=( python3_{10..13} )
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
 
-inherit autotools cmake desktop flag-o-matic java-pkg-2 libtool linux-info optfeature pax-utils python-single-r1 \
-	toolchain-funcs xdg
+inherit autotools cmake desktop ffmpeg-compat flag-o-matic java-pkg-2 libtool
+inherit linux-info optfeature pax-utils python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/"
@@ -196,7 +196,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		>=net-fs/samba-3.4.6[smbclient(+)]
 	)
 	system-ffmpeg? (
-		=media-video/ffmpeg-6*:=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
+		media-video/ffmpeg-compat:6=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
 	)
 	!system-ffmpeg? (
 		app-arch/bzip2
@@ -263,7 +263,7 @@ BDEPEND="
 	dev-build/cmake
 	dev-lang/swig
 	virtual/pkgconfig
-	<=virtual/jre-21:*
+	<=virtual/jre-21-r9999:*
 	doc? (
 		app-text/doxygen
 	)
@@ -437,6 +437,13 @@ src_configure() {
 		local name=${flag#cpu_flags_*_}
 		mycmakeargs+=( -DENABLE_${name^^}=$(usex ${flag}) )
 	done
+
+	if use system-ffmpeg; then
+		# TODO: drop compat and allow using >=media-video/ffmpeg-7
+		ffmpeg_compat_setup 6
+		ffmpeg_compat_add_flags
+		mycmakeargs+=( -DFFMPEG_INCLUDE_DIRS="${SYSROOT}$(ffmpeg_compat_get_prefix 6)" )
+	fi
 
 	if ! is-flag -DNDEBUG && ! is-flag -D_DEBUG ; then
 		# Kodi requires one of the 'NDEBUG' or '_DEBUG' defines

@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://github.com/lxqt/${PN}/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="LGPL-2.1+ Nokia-Qt-LGPL-Exception-1.1"
@@ -43,7 +43,7 @@ src_configure() {
 
 src_test() {
 	# Tests don't work with C
-	LC_ALL=en_US.utf8 virtx cmake_src_test
+	LC_ALL=en_US.UTF-8 virtx cmake_src_test
 }
 
 pkg_postinst() {

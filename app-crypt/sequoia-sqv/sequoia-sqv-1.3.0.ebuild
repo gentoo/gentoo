@@ -6,7 +6,7 @@ EAPI=8
 CRATES="
 "
 
-LLVM_COMPAT=( {17..19} )
+LLVM_COMPAT=( {17..20} )
 RUST_NEEDS_LLVM=1
 
 inherit bash-completion-r1 cargo llvm-r1

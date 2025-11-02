@@ -8,10 +8,6 @@
 # media-libs/libspng only keyworded on amd64, arm64
 -spng
 
-# Sam James <sam@gentoo.org> (2025-02-19)
-# x11-drivers/xf86-input-wacom is available here
--input_devices_wacom
-
 # Paul Zander <negril.nx+gentoo@gmail.com> (2024-03-28)
 # dev-libs/optix works on arm64
 -optix
@@ -73,14 +69,22 @@ cpu_flags_arm_neon
 -cpu_flags_arm_v8
 
 -cpu_flags_arm_aes
+-cpu_flags_arm_asimd
+-cpu_flags_arm_asimddp
+-cpu_flags_arm_asimdfhm
+-cpu_flags_arm_asimdhp
 -cpu_flags_arm_crc32
 -cpu_flags_arm_edsp
+-cpu_flags_arm_i8mm
 -cpu_flags_arm_sha1
 -cpu_flags_arm_sha2
+-cpu_flags_arm_sm4
+-cpu_flags_arm_sve
+-cpu_flags_arm_sve2
 -cpu_flags_arm_vfp
+-cpu_flags_arm_vfp-d32
 -cpu_flags_arm_vfpv3
 -cpu_flags_arm_vfpv4
--cpu_flags_arm_vfp-d32
 
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # net-libs/libsmi not tested on arm64 yet

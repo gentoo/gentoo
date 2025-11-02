@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/943818
+https://github.com/AMDmi3/cavezofphear/pull/2
+
+--- a/src/frame.c
++++ b/src/frame.c
+@@ -60,12 +60,12 @@ void bail(const char* message) {
+ 	exit(EXIT_FAILURE);
+ }
+ 
+-void sigint_handler() {
++void sigint_handler(int arg) {
+ 	curses_stop();
+ 	bail("got SIGINT, cleaning up");
+ }
+ 
+-void sigwinch_handler() {
++void sigwinch_handler(int arg) {
+ 	/*
+ 	   curses_stop();
+ 	   bail("got SIGWINCH, cleaning up");
+--- a/src/frame.h
++++ b/src/frame.h
+@@ -21,7 +21,7 @@
+ void curses_start(void);
+ void curses_stop(void);
+ void bail(const char* message);
+-void sigint_handler();
+-void sigwinch_handler();
++void sigint_handler(int arg);
++void sigwinch_handler(int arg);
+ 
+ #endif

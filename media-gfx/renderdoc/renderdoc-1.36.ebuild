@@ -12,10 +12,10 @@ MY_SWIG=swig-${PN}-${MY_SWIG_VER}
 AUTOTOOLS_AUTO_DEPEND="no"
 DOCS_BUILDER="sphinx"
 DOCS_DIR="docs"
-PYTHON_COMPAT=( python3_{9..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit autotools cmake flag-o-matic optfeature python-single-r1 docs qmake-utils verify-sig xdg
 
-DESCRIPTION="A stand-alone graphics debugging tool"
+DESCRIPTION="Stand-alone graphics debugging tool"
 HOMEPAGE="https://renderdoc.org https://github.com/baldurk/renderdoc"
 SRC_URI="
 	https://github.com/baldurk/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
@@ -113,7 +113,7 @@ pkg_setup() {
 
 src_unpack() {
 	if use verify-sig; then
-	   verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
+		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
 	fi
 
 	# Do not unpack the swig sources here.  CMake will do that if
@@ -122,6 +122,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	rm -r util/test || die # unused, but triggers # 961634
+
 	cmake_src_prepare
 
 	# Remove the calls to install the documentation files.  Instead,

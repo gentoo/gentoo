@@ -20,7 +20,7 @@
 # libraries, objects), source codes, assets, tests, scripts etc.   But
 # many authors also use it to write Zig "modules", build logic
 # and/or bindings/wrappers for C/C++ libraries.  They install nothing
-# and are only used at build-time, so it's unneccessary and mostly
+# and are only used at build-time, so it's unnecessary and mostly
 # useless to make ebuilds for them.
 # 2) Have required `target`, `cpu` and optional `optimize` options in
 # build.zig that accept standard Zig-style target and optimize mode.
@@ -246,9 +246,9 @@ zig_get_jobs() {
 # Package manager option is managed by "zig_src_prepare",
 # ebuild and user options are added by "zig_src_configure".
 #
-# This function is used by "zig_pkg_setup", and it is neccessary
+# This function is used by "zig_pkg_setup", and it is necessary
 # that args are available as early as possible, so that ebuilds
-# could use them in steps like "src_unpack" if neccessary, while
+# could use them in steps like "src_unpack" if necessary, while
 # still having verbosity and amount of jobs from user respected.
 #
 #

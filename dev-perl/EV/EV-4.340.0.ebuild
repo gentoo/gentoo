@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,9 +18,12 @@ RDEPEND="
 "
 BDEPEND="
 	${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
 	dev-perl/Canary-Stability
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.34-perl-5.42.patch
+)
 
 src_compile() {
 	# See bug #855869 and its large number of dupes in bundled libev copies.

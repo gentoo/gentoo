@@ -25,7 +25,7 @@ ruby_add_rdepend "dev-ruby/roadie:5
 ruby_add_bdepend "
 	test? (
 		dev-ruby/bundler
-		|| ( dev-ruby/rails:8.0 dev-ruby/rails:7.2 dev-ruby/rails:7.1 dev-ruby/rails:7.0 )
+		dev-ruby/rails:8.0 dev-ruby/rails:7.2 dev-ruby/rails:7.1
 		dev-ruby/rspec-rails
 		dev-ruby/rspec-collection_matchers
 		dev-ruby/sass-rails )"
@@ -34,8 +34,9 @@ all_ruby_prepare() {
 	sed -i -e '/\(simplecov\|standard\)/ s:^:#:' Gemfile || die
 	sed -i -e 's/git ls-files/find * -print/' -e '/standard/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
 
-	# Avoid already removed rails versions and version incompatible with our sass-rails version.
-	sed -e '/rails_\(51\|52\|60\)/ s:^:#:' \
+	# Avoid already removed rails versions and version incompatible with
+	# our sass-rails version or not having ruby33 targets.
+	sed -e '/rails_\(51\|52\|60\|70\)/ s:^:#:' \
 		-e '/Rails 7.1 with sprockets/ s:^:#:' \
 		-i spec/integration_spec.rb || die
 
@@ -54,14 +55,6 @@ all_ruby_prepare() {
 
 each_ruby_prepare() {
 	sed -i -e '/run_in_app_context/ s:bin/rails:'${RUBY}' -S bin/rails:' spec/support/rails_app.rb || die
-
-	case ${RUBY} in
-		*ruby33)
-			# Rails 7.0 does not have a ruby33 target so we can't test it.
-			sed -e '/rails_70/ s:^:#:' \
-				-i spec/integration_spec.rb || die
-			;;
-	esac
 }
 
 each_ruby_test() {

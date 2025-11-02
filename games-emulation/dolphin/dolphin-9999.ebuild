@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( {18..20} )
 LLVM_OPTIONAL=1
 
 inherit cmake llvm-r1 pax-utils xdg-utils
@@ -17,17 +17,15 @@ if [[ ${PV} == *9999 ]]; then
 		Externals/tinygltf/tinygltf
 		Externals/Vulkan-Headers
 		Externals/VulkanMemoryAllocator
-		Externals/zlib-ng/zlib-ng
-		Externals/minizip-ng/minizip-ng
+		Externals/watcher/watcher
 	)
 else
 	MGBA_COMMIT=8739b22fbc90fdf0b4f6612ef9c0520f0ba44a51
-	IMPLOT_COMMIT=18c72431f8265e2b0b5378a3a73d8a883b2175ff
+	IMPLOT_COMMIT=3da8bd34299965d3b0ab124df743fe3e076fa222
 	TINYGLTF_COMMIT=c5641f2c22d117da7971504591a8f6a41ece488b
 	VULKAN_HEADERS_COMMIT=39f924b810e561fd86b2558b6711ca68d4363f68
 	VULKANMEMORYALLOCATOR_COMMIT=3bab6924988e5f19bf36586a496156cf72f70d9f
-	ZLIB_NG_COMMIT=ce01b1e41da298334f8214389cc9369540a7560f
-	MINIZIP_NG_COMMIT=55db144e03027b43263e5ebcb599bf0878ba58de
+	WATCHER_COMMIT=b03bdcfc11549df595b77239cefe2643943a3e2f
 	SRC_URI="
 		https://github.com/dolphin-emu/dolphin/archive/${PV}.tar.gz
 			-> ${P}.tar.gz
@@ -39,10 +37,8 @@ else
 			-> Vulkan-Headers-${VULKAN_HEADERS_COMMIT}.tar.gz
 		https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator/archive/${VULKANMEMORYALLOCATOR_COMMIT}.tar.gz
 			-> VulkanMemoryAllocator-${VULKANMEMORYALLOCATOR_COMMIT}.tar.gz
-		https://github.com/zlib-ng/zlib-ng/archive/${ZLIB_NG_COMMIT}.tar.gz
-			-> zlib-ng-${ZLIB_NG_COMMIT}.tar.gz
-		https://github.com/zlib-ng/minizip-ng/archive/${MINIZIP_NG_COMMIT}.tar.gz
-			-> minizip-ng-${MINIZIP_NG_COMMIT}.tar.gz
+		https://github.com/e-dant/watcher/archive/${WATCHER_COMMIT}.tar.gz
+			-> watcher-${WATCHER_COMMIT}.tar.gz
 		mgba? (
 			https://github.com/mgba-emu/mgba/archive/${MGBA_COMMIT}.tar.gz
 				-> mgba-${MGBA_COMMIT}.tar.gz
@@ -71,8 +67,11 @@ RDEPEND="
 	>=app-arch/lz4-1.8:=
 	app-arch/xz-utils
 	>=app-arch/zstd-1.4.0:=
+	>=sys-libs/zlib-ng-1.3.1:=
+	>=sys-libs/minizip-ng-4.0.4:=
 	dev-libs/hidapi
 	>=dev-libs/libfmt-10.1:=
+	>=dev-util/glslang-1.4.321.0:=
 	dev-libs/lzo:2
 	dev-libs/pugixml
 	dev-libs/xxhash
@@ -91,7 +90,7 @@ RDEPEND="
 	bluetooth? ( net-wireless/bluez:= )
 	evdev? (
 		dev-libs/libevdev
-		virtual/udev
+		virtual/libudev
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	gui? (
@@ -101,7 +100,7 @@ RDEPEND="
 	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}=') )
 	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-libs/libpulse )
-	sdl? ( >=media-libs/libsdl2-2.30.9 )
+	sdl? ( >=media-libs/libsdl3-3.2.20 )
 	systemd? ( sys-apps/systemd:0= )
 	upnp? ( net-libs/miniupnpc:= )
 "
@@ -125,17 +124,10 @@ RDEPEND+="
 declare -A KEEP_BUNDLED=(
 	# please keep this list in CMakeLists.txt order
 
-	# TODO: use system libraries
-	# bug #873952
-	# https://github.com/dolphin-emu/dolphin/pull/13089
-	[zlib-ng]=ZLIB
-	[minizip-ng]=ZLIB
-
 	[Bochs_disasm]=LGPL-2.1+
 	[cpp-optparse]=MIT
 	[imgui]=MIT
 	[implot]=MIT
-	[glslang]=BSD
 
 	[tinygltf]=MIT
 
@@ -153,10 +145,11 @@ declare -A KEEP_BUNDLED=(
 	[FatFs]=FatFs
 	[Vulkan-Headers]="|| ( Apache-2.0 MIT )"
 	[VulkanMemoryAllocator]=MIT
+	[watcher]=MIT
 )
 
 PATCHES=(
-	"${FILESDIR}"/dolphin-2407-minizip.patch
+	"${FILESDIR}"/dolphin-2509-retroachievents-test.patch
 )
 
 add_bundled_licenses() {
@@ -176,8 +169,7 @@ src_prepare() {
 		mv -T "${WORKDIR}/tinygltf-${TINYGLTF_COMMIT}" Externals/tinygltf/tinygltf || die
 		mv -T "${WORKDIR}/Vulkan-Headers-${VULKAN_HEADERS_COMMIT}" Externals/Vulkan-Headers || die
 		mv -T "${WORKDIR}/VulkanMemoryAllocator-${VULKANMEMORYALLOCATOR_COMMIT}" Externals/VulkanMemoryAllocator || die
-		mv -T "${WORKDIR}/zlib-ng-${ZLIB_NG_COMMIT}" Externals/zlib-ng/zlib-ng || die
-		mv -T "${WORKDIR}/minizip-ng-${MINIZIP_NG_COMMIT}" Externals/minizip-ng/minizip-ng || die
+		mv -T "${WORKDIR}/watcher-${WATCHER_COMMIT}" Externals/watcher/watcher || die
 		if use mgba; then
 			mv -T "${WORKDIR}/mgba-${MGBA_COMMIT}" Externals/mGBA/mgba || die
 		fi
@@ -211,6 +203,7 @@ src_configure() {
 		-DENABLE_CUBEB=ON
 		-DENABLE_EGL=$(usex egl)
 		-DENABLE_EVDEV=$(usex evdev)
+		-DENABLE_HWDB=$(usex evdev)
 		-DENABLE_LLVM=$(usex llvm)
 		-DENABLE_LTO=OFF # just adds -flto, user can do that via flags
 		-DENABLE_NOGUI=$(usex !gui)
@@ -231,13 +224,15 @@ src_configure() {
 
 		# Use system libraries
 		-DUSE_SYSTEM_FMT=ON
+		-DUSE_SYSTEM_GLSLANG=ON
 		-DUSE_SYSTEM_PUGIXML=ON
 		-DUSE_SYSTEM_ENET=ON
 		-DUSE_SYSTEM_XXHASH=ON
 		-DUSE_SYSTEM_BZIP2=ON
 		-DUSE_SYSTEM_LIBLZMA=ON
 		-DUSE_SYSTEM_ZSTD=ON
-		-DUSE_SYSTEM_MINIZIP=OFF
+		-DUSE_SYSTEM_ZLIB=ON
+		-DUSE_SYSTEM_MINIZIP-NG=ON
 		-DUSE_SYSTEM_LZO=ON
 		-DUSE_SYSTEM_LZ4=ON
 		-DUSE_SYSTEM_SPNG=ON
@@ -267,7 +262,7 @@ src_configure() {
 
 	use test && mycmakeargs+=( -DUSE_SYSTEM_GTEST=ON )
 	use mgba && mycmakeargs+=( -DUSE_SYSTEM_LIBMGBA=OFF )
-	use sdl && mycmakeargs+=( -DUSE_SYSTEM_SDL2=ON )
+	use sdl && mycmakeargs+=( -DUSE_SYSTEM_SDL3=ON )
 	use upnp && mycmakeargs+=( -DUSE_SYSTEM_MINIUPNPC=ON )
 
 	cmake_src_configure

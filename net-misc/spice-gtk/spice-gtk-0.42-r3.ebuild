@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ inherit desktop meson optfeature python-any-r1 readme.gentoo-r1 vala xdg
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://gitlab.freedesktop.org/spice/spice-gtk"
 if [[ ${PV} == *9999* ]] ; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice-gtk.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/spice/spice-gtk.git"
 	inherit git-r3
 
 	SPICE_PROTOCOL_VER=9999
@@ -42,7 +42,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7
 	x11-libs/libX11
 	gtk3? ( x11-libs/gtk+:3[introspection?] )
-	introspection? ( dev-libs/gobject-introspection )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	dev-libs/openssl:=
 	lz4? ( app-arch/lz4 )
 	policykit? (

@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/959683
+
+--- xemacs-21.5.36/configure.ac
++++ xemacs-21.5.36/configure.ac
+@@ -3697,7 +3697,7 @@
+     fi
+   fi
+ 
+-  if test -n "$libpq_fe_h_file" -a "$have_libpq" = "yes"
++  if test -n "$libpq_fe_h_file" -a "$have_libpq" = "yes" \
+         -a "$with_modules" = "yes"; then
+     with_postgresql=yes
+     AC_DEFINE(HAVE_POSTGRESQL)

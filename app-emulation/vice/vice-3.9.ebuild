@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multibuild toolchain-funcs xdg
+inherit autotools multibuild toolchain-funcs xdg
 
 DESCRIPTION="Versatile Commodore Emulator"
 HOMEPAGE="https://vice-emu.sourceforge.io/"
@@ -77,6 +77,10 @@ BDEPEND="
 	gtk? ( x11-misc/xdg-utils )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-dupe-symbols.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
@@ -87,6 +91,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
+	eautoreconf
 
 	# Strip the predefined C(XX)FLAGS.
 	sed -i -r 's:(VICE_C(XX)?FLAGS=)"[^$]+":\1:' configure || die

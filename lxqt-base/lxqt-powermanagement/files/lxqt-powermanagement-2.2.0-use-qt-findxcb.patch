@@ -1,0 +1,25 @@
+- https://bugs.gentoo.org/959285
+- https://github.com/lxqt/lxqt-powermanagement/commit/067d2260049
+
+From 067d2260049fb5edef87a5716feaefb610b11248 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lu=C3=ADs=20Pereira?= <luis.artur.pereira@gmail.com>
+Date: Thu, 17 Apr 2025 18:13:17 +0100
+Subject: [PATCH] Use Qt provided FindXCB module
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d4f38ce..111aca7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,7 +29,7 @@ find_package(KF6IdleTime ${KF6_MINIMUM_VERSION} REQUIRED)
+ find_package(KF6Solid ${KF6_MINIMUM_VERSION} REQUIRED)
+ find_package(lxqt ${LXQT_MINIMUM_VERSION} REQUIRED)
+ find_package(lxqt-globalkeys-ui ${LXQT_GLOBALKEYS_MINIMUM_VERSION} REQUIRED)
+-find_package(XCB REQUIRED COMPONENTS xcb-dpms xcb-screensaver)
++find_package(XCB REQUIRED COMPONENTS DPMS SCREENSAVER)
+ 
+ message(STATUS "Building with Qt${Qt6Core_VERSION}")
+ 

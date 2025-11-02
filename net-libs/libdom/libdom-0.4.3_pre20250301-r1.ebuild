@@ -12,7 +12,7 @@ SRC_URI="https://download.netsurf-browser.org/libs/releases/${PN}-0.4.2-src.tar.
 S="${WORKDIR}/${PN}-0.4.2"
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv sparc x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 ~riscv ~sparc x86"
 IUSE="expat test xml"
 
 RESTRICT="!test? ( test )"

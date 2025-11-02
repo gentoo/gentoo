@@ -1,0 +1,76 @@
+diff --git a/lib/softoken/sdb.c b/lib/softoken/sdb.c
+--- a/lib/softoken/sdb.c
++++ b/lib/softoken/sdb.c
+@@ -156,11 +156,11 @@
+     CKA_NSS_TRUST_STEP_UP_APPROVED, CKA_NSS_CERT_SHA1_HASH,
+     CKA_NSS_CERT_MD5_HASH, CKA_NSS_DB,
+ };
+ // clang-format on
+ 
+-const int sftkdb_known_attributes_size = PR_ARRAY_SIZE(sftkdb_known_attributes);
++const size_t sftkdb_known_attributes_size = PR_ARRAY_SIZE(sftkdb_known_attributes);
+ 
+ /*
+  * Note on use of sqlReadDB: Only one thread at a time may have an actual
+  * operation going on given sqlite3 * database. An operation is defined as
+  * the time from a sqlite3_prepare() until the sqlite3_finalize().
+@@ -2022,12 +2022,12 @@
+         sqlite3_finalize(stmt);
+         return CKR_OK;
+     }
+     /* we have more attributes than in the database, so we know things
+      * are missing, find what was missing */
+-    for (int i = 0; i < sftkdb_known_attributes_size; i++) {
+-        char *typeString = sqlite3_mprintf("a%x", sftkdb_known_attributes[i]);
++    for (size_t i = 0; i < sftkdb_known_attributes_size; i++) {
++        char *typeString = sqlite3_mprintf("a%lx", sftkdb_known_attributes[i]);
+         PRBool found = PR_FALSE;
+         /* this one index is important, we skip the first column (id), since
+          * it will never match, starting at zero isn't a bug,
+          * just inefficient */
+         for (int j = 1; j < columnCount; j++) {
+@@ -2070,11 +2070,10 @@
+ 
+ CK_RV
+ sdb_init(char *dbname, char *table, sdbDataType type, int *inUpdate,
+          int *newInit, int inFlags, PRUint32 accessOps, SDB **pSdb)
+ {
+-    int i;
+     char *initStr = NULL;
+     char *newStr;
+     char *queryStr = NULL;
+     int inTransaction = 0;
+     SDB *sdb = NULL;
+@@ -2134,12 +2133,13 @@
+         if (flags != SDB_CREATE) {
+             error = sdb_mapSQLError(type, SQLITE_CANTOPEN);
+             goto loser;
+         }
+         initStr = sqlite3_mprintf("");
+-        for (i = 0; initStr && i < sftkdb_known_attributes_size; i++) {
+-            newStr = sqlite3_mprintf("%s, a%x", initStr, sftkdb_known_attributes[i]);
++        for (size_t i = 0; initStr && i < sftkdb_known_attributes_size; i++) {
++            newStr = sqlite3_mprintf("%s, a%lx", initStr,
++                                     sftkdb_known_attributes[i]);
+             sqlite3_free(initStr);
+             initStr = newStr;
+         }
+         if (initStr == NULL) {
+             error = CKR_HOST_MEMORY;
+diff --git a/lib/softoken/sftkdbti.h b/lib/softoken/sftkdbti.h
+--- a/lib/softoken/sftkdbti.h
++++ b/lib/softoken/sftkdbti.h
+@@ -25,11 +25,11 @@
+     PRBool updateDBIsInit;
+     PRBool usesLegacyStorage;
+ };
+ 
+ extern const CK_ATTRIBUTE_TYPE sftkdb_known_attributes[];
+-extern unsigned int sftkdb_known_attributes_size;
++extern size_t sftkdb_known_attributes_size;
+ 
+ #define SFTK_KEYDB_TYPE 0x40000000
+ #define SFTK_CERTDB_TYPE 0x00000000
+ #define SFTK_OBJ_TYPE_MASK 0xc0000000
+ #define SFTK_OBJ_ID_MASK (~SFTK_OBJ_TYPE_MASK)
+

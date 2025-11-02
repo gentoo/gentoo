@@ -13,7 +13,6 @@
 		<flag name="snapshot">Enable snapshot creation for faster startup</flag>
 		<flag name="system-icu">Use system <pkg>dev-libs/icu</pkg> instead of the bundled version</flag>
 		<flag name="system-ssl">Use system OpenSSL instead of the bundled one</flag>
-		<flag name="systemtap">Enable SystemTap/DTrace tracing</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">nodejs/node</remote-id>

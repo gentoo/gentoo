@@ -22,7 +22,7 @@ CDEPEND="
 	sys-auth/polkit
 	virtual/libcrypt:=
 	elogind? ( >=sys-auth/elogind-229.4 )
-	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 	systemd? ( >=sys-apps/systemd-186:0= )
 "
 DEPEND="${CDEPEND}

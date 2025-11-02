@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit optfeature python-any-r1 readme.gentoo-r1 toolchain-funcs wine
 
 WINE_GECKO=2.47.4
-WINE_MONO=10.0.0
+WINE_MONO=10.3.0
 WINE_PV=$(ver_rs 2 -)
 
 if [[ ${PV} == 9999 ]]; then
@@ -33,8 +33,12 @@ IUSE="
 	llvm-libunwind +mono nls perl pulseaudio +sdl selinux +ssl udev
 	+unwind usb v4l wayland video_cards_amdgpu +xcomposite xinerama
 "
-# headless is not really supported with wine-proton, use normal Wine
-REQUIRED_USE="|| ( X wayland )"
+# headless is not really supported here, and udev needs sdl due to Valve's
+# changes (bug #959263), use normal wine instead if need to avoid these
+REQUIRED_USE="
+	|| ( X wayland )
+	udev? ( sdl )
+"
 
 # tests are non-trivial to run, can hang easily, don't play well with
 # sandbox, and several need real opengl/vulkan or network access
@@ -155,9 +159,6 @@ src_prepare() {
 		sed -e '/^UNIX_LIBS.*=/s/$/ -latomic/' \
 			-i dlls/{ntdll,winevulkan}/Makefile.in || die
 	fi
-
-	# similarly to staging, append to `wine --version` for identification
-	sed -i "s/wine_build[^1]*1/& (Proton-${WINE_PV})/" configure.ac || die
 
 	# proton variant also needs specfiles and vulkan
 	tools/make_specfiles || die # perl

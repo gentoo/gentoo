@@ -6,10 +6,10 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kde-cli-tools</bugs-to>
 		<remote-id type="kde-invent">plasma/kde-cli-tools</remote-id>
 	</upstream>
 	<use>
-		<flag name="kdesu">Build graphical frontend for <pkg>kde-frameworks/kdesu</pkg></flag>
+		<flag name="kdesu">Pull in graphical kdesu frontend <pkg>kde-plasma/kdesu-gui</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -1,8 +1,8 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit desktop xdg
+inherit desktop flag-o-matic xdg
 
 DESCRIPTION="2D Racing Game"
 HOMEPAGE="https://trophy.sourceforge.io/"
@@ -16,6 +16,11 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="dev-games/clanlib:0.8[opengl]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+src_configure() {
+	append-cxxflags -Wno-template-body #941236
+	default
+}
 
 src_install(){
 	default

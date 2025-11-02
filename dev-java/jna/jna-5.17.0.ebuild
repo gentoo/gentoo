@@ -19,7 +19,7 @@ S="${WORKDIR}/${P}"
 
 LICENSE="|| ( Apache-2.0 LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="amd64 arm64 ~ppc64"
+KEYWORDS="amd64 arm64 ppc64"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -82,6 +82,8 @@ src_compile() {
 	JAVA_GENTOO_CLASSPATH_EXTRA+=":jna-platform.jar"
 	rm -r target || die
 
+	#954164
+	rm contrib/platform/src/com.sun.jna.platform/versions/9/module-info.java || die
 	use doc && ejavadoc
 
 	einfo "Generating headers com_sun_jna_Native.h com_sun_jna_Function.h"

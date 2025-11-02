@@ -17,6 +17,8 @@
     <flag name="packed">Enables '#pragma pack' for data arrays (saves memory, costs time).</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">gtkwave</remote-id>
+    <bugs-to>https://github.com/gtkwave/gtkwave/issues</bugs-to>
+    <remote-id type="sourceforge">gtkwave</remote-id><!-- lts -->
+    <remote-id type="github">gtkwave/gtkwave</remote-id><!-- dev -->
   </upstream>
 </pkgmetadata>

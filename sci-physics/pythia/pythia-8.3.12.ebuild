@@ -48,7 +48,7 @@ RDEPEND="
 	lhapdf? ( sci-physics/lhapdf:= )
 	zlib? ( sys-libs/zlib )
 	highfive? (
-		sci-libs/HighFive
+		sci-libs/highfive
 		sci-libs/hdf5[cxx]
 	)
 	rivet? (

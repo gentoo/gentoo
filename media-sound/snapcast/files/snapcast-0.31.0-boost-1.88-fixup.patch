@@ -1,0 +1,257 @@
+https://github.com/badaix/snapcast/commit/0de502f565c6f26ab9ea4e18aa005ab3ebc6a01a
+https://github.com/badaix/snapcast/commit/7c27acb3c7db28d8e74795ccb163b38efdf2625c
+https://github.com/badaix/snapcast/commit/e617654e17aa09c28aad07822777b696298f92d0
+
+From 0de502f565c6f26ab9ea4e18aa005ab3ebc6a01a Mon Sep 17 00:00:00 2001
+From: badaix <johannes.pohl@badaix.de>
+Date: Fri, 6 Jun 2025 14:01:26 +0200
+Subject: [PATCH] Define BOOST_PROCESS_VERSION=1 globally
+
+---
+ CMakeLists.txt                         | 3 ++-
+ client/player/player.cpp               | 1 -
+ server/streamreader/stream_control.hpp | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b35291f7..e6dccd2f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -332,7 +332,8 @@ else()
+   add_compile_definitions(HAS_TREMOR)
+ endif()
+ 
+-add_compile_definitions(BOOST_ERROR_CODE_HEADER_ONLY BOOST_ASIO_NO_TS_EXECUTORS)
++add_compile_definitions(BOOST_ERROR_CODE_HEADER_ONLY BOOST_ASIO_NO_TS_EXECUTORS
++                        BOOST_PROCESS_VERSION=1)
+ 
+ if(WIN32)
+   include(FindPackageHandleStandardArgs)
+diff --git a/client/player/player.cpp b/client/player/player.cpp
+index 047a9ab1..968cb723 100644
+--- a/client/player/player.cpp
++++ b/client/player/player.cpp
+@@ -27,7 +27,6 @@
+ 
+ // 3rd party headers
+ #ifdef SUPPORTS_VOLUME_SCRIPT
+-#define BOOST_PROCESS_VERSION 1
+ #include <boost/process/v1/args.hpp>
+ #include <boost/process/v1/child.hpp>
+ #include <boost/process/v1/detail/on_exit.hpp>
+diff --git a/server/streamreader/stream_control.hpp b/server/streamreader/stream_control.hpp
+index 5007f208..5cbc9217 100644
+--- a/server/streamreader/stream_control.hpp
++++ b/server/streamreader/stream_control.hpp
+@@ -23,8 +23,8 @@
+ #include "server_settings.hpp"
+ 
+ // 3rd party headers
+-#define BOOST_PROCESS_VERSION 1
+-#include <boost/asio.hpp>
++#include <boost/asio/any_io_executor.hpp>
++#include <boost/process/v1/child.hpp>
+ #include <boost/process/v1/io.hpp>
+ #include <boost/process/v1/start_dir.hpp>
+ #include <boost/process/v1/system.hpp>
+
+From 7c27acb3c7db28d8e74795ccb163b38efdf2625c Mon Sep 17 00:00:00 2001
+From: badaix <johannes.pohl@badaix.de>
+Date: Fri, 6 Jun 2025 14:05:39 +0200
+Subject: [PATCH] Add missing includes
+
+---
+ server/snapserver.cpp                  | 1 +
+ server/stream_session_tcp.cpp          | 2 ++
+ server/streamreader/airplay_stream.hpp | 3 +--
+ server/streamreader/file_stream.hpp    | 5 ++++-
+ server/streamreader/pcm_stream.hpp     | 1 +
+ server/streamreader/pipe_stream.hpp    | 6 +++++-
+ server/streamreader/process_stream.hpp | 5 +++++
+ 7 files changed, 19 insertions(+), 4 deletions(-)
+
+diff --git a/server/snapserver.cpp b/server/snapserver.cpp
+index 3e51fb2d..454f3b5d 100644
+--- a/server/snapserver.cpp
++++ b/server/snapserver.cpp
+@@ -38,6 +38,7 @@
+ 
+ // 3rd party headers
+ #include <boost/asio/ip/host_name.hpp>
++#include <boost/asio/signal_set.hpp>
+ 
+ // standard headers
+ #include <chrono>
+diff --git a/server/stream_session_tcp.cpp b/server/stream_session_tcp.cpp
+index 0cc05f6a..e9bebfd5 100644
+--- a/server/stream_session_tcp.cpp
++++ b/server/stream_session_tcp.cpp
+@@ -23,6 +23,8 @@
+ #include "common/aixlog.hpp"
+ 
+ // 3rd party headers
++#include <boost/asio/read.hpp>
++#include <boost/asio/write.hpp>
+ 
+ // standard headers
+ #include <iostream>
+diff --git a/server/streamreader/airplay_stream.hpp b/server/streamreader/airplay_stream.hpp
+index 05ec2d4b..44c89752 100644
+--- a/server/streamreader/airplay_stream.hpp
++++ b/server/streamreader/airplay_stream.hpp
+@@ -23,6 +23,7 @@
+ #include "process_stream.hpp"
+ 
+ // 3rd party headers
++#include <boost/asio/streambuf.hpp>
+ // Expat is used in metadata parsing from Shairport-sync.
+ // Without HAS_EXPAT defined no parsing will occur.
+ #ifdef HAS_EXPAT
+@@ -42,8 +43,6 @@ struct TageEntry
+     int length{0};        ///< length
+ };
+ 
+-/// Starts shairport-sync and reads PCM data from stdout
+-
+ /**
+  * Starts shairport-sync, reads PCM data from stdout, and passes the data to an encoder.
+  * Implements EncoderListener to get the encoded data.
+diff --git a/server/streamreader/file_stream.hpp b/server/streamreader/file_stream.hpp
+index 243fceb8..5d1641fd 100644
+--- a/server/streamreader/file_stream.hpp
++++ b/server/streamreader/file_stream.hpp
+@@ -1,6 +1,6 @@
+ /***
+     This file is part of snapcast
+-    Copyright (C) 2014-2024  Johannes Pohl
++    Copyright (C) 2014-2025  Johannes Pohl
+ 
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+@@ -22,6 +22,9 @@
+ // local headers
+ #include "asio_stream.hpp"
+ 
++// 3rd party headers
++#include <boost/asio/posix/stream_descriptor.hpp>
++
+ namespace streamreader
+ {
+ 
+diff --git a/server/streamreader/pcm_stream.hpp b/server/streamreader/pcm_stream.hpp
+index 6392fea6..7af99bab 100644
+--- a/server/streamreader/pcm_stream.hpp
++++ b/server/streamreader/pcm_stream.hpp
+@@ -35,6 +35,7 @@
+ #include <boost/asio/io_context.hpp>
+ #include <boost/asio/read_until.hpp>
+ #include <boost/asio/steady_timer.hpp>
++#include <boost/asio/strand.hpp>
+ 
+ // standard headers
+ #include <atomic>
+diff --git a/server/streamreader/pipe_stream.hpp b/server/streamreader/pipe_stream.hpp
+index 75339ce2..0f7d41f5 100644
+--- a/server/streamreader/pipe_stream.hpp
++++ b/server/streamreader/pipe_stream.hpp
+@@ -1,6 +1,6 @@
+ /***
+     This file is part of snapcast
+-    Copyright (C) 2014-2024  Johannes Pohl
++    Copyright (C) 2014-2025  Johannes Pohl
+ 
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+@@ -22,6 +22,10 @@
+ // local headers
+ #include "asio_stream.hpp"
+ 
++// 3rd party headers
++#include <boost/asio/posix/stream_descriptor.hpp>
++
++
+ namespace streamreader
+ {
+ 
+diff --git a/server/streamreader/process_stream.hpp b/server/streamreader/process_stream.hpp
+index 2a19fecb..5c495655 100644
+--- a/server/streamreader/process_stream.hpp
++++ b/server/streamreader/process_stream.hpp
+@@ -23,6 +23,11 @@
+ #include "asio_stream.hpp"
+ #include "watchdog.hpp"
+ 
++// 3rd party headers
++#include <boost/asio/posix/stream_descriptor.hpp>
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/pipe.hpp>
++
+ // standard headers
+ #include <memory>
+ #include <string>
+
+From e617654e17aa09c28aad07822777b696298f92d0 Mon Sep 17 00:00:00 2001
+From: badaix <johannes.pohl@badaix.de>
+Date: Fri, 6 Jun 2025 21:52:26 +0200
+Subject: [PATCH] Include process v1 headers for Boost version >= v1.88.0
+
+---
+ client/client_connection.cpp           | 1 -
+ client/player/player.cpp               | 4 ++++
+ server/streamreader/process_stream.hpp | 3 ---
+ server/streamreader/stream_control.hpp | 4 ++++
+ 4 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/client/player/player.cpp b/client/player/player.cpp
+index 968cb723..76ca3818 100644
+--- a/client/player/player.cpp
++++ b/client/player/player.cpp
+@@ -27,10 +27,14 @@
+ 
+ // 3rd party headers
+ #ifdef SUPPORTS_VOLUME_SCRIPT
++#if BOOST_VERSION >= 108800
+ #include <boost/process/v1/args.hpp>
+ #include <boost/process/v1/child.hpp>
+ #include <boost/process/v1/detail/on_exit.hpp>
+ #include <boost/process/v1/exe.hpp>
++#else
++#include <boost/process.hpp>
++#endif
+ #endif
+ 
+ // standard headers
+diff --git a/server/streamreader/process_stream.hpp b/server/streamreader/process_stream.hpp
+index 5c495655..0774b9e9 100644
+--- a/server/streamreader/process_stream.hpp
++++ b/server/streamreader/process_stream.hpp
+@@ -24,9 +24,6 @@
+ #include "watchdog.hpp"
+ 
+ // 3rd party headers
+-#include <boost/asio/posix/stream_descriptor.hpp>
+-#include <boost/process/v1/child.hpp>
+-#include <boost/process/v1/pipe.hpp>
+ 
+ // standard headers
+ #include <memory>
+diff --git a/server/streamreader/stream_control.hpp b/server/streamreader/stream_control.hpp
+index 5cbc9217..6a448d52 100644
+--- a/server/streamreader/stream_control.hpp
++++ b/server/streamreader/stream_control.hpp
+@@ -24,10 +24,14 @@
+ 
+ // 3rd party headers
+ #include <boost/asio/any_io_executor.hpp>
++#if BOOST_VERSION >= 108800
+ #include <boost/process/v1/child.hpp>
+ #include <boost/process/v1/io.hpp>
+ #include <boost/process/v1/start_dir.hpp>
+ #include <boost/process/v1/system.hpp>
++#else
++#include <boost/process.hpp>
++#endif
+ 
+ // standard headers
+ #include <filesystem>
+

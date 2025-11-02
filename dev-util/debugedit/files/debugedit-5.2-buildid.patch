@@ -1,0 +1,37 @@
+https://sourceware.org/cgit/debugedit/commit/?id=c011f478dca2c89d52958a8999b99663d14db85d
+
+From c011f478dca2c89d52958a8999b99663d14db85d Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Tue, 8 Jul 2025 13:05:37 +0200
+Subject: find-debuginfo.at: Make sure foo, bar and baz have build-ids
+
+There are still distros that don't configure gcc with
+--enable-linker-build-id. So explicitly add -Wl,--build-id
+to the test binaries generated.
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=33135
+
+Signed-off-by: Mark Wielaard <mark@klomp.org>
+---
+ tests/find-debuginfo.at | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/tests/find-debuginfo.at b/tests/find-debuginfo.at
+index dd59374..1d7ad57 100644
+--- a/tests/find-debuginfo.at
++++ b/tests/find-debuginfo.at
+@@ -93,9 +93,9 @@ cp "${abs_srcdir}"/data/SOURCES/baz.c subdir_build
+ cd subdir_build
+ # Three almost identical binaries
+ # so dwz has something to put into the alt file
+-$CC $CFLAGS -g3 -I. -o foo foo.c bar.c baz.c
+-$CC $CFLAGS -g3 -I. -o bar bar.c baz.c foo.c
+-$CC $CFLAGS -g3 -I. -o baz baz.c foo.c bar.c
++$CC $CFLAGS -Wl,--build-id -g3 -I. -o foo foo.c bar.c baz.c
++$CC $CFLAGS -Wl,--build-id -g3 -I. -o bar bar.c baz.c foo.c
++$CC $CFLAGS -Wl,--build-id -g3 -I. -o baz baz.c foo.c bar.c
+ cd ..
+ ]])
+ 
+-- 
+cgit

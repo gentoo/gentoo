@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 DESCRIPTION="An alternative to the FLAC reference encoder"
 HOMEPAGE="https://flake-enc.sourceforge.net"
@@ -21,6 +21,8 @@ src_configure() {
 	sed -i -e "s:cc=\"gcc\":cc=\"$(tc-getCC)\":" configure \
 	|| die failed to patch CC
 
+	lto-guarantee-fat
+
 	./configure \
 		--ar="$(tc-getAR)" \
 		--cc="$(tc-getCC)" \
@@ -35,5 +37,7 @@ src_install() {
 	dobin flake/flake
 	doheader libflake/flake.h
 	dolib.a libflake/libflake.a
+	strip-lto-bytecode
+
 	dodoc Changelog README
 }

@@ -12,7 +12,7 @@ SRC_URI="https://github.com/martinmoene/expected-lite/archive/refs/tags/v${PV}.t
 
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,15 @@
+Output build commands to tun. Incidentally, also fixes build
+
+diff --git a/build b/build
+index 3409ad7..43320ab 100755
+--- a/build
++++ b/build
+@@ -12,7 +12,7 @@
+ #define ECHO_REQUEST        1
+ 
+ // uncomment to show the full gcc commands when compiling
+-// #define ECHO_COMPILE
++#define ECHO_COMPILE
+ 
+ string  CLASSES;
+ string  g_lopt;

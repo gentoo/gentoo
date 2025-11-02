@@ -1,0 +1,44 @@
+From f31696ea58bac1e24c6a64fb854cba3441690c20 Mon Sep 17 00:00:00 2001
+From: Dennis Eisele <kernlpanic@dennis-eisele.de>
+Date: Sun, 6 Jul 2025 22:56:01 +0200
+Subject: [PATCH] Prevent xattr warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Proposed-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ Makefile.in     | 1 +
+ lib/sysxattrs.h | 6 +++---
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index de70a44..6117a4f 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -83,6 +83,7 @@ $(BPCOBJ): backuppc/backuppc.h
+ $(OBJS): $(HEADERS)
+ $(CHECK_OBJS): $(HEADERS)
+ 
++tls.o xattrs.o: lib/sysxattrs.h
+ flist.o: rounding.h
+ 
+ rounding.h: rounding.c rsync.h proto.h
+diff --git a/lib/sysxattrs.h b/lib/sysxattrs.h
+index 428421a..024bbd1 100644
+--- a/lib/sysxattrs.h
++++ b/lib/sysxattrs.h
+@@ -1,9 +1,9 @@
+ #ifdef SUPPORT_XATTRS
+ 
+-#if defined HAVE_ATTR_XATTR_H
+-#include <attr/xattr.h>
+-#elif defined HAVE_SYS_XATTR_H
++#if defined HAVE_SYS_XATTR_H
+ #include <sys/xattr.h>
++#elif defined HAVE_ATTR_XATTR_H
++#include <attr/xattr.h>
+ #elif defined HAVE_SYS_EXTATTR_H
+ #include <sys/extattr.h>
+ #endif
+

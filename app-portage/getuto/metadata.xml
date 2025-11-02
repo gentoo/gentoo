@@ -5,7 +5,7 @@
 		<email>dilfridge@gentoo.org</email>
 		<name>Andreas K. Hüttel</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="project">
 		<email>binhost@gentoo.org</email>
 		<name>Binhost</name>
 	</maintainer>

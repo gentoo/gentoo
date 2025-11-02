@@ -1,4 +1,4 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.049-ar.patch
-	"${FILESDIR}"/${PN}-1.055-ar-part2.patch # https://github.com/fjcontrib/fjcontrib/issues/3
+	"${FILESDIR}"/${PN}-1.055-ar-part2.patch
 	"${FILESDIR}"/${PN}-1.101-ldflags.patch
 )
 
@@ -59,4 +59,6 @@ src_install() {
 	# The name used for requesting this library varies
 	dosym libfastjetcontribfragile.so /usr/$(get_libdir)/libfastjetcontribfragile.so.0
 	dosym libfastjetcontribfragile.so /usr/$(get_libdir)/fastjetcontribfragile.so.0
+	# purge static libs, which are includedin fragile lib above
+	find "${ED}" -type f -name '*.a' -delete || die
 }

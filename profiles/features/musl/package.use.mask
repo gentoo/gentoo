@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sv. Lockal <lockalsash@gmail.com.com> (2025-07-07)
+# sci-libs/aotriton-bin is masked on musl
+sci-ml/caffe2 memefficient
+
 # Alfred Wingate <parona@protonmail.com> (2025-05-17)
 # Tests cannot be built on musl due to libc specific ifdefs (bug #836710)
 net-mail/cyrus-imapd test
@@ -11,11 +15,6 @@ net-mail/cyrus-imapd test
 # v4l support entirely (always enabled), only libv4l use (bug #911499).
 media-video/ffmpeg v4l
 media-video/ffmpeg-compat v4l
-
-# Ionen Wolkens <ionen@gentoo.org> (2025-03-10)
-# dev-util/nvidia-cuda-toolkit is unavailable on musl
-media-video/ffmpeg npp
-media-video/ffmpeg-compat npp
 
 # Sam James <sam@gentoo.org> (2025-01-08)
 # Depends on currently-masked elogind version on musl profiles (bug #947739)
@@ -42,10 +41,6 @@ app-emulation/libvirt dtrace
 gui-libs/neatvnc tracing
 gui-apps/wayvnc tracing
 
-# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2024-08-06)
-# Requires llvm-runtimes/libcxx.
-dev-cpp/benchmark libcxx
-
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-07-25)
 # Requires systemd-detect-virt
 app-emulation/virt-firmware test
@@ -66,7 +61,7 @@ dev-lang/python jit
 dev-libs/mongo-c-driver test
 dev-php/pecl-mongodb test
 dev-python/pymongo test-full
-net-analyzer/zmap mongo
+sci-libs/gdal mongodb
 
 # Nowa Ammerlaan <nowa@gentoo.org> (2024-04-25)
 # No Level-Zero on musl
@@ -125,11 +120,6 @@ sys-kernel/installkernel -systemd
 # Requires dev-libs/level-zero.
 dev-lang/ispc gpu
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2023-12-18)
-# Requires systemd
-sys-kernel/gentoo-kernel generic-uki
-sys-kernel/gentoo-kernel-bin generic-uki
-
 # Guillaume Seren <guillaumeseren@gmail.com> (2023-11-29)
 # execinfo.h required for server.
 games-board/cockatrice server
@@ -179,8 +169,9 @@ media-libs/opencv atlas
 media-video/ffmpeg amf
 media-video/ffmpeg-compat amf
 media-video/handbrake amf
-net-fs/openafs tsm
 net-analyzer/nagios-plugin-check_raid megaraid-sas
+net-fs/openafs tsm
+net-misc/yt-dlp deno
 sys-apps/hwloc gl
 www-client/qutebrowser widevine
 
@@ -227,7 +218,6 @@ sys-apps/man-pages l10n_hu l10n_id l10n_it l10n_ko l10n_mk l10n_nb l10n_nl
 sys-apps/man-pages l10n_pl l10n_pt-BR l10n_ro l10n_ru l10n_sr l10n_sv
 sys-apps/man-pages l10n_uk l10n_vi
 sys-apps/sysvinit nls
-sys-auth/sssd man
 sys-apps/util-linux nls
 
 # Sam James <sam@gentoo.org> (2021-11-07)

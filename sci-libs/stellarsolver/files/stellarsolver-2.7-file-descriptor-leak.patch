@@ -1,0 +1,23 @@
+From 9abe16cd615715ec961f6b2e61870d480861c93d Mon Sep 17 00:00:00 2001
+From: John Evans <john.e.evans.email@googlemail.com>
+Date: Mon, 16 Jun 2025 07:46:38 +0100
+Subject: [PATCH] fix file descriptor leak on index files
+
+---
+ stellarsolver/astrometry/qfits-an/qfits_rw.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/stellarsolver/astrometry/qfits-an/qfits_rw.c b/stellarsolver/astrometry/qfits-an/qfits_rw.c
+index e388a33..20746cf 100644
+--- a/stellarsolver/astrometry/qfits-an/qfits_rw.c
++++ b/stellarsolver/astrometry/qfits-an/qfits_rw.c
+@@ -229,6 +229,9 @@ int qfits_is_fits(const char * filename)
+     magic = qfits_calloc(FITS_MAGIC_SZ+1, sizeof(char));
+     if (fread(magic, 1, FITS_MAGIC_SZ, fp) != FITS_MAGIC_SZ) {
+ 		qfits_error("failed to read file [%s]: %s", filename, strerror(errno));
++        // Tidy up to avoid leaking file descriptors
++        fclose(fp);
++        qfits_free(magic);
+ 		return -1;
+ 	}
+     fclose(fp);

@@ -8,7 +8,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit autotools distutils-r1 multilib-minimal
 
 LIBNL_P=${P/_/-}
@@ -30,9 +30,7 @@ fi
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 IUSE="+debug python test utils"
-# Tests fail w/ sandboxes
-# https://github.com/thom311/libnl/issues/361
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
@@ -65,6 +63,11 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/libnl3/netlink/cli/rule.h
 	/usr/include/libnl3/netlink/cli/tc.h
 	/usr/include/libnl3/netlink/cli/utils.h
+)
+
+PATCHES=(
+	"${FILESDIR}"/0001-Fix-compilation-error-in-GCC-14.patch
+	"${FILESDIR}"/${PN}-3.11.0-no-iproute2.patch
 )
 
 src_prepare() {

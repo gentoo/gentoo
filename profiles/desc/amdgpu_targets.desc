@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors.
+# Copyright 1999-2025 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # Reference: GPU name and architecture codename documented by
@@ -16,6 +16,7 @@ gfx90a - CDNA2 Accelerator, codename aldebaran, including AMD Instinct MI200 ser
 gfx940 - CDNA3 Accelerator, codename aqua_vangaram, MI300A rev 0
 gfx941 - CDNA3 Accelerator, codename aqua_vangaram, MI300X rev 0
 gfx942 - CDNA3 Accelerator, codename aqua_vangaram, MI300A and MI300X rev >=1
+gfx950 - CDNA4 Accelerator, including AMD Instinct MI350X and MI355X
 gfx1010 - RDNA GPU, codename navi10, including Radeon RX 5700XT/5700/5700M/5700B/5700XTB/5600XT/5600/5600M, Radeon Pro 5700XT/5700, Radeon Pro W5700X/W5700
 gfx1011 - RDNA GPU, codename navi12, including Radeon Pro 5600M/V520
 gfx1012 - RDNA GPU, codename navi14, including Radeon RX 5500XT/5500/5500M/5500XTB/5300/5300M, Radeon Pro 5500XT/5500M/5300/5300M, Radeon Pro W5500X/W5500/W5500M/W5300M
@@ -24,3 +25,8 @@ gfx1031 - RDNA2 GPU, codename navi22/navy flounder, including Radeon RX 6750XT/6
 gfx1100 - RDNA3 GPU, codename navi31/plum bonito, including Radeon RX 7900XTX/7900XT, AMD Radeon Pro W7900/W7800
 gfx1101 - RDNA3 GPU, codename navi32, including Radeon RX 7700XT/7800XT
 gfx1102 - RDNA3 GPU, codename navi33, including Radeon RX 7600/7600M/7600M XT/7700S/7600S, AMD Radeon PRO W7600/W7500
+gfx1103 - RDNA3 APU, codename navi3x, including Radeon 700M/780M
+gfx1150 - RDNA 3.5 APU (Strix Point), including Radeon 890M
+gfx1151 - RDNA 3.5 APU (Strix Halo), including Radeon 8060S
+gfx1200 - RDNA4 GPU, codename navi44, including Radeon RX 9060XT
+gfx1201 - RDNA4 GPU, codename navi48, including Radeon RX 9070/9070XT/9070GRE and Radeon AI PRO R9700

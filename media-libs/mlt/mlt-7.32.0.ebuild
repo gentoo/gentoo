@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0/7"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt6 rtaudio rubberband sdl test vdpau vidstab xine xml"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -100,6 +100,10 @@ src_prepare() {
 	if use python; then
 		sed -i "/mlt.so/s/ -lmlt++ /& ${CFLAGS} ${LDFLAGS} /" src/swig/python/build || die
 		python_fix_shebang src/swig/python
+	fi
+
+	if has_version ">=media-video/ffmpeg-8"; then
+		PATCHES+=( "${FILESDIR}"/${P}-ffmpeg8.patch ) # bug 961698, git master
 	fi
 
 	cmake_src_prepare

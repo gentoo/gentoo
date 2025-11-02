@@ -1,0 +1,5 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CHOST="armv6j-unknown-linux-gnueabihft64"
+CHOST_arm="${CHOST}"

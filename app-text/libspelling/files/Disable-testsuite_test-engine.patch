@@ -1,0 +1,21 @@
+From 6148f07621bebc360e4f58aca39fdd915f06767b Mon Sep 17 00:00:00 2001
+From: Lukas Schmelting <lschmelting@posteo.com>
+Date: Tue, 10 Jun 2025 18:34:47 +0200
+Subject: [PATCH] app-text/libspelling: Disable testsuite 'test-engine'
+
+The test tries to utilize use LANG and and libenchant
+
+Signed-off-by: Lukas Schmelting <lschmelting@posteo.com>
+---
+ testsuite/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/testsuite/meson.build b/testsuite/meson.build
+index c9703db..2dce51b 100644
+--- a/testsuite/meson.build
++++ b/testsuite/meson.build
+@@ -16 +15,0 @@ libspelling_testsuite = {
+-  'test-engine' : {},
+-- 
+2.49.0
+

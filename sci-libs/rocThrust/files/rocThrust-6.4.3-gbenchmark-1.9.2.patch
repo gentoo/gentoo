@@ -1,0 +1,40 @@
+Fix compilation with Google Benchmark >= 1.9.2
+
+Bug: https://bugs.gentoo.org/960483
+--- a/benchmarks/bench_utils/custom_reporter.hpp
++++ b/benchmarks/bench_utils/custom_reporter.hpp
+@@ -88,6 +88,21 @@ static std::string FormatString(const char* msg, ...)
+     return tmp;
+ }
+ 
++// 'run.memory_result' is a pointer (Google Benchmark < 1.9.2).
++inline const benchmark::MemoryManager::Result*
++GetMemoryResultPtr(const benchmark::MemoryManager::Result* p) {
++    return p;
++}
++
++// 'run.memory_result' is an object (Google Benchmark >= 1.9.2).
++inline const benchmark::MemoryManager::Result*
++GetMemoryResultPtr(const benchmark::MemoryManager::Result& v) {
++    if (v.memory_iterations > 0) {
++        return &v;
++    }
++    return nullptr;
++}
++
+ std::string get_complexity(const benchmark::BigO& complexity)
+ {
+     switch(complexity)
+@@ -658,9 +673,10 @@ class CustomJSONReporter : public benchmark::JSONReporter
+             }
+         }
+ 
+-        if (run.memory_result)
++        const benchmark::MemoryManager::Result* mem_result = GetMemoryResultPtr(run.memory_result);
++        if (mem_result)
+         {
+-            const benchmark::MemoryManager::Result memory_result = *run.memory_result;
++            const benchmark::MemoryManager::Result& memory_result = *mem_result;
+             output_format("allocs_per_iter", run.allocs_per_iter);
+             output_format("max_bytes_used", memory_result.max_bytes_used);
+ 

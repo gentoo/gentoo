@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,7 +12,7 @@ SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="acl debug nls test"
 RESTRICT="!test? ( test )"
 
@@ -24,6 +24,11 @@ DEPEND="
 BDEPEND="nls? ( app-text/po4a )"
 
 DOCS=( AUTHORS BUGS DEBUG README doc/README.saving )
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.32.2-musl.patch"
+	"${FILESDIR}/${PN}-1.32.2-configure-id_t.patch" # merged upstream 1.35.1
+)
 
 src_prepare() {
 	default

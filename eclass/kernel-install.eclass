@@ -263,10 +263,15 @@ kernel-install_can_update_symlink() {
 	# strip KV_LOCALVERSION, we want to update the old kernels not using
 	# KV_LOCALVERSION suffix and the new kernels using it
 	symlink_ver=${symlink_ver%${KV_LOCALVERSION}}
+	symlink_ver=${symlink_ver/-p/_p}
+	# strip -p* revision
+	local symlink_ver_no_rev=${symlink_ver%_p[0-9]*}
+	local rev=${symlink_ver#${symlink_ver_no_rev}}
+	rev=${rev#_p}
 
-	# if ${symlink_ver} contains anything but numbers (e.g. an extra
-	# suffix), it's not our kernel, so leave it alone
-	[[ -n ${symlink_ver//[0-9.]/} ]] && return 1
+	# if ${symlink_ver} contained anything but numbers and revision (e.g.
+	# an extra suffix), it's not our kernel, so leave it alone
+	[[ -n ${symlink_ver_no_rev//[0-9.]/} || -n ${rev//[0-9]/} ]] && return 1
 
 	local symlink_pkg=${CATEGORY}/${PN}-${symlink_ver}
 	# if the current target is either being replaced, or still
@@ -478,7 +483,11 @@ kernel-install_test() {
 	esac
 
 	if [[ ${KERNEL_IUSE_MODULES_SIGN} ]]; then
-		use modules-sign && qemu_extra_append+=" module.sig_enforce=1"
+		# If KERNEL_IUSE_MODULES_SIGN, but no IUSE=modules-sign,
+		# then this is gentoo-kernel-bin test phase with signed mods.
+		if ! in_iuse modules-sign || use modules-sign; then
+			qemu_extra_append+=" module.sig_enforce=1"
+		fi
 	fi
 
 	cat > run.sh <<-EOF || die
@@ -670,27 +679,16 @@ kernel-install_extract_from_uki() {
 			die "Failed to extract ${extract_type}"
 
 	# Sanity checks for kernel images
-	if [[ ${extract_type} == linux ]] &&
+	if [[ -n ${SECUREBOOT_SIGN_CERT} && ${extract_type} == linux ]] &&
 		{ ! in_iuse secureboot || use secureboot ;}
 	then
-		# Extract the used SECUREBOOT_SIGN_CERT to verify the kernel image
-		local cert=${T}/pcrpkey
-		kernel-install_extract_from_uki pcrpkey "${uki}" "${cert}"
-		if [[ $(head -n1 "${cert}") != "-----BEGIN CERTIFICATE-----" ]]; then
-			# This is a DER format certificate, convert it to PEM
-			openssl x509 \
-				-inform DER -in "${cert}" \
-				-outform PEM -out "${cert}" ||
-					die "Failed to convert pcrpkey to PEM format"
-		fi
-
 		# Check if the signature on the UKI is valid
-		sbverify --cert "${cert}" "${uki}" ||
+		sbverify --cert "${SECUREBOOT_SIGN_CERT}" "${uki}" ||
 			die "ERROR: UKI signature is invalid"
 
 		# Check if the signature on the kernel image is valid
 		local sbverify_err=$(
-			sbverify --cert "${cert}" "${out_temp}" 2>&1 >/dev/null
+			sbverify --cert "${SECUREBOOT_SIGN_CERT}" "${out_temp}" 2>&1 >/dev/null
 		)
 
 		# Check if there was a padding warning
@@ -704,7 +702,7 @@ kernel-install_extract_from_uki() {
 				>"${out_temp}_trimmed" || die
 			# Check if the signature verifies now
 			sbverify_err=$(
-				sbverify --cert "${cert}" "${out_temp}_trimmed" 2>&1 >/dev/null
+				sbverify --cert "${SECUREBOOT_SIGN_CERT}" "${out_temp}_trimmed" 2>&1 >/dev/null
 			)
 			[[ -z ${sbverify_err} ]] && out_temp=${out_temp}_trimmed
 		fi
@@ -735,10 +733,19 @@ kernel-install_install_all() {
 	local dir_ver=${1}
 	local kernel_dir=${EROOT}/usr/src/linux-${dir_ver}
 	local relfile=${kernel_dir}/include/config/kernel.release
+	local kernel_cert=${kernel_dir}/certs/signing_key.x509
 	local image_path=$(dist-kernel_get_image_path)
 	local image_dir=${image_path%/*}
 	local module_ver
 	module_ver=$(<"${relfile}") || die
+
+	if [[ ! -r ${SECUREBOOT_SIGN_CERT} && -s ${kernel_cert} ]]; then
+		openssl x509 \
+			-inform DER -in "${kernel_cert}" \
+			-outform PEM -out "${T}/cert.pem" ||
+				die "Failed to convert kernel certificate to PEM format"
+			export SECUREBOOT_SIGN_CERT=${T}/cert.pem
+	fi
 
 	if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		if use generic-uki; then

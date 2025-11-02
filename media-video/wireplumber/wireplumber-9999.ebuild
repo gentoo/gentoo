@@ -10,9 +10,24 @@ EAPI=8
 # continue to move quickly. It's not uncommon for fixes to be made shortly
 # after releases.
 
-LUA_COMPAT=( lua5-{3,4} )
+# TODO: Maybe get upstream to produce `meson dist` tarballs:
+# - https://gitlab.freedesktop.org/wireplumber/wireplumber/-/issues/3663
+# - https://gitlab.freedesktop.org/wireplumber/wireplumber/-/merge_requests/1788
+#
+# Generate using https://github.com/thesamesam/sam-gentoo-scripts/blob/main/niche/generate-wireplumber-docs
+# Set to 1 if prebuilt, 0 if not
+# (the construct below is to allow overriding from env for script)
+: ${WIREPLUMBER_DOCS_PREBUILT:=0}
 
-inherit lua-single meson systemd
+WIREPLUMBER_DOCS_PREBUILT_DEV=sam
+WIREPLUMBER_DOCS_VERSION="$(ver_cut 1-3)"
+# Default to generating docs (inc. man pages) if no prebuilt; overridden later
+WIREPLUMBER_DOCS_USEFLAG="+doc"
+
+LUA_COMPAT=( lua5-{3,4} )
+PYTHON_COMPAT=( python3_{11..14} )
+
+inherit lua-single meson python-any-r1 systemd
 
 DESCRIPTION="Replacement for pipewire-media-session"
 HOMEPAGE="https://gitlab.freedesktop.org/pipewire/wireplumber"
@@ -23,12 +38,18 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://gitlab.freedesktop.org/pipewire/${PN}/-/archive/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+
+	if [[ ${WIREPLUMBER_DOCS_PREBUILT} == 1 ]] ; then
+		SRC_URI+=" !doc? ( https://dev.gentoo.org/~${WIREPLUMBER_DOCS_PREBUILT_DEV}/distfiles/${CATEGORY}/${PN}/${PN}-${WIREPLUMBER_DOCS_VERSION}-docs.tar.xz )"
+		WIREPLUMBER_DOCS_USEFLAG="doc"
+	fi
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 fi
 
 LICENSE="MIT"
 SLOT="0/0.5"
-IUSE="elogind system-service systemd test"
+IUSE="${WIREPLUMBER_DOCS_USEFLAG} doc elogind system-service systemd test"
 
 REQUIRED_USE="
 	${LUA_REQUIRED_USE}
@@ -38,12 +59,20 @@ REQUIRED_USE="
 
 RESTRICT="!test? ( test )"
 
-# introspection? ( dev-libs/gobject-introspection ) is valid but likely only used for doc building
+# introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 ) is valid but likely only used for doc building
 BDEPEND="
+	${PYTHON_DEPS}
 	dev-libs/glib
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	sys-devel/gettext
+	doc? (
+		$(python_gen_any_dep '
+			dev-python/breathe[${PYTHON_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]
+		')
+	)
 	test? ( sys-apps/dbus )
 "
 DEPEND="
@@ -71,13 +100,28 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.6-config-disable-sound-server-parts.patch
 )
 
+python_check_deps() {
+	if use doc; then
+		python_has_version \
+			"dev-python/sphinx[${PYTHON_USEDEP}]" \
+			"dev-python/sphinx-rtd-theme[${PYTHON_USEDEP}]" \
+			"dev-python/breathe[${PYTHON_USEDEP}]" || return 1
+	else
+		return 0
+	fi
+}
+
+pkg_setup() {
+	lua-single_pkg_setup
+	python-any-r1_pkg_setup
+}
+
 src_configure() {
 	local emesonargs=(
 		-Ddaemon=true
 		-Dtools=true
 		-Dmodules=true
-		# Ebuild not wired up yet (Sphinx, Doxygen?)
-		-Ddoc=disabled
+		$(meson_feature doc)
 		# Only used for Sphinx doc generation
 		-Dintrospection=disabled
 		-Dsystem-lua=true
@@ -98,6 +142,10 @@ src_configure() {
 src_install() {
 	meson_src_install
 
+	if ! use doc && [[ ${WIREPLUMBER_DOCS_PREBUILT} == 1 ]] ; then
+		doman "${WORKDIR}"/${PN}-${WIREPLUMBER_DOCS_VERSION}-docs/man/*/*.[0-8]
+	fi
+
 	exeinto /etc/user/init.d
 	newexe "${FILESDIR}"/wireplumber.initd wireplumber
 
@@ -106,20 +154,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	if systemd_is_booted ; then
-		ewarn "pipewire-media-session.service is no longer installed. You must switch"
-		ewarn "to wireplumber.service user unit before your next logout/reboot:"
-		ewarn "systemctl --user disable pipewire-media-session.service"
-		ewarn "systemctl --user --force enable wireplumber.service"
-	else
-		ewarn "Switch to WirePlumber will happen the next time gentoo-pipewire-launcher"
-		ewarn "is started (a replacement for directly calling pipewire binary)."
-		ewarn
-		ewarn "Please ensure that ${EROOT}/etc/pipewire/pipewire.conf either does not exist"
-		ewarn "or, if it does exist, that any reference to"
-		ewarn "${EROOT}/usr/bin/pipewire-media-session is commented out (begins with a #)."
-	fi
-
 	if use system-service; then
 		ewarn
 		ewarn "WARNING: you have enabled the system-service USE flag, which installs"

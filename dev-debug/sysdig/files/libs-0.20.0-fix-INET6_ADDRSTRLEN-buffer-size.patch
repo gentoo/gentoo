@@ -1,0 +1,54 @@
+Backported patch from: https://github.com/falcosecurity/libs/pull/2574
+
+glibc-2.42 added __inet_ntop_chk fortification, which started to fail:
+
+*** buffer overflow detected ***: terminated
+Program received signal SIGABRT, Aborted.
+0x00007ffff629b0dc in __pthread_kill_implementation () from /lib64/libc.so.6
+(gdb) bt
+#0  0x00007ffff629b0dc in __pthread_kill_implementation () from /lib64/libc.so.6
+#1  0x00007ffff6242572 in raise () from /lib64/libc.so.6
+#2  0x00007ffff6229f3b in abort () from /lib64/libc.so.6
+#3  0x00007ffff622b148 in __libc_message_impl.cold () from /lib64/libc.so.6
+#4  0x00007ffff6327337 in __fortify_fail () from /lib64/libc.so.6
+#5  0x00007ffff6326c92 in __chk_fail () from /lib64/libc.so.6
+#6  0x00007ffff6327a62 in __inet_ntop_chk () from /lib64/libc.so.6
+#7  0x000055555569da3d in inet_ntop (__af=10, __src=0x555555ee0800, __dst=0x7fffffff4f90 "\260P\377\377\377\177", __dst_size=100) at /usr/include/bits/inet-fortified.h:36
+#8  ipv6tuple_to_string[abi:cxx11](ipv6tuple*, bool) (tuple=0x555555ee0800, resolve=false) at /tmp/portage/dev-debug/sysdig-0.40.1/work/libs-0.20.0/userspace/libsinsp/utils.cpp:1110
+
+Pass a target buffer size appropriate for IPv addresses.
+
+--- libs-0.20.0/userspace/libsinsp/utils.cpp
++++ libs-0.20.0-new/userspace/libsinsp/utils.cpp
+@@ -1089,13 +1089,13 @@ std::string ipv4tuple_to_string(ipv4tupl
+ }
+ 
+ std::string ipv6serveraddr_to_string(ipv6serverinfo* addr, bool resolve) {
+-	char address[100];
+-	char buf[200];
++	char address[INET6_ADDRSTRLEN];
+ 
+-	if(NULL == inet_ntop(AF_INET6, addr->m_ip.m_b, address, 100)) {
++	if(NULL == inet_ntop(AF_INET6, addr->m_ip.m_b, address, INET6_ADDRSTRLEN)) {
+ 		return std::string();
+ 	}
+ 
++	char buf[200];
+ 	snprintf(buf,
+ 	         200,
+ 	         "%s:%s",
+@@ -1107,12 +1107,12 @@ std::string ipv6serveraddr_to_string(ipv
+ 
+ std::string ipv6tuple_to_string(ipv6tuple* tuple, bool resolve) {
+ 	char source_address[INET6_ADDRSTRLEN];
+-	if(NULL == inet_ntop(AF_INET6, tuple->m_fields.m_sip.m_b, source_address, 100)) {
++	if(NULL == inet_ntop(AF_INET6, tuple->m_fields.m_sip.m_b, source_address, INET6_ADDRSTRLEN)) {
+ 		return std::string();
+ 	}
+ 
+ 	char destination_address[INET6_ADDRSTRLEN];
+-	if(NULL == inet_ntop(AF_INET6, tuple->m_fields.m_dip.m_b, destination_address, 100)) {
++	if(NULL == inet_ntop(AF_INET6, tuple->m_fields.m_dip.m_b, destination_address, INET6_ADDRSTRLEN)) {
+ 		return std::string();
+ 	}
+ 

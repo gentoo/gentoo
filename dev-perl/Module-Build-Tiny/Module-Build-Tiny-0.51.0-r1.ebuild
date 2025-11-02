@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Tiny replacement for Module::Build"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="minimal"
 
 RDEPEND="
@@ -32,11 +32,7 @@ RDEPEND="
 BDEPEND="
 	${RDEPEND}
 	test? (
-		virtual/perl-Data-Dumper
-		virtual/perl-File-Temp
-		virtual/perl-IO
 		>=virtual/perl-Test-Simple-0.88
-		virtual/perl-XSLoader
 	)
 "
 

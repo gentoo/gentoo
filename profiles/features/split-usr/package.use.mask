@@ -1,6 +1,16 @@
 # Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mike Gilbert <floppym@gentoo.org> (2025-06-03)
+# Requires systemd.
+app-emulation/virt-firmware test
+dev-qt/qtbase journald
+net-analyzer/wireshark sdjournal
+sys-apps/dbus-broker launcher
+sys-auth/pambase homed
+sys-apps/ipmitool openbmc
+www-servers/uwsgi uwsgi_plugins_systemd_logger
+
 # Nowa Ammerlaan <nowa@gentoo.org> (2023-12-07)
 # Does not support split-usr filesystem geometry. Please migrate to
 # a merged-usr profile.

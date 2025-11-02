@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 optfeature
@@ -34,11 +34,8 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/itsdangerous[${PYTHON_USEDEP}]
-		dev-python/pytest-httpbin[${PYTHON_USEDEP}]
-		dev-python/requests-mock[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		>=dev-python/rich-10.0[${PYTHON_USEDEP}]
-		dev-python/timeout-decorator[${PYTHON_USEDEP}]
 		>=dev-python/ujson-5.4[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/time-machine[${PYTHON_USEDEP}]
@@ -46,7 +43,13 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-httpbin requests-mock )
 distutils_enable_tests pytest
+
+PATCHES=(
+	# https://github.com/requests-cache/requests-cache/pull/1111
+	"${FILESDIR}/${P}-no-timeout-decorator.patch"
+)
 
 python_test() {
 	local EPYTEST_IGNORE=(

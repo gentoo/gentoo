@@ -1,0 +1,10 @@
+Gentoo Bug: https://bugs.gentoo.org/889340
+
+--- a/VTK/CMake/vtkVersion.cmake
++++ b/VTK/CMake/vtkVersion.cmake
+@@ -1,5 +1,5 @@
+ # VTK version number components.
+ set(VTK_MAJOR_VERSION 9)
+-set(VTK_MINOR_VERSION 3)
++set(VTK_MINOR_VERSION 99)
+ set(VTK_BUILD_VERSION 20240617)

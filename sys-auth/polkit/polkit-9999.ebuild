@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit meson pam pax-utils python-any-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
@@ -40,7 +40,7 @@ BDEPEND="
 	dev-libs/libxslt
 	dev-util/glib-utils
 	virtual/pkgconfig
-	introspection? ( >=dev-libs/gobject-introspection-0.6.2 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	nls? ( sys-devel/gettext )
 	test? (
 		$(python_gen_any_dep '
@@ -80,12 +80,6 @@ QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkit-agent-helper-1
 	usr/lib/polkit-1/polkitd
 "
-
-PATCHES=(
-	"${FILESDIR}"/${P}-elogind.patch
-	"${FILESDIR}"/${P}-realpath.patch
-	"${FILESDIR}"/${P}-musl.patch
-)
 
 python_check_deps() {
 	python_has_version "dev-python/dbus-python[${PYTHON_USEDEP}]" &&

@@ -1,0 +1,21 @@
+diff -r f50a0e148361 configure.ac
+--- a/configure.ac	Mon Sep 08 17:20:50 2025 +0100
++++ b/configure.ac	Wed Sep 10 15:42:53 2025 +0200
+@@ -5211,7 +5211,7 @@
+ dnl Check for Berkeley DB.
+ if test "$with_database_berkdb" != "no"; then
+   AC_MSG_CHECKING(for Berkeley db.h)
+-  for header in "db/db.h" "db.h"; do
++  for header in "db5.3/db.h"; do
+     AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+ #include <stdlib.h>
+ #if !(defined __GLIBC__ && __GLIBC_MINOR__ >= 1)
+@@ -5283,7 +5283,7 @@
+   if test "$with_database_berkdb" = "yes"; then
+     AC_DEFINE_UNQUOTED(DB_H_FILE, "$db_h_file")
+     AC_DEFINE(HAVE_BERKELEY_DB)
+-    test "$need_libdb" = "yes" && XE_PREPEND(-ldb, LIBS)
++    test "$need_libdb" = "yes" && XE_PREPEND(-ldb-5.3, LIBS)
+   else with_database_berkdb=no
+   fi
+ fi

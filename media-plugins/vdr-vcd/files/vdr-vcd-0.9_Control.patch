@@ -1,0 +1,56 @@
+diff '--color=auto' -Naur vcd-0.9.orig/menucontrol.c vcd-0.9/menucontrol.c
+--- vcd-0.9.orig/menucontrol.c	2025-09-27 15:32:52.262205083 +0200
++++ vcd-0.9/menucontrol.c	2025-09-27 15:39:34.901524119 +0200
+@@ -56,7 +56,8 @@
+ 
+ void cMenuSpiControl::SetItem(int Spi, cVcd *Vcd)
+ {
+-  cControl *control = cControl::Control();
++  cMutexLock MutexLock;
++  cControl *control = cControl::Control(MutexLock);
+   if (control && typeid(*control)==typeid(cMenuVcdControl))
+      static_cast<cMenuVcdControl*>(control)->Stop();
+   if (control && typeid(*control)==typeid(cMenuSpiControl)
+@@ -146,7 +147,8 @@
+ 
+ void cMenuVcdControl::SetTrack(int Track, cVcd *Vcd)
+ {
+-  cControl *control = cControl::Control();
++  cMutexLock MutexLock;
++  cControl *control = cControl::Control(MutexLock);
+   if (control && typeid(*control)==typeid(cMenuSpiControl))
+      static_cast<cMenuSpiControl*>(control)->Stop();
+   if (control && typeid(*control)==typeid(cMenuVcdControl) &&
+diff '--color=auto' -Naur vcd-0.9.orig/psdcontrol.c vcd-0.9/psdcontrol.c
+--- vcd-0.9.orig/psdcontrol.c	2025-09-27 15:43:52.708831004 +0200
++++ vcd-0.9/psdcontrol.c	2025-09-27 15:47:19.216149801 +0200
+@@ -100,7 +100,8 @@
+ 
+ void cPsdSpiControl::SetItem(int Spi, cVcd *Vcd, union psd_vcd *PsdVcd)
+ {
+-  cControl *control = cControl::Control();
++  cMutexLock MutexLock;
++  cControl *control = cControl::Control(MutexLock);
+   if (control && typeid(*control)==typeid(cPsdVcdControl))
+      static_cast<cPsdVcdControl*>(control)->Stop();
+ 
+@@ -262,7 +263,8 @@
+ 
+ void cPsdVcdControl::SetTrack(int Track, cVcd *Vcd, union psd_vcd *PsdVcd)
+ {
+-  cControl *control = cControl::Control();
++  cMutexLock MutexLock;
++  cControl *control = cControl::Control(MutexLock);
+   if (control && typeid(*control)==typeid(cPsdSpiControl))
+      static_cast<cPsdSpiControl*>(control)->Stop();
+ 
+@@ -298,7 +300,8 @@
+ 
+ void cPsdVcdControl::SetEntry(int Entry, cVcd *Vcd, union psd_vcd *PsdVcd)
+ {
+-  cControl *control = cControl::Control();
++  cMutexLock MutexLock;
++  cControl *control = cControl::Control(MutexLock);
+   if (control && typeid(*control)==typeid(cPsdSpiControl))
+      static_cast<cPsdSpiControl*>(control)->Stop();
+ 

@@ -1,0 +1,47 @@
+piper deps aren't packaged yet, and should be USE conditional anyway
+
+https://bugs.gentoo.org/961974
+
+diff --git a/setup/extensions.json b/setup/extensions.json
+index b39ce6d..c105031 100644
+--- a/setup/extensions.json
++++ b/setup/extensions.json
+@@ -134,14 +134,6 @@
+         "error": "!podofo_error",
+ 		"needs_c++": "17"
+     },
+-    {
+-        "name": "piper",
+-        "sources": "calibre/utils/tts/piper.cpp",
+-		"needs_c++": "17",
+-        "libraries": "!piper_libs",
+-        "lib_dirs": "!piper_lib_dirs",
+-        "inc_dirs": "!piper_inc_dirs"
+-    },
+     {
+         "name": "html_as_json",
+         "sources": "calibre/srv/html_as_json.cpp",
+diff --git a/src/calibre/constants.py b/src/calibre/constants.py
+index fa4b211459..7b27768953 100644
+--- a/src/calibre/constants.py
++++ b/src/calibre/constants.py
+@@ -258,7 +258,6 @@ def __init__(self):
+             'rcc_backend',
+             'icu',
+             'speedup',
+-            'piper',
+             'html_as_json',
+             'fast_css_transform',
+             'fast_html_entities',
+diff --git a/src/calibre/utils/run_tests.py b/src/calibre/utils/run_tests.py
+index ffd0f95c04..c80a35f83d 100644
+--- a/src/calibre/utils/run_tests.py
++++ b/src/calibre/utils/run_tests.py
+@@ -192,6 +192,7 @@ def test_import_of_all_python_modules(self):
+             }
+         if 'SKIP_SPEECH_TESTS' in os.environ:
+             exclude_packages.add('calibre.gui2.tts')
++            exclude_modules.add('calibre.utils.tts.piper')
+         if not isbsd:
+             exclude_modules.add('calibre.devices.usbms.hal')
+         d = os.path.dirname

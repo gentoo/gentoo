@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -81,7 +81,9 @@ multilib_src_install() {
 		rm "${ED}"/usr/bin/{tests,gen-enc-table,yuv-distortion} || die
 		if ! use tools; then
 			rm "${ED}"/usr/bin/{bjoentegaard,block-rate-estim,rd-curves} || die
-			rm "${ED}"/usr/bin/acceleration_speed || die
+			# Disabled as of 1.0.16
+			# https://github.com/strukturag/libde265/commit/edf58dd61c50fb28f4b31569c250389f125bd826
+			#rm "${ED}"/usr/bin/acceleration_speed || die
 		fi
 	else
 		# Remove all non-native binary tools

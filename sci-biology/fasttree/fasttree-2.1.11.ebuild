@@ -1,12 +1,12 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit cmake
 
 DESCRIPTION="Fast inference of approximately-maximum-likelihood phylogenetic trees"
-HOMEPAGE="http://www.microbesonline.org/fasttree/"
+HOMEPAGE="https://morgannprice.github.io/fasttree/"
 SRC_URI="
 	http://www.microbesonline.org/fasttree/FastTree-${PV}.c
 	http://www.microbesonline.org/fasttree/FastTreeUPGMA.c -> FastTreeUPGMA-${PV}.c
@@ -26,10 +26,11 @@ PATCHES=( "${FILESDIR}"/${P}-format-security.patch )
 
 src_unpack() {
 	mkdir "${S}" || die
-	cd "${S}" || die
-	unpack ${A}
-	cp "${DISTDIR}"/{FastTreeUPGMA-${PV}.c,FastTree-${PV}.c} . || die
-	cp "${FILESDIR}"/CMakeLists.txt . || die
+	pushd "${S}" > /dev/null || die
+		unpack ${A}
+		cp "${DISTDIR}"/{FastTreeUPGMA-${PV}.c,FastTree-${PV}.c} . || die
+		cp "${FILESDIR}"/CMakeLists.txt . || die
+	popd > /dev/null || die
 }
 
 src_configure() {

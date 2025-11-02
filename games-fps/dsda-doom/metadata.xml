@@ -20,14 +20,14 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <use>
+    <flag name="xmp">Enable support for tracker music via <pkg>media-libs/libxmp</pkg></flag>
     <flag name="fluidsynth">Enable support for MIDI via <pkg>media-sound/fluidsynth</pkg></flag>
-    <flag name="mad">Enable support for MPEG audio via <pkg>media-libs/libmad</pkg></flag>
     <flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
     <flag name="sdl2-image">Enable support for high-resolution textures and other image formats via <pkg>media-libs/sdl2-image</pkg></flag>
-    <flag name="vorbis">Enable support for Ogg Vorbis audio via <pkg>media-libs/libvorbis</pkg></flag>
   </use>
   <upstream>
     <bugs-to>https://github.com/kraflab/dsda-doom/issues</bugs-to>
+    <changelog>https://github.com/kraflab/dsda-doom/releases</changelog>
     <remote-id type="github">kraflab/dsda-doom</remote-id>
   </upstream>
 </pkgmetadata>

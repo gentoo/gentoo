@@ -4,7 +4,9 @@
 EAPI=8
 
 LLVM_COMPAT=( 17 )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
+
+RUST_PATCH_VER=${PVR}
 
 RUST_MAX_VER=${PV}
 RUST_MIN_VER="$(ver_cut 1).$(($(ver_cut 2) - 1)).0"
@@ -16,26 +18,37 @@ MRUSTC_RUST_VERSION="1.74.0"
 inherit check-reqs cmake edo estack flag-o-matic llvm-r1 multiprocessing multilib multilib-build \
 	optfeature python-any-r1 rust rust-toolchain toolchain-funcs verify-sig
 
-if [[ ${PV} = *beta* ]]; then
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/rust-lang/rust.git"
+	EGIT_SUBMODULES=(
+		"*"
+		"-src/gcc"
+	)
+elif [[ ${PV} == *beta* ]]; then
+	# Identify the snapshot date of the beta release:
+	# curl -Ls static.rust-lang.org/dist/channel-rust-beta.toml | grep beta-src.tar.xz
 	betaver=${PV//*beta}
 	BETA_SNAPSHOT="${betaver:0:4}-${betaver:4:2}-${betaver:6:2}"
 	MY_P="rustc-beta"
-	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz"
+	SRC_URI="https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+		verify-sig? ( https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz.asc
+			-> rustc-${PV}-src.tar.xz.asc )
+	"
+	S="${WORKDIR}/${MY_P}-src"
 else
 	MY_P="rustc-${PV}"
-	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv sparc x86"
+	SRC_URI="https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
+		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
+	"
+	S="${WORKDIR}/${MY_P}-src"
+	KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~sparc x86"
 fi
 
 DESCRIPTION="Language empowering everyone to build reliable and efficient software"
 HOMEPAGE="https://www.rust-lang.org/"
-
-SRC_URI="
-	https://static.rust-lang.org/dist/${SRC}
-	verify-sig? ( https://static.rust-lang.org/dist/${SRC}.asc )
-"
-
-S="${WORKDIR}/${MY_P}-src"
 
 # keep in sync with llvm ebuild of the same version as bundled one.
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARC ARM AVR BPF CSKY DirectX Hexagon Lanai
@@ -54,12 +67,12 @@ done
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV}"
 
-IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto miri mrustc-bootstrap nightly parallel-compiler rustfmt rust-analyzer rust-src system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto miri mrustc-bootstrap nightly parallel-compiler rustfmt rust-analyzer rust-src +system-llvm test wasm ${ALL_LLVM_TARGETS[*]}"
 
 LLVM_DEPEND=()
 # splitting usedeps needed to avoid CI/pkgcheck's UncheckableDep limitation
 for _x in "${ALL_LLVM_TARGETS[@]}"; do
-	LLVM_DEPEND+=( "	${_x}? ( $(llvm_gen_dep "llvm-core/llvm:\${LLVM_SLOT}[${_x}]") )" )
+	LLVM_DEPEND+=( "	${_x}? ( $(llvm_gen_dep "llvm-core/llvm:\${LLVM_SLOT}[${_x}=]") )" )
 	if [[ -v ALL_RUST_EXPERIMENTAL_TARGETS["${_x}"] ]] ; then
 		ALL_RUST_EXPERIMENTAL_TARGETS["${_x}"]=1
 	fi
@@ -151,13 +164,6 @@ RESTRICT="test"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/rust.asc
 
-PATCHES=(
-	"${FILESDIR}"/1.74.1-cross-compile-libz.patch
-	"${FILESDIR}"/1.70.0-ignore-broken-and-non-applicable-tests.patch
-	"${FILESDIR}"/1.62.1-musl-dynamic-linking.patch
-	"${FILESDIR}"/1.67.0-doc-wasm.patch
-)
-
 clear_vendor_checksums() {
 	sed -i 's/\("files":{\)[^}]*/\1/' "vendor/${1}/.cargo-checksum.json" || die
 }
@@ -231,7 +237,10 @@ pkg_setup() {
 
 		if use mrustc-bootstrap; then
 			if ! tc-is-gcc; then
-				die "USE=mrustc-bootstrap reqires that the build environment use GCC"
+				# USE="mrustc-bootstrap" reqires that the build environment use GCC
+				export CC=${CHOST}-gcc
+				export CXX=${CHOST}-g++
+				tc-is-gcc || die "tc-is-gcc failed in spite of CC=${CC}"
 			fi
 		else
 			rust_pkg_setup
@@ -247,7 +256,22 @@ pkg_setup() {
 	fi
 }
 
+src_unpack() {
+	if use verify-sig ; then
+		# Patch tarballs are not signed (but we trust Gentoo infra)
+		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+		default
+	else
+		default
+	fi
+}
+
 src_prepare() {
+	# Commit patches to the appropriate branch in proj/rust-patches.git
+	# then cut a new tag / tarball. Don't add patches to ${FILESDIR}
+	PATCHES=(
+		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
+	)
 	default
 	# We'll need to revert this after the bootstrap.
 	if use mrustc-bootstrap; then
@@ -438,7 +462,11 @@ src_configure() {
 			ranlib = "$(tc-getRANLIB)"
 			llvm-libunwind = "$(usex llvm-libunwind $(usex system-llvm system in-tree) no)"
 		_EOF_
-		if use system-llvm; then
+		if use mrustc-bootstrap; then
+			cat <<- _EOF_ >> "${S}"/config.toml
+				llvm-config = "${WORKDIR}/llvm-config"
+			_EOF_
+		elif use system-llvm; then
 			cat <<- _EOF_ >> "${S}"/config.toml
 				llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
 			_EOF_
@@ -564,7 +592,8 @@ llvm_bootstrap() {
 		"-G Ninja"
 		"-DLLVM_TARGET_ARCH=${CFG_COMPILER_HOST_TRIPLE%%-*}"
 		"-DLLVM_DEFAULT_TARGET_TRIPLE=${CFG_COMPILER_HOST_TRIPLE}"
-		"-DLLVM_TARGETS_TO_BUILD=${BOOTSTRAP_LLVM_TARGETS:=X86;ARM;AArch64}" #;Mips;PowerPC;SystemZ;JSBackend;MSP430;Sparc;NVPTX
+		#;Mips;PowerPC;SystemZ;JSBackend;MSP430;Sparc;NVPTX
+		"-DLLVM_TARGETS_TO_BUILD=${BOOTSTRAP_LLVM_TARGETS:=X86;ARM;AArch64}"
 		"-DLLVM_ENABLE_ASSERTIONS=OFF"
 		"-DLLVM_INCLUDE_EXAMPLES=OFF"
 		"-DLLVM_INCLUDE_TESTS=OFF"
@@ -626,12 +655,63 @@ mrustc_bootstrap() {
 	# These flags are used in every invocation of our bootstrap `cargo`.
 	local cargo_flags="--target ${CFG_COMPILER_HOST_TRIPLE} -j $(makeopts_jobs) --release --verbose"
 
+	# for bootstrap, let's using the built-in stdlib of compiler (could be the bundled one)
+	filter-flags '-stdlib=*'
+
+	# mrustc requires gcc, so disable libcxx to avoid linker failure on w/o '-lstdc++'
+	[[ "${LLVM_USE_LIBCXX}" == "1" ]] && unset LLVM_USE_LIBCXX
+
+	local llvm_config_wrapper_cxxflags=0
+
 	if use system-llvm; then
 		export LLVM_CONFIG="$(get_llvm_prefix)/bin/llvm-config"
+
+		local llvm_config_cxxflags=$(${LLVM_CONFIG} --cxxflags)
+		elog "Checking llvm-config --cxxflags: '${llvm_config_cxxflags}'"
+		[[ "${llvm_config_cxxflags}" =~ (^|[[:space:]])-stdlib=libc\+\+([[:space:]]|$) ]] && {
+			elog "Found LLVM CXXFLAGS has \"--stdlib=libc++\""
+			llvm_config_wrapper_cxxflags=1
+		}
 	else
 		llvm_bootstrap
 		export LLVM_CONFIG="${WORKDIR}/bootstrap/llvm/bin/llvm-config"
 	fi
+
+	elog "LLVM_CONFIG before wrappers: ${LLVM_CONFIG}"
+
+	# workaround for gcc bug 122409 on musl by wrapping llvm-config
+	# to append libc++ header if has "-stdlib=libc++"
+	elog "Preparing wrapper of llvm-config (${WORKDIR}/llvm-config)"
+	cat > ${WORKDIR}/llvm-config <<-EOF || die
+	#!/bin/bash
+
+	RULES=()
+	for flag in "\$@"; do
+	    case "\${flag}" in
+	$([[ "${llvm_config_wrapper_cxxflags}" == 1 ]] && {
+		echo "        --cxxflags) RULES+=( \"-E\" \"s@(^|[[:space:]]+)(-stdlib=libc\\+\\+)(\\$|[[:space:]])@\\1-I${EPREFIX}/usr/include/c++/v1 \\2\\3@g\" ) ;;"
+	})
+	        *)
+	            ;;
+	    esac
+	done
+
+	[[ -z "\${RULES}" ]] && {
+	    ${LLVM_CONFIG} "\$@"
+	} || {
+	    ${LLVM_CONFIG} "\$@" | \\
+	        tee -a ${T}/llvm-config.0.log | \\
+	        sed "\${RULES[@]}" | \\
+	        tee -a ${T}/llvm-config.1.log
+	    exit \${PIPESTATUS[0]}
+	}
+	EOF
+	export LLVM_CONFIG="${WORKDIR}/llvm-config"
+	chmod +x ${WORKDIR}/llvm-config || die
+
+	einfo "llvm-config wrapper contents:"
+	cat "${LLVM_CONFIG}" || die
+	echo
 
 	# define the mrustc sysroot and common minicargo arguments.
 	local mrustc_sysroot="${BROOT}/usr/lib/rust/mrustc-${MRUSTC_VERSION}/lib/rustlib/${CFG_COMPILER_HOST_TRIPLE}/lib"
@@ -804,7 +884,7 @@ mrustc_bootstrap() {
 
 src_compile() {
 	use mrustc-bootstrap && mrustc_bootstrap
-	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -vvv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+	RUST_BACKTRACE=1 "${EPYTHON}" ./x.py build -v --config="${S}"/config.toml -j$(makeopts_jobs) || die
 }
 
 src_test() {
@@ -860,7 +940,7 @@ src_test() {
 }
 
 src_install() {
-	DESTDIR="${D}" "${EPYTHON}" ./x.py install -vv --config="${S}"/config.toml -j$(makeopts_jobs) || die
+	DESTDIR="${D}" "${EPYTHON}" ./x.py install -v --config="${S}"/config.toml -j$(makeopts_jobs) || die
 
 	# bug #689562, #689160
 	rm -v "${ED}/usr/lib/${PN}/${PV}/etc/bash_completion.d/cargo" || die

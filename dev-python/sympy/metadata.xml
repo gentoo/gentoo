@@ -5,10 +5,6 @@
     <email>grozin@gentoo.org</email>
     <name>Andrey Grozin</name>
   </maintainer>
-  <maintainer type="person">
-    <email>sam@gentoo.org</email>
-    <name>Sam James</name>
-  </maintainer>
   <maintainer type="project">
     <email>sci-mathematics@gentoo.org</email>
     <name>Gentoo Mathematics Project</name>
@@ -31,7 +27,6 @@
     <flag name="mathml">Add support for mathml</flag>
     <flag name="pyglet">Use <pkg>dev-python/pyglet</pkg> for plots and print preview</flag>
     <flag name="symengine">Add support for a <pkg>dev-python/symengine</pkg> backend</flag>
-    <flag name="texmacs">Add <pkg>app-office/texmacs</pkg> interface</flag>
   </use>
   <upstream>
     <remote-id type="pypi">sympy</remote-id>

@@ -4,8 +4,8 @@
 EAPI=8
 
 CRATES=" "
-LLVM_COMPAT=( {17..19} )
-RUST_MIN_VER="1.85.0"
+LLVM_COMPAT=( {17..21} )
+RUST_MIN_VER="1.88.0"
 
 inherit cargo edo multiprocessing llvm-r1 shell-completion
 
@@ -25,13 +25,22 @@ fi
 
 LICENSE="MIT"
 # Dependent crate licenses
-LICENSE+=" Apache-2.0 BSD-2 BSD CC0-1.0 GPL-3+ ISC MIT Unicode-DFS-2016"
+LICENSE+="
+	Apache-2.0 BSD-2 BSD CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0
+	Unicode-3.0
+"
 SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test ) "
 
 QA_FLAGS_IGNORED="usr/bin/pk"
 
+RDEPEND="
+	dev-libs/libgit2:0/1.9
+	dev-libs/openssl:=
+	net-libs/libssh2:=
+"
+DEPEND="${RDEPEND}"
 # Clang needed for bindgen
 BDEPEND="
 	$(llvm_gen_dep '
@@ -55,6 +64,8 @@ src_unpack() {
 }
 
 src_compile() {
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export LIBGIT2_NO_VENDOR=1
 	cargo_src_compile
 
 	if [[ ${PV} == 9999 ]] ; then

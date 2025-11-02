@@ -1,4 +1,2 @@
 dev-libs/icu
-dev-libs/icu-layoutex
-dev-libs/icu-le-hb
 sec-keys/openpgp-keys-icu

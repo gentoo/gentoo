@@ -27,11 +27,13 @@ PATCHES=(
 	# bug #351287
 	"${FILESDIR}"/${PN}-1.4.14-fix-build-system.patch
 	"${FILESDIR}"/${PN}-1.4.14-musl.patch
+	"${FILESDIR}"/${PN}-1.4.14-lto.patch
 )
 
 src_prepare() {
 	default
-	# bug https://bugs.gentoo.org/875665
+	# bug #875665
+	mv configure.in configure.ac || die
 	eautoreconf
 }
 

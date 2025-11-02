@@ -14,7 +14,9 @@
 		<name>Gentoo Webapps</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">roundcubemail</remote-id>
+		<bugs-to>https://github.com/roundcube/roundcubemail/issues</bugs-to>
+		<changelog>https://github.com/roundcube/roundcubemail/releases</changelog>
+		<doc>https://roundcube.net/news/</doc>
 		<remote-id type="github">roundcube/roundcubemail</remote-id>
 	</upstream>
 	<use>
@@ -28,10 +30,6 @@
 		<flag name="fileinfo">
 			Use the <pkg>dev-lang/php</pkg> fileinfo extension to guess the
 			mime_type of attachments
-		</flag>
-		<flag name="ldap">
-			Add dependencies to support connecting to an LDAP address
-			book server
 		</flag>
 	</use>
 	<stabilize-allarches/>

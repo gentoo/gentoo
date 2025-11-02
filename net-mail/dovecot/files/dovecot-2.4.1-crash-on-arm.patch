@@ -1,0 +1,25 @@
+From e546239af593dfd0722bea9ff169b60006e219f9 Mon Sep 17 00:00:00 2001
+From: Timo Sirainen <timo.sirainen@open-xchange.com>
+Date: Thu, 15 May 2025 13:06:56 +0300
+Subject: [PATCH] auth: Terminate properly auth_oauth2_post_setting_defines
+ list
+
+Fixes:
+Error: xoauth2: oauth2 failed: Local validation failed: auth_oauth2_fields settings: Failed to parse configuration: settings struct auth_oauth2_fields #1 key mismatch
+---
+ src/auth/db-oauth2.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/auth/db-oauth2.c b/src/auth/db-oauth2.c
+index bd807e30b5..230c6cf767 100644
+--- a/src/auth/db-oauth2.c
++++ b/src/auth/db-oauth2.c
+@@ -134,6 +134,8 @@ const struct setting_parser_info auth_oauth2_setting_parser_info = {
+ static const struct setting_define auth_oauth2_post_setting_defines[] = {
+ 	{ .type = SET_STRLIST, .key = "oauth2_fields",
+ 	  .offset = offsetof(struct auth_oauth2_post_settings, fields) },
++
++	SETTING_DEFINE_LIST_END
+ };
+ 
+ static const struct auth_oauth2_post_settings auth_oauth2_post_default_settings = {

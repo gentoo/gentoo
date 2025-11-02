@@ -23,9 +23,9 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
-	>=gui-libs/gtk-4.4.0:4
-	>=gui-libs/libadwaita-1.2:1
-	dev-libs/gobject-introspection
+	>=gui-libs/gtk-4.17.5:4
+	>=gui-libs/libadwaita-1.7:1
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	!app-editors/ghex:2
 "
 DEPEND="${RDEPEND}"
@@ -33,7 +33,7 @@ BDEPEND="
 	gtk-doc? ( dev-util/gi-docgen )
 	test? (
 		dev-util/desktop-file-utils
-		dev-libs/appstream-glib
+		dev-libs/appstream
 	)
 	dev-util/gtk-update-icon-cache
 	dev-util/itstool

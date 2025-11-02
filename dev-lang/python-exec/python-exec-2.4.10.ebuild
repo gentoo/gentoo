@@ -3,7 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} pypy3 pypy3_11 )
+# This is just a stub for tooling, see the IUSE hack below. Don't panic
+# if the array here doesn't contain the latest impl. If you can't use a
+# new impl., it's likely because it's a stable-masked flag.
+PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit python-any-r1
 
@@ -13,7 +16,7 @@ SRC_URI="https://github.com/projg2/python-exec/releases/download/v${PV}/${P}.tar
 
 LICENSE="BSD-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 # Internal Python project hack.  Do not copy it.  Ever.
 IUSE="${_PYTHON_ALL_IMPLS[@]/#/python_targets_} +native-symlinks test"
 RESTRICT="!test? ( test )"

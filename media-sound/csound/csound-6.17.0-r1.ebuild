@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # As upstream (and we aswell) are not allowed to redistribute scansyn,
@@ -8,7 +8,7 @@
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake flag-o-matic lua-single python-single-r1
 
@@ -93,6 +93,8 @@ RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.13.0-xdg-open.patch"
+	"${FILESDIR}/${PN}-6.17.0-typo-instantiate.patch"
+	"${FILESDIR}/${PN}-6.17.0-python3.13.patch"
 )
 
 pkg_setup() {
@@ -121,6 +123,10 @@ src_configure() {
 	# https://bugs.gentoo.org/860492
 	# https://github.com/csound/csound/issues/1919
 	filter-lto
+	# -Werror=strict-aliasin
+	# https://bugs.gentoo.org/960628
+	# https://github.com/csound/csound/pull/2232
+	use java && append-flags -fno-strict-aliasing
 
 	local mycmakeargs=(
 		-DBUILD_BELA=OFF

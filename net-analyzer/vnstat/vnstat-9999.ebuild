@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -24,7 +24,7 @@ else
 		)
 	"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~amd64 arm arm64 ~hppa ~mips ppc ~ppc64 ~riscv ~sparc ~x86"
 
 	BDEPEND="verify-sig? ( sec-keys/openpgp-keys-teemutoivola )"
 fi
@@ -50,36 +50,25 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.9-conf.patch
 )
 
-src_compile() {
-	emake \
-		${PN} \
-		${PN}d \
-		$(usev gd ${PN}i)
+src_configure() {
+	local myeconfargs=(
+		$(use_enable gd image-output)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	use gd && dobin vnstati
-	dobin vnstat vnstatd
+	default
 
 	exeinto /usr/share/${PN}
-	newexe "${FILESDIR}"/vnstat.cron-r1 vnstat.cron
-
-	insinto /etc
-	doins cfg/vnstat.conf
-	fowners root:vnstat /etc/vnstat.conf
-
-	keepdir /var/lib/vnstat
-	fowners vnstat:vnstat /var/lib/vnstat
+	newexe "${FILESDIR}"/vnstat.cron-r2 vnstat.cron
 
 	newconfd "${FILESDIR}"/vnstatd.confd-r1 vnstatd
-	newinitd "${FILESDIR}"/vnstatd.initd-r2 vnstatd
+	newinitd "${FILESDIR}"/vnstatd.initd-r3 vnstatd
 
-	systemd_newunit "${FILESDIR}"/vnstatd.systemd vnstatd.service
+	systemd_newunit "${FILESDIR}"/vnstatd.systemd-r1 vnstatd.service
 	newtmpfiles "${FILESDIR}"/vnstatd.tmpfile vnstatd.conf
-
-	use gd && doman man/vnstati.1
-
-	doman man/vnstat.1 man/vnstatd.8
 
 	newdoc INSTALL README.setup
 	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi

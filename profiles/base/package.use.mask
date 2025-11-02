@@ -6,19 +6,92 @@
 
 # New entries go on top.
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-23)
-# media-sound/hydrogen[lash] build is broken, and dropped upstream in next
-# version. Bug #946125
-media-sound/hydrogen lash
+# Sam James <sam@gentoo.org> (2025-10-29)
+# Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
+# transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
+# after we made app-alternatives/gpg depend on newer gnupg to fix another problem.
+# Users can unmask these locally in /etc/portage/profile/package.use.mask once
+# their upgrade is done.
+app-crypt/gnupg verify-sig
+app-crypt/pinentry verify-sig
+dev-libs/libgcrypt verify-sig
+dev-libs/libgpg-error verify-sig
+dev-libs/libksba verify-sig
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-10-16)
+# No suitable versions of dev-libs/protobuf available.
+~dev-java/protobuf-java-4.33.0 system-protoc
+
+# Fabian Groffen <grobian@gentoo.org> (2025-10-18)
+# PAM support is discouraged due to not being secure via Exim
+# https://bugs.gentoo.org/964377
+mail-mta/exim pam
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-05)
+# Preparation for sci-geosciences/liblas removal. Bug #957235
+<=dev-games/openscenegraph-3.6.5-r117 las
+<=dev-games/openscenegraph-openmw-3.6_p20251012 las
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-10-03)
+# No suitable versions of dev-libs/protobuf available.
+~dev-java/protobuf-java-4.32.1 system-protoc
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-27)
+# Building NumPy with ILP64 LAPACK can cause revdeps to segfault if they
+# link to LP64 LAPACK.  To support this properly, we either need to
+# ensure matching index64 flags along the whole chain of dependencies,
+# or support only ILP64 LAPACK implementations that use suffixed
+# symbols (so there are no symbol collisions).  Given the flag was only
+# really added to test if ILP64 packaging works, mask it for the time
+# being.
+dev-python/numpy index64
+
+# Nicolas PARLANT <nicolas.parlant@parhuet.fr> (2025-09-20)
+# Require dev-libs/libtsm, only keyworded on amd64 and x86
+>=media-gfx/fbida-2.14_p20241216 fbcon
+
+# Alfred Wingate <parona@protonmail.com> (2025-08-12)
+# Marked Beta tier upstream. Tests don't work with it.
+dev-games/ogre vulkan
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-08-06)
+# General mask, to be unmasked on arches where glibc supports this
+>=sys-libs/glibc-2.42 sframe
+
+# Ionen Wolkens <ionen@gentoo.org> (2025-08-02)
+# Fails to build, needs looking into but isn't currently needed
+# by anything and can leave it masked for now.
+>=media-libs/vips-8.17 vala
+
+# Alfred Wingate (2025-07-31)
+# Missing dependency
+sci-libs/gdal mongodb
+
+# Ivy <openrc@posteo.de> (2025-07-11)
+# app-editors/gnome-text-editor[spell] has been dropped upstream and
+# replaced with app-text/libspelling, but will likely be added back
+# in future releases.
+~app-editors/gnome-text-editor-47.2 spell
+~app-editors/gnome-text-editor-47.4 spell
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-06-26)
+# >=kde-plasma/drkonqi-6.3.90 requires systemd, so specifically
+# unmasked only in targets/systemd.
+>=kde-plasma/plasma-meta-6.3.90 systemd
+
+# Alfred Wingate <parona@protonmail.com> (2025-06-10)
+# Upstream only supports amd64 and arm64. Other targets will fail to build
+# tests due to missing target specific functions.
+media-libs/svt-av1 test
+
+# Alfred Wingate <parona@protonmail.com> <2025-05-24)
+# Doesn't work well at runtime.
+dev-games/ogre wayland
 
 # Maciej Mrozowski <reavertm@gentoo.org> (2025-05-22)
 # Does not compile as of 2024.1.1, requires buildsystem fixes.
 dev-games/simgear gdal
 games-simulation/flightgear gdal
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-05-14)
-# dev-qt/qtwebchannel:5 is masked, last revdep was dev-python/pyqtwebengine
-dev-python/pyqt5 webchannel
 
 # Joonas Niilola <juippis@gentoo.org> (2025-05-14)
 # Experimental, no official upstream support.
@@ -45,19 +118,12 @@ dev-cpp/fbthrift io-uring
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-04-21)
 # Prepare cleanup of dev-qt/qtwebengine:5
 app-i18n/fcitx-chinese-addons webengine
-app-office/libalkimia webengine
 
 # Matt Jolly <kangie@gentoo.org> (2025-04-16)
 # Older versions of freeciv build an incompatible client and
 # server with this USE enabled.
 # Bug #937565
 <games-strategy/freeciv-3.2.0 json
-
-# Conrad Kostecki <conikost@gentoo.org> (2025-03-28)
-# Upstream is dead and broken. All 'whatsapp' deps
-# will be last-rited on 2025-04-28.
-# Bug #952588 #952589
-net-im/spectrum2 whatsapp
 
 # Z. Liu <zhixu.liu@gmail.com> (2025-03-24)
 # Upstream considers that the usbreset could potentially damage hardware.
@@ -67,10 +133,6 @@ sys-apps/usbutils usbreset
 # Michał Górny <mgorny@gentoo.org> (2025-03-17)
 # sys-cluster/pacemaker is being removed.
 sys-cluster/drbd-utils pacemaker
-
-# Michał Górny <mgorny@gentoo.org> (2025-03-05)
-# Mask until we have keyworded dev-lang/rust{,-bin} / slot 20 release.
-www-client/chromium llvm_slot_20
 
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-02-24)
 # Only builds with ffmpeg-4.x, upstream has no timeline to fix it.
@@ -88,10 +150,6 @@ sci-libs/opencascade ffmpeg
 # Michał Górny <mgorny@gentoo.org> (2025-02-20)
 # Requires dev-python/recommonmark with Python 3.10
 <llvm-core/clang-18 doc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-02-13)
-# Prepare cleanup of dev-qt/qtgamepad:5
-dev-qt/qt3d gamepad
 
 # Michał Górny <mgorny@gentoo.org> (2025-02-08)
 # Requires dev-cpp/cpp-httplib that has extremely unstable ABI.
@@ -111,19 +169,6 @@ kde-frameworks/knewstuff:5 opds
 # Dependencies e.g. bindgen/netcdf/pypy not keyworded or stable in
 # most places.
 dev-build/meson test-full
-
-# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2025-01-09)
-# No suitable versions of dev-libs/protobuf available.
-=dev-java/protobuf-java-4.29.3 system-protoc
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
-# Blocking cleanup of kde-apps/kdegraphics-mobipocket:5
-kde-frameworks/kfilemetadata:5 mobi
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-03)
-# Prepare cleanup of kde-apps/kaccounts-integration:6[qt5] and
-# kde-frameworks/bluez-qt:5
-kde-frameworks/purpose:5 bluetooth kaccounts
 
 # Michał Górny <mgorny@gentoo.org> (2024-12-31)
 # None of the sci-libs/symengine versions work with the modern versions
@@ -374,15 +419,6 @@ dev-lang/ruby jemalloc
 # work properly in 136.0, bug #950687.
 mail-client/thunderbird system-icu
 
-# Marek Szuba <marecki@gentoo.org> (2023-07-10)
-# dev-python/mkdocs-material is by design directly integrated with
-# Google Fonts and as such violates the network sandbox [1].
-# Upstream documentation mentions an option which supposedly prevents
-# this, however adding it to the Molecule mkdocs.yml has had no effect.
-# Looks like this will have to be addressed at the level of mkdocs-material.
-# [1] https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/
-app-admin/ansible-molecule doc
-
 # William Hubbs <williamh@gentoo.org> (2023-06-30)
 # multiple repeated issues: Bug: #909394
 # Joonas Niilola <juippis@gentoo.org> (2024-04-22)
@@ -425,12 +461,6 @@ dev-lang/ruby jit
 # Depends on x11-libs/libdmx, which is masked for removal
 x11-apps/xdpyinfo dmx
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2023-04-05)
-# Currently broken on 11
-# https://bugs.gentoo.org/833097
-# https://bugs.gentoo.org/833098
-dev-java/openjdk:11 lto
-
 # Volkmar W. Pogatzki <gentoo@pogatzki.net> (2023-02-09)
 # Bug #893686. Presently nothing depends on dev-java/swt built with this flag.
 dev-java/swt:4.10 webkit
@@ -451,10 +481,6 @@ llvm-runtimes/openmp llvm_targets_AMDGPU
 # Doesn't compile currently, bug #853094.
 >=net-dialup/freeradius-3.2.0 oracle
 
-# Matt Turner <mattst88@gentoo.org> (2023-01-01)
-# Depends on nautilus < 43
->=app-text/evince-43.0 nautilus
-
 # Sam James <sam@gentoo.org> (2022-12-31)
 # seccomp cannot be disabled via a runtime toggle which introduces substantial
 # fragility to Portage which relies on pax-utils' scanelf heavily. bug #815877.
@@ -468,10 +494,6 @@ app-misc/pax-utils seccomp
 # app-text/pandoc is not keyworded on most architectures
 net-libs/gssdp man
 
-# Sam James <sam@gentoo.org> (2022-11-19)
-# Needs long-EOL dev-lang/spidermonkey:60 (which also needs python:2.7).
-media-libs/coin javascript
-
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # gnome-music and gnome-photos have not been ported to libsoup:3.0, while
 # other non-slotted dependencies have been.
@@ -480,13 +502,7 @@ gnome-base/gnome-extra-apps tracker
 # Matt Turner <mattst88@gentoo.org> (2022-11-16)
 # tracker-miners depends on libsoup:3.0 but USE=rss depends on net-libs/libgrss
 # which has not been ported to libsoup:3.0.
->=app-misc/tracker-miners-3.4.0-r1 rss
-
-# Viorel Munteanu <ceamac.paragon@gmail.com> (2022-10-07)
-# Cannot test and fix pax-kernel related bugs on a current grsec kernel
-# Mask the flag for now
-# Bugs: #643466, #674872, #832161, #855722
-app-emulation/virtualbox pax-kernel
+>=app-misc/localsearch-3.4.0-r1 rss
 
 # Sam James <sam@gentoo.org> (2022-10-02)
 # USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
@@ -507,12 +523,6 @@ dev-util/schroot nls
 # on glibc, so it doesn't prevent usage of llvm-libunwind for other packages.
 # bug #870211.
 dev-lang/rust llvm-libunwind
-dev-lang/rust-bin llvm-libunwind
-
-# Matt Jolly <kangie@gentoo.org> (2022-09-09)
-# app-antivirus/clamav JIT support requires LLVM <=13
-# ebuild support is there but currently failing to link
-app-antivirus/clamav jit
 
 # Sam James <sam@gentoo.org> (2022-08-26)
 # Broken at runtime for now (bug #865113).
@@ -557,10 +567,6 @@ sys-libs/ncurses stack-realign
 # validation failures on some certificates that are otherwise valid.
 # https://github.com/aria2/aria2/issues/1636
 net-misc/aria2 gnutls
-
-# Sam James <sam@gentoo.org> (2022-03-02)
-# Needs masked version of ogre (>=1.12), bug #825330
->=dev-games/mygui-3.4.1 ogre
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2022-02-04)
 # We're still ironing out some kinks and writing documentation for
@@ -669,13 +675,6 @@ dev-lang/php jit
 sci-libs/gdal doc
 
 # Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
-# Fails to build:
-#
-#   TEST-UNEXPECTED-FAIL | check_nsmodules | libxul.so | NSModules are not ordered appropriately
-#
-www-client/seamonkey lto
-
-# Lars Wendler <polynomial-c@gentoo.org> (2021-01-26)
 # Upstream considers this module being a high security risk
 # http://httpd.apache.org/docs/current/mod/mod_lua.html
 www-servers/apache apache2_modules_lua
@@ -685,10 +684,8 @@ www-servers/apache apache2_modules_lua
 # modern versions of PHP itself.
 dev-php/PEAR-Exception test
 dev-php/PHP_CodeSniffer test
-dev-php/awl test
 dev-php/fedora-autoloader test
 dev-php/json-schema test
-dev-php/jsonlint test
 dev-php/recaptcha test
 dev-php/symfony-filesystem test
 dev-php/symfony-finder test
@@ -712,18 +709,23 @@ net-wireless/gr-osmosdr xtrx
 <dev-ml/llvm-16 llvm_targets_LoongArch
 <llvm-core/clang-16 llvm_targets_LoongArch
 <llvm-core/llvm-16 llvm_targets_LoongArch
+<llvm-core/lld-16 llvm_targets_LoongArch
 <dev-ml/llvm-17 llvm_targets_ARC llvm_targets_CSKY
 <llvm-core/clang-17 llvm_targets_ARC llvm_targets_CSKY
 <llvm-core/llvm-17 llvm_targets_ARC llvm_targets_CSKY
+<llvm-core/lld-17 llvm_targets_ARC llvm_targets_CSKY
 <dev-ml/llvm-17 llvm_targets_DirectX
 <llvm-core/clang-17 llvm_targets_DirectX
 <llvm-core/llvm-17 llvm_targets_DirectX
+<llvm-core/lld-17 llvm_targets_DirectX
 <dev-ml/llvm-17 llvm_targets_M68k llvm_targets_SPIRV
 <llvm-core/clang-17 llvm_targets_M68k llvm_targets_SPIRV
 <llvm-core/llvm-17 llvm_targets_M68k llvm_targets_SPIRV
+<llvm-core/lld-17 llvm_targets_M68k llvm_targets_SPIRV
 <dev-ml/llvm-17 llvm_targets_Xtensa
 <llvm-core/clang-17 llvm_targets_Xtensa
 <llvm-core/llvm-17 llvm_targets_Xtensa
+<llvm-core/lld-17 llvm_targets_Xtensa
 
 # Joonas Niilola <juippis@gentoo.org> (2020-09-23)
 # Highly experimental, may cause breakages when updating. Use with
@@ -854,14 +856,6 @@ net-fs/samba ceph
 # media-libs/svgalib is not keyworded everywhere
 app-emulation/fuse backend-svga
 
-# Brian Evans <grknight@gentoo.org> (2018-03-05)
-# Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
-virtual/mysql embedded
-
-# Brian Evans <grknight@gentoo.org> (2018-02-28)
-# Mask client-libs USE to force users to install alternative standard pacakges
-dev-db/mysql client-libs
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
 # This feature is not ready yet pre-2.29-r4, see bug #146882 comment 26
 <sys-libs/glibc-2.29-r4 compile-locales
@@ -883,10 +877,6 @@ sys-libs/glibc vanilla
 # Michael Orlitzky <mjo@gentoo.org> (2017-08-24)
 # This is a security risk if not used carefully, bug #628596.
 net-analyzer/nrpe command-args
-
-# Michał Górny <mgorny@gentoo.org> (2017-08-04)
-# sys-kernel/openvz-sources is being treecleaned wrt bug #580516.
-app-emulation/libvirt openvz
 
 # Mike Gilbert <floppym@gentoo.org> (2017-07-09)
 # Matthias Dahl <matthias.dahl@binary-island.eu> (2017-07-05)

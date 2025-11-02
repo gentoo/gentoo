@@ -23,7 +23,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 -riscv"
+KEYWORDS="amd64 ~arm64 -riscv"
 CPU_FLAGS="cpu_flags_x86_avx"
 IUSE="debug kerberos mongosh ssl +tools ${CPU_FLAGS}"
 
@@ -77,6 +77,8 @@ PATCHES=(
 	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.4-scons.patch"
 	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-mozjs-remove-unused-constructor.patch"
 	"${WORKDIR}/mongodb-8.0.8-patches/${PN}-8.0.6-use-tenacity.patch"
+	"${FILESDIR}/${PN}-8.0.8-sconstruct.patch"
+	"${FILESDIR}/${PN}-8.0.8-fix-compile-error-due-to-deleted-constructor.patch"
 )
 
 python_check_deps() {

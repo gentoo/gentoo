@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib flag-o-matic
+inherit cmake-multilib dot-a flag-o-matic
 
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86"
 
 IUSE="alsa aqua cpu_flags_ppc_altivec cpu_flags_x86_3dnow cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 custom-cflags dbus doc fcitx gles1 gles2 +haptic ibus jack +joystick kms libsamplerate nas opengl oss pipewire pulseaudio sndio +sound static-libs test udev +video vulkan wayland X xscreensaver"
 RESTRICT="!test? ( test )"
@@ -122,6 +122,7 @@ src_prepare() {
 
 src_configure() {
 	use custom-cflags || strip-flags
+	lto-guarantee-fat
 
 	local mycmakeargs=(
 		-DSDL_STATIC=$(usex static-libs)
@@ -212,4 +213,5 @@ multilib_src_install_all() {
 	rm -r "${ED}"/usr/share/licenses/ || die
 	dodoc {BUGS,CREDITS,README-SDL,TODO,WhatsNew}.txt README.md docs/README*.md
 	use doc && dodoc -r docs/output/html/
+	strip-lto-bytecode "${ED}"
 }

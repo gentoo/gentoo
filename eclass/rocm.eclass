@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rocm.eclass
@@ -174,7 +174,7 @@ _rocm_set_globals() {
 				gfx906 gfx908 gfx90a gfx1030
 			)
 			;;
-		6.*|9999)
+		6.[0-3].*)
 			unofficial_amdgpu_targets=(
 				gfx803 gfx900 gfx940 gfx941
 				gfx1010 gfx1011 gfx1012
@@ -182,6 +182,36 @@ _rocm_set_globals() {
 			)
 			official_amdgpu_targets=(
 				gfx906 gfx908 gfx90a gfx942 gfx1030 gfx1100
+			)
+			;;
+		6.4.[0-2])
+			unofficial_amdgpu_targets=(
+				gfx803 gfx900 gfx906 gfx940 gfx941
+				gfx1010 gfx1011 gfx1012
+				gfx1031 gfx1101 gfx1102 gfx1200 gfx1201
+			)
+			official_amdgpu_targets=(
+				gfx908 gfx90a gfx942 gfx1030 gfx1100
+			)
+			;;
+		6.*)
+			unofficial_amdgpu_targets=(
+				gfx803 gfx900 gfx906 gfx940 gfx941
+				gfx1010 gfx1011 gfx1012
+				gfx1031 gfx1102 gfx1103 gfx1150 gfx1151
+			)
+			official_amdgpu_targets=(
+				gfx908 gfx90a gfx942 gfx1030 gfx1100 gfx1101 gfx1200 gfx1201
+			)
+			;;
+		7.*|9999)
+			unofficial_amdgpu_targets=(
+				gfx803 gfx900 gfx906 gfx940 gfx941
+				gfx1010 gfx1011 gfx1012
+				gfx1031 gfx1102 gfx1103 gfx1150 gfx1151
+			)
+			official_amdgpu_targets=(
+				gfx908 gfx90a gfx942 gfx950 gfx1030 gfx1100 gfx1101 gfx1200 gfx1201
 			)
 			;;
 		*)
@@ -218,13 +248,44 @@ get_amdgpu_flags() {
 	echo $(printf "%s;" ${AMDGPU_TARGETS[@]})
 }
 
+# @FUNCTION: rocm_add_sandbox
+# @USAGE: [-w]
+# @DESCRIPTION:
+# Add AMD GPU/NPU dev nodes to the sandbox predict list.
+# with -w, add to the sandbox write list.
+rocm_add_sandbox() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+
+	local i
+	for i in /dev/kfd /dev/dri/render* /dev/accel/accel*; do
+		if [[ ! -c $i ]]; then
+			continue
+		elif [[ $1 == '-w' ]]; then
+			addwrite "$i"
+		else
+			addpredict "$i"
+		fi
+	done
+}
+
 # @FUNCTION: check_amdgpu
 # @USAGE: check_amdgpu
 # @DESCRIPTION:
-# grant and check read-write permissions on AMDGPU devices, die if not available.
+# Grant and check read-write permissions on AMDGPU and AMDNPU devices.
+# Die if no AMDGPU devices are available.
 check_amdgpu() {
-	for device in /dev/kfd /dev/dri/render*; do
-		addwrite ${device}
+	# Common case: no AMDGPU device or the kernel fusion driver is disabled in the kernel.
+	if [[ ! -c /dev/kfd ]]; then
+		eerror "Device /dev/kfd does not exist!"
+		eerror "To proceed, you need to have an AMD GPU and have CONFIG_HSA_AMD set in your kernel config."
+		die "/dev/kfd is missing"
+	fi
+
+	local device
+	for device in /dev/kfd /dev/dri/render* /dev/accel/accel*; do
+		[[ ! -c ${device} ]] && continue
+
+		addwrite "${device}"
 		if [[ ! -r ${device} || ! -w ${device} ]]; then
 			eerror "Cannot read or write ${device}!"
 			eerror "Make sure it is present and check the permission."
@@ -235,6 +296,18 @@ check_amdgpu() {
 }
 
 fi
+
+# @FUNCTION: _rocm_strip_unsupported_flags
+# @INTERNAL
+# @DESCRIPTION:
+# Clean flags that are not compatible with 'amdgcn-amd-amdhsa' target.
+_rocm_strip_unsupported_flags() {
+	strip-unsupported-flags
+
+	# FLAGS like -mtls-dialect=* pass test-flags-CXX check, but are not supported
+	# bug #957893
+	export CXXFLAGS=$(test-flags-HIPCXX ${CXXFLAGS})
+}
 
 # @FUNCTION: rocm_use_hipcc
 # @USAGE: rocm_use_hipcc
@@ -257,5 +330,20 @@ rocm_use_hipcc() {
 	# Export updated CC and CXX. Note that CC is needed even if no C code used,
 	# as CMake checks that C compiler can compile a simple test program.
 	export CC=hipcc CXX=hipcc
-	strip-unsupported-flags
+	_rocm_strip_unsupported_flags
+}
+
+# @FUNCTION: rocm_use_clang
+# @USAGE: rocm_use_clang
+# @DESCRIPTION:
+# switch active C and C++ compilers to clang/clang++, clean unsupported flags
+rocm_use_clang() {
+	local hipclangpath
+	if ! hipclangpath=$(hipconfig --hipclangpath); then
+        die "Error: \"hipconfig --hipclangpath\" failed"
+    fi
+	
+	export CC="${hipclangpath}/${CHOST}-clang"
+	export CXX="${hipclangpath}/${CHOST}-clang++"
+	_rocm_strip_unsupported_flags
 }

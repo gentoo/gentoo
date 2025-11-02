@@ -1,0 +1,35 @@
+From 98e731bf69306a830834fbcfa7a21c3357130693 Mon Sep 17 00:00:00 2001
+From: Vsevolod Stakhov <vsevolod@rspamd.com>
+Date: Thu, 18 Sep 2025 10:03:39 +0100
+Subject: [PATCH] [Minor] Fix non-hyperscan build
+
+Issue: #5620
+---
+
+Upstream-issue: https://github.com/rspamd/rspamd/issues/5620
+
+diff --git a/src/libserver/re_cache.c b/src/libserver/re_cache.c
+index fc056ecd8..2aa93e0d3 100644
+--- a/src/libserver/re_cache.c
++++ b/src/libserver/re_cache.c
+@@ -3495,4 +3495,17 @@ int rspamd_re_cache_compile_hyperscan_scoped_single(struct rspamd_re_cache *cach
+ 	return rspamd_re_cache_compile_hyperscan(cache, cache_dir, max_time, silent,
+ 											 event_loop, rspamd_re_cache_compile_scoped_cb, scoped_cbd);
+ }
++#else
++/* Non hyperscan version stub */
++int rspamd_re_cache_compile_hyperscan_scoped_single(struct rspamd_re_cache *cache,
++													const char *scope,
++													const char *cache_dir,
++													double max_time,
++													gboolean silent,
++													struct ev_loop *event_loop,
++													void (*cb)(const char *scope, unsigned int ncompiled, GError *err, void *cbd),
++													void *cbd)
++{
++	return 0;
++}
+ #endif
+-- 
+2.49.1
+

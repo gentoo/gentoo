@@ -34,6 +34,7 @@
 		<remote-id type="github">boostorg/beast</remote-id>
 		<remote-id type="github">boostorg/bimap</remote-id>
 		<remote-id type="github">boostorg/bind</remote-id>
+		<remote-id type="github">boostorg/bloom</remote-id>
 		<remote-id type="github">boostorg/callable_traits</remote-id>
 		<remote-id type="github">boostorg/charconv</remote-id>
 		<remote-id type="github">boostorg/chrono</remote-id>

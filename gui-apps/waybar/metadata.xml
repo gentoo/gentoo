@@ -14,12 +14,14 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="backlight">Enable module that controls the current backlight level</flag>
 		<flag name="experimental">Enable experimental features, such as Bluetooth battery reporting</flag>
 		<flag name="evdev">Enable libevdev support for evdev related features</flag>
 		<flag name="libinput">Enable libinput support for libinput related features</flag>
 		<flag name="logind">Enable support for logind (bluetooth and idle inhibit)</flag>
 		<flag name="mpd">Enable support for the Music Player Daemon</flag>
 		<flag name="mpris">Enable support for mpris</flag>
+		<flag name="niri">Enable support for Niri Wayland compositor</flag>
 		<flag name="network">Enable libnl support for network related features</flag>
 		<flag name="sndio">Enable support for volume control via sndio</flag>
 		<flag name="pipewire">Enable support for pipewire</flag>

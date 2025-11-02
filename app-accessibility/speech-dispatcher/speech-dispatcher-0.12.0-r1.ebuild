@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit flag-o-matic python-r1 systemd
+inherit flag-o-matic libtool python-r1 systemd
 
 DESCRIPTION="Speech synthesis interface"
 HOMEPAGE="https://freebsoft.org/speechd"
@@ -36,6 +36,11 @@ BDEPEND="
 	sys-apps/help2man
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig"
+
+src_prepare() {
+	default
+	elibtoolize
+}
 
 src_configure() {
 	# bug #944193

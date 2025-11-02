@@ -1,0 +1,51 @@
+From cfb846272ab94a79c2f936da13dc3f5213f48912 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 31 Jul 2025 18:16:00 +0200
+Subject: [PATCH] Skip `TestLeaks` when `GREENLET_SKIP_LEAKCHECKS` is used
+
+When `GREENLET_SKIP_LEAKCHECKS` is used, we do not want to check for
+leaks, and therefore it makes no sense to run tests explicitly checking
+for leaks.  Since the conditional is also true for MANYLINUX builds,
+remove the redundant condition.
+---
+ src/greenlet/tests/test_leaks.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/greenlet/tests/test_leaks.py b/src/greenlet/tests/test_leaks.py
+index 99da4eb..fe60fa2 100644
+--- a/src/greenlet/tests/test_leaks.py
++++ b/src/greenlet/tests/test_leaks.py
+@@ -10,6 +10,7 @@
+ import time
+ import weakref
+ import threading
++import unittest
+ 
+ 
+ import greenlet
+@@ -17,7 +18,7 @@
+ from . import PY314
+ from .leakcheck import fails_leakcheck
+ from .leakcheck import ignores_leakcheck
+-from .leakcheck import RUNNING_ON_MANYLINUX
++from .leakcheck import SKIP_LEAKCHECKS
+ 
+ # pylint:disable=protected-access
+ 
+@@ -39,6 +40,7 @@ def reset(cls):
+         cls.EXTANT_INSTANCES.clear()
+ 
+ 
++@unittest.skipIf(SKIP_LEAKCHECKS, "Leak checks disabled")
+ class TestLeaks(TestCase):
+ 
+     def test_arg_refs(self):
+@@ -313,8 +315,6 @@ def _only_test_some_versions(self):
+         assert sys.version_info[0] >= 3
+         if sys.version_info[:2] < (3, 8):
+             self.skipTest('Only observed on 3.11')
+-        if RUNNING_ON_MANYLINUX:
+-            self.skipTest("Slow and not worth repeating here")
+ 
+     @ignores_leakcheck
+     # Because we're just trying to track raw memory, not objects, and running

@@ -16,34 +16,41 @@ HOMEPAGE="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos"
 
 RDEPEND="
 	>=dev-python/pytest-8.2[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
-	test? (
-		>=dev-python/hypothesis-5.7.1[${PYTHON_USEDEP}]
-	)
 "
 
+EPYTEST_PLUGINS=( hypothesis )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# redundant, and breaking setuptools-scm >= 1.2.0
+	# https://github.com/pypa/setuptools-scm/issues/1216
+	rm setup.cfg || die
+}
+
 python_test() {
 	local EPYTEST_DESELECT=(
-		# rely on precise warning counts
-		tests/hypothesis/test_base.py::test_can_use_explicit_event_loop_fixture
-		tests/modes/test_strict_mode.py::test_strict_mode_ignores_unmarked_fixture
+		# fail due to mismatched warning count
 		tests/test_event_loop_fixture.py::test_event_loop_already_closed
 		tests/test_event_loop_fixture.py::test_event_loop_fixture_asyncgen_error
 		tests/test_event_loop_fixture.py::test_event_loop_fixture_handles_unclosed_async_gen
-		tests/test_event_loop_fixture_finalizer.py::test_event_loop_fixture_finalizer_raises_warning_when_fixture_leaves_loop_unclosed
-		tests/test_event_loop_fixture_finalizer.py::test_event_loop_fixture_finalizer_raises_warning_when_test_leaves_loop_unclosed
+		tests/modes/test_strict_mode.py::test_strict_mode_marked_test_unmarked_fixture_warning
+		tests/modes/test_strict_mode.py::test_strict_mode_marked_test_unmarked_autouse_fixture_warning
+		# TODO
+		tests/modes/test_strict_mode.py::test_strict_mode_ignores_unmarked_coroutine
+		tests/modes/test_strict_mode.py::test_strict_mode_ignores_unmarked_fixture
 	)
 
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=pytest_asyncio.plugin,_hypothesis_pytestplugin
+	local EPYTEST_PLUGINS=( "${EPYTEST_PLUGINS[@]}" pytest-asyncio )
 	epytest
 }

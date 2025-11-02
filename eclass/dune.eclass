@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: dune.eclass
@@ -35,7 +35,7 @@ inherit edo multiprocessing
 QA_FLAGS_IGNORED='.*'
 
 RDEPEND="
-	>=dev-lang/ocaml-4:=[ocamlopt?]
+	dev-lang/ocaml:=[ocamlopt?]
 	dev-ml/dune:=
 "
 DEPEND="${RDEPEND}"

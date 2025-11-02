@@ -102,7 +102,7 @@ else
 	SRC_URI="https://evilpiepirate.org/bcachefs-tools/bcachefs-tools-${PV}.tar.zst
 		${CARGO_CRATE_URIS}
 		https://github.com/koverstreet/bcachefs-tools/commit/67c9b378c7e7820b91033004b032e236a8069b4a.patch
-			-> bcachefs-tools-1.20.0-fix-fuse-build.patch
+			-> ${P}-fix-fuse-build.patch
 	"
 	SRC_URI+=" verify-sig? ( https://evilpiepirate.org/bcachefs-tools/bcachefs-tools-${PV}.tar.sign )"
 	S="${WORKDIR}/${P}"

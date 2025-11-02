@@ -1,24 +1,26 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit toolchain-funcs
 
 DESCRIPTION="A set of additional compression profiles for app-arch/zpaq"
-HOMEPAGE="http://mattmahoney.net/dc/zpaq.html"
-SRC_URI="http://mattmahoney.net/dc/bwt_j3.zip
-	http://mattmahoney.net/dc/bwt_slowmode1.zip
-	http://mattmahoney.net/dc/exe_j1.zip
-	http://mattmahoney.net/dc/jpg_test2.zip
-	http://mattmahoney.net/dc/min.zip
-	http://mattmahoney.net/dc/fast.cfg -> zpaq-fast.cfg
-	http://mattmahoney.net/dc/mid.cfg -> zpaq-mid.cfg
-	http://mattmahoney.net/dc/max.cfg -> zpaq-max.cfg
-	http://mattmahoney.net/dc/bmp_j4c.zip
-	http://mattmahoney.net/dc/lz1.zip
-	http://mattmahoney.net/dc/lazy100.zip
-	http://mattmahoney.net/dc/lazy210.zip"
+HOMEPAGE="https://mattmahoney.net/dc/zpaq.html"
+SRC_URI="
+	https://mattmahoney.net/dc/bwt_j3.zip
+	https://mattmahoney.net/dc/bwt_slowmode1.zip
+	https://mattmahoney.net/dc/exe_j1.zip
+	https://mattmahoney.net/dc/jpg_test2.zip
+	https://mattmahoney.net/dc/min.zip
+	https://mattmahoney.net/dc/fast.cfg -> zpaq-fast.cfg
+	https://mattmahoney.net/dc/mid.cfg -> zpaq-mid.cfg
+	https://mattmahoney.net/dc/max.cfg -> zpaq-max.cfg
+	https://mattmahoney.net/dc/bmp_j4c.zip
+	https://mattmahoney.net/dc/lz1.zip
+	https://mattmahoney.net/dc/lazy100.zip
+	https://mattmahoney.net/dc/lazy210.zip
+"
 S="${WORKDIR}"
 
 LICENSE="GPL-3"

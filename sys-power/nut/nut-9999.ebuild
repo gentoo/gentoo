@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit bash-completion-r1 desktop linux-info optfeature
 inherit python-single-r1 systemd tmpfiles toolchain-funcs udev wrapper xdg
 
@@ -61,7 +61,7 @@ BDEPEND="
 RDEPEND="
 	${DEPEND}
 	monitor? ( $(python_gen_cond_dep '
-			dev-python/pyqt5[gui,widgets,${PYTHON_USEDEP}]
+			dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}]
 		')
 	)
 	selinux? ( sec-policy/selinux-nut )
@@ -69,7 +69,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
-	"${FILESDIR}/systemd_notify.patch"
 )
 PATCH_NEEDS_AUTOGEN=1
 
@@ -101,6 +100,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	if use systemd; then
+		PATCHES+=( "${FILESDIR}/systemd_notify_285.patch" )
+	else
+		PATCHES+=( "${FILESDIR}/systemd_notify_285_openrc.patch" )
+	fi
+
 	default
 
 	if [[ ${PV} == *9999 ]] || [[ ${PATCH_NEEDS_AUTOGEN} == 1 ]] ; then

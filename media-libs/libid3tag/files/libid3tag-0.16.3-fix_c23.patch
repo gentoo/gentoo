@@ -1,0 +1,50 @@
+fix c23, patch from upstream
+https://codeberg.org/tenacityteam/libid3tag/commit/bf4fed66ae44174c32936c0eb5c74ff29b0f4b33.patch
+--- a/compat.c
++++ b/compat.c
+@@ -88,9 +88,7 @@ inline
+ #endif
+ #endif
+ static unsigned int
+-hash (str, len)
+-     register const char *str;
+-     register unsigned int len;
++hash (register const char* str, register unsigned int len)
+ {
+   static const unsigned char asso_values[] =
+     {
+@@ -145,9 +143,7 @@ hash (str, len)
+ __inline
+ #endif
+ const struct id3_compat *
+-id3_compat_lookup (str, len)
+-     register const char *str;
+-     register size_t len;
++id3_compat_lookup(register const char *str, register size_t len)
+ {
+   static const struct id3_compat wordlist[] =
+     {
+--- a/frametype.c
++++ b/frametype.c
+@@ -311,9 +311,7 @@ inline
+ #endif
+ #endif
+ static unsigned int
+-hash (str, len)
+-     register const char *str;
+-     register unsigned int len;
++hash(register const char *str, register unsigned int len)
+ {
+   static const unsigned char asso_values[] =
+     {
+@@ -351,9 +349,7 @@ hash (str, len)
+ __inline
+ #endif
+ const struct id3_frametype *
+-id3_frametype_lookup (str, len)
+-     register const char *str;
+-     register size_t len;
++id3_frametype_lookup(register const char *str, register size_t len)
+ {
+   static const struct id3_frametype wordlist[] =
+     {

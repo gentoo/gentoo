@@ -4,10 +4,10 @@
 EAPI=8
 
 LUA_COMPAT=( luajit )
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 VALA_USE_DEPEND=vapigen
 
-inherit git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
+inherit flag-o-matic git-r3 lua-single meson python-single-r1 toolchain-funcs vala xdg
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gimp.git"
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0/3"
 
-IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons webp wmf xpm"
+IUSE="X aalib alsa doc fits gnome heif javascript jpeg2k jpegxl lua mng openexr openmp postscript test udev unwind vala vector-icons wayland webp wmf xpm"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	lua? ( ${LUA_REQUIRED_USE} )
@@ -33,15 +33,17 @@ COMMON_DEPEND="
 		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 	')
 	>=app-accessibility/at-spi2-core-2.46.0
+	app-arch/bzip2
+	app-arch/libarchive:=
+	>=app-arch/xz-utils-5.0.0
 	>=app-text/poppler-0.90.1[cairo]
 	>=app-text/poppler-data-0.4.9
-	>=dev-libs/appstream-glib-0.7.16
+	>=dev-libs/appstream-0.16.1:=
 	>=dev-libs/glib-2.70.0:2
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	>=dev-libs/json-glib-1.4.4
-	dev-libs/libxml2:2=
-	dev-libs/libxslt
-	>=gnome-base/librsvg-2.57.3:2
-	>=media-gfx/mypaint-brushes-1.3.1:1.0=
+	>=gnome-base/librsvg-2.40.6:2
+	>=media-gfx/mypaint-brushes-1.3.0:2.0=
 	>=media-libs/babl-9999[introspection,lcms,vala?]
 	>=media-libs/fontconfig-2.12.6
 	>=media-libs/freetype-2.10.2
@@ -55,13 +57,13 @@ COMMON_DEPEND="
 	>=media-libs/tiff-4.1.0:=
 	net-libs/glib-networking[ssl]
 	sys-libs/zlib
-	>=x11-libs/cairo-1.16.0[X=]
+	>=x11-libs/cairo-1.16.0[X?]
 	>=x11-libs/gdk-pixbuf-2.40.0:2[introspection]
-	>=x11-libs/gtk+-3.24.48:3[introspection,X=]
-	>=x11-libs/pango-1.50.0[X=]
+	>=x11-libs/gtk+-3.24.48:3[introspection,wayland?,X?]
+	>=x11-libs/pango-1.50.0[X?]
 	aalib? ( media-libs/aalib )
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
-	fits? ( sci-libs/cfitsio )
+	fits? ( sci-libs/cfitsio:= )
 	heif? ( >=media-libs/libheif-1.13.0:= )
 	javascript? ( dev-libs/gjs )
 	jpeg2k? ( >=media-libs/openjpeg-2.3.1:2= )
@@ -78,11 +80,12 @@ COMMON_DEPEND="
 	udev? ( >=dev-libs/libgudev-167:= )
 	unwind? ( >=sys-libs/libunwind-1.1.0:= )
 	webp? ( >=media-libs/libwebp-0.6.0:= )
-	wmf? ( >=media-libs/libwmf-0.2.8[X=] )
+	wmf? ( >=media-libs/libwmf-0.2.8[X?] )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXcursor
 		x11-libs/libXext
+		x11-libs/libXfixes
 		>=x11-libs/libXmu-1.1.4
 	)
 	xpm? ( x11-libs/libXpm )
@@ -103,10 +106,11 @@ DEPEND="
 # TODO: there are probably more atoms in DEPEND which should be in BDEPEND now
 BDEPEND="
 	>=dev-lang/perl-5.30.3
+	dev-libs/libxslt
 	dev-util/gdbus-codegen
 	>=sys-devel/gettext-0.21
 	doc? (
-		dev-libs/gobject-introspection[doctool]
+		>=dev-libs/gobject-introspection-1.82.0-r2[doctool]
 		dev-util/gi-docgen
 	)
 	virtual/pkgconfig
@@ -143,24 +147,15 @@ src_prepare() {
 
 	# Set proper intallation path of documentation logo
 	sed -i -e "s/'gimp-@0@'.format(gimp_app_version)/'gimp-${PVR}'/" gimp-data/images/logo/meson.build || die
-}
 
-_adjust_sandbox() {
-	# Bugs #569738 and #591214
-	local nv
-	for nv in /dev/nvidia-uvm /dev/nvidiactl /dev/nvidia{0..9} ; do
-		# We do not check for existence as they may show up later
-		# https://bugs.gentoo.org/show_bug.cgi?id=569738#c21
-		addwrite "${nv}"
-	done
-
-	addwrite /dev/dri/  # bugs #574038 and #684886
-	addwrite /dev/ati/  # bug #589198
-	addwrite /proc/mtrr  # bug #589198
+	# Force disable x11_target if USE="-X" is setup. See bug 943164 for additional info
+	use !X && { sed -i -e 's/x11_target = /x11_target = false #/' meson.build || die; }
 }
 
 src_configure() {
-	_adjust_sandbox
+	# defang automagic dependencies. Bug 943164
+	use wayland || append-cflags -DGENTOO_GTK_HIDE_WAYLAND
+	use X || append-cflags -DGENTOO_GTK_HIDE_X11
 
 	use vala && vala_setup
 
@@ -187,7 +182,9 @@ src_configure() {
 		$(meson_feature openexr)
 		$(meson_feature openmp)
 		$(meson_feature postscript ghostscript)
-		$(meson_feature test headless-tests)
+		# https://gitlab.gnome.org/GNOME/gimp/-/issues/14822
+		-Dheadless-tests=disabled
+		#$(meson_feature test headless-tests)
 		$(meson_feature udev gudev)
 		$(meson_feature vala)
 		$(meson_feature webp)
@@ -233,9 +230,8 @@ src_test() {
 src_install() {
 	meson_src_install
 
-	python_optimize
-
-	find "${D}" -name '*.la' -type f -delete || die
+	python_optimize "${ED}/usr/$(get_libdir)/gimp"
+	python_fix_shebang "${ED}/usr/$(get_libdir)/gimp"
 
 	# Create symlinks for Gimp exec in /usr/bin
 	dosym "${ESYSROOT}"/usr/bin/gimp-3.0 /usr/bin/gimp

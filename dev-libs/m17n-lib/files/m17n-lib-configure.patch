@@ -1,6 +1,8 @@
+diff --git a/configure.ac b/configure.ac
+index 2348512..1105b4b 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -96,8 +96,11 @@
+@@ -96,8 +96,11 @@ AC_SUBST(M17NDIR)
  
  dnl Checks which levels of APIs should be compiled.
  
@@ -14,7 +16,7 @@
  
  AM_CONDITIONAL(WITH_GUI, test x$with_gui != xno)
  
-@@ -117,14 +120,14 @@
+@@ -117,14 +120,14 @@ dnl augmented.
  
  M17N_EXT_LIBS=
  
@@ -32,7 +34,7 @@
    if test "x$HAVE_XAW" = "xyes"; then
      AC_DEFINE(HAVE_X11_XAW_COMMAND_H, 1,
  	      [Define to 1 if you have the Xaw header files.])
-@@ -132,11 +135,15 @@
+@@ -132,11 +135,15 @@ if test "x$no_x" != "xyes"; then
      CONFIG_FLAGS="$CONFIG_FLAGS -DHAVE_X11_XAW_COMMAND_H"
      M17N_EXT_LIBS="$M17N_EXT_LIBS Xaw"
    fi
@@ -48,7 +50,7 @@
  save_CPPFLAGS="$CPPFLAGS"
  save_LIBS="$LIBS"
  AC_CHECK_PROG(HAVE_FRIBIDI_CONFIG, fribidi-config, yes)
-@@ -158,6 +165,7 @@
+@@ -158,6 +165,7 @@ else
    FRIBIDI_LD_FLAGS=
  fi
  LIBS="$save_LIBS"
@@ -56,7 +58,7 @@
  AC_SUBST(FRIBIDI_LD_FLAGS)
  
  dnl Check for otflib usability.
-@@ -201,11 +209,14 @@
+@@ -201,11 +209,14 @@ fi
  AC_SUBST(OTF_LD_FLAGS)
  
  dnl Check for Freetype2 usability.
@@ -72,7 +74,7 @@
     AC_DEFINE([HAVE_FREETYPE], [1],
               [Define to 1 if you have FreeType library and header file.])
     M17N_EXT_LIBS="$M17N_EXT_LIBS freetype";
-@@ -220,9 +231,13 @@
+@@ -220,9 +231,13 @@ AS_IF([test "x$HAVE_FREETYPE" = "xyes"],
    ],
    []
    )
@@ -86,7 +88,7 @@
  save_CPPFLAGS="$CPPFLAGS"
  save_LIBS="$LIBS"
  XFT2_LD_FLAGS="-lXft -lfreetype -lfontconfig -lXrender -lX11"
-@@ -253,6 +268,7 @@
+@@ -253,6 +268,7 @@ else
    CPPFLAGS="$save_CPPFLAGS"
  fi
  LIBS="$save_LIBS"
@@ -94,7 +96,7 @@
  AC_SUBST(XFT2_LD_FLAGS)
  
  dnl Check for fontconfig usability.
-@@ -306,6 +322,9 @@
+@@ -306,6 +322,9 @@ AC_SUBST(GD_LD_FLAGS)
  fi
  
  dnl Check for libxml2 usability.
@@ -104,7 +106,7 @@
  save_CPPFLAGS="$CPPFLAGS"
  save_LIBS="$LIBS"
  AC_CHECK_PROG(HAVE_XML2_CONFIG, xml2-config, yes)
-@@ -328,10 +347,13 @@
+@@ -328,10 +347,13 @@ else
    CPPFLAGS="$save_CPPFLAGS"
  fi
  LIBS="$save_LIBS"
@@ -116,14 +118,16 @@
 +AC_ARG_WITH(anthy,
 +	    AS_HELP_STRING([--with-anthy],[with Anthy suport]))
 +if test "x$with_anthy" != "xno"; then
- PKG_CHECK_MODULES(ANTHY, anthy, HAVE_ANTHY=yes, HAVE_ANTHY=no)
- if test "x$HAVE_ANTHY" = "xyes"; then
-   AC_DEFINE(HAVE_ANTHY, 1,
-@@ -340,15 +362,20 @@
+ PKG_CHECK_MODULES(ANTHY, anthy-unicode,
+                   [HAVE_ANTHY=yes
+                    M17N_EXT_LIBS="$M17N_EXT_LIBS anthy-unicode"],
+@@ -347,17 +369,21 @@ if test "x$HAVE_ANTHY" = "xyes"; then
    ANTHY_LD_FLAGS="$ANTHY_LIBS"
    CONFIG_FLAGS="$CONFIG_FLAGS -DHAVE_ANTHY"
  fi
+-
 +fi
+ AC_SUBST(ANTHY_LD_CFLAGS)
  AC_SUBST(ANTHY_LD_FLAGS)
  
  dnl Check for Ispell usability.

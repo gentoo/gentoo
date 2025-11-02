@@ -1,0 +1,41 @@
+https://github.com/tytso/e2fsprogs/commit/fb9b2e7c9cf90e2c4eabcf1cffbde443e8eeb360
+
+From fb9b2e7c9cf90e2c4eabcf1cffbde443e8eeb360 Mon Sep 17 00:00:00 2001
+From: Samuel Smith <satlug@net153.net>
+Date: Fri, 4 Jul 2025 22:38:21 -0500
+Subject: [PATCH] e2scrub: reorder exit status check after calling lvremove
+
+Checking for snapshot device existence resets the status code in $?.
+Reording the conditions will allow the retry loop to work properly.
+
+Signed-off-by: Samuel Smith <satlug@net153.net>
+Reviewed-by: Darrick J. Wong <djwong@kernel.org>
+Link: https://lore.kernel.org/r/20250705033821.3695205-1-satlug@net153.net
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+---
+ scrub/e2scrub.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scrub/e2scrub.in b/scrub/e2scrub.in
+index 043bc12b3..6f9b5ce2a 100644
+--- a/scrub/e2scrub.in
++++ b/scrub/e2scrub.in
+@@ -182,7 +182,7 @@ snap_dev="/dev/${LVM2_VG_NAME}/${snap}"
+ teardown() {
+ 	# Remove and wait for removal to succeed.
+ 	${DBG} lvremove -f "${LVM2_VG_NAME}/${snap}"
+-	while [ -e "${snap_dev}" ] && [ "$?" -eq "5" ]; do
++	while [ "$?" -eq "5" ] && [ -e "${snap_dev}" ]; do
+ 		sleep 0.5
+ 		${DBG} lvremove -f "${LVM2_VG_NAME}/${snap}"
+ 	done
+@@ -210,7 +210,7 @@ setup() {
+ 	# Try to remove snapshot for 30s, bail out if we can't remove it.
+ 	lvremove_deadline="$(( $(date "+%s") + 30))"
+ 	${DBG} lvremove -f "${LVM2_VG_NAME}/${snap}" 2>/dev/null
+-	while [ -e "${snap_dev}" ] && [ "$?" -eq "5" ] &&
++	while [ "$?" -eq "5" ] && [ -e "${snap_dev}" ] &&
+ 	      [ "$(date "+%s")" -lt "${lvremove_deadline}" ]; do
+ 		sleep 0.5
+ 		${DBG} lvremove -f "${LVM2_VG_NAME}/${snap}"
+

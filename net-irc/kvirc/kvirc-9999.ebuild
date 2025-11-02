@@ -1,10 +1,10 @@
-# Copyright 2009-2024 Gentoo Authors
+# Copyright 2009-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit cmake flag-o-matic python-single-r1 xdg
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Advanced IRC Client"
 HOMEPAGE="https://www.kvirc.net/ https://github.com/kvirc/KVIrc"
@@ -55,7 +55,7 @@ DEPEND="
 	ssl? ( dev-libs/openssl:0= )
 	theora? (
 		media-libs/libogg
-		media-libs/libtheora
+		media-libs/libtheora:=
 		media-libs/libvorbis
 	)
 	webengine? ( dev-qt/qtwebengine:6[widgets] )"
@@ -83,8 +83,6 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing
-
 	local libdir="$(get_libdir)"
 	local mycmakeargs=(
 		-DLIB_SUFFIX=${libdir#lib}

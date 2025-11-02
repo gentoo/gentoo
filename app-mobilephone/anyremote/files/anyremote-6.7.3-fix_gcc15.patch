@@ -1,0 +1,35 @@
+Reported by email 2025-09-01
+Fix from fedora https://src.fedoraproject.org/rpms/anyremote/blob/rawhide/f/fix_compile_error.patch
+--- ./src/executor.c.orig	2025-04-25 21:20:37.307777694 +0100
++++ ./src/executor.c	2025-04-25 21:20:40.314734610 +0100
+@@ -56,7 +56,7 @@ static int  isIViewerCommand(char *cmd);
+ 
+ static void handleInit();
+ static void handleConnect();
+-static void handleDisconnect();
++static void handleDisconnect(int peer);
+ static void handleExit();
+ 
+ static void cleanAutoRepeatFlag();
+--- ./src/pr_web.h.orig	2025-04-25 21:31:10.758570383 +0100
++++ ./src/pr_web.h	2025-04-25 21:31:14.844562838 +0100
+@@ -52,7 +52,7 @@ void webClose    (ConnectInfo* connInfo,
+ void webReset    (ConnectInfo* conn);
+ int  listenWeb   (ConnectInfo* connInfo);
+ int  acceptWeb   (ConnectInfo* connInfo);
+-int  checkWebPort();
++int  checkWebPort(char* buf, int capacity);
+ int  writeWebConn(const dMessage* dm, int mode);
+ int  writeWeb    (ConnectInfo* connInfo, const dMessage* dm);
+ //int  haveClients (_WebConnection* cn);
+--- ./src/sys_util.c.orig	2025-04-25 21:34:36.141191110 +0100
++++ ./src/sys_util.c	2025-04-25 21:34:52.101161638 +0100
+@@ -354,7 +354,7 @@ static int pclose_r(int fd, pid_t pid)
+ {
+     register int r;
+     int status;
+-    void (*hstat)(), (*istat)(), (*qstat)();
++    void (*hstat)(int), (*istat)(int), (*qstat)(int);
+ 
+     (void) close(fd);
+     istat = signal(SIGINT,  SIG_IGN);

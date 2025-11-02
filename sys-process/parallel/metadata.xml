@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>sam@gentoo.org</email>
-		<name>Sam James</name>
+		<email>eschwartz@gentoo.org</email>
+		<name>Eli Schwartz</name>
 	</maintainer>
 	<longdescription lang="en">
 	GNU parallel is a shell tool for executing jobs in parallel locally or
@@ -21,5 +21,6 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:gnu:parallel</remote-id>
+		<remote-id type="savannah">parallel</remote-id>
 	</upstream>
 </pkgmetadata>

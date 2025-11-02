@@ -1,9 +1,9 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit toolchain-funcs
+inherit dot-a toolchain-funcs
 
 MY_PV="${PV/_beta/b}"
 
@@ -33,6 +33,8 @@ src_configure() {
 	# make build verbose, bug #429308
 	export V=1
 
+	lto-guarantee-fat
+
 	econf \
 		--disable-pic \
 		--enable-threads \
@@ -48,6 +50,7 @@ src_compile() {
 
 src_install() {
 	default
+	strip-lto-bytecode
 	dodoc Userguide.pdf
 
 	insinto /usr/share/hmmer

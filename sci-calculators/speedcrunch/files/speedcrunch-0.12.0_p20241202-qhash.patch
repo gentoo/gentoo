@@ -1,0 +1,37 @@
+Source: https://bitbucket.org/heldercorreia/speedcrunch/pull-requests/140
+
+From a52be1f46d86d2af8cf44633f06137d976556fe8 Mon Sep 17 00:00:00 2001
+From: Ronald Wright <logiconcepts819@gmail.com>
+Date: Sat, 7 Jun 2025 18:33:09 -0500
+Subject: [PATCH] Fix additional Qt6 build errors
+
+---
+ src/math/rational.h           | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/math/rational.h b/src/math/rational.h
+index dfda4438..bbef00a3 100644
+--- a/src/math/rational.h
++++ b/src/math/rational.h
+@@ -19,6 +19,8 @@
+ #ifndef RATIONAL_H
+ #define RATIONAL_H
+ 
++#include <QHash>
++
+ class HNumber;
+ class QString;
+ 
+@@ -64,6 +66,10 @@ public:
+     QString toString() const;
+     HNumber toHNumber( )const;
+     double toDouble() const;
++
++    friend size_t qHash(const Rational &r, size_t seed = 0) {
++        return qHashMulti(seed, r.m_num, r.m_denom, r.m_valid);
++    }
+ };
+ 
+ #endif // RATIONAL_H
+-- 
+2.51.0

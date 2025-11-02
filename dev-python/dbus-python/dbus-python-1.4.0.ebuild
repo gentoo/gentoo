@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit autotools python-r1
@@ -17,7 +17,7 @@ SRC_URI="https://dbus.freedesktop.org/releases/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="doc examples test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="!test? ( test )"
@@ -69,7 +69,7 @@ src_configure() {
 			# https://bugs.gentoo.org/815136
 			PYTHON_EXTRA_LIBS=' '
 		)
-		[[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
+		use doc && [[ ${EPYTHON} == ${SPHINX_IMPL} ]] &&
 			myconf+=( --enable-documentation )
 
 		econf "${myconf[@]}"

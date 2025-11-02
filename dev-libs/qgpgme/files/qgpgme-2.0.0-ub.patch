@@ -1,0 +1,51 @@
+https://bugs.gentoo.org/962891
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgmeqt.git;a=commit;h=150b23c105f3ea7034e6f106e60686aea4e4a13e
+
+From 150b23c105f3ea7034e6f106e60686aea4e4a13e Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Sat, 12 Jul 2025 23:10:10 +0200
+Subject: [PATCH] Fix parsing DNs that end with a hex string
+
+* src/dn.cpp (parse_dn_part): Handle case that stringv ends with hex
+string.
+* tests/t-dn.cpp (TestDistinguishedNameParser::testParser_data): Add
+test with DN ending with hex string.
+--
+
+Calling remove_prefix with n > size() (e.g. n == npos) is UB.
+---
+ src/dn.cpp     | 6 +++++-
+ tests/t-dn.cpp | 1 +
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/dn.cpp b/src/dn.cpp
+index 0a407c9..90632cc 100644
+--- a/src/dn.cpp
++++ b/src/dn.cpp
+@@ -219,7 +219,11 @@ static std::pair<std::optional<std::string_view>, std::pair<std::string, std::st
+         if (!value.has_value()) {
+             return {};
+         }
+-        stringv.remove_prefix(endHex);
++        if (endHex == std::string_view::npos) {
++            stringv = {};
++        } else {
++            stringv.remove_prefix(endHex);
++        }
+         dnPair.second = value.value();
+     } else if (stringv.front() == '"') {
+         stringv.remove_prefix(1);
+diff --git a/tests/t-dn.cpp b/tests/t-dn.cpp
+index 17f418a..a1b617d 100644
+--- a/tests/t-dn.cpp
++++ b/tests/t-dn.cpp
+@@ -108,6 +108,7 @@ void TestDistinguishedNameParser::testParser_data()
+     QTest::newRow("frompdf2") << u"2.5.4.5=#34,CN=Koch\\, Werner,2.5.4.42=#5765726E6572,2.5.4.4=#4B6F6368,C=DE"_s << QGpgME::DN::AttributeList {QGpgME::DN::Attribute{u"SerialNumber"_s, u"4"_s}, QGpgME::DN::Attribute{u"CN"_s, u"Koch, Werner"_s}, QGpgME::DN::Attribute{u"GN"_s, u"Werner"_s}, QGpgME::DN::Attribute{u"SN"_s, u"Koch"_s}, QGpgME::DN::Attribute{u"C"_s, u"DE"_s}};
+     QTest::newRow("frompdf2a") << u"2.5.4.5=#34,CN=Koch\\, Werner,oid.2.5.4.42=#5765726E6572,OID.2.5.4.4=#4B6F6368,C=DE"_s
+                                << QGpgME::DN::AttributeList {QGpgME::DN::Attribute{u"SerialNumber"_s, u"4"_s}, QGpgME::DN::Attribute{u"CN"_s, u"Koch, Werner"_s}, QGpgME::DN::Attribute{u"GN"_s, u"Werner"_s}, QGpgME::DN::Attribute{u"SN"_s, u"Koch"_s}, QGpgME::DN::Attribute{u"C"_s, u"DE"_s}};
++    QTest::newRow("ends with hex string") << u"2.5.4.5=#34"_s << QGpgME::DN::AttributeList {QGpgME::DN::Attribute{u"SerialNumber"_s, u"4"_s}};
+ 
+     // weird spacing
+     QTest::newRow("CN =Simple") << u"CN =Simple"_s << QGpgME::DN::AttributeList {QGpgME::DN::Attribute{u"CN"_s, u"Simple"_s}};
+-- 
+2.30.2

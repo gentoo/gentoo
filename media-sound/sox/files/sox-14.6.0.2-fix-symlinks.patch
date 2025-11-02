@@ -1,0 +1,116 @@
+https://codeberg.org/sox_ng/sox_ng/pulls/528
+https://codeberg.org/sox_ng/sox_ng/commit/9418f8acd129880d0787b4a4e1ff6f4f884c145d
+https://codeberg.org/sox_ng/sox_ng/commit/02d5fb9c7e98e0d729938882e1a16066c2ff5f21
+
+From 3d9731e5aa7ca492c626e4e3740bb9f8216042b4 Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Thu, 24 Jul 2025 03:37:04 +0300
+Subject: [PATCH 1/2] Fix symlink creation with unlucky ordering in destdir
+ installs
+
+Headers and pkgconfig files are both data files so they would be
+appropriate for install-data-hook. In addition the pkgconfig file is
+handled in the root Makefile.am, so it belongs there.
+
+Potentially the install hooks could be executed first in src/Makefile.am
+before the normal install is handled from the root Makefile.am.
+
+Noticed due to:
+
+/bin/sh: line 20: cd: /var/tmp/portage/media-sound/sox-14.6.0.2/image/usr/lib64/pkgconfig: No such file or directo
+
+Leading to the installation of: /usr/lib64/sox.pc -> sox_ng.pc
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -153,6 +153,10 @@ install-data-hook:
+ 			cd $(DESTDIR)$(mandir)/man1 && $(RM) soxi.1 && \
+ 			    $(LN_S) soxi_ng.1 soxi.1; \
+ 		fi; \
++		if test "$(pkgconfigdir)"; then \
++			cd $(DESTDIR)$(pkgconfigdir); \
++			$(RM) "sox.pc"; $(LN_S) sox_ng.pc sox.pc; \
++		fi; \
+ 	fi
+ 
+ uninstall-hook:
+@@ -173,6 +177,10 @@ uninstall-hook:
+ 		if test "$(SYMLINKS)" = "yes"; then \
+ 			$(RM) $(DESTDIR)$(mandir)/man1/soxi.1; \
+ 		fi; \
++		if test "$(pkgconfigdir)"; then \
++			cd $(DESTDIR)$(pkgconfigdir); \
++			$(RM) "sox.pc"; \
++		fi; \
+ 	fi
+ 
+ # Automatically update libtool script if it gets out-of-date
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -200,16 +200,16 @@ install-exec-hook:
+ 			$(RM) soxi$(EXEEXT); \
+ 			$(LN_S) soxi_ng$(EXEEXT) soxi$(EXEEXT); \
+ 		fi; \
+-		cd $(DESTDIR)$(includedir); \
+-		$(RM) sox.h; $(LN_S) sox_ng.h sox.h; \
+ 		cd $(DESTDIR)$(libdir); \
+ 		$(RM) libsox.a; $(LN_S) libsox_ng.a libsox.a; \
+ 		$(RM) libsox.la; $(LN_S) libsox_ng.la libsox.la; \
+ 		$(RM) libsox.so; $(LN_S) libsox_ng.so libsox.so; \
+-		if test "$(pkgconfigdir)"; then \
+-			cd $(DESTDIR)$(pkgconfigdir); \
+-			$(RM) "sox.pc"; $(LN_S) sox_ng.pc sox.pc; \
+-		fi; \
++	fi
++
++install-data-hook:
++	@if test "$(REPLACE)" = "yes"; then \
++		cd $(DESTDIR)$(includedir); \
++		$(RM) sox.h; $(LN_S) sox_ng.h sox.h; \
+ 	fi
+ 
+ uninstall-hook:
+@@ -231,10 +231,6 @@ uninstall-hook:
+ 		cd $(DESTDIR)$(includedir); $(RM) sox.h;\
+ 		cd $(DESTDIR)$(libdir); \
+ 		$(RM) libsox.a libsox.la libsox.so; \
+-		if test "$pkgconfigdir"; then \
+-			cd $(DESTDIR)$(pkfconfigdir); \
+-			$(RM) "sox.pc";\
+-		fi; \
+ 	fi
+ 
+ clean-local:
+-- 
+2.50.1
+
+From 41c1a4818808d9936d1ec704d176f94c601f9ebc Mon Sep 17 00:00:00 2001
+From: Alfred Wingate <parona@protonmail.com>
+Date: Thu, 24 Jul 2025 03:59:13 +0300
+Subject: [PATCH 2/2] Create symlinks for libraries only if the library exists
+
+Otherwise the symlinks will be created unconditionally even static
+libraries were disabled with --disable-static.
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -201,9 +201,15 @@ install-exec-hook:
+ 			$(LN_S) soxi_ng$(EXEEXT) soxi$(EXEEXT); \
+ 		fi; \
+ 		cd $(DESTDIR)$(libdir); \
+-		$(RM) libsox.a; $(LN_S) libsox_ng.a libsox.a; \
+-		$(RM) libsox.la; $(LN_S) libsox_ng.la libsox.la; \
+-		$(RM) libsox.so; $(LN_S) libsox_ng.so libsox.so; \
++		if test -f libsox_ng.a; then \
++			$(RM) libsox.a; $(LN_S) libsox_ng.a libsox.a; \
++		fi; \
++		if test -f libsox_ng.la; then \
++			$(RM) libsox.la; $(LN_S) libsox_ng.la libsox.la; \
++		fi; \
++		if test -f libsox_ng.so; then \
++			$(RM) libsox.so; $(LN_S) libsox_ng.so libsox.so; \
++		fi; \
+ 	fi
+ 
+ install-data-hook:
+-- 
+2.50.1
+

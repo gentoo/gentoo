@@ -1,0 +1,69 @@
+From 28a2788d609efe363b403432b08511c801d13667 Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Tue, 7 Oct 2025 20:04:40 +1100
+Subject: [PATCH 2/6] Add clock_gettime compat shim.
+
+This fixes the build on macOS prior to 10.12 Sierra, since it does not
+have it.  Found and tested by Sevan Janiyan.
+---
+ openbsd-compat/bsd-misc.c | 24 ++++++++++++++++++++++++
+ openbsd-compat/bsd-misc.h |  8 ++++++++
+ 2 files changed, 32 insertions(+)
+
+diff --git a/openbsd-compat/bsd-misc.c b/openbsd-compat/bsd-misc.c
+index 983cd3fe6..2c196ec23 100644
+--- a/openbsd-compat/bsd-misc.c
++++ b/openbsd-compat/bsd-misc.c
+@@ -494,6 +494,30 @@ localtime_r(const time_t *timep, struct tm *result)
+ }
+ #endif
+ 
++#ifndef HAVE_CLOCK_GETTIME
++int
++clock_gettime(clockid_t clockid, struct timespec *ts)
++{
++	struct timeval tv;
++
++	if (clockid != CLOCK_REALTIME) {
++		errno = ENOSYS;
++		return -1;
++	}
++	if (ts == NULL) {
++		errno = EFAULT;
++		return -1;
++	}
++
++	if (gettimeofday(&tv, NULL) == -1)
++		return -1;
++
++	ts->tv_sec = tv.tv_sec;
++	ts->tv_nsec = (long)tv.tv_usec * 1000;
++	return 0;
++}
++#endif
++
+ #ifdef ASAN_OPTIONS
+ const char *__asan_default_options(void) {
+ 	return ASAN_OPTIONS;
+diff --git a/openbsd-compat/bsd-misc.h b/openbsd-compat/bsd-misc.h
+index 2ad89cd83..8495f471c 100644
+--- a/openbsd-compat/bsd-misc.h
++++ b/openbsd-compat/bsd-misc.h
+@@ -202,6 +202,14 @@ int flock(int, int);
+ struct tm *localtime_r(const time_t *, struct tm *);
+ #endif
+ 
++#ifndef HAVE_CLOCK_GETTIME
++typedef int clockid_t;
++#ifndef CLOCK_REALTIME
++# define CLOCK_REALTIME	0
++#endif
++int clock_gettime(clockid_t, struct timespec *);
++#endif
++
+ #ifndef HAVE_REALPATH
+ #define realpath(x, y)	(sftp_realpath((x), (y)))
+ #endif
+-- 
+2.51.0
+

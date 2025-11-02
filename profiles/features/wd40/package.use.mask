@@ -1,6 +1,22 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com (2025-10-06)
+# Requires gjs which then requires rust through spidermonkey
+media-gfx/gimp javascript
+
+# Michał Górny <mgorny@gentoo.org> (2025-09-15)
+# Tests require dev-python/paramiko.
+dev-python/dulwich test
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-05)
+# Native extensions are using Rust.
+dev-python/fastbencode native-extensions
+
+# Holger Hoffstätte <holger@applied-asynchrony.com> (2025-07-24)
+# dnsdist-2.0.0[yaml] needs Rust
+net-dns/dnsdist yaml
+
 # Sam James <sam@gentoo.org> (2025-02-21)
 # Needs Rust
 media-video/ffmpeg rav1e svg
@@ -74,6 +90,7 @@ sys-kernel/installkernel efistub
 dev-python/botocore test
 dev-python/ipython nbconvert test
 dev-python/sphinx-autodoc-typehints test
+>=sci-libs/gdal-3.11.3 python
 
 # Michał Górny <mgorny@gentoo.org> (2024-02-01)
 # Need dev-python/trio.
@@ -112,6 +129,7 @@ net-misc/zerotier sso
 # Michał Górny <mgorny@gentoo.org> (2023-06-06)
 # Packages needing dev-python/pydantic.
 dev-python/jaraco-itertools test
+dev-python/rich-click test
 dev-python/versioningit test
 dev-python/zipp test
 
@@ -192,11 +210,11 @@ net-vpn/networkmanager-vpnc gtk
 app-admin/salt keyring neutron
 dev-python/docker test
 dev-python/google-api-python-client test
+>=dev-python/httplib2-0.30 test
 dev-python/httpx-socks test
 dev-python/hypercorn test
 dev-python/keystoneauth1 test
 dev-python/libtmux test
-dev-python/locket test
 dev-python/pyjwt test
 dev-python/python-keystoneclient test
 dev-python/python-socks test
@@ -240,7 +258,7 @@ media-libs/imlib2 svg
 # Michał Górny <mgorny@gentoo.org> (2021-11-26)
 # These package flags require dev-python/cryptography which -- due
 # to the dependency on Rust -- is no longer portable to ${arch}.
-dev-python/dnspython dnssec test
+dev-python/dnspython dnssec quic test
 dev-python/twisted conch ssl
 dev-python/urllib3 test
 net-fs/samba addc ads
@@ -256,16 +274,6 @@ x11-misc/xscreensaver gdm
 # Cédric Krier <cedk@gentoo.org> (2020-11-10)
 # Rust has no ${arch} keyword
 dev-vcs/mercurial rust
-
-# Joonas Niilola <juippis@gentoo.org> (2020-10-02)
-# Sam James <sam@gentoo.org> (2021-03-11)
-# Michael Orlitzky <mjo@gentoo.org> (2024-07-09)
-# Dependency only keyworded on specific ${arch} profiles.
->=dev-lang/php-8.3.9 avif
-dev-libs/efl avif
-kde-frameworks/kimageformats avif
-media-libs/gd avif
-net-libs/webkit-gtk avif
 
 # Mart Raudsepp <leio@gentoo.org> (2020-08-02)
 # ${arch} has no Rust support, needed by newer gnome-base/librsvg, et al

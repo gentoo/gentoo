@@ -1,0 +1,36 @@
+use system-libs for lua and tinyxml2
+use pkgconfig for opengl to avoid X requirement due to findOpenGL.cmake
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -83,7 +83,10 @@ set (blobby-server_SRC ${common_SRC}
+ 	)
+ 
+ find_package(Boost REQUIRED)
+-find_package(OpenGL)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(OPENGL REQUIRED opengl)
++pkg_check_modules(lua REQUIRED IMPORTED_TARGET lua)
++pkg_check_modules(tinyxml2 REQUIRED IMPORTED_TARGET tinyxml2)
+ add_subdirectory(raknet)
+ add_subdirectory(blobnet)
+ 
+@@ -100,7 +103,7 @@ if (UNIX AND (NOT ANDROID))
+ 	add_definitions("-DBLOBBY_DATA_DIR=\"${CMAKE_INSTALL_PREFIX}/share/blobby\"")
+ endif()
+ 
+-set(BLOBBY_COMMON_LIBS lua::lua blobnet::blobnet tinyxml2::tinyxml2 PhysFS::PhysFS SDL2::SDL2main SDL2::SDL2 Boost::boost)
++set(BLOBBY_COMMON_LIBS PkgConfig::lua blobnet::blobnet PkgConfig::tinyxml2 PhysFS::PhysFS SDL2::SDL2main SDL2::SDL2 Boost::boost)
+ 
+ # other additional dependencies
+ if (NOT WIN32)
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -35,6 +35,6 @@ endif ("${SDL2_LIBRARIES}" STREQUAL "")
+ 
+ add_executable(blobbytest GenericIOTest.cpp FileTest.cpp Base64Test.cpp ${SRC})
+ 
+-target_include_directories(blobbytest PRIVATE ${Boost_INCLUDE_DIR} ${PHYSFS_INCLUDE_DIR} ${SDL2_INCLUDE_DIRS} ../src)
++target_include_directories(blobbytest PRIVATE ${Boost_INCLUDE_DIR} ${PHYSFS_INCLUDE_DIR} ${SDL2_INCLUDE_DIRS} ${lua_INCLUDE_DIRS} ${tinyxml2_INCLUDE_DIRS} ../src)
+ target_compile_definitions(blobbytest PRIVATE "BOOST_TEST_DYN_LINK=1")
+-target_link_libraries(blobbytest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${PHYSFS_LIBRARY} ${SDL2_LIBRARIES} lua raknet tinyxml2)
++target_link_libraries(blobbytest ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} ${PHYSFS_LIBRARY} ${SDL2_LIBRARIES} ${lua_LIBRARIES} ${tinyxml2_LIBRARIES} raknet)

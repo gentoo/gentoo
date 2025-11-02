@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,8 +21,8 @@ DEPEND="
 	gui-libs/libadwaita:1[introspection]
 	>=dev-libs/glib-2.43.4:2
 	net-libs/telepathy-glib[introspection]
-	app-misc/tracker:3
-	>=dev-libs/gobject-introspection-1.50:=
+	app-misc/tinysparql:3
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=dev-libs/gjs-1.73.1
 
 	x11-libs/gdk-pixbuf:2[introspection]

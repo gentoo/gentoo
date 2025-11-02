@@ -1,0 +1,33 @@
+https://github.com/fail2ban/fail2ban/issues/3907
+https://bugs.gentoo.org/963511
+
+commit 89b5f3bb1ecd3789b3271b648eeb83c620668e6f
+Author: Serg G. Brester <info@sebres.de>
+Date:   Thu Dec 26 14:24:15 2024 +0100
+
+    `filter.d/sshd.conf`: `ddos` and `aggressive` modes, regex extended for timeout before authentication (optional connection from part);
+    closes gh-3907
+
+--- a/config/filter.d/sshd.conf
++++ b/config/filter.d/sshd.conf
+@@ -70,7 +70,7 @@
+ # used to differentiate "connection closed" with and without `[preauth]` (fail/nofail cases in ddos mode)
+ mdre-normal-other = ^<F-NOFAIL><F-MLFFORGET>(?:Connection (?:closed|reset)|Disconnect(?:ed|ing))</F-MLFFORGET></F-NOFAIL>%(__authng_user)s <ADDR>%(__on_port_opt)s(?:: (?!Too many authentication failures)[^\[]+)?(?: \[preauth\])?\s*$
+ 
+-mdre-ddos = ^(?:Did not receive identification string from|Timeout before authentication for) <HOST>
++mdre-ddos = ^(?:Did not receive identification string from|Timeout before authentication for(?: connection from)?) <HOST>
+             ^kex_exchange_identification: (?:read: )?(?:[Cc]lient sent invalid protocol identifier|[Cc]onnection (?:closed by remote host|reset by peer))
+             ^Bad protocol version identification '(?:[^']|.*?)' (?:from )?<HOST>%(__suff)s$
+             ^<F-NOFAIL>SSH: Server;Ltype:</F-NOFAIL> (?:Authname|Version|Kex);Remote: <HOST>-\d+;[A-Z]\w+:
+--- a/fail2ban/tests/files/logs/sshd
++++ b/fail2ban/tests/files/logs/sshd
+@@ -360,6 +360,9 @@
+ # failJSON: { "match": false, "desc": "Connection reset already triggered above (known IP, no-fail helper unused here)" }
+ Jun  7 04:29:10 host sshd[649921]: Connection reset by 192.0.2.16 port 51280
+ 
++# failJSON: { "time": "2005-06-10T09:43:06", "match": true , "host": "192.0.2.17", "desc": "ddos: timeout ... connection from, gh-3907" }
++Jun 10 09:43:06 host sshd[3801]: Timeout before authentication for connection from 192.0.2.17 to 127.0.0.1, pid = 29098
++
+ # filterOptions: [{"mode": "extra"}, {"mode": "aggressive"}]
+ 
+ # several other cases from gh-864:

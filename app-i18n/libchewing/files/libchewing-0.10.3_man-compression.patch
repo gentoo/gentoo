@@ -1,0 +1,42 @@
+From: https://github.com/chewing/libchewing/pull/748
+From: "Azamat H. Hackimov" <azamat.hackimov@gmail.com>
+Date: Mon, 8 Sep 2025 12:33:44 +0300
+Subject: [PATCH] Add option for compressing man-pages
+
+Some Linux distributions compresses man-pages with different archiver.
+Add option for controlling compressing man-pages. On `-DCOMPRESS_MANS=OFF`
+man-pages installed as is and compressed by packager separately.
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -2,6 +2,7 @@ set(INFO_SRC ${PROJECT_SOURCE_DIR}/doc/libchewing.texi)
+ set(INFO_BIN ${PROJECT_BINARY_DIR}/doc/libchewing.info)
+ 
+ option(BUILD_INFO "Build info doc from texi source")
++option(COMPRESS_MANS "Compress man-pages on installation" ON)
+ 
+ find_program(MAKEINFO makeinfo)
+ if(BUILD_INFO AND MAKEINFO)
+@@ -25,6 +26,8 @@ set(MANPAGES
+     chewing-cli-info.1
+     chewing-cli-dump.1
+ )
++
++if(COMPRESS_MANS)
+ foreach(man ${MANPAGES})
+     file(ARCHIVE_CREATE
+         OUTPUT ${PROJECT_BINARY_DIR}/doc/${man}.gz
+@@ -35,4 +38,9 @@ foreach(man ${MANPAGES})
+         DESTINATION "${CMAKE_INSTALL_MANDIR}/man1"
+     )
+ endforeach()
+-endif()
+\ No newline at end of file
++else()
++    install(FILES ${MANPAGES}
++        DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
++endif()
++
++endif()
+-- 
+2.49.1
+

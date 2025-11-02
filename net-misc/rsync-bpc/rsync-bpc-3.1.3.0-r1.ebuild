@@ -11,13 +11,13 @@ SRC_URI="https://github.com/backuppc/rsync-bpc/releases/download/${PV}/${P}.tar.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="virtual/ssh"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-gettimeofday-error.patch" #874666
+	"${FILESDIR}/${PN}-3.1.3.0-r1-fix-gettimeofday-error.patch" #874666
 )
 
 src_prepare() {

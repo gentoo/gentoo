@@ -11,7 +11,7 @@ S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="${PV}"
-KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~arm64-macos ~x64-macos"
+KEYWORDS="amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~arm64-macos ~x64-macos"
 
 RDEPEND="
 	llvm-core/clang:${SLOT}
@@ -25,7 +25,7 @@ src_install() {
 	for exe in "clang" "clang++" "clang-cpp"; do
 		newbin - "${CTARGET}-${exe}" <<-EOF
 		#!/bin/sh
-		exec ${exe}-${SLOT} --no-default-config --config="/etc/clang/cross/${CTARGET}.cfg" \${@}
+		exec ${exe}-${SLOT} --no-default-config --config="/etc/clang/cross/${CTARGET}.cfg" "\${@}"
 		EOF
 	done
 

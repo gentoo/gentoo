@@ -1,0 +1,30 @@
+https://github.com/Python-SIP/sip/issues/82
+https://github.com/philthompson10/sip/commit/e967ea0ae77c45ab5f8a411390d1acf1e0bb394e
+--- a/test/movable/test_movable.py
++++ b/test/movable/test_movable.py
+@@ -24,5 +24,10 @@
+ 
++        # As of Python v3.14 we can't make assumptions about initial
++        # reference counts so we test for increases and decreases rather than
++        # absolute values.
++        ao_base_refcount = getrefcount(ao)
++
+         # Test the value of the object.
+         self.assertEqual(ao.getValue(), 3)
+-        self.assertEqual(getrefcount(ao), 2)
++        self.assertEqual(getrefcount(ao), ao_base_refcount)
+ 
+@@ -33,3 +38,3 @@
+         ow.setObject(ao)
+-        self.assertEqual(getrefcount(ao), 3)
++        self.assertEqual(getrefcount(ao), ao_base_refcount + 1)
+         self.assertEqual(ow.getObjectValue(), 4)
+@@ -38,3 +43,2 @@
+         ao2 = ow.takeObject()
+-        self.assertEqual(getrefcount(ao2), 2)
+         self.assertEqual(ow.getObjectValue(), -1000)
+@@ -45,3 +49,3 @@
+         # Check that the original Python object no longer wraps the C++ object.
+-        self.assertEqual(getrefcount(ao), 2)
++        self.assertEqual(getrefcount(ao), ao_base_refcount)
+         self.assertRaises(RuntimeError, ao.getValue)

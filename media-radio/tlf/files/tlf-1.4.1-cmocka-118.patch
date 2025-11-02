@@ -1,0 +1,12 @@
+diff --git a/test/test.h b/test/test.h
+index c125f34..f4977e8 100644
+--- a/test/test.h
++++ b/test/test.h
+@@ -9,6 +9,7 @@
+ #include <unistd.h>
+ #include <stdarg.h>
+ #include <stddef.h>
++#include <stdint.h>
+ #include <setjmp.h>
+ #include <string.h>
+ 

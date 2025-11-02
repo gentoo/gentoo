@@ -5,4 +5,7 @@
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="freedesktop-gitlab">spice/spice-protocol</remote-id>
+	</upstream>
 </pkgmetadata>

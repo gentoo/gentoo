@@ -3,13 +3,15 @@
 
 EAPI=8
 
-CRATES=""
+CRATES="traitobject@0.1.1"
+
 inherit cargo
 
 DESCRIPTION="Command-line client for WebSockets, like netcat, with socat-like functions"
 HOMEPAGE="https://github.com/vi/websocat"
 SRC_URI="https://github.com/vi/websocat/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SRC_URI+=" https://dev.gentoo.org/~arthurzam/distfiles/net-misc/${PN}/${P}-crates.tar.xz"
+SRC_URI+=" ${CARGO_CRATE_URIS}"
 
 LICENSE="MIT"
 # Dependent crate licenses
@@ -23,6 +25,10 @@ RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-traitobject-lock.patch
+)
 
 QA_FLAGS_IGNORED="/usr/bin/websocat"
 

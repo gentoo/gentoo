@@ -34,8 +34,7 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	brotli? ( app-arch/brotli[${MULTILIB_USEDEP}] )
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
-	harfbuzz? ( >=media-libs/harfbuzz-1.3.0[truetype,${MULTILIB_USEDEP}] )
-	png? ( >=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}] )
+	png? ( >=media-libs/libpng-1.2.51:=[${MULTILIB_USEDEP}] )
 	utils? (
 		svg? ( >=gnome-base/librsvg-2.46.0[${MULTILIB_USEDEP}] )
 		X? ( >=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}] )
@@ -45,6 +44,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
+PDEPEND="harfbuzz? ( >=media-libs/harfbuzz-1.3.0[truetype,${MULTILIB_USEDEP}] )"
 
 PATCHES=(
 )
@@ -187,7 +187,9 @@ multilib_src_configure() {
 		--with-zlib
 		$(use_with brotli)
 		$(use_with bzip2)
-		$(use_with harfbuzz)
+		# As of 2.14.0, FT bundles its own copies of the needed headers and dlopen()s
+		# harfbuzz instead, which breaks an insidious circular dependency.
+		$(use_with harfbuzz harfbuzz dynamic)
 		$(use_with png)
 		$(use_enable static-libs static)
 		$(usex utils $(use_with svg librsvg) --without-librsvg)
@@ -199,7 +201,7 @@ multilib_src_configure() {
 
 	case ${CHOST} in
 		mingw*|*-mingw*) ;;
-		# Workaround windows mis-detection: bug #654712
+		# Workaround windows misdetection: bug #654712
 		# Have to do it for both ${CHOST}-windres and windres
 		*) myeconfargs+=( ac_cv_prog_RC= ac_cv_prog_ac_ct_RC= ) ;;
 	esac

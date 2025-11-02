@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake-multilib flag-o-matic multiprocessing python-any-r1
 
 if [[ ${PV} == *9999* ]]; then
@@ -52,6 +52,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.8.1-tests-parallel.patch
 )
 
+src_prepare() {
+	# fix hardcoded path
+	# libvmaf ERROR could not read model from path: "/usr/local/share/model/vmaf_v0.6.1.json"
+	sed -e "s#/usr/local/share/model/#${EPREFIX}/usr/share/vmaf/model/#g" -i README.md av1/av1_cx_iface.c || die
+
+	cmake_src_prepare
+}
+
 multilib_src_configure() {
 	# Follow upstream recommendations in README (bug #921438) and avoid
 	# asserts during common use (bug #914614).
@@ -84,6 +92,9 @@ multilib_src_configure() {
 
 		# mips
 		# ENABLE_DSPR2 / ENABLE_MSA for mips
+
+		# riscv
+		# ENABLE_RVV for riscv
 
 		# amd64
 		-DENABLE_MMX=$(usex cpu_flags_x86_mmx ON OFF)

@@ -1,0 +1,84 @@
+* Fix wrong signal handler signature
+* Fix inet_ntoa prototype and arguments (use `struct in_addr` as an intermediate)
+* Fix -Wformat-security
+--- a/dispdata.c
++++ b/dispdata.c
+@@ -12,6 +12,7 @@
+ #include "netwatch.h"
+ #include "curs.h"
+ #include <sys/time.h>
++#include <sys/socket.h>
+ 
+ #ifdef NEWCURSES_SUPP
+ #include <ncurses/curses.h>
+@@ -33,7 +34,7 @@
+ #include <linux/in.h>
+ #endif
+ 
+-
++#include <arpa/inet.h>
+ #include <signal.h>
+ #include <unistd.h>
+ #include <string.h>
+@@ -48,7 +49,6 @@ EXT_CREATE_LOCK(inllist);
+ EXT_CREATE_LOCK(resolvechange);
+ void clearnetresolv ();
+ void startnetresolv ();
+-char *inet_ntoa ();
+ 
+ #define MAXREFRESH 85
+ #define ROUTERSTATSMAX 160
+@@ -296,11 +296,14 @@ void print_udp (unsigned char *dp, unsigned short len, char *s)
+ void print_icmp (unsigned char *dp, unsigned short len, char *s)
+ {
+   struct icmphdr *p = (struct icmphdr *) dp;
++  struct in_addr inp = {
++      .s_addr = p->un.gateway
++  };
+ 
+   sprintf (s,
+ 	   "\\3 ICMP TYPE:\\2%-3d\\3 CODE:\\2%-3d\\3 ID:\\2%-5d\\3 SEQ:\\2%-5d\\3 GATEWAY:\\2%-15s \\3FRAGMTU:\\2%d ",
+ 	   p->type, p->code, ntohs (p->un.echo.id),
+-	   ntohs (p->un.echo.sequence), inet_ntoa (p->un.gateway),
++	   ntohs (p->un.echo.sequence), inet_ntoa (inp),
+ 	   ntohs (p->un.frag.mtu));
+ }
+ 
+@@ -1472,7 +1475,7 @@ void dispdata (int errnum)
+ 	      fprintf (fpspeclog, "%s\n", ttt);
+ 	    else
+ 	      //!!mvprintw (yact, xleft, "%s",ttt);
+-	      mvprintw (yact, xleft, ttt);
++	      mvprintw (yact, xleft, "%s", ttt);
+ 	    attron (col4);
+ 	    if (current->update)
+ 	    {
+@@ -1720,7 +1723,7 @@ void dispdata (int errnum)
+ 	      fprintf (fpspeclog, "%s\n", ttt);
+ 	    else
+ 	      //!!mvprintw (yact, xright,"%s", ttt);
+-	      mvprintw (yact, xright, ttt);
++	      mvprintw (yact, xright, "%s", ttt);
+ 	    attron (col4);
+ 	    if (current->update)
+ 	    {
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -1137,7 +1137,7 @@ sigfunc signal_intr (int signo, sigfunc func)
+ /*
+    * Simple Control C and Hangup handler... to clean the screen 
+ */
+-void intrhandle ()
++void intrhandle (int sig)
+ {
+   //alarm (0);
+   signal_intr (SIGALRM, SIG_DFL);
+@@ -1537,7 +1537,7 @@ void indepscreen ()
+ 
+ }
+ 
+-void winchange ()
++void winchange (int sig)
+ {
+   static struct winsize size;
+ 

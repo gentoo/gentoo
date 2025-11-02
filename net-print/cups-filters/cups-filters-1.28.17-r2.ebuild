@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="MIT GPL-2"
 SLOT="0"
 IUSE="dbus exif +foomatic jpeg ldap pclm pdf perl png +postscript test tiff zeroconf"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 
 RESTRICT="!test? ( test )"
 
@@ -54,6 +54,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.28.17-c++17.patch
 	"${FILESDIR}"/${PN}-1.28.17-CVE-2023-24805.patch
+	"${FILESDIR}"/${PN}-1.28.17-qpdf-12.patch
 )
 
 src_configure() {

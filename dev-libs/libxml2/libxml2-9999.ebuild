@@ -5,16 +5,9 @@ EAPI=8
 
 # Note: Please bump in sync with dev-libs/libxslt
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="xml(+)"
 inherit python-r1 meson-multilib
-
-XSTS_HOME="http://www.w3.org/XML/2004/xml-schema-test-suite"
-XSTS_NAME_1="xmlschema2002-01-16"
-XSTS_NAME_2="xmlschema2004-01-14"
-XSTS_TARBALL_1="xsts-2002-01-16.tar.gz"
-XSTS_TARBALL_2="xsts-2004-01-14.tar.gz"
-XMLCONF_TARBALL="xmlts20130923.tar.gz"
 
 DESCRIPTION="XML C parser and toolkit"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
@@ -26,19 +19,12 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
 
-SRC_URI+="
-	test? (
-		${XSTS_HOME}/${XSTS_NAME_1}/${XSTS_TARBALL_1}
-		${XSTS_HOME}/${XSTS_NAME_2}/${XSTS_TARBALL_2}
-		https://www.w3.org/XML/Test/${XMLCONF_TARBALL}
-	)
-"
 S="${WORKDIR}/${PN}-${PV%_rc*}"
 
 LICENSE="MIT"
 # see so_version = v_maj + v_min_compat for subslot
 SLOT="2/16"
-IUSE="icu +python readline static-libs test"
+IUSE="doc icu python readline static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -50,7 +36,15 @@ RDEPEND="
 	readline? ( sys-libs/readline:= )
 "
 DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	doc? (
+		app-text/docbook-xsl-stylesheets
+		app-text/doxygen
+		dev-libs/libxslt
+	)
+	python? ( app-text/doxygen )
+"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/xml2-config
@@ -60,26 +54,10 @@ src_unpack() {
 	if [[ ${PV} == 9999 ]] ; then
 		git-r3_src_unpack
 	else
-		local tarname=${P/_rc/-rc}.tar.xz
-
-		# ${A} isn't used to avoid unpacking of test tarballs into ${WORKDIR},
-		# as they are needed as tarballs in ${S}/xstc instead and not unpacked
-		unpack ${tarname}
-
-		if [[ -n ${PATCHSET_VERSION} ]] ; then
-			unpack ${PN}-${PATCHSET_VERSION}.tar.xz
-		fi
+		default
 	fi
 
 	cd "${S}" || die
-
-	if use test ; then
-		cp "${DISTDIR}/${XSTS_TARBALL_1}" \
-			"${DISTDIR}/${XSTS_TARBALL_2}" \
-			"${S}"/xstc/ \
-			|| die "Failed to install test tarballs"
-		unpack ${XMLCONF_TARBALL}
-	fi
 }
 
 src_prepare() {
@@ -93,7 +71,9 @@ python_configure() {
 		$(meson_feature icu)
 		$(meson_native_use_feature readline)
 		$(meson_native_use_feature readline history)
+		-Ddocs=disabled
 		-Dpython=enabled
+		-Dschematron=enabled
 	)
 	mkdir "${BUILD_DIR}" || die
 	pushd "${BUILD_DIR}" >/dev/null || die
@@ -105,9 +85,11 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Ddefault_library=$(multilib_native_usex static-libs both shared)
 		$(meson_feature icu)
+		$(meson_native_use_feature doc docs)
 		$(meson_native_use_feature readline)
 		$(meson_native_use_feature readline history)
 		-Dpython=disabled
+		-Dschematron=enabled
 
 		# There has been a clean break with a soname bump.
 		# It's time to deal with the breakage.

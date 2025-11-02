@@ -16,7 +16,7 @@ S="${WORKDIR}/waffle-waffle-parent-${PV}/Source/JNA/waffle-jna"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 RESTRICT="test" #839681
 
 DEPEND="
@@ -26,7 +26,10 @@ DEPEND="
 	>=dev-java/jna-5.17.0:0
 	dev-java/slf4j-api:0
 	>=virtual/jdk-1.8:*
-	test? ( dev-java/junit:5 )
+	test? (
+		dev-java/junit:5
+		dev-java/assertj-core:3
+	)
 "
 RDEPEND=">=virtual/jre-1.8:*"
 

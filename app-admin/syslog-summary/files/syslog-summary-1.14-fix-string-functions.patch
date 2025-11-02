@@ -1,0 +1,33 @@
+diff --git a/syslog-summary b/syslog-summary
+index df1d5b4..a4f5aaf 100755
+--- a/syslog-summary
++++ b/syslog-summary
+@@ -39,7 +39,7 @@ from __future__ import print_function
+ 
+ version = "1.14"
+ 
+-import sys, re, getopt, string
++import sys, re, getopt
+ from gzip import open as gzopen
+ from hashlib import sha1
+ from optparse import OptionParser
+@@ -97,8 +97,8 @@ def read_states(filename):
+ 		io_error(e, filename, False)
+ 		return states
+ 	for line in f:
+-		fields = string.split(line)
+-		states[fields[0]] = (string.atoi(fields[1]), fields[2])
++		fields = line.split()
++		states[fields[0]] = (fields[1].atoi(), fields[2])
+ 	f.close()
+ 	return states
+ 
+@@ -125,7 +125,7 @@ def split_date(line):
+ 		m = pat.match(line)
+ 		if m:
+ 			return line[:m.end()], line[m.end():]
+-	print("line has bad date", "<" + string.rstrip(line) + ">")
++	print("line has bad date", "<" + line.rstrip() + ">")
+ 	return None, line
+ 
+ def is_gzipped(filename):

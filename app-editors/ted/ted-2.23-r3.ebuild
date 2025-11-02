@@ -1,17 +1,17 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="X-based rich text editor"
-HOMEPAGE="https://www.nllgg.nl/Ted/"
+HOMEPAGE="https://ftp.nluug.nl/pub/editors/ted/"
 SRC_URI="ftp://ftp.nluug.nl/pub/editors/ted/${P}.src.tar.gz"
 S="${WORKDIR}/Ted-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~riscv sparc x86"
+KEYWORDS="amd64 ppc ~riscv ~sparc x86"
 
 RDEPEND="
 	app-text/libpaper:=

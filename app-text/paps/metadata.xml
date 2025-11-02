@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">paps</remote-id>
+		<remote-id type="sourceforge">paps</remote-id><!-- old -->
+		<remote-id type="github">dov/paps</remote-id>
 	</upstream>
 </pkgmetadata>

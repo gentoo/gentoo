@@ -1,0 +1,30 @@
+From 84eb33ca2a2dde1ad4903e4d5ca6ac1732554e60 Mon Sep 17 00:00:00 2001
+From: Seb Hinderer <sebastien.hinderer@inria.fr>
+Date: Thu, 7 Aug 2025 17:38:52 +0200
+Subject: [PATCH] Stop including stdcompat.h
+
+Starting with stdcompat 21.0 this file is no longer provided.
+
+The only reason why it was included was to provide access to the
+`caml_alloc_initialized_string` primitive which is actually exported
+by caml/alloc.h.
+
+It has been verified that this was already the case in OCaml 4.11,
+which is the oldest version of the OCaml compiler pyml will now be supporting.
+---
+ pyml_stubs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyml_stubs.c b/pyml_stubs.c
+index 40e3481..204e601 100644
+--- a/bundles/pyml/pyml-current/pyml_stubs.c
++++ b/bundles/pyml/pyml-current/pyml_stubs.c
+@@ -11,7 +11,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <errno.h>
+-#include <stdcompat.h>
++#include <caml/alloc.h>
+ #include <assert.h>
+ #include "pyml_stubs.h"
+ 

@@ -18,7 +18,7 @@ SRC_URI="https://github.com/puma/puma/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
 DEPEND="dev-libs/openssl:0 test? ( net-misc/curl )"
 RDEPEND="dev-libs/openssl:0="
@@ -66,6 +66,11 @@ all_ruby_prepare() {
 	#sed -e '/test_systemd_notify_usr1_phased_restart_cluster/askip "Flaky test"' \
 	#	-i test/test_plugin_systemd.rb || die
 
+	# Avoid a test that fails on systemd systems due to the pluging
+	# getting autoloaded there, bug #954180
+	sed -e '/test_plugins/askip "Fails on a systemd system"' \
+		-i test/test_cli.rb || die
+
 	# Tries to call 'rackup' directly
 	sed -i -e '/def test_bin/,/^    end/ s:^:#:' test/test_rack_handler.rb || die
 
@@ -76,6 +81,7 @@ all_ruby_prepare() {
 
 each_ruby_test() {
 	einfo "Running test suite"
+
 	MT_NO_PLUGINS=true ${RUBY} -Ilib:.:test \
 		-e "require 'minitest/autorun'; Dir['test/**/*test_*.rb'].each{require _1}" || die
 }

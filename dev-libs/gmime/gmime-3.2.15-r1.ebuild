@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jstedfast/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 SLOT="3.0"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="crypt doc idn test +vala"
 RESTRICT="!test? ( test )"
 
@@ -22,7 +22,7 @@ RDEPEND="
 	idn? ( net-dns/libidn2:= )
 	vala? (
 		$(vala_depend)
-		>=dev-libs/gobject-introspection-1.30.0:=
+		>=dev-libs/gobject-introspection-1.82.0-r2:=
 	)
 "
 DEPEND="${RDEPEND}
@@ -64,6 +64,11 @@ src_compile() {
 	if use doc; then
 		emake -C docs/tutorial html
 	fi
+}
+
+src_test() {
+	# -j1: https://github.com/jstedfast/gmime/issues/177
+	emake -j1 check
 }
 
 src_install() {

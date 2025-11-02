@@ -1,0 +1,67 @@
+--- a/git-cliff-core/src/repo.rs	2025-07-28 21:57:07.903212830 +0200
++++ b/git-cliff-core/src/repo.rs	2025-07-28 21:59:12.860692661 +0200
+@@ -651,6 +651,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn get_latest_commit() -> Result<()> {
+         let repository = get_repository()?;
+@@ -660,6 +661,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn commit_search() -> Result<()> {
+         let repository = get_repository()?;
+@@ -671,6 +673,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn get_latest_tag() -> Result<()> {
+         let repository = get_repository()?;
+@@ -683,6 +686,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn git_tags() -> Result<()> {
+         let repository = get_repository()?;
+@@ -714,6 +718,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn git_upstream_remote() -> Result<()> {
+         let repository = get_repository()?;
+@@ -732,6 +737,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn resolves_existing_tag_with_name_and_message() -> Result<()> {
+         let repository = get_repository()?;
+@@ -749,6 +755,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn resolves_tag_when_no_tags_exist() -> Result<()> {
+         let repository = get_repository()?;
+@@ -758,6 +765,7 @@
+         Ok(())
+     }
+ 
++    #[ignore]
+     #[test]
+     fn includes_root_commit() -> Result<()> {
+         let repository = get_repository()?;
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,12 +17,12 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+extended-keys gtk +magic +vim +vim-syntax X"
+IUSE="+extended-keys glib +magic +vim +vim-syntax X"
 
 DEPEND="
 	>=sys-libs/ncurses-5.9-r3:=
+	glib? ( dev-libs/glib:2 )
 	magic? ( sys-apps/file )
-	gtk? ( x11-libs/gtk+:2 )
 	X? ( x11-libs/libX11 )
 "
 RDEPEND="
@@ -46,7 +46,7 @@ src_configure() {
 		--disable-werror \
 		$(use_enable extended-keys) \
 		$(use_with magic libmagic) \
-		$(use_with gtk) \
+		$(use_with glib) \
 		$(use_with X X11)
 }
 

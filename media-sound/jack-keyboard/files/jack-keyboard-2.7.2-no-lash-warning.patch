@@ -1,0 +1,22 @@
+Source: https://salsa.debian.org/multimedia-team/jack-keyboard/-/blob/master/debian/patches/2001-hide_no_lash_warning.patch
+
+Description: Don't show an error dialog, just print a warning to the stderr.
+ We're going to drop LASH in favor of ladish, so such dialog will be
+ inappropriate.
+Author: Alessio Treglia <alessio@debian.org>
+Forwarded: no
+---
+ src/jack-keyboard.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- jack-keyboard.orig/src/jack-keyboard.c
++++ jack-keyboard/src/jack-keyboard.c
+@@ -947,7 +947,7 @@ init_lash(lash_args_t *args)
+ 	lash_client = lash_init(args, PACKAGE_NAME, LASH_Config_Data_Set, LASH_PROTOCOL(2, 0));
+ 
+ 	if (!lash_server_connected(lash_client)) {
+-		g_critical("Cannot initialize LASH.  Continuing anyway.");
++		fprintf(stderr, "jack-keyboard: Cannot initialize LASH.  Continuing anyway.\n");
+ 		/* exit(EX_UNAVAILABLE); */
+ 
+ 		return;

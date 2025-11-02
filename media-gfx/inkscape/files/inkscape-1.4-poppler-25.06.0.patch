@@ -1,0 +1,123 @@
+From https://gitlab.com/inkscape/inkscape/-/merge_requests/7264
+
+From 97bd8f29a61e691ceea98ca2444b974cf4256ae0 Mon Sep 17 00:00:00 2001
+From: Rafael Siejakowski <rs@rs-math.net>
+Date: Sun, 8 Jun 2025 21:30:44 +0200
+Subject: [PATCH] Fix build against Poppler 25.06
+
+Accommodate for the private API change, whereby an array of pointers
+has been replaced with a vector of unique_ptr.
+
+Backported from MR 7261
+https://gitlab.com/inkscape/inkscape/-/merge_requests/7261
+
+Fixes https://gitlab.com/inkscape/inkscape/-/issues/5836
+---
+ .../internal/pdfinput/pdf-parser.cpp          | 23 +++++++++++--------
+ .../pdfinput/poppler-transition-api.h         | 12 ++++++++++
+ 2 files changed, 25 insertions(+), 10 deletions(-)
+
+diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
+index 01d7bf6ef0e..0d31eda16f4 100644
+--- a/src/extension/internal/pdfinput/pdf-parser.cpp
++++ b/src/extension/internal/pdfinput/pdf-parser.cpp
+@@ -27,6 +27,7 @@
+ #include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
++#include <memory>
+ #include <mutex> // std::call_once()
+ #include <utility>
+ #include <vector>
+@@ -686,7 +687,6 @@ void PdfParser::opSetLineWidth(Object args[], int /*numArgs*/)
+ void PdfParser::opSetExtGState(Object args[], int /*numArgs*/)
+ {
+     Object obj1, obj2, obj3, obj4, obj5;
+-    Function *funcs[4] = {nullptr, nullptr, nullptr, nullptr};
+     GfxColor backdropColor;
+     GBool haveBackdropColor = gFalse;
+     GBool alpha = gFalse;
+@@ -744,13 +744,14 @@ void PdfParser::opSetExtGState(Object args[], int /*numArgs*/)
+         state->setLineWidth(obj2.getNum());
+     }
+ 
++    _POPPLER_DECLARE_TRANSFER_FUNCTION_VECTOR(funcs);
++
+     // transfer function
+     if (_POPPLER_CALL_ARGS_DEREF(obj2, obj1.dictLookup, "TR2").isNull()) {
+         _POPPLER_CALL_ARGS(obj2, obj1.dictLookup, "TR");
+     }
+     if (obj2.isName(const_cast<char *>("Default")) || obj2.isName(const_cast<char *>("Identity"))) {
+-        funcs[0] = funcs[1] = funcs[2] = funcs[3] = nullptr;
+-        state->setTransfer(funcs);
++        state->setTransfer(std::move(funcs));
+     } else if (obj2.isArray() && obj2.arrayGetLength() == 4) {
+         int pos = 4;
+         for (int i = 0; i < 4; ++i) {
+@@ -763,12 +764,14 @@ void PdfParser::opSetExtGState(Object args[], int /*numArgs*/)
+         }
+         _POPPLER_FREE(obj3);
+         if (pos == 4) {
+-            state->setTransfer(funcs);
++            state->setTransfer(std::move(funcs));
+         }
+     } else if (obj2.isName() || obj2.isDict() || obj2.isStream()) {
+         if ((funcs[0] = Function::parse(&obj2))) {
+-            funcs[1] = funcs[2] = funcs[3] = nullptr;
+-            state->setTransfer(funcs);
++            funcs[1] = nullptr;
++            funcs[2] = nullptr;
++            funcs[3] = nullptr;
++            state->setTransfer(std::move(funcs));
+         }
+     } else if (!obj2.isNull()) {
+         error(errSyntaxError, getPos(), "Invalid transfer function in ExtGState");
+@@ -790,8 +793,7 @@ void PdfParser::opSetExtGState(Object args[], int /*numArgs*/)
+                 funcs[0] = Function::parse(&obj3);
+                 if (funcs[0]->getInputSize() != 1 || funcs[0]->getOutputSize() != 1) {
+                     error(errSyntaxError, getPos(), "Invalid transfer function in soft mask in ExtGState");
+-                    delete funcs[0];
+-                    funcs[0] = nullptr;
++                    _POPPLER_DELETE_TRANSFER_FUNCTION(funcs[0]);
+                 }
+             }
+             _POPPLER_FREE(obj3);
+@@ -835,9 +837,10 @@ void PdfParser::opSetExtGState(Object args[], int /*numArgs*/)
+                             }
+                         }
+                     }
+-                    doSoftMask(&obj3, alpha, blendingColorSpace.get(), isolated, knockout, funcs[0], &backdropColor);
++                    doSoftMask(&obj3, alpha, blendingColorSpace.get(), isolated, knockout,
++                               _POPPLER_GET_TRANSFER_FUNCTION_POINTER(funcs[0]), &backdropColor);
+                     if (funcs[0]) {
+-                        delete funcs[0];
++                        _POPPLER_DELETE_TRANSFER_FUNCTION(funcs[0]);
+                     }
+                 } else {
+                     error(errSyntaxError, getPos(), "Invalid soft mask in ExtGState - missing group");
+diff --git a/src/extension/internal/pdfinput/poppler-transition-api.h b/src/extension/internal/pdfinput/poppler-transition-api.h
+index a67132ba6bd..d04412757bc 100644
+--- a/src/extension/internal/pdfinput/poppler-transition-api.h
++++ b/src/extension/internal/pdfinput/poppler-transition-api.h
+@@ -15,6 +15,18 @@
+ #include <glib/poppler-features.h>
+ #include <poppler/UTF.h>
+ 
++#if POPPLER_CHECK_VERSION(25, 6, 0)
++#define _POPPLER_DECLARE_TRANSFER_FUNCTION_VECTOR(name) std::vector<std::unique_ptr<Function>> name(4)
++#define _POPPLER_DELETE_TRANSFER_FUNCTION(name) name.reset()
++#define _POPPLER_GET_TRANSFER_FUNCTION_POINTER(name) name.get()
++#else
++#define _POPPLER_DECLARE_TRANSFER_FUNCTION_VECTOR(name) Function *name[4] = {}
++#define _POPPLER_DELETE_TRANSFER_FUNCTION(name) \
++    delete name;                                \
++    name = nullptr
++#define _POPPLER_GET_TRANSFER_FUNCTION_POINTER(name) name
++#endif
++
+ #if POPPLER_CHECK_VERSION(25,2,0)
+ #define _POPPLER_GET_CODE_TO_GID_MAP(ff, len) getCodeToGIDMap(ff)
+ #define _POPPLER_GET_CID_TO_GID_MAP(len) getCIDToGIDMap()
+-- 
+GitLab
+

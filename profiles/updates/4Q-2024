@@ -33,7 +33,6 @@ move dev-python/IPy dev-python/ipy
 move dev-python/jinja2_pluralize dev-python/jinja2-pluralize
 move dev-python/Levenshtein dev-python/levenshtein
 move dev-python/MechanicalSoup dev-python/mechanicalsoup
-move dev-python/mitmproxy_wireguard dev-python/mitmproxy-wireguard
 move dev-python/mypy_extensions dev-python/mypy-extensions
 move dev-python/Nuitka dev-python/nuitka
 move dev-python/Opcodes dev-python/opcodes
@@ -66,7 +65,7 @@ move sys-libs/libcxxabi llvm-runtimes/libcxxabi
 move sys-libs/libcxx llvm-runtimes/libcxx
 move sys-libs/compiler-rt-sanitizers llvm-runtimes/compiler-rt-sanitizers
 move sys-libs/compiler-rt llvm-runtimes/compiler-rt
-move sys-devel/clang-runtime llvm-core/clang-runtime
+move sys-devel/clang-runtime llvm-runtimes/clang-runtime
 move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
 move sys-devel/clang-common llvm-core/clang-common
 move sys-devel/clang llvm-core/clang

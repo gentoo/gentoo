@@ -17,7 +17,7 @@ SRC_URI="https://people.redhat.com/sgrubb/audit/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="gssapi io-uring ldap python static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -49,6 +49,10 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 	# missing on musl. Uses handrolled AC_LINK_IFELSE but fails at link time
 	# for older compilers regardless. bug #898828
 	strndupa
+)
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.1-musl-basename.patch"
 )
 
 src_prepare() {

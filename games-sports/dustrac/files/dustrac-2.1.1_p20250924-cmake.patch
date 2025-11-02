@@ -1,0 +1,27 @@
+From 2644b9269129065ec709fa2712f58c4786e5eb69 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Mon, 1 Sep 2025 21:50:15 +0200
+Subject: [PATCH] Do not override CMAKE_CXX_FLAGS
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4a1e18ae..f36b4ed7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -126,8 +126,7 @@ elseif(WIN32)
+ endif()
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX OR MINGW OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+-    add_compile_options("$<$<CONFIG:RELEASE>:-W;-Wall;-O3;-pedantic;-fomit-frame-pointer>")
+-    add_compile_options("$<$<CONFIG:DEBUG>:-W;-Wall;-O0;-pedantic>")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -fomit-frame-pointer -finline-functions")
+ 
+     if(USE_CCACHE)
+         # Automatically use ccache if found
+-- 
+2.51.0
+

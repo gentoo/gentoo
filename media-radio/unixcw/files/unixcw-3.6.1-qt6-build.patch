@@ -19,9 +19,9 @@ index aecd270..d66151e 100755
 -			   QT5_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtCore"
 +			   QT_INCLUDE_DIR=`$PKG_CONFIG --variable=includedir Qt6Core`
 +			   QT6_CFLAGS="-isystem $QT_INCLUDE_DIR"
-+			   QT6_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtWidgets"
-+			   QT6_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtGui"
-+			   QT6_CFLAGS+=" -isystem $QT_INCLUDE_DIR/QtCore"
++			   QT6_CFLAGS="${QT6_CFLAGS} -isystem $QT_INCLUDE_DIR/QtWidgets"
++			   QT6_CFLAGS="${QT6_CFLAGS} -isystem $QT_INCLUDE_DIR/QtGui"
++			   QT6_CFLAGS="${QT6_CFLAGS} -isystem $QT_INCLUDE_DIR/QtCore"
  
 -			   AC_MSG_RESULT([QT5 CLFAGS is $QT5_CFLAGS])
 -			   AC_MSG_RESULT([QT5 LIBS is $QT5_LIBS])

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33 ruby34"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -34,7 +34,6 @@ ruby_add_bdepend "
 		dev-ruby/rspec:3
 		dev-ruby/shoulda-context
 		dev-ruby/curb
-		dev-ruby/ethon
 	)
 "
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+ssl"
 
@@ -23,6 +23,8 @@ DEPEND="ssl? ( dev-libs/openssl:= )"
 RDEPEND="${DEPEND}"
 
 # Test suite tries to connect to the Internet
+#PROPERTIES="test_network"
+# ... but seems to fail even if allowing that?
 RESTRICT="test"
 
 DOC_CONTENTS="If you would like to run htpdate as a daemon, set
@@ -31,8 +33,6 @@ appropriate http servers in /etc/conf.d/htpdate!"
 src_prepare() {
 	default
 
-	# Use more standard adjtimex() to fix uClibc builds.
-	sed -i 's:ntp_adjtime:adjtimex:g' htpdate.[8c] || die
 	# Don't compress man pages by default
 	sed '/gzip/d' -i Makefile || die
 }

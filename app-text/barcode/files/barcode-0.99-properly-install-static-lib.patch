@@ -1,0 +1,181 @@
+From 6d9e4aedc565568a39262990c6e6005f0528821c Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Wed, 6 Aug 2025 21:59:25 -0400
+Subject: [PATCH 1/2] reorganize broken upstream includes
+
+Upstream broke library installation when porting to automake/libtool.
+Then followed this up by breaking the primary header file -- adding
+config.h and lib/gettext.h includes solely because that barcode.h was
+included in every other file. Instead, init the gettext infra directly
+in each file.
+---
+ barcode.h | 6 ------
+ cmdline.c | 6 ++++++
+ library.c | 1 +
+ main.c    | 8 +++++++-
+ pcl.c     | 6 ++++++
+ plessey.c | 6 ++++++
+ sample.c  | 6 ++++++
+ 7 files changed, 32 insertions(+), 7 deletions(-)
+
+diff --git a/barcode.h b/barcode.h
+index ed90e0c..0f4ee5a 100644
+--- a/barcode.h
++++ b/barcode.h
+@@ -23,14 +23,8 @@
+ #ifndef _BARCODE_H_
+ #define _BARCODE_H_
+ 
+-#include "config.h"
+ #include <stdio.h>
+ 
+-#include <gettext.h>
+-
+-#define _(X) gettext (X)
+-#define _N(X) (X)
+-
+ /*
+  * The object
+  */
+diff --git a/cmdline.c b/cmdline.c
+index 0a618a6..8ea7355 100644
+--- a/cmdline.c
++++ b/cmdline.c
+@@ -22,6 +22,12 @@
+  *      Michele Comitini (mcm@glisco.it): better handling of numeric type args.
+  */
+ 
++#include "config.h"
++#include <gettext.h>
++
++#define _(X) gettext (X)
++#define _N(X) (X)
++
+ #include "barcode.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+diff --git a/library.c b/library.c
+index 30946ff..9ac1675 100644
+--- a/library.c
++++ b/library.c
+@@ -19,6 +19,7 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "config.h"
+ #include "barcode.h"
+ 
+ #include <stdio.h>
+diff --git a/main.c b/main.c
+index d28e0a6..9ae806a 100644
+--- a/main.c
++++ b/main.c
+@@ -19,7 +19,13 @@
+  *  You should have received a copy of the GNU General Public License
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+-	
++
++#include "config.h"
++#include <gettext.h>
++
++#define _(X) gettext (X)
++#define _N(X) (X)
++
+ #include "barcode.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+diff --git a/pcl.c b/pcl.c
+index d78b310..6b34a2c 100644
+--- a/pcl.c
++++ b/pcl.c
+@@ -19,6 +19,12 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "config.h"
++#include <gettext.h>
++
++#define _(X) gettext (X)
++#define _N(X) (X)
++
+ #include "barcode.h"
+ 
+ #include <stdio.h>
+diff --git a/plessey.c b/plessey.c
+index 2f59e39..7f00b9e 100644
+--- a/plessey.c
++++ b/plessey.c
+@@ -17,6 +17,12 @@
+  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include "config.h"
++#include <gettext.h>
++
++#define _(X) gettext (X)
++#define _N(X) (X)
++
+ #include "barcode.h"
+ 
+ #include <stdio.h>
+diff --git a/sample.c b/sample.c
+index e79798c..1c8256d 100644
+--- a/sample.c
++++ b/sample.c
+@@ -1,3 +1,9 @@
++#include "config.h"
++#include <gettext.h>
++
++#define _(X) gettext (X)
++#define _N(X) (X)
++
+ #include "barcode.h"
+ 
+ #include <stdio.h>
+-- 
+2.49.1
+
+
+From 7443318b8f9f0008e2bc29bf60e149a833bfd3db Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@gentoo.org>
+Date: Wed, 6 Aug 2025 22:05:41 -0400
+Subject: [PATCH 2/2] install libbarcode static library
+
+This was broken by the automake/libtool port. and other projects depend
+on it.
+---
+ Makefile.am | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index c3bf085..94832f9 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -25,17 +25,19 @@ EXTRA_DIST = barcode.h cmdline.h
+ 
+ bin_PROGRAMS = barcode sample
+ 
+-noinst_LTLIBRARIES = libbarcode.la
++lib_LIBRARIES = libbarcode.a
++
++include_HEADERS = barcode.h
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-libbarcode_la_SOURCES = library.c ean.c code128.c code39.c code93.c i25.c \
++libbarcode_a_SOURCES = library.c ean.c code128.c code39.c code93.c i25.c \
+ 		msi.c plessey.c codabar.c \
+ 		ps.c svg.c pcl.c code11.c
+ 
+ barcode_SOURCES = main.c cmdline.c
+-barcode_LDADD = libbarcode.la lib/libgnu.la
++barcode_LDADD = libbarcode.a lib/libgnu.la
+ 
+ 
+ sample_SOURCES = sample.c
+-sample_LDADD = libbarcode.la
++sample_LDADD = libbarcode.a
+-- 
+2.49.1
+

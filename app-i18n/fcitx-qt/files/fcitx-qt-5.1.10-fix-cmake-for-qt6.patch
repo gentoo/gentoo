@@ -1,0 +1,44 @@
+https://github.com/fcitx/fcitx5-qt/commit/46a07a85d191fd77a1efc39c8ed43d0cd87788d2
+https://github.com/fcitx/fcitx5-qt/commit/6ac4fdd8e90ff9c25a5219e15e83740fa38c9c71
+https://github.com/fcitx/fcitx5-qt/commit/1d07f7e8d6a7ae8651eda658f87ab0c9df08bef4
+
+fix cmake for QT 6.10.0 RC
+
+--- a/qt6/CMakeLists.txt
++++ b/qt6/CMakeLists.txt
+@@ -1,11 +1,20 @@
+ 
+-find_package(Qt6 ${REQUIRED_QT6_VERSION} CONFIG REQUIRED Core DBus Widgets)
+-find_package(Qt6Gui ${REQUIRED_QT6_VERSION} REQUIRED Private)
++set(QT6_REQUIRED_COMPONENTS Core Gui DBus Widgets)
++
+ if (ENABLE_QT6_WAYLAND_WORKAROUND)
+-  find_package(Qt6WaylandClient ${REQUIRED_QT6_VERSION} REQUIRED Private)
+-  find_package(Qt6WaylandGlobalPrivate ${REQUIRED_QT6_VERSION} REQUIRED)
++  list(APPEND QT6_REQUIRED_COMPONENTS WaylandClient WaylandGlobalPrivate)
++endif()
++find_package(Qt6 ${REQUIRED_QT6_VERSION} CONFIG REQUIRED COMPONENTS ${QT6_REQUIRED_COMPONENTS})
++
++if (NOT TARGET Qt6::GuiPrivate)
++    find_package(Qt6GuiPrivate CONFIG REQUIRED)
+ endif()
+ 
++if (ENABLE_QT6_WAYLAND_WORKAROUND AND NOT TARGET Qt6::WaylandClientPrivate)
++    find_package(Qt6WaylandClientPrivate CONFIG REQUIRED)
++endif()
++
++
+ add_subdirectory(dbusaddons)
+ add_subdirectory(platforminputcontext)
+ 
+--- a/qt6/immodule-probing/CMakeLists.txt
++++ b/qt6/immodule-probing/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ add_executable(fcitx5-qt6-immodule-probing main.cpp)
+-target_include_directories(fcitx5-qt6-immodule-probing PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS})
+-target_link_libraries(fcitx5-qt6-immodule-probing Qt6::Gui)
++target_link_libraries(fcitx5-qt6-immodule-probing Qt6::Gui Qt6::GuiPrivate)
+ 
+-install(TARGETS fcitx5-qt6-immodule-probing DESTINATION "${CMAKE_INSTALL_BINDIR}")
+\ No newline at end of file
++install(TARGETS fcitx5-qt6-immodule-probing DESTINATION "${CMAKE_INSTALL_BINDIR}")

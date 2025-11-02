@@ -32,7 +32,10 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${WORKDIR}/${PATCHSET}/${PV}" ) # bug 955107
+PATCHES=(
+	"${WORKDIR}/${PATCHSET}/${PV}" # bug 955107
+	"${FILESDIR}/${PN}-1.4.1-fix-uninitialised.patch" # bug 957749, pending MR
+)
 
 multilib_src_configure() {
 	if ! multilib_is_native_abi; then

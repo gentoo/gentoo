@@ -1,0 +1,44 @@
+https://bugs.gentoo.org/955373
+https://gitlab.freedesktop.org/pipewire/pipewire/-/merge_requests/2421
+
+From 64b7a8990e2d6f37572d0b86c0d0847a283ba99e Mon Sep 17 00:00:00 2001
+Message-ID: <64b7a8990e2d6f37572d0b86c0d0847a283ba99e.1751075990.git.sam@gentoo.org>
+From: Sam James <sam@gentoo.org>
+Date: Sat, 28 Jun 2025 02:59:03 +0100
+Subject: [PATCH] meson: add fftw option
+
+Packagers need to have a way to control whether a dependency is used
+even if it's installed/available.
+---
+ meson.build       | 2 +-
+ meson_options.txt | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 2331ac826..0ba5c57a8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -321,7 +321,7 @@ cdata.set('HAVE_DBUS', dbus_dep.found())
+ sdl_dep = dependency('sdl2', required : get_option('sdl2'))
+ summary({'SDL2 (video examples)': sdl_dep.found()}, bool_yn: true, section: 'Misc dependencies')
+ drm_dep = dependency('libdrm', required : false)
+-fftw_dep = dependency('fftw3f', required : false)
++fftw_dep = dependency('fftw3f', required : get_option('fftw'))
+ summary({'fftw3f (filter-chain convolver)': fftw_dep.found()}, bool_yn: true, section: 'Misc dependencies')
+ cdata.set('HAVE_FFTW', fftw_dep.found())
+ 
+diff --git a/meson_options.txt b/meson_options.txt
+index 74ce3fa94..cd2c839f7 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -383,3 +383,7 @@ option('ebur128',
+        description: 'Enable code that depends on ebur128',
+        type: 'feature',
+        value: 'auto')
++option('fftw',
++       description: 'Enable code that depends on fftw',
++       type: 'feature',
++       value: 'auto')
+-- 
+2.50.0
+

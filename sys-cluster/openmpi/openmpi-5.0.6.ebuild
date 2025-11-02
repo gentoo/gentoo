@@ -32,7 +32,9 @@ REQUIRED_USE="
 	openmpi_rm_pbs? ( !openmpi_rm_slurm )
 "
 
+# !dev-lang/pcc # 951474 file collision in /usr/bin/pcc
 RDEPEND="
+	!dev-lang/pcc
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
 	!sys-cluster/nullmpi
@@ -116,7 +118,7 @@ src_configure() {
 
 		$(use_with cma)
 
-		$(use_with cuda cuda "${EPREFIX}"/opt/cuda)
+		$(use_with cuda cuda "${CUDA_PATH:-${ESYSROOT}/opt/cuda}")
 		$(use_with valgrind)
 		$(use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr)
 		$(use_with openmpi_rm_pbs tm)

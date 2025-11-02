@@ -1,0 +1,37 @@
+From 50f44041226a2f7e73232f07269bd624dc273c2c Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Wed, 20 Aug 2025 11:12:55 +0200
+Subject: [PATCH] fix missing __stop_linkarr_upb_AllExts
+
+Change link order
+
+FAILED: [code=1] grpc_cli
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/bin/ld:
+/usr/lib64/libupb.a(extension_registry.c.o): undefined reference to symbol
+'__stop_linkarr_upb_AllExts'
+/usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../x86_64-pc-linux-gnu/bin/ld:
+libupb_mini_table_lib.so.49.0.0: error adding symbols: DSO missing from command
+line
+collect2: error: ld returned 1 exit status
+
+See-also: https://github.com/grpc/grpc/issues/40195
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c1e7461..99b47cf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19919,9 +19919,9 @@ target_include_directories(grpc_cli
+ 
+ target_link_libraries(grpc_cli
+   ${_gRPC_ALLTARGETS_LIBRARIES}
+-  grpc++
+   ${_gRPC_PROTOBUF_PROTOC_LIBRARIES}
+   grpc++_test_config
++  grpc++
+ )
+ 
+ 
+-- 
+2.51.0
+

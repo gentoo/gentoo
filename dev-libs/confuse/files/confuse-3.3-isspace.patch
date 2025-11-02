@@ -1,0 +1,38 @@
+https://github.com/libconfuse/libconfuse/commit/dc7cef956d6d7c1ec792f9561f732797b52e92d4
+From: Thomas Klausner <wiz@gatalith.at>
+Date: Mon, 5 May 2025 23:22:51 +0200
+Subject: [PATCH] Fix isspace() arguments.
+
+Per ANSI and POSIX, isspace() only accepts arguments that
+are valid 'unsigned char' or EOF.
+
+The code passed 'char' arguments, which on many platforms are
+'signed char'. These are automatically promoted to integers, keeping
+the sign, so negative values like -61 are passed to isspace(),
+which is not allowed per the standards.
+
+Casting to 'unsigned char' makes sure the isspace argument is in the
+allowed range.
+
+Fixes core dump e.g. in i3status.
+
+Closes #180.
+--- a/src/lexer.l
++++ b/src/lexer.l
+@@ -397,14 +397,14 @@ static char *trim_whitespace(char *str, unsigned int len)
+ 	return str;
+
+     while (len > 1) {
+-	if ((str[len] == 0 || isspace(str[len])) && isspace(str[len - 1]))
++	if ((str[len] == 0 || isspace((unsigned char)str[len])) && isspace((unsigned char)str[len - 1]))
+ 	    len--;
+ 	else
+ 	    break;
+     }
+     str[len] = 0;
+
+-    while (isspace(*str))
++    while (isspace((unsigned char)*str))
+ 	str++;
+
+     return str;

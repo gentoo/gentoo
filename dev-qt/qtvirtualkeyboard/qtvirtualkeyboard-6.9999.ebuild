@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,14 +17,14 @@ RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui]
 	~dev-qt/qtdeclarative-${PV}:6
 	~dev-qt/qtsvg-${PV}:6
-	sound? ( ~dev-qt/qtmultimedia-${PV}:6 )
+	sound? ( ~dev-qt/qtmultimedia-${PV}:6[qml] )
 	spell? ( app-text/hunspell:= )
 "
 DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package sound Qt6Multimedia)
+		$(qt_feature sound vkb_sound_effects)
 		$(qt_feature spell hunspell)
 		-DINPUT_vkb_handwriting=no # neither cerence nor myscript are packaged
 	)

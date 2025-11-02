@@ -33,6 +33,10 @@ BDEPEND="
 "
 CONFIG_CHECK="SECURITY_APPARMOR"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.3-convert-uint-to-unsigned-int.patch"
+)
+
 src_prepare() {
 	default
 
@@ -74,7 +78,7 @@ src_compile() {
 }
 
 src_test() {
-	emake CXX="$(tc-getCXX)" USE_SYSTEM=1 check
+	emake CXX="$(tc-getCXX)" USE_SYSTEM=1 check -Onone
 }
 
 src_install() {

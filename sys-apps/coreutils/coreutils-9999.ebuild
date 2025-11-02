@@ -9,7 +9,7 @@ EAPI=8
 #
 # Also recommend subscribing to the coreutils and bug-coreutils MLs.
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/coreutils.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs verify-sig
 
@@ -23,7 +23,7 @@ if [[ ${PV} == 9999 ]] ; then
 elif [[ ${PV} == *_p* ]] ; then
 	# Note: could put this in devspace, but if it's gone, we don't want
 	# it in tree anyway. It's just for testing.
-	MY_SNAPSHOT="$(ver_cut 1-2).53-14af8"
+	MY_SNAPSHOT="$(ver_cut 1-2).327-71a8c"
 	SRC_URI="https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz -> ${P}.tar.xz"
 	SRC_URI+=" verify-sig? ( https://www.pixelbeat.org/cu/coreutils-${MY_SNAPSHOT}.tar.xz.sig -> ${P}.tar.xz.sig )"
 	S="${WORKDIR}"/${PN}-${MY_SNAPSHOT}
@@ -40,7 +40,7 @@ SRC_URI+=" !vanilla? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/$
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="acl caps gmp hostname kill multicall nls +openssl selinux +split-usr static test vanilla xattr"
+IUSE="acl caps gmp hostname kill multicall nls +openssl selinux +split-usr static test test-full vanilla xattr"
 RESTRICT="!test? ( test )"
 
 LIB_DEPEND="
@@ -141,6 +141,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# Running Valgrind in an ebuild is too unreliable. Skip such tests.
+	cat <<-EOF >> init.cfg || die
+	require_valgrind_()
+	{
+		skip_ "requires a working valgrind"
+	}
+	EOF
+
 	# TODO: in future (>9.4?), we may want to wire up USE=systemd:
 	# still experimental at the moment, but:
 	# https://git.savannah.gnu.org/cgit/coreutils.git/commit/?id=85edb4afbd119fb69a0d53e1beb71f46c9525dd0
@@ -216,7 +224,7 @@ src_test() {
 
 	addwrite /dev/full
 
-	#local -x RUN_EXPENSIVE_TESTS="yes"
+	local -x RUN_{VERY_,}EXPENSIVE_TESTS=$(usex test-full yes no)
 	#local -x COREUTILS_GROUPS="portage wheel"
 	local -x PATH="${T}/mount-wrappers:${PATH}"
 	local -x gl_public_submodule_commit=

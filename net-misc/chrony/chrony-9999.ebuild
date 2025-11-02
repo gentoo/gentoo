@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ S="${WORKDIR}/${P/_/-}"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+caps +cmdmon debug html libtomcrypt +nettle nss +ntp +nts +phc pps +readline +refclock +rtc samba +seccomp +sechash selinux"
+IUSE="+caps +cmdmon debug html libtomcrypt +nettle nss +nts +phc pps +readline +refclock +rtc samba +seccomp +sechash selinux"
 # nettle > nss > libtomcrypt in configure
 REQUIRED_USE="
 	sechash? ( || ( nettle nss libtomcrypt ) )
@@ -83,8 +83,8 @@ else
 fi
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
-	"${FILESDIR}"/${PN}-4.2-systemd-gentoo.patch
+	"${FILESDIR}"/${PN}-4.7-pool-vendor-gentoo.patch
+	"${FILESDIR}"/${PN}-4.7-systemd-gentoo.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -123,6 +123,8 @@ src_configure() {
 
 	# Not an autotools generated script
 	local myconf=(
+		# TODO: Do we want to wire up --with-user= and --with-chronyc-user?
+		# Need to check how it interacts with the init script & systemd unit.
 		$(use_enable seccomp scfilter)
 
 		$(usev !caps '--disable-linuxcaps')
@@ -137,7 +139,6 @@ src_configure() {
 		$(usev !libtomcrypt '--without-tomcrypt')
 		$(usev !nettle '--without-nettle')
 		$(usev !nss '--without-nss')
-		$(usev !ntp '--disable-ntp')
 		$(usev !nts '--disable-nts')
 		$(usev !nts '--without-gnutls')
 		$(usev !phc '--disable-phc')

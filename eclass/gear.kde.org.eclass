@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gear.kde.org.eclass
@@ -303,7 +303,21 @@ fi
 # list of applications ported to KF6 post-25.04 having to block SLOT=5
 if $(ver_test -gt 25.07.50); then
 	case ${PN} in
-		artikulate)
+		artikulate | \
+		kamoso | \
+		kig | \
+		kqtquickcharts | \
+		ktouch)
+			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
+		*) ;;
+	esac
+fi
+
+# list of applications ported to KF6 post-25.08 having to block SLOT=5
+if $(ver_test -gt 25.11.50); then
+	case ${PN} in
+		rocs | \
+		umbrello)
 			RDEPEND+=" !${CATEGORY}/${PN}:5" ;;
 		*) ;;
 	esac

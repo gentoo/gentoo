@@ -1,0 +1,23 @@
+From 4b00f9fd3d0c858947eee18206ef44f9f6bd2283 Mon Sep 17 00:00:00 2001
+From: Karl Kleinpaste <karl@kleinpaste.org>
+Date: Wed, 26 Mar 2025 14:30:21 -0400
+Subject: [PATCH] fix #14 update cmake min version to 3.5 for cmake 4 min
+ permissible.
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7225bcb..8060d9c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ PROJECT(libbiblesync CXX)
+ SET(BIBLESYNC_VERSION 2.1.0)
+ # A required CMake line
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ # Where our custom Find* files are located
+ SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 

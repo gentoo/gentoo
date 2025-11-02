@@ -33,6 +33,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	# The tests for these bindings look at the system copy of isl (bug #940627),
+	# not the just-built one, but they don't seem to get installed anyway.
+	# If they were to be installed, we'd need proper eclass wiring.
+	export PYTHON=:
+
 	local econf_opts=(
 		$(use_enable static-libs static)
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,20 +18,22 @@ LICENSE="EPL-1.0"
 SLOT="2"
 KEYWORDS="amd64 arm64 ppc64"
 
-CDEPEND="dev-java/jakarta-activation-api:1"
-DEPEND="${CDEPEND}
-	>=virtual/jdk-11:*"
-RDEPEND="${CDEPEND}
-	>=virtual/jre-1.8:*"
+CP_DEPEND="dev-java/jakarta-activation-api:1"
+DEPEND="
+	${CP_DEPEND}
+	>=virtual/jdk-11:*
+"
+RDEPEND="
+	${CP_DEPEND}
+	>=virtual/jre-1.8:*
+"
 
 DOCS=( {LICENSE,NOTICE,README}.md )
 PATCHES=( "${FILESDIR}/jaxb-api-2.3.3-dropSecurityManager.patch" )
 
-JAVA_GENTOO_CLASSPATH="jakarta-activation-api-1"
 JAVA_GENTOO_CLASSPATH_EXTRA="jaxb-api.jar"
 JAVA_RESOURCE_DIRS="${PN}/src/main/resources"
 JAVA_SRC_DIR="${PN}/src/main/java"
-
 JAVA_TEST_GENTOO_CLASSPATH="junit-4"
 JAVA_TEST_RESOURCE_DIRS="${PN}-test/src/test/resources"
 JAVA_TEST_SRC_DIR="${PN}-test/src/test/java"

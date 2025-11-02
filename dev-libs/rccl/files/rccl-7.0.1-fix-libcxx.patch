@@ -1,0 +1,14 @@
+--- a/src/ras/ras.cc
++++ b/src/ras/ras.cc
+@@ -5,9 +5,11 @@
+  ************************************************************************/
+ 
+ // Workaround for libstdc++ trying to force public visibility of std:: symbols.  We don't want to do that in libnccl.so.
++#ifdef __GLIBCXX__
+ #include <bits/c++config.h>
+ #undef _GLIBCXX_VISIBILITY
+ #define _GLIBCXX_VISIBILITY(V)
++#endif
+ #include <cstddef>
+ #include <mutex>
+ #include <poll.h>

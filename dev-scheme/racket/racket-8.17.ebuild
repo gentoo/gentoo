@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit check-reqs desktop optfeature toolchain-funcs readme.gentoo-r1
+inherit check-reqs desktop dot-a optfeature toolchain-funcs readme.gentoo-r1
 
 DESCRIPTION="General purpose, multi-paradigm Lisp-Scheme programming language"
 HOMEPAGE="https://racket-lang.org/
@@ -24,7 +24,7 @@ LICENSE="|| ( MIT Apache-2.0 ) chez? ( Apache-2.0 ) !chez? ( LGPL-3 )"
 # where we use _p, _pre, etc it will have to be set manually.
 SLOT="0/${PV}"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="+chez +doc +futures iconv +jit minimal ncurses +places +threads"
 # * "chez" - see bug #809785 re chez/threads
 # * "iconv" - required for "doc"
@@ -103,6 +103,7 @@ src_configure() {
 	#   --enable-libs & --disable-shared is the way to build
 	#   .a files that are needed to embed Racket into programs
 	#   https://docs.racket-lang.org/inside/cs-embedding.html
+	lto-guarantee-fat
 	local -a myconf=(
 		--disable-shared
 		--disable-strip
@@ -145,6 +146,8 @@ src_install() {
 
 	# Install Zuo.
 	emake -C zuo DESTDIR="${ED}" install
+
+	strip-lto-bytecode
 
 	# raco needs decompressed files for packages doc installation, bug #662424
 	if use doc ; then

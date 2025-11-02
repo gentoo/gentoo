@@ -1,0 +1,66 @@
+https://bugs.gentoo.org/957283
+https://github.com/ericniebler/range-v3/pull/1851
+From 78980bf7f978ca2a698c5c84f13311efe91f6690 Mon Sep 17 00:00:00 2001
+From: wermos <63574588+wermos@users.noreply.github.com>
+Date: Sat, 31 May 2025 19:53:51 +0530
+Subject: [PATCH] Bump CMake minimum version.
+
+---
+ CMakeLists.txt                 | 2 +-
+ cmake/GoogleBenchmark.cmake.in | 2 +-
+ cmake/GoogleTest.cmake.in      | 2 +-
+ test_package/CMakeLists.txt    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4670179121..4e528a23db 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # Distributed under the Boost Software License, Version 1.0.
+ # (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+ 
+-cmake_minimum_required(VERSION 3.6)
++cmake_minimum_required(VERSION 3.15)
+ get_directory_property(is_subproject PARENT_DIRECTORY)
+ 
+ if(NOT is_subproject)
+diff --git a/cmake/GoogleBenchmark.cmake.in b/cmake/GoogleBenchmark.cmake.in
+index 3fcf1b5c90..b5bf1439b6 100644
+--- a/cmake/GoogleBenchmark.cmake.in
++++ b/cmake/GoogleBenchmark.cmake.in
+@@ -2,7 +2,7 @@
+ # Distributed under the Boost Software License, Version 1.0.
+ # (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+ 
+-cmake_minimum_required(VERSION 2.8.2)
++cmake_minimum_required(VERSION 3.15)
+ 
+ project(google-benchmark-download NONE)
+ 
+diff --git a/cmake/GoogleTest.cmake.in b/cmake/GoogleTest.cmake.in
+index 0d33f9d8b5..1afe647be3 100644
+--- a/cmake/GoogleTest.cmake.in
++++ b/cmake/GoogleTest.cmake.in
+@@ -2,7 +2,7 @@
+ # Distributed under the Boost Software License, Version 1.0.
+ # (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+ 
+-cmake_minimum_required(VERSION 2.8.2)
++cmake_minimum_required(VERSION 3.15)
+ 
+ project(google-test-download NONE)
+ 
+diff --git a/test_package/CMakeLists.txt b/test_package/CMakeLists.txt
+index 2984a513d9..5b758fc0f4 100644
+--- a/test_package/CMakeLists.txt
++++ b/test_package/CMakeLists.txt
+@@ -11,7 +11,7 @@
+ #
+ 
+ PROJECT(PackageTest)
+-cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
+ 
+ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+ conan_basic_setup()

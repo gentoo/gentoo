@@ -1,0 +1,8 @@
+https://bugs.gentoo.org/963416
+--- a/hacks/ffmpeg-out.c
++++ b/hacks/ffmpeg-out.c
+@@ -405,3 +405,3 @@
+   ffst->video_ost.ctx->pix_fmt      = pix_fmt;
+-  ffst->video_ost.ctx->profile      = FF_PROFILE_H264_HIGH;
++  ffst->video_ost.ctx->profile      = AV_PROFILE_H264_HIGH;
+ 

@@ -1,0 +1,31 @@
+From cb89bb697a7d973ab1c9e5593ad4a14f8964649e Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 30 Aug 2025 17:28:31 +0200
+Subject: [PATCH] Do not compress man pages
+
+Let distributions do that.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/kst/CMakeLists.txt | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/kst/CMakeLists.txt b/src/kst/CMakeLists.txt
+index ac100ac1..b6eca51d 100644
+--- a/src/kst/CMakeLists.txt
++++ b/src/kst/CMakeLists.txt
+@@ -38,9 +38,8 @@ kst_install_executable()
+ if(UNIX AND NOT APPLE)
+ 	set(man ${CMAKE_BINARY_DIR}/${kst_binary_name}.1)
+ 	configure_file(${kst_dir}/src/kst/kst.1.txt ${man})
+-	install(CODE "execute_process(COMMAND gzip ${man})")
+-	set_source_files_properties(${man}.gz PROPERTIES GENERATED TRUE)
+-	install(FILES ${man}.gz DESTINATION share/man/man1)
++	set_source_files_properties(${man} PROPERTIES GENERATED TRUE)
++	install(FILES ${man} DESTINATION share/man/man1)
+ 
+ 	set(k ${kst_dir}/src/kst)
+ #	install(FILES ${k}/kstplugin.desktop
+-- 
+2.51.0
+

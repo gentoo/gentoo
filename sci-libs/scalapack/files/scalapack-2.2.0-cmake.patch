@@ -1,0 +1,66 @@
+https://github.com/Reference-ScaLAPACK/scalapack/commit/41ac62c28fab33cd9ccc1b010c9c215b5f05201b
+https://github.com/Reference-ScaLAPACK/scalapack/commit/afbc20a9465b79dea14f65c76090fbaecc9c417b
+
+From 41ac62c28fab33cd9ccc1b010c9c215b5f05201b Mon Sep 17 00:00:00 2001
+From: Cristian Le <git@lecris.dev>
+Date: Mon, 31 Mar 2025 11:03:15 +0200
+Subject: [PATCH] Adjust CI to test for CMake versions
+
+---
+ BLACS/INSTALL/CMakeLists.txt |  2 +-
+ CMakeLists.txt               |  2 +-
+ 3 files changed, 19 insertions(+), 4 deletions(-)
+
+diff --git a/BLACS/INSTALL/CMakeLists.txt b/BLACS/INSTALL/CMakeLists.txt
+index c75773cd..257813e8 100644
+--- a/BLACS/INSTALL/CMakeLists.txt
++++ b/BLACS/INSTALL/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 2.8...4.0)
+ project(INSTALL C Fortran)
+ 
+ add_executable(xintface Fintface.f Cintface.c)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0d599305..23f8ea70 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.9)
++cmake_minimum_required(VERSION 3.9...4.0)
+ 
+ project(SCALAPACK VERSION 2.2.2 LANGUAGES C Fortran)
+ 
+
+From afbc20a9465b79dea14f65c76090fbaecc9c417b Mon Sep 17 00:00:00 2001
+From: Cristian Le <git@lecris.dev>
+Date: Mon, 31 Mar 2025 18:30:54 +0200
+Subject: [PATCH] Bump minimum CMake to 3.26
+
+Signed-off-by: Cristian Le <git@lecris.dev>
+---
+ BLACS/INSTALL/CMakeLists.txt |  2 +-
+ CMakeLists.txt               |  2 +-
+ 3 files changed, 6 insertions(+), 14 deletions(-)
+
+diff --git a/BLACS/INSTALL/CMakeLists.txt b/BLACS/INSTALL/CMakeLists.txt
+index 257813e8..acbb7430 100644
+--- a/BLACS/INSTALL/CMakeLists.txt
++++ b/BLACS/INSTALL/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8...4.0)
++cmake_minimum_required(VERSION 3.26...4.0)
+ project(INSTALL C Fortran)
+ 
+ add_executable(xintface Fintface.f Cintface.c)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d59f7936..c80c11ee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.9...4.0)
++cmake_minimum_required(VERSION 3.26...4.0)
+ 
+ project(SCALAPACK VERSION 2.2.2 LANGUAGES C Fortran)
+ 
+

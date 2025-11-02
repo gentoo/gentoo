@@ -9,7 +9,7 @@ SRC_URI="https://downloads.sourceforge.net/gaim-extprefs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~riscv sparc x86"
+KEYWORDS="amd64 ppc ~riscv ~sparc x86"
 
 RDEPEND="net-im/pidgin[gui]"
 DEPEND="${RDEPEND}"

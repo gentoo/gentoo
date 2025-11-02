@@ -13,11 +13,12 @@ inherit flag-o-matic llvm-r1 meson-multilib python-any-r1 linux-info rust-toolch
 MY_P="${P/_/-}"
 
 CRATES="
-	syn@2.0.68
-	proc-macro2@1.0.86
-	quote@1.0.33
-	unicode-ident@1.0.12
 	paste@1.0.14
+	proc-macro2@1.0.86
+	quote@1.0.35
+	rustc-hash@2.1.1
+	syn@2.0.87
+	unicode-ident@1.0.12
 "
 
 RUST_MIN_VER="1.78.0"
@@ -63,7 +64,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 debug +llvm
 	lm-sensors opencl +opengl +proprietary-codecs
-	test unwind vaapi valgrind vdpau vulkan
+	sysprof test unwind vaapi valgrind vulkan
 	wayland +X +zstd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
@@ -73,7 +74,6 @@ REQUIRED_USE="
 	video_cards_r300?   ( x86? ( llvm ) amd64? ( llvm ) )
 	video_cards_zink? ( vulkan opengl )
 	video_cards_nvk? ( vulkan video_cards_nouveau )
-	vdpau? ( X )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.121"
@@ -108,14 +108,13 @@ RDEPEND="
 	vaapi? (
 		>=media-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 	)
-	vdpau? ( >=x11-libs/libvdpau-1.5:=[${MULTILIB_USEDEP}] )
 	video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 	video_cards_zink? ( media-libs/vulkan-loader:=[${MULTILIB_USEDEP}] )
 	vulkan? ( virtual/libudev:= )
 	wayland? ( >=dev-libs/wayland-1.18.0[${MULTILIB_USEDEP}] )
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_intel?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
 	X? (
-		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
+		>=x11-libs/libX11-1.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libxshmfence-1.1[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libXxf86vm-1.1.3[${MULTILIB_USEDEP}]
@@ -135,6 +134,7 @@ RDEPEND="${RDEPEND}
 "
 
 DEPEND="${RDEPEND}
+	sysprof? ( >=dev-util/sysprof-capture-3.38.0[${MULTILIB_USEDEP}] )
 	video_cards_d3d12? ( >=dev-util/directx-headers-1.614.1[${MULTILIB_USEDEP}] )
 	valgrind? ( dev-debug/valgrind )
 	wayland? ( >=dev-libs/wayland-protocols-1.41 )
@@ -151,7 +151,7 @@ CLC_DEPSTRING="
 BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
-		>=dev-util/bindgen-0.71.0
+		>=dev-util/bindgen-0.71.1
 		${RUST_DEPEND}
 	)
 	>=dev-build/meson-1.7.0
@@ -169,7 +169,7 @@ BDEPEND="
 	vulkan? (
 		dev-util/glslang
 		video_cards_nvk? (
-			>=dev-util/bindgen-0.71.0
+			>=dev-util/bindgen-0.71.1
 			>=dev-util/cbindgen-0.26.0
 			${RUST_DEPEND}
 			${CLC_DEPSTRING}
@@ -227,16 +227,6 @@ pkg_pretend() {
 		   ! use video_cards_radeonsi &&
 		   ! use video_cards_virgl; then
 			ewarn "Ignoring USE=vaapi      since VIDEO_CARDS does not contain d3d12, nouveau, r600, radeonsi, or virgl"
-		fi
-	fi
-
-	if use vdpau; then
-		if ! use video_cards_d3d12 &&
-		   ! use video_cards_nouveau &&
-		   ! use video_cards_r600 &&
-		   ! use video_cards_radeonsi &&
-		   ! use video_cards_virgl; then
-			ewarn "Ignoring USE=vdpau      since VIDEO_CARDS does not contain d3d12, nouveau, r600, radeonsi, or virgl"
 		fi
 	fi
 
@@ -312,16 +302,6 @@ multilib_src_configure() {
 		emesonargs+=($(meson_feature vaapi gallium-d3d12-video))
 	fi
 
-	if use video_cards_d3d12 ||
-	   use video_cards_nouveau ||
-	   use video_cards_r600 ||
-	   use video_cards_radeonsi ||
-	   use video_cards_virgl; then
-		emesonargs+=($(meson_feature vdpau gallium-vdpau))
-	else
-		emesonargs+=(-Dgallium-vdpau=disabled)
-	fi
-
 	gallium_enable !llvm softpipe
 	gallium_enable llvm llvmpipe
 	gallium_enable video_cards_asahi asahi
@@ -377,7 +357,7 @@ multilib_src_configure() {
 			fi
 		fi
 
-		emesonargs+=(-Dvulkan-layers=device-select,overlay)
+		emesonargs+=(-Dvulkan-layers=anti-lag,device-select,overlay)
 	fi
 
 	driver_list() {
@@ -411,7 +391,6 @@ multilib_src_configure() {
 
 	emesonargs+=(
 		$(meson_use test build-tests)
-		-Dlegacy-x11=dri2
 		-Dexpat=enabled
 		$(meson_use opengl)
 		$(meson_feature opengl gbm)
@@ -423,6 +402,8 @@ multilib_src_configure() {
 		$(meson_feature lm-sensors lmsensors)
 		$(meson_feature unwind libunwind)
 		$(meson_feature zstd)
+		$(meson_use llvm amd-use-llvm)
+		$(meson_use sysprof)
 		$(meson_use cpu_flags_x86_sse2 sse2)
 		-Dvalgrind=$(usex valgrind auto disabled)
 		-Dvideo-codecs=$(usex proprietary-codecs "all" "all_free")

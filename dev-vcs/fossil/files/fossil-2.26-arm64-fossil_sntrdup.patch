@@ -1,0 +1,28 @@
+From 5ebe56fa1d35739e208dccd7926ea1fc6d4acf5e Mon Sep 17 00:00:00 2001
+From: Matt Jolly <kangie@gentoo.org>
+Date: Sat, 30 Aug 2025 17:39:46 +1000
+Subject: [PATCH] Correct the signature of an extern decl of fossil_strndup()
+
+https://fossil-scm.org/home/info/d546932976888ae8
+
+Bug: https://bugs.gentoo.org/960622
+---
+ src/th_lang.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/th_lang.c b/src/th_lang.c
+index 713e528..a72a219 100644
+--- a/src/th_lang.c
++++ b/src/th_lang.c
+@@ -958,7 +958,7 @@ static int string_length_command(
+ static int string_match_command(
+   Th_Interp *interp, void *ctx, int argc, const char **argv, int *argl
+ ){
+-  extern char *fossil_strndup(const char*,int);
++  extern char *fossil_strndup(const char*,ssize_t);
+   extern void fossil_free(void*);
+   char *zPat, *zStr;
+   int rc;
+-- 
+2.49.1
+

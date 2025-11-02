@@ -7,18 +7,19 @@ EAPI=8
 # Note: versions are locked in /usr/lib/rust/*/lib/rustlib/src/rust/library/Cargo.lock.
 CRATES="
 	compiler_builtins@0.1.146
+	compiler_builtins@0.1.152
 "
 
 # Implied by crates above.
 RUST_MIN_VER=1.86.0
-RUST_MAX_VER=1.86.0
+RUST_MAX_VER=1.87.0
 
 declare -A GIT_CRATES=(
 	[compiletest_rs]='https://github.com/Manishearth/compiletest-rs;cb121796a041255ae0afcd9c2766bee4ebfd54f0;compiletest-rs-%commit%'
 )
 
-# https://crates.io/crates/llvm-sys#llvm-compatibility
-LLVM_COMPAT=( {20..21} )
+# this version of bpf-linker is incompatible with changes in LLVM 21
+LLVM_COMPAT=( 20 )
 RUST_REQ_USE="llvm_targets_BPF(+),rust-src"
 
 inherit cargo llvm-r2
@@ -39,7 +40,7 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

@@ -1,0 +1,45 @@
+https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgmeqt.git;a=patch;h=71f68de65b902cd9e9d7cf051f1be3f307b1a713
+
+From 71f68de65b902cd9e9d7cf051f1be3f307b1a713 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Tue, 3 Jun 2025 17:58:33 +0200
+Subject: [PATCH] build: Fix logic for CONFIGURE_FOR_DISTRIBUTION
+
+* CMakeLists.txt: Set Qt5/Qt6 as required if CONFIGURE_FOR_DISTRIBUTION
+is not set. Also set Qt5Core, Qt6Core, and Qt6CoreTools as required.
+--
+
+Fixes-commit: e598181d462a73f3e0d33fd16a5224880b56d3f6
+---
+ CMakeLists.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ea7f9b6..90f1372 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -131,8 +131,9 @@ g10_configure_git_hooks()
+ if(BUILD_WITH_QT5)
+     set(QT_MAJOR_VERSION 5)
+     find_package(Qt5 ${QT5_REQUIRED_VERSION} COMPONENTS Core)
+-    if (CONFIGURE_FOR_DISTRIBUTION)
++    if (NOT CONFIGURE_FOR_DISTRIBUTION)
+         set_package_properties(Qt5 PROPERTIES TYPE REQUIRED)
++        set_package_properties(Qt5Core PROPERTIES TYPE REQUIRED)
+     endif()
+     if (LibGpgError_FOUND AND Gpgme_FOUND AND Gpgmepp_FOUND AND Qt5_FOUND)
+         add_subdirectory(src 5/src)
+@@ -145,8 +146,10 @@ endif()
+ if(BUILD_WITH_QT6)
+     set(QT_MAJOR_VERSION 6)
+     find_package(Qt6 ${QT6_REQUIRED_VERSION} CONFIG COMPONENTS Core CoreTools)
+-    if (CONFIGURE_FOR_DISTRIBUTION)
++    if (NOT CONFIGURE_FOR_DISTRIBUTION)
+         set_package_properties(Qt6 PROPERTIES TYPE REQUIRED)
++        set_package_properties(Qt6Core PROPERTIES TYPE REQUIRED)
++        set_package_properties(Qt6CoreTools PROPERTIES TYPE REQUIRED)
+     endif()
+     if (LibGpgError_FOUND AND Gpgme_FOUND AND Gpgmepp_FOUND AND Qt6_FOUND)
+         add_subdirectory(src 6/src)
+-- 
+2.30.2

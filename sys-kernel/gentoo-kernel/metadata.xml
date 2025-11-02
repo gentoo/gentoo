@@ -9,11 +9,6 @@
 		<flag name="experimental">
 			Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 		</flag>
-		<flag name="generic-uki">
-			Build and install a generic initramfs and Unified Kernel Image,
-			this is intended for building binpkgs with a pre-generated UKI
-			included (EXPERIMENTAL).
-		</flag>
 		<flag name="hardened">
 			Use selection of hardening options recommended by Kernel Self
 			Protection Project

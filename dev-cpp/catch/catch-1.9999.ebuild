@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit cmake
+inherit cmake-multilib
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -25,14 +25,14 @@ SLOT="1"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-src_configure() {
+multilib_src_configure() {
 	local mycmakeargs=(
 		-DNO_SELFTEST=$(usex !test)
 	)
 	cmake_src_configure
 }
 
-src_install() {
+multilib_src_install() {
 	cmake_src_install
 	dodoc -r docs/.
 }

@@ -1,0 +1,15 @@
+This library is not installed otherwise.
+Make it shared has no interest.
+diff --git a/common/CMakeLists.txt b/common/CMakeLists.txt
+index 1110890..081a245 100644
+--- a/common/CMakeLists.txt
++++ b/common/CMakeLists.txt
+@@ -13,7 +13,7 @@ add_custom_command(
+ #    DEPENDS item-types
+ #)
+ 
+-add_library(cfclient
++add_library(cfclient STATIC
+     client.c
+     client.h
+     commands.c

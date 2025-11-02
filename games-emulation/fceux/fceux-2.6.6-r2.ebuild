@@ -1,10 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 LUA_COMPAT=( lua5-1 luajit )
-inherit cmake lua-single xdg
+inherit cmake flag-o-matic lua-single xdg
 
 DESCRIPTION="Portable Famicom/NES emulator, an evolution of the original FCE Ultra"
 HOMEPAGE="https://fceux.com/"
@@ -39,6 +39,11 @@ PATCHES=(
 )
 
 src_prepare() {
+	# It is literally called "attic". It is full of files that weren't deleted
+	# from a VCS, just moved into the trashbin. We should NOT care about these
+	# files, but, they trigger QA check false positives for cmake 4.
+	rm -r attic/ || die "failed to remove packrat files in attic/"
+
 	cmake_src_prepare
 
 	local use
@@ -51,6 +56,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/959771
+	# https://github.com/TASEmulators/fceux/commit/e2ac013cbb12350bd21fefdbe5a6aa251e171fe8
+	#
+	# Fixed after 2.6.6 -- retest on next version bump and remove.
+	filter-lto
+
 	local mycmakeargs=(
 		-DGLVND=yes
 		-DPUBLIC_RELEASE=yes

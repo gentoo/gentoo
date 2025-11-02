@@ -41,7 +41,7 @@ inherit autotools flag-o-matic multilib prefix toolchain-funcs wrapper
 readonly WINE_USEDEP="abi_x86_32(-)?,abi_x86_64(-)?"
 
 IUSE="
-	+abi_x86_32 +abi_x86_64 crossdev-mingw custom-cflags
+	+abi_x86_32 +abi_x86_64 arm64ec crossdev-mingw custom-cflags
 	+mingw +strip wow64
 "
 REQUIRED_USE="
@@ -50,6 +50,10 @@ REQUIRED_USE="
 	wow64? ( !arm64? ( abi_x86_64 !abi_x86_32 ) )
 "
 
+RDEPEND="
+	arm64? ( wow64? ( app-emulation/fex-xtajit[wow64(+)] ) )
+	arm64ec? ( app-emulation/fex-xtajit[arm64ec(-)] )
+"
 BDEPEND="
 	|| (
 		sys-devel/binutils:*
@@ -89,6 +93,7 @@ wine_pkg_pretend() {
 			$(usev abi_x86_32 i686)
 			$(usev wow64 i686)
 			$(usev arm64 aarch64)
+			$(usev arm64ec arm64ec)
 		)
 
 		local mingw
@@ -216,6 +221,7 @@ wine_src_configure() {
 		# no mingw64-toolchain ~arm64, but "may" be usable with crossdev
 		# (aarch64- rather than arm64- given it is what Wine searches for)
 		wcc_arm64=${CROSSCC:-${CROSSCC_arm64:-aarch64-w64-mingw32-gcc}}
+		wcc_arm64ec=${CROSSCC:-${CROSSCC_arm64ec:-arm64ec-w64-mingw32-gcc}}
 	else
 		conf+=( --with-mingw=clang )
 
@@ -229,6 +235,8 @@ wine_src_configure() {
 		wcc_x86_testflags="-target i386-windows"
 		wcc_arm64=${CROSSCC:-${CROSSCC_arm64:-${clang}}}
 		wcc_arm64_testflags="-target aarch64-windows"
+		wcc_arm64ec=${CROSSCC:-${CROSSCC_arm64ec:-${clang}}}
+		wcc_arm64ec_testflags="-target arm64ec-windows"
 
 		# do not copy from regular LDFLAGS given odds are they all are
 		# incompatible, and difficult to test linking without llvm-mingw
@@ -239,6 +247,7 @@ wine_src_configure() {
 		ac_cv_prog_x86_64_CC="${wcc_amd64}"
 		ac_cv_prog_i386_CC="${wcc_x86}"
 		ac_cv_prog_aarch64_CC="${wcc_arm64}"
+		ac_cv_prog_arm64ec_CC="${wcc_arm64ec}"
 	)
 
 	if ver_test -ge 10; then
@@ -251,6 +260,8 @@ wine_src_configure() {
 			i386_LDFLAGS="${CROSSLDFLAGS_x86:-${CROSSLDFLAGS:-$(_wine_flags ld x86)}}"
 			aarch64_CFLAGS="${CROSSCFLAGS_arm64:-${CROSSCFLAGS:-$(_wine_flags c arm64)}}"
 			aarch64_LDFLAGS="${CROSSLDFLAGS_arm64:-${CROSSLDFLAGS:-$(_wine_flags ld arm64)}}"
+			arm64ec_CFLAGS="${CROSSCFLAGS_arm64ec:-${CROSSCFLAGS:-$(_wine_flags c arm64ec)}}"
+			arm64ec_LDFLAGS="${CROSSLDFLAGS_arm64ec:-${CROSSLDFLAGS:-$(_wine_flags ld arm64ec)}}"
 		)
 	elif use abi_x86_64; then
 		conf+=(
@@ -297,6 +308,7 @@ wine_src_configure() {
 			$(usev abi_x86_64 x86_64)
 			$(usev wow64 i386) # 32-on-64bit "new" wow64
 			$(usev arm64 aarch64)
+			$(usev arm64ec arm64ec)
 		)
 		conf+=( ${archs:+--enable-archs="${archs[*]}"} )
 
@@ -354,6 +366,14 @@ wine_src_install() {
 		fi
 	fi
 
+	use arm64 && use wow64 &&
+		dosym -r /usr/lib/fex-xtajit/libwow64fex.dll \
+			${WINE_PREFIX}/wine/aarch64-windows/xtajit.dll
+
+	use arm64ec &&
+		dosym -r /usr/lib/fex-xtajit/libarm64ecfex.dll \
+			${WINE_PREFIX}/wine/aarch64-windows/xtajit64.dll
+
 	# delete unwanted files if requested, not done directly in ebuilds
 	# given must be done after install and before wrappers
 	if (( ${#WINE_SKIP_INSTALL[@]} )); then
@@ -375,11 +395,11 @@ wine_src_install() {
 		if use mingw; then
 			: "$(usex arm64 aarch64 $(usex abi_x86_64 x86_64 i686)-w64-mingw32-strip)"
 			find "${ED}"${WINE_PREFIX}/wine/*-windows -regex '.*\.\(a\|dll\|exe\)' \
-				-exec ${_} --strip-unneeded {} +
+				-type f -exec ${_} --strip-unneeded {} +
 		else
 			# llvm-strip errors on .a, and CHOST binutils strip could mangle
 			find "${ED}"${WINE_PREFIX}/wine/*-windows -regex '.*\.\(dll\|exe\)' \
-				-exec llvm-strip --strip-unneeded {} +
+				-type f -exec llvm-strip --strip-unneeded {} +
 		fi
 		eend ${?} || die
 	fi
@@ -418,13 +438,6 @@ wine_pkg_postinst() {
 		fi
 	fi
 
-	if use arm64 && use wow64; then
-		ewarn
-		ewarn "${PN} does not include an x86 emulator, running x86 binaries"
-		ewarn "with USE=wow64 on arm64 requires manually setting up xtajit.dll"
-		ewarn "(not packaged) in the Wine prefix."
-	fi
-
 	eselect wine update --if-unset || die
 }
 
@@ -453,17 +466,34 @@ _wine_flags() {
 
 	case ${1} in
 		c)
-			# many hardening options are unlikely to work right
-			filter-flags '-fstack-protector*' #870136
-			filter-flags '-mfunction-return=thunk*' #878849
+			if use mingw && use !custom-cflags; then
+				# Changing CROSSCFLAGS is not very tested and often cause
+				# problems even with simple things like -march=native/-O3 when
+				# using mingw-gcc (thus -mno-avx below, also bug #960825), only
+				# inherit basic flags from CFLAGS unless USE=custom-cflags.
+				#
+				# Note that users setting CROSSCFLAGS directly (unfiltered)
+				# are on their own just like with USE=custom-cflags.
+				local flag flags=${CFLAGS} CFLAGS=-O2
+				# not get-flag() given it returns only the first occurence
+				# TODO: can drop |-std=* when <wine-10 is gone
+				for flag in ${flags}; do
+					[[ ${flag} == @(-g*|-O[0-1g]|-std=*) ]] && CFLAGS+=" ${flag}"
+				done
+			else
+				# many hardening options are unlikely to work right
+				filter-flags '-fstack-protector*' #870136
+				filter-flags '-mfunction-return=thunk*' #878849
 
-			# bashrc-mv users often do CFLAGS="${LDFLAGS}" and then
-			# compile-only tests miss stripping unsupported linker flags
-			filter-flags '-Wl,*'
+				# bashrc-mv users often do CFLAGS="${LDFLAGS}" and then
+				# compile-only tests miss stripping unsupported linker flags
+				filter-flags '-Wl,*'
 
-			# -mavx with mingw-gcc has a history of problems and still see
-			# users have issues despite Wine's -mpreferred-stack-boundary=2
-			use mingw && append-cflags -mno-avx
+				# -mavx with mingw-gcc has a history of problems and still see
+				# users have issues despite Wine's -mpreferred-stack-boundary=2
+				# (kept even with USE=custom-cflags wrt bug #912268)
+				use mingw && append-cflags -mno-avx
+			fi
 
 			# same as strip-unsupported-flags but echos only for CC
 			CC="${wcc} ${wccflags}" test-flags-CC ${CFLAGS}

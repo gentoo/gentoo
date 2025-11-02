@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..13} )
 
 inherit distutils-r1 pypi
 
@@ -41,7 +41,6 @@ BDEPEND="
 		>=dev-python/aioitertools-0.11.0[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
 		>=dev-python/httpx-0.24.0[${PYTHON_USEDEP}]
-		>=dev-python/pytest-aiohttp-1.0.4[${PYTHON_USEDEP}]
 		dev-python/responses[${PYTHON_USEDEP}]
 		>=dev-python/starlette-0.26.1[${PYTHON_USEDEP}]
 		dev-python/strict-rfc3339[${PYTHON_USEDEP}]
@@ -49,6 +48,7 @@ BDEPEND="
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-{aiohttp,asyncio} )
 distutils_enable_tests pytest
 
 EPYTEST_IGNORE=(

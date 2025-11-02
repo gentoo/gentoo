@@ -1,11 +1,13 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="dev-util/squashdelta delta merge tool"
 HOMEPAGE="https://github.com/projg2/squashmerge/"
-SRC_URI="https://github.com/projg2/${PN}/releases/download/v${PV}/${P}.tar.bz2"
+SRC_URI="
+	https://github.com/projg2/${PN}/releases/download/v${PV}/${P}.tar.bz2
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -14,12 +16,14 @@ IUSE="lz4 +lzo"
 # SquashDelta does not make much sense without a compression algo.
 REQUIRED_USE="|| ( lz4 lzo )"
 
-COMMON_DEPEND="
+DEPEND="
 	lz4? ( app-arch/lz4:0= )
-	lzo? ( dev-libs/lzo:2= )"
-RDEPEND="${COMMON_DEPEND}
-	dev-util/xdelta:3"
-DEPEND=${COMMON_DEPEND}
+	lzo? ( dev-libs/lzo:2= )
+"
+RDEPEND="
+	${DEPEND}
+	dev-util/xdelta:3
+"
 
 DOCS=( FORMAT )
 

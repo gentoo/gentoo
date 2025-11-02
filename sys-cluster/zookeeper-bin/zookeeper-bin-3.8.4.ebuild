@@ -11,8 +11,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="A high-performance coordination service for distributed applications"
 HOMEPAGE="https://zookeeper.apache.org/"
 SRC_URI="
-	https://downloads.apache.org/${MY_PN}/${MY_P}/apache-${MY_P}-bin.tar.gz -> ${P}.tar.gz
-	https://archive.apache.org/dist/${MY_PN}/${MY_P}/apache-${MY_P}-bin.tar.gz -> ${P}.tar.gz
+	mirror://apache/${MY_PN}/${MY_P}/apache-${MY_P}-bin.tar.gz -> ${P}.tar.gz
 "
 S="${WORKDIR}/apache-${MY_P}-bin"
 

@@ -6,6 +6,6 @@
     <name>Andreas K. Huettel</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">digitizer</remote-id>
+    <remote-id type="github">akhuettel/engauge-digitizer</remote-id>
   </upstream>
 </pkgmetadata>

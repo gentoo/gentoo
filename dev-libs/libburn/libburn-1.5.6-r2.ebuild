@@ -6,12 +6,12 @@ EAPI=8
 inherit autotools
 
 DESCRIPTION="Open-source library for reading, mastering and writing optical discs"
-HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libburn"
+HOMEPAGE="https://dev.lovelyhq.com/libburnia/web/wiki/Libburn https://dev.lovelyhq.com/libburnia/libburn"
 SRC_URI="https://files.libburnia-project.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="debug static-libs"
 
 BDEPEND="

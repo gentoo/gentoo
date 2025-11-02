@@ -152,7 +152,7 @@ declare -A GIT_CRATES=(
 	[onenote_parser]="https://github.com/Cisco-Talos/onenote.rs;29c08532252b917543ff268284f926f30876bb79;onenote.rs-%commit%"
 )
 
-inherit cargo cmake flag-o-matic llvm python-any-r1 systemd tmpfiles
+inherit cargo cmake flag-o-matic python-any-r1 systemd tmpfiles
 
 MY_P=${P//_/-}
 

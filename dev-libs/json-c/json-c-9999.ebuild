@@ -30,6 +30,8 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/json-c/config.h
 )
 
+PATCHES=( "${FILESDIR}/0.18.0-cmake4.patch" )
+
 multilib_src_configure() {
 	# Tests use Valgrind automagically otherwise (bug #927027)
 	export USE_VALGRIND=0

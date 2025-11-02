@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit eapi9-ver python-any-r1 systemd
@@ -33,6 +33,9 @@ DEPEND="
 	>=dev-lang/elixir-1.13.4 <dev-lang/elixir-1.17.0
 	dev-libs/libxslt
 	${PYTHON_DEPS}
+"
+BDEPEND="
+	sys-apps/which
 "
 
 pkg_setup() {

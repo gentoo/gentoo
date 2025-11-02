@@ -1,5 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# idealseal <realidealseal@protonmail.com> (2025-07-08)
+# This target support distributing tasks.
+dev-util/sccache -dist-server
 
 # Mike Frysinger <vapier@gentoo.org> (2016-05-08)
 # This target supports VTV #547040.

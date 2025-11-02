@@ -1,0 +1,102 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# shellcheck shell=sh
+
+: "${RUNTIMEDIR:="/var/lib/boinc"}"
+: "${USER:=boinc}"
+: "${GROUP:=boinc}"
+
+extra_started_commands="attach resume suspend"
+description_attach="Attach to a project"
+description_resume="Resume all projects"
+description_suspend="Suspend all projects"
+
+description="BOINC client daemon"
+supervisor="supervise-daemon"
+command="/usr/bin/boinc_client"
+command_args="--dir ${RUNTIMEDIR} --redirectio ${ALLOW_REMOTE_GUI_RPC+--allow_remote_gui_rpc} ${ARGS}"
+command_user="${USER}:${GROUP}"
+pidfile="/run/boinc_client.pid"
+required_files="${RUNTIMEDIR}/ca-bundle.crt"
+healthcheck_timer="60"
+
+: "${retry:="SIGTERM/60/SIGTERM/30/SIGKILL/30"}"
+
+depend() {
+	use dns net ntp-client ntpd docker
+}
+
+eboinccmd() {
+	runuser -u "${USER}" -g "${GROUP}" -- /usr/bin/boinccmd "${@}"
+}
+
+start_pre() {
+	checkpath -d -o "${command_user}" -m 0750 "${RUNTIMEDIR}"
+
+	if [ ! -f "${RUNTIMEDIR}/lockfile" ]; then
+		einfo "File \"${RUNTIMEDIR}/lockfile\" does not exist, assuming first run."
+		einfo "You need to setup an account on the BOINC project homepage beforehand!"
+		einfo "Go to http://boinc.berkeley.edu/ and locate your project."
+		einfo "Then either run '${RC_SERVICE} attach' or connect with a gui client"
+		einfo "and attach to a project with that."
+		einfo ""
+		ewarn "Note that for attaching to some project you need your network up and running."
+		ewarn "network is needed only for jobs fetching afterwards"
+	fi
+
+	return 0
+}
+
+stop_pre() {
+	cd "${RUNTIMEDIR}" || return 0
+	eboinccmd --quit
+	return 0
+}
+
+healthcheck() {
+	cd "${RUNTIMEDIR}" || return 1
+	eboinccmd --get_state >/dev/null
+}
+
+attach() {
+	local url=""
+	local key=""
+
+	einfo "If you can't find your account key just try to obtain it by using:"
+	einfo "    boinccmd --passwd PASSWORD_FROM_GUI_RPC_AUTH --lookup_account URL EMAIL PASSWORD"
+
+	printf "    Enter the Project URL: "
+	read url
+	printf "    Enter your Account Key: "
+	read key
+
+	cd "${RUNTIMEDIR}" || return 1
+	ebegin "${RC_SVCNAME}: Attaching to project"
+	eboinccmd --project_attach "${url}" "${key}"
+	eend $?
+
+	sleep 10
+	tail "${RUNTIMEDIR}/stdoutdae.txt"
+}
+
+resume() {
+	cd "${RUNTIMEDIR}" || return 1
+	for url in $(eboinccmd --get_project_status | \
+		  sed -n 's/\s*master URL: //p'); do
+		ebegin "Resuming ${url}"
+		eboinccmd --project "${url}" resume
+		eend $?
+	done
+}
+
+suspend() {
+	cd "${RUNTIMEDIR}" || return 1
+	for url in $(eboinccmd --get_project_status | \
+		  sed -n 's/\s*master URL: //p'); do
+		ebegin "Suspending ${url}"
+		eboinccmd --project "${url}" suspend
+		eend $?
+	done
+}

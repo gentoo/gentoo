@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="ZLIB python? ( BSD )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="perl python l10n_ja"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

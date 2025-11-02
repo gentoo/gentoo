@@ -19,7 +19,7 @@ SLOT=$(ver_cut 1-2)
 MY_SUFFIX=$(ver_rs 1 '' ${SLOT})
 RUBYVERSION=${SLOT}.0
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="berkdb debug doc examples gdbm jemalloc jit socks5 +ssl static-libs systemtap tk valgrind xemacs"
 
 RDEPEND="
@@ -85,6 +85,9 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/013*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/015*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/016*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/017*.patch
 	eapply "${FILESDIR}"/"${SLOT}"/902*.patch
 
 	if use elibc_musl ; then
@@ -127,7 +130,7 @@ src_prepare() {
 
 	# Avoid test fragile for git command output not matching on whitespace
 	sed -e '/test_pretty_print/aomit "Fragile for output differences"' \
-		-i test/rubygems/test_gem_source_git.rb || die
+		-i test/rubygems/test_gem_source_{git,specific_file}.rb || die
 
 	if use prefix ; then
 		# Fix hardcoded SHELL var in mkmf library
@@ -162,10 +165,6 @@ src_configure() {
 	# as it's risky with newer compilers to leave it as it is.
 	append-flags -fno-strict-aliasing
 
-	# Avoid a compile error with certain USE flag combinations when
-	# using std=gnu23, bug #945643.
-	append-flags -std=gnu17
-
 	# Workaround for bug #938302
 	if use systemtap && has_version "dev-debug/systemtap[-dtrace-symlink(+)]" ; then
 		export DTRACE="${BROOT}"/usr/bin/stap-dtrace
@@ -177,10 +176,6 @@ src_configure() {
 		# set and socks library is present, so need to unset
 		# SOCKS_SERVER in that case.
 		unset SOCKS_SERVER
-
-		# The socks code has a function prototype without parameters,
-		# bug #945502
-		append-cflags -std=gnu17
 	fi
 
 	# Increase GC_MALLOC_LIMIT if set (default is 8000000)

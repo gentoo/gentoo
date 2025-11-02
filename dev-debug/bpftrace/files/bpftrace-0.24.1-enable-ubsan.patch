@@ -1,0 +1,88 @@
+From: https://github.com/bpftrace/bpftrace/pull/4655
+
+From: =?UTF-8?q?Viktor=20Mal=C3=ADk?= <viktor.malik@gmail.com>
+Date: Thu, 25 Sep 2025 13:34:17 +0200
+Subject: [PATCH] CMake: Enable UBSan builds (#4655)
+
+Add new CMake option `BUILD_UBSAN` which will add `-fsanitize=undefined`
+to the build. This helps to identify undefined behavior.
+
+Signed-off-by: Viktor Malik <viktor.malik@gmail.com>
+---
+ CMakeLists.txt         |  1 +
+ src/CMakeLists.txt     | 13 +++++++++++++
+ src/aot/CMakeLists.txt |  4 ++++
+ tests/CMakeLists.txt   |  5 +++++
+ 4 files changed, 23 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 898ec2f85560..5bb09a2e56be 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,6 +15,7 @@ set(HARDENED_STDLIB OFF CACHE BOOL "Enable hardened definitions for standard lib
+ set(STATIC_LINKING OFF CACHE BOOL "Build bpftrace as a statically linked executable")
+ 
+ set(BUILD_ASAN OFF CACHE BOOL "Build bpftrace with -fsanitize=address")
++set(BUILD_UBSAN OFF CACHE BOOL "Build bpftrace with -fsanitize=undefined")
+ set(ENABLE_MAN ON CACHE BOOL "Build man pages")
+ set(BUILD_TESTING ON CACHE BOOL "Build test suite")
+ set(ENABLE_TEST_VALIDATE_CODEGEN ON CACHE BOOL "Run LLVM IR validation tests")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0432e6106e6d..d5432c0995d3 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,6 +2,12 @@ if(HAVE_BFD_DISASM)
+   set(BFD_DISASM_SRC bfd-disasm.cpp)
+ endif()
+ 
++if (BUILD_UBSAN)
++  # This adds -fsanitize=undefined to all below compiler invocations, including
++  # subdirectories.
++  add_compile_options("-fsanitize=undefined")
++endif()
++
+ add_library(required_resources required_resources.cpp)
+ add_dependencies(required_resources parser)
+ 
+@@ -201,6 +207,13 @@ if (BUILD_ASAN)
+   target_link_options(bpftrace PUBLIC "-fsanitize=address")
+ endif()
+ 
++if (BUILD_UBSAN)
++  # We do not use add_link_options here since it doesn't work for some reason.
++  # Instead, just pass -fsanitize=undefined to the linker when linking the
++  # bpftrace target.
++  target_link_options(bpftrace PUBLIC "-fsanitize=undefined")
++endif()
++
+ if (STATIC_LINKING)
+   if(ANDROID)
+     target_link_libraries(libbpftrace "-Wl,-Bdynamic" "-ldl" "-lm" "-lz")
+diff --git a/src/aot/CMakeLists.txt b/src/aot/CMakeLists.txt
+index 1323bdacb6df..5267e4a1c19e 100644
+--- a/src/aot/CMakeLists.txt
++++ b/src/aot/CMakeLists.txt
+@@ -34,3 +34,7 @@ if(BUILD_ASAN)
+   target_compile_options(bpftrace-aotrt PUBLIC "-fsanitize=address")
+   target_link_options(bpftrace-aotrt PUBLIC "-fsanitize=address")
+ endif()
++
++if(BUILD_UBSAN)
++  target_link_options(bpftrace-aotrt PUBLIC "-fsanitize=undefined")
++endif()
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index b6002e8075ff..141b44d5a30e 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -94,6 +94,11 @@ if(BUILD_ASAN)
+   target_link_options(bpftrace_test PUBLIC "-fsanitize=address")
+ endif()
+ 
++if(BUILD_UBSAN)
++  target_compile_options(bpftrace_test PUBLIC "-fsanitize=undefined")
++  target_link_options(bpftrace_test PUBLIC "-fsanitize=undefined")
++endif()
++
+ # bpftrace tests require (at minimum) version 1.11.
+ # There's no great way to enforce a minimum version from cmake -- the cmake
+ # modules don't respect minimum requested version.

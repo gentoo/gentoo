@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -32,6 +32,10 @@ BDEPEND="
 		dev-python/psutil[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-py3.14.patch # merged upstream
+)
 
 # note: test suite fails with xdist
 distutils_enable_tests pytest

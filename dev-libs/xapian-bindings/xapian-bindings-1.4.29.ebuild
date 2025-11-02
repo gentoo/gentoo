@@ -5,10 +5,10 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1,3,4} luajit )
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="threads(+)"
 
-USE_PHP="php8-1 php8-2 php8-3"
+USE_PHP="php8-2 php8-3"
 
 PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
@@ -26,7 +26,7 @@ S="${WORKDIR}/${P}" # need this here, some inherited eclasses change it
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~sparc x86"
 IUSE="java lua perl php python ruby tcl"
 REQUIRED_USE="
 	|| ( java lua perl php python ruby tcl )

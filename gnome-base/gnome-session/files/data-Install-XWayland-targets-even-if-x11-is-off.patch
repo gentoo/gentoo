@@ -1,0 +1,37 @@
+From 463eb29096fa2cb120867f6d5c4ffd225cdf84a8 Mon Sep 17 00:00:00 2001
+From: Adrian Vovk <adrianvovk@gmail.com>
+Date: Mon, 5 May 2025 16:15:43 -0400
+Subject: [PATCH] data: Install XWayland targets even if x11 is off
+
+These targets are not just used on an x11 session, but also auto-started
+for XWayland.
+
+Backport of !134
+Fixes #148
+---
+ data/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index bd66ff01..2c85b897 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -138,13 +138,13 @@ systemd_target = files('gnome-session-wayland@.target',
+                         'gnome-session-initialized.target',
+                         'gnome-session-shutdown.target',
+                         'gnome-session-failed.target',
++                        'gnome-session-x11-services.target',
++                        'gnome-session-x11-services-ready.target',
+                         )
+ if have_x11
+   systemd_target += [
+     'gnome-session-x11@.target',
+     'gnome-session-x11.target',
+-    'gnome-session-x11-services.target',
+-    'gnome-session-x11-services-ready.target',
+   ]
+ endif
+ 
+-- 
+GitLab
+

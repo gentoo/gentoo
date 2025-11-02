@@ -5,6 +5,11 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
+	<use>
+		<flag name="evaluator">Enable evaluator</flag>
+		<flag name="template">Enable template</flag>
+		<flag name="torch">Support pytorch</flag>
+	</use>
 	<upstream>
 		<remote-id type="pypi">evaluate</remote-id>
 		<remote-id type="github">huggingface/evaluate</remote-id>

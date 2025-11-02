@@ -15,12 +15,18 @@ S="${WORKDIR}/${PN}-${HIGAN_COMMIT}"
 LICENSE="GPL-3+ ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa ao +gtk openal +opengl oss +pulseaudio +sdl udev xv"
+IUSE="alsa ao openal +opengl oss +pulseaudio +sdl udev xv"
 
 RDEPEND="
+	dev-libs/glib:2
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3[X]
+	x11-libs/gtksourceview:3.0=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrandr
+	x11-libs/pango
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
 	openal? ( media-libs/openal )
@@ -29,22 +35,11 @@ RDEPEND="
 	sdl? ( media-libs/libsdl2[joystick] )
 	udev? ( virtual/libudev:= )
 	xv? ( x11-libs/libXv )
-	gtk? (
-		dev-libs/glib:2
-		x11-libs/cairo
-		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:3[X]
-		x11-libs/gtksourceview:3.0=
-		x11-libs/pango
-	)
-	!gtk? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-	)"
+"
 DEPEND="
 	${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
@@ -64,7 +59,7 @@ src_compile() {
 	local makeopts=(
 		platform=linux
 		compiler="$(tc-getCXX)"
-		hiro=$(usex gtk gtk3 qt5)
+		hiro=gtk3 # TODO: re-add Qt option if supports Qt6 (bug #962040)
 	)
 
 	local drivers=(

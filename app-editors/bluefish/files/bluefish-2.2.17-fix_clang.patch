@@ -1,0 +1,17 @@
+https://sourceforge.net/p/bluefish/tickets/114/
+> xml_entity.c:238:11: error: initializing 'gchar *' (aka 'char *')
+> with an expression of type 'const gchar *' (aka 'const char *')
+> discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+>   238 |                         gchar *nxt = g_utf8_next_char(srcp);
+>       |                                ^     ~~~~~~~~~~~~~~~~~~~~~~
+--- a/src/xml_entity.c
++++ b/src/xml_entity.c
+@@ -235,7 +235,7 @@ gchar *utf82xmlentities(const gchar *inbuf, gboolean iso8859_1, gboolean symbols
+ 			g_free(entity);
+ 			srcp = g_utf8_next_char(srcp);
+ 		} else {
+-			gchar *nxt = g_utf8_next_char(srcp);
++			const gchar *nxt = g_utf8_next_char(srcp);
+ 			outbuf = strncat(outbuf, srcp, (nxt-srcp));
+ 			srcp = nxt;
+ 		}

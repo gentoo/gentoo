@@ -1,10 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-XORG_EAUTORECONF="no"
-inherit flag-o-matic xorg-3 meson
+inherit flag-o-matic xorg-meson
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
@@ -96,8 +95,6 @@ REQUIRED_USE="!minimal? (
 PATCHES=(
 	"${UPSTREAMED_PATCHES[@]}"
 	"${FILESDIR}"/${PN}-1.12-unloadsubmodule.patch
-	# needed for new eselect-opengl, bug #541232
-	"${FILESDIR}"/${PN}-1.18-support-multiple-Files-sections.patch
 )
 
 src_configure() {
@@ -110,7 +107,7 @@ src_configure() {
 	# localstatedir is used for the log location; we need to override the default
 	#	from ebuild.sh
 	# sysconfdir is used for the xorg.conf location; same applies
-	local emesonargs=(
+	local XORG_CONFIGURE_OPTIONS=(
 		--localstatedir "${EPREFIX}/var"
 		--sysconfdir "${EPREFIX}/etc/X11"
 		-Db_ndebug=$(usex debug false true)
@@ -141,26 +138,26 @@ src_configure() {
 
 	if [[ ${PV} == 9999 ]] ; then
 		# Gone in 21.1.x, but not in master.
-		emesonargs+=( -Dxwayland=false )
+		XORG_CONFIGURE_OPTIONS+=( -Dxwayland=false )
 	fi
 
 	if use systemd || use elogind; then
-		emesonargs+=(
+		XORG_CONFIGURE_OPTIONS+=(
 			-Dsystemd_logind=true
 			$(meson_use suid suid_wrapper)
 		)
 	else
-		emesonargs+=(
+		XORG_CONFIGURE_OPTIONS+=(
 			-Dsystemd_logind=false
 			-Dsuid_wrapper=false
 		)
 	fi
 
-	meson_src_configure
+	xorg-meson_src_configure
 }
 
 src_install() {
-	meson_src_install
+	xorg-meson_src_install
 
 	# The meson build system does not support install-setuid
 	if ! use systemd && ! use elogind; then

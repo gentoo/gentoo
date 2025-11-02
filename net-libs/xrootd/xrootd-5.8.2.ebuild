@@ -27,7 +27,7 @@ if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/xrootd/xrootd.git"
 else
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://xrootd.web.cern.ch/download/v${PV}/${P}.tar.gz"
 fi
 

@@ -29,7 +29,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-arch/cabextract
-	app-arch/p7zip
+	|| (
+		>=app-arch/7zip-24.09[symlink(+)]
+		app-arch/p7zip
+	)
 	app-arch/unzip
 	$(python_gen_cond_dep '
 		dev-python/certifi[${PYTHON_USEDEP}]
@@ -46,10 +49,7 @@ RDEPEND="
 		dev-python/moddb[${PYTHON_USEDEP}]
 	')
 	media-sound/fluid-soundfont
-	|| (
-		net-libs/webkit-gtk:4[introspection]
-		net-libs/webkit-gtk:4.1[introspection]
-	)
+	net-libs/webkit-gtk:4.1[introspection]
 	sys-apps/pciutils
 	sys-apps/xdg-desktop-portal
 	x11-apps/mesa-progs

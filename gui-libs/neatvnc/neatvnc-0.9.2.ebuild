@@ -53,7 +53,7 @@ BDEPEND="
 src_prepare() {
 	default
 
-	# useful soname
+	# useful soname (https://github.com/any1/neatvnc/issues/124)
 	sed -i -e "s/'0.0.0'/meson.project_version()/" meson.build || die
 }
 

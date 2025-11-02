@@ -51,6 +51,8 @@ DEPEND="
 "
 BDEPEND="
 	>=dev-java/ant-1.10.14-r3:0
+	sys-apps/which
+	sys-devel/gettext
 	test? (
 		>=dev-java/ant-1.10.14-r3:0[junit4]
 	)

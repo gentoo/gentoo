@@ -1,6 +1,18 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2025-09-12)
+# These BLAS/LAPACK providers are keyworded here.
+sci-libs/flexiblas -blis
+
+# Sam James <sam@gentoo.org> (2025-08-29)
+# net-misc/passt not yet keyworded here
+app-emulation/qemu passt
+
+# Sam James <sam@gentoo.org> (2025-06-05)
+# dev-util/spirv-llvm-translator not keyworded here
+dev-libs/pocl spirv
+
 # Sam James <sam@gentoo.org> (2025-05-16)
 # gpio: dev-libs/libgpiod not keyworded here
 sys-power/nut gpio
@@ -35,9 +47,13 @@ media-libs/zxing-cpp experimental
 # dev-cpp/prometheus-cpp is not keyworded
 dev-cpp/opentelemetry-cpp prometheus
 
+# Zurab Kvachadze <zurabid2016@gmail.com> (2025-02-18)
+# www-servers/uwsgi, required for tests, is not keyworded on ppc64.
+www-servers/nginx test
+
 # Michał Górny <mgorny@gentoo.org> (2024-12-24)
 # OpenMP offloading is supported on 64-bit architectures only.
-llvm-core/clang-runtime -offload
+llvm-runtimes/clang-runtime -offload
 
 # Sam James <sam@gentoo.org> (2024-12-17)
 # dev-lang/ada-bootstrap exists here
@@ -88,18 +104,10 @@ sci-libs/symengine tcmalloc
 # https://github.com/rustsec/rustsec/issues/707
 dev-util/cargo-audit fix
 
-# Jimi Huotari <chiitoo@gentoo.org> (2022-05-08)
-# Not keyworded here yet.
-lxqt-base/lxqt-meta desktop-portal
-
 # Michał Górny <mgorny@gentoo.org> (2021-12-31)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
 dev-lang/python-exec -python_targets_pypy3_11
-
-# Sam James <sam@gentoo.org> (2021-10-17)
-# Go doesn't support pie on ppc64, bug #818529
-net-dns/dnscrypt-proxy pie
 
 # Marek Szuba <marecki@gentoo.org> (2021-07-18)
 # media-plugins/zam-plugins not keyworded here
@@ -204,12 +212,6 @@ net-analyzer/snort open-appid
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
-# kde-frameworks/*:5 not keyworded.
-net-irc/kvirc kde
-app-arch/p7zip kde
-dev-vcs/subversion kwallet
-
 # Jeroen Roovers <jer@gentoo.org> (2015-12-26)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
@@ -218,11 +220,6 @@ net-analyzer/rrdtool rados
 # Mask openmedia use flag because the content generation tools
 # are missing keywords.
 games-simulation/openttd openmedia
-
-# Sergey Popov <pinkbyte@gentoo.org> (2013-02-18)
-# sys-cluster/ploop can not be build on ppc64, bug #447644
-# Masking USE-dep on it
-sys-cluster/vzctl ploop
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-09-02)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191

@@ -5,7 +5,7 @@ EAPI=8
 
 inherit autotools eapi9-pipestatus elisp-common flag-o-matic readme.gentoo-r1
 
-DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
+DESCRIPTION="The advanced, extensible, customizable, self-documenting editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
 	https://dev.gentoo.org/~ulm/emacs/${P}-patches-12.tar.xz"
@@ -17,7 +17,7 @@ S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="26"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gfile gif gpm gsettings gtk gui gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars valgrind wide-int Xaw3d xft +xpm zlib"
 
 RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
@@ -67,7 +67,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
-		gtk? ( x11-libs/gtk+:3 )
+		gtk? ( x11-libs/gtk+:3[X] )
 		!gtk? (
 			motif? (
 				>=x11-libs/motif-2.3:0
@@ -124,6 +124,8 @@ src_configure() {
 	# We want floating-point arithmetic to be correct #933380
 	replace-flags -Ofast -O2
 	append-flags -fno-fast-math -ffp-contract=off
+
+	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
 
 	local myconf=(
 		--program-suffix="-${EMACS_SUFFIX}"
@@ -243,8 +245,6 @@ src_configure() {
 }
 
 src_compile() {
-	export ac_cv_header_valgrind_valgrind_h=$(usex valgrind)
-
 	# Disable sandbox when dumping. For the unbelievers, see bug #131505
 	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }

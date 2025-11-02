@@ -19,7 +19,7 @@ else
 		https://github.com/certbot/certbot/archive/v${PV}.tar.gz
 			-> ${P}.gh.tar.gz
 	"
-	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv x86"
 fi
 
 DESCRIPTION="Let's Encrypt client to automate deployment of X.509 certificates"
@@ -69,14 +69,6 @@ BDEPEND="
 # Also discard the previous related packages
 # except their transition step
 RDEPEND="
-	!<app-crypt/acme-3.2.0-r100
-	!<app-crypt/certbot-apache-3.2.0-r100
-	!<app-crypt/certbot-dns-desec-3.2.0-r100
-	!<app-crypt/certbot-dns-dnsimple-3.2.0-r100
-	!<app-crypt/certbot-dns-nsone-3.2.0-r100
-	!<app-crypt/certbot-dns-rfc2136-3.2.0-r100
-	!<app-crypt/certbot-nginx-3.2.0-r100
-
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-1.5.3[${PYTHON_USEDEP}]
 	>=dev-python/configobj-5.0.6[${PYTHON_USEDEP}]

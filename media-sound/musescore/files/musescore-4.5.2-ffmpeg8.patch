@@ -1,0 +1,12 @@
+https://bugs.gentoo.org/964402
+https://github.com/musescore/MuseScore/pull/30579
+--- a/src/importexport/videoexport/internal/videoencoder.cpp
++++ b/src/importexport/videoexport/internal/videoencoder.cpp
+@@ -128,3 +128,7 @@
+ #endif
++#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(60, 31, 102)
+     m_ffmpeg->codecCtx->profile = FF_PROFILE_H264_HIGH;
++#else
++    m_ffmpeg->codecCtx->profile = AV_PROFILE_H264_HIGH;
++#endif
+ 

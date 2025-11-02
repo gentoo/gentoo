@@ -3,11 +3,11 @@
 
 EAPI=8
 
-# las Xiph's libparanoia was 10.2. Forks that superseeded it note that
-# by declaring their version as 10.2+${PV}
+# Xiph's last (cd/lib)paranoia was 10.2. This fork is versioned accordingly
+# by declaring its version as 10.2+${PV}.
 MY_P=${PN}-10.2+${PV/_p/+}
 
-inherit autotools multilib-minimal
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="Advanced CDDA reader with error correction"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -39,6 +39,13 @@ DOCS=( AUTHORS ChangeLog NEWS.md README.md THANKS )
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# Drop this after 2.0.2 (bug #945207)
+	append-cflags -std=gnu17
+
+	multilib-minimal_src_configure
 }
 
 multilib_src_configure() {

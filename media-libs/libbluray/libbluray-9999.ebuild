@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,12 +21,12 @@ SLOT="0/2"
 IUSE="aacs bdplus +fontconfig java +truetype utils +xml"
 
 COMMON_DEPEND="
-	>=dev-libs/libudfread-1.1.0[${MULTILIB_USEDEP}]
+	>=dev-libs/libudfread-1.1.0:=[${MULTILIB_USEDEP}]
 	aacs? ( >=media-libs/libaacs-0.6.0[${MULTILIB_USEDEP}] )
 	bdplus? ( media-libs/libbdplus[${MULTILIB_USEDEP}] )
 	fontconfig? ( >=media-libs/fontconfig-2.10.92[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.5.0.1:2[${MULTILIB_USEDEP}] )
-	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )
+	xml? ( >=dev-libs/libxml2-2.9.1-r4:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="
 	${COMMON_DEPEND}

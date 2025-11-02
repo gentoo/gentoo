@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 pypy3_11 python3_{10..13} )
+PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
 
 inherit distutils-r1 pypi
 
@@ -28,7 +28,6 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/paramiko-2.7.0[${PYTHON_USEDEP}]
-		dev-python/pytest-httpserver[${PYTHON_USEDEP}]
 		>=dev-python/tqdm-4.41.0[${PYTHON_USEDEP}]
 	)
 "
@@ -50,9 +49,9 @@ EPYTEST_DESELECT=(
 ### docs no included in pypi tarball
 # distutils_enable_sphinx doc \
 #	dev-python/sphinx-rtd-theme
+EPYTEST_PLUGINS=( pytest-httpserver )
 distutils_enable_tests pytest
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	epytest -p pytest_httpserver -k "not network"
+	epytest -k "not network"
 }

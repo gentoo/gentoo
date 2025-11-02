@@ -1,0 +1,16 @@
+diff --git a/numpydoc/validate.py b/numpydoc/validate.py
+index d0debfa..6d7b369 100644
+--- a/numpydoc/validate.py
++++ b/numpydoc/validate.py
+@@ -640,9 +640,9 @@ def validate(obj_name, validator_cls=None, **validator_kwargs):
+         # Check if the object is a class and has a docstring in the constructor
+         # Also check if code_obj is defined, as undefined for the AstValidator in validate_docstrings.py.
+         if (
+-            doc.name.endswith(".__init__")
+-            and doc.is_function_or_method
++            doc.is_function_or_method
+             and hasattr(doc, "code_obj")
++            and doc.name.endswith(".__init__")
+         ):
+             cls_name = doc.code_obj.__qualname__.split(".")[0]
+             cls = Validator._load_obj(f"{doc.code_obj.__module__}.{cls_name}")

@@ -17,7 +17,7 @@ else
 		https://mkvtoolnix.download/sources/${P}.tar.xz
 		verify-sig? ( https://mkvtoolnix.download/sources/${P}.tar.xz.sig )
 	"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 	VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/mkvtoolnix.asc"
 fi
@@ -35,7 +35,7 @@ RESTRICT="!test? ( test )"
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
 RDEPEND="
-	dev-libs/boost:=
+	>=dev-libs/boost-1.74.0:=
 	dev-libs/gmp:=
 	>=dev-libs/libebml-1.4.5:=
 	>=dev-libs/libfmt-8.0.1:=

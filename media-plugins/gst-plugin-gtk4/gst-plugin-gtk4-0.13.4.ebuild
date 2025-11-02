@@ -154,7 +154,7 @@ LICENSE="MPL-2.0"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0-with-LLVM-exceptions MIT Unicode-3.0"
 SLOT="1.0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="+egl +gles2 opengl wayland +X" # Keep default IUSE mirrored with gst-plugins-base
 
 DEPEND="

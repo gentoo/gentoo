@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ LICENSE="Apache-2.0"
 LICENSE+=" BSD ECL-2.0 MIT CC0-1.0"
 SLOT="0"
 
-IUSE='events-handlers-exec security'
+IUSE='dynamicdns dns-azure dns-cloudflare dns-cloudns dns-digitalocean dns-duckdns dns-googleclouddns dns-hetzner dns-mailinabox dns-netcup dns-ovh dns-porkbun dns-rfc2136 dns-vultr events-handlers-exec security webdav'
 RESTRICT="test"
 
 RDEPEND="
@@ -47,8 +47,27 @@ add_custom_module() {
 src_unpack() {
 	declare -A MOOMODULES || die
 
+	use dynamicdns && { MOOMODULES[ddns]="github.com/mholt/caddy-dynamicdns" || die ; }
 	use events-handlers-exec && { MOOMODULES[exec]="github.com/mholt/caddy-events-exec" || die ; }
 	use security && { MOOMODULES[sec]="github.com/greenpau/caddy-security" || die ; }
+	use webdav && { MOOMODULES[webdav]="github.com/mholt/caddy-webdav" || die ; }
+
+	# alphabetically sorted popular DNS providers plugins
+	# more info on https://caddyserver.com/docs/modules/
+	# providers not working with 2.10: dnsimple, gandi, namecheap, powerdns, route53
+	use dns-azure && { MOOMODULES[azure]="github.com/caddy-dns/azure" || die ; }
+	use dns-cloudflare && { MOOMODULES[cloudflare]="github.com/caddy-dns/cloudflare" || die ; }
+	use dns-cloudns && { MOOMODULES[cloudns]="github.com/caddy-dns/cloudns" || die ; }
+	use dns-digitalocean && { MOOMODULES[do]="github.com/caddy-dns/digitalocean" || die ; }
+	use dns-duckdns && { MOOMODULES[duck]="github.com/caddy-dns/duckdns" || die ; }
+	use dns-googleclouddns && { MOOMODULES[gcpdns]="github.com/caddy-dns/googleclouddns" || die ; }
+	use dns-hetzner && { MOOMODULES[hetzner]="github.com/caddy-dns/hetzner" || die ; }
+	use dns-mailinabox && { MOOMODULES[miabox]="github.com/caddy-dns/mailinabox" || die ; }
+	use dns-netcup && { MOOMODULES[netcup]="github.com/caddy-dns/netcup" || die ; }
+	use dns-ovh && { MOOMODULES[ovh]="github.com/caddy-dns/ovh" || die ; }
+	use dns-porkbun && { MOOMODULES[porkbun]="github.com/caddy-dns/porkbun" || die ; }
+	use dns-rfc2136 && { MOOMODULES[rfc]="github.com/caddy-dns/rfc2136" || die ; }
+	use dns-vultr && { MOOMODULES[vultr]="github.com/caddy-dns/vultr" || die ; }
 
 	export MY_MODULES="${MOOMODULES[@]}" || die
 

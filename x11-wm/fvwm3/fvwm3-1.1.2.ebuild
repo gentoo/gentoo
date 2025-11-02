@@ -8,7 +8,7 @@ EAPI=8
 # Scripting for this is in sam-gentoo-scripts.
 : ${FVWM3_DOCS_PREBUILT:=1}
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 GO_OPTIONAL=1
 inherit go-module meson optfeature python-single-r1
 

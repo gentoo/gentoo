@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-autotool
 
 LICENSE="FLEX"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="nls static test"
 RESTRICT="!test? ( test )"
 
@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-libobjdir.patch
 	"${FILESDIR}"/${P}-fix-build-with-glibc2.26.patch
 	"${FILESDIR}"/${P}-fix-apple-m1-crash-by-explicit-pointer-cast.patch
+	"${FILESDIR}"/${P}-fix-malloc-prototype.patch
 
 	"${WORKDIR}"/${P}-autotools-regenerate.patch
 )

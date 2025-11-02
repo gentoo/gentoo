@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit autotools
+inherit autotools dot-a
 
 MY_PV="${PV/_/-}"
 
@@ -20,7 +20,12 @@ RESTRICT="test"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( "${FILESDIR}/${PN}"-4.1-fix-build-system.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}"-4.1-fix-build-system.patch
+	# backport fix for https://github.com/integrit/integrit/issues/8
+	# https://bugs.gentoo.org/941078
+	"${FILESDIR}"/${P}-type-mismatch.patch
+)
 
 BDEPEND="sys-apps/texinfo"
 
@@ -31,6 +36,11 @@ src_prepare() {
 
 	eautoreconf
 	touch ar-lib || die #775746
+}
+
+src_configure() {
+	lto-guarantee-fat
+	default
 }
 
 src_compile() {
@@ -62,6 +72,8 @@ src_install() {
 
 	# examples
 	dodoc -r examples
+
+	strip-lto-bytecode
 }
 
 pkg_postinst() {

@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="cli"
 
 RDEPEND="
@@ -80,10 +80,6 @@ python_test() {
 		# Internet
 		tests/client/test_proxies.py::test_async_proxy_close
 		tests/client/test_proxies.py::test_sync_proxy_close
-		# click-8.2.0
-		# https://github.com/encode/httpx/discussions/3572
-		tests/test_main.py::test_auth
-		tests/test_main.py::test_verbose
 	)
 
 	use cli || EPYTEST_IGNORE+=(

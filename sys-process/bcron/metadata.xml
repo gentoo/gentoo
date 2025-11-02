@@ -10,4 +10,7 @@
 	replacement for similar systems (such as vixie-cron), but the internals
 	differ greatly.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">bruceg/bcron</remote-id>
+	</upstream>
 </pkgmetadata>

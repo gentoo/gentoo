@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 COMMON_DEPEND="
 	app-text/ghostscript-gpl:=
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.2.6a-solaris.patch"
 	"${FILESDIR}/${PN}-3.2.9-app-defaults.patch"
 	"${DISTDIR}/${P}-modern-c.patch"
+	"${FILESDIR}/${PN}-3.2.9a-variables.patch"
 )
 
 src_configure() {

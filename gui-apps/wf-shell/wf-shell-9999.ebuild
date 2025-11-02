@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/WayfireWM/wf-shell"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/WayfireWM/wf-shell.git"
-	SLOT="0/0.10"
+	SLOT="0/0.11"
 else
 	SRC_URI="https://github.com/WayfireWM/wf-shell/releases/download/v${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64"
@@ -28,7 +28,7 @@ DEPEND="
 	dev-cpp/glibmm:2
 	dev-cpp/gtkmm:3.0[wayland]
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	dev-libs/libsigc++:2
 	dev-libs/libdbusmenu[gtk3]
 	>=gui-libs/gtk-layer-shell-0.6
@@ -36,7 +36,7 @@ DEPEND="
 	>=gui-libs/wf-config-0.7.0:=
 	gui-wm/wayfire
 	x11-libs/cairo
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[wayland]
 	pulseaudio? (
 		media-libs/alsa-lib
 		media-libs/libpulse

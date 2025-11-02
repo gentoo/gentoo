@@ -33,7 +33,7 @@ DEPEND="
 		svg? ( dev-qt/qtsvg:5 )
 	)
 	qt6? (
-		dev-qt/qtbase:6[concurrent,gui,cups,widgets]
+		dev-qt/qtbase:6[concurrent,gui,widgets]
 		designer? ( dev-qt/qttools:6[designer] )
 		opengl? (
 			dev-qt/qtbase:6[opengl]

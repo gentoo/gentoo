@@ -1,0 +1,10 @@
+--- a/sendmail/conf.c
++++ b/sendmail/conf.c
+@@ -117,6 +117,7 @@
+ 	{ "content-length",		H_ACHECK,		NULL	},
+ 	{ "subject",			H_ENCODABLE,		NULL	},
+ 	{ "x-authentication-warning",	H_FORCE,		NULL	},
++	{ "delivered-to",	    H_FORCE,		NULL	},
+ 
+ 	{ NULL,				0,			NULL	}
+ };

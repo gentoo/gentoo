@@ -1,0 +1,20 @@
+https://bugs.gentoo.org/958314
+
+Fixes compilation error against musl-libc, like in https://github.com/md-raid-utilities/mdadm/issues/12#issuecomment-2119880626
+
+Patch by Samuel Blythe <metroidhunter9000@proton.me>
+--- a/ifrename.c
++++ b/ifrename.c
+@@ -52,6 +52,12 @@
+ 
+ #include "iwlib.h"		/* Wireless Tools library */
+ 
++/* Ensure GNU basename behavior for musl libc */
++#ifndef __GLIBC__
++#define basename(path) \
++       (strrchr((path),'/') ? strrchr((path),'/')+1 : (path))
++#endif
++
+ // This would be cool, unfortunately...
+ //#include <linux/ethtool.h>	/* Ethtool stuff -> struct ethtool_drvinfo */
+ 

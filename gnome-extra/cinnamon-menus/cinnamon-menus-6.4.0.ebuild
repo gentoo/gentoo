@@ -11,12 +11,12 @@ SRC_URI="https://github.com/linuxmint/cinnamon-menus/archive/${PV}.tar.gz -> ${P
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv x86"
 IUSE="gtk-doc"
 
 RDEPEND="
 	>=dev-libs/glib-2.29.15:2
-	>=dev-libs/gobject-introspection-1.58.3:=
+	>=dev-libs/gobject-introspection-1.82.0-r2:=
 "
 DEPEND="
 	${RDEPEND}

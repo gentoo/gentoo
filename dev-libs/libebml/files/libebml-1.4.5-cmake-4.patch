@@ -1,0 +1,30 @@
+https://github.com/Matroska-Org/libebml/commit/695d152cef04a07da9d57e853bba2f192ae9b865
+
+From 695d152cef04a07da9d57e853bba2f192ae9b865 Mon Sep 17 00:00:00 2001
+From: Steve Lhomme <slhomme@matroska.org>
+Date: Fri, 9 May 2025 07:34:46 +0200
+Subject: [PATCH] CMake: bump minimum CMake version
+
+It fails to build in the CI because older versions support has been dropped in newer CMake.
+
+```
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 has been removed from CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+  Or, add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to try configuring anyway.
+```
+
+(cherry picked from commit 6725c5f0169981cb0bd2ee124fbf0d8ca30b762d)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1.2)
++cmake_minimum_required(VERSION 3.5)
+ 
+ project(ebml VERSION 1.4.5)
+ 
+

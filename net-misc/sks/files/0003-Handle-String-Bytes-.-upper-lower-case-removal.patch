@@ -1,0 +1,48 @@
+From 39172daccac13da1c1abc107e13acfa1bd257cc9 Mon Sep 17 00:00:00 2001
+From: Sam James <sam@gentoo.org>
+Date: Tue, 10 Jun 2025 10:20:54 +0100
+Subject: [PATCH 3/4] Handle {String,Bytes}.{upper,lower}case removal
+
+Switch to _ascii.
+
+Signed-off-by: Sam James <sam@gentoo.org>
+---
+ script.ml | 2 +-
+ utils.ml  | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/script.ml b/script.ml
+index f6e7bd0..4491c3d 100644
+--- a/script.ml
++++ b/script.ml
+@@ -58,7 +58,7 @@ let is_content_type line =
+   try
+     let colonpos = String.index line ':' in
+     let prefix = String.sub ~pos:0 ~len:colonpos line in
+-    String.lowercase prefix = "content-type"
++    String.lowercase_ascii prefix = "content-type"
+   with
+       Not_found -> false
+ 
+diff --git a/utils.ml b/utils.ml
+index c840b71..7efc316 100644
+--- a/utils.ml
++++ b/utils.ml
+@@ -102,10 +102,10 @@ let is_alnum char =
+   (num >= int_of_char '0' && num <= int_of_char '9') ||
+   (num >= 192 && num <= 255)
+ 
+-let lowercase = String.lowercase[@@ocaml.warning "-3"]
+-let uppercase = String.uppercase[@@ocaml.warning "-3"]
+-let bytes_lowercase = Bytes.lowercase[@@ocaml.warning "-3"]
+-let bytes_uppercase = Bytes.uppercase[@@ocaml.warning "-3"]
++let lowercase = String.lowercase_ascii[@@ocaml.warning "-3"]
++let uppercase = String.uppercase_ascii[@@ocaml.warning "-3"]
++let bytes_lowercase = Bytes.lowercase_ascii[@@ocaml.warning "-3"]
++let bytes_uppercase = Bytes.uppercase_ascii[@@ocaml.warning "-3"]
+ 
+ let rec extract_words_rec s ~start ~len partial =
+   let one () = Set.add (lowercase (String.sub s start len)) partial in
+-- 
+2.49.0
+

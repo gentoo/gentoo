@@ -18,7 +18,7 @@ S="${WORKDIR}"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 # Precompiled binaries
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 
 # Mixing libguestfs versions causes weird problems, bug #501588
 RDEPEND="!<app-emulation/libguestfs-${PV}"

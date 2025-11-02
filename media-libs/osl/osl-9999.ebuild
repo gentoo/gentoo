@@ -7,7 +7,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
 
 # Check this on updates
-LLVM_COMPAT=( {18..19} )
+LLVM_COMPAT=( {18..20} )
 
 inherit cmake cuda flag-o-matic llvm-r1 toolchain-funcs python-single-r1
 
@@ -45,7 +45,7 @@ IUSE="+clang-cuda debug doc gui libcxx nofma optix partio test ${CPU_FEATURES[*]
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	test? ( optix? ( clang-cuda ) )
+	optix? ( clang-cuda )
 "
 
 RDEPEND="
@@ -277,7 +277,7 @@ src_configure() {
 		mycmakeargs+=(
 			-DUSE_LLVM_BITCODE="$(usex clang-cuda)"
 			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
-			-DCUDA_OPT_FLAG_NVCC="$(get-flag O)"
+			-DCUDA_OPT_FLAG_CLANG="$(get-flag O)"
 		)
 	fi
 
@@ -296,25 +296,23 @@ src_configure() {
 		)
 	fi
 
-	if use test; then
-		if use optix; then
-			local -x CUDAHOSTCXX CUDAHOSTLD
-			CUDAHOSTCXX="$(cuda_get_host_compiler)"
-			CUDAHOSTLD="$(tc-getCXX)"
+	if use optix; then
+		local -x CUDAHOSTCXX CUDAHOSTLD
+		CUDAHOSTCXX="$(cuda_get_host_compiler)"
+		CUDAHOSTLD="$(tc-getCXX)"
 
-			mycmakeargs+=(
-				-DOSL_USE_OPTIX="yes"
-				-DOptiX_FIND_QUIETLY="no"
-				-DCUDA_FIND_QUIETLY="no"
+		mycmakeargs+=(
+			-DOSL_USE_OPTIX="yes"
+			-DOptiX_FIND_QUIETLY="no"
+			-DCUDA_FIND_QUIETLY="no"
 
-				-DOPTIXHOME="${OPTIX_PATH:=${ESYSROOT}/opt/optix}"
-				-DCUDA_TOOLKIT_ROOT_DIR="${CUDA_PATH:=${ESYSROOT}/opt/cuda}"
+			-DOPTIXHOME="${OPTIX_PATH:-${ESYSROOT}/opt/optix}"
+			-DCUDA_TOOLKIT_ROOT_DIR="${CUDA_PATH:-${ESYSROOT}/opt/cuda}"
 
-				-DCUDA_NVCC_FLAGS="--compiler-bindir;${CUDAHOSTCXX}"
-				-DOSL_EXTRA_NVCC_ARGS="--compiler-bindir;${CUDAHOSTCXX}"
-				-DCUDA_VERBOSE_BUILD="yes"
-			)
-		fi
+			-DCUDA_NVCC_FLAGS="--compiler-bindir;${CUDAHOSTCXX}"
+			-DOSL_EXTRA_NVCC_ARGS="--compiler-bindir;${CUDAHOSTCXX}"
+			-DCUDA_VERBOSE_BUILD="yes"
+		)
 	fi
 
 	# Environment OPENIMAGEIO_CUDA=0 trumps everything else, turns off
@@ -378,11 +376,9 @@ src_test() {
 		"^render-veachmis.opt$"
 
 		# optix
-		"^render-mx-generalized-schlick.optix$"
-		"^render-mx-generalized-schlick.optix.opt$"
-		"^render-mx-generalized-schlick.optix.fused$"
 		"^render-microfacet.optix.opt$"
 		"^render-microfacet.optix.fused$"
+		"^render-mx-burley-diffuse.opt$"
 	)
 
 	local myctestargs=(

@@ -27,7 +27,7 @@ DOCS=( doc/{README,FAQ} )
 
 BDEPEND="
 	test? (
-		dev-libs/gobject-introspection
+		>=dev-libs/gobject-introspection-1.82.0-r2
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/pygobject[${PYTHON_USEDEP}]
 		dev-util/intltool

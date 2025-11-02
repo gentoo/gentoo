@@ -8,12 +8,12 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 LLVM_COMPAT=( {16..20} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
-inherit distutils-r1 llvm-r1 multiprocessing qmake-utils virtualx
+inherit distutils-r1 llvm-r2 multiprocessing qmake-utils virtualx
 
 MY_PN=${PN}-setup-everywhere-src
 MY_P=${MY_PN}-${PV}
@@ -128,7 +128,7 @@ declare -A QT_REQUIREMENTS=(
 	["xml"]="core"
 )
 
-IUSE="${!QT_MODULES[@]} debug doc gles2-only numpy test tools"
+IUSE="${!QT_MODULES[*]} debug doc gles2-only numpy test tools"
 RESTRICT="!test? ( test )"
 
 # majority of QtQml tests require QtQuick support
@@ -137,7 +137,7 @@ REQUIRED_USE="
 		qml? ( quick )
 	)
 "
-for requirement in ${!QT_REQUIREMENTS[@]}; do
+for requirement in "${!QT_REQUIREMENTS[@]}"; do
 	REQUIRED_USE+=" ${requirement}? ( ${QT_REQUIREMENTS[${requirement}]} ) "
 done
 
@@ -257,15 +257,29 @@ python_prepare_all() {
 		's~(findClangBuiltInIncludesDir())~(QStringLiteral("'"${EPREFIX}"'/usr/lib/clang/'"${LLVM_SLOT}"'/include"))~' \
 		-i sources/shiboken6/ApiExtractor/clangparser/compilersupport.cpp || die
 
+	sed -e \
+		's~set(libclang_directory_suffix "lib")~set(libclang_directory_suffix "'"$(get_libdir)"'")~' \
+		-i sources/shiboken6/cmake/ShibokenHelpers.cmake || die
+
 	# blacklist.txt works like XFAIL
 	cat <<- EOF >> build_history/blacklist.txt || die
 	# segfaults with QOpenGLContext::create
 	[pysidetest::qapp_like_a_macro_test]
 		linux
+	# no mypy
+	[pysidetest::mypy_correctness_test]
+		linux
 	# Tries to execute pip install
 	[pyside6-deploy::test_pyside6_deploy]
 		linux
 	[pyside6-android-deploy::test_pyside6_android_deploy]
+		linux
+	# Behavior changed and test not changed to accomodate
+	# https://bugreports.qt.io/projects/PYSIDE/issues/PYSIDE-3135
+	[registry::existence_test]
+		linux
+	# Doesn't appear to play well with virtualx as it tries to use wayland
+	[QtUiTools::loadUiType_test]
 		linux
 	EOF
 
@@ -283,6 +297,8 @@ python_prepare_all() {
 }
 
 python_configure_all() {
+	export LLVM_INSTALL_DIR="$(get_llvm_prefix)"
+
 	ENABLED_QT_MODULES=()
 
 	# The order matters, dependencies must come first so process
@@ -297,25 +313,26 @@ python_configure_all() {
 		if [[ -n ${dependencies} ]]; then
 			local depflag
 			for depflag in ${dependencies}; do
-				if use ${depflag}; then
+				if use "${depflag}"; then
 					if [[ -z ${QT_MODULES[${depflag}]} ]]; then
 						depflag=+${depflag}
 					fi
-					enable_qt_mod ${depflag}
+					enable_qt_mod "${depflag}"
 				else
 					die "${depflag} is required but not enabled"
 				fi
 			done
 		fi
 		if [[ "${ENABLED_QT_MODULES[*]}" != *${modules}* ]]; then
+			# modules is whitespace separated. We expand implicitly.
 			ENABLED_QT_MODULES+=( ${modules} )
 		fi
 	}
 	# Enable specified qt modules
 	local flag
-	for flag in ${!QT_MODULES[@]}; do
-		if use ${flag//+}; then
-			enable_qt_mod ${flag}
+	for flag in "${!QT_MODULES[@]}"; do
+		if use "${flag//+}"; then
+			enable_qt_mod "${flag}"
 		fi
 	done
 
@@ -335,23 +352,34 @@ python_configure_all() {
 
 	# Arguments listed in options.py
 	MAIN_DISTUTILS_ARGS=(
-		--cmake="${EPREFIX}/usr/bin/cmake"
+		--cmake="${ESYSROOT}/usr/bin/cmake"
 		--ignore-git
 		--limited-api=no
 		--module-subset="$(printf '%s,' "${ENABLED_QT_MODULES[@]}")"
 		--no-strip
 		--no-size-optimization
-		--openssl="${EPREFIX}/usr/bin/openssl"
-		--qt=$(ver_cut 1-3)
-		--qtpaths=$(qt6_get_bindir)/qtpaths
+		--openssl="${ESYSROOT}/usr/bin/openssl"
+		--qt="$(ver_cut 1-3)"
+		--qtpaths="$(qt6_get_bindir)/qtpaths"
 		--verbose-build
-		--parallel=$(makeopts_jobs)
-		$(usex debug "--debug" "--relwithdebinfo")
-		$(usex doc "--build-docs" "--skip-docs")
-		$(usex numpy "--enable-numpy-support" "--disable-numpy-support")
-		$(usex test "--build-tests --use-xvfb" "")
-		$(usex tools "" "--no-qt-tools")
+		--parallel="$(makeopts_jobs)"
+		"$(usex debug "--debug" "--relwithdebinfo")"
+		"--$(usex doc "build" "skip")-docs"
+		"--$(usex numpy "enable" "disable")-numpy-support"
 	)
+
+	if use test; then
+		MAIN_DISTUTILS_ARGS+=(
+			"--build-tests"
+			"--use-xvfb"
+		)
+	fi
+
+	if ! use tools; then
+		MAIN_DISTUTILS_ARGS+=(
+			"--no-qt-tools"
+		)
+	fi
 }
 
 python_compile() {
@@ -362,8 +390,12 @@ python_compile() {
 	distutils-r1_python_compile
 
 	# The build system uses its own build dir, find the name of this dir.
-	local pyside_build_dir=$(find "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))" -maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n")
-	export pyside_build_id=${pyside_build_dir#qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-}
+	local pyside_build_dir
+	read -r pyside_build_dir < <(
+		find "${BUILD_DIR}/build$((${#DISTUTILS_WHEELS[@]}-1))" \
+			-maxdepth 1 -type d -name 'qfp*-py*-qt*-*' -printf "%f\n"
+	)
+	export pyside_build_id="${pyside_build_dir#"qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-"}"
 
 	DISTUTILS_ARGS=(
 		"${MAIN_DISTUTILS_ARGS[@]}"
@@ -394,7 +426,7 @@ python_compile() {
 		ln -s "${base}" "${lib%/*}/${base%%.*}-${EPYTHON}.so" ||
 			die
 	done
-	for lib in */*.cpython-*.so.$(ver_cut 1-2)
+	for lib in */*.cpython-*.so."$(ver_cut 1-2)"
 	do
 		local base=${lib##*/}
 		ln -s "${base}" "${lib%/*}/${base%%.*}-${EPYTHON}.so.$(ver_cut 1-2)" ||
@@ -431,7 +463,7 @@ python_compile() {
 	done
 
 	# Install misc files from inner install dir
-	find "${BUILD_DIR}"/build*/${pyside_build_dir}/install -type f \
+	find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type f \
 		-name libPySidePlugin.so -exec \
 		mkdir -p "${BUILD_DIR}/install/$(qt6_get_plugindir)/designer/" \; \
 		-exec \
@@ -439,7 +471,7 @@ python_compile() {
 			|| die
 
 	for dir in cmake pkgconfig; do
-		find "${BUILD_DIR}"/build*/${pyside_build_dir}/install -type d -name ${dir} \
+		find "${BUILD_DIR}"/build*/"${pyside_build_dir}"/install -type d -name "${dir}" \
 			-exec cp -r "{}" "${BUILD_DIR}/install/usr/lib/" \; \
 				|| die
 	done
@@ -492,13 +524,28 @@ python_compile() {
 
 python_test() {
 	# Otherwise it picks the last built directory breaking assumption for multi target builds
-	mkdir -p build_history/9999-99-99_999999/ || die
-	local pyside_build_dir=qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-${pyside_build_id}
-	echo "$(ls -d "${BUILD_DIR}"/build*/${pyside_build_dir}/build | sort -V | tail -n 1)" > build_history/9999-99-99_999999/build_dir.txt || die
-	echo "${pyside_build_dir}" >> build_history/9999-99-99_999999/build_dir.txt || die
+	local pyside_build_dir="qfp$(usev debug d)-py${EPYTHON#python}-qt$(ver_cut 1-3)-${pyside_build_id}"
 
-	virtx ${EPYTHON} testrunner.py test --projects=shiboken6 $(usev core '--projects=pyside6')  ||
+	local buildno=$(find "${BUILD_DIR}"/build* -name "${pyside_build_dir}" | sort -V | tail -n1)
+	if [[ -z "${buildno}" ]]; then
+		die "could not find any build directories for ${pyside_build_dir}"
+	fi
+
+	buildno="${buildno#"${BUILD_DIR}/build"}"
+	buildno="${buildno%"/${pyside_build_dir}"}"
+
+	local -x PYTHONPATH="${BUILD_DIR}/install$(python_get_sitedir)"
+	local -x QTEST_ENVIRONMENT=ci
+
+	# test shiboken6 build
+	virtx ${EPYTHON} testrunner.py test --buildno "$((buildno - 1))" --projects=shiboken6 ||
 		die "Tests failed with ${EPYTHON}"
+
+	if use core; then
+		# test pyside6 build
+		virtx ${EPYTHON} testrunner.py test --buildno "${buildno}" --projects=pyside6 ||
+			die "Tests failed with ${EPYTHON}"
+	fi
 }
 
 pkg_preinst() {

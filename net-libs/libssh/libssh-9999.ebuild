@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib dot-a
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
 HOMEPAGE="https://www.libssh.org/"
@@ -20,16 +20,16 @@ LICENSE="LGPL-2.1"
 SLOT="0/4" # subslot = soname major version
 IUSE="debug doc examples gssapi mbedtls pcap server +sftp static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
-
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!mbedtls? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
-	mbedtls? ( net-libs/mbedtls:0=[${MULTILIB_USEDEP}] )
+	mbedtls? ( net-libs/mbedtls:3=[${MULTILIB_USEDEP},threads] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	test? (
 		>=dev-util/cmocka-0.3.1[${MULTILIB_USEDEP}]
 		elibc_musl? ( sys-libs/argp-standalone )
@@ -40,6 +40,9 @@ BDEPEND="doc? ( app-text/doxygen[dot] )"
 DOCS=( AUTHORS CHANGELOG README )
 
 src_prepare() {
+	# Remove custom find module to use system one
+	rm cmake/Modules/FindMbedTLS.cmake || die
+
 	cmake_src_prepare
 
 	# just install the examples, do not compile them
@@ -78,6 +81,11 @@ src_prepare() {
 	fi
 }
 
+src_configure() {
+	lto-guarantee-fat
+	multilib-minimal_src_configure
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DWITH_NACL=OFF
@@ -85,9 +93,11 @@ multilib_src_configure() {
 		-DWITH_STACK_PROTECTOR_STRONG=OFF
 		-DWITH_DEBUG_CALLTRACE=$(usex debug)
 		-DWITH_DEBUG_CRYPTO=$(usex debug)
+		# Deprecated per CMakeLists.txt
 		-DWITH_GCRYPT=OFF
 		-DWITH_GSSAPI=$(usex gssapi)
 		-DWITH_MBEDTLS=$(usex mbedtls)
+		-DMBEDTLS_FOUND=$(usex mbedtls) # Enforce variable from custom find module
 		-DWITH_PCAP=$(usex pcap)
 		-DWITH_SERVER=$(usex server)
 		-DWITH_SFTP=$(usex sftp)
@@ -123,6 +133,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	strip-lto-bytecode
 	use mbedtls && DOCS+=( README.mbedtls )
 	einstalldocs
 

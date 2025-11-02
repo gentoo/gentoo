@@ -22,15 +22,15 @@ S=${WORKDIR}/${MY_P}
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 
 RDEPEND="
 	app-arch/libarchive
 "
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 python_test() {
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
 	epytest -o tmp_path_retention_policy=all
 }

@@ -63,7 +63,6 @@
 		<flag name="spandsp">Use <pkg>media-libs/spandsp</pkg> for for G.722 and G.726 codec support in the RTP Player</flag>
 		<flag name="sshdump">Install sshdump, an extcap interface to capture from a remote host through SSH</flag>
 		<flag name="text2pcap">Install text2pcap, to generate a capture file from an ASCII hexdump of packets</flag>
-		<flag name="tfshark">Install tfshark, a terminal-based version of the FileShark capability</flag>
 		<flag name="tshark">Install tshark, to dump and analyzer network traffic from the command line</flag>
 		<flag name="udpdump">Install udpdump, to get packets exported from a source (like a network device or a GSMTAP producer) that are dumped to a pcap file</flag>
 		<flag name="wifi">Install wifidump, to dump and analyse 802.11 traffic</flag>

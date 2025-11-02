@@ -1,0 +1,82 @@
+From e2aaf730de5d43afaf4e2b2ed1a94e8c0eeb11e2 Mon Sep 17 00:00:00 2001
+From: Deve <deveee@gmail.com>
+Date: Thu, 15 May 2025 17:54:28 +0200
+Subject: [PATCH 2/2] Fixed cmake 4.0 warnings
+
+Signed-off-by: G-Src <gsrc@fsfans.club>
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ 
+ # root CMakeLists for the SuperTuxKart project
+ project(SuperTuxKart)
+--- a/lib/angelscript/projects/cmake/CMakeLists.txt
++++ b/lib/angelscript/projects/cmake/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.5...4.0)
+ 
+ # STK Fix llvm mingw crashes
+ if (MINGW AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang" AND CMAKE_SIZEOF_VOID_P EQUAL 4)
+--- a/lib/enet/CMakeLists.txt
++++ b/lib/enet/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ 
+ project(enet)
+ 
+--- a/lib/graphics_utils/CMakeLists.txt
++++ b/lib/graphics_utils/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ include_directories("${PROJECT_SOURCE_DIR}/lib/simd_wrapper")
+ if (UNIX OR MINGW)
+     add_definitions(-O3)
+--- a/lib/libsquish/CMakeLists.txt
++++ b/lib/libsquish/CMakeLists.txt
+@@ -8,7 +8,7 @@
+ #   Unix and VS: SSE2 support is enabled by default
+ #    use BUILD_SQUISH_WITH_SSE2 and BUILD_SQUISH_WITH_ALTIVEC to override
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 3.6.0)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.6.0...4.0)
+ 
+ OPTION(BUILD_SQUISH_WITH_OPENMP "Build with OpenMP." OFF)
+ 
+--- a/lib/mcpp/CMakeLists.txt
++++ b/lib/mcpp/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ if (UNIX OR MINGW)
+     add_definitions(-O3)
+     if (APPLE)
+--- a/lib/tinygettext/CMakeLists.txt
++++ b/lib/tinygettext/CMakeLists.txt
+@@ -39,7 +39,7 @@ set(VERSION "0.1.0")
+ 
+ ### CMake configuration
+ 
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ if(COMMAND cmake_policy)
+ 	CMAKE_POLICY(SET CMP0003 NEW)
+ endif(COMMAND cmake_policy)
+--- a/lib/wiiuse/CMakeLists.txt
++++ b/lib/wiiuse/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # http://academic.cleardefinition.com/
+ # Iowa State University HCI Graduate Program/VRAC
+ 
+-cmake_minimum_required(VERSION 3.6.0)
++cmake_minimum_required(VERSION 3.6.0...4.0)
+ 
+ # Set package properties
+ project(WiiUse)
+-- 
+2.50.1
+

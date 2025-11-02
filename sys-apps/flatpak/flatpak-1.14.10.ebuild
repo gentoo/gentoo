@@ -56,7 +56,7 @@ BDEPEND="
 	dev-util/glib-utils
 	app-alternatives/yacc
 	$(python_gen_any_dep 'dev-python/pyparsing[${PYTHON_USEDEP}]')
-	introspection? ( >=dev-libs/gobject-introspection-1.40 )
+	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 	doc? (
 		app-text/xmlto
 		dev-libs/libxslt
