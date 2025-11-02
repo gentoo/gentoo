@@ -51,6 +51,7 @@ all_ruby_prepare() {
 	# Avoid unneeded dependency on bundler, bug 603696
 	sed -e '/bundler/ s:^:#:' \
 		-e 's/Bundler::GemHelper.gemspec.full_name/"rdoc"/' \
+		-e "/require 'rubocop'/,/])/ s:^:#:" \
 		-i Rakefile || die
 
 	# Skip rubygems tests since the rubygems test case code is no longer installed by rubygems.
