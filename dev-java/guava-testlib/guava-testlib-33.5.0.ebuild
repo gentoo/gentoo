@@ -16,7 +16,7 @@ S="${WORKDIR}/guava-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 
 CP_DEPEND="
 	>=dev-java/error-prone-annotations-2.42.0:0
