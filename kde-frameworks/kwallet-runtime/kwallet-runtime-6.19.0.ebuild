@@ -63,8 +63,8 @@ src_install() {
 
 	# provided by kde-frameworks/ksecretd-services
 	if use keyring; then
-		rm -v "${D}"/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.kwallet.service \
-			"${D}"/usr/share/dbus-1/services/org.kde.secretservicecompat.service || die
+		rm -v "${ED}"/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.kwallet.service \
+			"${ED}"/usr/share/dbus-1/services/org.kde.secretservicecompat.service || die
 	fi
 }
 
