@@ -34,10 +34,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	valgrind? ( dev-debug/valgrind )"
 RDEPEND="${COMMON_DEPEND}
-	video_cards_amdgpu? (
-		tools? ( >=dev-util/cunit-2.1 )
-		test?  ( >=dev-util/cunit-2.1 )
-	)
 	udev? ( virtual/udev )"
 BDEPEND="${PYTHON_DEPS}
 	doc? ( $(python_gen_any_dep 'dev-python/docutils[${PYTHON_USEDEP}]') )"
