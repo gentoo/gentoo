@@ -59,6 +59,19 @@ PATCHES=(
 	# https://gitlab.gnome.org/GNOME/epiphany/-/issues/2209
 	# https://gitlab.gnome.org/GNOME/epiphany/-/issues/2271
 	"${FILESDIR}/${PN}-46.2-disable-web-view-test.patch"
+
+	# Cases like GStreamer throw criticals, but Webkit handles their
+	# errors accordingly anyway.  So instead, just stop throwing fatal
+	# criticals for the Webkit process.  Even upstream doesn't like
+	# this.
+	# https://github.com/WebKit/WebKit/pull/28651
+	"${FILESDIR}/${PN}-49.1-Revert-Also-enable-fatal-criticals-in-the-web-proces.patch"
+
+	# Let's just follow the last practice here as well. Epiphany is the
+	# only GNOME project which fatals on critical warnings and it
+	# instead just causes Epiphany to mysteriously exit without saying
+	# anything.
+	"${FILESDIR}/${PN}-49.1-main-Don-t-enable-fatal-criticals.patch"
 )
 
 src_prepare() {
