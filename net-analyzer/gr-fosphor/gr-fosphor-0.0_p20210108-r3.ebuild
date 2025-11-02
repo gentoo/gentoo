@@ -40,7 +40,7 @@ BDEPEND="$(python_gen_cond_dep 'dev-python/pybind11[${PYTHON_USEDEP}]')"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.0_p20200131-htmldir.patch
-	"${FILESDIR}"/${PN}-0.0_p20210108-fix-use.patch
+	"${FILESDIR}"/${P}-fix-use.patch
 )
 
 src_prepare() {
