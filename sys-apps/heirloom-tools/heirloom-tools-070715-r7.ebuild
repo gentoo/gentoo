@@ -12,7 +12,7 @@ S="${WORKDIR}/heirloom-${PV}"
 
 LICENSE="ZLIB BSD BSD-4 CDDL GPL-2+ LGPL-2.1+ LPL-1.02 Info-ZIP public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 # slightly broken
 RESTRICT="test"
 
