@@ -3,7 +3,7 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+USE_RUBY="ruby32 ruby33"
 inherit depend.apache ruby-ng
 
 DESCRIPTION="Flexible project management web application using the Ruby on Rails framework"
@@ -36,14 +36,14 @@ ruby_add_bdepend "
 	>=dev-ruby/mail-2.8.1
 	dev-ruby/marcel
 	>=dev-ruby/mini_mime-1.1.0
-	>=dev-ruby/net-imap-0.4.8
+	>=dev-ruby/net-imap-0.5.7
 	>=dev-ruby/net-pop-0.1.2
 	>=dev-ruby/net-smtp-0.4.0
-	>=dev-ruby/nokogiri-1.16.0
+	>=dev-ruby/nokogiri-1.18.3
 	>=dev-ruby/propshaft-1.1.0:1
 	>=dev-ruby/rack-3.1.3:3.1
-	>=dev-ruby/rails-7.2.2.1:7.2
-	>=dev-ruby/rbpdf-1.21.3
+	>=dev-ruby/rails-7.2.2.2:7.2
+	>=dev-ruby/rbpdf-1.21.4
 	>=dev-ruby/redcarpet-3.6.0
 	>=dev-ruby/request_store-1.5.0:0
 	dev-ruby/rexml
