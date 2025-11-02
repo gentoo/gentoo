@@ -244,11 +244,30 @@ src_test() {
 }
 
 src_install() {
+	local i src
+
 	meson_src_install
 
 	if use gtk-doc; then
-		mkdir -p "${ED}"/usr/share/gtk-doc/html/ || die
-		mv "${ED}"/usr/share/doc/{gtk4,gsk4,gdk4{,-wayland,-x11}} "${ED}"/usr/share/gtk-doc/html/ || die
+		mkdir -p "${ED}/usr/share/gtk-doc/html" || die
+
+		for dir in gdk4 gtk4 gsk4; do
+			src="${ED}/usr/share/doc/${dir}"
+			test -d "${src}" || die "Expected documentation directory ${src} not found"
+			mv -v "${src}" "${ED}/usr/share/gtk-doc/html" || die
+		done
+
+		if use X; then
+			src="${ED}/usr/share/doc/gdk4-x11"
+			test -d "${src}" || die "Expected X11 documentation ${src} not found"
+			mv -v "${src}" "${ED}/usr/share/gtk-doc/html" || die
+		fi
+
+		if use wayland; then
+			src="${ED}/usr/share/doc/gdk4-wayland"
+			test -d "${src}" || die "Expected Wayland documentation ${src} not found"
+			mv -v "${src}" "${ED}/usr/share/gtk-doc/html" || die
+		fi
 	fi
 }
 
