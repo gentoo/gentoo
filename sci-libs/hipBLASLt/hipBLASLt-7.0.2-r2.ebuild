@@ -28,8 +28,7 @@ RDEPEND="
 	roctracer? ( dev-util/roctracer:${SLOT} )
 	benchmark? (
 		dev-util/rocm-smi:${SLOT}
-		sci-libs/lapack
-		sci-libs/openblas
+		sci-libs/flexiblas
 	)
 "
 
@@ -37,7 +36,9 @@ DEPEND="
 	${RDEPEND}
 	dev-cpp/msgpack-cxx
 	sci-libs/hipBLAS-common:${SLOT}
+	llvm-runtimes/openmp
 "
+
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-build/rocm-cmake:${SLOT}
@@ -52,12 +53,8 @@ BDEPEND="
 	$(llvm_gen_dep "llvm-core/clang:\${LLVM_SLOT}")
 	test? (
 		dev-cpp/gtest
-		virtual/blas
+		sci-libs/flexiblas
 		dev-util/rocm-smi:${SLOT}
-	)
-	benchmark? (
-		virtual/blas
-		llvm-runtimes/openmp
 	)
 "
 
@@ -110,13 +107,14 @@ src_prepare() {
 		-i tensilelite/Tensile/Toolchain/Validators.py \
 		-i tensilelite/Tensile/Tests/unit/test_MatrixInstructionConversion.py || die
 
-	# sed -e "s:rocm_path + \"/bin/amdclang++\":$(get_llvm_prefix)/bin/clang++:" \
-	# 	-i tensilelite/rocisa/test/test_base.py \
-	# 	-i tensilelite/rocisa/test/test_container.py || die
-
 	# https://github.com/ROCm/rocm-libraries/commit/48c5e89fd90caff65e62e6a9bcf082d10d8877eb
 	sed -e 's:if(NOT ROCM_FOUND):if(NOT ROCmCMakeBuildTools_FOUND):' \
 		-i cmake/Dependencies.cmake || die
+
+	# https://bugs.gentoo.org/965310 - use normal FindBLAS
+	# To be removed in 7.1.0 (not used in there anymore)
+	sed -e '/find_dependency(cblas)/ s/cblas/BLAS/' -i cmake/hipblaslt-config.cmake || die
+	sed -e 's/cblas REQUIRED CONFIG/BLAS REQUIRED/' -i clients/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
@@ -132,18 +130,20 @@ src_configure() {
 	local HIPBLASLT_ENABLE_DEVICE=$([ "${AMDGPU_TARGETS[*]}" != "" ] && echo ON || echo OFF )
 
 	local mycmakeargs=(
-		-DROCM_SYMLINK_LIBS=OFF
-		-DTensile_SKIP_BUILD=${Tensile_SKIP_BUILD}
-		-DHIPBLASLT_ENABLE_DEVICE=${HIPBLASLT_ENABLE_DEVICE}
-		-DTensile_COMPILER=${CXX}
 		-DAMDGPU_TARGETS="${targets}"
-		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
+		-DBLA_PKGCONFIG_BLAS=ON
+		-DBLA_VENDOR=FlexiBLAS
 		-DBUILD_CLIENTS_BENCHMARKS="$(usex benchmark ON OFF)"
-		-DPython_EXECUTABLE="${PYTHON}"
+		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
+		-DHIPBLASLT_ENABLE_DEVICE=${HIPBLASLT_ENABLE_DEVICE}
 		-DHIPBLASLT_ENABLE_MARKER="$(usex roctracer ON OFF)"\
 		-DHIPBLASLT_USE_ROCROLLER=OFF
-		-DTensile_CPU_THREADS=$(makeopts_jobs)
 		-Dnanobind_DIR="$(python_get_sitedir)/nanobind/cmake"
+		-DPython_EXECUTABLE="${PYTHON}"
+		-DROCM_SYMLINK_LIBS=OFF
+		-DTensile_COMPILER=${CXX}
+		-DTensile_CPU_THREADS=$(makeopts_jobs)
+		-DTensile_SKIP_BUILD=${Tensile_SKIP_BUILD}
 		-Wno-dev
 	)
 
