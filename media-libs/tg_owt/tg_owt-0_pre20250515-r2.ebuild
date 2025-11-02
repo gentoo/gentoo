@@ -71,6 +71,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}/tg_owt-0_pre20250515-fix-gcc16.patch"
 	"${FILESDIR}/tg_owt-0_pre20250515-fix-clang20.patch"
+	"${FILESDIR}/tg_owt-0_pre20250515-nonnull.patch"
 )
 
 src_unpack() {

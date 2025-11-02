@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/964949
+https://github.com/desktop-app/tg_owt/pull/168
+diff --git a/src/api/scoped_refptr.h b/src/api/scoped_refptr.h
+index 61b2eb1f2..6ff8a3cf3 100644
+--- a/src/api/scoped_refptr.h
++++ b/src/api/scoped_refptr.h
+@@ -66,6 +66,20 @@
+ #include <memory>
+ #include <utility>
+ 
++#include "absl/base/nullability.h"
++
++namespace absl {
++#ifdef absl_nonnull
++template<typename T>
++using Nonnull = T absl_nonnull;
++#endif // absl_nonnull
++
++#ifdef absl_nullable
++template<typename T>
++using Nullable = T absl_nullable;
++#endif // absl_nullable
++}
++
+ namespace webrtc {
+ 
+ template <class T>
