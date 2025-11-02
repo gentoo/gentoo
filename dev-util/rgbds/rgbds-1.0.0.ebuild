@@ -18,7 +18,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="media-libs/libpng"
+DEPEND="media-libs/libpng:0="
 RDEPEND="${DEPEND}"
 BDEPEND="
 	sys-devel/bison
