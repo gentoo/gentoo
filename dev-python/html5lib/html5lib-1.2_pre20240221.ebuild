@@ -40,6 +40,10 @@ RDEPEND="
 	>=dev-python/webencodings-0.5.1[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2_pre20240221-py314.patch
+)
+
 EPYTEST_PLUGINS=( pytest-expect )
 distutils_enable_tests pytest
 
