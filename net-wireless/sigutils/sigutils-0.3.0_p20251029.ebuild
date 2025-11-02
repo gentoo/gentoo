@@ -21,7 +21,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-0.3.0_p20251029-drop-ldconfig.patch
+	eapply "${FILESDIR}"/${PN}-0.3.0_p20251029-fix-CMakeList.patch
 	eapply_user
 	cmake_src_prepare
 }
