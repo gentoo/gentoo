@@ -1,0 +1,12 @@
+To add fzf support to your shell, make sure to use the right file
+from /usr/share/fzf.
+
+For bash, add the following line to ~/.bashrc:
+
+# source /usr/share/bash-completion/completions/fzf
+# source /usr/share/fzf/key-bindings.bash
+
+Plugins for Vim and Neovim are installed to respective directories
+and will work out of the box.
+
+For fzf support in tmux see fzf-tmux(1).
