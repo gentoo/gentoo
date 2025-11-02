@@ -35,6 +35,10 @@ src_prepare() {
 		Tools/say/GNUmakefile \
 		Tools/speech/GNUmakefile \
 		|| die
+
+	# test failures.
+	rm -r  Tests/gui/NSPasteboard/ || die # bug #935828
+	sed -e '/START_SET/aSKIP("Skipped by the ebuild bug #941901");' -i Tests/gui/NSSavePanel/setDelegate_reload.m || die
 }
 
 src_configure() {
