@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit autotools python-single-r1 xdg
+inherit autotools flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Fully featured yet light and fast cross platform word processor"
 HOMEPAGE="http://www.abisource.com/"
@@ -91,6 +91,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# -Werror=odr
+	# https://bugs.gentoo.org/940907
+	#
+	# Upstream closed as wontfix. The bug is gone due to refactoring (?) in the
+	# unreleased 4.x branch. "The stable branch (3.0.x) will not get any
+	# significant changes."
+	filter-lto
+
 	local plugins=()
 
 	if use plugins; then
