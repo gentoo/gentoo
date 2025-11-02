@@ -26,9 +26,9 @@ RESTRICT="!test? ( test )"
 
 BDEPEND+="
 	$(python_gen_any_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]')
+	app-crypt/gnupg[nls]
 	>=sec-keys/openpgp-keys-gentoo-auth-20240703
 	test? (
-		app-crypt/gnupg
 		sys-apps/grep[pcre]
 	)
 "
