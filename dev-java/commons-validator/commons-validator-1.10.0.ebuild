@@ -17,7 +17,7 @@ S="${WORKDIR}/${P}-src"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="log4j"
 
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-ggregory )"
