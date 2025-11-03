@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake git-r3 multilib toolchain-funcs
+inherit cmake fortran-2 git-r3 multilib toolchain-funcs
 
 DESCRIPTION="A BLAS and LAPACK wrapper library with runtime exchangable backends"
 HOMEPAGE="
@@ -54,8 +54,9 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
-		tc-check-openmp
+	if [[ ${MERGE_TYPE} != binary ]]; then
+		fortran-2_pkg_setup
+		use openmp && tc-check-openmp
 	fi
 }
 
