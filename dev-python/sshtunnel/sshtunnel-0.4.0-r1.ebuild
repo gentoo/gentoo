@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 EPYTEST_XDIST=1
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Pure Python SSH tunnels"
@@ -28,6 +28,7 @@ PATCHES=(
 	"${FILESDIR}"/sshtunnel-0.4.0-dont-deadlock-tests.patch
 )
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 EPYTEST_DESELECT=(
