@@ -36,6 +36,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
+# Stuck on Qt5/PyQt5 in the foreseeable future.  Until a Qt6 release is
+# ready, krita-6.0.0 pre-releases will be provided for ~arch.
+# If you rely on krita for professional work or plugins only available in
+# krita-5, your options are Flatpak or snap, or downloading upstream's own
+# 64-bit AppImage - see also: https://krita.org/download/
+# Bug #955168. Removal some time after 2026-02-15.
+media-gfx/krita:5
+kde-apps/libkdcraw:5
+kde-apps/libkexiv2:5
+kde-frameworks/kimageformats:5
+
 # David Seifert <soap@gentoo.org> (2026-02-07)
 # Never packaged by other distros, QA and C23 issues.
 # Removal on 2026-03-09.
