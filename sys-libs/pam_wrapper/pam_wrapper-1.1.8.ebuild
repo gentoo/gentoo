@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake-multilib python-r1
 
 DESCRIPTION="A tool to test PAM applications and PAM modules"
