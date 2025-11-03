@@ -265,10 +265,10 @@ pre_build_checks() {
 	# We're going to start doing maths here on the size of an unpacked source tarball,
 	# this should make updates easier as chromium continues to balloon in size.
 	# xz -l /var/cache/distfiles/chromium-${PV}*.tar.xz
-	local base_disk=9 # Round up
+	local base_disk=100 # 100GB is the minimum for chromium.
 	use test && base_disk=$((base_disk + 5))
-	local extra_disk=1 # Always include a little extra space
-	local memory=4
+	local extra_disk=20 # Always include a little extra space
+	local memory=16 # Chromium's documentation says 8gb is minimum, but 16gb or more is recommended.
 	tc-is-cross-compiler && extra_disk=$((extra_disk * 2))
 	if tc-is-lto || use pgo; then
 		memory=$((memory * 2 + 1))
