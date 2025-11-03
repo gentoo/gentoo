@@ -97,6 +97,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.10_fix_configure_GCC13_implicit_function_declarations.patch" #899796
 	"${FILESDIR}/${PN}-2.10.36_c99_tiff.patch" #919282
 	"${FILESDIR}/${PN}-2.10.36_c99_metadata.patch" #919282
+	"${FILESDIR}/${PN}-2.10.38-ZDI-CAN-27823.patch" #965334
 )
 
 src_prepare() {
