@@ -92,10 +92,12 @@ src_unpack() {
 		"
 		EGIT_CHECKOUT_DIR=${WORKDIR}/patches-git
 		git-r3_src_unpack
-		mv patches-git/9999 patch || die
 
 		if [[ ${PV} != 9999 ]] ; then
 			EGIT_BRANCH=binutils-$(ver_cut 1)_$(ver_cut 2)-branch
+			mv patches-git/${PV%*.9999} patch || die
+		else
+			mv patches-git/9999 patch || die
 		fi
 		EGIT_REPO_URI="
 			https://sourceware.org/git/binutils-gdb.git
