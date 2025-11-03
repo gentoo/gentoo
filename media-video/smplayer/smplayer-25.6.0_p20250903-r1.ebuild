@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE="bidi debug"
 
 DEPEND="
+	dev-qt/qt5compat:6
 	dev-qt/qtbase:6=[dbus,gui,network,ssl,widgets,xml]
 	dev-qt/qtdeclarative:6
 	sys-libs/zlib
