@@ -136,6 +136,9 @@ src_configure() {
 	# bug #944284 (https://gitlab.gnome.org/GNOME/gimp/-/issues/12843)
 	append-cflags -std=gnu17
 
+	# segfault in tests with gcc-15
+	filter-lto
+
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4
 		GDBUS_CODEGEN="${EPREFIX}"/bin/false
