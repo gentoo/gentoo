@@ -8,7 +8,7 @@ EAPI=8
 # possibly even ~arch too, given the note about security releases on their website.
 # See https://www.freedesktop.org/wiki/Software/dbus/#download.
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 TMPFILES_OPTIONAL=1
 
 inherit linux-info meson-multilib python-any-r1 readme.gentoo-r1 systemd tmpfiles virtualx
