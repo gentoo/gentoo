@@ -47,7 +47,7 @@ inherit toolchain-funcs
 # Set this, if a special dialect needs to be supported.
 # Generally not needed as default is sufficient.
 #
-# Valid settings are any combination of: 77 90 95 2003
+# Valid settings are any combination of: 77 90 95 2003 2008
 : "${FORTRAN_STANDARD:=77}"
 
 # @ECLASS_VARIABLE: FORTRAN_NEEDED
@@ -125,6 +125,14 @@ _fortran_write_testsuite() {
 	# f2003 code
 	cat <<- EOF > "${filebase}.f03" || die
 	       procedure(), pointer :: p
+	       end
+	EOF
+
+	# f2008 code
+	cat <<- EOF > "${filebase}.f08" || die
+	       complex :: z = cmplx(1.e0, 2.e0)
+	       real :: y
+	       y = z%im
 	       end
 	EOF
 }
@@ -224,7 +232,9 @@ _fortran_test_function() {
 				_fortran_die_msg ;;
 			2003) _fortran_compile_test "$(tc-getFC)" 03 || \
 				_fortran_die_msg ;;
-			2008) die "Future" ;;
+			2008) _fortran_compile_test "$(tc-getFC)" 08 || \
+				_fortran_die_msg ;;
+			2018) die "Future" ;;
 			*) die "${dialect} is not a Fortran dialect." ;;
 		esac
 	done
