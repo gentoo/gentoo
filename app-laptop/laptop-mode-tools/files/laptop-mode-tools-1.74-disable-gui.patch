@@ -1,0 +1,31 @@
+--- a/install.sh
++++ b/install.sh
+@@ -161,10 +161,12 @@
+ 	exit 11
+ fi
+ 
++if false; then
+ if ( ! $INSTALL -m 644 usr/share/polkit-1/actions/org.linux.lmt.gui.policy "$DESTDIR/usr/share/polkit-1/actions/" ) ; then
+ 	echo "$0: Failed to install $DESTDIR/usr/share/polkit-1/actions/org.linux.lmt.gui.policy Installation failed."
+ 	exit 11
+ fi
++fi
+ 
+ if ( ! $INSTALL -m 755 usr/sbin/lm-syslog-setup "$DESTDIR/usr/sbin" ) ; then
+ 	echo "$0: Failed to install $DESTDIR/usr/sbin/lm-syslog-setup. installation failed."
+@@ -198,6 +200,7 @@
+ 	exit 23
+ fi
+ 
++if false; then
+ if ( ! $INSTALL -m 644 gui/laptop-mode-tools.desktop "$DESTDIR/usr/share/applications" ) ; then
+ 	echo "$0: Failed to install $DESTDIR/usr/share/applications/laptop-mode-tools.desktop"
+ 	exit 11
+@@ -217,6 +220,7 @@
+ 	echo "$0: Failed to install $DESTDIR/usr/share/laptop-mode-tools/lmt.py";
+ 	exit 11
+ fi
++fi
+ 
+ # Install pm-utils hook only if pm-utils config dir is present, or force the
+ # install if we have a DESTDIR.
