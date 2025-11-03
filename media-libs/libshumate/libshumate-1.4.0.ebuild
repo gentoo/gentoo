@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 	sysprof? ( dev-util/sysprof-capture:4 )
 "
 BDEPEND="
+	dev-util/glib-utils
+	dev-util/gperf
 	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
 	vala? ( $(vala_depend) )
 "
