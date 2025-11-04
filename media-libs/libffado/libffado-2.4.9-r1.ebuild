@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	ESVN_REPO_URI="http://subversion.ffado.org/ffado/trunk/${PN}"
 else
 	SRC_URI="https://ffado.org/files/${P}.tgz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-2 GPL-3"
