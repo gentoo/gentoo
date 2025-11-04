@@ -26,7 +26,7 @@ COMMON_DEPEND="
 		dev-qt/qtbase:6
 		dev-qt/qt5compat:6
 	)
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 "
 DEPEND="${COMMON_DEPEND}
 	test? (

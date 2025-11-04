@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	media-libs/libsdl[joystick,opengl,sound,video]
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/opengl
 "
 RDEPEND="${DEPEND}"

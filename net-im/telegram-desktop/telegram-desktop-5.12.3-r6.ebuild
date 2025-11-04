@@ -39,7 +39,7 @@ CDEPEND="
 	media-libs/rnnoise
 	~media-libs/tg_owt-0_pre20241202:=[screencast=,X=]
 	>=media-video/ffmpeg-6:=[opus,vpx]
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	kde-frameworks/kcoreaddons:6
 	!enchant? ( >=app-text/hunspell-1.7:= )
 	enchant? ( app-text/enchant:= )

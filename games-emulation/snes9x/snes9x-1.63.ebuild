@@ -37,7 +37,7 @@ RESTRICT="bindist"
 
 RDEPEND="
 	media-libs/libpng:=
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	x11-libs/libX11
 	x11-libs/libXext
 	alsa? ( media-libs/alsa-lib )

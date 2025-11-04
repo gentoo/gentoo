@@ -24,7 +24,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-db/sqlite-3.7.5:3[extensions(+)]
 	dev-libs/libxml2:=
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	geos? ( >=sci-libs/geos-3.11.0 )
 	proj? ( sci-libs/proj:= )
 	rttopo? ( sci-geosciences/librttopo )

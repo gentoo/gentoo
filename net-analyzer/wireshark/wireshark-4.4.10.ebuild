@@ -61,7 +61,7 @@ RDEPEND="
 	lua? ( ${LUA_DEPS} )
 	lz4? ( app-arch/lz4:= )
 	maxminddb? ( dev-libs/libmaxminddb:= )
-	minizip? ( virtual/zlib:=[minizip] )
+	minizip? ( virtual/minizip:= )
 	netlink? ( dev-libs/libnl:3 )
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )

@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/sdl2-image[jpeg,png]
 	media-libs/sdl2-mixer[vorbis]
 	media-libs/sdl2-ttf
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/libintl
 "
 DEPEND="

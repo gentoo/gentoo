@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/libxml2:=
 	net-libs/biblesync
 	net-libs/webkit-gtk:4.1
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	dbus? ( dev-libs/dbus-glib )

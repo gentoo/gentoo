@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/sdl2-image
 	media-libs/sdl2-mixer[vorbis]
 	media-libs/sdl2-ttf
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	downloader? ( net-misc/curl )
 	opengl? ( virtual/opengl )
 	python? ( ${PYTHON_DEPS} )

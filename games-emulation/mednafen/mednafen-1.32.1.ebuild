@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/tremor
 	media-sound/musepack-tools
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/libintl
 	alsa? ( media-libs/alsa-lib )
 	flac? ( media-libs/flac:= )
