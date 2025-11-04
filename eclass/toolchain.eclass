@@ -354,7 +354,7 @@ fi
 #---->> DEPEND <<----
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libiconv
 	nls? ( virtual/libintl )
 "

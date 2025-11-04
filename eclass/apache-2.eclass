@@ -144,7 +144,7 @@ RDEPEND="
 	dev-libs/libpcre2
 	virtual/libcrypt:=
 	apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
-	apache2_modules_deflate? ( virtual/zlib )
+	apache2_modules_deflate? ( virtual/zlib:= )
 	apache2_modules_http2? (
 		>=net-libs/nghttp2-${NGHTTP2_VERSION}:=
 		kernel_linux? ( sys-apps/util-linux )

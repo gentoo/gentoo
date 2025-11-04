@@ -53,7 +53,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/libpcre:3
 	sci-libs/plplot:=
-	virtual/zlib
+	virtual/zlib:=
 	mysql? ( dev-db/mysql-connector-c:0= )
 	pdf? ( media-libs/libharu:= )
 	png? ( media-libs/gd:2=[png] )
