@@ -24,7 +24,7 @@
 # libraries/APIs.  In the example HMAC case, the module actually requires
 # libcrypto, not the http_ssl module, so the ebuild code reflects this by
 # patching the module's 'config' file and depending on dev-libs/openssl directly
-# using the ngx_mod_append_libs() function.
+# using the ngx_mod_link_lib() function.
 #
 # If the module makes use of the ngx_devel_kit (NDK) or any other NGINX
 # module, there are two approaches.
@@ -347,6 +347,25 @@ ngx_mod_link_module() {
 	# to link to the given name literally; i.e. '-lmylib' will look for
 	# 'libmylib.so', while '-l:mylib' will look for 'mylib'.
 	ngx_mod_append_libs "${sonames[@]/#/-l:}"
+}
+
+# @FUNCTION: ngx_mod_link_lib
+# @USAGE: <pkgconfig module name>
+# @DESCRIPTION:
+# Adds the necessary CFLAGS and LDFLAGS to link the NGINX module with the
+# library specified by its <pkgconfig module name>.  The {C,LD}FLAGS are
+# obtained using pkgconfig.  The caller must ensure that pkgconfig has been
+# added to BDEPEND.
+ngx_mod_link_lib() {
+	debug-print-function "${FUNCNAME[0]}" "$@"
+	[[ $# -ne 1 ]] && die "${FUNCNAME[0]} must receive exactly one argument"
+	local pkgconf
+	pkgconf="$(tc-getPKG_CONFIG)"
+
+	"${pkgconf}" --exists "$1" || die "The pkgconfig library $1 does not exist"
+
+	append-cflags "$("${pkgconf}" --cflags "$1")"
+	ngx_mod_append_libs "$("${pkgconf}" --libs "$1")"
 }
 
 #-----> ebuild-defined variables <-----
