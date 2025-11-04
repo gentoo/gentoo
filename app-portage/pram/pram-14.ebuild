@@ -25,7 +25,10 @@ RDEPEND="
 BDEPEND="
 	test? (
 		${RDEPEND}
-		app-crypt/gnupg
+		|| (
+			app-alternatives/gpg[reference]
+			app-alternatives/gpg[freepg(-)]
+		)
 		>=dev-vcs/git-2.45.0
 		sys-apps/diffutils
 	)
