@@ -18,7 +18,7 @@ KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ppc ppc64 ~riscv x86"
 
 RDEPEND="
 	app-arch/bzip2:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}

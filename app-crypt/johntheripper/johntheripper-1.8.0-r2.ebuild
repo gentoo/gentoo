@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-li
 CPU_FLAGS="cpu_flags_x86_mmx cpu_flags_x86_sse2 cpu_flags_x86_avx cpu_flags_x86_xop"
 IUSE="custom-cflags openmp ${CPU_FLAGS}"
 
-DEPEND="sys-libs/zlib
+DEPEND="virtual/zlib
 	virtual/libcrypt:="
 RDEPEND="${DEPEND}
 	!app-crypt/johntheripper-jumbo"

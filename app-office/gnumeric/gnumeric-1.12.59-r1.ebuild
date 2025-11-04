@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit gnome.org libtool python-r1 xdg
 
@@ -32,7 +32,7 @@ RESTRICT="test"
 # https://gitlab.gnome.org/GNOME/gnumeric/issues/419#note_618852
 RDEPEND="
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib
 	>=dev-libs/glib-2.40.0:2
 	>=gnome-extra/libgsf-1.14.33:=
 	>=x11-libs/goffice-0.10.57:0.10[introspection?]

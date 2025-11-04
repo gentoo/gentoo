@@ -4,7 +4,7 @@
 EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit desktop python-single-r1 toolchain-funcs wxwidgets xdg
 
@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	virtual/opengl
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,curl,opengl,sdl,tiff]
 	${PYTHON_DEPS}

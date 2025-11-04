@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm64 ~hppa ~ppc ~ppc64 ~riscv x86"
 
 DEPEND="
 	dev-libs/openssl:0=
-	sys-libs/zlib"
+	virtual/zlib"
 RDEPEND="${DEPEND}"
 
 src_configure() {

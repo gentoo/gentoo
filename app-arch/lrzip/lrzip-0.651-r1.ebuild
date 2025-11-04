@@ -17,7 +17,7 @@ IUSE="static-libs"
 RDEPEND="app-arch/bzip2
 	app-arch/lz4
 	dev-libs/lzo
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-perl/Pod-Parser
 	amd64? ( dev-lang/nasm )

@@ -63,7 +63,7 @@ DEPEND="
 		dev-libs/lzo[static-libs]
 		dev-libs/openssl:0=[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		sys-libs/zlib[static-libs]
+		virtual/zlib[static-libs]
 	)
 	!static? (
 		acl? ( virtual/acl )
@@ -71,7 +71,7 @@ DEPEND="
 		dev-libs/lzo
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
-		sys-libs/zlib
+		virtual/zlib
 	)
 	X? (
 		dev-qt/qtbase:6[widgets]

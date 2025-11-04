@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ DEPEND="
 		jpeg? ( media-libs/libjpeg-turbo:=[static-libs] )
 		ntfs? ( sys-fs/ntfs3g[static-libs] )
 		reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8[static-libs] )
-		zlib? ( sys-libs/zlib[static-libs] )
+		zlib? ( virtual/zlib[static-libs] )
 		!arm? ( ewf? ( app-forensics/libewf[static-libs] ) )
 	)
 	!static? (
@@ -46,7 +46,7 @@ DEPEND="
 			dev-qt/qtwidgets:5
 		)
 		reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 )
-		zlib? ( sys-libs/zlib )
+		zlib? ( virtual/zlib )
 		!arm? ( ewf? ( app-forensics/libewf:= ) )
 	)
 "

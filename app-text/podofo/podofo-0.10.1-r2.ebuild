@@ -30,7 +30,7 @@ RDEPEND="
 	png? ( media-libs/libpng:= )
 	dev-libs/libxml2:=
 	tiff? ( media-libs/tiff:= )
-	sys-libs/zlib:="
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig

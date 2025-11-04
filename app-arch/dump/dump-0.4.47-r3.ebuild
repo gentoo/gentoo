@@ -31,7 +31,7 @@ RDEPEND="
 		app-arch/bzip2:=
 		static? ( app-arch/bzip2[static-libs] )
 	)
-	zlib? ( >=sys-libs/zlib-1.1.4:= )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 	lzo? (
 		dev-libs/lzo:2=
 		static? ( dev-libs/lzo:2[static-libs] )

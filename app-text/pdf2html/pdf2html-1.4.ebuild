@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND=">=media-libs/libpng-1.4
-	sys-libs/zlib"
+	virtual/zlib"
 RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
 	>=media-gfx/imagemagick-6"

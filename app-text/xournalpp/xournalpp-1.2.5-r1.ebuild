@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	>=gnome-base/librsvg-2.40
 	>=media-libs/portaudio-12[cxx]
 	>=media-libs/libsndfile-1.0.25
-	sys-libs/zlib:=
+	virtual/zlib:=
 	>=x11-libs/gtk+-3.18.9:3
 	>=x11-libs/gtksourceview-4.0
 "

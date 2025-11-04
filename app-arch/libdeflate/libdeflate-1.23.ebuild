@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 # the zlib USE-flag enables support for zlib
-# the test USE-flag programs depend on sys-libs/zlib for comparison tests
+# the test USE-flag programs depend on virtual/zlib for comparison tests
 IUSE="+utils test"
 
 RESTRICT="
@@ -27,7 +27,7 @@ RESTRICT="
 "
 
 DEPEND="
-	test? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	test? ( virtual/zlib[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(

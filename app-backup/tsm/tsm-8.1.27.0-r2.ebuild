@@ -77,7 +77,7 @@ RDEPEND="
 	dev-libs/libxml2:2
 	sys-apps/acl
 	sys-fs/fuse:0
-	sys-libs/zlib:0/1
+	virtual/zlib:0/1
 	|| (
 		sys-libs/libxcrypt:0/1[compat]
 		sys-libs/glibc:2.2[crypt(-)]

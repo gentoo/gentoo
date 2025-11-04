@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spar
 IUSE="static test"
 RESTRICT="!test? ( test )"
 
-LIB_DEPEND=">=sys-libs/zlib-1.2.3[static-libs(+)]"
+LIB_DEPEND=">=virtual/zlib-1.2.3[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="
 	${RDEPEND}

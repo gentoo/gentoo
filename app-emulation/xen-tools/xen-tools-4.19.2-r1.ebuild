@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE='ncurses,xml(+),threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 readme.gentoo-r1 toolchain-funcs
@@ -96,7 +96,7 @@ COMMON_DEPEND="
 	sys-apps/util-linux
 	sys-fs/e2fsprogs
 	sys-libs/ncurses
-	sys-libs/zlib
+	virtual/zlib
 	${PYTHON_DEPS}
 "
 

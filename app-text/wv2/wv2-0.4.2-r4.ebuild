@@ -17,7 +17,7 @@ IUSE="zlib"
 RDEPEND="dev-libs/glib
 	>=gnome-extra/libgsf-1.8:=
 	virtual/libiconv
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

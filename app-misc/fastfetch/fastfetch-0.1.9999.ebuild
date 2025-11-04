@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/yyjson-0.11.1
 	sys-apps/hwdata
-	sys-libs/zlib
+	virtual/zlib
 	chafa? ( media-gfx/chafa )
 	dbus? ( sys-apps/dbus )
 	ddcutil? ( app-misc/ddcutil:= )

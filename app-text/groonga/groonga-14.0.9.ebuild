@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -32,7 +32,7 @@ DEPEND="
 	msgpack? ( dev-libs/msgpack:= )
 	sphinx? ( >=dev-python/sphinx-1.0.1 )
 	zeromq? ( net-libs/zeromq:0= )
-	zlib? ( sys-libs/zlib:0= )
+	zlib? ( virtual/zlib:0= )
 	zstd? ( app-arch/zstd:0= )
 "
 RDEPEND="${DEPEND}"

@@ -28,7 +28,7 @@ RDEPEND="app-arch/bzip2
 	dev-libs/libgcrypt
 	dev-libs/libgpg-error
 	dev-libs/lzo
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}"
 BDEPEND="amd64? ( dev-lang/nasm )"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="acl audit curl e2fs mhash selinux xattr"
 
 DEPEND="
 	dev-libs/libpcre2
-	sys-libs/zlib
+	virtual/zlib
 	acl? ( virtual/acl )
 	audit? ( sys-process/audit )
 	curl? ( net-misc/curl )

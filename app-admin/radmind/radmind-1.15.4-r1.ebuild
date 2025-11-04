@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ DEPEND="
 	dev-libs/openssl:0=
 	net-libs/libnsl
 	pam? ( sys-libs/pam )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

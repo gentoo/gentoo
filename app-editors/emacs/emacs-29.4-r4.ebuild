@@ -103,7 +103,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	jit? (
 		sys-devel/gcc:=[jit(-)]
-		sys-libs/zlib
+		virtual/zlib
 	)
 	json? ( dev-libs/jansson:= )
 	kerberos? ( virtual/krb5 )
@@ -117,7 +117,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	systemd? ( sys-apps/systemd )
 	tree-sitter? ( dev-libs/tree-sitter:= )
 	valgrind? ( dev-debug/valgrind )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	gui? (
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( media-libs/libjpeg-turbo:0= )

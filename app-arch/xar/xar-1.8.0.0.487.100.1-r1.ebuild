@@ -18,7 +18,7 @@ DEPEND="
 	kernel_linux? ( virtual/acl )
 	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
 	app-arch/bzip2[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib[${MULTILIB_USEDEP}]
 	dev-libs/libxml2:=[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"

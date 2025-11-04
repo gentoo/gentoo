@@ -24,7 +24,7 @@ IUSE="X"
 DEPEND="
 	dev-db/sqlite:3
 	dev-libs/libgit2:=
-	sys-libs/zlib
+	virtual/zlib
 	X? ( x11-libs/libxcb:= )
 "
 RDEPEND="${DEPEND}"

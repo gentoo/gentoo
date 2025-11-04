@@ -20,7 +20,7 @@ BDEPEND="
 RDEPEND="
 	dev-libs/librevenge
 	dev-libs/libxml2:=
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

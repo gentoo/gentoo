@@ -49,7 +49,7 @@ DEPEND="
 	kerberos? ( virtual/krb5 )
 	pcap? ( net-libs/libpcap )
 	dev-libs/gmp:=
-	sys-libs/zlib
+	virtual/zlib
 	app-arch/bzip2
 "
 # Missing (unpackaged):

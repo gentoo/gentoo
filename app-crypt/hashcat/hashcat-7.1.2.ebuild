@@ -22,7 +22,7 @@ RESTRICT=test
 
 DEPEND="app-arch/lzma
 	>=app-arch/unrar-7
-	sys-libs/zlib[minizip]
+	virtual/zlib[minizip]
 	brain? ( dev-libs/xxhash )
 	video_cards_nvidia? (
 		>x11-drivers/nvidia-drivers-440.64

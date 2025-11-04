@@ -22,7 +22,7 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:2=
 	>=mate-base/mate-desktop-$(ver_cut 1-2)
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3[introspection?]
 	x11-libs/libICE

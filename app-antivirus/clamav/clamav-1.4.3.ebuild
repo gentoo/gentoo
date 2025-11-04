@@ -190,7 +190,7 @@ COMMON_DEPEND="
 	dev-libs/libpcre2:=
 	dev-libs/libxml2:=
 	dev-libs/openssl:=
-	>=sys-libs/zlib-1.2.2:=
+	>=virtual/zlib-1.2.2:=
 	virtual/libiconv
 	!libclamav-only? ( net-misc/curl )
 	clamapp? ( sys-libs/ncurses:= net-misc/curl )

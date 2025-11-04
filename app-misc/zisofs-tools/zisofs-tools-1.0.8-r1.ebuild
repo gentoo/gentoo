@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="static"
 
-RDEPEND=">=sys-libs/zlib-1.1.4:="
+RDEPEND=">=virtual/zlib-1.1.4:="
 DEPEND="${RDEPEND}"
 
 src_prepare() {

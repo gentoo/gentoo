@@ -36,7 +36,7 @@ DEPEND="
 	>=dev-libs/libgpg-error-1.56
 	>=dev-libs/libksba-1.6.3
 	>=dev-libs/npth-1.2
-	sys-libs/zlib
+	virtual/zlib
 	bzip2? ( app-arch/bzip2 )
 	ldap? ( net-nds/openldap:= )
 	readline? ( sys-libs/readline:0= )

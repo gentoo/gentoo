@@ -156,7 +156,7 @@ done
 # when available rather than always using the external library.
 ALL_DEPEND="
 	dev-libs/glib:2[static-libs(+)]
-	sys-libs/zlib[static-libs(+)]
+	virtual/zlib[static-libs(+)]
 	python? ( ${PYTHON_DEPS} )
 	systemtap? ( dev-debug/systemtap )
 	xattr? ( sys-apps/attr[static-libs(+)] )

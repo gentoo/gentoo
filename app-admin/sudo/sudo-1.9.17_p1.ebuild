@@ -46,7 +46,7 @@ SLOT="0"
 IUSE="gcrypt ldap nls offensive pam sasl +secure-path selinux +sendmail skey ssl sssd"
 
 DEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libcrypt:=
 	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (

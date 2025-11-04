@@ -23,7 +23,7 @@ COMMON_DEPEND="acct-group/burp
 	net-libs/librsync:=
 	sys-libs/ncurses:0=
 	sys-libs/libcap
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt:=
 	acl? ( sys-apps/acl )
 	xattr? ( sys-apps/attr )"

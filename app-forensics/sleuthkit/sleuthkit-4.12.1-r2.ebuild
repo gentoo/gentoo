@@ -30,7 +30,7 @@ DEPEND="
 	dev-db/sqlite:3
 	dev-lang/perl:*
 	aff? ( app-forensics/afflib )
-	ewf? ( sys-libs/zlib )
+	ewf? ( virtual/zlib )
 	java? (
 		>=dev-java/c3p0-0.9.5.5:0
 		dev-java/commons-lang:3.6
@@ -42,7 +42,7 @@ DEPEND="
 		>=dev-java/mchange-commons-0.2.20:0
 		dev-java/sparsebitset:0
 	)
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 # TODO: add support for not-in-tree libraries:
 # libvhdi: https://github.com/libyal/libvhdi

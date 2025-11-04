@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/gd:2=[jpeg,png]
 	media-libs/libpng:0=
 	virtual/latex-base
-	sys-libs/zlib
+	virtual/zlib
 	truetype? ( >=media-libs/freetype-2.1.5 )"
 DEPEND="${RDEPEND}
 	virtual/texi2dvi

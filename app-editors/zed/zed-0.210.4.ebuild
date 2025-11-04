@@ -130,7 +130,7 @@ DEPEND="
 	media-libs/fontconfig
 	media-libs/vulkan-loader[X]
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/libX11
 	x11-libs/libxcb:=
 	x11-libs/libxkbcommon[X]

@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc x86 ~x64-macos"
 IUSE="ssl"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="${RDEPEND}"
