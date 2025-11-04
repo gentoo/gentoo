@@ -1,0 +1,353 @@
+'\" t
+.\"     Title: awesome
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.26
+.\"      Date: 2019-01-28
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "AWESOME" "1" "2019-01-28" "\ \&" "\ \&"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+awesome \- awesome window manager
+.SH "SYNOPSIS"
+.sp
+\fBawesome\fP [\fB\-v\fP | \fB\-\-version\fP] [\fB\-h\fP | \fB\-\-help\fP] [\fB\-c\fP | \fB\-\-config\fP \fIFILE\fP] [\fB\-k\fP | \fB\-\-check\fP] [\fB\-\-search\fP \fIDIRECTORY\fP] [\fB\-a\fP | \fB\-\-no\-argb\fP] [\fB\-r\fP | *\-\-replace]
+.SH "DESCRIPTION"
+.sp
+\fBawesome\fP is a window manager for X. It manages windows in different layouts, like
+floating or tiled. Any layout can be applied dynamically, optimizing the
+environment for the application in use and the task currently being performed.
+.sp
+In a tiled layout, windows are managed in a master and stacking area. The master
+area contains the windows which currently need the most attention, whereas the
+stacking area contains all other windows. In a floating layout windows can be
+resized and moved freely. Dialog windows are always managed as floating,
+regardless of the layout currently applied. The spiral and dwindle layouts are
+special cases of the tiled layout where the stacking area is arranged in a
+spiral for the former or as a rectangular fractal for the later.
+.sp
+Windows are grouped by tags in awesome. Each window can be tagged with one or
+more tags. Selecting certain tags displays all windows with these tags.
+.sp
+\fBawesome\fP can contain small wiboxes which can display anything you want:
+all available tags, the current layout, the title of the visible windows, text, etc.
+.SH "OPTIONS"
+.sp
+\fB\-v\fP, \fB\-\-version\fP
+.RS 4
+Print version information to standard output, then exit.
+.RE
+.sp
+\fB\-h\fP, \fB\-\-help\fP
+.RS 4
+Print help information, then exit.
+.RE
+.sp
+\fB\-c\fP, \fB\-\-config\fP \fIFILE\fP
+.RS 4
+Use an alternate configuration file instead of \fI$XDG_CONFIG_HOME/awesome/rc.lua\fP.
+.RE
+.sp
+\fB\-k\fP, \fB\-\-check\fP
+.RS 4
+Check configuration file syntax.
+.RE
+.sp
+\fB\-\-search\fP
+.RS 4
+Add a directory to the library search path.
+.RE
+.sp
+\fB\-a\fP, \fB\-\-no\-argb\fP
+.RS 4
+Don\(cqt use ARGB visuals.
+.RE
+.sp
+\fB\-r\fP, \fB\-\-replace\fP
+.RS 4
+Replace an existing window manager.
+.RE
+.SH "DEFAULT MOUSE BINDINGS"
+.SS "Navigation"
+.sp
+\fBButton1\fP on tag name
+.RS 4
+View tag.
+.RE
+.sp
+\fBButton4\fP, \fBButton5\fP on tag name
+.RS 4
+Switch to previous or next tag.
+.RE
+.sp
+\fBButton4\fP, \fBButton5\fP on root window
+.RS 4
+Switch to previous or next tag.
+.RE
+.sp
+\fBButton1\fP, \fBButton3\fP, \fBButton4\fP, \fBButton5\fP on layout symbol
+.RS 4
+Switch to previous or next layout.
+.RE
+.SS "Layout modification"
+.sp
+\fBMod4 + Button1\fP on tag name
+.RS 4
+Tag current client with this tag only.
+.RE
+.sp
+\fBMod4 + Button3\fP on tag name
+.RS 4
+Toggle this tag for client.
+.RE
+.sp
+\fBButton3\fP on tag name
+.RS 4
+Add this tag to current view.
+.RE
+.sp
+\fBMod4 + Button1\fP on client window
+.RS 4
+Move window.
+.RE
+.sp
+\fBMod4 + Button3\fP on client window
+.RS 4
+Resize window.
+.RE
+.SH "DEFAULT KEY BINDINGS"
+.SS "Help"
+.sp
+\fBMod4 + s\fP
+.RS 4
+Show currently assigned key bindings.
+.RE
+.SS "Window manager control"
+.sp
+\fBMod4 + Control + r\fP
+.RS 4
+Restart \fBawesome\fP.
+.RE
+.sp
+\fBMod4 + Shift + q\fP
+.RS 4
+Quit \fBawesome\fP.
+.RE
+.sp
+\fBMod4 + r\fP
+.RS 4
+Run prompt.
+.RE
+.sp
+\fBMod4 + x\fP
+.RS 4
+Run Lua code prompt.
+.RE
+.sp
+\fBMod4 + Return\fP
+.RS 4
+Spawn terminal emulator.
+.RE
+.sp
+\fBMod4 + w\fP
+.RS 4
+Open main menu.
+.RE
+.SS "Clients"
+.sp
+\fBMod4 + m\fP
+.RS 4
+Maximize client.
+.RE
+.sp
+\fBMod4 + n\fP
+.RS 4
+Minimize client.
+.RE
+.sp
+\fBMod4 + Control + n\fP
+.RS 4
+Restore client.
+.RE
+.sp
+\fBMod4 + f\fP
+.RS 4
+Set client fullscreen.
+.RE
+.sp
+\fBMod4 + Shift + c\fP
+.RS 4
+Kill focused client.
+.RE
+.sp
+\fBMod4 + t\fP
+.RS 4
+Set client on\-top.
+.RE
+.SS "Navigation"
+.sp
+\fBMod4 + j\fP
+.RS 4
+Focus next client.
+.RE
+.sp
+\fBMod4 + k\fP
+.RS 4
+Focus previous client.
+.RE
+.sp
+\fBMod4 + u\fP
+.RS 4
+Focus first urgent client.
+.RE
+.sp
+\fBMod4 + Left\fP
+.RS 4
+View previous tag.
+.RE
+.sp
+\fBMod4 + Right\fP
+.RS 4
+View next tag.
+.RE
+.sp
+\fBMod4 + 1\-9\fP
+.RS 4
+Switch to tag 1\-9.
+.RE
+.sp
+\fBMod4 + Control + j\fP
+.RS 4
+Focus next screen.
+.RE
+.sp
+\fBMod4 + Control + k\fP
+.RS 4
+Focus previous screen.
+.RE
+.sp
+\fBMod4 + Escape\fP
+.RS 4
+Focus previously selected tag set.
+.RE
+.SS "Layout modification"
+.sp
+\fBMod4 + Shift + j\fP
+.RS 4
+Switch client with next client.
+.RE
+.sp
+\fBMod4 + Shift + k\fP
+.RS 4
+Switch client with previous client.
+.RE
+.sp
+\fBMod4 + o\fP
+.RS 4
+Send client to next screen.
+.RE
+.sp
+\fBMod4 + h\fP
+.RS 4
+Decrease master width factor by 5%.
+.RE
+.sp
+\fBMod4 + l\fP
+.RS 4
+Increase master width factor by 5%.
+.RE
+.sp
+\fBMod4 + Shift + h\fP
+.RS 4
+Increase number of master windows by 1.
+.RE
+.sp
+\fBMod4 + Shift + l\fP
+.RS 4
+Decrease number of master windows by 1.
+.RE
+.sp
+\fBMod4 + Control + h\fP
+.RS 4
+Increase number of columns for non\-master windows by 1.
+.RE
+.sp
+\fBMod4 + Control + l\fP
+.RS 4
+Decrease number of columns for non\-master windows by 1.
+.RE
+.sp
+\fBMod4 + space\fP
+.RS 4
+Switch to next layout.
+.RE
+.sp
+\fBMod4 + Shift + space\fP
+.RS 4
+Switch to previous layout.
+.RE
+.sp
+\fBMod4 + Control + space\fP
+.RS 4
+Toggle client floating status.
+.RE
+.sp
+\fBMod4 + Control + Return\fP
+.RS 4
+Swap focused client with master.
+.RE
+.sp
+\fBMod4 + Control + 1\-9\fP
+.RS 4
+Toggle tag view.
+.RE
+.sp
+\fBMod4 + Shift + 1\-9\fP
+.RS 4
+Tag client with tag.
+.RE
+.sp
+\fBMod4 + Shift + Control + 1\-9\fP
+.RS 4
+Toggle tag on client.
+.RE
+.SH "CUSTOMIZATION"
+.sp
+\fBawesome\fP is customized by creating a custom \fI$XDG_CONFIG_HOME/awesome/rc.lua\fP file.
+.SH "SIGNALS"
+.sp
+\fBawesome\fP can be restarted by sending it a SIGHUP.
+.SH "SEE ALSO"
+.sp
+\fBawesomerc\fP(5) \fBawesome\-client\fP(1)
+.SH "BUGS"
+.sp
+Of course there\(cqs no bug in \fBawesome\fP. But there may be unexpected behaviors.
+.SH "AUTHORS"
+.sp
+Julien Danjou \c
+.MTO "julien\(atdanjou.info" "" ""
+and others.
+.SH "WWW"
+.sp
+.URL "https://awesomewm.org" "" ""
