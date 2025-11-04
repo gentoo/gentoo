@@ -208,7 +208,7 @@ pkg_postinst() {
 	optfeature "Decrypt devices encrypted with cryptsetup/LUKS" \
 		"sys-fs/cryptsetup[-static-libs]"
 	optfeature "Support for GPG-encrypted keys for crypt module" \
-		app-crypt/gnupg
+		"app-alternatives/gpg[reference]" "app-alternatives/gpg[freepg(-)]"
 	optfeature \
 		"Allows use of dash instead of default bash (on your own risk)" \
 		app-shells/dash
