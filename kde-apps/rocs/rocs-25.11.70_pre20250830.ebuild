@@ -12,6 +12,7 @@ inherit ecm gear.kde.org xdg
 
 DESCRIPTION="Interface to work with Graph Theory"
 HOMEPAGE="https://apps.kde.org/rocs/"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="0"
