@@ -327,7 +327,7 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	media-libs/mesa[X?,wayland?]
-	sys-libs/zlib
+	virtual/zlib
 	sys-libs/ncurses:0
 	wayland? ( dev-libs/wayland )
 	X? (

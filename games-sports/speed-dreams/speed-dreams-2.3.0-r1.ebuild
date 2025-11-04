@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	media-libs/openal
 	media-libs/plib
 	net-libs/enet:1.3
-	sys-libs/zlib:=
+	virtual/zlib:=
 	net-misc/curl
 	virtual/glu
 	virtual/opengl

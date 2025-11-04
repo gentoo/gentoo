@@ -38,7 +38,7 @@ DEPEND="
 	media-libs/libsamplerate
 	media-libs/libsdl3[opengl,vulkan]
 	media-libs/speexdsp
-	sys-libs/zlib[minizip(+)]
+	virtual/zlib[minizip(+)]
 	virtual/opengl
 	netplay? ( dev-qt/qtwebsockets:6 )
 "

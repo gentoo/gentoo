@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Regarding licenses: libgarglk is licensed under the GPLv2. Bundled
@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/libpng:0
 	media-libs/sdl-mixer
 	media-libs/sdl-sound[modplug,mp3,vorbis]
-	sys-libs/zlib
+	virtual/zlib
 	virtual/jpeg:0
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"

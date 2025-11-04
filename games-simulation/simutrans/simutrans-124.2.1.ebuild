@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ DEPEND="
 	media-libs/freetype
 	media-libs/libpng:0=
 	media-libs/libsdl2[sound,video]
-	sys-libs/zlib
+	virtual/zlib
 	midi? ( media-sound/fluidsynth:=[sdl] )
 	fontconfig? ( media-libs/fontconfig )
 	upnp? ( net-libs/miniupnpc:= )

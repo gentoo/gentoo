@@ -189,7 +189,7 @@ if [[ ${KERNEL_IUSE_GENERIC_UKI} ]]; then
 		["sys-libs/ncurses"]="MIT"
 		["sys-libs/pam"]="|| ( BSD GPL-2 )"
 		["sys-libs/readline"]="GPL-3+"
-		["sys-libs/zlib"]="ZLIB"
+		["virtual/zlib"]="ZLIB"
 		["sys-process/procps"]="GPL-2+ LGPL-2+ LGPL-2.1+"
 		["x11-libs/libdrm"]="MIT"
 		["amd64? ( sys-firmware/intel-microcode )"]="amd64? ( intel-ucode )"

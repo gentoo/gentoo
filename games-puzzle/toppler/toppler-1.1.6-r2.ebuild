@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ IUSE="nls"
 RDEPEND="acct-group/gamestat
 	media-libs/libsdl[joystick,video]
 	media-libs/sdl-mixer[vorbis]
-	sys-libs/zlib
+	virtual/zlib
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"

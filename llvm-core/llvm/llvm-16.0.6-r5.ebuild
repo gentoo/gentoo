@@ -27,7 +27,7 @@ IUSE="
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sys-libs/zlib:0=[${MULTILIB_USEDEP}]
+	virtual/zlib:0=[${MULTILIB_USEDEP}]
 	exegesis? ( dev-libs/libpfm:= )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=dev-libs/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )

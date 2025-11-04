@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake flag-o-matic python-any-r1 xdg
 
 if [[ ${PV} == 9999 ]]; then
@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/sdl2-image[jpeg,png]
 	media-libs/sdl2-mixer[vorbis]
 	media-libs/sdl2-ttf
-	sys-libs/zlib:=[minizip]
+	virtual/zlib:=[minizip]
 	virtual/libintl
 "
 DEPEND="

@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="dedicated +opengl"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	!dedicated? (
 		media-libs/libjpeg-turbo:=
 		media-libs/libsdl2[joystick,video,X]

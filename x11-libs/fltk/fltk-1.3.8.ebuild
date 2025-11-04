@@ -17,7 +17,7 @@ IUSE="cairo debug doc examples games +opengl static-libs +threads +xft +xinerama
 RDEPEND="
 	media-libs/libjpeg-turbo:0=[${MULTILIB_USEDEP}]
 	>=media-libs/libpng-1.2:0=[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib[${MULTILIB_USEDEP}]
 	x11-libs/libICE[${MULTILIB_USEDEP}]
 	x11-libs/libSM[${MULTILIB_USEDEP}]
 	x11-libs/libXcursor[${MULTILIB_USEDEP}]

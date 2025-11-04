@@ -6,7 +6,7 @@ EAPI=8
 # Check the upstream uwsgi-2.0 branch, not master, for backports
 
 LUA_COMPAT=( lua5-1 )
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -95,7 +95,7 @@ REQUIRED_USE="
 # 3. Plugins
 # 4. Language/app support
 CDEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
 	json? (

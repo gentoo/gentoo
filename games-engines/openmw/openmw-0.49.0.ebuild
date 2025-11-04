@@ -53,7 +53,7 @@ RDEPEND="${LUA_DEPS}
 	media-libs/openal
 	media-video/ffmpeg:=
 	>=sci-physics/bullet-2.86:=[double-precision]
-	sys-libs/zlib
+	virtual/zlib
 	virtual/opengl
 	osg-fork? ( >=dev-games/openscenegraph-openmw-3.6:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )
 	!osg-fork? ( >=dev-games/openscenegraph-3.6.5:=[collada(-),jpeg,png,sdl,svg,truetype,zlib] )

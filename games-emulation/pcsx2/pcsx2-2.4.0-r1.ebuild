@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	net-libs/libpcap
 	net-misc/curl
 	sys-apps/dbus
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libudev:=
 	x11-libs/libX11
 	x11-libs/libXi

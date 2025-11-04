@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
-RDEPEND="sys-libs/zlib"
+RDEPEND="virtual/zlib"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

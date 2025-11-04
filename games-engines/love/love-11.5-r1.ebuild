@@ -24,7 +24,7 @@ IUSE="gme"
 
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="virtual/zlib
 	${LUA_DEPS}
 	media-libs/freetype
 	media-libs/libmodplug

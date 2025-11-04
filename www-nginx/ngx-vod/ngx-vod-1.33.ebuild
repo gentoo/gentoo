@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/openssl:=
 	dev-libs/libxml2
 	media-video/ffmpeg:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libiconv
 "
 RDEPEND="${DEPEND}"

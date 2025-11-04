@@ -22,7 +22,7 @@ RDEPEND="
 	>=media-libs/faun-0.2.1
 	media-libs/libglvnd
 	media-libs/libpng:=
-	sys-libs/zlib:=[minizip]
+	virtual/zlib:=[minizip]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"

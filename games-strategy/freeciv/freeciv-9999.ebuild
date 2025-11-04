@@ -44,7 +44,7 @@ RDEPEND="
 	dev-build/libtool
 	dev-libs/icu:=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib
 	!dedicated? (
 		media-libs/libpng
 		gtk3? ( x11-libs/gtk+:3 )

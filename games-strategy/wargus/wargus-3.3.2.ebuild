@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,7 +23,7 @@ IUSE="+bne"
 DEPEND="
 	=games-engines/stratagus-${PV}*[theora]
 	media-libs/libpng:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/gtk+:2
 	x11-libs/libX11
 	bne? ( app-arch/stormlib:= )

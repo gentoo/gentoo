@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/libsdl2[haptic,joystick,opengl,video]
 	media-libs/sdl2-image[png]
 	media-libs/sdl_audiolib
-	sys-libs/zlib:=
+	virtual/zlib:=
 	sodium? ( dev-libs/libsodium:= )
 "
 DEPEND="

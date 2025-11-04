@@ -139,7 +139,7 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	media-libs/freetype
 	media-libs/mesa
 	media-video/ffmpeg
-	sys-libs/zlib
+	virtual/zlib
 	virtual/freedesktop-icon-theme
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2

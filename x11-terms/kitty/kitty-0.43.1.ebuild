@@ -47,7 +47,7 @@ RDEPEND="
 	media-libs/libglvnd[X?]
 	media-libs/libpng:=
 	sys-apps/dbus
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/libxkbcommon[X?]
 	x11-misc/xkeyboard-config

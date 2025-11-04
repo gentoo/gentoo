@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	media-libs/opusfile
 	net-libs/miniupnpc:=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib
 	nls? ( virtual/libintl )
 	vulkan? ( media-libs/libsdl2:=[vulkan] )
 "

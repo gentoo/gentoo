@@ -41,7 +41,7 @@ DEPEND="
 	media-libs/libsdl[joystick,opengl?,video,X?]
 	media-libs/sdl-net
 	media-libs/sdl-sound
-	sys-libs/zlib
+	virtual/zlib
 	alsa? ( media-libs/alsa-lib )
 	debug? ( sys-libs/ncurses:0= )
 	glide? ( media-libs/openglide )

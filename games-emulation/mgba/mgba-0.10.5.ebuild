@@ -31,7 +31,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/libpng:=
-	sys-libs/zlib:=[minizip]
+	virtual/zlib:=[minizip]
 	debug? ( dev-libs/libedit )
 	elf? ( dev-libs/elfutils )
 	ffmpeg? ( media-video/ffmpeg:= )

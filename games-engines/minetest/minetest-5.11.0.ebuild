@@ -36,7 +36,7 @@ RDEPEND="lua_single_target_luajit? ( ${LUA_DEPS} )
 	dev-db/sqlite:3
 	dev-libs/gmp:0=
 	dev-libs/jsoncpp:=
-	sys-libs/zlib
+	virtual/zlib
 	client? (
 		media-libs/freetype:2
 		media-libs/libpng:0=

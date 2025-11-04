@@ -5,7 +5,7 @@ EAPI=8
 
 LUA_COMPAT=( lua5-{1..4} luajit )
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -49,7 +49,7 @@ RDEPEND="
 		sys-apps/groff
 	)
 	lua? ( ${LUA_DEPS} )
-	sys-libs/zlib
+	virtual/zlib
 	virtual/httpd-cgi
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken

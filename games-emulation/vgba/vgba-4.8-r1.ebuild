@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ RESTRICT="strip"
 RDEPEND="
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	sys-libs/zlib[abi_x86_32(-)]
+	virtual/zlib[abi_x86_32(-)]
 "
 
 QA_PREBUILT="/opt/bin/vgba"

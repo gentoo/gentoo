@@ -33,7 +33,7 @@ RDEPEND="
 	media-libs/openal
 	net-libs/enet:1.3=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libintl
 	nettle? ( dev-libs/nettle:= )
 	!nettle? ( >=dev-libs/openssl-1.0.1d:= )

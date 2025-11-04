@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ RDEPEND="
 	dev-libs/boost:=
 	media-libs/libpng:=
 	media-libs/libsdl2[sound,video]
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -16,7 +16,7 @@ IUSE="ssl diet"
 REQUIRED_USE="ssl? ( !diet )"
 
 DEPEND=">=dev-libs/libowfat-0.32-r2[diet=]
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt:=
 	diet? ( dev-libs/dietlibc )
 	ssl? (

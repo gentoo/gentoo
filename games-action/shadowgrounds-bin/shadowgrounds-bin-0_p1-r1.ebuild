@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,11 +23,11 @@ RDEPEND="
 	>=sys-libs/glibc-2.4
 	!amd64? (
 		gnome-base/libglade
-		sys-libs/zlib
+		virtual/zlib
 	)
 	amd64? (
 		>=gnome-base/libglade-2.6.4-r1[abi_x86_32(-)]
-		sys-libs/zlib[abi_x86_32(-)]
+		virtual/zlib[abi_x86_32(-)]
 	)
 "
 BDEPEND="app-arch/unzip"

@@ -47,7 +47,7 @@ RDEPEND="
 	dev-libs/libsodium:=
 	dev-libs/openssl:0=[-bindist(-)]
 	dev-libs/snowball-stemmer:=
-	sys-libs/zlib
+	virtual/zlib
 	blas? (
 		virtual/blas
 		virtual/lapack

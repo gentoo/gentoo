@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	media-libs/libsdl[video]
 	media-libs/sdl-net
-	sys-libs/zlib
+	virtual/zlib
 	x11-misc/xdg-utils
 	media-libs/libjpeg-turbo:=
 	!dedicated? (

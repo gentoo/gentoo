@@ -20,7 +20,7 @@ IUSE="flac iconv mad png tremor vorbis"
 
 RDEPEND="
 	dev-libs/boost:=
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/wxGTK:${WX_GTK_VER}=
 	flac? ( media-libs/flac:= )
 	iconv? (

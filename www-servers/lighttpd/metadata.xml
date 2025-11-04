@@ -22,7 +22,7 @@
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> as crypto library</flag>
 		<flag name="nss">Build module for TLS via Mozilla's Network Security Services</flag>
 		<flag name="webdav">Enable webdav properties</flag>
-		<flag name="zlib">Enable output compression via gzip or deflate algorithms from <pkg>sys-libs/zlib</pkg></flag>
+		<flag name="zlib">Enable output compression via gzip or deflate algorithms from <pkg>virtual/zlib</pkg></flag>
 		<flag name="zstd">Enable output compression via Zstandard (<pkg>app-arch/zstd</pkg>) algorithm</flag>
 	</use>
 	<upstream>

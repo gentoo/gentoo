@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: emboss-r3.eclass
@@ -53,7 +53,7 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/libpcre:3
 	sci-libs/plplot:=
-	sys-libs/zlib
+	virtual/zlib
 	mysql? ( dev-db/mysql-connector-c:0= )
 	pdf? ( media-libs/libharu:= )
 	png? ( media-libs/gd:2=[png] )

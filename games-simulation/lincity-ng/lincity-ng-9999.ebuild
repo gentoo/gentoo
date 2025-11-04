@@ -29,7 +29,7 @@ RDEPEND="
 	>=media-libs/sdl2-image-2.0.0[png]
 	>=media-libs/sdl2-mixer-2.0.0[vorbis]
 	>=media-libs/sdl2-ttf-2.0.12
-	>=sys-libs/zlib-1.0
+	>=virtual/zlib-1.0
 	virtual/opengl
 "
 DEPEND="${RDEPEND}"

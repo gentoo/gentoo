@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-libs/json-glib-1.0.4
 
 	dev-libs/icu:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libiconv
 
 	berkdb? ( >=sys-libs/db-4:= )

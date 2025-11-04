@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/libsoundtouch:=
 	net-libs/libpcap
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/agg
 	x11-libs/libX11
 	gui? (

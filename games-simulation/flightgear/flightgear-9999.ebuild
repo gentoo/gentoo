@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	>=media-libs/speex-1.2.0:0
 	media-libs/speexdsp:0
 	media-sound/gsm
-	sys-libs/zlib
+	virtual/zlib
 	virtual/glu
 	x11-libs/libX11
 	dbus? ( >=sys-apps/dbus-1.6.18-r1 )

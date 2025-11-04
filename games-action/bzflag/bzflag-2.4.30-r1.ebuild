@@ -18,7 +18,7 @@ RDEPEND="
 	net-dns/c-ares
 	>=net-misc/curl-7.15.0
 	sys-libs/ncurses:0
-	sys-libs/zlib
+	virtual/zlib
 	!dedicated? (
 		media-libs/libsdl2[joystick,sound,video]
 		media-libs/glew:=

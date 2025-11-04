@@ -11,7 +11,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 IUSE="zlib"
 
 DEPEND="
-	zlib? (	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )"
+	zlib? (	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	sys-apps/hwdata"
 

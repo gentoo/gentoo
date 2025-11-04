@@ -21,7 +21,7 @@ RDEPEND="
 	dev-qt/qtmultimedia:6
 	dev-qt/qtspeech:6
 	dev-qt/qtsvg:6
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtbase:6[concurrent]

@@ -412,8 +412,8 @@ _ngx_set_mod_depend() {
 	local -A COMMON_DEPEND=(
 		[http_image_filter]="media-libs/gd:="
 		[http_geoip]="dev-libs/geoip"
-		[http_gunzip]="sys-libs/zlib:="
-		[http_gzip]="sys-libs/zlib:="
+		[http_gunzip]="virtual/zlib:="
+		[http_gzip]="virtual/zlib:="
 		[http_rewrite]="dev-libs/libpcre2:="
 		[http_ssl]="dev-libs/openssl:="
 		# http_v3 requires NGINX QUIC compatibility layer that uses

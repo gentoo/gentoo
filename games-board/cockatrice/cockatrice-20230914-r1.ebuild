@@ -31,7 +31,7 @@ RDEPEND="
 		app-arch/xz-utils
 		dev-qt/qtbase:6[concurrent]
 		dev-qt/qtsvg:6
-		sys-libs/zlib
+		virtual/zlib
 	)
 	server? (
 		dev-qt/qtbase:6[sql]

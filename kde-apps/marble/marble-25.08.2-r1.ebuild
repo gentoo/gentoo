@@ -26,7 +26,7 @@ DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent,dbus?,gui,network,sql,widgets,xml]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtsvg-${QTMIN}:6
-	sys-libs/zlib
+	virtual/zlib
 	aprs? ( >=dev-qt/qtserialport-${QTMIN}:6 )
 	designer? ( >=dev-qt/qttools-${QTMIN}:6[designer] )
 	geolocation? ( >=dev-qt/qtpositioning-${QTMIN}:6 )

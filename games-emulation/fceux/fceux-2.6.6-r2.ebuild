@@ -23,7 +23,7 @@ RDEPEND="${LUA_DEPS}
 	dev-qt/qtbase:6[gui,opengl,widgets,-gles2-only]
 	media-libs/libglvnd
 	media-libs/libsdl2[joystick,sound,threads(+),video]
-	sys-libs/zlib:=[minizip]
+	virtual/zlib:=[minizip]
 	archive? ( app-arch/libarchive:= )
 	ffmpeg? ( media-video/ffmpeg:= )
 	x264? ( media-libs/x264:= )

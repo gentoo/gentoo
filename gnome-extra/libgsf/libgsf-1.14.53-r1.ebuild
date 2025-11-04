@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.36:2
 	>=dev-libs/libxml2-2.4.16:2=
-	sys-libs/zlib
+	virtual/zlib
 	bzip2? ( app-arch/bzip2 )
 	gtk? (
 		x11-libs/gdk-pixbuf:2

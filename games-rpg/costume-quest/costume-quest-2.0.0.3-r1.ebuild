@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/glu[abi_x86_32]
 	media-libs/libglvnd[abi_x86_32,X]
 	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads(+),video]
-	sys-libs/zlib[abi_x86_32]
+	virtual/zlib[abi_x86_32]
 "
 
 DIR="/opt/${PN}"

@@ -40,13 +40,13 @@ RDEPEND="
 		truetype? (
 			media-libs/fontconfig
 			media-libs/freetype:2
-			sys-libs/zlib:=
+			virtual/zlib:=
 		)
 	)
 	lzma? ( app-arch/xz-utils )
 	lzo? ( dev-libs/lzo:2 )
 	png? ( media-libs/libpng:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

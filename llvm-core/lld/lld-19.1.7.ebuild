@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit cmake flag-o-matic llvm.org python-any-r1 toolchain-funcs
 
 DESCRIPTION="The LLVM linker (link editor)"
@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	~llvm-core/llvm-${PV}[debug=,zstd=]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="

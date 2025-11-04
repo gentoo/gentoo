@@ -1,4 +1,4 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -33,7 +33,7 @@ RDEPEND="
 	dev-qt/qttest:5
 	dev-qt/qtxml:5
 	gnome-extra/zenity
-	sys-libs/zlib
+	virtual/zlib
 	>=virtual/jre-1.8.0
 	virtual/opengl
 	x11-libs/libXrandr

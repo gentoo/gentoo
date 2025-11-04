@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/sdl2-ttf
 	media-libs/sdl2-image
 	media-libs/sdl2-net
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libintl
 "
 DEPEND="${RDEPEND}"

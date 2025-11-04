@@ -36,7 +36,7 @@ RDEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:6
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
-	sys-libs/zlib
+	virtual/zlib
 	zip? ( >=dev-libs/libzip-1.6.0:= )
 "
 DEPEND="${RDEPEND}

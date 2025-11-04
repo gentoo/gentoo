@@ -52,7 +52,7 @@ CDEPEND="
 	sasl? ( >=dev-libs/cyrus-sasl-2 )
 	ssl? ( >=dev-libs/openssl-1.0.2u:0= )
 	lz4? ( app-arch/lz4 )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	zstd? ( app-arch/zstd )
 "
 DEPEND="${CDEPEND}

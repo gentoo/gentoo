@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ QA_PREBUILT="
 RDEPEND="
 	media-libs/libglvnd[X]
 	sys-libs/libxcrypt:0/1
-	sys-libs/zlib
+	virtual/zlib
 	!bundled-libs? (
 		dev-libs/libsigc++:2
 		>=media-libs/libsdl2-2.0.1[X,joystick,opengl,sound,threads(+),video]

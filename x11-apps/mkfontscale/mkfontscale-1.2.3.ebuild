@@ -12,7 +12,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 RDEPEND="
 	x11-libs/libfontenc
 	media-libs/freetype:2
-	sys-libs/zlib
+	virtual/zlib
 	app-arch/bzip2"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"

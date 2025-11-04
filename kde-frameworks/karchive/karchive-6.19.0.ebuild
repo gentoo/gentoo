@@ -15,7 +15,7 @@ IUSE="crypt +zstd"
 DEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
-	sys-libs/zlib
+	virtual/zlib
 	crypt? ( dev-libs/openssl:= )
 	zstd? ( app-arch/zstd:= )
 "

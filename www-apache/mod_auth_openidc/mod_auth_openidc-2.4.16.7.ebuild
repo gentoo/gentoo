@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	dev-libs/libpcre
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	brotli? ( app-arch/brotli:= )
 	redis? ( dev-libs/hiredis:= )
 "

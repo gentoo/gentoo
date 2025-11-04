@@ -83,7 +83,7 @@ DEPEND="
 	net-libs/enet:1.3
 	net-libs/miniupnpc:=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib
 	virtual/opengl
 	x11-libs/libX11
 	editor? ( x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl] )
