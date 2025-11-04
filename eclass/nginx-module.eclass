@@ -353,10 +353,20 @@ ngx_mod_link_module() {
 
 # @ECLASS_VARIABLE: NGINX_MOD_S
 # @DESCRIPTION:
-# Holds the path to the module sources directory, used in the
-# nginx-module_src_configure() phase function.  If unset at the time of inherit,
-# defaults to ${S}.
+# Holds the path to the module source directory, used in various phase
+# functions.  If unset at the time of inherit, defaults to ${S}.
 : "${NGINX_MOD_S=${S}}"
+
+# @ECLASS_VARIABLE: NGINX_MOD_CONFIG_DIR
+# @DESCRIPTION:
+# Holds the path of the directory containing the config script relative to the
+# module source directory specified by the ${NGINX_MOD_S} variable.  If unset at
+# the time of inherit, defaults to "" (an empty string, meaning the config
+# script is located at the root of the module source directory).
+#
+# For example, in www-nginx/njs, NGINX_MOD_S="${WORKDIR}/${P}" and
+# NGINX_MOD_CONFIG_DIR="nginx".
+: "${NGINX_MOD_CONFIG_DIR=""}"
 
 # The ${S} variable is set to the path of the directory where the actual build
 # will be performed. In this directory, symbolic links to NGINX's build system
@@ -583,7 +593,8 @@ nginx-module_src_unpack() {
 # Then, default_src_prepare() is called.
 nginx-module_src_prepare() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
-	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
+	pushd "${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
+		die "pushd failed"
 	# Since NGINX does not guarantee ABI or API stability, we utilise
 	# preprocessor macros that were used to compile NGINX itself, to build third
 	# party modules. As such, we do not want for the dummy preprocessor macros
@@ -610,7 +621,12 @@ nginx-module_src_prepare() {
 		die "sed failed"
 	echo 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
 		>> config || die "echo failed"
+
+	# cd into module root and apply patches.
+	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
 	default_src_prepare
+	popd >/dev/null || die "popd failed"
+
 	popd >/dev/null || die "popd failed"
 }
 
@@ -637,7 +653,7 @@ nginx-module_src_configure() {
 		--with-cc-opt="-isystem src/modules"
 		--with-ld-opt="${LDFLAGS}"
 		--builddir=build
-		--add-dynamic-module="${NGINX_MOD_S}"
+		--add-dynamic-module="${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}"
 	)
 
 	# NGINX build system adds directories under src/ to the include path based
