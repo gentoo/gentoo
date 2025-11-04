@@ -18,7 +18,7 @@ else
 		https://github.com/peeweep/caddy/commit/87a8af35.patch -> ${P}-go-mod-sum.patch
 		https://github.com/caddyserver/dist/archive/refs/tags/v${PV}.tar.gz -> ${P}-docs.tar.gz
 "
-	KEYWORDS="~amd64 ~arm64 ~loong ~riscv"
+	KEYWORDS="amd64 ~arm64 ~loong ~riscv"
 fi
 
 # MAIN
