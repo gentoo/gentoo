@@ -47,6 +47,7 @@ net-firewall/nftables json python xtables
 
 # Required by dev-qt/qtwebengine
 sys-libs/zlib minizip
+virtual/zlib minizip
 
 # Keep existing defaults after dropping IUSE=phonon from make.defaults
 <kde-apps/kio-extras-25.08.2 phonon
