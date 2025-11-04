@@ -46,7 +46,7 @@ DEPEND="
 			dev-qt/qtwidgets:5
 		)
 		reiserfs? ( >=sys-fs/progsreiserfs-0.3.1_rc8 )
-		zlib? ( virtual/zlib )
+		zlib? ( virtual/zlib:= )
 		!arm? ( ewf? ( app-forensics/libewf:= ) )
 	)
 "

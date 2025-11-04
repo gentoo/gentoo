@@ -46,7 +46,7 @@ RDEPEND="
 		dev-qt/qtbase:6[gui,opengl,widgets]
 	)
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (

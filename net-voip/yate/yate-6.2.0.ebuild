@@ -27,7 +27,7 @@ RDEPEND="
 	gsm? ( media-sound/gsm )
 	speex? ( media-libs/speex )
 	ssl? ( dev-libs/openssl:0= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	ilbc? ( media-libs/libilbc:= )
 	spandsp? ( >=media-libs/spandsp-0.0.3 )
 	dahdi? ( net-misc/dahdi )

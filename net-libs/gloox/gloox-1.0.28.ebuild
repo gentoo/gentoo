@@ -22,7 +22,7 @@ DEPEND="
 	idn? ( net-dns/libidn:= )
 	gnutls? ( net-libs/gnutls:= )
 	ssl? ( dev-libs/openssl:0= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

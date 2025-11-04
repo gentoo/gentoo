@@ -28,7 +28,7 @@ DEPEND="
 	ncurses? ( sys-libs/ncurses:= )
 	readline? ( sys-libs/readline:= )
 	upnp? ( net-libs/miniupnpc:= )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="${DEPEND}
 	vde? ( net-misc/vde )"
 

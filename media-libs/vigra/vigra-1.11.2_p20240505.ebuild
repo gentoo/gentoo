@@ -51,7 +51,7 @@ DEPEND="
 	)
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 # Python is needed as a runtime dep of installed vigra-config
 RDEPEND="

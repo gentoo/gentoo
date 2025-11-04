@@ -23,7 +23,7 @@ RDEPEND="dev-db/qdbm
 	mecab? ( app-text/mecab )
 	perl? ( dev-lang/perl )
 	ruby? ( $(ruby_implementations_depend) )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.8:* )"
 BDEPEND="virtual/pkgconfig"

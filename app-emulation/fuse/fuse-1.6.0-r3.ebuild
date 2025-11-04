@@ -46,7 +46,7 @@ RDEPEND="
 	png? ( media-libs/libpng:0= )
 	pulseaudio? ( media-libs/libpulse )
 	xml? ( dev-libs/libxml2 )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}
 	backend-fbcon? ( virtual/linux-sources )"
 BDEPEND="dev-lang/perl

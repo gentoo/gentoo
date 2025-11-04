@@ -26,7 +26,7 @@ RDEPEND="
 	)
 	jpeg? ( virtual/jpeg )
 	kernel_linux? ( virtual/libudev )
-	lilo? ( virtual/zlib )
+	lilo? ( virtual/zlib:= )
 	opengl? ( virtual/opengl )
 	osmesa? ( media-libs/mesa[osmesa] )
 	pmmu? ( dev-libs/mpfr:0= )

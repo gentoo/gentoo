@@ -34,7 +34,7 @@ CDEPEND="net-libs/libpcap
 	pcre? ( dev-libs/libpcre )
 	airdrop-ng? ( ${PYTHON_DEPS} )
 	airgraph-ng? ( ${PYTHON_DEPS} )
-	experimental? ( virtual/zlib )
+	experimental? ( virtual/zlib:= )
 	sqlite? ( >=dev-db/sqlite-3.4:3 )
 	"
 DEPEND="${CDEPEND}

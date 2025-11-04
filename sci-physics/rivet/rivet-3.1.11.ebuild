@@ -39,7 +39,7 @@ RDEPEND="
 	hepmc3? ( <sci-physics/hepmc-3.3.0:3=[-cm(-),gev(+)] )
 
 	sci-libs/gsl
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '

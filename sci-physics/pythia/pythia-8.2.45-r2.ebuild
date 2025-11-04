@@ -32,7 +32,7 @@ RDEPEND="
 	fastjet? ( sci-physics/fastjet )
 	hepmc? ( sci-physics/hepmc:2= )
 	lhapdf? ( sci-physics/lhapdf:= )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 # ROOT is used only when building related tests
 DEPEND="${RDEPEND}
 	test? (

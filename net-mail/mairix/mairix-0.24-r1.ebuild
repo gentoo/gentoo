@@ -17,7 +17,7 @@ IUSE="zlib bzip2"
 
 RDEPEND="
 	dev-libs/openssl:=
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	bzip2? ( app-arch/bzip2 )
 "
 

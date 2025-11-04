@@ -16,7 +16,7 @@ IUSE="bzip2 debug doc examples threads zlib"
 
 DEPEND="
 	bzip2? ( app-arch/bzip2 )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 

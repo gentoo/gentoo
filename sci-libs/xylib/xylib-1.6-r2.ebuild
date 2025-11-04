@@ -18,7 +18,7 @@ IUSE="bzip2 gui zlib"
 RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	gui? ( x11-libs/wxGTK:${WX_GTK_VER}= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

@@ -22,7 +22,7 @@ DEPEND="
 		gnutls? ( net-libs/gnutls:= )
 	)
 	pcre? ( dev-libs/libpcre2 )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 

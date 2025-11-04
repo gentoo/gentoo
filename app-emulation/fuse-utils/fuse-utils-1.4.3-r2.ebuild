@@ -19,7 +19,7 @@ RDEPEND=">=app-emulation/libspectrum-1.4.4[audiofile?,gcrypt?,zlib?]
 	gcrypt? ( dev-libs/libgcrypt )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:0 )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

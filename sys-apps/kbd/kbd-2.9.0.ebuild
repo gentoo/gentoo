@@ -35,7 +35,7 @@ DEPEND="
 		!app-misc/vlock
 		sys-libs/pam
 	)
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="

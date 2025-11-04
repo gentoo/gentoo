@@ -17,7 +17,7 @@ IUSE="zlib +ecm mpi"
 RDEPEND="
 	ecm? ( sci-mathematics/gmp-ecm )
 	mpi? ( virtual/mpi )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

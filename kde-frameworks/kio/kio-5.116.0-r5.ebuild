@@ -64,7 +64,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
-	test? ( virtual/zlib )
+	test? ( virtual/zlib:= )
 "
 RDEPEND="${COMMON_DEPEND}
 	|| (

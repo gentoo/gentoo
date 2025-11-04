@@ -18,7 +18,7 @@ IUSE="devref doc doxygen emacs gmp mpi threads zlib"
 RDEPEND="
 	gmp? ( dev-libs/gmp:0= )
 	mpi? ( virtual/mpi )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}
 	devref? ( dev-texlive/texlive-latexrecommended )
 	doc? ( dev-texlive/texlive-latexrecommended )

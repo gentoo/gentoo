@@ -19,7 +19,7 @@ RDEPEND="
 	ldap? ( net-nds/openldap:= )
 	lzma? ( app-arch/xz-utils )
 	pcre? ( dev-libs/libpcre )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="
 	${RDEPEND}

@@ -17,7 +17,7 @@ IUSE="geoip nls zlib"
 RDEPEND="
 	virtual/libcrypt:=
 	geoip? ( dev-libs/geoip )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

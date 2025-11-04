@@ -25,7 +25,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	bzip2? ( app-arch/bzip2 )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	libedit? ( dev-libs/libedit )
 	readline? ( sys-libs/readline:= )
 "

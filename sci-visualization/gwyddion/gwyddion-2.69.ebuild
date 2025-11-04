@@ -35,7 +35,7 @@ RDEPEND="
 	unique? ( dev-libs/libunique:3 )
 	sourceview? ( x11-libs/gtksourceview:2.0 )
 	xml? ( dev-libs/libxml2:2= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 
 DEPEND="${RDEPEND}"

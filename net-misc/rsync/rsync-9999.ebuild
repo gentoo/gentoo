@@ -58,7 +58,7 @@ RDEPEND="
 		')
 	)
 	ssl? ( dev-libs/openssl:= )
-	system-zlib? ( virtual/zlib )
+	system-zlib? ( virtual/zlib:= )
 	xxhash? ( >=dev-libs/xxhash-0.8 )
 	zstd? ( >=app-arch/zstd-1.4:= )
 	iconv? ( virtual/libiconv )"

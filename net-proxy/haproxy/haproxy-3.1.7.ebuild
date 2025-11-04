@@ -49,7 +49,7 @@ DEPEND="
 		dev-libs/openssl:0=
 	)
 	systemd? ( sys-apps/systemd )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	lua? ( ${LUA_DEPS} )
 	test? (
 		dev-libs/libpcre2

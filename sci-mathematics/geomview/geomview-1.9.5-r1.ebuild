@@ -21,7 +21,7 @@ DEPEND="
 	virtual/opengl
 	x11-libs/motif:0
 	emacs? ( >=app-editors/emacs-23.1:* )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
 

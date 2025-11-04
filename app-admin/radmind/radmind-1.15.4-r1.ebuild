@@ -18,7 +18,7 @@ DEPEND="
 	dev-libs/openssl:0=
 	net-libs/libnsl
 	pam? ( sys-libs/pam )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

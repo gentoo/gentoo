@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="zlib"
 
-RDEPEND="zlib? ( virtual/zlib )"
+RDEPEND="zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

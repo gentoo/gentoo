@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	uriparser? ( dev-libs/uriparser )
 	zeroconf? ( net-dns/avahi )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 
 # ffmpeg sub-dependencies needed for headers only. Check under

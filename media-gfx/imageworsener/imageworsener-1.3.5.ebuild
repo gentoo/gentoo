@@ -18,7 +18,7 @@ IUSE="jpeg png static-libs test webp zlib"
 DEPEND="png? ( media-libs/libpng:0 )
 	jpeg? ( media-libs/libjpeg-turbo )
 	webp? ( >=media-libs/libwebp-0.1.3 )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="test? ( jpeg png webp zlib )"

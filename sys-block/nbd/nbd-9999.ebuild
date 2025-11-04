@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-libs/glib-2.32.0
 	gnutls? ( >=net-libs/gnutls-2.12.0 )
 	netlink? ( >=dev-libs/libnl-3.1 )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

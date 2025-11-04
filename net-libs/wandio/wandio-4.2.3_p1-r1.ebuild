@@ -23,7 +23,7 @@ RDEPEND="
 	lzma? ( app-arch/xz-utils )
 	lzo? ( dev-libs/lzo )
 	http? ( net-misc/curl )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="
 	${RDEPEND}

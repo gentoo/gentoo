@@ -20,7 +20,7 @@ RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 	tiff? ( media-libs/tiff:= )
 	xml? ( dev-libs/libxml2:2= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -16,7 +16,7 @@ IUSE="doc png zlib"
 RDEPEND="
 	media-libs/libglvnd
 	png? ( media-libs/libpng:0= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}
 	doc? (

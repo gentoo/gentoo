@@ -78,7 +78,7 @@ RDEPEND="
 	truetype? ( media-libs/freetype:2 )
 	vnc? ( net-libs/libvncserver )
 	xrandr? ( x11-libs/libXrandr )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto

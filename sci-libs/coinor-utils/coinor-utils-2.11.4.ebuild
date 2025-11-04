@@ -34,7 +34,7 @@ DEPEND="sys-libs/readline:0=
 	bzip2? ( app-arch/bzip2 )
 	glpk? ( sci-mathematics/glpk:= )
 	lapack? ( virtual/lapack )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"

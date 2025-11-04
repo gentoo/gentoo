@@ -62,7 +62,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	slepc? ( sci-mathematics/slepc[mpi=] )
 	voro? ( sci-libs/voro++ )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 
 DEPEND="

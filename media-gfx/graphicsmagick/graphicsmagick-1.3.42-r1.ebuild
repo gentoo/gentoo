@@ -59,7 +59,7 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXext
 	)
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}"

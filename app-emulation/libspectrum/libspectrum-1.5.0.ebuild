@@ -18,7 +18,7 @@ RDEPEND="dev-libs/glib:2
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
 	bzip2? ( >=app-arch/bzip2-1.0 )
 	gcrypt? ( dev-libs/libgcrypt:0 )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-lang/perl
 	virtual/pkgconfig"

@@ -24,7 +24,7 @@ RDEPEND="
 	lzo? ( dev-libs/lzo )
 	lz4? ( app-arch/lz4:= )
 	http? ( net-misc/curl )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="

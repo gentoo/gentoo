@@ -29,7 +29,7 @@ RDEPEND="
 		virtual/opengl
 		dga? ( x11-libs/libXxf86dga )
 		vidmode? ( x11-libs/libXxf86vm )
-		zlib? ( virtual/zlib )
+		zlib? ( virtual/zlib:= )
 	)"
 DEPEND="${RDEPEND}
 	!dedicated? (

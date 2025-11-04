@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~sparc ~x86"
 IUSE="ipv6 zlib"
 
-RDEPEND="zlib? ( virtual/zlib )"
+RDEPEND="zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	acct-group/rbldns

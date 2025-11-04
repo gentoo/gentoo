@@ -13,7 +13,7 @@ KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="gif jpeg nls png truetype zlib"
 
 DEPEND="media-libs/gd
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	gif? ( media-libs/giflib )
 	png? ( media-libs/libpng )
 	jpeg? ( media-libs/libjpeg-turbo:= )

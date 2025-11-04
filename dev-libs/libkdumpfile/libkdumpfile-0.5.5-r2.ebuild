@@ -16,7 +16,7 @@ DEPEND="
 	sys-libs/binutils-libs:=
 	lzo? ( dev-libs/lzo )
 	snappy? ( app-arch/snappy:= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}"

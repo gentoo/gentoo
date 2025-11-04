@@ -49,7 +49,7 @@ server? ( systemd? ( sys-apps/systemd ) )
 ssl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 tcl? ( >=dev-lang/tcl-8:0= )
 xml? ( dev-libs/libxml2:= dev-libs/libxslt )
-zlib? ( virtual/zlib )
+zlib? ( virtual/zlib:= )
 zstd? ( app-arch/zstd )
 "
 

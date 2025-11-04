@@ -46,7 +46,7 @@ RDEPEND="
 	hepmc3? ( sci-physics/hepmc:3= )
 	hepmc2? ( sci-physics/hepmc:2= )
 	lhapdf? ( sci-physics/lhapdf:= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	highfive? (
 		sci-libs/highfive
 		sci-libs/hdf5[cxx]

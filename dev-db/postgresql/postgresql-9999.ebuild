@@ -64,7 +64,7 @@ xml? (
 	dev-libs/libxml2:=
 	dev-libs/libxslt
 )
-zlib? ( virtual/zlib )
+zlib? ( virtual/zlib:= )
 zstd? ( app-arch/zstd )
 "
 

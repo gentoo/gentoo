@@ -16,7 +16,7 @@ RDEPEND="
 	acct-group/wwwoffle
 	acct-user/wwwoffle
 	gnutls? ( net-libs/gnutls:= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

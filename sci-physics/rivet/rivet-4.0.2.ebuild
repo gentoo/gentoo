@@ -41,7 +41,7 @@ RDEPEND="
 	)
 
 	sci-libs/gsl
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '

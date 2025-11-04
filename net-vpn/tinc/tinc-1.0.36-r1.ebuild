@@ -18,7 +18,7 @@ IUSE="+lzo uml vde +zlib"
 DEPEND="
 	dev-libs/openssl:=
 	lzo? ( dev-libs/lzo:2 )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${DEPEND}

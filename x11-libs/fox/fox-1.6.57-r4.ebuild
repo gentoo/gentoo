@@ -27,7 +27,7 @@ RDEPEND="
 		media-libs/freetype:2
 		x11-libs/libXft
 	)
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	x11-libs/libXt"

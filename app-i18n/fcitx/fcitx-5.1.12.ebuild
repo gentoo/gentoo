@@ -36,7 +36,7 @@ RDEPEND="
 		app-text/doxygen
 		dev-texlive/texlive-fontutils
 	)
-	emoji? ( virtual/zlib )
+	emoji? ( virtual/zlib:= )
 	enchant? ( app-text/enchant:2 )
 	keyboard? (
 		app-text/iso-codes

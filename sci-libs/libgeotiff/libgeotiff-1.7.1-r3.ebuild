@@ -17,7 +17,7 @@ IUSE="doc jpeg +tiff zlib"
 DEPEND=">=sci-libs/proj-6.0.0:=
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	tiff? ( >=media-libs/tiff-3.9.1:= )
-	zlib? ( virtual/zlib )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-text/doxygen )"
 

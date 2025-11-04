@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~x86"
 IUSE="debug zlib"
 
 RDEPEND="
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	dev-libs/libxml2:=
 "
 DEPEND="${RDEPEND}"

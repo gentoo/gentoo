@@ -114,7 +114,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	tree-sitter? ( dev-libs/tree-sitter:= )
 	valgrind? ( dev-debug/valgrind )
 	xattr? ( sys-apps/attr )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	gui? (
 		gif? ( media-libs/giflib:0= )
 		jpeg? ( media-libs/libjpeg-turbo:0= )

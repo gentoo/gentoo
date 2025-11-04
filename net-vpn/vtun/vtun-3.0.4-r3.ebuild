@@ -18,7 +18,7 @@ RDEPEND="
 	lzo? ( dev-libs/lzo:2 )
 	socks5? ( net-proxy/dante )
 	ssl? ( dev-libs/openssl:0= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	dev-libs/libbsd"
 DEPEND="${RDEPEND}"
 BDEPEND="

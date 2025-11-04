@@ -59,7 +59,7 @@ RDEPEND="
 	tbb? ( dev-cpp/tbb:= )
 	tvmet? ( dev-libs/tvmet )
 	yaml? ( dev-cpp/yaml-cpp:= )
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

@@ -23,7 +23,7 @@ BDEPEND="
 "
 DEPEND="
 	dev-libs/librevenge
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 

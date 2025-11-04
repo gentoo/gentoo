@@ -24,7 +24,7 @@ DEPEND="
 	ssl? (
 		dev-libs/openssl:0=
 	)
-	zlib? ( virtual/zlib )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}"
 
