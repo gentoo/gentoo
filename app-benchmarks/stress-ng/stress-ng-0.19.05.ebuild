@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/libgcrypt:0=
 	sys-apps/attr
 	sys-libs/libcap
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt:=
 	apparmor? (
 		sys-apps/apparmor-utils

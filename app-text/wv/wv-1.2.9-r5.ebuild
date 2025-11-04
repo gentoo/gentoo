@@ -17,7 +17,7 @@ IUSE="tools wmf"
 RDEPEND="
 	>=dev-libs/glib-2:2
 	>=gnome-extra/libgsf-1.13:=
-	sys-libs/zlib
+	virtual/zlib
 	media-libs/libpng:0=
 	dev-libs/libxml2:2=
 	tools? (

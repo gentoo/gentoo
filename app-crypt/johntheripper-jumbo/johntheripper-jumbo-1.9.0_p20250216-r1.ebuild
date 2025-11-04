@@ -30,7 +30,7 @@ DEPEND=">=dev-libs/openssl-1.0.1:=
 	kerberos? ( virtual/krb5 )
 	pcap? ( net-libs/libpcap )
 	dev-libs/gmp:=
-	sys-libs/zlib
+	virtual/zlib
 	app-arch/bzip2"
 # Missing (unpackaged):
 # - Digest::Haval256

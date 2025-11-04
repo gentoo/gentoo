@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-single-r1 unpacker
 
@@ -72,7 +72,7 @@ RDEPEND="${DEPEND}
 	sys-apps/util-linux[abi_x86_32(-)]
 	sys-libs/libunwind[abi_x86_32(-)]
 	sys-libs/ncurses-compat:5[abi_x86_32(-)]
-	sys-libs/zlib[abi_x86_32(-)]
+	virtual/zlib[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libSM[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]

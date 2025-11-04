@@ -22,7 +22,7 @@ DEPEND="
 	>=dev-libs/glib-2.44.0:2
 	>=gui-libs/libhandy-1.5.0:1
 	>=dev-libs/libxml2-2.5:2=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	>=x11-libs/gdk-pixbuf-2.40:2
 	>=x11-libs/gtk+-3.22.0:3[X?,cups?,introspection?,wayland?]
 	gnome-base/gsettings-desktop-schemas

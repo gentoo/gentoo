@@ -25,7 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-text/mythes
 	dev-libs/boost:=
 	sys-apps/file
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/imagemagick-tools[png,svg?]
 	x11-libs/libxcb
 	x11-misc/xdg-utils

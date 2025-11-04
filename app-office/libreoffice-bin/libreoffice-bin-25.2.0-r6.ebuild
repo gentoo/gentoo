@@ -86,7 +86,7 @@ RDEPEND="
 	sys-devel/gcc:*
 	sys-fs/e2fsprogs
 	sys-libs/glibc
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt
 	virtual/opengl
 	x11-libs/cairo[X]

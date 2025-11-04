@@ -56,7 +56,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	jit? (
 		sys-devel/gcc:=[jit(-)]
-		sys-libs/zlib
+		virtual/zlib
 	)
 	json? ( dev-libs/jansson:= )
 	kerberos? ( virtual/krb5 )
@@ -68,7 +68,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	valgrind? ( dev-debug/valgrind )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM

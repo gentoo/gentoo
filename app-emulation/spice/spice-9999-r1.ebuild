@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/openssl:0=[static-libs(+)?]
 	media-libs/opus[static-libs(+)?]
 	media-libs/libjpeg-turbo:0=[static-libs(+)?]
-	sys-libs/zlib[static-libs(+)?]
+	virtual/zlib[static-libs(+)?]
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	virtual/libudev
 	lz4? ( app-arch/lz4:0=[static-libs(+)?] )

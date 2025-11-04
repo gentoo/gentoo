@@ -20,7 +20,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spar
 RDEPEND="
 	>=dev-libs/kpathsea-6.2.1
 	media-libs/freetype:2
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

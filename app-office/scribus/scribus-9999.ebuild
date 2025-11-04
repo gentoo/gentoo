@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 PYTHON_REQ_USE="tk?"
 inherit cmake desktop flag-o-matic optfeature python-single-r1 xdg
 
@@ -53,7 +53,7 @@ DEPEND="${PYTHON_DEPS}
 	media-libs/libzmf
 	media-libs/tiff:=
 	net-print/cups
-	sys-libs/zlib[minizip]
+	virtual/zlib[minizip]
 	x11-libs/cairo[X,svg(+)]
 	x11-libs/libxcb
 	boost? ( dev-libs/boost:= )

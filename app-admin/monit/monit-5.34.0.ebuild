@@ -1,4 +1,4 @@
-# Copyright 2021-2024 Gentoo Authors
+# Copyright 2021-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86 ~amd64-linux"
 IUSE="pam ssl"
 
-RDEPEND="sys-libs/zlib:=
+RDEPEND="virtual/zlib:=
 	virtual/libcrypt:=
 	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0= )

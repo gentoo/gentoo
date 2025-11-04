@@ -24,7 +24,7 @@ RDEPEND="
 	dev-libs/librevenge
 	dev-libs/libxml2:=
 	>=dev-util/mdds-2.1:1=
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

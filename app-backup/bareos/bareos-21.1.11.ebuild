@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 CMAKE_WARN_UNUSED_CLI=no
 #CMAKE_REMOVE_MODULES=yes
 
@@ -54,7 +54,7 @@ DEPEND="
 		dev-libs/lzo[static-libs]
 		dev-libs/openssl:0=[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		sys-libs/zlib[static-libs]
+		virtual/zlib[static-libs]
 	)
 	!static? (
 		acl? ( virtual/acl )
@@ -62,7 +62,7 @@ DEPEND="
 		dev-libs/lzo
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
-		sys-libs/zlib
+		virtual/zlib
 	)
 	"
 RDEPEND="${DEPEND}

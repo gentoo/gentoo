@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -26,7 +26,7 @@ DEPEND="
 	app-arch/rpm
 	app-arch/xz-utils
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib
 	lzip? ( app-arch/lzlib )
 	zstd? ( app-arch/zstd:= )
 "

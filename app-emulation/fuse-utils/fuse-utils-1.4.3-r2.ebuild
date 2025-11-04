@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ RDEPEND=">=app-emulation/libspectrum-1.4.4[audiofile?,gcrypt?,zlib?]
 	gcrypt? ( dev-libs/libgcrypt )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:0 )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

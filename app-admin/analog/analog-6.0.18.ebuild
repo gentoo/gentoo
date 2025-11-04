@@ -20,7 +20,7 @@ DEPEND="
 	app-arch/bzip2
 	dev-libs/libpcre2
 	>=media-libs/gd-1.8.4-r2[jpeg,png]
-	sys-libs/zlib
+	virtual/zlib
 "
 RDEPEND="${DEPEND}"
 

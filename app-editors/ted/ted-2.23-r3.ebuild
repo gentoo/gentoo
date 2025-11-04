@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libiconv
 	x11-libs/libXft
 	x11-libs/libXpm

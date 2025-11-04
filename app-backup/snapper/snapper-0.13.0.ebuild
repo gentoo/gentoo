@@ -28,7 +28,7 @@ RDEPEND="dev-libs/boost:=
 	sys-apps/dbus
 	sys-apps/util-linux
 	>=sys-fs/btrfs-progs-3.17.1
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libintl
 	lvm? ( sys-fs/lvm2 )
 	pam? ( sys-libs/pam )

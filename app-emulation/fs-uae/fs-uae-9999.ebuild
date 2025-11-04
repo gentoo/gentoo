@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/sdl3-image
 	media-libs/sdl3-ttf
 	media-sound/mpg123
-	sys-libs/zlib
+	virtual/zlib
 	glew? ( media-libs/glew:0= )
 	portmidi? ( media-libs/portmidi )
 "

@@ -27,7 +27,7 @@ RDEPEND="
 	app-arch/zstd:=
 	>=dev-libs/libthreadar-1.5.0
 	sys-libs/libcap
-	>=sys-libs/zlib-1.2.3:=
+	>=virtual/zlib-1.2.3:=
 	argon2? ( app-crypt/argon2:= )
 	curl? ( net-misc/curl )
 	gcrypt? (

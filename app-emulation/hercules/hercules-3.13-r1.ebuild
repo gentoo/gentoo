@@ -17,7 +17,7 @@ IUSE="bzip2 custom-cflags +suid"
 RDEPEND="
 	dev-libs/libltdl:=
 	net-libs/libnsl:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2:= )"
 DEPEND="${RDEPEND}"
 

@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
 	net-misc/curl
-	sys-libs/zlib
+	virtual/zlib
 	dbus? ( sys-apps/dbus )
 	gui? (
 		dev-qt/qtbase:6[X,widgets]

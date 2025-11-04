@@ -16,7 +16,7 @@ IUSE="nls"
 
 RDEPEND=">=dev-libs/libmcrypt-2.5.8
 	>=app-crypt/mhash-0.9.9
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

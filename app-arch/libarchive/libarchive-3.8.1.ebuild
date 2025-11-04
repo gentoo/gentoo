@@ -24,7 +24,7 @@ IUSE="
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	acl? ( virtual/acl:=[${MULTILIB_USEDEP}] )
 	blake2? ( app-crypt/libb2:=[${MULTILIB_USEDEP}] )
 	bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )

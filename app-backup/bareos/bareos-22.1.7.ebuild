@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 CMAKE_WARN_UNUSED_CLI=no
 
 inherit python-any-r1 systemd cmake tmpfiles
@@ -61,7 +61,7 @@ DEPEND="
 		dev-libs/lzo[static-libs]
 		dev-libs/openssl:0=[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		sys-libs/zlib[static-libs]
+		virtual/zlib[static-libs]
 	)
 	!static? (
 		acl? ( virtual/acl )
@@ -69,7 +69,7 @@ DEPEND="
 		dev-libs/lzo
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
-		sys-libs/zlib
+		virtual/zlib
 	)
 	X? (
 		dev-qt/qtbase:6[widgets]

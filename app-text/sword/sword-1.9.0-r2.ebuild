@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
-	sys-libs/zlib
+	virtual/zlib
 	curl? ( net-misc/curl )
 	icu? ( dev-libs/icu:= )
 	clucene? ( dev-cpp/clucene:1 )

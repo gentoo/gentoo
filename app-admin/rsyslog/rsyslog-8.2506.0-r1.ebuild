@@ -56,7 +56,7 @@ BDEPEND="
 RDEPEND="
 	>=dev-libs/libfastjson-1.2304.0-r1:=
 	>=dev-libs/libestr-0.1.9
-	>=sys-libs/zlib-1.2.5
+	>=virtual/zlib-1.2.5
 	curl? ( >=net-misc/curl-7.35.0 )
 	dbi? ( >=dev-db/libdbi-0.8.3 )
 	elasticsearch? ( >=net-misc/curl-7.35.0 )

@@ -22,7 +22,7 @@ RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:=
 	sys-fs/e2fsprogs
-	sys-libs/zlib
+	virtual/zlib
 	acl? ( sys-apps/acl )
 	lzma? ( app-arch/xz-utils )
 	xattr? ( sys-apps/attr )
