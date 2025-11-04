@@ -37,6 +37,9 @@ stop_pre() {
 
 reload() {
 	ebegin "Refreshing NGINX's configuration"
+	configtest || { eerror "Unable to reload NGINX: Configuration check failed";
+                                        return 1; }
+
 	start-stop-daemon --signal SIGHUP --pidfile "${pidfile}"
 	eend $? "Failed to reload NGINX's configuration, please correct the errors above"
 }
