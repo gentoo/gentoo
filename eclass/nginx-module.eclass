@@ -72,7 +72,7 @@
 # RDEPEND="${DEPEND}"
 #
 # src_configure() {
-#     if use iconv; Then
+#     if use iconv; then
 #         ngx_mod_link_module "www-nginx/ngx-iconv"
 #         ...
 #     fi
@@ -381,8 +381,8 @@ S="${WORKDIR}/nginx"
 # extension ".so").  For some modules, may consist of more than one shared
 # object.
 #
-# This variable is set in the nginx-module_src_compile() function.  Its contents
-# are undefined before that.
+# This variable is set by the nginx-module_src_compile() phase function.  Its
+# contents are undefined before the function has been called.
 #
 # Example value:
 # @CODE
@@ -529,7 +529,8 @@ fi
 # @FUNCTION: _ngx_mod_set_test_env
 # @INTERNAL
 # @DESCRIPTION:
-# Sets global variables like IUSE and BDEPEND for tests.
+# Sets global variables like IUSE and BDEPEND for OpenResty Test::Nginx-based
+# tests.
 _ngx_mod_set_test_env() {
 	IUSE="test"
 	RESTRICT="!test? ( test )"
