@@ -12,6 +12,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Gopher KIO worker for Konqueror"
 HOMEPAGE="https://userbase.kde.org/Kio_gopher"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="6"
