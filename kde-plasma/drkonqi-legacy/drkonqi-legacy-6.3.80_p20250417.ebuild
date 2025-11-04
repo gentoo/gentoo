@@ -12,6 +12,7 @@ QTMIN=6.8.1
 inherit ecm plasma.kde.org python-single-r1 xdg
 
 DESCRIPTION="Plasma crash handler, gives the user feedback if a program crashed"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
