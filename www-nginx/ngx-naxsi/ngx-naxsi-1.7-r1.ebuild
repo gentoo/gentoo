@@ -4,7 +4,8 @@
 EAPI=8
 
 MY_PN="naxsi"
-NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}/naxsi_src"
+NGINX_MOD_S="${WORKDIR}/${MY_PN}-${PV}"
+NGINX_MOD_CONFIG_DIR="naxsi_src"
 
 inherit nginx-module
 
@@ -31,7 +32,7 @@ PATCHES=(
 src_install() {
 	nginx-module_src_install
 	insinto /etc/nginx/naxsi
-	doins -r "${NGINX_MOD_S}"/../naxsi_rules/*
+	doins -r "${NGINX_MOD_S}"/naxsi_rules/*
 	docompress -x "/usr/share/doc/${PF}"
-	dodoc -r "${NGINX_MOD_S}"/../docs/*
+	dodoc -r "${NGINX_MOD_S}"/docs/*
 }

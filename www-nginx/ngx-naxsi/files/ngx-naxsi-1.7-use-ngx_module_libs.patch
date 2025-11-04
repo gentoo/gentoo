@@ -14,8 +14,8 @@ Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
 
 diff --git a/naxsi_src/config b/naxsi_src/config
 index 0b8d438..cd27c20 100644
---- a/config
-+++ b/config
+--- a/naxsi_src/config
++++ b/naxsi_src/config
 @@ -49,7 +49,7 @@ if [ "$LIBINJECTION_FOUND" != "0" ]; then
  else
      echo "Using system libinjection"
