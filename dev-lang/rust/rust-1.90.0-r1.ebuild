@@ -6,7 +6,10 @@ EAPI=8
 LLVM_COMPAT=( 20 )
 PYTHON_COMPAT=( python3_{11..14} )
 
-RUST_PATCH_VER=${PV}
+# We bumped the rust-patches tag without bumping the revision for
+# https://bugs.gentoo.org/963657, given that ithe patch affects only a
+# specific use case (bootstrap with Rust 1.90.0).
+RUST_PATCH_VER=${PV}_p1
 
 RUST_MAX_VER=${PV%%_*}
 if [[ ${PV} == *9999* ]]; then
@@ -332,6 +335,13 @@ src_prepare() {
 	PATCHES=(
 		"${WORKDIR}/rust-patches-${RUST_PATCH_VER}/"
 	)
+	# Apply patches for bootstrapping with a particular Rust version (RUST_SLOT).
+	local bootstrap_patchdir="${WORKDIR}/rust-patches-${RUST_PATCH_VER}/${RUST_SLOT}"
+	if [[ -d "${bootstrap_patchdir}" ]]; then
+		PATCHES+=(
+			"${bootstrap_patchdir}"
+		)
+	fi
 
 	if use lto && tc-is-clang && ! tc-ld-is-lld && ! tc-ld-is-mold; then
 		export RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
