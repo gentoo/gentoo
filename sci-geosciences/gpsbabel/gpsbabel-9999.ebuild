@@ -42,7 +42,7 @@ RDEPEND="
 	dev-qt/qtwebchannel:6
 	dev-qt/qtwebengine:6[widgets]
 	sci-libs/shapelib:=
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/libusb:1
 "
 DEPEND="${RDEPEND}"

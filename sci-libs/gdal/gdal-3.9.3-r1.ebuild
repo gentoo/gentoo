@@ -50,7 +50,7 @@ DEPEND="
 	media-libs/tiff
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
-	virtual/zlib:=[minizip(+)]
+	virtual/minizip:=
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio:= )

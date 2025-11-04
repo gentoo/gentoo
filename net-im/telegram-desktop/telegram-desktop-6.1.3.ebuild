@@ -41,7 +41,7 @@ CDEPEND="
 	>=media-libs/tg_owt-0_pre20241202:=[screencast=,X=]
 	>=media-video/ffmpeg-4:=[opus,vpx]
 	net-libs/tdlib:=[tde2e]
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	kde-frameworks/kcoreaddons:6
 	!enchant? ( >=app-text/hunspell-1.7:= )
 	enchant? ( app-text/enchant:= )

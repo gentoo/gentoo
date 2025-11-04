@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/libsdl2[opengl,sound,video]
 	media-libs/libvorbis
 	media-libs/openal
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/opengl
 	x11-libs/libX11"
 

@@ -43,7 +43,7 @@ RDEPEND="
 	)
 	curl? ( net-misc/curl )
 	~games-fps/urbanterror-data-4.3.4
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXxf86vm

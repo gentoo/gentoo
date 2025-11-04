@@ -63,7 +63,7 @@ DEPEND="
 	media-libs/libsamplerate
 	media-libs/libsdl2[haptic,joystick,opengl,sound,vulkan]
 	media-libs/speexdsp
-	virtual/zlib:=[minizip(+)]
+	virtual/minizip:=
 	virtual/opengl
 	netplay? (
 		dev-qt/qtwebsockets:6

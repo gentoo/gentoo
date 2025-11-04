@@ -154,7 +154,7 @@ COMMON_DEPEND="
 	net-misc/curl[ssl]
 	sys-apps/dbus:=
 	media-libs/flac:=
-	virtual/zlib:=[minizip]
+	virtual/minizip:=
 	!headless? (
 		>=app-accessibility/at-spi2-core-2.46.0:2
 		media-libs/mesa:=[X?,wayland?]
