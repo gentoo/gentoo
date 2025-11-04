@@ -117,7 +117,7 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	>=media-libs/openimageio-2.5.6.0:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/glu
 	virtual/libintl
 	virtual/opengl[X?]

@@ -46,7 +46,7 @@ RDEPEND="
 	sndio? ( media-sound/sndio:= )
 	stream? (
 		dev-libs/libgcrypt:=
-		sys-libs/zlib
+		virtual/zlib
 	)
 	tremor? (
 		media-libs/libogg

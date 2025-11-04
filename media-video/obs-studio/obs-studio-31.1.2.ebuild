@@ -82,7 +82,7 @@ DEPEND="
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-apps/util-linux
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libxcb:=

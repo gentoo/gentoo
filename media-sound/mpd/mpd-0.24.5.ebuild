@@ -126,7 +126,7 @@ RDEPEND="
 	wildmidi? ( media-sound/wildmidi )
 	zeroconf? ( net-dns/avahi[dbus] )
 	zip? ( dev-libs/zziplib:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="
 	${RDEPEND}

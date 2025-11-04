@@ -4,7 +4,7 @@
 EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit guile-single libtool python-single-r1
 
 DESCRIPTION="Open Source Graph Visualization Software"
@@ -35,7 +35,7 @@ RDEPEND="
 	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
 	media-libs/libjpeg-turbo:=
 	>=media-libs/libpng-1.2:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libiconv
 	cairo? (
 		>=x11-libs/cairo-1.1.10[svg(+)]

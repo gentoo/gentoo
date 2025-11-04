@@ -26,11 +26,11 @@ RDEPEND="
 	jpeg2k? ( media-libs/openjpeg:2=[${MULTILIB_USEDEP}] )
 	png? (
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
-		sys-libs/zlib:=[${MULTILIB_USEDEP}]
+		virtual/zlib:=[${MULTILIB_USEDEP}]
 	)
 	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )"
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	test? ( media-libs/tiff[jpeg,zlib] )"
 

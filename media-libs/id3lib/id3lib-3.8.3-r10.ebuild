@@ -17,7 +17,7 @@ IUSE="doc static-libs"
 # Extra files installed with tests (bug #130922#c17)
 RESTRICT="test"
 
-RDEPEND="sys-libs/zlib:="
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-text/doxygen )"
 

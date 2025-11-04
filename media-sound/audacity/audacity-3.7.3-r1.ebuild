@@ -81,7 +81,7 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/soxr
 	media-sound/lame
 	sys-apps/util-linux
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}=[X]

@@ -65,7 +65,7 @@ RDEPEND="
 	png? ( media-libs/libpng:= )
 	svg? (
 		gnome-base/librsvg:2
-		sys-libs/zlib:=
+		virtual/zlib:=
 		x11-libs/cairo
 	)
 	tiff? ( media-libs/tiff:= )

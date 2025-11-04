@@ -16,7 +16,7 @@ IUSE="doc examples test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
+RDEPEND=">=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( >=dev-util/cppunit-1.13.2[${MULTILIB_USEDEP}] )
 "

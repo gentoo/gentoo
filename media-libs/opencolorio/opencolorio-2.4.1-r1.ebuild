@@ -37,7 +37,7 @@ RDEPEND="
 	dev-libs/expat
 	>=dev-libs/imath-3.1.5:=
 	sys-libs/minizip-ng
-	sys-libs/zlib
+	virtual/zlib
 	apps? (
 		media-libs/lcms:2
 		>=media-libs/openexr-3.1.5:=

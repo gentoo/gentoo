@@ -47,7 +47,7 @@ RDEPEND="
 	)
 	png? (
 		media-libs/libpng:0=
-		sys-libs/zlib
+		virtual/zlib
 	)
 	pulseaudio? ( media-libs/libpulse )
 	sndfile? ( >=media-libs/libsndfile-1.0.11 )

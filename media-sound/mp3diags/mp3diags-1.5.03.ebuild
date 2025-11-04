@@ -24,7 +24,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sys-libs/zlib
+	virtual/zlib
 "
 RDEPEND="${DEPEND}
 	dev-qt/qtsvg:5

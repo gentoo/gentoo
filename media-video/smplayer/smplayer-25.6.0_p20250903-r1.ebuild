@@ -20,7 +20,7 @@ DEPEND="
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6=[dbus,gui,network,ssl,widgets,xml]
 	dev-qt/qtdeclarative:6
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/libX11
 "
 RDEPEND="${DEPEND}

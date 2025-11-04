@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	>=dev-libs/libxml2-2:2=
 	gnome-base/dconf
 	>=mate-base/mate-desktop-$(ver_cut 1-2)
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/cairo
 	>=x11-libs/gdk-pixbuf-2.36.5:2[introspection?,jpeg?,tiff?]
 	>=x11-libs/gtk+-3.22:3[introspection?]

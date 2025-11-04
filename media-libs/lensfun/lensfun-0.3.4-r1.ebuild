@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit python-single-r1 cmake
 
 DESCRIPTION="Library for rectifying and simulating photographic lens distortions"
@@ -22,7 +22,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.40
 	media-libs/libpng:=
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -37,7 +37,7 @@ RDEPEND="
 	net-misc/curl[ssl]
 	net-print/cups[ssl(+)]
 	sys-apps/dbus
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

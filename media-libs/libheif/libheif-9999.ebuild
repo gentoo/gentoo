@@ -29,7 +29,7 @@ BDEPEND="
 DEPEND="
 	media-libs/libpng:=[${MULTILIB_USEDEP}]
 	media-libs/tiff:=[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	aom? ( >=media-libs/libaom-2.0.0:=[${MULTILIB_USEDEP}] )
 	dav1d? ( media-libs/dav1d:=[${MULTILIB_USEDEP}] )
 	de265? ( media-libs/libde265[${MULTILIB_USEDEP}] )

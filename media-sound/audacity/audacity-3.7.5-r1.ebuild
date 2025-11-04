@@ -79,7 +79,7 @@ RDEPEND="
 	media-libs/soxr
 	media-sound/lame
 	sys-apps/util-linux
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/cairo[glib]
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Automatic 3d tetrahedral mesh generator"
@@ -25,7 +25,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	ffmpeg? ( media-video/ffmpeg:= )
 	gui? (
 		dev-lang/tcl:0/8.6

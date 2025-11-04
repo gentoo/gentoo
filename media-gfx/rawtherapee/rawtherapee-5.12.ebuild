@@ -39,7 +39,7 @@ RDEPEND="
 	media-libs/libraw:=
 	media-libs/tiff:=
 	sci-libs/fftw:3.0=
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/gtk+:3
 	jpegxl? ( media-libs/libjxl:= )
 	tcmalloc? ( dev-util/google-perftools )"

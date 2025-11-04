@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/librevenge
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

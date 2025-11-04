@@ -71,7 +71,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/patchelf
 	>=media-libs/openexr-3
-	sys-libs/zlib
+	virtual/zlib
 	test? (
 		media-fonts/droid
 		optix? (

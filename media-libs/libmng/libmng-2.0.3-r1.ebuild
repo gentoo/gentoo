@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x86 
 IUSE="lcms"
 
 RDEPEND="
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	>=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}]
 	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"

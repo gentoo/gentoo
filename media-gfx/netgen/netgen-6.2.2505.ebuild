@@ -25,7 +25,7 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	ffmpeg? ( media-video/ffmpeg:= )
 	gui? (
 		dev-lang/tcl:0/8.6

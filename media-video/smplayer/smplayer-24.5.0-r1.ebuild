@@ -1,4 +1,4 @@
-# Copyright 2007-2024 Gentoo Authors
+# Copyright 2007-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ DEPEND="
 	dev-qt/qtsingleapplication[X,qt5(+)]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/libX11
 "
 RDEPEND="

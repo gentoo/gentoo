@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/lcms:2
 	media-libs/libpng:0=
 	media-libs/tiff:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( app-text/doxygen )"

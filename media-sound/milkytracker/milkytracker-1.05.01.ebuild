@@ -18,7 +18,7 @@ IUSE="alsa jack"
 RDEPEND="
 	dev-libs/zziplib
 	media-libs/libsdl2[X]
-	sys-libs/zlib
+	virtual/zlib
 	alsa? (
 		media-libs/alsa-lib
 		media-libs/rtmidi

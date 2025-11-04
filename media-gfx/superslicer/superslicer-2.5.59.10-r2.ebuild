@@ -44,7 +44,7 @@ RDEPEND="
 	sci-libs/opencascade:=
 	>=sci-mathematics/cgal-5.0:=
 	sys-apps/dbus
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/glu
 	virtual/opengl
 	x11-libs/gtk+:3

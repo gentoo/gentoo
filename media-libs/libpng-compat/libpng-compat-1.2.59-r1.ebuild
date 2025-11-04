@@ -18,7 +18,7 @@ SLOT="1.2"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	>=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	!=media-libs/libpng-1.2*
 "
 DEPEND="${RDEPEND}"

@@ -21,7 +21,7 @@ DEPEND="media-video/vdr:=
 	ssl? ( dev-libs/openssl )"
 RDEPEND="${DEPEND}
 	stream? ( media-plugins/vdr-streamdev[server] )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib )"
 
 VDRMANAGER_SSL_KEY_DIR="/etc/vdr/plugins/vdrmanager"
 VDRMANAGER_SSL_KEY_FILE="${VDRMANAGER_SSL_KEY_DIR}/vdrmanager"

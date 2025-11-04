@@ -28,7 +28,7 @@ IUSE=""
 DEPEND="
 	dev-libs/pugixml
 	=media-tv/kodi-${PV%%.*}*
-	sys-libs/zlib
+	virtual/zlib
 "
 RDEPEND="${DEPEND}"
 

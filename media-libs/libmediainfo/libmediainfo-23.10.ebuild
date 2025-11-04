@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,7 +28,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-libs/tinyxml2:=
 	>=media-libs/libzen-0.4.41
-	sys-libs/zlib
+	virtual/zlib
 	curl? ( net-misc/curl )
 	mms? ( >=media-libs/libmms-0.6.1 )
 "

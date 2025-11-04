@@ -295,7 +295,7 @@ COMMON_DEPEND="
 	xvid? ( media-libs/xvid[${MULTILIB_USEDEP}] )
 	zeromq? ( net-libs/zeromq:= )
 	zimg? ( media-libs/zimg[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib[${MULTILIB_USEDEP}] )
 	zvbi? ( media-libs/zvbi[${MULTILIB_USEDEP}] )
 	${FFMPEG_SOC_PATCH:+"
 		soc? ( virtual/libudev:=[${MULTILIB_USEDEP}] )

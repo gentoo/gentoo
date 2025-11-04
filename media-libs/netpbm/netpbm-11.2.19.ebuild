@@ -31,11 +31,11 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:=[static-libs?] )
 	png? (
 		>=media-libs/libpng-1.4:0=
-		sys-libs/zlib
+		virtual/zlib
 	)
 	postscript? (
 		app-text/ghostscript-gpl
-		sys-libs/zlib
+		virtual/zlib
 	)
 	rle? ( media-libs/urt:= )
 	tiff? ( >=media-libs/tiff-3.5.5:= )

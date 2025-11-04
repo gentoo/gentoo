@@ -43,7 +43,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	>=media-libs/libnsgif-1.0.0:=
 	>=media-libs/libpng-1.6.0:0=
-	>=sys-libs/zlib-1.2.0
+	>=virtual/zlib-1.2.0
 	>=x11-libs/gdk-pixbuf-2.32:2
 	>=x11-libs/pango-1.38.0
 	cairo? ( >=x11-libs/cairo-1.12.2 )

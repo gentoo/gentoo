@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake-multilib python-any-r1
 
 DESCRIPTION="EXIF, IPTC and XMP metadata C++ library and command line utility"
@@ -30,7 +30,7 @@ RDEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	jpegxl? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-	png? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	png? ( virtual/zlib[${MULTILIB_USEDEP}] )
 	webready? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	xmp? ( dev-libs/expat[${MULTILIB_USEDEP}] )
 "

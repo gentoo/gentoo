@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/libxslt[${MULTILIB_USEDEP}]
 	dev-libs/icu:=[${MULTILIB_USEDEP}]
 	net-misc/curl[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib[${MULTILIB_USEDEP}]
 	json? ( dev-libs/yajl[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}

@@ -42,7 +42,7 @@ RDEPEND="
 		media-libs/libvorbis
 		media-libs/opus
 	)
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( media-libs/libsndfile )"

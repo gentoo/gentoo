@@ -16,7 +16,7 @@ IUSE="doc examples test"
 
 RESTRICT="!test? ( test )"
 
-RDEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
+RDEPEND="virtual/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-libs/utfcpp
 	test? ( dev-util/cppunit[${MULTILIB_USEDEP}] )

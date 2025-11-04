@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	media-libs/libpng:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

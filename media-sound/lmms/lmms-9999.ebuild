@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=media-libs/libsamplerate-0.1.8
 	>=media-libs/libsndfile-1.0.11
 	sci-libs/fftw:3.0
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/fltk:1=
 	alsa? ( media-libs/alsa-lib )
 	fluidsynth? ( media-sound/fluidsynth )

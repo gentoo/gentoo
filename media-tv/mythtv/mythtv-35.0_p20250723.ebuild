@@ -53,7 +53,7 @@ RDEPEND="
 	media-libs/libsamplerate
 	media-libs/libsoundtouch:=
 	media-libs/taglib:=
-	sys-libs/zlib
+	virtual/zlib
 	alsa? ( media-libs/alsa-lib )
 	autostart? (
 		net-dialup/mingetty

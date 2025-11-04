@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake python-single-r1
 
 if [[ ${PV} == *9999 ]]; then
@@ -27,7 +27,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	media-libs/freeglut
 	media-libs/glu
-	sys-libs/zlib
+	virtual/zlib
 	virtual/opengl
 "
 

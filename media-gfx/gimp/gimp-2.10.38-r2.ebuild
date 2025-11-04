@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	>=media-libs/libpng-1.6.25:0=
 	>=media-libs/tiff-3.5.7:=
 	net-libs/glib-networking[ssl]
-	sys-libs/zlib
+	virtual/zlib
 	>=x11-libs/cairo-1.12.2
 	>=x11-libs/gdk-pixbuf-2.31:2
 	>=x11-libs/gtk+-2.24.32:2

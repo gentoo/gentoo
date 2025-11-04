@@ -26,7 +26,7 @@ JAVA_PKG_WANT_SOURCE="21"
 JAVA_PKG_WANT_TARGET="21"
 
 PYTHON_REQ_USE="sqlite,ssl"
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 # See cmake/scripts/common/ArchSetup.cmake for available options
 CPU_FLAGS="cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_arm_neon"
@@ -111,7 +111,7 @@ COMMON_DEPEND="
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.68.0[http2]
-	>=sys-libs/zlib-1.2.11
+	>=virtual/zlib-1.2.11
 	dev-db/sqlite:3
 	dev-libs/crossguid
 	>=dev-libs/fribidi-1.0.5

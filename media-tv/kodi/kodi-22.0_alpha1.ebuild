@@ -112,7 +112,7 @@ COMMON_DEPEND="
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	>=net-misc/curl-7.68.0[http2]
-	>=sys-libs/zlib-1.2.11
+	>=virtual/zlib-1.2.11
 	dev-db/sqlite:3
 	dev-libs/crossguid
 	>=dev-libs/fribidi-1.0.5

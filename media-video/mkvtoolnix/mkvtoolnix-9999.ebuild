@@ -45,7 +45,7 @@ RDEPEND="
 	>=media-libs/libmatroska-1.7.1:=
 	media-libs/libogg
 	media-libs/libvorbis
-	sys-libs/zlib
+	virtual/zlib
 	dvd? ( media-libs/libdvdread:= )
 	gui? (
 		app-text/cmark:0=

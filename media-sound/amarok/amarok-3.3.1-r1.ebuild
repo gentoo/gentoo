@@ -63,7 +63,7 @@ DEPEND="
 	media-libs/gst-plugins-base:1.0
 	>=media-libs/taglib-1.12:=
 	sci-libs/fftw:3.0
-	sys-libs/zlib
+	virtual/zlib
 	virtual/opengl
 	ipod? (
 		media-libs/libgpod[gtk]

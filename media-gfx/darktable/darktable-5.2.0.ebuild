@@ -71,7 +71,7 @@ DEPEND="dev-db/sqlite:3
 	media-libs/libpng:=
 	media-libs/tiff:=
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango

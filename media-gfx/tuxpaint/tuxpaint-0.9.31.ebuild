@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 	media-libs/sdl2-mixer
 	media-libs/sdl2-pango
 	media-libs/sdl2-ttf
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/cairo
 "
 DEPEND="${RDEPEND}"

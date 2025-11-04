@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/libid3tag:=
 	net-dns/avahi[dbus]
 	sys-libs/gdbm:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	vorbis? (
 		media-libs/libvorbis
 		media-libs/libogg

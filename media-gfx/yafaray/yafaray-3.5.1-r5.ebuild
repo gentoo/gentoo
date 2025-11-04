@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 # doesn't build with ninja when qt5 and python USE flags are both enabled
 CMAKE_MAKEFILE_GENERATOR="emake"
@@ -27,7 +27,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # Note: according to upstream, the blender plugin doesn't work with >=blender-2.8 (yet).
 RDEPEND="
 	dev-libs/libxml2:2=
-	sys-libs/zlib
+	virtual/zlib
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	opencv? ( media-libs/opencv:= )
 	png? ( media-libs/libpng:= )

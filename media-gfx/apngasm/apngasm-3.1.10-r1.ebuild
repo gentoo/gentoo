@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-libs/boost:=
 	media-libs/libpng:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

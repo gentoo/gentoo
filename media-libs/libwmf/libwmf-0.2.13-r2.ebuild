@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/freetype:2=
 	media-libs/libpng:=
 	media-libs/libjpeg-turbo
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/gdk-pixbuf:2
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2= )

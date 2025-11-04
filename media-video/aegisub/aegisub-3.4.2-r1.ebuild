@@ -42,7 +42,7 @@ RDEPEND="${LUA_DEPS}
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libass:=[fontconfig]
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libiconv
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )

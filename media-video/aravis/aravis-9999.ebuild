@@ -41,7 +41,7 @@ DEPEND="
 		dev-libs/glib:2[gtk-doc(+),doc(+)]
 	)
 	dev-libs/libxml2:2=
-	sys-libs/zlib
+	virtual/zlib
 	gstreamer? ( ${GST_DEPEND} )
 	packet-socket? ( sys-process/audit )
 	usb? ( virtual/libusb:1 )

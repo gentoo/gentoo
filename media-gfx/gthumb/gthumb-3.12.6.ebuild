@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="Image viewer and browser for Gnome"
@@ -49,7 +49,7 @@ RDEPEND="
 		>=media-libs/lcms-2.6:2
 	)
 
-	sys-libs/zlib
+	virtual/zlib
 	media-libs/libjpeg-turbo:=
 	tiff? ( media-libs/tiff:= )
 	media-libs/libpng:0=

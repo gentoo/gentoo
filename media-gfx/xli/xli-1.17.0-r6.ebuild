@@ -19,7 +19,7 @@ RDEPEND="
 	app-arch/bzip2:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libXext
 	!media-gfx/xloadimage"

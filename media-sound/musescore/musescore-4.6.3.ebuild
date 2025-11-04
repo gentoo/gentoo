@@ -53,7 +53,7 @@ RDEPEND="
 	media-libs/libsndfile
 	media-libs/opus
 	media-sound/lame
-	sys-libs/zlib:=
+	virtual/zlib:=
 	jack? ( virtual/jack )
 	pipewire? ( media-video/pipewire:= )
 	video? ( media-video/ffmpeg:= )

@@ -50,7 +50,7 @@ RDEPEND="
 	sci-mathematics/cgal:=
 	sci-mathematics/z3:=
 	sys-apps/dbus
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,webkit]

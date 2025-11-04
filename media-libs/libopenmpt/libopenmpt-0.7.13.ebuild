@@ -20,7 +20,7 @@ RDEPEND="
 	mp3? ( media-sound/mpg123[${MULTILIB_USEDEP}] )
 	ogg? ( media-libs/libogg[${MULTILIB_USEDEP}] )
 	vorbis? ( media-libs/libvorbis[${MULTILIB_USEDEP}] )
-	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="${RDEPEND}"

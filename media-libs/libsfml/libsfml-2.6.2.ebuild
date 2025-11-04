@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libvorbis
 	media-libs/openal
-	sys-libs/zlib
+	virtual/zlib
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXcursor

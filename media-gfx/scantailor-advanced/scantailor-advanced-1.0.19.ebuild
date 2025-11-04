@@ -19,7 +19,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost

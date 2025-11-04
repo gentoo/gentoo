@@ -36,7 +36,7 @@ DEPEND="
 		media-libs/libogg
 		media-libs/libvorbis
 	)
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

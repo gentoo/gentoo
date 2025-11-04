@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/expat
 	dev-libs/openssl:0=[-bindist(-)]
 	>=media-video/ffmpeg-1.0.0:0=
-	sys-libs/zlib
+	virtual/zlib
 	gui? ( dev-qt/qtbase:6[dbus,gui,widgets] )
 "
 RDEPEND="

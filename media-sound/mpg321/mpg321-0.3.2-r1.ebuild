@@ -17,7 +17,7 @@ RDEPEND="app-eselect/eselect-mpg123
 	>=media-libs/libao-1:=
 	media-libs/libid3tag:=
 	media-libs/libmad
-	sys-libs/zlib
+	virtual/zlib
 	alsa? ( media-libs/alsa-lib )"
 DEPEND="${RDEPEND}"
 

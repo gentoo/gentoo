@@ -36,7 +36,7 @@ RDEPEND="
 		>=x11-libs/libXpm-3.5.10-r1[${MULTILIB_USEDEP}]
 		>=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}]
 	)
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 

@@ -20,7 +20,7 @@ REQUIRED_USE="test? ( jpeg png )"
 
 RDEPEND="
 	>=media-libs/libsdl2-2.0.9[${MULTILIB_USEDEP}]
-	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	avif? ( >=media-libs/libavif-0.9.3:=[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )

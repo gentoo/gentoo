@@ -32,7 +32,7 @@ RDEPEND="
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.0 )
 	mad? (
 		media-libs/libmad
-		sys-libs/zlib
+		virtual/zlib
 		media-libs/libid3tag:=
 	)
 	magic? ( sys-apps/file )

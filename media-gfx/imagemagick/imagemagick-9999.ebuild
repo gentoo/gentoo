@@ -87,7 +87,7 @@ RDEPEND="
 	xml? ( dev-libs/libxml2:= )
 	lzma? ( app-arch/xz-utils )
 	zip? ( dev-libs/libzip:= )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="
 	${RDEPEND}

@@ -18,7 +18,7 @@ DEPEND="
 	media-libs/libxmi
 	png? (
 		media-libs/libpng:0=
-		sys-libs/zlib
+		virtual/zlib
 	)
 	X? ( x11-libs/libXaw )
 "
