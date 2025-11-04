@@ -11,7 +11,7 @@ SRC_URI="https://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/${
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc x86"
 IUSE="appindicator control-socket gstreamer libnotify nls openssl rss"
 
 RDEPEND="
