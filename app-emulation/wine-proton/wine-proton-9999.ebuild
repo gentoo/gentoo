@@ -102,7 +102,11 @@ RDEPEND="
 		app-emulation/wine-gecko:${WINE_GECKO}[${WINE_USEDEP}]
 		wow64? ( app-emulation/wine-gecko[abi_x86_32] )
 	)
-	gstreamer? ( media-plugins/gst-plugins-meta:1.0[${WINE_USEDEP}] )
+	gstreamer? (
+		media-libs/gst-plugins-bad:1.0[${WINE_USEDEP}]
+		media-plugins/gst-plugins-libav:1.0[${WINE_USEDEP}]
+		media-plugins/gst-plugins-meta:1.0[${WINE_USEDEP}]
+	)
 	mono? ( app-emulation/wine-mono:${WINE_MONO} )
 	perl? (
 		dev-lang/perl

@@ -42,10 +42,6 @@ Many other proton-specific improvements / fixes are always enabled, and
 some game-specific quirks are auto-enabled as needed (can see a few from
 running winecfg).
 
-If have audio/video playback issues, note to look at GStreamer plugins.
-Notably USE=ffmpeg on media-plugins/gst-plugins-meta which Proton normally
-provide by default.
-
 ---
 
 If have other Wine variants installed, remember to either use `eselect wine`
