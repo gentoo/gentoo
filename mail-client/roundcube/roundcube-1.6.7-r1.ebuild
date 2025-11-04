@@ -9,7 +9,7 @@ MY_PN=${PN}mail
 MY_PV=${PV/_/-}
 MY_P=${MY_PN}-${MY_PV}
 
-DESCRIPTION="Browser-based multilingual IMAP client with an application-like user interface"
+DESCRIPTION="A browser-based multilingual IMAP client with an application-like user interface"
 HOMEPAGE="https://roundcube.net"
 
 # roundcube is GPL-licensed, the rest of the licenses here are
@@ -24,7 +24,7 @@ need_httpd_cgi
 
 RDEPEND="
 	${DEPEND}
-	>=dev-lang/php-8.0[exif?,fileinfo?,filter,gd,iconv,intl,json(+),ldap?,pdo,postgres?,session,sqlite?,ssl?,unicode,xml,zip?]
+	>=dev-lang/php-7.4.0[exif?,fileinfo?,filter,gd,iconv,intl,json(+),ldap?,pdo,postgres?,session,sqlite?,ssl?,unicode,xml,zip?]
 	virtual/httpd-php
 	change-password? (
 		dev-lang/php[sockets]
@@ -52,7 +52,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://github.com/${PN}/${MY_PN}/releases/download/${MY_PV}/${MY_P}-complete.tar.gz"
 	S="${WORKDIR}/${MY_P}"
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86"
 fi
 
 src_unpack() {
