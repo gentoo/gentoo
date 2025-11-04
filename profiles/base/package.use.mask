@@ -508,8 +508,13 @@ gnome-base/gnome-extra-apps tracker
 # USE=compat / possibly allowing sys-libs/zlib needs to be figured out,
 # but packages want to use the actual zlib-ng library, so we need to
 # mask it and can't hold the whole thing up on the compat effort.
-sys-libs/zlib-ng compat
-sys-libs/minizip-ng compat
+#
+# Michał Górny <mgorny@gentoo.org> (2025-11-04)
+# Unmasking on the revbumped versions that install both the compat
+# library and the regular zlib-ng/minizip-ng library for dependency
+# compatibility.
+<sys-libs/zlib-ng-2.2.5-r1 compat
+<sys-libs/minizip-ng-4.0.10-r1 compat
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2022-09-17)
 # po4a crashes while translating
