@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit eapi9-ver go-module xdg
+inherit go-module optfeature xdg
 
 DESCRIPTION="Email client for your terminal"
 HOMEPAGE="https://aerc-mail.org"
@@ -26,7 +26,7 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND="
 	>=app-text/scdoc-1.11.3
-	>=dev-lang/go-1.18
+	>=dev-lang/go-1.24.3
 "
 
 src_unpack() {
@@ -56,16 +56,6 @@ src_test() {
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog "If you want to allow your users to activate html email"
-		elog "processing via w3m as shown in the tutorial, make sure you"
-		elog "emerge net-proxy/dante and www-client/w3m"
-	elif ver_replacing -lt 0.3.0-r1; then
-		elog "The dependencies on net-proxy/dante and www-client/w3m"
-		elog "have been removed since they are optional."
-		elog "Please emerge them before the next --depclean if you"
-		elog "need to use them."
-	fi
-
+	optfeature "html email processing as shown in the tutorial" "net-proxy/dante www-client/w3m"
 	xdg_pkg_postinst
 }
