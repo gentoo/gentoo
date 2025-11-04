@@ -11,6 +11,7 @@ inherit ecm kde.org xdg
 
 DESCRIPTION="Frontend to the subversion vcs"
 HOMEPAGE="https://apps.kde.org/kdesvn/"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
