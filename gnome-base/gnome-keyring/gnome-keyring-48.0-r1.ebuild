@@ -37,7 +37,10 @@ BDEPEND="
 	app-text/docbook-xml-dtd:4.3
 	dev-libs/libxslt
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )
+	test? (
+		${PYTHON_DEPS}
+		sys-apps/dbus
+	)
 "
 
 PATCHES=(
@@ -72,10 +75,18 @@ src_configure() {
 }
 
 src_test() {
-	# Needs dbus-run-session to not get:
+	# Needs dbus to not get:
 	# ERROR: test-dbus-search process failed: -6
+	local dbus_params=(
+		$(dbus-daemon --session --print-address --fork --print-pid)
+	)
+	local -x DBUS_SESSION_BUS_ADDRESS=${dbus_params[0]}
+
 	"${BROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/schema" || die
-	GSETTINGS_SCHEMA_DIR="${S}/schema" virtx dbus-run-session meson test -C "${BUILD_DIR}" || die
+	local -x GSETTINGS_SCHEMA_DIR="${S}/schema"
+	virtx meson_src_test
+
+	kill "${dbus_params[1]}" || die
 }
 
 pkg_postinst() {
