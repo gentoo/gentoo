@@ -12,6 +12,7 @@ inherit ecm kde.org python-single-r1 xdg
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
 HOMEPAGE="https://apps.kde.org/krita/ https://krita.org/en/"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
