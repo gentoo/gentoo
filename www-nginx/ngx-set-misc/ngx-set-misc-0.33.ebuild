@@ -13,7 +13,7 @@ NGINX_MOD_TEST_LOAD_ORDER=(
 	www-nginx/ngx-echo
 	www-nginx/ngx-iconv
 )
-inherit toolchain-funcs nginx-module
+inherit nginx-module
 
 DESCRIPTION="An NGINX module that adds various set_xxx directives to NGINX's rewrite module"
 HOMEPAGE="https://github.com/openresty/set-misc-nginx-module"
@@ -41,7 +41,7 @@ src_configure() {
 	local -x GENTOO_USE_HMAC=NO
 	if use hmac; then
 		GENTOO_USE_HMAC=YES
-		ngx_mod_append_libs "$("$(tc-getPKG_CONFIG)" --libs libcrypto)"
+		ngx_mod_link_lib libcrypto
 	fi
 	nginx-module_src_configure
 }

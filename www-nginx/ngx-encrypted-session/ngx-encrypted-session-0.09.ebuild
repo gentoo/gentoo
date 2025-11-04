@@ -14,7 +14,7 @@ NGINX_MOD_TEST_LOAD_ORDER=(
 	www-nginx/ngx-echo
 	www-nginx/ngx-lua-module
 )
-inherit toolchain-funcs nginx-module
+inherit nginx-module
 
 DESCRIPTION="An NGINX module that encrypts and decrypts NGINX variable values"
 HOMEPAGE="https://github.com/openresty/encrypted-session-nginx-module"
@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}"
 src_configure() {
 	# Make sure the module links to libcrypto, independently of whether NGINX
 	# has SSL/TLS support.
-	ngx_mod_append_libs "$("$(tc-getPKG_CONFIG)" --libs libcrypto)"
+	ngx_mod_link_lib libcrypto
 
 	nginx-module_src_configure
 }
