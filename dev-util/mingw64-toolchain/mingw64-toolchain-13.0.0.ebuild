@@ -47,8 +47,8 @@ RDEPEND="
 	dev-libs/gmp:=
 	dev-libs/mpc:=
 	dev-libs/mpfr:=
-	virtual/zlib:=
 	virtual/libiconv
+	virtual/zlib:=
 	bin-symlinks? (
 		abi_x86_64? (
 			!cross-x86_64-w64-mingw32/binutils
