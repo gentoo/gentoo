@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-libs/expat
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 PATCHES=(

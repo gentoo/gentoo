@@ -29,7 +29,7 @@ RDEPEND="
 	nls? ( virtual/libintl )"
 DEPEND="
 	${RDEPEND}
-	virtual/zlib"
+	virtual/zlib:="
 BDEPEND="
 	nls? ( sys-devel/gettext )
 	themes? ( app-arch/unzip )"

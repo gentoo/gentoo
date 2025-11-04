@@ -13,7 +13,7 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 
-RDEPEND="virtual/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 

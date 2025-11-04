@@ -19,7 +19,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ppc ppc64 ~riscv ~sparc x86"
 DEPEND="
 	>=dev-libs/libpcre-3.4
 	>=media-libs/gd-1.8.4-r2[jpeg,png]
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 PATCHES=(

@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/icu:=
 	gnustep-base/gnustep-base:=
 	media-sound/wavpack
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="
 	${RDEPEND}
 	gnustep-base/gnustep-make[native-exceptions]"

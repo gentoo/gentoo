@@ -16,7 +16,7 @@ KEYWORDS="amd64"
 DEPEND="
 	app-arch/snappy:=
 	>=dev-libs/jansson-2.3:=
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 src_test() {

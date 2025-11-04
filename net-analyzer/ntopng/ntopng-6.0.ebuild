@@ -30,7 +30,7 @@ DEPEND="dev-db/mysql-connector-c:=
 	>=net-libs/zeromq-3:=
 	net-misc/curl
 	sys-libs/libcap
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}
 	acct-user/ntopng
 	acct-group/ntopng

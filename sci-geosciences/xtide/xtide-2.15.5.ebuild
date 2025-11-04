@@ -21,7 +21,7 @@ DEPEND="media-libs/libpng:=
 	x11-libs/libXft
 	x11-libs/libXpm
 	x11-libs/libXt
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}
 	media-fonts/font-schumacher-misc"
 

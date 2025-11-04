@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libxml2:2=
 	net-misc/curl
 	sys-apps/util-linux
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig
 	app-alternatives/lex

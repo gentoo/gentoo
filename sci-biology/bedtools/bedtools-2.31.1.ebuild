@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	${PYTHON_DEPS}

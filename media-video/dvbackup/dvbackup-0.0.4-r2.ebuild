@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="sys-libs/glibc
 	dev-libs/popt
-	virtual/zlib"
+	virtual/zlib:="
 
 RDEPEND="${DEPEND}
 	media-libs/libdv"

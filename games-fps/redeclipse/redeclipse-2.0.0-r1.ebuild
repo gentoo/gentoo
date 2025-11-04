@@ -23,7 +23,7 @@ DEPEND="!dedicated? (
 		x11-libs/libX11
 	)
 	>=net-libs/enet-1.3.9:=
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 src_prepare() {

@@ -17,7 +17,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="ssl l10n_ja"
 RESTRICT="test"
 
-DEPEND="virtual/zlib"
+DEPEND="virtual/zlib:="
 RDEPEND="${DEPEND}
 	ssl? ( net-misc/stunnel )"
 

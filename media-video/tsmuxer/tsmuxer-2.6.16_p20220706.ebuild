@@ -24,7 +24,7 @@ DEPEND="qt5? (
 		dev-qt/qtwidgets:5
 	)
 	media-libs/freetype
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${COMMIT}"

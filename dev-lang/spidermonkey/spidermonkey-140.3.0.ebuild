@@ -86,7 +86,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND=">=dev-libs/icu-76.1:=
 	>=dev-libs/nspr-4.35
 	sys-libs/readline:0=
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 llvm_check_deps() {

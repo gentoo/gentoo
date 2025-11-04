@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="sys-apps/pciutils
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 PATCHES=(

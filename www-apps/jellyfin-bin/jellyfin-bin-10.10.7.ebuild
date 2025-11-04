@@ -40,7 +40,7 @@ RESTRICT="mirror test"
 
 DEPEND="acct-user/jellyfin
 	media-libs/fontconfig
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}
 	dev-libs/icu
 	media-video/ffmpeg[vpx,x264]"

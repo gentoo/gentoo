@@ -21,7 +21,7 @@ SLOT="0"
 DEPEND="acct-user/darkstat
 	dev-libs/libbsd
 	net-libs/libpcap
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 DARKSTAT_CHROOT_DIR=${DARKSTAT_CHROOT_DIR:-/var/lib/darkstat}

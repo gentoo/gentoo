@@ -26,7 +26,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/minitest )"
 
 CDEPEND="dev-libs/icu:=
-		virtual/zlib"
+		virtual/zlib:="
 DEPEND+=" ${CDEPEND}"
 RDEPEND+=" ${CDEPEND}"
 

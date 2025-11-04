@@ -13,7 +13,7 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="virtual/zlib"
+DEPEND="virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 src_compile() {

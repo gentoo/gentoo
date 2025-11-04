@@ -24,7 +24,7 @@ IUSE=""
 RDEPEND="
 	dev-db/oracle-instantclient
 	dev-libs/popt
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="
 	dev-db/oracle-instantclient[sdk]
 	${RDEPEND}"

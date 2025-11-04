@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~riscv ~x86"
 IUSE="debug"
 
-RDEPEND="virtual/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

@@ -21,7 +21,7 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="virtual/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 

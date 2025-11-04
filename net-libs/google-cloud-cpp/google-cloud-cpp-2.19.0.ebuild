@@ -27,7 +27,7 @@ RDEPEND="dev-cpp/abseil-cpp:=
 	dev-libs/re2:=
 	net-misc/curl
 	net-libs/grpc:=
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}
 	dev-cpp/gtest
 	test? (

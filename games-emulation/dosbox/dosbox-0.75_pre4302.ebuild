@@ -45,7 +45,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	media-libs/libsdl[joystick,opengl?,video,X?]
 	media-libs/sdl-net
 	media-libs/sdl-sound
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

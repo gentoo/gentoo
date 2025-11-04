@@ -17,7 +17,7 @@ RDEPEND="
 	dev-libs/boost:=
 	media-libs/libpng:=
 	media-libs/libsdl2[sound,video]
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

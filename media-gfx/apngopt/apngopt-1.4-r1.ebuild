@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	app-arch/zopfli:=
 	media-libs/libpng:=
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 BDEPEND="app-arch/unzip"
 

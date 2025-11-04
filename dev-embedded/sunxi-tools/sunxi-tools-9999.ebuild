@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	PROPERTIES="test_network"
 	RESTRICT="test"
 	RDEPEND="sys-apps/dtc
-			virtual/zlib"
+			virtual/zlib:="
 else
 	KEYWORDS="~amd64"
 	# We need this as zip, it is used during src_test

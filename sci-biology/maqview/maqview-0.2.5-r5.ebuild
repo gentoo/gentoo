@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	media-libs/freeglut
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}
 	sci-biology/maq"
 

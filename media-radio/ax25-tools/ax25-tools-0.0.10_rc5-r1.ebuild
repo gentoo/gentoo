@@ -32,7 +32,7 @@ DEPEND="
 		media-libs/mesa[X(+)]
 	)"
 RDEPEND="${DEPEND}
-	virtual/zlib"
+	virtual/zlib:="
 
 src_prepare() {
 	if use elibc_musl ; then

@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 BDEPEND="app-alternatives/yacc
 	app-alternatives/lex"
 DEPEND="sys-libs/readline:=
-	virtual/zlib"
+	virtual/zlib:="
 RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${WORKDIR}/foma-${MY_COMMIT}/foma"

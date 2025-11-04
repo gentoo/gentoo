@@ -13,7 +13,7 @@ LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-RDEPEND="virtual/zlib"
+RDEPEND="virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.0-fix-build-system.patch )

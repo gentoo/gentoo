@@ -19,7 +19,7 @@ IUSE="debug"
 
 RDEPEND=">=sys-apps/pcsc-lite-1.6.4
 	dev-libs/nss[utils]
-	virtual/zlib"
+	virtual/zlib:="
 DEPEND="${RDEPEND}
 	>=app-crypt/ccid-1.4.0"
 BDEPEND="virtual/pkgconfig"

@@ -260,7 +260,7 @@ for atom in portage.settings.packages:
 [[ -z ${myGETTEXT}    ]] && myGETTEXT="sys-devel/gettext"
 [[ -z ${myLIBC}       ]] && myLIBC="$(portageq expand_virtual / virtual/libc)"
 [[ -z ${myTEXINFO}    ]] && myTEXINFO="sys-apps/texinfo"
-[[ -z ${myZLIB}       ]] && myZLIB="virtual/zlib"
+[[ -z ${myZLIB}       ]] && myZLIB="virtual/zlib:="
 [[ -z ${myNCURSES}    ]] && myNCURSES="sys-libs/ncurses"
 [[ -z ${myOS_HEADERS} ]] && myOS_HEADERS="$(portageq expand_virtual / virtual/os-headers)"
 

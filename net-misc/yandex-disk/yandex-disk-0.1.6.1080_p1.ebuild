@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 
 DEPEND="app-arch/gzip"
-RDEPEND="virtual/zlib"
+RDEPEND="virtual/zlib:="
 
 S="${WORKDIR}"
 
