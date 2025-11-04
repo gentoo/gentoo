@@ -13,6 +13,7 @@ inherit ecm kde.org optfeature python-any-r1 xdg
 
 DESCRIPTION="BibTeX editor to edit bibliographies used with LaTeX"
 HOMEPAGE="https://apps.kde.org/kbibtex/ https://userbase.kde.org/KBibTeX"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
