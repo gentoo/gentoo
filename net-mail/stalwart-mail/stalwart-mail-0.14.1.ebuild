@@ -903,11 +903,11 @@ S="${WORKDIR}/stalwart-${PV}"
 LICENSE="|| ( AGPL-3 )"
 # Dependent crate licenses
 LICENSE+="
-	AGPL-3 Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 ISC LGPL-2+ MIT
-	MPL-2.0 Unicode-3.0 ZLIB
+	AGPL-3 Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 CDLA-Permissive-2.0
+	ISC LGPL-2+ MIT MPL-2.0 Unicode-3.0 ZLIB BZIP2
 "
 
-# 0.13.x has breaking changes so avoid installing new server with old cli
+# 0.14.x has breaking changes so avoid installing new server with old cli
 DEPEND+="
 	!!<net-mail/stalwart-cli-0.14.0
 "
