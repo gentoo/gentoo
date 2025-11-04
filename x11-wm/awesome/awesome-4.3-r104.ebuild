@@ -59,10 +59,12 @@ DEPEND="
 "
 # graphicsmagick's 'convert -channel' has no Alpha support, bug #352282
 BDEPEND="
-	dev-ruby/asciidoctor
 	media-gfx/imagemagick[png]
 	virtual/pkgconfig
-	doc? ( dev-lua/ldoc	)
+	doc? (
+		dev-lua/ldoc
+		dev-ruby/asciidoctor
+	)
 	test? (
 		app-shells/zsh
 		x11-apps/xeyes
@@ -81,6 +83,13 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-fix_target.patch    # bug #962597
 )
 
+src_prepare() {
+	cmake_src_prepare
+	if ! use doc; then
+		cp "${FILESDIR}"/awesome{.1,-client.1,rc.5} "${S}"/manpages/ || die
+	fi
+}
+
 src_configure() {
 	# Compression of manpages is handled by portage
 	local mycmakeargs=(
@@ -88,6 +97,7 @@ src_configure() {
 		-DCOMPRESS_MANPAGES=OFF
 		-DWITH_DBUS=$(usex dbus)
 		-DGENERATE_DOC=$(usex doc)
+		-DGENERATE_MANPAGES=$(usex doc)
 		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 		-DLUA_INCLUDE_DIR="$(lua_get_include_dir)"
 		-DLUA_LIBRARY="$(lua_get_shared_lib)"
@@ -126,9 +136,12 @@ src_install() {
 		doins "${FILESDIR}"/${PN}-gnome-xsession.desktop
 	fi
 
-	# use html subdir
+	# use html subdir and precompiled manpages w/o doc enabled
 	if use doc; then
 		mv "${ED}"/usr/share/doc/${PF}/{doc,html} || die
+	else
+		doman "${S}"/manpages/awesome{.1,rc.5}
+		use dbus && doman "${S}"/manpages/awesome-client.1
 	fi
 }
 
