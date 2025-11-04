@@ -17,7 +17,7 @@ REQUIRED_USE="static-libs? ( !udev )"
 
 # Have the sub-libs in RDEPEND with [static-libs] since, logically,
 # our libpci.a depends on libz.a/etc... at runtime.
-LIB_DEPEND="zlib? ( >=virtual/zlib-1.2.8-r1[static-libs(+),${MULTILIB_USEDEP}] )"
+LIB_DEPEND="zlib? ( >=virtual/zlib-1.2.8-r1:=[static-libs(+),${MULTILIB_USEDEP}] )"
 DEPEND="
 	kmod? ( sys-apps/kmod )
 	udev? ( >=virtual/libudev-208[${MULTILIB_USEDEP}] )

@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-m
 IUSE="debug"
 
 RDEPEND="
-	>=virtual/zlib-1.1.4
+	>=virtual/zlib-1.1.4:=
 	>=app-arch/bzip2-1.0.2
 	app-arch/xz-utils"
 DEPEND="${RDEPEND}"

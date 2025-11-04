@@ -16,7 +16,7 @@ KEYWORDS="amd64 arm arm64 ~ppc ppc64 ~riscv x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4.13:=[ocamlopt?]
-	>=virtual/zlib-1.1.3"
+	>=virtual/zlib-1.1.3:="
 DEPEND="${RDEPEND}"
 
 QA_FLAGS_IGNORED=(

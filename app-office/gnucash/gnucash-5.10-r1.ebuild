@@ -38,7 +38,7 @@ REQUIRED_USE="
 RDEPEND="
 	${GUILE_DEPS}
 	>=dev-libs/glib-2.56.1:2
-	>=virtual/zlib-1.1.4
+	>=virtual/zlib-1.1.4:=
 	dev-libs/boost:=[icu,nls]
 	dev-libs/icu:=
 	dev-libs/libxml2:2=

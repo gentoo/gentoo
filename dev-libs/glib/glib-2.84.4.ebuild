@@ -41,7 +41,7 @@ RDEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	>=dev-libs/libpcre2-10.32:0=[${MULTILIB_USEDEP},unicode(+),static-libs?]
 	>=dev-libs/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
-	>=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	>=virtual/libintl-0-r2[${MULTILIB_USEDEP}]
 	introspection? (
 		>=dev-libs/gobject-introspection-common-${INTROSPECTION_PV}

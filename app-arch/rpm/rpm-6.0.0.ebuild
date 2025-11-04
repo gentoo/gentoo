@@ -32,7 +32,7 @@ DEPEND="
 	dev-libs/elfutils
 	>=dev-libs/popt-1.7
 	sys-apps/file
-	>=virtual/zlib-1.2.3-r1
+	>=virtual/zlib-1.2.3-r1:=
 	acl? ( virtual/acl )
 	audit? ( sys-process/audit )
 	bzip2? ( >=app-arch/bzip2-1.0.1 )

@@ -16,7 +16,7 @@ IUSE="static"
 
 DEPEND="
 	static? ( virtual/zlib:=[static-libs] )
-	!static? ( >=virtual/zlib-1.2.3 )"
+	!static? ( >=virtual/zlib-1.2.3:= )"
 RDEPEND="!static? ( ${DEPEND} )"
 
 src_prepare() {

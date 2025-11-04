@@ -30,7 +30,7 @@ DEPEND="
 	>=net-libs/libssh-0.6.0:=
 	>=sys-apps/util-linux-2.25.0
 	sys-libs/libxcrypt:=
-	>=virtual/zlib-1.2.8
+	>=virtual/zlib-1.2.8:=
 	net-libs/paho-mqtt-c:1.3
 	>=net-misc/curl-7.83.0
 	ldap? ( net-nds/openldap:= )

@@ -25,7 +25,7 @@ DEPEND="
 	app-text/ghostscript-gpl
 	<media-libs/tiff-4.6:=[jbig?]
 	media-libs/libjpeg-turbo:=
-	>=virtual/zlib-1.1.4
+	>=virtual/zlib-1.1.4:=
 	app-alternatives/awk
 	virtual/libcrypt:=
 	virtual/mta

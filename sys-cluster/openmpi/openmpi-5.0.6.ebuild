@@ -42,7 +42,7 @@ RDEPEND="
 	>=sys-apps/hwloc-2.0.2:=
 	sys-cluster/pmix:=
 	sys-cluster/prrte:=
-	>=virtual/zlib-1.2.8-r1
+	>=virtual/zlib-1.2.8-r1:=
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1:= )
 	openmpi_fabrics_ofed? ( sys-cluster/rdma-core )
 	openmpi_fabrics_knem? ( sys-cluster/knem )

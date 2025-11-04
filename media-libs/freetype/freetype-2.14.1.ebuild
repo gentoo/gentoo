@@ -31,7 +31,7 @@ SLOT="2"
 IUSE="X +adobe-cff brotli bzip2 +cleartype-hinting debug doc fontforge harfbuzz +png static-libs svg utils"
 
 RDEPEND="
-	>=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	brotli? ( app-arch/brotli[${MULTILIB_USEDEP}] )
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:=[${MULTILIB_USEDEP}] )

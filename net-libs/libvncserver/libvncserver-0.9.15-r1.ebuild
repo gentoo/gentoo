@@ -40,7 +40,7 @@ DEPEND="
 	png? ( >=media-libs/libpng-1.6.10:0= )
 	sasl? ( dev-libs/cyrus-sasl )
 	systemd? ( sys-apps/systemd:= )
-	zlib? ( >=virtual/zlib-1.2.8-r1:0= )
+	zlib? ( >=virtual/zlib-1.2.8-r1:=:0= )
 "
 RDEPEND="${DEPEND}"
 

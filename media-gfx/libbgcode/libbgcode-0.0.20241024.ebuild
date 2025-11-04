@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/heatshrink-0.4.1
-	>=virtual/zlib-1.0
+	>=virtual/zlib-1.0:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

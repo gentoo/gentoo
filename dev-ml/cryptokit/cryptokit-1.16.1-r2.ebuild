@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-ml/dune-configurator
 	dev-ml/zarith:=[-mpir(-)]
-	zlib? ( >=virtual/zlib-1.1 )
+	zlib? ( >=virtual/zlib-1.1:= )
 "
 RDEPEND="${DEPEND}"
 

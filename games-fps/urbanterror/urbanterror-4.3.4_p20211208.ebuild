@@ -68,7 +68,7 @@ src_configure() {
 src_compile() {
 	# Workaround for used zlib macro, which got renamed in Gentoo
 	# wrt bug #449510
-	has_version "<virtual/zlib-1.3" && append-cppflags "-DOF=_Z_OF"
+	has_version "<virtual/zlib-1.3:=" && append-cppflags "-DOF=_Z_OF"
 
 	local myemakeargs=(
 		ARCH=$(usex amd64 "x86_64" "i686" )

@@ -68,7 +68,7 @@ RDEPEND="
 		x11-libs/libXt
 	)
 	xml? ( >=dev-libs/expat-1.95.4 )
-	zlib? ( >=virtual/zlib-1.1.4 )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="${RDEPEND}

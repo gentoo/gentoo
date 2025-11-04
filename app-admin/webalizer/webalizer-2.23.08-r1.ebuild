@@ -35,7 +35,7 @@ IUSE="bzip2 xtended geoip nls selinux"
 
 DEPEND="
 	>=sys-libs/db-4.2:*
-	>=virtual/zlib-1.1.4
+	>=virtual/zlib-1.1.4:=
 	>=media-libs/libpng-1.2:0=
 	>=media-libs/gd-1.8.3[png]
 	dev-libs/geoip

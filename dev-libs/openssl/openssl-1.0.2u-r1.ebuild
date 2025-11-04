@@ -41,7 +41,7 @@ RESTRICT="!bindist? ( bindist )
 RDEPEND=">=app-misc/c_rehash-1.7-r1
 	gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
-	tls-compression? ( >=virtual/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )"
+	tls-compression? ( >=virtual/zlib-1.2.8-r1:=[static-libs(+)?,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	>=dev-lang/perl-5

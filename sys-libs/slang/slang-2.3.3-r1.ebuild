@@ -31,7 +31,7 @@ RDEPEND="
 	pcre? ( >=dev-libs/libpcre-8.33-r1[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.6.10:=[${MULTILIB_USEDEP}] )
 	readline? ( >=sys-libs/readline-6.2_p5-r1:=[${MULTILIB_USEDEP}] )
-	zlib? ( >=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
+	zlib? ( >=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 

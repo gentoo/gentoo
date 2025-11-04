@@ -27,7 +27,7 @@ RDEPEND="
 	>=media-libs/fontconfig-2.13.92[${MULTILIB_USEDEP}]
 	>=media-libs/freetype-2.13:2[png,${MULTILIB_USEDEP}]
 	>=media-libs/libpng-1.6.10:0=[${MULTILIB_USEDEP}]
-	>=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	>=x11-libs/pixman-0.42.3[${MULTILIB_USEDEP}]
 	debug? ( sys-libs/binutils-libs:0=[${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )

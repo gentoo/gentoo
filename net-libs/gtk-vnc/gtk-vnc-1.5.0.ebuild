@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-libs/gmp-6.0.0:=
 	>=x11-libs/gdk-pixbuf-2.36.0:2
 	>=net-libs/gnutls-3.6.0:0=
-	>=virtual/zlib-1.2.11
+	>=virtual/zlib-1.2.11:=
 	>=x11-libs/gtk+-3.24.41-r1:3[introspection?,wayland?,X?]
 	>=x11-libs/cairo-1.15.0
 	elibc_musl? ( sys-libs/libucontext )

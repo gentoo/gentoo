@@ -74,7 +74,7 @@ COMMON_DEPEND="
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
 	>=media-libs/mesa-10.2:=
-	>=virtual/zlib-1.2.3
+	>=virtual/zlib-1.2.3:=
 	>=x11-libs/cairo-1.10[X]
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+:3[X]

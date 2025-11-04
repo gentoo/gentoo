@@ -20,7 +20,7 @@ RDEPEND="
 	>=media-libs/libsdl-1.2.15-r4[video,sound,opengl,abi_x86_32(-)]
 	>=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]
 	sys-libs/glibc
-	>=virtual/zlib-1.2.8-r1[abi_x86_32(-)]
+	>=virtual/zlib-1.2.8-r1:=[abi_x86_32(-)]
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
 	>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
 	virtual/jpeg-compat:62[abi_x86_32(-)]
