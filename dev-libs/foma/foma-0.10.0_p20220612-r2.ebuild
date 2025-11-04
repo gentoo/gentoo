@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 BDEPEND="app-alternatives/yacc
 	app-alternatives/lex"
 DEPEND="sys-libs/readline:=
-	sys-libs/zlib"
+	virtual/zlib"
 RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${WORKDIR}/foma-${MY_COMMIT}/foma"

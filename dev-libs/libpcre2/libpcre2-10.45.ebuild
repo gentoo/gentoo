@@ -30,7 +30,7 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	libedit? ( dev-libs/libedit )
 	readline? ( sys-libs/readline:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="
 	${RDEPEND}

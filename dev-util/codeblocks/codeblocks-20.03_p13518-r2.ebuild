@@ -47,7 +47,7 @@ RDEPEND="
 		dev-libs/boost:=
 		dev-libs/libgamin
 		media-libs/fontconfig
-		sys-libs/zlib
+		virtual/zlib
 	)
 "
 

@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/zstd:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libelf
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}

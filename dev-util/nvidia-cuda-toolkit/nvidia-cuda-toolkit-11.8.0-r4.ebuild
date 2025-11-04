@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ RDEPEND="
 			=dev-libs/openssl-1.1.1*
 		)
 		media-libs/tiff-compat:4
-		sys-libs/zlib
+		virtual/zlib
 	)
 	vis-profiler? (
 		>=virtual/jre-1.8:*

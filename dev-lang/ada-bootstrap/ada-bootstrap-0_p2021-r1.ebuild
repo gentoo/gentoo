@@ -46,7 +46,7 @@ DEPEND="
 	>=dev-libs/gmp-4.3.2:=
 	>=dev-libs/mpfr-2.4.2:=
 	>=dev-libs/mpc-0.8.1:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libiconv
 "
 RDEPEND="${DEPEND}"

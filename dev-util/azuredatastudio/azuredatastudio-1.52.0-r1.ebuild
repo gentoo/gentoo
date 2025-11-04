@@ -45,7 +45,7 @@ RDEPEND="
 	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
-	sys-libs/zlib
+	virtual/zlib
 	sys-process/lsof
 	x11-libs/cairo
 	x11-libs/gtk+:3

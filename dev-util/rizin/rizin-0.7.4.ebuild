@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 # This is the commit that the CI for the release commit used
 BINS_COMMIT="ced304a8d886b2ba189027a86b2e9d949ab311dd"
@@ -38,7 +38,7 @@ RDEPEND="
 	>=dev-libs/tree-sitter-0.19.0:=
 	dev-libs/xxhash
 	sys-apps/file
-	sys-libs/zlib:0=
+	virtual/zlib:0=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"

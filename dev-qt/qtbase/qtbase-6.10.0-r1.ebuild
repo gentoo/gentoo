@@ -55,7 +55,7 @@ REQUIRED_USE="
 # - qtsql (src/plugins/sqldrivers/configure.cmake)
 # nolink: renderdoc, systemd
 COMMON_DEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 	ssl? ( dev-libs/openssl:= )
 	udev? ( virtual/libudev:= )
 	zstd? ( app-arch/zstd:= )

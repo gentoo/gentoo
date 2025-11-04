@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.68.0:2
-	sys-libs/zlib
+	virtual/zlib
 	crypt? ( >=app-crypt/gpgme-1.8.0:= )
 	idn? ( net-dns/libidn2:= )
 	vala? (

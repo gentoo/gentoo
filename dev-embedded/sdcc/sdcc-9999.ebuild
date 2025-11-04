@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -50,7 +50,7 @@ IUSE="
 
 RDEPEND="
 	dev-libs/boost:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	pic14? ( >=dev-embedded/gputils-0.13.7 )
 	pic16? ( >=dev-embedded/gputils-0.13.7 )
 	boehm-gc? ( dev-libs/boehm-gc:= )

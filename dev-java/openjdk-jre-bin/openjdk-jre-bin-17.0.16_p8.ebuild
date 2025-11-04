@@ -30,7 +30,7 @@ RDEPEND="
 	>net-libs/libnet-1.1
 	>=sys-apps/baselayout-java-0.1.0-r1
 	>=sys-libs/glibc-2.2.5:*
-	sys-libs/zlib
+	virtual/zlib
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	selinux? ( sec-policy/selinux-java )

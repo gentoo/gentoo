@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux"
 
 RDEPEND=">=dev-lang/ghc-8.4.3:=
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-2.2.0.1

@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/libyaml
 	dev-libs/libffi:=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt:=
 	>=app-eselect/eselect-ruby-20231008
 "

@@ -84,7 +84,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND=">=dev-libs/icu-73.1:=
 	dev-libs/nspr
 	sys-libs/readline:0=
-	sys-libs/zlib"
+	virtual/zlib"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/firefox-${PV%_*}"

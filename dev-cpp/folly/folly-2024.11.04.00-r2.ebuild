@@ -42,7 +42,7 @@ RDEPEND="
 	dev-libs/libsodium:=
 	dev-libs/openssl:=
 	>=sys-libs/liburing-2.3:=
-	sys-libs/zlib
+	virtual/zlib
 	llvm-libunwind? ( llvm-runtimes/libunwind:= )
 	!llvm-libunwind? ( sys-libs/libunwind:= )
 "

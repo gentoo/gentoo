@@ -31,7 +31,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	sys-libs/ncurses:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libcrypt:=
 	X? (
 		media-libs/freetype:2

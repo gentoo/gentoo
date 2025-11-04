@@ -26,7 +26,7 @@ RDEPEND="
 	app-arch/lz4:=
 	app-arch/zstd:=
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib
 	legacy? (
 		>=dev-db/mysql-connector-c-8.0.27:=
 	)

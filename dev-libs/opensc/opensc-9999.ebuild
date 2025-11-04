@@ -21,7 +21,7 @@ SLOT="0/11"
 IUSE="ctapi doc openct notify pace +pcsc-lite readline secure-messaging ssl test zlib"
 RESTRICT="!test? ( test )"
 
-RDEPEND="zlib? ( sys-libs/zlib )
+RDEPEND="zlib? ( virtual/zlib )
 	readline? ( sys-libs/readline:0= )
 	ssl? ( dev-libs/openssl:0= )
 	openct? ( >=dev-libs/openct-0.5.0 )

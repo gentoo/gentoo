@@ -8,7 +8,7 @@ ECM_TEST="true"
 PVCUT=$(ver_cut 1-3)
 KFMIN=6.16.0
 QTMIN=6.9.1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit ecm gear.kde.org python-single-r1
 
 DESCRIPTION="Library for parsing and evaluating OSM opening hours expressions"
@@ -27,7 +27,7 @@ DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=kde-frameworks/kholidays-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
-	sys-libs/zlib
+	virtual/zlib
 	python? (
 		$(python_gen_cond_dep '
 			>=dev-libs/boost-1.70:=[python,${PYTHON_USEDEP}]

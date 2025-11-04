@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/double-conversion:=
 	dev-libs/glib:2
 	dev-libs/libpcre2[pcre16,unicode]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	icu? ( dev-libs/icu:= )
 	!icu? ( virtual/libiconv )
 "

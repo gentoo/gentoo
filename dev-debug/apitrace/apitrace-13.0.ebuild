@@ -29,7 +29,7 @@ DEPEND="${PYTHON_DEPS}
 	app-arch/snappy:=[${MULTILIB_USEDEP}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
 	media-libs/waffle[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib[${MULTILIB_USEDEP}]
 	gui? ( dev-qt/qtbase:6[-gles2-only,gui,widgets] )
 	X? ( x11-libs/libX11 )
 "

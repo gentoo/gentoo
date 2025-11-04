@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-qt/qtbase:6[gui,opengl]
-	sys-libs/zlib
+	virtual/zlib
 "
 
 src_configure() {

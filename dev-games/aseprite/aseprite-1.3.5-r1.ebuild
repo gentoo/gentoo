@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 inherit cmake desktop flag-o-matic python-any-r1 toolchain-funcs xdg-utils
 
 SKIA_VER="m102"
@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXcursor

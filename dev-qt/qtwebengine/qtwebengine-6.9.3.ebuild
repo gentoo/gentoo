@@ -51,7 +51,7 @@ RDEPEND="
 	media-libs/tiff:=
 	sys-apps/dbus
 	sys-apps/pciutils
-	sys-libs/zlib:=[minizip]
+	virtual/zlib:=[minizip]
 	virtual/libudev:=
 	x11-libs/libX11
 	x11-libs/libXcomposite

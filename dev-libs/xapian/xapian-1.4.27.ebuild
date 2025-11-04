@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv 
 IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 debug static-libs"
 
 DEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 	!elibc_Darwin? ( !elibc_SunOS? ( sys-apps/util-linux ) )
 	elibc_SunOS? ( sys-libs/libuuid )
 "

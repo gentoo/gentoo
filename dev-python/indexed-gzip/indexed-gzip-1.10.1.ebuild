@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}

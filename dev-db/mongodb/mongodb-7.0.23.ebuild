@@ -42,7 +42,7 @@ RDEPEND="acct-group/mongodb
 	net-misc/curl
 	dev-libs/libbson
 	dev-libs/mongo-c-driver:0
-	>=sys-libs/zlib-1.2.12:=
+	>=virtual/zlib-1.2.12:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
 	ssl? (
 		>=dev-libs/openssl-1.0.1g:0=

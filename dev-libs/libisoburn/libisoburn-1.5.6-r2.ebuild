@@ -29,7 +29,7 @@ RDEPEND="
 	)
 	acl? ( virtual/acl )
 	xattr? ( sys-apps/attr )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	launch-frontend? (
 		dev-lang/tcl:0
 		dev-lang/tk:0

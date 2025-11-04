@@ -64,7 +64,7 @@ RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3:= )
 	app-arch/bzip2
-	>=sys-libs/zlib-1.2.12
+	>=virtual/zlib-1.2.12
 	virtual/libcrypt:=
 "
 DEPEND="${RDEPEND}"

@@ -18,7 +18,7 @@ RDEPEND="
 	=dev-qt/qtcore-${QT5_PV}*
 	=dev-qt/qtgui-${QT5_PV}*
 	=dev-qt/qtwidgets-${QT5_PV}*
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}
 	test? ( =dev-qt/qtxml-${QT5_PV}* )

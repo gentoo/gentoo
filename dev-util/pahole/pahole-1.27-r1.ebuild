@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake python-single-r1
 
 MY_PN=dwarves
@@ -39,7 +39,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/elfutils-0.178
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}"
 
 DOCS=( README README.ctracer NEWS )

@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/boehm-gc:=
 	dev-libs/libpcre:=
 	net-libs/mbedtls:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}

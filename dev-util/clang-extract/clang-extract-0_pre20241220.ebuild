@@ -4,7 +4,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {16..19} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit flag-o-matic llvm-r1 meson python-any-r1
 
 DESCRIPTION="Tool to extract code content from source files"
@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/zstd:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libelf
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}

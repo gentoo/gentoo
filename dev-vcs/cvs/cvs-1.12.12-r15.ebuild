@@ -23,7 +23,7 @@ IUSE="crypt doc kerberos nls pam selinux server"
 RESTRICT="test"
 
 DEPEND="
-	>=sys-libs/zlib-1.1.4
+	>=virtual/zlib-1.1.4
 	kerberos? ( virtual/krb5 )
 	pam? ( sys-libs/pam )
 	server? ( virtual/libcrypt:= )

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit linux-info meson python-single-r1
 
@@ -31,7 +31,7 @@ RDEPEND="
 	>=app-arch/zstd-1.4
 	>=dev-libs/libtracefs-1.8
 	>=dev-libs/libtraceevent-1.6.3
-	sys-libs/zlib
+	virtual/zlib
 	sys-process/audit
 	python? ( ${PYTHON_DEPS} )
 "

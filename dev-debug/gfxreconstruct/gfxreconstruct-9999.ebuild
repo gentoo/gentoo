@@ -29,7 +29,7 @@ IUSE="wayland X"
 RDEPEND="
 	app-arch/lz4:=
 	app-arch/zstd:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 
 	media-libs/vulkan-loader[wayland?,X?]
 	wayland? ( dev-libs/wayland )

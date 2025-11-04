@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm64 ~x86"
 
 BDEPEND="
 	dev-libs/uthash
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libelf:=
 "
 

@@ -17,7 +17,7 @@ IUSE="test zlib"
 RESTRICT="!test? ( test )"
 
 RDEPEND="net-misc/curl
-	sys-libs/zlib
+	virtual/zlib
 	www-servers/civetweb[cxx]"
 DEPEND="${RDEPEND}
 	test? (

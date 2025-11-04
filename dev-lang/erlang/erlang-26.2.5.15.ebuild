@@ -26,7 +26,7 @@ RDEPEND="
 	acct-group/epmd
 	acct-user/epmd
 	sys-libs/ncurses:0
-	sys-libs/zlib
+	virtual/zlib
 	emacs? ( >=app-editors/emacs-23.1:* )
 	java? ( >=virtual/jdk-1.8:* )
 	odbc? ( dev-db/unixODBC )

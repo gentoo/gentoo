@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	PROPERTIES="test_network"
 	RESTRICT="test"
 	RDEPEND="sys-apps/dtc
-			sys-libs/zlib"
+			virtual/zlib"
 else
 	KEYWORDS="amd64"
 	# We need this as zip, it is used during src_test

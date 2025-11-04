@@ -13,7 +13,7 @@ fi
 
 RDEPEND="
 	~dev-qt/qtbase-${PV}:6[gui,widgets]
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

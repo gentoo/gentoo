@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390
 IUSE="cpu_flags_x86_sse cpu_flags_x86_sse2 debug static-libs"
 
 DEPEND="
-	sys-libs/zlib:=
+	virtual/zlib:=
 	!elibc_Darwin? ( !elibc_SunOS? ( sys-apps/util-linux ) )
 	elibc_SunOS? ( sys-libs/libuuid )
 "

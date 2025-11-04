@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 ~riscv ~sparc x86"
 IUSE="nls threads"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"

@@ -40,7 +40,7 @@ RDEPEND="
 		dev-util/lttng-ust-compat:0/2.12
 		dev-util/lttng-ust:0/2.12
 	)
-	sys-libs/zlib:0/1
+	virtual/zlib:0/1
 "
 BDEPEND="
 	dev-util/patchelf

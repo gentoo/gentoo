@@ -19,7 +19,7 @@ RDEPEND="
 	media-libs/giflib
 	media-libs/libjpeg-turbo
 	media-libs/libpng
-	sys-libs/zlib
+	virtual/zlib
 	truetype? (
 		media-libs/gd[truetype]
 		media-libs/freetype:2

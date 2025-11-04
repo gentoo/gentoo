@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ IUSE="bzip2 debug doc examples threads zlib"
 
 DEPEND="
 	bzip2? ( app-arch/bzip2 )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 RDEPEND="${DEPEND}"
 

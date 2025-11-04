@@ -38,7 +38,7 @@ RDEPEND="
 	>=dev-libs/tree-sitter-0.19.0:=
 	dev-libs/xxhash
 	sys-apps/file
-	sys-libs/zlib:0=
+	virtual/zlib:0=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"

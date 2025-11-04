@@ -21,7 +21,7 @@ RDEPEND="bzip2? ( app-arch/bzip2 )
 	lzo? ( dev-libs/lzo )
 	perl? ( dev-lang/perl )
 	ruby? ( $(ruby_implementations_depend) )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib )"
 DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.8:* )"
 S="${WORKDIR}/all/${P}"

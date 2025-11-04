@@ -17,7 +17,7 @@ IUSE="gssapi libproxy sctp +ssl"
 
 DEPEND="
 	=dev-qt/qtcore-${QT5_PV}*:5=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
 	sctp? ( kernel_linux? ( net-misc/lksctp-tools ) )

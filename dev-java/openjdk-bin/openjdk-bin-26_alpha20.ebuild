@@ -72,7 +72,7 @@ RDEPEND="
 		media-libs/harfbuzz
 		elibc_glibc? ( >=sys-libs/glibc-2.2.5:* )
 		elibc_musl? ( sys-libs/musl )
-		sys-libs/zlib
+		virtual/zlib
 		alsa? ( media-libs/alsa-lib )
 		cups? ( net-print/cups )
 		selinux? ( sec-policy/selinux-java )

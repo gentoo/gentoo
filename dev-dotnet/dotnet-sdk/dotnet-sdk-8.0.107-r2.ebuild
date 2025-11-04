@@ -73,7 +73,7 @@ RDEPEND="
 	dev-libs/rapidjson
 	dev-util/lttng-ust:=
 	sys-libs/libunwind
-	sys-libs/zlib:0/1
+	virtual/zlib:0/1
 "
 DEPEND="
 	${RDEPEND}

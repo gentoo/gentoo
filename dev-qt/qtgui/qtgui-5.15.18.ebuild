@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/harfbuzz:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	accessibility? ( app-accessibility/at-spi2-core:2 )
 	dbus? ( =dev-qt/qtdbus-${QT5_PV}* )
 	eglfs? (

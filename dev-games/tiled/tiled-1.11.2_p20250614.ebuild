@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qtbase:6[X,dbus,gui,network,opengl,widgets]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
-	sys-libs/zlib
+	virtual/zlib
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}"

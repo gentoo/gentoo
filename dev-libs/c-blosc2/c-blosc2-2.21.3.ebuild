@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=app-arch/lz4-1.7.5:=
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="

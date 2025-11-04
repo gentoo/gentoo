@@ -20,7 +20,7 @@ IUSE="zlib"
 RESTRICT="test"
 
 RDEPEND="
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 	!zlib? ( app-arch/gzip )"
 DEPEND="${RDEPEND}"
 

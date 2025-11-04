@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ KEYWORDS="~alpha amd64 ~hppa ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-m
 IUSE="debug"
 
 RDEPEND="
-	>=sys-libs/zlib-1.1.4
+	>=virtual/zlib-1.1.4
 	>=app-arch/bzip2-1.0.2
 	app-arch/xz-utils"
 DEPEND="${RDEPEND}"

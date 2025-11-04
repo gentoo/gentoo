@@ -63,7 +63,7 @@ IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl 
 # Common to both DEPEND and RDEPEND
 DEPEND="
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib
 	curl? (
 		net-misc/curl
 		webdav? ( dev-libs/expat )

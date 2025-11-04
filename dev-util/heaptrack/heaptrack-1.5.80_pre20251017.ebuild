@@ -21,7 +21,7 @@ DEPEND="
 	dev-cpp/robin-map
 	dev-libs/boost:=[zstd,zlib]
 	sys-libs/libunwind:=
-	sys-libs/zlib
+	virtual/zlib
 	gui? (
 		dev-libs/kdiagram:6
 		dev-qt/qtbase:6[gui,widgets]

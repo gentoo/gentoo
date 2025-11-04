@@ -53,7 +53,7 @@ DEPEND="
 	)
 	webp? ( media-libs/libwebp:= )
 	xcb? ( x11-libs/libxcb )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${DEPEND}

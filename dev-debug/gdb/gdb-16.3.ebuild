@@ -94,7 +94,7 @@ RDEPEND="
 	dev-libs/gmp:=
 	>=sys-libs/ncurses-5.2-r2:=
 	>=sys-libs/readline-7:=
-	sys-libs/zlib
+	virtual/zlib
 	babeltrace? ( dev-util/babeltrace:0/1 )
 	debuginfod? (
 		dev-libs/elfutils[debuginfod(-)]

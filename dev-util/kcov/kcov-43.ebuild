@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake edo python-any-r1
 
@@ -33,7 +33,7 @@ DEPEND="
 	net-misc/curl
 	net-libs/nghttp2:=
 	sys-libs/binutils-libs:=
-	sys-libs/zlib
+	virtual/zlib
 "
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"

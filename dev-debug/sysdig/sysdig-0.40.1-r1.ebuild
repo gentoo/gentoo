@@ -40,7 +40,7 @@ RDEPEND="${LUA_DEPS}
 	net-libs/grpc:=
 	net-misc/curl
 	sys-libs/ncurses:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libelf:="
 
 DEPEND="${RDEPEND}

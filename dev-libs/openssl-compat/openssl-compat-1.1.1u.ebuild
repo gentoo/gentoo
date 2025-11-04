@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!=dev-libs/openssl-1.1.1*:0
-	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+	tls-compression? ( >=virtual/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

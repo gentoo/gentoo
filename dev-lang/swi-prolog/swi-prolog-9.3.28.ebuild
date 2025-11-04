@@ -36,7 +36,7 @@ REQUIRED_USE="
 
 COMMON_DEPEND="
 	sys-libs/ncurses:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libcrypt:=
 	!minimal? (
 		dev-libs/ossp-uuid

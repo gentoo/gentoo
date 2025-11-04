@@ -43,7 +43,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/expat
-	>=sys-libs/zlib-1.2.8:=
+	>=virtual/zlib-1.2.8:=
 	x11-libs/libdrm
 "
 BDEPEND="

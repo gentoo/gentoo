@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	dev-libs/jansson
 	dev-libs/openssl:=
-	sys-libs/zlib
+	virtual/zlib
 "
 BDEPEND="
 	virtual/pkgconfig

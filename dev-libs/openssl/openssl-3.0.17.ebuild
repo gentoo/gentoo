@@ -41,7 +41,7 @@ IUSE="+asm cpu_flags_x86_sse2 fips ktls rfc3779 sctp static-libs test tls-compre
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	tls-compression? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+	tls-compression? ( >=virtual/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 "
 BDEPEND+="
 	>=dev-lang/perl-5

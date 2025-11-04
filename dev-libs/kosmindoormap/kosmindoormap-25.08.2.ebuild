@@ -22,7 +22,7 @@ RDEPEND="
 	>=dev-libs/kirigami-addons-1.6.0:6
 	dev-libs/protobuf:=
 	>=dev-qt/qtbase-${QTMIN}:6[gui?,network]
-	sys-libs/zlib
+	virtual/zlib
 	gui? (
 		>=dev-libs/kopeninghours-${PVCUT}:6=
 		>=dev-libs/kpublictransport-${PVCUT}:6=

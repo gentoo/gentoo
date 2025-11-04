@@ -25,7 +25,7 @@ BDEPEND="
 RDEPEND="
 	acl? ( virtual/acl )
 	xattr? ( sys-apps/attr )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="
 	${RDEPEND}

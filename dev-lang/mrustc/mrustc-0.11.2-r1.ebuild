@@ -26,7 +26,7 @@ fi
 LICENSE="MIT"
 SLOT="0"
 
-DEPEND="sys-libs/zlib"
+DEPEND="virtual/zlib"
 # mrustc transpiles Rust to C, and currently the C code it generates doesn't currently work with clang
 RDEPEND="
 	${DEPEND}

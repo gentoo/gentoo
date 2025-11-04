@@ -28,7 +28,7 @@ RDEPEND=">=dev-lisp/asdf-2.33-r3
 	readline? ( >=sys-libs/readline-7.0:0= )
 	pcre? ( dev-libs/libpcre:3 )
 	svm? ( sci-libs/libsvm )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	X? ( x11-libs/libXpm )
 	hyperspec? ( dev-lisp/hyperspec )
 	berkdb? ( sys-libs/db:4.8 )"

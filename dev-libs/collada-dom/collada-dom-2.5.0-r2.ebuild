@@ -23,7 +23,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/libxml2:=
 	dev-libs/libpcre[cxx]
-	sys-libs/zlib:=[minizip]"
+	virtual/zlib:=[minizip]"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

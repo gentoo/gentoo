@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~riscv"
 
 RDEPEND="~dev-games/irrlicht-mt-headers-${PV}
 	media-libs/libpng:0=
-	sys-libs/zlib
+	virtual/zlib
 	media-libs/libjpeg-turbo
 	virtual/opengl
 	x11-libs/libX11

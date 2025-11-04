@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/zstd:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

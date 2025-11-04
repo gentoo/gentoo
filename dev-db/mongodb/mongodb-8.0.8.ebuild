@@ -40,7 +40,7 @@ RDEPEND="acct-group/mongodb
 	>=dev-libs/libpcre-8.42[cxx]
 	dev-libs/snowball-stemmer:=
 	net-misc/curl
-	>=sys-libs/zlib-1.2.12:=
+	>=virtual/zlib-1.2.12:=
 	kerberos? ( dev-libs/cyrus-sasl[kerberos] )
 	ssl? (
 		>=dev-libs/openssl-1.0.1g:0=

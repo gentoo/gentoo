@@ -7,7 +7,7 @@ CMAKE_BUILD_TYPE="Release"
 LLVM_COMPAT=( {15..20} )
 MY_PN="${PN/intel-/}"
 MY_P="${MY_PN}-${PV}"
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit cmake llvm-r2 python-any-r1
 
@@ -25,7 +25,7 @@ DEPEND="
 	$(llvm_gen_dep '
 		llvm-core/llvm:${LLVM_SLOT}
 	')
-	sys-libs/zlib
+	virtual/zlib
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"

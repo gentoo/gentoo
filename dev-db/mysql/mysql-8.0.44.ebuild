@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	>=app-arch/zstd-1.2.0:=
 	>=dev-libs/openssl-1.0.0:=
 	sys-libs/ncurses:=
-	>=sys-libs/zlib-1.2.13:=
+	>=virtual/zlib-1.2.13:=
 	server? (
 		dev-libs/icu:=
 		dev-libs/libevent:=[ssl,threads(+)]

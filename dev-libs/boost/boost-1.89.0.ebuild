@@ -40,7 +40,7 @@ RDEPEND="
 		${PYTHON_DEPS}
 		numpy? ( dev-python/numpy:=[${PYTHON_USEDEP}] )
 	)
-	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND=">=dev-build/b2-5.1.0"

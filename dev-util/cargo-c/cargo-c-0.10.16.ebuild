@@ -41,7 +41,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	net-libs/libssh2:=
 	net-misc/curl[ssl]
-	sys-libs/zlib
+	virtual/zlib
 	dev-db/sqlite:3
 "
 DEPEND="${RDEPEND}"

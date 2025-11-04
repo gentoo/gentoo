@@ -23,7 +23,7 @@ RDEPEND="app-arch/snappy:=
 	app-arch/zstd:=
 	~dev-libs/libbson-${PV}[static-libs?]
 	dev-python/sphinx
-	sys-libs/zlib:=
+	virtual/zlib:=
 	icu? ( dev-libs/icu:= )
 	sasl? ( dev-libs/cyrus-sasl:= )
 	ssl? (

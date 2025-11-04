@@ -20,7 +20,7 @@ DEPEND="
 	>=dev-libs/glib-2.38:2
 	>=media-libs/libsamplerate-0.1:=
 	>=media-libs/libsndfile-1.0:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2 )
 "
 RDEPEND="

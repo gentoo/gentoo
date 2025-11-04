@@ -40,7 +40,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/elfutils-0.178
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}"
 
 DOCS=( README README.ctracer NEWS )

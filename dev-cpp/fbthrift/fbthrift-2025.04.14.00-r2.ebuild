@@ -39,7 +39,7 @@ DEPEND="
 	dev-libs/libfmt:=
 	dev-libs/openssl:=
 	dev-libs/xxhash
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

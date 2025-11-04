@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	pcre? ( dev-libs/libpcre2 )
-	ccache? ( sys-libs/zlib )
+	ccache? ( virtual/zlib )
 "
 DEPEND="
 	${RDEPEND}

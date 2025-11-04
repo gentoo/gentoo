@@ -9,7 +9,7 @@ SPIDERMONKEY_PATCHSET="spidermonkey-115-patches-02.tar.xz"
 
 LLVM_COMPAT=( 18 )
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 PYTHON_REQ_USE="ncurses,ssl,xml(+)"
 
 RUST_NEEDS_LLVM="1"
@@ -87,7 +87,7 @@ BDEPEND="${PYTHON_DEPS}
 DEPEND=">=dev-libs/icu-73.1:=
 	dev-libs/nspr
 	sys-libs/readline:0=
-	sys-libs/zlib"
+	virtual/zlib"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/firefox-${MY_PV}/js/src"

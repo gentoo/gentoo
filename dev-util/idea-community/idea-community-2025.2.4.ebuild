@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}
 	sys-libs/glibc
 	media-libs/harfbuzz
 	dev-java/jansi-native
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/libX11
 	x11-libs/libXrender
 	media-libs/freetype

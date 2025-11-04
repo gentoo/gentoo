@@ -36,7 +36,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	http? (
 		net-misc/curl
-		sys-libs/zlib
+		virtual/zlib
 	)
 	elasticsearch? (
 		dev-cpp/nlohmann_json
