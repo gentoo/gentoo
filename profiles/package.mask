@@ -37,6 +37,16 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-01-07)
+# Stuck on Qt5Script in the foreseeable future.  Until a Qt6 release is
+# ready, app-editors/okteta-0.26.60_pre* snapshots will be provided for
+# ~arch, which should work fine except for the structures tool disabled
+# from build (it requires the biggest, remaining porting effort).
+# Bug #955168. Removal some time after 2026-01-30.
+app-editors/okteta:5
+dev-qt/qtscript:5
+kde-frameworks/kitemmodels:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-01-07)
 # Stuck on Qt5/PyQt5 in the foreseeable future.  Until a Qt6 release is
 # ready, krita-6.0.0_alpha_* snapshots will be provided for ~arch.
 # Bug #955168. Removal some time after 2026-01-30.
