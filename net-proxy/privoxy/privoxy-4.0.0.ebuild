@@ -33,7 +33,7 @@ DEPEND="
 		mbedtls? ( net-libs/mbedtls:0= )
 		openssl? ( dev-libs/openssl:= )
 	)
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="${DEPEND}
 	extended-host-patterns? ( dev-lang/perl )

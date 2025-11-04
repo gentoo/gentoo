@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,7 +27,7 @@ RDEPEND="
 	sys-auth/polkit
 	sys-auth/polkit-pkla-compat
 	sys-libs/libcap
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/gtk+:3
 	x11-libs/pango
 	prefix? ( dev-util/patchelf )

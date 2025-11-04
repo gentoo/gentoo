@@ -41,7 +41,7 @@ RDEPEND="
 	libssh? ( >=net-libs/libssh-0.4.0 )
 	samba? ( net-fs/samba )
 	subversion? ( dev-vcs/subversion )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

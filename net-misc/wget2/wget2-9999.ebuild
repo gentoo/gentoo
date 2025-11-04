@@ -37,7 +37,7 @@ RDEPEND="
 	pcre? ( dev-libs/libpcre2 )
 	psl? ( net-libs/libpsl )
 	xattr? ( sys-apps/attr )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

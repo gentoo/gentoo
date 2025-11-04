@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/glib-2.74:2
 	>=net-libs/gnutls-3:=
 	sys-libs/ncurses:=[unicode(+)]
-	sys-libs/zlib
+	virtual/zlib
 	geoip? ( dev-libs/libmaxminddb:= )
 "
 DEPEND="${RDEPEND}"

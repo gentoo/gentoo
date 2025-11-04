@@ -31,7 +31,7 @@ COMMON_DEPEND="
 		app-arch/zstd:=
 		dev-db/mysql-connector-c:=
 		dev-libs/openssl:=
-		sys-libs/zlib:=
+		virtual/zlib:=
 	)
 	!openssl? ( dev-libs/botan:2=[boost] )
 	openssl? ( dev-libs/openssl:0= )

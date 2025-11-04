@@ -20,7 +20,7 @@ IUSE="debug ssl test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}"

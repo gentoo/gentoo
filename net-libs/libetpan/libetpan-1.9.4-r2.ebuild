@@ -14,7 +14,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-
 IUSE="berkdb gnutls ipv6 liblockfile lmdb sasl ssl static-libs"
 
 # BerkDB is only supported up to version 6.0
-DEPEND="sys-libs/zlib
+DEPEND="virtual/zlib
 	!lmdb? ( berkdb? ( sys-libs/db:= ) )
 	lmdb? ( dev-db/lmdb )
 	ssl? (

@@ -5,7 +5,7 @@ EAPI=8
 
 # Uncomment when introducing a patch which touches configure
 RSYNC_NEEDS_AUTOCONF=1
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit flag-o-matic prefix python-single-r1 systemd
 
 DESCRIPTION="File transfer program to keep remote files into sync"
@@ -58,7 +58,7 @@ RDEPEND="
 		')
 	)
 	ssl? ( dev-libs/openssl:= )
-	system-zlib? ( sys-libs/zlib )
+	system-zlib? ( virtual/zlib )
 	xxhash? ( >=dev-libs/xxhash-0.8 )
 	zstd? ( >=app-arch/zstd-1.4:= )
 	iconv? ( virtual/libiconv )"

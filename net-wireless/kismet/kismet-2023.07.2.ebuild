@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit autotools eapi9-ver flag-o-matic python-single-r1 udev systemd
 
@@ -51,7 +51,7 @@ CDEPEND="
 	dev-libs/glib:2
 	dev-libs/elfutils
 	dev-libs/openssl:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	dev-db/sqlite:3
 	net-libs/libwebsockets:=[client,lejp]
 	kernel_linux? ( sys-libs/libcap

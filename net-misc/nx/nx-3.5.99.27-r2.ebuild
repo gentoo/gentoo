@@ -17,7 +17,7 @@ KEYWORDS="amd64 ~arm64 ~ppc ~riscv x86"
 RDEPEND="dev-libs/libxml2:=
 	media-libs/libjpeg-turbo:*
 	>=media-libs/libpng-1.2.8:0=
-	>=sys-libs/zlib-1.2.3
+	>=virtual/zlib-1.2.3
 	x11-apps/xkbcomp
 	x11-libs/libX11
 	x11-libs/libXcomposite

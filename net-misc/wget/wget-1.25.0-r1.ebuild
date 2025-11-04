@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/wget.asc
 inherit flag-o-matic python-any-r1 toolchain-funcs unpacker verify-sig
 
@@ -36,7 +36,7 @@ LIB_DEPEND="
 		!gnutls? ( dev-libs/openssl:=[static-libs(+)] )
 	)
 	uuid? ( sys-apps/util-linux[static-libs(+)] )
-	zlib? ( sys-libs/zlib[static-libs(+)] )
+	zlib? ( virtual/zlib[static-libs(+)] )
 "
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="

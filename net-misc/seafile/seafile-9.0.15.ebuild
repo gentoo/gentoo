@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 # Upstream is moving tags repeatedly, then we use commit hash.
 RELEASE_COMMIT="ad7e30d03bd1f490cee83df8953d6261d7473152"
@@ -31,7 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	net-libs/libwebsockets:=[client]
 	net-misc/curl
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib
 	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}

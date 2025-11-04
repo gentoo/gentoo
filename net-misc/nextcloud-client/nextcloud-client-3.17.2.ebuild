@@ -33,7 +33,7 @@ RDEPEND="
 	kde-frameworks/karchive:6
 	kde-frameworks/kguiaddons:6
 	net-libs/libcloudproviders
-	sys-libs/zlib
+	virtual/zlib
 	dolphin? (
 		kde-frameworks/kcoreaddons:6
 		kde-frameworks/kio:6

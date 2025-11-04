@@ -38,7 +38,7 @@ BDEPEND="
 "
 COMMON_DEPEND="
 	app-text/libpaper:=
-	sys-libs/zlib
+	virtual/zlib
 	acl? (
 		kernel_linux? (
 			sys-apps/acl

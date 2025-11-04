@@ -54,7 +54,7 @@ RDEPEND="
 	dev-libs/libyaml
 	dev-libs/protobuf:=
 	bpf? ( virtual/libelf:= )
-	sys-libs/zlib
+	virtual/zlib
 	ipmi? ( sys-libs/freeipmi )
 	dev-libs/json-c:=
 	mongodb? ( dev-libs/mongo-c-driver )

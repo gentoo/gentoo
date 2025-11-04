@@ -30,7 +30,7 @@ RDEPEND="
 	>=net-print/cups-1.7.3
 	!<=net-print/cups-1.5.9999
 	app-alternatives/bc
-	sys-libs/zlib
+	virtual/zlib
 	exif? ( media-libs/libexif )
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )

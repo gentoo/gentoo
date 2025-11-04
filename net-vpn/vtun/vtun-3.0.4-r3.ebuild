@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ RDEPEND="
 	lzo? ( dev-libs/lzo:2 )
 	socks5? ( net-proxy/dante )
 	ssl? ( dev-libs/openssl:0= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	dev-libs/libbsd"
 DEPEND="${RDEPEND}"
 BDEPEND="

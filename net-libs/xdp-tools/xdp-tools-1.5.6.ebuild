@@ -17,7 +17,7 @@ IUSE="+tools"
 DEPEND="
 	dev-libs/libbpf:=
 	net-libs/libpcap
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libelf
 "
 RDEPEND="${DEPEND}"

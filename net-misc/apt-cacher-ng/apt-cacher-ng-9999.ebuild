@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ DEPEND="acct-user/apt-cacher-ng
 	app-arch/bzip2
 	dev-libs/libevent:=[threads(+)]
 	dev-libs/openssl:0=
-	sys-libs/zlib
+	virtual/zlib
 	fuse? ( sys-fs/fuse:0 )
 	systemd? ( sys-apps/systemd )
 	tcpd? ( sys-apps/tcp-wrappers )"

@@ -28,7 +28,7 @@ RDEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-libs/protobuf:=
 	sys-libs/ncurses:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/ssh
 	client? (
 		dev-lang/perl

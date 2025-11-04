@@ -61,7 +61,7 @@ RDEPEND="
 	lua? ( ${LUA_DEPS} )
 	lz4? ( app-arch/lz4:= )
 	maxminddb? ( dev-libs/libmaxminddb:= )
-	minizip? ( sys-libs/zlib[minizip] )
+	minizip? ( virtual/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
 	opus? ( media-libs/opus )
 	pcap? ( net-libs/libpcap )
@@ -79,7 +79,7 @@ RDEPEND="
 	sshdump? ( >=net-libs/libssh-0.6:= )
 	ssl? ( >=net-libs/gnutls-3.5.8:= )
 	wifi? ( >=net-libs/libssh-0.6:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="

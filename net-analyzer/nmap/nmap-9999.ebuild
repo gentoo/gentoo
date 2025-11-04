@@ -49,12 +49,12 @@ RDEPEND="
 	ndiff? ( ${PYTHON_DEPS} )
 	libssh2? (
 		net-libs/libssh2[zlib]
-		sys-libs/zlib
+		virtual/zlib
 	)
 	nls? ( virtual/libintl )
 	nse? (
 		${LUA_DEPS}
-		sys-libs/zlib
+		virtual/zlib
 	)
 	ssl? ( dev-libs/openssl:= )
 	symlink? (

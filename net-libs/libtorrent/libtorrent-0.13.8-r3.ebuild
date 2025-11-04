@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -21,7 +21,7 @@ IUSE="debug ssl"
 # cppunit dependency - https://github.com/rakshasa/libtorrent/issues/182
 RDEPEND="
 	dev-util/cppunit:=
-	sys-libs/zlib
+	virtual/zlib
 	ssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

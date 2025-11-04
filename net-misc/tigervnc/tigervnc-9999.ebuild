@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	dev-libs/gmp:=
 	dev-libs/nettle:=
 	media-libs/libjpeg-turbo:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrandr

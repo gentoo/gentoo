@@ -22,7 +22,7 @@ DEPEND="
 	net-wireless/soapysdr:=
 	sci-libs/fftw:=
 	sci-libs/volk:=
-	sys-libs/zlib
+	virtual/zlib
 "
 RDEPEND="${DEPEND}"
 

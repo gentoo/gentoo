@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit cmake python-any-r1 systemd
 
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/libmaxminddb:=
 	dev-libs/openssl:0=[-bindist(-)]
 	net-libs/miniupnpc:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libiconv
 	nat-pmp? ( net-libs/libnatpmp:= )
 	tbb? ( dev-cpp/tbb:= )

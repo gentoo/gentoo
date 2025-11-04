@@ -60,7 +60,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5[ssl]
-	sys-libs/zlib
+	virtual/zlib
 	monolithic? (
 		${SERVER_DEPEND}
 		${GUI_DEPEND}

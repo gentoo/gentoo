@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/dropbear.asc
 inherit pam python-any-r1 savedconfig verify-sig
 
@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 LIB_DEPEND="
 	virtual/libcrypt:=[static-libs(+)]
-	zlib? ( sys-libs/zlib[static-libs(+)] )
+	zlib? ( virtual/zlib[static-libs(+)] )
 "
 RDEPEND="
 	acct-group/sshd

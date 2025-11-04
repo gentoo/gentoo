@@ -38,7 +38,7 @@ DEPEND="acct-user/asterisk
 	dev-libs/libxml2:2=
 	dev-libs/libxslt
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt:=
 	bluetooth? ( net-wireless/bluez:= )
 	calendar? (

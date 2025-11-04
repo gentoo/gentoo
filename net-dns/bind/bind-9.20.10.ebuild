@@ -25,7 +25,7 @@ DEPEND="
 	dev-libs/json-c:=
 	dev-libs/userspace-rcu:=
 	>=dev-libs/libuv-1.37.0:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	dev-libs/openssl:=[-bindist(-)]
 	>=sys-libs/libcap-2.1.0
 	dnstap? (

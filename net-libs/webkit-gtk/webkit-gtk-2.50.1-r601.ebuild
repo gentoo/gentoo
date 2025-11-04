@@ -77,7 +77,7 @@ RDEPEND="
 	media-libs/svt-av1
 	media-libs/woff2
 	net-libs/libsoup:3.0[introspection?]
-	sys-libs/zlib:0
+	virtual/zlib:0
 	x11-libs/cairo[X?]
 	x11-libs/libdrm
 	avif? ( media-libs/libavif:= )

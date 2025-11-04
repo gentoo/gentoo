@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	dev-libs/gmime:3.0[crypt]
 	>=dev-libs/xapian-1.4.0:=
 	sys-libs/talloc
-	sys-libs/zlib:=
+	virtual/zlib:=
 	emacs? ( >=app-editors/emacs-${NEED_EMACS}:* )
 	python? (
 		${PYTHON_DEPS}

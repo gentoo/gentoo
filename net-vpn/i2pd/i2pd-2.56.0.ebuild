@@ -17,7 +17,7 @@ IUSE="+upnp"
 DEPEND="
 	dev-libs/boost:=
 	dev-libs/openssl:0=[-bindist(-)]
-	sys-libs/zlib
+	virtual/zlib
 	upnp? ( net-libs/miniupnpc:= )
 "
 RDEPEND="

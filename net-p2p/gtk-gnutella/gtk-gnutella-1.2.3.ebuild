@@ -18,7 +18,7 @@ IUSE="nls dbus ssl +gtk"
 RDEPEND="
 	sys-libs/binutils-libs:=
 	dev-libs/glib:2
-	sys-libs/zlib
+	virtual/zlib
 	gtk? ( >=x11-libs/gtk+-2.2.1:2 )
 	dbus? ( >=sys-apps/dbus-0.35.2 )
 	ssl? ( >=net-libs/gnutls-2.2.5 )

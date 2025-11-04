@@ -24,7 +24,7 @@ DEPEND="dev-libs/libpcre:3
 	dev-libs/icu:=
 	sys-apps/util-linux
 	sys-fs/e2fsprogs:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	afs? ( net-fs/openafs )
 	calalarm? ( dev-libs/libical:= )
 	caps? ( sys-libs/libcap )

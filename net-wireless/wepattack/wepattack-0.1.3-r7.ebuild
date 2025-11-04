@@ -19,7 +19,7 @@ IUSE="john"
 DEPEND="
 	dev-libs/openssl:=
 	net-libs/libpcap
-	sys-libs/zlib
+	virtual/zlib
 "
 RDEPEND="
 	${DEPEND}

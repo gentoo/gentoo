@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit linux-info python-any-r1
@@ -29,7 +29,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	dev-libs/json-parser:0=
 	dev-libs/libxml2:=
-	sys-libs/zlib
+	virtual/zlib
 	app-crypt/p11-kit
 	!gnutls? (
 		>=dev-libs/openssl-1.0.1h:0=

@@ -5,7 +5,7 @@ EAPI=8
 
 GUILE_COMPAT=( 2-2 3-0 )
 LUA_COMPAT=( lua5-{1..4} )
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 GENTOO_DEPEND_ON_PERL=no
 
 inherit guile-single lua-single perl-module python-single-r1 cmake xdg
@@ -49,7 +49,7 @@ RDEPEND="
 	dev-libs/libgcrypt:0=
 	net-libs/gnutls:=
 	sys-libs/ncurses:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	net-misc/curl[ssl]
 	charset? ( virtual/libiconv )
 	guile? ( ${GUILE_DEPS} )

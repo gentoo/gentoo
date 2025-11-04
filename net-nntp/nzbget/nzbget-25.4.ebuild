@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libxml2:=
 	ncurses? ( sys-libs/ncurses:0= )
 	ssl? ( dev-libs/openssl:0=[-bindist(-)] )
-	zlib? ( sys-libs/zlib:= )"
+	zlib? ( virtual/zlib:= )"
 RDEPEND="
 	${DEPEND}
 	acct-user/nzbget

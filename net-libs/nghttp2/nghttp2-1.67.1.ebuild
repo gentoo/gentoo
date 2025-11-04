@@ -32,7 +32,7 @@ RDEPEND="
 		>=dev-libs/openssl-1.0.2:0=[-bindist(-),${MULTILIB_USEDEP}]
 		>=dev-libs/libev-4.15[${MULTILIB_USEDEP}]
 		net-dns/c-ares:=[${MULTILIB_USEDEP}]
-		>=sys-libs/zlib-1.2.3[${MULTILIB_USEDEP}]
+		>=virtual/zlib-1.2.3[${MULTILIB_USEDEP}]
 	)
 	systemd? ( >=sys-apps/systemd-209 )
 	xml? ( >=dev-libs/libxml2-2.7.7:2=[${MULTILIB_USEDEP}] )

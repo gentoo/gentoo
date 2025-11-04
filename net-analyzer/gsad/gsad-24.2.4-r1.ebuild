@@ -21,7 +21,7 @@ DEPEND="
 	>=dev-libs/glib-2.42:2
 	>=net-analyzer/gvm-libs-22.8
 	>=net-libs/gnutls-3.2.15:=
-	>=sys-libs/zlib-1.2
+	>=virtual/zlib-1.2
 	dev-libs/libgcrypt:0=
 	brotli? (
 		app-arch/brotli

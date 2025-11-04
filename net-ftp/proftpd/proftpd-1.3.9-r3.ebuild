@@ -60,7 +60,7 @@ COMMON_DEPEND="
 	virtual/libcrypt:=
 	acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
-	deflate? ( sys-libs/zlib )
+	deflate? ( virtual/zlib )
 	kerberos? (
 		sys-fs/e2fsprogs
 		virtual/krb5
@@ -91,7 +91,7 @@ COMMON_DEPEND="
 			net-dns/libidn
 		)
 	)
-	sftp? ( sys-libs/zlib )
+	sftp? ( virtual/zlib )
 	sqlite? (
 		dev-db/sqlite:3
 		sodium? ( dev-libs/libsodium:0= )

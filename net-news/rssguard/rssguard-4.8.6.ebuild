@@ -30,7 +30,7 @@ DEPEND="
 	dev-qt/qtmultimedia:6[gstreamer]
 	dev-qt/qt5compat:6
 	media-libs/libglvnd
-	sys-libs/zlib:=
+	virtual/zlib:=
 	libmpv? (
 		dev-qt/qtbase:6[opengl]
 		media-video/mpv:=

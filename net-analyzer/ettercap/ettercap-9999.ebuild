@@ -28,7 +28,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	net-libs/libnet:1.1
 	>=net-libs/libpcap-0.8.1
-	sys-libs/zlib
+	virtual/zlib
 	geoip? ( dev-libs/geoip )
 	gtk? (
 		>=app-accessibility/at-spi2-core-2.46.0

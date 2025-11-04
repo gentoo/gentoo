@@ -55,7 +55,7 @@ RDEPEND="
 	net-misc/wget
 	sys-apps/util-linux
 	sys-libs/libcap
-	sys-libs/zlib:=
+	virtual/zlib:=
 	cups? ( net-print/cups )
 	dbengine? (
 		dev-libs/judy

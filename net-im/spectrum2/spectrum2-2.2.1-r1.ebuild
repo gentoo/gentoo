@@ -33,7 +33,7 @@ RDEPEND="
 	net-dns/libidn:=
 	>=net-im/swift-4.0.2-r2:=
 	net-misc/curl
-	sys-libs/zlib:=
+	virtual/zlib:=
 	frotz? ( !games-engines/frotz )
 	irc? ( net-im/libcommuni )
 	mysql? (

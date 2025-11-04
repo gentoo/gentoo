@@ -32,7 +32,7 @@ CDEPEND="
 	sys-fs/fuse:0=
 	sys-fs/fuse:3=
 	sys-libs/libcap:0=
-	sys-libs/zlib:0=
+	virtual/zlib:0=
 "
 
 RDEPEND="${CDEPEND}

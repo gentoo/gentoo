@@ -35,7 +35,7 @@ RDEPEND="
 	sys-apps/dbus
 	sys-apps/util-linux
 	sys-libs/glibc
-	sys-libs/zlib:0/1[minizip]
+	virtual/zlib:0/1[minizip]
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11

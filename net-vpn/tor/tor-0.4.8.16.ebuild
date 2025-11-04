@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/torproject.org.asc
 inherit edo python-any-r1 readme.gentoo-r1 systemd verify-sig
 
@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
 	dev-libs/openssl:=[-bindist(-)]
-	sys-libs/zlib
+	virtual/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
 	lzma? ( app-arch/xz-utils )

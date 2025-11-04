@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	net-misc/curl
 	sys-fs/fuse:0
-	sys-libs/zlib
+	virtual/zlib
 	nbd? ( sys-block/nbd sys-block/nbdkit )
 "
 DEPEND="${RDEPEND}

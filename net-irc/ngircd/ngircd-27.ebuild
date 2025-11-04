@@ -31,7 +31,7 @@ RDEPEND="
 		)
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

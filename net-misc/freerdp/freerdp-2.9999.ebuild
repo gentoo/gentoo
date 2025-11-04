@@ -1,4 +1,4 @@
-# Copyright 2011-2024 Gentoo Authors
+# Copyright 2011-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ BDEPEND+="
 
 COMMON_DEPEND="
 	dev-libs/openssl:0=
-	sys-libs/zlib:0
+	virtual/zlib:0
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	usb? (

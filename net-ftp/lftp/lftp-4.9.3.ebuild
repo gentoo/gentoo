@@ -19,7 +19,7 @@ RDEPEND="
 	>=sys-libs/ncurses-5.1:=
 	>=sys-libs/readline-5.1:=
 	dev-libs/expat
-	sys-libs/zlib
+	virtual/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
 	idn? ( net-dns/libidn2:= )
 	socks5? (

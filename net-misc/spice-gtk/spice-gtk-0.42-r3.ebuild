@@ -4,7 +4,7 @@
 EAPI=8
 
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python3_{10..11} )
+PYTHON_COMPAT=( python3_11 )
 
 inherit desktop meson optfeature python-any-r1 readme.gentoo-r1 vala xdg
 
@@ -37,7 +37,7 @@ RDEPEND="
 	media-libs/gstreamer:1.0[introspection?]
 	media-libs/opus
 	media-libs/libjpeg-turbo:=
-	sys-libs/zlib
+	virtual/zlib
 	>=x11-libs/cairo-1.2
 	>=x11-libs/pixman-0.17.7
 	x11-libs/libX11

@@ -26,7 +26,7 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/openssl-1.1:0=
 	sys-libs/readline:0=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libcrypt:=
 	dbus? ( >=sys-apps/dbus-1.4.20 )
 	pam? ( sys-libs/pam )

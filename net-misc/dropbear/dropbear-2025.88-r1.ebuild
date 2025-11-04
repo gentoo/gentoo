@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 LIB_DEPEND="
 	virtual/libcrypt:=[static-libs(+)]
-	zlib? ( sys-libs/zlib[static-libs(+)] )
+	zlib? ( virtual/zlib[static-libs(+)] )
 "
 RDEPEND="
 	acct-group/sshd

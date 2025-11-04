@@ -41,7 +41,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 DEPEND="${COMMON_DEPEND}
-	sys-libs/zlib
+	virtual/zlib
 "
 BDEPEND="
 	app-alternatives/awk

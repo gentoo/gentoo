@@ -39,7 +39,7 @@
 		<flag name="toggle">Support temporary disable toggle via web interface</flag>
 		<flag name="tools">Install log parser, regression tester and user agent generator tools</flag>
 		<flag name="whitelists">Support trust files (white lists)</flag>
-		<flag name="zlib">Decompress zlib compressed data using <pkg>sys-libs/zlib</pkg> before filtering</flag>
+		<flag name="zlib">Decompress zlib compressed data using <pkg>virtual/zlib</pkg> before filtering</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ijbswa</remote-id>
