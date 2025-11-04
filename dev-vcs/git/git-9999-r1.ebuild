@@ -245,6 +245,7 @@ src_configure() {
 	if [[ ${PV} == *9999 ]] || use doc ; then
 		emesonargs+=(
 			-Ddocs="man$(usev doc ',html')"
+			-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		)
 	fi
 
@@ -333,11 +334,6 @@ src_test() {
 
 src_install() {
 	meson_src_install
-
-	if use doc ; then
-		cp -r "${ED}"/usr/share/doc/git-doc/. "${ED}"/usr/share/doc/${PF}/html || die
-		rm -rf "${ED}"/usr/share/doc/git-doc/ || die
-	fi
 
 	# Depending on the tarball and manual rebuild of the documentation, the
 	# manpages may exist in either OR both of these directories.
