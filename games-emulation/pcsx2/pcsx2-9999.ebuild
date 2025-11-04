@@ -104,7 +104,6 @@ src_prepare() {
 	# relax some version requirements which often get restricted without
 	# a specific need, please report a bug to Gentoo (not upstream) if a
 	# still-available older version is really causing issues
-	# TODO?: actually hasn't changed in a while, maybe drop + add lower bounds
 	sed -e '/find_package(\(Qt6\|SDL3\)/s/ [0-9.]* / /' \
 		-i cmake/SearchForStuff.cmake || die
 
