@@ -21,7 +21,7 @@ CPU_USE=(
 	arm_{crc32,neon}
 	ppc_{altivec,vsx2,vsx3}
 )
-IUSE="compat ${CPU_USE[@]/#/cpu_flags_} test"
+IUSE="compat ${CPU_USE[@]/#/cpu_flags_} static-libs test"
 
 RESTRICT="!test? ( test )"
 
@@ -55,6 +55,12 @@ multilib_src_configure() {
 		-DZLIB_ENABLE_TESTS=$(usex test)
 		-DWITH_GTEST=$(usex test)
 	)
+	if use static-libs; then
+		mycmakeargs+=(
+			# upstream build system builds both if BUILD_SHARED_LIBS is unset
+			-UBUILD_SHARED_LIBS
+		)
+	fi
 
 	# The intrinsics options are all defined conditionally, so we need
 	# to enable them on/off per-arch here for now.
