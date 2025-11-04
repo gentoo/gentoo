@@ -70,7 +70,7 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 #
 RDEPEND="
 	>=sys-devel/binutils-config-3
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}
 	doc? ( sys-apps/texinfo )

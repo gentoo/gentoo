@@ -74,7 +74,7 @@ COMMON_DEPEND="
 	idn? ( net-dns/libidn2:= )
 	importd? (
 		app-arch/bzip2:0=
-		sys-libs/zlib:0=
+		virtual/zlib:0=
 	)
 	kmod? ( >=sys-apps/kmod-15:0= )
 	lz4? ( >=app-arch/lz4-0_p131:0=[${MULTILIB_USEDEP}] )

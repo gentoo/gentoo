@@ -39,7 +39,7 @@ IUSE="custom-cflags debug dist-kernel kernel-builtin minimal nls pam python +roo
 DEPEND="
 	net-libs/libtirpc:=
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libudev:=
 	dev-libs/openssl:0=
 	!minimal? ( ${PYTHON_DEPS} )

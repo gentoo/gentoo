@@ -90,7 +90,7 @@ DEPEND="
 	sys-libs/libcap-ng:=
 	sys-libs/libnbd
 	sys-libs/ncurses:0=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	sys-process/numactl:=
 	virtual/libcrypt:=
 	x11-libs/libpciaccess:=

@@ -318,7 +318,7 @@ BDEPEND="
 "
 RDEPEND="
 	virtual/libelf
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="
 	${RDEPEND}

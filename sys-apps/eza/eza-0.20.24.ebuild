@@ -255,7 +255,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="
 	git? ( =dev-libs/libgit2-1.9*:= )
 	dev-libs/openssl
-	sys-libs/zlib
+	virtual/zlib
 "
 RDEPEND="${DEPEND}"
 

@@ -54,7 +54,7 @@ is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 #
 RDEPEND="
 	>=sys-devel/binutils-config-3
-	sys-libs/zlib
+	virtual/zlib
 	debuginfod? (
 		dev-libs/elfutils[debuginfod(-)]
 	)

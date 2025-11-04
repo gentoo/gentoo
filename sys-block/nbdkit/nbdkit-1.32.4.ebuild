@@ -21,7 +21,7 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	libssh? ( net-libs/libssh:= )
 	libvirt? ( app-emulation/libvirt:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 	nbd? ( sys-libs/libnbd )
 	lzma? ( app-arch/xz-utils )
 	zstd? ( app-arch/zstd:= )

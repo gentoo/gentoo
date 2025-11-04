@@ -18,7 +18,7 @@ RESTRICT="test"
 
 DEPEND="
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib
 	gcrypt? ( dev-libs/libgcrypt:= )
 	!gcrypt? ( dev-libs/openssl:= )
 "

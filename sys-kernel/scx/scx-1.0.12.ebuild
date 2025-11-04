@@ -37,7 +37,7 @@ IUSE="systemd"
 
 DEPEND="
 	virtual/libelf:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	>=dev-libs/libbpf-1.5:=
 "
 RDEPEND="

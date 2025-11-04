@@ -20,7 +20,7 @@ IUSE="lz4 +lzma lzo selinux +tools zstd"
 
 DEPEND="
 	app-arch/bzip2:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	lz4?     ( app-arch/lz4:= )
 	lzma?    ( app-arch/xz-utils )
 	lzo?     ( dev-libs/lzo:2 )

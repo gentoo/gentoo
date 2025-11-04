@@ -25,7 +25,7 @@ RDEPEND="
 	uuid? ( sys-apps/util-linux )
 	zlib? (
 		libdeflate? ( app-arch/libdeflate:0= )
-		!libdeflate? ( sys-libs/zlib:0= )
+		!libdeflate? ( virtual/zlib:0= )
 	)
 	zstd? ( app-arch/zstd:0= )
 "

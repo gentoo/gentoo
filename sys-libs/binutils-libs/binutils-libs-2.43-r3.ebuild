@@ -36,7 +36,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	test? ( dev-util/dejagnu )
 "
-DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
+DEPEND="virtual/zlib[${MULTILIB_USEDEP}]"
 # Need a newer binutils-config that'll reset include/lib symlinks for us.
 RDEPEND="${DEPEND}
 	>=sys-devel/binutils-config-5

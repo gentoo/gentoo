@@ -20,7 +20,7 @@ IUSE="adb-generic-tools inband ssl"
 
 RDEPEND="
 	dev-db/sqlite:3=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	inband? ( sys-cluster/rdma-core )
 	adb-generic-tools? (
 		dev-libs/boost:=

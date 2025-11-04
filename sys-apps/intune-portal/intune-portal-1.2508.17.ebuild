@@ -33,7 +33,7 @@ RDEPEND="
 	sys-auth/pambase[pwquality]
 	sys-auth/polkit
 	sys-libs/pam
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/pango

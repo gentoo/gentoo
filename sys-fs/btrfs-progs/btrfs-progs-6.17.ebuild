@@ -46,7 +46,7 @@ RESTRICT="test"
 RDEPEND="
 	dev-libs/lzo:2=
 	sys-apps/util-linux:=[static-libs(+)?]
-	sys-libs/zlib:=
+	virtual/zlib:=
 	convert? (
 		sys-fs/e2fsprogs:=
 		reiserfs? (
@@ -63,7 +63,7 @@ DEPEND="
 	static? (
 		dev-libs/lzo:2[static-libs(+)]
 		sys-apps/util-linux:0[static-libs(+)]
-		sys-libs/zlib:0[static-libs(+)]
+		virtual/zlib:0[static-libs(+)]
 		convert? (
 			sys-fs/e2fsprogs[static-libs(+)]
 			reiserfs? (

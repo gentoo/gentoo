@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/libpcre
 	lzma? ( app-arch/xz-utils )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -287,7 +287,7 @@ BDEPEND="
 "
 RDEPEND="
 	app-arch/zstd:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libelf:=
 "
 DEPEND="

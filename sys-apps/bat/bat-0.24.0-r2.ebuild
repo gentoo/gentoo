@@ -208,7 +208,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>=dev-libs/libgit2-1.7.0:=[threads]
 	dev-libs/oniguruma:=
-	sys-libs/zlib
+	virtual/zlib
 "
 # >app-backup/bacula-9.2[qt5] has file collisions, #686118
 RDEPEND="${DEPEND}

@@ -47,7 +47,7 @@ RDEPEND="
 	papi? ( dev-libs/papi )
 	perftools? ( dev-util/google-perftools:= )
 	tbb? ( dev-cpp/tbb:= )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="${RDEPEND}"
 

@@ -40,7 +40,7 @@ DEPEND="
 	dev-libs/openssl:=
 	net-libs/libtirpc:=
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libudev:=
 	!minimal? ( ${PYTHON_DEPS} )
 	pam? ( sys-libs/pam )

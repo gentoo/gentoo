@@ -14,7 +14,7 @@ KEYWORDS="ppc ppc64"
 
 DEPEND="
 	dev-db/sqlite:3
-	sys-libs/zlib:=
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

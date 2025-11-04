@@ -25,7 +25,7 @@ RDEPEND="fuse? ( sys-fs/fuse:0= )
 	)
 	pfm? ( app-misc/pfm )
 	snmp? ( net-analyzer/net-snmp )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib )"
 DEPEND="${RDEPEND}"
 BDEPEND="app-admin/genromfs"
 

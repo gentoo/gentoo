@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	sys-apps/util-linux:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	lzo? ( dev-libs/lzo:= )
 	ssl? ( dev-libs/openssl:0= )
 	xattr? ( sys-apps/acl )

@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/pcsc-lite
 	dev-libs/openssl:=[-bindist(-)]
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 BDEPEND="dev-util/gengetopt

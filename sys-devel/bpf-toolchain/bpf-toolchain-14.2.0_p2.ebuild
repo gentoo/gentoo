@@ -47,7 +47,7 @@ RDEPEND="
 	dev-libs/gmp:=
 	dev-libs/mpc:=
 	dev-libs/mpfr:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	virtual/libiconv
 	bin-symlinks? (
 		!cross-bpf-unknown-none/binutils
