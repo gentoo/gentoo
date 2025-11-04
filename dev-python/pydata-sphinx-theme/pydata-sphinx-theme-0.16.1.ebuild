@@ -36,6 +36,10 @@ RDEPEND="
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.16.0-tests-ignorecase.patch
+)
+
 EPYTEST_PLUGINS=( pytest-{datadir,regressions} )
 EPYTEST_XDIST=1
 distutils_enable_tests pytest

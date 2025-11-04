@@ -1,0 +1,81 @@
+https://github.com/pydata/pydata-sphinx-theme/pull/2091
+
+From f43024ded15bf55ea61e2bbaec8612d8b8631645 Mon Sep 17 00:00:00 2001
+From: Daniel McCloy <dan@mccloy.info>
+Date: Wed, 8 Jan 2025 11:01:22 -0600
+Subject: [PATCH 4/6] improve test
+
+---
+ tests/test_build.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_build.py b/tests/test_build.py
+index 7a005fa4ab..170a29a832 100644
+--- a/tests/test_build.py
++++ b/tests/test_build.py
+@@ -891,8 +891,8 @@ def test_pygments_fallbacks(sphinx_build_factory, style_names, keyword_colors) -
+     # see if our warnings worked
+     if style_names[0].startswith("fake"):
+         assert len(warnings) == 2
+-        re.match(r"Color theme fake_foo.*tango", warnings[0])
+-        re.match(r"Color theme fake_bar.*monokai", warnings[1])
++        assert re.search(r"Highlighting style fake_foo.*tango", warnings[0])
++        assert re.search(r"Highlighting style fake_bar.*monokai", warnings[1])
+     else:
+         assert warnings == [""]
+     # test that the rendered HTML has highlighting spans
+
+From 513729664b1c2c51c68d2c6086a9f05cea1976c1 Mon Sep 17 00:00:00 2001
+From: Daniel McCloy <dan@mccloy.info>
+Date: Wed, 8 Jan 2025 11:23:46 -0600
+Subject: [PATCH 5/6] show info why test fails
+
+---
+ tests/test_build.py | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_build.py b/tests/test_build.py
+index 170a29a832..0d2f861f72 100644
+--- a/tests/test_build.py
++++ b/tests/test_build.py
+@@ -907,11 +907,9 @@ def test_pygments_fallbacks(sphinx_build_factory, style_names, keyword_colors) -
+         lines = css_file.readlines()
+     assert lines[0].startswith('html[data-theme="light"]')
+     for mode, color in dict(zip(["light", "dark"], keyword_colors)).items():
+-        regexp = re.compile(
+-            r'html\[data-theme="' + mode + r'"\].*\.k .*color: ' + color
+-        )
+-        matches = [regexp.match(line) is not None for line in lines]
+-        assert sum(matches) == 1
++        regexp = re.compile(rf'html\[data-theme="{mode}"\].*\.k .*color:\s?{color}')
++        matches = [regexp.search(line) is not None for line in lines]
++        assert sum(matches) == 1, f"expected {mode}: {color}\n" + "\n".join(lines)
+ 
+ 
+ def test_deprecated_build_html(sphinx_build_factory, file_regression) -> None:
+
+From d73887b5c73e805b28d8c7cd865c8f8e58a85745 Mon Sep 17 00:00:00 2001
+From: Daniel McCloy <dan@mccloy.info>
+Date: Wed, 8 Jan 2025 11:28:43 -0600
+Subject: [PATCH 6/6] ignorecase
+
+---
+ tests/test_build.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_build.py b/tests/test_build.py
+index 0d2f861f72..8444da330d 100644
+--- a/tests/test_build.py
++++ b/tests/test_build.py
+@@ -907,7 +907,10 @@ def test_pygments_fallbacks(sphinx_build_factory, style_names, keyword_colors) -
+         lines = css_file.readlines()
+     assert lines[0].startswith('html[data-theme="light"]')
+     for mode, color in dict(zip(["light", "dark"], keyword_colors)).items():
+-        regexp = re.compile(rf'html\[data-theme="{mode}"\].*\.k .*color:\s?{color}')
++        regexp = re.compile(
++            r'html\[data-theme="' + mode + r'"\].*\.k .*color:\s?' + color,
++            re.IGNORECASE,
++        )
+         matches = [regexp.search(line) is not None for line in lines]
+         assert sum(matches) == 1, f"expected {mode}: {color}\n" + "\n".join(lines)
+ 
