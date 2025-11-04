@@ -43,7 +43,7 @@ BDEPEND="
 
 COMMON_DEPEND="
 	>=dev-cpp/abseil-cpp-${ABSEIL_MIN_VER}:=[${MULTILIB_USEDEP}]
-	zlib? ( virtual/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 "
 
 DEPEND="

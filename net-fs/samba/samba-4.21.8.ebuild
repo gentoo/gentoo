@@ -79,7 +79,7 @@ COMMON_DEPEND="
 	>=sys-libs/talloc-${TALLOC_VERSION}[${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-${TDB_VERSION}[${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-${TEVENT_VERSION}[${MULTILIB_USEDEP}]
-	virtual/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	$(python_gen_cond_dep '

@@ -31,7 +31,7 @@ RESTRICT="
 "
 
 DEPEND="
-	test? ( virtual/zlib[${MULTILIB_USEDEP}] )
+	test? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 "
 
 PATCHES=(

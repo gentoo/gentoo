@@ -20,7 +20,7 @@ BDEPEND="
 	app-alternatives/lex
 "
 RDEPEND="
-	virtual/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	curl? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	tools? ( !dev-util/smem )

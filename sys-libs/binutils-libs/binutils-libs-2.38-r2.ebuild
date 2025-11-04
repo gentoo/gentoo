@@ -25,7 +25,7 @@ IUSE="64-bit-bfd cet multitarget nls static-libs"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
 
 BDEPEND="nls? ( sys-devel/gettext )"
-DEPEND="virtual/zlib[${MULTILIB_USEDEP}]"
+DEPEND="virtual/zlib:=[${MULTILIB_USEDEP}]"
 # Need a newer binutils-config that'll reset include/lib symlinks for us.
 RDEPEND="${DEPEND}
 	>=sys-devel/binutils-config-5

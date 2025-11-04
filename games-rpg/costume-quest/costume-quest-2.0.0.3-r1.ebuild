@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/glu[abi_x86_32]
 	media-libs/libglvnd[abi_x86_32,X]
 	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads(+),video]
-	virtual/zlib[abi_x86_32]
+	virtual/zlib:=[abi_x86_32]
 "
 
 DIR="/opt/${PN}"

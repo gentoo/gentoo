@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm arm64 ~x86"
 IUSE="openssl"
 
 DEPEND="
-	virtual/zlib[minizip]
+	virtual/zlib:=[minizip]
 	openssl? ( dev-libs/openssl:= )
 "
 RDEPEND="${DEPEND}"

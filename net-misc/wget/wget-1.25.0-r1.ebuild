@@ -36,7 +36,7 @@ LIB_DEPEND="
 		!gnutls? ( dev-libs/openssl:=[static-libs(+)] )
 	)
 	uuid? ( sys-apps/util-linux[static-libs(+)] )
-	zlib? ( virtual/zlib[static-libs(+)] )
+	zlib? ( virtual/zlib:=[static-libs(+)] )
 "
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="

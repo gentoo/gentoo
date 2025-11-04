@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm arm64 ppc ppc64 ~riscv x86"
 
 DEPEND="
 	dev-libs/expat
-	virtual/zlib[minizip]
+	virtual/zlib:=[minizip]
 	virtual/libiconv
 "
 RDEPEND="${DEPEND}"

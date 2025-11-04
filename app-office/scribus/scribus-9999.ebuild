@@ -53,7 +53,7 @@ DEPEND="${PYTHON_DEPS}
 	media-libs/libzmf
 	media-libs/tiff:=
 	net-print/cups
-	virtual/zlib[minizip]
+	virtual/zlib:=[minizip]
 	x11-libs/cairo[X,svg(+)]
 	x11-libs/libxcb
 	boost? ( dev-libs/boost:= )

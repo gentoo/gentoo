@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/cxxtools-3.0
-	virtual/zlib[minizip]
+	virtual/zlib:=[minizip]
 	ssl? (
 		gnutls? (
 			>=net-libs/gnutls-1.2.0

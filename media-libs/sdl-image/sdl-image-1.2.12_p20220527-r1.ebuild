@@ -24,7 +24,7 @@ IUSE="gif jpeg png static-libs tiff webp"
 
 RDEPEND="
 	>=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
-	virtual/zlib[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	png? ( media-libs/libpng[${MULTILIB_USEDEP}] )
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	tiff? ( media-libs/tiff:=[${MULTILIB_USEDEP}] )

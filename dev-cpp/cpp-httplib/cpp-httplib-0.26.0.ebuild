@@ -35,7 +35,7 @@ RDEPEND="
 		>=dev-libs/openssl-3.0.13:=[${MULTILIB_USEDEP}]
 	)
 	zlib? (
-		virtual/zlib[${MULTILIB_USEDEP}]
+		virtual/zlib:=[${MULTILIB_USEDEP}]
 	)
 	zstd? (
 		app-arch/zstd[${MULTILIB_USEDEP}]

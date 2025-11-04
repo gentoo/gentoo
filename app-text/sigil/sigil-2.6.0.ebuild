@@ -29,7 +29,7 @@ RDEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,widgets,xml]
 	dev-qt/qtwebengine:6[widgets]
 	dev-qt/qtsvg:6
-	virtual/zlib[minizip]
+	virtual/zlib:=[minizip]
 	$(python_gen_cond_dep '
 		dev-python/css-parser[${PYTHON_USEDEP}]
 		dev-python/dulwich[${PYTHON_USEDEP}]

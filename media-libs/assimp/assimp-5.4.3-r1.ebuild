@@ -17,7 +17,7 @@ IUSE="collada doc samples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/zlib[minizip]
+	virtual/zlib:=[minizip]
 	collada? ( media-libs/opencollada )
 	doc? ( app-text/doxygen )
 	samples? (

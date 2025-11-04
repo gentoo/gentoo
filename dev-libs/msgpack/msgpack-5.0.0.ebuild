@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="doc? ( app-text/doxygen[dot] )
 	test? (
 		dev-cpp/gtest[${MULTILIB_USEDEP}]
-		virtual/zlib[${MULTILIB_USEDEP}]
+		virtual/zlib:=[${MULTILIB_USEDEP}]
 	)"
 
 S="${WORKDIR}"/${MY_P}

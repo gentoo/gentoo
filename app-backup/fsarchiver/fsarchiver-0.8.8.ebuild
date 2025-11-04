@@ -28,7 +28,7 @@ DEPEND="${CDEPEND}
 		dev-libs/libgpg-error[static-libs]
 		sys-apps/util-linux[static-libs]
 		>=sys-fs/e2fsprogs-1.41.4[static-libs]
-		virtual/zlib[static-libs]
+		virtual/zlib:=[static-libs]
 		lz4? ( app-arch/lz4[static-libs] )
 		lzma? ( app-arch/xz-utils[static-libs] )
 		lzo? ( dev-libs/lzo[static-libs] )

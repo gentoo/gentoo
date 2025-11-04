@@ -25,7 +25,7 @@ REQUIRED_USE="gles2-only? ( !osd )"
 DEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[joystick,opengl,video]
-	virtual/zlib[minizip]
+	virtual/zlib:=[minizip]
 	gles2-only? ( media-libs/libsdl2[gles2] )
 	lirc? ( app-misc/lirc )
 	netplay? ( media-libs/sdl2-net )

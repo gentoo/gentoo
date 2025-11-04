@@ -26,7 +26,7 @@ RDEPEND="
 	media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,video]
 	>=sys-devel/gcc-3.4[cxx]
 	>=sys-libs/glibc-2.7[stack-realign(-)]
-	virtual/zlib[abi_x86_32]
+	virtual/zlib:=[abi_x86_32]
 	virtual/opengl[abi_x86_32]
 	!${CATEGORY}/${MY_PN}-hb
 "

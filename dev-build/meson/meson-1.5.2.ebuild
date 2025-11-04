@@ -51,7 +51,7 @@ DEPEND="
 		>=dev-libs/gobject-introspection-1.82.0-r2
 		app-alternatives/ninja
 		dev-vcs/git
-		virtual/zlib[static-libs(+)]
+		virtual/zlib:=[static-libs(+)]
 		virtual/pkgconfig
 	)
 "

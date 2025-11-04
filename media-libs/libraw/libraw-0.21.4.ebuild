@@ -24,7 +24,7 @@ IUSE="examples hardened jpeg +lcms openmp zlib"
 RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:=[${MULTILIB_USEDEP}] )
 	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )
-	zlib? ( virtual/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

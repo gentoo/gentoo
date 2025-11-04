@@ -33,7 +33,7 @@ RDEPEND="
 	nls? ( >=virtual/libintl-0-r1:=[${MULTILIB_USEDEP}] )
 	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
 	idn? ( >=net-dns/libidn2-0.16-r1:=[${MULTILIB_USEDEP}] )
-	zlib? ( virtual/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	zstd? ( >=app-arch/zstd-1.3.0:=[${MULTILIB_USEDEP}] )
 "
 DEPEND="

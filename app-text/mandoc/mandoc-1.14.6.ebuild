@@ -19,7 +19,7 @@ RDEPEND="virtual/zlib:=
 	system-man? ( !sys-apps/man-db )
 "
 DEPEND="${RDEPEND}
-	cgi? ( virtual/zlib[static-libs] )
+	cgi? ( virtual/zlib:=[static-libs] )
 "
 BDEPEND="
 	cgi? ( app-text/highlight )

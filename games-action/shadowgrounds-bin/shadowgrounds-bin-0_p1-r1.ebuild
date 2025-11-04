@@ -27,7 +27,7 @@ RDEPEND="
 	)
 	amd64? (
 		>=gnome-base/libglade-2.6.4-r1[abi_x86_32(-)]
-		virtual/zlib[abi_x86_32(-)]
+		virtual/zlib:=[abi_x86_32(-)]
 	)
 "
 BDEPEND="app-arch/unzip"

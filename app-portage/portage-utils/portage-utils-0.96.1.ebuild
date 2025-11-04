@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 			app-crypt/gpgme[static-libs]
 			app-crypt/libb2[static-libs]
 			dev-libs/openssl[static-libs]
-			virtual/zlib[static-libs]
+			virtual/zlib:=[static-libs]
 		)
 	)
 	qtegrity? (

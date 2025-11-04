@@ -16,7 +16,7 @@ RESTRICT="strip"
 RDEPEND="
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	virtual/zlib[abi_x86_32(-)]
+	virtual/zlib:=[abi_x86_32(-)]
 "
 
 QA_PREBUILT="/opt/bin/vgba"

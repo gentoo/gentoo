@@ -30,7 +30,7 @@ RDEPEND="
 	>=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]
 	jpegxl? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-	png? ( virtual/zlib[${MULTILIB_USEDEP}] )
+	png? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	webready? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	xmp? ( dev-libs/expat[${MULTILIB_USEDEP}] )
 "

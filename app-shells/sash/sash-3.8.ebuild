@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~m68k ~mips ppc ppc64 ~s390 ~sparc x86"
 IUSE="static"
 
 DEPEND="
-	static? ( virtual/zlib[static-libs] )
+	static? ( virtual/zlib:=[static-libs] )
 	!static? ( >=virtual/zlib-1.2.3 )"
 RDEPEND="!static? ( ${DEPEND} )"
 

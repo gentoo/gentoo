@@ -17,7 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="test? ( sys-process/parallel )"
-DEPEND="virtual/zlib[${MULTILIB_USEDEP}]"
+DEPEND="virtual/zlib:=[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 DOCS=( changes.txt design.txt gme.txt readme.txt )

@@ -40,7 +40,7 @@ RDEPEND="
 	svg? ( >=gnome-base/librsvg-2.46.0:=[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-4.0.4:=[${MULTILIB_USEDEP}] )
 	webp? ( media-libs/libwebp:=[${MULTILIB_USEDEP}] )
-	zlib? ( virtual/zlib[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 	!<media-plugins/imlib2_loaders-1.10.0
 "
 DEPEND="${RDEPEND}
