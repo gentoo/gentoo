@@ -66,7 +66,7 @@ RDEPEND="
 	media-libs/mesa
 	media-libs/woff2
 	net-libs/libsoup:3.0[introspection?]
-	virtual/zlib:0
+	virtual/zlib:=
 	x11-libs/cairo[X?]
 	x11-libs/gtk+:3[aqua?,introspection?,wayland?,X?]
 	x11-libs/libdrm

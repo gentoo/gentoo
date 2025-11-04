@@ -38,7 +38,7 @@ BDEPEND+="
 
 COMMON_DEPEND="
 	dev-libs/openssl:0=
-	virtual/zlib:0
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	usb? (

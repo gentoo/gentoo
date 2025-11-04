@@ -63,7 +63,7 @@ DEPEND="
 	static? (
 		dev-libs/lzo:2[static-libs(+)]
 		sys-apps/util-linux:0[static-libs(+)]
-		virtual/zlib:0[static-libs(+)]
+		virtual/zlib:=[static-libs(+)]
 		convert? (
 			sys-fs/e2fsprogs[static-libs(+)]
 			reiserfs? (

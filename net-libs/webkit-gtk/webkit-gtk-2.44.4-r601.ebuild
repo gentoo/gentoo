@@ -58,7 +58,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.8.0:2=
 	>=media-libs/libpng-1.4:0=
 	dev-db/sqlite:3
-	virtual/zlib:0
+	virtual/zlib:=
 	media-libs/libwebp:=
 	>=app-accessibility/at-spi2-core-2.46.0:2
 
