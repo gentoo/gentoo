@@ -40,7 +40,7 @@ RDEPEND="
 	sci-libs/umfpack:0=
 	>=sci-mathematics/dsfmt-2.2.4
 	>=sys-libs/libunwind-1.1:0=
-	virtual/zlib:0=
+	virtual/zlib:=
 	>=virtual/blas-3.6
 	virtual/lapack
 "

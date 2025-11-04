@@ -27,7 +27,7 @@ IUSE="
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/zlib:0=[${MULTILIB_USEDEP}]
+	virtual/zlib:=[${MULTILIB_USEDEP}]
 	debuginfod? (
 		net-misc/curl:=
 		dev-cpp/cpp-httplib:=

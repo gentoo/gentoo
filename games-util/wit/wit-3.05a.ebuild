@@ -20,7 +20,7 @@ RDEPEND="
 	app-arch/bzip2:0=
 	dev-libs/openssl:=
 	fuse? ( sys-fs/fuse:0= )
-	zlib? ( virtual/zlib:0= )"
+	zlib? ( virtual/zlib:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

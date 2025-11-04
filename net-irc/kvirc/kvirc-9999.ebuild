@@ -33,7 +33,7 @@ DEPEND="
 	dev-qt/qtbase:6[concurrent,gui,network,sql,widgets,xml]
 	dev-qt/qtmultimedia:6
 	dev-qt/qt5compat:6
-	virtual/zlib:0=
+	virtual/zlib:=
 	x11-libs/libX11
 	audiofile? ( media-libs/audiofile )
 	dbus? ( dev-qt/qtbase:6[dbus] )

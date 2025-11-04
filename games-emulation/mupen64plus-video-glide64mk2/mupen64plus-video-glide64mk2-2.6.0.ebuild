@@ -23,7 +23,7 @@ DEPEND="
 	>=games-emulation/mupen64plus-core-2.5:0=[gles2-only=]
 	media-libs/libpng:0=
 	media-libs/libsdl2:0=[video]
-	virtual/zlib:0=
+	virtual/zlib:=
 	virtual/opengl:0=
 	gles2-only? ( media-libs/libsdl2:0[gles2] )
 	hires? ( dev-libs/boost:= )

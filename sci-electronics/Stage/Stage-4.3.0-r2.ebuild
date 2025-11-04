@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-libs/libltdl:0
 	media-libs/libpng:0=
-	virtual/zlib:0=
+	virtual/zlib:=
 	x11-libs/fltk:1=[opengl]
 	virtual/glu
 	virtual/jpeg:0

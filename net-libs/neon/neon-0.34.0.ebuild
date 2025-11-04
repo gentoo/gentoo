@@ -29,7 +29,7 @@ DEPEND="
 		!gnutls? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
 	)
-	zlib? ( virtual/zlib:0=[${MULTILIB_USEDEP}] )
+	zlib? ( virtual/zlib:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

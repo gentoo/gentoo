@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	ssl? ( dev-libs/openssl:0= )
-	zlib? ( virtual/zlib:0= )
+	zlib? ( virtual/zlib:= )
 "
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )

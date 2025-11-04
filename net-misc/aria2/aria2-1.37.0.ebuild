@@ -40,7 +40,7 @@ RESTRICT="!test? ( test )"
 # ssl? -> openssl || (gnutls + (nettle || libgcrypt ))
 # !ssl? -> nettle || libgcrypt
 RDEPEND="
-	virtual/zlib:0=
+	virtual/zlib:=
 	adns? ( >=net-dns/c-ares-1.5.0:0= )
 	jemalloc? ( dev-libs/jemalloc )
 	libuv? ( >=dev-libs/libuv-1.13:0= )

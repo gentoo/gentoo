@@ -17,7 +17,7 @@ IUSE="doc threads"
 RDEPEND="
 	media-libs/tiff:=
 	media-libs/libjpeg-turbo:=
-	virtual/zlib:0="
+	virtual/zlib:="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

@@ -18,7 +18,7 @@ RDEPEND="
 	dev-lang/tcl:0=
 	sci-astronomy/wcstools
 	sci-visualization/gnuplot
-	virtual/zlib:0=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

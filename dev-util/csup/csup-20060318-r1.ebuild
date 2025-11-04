@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
-	virtual/zlib:0=
+	virtual/zlib:=
 	dev-libs/openssl:0="
 DEPEND="${RDEPEND}"
 BDEPEND=">=sys-devel/bison-2.1"

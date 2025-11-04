@@ -51,7 +51,7 @@ RDEPEND="
 	sci-libs/openlibm:0=
 	sci-libs/spqr:0=
 	sci-libs/umfpack:0=
-	virtual/zlib:0=
+	virtual/zlib:=
 	virtual/lapack
 "
 DEPEND="${RDEPEND}"

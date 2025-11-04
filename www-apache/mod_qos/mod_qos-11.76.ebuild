@@ -17,7 +17,7 @@ RDEPEND="
 	dev-libs/libpcre2
 	dev-libs/openssl:0=
 	media-libs/libpng:0=
-	virtual/zlib:0=
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 
