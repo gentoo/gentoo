@@ -51,6 +51,9 @@ PATCHES=(
 	# bug #964549
 	# https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/101
 	"${FILESDIR}/gnome-keyring-48.0-disable-libcap-ng-automagic.patch"
+
+	# bug #964367
+	"${FILESDIR}/gnome-keyring-48.0-fix-pam-install.patch"
 )
 
 pkg_setup() {
