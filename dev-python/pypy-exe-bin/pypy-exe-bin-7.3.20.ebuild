@@ -61,7 +61,7 @@ RDEPEND="
 	dev-libs/expat:0/0
 	dev-libs/libffi:0/8
 	sys-libs/ncurses:0/6
-	>=virtual/zlib-1.1.3:=:0/1
+	>=virtual/zlib-1.1.3:0/1
 	virtual/libintl:0/0
 	elibc_glibc? (
 		sys-devel/gcc
