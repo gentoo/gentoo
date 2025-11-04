@@ -13,7 +13,7 @@ S="${WORKDIR}/glaze-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples fuzzing test"
 RESTRICT="!test? ( test )"
 
