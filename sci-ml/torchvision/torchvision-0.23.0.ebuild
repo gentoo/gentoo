@@ -7,7 +7,8 @@ PYTHON_COMPAT=( python3_{10..13} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
-inherit cuda distutils-r1 multiprocessing
+ROCM_SKIP_GLOBALS=1
+inherit cuda distutils-r1 multiprocessing rocm
 
 DESCRIPTION="Datasets, transforms and models to specific to computer vision"
 HOMEPAGE="https://github.com/pytorch/vision"
@@ -45,7 +46,7 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
+distutils_enable_tests pytest
 
 src_prepare() {
 	# multilib fixes
@@ -56,7 +57,10 @@ src_prepare() {
 	distutils-r1_src_prepare
 }
 
-distutils_enable_tests pytest
+src_configure() {
+	rocm_add_sandbox -w
+	distutils-r1_src_configure
+}
 
 python_compile() {
 	addpredict /dev/kfd
@@ -93,6 +97,7 @@ python_test() {
 		test/test_extended_models.py::TestHandleLegacyInterface::test_equivalent_behavior_weights
 		test/test_image.py::test_decode_avif[decode_avif]
 		test/test_image.py::test_decode_bad_encoded_data
+		test/test_image.py::test_decode_gif[False-earth]
 		test/test_image.py::test_decode_gif[True-earth]
 		test/test_image.py::test_decode_heic[decode_heic]
 		test/test_image.py::test_decode_webp
