@@ -12,13 +12,12 @@ SRC_URI="https://github.com/texstudio-org/texstudio/archive/${PV}.tar.gz -> ${P}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-
 IUSE="video"
 
 DEPEND="
 	app-text/hunspell:=
 	app-text/poppler:=[qt6]
-	dev-libs/quazip:0=[qt6]
+	>=dev-libs/quazip-1.3-r2:0=[qt6(+)]
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[concurrent,gui,network,widgets,xml]
 	dev-qt/qtdeclarative:6
