@@ -9,6 +9,7 @@ inherit cmake kde.org xdg
 DESCRIPTION="Fast heap memory profiler"
 HOMEPAGE="https://apps.kde.org/heaptrack/
 https://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
+SRC_URI="https://dev.gentoo.org/~asturm/distfiles/kde/${KDE_ORG_NAME}-${PV}-${KDE_ORG_COMMIT:0:8}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
