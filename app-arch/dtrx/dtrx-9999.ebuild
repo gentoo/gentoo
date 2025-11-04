@@ -3,8 +3,8 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+DISTUTILS_USE_PEP517="setuptools"
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 optfeature
 
@@ -12,12 +12,14 @@ DESCRIPTION="Do The Right eXtraction - extracts archives of different formats"
 HOMEPAGE="https://github.com/dtrx-py/dtrx/
 	https://pypi.org/project/dtrx/"
 
-if [[ ${PV} == *9999* ]] ; then
+if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/${PN}-py/${PN}.git"
+
+	EGIT_REPO_URI="https://github.com/${PN}-py/${PN}"
 else
 	inherit pypi
-	KEYWORDS="~amd64 ~x86"
+
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-3+"
@@ -26,32 +28,22 @@ SLOT="0"
 DOCS=( README.md )
 
 src_prepare() {
-	sed -i '/ *platform==/s|.*||' setup.cfg || die  # bug #894148
+	if [[ -f setup.cfg ]] ; then
+		sed -e '/ *platform==/s|.*||' -i setup.cfg || die "sed failed"  # bug #894148
+	fi
 
 	distutils-r1_src_prepare
 }
 
 pkg_postinst() {
-	local supported_format
 	local -a supported_formats=(
-		arj
-		bzip2
-		cpio
-		gzip
-		lrzip
-		lzip
-		p7zip
-		rpm
-		unrar
-		unzip
-		xz-utils
-		zip
-		zstd
+		arj bzip2 cpio gzip lrzip lzip p7zip rpm unrar unzip xz-utils
+		zip zstd
 	)
-
-	for supported_format in ${supported_formats[@]}; do
-		optfeature                                                         \
-			"extraction of supported archives using ${supported_format}"   \
-			app-arch/${supported_format}
+	local supported_format=""
+	for supported_format in "${supported_formats[@]}" ; do
+		optfeature \
+			"extraction of supported archives using ${supported_format}" \
+			"app-arch/${supported_format}"
 	done
 }

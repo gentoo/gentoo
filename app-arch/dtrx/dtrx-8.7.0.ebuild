@@ -28,7 +28,9 @@ SLOT="0"
 DOCS=( README.md )
 
 src_prepare() {
-	sed -e '/ *platform==/s|.*||' -i setup.cfg || die "sed failed"  # bug #894148
+	if [[ -f setup.cfg ]] ; then
+		sed -e '/ *platform==/s|.*||' -i setup.cfg || die "sed failed"  # bug #894148
+	fi
 
 	distutils-r1_src_prepare
 }
