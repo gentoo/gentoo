@@ -41,7 +41,7 @@ BDEPEND=">=dev-build/cmake-3.31
 	doc? ( virtual/latex-base )"
 
 PATCHES=(
-	"${FILESDIR}"/gle-4.3.8.patch
+	"${FILESDIR}"/gle-4.3.8-r1.patch
 	"${FILESDIR}"/top_dir.patch
 )
 SITEFILE="64${PN}-gentoo.el"
