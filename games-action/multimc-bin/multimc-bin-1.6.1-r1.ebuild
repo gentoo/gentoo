@@ -33,7 +33,7 @@ RDEPEND="
 	dev-qt/qttest:5
 	dev-qt/qtxml:5
 	gnome-extra/zenity
-	virtual/zlib
+	virtual/zlib:=
 	>=virtual/jre-1.8.0
 	virtual/opengl
 	x11-libs/libXrandr

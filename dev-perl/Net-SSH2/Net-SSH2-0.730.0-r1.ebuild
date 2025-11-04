@@ -16,7 +16,7 @@ IUSE="gcrypt"
 
 RDEPEND="
 	net-libs/libssh2
-	virtual/zlib
+	virtual/zlib:=
 	!gcrypt? (
 		dev-libs/openssl:=
 	)

@@ -22,7 +22,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=dev-libs/glib-2.40
 	media-libs/libpng:=
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

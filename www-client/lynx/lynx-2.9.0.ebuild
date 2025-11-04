@@ -25,7 +25,7 @@ IUSE="brotli bzip2 cjk gnutls idn nls ssl"
 
 RDEPEND="
 	sys-libs/ncurses:=[unicode(+)]
-	virtual/zlib
+	virtual/zlib:=
 	brotli? ( app-arch/brotli:= )
 	bzip2? ( app-arch/bzip2 )
 	idn? ( net-dns/libidn2:= )

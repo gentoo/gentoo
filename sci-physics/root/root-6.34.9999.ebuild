@@ -63,7 +63,7 @@ CDEPEND="
 	media-libs/libpng:0=
 	virtual/libcrypt:=
 	sys-libs/ncurses:=
-	virtual/zlib
+	virtual/zlib:=
 	X? (
 		x11-libs/libX11:0
 		x11-libs/libXext:0

@@ -34,7 +34,7 @@ DEPEND="
 	media-libs/libsdl2[sound,opengl,video]
 	media-libs/sdl2-mixer[vorbis]
 	media-libs/sdl2-image[png]
-	virtual/zlib
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2 )
 	mng? ( media-libs/libmng )
 	vorbis? (

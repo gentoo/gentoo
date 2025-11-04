@@ -25,7 +25,7 @@ REQUIRED_USE="cpu_flags_x86_sse2 ${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

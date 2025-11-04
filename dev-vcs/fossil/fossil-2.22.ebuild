@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 # Please check sqlite minimum version on every release. This can be done with:
 #     ./configure --print-minimum-sqlite-version
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	|| (
 		sys-libs/readline:0
 		dev-libs/libedit

@@ -32,7 +32,7 @@ RDEPEND="
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/glibc
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/libX11

@@ -22,7 +22,7 @@ RDEPEND="acct-group/h2o
 	dev-libs/openssl:0=
 	!sci-libs/libh2o
 	sys-libs/libcap
-	virtual/zlib
+	virtual/zlib:=
 	libh2o? (
 		app-arch/brotli
 		dev-libs/libuv

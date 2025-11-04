@@ -86,7 +86,7 @@ COMMON_DEPEND="
 	media-libs/libcanberra
 	sci-libs/libqalculate:=
 	sys-apps/dbus
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libudev:=
 	appstream? ( >=dev-libs/appstream-1[qt6] )
 	calendar? ( >=kde-frameworks/kholidays-${KFMIN}:6 )

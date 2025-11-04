@@ -19,7 +19,7 @@ IUSE="fasttree judy lzma tcl wayland X"
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/glib:2
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango

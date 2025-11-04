@@ -17,7 +17,7 @@ IUSE="alsa fbcon ncurses oss slang truetype"
 DEPEND="
 	dev-libs/expat
 	media-libs/libsdl2[video]
-	virtual/zlib
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	ncurses? ( sys-libs/ncurses:= )
 	slang? ( sys-libs/slang )

@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="mpeg"
 
 DEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/fltk:1=
 	x11-libs/libX11
 	x11-libs/libXau

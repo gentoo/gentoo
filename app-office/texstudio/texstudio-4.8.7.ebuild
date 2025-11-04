@@ -24,7 +24,7 @@ DEPEND="
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
 	dev-qt/qttools:6[widgets]
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	video? ( dev-qt/qtmultimedia:6 )
 "

@@ -29,7 +29,7 @@ DEPEND="
 	dev-qt/qtsvg:6
 	sci-libs/gdal:=
 	sci-libs/proj:=
-	virtual/zlib
+	virtual/zlib:=
 	exif? ( media-gfx/exiv2:= )
 	gps? ( >=sci-geosciences/gpsd-3.17-r2:= )
 	libproxy? ( >=net-libs/libproxy-0.5 )

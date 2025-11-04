@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 
 DOCS=( CHANGELOG README TODO )
 
-DEPEND="virtual/zlib
+DEPEND="virtual/zlib:=
 	>=sys-libs/ncurses-5.0:0="
 
 RDEPEND="${DEPEND}"

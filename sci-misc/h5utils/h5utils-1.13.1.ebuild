@@ -17,7 +17,7 @@ IUSE="hdf octave"
 DEPEND="
 	media-libs/libpng:0=
 	sci-libs/hdf5:0=
-	virtual/zlib
+	virtual/zlib:=
 	hdf? (
 		sci-libs/hdf:0=
 		virtual/jpeg:0

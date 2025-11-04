@@ -27,7 +27,7 @@ SLOT="0"
 
 DEPEND="
 	sys-libs/readline:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

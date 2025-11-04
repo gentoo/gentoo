@@ -89,7 +89,7 @@ RDEPEND="
 	app-arch/zstd:=
 	dev-libs/elfutils
 	sys-libs/binutils-libs:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libcrypt
 "
 

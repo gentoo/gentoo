@@ -20,7 +20,7 @@ KEYWORDS="~alpha amd64 ~arm64 ~ppc ~ppc64 ~riscv ~sparc x86"
 IUSE="gucharmap nls python spell"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="virtual/zlib
+RDEPEND="virtual/zlib:=
 	x11-libs/gtk+:3
 	gucharmap? ( gnome-extra/gucharmap:2.90 )
 	python? ( ${PYTHON_DEPS} )

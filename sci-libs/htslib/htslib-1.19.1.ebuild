@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+bzip2 curl +lzma"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2 )
 	curl? ( net-misc/curl )
 	lzma? ( app-arch/xz-utils )"

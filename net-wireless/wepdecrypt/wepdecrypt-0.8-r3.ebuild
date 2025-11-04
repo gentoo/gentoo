@@ -15,7 +15,7 @@ IUSE="X"
 RDEPEND="
 	dev-libs/openssl:=
 	net-libs/libpcap
-	virtual/zlib
+	virtual/zlib:=
 	X? ( x11-libs/fltk:1= )"
 DEPEND="${RDEPEND}"
 

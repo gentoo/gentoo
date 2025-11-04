@@ -23,7 +23,7 @@ RESTRICT="bindist fetch splitdebug strip"
 RDEPEND="
 	media-libs/libpng-compat:1.2
 	media-libs/libsdl2[opengl,video]
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 "
 

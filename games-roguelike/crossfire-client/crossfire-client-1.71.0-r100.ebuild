@@ -27,7 +27,7 @@ RDEPEND="
 	sdl? ( media-libs/libsdl[video]
 		media-libs/sdl-image[png] )
 	sound? ( media-libs/sdl-mixer[vorbis] )
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

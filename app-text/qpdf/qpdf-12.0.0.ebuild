@@ -29,7 +29,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/libjpeg-turbo:=
-	virtual/zlib
+	virtual/zlib:=
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? ( dev-libs/openssl:= )
 	zopfli? ( app-arch/zopfli:= )

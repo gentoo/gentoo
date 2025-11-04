@@ -20,7 +20,7 @@ DEPEND="
 	media-libs/libpano13:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}
 	!media-gfx/autopano-sift

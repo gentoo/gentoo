@@ -96,7 +96,7 @@ COMMON_DEPEND="
 	sys-apps/util-linux
 	sys-fs/e2fsprogs
 	sys-libs/ncurses
-	virtual/zlib
+	virtual/zlib:=
 	${PYTHON_DEPS}
 "
 

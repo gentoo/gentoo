@@ -26,7 +26,7 @@ DEPEND="
 	dev-libs/libxml2:=
 	dev-libs/libxslt
 	dev-libs/xapian:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libiconv
 	chm? (
 		dev-libs/chmlib

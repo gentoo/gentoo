@@ -18,7 +18,7 @@ RDEPEND="
 	acct-group/flows
 	acct-user/flows
 	sys-apps/tcp-wrappers
-	virtual/zlib
+	virtual/zlib:=
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	ssl? ( dev-libs/openssl:= )

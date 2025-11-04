@@ -16,7 +16,7 @@ IUSE="+pcre"
 
 RDEPEND="
 	app-arch/bzip2
-	virtual/zlib
+	virtual/zlib:=
 	pcre? ( dev-libs/libpcre2:=[pcre32] )
 "
 DEPEND="${RDEPEND}"

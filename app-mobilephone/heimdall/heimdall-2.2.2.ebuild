@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="gui"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libusb:1=
 	gui? (
 		dev-qt/qtbase:6[gui,widgets]

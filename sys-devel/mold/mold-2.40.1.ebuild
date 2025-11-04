@@ -28,7 +28,7 @@ RDEPEND="
 	app-arch/zstd:=
 	>=dev-cpp/tbb-2021.7.0-r1:=
 	dev-libs/blake3:=
-	virtual/zlib
+	virtual/zlib:=
 	!kernel_Darwin? (
 		>=dev-libs/mimalloc-2:=
 	)

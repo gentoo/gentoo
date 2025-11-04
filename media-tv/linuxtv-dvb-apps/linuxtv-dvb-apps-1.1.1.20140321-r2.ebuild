@@ -19,7 +19,7 @@ RDEPEND="
 		!media-video/alevt
 		media-libs/libpng:0=
 		media-libs/zvbi[v4l]
-		virtual/zlib
+		virtual/zlib:=
 		x11-libs/libX11
 	)
 	usb? ( virtual/libusb:0 )

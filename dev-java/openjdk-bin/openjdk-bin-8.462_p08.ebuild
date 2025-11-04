@@ -53,7 +53,7 @@ RDEPEND="
 		media-libs/freetype:2
 		elibc_glibc? ( >=sys-libs/glibc-2.2.5:* )
 		elibc_musl? ( sys-libs/musl )
-		virtual/zlib
+		virtual/zlib:=
 		alsa? ( media-libs/alsa-lib )
 		arm? ( dev-libs/libffi-compat:6 )
 		cups? ( net-print/cups )

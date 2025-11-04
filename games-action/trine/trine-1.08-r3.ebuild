@@ -31,7 +31,7 @@ RDEPEND="
 	>=media-libs/openal-1.15
 	>=sys-devel/gcc-4.3.0
 	>=sys-libs/glibc-2.4
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2
 	launcher? (
 		dev-libs/glib:2

@@ -141,7 +141,7 @@ MODULAR_X_DEPEND="
 
 COMMON_DEPEND="
 	${MODULAR_X_DEPEND}
-	virtual/zlib
+	virtual/zlib:=
 	>=media-libs/harfbuzz-1.4.5:=[icu,graphite]
 	>=media-libs/libpng-1.2.43-r2:0=
 	media-libs/gd[png]

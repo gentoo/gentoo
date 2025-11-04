@@ -32,7 +32,7 @@ REQUIRED_USE="|| ( client server )"
 RDEPEND="
 	dev-libs/mxml:4
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 
 	client? (
 		media-libs/libglvnd[X]

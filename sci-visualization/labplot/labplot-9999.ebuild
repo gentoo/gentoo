@@ -60,7 +60,7 @@ DEPEND="
 	origin? ( sci-libs/liborigin:2 )
 	root? (
 		app-arch/lz4
-		virtual/zlib
+		virtual/zlib:=
 	)
 	serial? ( >=dev-qt/qtserialport-${QTMIN}:6 )
 	share? ( >=kde-frameworks/purpose-${KFMIN}:6 )

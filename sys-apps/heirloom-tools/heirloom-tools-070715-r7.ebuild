@@ -18,7 +18,7 @@ RESTRICT="test"
 
 RDEPEND="
 	sys-libs/ncurses:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 "
 DEPEND="${RDEPEND}"

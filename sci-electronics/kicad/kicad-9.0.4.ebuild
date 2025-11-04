@@ -73,7 +73,7 @@ COMMON_DEPEND="
 	>=x11-libs/cairo-1.8.8:=
 	>=x11-libs/pixman-0.30
 	>sci-electronics/ngspice-27[shared]
-	virtual/zlib
+	virtual/zlib:=
 	>=x11-libs/wxGTK-3.2.2.1-r3:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep '
 		dev-libs/boost:=[context,nls,python,${PYTHON_USEDEP}]

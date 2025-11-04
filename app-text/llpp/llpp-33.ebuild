@@ -20,7 +20,7 @@ RDEPEND=">=app-text/mupdf-1.17.0:0=
 	media-libs/freetype:2
 	media-libs/jbig2dec:=
 	media-libs/openjpeg:2
-	virtual/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXau

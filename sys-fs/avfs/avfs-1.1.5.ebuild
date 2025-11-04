@@ -15,7 +15,7 @@ IUSE="lzip +lzma webdav +zstd"
 RDEPEND="
 	app-arch/bzip2:=
 	>=sys-fs/fuse-2.4:0
-	virtual/zlib
+	virtual/zlib:=
 	lzip? ( app-arch/lzlib )
 	lzma? ( app-arch/xz-utils )
 	webdav? ( net-libs/neon:= )

@@ -58,7 +58,7 @@ CDEPEND="
 	dev-cpp/eigen:3
 	media-libs/libsndfile
 	media-libs/libsamplerate
-	virtual/zlib
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	curl? ( net-misc/curl )
 	dssi? (

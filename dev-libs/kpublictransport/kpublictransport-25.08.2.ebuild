@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
 	>=kde-frameworks/kitemmodels-${KFMIN}:6
-	virtual/zlib
+	virtual/zlib:=
 	networkmanager? ( >=kde-frameworks/networkmanager-qt-${KFMIN}:6 )
 "
 DEPEND="${RDEPEND}

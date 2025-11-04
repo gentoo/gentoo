@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	dev-libs/boost:=
 	dev-libs/openssl:0=[-bindist(-)]
-	virtual/zlib
+	virtual/zlib:=
 	upnp? ( net-libs/miniupnpc:= )
 "
 DEPEND="

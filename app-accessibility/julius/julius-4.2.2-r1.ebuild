@@ -19,7 +19,7 @@ RDEPEND="
 	dev-lang/perl
 	dev-perl/Jcode
 	sys-libs/readline:0
-	virtual/zlib
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	portaudio? ( media-libs/portaudio )
 	pulseaudio? ( media-libs/libpulse )

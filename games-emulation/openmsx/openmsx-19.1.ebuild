@@ -26,7 +26,7 @@ RDEPEND="dev-lang/tcl:0=
 	media-libs/libvorbis
 	media-libs/sdl2-ttf
 	>=media-libs/glew-1.3.2:0=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"

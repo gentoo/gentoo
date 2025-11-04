@@ -24,7 +24,7 @@ RDEPEND="
 	net-libs/libsoup:3.0
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
-	virtual/zlib
+	virtual/zlib:=
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"

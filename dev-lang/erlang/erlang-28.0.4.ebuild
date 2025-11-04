@@ -29,7 +29,7 @@ RDEPEND="
 	acct-group/epmd
 	acct-user/epmd
 	sys-libs/ncurses:0
-	virtual/zlib
+	virtual/zlib:=
 	java? ( >=virtual/jdk-1.8:* )
 	odbc? ( dev-db/unixODBC )
 	sctp? ( net-misc/lksctp-tools )

@@ -22,7 +22,7 @@ DEPEND="dev-db/libzdb
 	app-text/asciidoc
 	app-text/xmlto
 	app-crypt/mhash
-	virtual/zlib
+	virtual/zlib:=
 	dev-libs/gmime:2.6
 	>=dev-libs/glib-2.16
 	dev-libs/libevent:=

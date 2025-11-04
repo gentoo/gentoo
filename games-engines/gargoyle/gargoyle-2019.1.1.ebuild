@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/libpng:0
 	media-libs/sdl-mixer
 	media-libs/sdl-sound[modplug,mp3,vorbis]
-	virtual/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}"

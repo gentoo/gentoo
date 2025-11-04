@@ -29,7 +29,7 @@ IUSE="examples"
 # 721022, should depend on sys-libs/readline:=
 DEPEND="
 	sys-libs/readline:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

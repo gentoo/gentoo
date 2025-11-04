@@ -37,7 +37,7 @@ KEYWORDS="amd64 arm64"
 # for the user.
 RDEPEND="
 	>=virtual/jre-11
-	virtual/zlib
+	virtual/zlib:=
 "
 BDEPEND="!amd64? ( !arm64? ( >=virtual/jre-11 ) )"
 

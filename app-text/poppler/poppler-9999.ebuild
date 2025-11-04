@@ -31,7 +31,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=media-libs/fontconfig-2.13
 	>=media-libs/freetype-2.10
-	virtual/zlib
+	virtual/zlib:=
 	cairo? (
 		>=dev-libs/glib-2.64:2
 		>=x11-libs/cairo-1.16

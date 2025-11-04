@@ -36,7 +36,7 @@ BDEPEND="
 DEPEND="
 	dev-qt/qtbase:6[concurrent,network,widgets]
 	media-libs/freetype
-	virtual/zlib
+	virtual/zlib:=
 	cups? (
 		dev-qt/qtbase:6[gui,widgets]
 		net-print/cups

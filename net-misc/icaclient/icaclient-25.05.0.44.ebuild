@@ -81,7 +81,7 @@ RDEPEND="
 	sys-apps/util-linux
 	llvm-runtimes/libcxx
 	llvm-runtimes/libcxxabi
-	virtual/zlib
+	virtual/zlib:=
 	virtual/krb5
 	virtual/libudev
 	x11-libs/cairo

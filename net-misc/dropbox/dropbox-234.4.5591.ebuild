@@ -37,7 +37,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	net-misc/wget
-	virtual/zlib
+	virtual/zlib:=
 	sys-libs/ncurses-compat:5
 	virtual/opengl
 	x11-libs/libICE

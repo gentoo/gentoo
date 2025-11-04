@@ -31,7 +31,7 @@ DEPEND="
 	dev-libs/boost:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	virtual/zlib
+	virtual/zlib:=
 	tiff? ( media-libs/tiff:= )
 	X? ( media-libs/libsdl )
 "

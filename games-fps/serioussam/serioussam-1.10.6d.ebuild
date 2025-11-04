@@ -29,7 +29,7 @@ RDEPEND="
 	games-fps/serioussam-tse-data
 	media-libs/libsdl2[video,joystick,opengl]
 	media-libs/libvorbis
-	virtual/zlib
+	virtual/zlib:=
 	alsa? (
 		>=media-libs/libsdl2-2.0.6[alsa,sound]
 	)

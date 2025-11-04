@@ -29,7 +29,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	=x11-libs/fltk-1.3*:1=
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( >=media-libs/libpng-1.2:= )

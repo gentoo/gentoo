@@ -16,7 +16,7 @@ IUSE="debug gcrypt static-libs"
 
 DEPEND="
 	app-arch/bzip2
-	virtual/zlib
+	virtual/zlib:=
 	gcrypt? ( dev-libs/libgcrypt:0 )
 	!gcrypt? ( dev-libs/openssl:0= )
 "

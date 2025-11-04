@@ -41,7 +41,7 @@ BDEPEND="
 "
 DEPEND="
 	app-text/libpaper:=
-	virtual/zlib
+	virtual/zlib:=
 	acl? (
 		kernel_linux? (
 			sys-apps/acl

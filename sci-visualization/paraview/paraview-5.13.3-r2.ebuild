@@ -47,7 +47,7 @@ RDEPEND="
 	sci-libs/hdf5:=[mpi=]
 	>=sci-libs/netcdf-4.2[hdf5]
 	>=sci-libs/netcdf-cxx-4.2:3
-	virtual/zlib
+	virtual/zlib:=
 	virtual/glu
 	media-libs/libjpeg-turbo:=
 	x11-libs/libX11

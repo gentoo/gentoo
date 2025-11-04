@@ -21,7 +21,7 @@ REQUIRED_USE="
 
 DEPEND="
 	dev-libs/expat
-	virtual/zlib
+	virtual/zlib:=
 	alsa? ( media-libs/alsa-lib )
 	ncurses? ( sys-libs/ncurses:= )
 	sdl? ( media-libs/libsdl2[video] )

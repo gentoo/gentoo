@@ -39,7 +39,7 @@ RDEPEND="
 	dev-libs/spdlog:=
 	net-libs/libupnp:=[ipv6(+),reuseaddr,-blocking-tcp]
 	sys-apps/util-linux
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libiconv
 	curl? ( net-misc/curl )
 	exif? ( media-libs/libexif )

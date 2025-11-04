@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11

@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="virtual/zlib
+RDEPEND="virtual/zlib:=
 	app-crypt/mhash
 	dev-libs/libmcrypt"
 

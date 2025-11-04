@@ -47,13 +47,13 @@ BDEPEND="
 		dev-texlive/texlive-latexrecommended
 	)
 	test? (
-		virtual/zlib
+		virtual/zlib:=
 		app-arch/xz-utils
 		app-arch/bzip2
 		app-arch/zstd
 	)
 	examples? (
-		virtual/zlib
+		virtual/zlib:=
 		app-arch/xz-utils
 		app-arch/bzip2
 		app-arch/zstd

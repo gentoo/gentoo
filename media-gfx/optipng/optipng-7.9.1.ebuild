@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-li
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="virtual/zlib
+RDEPEND="virtual/zlib:=
 	media-libs/libpng:0="
 DEPEND="${RDEPEND}"
 

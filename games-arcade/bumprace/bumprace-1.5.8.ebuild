@@ -18,7 +18,7 @@ DEPEND="
 	media-libs/libsdl[sound,video]
 	media-libs/sdl-image[gif,jpeg,png]
 	media-libs/sdl-mixer[mod]
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

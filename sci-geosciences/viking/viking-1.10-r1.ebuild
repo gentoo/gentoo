@@ -26,7 +26,7 @@ COMMONDEPEND="
 	>=dev-libs/json-glib-0.16
 	dev-libs/nettle
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 	>=x11-libs/gdk-pixbuf-2.26:2
 	>=x11-libs/gtk+-3.22:3
 	geoclue? ( >=app-misc/geoclue-2.4.4:2.0 )

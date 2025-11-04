@@ -19,7 +19,7 @@ RDEPEND="dev-libs/libxml2:=
 	acct-group/davfs2
 	acct-user/davfs2
 	net-libs/neon:0/27
-	virtual/zlib
+	virtual/zlib:=
 	nls? ( virtual/libintl virtual/libiconv )
 "
 BDEPEND="

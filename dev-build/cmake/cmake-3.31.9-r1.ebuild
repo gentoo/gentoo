@@ -72,7 +72,7 @@ RDEPEND="
 	>=dev-libs/jsoncpp-1.9.2-r2:0=
 	>=dev-libs/libuv-1.51.0-r1:=
 	>=net-misc/curl-7.21.5[ssl]
-	virtual/zlib
+	virtual/zlib:=
 	virtual/pkgconfig
 	dap? ( dev-cpp/cppdap )
 	gui? ( dev-qt/qtbase:6[gui,widgets] )

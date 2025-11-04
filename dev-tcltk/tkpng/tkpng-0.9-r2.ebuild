@@ -19,7 +19,7 @@ IUSE="debug threads"
 RDEPEND="
 	>=dev-lang/tcl-8.4:=
 	>=dev-lang/tk-8.4:=
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

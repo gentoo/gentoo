@@ -19,7 +19,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="
 	${RDEPEND}

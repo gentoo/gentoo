@@ -21,7 +21,7 @@ DEPEND="
 	dev-libs/confuse
 	dev-libs/dbus-glib
 	sys-apps/dbus
-	virtual/zlib
+	virtual/zlib:=
 	amd64? ( sys-apps/pciutils )
 	x86? ( sys-apps/pciutils )
 	gtk? ( x11-libs/gtk+:2 )

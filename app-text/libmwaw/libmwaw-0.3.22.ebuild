@@ -22,7 +22,7 @@ IUSE="doc tools"
 
 DEPEND="
 	dev-libs/librevenge
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="

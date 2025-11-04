@@ -31,7 +31,7 @@ RDEPEND="
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-mixer[vorbis]
 	media-libs/sdl2-ttf
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 "
 DEPEND="${RDEPEND}"

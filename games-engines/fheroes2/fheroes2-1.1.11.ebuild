@@ -21,7 +21,7 @@ DEPEND="
 	media-libs/libsdl2[video]
 	media-libs/sdl2-image
 	media-libs/sdl2-mixer
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

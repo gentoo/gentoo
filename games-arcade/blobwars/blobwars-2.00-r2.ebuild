@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/sdl2-ttf
 	media-libs/sdl2-image
 	media-libs/sdl2-net
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libintl
 "
 DEPEND="${RDEPEND}"

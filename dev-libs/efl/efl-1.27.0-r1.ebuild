@@ -47,7 +47,7 @@ RDEPEND="${LUA_DEPS}
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	sys-apps/dbus
-	virtual/zlib
+	virtual/zlib:=
 	X? (
 		!opengl? ( media-libs/libglvnd )
 		media-libs/freetype

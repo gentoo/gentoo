@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	virtual/cblas
 	virtual/lapack
 "

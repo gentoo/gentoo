@@ -45,7 +45,7 @@ RDEPEND="!bundled-jdk? ( >=virtual/jre-1.8 )
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/libcap
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libXext

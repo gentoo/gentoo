@@ -28,7 +28,7 @@ for slot in ${USE_PHP} ; do
 done
 
 COMMON_DEPEND="|| ( dev-libs/libmemcached-awesome[sasl(-)?] >=dev-libs/libmemcached-1.0.14[sasl(-)?] )
-	virtual/zlib
+	virtual/zlib:=
 	igbinary? ( ${IGBINARY_DEPEND} )
 "
 DEPEND="${COMMON_DEPEND}"

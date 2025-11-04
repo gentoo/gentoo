@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	>=kde-frameworks/solid-${KFMIN}:6
 	sys-apps/acl
 	sys-apps/attr
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qtbase-${QTMIN}:6[concurrent]

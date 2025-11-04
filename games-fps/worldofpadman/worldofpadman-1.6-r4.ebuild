@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+curl dedicated maps +openal +theora +vorbis"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	!dedicated? (
 		media-libs/libjpeg-turbo
 		media-libs/libsdl[joystick,opengl,video,X]

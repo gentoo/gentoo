@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="acct-group/elasticsearch
 	acct-user/elasticsearch
-	virtual/zlib
+	virtual/zlib:=
 	virtual/jre"
 
 QA_PREBUILT="usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/\(bin\|lib\)/.*"

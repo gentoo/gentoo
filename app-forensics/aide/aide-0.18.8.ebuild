@@ -16,7 +16,7 @@ IUSE="acl audit curl e2fs mhash selinux xattr"
 
 DEPEND="
 	dev-libs/libpcre2
-	virtual/zlib
+	virtual/zlib:=
 	acl? ( virtual/acl )
 	audit? ( sys-process/audit )
 	curl? ( net-misc/curl )

@@ -15,7 +15,7 @@ IUSE=""
 DEPEND="
 	dev-libs/expat
 	net-libs/libtirpc:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

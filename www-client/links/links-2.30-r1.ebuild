@@ -70,7 +70,7 @@ RDEPEND="
 		x11-libs/libX11
 	)
 	zlib? (
-		virtual/zlib
+		virtual/zlib:=
 	)
 	zstd? (
 		app-arch/zstd:=

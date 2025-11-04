@@ -50,7 +50,7 @@ DEPEND="
 	dev-libs/glib:2
 	dev-libs/libxml2:2=
 	~media-sound/audacious-${PV}[gtk=,qt6=]
-	virtual/zlib
+	virtual/zlib:=
 	>=x11-libs/gdk-pixbuf-2.26:2
 	aac? ( >=media-libs/faad2-2.7 )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )

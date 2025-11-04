@@ -21,7 +21,7 @@ RDEPEND="
 		sci-libs/libmuscle
 		sci-biology/muscle
 	)
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/fltk:1=[xft(+)?]
 	x11-libs/libX11
 	xft? ( x11-libs/libXft )"

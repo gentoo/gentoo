@@ -31,7 +31,7 @@ RDEPEND="
 	dev-qt/qtbase:6[concurrent,dbus,gui,widgets,xml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qttools:6[widgets]
-	virtual/zlib
+	virtual/zlib:=
 	lua? ( ${LUA_DEPS} )
 	python? ( ${PYTHON_DEPS} )
 "

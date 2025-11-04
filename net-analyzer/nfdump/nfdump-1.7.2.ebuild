@@ -18,7 +18,7 @@ REQUIRED_USE="?? ( jnat nsel )"
 
 RDEPEND="
 	app-arch/bzip2
-	virtual/zlib
+	virtual/zlib:=
 	elibc_musl? ( sys-libs/fts-standalone )
 	ftconv? ( net-analyzer/flow-tools )
 	nfpcapd? ( net-libs/libpcap )

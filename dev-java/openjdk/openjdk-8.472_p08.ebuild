@@ -56,7 +56,7 @@ IUSE="alsa big-endian debug cups doc examples headless-awt javafx +jbootstrap se
 COMMON_DEPEND="
 	media-libs/freetype:2=
 	media-libs/giflib:0/7
-	virtual/zlib
+	virtual/zlib:=
 "
 # Many libs are required to build, but not to run, make is possible to remove
 # by listing conditionally in RDEPEND unconditionally in DEPEND

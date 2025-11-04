@@ -27,7 +27,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # Note: according to upstream, the blender plugin doesn't work with >=blender-2.8 (yet).
 RDEPEND="
 	dev-libs/libxml2:2=
-	virtual/zlib
+	virtual/zlib:=
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	opencv? ( media-libs/opencv:= )
 	png? ( media-libs/libpng:= )

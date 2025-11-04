@@ -26,7 +26,7 @@ REQUIRED_USE="
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:0=
-	virtual/zlib
+	virtual/zlib:=
 	gui? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

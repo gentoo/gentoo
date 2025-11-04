@@ -55,7 +55,7 @@ BDEPEND="
 RDEPEND="
 	media-libs/libvorbis
 	net-dns/libidn:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libintl
 	virtual/opengl
 	a52? ( media-libs/a52dec )

@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 	dbus? ( sys-apps/dbus )
 	lvm? ( sys-fs/lvm2 )
 	opengl? (

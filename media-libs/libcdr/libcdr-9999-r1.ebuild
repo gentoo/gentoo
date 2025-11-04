@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-libs/icu-75:=
 	dev-libs/librevenge
 	media-libs/lcms:2
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

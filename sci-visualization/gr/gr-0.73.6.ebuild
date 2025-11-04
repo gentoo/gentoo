@@ -22,7 +22,7 @@ DEPEND="
 	media-libs/libpng:=
 	media-libs/qhull:=
 	net-libs/zeromq
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXt

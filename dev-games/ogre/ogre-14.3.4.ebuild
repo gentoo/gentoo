@@ -40,7 +40,7 @@ RESTRICT="
 # vulkan-loader is dlopen'd
 RDEPEND="
 	media-libs/freetype:2
-	virtual/zlib
+	virtual/zlib:=
 	assimp? ( media-libs/assimp:= )
 	bullet? ( sci-physics/bullet:= )
 	cg? ( media-gfx/nvidia-cg-toolkit )

@@ -23,7 +23,7 @@ RDEPEND="
 	)
 	curl? (
 		net-misc/curl
-		virtual/zlib
+		virtual/zlib:=
 	)
 "
 DEPEND="${RDEPEND}"

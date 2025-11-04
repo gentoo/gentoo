@@ -26,7 +26,7 @@ DYNAMIC_DEPS="
 	media-libs/libvorbis
 	media-libs/sdl-mixer
 	media-libs/smpeg
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="
 	sys-libs/glibc

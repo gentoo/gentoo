@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libxml2:=
-	virtual/zlib
+	virtual/zlib:=
 	nls? ( virtual/libintl )
 	python? ( ${PYTHON_DEPS} )
 "

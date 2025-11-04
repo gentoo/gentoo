@@ -128,7 +128,7 @@ COMMON_DEPEND="${TB_ONLY_DEPEND}
 	media-libs/mesa
 	<media-video/ffmpeg-8.0
 	sys-apps/dbus
-	virtual/zlib
+	virtual/zlib:=
 	virtual/freedesktop-icon-theme
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2

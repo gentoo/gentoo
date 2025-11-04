@@ -25,7 +25,7 @@ DEPEND="
 	media-libs/openal
 	media-libs/rtmidi
 	net-libs/libslirp
-	virtual/zlib
+	virtual/zlib:=
 	fluidsynth? ( media-sound/fluidsynth:= )
 	munt? ( media-libs/munt-mt32emu )
 	openal? ( media-libs/openal )

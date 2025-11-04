@@ -41,7 +41,7 @@ COMMON_DEPEND="
 	dev-libs/libzip:=
 	media-libs/libpng:=
 	net-misc/curl[ssl]
-	virtual/zlib
+	virtual/zlib:=
 	!dedicated? (
 		media-libs/libsdl2
 		media-libs/speexdsp

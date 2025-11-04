@@ -27,7 +27,7 @@ IUSE=""
 
 DEPEND="
 	=media-tv/kodi-${PV%%.*}*
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

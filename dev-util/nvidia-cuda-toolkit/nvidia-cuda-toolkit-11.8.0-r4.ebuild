@@ -34,7 +34,7 @@ RDEPEND="
 			=dev-libs/openssl-1.1.1*
 		)
 		media-libs/tiff-compat:4
-		virtual/zlib
+		virtual/zlib:=
 	)
 	vis-profiler? (
 		>=virtual/jre-1.8:*

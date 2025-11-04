@@ -34,7 +34,7 @@ RDEPEND="
 		media-libs/libogg
 		media-libs/libvorbis
 		media-libs/openal
-		virtual/zlib
+		virtual/zlib:=
 	)"
 
 pkg_nofetch() {

@@ -21,7 +21,7 @@ IUSE="debug ssl"
 # cppunit dependency - https://github.com/rakshasa/libtorrent/issues/182
 RDEPEND="
 	dev-util/cppunit:=
-	virtual/zlib
+	virtual/zlib:=
 	ssl? ( dev-libs/openssl:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"

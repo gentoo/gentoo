@@ -37,7 +37,7 @@ RDEPEND="
 	jpeg2k? ( >=media-libs/openjpeg-2.1:2= )
 	opengl? ( >=media-libs/freeglut-3.0.0 )
 	ssl? ( >=dev-libs/openssl-1.1:0= )
-	virtual/zlib
+	virtual/zlib:=
 	X? (
 		media-libs/libglvnd[X]
 		x11-libs/libX11

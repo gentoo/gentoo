@@ -28,7 +28,7 @@ RDEPEND="
 	>=x11-libs/gdk-pixbuf-2.36.5:2[jpeg?,tiff?]
 	>=x11-libs/gtk+-3.24.15:3[introspection,X]
 	>=gui-libs/libhandy-1.5.0:1
-	virtual/zlib
+	virtual/zlib:=
 
 	exif? ( >=media-libs/libexif-0.6.14 )
 	lcms? ( media-libs/lcms:2 )

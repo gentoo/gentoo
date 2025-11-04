@@ -23,7 +23,7 @@ RDEPEND="
 	>=net-print/cups-2
 	net-print/libcupsfilters
 	!<net-print/cups-filters-2.0.0
-	virtual/zlib
+	virtual/zlib:=
 	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
 	poppler? ( >=app-text/poppler-0.32[utils] )
 "

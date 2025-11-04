@@ -27,7 +27,7 @@ RDEPEND="
 	media-libs/sdl2-mixer
 	media-libs/sdl2-pango
 	media-libs/sdl2-ttf
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 "
 DEPEND="${RDEPEND}"

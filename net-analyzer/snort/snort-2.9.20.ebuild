@@ -26,7 +26,7 @@ DEPEND="acct-user/snort
 	>=dev-libs/libpcre-8.33
 	net-libs/libnsl:0=
 	>=net-libs/libpcap-1.3.0
-	virtual/zlib
+	virtual/zlib:=
 	!libtirpc? ( sys-libs/glibc[rpc(-)] )
 	libtirpc? ( net-libs/libtirpc )
 	open-appid? ( ${LUA_DEPS} )"

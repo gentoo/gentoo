@@ -27,7 +27,7 @@ RDEPEND="
 	net-misc/curl
 	sci-libs/gdal:=
 	>=sci-libs/libgeotiff-1.7.0:=
-	virtual/zlib
+	virtual/zlib:=
 	debug? ( sys-libs/libunwind:= )
 	postgres? ( dev-db/postgresql:*[xml] )
 "

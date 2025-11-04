@@ -16,7 +16,7 @@ KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist fetch splitdebug"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 "
 

@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/libmaxminddb:=
 	dev-libs/openssl:0=[-bindist(-)]
 	net-libs/miniupnpc:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libiconv
 	nat-pmp? ( net-libs/libnatpmp:= )
 	tbb? ( dev-cpp/tbb:= )

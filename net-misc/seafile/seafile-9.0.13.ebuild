@@ -31,7 +31,7 @@ RDEPEND="${PYTHON_DEPS}
 	net-libs/libwebsockets:=[client]
 	net-misc/curl
 	sys-apps/util-linux
-	virtual/zlib
+	virtual/zlib:=
 	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}

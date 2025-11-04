@@ -53,11 +53,11 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:* )
 	proxy?  (
 		dev-libs/libevent:=
-		virtual/zlib
+		virtual/zlib:=
 	)
 	server? (
 		dev-libs/libevent:=
-		virtual/zlib
+		virtual/zlib:=
 	)
 	snmp? ( net-analyzer/net-snmp:= )
 	sqlite? ( dev-db/sqlite )

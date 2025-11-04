@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~arm64 ppc x86"
 
 DEPEND="
 	media-libs/libjpeg-turbo:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

@@ -25,7 +25,7 @@ IUSE="curl mms wxwidgets"
 RDEPEND="
 	~media-libs/libmediainfo-${PV}[curl=,mms=]
 	>=media-libs/libzen-0.4.41
-	virtual/zlib
+	virtual/zlib:=
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}=[X] )
 "
 DEPEND="${RDEPEND}"

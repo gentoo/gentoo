@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	>=dev-libs/libutf8proc-2.5.0:=
 	>=net-libs/serf-1.3.4
 	sys-apps/file
-	virtual/zlib
+	virtual/zlib:=
 	berkdb? ( >=sys-libs/db-4.0.14:= )
 	keyring? (
 		dev-libs/glib:2

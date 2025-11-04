@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ~sparc ~x86"
 DEPEND="
 	>=dev-lang/erlang-17.1:=
 	>=dev-erlang/p1_utils-1.0.25
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

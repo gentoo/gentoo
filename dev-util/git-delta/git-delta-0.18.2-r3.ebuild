@@ -275,7 +275,7 @@ BDEPEND="
 DEPEND="
 	dev-libs/libgit2:0/1.9
 	dev-libs/oniguruma:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

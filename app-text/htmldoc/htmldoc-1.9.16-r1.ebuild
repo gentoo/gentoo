@@ -18,7 +18,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="
 	media-libs/libjpeg-turbo:=
 	>=media-libs/libpng-1.4:0=
-	virtual/zlib
+	virtual/zlib:=
 	ssl? ( net-libs/gnutls:= )
 	fltk? ( x11-libs/fltk:1= )
 "

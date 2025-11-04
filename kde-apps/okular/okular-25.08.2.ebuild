@@ -44,7 +44,7 @@ DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/threadweaver-${KFMIN}:6
 	media-libs/freetype
-	virtual/zlib
+	virtual/zlib:=
 	crypt? ( >=kde-frameworks/kwallet-${KFMIN}:6 )
 	djvu? ( app-text/djvu )
 	epub? ( app-text/ebook-tools )

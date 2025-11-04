@@ -40,7 +40,7 @@ REQUIRED_USE="video_cards_amdgpu"
 BDEPEND="dev-util/patchelf"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 "
 
 QA_PREBUILT="

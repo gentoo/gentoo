@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.40
 	media-libs/libpng:0=
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

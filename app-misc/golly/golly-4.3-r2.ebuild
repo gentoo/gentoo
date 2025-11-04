@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,curl,opengl,sdl,tiff]
 	${PYTHON_DEPS}

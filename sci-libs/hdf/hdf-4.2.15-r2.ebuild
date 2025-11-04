@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( szip )"
 
 RDEPEND="net-libs/libtirpc:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	szip? ( virtual/szip )"
 DEPEND="${RDEPEND}

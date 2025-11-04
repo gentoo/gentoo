@@ -22,7 +22,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '

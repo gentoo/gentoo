@@ -33,7 +33,7 @@ DEPEND="
 	net-misc/curl
 	net-libs/nghttp2:=
 	sys-libs/binutils-libs:=
-	virtual/zlib
+	virtual/zlib:=
 "
 
 BDEPEND="test? ( ${PYTHON_DEPS} )"

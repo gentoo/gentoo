@@ -16,7 +16,7 @@ IUSE="doc examples fasttree fatlines judy lzma packed tcl"
 
 RDEPEND="
 	dev-libs/glib:2
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2
 	x11-libs/pango
 	judy? ( dev-libs/judy )

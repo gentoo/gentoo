@@ -16,7 +16,7 @@ DEPEND="
 	dev-libs/libpcre:3
 	net-libs/gnutls:=
 	sys-libs/readline:=
-	virtual/zlib
+	virtual/zlib:=
 "
 
 RDEPEND="

@@ -121,7 +121,7 @@ DEPEND="
 	dev-libs/userspace-rcu:=
 	sys-apps/keyutils:=
 	sys-apps/util-linux
-	virtual/zlib
+	virtual/zlib:=
 	virtual/udev
 	fuse? ( >=sys-fs/fuse-3.7.0 )
 "

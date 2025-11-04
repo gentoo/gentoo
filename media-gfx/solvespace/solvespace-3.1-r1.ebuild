@@ -46,7 +46,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2[X]
 	media-libs/libpng:0=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/cairo[X]
 	x11-libs/gtk+:3[X]

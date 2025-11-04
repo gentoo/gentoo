@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~sparc x8
 IUSE="aac alsa doc dv encode ffmpeg gtk jpeg lame cpu_flags_x86_mmx opengl png static-libs vorbis X x264"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	>=virtual/libintl-0-r1[${MULTILIB_USEDEP}]
 	aac? (
 		>=media-libs/faad2-2.7-r3[${MULTILIB_USEDEP}]

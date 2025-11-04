@@ -35,7 +35,7 @@ CDEPEND="
 	>=media-libs/vigra-1.11.1-r5[openexr,tiff]
 	sci-libs/fftw:3.0=
 	sci-libs/flann
-	virtual/zlib
+	virtual/zlib:=
 	virtual/glu
 	virtual/opengl
 	x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl]

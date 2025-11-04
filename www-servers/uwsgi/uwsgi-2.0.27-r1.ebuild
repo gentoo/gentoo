@@ -96,7 +96,7 @@ REQUIRED_USE="
 # 3. Plugins
 # 4. Language/app support
 CDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	caps? ( sys-libs/libcap )
 	json? (

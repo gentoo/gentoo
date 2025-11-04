@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	net-libs/libnatpmp
 	net-libs/miniupnpc:=
-	virtual/zlib
+	virtual/zlib:=
 	expat? ( dev-libs/expat )
 	!expat? ( dev-libs/libxml2:2= )
 	icu? ( dev-libs/icu:= )

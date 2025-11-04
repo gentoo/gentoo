@@ -32,7 +32,7 @@ RDEPEND="
 	media-libs/sdl2-image[png]
 	media-libs/sdl2-net
 	media-libs/sdl2-ttf
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	virtual/glu
 	curl? ( net-misc/curl )

@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	net-libs/gnutls:=
 	net-libs/miniupnpc:=
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	virtual/glu
 	media-libs/libjpeg-turbo:0=

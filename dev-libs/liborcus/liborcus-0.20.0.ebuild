@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=[zlib(+)]
-	virtual/zlib
+	virtual/zlib:=
 	python? ( ${PYTHON_DEPS} )
 	spreadsheet-model? ( dev-libs/libixion:${SLOT} )
 "

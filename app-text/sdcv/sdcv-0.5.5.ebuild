@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.36
-	virtual/zlib
+	virtual/zlib:=
 	readline? ( sys-libs/readline:= )
 "
 DEPEND="${RDEPEND}"

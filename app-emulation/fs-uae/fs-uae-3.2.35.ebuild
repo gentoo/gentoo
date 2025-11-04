@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/libpng:0=
 	media-libs/libsdl2[opengl,X]
 	media-libs/openal
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/libdrm
 	x11-libs/libX11

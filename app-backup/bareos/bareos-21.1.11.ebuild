@@ -62,7 +62,7 @@ DEPEND="
 		dev-libs/lzo
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
-		virtual/zlib
+		virtual/zlib:=
 	)
 	"
 RDEPEND="${DEPEND}

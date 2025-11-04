@@ -25,7 +25,7 @@ DEPEND="
 	x11-base/xorg-proto"
 BDEPEND="
 	dev-lang/nasm
-	virtual/zlib
+	virtual/zlib:=
 	virtual/pkgconfig"
 
 PATCHES=(

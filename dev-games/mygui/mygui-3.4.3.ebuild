@@ -22,7 +22,7 @@ REQUIRED_USE="ogre? ( !opengl )
 	opengl? ( !ogre )"
 
 RDEPEND="media-libs/freetype:2
-	virtual/zlib
+	virtual/zlib:=
 	ogre? (
 		>=dev-games/ogre-1.12:0=[freeimage,opengl]
 		samples? ( dev-games/ois )

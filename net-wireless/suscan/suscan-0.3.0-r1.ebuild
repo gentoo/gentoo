@@ -20,7 +20,7 @@ DEPEND="
 	media-libs/libsndfile
 	net-wireless/sigutils
 	net-wireless/soapysdr:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""

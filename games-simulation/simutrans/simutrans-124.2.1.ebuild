@@ -33,7 +33,7 @@ DEPEND="
 	media-libs/freetype
 	media-libs/libpng:0=
 	media-libs/libsdl2[sound,video]
-	virtual/zlib
+	virtual/zlib:=
 	midi? ( media-sound/fluidsynth:=[sdl] )
 	fontconfig? ( media-libs/fontconfig )
 	upnp? ( net-libs/miniupnpc:= )

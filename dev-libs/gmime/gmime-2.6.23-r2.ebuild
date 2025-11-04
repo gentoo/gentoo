@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/glib:2
-	virtual/zlib
+	virtual/zlib:=
 	smime? ( >=app-crypt/gpgme-1.1.6:= )
 	vala? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "

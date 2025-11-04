@@ -19,7 +19,7 @@ DEPEND="
 	net-libs/libnsl:=
 	net-libs/libpcap
 	net-libs/libtirpc
-	virtual/zlib
+	virtual/zlib:=
 	sasl? ( dev-libs/cyrus-sasl )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 "

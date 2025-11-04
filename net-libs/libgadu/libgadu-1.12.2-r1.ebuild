@@ -26,7 +26,7 @@ BDEPEND="
 "
 DEPEND="
 	dev-libs/protobuf-c:=
-	virtual/zlib
+	virtual/zlib:=
 	ssl? ( net-libs/gnutls:= )
 "
 RDEPEND="${DEPEND}"

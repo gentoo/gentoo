@@ -18,7 +18,7 @@ SLOT="0"
 IUSE="doc ssl threads"
 
 COMMON_DEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	ssl? ( net-libs/gnutls:= )
 "
 DEPEND="${COMMON_DEPEND}

@@ -32,7 +32,7 @@ DEPEND="
 		media-libs/libpng:0=
 		media-libs/libsdl2[sound,threads(+),video]
 		media-libs/sdl2-mixer[mod,vorbis,wav]
-		virtual/zlib
+		virtual/zlib:=
 	)
 "
 RDEPEND="${DEPEND}"

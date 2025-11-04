@@ -19,7 +19,7 @@ BDEPEND="app-arch/unzip"
 RDEPEND="media-libs/freetype
 	media-libs/libsdl[X,sound,opengl,video]
 	media-libs/libpng
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl"
 
 S="${WORKDIR}/data/noarch"

@@ -21,7 +21,7 @@ IUSE="nls jpeg png tiff gimp lcms"
 DEPEND="
 	dev-libs/glib:2
 	media-gfx/sane-backends
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2
 	x11-misc/xdg-utils
 	jpeg? ( media-libs/libjpeg-turbo:= )

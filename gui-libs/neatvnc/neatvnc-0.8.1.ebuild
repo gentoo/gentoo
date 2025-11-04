@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	=dev-libs/aml-0.3*
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/pixman
 	examples? (
 		media-libs/libpng:=

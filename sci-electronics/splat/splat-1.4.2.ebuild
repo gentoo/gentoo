@@ -16,7 +16,7 @@ IUSE="doc hires l10n_es"
 
 DEPEND="
 	app-arch/bzip2
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

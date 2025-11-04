@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/openssl:0=
 	net-misc/curl
 	sys-fs/fuse:0
-	virtual/zlib
+	virtual/zlib:=
 	nbd? ( sys-block/nbd sys-block/nbdkit )
 "
 DEPEND="${RDEPEND}

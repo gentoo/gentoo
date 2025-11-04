@@ -18,7 +18,7 @@ RDEPEND="
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? (
 		media-libs/libpng:=
-		virtual/zlib
+		virtual/zlib:=
 	)
 	tiff? ( media-libs/tiff:= )
 	X? ( x11-libs/libX11 )"

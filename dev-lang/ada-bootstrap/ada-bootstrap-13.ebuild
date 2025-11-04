@@ -71,7 +71,7 @@ RDEPEND="
 	>=dev-libs/gmp-4.3.2:0/10.4
 	>=dev-libs/mpfr-2.4.2:0/6
 	>=dev-libs/mpc-0.8.1:0/3
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libiconv
 "
 BDEPEND="

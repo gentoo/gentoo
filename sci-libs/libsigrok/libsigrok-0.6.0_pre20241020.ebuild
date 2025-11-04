@@ -47,7 +47,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=dev-libs/glib-2.32.0
 	>=dev-libs/libzip-0.8:=
-	virtual/zlib
+	virtual/zlib:=
 	bluetooth? ( >=net-wireless/bluez-4.0:= )
 	cxx? ( dev-cpp/glibmm:2 )
 	ftdi? ( dev-embedded/libftdi:1 )

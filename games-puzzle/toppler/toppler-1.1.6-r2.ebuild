@@ -17,7 +17,7 @@ IUSE="nls"
 RDEPEND="acct-group/gamestat
 	media-libs/libsdl[joystick,video]
 	media-libs/sdl-mixer[vorbis]
-	virtual/zlib
+	virtual/zlib:=
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"

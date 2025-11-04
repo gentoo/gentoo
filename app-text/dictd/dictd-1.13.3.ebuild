@@ -20,7 +20,7 @@ RDEPEND="
 	acct-user/dictd
 	dev-libs/libmaa:=
 	sys-apps/coreutils
-	virtual/zlib
+	virtual/zlib:=
 	selinux? ( sec-policy/selinux-dictd )
 "
 DEPEND="${RDEPEND}

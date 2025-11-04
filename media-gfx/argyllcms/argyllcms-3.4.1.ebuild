@@ -21,7 +21,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	media-libs/libjpeg-turbo:=
 	media-libs/tiff:=
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libXScrnSaver
 	x11-libs/libXau

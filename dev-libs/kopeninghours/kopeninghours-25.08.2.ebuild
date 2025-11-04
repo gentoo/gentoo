@@ -27,7 +27,7 @@ DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=kde-frameworks/kholidays-${KFMIN}:6
 	>=kde-frameworks/ki18n-${KFMIN}:6
-	virtual/zlib
+	virtual/zlib:=
 	python? (
 		$(python_gen_cond_dep '
 			>=dev-libs/boost-1.70:=[python,${PYTHON_USEDEP}]

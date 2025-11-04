@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-qt/qtbase:6[gui,widgets]
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="dev-qt/qttools:6[linguist]"

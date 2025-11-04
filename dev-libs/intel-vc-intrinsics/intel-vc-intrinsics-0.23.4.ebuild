@@ -25,7 +25,7 @@ DEPEND="
 	$(llvm_gen_dep '
 		llvm-core/llvm:${LLVM_SLOT}
 	')
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${PYTHON_DEPS}"

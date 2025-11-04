@@ -19,7 +19,7 @@ IUSE="gles2 sdl"
 RDEPEND="
 	media-libs/glm
 	media-libs/libglvnd[X(+)]
-	virtual/zlib
+	virtual/zlib:=
 	sdl? ( >=media-libs/libsdl2-2.0.5 )
 "
 DEPEND="${RDEPEND}"

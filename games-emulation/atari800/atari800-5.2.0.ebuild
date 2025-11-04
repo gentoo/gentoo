@@ -39,7 +39,7 @@ DEPEND="
 		sys-libs/ncurses:=
 	)
 	media-libs/libpng:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

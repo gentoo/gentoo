@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/glib-2.16
 	dev-libs/gmime:2.6
 	dev-libs/libevent:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	ldap? ( >=net-nds/openldap-2.3.33:= )
 	sieve? ( >=mail-filter/libsieve-2.2.1 )

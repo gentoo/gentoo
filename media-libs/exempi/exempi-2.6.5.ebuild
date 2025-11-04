@@ -17,7 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/expat-2:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libiconv
 "
 DEPEND="

@@ -31,7 +31,7 @@ RDEPEND="
 	>=app-arch/zstd-1.4
 	>=dev-libs/libtracefs-1.8
 	>=dev-libs/libtraceevent-1.6.3
-	virtual/zlib
+	virtual/zlib:=
 	sys-process/audit
 	python? ( ${PYTHON_DEPS} )
 "

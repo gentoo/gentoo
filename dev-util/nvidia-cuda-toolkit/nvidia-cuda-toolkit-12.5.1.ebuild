@@ -34,7 +34,7 @@ RDEPEND="
 		dev-qt/qtwayland:6
 		>=dev-libs/openssl-3
 		media-libs/tiff-compat:4
-		virtual/zlib
+		virtual/zlib:=
 	)
 	rdma? ( sys-cluster/rdma-core )
 	vis-profiler? (

@@ -44,7 +44,7 @@ RESTRICT="test"
 RDEPEND="
 	app-arch/gzip
 	media-libs/libpng:0
-	virtual/zlib
+	virtual/zlib:=
 	mpi? (
 		virtual/mpi
 		sci-libs/hdf5:=[mpi]

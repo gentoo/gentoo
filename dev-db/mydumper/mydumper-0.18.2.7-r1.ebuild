@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/libpcre2:=
 	dev-libs/openssl:=
-	virtual/zlib
+	virtual/zlib:=
 "
 
 # this version uses libpcre2 but upstream forgot to remove old libpcre

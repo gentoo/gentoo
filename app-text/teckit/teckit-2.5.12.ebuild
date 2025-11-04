@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spar
 
 RDEPEND="
 	dev-libs/expat
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

@@ -18,7 +18,7 @@ IUSE="java static-libs suitesparse"
 DEPEND="media-libs/libpng:=
 	media-libs/tiff:=
 	media-libs/libjpeg-turbo:=
-	virtual/zlib
+	virtual/zlib:=
 	java? ( >=virtual/jdk-1.8:* )
 	suitesparse? ( sci-libs/suitesparse )"
 RDEPEND="${DEPEND}"

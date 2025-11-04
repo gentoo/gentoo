@@ -19,7 +19,7 @@ KEYWORDS="amd64 x86"
 DEPEND="
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[gui,widgets]
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}
 	dev-lang/perl

@@ -22,7 +22,7 @@ DEPEND="
 	tiff? ( media-libs/tiff:= )
 	png? (
 		>=media-libs/libpng-1.2:=
-		virtual/zlib
+		virtual/zlib:=
 	)
 	webp? ( media-libs/libwebp:= )
 "

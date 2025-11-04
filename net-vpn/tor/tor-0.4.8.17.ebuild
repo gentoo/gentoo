@@ -45,7 +45,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/libevent-2.1.12-r1:=[ssl]
 	dev-libs/openssl:=[-bindist(-)]
-	virtual/zlib
+	virtual/zlib:=
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
 	lzma? ( app-arch/xz-utils )

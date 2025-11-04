@@ -24,7 +24,7 @@ RDEPEND="
 	dev-qt/qtx11extras:5=
 	media-libs/assimp:=
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	display-mode? (
 		x11-libs/libXrandr

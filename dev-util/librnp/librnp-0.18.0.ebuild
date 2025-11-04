@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="app-arch/bzip2
 	dev-libs/json-c:=
 	>=dev-libs/sexpp-0.8.7
-	virtual/zlib
+	virtual/zlib:=
 	botan? ( dev-libs/botan:3= )
 	!botan? ( >=dev-libs/openssl-1.1.1:= )"
 DEPEND="${RDEPEND}

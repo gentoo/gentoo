@@ -27,7 +27,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/openssl:=
 	net-libs/udns
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

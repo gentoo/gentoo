@@ -71,7 +71,7 @@ DEPEND="
 		dev-libs/lzo
 		dev-libs/openssl:0=
 		sys-libs/ncurses:=
-		virtual/zlib
+		virtual/zlib:=
 	)
 	X? (
 		dev-qt/qtbase:6[widgets]

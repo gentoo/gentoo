@@ -38,7 +38,7 @@ DEPEND="${LUA_DEPS}
 	media-libs/sdl2-mixer:=[vorbis]
 	media-libs/sdl2-net:=
 	media-libs/sdl2-ttf:=
-	virtual/zlib
+	virtual/zlib:=
 	!pas2c? ( ffmpeg? ( media-video/ffmpeg:= ) )
 	"
 RDEPEND="${DEPEND}

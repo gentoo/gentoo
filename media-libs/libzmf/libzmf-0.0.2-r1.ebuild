@@ -23,7 +23,7 @@ RDEPEND="
 	dev-libs/icu:=
 	dev-libs/librevenge
 	media-libs/libpng:0=
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

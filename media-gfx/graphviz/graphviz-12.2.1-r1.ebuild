@@ -35,7 +35,7 @@ RDEPEND="
 	>=media-libs/gd-2.0.34:=[fontconfig,jpeg,png,truetype,zlib]
 	media-libs/libjpeg-turbo:=
 	>=media-libs/libpng-1.2:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libiconv
 	cairo? (
 		>=x11-libs/cairo-1.1.10[svg(+)]

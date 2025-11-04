@@ -22,7 +22,7 @@ RDEPEND="
 	app-text/hunspell:=
 	dev-qt/qtbase:6[concurrent,gui,widgets]
 	dev-qt/qtmultimedia:6
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

@@ -49,7 +49,7 @@ DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:6[X]
 	>=kde-frameworks/kxmlgui-${KFMIN}:6
 	>=kde-frameworks/sonnet-${KFMIN}:6
-	virtual/zlib
+	virtual/zlib:=
 	activities? ( kde-plasma/plasma-activities:6= )
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:6 )
 "

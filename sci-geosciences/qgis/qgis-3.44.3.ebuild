@@ -58,7 +58,7 @@ COMMON_DEPEND="
 	sci-libs/geos
 	sci-libs/libspatialindex:=
 	>=sci-libs/proj-8.1:=
-	virtual/zlib
+	virtual/zlib:=
 	>=dev-python/qscintilla-2.14.1-r1[qt6(+)]
 	>=x11-libs/qwt-6.2.0-r3:=[polar(+),qt6(+),svg(+)]
 	3d? ( dev-qt/qt3d:6 )

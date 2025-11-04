@@ -22,7 +22,7 @@ RDEPEND="
 	dev-perl/YAML
 	net-libs/ldns:=
 	net-libs/libpcap
-	virtual/zlib
+	virtual/zlib:=
 	cryptopant? ( app-crypt/cryptopant:= )
 	seccomp? ( sys-libs/libseccomp )
 "

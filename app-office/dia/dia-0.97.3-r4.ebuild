@@ -25,7 +25,7 @@ RDEPEND="
 	>=media-libs/freetype-2
 	>=media-libs/libart_lgpl-2
 	media-libs/libpng:=
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:2
 	x11-libs/pango
 	cairo? ( x11-libs/cairo )

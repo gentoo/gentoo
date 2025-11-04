@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
-	virtual/zlib
+	virtual/zlib:=
 	>=x11-libs/motif-2.3:0
 	x11-libs/libXext
 	x11-libs/libXmu

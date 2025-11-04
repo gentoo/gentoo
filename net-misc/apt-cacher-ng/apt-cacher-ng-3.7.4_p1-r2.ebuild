@@ -24,7 +24,7 @@ DEPEND="acct-user/apt-cacher-ng
 	dev-libs/libevent:=[threads(+)]
 	dev-libs/openssl:0=
 	net-dns/c-ares:=
-	virtual/zlib
+	virtual/zlib:=
 	fuse? ( sys-fs/fuse:0 )
 	systemd? ( sys-apps/systemd )
 	tcpd? ( sys-apps/tcp-wrappers )"

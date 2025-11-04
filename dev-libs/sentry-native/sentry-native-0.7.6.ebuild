@@ -19,7 +19,7 @@ RDEPEND="
 	breakpad? ( dev-util/breakpad )
 	curl? (
 		net-misc/curl
-		virtual/zlib
+		virtual/zlib:=
 	)
 "
 DEPEND="${RDEPEND}"

@@ -28,7 +28,7 @@ FILECAPS=(
 COMMON_DEPEND="
 	dev-libs/libltdl
 	net-libs/libnsl:0
-	virtual/zlib
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2 )
 	object-rexx? ( dev-lang/oorexx )
 	regina-rexx? ( dev-lang/regina-rexx )"

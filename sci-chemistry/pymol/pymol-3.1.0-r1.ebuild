@@ -24,7 +24,7 @@ DEPEND="
 	dev-libs/mmtf-cpp
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>=dev-python/pillow-10.3.0[${PYTHON_USEDEP}]
-	virtual/zlib
+	virtual/zlib:=
 	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/glm

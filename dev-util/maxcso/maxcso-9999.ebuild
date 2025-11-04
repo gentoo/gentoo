@@ -22,7 +22,7 @@ DEPEND="
 	app-arch/libdeflate[zlib(+)]
 	app-arch/lz4:=
 	dev-libs/libuv:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"

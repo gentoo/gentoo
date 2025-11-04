@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	media-libs/openal
 	net-libs/udns
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	ffmpeg? ( media-video/ffmpeg:0 )
 	gdal? ( sci-libs/gdal:= )

@@ -20,7 +20,7 @@ RDEPEND="
 	media-libs/giflib:=
 	media-libs/libpng:=
 	media-libs/libjpeg-turbo:=
-	virtual/zlib
+	virtual/zlib:=
 	sasl? ( dev-libs/cyrus-sasl )
 	xinetd? ( virtual/inetd )
 "

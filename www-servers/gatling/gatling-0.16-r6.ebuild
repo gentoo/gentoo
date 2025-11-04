@@ -16,7 +16,7 @@ IUSE="ssl diet"
 REQUIRED_USE="ssl? ( !diet )"
 
 DEPEND=">=dev-libs/libowfat-0.32-r2[diet=]
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	diet? ( dev-libs/dietlibc )
 	ssl? (

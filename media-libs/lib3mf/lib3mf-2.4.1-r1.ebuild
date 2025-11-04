@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/libzip:=
 	sys-apps/util-linux
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

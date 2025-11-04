@@ -27,7 +27,7 @@ QA_PREBUILT="
 RDEPEND="
 	media-libs/libglvnd[X]
 	sys-libs/libxcrypt:0/1
-	virtual/zlib
+	virtual/zlib:=
 	!bundled-libs? (
 		dev-libs/libsigc++:2
 		>=media-libs/libsdl2-2.0.1[X,joystick,opengl,sound,threads(+),video]

@@ -43,7 +43,7 @@ REQUIRED_USE="
 CDEPEND="acct-group/xrootd
 	acct-user/xrootd
 	dev-libs/openssl:0=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libcrypt:=
 	ceph? ( sys-cluster/ceph )
 	fuse? ( sys-fs/fuse:0= )

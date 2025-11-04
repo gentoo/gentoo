@@ -24,7 +24,7 @@ RDEPEND="
 		media-libs/devil[png]
 		media-libs/freetype:2
 		media-libs/libsdl[X,sound,joystick,opengl,video]
-		virtual/zlib
+		virtual/zlib:=
 	)
 "
 

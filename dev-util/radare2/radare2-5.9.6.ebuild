@@ -38,7 +38,7 @@ RDEPEND="
 	dev-libs/libzip:=
 	dev-libs/xxhash
 	sys-apps/file
-	virtual/zlib
+	virtual/zlib:=
 	ssl? ( dev-libs/openssl:0= )
 "
 DEPEND="

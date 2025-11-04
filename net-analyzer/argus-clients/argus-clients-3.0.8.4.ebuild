@@ -21,7 +21,7 @@ RDEPEND="
 	net-libs/libtirpc:=
 	sys-libs/ncurses:=
 	sys-libs/readline:=
-	virtual/zlib
+	virtual/zlib:=
 	ft? ( net-analyzer/flow-tools )
 	geoip? ( dev-libs/geoip )
 	mysql? ( dev-db/mysql-connector-c:0= )

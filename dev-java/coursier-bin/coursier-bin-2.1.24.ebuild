@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="amd64"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	>=virtual/jre-8
 "
 

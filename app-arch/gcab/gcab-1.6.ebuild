@@ -18,7 +18,7 @@ REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	>=dev-libs/glib-2.62.0:2
-	virtual/zlib
+	virtual/zlib:=
 	introspection? ( >=dev-libs/gobject-introspection-1.82.0-r2:= )
 "
 DEPEND="${RDEPEND}"

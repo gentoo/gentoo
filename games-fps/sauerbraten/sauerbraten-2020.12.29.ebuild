@@ -17,7 +17,7 @@ IUSE="debug dedicated server"
 
 DEPEND="
 	>=net-libs/enet-1.3.6:1.3
-	virtual/zlib
+	virtual/zlib:=
 	!dedicated? (
 		media-libs/libsdl2[X,opengl]
 		media-libs/sdl2-image

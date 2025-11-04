@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	app-arch/bzip2
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXext"

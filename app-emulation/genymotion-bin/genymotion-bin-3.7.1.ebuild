@@ -38,7 +38,7 @@ RDEPEND="app-arch/lz4
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
 	sys-apps/dbus
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libxcb

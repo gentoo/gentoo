@@ -23,7 +23,7 @@ IUSE="jpeg jpeg2k mng openexr png raw static-libs tiff webp"
 # The tiff/imath+openexr isn't a typo. The TIFF plugin cheats and
 # uses code from it to handle 16bit<->float conversions.
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
 	mng? ( media-libs/libmng:= )

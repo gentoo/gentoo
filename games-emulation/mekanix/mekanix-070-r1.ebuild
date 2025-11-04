@@ -20,7 +20,7 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXpm
 	x11-libs/libX11
-	virtual/zlib
+	virtual/zlib:=
 "
 
 # file verfies that it's an elf, not win32, binary:

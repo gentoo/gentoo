@@ -26,7 +26,7 @@ RDEPEND="
 	acct-group/vboxsf
 	acct-user/vboxguest
 	sys-libs/pam
-	virtual/zlib
+	virtual/zlib:=
 	~app-emulation/virtualbox-guest-modules-${PV}
 	dbus? ( sys-apps/dbus )
 	gui? (

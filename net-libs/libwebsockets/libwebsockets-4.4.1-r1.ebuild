@@ -26,7 +26,7 @@ REQUIRED_USE="
 	?? ( libev libevent )"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	caps? ( sys-libs/libcap )
 	dbus? ( sys-apps/dbus )
 	http-proxy? ( net-libs/libhubbub )

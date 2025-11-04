@@ -23,7 +23,7 @@ DEPEND="
 	app-text/hunspell:=
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[gui,widgets]
-	virtual/zlib
+	virtual/zlib:=
 	aspell? ( app-text/aspell )
 	djvu? ( app-text/djvu )
 	pdf? ( app-text/poppler:=[qt6(+)] )

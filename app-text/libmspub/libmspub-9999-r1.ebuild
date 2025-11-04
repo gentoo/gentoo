@@ -22,7 +22,7 @@ IUSE="doc static-libs"
 RDEPEND="
 	dev-libs/icu:=
 	dev-libs/librevenge
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}
 	dev-build/libtool

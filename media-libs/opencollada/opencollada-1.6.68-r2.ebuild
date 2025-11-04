@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/libxml2:=
 	dev-libs/zziplib
 	media-libs/lib3ds
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

@@ -59,7 +59,7 @@ RDEPEND="
 		media-libs/libpulse
 		media-libs/libsndfile
 		media-libs/libvorbis
-		virtual/zlib
+		virtual/zlib:=
 		virtual/glu
 		x11-libs/libICE
 		x11-libs/libSM

@@ -20,7 +20,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
-	virtual/zlib
+	virtual/zlib:=
 	virtual/glu
 "
 DEPEND="${RDEPEND}

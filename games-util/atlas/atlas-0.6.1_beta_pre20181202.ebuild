@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	media-libs/plib
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl

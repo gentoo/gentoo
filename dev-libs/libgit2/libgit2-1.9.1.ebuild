@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-libs/libpcre2:=
 	net-libs/llhttp:=
-	virtual/zlib
+	virtual/zlib:=
 	dev-libs/openssl:0=
 	gssapi? ( virtual/krb5 )
 	ssh? ( net-libs/libssh2 )

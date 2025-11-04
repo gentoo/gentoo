@@ -28,7 +28,7 @@ RDEPEND="
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/glibc
-	virtual/zlib
+	virtual/zlib:=
 	virtual/secret-service
 	x11-libs/cairo
 	x11-libs/gtk+:3

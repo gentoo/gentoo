@@ -56,7 +56,7 @@ RDEPEND="
 	dev-qt/qtcharts:6
 	media-fonts/dejavu
 	>=sci-astronomy/calcmysky-0.3.0:=[qt6(+)]
-	virtual/zlib
+	virtual/zlib:=
 	gps? (
 		dev-qt/qtpositioning:6
 		dev-qt/qtserialport:6

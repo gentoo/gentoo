@@ -27,7 +27,7 @@ COMMON_DEPEND="
 		media-libs/libcanberra-gtk3
 		>=media-libs/libcanberra-0.4[gtk3(-)]
 	)
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3

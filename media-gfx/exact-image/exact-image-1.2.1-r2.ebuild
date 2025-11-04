@@ -21,7 +21,7 @@ RESTRICT="test"
 
 RDEPEND="
 	x11-libs/agg[truetype]
-	virtual/zlib
+	virtual/zlib:=
 	expat? ( dev-libs/expat )
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	jpegxl? ( media-libs/libjxl:= )

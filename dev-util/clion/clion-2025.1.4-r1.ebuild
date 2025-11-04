@@ -45,7 +45,7 @@ RDEPEND="
 	media-libs/mesa
 	net-print/cups
 	sys-apps/dbus
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/libdrm
 	x11-libs/libX11

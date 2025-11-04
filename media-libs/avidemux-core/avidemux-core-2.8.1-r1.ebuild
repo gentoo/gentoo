@@ -20,7 +20,7 @@ IUSE="debug nls nvenc sdl system-ffmpeg vaapi vdpau xv"
 # Trying to use virtual; ffmpeg misses aac,cpudetection USE flags now though, are they needed?
 DEPEND="
 	dev-db/sqlite:3
-	virtual/zlib
+	virtual/zlib:=
 	nvenc? ( amd64? ( media-libs/nv-codec-headers ) )
 	sdl? ( media-libs/libsdl )
 	system-ffmpeg? ( media-video/ffmpeg:=[lame(-),theora] )

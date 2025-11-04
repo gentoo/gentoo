@@ -29,7 +29,7 @@ RDEPEND="
 	media-libs/libglvnd[X]
 	media-gfx/sane-backends
 	sys-libs/glibc
-	virtual/zlib
+	virtual/zlib:=
 "
 
 QA_PREBUILT="opt/${PN}/masterpdfeditor5"

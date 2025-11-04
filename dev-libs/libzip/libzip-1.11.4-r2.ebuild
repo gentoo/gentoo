@@ -19,7 +19,7 @@ REQUIRED_USE="test? ( ssl tools )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	bzip2? ( app-arch/bzip2:= )
 	lzma? ( app-arch/xz-utils )
 	ssl? (

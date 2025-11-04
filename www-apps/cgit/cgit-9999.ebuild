@@ -46,7 +46,7 @@ RDEPEND="
 		sys-apps/groff
 	)
 	lua? ( ${LUA_DEPS} )
-	virtual/zlib
+	virtual/zlib:=
 	virtual/httpd-cgi
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken

@@ -16,7 +16,7 @@ DEPEND="
 	dev-libs/libpcre2:=
 	~dev-libs/xapian-${PV}:0/30
 	sys-apps/file
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="${DEPEND}"
 

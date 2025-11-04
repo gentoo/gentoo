@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~spar
 IUSE="cgi selinux system-man test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="virtual/zlib
+RDEPEND="virtual/zlib:=
 	system-man? ( !sys-apps/man-db )
 "
 DEPEND="${RDEPEND}

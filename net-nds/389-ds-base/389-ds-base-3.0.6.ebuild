@@ -152,7 +152,7 @@ DEPEND="
 	net-nds/openldap:=[sasl]
 	sys-libs/cracklib
 	sys-libs/db:5.3
-	virtual/zlib
+	virtual/zlib:=
 	sys-fs/e2fsprogs
 	pam-passthru? ( sys-libs/pam )
 	selinux? (

@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/expat
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

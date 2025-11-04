@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	>=dev-cpp/eigen-3.4.0:3
 	dev-libs/boost:=
-	virtual/zlib
+	virtual/zlib:=
 	test? ( dev-cpp/catch:0 )
 "
 RDEPEND="${DEPEND}"

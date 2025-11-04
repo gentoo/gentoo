@@ -30,7 +30,7 @@ RDEPEND="
 	)
 	bundled-openssl? (
 		kerberos? (
-			virtual/zlib
+			virtual/zlib:=
 			virtual/krb5
 		)
 	)

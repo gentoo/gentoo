@@ -18,7 +18,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libglvnd
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libxcb
 	x11-libs/libxkbcommon

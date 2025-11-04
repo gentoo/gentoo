@@ -22,7 +22,7 @@ RDEPEND="
 	media-libs/harfbuzz
 	sys-apps/dbus
 	sys-auth/polkit
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3

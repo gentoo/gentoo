@@ -26,7 +26,7 @@ BDEPEND="
 	)
 "
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	X? (
 		app-arch/bzip2
 		media-libs/libpng:0

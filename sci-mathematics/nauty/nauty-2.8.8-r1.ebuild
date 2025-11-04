@@ -24,7 +24,7 @@ IUSE="cpu_flags_x86_popcnt examples"
 
 BDEPEND="sys-apps/help2man"
 DEPEND="dev-libs/gmp:0
-	virtual/zlib
+	virtual/zlib:=
 	sci-mathematics/cliquer"
 RDEPEND="${DEPEND}"
 

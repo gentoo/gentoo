@@ -37,7 +37,7 @@ RDEPEND="
 	media-libs/gstreamer:1.0[introspection?]
 	media-libs/opus
 	media-libs/libjpeg-turbo:=
-	virtual/zlib
+	virtual/zlib:=
 	>=x11-libs/cairo-1.2
 	>=x11-libs/pixman-0.17.7
 	x11-libs/libX11

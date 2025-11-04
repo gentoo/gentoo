@@ -27,7 +27,7 @@ RDEPEND="
 	app-arch/xz-utils
 	dev-libs/glib:2
 	sys-fs/fuse:3=
-	virtual/zlib
+	virtual/zlib:=
 	archive? ( app-arch/libarchive:= )
 	curl? ( net-misc/curl )
 	dracut? ( sys-kernel/dracut )

@@ -100,7 +100,7 @@ RDEPEND=">=app-emacs/emacs-common-1.11[games?,gui?]
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	jit? (
 		sys-devel/gcc:=[jit(-)]
-		virtual/zlib
+		virtual/zlib:=
 	)
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )

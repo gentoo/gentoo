@@ -20,7 +20,7 @@ RDEPEND="
 		dev-libs/libxml2-compat:2
 	)
 	sys-libs/ncurses-compat
-	virtual/zlib
+	virtual/zlib:=
 	sys-process/numactl
 	>=virtual/opencl-3"
 

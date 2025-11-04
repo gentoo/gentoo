@@ -17,7 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE="doc debug examples ipv6 gnutls +ssl"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	gnutls? ( net-libs/gnutls )
 	ssl? (
 		dev-libs/openssl:0=

@@ -19,7 +19,7 @@ IUSE="cpu_flags_x86_sse2 doc examples ipv6 opengl +sound static-libs X"
 REQUIRED_USE="opengl? ( X )"
 
 RDEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	X? (
 		media-libs/freetype:2
 		media-libs/fontconfig

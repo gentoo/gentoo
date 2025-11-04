@@ -77,7 +77,7 @@ RDEPEND="
 	app-arch/bzip2
 	media-video/ffmpeg-compat:6=[vdpau?]
 	sys-libs/ncurses:=
-	virtual/zlib
+	virtual/zlib:=
 	a52? ( media-libs/a52dec )
 	aalib? ( media-libs/aalib )
 	alsa? ( media-libs/alsa-lib )

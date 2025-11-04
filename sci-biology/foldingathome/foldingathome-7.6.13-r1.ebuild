@@ -29,7 +29,7 @@ RDEPEND="
 	)
 	sys-devel/gcc
 	sys-libs/glibc
-	virtual/zlib
+	virtual/zlib:=
 "
 
 QA_PREBUILT="opt/foldingathome/*"

@@ -50,7 +50,7 @@ RDEPEND="
 	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/portaudio[cxx]
 	media-video/ffmpeg:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/libintl
 	x11-libs/cairo
 	x11-libs/pango

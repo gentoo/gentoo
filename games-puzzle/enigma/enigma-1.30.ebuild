@@ -24,7 +24,7 @@ DEPEND="
 	media-libs/sdl2-ttf
 	net-libs/enet:=
 	net-misc/curl
-	virtual/zlib
+	virtual/zlib:=
 	non-free? ( media-libs/sdl2-mixer[mod] )
 "
 RDEPEND="

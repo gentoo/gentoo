@@ -38,7 +38,7 @@ RDEPEND=">=app-arch/brotli-1.0.9:=
 	>=net-dns/c-ares-1.18.1:=
 	>=net-libs/nghttp2-1.41.0:=
 	>=net-libs/ngtcp2-1.1.0:=
-	virtual/zlib
+	virtual/zlib:=
 	corepack? ( !sys-apps/yarn )
 	system-icu? ( >=dev-libs/icu-73:= )
 	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )

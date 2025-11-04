@@ -24,7 +24,7 @@ DEPEND="media-libs/imlib2
 	media-libs/libid3tag:=
 	media-libs/libsndfile
 	media-video/vdr
-	virtual/zlib
+	virtual/zlib:=
 	vorbis? ( media-libs/libvorbis )"
 
 DOCS=(HISTORY MANUAL README README-MORONIMO examples/network.sh.example)

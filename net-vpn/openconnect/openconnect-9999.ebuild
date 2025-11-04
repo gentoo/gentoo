@@ -29,7 +29,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	dev-libs/json-parser:0=
 	dev-libs/libxml2:=
-	virtual/zlib
+	virtual/zlib:=
 	app-crypt/p11-kit
 	!gnutls? (
 		>=dev-libs/openssl-1.0.1h:0=

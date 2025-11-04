@@ -26,7 +26,7 @@ REQUIRED_USE="
 RDEPEND="
 	dev-libs/boehm-gc:=
 	sys-libs/ncurses:0=
-	virtual/zlib
+	virtual/zlib:=
 	gdk-pixbuf? (
 		x11-libs/gdk-pixbuf
 		X? ( x11-libs/gdk-pixbuf-xlib )

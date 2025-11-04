@@ -54,7 +54,7 @@ RDEPEND="
 	sys-libs/gdbm:=
 	sys-libs/ncurses:=
 	sci-libs/proj:=
-	virtual/zlib
+	virtual/zlib:=
 	media-libs/libglvnd
 	media-libs/glu
 	blas? (

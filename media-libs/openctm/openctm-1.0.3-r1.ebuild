@@ -21,7 +21,7 @@ DEPEND="
 	media-libs/freeglut
 	media-libs/glew:0=
 	media-libs/pnglite
-	virtual/zlib
+	virtual/zlib:=
 	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/gtk+:2

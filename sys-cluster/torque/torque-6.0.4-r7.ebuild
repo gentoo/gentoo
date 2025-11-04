@@ -20,7 +20,7 @@ KEYWORDS="~alpha amd64 ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="autorun cgroups cpusets +crypt doc munge nvidia quickcommit server +syslog tk"
 
 DEPEND_COMMON="
-	virtual/zlib
+	virtual/zlib:=
 	sys-libs/readline:0=
 	dev-libs/libxml2:=
 	dev-libs/boost

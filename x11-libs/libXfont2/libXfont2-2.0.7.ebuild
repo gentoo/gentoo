@@ -12,7 +12,7 @@ DESCRIPTION="X.Org Xfont library"
 KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="bzip2 truetype"
 
-RDEPEND="virtual/zlib
+RDEPEND="virtual/zlib:=
 	elibc_glibc? ( || ( >=sys-libs/glibc-2.38 dev-libs/libbsd ) )
 	x11-libs/libfontenc
 	bzip2? ( app-arch/bzip2 )

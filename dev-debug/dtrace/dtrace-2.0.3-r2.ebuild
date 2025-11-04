@@ -32,7 +32,7 @@ DEPEND="
 	net-libs/libpcap
 	>=sys-fs/fuse-3.2.0:3=
 	>=sys-libs/binutils-libs-2.42:=
-	virtual/zlib
+	virtual/zlib:=
 "
 RDEPEND="
 	${DEPEND}

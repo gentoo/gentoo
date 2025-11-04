@@ -28,7 +28,7 @@ DEPEND="
 	dev-qt/qtsingleapplication[X,qt5(+)]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 "
 RDEPEND="

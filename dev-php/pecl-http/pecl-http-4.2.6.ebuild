@@ -23,7 +23,7 @@ COMMON_DEPEND="app-arch/brotli:=
 	dev-libs/libevent
 	>=dev-php/pecl-raphf-2.0.1:7[php_targets_php8-2(-)?,php_targets_php8-3(-)?]
 	net-dns/libidn2
-	virtual/zlib
+	virtual/zlib:=
 	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=] )
 	!ssl? ( net-misc/curl[-ssl] )
 "

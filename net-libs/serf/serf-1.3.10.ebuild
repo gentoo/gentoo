@@ -23,7 +23,7 @@ RDEPEND="
 	dev-libs/apr:1=
 	dev-libs/apr-util:1=
 	dev-libs/openssl:=
-	virtual/zlib
+	virtual/zlib:=
 	kerberos? ( virtual/krb5 )
 "
 DEPEND="${RDEPEND}"

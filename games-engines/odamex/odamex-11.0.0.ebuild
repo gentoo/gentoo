@@ -36,7 +36,7 @@ RDEPEND="
 	)
 	server? (
 		dev-libs/jsoncpp:=
-		virtual/zlib
+		virtual/zlib:=
 		upnp? ( net-libs/miniupnpc:= )
 	)
 "

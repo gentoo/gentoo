@@ -31,7 +31,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	dev-libs/glib
 	sys-libs/ncurses:=
-	virtual/zlib
+	virtual/zlib:=
 	>=sys-process/acct-6.6.4-r1
 	video_cards_nvidia? (
 		${PYTHON_DEPS}

@@ -27,7 +27,7 @@ RDEPEND="
 	sys-auth/polkit
 	sys-auth/polkit-pkla-compat
 	sys-libs/libcap
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/gtk+:3
 	x11-libs/pango
 	prefix? ( dev-util/patchelf )

@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="+opengl"
 
 DEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/fltk:1=[opengl?]
 	opengl? (
 		media-libs/glu

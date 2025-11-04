@@ -53,7 +53,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/tiff:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXi

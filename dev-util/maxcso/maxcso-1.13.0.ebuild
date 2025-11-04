@@ -22,7 +22,7 @@ BDEPEND="virtual/pkgconfig"
 RDEPEND="
 	app-arch/lz4
 	dev-libs/libuv
-	virtual/zlib
+	virtual/zlib:=
 "
 DEPEND="${RDEPEND}"
 

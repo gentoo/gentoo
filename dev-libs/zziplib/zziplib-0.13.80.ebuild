@@ -35,7 +35,7 @@ BDEPEND="
 	)
 "
 DEPEND="
-	virtual/zlib
+	virtual/zlib:=
 	sdl? ( media-libs/libsdl2 )
 "
 RDEPEND="${DEPEND}"

@@ -25,7 +25,7 @@ REQUIRED_USE="
 COMMON_DEPEND="
 	dev-qt/qtbase:6[dbus,gui,network,sql,sqlite,widgets,xml]
 	dev-qt/qtsvg:6
-	virtual/zlib
+	virtual/zlib:=
 	cdda? ( || (
 		dev-libs/libcdio-paranoia
 		media-sound/cdparanoia

@@ -24,7 +24,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/simage:=
-	virtual/zlib
+	virtual/zlib:=
 	virtual/opengl
 	virtual/glu
 	x11-libs/libICE
