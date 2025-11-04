@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# orbea <orbea@riseup.net> (2025-11-04)
+# Dead upstream, non-free licenses, depends on libsdl, no revdeps.
+# Use games-emulation/geolith-jg instead.
+# Bugs #744043, #896336, #926370.
+# Removal on 2025-12-04.
+games-emulation/gngeo
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-11-03)
 # Dead upstream, vulernabilities, depends on Qt5, no revdeps.
 # Bugs #752042, #884041, #918096, #948092, #952542.
