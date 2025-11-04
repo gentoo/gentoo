@@ -12,7 +12,7 @@ IUSE="minizip static-libs"
 
 RDEPEND="
 	|| (
-		>=virtual/zlib-1.3.1[${MULTILIB_USEDEP},minizip?,static-libs?]
+		>=sys-libs/zlib-1.3.1[${MULTILIB_USEDEP},minizip?,static-libs?]
 		(
 			sys-libs/zlib-ng[${MULTILIB_USEDEP},compat,static-libs(-)?]
 			minizip? (
