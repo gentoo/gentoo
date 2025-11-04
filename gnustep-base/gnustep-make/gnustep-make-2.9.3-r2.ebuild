@@ -2,11 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit flag-o-matic gnustep-base prefix toolchain-funcs
+inherit flag-o-matic gnustep-base prefix toolchain-funcs verify-sig
 
 DESCRIPTION="GNUstep Makefile Package"
 HOMEPAGE="https://gnustep.github.io"
-SRC_URI="https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
+SRC_URI="
+	https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz
+	verify-sig? ( https://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz.sig )
+"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,6 +26,9 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 			llvm-core/clang:*
 		) )"
 RDEPEND="${DEPEND}"
+BDEPEND="verify-sig? ( sec-keys/openpgp-keys-gnustep )"
+
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/gnustep.asc
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.0-no_compress_man_pages.patch
