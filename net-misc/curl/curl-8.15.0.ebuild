@@ -101,7 +101,7 @@ REQUIRED_USE="
 # don't be afraid to require a later version.
 # ngtcp2 = https://bugs.gentoo.org/912029 - can only build with one tls backend at a time.
 RDEPEND="
-	>=virtual/zlib-1.2.5[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.5:=[${MULTILIB_USEDEP}]
 	adns? ( >=net-dns/c-ares-1.16.0:=[${MULTILIB_USEDEP}] )
 	brotli? ( app-arch/brotli:=[${MULTILIB_USEDEP}] )
 	http2? ( >=net-libs/nghttp2-1.15.0:=[${MULTILIB_USEDEP}] )

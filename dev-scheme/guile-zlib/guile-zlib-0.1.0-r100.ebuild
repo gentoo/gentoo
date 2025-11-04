@@ -28,7 +28,7 @@ REQUIRED_USE="${GUILE_REQUIRED_USE}"
 
 RDEPEND="
 	${GUILE_DEPS}
-	>=virtual/zlib-1.3-r4
+	>=virtual/zlib-1.3-r4:=
 "
 DEPEND="
 	${RDEPEND}

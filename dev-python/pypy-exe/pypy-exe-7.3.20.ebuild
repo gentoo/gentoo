@@ -27,7 +27,7 @@ KEYWORDS="amd64 ~arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 DEPEND="
-	>=virtual/zlib-1.1.3:0=
+	>=virtual/zlib-1.1.3:=
 	dev-libs/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=

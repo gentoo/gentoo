@@ -28,7 +28,7 @@ RDEPEND="
 	virtual/opengl
 	amd64? (
 		>=dev-libs/openssl-1.0.1h-r2:0=[abi_x86_32(-)]
-		>=virtual/zlib-1.2.8-r1[abi_x86_32(-)]
+		>=virtual/zlib-1.2.8-r1:=[abi_x86_32(-)]
 		>=virtual/glu-9.0-r1[abi_x86_32(-)]
 		>=virtual/opengl-7.0-r1[abi_x86_32(-)]
 		>=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]

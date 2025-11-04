@@ -60,7 +60,7 @@ COMMON_DEPEND="
 		>=dev-libs/openssl-0.9.6d:0=
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
-	zlib? ( >=virtual/zlib-1.1.4 )
+	zlib? ( >=virtual/zlib-1.1.4:= )
 "
 BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="

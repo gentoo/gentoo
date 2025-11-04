@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="X debug"
 
 DEPEND="
-	>=virtual/zlib-1.1.4
+	>=virtual/zlib-1.1.4:=
 	X? (
 		x11-libs/fltk:1=
 		x11-libs/libX11

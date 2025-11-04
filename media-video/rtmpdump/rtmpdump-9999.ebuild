@@ -19,7 +19,7 @@ DEPEND="ssl? (
 			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
 		)
 		!gnutls? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		>=virtual/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+		>=virtual/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
 

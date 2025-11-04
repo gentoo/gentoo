@@ -52,7 +52,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/mesa-22.2.5[X(+)]
 	|| ( gnome-extra/zenity kde-apps/kdialog x11-apps/xmessage x11-libs/libnotify )
 	sys-libs/ncurses-compat:5[tinfo]
-	>=virtual/zlib-1.2.13-r1
+	>=virtual/zlib-1.2.13-r1:=
 	>=x11-libs/libX11-1.8.1
 	>=x11-libs/libXau-1.0.11
 	>=x11-libs/libXdamage-1.1.6

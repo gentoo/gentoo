@@ -57,7 +57,7 @@ COMMON_DEPEND="
 		dev-db/sqlite
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
-	zlib? ( >=virtual/zlib-1.1 )
+	zlib? ( >=virtual/zlib-1.1:= )
 	zstd? ( app-arch/zstd:= )
 "
 DEPEND="

@@ -25,7 +25,7 @@ IUSE="debug doc +lzma pkcs7 +tools +zlib +zstd"
 RDEPEND="
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
 	pkcs7? ( >=dev-libs/openssl-1.1.0:= )
-	zlib? ( >=virtual/zlib-1.2.6 )
+	zlib? ( >=virtual/zlib-1.2.6:= )
 	zstd? ( >=app-arch/zstd-1.5.2-r1:= )
 "
 DEPEND="${RDEPEND}"

@@ -45,7 +45,7 @@ RDEPEND="
 
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=media-libs/libglvnd-1.3.2[X?,${MULTILIB_USEDEP}]
-	>=virtual/zlib-1.2.8[${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8:=[${MULTILIB_USEDEP}]
 	selinux? ( sys-libs/libselinux[${MULTILIB_USEDEP}] )
 	wayland? (
 		>=dev-libs/wayland-1.18.0:=[${MULTILIB_USEDEP}]

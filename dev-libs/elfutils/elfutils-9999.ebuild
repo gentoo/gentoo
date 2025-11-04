@@ -34,7 +34,7 @@ REQUIRED_USE="debuginfod? ( libarchive )"
 
 RDEPEND="
 	!dev-libs/libelf
-	>=virtual/zlib-1.2.8-r1[static-libs?,${MULTILIB_USEDEP}]
+	>=virtual/zlib-1.2.8-r1:=[static-libs?,${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[static-libs?,${MULTILIB_USEDEP}] )
 	debuginfod? (
 		dev-db/sqlite:3=

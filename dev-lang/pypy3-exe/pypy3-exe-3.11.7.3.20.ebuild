@@ -33,7 +33,7 @@ RDEPEND="
 	app-arch/bzip2:0=
 	dev-libs/expat:0=
 	dev-libs/libffi:0=
-	>=virtual/zlib-1.1.3:0=
+	>=virtual/zlib-1.1.3:=
 	virtual/libintl:0=
 	ncurses? ( sys-libs/ncurses:0= )
 	!dev-lang/pypy3-exe-bin:${SLOT}
