@@ -13,7 +13,7 @@ LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 
-DEPEND="sys-libs/zlib"
+DEPEND="virtual/zlib"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-0.9-gcc15.patch" )

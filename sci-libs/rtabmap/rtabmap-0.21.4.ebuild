@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,7 +29,7 @@ RDEPEND="
 	sci-libs/octomap:=
 	sci-libs/pcl:=[openni,vtk,qt6(-)?]
 	sci-libs/vtk:=[qt6(-)?]
-	sys-libs/zlib
+	virtual/zlib
 	ieee1394? ( media-libs/libdc1394:2= )
 	openni2? ( dev-libs/OpenNI2 )
 	qt6? (

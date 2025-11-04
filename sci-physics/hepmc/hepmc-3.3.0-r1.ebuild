@@ -1,9 +1,9 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..12} )
 inherit fortran-2 cmake flag-o-matic python-single-r1
 
 MYP=HepMC3-${PV}
@@ -47,13 +47,13 @@ BDEPEND="
 		dev-texlive/texlive-latexrecommended
 	)
 	test? (
-		sys-libs/zlib
+		virtual/zlib
 		app-arch/xz-utils
 		app-arch/bzip2
 		app-arch/zstd
 	)
 	examples? (
-		sys-libs/zlib
+		virtual/zlib
 		app-arch/xz-utils
 		app-arch/bzip2
 		app-arch/zstd

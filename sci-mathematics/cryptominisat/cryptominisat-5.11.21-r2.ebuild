@@ -35,7 +35,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/boost:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	python? (
 		${PYTHON_DEPS}
 	)

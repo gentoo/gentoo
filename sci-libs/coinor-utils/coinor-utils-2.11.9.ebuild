@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,7 +34,7 @@ DEPEND="sys-libs/readline:0=
 	bzip2? ( app-arch/bzip2 )
 	glpk? ( sci-mathematics/glpk:= )
 	lapack? ( virtual/lapack )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( virtual/zlib )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-releases-${PV}/${MY_PN}"

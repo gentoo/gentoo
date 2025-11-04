@@ -31,7 +31,7 @@ REQUIRED_USE="
 RDEPEND="
 	mpi? ( virtual/mpi[romio] )
 	szip? ( virtual/szip )
-	zlib? ( sys-libs/zlib:0= )"
+	zlib? ( virtual/zlib:0= )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(

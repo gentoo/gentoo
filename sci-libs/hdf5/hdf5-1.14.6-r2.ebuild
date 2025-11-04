@@ -31,7 +31,7 @@ REQUIRED_USE="
 DEPEND="
 	mpi? ( virtual/mpi[romio,fortran?] )
 	szip? ( virtual/szip )
-	zlib? ( sys-libs/zlib:= )
+	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
 	${DEPEND}

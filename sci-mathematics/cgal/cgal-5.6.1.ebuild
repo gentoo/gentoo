@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-libs/gmp:=[cxx]
 	dev-libs/mpfr:=
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/libX11:=
 	virtual/glu:=
 	virtual/opengl:=

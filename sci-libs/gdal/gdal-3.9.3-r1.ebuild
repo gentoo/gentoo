@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake java-pkg-opt-2 python-single-r1
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
@@ -50,7 +50,7 @@ DEPEND="
 	media-libs/tiff
 	>=sci-libs/libgeotiff-1.5.1-r1:=
 	>=sci-libs/proj-6.0.0:=
-	sys-libs/zlib[minizip(+)]
+	virtual/zlib[minizip(+)]
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio:= )

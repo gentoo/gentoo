@@ -16,7 +16,7 @@
   <use>
     <flag name="blosc">Allow using blosc compression via <pkg>dev-libs/c-blosc</pkg></flag>
     <flag name="dap">Support for remote data access with the built-in OPeNDAP client</flag>
-    <flag name="hdf">Build with HDF4 read capability(<pkg>sci-libs/hdf</pkg>, <pkg>sci-libs/hdf5</pkg> and <pkg>sys-libs/zlib</pkg> required).</flag>
+    <flag name="hdf">Build with HDF4 read capability(<pkg>sci-libs/hdf</pkg>, <pkg>sci-libs/hdf5</pkg> and <pkg>virtual/zlib</pkg> required).</flag>
   </use>
   <upstream>
     <remote-id type="github">Unidata/netcdf-c</remote-id>

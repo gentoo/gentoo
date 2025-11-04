@@ -24,7 +24,7 @@ DEPEND="app-text/ghostscript-gpl
 	media-libs/libjpeg-turbo
 	media-libs/libpng
 	media-libs/tiff
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/cairo
 	x11-libs/pixman
 	gui? (

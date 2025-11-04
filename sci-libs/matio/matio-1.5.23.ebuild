@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples hdf5 sparse"
 
 RDEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	hdf5? ( sci-libs/hdf5:= )"
 DEPEND="${RDEPEND}"
 BDEPEND="doc? ( virtual/latex-base )"

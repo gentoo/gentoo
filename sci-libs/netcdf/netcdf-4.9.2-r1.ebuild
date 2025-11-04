@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 # NOTE OPTION(ENABLE_HDF4 "Build netCDF-4 with HDF4 read capability(HDF4, HDF5 and Zlib required)." OFF)
 RDEPEND="
 	dev-libs/libxml2:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	blosc? ( dev-libs/c-blosc:= )
 	bzip2? ( app-arch/bzip2:= )
 	dap? ( net-misc/curl:= )

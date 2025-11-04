@@ -28,7 +28,7 @@ RDEPEND="
 	sci-libs/fftw:3.0=
 	sci-libs/gsl:=
 	sci-libs/libnova:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/libusb:1
 	ogg? (
 		media-libs/libogg

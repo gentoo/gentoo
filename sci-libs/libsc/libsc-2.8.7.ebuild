@@ -23,7 +23,7 @@ IUSE="debug examples mpi threads"
 
 RDEPEND="
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib
 	virtual/blas
 	virtual/lapack
 	mpi? ( virtual/mpi[romio] )"

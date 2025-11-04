@@ -100,7 +100,7 @@ RDEPEND="
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
 	media-libs/libglvnd[X]
-	sys-libs/zlib
+	virtual/zlib
 	virtual/glu
 	opencascade? ( sci-libs/opencascade:= )"
 

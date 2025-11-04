@@ -42,7 +42,7 @@ RDEPEND="
 	dev-libs/libffi:=
 	dev-libs/libxml2:=
 	sys-libs/ncurses:=
-	sys-libs/zlib:=
+	virtual/zlib:=
 	llvm? (
 		$(llvm_gen_dep '
 			llvm-core/llvm:${LLVM_SLOT}=

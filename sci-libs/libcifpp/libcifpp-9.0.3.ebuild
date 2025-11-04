@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-cpp/eigen-3.4.0:3
 	dev-libs/boost:=
 	dev-libs/libpcre2
-	sys-libs/zlib
+	virtual/zlib
 	test? ( dev-cpp/catch:0 )
 "
 RDEPEND="${DEPEND}"

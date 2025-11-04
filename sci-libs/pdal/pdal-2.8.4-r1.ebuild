@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/openssl:=
 	sci-libs/gdal:=
 	sci-libs/libgeotiff:=
-	sys-libs/zlib
+	virtual/zlib
 	debug? ( sys-libs/libunwind:= )
 	postgres? ( dev-db/postgresql:*[xml] )
 "

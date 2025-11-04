@@ -32,7 +32,7 @@ RDEPEND="
 	dev-qt/qtsvg:6
 	dev-qt/qttools:6[designer]
 	dev-libs/libgit2:=
-	sys-libs/zlib
+	virtual/zlib
 	${PYTHON_DEPS}
 	$(ruby_implementations_depend)
 "

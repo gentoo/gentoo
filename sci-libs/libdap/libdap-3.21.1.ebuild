@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libxml2:2
 	net-misc/curl
 	sys-apps/util-linux
-	sys-libs/zlib
+	virtual/zlib
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

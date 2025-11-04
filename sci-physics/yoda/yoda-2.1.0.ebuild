@@ -33,7 +33,7 @@ RDEPEND="
 		sci-libs/hdf5[cxx]
 	)
 	python? ( ${PYTHON_DEPS} )
-	zlib? ( sys-libs/zlib )
+	zlib? ( virtual/zlib )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

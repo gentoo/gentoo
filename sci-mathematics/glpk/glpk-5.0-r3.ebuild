@@ -18,7 +18,7 @@ BDEPEND="virtual/pkgconfig"
 DEPEND="
 	sci-libs/amd:0=
 	sci-libs/colamd:=
-	sys-libs/zlib:0=
+	virtual/zlib:0=
 	gmp? ( dev-libs/gmp:0= )
 	mysql? (
 		dev-db/mysql-connector-c

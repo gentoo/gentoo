@@ -39,7 +39,7 @@ REQUIRED_USE="
 
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib
 	dev-cpp/magic_enum:=
 	dev-cpp/taskflow:=
 	arborx? ( sci-libs/arborx[mpi=] )

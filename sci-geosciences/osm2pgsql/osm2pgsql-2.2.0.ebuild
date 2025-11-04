@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	dev-db/postgresql:=
 	dev-libs/expat
 	sci-libs/proj:=
-	sys-libs/zlib
+	virtual/zlib
 	${LUA_DEPS}
 "
 DEPEND="${COMMON_DEPEND}

@@ -21,7 +21,7 @@ REQUIRED_USE="test? ( threads )"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	sys-libs/zlib
+	virtual/zlib
 	mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}"
 

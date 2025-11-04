@@ -1,4 +1,4 @@
-# Copyright 2019-2024 Gentoo Authors
+# Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -22,7 +22,7 @@ DEPEND="
 	media-libs/libpng:=
 	media-libs/qhull:=
 	net-libs/zeromq
-	sys-libs/zlib
+	virtual/zlib
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXt

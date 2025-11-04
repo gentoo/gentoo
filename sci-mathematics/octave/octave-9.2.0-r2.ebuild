@@ -34,7 +34,7 @@ COMMON_DEPS="
 	sys-apps/texinfo
 	dev-libs/libpcre2
 	sys-libs/ncurses:=
-	sys-libs/zlib
+	virtual/zlib
 	virtual/blas
 	virtual/lapack
 	curl? ( net-misc/curl:= )

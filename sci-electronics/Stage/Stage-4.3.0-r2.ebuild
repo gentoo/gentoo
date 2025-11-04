@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-libs/libltdl:0
 	media-libs/libpng:0=
-	sys-libs/zlib:0=
+	virtual/zlib:0=
 	x11-libs/fltk:1=[opengl]
 	virtual/glu
 	virtual/jpeg:0

@@ -41,7 +41,7 @@ REQUIRED_USE="
 
 RDEPEND="dev-libs/boost:=
 	app-arch/bzip2
-	sys-libs/zlib
+	virtual/zlib
 	dev-cpp/tbb:=
 	arborx? ( sci-libs/arborx[mpi=] )
 	adolc? ( sci-libs/adolc )

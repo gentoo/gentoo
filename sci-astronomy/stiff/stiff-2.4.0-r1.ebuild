@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ IUSE="doc threads"
 RDEPEND="
 	media-libs/tiff:=
 	media-libs/libjpeg-turbo:=
-	sys-libs/zlib:0="
+	virtual/zlib:0="
 DEPEND="${RDEPEND}"
 
 PATCHES=(

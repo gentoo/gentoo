@@ -17,7 +17,7 @@ RDEPEND="
 	dev-lang/perl
 	=sci-libs/htslib-$(ver_cut 1-2)*:=
 	sys-libs/ncurses:=[unicode(+)]
-	sys-libs/zlib"
+	virtual/zlib"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

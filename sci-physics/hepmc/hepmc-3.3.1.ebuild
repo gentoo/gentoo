@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -47,13 +47,13 @@ BDEPEND="
 		dev-texlive/texlive-latexrecommended
 	)
 	test? (
-		sys-libs/zlib
+		virtual/zlib
 		app-arch/xz-utils
 		app-arch/bzip2
 		app-arch/zstd
 	)
 	examples? (
-		sys-libs/zlib
+		virtual/zlib
 		app-arch/xz-utils
 		app-arch/bzip2
 		app-arch/zstd
