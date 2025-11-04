@@ -161,7 +161,7 @@ python_test() {
 		)
 	fi
 
-	if has_version -b "virtual/zlib-ng[compat]"; then
+	if has_version -b "sys-libs/zlib-ng[compat]"; then
 		EPYTEST_DESELECT+=(
 			# https://github.com/scipy/scipy/issues/23185
 			scipy/io/matlab/tests/test_streams.py::TestZlibInputStream::test_all_data_read_bad_checksum
