@@ -2,19 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit gnome.org meson-multilib
+inherit gnome.org meson-multilib python-any-r1
 
 DESCRIPTION="A library for sending desktop notifications"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~loong ~mips ppc ppc64 ~riscv ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="gtk-doc +introspection test"
-# https://gitlab.gnome.org/GNOME/libnotify/-/issues/30
-# https://gitlab.gnome.org/GNOME/libnotify/-/issues/59
-RESTRICT="!test? ( test ) test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 RDEPEND="
@@ -33,10 +32,22 @@ BDEPEND="
 		dev-util/gi-docgen
 		app-text/docbook-xml-dtd:4.1.2
 	)
-	test? ( x11-libs/gtk+:3[${MULTILIB_USEDEP}] )
+	test? (
+		dev-lang/python
+		$(python_gen_any_dep '
+			dev-python/python-dbusmock[${PYTHON_USEDEP}]
+		')
+		gui-libs/gtk:4
+		sys-apps/dbus
+		x11-misc/xvfb-run
+	)
 "
 IDEPEND="app-eselect/eselect-notify-send"
 PDEPEND="virtual/notification-daemon"
+
+python_check_deps() {
+	python_has_version "dev-python/python-dbusmock[${PYTHON_USEDEP}]"
+}
 
 src_prepare() {
 	default
@@ -44,7 +55,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		$(meson_use test tests)
+		$(meson_native_use_bool test tests)
 		$(meson_native_use_feature introspection)
 		$(meson_native_use_bool gtk-doc gtk_doc)
 		-Ddocbook_docs=disabled
