@@ -50,6 +50,8 @@ src_configure() {
 	# -Werror=odr
 	# https://bugs.gentoo.org/927779
 	# https://github.com/vlabella/GLE/issues/35
+	#
+	# fixed after 4.3.8 release. Recheck on next version bump.
 	filter-lto
 
 	local mycmakeargs=(
