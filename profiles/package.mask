@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# orbea <orbea@riseup.net> (2025-11-16)
+# Dead upstream, non-free licenses, depends on libsdl, no revdeps.
+# Use games-emulation/geolith-jg instead.
+# Bugs #744043, #896336, #926370.
+# Removal on 2025-12-16.
+games-emulation/gngeo
+
 # Ionen Wolkens <ionen@gentoo.org> (2025-11-14)
 # A regression[1][2] is causing many users to be stuck at 1920x1080@60
 # due the drivers seemingly misdetecting capacity of the connection to
