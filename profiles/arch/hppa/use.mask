@@ -11,6 +11,8 @@
 # Fails to build on HPPA (stack size calculation goes wrong), bug #959416.
 python_targets_python3_14
 python_targets_python3_14t
+python_single_target_python3_14
+python_single_target_python3_14t
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-12)
 # x11-drivers/xf86-input-wacom is not keyworded here
