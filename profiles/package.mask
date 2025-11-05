@@ -36,6 +36,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-04)
+# Stuck on Qt5Script in the foreseeable future.  Until a Qt6 release is
+# ready, app-editors/okteta-0.26.60_pre* snapshots will be provided for
+# ~arch, which should work fine except for the structures tool disabled
+# from build (it requires the biggest, remaining porting effort).
+# Bug #962280. Removal some time after 2025-12-15.
+app-editors/okteta:5
+dev-qt/qtscript:5
+kde-frameworks/kitemmodels:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-04)
+# Stuck on Qt5/PyQt5 in the foreseeable future.  Until a Qt6 release is
+# ready, media-gfx/krita-appimage will be provided for ~amd64.  For the
+# brave, krita-6.0.0_alpha_* snapshots remain available unkeyworded.
+# Bug #955168. Removal some time after 2025-12-15.
+media-gfx/krita:5
+kde-apps/libkdcraw:5
+kde-apps/libkexiv2:5
+kde-frameworks/kimageformats:5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-11-03)
 # Dead upstream, vulernabilities, depends on Qt5, no revdeps.
 # Bugs #752042, #884041, #918096, #948092, #952542.
