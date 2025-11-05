@@ -38,7 +38,7 @@ RDEPEND="
 	media-libs/libglvnd[X]
 	sys-libs/glibc
 	sys-libs/ncurses
-	virtual/zlib:=
+	virtual/zlib:0/1
 	virtual/libcrypt
 	x11-base/xorg-server
 	x11-libs/libICE
