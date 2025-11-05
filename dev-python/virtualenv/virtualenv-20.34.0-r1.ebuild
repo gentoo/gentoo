@@ -4,7 +4,6 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYPI_VERIFY_REPO=https://github.com/pypa/virtualenv
 PYTHON_TESTED=( python3_{11..14} pypy3_11 )
 PYTHON_COMPAT=( "${PYTHON_TESTED[@]}" python3_{13,14}t )
 
@@ -19,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -29,7 +28,7 @@ RDEPEND="
 	>=dev-python/platformdirs-3.9.1[${PYTHON_USEDEP}]
 
 	dev-python/ensurepip-pip
-	dev-python/ensurepip-setuptools
+	>=dev-python/ensurepip-setuptools-70.1
 	dev-python/ensurepip-wheel
 "
 # coverage is used somehow magically in virtualenv, maybe it actually
@@ -117,7 +116,6 @@ python_test() {
 	else
 		EPYTEST_PLUGINS+=( time-machine )
 	fi
-	local EPYTEST_RERUNS=5
 	local EPYTEST_TIMEOUT=180
 	local EPYTEST_XDIST=1
 	epytest -o addopts=
