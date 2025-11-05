@@ -92,6 +92,9 @@ src_configure() {
 	append-cppflags -D_GNU_SOURCE	# needed for 'strndup'
 	replace-flags "-O[0-9s]" "-O1"	# fix selector box bug 388073
 
+	# bug #963199
+	append-cflags -std=gnu89
+
 	local myeconfargs=(
 		--enable-dependency-reduction
 		--disable-static
