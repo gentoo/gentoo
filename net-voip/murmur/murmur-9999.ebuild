@@ -142,7 +142,7 @@ src_install() {
 	newins "${FILESDIR}"/murmur.logrotate murmur
 
 	# Copy over the initd file so we can modify it incase zeroconf support is on.
-	cp "${FILESDIR}"/murmur.initd-r2 "${T}"/murmur.initd || die
+	cp "${FILESDIR}"/murmur.initd-r3 "${T}"/murmur.initd || die
 
 	if use zeroconf; then
 		sed -e 's:need:need avahi-daemon:' -i "${T}"/murmur.initd || die
@@ -159,6 +159,7 @@ src_install() {
 	mv "${D}/$(systemd_get_systemunitdir)/mumble-server.service" \
 		"${D}/$(systemd_get_systemunitdir)/murmur.service" || die
 	sed -i 's|mumble-server\.ini|murmur.ini|' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
+	sed -i '/^ExecStart/{s|-ini|--ini|;s| -fg||}' "${D}/$(systemd_get_systemunitdir)/murmur.service" || die
 
 	readme.gentoo_create_doc
 }
