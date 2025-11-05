@@ -35,6 +35,7 @@ IUSE="doc gimp l10n_ja nls X"
 REQUIRED_USE="gimp? ( X )"
 
 DEPEND="
+	dev-libs/libltdl
 	dev-libs/libxml2:2=
 	media-gfx/sane-backends
 	virtual/libusb:1
