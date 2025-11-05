@@ -13,7 +13,7 @@ SRC_URI="https://github.com/fract4d/gnofract4d/releases/download/v${PV}/${P}.tar
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
