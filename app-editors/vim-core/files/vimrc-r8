@@ -203,10 +203,10 @@ endif
 " (Ctrl-x/Ctrl-o) to work with any programming language if and only if a syntax
 " file exists for the said language.
 if exists("+omnifunc")
-   autocmd Filetype *
-	      \	if &omnifunc == "" |
-	      \		setlocal omnifunc=syntaxcomplete#Complete |
-	      \	endif
+  autocmd gentoo Filetype *
+        \ if &omnifunc == "" |
+        \   setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
 endif
 
 " {{{ vimrc.local
