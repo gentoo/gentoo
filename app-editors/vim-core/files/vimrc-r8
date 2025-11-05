@@ -1,6 +1,15 @@
 scriptencoding utf-8
 " ^^ Please leave the above line at the start of the file.
 
+" If you want to completely disable this script, make sure to put
+" "let skip_etc_vimrc = 1" in a skip_etc_vimrc.vim in your runtimepath, like
+" ~/.vim/skip_etc_vimrc.
+runtime! skip_etc_vimrc.vim
+" Bail out when a power user would prefer to avoid the system configuration
+if exists('skip_etc_vimrc')
+  finish
+endif
+
 " Default configuration file for Vim
 
 " Written by Aron Griffis <agriffis@gentoo.org>
