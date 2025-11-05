@@ -1,6 +1,11 @@
 # Copyright 2019-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-11-05)
+# Fails to build on HPPA (stack size calculation goes wrong), bug #959416.
+dev-lang/python:3.14
+dev-lang/python:3.14t
+
 # Sam James <sam@gentoo.org> (2025-03-24)
 # Affected by a data corruption bug on HPPA
 # https://lore.kernel.org/linux-parisc/84d7b3e1053b2a8397bcc7fc8eee8106@matoro.tk/
