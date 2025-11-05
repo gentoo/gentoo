@@ -72,6 +72,7 @@ BDEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${PN}-2.7.10-cmake_minimum.patch"
 	"${FILESDIR}/${PN}-2.7.10-tests.patch"
 	"${FILESDIR}/${PN}-2.7.10-zxcvbn.patch"
 )
