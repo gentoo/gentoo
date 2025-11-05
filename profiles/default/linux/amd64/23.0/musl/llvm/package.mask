@@ -1,0 +1,6 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sam James <sam@gentoo.org> (2025-11-05)
+# rust-bin is available on amd64 musl
+-dev-lang/rust-bin
