@@ -14,7 +14,7 @@ LICENSE="BSD-2 BSD MIT"
 # Dependent licenses
 LICENSE+="  Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~ppc64"
+KEYWORDS="amd64 ~arm arm64 ~ppc64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
