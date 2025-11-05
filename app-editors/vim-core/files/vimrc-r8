@@ -162,7 +162,7 @@ augroup gentoo
   " Better to emerge app-vim/gentoo-syntax, which provides full syntax,
   " filetype and indent settings for all things Gentoo.
   au BufRead,BufNewFile *.e{build,class} let is_bash=1|setfiletype sh
-  au BufRead,BufNewFile *.e{build,class} set ts=4 sw=4 noexpandtab
+  au BufRead,BufNewFile *.e{build,class} setl ts=4 sw=4 noexpandtab
 
   " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
@@ -174,7 +174,7 @@ augroup gentoo
 
   " When editing a crontab file, set backupcopy to yes rather than auto. See
   " :help crontab and bug #53437.
-  autocmd FileType crontab set backupcopy=yes
+  autocmd FileType crontab setl backupcopy=yes
 
   " If we previously detected that the default encoding is not UTF-8
   " (g:added_fenc_utf8), assume that a file with only ASCII characters (or no
