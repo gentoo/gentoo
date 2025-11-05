@@ -9,7 +9,7 @@ S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	llvm-runtimes/compiler-rt[atomic-builtins(-)]
