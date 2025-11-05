@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit toolchain-funcs
+
 DESCRIPTION="Stub library which allows compiler-rt to replace libatomic"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 S="${WORKDIR}"
@@ -20,6 +22,6 @@ src_install() {
 	# Create an empty library, so that -latomic will not fail.
 	# The atomic routines will be provided implicitly by the compiler-rt
 	# builtins library.
-	${AR} rc libatomic.a || die
+	$(tc-getAR) rc libatomic.a || die
 	dolib.a libatomic.a
 }
