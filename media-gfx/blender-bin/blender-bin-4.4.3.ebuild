@@ -58,7 +58,7 @@ RDEPEND="
 		x11-drivers/nvidia-drivers
 	)
 	hip? (
-		>=dev-util/hip-6
+		=dev-util/hip-6*
 	)
 	oneapi? (
 		dev-libs/level-zero
