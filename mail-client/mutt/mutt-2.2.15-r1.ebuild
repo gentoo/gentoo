@@ -17,14 +17,13 @@ SRC_URI="http://ftp.mutt.org/pub/mutt/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme gsasl +hcache idn +imap kerberos +lmdb mbox nls pgp-classic pop qdbm +sasl selinux slang smime-classic +smtp +ssl tokyocabinet vanilla prefix"
+IUSE="autocrypt berkdb debug doc gdbm gnutls gpgme gsasl +hcache idn +imap kerberos +lmdb mbox nls pop qdbm +sasl selinux slang +smtp +ssl tokyocabinet vanilla prefix"
 # hcache: allow multiple, bug #607360
 REQUIRED_USE="
 	gsasl?            ( sasl )
 	hcache?           ( || ( berkdb gdbm lmdb qdbm tokyocabinet ) )
 	imap?             ( ssl )
 	pop?              ( ssl )
-	smime-classic?    ( ssl !gnutls )
 	smtp?             ( ssl sasl )
 	sasl?             ( || ( imap pop smtp ) )
 	kerberos?         ( || ( imap pop smtp ) )
@@ -68,8 +67,6 @@ DEPEND="${CDEPEND}
 	)"
 RDEPEND="${CDEPEND}
 	selinux?       ( sec-policy/selinux-mutt )
-	smime-classic? ( >=dev-libs/openssl-0.9.6:0 )
-	pgp-classic?   ( app-crypt/gnupg )
 "
 
 src_prepare() {
@@ -131,8 +128,8 @@ src_configure() {
 	local myconf=(
 		# signing and encryption
 		$(use_enable autocrypt) $(use_with autocrypt sqlite3)
-		$(use_enable pgp-classic pgp)
-		$(use_enable smime-classic smime)
+		--disable-pgp
+		--disable-smime
 		$(use_enable gpgme)
 
 		# features
