@@ -563,6 +563,7 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
+	mkdir -p fftools/resources/ || die #965687
 	emake V=1
 	in_iuse chromium && use chromium && multilib_is_native_abi &&
 		emake V=1 libffmpeg
