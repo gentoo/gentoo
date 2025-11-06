@@ -14,6 +14,25 @@ Gentoo-Issue: https://bugs.gentoo.org/952072
  CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+https://github.com/Grumbel/tinycmmc/pull/3
+https://github.com/Grumbel/tinycmmc/commit/2ad2d2ab7dce012bb1c9d1dbb8bdb5abd9232ecd
+
+From cffa9348fd2afd9874c733beb9c93a88720085cc Mon Sep 17 00:00:00 2001
+From: orbea <orbea@riseup.net>
+Date: Fri, 24 Oct 2025 09:10:31 -0700
+Subject: [PATCH] build: set the cmake_minimum_required as a range
+
+From the cmake documentation:
+
+  This uses the <min>...<max> syntax to enable the NEW behaviors of
+  policies introduced in CMake 4.1 and earlier while only requiring
+  a minimum version of CMake 3.10.
+
+Resource: https://cmake.org/cmake/help/latest/manual/cmake-policies.7.html#updating-projects
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 2344961..12af9d2 100644
 --- a/CMakeLists.txt
@@ -23,7 +42,7 @@ index 2344961..12af9d2 100644
  # 3. This notice may not be removed or altered from any source distribution.
  
 -cmake_minimum_required(VERSION 3.0)
-+cmake_minimum_required(VERSION 3.10)
++cmake_minimum_required(VERSION 3.10...4.1)
  project(tinycmmc VERSION 0.1.0)
  
  include(GNUInstallDirs)
