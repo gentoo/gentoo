@@ -23,6 +23,7 @@
 	<flag name="libzfs">
 		Enable support for <pkg>sys-fs/zfs</pkg>
 	</flag>
+	<flag name="protect">Build and install the grub-protect utility</flag>
 	<flag name="themes">Build and install GRUB themes (starfield)</flag>
 	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
 </use>
