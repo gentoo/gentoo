@@ -12,6 +12,7 @@ dev-python/dulwich test
 # Michał Górny <mgorny@gentoo.org> (2025-08-05)
 # Native extensions are using Rust.
 dev-python/fastbencode native-extensions
+dev-python/logbook native-extensions
 
 # Holger Hoffstätte <holger@applied-asynchrony.com> (2025-07-24)
 # dnsdist-2.0.0[yaml] needs Rust
