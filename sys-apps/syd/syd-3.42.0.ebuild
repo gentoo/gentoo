@@ -5,7 +5,7 @@ EAPI=8
 
 RESTRICT="test" # fails with sandbox
 
-RUST_MIN_VER="1.83.0"
+RUST_MIN_VER="1.88.0"
 
 CRATES="
 	addr2line@0.25.1
