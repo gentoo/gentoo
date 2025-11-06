@@ -557,7 +557,8 @@ binutils_sanity_check() {
 	local opt opt2
 	# TODO: test multilib variants?
 	for opt in '' '-O2' ; do
-		for opt2 in '-static' '-static-pie' '-fno-PIE -no-pie' ; do
+		# TODO: add static-pie? we need to check if support exists, though (bug #965478)
+		for opt2 in '-static' '-fno-PIE -no-pie' ; do
 			$(tc-getCC) ${opt} ${opt2} -B"${ED}${BINPATH}" "${T}"/number.c "${T}"/test.c -o "${T}"/test
 			if "${T}"/test | grep -q "Hello Gentoo! Your magic number is: 42" ; then
 				:;
