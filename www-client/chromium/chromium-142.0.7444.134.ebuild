@@ -572,6 +572,12 @@ src_prepare() {
 			PATCHES+=( "${FILESDIR}/chromium-140-__rust_no_alloc_shim_is_unstable.patch" )
 		fi
 
+		if ver_test ${RUST_SLOT} -lt "1.90.0"; then
+			PATCHES+=(
+				"${WORKDIR}/copium/cr142-rust-pre1.90.patch"
+			)
+		fi
+
 		if ver_test ${RUST_SLOT} -lt "1.91.0"; then
 			PATCHES+=(
 				"${WORKDIR}/copium/cr142-crabbyavif-gn-rust-pre1.91.patch"
