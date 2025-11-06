@@ -515,6 +515,20 @@ multilib_src_configure() {
 		esac
 	fi
 
+	# skipping tests is handled at configure-time
+	local skip_tests=()
+
+	# zlib-ng is not bitexact w/ zlib producing mismatching md5sum (bug #965737)
+	has_version 'sys-libs/zlib-ng[compat]' &&
+		skip_tests+=(
+			lavf-{apng{,.png},gray16be.png,png,rgb48be.png}
+			mov-mp4-frag-flush
+			vsynth{1,2,3}-{flashsv,mpng,zlib}
+		)
+
+	(( ${#skip_tests[@]} )) &&
+		conf+=( --ignore-tests=$(IFS=,; echo "${skip_tests[*]}") )
+
 	# import options from FFMPEG_IUSE_MAP
 	local flag license mod v
 	local -A optmap=() licensemap=()
