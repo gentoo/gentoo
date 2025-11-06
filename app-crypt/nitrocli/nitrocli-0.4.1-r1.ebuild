@@ -84,7 +84,7 @@ DEPEND="
 # We require gnupg for /usr/bin/gpg-connect-agent.
 RDEPEND="
 	${DEPEND}
-	app-crypt/gnupg
+	app-alternatives/gpg
 "
 
 # Uses a plugged-in Nitrokey and runs tests on it. These tests assumes a
