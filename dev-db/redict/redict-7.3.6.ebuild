@@ -58,7 +58,7 @@ src_prepare() {
 }
 
 _build() {
-	tc-export AR CC RANLIB
+	tc-export AR CC RANLIB PKG_CONFIG
 	local myconf=(
 		AR="${AR}"
 		CC="${CC}"
