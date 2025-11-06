@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	sci-libs/fftw:3.0=
+	sci-libs/fftw:3.0=[threads]
 	sci-libs/volk:=
 	media-libs/libsndfile:=
 "
