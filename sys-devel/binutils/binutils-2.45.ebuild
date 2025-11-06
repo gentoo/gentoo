@@ -530,9 +530,6 @@ src_install() {
 
 # Simple test to make sure our new binutils isn't completely broken.
 # Skip if this binutils is a cross compiler.
-#
-# If coreutils is built with USE=multicall, some of these files
-# will just be wrapper scripts, not actual ELFs we can test.
 binutils_sanity_check() {
 	pushd "${T}" >/dev/null
 
@@ -573,6 +570,7 @@ binutils_sanity_check() {
 
 pkg_preinst() {
 	[[ -n ${ROOT} ]] && return 0
+	[[ -n ${EPREFIX} ]] && return 0
 	[[ -d ${ED}${BINPATH} ]] || return 0
 	[[ -n ${BOOTSTRAP_RAP} ]] || return 0
 	is_cross && return 0
