@@ -274,3 +274,4 @@ sci-libs/opencascade vtk
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
+www-apache/mod_security pcre-jit

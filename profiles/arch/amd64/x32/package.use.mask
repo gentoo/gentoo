@@ -16,6 +16,7 @@ dev-lang/php jit
 mail-filter/rspamd jit
 net-proxy/haproxy pcre-jit
 www-servers/varnish jit
+www-apache/mod_security pcre-jit
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-03-24)
 # Requires unkeyworded dev-qt/qtwebengine

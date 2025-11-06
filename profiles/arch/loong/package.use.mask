@@ -382,5 +382,6 @@ sys-libs/libxcrypt compat
 # These aren't ported to LoongArch yet
 dev-libs/libpcre jit
 www-servers/nginx pcre-jit
+www-apache/mod_security pcre-jit
 
 # End snippets taken from riscv
