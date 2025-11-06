@@ -23,6 +23,10 @@ dev-lang/python tail-call-interp
 # No suitable versions of dev-libs/protobuf available.
 ~dev-java/protobuf-java-4.33.2 system-protoc
 
+# Lukas Schmelting <lschmelting@posteo.com (2025-11-06)
+# https://bugs.gentoo.org/933164
+app-misc/localsearch gif
+
 # Sam James <sam@gentoo.org> (2025-10-29)
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
 # transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
