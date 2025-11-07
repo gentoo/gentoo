@@ -36,6 +36,7 @@ IUSE="+deno"
 # yt-dlp-ejs requires pinning due to yt-dlp checking sha512sum of .js,
 # live ebuild users may need to use the self-updater method if out of
 # sync as there are no plans for a yt-dlp-ejs live ebuild at the moment
+# (should "typically" be updated in Gentoo within 24h if willing to wait)
 RDEPEND="
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	~dev-python/yt-dlp-ejs-0.3.1[${PYTHON_USEDEP}]
