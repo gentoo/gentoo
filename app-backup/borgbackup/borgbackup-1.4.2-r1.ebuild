@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi shell-completion
 
@@ -27,7 +27,7 @@ DEPEND="
 # check pyproject.toml on bumps.
 RDEPEND="
 	${DEPEND}
-	<dev-python/msgpack-1.1.2[${PYTHON_USEDEP}]
+	<=dev-python/msgpack-1.1.2-r9999[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/pyfuse3[${PYTHON_USEDEP}]
 "
@@ -44,11 +44,6 @@ BDEPEND="
 # some tests randomly fail with xdist, bug #936524
 EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-
-PATCHES=(
-	# https://github.com/borgbackup/borg/pull/8904
-	"${FILESDIR}/${P}-msgpack-1.1.1.patch"
-)
 
 python_test() {
 	local EPYTEST_DESELECT=(
