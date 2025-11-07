@@ -245,7 +245,7 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 ISC MIT MPL-2.0 Unicode-DFS-2016"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+KEYWORDS="~amd64 arm64 ~ppc64 ~riscv"
 IUSE="+battery +gpu +zfs"
 
 RUST_MIN_VER="1.88"
