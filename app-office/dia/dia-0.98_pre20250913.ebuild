@@ -53,6 +53,7 @@ PATCHES=(
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-revert_xpm_replacement.patch
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-use_gtkfontbutton.patch
 	"${WORKDIR}"/dia-0.98-patches/${PN}-0.98-deps_optional.patch
+	"${FILESDIR}"/${PN}-0.98-fix_poppler_2510.patch #965768
 )
 
 pkg_setup() {
