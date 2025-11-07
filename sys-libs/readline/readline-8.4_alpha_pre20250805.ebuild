@@ -141,7 +141,7 @@ src_prepare() {
 	else
 		# Force ncurses linking, bug #71420.
 		# Use pkg-config to get the right values, bug #457558.
-		local ncurses_libs=$($(tc-getPKG_CONFIG) ncurses$(usex unicode w '') --libs)
+		local ncurses_libs=$($(tc-getPKG_CONFIG) ncurses$(usex unicode w '') --libs || die)
 	fi
 
 	sed -i \
