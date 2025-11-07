@@ -1,0 +1,37 @@
+[1] http://example.com dynamically registered
+[1] http://example.com
+     tags: []
+ uniqueId: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]/[test-template-invocation:#1]
+   parent: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]
+   source: MethodSource [className = 'org.apache.commons.io.build.URIOriginTest', methodName = 'testGetInputStream', methodParameterTypes = 'java.lang.String']
+   caught: java.net.UnknownHostException: example.com
+ duration: 80 ms
+   status: ✘ FAILED
+[2] https://example.com dynamically registered
+[2] https://example.com
+     tags: []
+ uniqueId: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]/[test-template-invocation:#2]
+   parent: [engine:junit-jupiter]/[class:org.apache.commons.io.build.URIOriginTest]/[test-template:testGetInputStream(java.lang.String)]
+   source: MethodSource [className = 'org.apache.commons.io.build.URIOriginTest', methodName = 'testGetInputStream', methodParameterTypes = 'java.lang.String']
+   caught: java.net.UnknownHostException: example.com
+ duration: 114 ms
+   status: ✘ FAILED
+
+--- a/src/test/java/org/apache/commons/io/build/URIOriginTest.java
++++ b/src/test/java/org/apache/commons/io/build/URIOriginTest.java
+@@ -29,6 +29,7 @@ import java.nio.file.StandardOpenOption;
+ import org.apache.commons.io.build.AbstractOrigin.URIOrigin;
+ import org.apache.commons.lang3.ArrayUtils;
+ import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.params.ParameterizedTest;
+ import org.junit.jupiter.params.provider.ValueSource;
+ 
+@@ -58,6 +59,7 @@ class URIOriginTest extends AbstractOriginTest<URI, URIOrigin> {
+         Files.write(rwPath, ArrayUtils.EMPTY_BYTE_ARRAY, StandardOpenOption.CREATE);
+     }
+ 
++    @Disabled
+     @ParameterizedTest
+     @ValueSource(strings = {
+             "http://apache.com",
