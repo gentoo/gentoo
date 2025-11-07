@@ -46,7 +46,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (
-		dev-libs/appstream-glib
+		dev-libs/appstream
 		x11-misc/xvfb-run
 	)
 "
