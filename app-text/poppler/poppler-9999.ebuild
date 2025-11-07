@@ -13,7 +13,7 @@ else
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/aacid.asc
 	inherit verify-sig
 
-	TEST_COMMIT="c79c6839e859dbee6b73ac260788fa2de8618ba4"
+	TEST_COMMIT="9d5011815a14c157ba25bb160187842fb81579a5"
 	SRC_URI="https://poppler.freedesktop.org/${P}.tar.xz"
 	SRC_URI+=" test? ( https://gitlab.freedesktop.org/poppler/test/-/archive/${TEST_COMMIT}/test-${TEST_COMMIT}.tar.bz2 -> ${PN}-test-${TEST_COMMIT}.tar.bz2 )"
 	SRC_URI+=" verify-sig? ( https://poppler.freedesktop.org/${P}.tar.xz.sig )"
