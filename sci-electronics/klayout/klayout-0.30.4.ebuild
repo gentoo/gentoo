@@ -36,7 +36,9 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(ruby_implementations_depend)
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sys-apps/which
+"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
