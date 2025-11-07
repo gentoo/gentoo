@@ -174,7 +174,7 @@ net-libs/NativeThread
 media-sound/lmms
 
 # Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
-# Breaks e.g. in combination with gnome-shell-48.4
+# Breaks e.g. in combination with gnome-shell-48.4, gettext/gjs (bug #963815)
 >=dev-libs/glib-2.86.0
 >=dev-libs/gobject-introspection-1.86.0
 >=dev-libs/gobject-introspection-common-1.86.0
