@@ -66,11 +66,12 @@ src_configure() {
 	)
 	meson_src_configure
 }
+
 src_install() {
 	meson_src_install
 
 	if use seccomp || use landlock; then
-		mv "${D}"/usr/bin/zathura{,-full}
+		mv "${ED}"/usr/bin/zathura{,-full} || die
 		dosym zathura-sandbox /usr/bin/zathura
 	fi
 }
