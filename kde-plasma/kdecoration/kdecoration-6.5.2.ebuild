@@ -12,7 +12,7 @@ DESCRIPTION="Plugin based library to create window decorations"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE=""
 
 DEPEND="
