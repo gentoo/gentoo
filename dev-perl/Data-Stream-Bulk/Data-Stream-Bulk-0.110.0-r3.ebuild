@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=DOY
 DIST_VERSION=${PV:0:4}
@@ -11,8 +11,6 @@ DESCRIPTION="N at a time iteration API"
 
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Moose-0.900.0
@@ -27,6 +25,7 @@ BDEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.880.0
 	)
 "
+
 PERL_RM_FILES=(
 	"t/release-eol.t"
 	"t/release-pod-coverage.t"
