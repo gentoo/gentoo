@@ -409,6 +409,17 @@ _cmake_minreqver-info() {
 	fi
 }
 
+# @FUNCTION: cmake_prepare-per-cmakelists
+# @USAGE: <path-to-current-CMakeLists.txt>
+# @DESCRIPTION:
+# Override this to be provided with a hook into the cmake_src_prepare loop
+# over all CMakeLists.txt below CMAKE_USE_DIR. Will be called from inside
+# that loop with <path-to-current-CMakeLists.txt> as single argument.
+# Used for recursive CMakeLists.txt detections and modifications.
+cmake_prepare-per-cmakelists() {
+	return
+}
+
 # @FUNCTION: _cmake_modify-cmakelists
 # @INTERNAL
 # @DESCRIPTION:
@@ -450,6 +461,7 @@ _cmake_modify-cmakelists() {
 				_CMAKE_MINREQVER_CMAKE316+=( "${file#"${CMAKE_USE_DIR}/"}":"${ver}" )
 			fi
 		fi
+		cmake_prepare-per-cmakelists ${file}
 	done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0 || die)
 
 	# NOTE Append some useful summary here
