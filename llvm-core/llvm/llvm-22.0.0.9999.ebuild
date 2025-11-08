@@ -272,6 +272,7 @@ get_distribution_components() {
 			llvm-bcanalyzer
 			llvm-bitcode-strip
 			llvm-c-test
+			llvm-cas
 			llvm-cat
 			llvm-cfi-verify
 			llvm-cgdata
