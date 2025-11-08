@@ -132,6 +132,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}/php-8.4.14-libpcre2-testfix.patch"
 )
 
 PHP_MV="$(ver_cut 1)"
@@ -279,6 +280,13 @@ src_prepare() {
 	if ! use truetype; then
 		rm ext/gd/tests/gh19955.phpt
 	fi
+
+	# Should be OK in the next version, but this test required network
+	# access when it was added:
+	#
+	#   https://github.com/php/php-src/pull/19776
+	#
+	rm sapi/cli/tests/php_cli_server_ipv6_error_message.phpt || die
 
 	# One-off, somebody forgot to update a version constant
 	rm ext/reflection/tests/ReflectionZendExtension.phpt || die
