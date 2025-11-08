@@ -14,7 +14,7 @@ HOMEPAGE="https://invent.kde.org/plasma/powerdevil"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="brightness-control"
 
 RESTRICT="test" # bug 926513
