@@ -1,0 +1,239 @@
+Source: https://invent.kde.org/multimedia/audiocd-kio/-/merge_requests/28
+
+From 4f86ae11babd27e8cecddbb8c1e74402eceea0c9 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Thu, 6 Nov 2025 20:32:31 +0100
+Subject: [PATCH] Port away from KCompactDisk
+
+We don't really need it, we can do everything with cdda_interface and Solid
+---
+ .kde-ci.yml    |   1 -
+ CMakeLists.txt |  10 +---
+ audiocd.cpp    | 128 ++++++++++++++++++++++++++++---------------------
+ 3 files changed, 76 insertions(+), 63 deletions(-)
+
+diff --git a/.kde-ci.yml b/.kde-ci.yml
+index ce7482a6..dc9d5ec6 100644
+--- a/.kde-ci.yml
++++ b/.kde-ci.yml
+@@ -11,4 +11,3 @@ Dependencies:
+     'frameworks/kio': '@latest-kf6'
+     'frameworks/kcmutils': '@latest-kf6'
+     'multimedia/libkcddb': '@same'
+-    'multimedia/libkcompactdisc': '@same'
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c860b65d..1a364b14 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,13 +36,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
+     KIO
+     KCMUtils
+     WidgetsAddons
+-)
+-find_package(KCompactDisc6)
+-set_package_properties(KCompactDisc6 PROPERTIES
+-    DESCRIPTION "KCompactDisc library"
+-    URL "https://commits.kde.org/libkcompactdisc"
+-    TYPE REQUIRED
+-    PURPOSE "libkcompactdisc is used to access CD drives."
++    Solid
+ )
+ find_package(KCddb6 5.1)
+ set_package_properties(KCddb6 PROPERTIES
+@@ -109,8 +103,8 @@ set_target_properties(kio_audiocd PROPERTIES OUTPUT_NAME "audiocd")
+ 
+ target_link_libraries(kio_audiocd
+     audiocdplugins
+-    KCompactDisc6
+     KF6::I18n
++    KF6::Solid
+     Qt::Widgets
+     Cdparanoia::Cdparanoia
+ )
+diff --git a/audiocd.cpp b/audiocd.cpp
+index 58a28930..a3d1ef74 100644
+--- a/audiocd.cpp
++++ b/audiocd.cpp
+@@ -59,9 +59,12 @@ int Q_DECL_EXPORT kdemain(int argc, char **argv);
+ #include <KMacroExpander>
+ #include <QRegularExpression>
+ 
++#include <Solid/Block>
++#include <Solid/Device>
++#include <Solid/OpticalDrive>
++
+ // CDDB
+ #include <KCDDB/Client>
+-#include <KCompactDisc>
+ 
+ // Pseudo plugin class to embed metadata
+ class KIOPluginForMetaData : public QObject
+@@ -231,45 +234,6 @@ AudioCDEncoder *AudioCDProtocol::determineEncoder(const QString &filename)
+     return encoderFromExtension(filename.mid(pos));
+ }
+ 
+-static void setDeviceToCd(KCompactDisc *cd, struct cdrom_drive *drive)
+-{
+-#if defined(HAVE_CDDA_IOCTL_DEVICE)
+-    cd->setDevice(QLatin1String(drive->ioctl_device_name), 50, false);
+-#elif defined(__FreeBSD__) || defined(__DragonFly__)
+-    // FreeBSD's cdparanoia as of January 5th 2006 has rather broken
+-    // support for non-SCSI devices. Although it finds ATA cdroms just
+-    // fine, there is no straightforward way to discover the device
+-    // name associated with the device, which throws the rest of audiocd
+-    // for a loop.
+-    //
+-    if (!(drive->dev) || (COOKED_IOCTL == drive->interface)) {
+-        // For ATAPI devices, we have no real choice. Use the
+-        // user selected value, even if there is none.
+-        //
+-        qCWarning(AUDIOCD_KIO_LOG) << "Found an ATAPI device, assuming it is the "
+-                                      "one specified by the user.";
+-        cd->setDevice(QString::fromLatin1(drive->cdda_device_name));
+-    } else {
+-        qCDebug(AUDIOCD_KIO_LOG) << "Found a SCSI or ATAPICAM device.";
+-        if (strlen(drive->dev->device_path) > 0) {
+-            cd->setDevice(QString::fromLatin1(drive->dev->device_path));
+-        } else {
+-            // But the device_path can be empty under some
+-            // circumstances, so build a representation from
+-            // the unit number and SCSI device name.
+-            //
+-            QString devname = QStringLiteral("/dev/%1%2").arg(QString::fromLatin1(drive->dev->given_dev_name)).arg(drive->dev->given_unit_number);
+-            qCDebug(AUDIOCD_KIO_LOG) << "  Using derived name " << devname;
+-            cd->setDevice(devname);
+-        }
+-    }
+-#else
+-#ifdef __GNUC__
+-#warning audiocd KIO worker is not going to work for you
+-#endif
+-#endif
+-}
+-
+ // Initiate a request to access the CD drive.  If there is no valid drive
+ // specified or there is a problem, then error() must be (or have been)
+ // called before returning a null pointer.
+@@ -287,15 +251,19 @@ KIO::WorkerResult AudioCDProtocol::initRequest(const QUrl &url, struct cdrom_dri
+ 
+     if (d->tocsAreDifferent(*drive)) {
+         // Update our knowledge of the disc
+-        KCompactDisc cd(KCompactDisc::Asynchronous);
+-        setDeviceToCd(&cd, *drive);
+         d->setToc(*drive);
+-        d->tracks = cd.tracks();
+-        for (uint i = 0; i < cd.tracks(); i++)
+-            d->trackIsAudio[i] = cd.isAudio(i + 1);
++        d->tracks = (*drive)->tracks;
++
++        KCDDB::TrackOffsetList signature;
++        for (uint i = 0; i < d->tracks; i++) {
++            d->trackIsAudio[i] = IS_AUDIO((*drive), i);
++            signature << d->disc_toc[i].dwStartSector + 150;
++        }
++
++        signature << cdda_disc_lastsector(*drive) - cdda_disc_firstsector(*drive) + 1 + 150;
+ 
+         KCDDB::Client c;
+-        d->cddbResult = c.lookup(cd.discSignature());
++        d->cddbResult = c.lookup(signature);
+         if (d->cddbResult == Success) {
+             d->cddbList = c.lookupResponse();
+             // FIXME: not always the best choice, see bug 279485
+@@ -626,6 +594,59 @@ static void app_file(UDSEntry &e, const QString &n, size_t s, const QString &mim
+         e.fastInsert(KIO::UDSEntry::UDS_MIME_TYPE, mimetype);
+ }
+ 
++struct DeviceListing {
++    QString device;
++    QString displayName;
++};
++
++QList<DeviceListing> cdromDevices()
++{
++    QList<DeviceListing> ret;
++
++    const auto devices = Solid::Device::listFromType(Solid::DeviceInterface::OpticalDrive);
++    for (const Solid::Device &device : devices) {
++        qDebug() << device.udi().toLatin1().constData();
++        const Solid::Block *b = device.as<Solid::Block>();
++
++        if (!b) {
++            continue;
++        }
++
++        QString name;
++        QString type;
++
++        const Solid::OpticalDrive *o = device.as<Solid::OpticalDrive>();
++        Solid::OpticalDrive::MediumTypes mediumType = o->supportedMedia();
++
++        // TODO translate them ?
++        if (mediumType < Solid::OpticalDrive::Cdrw) {
++            type = QLatin1String("CD-ROM");
++        } else if (mediumType < Solid::OpticalDrive::Dvd) {
++            type = QLatin1String("CDRW");
++        } else if (mediumType < Solid::OpticalDrive::Dvdr) {
++            type = QLatin1String("DVD-ROM");
++        } else if (mediumType < Solid::OpticalDrive::Bd) {
++            type = QLatin1String("DVDRW");
++        } else if (mediumType < Solid::OpticalDrive::HdDvd) {
++            type = QLatin1String("Blu-ray");
++        } else {
++            type = QLatin1String("High Density DVD");
++        }
++
++        if (!device.vendor().isEmpty())
++            name = (QLatin1Char('[') + type + QLatin1String(" - ") + device.vendor() + QLatin1String(" - ") + device.product() + QLatin1Char(']'));
++        else
++            name = (QLatin1Char('[') + type + QLatin1String(" - unknown vendor - ") + device.product() + QLatin1Char(']'));
++
++        ret << DeviceListing{
++            b->device(),
++            name,
++        };
++    }
++
++    return ret;
++}
++
+ KIO::WorkerResult AudioCDProtocol::stat(const QUrl &url)
+ {
+     const KIO::WorkerResult result = checkNoHost(url);
+@@ -639,8 +660,8 @@ KIO::WorkerResult AudioCDProtocol::stat(const QUrl &url)
+ 
+         UDSEntry entry;
+         // One subdirectory for each drive
+-        const QStringList &deviceNames = KCompactDisc::cdromDeviceNames();
+-        app_dir(entry, escapePath(QStringLiteral("/")), deviceNames.count());
++        const auto devices = cdromDevices();
++        app_dir(entry, escapePath(QStringLiteral("/")), devices.count());
+         statEntry(entry);
+         return KIO::WorkerResult::pass();
+     }
+@@ -716,17 +737,16 @@ KIO::WorkerResult AudioCDProtocol::listDir(const QUrl &url)
+     if (whichFromUrl(url) == Base) {
+         // The top level directory with CDROM devices only.
+ 
+-        const QStringList deviceNames = KCompactDisc::cdromDeviceNames();
+-        for (const QString &deviceName : deviceNames) {
+-            const QString &device = KCompactDisc::urlToDevice(KCompactDisc::cdromDeviceUrl(deviceName));
++        const auto devices = cdromDevices();
++        for (const auto &device : devices) {
+             QUrl targetUrl = url;
+             QUrlQuery targetQuery;
+-            targetQuery.addQueryItem(QStringLiteral("device"), device);
++            targetQuery.addQueryItem(QStringLiteral("device"), device.device);
+             targetUrl.setQuery(targetQuery);
+ 
+-            app_dir(entry, escapePath(device), 2 + encoders.count());
++            app_dir(entry, escapePath(device.device), 2 + encoders.count());
+             entry.fastInsert(KIO::UDSEntry::UDS_TARGET_URL, targetUrl.url());
+-            entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, deviceName);
++            entry.fastInsert(KIO::UDSEntry::UDS_DISPLAY_NAME, device.displayName);
+             listEntry(entry);
+         }
+         totalSize(entry.count());
+-- 
+GitLab
+
