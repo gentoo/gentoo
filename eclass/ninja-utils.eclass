@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ninja-utils.eclass
@@ -29,9 +29,14 @@ _NINJA_UTILS_ECLASS=1
 # @PRE_INHERIT
 # @DESCRIPTION:
 # Specify a compatible ninja implementation to be used by eninja().
-# At this point only "ninja" and "samu" are explicitly supported,
-# but other values can be set where NINJA_DEPEND will then be set
-# to a blank variable.
+# Accepts the following values:
+#
+# - ninja -- use the "ninja" symlink per app-alternatives/ninja
+#
+# - ninja-reference -- use "ninja-reference" for dev-build/ninja
+#
+# - samu -- use "samu" for dev-build/samurai
+#
 # The default is set to "ninja".
 : "${NINJA:=ninja}"
 
@@ -75,7 +80,7 @@ get_NINJAOPTS() {
 # also supports being called via 'nonfatal'.
 eninja() {
 	case "${NINJA}" in
-		ninja|samu)
+		ninja|ninja-reference|samu)
 			;;
 		*)
 			ewarn "Unknown value '${NINJA}' for \${NINJA}"
