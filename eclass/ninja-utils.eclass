@@ -60,7 +60,17 @@ _NINJA_UTILS_ECLASS=1
 
 inherit multiprocessing
 
-NINJA_DEPEND="app-alternatives/ninja"
+case ${NINJA} in
+	ninja)
+		NINJA_DEPEND="app-alternatives/ninja"
+		;;
+	ninja-reference)
+		NINJA_DEPEND="dev-build/ninja"
+		;;
+	samu)
+		NINJA_DEPEND="dev-build/samurai"
+		;;
+esac
 
 # @FUNCTION: get_NINJAOPTS
 # @DESCRIPTION:
