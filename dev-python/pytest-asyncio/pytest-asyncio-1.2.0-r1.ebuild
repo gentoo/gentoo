@@ -39,3 +39,10 @@ EPYTEST_DESELECT=(
 	tests/test_event_loop_fixture.py::test_event_loop_fixture_asyncgen_error
 	tests/test_event_loop_fixture.py::test_event_loop_fixture_handles_unclosed_async_gen
 )
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# remove pins
+	sed -i -e 's:,<[0-9.]*::' pyproject.toml || die
+}
