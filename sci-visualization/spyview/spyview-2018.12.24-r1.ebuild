@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,6 +36,7 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/spyview-no-user-dirs.patch"
 	"${FILESDIR}/${P}-fltk1.4.patch"
+	"${FILESDIR}/${P}-musl.patch"
 )
 
 src_unpack() {

@@ -1,0 +1,12 @@
+diff --git a/source/spyview/Gnuplot_Interface.H b/source/spyview/Gnuplot_Interface.H
+index f15cb08..ef6fb2d 100644
+--- a/spyview/Gnuplot_Interface.H
++++ b/spyview/Gnuplot_Interface.H
+@@ -5,6 +5,7 @@
+ #include <assert.h>
+ #include <errno.h>
+ #include <vector>
++#include <sys/types.h>
+ #include "message.h"
+ 
+ /* With the need for bi-directional communications with gnuplot,
