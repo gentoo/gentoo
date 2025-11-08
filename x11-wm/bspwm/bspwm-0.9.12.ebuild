@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 
 DEPEND="
-	x11-libs/libxcb
+	x11-libs/libxcb:=
 	x11-libs/xcb-util
+	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 "
 RDEPEND="${DEPEND}
