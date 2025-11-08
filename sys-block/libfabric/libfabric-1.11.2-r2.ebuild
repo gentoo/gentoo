@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,10 +12,10 @@ SRC_URI="https://github.com/ofiwg/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 LICENSE="BSD GPL-2"
 SLOT="0/1"
 KEYWORDS="~amd64"
-IUSE="cuda efa usnic rocr verbs"
+IUSE="cuda efa usnic rocm verbs"
 
 DEPEND="
-	rocr? ( dev-libs/rocr-runtime:= )
+	rocm? ( dev-libs/rocr-runtime:= )
 	usnic? ( dev-libs/libnl:= )
 	verbs? ( sys-cluster/rdma-core )
 "
