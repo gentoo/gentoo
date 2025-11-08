@@ -1,7 +1,7 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 
@@ -12,10 +12,10 @@ SRC_URI="https://github.com/ofiwg/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 LICENSE="BSD GPL-2"
 SLOT="0/1"
 KEYWORDS="~amd64"
-IUSE="cuda efa usnic rocr verbs"
+IUSE="cuda efa usnic rocm verbs"
 
 DEPEND="
-	rocr? ( dev-libs/rocr-runtime:= )
+	rocm? ( dev-libs/rocr-runtime:= )
 	usnic? ( dev-libs/libnl:= )
 	verbs? ( sys-cluster/rdma-core )
 "
@@ -55,7 +55,7 @@ src_configure() {
 		--enable-psm=no
 		--enable-psm2=no
 		#--enable-psm3=no
-		--enable-rocr-dlopen=$(usex rocr yes no)
+		--enable-rocr-dlopen=$(usex rocm yes no)
 		--enable-rstream=yes
 		--enable-rxd=yes
 		--enable-rxm=yes
