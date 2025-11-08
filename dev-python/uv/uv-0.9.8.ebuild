@@ -3,19 +3,52 @@
 
 EAPI=8
 
+CRATES="
+"
 RUST_MIN_VER="1.89.0"
 
-inherit cargo check-reqs git-r3
+declare -A GIT_CRATES=(
+	[async_zip]='https://github.com/astral-sh/rs-async-zip;f6a41d32866003c868d03ed791a89c794f61b703;rs-async-zip-%commit%'
+	[pubgrub]='https://github.com/astral-sh/pubgrub;d8efd77673c9a90792da9da31b6c0da7ea8a324b;pubgrub-%commit%'
+	[reqwest-middleware]='https://github.com/astral-sh/reqwest-middleware;7650ed76215a962a96d94a79be71c27bffde7ab2;reqwest-middleware-%commit%/reqwest-middleware'
+	[reqwest-retry]='https://github.com/astral-sh/reqwest-middleware;7650ed76215a962a96d94a79be71c27bffde7ab2;reqwest-middleware-%commit%/reqwest-retry'
+	[tl]='https://github.com/astral-sh/tl;6e25b2ee2513d75385101a8ff9f591ef51f314ec;tl-%commit%'
+	[version-ranges]='https://github.com/astral-sh/pubgrub;d8efd77673c9a90792da9da31b6c0da7ea8a324b;pubgrub-%commit%/version-ranges'
+)
 
+inherit cargo check-reqs
+
+CRATE_PV=${PV}
 DESCRIPTION="A Python package installer and resolver, written in Rust"
 HOMEPAGE="
 	https://github.com/astral-sh/uv/
 	https://pypi.org/project/uv/
 "
-EGIT_REPO_URI="https://github.com/astral-sh/uv.git"
+# pypi sdist misses scripts/, needed for tests
+SRC_URI="
+	https://github.com/astral-sh/uv/archive/${PV}.tar.gz
+		-> ${P}.gh.tar.gz
+	${CARGO_CRATE_URIS}
+"
+if [[ ${PKGBUMPING} != ${PVR} ]]; then
+	SRC_URI+="
+		https://github.com/gentoo-crate-dist/uv/releases/download/${CRATE_PV}/uv-${CRATE_PV}-crates.tar.xz
+	"
+fi
 
+# most of the code
 LICENSE="|| ( Apache-2.0 MIT )"
+# crates/pep508-rs is || ( Apache-2.0 BSD-2 ) which is covered below
+# Dependent crate licenses
+LICENSE+="
+	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD CC0-1.0
+	CDLA-Permissive-2.0 ISC MIT MPL-2.0 Unicode-3.0 Unicode-DFS-2016
+	ZLIB
+"
+# ring crate
+LICENSE+=" openssl"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 IUSE="test"
 RESTRICT="test"
 PROPERTIES="test_network"
@@ -56,13 +89,15 @@ pkg_setup() {
 	rust_pkg_setup
 }
 
-src_unpack() {
-	git-r3_src_unpack
-	cargo_live_src_unpack
-}
-
 src_prepare() {
 	default
+
+	# replace upstream crate substitution with our crate substitution, sigh
+	local pkg
+	for pkg in reqwest-middleware reqwest-retry; do
+		local dep=$(grep "^${pkg}" "${ECARGO_HOME}"/config.toml || die)
+		sed -i -e "/\[patch\.crates-io\]/,\$s;^${pkg}.*$;${dep};" Cargo.toml || die
+	done
 
 	# force thin lto, makes build much faster and less memory hungry
 	# (i.e. makes it possible to actually build uv on 32-bit PPC)
@@ -71,6 +106,9 @@ src_prepare() {
 	# enable system libraries where supported
 	export ZSTD_SYS_USE_PKG_CONFIG=1
 	# TODO: unbundle libz-ng-sys, tikv-jemalloc-sys?
+
+	# remove unbundled sources, just in case
+	find "${ECARGO_VENDOR}"/{bzip2,lzma,zstd}-sys-*/ -name '*.c' -delete || die
 
 	# bzip2-sys requires a pkg-config file
 	# https://github.com/alexcrichton/bzip2-rs/issues/104
