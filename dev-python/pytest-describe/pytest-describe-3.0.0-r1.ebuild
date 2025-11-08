@@ -20,10 +20,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="
-	<dev-python/pytest-9[${PYTHON_USEDEP}]
 	>=dev-python/pytest-6[${PYTHON_USEDEP}]
 "
 
 EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_PLUGINS=( "${PN}" )
 distutils_enable_tests pytest
+
+src_prepare() {
+	distutils-r1_src_prepare
+
+	# unpin dependencies
+	sed -i -e 's:,<[0-9]*::' pyproject.toml || die
+}
