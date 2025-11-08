@@ -116,6 +116,9 @@ get_NINJAOPTS() {
 			# ninja only uses jobserver if -j is not passed
 			NINJAOPTS+=" -j$(get_makeopts_jobs 999)"
 		fi
+	elif _ninja_uses_jobserver && [[ ${NINJAOPTS} == *-j* ]]; then
+		ewarn "Jobserver detected, but NINJAOPTS specifies -j option."
+		ewarn "To enable ninja jobserver support, remove -j from NINJAOPTS."
 	fi
 	echo "${NINJAOPTS}"
 }
