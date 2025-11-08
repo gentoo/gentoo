@@ -12,7 +12,7 @@ DESCRIPTION="Daemon providing Global Keyboard Shortcut (Accelerator) functionali
 
 LICENSE="LGPL-2+"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="X"
 
 REQUIRED_USE="test? ( X )"
