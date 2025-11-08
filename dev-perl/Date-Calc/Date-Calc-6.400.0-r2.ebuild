@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DIST_AUTHOR=STBEY
 DIST_VERSION=6.4
@@ -17,8 +17,6 @@ RDEPEND="
 	>=dev-perl/Bit-Vector-7.400.0
 	>=dev-perl/Carp-Clan-6.40.0
 "
-BDEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
-"
+BDEPEND="${RDEPEND}"
 
 mydoc="ToDo"
