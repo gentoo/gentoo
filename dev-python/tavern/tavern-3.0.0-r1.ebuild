@@ -29,6 +29,7 @@ RDEPEND="
 	>=dev-python/pykwalify-1.8.0[${PYTHON_USEDEP}]
 	>=dev-python/pytest-8[${PYTHON_USEDEP}]
 	>=dev-python/python-box-6[${PYTHON_USEDEP}]
+	<dev-python/pytest-9[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-6.0.1[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
 	>=dev-python/simpleeval-1.0.3[${PYTHON_USEDEP}]
