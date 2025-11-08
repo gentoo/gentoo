@@ -30,6 +30,7 @@
 		<flag name="parquet">Enables read/write parquet data format (<pkg>dev-libs/apache-arrow</pkg>)</flag>
 		<flag name="qhull">Enable support for linear interpolation of gdal_grid with <pkg>media-libs/qhull</pkg></flag>
 		<flag name="spatialite">Enable Spatial DBMS over sqlite <pkg>dev-db/spatialite</pkg></flag>
+		<flag name="system-tiff">Build against system <pkg>media-libs/tiff</pkg> and <pkg>sci-libs/libgeotiff</pkg> (JPEG XL not supported with this enabled)</flag>
 		<flag name="tools">Build command line utilities</flag>
 		<flag name="xls">Add the <pkg>dev-libs/freexl</pkg> library for xls import support</flag>
 	</use>
