@@ -6,7 +6,7 @@ EAPI=8
 CMAKE_REMOVE_MODULES_LIST=( FindHDF5 )
 KDE_ORG_CATEGORY=graphics
 KDE_ORG_NAME=kst-plot
-KDE_ORG_COMMIT=c250288dcae3b476d55321b935fbaab5dec6b28b
+KDE_ORG_COMMIT=f8586dd829ee364e6e3c41b7b01af0ca41984dc7
 inherit cmake flag-o-matic kde.org xdg
 
 DESCRIPTION="Fast real-time large-dataset viewing and plotting tool"
@@ -47,8 +47,8 @@ DOCS=( AUTHORS README.kstScript )
 PATCHES=(
 	# downstream patches
 	"${FILESDIR}"/${PN}-2.0.8-getdata-drop-bogus-lib_debug.patch # bug #593848
-	"${FILESDIR}"/${P}-cmake-findhdf5.patch # bug #954233
-	"${FILESDIR}"/${P}-no-compress-man.patch # bug #812017
+	"${FILESDIR}"/${PN}-2.1.0_p20250830-cmake-findhdf5.patch # bug #954233
+	"${FILESDIR}"/${PN}-2.1.0_p20250830-no-compress-man.patch # bug #812017
 )
 
 src_prepare() {
