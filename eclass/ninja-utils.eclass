@@ -72,12 +72,50 @@ case ${NINJA} in
 		;;
 esac
 
+# @FUNCTION: _ninja_uses_jobserver
+# @DESCRIPTION:
+# Return true if current ${NINJA} has jobserver support and we have one
+# running (via MAKEFLAGS).
+_ninja_uses_jobserver() {
+	# ninja supports jobserver via FIFO only
+	[[ ${MAKEFLAGS} == *--jobserver-auth=fifo:* ]] || return 1
+
+	case ${NINJA} in
+		# if using "ninja", make sure its a symlink to real ninja
+		# samu: https://github.com/michaelforney/samurai/issues/71
+		ninja)
+			if ! has_version -b "app-alternatives/ninja[reference]"; then
+				einfo "ninja != ninja-reference, no jobserver support"
+				return 1
+			fi
+			;&
+		# plus, it must be at least 1.13.0
+		ninja-reference)
+			if ! has_version -b ">=dev-build/ninja-1.13"; then
+				einfo "ninja >= 1.13 required for jobserver support"
+				return 1
+			fi
+			;;
+		*)
+			einfo "NINJA=${NINJA}, no jobserver support"
+			return 1
+			;;
+	esac
+
+	einfo "ninja will use the jobserver"
+	return 0
+}
+
 # @FUNCTION: get_NINJAOPTS
 # @DESCRIPTION:
 # Get the value of NINJAOPTS, inferring them from MAKEOPTS if unset.
 get_NINJAOPTS() {
 	if [[ -z ${NINJAOPTS+set} ]]; then
-		NINJAOPTS="-j$(get_makeopts_jobs 999) -l$(get_makeopts_loadavg 0)"
+		NINJAOPTS="-l$(get_makeopts_loadavg 0)"
+		if ! _ninja_uses_jobserver; then
+			# ninja only uses jobserver if -j is not passed
+			NINJAOPTS+=" -j$(get_makeopts_jobs 999)"
+		fi
 	fi
 	echo "${NINJAOPTS}"
 }
