@@ -19,7 +19,9 @@ BDEPEND="
 	$(llvm_gen_dep '
 		llvm-core/clang:${LLVM_SLOT}
 	')
-	spirv? ( dev-util/spirv-llvm-translator:* )
+	spirv? (
+		>=dev-util/spirv-llvm-translator-22:*
+	)
 "
 
 LLVM_COMPONENTS=( libclc )
