@@ -113,6 +113,7 @@ src_configure() {
 
 src_install() {
 	default
+	dotmpfiles src/boot/ostree-tmpfiles.conf #901797
 	find "${D}" -name '*.la' -type f -delete || die
 }
 
