@@ -55,7 +55,10 @@ RDEPEND="zoom-symlink? ( !games-engines/zoom )
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-renderutil
 	x11-libs/xcb-util-wm
-	opencl? ( virtual/opencl )
+	opencl? (
+		sys-devel/gcc:*[openmp]
+		virtual/opencl
+	)
 	pulseaudio? ( media-libs/libpulse )
 	wayland? ( dev-libs/wayland )"
 
