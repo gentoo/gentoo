@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..14} )
 PYTHON_REQ_USE="threads(+)"
-inherit waf-utils multilib-minimal python-single-r1
+inherit flag-o-matic waf-utils multilib-minimal python-single-r1
 
 DESCRIPTION="Simple database API"
 HOMEPAGE="https://tdb.samba.org/"
@@ -59,6 +59,8 @@ multilib_src_configure() {
 	if ! multilib_is_native_abi || ! use python ; then
 		extra_opts+=( --disable-python )
 	fi
+
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version) # bug 914857
 
 	waf-utils_src_configure "${extra_opts[@]}"
 }
