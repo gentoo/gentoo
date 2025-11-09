@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.4.2-fix-arch-parse.patch
 	"${FILESDIR}"/${PN}-6.0.2-expand-isa-compatibility.patch
 	"${FILESDIR}"/${PN}-7.0.1-fix-install.patch
+	"${FILESDIR}"/${PN}-7.1.0-cmake.patch
 )
 
 CMAKE_USE_DIR="${S}/${PN}/Source"
@@ -106,12 +107,13 @@ src_configure() {
 
 	distutils-r1_src_configure
 	if use client; then
+		local targets="$(get_amdgpu_flags)"
 		local mycmakeargs=(
 			-DCMAKE_SKIP_RPATH=ON
 			-DTENSILE_USE_MSGPACK=ON
 			-DTENSILE_USE_LLVM=ON
 			-DTensile_LIBRARY_FORMAT=msgpack
-			-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
+			-DGPU_TARGETS="${targets::-1}"
 		)
 		cmake_src_configure
 	fi
