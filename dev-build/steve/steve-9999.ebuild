@@ -20,6 +20,8 @@ python_install_all() {
 
 	systemd_dounit data/steve.service
 	newtmpfiles data/steve.tmpfiles steve.conf
+	newconfd data/steve.confd steve
+	newinitd data/steve.initd steve
 	insinto /etc/sandbox.d
 	newins data/sandbox.conf 90steve
 }
