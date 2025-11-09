@@ -11,7 +11,7 @@ SRC_URI="https://feh.finalrewind.org/${P}.tar.bz2"
 LICENSE="feh"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~riscv ~x86"
-IUSE="debug curl exif test xinerama inotify"
+IUSE="debug curl exif magic test xinerama inotify"
 RESTRICT="test" # Tests are broken.
 
 COMMON_DEPEND="
@@ -20,6 +20,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	curl? ( net-misc/curl )
 	exif? ( media-libs/libexif )
+	magic? ( sys-apps/file )
 	xinerama? ( x11-libs/libXinerama )"
 RDEPEND="${COMMON_DEPEND}
 	media-libs/libjpeg-turbo:0"
@@ -46,6 +47,7 @@ pkg_setup() {
 		xinerama=$(use_feh xinerama)
 		exif=$(use_feh exif)
 		inotify=$(use_feh inotify)
+		magic=$(use_feh magic)
 	)
 }
 
