@@ -1,0 +1,71 @@
+avoid deps for both X11 and Wayland
+X11 linker is no longer forced (Qt makes the job if needed)
+--- a/avidemux/qt4/ADM_qt/src/ADM_qtx.cpp
++++ b/avidemux/qt4/ADM_qt/src/ADM_qtx.cpp
+@@ -24,21 +24,29 @@ QT_LINUX_WINDOW_ENGINE admDetectQtEngine()
+     QString pname = currentQApplication()->platformName();
+     ADM_info("Running on platform %s\n", pname.toLatin1().constData());
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
++#if defined USE_X11
+     auto x11 = currentQApplication()->nativeInterface<QNativeInterface::QX11Application>();
+     if (x11)
+     {
+         ADM_info("Running on X11\n");
+         qtEngine = QT_X11_ENGINE;
+     }
++#endif // USE_X11
++#if defined USE_WAYLAND
++#if defined USE_X11
+     else
+     {
++#endif // USE_X11
+         auto wayland = currentQApplication()->nativeInterface<QNativeInterface::QWaylandApplication>();
+         if (wayland)
+         {
+             ADM_info("Running on Wayland\n");
+             qtEngine = QT_WAYLAND_ENGINE;
+         }
++#if defined USE_X11
+     }
++#endif // USE_X11
++#endif // USE_WAYLAND
+ #else
+     if (!strncmp(pname.toLatin1().constData(), "xcb", 3))
+         qtEngine = QT_X11_ENGINE;
+--- a/avidemux/qt4/ADM_userInterfaces/ADM_gui/T_preview.cpp
++++ b/avidemux/qt4/ADM_userInterfaces/ADM_gui/T_preview.cpp
+@@ -265,6 +265,7 @@ static void systemWindowInfo(GUI_WindowInfo *xinfo)
+         ADM_info("Running on platform %s\n", currentQApplication()->platformName().toLatin1().data());
+         switch (admDetectQtEngine())
+         {
++#if defined USE_X11
+         case QT_X11_ENGINE: {
+             auto x11 = currentQApplication()->nativeInterface<QNativeInterface::QX11Application>();
+             if (x11)
+@@ -274,6 +275,8 @@ static void systemWindowInfo(GUI_WindowInfo *xinfo)
+             }
+         }
+         break;
++#endif // USE_X11
++#if defined USE_WAYLAND
+         case QT_WAYLAND_ENGINE:
+ 
+         {
+@@ -285,6 +288,7 @@ static void systemWindowInfo(GUI_WindowInfo *xinfo)
+             }
+         }
+         break;
++#endif // USE_WAYLAND
+         default:
+             ADM_warning("Cannot get qt engine infos\n");
+             myDisplay = NULL;
+--- a/avidemux/qt4/cmake/adm_default.cmake
++++ b/avidemux/qt4/cmake/adm_default.cmake
+@@ -3,7 +3,6 @@
+ #
+ MACRO(ADM_PREBUILD)
+         LIST(APPEND PlatformLibs   "-lm -lstdc++")
+-        LIST(APPEND PlatformLibs   "X11") # Linux, BSD
+ ENDMACRO(ADM_PREBUILD)
+ #
+ #
