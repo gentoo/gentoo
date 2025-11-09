@@ -1,0 +1,15 @@
+--- qt5-sqlcipher-1.1.0/CMakeLists.txt
++++ qt5-sqlcipher-1.1.0/CMakeLists.txt
+@@ -193,11 +193,7 @@
+ 			INSTALL(TARGETS qsqlcipher-test DESTINATION bin)
+ 		endif()
+ 	else()
+-		message(WARNING "Packaging is not set up for this platform, either submit a ticket or change/add pathes yourself, if packaging is required.")
+-		INSTALL(TARGETS qsqlcipher DESTINATION sqldrivers)
+-		if (QSQLCIPHER_BUILD_TESTS)
+-			INSTALL(TARGETS qsqlcipher-test DESTINATION bin)
+-		endif()
++		INSTALL(TARGETS qsqlcipher DESTINATION @LIBDIR@/qt6/plugins/sqldrivers)
+ 	endif()
+ else()
+ 	INSTALL(TARGETS qsqlcipher DESTINATION sqldrivers)
