@@ -214,21 +214,44 @@ cmake_run_in() {
 }
 
 # @FUNCTION: cmake_comment_add_subdirectory
-# @USAGE: <subdirectory>
+# @USAGE: [-f <filename or directory>] <subdirectory> [<subdirectories>]
 # @DESCRIPTION:
-# Comment out one or more add_subdirectory calls in CMakeLists.txt in the current directory
+# Comment out one or more add_subdirectory calls with #DONOTBUILD in
+# a) a given file path (error out on nonexisting path)
+# b) a CMakeLists.txt file inside a given directory (ewarn if not found)
+# c) CMakeLists.txt in current directory (do nothing if not found).
 cmake_comment_add_subdirectory() {
-	if [[ -z ${1} ]]; then
-		die "${FUNCNAME[0]} must be passed at least one directory name to comment"
+	local d filename="CMakeLists.txt"
+	if [[ $# -lt 1 ]]; then
+		die "${FUNCNAME[0]} must be passed at least one subdirectory name to comment"
 	fi
+	case ${1} in
+		-f)
+			if [[ $# -ge 3 ]]; then
+				filename="${2}"
+				if [[ -d ${filename} ]]; then
+					filename+="/CMakeLists.txt"
+					if [[ ! -e ${filename} ]]; then
+						ewarn "You've given me nothing to work with in ${filename}!"
+						return
+					fi
+				elif [[ ! -e ${filename} ]]; then
+					die "${FUNCNAME}: called on non-existing ${filename}"
+				fi
+			else
+				die "${FUNCNAME[0]}: bad number of arguments: -f <filename or directory> <subdirectory> expected"
+			fi
+			shift 2
+			;;
+		*)
+			[[ -e ${filename} ]] || return
+			;;
+	esac
 
-	[[ -e "CMakeLists.txt" ]] || return
-
-	local d
-	for d in $@; do
+	for d in "$@"; do
 		d=${d//\//\\/}
-		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}[[:space:]]*)/I s/^/#DONOTCOMPILE /" \
-			-i CMakeLists.txt || die "failed to comment add_subdirectory(${d})"
+		sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${d}[[:space:]]*)/I s/^/#DONOTBUILD /" \
+			-i ${filename} || die "failed to comment add_subdirectory(${d})"
 	done
 }
 
