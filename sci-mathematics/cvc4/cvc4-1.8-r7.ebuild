@@ -3,6 +3,7 @@
 
 EAPI=8
 
+CMAKE_BUILD_TYPE=Production
 CMAKE_MAKEFILE_GENERATOR=emake
 PYTHON_COMPAT=( python3_{11..13} )
 inherit cmake python-any-r1
@@ -29,6 +30,9 @@ DEPEND="${PYTHON_DEPS}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-gnuinstalldirs.patch # cvc5 git master
+	"${FILESDIR}"/${P}-destdir.patch # cvc5 git master
+	"${FILESDIR}"/${P}-cmake4.patch # bug 953543
 	"${FILESDIR}"/${P}-toml.patch
 	"${FILESDIR}"/${P}-bash-5.2-fix.patch
 	"${FILESDIR}"/${P}-size_t.patch
@@ -50,7 +54,6 @@ src_configure() {
 		-DENABLE_STATISTICS="$(usex statistics ON OFF)"
 		-DENABLE_PROOFS="$(usex proofs ON OFF)"
 	)
-	CMAKE_BUILD_TYPE="Gentoo"
 	cmake_src_configure
 	# Bug #934053 - build with musl
 	antlr3 "${S}"/src/parser/cvc/Cvc.g -fo "${BUILD_DIR}"/src/parser/cvc || die
@@ -69,9 +72,4 @@ src_test() {
 	emake -C "${BUILD_DIR}" \
 		systemtests
 	cmake_src_test
-}
-
-src_install() {
-	cmake_src_install
-	mv "${D}"/usr/{lib,$(get_libdir)}
 }

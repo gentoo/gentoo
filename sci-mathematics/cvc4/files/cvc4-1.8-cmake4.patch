@@ -1,0 +1,24 @@
+Source: https://salsa.debian.org/science-team/cvc4/-/blob/master/debian/patches/05-fix-headers.patch
+
+Bumped from 3.5 to 3.10 though.
+
+Description: Fix FTBFS with CMake 4
+Author: Adrian Bunk <bunk@debian.org>
+Bug-Debian: https://bugs.debian.org/1112823
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 3.10)
+ 
+ #-----------------------------------------------------------------------------#
+ # Project configuration
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 3.10)
+ 
+ project(cvc4-examples)
+ 
