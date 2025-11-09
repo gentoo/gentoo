@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lukas Schmelting <lschmelting@posteo.com> (2025-11-09)
+# gnome-online-accounts is unkeyworded and in use.mask for sparc
+gnome-base/gvfs gnome-online-accounts google onedrive
+
 # Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
 # media-libs/zxingcpp is not keyworded here
 app-text/mupdf barcode
