@@ -27,8 +27,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-util/hip:${SLOT}
 	dev-util/rocm-smi:${SLOT}
-	sci-libs/blis
-	virtual/blas
 	roctracer? ( dev-util/roctracer:${SLOT} )
 	benchmark? (
 		sci-libs/flexiblas
@@ -60,6 +58,10 @@ BDEPEND="
 	)
 "
 
+# In 7.1.0 to build tests one needs to build benchmarks (which will be installed)
+# TODO: make build of tests independent benchmarks
+REQUIRED_USE="test? ( benchmark )"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-7.1.0-no-git.patch
 	"${FILESDIR}"/hipBLASLt-7.1.0-rocisa-nanobind.patch
@@ -88,6 +90,12 @@ pkg_pretend() {
 	fi
 }
 
+src_unpack() {
+	local HIPBLASLT="rocm-libraries-rocm-${PV}/projects/hipblaslt"
+	local ORIGAMI="rocm-libraries-rocm-${PV}/shared/origami"
+	tar -xzf "${DISTDIR}/${A}" "${HIPBLASLT}" "${ORIGAMI}" -C "${WORKDIR}" || die
+}
+
 src_prepare() {
 	local shebangs=($(grep -rl "#!/usr/bin/env python3" tensilelite/Tensile || die))
 	python_fix_shebang -q "${shebangs[@]}"
@@ -98,13 +106,18 @@ src_prepare() {
 		-i tensilelite/Makefile || die
 
 	# Fix compiler validation (just a validation)
-	sed "s/amdclang/$(basename "$CC")/g" \
+	sed -e "s/amdclang/$(basename "$CC")/g" \
 		-i tensilelite/Tensile/Toolchain/Validators.py \
 		-i tensilelite/Tensile/Tests/unit/test_MatrixInstructionConversion.py || die
 
-	# https://github.com/ROCm/rocm-libraries/commit/48c5e89fd90caff65e62e6a9bcf082d10d8877eb
-	sed -e 's:if(NOT ROCM_FOUND):if(NOT ROCmCMakeBuildTools_FOUND):' \
-		-i cmake/dependencies.cmake || die
+	# Do not install tests
+	sed -e "s/COMPONENT tests/COMPONENT tests EXCLUDE_FROM_ALL/" -i CMakeLists.txt || die
+
+	# usage: DEPENDS PACKAGE A PACKAGE B, not DEPENDS PACKAGE A DEPENDS PACKAGE B
+	# https://rocm.docs.amd.com/projects/ROCmCMakeBuildTools/en/docs-7.1.0/reference/ROCMInstallTargets.html#command:rocm_export_targets
+	# Bug: https://bugs.gentoo.org/965873
+	# Upstream bug: https://github.com/ROCm/rocm-libraries/issues/2556
+	sed -e "s/DEPENDS PACKAGE \${hipblas_target}/PACKAGE \${hipblas_target}/" -i CMakeLists.txt || die
 
 	cmake_src_prepare
 }
@@ -115,20 +128,18 @@ src_configure() {
 	# too many warnings
 	append-cxxflags -Wno-explicit-specialization-storage-class
 
+	# Tensile guesses weirdly how to compile things, ld.bfd won't work, so force lld
+	append-cxxflags -DCMAKE_CXX_FLAGS="-fuse-ld=lld"
+
 	local targets="$(get_amdgpu_flags)"
 	local Tensile_SKIP_BUILD=$([ "${AMDGPU_TARGETS[*]}" = "" ] && echo ON || echo OFF )
 	local HIPBLASLT_ENABLE_DEVICE=$([ "${AMDGPU_TARGETS[*]}" != "" ] && echo ON || echo OFF )
 
 	# targets has a trailing semicolon, this trips up Tensile's input parser, so carefully prune
-	# Tensile guesses weirdly how to compile things, ld.bfd won't work, so force lld
-
 	local mycmakeargs=(
 		-DGPU_TARGETS="${targets::-1}"
-		-DCMAKE_CXX_FLAGS="-fuse-ld=lld"
-		-DBLA_PKGCONFIG_BLAS=ON
-		-DBLA_VENDOR=FlexiBLAS
-		-DBUILD_CLIENTS_BENCHMARKS="$(usex benchmark ON OFF)"
-		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
+		-DHIPBLASLT_ENABLE_CLIENT="$(usex benchmark ON $(usex test ON OFF))"
+		-DHIPBLASLT_ENABLE_SAMPLES=OFF
 		-DHIPBLASLT_ENABLE_DEVICE=${HIPBLASLT_ENABLE_DEVICE}
 		-DHIPBLASLT_ENABLE_MARKER="$(usex roctracer ON OFF)"
 		-DHIPBLASLT_ENABLE_ROCROLLER=OFF
@@ -137,15 +148,19 @@ src_configure() {
 		-Dnanobind_DIR="$(python_get_sitedir)/nanobind/cmake"
 		-DPython_EXECUTABLE="${PYTHON}"
 		-DROCM_SYMLINK_LIBS=OFF
-		-DTensile_COMPILER=${CXX}
-		-DTensile_CPU_THREADS=$(makeopts_jobs)
-		-DTensile_SKIP_BUILD=${Tensile_SKIP_BUILD}
-		-DBLIS_LIB="/usr/$(get_libdir)/libblis.so"
-		-DBLIS_INCLUDE_DIR="/usr/include/blis"
-		-DBLAS_LIBRARIES="/usr/$(get_libdir)"
+		-DTENSILELITE_BUILD_PARALLEL_LEVEL=$(makeopts_jobs)
 		-DHIPBLASLT_BUILD_TESTING="$(usex test ON OFF)"
 		-Wno-dev
 	)
+
+	if use test || use benchmark; then
+		# HIPBLASLT_ENABLE_CLIENT=ON branch
+		mycmakeargs+=(
+			-DBLA_PKGCONFIG_BLAS=ON
+			-DBLA_VENDOR=FlexiBLAS
+			-DHIPBLASLT_ENABLE_BLIS=OFF
+		)
+	fi
 
 	cmake_src_configure
 }
