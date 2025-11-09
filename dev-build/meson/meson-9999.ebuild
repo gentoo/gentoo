@@ -102,7 +102,7 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.2.1-python-path.patch
+	"${FILESDIR}"/${PN}-1.10.0-python-path.patch
 )
 
 src_unpack() {
