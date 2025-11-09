@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Patrick Lauer <patrick@gentoo.org> (2025-11-09)
+# hipBLASLt needs a lot more work for 7.1
+=sci-libs/rocBLAS-7.1.0 hipblaslt
+=sci-libs/miopen-7.1.0 hipblaslt
+
 # Sam James <sam@gentoo.org> (2025-10-29)
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
 # transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
