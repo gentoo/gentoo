@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit libtool python-any-r1
+inherit libtool python-any-r1 flag-o-matic
 
 DESCRIPTION="A fast and low-memory footprint OCI Container Runtime fully written in C"
 HOMEPAGE="https://github.com/containers/crun"
@@ -27,6 +27,7 @@ DEPEND="
 	sys-kernel/linux-headers
 	caps? ( sys-libs/libcap )
 	criu? ( >=sys-process/criu-3.15 )
+	elibc_musl? ( sys-libs/error-standalone )
 	seccomp? ( sys-libs/libseccomp )
 	systemd? ( sys-apps/systemd:= )
 "
@@ -43,6 +44,10 @@ src_prepare() {
 }
 
 src_configure() {
+        if use elibc_musl ; then
+                append-cflags "$($(tc-getPKG_CONFIG) --cflags error-standalone)"
+                append-libs "$($(tc-getPKG_CONFIG) --libs error-standalone)"
+        fi
 	local myeconfargs=(
 		--cache-file="${S}"/config.cache
 		$(use_enable bpf)
