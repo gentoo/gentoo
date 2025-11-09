@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
+# Lukas Schmelting <lschmelting@posteo.com> (2025-11-09)
+# gnome-online-accounts is not keyworded for sparc
+gnome-online-accounts
+
 # matoro <matoro_gentoo@matoro.tk> (2024-06-11)
 # Extensive use of unaligned access, no plans to fix, #636552
 # https://github.com/memcached/memcached/issues/902
