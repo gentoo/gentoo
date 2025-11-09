@@ -35,6 +35,7 @@ DEPEND="
 src_prepare() {
 	sed -e "s/-Werror//" \
 		-e "s:\${CMAKE_INSTALL_DATADIR}/html/amd-dbgapi:\${CMAKE_INSTALL_DOCDIR}/html:" \
+		-e "s:\${CMAKE_INSTALL_DATADIR}/doc/\${CPACK_PACKAGE_NAME}:\${CMAKE_INSTALL_DOCDIR}:" \
 		-e "s/COMPONENT asan/COMPONENT asan EXCLUDE_FROM_ALL/" \
 		-i CMakeLists.txt || die
 	cmake_src_prepare
