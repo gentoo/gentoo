@@ -27,13 +27,15 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	dev-python/numpy
-	dev-python/pillow
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+	')
 	jpeg? ( media-libs/libjpeg-turbo:= )
 	png? ( media-libs/libpng:= )
 	webp? ( media-libs/libwebp )
 	ffmpeg? ( media-video/ffmpeg )
-	sci-ml/caffe2[cuda?,rocm?]
+	sci-ml/caffe2[cuda?,rocm?,${PYTHON_SINGLE_USEDEP}]
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 "
 
@@ -47,6 +49,8 @@ BDEPEND="
 "
 
 distutils_enable_tests pytest
+
+PATCHES=( "${FILESDIR}"/${PN}-0.24.0-ffmpeg8.patch )
 
 src_prepare() {
 	# multilib fixes
@@ -84,7 +88,7 @@ python_compile() {
 }
 
 python_test() {
-	rm -rf torchvision || die
+	rm -r torchvision || die
 
 	local EPYTEST_IGNORE=(
 		test/test_videoapi.py
