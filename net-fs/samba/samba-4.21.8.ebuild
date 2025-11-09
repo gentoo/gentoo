@@ -304,6 +304,8 @@ multilib_src_configure() {
 		myconf+=( --with-shared-modules=DEFAULT,!vfs_snapper )
 	fi
 
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version) # bug 914898
+
 	append-cppflags "-I${ESYSROOT}/usr/include/et"
 
 	waf-utils_src_configure ${myconf[@]}
