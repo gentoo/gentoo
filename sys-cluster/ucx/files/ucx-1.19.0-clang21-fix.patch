@@ -1,0 +1,79 @@
+https://github.com/openucx/ucx/pull/10998
+From: Brahmajit Das <listout@listout.xyz>
+Date: Sun, 9 Nov 2025 12:37:47 +0530
+Subject: [PATCH 1/2] UCS/BITMAP/TEST: Fix build with >= Clang 21
+
+First caught on Gentoo LLVM with Clang 21.1.5 and LLVM 21.1.5
+Build with fail with the following error message
+
+The cause is probably Clang now being more strict and ucs_typeof(_bitmap) _r_##_uid being declared and not used.
+
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/src/ucs/datastruct/static_bitmap.h
++++ b/src/ucs/datastruct/static_bitmap.h
+@@ -229,7 +229,7 @@ BEGIN_C_DECLS
+ #define _UCS_STATIC_BITMAP_UNARY_OP(_bitmap, _op_name, _uid) \
+     ({ \
+         ucs_typeof(_bitmap) _b_##_uid = (_bitmap); \
+-        ucs_typeof(_bitmap) _r_##_uid; \
++        ucs_typeof(_bitmap) _r_##_uid = {0}; \
+         \
+         ucs_bitmap_bits_##_op_name(UCS_STATIC_BITMAP_BITS_ARGS(&_r_##_uid), \
+                                    UCS_STATIC_BITMAP_BITS_CARGS(&_b_##_uid)); \
+@@ -255,7 +255,7 @@ BEGIN_C_DECLS
+     ({ \
+         ucs_typeof(_bitmap1) _b1_##_uid = (_bitmap1); \
+         ucs_typeof(_bitmap2) _b2_##_uid = (_bitmap2); \
+-        ucs_typeof(_bitmap1) _r_##_uid; \
++        ucs_typeof(_bitmap1) _r_##_uid = {0}; \
+         \
+         ucs_bitmap_bits_binary_op(UCS_STATIC_BITMAP_BITS_ARGS(&_r_##_uid), \
+                                   UCS_STATIC_BITMAP_BITS_CARGS(&_b1_##_uid), \
+
+From 56456ab1b1356c7c6bdc22ce2f711a0d3cd9d429 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <listout@listout.xyz>
+Date: Sun, 9 Nov 2025 12:42:29 +0530
+Subject: [PATCH 2/2] TEST/IODEMO: Use std::shuffle when available
+
+random_shuffle was deprecated in C++14 and completely removed in C++17.
+With newer compilers like Clang 21, the build fails. This commit should
+preserve older behavior and use std::shuffle when available.
+
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/test/apps/iodemo/io_demo.cc
++++ b/test/apps/iodemo/io_demo.cc
+@@ -9,6 +9,7 @@
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <sys/time.h>
++#include <algorithm>
+ #include <iostream>
+ #include <string.h>
+ #include <getopt.h>
+@@ -19,6 +20,7 @@
+ #include <csignal>
+ #include <cerrno>
+ #include <vector>
++#include <random>
+ #include <map>
+ #include <queue>
+ #include <algorithm>
+@@ -2998,9 +3000,17 @@ static int do_client(options_t& test_opts)
+     IoDemoRandom::srand(test_opts.random_seed);
+     LOG << "random seed: " << test_opts.random_seed;
+ 
+-    // randomize servers to optimize startup
++    // randomize servers to optimize startup (handle C++17+)
++#if __cplusplus >= 201703L
++	// std::shuffle replaces std::random_shuffle in C++17
++	std::random_device rd;
++	std::mt19937 rng(rd());
++	std::shuffle(test_opts.servers.begin(), test_opts.servers.end(), rng);
++#else
++    // For older C++ standards, keep std::random_shuffle
+     std::random_shuffle(test_opts.servers.begin(), test_opts.servers.end(),
+                         IoDemoRandom::urand<size_t>);
++#endif
+ 
+     UcxLog vlog(LOG_PREFIX, test_opts.verbose);
+     vlog << "List of servers:";
