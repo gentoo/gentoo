@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-db/qt5-sqlcipher
+RDEPEND="dev-db/qt5-sqlcipher:0
 	>=dev-libs/libsodium-1.0.18:=
 	>=dev-qt/qtcore-5.7.1:5=
 	>=dev-qt/qtgui-5.7.1:5=
