@@ -97,7 +97,6 @@ src_configure() {
 	local all_mycmakeargs=(
 		-DVERBOSE=ON
 		-DGETTEXT="$(usex nls)"
-		-DNVENC="$(usex nvenc)"
 	)
 
 	# buildCli

@@ -1,0 +1,12 @@
+make libsamplerate optional
+--- a/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake
++++ b/avidemux_plugins/cmake/admCheckAudioDeviceLibs.cmake
+@@ -116,7 +116,7 @@ IF(JACK_FOUND)
+ 	FIND_HEADER_AND_LIB(SRC samplerate.h samplerate src_get_version)
+ 	PRINT_LIBRARY_INFO("Secret Rabbit Code" SRC_FOUND "${SRC_INCLUDE_DIR}" "${SRC_LIBRARY_DIR}")
+ 
+-	IF(SRC_FOUND)
++	IF(SRC AND SRC_FOUND)
+ 		SET(USE_SRC 1)
+ 	ENDIF()
+ 
