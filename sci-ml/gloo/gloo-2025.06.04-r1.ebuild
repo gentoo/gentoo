@@ -16,8 +16,8 @@ HOMEPAGE="https://github.com/facebookincubator/gloo/"
 SRC_URI="
 	https://github.com/facebookincubator/${PN}/archive/${CommitId}.tar.gz -> ${P}.tar.gz
 
-	cuda? ( https://github.com/pytorch/pytorch/archive/refs/tags/v${PV}.tar.gz -> ${PYTORCH_P}.tar.gz )
-	rocm? ( https://github.com/pytorch/pytorch/archive/refs/tags/v${PV}.tar.gz -> ${PYTORCH_P}.tar.gz )
+	cuda? ( https://github.com/pytorch/pytorch/archive/refs/tags/v${PYTORCH_PV}.tar.gz -> ${PYTORCH_P}.tar.gz )
+	rocm? ( https://github.com/pytorch/pytorch/archive/refs/tags/v${PYTORCH_PV}.tar.gz -> ${PYTORCH_P}.tar.gz )
 "
 
 S="${WORKDIR}"/${PN}-${CommitId}

@@ -80,7 +80,7 @@ RDEPEND="
 		cusparselt? ( dev-libs/cusparselt )
 	)
 	fbgemm? ( sci-ml/FBGEMM )
-	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?] )
+	gloo? ( >=sci-ml/gloo-2025.06.04[cuda?,rocm?] )
 	mpi? ( virtual/mpi )
 	nnpack? (
 		sci-ml/NNPACK
@@ -100,7 +100,7 @@ RDEPEND="
 		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-7.1:= )
 		>=dev-util/hip-6.3:=       <dev-util/hip-7.1:=
 		>=dev-util/roctracer-6.3:= <dev-util/roctracer-7.1:=
-		>=sci-libs/hipBLAS-6.3:=   <sci-libs/hipBLAS-7.1:=
+		|| ( sci-libs/hipBLAS:0/6.3 sci-libs/hipBLAS:0/6.4 sci-libs/hipBLAS:0/7.0[rocsolver] )
 		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-7.1:=
 		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-7.1:=
 		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-7.1:=
@@ -111,6 +111,7 @@ RDEPEND="
 		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.1:=
 		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.1:=
 		memefficient? ( sci-libs/aotriton-bin:0/0.11 )
+		distributed? ( >=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.1:= )
 	)
 	distributed? (
 		!rocm? ( sci-ml/tensorpipe[cuda?] )
@@ -161,6 +162,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.7.1-aotriton-fixes.patch
 	"${FILESDIR}"/${PN}-2.8.0-rocm-minus-flash.patch
 	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-rocm-distributed-link.patch
 )
 
 src_prepare() {
@@ -176,6 +178,9 @@ src_prepare() {
 		cmake/Dependencies.cmake \
 		torch/CMakeLists.txt \
 		|| die
+
+	# tensorpipe is in system, not a build target of caffe2
+	sed -e '/target_compile_options_if_supported(tensorpipe/d' -i cmake/Dependencies.cmake || die
 
 	# Drop third_party from CMake tree
 	sed -i \
@@ -240,11 +245,14 @@ src_prepare() {
 			# Systemwide gcc (for absl and at::TensorBase) + hipcc (llvm>=18) need abi-compat=17.
 			# But systemwide clang>=18 + hipcc (>=llvm-18) need opposite!
 			# See also: https://github.com/llvm/llvm-project/issues/102443#issuecomment-2329726287
-			sed '/-fclang-abi-compat=17/d' -i cmake/Dependencies.cmake || die
+			sed -e '/-fclang-abi-compat=17/d' -i cmake/Dependencies.cmake || die
 		fi
 
 		# Workaround for libc++ issue https://github.com/llvm/llvm-project/issues/100802
-		sed 's/std::memcpy/memcpy/g' -i torch/headeronly/util/Half.h || die
+		sed -e 's/std::memcpy/memcpy/g' -i torch/headeronly/util/Half.h || die
+
+		# Typo: https://github.com/pytorch/pytorch/pull/166502
+		sed -e 's/gloo_hiop/gloo_hip/' -i cmake/Modules/FindGloo.cmake || die
 
 		ebegin "HIPifying cuda sources"
 		${EPYTHON} tools/amd_build/build_amd.py || die
