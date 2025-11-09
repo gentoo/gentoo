@@ -1,29 +1,5 @@
 --- a/CMakeLists.txt	2019-07-09 14:47:12.552425226 +0200
 +++ b/CMakeLists.txt	2019-07-09 14:50:02.595001358 +0200
-@@ -1,4 +1,4 @@
--cmake_minimum_required(VERSION 3.2)
-+cmake_minimum_required(VERSION 3.5)
- 
- #-----------------------------------------------------------------------------#
- # Project configuration
-@@ -83,7 +83,7 @@
- #-----------------------------------------------------------------------------#
- 
- set(INCLUDE_INSTALL_DIR include)
--set(LIBRARY_INSTALL_DIR lib)
-+set(LIBRARY_INSTALL_DIR ${CMAKE_INSTALL_LIBDIR})
- set(RUNTIME_INSTALL_DIR bin)
- 
- #-----------------------------------------------------------------------------#
-@@ -143,7 +143,7 @@
- 
- # Note: Module CodeCoverage requires the name of the debug build to conform
- #       to cmake standards (first letter uppercase).
--set(BUILD_TYPES Production Debug Testing Competition)
-+set(BUILD_TYPES Production Debug Testing Competition Gentoo)
- 
- if(ENABLE_ASAN)
- #_cmake_modify_IGNORE   set(CMAKE_BUILD_TYPE Debug)
 @@ -166,12 +166,10 @@
  endif()
  
@@ -47,11 +23,3 @@
    regress4/hole10.cvc
    regress4/instance_1151.smtv1.smt2
  )
---- a/src/CMakeLists.txt	2019-07-18 08:56:47.923025745 +0200
-+++ b/src/CMakeLists.txt	2019-07-18 08:58:10.584750385 +0200
-@@ -915,4 +915,4 @@
- # Note: This is a temporary fix until the new C++ API is in place.
- install(CODE "execute_process(COMMAND
-                 ${CMAKE_CURRENT_LIST_DIR}/fix-install-headers.sh
--                ${CMAKE_INSTALL_PREFIX})")
-+                \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})")
