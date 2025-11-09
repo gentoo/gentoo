@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -31,27 +31,21 @@ fi
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="X debug doc examples ffmpeg freeimage freetype gles2-only inspector jemalloc json +opengl optimize tbb test testprograms tk vtk"
+IUSE="X debug doc examples freeimage gles2 inspector jemalloc json opengl optimize tbb test testprograms tk truetype vtk"
 
 REQUIRED_USE="
 	?? ( optimize tbb )
-	?? ( opengl gles2-only )
 	test? ( freeimage json opengl )
 "
 
 # There's no easy way to test. Testing needs a rather big environment properly set up.
 RESTRICT="!test? ( test )"
 
-# ffmpeg: https://tracker.dev.opencascade.org/view.php?id=32871
 RDEPEND="
 	dev-lang/tcl:=
-	tk? ( dev-lang/tk:= )
 	dev-libs/double-conversion
-	freetype? (
-		media-libs/fontconfig
-		media-libs/freetype:2
-	)
-	gles2-only? (
+	tk? ( dev-lang/tk:= )
+	gles2? (
 		media-libs/libglvnd
 	)
 	opengl? (
@@ -67,7 +61,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
 	inspector? (
 		dev-qt/qtcore:5
@@ -78,6 +71,10 @@ RDEPEND="
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	tbb? ( dev-cpp/tbb:= )
+	truetype? (
+		media-libs/fontconfig
+		media-libs/freetype:2
+	)
 	vtk? (
 		dev-lang/tk:=
 		sci-libs/vtk:=[rendering]
@@ -179,11 +176,12 @@ src_configure() {
 
 		# no package yet in tree
 		-DUSE_DRACO="no"
-		-DUSE_FFMPEG="$(usex ffmpeg)"
+		# ffmpeg: https://tracker.dev.opencascade.org/view.php?id=32871
+		-DUSE_FFMPEG="no"
 		-DUSE_FREEIMAGE="$(usex freeimage)"
-		-DUSE_FREETYPE="$(usex freetype)"
+		-DUSE_FREETYPE="$(usex truetype)"
 		# Indicates whether OpenGL ES 2.0 should be used in OCCT visualization module
-		-DUSE_GLES2="$(usex gles2-only)"
+		-DUSE_GLES2="$(usex gles2)"
 		# Indicates whether OpenGL desktop should be used in OCCT visualization module
 		-DUSE_OPENGL="$(usex opengl)"
 		# no package in tree
