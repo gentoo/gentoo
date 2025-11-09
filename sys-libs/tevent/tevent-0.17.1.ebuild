@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..14} )
 PYTHON_REQ_USE="threads(+)"
-inherit waf-utils multilib-minimal python-single-r1
+inherit flag-o-matic waf-utils multilib-minimal python-single-r1
 
 DESCRIPTION="Samba tevent library"
 HOMEPAGE="https://tevent.samba.org/"
@@ -77,6 +77,8 @@ multilib_src_configure() {
 	if ! use test ; then
 		bundled_libs="cmocka,${bundled_libs}"
 	fi
+
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version) # bug 915198
 
 	waf-utils_src_configure \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
