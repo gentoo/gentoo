@@ -13,6 +13,7 @@
 	<flag name="freeimage">Enable support for image i/o via <pkg>media-libs/freeimage</pkg></flag>
 	<flag name="freetype">Enable <pkg>media-libs/freetype</pkg> support</flag>
 	<flag name="inspector">Build Inspector tool</flag>
+	<flag name="jemalloc">Enable jemalloc allocator support via <pkg>dev-libs/jemalloc</pkg></flag>
 	<flag name="json">Enable JSON support through <pkg>dev-libs/rapidjson</pkg></flag>
 	<flag name="optimize">Don't clear allocated memory. Use optimized memory manager unlesstbb USE flag is set.</flag>
 	<flag name="tbb">Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
