@@ -15,6 +15,7 @@ if [[ ${PV} == *9999 ]]; then
 		Externals/cpp-ipc/cpp-ipc
 		Externals/cpp-optparse/cpp-optparse
 		Externals/mGBA/mgba
+		Externals/imgui/imgui
 		Externals/implot/implot
 		Externals/tinygltf/tinygltf
 		Externals/Vulkan-Headers
@@ -25,6 +26,7 @@ else
 	CPPIPC_COMMIT=a0c7725a1441d18bc768d748a93e512a0fa7ab52
 	CPPOPTPARSE_COMMIT=2265d647232249a53a03b411099863ceca35f0d3
 	MGBA_COMMIT=8739b22fbc90fdf0b4f6612ef9c0520f0ba44a51
+	IMGUI_COMMIT=45acd5e0e82f4c954432533ae9985ff0e1aad6d5
 	IMPLOT_COMMIT=3da8bd34299965d3b0ab124df743fe3e076fa222
 	TINYGLTF_COMMIT=c5641f2c22d117da7971504591a8f6a41ece488b
 	VULKAN_HEADERS_COMMIT=39f924b810e561fd86b2558b6711ca68d4363f68
@@ -37,6 +39,8 @@ else
 			-> cpp-ipc-${CPPIPC_COMMIT}.tar.gz
 		https://github.com/weisslj/cpp-optparse/archive/${CPPOPTPARSE_COMMIT}.tar.gz
 			-> cpp-optparse-${CPPOPTPARSE_COMMIT}.tar.gz
+		https://github.com/ocornut/imgui/archive/${IMGUI_COMMIT}.tar.gz
+			-> imgui-${IMGUI_COMMIT}.tar.gz
 		https://github.com/epezent/implot/archive/${IMPLOT_COMMIT}.tar.gz
 			-> implot-${IMPLOT_COMMIT}.tar.gz
 		https://github.com/syoyo/tinygltf/archive/${TINYGLTF_COMMIT}.tar.gz
@@ -176,6 +180,7 @@ src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
 		mv -T "${WORKDIR}/cpp-ipc-${CPPIPC_COMMIT}" Externals/cpp-ipc/cpp-ipc || die
 		mv -T "${WORKDIR}/cpp-optparse-${CPPOPTPARSE_COMMIT}" Externals/cpp-optparse/cpp-optparse || die
+		mv -T "${WORKDIR}/imgui-${IMGUI_COMMIT}" Externals/imgui/imgui || die
 		mv -T "${WORKDIR}/implot-${IMPLOT_COMMIT}" Externals/implot/implot || die
 		mv -T "${WORKDIR}/tinygltf-${TINYGLTF_COMMIT}" Externals/tinygltf/tinygltf || die
 		mv -T "${WORKDIR}/Vulkan-Headers-${VULKAN_HEADERS_COMMIT}" Externals/Vulkan-Headers || die
