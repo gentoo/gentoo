@@ -76,11 +76,6 @@ media-radio/wsjtx
 # Crashes in memtodest when handling PATH. Not yet reported upstream.
 =app-shells/dash-0.5.13.1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2025-10-12)
-# Dead upstream, depends on Qt5.
-# Bug #949899, #953384. Removal on 2025-11-11.
-games-puzzle/colorcode
-
 # Michał Górny <mgorny@gentoo.org> (2025-10-12)
 # Requires Rust with RUST_SYSROOTS=bpf, which isn't currently supported
 # by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
