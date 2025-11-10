@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: guile-utils.eclass
@@ -146,7 +146,7 @@ guile_generate_depstrings() {
 	for ver in "${GUILE_COMPAT[@]}"; do
 		[[ -n ${GUILE_USEDEP} ]] && GUILE_USEDEP+=","
 		uses+=("${prefix}_${ver}")
-		GUILE_USEDEP+="${prefix}_${ver}"
+		GUILE_USEDEP+="${prefix}_${ver}?"
 	done
 	GUILE_REQUIRED_USE="${depop} ( ${uses[@]} )"
 	IUSE="${uses[@]}"
