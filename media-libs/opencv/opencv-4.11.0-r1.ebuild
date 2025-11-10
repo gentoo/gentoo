@@ -293,7 +293,7 @@ COMMON_DEPEND="
 		|| (
 			(
 				sci-libs/vtk[opencascade(+)]
-				sci-libs/opencascade[-ffmpeg]
+				sci-libs/opencascade[-ffmpeg(-)]
 			)
 			sci-libs/vtk[-opencascade(-)]
 		)
