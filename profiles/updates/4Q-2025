@@ -1,1 +1,2 @@
 move app-pda/gtkpod media-sound/gtkpod
+move app-pda/dynamite app-arch/dynamite
