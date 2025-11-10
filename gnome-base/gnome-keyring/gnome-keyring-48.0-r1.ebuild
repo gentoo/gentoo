@@ -45,10 +45,10 @@ BDEPEND="
 
 PATCHES=(
 	# From Fedora:
-	# https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/96
+	# https://gitlab.gnome.org/GNOME/gnome-keyring/-/issues/137
 	"${FILESDIR}/${PN}-48.0-collection-registering.patch"
 
-	#https://gitlab.gnome.org/GNOME/gnome-keyring/-/issues/151
+	# https://gitlab.gnome.org/GNOME/gnome-keyring/-/merge_requests/96
 	"${FILESDIR}/${PN}-48.0-gkm_marshal-header.patch"
 
 	# bug #964549
