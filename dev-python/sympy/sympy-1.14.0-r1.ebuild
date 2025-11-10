@@ -68,6 +68,12 @@ python_test() {
 		# https://github.com/sympy/sympy/issues/27026
 		sympy/parsing/tests/test_autolev.py
 		sympy/parsing/tests/test_latex.py
+
+		# Deprecation warnings turned failures
+		# https://github.com/sympy/sympy/pull/28158
+		sympy/geometry/tests/test_polygon.py::test_do_poly_distance
+		sympy/plotting/tests/test_plot.py::test_plot_and_save_6
+		sympy/integrals/tests/test_integrals.py::test_integrate_poly_definite
 	)
 
 	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
