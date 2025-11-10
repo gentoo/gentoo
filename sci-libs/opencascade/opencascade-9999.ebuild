@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake flag-o-matic virtualx
+inherit cmake cuda flag-o-matic virtualx
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://www.opencascade.com"
@@ -33,12 +33,13 @@ LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="0/$(ver_cut 1-2)"
 IUSE="X debug doc examples freeimage gles2 inspector jemalloc json opengl optimize tbb test testprograms tk truetype vtk"
 
+# vtk libs are hardcoded in src/TKIVtk*/EXTERNLIB
 REQUIRED_USE="
 	?? ( optimize tbb )
-	test? ( freeimage json opengl )
+	test? ( freeimage json opengl tk )
+	vtk? ( X opengl )
 "
 
-# There's no easy way to test. Testing needs a rather big environment properly set up.
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -76,10 +77,9 @@ RDEPEND="
 		media-libs/freetype:2
 	)
 	vtk? (
-		dev-lang/tk:=
-		sci-libs/vtk:=[rendering]
+		sci-libs/vtk:=[rendering,truetype=]
 		tbb? (
-			sci-libs/vtk:=[tbb,-cuda]
+			sci-libs/vtk[tbb]
 		)
 	)
 "
@@ -235,6 +235,14 @@ src_configure() {
 			-D3RDPARTY_VTK_INCLUDE_DIR="${ESYSROOT}/usr/include/vtk-${vtk_ver}"
 			-D3RDPARTY_VTK_LIBRARY_DIR="${ESYSROOT}/usr/$(get_libdir)"
 		)
+
+		# USE=vtk depends on sci-lib/vtk, which looks up a cuda compiler when build with USE=cuda.
+		# We therefore need to set the correct CUDAHOSTCXX and setup the sandbox.
+		if has_version "sci-libs/vtk[cuda]"; then
+			cuda_add_sandbox
+			addpredict "/dev/char"
+			export CUDAHOSTCXX="$(cuda_gccdir)"
+		fi
 	fi
 
 	cmake_src_configure
