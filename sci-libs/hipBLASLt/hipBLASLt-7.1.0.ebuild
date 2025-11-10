@@ -19,7 +19,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-SUPPORTED_GPUS=( gfx908 gfx90a gfx940 gfx941 gfx942 gfx950 gfx1100 gfx1101 gfx1103 gfx1150 gfx1151 gfx1200 gfx1201 )
+SUPPORTED_GPUS=( gfx908 gfx90a gfx942 gfx950 gfx1100 gfx1101 gfx1103 gfx1150 gfx1151 gfx1200 gfx1201 )
 IUSE_TARGETS=( "${SUPPORTED_GPUS[@]/#/amdgpu_targets_}" )
 IUSE="${IUSE_TARGETS[*]/#/+} benchmark roctracer test"
 RESTRICT="!test? ( test )"
