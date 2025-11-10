@@ -6,7 +6,7 @@ EAPI=8
 inherit autotools udev
 
 DESCRIPTION="Shared library to access the contents of an iPod"
-HOMEPAGE="http://www.gtkpod.org/libgpod/"
+HOMEPAGE="https://sourceforge.net/projects/gtkpod/"
 SRC_URI="https://downloads.sourceforge.net/gtkpod/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
