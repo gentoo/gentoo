@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake cuda flag-o-matic virtualx
+inherit cmake cuda flag-o-matic multiprocessing virtualx xdg-utils
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://www.opencascade.com"
@@ -14,7 +14,9 @@ MY_TEST_PV="7.8.0"
 MY_TEST_PV2="${MY_TEST_PV//./_}"
 
 SRC_URI="
-	test? ( https://github.com/Open-Cascade-SAS/${MY_PN}/releases/download/V${MY_TEST_PV2}/${PN}-dataset-${MY_TEST_PV}.tar.xz )
+	test? (
+		https://github.com/Open-Cascade-SAS/${MY_PN}/releases/download/V${MY_TEST_PV2}/${PN}-dataset-${MY_TEST_PV}.tar.xz
+	)
 "
 
 if [[ ${PV} = *9999* ]] ; then
@@ -26,7 +28,10 @@ else
 		https://github.com/Open-Cascade-SAS/${MY_PN}/archive/refs/tags/V${MY_PV}.tar.gz -> ${P}.tar.gz
 	"
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+
+	if [[ "${PV}" != *rc* ]]; then
+		KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
+	fi
 fi
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
@@ -35,9 +40,21 @@ IUSE="X debug doc freeimage gles2 jemalloc json opengl optimize tbb test testpro
 
 # vtk libs are hardcoded in src/TKIVtk*/EXTERNLIB
 REQUIRED_USE="
-	?? ( optimize tbb )
-	test? ( freeimage json opengl tk )
-	vtk? ( X opengl )
+	?? (
+		optimize
+		tbb
+	)
+	test? (
+		freeimage
+		json
+		opengl
+		tk
+		truetype
+	)
+	vtk? (
+		X
+		opengl
+	)
 "
 
 RESTRICT="!test? ( test )"
@@ -45,7 +62,9 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-lang/tcl:=
 	dev-libs/double-conversion
-	tk? ( dev-lang/tk:= )
+	tk? (
+		dev-lang/tk:=
+	)
 	gles2? (
 		media-libs/libglvnd
 	)
@@ -55,15 +74,21 @@ RDEPEND="
 	X? (
 		x11-libs/libX11
 	)
-	freeimage? ( media-libs/freeimage )
-	jemalloc? ( dev-libs/jemalloc )
-	tbb? ( dev-cpp/tbb:= )
+	freeimage? (
+		media-libs/freeimage
+	)
+	jemalloc? (
+		dev-libs/jemalloc
+	)
+	tbb? (
+		dev-cpp/tbb:=
+	)
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype:2
 	)
 	vtk? (
-		sci-libs/vtk:=[rendering,truetype=]
+		sci-libs/vtk:=[rendering,truetype?]
 		tbb? (
 			sci-libs/vtk[tbb]
 		)
@@ -71,12 +96,29 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	X? ( x11-base/xorg-proto )
-	json? ( dev-libs/rapidjson )
+	X? (
+		x11-base/xorg-proto
+	)
+	json? (
+		dev-libs/rapidjson
+	)
+	test? (
+		freeimage? (
+			media-libs/freeimage[jpeg,mng,png,tiff]
+		)
+		truetype? (
+			media-fonts/noto-cjk
+			media-fonts/urw-fonts
+		)
+	)
 "
 BDEPEND="
-	doc? ( app-text/doxygen[dot] )
-	test? ( dev-tcltk/thread )
+	doc? (
+		app-text/doxygen[dot]
+	)
+	test? (
+		dev-tcltk/thread
+	)
 "
 
 PATCHES=(
@@ -102,8 +144,7 @@ src_unpack() {
 	fi
 
 	if use test; then
-		mkdir "${WORKDIR}/data"
-		pushd "${WORKDIR}/data" > /dev/null || die
+		pushd "${WORKDIR}" > /dev/null || die
 		# should be in paths indicated by CSF_TestDataPath environment variable,
 		# or in subfolder data in the script directory
 		unpack "${PN}-dataset-${MY_TEST_PV}.tar.xz"
@@ -112,6 +153,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	# File DEFINES has not been found in
+	touch src/TKOpenGles/DEFINES || die
+
 	cmake_src_prepare
 
 	sed -e 's|/lib\$|/'"$(get_libdir)"'\$|' \
@@ -247,13 +291,11 @@ src_configure() {
 }
 
 src_test() {
-	echo "export CSF_OCCTDataPath=${WORKDIR}/data" >> "${BUILD_DIR}/custom.sh" || die
+	cat >> "${BUILD_DIR}/custom.sh" <<- _EOF_ || die
+		export CSF_TestDataPath="${WORKDIR}/${PN}-dataset-${MY_TEST_PV}"
+	_EOF_
 
-	if has_version media-fonts/dejavu; then
-		cp "${ESYSROOT}/usr/share/fonts/dejavu/DejaVuSans.ttf" "${WORKDIR}/data/" # no die here as this isn't fatal
-	fi
-
-	local test_file=${T}/testscript.tcl
+	local test_file="${T}/testscript.tcl"
 
 	local draw_opts=(
 		i # see ${BUILD_DIR}/custom*.sh
@@ -264,18 +306,24 @@ src_test() {
 	local test_names=(
 		"demo draw bug30430" # prone to dying due to cpu limit
 	)
+
 	local test_opts=( # run single tests
 		-overwrite
 	)
+
 	for test_name in "${test_names[@]}"; do
+		mkdir -vp "$(dirname "${BUILD_DIR}/test_results/${test_name// /\/}.html")" || die
 		cat >> "${test_file}" <<- _EOF_ || die
 			test ${test_name} -outfile "${BUILD_DIR}/test_results/${test_name// /\/}.html" ${test_opts[@]}
 		_EOF_
 	done
 
-	local testgrid_opts=()
+	local testgrid_opts=(
+		-overwrite
+	)
 
 	local SKIP_TESTS=()
+	local DEL_TESTS=()
 
 	if [[ "${OCCT_OPTIONAL_TESTS}" != "true" ]]; then
 		SKIP_TESTS+=(
@@ -297,47 +345,69 @@ src_test() {
 			'offset wire_closed_inside_0_005 D1'
 		)
 
-		local DEL_TESTS=(
+		DEL_TESTS+=(
 			'opengl/data/background/bug27836'
 			'opengl/data/text/bug22149'
 			'opengl/data/text/C2'
 			'perf/mesh/bug26965'
 			'v3d/trsf/bug26029'
 		)
+	fi
 
-		for test in "${DEL_TESTS[@]}"; do
-			rm "${CMAKE_USE_DIR}/tests/${test}" || die
-		done
+	if ! use gles2; then
+		DEL_TESTS+=(
+			# 'opengl/drivers/opengles'
+			# 'opengles3'
+		)
+	fi
+
+	if use gles2 || use opengl; then
+		xdg_environment_reset
+		addwrite '/dev/dri/'
+		[[ -c /dev/udmabuf ]] && addwrite /dev/udmabuf
+	fi
+
+	if ! use tk || ! use vtk; then
+		DEL_TESTS+=(
+			# 'opengl/data/transparency/oit'
+		)
 	fi
 
 	if ! use vtk; then
 		SKIP_TESTS+=(
 			'vtk'
 		)
-		echo "IGNORE /Could not open: libTKIVtkDraw/skip VTK" >> "${CMAKE_USE_DIR}/tests/opengl/parse.rules"
+		cat >> "${CMAKE_USE_DIR}/tests/opengl/parse.rules" <<- _EOF_ || die
+			IGNORE /Could not open: libTKIVtkDraw/skip VTK
+		_EOF_
 	fi
 
 	if [[ -n "${SKIP_TESTS[*]}" ]]; then
 		testgrid_opts+=( -exclude "$(IFS=',' ; echo "${SKIP_TESTS[*]}")" )
 	fi
 
+	for test in "${DEL_TESTS[@]}"; do
+		rm -r "${CMAKE_USE_DIR}/tests/${test}" || die
+	done
+
 	testgrid_opts+=(
-		# -refresh 5
+		# -refresh 5 # default is 60
 		-overwrite
+		-parallel "$(makeopts_jobs)"
 	)
 	cat >> "${test_file}" <<- _EOF_ || die
 		testgrid -outdir "${BUILD_DIR}/test_results" ${testgrid_opts[@]}
 	_EOF_
 
-	# # regenerate summary in case we have to
-	# cat >> "${test_file}" <<- _EOF_ || die
-	# 	testsummarize "${BUILD_DIR}/test_results"
-	# _EOF_
+	# regenerate summary in case we have to
+	cat >> "${test_file}" <<- _EOF_ || die
+		testsummarize "${BUILD_DIR}/test_results"
+	_EOF_
 
 	# Work around zink warnings
 	export LIBGL_ALWAYS_SOFTWARE="true"
 
-	export CASROOT="${BUILD_DIR}"
+	local -x CASROOT="${BUILD_DIR}"
 
 	virtx \
 	"${BUILD_DIR}/draw.sh" \
@@ -348,6 +418,7 @@ src_test() {
 		eerror "tests never ran!"
 		die
 	fi
+
 	failed_tests="$(grep ": FAILED" "${BUILD_DIR}/test_results/tests.log")"
 	if [[ -n ${failed_tests} ]]; then
 		eerror "Failed tests:"
