@@ -42,8 +42,8 @@ BDEPEND="
 "
 
 src_prepare() {
-	# Fix cmake4 compatibility, bug #958301
-	sed -i -e 's/VERSION 3.0/VERSION 3.5/' CMakeLists.txt || die
+	# Fix cmake4 compatibility, bug #958301, #965856
+	sed -i -e 's/VERSION 3.0/VERSION 3.10/' CMakeLists.txt || die
 	cmake_src_prepare
 }
 
