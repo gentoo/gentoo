@@ -20,13 +20,13 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="X chafa dbus ddcutil drm elf gnome imagemagick opencl opengl pulseaudio sqlite test vulkan wayland xcb xfce xrandr"
+IUSE="X chafa dbus ddcutil drm elf gnome imagemagick opencl opengl pulseaudio sqlite test vulkan wayland xcb xrandr"
 RESTRICT="!test? ( test )"
 
 # note - qa-vdb will always report errors because fastfetch loads the libs dynamically
 # make sure to crank yyjson minimum version to match bundled version
 RDEPEND="
-	>=dev-libs/yyjson-0.11.1
+	>=dev-libs/yyjson-0.12.0
 	sys-apps/hwdata
 	virtual/zlib:=
 	chafa? ( media-gfx/chafa )
@@ -52,7 +52,6 @@ RDEPEND="
 	)
 	wayland? ( dev-libs/wayland )
 	xcb? ( x11-libs/libxcb )
-	xfce? ( xfce-base/xfconf )
 	xrandr? ( x11-libs/libXrandr )
 "
 DEPEND="
@@ -113,7 +112,6 @@ src_configure() {
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DENABLE_WAYLAND=$(usex wayland)
 		-DENABLE_XCB_RANDR=$(usex xcb)
-		-DENABLE_XFCONF=$(usex xfce)
 		-DENABLE_XRANDR=$(usex xrandr)
 		-DBUILD_TESTS=$(usex test)
 	)
