@@ -31,7 +31,7 @@ fi
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="X debug doc examples freeimage gles2 inspector jemalloc json opengl optimize tbb test testprograms tk truetype vtk"
+IUSE="X debug doc freeimage gles2 jemalloc json opengl optimize tbb test testprograms tk truetype vtk"
 
 # vtk libs are hardcoded in src/TKIVtk*/EXTERNLIB
 REQUIRED_USE="
@@ -55,21 +55,7 @@ RDEPEND="
 	X? (
 		x11-libs/libX11
 	)
-	examples? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtquickcontrols2:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
 	freeimage? ( media-libs/freeimage )
-	inspector? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtquickcontrols2:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
 	jemalloc? ( dev-libs/jemalloc )
 	tbb? ( dev-cpp/tbb:= )
 	truetype? (
@@ -90,9 +76,6 @@ DEPEND="
 "
 BDEPEND="
 	doc? ( app-text/doxygen[dot] )
-	inspector? (
-		dev-qt/linguist-tools:5
-	)
 	test? ( dev-tcltk/thread )
 "
 
@@ -149,7 +132,7 @@ src_configure() {
 		-DBUILD_SOVERSION_NUMBERS=2
 
 		-DBUILD_DOC_Overview="$(usex doc)"
-		-DBUILD_Inspector="$(usex inspector)"
+		-DBUILD_Inspector="no"
 
 		-DBUILD_ENABLE_FPE_SIGNAL_HANDLER="$(usex debug)"
 		-DBUILD_USE_PCH="no"
@@ -166,11 +149,11 @@ src_configure() {
 		-DINSTALL_DIR_INCLUDE="include/${PN}"
 		-DINSTALL_DIR_LIB="$(get_libdir)/${PN}"
 		-DINSTALL_DIR_RESOURCE="share/${PN}/resources"
-		-DINSTALL_DIR_SAMPLES="share/${PN}/samples"
+		# -DINSTALL_DIR_SAMPLES="share/${PN}/samples"
 		-DINSTALL_DIR_SCRIPT="$(get_libdir)/${PN}/bin"
 		-DINSTALL_DIR_TESTS="share/${PN}/tests"
 		-DINSTALL_DIR_WITH_VERSION="no"
-		-DINSTALL_SAMPLES="$(usex examples)"
+		-DINSTALL_SAMPLES="no"
 
 		-DINSTALL_TEST_CASES="$(usex testprograms)"
 
@@ -211,13 +194,6 @@ src_configure() {
 		mycmakeargs+=(
 			-DINSTALL_DOC_Overview="yes"
 			-D3RDPARTY_SKIP_DOT_EXECUTABLE="no"
-		)
-	fi
-
-	if use examples || use inspector; then
-		mycmakeargs+=(
-			-D3RDPARTY_QT_DIR="${ESYSROOT}/usr"
-			-DBUILD_SAMPLES_QT="$(usex examples)"
 		)
 	fi
 
