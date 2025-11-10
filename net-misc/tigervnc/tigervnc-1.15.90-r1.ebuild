@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	dev-libs/gmp:=
 	dev-libs/nettle:=
 	media-libs/libjpeg-turbo:=
-	virtual/zlib
+	virtual/zlib:=
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrandr
@@ -79,7 +79,7 @@ COMMON_DEPEND="
 	)
 	viewer? (
 		media-video/ffmpeg:=
-		<x11-libs/fltk-1.4:1=
+		<x11-libs/fltk-1.4:1
 		x11-libs/libXi
 		x11-libs/libXrender
 		!net-misc/turbovnc[viewer]

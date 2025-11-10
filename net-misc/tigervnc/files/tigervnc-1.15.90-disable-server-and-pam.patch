@@ -38,19 +38,39 @@ Do not define _FORTIFY_SOURCE, it is already defined in Gentoo.
    find_package(PAM REQUIRED)
  endif()
  
-@@ -391,7 +391,7 @@ if(UNIX AND NOT APPLE)
+@@ -391,21 +391,9 @@ if(UNIX AND NOT APPLE)
  endif()
  
  # check for libraries needed for wayland support
 -if(UNIX AND NOT APPLE)
 +if(BUILD_SERVER AND UNIX AND NOT APPLE)
    trioption(ENABLE_WAYLAND "Enable wayland support")
-   if(ENABLE_WAYLAND STREQUAL "AUTO")
-     find_package(GLib)
-@@ -423,6 +423,8 @@ if(UNIX AND NOT APPLE)
-     set(ENABLE_WAYLAND 0)
-     message(WARNING "GLib, Gio, Gobject, PipeWire, Uuid, WaylandClient or Xkbcommon NOT found. w0vncserver disabled.")
+-  if(ENABLE_WAYLAND STREQUAL "AUTO")
+-    find_package(GLib)
+-    find_package(Gio)
+-    find_package(Gobject)
+-
+-    # Portals specific
+-    find_package(PipeWire)
+-    find_package(Uuid)
+-
+-    # wlroots specific
+-    find_package(WaylandClient)
+-    find_package(Xkbcommon)
+-  else()
++  if(ENABLE_WAYLAND)
+     find_package(GLib REQUIRED)
+     find_package(Gio REQUIRED)
+     find_package(Gobject REQUIRED)
+@@ -418,11 +406,8 @@ if(UNIX AND NOT APPLE)
+     find_package(WaylandClient REQUIRED)
+     find_package(Xkbcommon REQUIRED)
    endif()
+-  if(NOT GLIB_FOUND OR NOT GIO_FOUND OR NOT GOBJECT_FOUND OR NOT PIPEWIRE_FOUND
+-     OR NOT UUID_FOUND OR NOT WAYLANDCLIENT_FOUND OR NOT XKBCOMMON_FOUND)
+-    set(ENABLE_WAYLAND 0)
+-    message(WARNING "GLib, Gio, Gobject, PipeWire, Uuid, WaylandClient or Xkbcommon NOT found. w0vncserver disabled.")
+-  endif()
 +else()
 +  set(ENABLE_WAYLAND 0)
  endif()
