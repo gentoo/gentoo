@@ -36,9 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (2025-11-10)
-# Release not on PyPI (yet?), causing regressions in dev-python/black.
+# Sam James <sam@gentoo.org> (2025-11-05)
+# re 8.3.0: Has regressions breaking media-video/subliminal and 8.3.1
+# which fixes some (but not all of those regressions) is semi-released only.
+# re 8.3.1: Release not on PyPI (yet?), causing regressions in dev-python/black.
 # https://github.com/pallets/click/issues/3087
+~dev-python/click-8.3.0
 ~dev-python/click-8.3.1
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-11-03)
