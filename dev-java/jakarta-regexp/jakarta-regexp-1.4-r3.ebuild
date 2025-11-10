@@ -16,15 +16,12 @@ LICENSE="Apache-1.1"
 SLOT="${PV}"
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos"
 
-RDEPEND="
-	>=virtual/jre-1.8:*"
-
-DEPEND="
-	<virtual/jdk-26:*" # bug #965859
+DEPEND="<virtual/jdk-26:*" # bug #965859
+RDEPEND=">=virtual/jre-1.8:*"
 
 JAVA_SRC_DIR="src/java"
 
 src_prepare() {
-	default
+	java-pkg-2_src_prepare
 	java-pkg_clean
 }
