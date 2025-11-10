@@ -12,6 +12,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
 	EGIT_SUBMODULES=(
+		Externals/cpp-ipc/cpp-ipc
 		Externals/mGBA/mgba
 		Externals/implot/implot
 		Externals/tinygltf/tinygltf
@@ -20,6 +21,7 @@ if [[ ${PV} == *9999 ]]; then
 		Externals/watcher/watcher
 	)
 else
+	CPPIPC_COMMIT=a0c7725a1441d18bc768d748a93e512a0fa7ab52
 	MGBA_COMMIT=8739b22fbc90fdf0b4f6612ef9c0520f0ba44a51
 	IMPLOT_COMMIT=3da8bd34299965d3b0ab124df743fe3e076fa222
 	TINYGLTF_COMMIT=c5641f2c22d117da7971504591a8f6a41ece488b
@@ -29,6 +31,8 @@ else
 	SRC_URI="
 		https://github.com/dolphin-emu/dolphin/archive/${PV}.tar.gz
 			-> ${P}.tar.gz
+		https://github.com/mutouyun/cpp-ipc/tree/${CPPIPC_COMMIT}.tar.gz
+			-> cpp-ipc-${CPPIPC_COMMIT}.tar.gz
 		https://github.com/epezent/implot/archive/${IMPLOT_COMMIT}.tar.gz
 			-> implot-${IMPLOT_COMMIT}.tar.gz
 		https://github.com/syoyo/tinygltf/archive/${TINYGLTF_COMMIT}.tar.gz
@@ -146,6 +150,7 @@ declare -A KEEP_BUNDLED=(
 	[Vulkan-Headers]="|| ( Apache-2.0 MIT )"
 	[VulkanMemoryAllocator]=MIT
 	[watcher]=MIT
+	[cpp-ipc]=MIT
 )
 
 PATCHES=(
@@ -165,6 +170,7 @@ pkg_setup() {
 
 src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
+		mv -T "${WORKDIR}/cpp-ipc-${CPPIPC_COMMIT}" Externals/cpp-ipc/cpp-ipc || die
 		mv -T "${WORKDIR}/implot-${IMPLOT_COMMIT}" Externals/implot/implot || die
 		mv -T "${WORKDIR}/tinygltf-${TINYGLTF_COMMIT}" Externals/tinygltf/tinygltf || die
 		mv -T "${WORKDIR}/Vulkan-Headers-${VULKAN_HEADERS_COMMIT}" Externals/Vulkan-Headers || die
