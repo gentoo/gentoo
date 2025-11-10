@@ -5,6 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
+PYPI_VERIFY_REPO=https://github.com/pikepdf/pikepdf
 PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
 
 inherit distutils-r1 pypi
@@ -51,11 +52,6 @@ BDEPEND="
 
 EPYTEST_PLUGINS=( hypothesis pytest-timeout )
 distutils_enable_tests pytest
-
-EPYTEST_DESELECT=(
-	# https://github.com/pypy/pypy/issues/5351
-	tests/test_metadata.py::test_truncated_xml
-)
 
 src_prepare() {
 	distutils-r1_src_prepare
