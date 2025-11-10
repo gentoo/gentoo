@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -53,7 +53,7 @@ src_configure() {
 		--without-cython
 		$(use_enable static-libs static)
 	)
-	use gnutls && myeconfargs+=( --disable-openssl )
+	use gnutls && myeconfargs+=( --with-gnutls --without-openssl )
 	# --with-readline also causes readline to not be used
 	use readline || myeconfargs+=( --without-readline )
 	econf "${myeconfargs[@]}"
