@@ -3,7 +3,7 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit distutils-r1
 
 DESCRIPTION="Find diff lines that do not have test coverage"
@@ -26,9 +26,8 @@ BDEPEND="
 	test? (
 		dev-python/flake8
 		dev-python/pylint
-		dev-python/pytest-datadir[${PYTHON_USEDEP}]
-		dev-python/pytest-mock[${PYTHON_USEDEP}]
 	)
 "
 
+EPYTEST_PLUGINS=( pytest-datadir pytest-mock )
 distutils_enable_tests pytest
