@@ -8,12 +8,12 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="100% Pure Java Regular Expression package"
-SRC_URI="mirror://apache/jakarta/regexp/source/${P}.tar.gz"
 HOMEPAGE="https://jakarta.apache.org/"
+SRC_URI="mirror://apache/jakarta/regexp/source/${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
-SLOT="${PV}"
-IUSE=""
 LICENSE="Apache-1.1"
+SLOT="${PV}"
 KEYWORDS="amd64 arm64 ppc64 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="
@@ -21,8 +21,6 @@ RDEPEND="
 
 DEPEND="
 	<virtual/jdk-26:*" # bug #965859
-
-S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/java"
 
