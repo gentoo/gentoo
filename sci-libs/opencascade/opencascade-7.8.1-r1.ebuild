@@ -31,7 +31,7 @@ fi
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="X debug doc examples freeimage freetype gles2 inspector jemalloc json +opengl optimize tbb test testprograms tk vtk"
+IUSE="X debug doc examples freeimage gles2 inspector jemalloc json opengl optimize tbb test testprograms tk truetype vtk"
 
 REQUIRED_USE="
 	?? ( optimize tbb )
@@ -43,12 +43,8 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-lang/tcl:=
-	tk? ( dev-lang/tk:= )
 	dev-libs/double-conversion
-	freetype? (
-		media-libs/fontconfig
-		media-libs/freetype:2
-	)
+	tk? ( dev-lang/tk:= )
 	gles2? (
 		media-libs/libglvnd
 	)
@@ -75,6 +71,10 @@ RDEPEND="
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	tbb? ( dev-cpp/tbb:= )
+	truetype? (
+		media-libs/fontconfig
+		media-libs/freetype:2
+	)
 	vtk? (
 		dev-lang/tk:=
 		sci-libs/vtk:=[rendering]
@@ -187,7 +187,7 @@ src_configure() {
 		# ffmpeg: https://tracker.dev.opencascade.org/view.php?id=32871
 		-DUSE_FFMPEG="no"
 		-DUSE_FREEIMAGE="$(usex freeimage)"
-		-DUSE_FREETYPE="$(usex freetype)"
+		-DUSE_FREETYPE="$(usex truetype)"
 		# Indicates whether OpenGL ES 2.0 should be used in OCCT visualization module
 		-DUSE_GLES2="$(usex gles2)"
 		# Indicates whether OpenGL desktop should be used in OCCT visualization module
