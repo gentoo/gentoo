@@ -21,6 +21,8 @@ IUSE="devtools"
 # Does all kinds of wonky stuff like connecting to Docker daemon, network activity, ...
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/go-ethereum-1.16.7-dont-strip.patch" )
+
 src_unpack() {
 	default
 	mv "${S}/.mod" "${WORKDIR}/go-mod" || die
