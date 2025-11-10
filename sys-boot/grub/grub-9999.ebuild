@@ -164,6 +164,7 @@ src_unpack() {
 		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
 		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
 		git-r3_checkout "${GNULIB_URI}" gnulib
+		sh linguas.sh || die
 		popd >/dev/null || die
 	elif use verify-sig; then
 		verify-sig_verify_detached "${DISTDIR}"/${MY_P}.tar.xz{,.sig} \
