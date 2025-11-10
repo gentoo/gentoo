@@ -67,7 +67,6 @@ RDEPEND="
 	>=app-arch/lz4-1.8:=
 	app-arch/xz-utils
 	>=app-arch/zstd-1.4.0:=
-	>=sys-libs/minizip-ng-4.0.4:=
 	dev-libs/hidapi
 	>=dev-libs/libfmt-10.1:=
 	>=dev-util/glslang-1.4.321.0:=
@@ -80,6 +79,7 @@ RDEPEND="
 	>=net-libs/enet-1.3.18:1.3=
 	net-libs/mbedtls:0=
 	net-misc/curl
+	>=sys-libs/minizip-ng-4.0.4:=
 	x11-libs/libX11
 	x11-libs/libXi
 	x11-libs/libXrandr
