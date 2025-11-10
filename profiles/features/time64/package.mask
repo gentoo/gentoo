@@ -1,6 +1,10 @@
 # Copyright 2024-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-11-10)
+# Broken, it gets symbols confused. Bug 964410
+=sys-apps/kbd-2.9.0
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-06)
 # gcc[ada] is not available here yet
 dev-ada/ada_language_server
