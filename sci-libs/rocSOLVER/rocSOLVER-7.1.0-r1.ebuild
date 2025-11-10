@@ -9,10 +9,12 @@ inherit cmake edo flag-o-matic rocm
 
 DESCRIPTION="Implementation of a subset of LAPACK functionality on the ROCm platform"
 HOMEPAGE="https://github.com/ROCm/rocm-libraries/tree/develop/projects/rocsolver"
-SRC_URI="https://github.com/ROCm/rocSOLVER/archive/rocm-${PV}.tar.gz -> rocSOLVER-${PV}.tar.gz"
-S=${WORKDIR}/${PN}-rocm-${PV}
 
-LICENSE="BSD"
+# ROCm/rocSOLVER 7.1.0 release is incorrect - https://github.com/ROCm/rocm-libraries/issues/2582
+SRC_URI="https://github.com/ROCm/rocm-libraries/archive/refs/tags/rocm-${PV}.tar.gz -> rocm-libraries-${PV}.tar.gz"
+S="${WORKDIR}/rocm-libraries-rocm-${PV}/projects/rocsolver"
+
+LICENSE="BSD-2 BSD"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
@@ -39,9 +41,10 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-7.0.1-fix-includes.patch
-)
+src_unpack() {
+	local ROCSOLVER="rocm-libraries-rocm-${PV}/projects/rocsolver"
+	tar -xzf "${DISTDIR}/${A}" "${ROCSOLVER}" -C "${WORKDIR}" || die
+}
 
 src_configure() {
 	rocm_use_clang
@@ -52,13 +55,12 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DAMDGPU_TARGETS="$(get_amdgpu_flags)"
-		-Wno-dev
-		-DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF
 		-DROCM_SYMLINK_LIBS=OFF
 		-DBUILD_CLIENTS_SAMPLES=OFF
 		-DBUILD_CLIENTS_TESTS=$(usex test ON OFF)
 		-DBUILD_CLIENTS_BENCHMARKS=$(usex benchmark ON OFF)
 		-DBUILD_WITH_SPARSE=$(usex sparse ON OFF)
+		-Wno-dev
 	)
 
 	if use benchmark || use test; then
