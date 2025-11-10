@@ -4,6 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
+# py3.14: https://github.com/aws/serverless-application-model/issues/3831
 PYTHON_COMPAT=( python3_{11..13} )
 
 inherit distutils-r1
