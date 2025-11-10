@@ -479,10 +479,6 @@ sys-kernel/installkernel -systemd-boot -ukify -uki
 # media-libs/libbdplus is keyworded on x86, so unmask the useflag
 media-libs/libbluray -bdplus
 
-# Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
-# Works on 32bit x86
-media-sound/lmms -vst
-
 # Samuli Suominen <ssuominen@gentoo.org> (2014-02-16)
 # Still considered experimental by upstream:
 # https://sourceforge.net/p/mikmod/bugs/16/#17ea

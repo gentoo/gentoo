@@ -157,13 +157,6 @@ net-libs/NativeThread
 =dev-python/pymongo-4.15.3
 =dev-python/pymongo-4.15.2
 
-# Sam James <sam@gentoo.org> (2025-10-05)
-# Fails to build with to-be-stabled CMake 4, Qt 5, no upstream release in
-# 5 years (despite much activity), and a bunch of other open bugs in need
-# of attention.
-# Removal on 2025-11-04.  Bug #957460.
-media-sound/lmms
-
 # Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
 # Breaks e.g. in combination with gnome-shell-48.4, gettext/gjs (bug #963815)
 >=dev-libs/glib-2.86.0

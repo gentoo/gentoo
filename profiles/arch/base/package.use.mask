@@ -461,10 +461,6 @@ sys-kernel/installkernel systemd-boot ukify uki
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.
 media-libs/libbluray bdplus
 
-# Lars Wendler <polynomial-c@gentoo.org> (2014-04-23)
-# Not working on 64bit systems
-media-sound/lmms vst
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (2014-01-04)
 # Mask until dependencies are keyworded (bug 497068)
 dev-vcs/git mediawiki
