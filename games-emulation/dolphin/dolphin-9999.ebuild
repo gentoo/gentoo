@@ -67,7 +67,6 @@ RDEPEND="
 	>=app-arch/lz4-1.8:=
 	app-arch/xz-utils
 	>=app-arch/zstd-1.4.0:=
-	>=sys-libs/zlib-ng-1.3.1:=
 	>=sys-libs/minizip-ng-4.0.4:=
 	dev-libs/hidapi
 	>=dev-libs/libfmt-10.1:=
@@ -86,6 +85,7 @@ RDEPEND="
 	x11-libs/libXrandr
 	virtual/libusb:1
 	virtual/opengl
+	>=virtual/zlib-1.3.1:=
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez:= )
 	evdev? (
