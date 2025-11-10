@@ -31,7 +31,7 @@ fi
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="X debug doc examples ffmpeg freeimage freetype gles2 inspector jemalloc json +opengl optimize tbb test testprograms tk vtk"
+IUSE="X debug doc examples freeimage freetype gles2 inspector jemalloc json +opengl optimize tbb test testprograms tk vtk"
 
 REQUIRED_USE="
 	?? ( optimize tbb )
@@ -41,7 +41,6 @@ REQUIRED_USE="
 # There's no easy way to test. Testing needs a rather big environment properly set up.
 RESTRICT="!test? ( test )"
 
-# ffmpeg: https://tracker.dev.opencascade.org/view.php?id=32871
 RDEPEND="
 	dev-lang/tcl:=
 	tk? ( dev-lang/tk:= )
@@ -66,7 +65,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
-	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
 	inspector? (
 		dev-qt/qtcore:5
@@ -181,7 +179,8 @@ src_configure() {
 
 		# no package yet in tree
 		-DUSE_DRACO="no"
-		-DUSE_FFMPEG="$(usex ffmpeg)"
+		# ffmpeg: https://tracker.dev.opencascade.org/view.php?id=32871
+		-DUSE_FFMPEG="no"
 		-DUSE_FREEIMAGE="$(usex freeimage)"
 		-DUSE_FREETYPE="$(usex freetype)"
 		# Indicates whether OpenGL ES 2.0 should be used in OCCT visualization module
