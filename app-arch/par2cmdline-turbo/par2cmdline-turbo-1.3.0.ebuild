@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit autotools
+inherit autotools flag-o-matic
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -23,7 +23,16 @@ RDEPEND="
 	!app-arch/par2cmdline
 "
 
+PATCHES=("${FILESDIR}/${PN}-no-inline-hints.patch")
+
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	# Needed for -Og to be buildable, otherwise fails a/ always_inline (bug #961901))
+	is-flagq '-Og' && append-cppflags -DPAR2_NO_INLINE_HINTS
+
+	econf
 }
