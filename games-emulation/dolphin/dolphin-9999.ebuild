@@ -66,7 +66,7 @@ LICENSE="GPL-2+ BSD BSD-2 LGPL-2.1+ MIT ZLIB"
 SLOT="0"
 IUSE="
 	alsa bluetooth discord-presence doc egl +evdev ffmpeg +gui llvm log mgba
-	profile pulseaudio sdl systemd telemetry test upnp vulkan
+	pulseaudio sdl systemd telemetry test upnp vulkan
 "
 REQUIRED_USE="
 	mgba? ( gui )
@@ -110,7 +110,6 @@ RDEPEND="
 		dev-qt/qtsvg:6
 	)
 	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}=') )
-	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-libs/libpulse )
 	sdl? ( >=media-libs/libsdl3-3.2.20 )
 	systemd? ( sys-apps/systemd:0= )
@@ -230,7 +229,6 @@ src_configure() {
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
 		-DFASTLOG=$(usex log)
-		-DOPROFILING=$(usex profile)
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
 		-DUSE_MGBA=$(usex mgba)
 		-DUSE_RETRO_ACHIEVEMENTS=OFF
