@@ -293,10 +293,14 @@ src_test() {
 			'opengles3'
 
 			'demo draw bug30430'
+
+			'offset wire_closed_inside_0_005 D1'
 		)
 
 		local DEL_TESTS=(
 			'opengl/data/background/bug27836'
+			'opengl/data/text/bug22149'
+			'opengl/data/text/C2'
 			'perf/mesh/bug26965'
 			'v3d/trsf/bug26029'
 		)
