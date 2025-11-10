@@ -97,21 +97,21 @@ RDEPEND="
 		dev-libs/pthreadpool
 	)
 	rocm? (
-		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-7.1:= )
-		>=dev-util/hip-6.3:=       <dev-util/hip-7.1:=
-		>=dev-util/roctracer-6.3:= <dev-util/roctracer-7.1:=
-		|| ( sci-libs/hipBLAS:0/6.3 sci-libs/hipBLAS:0/6.4 sci-libs/hipBLAS:0/7.0[rocsolver] )
-		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-7.1:=
-		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-7.1:=
-		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-7.1:=
-		>=sci-libs/hipSOLVER-6.3:= <sci-libs/hipSOLVER-7.1:=
-		>=sci-libs/hipSPARSE-6.3:= <sci-libs/hipSPARSE-7.1:=
-		>=sci-libs/miopen-6.3:=    <sci-libs/miopen-7.1:=
-		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-7.1:=
-		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.1:=
-		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.1:=
+		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-7.2:= )
+		>=dev-util/hip-6.3:=       <dev-util/hip-7.2:=
+		>=dev-util/roctracer-6.3:= <dev-util/roctracer-7.2:=
+		|| ( sci-libs/hipBLAS:0/6.3 sci-libs/hipBLAS:0/6.4 sci-libs/hipBLAS:0/7.0[rocsolver] sci-libs/hipBLAS:0/7.1[rocsolver] )
+		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-7.2:=
+		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-7.2:=
+		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-7.2:=
+		>=sci-libs/hipSOLVER-6.3:= <sci-libs/hipSOLVER-7.2:=
+		>=sci-libs/hipSPARSE-6.3:= <sci-libs/hipSPARSE-7.2:=
+		>=sci-libs/miopen-6.3:=    <sci-libs/miopen-7.2:=
+		>=sci-libs/rocBLAS-6.3:=   <sci-libs/rocBLAS-7.2:=
+		>=sci-libs/rocRAND-6.3:=   <sci-libs/rocRAND-7.2:=
+		>=sci-libs/rocSOLVER-6.3:= <sci-libs/rocSOLVER-7.2:=
 		memefficient? ( sci-libs/aotriton-bin:0/0.11 )
-		distributed? ( >=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.1:= )
+		distributed? ( >=dev-util/rocm-smi-6.3:= <dev-util/rocm-smi-7.2:= )
 	)
 	distributed? (
 		!rocm? ( sci-ml/tensorpipe[cuda?] )
@@ -141,9 +141,9 @@ DEPEND="
 	cuda? ( >=dev-libs/cutlass-3.9.2[tools(+)] )
 	onednn? ( sci-ml/ideep )
 	rocm? (
-		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-7.1:=
-		>=sci-libs/rocPRIM-6.3:=   <sci-libs/rocPRIM-7.1:=
-		>=sci-libs/rocThrust-6.3:= <sci-libs/rocThrust-7.1:=
+		>=sci-libs/hipCUB-6.3:=    <sci-libs/hipCUB-7.2:=
+		>=sci-libs/rocPRIM-6.3:=   <sci-libs/rocPRIM-7.2:=
+		>=sci-libs/rocThrust-6.3:= <sci-libs/rocThrust-7.2:=
 	)
 	qnnpack? ( dev-libs/clog )
 "
