@@ -26,11 +26,11 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-util/hip:${SLOT}
+	dev-util/rocm-smi:${SLOT}
 	sci-libs/blis
 	virtual/blas
 	roctracer? ( dev-util/roctracer:${SLOT} )
 	benchmark? (
-		dev-util/rocm-smi:${SLOT}
 		sci-libs/flexiblas
 	)
 "
@@ -57,7 +57,6 @@ BDEPEND="
 	test? (
 		dev-cpp/gtest
 		sci-libs/flexiblas
-		dev-util/rocm-smi:${SLOT}
 	)
 "
 
