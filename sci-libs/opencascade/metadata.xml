@@ -15,7 +15,7 @@
 	<flag name="inspector">Build Inspector tool</flag>
 	<flag name="jemalloc">Enable jemalloc allocator support via <pkg>dev-libs/jemalloc</pkg></flag>
 	<flag name="json">Enable JSON support through <pkg>dev-libs/rapidjson</pkg></flag>
-	<flag name="optimize">Don't clear allocated memory. Use optimized memory manager unlesstbb USE flag is set.</flag>
+	<flag name="optimize">Don't clear allocated memory. Use optimized memory manager unless USE="tbb" is set</flag>
 	<flag name="tbb">Enable multithreading with the Intel Threads Building Block <pkg>dev-cpp/tbb</pkg></flag>
 	<flag name="testprograms">Indicates whether non-regression OCCT test scripts should be installed</flag>
 	<flag name="vtk">Enable Visualization Toolkit support via <pkg>sci-libs/vtk</pkg></flag>
