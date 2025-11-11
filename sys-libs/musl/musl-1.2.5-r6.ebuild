@@ -51,6 +51,13 @@ else
 fi
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.4-arm64-crti-alignment.patch
+	"${FILESDIR}"/${PN}-sched.h-reduce-namespace-conflicts.patch
+	"${FILESDIR}"/${PN}-iconv-out-of-bound-fix.patch
+	"${FILESDIR}"/${PN}-arm-crti-alignment.patch
+	"${FILESDIR}"/${PN}-ppc-clobber.patch
+	"${FILESDIR}"/${PN}-dns-union.patch
+	"${FILESDIR}"/${PN}-getauxval.patch
 	"${FILESDIR}"/${PN}-getifaddrs-qemu-workaround.patch
 )
 
