@@ -68,5 +68,5 @@ src_install() {
 
 pkg_postinst() {
 	optfeature "Check for STARTTLS injection issues" net-misc/socat
-	optfeature "Faster conversions from hexdump to binary" app-editors/vim-core
+	optfeature "Faster conversions from hexdump to binary" dev-util/xxd app-editors/vim-core
 }
