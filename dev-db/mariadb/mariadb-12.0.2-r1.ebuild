@@ -22,7 +22,7 @@ S="${WORKDIR}/mysql"
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="$(ver_cut 1-2)/${SUBSLOT:-0}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~x86"
-IUSE="+backup bindist columnstore cracklib debug extraengine galera innodb-lz4
+IUSE="aws-km +backup bindist columnstore cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
 	sst-rsync sst-mariabackup static systemd systemtap s3 tcmalloc
@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	sys-libs/ncurses:0=
 	>=virtual/zlib-1.2.3:=
 	virtual/libcrypt:=
+	aws-km? ( dev-cpp/aws-sdk-cpp:= )
 	!bindist? (
 		sys-libs/binutils-libs:0=
 		>=sys-libs/readline-4.1:0=
@@ -391,7 +392,7 @@ src_configure() {
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
 			-DPLUGIN_AUTH_PAM=$(usex pam YES NO)
-			-DPLUGIN_AWS_KEY_MANAGEMENT=NO
+			-DPLUGIN_AWS_KEY_MANAGEMENT=$(usex aws-km DYNAMIC NO)
 			-DPLUGIN_CRACKLIB_PASSWORD_CHECK=$(usex cracklib YES NO)
 			-DPLUGIN_SEQUENCE=$(usex extraengine YES NO)
 			-DPLUGIN_SPIDER=$(usex extraengine YES NO)

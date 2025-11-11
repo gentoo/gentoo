@@ -12,3 +12,7 @@ dev-util/sccache -dist-server
 # Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # This target supports ASAN/etc... #504200.
 sys-devel/gcc -sanitize
+
+# Jaco Kroon <jkroon@gentoo.org> (202-11-11)
+# This target has the dependencies keyworded.
+dev-db/mariadb -aws-km

@@ -6,6 +6,7 @@
 		<name>MySQL</name>
 	</maintainer>
 	<use>
+		<flag name="aws-km">Add support for using the AWS Key Management plugin</flag>
 		<flag name="backup">Build mariadb-backup which supports SST and hot backup of InnoDB, Aria and MyISAM including compression and encryption</flag>
 		<flag name="columnstore">Build the ColumnStore storage engine</flag>
 		<flag name="extraengine">Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
