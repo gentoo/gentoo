@@ -75,6 +75,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.8.1_p20251019-optional-pulse.patch"
 	"${FILESDIR}/${PN}-2.8.1_p20251019-optional-libsamplerate.patch"
 	"${FILESDIR}/${PN}-2.8.1_p20251019-include.patch"
+	# https://github.com/mean00/avidemux2/pull/548.patch
+	"${FILESDIR}/${PN}-2.8.1_p20251019-fix_clang.patch"
 )
 
 src_configure() {
