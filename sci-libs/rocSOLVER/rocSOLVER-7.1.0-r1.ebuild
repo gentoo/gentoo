@@ -41,6 +41,10 @@ BDEPEND="
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-7.1.0-fix-sparse.patch
+)
+
 src_unpack() {
 	local ROCSOLVER="rocm-libraries-rocm-${PV}/projects/rocsolver"
 	tar -xzf "${DISTDIR}/${A}" "${ROCSOLVER}" -C "${WORKDIR}" || die
