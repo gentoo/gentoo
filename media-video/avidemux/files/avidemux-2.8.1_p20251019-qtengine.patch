@@ -1,5 +1,4 @@
 avoid deps for both X11 and Wayland
-X11 linker is no longer forced (Qt makes the job if needed)
 --- a/avidemux/qt4/ADM_qt/src/ADM_qtx.cpp
 +++ b/avidemux/qt4/ADM_qt/src/ADM_qtx.cpp
 @@ -24,21 +24,29 @@ QT_LINUX_WINDOW_ENGINE admDetectQtEngine()
@@ -59,13 +58,3 @@ X11 linker is no longer forced (Qt makes the job if needed)
          default:
              ADM_warning("Cannot get qt engine infos\n");
              myDisplay = NULL;
---- a/avidemux/qt4/cmake/adm_default.cmake
-+++ b/avidemux/qt4/cmake/adm_default.cmake
-@@ -3,7 +3,6 @@
- #
- MACRO(ADM_PREBUILD)
-         LIST(APPEND PlatformLibs   "-lm -lstdc++")
--        LIST(APPEND PlatformLibs   "X11") # Linux, BSD
- ENDMACRO(ADM_PREBUILD)
- #
- #
