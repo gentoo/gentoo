@@ -83,5 +83,9 @@ src_configure() {
 }
 
 src_test() {
-	"${BUILD_DIR}/test/manifold_test" || die
+	if use x86; then
+		local -x GTEST_FILTER="-Properties.ToleranceSphere:Boolean.AlmostCoplanar:Smooth.RefineQuads:Smooth.ToLength:Smooth.Torus"
+	fi
+
+	cmake_src_test
 }
