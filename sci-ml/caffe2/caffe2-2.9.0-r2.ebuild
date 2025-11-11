@@ -65,9 +65,9 @@ RDEPEND="
 	dev-cpp/abseil-cpp:=
 	dev-cpp/gflags:=
 	>=dev-cpp/glog-0.5.0:=
-	dev-cpp/nlohmann_json
 	dev-libs/cpuinfo
 	dev-libs/libfmt:=
+	dev-cpp/opentelemetry-cpp
 	dev-libs/protobuf:=
 	dev-libs/sleef
 	~sci-ml/kineto-0.4.0_p20250617
@@ -88,7 +88,7 @@ RDEPEND="
 	)
 	numpy? ( $(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
-		') )
+	') )
 	onednn? ( =sci-ml/oneDNN-3.5* )
 	opencl? ( virtual/opencl )
 	qnnpack? (
@@ -100,7 +100,7 @@ RDEPEND="
 		nccl? ( >=dev-libs/rccl-6.3:= <dev-libs/rccl-7.2:= )
 		>=dev-util/hip-6.3:=       <dev-util/hip-7.2:=
 		>=dev-util/roctracer-6.3:= <dev-util/roctracer-7.2:=
-		|| ( sci-libs/hipBLAS:0/6.3 sci-libs/hipBLAS:0/6.4 sci-libs/hipBLAS:0/7.0[rocsolver] sci-libs/hipBLAS:0/7.1[rocsolver] )
+		>=sci-libs/hipBLAS-6.3:=   <sci-libs/hipBLAS-7.2:=[rocsolver(+)]
 		>=sci-libs/hipBLASLt-6.3:= <sci-libs/hipBLASLt-7.2:=
 		>=sci-libs/hipFFT-6.3:=    <sci-libs/hipFFT-7.2:=
 		>=sci-libs/hipRAND-6.3:=   <sci-libs/hipRAND-7.2:=
@@ -127,7 +127,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	dev-cpp/opentelemetry-cpp
+	dev-cpp/nlohmann_json
 	dev-libs/flatbuffers
 	dev-libs/FXdiv
 	dev-libs/pocketfft
@@ -164,6 +164,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${P}-rocm-distributed-link.patch
 )
+
+pkg_setup() {
+	python-single-r1_pkg_setup
+	use cuda && cuda_pkg_setup
+}
 
 src_prepare() {
 	if use cuda && ( use flash || use memefficient ); then
