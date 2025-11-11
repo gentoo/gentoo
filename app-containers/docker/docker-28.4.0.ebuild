@@ -71,6 +71,13 @@ pkg_setup() {
 	"
 	WARNING_POSIX_MQUEUE="CONFIG_POSIX_MQUEUE: is required for bind-mounting /dev/mqueue into containers"
 
+	if kernel_is ge 6 17; then
+		CONFIG_CHECK+="
+			~IP_NF_IPTABLES_LEGACY
+			~NETFILTER_XTABLES_LEGACY
+		"
+	fi
+
 	if kernel_is lt 4 8; then
 		CONFIG_CHECK+="
 			~DEVPTS_MULTIPLE_INSTANCES
