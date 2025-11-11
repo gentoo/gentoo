@@ -76,6 +76,8 @@ VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/logging.apache.org.asc"
 
 src_prepare() {
 	java-pkg-2_src_prepare
+	# according to what we get from grep -nr '@ServiceProvider' log4j-core/*
+
 	mkdir -p log4j-core/src/main/resources/META-INF/services || die "mkdir"
 	pushd $_ >/dev/null || die "pushd"
 	echo "org.apache.logging.log4j.core.config.plugins.processor.GraalVmProcessor" \
@@ -92,28 +94,13 @@ src_prepare() {
 }
 
 src_compile() {
+	# we run this twice, first time to get PluginProcessor into processorpath.
 	java-pkg-simple_src_compile
 
-	# Process the @Plugin annotation used on Log4j 2 built-in plugins
-	# to generate a serialized plugin listing file
-	# https://logging.apache.org/log4j/2.x/manual/plugins.html
-	local processor="org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor"
-	local classes="target/classes"
-	local classpath="${JAVA_JAR_FILENAME}:$( \
-		java-pkg_getjars --build-only --with-dependencies \
-		"${JAVA_GENTOO_CLASSPATH},${JAVA_CLASSPATH_EXTRA}"):$( \
-		java-pkg_getjars --build-only --with-dependencies jakarta-activation-api-1)"
-	# Just in case java-pkg-simple.eclass changes the path in the future
-	mkdir -p "${classes}" || die "Failed to create directory for classes"
-	local sources_list_file="${T}/sources.lst"
-	find "${JAVA_SRC_DIR}" -type f -name "*.java" > "${sources_list_file}" || die
-	ejavac -d "${classes}" -cp "${classpath}" \
-		-proc:only -processor "${processor}" \
-		@"${sources_list_file}"
-	# Update the JAR to include the serialized plugin listing file
-	local jar="$(java-config -j)"
-	"${jar}" -uf "${JAVA_JAR_FILENAME}" -C "${classes}" . ||
-		die "Failed to update JAR"
+	# using PluginProcessor.class
+	JAVAC_ARGS=" -processorpath target/classes:$(java-pkg_getjars log4j-api) \
+		-processor org.apache.logging.log4j.core.config.plugins.processor.PluginProcessor"
+	java-pkg-simple_src_compile
 
 	# For versions/9, upstream packages only what's listed in log4j-core-java9/src/assembly/java9.xml
 	# We remove the jar, remove from target/classes what's not needed and re-create the jar.
