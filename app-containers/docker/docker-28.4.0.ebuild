@@ -37,7 +37,6 @@ RDEPEND="
 	>=app-arch/xz-utils-4.9
 	>=app-containers/containerd-2.1.4[apparmor?,btrfs?,seccomp?]
 	>=app-containers/runc-1.2.6[apparmor?,seccomp?]
-	!app-containers/docker-proxy
 	!<app-containers/docker-cli-${PV}
 	container-init? ( >=sys-process/tini-0.19.0[static] )
 	cuda? ( app-containers/nvidia-container-toolkit )
