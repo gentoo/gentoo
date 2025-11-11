@@ -130,7 +130,7 @@ fi
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Internal array containing <file>:<version> tuples detected by
-# _cmake_minreqver-check() for any CMakeLists.txt with cmake_minimum_required
+# _cmake_minreqver-get() for any CMake file with cmake_minimum_required
 # version lower than 3.5.
 _CMAKE_MINREQVER_CMAKE305=()
 
@@ -138,7 +138,7 @@ _CMAKE_MINREQVER_CMAKE305=()
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Internal array containing <file>:<version> tuples detected by
-# _cmake_minreqver-check() for any CMakeLists.txt with cmake_minimum_required
+# _cmake_minreqver-get() for any CMake file with cmake_minimum_required
 # version lower than 3.10 (causes CMake warnings as of 4.0) on top of those
 # already added to _CMAKE_MINREQVER_CMAKE305.
 _CMAKE_MINREQVER_CMAKE310=()
@@ -147,7 +147,7 @@ _CMAKE_MINREQVER_CMAKE310=()
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Internal array containing <file>:<version> tuples detected by
-# _cmake_minreqver-check() for any CMakeLists.txt with cmake_minimum_required
+# _cmake_minreqver-get() for any CMake file with cmake_minimum_required
 # version lower than 3.16 (causes ECM warnings since 5.100), on top of those
 # already added to _CMAKE_MINREQVER_CMAKE305 and _CMAKE_MINREQVER_CMAKE310.
 _CMAKE_MINREQVER_CMAKE316=()
@@ -302,49 +302,20 @@ _cmake_check_build_dir() {
 	mkdir -p "${BUILD_DIR}" || die
 }
 
-# @FUNCTION: _cmake_minreqver-check
-# @USAGE: <path> or <path> <lt-version>
+# @FUNCTION: _cmake_minreqver-get
+# @USAGE: <path>
 # @INTERNAL
 # @DESCRIPTION:
-# Internal function for flagging any deprecated or unsupported
-# cmake_minimum_required version in a given CMake file <path>.
-# If <lt-version> is specified as second arg, only check against that value.
-# Returns 0 if the regex matched (a lower-than-specified version found).
-_cmake_minreqver-check() {
-	local ver chk=1
-	if [[ "$#" == 2 ]]; then
-		local file="${1}"
-		local lt_version="${2}"
-	elif [[ "$#" == 1 ]]; then
-		local file="${1}"
-	else
-		die "${FUNCNAME[0]} must be passed either one or two arguments"
+# Internal function for extracting cmake_minimum_required version from a
+# given CMake file <path>.  Echos minimum version if found.
+_cmake_minreqver-get() {
+	if [[ $# -ne 1 ]]; then
+		die "${FUNCNAME[0]} must be passed exactly one argument"
 	fi
-	ver=$(sed -ne "/^\s*cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9][0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
-		"${file}" 2>/dev/null \
+	local ver=$(sed -ne "/^\s*cmake_minimum_required/I{s/.*\(\.\.\.*\|\s\)\([0-9][0-9.]*\)\([)]\|\s\).*$/\2/p;q}" \
+		"${1}" 2>/dev/null \
 	)
-	if [[ -z ${ver} ]]; then
-		return 1 # no cmake_minimum_required found
-	fi
-	if [[ -n ${lt_version} ]]; then
-		chk=$(ver_test "${ver}" -lt "${lt_version}")
-	else
-		if ver_test "${ver}" -lt "3.5"; then
-			_CMAKE_MINREQVER_CMAKE305+=( "${file}":"${ver}" )
-			chk=0
-		fi
-		# we don't want duplicates that were already flagged
-		if [[ $chk != 0 ]] && ver_test "${ver}" -lt "3.10"; then
-			_CMAKE_MINREQVER_CMAKE310+=( "${file}":"${ver}" )
-			chk=0
-		fi
-		# we don't want duplicates that were already flagged
-		if [[ $chk != 0 ]] && ver_test "${ver}" -lt "3.16"; then
-			_CMAKE_MINREQVER_CMAKE316+=( "${file}":"${ver}" )
-			chk=0
-		fi
-	fi
-	return ${chk}
+	[[ -n ${ver} ]] && echo ${ver}
 }
 
 # @FUNCTION: _cmake_minreqver-info
@@ -389,7 +360,7 @@ _cmake_minreqver-info() {
 			305)
 				eqawarn "The following CMakeLists.txt files are causing errors:"
 				for info in ${_CMAKE_MINREQVER_CMAKE305[*]}; do
-					eqawarn "  ${info#"${CMAKE_USE_DIR}/"}";
+					eqawarn "  ${info}";
 				done
 				eqawarn
 				;;
@@ -397,7 +368,7 @@ _cmake_minreqver-info() {
 				if [[ -n ${_CMAKE_MINREQVER_CMAKE310[@]} ]]; then
 					eqawarn "The following CMakeLists.txt files are causing warnings:"
 					for info in ${_CMAKE_MINREQVER_CMAKE310[*]}; do
-						eqawarn "  ${info#"${CMAKE_USE_DIR}/"}";
+						eqawarn "  ${info}";
 					done
 					eqawarn
 				fi
@@ -406,7 +377,7 @@ _cmake_minreqver-info() {
 				if [[ ${warnlvl} -ge 316 ]] && [[ -n ${_CMAKE_MINREQVER_CMAKE316[@]} ]]; then
 					eqawarn "The following CMakeLists.txt files are causing warnings:"
 					for info in ${_CMAKE_MINREQVER_CMAKE316[*]}; do
-						eqawarn "  ${info#"${CMAKE_USE_DIR}/"}";
+						eqawarn "  ${info}";
 					done
 					eqawarn
 				fi
@@ -448,7 +419,7 @@ _cmake_modify-cmakelists() {
 	# Only edit the files once
 	grep -qs "<<< Gentoo configuration >>>" "${CMAKE_USE_DIR}"/CMakeLists.txt && return 0
 
-	local file
+	local file ver
 	while read -d '' -r file ; do
 		# Comment out all set (<some_should_be_user_defined_variable> value)
 		sed \
@@ -466,9 +437,17 @@ _cmake_modify-cmakelists() {
 		if [[ ${CMAKE_ECM_MODE} == auto ]] && grep -Eq "\s*find_package\s*\(\s*ECM " "${file}"; then
 			CMAKE_ECM_MODE=true
 		fi
-		# Detect unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
-		if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
-			_cmake_minreqver-check "${file}"
+		ver=$(_cmake_minreqver-get "${file}")
+		# Flag unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
+		if [[ -n "${ver}" && ! ${CMAKE_QA_COMPAT_SKIP} ]]; then
+			# we don't want duplicates that were already flagged
+			if ver_test "${ver}" -lt "3.5"; then
+				_CMAKE_MINREQVER_CMAKE305+=( "${file#"${CMAKE_USE_DIR}/"}":"${ver}" )
+			elif ver_test "${ver}" -lt "3.10"; then
+				_CMAKE_MINREQVER_CMAKE310+=( "${file#"${CMAKE_USE_DIR}/"}":"${ver}" )
+			elif ver_test "${ver}" -lt "3.16"; then
+				_CMAKE_MINREQVER_CMAKE316+=( "${file#"${CMAKE_USE_DIR}/"}":"${ver}" )
+			fi
 		fi
 	done < <(find "${CMAKE_USE_DIR}" -type f -iname "CMakeLists.txt" -print0 || die)
 
@@ -857,11 +836,14 @@ cmake_src_install() {
 		einstalldocs
 	popd > /dev/null || die
 
-	local file files=()
+	local file files=() ver
 	while read -d '' -r file ; do
-		# Detect unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
-		if ! [[ ${CMAKE_QA_COMPAT_SKIP} ]]; then
-			_cmake_minreqver-check "3.5" "${file}" && files+=( "${file#"${D}"}" )
+		# Flag unsupported minimum CMake versions unless CMAKE_QA_COMPAT_SKIP is set
+		ver=$(_cmake_minreqver-get "${file}")
+		if [[ -n "${ver}" && ! ${CMAKE_QA_COMPAT_SKIP} ]]; then
+			if ver_test "${ver}" -lt "3.5"; then
+				files+=( "${file#"${D}"}" )
+			fi
 		fi
 	done < <(find "${D}" -type f -iname "*.cmake" -print0 || die)
 	if [[ ${#files[*]} -gt 0 ]]; then
