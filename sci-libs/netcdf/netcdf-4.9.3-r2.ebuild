@@ -23,6 +23,7 @@ RESTRICT="!test? ( test )"
 # automagic in 4.9.3 :(
 RDEPEND="
 	dev-libs/libxml2:=
+	dev-libs/libzip:=
 	virtual/zlib:=
 	blosc? ( dev-libs/c-blosc:= )
 	bzip2? ( app-arch/bzip2:= )
