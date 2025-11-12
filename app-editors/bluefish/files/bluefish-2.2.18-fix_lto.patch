@@ -1,0 +1,13 @@
+patch merged https://sourceforge.net/p/bluefish/tickets/118/
+fix lto type-mismatch
+--- a/src/plugin_htmlbar/rpopup.h
++++ b/src/plugin_htmlbar/rpopup.h
+@@ -24,7 +24,7 @@
+ 
+ void
+ htmlbar_doc_view_button_press(GtkWidget * widget, GdkEventButton * bevent, Tdocument * doc,
+-												GtkTextIter *so, GtkTextIter *eo,
++												GtkTextIter *position, GtkTextIter *so, GtkTextIter *eo,
+ 												gboolean is_color, gchar *pattern);
+ gboolean rpopup_doc_located_tag(Tdocument *doc);
+ gboolean rpopup_doc_located_color(Tdocument *doc);
