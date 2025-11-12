@@ -25,7 +25,7 @@ CP_DEPEND="
 	dev-java/miglayout:5
 "
 DEPEND="
-	>=virtual/jdk-11:*
+	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	${CP_DEPEND}
 "
 # error: variables in try-with-resources are not supported in -source 8
