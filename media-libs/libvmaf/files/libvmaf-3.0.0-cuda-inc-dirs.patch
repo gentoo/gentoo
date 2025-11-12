@@ -1,0 +1,29 @@
+From 5ac03724a3f1dd4077c517f5658765c4bb03f7ea Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx@gmail.com>
+Date: Sun, 29 Jun 2025 15:15:53 +0200
+Subject: [PATCH] cuda inc dirs
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/libvmaf/src/meson.build b/libvmaf/src/meson.build
+index 4c24af8..f78e359 100644
+--- a/libvmaf/src/meson.build
++++ b/libvmaf/src/meson.build
+@@ -321,10 +321,10 @@ if is_cuda_enabled
+             input : _cu,
+             command : [nvcc_exe, '--ptx', '@INPUT@', '-o', '@OUTPUT@' ,
+                 '-I', './src',
+-                '-I', '../src',
+-                '-I', '../include',
+-                '-I', '../src/feature',
+-                '-I', '../src/' + cuda_dir,
++                '-I', '@0@/src'.format(libvmaf_src_root),
++                '-I', '@0@/include'.format(libvmaf_src_root),
++                '-I', '@0@/src/feature'.format(libvmaf_src_root),
++                '-I', '@0@/src/'.format(libvmaf_src_root) + cuda_dir,
+             ]
+         )
+         ptx_files += {name : [t]}
+-- 
+2.50.0
+
