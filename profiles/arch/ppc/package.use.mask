@@ -64,3 +64,7 @@ dev-libs/mongo-c-driver test
 # Leonardo Hernández Hernández <leohdz172@proton.me> (2023-12-26)
 # net-libs/grpc not keyworded here
 app-admin/syslog-ng grpc
+
+# Lukas Schmelting <lschmelting@posteo.com>
+# Depends on unkeyworded x11-misc/xvfb-run
+>=x11-libs/libnotify-0.8.7 test
