@@ -11,7 +11,7 @@ PR=r0
 source tests-common.sh || exit
 source version-funcs.sh || exit
 
-EAPI=7 inherit toolchain
+EAPI=8 inherit toolchain
 
 # Ignore actually running version of gcc and fake new version
 # to force downgrade test on all conditions below.
