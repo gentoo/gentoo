@@ -19,7 +19,7 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz
 		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+	KEYWORDS="amd64 ~arm arm64 ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -42,7 +42,6 @@ BDEPEND="
 	app-alternatives/lex
 	app-alternatives/yacc
 	dev-build/autoconf-archive
-	dev-python/docutils
 	sys-apps/lsb-release
 	virtual/pkgconfig
 	test? (
@@ -118,6 +117,10 @@ DEPEND="
 
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-8.2112.0-pr5024-configure.patch"
+)
 
 pkg_setup() {
 	python-any-r1_pkg_setup
