@@ -16,13 +16,8 @@ LICENSE="LGPL-2.1"
 SLOT="1"
 KEYWORDS="amd64"
 
-BDEPEND="
-	app-arch/unzip"
-
-DEPEND="
-	<virtual/jdk-26:*"
-
-RDEPEND="
-	>=virtual/jre-1.8:*"
+BDEPEND="app-arch/unzip"
+DEPEND="<virtual/jdk-26:*"
+RDEPEND=">=virtual/jre-1.8:*"
 
 JAVA_SRC_DIR="src"
