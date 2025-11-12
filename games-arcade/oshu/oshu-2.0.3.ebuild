@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,12 +27,10 @@ RDEPEND="
 	media-libs/sdl2-image
 	x11-libs/cairo
 	x11-libs/pango
-	media-video/ffmpeg:=
+	>media-video/ffmpeg-5:=
 "
 
 DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/oshu-2.0.2-ffmpeg4-compat.patch" )
 
 src_unpack() {
 	default
