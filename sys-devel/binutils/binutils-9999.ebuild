@@ -194,8 +194,6 @@ src_configure() {
 
 	# Keep things sane
 	strip-flags
-	# Adds a property which confuses tests (PR33267)
-	filter-flags '-mno-direct-extern-access'
 	use cet && filter-flags -mindirect-branch -mindirect-branch=*
 	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 	lto-guarantee-fat
