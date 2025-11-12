@@ -4,8 +4,6 @@
 EAPI=8
 PYTHON_COMPAT=( python3_{11..14} )
 
-GNOME_ORG_MODULE=tracker-miners
-
 inherit flag-o-matic gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
 DESCRIPTION="Indexer and search engine that powers desktop search for core GNOME components"
@@ -13,22 +11,22 @@ HOMEPAGE="https://gnome.pages.gitlab.gnome.org/localsearch"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3"
-IUSE="cue exif ffmpeg gif gsf +gstreamer iptc +iso +jpeg networkmanager +pdf +playlist raw +rss seccomp test +tiff upower +xml xmp xps"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="cue exif gif gsf +gstreamer iptc +iso +jpeg +pdf +playlist raw seccomp test +tiff upower webp +xml xmp xps"
 
 REQUIRED_USE="cue? ( gstreamer )" # cue is currently only supported via gstreamer, not ffmpeg
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc x86"
-
 # tracker-2.1.7 currently always depends on ICU (theoretically could be libunistring instead);
 # so choose ICU over enca always here for the time being (ICU is preferred)
 RDEPEND="
-	>=dev-libs/glib-2.70:2
-	>=app-misc/tinysparql-3.6_rc:3
-
+	>=app-misc/tinysparql-3.8:3
 	>=sys-apps/dbus-1.3.1
 	xmp? ( >=media-libs/exempi-2.1.0:= )
-	raw? ( media-libs/gexiv2 )
+	raw? ( >=media-libs/gexiv2-0.16 )
+	>=dev-libs/glib-2.76:2
+	dev-libs/libgudev
+	>=dev-libs/gobject-introspection-1.82.0-r2
 	cue? ( media-libs/libcue:= )
 	exif? ( >=media-libs/libexif-0.6 )
 	gsf? ( >=gnome-extra/libgsf-1.14.24:= )
@@ -42,13 +40,10 @@ RDEPEND="
 	xml? ( >=dev-libs/libxml2-2.6:= )
 	pdf? ( >=app-text/poppler-0.16.0:=[cairo] )
 	playlist? ( >=dev-libs/totem-pl-parser-3:= )
-	sys-apps/util-linux
+	webp? ( media-libs/libwebp )
 
 	gif? ( media-libs/giflib:= )
 
-	networkmanager? ( net-misc/networkmanager )
-
-	rss? ( >=net-libs/libgrss-0.7:0 )
 	app-arch/gzip
 
 	upower? ( >=sys-power/upower-0.9.0:= )
@@ -59,8 +54,7 @@ RDEPEND="
 		>=media-libs/gstreamer-1.20:1.0
 		>=media-libs/gst-plugins-base-1.20:1.0
 		>=media-plugins/gst-plugins-meta-1.20:1.0 )
-	!gstreamer? (
-		ffmpeg? ( media-video/ffmpeg:0= ) )
+	media-video/ffmpeg:0=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -84,11 +78,6 @@ BDEPEND="
 		)
 	)
 "
-
-PATCHES=(
-	# https://gitlab.gnome.org/GNOME/localsearch/-/merge_requests/511
-	"${FILESDIR}/tracker-miners-3.6.2-epoll_wait.patch"
-)
 
 python_check_deps() {
 	python_has_version -b \
@@ -119,22 +108,12 @@ src_configure() {
 
 	append-cflags -DTRACKER_DEBUG -DG_DISABLE_CAST_CHECKS
 
-	local media_extractor="none"
-	if use gstreamer ; then
-		media_extractor="gstreamer"
-	elif use ffmpeg ; then
-		media_extractor="libav"
-	fi
-
 	local emesonargs=(
-		-Dtracker_core=system
-
 		-Dman=true
 		-Dextract=true
 		$(meson_use test functional_tests)
 		$(meson_use test tests_tap_protocol)
 		-Dminer_fs=true
-		$(meson_use rss miner_rss)
 		-Dwriteback=true
 		-Dabiword=true
 		-Dicon=true
@@ -142,8 +121,11 @@ src_configure() {
 		-Dps=true
 		-Dtext=true
 		-Dunzip_ps_gz_files=true # spawns gunzip
-
-		$(meson_feature networkmanager network_manager)
+		# Broken with our library layout for libstdc++ (bug #957705)
+		# Once https://gitlab.gnome.org/GNOME/localsearch/-/issues/368 is fixed,
+		# we should add a USE flag for it but likely give it the same treatment
+		# as seccomp (i.e. package.use.force).
+		-Dlandlock=disabled
 		$(meson_feature cue)
 		$(meson_feature exif)
 		$(meson_feature gif)
@@ -153,6 +135,8 @@ src_configure() {
 		$(meson_feature jpeg)
 		$(meson_feature pdf)
 		$(meson_feature playlist)
+		$(meson_feature webp)
+		-Dbash_completion=true
 		-Dpng=enabled
 		$(meson_feature raw)
 		$(meson_feature tiff)
@@ -163,7 +147,6 @@ src_configure() {
 		-Dbattery_detection=$(usex upower upower none)
 		# enca is a possibility, but right now we have tracker core always dep on icu and icu is preferred over enca
 		-Dcharset_detection=icu
-		-Dgeneric_media_extractor=${media_extractor}
 		# gupnp gstreamer_backend is in bad state, upstream suggests to use discoverer, which is the default
 		-Dsystemd_user_services_dir="$(systemd_get_userunitdir)"
 	)
@@ -172,7 +155,8 @@ src_configure() {
 
 src_test() {
 	export GSETTINGS_BACKEND="dconf" # Tests require dconf and explicitly check for it (env_reset set it to "memory")
-	export PYTHONPATH="${ESYSROOT}"/usr/$(get_libdir)/tracker-3.0
+	export PYTHONPATH="${ESYSROOT}"/usr/$(get_libdir)/tinysparql-3.0
+	# Many (extractor) tests fail since version 3.9.0 https://gitlab.gnome.org/GNOME/localsearch/-/issues/405
 	dbus-run-session meson test -C "${BUILD_DIR}" --no-suite examples || die 'tests failed'
 }
 
