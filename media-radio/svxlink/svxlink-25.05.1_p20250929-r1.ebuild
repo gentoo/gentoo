@@ -34,6 +34,7 @@ DEPEND="dev-lang/tcl:=
 	rtlsdr? ( net-wireless/rtl-sdr:= )
 	qt6? (
 		dev-qt/qtbase:6[gui,network,widgets]
+		dev-qt/qt5compat
 	)"
 RDEPEND="${DEPEND}
 	acct-group/svxlink
