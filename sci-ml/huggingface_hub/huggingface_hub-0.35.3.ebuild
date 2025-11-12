@@ -49,28 +49,27 @@ src_test() {
 		tests/test_hf_api.py
 		tests/test_hf_file_system.py
 		tests/test_inference_api.py
-		tests/test_inference_async_client.py
 		tests/test_inference_client.py
-		tests/test_inference_text_generation.py
 		tests/test_oauth.py
 		tests/test_repocard.py
 		tests/test_repository.py
 		tests/test_snapshot_download.py
+		tests/test_utils_telemetry.py
 		tests/test_xet_download.py
 		tests/test_xet_upload.py
 		tests/test_utils_cache.py
 		tests/test_utils_http.py
-		tests/test_utils_telemetry.py
 		tests/test_webhooks_server.py
 	)
 
 	local EPYTEST_DESELECT=(
-		tests/test_dduf.py::TestExportFolder::test_export_folder
+		tests/test_cli.py::TestJobsCommand::test_uv_local_script
 		tests/test_hub_mixin.py::HubMixinTest::test_push_to_hub
 		tests/test_hub_mixin_pytorch.py::PytorchHubMixinTest::test_push_to_hub
+		tests/test_inference_async_client.py::test_async_generate_timeout_error
+		tests/test_inference_providers.py::TestHFInferenceProvider::test_prepare_mapping_info_unknown_task
 		tests/test_offline_utils.py::test_offline_with_timeout
-		tests/test_utils_pagination.py::TestPagination::test_paginate_github_api
-		tests/test_fastai_integration.py::TestFastaiUtils::test_push_to_hub_and_from_pretrained_fastai
+		tests/test_utils_pagination.py::TestPagination::test_paginate_hf_api
 	)
 
 	distutils-r1_src_test
