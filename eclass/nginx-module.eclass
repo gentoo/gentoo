@@ -615,6 +615,8 @@ nginx-module_src_prepare() {
 	debug-print-function "${FUNCNAME[0]}" "$@"
 	pushd "${NGINX_MOD_S}/${NGINX_MOD_CONFIG_DIR}" >/dev/null ||
 		die "pushd failed"
+
+	ebegin "Patching module's config"
 	# Since NGINX does not guarantee ABI or API stability, we utilise
 	# preprocessor macros that were used to compile NGINX itself, to build third
 	# party modules. As such, we do not want for the dummy preprocessor macros
@@ -638,9 +640,13 @@ nginx-module_src_prepare() {
 	# header after the whole configuration, as it may contain other preprocessor
 	# macros than only the module's ones.
 	sed -i -e '1i\' -e ': > build/ngx_auto_config.h' config ||
-		die "sed failed"
+		{ eend $? || die "sed failed"; }
+
 	echo 'mv build/ngx_auto_config.h build/__ngx_gentoo_mod_config.h' \
-		>> config || die "echo failed"
+		>> config
+	# We specifically need the $? of echo.
+	# shellcheck disable=SC2320
+	eend $? || die "echo failed"
 
 	# cd into module root and apply patches.
 	pushd "${NGINX_MOD_S}" >/dev/null || die "pushd failed"
