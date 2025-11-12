@@ -1,0 +1,11 @@
+--- a/dkimpy_milter/util.py	2022-12-06 02:04:25.000000000 +0100
++++ b/dkimpy_milter/util.py	2025-11-12 09:25:29.244837585 +0100
+@@ -138,8 +138,6 @@
+                 raise
+         f.write(pid)
+         f.close()
+-        user, group = user_group(milterconfig.get('UserID'))
+-        os.chown(pidfile, user, group)
+     else:
+         if milterconfig.get('Syslog'):
+             syslog.syslog('Unable to write pidfle {0}.  File exists.'
