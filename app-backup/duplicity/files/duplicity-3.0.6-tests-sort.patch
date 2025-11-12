@@ -1,0 +1,31 @@
+https://gitlab.com/duplicity/duplicity/-/commit/8990fad4af95dd87b0d12b9c4c225defe929de8a
+
+From 8990fad4af95dd87b0d12b9c4c225defe929de8a Mon Sep 17 00:00:00 2001
+From: Kenneth Loafman <kenneth@loafman.com>
+Date: Fri, 7 Nov 2025 06:45:20 -0600
+Subject: [PATCH] fix:test: Fix test_restore_to_nonexisting_dir().
+
+Add sorted() around listdir()
+
+Fixes #898
+---
+ testing/functional/test_restore.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/testing/functional/test_restore.py b/testing/functional/test_restore.py
+index bebc724ef..069b3cafd 100644
+--- a/testing/functional/test_restore.py
++++ b/testing/functional/test_restore.py
+@@ -62,8 +62,8 @@ class RestoreTest(FunctionalTestCase):
+         self.backup("full", f"{_runtest_dir}/testfiles/dir1")
+         self.restore()
+         self.assertEqual(
+-            os.listdir(f"{_runtest_dir}/testfiles/dir1"),
+-            os.listdir(f"{_runtest_dir}/testfiles/restore_out"),
++            sorted(os.listdir(f"{_runtest_dir}/testfiles/dir1")),
++            sorted(os.listdir(f"{_runtest_dir}/testfiles/restore_out")),
+         )
+ 
+     def test_restore_path_to_nonexisting_dir(self):
+-- 
+GitLab

@@ -12,12 +12,12 @@ inherit distutils-r1
 DESCRIPTION="Secure backup system using gnupg to encrypt data"
 HOMEPAGE="https://duplicity.gitlab.io/"
 SRC_URI="https://gitlab.com/duplicity/duplicity/-/archive/rel.${PV}/${PN}-rel.${PV}.tar.bz2"
+SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.0.6-fix-pexpect-sftp-regression.patch.xz"
 S="${WORKDIR}"/${PN}-rel.${PV}
 
 LICENSE="GPL-3"
 SLOT="0"
-# Unkeyworded because of test failure, see below
-#KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="s3 test"
 
 COMMON_DEPEND="
@@ -47,8 +47,6 @@ EPYTEST_DESELECT=(
 	testing/test_code.py::CodeTest::test_pylint
 	# boto3
 	testing/unit/test_cli_main.py::CommandlineTest::test_intermixed_args
-	# https://gitlab.com/duplicity/duplicity/-/issues/898
-	testing/functional/test_restore.py::RestoreTest::test_restore_to_nonexisting_dir
 )
 
 EPYTEST_IGNORE=(
@@ -58,6 +56,8 @@ EPYTEST_IGNORE=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.4.0-fix-docs-cmd.patch
 	"${FILESDIR}"/${PN}-3.0.5-dont-repeat-standard-paths.patch
+	"${FILESDIR}"/${P}-tests-sort.patch
+	"${WORKDIR}"/${PN}-3.0.6-fix-pexpect-sftp-regression.patch
 )
 
 distutils_enable_tests pytest
