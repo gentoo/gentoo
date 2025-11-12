@@ -10,20 +10,19 @@ inherit java-pkg-2 java-pkg-simple
 DESCRIPTION="Professional cross platform layouts with Swing"
 HOMEPAGE="https://swing-layout.dev.java.net/"
 SRC_URI="mirror://gentoo/${P}-src.zip"
+S="${WORKDIR}/${P}"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
 KEYWORDS="amd64"
+
+BDEPEND="
+	app-arch/unzip"
 
 DEPEND="
 	<virtual/jdk-26:*"
 
 RDEPEND="
 	>=virtual/jre-1.8:*"
-
-BDEPEND="
-	app-arch/unzip"
-
-S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src"
