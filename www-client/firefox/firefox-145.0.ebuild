@@ -473,7 +473,7 @@ pkg_pretend() {
 			CHECKREQS_DISK_BUILD="10600M"
 
 			if ! use clang ; then
-				if tc-is-gcc && ver_test "$(gcc-major-version)" -le 15 && has_version -b "<sys-devel/gcc-15.2.1_p20251108-r1:15"; then
+				if tc-is-gcc && ver_test "$(gcc-major-version)" -eq 15 && has_version -b "<sys-devel/gcc-15.2.1_p20251108-r1:15"; then
 					eerror "<gcc-15.2.1_p20251108-r1:15 and lto detected. Firefox-145.0 can not be compiled"
 					eerror "with this GCC, when also enabling lto."
 					eerror "See bug https://gcc.gnu.org/PR122620"
