@@ -455,14 +455,14 @@ pkg_pretend() {
 			CHECKREQS_DISK_BUILD="14300M"
 
 			if ! use clang ; then
-				if tc-is-gcc && ver_test "$(gcc-fullversion)" -le 15.2.1 ; then
-					eerror "<gcc-15.2.2 and pgo detected. Firefox-145.0 can not be compiled"
+				if tc-is-gcc && ver_test "$(gcc-major-version)" -eq 15 && has_version -b "<sys-devel/gcc-15.2.1_p20251108-r1:15"; then
+					eerror "<gcc-15.2.1_p20251108-r1:15 and pgo detected. Firefox-145.0 can not be compiled"
 					eerror "with this GCC, when also enabling pgo."
-					eerror "See bug https://gcc.gnu.org/bugzilla/show_bug.cgi?id=122620"
+					eerror "See bug https://gcc.gnu.org/PR122620"
 					eerror ""
 					eerror "Your options are:"
-					eerror " 1) upgrade GCC to >=15.2.1_p20251111 - note that even with the 16.0"
-					eerror "    releases, make sure the patch set is equal or newer than _p20251111,"
+					eerror " 1) upgrade GCC to >=15.2.1_p20251108-r1 - note that even with the 16.0"
+					eerror "    releases, make sure the patch set is equal or newer than 16.0.0_p20251109-r1,"
 					eerror "    or use the \"trunk\" version,"
 					eerror " 2) compile Firefox with Clang by enabling the \"clang\" USE flag, or"
 					eerror " 3) disable pgo when compiling with GCC for now."
@@ -473,14 +473,14 @@ pkg_pretend() {
 			CHECKREQS_DISK_BUILD="10600M"
 
 			if ! use clang ; then
-				if tc-is-gcc && ver_test "$(gcc-fullversion)" -le 15.2.1 ; then
-					eerror "<gcc-15.2.2 and lto detected. Firefox-145.0 can not be compiled"
+				if tc-is-gcc && ver_test "$(gcc-major-version)" -le 15 && has_version -b "<sys-devel/gcc-15.2.1_p20251108-r1:15"; then
+					eerror "<gcc-15.2.1_p20251108-r1:15 and lto detected. Firefox-145.0 can not be compiled"
 					eerror "with this GCC, when also enabling lto."
-					eerror "See bug https://gcc.gnu.org/bugzilla/show_bug.cgi?id=122620"
+					eerror "See bug https://gcc.gnu.org/PR122620"
 					eerror ""
 					eerror "Your options are:"
-					eerror " 1) upgrade GCC to >=15.2.1_p20251111 - note that even with the 16.0"
-					eerror "    releases, make sure the patch set is equal or newer than _p20251111,"
+					eerror " 1) upgrade GCC to >=15.2.1_p20251108-r1 - note that even with the 16.0"
+					eerror "    releases, make sure the patch set is equal or newer than 16.0.0_p20251109-r1,"
 					eerror "    or use the \"trunk\" version,"
 					eerror " 2) compile Firefox with Clang by enabling the \"clang\" USE flag, or"
 					eerror " 3) disable lto when compiling with GCC for now."
@@ -491,7 +491,7 @@ pkg_pretend() {
 			CHECKREQS_DISK_BUILD="7400M"
 		fi
 
-		check-reqs_pkg_pretend			
+		check-reqs_pkg_pretend
 	fi
 }
 
@@ -508,14 +508,14 @@ pkg_setup() {
 			filter-lto
 
 			if ! use clang ; then
-				if tc-is-gcc && ver_test "$(gcc-fullversion)" -le 15.2.1 ; then
-					eerror "<gcc-15.2.2 and lto detected. Firefox-145.0 can not be compiled"
+				if tc-is-gcc && ver_test "$(gcc-major-version)" -eq 15 && has_version -b "<sys-devel/gcc-15.2.1_p20251108-r1:15"; then
+					eerror "<gcc-15.2.1_p20251108-r1:15 and pgo detected. Firefox-145.0 can not be compiled"
 					eerror "with this GCC, when also enabling lto."
-					eerror "See bug https://gcc.gnu.org/bugzilla/show_bug.cgi?id=122620"
+					eerror "See bug https://gcc.gnu.org/PR122620"
 					eerror ""
 					eerror "Your options are:"
-					eerror " 1) upgrade GCC to >=15.2.1_p20251111 - note that even with the 16.0"
-					eerror "    releases, make sure the patch set is equal or newer than _p20251111,"
+					eerror " 1) upgrade GCC to >=15.2.1_p20251108-r1 - note that even with the 16.0"
+					eerror "    releases, make sure the patch set is equal or newer than 16.0.0_p20251109-r1,"
 					eerror "    or use the \"trunk\" version,"
 					eerror " 2) compile Firefox with Clang by enabling the \"clang\" USE flag, or"
 					eerror " 3) disable lto when compiling with GCC for now."
@@ -530,14 +530,14 @@ pkg_setup() {
 			fi
 
 			if ! use clang ; then
-				if tc-is-gcc && ver_test "$(gcc-fullversion)" -le 15.2.1 ; then
-					eerror "<gcc-15.2.2 and pgo detected. Firefox-145.0 can not be compiled"
+				if tc-is-gcc && ver_test "$(gcc-major-version)" -eq 15 && has_version -b "<sys-devel/gcc-15.2.1_p20251108-r1:15"; then
+					eerror "<gcc-15.2.1_p20251108-r1:15 and lto detected. Firefox-145.0 can not be compiled"
 					eerror "with this GCC, when also enabling pgo."
-					eerror "See bug https://gcc.gnu.org/bugzilla/show_bug.cgi?id=122620"
+					eerror "See bug https://gcc.gnu.org/PR122620"
 					eerror ""
 					eerror "Your options are:"
-					eerror " 1) upgrade GCC to >=15.2.1_p20251111 - note that even with the 16.0"
-					eerror "    releases, make sure the patch set is equal or newer than _p20251111,"
+					eerror " 1) upgrade GCC to >=15.2.1_p20251108-r1 - note that even with the 16.0"
+					eerror "    releases, make sure the patch set is equal or newer than 16.0.0_p20251109-r1,"
 					eerror "    or use the \"trunk\" version,"
 					eerror " 2) compile Firefox with Clang by enabling the \"clang\" USE flag, or"
 					eerror " 3) disable pgo when compiling with GCC for now."
