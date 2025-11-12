@@ -108,18 +108,18 @@ src_compile() {
 	cp="${cp}:$(java-pkg_getjars --build-only checker-framework-qual,error-prone-annotations)"
 	cp="${cp}:$(java-pkg_getjars escapevelocity,guava,incap,javapoet,jspecify)"
 
-	local sources=$(find \
+	find \
 		common/src/main/java \
 		service/annotations/src/main/java \
 		service/processor/src/main/java \
 		value/src/main/java \
-		-name '*.java') || die "gather sources"
+		-name '*.java' > sources.lst || die "gather sources"
 
 	einfo "compile them all"
 	mkdir -p target/classes || die "mkdir target/classes"	# still needed for openjdk-8
-	ejavac -d target/classes -classpath "${cp}" ${sources[@]}
+	ejavac -d target/classes -classpath "${cp}" @sources.lst
 
-	use doc && ejavadoc -d target/api -classpath "${cp}" -quiet ${sources[@]}
+	use doc && ejavadoc -d target/api -classpath "${cp}" -quiet @sources.lst
 
 	einfo "package auto-value-annotations"
 	# according to value/annotations/pom.xml
