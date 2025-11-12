@@ -42,7 +42,7 @@ multilib_src_configure() {
 		$(use_enable kerberos gssapi)
 		$(use_enable static-libs static)
 		KRB5_CONFIG="${ESYSROOT}"/usr/bin/krb5-config
-		--enable-rpcdb # For getrpcbyname & al. bug #964394
+		$(use_enable elibc_musl rpcdb) # For getrpcbyname & al. bug #964394
 	)
 
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
