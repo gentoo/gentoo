@@ -29,8 +29,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}/${PN}-2.12.0-musl.patch" )
-
 src_prepare() {
 	default
 
