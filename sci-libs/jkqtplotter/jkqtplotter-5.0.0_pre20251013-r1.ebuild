@@ -39,6 +39,14 @@ BDEPEND="
 	)
 "
 
+src_prepare() {
+	# avoid Qt5 automagic, https://bugs.gentoo.org/966047
+	sed -e "/^ *find_package.*QT NAMES/s/Qt5 //" \
+		-i cmake/jkqtplotter_common_qtsettings.cmake || die
+
+	cmake_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
