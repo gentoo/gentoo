@@ -18,7 +18,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	# Don't hardcore -Werror
-	sed -e 's/-Werror//g' -i CMakeLists.txt || die
+	sed -e 's/-Werror//g' -e '/CMAKE_COMPILE_WARNING_AS_ERROR/ s/ON/OFF/' -i CMakeLists.txt || die
 
 	cmake_src_prepare
 
