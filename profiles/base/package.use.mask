@@ -804,10 +804,6 @@ net-libs/ngtcp2 openssl
 # PGO not yet supported for comm-central, bug #693160
 >=mail-client/thunderbird-68 pgo
 
-# Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# <dev-scheme/guile-2 is package.mask'd
-www-client/elinks guile
-
 # Kent Fredric <kentnl@gentoo.org> (2019-08-07)
 # Newer versions of nqp need newer versions of jdk to run on the jvm,
 # but these currently don't exist in gentoo. The USE flags have to be
