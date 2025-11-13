@@ -25,7 +25,7 @@ DEPEND="virtual/udev"
 RDEPEND="
 	${DEPEND}
 	${PYTHON_DEPS}
-	app-crypt/gnupg
+	app-alternatives/gpg
 	$(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]')
 	sys-apps/rng-tools
 	sys-process/at
