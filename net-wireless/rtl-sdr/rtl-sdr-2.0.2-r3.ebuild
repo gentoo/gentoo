@@ -28,6 +28,7 @@ IUSE="+zerocopy"
 DEPEND="virtual/libusb:1"
 RDEPEND="
 	${DEPEND}
+	acct-group/plugdev
 	!net-wireless/rtl-sdr-blog
 "
 
@@ -56,7 +57,7 @@ src_install() {
 pkg_postinst() {
 	udev_reload
 	elog "Only users in the usb group can capture."
-	elog "Just run 'gpasswd -a <USER> usb', then have <USER> re-login."
+	elog "Just run 'gpasswd -a <USER> plugdev', then have <USER> re-login."
 }
 
 pkg_postrm() {
