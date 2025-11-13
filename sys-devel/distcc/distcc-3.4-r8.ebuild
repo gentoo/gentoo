@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit autotools flag-o-matic prefix python-single-r1 systemd
+inherit autotools flag-o-matic prefix python-single-r1 systemd xdg
 
 DESCRIPTION="Distribute compilation of C code across several machines on a network"
 HOMEPAGE="https://github.com/distcc/distcc"
@@ -159,6 +159,9 @@ src_install() {
 }
 
 pkg_preinst() {
+	if use gui; then
+		xdg_pkg_preinst
+	fi
 	# Compatibility symlink for Portage
 	dosym . /usr/lib/distcc/bin
 	if [[ -e ${EROOT}/usr/lib/distcc/bin && ! -L ${EROOT}/usr/lib/distcc/bin ]]; then
@@ -189,6 +192,8 @@ pkg_postinst() {
 	if use gui; then
 		elog "Or:"
 		elog "# DISTCC_DIR=\"${DISTCC_DIR:-${BUILD_PREFIX}/.distcc}\" distccmon-gnome"
+		elog
+		xdg_pkg_postinst
 	fi
 }
 
