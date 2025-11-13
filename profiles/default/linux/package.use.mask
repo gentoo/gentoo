@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Jaco Kroon <jkroon@gentoo.org> (2025-11-11)
+# The depended on packages will need to be keyworded for various arches
+# to which I don't have access.
+dev-db/mariadb aws-km
+
 # Patrick Lauer <patrick@gentoo.org> (2025-09-19)
 # Dependency currently in ::guru
 games-board/lc0 onnx
@@ -64,8 +69,3 @@ net-dns/pdnsd -urandom
 # with FreeBSD and other operating systems that have no better
 # interfaces, but people would probably abuse it with Linux as well.
 media-sound/pulseaudio-daemon oss
-
-# Jaco Kroon <jkroon@gentoo.org> (2025-11-11)
-# The depended on packages will need to be keyworded for various arches
-# to which I don't have access.
-dev-db/mariadb aws-km
