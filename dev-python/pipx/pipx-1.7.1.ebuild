@@ -29,7 +29,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-python/argcomplete-1.9.4[${PYTHON_USEDEP}]
