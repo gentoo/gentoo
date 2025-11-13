@@ -38,6 +38,7 @@ BDEPEND="
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? ( ${PYTHON_DEPS} )
+	dev-util/glib-utils
 "
 
 pkg_setup() {
