@@ -460,6 +460,9 @@ src_configure() {
 	# bug #926076
 	append-flags -fPIC
 
+	# used by vendored libdvdread
+	tc-export PKG_CONFIG
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die
