@@ -4,12 +4,13 @@
 EAPI=8
 
 DISTUTILS_EXT=1
-DISTUTILS_USE_PEP517=meson-python
-# TODO: readd 3.13t & 3.14t (requires same in meson-python)
-PYTHON_COMPAT=( python3_{11..14} pypy3_11 )
+# we aren't using meson-python, as that results in removing .pc file
+# https://bugs.gentoo.org/966038
+DISTUTILS_USE_PEP517=no
+PYTHON_COMPAT=( python3_{11..12} python3_{13..14}{,t} pypy3_11 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit meson distutils-r1
 
 DESCRIPTION="Python bindings for the cairo library"
 HOMEPAGE="
@@ -43,16 +44,25 @@ distutils_enable_sphinx docs \
 EPYTEST_PLUGINS=( hypothesis )
 distutils_enable_tests pytest
 
-src_configure() {
-	DISTUTILS_ARGS=(
+python_compile() {
+	local emesonargs=(
+		# TODO: move that to the eclass?
+		-Dpython.bytecompile=2
 		-Dtests="$(usex test true false)"
 		-Dno-x11="$(usex X false true)"
 	)
+
+	meson_src_configure
+	meson_src_compile
 }
 
 python_test() {
-	rm -rf cairo || die
+	cd "${BUILD_DIR}" || die
 	epytest
+}
+
+python_install() {
+	meson_src_install
 }
 
 python_install_all() {
