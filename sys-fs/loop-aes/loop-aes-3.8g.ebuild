@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -28,8 +28,8 @@ DEPEND="app-crypt/loop-aes-losetup"
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-jariruusu )"
 
 PATCHES=(
-	"${FILESDIR}"/loop-aes-3.7w-build-initrd_explicit-losetup.patch
 	"${FILESDIR}"/loop-aes-3.8c-build-initrd_nvme.patch
+	"${FILESDIR}"/loop-aes-3.8e-build-initrd_initfstype.patch
 )
 
 pkg_setup() {
