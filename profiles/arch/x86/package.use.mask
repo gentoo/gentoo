@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-11-13)
+# media-libs/libvmaf is keyworded here
+media-libs/x265 -vmaf
+
 # Michał Górny <mgorny@gentoo.org> (2025-10-03)
 # Now keyworded on x86 too.
 sci-libs/flexiblas -system-blas
@@ -230,11 +234,6 @@ app-vim/jedi test
 # Ben Kohler <bkohler@gentoo.org> (2022-06-07)
 # Disable 64bit builds on x86
 sys-apps/memtest86+ bios64 uefi64 iso64
-
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
-# Untested useflag on other arches, needs keywording
-media-video/ffmpeg vmaf
-media-video/ffmpeg-compat vmaf
 
 # Sam James <sam@gentoo.org> (2022-03-10)
 # dev-util/hip and its rocm dependencies not keyworded here

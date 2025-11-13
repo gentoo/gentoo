@@ -275,11 +275,6 @@ app-metrics/collectd collectd_plugins_varnish
 # app-text/nuspell is not keyworded
 app-text/enchant nuspell
 
-# Adel Kara Slimane <adel.ks@zegrapher.com> (2022-03-14)
-# Untested useflag on other arches, needs keywording
-media-video/ffmpeg vmaf
-media-video/ffmpeg-compat vmaf
-
 # Sam James <sam@gentoo.org> (2022-02-26)
 # Supports 64-bit NEON
 >=media-libs/libjpeg-turbo-2.1.3 -cpu_flags_arm_neon
