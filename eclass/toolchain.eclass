@@ -16,6 +16,7 @@ _TOOLCHAIN_ECLASS=1
 
 RUST_OPTIONAL="1"
 
+# See tc_version_is_at_least below wrt old EAPIs vs old GCCs.
 case ${EAPI} in
 	8) ;;
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
@@ -263,6 +264,10 @@ fi
 # Require minimum gcc version to simplify assumptions.
 # Normally we would require gcc-6+ (based on sys-devel/gcc)
 # but we still have sys-devel/gcc-apple-4.2.1_p5666.
+#
+# Older GCC support lives in toolchain-legacy.eclass in the toolchain
+# repository at https://gitweb.gentoo.org/proj/toolchain.git/. Patches
+# welcome!
 tc_version_is_at_least 8 || die "${ECLASS}: ${GCC_RELEASE_VER} is too old."
 
 PREFIX=${TOOLCHAIN_PREFIX:-${EPREFIX}/usr}
