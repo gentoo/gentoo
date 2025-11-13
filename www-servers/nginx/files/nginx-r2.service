@@ -7,6 +7,7 @@ Type=forking
 PIDFile=/run/nginx/nginx.pid
 RuntimeDirectory=nginx
 ExecStart=nginx
+ExecReload=kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
