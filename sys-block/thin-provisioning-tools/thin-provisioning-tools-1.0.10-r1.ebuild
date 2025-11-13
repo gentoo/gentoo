@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# bug #964273
+RUST_MAX_VER=1.88.0
+
 if [[ ${PV} != *9999 ]]; then
 CRATES="
 	adler@1.0.2

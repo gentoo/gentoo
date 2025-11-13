@@ -1,7 +1,10 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
+# bug #964273
+RUST_MAX_VER=1.88.0
 
 CRATES="
 	adler@1.0.2

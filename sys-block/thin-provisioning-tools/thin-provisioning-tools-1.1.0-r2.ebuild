@@ -3,6 +3,9 @@
 
 EAPI=8
 
+# bug #964273
+RUST_MAX_VER=1.88.0
+
 CRATES="
 	adler@1.0.2
 	aho-corasick@1.1.3
