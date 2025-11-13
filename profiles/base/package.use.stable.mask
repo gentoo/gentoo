@@ -72,11 +72,6 @@ app-text/nuspell doc
 # due to network access issues #829430
 net-libs/grpc test
 
-# Sergey Popov <pinkbyte@gentoo.org> (2021-10-14)
-# net-libs/grpc is not yet stabilized,
-# so mask optional use flag on net-misc/frr
-net-misc/frr grpc
-
 # Joonas Niilola <juippis@gentoo.org> (2021-08-13)
 # dev-libs/efl is only stabilized on two arches.
 app-crypt/pinentry efl
