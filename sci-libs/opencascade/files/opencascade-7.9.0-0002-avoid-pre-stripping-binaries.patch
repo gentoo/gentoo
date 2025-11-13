@@ -1,0 +1,32 @@
+From 6365471a493797ec8696407b04e3d2ac31c082b7 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl-gentoo@posteo.net>
+Date: Sat, 8 Oct 2022 13:16:47 +0200
+Subject: [PATCH] avoid pre-stripping binaries
+
+Signed-off-by: Bernd Waibel <waebbl-gentoo@posteo.net>
+
+diff --git a/adm/cmake/occt_defs_flags.cmake b/adm/cmake/occt_defs_flags.cmake
+index 5bd3313d3..e8acdba16 100644
+--- a/adm/cmake/occt_defs_flags.cmake
++++ b/adm/cmake/occt_defs_flags.cmake
+@@ -194,7 +194,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "[Cc][Ll][Aa][Nn][Gg]")
+     # CLang can be used with both libstdc++ and libc++, however on OS X libstdc++ is outdated.
+     set (CMAKE_CXX_FLAGS "-stdlib=libc++ ${CMAKE_CXX_FLAGS}")
+   endif()
+-  if (NOT WIN32)
++  if (NOT WIN32 AND FALSE)
+     # Optimize size of binaries
+     set (CMAKE_SHARED_LINKER_FLAGS_RELEASE "-Wl,-s ${CMAKE_SHARED_LINKER_FLAGS_RELEASE}")
+   endif()
+@@ -208,7 +208,7 @@ if(MINGW)
+   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wattributes")
+   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wattributes")
+ endif()
+-if (CMAKE_COMPILER_IS_GNUCXX AND NOT APPLE)
++if (CMAKE_COMPILER_IS_GNUCXX AND NOT APPLE AND FALSE)
+   # Optimize size of binaries
+   set (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
+   set (CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+-- 
+2.51.2
+
