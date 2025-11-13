@@ -3,11 +3,13 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{11..14} )
 USE_RUBY="ruby32 ruby33"
 
 # No, I am not calling ruby-ng
-inherit python-r1 toolchain-funcs multilib-minimal
+inherit distutils-r1 toolchain-funcs multilib-minimal
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -66,20 +68,6 @@ multilib_src_compile() {
 		FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
 		all
 
-	if multilib_is_native_abi && use python; then
-		building() {
-			emake \
-				LDFLAGS="-fPIC ${LDFLAGS} -lpthread" \
-				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				SHLIBDIR="/$(get_libdir)" \
-				USE_PCRE2=y \
-				USE_LFS=y \
-				FTS_LDLIBS="$(usex elibc_musl '-lfts' '')" \
-				pywrap
-		}
-		python_foreach_impl building
-	fi
-
 	if multilib_is_native_abi && use ruby; then
 		building() {
 			einfo "Calling rubywrap for ${1}"
@@ -103,6 +91,15 @@ multilib_src_compile() {
 	fi
 }
 
+src_compile() {
+	multilib-minimal_src_compile
+
+	if use python; then
+		cd src || die
+		distutils-r1_src_compile
+	fi
+}
+
 multilib_src_install() {
 	emake DESTDIR="${D}" \
 		LIBDIR="\$(PREFIX)/$(get_libdir)" \
@@ -110,19 +107,6 @@ multilib_src_install() {
 		USE_LFS=y \
 		USE_PCRE2=y \
 		install
-
-	if multilib_is_native_abi && use python; then
-		installation() {
-			emake DESTDIR="${D}" \
-				LIBDIR="\$(PREFIX)/$(get_libdir)" \
-				SHLIBDIR="/$(get_libdir)" \
-				USE_LFS=y \
-				USE_PCRE2=y \
-				install-pywrap
-			python_optimize # bug 531638
-		}
-		python_foreach_impl installation
-	fi
 
 	if multilib_is_native_abi && use ruby; then
 		installation() {
@@ -145,6 +129,27 @@ multilib_src_install() {
 	fi
 
 	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a || die
+}
+
+multilib_src_install_all() {
+	if use python; then
+		cd src || die
+		mv selinux.py __init__.py || die
+		distutils-r1_src_install
+	fi
+}
+
+python_install() {
+	# this installs the C extensions only
+	distutils-r1_python_install
+
+	# now explicitly install the python package
+	python_moduleinto selinux
+	python_domodule __init__.py
+
+	# install the C extension symlink
+	local pycext="$(python -c 'import importlib.machinery;print(importlib.machinery.EXTENSION_SUFFIXES[0])')"
+	dosym -r "$(python_get_sitedir)/selinux/_selinux${pycext}" "$(python_get_sitedir)/_selinux${pycext}"
 }
 
 pkg_postinst() {
