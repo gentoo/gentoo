@@ -65,7 +65,10 @@ else
 	MY_PV="${MY_PV}-${CODENAME}"
 	MY_P="${PN}-${MY_PV}"
 	SRC_URI+=" https://github.com/xbmc/xbmc/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	# Dont keyword
+	if ! [[ ${PV} =~ _alpha ]] && ! [[ ${PV} =~ _beta ]] && ! [[ ${PV} =~ _rc ]]; then
+		KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
+	fi
 	S=${WORKDIR}/xbmc-${MY_PV}
 fi
 
