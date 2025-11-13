@@ -438,6 +438,9 @@ src_configure() {
 		mycmakeargs+=( -DUSE_LTO=OFF )
 	fi
 
+	# bug #926076
+	append-flags -fPIC
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die

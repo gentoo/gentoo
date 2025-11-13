@@ -455,6 +455,9 @@ src_configure() {
 	# https://github.com/xbmc/xbmc/commit/cb72a22d54a91845b1092c295f84eeb48328921e
 	filter-lto
 
+	# bug #926076
+	append-flags -fPIC
+
 	if tc-is-cross-compiler; then
 		for t in "${NATIVE_TOOLS[@]}" ; do
 			pushd "${S}/tools/depends/native/$t/src" >/dev/null || die
