@@ -45,12 +45,10 @@ SRC_URI="
 	https://mirrors.kodi.tv/build-deps/sources/apache-groovy-binary-${GROOVY_VERSION}.zip
 	https://mirrors.kodi.tv/build-deps/sources/commons-lang3-${APACHE_COMMON_LANG_VERSION}-bin.tar.gz
 	https://mirrors.kodi.tv/build-deps/sources/commons-text-${APACHE_COMMON_TEXT_VERSION}-bin.tar.gz
+	https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	css? (
 		https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz
 			-> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
-	)
-	!system-ffmpeg? (
-		https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz
 	)
 "
 if [[ ${PV} == *9999 ]] ; then
@@ -78,7 +76,7 @@ LICENSE+=" Apache-2.0"
 # libdvdnav, libdvdread and libdvdcss.
 LICENSE+=" GPL-2+"
 # ffmpeg built as USE="gpl"
-LICENSE+=" !system-ffmpeg? ( GPL-2 )"
+LICENSE+=" GPL-2"
 
 SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
@@ -109,6 +107,8 @@ COMMON_DEPEND="
 	)
 "
 COMMON_TARGET_DEPEND="${PYTHON_DEPS}
+	app-arch/bzip2
+	app-arch/xz-utils
 	>=net-misc/curl-7.68.0[http2]
 	>=virtual/zlib-1.2.11:=
 	dev-db/sqlite:3
@@ -124,12 +124,14 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml2:=
 	media-fonts/roboto
 	media-gfx/exiv2:=
+	media-libs/dav1d:=
 	media-libs/libglvnd[X?]
 	>=media-libs/freetype-2.10.1
 	media-libs/harfbuzz:=
 	>=media-libs/libass-0.15.0:=
 	media-libs/mesa[opengl,wayland?,X?]
 	media-libs/taglib:=
+	net-libs/gnutls:=
 	virtual/libiconv
 	virtual/ttf-fonts
 	x11-libs/libdrm
@@ -193,15 +195,6 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 	)
 	samba? (
 		>=net-fs/samba-3.4.6[smbclient(+)]
-	)
-	system-ffmpeg? (
-		=media-video/ffmpeg-8*:=[encode(+),soc(-)?,postproc(-),vaapi?,vdpau?,X?]
-	)
-	!system-ffmpeg? (
-		app-arch/bzip2
-		app-arch/xz-utils
-		media-libs/dav1d:=
-		net-libs/gnutls:=
 	)
 	udf? (
 		>=dev-libs/libudfread-1.0.0
@@ -390,7 +383,8 @@ src_configure() {
 		-DENABLE_VDPAU=$(usex vdpau)
 		-DENABLE_XSLT=$(usex xslt)
 
-		-DWITH_FFMPEG=$(usex system-ffmpeg)
+		# ffmpeg hasn't decided on if postproc is removed or not and kodi has chosen to patch it back
+		-DWITH_FFMPEG=OFF
 
 		#To bundle or not
 		-DENABLE_INTERNAL_ASS=OFF
@@ -398,7 +392,7 @@ src_configure() {
 		-DENABLE_INTERNAL_CROSSGUID=OFF
 		-DENABLE_INTERNAL_DAV1D=OFF
 		-DENABLE_INTERNAL_EXIV2=OFF
-		-DENABLE_INTERNAL_FFMPEG="$(usex !system-ffmpeg)"
+		-DENABLE_INTERNAL_FFMPEG=ON
 		-DENABLE_INTERNAL_FLATBUFFERS=OFF
 		-DENABLE_INTERNAL_FMT=OFF
 		-DENABLE_INTERNAL_FSTRCMP=OFF
@@ -414,15 +408,13 @@ src_configure() {
 		-Dgroovy_SOURCE_DIR="${WORKDIR}/groovy-${GROOVY_VERSION}"
 		-Dapache-commons-lang_SOURCE_DIR="${WORKDIR}/commons-lang3-${APACHE_COMMON_LANG_VERSION}"
 		-Dapache-commons-text_SOURCE_DIR="${WORKDIR}/commons-text-${APACHE_COMMON_TEXT_VERSION}"
+		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
 	)
 
 	# Separated to avoid "Manually-specified variables were not used by the project:"
 	use cec && mycmakeargs+=( -DENABLE_INTERNAL_CEC=OFF )
 	use css && mycmakeargs+=( -Dlibdvdcss_URL="${DISTDIR}/libdvdcss-${LIBDVDCSS_VERSION}.tar.gz" )
 	use nfs && mycmakeargs+=( -DENABLE_INTERNAL_NFS=OFF )
-	use !system-ffmpeg && mycmakeargs+=(
-		-DFFMPEG_URL="${DISTDIR}/ffmpeg-${FFMPEG_VERSION}.tar.xz"
-	)
 	use !udev && mycmakeargs+=( -DENABLE_LIBUSB=$(usex libusb) )
 	use X && use !gles && mycmakeargs+=( -DENABLE_GLX=ON )
 
