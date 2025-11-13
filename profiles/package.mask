@@ -36,6 +36,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Osakafinance <deceiver_unbundle593@sl.projectsegfau.lt> (2025-11-13)
+# This package is not properly maintained, and its manuals are extremely outdated. They are not just useless, but actually harmful.
+# For example, the tar(1) manual from linuxjm.osdn.jp hasn't been updated since 1993, and the emerge(1) manual from portage-man-pages-ja hasn't been updated since 2003.
+# These manuals give beginners incorrect knowledge and cause confusion.
+# Bugs #943689.
+app-i18n/man-pages-ja
+
 # Sam James <sam@gentoo.org> (2025-11-05)
 # re 8.3.0: Has regressions breaking media-video/subliminal and 8.3.1
 # which fixes some (but not all of those regressions) is semi-released only.
