@@ -138,13 +138,6 @@ src_install() {
 
 	dobin "${T}/distcc-config"
 
-	if use gui; then
-		einfo "Renaming /usr/bin/distccmon-gnome to /usr/bin/distccmon-gui"
-		einfo "This is to have a little sensability in naming schemes between distccmon programs"
-		mv "${ED}/usr/bin/distccmon-gnome" "${ED}/usr/bin/distccmon-gui" || die
-		dosym distccmon-gui /usr/bin/distccmon-gnome
-	fi
-
 	if use xinetd; then
 		insinto /etc/xinetd.d
 		newins "doc/example/xinetd" distcc
