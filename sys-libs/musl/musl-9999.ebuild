@@ -50,10 +50,6 @@ else
 	PDEPEND="!crypt? ( sys-libs/libxcrypt[system] )"
 fi
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-getifaddrs-qemu-workaround.patch
-)
-
 just_headers() {
 	use headers-only && target_is_not_host
 }
