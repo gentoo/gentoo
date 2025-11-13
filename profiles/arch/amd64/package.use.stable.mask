@@ -104,10 +104,6 @@ sys-auth/pambase -sssd
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
 
-# Thomas Beierlein <tomjbe@gentoo.org> (2018-04-20)
-# Needs asciidoctor which pulls a lot unstable ruby deps
-media-radio/wsjtx doc
-
 # Mikle Kolyada <zlogene@gentoo.org> (2018-03-18)
 # Pulls too much unstable ruby deps (some are not even keyworded)
 net-misc/chrony html
