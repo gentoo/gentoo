@@ -162,10 +162,6 @@ app-backup/backup-manager s3
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go uwsgi_plugins_alarm_xmpp
 
-# Tim Harder <radhermit@gentoo.org> (2017-09-11)
-# Requires guile-2 which is still unstable.
->=net-irc/weechat-1.7 guile
-
 # Michael Palimaka <kensington@gentoo.org> (2017-08-11)
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
