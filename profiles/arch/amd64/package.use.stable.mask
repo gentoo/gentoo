@@ -57,10 +57,6 @@ media-libs/opencv cudnn
 # Pulls in pandoc with all of its glory (haskell). #921501
 www-apps/hugo test
 
-# Jon Janzen <jon@jonjanzen.com> (2023-09-11)
-# librttopo has not been stabalized on this arch yet
-dev-db/spatialite rttopo
-
 # Michał Górny <mgorny@gentoo.org> (2023-04-22)
 # pandoc is stable here.
 dev-python/nbclassic -doc
