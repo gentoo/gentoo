@@ -51,10 +51,12 @@
 # The MDEV-38068 issue has been discovered with MariaDB 11.8.4. The issue
 # caused a partial data deletion when using the DELETE statement on MyISAM or
 # Aria tables under specific conditions. InnoDB tables are not affected by
-# this. A prep work for a corrective MariaDB 11.8.5 release has begun.
-# Expected release date is Fri, 14 Nov 2025. See:
+# this. See:
 # https://jira.mariadb.org/browse/MDEV-38068
 # https://lists.mariadb.org/hyperkitty/list/packagers@lists.mariadb.org/thread/IT3YIRPIS4ZVDZ5LBIDV7MPUDIL2VGIA/
+#
+# Affected package was removed from the tree, but this message shall be kept
+# untill 2025-12-15.
 ~dev-db/mariadb-11.8.4
 
 # Sam James <sam@gentoo.org> (2025-11-13)
