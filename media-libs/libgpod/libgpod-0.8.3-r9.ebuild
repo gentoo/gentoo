@@ -15,13 +15,13 @@ KEYWORDS="amd64 ppc ~riscv x86"
 IUSE="+gtk ios +udev"
 
 RDEPEND="
-	>=app-pda/libplist-2.3:=
+	>=app-mobilephone/libplist-2.3:=
 	>=dev-db/sqlite-3:3
 	>=dev-libs/glib-2.16:2
 	dev-libs/libxml2:2=
 	sys-apps/sg3_utils:0=
 	gtk? ( x11-libs/gdk-pixbuf:2 )
-	ios? ( app-pda/libimobiledevice:= )
+	ios? ( app-mobilephone/libimobiledevice:= )
 	udev? ( virtual/udev )
 "
 DEPEND="${RDEPEND}"

@@ -1,11 +1,11 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit autotools systemd udev
 
-MY_COMMIT=360619c5f721f93f0b9d8af1a2df0b926fbcf281
+MY_COMMIT=0b1b233b57d581515978a09e5a4394bfa4ee4962
 
 DESCRIPTION="USB multiplex daemon for use with Apple iPhone/iPod Touch devices"
 HOMEPAGE="https://libimobiledevice.org/"
@@ -19,14 +19,14 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="selinux systemd"
 
 DEPEND="
-	acct-user/usbmux
-	>=app-pda/libimobiledevice-1.3.0:=
-	app-pda/libimobiledevice-glue:=
-	>=app-pda/libplist-2.3:=
+	>=app-mobilephone/libimobiledevice-1.3.0:=
+	app-mobilephone/libimobiledevice-glue:=
+	>=app-mobilephone/libplist-2.6:=
 	virtual/libusb:1=
 "
 RDEPEND="
 	${DEPEND}
+	acct-user/usbmux
 	virtual/udev
 	selinux? ( sec-policy/selinux-usbmuxd )
 	systemd? ( sys-apps/systemd )
