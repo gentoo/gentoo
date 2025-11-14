@@ -50,7 +50,7 @@ LICENSE="BSD-2 CDDL MIT modules? ( debug? ( GPL-2+ ) )"
 # just libzfs soname major for now.
 # possible candidates: libuutil, libzpool, libnvpair. Those do not provide stable abi, but are considered.
 # see libsoversion_check() below as well
-SLOT="0/6"
+SLOT="0/7"
 IUSE="custom-cflags debug dist-kernel minimal nls pam python +rootfs selinux test-suite unwind"
 
 DEPEND="
