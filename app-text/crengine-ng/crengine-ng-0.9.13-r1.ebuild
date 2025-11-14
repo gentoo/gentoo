@@ -38,6 +38,8 @@ BDEPEND=">=dev-build/cmake-3.14
 	virtual/pkgconfig
 	${CDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-unittests.patch )
+
 src_prepare() {
 	cmake_src_prepare
 	if use test; then
