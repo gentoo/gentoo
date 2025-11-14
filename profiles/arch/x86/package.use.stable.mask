@@ -75,10 +75,6 @@ virtual/notification-daemon kde
 # sys-block/nbdkit is not yet marked stable here
 app-emulation/libvirt nbd
 
-# Nowa Ammerlaan <nowa@gentoo.org> (2024-03-21)
-# Experimental, virt-firmware is keyworded only unstable
-sys-kernel/installkernel efistub
-
 # Arthur Zamarin <arthurzam@gentoo.org> (2023-06-03)
 # Destabilizing x86 keywords on sci-*/* packages
 app-metrics/collectd collectd_plugins_gps
