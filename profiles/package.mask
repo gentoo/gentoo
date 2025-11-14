@@ -36,6 +36,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-11-14)
+# A regression[1][2] is causing many users to be stuck at 1920x1080@60
+# due the drivers seemingly misdetecting capacity of the connection to
+# the monitor when using DisplayPort or HDMI with certain setups.
+#
+# Not everyone is affected, so feel free to unmask if not.
+#
+# [1] https://forums.developer.nvidia.com/t/580-release-feedback-discussion/341205/795
+# [2] https://github.com/NVIDIA/open-gpu-kernel-modules/issues/960
+~x11-drivers/nvidia-drivers-580.105.08
+
 # Petr Vaněk <arkamar@gentoo.org> (2025-11-13)
 # The MDEV-38068 issue has been discovered with MariaDB 11.8.4. The issue
 # caused a partial data deletion when using the DELETE statement on MyISAM or
