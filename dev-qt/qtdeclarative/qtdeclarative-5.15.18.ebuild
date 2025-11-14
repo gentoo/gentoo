@@ -5,10 +5,10 @@ EAPI=8
 
 if [[ ${PV} != *9999* ]]; then
 	QT5_KDEPATCHSET_REV=1
-	KEYWORDS="amd64 ~arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv x86"
+	KEYWORDS="amd64 arm arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv x86"
 fi
 
-PYTHON_COMPAT=( python3_{8..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 inherit flag-o-matic python-any-r1 qt5-build
 
 DESCRIPTION="The QML and Quick modules for the Qt5 framework"
