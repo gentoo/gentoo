@@ -69,6 +69,9 @@ PATCHES=(
 
 	# Fix Bluetooth LE audio (from Fedora)
 	"${FILESDIR}"/${P}-A2DP-config.patch
+
+	# Merged upstream
+	"${FILESDIR}"/bluez-5.84-revert-distcheck-fix.patch
 )
 
 pkg_setup() {
@@ -102,9 +105,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# https://github.com/bluez/bluez/issues/806
-	eapply "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-session-r4.patch
 
 	eautoreconf
 
