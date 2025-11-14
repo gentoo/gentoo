@@ -37,7 +37,6 @@ RDEPEND="
 	>=app-arch/xz-utils-4.9
 	>=app-containers/containerd-2.1.4[apparmor?,btrfs?,seccomp?]
 	>=app-containers/runc-1.2.6[apparmor?,seccomp?]
-	!app-containers/docker-proxy
 	!<app-containers/docker-cli-${PV}
 	container-init? ( >=sys-process/tini-0.19.0[static] )
 	cuda? ( app-containers/nvidia-container-toolkit )
@@ -70,6 +69,13 @@ pkg_setup() {
 		~POSIX_MQUEUE
 	"
 	WARNING_POSIX_MQUEUE="CONFIG_POSIX_MQUEUE: is required for bind-mounting /dev/mqueue into containers"
+
+	if kernel_is ge 6 17; then
+		CONFIG_CHECK+="
+			~IP_NF_IPTABLES_LEGACY
+			~NETFILTER_XTABLES_LEGACY
+		"
+	fi
 
 	if kernel_is lt 4 8; then
 		CONFIG_CHECK+="
