@@ -12,7 +12,7 @@ S="${WORKDIR}"
 LICENSE="MIT"
 SLOT="lts"
 
-KEYWORDS="~amd64 arm64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 arm64 ~x86 ~amd64-linux"
 
 DEPEND="acct-group/jenkins
 	acct-user/jenkins"
