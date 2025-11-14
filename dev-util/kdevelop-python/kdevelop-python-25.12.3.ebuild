@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="test" # bug 965829
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-qt/qt5compat-${QTMIN}:6
