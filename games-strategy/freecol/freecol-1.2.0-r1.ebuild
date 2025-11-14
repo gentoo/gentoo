@@ -21,11 +21,11 @@ KEYWORDS="~amd64"
 CP_DEPEND="
 	dev-java/commons-cli:0
 	dev-java/cortado:0
-	dev-java/findbugs-annotations:0
 	dev-java/miglayout:5
 "
 DEPEND="
-	>=virtual/jdk-11:*
+	dev-java/findbugs-annotations:0
+	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	${CP_DEPEND}
 "
 # error: variables in try-with-resources are not supported in -source 8
@@ -37,6 +37,7 @@ BDEPEND="app-arch/unzip"
 
 DOCS=( {CHANGELOG,README,SECURITY}.md )
 
+JAVA_CLASSPATH_EXTRA="findbugs-annotations"
 JAVA_JAR_FILENAME="FreeCol.jar"
 JAVA_RESOURCE_DIRS="resources"
 JAVA_SRC_DIR="src"
