@@ -48,7 +48,7 @@ SRC_URI="
 S="${WORKDIR}/${PN}-${PN}-stable${PV}"
 LICENSE="BSD-2-with-patent MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~loong ~riscv"
+KEYWORDS="-* amd64 ~loong ~riscv"
 
 BDEPEND="
 	${PYTHON_DEPS}
