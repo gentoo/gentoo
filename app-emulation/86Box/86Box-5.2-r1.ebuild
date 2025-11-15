@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake desktop flag-o-matic
+inherit cmake desktop flag-o-matic xdg-utils
 
 DESCRIPTION="Emulator of x86-based machines based on PCem"
 HOMEPAGE="https://github.com/86Box/86Box"
@@ -86,6 +86,14 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
+
 	elog "In order to use 86Box, you will need some roms for various emulated systems."
 	elog "See https://github.com/86Box/roms for more information."
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
