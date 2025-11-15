@@ -115,7 +115,7 @@ dev-python/nbconvert test
 
 # Sam James <sam@gentoo.org> (2023-09-06)
 # sys-block/thin-provisioning-tools now needs Rust.
->=sys-fs/lvm2-2.03.22-r2 thin
+sys-fs/lvm2 thin
 
 # Hans de Graaff <graaff@gentoo.org> (2023-09-03)
 # selenium-webdriver is needed for these tests but that requires
