@@ -8,4 +8,7 @@
   <upstream>
     <remote-id type="github">mifi/lossless-cut</remote-id>
   </upstream>
+  <use>
+    <flag name="system-ffmpeg">Use system ffmpeg instead of the bundled one</flag>
+  </use>
 </pkgmetadata>

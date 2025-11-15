@@ -16,14 +16,15 @@ SRC_URI="
 	arm? ( https://github.com/mifi/LosslessCut/releases/download/v${PV}/LosslessCut-linux-armv7l.tar.bz2 )
 "
 
-LICENSE="GPL-2.0"
+S="${WORKDIR}"
+
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64"
-RESTRICT="splitdebug"
 IUSE="+system-ffmpeg"
+RESTRICT="splitdebug"
 
-DEPEND=""
-RDEPEND="${DEPEND}
+RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	dev-libs/expat
 	dev-libs/glib:2
@@ -61,8 +62,6 @@ QA_PREBUILT="
 	opt/LosslessCut/resources/*.so*
 	opt/LosslessCut/losslesscut
 "
-
-S="${WORKDIR}"
 
 src_install() {
 	insinto /opt/LosslessCut
