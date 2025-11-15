@@ -113,11 +113,9 @@ src_prepare() {
 	# Do not install tests
 	sed -e "s/COMPONENT tests/COMPONENT tests EXCLUDE_FROM_ALL/" -i CMakeLists.txt || die
 
-	# usage: DEPENDS PACKAGE A PACKAGE B, not DEPENDS PACKAGE A DEPENDS PACKAGE B
-	# https://rocm.docs.amd.com/projects/ROCmCMakeBuildTools/en/docs-7.1.0/reference/ROCMInstallTargets.html#command:rocm_export_targets
-	# Bug: https://bugs.gentoo.org/965873
-	# Upstream bug: https://github.com/ROCm/rocm-libraries/issues/2556
-	sed -e "s/DEPENDS PACKAGE \${hipblas_target}/PACKAGE \${hipblas_target}/" -i CMakeLists.txt || die
+	pushd "${WORKDIR}/rocm-libraries-rocm-${PV}/shared/origami" || die
+	eapply "${FILESDIR}"/origami-7.1.0-fix-project.patch
+	popd || die
 
 	cmake_src_prepare
 }
