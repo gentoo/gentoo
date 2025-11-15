@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sam James <sam@gentoo.org> (2025-11-15)
+# sys-block/thin-provisioning-tools not keyworded here
+sys-fs/lvm2 thin
+
+# Sam James <sam@gentoo.org> (2025-11-15)
 # net-misc/pps-tools not keyworded here, nor is gnuplot
 net-misc/ntpsec oncore pps ntpviz
 
