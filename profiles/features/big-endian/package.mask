@@ -134,14 +134,10 @@ dev-libs/weston
 # Hard depends on gui-libs/gtk[X,wayland] since atleast version 47.4
 gnome-base/nautilus
 # gnome-base/nautilus reverse-dependencies
-app-arch/file-roller
-app-cdr/brasero
 dev-python/nautilus-python
 gnome-base/gnome-core-apps
 gnome-base/gnome-light
-gnome-extra/gnome-shell-extension-gsconnect
 gnome-extra/sushi
-x11-terms/gnome-terminal
 # packages affected by nautilus reverse-dependencies
 gnome-base/gnome
 media-gfx/gthumb

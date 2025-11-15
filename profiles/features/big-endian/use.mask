@@ -1,6 +1,11 @@
 # Copyright 2023-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lukas Schmelting <lschmelting@posteo.com> (2025-11-15)
+# gnome-base/nautilus is package.masked on big-endian platforms since it depends
+# on gui-libs/gtk, while "gui-libs/gtk wayland" is in big-endian package.use.mask
+nautilus
+
 # Paul Zander <negril.nx+gentoo@gmail.com> (2025-05-02)
 # media-gfx/alembic is masked (#884295)
 alembic
