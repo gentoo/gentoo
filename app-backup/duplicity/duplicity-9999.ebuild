@@ -27,8 +27,8 @@ SLOT="0"
 IUSE="s3 test"
 
 COMMON_DEPEND="
-	net-libs/librsync
 	app-crypt/gnupg
+	net-libs/librsync:=
 	dev-python/fasteners[${PYTHON_USEDEP}]
 "
 DEPEND="
