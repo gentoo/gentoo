@@ -78,7 +78,7 @@ DEPEND="
 		media-libs/libsdl2
 		media-libs/libwmf
 		net-libs/libpcap
-		sci-libs/hdf5[fortran]
+		sci-libs/hdf5[cxx,fortran]
 		sci-libs/netcdf
 		sys-cluster/openmpi[fortran]
 		sys-devel/bison
