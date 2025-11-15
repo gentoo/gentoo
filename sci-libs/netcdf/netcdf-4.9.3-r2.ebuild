@@ -18,6 +18,9 @@ IUSE="blosc bzip2 +dap doc examples hdf +hdf5 mpi szip test zstd"
 RESTRICT="!test? ( test )"
 
 # NOTE OPTION(ENABLE_HDF4 "Build netCDF-4 with HDF4 read capability(HDF4, HDF5 and Zlib required)." OFF)
+#
+# extra deps for hdf5 for https://github.com/Unidata/netcdf-c/issues/3198,
+# automagic in 4.9.3 :(
 RDEPEND="
 	dev-libs/libxml2:=
 	virtual/zlib:=
@@ -29,7 +32,10 @@ RDEPEND="
 		sci-libs/hdf:=
 		sci-libs/hdf5:=
 	)
-	hdf5? ( sci-libs/hdf5:=[hl(+),mpi=,szip=,zlib] )
+	hdf5? (
+		sci-libs/hdf5:=[hl(+),mpi=,szip=,zlib]
+		virtual/szip:=
+	)
 	zstd? ( app-arch/zstd:= )
 "
 
