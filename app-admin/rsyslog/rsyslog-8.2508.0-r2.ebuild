@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit autotools flag-o-matic linux-info python-any-r1 systemd
 
@@ -13,18 +13,13 @@ HOMEPAGE="https://www.rsyslog.com/
 
 if [[ "${PV}" == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/rsyslog/${PN}"
-	DOC_REPO_URI="https://github.com/rsyslog/${PN}-doc"
 
 	inherit git-r3
 else
-	SRC_URI="
-		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
-		doc? (
-			https://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz
-		)
-	"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/v${PV}.tar.gz
+		-> ${P}.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="amd64 arm arm64 ~ppc64 ~riscv ~x86"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
@@ -44,13 +39,22 @@ REQUIRED_USE="
 "
 
 BDEPEND="
-	>=dev-build/autoconf-archive-2015.02.24
+	app-alternatives/lex
+	app-alternatives/yacc
+	dev-build/autoconf-archive
 	sys-apps/lsb-release
 	virtual/pkgconfig
 	test? (
+		${PYTHON_DEPS}
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )
 		!jemalloc? ( sys-libs/libfaketime )
+	)
+	doc? (
 		${PYTHON_DEPS}
+		dev-python/accessible-pygments
+		dev-python/furo
+		dev-python/sphinx
+		dev-python/sphinxcontrib-mermaid
 	)
 "
 RDEPEND="
@@ -73,7 +77,7 @@ RDEPEND="
 	kerberos? ( virtual/krb5 )
 	kubernetes? ( >=net-misc/curl-7.35.0 )
 	mdblookup? ( dev-libs/libmaxminddb:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:= )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:0= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	normalize? (
 		>=dev-libs/liblognorm-2.0.3:=
@@ -111,13 +115,6 @@ DEPEND="
 	elibc_musl? ( sys-libs/queue-standalone )
 "
 
-if [[ "${PV}" == "9999" ]]; then
-	BDEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
-	BDEPEND+=" >=app-alternatives/lex-2.5.39-r1"
-	BDEPEND+=" >=app-alternatives/yacc-2.4.3"
-	BDEPEND+=" >=dev-python/docutils-0.12"
-fi
-
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
@@ -126,7 +123,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_unpack() {
@@ -135,32 +132,6 @@ src_unpack() {
 		git-r3_checkout
 	else
 		unpack "${P}.tar.gz"
-	fi
-
-	if use doc; then
-		if [[ "${PV}" == "9999" ]]; then
-			local _EGIT_BRANCH=
-			if [[ -n "${EGIT_BRANCH}" ]]; then
-				# Cannot use rsyslog commits/branches for documentation repository
-				_EGIT_BRANCH="${EGIT_BRANCH}"
-
-				unset EGIT_BRANCH
-			fi
-
-			git-r3_fetch "${DOC_REPO_URI}"
-			git-r3_checkout "${DOC_REPO_URI}" "${S}"/docs
-
-			if [[ -n "${_EGIT_BRANCH}" ]]; then
-				# Restore previous EGIT_BRANCH information
-				EGIT_BRANCH=${_EGIT_BRANCH}
-			fi
-		else
-			cd "${S}" || die "Cannot change dir into '${S}'"
-			mkdir docs || die "Failed to create docs directory"
-			cd docs || die "Failed to change dir into '${S}/docs'"
-
-			unpack "${PN}-doc-${PV}.tar.gz"
-		fi
 	fi
 }
 
@@ -307,11 +278,9 @@ src_configure() {
 src_compile() {
 	default
 
-	if use doc && [[ "${PV}" == "9999" ]]; then
+	if use doc ; then
 		einfo "Building documentation ..."
-		local doc_dir="${S}/docs"
-		cd "${doc_dir}" || die "Cannot chdir into \"${doc_dir}\"!"
-		sphinx-build -b html source build || die "Building documentation failed!"
+		sphinx-build -b html doc/source doc/_build/html || die "Building documentation failed!"
 	fi
 }
 
@@ -343,13 +312,11 @@ src_test() {
 }
 
 src_install() {
-	local -a DOCS=(
-		AUTHORS
-		ChangeLog
-		"${FILESDIR}"/README.gentoo-r1
-	)
+	local -a DOCS=( AUTHORS	ChangeLog "${FILESDIR}/README.gentoo-r1" )
 
-	use doc && local -a HTML_DOCS=( "${S}/docs/build/." )
+	if use doc ; then
+		local -a HTML_DOCS=( "${S}/doc/_build/html/." )
+	fi
 
 	default
 

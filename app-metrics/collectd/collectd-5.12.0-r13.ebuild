@@ -142,7 +142,7 @@ COMMON_DEPEND="
 	collectd_plugins_virt?			( app-emulation/libvirt:= dev-libs/libxml2:2= )
 	collectd_plugins_write_http?		( net-misc/curl:0= dev-libs/yajl:= )
 	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= dev-libs/yajl:= )
-	collectd_plugins_write_mongodb?		( >=dev-libs/mongo-c-driver-1.8.2:= )
+	collectd_plugins_write_mongodb?		( >=dev-libs/mongo-c-driver-1.8.2:0= )
 	collectd_plugins_write_prometheus?	( >=dev-libs/protobuf-c-1.2.1-r1:= net-libs/libmicrohttpd:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
 	collectd_plugins_write_stackdriver?	( net-misc/curl:0= dev-libs/yajl:= )

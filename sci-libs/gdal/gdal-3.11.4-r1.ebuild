@@ -71,7 +71,7 @@ COMMON_DEPEND="
 		app-arch/xz-utils
 		app-arch/lzma
 	) )
-	mongodb? ( dev-db/mongodb:= )
+	mongodb? ( dev-libs/mongo-cxx-driver:= )
 	muparser? ( dev-cpp/muParser:= )
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
