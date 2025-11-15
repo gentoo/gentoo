@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,6 +30,9 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	elibtoolize
+
+	sed -e '/^\\usepackage{hyperref}$/i \\\\usepackage{html}' \
+		-i Doc/spqr_user_guide.tex || die
 }
 
 src_configure() {
