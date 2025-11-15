@@ -30,7 +30,7 @@ REQUIRED_USE="
 
 DEPEND="
 	mpi? ( virtual/mpi[romio] )
-	szip? ( virtual/szip )
+	szip? ( virtual/szip:= )
 	zlib? ( virtual/zlib:= )
 "
 RDEPEND="
