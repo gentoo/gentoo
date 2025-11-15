@@ -116,6 +116,7 @@ get_distribution_components() {
 		MLIR
 
 		# shared libraries
+		mlir_apfloat_wrappers
 		mlir_arm_runner_utils
 		mlir_arm_sme_abi_stubs
 		mlir_async_runtime
