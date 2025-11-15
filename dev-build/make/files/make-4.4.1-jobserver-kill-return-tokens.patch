@@ -1,0 +1,81 @@
+https://bugs.gentoo.org/966090
+https://savannah.gnu.org/bugs/index.php?67687#comment3
+https://file.savannah.gnu.org/file/sv67687_release_tokens.diff?file_id=57804
+
+Rebased on make-4.4.1 because of test changes.
+
+commit 04a04b5dfe66de46353c9fe31dd64efab2516257
+Author: Dmitry Goncharov <dgoncharov@users.sf.net>
+Date:   Thu Nov 13 00:25:15 2025 -0500
+
+    [SV 67687] Release all jobserver tokens upon a fatal signal.
+    
+    * src/commands.c (fatal_error_signal): Call jobserver_clear after
+    reap_childen to let free_child run jobserver_release before the
+    pipe/fifo is closed.
+    * tests/scripts/features/jobserver: Add tests.
+
+--- a/src/commands.c
++++ b/src/commands.c
+@@ -531,7 +531,6 @@ fatal_error_signal (int sig)
+ 
+   temp_stdin_unlink ();
+   osync_clear ();
+-  jobserver_clear ();
+ 
+   /* A termination signal won't be sent to the entire
+      process group, but it means we want to kill the children.  */
+@@ -577,6 +576,8 @@ fatal_error_signal (int sig)
+     while (job_slots_used > 0)
+       reap_children (1, 1);
+ 
++  jobserver_clear ();
++
+   /* Delete any non-precious intermediate files that were made.  */
+ 
+   remove_intermediates (1);
+--- a/tests/scripts/features/jobserver
++++ b/tests/scripts/features/jobserver
+@@ -198,4 +198,39 @@ all:;@echo "$$MAKEFLAGS"
+   run_make_test(q!all:;@echo hi!, "", "#MAKE#: cannot open jobserver nosuchfile: $ERR_no_such_file\n#MAKE#: $j1err\nhi\n");
+ }
+ 
++if ($port_type eq 'UNIX') {
++    # sv 67687.
++    # Test that make releases all jobserver tokens upon a fatal signal.
++    #
++    # When the submake releases all its tokens make prints something like
++    #
++    # "make[1]: *** [child.mk:2: a] Terminated
++    #  make[1]: *** [child.mk:2: b] Terminated
++    #  make: *** [t001.mk:2: all] Terminated".
++    #
++    # When make detects lost jobserver tokens, make prints something like
++    #
++    # "make[1]: *** [child.mk:2: a] Terminated
++    #  make[1]: *** [child.mk:2: b] Terminated
++    #  make: *** [t001.mk:2: all] Terminated
++    #  INTERNAL: exiting with 1 jobserver tokens available; should be 3!".
++    #
++    # This test has to fail if the last line is "exiting with ...".
++    # Anchor \Z ensures that the regex won't match when the "exiting with ..."
++    # message is present, because the preceding "Terminated" message is
++    # followed by a new line.
++    #
++    # "[\w\d ]*" after "Terminated" is for macos.
++    create_file('child.mk',
++'all: a b c
++a b:; @sleep 180
++c:; @sleep 2 && kill -term $$PPID');
++    my $re = '/#MAKE#: \*\*\* \[#MAKEFILE#:2: all\] Terminated[\w\d ]*\Z/';
++    run_make_test(q!
++all:; @$(MAKE) --no-print-directory -f child.mk
++!, '-j3', $re, 512);
++    run_make_test(undef, '--jobserver-style=pipe -j3', $re, 512);
++    unlink('child.mk') unless $keep;
++}
++
+ 1;
+-- 
+2.51.2
+
