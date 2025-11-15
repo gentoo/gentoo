@@ -409,6 +409,8 @@ src_configure() {
 }
 
 src_compile() {
+	unset SHELL #965834
+
 	if tc-is-cross-compiler; then
 		# Build native tools for compiling lisp etc.
 		emake -C "${S}-build" src
