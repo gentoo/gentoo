@@ -28,6 +28,7 @@ BDEPEND="
 LLVM_COMPONENTS=(
 	runtimes flang-rt cmake flang llvm/{cmake,utils/llvm-lit}
 )
+LLVM_TEST_COMPONENTS=( third-party/unittest )
 llvm.org_set_globals
 
 python_check_deps() {
