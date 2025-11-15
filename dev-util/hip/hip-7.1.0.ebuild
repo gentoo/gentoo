@@ -90,6 +90,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.3.0-clr-fix-libcxx.patch"
 	"${FILESDIR}/${PN}-6.4.1-no-glibcxx-assert.patch"
 	"${FILESDIR}/${PN}-7.0.2-fix-libcxx-noinline.patch"
+	"${FILESDIR}/${PN}-7.0.2-fix-libcxx-ranges.patch"
 )
 
 QA_FLAGS_IGNORED="usr/lib.*/libhiprtc-builtins.*"

@@ -1,0 +1,19 @@
+Fix project declaration; with this fix, origami produces origami-config.cmake instead of the second incorrect hipblaslt-config.cmake
+
+Bug: https://bugs.gentoo.org/965873
+Upstream bug: https://github.com/ROCm/rocm-libraries/issues/2556
+Backports https://github.com/ROCm/rocm-libraries/commit/e8add0e18b344f12e243bad28deedcfe2d38c616#diff-d9e605ef1f0f2809cd5660e42b405a763a823ce637764cc2e336bd37c4ad8b38R6
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,9 +3,9 @@
+ 
+ cmake_minimum_required(VERSION 3.24.4)
+ 
+-if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+-    project(Origami VERSION 1.0.0 LANGUAGES CXX)
++project(Origami VERSION 1.0.0 LANGUAGES CXX)
+ 
++if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+     set(ORIGAMI_STANDALONE ON)
+ else()
+     set(ORIGAMI_STANDALONE OFF)
