@@ -32,6 +32,7 @@ RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.4.0_p20250418-AppxClock.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 src_prepare() {
