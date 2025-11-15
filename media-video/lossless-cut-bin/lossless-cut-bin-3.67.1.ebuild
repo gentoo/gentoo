@@ -8,12 +8,12 @@ inherit pax-utils
 DESCRIPTION="The swiss army knife of lossless video/audio editing"
 HOMEPAGE="
 	https://mifi.no/losslesscut/
-	https://github.com/mifi/LosslessCut
+	https://github.com/mifi/lossless-cut
 "
 SRC_URI="
-	amd64? ( https://github.com/mifi/LosslessCut/releases/download/v${PV}/LosslessCut-linux-x64.tar.bz2 )
-	arm64? ( https://github.com/mifi/LosslessCut/releases/download/v${PV}/LosslessCut-linux-arm64.tar.bz2 )
-	arm? ( https://github.com/mifi/LosslessCut/releases/download/v${PV}/LosslessCut-linux-armv7l.tar.bz2 )
+	amd64? ( https://github.com/mifi/lossless-cut/releases/download/v${PV}/LosslessCut-linux-x64.tar.bz2 )
+	arm64? ( https://github.com/mifi/lossless-cut/releases/download/v${PV}/LosslessCut-linux-arm64.tar.bz2 )
+	arm? ( https://github.com/mifi/lossless-cut/releases/download/v${PV}/LosslessCut-linux-armv7l.tar.bz2 )
 "
 
 S="${WORKDIR}"
