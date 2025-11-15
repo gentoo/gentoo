@@ -5,6 +5,10 @@
 		<email>perfinion@gentoo.org</email>
 		<name>Jason Zaman</name>
 	</maintainer>
+	<maintainer type="person" proxied="yes">
+		<email>nicolas.parlant@parhuet.fr</email>
+		<name>Nicolas PARLANT</name>
+	</maintainer>
 	<use>
 		<flag name="tinyxml2">
 		Use vendor tinyxml2 instead of xmlrpc-c. This allows significant reduction in overhead
