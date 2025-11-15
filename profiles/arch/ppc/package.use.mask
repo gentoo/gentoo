@@ -1,6 +1,10 @@
 # Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Alfred Wingate <parona@protonmail.com> (2025-11-15)
+# sci-libs/libaec is not keyworded here (bug #966099)
+sci-libs/gdal libaec
+
 # Philipp Rösner <rndxelement@protonmail.com> (2025-09-23)
 # media-libs/zxingcpp is not keyworded here
 app-text/mupdf barcode
