@@ -25,8 +25,8 @@ RESTRICT="test"
 
 CP_DEPEND="
 	>=dev-java/cglib-3.3.0-r3:0
-	>=dev-java/commons-beanutils-1.9.4:1.7
-	>=dev-java/commons-logging-1.2:0
+	>=dev-java/commons-beanutils-1.11.0:0
+	>=dev-java/commons-logging-1.3.5:0
 "
 
 DEPEND="
