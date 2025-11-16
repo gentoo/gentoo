@@ -20,7 +20,6 @@
 		<remote-id type="github">hyprwm/Hyprland</remote-id>
 	</upstream>
 	<use>
-		<flag name="legacy-renderer">Enable legacy renderer</flag>
 		<flag name="qtutils">Install Hyprland QT utility apps</flag>
 	</use>
 </pkgmetadata>
