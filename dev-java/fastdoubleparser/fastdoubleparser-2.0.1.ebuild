@@ -14,7 +14,7 @@ S="${WORKDIR}/FastDoubleParser-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND=">=virtual/jdk-25:*"
 RDEPEND=">=virtual/jre-1.8:*"
