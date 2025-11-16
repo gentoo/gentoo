@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2023.11.04-gentoo.patch
 	"${FILESDIR}"/${PN}-2023.01.13-test.patch
 	"${FILESDIR}"/${PN}-2024.10.22.2-cmake.patch
+	"${FILESDIR}"/${P}-cmake.patch
 )
 
 src_configure() {
