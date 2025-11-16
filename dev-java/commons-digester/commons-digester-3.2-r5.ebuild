@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,8 +25,8 @@ RESTRICT="test"
 
 CP_DEPEND="
 	>=dev-java/cglib-3.3.0-r3:0
-	>=dev-java/commons-beanutils-1.9.4:1.7
-	>=dev-java/commons-logging-1.2:0
+	>=dev-java/commons-beanutils-1.11.0:0
+	>=dev-java/commons-logging-1.3.5:0
 "
 
 DEPEND="
