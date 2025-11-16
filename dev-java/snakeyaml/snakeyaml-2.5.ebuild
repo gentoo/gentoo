@@ -17,7 +17,7 @@ S="${WORKDIR}/snakeyaml-snakeyaml-225cf7b0166c"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	>=virtual/jdk-11:*
