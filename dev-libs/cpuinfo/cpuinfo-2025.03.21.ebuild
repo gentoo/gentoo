@@ -15,7 +15,7 @@ S="${WORKDIR}"/${PN}-${CommitId}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
 
 BDEPEND="test? ( dev-cpp/gtest )"
