@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,13 +15,25 @@ else
 	SRC_URI="https://github.com/hyprwm/${PN^}/archive/refs/tags/v${PV}/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}-${PV}"
 
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="BSD"
 SLOT="0/$(ver_cut 1-2)"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
+BDEPEND="
+	test? ( dev-cpp/gtest )
+"
 DEPEND="
 	x11-libs/pixman
 "
 RDEPEND="${DEPEND}"
+
+src_configure() {
+    local mycmakeargs=(
+		-DBUILD_TESTING=$(usex test)
+    )
+    cmake_src_configure
+}
