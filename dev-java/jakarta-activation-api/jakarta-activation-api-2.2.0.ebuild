@@ -15,7 +15,7 @@ S="${WORKDIR}/jaf-api-${PV}/api"
 
 LICENSE="EPL-1.0"
 SLOT="2"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 DEPEND=">=virtual/jdk-11:*"
 RDEPEND=">=virtual/jre-1.8:*"
