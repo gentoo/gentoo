@@ -25,22 +25,48 @@ inherit check-reqs estack flag-o-matic llvm-r1 multiprocessing optfeature \
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
+	# The gcc submodule (and rustc_codegen_gcc, actually) sometimes
+	# isn't new enough for us, so set a commit when needed to jump ahead.
+	GCC_FORK_COMMIT="0081ca6631abdfa02bf42bc85aaf507b8a0e6beb"
+	# Ditto for the cg_gcc submodule.
+	CG_GCC_COMMIT="db67f597b0c18de7d9b12c3d8f2f96049f6efa02"
 elif [[ ${PV} == *beta* ]]; then
 	# Identify the snapshot date of the beta release:
 	# curl -Ls static.rust-lang.org/dist/channel-rust-beta.toml | grep beta-src.tar.xz
 	betaver=${PV//*beta}
 	BETA_SNAPSHOT="${betaver:0:4}-${betaver:4:2}-${betaver:6:2}"
+	# The version in the tarball matches compiler/rustc_codegen_gcc/libgccjit.version
+	# but it's often not new enough at this point.
+	#GCC_FORK_COMMIT="4e995bd73c4490edfe5080ec6014d63aa9abed5f"
+	GCC_FORK_COMMIT="0081ca6631abdfa02bf42bc85aaf507b8a0e6beb"
+	# Ditto for the cg_gcc submodule.
+	#CG_GCC_COMMIT="db67f597b0c18de7d9b12c3d8f2f96049f6efa02"
 	MY_P="rustc-beta"
-	SRC_URI="https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz
+	SRC_URI="
+		https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz -> rustc-${PV}-src.tar.xz
 		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+		rust_codegen_backends_gcc? (
+			${GCC_FORK_COMMIT+https://github.com/rust-lang/gcc/archive/${GCC_FORK_COMMIT}.tar.gz -> gcc-fork-${GCC_FORK_COMMIT}.tar.gz}
+			${CG_FORK_COMMIT+https://github.com/rust-lang/rustc_codegen_gcc/archive/${CG_GCC_COMMIT}.tar.gz -> rustc_codegen_gcc-${CG_GCC_COMMIT}.tar.gz}
+		)
 		verify-sig? ( https://static.rust-lang.org/dist/${BETA_SNAPSHOT}/rustc-beta-src.tar.xz.asc
 			-> rustc-${PV}-src.tar.xz.asc )
 	"
 	S="${WORKDIR}/${MY_P}-src"
 else
+	# compiler/rustc_codegen_gcc/libgccjit.version
+	#GCC_FORK_COMMIT="04ce66d8c918de9273bd7101638ad8724edf5e21"
+	GCC_FORK_COMMIT="0081ca6631abdfa02bf42bc85aaf507b8a0e6beb"
+	# Ditto for the cg_gcc submodule.
+	#CG_GCC_COMMIT="db67f597b0c18de7d9b12c3d8f2f96049f6efa02"
 	MY_P="rustc-${PV}"
-	SRC_URI="https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
+	SRC_URI="
+		https://static.rust-lang.org/dist/${MY_P}-src.tar.xz
 		https://gitweb.gentoo.org/proj/rust-patches.git/snapshot/rust-patches-${RUST_PATCH_VER}.tar.bz2
+		rust_codegen_backends_gcc? (
+			${GCC_FORK_COMMIT+https://github.com/rust-lang/gcc/archive/${GCC_FORK_COMMIT}.tar.gz -> gcc-fork-${GCC_FORK_COMMIT}.tar.gz}
+			${CG_GCC_COMMIT+https://github.com/rust-lang/rustc_codegen_gcc/archive/${CG_GCC_COMMIT}.tar.gz -> rustc_codegen_gcc-${CG_GCC_COMMIT}.tar.gz}
+		)
 		verify-sig? ( https://static.rust-lang.org/dist/${MY_P}-src.tar.xz.asc )
 	"
 	S="${WORKDIR}/${MY_P}-src"
@@ -69,10 +95,22 @@ done
 ALL_RUST_SYSROOTS=( bpf wasm )
 ALL_RUST_SYSROOTS=( "${ALL_RUST_SYSROOTS[@]/#/rust_sysroots_}" )
 
+# The order here is important. The first is default. We have to pick LLVM
+# first for now (if enabled) to avoid some hassle with mangling RUSTFLAGS
+# depending on what an ebuild supports if we know it's broken with an
+# alternative backend.
+#
+# Further, note that the runtime toggle for choosing the backend is marked unstable:
+# https://doc.rust-lang.org/beta/unstable-book/compiler-flags/codegen-backend.html
+#
+# TODO: cranelift?
+RUST_CODEGEN_BACKENDS=( llvm gcc )
+ALL_RUST_CODEGEN_BACKENDS=( "${RUST_CODEGEN_BACKENDS[@]/#/rust_codegen_backends_}" )
+
 LICENSE="|| ( MIT Apache-2.0 ) BSD BSD-1 BSD-2 BSD-4"
 SLOT="${PV%%_*}" # Beta releases get to share the same SLOT as the eventual stable
 
-IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto rustfmt rust-analyzer rust-src system-llvm test ${ALL_LLVM_TARGETS[*]} ${ALL_RUST_SYSROOTS[*]}"
+IUSE="big-endian clippy cpu_flags_x86_sse2 debug dist doc llvm-libunwind lto rustfmt rust-analyzer rust-src system-llvm test ${ALL_LLVM_TARGETS[*]} ${ALL_RUST_SYSROOTS[*]} ${ALL_RUST_CODEGEN_BACKENDS[*]}"
 
 if [[ ${PV} = *9999* ]]; then
 	# These USE flags require nightly rust
@@ -104,6 +142,12 @@ BDEPEND="${PYTHON_DEPS}
 			sys-devel/mold
 		)
 	) )
+	rust_codegen_backends_gcc? (
+		app-alternatives/yacc
+		sys-devel/binutils:*
+		>=sys-devel/flex-2.5.4
+		sys-devel/gettext
+	)
 	!system-llvm? (
 		>=dev-build/cmake-3.13.4
 		app-alternatives/ninja
@@ -117,13 +161,22 @@ DEPEND="
 	net-misc/curl:=[http2,ssl]
 	virtual/zlib:=
 	dev-libs/openssl:0=
-	system-llvm? (
-		${LLVM_DEPEND[*]}
-		llvm-libunwind? ( llvm-runtimes/libunwind:= )
+	rust_codegen_backends_gcc? (
+		app-arch/zstd:=
+		dev-libs/gmp:=
+		dev-libs/isl:=
+		dev-libs/mpc:=
+		dev-libs/mpfr:=
 	)
-	!system-llvm? (
-		!llvm-libunwind? (
-			elibc_musl? ( sys-libs/libunwind:= )
+	rust_codegen_backends_llvm? (
+		system-llvm? (
+			${LLVM_DEPEND[*]}
+			llvm-libunwind? ( llvm-runtimes/libunwind:= )
+		)
+		!system-llvm? (
+			!llvm-libunwind? (
+				elibc_musl? ( sys-libs/libunwind:= )
+			)
 		)
 	)
 "
@@ -136,9 +189,14 @@ RDEPEND="${DEPEND}
 	!dev-lang/rust-bin:stable
 "
 
-REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
+# rust_codegen_backends_gcc needs dist until 'dist/install' patch is
+# fixed and upstreamed
+REQUIRED_USE="
+	|| ( ${ALL_LLVM_TARGETS[*]} )
+	|| ( ${ALL_RUST_CODEGEN_BACKENDS[*]} )
 	rust-analyzer? ( rust-src )
 	test? ( ${ALL_LLVM_TARGETS[*]} )
+	rust_codegen_backends_gcc? ( dist )
 	rust_sysroots_bpf? ( llvm_targets_BPF )
 	rust_sysroots_wasm? ( llvm_targets_WebAssembly )
 	x86? ( cpu_flags_x86_sse2 )
@@ -247,6 +305,9 @@ pkg_setup() {
 
 	rust_pkg_setup
 
+	# TODO: die here if multilib & rustc_codegen_gcc, as it doesn't
+	# support it yet: https://github.com/rust-lang/rustc_codegen_gcc/issues/779
+
 	if use system-llvm; then
 		llvm-r1_pkg_setup
 
@@ -260,19 +321,37 @@ rust_live_get_sources() {
 	EGIT_REPO_URI="
 		https://anongit.gentoo.org/git/proj/rust-patches.git
 	"
-	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${RUST_PATCH_VER}"
-	git-r3_src_unpack
+	EGIT_CHECKOUT_DIR="${WORKDIR}/rust-patches-${RUST_PATCH_VER}" git-r3_src_unpack
 
 	EGIT_REPO_URI="
 		https://github.com/rust-lang/rust.git
 	"
 	EGIT_SUBMODULES=(
 		"*"
-		"-src/gcc"
+		$(usev !rust_codegen_backends_gcc "-src/gcc")
+		# TODO: Exclude LLVM submodule if USE=system-llvm.
+		# TODO: This requires using system compiler-rt builtins
+		# which we haven't wired up yet.
+		#$(usev !rust_codegen_backends_llvm "-src/llvm-project")
 	)
 	S="${WORKDIR}/rust"
 	EGIT_CHECKOUT_DIR="${S}"
 	git-r3_src_unpack
+
+	if [[ -n ${GCC_FORK_COMMIT} ]] ; then
+		EGIT_REPO_URI="
+			https://github.com/rust-lang/gcc.git
+		"
+		EGIT_CHECKOUT_DIR="${S}/src/gcc" git-r3_src_unpack
+	fi
+	if [[ -n ${CG_GCC_COMMIT} ]] ; then
+		rm -r "${S}"/compiler/rustc_codegen_gcc || die
+
+		EGIT_REPO_URI="
+			https://github.com/rust-lang/rustc_codegen_gcc
+		"
+		EGIT_CHECKOUT_DIR="${S}/compiler/rustc_codegen_gcc" git-r3_src_unpack
+	fi
 }
 
 src_unpack() {
@@ -314,21 +393,36 @@ src_unpack() {
 			[source.vendored-sources]
 			directory = "vendor"
 		_EOF_
-	elif use verify-sig ; then
-		# Patch tarballs are not signed (but we trust Gentoo infra)
-		verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
-		default
 	else
-		default
+		if use verify-sig ; then
+			# Patch tarballs are not signed (but we trust Gentoo infra)
+			verify-sig_verify_detached "${DISTDIR}"/rustc-${PV}-src.tar.xz{,.asc}
+		fi
+
+		unpack rustc-${PV}-src.tar.xz
+		unpack rust-patches-${RUST_PATCH_VER}.tar.bz2
+
+		# TODO: system-gcc
+		if use rust_codegen_backends_gcc ; then
+			[[ -n ${GCC_FORK_COMMIT} ]] && (
+				cd "${S}"/src || die
+				rm gcc/notice.txt || die
+				rmdir gcc || die
+				unpack gcc-fork-${GCC_FORK_COMMIT}.tar.gz
+				mv gcc-${GCC_FORK_COMMIT} gcc || die
+			)
+
+			[[ -n ${CG_GCC_COMMIT} ]] && (
+				cd "${S}"/compiler || die
+				rm -rf rustc_codegen_gcc || die
+				unpack rustc_codegen_gcc-${CG_GCC_COMMIT}.tar.gz
+				mv rustc_codegen_gcc-${CG_GCC_COMMIT} rustc_codegen_gcc || die
+			)
+		fi
 	fi
 }
 
 src_prepare() {
-	if [[ ${PV} = *9999* ]]; then
-		# We need to update / generate lockfiles for the workspace
-		${CARGO} generate-lockfile --offline || die "Failed to generate lockfiles"
-	fi
-
 	# Commit patches to the appropriate branch in proj/rust-patches.git
 	# then cut a new tag / tarball. Don't add patches to ${FILESDIR}
 	PATCHES=(
@@ -339,7 +433,21 @@ src_prepare() {
 		export RUSTFLAGS+=" -C link-arg=-fuse-ld=lld"
 	fi
 
+	if use rust_codegen_backends_gcc ; then
+		# We should have all of these available on Gentoo systems.
+		cat <<-EOF > src/gcc/contrib/download_prerequisites || die
+		#!/bin/sh
+		exit 0
+		EOF
+		chmod +x src/gcc/contrib/download_prerequisites || die
+	fi
+
 	default
+
+	if use rust_codegen_backends_gcc ; then
+		eapply "${FILESDIR}"/rustc_codegen_gcc-dist.patch
+		eapply -d "${S}"/compiler/rustc_codegen_gcc -p1 -- "${FILESDIR}"/rustc_codegen_gcc-avoid-oom.patch
+	fi
 }
 
 src_configure() {
@@ -383,6 +491,8 @@ src_configure() {
 	use rustfmt && tools+=',"rustfmt"'
 	use rust-analyzer && tools+=',"rust-analyzer","rust-analyzer-proc-macro-srv"'
 	use rust-src && tools+=',"src"'
+	# TODO: see if these are (all) still needed
+	use rust_codegen_backends_gcc && tools+=',"rustc-dev","gcc","rustc-codegen-gcc"'
 
 	if [[ ${PV} == *9999* ]]; then
 		use miri && tools+=',"miri"'
@@ -419,8 +529,19 @@ src_configure() {
 			;;
 	esac
 
-	# TODO: Add optimized-compiler-builtins for system-llvm to avoid
-	# building bundled compiler-rt.
+	local codegen_backends=''
+	local codegen_backend
+	for codegen_backend in "${RUST_CODEGEN_BACKENDS[@]}" ; do
+		use rust_codegen_backends_${codegen_backend} && \
+			codegen_backends+="\"${codegen_backend}\","
+	done
+
+	# XXX: Needed for dist target and some of the switches?
+	if use rust_codegen_backends_gcc ; then
+		ewarn "Forcing build as nightly for GCC codegen backend"
+		build_channel="nightly"
+	fi
+
 	cat <<- _EOF_ > "${S}"/bootstrap.toml
 		# Suppresses a warning about tracking changes which we don't care about.
 		change-id = "ignore"
@@ -495,7 +616,9 @@ src_configure() {
 		bindir = "bin"
 		libdir = "lib"
 		mandir = "share/man"
+
 		[rust]
+		codegen-backends = [${codegen_backends}]
 		# https://github.com/rust-lang/rust/issues/54872
 		codegen-units-std = 1
 		optimize = true
@@ -827,6 +950,20 @@ src_install() {
 		"${EPYTHON}" ./x.py dist -v --config="${S}"/bootstrap.toml -j$(makeopts_jobs) || die
 		insinto "/usr/lib/${PN}/${SLOT}/dist"
 		doins -r "${S}/build/dist/."
+	fi
+
+	if use rust_codegen_backends_gcc ; then
+		# XXX: This is a hack because dist/install support is incomplete
+		# for now (as of 1.91.0, even with a patch I've hacked up).
+		cd "${ED}/usr/lib/${PN}/${SLOT}/lib/rustlib" || die
+
+		# TODO: Replace glob with Rust target
+		tar --strip-components=4 -xvf "${S}"/build/dist/rustc-codegen-gcc*.tar.xz || die
+
+		# Now place libgccjit.so in too
+		cd */codegen-backends/ || die
+		# TODO: Replace 'host' with Rust target
+		cp "${S}"/build/host/gcc/install/lib/libgccjit.so ../lib/libgccjit.so.0 || die
 	fi
 }
 

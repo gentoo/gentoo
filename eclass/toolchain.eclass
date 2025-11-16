@@ -14,7 +14,9 @@
 if [[ -z ${_TOOLCHAIN_ECLASS} ]]; then
 _TOOLCHAIN_ECLASS=1
 
-RUST_OPTIONAL="1"
+RUST_OPTIONAL=1
+# https://github.com/rust-lang/rustc_codegen_gcc/issues/787
+RUST_NEEDS_LLVM_BACKEND=1
 
 # See tc_version_is_at_least below wrt old EAPIs vs old GCCs.
 case ${EAPI} in
