@@ -50,17 +50,15 @@ JAVA_TEST_SRC_DIR="src/test/java"
 VERIFY_SIG_OPENPGP_KEY_PATH="/usr/share/openpgp-keys/commons.apache.org.asc"
 
 src_test() {
-	pushd src/test/java || die
-		# Exclusions according to 226,229 pom.xml
-		local JAVA_TEST_RUN_ONLY=$(find * \
-			-name "*TestCase.java" \
-			! -name "Abstract*.java" \
-			! -name "TestBean.java" \
-			! -name "TestRule.java" \
-			! -name "TestRuleSet.java")
-		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
-		JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
-	popd
+	# Exclusions according to 226,229 pom.xml
+	local JAVA_TEST_RUN_ONLY=$(find src/test/java \
+		-name "*TestCase.java" \
+		! -name "Abstract*.java" \
+		! -name "TestBean.java" \
+		! -name "TestRule.java" \
+		! -name "TestRuleSet.java" -printf '%P\n')
+	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//.java}"
+	JAVA_TEST_RUN_ONLY="${JAVA_TEST_RUN_ONLY//\//.}"
 
 	local vm_version="$(java-config -g PROVIDES_VERSION)"
 	if ver_test "${vm_version}" -ge "17" ; then
