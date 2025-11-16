@@ -15,30 +15,111 @@ case ${EAPI} in
 	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-# @FUNCTION: make_desktop_entry
-# @USAGE: <command> [name] [icon] [categories] [entries]
+# @ECLASS_VARIABLE: _DESKTOP_IDS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
-# Make a .desktop file.
+# Internal array containing any app-ids used by make_desktop_entry() calls.
+# Lets us keep track of/avoid duplicate desktop file names.
+_DESKTOP_IDS=()
+
+# @FUNCTION: make_desktop_entry
+# @USAGE: [--eapi9] <command> [options]
+# @DESCRIPTION:
+# Make a .desktop file and install it in /usr/share/applications/.
 #
 # @CODE
+# --eapi9:    Switch to getopts style arguments instead of order based
+#             As the naming implies, this is off by default for EAPI=[78],
+#             but mandated by future EAPI.
 # command:    Exec command the app is being run with, also base for TryExec
+# ---         Options:
 # name:       Name that will show up in the menu; defaults to PN
+#             with --eapi9: must not contain arguments, use --args for that
 # icon:       Icon to use with the menu entry; defaults to PN
 #             this can be relative (to /usr/share/pixmaps) or
 #             a full path to an icon
 # categories: Categories for this kind of application. Examples:
 #             https://specifications.freedesktop.org/menu-spec/latest/apa.html
 #             if unset, function tries to guess from package's category
-# entries:    Key=Value entry to append to the desktop file; a printf string
+# entry:      Key=Value entry to append to the desktop file;
+#             with --eapi9: multiple allowed; old style: a printf string
+# ---         Additional parameters available using --eapi9:
+# args:       Arguments (binary params and desktop spec field codes) to add
+#             to Exec value, separated by a space if multiple
+# desktopid:  <desktopid>.desktop will be created. Must be same as "app id"
+#             defined in code (including reverse qualified domain if set);
+#             defaults to <command>
+# comment:    Comment (menu entry tooltip), defaults to DESCRIPTION
+# @CODE
+#
+# Example usage:
+# @CODE
+# Deprecated, in order:
+#   <command> [name] [icon] [categories] [entries...]
+# New style:
+#   --eapi9 <command> [-a args] [-d desktopid] [-C comment] [-i icon]
+#   --eapi9 <command> [-n name] [-e entry...] [-c categories]
 # @CODE
 make_desktop_entry() {
-	[[ -z $1 ]] && die "make_desktop_entry: You must specify the executable"
+	local eapi9
+	if [[ -n ${1} ]]; then
+		case ${EAPI} in
+			7|8)
+				if [[ ${1} == --eapi9 ]]; then
+					eapi9=1
+					shift
+				fi
+				;;
+			*)
+				if [[ ${1} == --eapi9 ]]; then
+					ewarn "make_desktop_entry: --eapi9 arg is obsolete in EAPI-${EAPI} and may be cleaned up now."
+					shift
+				fi
+				eapi9=1
+				;;
+		esac
+	fi
+	[[ -z ${1} ]] && die "make_desktop_entry: You must specify at least a command"
 
-	local cmd=${1}
-	local name=${2:-${PN}}
-	local icon=${3:-${PN}}
-	local cats=${4}
-	local entries=${5}
+	if [[ ${eapi9} ]]; then
+		local args cats cmd comment desktopid entries icon name
+		while [[ $# -gt 0 ]] ; do
+			case "${1}" in
+			-a|--args)
+				args="${2}";         shift 2 ;;
+			-c|--categories)
+				cats="${2}";         shift 2 ;;
+			-C|--comment)
+				comment="${2}";      shift 2 ;;
+			-d|--desktopid)
+				desktopid="${2}";    shift 2 ;;
+			-e|--entry)
+				entries+=( "${2}" ); shift 2 ;;
+			-i|--icon)
+				icon="${2}";         shift 2 ;;
+			-n|--name)
+				name="${2}";         shift 2 ;;
+			*)
+				if [[ -z ${cmd} ]] ; then
+					cmd="${1}"
+				else
+					die "make_desktop_entry: Can only take one command! First got: ${cmd}; then got: ${1}"
+				fi
+				shift ;;
+			esac
+		done
+		[[ -z ${cmd} ]] && die "make_desktop_entry: You must specify at least a command"
+		[[ -z ${name} ]] && name=${PN}
+		[[ -z ${icon} ]] && icon=${PN}
+	else
+		local cmd=${1}
+		local name=${2:-${PN}}
+		local icon=${3:-${PN}}
+		local cats=${4}
+		local entries=${5}
+	fi
+
+	[[ -z ${comment} ]] && comment="${DESCRIPTION}"
 
 	if [[ -z ${cats} ]] ; then
 		local catmaj=${CATEGORY%%-*}
@@ -162,19 +243,37 @@ make_desktop_entry() {
 		esac
 	fi
 
-	local desktop_exec="${cmd%%[[:space:]]*}"
-	desktop_exec="${desktop_exec##*/}"
-	local desktop_suffix="-${PN}"
-	[[ ${SLOT%/*} != 0 ]] && desktop_suffix+="-${SLOT%/*}"
-	# Replace foo-foo.desktop by foo.desktop
-	[[ ${desktop_suffix#-} == "${desktop_exec}" ]] && desktop_suffix=""
+	if [[ ${eapi9} ]]; then
+		if [[ -z ${desktopid} ]]; then
+			if [[ ${cmd} =~ .+[[:space:]].+ ]]; then
+				die "make_desktop_entry: --desktopid must be provided when <command> contains a space"
+			fi
+			desktopid="${cmd##*/}"
+		fi
+		if [[ ! ${desktopid} =~ ^[A-Za-z0-9._-]+$ ]]; then
+			die "make_desktop_entry: <desktopid> must only consist of ASCII letters, digits, dash, underscore and dots"
+		fi
+		if [[ ${_DESKTOP_IDS[*]} =~ (^|[[:space:]])"${desktopid}"($|[[:space:]]) ]]; then
+			die "make_desktop_entry: desktopid \"${desktopid}\" already used in a previous call, choose a different one"
+		else
+			_DESKTOP_IDS+=( "${desktopid}" )
+		fi
+		local desktop="${T}/${desktopid}.desktop"
+	else
+		local desktop_exec="${cmd%%[[:space:]]*}"
+		desktop_exec="${desktop_exec##*/}"
+		local desktop_suffix="-${PN}"
+		[[ ${SLOT%/*} != 0 ]] && desktop_suffix+="-${SLOT%/*}"
+		# Replace foo-foo.desktop by foo.desktop
+		[[ ${desktop_suffix#-} == "${desktop_exec}" ]] && desktop_suffix=""
 
-	# Prevent collisions if a file with the same name already exists #771708
-	local desktop="${desktop_exec}${desktop_suffix}" count=0
-	while [[ -e ${ED}/usr/share/applications/${desktop}.desktop ]]; do
-		desktop="${desktop_exec}-$((++count))${desktop_suffix}"
-	done
-	desktop="${T}/${desktop}.desktop"
+		# Prevent collisions if a file with the same name already exists #771708
+		local desktop="${desktop_exec}${desktop_suffix}" count=0
+		while [[ -e ${ED}/usr/share/applications/${desktop}.desktop ]]; do
+			desktop="${desktop_exec}-$((++count))${desktop_suffix}"
+		done
+		desktop="${T}/${desktop}.desktop"
+	fi
 
 	# Don't append another ";" when a valid category value is provided.
 	cats=${cats%;}${cats:+;}
@@ -185,24 +284,46 @@ make_desktop_entry() {
 		icon=${icon%.*}
 	fi
 
-	cat <<-EOF > "${desktop}" || die
-	[Desktop Entry]
-	Name=${name}
-	Type=Application
-	Comment=${DESCRIPTION}
-	Exec=${cmd}
-	TryExec=${cmd%% *}
-	Icon=${icon}
-	Categories=${cats}
-	EOF
+	cat > "${desktop}" <<- _EOF_ || die
+		[Desktop Entry]
+		Type=Application
+		Name=${name}
+		Comment=${comment}
+		Icon=${icon}
+		Categories=${cats}
+	_EOF_
 
-	if [[ ${entries:-=} != *=* ]] ; then
-		# 5th arg used to be value to Path=
-		ewarn "make_desktop_entry: update your 5th arg to read Path=${entries}"
-		entries="Path=${entries}"
+	if [[ ${eapi9} ]]; then
+		local cmd_args="${cmd} ${args}"
+		cat >> "${desktop}" <<- _EOF_ || die
+			Exec=${cmd_args%[[:space:]]}
+			TryExec=${cmd}
+		_EOF_
+	else
+		cat >> "${desktop}" <<- _EOF_ || die
+			Exec=${cmd}
+			TryExec=${cmd%% *}
+		_EOF_
 	fi
-	if [[ -n ${entries} ]]; then
-		printf '%b\n' "${entries}" >> "${desktop}" || die
+
+	if [[ ${eapi9} && -n ${entries} ]]; then
+		local entry
+		for entry in ${entries[@]}; do
+			if [[ ${entry} =~ ^[A-Za-z0-9-]+=.* ]]; then
+				printf "%s\n" "${entry}" >> "${desktop}" || die
+			else
+				die "make_desktop_entry: <entry> \"${entry}\" rejected; must be passed a Key=Value pair"
+			fi
+		done
+	else
+		if [[ ${entries:-=} != *=* ]]; then
+			# 5th arg used to be value to Path=
+			ewarn "make_desktop_entry: update your 5th arg to read Path=${entries}"
+			entries="Path=${entries}"
+		fi
+		if [[ -n ${entries} ]]; then
+			printf '%b\n' "${entries}" >> "${desktop}" || die
+		fi
 	fi
 
 	(
