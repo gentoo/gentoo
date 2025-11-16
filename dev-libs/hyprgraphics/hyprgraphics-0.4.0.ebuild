@@ -11,10 +11,10 @@ SRC_URI="https://github.com/hyprwm/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 RDEPEND="
-	>=gui-libs/hyprutils-0.1.1:=
+	>=gui-libs/hyprutils-0.8.2:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libjxl:=
 	media-libs/libspng
