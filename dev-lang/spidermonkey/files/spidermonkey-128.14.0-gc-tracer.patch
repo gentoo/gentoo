@@ -1,0 +1,38 @@
+
+# HG changeset patch
+# User Itms <itms@wildfiregames.com>
+# Date 1754863729 0
+# Node ID 45a4336df6a83fbb6a448fe5ec14b703b38313d9
+# Parent  1ecdcb55f42515c6542d4f9d4580899d55a6a790
+Bug 1982134 - Choose specific callback in removeBlackRootsTracer.  a=RyanVM
+
+This fixes a regression introduced in the refactoring at Bug 1846835 / D185307
+
+Original Revision: https://phabricator.services.mozilla.com/D260541
+
+Differential Revision: https://phabricator.services.mozilla.com/D260608
+
+
+diff --git a/js/src/gc/GC.cpp b/js/src/gc/GC.cpp
+--- a/js/src/gc/GC.cpp
++++ b/js/src/gc/GC.cpp
+@@ -1559,17 +1559,17 @@ static bool EraseCallback(CallbackVector
+ 
+ bool GCRuntime::addBlackRootsTracer(JSTraceDataOp traceOp, void* data) {
+   AssertHeapIsIdle();
+   return blackRootTracers.ref().append(Callback<JSTraceDataOp>(traceOp, data));
+ }
+ 
+ void GCRuntime::removeBlackRootsTracer(JSTraceDataOp traceOp, void* data) {
+   // Can be called from finalizers
+-  MOZ_ALWAYS_TRUE(EraseCallback(blackRootTracers.ref(), traceOp));
++  MOZ_ALWAYS_TRUE(EraseCallback(blackRootTracers.ref(), traceOp, data));
+ }
+ 
+ void GCRuntime::setGrayRootsTracer(JSGrayRootsTracer traceOp, void* data) {
+   AssertHeapIsIdle();
+   grayRootTracer.ref() = {traceOp, data};
+ }
+ 
+ void GCRuntime::clearBlackAndGrayRootTracers() {
+
