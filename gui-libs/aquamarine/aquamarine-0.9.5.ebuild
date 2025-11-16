@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/hyprwm/${PN^}.git"
 else
 	SRC_URI="https://github.com/hyprwm/${PN^}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="BSD"
@@ -24,8 +24,8 @@ RESTRICT="test"
 RDEPEND="
 	>=dev-libs/libinput-1.26.1
 	dev-libs/wayland
-	>=dev-util/hyprwayland-scanner-0.4.0
-	>=gui-libs/hyprutils-0.5.2:=
+	>=dev-util/hyprwayland-scanner-0.4.5
+	>=gui-libs/hyprutils-0.8.4:=
 	media-libs/libdisplay-info:=
 	media-libs/libglvnd
 	media-libs/mesa[opengl]
