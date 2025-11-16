@@ -1,6 +1,11 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sam James <sam@gentoo.org> (2025-11-16)
+# Needs unkeyworded dev-libs/capstone which fails tests on arm (bug #924922)
+app-emulation/qemu capstone
+dev-util/perf capstone
+
 # Sam James <sam@gentoo.org> (2025-11-01)
 # Needs pandoc.
 media-sound/bluez-alsa man
