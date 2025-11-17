@@ -455,7 +455,7 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	# D in 12+ is self-hosting and needs D to bootstrap.
 	# TODO: package some binary we can use, like for Ada
 	# bug #840182
-	BDEPEND+=" d? ( <sys-devel/gcc-$((${SLOT} + 1))[d(-)] )"
+	BDEPEND+=" d? ( || ( <sys-devel/gcc-$((${SLOT} + 1))[d(-)] sys-devel/gcc:11 ) )"
 fi
 
 if tc_has_feature rust && tc_version_is_at_least 14.1 ; then
