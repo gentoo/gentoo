@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..12} )
 
-inherit autotools desktop python-single-r1 xdg
+inherit desktop python-single-r1 xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -15,15 +15,16 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.claws-mail.org/readonly/claws.git"
 else
 	SRC_URI="https://www.claws-mail.org/download.php?file=releases/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv ~sparc x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 
-IUSE="appindicator archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
+IUSE="archive bogofilter calendar clamav dbus debug doc +gnutls +imap ldap +libcanberra +libnotify litehtml networkmanager nls nntp +notification +oauth pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind webkit xface"
 REQUIRED_USE="
-	notification? ( || ( appindicator libcanberra libnotify ) )
+	libcanberra? ( notification )
+	libnotify? ( notification )
 	networkmanager? ( dbus )
 	oauth? ( gnutls )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -65,17 +66,13 @@ COMMONDEPEND="
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
-		appindicator? ( dev-libs/libayatana-appindicator )
 		libcanberra? ( || (
 			media-libs/libcanberra-gtk3
 			media-libs/libcanberra[gtk3(-)]
 		) )
 		libnotify? ( x11-libs/libnotify )
 	)
-	perl? (
-		dev-lang/perl:=
-		virtual/libcrypt:=
-		)
+	perl? ( dev-lang/perl:= )
 	pdf? ( app-text/poppler[cairo] )
 	pgp? ( >=app-crypt/gpgme-1.0.0:= )
 	python? (
@@ -121,15 +118,11 @@ RDEPEND="${COMMONDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
 	"${FILESDIR}/${PN}-4.1.1-fix_lto.patch"
+
 )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-	eautoreconf
 }
 
 src_configure() {
