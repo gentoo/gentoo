@@ -69,3 +69,8 @@ src_configure() {
 
 	cmake_src_configure
 }
+
+src_test() {
+	local -x QT_QPA_PLATFORM=offscreen
+	cmake_src_test
+}
