@@ -1,0 +1,13 @@
+Fix wrong webpmux library name
+
+--- a/src/webp.imageio/CMakeLists.txt	2025-11-17 13:37:13.795979999 +0300
++++ b/src/webp.imageio/CMakeLists.txt	2025-11-17 13:37:33.095764587 +0300
+@@ -4,7 +4,7 @@
+ 
+ if (WebP_FOUND)
+     add_oiio_plugin (webpinput.cpp webpoutput.cpp
+-                     LINK_LIBRARIES WebP::webp WebP::webpdemux WebP::libwebpmux
++                     LINK_LIBRARIES WebP::webp WebP::webpdemux WebP::webpmux
+                      DEFINITIONS "USE_WEBP=1")
+ else ()
+     message (STATUS "WebP plugin will not be built")
