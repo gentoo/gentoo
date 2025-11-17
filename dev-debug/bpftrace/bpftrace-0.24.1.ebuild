@@ -58,7 +58,7 @@ BDEPEND="
 	app-arch/xz-utils
 	app-alternatives/lex
 	app-alternatives/yacc
-	app-editors/vim-core
+	|| ( dev-util/xxd app-editors/vim-core )
 	dev-libs/cereal
 	dev-util/bpftool
 	test? (
