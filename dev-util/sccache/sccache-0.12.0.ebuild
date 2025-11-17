@@ -435,7 +435,7 @@ CRATES+="
 "
 
 # https://github.com/mozilla/sccache?tab=readme-ov-file#build-requirements
-RUST_MIN_VER="1.75.0"
+RUST_MIN_VER="1.85.0"
 
 inherit cargo optfeature systemd
 
