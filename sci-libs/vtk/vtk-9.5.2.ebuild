@@ -375,6 +375,12 @@ src_prepare() {
 
 	cmake_src_prepare
 
+	# 14 GiB is the highest single process ram usage seen
+	# 932464
+	sed \
+		-e "/EXPR viskores_pool_size/s/3072/$(( 14 * 1024 ))/g" \
+		-i ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresWrappers.cmake || die
+
 	if use test; then
 		ebegin "Copying data files to ${BUILD_DIR}"
 		mkdir -p "${BUILD_DIR}/ExternalData" || die
