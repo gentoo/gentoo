@@ -16,21 +16,20 @@ case ${EAPI} in
 esac
 
 # @FUNCTION: make_desktop_entry
-# @USAGE: <command> [name] [icon] [type] [fields]
+# @USAGE: <command> [name] [icon] [categories] [fields]
 # @DESCRIPTION:
 # Make a .desktop file.
 #
 # @CODE
-# binary:   what command does the app run with ?
-# name:     the name that will show up in the menu
-# icon:     the icon to use in the menu entry
-#           this can be relative (to /usr/share/pixmaps) or
-#           a full path to an icon
-# type:     what kind of application is this?
-#           for categories:
-#           https://specifications.freedesktop.org/menu-spec/latest/apa.html
-#           if unset, function tries to guess from package's category
-# fields:	extra fields to append to the desktop file; a printf string
+# binary:     what command does the app run with ?
+# name:       the name that will show up in the menu
+# icon:       the icon to use in the menu entry
+#             this can be relative (to /usr/share/pixmaps) or
+#             a full path to an icon
+# categories: Categories for this kind of application. Examples:
+#             https://specifications.freedesktop.org/menu-spec/latest/apa.html
+#             if unset, function tries to guess from package's category
+# fields:     extra fields to append to the desktop file; a printf string
 # @CODE
 make_desktop_entry() {
 	[[ -z $1 ]] && die "make_desktop_entry: You must specify the executable"
@@ -38,127 +37,127 @@ make_desktop_entry() {
 	local exec=${1}
 	local name=${2:-${PN}}
 	local icon=${3:-${PN}}
-	local type=${4}
+	local cats=${4}
 	local fields=${5}
 
-	if [[ -z ${type} ]] ; then
+	if [[ -z ${cats} ]] ; then
 		local catmaj=${CATEGORY%%-*}
 		local catmin=${CATEGORY##*-}
 		case ${catmaj} in
 			app)
 				case ${catmin} in
-					accessibility) type="Utility;Accessibility";;
-					admin)         type=System;;
-					antivirus)     type=System;;
-					arch)          type="Utility;Archiving";;
-					backup)        type="Utility;Archiving";;
-					cdr)           type="AudioVideo;DiscBurning";;
-					dicts)         type="Office;Dictionary";;
-					doc)           type=Documentation;;
-					editors)       type="Utility;TextEditor";;
-					emacs)         type="Development;TextEditor";;
-					emulation)     type="System;Emulator";;
-					laptop)        type="Settings;HardwareSettings";;
-					office)        type=Office;;
-					pda)           type="Office;PDA";;
-					vim)           type="Development;TextEditor";;
-					xemacs)        type="Development;TextEditor";;
+					accessibility) cats="Utility;Accessibility";;
+					admin)         cats=System;;
+					antivirus)     cats=System;;
+					arch)          cats="Utility;Archiving";;
+					backup)        cats="Utility;Archiving";;
+					cdr)           cats="AudioVideo;DiscBurning";;
+					dicts)         cats="Office;Dictionary";;
+					doc)           cats=Documentation;;
+					editors)       cats="Utility;TextEditor";;
+					emacs)         cats="Development;TextEditor";;
+					emulation)     cats="System;Emulator";;
+					laptop)        cats="Settings;HardwareSettings";;
+					office)        cats=Office;;
+					pda)           cats="Office;PDA";;
+					vim)           cats="Development;TextEditor";;
+					xemacs)        cats="Development;TextEditor";;
 				esac
 				;;
 
 			dev)
-				type="Development"
+				cats="Development"
 				;;
 
 			games)
 				case ${catmin} in
-					action|fps) type=ActionGame;;
-					arcade)     type=ArcadeGame;;
-					board)      type=BoardGame;;
-					emulation)  type=Emulator;;
-					kids)       type=KidsGame;;
-					puzzle)     type=LogicGame;;
-					roguelike)  type=RolePlaying;;
-					rpg)        type=RolePlaying;;
-					simulation) type=Simulation;;
-					sports)     type=SportsGame;;
-					strategy)   type=StrategyGame;;
+					action|fps) cats=ActionGame;;
+					arcade)     cats=ArcadeGame;;
+					board)      cats=BoardGame;;
+					emulation)  cats=Emulator;;
+					kids)       cats=KidsGame;;
+					puzzle)     cats=LogicGame;;
+					roguelike)  cats=RolePlaying;;
+					rpg)        cats=RolePlaying;;
+					simulation) cats=Simulation;;
+					sports)     cats=SportsGame;;
+					strategy)   cats=StrategyGame;;
 				esac
-				type="Game;${type}"
+				cats="Game;${cats}"
 				;;
 
 			gnome)
-				type="Gnome;GTK"
+				cats="Gnome;GTK"
 				;;
 
 			kde)
-				type="KDE;Qt"
+				cats="KDE;Qt"
 				;;
 
 			mail)
-				type="Network;Email"
+				cats="Network;Email"
 				;;
 
 			media)
 				case ${catmin} in
 					gfx)
-						type=Graphics
+						cats=Graphics
 						;;
 					*)
 						case ${catmin} in
-							radio) type=Tuner;;
-							sound) type=Audio;;
-							tv)    type=TV;;
-							video) type=Video;;
+							radio) cats=Tuner;;
+							sound) cats=Audio;;
+							tv)    cats=TV;;
+							video) cats=Video;;
 						esac
-						type="AudioVideo;${type}"
+						cats="AudioVideo;${cats}"
 						;;
 				esac
 				;;
 
 			net)
 				case ${catmin} in
-					dialup) type=Dialup;;
-					ftp)    type=FileTransfer;;
-					im)     type=InstantMessaging;;
-					irc)    type=IRCClient;;
-					mail)   type=Email;;
-					news)   type=News;;
-					nntp)   type=News;;
-					p2p)    type=FileTransfer;;
-					voip)   type=Telephony;;
+					dialup) cats=Dialup;;
+					ftp)    cats=FileTransfer;;
+					im)     cats=InstantMessaging;;
+					irc)    cats=IRCClient;;
+					mail)   cats=Email;;
+					news)   cats=News;;
+					nntp)   cats=News;;
+					p2p)    cats=FileTransfer;;
+					voip)   cats=Telephony;;
 				esac
-				type="Network;${type}"
+				cats="Network;${cats}"
 				;;
 
 			sci)
 				case ${catmin} in
-					astro*)  type=Astronomy;;
-					bio*)    type=Biology;;
-					calc*)   type=Calculator;;
-					chem*)   type=Chemistry;;
-					elec*)   type=Electronics;;
-					geo*)    type=Geology;;
-					math*)   type=Math;;
-					physics) type=Physics;;
-					visual*) type=DataVisualization;;
+					astro*)  cats=Astronomy;;
+					bio*)    cats=Biology;;
+					calc*)   cats=Calculator;;
+					chem*)   cats=Chemistry;;
+					elec*)   cats=Electronics;;
+					geo*)    cats=Geology;;
+					math*)   cats=Math;;
+					physics) cats=Physics;;
+					visual*) cats=DataVisualization;;
 				esac
-				type="Education;Science;${type}"
+				cats="Education;Science;${cats}"
 				;;
 
 			sys)
-				type="System"
+				cats="System"
 				;;
 
 			www)
 				case ${catmin} in
-					client) type=WebBrowser;;
+					client) cats=WebBrowser;;
 				esac
-				type="Network;${type}"
+				cats="Network;${cats}"
 				;;
 
 			*)
-				type=
+				cats=
 				;;
 		esac
 	fi
@@ -178,7 +177,7 @@ make_desktop_entry() {
 	desktop="${T}/${desktop}.desktop"
 
 	# Don't append another ";" when a valid category value is provided.
-	type=${type%;}${type:+;}
+	cats=${cats%;}${cats:+;}
 
 	if [[ -n ${icon} && ${icon} != /* ]] && [[ ${icon} == *.xpm || ${icon} == *.png || ${icon} == *.svg ]]; then
 		ewarn "As described in the Icon Theme Specification, icon file extensions are not"
@@ -194,7 +193,7 @@ make_desktop_entry() {
 	Exec=${exec}
 	TryExec=${exec%% *}
 	Icon=${icon}
-	Categories=${type}
+	Categories=${cats}
 	EOF
 
 	if [[ ${fields:-=} != *=* ]] ; then
