@@ -1486,8 +1486,8 @@ distutils-r1_run_phase() {
 
 	local -x PATH=${BUILD_DIR}/install${EPREFIX}/usr/bin:${PATH}
 	# Set up build environment, bug #513664.
-	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
-	tc-export AR CC CPP CXX
+	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX} PKG_CONFIG=${PKG_CONFIG}
+	tc-export AR CC CPP CXX PKG_CONFIG
 
 	# Perform additional environment modifications only for python_compile
 	# phase.  This is the only phase where we expect to be calling the Python
