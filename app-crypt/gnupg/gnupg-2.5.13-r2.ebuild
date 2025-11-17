@@ -148,8 +148,10 @@ my_src_configure() {
 	fi
 
 	if [[ ${CHOST} == *-solaris* ]] ; then
-		# https://dev.gnupg.org/T7368
-		export ac_cv_should_define__xopen_source=yes
+		# these somehow are treated as fatal, but Solaris has different
+		# types for getpeername with socket_t
+		append-flags -Wno-incompatible-pointer-types
+		append-flags -Wno-unused-label
 	fi
 
 	# bug #663142
