@@ -12,7 +12,7 @@ if [[ ${PV} != *9999* ]]; then
 		https://qmmp.ylsoftware.com/files/qmmp/$(ver_cut 1-2)/${P}.tar.bz2
 		https://downloads.sourceforge.net/project/qmmp-dev/qmmp/$(ver_cut 1-2)/${P}.tar.bz2
 	"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 else
 	inherit subversion
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/trunk/${PN}"
