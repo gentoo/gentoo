@@ -104,6 +104,7 @@ BDEPEND="
 PATCHES=(
 	# bug 746590
 	"${FILESDIR}/${PN}-flock.patch"
+	"${FILESDIR}"/grass-8.4.1-gdal-include.patch
 )
 
 pkg_pretend() {
