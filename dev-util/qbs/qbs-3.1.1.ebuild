@@ -63,8 +63,9 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 
-	# test fails to build with Qt 6.10.1 -- not looked into but, given
-	# skip this test either way, may as well also not build it for now
+	# test fails to build with Qt 6.10.1 since [1] and, given skipping
+	# this test either way, may as well also not build it for now
+	# [1] https://github.com/qt/qtbase/commit/7196bb00ed7
 	sed -i '/add_subdirectory(language)/d' tests/auto/CMakeLists.txt || die
 }
 
