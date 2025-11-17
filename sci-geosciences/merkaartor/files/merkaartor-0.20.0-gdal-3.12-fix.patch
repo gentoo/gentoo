@@ -1,0 +1,52 @@
+https://github.com/openstreetmap/merkaartor/issues/314
+https://github.com/openstreetmap/merkaartor/commit/9949b586afb914ffac7b17d1f2b90f6300b8e2ca
+https://github.com/openstreetmap/merkaartor/commit/41ea3a2215a64f3cfc465e8aaf481fc29a6a3abc
+
+From 9949b586afb914ffac7b17d1f2b90f6300b8e2ca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ladislav=20L=C3=A1ska?= <krakonos@krakonos.org>
+Date: Tue, 21 Oct 2025 10:04:10 +0200
+Subject: [PATCH] Fixed compilation errors introduced by gdal 3.12.
+
+Some API calls now return const pointers. We've annotated our types as
+such, since we use them in const manny anyway.
+
+Thanks to @gdt at Github for submitting a patch in issue #314.
+--- a/src/ImportExport/ImportExportGdal.cpp
++++ b/src/ImportExport/ImportExportGdal.cpp
+@@ -337,7 +337,7 @@ bool ImportExportGdal::importGDALDataset(GDALDataset* poDS, Layer* aLayer, bool
+     qDebug(lc_importExportGdal) << "Layers #" << poDS->GetLayerCount();
+     OGRLayer  *poLayer = poDS->GetLayer(0);
+ 
+-    OGRSpatialReference * theSrs = poLayer->GetSpatialRef(); // Note: Contrary to other OGR objects, the spatial ref must NOT be released by our code!
++    const OGRSpatialReference * theSrs = poLayer->GetSpatialRef(); // Note: Contrary to other OGR objects, the spatial ref must NOT be released by our code!
+     toWGS84 = NULL;
+ 
+     if (theSrs) {
+@@ -390,7 +390,7 @@ bool ImportExportGdal::importGDALDataset(GDALDataset* poDS, Layer* aLayer, bool
+                 Feature* F = parseGeometry(aLayer, poGeometry);
+                 if (F) {
+                     for (int i=0; i<poFeature->GetFieldCount(); ++i) {
+-                        OGRFieldDefn  *fd = poFeature->GetFieldDefnRef(i);
++                        const OGRFieldDefn  *fd = poFeature->GetFieldDefnRef(i);
+                         QString k = QString::fromUtf8(fd->GetNameRef());
+                         if (k == "osm_id") {
+                             F->setId(IFeature::FId(F->getType(), (qint64)poFeature->GetFieldAsDouble(i)));
+From 41ea3a2215a64f3cfc465e8aaf481fc29a6a3abc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ladislav=20L=C3=A1ska?= <krakonos@krakonos.org>
+Date: Tue, 21 Oct 2025 10:05:37 +0200
+Subject: [PATCH] Fixed memory management in ImportExportGDAL
+
+The affected OGRSpatialReference is fetched from OGRLayer and by
+documentation should not be released manually.
+
+Thanks to @gdt at Github for submitting a patch in issue #314.
+--- a/src/ImportExport/ImportExportGdal.cpp
++++ b/src/ImportExport/ImportExportGdal.cpp
+@@ -351,7 +351,6 @@ bool ImportExportGdal::importGDALDataset(GDALDataset* poDS, Layer* aLayer, bool
+                 qDebug("GDAL: couldn't initialise EPSG:27700: %d: %s", ogrError, CPLGetLastErrorMsg());
+                 the27700Srs->Release();
+             } else {
+-                theSrs->Release();
+                 theSrs = the27700Srs;
+             }
+         }
