@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} python3_13t )
+PYTHON_COMPAT=( python3_{9..14} python3_14t )
 DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517="setuptools"
@@ -159,6 +159,11 @@ src_test() {
 			XrdCl::FileSystemTest.XAttrTest
 			XrdCl::WorkflowTest.XAttrWorkflowTest
 			XrdCl::WorkflowTest.CheckpointTest
+			XRootD::authenticated_cluster
+			XRootD::httpnoclient
+			XRootD::xcachewithcsi
+			XRootD::badredir
+			XRootD::posix
 		')
 		# server fails to start due to long path to unix domain socket
 		$(usev scitokens '
