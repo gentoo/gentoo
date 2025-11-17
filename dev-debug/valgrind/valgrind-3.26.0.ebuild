@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 	"${FILESDIR}"/${PN}-3.15.0-Build-ldst_multiple-test-with-fno-pie.patch
 	"${FILESDIR}"/${PN}-3.21.0-glibc-2.34-suppressions.patch
+	"${FILESDIR}"/${P}-gcc16.patch
 )
 
 QA_CONFIG_IMPL_DECL_SKIP+=(
