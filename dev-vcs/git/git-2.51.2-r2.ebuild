@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL=no
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit toolchain-funcs perl-module shell-completion optfeature plocale python-single-r1 systemd meson
+inherit toolchain-funcs perl-module shell-completion optfeature plocale python-single-r1 systemd meson flag-o-matic
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -240,6 +240,7 @@ src_configure() {
 	)
 
 	[[ ${CHOST} == *-darwin* ]] && emesonargs+=( -Dfsmonitor=false )
+	[[ ${CHOST} == *-solaris* ]] && append-flags -D__EXTENSIONS__
 
 	# For non-live, we use a downloaded docs tarball instead.
 	if [[ ${PV} == *9999 ]] || use doc ; then
