@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL=no
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
 
-inherit toolchain-funcs perl-module shell-completion optfeature plocale python-single-r1 systemd meson
+inherit toolchain-funcs perl-module bash-completion-r1 optfeature plocale python-single-r1 systemd meson
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -354,7 +354,6 @@ src_install() {
 
 	newbashcomp contrib/completion/git-completion.bash ${PN}
 	bashcomp_alias git gitk
-	newzshcomp contrib/completion/git-completion.zsh _${PN}
 	# Not really a bash-completion file (bug #477920)
 	# but still needed uncompressed (bug #507480)
 	insinto /usr/share/${PN}
@@ -469,14 +468,6 @@ pkg_postinst() {
 		elog "completion."
 		elog "Please read /usr/share/git/git-prompt.sh for Git bash prompt"
 		elog "Note that the prompt bash code is now in that separate script"
-	fi
-
-	if has_version app-shells/zsh ; then
-		elog 'There are two competing zsh completions available for Git.'
-		elog 'One is from app-shells/zsh, the other from dev-vcs/git.'
-		elog 'To choose between them, order the entries of $fpath so that your'
-		elog 'desired completion is earlier in the list or symlink the relevant'
-		elog 'script into a personal override directory early on fpath.'
 	fi
 
 	optfeature_header "Some scripts require additional dependencies:"
