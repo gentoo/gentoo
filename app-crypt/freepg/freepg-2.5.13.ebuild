@@ -11,7 +11,7 @@ EGIT_TAG="gnupg-${PV%_p*}-freepg"
 [[ ${PV} == *_p* ]] && EGIT_TAG+="-${PV#*_p}"
 MY_P="gnupg-${EGIT_TAG}"
 
-DESCRIPTION="GnuPG fork with improved RFC9850 compatibility"
+DESCRIPTION="Cross-distro GnuPG fork focused on OpenPGP compliance"
 HOMEPAGE="
 	https://freepg.org/
 	https://gitlab.com/freepg/gnupg/
