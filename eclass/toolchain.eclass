@@ -431,9 +431,8 @@ if [[ ${PN} != gnat-gpl ]] && tc_has_feature ada ; then
 		BDEPEND+="
 			ada? (
 				|| (
-					<sys-devel/gcc-${SLOT}[ada]
+					<sys-devel/gcc-$((${SLOT} + 1))[ada]
 					<dev-lang/ada-bootstrap-$((${SLOT} + 1))
-					sys-devel/gcc:${SLOT}[ada]
 				)
 			)
 		"
@@ -456,7 +455,7 @@ if tc_has_feature d && tc_version_is_at_least 12.0 ; then
 	# D in 12+ is self-hosting and needs D to bootstrap.
 	# TODO: package some binary we can use, like for Ada
 	# bug #840182
-	BDEPEND+=" d? ( || ( <sys-devel/gcc-${SLOT}[d(-)] <sys-devel/gcc-12[d(-)] sys-devel/gcc:${SLOT}[d(-)] ) )"
+	BDEPEND+=" d? ( <sys-devel/gcc-$((${SLOT} + 1))[d(-)] )"
 fi
 
 if tc_has_feature rust && tc_version_is_at_least 14.1 ; then
@@ -473,7 +472,7 @@ PDEPEND=">=sys-devel/gcc-config-2.11"
 # @DESCRIPTION:
 # Used to override compression used for for patchsets.
 # Default is xz for EAPI 8+.
-	: "${TOOLCHAIN_PATCH_SUFFIX:=xz}"
+: "${TOOLCHAIN_PATCH_SUFFIX:=xz}"
 
 # @ECLASS_VARIABLE: TOOLCHAIN_SET_S
 # @DESCRIPTION:
