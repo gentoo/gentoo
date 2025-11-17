@@ -168,6 +168,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-9.4.2-vtk-m-jobpool-size.patch"
 	"${FILESDIR}/${PN}-9.4.2-ThirdParty-gcc15.patch"
 	"${FILESDIR}/${PN}-9.4.2-find-hdf5-in-global-scope.patch"
+	"${FILESDIR}/${PN}-9.4.2-ThirdParty-libfmt-12.patch"
 )
 
 DOCS=( CONTRIBUTING.md README.md )
