@@ -22,7 +22,7 @@ RDEPEND="
 	!${CATEGORY}/${PN}:5
 	!kde-plasma/khotkeys:5
 	>=kde-plasma/aurorae-${PV}:${SLOT}
-	>=kde-plasma/breeze-${PV}:${SLOT}[qt5?]
+	>=kde-plasma/breeze-${PV}:${SLOT}[qt5(-)?]
 	>=kde-plasma/kactivitymanagerd-${PV}:${SLOT}
 	>=kde-plasma/kde-cli-tools-${PV}:${SLOT}
 	>=kde-plasma/kde-cli-tools-common-${PV}
@@ -51,7 +51,7 @@ RDEPEND="
 	>=kde-plasma/plasma-activities-${PV}:${SLOT}
 	>=kde-plasma/plasma-activities-stats-${PV}:${SLOT}
 	>=kde-plasma/plasma-desktop-${PV}:${SLOT}
-	>=kde-plasma/plasma-integration-${PV}:${SLOT}[qt5?]
+	>=kde-plasma/plasma-integration-${PV}:${SLOT}[qt5(-)?]
 	>=kde-plasma/plasma-login-sessions-${PV}:${SLOT}[X?]
 	>=kde-plasma/plasma-systemmonitor-${PV}:${SLOT}
 	>=kde-plasma/plasma-welcome-${PV}:${SLOT}
@@ -100,7 +100,7 @@ RDEPEND="
 	)
 	oxygen-theme? (
 		>=kde-frameworks/oxygen-icons-6.0.0:*
-		>=kde-plasma/oxygen-${PV}:${SLOT}[qt5?]
+		>=kde-plasma/oxygen-${PV}:${SLOT}[qt5(-)?]
 		>=kde-plasma/oxygen-sounds-${PV}:${SLOT}
 	)
 	plymouth? (
