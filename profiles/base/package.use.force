@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2025-11-18)
+# Fails with gstreamer disabled (bug #965971)
+=net-libs/webkit-gtk-2.50.1*:4.1 gstreamer
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-06-22)
 # This is currently more footgun than real option. Bug #958638
 <kde-plasma/kwin-6.5.0 X
