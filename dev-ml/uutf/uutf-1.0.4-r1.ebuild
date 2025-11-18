@@ -15,9 +15,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 IUSE="doc +ocamlopt"
 RESTRICT="test"
 
-RDEPEND="dev-ml/uchar:="
+RDEPEND="dev-ml/uchar:=[ocamlopt?]"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-ml/ocamlbuild
+	dev-ml/cmdliner
 	dev-ml/topkg"
 
 DOCS=( CHANGES.md README.md )
