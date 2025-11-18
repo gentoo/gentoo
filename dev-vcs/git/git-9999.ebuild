@@ -7,8 +7,8 @@ GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python3_{11..14} )
-
-inherit toolchain-funcs perl-module shell-completion optfeature plocale python-single-r1 systemd meson
+RUST_OPTIONAL=1
+inherit toolchain-funcs perl-module shell-completion optfeature plocale python-single-r1 rust systemd meson
 
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 
@@ -58,7 +58,7 @@ S="${WORKDIR}"/${MY_P}
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl +safe-directory selinux subversion test tk +webdav xinetd"
+IUSE="+curl cgi cvs doc keyring +gpg highlight +iconv +nls +pcre perforce +perl rust +safe-directory selinux subversion test tk +webdav xinetd"
 
 # Common to both DEPEND and RDEPEND
 DEPEND="
@@ -117,6 +117,7 @@ BDEPEND="
 	)
 	keyring? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
+	rust? ( ${RUST_DEPEND} )
 	test? (
 		app-arch/unzip
 		app-crypt/gnupg
@@ -228,6 +229,7 @@ src_configure() {
 		$(meson_feature pcre pcre2)
 		$(meson_feature perl)
 		$(meson_feature perforce python)
+		$(meson_feature rust)
 		$(meson_use test tests)
 
 		-Dcontrib=$(IFS=, ; echo "${contrib[*]}" )
@@ -245,6 +247,7 @@ src_configure() {
 	if [[ ${PV} == *9999 ]] || use doc ; then
 		emesonargs+=(
 			-Ddocs="man$(usev doc ',html')"
+			-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		)
 	fi
 
@@ -333,11 +336,6 @@ src_test() {
 
 src_install() {
 	meson_src_install
-
-	if use doc ; then
-		cp -r "${ED}"/usr/share/doc/git-doc/. "${ED}"/usr/share/doc/${PF}/html || die
-		rm -rf "${ED}"/usr/share/doc/git-doc/ || die
-	fi
 
 	# Depending on the tarball and manual rebuild of the documentation, the
 	# manpages may exist in either OR both of these directories.
