@@ -37,6 +37,8 @@ RDEPEND="${DEPEND}
 	dev-libs/kirigami-addons:6
 "
 
+CMAKE_SKIP_TESTS=( test_editorsession ) # fixed in >=25.12
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_autotests=$(usex test)
