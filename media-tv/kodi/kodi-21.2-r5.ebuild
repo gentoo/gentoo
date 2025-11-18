@@ -139,7 +139,7 @@ COMMON_TARGET_DEPEND="${PYTHON_DEPS}
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 	')
 	airplay? (
-		>=app-pda/libplist-2.0.0:=
+		>=app-mobilephone/libplist-2.0.0:=
 		net-libs/shairplay
 	)
 	alsa? (

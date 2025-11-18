@@ -81,3 +81,10 @@ move dev-python/clang-python dev-python/clang
 slotmove kde-frameworks/kapidox 5 0
 move dev-python/publicsuffix dev-python/publicsuffix2
 move dev-util/imediff2 dev-util/imediff
+move app-pda/gtkpod media-sound/gtkpod
+move app-pda/ideviceinstaller app-mobilephone/ideviceinstaller
+move app-pda/ifuse app-mobilephone/ifuse
+move app-pda/libimobiledevice app-mobilephone/libimobiledevice
+move app-pda/libimobiledevice-glue app-mobilephone/libimobiledevice-glue
+move app-pda/libplist app-mobilephone/libplist
+move app-pda/libusbmuxd app-mobilephone/libusbmuxd

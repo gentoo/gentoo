@@ -20,8 +20,8 @@ IUSE="gtk"
 RESTRICT="test"
 
 DEPEND="
-	app-pda/libplist
-	app-pda/libusbmuxd
+	app-mobilephone/libplist
+	app-mobilephone/libusbmuxd
 	dev-libs/glib
 	dev-libs/libayatana-appindicator
 	dev-libs/libxml2:=

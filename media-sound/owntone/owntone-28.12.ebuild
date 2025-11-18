@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="+alsa +chromecast"
 
 RDEPEND="
-	app-pda/libplist
+	app-mobilephone/libplist
 	dev-db/sqlite:3
 	dev-libs/confuse
 	dev-libs/json-c

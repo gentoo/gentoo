@@ -49,8 +49,8 @@ RDEPEND="
 	systemd? ( >=sys-apps/systemd-206:0= )
 	elogind? ( >=sys-auth/elogind-229:0= )
 	ios? (
-		>=app-pda/libimobiledevice-1.2:=
-		>=app-pda/libplist-1:=
+		>=app-mobilephone/libimobiledevice-1.2:=
+		>=app-mobilephone/libplist-1:=
 	)
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.17.1:= )
 	keyring? ( app-crypt/libsecret )
