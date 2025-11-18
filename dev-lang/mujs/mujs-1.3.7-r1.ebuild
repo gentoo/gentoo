@@ -52,21 +52,18 @@ src_prepare() {
 
 src_compile() {
 	# We need to use ${PV} for the pkgconfig file, see: #784461
-	emake \
-		VERSION=${PV} \
-		XCFLAGS="${CFLAGS}" \
-		XLDFLAGS="${LDFLAGS}" \
-		prefix="${EPREFIX}/usr" \
-		release
+	makeargs=(
+		VERSION=${PV}
+		XCFLAGS="${CFLAGS}"
+		XLDFLAGS="${LDFLAGS}"
+		prefix="${EPREFIX}/usr"
+		libdir="\$(prefix)/$(get_libdir)"
+	)
+	emake "${makeargs[@]}" release
 }
 
 src_install() {
-	emake \
-		DESTDIR="${ED}" \
-		VERSION=${PV} \
-		libdir="${EPREFIX}/usr/$(get_libdir)" \
-		prefix="${EPREFIX}/usr" \
-		install-shared
+	emake "${makeargs[@]}" DESTDIR="${D}" install-shared
 
 	mv -v "${ED}"/usr/$(get_libdir)/lib${PN}$(get_libname) \
 		"${ED}"/usr/$(get_libdir)/lib${PN}$(get_libname ${PV}) \
