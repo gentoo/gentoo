@@ -150,6 +150,9 @@ PATCHES=(
 	# demand from developers. It's opt-in (needs a config option)
 	# and the documentation mentions that it is a Gentoo addition.
 	"${FILESDIR}"/${PN}-2.50.0-diff-implement-config.diff.renames-copies-harder.patch
+
+	"${FILESDIR}"/${PN}-2.52.0-0001-rust-don-t-pass-quiet-to-cargo.patch
+	"${FILESDIR}"/${PN}-2.52.0-0002-rust-respect-CARGO-environment-variable.patch
 )
 
 pkg_setup() {
@@ -161,6 +164,10 @@ pkg_setup() {
 
 	if use perforce ; then
 		python-single-r1_pkg_setup
+	fi
+
+	if use rust ; then
+		rust_pkg_setup
 	fi
 }
 
