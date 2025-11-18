@@ -12,9 +12,7 @@ SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~hppa ppc64 ~riscv ~s390 ~sparc x86"
-IUSE=""
 
-DEPEND=""
 RDEPEND="dev-lang/php:*"
 PDEPEND="dev-php/PEAR-PEAR"
 
