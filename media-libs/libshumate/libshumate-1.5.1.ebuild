@@ -11,7 +11,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libshumate"
 
 LICENSE="LGPL-2.1+"
 SLOT="1.0/1"
-KEYWORDS="amd64 ~arm arm64 ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86"
 REQUIRED_USE="gtk-doc? ( introspection )"
 
 IUSE="gtk-doc +introspection sysprof vala"
@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}
 	sysprof? ( dev-util/sysprof-capture:4 )
 "
 BDEPEND="
+	dev-util/glib-utils
+	dev-util/gperf
 	gtk-doc? ( >=dev-util/gi-docgen-2021.1 )
 	vala? ( $(vala_depend) )
 "
