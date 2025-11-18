@@ -17,7 +17,6 @@ IUSE="examples"
 # PCRE is needed for a few calls to preg_replace and preg_match.
 RDEPEND="dev-lang/php:*[pcre(+)]"
 PDEPEND="dev-php/PEAR-PEAR"
-DEPEND=""
 
 S="${WORKDIR}/${MY_P}"
 
