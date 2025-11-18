@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic multilib python-any-r1 toolchain-funcs
 
 DESCRIPTION="An embeddable JavaScript interpreter written in C"
 HOMEPAGE="https://mujs.com/ https://codeberg.org/ccxvii/mujs"
@@ -18,6 +19,7 @@ LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos"
 
+BDEPEND="${PYTHON_DEPS}"
 RDEPEND="sys-libs/readline:="
 DEPEND="${RDEPEND}"
 
