@@ -16,29 +16,29 @@ case ${EAPI} in
 esac
 
 # @FUNCTION: make_desktop_entry
-# @USAGE: <command> [name] [icon] [categories] [fields]
+# @USAGE: <command> [name] [icon] [categories] [entries]
 # @DESCRIPTION:
 # Make a .desktop file.
 #
 # @CODE
-# binary:     what command does the app run with ?
-# name:       the name that will show up in the menu
-# icon:       the icon to use in the menu entry
+# command:    Exec command the app is being run with, also base for TryExec
+# name:       Name that will show up in the menu; defaults to PN
+# icon:       Icon to use with the menu entry; defaults to PN
 #             this can be relative (to /usr/share/pixmaps) or
 #             a full path to an icon
 # categories: Categories for this kind of application. Examples:
 #             https://specifications.freedesktop.org/menu-spec/latest/apa.html
 #             if unset, function tries to guess from package's category
-# fields:     extra fields to append to the desktop file; a printf string
+# entries:    Key=Value entry to append to the desktop file; a printf string
 # @CODE
 make_desktop_entry() {
 	[[ -z $1 ]] && die "make_desktop_entry: You must specify the executable"
 
-	local exec=${1}
+	local cmd=${1}
 	local name=${2:-${PN}}
 	local icon=${3:-${PN}}
 	local cats=${4}
-	local fields=${5}
+	local entries=${5}
 
 	if [[ -z ${cats} ]] ; then
 		local catmaj=${CATEGORY%%-*}
@@ -162,7 +162,7 @@ make_desktop_entry() {
 		esac
 	fi
 
-	local desktop_exec="${exec%%[[:space:]]*}"
+	local desktop_exec="${cmd%%[[:space:]]*}"
 	desktop_exec="${desktop_exec##*/}"
 	local desktop_suffix="-${PN}"
 	[[ ${SLOT%/*} != 0 ]] && desktop_suffix+="-${SLOT%/*}"
@@ -190,19 +190,19 @@ make_desktop_entry() {
 	Name=${name}
 	Type=Application
 	Comment=${DESCRIPTION}
-	Exec=${exec}
-	TryExec=${exec%% *}
+	Exec=${cmd}
+	TryExec=${cmd%% *}
 	Icon=${icon}
 	Categories=${cats}
 	EOF
 
-	if [[ ${fields:-=} != *=* ]] ; then
+	if [[ ${entries:-=} != *=* ]] ; then
 		# 5th arg used to be value to Path=
-		ewarn "make_desktop_entry: update your 5th arg to read Path=${fields}"
-		fields="Path=${fields}"
+		ewarn "make_desktop_entry: update your 5th arg to read Path=${entries}"
+		entries="Path=${entries}"
 	fi
-	if [[ -n ${fields} ]]; then
-		printf '%b\n' "${fields}" >> "${desktop}" || die
+	if [[ -n ${entries} ]]; then
+		printf '%b\n' "${entries}" >> "${desktop}" || die
 	fi
 
 	(
