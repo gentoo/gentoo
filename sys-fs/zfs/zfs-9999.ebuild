@@ -10,7 +10,7 @@ EAPI=8
 
 DISTUTILS_OPTIONAL=1
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
 MODULES_INITRAMFS_IUSE=+initramfs
 MODULES_OPTIONAL_IUSE=+modules
@@ -304,6 +304,7 @@ src_compile() {
 
 src_install() {
 	DOCS=( AUTHORS COPYRIGHT META README.md )
+
 	if use modules; then
 		emake "${MODULES_MAKEARGS[@]}" DESTDIR="${ED}" install
 		modules_post_process
