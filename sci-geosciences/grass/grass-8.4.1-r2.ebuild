@@ -58,13 +58,24 @@ RDEPEND="
 	media-libs/libglvnd
 	media-libs/glu
 	blas? (
-		virtual/cblas[eselect-ldso(+)]
-		virtual/blas[eselect-ldso(+)]
+		|| (
+			virtual/cblas[eselect-ldso(+)]
+			virtual/cblas[flexiblas(-)]
+		)
+		|| (
+			virtual/blas[eselect-ldso(+)]
+			virtual/blas[flexiblas(-)]
+		)
 	)
 	bzip2? ( app-arch/bzip2:= )
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos:= )
-	lapack? ( virtual/lapack[eselect-ldso(+)] )
+	lapack? (
+		|| (
+			virtual/lapack[eselect-ldso(+)]
+			virtual/lapack[flexiblas(-)]
+		)
+	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf:= )
 	odbc? ( dev-db/unixODBC )
@@ -115,7 +126,7 @@ pkg_pretend() {
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 
-	if use lapack; then
+	if use lapack && has_version "virtual/lapack[eselect-ldso(+)]"; then
 		local mylapack=$(eselect lapack show)
 		if [[ -z "${mylapack/.*reference.*/}" ]] && \
 			[[ -z "${mylapack/.*atlas.*/}" ]]; then
@@ -126,7 +137,7 @@ pkg_setup() {
 		fi
 	fi
 
-	if use blas; then
+	if use blas && has_version "virtual/blas[eselect-ldso(+)]"; then
 		local myblas=$(eselect blas show)
 		if [[ -z "${myblas/.*reference.*/}" ]] && \
 			[[ -z "${myblas/.*atlas.*/}" ]]; then
