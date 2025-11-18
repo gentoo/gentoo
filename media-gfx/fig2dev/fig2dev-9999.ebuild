@@ -20,7 +20,9 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="+ghostscript"
+IUSE="+ghostscript test"
+RESTRICT="!test? ( test )"
+REQUIRED_USE="test? ( ghostscript )"
 
 RDEPEND="
 	media-libs/libpng
