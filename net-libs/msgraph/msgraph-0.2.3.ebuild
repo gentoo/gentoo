@@ -45,3 +45,11 @@ src_configure() {
 	)
 	meson_src_configure
 }
+
+src_install(){
+	meson_install
+	if use gtk-doc; then
+		mkdir -p "${ED}"/usr/share/gtk-doc/html || die
+		mv "${ED}"/usr/share/doc/msgraph-* "${ED}"/usr/share/gtk-doc/html || die
+	fi
+}
