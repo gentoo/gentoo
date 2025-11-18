@@ -21,6 +21,7 @@ IUSE="+ocamlopt test"
 RESTRICT="test" # Test works only with ocaml >= 5
 
 RDEPEND="
+	<dev-lang/ocaml-5.4
 	dev-ml/ocaml-compiler-libs:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
 	dev-ml/sexplib0:=[ocamlopt?]

@@ -25,7 +25,7 @@ JSM=0.17
 
 # It also works with ocaml >= 4 but tests are to be fixed
 RDEPEND="
-	>=dev-lang/ocaml-5:=
+	<dev-lang/ocaml-5.3:=
 	>=dev-ml/ocaml-compiler-libs-0.17:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
 	=dev-ml/sexplib0-${JSM}*:=[ocamlopt?]
