@@ -18,7 +18,7 @@ SRC_URI="
 "
 # ^ tarball also includes test-crates' Cargo.lock(s) crates for tests
 
-LICENSE="|| ( Apache-2.0 MIT ) doc? ( CC-BY-4.0 OFL-1.1 )"
+LICENSE="|| ( Apache-2.0 MIT ) doc? ( OFL-1.1 )"
 LICENSE+="
 	0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD MIT MPL-2.0
 	Unicode-3.0 ZLIB BZIP2
@@ -36,7 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	doc? ( app-text/mdbook )
+	doc? ( >=app-text/mdbook-0.5 )
 	test? (
 		$(python_gen_cond_dep 'dev-python/cffi[${PYTHON_USEDEP}]' 'python*')
 		dev-python/boltons[${PYTHON_USEDEP}]
@@ -102,7 +102,7 @@ src_configure() {
 python_compile_all() {
 	cargo_src_compile
 
-	use !doc || mdbook build -d html guide || die
+	use !doc || mdbook build -d "${T}"/html guide || die
 
 	if ! tc-is-cross-compiler; then
 		local maturin=$(cargo_target_dir)/maturin
@@ -147,7 +147,7 @@ python_install_all() {
 	dobin "$(cargo_target_dir)"/maturin
 
 	dodoc Changelog.md README.md
-	use doc && dodoc -r guide/html
+	use doc && dodoc -r "${T}"/html
 
 	if ! tc-is-cross-compiler; then
 		dobashcomp "${T}"/${PN}
