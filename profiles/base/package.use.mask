@@ -6,6 +6,11 @@
 
 # New entries go on top.
 
+# Sam James <sam@gentoo.org> (2025-10-31)
+# Other backends are experimental for now. LLVM is forced on and mask other
+# backends.
+dev-lang/rust rust_codegen_backends_gcc
+
 # Sam James <sam@gentoo.org> (2025-10-29)
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
 # transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
