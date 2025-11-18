@@ -34,6 +34,7 @@ RDEPEND="
 	dev-qt/qtbase:6[network,opengl,widgets]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtsvg:6
+	media-libs/faad2
 	media-libs/libsdl2[sound,video]
 	net-libs/enet:=
 	net-libs/libpcap
@@ -63,6 +64,14 @@ DOC_CONTENTS="You need the following files in order to run melonDS:
 - romlist.bin
 Place them in ~/.config/melonDS
 Those files can be extracted from devices or found somewhere on the Internet ;-)"
+
+src_prepare() {
+	sed -i src/teakra/CMakeLists.txt \
+		-e "/^cmake_minimum_required/s|3.8|3.20|g" \
+		|| die
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	# -Werror=strict-aliasing
