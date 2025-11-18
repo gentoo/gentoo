@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="qt5"
 
 # kde-frameworks/kwindowsystem[X]: Unconditional use of KX11Extras
-RDEPEND="
+DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,widgets]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
 	>=dev-qt/qtsvg-${QTMIN}:6
@@ -54,7 +54,9 @@ RDEPEND="
 		>=kde-frameworks/kwindowsystem-${KF5MIN}:5
 	)
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	!kde-plasma/${PN}:5
+"
 BDEPEND="
 	>=kde-frameworks/kcmutils-${KFMIN}:6
 	qt5? ( >=kde-frameworks/kcmutils-${KF5MIN}:5 )

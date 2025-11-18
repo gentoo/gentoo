@@ -65,6 +65,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/plasma-wayland-protocols-1.19.0
 "
 RDEPEND="${COMMON_DEPEND}
+	!kde-plasma/${PN}:5
 	media-fonts/hack
 	media-fonts/noto
 	media-fonts/noto-emoji

@@ -58,6 +58,7 @@ DEPEND="${COMMON_DEPEND}
 	>=kde-frameworks/kservice-${KFMIN}:6
 "
 RDEPEND="${COMMON_DEPEND}
+	!kde-plasma/${PN}:5
 	!<kde-plasma/libplasma-6.1.90:*[-kf6compat(-)]
 	>=dev-qt/qtsvg-${QTMIN}:6
 "
