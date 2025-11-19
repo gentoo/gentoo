@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,10 +25,11 @@ RDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P/_p*}-cross-compile.patch
-	"${FILESDIR}"/${P/_p*}-_DEFAULT_SOURCE.patch
-	"${FILESDIR}"/${P/_p*}-fix-build-clang16.patch
-	"${FILESDIR}"/0001-configure.in-fix-implicit-function-declaration-causi.patch
+	"${FILESDIR}/${P/_p*}-cross-compile.patch"
+	"${FILESDIR}/${P/_p*}-_DEFAULT_SOURCE.patch"
+	"${FILESDIR}/${P/_p*}-fix-build-clang16.patch"
+	"${FILESDIR}/0001-configure.in-fix-implicit-function-declaration-causi.patch"
+	"${FILESDIR}/${P/_p*}-gcc15.patch"
 )
 
 src_prepare() {

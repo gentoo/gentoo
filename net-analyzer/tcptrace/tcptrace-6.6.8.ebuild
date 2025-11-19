@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.6.7-_DEFAULT_SOURCE.patch
 	"${FILESDIR}"/${PN}-6.6.7-fix-build-clang16.patch
 	"${FILESDIR}"/0001-configure.in-fix-implicit-function-declaration-causi.patch
+	"${FILESDIR}/${P}-gcc15.patch"
 )
 
 src_prepare() {
