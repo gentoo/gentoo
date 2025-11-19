@@ -1,0 +1,39 @@
+From a64525441d00e8e0472ca98fc779692ab2b17c8c Mon Sep 17 00:00:00 2001
+From: Kaian <kaian@irontec.com>
+Date: Wed, 20 Dec 2023 10:27:51 +0100
+Subject: [PATCH] cc: remove parameters from msg_create and
+ capture_launch_thread definition #471
+
+---
+ src/capture.c | 3 ++-
+ src/sip.c     | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/capture.c b/src/capture.c
+index 89249746..6d19d3d1 100644
+--- a/src/capture.c
++++ b/src/capture.c
+@@ -1039,8 +1039,9 @@ capture_close()
+ }
+ 
+ int
+-capture_launch_thread(capture_info_t *capinfo)
++capture_launch_thread()
+ {
++    capture_info_t *capinfo = NULL;
+     //! capture thread attributes
+     pthread_attr_t attr;
+     pthread_attr_init(&attr);
+diff --git a/src/sip.c b/src/sip.c
+index 20a2d81d..c8b1e2cb 100644
+--- a/src/sip.c
++++ b/src/sip.c
+@@ -349,7 +349,7 @@ sip_check_packet(packet_t *packet)
+         return NULL;
+ 
+     // Create a new message from this data
+-    if (!(msg = msg_create((const char*) payload)))
++    if (!(msg = msg_create()))
+         return NULL;
+ 
+     // Get Method and request for the following checks
