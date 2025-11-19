@@ -488,7 +488,7 @@ src_configure() {
 		-DVTK_MODULE_ENABLE_VTK_pegtl="YES"
 		-DVTK_MODULE_ENABLE_VTK_png="YES"
 		-DVTK_MODULE_ENABLE_VTK_pugixml="YES"
-		# -DVTK_MODULE_ENABLE_VTK_scn
+		-DVTK_MODULE_ENABLE_VTK_scn="$(usex test "YES" "NO")"
 		-DVTK_MODULE_ENABLE_VTK_sqlite="YES"
 		-DVTK_MODULE_ENABLE_VTK_theora="$(usex minimal "NO" "YES")"
 		-DVTK_MODULE_ENABLE_VTK_tiff="YES"
