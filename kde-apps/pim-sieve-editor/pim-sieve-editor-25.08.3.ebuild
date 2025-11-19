@@ -14,7 +14,7 @@ DESCRIPTION="Assistant for editing IMAP Sieve filters"
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2+ )"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="amd64 arm64"
 IUSE="telemetry"
 
 DEPEND="
