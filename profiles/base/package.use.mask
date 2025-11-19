@@ -6,6 +6,10 @@
 
 # New entries go on top.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-19)
+# KF5/Qt5 integration is no longer worth it.
+kde-plasma/plasma-meta qt5
+
 # Sam James <sam@gentoo.org> (2025-10-29)
 # Help Portage resolve app-crypt/gnupg[verify-sig] with the app-alternatives/gpg
 # transition. The any-of dep in verify-sig.eclass helps a bit, but it struggles
