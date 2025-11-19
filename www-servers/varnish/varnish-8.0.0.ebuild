@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 # Default: Use jemalloc, as adviced by upstream project
 IUSE="+jemalloc jit selinux static-libs unwind"
 
-CDEPEND="
+COMMON_DEPEND="
 	sys-libs/readline:=
 	dev-libs/libedit
 	dev-libs/libpcre2[jit?]
@@ -30,14 +30,14 @@ CDEPEND="
 # varnish compiles stuff at run time
 RDEPEND="
 	${PYTHON_DEPS}
-	${CDEPEND}
+	${COMMON_DEPEND}
 	acct-user/varnish
 	acct-group/varnish
 	sys-devel/gcc
 	selinux? ( sec-policy/selinux-varnishd )
 "
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	dev-python/docutils
 	dev-python/sphinx
 	virtual/pkgconfig
@@ -73,9 +73,6 @@ src_configure() {
 }
 
 src_test() {
-	# File does not exist anymore
-	# rm bin/varnishtest/tests/a02022.vtc || die
-
 	# Times out
 	rm bin/varnishtest/tests/u00021.vtc || die
 
