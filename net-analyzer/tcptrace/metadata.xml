@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>netmon@gentoo.org</email>
-	<name>Gentoo network monitoring and analysis project</name>
-</maintainer>
-<longdescription>
-tcptrace is a TCP connection analysis tool. It can tell you detailed
-information about TCP connections by sifting through dump files.
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">blitz/tcptrace</remote-id>
+	</upstream>
+	<longdescription>
+	tcptrace is a TCP connection analysis tool. It can tell you detailed
+	information about TCP connections by sifting through dump files.
 
-The dump file formats supported are:
-* Standard tcpdump format (you need the pcap library)
-* Sun's snoop format
-* Macintosh Etherpeek format
-* HP/NetMetrix protocol analysis format
-* NS simulator output format
-* NetScout
-* NLANR Tsh Format
+	The dump file formats supported are:
+	* Standard tcpdump format (you need the pcap library)
+	* Sun's snoop format
+	* Macintosh Etherpeek format
+	* HP/NetMetrix protocol analysis format
+	* NS simulator output format
+	* NetScout
+	* NLANR Tsh Format
 
-To see the graphs, you'll also need Tim Shepard's xplot program,
-available at http://www.xplot.org
-</longdescription>
+	To see the graphs, you'll also need Tim Shepard's xplot program,
+	available at http://www.xplot.org
+	</longdescription>
 </pkgmetadata>
