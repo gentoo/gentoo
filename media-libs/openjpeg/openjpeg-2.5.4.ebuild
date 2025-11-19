@@ -86,6 +86,11 @@ multilib_src_test() {
 	elif use x86 || use arm || use arm64; then
 		toskip+=( "${S}"/tools/travis-ci/knownfailures-*i386*.txt )
 	fi
+	if has_version "sys-libs/zlib-ng" ; then
+		elog "Some tests will be skipped due to being known to fail with sys-libs/zlib-ng"
+		elog
+		toskip+=( "${FILESDIR}"/zlib-ng-knownfailures.txt )
+	fi
 
 	local exp=$(sort "${toskip[@]}" | uniq | tr '\n' '|'; assert)
 	popd > /dev/null || die
