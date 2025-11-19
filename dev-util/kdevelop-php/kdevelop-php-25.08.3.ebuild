@@ -17,7 +17,7 @@ HOMEPAGE="https://kdevelop.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="6"
-KEYWORDS="~amd64 ~arm64"
+KEYWORDS="amd64 ~arm64"
 IUSE=""
 
 # remaining tests fail for some, bug 668530
