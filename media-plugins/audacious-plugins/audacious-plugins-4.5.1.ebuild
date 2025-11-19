@@ -11,8 +11,22 @@ SRC_URI="
 	https://distfiles.audacious-media-player.org/${P}.tar.bz2
 	mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
 "
-
-LICENSE="GPL-2"
+# BSD-2 albumart, alsa, asx, audpl, cd-menu-items, compressor, crossfade, cue, delete-files,
+# ffaudio, gio, glspectrum, gtkui, jack, ladspa, mixer, mms, mpris2, openmpt, opus, pipewire,
+# playlist-manager, qtaudio, qtui, resample, sdl, search-tool, silence-removal, song-info,
+# sox-resampler, speedpitch, statusicon-qt, ui-common
+# BSD psf, xsf
+# GPL-2+ amidiplug, aosd, blur_scope, bs2b, filewriter, flac, hotkey, lirc, m3u, metronom,
+# neon, pls, psf(peops), pulse, qtglspectrum, qthotkey, sid, sndfile, statusicon, tonegen,
+# vorbis, vtx, xsf(desmume), xspf
+# CC-BY-SA-4.0 Glare skin
+# GPL-3 ampache, cdaudio, notify, playback-history-qt, scrobbler, skins-qt, skins, songchange,
+# LGPL-2.1+ console, ladspa.h
+# ISC bitcrusher, cairo-spectrum, crystalizer, lyrics, mpg123, qt-spectrum, streamtuner,
+# voice-removal, vumeter
+# MIT xsf(spu)
+# public-domain modplug
+LICENSE="BSD-2 BSD CC-BY-SA-4.0 GPL-2+ GPL-3 ISC LGPL-2.1+ MIT public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~riscv ~x86"
 IUSE="
