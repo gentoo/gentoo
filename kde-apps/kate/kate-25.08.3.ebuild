@@ -13,7 +13,7 @@ HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/kate/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="6"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv ~x86"
+KEYWORDS="amd64 arm64 ~loong ~ppc64 ~riscv ~x86"
 IUSE=""
 
 # slot op: Uses Qt6::GuiPrivate for qtx11extras_p.h
