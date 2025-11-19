@@ -49,7 +49,6 @@ QA_CONFIG_IMPL_DECL_SKIP=(
 
 PATCHES=(
 	"${FILESDIR}/lowdown-0.10.0-pkgconfig-libmd.patch"
-	#"${FILESDIR}/lowdown-2.0.0-shared-linking.patch"
 )
 
 src_configure() {
@@ -59,7 +58,11 @@ src_configure() {
 
 	local flag makeopts
 	for flag in ${MAKEOPTS}; do
-		[[ ${flag} == -l* ]] || makeopts+=" ${flag}"
+		case "${flag}" in
+			-l*) ;;
+			-O) ;;
+			*) makeopts+=" ${flag}";;
+		esac
 	done
 	export MAKEOPTS="${makeopts}"
 
