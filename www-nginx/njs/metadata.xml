@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>zurabid2016@gmail.com</email>
+		<name>Zurab Kvachadze</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="tools">Build the command-line utility njs</flag>
+	</use>
+	<longdescription>
+		NGINX JavaScript, also known as NJS, is a dynamic module for NGINX that enables the
+		extension of built-in functionality using familiar JavaScript syntax. The NJS language is a
+		subset of JavaScript, compliant with ES5 (ECMAScript 5.1 Strict Variant) with some ES6
+		(ECMAScript 6) and newer extensions.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/nginx/njs/issues</bugs-to>
+		<remote-id type="github">nginx/njs</remote-id>
+	</upstream>
+</pkgmetadata>
