@@ -12,7 +12,7 @@ DESCRIPTION="Libary for handling mail messages and newsgroup articles"
 
 LICENSE="GPL-2+"
 SLOT="6/$(ver_cut 1-2)"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND=">=kde-frameworks/kcodecs-${KFMIN}:6"
