@@ -407,32 +407,6 @@ multilib_src_install_all() {
 
 pkg_preinst() {
 	xdg_pkg_preinst
-
-	# Make gschemas.compiled belong to glib alone
-	local cache="/usr/share/glib-2.0/schemas/gschemas.compiled"
-
-	if [[ -e ${EROOT}${cache} ]]; then
-		cp "${EROOT}"${cache} "${ED}"/${cache} || die
-	else
-		touch "${ED}"${cache} || die
-	fi
-
-	multilib_pkg_preinst() {
-		# Make giomodule.cache belong to glib alone
-		local cache="/usr/$(get_libdir)/gio/modules/giomodule.cache"
-
-		if [[ -e ${EROOT}${cache} ]]; then
-			cp "${EROOT}"${cache} "${ED}"${cache} || die
-		else
-			touch "${ED}"${cache} || die
-		fi
-	}
-
-	# Don't run the cache ownership when cross-compiling, as it would end up with an empty cache
-	# file due to inability to create it and GIO might not look at any of the modules there
-	if ! tc-is-cross-compiler ; then
-		multilib_foreach_abi multilib_pkg_preinst
-	fi
 }
 
 pkg_postinst() {
