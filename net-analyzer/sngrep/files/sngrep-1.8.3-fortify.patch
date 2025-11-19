@@ -1,0 +1,36 @@
+From a7f31ade70e3f7106fc402fb1f491a0da6fb5c08 Mon Sep 17 00:00:00 2001
+From: Victor Seva <linuxmaniac@torreviejawireless.org>
+Date: Wed, 22 Oct 2025 10:55:56 +0200
+Subject: [PATCH] cf: fix build warning
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+> gcc -DHAVE_CONFIG_H -I.   -Wdate-time -D_FORTIFY_SOURCE=2 -I/usr/include/p11-kit-1      -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -g -O2 -Werror=implicit-function-declaration -ffile-prefix-map=/build/reproducible-path/sngrep-1.8.3=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection  -c -o curses/sngrep-ui_call_raw.o `test -f 'curses/ui_call_raw.c' || echo './'`curses/ui_call_raw.c
+> curses/ui_call_flow.c: In function ‘call_flow_draw_event’:
+> curses/ui_call_flow.c:931:23: warning: too many arguments for format [-Wformat-extra-args]
+>   931 |         sprintf(text, "TelEvt DTMF:%c (end)", event->dtmf, event->duration);
+>       |                       ^~~~~~~~~~~~~~~~~~~~~~
+> curses/ui_call_flow.c:933:23: warning: too many arguments for format [-Wformat-extra-args]
+>   933 |         sprintf(text, "TelEvt DTMF:%c", event->dtmf, event->duration);
+>       |                       ^~~~~~~~~~~~~~~~
+---
+ src/curses/ui_call_flow.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/curses/ui_call_flow.c b/src/curses/ui_call_flow.c
+index 5e95e044..1456d8ba 100644
+--- a/src/curses/ui_call_flow.c
++++ b/src/curses/ui_call_flow.c
+@@ -928,9 +928,9 @@ call_flow_draw_event(ui_t *ui, call_flow_arrow_t *arrow, int cline)
+     } else if (event->error == TELEPHONE_EVENT_UNKNOWN) {
+         sprintf(text, "TelEvt (unknown)");
+     } else if (event->end) {
+-        sprintf(text, "TelEvt DTMF:%c (end)", event->dtmf, event->duration);
++        sprintf(text, "TelEvt DTMF:%c (end)", event->dtmf);
+     } else {
+-        sprintf(text, "TelEvt DTMF:%c", event->dtmf, event->duration);
++        sprintf(text, "TelEvt DTMF:%c", event->dtmf);
+     }
+ 
+     // Get message data
