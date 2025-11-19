@@ -1,0 +1,82 @@
+https://gcc.gnu.org/git/?p=gcc.git;a=commit;h=00c16753875ddd9fcc9a6484717a1fc6dc95b691
+
+From 00c16753875ddd9fcc9a6484717a1fc6dc95b691 Mon Sep 17 00:00:00 2001
+From: Andrew MacLeod <amacleod@redhat.com>
+Date: Wed, 19 Nov 2025 11:31:16 -0500
+Subject: [PATCH] Avoid recursion with SCEV
+
+Ranger should not invoke SCEV if its already in the middle of a SCEV call.
+
+	PR tree-optimization/122756
+	gcc/
+	* gimple-range-fold.cc (range_of_ssa_name_with_loop_info): Do
+	not invoke SCEV if already in a SCEV call.
+
+	gcc/testsuite/
+	* gcc.dg/pr122756.c: New.
+---
+ gcc/gimple-range-fold.cc        | 15 ++++++++++++---
+ gcc/testsuite/gcc.dg/pr122756.c | 15 +++++++++++++++
+ 2 files changed, 27 insertions(+), 3 deletions(-)
+ create mode 100644 gcc/testsuite/gcc.dg/pr122756.c
+
+diff --git a/gcc/gimple-range-fold.cc b/gcc/gimple-range-fold.cc
+index 63e114e4d044..bd5e53516b79 100644
+--- a/gcc/gimple-range-fold.cc
++++ b/gcc/gimple-range-fold.cc
+@@ -1252,11 +1252,15 @@ fold_using_range::range_of_ssa_name_with_loop_info (vrange &r, tree name,
+ 						    class loop *l, gphi *phi,
+ 						    fur_source &src)
+ {
++  static bool in_scev_call = false;
+   gcc_checking_assert (TREE_CODE (name) == SSA_NAME);
++  // Avoid SCEV callbacks causing infinite recursion.
++  if (in_scev_call)
++    r.set_varying (TREE_TYPE (name));
+   // SCEV currently invokes get_range_query () for values.  If the query
+   // being passed in is not the same SCEV will use, do not invoke SCEV.
+   // This can be remove if/when SCEV uses a passed in range-query.
+-  if (src.query () != get_range_query (cfun))
++  else if (src.query () != get_range_query (cfun))
+     {
+       r.set_varying (TREE_TYPE (name));
+       // Report the msmatch if SRC is not the global query.  The cache
+@@ -1266,8 +1270,13 @@ fold_using_range::range_of_ssa_name_with_loop_info (vrange &r, tree name,
+ 	fprintf (dump_file,
+ 	  "fold_using-range:: SCEV not invoked due to mismatched queries\n");
+     }
+-  else if (!range_of_var_in_loop (r, name, l, phi, src.query ()))
+-      r.set_varying (TREE_TYPE (name));
++  else
++    {
++      in_scev_call = true;
++      if (!range_of_var_in_loop (r, name, l, phi, src.query ()))
++	r.set_varying (TREE_TYPE (name));
++      in_scev_call = false;
++    }
+ }
+ 
+ // -----------------------------------------------------------------------
+diff --git a/gcc/testsuite/gcc.dg/pr122756.c b/gcc/testsuite/gcc.dg/pr122756.c
+new file mode 100644
+index 000000000000..62994696ac88
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/pr122756.c
+@@ -0,0 +1,15 @@
++/* { dg-do compile } */
++/* { dg-options "-O3" } */
++/* { dg-additional-options "-march=rv64gcv -mabi=lp64d" { target { rv64 } } } */
++
++long a;
++void b() {
++  unsigned long c, d;
++  for (;; c = d + 2000) {
++    d = c;
++    for (; d < a; d += 2)
++      if (d % 2)
++        for (;;)
++          ;
++  }
++}
+-- 
+2.43.7
