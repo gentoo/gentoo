@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-19)
+# No more revdeps, no longer developed upstream, Phonon revdep.
+# Removal on 2025-12-19.
+kde-apps/libkcompactdisc
+
 # Joonas Niilola <juippis@gentoo.org> (2025-11-19)
 # Brahmajit Das (listout) <brahmajit.xyz@gmail.com> (2025-11-19)
 # Currently without a maintainer and being severely outdated in
