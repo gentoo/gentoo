@@ -37,6 +37,15 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
+# KF5/Qt5 integration is no longer worth it.
+# Bug #955168. Removal some time after 2026-02-15.
+kde-plasma/oxygen:5
+kde-frameworks/frameworkintegration:5
+kde-frameworks/knewstuff:5
+kde-frameworks/attica:5
+kde-frameworks/kirigami:5
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2026-02-08)
 # Stuck on Qt5Script in the foreseeable future.  Until a Qt6 release is
 # ready, app-editors/okteta-0.26.60_pre* snapshots will be provided for
 # ~arch, main limitation being the structures tool disabled from build
