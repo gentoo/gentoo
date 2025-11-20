@@ -53,5 +53,5 @@ src_configure() {
 
 src_install() {
 	ecm_src_install
-	python_optimize
+	use python && python_optimize
 }
