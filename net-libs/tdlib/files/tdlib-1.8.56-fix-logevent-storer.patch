@@ -1,0 +1,46 @@
+Fix for the following error:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/14/../../../../x86_64-pc-linux-gnu/bin/ld: libtdcore.so: undefined reference to `void td::PeerColorCollectible::store<td::log_event::LogEventStorerCalcLength>(td::log_event::LogEventStorerCalcLength&) const'
+
+From 8365a6ed818bc20502f109750503a01f7115dcaf Mon Sep 17 00:00:00 2001
+From: levlam <levlam@telegram.org>
+Date: Wed, 15 Oct 2025 16:20:57 +0300
+Subject: [PATCH] Add missing include.
+
+---
+ td/telegram/UserManager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/td/telegram/UserManager.cpp b/td/telegram/UserManager.cpp
+index d65aa44dbee8..e70af96f711b 100644
+--- a/td/telegram/UserManager.cpp
++++ b/td/telegram/UserManager.cpp
+@@ -56,6 +56,7 @@
+ #include "td/telegram/Outline.h"
+ #include "td/telegram/PeerColor.h"
+ #include "td/telegram/PeerColorCollectible.h"
++#include "td/telegram/PeerColorCollectible.hpp"
+ #include "td/telegram/Photo.h"
+ #include "td/telegram/Photo.hpp"
+ #include "td/telegram/PhotoSize.h"
+From 4f4df7c6436085391e0b6d74cc7a54cf274c7edf Mon Sep 17 00:00:00 2001
+From: levlam <levlam@telegram.org>
+Date: Wed, 15 Oct 2025 22:49:33 +0300
+Subject: [PATCH] Add another missing include.
+
+---
+ td/telegram/UserManager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/td/telegram/UserManager.cpp b/td/telegram/UserManager.cpp
+index e70af96f711b..118c14f68597 100644
+--- a/td/telegram/UserManager.cpp
++++ b/td/telegram/UserManager.cpp
+@@ -45,6 +45,7 @@
+ #include "td/telegram/LinkManager.h"
+ #include "td/telegram/logevent/LogEvent.h"
+ #include "td/telegram/logevent/LogEventHelper.h"
++#include "td/telegram/MessageEntity.hpp"
+ #include "td/telegram/MessageId.h"
+ #include "td/telegram/MessageQuote.h"
+ #include "td/telegram/MessagesManager.h"
