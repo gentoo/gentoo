@@ -52,3 +52,9 @@ src_prepare() {
 
 	perl-module_src_prepare
 }
+
+src_compile() {
+	export COLUMNS=300 # bug #959830
+
+	perl-module_src_compile
+}
