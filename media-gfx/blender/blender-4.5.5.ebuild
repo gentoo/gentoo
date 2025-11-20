@@ -52,7 +52,7 @@ else
 	SRC_URI="
 		https://download.blender.org/source/${P}.tar.xz
 		test? (
-			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0.tar.xz
+			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0-1.tar.xz
 		)
 	"
 	KEYWORDS="~amd64 ~arm64"
@@ -762,8 +762,9 @@ src_test() {
 	if [[ "${RUN_FAILING_TESTS:-0}" -eq 0 ]]; then
 		einfo "not running failing tests RUN_FAILING_TESTS=${RUN_FAILING_TESTS}"
 		CMAKE_SKIP_TESTS+=(
-			# Does try to import from weird paths
+			# Needs testfiles update
 			"^io_fbx_import$"
+			"^cycles_camera_cpu$"
 		)
 	fi
 

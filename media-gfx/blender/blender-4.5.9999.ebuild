@@ -52,7 +52,7 @@ else
 	SRC_URI="
 		https://download.blender.org/source/${P}.tar.xz
 		test? (
-			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0.tar.xz
+			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0-1.tar.xz
 		)
 	"
 	KEYWORDS="~amd64 ~arm64"
