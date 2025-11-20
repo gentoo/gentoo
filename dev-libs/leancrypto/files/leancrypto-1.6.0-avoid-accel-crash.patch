@@ -1,0 +1,172 @@
+https://github.com/smuellerDD/leancrypto/commit/eb0ba53f220bc4fcc435c16da60e0892933af656
+
+From eb0ba53f220bc4fcc435c16da60e0892933af656 Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Thu, 27 Nov 2025 23:12:03 +0100
+Subject: [PATCH] Curve25519/448: Compile API code as pure C
+
+Considering that the API functions are invoked without checking for
+accelerations, they MUST be compiled without any accelerated options.
+
+This prevents a SIGILL when the respective option is not available
+on the target platform
+
+Reported-by: Alexander Sosedkin
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ curve25519/src/armv7/curve25519_armv7.c      | 4 ++--
+ curve25519/src/armv7/meson.build             | 1 -
+ curve25519/src/armv8/curve25519_armv8.c      | 2 +-
+ curve25519/src/armv8/meson.build             | 1 -
+ curve25519/src/avx/curve25519_avx.c          | 4 ++--
+ curve25519/src/avx/meson.build               | 1 -
+ curve25519/src/meson.build                   | 9 +++++++++
+ curve448/src/avx2/curve448_scalarmult_avx2.c | 4 ++--
+ curve448/src/avx2/meson.build                | 1 -
+ curve448/src/meson.build                     | 3 +++
+ 10 files changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/curve25519/src/armv7/curve25519_armv7.c b/curve25519/src/armv7/curve25519_armv7.c
+index 5d03bfec..c988f6fc 100644
+--- a/curve25519/src/armv7/curve25519_armv7.c
++++ b/curve25519/src/armv7/curve25519_armv7.c
+@@ -19,8 +19,8 @@
+ 
+ #include "cpufeatures.h"
+ #include "curve25519_armv7.h"
+-#include "x25519_scalarmult.h"
+-#include "x25519_scalarmult_c.h"
++#include "../x25519_scalarmult.h"
++#include "../x25519_scalarmult_c.h"
+ 
+ int crypto_scalarmult_curve25519(unsigned char *q, const unsigned char *n,
+ 				 const unsigned char *p)
+diff --git a/curve25519/src/armv7/meson.build b/curve25519/src/armv7/meson.build
+index 5768d836..d06c9212 100644
+--- a/curve25519/src/armv7/meson.build
++++ b/curve25519/src/armv7/meson.build
+@@ -1,7 +1,6 @@
+ # for i in $(ls *.c | sort); do echo "'$i',"; done
+ 
+ curve25519_armv7 = files([
+-	'curve25519_armv7.c',
+ 	'x25519-cortex-m4-gcc.S',
+ ])
+ 
+diff --git a/curve25519/src/armv8/curve25519_armv8.c b/curve25519/src/armv8/curve25519_armv8.c
+index 892ca053..a74bbcdd 100644
+--- a/curve25519/src/armv8/curve25519_armv8.c
++++ b/curve25519/src/armv8/curve25519_armv8.c
+@@ -21,7 +21,7 @@
+ #include "cpufeatures.h"
+ #include "curve25519_armv8.h"
+ #include "lc_memset_secure.h"
+-#include "x25519_scalarmult.h"
++#include "../x25519_scalarmult.h"
+ 
+ int crypto_scalarmult_curve25519(unsigned char *q, const unsigned char *n,
+ 				 const unsigned char *p)
+diff --git a/curve25519/src/armv8/meson.build b/curve25519/src/armv8/meson.build
+index bc3610e4..508d44e5 100644
+--- a/curve25519/src/armv8/meson.build
++++ b/curve25519/src/armv8/meson.build
+@@ -1,7 +1,6 @@
+ # for i in $(ls *.c | sort); do echo "'$i',"; done
+ 
+ curve25519_armv8 = files([
+-	'curve25519_armv8.c',
+ 	'X25519-AArch64.S',
+ ])
+ 
+diff --git a/curve25519/src/avx/curve25519_avx.c b/curve25519/src/avx/curve25519_avx.c
+index ef605d54..9430d6d4 100644
+--- a/curve25519/src/avx/curve25519_avx.c
++++ b/curve25519/src/avx/curve25519_avx.c
+@@ -40,8 +40,8 @@
+ #include "fe51.h"
+ #include "ladder.h"
+ #include "lc_memset_secure.h"
+-#include "x25519_scalarmult.h"
+-#include "x25519_scalarmult_c.h"
++#include "../x25519_scalarmult.h"
++#include "../x25519_scalarmult_c.h"
+ 
+ #define x1 var[0]
+ #define x2 var[1]
+diff --git a/curve25519/src/avx/meson.build b/curve25519/src/avx/meson.build
+index ecf7706c..dde3e1ce 100644
+--- a/curve25519/src/avx/meson.build
++++ b/curve25519/src/avx/meson.build
+@@ -1,7 +1,6 @@
+ # for i in $(ls *.c | sort); do echo "'$i',"; done
+ 
+ curve25519_avx = files([
+-	'curve25519_avx.c',
+ 	'curve25519_avx_asm.S',
+ 	'fe51_invert.c',
+ 	'fe_frombytes_avx.c',
+diff --git a/curve25519/src/meson.build b/curve25519/src/meson.build
+index c5930bb6..8fa85dee 100644
+--- a/curve25519/src/meson.build
++++ b/curve25519/src/meson.build
+@@ -12,10 +12,19 @@ if get_option('kyber_x25519').enabled()
+ 
+ 	if (x86_64_asm)
+ 		subdir('avx')
++		src += files([
++			'avx/curve25519_avx.c',
++		])
+ 	elif (arm64_asm)
+ 		subdir('armv8')
++		src += files([
++			'armv8/curve25519_armv8.c',
++		])
+ 	elif (arm32_neon_asm)
+ 		subdir('armv7')
++		src += files([
++			'armv7/curve25519_armv7.c',
++		])
+ 	else
+ 		src += files([
+ 			'x25519_scalarmult.c',
+diff --git a/curve448/src/avx2/curve448_scalarmult_avx2.c b/curve448/src/avx2/curve448_scalarmult_avx2.c
+index 1c94662e..2d180b37 100644
+--- a/curve448/src/avx2/curve448_scalarmult_avx2.c
++++ b/curve448/src/avx2/curve448_scalarmult_avx2.c
+@@ -65,8 +65,8 @@
+ #include "lc_memset_secure.h"
+ #include "lc_x448.h"
+ #include "small_stack_support.h"
+-#include "x448_scalarmult.h"
+-#include "x448_scalarmult_c.h"
++#include "../x448_scalarmult.h"
++#include "../x448_scalarmult_c.h"
+ 
+ static const uint8_t curve448_base_point[LC_X448_PUBLICKEYBYTES] = { 5 };
+ 
+diff --git a/curve448/src/avx2/meson.build b/curve448/src/avx2/meson.build
+index 1fb2dffc..9fa2f827 100644
+--- a/curve448/src/avx2/meson.build
++++ b/curve448/src/avx2/meson.build
+@@ -1,7 +1,6 @@
+ # for i in $(ls *.c | sort); do echo "'$i',"; done
+ 
+ curve448_avx2 = files([
+-	'curve448_scalarmult_avx2.c',
+ 	'gf_p4482241_inv.c',
+ 	'curve448_scalarmult_avx2_asm.S',
+ 	'gf_p4482241_pack.c',
+diff --git a/curve448/src/meson.build b/curve448/src/meson.build
+index cc49b878..88c792b0 100644
+--- a/curve448/src/meson.build
++++ b/curve448/src/meson.build
+@@ -22,6 +22,9 @@ if get_option('kyber_x448').enabled()
+ 
+ 	if (x86_64_asm)
+ 		subdir('avx2')
++		src += files([
++			'avx2/curve448_scalarmult_avx2.c',
++		])
+ 	else
+ 		src += files([
+ 			'x448_scalarmult.c',

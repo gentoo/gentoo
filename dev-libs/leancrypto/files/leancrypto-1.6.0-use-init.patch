@@ -1,0 +1,89 @@
+https://github.com/smuellerDD/leancrypto/commit/64cb452a19cda415e2f00b31b681a9cc03989588
+
+From 64cb452a19cda415e2f00b31b681a9cc03989588 Mon Sep 17 00:00:00 2001
+From: Stephan Mueller <smueller@chronox.de>
+Date: Wed, 26 Nov 2025 11:46:56 +0100
+Subject: [PATCH] Tests: use lc_init when linking with static libarary
+
+When linking with the static library, the constructors are not adopted
+for the application. Therefore, the init function setting the accelerations
+is not completed which implies that the test status display was showing wrong
+acceleration support.
+
+Signed-off-by: Stephan Mueller <smueller@chronox.de>
+---
+ ml-dsa/tests/dilithium_tester.c | 8 ++++++++
+ ml-kem/tests/kyber_kem_tester.c | 8 ++++++++
+ slh-dsa/tests/sphincs_tester.c  | 8 ++++++++
+ 3 files changed, 24 insertions(+)
+
+diff --git a/ml-dsa/tests/dilithium_tester.c b/ml-dsa/tests/dilithium_tester.c
+index e2edead5..4a1470e4 100644
+--- a/ml-dsa/tests/dilithium_tester.c
++++ b/ml-dsa/tests/dilithium_tester.c
+@@ -32,6 +32,7 @@
+ #include "dilithium_tester.h"
+ #include "ext_headers_internal.h"
+ #include "lc_hash.h"
++#include "lc_init.h"
+ #include "lc_sha3.h"
+ #include "ret_checkers.h"
+ #include "selftest_rng.h"
+@@ -472,3 +473,10 @@ int _dilithium_init_update_final_tester(
+ 	return ret;
+ #endif
+ }
++
++#ifndef LINUX_KERNEL
++LC_CONSTRUCTOR(kyber_kem_init, 101)
++{
++	lc_init(0);
++}
++#endif
+diff --git a/ml-kem/tests/kyber_kem_tester.c b/ml-kem/tests/kyber_kem_tester.c
+index b6b1813b..bb9bfd1f 100644
+--- a/ml-kem/tests/kyber_kem_tester.c
++++ b/ml-kem/tests/kyber_kem_tester.c
+@@ -28,6 +28,7 @@
+ #include "ext_headers_internal.h"
+ #include "kyber_type.h"
+ #include "kyber_kem_tester.h"
++#include "lc_init.h"
+ #include "lc_sha3.h"
+ #include "ret_checkers.h"
+ #include "small_stack_support.h"
+@@ -505,3 +506,10 @@ int _kyber_kem_kdf_tester(
+ 	LC_RELEASE_MEM(ws);
+ 	return ret;
+ }
++
++#ifndef LINUX_KERNEL
++LC_CONSTRUCTOR(kyber_kem_init, 101)
++{
++	lc_init(0);
++}
++#endif
+diff --git a/slh-dsa/tests/sphincs_tester.c b/slh-dsa/tests/sphincs_tester.c
+index 34b9e0e4..1cf12106 100644
+--- a/slh-dsa/tests/sphincs_tester.c
++++ b/slh-dsa/tests/sphincs_tester.c
+@@ -19,6 +19,7 @@
+ 
+ #include "compare.h"
+ #include "cpufeatures.h"
++#include "lc_init.h"
+ #include "small_stack_support.h"
+ #include "sphincs_type.h"
+ #include "static_rng.h"
+@@ -181,3 +182,10 @@ LC_TEST_FUNC(int, main, int argc, char *argv[])
+ 		lc_cpu_feature_enable();
+ 	return ret;
+ }
++
++#ifndef LINUX_KERNEL
++LC_CONSTRUCTOR(kyber_kem_init, 101)
++{
++	lc_init(0);
++}
++#endif
+
