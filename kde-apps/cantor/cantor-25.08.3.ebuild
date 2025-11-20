@@ -4,6 +4,7 @@
 EAPI=8
 
 CMAKE_MAKEFILE_GENERATOR="emake"
+CMAKE_QA_COMPAT_SKIP=1 # bug 965858
 ECM_HANDBOOK="optional"
 ECM_TEST="forceoptional"
 LUA_COMPAT=( luajit )
