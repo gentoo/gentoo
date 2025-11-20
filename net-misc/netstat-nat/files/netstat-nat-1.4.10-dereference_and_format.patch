@@ -1,0 +1,31 @@
+Fix dereference of the optarg and wrong format length in print args.
+
+--- a/netstat-nat.c	2025-11-20 17:38:17.354022709 +0300
++++ b/netstat-nat.c	2025-11-20 17:39:20.152607515 +0300
+@@ -280,7 +280,7 @@
+ 	    NAT_HOP = 1;
+ 	    break;
+ 	case 'r':
+-	    if (optarg == NULL || optarg == '\0') {
++	    if (optarg == NULL || *optarg == '\0') {
+ 		display_help();
+ 		return 1;
+ 		}
+@@ -821,7 +821,7 @@
+     if ((buf = calloc(1, bufsize)) != NULL) {
+ 	return buf;
+     } else {
+-	printf("Could not allocate memory (%i bytes); %s.\n -- Exiting.\n", bufsize, strerror(errno));
++	printf("Could not allocate memory (%li bytes); %s.\n -- Exiting.\n", bufsize, strerror(errno));
+ 	exit(1);
+ 	}
+     }
+@@ -834,7 +834,7 @@
+     if ((newbuf = realloc(oldbuf, newbufsize)) != NULL) {
+ 	return newbuf;
+     } else {
+-	printf("Could not allocate memory (%i bytes); %s.\n -- Exiting.\n", newbufsize, strerror(errno));
++	printf("Could not allocate memory (%li bytes); %s.\n -- Exiting.\n", newbufsize, strerror(errno));
+ 	exit(1);
+ 	}
+     }
