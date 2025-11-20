@@ -156,8 +156,6 @@ net-libs/NativeThread
 #
 # A common issue with 6.10 is builds failing to find Qt private headers
 # as it (now) requires searching for e.g. GuiPrivate in CMakeLists.txt.
-=dev-python/pyqt6-6.10*
-=dev-python/pyqt6-webengine-6.10*
 =dev-python/pyside-6.10.0*
 =dev-qt/qt-docs-6.10.0*
 =dev-qt/qt3d-6.10.0*
