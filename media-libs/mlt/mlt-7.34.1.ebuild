@@ -102,10 +102,6 @@ src_prepare() {
 		python_fix_shebang src/swig/python
 	fi
 
-	if has_version ">=media-video/ffmpeg-8"; then
-		PATCHES+=( "${FILESDIR}"/${P}-ffmpeg8.patch ) # bug 961698, git master
-	fi
-
 	cmake_src_prepare
 }
 
