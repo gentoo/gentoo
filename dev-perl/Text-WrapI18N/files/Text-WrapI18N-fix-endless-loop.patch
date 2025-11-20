@@ -1,0 +1,26 @@
+patch is extracted from debian:
+https://deb.debian.org/debian/pool/main/libt/libtext-wrapi18n-perl/libtext-wrapi18n-perl_0.06-10.debian.tar.xz
+
+Description: The infinite loop occurs in Text::WrapI18N when po4a tries to report an error in the PO files.
+ I could reproduce the problem in WrapI18N::wrap() and I propose the
+ attached patch to WrapI18N::wrap().  (A word should be placed on the
+ next line if it fits on this line, but the leading header must be taken
+ into account, thus $columns -> $columns - length $header)
+Origin: vendor
+Bug-Debian: https://bugs.debian.org/470250
+Forwarded: unknown
+Author: Nicolas François <nicolas.francois@centraliens.net>
+Reviewed-by: gregor herrmann <gregoa@debian.org>
+Last-Update: 2019-03-21
+
+--- a/WrapI18N.pm	2003-06-25 11:14:25.000000000 +0200
++++ b/WrapI18N.pm	2008-03-13 02:04:02.628000837 +0100
+@@ -88,7 +88,7 @@ sub wrap {
+ 			$len = 0;
+ 			$text = $top2 . $text;
+ 			$word = ''; $wlen = 0;
+-		} elsif ($wlen + $w <= $columns) {
++		} elsif ($wlen + $w <= $columns - length ($top2)) {
+ 			# the current word is sent to next line
+ 			$out .= $separator;
+ 			$len = 0;
