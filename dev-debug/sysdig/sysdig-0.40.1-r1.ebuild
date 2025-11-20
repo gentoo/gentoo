@@ -40,24 +40,28 @@ RDEPEND="${LUA_DEPS}
 	net-libs/grpc:=
 	net-misc/curl
 	sys-libs/ncurses:=
+	virtual/libelf:=
 	virtual/zlib:=
-	virtual/libelf:="
+"
 
 DEPEND="${RDEPEND}
 	dev-cpp/nlohmann_json
 	dev-cpp/valijson
-	virtual/os-headers"
+	virtual/os-headers
+"
 
 BDEPEND="bpf? (
 			dev-util/bpftool
 			llvm-core/clang:*[llvm_targets_BPF]
-		)"
+		)
+"
 
 # pin the driver to the falcosecurity-libs version
 PDEPEND="modules? ( =dev-debug/scap-driver-${LIBS_VERSION}* )"
 
 PATCHES=(
 	"${FILESDIR}/0.38.1-scap-loader.patch"
+	"${FILESDIR}/0.40.1-cmake4.patch"
 )
 
 pkg_pretend() {

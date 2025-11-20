@@ -1,0 +1,68 @@
+https://github.com/draios/sysdig/pull/2167
+
+From: =?UTF-8?q?Holger=20Hoffst=C3=A4tte?= <holger@applied-asynchrony.com>
+Date: Sun, 19 Oct 2025 12:56:26 +0200
+Subject: [PATCH] fix(build): bump cmake_minimum_required to 3.12 everywhere
+
+This brings the required CMake version in line with falcosecurity/libs.
+
+Signed-off-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+---
+ CMakeLists.txt                                       | 2 +-
+ CMakeListsGtestInclude.cmake                         | 2 +-
+ cmake/modules/driver-repo/CMakeLists.txt             | 2 +-
+ cmake/modules/falcosecurity-libs-repo/CMakeLists.txt | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b1cbd02ccd..97957b0835 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -33,7 +33,7 @@ if(EXISTS ${CMAKE_CURRENT_BINARY_DIR}/CMakeLists.txt)
+ 		"The following wiki page has more information on manually building sysdig: http://bit.ly/1oJ84UI")
+ endif()
+ 
+-cmake_minimum_required(VERSION 3.5.1)
++cmake_minimum_required(VERSION 3.12)
+ 
+ project(sysdig)
+ 
+diff --git a/CMakeListsGtestInclude.cmake b/CMakeListsGtestInclude.cmake
+index 76c0f1b1ca..375e8efba0 100644
+--- a/CMakeListsGtestInclude.cmake
++++ b/CMakeListsGtestInclude.cmake
+@@ -16,7 +16,7 @@
+ # limitations under the License.
+ #
+ 
+-cmake_minimum_required(VERSION 2.8.2)
++cmake_minimum_required(VERSION 3.12)
+ 
+ project(googletest-download NONE)
+ 
+diff --git a/cmake/modules/driver-repo/CMakeLists.txt b/cmake/modules/driver-repo/CMakeLists.txt
+index 6f8684b574..5c1939ce15 100644
+--- a/cmake/modules/driver-repo/CMakeLists.txt
++++ b/cmake/modules/driver-repo/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ # limitations under the License.
+ #
+ 
+-cmake_minimum_required(VERSION 3.5.1)
++cmake_minimum_required(VERSION 3.12)
+ 
+ project(driver-repo NONE)
+ 
+diff --git a/cmake/modules/falcosecurity-libs-repo/CMakeLists.txt b/cmake/modules/falcosecurity-libs-repo/CMakeLists.txt
+index 946cf5d260..5131a07ce2 100644
+--- a/cmake/modules/falcosecurity-libs-repo/CMakeLists.txt
++++ b/cmake/modules/falcosecurity-libs-repo/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ # limitations under the License.
+ #
+ 
+-cmake_minimum_required(VERSION 3.5.1)
++cmake_minimum_required(VERSION 3.12)
+ 
+ project(falcosecurity-libs-repo NONE)
+ 
