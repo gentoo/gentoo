@@ -1887,7 +1887,7 @@ toolchain_src_configure() {
 		confgcc+=( --enable-host-shared )
 	fi
 
-	if tc_version_is_at_least 15.1 ${PV} ; then
+	if tc_version_is_at_least 15.1 ${PV} && _tc_use_if_iuse libgdiagnostics ; then
 		confgcc+=( $(use_enable libgdiagnostics) )
 	fi
 
