@@ -3,9 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit meson python-any-r1
+inherit meson-multilib python-any-r1
 
 DESCRIPTION="EDID and DisplayID library"
 HOMEPAGE="https://gitlab.freedesktop.org/emersion/libdisplay-info"
