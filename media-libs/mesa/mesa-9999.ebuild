@@ -339,7 +339,7 @@ multilib_src_configure() {
 		vulkan_enable video_cards_asahi asahi
 		vulkan_enable video_cards_d3d12 microsoft-experimental
 		vulkan_enable video_cards_freedreno freedreno
-		vulkan_enable video_cards_imagination imagination-experimental
+		vulkan_enable video_cards_imagination imagination
 		vulkan_enable video_cards_intel intel intel_hasvk
 		vulkan_enable video_cards_lavapipe swrast
 		vulkan_enable video_cards_panfrost panfrost
