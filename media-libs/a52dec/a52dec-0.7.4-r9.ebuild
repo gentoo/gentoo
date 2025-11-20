@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tests-optional.patch
 	"${FILESDIR}"/${P}-test-hidden-symbols.patch
 	"${FILESDIR}"/${P}-dont-mangle-cflags.patch
+	"${FILESDIR}"/${P}-rm_getopt.patch
 )
 
 src_prepare() {
@@ -30,6 +31,9 @@ src_prepare() {
 
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.in || die # bug #466978
 	mv configure.{in,ac} || die
+
+	# use getopt.h from glibc/musl, bug 944997
+	rm src/getopt.h || die
 
 	eautoreconf
 
