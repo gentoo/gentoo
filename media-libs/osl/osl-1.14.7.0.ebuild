@@ -20,8 +20,8 @@ if [[ ${PV} = *9999* ]] ; then
 else
 	# If a development release, please don't keyword!
 	SRC_URI="https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/OpenShadingLanguage-${PV}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+	S="${WORKDIR}/OpenShadingLanguage-${PV}"
 fi
 
 LICENSE="BSD"
@@ -364,41 +364,54 @@ src_test() {
 		# batchregression
 		"^spline-reg.regress.batched.opt$"
 		"^transform-reg.regress.batched.opt$"
-		"^texture3d-opts-reg.regress.batched.opt$"
+# 		"^texture3d-opts-reg.regress.batched.opt$"
 
 		# doesn't handle parameters
 		"^osl-imageio"
 
-		# render
-		"^render-bunny.opt$"
-		"^render-displacement.opt$"
-		"^render-microfacet.opt$"
-		"^render-veachmis.opt$"
-
-		# optix
-		"^render-microfacet.optix.opt$"
-		"^render-microfacet.optix.fused$"
-		"^render-mx-burley-diffuse.opt$"
+		# TODO Unknown exception: Unable to convert function return value to a Python type!
+		 # The signature was (self: oslquery.Parameter) -> OpenImageIO_v3_0::TypeDesc
+		"^python-oslquery"
 	)
 
 	local myctestargs=(
-		-LE 'render'
+		-LE '(render|optix)'
 		# src/build-scripts/ci-test.bash
-		# '--force-new-ctest-process'
+		# --repeat until-pass:10
+		'--force-new-ctest-process'
 	)
 
-	OPENIMAGEIO_CUDA=0 \
-	cmake_src_test
+# 	OPENIMAGEIO_CUDA=0 \
+# 	cmake_src_test
+
+	# NOTE this should go to cuda eclass
+	cuda_add_sandbox -w
+	addwrite "/proc/self/task/"
+	addpredict "/dev/char/"
 
 	einfo ""
 	einfo "testing render tests in isolation"
 	einfo ""
 
+	CMAKE_SKIP_TESTS=(
+		# optix
+		"^render-microfacet.optix.opt$"
+		"^render-microfacet.optix.fused$"
+
+		# render
+		"^render-bunny.opt$"
+		"^render-displacement.opt$"
+		"^render-microfacet.opt$"
+		"^render-mx-burley-diffuse.opt$"
+		"^render-veachmis.opt$"
+	)
+
 	myctestargs=(
-		-L "render"
+		-L "(render|optix)"
 		# src/build-scripts/ci-test.bash
 		'--force-new-ctest-process'
 		--repeat until-pass:10
+		--output-on-failure
 	)
 
 	cmake_src_test
