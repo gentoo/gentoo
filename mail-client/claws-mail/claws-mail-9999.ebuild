@@ -64,7 +64,7 @@ COMMONDEPEND="${NOTIFICATIONDEPEND}
 		>=dev-libs/dbus-glib-0.60
 		sys-apps/dbus
 	)
-	gnutls? ( >=net-libs/gnutls-3.0 )
+	gnutls? ( >=net-libs/gnutls-3.4 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7:= )
 	litehtml? (
