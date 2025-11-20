@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Ionen Wolkens <ionen@gentoo.org> (2025-11-20)
+# Needs llvm-core/clang which is not keyworded here
+dev-qt/qttools qdoc
+
 # Alfred Wingate <parona@protonmail.com> (2025-10-20)
 # sys-libs/libnvme is not keyworded here
 net-misc/networkmanager nbft
