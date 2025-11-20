@@ -19,3 +19,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="test? ( dev-qt/qttools:6[linguist] )"
+
+src_prepare() {
+	rm -r examples # unused, causes bug #966102
+	ecm_src_prepare
+}
