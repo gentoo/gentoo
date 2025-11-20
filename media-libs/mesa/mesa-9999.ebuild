@@ -110,7 +110,10 @@ RDEPEND="
 	)
 	video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
 	video_cards_zink? ( media-libs/vulkan-loader:=[${MULTILIB_USEDEP}] )
-	vulkan? ( virtual/libudev:= )
+	vulkan? (
+		media-libs/libdisplay-info:=[${MULTILIB_USEDEP}]
+		virtual/libudev:=
+	)
 	wayland? ( >=dev-libs/wayland-1.18.0[${MULTILIB_USEDEP}] )
 	${LIBDRM_DEPSTRING}[video_cards_freedreno?,video_cards_intel?,video_cards_nouveau?,video_cards_vc4?,video_cards_vivante?,video_cards_vmware?,${MULTILIB_USEDEP}]
 	X? (
@@ -401,6 +404,7 @@ multilib_src_configure() {
 		$(meson_feature llvm)
 		$(meson_feature lm-sensors lmsensors)
 		$(meson_feature unwind libunwind)
+		$(meson_feature vulkan display-info)
 		$(meson_feature zstd)
 		$(meson_use llvm amd-use-llvm)
 		$(meson_use sysprof)
