@@ -207,6 +207,13 @@ src_prepare() {
 }
 
 src_configure() {
+	# temporary warning to spare surprised users for whom "it worked before",
+	# will drop this in Qt 6.11 (bug #966289)
+	if use custom-cflags && tc-cpp-is-true __RDRND__ ${CXXFLAGS}; then
+		ewarn "USE=custom-cflags is enabled, and there is a good chance that the build"
+		ewarn "will fail with current CXXFLAGS. Please disable it if have issues."
+	fi
+
 	if use gtk; then
 		# defang automagic dependencies (bug #624960)
 		use X || append-cxxflags -DGENTOO_GTK_HIDE_X11
