@@ -23,7 +23,10 @@ KEYWORDS="amd64 arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86"
 REQUIRED_USE="${LUA_REQUIRED_USE}"
 
 DEPEND="${LUA_DEPS}"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!<dev-lua/luarocks-3.12.2-r1
+"
 
 src_prepare() {
 	default
