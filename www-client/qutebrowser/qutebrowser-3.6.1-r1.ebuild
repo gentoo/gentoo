@@ -66,6 +66,10 @@ fi
 EPYTEST_PLUGINS=( hypothesis pytest-{bdd,mock,qt,rerunfailures,xvfb} )
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}"/${P}-qt6.10.1.patch
+)
+
 src_prepare() {
 	distutils-r1_src_prepare
 
