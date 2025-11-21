@@ -1,0 +1,35 @@
+https://github.com/tree-sitter-grammars/tree-sitter-lua/commit/1197e88fb53fe7a3a5d7b95ba02b225cacb763cb
+--- /dev/null
++++ b/tree-sitter.json
+@@ -0,0 +1,31 @@
++{
++  "grammars": [
++    {
++      "name": "lua",
++      "path": ".",
++      "scope": "source.lua",
++      "file-types": [
++        "lua"
++      ],
++      "injection-regex": "^lua$",
++      "highlights": "queries/highlights.scm",
++      "injections": "queries/injections.scm",
++      "locals": "queries/locals.scm",
++      "tags": "queries/tags.scm"
++    }
++  ],
++  "metadata": {
++    "version": "0.3.0",
++    "license": "MIT",
++    "authors": [
++      {
++        "name": "Munif Tanjim",
++        "email": "hello@muniftanjim.dev",
++        "url": "https://muniftanjim.dev"
++      }
++    ],
++    "links": {
++      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-lua"
++    }
++  }
++}
