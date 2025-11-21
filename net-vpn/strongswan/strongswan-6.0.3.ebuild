@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="8"
-inherit linux-info systemd
+inherit systemd
 
 DESCRIPTION="IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE"
 HOMEPAGE="https://www.strongswan.org/"
@@ -32,7 +32,8 @@ for mod in $STRONGSWAN_PLUGINS_OPT; do
 	IUSE="${IUSE} strongswan_plugins_${mod}"
 done
 
-COMMON_DEPEND="non-root? (
+COMMON_DEPEND="
+	non-root? (
 		acct-user/ipsec
 		acct-group/ipsec
 	)
@@ -55,148 +56,106 @@ COMMON_DEPEND="non-root? (
 	strongswan_plugins_connmark? ( net-firewall/iptables:= )
 	strongswan_plugins_forecast? ( net-firewall/iptables:= )
 	strongswan_plugins_soup? ( net-libs/libsoup:3.0 )
-	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns:= )"
-
-DEPEND="${COMMON_DEPEND}
+	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns:= )
+"
+DEPEND="
+	${COMMON_DEPEND}
 	virtual/linux-sources
-	sys-kernel/linux-headers"
-
-RDEPEND="${COMMON_DEPEND}
+	sys-kernel/linux-headers
+"
+RDEPEND="
+	${COMMON_DEPEND}
 	virtual/logger
 	sys-apps/iproute2
 	!net-vpn/libreswan
-	selinux? ( sec-policy/selinux-ipsec )"
+	selinux? ( sec-policy/selinux-ipsec )
+"
 
 UGID="ipsec"
 
-pkg_setup() {
-	linux-info_pkg_setup
-
-	elog "Linux kernel version: ${KV_FULL}"
-
-	if ! kernel_is -ge 2 6 16; then
-		eerror
-		eerror "This ebuild currently only supports ${PN} with the"
-		eerror "native Linux 2.6 IPsec stack on kernels >= 2.6.16."
-		eerror
-	fi
-
-	if kernel_is -lt 2 6 34; then
-		ewarn
-		ewarn "IMPORTANT KERNEL NOTES: Please read carefully..."
-		ewarn
-
-		if kernel_is -lt 2 6 29; then
-			ewarn "[ < 2.6.29 ] Due to a missing kernel feature, you have to"
-			ewarn "include all required IPv6 modules even if you just intend"
-			ewarn "to run on IPv4 only."
-			ewarn
-			ewarn "This has been fixed with kernels >= 2.6.29."
-			ewarn
-		fi
-
-		if kernel_is -lt 2 6 33; then
-			ewarn "[ < 2.6.33 ] Kernels prior to 2.6.33 include a non-standards"
-			ewarn "compliant implementation for SHA-2 HMAC support in ESP and"
-			ewarn "miss SHA384 and SHA512 HMAC support altogether."
-			ewarn
-			ewarn "If you need any of those features, please use kernel >= 2.6.33."
-			ewarn
-		fi
-
-		if kernel_is -lt 2 6 34; then
-			ewarn "[ < 2.6.34 ] Support for the AES-GMAC authentification-only"
-			ewarn "ESP cipher is only included in kernels >= 2.6.34."
-			ewarn
-			ewarn "If you need it, please use kernel >= 2.6.34."
-			ewarn
-		fi
-	fi
-}
-
 src_configure() {
-	local myconf=""
+	local myeconfargs=(
+		--disable-static
+		--enable-ikev1
+		--enable-ikev2
+		--enable-swanctl
+		--enable-socket-dynamic
+		--enable-cmd
+		$(use_enable curl)
+		$(use_enable constraints)
+		$(use_enable ldap)
+		$(use_enable debug leak-detective)
+		$(use_enable dhcp)
+		$(use_enable eap eap-sim)
+		$(use_enable eap eap-sim-file)
+		$(use_enable eap eap-simaka-sql)
+		$(use_enable eap eap-simaka-pseudonym)
+		$(use_enable eap eap-simaka-reauth)
+		$(use_enable eap eap-identity)
+		$(use_enable eap eap-md5)
+		$(use_enable eap eap-aka)
+		$(use_enable eap eap-aka-3gpp2)
+		$(use_enable eap md4)
+		$(use_enable eap eap-mschapv2)
+		$(use_enable eap eap-radius)
+		$(use_enable eap eap-tls)
+		$(use_enable eap eap-ttls)
+		$(use_enable eap xauth-eap)
+		$(use_enable eap eap-dynamic)
+		$(use_enable farp)
+		$(use_enable gmp)
+		$(use_enable gcrypt)
+		$(use_enable mysql)
+		$(use_enable networkmanager nm)
+		$(use_enable openssl)
+		$(use_enable pam xauth-pam)
+		$(use_enable pkcs11)
+		$(use_enable sqlite)
+		$(use_enable systemd)
+		$(use_with caps capabilities libcap)
+		--with-piddir=/run
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+	)
 
 	if use non-root; then
-		myconf="${myconf} --with-user=${UGID} --with-group=${UGID}"
+		myeconfargs+=(
+			--with-user=${UGID}
+			--with-group=${UGID}
+		)
 	fi
 
 	# If a user has already enabled db support, those plugins will
 	# most likely be desired as well. Besides they don't impose new
 	# dependencies and come at no cost (except for space).
 	if use mysql || use sqlite; then
-		myconf="${myconf} --enable-attr-sql --enable-sql"
+		myeconfargs+=(
+			--enable-attr-sql
+			--enable-sql
+		)
 	fi
 
 	# strongSwan builds and installs static libs by default which are
 	# useless to the user (and to strongSwan for that matter) because no
 	# header files or alike get installed... so disabling them is safe.
 	if use pam && use eap; then
-		myconf="${myconf} --enable-eap-gtc"
+		myeconfargs+=( --enable-eap-gtc )
 	else
-		myconf="${myconf} --disable-eap-gtc"
+		myeconfargs+=( --disable-eap-gtc )
 	fi
 
 	for mod in $STRONGSWAN_PLUGINS_STD; do
-		if use strongswan_plugins_${mod}; then
-			myconf+=" --enable-${mod}"
-		fi
+		use strongswan_plugins_${mod} && myeconfargs+=( --enable-${mod} )
 	done
 
 	for mod in $STRONGSWAN_PLUGINS_OPT_DISABLE; do
-		if ! use strongswan_plugins_${mod}; then
-			myconf+=" --disable-${mod}"
-		fi
+		! use strongswan_plugins_${mod} && myeconfargs+=( --disable-${mod} )
 	done
 
 	for mod in $STRONGSWAN_PLUGINS_OPT; do
-		if use strongswan_plugins_${mod}; then
-			myconf+=" --enable-${mod}"
-		fi
+		use strongswan_plugins_${mod} && myeconfargs+=( --enable-${mod} )
 	done
 
-	econf \
-		--disable-static \
-		--enable-ikev1 \
-		--enable-ikev2 \
-		--enable-swanctl \
-		--enable-socket-dynamic \
-		--enable-cmd \
-		$(use_enable curl) \
-		$(use_enable constraints) \
-		$(use_enable ldap) \
-		$(use_enable debug leak-detective) \
-		$(use_enable dhcp) \
-		$(use_enable eap eap-sim) \
-		$(use_enable eap eap-sim-file) \
-		$(use_enable eap eap-simaka-sql) \
-		$(use_enable eap eap-simaka-pseudonym) \
-		$(use_enable eap eap-simaka-reauth) \
-		$(use_enable eap eap-identity) \
-		$(use_enable eap eap-md5) \
-		$(use_enable eap eap-aka) \
-		$(use_enable eap eap-aka-3gpp2) \
-		$(use_enable eap md4) \
-		$(use_enable eap eap-mschapv2) \
-		$(use_enable eap eap-radius) \
-		$(use_enable eap eap-tls) \
-		$(use_enable eap eap-ttls) \
-		$(use_enable eap xauth-eap) \
-		$(use_enable eap eap-dynamic) \
-		$(use_enable farp) \
-		$(use_enable gmp) \
-		$(use_enable gcrypt) \
-		$(use_enable mysql) \
-		$(use_enable networkmanager nm) \
-		$(use_enable openssl) \
-		$(use_enable pam xauth-pam) \
-		$(use_enable pkcs11) \
-		$(use_enable sqlite) \
-		$(use_enable systemd) \
-		$(use_with caps capabilities libcap) \
-		--with-piddir=/run \
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
-		${myconf}
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -241,14 +200,6 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die "Failed to remove .la files."
 }
 
-pkg_preinst() {
-	has_version "<net-vpn/strongswan-4.3.6-r1"
-	upgrade_from_leq_4_3_6=$(( !$? ))
-
-	has_version "<net-vpn/strongswan-4.3.6-r1[-caps]"
-	previous_4_3_6_with_caps=$(( !$? ))
-}
-
 pkg_postinst() {
 	if ! use openssl && ! use gcrypt; then
 		elog
@@ -261,35 +212,6 @@ pkg_postinst() {
 		elog "availability and speed of some cryptographic features. There will be"
 		elog "no support for Elliptic Curve Cryptography (Diffie-Hellman groups 19-21,"
 		elog "25, 26) and ECDSA."
-	fi
-
-	if [[ $upgrade_from_leq_4_3_6 == 1 ]]; then
-		chmod 0750 "${ROOT}"/etc/ipsec.d \
-			"${ROOT}"/etc/ipsec.d/aacerts \
-			"${ROOT}"/etc/ipsec.d/acerts \
-			"${ROOT}"/etc/ipsec.d/cacerts \
-			"${ROOT}"/etc/ipsec.d/certs \
-			"${ROOT}"/etc/ipsec.d/crls \
-			"${ROOT}"/etc/ipsec.d/ocspcerts \
-			"${ROOT}"/etc/ipsec.d/private \
-			"${ROOT}"/etc/ipsec.d/reqs
-
-		ewarn
-		ewarn "The default permissions for /etc/ipsec.d/* have been tightened for"
-		ewarn "security reasons. Your system installed directories have been"
-		ewarn "updated accordingly. Please check if necessary."
-		ewarn
-
-		if [[ $previous_4_3_6_with_caps == 1 ]]; then
-			if ! use non-root; then
-				ewarn
-				ewarn "IMPORTANT: You previously had ${PN} installed without root"
-				ewarn "privileges because it was implied by the 'caps' USE flag."
-				ewarn "This has been changed. If you want ${PN} with user privileges,"
-				ewarn "you have to re-emerge it with the 'non-root' USE flag enabled."
-				ewarn
-			fi
-		fi
 	fi
 	if ! use caps && ! use non-root; then
 		ewarn
