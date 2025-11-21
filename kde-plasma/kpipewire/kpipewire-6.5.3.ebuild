@@ -15,6 +15,8 @@ SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 IUSE=""
 
+RESTRICT="test" # bug 964943
+
 COMMON_DEPEND="
 	>=dev-qt/qtbase-${QTMIN}:6[dbus,gui,opengl]
 	>=dev-qt/qtdeclarative-${QTMIN}:6
