@@ -21,7 +21,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-IUSE="cuda hip oneapi"
+IUSE="oneapi"
 RESTRICT="strip test"
 
 QA_PREBUILT="opt/${P}/*"
@@ -36,11 +36,10 @@ fi
 RDEPEND="
 	app-arch/zstd
 	media-libs/libglvnd[X]
-	sys-apps/util-linux
 	sys-libs/glibc
 	sys-libs/ncurses
-	virtual/zlib:=
 	virtual/libcrypt
+	virtual/zlib:0/1
 	x11-base/xorg-server
 	x11-libs/libICE
 	x11-libs/libSM
@@ -51,15 +50,7 @@ RDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXt
 	x11-libs/libXxf86vm
-	x11-libs/libdrm
-	x11-libs/libxcb
 	x11-libs/libxkbcommon
-	cuda? (
-		x11-drivers/nvidia-drivers
-	)
-	hip? (
-		>=dev-util/hip-6
-	)
 	oneapi? (
 		dev-libs/level-zero
 	)
@@ -131,22 +122,8 @@ src_unpack() {
 src_prepare() {
 	default
 
-	# Remove unused gpu libraries so we don't get missing libraries from QA
-	if ! use cuda; then
-		rm \
-			lib/libOpenImageDenoise_device_cuda* \
-			|| eqawarn "failed cleaning cuda"
-	fi
-
-	if ! use hip; then
-		rm \
-			lib/libOpenImageDenoise_device_hip* \
-			|| eqawarn "failed cleaning hip"
-	fi
-
 	if ! use oneapi; then
 		rm \
-			lib/libOpenImageDenoise_device_sycl* \
 			lib/libpi_level_zero* \
 			|| eqawarn "failed cleaning oneapi"
 	fi

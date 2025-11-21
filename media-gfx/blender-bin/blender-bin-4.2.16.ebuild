@@ -39,8 +39,8 @@ RDEPEND="
 	sys-apps/util-linux
 	sys-libs/glibc
 	sys-libs/ncurses
-	virtual/zlib:=
 	virtual/libcrypt
+	virtual/zlib:0/1
 	x11-base/xorg-server
 	x11-libs/libICE
 	x11-libs/libSM
@@ -58,7 +58,7 @@ RDEPEND="
 		x11-drivers/nvidia-drivers
 	)
 	hip? (
-		>=dev-util/hip-6
+		=dev-util/hip-6*
 	)
 	oneapi? (
 		dev-libs/level-zero

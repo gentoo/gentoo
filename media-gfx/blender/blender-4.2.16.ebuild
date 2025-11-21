@@ -3,66 +3,69 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 # NOTE must match media-libs/osl
-LLVM_COMPAT=( {17..18} )
+LLVM_COMPAT=( {18..18} )
 LLVM_OPTIONAL=1
 
-inherit check-reqs cmake cuda flag-o-matic llvm-r1 pax-utils python-single-r1 toolchain-funcs xdg-utils virtualx
+ROCM_SKIP_GLOBALS=1
+CMAKE_QA_COMPAT_SKIP=1
+
+inherit cuda rocm llvm-r2
+inherit eapi9-pipestatus edo check-reqs flag-o-matic pax-utils python-single-r1 toolchain-funcs virtualx
+inherit cmake xdg-utils
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="https://www.blender.org"
 
-# # NOTE BLENDER_VERSION
+# NOTE BLENDER_VERSION
 # https://projects.blender.org/blender/blender/src/branch/main/source/blender/blenkernel/BKE_blender_version.h
-# BLENDER_RELEASE=4.4
 BLENDER_BRANCH="$(ver_cut 1-2)"
 
-if [[ ${PV} = *9999* ]] ; then
-	inherit git-r3
-
+if [[ "${PV}" == *9999* ]]; then
 	EGIT_LFS="yes"
+	inherit git-r3
 	EGIT_REPO_URI="https://projects.blender.org/blender/blender.git"
 	EGIT_SUBMODULES=( '*' '-lib/*' )
-	if ver_test "${BLENDER_BRANCH}" -lt "4.2"; then
-		ADDONS_EGIT_REPO_URI="https://projects.blender.org/blender/blender-addons.git"
-	fi
 
-	# if ver_test "${BLENDER_BRANCH}" -lt "${BLENDER_RELEASE}"; then
-	if [[ ${PV} != 9999* ]] ; then
+	if [[ "${PV}" == 9999* ]]; then
+		EGIT_BRANCH="main"
+	else
 		EGIT_BRANCH="blender-v${BLENDER_BRANCH}-release"
 	fi
 
 	RESTRICT="!test? ( test )"
 else
-	SRC_URI="
-		https://download.blender.org/source/${P}.tar.xz
-	"
+	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
 	# 	test? (
-	# 		https://projects.blender.org/blender/blender-test-data/archive/blender-v$(ver_cut 1-2)-release.tar.gz
+	# 		https://projects.blender.org/blender/blender-test-data/archive/blender-v${BLENDER_BRANCH}-release.tar.gz
+	# 		https://projects.blender.org/blender/blender-test-data/archive/v${PV}.tar.gz
 	# 	)
 	# "
 	KEYWORDS="~amd64 ~arm ~arm64"
 	RESTRICT="test" # the test archive returns LFS references.
 fi
 
-LICENSE="GPL-3+ cycles? ( Apache-2.0 )"
+# assets is CC0-1.0
+LICENSE="GPL-3+ cycles? ( Apache-2.0 ) CC0-1.0"
 SLOT="${BLENDER_BRANCH}"
 
 # NOTE +openpgl breaks on very old amd64 hardware
+# potentially mirror cpu_flags_x86 + REQUIRED_USE
 IUSE="
 	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip jack
-	jemalloc jpeg2k man +nanovdb ndof nls +oidn openal +openexr +openmp +openpgl
+	jemalloc jpeg2k man +nanovdb ndof nls +oidn openal +openexr +opengl +openmp +openpgl
 	+opensubdiv +openvdb optix osl +pdf +potrace +pugixml pulseaudio
 	renderdoc sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
 "
 
-if [[ ${PV} = *9999* ]] ; then
+if [[ "${PV}" == *9999* ]]; then
 	IUSE+="experimental"
 fi
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	|| ( opengl vulkan )
 	alembic? ( openexr )
 	cuda? ( cycles )
 	cycles? ( openexr tiff tbb )
@@ -73,12 +76,18 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	openvdb? ( tbb openexr )
 	optix? ( cuda )
 	osl? ( cycles pugixml )
-	test? ( color-management )"
+	test? (
+		color-management
+		jpeg2k
+	)
+"
 
 # Library versions for official builds can be found in the blender source directory in:
 # build_files/build_environment/cmake/versions.cmake
 RDEPEND="${PYTHON_DEPS}
-	app-arch/zstd
+	app-arch/zstd:=
+	dev-cpp/gflags:=
+	dev-cpp/glog:=
 	dev-libs/boost:=[nls?]
 	dev-libs/lzo:2=
 	$(python_gen_cond_dep '
@@ -93,20 +102,23 @@ RDEPEND="${PYTHON_DEPS}
 	media-libs/libpng:=
 	media-libs/libsamplerate
 	<media-libs/openimageio-3:=
-	virtual/zlib:=
 	virtual/glu
 	virtual/libintl
-	virtual/opengl
+	virtual/opengl[X?]
+	virtual/zlib:=
 	alembic? ( >=media-gfx/alembic-1.8.3-r2[boost(+),hdf(+)] )
+	bullet? ( sci-physics/bullet:=[double-precision] )
 	collada? ( >=media-libs/opencollada-1.6.68 )
 	color-management? ( media-libs/opencolorio:= )
-	cuda? ( dev-util/nvidia-cuda-toolkit:= )
+	cuda? ( <dev-util/nvidia-cuda-toolkit-13:= )
 	embree? ( media-libs/embree:=[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[encode(+),lame(-),jpeg2k?,opus,theora,vorbis,vpx,x264,xvid] )
-	fftw? ( sci-libs/fftw:3.0= )
-	gmp? ( dev-libs/gmp[cxx] )
+	fftw? ( sci-libs/fftw:3.0=[threads] )
+	gmp? ( dev-libs/gmp:=[cxx] )
 	gnome? ( gui-libs/libdecor )
-	hip? ( >=dev-util/hip-5.7 )
+	hip? (
+		>=dev-util/hip-5.7:=
+	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
 	jpeg2k? ( media-libs/openjpeg:2= )
@@ -116,13 +128,13 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	nls? ( virtual/libiconv )
 	openal? ( media-libs/openal )
-	oidn? ( >=media-libs/oidn-2.1.0 )
+	oidn? ( >=media-libs/oidn-2.1.0:= )
 	openexr? (
 		>=dev-libs/imath-3.1.7:=
 		>=media-libs/openexr-3.2.1:0=
 	)
 	openpgl? ( media-libs/openpgl:= )
-	opensubdiv? ( >=media-libs/opensubdiv-3.5.0 )
+	opensubdiv? ( >=media-libs/opensubdiv-3.6.0-r2:=[opengl,cuda?,openmp?,tbb?] )
 	openvdb? (
 		>=media-gfx/openvdb-11.0.0:=[nanovdb?]
 		dev-libs/c-blosc:=
@@ -132,7 +144,7 @@ RDEPEND="${PYTHON_DEPS}
 		<media-libs/osl-1.14:=[${LLVM_USEDEP}]
 		media-libs/mesa[${LLVM_USEDEP}]
 	)
-	pdf? ( media-libs/libharu )
+	pdf? ( media-libs/libharu:= )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
 	pulseaudio? ( media-libs/libpulse )
@@ -149,6 +161,7 @@ RDEPEND="${PYTHON_DEPS}
 		media-libs/mesa[wayland]
 		sys-apps/dbus
 	)
+	webp? ( media-libs/libwebp:= )
 	vulkan? (
 		media-libs/shaderc
 		dev-util/spirv-tools
@@ -163,6 +176,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	X? (
 		x11-libs/libX11
+		x11-libs/libXfixes
 		x11-libs/libXi
 		x11-libs/libXxf86vm
 	)
@@ -170,10 +184,6 @@ RDEPEND="${PYTHON_DEPS}
 
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:=
-	vulkan? (
-		dev-util/spirv-headers
-		dev-util/vulkan-headers
-	)
 "
 
 BDEPEND="
@@ -186,6 +196,10 @@ BDEPEND="
 		dev-texlive/texlive-fontutils
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
+	)
+	vulkan? (
+		dev-util/spirv-headers
+		dev-util/vulkan-headers
 	)
 	nls? ( sys-devel/gettext )
 	wayland? (
@@ -201,12 +215,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.0.2-CUDA_NVCC_FLAGS.patch"
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
-	"${FILESDIR}/${PN}-4.2.9-python3.12.patch"
 	"${FILESDIR}/${PN}-4.3.2-ffmpeg7.patch"
 	"${FILESDIR}/${PN}-4.3.2-openvdb-12.patch"
 	"${FILESDIR}/${PN}-4.3.2-optix-8.1.0.patch"
 	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
-	"${FILESDIR}/${PN}-4.4.0-optix-compile-flags.patch"
+# 	"${FILESDIR}/${PN}-4.4.0-optix-compile-flags.patch"
 )
 
 blender_check_requirements() {
@@ -218,11 +231,26 @@ blender_check_requirements() {
 }
 
 blender_get_version() {
+	if [[ -n "${BV}" && -n "${BVC}" ]]; then
+		return
+	fi
+
+	local status
 	# Get blender version from blender itself.
+	# mirrors build_files/cmake/macros.cmake function(get_blender_version)
 	# NOTE maps x0y to x.y
 	# TODO this can potentially break for x > 9 and y > 9
-	BV=$(grep "BLENDER_VERSION " source/blender/blenkernel/BKE_blender_version.h | cut -d " " -f 3; assert)
-	BV=${BV:0:1}.${BV:2}
+	BV="$(grep "define BLENDER_VERSION " source/blender/blenkernel/BKE_blender_version.h | cut -d ' ' -f 3)"
+	status="$(pipestatus -v)" || die "fails to detect BLENDER_VERSION, (PIPESTATUS: ${status})"
+	BV="$(printf "%d.%d" "${BV:0: -2}" "${BV: -2}")"
+
+	if [[ "${PV}" != 9999* && "${BLENDER_BRANCH}" != "${BV}" ]]; then
+		eerror "ebuild (${BLENDER_BRANCH}) and code (${BV}) version mismatch"
+		die "blender_get_version"
+	fi
+
+	BVC="$(grep "define BLENDER_VERSION_CYCLE " source/blender/blenkernel/BKE_blender_version.h | cut -d ' ' -f 3)"
+	status="$(pipestatus -v)" || die "fails to detect BLENDER_VERSION_CYCLE, (PIPESTATUS: ${status})"
 }
 
 pkg_pretend() {
@@ -230,16 +258,16 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if use osl; then
-		llvm-r1_pkg_setup
-	fi
-
 	blender_check_requirements
 	python-single-r1_pkg_setup
+
+	if use osl; then
+		llvm-r2_pkg_setup
+	fi
 }
 
 src_unpack() {
-	if [[ ${PV} = *9999* ]] ; then
+	if [[ "${PV}" == *9999* ]]; then
 		if ! use test; then
 			EGIT_SUBMODULES+=( '-tests/*' )
 		fi
@@ -268,11 +296,6 @@ src_prepare() {
 
 	blender_get_version
 
-	# Disable MS Windows help generation. The variable doesn't do what it
-	# it sounds like.
-	sed -e "s|GENERATE_HTMLHELP      = YES|GENERATE_HTMLHELP      = NO|" \
-		-i doc/doxygen/Doxyfile || die
-
 	# Prepare icons and .desktop files for slotting.
 	sed \
 		-e "s|blender.svg|blender-${BV}.svg|" \
@@ -288,9 +311,12 @@ src_prepare() {
 		-i release/freedesktop/blender.desktop || die
 
 	sed \
-		-e "/CMAKE_INSTALL_PREFIX_WITH_CONFIG/{s|\${CMAKE_INSTALL_PREFIX}|${T}/usr|g}" \
+		-e "/CMAKE_INSTALL_PREFIX_WITH_CONFIG/{s|\${CMAKE_INSTALL_PREFIX}|${T}\${CMAKE_INSTALL_PREFIX}|g}" \
 		-i CMakeLists.txt \
 		|| die CMAKE_INSTALL_PREFIX_WITH_CONFIG
+
+	# WITH_SYSTEM_GLOG=yes
+	cmake_run_in extern cmake_comment_add_subdirectory glog
 
 	mv \
 		"release/freedesktop/icons/scalable/apps/blender.svg" \
@@ -305,30 +331,35 @@ src_prepare() {
 		"release/freedesktop/blender-${BV}.desktop" \
 		|| die
 
-	local info_file test_file
-	if ver_test -ge 4; then
-		info_file="metainfo"
-		test_file="build_files/cmake/testing.cmake"
-	else
-		info_file="appdata"
-		test_file="build_files/cmake/Modules/GTestTesting.cmake"
-	fi
 	mv \
-		"release/freedesktop/org.blender.Blender.${info_file}.xml" \
-		"release/freedesktop/blender-${BV}.${info_file}.xml" \
+		"release/freedesktop/org.blender.Blender.metainfo.xml" \
+		"release/freedesktop/blender-${BV}.metainfo.xml" \
 		|| die
+
+	if use hip; then
+		# fix hardcoded path
+		sed \
+			-e "s#opt/rocm/hip/bin#$(hipconfig -p)/bin#g" \
+			-i extern/hipew/src/hipew.c \
+			|| die
+	fi
 
 	if use test; then
 		# Without this the tests will try to use /usr/bin/blender and /usr/share/blender/ to run the tests.
 		sed \
-			-e "/string(REPLACE.*TEST_INSTALL_DIR/{s|\${CMAKE_INSTALL_PREFIX}|${T}/usr|g}" \
-			-i "${test_file}" \
+			-e "/string(REPLACE.*TEST_INSTALL_DIR/{s|\${CMAKE_INSTALL_PREFIX}|${T}\${CMAKE_INSTALL_PREFIX}|g}" \
+			-i "build_files/cmake/testing.cmake" \
 			|| die "REPLACE.*TEST_INSTALL_DIR"
 
-		sed '1i #include <cstdint>' -i extern/gtest/src/gtest-death-test.cc || die
+		sed -e '1i #include <cstdint>' -i extern/gtest/src/gtest-death-test.cc || die
+	else
+		cmake_comment_add_subdirectory tests
 	fi
 
+	rm -rf extern/gflags || die
+
 	if use vulkan; then
+		# TODO why?
 		sed -e "s/extern_vulkan_memory_allocator/extern_vulkan_memory_allocator\nSPIRV-Tools-opt\nSPIRV-Tools\nSPIRV-Tools-link\nglslang\nSPIRV\nSPVRemapper/" -i source/blender/gpu/CMakeLists.txt || die
 	fi
 }
@@ -340,96 +371,126 @@ src_configure() {
 	filter-lto
 
 	# Workaround for bug #922600
-	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+	append-ldflags "$(test-flags-CCLD -Wl,--undefined-version)"
 
 	append-lfs-flags
 	blender_get_version
 
 	local mycmakeargs=(
-		-DCMAKE_POLICY_DEFAULT_CMP0177="OLD"
+		-DCMAKE_POLICY_DEFAULT_CMP0146="OLD" # DESTINATION Normalization
+		-DCMAKE_POLICY_DEFAULT_CMP0177="OLD" # Boost
 
 		# we build a host-specific binary
-		-DWITH_INSTALL_PORTABLE="no"
 		-DWITH_CPU_CHECK="no"
 
+		-DWITH_STRICT_BUILD_OPTIONS="yes"
 		-DWITH_LIBS_PRECOMPILED="no"
 		-DBUILD_SHARED_LIBS="no" # this over-ridden by cmake.eclass
+		-DWITH_STATIC_LIBS=OFF
 
-		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
-		-DPYTHON_LIBRARY="$(python_get_library_path)"
-		-DPYTHON_VERSION="${EPYTHON/python/}"
-		-DWITH_ALEMBIC=$(usex alembic)
-		-DWITH_BOOST=yes
-		-DWITH_BULLET=$(usex bullet)
-		-DWITH_CODEC_FFMPEG=$(usex ffmpeg)
-		-DWITH_CODEC_SNDFILE=$(usex sndfile)
-
-		-DWITH_CYCLES=$(usex cycles)
-
-		-DWITH_CYCLES_DEVICE_CUDA=$(usex cuda)
-		-DWITH_CYCLES_CUDA_BINARIES="$(usex cuda $(usex cycles-bin-kernels))"
-		-DWITH_CYCLES_DEVICE_OPTIX=$(usex optix)
-
-		-DWITH_CYCLES_DEVICE_HIP="$(usex hip)"
-		-DWITH_CYCLES_HIP_BINARIES=$(usex hip $(usex cycles-bin-kernels))
-
-		-DWITH_CYCLES_HYDRA_RENDER_DELEGATE="no" # TODO: package Hydra
-		-DWITH_CYCLES_EMBREE="$(usex embree)"
-		-DWITH_CYCLES_OSL=$(usex osl)
-		-DWITH_CYCLES_PATH_GUIDING=$(usex openpgl)
-		-DWITH_CYCLES_STANDALONE=no
-		-DWITH_CYCLES_STANDALONE_GUI=no
-
-		-DWITH_DOC_MANPAGE=$(usex man)
-		-DWITH_DRACO="no" # TODO: Package Draco
-		-DWITH_FFTW3=$(usex fftw)
-		-DWITH_GHOST_WAYLAND=$(usex wayland)
-		-DWITH_GHOST_WAYLAND_DYNLOAD="no"
-		-DWITH_GHOST_X11=$(usex X)
-		-DWITH_GMP=$(usex gmp)
-		-DWITH_GTESTS=$(usex test)
+		# Build Options:
+		-DWITH_ALEMBIC="$(usex alembic)"
+		-DWITH_BOOST="yes"
+		-DWITH_BULLET="$(usex bullet)"
+		-DWITH_CYCLES="$(usex cycles)"
+		-DWITH_DOC_MANPAGE="$(usex man)"
+		-DWITH_FFTW3="$(usex fftw)"
+		-DWITH_GMP="$(usex gmp)"
+		-DWITH_GTESTS="$(usex test)"
 		-DWITH_HARFBUZZ="$(usex truetype)"
-		-DWITH_HARU=$(usex pdf)
+		-DWITH_HARU="$(usex pdf)"
 		-DWITH_HEADLESS="$(usex !X "$(usex !wayland)")"
-		-DWITH_HYDRA="no" # TODO: Package Hydra
-		-DWITH_IMAGE_OPENEXR=$(usex openexr)
-		-DWITH_IMAGE_OPENJPEG=$(usex jpeg2k)
-		-DWITH_IMAGE_WEBP=$(usex webp)
-		-DWITH_INPUT_NDOF=$(usex ndof)
-		-DWITH_INTERNATIONAL=$(usex nls)
-		-DWITH_JACK=$(usex jack)
+		-DWITH_INPUT_NDOF="$(usex ndof)"
+		-DWITH_INTERNATIONAL="$(usex nls)"
 		-DWITH_MATERIALX="no" # TODO: Package MaterialX
-		-DWITH_MEM_JEMALLOC=$(usex jemalloc)
-		-DWITH_MEM_VALGRIND=$(usex valgrind)
-		-DWITH_MOD_FLUID=$(usex fluid)
-		-DWITH_MOD_OCEANSIM=$(usex fftw)
-		-DWITH_NANOVDB=$(usex nanovdb)
-		-DWITH_OPENAL=$(usex openal)
-		-DWITH_OPENCOLLADA=$(usex collada)
-		-DWITH_OPENCOLORIO=$(usex color-management)
-		-DWITH_OPENIMAGEDENOISE=$(usex oidn)
-		-DWITH_OPENMP=$(usex openmp)
-		-DWITH_OPENSUBDIV=$(usex opensubdiv)
-		-DWITH_OPENVDB=$(usex openvdb)
-		-DWITH_OPENVDB_BLOSC=$(usex openvdb)
-		-DWITH_POTRACE=$(usex potrace)
-		-DWITH_PUGIXML=$(usex pugixml)
-		-DWITH_PULSEAUDIO=$(usex pulseaudio)
+		-DWITH_NANOVDB="$(usex nanovdb)"
+		-DWITH_OPENCOLLADA="$(usex collada)"
+		-DWITH_OPENCOLORIO="$(usex color-management)"
+		-DWITH_OPENGL_BACKEND="$(usex opengl)"
+		-DWITH_OPENIMAGEDENOISE="$(usex oidn)"
+		-DWITH_OPENSUBDIV="$(usex opensubdiv)"
+		-DWITH_OPENVDB="$(usex openvdb)"
+		-DWITH_OPENVDB_BLOSC="$(usex openvdb)"
+		-DWITH_POTRACE="$(usex potrace)"
+		-DWITH_PUGIXML="$(usex pugixml)"
+		# -DWITH_QUADRIFLOW=ON
+		-DWITH_RENDERDOC="$(usex renderdoc)"
+		-DWITH_TBB="$(usex tbb)"
+		-DWITH_UNITY_BUILD="no"
+		-DWITH_USD="no" # TODO: Package USD
+		-DWITH_VULKAN_BACKEND="$(usex vulkan)" # experimental
+		-DWITH_XR_OPENXR="no"
+
+		-DWITH_SYSTEM_BULLET="yes"
+		-DWITH_SYSTEM_EIGEN3="yes"
+		-DWITH_SYSTEM_FREETYPE="yes"
+		-DWITH_SYSTEM_GFLAGS="yes"
+		-DWITH_SYSTEM_GLOG="yes"
+		-DWITH_SYSTEM_LZO="yes"
+
+		# Compiler Options:
+		# -DWITH_BUILDINFO="yes"
+		-DWITH_OPENMP="$(usex openmp)"
+
+		# System Options:
+		-DWITH_INSTALL_PORTABLE="no"
+		-DWITH_MEM_JEMALLOC="$(usex jemalloc)"
+		-DWITH_MEM_VALGRIND="$(usex valgrind)"
+
+		# GHOST Options:
+		-DWITH_GHOST_WAYLAND="$(usex wayland)"
+		-DWITH_GHOST_WAYLAND_DYNLOAD="no"
+		-DWITH_GHOST_X11="$(usex X)"
+
+		# Image Formats:
+		-DWITH_IMAGE_OPENEXR="$(usex openexr)"
+		-DWITH_IMAGE_OPENJPEG="$(usex jpeg2k)"
+		-DWITH_IMAGE_WEBP="$(usex webp)" # unlisted
+
+		# Audio:
+		-DWITH_CODEC_FFMPEG="$(usex ffmpeg)"
+		-DWITH_CODEC_SNDFILE="$(usex sndfile)"
+		-DWITH_JACK="$(usex jack)"
+		-DWITH_OPENAL="$(usex openal)"
+		-DWITH_PULSEAUDIO="$(usex pulseaudio)"
+		-DWITH_SDL="$(usex sdl)"
+
+		# Python:
 		-DWITH_PYTHON_INSTALL="no"
 		-DWITH_PYTHON_INSTALL_NUMPY="no"
 		-DWITH_PYTHON_INSTALL_ZSTANDARD="no"
-		-DWITH_RENDERDOC="$(usex renderdoc)"
-		-DWITH_SDL=$(usex sdl)
-		-DWITH_STATIC_LIBS="no"
-		-DWITH_STRICT_BUILD_OPTIONS="yes"
-		-DWITH_SYSTEM_EIGEN3="yes"
-		-DWITH_SYSTEM_FREETYPE="yes"
-		-DWITH_SYSTEM_LZO="yes"
-		-DWITH_TBB=$(usex tbb)
-		-DWITH_USD="no" # TODO: Package USD
-		-DWITH_VULKAN_BACKEND="$(usex vulkan)"
-		-DWITH_XR_OPENXR="no"
-		-DWITH_UNITY_BUILD="no"
+		# -DWITH_PYTHON_MODULE="no"
+		-DWITH_PYTHON_SAFETY="OFF" # dev option
+		-DWITH_PYTHON_SECURITY="yes"
+		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
+		-DPYTHON_LIBRARY="$(python_get_library_path)"
+		-DPYTHON_VERSION="${EPYTHON/python/}"
+		-DWITH_DRACO="yes" # TODO: Package Draco # NOTE use bundled for now
+
+		# Modifiers:
+		-DWITH_MOD_FLUID="$(usex fluid)"
+		-DWITH_MOD_OCEANSIM="$(usex fftw)"
+
+		# Rendering:
+		-DWITH_HYDRA="no" # TODO: Package Hydra
+
+		# Rendering (Cycles):
+		-DWITH_CYCLES_OSL="$(usex osl)"
+		-DWITH_CYCLES_EMBREE="$(usex embree)"
+		-DWITH_CYCLES_PATH_GUIDING="$(usex openpgl)"
+
+		-DWITH_CYCLES_DEVICE_OPTIX="$(usex optix)"
+		-DWITH_CYCLES_DEVICE_CUDA="$(usex cuda)"
+		-DWITH_CYCLES_CUDA_BINARIES="$(usex cuda "$(usex cycles-bin-kernels)")"
+
+		-DWITH_CYCLES_DEVICE_HIP="$(usex hip)"
+		-DWITH_CYCLES_HIP_BINARIES="$(usex hip "$(usex cycles-bin-kernels)")"
+		-DWITH_CYCLES_HYDRA_RENDER_DELEGATE="no" # TODO: package Hydra
+
+		# -DWITH_CYCLES_STANDALONE="OFF"
+		# -DWITH_CYCLES_STANDALONE_GUI="OFF"
+
+		-DWITH_BLENDER_THUMBNAILER="yes"
 	)
 
 	if has_version ">=dev-python/numpy-2"; then
@@ -440,39 +501,47 @@ src_configure() {
 	fi
 
 	# requires dev-vcs/git
-	if [[ ${PV} = *9999* ]] ; then
+	if [[ "${PV}" == *9999* && "${BVC}" == "alpha" ]]; then
 		mycmakeargs+=(
-			-DWITH_BUILDINFO="yes"
+			# -DWITH_BUILDINFO="no"
 			-DWITH_EXPERIMENTAL_FEATURES="$(usex experimental)"
 		)
 	else
-		mycmakeargs+=( -DWITH_BUILDINFO="no" )
+		mycmakeargs+=(
+			-DWITH_EXPERIMENTAL_FEATURES="no"
+		)
 	fi
 
 	if use cuda; then
-		if [[ -z "${CUDAARCHS}" ]]; then
-			CUDAARCHS="all-major"
-		else
-			CUDAARCHS="sm_${CUDAARCHS}"
-		fi
+		# Ease compiling with required gcc similar to cuda_sanitize but for cmake
+		if use cycles-bin-kernels; then
+			local -x CUDAHOSTCXX="$(cuda_gccdir)"
+			local -x CUDAHOSTLD="$(tc-getCXX)"
 
-		mycmakeargs+=(
-			-DCUDA_NVCC_FLAGS="--compiler-bindir;$(cuda_gccdir)"
-			-DCYCLES_CUDA_BINARIES_ARCH="${CUDAARCHS}"
-		)
+			if [[ -n "${CUDAARCHS}" ]]; then
+				mycmakeargs+=(
+					-DCYCLES_CUDA_BINARIES_ARCH="$(echo "${CUDAARCHS}" | sed -e 's/^/sm_/g' -e 's/;/;sm_/g')"
+				)
+			fi
+		fi
 	fi
 
 	if use hip; then
 		mycmakeargs+=(
-			-DROCM_PATH="$(hipconfig -R)"
+			-DHIP_ROOT_DIR="$(hipconfig -p)"
+
 			-DHIP_HIPCC_FLAGS="-fcf-protection=none"
+
+			-DCMAKE_HIP_LINK_EXECUTABLE="$(get_llvm_prefix)/bin/clang++"
+
+			-DCYCLES_HIP_BINARIES_ARCH="$(get_amdgpu_flags)"
 		)
 	fi
 
 	if use optix; then
 		mycmakeargs+=(
-			-DCYCLES_RUNTIME_OPTIX_ROOT_DIR="${EPREFIX}"/opt/optix
-			-DOPTIX_ROOT_DIR="${EPREFIX}"/opt/optix
+			-DCYCLES_RUNTIME_OPTIX_ROOT_DIR="${ESYSROOT}/opt/optix"
+			-DOPTIX_ROOT_DIR="${ESYSROOT}/opt/optix"
 		)
 	fi
 
@@ -489,25 +558,21 @@ src_configure() {
 	append-cflags "$(usex debug '-DDEBUG' '-DNDEBUG')"
 	append-cxxflags "$(usex debug '-DDEBUG' '-DNDEBUG')"
 
-	if tc-is-gcc ; then
-		# These options only exist when GCC is detected.
+	if tc-is-gcc; then
 		# We disable these to respect the user's choice of linker.
 		mycmakeargs+=(
-			-DWITH_LINKER_GOLD=no
-			-DWITH_LINKER_LLD=no
+			-DWITH_LINKER_GOLD="no"
 		)
-		# Ease compiling with required gcc similar to cuda_sanitize but for cmake
-		use cuda && use cycles-bin-kernels && mycmakeargs+=( -DCUDA_HOST_COMPILER="$(cuda_gccdir)" )
 	fi
 
 	if tc-is-clang || use osl; then
 		mycmakeargs+=(
-			-DWITH_CLANG=yes
-			-DWITH_LLVM=yes
+			-DWITH_CLANG="yes"
+			-DWITH_LLVM="yes"
 		)
 	fi
 
-	if use test ; then
+	if use test; then
 		local CYCLES_TEST_DEVICES=( "CPU" )
 		if use cycles-bin-kernels; then
 			use cuda && CYCLES_TEST_DEVICES+=( "CUDA" )
@@ -527,30 +592,29 @@ src_configure() {
 }
 
 src_test() {
-	# A lot of tests needs to have access to the installed data files.
+	# A lot of tests need to have access to the installed data files.
 	# So install them into the image directory now.
 	DESTDIR="${T}" cmake_build install
 
 	blender_get_version
-	# Define custom blender data/script file paths not be able to find them otherwise during testing.
+	# Define custom blender data/script file paths, or we won't be able to find them otherwise during testing.
 	# (Because the data is in the image directory and it will default to look in /usr/share)
 	local -x BLENDER_SYSTEM_RESOURCES="${T%/}/usr/share/blender/${BV}"
 
 	# Sanity check that the script and datafile path is valid.
-	# If they are not vaild, blender will fallback to the default path which is not what we want.
+	# If they are not valid, blender will fallback to the default path which is not what we want.
 	[[ -d "${BLENDER_SYSTEM_RESOURCES}" ]] || die "The custom resources path is invalid, fix the ebuild!"
+
+	# TODO only picks first card
+	addwrite "/dev/dri/card0"
+	addwrite "/dev/dri/renderD128"
+	addwrite "/dev/udmabuf"
 
 	if use cuda; then
 		cuda_add_sandbox -w
-		addwrite "/dev/dri/renderD128"
-		addwrite "/dev/char/"
+		addwrite "/proc/self/task"
+		addpredict "/dev/char/"
 	fi
-
-	addwrite "/dev/char/"
-	addwrite "/dev/nvidiactl"
-	addwrite "/dev/nvidia0"
-	addwrite "/dev/nvidia-modeset"
-	addwrite "/dev/dri/"
 
 	local -x CMAKE_SKIP_TESTS=(
 		draw
@@ -607,7 +671,7 @@ src_install() {
 	blender_get_version
 
 	# Pax mark blender for hardened support.
-	pax-mark m "${BUILD_DIR}"/bin/blender
+	pax-mark m "${BUILD_DIR}/bin/blender"
 
 	cmake_src_install
 
@@ -626,34 +690,34 @@ src_install() {
 		# (Because the data is in the image directory and it will default to look in /usr/share)
 		local -x BLENDER_SYSTEM_RESOURCES="${ED}/usr/share/blender/${BV}"
 
-		# Workaround for binary drivers.
+		# Workaround for binary drivers. # TODO
 		addpredict /dev/ati
 		addpredict /dev/dri
 		addpredict /dev/nvidiactl
 
 		einfo "Generating Blender C/C++ API docs ..."
-		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
-		doxygen -u Doxyfile || die
-		doxygen || die "doxygen failed to build API docs."
-
-		cd "${CMAKE_USE_DIR}" || die
-		einfo "Generating (BPY) Blender Python API docs ..."
-		"${BUILD_DIR}"/bin/blender --background --python doc/python_api/sphinx_doc_gen.py -noaudio || die "sphinx failed."
-
-		cd "${CMAKE_USE_DIR}"/doc/python_api || die
-		sphinx-build sphinx-in BPY_API || die "sphinx failed."
-
-		docinto "html/API/python"
-		dodoc -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/.
+		cd "${CMAKE_USE_DIR}/doc/doxygen" || die
+		edob doxygen -u Doxyfile
+		edob doxygen
 
 		docinto "html/API/blender"
-		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/.
+		dodoc -r "${CMAKE_USE_DIR}/doc/doxygen/html/"
+
+		einfo "Generating (BPY) Blender Python API docs ..."
+		cd "${CMAKE_USE_DIR}" || die
+		edob "${BUILD_DIR}"/bin/blender --background --python "doc/python_api/sphinx_doc_gen.py" -noaudio
+
+		cd "${CMAKE_USE_DIR}/doc/python_api" || die
+		sphinx-build sphinx-in BPY_API || die
+
+		docinto "html/API/python"
+		dodoc -r "${CMAKE_USE_DIR}/doc/python_api/BPY_API/"
 	fi
 
 	# Fix doc installdir
 	docinto html
-	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
-	rm -r "${ED}"/usr/share/doc/blender || die
+	dodoc "${CMAKE_USE_DIR}/release/text/readme.html"
+	rm -r "${ED}/usr/share/doc/blender" || die
 
 	python_optimize "${ED}/usr/share/blender/${BV}/scripts"
 
@@ -673,7 +737,7 @@ pkg_postinst() {
 	elog "changing the 'Temporary Files' directory in Blender preferences."
 	elog
 
-	if use osl; then
+	if use osl && ! has_version "media-libs/mesa[${LLVM_USEDEP}]"; then
 		ewarn ""
 		ewarn "OSL is know to cause runtime segfaults if Mesa has been linked to"
 		ewarn "an other LLVM version than what OSL is linked to."
@@ -681,11 +745,12 @@ pkg_postinst() {
 		ewarn ""
 	fi
 
+	# NOTE build_files/cmake/Modules/FindPythonLibsUnix.cmake: set(_PYTHON_VERSION_SUPPORTED 3.11)
 	if ! use python_single_target_python3_11; then
 		elog "You are building Blender with a newer python version than"
 		elog "supported by this version upstream."
 		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "python_single_target_python3_11 instead."
+		elog "PYTHON_SINGLE_TARGET: python3_11 instead."
 		elog "Bug: https://bugs.gentoo.org/737388"
 		elog
 	fi
@@ -700,9 +765,12 @@ pkg_postrm() {
 	xdg_mimeinfo_database_update
 	xdg_desktop_database_update
 
-	ewarn ""
-	ewarn "You may want to remove the following directory."
-	ewarn "~/.config/${PN}/${BV}/cache/"
-	ewarn "It may contain extra render kernels not tracked by portage"
-	ewarn ""
+	if [[ -z "${REPLACED_BY_VERSION}" ]]; then
+		ewarn
+		ewarn "You may want to remove the following directories"
+		ewarn "- ~/.config/${PN}/${BV}/cache/"
+		ewarn "- ~/.cache/cycles/"
+		ewarn "It may contain extra render kernels not tracked by portage"
+		ewarn
+	fi
 }

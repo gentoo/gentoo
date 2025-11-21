@@ -20,7 +20,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 # NOTE must match media-libs/osl
-LLVM_COMPAT=( {20..20} )
+LLVM_COMPAT=( {18..20} )
 LLVM_OPTIONAL=1
 
 ROCM_SKIP_GLOBALS=1
@@ -52,7 +52,7 @@ else
 	SRC_URI="
 		https://download.blender.org/source/${P}.tar.xz
 		test? (
-			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0.tar.xz
+			https://download.blender.org/source/blender-test-data-${BLENDER_BRANCH}.0-1.tar.xz
 		)
 	"
 	KEYWORDS="~amd64 ~arm ~arm64"
@@ -65,11 +65,11 @@ SLOT="${BLENDER_BRANCH}"
 # NOTE +openpgl breaks on very old amd64 hardware
 # potentially mirror cpu_flags_x86 + REQUIRED_USE
 IUSE="
-	alembic +bullet +color-management cuda +cycles +cycles-bin-kernels
+	alembic +bullet collada +color-management cuda +cycles +cycles-bin-kernels
 	debug doc +embree +ffmpeg +fftw +fluid +gmp gnome hip hiprt jack
 	jemalloc jpeg2k man manifold +nanovdb ndof nls +oidn openal +openexr +opengl +openpgl
 	+opensubdiv +openvdb optix osl pipewire +pdf +potrace +pugixml pulseaudio
-	renderdoc rubberband sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
+	renderdoc sdl +sndfile +tbb test +tiff +truetype valgrind vulkan wayland +webp X
 "
 
 if [[ "${PV}" == *9999* ]]; then
@@ -99,12 +99,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 # Library versions for official builds can be found in the blender source directory in:
 # build_files/build_environment/cmake/versions.cmake
-
 RDEPEND="${PYTHON_DEPS}
 	app-arch/zstd
 	dev-cpp/gflags:=
 	dev-cpp/glog:=
 	dev-libs/boost:=[nls?]
+	dev-libs/lzo:2=
 	$(python_gen_cond_dep '
 		dev-python/cattrs[${PYTHON_USEDEP}]
 		dev-python/cython[${PYTHON_USEDEP}]
@@ -112,19 +112,20 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/zstandard[${PYTHON_USEDEP}]
 	')
-	>=media-libs/freetype-2.13.3:=[brotli]
+	media-libs/freetype:=[brotli]
 	media-libs/libepoxy:=
 	media-libs/libjpeg-turbo:=
-	>=media-libs/libpng-1.6.50:=
+	media-libs/libpng:=
 	media-libs/libsamplerate
-	>=media-libs/openimageio-3.0.9.1:=
+	>=media-libs/openimageio-3.0.6.1:=
 	virtual/glu
 	virtual/libintl
 	virtual/opengl[X?]
 	virtual/zlib:=
 	alembic? ( >=media-gfx/alembic-1.8.3-r2[boost(+),hdf(+)] )
 	bullet? ( sci-physics/bullet:=[double-precision] )
-	color-management? ( >=media-libs/opencolorio-2.4.2:= )
+	collada? ( >=media-libs/opencollada-1.6.68 )
+	color-management? ( media-libs/opencolorio:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( media-libs/embree:=[raymask] )
 	ffmpeg? ( media-video/ffmpeg:=[encode(+),lame(-),jpeg2k?,opus,theora,vorbis,vpx,x264,xvid] )
@@ -139,8 +140,8 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	jack? ( virtual/jack )
 	jemalloc? ( dev-libs/jemalloc:= )
-	jpeg2k? ( >=media-libs/openjpeg-2.5.3:2= )
-	manifold? ( >=sci-mathematics/manifold-3.2.1:= )
+	jpeg2k? ( media-libs/openjpeg:2= )
+	manifold? ( >=sci-mathematics/manifold-3.1.0:= )
 	ndof? (
 		app-misc/spacenavd
 		dev-libs/libspnav
@@ -150,7 +151,7 @@ RDEPEND="${PYTHON_DEPS}
 	oidn? ( >=media-libs/oidn-2.1.0:= )
 	openexr? (
 		>=dev-libs/imath-3.1.7:=
-		>=media-libs/openexr-3.3.5:0=
+		>=media-libs/openexr-3.2.1:0=
 	)
 	openpgl? ( media-libs/openpgl:= )
 	opensubdiv? ( >=media-libs/opensubdiv-3.6.0-r2:=[opengl,cuda?,tbb?] )
@@ -165,21 +166,20 @@ RDEPEND="${PYTHON_DEPS}
 		)
 	)
 	osl? (
-		>=media-libs/osl-1.14.7.0:=[${LLVM_USEDEP}]
+		>=media-libs/osl-1.14:=[${LLVM_USEDEP}]
 		media-libs/mesa[${LLVM_USEDEP}]
 	)
-	pdf? ( >=media-libs/libharu-2.4.5:= )
+	pdf? ( media-libs/libharu:= )
 	potrace? ( media-gfx/potrace )
 	pugixml? ( dev-libs/pugixml )
 	pulseaudio? ( media-libs/libpulse )
-	rubberband? ( >=media-libs/rubberband-4.0.0:= )
 	sdl? ( media-libs/libsdl2[sound,joystick] )
 	sndfile? ( media-libs/libsndfile )
 	tbb? ( dev-cpp/tbb:= )
 	tiff? ( media-libs/tiff:= )
 	valgrind? ( dev-debug/valgrind )
 	wayland? (
-		>=dev-libs/wayland-1.24.0
+		>=dev-libs/wayland-1.12
 		>=dev-libs/wayland-protocols-1.15
 		>=x11-libs/libxkbcommon-0.2.0
 		dev-util/wayland-scanner
@@ -257,6 +257,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.1.1-FindLLVM.patch"
 	"${FILESDIR}/${PN}-4.1.1-numpy.patch"
 	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
+	"${FILESDIR}/${PN}-4.5.0-ffmpeg-8.0.patch"
+	"${FILESDIR}/${PN}-4.5.3-cmake-policy-3.10.patch"
+	"${FILESDIR}/${PN}-9999-don-t-show-variable-names.patch"
 )
 
 blender_check_requirements() {
@@ -445,6 +448,7 @@ src_configure() {
 		-DWITH_MANIFOLD="$(usex manifold)"
 		-DWITH_MATERIALX="no" # TODO: Package MaterialX
 		-DWITH_NANOVDB="$(usex nanovdb)"
+		-DWITH_OPENCOLLADA="$(usex collada)"
 		-DWITH_OPENCOLORIO="$(usex color-management)"
 		-DWITH_OPENGL_BACKEND="$(usex opengl)"
 		-DWITH_OPENIMAGEDENOISE="$(usex oidn)"
@@ -458,7 +462,7 @@ src_configure() {
 		-DWITH_TBB="$(usex tbb)"
 		-DWITH_UNITY_BUILD="no"
 		-DWITH_USD="no" # TODO: Package USD
-		-DWITH_VULKAN_BACKEND="$(usex vulkan)"
+		-DWITH_VULKAN_BACKEND="$(usex vulkan)" # experimental
 		-DWITH_XR_OPENXR="no"
 
 		-DWITH_SYSTEM_BULLET="yes"
@@ -466,6 +470,7 @@ src_configure() {
 		-DWITH_SYSTEM_FREETYPE="yes"
 		-DWITH_SYSTEM_GFLAGS="yes"
 		-DWITH_SYSTEM_GLOG="yes"
+		-DWITH_SYSTEM_LZO="yes"
 
 		# Compiler Options:
 		# -DWITH_BUILDINFO="yes"
@@ -532,6 +537,7 @@ src_configure() {
 		-DWITH_CYCLES_OSL="$(usex osl)"
 		-DWITH_CYCLES_EMBREE="$(usex embree)"
 		-DWITH_CYCLES_PATH_GUIDING="$(usex openpgl)"
+		-DWITH_CYCLES_LOGGING="ON" # "$(usex debug)"
 
 		-DWITH_CYCLES_DEVICE_OPTIX="$(usex optix)"
 		-DWITH_CYCLES_DEVICE_CUDA="$(usex cuda)"
@@ -557,9 +563,10 @@ src_configure() {
 		# -DWITH_INPUT_IME=ON
 		# -DWITH_LIBMV=ON
 		# -DWITH_LIBMV_SCHUR_SPECIALIZATIONS=ON
+		# -DWITH_LZMA=ON
+		# -DWITH_LZO=ON
 		# -DWITH_UV_SLIM=ON
-		-DWITH_NINJA_POOL_JOBS="yes"
-		-DWITH_RUBBERBAND="$(usex rubberband)"
+		-DWITH_NINJA_POOL_JOBS="no"
 		# -DPOSTINSTALL_SCRIPT:PATH=""
 		# -DPOSTCONFIGURE_SCRIPT:PATH=""
 	)
@@ -668,7 +675,7 @@ src_configure() {
 			use hiprt && CYCLES_TEST_DEVICES+=( "HIP-RT" )
 		fi
 		mycmakeargs+=(
-			-DCMAKE_INSTALL_PREFIX_WITH_CONFIG="${T%/}/usr"
+			-DCMAKE_INSTALL_PREFIX_WITH_CONFIG="${T}/usr"
 			-DCYCLES_TEST_DEVICES="$(local IFS=";"; echo "${CYCLES_TEST_DEVICES[*]}")"
 		)
 
@@ -759,8 +766,8 @@ src_test() {
 	if [[ "${RUN_FAILING_TESTS:-0}" -eq 0 ]]; then
 		einfo "not running failing tests RUN_FAILING_TESTS=${RUN_FAILING_TESTS}"
 		CMAKE_SKIP_TESTS+=(
-			# breaks with visual differences
-			"^sequencer_render_video_output$"
+			# needs test file update
+			"^cycles_camera_cpu$"
 		)
 	fi
 

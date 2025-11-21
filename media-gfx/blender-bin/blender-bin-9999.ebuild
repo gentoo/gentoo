@@ -48,14 +48,13 @@ RDEPEND="
 	x11-libs/libXi
 	x11-libs/libXrender
 	x11-libs/libXt
-	x11-libs/libXxf86vm
 	x11-libs/libdrm
 	x11-libs/libxkbcommon
 	cuda? (
 		x11-drivers/nvidia-drivers
 	)
 	hip? (
-		>=dev-util/hip-6
+		=dev-util/hip-6*
 	)
 	oneapi? (
 		dev-libs/level-zero
@@ -157,15 +156,6 @@ src_prepare() {
 		-e "s/=blender/=${P}/" \
 		-e "s/Name=Blender/Name=Blender Bin ${PV}/" \
 		-i "${P}.desktop" || die
-
-	# X-KDE-RunOnDiscreteGpu is obsolete, so trim it
-	# Only effective for SLOT < 4.4
-	if grep -q "X-KDE-RunOnDiscreteGpu" "${P}.desktop"; then
-		sed \
-			-e "/X-KDE-RunOnDiscreteGpu.*/d" \
-			-i "${P}.desktop" || die
-	fi
-
 }
 
 src_configure() {
