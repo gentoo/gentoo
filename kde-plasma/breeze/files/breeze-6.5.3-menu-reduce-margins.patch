@@ -1,0 +1,32 @@
+From 2cd5b37dad8f213aab4029b6d3b80ca7f159ea50 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Wed, 19 Nov 2025 15:05:59 -0700
+Subject: [PATCH] Menu: Reduce margins to better match QQC2 style
+
+The vertical padding was 1px too high, causing the highlights to
+be taller than the qqc2-desktop-style version with the default font
+settings.
+
+Amends 35967f0a3c3d742b825a2ad7d6507a2c282857a5
+
+Resolves #24
+---
+ kstyle/breezemetrics.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kstyle/breezemetrics.h b/kstyle/breezemetrics.h
+index 647929013..d9b031358 100644
+--- a/kstyle/breezemetrics.h
++++ b/kstyle/breezemetrics.h
+@@ -54,7 +54,7 @@ struct Metrics {
+     static constexpr int MenuItem_MarginWidth = 4;
+     static constexpr int MenuItem_HighlightGap = 4;
+     static constexpr int MenuItem_ExtraLeftMargin = 4;
+-    static constexpr int MenuItem_MarginHeight = 5;
++    static constexpr int MenuItem_MarginHeight = 4;
+     static constexpr int MenuItem_ItemSpacing = 2;
+     static constexpr int MenuItem_AcceleratorSpace = 16;
+     static constexpr int MenuItem_TextLeftMargin = 8;
+-- 
+GitLab
+
