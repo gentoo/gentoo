@@ -53,10 +53,9 @@ EGIT_CHECKOUT_DIR=${S}
 LICENSE="MIT SGI-B-2.0"
 SLOT="0"
 
-RADEON_CARDS="r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS}
+VIDEO_CARDS="
 	asahi d3d12 freedreno imagination intel lavapipe lima nouveau nvk panfrost
-	v3d vc4 virgl vivante vmware zink"
+	r300 r600 radeon radeonsi v3d vc4 virgl vivante vmware zink"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -108,7 +107,10 @@ RDEPEND="
 	vaapi? (
 		>=media-libs/libva-1.7.3:=[${MULTILIB_USEDEP}]
 	)
-	video_cards_radeonsi? ( virtual/libelf:0=[${MULTILIB_USEDEP}] )
+	video_cards_radeonsi? (
+		${LIBDRM_DEPSTRING}[video_cards_amdgpu]
+		virtual/libelf:0=[${MULTILIB_USEDEP}]
+	)
 	video_cards_zink? ( media-libs/vulkan-loader:=[${MULTILIB_USEDEP}] )
 	vulkan? (
 		media-libs/libdisplay-info:=[${MULTILIB_USEDEP}]
@@ -126,14 +128,6 @@ RDEPEND="
 		x11-libs/xcb-util-keysyms[${MULTILIB_USEDEP}]
 	)
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
-"
-for card in ${RADEON_CARDS}; do
-	RDEPEND="${RDEPEND}
-		video_cards_${card}? ( ${LIBDRM_DEPSTRING}[video_cards_radeon] )
-	"
-done
-RDEPEND="${RDEPEND}
-	video_cards_radeonsi? ( ${LIBDRM_DEPSTRING}[video_cards_amdgpu] )
 "
 
 DEPEND="${RDEPEND}
