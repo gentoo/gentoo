@@ -7,7 +7,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{10..14} )
+PYTHON_COMPAT=( python3_{11..14} )
 RUST_MIN_VER="1.88"
 
 CRATES="
@@ -32,7 +32,7 @@ LICENSE+="
 	CDLA-Permissive-2.0 ISC MIT MPL-2.0 Unicode-3.0
 "
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 src_configure() {
 	cargo_src_configure
