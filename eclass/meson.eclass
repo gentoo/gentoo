@@ -41,7 +41,7 @@ esac
 if [[ -z ${_MESON_ECLASS} ]]; then
 _MESON_ECLASS=1
 
-inherit flag-o-matic multiprocessing ninja-utils python-utils-r1 toolchain-funcs
+inherit flag-o-matic multiprocessing ninja-utils python-utils-r1 sysroot toolchain-funcs
 
 BDEPEND=">=dev-build/meson-1.2.3
 	${NINJA_DEPEND}
@@ -155,6 +155,7 @@ _meson_create_cross_file() {
 	ar = $(_meson_env_array "$(tc-getAR)")
 	c = $(_meson_env_array "$(tc-getCC)")
 	cpp = $(_meson_env_array "$(tc-getCXX)")
+	exe_wrapper = '$(sysroot_make_run_prefixed)'
 	fortran = $(_meson_env_array "$(tc-getFC)")
 	llvm-config = '$(tc-getPROG LLVM_CONFIG llvm-config)'
 	nm = $(_meson_env_array "$(tc-getNM)")
