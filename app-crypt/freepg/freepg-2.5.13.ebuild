@@ -64,7 +64,7 @@ BDEPEND="
 # maintainer mode
 BDEPEND+="
 	media-gfx/fig2dev
-	virtual/imagemagick-tools
+	virtual/imagemagick-tools[png,svg]
 "
 
 DOCS=(
