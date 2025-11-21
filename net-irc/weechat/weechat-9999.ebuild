@@ -13,10 +13,18 @@ inherit guile-single lua-single perl-module python-single-r1 cmake xdg
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
+	EGIT_MIN_CLONE_TYPE=single
+	BDEPEND+="
+		app-arch/libarchive
+		>=dev-ruby/asciidoctor-1.5.4
+	"
 else
 	inherit verify-sig
-	SRC_URI="https://weechat.org/files/src/${P}.tar.xz
-		verify-sig? ( https://weechat.org/files/src/${P}.tar.xz.asc )"
+	SRC_URI="
+		https://weechat.org/files/src/${P}.tar.xz
+		verify-sig? ( https://weechat.org/files/src/${P}.tar.xz.asc )
+		https://dev.gentoo.org/~eschwartz/distfiles/${CATEGORY}/${PN}/${P}-manpages.tar.xz
+	"
 	VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/weechat.org.asc
 	BDEPEND+="verify-sig? ( sec-keys/openpgp-keys-weechat )"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86 ~x64-macos"
@@ -34,7 +42,7 @@ PLUGINS="+alias +buflist +charset +exec +fifo +fset +logger +relay +scripts +spe
 # dev-lang/php eclass support is lacking, php plugins don't work. bug #705702
 SCRIPT_LANGS="guile lua +perl +python ruby tcl ${GENTOO_PERL_USESTRING}"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru sr tr"
-IUSE="doc enchant man nls relay-api selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+IUSE="doc enchant nls relay-api selinux test +zstd ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 
 REQUIRED_USE="
 	enchant? ( spell )
@@ -85,13 +93,54 @@ DEPEND="${RDEPEND}
 BDEPEND+="
 	virtual/pkgconfig
 	doc? ( >=dev-ruby/asciidoctor-1.5.4 )
-	man? ( >=dev-ruby/asciidoctor-1.5.4 )
 	nls? ( >=sys-devel/gettext-0.15 )
 "
 
 DOCS="AUTHORS.md CHANGELOG.md CONTRIBUTING.md UPGRADING.md README.md"
 
 RESTRICT="!test? ( test )"
+
+maint_pkg_create() {
+	pushd "${S}" > /dev/null
+
+	local -x BUILD_DIR=${S}-docsonly
+	local mycmakeargs=(
+		"${mycmakeargs[@]}"
+		-DENABLE_HEADLESS=ON
+		-DENABLE_MAN=ON
+	)
+	cmake_src_configure
+	cmake_build doc/all
+
+	local ver=$(git describe --exact-match)
+	ver=${ver#v}
+
+	cd "${BUILD_DIR}"/doc || die
+	local i
+	for i in *.en.1; do
+		mv "${i}" "${i/.en/}" || die
+	done
+	mkdir -p "${WORKDIR}"/${P}-manpages || die
+	cp *.1  "${WORKDIR}"/${P}-manpages/ || die
+
+	if [[ -n ${ver} ]]; then
+		local MY_P="${PN}-${ver}"
+		local tar="${T}/${MY_P}-manpages.tar.xz"
+		bsdtar -s "#^#${MY_P}-manpages/#S" -caf "${tar}" *.1 || die
+		einfo "Packaged tar now available:"
+		einfo "$(du -b "${tar}")"
+	fi
+	popd >/dev/null || die
+}
+
+src_unpack() {
+	if [[ ${PV} = 9999 ]]; then
+		git-r3_src_unpack
+	else
+		use verify-sig && verify-sig_verify_detached "${DISTDIR}"/${P}.tar.xz{,.asc}
+		default
+	fi
+}
 
 pkg_setup() {
 	use guile && guile-single_pkg_setup
@@ -167,7 +216,6 @@ src_configure() {
 		-DENABLE_IRC=$(usex irc)
 		-DENABLE_LOGGER=$(usex logger)
 		-DENABLE_LUA=$(usex lua)
-		-DENABLE_MAN=$(usex man)
 		-DENABLE_NLS=$(usex nls)
 		-DENABLE_PERL=$(usex perl)
 		-DENABLE_PYTHON=$(usex python)
@@ -185,6 +233,9 @@ src_configure() {
 		-DENABLE_ZSTD=$(usex zstd)
 	)
 	cmake_src_configure
+	if [[ ${PV} = 9999 ]]; then
+		maint_pkg_create
+	fi
 }
 
 src_test() {
@@ -198,6 +249,7 @@ src_test() {
 
 src_install() {
 	cmake_src_install
+	doman "${WORKDIR}"/${P}-manpages/*.1
 
 	use guile && guile_unstrip_ccache
 }
