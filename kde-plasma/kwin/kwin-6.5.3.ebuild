@@ -110,6 +110,8 @@ BDEPEND+=" || ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )"
 # -m 0755 to avoid suid with USE="-filecaps"
 FILECAPS=( -m 0755 cap_sys_nice=ep usr/bin/kwin_wayland )
 
+PATCHES=( "${FILESDIR}/${P}-llvm21.patch" ) # bug 966304
+
 src_prepare() {
 	ecm_src_prepare
 
