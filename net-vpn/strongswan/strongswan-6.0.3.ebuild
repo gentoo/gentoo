@@ -17,7 +17,7 @@ STRONGSWAN_PLUGINS_STD="aes cmac curve25519 des dnskey drbg eap-radius fips-prf 
 pkcs1 pkcs7 pkcs8 pkcs12 pubkey random rc2 revocation sha1 sha2 sshkey systime-fix stroke unity vici x509 xcbc"
 STRONGSWAN_PLUGINS_OPT_DISABLE="kdf"
 STRONGSWAN_PLUGINS_OPT="acert af-alg agent addrblock aesni botan blowfish bypass-lan
-ccm chapoly ctr error-notify forecast files gcm ha ipseckey md4 mgf1 ntru newhope
+ccm chapoly connmark ctr error-notify forecast files gcm ha ipseckey md4 mgf1
 openxpki padlock rdrand save-keys sha3 soup test-vectors unbound whitelist xauth-noauth"
 
 for mod in $STRONGSWAN_PLUGINS_STD; do
@@ -38,7 +38,10 @@ COMMON_DEPEND="non-root? (
 	)
 	dev-libs/glib:2
 	gmp? ( >=dev-libs/gmp-4.1.5:= )
-	gcrypt? ( dev-libs/libgcrypt:= )
+	gcrypt? (
+		dev-libs/libgcrypt:=
+		dev-libs/libgpg-error
+	)
 	caps? ( sys-libs/libcap )
 	curl? ( net-misc/curl )
 	ldap? ( net-nds/openldap:= )
@@ -48,8 +51,10 @@ COMMON_DEPEND="non-root? (
 	systemd? ( sys-apps/systemd )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
-	strongswan_plugins_botan? ( dev-libs/botan:2= )
-	strongswan_plugins_soup? ( net-libs/libsoup:2.4= )
+	strongswan_plugins_botan? ( dev-libs/botan:= )
+	strongswan_plugins_connmark? ( net-firewall/iptables:= )
+	strongswan_plugins_forecast? ( net-firewall/iptables:= )
+	strongswan_plugins_soup? ( net-libs/libsoup:3.0 )
 	strongswan_plugins_unbound? ( net-dns/unbound:= net-libs/ldns:= )"
 
 DEPEND="${COMMON_DEPEND}
