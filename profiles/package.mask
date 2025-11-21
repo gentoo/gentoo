@@ -36,6 +36,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-11-21)
+# Declared obsolete upstream, fails to build against Qt 6.10.
+# Bug #966307; Removal on 2025-12-20.
+gui-apps/xwaylandvideobridge
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-11-20)
 # Unmaintained in Gentoo for 2.5 years, still PyQt5 based upstream.
 # Potential replacements: RazerGenie + libopenrazer
