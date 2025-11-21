@@ -28,6 +28,7 @@ RDEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
+		sci-ml/hf_xet[${PYTHON_USEDEP}]
 	')
 "
 
