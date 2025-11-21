@@ -82,6 +82,7 @@ PATCHES=(
 	"${FILESDIR}"/tdesktop-5.7.2-cstring.patch
 	"${FILESDIR}"/tdesktop-5.8.3-cstdint.patch
 	"${FILESDIR}"/tdesktop-5.14.3-system-cppgir.patch
+	"${FILESDIR}"/tdesktop-6.3.2-loosen-minizip.patch
 )
 
 pkg_pretend() {
@@ -119,6 +120,17 @@ src_prepare() {
 	sed -e '/find_package(Opus /d' -i cmake/external/opus/CMakeLists.txt || die
 	sed -e '/find_package(xxHash /d' -i cmake/external/xxhash/CMakeLists.txt || die
 
+	# Greedily remove ThirdParty directories, keep only ones that interest us
+	local keep=(
+		rlottie  # Patched, not recommended to unbundle by upstream
+		libprisma  # Telegram-specific library, no stable releases
+		tgcalls  # Telegram-specific library, no stable releases
+		xdg-desktop-portal  # Only a few xml files are used with gdbus-codegen
+	)
+	for x in Telegram/ThirdParty/*; do
+		has "${x##*/}" "${keep[@]}" || rm -r "${x}" || die
+	done
+
 	# Control QtDBus dependency from here, to avoid messing with QtGui.
 	# QtGui will use find_package to find QtDbus as well, which
 	# conflicts with the -DCMAKE_DISABLE_FIND_PACKAGE method.
@@ -133,6 +145,12 @@ src_prepare() {
 			-i Telegram/lib_webview/webview/platform/linux/webview_linux_compositor.h || die
 	fi
 
+	# Shut the CMake 4 QA checker up by removing unused CMakeLists files
+	rm Telegram/ThirdParty/rlottie/CMakeLists.txt || die
+	rm cmake/external/glib/cppgir/expected-lite/example/CMakeLists.txt || die
+	rm cmake/external/glib/cppgir/expected-lite/test/CMakeLists.txt || die
+	rm cmake/external/glib/cppgir/expected-lite/CMakeLists.txt || die
+
 	cmake_src_prepare
 }
 
@@ -143,7 +161,7 @@ src_configure() {
 	# - bug 920819: system-wide directories ignored when variable is set
 	export XDG_DATA_DIRS="${ESYSROOT}/usr/share"
 
-	# Evil flag (bug #919201)
+	# Evil flag (See https://bugs.gentoo.org/919201)
 	filter-flags -fno-delete-null-pointer-checks
 
 	# The ABI of media-libs/tg_owt breaks if the -DNDEBUG flag doesn't keep
