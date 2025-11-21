@@ -21,6 +21,7 @@
 		<flag name="logind">Enable support for logind (bluetooth and idle inhibit)</flag>
 		<flag name="mpd">Enable support for the Music Player Daemon</flag>
 		<flag name="mpris">Enable support for mpris</flag>
+		<flag name="cava">Enable support for cava</flag>
 		<flag name="niri">Enable support for Niri Wayland compositor</flag>
 		<flag name="network">Enable libnl support for network related features</flag>
 		<flag name="sndio">Enable support for volume control via sndio</flag>
