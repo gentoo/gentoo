@@ -6,7 +6,7 @@ EAPI=8
 CRATES=""
 PYTHON_COMPAT=( python3_{11..14} )
 
-RUST_MIN_VER="1.85.0"
+RUST_MIN_VER="1.88.0"
 
 inherit bash-completion-r1 cargo desktop optfeature python-any-r1 shell-completion xdg
 
