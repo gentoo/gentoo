@@ -27,7 +27,6 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.83.2:= )
 "
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
 "
 BDEPEND="
 	${PYTHON_DEPS}
