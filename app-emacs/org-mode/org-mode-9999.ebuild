@@ -20,7 +20,7 @@ else
 	SRC_URI="https://git.savannah.gnu.org/cgit/emacs/${PN}.git/snapshot/${MY_P}.tar.gz"
 	S="${WORKDIR}/${MY_P}"
 
-	KEYWORDS="~amd64 ~ppc ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~riscv ~x86"
 fi
 
 LICENSE="GPL-3+ FDL-1.3+ CC-BY-SA-3.0 odt-schema? ( OASIS-Open )"
@@ -42,10 +42,16 @@ src_prepare() {
 	# Remove failing tests.
 	rm ./testing/lisp/test-{ob,ob-exp,ob-tangle,ob-shell,org-clock}.el \
 		|| die "failed to remove some test files"
+}
+
+src_configure() {
+	elisp_src_configure
+
+	use doc && DOCS+=( doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf )
 
 	EMAKEARGS=(
 		ORGVERSION="${PV}"
-		ETCDIRS="styles csl $(use odt-schema && echo schema)"
+		ETCDIRS="styles csl $(usev odt-schema schema)"
 		lispdir="${EPREFIX}${SITELISP}/${PN}"
 		datadir="${EPREFIX}${SITEETC}/${PN}"
 		infodir="${EPREFIX}/usr/share/info"
@@ -68,10 +74,6 @@ src_test() {
 }
 
 src_install() {
-	if use doc ; then
-		DOCS+=( doc/org.pdf doc/orgcard.pdf doc/orgguide.pdf )
-	fi
-
 	emake -j1 "${EMAKEARGS[@]}" DESTDIR="${D}" install
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	einstalldocs
