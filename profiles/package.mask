@@ -126,11 +126,6 @@ sec-keys/openpgp-keys-danielkiper
 # Removal on 2025-11-24.  Bugs #965097, #927089.
 dev-libs/eventlog
 
-# Michał Górny <mgorny@gentoo.org> (2025-10-21)
-# Old backport with no revdeps left.
-# Removal on 2025-11-20.  Bug #964780.
-dev-python/backports-ssl-match-hostname
-
 # Sam James <sam@gentoo.org> (2025-10-13)
 # Crashes in memtodest when handling PATH. Not yet reported upstream.
 =app-shells/dash-0.5.13.1
