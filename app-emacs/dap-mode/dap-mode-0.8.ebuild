@@ -27,6 +27,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	>=app-editors/emacs-${NEED_EMACS}:*[gif]
 	app-emacs/bui
 	app-emacs/dash
 	app-emacs/f
