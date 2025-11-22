@@ -1,0 +1,29 @@
+HIPNV_DIR is /usr (part of dev-libs/hipother).
+Installing from there results in file collision.
+
+Bug: https://bugs.gentoo.org/966306
+--- a/hipamd/packaging/CMakeLists.txt
++++ b/hipamd/packaging/CMakeLists.txt
+@@ -106,10 +106,6 @@ endforeach()
+ install(DIRECTORY ${HIP_COMMON_DIR}/include DESTINATION . COMPONENT dev)
+ install(DIRECTORY ${hip_SOURCE_DIR}/include/hip/amd_detail
+         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hip COMPONENT dev)
+-if(DEFINED HIPNV_DIR)
+-    install(DIRECTORY ${HIPNV_DIR}/include/hip/nvidia_detail
+-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hip COMPONENT dev)
+-endif()
+ if(HIP_PLATFORM STREQUAL "amd" )
+ install(FILES ${CMAKE_BINARY_DIR}/hipamd/include/hip/amd_detail/hip_prof_str.h
+         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hip/amd_detail COMPONENT dev)
+--- a/hipamd/CMakeLists.txt
++++ b/hipamd/CMakeLists.txt
+@@ -398,9 +398,6 @@ if(NOT ${INSTALL_SOURCE} EQUAL 0)
+     endif()
+ 
+     install(DIRECTORY include DESTINATION .)
+-    if(DEFINED HIPNV_DIR)
+-        install(DIRECTORY ${HIPNV_DIR}/include/hip/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hip/)
+-    endif()
+     install(DIRECTORY ${HIP_COMMON_INCLUDE_DIR}/hip/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hip/)
+     if(WIN32)
+       install(DIRECTORY ${HIP_COMMON_DIR}/cmake DESTINATION .)
