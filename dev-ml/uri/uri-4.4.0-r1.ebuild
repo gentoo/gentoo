@@ -19,5 +19,6 @@ RDEPEND="
 	dev-ml/core_bench:=[ocamlopt?]
 	dev-ml/core_unix:=[ocamlopt?]
 	dev-ml/stringext:=[ocamlopt?]
+	dev-ml/textutils:=[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
