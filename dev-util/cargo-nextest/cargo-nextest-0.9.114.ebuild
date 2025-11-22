@@ -3,10 +3,8 @@
 
 EAPI=8
 
-CRATES="
-"
-
-RUST_MIN_VER="1.86.0"
+CRATES=""
+RUST_MIN_VER="1.88.0"
 
 inherit cargo
 
@@ -25,7 +23,7 @@ LICENSE+="
 	CDLA-Permissive-2.0 ISC MIT MPL-2.0 Unicode-3.0 ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 BDEPEND="virtual/pkgconfig"
 DEPEND="
