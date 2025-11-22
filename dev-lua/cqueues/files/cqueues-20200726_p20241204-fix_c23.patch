@@ -83,3 +83,14 @@ Subject: [PATCH] Ext DNS: add function pointers prototypes in order to
  	unsigned args[2];
  
  	struct {
+--- a/src/signal.c
++++ b/src/signal.c
+@@ -533,7 +533,7 @@ static int ls_default(lua_State *L) {
+ } /* ls_default() */
+ 
+ 
+-static void ls_noop() {
++static void ls_noop(int _unused) {
+ 	return;
+ } /* ls_noop() */
+ 
