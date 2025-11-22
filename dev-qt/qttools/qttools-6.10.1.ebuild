@@ -41,6 +41,7 @@ RDEPEND="
 	designer? (
 		~dev-qt/qtbase-${PV}:6[network,xml,zstd=]
 		zstd? ( app-arch/zstd:= )
+		!<dev-qt/designer-6.15.18-r1
 	)
 	qdbus? ( ~dev-qt/qtbase-${PV}:6[dbus,xml] )
 	qdoc? (
