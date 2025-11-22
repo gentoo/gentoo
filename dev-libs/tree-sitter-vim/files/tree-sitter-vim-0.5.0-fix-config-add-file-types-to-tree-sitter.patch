@@ -1,0 +1,18 @@
+https://github.com/tree-sitter-grammars/tree-sitter-vim/commit/0f31cb98e5c0cb3707e097bf95a04c0c2aac573d
+From: Perchun Pak <github@perchun.it>
+Date: Sat, 5 Apr 2025 13:12:03 +0200
+Subject: [PATCH] fix(config): add `file-types` to tree-sitter.json (#33)
+
+--- a/tree-sitter.json
++++ b/tree-sitter.json
+@@ -4,6 +4,7 @@
+       "name": "vim",
+       "path": ".",
+       "scope": "text.vim",
++      "file-types": [ "vim" ],
+       "highlights": "queries/vim/highlights.scm",
+       "injections": "queries/vim/injections.scm"
+     }
+-- 
+2.52.0
+
