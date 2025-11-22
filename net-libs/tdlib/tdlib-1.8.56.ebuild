@@ -8,7 +8,7 @@ inherit cmake
 DESCRIPTION="Cross-platform library for building Telegram clients"
 HOMEPAGE="https://github.com/tdlib/td"
 
-MY_PV="7d257dcda5dd2c616c1146540ef51147c5bb2c69"
+MY_PV="8fbaf8441a79214bd00a1f19ab0bbcc91cd04e52"
 SRC_URI="https://github.com/tdlib/td/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/td-${MY_PV}"
 
@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gperf
 "
+
+PATCHES=(
+	"${FILESDIR}/tdlib-1.8.56-fix-logevent-storer.patch"
+)
 
 src_prepare() {
 	sed -e '/add_library(/s/ STATIC//' \
