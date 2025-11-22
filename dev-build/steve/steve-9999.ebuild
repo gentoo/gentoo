@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 
 DEPEND="
+	dev-libs/libevent:=
 	sys-fs/fuse:3=
 "
 RDEPEND="
