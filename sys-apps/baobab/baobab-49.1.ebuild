@@ -6,11 +6,11 @@ EAPI=8
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="Disk usage browser for GNOME"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/baobab"
+HOMEPAGE="https://apps.gnome.org/Baobab/"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
