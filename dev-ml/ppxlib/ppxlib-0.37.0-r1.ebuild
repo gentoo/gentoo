@@ -21,7 +21,7 @@ else
 	SRC_URI="https://github.com/ocaml-ppx/ppxlib/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
 
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~riscv ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -30,11 +30,12 @@ IUSE="+ocamlopt test"
 RESTRICT="test"
 
 RDEPEND="
+	dev-ml/cmdliner:=[ocamlopt?]
 	dev-ml/ocaml-compiler-libs:=[ocamlopt?]
 	dev-ml/ppx_derivers:=[ocamlopt?]
 	dev-ml/sexplib0:=[ocamlopt?]
 	dev-ml/stdlib-shims:=[ocamlopt?]
-	dev-ml/cmdliner:=[ocamlopt?]
+	dev-ml/yojson:=[ocamlopt?]
 "
 DEPEND="
 	${RDEPEND}
