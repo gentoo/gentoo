@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2025-11-22)
+# The imagemagick-tools[svg] dependency is currently problematic.
+app-alternatives/gpg freepg
+
 # James Le Cuirot <chewi@gentoo.org> (2025-11-21)
 # GTK is not keyworded or tested.
 gnome-base/librsvg tools
