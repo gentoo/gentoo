@@ -1,0 +1,122 @@
+From 4842185b894b8d8c6b278b86866184a3c5ac0b14 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Tue, 18 Nov 2025 17:54:45 +0100
+Subject: [PATCH 1/2] quickjs_compat.h: Added a compat macro for Js_IsError for
+ quickjs-ng
+
+Since 57fffbbb6a98b316e5195ff31655cd13db2bfa5b ("Remove unused JSContext
+argument from JS_IsError")[1], QuickJS-NG's JS_IsError() takes only the
+value parameter, no context.
+
+[1]: https://github.com/quickjs-ng/quickjs/commit/57fffbbb6a98b316e5195ff31655cd13db2bfa5b
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ src/quickjs_compat.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/quickjs_compat.h b/src/quickjs_compat.h
+index 3b7a618c7..7753086d3 100644
+--- a/src/quickjs_compat.h
++++ b/src/quickjs_compat.h
+@@ -22,3 +22,7 @@
+ #ifndef JS_BOOL
+     #define JS_BOOL bool
+ #endif
++
++#ifdef QUICKJS_NG
++    #define JS_IsError(cx, val) JS_IsError(val)
++#endif
+
+From b31b34ae941d19bc13524dfec2519283aa09baa6 Mon Sep 17 00:00:00 2001
+From: Zurab Kvachadze <zurabid2016@gmail.com>
+Date: Tue, 18 Nov 2025 17:59:09 +0100
+Subject: [PATCH 2/2] auto/quickjs, nginx/config: Used pkg-config to find
+ quickjs-ng
+
+In QuickJS-NG since 8e671eb8e59f5f5d7eca111386fbe158fab09049 ("build:
+initial support for meson build system")[1], Meson can be used as a
+build system, generating .pc (pkg-config) modules. This commit adds
+another method of QuickJS-NG discovery using pkg-config.
+
+[1]: https://github.com/quickjs-ng/quickjs/commit/8e671eb8e59f5f5d7eca111386fbe158fab09049
+
+Signed-off-by: Zurab Kvachadze <zurabid2016@gmail.com>
+---
+ auto/quickjs | 18 ++++++++++++++++++
+ nginx/config | 19 +++++++++++++++++++
+ 2 files changed, 37 insertions(+)
+
+diff --git a/auto/quickjs b/auto/quickjs
+index 8d6b544f9..c574c83f3 100644
+--- a/auto/quickjs
++++ b/auto/quickjs
+@@ -7,6 +7,10 @@ NJS_QUICKJS_LIB=
+ NJS_HAVE_QUICKJS=NO
+ NJS_QUICKJS_DEFAULT_INCS="src $NJS_BUILD_DIR"
+ 
++# Alternative pkg-config binary can be supplied by setting the PKG_CONFIG
++# environment variable.
++: "${PKG_CONFIG:=pkg-config}"
++
+ if [ $NJS_TRY_QUICKJS = YES ]; then
+     njs_found=no
+ 
+@@ -57,6 +61,20 @@ if [ $NJS_TRY_QUICKJS = YES ]; then
+         . auto/feature
+     fi
+ 
++    if [ $njs_found = no ]; then
++        njs_feature="QuickJS-NG library via pkg-config"
++
++        flags="$("${PKG_CONFIG}" --cflags-only-I quickjs-ng)"
++        # Trim the -I prefix from includes.
++        pkg_config_includes="$(printf "%s\n" "$flags" | sed 's|-I||g')"
++        pkg_config_libs="$("${PKG_CONFIG}" --libs quickjs-ng)"
++
++        njs_feature_incs="$NJS_QUICKJS_DEFAULT_INCS ${pkg_config_includes}"
++        njs_feature_libs="-lm -ldl -lpthread ${pkg_config_libs}"
++
++        . auto/feature
++    fi
++
+ 
+     if [ $njs_found = yes ]; then
+ 
+diff --git a/nginx/config b/nginx/config
+index 3386dac08..0a74cd969 100644
+--- a/nginx/config
++++ b/nginx/config
+@@ -26,6 +26,10 @@ NJS_QUICKJS_INC=
+ NJS_QUICKJS_DEFAULT_INCS="$ngx_addon_dir/../src $ngx_addon_dir/../build"
+ NJS_HAVE_QUICKJS=
+ 
++# Alternative pkg-config binary can be supplied by setting the PKG_CONFIG
++# environment variable.
++: "${PKG_CONFIG:=pkg-config}"
++
+ if [ $NJS_QUICKJS != NO ]; then
+ 
+     ngx_feature="QuickJS library -lquickjs.lto"
+@@ -71,6 +75,21 @@ if [ $NJS_QUICKJS != NO ]; then
+         . auto/feature
+     fi
+ 
++    if [ $ngx_found = no ]; then
++        ngx_feature="QuickJS-NG library via pkg-config"
++
++        flags="$("${PKG_CONFIG}" --cflags-only-I quickjs-ng)"
++        # Trim the -I prefix from includes.
++        pkg_config_includes="$(printf "%s\n" "$flags" | sed 's|-I||g')"
++        pkg_config_libs="$("${PKG_CONFIG}" --libs quickjs-ng)"
++
++        ngx_feature_path="$NJS_QUICKJS_DEFAULT_INCS ${pkg_config_includes}"
++        ngx_feature_libs="-lm -ldl -lpthread ${pkg_config_libs}"
++
++        . auto/feature
++    fi
++
++
+     if [ $ngx_found = yes ]; then
+ 
+         ngx_feature="QuickJS JS_GetClassID()"
