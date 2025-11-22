@@ -64,14 +64,8 @@ PATCHES=(
 	# Try both udevadm paths to cover udev/systemd vs. eudev locations (#539844)
 	# http://www.spinics.net/lists/linux-bluetooth/msg58739.html
 	# https://bugs.gentoo.org/539844
-	# https://github.com/bluez/bluez/issues/268
+	# https://github.com/bluez/bluez/issues/1650
 	"${FILESDIR}"/${PN}-udevadm-path-r1.patch
-
-	# Fix Bluetooth LE audio (from Fedora)
-	"${FILESDIR}"/${P}-A2DP-config.patch
-
-	# Merged upstream
-	"${FILESDIR}"/bluez-5.84-revert-distcheck-fix.patch
 )
 
 pkg_setup() {
