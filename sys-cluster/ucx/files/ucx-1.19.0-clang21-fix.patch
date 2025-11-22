@@ -1,0 +1,57 @@
+https://github.com/openucx/ucx/pull/10998
+From: Brahmajit Das <listout@listout.xyz>
+Date: Sun, 9 Nov 2025 12:37:47 +0530
+Subject: [PATCH 1/2] UCS/BITMAP/TEST: Fix build with >= Clang 21
+
+First caught on Gentoo LLVM with Clang 21.1.5 and LLVM 21.1.5
+Build with fail with the following error message
+
+This is cause due to Clang enabling default-const-init-var-unsafe by default,
+and -Werror makes it treat as an warning. This is better fixed by upstream
+developer so this commit mostly a RFC from upstream.
+
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/config/m4/compiler.m4
++++ b/config/m4/compiler.m4
+@@ -10,7 +10,7 @@
+ #
+ # Initialize CFLAGS
+ #
+-BASE_CFLAGS="-g -Wall -Werror"
++BASE_CFLAGS="-g -Wall"
+ 
+ # Prevent libtool from suppression of warnings
+ LT_CFLAGS="-no-suppress"
+
+From 9ac4c2c6d8935c251f5eeda53634817946f6c794 Mon Sep 17 00:00:00 2001
+From: Brahmajit Das <listout@listout.xyz>
+Date: Sun, 9 Nov 2025 12:42:29 +0530
+Subject: [PATCH 2/2] TEST/IODEMO: Use std::shuffle when available
+
+random_shuffle was deprecated in C++14 and completely removed in C++17.
+With newer compilers like Clang 21, the build fails. This commit should
+preserve older behavior and use std::shuffle when available.
+
+Signed-off-by: Brahmajit Das <listout@listout.xyz>
+--- a/test/apps/iodemo/io_demo.cc
++++ b/test/apps/iodemo/io_demo.cc
+@@ -19,6 +19,7 @@
+ #include <csignal>
+ #include <cerrno>
+ #include <vector>
++#include <random>
+ #include <map>
+ #include <queue>
+ #include <algorithm>
+@@ -2999,8 +3000,9 @@ static int do_client(options_t& test_opts)
+     LOG << "random seed: " << test_opts.random_seed;
+ 
+     // randomize servers to optimize startup
+-    std::random_shuffle(test_opts.servers.begin(), test_opts.servers.end(),
+-                        IoDemoRandom::urand<size_t>);
++    std::random_device rd;
++    std::mt19937 rng(rd());
++    std::shuffle(test_opts.servers.begin(), test_opts.servers.end(), rng);
+ 
+     UcxLog vlog(LOG_PREFIX, test_opts.verbose);
+     vlog << "List of servers:";
