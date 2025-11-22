@@ -116,6 +116,7 @@ src_install() {
 	use static-libs || rm -- "${ED}"/usr/$(get_libdir)/*.a || die
 
 	# these are installed twice, symlink over the static fltk copy
+	# (both still need to exist due to cmake expecting them, bug #966334)
 	dosym fluid-shared /usr/bin/fluid
 	dosym fltk-options-shared /usr/bin/fltk-options
 
