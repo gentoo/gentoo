@@ -20,7 +20,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X +qtutils systemd"
+IUSE="X +qtutils systemd hyprpm +uwsm"
 
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
@@ -94,6 +94,8 @@ src_configure() {
 							  # causing an error with multilib
 		"$(! use systemd && echo '-DNO_SYSTEMD=ON')"
 		"$(! use X && echo '-DNO_XWAYLAND=ON')"
+		"$(! use hyprpm && echo '-DNO_HYPRPM=ON')"
+		"$(! use uwsm && echo '-DNO_UWSM=ON')"
 	)
 	cmake_src_configure
 }
