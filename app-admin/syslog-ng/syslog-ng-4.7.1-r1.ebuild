@@ -3,17 +3,17 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 inherit autotools python-single-r1 systemd
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="https://www.syslog-ng.com/products/open-source-log-management/"
-SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz"
+SRC_URI="https://github.com/syslog-ng/syslog-ng/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~mips ppc ppc64 ~riscv ~s390 ~sparc x86"
-IUSE="amqp caps dbi geoip2 grpc http json kafka mongodb pacct python redis smtp snmp test spoof-source systemd tcpd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="amqp caps dbi geoip2 grpc http json kafka mongodb mqtt pacct python redis smtp snmp test spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( python )"
 RESTRICT="!test? ( test )"
@@ -21,9 +21,10 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-libs/glib-2.10.1:2
 	>=dev-libs/ivykis-0.42.4
-	>=dev-libs/libpcre2-10.0
+	>=dev-libs/libpcre2-10.0:=
 	dev-libs/openssl:0=
 	!dev-libs/eventlog
+	>=dev-libs/json-c-0.9:=
 	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
@@ -33,9 +34,9 @@ RDEPEND="
 		net-libs/grpc:=
 	)
 	http? ( net-misc/curl )
-	json? ( >=dev-libs/json-c-0.9:= )
 	kafka? ( >=dev-libs/librdkafka-1.0.0:= )
-	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0 )
+	mongodb? ( >=dev-libs/mongo-c-driver-1.2.0:0 )
+	mqtt? ( net-libs/paho-mqtt-c:1.3 )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -141,6 +142,7 @@ src_configure() {
 		$(use_enable json)
 		$(use_enable kafka)
 		$(use_enable mongodb)
+		$(use_enable mqtt)
 		$(usex mongodb --with-mongoc=system "--without-mongoc --disable-legacy-mongodb-options")
 		$(use_enable pacct)
 		$(use_enable python)
