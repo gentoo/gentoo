@@ -14,7 +14,8 @@ LICENSE="BSD-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">dev-lang/ocaml-4.11:=[ocamlopt]
+DEPEND=">=dev-lang/ocaml-4.11:=[ocamlopt]
+	<dev-lang/ocaml-5.4
 	dev-ml/result:=[ocamlopt]
 	dev-ml/uchar:=[ocamlopt]"
 RDEPEND="${DEPEND}"
