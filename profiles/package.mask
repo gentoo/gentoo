@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2025-11-22)
+# A NIH replacement for dev-python/faker with a very slow test suite.
+# No reverse dependencies left.
+# Removal on 2025-12-22.  Bug #966327.
+dev-python/fake-py
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-11-21)
 # Declared obsolete upstream, fails to build against Qt 6.10.
 # Bug #966307; Removal on 2025-12-20.
