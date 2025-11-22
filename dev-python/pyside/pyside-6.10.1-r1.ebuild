@@ -8,8 +8,9 @@
 
 EAPI=8
 
+# python3.14 support upstream but getting build issues
 PYTHON_COMPAT=( python3_{11..13} )
-LLVM_COMPAT=( {16..20} )
+LLVM_COMPAT=( {16..21} )
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 
