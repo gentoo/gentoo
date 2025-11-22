@@ -17,6 +17,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-install.patch
 	"${FILESDIR}"/${P}-modern-c.patch
 	"${FILESDIR}"/${P}-docdir.patch
+	"${FILESDIR}"/${P}-dereference_and_format.patch
 )
 
 src_prepare() {
