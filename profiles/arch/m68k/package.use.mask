@@ -1,6 +1,10 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# James Le Cuirot <chewi@gentoo.org> (2025-11-21)
+# GTK is not keyworded or tested.
+gnome-base/librsvg tools
+
 # James Le Cuirot <chewi@gentoo.org> (2024-07-13)
 # These tests pass, but the net-misc/memcached tests do not, so we should not
 # keyword memcached-related packages such as dev-python/pylibmc.
