@@ -7,7 +7,7 @@ EAPI=8
 # uses jre:11 which may be unnecessary.
 inherit java-pkg-opt-2 prefix unpacker xdg
 
-BASE_SRC_URI="https://download.documentfoundation.org/libreoffice/stable/24.8.5/deb"
+BASE_SRC_URI="https://download.documentfoundation.org/libreoffice/stable/${PV}/deb"
 
 DESCRIPTION="A full office productivity suite. Binary package"
 HOMEPAGE="https://www.libreoffice.org"
@@ -42,14 +42,14 @@ handle_lang() {
 	for lang in ${LANGUAGES_HELP[@]}; do
 		SRC_URI+=" l10n_${lang%:*}? (
 			offlinehelp? (
-				${BASE_SRC_URI}/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb_helppack_${lang#*:}.tar.gz
+				${BASE_SRC_URI}/x86_64/LibreOffice_${PV}_Linux_x86-64_deb_helppack_${lang#*:}.tar.gz
 			)
 		)"
 	done
 	for lang in ${LANGUAGES[@]}; do
 		if [[ ${lang%:*} != en ]]; then
 			SRC_URI+=" l10n_${lang%:*}? (
-				${BASE_SRC_URI}/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb_langpack_${lang#*:}.tar.gz
+				${BASE_SRC_URI}/x86_64/LibreOffice_${PV}_Linux_x86-64_deb_langpack_${lang#*:}.tar.gz
 			)"
 		fi
 		IUSE+=" l10n_${lang%:*}"
