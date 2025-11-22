@@ -112,6 +112,13 @@ BDEPEND="
 	virtual/pkgconfig
 	X? ( dev-lang/swig )"
 
+PATCHES=(
+	# bug 746590
+	"${FILESDIR}/${PN}-flock.patch"
+	"${FILESDIR}"/grass-8.4.1-gdal-include.patch
+	"${FILESDIR}"/grass-8.4.1-fix-segfault.patch
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
