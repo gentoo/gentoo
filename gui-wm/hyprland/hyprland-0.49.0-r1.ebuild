@@ -15,12 +15,12 @@ else
 	SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${P}.gh.tar.gz"
 	S="${WORKDIR}/${PN}-source"
 
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X +qtutils systemd"
+IUSE="X legacy-renderer +qtutils systemd"
 
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
@@ -35,15 +35,15 @@ RDEPEND="
 	${HYPRPM_RDEPEND}
 	dev-cpp/tomlplusplus
 	dev-libs/glib:2
-	dev-libs/hyprlang
+	>=dev-libs/hyprlang-0.3.2
 	dev-libs/libinput:=
-	dev-libs/hyprgraphics:=
+	>=dev-libs/hyprgraphics-0.1.3:=
 	dev-libs/re2:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
-	>=gui-libs/aquamarine-0.9.0:=
+	>=gui-libs/aquamarine-0.8.0:=
 	>=gui-libs/hyprcursor-0.1.9
-	>=gui-libs/hyprutils-0.8.2:=
+	>=gui-libs/hyprutils-0.7.0:=
 	media-libs/libglvnd
 	media-libs/mesa
 	sys-apps/util-linux
@@ -65,13 +65,13 @@ DEPEND="
 	${RDEPEND}
 	dev-cpp/glaze
 	>=dev-libs/hyprland-protocols-0.6.4
-	>=dev-libs/wayland-protocols-1.45
+	>=dev-libs/wayland-protocols-1.43
 "
 BDEPEND="
-	|| ( >=sys-devel/gcc-15:* >=llvm-core/clang-19:* )
+	|| ( >=sys-devel/gcc-14:* >=llvm-core/clang-18:* )
 	app-misc/jq
 	dev-build/cmake
-	>=dev-util/hyprwayland-scanner-0.4.5
+	>=dev-util/hyprwayland-scanner-0.3.10
 	virtual/pkgconfig
 "
 
@@ -82,19 +82,26 @@ FILECAPS=(
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
-	if tc-is-gcc && ver_test $(gcc-version) -lt 15; then
-		eerror "Hyprland requires >=sys-devel/gcc-15 to build"
+	if tc-is-gcc && ver_test $(gcc-version) -lt 14 ; then
+		eerror "Hyprland requires >=sys-devel/gcc-14 to build"
 		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
 		die "GCC version is too old to compile Hyprland!"
-	elif tc-is-clang && ver_test $(clang-version) -lt 19; then
-		eerror "Hyprland requires >=llvm-core/clang-19 to build"
+	elif tc-is-clang && ver_test $(clang-version) -lt 18 ; then
+		eerror "Hyprland requires >=llvm-core/clang-18 to build"
 		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
 		die "Clang version is too old to compile Hyprland!"
 	fi
 }
 
+src_prepare() {
+	# skip version.h
+	sed -i -e "s|scripts/generateVersion.sh|echo|g" meson.build || die
+	default
+}
+
 src_configure() {
 	local emesonargs=(
+		$(meson_feature legacy-renderer legacy_renderer)
 		$(meson_feature systemd)
 		$(meson_feature X xwayland)
 	)
