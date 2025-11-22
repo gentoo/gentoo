@@ -28,6 +28,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 
 RDEPEND="
+	>=app-editors/emacs-${NEED_EMACS}:*[gif]
 	app-emacs/dap-mode
 	app-emacs/dash
 	app-emacs/f
