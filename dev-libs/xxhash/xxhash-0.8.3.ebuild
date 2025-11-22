@@ -28,7 +28,9 @@ src_configure() {
 }
 
 myemake() {
+	# need prefix/PREFIX set during compile too, bug #966267
 	emake \
+		PREFIX="${EPREFIX}"/usr \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
 		"${@}"
@@ -46,7 +48,6 @@ multilib_src_test() {
 multilib_src_install() {
 	local emakeargs=(
 		DESTDIR="${D}"
-		PREFIX="${EPREFIX}"/usr
 		LIBDIR="${EPREFIX}"/usr/$(get_libdir)
 	)
 
