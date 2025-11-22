@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.3.0-conditional-kernels.patch
 	"${FILESDIR}"/${PN}-7.0.1-conditional-ckprofiler.patch
 	"${FILESDIR}"/${PN}-7.0.1-libcxx-includes.patch
+	"${FILESDIR}"/${PN}-7.1.0-expand-isa.patch
 )
 
 ck_check-reqs() {
