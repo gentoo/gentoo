@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit meson toolchain-funcs
+inherit cmake toolchain-funcs
 
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
@@ -27,7 +27,6 @@ IUSE="X +qtutils systemd"
 HYPRPM_RDEPEND="
 	app-alternatives/ninja
 	>=dev-build/cmake-3.30
-	dev-build/meson
 	dev-vcs/git
 	virtual/pkgconfig
 "
@@ -90,9 +89,11 @@ pkg_setup() {
 }
 
 src_configure() {
-	local emesonargs=(
-		$(meson_feature systemd)
-		$(meson_feature X xwayland)
+	local mycmakeargs=(
+		"-DBUILD_TESTING=OFF" # if enabled, creates a file inside /lib
+							  # causing an error with multilib
+		"$(! use systemd && echo '-DNO_SYSTEMD=ON')"
+		"$(! use X && echo '-DNO_XWAYLAND=ON')"
 	)
-	meson_src_configure
+	cmake_src_configure
 }
