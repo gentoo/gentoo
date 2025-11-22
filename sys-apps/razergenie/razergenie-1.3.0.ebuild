@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
 
-inherit meson
+inherit meson xdg-utils
 
 MY_P="RazerGenie-${PV}"
 DESCRIPTION="Razer devices configurator"
@@ -30,4 +30,12 @@ BDEPEND="
 
 src_configure() {
 	meson_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
