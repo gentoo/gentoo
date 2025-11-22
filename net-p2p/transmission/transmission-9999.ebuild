@@ -68,10 +68,6 @@ RDEPEND="${COMMON_DEPEND}
 	${ACCT_DEPEND}
 "
 
-PATCHES=(
-	"${FILESDIR}/transmission-4.1.0-mbedtls-3.patch"
-)
-
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
