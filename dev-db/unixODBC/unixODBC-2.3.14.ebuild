@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="Complete ODBC driver manager"
 HOMEPAGE="https://www.unixodbc.org/"
@@ -34,6 +34,9 @@ multilib_src_configure() {
 	# Needs flex, bison
 	export LEX=flex
 	unset YACC
+
+	# bug #965105
+	append-cflags -std=gnu17
 
 	# --enable-driver-conf is --enable-driverc as per configure.in
 	local myeconfargs=(
