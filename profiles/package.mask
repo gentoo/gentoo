@@ -240,13 +240,6 @@ sys-fs/encfs
 # https://github.com/pyparsing/pyparsing/issues/618
 =dev-python/pyparsing-3.2.4
 
-# Eli Schwartz <eschwartz@gentoo.org> (2025-09-01)
-# Effectively unmaintained in Gentoo. Upstream dead for 8 years. Stuck
-# on py3.11, but no testsuite and still has py2-specific source code so
-# the pity port to py3 was likely misguided and never tested!
-# Removal on 2025-10-01.  Bug #956814.
-app-vim/voom
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
 # Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
 media-sound/pulseaudio
