@@ -66,7 +66,7 @@ src_prepare() {
 
 	sed -e "/set(AMD_ROCM_STAGING_INSTALL_LIBDIR/ s/lib/$(get_libdir)/" \
 		-e "/set(AMD_ROCM_STAGING_INSTALL_EXPORTDIR/ s/lib/$(get_libdir)/" \
-		-e "s:DOCDIR}/\${CPACK_PACKAGE_NAME}:DOCDIR}/${P}:" \
+		-e "s:DOCDIR}/\${CPACK_PACKAGE_NAME}:DOCDIR}/${PF}:" \
 		-i CMakeLists.txt || die
 
 	sed -e "s:/usr/local/lib:${EPREFIX}/usr/$(get_libdir):" \
