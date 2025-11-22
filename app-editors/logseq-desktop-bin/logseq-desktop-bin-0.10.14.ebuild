@@ -89,8 +89,9 @@ src_install() {
 	if use wayland; then
 		exec_extra_flags+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" )
 	fi
-	make_desktop_entry "/opt/bin/logseq ${exec_extra_flags[*]} %U" Logseq logseq Office \
-		"StartupWMClass=logseq\nTerminal=false\nMimeType=x-scheme-handler/logseq"
+	make_desktop_entry --eapi9 "/opt/bin/logseq" -a "${exec_extra_flags[*]} %U" -n Logseq \
+		-i logseq -c Office -e "Terminal=false" -e "MimeType=x-scheme-handler/logseq"
+
 	# some releases do not have an icon included, but we dont fail if that happens
 	doicon resources/app/icons/logseq.png || true
 }
