@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -130,6 +130,17 @@ src_configure() {
 		$(use_with seccomp libseccomp)
 
 		--with-db=gdbm
+
+		# Explicitly enable all types of compression
+		# so they aren't disabled automagically.
+		# The configure script by default only enables a
+		# compressor if it is present at compile time.
+		--with-gzip=gzip
+		--with-compress=compress
+		--with-bzip2=bzip2
+		--with-xz=xz
+		--with-lzip=lzip
+		--with-zstd=zstd
 	)
 
 	case ${CHOST} in
