@@ -12,7 +12,9 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/dolphin-emu/dolphin"
 	EGIT_SUBMODULES=(
+		Externals/cpp-optparse/cpp-optparse
 		Externals/mGBA/mgba
+		Externals/imgui/imgui
 		Externals/implot/implot
 		Externals/tinygltf/tinygltf
 		Externals/Vulkan-Headers
@@ -20,7 +22,9 @@ if [[ ${PV} == *9999 ]]; then
 		Externals/watcher/watcher
 	)
 else
+	CPPOPTPARSE_COMMIT=2265d647232249a53a03b411099863ceca35f0d3
 	MGBA_COMMIT=8739b22fbc90fdf0b4f6612ef9c0520f0ba44a51
+	IMGUI_COMMIT=45acd5e0e82f4c954432533ae9985ff0e1aad6d5
 	IMPLOT_COMMIT=3da8bd34299965d3b0ab124df743fe3e076fa222
 	TINYGLTF_COMMIT=c5641f2c22d117da7971504591a8f6a41ece488b
 	VULKAN_HEADERS_COMMIT=39f924b810e561fd86b2558b6711ca68d4363f68
@@ -29,6 +33,10 @@ else
 	SRC_URI="
 		https://github.com/dolphin-emu/dolphin/archive/${PV}.tar.gz
 			-> ${P}.tar.gz
+		https://github.com/weisslj/cpp-optparse/archive/${CPPOPTPARSE_COMMIT}.tar.gz
+			-> cpp-optparse-${CPPOPTPARSE_COMMIT}.tar.gz
+		https://github.com/ocornut/imgui/archive/${IMGUI_COMMIT}.tar.gz
+			-> imgui-${IMGUI_COMMIT}.tar.gz
 		https://github.com/epezent/implot/archive/${IMPLOT_COMMIT}.tar.gz
 			-> implot-${IMPLOT_COMMIT}.tar.gz
 		https://github.com/syoyo/tinygltf/archive/${TINYGLTF_COMMIT}.tar.gz
@@ -54,7 +62,7 @@ LICENSE="GPL-2+ BSD BSD-2 LGPL-2.1+ MIT ZLIB"
 SLOT="0"
 IUSE="
 	alsa bluetooth discord-presence doc egl +evdev ffmpeg +gui llvm log mgba
-	profile pulseaudio sdl systemd telemetry test upnp vulkan
+	pulseaudio sdl systemd telemetry test upnp vulkan
 "
 REQUIRED_USE="
 	mgba? ( gui )
@@ -67,8 +75,7 @@ RDEPEND="
 	>=app-arch/lz4-1.8:=
 	app-arch/xz-utils
 	>=app-arch/zstd-1.4.0:=
-	>=sys-libs/zlib-ng-1.3.1:=
-	>=sys-libs/minizip-ng-4.0.4:=
+	dev-cpp/cpp-ipc
 	dev-libs/hidapi
 	>=dev-libs/libfmt-10.1:=
 	>=dev-util/glslang-1.4.321.0:=
@@ -81,11 +88,13 @@ RDEPEND="
 	>=net-libs/enet-1.3.18:1.3=
 	net-libs/mbedtls:0=
 	net-misc/curl
+	>=sys-libs/minizip-ng-4.0.4:=
 	x11-libs/libX11
 	x11-libs/libXi
 	x11-libs/libXrandr
 	virtual/libusb:1
 	virtual/opengl
+	>=virtual/zlib-1.3.1:=
 	alsa? ( media-libs/alsa-lib )
 	bluetooth? ( net-wireless/bluez:= )
 	evdev? (
@@ -98,7 +107,6 @@ RDEPEND="
 		dev-qt/qtsvg:6
 	)
 	llvm? ( $(llvm_gen_dep 'llvm-core/llvm:${LLVM_SLOT}=') )
-	profile? ( dev-util/oprofile )
 	pulseaudio? ( media-libs/libpulse )
 	sdl? ( >=media-libs/libsdl3-3.2.20 )
 	systemd? ( sys-apps/systemd:0= )
@@ -150,6 +158,7 @@ declare -A KEEP_BUNDLED=(
 
 PATCHES=(
 	"${FILESDIR}"/dolphin-2509-retroachievents-test.patch
+	"${FILESDIR}"/dolphin-9999-system-cpp-ipc.patch
 )
 
 add_bundled_licenses() {
@@ -165,6 +174,8 @@ pkg_setup() {
 
 src_prepare() {
 	if [[ ${PV} != *9999 ]]; then
+		mv -T "${WORKDIR}/cpp-optparse-${CPPOPTPARSE_COMMIT}" Externals/cpp-optparse/cpp-optparse || die
+		mv -T "${WORKDIR}/imgui-${IMGUI_COMMIT}" Externals/imgui/imgui || die
 		mv -T "${WORKDIR}/implot-${IMPLOT_COMMIT}" Externals/implot/implot || die
 		mv -T "${WORKDIR}/tinygltf-${TINYGLTF_COMMIT}" Externals/tinygltf/tinygltf || die
 		mv -T "${WORKDIR}/Vulkan-Headers-${VULKAN_HEADERS_COMMIT}" Externals/Vulkan-Headers || die
@@ -214,7 +225,6 @@ src_configure() {
 		-DENABLE_VULKAN=$(usex vulkan)
 		-DENCODE_FRAMEDUMPS=$(usex ffmpeg)
 		-DFASTLOG=$(usex log)
-		-DOPROFILING=$(usex profile)
 		-DUSE_DISCORD_PRESENCE=$(usex discord-presence)
 		-DUSE_MGBA=$(usex mgba)
 		-DUSE_RETRO_ACHIEVEMENTS=OFF

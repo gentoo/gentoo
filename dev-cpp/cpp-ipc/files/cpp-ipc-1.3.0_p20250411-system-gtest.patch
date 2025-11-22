@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e07dd3..4e30a8b 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,7 +51,7 @@ if (LIBIPC_BUILD_TESTS)
+     else()
+         set(gtest_force_shared_crt ON)
+     endif()
+-    add_subdirectory(3rdparty/gtest)
++    find_package(GTest REQUIRED)
+     add_subdirectory(test)
+ endif()
+ 
+

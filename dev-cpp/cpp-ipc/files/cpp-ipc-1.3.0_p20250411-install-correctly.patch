@@ -1,0 +1,44 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0d16732..cf4780a 100755
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -52,17 +52,19 @@ if(NOT MSVC)
+     $<$<NOT:$<OR:$<STREQUAL:${CMAKE_SYSTEM_NAME},Windows>,$<STREQUAL:${CMAKE_SYSTEM_NAME},QNX>>>:rt>)
+ endif()
+ 
++include(GNUInstallDirs)
++
+ install(
+   TARGETS ${PROJECT_NAME}
+   EXPORT cpp-ipc-targets
+-  RUNTIME DESTINATION bin
+-  LIBRARY DESTINATION lib
+-  ARCHIVE DESTINATION lib)
++  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ install(EXPORT cpp-ipc-targets
+ 	FILE cpp-ipc-targets.cmake
+ 	NAMESPACE cpp-ipc::
+-	DESTINATION share/cpp-ipc
++	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cpp-ipc
+ )
+ 
+ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/cpp-ipc-config.cmake.in"
+@@ -70,7 +72,7 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/cpp-ipc-config.cmake.in"
+ include("${CMAKE_CURRENT_LIST_DIR}/cpp-ipc-targets.cmake")
+ ]])
+ configure_file("${CMAKE_CURRENT_BINARY_DIR}/cpp-ipc-config.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/cpp-ipc-config.cmake" @ONLY)
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cpp-ipc-config.cmake DESTINATION share/cpp-ipc)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cpp-ipc-config.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cpp-ipc)
+ 
+ include(CMakePackageConfigHelpers)
+ write_basic_package_version_file(
+@@ -78,4 +80,4 @@ write_basic_package_version_file(
+ 	VERSION ${PACKAGE_VERSION}
+ 	COMPATIBILITY AnyNewerVersion
+ )
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cppIpcConfigVersion.cmake DESTINATION share/cpp-ipc)
+\ No newline at end of file
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cppIpcConfigVersion.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cpp-ipc)
