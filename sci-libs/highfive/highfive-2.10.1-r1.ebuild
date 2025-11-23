@@ -37,6 +37,8 @@ DEPEND="
 
 DOCS=( {README,CHANGELOG}.md )
 
+PATCHES="${FILESDIR}/${PN}-2.8.0_fix_QA_cmake4_warning.patch"
+
 src_configure() {
 	default
 	local mycmakeargs=(
