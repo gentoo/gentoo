@@ -32,8 +32,6 @@ BDEPEND="app-arch/xz-utils[extra-filters(+)]"
 src_prepare() {
 	default
 
-	hprefixify config/x_ac_path_openssl.m4
-
 	eautoreconf
 }
 
