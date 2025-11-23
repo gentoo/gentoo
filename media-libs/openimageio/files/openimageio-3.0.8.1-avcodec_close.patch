@@ -1,0 +1,25 @@
+From 575a3ae620409971cf1693a802d062a6e75f1c69 Mon Sep 17 00:00:00 2001
+From: "Vlad (Kuzmin) Erium" <libalias@gmail.com>
+Date: Wed, 23 Jul 2025 19:13:57 +0900
+Subject: [PATCH] Replace avcodec_close with avcodec_free_context
+
+avcodec_close (AVCodecContext *avctx) removing in ffmpeg 7.2 and was deprecated for couple years
+
+Signed-off-by: Vlad (Kuzmin) Erium <libalias@gmail.com>
+---
+ src/ffmpeg.imageio/ffmpeginput.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ffmpeg.imageio/ffmpeginput.cpp b/src/ffmpeg.imageio/ffmpeginput.cpp
+index 1e78f77c72..7cfaf601b2 100644
+--- a/src/ffmpeg.imageio/ffmpeginput.cpp
++++ b/src/ffmpeg.imageio/ffmpeginput.cpp
+@@ -581,7 +581,7 @@ bool
+ FFmpegInput::close(void)
+ {
+     if (m_codec_context)
+-        avcodec_close(m_codec_context);
++        avcodec_free_context(&m_codec_context);
+     if (m_format_context) {
+         avformat_close_input(&m_format_context);
+         av_free(m_format_context);  // will free m_codec and m_codec_context
