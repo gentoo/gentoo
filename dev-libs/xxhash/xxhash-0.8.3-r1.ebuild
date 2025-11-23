@@ -34,6 +34,7 @@ myemake() {
 		CC="$(tc-getCC)" \
 		PREFIX="${EPREFIX}"/usr \
 		LIBDIR="${EPREFIX}"/usr/$(get_libdir) \
+		MANDIR='$(man1dir)' \
 		"${@}"
 }
 
