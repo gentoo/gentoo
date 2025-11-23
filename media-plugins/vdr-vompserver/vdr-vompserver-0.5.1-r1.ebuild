@@ -11,7 +11,7 @@ SRC_URI="https://www.loggytronic.com/dl/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm x86"
+KEYWORDS="amd64 ~arm x86"
 
 DEPEND=">=media-video/vdr-2.4.1:="
 RDEPEND="${DEPEND}"
