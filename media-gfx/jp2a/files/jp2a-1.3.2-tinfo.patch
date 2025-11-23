@@ -1,0 +1,13 @@
+Fix linking against ncurses with tinfo
+https://github.com/gentoo/gentoo/pull/24218#issuecomment-1043795319
+--- a/configure.ac
++++ b/configure.ac
+@@ -112,7 +112,7 @@ if test "$enable_termlib" = "yes" ; then
+ 	# rather ncurses.  So we check for it.
+ 	TERMLIBS=
+ 	# Check for termlib before termcap because Solaris termcap needs libucb.
+-	TERMLIB_VARIANTS="ncurses curses termlib termcap terminfo"
++	TERMLIB_VARIANTS="ncurses curses termlib termcap terminfo tinfo"
+ 	for termlib in ${TERMLIB_VARIANTS}; do
+ 	  AC_CHECK_LIB(${termlib}, tgetent,
+ 	     [TERMLIBS="${TERMLIBS} -l${termlib}"; break])
