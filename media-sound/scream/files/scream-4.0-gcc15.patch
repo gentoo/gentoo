@@ -1,5 +1,5 @@
---- a/jack.c
-+++ b/jack.c
+--- a/Receivers/unix/jack.c
++++ b/Receivers/unix/jack.c
 @@ -107,7 +107,7 @@ jo_data;
  static int init_resampler();
  static int init_channels();
