@@ -44,6 +44,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!sys-apps/systemd
+	>=sys-apps/systemd-utils-255.7-r4[udev]
 "
 PDEPEND="
 	sys-apps/dbus
