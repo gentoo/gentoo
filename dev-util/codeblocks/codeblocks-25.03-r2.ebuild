@@ -5,21 +5,28 @@ EAPI=8
 
 WX_GTK_VER="3.2-gtk3"
 
-inherit autotools flag-o-matic multiprocessing subversion wxwidgets xdg
+inherit autotools flag-o-matic multiprocessing wxwidgets xdg
+
+REV=13518
+REV_DATE="2024-05-05 20:30:28"
+FP_NAME=fortranproject
+FP_REV=378
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="https://www.codeblocks.org/"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P/-/_}.tar.xz -> ${P}.tar.xz"
+S="${WORKDIR}/${P/-/_}"
+
 LICENSE="GPL-3"
 SLOT="0"
-ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}/code/trunk"
-ESVN_FETCH_CMD="svn checkout --ignore-externals"
-ESVN_UPDATE_CMD="svn update --ignore-externals"
+KEYWORDS="~amd64 ~ppc ~x86"
 
-IUSE="contrib debug"
+IUSE="fortran contrib debug"
 
 BDEPEND="virtual/pkgconfig"
 
-RDEPEND="app-arch/zip
+RDEPEND="
+	app-arch/zip
 	dev-libs/glib:2
 	>=dev-libs/tinyxml-2.6.2-r3
 	>=dev-util/astyle-3.1-r2:0=
@@ -30,7 +37,8 @@ RDEPEND="app-arch/zip
 		app-text/hunspell:=
 		media-libs/fontconfig
 		virtual/zlib:=
-	)"
+	)
+"
 
 DEPEND="
 	${RDEPEND}
@@ -38,32 +46,41 @@ DEPEND="
 	contrib? ( dev-libs/boost:= )
 "
 
-PATCHES=( "${FILESDIR}/${P}-nodebug.diff" )
+PATCHES=(
+	"${FILESDIR}/${P}_env.patch"
+	"${FILESDIR}/${PN}-20.03_p13518_FortranProject-r378-autotools-build.patch"
+	"${FILESDIR}/${P}_fix_boost-1.89.0.patch"
+)
 
 src_prepare() {
 	default
+
 	# Let's make the autorevision work.
-	subversion_wc_info
-	CB_LCD=$(LC_ALL=C svn info "${ESVN_WC_PATH}" | grep "^Last Changed Date:" | cut -d" " -f4,5)
-	echo "m4_define([SVN_REV], ${ESVN_WC_REVISION})" > revision.m4
-	echo "m4_define([SVN_DATE], ${CB_LCD})" >> revision.m4
+	echo "m4_define([SVN_REV], ${REV})" > revision.m4
+	echo "m4_define([SVN_DATE], ${REV_DATE})" >> revision.m4
+
 	eautoreconf
 }
 
 src_configure() {
 	# Bug 858338
 	append-flags -fno-strict-aliasing
-	# Upstream issue: https://sourceforge.net/p/codeblocks/tickets/1512
-	append-cxxflags -std=c++17
 
 	setup-wxwidgets
+
+	# USE="contrib -fortran" setup:
+	use fortran || CONF_WITH_LST=$(use_with contrib contrib-plugins all,-FortranProject)
+	# USE="contrib fortran" setup:
+	use fortran && CONF_WITH_LST=$(use_with contrib contrib-plugins all)
+	# USE="-contrib fortran" setup:
+	use contrib || CONF_WITH_LST=$(use_with fortran contrib-plugins FortranProject)
 
 	local myeconfargs=(
 		--disable-pch
 		--disable-static
-		$(use_enable debug)
 		$(use_with contrib boost-libdir "${ESYSROOT}/usr/$(get_libdir)")
-		$(use_with contrib contrib-plugins all)
+		$(use_enable debug)
+		${CONF_WITH_LST}
 	)
 
 	econf "${myeconfargs[@]}"
