@@ -7,7 +7,7 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
-inherit chromium-2 desktop pax-utils xdg optfeature
+inherit chromium-2 desktop optfeature pax-utils shell-completion xdg
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
@@ -136,14 +136,21 @@ src_install() {
 		"${FILESDIR}/code.desktop" \
 		> "${T}/code.desktop" || die
 
-	sed "s|@exec_extra_flags@|${EXEC_EXTRA_FLAGS[*]}|g" \
-		"${FILESDIR}/code-open-in-new-window.desktop" \
-		> "${T}/code-open-in-new-window.desktop" || die
-
 	domenu "${T}/code.desktop"
 	domenu "${T}/code-url-handler.desktop"
-	domenu "${T}/code-open-in-new-window.desktop"
 	newicon "resources/app/resources/linux/code.png" "vscode.png"
+
+	# Install metainfo
+	insinto /usr/share/metainfo
+	doins "${FILESDIR}/code.appdata.xml"
+
+	# Install MIME type definitions
+	insinto /usr/share/mime/packages
+	doins "${FILESDIR}/code-workspace.xml"
+
+	# Install completions
+	newbashcomp resources/completions/bash/code code
+	newzshcomp resources/completions/zsh/_code _code
 }
 
 pkg_postinst() {
