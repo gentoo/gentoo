@@ -12,7 +12,7 @@ S="${WORKDIR}/vdr-plugin-live-${PV}"
 
 LICENSE="Apache-2.0 GPL-2+ RSA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
 RDEPEND="
 	media-video/vdr:=
