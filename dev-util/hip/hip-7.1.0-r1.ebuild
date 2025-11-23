@@ -91,6 +91,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-6.4.1-no-glibcxx-assert.patch"
 	"${FILESDIR}/${PN}-7.0.2-fix-libcxx-noinline.patch"
 	"${FILESDIR}/${PN}-7.0.2-fix-libcxx-ranges.patch"
+	"${FILESDIR}/${PN}-7.1.0-no-hipother-install.patch"
 )
 
 QA_FLAGS_IGNORED="usr/lib.*/libhiprtc-builtins.*"
@@ -172,17 +173,17 @@ src_configure() {
 		-DHIP_ENABLE_ROCPROFILER_REGISTER=OFF
 		-DHIPCC_BIN_DIR="${EPREFIX}/usr/bin"
 		-DROCM_PATH="${EPREFIX}/usr"
-		-DUSE_PROF_API=OFF
 
-		-DOpenGL_GL_PREFERENCE="GLVND"
 		-DCMAKE_DISABLE_FIND_PACKAGE_Git=ON
-		-DCMAKE_DISABLE_FIND_PACKAGE_NUMA="$(usex !numa)"
-		-DCMAKE_REQUIRE_FIND_PACKAGE_NUMA="$(usex numa)"
 	)
 
 	if use video_cards_amdgpu; then
 		mycmakeargs+=(
+			-DCMAKE_DISABLE_FIND_PACKAGE_NUMA="$(usex !numa)"
+			-DCMAKE_REQUIRE_FIND_PACKAGE_NUMA="$(usex numa)"
 			-DHIP_PLATFORM="amd"
+			-DOpenGL_GL_PREFERENCE="GLVND"
+			-DUSE_PROF_API=OFF
 		)
 	elif use video_cards_nvidia; then
 		mycmakeargs+=(

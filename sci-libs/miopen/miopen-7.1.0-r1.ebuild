@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 
-IUSE="composable-kernel debug hipblaslt rocblas roctracer test"
+IUSE="composable-kernel debug +hipblaslt +rocblas roctracer test"
 
 REQUIRED_USE="
 	${ROCM_REQUIRED_USE}
