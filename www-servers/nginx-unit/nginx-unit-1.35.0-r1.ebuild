@@ -88,12 +88,9 @@ src_configure() {
 	done
 }
 
-
 src_test() {
 	epytest '-opython_files=test_python*.py'
 }
-
-
 
 src_install() {
 	default
