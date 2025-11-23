@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Plays sound received from network or from a QEMU Windows VM"
 HOMEPAGE="https://github.com/duncanthrax/scream"
-S="${WORKDIR}/${P}/Receivers/unix"
+CMAKE_USE_DIR="${S}/Receivers/unix"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -34,6 +34,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gcc15.patch"
+	"${FILESDIR}/${P}-cmake.patch"
 )
 
 src_configure() {
