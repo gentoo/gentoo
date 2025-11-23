@@ -8,18 +8,17 @@ inherit cmake flag-o-matic
 DESCRIPTION="WebRTC build for Telegram"
 HOMEPAGE="https://github.com/desktop-app/tg_owt"
 
-TG_OWT_COMMIT="be39b8c8d0db1f377118f813f0c4bd331d341d5e"
+TG_OWT_COMMIT="d067233a845e387e63d480d0d846da5fcb6a40cb"
 LIBYUV_COMMIT="04821d1e7d60845525e8db55c7bcd41ef5be9406"
 LIBSRTP_COMMIT="a566a9cfcd619e8327784aa7cff4a1276dc1e895"
 SRC_URI="https://github.com/desktop-app/tg_owt/archive/${TG_OWT_COMMIT}.tar.gz -> ${P}.tar.gz
-	https://gitlab.com/chromiumsrc/libyuv/-/archive/${LIBYUV_COMMIT}/libyuv-${LIBYUV_COMMIT}.tar.bz2
-	https://github.com/cisco/libsrtp/archive/${LIBSRTP_COMMIT}.tar.gz -> libsrtp-${LIBSRTP_COMMIT}.tar.gz"
+	https://gitlab.com/chromiumsrc/libyuv/-/archive/${LIBYUV_COMMIT}/libyuv-${LIBYUV_COMMIT}.tar.bz2"
 S="${WORKDIR}/${PN}-${TG_OWT_COMMIT}"
 # Upstream libyuv: https://chromium.googlesource.com/libyuv/libyuv
 
 LICENSE="BSD"
 SLOT="0/${PV##*pre}"
-KEYWORDS="amd64 ~arm64 ~loong ~ppc64 ~riscv"
+KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~riscv"
 IUSE="screencast +X"
 
 # This package's USE flags may change the ABI and require a rebuild of
@@ -30,7 +29,6 @@ IUSE="screencast +X"
 
 # Bundled libs:
 # - libyuv (no stable versioning, www-client/chromium and media-libs/libvpx bundle it)
-# - libsrtp (project uses private APIs)
 # - pffft (no stable versioning, patched)
 RDEPEND="
 	>=dev-cpp/abseil-cpp-20240722.0:=
@@ -41,6 +39,7 @@ RDEPEND="
 	media-libs/openh264:=
 	media-libs/opus
 	media-video/ffmpeg:=
+	net-libs/libsrtp:2=
 	dev-libs/crc32c
 	screencast? (
 		dev-libs/glib:2
@@ -69,13 +68,14 @@ BDEPEND="
 	X? ( x11-base/xorg-proto )
 "
 
-PATCHES=( "${FILESDIR}/pipewire-1.4.patch" )
+PATCHES=(
+	"${FILESDIR}/tg_owt-0_pre20250515-fix-gcc16.patch"
+	"${FILESDIR}/tg_owt-0_pre20250515-fix-clang20.patch"
+)
 
 src_unpack() {
 	default
-
 	mv -T "libyuv-${LIBYUV_COMMIT}" "${S}/src/third_party/libyuv" || die
-	mv -T "libsrtp-${LIBSRTP_COMMIT}" "${S}/src/third_party/libsrtp" || die
 }
 
 src_prepare() {
@@ -85,6 +85,9 @@ src_prepare() {
 
 	# "lol" said the scorpion, "lmao"
 	sed -i '/if (BUILD_SHARED_LIBS)/{n;n;s/WARNING/DEBUG/}' CMakeLists.txt || die
+
+	# Shut the CMake 4 QA checker up by removing unused CMakeLists files
+	rm src/third_party/libyuv/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
