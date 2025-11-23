@@ -13,6 +13,7 @@
 		<flag name="zamaudio">Enable use of <pkg>media-plugins/zam-plugins</pkg> for the maximizer FX</flag>
 	</use>
 	<upstream>
+		<doc>https://wwmm.github.io/easyeffects/</doc>
 		<remote-id type="github">wwmm/easyeffects</remote-id>
 	</upstream>
 </pkgmetadata>
