@@ -86,6 +86,10 @@ RESTRICT="!test? ( test )"
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/stellarium.asc
 
+PATCHES=(
+	"${FILESDIR}"/stellarium-0.25.3-qt610.patch
+)
+
 pkg_setup() {
 	if tc-is-clang && ! use libcxx && [[ $(tc-get-cxx-stdlib) == libc++ ]]; then
 		die "When using libc++, please enable USE=libcxx"
