@@ -1,9 +1,9 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools desktop flag-o-matic
+inherit autotools desktop flag-o-matic xdg
 
 DESCRIPTION="A GUI for cupsd"
 HOMEPAGE="https://gtklp.sirtobi.com/"
