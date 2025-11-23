@@ -12,13 +12,13 @@ SRC_URI="https://github.com/phillipberndt/pqiv/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~riscv ~x86"
-IUSE="archive ffmpeg imagemagick pdf postscript webp"
+IUSE="archive ffmpeg imagemagick pdf postscript webp X"
 
 RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=x11-libs/cairo-1.6
 	>=x11-libs/gdk-pixbuf-2.2:2
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X?]
 	>=x11-libs/pango-1.10
 	X? ( x11-libs/libX11 )
 	archive? ( app-arch/libarchive:0= )
@@ -41,6 +41,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
 	local backends=(
 		"gdkpixbuf"
 		$(usev archive "archive")
@@ -62,5 +63,5 @@ src_configure() {
 
 src_compile() {
 	tc-export CC
-	emake VERBOSE=1 CFLAGS="${CFLAGS}"
+	emake VERBOSE=1
 }
