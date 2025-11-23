@@ -1,0 +1,130 @@
+From 4919b0d317b6c40bf2b2bab651219626f502cbd6 Mon Sep 17 00:00:00 2001
+From: Paul Zander <negril.nx+gentoo@gmail.com>
+Date: Tue, 11 Nov 2025 14:49:28 +0100
+Subject: [PATCH] cmake 4
+
+allow cmake_minimum_required 3.10
+
+Signed-off-by: Paul Zander <negril.nx+gentoo@gmail.com>
+
+diff --git a/samples/glfw/CMakeLists.txt b/samples/glfw/CMakeLists.txt
+index f0328a9..d60c093 100644
+--- a/samples/glfw/CMakeLists.txt
++++ b/samples/glfw/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 3.2...3.10)
+ 
+ project(glfw-occt-demo)
+ 
+diff --git a/samples/java/jniviewer/app/src/main/jni/CMakeLists.txt b/samples/java/jniviewer/app/src/main/jni/CMakeLists.txt
+index 4c854cf..e44c893 100644
+--- a/samples/java/jniviewer/app/src/main/jni/CMakeLists.txt
++++ b/samples/java/jniviewer/app/src/main/jni/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4.1)
++cmake_minimum_required(VERSION 3.4.1...3.10)
+ 
+ set(HEADER_FILES OcctJni_MsgPrinter.hxx OcctJni_Viewer.hxx)
+ set(SOURCE_FILES OcctJni_MsgPrinter.cxx OcctJni_Viewer.cxx)
+diff --git a/samples/mfc/standard/01_Geometry/CMakeLists.txt b/samples/mfc/standard/01_Geometry/CMakeLists.txt
+index ec58896..7aa29c5 100644
+--- a/samples/mfc/standard/01_Geometry/CMakeLists.txt
++++ b/samples/mfc/standard/01_Geometry/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # For canceling of applying new policies use:
+ # cmake_policy(PUSH) before `cmake_minimum_required`
+ # and cmake_policy(POP) after.
+-cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.1...3.10 FATAL_ERROR)
+ 
+ project (Geometry)
+ 
+diff --git a/samples/mfc/standard/02_Modeling/CMakeLists.txt b/samples/mfc/standard/02_Modeling/CMakeLists.txt
+index 1b8f780..b7d5f06 100644
+--- a/samples/mfc/standard/02_Modeling/CMakeLists.txt
++++ b/samples/mfc/standard/02_Modeling/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # For canceling of applying new policies use:
+ # cmake_policy(PUSH) before `cmake_minimum_required`
+ # and cmake_policy(POP) after.
+-cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.1...3.10 FATAL_ERROR)
+ 
+ project (Modeling)
+ 
+diff --git a/samples/mfc/standard/03_ImportExport/CMakeLists.txt b/samples/mfc/standard/03_ImportExport/CMakeLists.txt
+index a7dba86..63cea62 100644
+--- a/samples/mfc/standard/03_ImportExport/CMakeLists.txt
++++ b/samples/mfc/standard/03_ImportExport/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # For canceling of applying new policies use:
+ # cmake_policy(PUSH) before `cmake_minimum_required`
+ # and cmake_policy(POP) after.
+-cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.1...3.10 FATAL_ERROR)
+ 
+ project (ImportExport)
+ 
+diff --git a/samples/mfc/standard/04_HLR/CMakeLists.txt b/samples/mfc/standard/04_HLR/CMakeLists.txt
+index 1ccabc5..2802b44 100644
+--- a/samples/mfc/standard/04_HLR/CMakeLists.txt
++++ b/samples/mfc/standard/04_HLR/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # For canceling of applying new policies use:
+ # cmake_policy(PUSH) before `cmake_minimum_required`
+ # and cmake_policy(POP) after.
+-cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.1...3.10 FATAL_ERROR)
+ 
+ project (HLR)
+ 
+diff --git a/samples/mfc/standard/mfcsample/CMakeLists.txt b/samples/mfc/standard/mfcsample/CMakeLists.txt
+index 67b2f55..cd12fd0 100644
+--- a/samples/mfc/standard/mfcsample/CMakeLists.txt
++++ b/samples/mfc/standard/mfcsample/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # For canceling of applying new policies use:
+ # cmake_policy(PUSH) before `cmake_minimum_required`
+ # and cmake_policy(POP) after.
+-cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.1...3.10 FATAL_ERROR)
+ 
+ project (mfcsample)
+ 
+diff --git a/samples/webgl/CMakeLists.txt b/samples/webgl/CMakeLists.txt
+index c403725..6923ba2 100644
+--- a/samples/webgl/CMakeLists.txt
++++ b/samples/webgl/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 3.2...3.10)
+ 
+ project(occt-webgl-sample)
+ 
+diff --git a/samples/xaml/CMakeLists.txt b/samples/xaml/CMakeLists.txt
+index 8265aea..76e89a6 100644
+--- a/samples/xaml/CMakeLists.txt
++++ b/samples/xaml/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4.0)
++cmake_minimum_required(VERSION 3.4.0...3.10)
+ project(uwp)
+ 
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index ed69436..ff9126f 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -4,7 +4,7 @@
+ # For canceling of applying new policies use:
+ # cmake_policy(PUSH) before `cmake_minimum_required`
+ # and cmake_policy(POP) after.
+-cmake_minimum_required (VERSION 3.1 FATAL_ERROR)
++cmake_minimum_required (VERSION 3.1...3.10 FATAL_ERROR)
+ 
+ set (ADDITIONAL_INLCUDE_DIR_DESCR "Additional directory to be added in the projects include section")
+ if (NOT DEFINED ADDITIONAL_INLCUDE_DIR)
+-- 
+2.51.2
+
