@@ -6,7 +6,7 @@ EAPI=8
 # require 64-bit integer
 LUA_COMPAT=( lua5-{3,4} )
 
-inherit autotools lua-single systemd
+inherit autotools lua-single systemd toolchain-funcs
 
 DESCRIPTION="BitTorrent Client using libtorrent"
 HOMEPAGE="https://rakshasa.github.io/rtorrent/"
@@ -70,6 +70,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# used by xmlrpc-c-config
+	tc-export PKG_CONFIG
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_with lua)
